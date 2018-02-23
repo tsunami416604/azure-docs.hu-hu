@@ -4,7 +4,7 @@ description: "Ez az oktatóanyag bemutatja, hogyan Always On rendelkezésre áll
 services: virtual-machines-windows
 documentationcenter: na
 author: MikeRayMSFT
-manager: jhubbard
+manager: craigg
 editor: 
 tags: azure-resource-manager
 ms.assetid: 64e85527-d5c8-40d9-bbe2-13045d25fc68
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/17/2017
 ms.author: mikeray
-ms.openlocfilehash: d430febee23081b26eee0a68d4beb43228549f52
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a612ffd5a68e34cb0a367a6a883495ef26aeb4bc
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="configure-always-on-availability-groups-in-azure-virtual-machines-automatically-resource-manager"></a>Always On rendelkezésre állási csoportok Azure virtuális gépek automatikus konfigurálásához: erőforrás-kezelő
 
@@ -63,8 +63,8 @@ Ebben az oktatóanyagban az Azure-portál használata:
 Azure biztosít a teljes megoldás egy gyűjtemény lemezképet. A sablon kereséséhez:
 
 1. A fiók használatával jelentkezzen be az Azure-portálon.
-2. Az Azure portálon kattintson **+ új** megnyitásához a **új** panelen.
-3. Az a **új** panelen, a Keresés **AlwaysOn**.
+2. Az Azure portálon kattintson **hozzon létre egy erőforrást** megnyitásához a **új** ablaktáblán.
+3. Az a **új** ablaktáblán, keresse meg **AlwaysOn**.
    ![AlwaysOn sablon keresése](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/16-findalwayson.png)
 4. Keresse meg a keresési eredmények **SQL Server AlwaysOn fürt**.
    ![AlwaysOn sablon](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/17-alwaysontemplate.png)
@@ -184,7 +184,7 @@ A **SQL Server-beállítások**, és módosítsa az SQL Server virtuális gép n
 
 Tekintse át a beállításokat, és kattintson **OK**.
 
-### <a name="summary"></a>Összefoglalás
+### <a name="summary"></a>Összegzés
 Az összefoglalás lapon Azure ellenőrzi a beállításokat. A sablon is letöltheti. Tekintse át az összegzést. Kattintson az **OK** gombra.
 
 ### <a name="buy"></a>Vásárlás
@@ -195,9 +195,9 @@ Az Azure-portálon létrehoz az erőforráscsoportot és az összes erőforrás.
 ## <a name="monitor-deployment"></a>A figyelő telepítése
 Azure-portálról telepítési előrehaladásának figyeléséhez. A központi telepítés jelölő ikon automatikusan az Azure portál Irányítópultjára van rögzítve.
 
-![Az Azure irányítópult](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/11-deploydashboard.png)
+![Azure Dashboard](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/11-deploydashboard.png)
 
-## <a name="connect-to-sql-server"></a>Csatlakozás SQL-kiszolgálóhoz
+## <a name="connect-to-sql-server"></a>Csatlakozás az SQL Serverhez
 Az SQL Server új példányát internetkapcsolattal rendelkező IP-címmel rendelkező virtuális gépeken futnak. A távoli asztal (RDP) közvetlenül az SQL Server virtuális gépeken is.
 
 Távoli asztali SQL Serverre kövesse az alábbi lépéseket:

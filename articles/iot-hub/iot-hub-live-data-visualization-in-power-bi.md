@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/24/2017
 ms.author: xshi
-ms.openlocfilehash: b190fea06ffc2406d781c7edad091f097cca9c2d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 82915a92464f240591777595e878a534cde0136c
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="visualize-real-time-sensor-data-from-azure-iot-hub-using-power-bi"></a>Az Azure IoT Hub Power BI használatával valós idejű érzékelőadatok megjelenítése
 
@@ -52,7 +52,7 @@ Megismerheti, hogyan valós idejű érzékelőadatok, amely az Azure IoT hub meg
 
 ### <a name="create-a-stream-analytics-job"></a>Stream Analytics-feladat létrehozása
 
-1. Az Azure portálon, kattintson az új > az eszközök internetes hálózatát > Stream Analytics-feladat.
+1. Az a [Azure-portálon](https://portal.azure.com), kattintson a **hozzon létre egy erőforrást** > **az eszközök internetes hálózatát** > **Stream Analytics-feladat**.
 1. Adja meg a feladat a következő információkat.
 
    **Feladat neve**: a feladat nevét. A névnek globálisan egyedinek kell lennie.
@@ -61,7 +61,7 @@ Megismerheti, hogyan valós idejű érzékelőadatok, amely az Azure IoT hub meg
 
    **Hely**: ugyanazt a helyet használja a erőforráscsoportként működnek.
 
-   **Rögzítés az irányítópulton**: ezt a beállítást, az egyszerű elérés érdekében ellenőrizze, hogy az IoT hub az irányítópultról.
+   **Rögzítés az irányítópulton**: Ezt a lehetőséget kiválasztva könnyen hozzáférhet az IoT Hubhoz az irányítópultról.
 
    ![A Stream Analytics-feladat létrehozása az Azure-ban](media/iot-hub-live-data-visualization-in-power-bi/2_create-stream-analytics-job-azure.png)
 
@@ -153,7 +153,7 @@ A jelentés hivatkozása van megadva, hogy egy kódrészletet a jelentés integr
 
 A Microsoft is kínál a [Power BI mobilalkalmazásokkal](https://powerbi.microsoft.com/en-us/documentation/powerbi-power-bi-apps-for-mobile-devices/) megtekintéséhez és a Power BI-irányítópult és jelentések való interakció a mobileszközön.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A valós idejű érzékelőadatok jelenítheti meg az Azure IoT hub a Power bi-ban sikeresen használt.
 Nincs megadva is az Azure IoT Hub-adatok ábrázolása. Lásd: [használata Azure Web Apps valós idejű érzékelőadatok Azure IoT hubról megjelenítéséhez](iot-hub-live-data-visualization-in-web-apps.md).

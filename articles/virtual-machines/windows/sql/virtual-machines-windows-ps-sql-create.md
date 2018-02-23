@@ -1,10 +1,10 @@
 ---
-title: "SQL Server virtuális gépek létrehozása az Azure PowerShell |} Microsoft Docs"
+title: "SQL Server virtuális gépek az Azure PowerShell kialakítási útmutatója |} Microsoft Docs"
 description: "Lépéseket és a PowerShell-parancsok biztosít az Azure virtuális gép létrehozása az SQL Server virtuális gép a gyűjtemény lemezképei."
 services: virtual-machines-windows
 documentationcenter: na
 author: rothja
-manager: jhubbard
+manager: craigg
 editor: 
 tags: azure-resource-manager
 ms.assetid: 98d50dd8-48ad-444f-9031-5378d8270d7b
@@ -13,21 +13,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 11/29/2017
+ms.date: 02/15/2018
 ms.author: jroth
-ms.openlocfilehash: e6d1f36d998ac8726e3a74b31772a5dd5a24bd58
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: 2f94cf2ab84179161c8d0a4f2ae6f73ded1d65c3
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 02/21/2018
 ---
-# <a name="how-to-create-sql-server-virtual-machines-with-azure-powershell"></a>SQL Server virtuális gépek létrehozása az Azure PowerShell
+# <a name="how-to-provision-sql-server-virtual-machines-with-azure-powershell"></a>SQL Server virtuális gépek az Azure PowerShell kiépítése
 
 Ez az útmutató ismerteti a beállításokat, az Azure PowerShell Windows SQL Server virtuális gépek létrehozásához. Például egy egyszerű Azure PowerShell további alapértelmezett értékekkel, tekintse meg a [SQL virtuális gép Azure PowerShell gyors üzembe helyezés](quickstart-sql-vm-create-powershell.md).
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
-Ehhez a rövid útmutatóhoz az Azure PowerShell-modul 3.6-os vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable AzureRM`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket.
+Ez a cikk az Azure PowerShell 3,6 vagy újabb verziója szükséges. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable AzureRM`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket.
 
 ## <a name="configure-your-subscription"></a>Az előfizetés konfigurálása
 
@@ -399,7 +399,7 @@ A virtuális gép létrehozása után is:
 
 - Csatlakoztassa a virtuális géphez a távoli asztal (RDP) használatával.
 - A portál SQL Server-beállítások konfigurálása a virtuális Gépet, beleértve:
-   - [Tárolási beállítások](virtual-machines-windows-sql-server-storage-configuration.md) 
+   - [tárolási beállítások](virtual-machines-windows-sql-server-storage-configuration.md) 
    - [Automatikus felügyeleti feladatok](virtual-machines-windows-sql-server-agent-extension.md)
 - [Kapcsolat konfigurálása](virtual-machines-windows-sql-connect.md).
 - Csatlakoztassa az ügyfeleket és alkalmazásokat az új SQL Server-példányra.

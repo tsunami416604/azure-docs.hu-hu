@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/20/2017
 ms.author: govindk
-ms.openlocfilehash: fe911b69278021262f1d90f2157bb78ca48db0db
-ms.sourcegitcommit: 1d8612a3c08dc633664ed4fb7c65807608a9ee20
+ms.openlocfilehash: 62e56a611d3f720172ace83a4b407a962ec69ea8
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="introduction-to-apache-cassandra-api-for-azure-cosmos-db"></a>Az Azure Cosmos DB Apache Cassandra API bemutatása
 
@@ -64,7 +64,7 @@ A Cassandra API lehetővé teszi a Azure Cosmos DB Cassandra Query Language-alap
 
 Ha már rendelkezik Azure-előfizetéssel, regisztrálhat a Cassandra API (előzetes verzió) program csatlakozni a [Azure-portálon](https://aka.ms/cosmosdb-cassandra-signup).  Ha most ismerkedik az Azure-ba, regisztráljon egy [ingyenes próbaverzió](https://azure.microsoft.com/free) hol szerezheti Azure Cosmos DB szabad hozzáférési 12 hónapig. Kövesse az alábbi lépéseket, hogy hozzáférést igényelhessen a Cassandra API (előzetes verzió) program.
 
-1. Az a [Azure-portálon](https://portal.azure.com), kattintson a **új** > **adatbázisok** > **Azure Cosmos DB**. 
+1. Az a [Azure-portálon](https://portal.azure.com), kattintson a **hozzon létre egy erőforrást** > **adatbázisok** > **Azure Cosmos DB**. 
 
 2. Válassza ki az új fiók lap **Cassandra** a API mezőbe. 
 
@@ -88,7 +88,7 @@ Egyszer csatlakozott a programot, hajtsa végre a Cassandra API quickstarts hozh
 * [Gyors üzembe helyezés: Build a Cassandra .NET és Azure Cosmos DB webalkalmazás](create-cassandra-dotnet.md)
 * [Gyors üzembe helyezés: Build a Cassandra Azure Cosmos DB és Python webalkalmazás](create-cassandra-python.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure Cosmos DB Cassandra API információ integrálva van a teljes Azure Cosmos DB dokumentációt, de az alábbiakban néhány mutatók az első lépésekhez:
 

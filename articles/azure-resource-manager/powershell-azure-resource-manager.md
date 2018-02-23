@@ -12,250 +12,214 @@ ms.workload: multiple
 ms.tgt_pltfrm: powershell
 ms.devlang: na
 ms.topic: article
-ms.date: 10/06/2017
+ms.date: 02/16/2018
 ms.author: tomfitz
-ms.openlocfilehash: ae5ccb83a0088cb7c9668f18620b74f9f3f1e9b0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7e2f988fd62753e1ebed702728dee7ede65c72c4
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
-# <a name="manage-resources-with-azure-powershell-and-resource-manager"></a>Az Azure PowerShell és a Resource Manager-erőforrások kezelése
+# <a name="manage-resources-with-azure-powershell"></a>Az Azure PowerShell-erőforrások kezelése
 
-Ebből a cikkből megismerheti, hogyan kezelheti a megoldások Azure PowerShell és az Azure Resource Manager. Ha nem ismeri a Resource Manager, lásd: [Resource Manager áttekintése](resource-group-overview.md). Ez a cikk foglalkozik a felügyeleti feladatokat. Az alábbiakat fogja elvégezni:
+[!include[Resource Manager governance introduction](../../includes/resource-manager-governance-intro.md)]
 
-1. Hozzon létre egy erőforráscsoportot
-2. Az erőforráscsoport erőforrás hozzáadása
-3. Az erőforrás egy címke hozzáadása
-4. A nevek vagy címke értékek alapján-erőforrások lekérdezése
-5. Alkalmazza, és távolítsa el az erőforrás zárolását
-6. Egy erőforráscsoportot
+[!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
 
-Ez a cikk nem szerepelnek a Resource Manager-sablon üzembe helyezése az előfizetéshez. Ez az információ, lásd: [erőforrások a Resource Manager-sablonok és Azure PowerShell telepítése](resource-group-template-deploy.md).
+Ha úgy dönt, hogy telepítse és a PowerShell segítségével helyileg, lásd: [telepítése Azure PowerShell modul](/powershell/azure/install-azurerm-ps). Ha helyileg futtatja a PowerShellt, akkor emellett a `Login-AzureRmAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
 
-## <a name="get-started-with-azure-powershell"></a>Ismerkedés az Azure PowerShell
+## <a name="understand-scope"></a>Hatókör ismertetése
 
-Ha még nem telepítette az Azure PowerShell, lásd: [telepítése és konfigurálása az Azure PowerShell](/powershell/azure/overview).
+[!include[Resource Manager governance scope](../../includes/resource-manager-governance-scope.md)]
 
-Ha korábban telepítette az Azure PowerShell, de nem frissítve, legutóbb, javasoljuk, hogy telepítse a legújabb verzióra. A verziófrissítés keresztül ugyanezt a módszert akkor telepítéséhez is használt. Például ha a Webplatform-telepítő, indítsa el újra, és keresse meg frissítés.
+Ebben a cikkben alkalmaz minden beállításokat az erőforráscsoporthoz, egyszerűen távolítsa el ezeket a beállításokat, amikor hajtja végre.
 
-Az Azure-erőforrások modul verziójának ellenőrzéséhez használja a következő parancsmagot:
+Hozzon létre az erőforráscsoportot.
 
-```powershell
-Get-Module -ListAvailable -Name AzureRm.Resources | Select Version
+```azurepowershell-interactive
+Set-AzureRmContext -Subscription <subscription-name>
+New-AzureRmResourceGroup -Name myResourceGroup -Location EastUS
 ```
 
-A cikk frissült 3.3.0 verziójához. Ha egy korábbi, a felhasználói élmény nem egyeznek az ebben a cikkben szereplő lépéseket. Az ebben a verzióban a parancsmagokkal dokumentációjáért lásd: [AzureRM.Resources modul](/powershell/module/azurerm.resources).
+Az erőforráscsoport jelenleg üres.
 
-## <a name="log-in-to-your-azure-account"></a>Jelentkezzen be az Azure-fiókjával
-A megoldás dolgozik, mielőtt be kell jelentkezni fiókját.
+## <a name="role-based-access-control"></a>Szerepköralapú hozzáférés-vezérlés
 
-Jelentkezzen be az Azure-fiókjával, használja a **Login-AzureRmAccount** parancsmag.
+[!include[Resource Manager governance policy](../../includes/resource-manager-governance-rbac.md)]
 
-```powershell
-Login-AzureRmAccount
+### <a name="assign-a-role"></a>A szerepkör hozzárendelése
+
+Ez a cikk telepít, a virtuális gépek és a kapcsolódó virtuális hálózatot. A virtuális gép megoldások kezelése, számos három erőforrás-specifikus szerepköröket, amelyek gyakran szükséges hozzáférést biztosítanak.
+
+* [Virtuális gép közreműködő](../active-directory/role-based-access-built-in-roles.md#virtual-machine-contributor)
+* [Hálózati közreműködő](../active-directory/role-based-access-built-in-roles.md#network-contributor)
+* [Tárolási fiók közreműködői](../active-directory/role-based-access-built-in-roles.md#storage-account-contributor)
+
+Szerepkörök hozzárendelése az egyéni felhasználók számára, helyett célszerűbb gyakran [Azure Active Directory-csoport létrehozása](../active-directory/active-directory-groups-create-azure-portal.md) a felhasználók, akik hasonló műveletekre. Adott csoporthoz, majd rendelje hozzá a megfelelő szerepkörhöz. Ez a cikk leegyszerűsítése hoz létre egy Azure Active Directory-csoport tagjai nélkül. Ez a csoport továbbra is hozzárendelése szerepkörhöz hatókörhöz. 
+
+Az alábbi példa létrehoz egy csoportot, és hozzárendeli a virtuális gép közreműködő szerepkört ahhoz az erőforráscsoporthoz. Futtatásához a `New-AzureAdGroup` parancsban, vagy használja kell a [Azure Cloud rendszerhéj](/azure/cloud-shell/overview) vagy [töltse le az Azure AD PowerShell modult](https://www.powershellgallery.com/packages/AzureAD/).
+
+```azurepowershell-interactive
+$adgroup = New-AzureADGroup -DisplayName VMDemoContributors `
+  -MailNickName vmDemoGroup `
+  -MailEnabled $false `
+  -SecurityEnabled $true
+New-AzureRmRoleAssignment -ObjectId $adgroup.ObjectId `
+  -ResourceGroupName myResourceGroup `
+  -RoleDefinitionName "Virtual Machine Contributor"
 ```
 
-A parancsmag kéri az Azure-fiók bejelentkezési hitelesítő adatait. A bejelentkezés után letölti a fiók beállításait, hogy elérhetők legyenek az Azure PowerShell számára.
+Általában, ismételje meg a folyamatot **hálózat közreműködő** és **tárolási fiók közreműködői** való győződjön meg arról, hogy a felhasználók vannak hozzárendelve a telepített erőforrások kezelése. A cikkben kihagyhatja ezeket a lépéseket.
 
-A parancsmag fiókját és a feladatokhoz használhatja, hogy az előfizetés információt ad vissza.
+## <a name="azure-policies"></a>Az Azure házirendek
 
-```powershell
-Environment           : AzureCloud
-Account               : example@contoso.com
-TenantId              : {guid}
-SubscriptionId        : {guid}
-SubscriptionName      : Example Subscription One
-CurrentStorageAccount :
+[!include[Resource Manager governance policy](../../includes/resource-manager-governance-policy.md)]
 
+### <a name="apply-policies"></a>Házirendek alkalmazása
+
+Az előfizetés már rendelkezik több házirend-definíciók. A rendelkezésre álló házirend-definíciók megjelenítéséhez használja:
+
+```azurepowershell-interactive
+(Get-AzureRmPolicyDefinition).Properties | Format-Table displayName, policyType
 ```
 
-Ha egynél több előfizetéssel rendelkezik, átválthat egy másik előfizetést. Első lépésként Ismerkedjen meg az összes olyan előfizetést, a fiókjához.
+Megjelenik a meglévő házirend-definíciók. A házirend típusát vagy a **beépített** vagy **egyéni**. Nézze át a definícióit, hozzárendelése kívánt feltétel leírása. Ebben a cikkben hozzárendelt házirendek, amelyek:
 
-```powershell
-Get-AzureRmSubscription
+* a helyek, az összes erőforrás korlátozása
+* korlátozza a virtuális gépek termékváltozatok
+* virtuális gépek, amelyek nem kezelt lemezek naplózása
+
+```azurepowershell-interactive
+$locations ="eastus", "eastus2"
+$skus = "Standard_DS1_v2", "Standard_E2s_v2"
+
+$rg = Get-AzureRmResourceGroup -Name myResourceGroup
+
+$locationDefinition = Get-AzureRmPolicyDefinition | where-object {$_.properties.displayname -eq "Allowed locations"}
+$skuDefinition = Get-AzureRmPolicyDefinition | where-object {$_.properties.displayname -eq "Allowed virtual machine SKUs"}
+$auditDefinition = Get-AzureRmPolicyDefinition | where-object {$_.properties.displayname -eq "Audit VMs that do not use managed disks"}
+
+New-AzureRMPolicyAssignment -Name "Set permitted locations" `
+  -Scope $rg.ResourceId `
+  -PolicyDefinition $locationDefinition `
+  -listOfAllowedLocations $locations
+New-AzureRMPolicyAssignment -Name "Set permitted VM SKUs" `
+  -Scope $rg.ResourceId `
+  -PolicyDefinition $skuDefinition `
+  -listOfAllowedSKUs $skus
+New-AzureRMPolicyAssignment -Name "Audit unmanaged disks" `
+  -Scope $rg.ResourceId `
+  -PolicyDefinition $auditDefinition
 ```
 
-Engedélyezett és letiltott előfizetésekhez adja vissza.
+## <a name="deploy-the-virtual-machine"></a>A virtuális gép telepítése
 
-```powershell
-SubscriptionName : Example Subscription One
-SubscriptionId   : {guid}
-TenantId         : {guid}
-State            : Enabled
+Szerepkörök és a házirendeket, készen áll a megoldás üzembe helyezéséhez rendelt hozzá. Az alapértelmezett méret Standard_DS1_v2, amely egyike a megengedett SKU. Ennek a lépésnek a futtatásakor a rendszer a hitelesítő adatok megadását kéri. Az itt megadott értékek határozzák meg a virtuális géphez tartozó felhasználónevet és jelszavát.
 
-SubscriptionName : Example Subscription Two
-SubscriptionId   : {guid}
-TenantId         : {guid}
-State            : Enabled
-
-SubscriptionName : Example Subscription Three
-SubscriptionId   : {guid}
-TenantId         : {guid}
-State            : Disabled
+```azurepowershell-interactive
+New-AzureRmVm -ResourceGroupName "myResourceGroup" `
+     -Name "myVM" `
+     -Location "East US" `
+     -VirtualNetworkName "myVnet" `
+     -SubnetName "mySubnet" `
+     -SecurityGroupName "myNetworkSecurityGroup" `
+     -PublicIpAddressName "myPublicIpAddress" `
+     -OpenPorts 80,3389
 ```
 
-Váltson át egy másik előfizetésben található, adja meg az előfizetés nevét a **Set-AzureRmContext** parancsmag.
+A telepítés befejezése után további felügyeleti beállításokat alkalmazhat a megoldás.
 
-```powershell
-Set-AzureRmContext -SubscriptionName "Example Subscription Two"
+## <a name="lock-resources"></a>Erőforrások zárolása
+
+[!include[Resource Manager governance locks](../../includes/resource-manager-governance-locks.md)]
+
+### <a name="lock-a-resource"></a>Egy erőforrás zárolása
+
+A virtuális gép és a hálózati biztonsági csoport zárolásához használja:
+
+```azurepowershell-interactive
+New-AzureRmResourceLock -LockLevel CanNotDelete `
+  -LockName LockVM `
+  -ResourceName myVM `
+  -ResourceType Microsoft.Compute/virtualMachines `
+  -ResourceGroupName myResourceGroup
+New-AzureRmResourceLock -LockLevel CanNotDelete `
+  -LockName LockNSG `
+  -ResourceName myNetworkSecurityGroup `
+  -ResourceType Microsoft.Network/networkSecurityGroups `
+  -ResourceGroupName myResourceGroup
 ```
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+A virtuális gép csak akkor lehet törölni, ha kifejezetten távolítsa el a zárolást. A lépés megjelenik-e a [erőforrások törlése](#clean-up-resources).
 
-Az előfizetéshez erőforrásokat telepítés megkezdése előtt létre kell hoznia az erőforrásokat tartalmazó erőforráscsoport.
+## <a name="tag-resources"></a>Címke erőforrások
 
-Erőforráscsoport létrehozásához használja a **New-AzureRmResourceGroup** parancsmag. A parancs a **neve** paraméter segítségével adjon meg egy nevet az erőforráscsoporthoz tartozó és a **hely** paramétert adja meg a helyet.
+[!include[Resource Manager governance tags](../../includes/resource-manager-governance-tags.md)]
 
-```powershell
-New-AzureRmResourceGroup -Name TestRG1 -Location "South Central US"
+### <a name="tag-resources"></a>Címke erőforrások
+
+[!include[Resource Manager governance tags Powershell](../../includes/resource-manager-governance-tags-powershell.md)]
+
+Címkék egy virtuális géphez segítségével:
+
+```azurepowershell-interactive
+$r = Get-AzureRmResource -ResourceName myVM `
+  -ResourceGroupName myResourceGroup `
+  -ResourceType Microsoft.Compute/virtualMachines
+Set-AzureRmResource -Tag @{ Dept="IT"; Environment="Test"; Project="Documentation" } -ResourceId $r.ResourceId -Force
 ```
 
-A kimenet a következő formátumban kell megadni:
+### <a name="find-resources-by-tag"></a>Erőforrások keresése címke szerint
 
-```powershell
-ResourceGroupName : TestRG1
-Location          : southcentralus
-ProvisioningState : Succeeded
-Tags              :
-ResourceId        : /subscriptions/{guid}/resourceGroups/TestRG1
+A címke neve és értéke erőforrások megkereséséhez használja:
+
+```azurepowershell-interactive
+(Find-AzureRmResource -TagName Environment -TagValue Test).Name
 ```
 
-Ha az erőforráscsoport beolvasni később van szüksége, használja a következő parancsmagot:
+A felügyeleti feladatokat, például egy címke az összes virtuális gép leállítása a visszaadott értékeket is használhat.
 
-```powershell
-Get-AzureRmResourceGroup -ResourceGroupName TestRG1
+```azurepowershell-interactive
+Find-AzureRmResource -TagName Environment -TagValue Test | Where-Object {$_.ResourceType -eq "Microsoft.Compute/virtualMachines"} | Stop-AzureRmVM
 ```
 
-Ahhoz, hogy az erőforráscsoportok az előfizetéshez, ne adjon meg egy nevet:
+### <a name="view-costs-by-tag-values"></a>Nézet költségek címkeértékeket.
 
-```powershell
-Get-AzureRmResourceGroup
+Címkék alkalmazása az erőforrásokat, után megtekintheti a címkék erőforrás költségeket. Költség elemzéshez megjelenítése a legutóbbi használati, ezért még nem láthatók a költségek igénybe vesz igénybe. A költségek érhetők el, tekintheti költségek erőforrások erőforráscsoportok közötti az előfizetésben. Felhasználónak rendelkeznie kell [szintű hozzáféréssel előfizetés számlázási adatokat](../billing/billing-manage-access.md) költségeket megjelenítéséhez.
+
+A portál kódcímke költségek megtekintéséhez jelölje ki az előfizetését, és válassza ki **költség Analysis**.
+
+![Költségelemzés](./media/powershell-azure-resource-manager/select-cost-analysis.png)
+
+Ezt követően a címke értéke alapján szűrni, és válassza ki **alkalmaz**.
+
+![Nézet költség címke szerint](./media/powershell-azure-resource-manager/view-costs-by-tag.png)
+
+Használhatja a [Azure számlázási API-k](../billing/billing-usage-rate-card-overview.md) költségek programozott módon megtekintéséhez.
+
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+
+A zárolt hálózati biztonsági csoport nem törölhető, amíg a rendszer eltávolítja a zárolást. Távolítsa el a zárolást, használja:
+
+```azurepowershell-interactive
+Remove-AzureRmResourceLock -LockName LockVM `
+  -ResourceName myVM `
+  -ResourceType Microsoft.Compute/virtualMachines `
+  -ResourceGroupName myResourceGroup
+Remove-AzureRmResourceLock -LockName LockNSG `
+  -ResourceName myNetworkSecurityGroup `
+  -ResourceType Microsoft.Network/networkSecurityGroups `
+  -ResourceGroupName myResourceGroup
 ```
 
-## <a name="add-resources-to-a-resource-group"></a>Erőforrások hozzáadása egy erőforráscsoportot
-
-Erőforrás hozzáadása az erőforráscsoporthoz, használhatja a **New-AzureRmResource** létrehozásakor parancsmag vagy az erőforrás típusára vonatkozó parancsmag (például **New-AzureRmStorageAccount**). Előfordulhat, hogy ez egyszerűbbé teszi, hogy csak az erőforrástípus, mert azokat a tulajdonságokat, amelyeket az új erőforrás szükséges paramétereket tartalmazza a parancsmag használatával. Használandó **New-AzureRmResource**, ismernie kell az összes tulajdonság beállítása nélkül meg kell adni őket.
-
-Azonban parancsmagokon keresztül erőforrás hozzáadása okozhat jövőbeli zavart, mert az új erőforrás nem létezik a Resource Manager-sablon. A Microsoft azt javasolja, adjon meg az infrastruktúra az Azure-megoldás a Resource Manager-sablon. Sablonok lehetővé teszik megbízható és ismételten a megoldás üzembe helyezéséhez. Ez a cikk egy PowerShell-parancsmaggal hozzon létre egy tárfiókot, de később az erőforráscsoport a sablon létrehozása.
-
-A következő parancsmag létrehoz egy tárfiókot. A példában látható módon a neve helyett adja meg egy egyedi nevet a tárfiók. A névnek kell 3 és 24 karakter hosszúságúnak kell, és csak számokat és kisbetűket tartalmazhatnak. A példában látható módon a nevet használja, ha egy hibaüzenetet kapja, mert a név már használatban van.
+Ha már nincs rá szükség, a [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) paranccsal eltávolítható az erőforráscsoport, a virtuális gép és az összes kapcsolódó erőforrás.
 
 ```powershell
-New-AzureRmStorageAccount -ResourceGroupName TestRG1 -AccountName mystoragename -Type "Standard_LRS" -Location "South Central US"
+Remove-AzureRmResourceGroup -Name myResourceGroup
 ```
 
-Ha ezt az erőforrást beolvasni később van szüksége, használja a következő parancsmagot:
-
-```powershell
-Get-AzureRmResource -ResourceName mystoragename -ResourceGroupName TestRG1
-```
-
-## <a name="add-a-tag"></a>Címke hozzáadása
-
-Címkék lehetővé teszik az erőforrások más tulajdonságokkal szerint rendezheti. Például előfordulhat, hogy több erőforrás részleghez tartozó különböző erőforrás csoportokban. Ezeket az erőforrásokat megjelölése azonos kategóriába tartozó alkalmazhat egy részleg címke és értéket. Vagy jelölheti meg használja-e egy üzemi és tesztkörnyezetben környezetben egy erőforrást. Ebben a cikkben címkékkel csak egy erőforráshoz, de a környezetben valószínűleg érdemes címkék azokra az erőforrások.
-
-A következő parancsmagot a tárfiók két címkék vonatkozik:
-
-```powershell
-Set-AzureRmResource -Tag @{ Dept="IT"; Environment="Test" } -ResourceName mystoragename -ResourceGroupName TestRG1 -ResourceType Microsoft.Storage/storageAccounts
- ```
-
-Címkék egyetlen objektumként frissülnek. Egy címke hozzáadása egy erőforrást, amely már tartalmazza a címkék, először kérjen le a meglévő címkéket. Az új címke hozzáadása a meglévő címkék tartalmazó objektumot, és alkalmazza újra a címkék az erőforráshoz.
-
-```powershell
-$tags = (Get-AzureRmResource -ResourceName mystoragename -ResourceGroupName TestRG1).Tags
-$tags += @{Status="Approved"}
-Set-AzureRmResource -Tag $tags -ResourceName mystoragename -ResourceGroupName TestRG1 -ResourceType Microsoft.Storage/storageAccounts
-```
-
-## <a name="search-for-resources"></a>Erőforrások keresése
-
-Használja a **keresés-AzureRmResource** parancsmag használatával kérhet le az erőforrások más keresési feltételeket.
-
-* Ahhoz, hogy az erőforrás neve, adja meg a **ResourceNameContains** paraméter:
-
-  ```powershell
-  Find-AzureRmResource -ResourceNameContains mystoragename
-  ```
-
-* Ahhoz, hogy az összes erőforrást erőforráscsoportban, adja meg a **ResourceGroupNameContains** paraméter:
-
-  ```powershell
-  Find-AzureRmResource -ResourceGroupNameContains TestRG1
-  ```
-
-* Ahhoz, hogy a címke nevét és értékét az erőforrások, adja meg a **TagName** és **TagValue** paraméterek:
-
-  ```powershell
-  Find-AzureRmResource -TagName Dept -TagValue IT
-  ```
-
-* Az összes erőforrást az adott erőforrástípus, adjon meg a **ResourceType** paraméter:
-
-  ```powershell
-  Find-AzureRmResource -ResourceType Microsoft.Storage/storageAccounts
-  ```
-
-## <a name="get-resource-id"></a>Erőforrás-azonosító lekérése
-
-Sok parancsok egy erőforrás-azonosító paramétert igénybe vehet. Az azonosító egy erőforrás és a tároló egy változóban, amelyet:
-
-```powershell
-$webappID = (Get-AzureRmResource -ResourceGroupName exampleGroup -ResourceName exampleSite).ResourceId
-```
-
-## <a name="lock-a-resource"></a>Egy erőforrás zárolása
-
-Győződjön meg arról, hogy a kritikus fontosságú erőforrás nem véletlenül törölték vagy módosították van szüksége, alkalmazza a zárolási az erőforráshoz. Vagy megadhat egy **CanNotDelete** vagy **ReadOnly**.
-
-Hozzon létre, vagy törölje a felügyeleti zárolás, hozzáféréssel kell rendelkeznie `Microsoft.Authorization/*` vagy `Microsoft.Authorization/locks/*` műveletek. A beépített szerepkörök csak a tulajdonos és a felhasználói hozzáférés adminisztrátora kapnak ezeket a műveleteket.
-
-A zárolási segítségével a következő parancsmagot:
-
-```powershell
-New-AzureRmResourceLock -LockLevel CanNotDelete -LockName LockStorage -ResourceName mystoragename -ResourceType Microsoft.Storage/storageAccounts -ResourceGroupName TestRG1
-```
-
-Az előző példában a zárolt erőforrás nem törölhető, amíg a rendszer eltávolítja a zárolást. A zárolási eltávolításához használja:
-
-```powershell
-Remove-AzureRmResourceLock -LockName LockStorage -ResourceName mystoragename -ResourceType Microsoft.Storage/storageAccounts -ResourceGroupName TestRG1
-```
-
-A beállítás zárolások kapcsolatos további információkért lásd: [erőforrások az Azure Resource Manager zárolása](resource-group-lock-resources.md).
-
-## <a name="remove-resources-or-resource-group"></a>Távolítsa el az erőforrás vagy erőforráscsoport
-Egy erőforrás vagy egy erőforráscsoportot is eltávolíthat. Egy erőforráscsoport, akkor is távolítsa el erőforrás csoportba tartozó összes erőforrást.
-
-* Az erőforráscsoport egy erőforrás törléséhez használja a **Remove-AzureRmResource** parancsmag. Ez a parancsmag törli az erőforrást, de nem törli az erőforráscsoportot.
-
-  ```powershell
-  Remove-AzureRmResource -ResourceName mystoragename -ResourceType Microsoft.Storage/storageAccounts -ResourceGroupName TestRG1
-  ```
-
-* Az erőforráscsoport és az ahhoz tartozó összes erőforrást törölheti a **Remove-AzureRmResourceGroup** parancsmag.
-
-  ```powershell
-  Remove-AzureRmResourceGroup -Name TestRG1
-  ```
-
-Mindkét parancsmagokkal a rendszer felkéri győződjön meg arról, hogy szeretne-e az erőforrás vagy erőforráscsoport eltávolítani. Ha a művelet sikeresen törli az erőforrás vagy az erőforráscsoportot, visszatérési **igaz**.
-
-## <a name="run-resource-manager-scripts-with-azure-automation"></a>Az Azure Automation szolgáltatásban, erőforrás-kezelő parancsfájlok futtatása
-
-Ez a cikk bemutatja, hogyan az erőforrások az Azure PowerShell alapvető műveleteket. Speciális kezelési forgatókönyvek esetén általában kívánt hozzon létre egy parancsfájlt, és újra felhasználhatja a parancsfájlhoz, igény szerint vagy ütemezés szerint. [Azure Automation szolgáltatásbeli](../automation/automation-intro.md) biztosít, amelynek automatizálhatja a gyakran használt parancsfájlok, amelyek az Azure megoldások kezelése.
-
-A következő témakörökben láthatja, hogyan használható az Azure Automation, az erőforrás-kezelő és a PowerShell felügyeleti feladatok hatékony elvégzésére:
-
-- Egy runbook létrehozásával kapcsolatos további információkért lásd: [az első PowerShell runbook](../automation/automation-first-runbook-textual-powershell.md).
-- További információ a gyűjtemények, parancsfájlok,: [az Azure Automation forgatókönyv- és gyűjtemények](../automation/automation-runbook-gallery.md).
-- A runbookok, amelyek indítása és leállítása a virtuális gépek, lásd: [Azure Automation-forgatókönyv: címkék használatával JSON-formátumú az Azure virtuális gép indítási és leállítási ütemezés létrehozása](../automation/automation-scenario-start-stop-vm-wjson-tags.md).
-- A runbookok, amelyek indítása és leállítása a virtuális gépek munkaidőn kívüli, lásd: [indítása/leállítása virtuális gépek munkaidőn kívüli megoldás az automatizálás során](../automation/automation-solution-vm-management.md).
-
-## <a name="next-steps"></a>Következő lépések
-* Resource Manager-sablonok létrehozásával kapcsolatos további tudnivalókért lásd: [Azure Resource Manager sablonok készítése](resource-group-authoring-templates.md).
-* Sablonok telepítésével kapcsolatos további tudnivalókért lásd: [Azure Resource Manager-sablon az alkalmazás központi telepítését](resource-group-template-deploy.md).
+## <a name="next-steps"></a>További lépések
+* A virtuális gépek figyelésével kapcsolatos további tudnivalókért lásd: [figyelésére és frissítésére a Windows rendszerű virtuális gép az Azure PowerShell](../virtual-machines/windows/tutorial-monitoring.md).
+* További információ az Azure Security Center megvalósításához ajánlott biztonsági eljárások használatáról [virtuális gép biztonsági figyelje az Azure Security Center](../virtual-machines/windows/tutorial-azure-security.md).
 * Meglévő erőforrásokat áthelyezheti egy új erőforráscsoportot. Tekintse meg a [erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe](resource-group-move-resources.md).
 * Nagyvállalatoknak az [Azure enterprise scaffold - prescriptive subscription governance](resource-manager-subscription-governance.md) (Azure nagyvállalati struktúra - előíró előfizetés-irányítás) című cikk nyújt útmutatást az előfizetéseknek a Resource Managerrel való hatékony kezeléséről.
-

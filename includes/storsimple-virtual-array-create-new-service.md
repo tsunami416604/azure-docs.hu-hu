@@ -2,7 +2,7 @@
 
 1.  Jelentkezzen be az Azure Portalra a Microsoft-fiók hitelesítő adataival a következő címen: <https://portal.azure.com/>. Ha az eszközt kormányzati portál telepítésével, jelentkezzen be: <https://portal.azure.us/>
 
-2.  Az Azure portálon kattintson **+ új** &gt; **tárolási** &gt; **StorSimple virtuális adatsorozat**.
+2.  Az Azure portálon kattintson **+ hozzon létre egy erőforrást** &gt; **tárolási** &gt; **StorSimple virtuális adatsorozat**.
 
     ![Új szolgáltatás létrehozása](./media/storsimple-virtual-array-create-new-service/createnewservice2.png) 
 

@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 02/04/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 672462fad715758e50680fa5bade4b1f9d50e6e5
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: c2679c7cb75c438402f3ab64c3e14c964cb8a85d
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-portal"></a>Az Azure portál használatával virtuális gépek magánhálózati IP-címek konfigurálása
 
@@ -41,27 +41,27 @@ Ez a cikk a Resource Manager-alapú üzemi modellt ismerteti. Emellett [statikus
 
 [!INCLUDE [virtual-networks-static-ip-scenario-include](../../includes/virtual-networks-static-ip-scenario-include.md)]
 
-Az alábbi lépéseket a minta egy már létrehozott egyszerű környezetben várható. Ha azt szeretné, ebben a dokumentumban megjelenített futtatásához a lépéseket, először leírt tesztkörnyezet felépítéséhez [hozhat létre egy vnetet](virtual-networks-create-vnet-arm-pportal.md).
+Az alábbi minta lépések várhatóan a már létrehozott egy egyszerű környezetben. Ha azt szeretné, ebben a dokumentumban megjelenített futtatásához a lépéseket, először leírt tesztkörnyezet felépítéséhez [hozhat létre egy vnetet](virtual-networks-create-vnet-arm-pportal.md).
 
 ## <a name="how-to-create-a-vm-for-testing-static-private-ip-addresses"></a>Tesztelési statikus magánhálózati IP-címek egy virtuális gép létrehozása
-Nem be hozzá statikus magánhálózati IP-cím a Resource Manager telepítési módban a virtuális gépek létrehozásakor az Azure portál használatával. Először létre kell hoznia a virtuális gép, illeszti be a magánhálózati statikus IP-címe.
+Nem be hozzá statikus magánhálózati IP-cím a Resource Manager telepítési módban a virtuális gépek létrehozásakor az Azure portál használatával. Először hozza létre a virtuális Gépet, majd állítsa be a magánhálózati statikus IP-címe.
 
-Nevű virtuális gép létrehozása *DNS01* a a *előtér* egy vnet nevű alhálózat *TestVNet*, kövesse az alábbi lépéseket.
+Nevű virtuális gép létrehozása *DNS01* a a *előtér* egy vnet nevű alhálózat *TestVNet*, kövesse az alábbi lépéseket:
 
 1. Egy böngészőből keresse fel a http://portal.azure.com címet, majd jelentkezzen be az Azure-fiókjával, ha szükséges.
-2. Kattintson a **új** > **számítási** > **Windows Server 2012 R2 Datacenter**, figyelje meg, hogy a **telepítési modell kiválasztása** lista már bemutatja **erőforrás-kezelő**, és kattintson a **létrehozása**, az alábbi ábrán látható módon.
+2. Kattintson a **hozzon létre egy erőforrást** > **számítási** > **Windows Server 2012 R2 Datacenter**, figyelje meg, hogy a **jelölje ki a telepítést modell** lista már bemutatja **erőforrás-kezelő**, és kattintson a **létrehozása**, az alábbi ábrán látható módon.
    
     ![Virtuális gép létrehozása az Azure-portálon](./media/virtual-networks-static-ip-arm-pportal/figure01.png)
-3. Az a **alapjai** panelen adja meg a létrehozandó virtuális gép nevét (*DNS01* a mi esetünkben), a helyi rendszergazdai fiókot és jelszót, az alábbi ábrán látható módon.
+3. Az a **alapjai** panelen adja meg a virtuális gép létrehozása (*DNS01* forgatókönyvben), a helyi rendszergazdai fiókot és jelszót, az alábbi ábrán látható módon.
    
-    ![Alapvető beállítások panel](./media/virtual-networks-static-ip-arm-pportal/figure02.png)
+    ![Alapvető beállítások panelen](./media/virtual-networks-static-ip-arm-pportal/figure02.png)
 4. Győződjön meg arról, hogy a **hely** kiválasztott *USA középső RÉGIÓJA*, kattintson a **válasszon meglévő** alatt **erőforráscsoport**, kattintson a **erőforráscsoport** újra, majd kattintson a *TestRG*, és kattintson a **OK**.
    
-    ![Alapvető beállítások panel](./media/virtual-networks-static-ip-arm-pportal/figure03.png)
-5. Az a **méret kiválasztása** panelen válassza **A1 szabványos**, és kattintson a **válasszon**.
+    ![Alapvető beállítások panelen](./media/virtual-networks-static-ip-arm-pportal/figure03.png)
+5. Az a **méret kiválasztása** ablaktáblán válassza előbb **A1 szabványos**, és kattintson a **kiválasztása**.
    
     ![Válassza ki a méret panelen](./media/virtual-networks-static-ip-arm-pportal/figure04.png)    
-6. Az a **beállítások** panelen, győződjön meg arról, hogy az a következő tulajdonságok az alábbi értékek vannak beállítva, és kattintson a **OK**.
+6. Az a **beállítások** ablaktáblában győződjön meg a tulajdonságait a következő értékekkel van beállítva, és kattintson a **OK**.
    
     -**A tárfiók**: *vnetstorage*
    
@@ -69,37 +69,37 @@ Nevű virtuális gép létrehozása *DNS01* a a *előtér* egy vnet nevű alhál
    * **Alhálózati**: *előtér*
      
      ![Válassza ki a méret panelen](./media/virtual-networks-static-ip-arm-pportal/figure05.png)     
-7. Az a **összegzés** panelen kattintson a **OK**. Figyelje meg, az alábbi csempe az irányítópulton látható.
+7. Az a **összegzés** ablaktáblán kattintson a **OK**. Figyelje meg a következő csempe az irányítópulton látható.
    
     ![Virtuális gép létrehozása az Azure-portálon](./media/virtual-networks-static-ip-arm-pportal/figure06.png)
 
 ## <a name="how-to-retrieve-static-private-ip-address-information-for-a-vm"></a>Hogyan lehet lekérni a statikus magánhálózati IP-címadatok a virtuális gépek
 A statikus magánhálózati IP-címadatok a virtuális gépnek a fent leírt lépésekkel létrehozott megtekintéséhez hajtsa végre az alábbi lépéseket.
 
-1. Az Azure Azure portálon kattintson **összes TALLÓZÁSA** > **virtuális gépek** > **DNS01** > **összes beállítás** > **hálózati illesztőt** és kattintson a felsorolt csak hálózati adapterén.
+1. Az Azure-portálon kattintson **összes TALLÓZÁSA** > **virtuális gépek** > **DNS01** > **mindenbeállítás**  >  **Hálózati illesztőt** és kattintson a felsorolt csak hálózati adapterén.
    
     ![Virtuális gép csempe telepítése](./media/virtual-networks-static-ip-arm-pportal/figure07.png)
-2. Az a **hálózati illesztő** panelen kattintson a **összes beállítás** > **IP-címek** , és figyelje meg a **hozzárendelés** és **IP-cím** értékek.
+2. Az a **hálózati illesztő** ablaktáblán kattintson a **összes beállítás** > **IP-címek** , és figyelje meg a **hozzárendelés** és  **IP-cím** értékeket.
    
     ![Virtuális gép csempe telepítése](./media/virtual-networks-static-ip-arm-pportal/figure08.png)
 
 ## <a name="how-to-add-a-static-private-ip-address-to-an-existing-vm"></a>A statikus magánhálózati IP-cím hozzáadása egy meglévő virtuális Gépen
 A statikus magánhálózati IP-cím hozzáadása a virtuális gép létrehozása a fenti lépések használatával, kövesse az alábbi lépéseket:
 
-1. Az a **IP-címek** kattintson a panel látható a fenti **statikus** alatt **hozzárendelés**.
+1. Az a **IP-címek** a fent látható ablaktáblán kattintson a **statikus** alatt **hozzárendelés**.
 2. Típus *192.168.1.101* a **IP-cím**, és kattintson a **mentése**.
    
     ![Virtuális gép létrehozása az Azure-portálon](./media/virtual-networks-static-ip-arm-pportal/figure09.png)
 
 > [!NOTE]
-> Ha kattintás után **mentése** bizonyára észrevette, hogy a hozzárendelés még beállításai **dinamikus**, az azt jelenti, hogy a megadott IP-cím már használatban van. Próbálja meg egy másik IP-címet.
+> Ha kattintás után **mentése**, bizonyára észrevette, hogy a hozzárendelés még beállításai **dinamikus**, az azt jelenti, hogy a megadott IP-cím már használatban van. Próbálja meg egy másik IP-címet.
 > 
 > 
 
 ## <a name="how-to-remove-a-static-private-ip-address-from-a-vm"></a>A statikus magánhálózati IP-cím eltávolítása a virtuális gépek
 A statikus magánhálózati IP-cím eltávolítása a fentiekben létrehozott virtuális Gépet, végezze el a következő lépést:
 
-Az a **IP-címek** a fent látható panelen kattintson a **dinamikus** alatt **hozzárendelés**, és kattintson a **mentése**.
+Az a **IP-címek** a fent látható ablaktáblán kattintson a **dinamikus** alatt **hozzárendelés**, és kattintson a **mentése**.
 
 ## <a name="next-steps"></a>További lépések
 * További tudnivalók [foglalt nyilvános IP-cím](virtual-networks-reserved-public-ip.md) címek.

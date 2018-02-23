@@ -8,11 +8,11 @@ ms.service: event-grid
 ms.topic: article
 ms.date: 01/30/2018
 ms.author: babanisa
-ms.openlocfilehash: dda0e2efa72356f00b0372e4f6ce961719946b8d
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 1025fd10b00bc07872e23cb10da2682fa8cca394
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="event-grid-security-and-authentication"></a>Esemény rács biztonsági és hitelesítési 
 
@@ -59,6 +59,11 @@ Ahhoz, hogy a végpont igazolva echo vissza a Ellenőrzőkód validationResponse
   "validationResponse": "512d38b6-c7b8-40c8-89fe-f46f9e9622b6"
 }
 ```
+### <a name="event-delivery-security"></a>Esemény szállítási biztonság
+
+Egy esemény előfizetés létrehozásakor lekérdezési paraméterek hozzáadásával a webhook URL-cím biztonságossá teheti a webhook-végpontot. Állítsa be a következő lekérdezési paraméterek kell lennie, mint a titkos kulcs egy [hozzáférési jogkivonat](https://en.wikipedia.org/wiki/Access_token) használó a webhook is ismeri fel az esemény érkezik esemény rács érvényes engedélyekkel. Esemény rács minden esemény kézbesítése a következő webhook vegye fel a lekérdezési paramétereket.
+
+Ha az esemény-előfizetést szerkesztésével, a lekérdezési paraméterek nem fog jelenik meg vagy visszaadott, kivéve, ha a [---teljes-végpont-URL-címek](https://docs.microsoft.com/en-us/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az_eventgrid_event_subscription_show) paraméter használata az Azure-ban [CLI](https://docs.microsoft.com/en-us/cli/azure/overview?view=azure-cli-latest).
 
 Végezetül fontos ügyeljen arra, hogy csak Azure esemény rács támogatja a HTTPS-végpontnak webhook.
 
@@ -68,15 +73,15 @@ Egy esemény előfizetni, rendelkeznie kell a **Microsoft.EventGrid/EventSubscri
 
 ### <a name="system-topics-azure-service-publishers"></a>Rendszer témakörök (az Azure szolgáltatáshoz kiadók)
 
-A rendszer témakörök kell egy új Eseményelőfizetés a hatókörből az erőforrás-közzététel az esemény írási engedéllyel. Az erőforrás formátuma:`/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{resource-provider}/{resource-type}/{resource-name}`
+A rendszer témakörök kell egy új Eseményelőfizetés a hatókörből az erőforrás-közzététel az esemény írási engedéllyel. Az erőforrás formátuma: `/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{resource-provider}/{resource-type}/{resource-name}`
 
-Például egy eseménnyel a storage-fiók előfizetés neve **fióknév**, a Microsoft.EventGrid/EventSubscriptions/Write engedély szükséges:`/subscriptions/####/resourceGroups/testrg/providers/Microsoft.Storage/storageAccounts/myacct`
+Például egy eseménnyel a storage-fiók előfizetés neve **fióknév**, a Microsoft.EventGrid/EventSubscriptions/Write engedély szükséges: `/subscriptions/####/resourceGroups/testrg/providers/Microsoft.Storage/storageAccounts/myacct`
 
 ### <a name="custom-topics"></a>Egyéni kapcsolatos témakörök
 
-Egyéni témaköröket egy új Eseményelőfizetés a hatókörben, a következő esemény rács témakörben írási engedéllyel kell rendelkezni. Az erőforrás formátuma:`/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.EventGrid/topics/{topic-name}`
+Egyéni témaköröket egy új Eseményelőfizetés a hatókörben, a következő esemény rács témakörben írási engedéllyel kell rendelkezni. Az erőforrás formátuma: `/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.EventGrid/topics/{topic-name}`
 
-Például egy egyéni témakör előfizetni nevű **mytopic**, a Microsoft.EventGrid/EventSubscriptions/Write engedély szükséges:`/subscriptions/####/resourceGroups/testrg/providers/Microsoft.EventGrid/topics/mytopic`
+Például egy egyéni témakör előfizetni nevű **mytopic**, a Microsoft.EventGrid/EventSubscriptions/Write engedély szükséges: `/subscriptions/####/resourceGroups/testrg/providers/Microsoft.EventGrid/topics/mytopic`
 
 ## <a name="topic-publishing"></a>A témakör a közzététel
 
@@ -86,7 +91,7 @@ A hitelesítés érték szerepel a HTTP-fejléc. A SAS-használjon **AEG ügyet-
 
 ### <a name="key-authentication"></a>Hitelesítés
 
-Hitelesítés a hitelesítési legegyszerűbb formája, amely. A következő formátumot használja:`aeg-sas-key: <your key>`
+Hitelesítés a hitelesítési legegyszerűbb formája, amely. A következő formátumot használja: `aeg-sas-key: <your key>`
 
 Például adja meg egy kulcs:
 
@@ -98,7 +103,7 @@ aeg-sas-key: VXbGWce53249Mt8wuotr0GPmyJ/nDT4hgdEj9DpBeRr38arnnm5OFg==
 
 SAS-tokenje esemény rács közé tartozik, az erőforrás lejárati időt és aláírás. A SAS-jogkivonat formátuma: `r={resource}&e={expiration}&s={signature}`.
 
-Az erőforrás elérési útja a következő témakörben, amelyhez az események küldése. Például egy érvényes erőforrás elérési útja:`https://<yourtopic>.<region>.eventgrid.azure.net/eventGrid/api/events`
+Az erőforrás elérési útja a következő témakörben, amelyhez az események küldése. Például egy érvényes erőforrás elérési útja: `https://<yourtopic>.<region>.eventgrid.azure.net/eventGrid/api/events`
 
 Az aláírás generálása egy kulcsot.
 

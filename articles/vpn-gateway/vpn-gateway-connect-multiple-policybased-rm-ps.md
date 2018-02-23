@@ -1,6 +1,6 @@
 ---
 title: "Csatlakozás több helyszíni házirendalapú VPN-eszközök Azure VPN-átjárót: Azure Resource Manager: PowerShell |} Microsoft Docs"
-description: "Ez a cikk végigvezeti az Azure útvonalalapú VPN-átjáró konfigurálása több csoportházirend-alapú VPN-eszközök Azure Resource Manager és a PowerShell használatával."
+description: "Egy Azure útvonalalapú VPN-átjáró több csoportházirend-alapú VPN-eszközök Azure Resource Manager és a PowerShell használatával történő konfigurálásához."
 services: vpn-gateway
 documentationcenter: na
 author: yushwang
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/27/2017
+ms.date: 02/14/2018
 ms.author: yushwang
-ms.openlocfilehash: db4d8837fb5c5d15364422e957e4914966215674
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 90c855e768f403098e535391afb55e3c78044b0a
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="connect-azure-vpn-gateways-to-multiple-on-premises-policy-based-vpn-devices-using-powershell"></a>Csatlakozás több helyszíni házirendalapú VPN-eszközök PowerShell használata Azure VPN-átjárót
 
@@ -45,9 +45,9 @@ Jelenleg Azure támogatja-e a VPN-átjárók mindkét módnál: útvonalalapú V
 
 |                          | **PolicyBased VPN-átjáró** | **RouteBased VPN-átjáró**               |
 | ---                      | ---                         | ---                                      |
-| **Az Azure átjáró-Termékváltozat**    | Basic                       | Basic, Standard, HighPerformance, VpnGw1, VpnGw2, VpnGw3 |
+| **Az Azure átjáró-Termékváltozat**    | Alapszintű                       | Basic, Standard, HighPerformance, VpnGw1, VpnGw2, VpnGw3 |
 | **IKE-verzió**          | IKEv1                       | IKEv2                                    |
-| **Max. S2S-kapcsolatok** | **1**                       | Basic vagy Standard: 10<br> HighPerformance: 30 |
+| **Max. S2S-kapcsolatok** | **1**                       | Basic/Standard: 10<br> HighPerformance: 30 |
 |                          |                             |                                          |
 
 Az egyéni IPsec/IKE irányelvnek konfigurálhat Azure útválasztó-alapú VPN gatewayek előtag-alapú forgalom választók használata beállítást "**PolicyBasedTrafficSelectors**", a helyi csoportházirend-alapú VPN-eszközök való kapcsolódáshoz. E képesség lehetővé teszi egy Azure virtuális hálózatra csatlakozni, és több VPN-átjárót a helyszíni házirendalapú VPN/tűzfal eszközök, az egyetlen kapcsolathoz megadott korlátot eltávolítása az aktuális Azure házirendalapú VPN gatewayek.
@@ -189,7 +189,7 @@ Ha a sort adja vissza "**igaz**", majd csoportházirend-alapú forgalom választ
 ### <a name="3-update-the-policy-based-traffic-selectors-on-a-connection"></a>3. A csoportházirend-alapú forgalom választók a kapcsolat frissítése
 Miután beszerezte a kapcsolati erőforrást, engedélyezése, vagy letiltja a beállítást.
 
-#### <a name="disable-usepolicybasedtrafficselectors"></a>Tiltsa le a UsePolicyBasedTrafficSelectors
+#### <a name="disable-usepolicybasedtrafficselectors"></a>Disable UsePolicyBasedTrafficSelectors
 A következő példa a csoportházirend-alapú forgalom választók beállítás letiltása, de hagyja változatlanul IPsec/h.rend:
 
 ```powershell
@@ -200,7 +200,7 @@ $connection6  = Get-AzureRmVirtualNetworkGatewayConnection -Name $Connection16 -
 Set-AzureRmVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $connection6 -UsePolicyBasedTrafficSelectors $False
 ```
 
-#### <a name="enable-usepolicybasedtrafficselectors"></a>UsePolicyBasedTrafficSelectors engedélyezése
+#### <a name="enable-usepolicybasedtrafficselectors"></a>Enable UsePolicyBasedTrafficSelectors
 A következő példa engedélyezi a csoportházirend-alapú forgalom választók, de hagyja változatlanul az IPsec vagy h.rend:
 
 ```powershell
@@ -211,7 +211,7 @@ $connection6  = Get-AzureRmVirtualNetworkGatewayConnection -Name $Connection16 -
 Set-AzureRmVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $connection6 -UsePolicyBasedTrafficSelectors $True
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Miután a kapcsolat létrejött, hozzáadhat virtuális gépeket a virtuális hálózataihoz. A lépésekért lásd: [Virtuális gép létrehozása](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 Emellett nézze át az [konfigurálása IPsec/IKE házirend S2S VPN- és VNet – VNet kapcsolatokhoz](vpn-gateway-ipsecikepolicy-rm-powershell.md) egyéni IPsec/IKE-házirendekkel kapcsolatos további részletekért.

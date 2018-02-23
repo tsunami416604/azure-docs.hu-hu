@@ -4,7 +4,7 @@ description: "Ez a cikk azt ismerteti, hogyan egy SQL Server rendelkezésre áll
 services: virtual-machines
 documentationCenter: na
 authors: MikeRayMSFT
-manager: jhubbard
+manager: craigg
 editor: monicar
 tags: azure-service-management
 ms.assetid: 388c464e-a16e-4c9d-a0d5-bb7cf5974689
@@ -16,11 +16,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mikeray
-ms.openlocfilehash: 1ce90cf4bae66bfd6387a2698fd9b1ba7fc64595
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2a954ca10bdec3343dbd8796b50053a1c8c40ff4
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="configure-an-always-on-availability-group-on-azure-virtual-machines-in-different-regions"></a>Always On rendelkezésre állási csoport konfigurálása az Azure virtuális gépeken különböző régiókban
 
@@ -167,7 +167,7 @@ Kapcsolat tesztelése után helyezze vissza az elsődleges másodpéldány az el
 | ----- | ----- | ----- | ----- | -----
 | Elsődleges adatközpont | SQL-1 | Elsődleges | Szinkron | Automatikus
 | Elsődleges adatközpont | SQL-2 | Másodlagos | Szinkron | Automatikus
-| Távoli vagy másodlagos adatközpont | SQL-3 | Másodlagos | Aszinkron | Manuális
+| Távoli vagy másodlagos adatközpont | SQL-3 | Másodlagos | Asynchronous | Manuális
 
 
 ### <a name="more-information-about-planned-and-forced-manual-failover"></a>További információ a tervezett és a rendszer kényszerített kézi feladatátvétel
@@ -180,6 +180,6 @@ További információkért tekintse át a következők témaköröket:
 ## <a name="additional-links"></a>További hivatkozások
 
 * [Always On rendelkezésre állási csoportok](http://msdn.microsoft.com/library/hh510230.aspx)
-* [Az Azure virtuális gépek](http://docs.microsoft.com/azure/virtual-machines/windows/)
+* [Azure Virtual Machines](http://docs.microsoft.com/azure/virtual-machines/windows/)
 * [Azure Load Balancer Terheléselosztók](virtual-machines-windows-portal-sql-availability-group-tutorial.md#configure-internal-load-balancer)
 * [Az Azure rendelkezésre állási csoportok](../manage-availability.md)

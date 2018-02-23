@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2017
 ms.author: LADocs; padmavc
-ms.openlocfilehash: bfad01d8c14cdd972ebe8e4038f226ffe0da93b1
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 7a274ad33b7181d238203290cf63937df5f13bbc
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="exchange-x12-messages-for-enterprise-integration-with-logic-apps"></a>A logic apps vállalati integrációs Exchange X12 állapotüzenete
 
@@ -39,12 +39,12 @@ Miután [integrációs-fiók létrehozása](../logic-apps/logic-apps-enterprise-
 
 ## <a name="create-an-x12-agreement"></a>Hozzon létre egy X12 megállapodás
 
-1.  Jelentkezzen be az [Azure Portalra](http://portal.azure.com "Azure Portal") A bal oldali menüben válassza ki a **további szolgáltatások**. 
+1.  Jelentkezzen be az [Azure Portalra](http://portal.azure.com "Azure Portal") A bal oldali menüben válassza ki a **minden szolgáltatás**. 
 
     > [!TIP]
-    > Ha nem lát **további szolgáltatások**, lehetséges, hogy először bontsa ki a menüben. Jelölje be a becsukott menü felső részén **megjelenítése menü**.
+    > Ha nem lát **minden szolgáltatás**, lehetséges, hogy először bontsa ki a menüben. Jelölje be a becsukott menü felső részén **megjelenítése menü**.
 
-    ![A bal oldali menüben válassza a "Szolgáltatás"](./media/logic-apps-enterprise-integration-x12/account-1.png)
+    ![A bal oldali menüben válassza a "Minden szolgáltatások"](./media/logic-apps-enterprise-integration-x12/account-1.png)
 
 2.  A keresési mezőbe írja be a "integrációt" szűrőként. Az eredmények listájában válassza **integrációs fiókok**.  
 
@@ -71,12 +71,12 @@ Ha nem lát minden integrációs fiókok [hozzon létre egyet első](../logic-ap
     | --- | --- |
     | Name (Név) |A szerződés nevét |
     | A szerződés típusa | X12 kell lennie. |
-    | Fogadó Partner |Egy szerződést kell a gazdagép és a Vendég partner. A fogadó partner szervezet, amely beállítja a szerződés jelöli. |
-    | Gazdagép identitását |A fogadó partner azonosítója |
-    | Vendég Partner |Egy szerződést kell a gazdagép és a Vendég partner. A Vendég partnert a szervezet, amely a gazdagép partnerrel üzleti jelöli. |
-    | Vendég identitás |A Vendég partner azonosítója |
-    | Beállítások |Minden szerződés által fogadott üzenetek alkalmazni ezeket a tulajdonságokat. |
-    | Beállítások küldése |Ezeket a tulajdonságokat a szerződés által küldött összes üzenet vonatkozik. |  
+    | Gazdagéppartner |Egy szerződést kell a gazdagép és a Vendég partner. A fogadó partner szervezet, amely beállítja a szerződés jelöli. |
+    | Gazdagép-identitás |A fogadó partner azonosítója |
+    | Vendégpartner |Egy szerződést kell a gazdagép és a Vendég partner. A Vendég partnert a szervezet, amely a gazdagép partnerrel üzleti jelöli. |
+    | Vendégidentitás |A Vendég partner azonosítója |
+    | Fogadási beállítások |Minden szerződés által fogadott üzenetek alkalmazni ezeket a tulajdonságokat. |
+    | Küldési beállítások |Ezeket a tulajdonságokat a szerződés által küldött összes üzenet vonatkozik. |  
 
   > [!NOTE]
   > Szerződés, attól függ, a küldő minősítő és azonosítója, és a fogadó minősítő és a partnerek és a bejövő üzenet definiált azonosítója megfelelő X12 feloldását. Ha ezek az értékek módosítása esetén a partner, a szerződés túl kell frissíteni.
@@ -137,17 +137,17 @@ Válassza ki a sémát minden tranzakció típusa (ST1) és a küldő alkalmazá
 
 | Tulajdonság | Leírás |
 | --- | --- |
-| ISA11 kihasználtsága |Egy tranzakció készlet használandó elválasztó határozza meg: <p>Válassza ki **szabványos azonosító** kíván használni egy pontot (.) decimális jelöléssel, ahelyett, hogy a bejövő dokumentum a EDI decimális jelöléssel fogadni a feldolgozási sor. <p>Válassza ki **ismétlődési elválasztó** adhatja meg az elválasztó az egyszerű adatelem vagy ismétlődő adatszerkezet ismételt előfordulását. Például általában a beszúrási (^) szolgál a ismétlődési elválasztójelként. A HIPAA lehetséges csak a beszúrási tudja használni. |
+| ISA11 használata |Egy tranzakció készlet használandó elválasztó határozza meg: <p>Válassza ki **szabványos azonosító** kíván használni egy pontot (.) decimális jelöléssel, ahelyett, hogy a bejövő dokumentum a EDI decimális jelöléssel fogadni a feldolgozási sor. <p>Válassza ki **ismétlődési elválasztó** adhatja meg az elválasztó az egyszerű adatelem vagy ismétlődő adatszerkezet ismételt előfordulását. Például általában a beszúrási (^) szolgál a ismétlődési elválasztójelként. A HIPAA lehetséges csak a beszúrási tudja használni. |
 
-### <a name="control-numbers"></a>Vezérlő számok
+### <a name="control-numbers"></a>Ellenőrzőszámok
 
 ![Válassza ki a vezérlő számú ismétlődések kezelésének módját](./media/logic-apps-enterprise-integration-x12/x12-35.png) 
 
 | Tulajdonság | Leírás |
 | --- | --- |
 | Ellenőrző szám Interchange ismétlődések letiltása |Ismétlődő kereszteződéseket blokkolása. A fogadott interchange vezérlő számát ellenőrzi, az adatcsere ellenőrző szám (ISA13). Ha találat esetén elvégez, a fogadási folyamat nem dolgozza fel cseréje. Megadhatja, hogy hány nap adjon értéket az ellenőrzés végrehajtásához *keressen ismétlődő ISA13 (naponta)*. |
-| Csoport vezérlő számú ismétlődések letiltása |Blokk felcserélődések duplikált csoportokhoz vezérlő számokkal. |
-| Tranzakció set vezérlő számú ismétlődések letiltása |Blokk felcserélődések ismétlődő tranzakció set vezérlő számokkal. |
+| Csoport-ellenőrzőszám ismétlődésének letiltása |Blokk felcserélődések duplikált csoportokhoz vezérlő számokkal. |
+| Tranzakciókészlet-ellenőrzőszám ismétlődésének letiltása |Blokk felcserélődések ismétlődő tranzakció set vezérlő számokkal. |
 
 ### <a name="validations"></a>Ellenőrzések
 
@@ -158,11 +158,11 @@ Válassza ki a sémát minden tranzakció típusa (ST1) és a küldő alkalmazá
 | Tulajdonság | Leírás |
 | --- | --- |
 | Üzenettípus |Válassza ki a EDI-üzenet típusa. |
-| EDI érvényesítése |EDI-érvényesítést hajt végre a séma EDI tulajdonságok, hosszára, üres adatelemek és záró elválasztók által definiált adattípusok. |
-| Kiterjesztett érvényesítése |Ha az adattípus nem EDI, érvényesítési az elem követelménynek, és engedélyezett ismétlési, enumerálások és adatok elem hossza érvényesítési (min vagy max). |
-| Kezdő/záró nullából engedélyezése |Minden további, kezdő vagy záró nulla, és az szóköz karakter. Ne távolítsa el ezeket a karaktereket. |
-| Trim kezdő/záró nullából |Távolítsa el a kezdő vagy záró nulla és karaktereket. |
-| Záró elválasztó házirend |Záró elválasztók készítése. <p>Válassza ki **nem engedélyezett** záró határoló és elválasztók, a kapott interchange. Ha cseréje a záró határoló és elválasztókat, az adatcsere van deklarálva nem érvényes. <p>Válassza ki **nem kötelező** kereszteződéseket vagy záró határoló és elválasztók nélkül fogadásához. <p>Válassza ki **kötelező** amikor adatcsere rendelkeznie kell záró határoló és elválasztókat. |
+| EDI-ellenőrzés |EDI-érvényesítést hajt végre a séma EDI tulajdonságok, hosszára, üres adatelemek és záró elválasztók által definiált adattípusok. |
+| Bővített ellenőrzés |Ha az adattípus nem EDI, érvényesítési az elem követelménynek, és engedélyezett ismétlési, enumerálások és adatok elem hossza érvényesítési (min vagy max). |
+| Kezdő/záró nullák engedélyezése |Minden további, kezdő vagy záró nulla, és az szóköz karakter. Ne távolítsa el ezeket a karaktereket. |
+| Kezdő/záró nullák levágása |Távolítsa el a kezdő vagy záró nulla és karaktereket. |
+| Záróelválasztó-szabályzat |Záró elválasztók készítése. <p>Válassza ki **nem engedélyezett** záró határoló és elválasztók, a kapott interchange. Ha cseréje a záró határoló és elválasztókat, az adatcsere van deklarálva nem érvényes. <p>Válassza ki **nem kötelező** kereszteződéseket vagy záró határoló és elválasztók nélkül fogadásához. <p>Válassza ki **kötelező** amikor adatcsere rendelkeznie kell záró határoló és elválasztókat. |
 
 ### <a name="internal-settings"></a>Belső beállítások
 
@@ -171,11 +171,11 @@ Válassza ki a sémát minden tranzakció típusa (ST1) és a küldő alkalmazá
 | Tulajdonság | Leírás |
 | --- | --- |
 | Implicit decimális formátum "Nn" alap 10 numerikus értékké konvertálni |A 10-es számértéket "Nn" formátumban megadott EDI számot alakít át. |
-| Üres XML-címkék létrehozása, ha záró elválasztók engedélyezettek |Válassza ezt a jelölőnégyzetet, az adatcsere küldő záró elválasztók üres XML-címkék közé tartoznak hozzá. |
-| Vegyes, tranzakció készletek - Interchange felfüggeszteni tranzakció készletek hiba|Elemzi az egyes tranzakciókra, megadhatja a azokat egy külön XML-dokumentum cseréje a megfelelő boríték a tranzakció-készlethez. Ha az ellenőrzés sikertelen felfüggeszti csak a tranzakciók. |
-| Vegyes Interchange, tranzakció készletek - interchange felfüggeszteni hiba|Elemzi az egyes tranzakciókra, állítsa be egy külön XML-dokumentum cseréje a úgy, hogy a megfelelő boríték alkalmazza. Felfüggeszti a teljes adatcsere, amikor a csomópont egy vagy több tranzakció halmazok érvényesítése sikertelen. | 
+| Üres XML-címkék létrehozása, ha a záró elválasztók engedélyezve vannak |Válassza ezt a jelölőnégyzetet, az adatcsere küldő záró elválasztók üres XML-címkék közé tartoznak hozzá. |
+| Adatcsere felosztása tranzakciókészletekre – tranzakciókészletek felfüggesztése hiba esetén|Elemzi az egyes tranzakciókra, megadhatja a azokat egy külön XML-dokumentum cseréje a megfelelő boríték a tranzakció-készlethez. Ha az ellenőrzés sikertelen felfüggeszti csak a tranzakciók. |
+| Adatcsere felosztása tranzakciókészletekre – adatcsere felfüggesztése hiba esetén|Elemzi az egyes tranzakciókra, állítsa be egy külön XML-dokumentum cseréje a úgy, hogy a megfelelő boríték alkalmazza. Felfüggeszti a teljes adatcsere, amikor a csomópont egy vagy több tranzakció halmazok érvényesítése sikertelen. | 
 | Megőrizheti a adatcsere - tranzakció készletek felfüggeszteni hiba |Az adatcsere érintetlenül hagyja, létrehoz egy XML-dokumentum teljes kötegelt adatcserét. Csak a sikertelen érvényesítés, miközben továbbra is az összes többi tranzakció készletek feldolgozni tranzakció készletek felfüggesztése. |
-| Megőrizheti a adatcsere - interchange felfüggeszteni hiba |Az adatcsere érintetlenül hagyja, létrehoz egy XML-dokumentum teljes kötegelt adatcserét. Felfüggeszti a teljes adatcsere, amikor a csomópont egy vagy több tranzakció halmazok érvényesítése sikertelen. |
+| Adatcsere megőrzése – adatcsere felfüggesztése hiba esetén |Az adatcsere érintetlenül hagyja, létrehoz egy XML-dokumentum teljes kötegelt adatcserét. Felfüggeszti a teljes adatcsere, amikor a csomópont egy vagy több tranzakció halmazok érvényesítése sikertelen. |
 
 ## <a name="configure-how-your-agreement-sends-messages"></a>Hogyan a szerződés küld üzeneteket konfigurálása
 
@@ -209,7 +209,7 @@ Most már a szerződés készen áll a kimenő üzenetek, amelyek megfelelnek a 
 | --- | --- |
 | Várt TA1 |A csomópont küldő térjen vissza a műszaki visszaigazolás (TA1). A beállítással megadható, hogy a fogadó partner, aki az üzenetet küld a szerződésben Vendég partnertől nyugtázás kéri. A nyugtázások a megállapodás kap beállításai alapján a gazdagép partner által várt. |
 | Várt be |A csomópont küldő térjen vissza a működési visszaigazolás (be). Válassza ki, hogy a 997 vagy 999 nyugtázásokhoz, a séma verziók dolgozunk alapján. A nyugtázások a megállapodás kap beállításai alapján a gazdagép partner által várt. |
-| BE verziója |Válassza ki a FA verzióját |
+| FA verziója |Válassza ki a FA verzióját |
 
 ### <a name="schemas"></a>Sémák
 
@@ -230,9 +230,9 @@ Most már a szerződés készen áll a kimenő üzenetek, amelyek megfelelnek a 
 
 | Tulajdonság | Leírás |
 | --- | --- |
-| ISA11 kihasználtsága |Egy tranzakció készlet használandó elválasztó határozza meg: <p>Válassza ki **szabványos azonosító** kíván használni egy pontot (.) decimális jelöléssel, ahelyett, hogy a bejövő dokumentum a EDI decimális jelöléssel fogadni a feldolgozási sor. <p>Válassza ki **ismétlődési elválasztó** adhatja meg az elválasztó az egyszerű adatelem vagy ismétlődő adatszerkezet ismételt előfordulását. Például általában a beszúrási (^) szolgál a ismétlődési elválasztójelként. A HIPAA lehetséges csak a beszúrási tudja használni. |
+| ISA11 használata |Egy tranzakció készlet használandó elválasztó határozza meg: <p>Válassza ki **szabványos azonosító** kíván használni egy pontot (.) decimális jelöléssel, ahelyett, hogy a bejövő dokumentum a EDI decimális jelöléssel fogadni a feldolgozási sor. <p>Válassza ki **ismétlődési elválasztó** adhatja meg az elválasztó az egyszerű adatelem vagy ismétlődő adatszerkezet ismételt előfordulását. Például általában a beszúrási (^) szolgál a ismétlődési elválasztójelként. A HIPAA lehetséges csak a beszúrási tudja használni. |
 
-### <a name="control-numbers"></a>Vezérlő számok
+### <a name="control-numbers"></a>Ellenőrzőszámok
 
 ![Ellenőrző szám tulajdonságainak megadása](./media/logic-apps-enterprise-integration-x12/x12-8.png) 
 
@@ -254,7 +254,7 @@ Most már a szerződés készen áll a kimenő üzenetek, amelyek megfelelnek a 
 | Körzetszám |A tranzakció set vezérlő számok visszaigazolás használt tartomány kijelölt nem kötelező. Adja meg a középső két mező numerikus értéke, és egy alfanumerikus érték (ha szükséges) az előtag és utótag mezők. A középső mezők szükségesek, és az ellenőrző szám minimális és maximális értékeket tartalmaz |
 | Utótag |A tranzakció set vezérlő számok nyugtázás használt tartomány kijelölt nem kötelező. Adja meg a középső két mezők számértéket és egy alfanumerikus érték (ha szükséges) az előtag és utótag mezők. A középső mezők szükségesek, és az ellenőrző szám minimális és maximális értékeket tartalmaz |
 
-### <a name="character-sets-and-separators"></a>Karakter beállítása és elválasztókat
+### <a name="character-sets-and-separators"></a>Karakterkészletek és elválasztók
 
 Eltérő karakterkészlete, az egyes üzenet egy másik halmaz adhatja meg. Ha egy karakterkészletet adott üzenethez a séma nincs megadva, az alapértelmezett karakterkészlet használata.
 
@@ -265,10 +265,10 @@ Eltérő karakterkészlete, az egyes üzenet egy másik halmaz adhatja meg. Ha e
 | Ahhoz, hogy használható |A tulajdonságok, válassza ki a X12 karakterkészlet érvényesítésére. A beállítások a Basic, a kibővített és az UTF8. |
 | Séma |A legördülő listából válassza ki a sémát. Minden egyes sorára befejezése után a rendszer automatikusan hozzáadja az új sort. A kijelölt séma válassza ki az szerepel, amely szeretné használni, a következő elválasztó leírások alapján. |
 | Bevitel típusa |Válassza ki a bemeneti típusát a legördülő listából. |
-| Az összetevő elválasztó |Önálló összetett adatok elemek, írja be a következőt egy egyetlen karaktert. |
-| Adatok elem elválasztó |Külön egyszerű adatelemek összetett adatelemek belül, adjon meg egy egyetlen karaktert. |
+| Összetevő-elválasztó |Önálló összetett adatok elemek, írja be a következőt egy egyetlen karaktert. |
+| Adatelem-elválasztó |Külön egyszerű adatelemek összetett adatelemek belül, adjon meg egy egyetlen karaktert. |
 | Helyettesítő karakter |Adja meg a hasznos adatok minden elválasztó karaktere cserélje ki a kimenő X12 létrehozásakor használt helyettesítő karaktert üzenet. |
-| Szegmens lezáró |Egy EDI-szegmens jelezheti, írja be a következőt egy egyetlen karaktert. |
+| Szegmenslezáró |Egy EDI-szegmens jelezheti, írja be a következőt egy egyetlen karaktert. |
 | Utótag |Válassza ki a szegmens azonosítóját használt karakter. Ha egy utótagot ad meg, majd a szegmens lezáró adatok elem lehet üres. Ha a szegmens lezáró üres, majd ki kell jelölnie egy utótagot. |
 
 > [!TIP]
@@ -283,11 +283,11 @@ Eltérő karakterkészlete, az egyes üzenet egy másik halmaz adhatja meg. Ha e
 | Tulajdonság | Leírás |
 | --- | --- |
 | Üzenettípus |Válassza ki a EDI-üzenet típusa. |
-| EDI érvényesítése |EDI-érvényesítést hajt végre a séma EDI tulajdonságok, hosszára, üres adatelemek és záró elválasztók által definiált adattípusok. |
-| Kiterjesztett érvényesítése |Ha az adattípus nem EDI, érvényesítési az elem követelménynek, és engedélyezett ismétlési, enumerálások és adatok elem hossza érvényesítési (min vagy max). |
-| Kezdő/záró nullából engedélyezése |Minden további, kezdő vagy záró nulla, és az szóköz karakter. Ne távolítsa el ezeket a karaktereket. |
-| Trim kezdő/záró nullából |Távolítsa el a kezdő vagy záró nulla karakterből. |
-| Záró elválasztó házirend |Záró elválasztók készítése. <p>Válassza ki **nem engedélyezett** záró határoló és elküldött adatcsere elválasztó. Ha cseréje a záró határoló és elválasztókat, az adatcsere van deklarálva nem érvényes. <p>Válassza ki **nem kötelező** kereszteződéseket vagy záró határoló és elválasztók nélkül küldhet. <p>Válassza ki **kötelező** Ha elküldött cseréje a záró határoló és elválasztókat rendelkeznie kell. |
+| EDI-ellenőrzés |EDI-érvényesítést hajt végre a séma EDI tulajdonságok, hosszára, üres adatelemek és záró elválasztók által definiált adattípusok. |
+| Bővített ellenőrzés |Ha az adattípus nem EDI, érvényesítési az elem követelménynek, és engedélyezett ismétlési, enumerálások és adatok elem hossza érvényesítési (min vagy max). |
+| Kezdő/záró nullák engedélyezése |Minden további, kezdő vagy záró nulla, és az szóköz karakter. Ne távolítsa el ezeket a karaktereket. |
+| Kezdő/záró nullák levágása |Távolítsa el a kezdő vagy záró nulla karakterből. |
+| Záróelválasztó-szabályzat |Záró elválasztók készítése. <p>Válassza ki **nem engedélyezett** záró határoló és elküldött adatcsere elválasztó. Ha cseréje a záró határoló és elválasztókat, az adatcsere van deklarálva nem érvényes. <p>Válassza ki **nem kötelező** kereszteződéseket vagy záró határoló és elválasztók nélkül küldhet. <p>Válassza ki **kötelező** Ha elküldött cseréje a záró határoló és elválasztókat rendelkeznie kell. |
 
 ## <a name="find-your-created-agreement"></a>A létrehozott megállapodás keresése
 
@@ -302,6 +302,6 @@ Eltérő karakterkészlete, az egyes üzenet egy másik halmaz adhatja meg. Ha e
 ## <a name="view-the-swagger"></a>A swagger megtekintése
 Tekintse meg a [részletek swagger](/connectors/x12/). 
 
-## <a name="learn-more"></a>További információ
+## <a name="learn-more"></a>Részletek
 * [További tudnivalók a vállalati integrációs csomag](../logic-apps/logic-apps-enterprise-integration-overview.md "további információ a vállalati integrációs csomag")  
 

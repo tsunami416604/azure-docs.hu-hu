@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/23/2017
 ms.author: echuvyrov
-ms.openlocfilehash: c156776103a466af8923ba7249d96835ff339268
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: dada9c70eef2adb2704e276a5401509581e37538
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="install-and-configure-terraform-to-provision-vms-and-other-infrastructure-into-azure"></a>Telepítse és konfigurálja az Azure virtuális gépek és egyéb infrastruktúra kiépítéséhez Terraform
  
@@ -80,12 +80,13 @@ az vm list-sizes --location westus
 
 ## <a name="configure-terraform-environment-variables"></a>Környezeti változók Terraform konfigurálása
 
-A bérlő azonosítója, előfizetés-azonosító, ügyfél-Azonosítót és titkos a szolgáltatás egyszerű az ügyfél használni, Azure-erőforrások létrehozásakor Terraform konfigurálása. Állítsa be az alábbi környezeti változókat, amelyek automatikusan a [Azure Terraform modulok](https://registry.terraform.io/modules/Azure).
+A bérlő azonosítója, előfizetés-azonosító, ügyfél-Azonosítót és titkos a szolgáltatás egyszerű az ügyfél használni, Azure-erőforrások létrehozásakor Terraform konfigurálása. A környezet is beállítható, ha egy Azure felhőben más, mint az Azure nyilvános használata. Állítsa be az alábbi környezeti változókat, amelyek automatikusan a [Azure Terraform modulok](https://registry.terraform.io/modules/Azure).
 
 - ARM_SUBSCRIPTION_ID
 - ARM_CLIENT_ID
 - ARM_CLIENT_SECRET
 - ARM_TENANT_ID
+- ARM_ENVIRONMENT
 
 Ez a parancsfájlpélda rendszerhéj segítségével állítsa be ezeket a változókat:
 
@@ -96,6 +97,9 @@ export ARM_SUBSCRIPTION_ID=your_subscription_id
 export ARM_CLIENT_ID=your_appId
 export ARM_CLIENT_SECRET=your_password
 export ARM_TENANT_ID=your_tenant_id
+
+# Not needed for public, required for usgovernment, german, china
+export ARM_ENVIRONMENT=public
 ```
 
 ## <a name="run-a-sample-script"></a>Egy minta-parancsfájl futtatása
@@ -141,7 +145,7 @@ azurerm_resource_group.rg: Creating...
 azurerm_resource_group.rg: Creation complete after 1s
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Rendelkezik Terraform telepített és konfigurált Azure hitelesítő adataival, így elindíthatja az Azure-előfizetéséhez olyan infrastruktúra üzembe. A telepítés hozzon létre egy üres Azure erőforráscsoport majd tesztelni.
 

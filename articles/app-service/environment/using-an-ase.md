@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
-ms.openlocfilehash: 64746f7b1a09e35b35e794f5a11d69bef39a03a0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 64e1652ac4067a3f1639bf81cfcd0f79637ade9b
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="use-an-app-service-environment"></a>App Service-környezet használata #
 
@@ -48,7 +48,7 @@ Ha még nem rendelkezik egy ASE, utasításait követve létrehozhat [App Servic
 
 A webalkalmazás létrehozása a Service-környezetben:
 
-1. Válassza ki **új** > **Web + mobil** > **webalkalmazás**.
+1. Válassza ki **hozzon létre egy erőforrást** > **Web + mobil** > **webalkalmazás**.
 
 2. Adja meg a webalkalmazás nevét. Ha már ki az App Service-csomag Service-környezetben, a tartománynév, az alkalmazás a ASE tartomány nevét jeleníti meg.
 
@@ -103,21 +103,21 @@ Előtér-erőforrások a HTTP/HTTPS-végpont a ASE a rendszer. Az alapértelmeze
 Service-környezetben külső az alkalmazások létrehozásakor használt tartomány eltér a több-bérlős App Service. Ez magában foglalja a ASE nevét. Egy külső ASE létrehozásával kapcsolatos további információkért lásd: [App Service-környezet létrehozása][MakeExternalASE]. A tartománynév-külső környezetben a következőképpen néz *.&lt; asename környezet&gt;. p.azurewebsites.net*. Például, ha a ASE nevű _külső-ase_ és nevű alkalmazás működteti _contoso_ abban a ASE, lépjen a következő URL-címek:
 
 - contoso.external-ase.p.azurewebsites.net
-- contoso.SCM.external-ase.p.azurewebsites.net
+- contoso.scm.external-ase.p.azurewebsites.net
 
 Az URL-cím contoso.scm.external ase.p.azurewebsites.net szolgál a Kudu konzol eléréséhez, vagy az alkalmazás-közzététel webes telepítése. A Kudu konzolon információkért lásd: [Kudu konzol az Azure App Service-][Kudu]. A Kudu konzol lehetővé teszi egy webes felhasználói felület hibakeresés, fájlok feltöltése, szerkesztheti, és még sok más.
 
 -Példánynak környezetben határozhatja meg a tartomány a központi telepítéskor. Egy ILB ASE létrehozásával kapcsolatos további információkért lásd: [létrehozása és használata egy ILB ASE][MakeILBASE]. Ha a tartomány nevét adja meg _ilb-ase.info_, az alkalmazásokat, hogy ASE használja, hogy a tartomány létrehozása során. Az alkalmazás nevű _contoso_, az URL-címei:
 
 - contoso.ilb-ase.info
-- contoso.SCM.ilb-ase.info
+- contoso.scm.ilb-ase.info
 
 ## <a name="publishing"></a>Közzététel ##
 
 Csakúgy, mint a több bérlős App Service-környezetben is közzéteheti a:
 
 - A webes telepítése.
-- AZ FTP.
+- FTP.
 - Folyamatos integrációt.
 - Adatértékmezők áthúzása a Kudu konzolon.
 - Egy IDE, mint például a Visual Studio, az eclipse-ben vagy az IntelliJ IDEA.
@@ -126,9 +126,9 @@ Egy külső mértékéig e közzétételi beállítások viselkedése azonos. To
 
 A közzététel a fő különbség van egy ILB ASE tekintetében. Egy ILB mértékéig a közzétételi végpontok elérhetők minden csak a Példánynak. A Példánynak virtuális hálózatban ASE alhálózaton magánhálózati IP-címe van. Ha nincs a Példánynak a hálózati hozzáférést, olyan alkalmazások, hogy ASE nem tehető közzé. Leírtaknak megfelelően [létrehozása és használata egy ILB ASE][MakeILBASE], konfigurálnia kell DNS az alkalmazások a rendszerben. Az SCM végpontot, amely tartalmaz. Ha ezek még nincs megfelelően beállítva, nem tehető közzé. A IDEs is kell rendelkeznie a Példánynak a hálózati hozzáférést közvetlenül való közzétételhez.
 
-Internet alapú CI rendszereknek, például a Githubon és a Visual Studio Team Services, egy ILB mértékéig nem működnek, mert a közzétételi végpont nem érhető el az Internet. Ehelyett kell használnia, amely lekéréses modellt használ, például a Dropbox CI rendszer.
+Internet alapú CI rendszereknek, például a Githubon és a Visual Studio Team Services, egy ILB mértékéig nem működnek, mert a közzétételi végpont nem érhető el az Internet. Ehelyett egy lekérési modellt használó CI-rendszert kell használnia, ilyen például a Dropbox.
 
-A közzétételi-Példánynak környezetben alkalmazások végpontjainak használja a tartományban, amelyhez a Példánynak ASE hozták létre. Az alkalmazás közzétételi profil és az alkalmazás portálpaneljéhez láthatja (a **áttekintése** > **Essentials** és is **tulajdonságok**). 
+Az ILB ASE alkalmazásainak közzétételi végpontjai az ILB ASE létrehozásakor megadott tartományt használják. Az alkalmazás közzétételi profil és az alkalmazás portálpaneljéhez láthatja (a **áttekintése** > **Essentials** és is **tulajdonságok**). 
 
 ## <a name="pricing"></a>Díjszabás ##
 

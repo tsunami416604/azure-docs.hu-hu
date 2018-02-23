@@ -14,13 +14,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/01/2017
+ms.date: 02/20/2018
 ms.author: larryfr
-ms.openlocfilehash: edee4fbb37744a8ef93c6a0b7e60b0790d1af9c4
-ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
+ms.openlocfilehash: f642a1f8060f566ec95b23995d0f82191b0c5315
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="install-and-use-solr-on-hdinsight-hadoop-clusters"></a>Telepítheti és használhatja Solr HDInsight Hadoop-fürtök
 
@@ -45,9 +45,9 @@ ms.lasthandoff: 12/01/2017
 
 Ezt a parancsfájlt a HDInsight-fürt hajt végre a következő módosításokat:
 
-* 4.9 Solr történő telepítése`/usr/hdp/current/solr`
+* 4.9 Solr történő telepítése `/usr/hdp/current/solr`
 * Létrehoz egy felhasználói **solrusr**, amely a Solr szolgáltatás futtatására szolgál
-* Készletek **solruser** tulajdonosa`/usr/hdp/current/solr`
+* Készletek **solruser** tulajdonosa `/usr/hdp/current/solr`
 * Hozzáad egy [Upstart](http://upstart.ubuntu.com/) konfigurációjához, amely Solr automatikusan elindul.
 
 ## <a name="install"></a>A Parancsfájlműveletek segítségével Solr telepítése
@@ -61,7 +61,7 @@ Hozzon létre egy fürtöt, amely rendelkezik a telepített Solr, kövesse a lé
 1. Az a __fürt összefoglaló__ szakaszban, select__Advanced settings__, majd __parancsfájl-műveletek__. Az űrlap feltöltéséhez használja az alábbi információkat:
 
    * **NÉV**: Adja meg a parancsfájlművelet rövid nevét.
-   * **PARANCSFÁJL URI azonosítója**: https://hdiconfigactions.blob.core.windows.net/linuxsolrconfigactionv01/solr-installer-v01.sh
+   * **SCRIPT URI**: https://hdiconfigactions.blob.core.windows.net/linuxsolrconfigactionv01/solr-installer-v01.sh
    * **HEAD**: ezt a beállítást
    * **MUNKAVÉGZŐ**: ezt a beállítást
    * **ZOOKEEPER**: ezt a beállítást a Zookeeper csomóponton telepítése
@@ -116,7 +116,7 @@ Az alábbi lépések segítségével Példa adatok hozzáadása a Solr, és majd
     curl "http://localhost:8983/solr/collection1/select?q=*%3A*&wt=json&indent=true"
     ```
 
-    Ez a parancs keres **collection1** megfelelő dokumentumokhoz  **\*:\***  (kódolva \*% 3A\* a lekérdezési karakterláncban). A következő JSON-dokumentum a válasz példája:
+    Ez a parancs keres **collection1** megfelelő dokumentumokhoz ** \*:\* ** (kódolva \*% 3A\* a lekérdezési karakterláncban). A következő JSON-dokumentum a válasz példája:
 
             "response": {
                 "numFound": 2,
@@ -204,7 +204,7 @@ Az SSH-alagút létesítése, tegye a következőket a Solr irányítópult hasz
 
 4. Az alábbi bejegyzései **collection1**, jelölje be **lekérdezés**. Töltse fel adatokkal a lapon a következő értékeket használja:
 
-   * Az a **q** szöveget adja meg a  **\*:**\*. Ez a lekérdezés a indexelt dokumentumok Solr adja vissza. Ha szeretne keresni egy adott karakterláncot belül a dokumentumokhoz, karakterláncokat Itt adhatja meg.
+   * Az a **q** szöveget adja meg a ** \*:**\*. Ez a lekérdezés a indexelt dokumentumok Solr adja vissza. Ha szeretne keresni egy adott karakterláncot belül a dokumentumokhoz, karakterláncokat Itt adhatja meg.
    * Az a **wt** szöveg mezőben adja meg a kimeneti formátum. Alapértelmezett érték a **json**.
 
      Végül válassza ki a **lekérdezés végrehajtása** gombra a keresési pate alján.
@@ -321,7 +321,7 @@ Adatok biztonsági mentésének Solr az alapértelmezett tárhelyre, a fürt teg
 
 Solr biztonsági mentés és visszaállítás használatához további információkért lásd: [https://cwiki.apache.org/confluence/display/solr/Making+and+Restoring+Backups](https://cwiki.apache.org/confluence/display/solr/Making+and+Restoring+Backups).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Giraph telepíthető a HDInsight-fürtök](hdinsight-hadoop-giraph-install-linux.md). A HDInsight Hadoop-fürtök Giraph telepítése a fürt testreszabási használatával. Giraph lehetővé teszi a végrehajtását diagramfeldolgozás Hadoop használatával, és az Azure HDInsight használható.
 

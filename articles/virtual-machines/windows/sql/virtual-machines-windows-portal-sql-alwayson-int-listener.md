@@ -4,7 +4,7 @@ description: "Részletes útmutatást ad a figyelő egy Always On rendelkezésre
 services: virtual-machines
 documentationcenter: na
 author: MikeRayMSFT
-manager: jhubbard
+manager: craigg
 editor: monicar
 ms.assetid: d1f291e9-9af2-41ba-9d29-9541e3adcfcf
 ms.service: virtual-machines-sql
@@ -12,26 +12,26 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 05/01/2017
+ms.date: 02/16/2017
 ms.author: mikeray
-ms.openlocfilehash: 09fed7e785708d4afe64905de973becc188181d7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0399f9ef969098216e080140a67f81725b670115
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="configure-a-load-balancer-for-an-always-on-availability-group-in-azure"></a>A terheléselosztó egy Always On rendelkezésre állási csoport konfigurálása az Azure-ban
 Ez a cikk azt ismerteti, hogyan egy terheléselosztót egy SQL Server Always On rendelkezésre állási csoport létrehozása az Azure Resource Manager rendszert futtató Azure virtuális gépekben. Rendelkezésre állási csoport szükséges egy adott terheléselosztóhoz, ha az SQL Server-példányok áll az Azure virtuális gépeken. A terheléselosztó a rendelkezésre állási csoport figyelője az IP-cím tárolja. Rendelkezésre állási csoport több régióba is, ha minden egyes régió egy terhelés-kiegyenlítő van szüksége.
 
 Ez a feladat befejezéséhez szükség lehet a Resource Manager rendszert futtató Azure virtuális gépeken telepített SQL Server rendelkezésre állási csoport. Mindkét SQL Server virtuális gépek ugyanabban a rendelkezésre állási csoportba kell tartoznia. Használhatja a [Microsoft sablon](virtual-machines-windows-portal-sql-alwayson-availability-groups.md) automatikus létrehozásához a rendelkezésre állási csoportot az erőforrás-kezelőben. Ez a sablon automatikusan létrehoz egy belső terheléselosztót. 
 
-Ha kívánja, akkor [manuálisan konfigurálnia a rendelkezésre állási csoport](virtual-machines-windows-portal-sql-alwayson-availability-groups-manual.md).
+Ha kívánja, akkor [manuálisan konfigurálnia a rendelkezésre állási csoport](virtual-machines-windows-portal-sql-availability-group-tutorial.md).
 
 Ez a cikk megköveteli, hogy a rendelkezésre állási csoportok már be van állítva.  
 
 Kapcsolódó témakörök az alábbiak:
 
-* [Always On rendelkezésre állási csoportok konfigurálása az Azure virtuális gép (GUI)](virtual-machines-windows-portal-sql-alwayson-availability-groups-manual.md)   
+* [Always On rendelkezésre állási csoportok konfigurálása az Azure virtuális gép (GUI)](virtual-machines-windows-portal-sql-availability-group-tutorial.md)   
 * [Egy VNet – VNet-kapcsolat beállítása az Azure Resource Manager és a PowerShell használatával](../../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md)
 
 Érdekében ez a cikk keresztül, hozzon létre, és a terheléselosztó konfigurálása az Azure portálon. A folyamat befejezése után, akkor a fürt használja az IP-címet a terheléselosztóról a rendelkezésre állási csoport figyelőjének konfigurálása.
@@ -68,7 +68,7 @@ Először hozza létre a terheléselosztó hasonló adataival.
    | **Típus** |**Belső**: a legtöbb megvalósítások belső terheléselosztót, lehetővé teszi a rendelkezésre állási csoporthoz való csatlakozáshoz a virtuális hálózaton belül alkalmazások használja.  </br> **Külső**: lehetővé teszi olyan alkalmazások nyilvános internetkapcsolaton keresztül a rendelkezésre állási csoporthoz való csatlakozáshoz. |
    | **Virtuális hálózat** |Válassza ki a virtuális hálózat, amely az SQL Server intances szerepelnek. |
    | **Alhálózat** |Válassza ki az alhálózatot, amely az SQL Server-példányok szerepelnek. |
-   | **IP-cím hozzárendelése** |**Statikus** |
+   | IP-cím hozzárendelése |**Static** |
    | **Magánhálózati IP-cím** |Adja meg az alhálózat elérhető IP-címeit. Az IP-címet használja, a figyelő a fürt létrehozásakor. Egy PowerShell-parancsfájlt, a cikk későbbi részében használni ezt a címet a `$ILBIP` változó. |
    | **Előfizetés** |Ha több előfizetéssel rendelkezik, ez a mező jelenhet meg. Válassza ki az előfizetést, amelyet hozzá szeretne rendelni ehhez az erőforráshoz. Akkor általában a rendelkezésre állási csoporthoz tartozó összes erőforrás tárolóként ugyanazt az előfizetést. |
    | **Erőforráscsoport** |Válassza ki az erőforráscsoportot, amelyek az SQL Server-példányokat. |
@@ -113,7 +113,7 @@ A mintavétel határozza meg, hogyan Azure ellenőrzi, amelyek az SQL Server-pé
    | **Name (Név)** |A mintavétel képviselő szöveges nevét. Például **SQLAlwaysOnEndPointProbe**. |
    | **Protocol (Protokoll)** |**TCP** |
    | **Port** |A rendelkezésre álló portot is használhat. Például *59999*. |
-   | **Időköz** |*5* |
+   | **Intervallum** |*5* |
    | **Sérült küszöbérték** |*2* |
 
 4.  Kattintson az **OK** gombra. 
@@ -140,10 +140,10 @@ A terheléselosztási szabályok konfigurálása, hogy a terheléselosztó hogya
    | **Protocol (Protokoll)** |**TCP** |
    | **Port** |*1433* |
    | **Háttér-Port** |*1433*. Rendszer figyelmen kívül hagyja ezt az értéket, mert ez a szabály **fix IP-Címek (közvetlen kiszolgálói válasz)**. |
-   | **Hálózatfigyelő** |A mintavétel létrehozott nevét használni a terheléselosztóhoz. |
-   | **Munkamenet megőrzését** |**Egyik sem** |
-   | **Üresjárati időkorlátja (perc)** |*4* |
-   | **Lebegőpontos IP (közvetlen kiszolgálói válasz)** |**Engedélyezve** |
+   | **Probe** |A mintavétel létrehozott nevét használni a terheléselosztóhoz. |
+   | **Munkamenet megőrzését** |Egyik sem |
+   | Üresjárati időkorlátja (perc) |*4* |
+   | **Lebegőpontos IP (közvetlen kiszolgálói válasz)** |engedélyezve |
 
    > [!NOTE]
    > Lehetséges, hogy a megadott beállítások panel le kell görgetnie.
@@ -225,7 +225,7 @@ IP-cím hozzáadása a terheléselosztó és az Azure portál, tegye a következ
    |**Name (Név)** |A mintavétel azonosító nevet.
    |**Protocol (Protokoll)** |TCP
    |**Port** |Egy nem használt TCP-port, amelyen az összes virtuális gép rendelkezésre kell állnia. Semmilyen más célra nem használható. Két figyelői nem használhatja ugyanazt a mintavételi portot. 
-   |**Időköz** |A mintavételi kísérletek közötti időtartam. Használja az alapértelmezett (5).
+   |**Intervallum** |A mintavételi kísérletek közötti időtartam. Használja az alapértelmezett (5).
    |**Sérült küszöbérték** |Egymást követő küszöbértékeket, amelyek a virtuális gép nem kell száma nem megfelelő állapotúnak számít.
 
 8. Kattintson a **OK** a mintavétel mentése. 
@@ -244,7 +244,7 @@ IP-cím hozzáadása a terheléselosztó és az Azure portál, tegye a következ
    |**Háttérkészlet** |A virtuális gépek az SQL Server-példányokat tartalmazó készlet. 
    |**Állapotmintáihoz** |Válassza ki a létrehozott mintavétel.
    |**Munkamenet megőrzését** |None
-   |**Üresjárati időkorlátja (perc)** |Alapértelmezett (4)
+   |Üresjárati időkorlátja (perc) |Alapértelmezett (4)
    |**Lebegőpontos IP (közvetlen kiszolgálói válasz)** | Engedélyezve
 
 ### <a name="configure-the-availability-group-to-use-the-new-ip-address"></a>Az új IP-címet használja a rendelkezésre állási csoport konfigurálása
@@ -270,6 +270,34 @@ Miután hozzáadta az IP-címet a figyelőhöz, további rendelkezésre állási
 
 Miután konfigurálta a rendelkezésre állási csoportot az új IP-címet használja, a figyelő a kapcsolat beállítása. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="add-load-balancing-rule-for-distributed-availability-group"></a>Terheléselosztási szabály elosztott rendelkezésre állási csoport
+
+Ha egy elosztott rendelkezésre állási csoport rendelkezésre állási csoport tagja, a terheléselosztó további szabály van szüksége. Ez a szabály a portot használják az elosztott rendelkezésre állási csoport figyelőjének tárolja.
+
+>[!IMPORTANT]
+>Ez a lépés csak akkor érvényes, ha részt vesz a rendelkezésre állási csoport egy [elosztott rendelkezésre állási csoport](http://docs.microsoft.com/sql/database-engine/availability-groups/windows/configure-distributed-availability-groups). 
+
+1. Minden kiszolgálón, amely az elosztott rendelkezésre állási csoportban szerepel az elosztott rendelkezésre állási csoport figyelőjének TCP-portot a bejövő szabályt létrehozni. Sok példákban dokumentáció 5022 használja. 
+
+1. Az Azure portálon kattintson a terheléselosztóhoz, majd **terheléselosztási szabályok**, és kattintson a **+ Hozzáadás**. 
+
+1. Hozza létre a terheléselosztási szabályt a következő beállításokkal:
+
+   |Beállítás |Érték
+   |:-----|:----
+   |**Name (Név)** |A terheléselosztási szabály az elosztott rendelkezésre állási csoport azonosító nevet. 
+   |**Előtérbeli IP-cím** |Az azonos front-end IP-címet használják a rendelkezésre állási csoport.
+   |**Protocol (Protokoll)** |TCP
+   |**Port** |5022 - portot a [elosztott rendelkezésre állási csoport végpont-figyelő](http://docs.microsoft.com/sql/database-engine/availability-groups/windows/configure-distributed-availability-groups).</br> Minden elérhető port lehet.  
+   |**Háttér-port** | 5022 - azonos értéket, használjon **Port**.
+   |**Háttérkészlet** |A virtuális gépek az SQL Server-példányokat tartalmazó készlet. 
+   |**Állapotmintáihoz** |Válassza ki a létrehozott mintavétel.
+   |**Munkamenet megőrzését** |Nincs
+   |Üresjárati időkorlátja (perc) |Alapértelmezett (4)
+   |**Lebegőpontos IP (közvetlen kiszolgálói válasz)** | Engedélyezve
+
+Ismételje meg ezeket a lépéseket a terheléselosztó a más rendelkezésre állási csoportokat, amelyek az elosztott rendelkezésre állási csoportok.
+
+## <a name="next-steps"></a>További lépések
 
 - [Különböző régiókban Azure virtuális gépeken futó SQL Server Always On rendelkezésre állási csoport konfigurálása](virtual-machines-windows-portal-sql-availability-group-dr.md)

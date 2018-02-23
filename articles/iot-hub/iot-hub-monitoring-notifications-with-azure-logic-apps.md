@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/25/2017
 ms.author: xshi
-ms.openlocfilehash: 7a611912ae55eb22103539dbba9f1a06aaa543b7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0caa3397723f9cd0476e85d52a8d30ae283b6e47
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="iot-remote-monitoring-and-notifications-with-azure-logic-apps-connecting-your-iot-hub-and-mailbox"></a>Az IoT távoli figyelés és az értesítések az Azure Logic Apps csatlakoztatása az IoT-központ és postaláda
 
@@ -50,7 +50,7 @@ Megismerheti az IoT hub és a postaláda hőmérséklet figyelési és értesít
 
 ### <a name="create-a-service-bus-namespace"></a>Service bus-névtér létrehozása
 
-1. Az a [Azure-portálon](https://portal.azure.com/), kattintson a **új** > **vállalati integrációs** > **Service Bus**.
+1. Az a [Azure-portálon](https://portal.azure.com/), kattintson a **hozzon létre egy erőforrást** > **vállalati integrációs** > **Service Bus**.
 1. Adja meg a következő információkat:
 
    **Név**: a service bus nevét.
@@ -111,7 +111,7 @@ Megismerheti az IoT hub és a postaláda hőmérséklet figyelési és értesít
 
 ### <a name="create-a-logic-app"></a>Logikai alkalmazás létrehozása
 
-1. Az a [Azure-portálon](https://portal.azure.com/), kattintson a **új** > **vállalati integrációs** > **logikai alkalmazás**.
+1. Az a [Azure-portálon](https://portal.azure.com/), kattintson a **hozzon létre egy erőforrást** > **vállalati integrációs** > **logikai alkalmazás**.
 1. Adja meg a következő információkat:
 
    **Név**: a logikai alkalmazás nevét.
@@ -170,7 +170,7 @@ A logikai alkalmazás megfelelően működik történő mentésekor.
    > [!NOTE]
    > Az e-mail-szolgáltató kell gondoskodjon róla, hogy Ön az e-mailt küld a feladónak identitásának ellenőrzéséhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Sikeresen létrehozta a logikai alkalmazás, amely összeköti az IoT hub és a postaláda hőmérséklet figyelési és értesítések.
 

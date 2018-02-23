@@ -4,7 +4,7 @@ description: "Ismerteti az automatikus biztonsági mentés szolgáltatás az SQL
 services: virtual-machines-windows
 documentationcenter: na
 author: rothja
-manager: jhubbard
+manager: craigg
 editor: 
 tags: azure-resource-manager
 ms.assetid: ebd23868-821c-475b-b867-06d4a2e310c7
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 04/05/2017
+ms.date: 02/15/2018
 ms.author: jroth
-ms.openlocfilehash: e7e14b0243f82c672392d5ab4bb6aca01156465b
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: ecae49e70a0fdd30be8a0872d02abcf4a4c228bd
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="automated-backup-v2-for-sql-server-2016-azure-virtual-machines-resource-manager"></a>Automatikus biztonsági mentési v2 az SQL Server 2016 az Azure virtuális gépek (erőforrás-kezelő)
 
@@ -71,22 +71,22 @@ A következő táblázat ismerteti a beállítások automatikus biztonsági ment
 | **Automatikus biztonsági mentés** | Engedélyezi/letiltja (letiltva) | Engedélyezi vagy letiltja az automatikus biztonsági mentés az SQL Server 2016 Standard vagy Enterprise rendszert futtató Azure virtuális gép esetében. |
 | **Megőrzési időtartam** | 1-30 nap (30 nap) | A biztonsági mentések megőrzési napok száma. |
 | **Tárfiók** | Azure Storage-fiók | Azure-tárfiók a blob Storage tárolóban végzett tárolása automatikus biztonsági mentés fájlok használatára. Egy tároló összes biztonsági mentési fájlok tárolására szolgáló ezen a helyen jön létre. A biztonságimásolat-fájl elnevezési tartalmazza a dátum, idő és adatbázis-GUID. |
-| **Titkosítás** |Engedélyezi/letiltja (letiltva) | Engedélyezi vagy letiltja a titkosítást. Ha engedélyezve van, a biztonsági másolat visszaállítása a tanúsítványok találhatók-e a megadott tárfiók ugyanazon **automaticbackup** az azonos elnevezési konvenció tároló. Ha a jelszó is módosul, egy új tanúsítványt hoz létre, hogy a jelszó, de a régi tanúsítvány marad a korábbi biztonsági másolatok. |
-| **Jelszó** |Jelszó szöveg | A titkosítási kulcsok jelszava. Erre csak akkor van szükség, ha engedélyezve van-e a titkosítás. Titkosított biztonsági másolat visszaállítása a helyes jelszót és a kapcsolódó kerül a biztonsági mentés idején használt tanúsítvány kell lennie. |
+| **Titkosítás** |Engedélyezi/letiltja (letiltva) | Engedélyezi vagy letiltja a titkosítást. Ha titkosítás engedélyezve van, a biztonsági másolat visszaállítása a tanúsítványok találhatók a megadott tárfiók. Használja a azonos **automaticbackup** azonos elnevezési-tárolóban. Ha a jelszó is módosul, egy új tanúsítványt hoz létre, hogy a jelszó, de a régi tanúsítvány marad a korábbi biztonsági másolatok. |
+| **Jelszó** |Jelszó szöveg | A titkosítási kulcsok jelszava. Ez a jelszó csak nem kötelező, ha engedélyezve van-e a titkosítás. Titkosított biztonsági másolat visszaállítása a helyes jelszót és a kapcsolódó kerül a biztonsági mentés idején használt tanúsítvány kell lennie. |
 
 ### <a name="advanced-settings"></a>Speciális beállítások
 
 | Beállítás | Tartomány (alapértelmezett) | Leírás |
 | --- | --- | --- |
-| **Rendszer-adatbázis biztonsági mentése** | Engedélyezi/letiltja (letiltva) | Ha engedélyezve van, ez a funkció is készít biztonsági másolatot a rendszer-adatbázisokat: Master, MSDB és modell. Az msdb adatbázisban és modell adatbázisok esetén ellenőrizze, hogy azok teljes körű helyreállítási módban Ha azt szeretné, hogy a Naplók biztonsági másolatainak kell venni. Napló-biztonságimásolatokat a rendszer soha nem főkiszolgáló hajtja végre. És a TempDB nem készült biztonsági másolat készül. |
-| **Biztonsági mentés ütemezése** | Manuális vagy automatikus (automatikus) | Alapértelmezés szerint a biztonsági mentés ütemezése lesz automatikusan alapján határozza meg a napló növekedési. Manuális biztonsági mentés ütemezése a felhasználó adja meg a biztonsági mentés ideje ablakot. Ebben az esetben biztonsági másolatok csak történik a megadott gyakorisággal, a megadott időszakban egy adott nap. |
-| **Teljes biztonsági mentés gyakorisága** | Napi vagy heti | Teljes biztonsági mentések gyakoriságát. Mindkét esetben a teljes biztonsági mentés a következő ütemezett időszak alatt megkezdődik. Heti kiválasztásakor a biztonsági mentések sikerült span több napon belül végre az összes adatbázis sikeresen biztonsági másolatából. |
+| **Rendszer-adatbázis biztonsági mentése** | Engedélyezi/letiltja (letiltva) | Ha engedélyezve van, ez a funkció is adatbázisok biztonsági mentését a rendszer: Master, MSDB és modell. Az msdb adatbázisban és modell adatbázisok esetén ellenőrizze, hogy azok teljes körű helyreállítási módban Ha azt szeretné, hogy a Naplók biztonsági másolatainak kell venni. Napló-biztonságimásolatokat a rendszer soha nem főkiszolgáló hajtja végre. És a TempDB nem készült biztonsági másolat készül. |
+| **Biztonsági mentés ütemezése** | Manuális vagy automatikus (automatikus) | Alapértelmezés szerint a biztonsági mentés ütemezése automatikusan határozza meg a napló növekedési alapján. Manuális biztonsági mentés ütemezése a felhasználó adja meg a biztonsági mentés ideje ablakot. Ebben az esetben a biztonsági másolatok csak kerül sor a megadott gyakorisággal, a megadott időszakban egy adott nap. |
+| **Teljes biztonsági mentés gyakorisága** | Napi vagy heti | Teljes biztonsági mentések gyakoriságát. Mindkét esetben teljes biztonsági mentés megkezdése a következő ütemezett időpontban időszakban. Heti kiválasztásakor a biztonsági mentések sikerült span több napon belül végre az összes adatbázis sikeresen biztonsági másolatából. |
 | **Teljes biztonsági mentés kezdési ideje** | 00:00 – 23:00 (01:00) | Kezdési időpont egy adott nap során, ami teljes biztonsági mentés akkor kerül sor. |
 | **Teljes biztonsági mentési időablak** | 1 – 23 óra (1 óra) | A megadott nap során, ami teljes biztonsági mentés akkor kerül sor a időszak időtartama. |
 | **Napló biztonsági mentési gyakoriság** | 5 – 60 perc (60 perc) | A napló biztonsági mentések gyakoriságát. |
 
 ## <a name="understanding-full-backup-frequency"></a>Teljes biztonsági mentés gyakoriságát ismertetése
-Fontos, napi és heti teljes biztonsági mentések közötti különbségek megértése. Ebből a törekvésből végigvezetjük két példaforgatókönyvek keresztül.
+Fontos, napi és heti teljes biztonsági mentések közötti különbségek megértése. Vegye figyelembe az alábbi két példák.
 
 ### <a name="scenario-1-weekly-backups"></a>1. forgatókönyv: Heti biztonsági mentései
 Egy nagyon nagy adatbázisok számát tartalmazó SQL Server virtuális gép van.
@@ -98,13 +98,13 @@ Hétfőn, engedélyezze az automatikus biztonsági mentés 2 a következő beál
 - Teljes biztonsági mentés kezdési ideje: **01:00**
 - Teljes biztonsági mentési időablak: **1 óra**
 
-Ez azt jelenti, hogy a következő elérhető biztonsági mentési időszakban kedd 1 óráig 1 órakor. Automatikus biztonsági mentés idő lejárta után megkezdődik egy adatbázis biztonsági másolatának egyszerre. Ebben a forgatókönyvben az adatbázisok kellőképpen hosszúak legyenek, hogy az első néhány adatbázisok teljes biztonsági mentés befejeződik. Azonban egy óra múlva összes az adatbázisok biztonsági mentése volt.
+Ez azt jelenti, hogy a következő elérhető biztonsági mentési időszakban kedd 1 óráig 1 órakor. Automatikus biztonsági mentés idő lejárta után megkezdődik egy adatbázis biztonsági másolatának egyszerre. Ebben a forgatókönyvben az adatbázisok kellőképpen hosszúak legyenek, hogy a teljes biztonsági mentést az első néhány adatbázisok fejeződött be. Azonban egy óra múlva összes az adatbázisok biztonsági mentése volt.
 
-Ez akkor fordul elő, amikor automatikus biztonsági mentés megkezdődik adatbázisainak biztonsági mentése a fennmaradó a következő napon, szerda 13: 00 1 óra a következő. Ha nem minden adatbázis biztonsági mentése volt, hogy időben, azt megpróbál egy időben újra a következő napon. Továbbiakban ez fog folytatódni mindaddig, amíg az összes adatbázis sikeresen nincs biztonsági másolata.
+Ha ez történik, az automatikus biztonsági mentés kezdődik adatbázisainak biztonsági mentése a fennmaradó a következő napon, szerda 13: 00 egy órán keresztül:. Ha nem minden adatbázis biztonsági mentése volt, hogy időben, megkísérli újra a következő napon egy időben. Ez továbbra is fennáll, addig, amíg az összes adatbázis sikeresen nincs biztonsági másolata.
 
-Ha ismét eléri kedd, automatikus biztonsági mentés megkezdődik a adatbázisainak biztonsági mentése az összes még egyszer.
+Miután ismét eléri kedd, automatikus biztonsági mentés kezdődik, adatbázisainak biztonsági mentése összes újra.
 
-Ebből a forgatókönyvből megtudhatja, hogy az automatikus biztonsági mentés csak a megadott időszak belül fog működni, és az egyes adatbázisok készül biztonsági másolat hetente egyszer. Ez is mutatja, hogy a biztonsági másolatok számára több napon abban az esetben, ahol nincs lehetőség egy nap az összes biztonsági mentés végrehajtásához.
+Ebből a forgatókönyvből megtudhatja, hogy az automatikus biztonsági mentés csak akkor működik, a megadott időszak belül, és minden-adatbázis biztonsági mentésének hetente egyszer. Ez is mutatja, hogy a biztonsági másolatok számára több napon abban az esetben, ahol nincs lehetőség egy nap az összes biztonsági mentés végrehajtásához.
 
 ### <a name="scenario-2-daily-backups"></a>2. forgatókönyv: Napi biztonsági mentései
 Egy nagyon nagy adatbázisok számát tartalmazó SQL Server virtuális gép van.
@@ -118,7 +118,7 @@ Hétfőn, engedélyezze az automatikus biztonsági mentés 2 a következő beál
 
 Ez azt jelenti, hogy a következő elérhető biztonsági mentési időszakban hétfő 10 du. hat órán át. Automatikus biztonsági mentés idő lejárta után megkezdődik egy adatbázis biztonsági másolatának egyszerre.
 
-Ezt követően 10 hat órán át keddjén összes adatbázis teljes biztonsági mentés újra elindul.
+Hat órán át 10 keddjén összes adatbázis teljes biztonsági mentés indítsa el ismét.
 
 > [!IMPORTANT]
 > Napi biztonsági mentés ütemezése, ajánlott úgy ütemezni a széles időkerete annak érdekében, hogy minden adatbázisok biztonsági másolat készíthető az időben. Ez különösen fontos abban az esetben, melyekben nagy mennyiségű adatok biztonsági mentéséhez.
@@ -182,7 +182,7 @@ Set-AzureRmVMSqlServerExtension -VMName $vmname `
     -Version "1.2" -Location $region 
 ```
 
-### <a id="verifysettings"></a>Aktuális beállításainak ellenőrzése
+### <a id="verifysettings"></a> Aktuális beállításainak ellenőrzése
 Ha engedélyezte az automatikus biztonsági mentés kiépítése során, a PowerShell használatával ellenőrizze az aktuális konfigurációját. Futtassa a **Get-AzureRmVMSqlServerExtension** parancsot, és vizsgálja meg a **AutoBackupSettings** tulajdonság:
 
 ```powershell

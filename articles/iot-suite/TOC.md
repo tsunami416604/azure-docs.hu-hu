@@ -17,7 +17,6 @@
 #### [Engedélyek az azureiotsuite.com webhelyen](iot-suite-v1-permissions.md)
 #### [A távoli figyelési megoldás bemutatója](iot-suite-v1-remote-monitoring-sample-walkthrough.md)
 #### [A Raspberry Pi csatlakoztatása](iot-suite-v1-raspberry-pi-kit-get-started.md)
-#### [Az MXChip IoT DevKit csatlakoztatása](../iot-hub/iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring.md)
 ##### C használata
 ###### [Szimulált adatok](iot-suite-v1-raspberry-pi-kit-c-get-started-simulator.md)
 ###### [Valódi érzékelők használata](iot-suite-v1-raspberry-pi-kit-c-get-started-basic.md)
@@ -26,6 +25,7 @@
 ###### [Szimulált adatok](iot-suite-v1-raspberry-pi-kit-node-get-started-simulator.md)
 ###### [Valódi érzékelők használata](iot-suite-v1-raspberry-pi-kit-node-get-started-basic.md)
 ###### [Vezérlőprogram-frissítés megvalósítása](iot-suite-v1-raspberry-pi-kit-node-get-started-advanced.md)
+#### [Az MXChip IoT DevKit csatlakoztatása](../iot-hub/iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring.md)
 
 ### Útmutatók
 #### Szimulált eszköz csatlakoztatása
@@ -99,5 +99,7 @@
 # További források
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
 ## [Gyakori kérdések](iot-suite-faq.md)
+## [Gyakori kérdések a távoli monitorozásról](iot-suite-faq-rm-v2.md)
 ## [Csatlakoztatott gyár – GYIK](iot-suite-faq-cf.md)
+## [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-iot-suite)
 ## [IoT Suite képzési terv](https://azure.microsoft.com/documentation/learning-paths/iot-suite/)

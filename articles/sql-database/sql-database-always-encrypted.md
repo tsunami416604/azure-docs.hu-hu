@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/02/2017
 ms.author: sstein
-ms.openlocfilehash: 47154202d0a8f7704561676fa645b5ccdb5b8c01
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 8e86648195811a666a197b6ee06ad610a1c8d568
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="always-encrypted-protect-sensitive-data-in-sql-database-and-store-your-encryption-keys-in-the-windows-certificate-store"></a>Mindig titkosítja: Az SQL-adatbázis bizalmas adatok védelmét, és a titkosítási kulcsok tárolása a Windows tanúsítványtároló
 
@@ -48,7 +48,7 @@ Ebben az oktatóanyagban lesz szüksége:
 
 ## <a name="create-a-blank-sql-database"></a>Üres SQL-adatbázis létrehozása
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
-2. Kattintson a **új** > **adatok + tárolás** > **SQL-adatbázis**.
+2. Kattintson a **hozzon létre egy erőforrást** > **adatok + tárolás** > **SQL-adatbázis**.
 3. Hozzon létre egy **üres** nevű adatbázis **klinikán** egy új vagy meglévő kiszolgálóra. Adatbázis létrehozása az Azure portálon részletes utasításokért lásd: [az első Azure SQL-adatbázis](sql-database-get-started-portal.md).
    
     ![Hozzon létre egy üres adatbázist](./media/sql-database-always-encrypted/create-database.png)
@@ -60,7 +60,7 @@ Az oktatóanyag későbbi részében szüksége lesz a kapcsolati karakterlánco
    
     ![Másolja a kapcsolati karakterláncot](./media/sql-database-always-encrypted/connection-strings.png)
 
-## <a name="connect-to-the-database-with-ssms"></a>Kapcsolódni az adatbázishoz ssms alkalmazásával
+## <a name="connect-to-the-database-with-ssms"></a>Kapcsolódás az adatbázishoz SSMS segítségével
 Nyissa meg a szolgáltatáshoz az SSMS, és csatlakozzon a kiszolgálóhoz, az egészségügyi ellátó intézmény adatbázissal.
 
 1. Nyissa meg a szolgáltatáshoz az SSMS. (Kattintson **Connect** > **adatbázismotor** megnyitásához a **kapcsolódás a kiszolgálóhoz** ablakot, ha még nincs nyitva).
@@ -121,10 +121,10 @@ Ellenőrizze, hogy **Windows tanúsítványtároló** van kiválasztva, és katt
 ### <a name="validation"></a>Ellenőrzés
 Most titkosítani az oszlopokat, vagy mentse később futtatni egy PowerShell-parancsfájlt. A jelen oktatóanyag esetében válassza ki a **Befejezés most már továbbléphet** kattintson **következő**.
 
-### <a name="summary"></a>Összefoglalás
+### <a name="summary"></a>Összegzés
 Ellenőrizze, hogy a beállítások helyességét, és kattintson a **Befejezés** mindig titkosítja az a telepítés befejezéséhez.
 
-![Összefoglalás](./media/sql-database-always-encrypted/summary.png)
+![Összegzés](./media/sql-database-always-encrypted/summary.png)
 
 ### <a name="verify-the-wizards-actions"></a>Ellenőrizze a varázsló műveletek
 A varázsló befejezése után az adatbázis be van állítva mindig titkosítja. A varázsló a következő műveletek végre:
@@ -503,7 +503,7 @@ Az egyszerű szöveges adatok eléréséhez használja az SSMS, adja hozzá a **
 > 
 > 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Miután létrehozott egy adatbázist, amely mindig titkosítja használ, érdemes lehet tegye a következőket:
 
 * A minta futtatásához egy másik számítógépen. A titkosítási kulcsoknak access azt nem rendelkezik, ezért nem lesz a titkosítatlan szöveges adataihoz való hozzáférés, és nem futtathatók sikeresen.
@@ -514,7 +514,7 @@ Miután létrehozott egy adatbázist, amely mindig titkosítja használ, érdeme
 ## <a name="related-information"></a>Kapcsolódó információk
 * [Mindig titkosítja (ügyféloldali fejlesztés)](https://msdn.microsoft.com/library/mt147923.aspx)
 * [Átlátható adattitkosítás](https://msdn.microsoft.com/library/bb934049.aspx)
-* [SQL Server-titkosítás](https://msdn.microsoft.com/library/bb510663.aspx)
+* [SQL Server Encryption](https://msdn.microsoft.com/library/bb510663.aspx)
 * [Mindig titkosított varázsló](https://msdn.microsoft.com/library/mt459280.aspx)
 * [Mindig titkosított Blog](http://blogs.msdn.com/b/sqlsecurity/archive/tags/always-encrypted/)
 

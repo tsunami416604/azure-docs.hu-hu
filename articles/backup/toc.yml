@@ -79,6 +79,14 @@
               href: backup-mabs-system-state-and-bmr.md
         - name: Adatok helyreállítása az Azure Backup Serverről
           href: backup-azure-alternate-dpm-server.md
+    - name: Azure-fájlmegosztások
+      items:
+        - name: Azure-fájlmegosztások biztonsági mentése
+          href: backup-azure-files.md
+        - name: Azure-fájlmegosztások biztonsági mentése – GYIK
+          href: backup-azure-files-faq.md
+        - name: Az Azure-fájlmegosztások biztonsági mentésének hibaelhárítása
+          href: troubleshoot-azure-files.md
     - name: Azure-beli virtuális gépek
       items:
         - name: A virtuális gép előkészítése

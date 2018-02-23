@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 1/19/2017
 ms.author: tamram
-ms.openlocfilehash: 327816874fb2f2d43192e02410bd31c168e574f7
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 66406ed327f496dce7e77bb9ff650e0eec44bbdd
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="what-to-do-if-an-azure-storage-outage-occurs"></a>Mi a teendő az Azure Storage leállása esetén?
 A Microsoft dolgozunk merevlemez annak biztosítását, hogy a szolgáltatások mindig elérhető. Egyes esetekben kényszeríti a vezérlő hatás túl velünk, melyek következtében a nem tervezett szolgáltatáskimaradások egy vagy több régióban. Segítséget az ilyen ritka események kezelésére, az Azure Storage szolgáltatás a következő magas szintű útmutatást nyújtunk.
@@ -27,9 +27,9 @@ A Microsoft dolgozunk merevlemez annak biztosítását, hogy a szolgáltatások 
 Minden ügyfél számára kritikus fontosságú, hogy előkészítse a saját vészhelyreállítási tervét. Általában egy tároló leállás helyreállítás részéről az erőfeszítés ahhoz, hogy az alkalmazások működőképes állapotban újraaktiválása műveleti személyzet és automatizált eljárások egyaránt magában foglalja. Tekintse meg az alábbi saját vész-helyreállítási terv létrehozása az Azure dokumentációja:
 
 * [Rendelkezésre állási ellenőrzőlista](https://docs.microsoft.com/azure/architecture/checklist/availability)
-* [Rugalmas alkalmazások tervezése az Azure számára](/azure/architecture/resiliency)
+* [Rugalmas alkalmazások tervezése az Azure számára](https://docs.microsoft.com/azure/architecture/resiliency/)
 * [Az Azure Site Recovery szolgáltatásban](https://azure.microsoft.com/services/site-recovery/)
-* [Azure Storage replication (Azure Storage replikáció)](storage-redundancy)
+* [Azure Storage replication (Azure Storage replikáció)](https://docs.microsoft.com/azure/storage/common/storage-redundancy)
 * [Az Azure biztonsági mentési szolgáltatás](https://azure.microsoft.com/services/backup/)
 
 ## <a name="how-to-detect"></a>Hogyan észlelése

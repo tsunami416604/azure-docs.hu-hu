@@ -13,13 +13,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/29/2018
+ms.date: 02/15/2018
 ms.author: danoble
-ms.openlocfilehash: 40d7b8a52f67d116ab764b9716c917d5c7865467
-ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
+ms.openlocfilehash: 2512ba4ea89bd3477c7901cda29ab3682d834195
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="use-the-azure-cosmos-db-emulator-for-local-development-and-testing"></a>Az Azure Cosmos DB Emulator használja a helyi fejlesztéshez és teszteléshez
 
@@ -74,7 +74,7 @@ Az Azure Cosmos DB Emulator egy helyi fejlesztői munkaállomáson fut emulált 
 * Az Azure Cosmos DB Emulator nem szimulálása különböző [Azure Cosmos DB konzisztenciaszintek](consistency-levels.md).
 * Az Azure Cosmos DB Emulator nem szimulálása [több területi replikációs](distribute-data-globally.md).
 * Az Azure Cosmos DB Emulator nem támogatja a szolgáltatás kvóta felülbírálások elérhető az Azure Cosmos DB szolgáltatásban (a dokumentum méretkorlátait, nagyobb particionált gyűjtemény tároló).
-* Kérjük, mert az Azure Cosmos DB Emulator példányának esetleg nem naprakészek legyenek a legutóbbi változtatásokat az Azure Cosmos DB szolgáltatással, [Azure Cosmos DB kapacitás planner](https://www.documentdb.com/capacityplanner) pontosan a termelési átviteli sebesség (RUs) igényeit becsléséhez a az alkalmazás.
+* Kérjük, mert az Azure Cosmos DB Emulator a példány nem lehet naprakész az Azure Cosmos DB szolgáltatással a legutóbbi változtatásokat, [Azure Cosmos DB kapacitás planner](https://www.documentdb.com/capacityplanner) pontosan becsléséhez éles átviteli sebesség (RUs) igényeit az alkalmazás.
 
 ## <a name="system-requirements"></a>Rendszerkövetelmények
 Az Azure Cosmos DB Emulator a következő hardver- és követelményekkel rendelkezik:
@@ -179,7 +179,7 @@ Beállítások listájának megtekintéséhez írja be a `CosmosDB.Emulator.exe 
 <tr>
   <td><strong>A beállítás</strong></td>
   <td><strong>Leírás</strong></td>
-  <td><strong>A parancs</strong></td>
+  <td><strong>a parancs</strong></td>
   <td><strong>Argumentumok</strong></td>
 </tr>
 <tr>
@@ -194,6 +194,11 @@ Beállítások listájának megtekintéséhez írja be a `CosmosDB.Emulator.exe 
   <td>CosmosDB.Emulator.exe /?</td>
   <td></td>
 </tr>
+<tr>
+  <td>GetStatus</td>
+  <td>Az Azure Cosmos DB Emulator állapotát olvassa be. Az állapot jelzi a kilépési kód: 1 indítása, 2 = fut, 3 = = leállt. Egy negatív kilépési kód azt jelzi, hogy hiba történt. Egyéb kimenet jön létre.</td>
+  <td>CosmosDB.Emulator.exe /GetStatus</td>
+  <td></td>
 <tr>
   <td>Leállítás</td>
   <td>Az Azure Cosmos DB Emulator leáll.</td>
@@ -312,11 +317,45 @@ Gyűjtemény létrehozása után az aktuális partíciók száma túl lett lépv
 
 A rendelkezésre álló gyűjtemények száma az Azure Cosmos DB Emulator módosításához tegye a következőket:
 
-1. Törli az összes helyi Azure Cosmos DB emulátor adatokat kattintson a jobb gombbal a **Azure Cosmos DB emulátor** ikonra a tálcán, majd kattintson az **adatok alaphelyzetbe állítása...** .
+1. Törli az összes helyi Azure Cosmos DB emulátor adatokat kattintson a jobb gombbal a **Azure Cosmos DB emulátor** ikonra a tálcán, majd kattintson az **adatok alaphelyzetbe állítása... **.
 2. Ez a mappa C:\Users\user_name\AppData\Local\CosmosDBEmulator összes emulátor adatok törlése.
 3. Minden nyitott példányokat kilépéshez kattintson a jobb gombbal a **Azure Cosmos DB emulátor** ikonra a tálcán, majd kattintson az **kilépési**. Az összes példányhoz való kilépéshez egy percet is igénybe vehet.
 4. Telepítse a legújabb verzióját a [Azure Cosmos DB emulátor](https://aka.ms/cosmosdb-emulator).
 5. Indítsa el az emulátor PartitionCount jelzővel úgy, hogy egy érték < = 250. Például: `C:\Program Files\Azure CosmosDB Emulator>CosmosDB.Emulator.exe /PartitionCount=100`.
+
+## <a name="controlling-the-emulator"></a>Az emulátor vezérlése
+
+Az emulátor tartalmaz egy PowerShell-modul indítása, leállítása, eltávolítása és a szolgáltatás állapotának beolvasása. A használatára:
+
+```powershell
+Import-Module "$env:ProgramFiles\Azure Cosmos DB Emulator\PSModules\Microsoft.Azure.CosmosDB.Emulator"
+```
+
+vagy a `PSModules` könyvtárába a `PSModulesPath` és importálja a ehhez hasonló:
+
+```powershell
+$env:PSModulesPath += "$env:ProgramFiles\Azure Cosmos DB Emulator\PSModules"
+Import-Module Microsoft.Azure.CosmosDB.Emulator
+```
+
+Íme, szabályozásának powershellből emulátor parancsok összefoglalása:
+
+### `Get-CosmosDbEmulatorStatus`
+
+Ezek ServiceControllerStatus érték egyikét adja vissza: ServiceControllerStatus.StartPending, ServiceControllerStatus.Running vagy ServiceControllerStatus.Stopped.
+
+### `Start-CosmosDbEmulator [-NoWait]`
+
+Elindul az emulátor. Alapértelmezés szerint a parancs megvárja, amíg az emulátor készen áll a kérelmek fogadására. A - NoWait beállítást használja, ha a parancsmagot, amint azt elindul az emulátor vissza.
+
+### `Stop-CosmosDbEmulator [-NoWait]`
+
+Az emulátor leáll. Alapértelmezés szerint ez a parancs megvárja, amíg az emulátor teljesen leáll. A - NoWait beállítást használja, ha a parancsmag segítségével adja vissza, amint az emulátor kezdődik, le kell állítania.
+
+### `Uninstall-CosmosDbEmulator [-RemoveData]`
+
+Eltávolítja az emulátor, és opcionálisan eltávolítja a $env teljes tartalmát: LOCALAPPDATA\CosmosDbEmulator.
+A parancsmag biztosítja, hogy az emulátor le van állítva, akkor az eltávolítás előtt.
 
 ## <a name="running-on-docker"></a>A Docker fut
 
@@ -386,7 +425,7 @@ A következő tippek segítségével megoldhatja a problémákat tapasztal, az A
 
 - Ha az Azure Cosmos DB emulátor összeomlik, memóriaképek összegyűjtése c:\Users\user_name\AppData\Local\CrashDumps mappából, tömörítéssel, és csatolja azokat egy e-mailek [ askcosmosdb@microsoft.com ](mailto:askcosmosdb@microsoft.com).
 
-- Ha összeomlik CosmosDB.StartupEntryPoint.exe, futtassa a következő parancsot egy rendszergazdai parancssorból:`lodctr /R` 
+- Ha összeomlik CosmosDB.StartupEntryPoint.exe, futtassa a következő parancsot egy rendszergazdai parancssorból: `lodctr /R` 
 
 - Ha egy hálózati probléma, [nyomkövetési fájlok összegyűjtése](#trace-files), tömörítéssel, és csatolja azokat egy e-mailek [ askcosmosdb@microsoft.com ](mailto:askcosmosdb@microsoft.com).
 
@@ -416,7 +455,29 @@ Hibakeresési nyomkövetési adatokat gyűjteni a következő parancsokat egy re
 
 A verziószám ellenőrizheti a jobb gombbal a tálcán helyi emulátor ikonjára kattintva, majd kattintson a menüpont kapcsolatban.
 
-### <a name="120-released-on-january-26-2018"></a>1.20 2018 január 26 kiadása
+### <a name="1201084-released-on-february-14-2018"></a>1.20.108.4 2018. február 14-én kiadott
+
+Létrejön egy új szolgáltatás, és ebben a kiadásban két hibajavításokat tartalmaz. Köszönjük, hogy a felhasználók számára segített található, és hárítsa el ezeket a problémákat.
+
+#### <a name="bug-fixes"></a>Hibajavítások
+
+1. Az emulátor most működik-e az 1 vagy 2 mag (vagy virtuális processzorok) rendelkező számítógépek
+
+   Cosmos DB különböző szolgáltatások elvégzendő feladatok foglal le. A lefoglalt feladatok száma az állomás magok száma legyen. Az alapértelmezett több működik jól éles környezetekben, ahol az magok száma nagy. Azonban, 1 vagy 2 processzorral gépeken nincsenek feladatok számára kiosztott hajtsa végre ezeket a szolgáltatásokat, ez több alkalmazásakor.
+
+   Ez a konfigurációs felülbírálás ad hozzá az emulátor azt javítását. Most érvénybe lépni a 1 többszöröse. Hajtsa végre a különböző szolgáltatások rendelt feladatok száma már megegyezik az állomás magok száma.
+
+   Ha nincs más, ebben a kiadásban azt adta volna az a probléma megoldására. Találtunk, sok fejlesztési és tesztelési célú környezetekben az emulátor üzemeltető 1 vagy 2 mag rendelkezik-e.
+
+2. Az emulátor már nem szükséges a Microsoft Visual C++ 2015 redistributable telepíteni kell.
+
+   Észleltünk, hogy friss telepíti a Windows (asztali és kiszolgáló kiadás) nem tartalmaznak a terjeszthető változatát tartalmazó csomagot. Ezért azt most csomagot a redistributable bináris emulátorral.
+
+#### <a name="features"></a>Szolgáltatások
+
+Az ügyfelek az említett rendelkezik már megtartásról hány: célszerű, ha az Emulátorban volt hozzá parancsfájlokkal vezérelhető. Ezért, ebben a kiadásban a következőkkel egészült ki néhány parancsfájl képességét. Az emulátor most már tartalmaz egy PowerShell-modul indítása, leállítása, állapotának beolvasása és eltávolítása maga: `Microsoft.Azure.CosmosDB.Emulator`. 
+
+### <a name="120911-released-on-january-26-2018"></a>1.20.91.1 2018 január 26 kiadása
 
 * A MongoDB-összesítési feldolgozási folyamat alapértelmezés szerint engedélyezett.
 

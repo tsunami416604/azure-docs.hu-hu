@@ -2,17 +2,17 @@
 title: "Az Azure SQL adatok szinkronban Naplóelemzési OMS figyelése |} Microsoft Docs"
 description: "Útmutató: Azure SQL adatszinkronizálás figyelje az OMS szolgáltatáshoz"
 services: sql-database
-ms.date: 11/7/2017
+ms.date: 11/07/2017
 ms.topic: article
 ms.service: sql-database
 author: douglaslMS
 ms.author: douglasl
 manager: craigg
-ms.openlocfilehash: ace0eb671556dc980836464a365731d6100eab25
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: 8683b3aec569f210529c1188cbbf514f7956b340
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="monitor-sql-data-sync-preview-with-oms-log-analytics"></a>A figyelő SQL adatszinkronizálás (előzetes verzió) az OMS szolgáltatáshoz 
 
@@ -188,7 +188,7 @@ Töltse le a következő helyekről cikkben leírt mintakódok:
 
 -   [Adatok szinkronizálási napló OMS megtekintése](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/sql-data-sync/DataSyncLogOmsView.omsview)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 SQL adatszinkronizálás kapcsolatos további információkért lásd:
 
 -   [Szinkronizálja az adatokat több felhőalapú és helyszíni adatbázisokat az Azure SQL adatszinkronizálás](sql-database-sync-data.md)

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 6caff3237e9694a00fc0847d5612b7a6e08d4b69
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: f7d51352aa8411e36f4224804c90c2554d4ef9e6
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="visualize-azure-network-watcher-nsg-flow-logs-using-open-source-tools"></a>Azure hálózati figyelő NSG folyamata naplók nyílt forráskódú eszközökkel megjelenítése
 
@@ -46,7 +46,7 @@ A rugalmas készlet NSG folyamata naplók összekötésével létrehozhatjuk Kib
 1. A rugalmas készlet 5.0-s verziójáról és a fent Java 8 igényel. Futtassa a parancsot `java -version` a verziójának. Ha nem kell telepíteni, a részletek a dokumentációban találhatók java [Oracle-webhely](http://docs.oracle.com/javase/8/docs/technotes/guides/install/install_overview.html)
 1. Töltse le a megfelelő bináris csomagot a rendszer:
 
-    ```
+    ```bash
     curl -L -O https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.2.0.deb
     sudo dpkg -i elasticsearch-5.2.0.deb
     sudo /etc/init.d/elasticsearch start
@@ -56,13 +56,13 @@ A rugalmas készlet NSG folyamata naplók összekötésével létrehozhatjuk Kib
 
 1. Győződjön meg arról, hogy Elasticsearch fut-e a parancsot:
 
-    ```
+    ```bash
     curl http://127.0.0.1:9200
     ```
 
     Ez hasonló választ kell megjelennie:
 
-    ```
+    ```json
     {
     "name" : "Angela Del Toro",
     "cluster_name" : "elasticsearch",
@@ -83,13 +83,13 @@ Rugalmas keresési telepítése további útmutatásra van szüksége, tekintse 
 
 1. A következő parancsokat Logstash telepítése:
 
-    ```
+    ```bash
     curl -L -O https://artifacts.elastic.co/downloads/logstash/logstash-5.2.0.deb
     sudo dpkg -i logstash-5.2.0.deb
     ```
 1. Ezután azt kell Logstash eléréséhez, és a folyamat naplók elemzése. Hozzon létre egy logstash.conf fájl használatával:
 
-    ```
+    ```bash
     sudo touch /etc/logstash/conf.d/logstash.conf
     ```
 
@@ -162,13 +162,13 @@ További telepítésével kapcsolatos utasításokat Logstash, tekintse meg a [d
 
 A Logstash beépülő modul lehetővé teszi a kijelölt tárfiókkal közvetlenül elérje a folyamat naplók. A beépülő modul telepítéséhez az alapértelmezett Logstash telepítési könyvtárában (Ez esetben /usr/share/logstash/bin) futtassa a parancsot:
 
-```
+```bash
 logstash-plugin install logstash-input-azureblob
 ```
 
 Logstash elindításához futtassa a parancsot:
 
-```
+```bash
 sudo /etc/init.d/logstash start
 ```
 
@@ -178,19 +178,19 @@ A beépülő modul kapcsolatos további információkért tekintse meg a dokumen
 
 1. A következő parancsokat Kibana telepítéséhez:
 
-  ```
+  ```bash
   curl -L -O https://artifacts.elastic.co/downloads/kibana/kibana-5.2.0-linux-x86_64.tar.gz
   tar xzvf kibana-5.2.0-linux-x86_64.tar.gz
   ```
 
 1. Kibana használja parancsok futtatásához:
 
-  ```
+  ```bash
   cd kibana-5.2.0-linux-x86_64/
   ./bin/kibana
   ```
 
-1. Lépjen a Kibana webes felület megtekintéséhez`http://localhost:5601`
+1. Lépjen a Kibana webes felület megtekintéséhez `http://localhost:5601`
 1. Ebben a forgatókönyvben az index a folyamat használható a mintája "nsg-adatfolyam-logs". Változtassa meg az index minta a logstash.conf fájl a "kimeneti" szakaszában.
 
 1. Ha távolról Kibana irányítópultjának megjelenítése, hozzon létre egy bejövő NSG szabályt, amely engedélyezi webtartalmak elérését **port 5601**.
@@ -241,7 +241,7 @@ A lekérdezés sáv segítségével az irányítópult tetején, szűrheti az ad
 
 A hálózati biztonsági csoport folyamata naplók és a rugalmas készlet együttes, azt kell elérni jelenítheti meg a hálózati forgalom hatékony és testre szabható módszert. Ezek az irányítópultok engedélyezi, hogy gyorsan kapnak, és a hálózati forgalom, valamint a szűrő észrevételeket oszthatnak meg, és vizsgálja meg az összes esetleges rendellenességeket. Kibana használ, ezek az irányítópultok testre szabni, és adott képi megjelenítéseket készíthet, a biztonsági, naplózási és megfelelőségi igényeinek.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Megtudhatja, hogyan jelenítheti meg az NSG folyamata naplók a Power BI ellátogatva [megjelenítése NSG forgalomáramlás naplók és a Power bi-ban](network-watcher-visualize-nsg-flow-logs-power-bi.md)
 

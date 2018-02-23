@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 12/01/2017
+ms.date: 02/20/2018
 ms.author: larryfr
-ms.openlocfilehash: ad12dee2eb01f839db07985fcb0805bf961354cc
-ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
+ms.openlocfilehash: bfd176aaf02dd96cee8877f1754dd0ce7ebded13
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="use-mapreduce-in-hadoop-on-hdinsight"></a>A HDInsight Hadoop MapReduce használata
 
@@ -30,11 +30,11 @@ ms.lasthandoff: 12/01/2017
 |:--- |:--- |:--- |:--- |
 | [SSH](apache-hadoop-use-mapreduce-ssh.md) |A Hadoop paranccsal keresztül **SSH** |Linux |Linux, Unix, Mac OS X vagy Windows |
 | [REST](apache-hadoop-use-mapreduce-curl.md) |A feladat elküldéséhez távolról használatával **REST** (példák használata cURL) |Linux- vagy Windows |Linux, Unix, Mac OS X vagy Windows |
-| [A Windows PowerShell](apache-hadoop-use-mapreduce-powershell.md) |A feladat elküldéséhez távolról használatával **Windows PowerShell** |Linux- vagy Windows |Windows |
-| [A távoli asztal](apache-hadoop-use-mapreduce-remote-desktop.md) (HDInsight 3.2-es és 3.3-as) |A Hadoop paranccsal keresztül **távoli asztal** |Windows |Windows |
+| [Windows PowerShell](apache-hadoop-use-mapreduce-powershell.md) |A feladat elküldéséhez távolról használatával **Windows PowerShell** |Linux- vagy Windows |Windows |
 
 > [!IMPORTANT]
 > A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
+>
 
 ## <a id="whatis"></a>Mi az a MapReduce
 
@@ -46,7 +46,7 @@ Hadoop-MapReduce egy szoftveres keretrendszer feladatok, amelyek feldolgozzák a
 
 Egy alapszintű word száma MapReduce feladatot például az alábbi ábrán látható:
 
-![HDI. WordCountDiagram][image-hdi-wordcountdiagram]
+![HDI.WordCountDiagram][image-hdi-wordcountdiagram]
 
 Ez a feladat eredménye hányszor minden szó történt a szöveges számát.
 
@@ -167,8 +167,7 @@ A HDInsight HiveQL feladatok futtatásához különböző módszerekkel. A köve
 |:--- |:--- |:--- |:--- |
 | [SSH](apache-hadoop-use-mapreduce-ssh.md) |A Hadoop paranccsal keresztül **SSH** |Linux |Linux, Unix, Mac OS X vagy Windows |
 | [Curl](apache-hadoop-use-mapreduce-curl.md) |A feladat elküldéséhez távolról használatával **REST** |Linux- vagy Windows |Linux, Unix, Mac OS X vagy Windows |
-| [A Windows PowerShell](apache-hadoop-use-mapreduce-powershell.md) |A feladat elküldéséhez távolról használatával **Windows PowerShell** |Linux- vagy Windows |Windows |
-| [A távoli asztal](apache-hadoop-use-mapreduce-remote-desktop.md) (HDInsight 3.2-es és 3.3-as) |A Hadoop paranccsal keresztül **távoli asztal** |Windows |Windows |
+| [Windows PowerShell](apache-hadoop-use-mapreduce-powershell.md) |A feladat elküldéséhez távolról használatával **Windows PowerShell** |Linux- vagy Windows |Windows |
 
 > [!IMPORTANT]
 > A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](../hdinsight-component-versioning.md#hdinsight-windows-retirement).

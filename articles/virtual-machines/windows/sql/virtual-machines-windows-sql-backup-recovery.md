@@ -4,7 +4,7 @@ description: "Az Azure virtuális gépeken futó SQL Server-adatbázisok biztons
 services: virtual-machines-windows
 documentationcenter: na
 author: MikeRayMSFT
-manager: jhubbard
+manager: craigg
 editor: 
 tags: azure-resource-management
 ms.assetid: 95a89072-0edf-49b5-88ed-584891c0e066
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 11/15/2016
 ms.author: mikeray
-ms.openlocfilehash: 65557938673c5442758396a47873be1016e0f71b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 16fef048e7c795f3d21fbc4185f6ba31bbc885fb
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="backup-and-restore-for-sql-server-in-azure-virtual-machines"></a>Biztonsági mentés és visszaállítás Azure-beli SQL Server-alapú virtuális gépeken
 ## <a name="overview"></a>Áttekintés
@@ -38,7 +38,7 @@ Az SQL Server 2014-kezdve biztonsági mentése és visszaállítása a Microsoft
 
 Az alábbiakban egy Azure virtuális gépen támogatott SQL Server különböző verzióihoz való információkat tartalmazza.
 
-## <a name="sql-server-virtual-machines"></a>SQL Server virtuális gépek
+## <a name="sql-server-virtual-machines"></a>SQL Server Virtual Machines
 Ha az SQL Server-példány egy Azure virtuális gép fut, az adatbázisfájlok már található adatlemezek az Azure-ban. Ezek a lemezek helyezkednek el az Azure Blob Storage tárolóban. Ezért a biztonsági másolat készítése az adatbázis és a módszerekkel, okait tegye módosítás némileg. Vegye figyelembe a következőket. 
 
 * Már nincs szüksége az adatbázisról biztonsági mentést védelmet biztosít a hardver-vagy arra, mert a Microsoft Azure a Microsoft Azure szolgáltatás részeként ez védelmet biztosít.
@@ -50,7 +50,7 @@ Támogatja a Microsoft SQL Server 2016 [biztonsági mentése és visszaállítá
 
 | 2016 továbbfejlesztése | Részletek |
 | --- | --- |
-| **Csíkozást** |A Microsoft Azure blob Storage tárolóban való biztonsági mentéshez, SQL Server 2016 támogatja a biztonsági mentés engedélyezése a nagy adatbázisok 12.8 TB legfeljebb biztonsági másolatának több blobot. |
+| **Striping** |A Microsoft Azure blob Storage tárolóban való biztonsági mentéshez, SQL Server 2016 támogatja a biztonsági mentés engedélyezése a nagy adatbázisok 12.8 TB legfeljebb biztonsági másolatának több blobot. |
 | **Pillanatkép biztonsági másolatából** |Azure pillanatképek révén a SQL Server-fájl-pillanatkép biztonsági másolatából szinte azonnali biztonsági mentéseit és az adatbázis-fájlok tárolása az Azure Blob storage szolgáltatással gyors helyreállítást biztosít. Ez a funkció lehetővé teszi egyszerűsítése érdekében a biztonsági mentés és visszaállítás házirendek. Fájl-pillanatkép biztonsági másolatából a visszaállítás egy korábbi időpontra pont is támogatja. További információkért lásd: [pillanatképes biztonsági adatbázis-fájlok az Azure-ban](https://msdn.microsoft.com/library/mt169363%28v=sql.130%29.aspx). |
 | **Kezeli a biztonsági mentési ütemezés** |SQL Server felügyelt biztonsági mentésének Azure mostantól támogatja az egyéni ütemezések. További információkért lásd: [SQL Server felügyelt Microsoft Azure Backup](https://msdn.microsoft.com/library/dn449496.aspx). |
 
@@ -67,7 +67,7 @@ Az SQL Server 2014 a következő fejlesztéseket tartalmazza:
    * SQL Server 2014-kiszolgálók regisztrálása összes lehetséges áttekintését lásd: [SQL Server biztonsági másolat és helyreállítás a Microsoft Azure Blob Storage szolgáltatás](https://msdn.microsoft.com/library/jj919148%28v=sql.120%29.aspx).
 2. **Titkosítási**: SQL Server 2014 támogatja a titkosított adatok, a biztonsági másolat létrehozásakor. Támogatja a több titkosítási algoritmusok és használatának osf egy tanúsítvánnyal vagy aszimmetrikus kulcs. További információkért lásd: [biztonsági másolatok titkosításának](https://msdn.microsoft.com/library/dn449489%28v=sql.120%29.aspx).
 
-## <a name="sql-server-2012"></a>SQL Server 2012-ben
+## <a name="sql-server-2012"></a>SQL Server 2012
 Az SQL Server biztonsági mentése és visszaállítása az SQL Server 2012 részletes információkért lásd: [biztonsági mentése és visszaállítása az SQL Server-adatbázisok (SQL Server 2012)](https://msdn.microsoft.com/library/ms187048%28v=sql.110%29.aspx).
 
 Az SQL Server 2012 SP1 kumulatív frissítés 2-től kezdődően biztonsági másolat, és állítsa vissza az Azure Blob Storage szolgáltatásból. Ez a fejlesztés használható adatbázisok biztonsági mentése SQL Server az Azure virtuális gép vagy egy helyszíni példányát futó SQL Server-kiszolgálón. További információkért lásd: [SQL Server biztonsági mentése és visszaállítása az Azure Blob Storage Service](https://msdn.microsoft.com/library/jj919148%28v=sql.110%29.aspx).
@@ -81,7 +81,7 @@ SQL Server biztonsági másolat és helyreállítás az SQL Server 2008 R2: [biz
 
 SQL Server biztonsági mentése és visszaállítása az SQL Server 2008, lásd: [biztonsági mentése és az adatbázisok visszaállítása az SQL Server (SQL Server 2008)](https://msdn.microsoft.com/library/ms187048%28v=sql.100%29.aspx).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ha azt tervezi, az SQL Server egy Azure virtuális gépen a telepítés, üzembe helyezési útmutató található a következő oktatóanyag: [az Azure Resource Manager Azure SQL Server virtuális gépek kiépítése](virtual-machines-windows-portal-sql-server-provision.md).
 
 Bár a biztonsági mentés és visszaállítás segítségével az adatok áttelepítését, vannak a potenciálisan könnyebb adatok áttelepítési útvonalak az SQL Server egy Azure virtuális gépen. Beállítások és javaslatok ismertetését, lásd: [adatbázis Migrálása az SQL Server egy Azure virtuális gépen](virtual-machines-windows-migrate-sql.md).

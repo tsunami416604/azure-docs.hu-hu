@@ -15,13 +15,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/01/2017
+ms.date: 02/20/2018
 ms.author: larryfr
-ms.openlocfilehash: 700f73d86686761908d241f989aab25e0fb43c0e
-ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
+ms.openlocfilehash: 1882412236e630322d52cb1875060798fef6c017
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="run-the-mapreduce-examples-included-in-hdinsight"></a>Futtassa a HDInsight szereplő MapReduce példák
 
@@ -211,7 +211,7 @@ Az alábbi lépések végrehajtásával hozhat létre adatokat, rendezés, és a
     yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar teravalidate -Dmapred.map.tasks=50 -Dmapred.reduce.tasks=25 /example/data/10GB-sort-output /example/data/10GB-sort-validate
     ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az ebben a cikkben megtanulta, a Linux-alapú HDInsight-fürtökkel minták futtatása. Oktatóanyagok Pig, a Hive és a MapReduce használata a hdinsight eszközzel a következő témakörökben található:
 

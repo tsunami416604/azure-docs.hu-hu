@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2016
 ms.author: ddove
-ms.openlocfilehash: 203e1f8842c229088102412afa5de8f967837041
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: 4505aebc8919a5d7b8f3debe0db9f49b465176bf
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="deploy-a-split-merge-service"></a>Felosztási-egyesítési szolgáltatás üzembe helyezése
 A felosztott egyesítéses eszköz lehetővé teszi az adatok áthelyezése a szilánkos adatbázisok között. Lásd: [adatok kiterjesztett felhő adatbázisok közötti áthelyezése](sql-database-elastic-scale-overview-split-and-merge.md)
@@ -39,8 +39,8 @@ A fájlok kerülnek nevű **Microsoft.Azure.SqlDatabase.ElasticScale.Service.Spl
 2. Győződjön meg arról, hogy az Azure SQL Database-kiszolgáló lehetővé teszi, hogy a csatlakozáshoz Azure-szolgáltatások. A portálon a a **tűzfalbeállítások**, győződjön meg arról a **Azure-szolgáltatásokhoz való hozzáférés engedélyezése** beállítása **a**. Kattintson a "Mentés" ikonra.
    
    ![Engedélyezett szolgáltatások][1]
-3. Azure-tárfiók létrehozása, amely jelzi a diagnosztikai kimenetet. Ugrás az Azure-portálon. A bal oldali sávon kattintson **új**, kattintson a **adatok + tárolás**, majd **tárolási**.
-4. Hozzon létre egy Azure felhőalapú szolgáltatás, amely a vegyes egyesítéses szolgáltatás fogja tartalmazni.  Ugrás az Azure-portálon. A bal oldali sávon kattintson **új**, majd **számítási**, **Felhőszolgáltatás**, és **létrehozása**. 
+3. Azure-tárfiók létrehozása, amely jelzi a diagnosztikai kimenetet. Ugrás az Azure-portálon. A bal oldali sávon kattintson **hozzon létre egy erőforrást**, kattintson a **adatok + tárolás**, majd **tárolási**.
+4. Hozzon létre egy Azure felhőalapú szolgáltatás, amely a vegyes egyesítéses szolgáltatás fogja tartalmazni.  Ugrás az Azure-portálon. A bal oldali sávon kattintson **hozzon létre egy erőforrást**, majd **számítási**, **Felhőszolgáltatás**, és **létrehozása**. 
 
 ## <a name="configure-your-split-merge-service"></a>A felosztott egyesítéses szolgáltatás konfigurálása
 ### <a name="split-merge-service-configuration"></a>Vegyes egyesítéses szolgáltatás konfigurációja
@@ -128,7 +128,7 @@ Vegye figyelembe, hogy az éles központi telepítések tanúsítványok önáll
 3. Kattintson a **irányítópult**.
 4. Válassza ki az átmeneti, majd kattintson a **töltse fel az új átmeneti üzembe helyezésének**.
    
-   ![Átmeneti][3]
+   ![Fájlok másolása folyamatban][3]
 5. A párbeszédpanelen adja meg egy üzemelő példány címkéje. "Csomag", mind a "Konfiguráció" részen kattintson "A helyi", és válassza ki a **SplitMergeService.cspkg** fájl- és a korábban megadott cscfg-fájl.
 6. Győződjön meg arról, hogy a feliratú jelölőnégyzet **üzembe helyezés akkor is, ha egy vagy több szerepkör egyetlen példányt tartalmaz** be van jelölve.
 7. Kattintson a jobb alsó a telepítésének megkezdéséhez a osztásjelek gombra. Tehát az néhány percet igénybe vehet.

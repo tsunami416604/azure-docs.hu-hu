@@ -23,6 +23,7 @@
 ### [MPP-architektúra](massively-parallel-processing-mpp-architecture.md)
 ### [Teljesítményszintek](performance-tiers.md)
 ### [Adattárházegységek](what-is-a-data-warehouse-unit-dwu-cdwu.md)
+### [Horizontális felskálázás, szüneteltetés, folytatás](sql-data-warehouse-manage-compute-overview.md)
 ### [Adattárházak biztonsági másolatai](sql-data-warehouse-backups.md)
 ### [Naplózás](sql-data-warehouse-auditing-overview.md)
 ### [Kapacitási korlátok](sql-data-warehouse-service-capacity-limits.md)
@@ -50,7 +51,7 @@
 
 
 ## Monitorozás és hangolás
-### [Irányelvek](resource-classes-for-workload-management.md)
+### [Számítási feladatok kezelése](resource-classes-for-workload-management.md)
 ### [Oszlopcentrikus tömörítés](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md)
 ### [Figyelés](sql-data-warehouse-manage-monitor.md)
 ### [Hibaelhárítás](sql-data-warehouse-troubleshoot.md)

@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 12/01/2017
+ms.date: 02/20/2018
 ms.author: larryfr
-ms.openlocfilehash: 0f374e846dd0f67627c3caaa5b29e8bfb258f470
-ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
+ms.openlocfilehash: 410c2ee581a98a44e7c3c98e680686e5a1eae34e
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="run-hive-queries-using-the-data-lake-tools-for-visual-studio"></a>A Data Lake tools for Visual Studio használatával Hive-lekérdezések futtatása
 
@@ -43,7 +43,7 @@ Ismerje meg, hogyan használható a Data Lake tools for Visual Studio Apache Hiv
 
 * A HDInsight tools for Visual Studio vagy az Azure Data Lake tools for Visual Studio. Lásd: [első lépések a Visual Studio Hadoop tools for HDInsight használatával](apache-hadoop-visual-studio-tools-get-started.md) telepítése és konfigurálása az eszközök olvashat.
 
-## <a id="run"></a>A Visual Studio használatával Hive-lekérdezések futtatása
+## <a id="run"></a> A Visual Studio használatával Hive-lekérdezések futtatása
 
 1. Nyissa meg **Visual Studio** válassza **új** > **projekt** > **Azure Data Lake** > **HIVE** > **Hive alkalmazás**. Adja meg a projekt nevét.
 
@@ -75,7 +75,7 @@ Ismerje meg, hogyan használható a Data Lake tools for Visual Studio Apache Hiv
 
    * `SELECT`: Jelölje ki az összes sorok számát ahol oszlop `t4` értéke `[ERROR]`. A jelen nyilatkozat értéket ad vissza, `3` mert három ezt az értéket tartalmazó sorok.
 
-   * `INPUT__FILE__NAME LIKE '%.log'`-Közli struktúra, hogy azt kell csak vissza adatokat fájlok végződése. napló. Ehhez a záradékhoz korlátozza a keresési a sample.log fájlt, amely tartalmazza az adatokat.
+   * `INPUT__FILE__NAME LIKE '%.log'` -Közli struktúra, hogy azt kell csak vissza adatokat fájlok végződése. napló. Ehhez a záradékhoz korlátozza a keresési a sample.log fájlt, amely tartalmazza az adatokat.
 
 3. Az eszköztáron válassza ki a **HDInsight-fürt** ehhez a lekérdezéshez használni kívánt. Válassza ki **Submit** fiókként szándékozik futtatni az utasításokat egy Hive-feladatot.
 

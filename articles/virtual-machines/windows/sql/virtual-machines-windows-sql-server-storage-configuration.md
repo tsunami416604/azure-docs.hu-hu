@@ -4,7 +4,7 @@ description: "Ez a témakör ismerteti, hogyan Azure storage tartozó konfigurá
 services: virtual-machines-windows
 documentationcenter: na
 author: ninarn
-manager: jhubbard
+manager: craigg
 tags: azure-resource-manager
 ms.assetid: 169fc765-3269-48fa-83f1-9fe3e4e40947
 ms.service: virtual-machines-sql
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 12/05/2017
 ms.author: ninarn
-ms.openlocfilehash: 7d076b970481b68d9c352d54f3452b8e222f5c64
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: 21c8b955d48da03559097db93b2cb66029a203ec
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="storage-configuration-for-sql-server-vms"></a>Tárolási konfigurációt az SQL Server virtuális gépen
 Amikor konfigurál egy SQL Server virtuálisgép-lemezkép az Azure-ban, a portál segítségével automatizálhatja a tárolási konfigurációt. Ez magában foglalja a tárolási csatolása a virtuális gépek, így tárolási elérhető SQL-kiszolgáló számára, és konfigurálja úgy a optimalizálása ki az adott igények szerint.
@@ -113,14 +113,14 @@ Azure beállításai a következő SQL Server virtuális gépekre a tárolókés
 
 | Beállítás | Érték |
 | --- | --- |
-| Paritásos mérete |(Az adatraktározás terén); 256 KB 64 KB-os (tranzakciós) |
-| Lemezméretek |1 TB |
+| Paritásos mérete |256 KB (Data warehousing); 64 KB (Transactional) |
+| Lemezméretek |1 TB each |
 | Gyorsítótár |Olvasás |
 | Foglalási mérete |64 KB-os NTFS foglalásiegység-méret |
 | Azonnali fájlinicializálása |Engedélyezve |
 | A memóriában memórialapok zárolása |Engedélyezve |
 | Helyreállítás |Egyszerű helyreállítási (rugalmasság nélküli) |
-| Az oszlopok száma |Adatlemezek száma<sup>1</sup> |
+| Oszlopok száma |Adatlemezek száma<sup>1</sup> |
 | A TempDB helye |Az adatlemezek tárolása<sup>2</sup> |
 
 <sup>1</sup> a tárolókészlet létrehozása után nem változtathatja meg a tárolókészletben található oszlopok számát.
@@ -132,7 +132,7 @@ Az alábbi táblázat a három munkaterhelés típus rendelkezésre álló lehet
 
 | Munkaterhelésének típusát | Leírás | Optimalizálás. |
 | --- | --- | --- |
-| **Általános** |Alapértelmezett beállítás, amely támogatja a legtöbb alkalmazás és szolgáltatás |None |
+| Általános |Alapértelmezett beállítás, amely támogatja a legtöbb alkalmazás és szolgáltatás |Nincs |
 | **Tranzakciós feldolgozást** |Optimalizálja a tárhely az adatbázisok hagyományos OLTP számítási |Nyomkövetési jelző 1117<br/>Nyomkövetési jelző 1118 |
 | **Adatraktározás** |Optimalizálja a tárhely az elemzési és jelentéskészítési számítási |Nyomkövetési jelző 610<br/>Nyomkövetési jelző 1117 |
 
@@ -141,5 +141,5 @@ Az alábbi táblázat a három munkaterhelés típus rendelkezésre álló lehet
 >
 >
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Egyéb Azure virtuális gépeken futó SQL Server kapcsolatos témaköröket, lásd: [SQL Server Azure virtuális gépeken](virtual-machines-windows-sql-server-iaas-overview.md).

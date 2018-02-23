@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
-ms.openlocfilehash: e1beb06301807c35a1b070989a0f80f4c8097762
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 439fadeb01ccad58642492eb49ef25f866a9a9dd
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-an-external-app-service-environment"></a>Külső App Service-környezet létrehozása #
 
@@ -59,7 +59,7 @@ Az App Service-csomag egy olyan tároló, az alkalmazások. Ha alkalmazást hoz 
 
 Egy ASE létrehozása, az App Service-csomag létrehozása során:
 
-1. Az a [Azure-portálon](https://portal.azure.com/), jelölje be **új** > **Web + mobil** > **webalkalmazás**.
+1. Az a [Azure-portálon](https://portal.azure.com/), jelölje be **hozzon létre egy erőforrást** > **Web + mobil** > **webalkalmazás**.
 
     ![Webalkalmazás létrehozása][1]
 
@@ -97,7 +97,7 @@ Egy ASE létrehozása, az App Service-csomag létrehozása során:
 
 Ha létrehoz egy ASE önálló, lejárt, semmi nem azt. Egy üres ASE továbbra is azt eredményezi azok háromszorosa infrastruktúra havi járnak. Kövesse az alábbi lépéseket egy ILB egy ASE létrehozásához, vagy hozzon létre egy ASE saját erőforráscsoportban. Miután létrehozta a ASE, létrehozhat alkalmazások azt a szokásos folyamat használatával. Jelölje ki az új ASE helyeként.
 
-1. Keresse meg az Azure piactérről **App Service Environment-környezet**, vagy válasszon **új** > **webes mobil** > **App Service Környezet**. 
+1. Keresse meg az Azure piactérről **App Service Environment-környezet**, vagy válasszon **hozzon létre egy erőforrást** > **webes mobil** > **App Környezet szolgáltatás**. 
 
 2. Adja meg a ASE nevét. Ez a név a ASE létrehozott alkalmazások szolgál. Ha a név *mynewdemoase*, altartománynév van *. mynewdemoase.p.azurewebsites.net*. Ha nevű alkalmazást hoz létre *mytestapp*, megcímezhető: mytestapp.mynewdemoase.p.azurewebsites.net. A névben szóköz nem használható. Nagybetűs karaktereket használ, ha a tartománynév neve kisbetűs teljes verzióját. Egy ILB használatakor a ASE neve nem szerepel a altartomány, de ehelyett explicit módon megadott ASE létrehozása során.
 

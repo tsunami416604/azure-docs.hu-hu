@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 05/23/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
-ms.openlocfilehash: e92a9d5900e3e0fe71084e5003010d419e44cb39
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: 811cc6cea80acbe6cbbf4533c1f9a8c9c7f53702
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-a-vm-from-a-specialized-vhd-in-a-storage-account"></a>Olyan virtuális merevlemezről speciális tárfiók a virtuális gép létrehozása
 
@@ -118,7 +118,7 @@ Virtuális merevlemez egy másik tárfiókhoz egy új, ismétlődő virtuális g
 ### <a name="before-you-begin"></a>Előkészületek
 Győződjön meg arról, hogy Ön:
 
-* Kapcsolatos információkkal rendelkezik a **forrás és cél tárfiókok**. A forrás virtuális gép kell rendelkeznie a tárolási fiók és a tároló neve. Általában a tároló neve lesz **VHD-k**. Szükség van egy cél tárfiókkal. Ha még nem rendelkezik egy, elkészítheti vagy a portál használatával (**több szolgáltatások** > tárfiókok > hozzáadása) vagy a [New-AzureRmStorageAccount](/powershell/module/azurerm.storage/new-azurermstorageaccount) parancsmag. 
+* Kapcsolatos információkkal rendelkezik a **forrás és cél tárfiókok**. A forrás virtuális gép kell rendelkeznie a tárolási fiók és a tároló neve. Általában a tároló neve lesz **VHD-k**. Szükség van egy cél tárfiókkal. Ha még nem rendelkezik egy, elkészítheti vagy a portál használatával (**minden szolgáltatás** > tárfiókok > hozzáadása) vagy a [New-AzureRmStorageAccount](/powershell/module/azurerm.storage/new-azurermstorageaccount) parancsmag. 
 * Letöltötte és telepítette a [AzCopy eszköz](../../storage/common/storage-use-azcopy.md). 
 
 ### <a name="deallocate-the-vm"></a>A virtuális gép felszabadítása
@@ -138,7 +138,7 @@ Az URL-címeket, a forrás és cél tárfiók van szüksége. Az URL-címek megj
 
 Az Azure portálon vagy az Azure Powershell használatával az URL-cím beszerzése:
 
-* **Portál**: kattintson a  **>**  a **további szolgáltatások** > **Storage-fiókok** > *tárfiók* > **Blobok** és a forrás VHD-fájl valószínűleg a **VHD-k** tároló. Kattintson a **tulajdonságok** a tárolót, és másolja a dokumentum szövegét, címkével **URL-cím**. A forrás- és tárolók URL-címei lesz szüksége. 
+* **Portál**: kattintson a  **>**  a **minden szolgáltatás** > **tárfiókok** > *tároló fiók* > **Blobok** és a forrás VHD-fájl valószínűleg a **VHD-k** tároló. Kattintson a **tulajdonságok** a tárolót, és másolja a dokumentum szövegét, címkével **URL-cím**. A forrás- és tárolók URL-címei lesz szüksége. 
 * **PowerShell**: használata [Get-AzureRmVM](/powershell/module/azurerm.compute/get-azurermvm) nevű virtuális gép adatainak megszerzése **myVM** erőforráscsoportban **myResourceGroup**. Az eredmények között, tekintse meg a **tárolási profilban** című rész a **virtuális merevlemez Uri**. Az Uri első része a tároló URL-CÍMÉT, és az utolsó része a virtuális gép operációs rendszer virtuális merevlemez nevét.
 
 ```powershell
@@ -148,7 +148,7 @@ Get-AzureRmVM -ResourceGroupName "myResourceGroup" -Name "myVM"
 ## <a name="get-the-storage-access-keys"></a>A tárelérési kulcsok beszerzése
 Keresése a tárelérési kulcsokat a forrás és cél storage-fiókok. Tárelérési kulcsok kapcsolatos további információkért lásd: [tudnivalók az Azure storage-fiókok](../../storage/common/storage-create-storage-account.md).
 
-* **Portál**: kattintson a **további szolgáltatások** > **tárfiókok** > *tárfiók*  >  **Hívóbetűk**. Másolja a vágólapra a kulcsot címkézve **key1**.
+* **Portál**: kattintson a **minden szolgáltatás** > **tárfiókok** > *tárfiók*  >   **Hívóbetűk**. Másolja a vágólapra a kulcsot címkézve **key1**.
 * **PowerShell**: használata [Get-AzureRmStorageAccountKey](/powershell/module/azurerm.storage/get-azurermstorageaccountkey) a kulcsot a tárfiók eléréséhez **mystorageaccount** erőforráscsoportban **myResourceGroup**. Másolja a vágólapra a kulcsot feliratú **key1**.
 
 ```powershell
@@ -312,7 +312,7 @@ RequestId IsSuccessStatusCode StatusCode ReasonPhrase
 ```
 
 ### <a name="verify-that-the-vm-was-created"></a>Győződjön meg arról, hogy létrejött-e a virtuális gép
-Megtekintheti az újonnan létrehozott virtuális gép vagy a a [Azure-portálon](https://portal.azure.com), a **Tallózás** > **virtuális gépek**, vagy a következő PowerShell-parancsok használatával:
+Megtekintheti az újonnan létrehozott virtuális gép vagy a a [Azure-portálon](https://portal.azure.com)a **minden szolgáltatás** > **virtuális gépek**, vagy a következő PowerShell-lel parancsok:
 
 ```powershell
 $vmList = Get-AzureRmVM -ResourceGroupName $rgName

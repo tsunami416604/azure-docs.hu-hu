@@ -17,11 +17,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/11/2017
 ms.author: nitinme
-ms.openlocfilehash: b561352d702d1c5a415ebebc253869b8a56d68d8
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 2be4477528c9109151c4737eabc16741cc020ce8
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="kernels-for-jupyter-notebook-on-spark-clusters-in-azure-hdinsight"></a>Az Azure hdinsight Spark-fürtjei Jupyter notebookokhoz kernelek 
 
@@ -80,7 +80,7 @@ Az alábbiakban néhány előnyeit az új kernelek használata Jupyter notebook 
    
     Az alábbi táblázat a különböző magics a kernelek keresztül érhető el.
 
-   | Varázsszám | Példa | Leírás |
+   | Magic | Példa | Leírás |
    | --- | --- | --- |
    | súgó |`%%help` |Létrehoz egy táblát az összes rendelkezésre álló magics példa és leírása |
    | információ |`%%info` |A jelenlegi Livy végpont kimenetek munkamenet-információk |
@@ -88,8 +88,8 @@ Az alábbiakban néhány előnyeit az új kernelek használata Jupyter notebook 
    | sql |`%%sql -o <variable name>`<br> `SHOW TABLES` |Végrehajtja a Hive-lekérdezések a sqlContext ellen. Ha a `-o` paramétert, a lekérdezés eredménye őrzi a %% helyi Python-környezetben, egy [Pandas](http://pandas.pydata.org/) dataframe. |
    | helyi |`%%local`<br>`a=1` |Az egymás utáni sorok a kód végrehajtása helyileg. Kód még a kernel módjától függetlenül érvényes Python2 kódot kell lennie. Igen, akkor is, ha a kiválasztott **PySpark3** vagy **Spark** kernelek a notebook létrehozása, ha közben az `%%local` magic cellába, ezt a cellát csak rendelkeznie kell érvényes Python2 kódot... |
    | naplók |`%%logs` |A naplók kiírja a Livy aktuális munkamenetre. |
-   | törlés |`%%delete -f -s <session number>` |Egy adott munkamenet a jelenlegi Livy végpont törlése. Vegye figyelembe, hogy maga a kernel kezdeményezett munkamenet nem törölhető. |
-   | Tisztítás |`%%cleanup -f` |Törli az aktuális Livy végpont, beleértve a jegyzetfüzet munkamenet a munkamenetek. A kényszerített jelző -f megadása kötelező. |
+   | törlés |`%%delete -f -s <session number>` |Egy adott munkamenet a jelenlegi Livy végpont törlése. A kernel magát a kezdeményezett munkamenet nem törölhető. |
+   | tisztítás |`%%cleanup -f` |Törli az aktuális Livy végpont, beleértve a jegyzetfüzet munkamenet a munkamenetek. A kényszerített jelző -f megadása kötelező. |
 
    > [!NOTE]
    > A PySpark kernel által hozzáadott magics, mellett is használhatja a [beépített IPython magics](https://ipython.org/ipython-doc/3/interactive/magics.html#cell-magics), többek között a következőket `%%sh`. Használhatja a `%%sh` magic a fürt headnode parancsfájlok és kódblokkot futtatásához.
@@ -160,7 +160,6 @@ Az új kernelek szakasz fejlődnek, és adott idő alatt számos lesz. Ez is jel
 * [Spark és BI: Interaktív adatelemzés végrehajtása a Spark on HDInsight használatával, BI-eszközökkel](apache-spark-use-bi-tools.md)
 * [Spark és Machine Learning: A Spark on HDInsight használata az épület-hőmérséklet elemzésére HVAC-adatok alapján](apache-spark-ipython-notebook-machine-learning.md)
 * [Spark és Machine Learning: A Spark on HDInsight használata az élelmiszervizsgálati eredmények előrejelzésére](apache-spark-machine-learning-mllib-ipython.md)
-* [Spark Streaming: A Spark on HDInsight használata valós idejű streamelési alkalmazások összeállítására](apache-spark-eventhub-streaming.md)
 * [A webhelynapló elemzése a Spark on HDInsight használatával](apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="create-and-run-applications"></a>Alkalmazások létrehozása és futtatása

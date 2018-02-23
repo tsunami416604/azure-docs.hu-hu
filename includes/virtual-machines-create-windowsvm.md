@@ -1,6 +1,6 @@
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-2. A bal felső sarokban kattintson az **Új > Számítás > Windows Server 2016 Datacenter** elemre.
+2. Kezdési bal felső sarokban, kattintson a **hozzon létre egy erőforrást** > **számítási** > **Windows Server 2016 Datacenter**.
 
     ![Navigálás az Azure virtuálisgép-rendszerképekre a portálon](./media/virtual-machines-common-portal-create-fqdn/marketplace-new.png)
 

@@ -14,15 +14,15 @@ ms.workload: data-services
 ms.custom: manage
 ms.date: 01/31/2018
 ms.author: elbutter;barbkess
-ms.openlocfilehash: ff6c14ced42385d81f3c42b4b4bf1fd06464c0d1
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: a3a435d6bdb0d35c96349540d5e9f9b5be61bd9b
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="quickstart-scale-compute-in-azure-sql-data-warehouse-in-powershell"></a>Gyors üzembe helyezés: Az Azure SQL Data Warehouse a PowerShellben számítási méretezési
 
-Skála számítási az Azure SQL Data Warehouse a PowerShellben. A jobb teljesítmény számítási kibővítési vagy skálája vissza számítási költségek csökkentése érdekében. 
+Skála számítási az Azure SQL Data Warehouse a PowerShellben. [Horizontális felskálázás számítási](sql-data-warehouse-manage-compute-overview.md) jobb teljesítményt vagy skálája biztonsági számítási költségek csökkentése érdekében. 
 
 Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
@@ -67,7 +67,7 @@ Kövesse az alábbi lépéseket az adatraktár Tartózkodásihely-adatok keresé
 4. Jegyezze fel az adatraktár nevét, amely az adatbázis neve lesz. Is írja be a kiszolgáló nevét, és az erőforráscsoportot. Először használja ezeket az szüneteltetése, folytatása parancsok.
 5. Ha a kiszolgáló foo.database.windows.net, akkor csak az első rész a PowerShell-parancsmagok a kiszolgálónevet. Az előző ábrán a teljes kiszolgálónevet newserver-20171113.database.windows.net. Használjuk **newserver-20171113** a PowerShell-parancsmag a kiszolgálónevet.
 
-## <a name="scale-compute"></a>Skála számítási
+## <a name="scale-compute"></a>Számítások méretezése
 
 Az SQL Data Warehouse növelheti vagy csökkentheti a számítási erőforrásokat adattárházegységek beállításával. A [létrehozása és a Connect - portál](create-data-warehouse-portal.md) létrehozott **mySampleDataWarehouse** és 400 dwu-k inicializálása azt. Az alábbi lépéseket, állítsa be a dwu-k a **mySampleDataWarehouse**.
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2017
 ms.author: johnkem
-ms.openlocfilehash: f093c0cfdc6f59133c39cc8c2b10f9fe74692977
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: aef427483d647c53ba45688ce33a75f876115d08
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="monitor-subscription-activity-with-the-azure-activity-log"></a>Az Azure tevékenységnapló figyelő előfizetés tevékenység
 A **Azure tevékenységnapló** van egy előfizetési napló, amely történt az Azure-előfizetés szintű események betekintést nyújt. Ez magában foglalja az Azure Resource Manager működési adatokat a frissítésekre a szolgáltatás állapotával kapcsolatos események adatait számos. A műveletnapló korábban hívták "Naplófájlok" vagy "Működési Logs", a felügyeleti kategória jelentések vezérlő-vezérlősík eseményeket az előfizetések óta. A tevékenység-naplót használó, meghatározhatja a "mi, ki, és mikor" az esetleges írási műveleteket (PUT, POST, Törlés) végzett az erőforrást az előfizetésében. A művelet és az egyéb kapcsolódó tulajdonságainak állapotának értelmezni is lehet. A műveletnapló nem tartalmaz olvasható (GET) vagy a klasszikus használó erőforrások / "RDFE" modell.
@@ -73,9 +73,9 @@ A műveletnapló számos modulkategória közül adatokat tartalmazza. Az ezekbe
 
 ## <a name="query-the-activity-log-in-the-azure-portal"></a>A lekérdezés a műveletnapló az Azure-portálon
 Az Azure-portálon belül több helyen tekintheti meg a tevékenységnapló:
-* A **tevékenységnapló panel**, amely keresése a bal oldali navigációs panelen a műveletnapló a "Több szolgáltatások" területen érhető el.
-* A **figyelő panel**, amely alapértelmezés szerint a a bal oldali navigációs ablaktáblán látható. A műveletnapló Azure figyelő panel egy szakaszában.
-* Minden erőforrás **erőforráspanelen**, például a virtuális gép konfigurációs panelt. A műveletnapló, a legtöbb a erőforrás paneleken részeiből kell, és kattintással automatikusan szűri az eseményeket az adott erőforrás.
+* A **tevékenységnapló** , így hozzáférhet a műveletnapló alatt keresve **minden szolgáltatás** a bal oldali navigációs ablaktáblán.
+* **A figyelő** a bal oldali navigációs panelen alapértelmezés szerint megjelenik. A műveletnapló Azure figyelő egy szakaszában.
+* Minden erőforrás **erőforrás**, például a virtuális gép konfigurációs panelt. A műveletnapló, a legtöbb a erőforrás paneleken részeiből kell, és kattintással automatikusan szűri az eseményeket az adott erőforrás.
 
 Az Azure portálon a tevékenységnapló a mezők szerint szűrheti:
 * A TimeSpan - a kezdési és befejezési ideje eseményeket.
@@ -113,7 +113,7 @@ Ezek a beállítások a "Export" lehetőséget a tevékenységnapló panelen a p
 ### <a name="configure-log-profiles-using-the-azure-portal"></a>Az Azure portál használatával napló profilok konfigurálása
 A műveletnapló az Eseményközpontba adatfolyam, vagy az Azure-portálon a "Export" beállítás használatával tárolhatja őket egy Tárfiókot.
 
-1. Keresse meg a **tevékenységnapló** panel a portál bal oldalán a menü segítségével.
+1. Navigáljon a **tevékenységnapló** a portál bal oldalán a menü segítségével.
 
     ![Tevékenységnapló navigáljon a portálon](./media/monitoring-overview-activity-logs/activity-logs-portal-navigate.png)
 2. Kattintson a **exportálása** gomb a panel tetején.

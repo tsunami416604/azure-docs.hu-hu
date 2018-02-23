@@ -1,23 +1,22 @@
 # [Áttekintés](overview.md)
 
 # Első lépések
-## [Rövid útmutató a Bash-hez](quickstart.md)
-## [Rövid útmutató a PowerShellhez](quickstart-powershell.md)
+## [Bash – Rövid útmutató](quickstart.md)
+## [PowerShell – Rövid útmutató](quickstart-powershell.md)
 
 # Alapelvek
-## [A Bash funkciói és eszközei](features.md)
-## [A PowerShell funkciói és eszközei](features-powershell.md)
+## [Bash – Funkciók és eszközök](features.md)
+## [PowerShell – Funkciók és eszközök](features-powershell.md)
 ## [Korlátozások](limitations.md)
 
 # Használati útmutató
-## [Tároló megőrzése Bash-ben](persisting-shell-storage.md)
-## [Tároló megőrzése PowerShellben](persisting-shell-storage-powershell.md)
+## [Bash – Tároló megőrzése](persisting-shell-storage.md)
+## [PowerShell – Tároló megőrzése](persisting-shell-storage-powershell.md)
 ## [Az ablak használata](using-the-shell-window.md)
 
 # Példák
-## [Azure-erőforrások üzembe helyezése a Terraform segítségével Bashben](example-terraform-bash.md)
-
-## [A Bash Ansible futtatása](../ansible/ansible-run-playbook-in-cloudshell.md)
+## [Bash – Erőforrások létrehozása a Terraformmal](example-terraform-bash.md)
+## [Bash – Ansible-forgatókönyvek futtatása](../ansible/ansible-run-playbook-in-cloudshell.md)
 
 # [Cloud Shell beágyazása](embed-cloud-shell.md)
 

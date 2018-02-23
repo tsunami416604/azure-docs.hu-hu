@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 11/28/2017
 ms.author: nitinme
-ms.openlocfilehash: 4d109fa61d0fcd0c516a519f3b3eb0ad01ccbf05
-ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
+ms.openlocfilehash: adfc1158a907156ffddd27cd4eabc25c81930476
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-using-azure-powershell"></a>Linux-alapú fürtök létrehozása a Hdinsightban Azure PowerShell használatával
 
@@ -92,7 +92,7 @@ A következő parancsfájl egy konfigurációs objektumot az R-kiszolgáló konf
 
 Ha problémába ütközik a HDInsight-fürtök létrehozása során, tekintse meg [a hozzáférés-vezérlésre vonatkozó követelményeket](hdinsight-administer-use-portal-linux.md#create-clusters).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy sikeresen létrehozta a HDInsight-fürtöt, a következő források segítségével megtudhatja, hogyan működnek a fürthöz.
 
@@ -104,7 +104,7 @@ Most, hogy sikeresen létrehozta a HDInsight-fürtöt, a következő források s
 
 ### <a name="hbase-clusters"></a>HBase-fürtökkel
 
-* [Az a HDInsight HBase első lépései](hbase/apache-hbase-tutorial-get-started-linux.md)
+* [A HDInsighton futó HBase használatának első lépései](hbase/apache-hbase-tutorial-get-started-linux.md)
 * [A HDInsight HBase Java-alkalmazások fejlesztése](hbase/apache-hbase-build-java-maven-linux.md)
 
 ### <a name="storm-clusters"></a>Storm-fürtök
@@ -119,5 +119,4 @@ Most, hogy sikeresen létrehozta a HDInsight-fürtöt, a következő források s
 * [Feladatok távoli futtatása Spark-fürtön a Livy használatával](spark/apache-spark-livy-rest-interface.md)
 * [Spark és BI: Interaktív adatelemzés végrehajtása a Spark on HDInsight használatával, BI-eszközökkel](spark/apache-spark-use-bi-tools.md)
 * [Spark és Machine Learning: A Spark on HDInsight használata az élelmiszervizsgálati eredmények előrejelzésére](spark/apache-spark-machine-learning-mllib-ipython.md)
-* [Spark Streaming: A Spark on HDInsight használata valós idejű streamelési alkalmazások összeállítására](spark/apache-spark-eventhub-streaming.md)
 

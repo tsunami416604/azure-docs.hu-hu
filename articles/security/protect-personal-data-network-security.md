@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 08/22/2017
 ms.author: barclayn
 ms.custom: 
-ms.openlocfilehash: d61b29f1327f57bc32b2c53de3fe58e53fcf3cac
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2510a4aed34b6a156cc9a9da6215de5956aac023
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="protect-personal-data-with-network-security-features-azure-application-gateway-and-network-security-groups"></a>Hálózati biztonsági funkciók személyes adatok védelme: Azure Application Gateway és a hálózati biztonsági csoportok
 
@@ -59,18 +59,9 @@ Hozzon létre egy alkalmazás WAF, vagy egy meglévő Alkalmazásátjáró WAF h
 
 Hozzon létre egy új alkalmazás WAF engedélyezve van, tegye a következőket:
 
-1. Jelentkezzen be az Azure portálra, majd a a **Kedvencek** ablaktáblán megjelenő, a portál **új**
-
-2. Az **Új** panelen kattintson a **Hálózat** elemre.
-
-3. Kattintson a **Alkalmazásátjáró**.
-
-4. Keresse meg az Azure-portálon **kattintson az új \> hálózati \> Alkalmazásátjáró.**
-
-   ![alkalmazásátjárót létrehozása](media/protect-netsec/app-gateway-01.png)
-
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+2. Válassza ki **hozzon létre egy erőforrást** > **hálózati** > **Alkalmazásátjáró**.
 5. Az a **alapjai** panelen megjelenő, adja meg az értékeket a következő mezőket: név, a réteg (Standard vagy WAF), Termékváltozat-méretét (kicsi, közepes vagy nagy) példány száma (a magas rendelkezésre állás 2), előfizetés, erőforráscsoportot és helyet.
-
 6. Az a **beállítások** panel alatt megjelenő **virtuális hálózati**, kattintson a **virtuális hálózatot választ**. Ez a lépés megnyílik, adja meg a virtuális hálózat kiválasztása panel.
 
 7. Kattintson a **hozzon létre új** megnyitásához a **virtuális hálózat létrehozása** panelen.
@@ -126,7 +117,7 @@ Planning and implementing NSG-ket, és egy minta környezet-forgatókönyv és a
 
 Egy meglévő NSG bejövő szabályok létrehozásához tegye a következőket:
 
-1. Kattintson a **Tallózás**, majd **hálózati biztonsági csoportok**.
+1. Kattintson a **minden szolgáltatás**, majd **hálózati biztonsági csoportok**.
 
 2. Az NSG-ket, kattintson a **NSG-előtérbeli**, majd **bejövő biztonsági szabályok.**
 
@@ -140,11 +131,11 @@ Az új szabály megjelenik az NSG néhány másodperc múlva.
 
 További információkat az NSG-k létrehozásához az alhálózatok, létrehozhat szabályokat, és társít egy NSG előtér- és alhálózattal, a következő témakörben: [az Azure portál használatával a hálózati biztonsági csoportok létrehozása.](https://docs.microsoft.com/azure/virtual-network/virtual-networks-create-nsg-arm-pportal)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Az Azure hálózati biztonság](https://azure.microsoft.com/blog/azure-network-security/)
 
-[Azure-hálózat ajánlott biztonsági eljárások](https://docs.microsoft.com/azure/security/azure-security-network-security-best-practices)
+[Ajánlott Azure-hálózati biztonsági eljárások](https://docs.microsoft.com/azure/security/azure-security-network-security-best-practices)
 
 [A hálózati biztonsági csoportok adatainak beolvasása](https://docs.microsoft.com/rest/api/network/virtualnetwork/get-information-about-a-network-security-group)
 

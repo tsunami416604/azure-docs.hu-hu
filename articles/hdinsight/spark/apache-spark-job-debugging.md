@@ -16,15 +16,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/20/2017
 ms.author: jgao
-ms.openlocfilehash: fb2487ec854260bacf98789bd1be482172ead6a7
-ms.sourcegitcommit: 901a3ad293669093e3964ed3e717227946f0af96
+ms.openlocfilehash: 5606df8770cf611d7d278800c9871bee17c5b895
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="debug-apache-spark-jobs-running-on-azure-hdinsight"></a>Azure hdinsighton futó Apache Spark feladatok hibakeresése
 
-Ez a cikk, útmutató nyomon követése és hibakeresése a HDInsight-fürtök a YARN felhasználói felületen, Spark felhasználói felület és a Spark előzmények kiszolgálón futó Spark feladatok. Ebben a cikkben azt a Spark-fürtön elérhető Jegyzetfüzet használata Spark feladat indítása **gépi tanulás: prediktív elemzési étele ellenőrző adatokat, és MLLib a**. Az alábbi lépéseket segítségével nyomon követheti a beküldött bármely más megközelítéssel is, például egy alkalmazás **spark-nyújt**.
+Ez a cikk, útmutató nyomon követése és hibakeresése a HDInsight-fürtök a YARN felhasználói felületen, Spark felhasználói felület és a Spark előzmények kiszolgálón futó Spark feladatok. A Spark-fürtön elérhető Jegyzetfüzet használata Spark feladat indítása **gépi tanulás: prediktív elemzési étele ellenőrző adatokat, és MLLib a**. Az alábbi lépések segítségével nyomon követheti a beküldött bármely más megközelítéssel is, például egy alkalmazás **spark-nyújt**.
 
 ## <a name="prerequisites"></a>Előfeltételek
 Az alábbiakkal kell rendelkeznie:
@@ -34,12 +34,12 @@ Az alábbiakkal kell rendelkeznie:
 * Meg kell kezdeni a notebook futtató  **[gépi tanulás: prediktív elemzési a étele ellenőrző adatokat, és MLLib](apache-spark-machine-learning-mllib-ipython.md)**. A notebook futtatásához útmutatást kövesse a hivatkozást.  
 
 ## <a name="track-an-application-in-the-yarn-ui"></a>Nyomon követheti az alkalmazás a YARN felhasználói felületen
-1. A YARN felhasználói felületének indítása. A fürt paneljén kattintson **fürt irányítópult**, és kattintson a **YARN**.
+1. A YARN felhasználói felületének indítása. Kattintson a **fürt irányítópult**, és kattintson a **YARN**.
    
     ![Indítsa el a YARN felhasználói felületen](./media/apache-spark-job-debugging/launch-yarn-ui.png)
    
    > [!TIP]
-   > Másik lehetőségként is indítja el a YARN felhasználói felületen a az Ambari felhasználói Felületéről. Indítsa el az Ambari felhasználói felületén, a fürt paneljén kattintson a **fürt irányítópult**, és kattintson a **HDInsight fürt irányítópult**. Az Ambari felhasználói felületén kattintson **YARN**, kattintson a **Gyorshivatkozások**, kattintson az aktív erőforrás-kezelő, majd **erőforrás-kezelő felhasználói felületén**.    
+   > Másik lehetőségként is indítja el a YARN felhasználói felületen a az Ambari felhasználói Felületéről. Az Ambari felhasználói felületének indítása, kattintson a **fürt irányítópult**, és kattintson a **HDInsight fürt irányítópult**. Az Ambari felhasználói felületén kattintson **YARN**, kattintson a **Gyorshivatkozások**, kattintson az aktív erőforrás-kezelő, majd **erőforrás-kezelő felhasználói felületén**.    
    > 
    > 
 2. Megkezdődött a Jupyter notebookok használata Spark-feladatot, mert az alkalmazás rendelkezik ezzel a névvel **remotesparkmagics** (azt a nevet minden olyan alkalmazásnál, amely a notebookok való indítása). Kattintson az Alkalmazásazonosítót a feladattal kapcsolatos további információkért az alkalmazás neve alapján. Ekkor elindul az alkalmazás megtekintése.
@@ -102,7 +102,7 @@ Ha egy feladat befejeződött, a feladat információi a Spark-előzmények kisz
    > Másik lehetőségként is indítja el a Spark előzmények kiszolgáló felhasználói felülete a az Ambari felhasználói felületén. Indítsa el az Ambari felhasználói felületén, a fürt paneljén kattintson a **fürt irányítópult**, és kattintson a **HDInsight fürt irányítópult**. Az Ambari felhasználói felületén kattintson **Spark**, kattintson a **Gyorshivatkozások**, és kattintson a **Spark előzmények kiszolgáló felhasználói felülete**.
    > 
    > 
-2. Látni fogja a felsorolt összes befejeződött alkalmazásokkal. Kattintson az alkalmazás további információt a feltárásához Azonosítói.
+2. Megjelenik a felsorolt összes befejeződött alkalmazásokkal. Kattintson az alkalmazás további információt a feltárásához Azonosítói.
    
     ![Indítsa el a Spark előzmények kiszolgáló](./media/apache-spark-job-debugging/view-completed-applications.png)
 
@@ -122,7 +122,6 @@ Ha egy feladat befejeződött, a feladat információi a Spark-előzmények kisz
 * [Önálló alkalmazás létrehozása a Scala használatával](apache-spark-create-standalone-application.md)
 * [Feladatok távoli futtatása Spark-fürtön a Livy használatával](apache-spark-livy-rest-interface.md)
 * [Az IntelliJ IDEA HDInsight-eszközei beépülő moduljának használata Spark Scala-alkalmazások létrehozásához és elküldéséhez](apache-spark-intellij-tool-plugin.md)
-* [Spark Streaming: A Spark on HDInsight használata valós idejű streamelési alkalmazások összeállítására](apache-spark-eventhub-streaming.md)
 * [Az IntelliJ IDEA HDInsight-eszközei beépülő moduljának használata Spark-alkalmazások távoli hibaelhárításához](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
 * [Zeppelin notebookok használata Spark-fürttel HDInsighton](apache-spark-zeppelin-notebook.md)
 * [Jupyter notebookokhoz elérhető kernelek a HDInsight Spark-fürtjében](apache-spark-jupyter-notebook-kernels.md)

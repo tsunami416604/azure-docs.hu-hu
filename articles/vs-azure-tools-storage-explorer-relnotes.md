@@ -14,25 +14,79 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/31/2017
 ms.author: cawa
-ms.openlocfilehash: fb47ceb63d45a3e896d55d8c304562cc667d0414
-ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
+ms.openlocfilehash: d23ddfb881695b2310d379a9112e6ab8305c0cce
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="microsoft-azure-storage-explorer-preview-release-notes"></a>Kibocsátási megjegyzések a Microsoft Azure Tártallózó (előzetes verzió)
 
-A cikkben a kibocsátási megjegyzések a 0.9.4. Azure Tártallózó (előzetes verzió) kiadása, valamint a kibocsátási megjegyzések a korábbi verziók.
+A cikkben a kibocsátási megjegyzések a 0.9.5. Azure Tártallózó (előzetes verzió) kiadása, valamint a kibocsátási megjegyzések a korábbi verziók.
 
 [A Microsoft Azure Tártallózó (előzetes verzió)](./vs-azure-tools-storage-manage-with-storage-explorer.md) egy különálló alkalmazás, amelynek segítségével egyszerűen dolgozhat Azure Storage-adatokkal Windows, a macOS és a Linux rendszeren.
+
+## <a name="version-095"></a>0.9.5 verzió
+02/06/2018
+
+### <a name="download-azure-storage-explorer-095-preview"></a>Töltse le az Azure Tártallózó (előzetes verzió) 0.9.5
+- [A Windows Azure Tártallózó (előzetes verzió) 0.9.5](https://go.microsoft.com/fwlink/?LinkId=708343)
+- [A Mac Azure Tártallózó (előzetes verzió) 0.9.5](https://go.microsoft.com/fwlink/?LinkId=708342)
+- [Linux rendszerhez készült Azure Tártallózó (előzetes verzió) 0.9.5](https://go.microsoft.com/fwlink/?LinkId=722418)
+
+### <a name="new"></a>Új
+
+* Fájlmegosztások pillanatképek támogatása:
+    * Létrehozása és kezelése a pillanatképek a fájlmegosztásokhoz.
+    * Pillanatképek készítése a fájlmegosztások között egyszerűen átválthatja, tanulmányoznia.
+    * Állítsa vissza a fájlok korábbi verzióit.
+* Azure Data Lake Store Preview támogatása:
+    * Csatlakoztassa az ADLS-erőforrások több fiók között.
+    * Csatlakozás és ADL URI-azonosítók ADLS-erőforrások megosztása.
+    * Hajtsa végre az alapszintű fájl vagy mappa műveletek rekurzív módon.
+    * A gyors hozzáférés PIN egyedi mappák.
+    * Mappa statisztika megjelenítése.
+
+### <a name="fixes"></a>Javítások
+* Indítási teljesítménynövekedést.
+* Különböző hibajavításokat tartalmaz.
+
+### <a name="known-issues"></a>Ismert problémák
+* A Tártallózó nem támogatja az AD FS-fiókokat.
+* Ha Azure verem célzó, bizonyos fájlokat, hozzáfűző blobok feltöltése meghiúsulhat.
+* Után a "Mégse gombra" kattintva meg olyan feladatra, ez eltarthat egy kis ideig, megszakítja a tevékenység. Ennek oka az itt leírt Mégse szűrő megoldást használunk.
+* Ha úgy dönt, hogy a megfelelő PIN-kód/intelligens kártya tanúsítványt, majd akkor kell biztosítani, hogy a döntési elfelejti Tártallózó újraindítására.
+* A fiók beállítások panel jelenhet meg, hogy meg kell adnia a hitelesítő adatok előfizetések szűrése.
+* Blobok (külön-külön vagy átnevezett blob tárolóhoz belül) átnevezése nem őrzi meg a pillanatképeket. Minden más tulajdonságok és metaadatok BLOB-, fájl-és entitások egy átnevezési megőriz.
+* Bár az Azure-verem jelenleg nem támogatja a fájlmegosztásokat, fájlmegosztások csomópont továbbra is egy csatolt verem Azure storage-fiók alatt jelenik meg.
+* A Tártallózó által használt elektronsugár rendszerhéj problémák léptek fel néhány (grafikus processzorral) GPU-hardveres gyorsítás rendelkezik. A Tártallózó (üres) üres fő ablak megjelenítése, ha megpróbálhatja Tártallózó indítása a parancssorból, és a GPU gyorsítás letiltása hozzáadásával a `--disable-gpu` váltani:
+
+```
+./StorageExplorer.exe --disable-gpu
+```
+
+* Ubuntu 14.04 felhasználójához, meg kell győződnie arról ÖET folyamatosan naprakész adatokat tartalmazzon – ezt megteheti a következő parancsok futtatásával, és indítsa újra a számítógépet:
+
+    ```
+    sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+    sudo apt-get update
+    sudo apt-get upgrade
+    sudo apt-get dist-upgrade
+    ```
+
+* Ubuntu 17.04 felhasználójához GConf telepíteni kell, – a következő parancsok futtatásával, és indítsa újra a számítógépet erre:
+
+    ```
+    sudo apt-get install libgconf-2-4
+    ```
 
 ## <a name="version-094--093"></a>Verzió 0.9.4 / 0.9.3-as
 01/21/2018
 
 ### <a name="download-azure-storage-explorer-094-preview"></a>Töltse le az Azure Tártallózó (előzetes verzió) 0.9.4
-- [A Windows Azure Tártallózó (előzetes verzió) 0.9.4](https://go.microsoft.com/fwlink/?LinkId=708343)
-- [A Mac Azure Tártallózó (előzetes verzió) 0.9.4](https://go.microsoft.com/fwlink/?LinkId=708342)
-- [Linux rendszerhez készült Azure Tártallózó (előzetes verzió) 0.9.4](https://go.microsoft.com/fwlink/?LinkId=722418)
+* [Töltse le a Windows Azure Tártallózó (előzetes verzió) 0.9.4](https://go.microsoft.com/fwlink/?LinkId=809306)
+* [Töltse le a Mac Azure Tártallózó (előzetes verzió) 0.9.4](https://go.microsoft.com/fwlink/?LinkId=809307)
+* [Linux rendszerhez készült Azure Tártallózó (előzetes verzió) 0.9.4 letöltése](https://go.microsoft.com/fwlink/?LinkId=809308)
 
 ### <a name="new"></a>Új
 * A meglévő tárolási ablak fog lehet ismét használni:
@@ -76,15 +130,30 @@ A cikkben a kibocsátási megjegyzések a 0.9.4. Azure Tártallózó (előzetes 
     sudo apt-get install libgconf-2-4
     ```
 
+## <a name="previous-releases"></a>Korábbi kiadások
+
+* [0.9.2 verzió](#version-092)
+* [Verzió 0.9.1 / 0.9.0-s](#version-091)
+* [0.8.16 verzió](#version-0816)
+* [0.8.14 verzió](#version-0814)
+* [0.8.13 verzió](#version-0813)
+* [Verzió 0.8.12 / 0.8.11 / 0.8.10](#version-0812--0811--0810)
+* [Verzió 0.8.9 / 0.8.8](#version-089--088)
+* [0.8.7 verzió](#version-087)
+* [0.8.6 verzió](#version-086)
+* [0.8.5 verzió](#version-085)
+* [0.8.4 verzió](#version-084)
+* [0.8.3 verzió](#version-083)
+* [0.8.2 verzió](#version-082)
+* [0.8.0 verzió](#version-080)
+* [0.7.20160509.0 verzió](#version-07201605090)
+* [0.7.20160325.0 verzió](#version-07201603250)
+* [0.7.20160129.1 verzió](#version-07201601291)
+* [0.7.20160105.0 verzió](#version-07201601050)
+* [0.7.20151116.0 verzió](#version-07201511160)
+
 ## <a name="version-092"></a>0.9.2 verzió
 11/01/2017
-
-### <a name="download-azure-storage-explorer-092-preview"></a>Töltse le az Azure Tártallózó (előzetes verzió) 0.9.2
-* [Töltse le a Windows Azure Tártallózó (előzetes verzió) 0.9.2](https://go.microsoft.com/fwlink/?LinkId=809306)
-* [Töltse le a Mac Azure Tártallózó (előzetes verzió) 0.9.2](https://go.microsoft.com/fwlink/?LinkId=809307)
-* [Linux rendszerhez készült Azure Tártallózó (előzetes verzió) 0.9.2 letöltése](https://go.microsoft.com/fwlink/?LinkId=809308)
-
-
 
 ### <a name="hotfixes"></a>Hotfixes
 * Váratlan adatok módosítása volt lehetséges, attól függően, hogy a helyi időzónát táblaentitásokat Edm.DateTime értékeinek szerkesztése során. A szerkesztő mostantól használ a egyszerű szövegmező Edm.DateTime értékek pontos, egységes ad.
@@ -144,32 +213,6 @@ A cikkben a kibocsátási megjegyzések a 0.9.4. Azure Tártallózó (előzetes 
     ```
     sudo apt-get install libgconf-2-4
     ```
-
-
-
-
-
-
-## <a name="previous-releases"></a>Korábbi kiadások
-
-* [Verzió 0.9.1 / 0.9.0-s](#version-091)
-* [0.8.16 verzió](#version-0816)
-* [0.8.14 verzió](#version-0814)
-* [0.8.13 verzió](#version-0813)
-* [Verzió 0.8.12 / 0.8.11 / 0.8.10](#version-0812--0811--0810)
-* [Verzió 0.8.9 / 0.8.8](#version-089--088)
-* [0.8.7 verzió](#version-087)
-* [0.8.6 verzió](#version-086)
-* [0.8.5 verzió](#version-085)
-* [0.8.4 verzió](#version-084)
-* [0.8.3 verzió](#version-083)
-* [0.8.2 verzió](#version-082)
-* [0.8.0 verzió](#version-080)
-* [0.7.20160509.0 verzió](#version-07201605090)
-* [0.7.20160325.0 verzió](#version-07201603250)
-* [0.7.20160129.1 verzió](#version-07201601291)
-* [0.7.20160105.0 verzió](#version-07201601050)
-* [0.7.20151116.0 verzió](#version-07201511160)
 
 ## <a name="version-091--090-preview"></a>Verzió 0.9.1 / 0.9.0-s (előzetes verzió)
 10/20/2017

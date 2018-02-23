@@ -160,6 +160,8 @@
           href: data-prep-appendix10-sample-custom-column-transforms-python.md
         - name: Adatelőkészítés-végrehajtási API
           href: data-prep-python-execution-api.md
+        - name: Adatok előkészítésének operacionalizálása
+          href: data-prep-operationalization.md
     - name: Kísérletezés
       items:
         - name: Kísérletezési szolgáltatás konfigurációja

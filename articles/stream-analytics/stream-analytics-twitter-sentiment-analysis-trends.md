@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/29/2017
 ms.author: samacha
-ms.openlocfilehash: 98230a8b61d1776a9ab23fd416af306efc700959
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 96a169343481f1cdf43af82a7768cfe08cbd4886
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="real-time-twitter-sentiment-analysis-in-azure-stream-analytics"></a>Azure Stream Analytics elemzés, valós idejű Twitter véleményeket
 
@@ -51,7 +51,7 @@ A mintaalkalmazás eseményeket hoz létre, és az Azure event hubs a leküldés
 ### <a name="create-an-event-hub-namespace-and-event-hub"></a>Event hub névtér és eseményközpont létrehozása
 Ebben az eljárásban először létre kell hoznia egy event hub névtér, és ezután hozzáadhat új eseményközpont tartalmazni. Event hub névterek logikailag csoportosítják a kapcsolódó esemény bus példányok szolgálnak. 
 
-1. Jelentkezzen be az Azure-portálon, majd kattintson a **új** > **az eszközök internetes hálózatát** > **Eseményközpont**. 
+1. Jelentkezzen be az Azure-portálon, majd kattintson a **hozzon létre egy erőforrást** > **az eszközök internetes hálózatát** > **Eseményközpont**. 
 
 2. Az a **névtér létrehozása** panelen adja meg például a névtér nevét `<yourname>-socialtwitter-eh-ns`. A névtér egy tetszőleges nevet is használhat, de a neve nem érvényes URL- és Azure között egyedinek kell lennie. 
     
@@ -144,7 +144,7 @@ Tartani lesz szüksége, ez az információ, mivel a következő eljárásban sz
 ### <a name="configure-the-client-application"></a>Az ügyfélalkalmazás konfigurálása
 Létrehoztunk Önnek egy Twitter-adatok használatával csatlakozó ügyfélalkalmazás [Twitter a Streamelési API-k](https://dev.twitter.com/streaming/overview) tweetet eseménygyűjtési kapcsolatos témakörök egy adott készletét. Az alkalmazás használja a [Sentiment140](http://help.sentiment140.com/) nyílt forráskódú eszközt, amely a következő véleményeket értéket rendel hozzá minden egyes tweetet:
 
-* 0 = negatív.
+* 0 = negative
 * 2 = neutral
 * 4 = pozitív
 
@@ -200,7 +200,7 @@ Az alábbi eljárás mindkét megközelítés dokumentumokat.
 
 Most, hogy a rendszer valós időben Twitterről a adatfolyam-tweetet események, ezek az események valós idejű elemzése beállíthat egy Stream Analytics-feladat.
 
-1. Az Azure portálon kattintson **új** > **az eszközök internetes hálózatát** > **Stream Analytics-feladat**.
+1. Az Azure portálon kattintson **hozzon létre egy erőforrást** > **az eszközök internetes hálózatát** > **Stream Analytics-feladat**.
 
 2. A feladat neve `socialtwitter-sa-job` , és adja meg egy előfizetési, erőforráscsoportot és helyet.
 
@@ -377,7 +377,7 @@ Ez az oktatóanyag céljából akkor ellenőrizze, témakörök, amelyek szerepe
 ## <a name="get-support"></a>Támogatás kérése
 Ha további segítségre van szüksége, próbálkozzon a [Azure Stream Analytics-fórumot](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Az Azure Stream Analytics bemutatása](stream-analytics-introduction.md)
 * [Get started using Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md) (Bevezetés az Azure Stream Analytics használatába)
 * [Scale Azure Stream Analytics jobs](stream-analytics-scale-jobs.md) (Azure Stream Analytics-feladatok méretezése)

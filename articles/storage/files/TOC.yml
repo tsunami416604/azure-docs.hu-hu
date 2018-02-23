@@ -198,6 +198,8 @@
           href: ../../vs-azure-tools-storage-explorer-relnotes.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: A Storage Explorer hibaelhárítása
           href: ../common/storage-explorer-troubleshooting.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+        - name: Storage Explorer – kisegítő lehetőségek
+          href: ../../vs-azure-tools-storage-explorer-accessibility.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: NuGet-csomagok
       items:
         - name: Az Azure Storage .NET-hez készült ügyféloldali kódtára

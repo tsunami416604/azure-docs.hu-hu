@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 09/28/2017
 ms.author: asaxton
-ms.openlocfilehash: ab5d184fde2cbcb517b325624c8405954b4d0972
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a7f86ebf3e79812eb50e58cbb320336cbd1149e6
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="pause-and-start-your-power-bi-embedded-capacity-in-the-azure-portal"></a>Felfüggesztése, és indítsa el a Power BI Embedded kapacitás és az Azure-portálon
 
@@ -35,9 +35,9 @@ A kapacitás felfüggesztéséhez megakadályozza kiszámlázott. A kapacitás f
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
-2. Válassza ki **további szolgáltatások** > **Power BI Embedded** a kapacitások megjelenítéséhez.
+2. Válassza ki **minden szolgáltatás** > **Power BI Embedded** a kapacitások megjelenítéséhez.
 
-    ![További szolgáltatások az Azure portálon](media/pause-start/azure-portal-more-services.png)
+    ![Azure-portálon belül minden szolgáltatás](media/pause-start/azure-portal-more-services.png)
 
 3. Válassza ki a felfüggeszteni kívánt kapacitást.
 
@@ -57,9 +57,9 @@ A kapacitás elindításával használatának folytatása A kapacitás indítás
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
-2. Válassza ki **további szolgáltatások** > **Power BI Embedded** a kapacitások megjelenítéséhez.
+2. Válassza ki **minden szolgáltatás** > **Power BI Embedded** a kapacitások megjelenítéséhez.
 
-    ![További szolgáltatások az Azure portálon](media/pause-start/azure-portal-more-services.png)
+    ![Azure-portálon belül minden szolgáltatás](media/pause-start/azure-portal-more-services.png)
 
 3. Válassza ki a kapacitás el szeretné indítani.
 
@@ -75,7 +75,7 @@ A kapacitás elindításával használatának folytatása A kapacitás indítás
 
 Ha a tartalom hozzá van rendelve a kapacitás, érhető el egyszer elindult.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha azt szeretné, a kapacitás méretezési felfelé vagy lefelé, lásd: [méretezni a Power BI Embedded kapacitás](scale-capacity.md).
 

@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 3350645d4f173a6d0d007ff9095bb3115600a13b
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 1b931de564417ab98207321d7798613b187e411f
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="load-1-tb-into-azure-sql-data-warehouse-under-15-minutes-with-data-factory"></a>1 TB-os betöltése az Azure SQL Data Warehouse Data Factory a 15 perc
 > [!NOTE]
@@ -114,8 +114,8 @@ Az előfeltételként szükséges lépéseket, befejeződött azt most már kés
 
 ## <a name="launch-copy-wizard"></a>A Másolás varázsló indítása
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
-2. Kattintson **+ új** kattintson a bal felső sarkának **Eszközintelligencia + analitika**, és kattintson a **adat-előállító**.
-3. A **New data factory** (Új data factory) panelen:
+2. Kattintson **hozzon létre egy erőforrást** kattintson a bal felső sarkának **Eszközintelligencia + analitika**, és kattintson **Data Factory**.
+3. Az a **új adat-előállító** panelen:
 
    1. Adja meg **LoadIntoSQLDWDataFactory** a a **neve**.
        Az Azure data factory nevének globálisan egyedinek kell lennie. Ha a hibaüzenetet kapja: **nem érhető el adat-előállító "LoadIntoSQLDWDataFactory"**, változtassa meg az adat-előállítóban (például yournameLoadIntoSQLDWDataFactory) nevét, és próbálja meg újra létrehozni. A Data Factory-összetevők elnevezési szabályait a [Data Factory - Naming Rules](data-factory-naming-rules.md) (Data Factory – Elnevezési szabályok) című témakörben találhatja.  

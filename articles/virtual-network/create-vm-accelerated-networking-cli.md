@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 01/02/2018
 ms.author: jdial
 ms.custom: 
-ms.openlocfilehash: c051fec3369ef0d309ecf6c68b17272bb396eeec
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: e4c875d07905b56c0d3eb346c839f7a4917531de
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-a-linux-virtual-machine-with-accelerated-networking"></a>A hálózat elérését gyorsítja fel Linux virtuális gép létrehozása
 
@@ -48,8 +48,8 @@ A gyorsított hálózat előnyeit, hogy engedélyezve van a virtuális gép csak
 ## <a name="supported-operating-systems"></a>Támogatott operációs rendszerek
 * **Ubuntu 16.04**: 4.11.0-1013 vagy nagyobb kernel-verzió
 * **SLES SP3**: 4.4.92-6.18 vagy nagyobb kernel-verzió
-* **RHEL**: 7.4.2017120423 vagy nagyobb kernel-verzió
-* **CentOS**: 7.4.20171206 vagy nagyobb kernel-verzió
+* **RHEL 7.4**: 7.4.2017120423 vagy nagyobb kernel-verzió
+* **CentOS 7.4**: 7.4.20171206 vagy nagyobb kernel-verzió
 
 ## <a name="supported-vm-instances"></a>Támogatott Virtuálisgép-példányok
 Gyorsított hálózatkezelés legtöbb általános célú és számítási optimalizált példány mérete 4 vagy több Vcpu a támogatott. -Példányokon például D/DSv3 vagy E/ESv3, amely támogatja a Hyper-Threading technológia az elérését gyorsítja fel a hálózat támogatott 8 vagy több Vcpu a Virtuálisgép-példányok.  Támogatott adatsorokat: D/DSv2, D/DSv3, E/ESv3, F/Fs/Fsv2 és Ms/Mms. 
@@ -78,7 +78,7 @@ az group create --name myResourceGroup --location centralus
 
 Ki kell választania egy támogatott Linux régióban felsorolt [Linux az elérését gyorsítja fel hálózati](https://azure.microsoft.com/updates/accelerated-networking-in-expanded-preview).
 
-A virtuális hálózat létrehozása [az hálózati vnet létrehozása](/cli/azure/network/vnet#az_network_vnet_create). Az alábbi példa létrehoz egy virtuális hálózatot nevű *myVnet* egyetlen alhálózattal:
+Hozzon létre egy virtuális hálózatot az [az network vnet create](/cli/azure/network/vnet#az_network_vnet_create) paranccsal. Az alábbi példa létrehoz egy virtuális hálózatot nevű *myVnet* egyetlen alhálózattal:
 
 ```azurecli
 az network vnet create \
@@ -90,7 +90,7 @@ az network vnet create \
 ```
 
 ## <a name="create-a-network-security-group"></a>Hálózati biztonsági csoport létrehozása
-Hozzon létre egy hálózati biztonsági csoport [az hálózati nsg létrehozása](/cli/azure/network/nsg#az_network_nsg_create). Az alábbi példakód létrehozza a hálózati biztonsági csoport nevű *myNetworkSecurityGroup*:
+Hozzon létre egy hálózati biztonsági csoport [az hálózati nsg létrehozása](/cli/azure/network/nsg#az_network_nsg_create). A következő példa a *myNetworkSecurityGroup* nevű hálózati biztonsági csoportot hozza létre:
 
 ```azurecli
 az network nsg create \
@@ -117,7 +117,7 @@ az network nsg rule create \
 
 ## <a name="create-a-network-interface-with-accelerated-networking"></a>Hozzon létre egy adott hálózati csatoló gyorsított hálózatkezelés
 
-Hozzon létre egy nyilvános IP-cím [létrehozása az hálózati nyilvános ip-](/cli/azure/network/public-ip#az_network_public_ip_create). A nyilvános IP-cím nem szükséges, ha nem tervezi a virtuális gép az internetről való eléréséhez, de ez a cikk a végrehajtásához, szükség rá.
+Hozzon létre egy nyilvános IP-címet az [az network public-ip create](/cli/azure/network/public-ip#az_network_public_ip_create) paranccsal. A nyilvános IP-cím nem szükséges, ha nem tervezi a virtuális gép az internetről való eléréséhez, de ez a cikk a végrehajtásához, szükség rá.
 
 ```azurecli
 az network public-ip create \

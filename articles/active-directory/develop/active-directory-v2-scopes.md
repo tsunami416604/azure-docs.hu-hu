@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: a93cfd710f89efbd4dab01b84ecdb12b4acb0033
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: b35e4a7619c23660d93d91219a92be7e93a35139
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="scopes-permissions-and-consent-in-the-azure-active-directory-v20-endpoint"></a>Hatókörök, engedélyek és az Azure Active Directory v2.0-végponttól jóváhagyása
 Alkalmazásokat, amelyekbe beépül az Azure Active Directory (Azure AD) hajtsa végre az olyan engedélyezési modell, amely lehetőséget ad a felhasználók szabályozhatják, hogyan az alkalmazások is hozzáférjenek az adataikhoz. A használt engedélyezési modellt v2.0 végrehajtásának már frissítve van, és módosítja, hogy kapcsolatba kell lépnie egy alkalmazást az Azure AD. Ez a cikk ismerteti a engedélyezési modell, beleértve a hatókörök, engedélyek és beleegyezése főbb fogalmait és kifejezéseit.
@@ -32,23 +32,23 @@ Alkalmazásokat, amelyekbe beépül az Azure Active Directory (Azure AD) hajtsa 
 ## <a name="scopes-and-permissions"></a>Hatókörök és engedélyek
 Az Azure AD valósít meg a [OAuth 2.0](active-directory-v2-protocols.md) hitelesítési protokoll. OAuth 2.0 egy metódust, amelyen keresztül a külső alkalmazások hozzáférhetnek a webkiszolgáló által szolgáltatott erőforrásokhoz egy felhasználó nevében. A webkiszolgáló által szolgáltatott erőforrás, amely az Azure AD tartalmaz egy erőforrás-azonosítót, vagy *Application ID URI*. Például a Microsoft web által szolgáltatott erőforrások közé:
 
-* Az Office 365 levelezési API egységes:`https://outlook.office.com`
-* Az Azure AD Graph API:`https://graph.windows.net`
-* A Microsoft Graph:`https://graph.microsoft.com`
+* Az Office 365 levelezési API egységes: `https://outlook.office.com`
+* Az Azure AD Graph API: `https://graph.windows.net`
+* Microsoft Graph: `https://graph.microsoft.com`
 
 Ugyanez vonatkozik, amely integrálva van az Azure AD külső erőforrásokat. Ezeket az erőforrásokat is adhat meg, amelyek segítségével a funkciók erőforrás felosztani kisebb csoportjai engedélyekkel. Tegyük fel [Microsoft Graph](https://graph.microsoft.io) többek között a következő feladatok végrehajtására engedélyek definiálva van:
 
 * A felhasználó naptár olvasása
 * A felhasználó naptár írása
-* E-mailek küldése más felhasználó nevében
+* A felhasználó e-maileket küldjön
 
 Ilyen típusú engedélyek megadásával az erőforrás adatait, és hogyan van téve az adatok minden részletre kiterjedő szabályozhatják rendelkezik. A külső alkalmazások is azokat az engedélyeket kérhet egy alkalmazás felhasználói. Az alkalmazás felhasználó működhet-e az alkalmazás a felhasználó nevében előtt jóvá kell hagynia az engedélyeket. Adattömbösítő kisebb engedélycsoportok funkciókat az erőforrás, amelyet csak a meghatározott engedélyek, hogy a művelet végrehajtására szolgál(nak) kell kéréséhez harmadik felek alkalmazásaihoz építhető ki. Alkalmazás felhasználói tudhatja, pontosan egy alkalmazás általi felhasználásának módja az adatokat, és azokat lehet több abban, hogy az alkalmazás viselkedik rosszindulatú.
 
 Az Azure AD és az OAuth, ezek az engedélyek nevezik *hatókörök*. Akkor is néha nevezzük *oAuth2Permissions*. A hatókör karakterlánc-érték jelzi az Azure ad-ben. A Microsoft Graph példát folytatva, a hatókör minden engedély értéke:
 
-* Olvassa el a felhasználó naptár használatával`Calendars.Read`
-* A felhasználó naptár írni használatával`Calendars.ReadWrite`
-* Egy felhasználó használt által e-maileket küldjön`Mail.Send`
+* Olvassa el a felhasználó naptár használatával `Calendars.Read`
+* A felhasználó naptár írni használatával `Calendars.ReadWrite`
+* Egy felhasználó használt által e-maileket küldjön `Mail.Send`
 
 Egy alkalmazás kérhetnek ezeket az engedélyeket ad meg a hatókörök a kéréseket a v2.0-végponttól.
 
@@ -58,7 +58,7 @@ Az OpenID Connect v2.0 végrehajtására van néhány jól meghatározott hatók
 ### <a name="openid"></a>openid
 Ha egy alkalmazás segítségével hajtja végre a bejelentkezési [OpenID Connect](active-directory-v2-protocols.md), azt kell igényelnie a `openid` hatókör. A `openid` hatókör jeleníti meg a munkahelyi fiók hozzájárulási oldalán a "Bejelentkezés" engedélyt, és a személyes Microsoft-fiók hozzájárulási oldalán "Profilját és alkalmazások és a Microsoft-fiókjával szolgáltatásokhoz való csatlakozás" engedélyt. Ezzel az engedéllyel, az alkalmazás a felhasználó egyedi azonosítóját fogadhat formájában a `sub` jogcímek. Az alkalmazásnak a hozzáférést a UserInfo végpontnak is biztosít. A `openid` hatóköre lehet használni a v2.0 jogkivonat végpontjához azonosító-jogkivonatokat, amely biztonságos HTTP-hívásokat az alkalmazások különböző összetevői közötti megszerzésére.
 
-### <a name="email"></a>e-mailben
+### <a name="email"></a>e-mail
 A `email` hatókör használható a `openid` hatókörben és bármely más. Az alkalmazásnak a hozzáférést biztosít a felhasználó elsődleges e-mail címéhez formájában a `email` jogcímek. A `email` jogcím egy jogkivonatba tartalmazza, csak akkor, ha egy e-mail-címmel társítva a felhasználói fiók, amely nem mindig a helyzet. Ha használja a `email` hatókör, kezelni olyan esetben, amikor az alkalmazás kell készíteni a `email` jogcímet a jogkivonat nem létezik.
 
 ### <a name="profile"></a>Profil
@@ -102,9 +102,9 @@ A bérlő lévő összes felhasználó számára kérelmezni kér, az alkalmazá
 ## <a name="admin-restricted-scopes"></a>Rendszergazda által korlátozott hatókör
 A Microsoft-ökoszisztéma az egyes magas szintű jogosultságokkal állítható be *admin korlátozott*. Az ilyen típusú hatókörök például a következő engedélyekkel:
 
-* Segítségével a szervezetek címtáradatok olvasása`Directory.Read`
-* Adatokat írni egy szervezet címtárához használatával`Directory.ReadWrite`
-* Olvassa el a munkahely biztonsági csoportok segítségével`Groups.Read.All`
+* Segítségével a szervezetek címtáradatok olvasása `Directory.Read`
+* Adatokat írni egy szervezet címtárához használatával `Directory.ReadWrite`
+* Olvassa el a munkahely biztonsági csoportok segítségével `Groups.Read.All`
 
 Bár a fogyasztói felhasználó előfordulhat, hogy hozzáférést egy alkalmazáshoz ilyen típusú adat, ugyanazokat a bizalmas vállalati adatokhoz való hozzáférés biztosítása a szervezeti felhasználók korlátozza. Ha az alkalmazás a szervezeti felhasználó hozzáférést kér egy ezeket az engedélyeket, a felhasználó kap egy hibaüzenet, amely szerint nem jogosultak az Alkalmazásengedélyek engedélyezése.
 
@@ -147,7 +147,7 @@ https://login.microsoftonline.com/common/adminconsent?client_id=6731de76-14a6-49
 
 | Paraméter | Feltétel | Leírás |
 | --- | --- | --- |
-| Bérlői |Szükséges |A directory-bérlőt, amelyet az engedélyt. Megadható a GUID vagy rövid név formátumban. |
+| bérlő |Szükséges |A directory-bérlőt, amelyet az engedélyt. A megadott GUID vagy rövid név formátumban vagy általános hivatkozott felügyeltszolgáltatás "általános", a példában látható módon. |
 | client_id |Szükséges |Az alkalmazás azonosítója, amely a [alkalmazásregisztrációs portálra](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) az alkalmazáshoz hozzárendelni. |
 | redirect_uri |Szükséges |Az átirányítási URI, ha azt szeretné, hogy a válasz küldését az alkalmazások kezeléséhez. Ez pontosan egyeznie kell az átirányítási URI-k, az alkalmazás regisztrációs portálon regisztrált. |
 | state |Ajánlott |A kérelemhez, amely a token válaszul is visszaadott szerepel érték. Bármilyen tartalmat karakterlánc lehet. Az állapot használata az alkalmazás a felhasználói állapot információt kódolására, előtt a hitelesítési kérést, például az oldal vagy nézet, amilyenek korábban voltak a. |
@@ -163,7 +163,7 @@ GET http://localhost/myapp/permissions?tenant=a8990e1f-ff32-408a-9f8e-78d3b9139b
 
 | Paraméter | Leírás |
 | --- | --- | --- |
-| Bérlői |A directory-bérlőhöz, amely engedéllyel rendelkezik az alkalmazás a kért, GUID formátumban. |
+| bérlő |A directory-bérlőhöz, amely engedéllyel rendelkezik az alkalmazás a kért, GUID formátumban. |
 | state |A kérelem is visszaad a biztonságijogkivonat-válaszban szereplő érték. Bármilyen tartalmat karakterlánc lehet. Az állapot az alkalmazás a felhasználói állapot információt kódolásához, előtt a hitelesítési kérést, például az oldal vagy nézet, amilyenek korábban voltak a használatos. |
 | admin_consent |Úgy lesz beállítva, **igaz**. |
 

@@ -9,28 +9,28 @@ manager: jhubbard
 ms.service: mysql-database
 ms.topic: article
 ms.date: 09/15/2017
-ms.openlocfilehash: 6e9c541aac1241b6af0e4a58f5591d46f9a98c40
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b73fe2214a165d7c02c0a58551d8b84bee39f919
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-and-manage-azure-database-for-mysql-server-using-azure-portal"></a>Létrehozása és kezelése az Azure-adatbázis MySQL-kiszolgáló Azure-portál használatával
 Ez a témakör ismerteti, hogyan gyorsan létrehozhat egy új Azure-adatbázis MySQL-kiszolgáló. A kiszolgáló kezelése az Azure portál használatával kapcsolatos adatokat is tartalmaz. Kiszolgáló kezelése tartalmazza a kiszolgáló adatait, és az adatbázisok, a jelszó alaphelyzetbe állítása, és a kiszolgáló törlésével megtekintése.
 
-## <a name="log-in-to-the-azure-portal"></a>Jelentkezzen be az Azure portálra.
+## <a name="log-in-to-the-azure-portal"></a>Bejelentkezés az Azure Portalra
 Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 
 ## <a name="create-an-azure-database-for-mysql-server"></a>Azure-adatbázis létrehozása MySQL-kiszolgálóhoz
 Kövesse az alábbi lépéseket az Azure-adatbázis "mysqlserver4demo." nevű MySQL-kiszolgáló létrehozásához
 
-1. Kattintson a **új** gomb az Azure portál bal felső sarkában található.
+1. Kattintson a **hozzon létre egy erőforrást** gomb az Azure portál bal felső sarkában található.
 
 2. Válassza ki az új oldalon **adatbázisok**, és az adatbázisok lapon válassza ki **MySQL az Azure-adatbázis**.
 
     > Egy MySQL-kiszolgálóhoz tartozó Azure-adatbázis jön létre egy adott csoportján [számítási és tárolási](./concepts-compute-unit-and-storage.md) erőforrásokat. Az adatbázis egy Azure erőforráscsoporton belül, és a MySQL-kiszolgáló egy Azure-adatbázis létrehozása.
 
-   ![– új-kiszolgáló létrehozása](./media/howto-create-manage-server-portal/create-new-server.png)
+   ![create-new-server](./media/howto-create-manage-server-portal/create-new-server.png)
 
 3. Töltse ki az Azure-adatbázishoz MySQL űrlap az alábbi információk segítségével:
 
@@ -47,7 +47,7 @@ Kövesse az alábbi lépéseket az Azure-adatbázis "mysqlserver4demo." nevű My
 
 4. Kattintson a **tarifacsomag** új kiszolgálóját a szolgáltatás és teljesítményszintet szintjének beállításához. Számítási egység konfigurálható közötti 50-100 alapszintű rétegben, 100 és a normál rétegben, 200 között, és adható tárterület a belefoglalt mennyisége alapján. Ez az útmutató útmutató most válassza 50 számítási egység és 50 GB. Kattintson a **OK** a mentéshez.
 
-   ![Hozzon létre-kiszolgáló--tarifacsomagot](./media/howto-create-manage-server-portal/create-server-pricing-tier.png)
+   ![create-server-pricing-tier](./media/howto-create-manage-server-portal/create-server-pricing-tier.png)
 
 5. A kiszolgáló üzembe helyezéséhez kattintson a **Létrehozás** elemre. Az üzembe helyezés eltarthat néhány percig.
 
@@ -63,7 +63,7 @@ Kövesse az alábbi lépéseket az Azure-adatbázis "mysqlserver4demo." nevű My
 
 2. Adjon meg új jelszót, és az jelszót az ablakban látható módon:
 
-   ![Jelszó alaphelyzetbe állítása](./media/howto-create-manage-server-portal/reset-password.png)
+   ![reset-password](./media/howto-create-manage-server-portal/reset-password.png)
 
 3. Kattintson a **OK** mentse az új jelszót.
 
@@ -89,6 +89,6 @@ A kiszolgálón **áttekintése** panelen görgessen lefelé, amíg megjelenik a
 ## <a name="show-details-of-an-azure-database-for-mysql-server"></a>Egy Azure-adatbázis MySQL-kiszolgáló részleteinek megjelenítése
 A kiszolgáló panelen alatt **beállítások**, kattintson a **tulajdonságok** megnyitásához a **tulajdonságok** panelt, és ezután tekintse meg az összes részletes információ a kiszolgálóról.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Gyors üzembe helyezés: Azure-adatbázis létrehozása a MySQL-kiszolgáló Azure-portál használatával](./quickstart-create-mysql-server-database-using-azure-portal.md)

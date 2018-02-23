@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/10/2017
 ms.author: v-craic
-ms.openlocfilehash: 25675aae77fbe2610fe416210de9a306c1c09f3d
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: a37fece1f46a992b860e3a57f63da5852038205f
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="upload-vhd-file-to-labs-storage-account-using-microsoft-azure-storage-explorer"></a>Használatával a Microsoft Azure Tártallózó tesztlabor a tárfiók VHD-fájl feltöltése
 
@@ -36,7 +36,7 @@ A következő lépések végigvezetik a VHD-fájl feltöltése a DevTest Labs se
 
     1. Jelentkezzen be az [Azure Portalra](http://go.microsoft.com/fwlink/p/?LinkID=525040).
     
-    1. Válassza a **További szolgáltatások**, majd a **DevTest Labs** elemet a listából.
+    1. Válassza ki **minden szolgáltatás**, majd válassza ki **DevTest Labs** a listából.
     
     1. Válassza ki a kívánt labor labs listájának megtekintéséhez.  
     
@@ -54,7 +54,7 @@ A következő lépések végigvezetik a VHD-fájl feltöltése a DevTest Labs se
     
     1. A **PowerShell-lel lemezkép feltöltése a** csempe megjeleníti hívása a **Add-AzureVhd** parancsmag. Az első paraméter (*cél*) tartalmazza a tárfiók nevét a labor a következő formátumban:
     
-        https://<STORAGE-ACCOUNT-Name>.BLOB.Core.Windows.NET/uploads/... 
+        https://<STORAGE-ACCOUNT-NAME>.blob.core.windows.net/uploads/... 
 
     1. Jegyezze meg a tárfiók nevét, a későbbi lépésekben használatban van.
     

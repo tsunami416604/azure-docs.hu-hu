@@ -9,11 +9,11 @@ ms.author: kgremban
 ms.date: 11/15/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 17675f870a015e86f98bf286a9b1c2bbc05c16cd
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: 803b0bbff12c8ce471c0bff5e22e24601b8ce07f
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-from-the-azure-portal-to-a-windows-device---preview"></a>Gyors üzembe helyezés: Az első IoT peremhálózati modul az Azure-portálon a Windows rendszerű eszközre központi telepítése – előzetes
 
@@ -32,7 +32,7 @@ Ez az oktatóanyag feltételezi, hogy használ egy számítógépet vagy a Windo
 3. Telepítés [Python 2.7-es Windows] [ lnk-python] , és győződjön meg arról, hogy a pip paranccsal.
 4. A következő parancsot a IoT peremhálózati vezérlő parancsprogram letöltése.
 
-   ```
+   ```cmd
    pip install -U azure-iot-edge-runtime-ctl
    ```
 
@@ -43,7 +43,7 @@ Ez az oktatóanyag feltételezi, hogy használ egy számítógépet vagy a Windo
 >    * Windows IoT mag (Build 16299) x64-alapú eszköz
 >
 > A Windows az IoT-Core, kövesse az utasításokat a [az IoT-Edge futásidejű telepíthető Windows IoT Core][lnk-install-iotcore]. Ellenkező esetben egyszerűen [konfigurálása a Windows-tárolók használatára Docker][lnk-docker-containers], és opcionálisan ellenőrzi az előfeltételeket a következő powershell-paranccsal:
->    ```
+>    ```powershell
 >    Invoke-Expression (Invoke-WebRequest -useb https://aka.ms/iotedgewin)
 >    ```
 
@@ -78,19 +78,19 @@ Az IoT-Edge futásidejű minden IoT peremhálózati eszközön van telepítve. E
 
 A futtatókörnyezet konfigurálása az IoT-peremhálózati eszköz kapcsolati karakterlánccal előző szakaszából.
 
-```
+```cmd
 iotedgectl setup --connection-string "{device connection string}" --auto-cert-gen-force-no-passwords
 ```
 
 Indítsa el a futtatókörnyezetben.
 
-```
+```cmd
 iotedgectl start
 ```
 
 Ellenőrizze, hogy az IoT-Edge-ügynök fut-e modulként Docker.
 
-```
+```cmd
 docker ps
 ```
 
@@ -129,7 +129,7 @@ Ha már nincs szüksége az IoT Hub létrehozott, használhatja a [az iot hub de
 az iot hub delete --name {your iot hub name} --resource-group {your resource group name}
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Megtudta, hogyan IoT peremhálózati eszköz egy IoT-Edge-modul telepítéséhez. Próbálja meg különböző modulok, az Azure szolgáltatások üzembe helyezése, hogy elemezheti az adatokat a peremhálózaton. 
 

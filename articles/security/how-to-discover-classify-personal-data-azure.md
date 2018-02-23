@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 11/21/2017
 ms.author: barclayn
 ms.custom: 
-ms.openlocfilehash: 0d99df534da4575f3c34ec6b3475cdd1bdc3308a
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: 011fe26c297ff991af1282c1ff3914031a99f1e4
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="discover-identify-and-classify-personal-data-in-microsoft-azure"></a>Ismerje meg, azonosítása és besorolni a személyes adatok Microsoft Azure-ban
 
@@ -49,7 +49,7 @@ A vállalat kíván a következő problémákat:
 - A vállalat alkalmazásfejlesztők számára az ügyfél és az alkalmazott személyes adatok azok létrehozott, az alkalmazásokat, amelyek végezhetnek az Azure Search képesnek kell lennie.
 - A fejlesztők a személyes adatok kereséséhez a dokumentum-adatbázisban képesnek kell lennie.
 
-## <a name="azure-active-directory-data-discovery"></a>Az Azure Active Directory: Adatok felderítése
+## <a name="azure-active-directory-data-discovery"></a>Azure Active Directory: Data discovery
 
 [Az Azure Active Directory](https://azure.microsoft.com/services/active-directory/) a Microsoft felhőalapú, több-bérlős directory és az identity management szolgáltatás. Megkeresheti a felhasználói profilok felhasználói és az alkalmazottak és a felhasználó munkahelyi adatokat, amelyek személyes adatokat tartalmaznak a [Azure Active Directory](https://azure.microsoft.com/services/active-directory/) (AAD-) környezet használatával a [Azure-portálon](https://portal.azure.com/).
 
@@ -59,22 +59,22 @@ Ez különösen akkor hasznos, ha azt szeretné, vagy módosítani az adott felh
 
 1. Jelentkezzen be a [Azure-portálon](https://portal.azure.com) egy olyan fiókkal, amely a címtár globális rendszergazdája.
 
-2. Válassza ki **további szolgáltatások**, adja meg **felhasználók és csoportok** a szövegmezőbe, majd válassza ki azt a **Enter**.
+2. Válassza ki **minden szolgáltatás**, adja meg **felhasználók és csoportok** a szövegmezőbe, majd válassza ki azt a **Enter**.
 
    ![hogyan keresse meg a felhasználói profil és vonatkozó](media/how-to-discover-classify-personal-data-azure/user-profile.png)
 
 3. Az a **felhasználók és csoportok** panelen válassza **felhasználók**.
 
-  ![Nyitó felhasználók és csoportok](media/how-to-discover-classify-personal-data-azure/users-groups.png)
+      ![Nyitó felhasználók és csoportok](media/how-to-discover-classify-personal-data-azure/users-groups.png)
 
 4. Az a **felhasználók és csoportok - felhasználók** panelen válasszon ki egy felhasználót a listából, és ezt követően a kiválasztott felhasználó paneljén válassza **profil** tartalmazhatnak személyes adatokat, a felhasználói profillal kapcsolatos információk megtekintéséhez.
 
-  ![felhasználó kiválasztása](media/how-to-discover-classify-personal-data-azure/select-user.png)
+      ![felhasználó kiválasztása](media/how-to-discover-classify-personal-data-azure/select-user.png)
 
 5. Ha hozzáadása vagy módosítása a felhasználói profillal kapcsolatos információk van szüksége, ehhez, szabadon, majd a parancssávon válassza **mentéséhez.**
 6. A kiválasztott felhasználó paneljén válassza **munkahelyi adatai** megtekinteni a felhasználó munkahelyi adatokat, amelyek személyes adatokat is tartalmazhat.
 
- ![megtekintés munkahely adatai](media/how-to-discover-classify-personal-data-azure/work-info.png)
+     ![megtekintés munkahely adatai](media/how-to-discover-classify-personal-data-azure/work-info.png)
 
 7. Ha szeretne felhasználói a munkahelyi adatok hozzáadása vagy módosítása után ehhez, is, majd a parancssávon válassza **mentéséhez.**
 
@@ -187,7 +187,7 @@ További részletes útmutató az SQL-lekérdezések felépítésével, a Micros
 
 Azure Cosmos DB ismerkedik, és megtudhatja, hogyan hozhat létre adatbázist szeretne, ha felvesznek egy gyűjteményt, és adatok hozzáadása, látogasson el a [Azure Cosmos DB: egy SQL API-webalkalmazás létrehozása](../cosmos-db/create-sql-api-dotnet.md) gyors üzembe helyezési útmutató. Ha azt szeretné, .NET, Java vagy Python, például nyelven ehhez csak válassza ki a kívánt nyelvet Miután a helyhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Azure SQL Database](https://azure.microsoft.com/services/sql-database/?v=16.50)
 

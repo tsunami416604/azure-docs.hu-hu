@@ -13,11 +13,11 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 10/09/2017
 ms.author: cynthn
-ms.openlocfilehash: da00c48f7da5a9be146f4fdb626c93db746c0f9b
-ms.sourcegitcommit: ccb84f6b1d445d88b9870041c84cebd64fbdbc72
+ms.openlocfilehash: 152c5a1103d32af27f689086cfcc9cc1a7acc5d3
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-a-snapshot"></a>Pillanatkép létrehozása 
 
@@ -65,7 +65,7 @@ A kimeneti hasonlóan kell kinéznie:
 ## <a name="use-azure-portal-to-take-a-snapshot"></a>Készítsen pillanatképet az Azure portál használatával 
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. Kattintson a bal felső sarokban kezdődően **új** keresse meg a **pillanatkép**.
+2. Kattintson a bal felső sarokban kezdődően **hozzon létre egy erőforrást** keresse meg a **pillanatkép**.
 3. A pillanatkép paneljén kattintson **létrehozása**.
 4. Adjon meg egy **neve** a pillanatkép.
 5. Válasszon ki egy létező [Erőforráscsoportot](../../azure-resource-manager/resource-group-overview.md#resource-groups), vagy adja meg egy új csoport nevét. 
@@ -77,7 +77,7 @@ A kimeneti hasonlóan kell kinéznie:
 Ha azt tervezi, a pillanatkép segítségével kezelt lemez létrehozása, és csatlakoztassa a virtuális gépek magas végrehajtása szükséges, használja a paraméterrel `--sku Premium_LRS` rendelkező a `az snapshot create` parancsot. Ez létrehoz a pillanatkép, prémium felügyelt lemezként tárolja. Prémium szintű felügyelt lemez jobb teljesítményt, mert SSD-meghajtót (SSD), de drágább, mint a Standard lemezek (HDD).
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
  Hozzon létre egy virtuális gépet egy pillanatképből kezelt lemez létrehozásához a pillanatképből majd lemezcsatlakoztatás az új felügyelt az operációs rendszer lemezeként. További információkért lásd: a [hozzon létre egy virtuális Gépet egy pillanatképből](./../scripts/virtual-machines-linux-cli-sample-create-vm-from-snapshot.md?toc=%2fcli%2fmodule%2ftoc.json) parancsfájl.
 

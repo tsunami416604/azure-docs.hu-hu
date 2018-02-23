@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: Active
 ms.date: 02/12/2018
 ms.author: carlrab
-ms.openlocfilehash: 9f443c6e93f894f49ee2f82787be2025f74ed720
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
-ms.translationtype: HT
+ms.openlocfilehash: 47f42c10a791caa8ab20401574fb853ad3e4f0e9
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="azure-sql-database-resource-limits"></a>Az Azure SQL Database erőforrás korlátok
 
@@ -114,7 +114,16 @@ Akkor növelheti vagy csökkentheti a számára egy rugalmas készlet igények e
 
 ## <a name="what-is-the-maximum-number-of-servers-and-databases"></a>Mi az, hogy a kiszolgálók és adatbázisok maximális számát?
 
-A kiszolgálók régiónként előfizetésenként maximális száma: 21. Adatbázis kiszolgálónként legfeljebb 5000. Ezek a ideiglenes korlátoknak a meghatározott kísérlettel alapján hasznos méretelemzés, logikai fő telemetriai gyűjtemény elemzés és néhány egyéb szempontjait. Kérhet meghaladja ezt a korlátot, feltéve belül a DTU-kvótáról maradhat. Adatbázisok és a kiszolgálók száma nagyra nő, a problémát, amellyel alkalmával statisztikák erőforrásgyűjtemény logikai master és felügyeleti műveletek versengés. Ezek a problémák nincsenek végzetes; késés mértékben.
+| Maximum | Érték |
+| :--- | :--- |
+| Adatbázis kiszolgálónként | 5000 |
+| Régiónként előfizetésenként kiszolgálók száma | 21 |
+|||
+
+> [!IMPORTANT]
+> Mivel az adatbázisok számának megközelíti a felső határ az egyes kiszolgáló, a következő akkor fordulhat elő:
+> <br> • Növelése késés futó lekérdezések a master adatbázisban.  Ez magában foglalja az erőforrás-kihasználtságának statisztikája sys.resource_stats például nézetek.
+> <br> • A felügyeleti műveletek késés növelése és a portál nézőpontok, például az adatbázisok a kiszolgálón számbavétele megjelenítése.
 
 ## <a name="what-happens-when-database-and-elastic-pool-resource-limits-are-reached"></a>Mi történik az adatbázis és a rugalmas készlet erőforrás korlátok elérése után?
 

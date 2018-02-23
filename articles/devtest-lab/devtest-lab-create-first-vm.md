@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/24/2017
 ms.author: v-craic
-ms.openlocfilehash: c807789dc2b47fe3632fc4ecf597904d8b0bbf6f
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: 95fc017e64ac5c8a31be93790f53eb7fefa8f69a
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-your-first-vm-in-a-lab-in-azure-devtest-labs"></a>Az első virtuális gép létrehozása az Azure DevTest Labs szolgáltatásban egy tesztkörnyezetben
 
@@ -28,7 +28,7 @@ Ez az oktatóanyag végigvezeti az első virtuális gép hozzáadása egy laborh
 
 ## <a name="steps-to-add-your-first-vm-to-a-lab-in-azure-devtest-labs"></a>Lépések végrehajtásával adja hozzá az első virtuális gép egy tesztkörnyezetet a Azure DevTest Labs szolgáltatásban
 1. Jelentkezzen be az [Azure Portalra](http://go.microsoft.com/fwlink/p/?LinkID=525040).
-1. Válassza ki **több szolgáltatások**, majd válassza ki **DevTest Labs** a listából.
+1. Válassza ki **minden szolgáltatás**, majd válassza ki **DevTest Labs** a listából.
 1. Labs listában jelölje ki a labor kívánja a virtuális gép létrehozása.  
 1. A tesztlabor a **áttekintése** panelen válassza **+ Hozzáadás**.  
 

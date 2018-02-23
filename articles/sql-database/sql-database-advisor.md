@@ -4,7 +4,7 @@ description: "Az Azure SQL-adatbázis az SQL-adatbázisok, amelyek az aktuális 
 services: sql-database
 documentationcenter: 
 author: stevestein
-manager: jhubbard
+manager: craigg
 editor: monicar
 ms.assetid: 1db441ff-58f5-45da-8d38-b54dc2aa6145
 ms.service: sql-database
@@ -14,62 +14,72 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: On Demand
 ms.date: 09/20/2017
-ms.author: sstein
-ms.openlocfilehash: ea1069d4ec29ad66562a6798a8b13998d0d2ef89
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.author: 
+ms.openlocfilehash: b3cd5f2138f4d16a1a1590b025d020410ebcce3c
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 02/21/2018
 ---
-# <a name="performance-recommendations"></a>Teljesítménnyel kapcsolatos javaslatok
+# <a name="performance-recommendations-for-sql-database"></a>SQL-adatbázis teljesítményének javaslatok
 
-Az Azure SQL Database Tanulja meg, és alkalmazkodik az alkalmazással, és ajánlásokat testreszabott így lehetővé teszi az SQL-adatbázisok a teljesítmény maximalizálásához. A teljesítmény folyamatosan megfelelőségét ellenőrizni kell az SQL-adatbázis használati előzmények elemzésével. A javaslatok, amelyek egy adatbázis egyedi munkaterhelés mintát alapulnak, és a teljesítmény növelése érdekében.
+Az Azure SQL Database Tanulja meg, és az alkalmazással alkalmazkodik. Testre szabott javaslatok, amelyek lehetővé teszik az SQL-adatbázisok a teljesítmény maximalizálásához biztosít. SQL-adatbázis folyamatosan értékelésére és elemzi az SQL-adatbázisok használati előzményeit. A javaslatok, amelyek adatbázis-egyedi terhelési mintázatok alapulnak, és a teljesítmény növelése érdekében.
 
 > [!TIP]
-> [Automatikus hangolása](sql-database-automatic-tuning.md) teljesítményhangolás ajánlott módja van. [Intelligens Insights](sql-database-intelligent-insights.md) az ajánlott módszer a teljesítmény figyelése. 
+> [Automatikus hangolása](sql-database-automatic-tuning.md) teljesítményhangolás az ajánlott módszer. [Intelligens Insights](sql-database-intelligent-insights.md) az ajánlott módszer teljesítményének figyelése. 
 >
 
 ## <a name="create-index-recommendations"></a>Ajánlott index létrehozása
-Az Azure SQL-adatbázis folyamatosan figyeli a lekérdezések végrehajtása zajlik, és azonosítja az indexeket, javíthatja a teljesítményt. Miután abban, hogy elegendő épül, amely egy bizonyos index hiányoznak, egy új **Create index** javaslat jön létre. Az Azure SQL Database abban, hogy az index idő keresztül kellene kapcsolása jobb teljesítménye becslés alapján hoz létre. Attól függően, hogy a becsült teljesítménynövekedés elérése érdekében ajánlott kategóriába sorolni magas, közepes vagy alacsony. 
+SQL-adatbázis folyamatosan futó lekérdezések figyeli, és azonosítja az indexeket, javíthatja a teljesítményt. Nincs elég abban, hogy, hogy egy bizonyos index hiányzik, miután egy új **Create index** javaslat jön létre.
 
-Javaslatok használatával létrehozott indexek mindig auto_created indexek szerint vannak megjelölve. Láthatja, hogy mely indexek auto_created sys.indexes nézet megtekintésével. Automatikusan létrehozott indexek ALTER/átnevezése parancsok nincs blokkolás. Ha, amely egy automatikusan létrehozott index kapcsolattal rendelkezik az oszlop eldobásához, a parancs továbbítja, és az index létrehozása automatikus az paranccsal megszakad. Az ALTER/RENAME parancs indexelt oszlopokon megakadályozza a szabályos indexei.
+ Az Azure SQL Database abban, hogy úgy jobb a teljesítménye az index idő keresztül kellene kapcsolása hoz létre. Attól függően, hogy a becsült teljesítménynövekedés elérése érdekében ajánlott kategóriába sorolni magas, közepes vagy alacsony. 
 
-A create index javaslat van érvényben, miután az Azure SQL Database összehasonlítja alapteljesítményének a lekérdezések teljesítményét. Ha új index fejlesztései a teljesítmény, javaslat lesz megjelölve, sikeres, és hatás jelentés lesz elérhető. Abban az esetben, ha az index nem kapcsolja a következő előnyöket, akkor a rendszer automatikusan visszaállítja. Így az Azure SQL Database biztosítja, hogy javaslatokat használatával csak javítja az adatbázis teljesítménye.
+Javaslatok használatával létrehozott indexek mindig, automatikusan létrehozott indexek vannak megjelölve. Láthatja, hogy mely indexek automatikusan létrehozott a sys.indexes nézet megtekintésével. Automatikusan létrehozott indexek ALTER/átnevezése parancsok nincs blokkolás. 
 
-Bármely **Create index** javaslat rendelkezik egy biztonsági házirendet, amely nem engedélyezi a javaslat alkalmazása, ha az erőforrás-felhasználás egy adatbázis vagy az alkalmazáskészlet magas ki. Biztonsági házirendek fiók CPU, az adatok IO, a napló IO és a rendelkezésre álló tár veszi. Ha a CPU, az adatok IO vagy a napló IO nem nagyobb, mint 80 %-ot az elmúlt 30 perc létrehozása index el kell halasztani. Rendelkezésre álló tár 10 % alatt lenne, az index létrehozása után, ha a javaslat hiba állapotba kerül. Ha néhány nap után automatikus hangolása továbbra is úgy véli, hogy az index hasznos lehet a folyamat ismét elindul. Ez a folyamat ismétlődik mindaddig, amíg nincs elég rendelkezésre álló tár index létrehozása vagy az index nem látható, előnyös többé.
+Ha az automatikusan létrehozott index kapcsolattal rendelkező oszlop eldobásához kísérli meg, a parancs továbbítja. Az automatikusan létrehozott index a paranccsal a rendszer eldobja. Szabályos indexei indexelt oszlopokon az ALTER/RENAME parancs letiltása.
+
+A create index javaslat alkalmazásakor az Azure SQL Database alapteljesítményének a lekérdezések teljesítményét hasonlítja össze. Az új index növeli a teljesítményt, ha a javaslat sikeres van megjelölve, és a hatás jelentés érhető el. Ha az index nem a teljesítmény javításához, automatikusan visszaállította. SQL-adatbázis a folyamat használatával győződjön meg arról, hogy javaslatokat adatbázis teljesítményének javítása.
+
+Bármely **index létrehozása** javaslat vissza az indító házirendje van, amely nem engedélyezi a javaslat alkalmazása, ha az erőforrás-felhasználás egy adatbázis vagy a készlet túl magas. A biztonsági ki házirend fiók CPU, az adatok IO, a napló IO és a rendelkezésre álló tár veszi. 
+
+Ha a CPU, adat IO vagy napló IO 80 %-nál nagyobb az előző 30 percben, ajánlott a create index kerül sor. Ha a rendelkezésre álló tár 10 % alatt lesz az index létrehozása után, az ajánlás hibaállapotba kerül. Ha után néhány napon, automatikus hangolása továbbra is úgy véli, hogy az index hasznos lehet, a folyamat ismét elindul. 
+
+Ez a folyamat ismétlődik, amíg nincs elég rendelkezésre álló tár index létrehozása, vagy az index nem tekinthető előnyös többé.
 
 ## <a name="drop-index-recommendations"></a>Indexek elvetésére vonatkozó javaslatok
-Mellett egy hiányzó index észlelésére, az Azure SQL Database folyamatosan elemzi a létező indexek teljesítményét. Ha az index nem használható, az Azure SQL Database azt javasolja, eldobása. Az index elvetése két esetekben ajánlott:
-* Index megegyezik egy másik index (azonos indexelt és oszlop, a partíciós séma és a szűrők része)
-* Az index az nem használt hosszabb időre (93 nap)
+Mellett a hiányzó indexek észlelésére, SQL-adatbázis folyamatosan elemzi a létező indexek teljesítményét. Az index nem használható, ha az Azure SQL Database azt javasolja, hogy eldobása. Az index elvetése két esetekben ajánlott:
+* Az index már létezik egy másik index (azonos indexelt és oszlop, a partíciós séma és a szűrők része).
+* Az index nem lett használva, hosszan tartó időszakra (93 nap).
 
-Indexek elvetésére vonatkozó javaslatok is halad át az ellenőrzés végrehajtása után. A teljesítmény akkor javul, ha a hatás jelentés lesz elérhető. Abban az esetben, ha teljesítménycsökkenést észlel, a javaslat vissza lesznek vonva.
+Indexek elvetésére vonatkozó javaslatok is halad át az ellenőrzés végrehajtása után. Ha növeli a teljesítményt, a hatás jelentés érhető el. Ha csökken a teljesítmény, akkor a javaslat tért vissza.
 
 
 ## <a name="parameterize-queries-recommendations"></a>Lekérdezések javaslatok parametrizálja
-**Lekérdezések parametrizálja** javaslatok jelennek meg, ha egy vagy több vannak folyamatosan alatt újrafordítani de end fel a lekérdezés végrehajtása csomagot a lekérdezések. Ez a feltétel megnyílik egy kényszerített (egyszerű) paraméterezéssel, amely lehetővé teszi a gyorsítótárazott és újra felhasználhatók a jövőbeni a teljesítmény fokozása és alacsonyabb erőforrás-használatot lekérdezésterveket alkalmazandó lehetőséget. 
+*Lekérdezések parametrizálja* javaslatok jelennek meg, ha egy vagy több vannak folyamatosan alatt újrafordítani de end fel a lekérdezés végrehajtása csomagot a lekérdezések. Ez a feltétel hoz létre a kényszerített (egyszerű) paraméterezéssel alkalmazása lehetőséget. Kényszerített (egyszerű) paraméterezéssel, viszont lehetővé teszi a lekérdezésterveket gyorsítótárazott és a jövőben használni, ami javítja a teljesítményt és erőforrás-használat. 
 
-Minden egyes lekérdezés kezdetben az SQL Server állították ki kell fordítható le egy végrehajtási terv létrehozásához. Minden létrehozott terv a terv gyorsítótárba kerül, és az ugyanabban a lekérdezésben a későbbi végrehajtások során ez a gyorsítótárból, így nincs szükség további fordításának terv is felhasználhatja. 
+Minden egyes lekérdezés, amely kezdetben a SQL Server állították ki kell fordítható le egy végrehajtási terv létrehozásához. Minden létrehozott terv a terv gyorsítótárba kerül. Az ugyanabban a lekérdezésben a későbbi végrehajtások során ez a gyorsítótárból, így nem kell további fordításának terv is felhasználhatja. 
 
-Alkalmazásokat, amelyek a lekérdezéseket, többek között nem paraméterezett értékek, küldenek vezethet a teljesítményigény, ahol minden egyes ilyen lekérdezés különböző paraméterértékekkel a végrehajtási terv fordítását, akkor újra. Sok esetben másik paraméterrel azonos lekérdezések értékek a azonos végrehajtási tervek létrehozása, de ezek a csomagok továbbra is külön-külön hozzáadódnak a gyorsítótárban. Újrafordítás végrehajtási tervek adatbázis erőforrásainak használatához, növelje a lekérdezési időtartama, és a gyorsítótárból eltávolítani kívánt tervek okozó gyorsítótárban túlcsordulás. Ez a viselkedés az SQL Server is módosítható úgy, hogy az adatbázis a kényszerített (egyszerű) paraméterezéssel lehetőséget. 
+Az értékek nem paraméteres lekérdezések teljesítményigény vezethet, mert a végrehajtási terv van újrafordítani minden alkalommal, amikor az nem paraméterezett értékek eltérőek. Sok esetben másik paraméterértékekkel azonos lekérdezések létrehozása a azonos végrehajtási tervek. Ezeket a csomagokat, azonban továbbra is külön-külön kerülnek gyorsítótárban. 
 
-Segítsen megbecsülni Ez a javaslat a hatását, hogy átadja a tényleges CPU-használat és a tervezett CPU-használat (mint, ha a javaslat alkalmazott). Mellett CPU kevésbé kell kihasználni a lekérdezés időtartama csökkenti az az idő a fordítás. Is lesz sokkal kevesebb terhet terv gyorsítótár, lehetővé téve a tervek többsége a gyorsítótárban maradnak, és használható fel újra. Is alkalmazhat, ez a javaslat gyorsan és egyszerűen kattintson a **alkalmaz** parancsot. 
+A folyamat végrehajtási tervek újrafordítás adatbázis erőforrást használ, növeli a lekérdezés időtartama, valamint túlcsordulások a gyorsítótárban. Ezeket az eseményeket, vezethet a gyorsítótárból eltávolítani kívánt tervek. Az SQL Server viselkedése úgy, hogy a kényszerített (egyszerű) paraméterezéssel lehetőséget, az adatbázis is módosul. 
 
-Ha ez a javaslat alkalmaz, lehetővé teszi az kényszerített (egyszerű) paraméterezéssel az adatbázis percen belül, és elindítja a megfigyelési folyamat, amely körülbelül 24 óráig tart. Ezt követően lesz a 24 órát előtt és a javaslat alkalmazását követően a CPU-használat az adatbázis megjelenítő ellenőrzési jelentés megtekintéséhez. SQL Database Advisor segédprogramot, amely automatikusan helyreállítja az alkalmazott ajánlás, abban az esetben, ha a teljesítmény regressziós észlelt biztonsági mechanizmussal rendelkezik.
+Segítsen megbecsülni Ez a javaslat a hatását, hogy átadja a tényleges CPU-használat és a tervezett CPU-használat (mint, ha a javaslat alkalmazott). Ez a javaslat segítséget nyújt a CPU-megtakarítást kapnak. Azt is segíthetnek, csökkentse a lekérdezés időtartama, és terhet gyorsítótárban, ami azt jelenti, hogy a csomagok több gyorsítótárában marad, és használható fel újra. Ez a javaslat gyorsan lehet alkalmazni, kiválasztásával a **alkalmaz** parancsot. 
+
+Ez a javaslat alkalmazása után az adatbázis percen belül kényszerített parameterization lehetővé teszi. A megfigyelési folyamat, amely körülbelül 24 óráig tart kezdődik. Ezt követően megtekintheti az ellenőrzési jelentésből. Ez a jelentés tartalmazza a processzorhasználat százalékos mértéke az adatbázis 24 órát előtt, és a javaslat alkalmazását követően. SQL Database Advisor segédprogramot, amely automatikusan helyreállítja az alkalmazott ajánlás, ha teljesítmény regressziós észlelt biztonsági mechanizmussal rendelkezik.
 
 ## <a name="fix-schema-issues-recommendations-preview"></a>Javítsa ki a séma problémák javaslatok (előzetes verzió)
 
 > [!IMPORTANT]
-> Microsoft "Javítsa ki a hibát a séma" javaslatok elavulttá folyamatban van. El kell kezdenie használatával [intelligens Insights](sql-database-intelligent-insights.md) az adatbázis-teljesítménnyel kapcsolatos problémák automatikus figyelésére, amelyek magukban foglalják séma problémák korábban "Javítsa ki a hibát a séma" javaslatok jelez.
+> A Microsoft jelenleg van elavulttá "Javítsa ki a hibát a séma" javaslatok. Azt javasoljuk, hogy használjon [intelligens Insights](sql-database-intelligent-insights.md) figyelése a adatbázis teljesítményproblémákat, így például a séma, "Javítsa ki a hibát a séma" ajánlások korábban vonatkozik.
 > 
 
-**Séma kapcsolatos problémák megoldása** javaslatok jelennek meg, ha az SQL Database szolgáltatás észleli az anomáliadetektálási séma kapcsolatos SQL hiba történt az az Azure SQL Database számát. Ez a javaslat jellemzően akkor jelenik meg, amikor a adatbázisnál több séma kapcsolatos hibákat (Érvénytelen oszlopnév, érvénytelen objektumnév stb.) egy órán belül.
+**Séma kapcsolatos problémák megoldása** javaslatok jelennek meg, ha az SQL Database szolgáltatás észleli az anomáliadetektálási a séma kapcsolatos SQL hibák száma, hogy az SQL-adatbázis. Ez a javaslat jellemzően akkor jelenik meg, amikor az adatbázis több séma kapcsolatos hibákat (Érvénytelen oszlopnév, érvénytelen objektum nevét, és így tovább) észlel egy órán belül.
 
-"Séma problémák" szintaktikai hibák az SQL Server fordulhat elő, ha az SQL-lekérdezés a definíció- és az adatbázis-séma definíciója nem illeszkednek osztály. Például egy, a lekérdezés által várt oszlopok esetleg hiányzik a céloldali tábla, vagy fordítva. 
+"Séma problémák" szintaktikai hibák az SQL Server osztály. Ezek fordulhat elő, amikor az SQL-lekérdezés a definíció- és az adatbázis-séma definíciója nem igazított. Például az oszlopok, a lekérdezés által várt lehetnek hiányzik a céloldali tábla, vagy fordítva. 
 
-"Javítsa ki a hibát a séma" javaslat jelenik meg, ha az Azure SQL Database szolgáltatás észleli az anomáliadetektálási séma kapcsolatos SQL hiba történt az az Azure SQL Database számának. Az alábbi táblázat a hibákat, amelyek kapcsolódnak séma problémákat:
+A "Javítsa ki a hibát a séma" javaslat jelenik meg, ha az Azure SQL Database szolgáltatás észleli az anomáliadetektálási a séma kapcsolatos SQL hibák száma, hogy az SQL-adatbázishoz. Az alábbi táblázat a hibákat, amelyek kapcsolódnak séma problémákat:
 
-| SQL-hibakód: | Üzenet |
+| SQL-hibakód | Üzenet |
 | --- | --- |
 | 201 |Az eljárás vagy függvény "*"paramétert vár"*", amely nem lett megadva. |
 | 207 |Érvénytelen oszlopnév "*". |
@@ -79,11 +89,11 @@ Ha ez a javaslat alkalmaz, lehetővé teszi az kényszerített (egyszerű) param
 | 8144 |Az eljárás vagy függvény * megadott túl sok argumentum tartozik. |
 
 ## <a name="next-steps"></a>További lépések
-A javaslatok figyelése, és továbbra is alkalmazandó, pontosítsa a teljesítményt. Adatbázis-terhelések dinamikusak, és folyamatosan módosítása. SQL Database advisor továbbra is fennáll, figyeléséhez, és adja meg a javaslatok, javíthatja az adatbázis teljesítménye. 
+A javaslatok figyelése, és továbbra is alkalmazandó, pontosítsa a teljesítményt. Adatbázis-terhelések dinamikusak, és folyamatosan módosítása. SQL Database Advisor továbbra is fennáll, figyeléséhez, és adja meg a javaslatok, javíthatja az adatbázis teljesítménye. 
 
-* Lásd: [Azure SQL Database automatikus hangolása](sql-database-automatic-tuning.md) az adatbázis-indexek és a lekérdezés végrehajtási tervek automatikus hangolása.
-* Lásd: [Azure SQL intelligens Insights](sql-database-intelligent-insights.md) az automatikus diagnosztikát és a legfelső szintű automatikusan adatbázis teljesítményfigyeléshez okok a teljesítményproblémák.
-* Lásd: [teljesítmény javaslatok az Azure portálon](sql-database-advisor-portal.md) teljesítmény javaslatok az Azure portálon használandó lépéseit.
+* Adatbázis indexek és a lekérdezés végrehajtási tervek automatikus hangolásával kapcsolatos további információkért lásd: [Azure SQL Database automatikus hangolása](sql-database-automatic-tuning.md).
+* Automatikusan az automatikus diagnosztikát és a teljesítménnyel kapcsolatos problémák kiváltó okának elemzése adatbázis teljesítményének figyelésével kapcsolatos további információkért lásd: [Azure SQL intelligens Insights](sql-database-intelligent-insights.md).
+*  Teljesítmény javaslatok az Azure-portálon való használatával kapcsolatos további információkért lásd: [teljesítmény javaslatok az Azure portálon](sql-database-advisor-portal.md).
 * Lásd: [lekérdezési teljesítmény Insights](sql-database-query-performance.md) és a teljesítményre gyakorolt hatás a leggyakoribb lekérdezések megtekintéséhez.
 
 

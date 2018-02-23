@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2018
 ms.author: jgao
-ms.openlocfilehash: 74dcd368d8696df26c5ad294c5657161fbe7f408
-ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
+ms.openlocfilehash: 2f7dcb9bea05a79a6647b549896c8107f9e830af
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="build-apache-spark-machine-learning-applications-on-azure-hdinsight"></a>Az Apache Spark on machine learning-alkalmazások Azure hdinsight létrehozása
 
@@ -28,9 +28,9 @@ Ismerje meg, hogyan hozhat létre egy Apache Spark machine learning, hdinsight S
 
 [MLlib](https://spark.apache.org/docs/1.1.0/mllib-guide.html) a Spark méretezhető machine learning függvénytár közös tanulási algoritmusok és segédprogramok, beleértve a besorolás, regressziós, fürtözés, együttműködést szűrés, granularitása csökkentése érdekében, valamint az alapul szolgáló álló optimalizálás primitívek.
 
-**Előfeltételek:**
+## <a name="prerequisites"></a>Előfeltételek:
 
-Az alábbiakkal kell rendelkeznie:
+A következő elemmel kell rendelkeznie:
 
 * A HDInsight az Apache Spark-fürt. Útmutatásért lásd: [létrehozása az Apache Spark on Azure hdinsight clusters](apache-spark-jupyter-spark-sql.md). 
 
@@ -181,7 +181,7 @@ Ebben az alkalmazásban használja a Spark [ML adatcsatorna](https://spark.apach
     Row(SystemInfo=u'7 22', prediction=0.0, probability=DenseVector([0.5015, 0.4985]))
     ```
    
-   Az első sorból a előrejelzését, láthatja, hogy a 20-as Azonosítójú és 25 évre rendszer korát HVAC rendszer esetében az épület lesz működés közbeni (**előrejelzés = 1.0**). Az előrejelzés 0,0 DenseVector (0.49999) első értéke megfelel-e, és a második érték (0.5001) 1.0 előrejelzését felel meg. A kimenetben, annak ellenére, hogy a második értéke csak kis mértékben nagyobb, a modell bemutatja **előrejelzés = 1.0**.
+   Az előrejelzés első sorában az látható, hogy 20-as Azonosítójú és 25 évre rendszer korát HVAC rendszer, az épület működés közbeni (**előrejelzés = 1.0**). Az előrejelzés 0,0 DenseVector (0.49999) első értéke megfelel-e, és a második érték (0.5001) 1.0 előrejelzését felel meg. A kimenetben, annak ellenére, hogy a második értéke csak kis mértékben nagyobb, a modell bemutatja **előrejelzés = 1.0**.
 10. Állítsa le a notebook az erőforrások kijelölése. Ehhez a notebook **File** (Fájl) menüjében kattintson a **Close and Halt** (Bezárás és leállítás) elemre. Ezzel leállítja és bezárja a notebookot.
 
 ## <a name="anaconda"></a>Használjon Anaconda scikit – ismerje meg a könyvtár a Spark gépi tanulás
@@ -193,7 +193,6 @@ Az Apache Spark on hdinsight fürtök Anaconda-könyvtárakkal rendelkeznek. Ez 
 ### <a name="scenarios"></a>Forgatókönyvek
 * [Spark és BI: Interaktív adatelemzés végrehajtása a Spark on HDInsight használatával, BI-eszközökkel](apache-spark-use-bi-tools.md)
 * [Spark és Machine Learning: A Spark on HDInsight használata az élelmiszervizsgálati eredmények előrejelzésére](apache-spark-machine-learning-mllib-ipython.md)
-* [Spark Streaming: A Spark on HDInsight használata valós idejű streamelési alkalmazások összeállítására](apache-spark-eventhub-streaming.md)
 * [A webhelynapló elemzése a Spark on HDInsight használatával](apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="create-and-run-applications"></a>Alkalmazások létrehozása és futtatása

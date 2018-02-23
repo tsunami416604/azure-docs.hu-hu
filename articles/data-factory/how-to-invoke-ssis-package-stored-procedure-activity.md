@@ -13,11 +13,11 @@ ms.devlang: powershell
 ms.topic: article
 ms.date: 12/07/2017
 ms.author: jingwang
-ms.openlocfilehash: 39d60592c7fcbc937dc9f86e4c8b6962a51fd6ef
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
-ms.translationtype: HT
+ms.openlocfilehash: 89eb2e567e06660efa5feddce1db0fcdb47792f3
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="invoke-an-ssis-package-using-stored-procedure-activity-in-azure-data-factory"></a>Egy SSIS-csomagot, a tárolt eljárási tevékenység az Azure Data Factory meghívása
 Ez a cikk ismerteti, hogyan lehet meghívni egy SSIS-csomagot az Azure Data Factory-folyamat a tárolt eljárási tevékenység használatával. 
@@ -39,7 +39,7 @@ Ebben a szakaszban a Data Factory felhasználói felület egy tárolt eljárás 
 ### <a name="create-a-data-factory"></a>Data factory létrehozása
 Első lépés az adat-előállító létrehozása az Azure-portál használatával. 
 
-1. Indítsa el **Microsoft Edge** vagy **Google Chrome** webböngésző. Data Factory felhasználói felület jelenleg csak a Microsoft Edge és a Google Chrome webböngésző használata támogatott.
+1. Indítsa el a **Microsoft Edge** vagy a **Google Chrome** böngészőt. A Data Factory felhasználói felületének használata jelenleg csak a Microsoft Edge-ben és a Google Chrome-ban támogatott.
 2. Lépjen az [Azure Portalra](https://portal.azure.com). 
 3. Kattintson az **Új** elemre, majd az **Adatok + analitika**, végül a **Data Factory** elemre. 
    
@@ -122,7 +122,7 @@ Ebben a szakaszban indít folyamatot futtató, és megfigyeli azt.
 1. Futtassa egy folyamat indításához kattintson **eseményindító** az eszköztáron, és kattintson **aktiválhatja most**. 
 
     ![Aktiválás most](./media/how-to-invoke-ssis-package-stored-procedure-activity/trigger-now.png)
-2. Az a **folyamat futtatása** ablakban válassza ki **Befejezés**. 
+2. A **Folyamatfuttatás** ablakban kattintson a **Befejezés** gombra. 
 3. Váltson a bal oldali **Monitorozás** lapra. A Futtatás futószalag és egyéb információk (például futtassa Kezdés időpontja) mellett állapota látható. A nézet frissítéséhez kattintson a **Frissítés** parancsra.
 
     ![Folyamatfuttatások](./media/how-to-invoke-ssis-package-stored-procedure-activity/pipeline-runs.png)
@@ -196,7 +196,7 @@ A társított szolgáltatás, amely futtatja az Azure SQL database összekapcsol
 
     ```json
     {
-        "name": "AzureSqlDbLinkedService",
+        "name": "AzureSqlDatabaseLinkedService",
         "properties": {
             "type": "AzureSqlDatabase",
             "typeProperties": {
@@ -235,7 +235,7 @@ Ebben a lépésben hoz létre egy folyamatot egy tárolt eljárás tevékenység
                     "description":"Runs an SSIS package",
                     "type": "SqlServerStoredProcedure",
                     "linkedServiceName": {
-                        "referenceName": "AzureSqlDbLinkedService",
+                        "referenceName": "AzureSqlDatabaseLinkedService",
                         "type": "LinkedServiceReference"
                     },
                     "typeProperties": {

@@ -8,7 +8,7 @@ Ezeket a lépéseket megoldhatók a virtuális gépek sok pufferallokációs hib
 * Egy másik Virtuálisgép-méretet a virtuális gép átméretezésével.<br>
     Kattintson a **összes tallózása** > **virtuális gépek (klasszikus)** > a virtuális gép > **beállítások** > **mérete**. Részletes útmutató: [méretezze át a virtuális gép](https://msdn.microsoft.com/library/dn168976.aspx).
 * Minden virtuális gép törlése a felhőalapú szolgáltatás, és hozza létre a virtuális gépek.<br>
-    Kattintson a **összes tallózása** > **virtuális gépek (klasszikus)** > a virtuális gép > **törlése**. Kattintson a **új** > **számítási** > [virtuálisgép-lemezkép].
+    Kattintson a **összes tallózása** > **virtuális gépek (klasszikus)** > a virtuális gép > **törlése**. Kattintson a **hozzon létre egy erőforrást** > **számítási** > [virtuálisgép-lemezkép].
 
 ### <a name="troubleshoot-common-allocation-failures-in-the-azure-resource-manager-deployment-model"></a>Az Azure Resource Manager üzembe helyezési modellel közös helyfoglalási hibák elhárítása
 Ezeket a lépéseket megoldhatók a virtuális gépek sok pufferallokációs hibák:
@@ -53,7 +53,7 @@ Két gyakori hiba forgatókönyvek affinitáscsoportok kapcsolódnak. A múltban
 > 
 
 ## <a name="allocation-scenario-resize-a-vm-or-add-vms-or-role-instances-to-an-existing-cloud-service"></a>Foglalási forgatókönyv: méretezze át a virtuális gépek vagy virtuális gépekre vagy szerepkörpéldányokra hozzáadása egy meglévő felhőszolgáltatáshoz
-**Hiba történt**
+Hiba történt
 
 Upgrade_VMSizeNotSupported vagy GeneralError
 
@@ -68,9 +68,9 @@ Ha a hiba Upgrade_VMSizeNotSupported *, próbálkozzon egy másik Virtuálisgép
 Ha a hiba GeneralError *, valószínű, hogy típusú erőforrások (például egy adott virtuális gép méretét) támogatja a fürt, de a fürt nem rendelkezik szabad erőforrást jelenleg. Hasonló a fenti esetben vegye fel a kívánt számítási erőforrással keresztül új felhőalapú szolgáltatás (vegye figyelembe, hogy rendelkezik-e az új felhőalapú szolgáltatás használatára egy különböző VIP) létrehozásához, és a felhőszolgáltatások eléréséhez regionális virtuális hálózatot használja.
 
 ## <a name="allocation-scenario-restart-partially-stopped-deallocated-vms"></a>Foglalási forgatókönyv: újraindítás részlegesen leállítva (felszabadított) virtuális gépek
-**Hiba történt**
+Hiba történt
 
-GeneralError *
+GeneralError*
 
 **A fürt rögzítési OK**
 
@@ -84,9 +84,9 @@ Elfogadható használja másik virtuális IP-címhez, törölje a leállított (
 * Ha a meglévő felhőalapú szolgáltatást használja a regionális virtuális hálózat, az új felhőszolgáltatás, új virtuális hálózat létrehozása, majd [csatlakozzon a meglévő virtuális hálózatot az új virtuális hálózat](https://azure.microsoft.com/blog/vnet-to-vnet-connecting-virtual-networks-in-azure-across-different-regions/). További tudnivalók [regionális virtuális hálózatokba](https://azure.microsoft.com/blog/2014/05/14/regional-virtual-networks/).
 
 ## <a name="allocation-scenario-restart-fully-stopped-deallocated-vms"></a>Foglalási forgatókönyv: újraindítás teljesen leállt (felszabadított) virtuális gépek
-**Hiba történt**
+Hiba történt
 
-GeneralError *
+GeneralError*
 
 **A fürt rögzítési OK**
 
@@ -97,7 +97,7 @@ Teljes felszabadítás azt jelenti, hogy leállította (felszabadítva) összes 
 Ha az elfogadható használja másik virtuális IP-címhez, törli az eredeti leállított (felszabadított) virtuális gépek (de tartsa a kapcsolódó lemezek), és törölje a megfelelő felhőszolgáltatást (a tartozó számítási erőforrásokat már kiadott, (felszabadított) leállításakor a virtuális gépek). Hozzon létre egy új felhőalapú szolgáltatás hozzáadása a virtuális gépek vissza.
 
 ## <a name="allocation-scenario-stagingproduction-deployments-platform-as-a-service-only"></a>Foglalási forgatókönyv: átmeneti vagy üzemi környezetek (csak szolgáltatásként platform)
-**Hiba történt**
+Hiba történt
 
 New_General * vagy New_VMSizeNotSupported *
 
@@ -110,7 +110,7 @@ Az átmeneti üzembe helyezési és az éles környezet egy felhőalapú szolgá
 Törli a első és az eredeti felhőalapú szolgáltatás, és telepítse újra a felhőalapú szolgáltatáshoz. Ez a művelet lehet, hogy az első telepített megnyílik, elég szabad erőforrást mindkét központi telepítés módosításokkal rendelkező fürtben, vagy a fürt, amely támogatja a kért Virtuálisgép-méretek.
 
 ## <a name="allocation-scenario-affinity-group-vmservice-proximity"></a>Foglalási forgatókönyv: affinitáscsoport (virtuális gép vagy szolgáltatás beléptetőkártyával)
-**Hiba történt**
+Hiba történt
 
 New_General * vagy New_VMSizeNotSupported *
 
@@ -123,7 +123,7 @@ A számítási erőforrás egy affinitáscsoporthoz van kötve egy fürt. Új sz
 Az affinitáscsoportokban nincs szükség, ha nem használható affinitáscsoport, vagy csoportosíthatja a számítási erőforrásokat több affinitáscsoportok.
 
 ## <a name="allocation-scenario-affinity-group-based-virtual-network"></a>Foglalási forgatókönyv: affinitás csoport-alapú virtuális hálózat
-**Hiba történt**
+Hiba történt
 
 New_General * vagy New_VMSizeNotSupported *
 
@@ -149,7 +149,7 @@ Foglalási hiba megjelenésekor tekintse meg, ha bemutatott esetekben a hiba a �
 Általában mindaddig, amíg a hiba nem jelzi, "a kért Virtuálisgép-méret nem támogatott", mindig újból megpróbálkozhat egy későbbi időpontban erőforrásokkal előfordulhat, hogy rendelkezik felszabadult a fürt a kérelem olyan módon. Ha a probléma, hogy a kért Virtuálisgép-méret nem támogatott, lásd az alábbi a lehetséges megoldások.
 
 ## <a name="allocation-scenario-resize-a-vm-or-add-vms-to-an-existing-availability-set"></a>Foglalási forgatókönyv: méretezze át a virtuális gépek vagy virtuális gépek felvétele a rendelkezésre állási készlet
-**Hiba történt**
+Hiba történt
 
 Upgrade_VMSizeNotSupported * vagy GeneralError *
 
@@ -164,9 +164,9 @@ Ha a hiba Upgrade_VMSizeNotSupported *, próbálkozzon egy másik Virtuálisgép
 Ha a hiba GeneralError *, valószínű, hogy típusú erőforrások (például egy adott virtuális gép méretét) támogatja a fürt, de a fürt nem rendelkezik szabad erőforrást jelenleg. Ha a virtuális gép egy másik rendelkezésre állási készlet része lehet, hozzon létre egy új virtuális gép egy másik rendelkezésre állási csoportban, (ugyanabban a régióban). Új virtuális gép felvehető ugyanahhoz a virtuális hálózathoz.  
 
 ## <a name="allocation-scenario-restart-partially-stopped-deallocated-vms"></a>Foglalási forgatókönyv: újraindítás részlegesen leállítva (felszabadított) virtuális gépek
-**Hiba történt**
+Hiba történt
 
-GeneralError *
+GeneralError*
 
 **A fürt rögzítési OK**
 
@@ -177,9 +177,9 @@ Részleges felszabadítás azt jelenti, hogy (felszabadított) egy vagy több le
 Állítsa le az összes virtuális gép rendelkezésre állási csoportban, az újraindítás előtt. Ezzel biztosíthatja, hogy fut-e egy új foglalási kísérlet és, hogy egy új fürt választhat ki, amely rendelkezik a rendelkezésre álló kapacitásból.
 
 ## <a name="allocation-scenario-restart-fully-stopped-deallocated"></a>Foglalási forgatókönyv: újraindítás teljesen leállt (felszabadított)
-**Hiba történt**
+Hiba történt
 
-GeneralError *
+GeneralError*
 
 **A fürt rögzítési OK**
 

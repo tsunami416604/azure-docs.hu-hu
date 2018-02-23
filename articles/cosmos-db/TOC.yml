@@ -131,6 +131,8 @@
       href: cli-samples.md
     - name: PowerShell
       href: powershell-samples.md
+    - name: Azure Resource Manager-sablonok
+      href: 'https://azure.microsoft.com/resources/templates/?term=cosmos+db&pageNumber=1'
 - name: Alapelvek
   items:
     - name: Kiszolgáló nélküli adatbázis
@@ -342,6 +344,8 @@
           href: logging.md
         - name: Kulcsok és konzisztencia kezelése
           href: manage-account.md
+        - name: Hozzáférés-vezérlés
+          href: access-control.md
         - name: Azure Storage Explorer
           href: storage-explorer.md
         - name: Biztonság

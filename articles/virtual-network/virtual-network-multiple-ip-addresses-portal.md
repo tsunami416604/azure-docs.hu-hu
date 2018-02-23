@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/30/2016
 ms.author: annahar
-ms.openlocfilehash: d264bd47d76db8015a64f09248c57c94572e2693
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 906105e737087de91e7393861e9057f8acb06aa4
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-the-azure-portal"></a>Több IP-címek hozzárendelése a virtuális gépek az Azure portál használatával
 
@@ -31,17 +31,17 @@ Ez a cikk ismerteti (VM) virtuális gép létrehozása az Azure Resource Manager
 
 ## <a name = "create"></a>Több IP-címekkel rendelkező virtuális gép létrehozása
 
-Ha szeretne létrehozni egy virtuális gép több IP-címet, vagy hozzá statikus magánhálózati IP-cím, hozza létre azt a PowerShell vagy az Azure parancssori felület használatával. Kattintson a PowerShell vagy a CLI beállításokkal Ez a cikk tetején megtudhatja, hogyan. Létrehozhat egy virtuális Gépet egy egyetlen dinamikus magánhálózati IP-cím, és (opcionálisan) a lépések a portál használatával egyetlen nyilvános IP-címet a [Windows virtuális gép létrehozása](../virtual-machines/virtual-machines-windows-hero-tutorial.md) vagy [hozzon létre egy Linux virtuális Gépet](../virtual-machines/linux/quick-create-portal.md) cikkeket. A virtuális gép létrehozása után módosítsa az IP-cím típusa a dinamikus statikus, és kövesse a portál használatával további IP-címek hozzáadása a [hozzáadása IP-címek egy virtuális géphez](#add) című szakaszát.
+Ha szeretne létrehozni egy virtuális gép több IP-címet, vagy hozzá statikus magánhálózati IP-cím, hozza létre azt a PowerShell vagy az Azure parancssori felület használatával. Megtudhatja, hogyan, kattintson a PowerShell vagy a CLI beállításait ez a cikk tetején. Létrehozhat egy virtuális Gépet egy egyetlen dinamikus magánhálózati IP-cím és (opcionálisan) egyetlen nyilvános IP-címnek. A portál használata a lépések a [Windows virtuális gép létrehozása](../virtual-machines/virtual-machines-windows-hero-tutorial.md) vagy [hozzon létre egy Linux virtuális Gépet](../virtual-machines/linux/quick-create-portal.md) cikkeket. A virtuális gép létrehozása után módosítsa az IP-cím típusa a dinamikus statikus, és kövesse a portál használatával további IP-címek hozzáadása a [hozzáadása IP-címek egy virtuális géphez](#add) című szakaszát.
 
 ## <a name="add"></a>IP-címek hozzáadása a virtuális gépek
 
-Egy hálózati adapterre privát és nyilvános IP-címeket adhat hozzá a következő lépések végrehajtásával. A következő szakaszokban szereplő példák azt feltételezik, hogy már van egy virtuális gép leírt három IP-konfigurációk a [forgatókönyv](#Scenario) ezen cikk, de nem szükséges, hogy végezzen.
+Egy hálózati adapterre privát és nyilvános IP-címeket adhat hozzá a következő lépések végrehajtásával. A következő szakaszokban szereplő példák azt feltételezik, hogy már van egy virtuális gép leírt három IP-konfigurációk a [forgatókönyv](#Scenario), de ez nem szükséges.
 
 ### <a name="coreadd"></a>Alapvető lépéseket
 
 1. Tallózással keresse meg az Azure-portálon https://portal.azure.com és bejelentkezési is, ha szükséges.
 2. Kattintson a portál **további szolgáltatások** > típus *virtuális gépek* a Szűrő mezőbe, majd **virtuális gépek**.
-3. Az a **virtuális gépek** panelen, kattintson a virtuális gép hozzá szeretné adni az IP-címek hozzárendelését. Kattintson a **hálózati illesztőt** a virtuális gép panel, amely akkor jelenik meg, és válassza a hálózati illesztő hozzá szeretné adni az IP-címek. A példában a következő ábrán látható, a hálózati adapter neve *myNIC* nevű virtuális gép *myVM* van kiválasztva:
+3. Az a **virtuális gépek** ablaktáblában kattintson a virtuális gép hozzá szeretné adni az IP-címek hozzárendelését. Kattintson a **hálózati illesztőt** a virtuális gép ablaktábla, amely akkor jelenik meg, és válassza a hálózati illesztő hozzá szeretné adni az IP-címek. A példában a következő ábrán látható, a hálózati adapter neve *myNIC* nevű virtuális gép *myVM* van kiválasztva:
 
     ![Hálózati illesztő](./media/virtual-network-multiple-ip-addresses-portal/figure1.png)
 
@@ -54,14 +54,14 @@ Hajtsa végre a következő szakaszok, egyikében hozzáadni kívánt IP-cím t�
 Az alábbi lépésekkel egy új magánhálózati IP-cím hozzáadása:
 
 1. Hajtsa végre a a [alapvető lépéseket](#coreadd) című szakaszát.
-2. Kattintson az **Add** (Hozzáadás) parancsra. Az a **hozzáadása IP-konfiguráció** panel, amely akkor jelenik meg, egy IP-konfiguráció létrehozásának *IPConfig-4* a *10.0.0.7* , egy *statikus* magánhálózati IP-címe címet, majd kattintson az **OK**.
+2. Kattintson a **Hozzáadás** parancsra. Az a **hozzáadása IP-konfiguráció** ablaktáblán megjelenő, egy IP-konfiguráció létrehozásának *IPConfig-4* rendelkező *10.0.0.7* , egy *statikus* magánhálózati IP-címe címet, majd kattintson az **OK**.
 
     > [!NOTE]
-    > Egy statikus IP-cím hozzáadásakor meg kell adnia egy nem használt, érvényes címet a hálózati adapter csatlakozik-e az alhálózaton. Ha bejelöli a cím nem érhető el, a portál megjeleníti az IP-címhez X, és válasszon egy másik kell.
+    > Egy statikus IP-cím hozzáadásakor meg kell adnia egy nem használt, érvényes címet a hálózati adapter csatlakozik-e az alhálózaton. Ha bejelöli a cím nem érhető el, a portál megjeleníti az IP-címhez X, és ki kell választania egy másik.
 
-3. Miután az OK gombra kattint, a panel bezárul, és látni fogja, az új IP-konfiguráció látható. Kattintson a **OK** bezárásához a **hozzáadása IP-konfiguráció** panelen.
+3. Miután az OK gombra kattint, a ablaktáblát, és megjelenik az új IP-konfiguráció látható. Kattintson a **OK** bezárásához a **hozzáadása IP-konfiguráció** ablaktáblán.
 4. Kattinthat **Hozzáadás** további IP-konfiguráció hozzáadásához vagy zárjon be minden nyitott paneleken IP-címek hozzáadásának befejezéséhez.
-5. A privát IP-címek hozzáadása a virtuális gép operációs rendszer, az operációs rendszernek a lépések végrehajtásával a [hozzáadása IP-címek egy virtuális gép operációs rendszerre](#os-config) című szakaszát.
+5. A privát IP-címek hozzáadása a virtuális gép operációs rendszer; Ehhez hajtsa végre a lépéseket a [hozzáadása IP-címek egy virtuális gép operációs rendszerre](#os-config) című szakaszát.
 
 ### <a name="add-a-public-ip-address"></a>A nyilvános IP-cím hozzáadása
 
@@ -76,8 +76,8 @@ Egy nyilvános IP-címet vagy egy új IP-konfiguráció, vagy egy meglévő IP-k
 Egy nyilvános IP-címet az egyik beállítása egy nyilvános IP-cím erőforrás. Ha egy nyilvános IP-cím erőforrás, amely nem rendelheti hozzá az IP-konfigurációt használni kívánt IP-konfigurációt jelenleg társítva van, hagyja ki a következő lépéseket, és az összes kívánt beállítást, hajtsa végre a következő szakaszok, egyik lépéseit. Ha nincs elérhető nyilvános IP-cím erőforrás, végezze el az alábbi lépéseket követve létrehozhat egyet:
 
 1. Tallózással keresse meg az Azure-portálon https://portal.azure.com és bejelentkezési is, ha szükséges.
-3. Kattintson a portál **új** > **hálózati** > **nyilvános IP-cím**.
-4. A a **nyilvános IP-cím létrehozása** panel, amelyen megjelenik, írja be egy **neve**, jelölje be egy **IP-cím hozzárendelése** típus, egy **előfizetés**, egy **erőforráscsoport**, és egy **hely**, kattintson a **létrehozása**, az alábbi ábrán látható módon:
+3. Kattintson a portál **hozzon létre egy erőforrást** > **hálózati** > **nyilvános IP-cím**.
+4. A a **nyilvános IP-cím létrehozása** a megjelenő panelen adjon meg egy **neve**, jelölje be egy **IP-cím hozzárendelése** típus, egy **előfizetés**, egy **Erőforráscsoport**, és egy **hely**, majd kattintson a **létrehozása**, az alábbi ábrán látható módon:
 
     ![Hozzon létre egy nyilvános IP-cím erőforrás](./media/virtual-network-multiple-ip-addresses-portal/figure5.png)
 
@@ -86,9 +86,9 @@ Egy nyilvános IP-címet az egyik beállítása egy nyilvános IP-cím erőforr�
 #### <a name="associate-the-public-ip-address-resource-to-a-new-ip-configuration"></a>Társítsa a nyilvános IP-cím erőforrás új IP-konfigurációhoz
 
 1. Hajtsa végre a a [alapvető lépéseket](#coreadd) című szakaszát.
-2. Kattintson az **Add** (Hozzáadás) parancsra. Az a **hozzáadása IP-konfiguráció** panel, amely akkor jelenik meg, egy IP-konfiguráció létrehozásának *IPConfig-4*. Engedélyezze a **nyilvános IP-cím** , és válasszon egy meglévő, elérhető nyilvános IP-cím erőforrás a a **nyilvános IP-cím kiválasztása** panel, amely akkor jelenik meg.
+2. Kattintson a **Hozzáadás** parancsra. Az a **hozzáadása IP-konfiguráció** ablaktáblán megjelenő, egy IP-konfiguráció létrehozásának *IPConfig-4*. Engedélyezze a **nyilvános IP-cím** , és válasszon egy meglévő, elérhető nyilvános IP-cím erőforrás a a **nyilvános IP-cím kiválasztása** ablaktábla akkor jelenik meg.
 
-    A nyilvános IP-cím erőforrás kijelölése után kattintson **OK** és a blade bezárul. Ha egy meglévő nyilvános IP-cím nincs, létrehozhat egy, a lépések végrehajtásával a [hozzon létre egy nyilvános IP-cím erőforrás](#create-public-ip) című szakaszát. 
+    A nyilvános IP-cím erőforrás kijelölése után kattintson **OK** és bezárja a panelen. Ha egy meglévő nyilvános IP-cím nincs, létrehozhat egy, a lépések végrehajtásával a [hozzon létre egy nyilvános IP-cím erőforrás](#create-public-ip) című szakaszát. 
 
 3. Tekintse át az új IP-konfigurációt. Annak ellenére, hogy a magánhálózati IP-cím nincs explicit módon hozzárendelt, egy lett automatikusan IP-konfigurációja, mivel az összes IP-konfigurációk rendelkeznie kell egy magánhálózati IP-cím.
 4. Kattinthat **Hozzáadás** további IP-konfiguráció hozzáadásához vagy zárjon be minden nyitott paneleken IP-címek hozzáadásának befejezéséhez.
@@ -98,9 +98,9 @@ Egy nyilvános IP-címet az egyik beállítása egy nyilvános IP-cím erőforr�
 
 1. Hajtsa végre a a [alapvető lépéseket](#coreadd) című szakaszát.
 2. Kattintson az IP-konfiguráció a nyilvános IP-cím erőforrás való hozzáadásához.
-3. Az IPConfig megjelenő panelen kattintson **IP-cím**.
-4. Az a **nyilvános IP-cím kiválasztása** panel, amelyen megjelenik, válassza ki a nyilvános IP-cím.
-5. Kattintson a **mentése** és a paneleken bezárul. Ha egy meglévő nyilvános IP-cím nincs, létrehozhat egy, a lépések végrehajtásával a [hozzon létre egy nyilvános IP-cím erőforrás](#create-public-ip) című szakaszát.
+3. Az IPConfig ablaktábláján megjelenő kattintson **IP-cím**.
+4. Az a **nyilvános IP-cím kiválasztása** ablaktáblán megjelenő, válassza ki a nyilvános IP-cím.
+5. Kattintson a **mentése** ablaktáblák zárja be. Ha egy meglévő nyilvános IP-cím nincs, létrehozhat egy, a lépések végrehajtásával a [hozzon létre egy nyilvános IP-cím erőforrás](#create-public-ip) című szakaszát.
 3. Tekintse át az új IP-konfigurációt.
 4. Kattinthat **Hozzáadás** további IP-konfiguráció hozzáadásához vagy zárjon be minden nyitott paneleken IP-címek hozzáadásának befejezéséhez. Ne vegyen fel a nyilvános IP-cím az operációs rendszer.
 

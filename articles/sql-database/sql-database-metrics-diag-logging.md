@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/16/2017
 ms.author: vvasic
-ms.openlocfilehash: 2e377ef96f6c2b5866ad258a88d6403fd0bb1e41
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 87bbbd1fdcb9afb59de0bda29e99e23e0b9ad104
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Az Azure SQL Database metrikák és diagnosztikai naplózás 
 Az Azure SQL-adatbázis el tudná küldeni, metrikákat és diagnosztikai naplókat a könnyebb figyelése. Az SQL Database beállítható az erőforrás-használatra, feldolgozókra és munkamenetekre, valamint kapcsolatokra vonatkozó adatok tárolására a következő Azure-erőforrások valamelyikén:
@@ -44,7 +44,7 @@ Metrikák és diagnosztikai naplózás engedélyezése esetén meg kell adnia a 
 
 - Log Analytics
 - Event Hubs
-- Storage 
+- Tárolás 
 
 Új Azure-erőforrás kiépítése, vagy jelöljön ki egy meglévő erőforrást. Miután kiválasztotta a tárolási erőforrások, meg kell adnia az összegyűjtendő adatok. Elérhető lehetőségek a következők:
 
@@ -180,7 +180,7 @@ Egy SQL-adatbázis járműflotta figyelési a Naplóelemzési egyszerű. Három 
 
 ### <a name="create-a-log-analytics-resource"></a>A Naplóelemzési erőforrás létrehozása
 
-1. Válassza ki **új** a bal oldali menüben.
+1. Válassza ki **hozzon létre egy erőforrást** a bal oldali menüben.
 
 2. Válassza ki **figyelési + felügyeleti**.
 
@@ -266,20 +266,20 @@ Megtudhatja, hogyan [metrikák és diagnosztikai naplókat letölteni az tárol�
 |**Erőforrás**|**Metrikák**|
 |---|---|
 |Adatbázis|DTU százalékos DTU használt, DTU határt, a processzor, a fizikai adatáttelepítések olvasási százalékos, napló írása százaléka, a sikeres vagy sikertelen/letiltott tűzfalkapcsolatok, munkamenetek százalékos, munkavállalók százalékos, tárolási, tárolási százalékos, XTP tárolási százalékos, és Holtpont |
-|A rugalmas készlet|eDTU százalékos eDTU használt, eDTU határt, a processzor, a fizikai adatáttelepítések olvasási százalékos, napló írása százalékos, munkamenetek százalékos, munkavállalók százalékos, tárolási, tárolási százalékos, tárolási kapacitás, XTP tárolási százalékos aránya |
+|Rugalmas készlet|eDTU százalékos eDTU használt, eDTU határt, a processzor, a fizikai adatáttelepítések olvasási százalékos, napló írása százalékos, munkamenetek százalékos, munkavállalók százalékos, tárolási, tárolási százalékos, tárolási kapacitás, XTP tárolási százalékos aránya |
 |||
 
 ### <a name="query-store-runtime-statistics"></a>A Lekérdezéstár futásidejű statisztikája
 
 |Tulajdonság|Leírás|
 |---|---|
-|A TenantId|A bérlő azonosítójával.|
+|TenantId|A bérlő azonosítójával.|
 |SourceSystem|Mindig: Azure|
 |TimeGenerated [UTC]|Időbélyegzőt, ha a napló lett felvéve.|
 |Típus|Mindig: AzureDiagnostics|
-|ResourceProvider|Az erőforrás-szolgáltató neve. Mindig: MICROSOFT. SQL|
-|Kategória|A kategória neve. Mindig: QueryStoreRuntimeStatistics|
-|OperationName|A művelet neve. Mindig: QueryStoreRuntimeStatisticsEvent|
+|ResourceProvider|Az erőforrás-szolgáltató neve. Always: MICROSOFT.SQL|
+|Kategória|A kategória neve. Always: QueryStoreRuntimeStatistics|
+|OperationName|A művelet neve. Always: QueryStoreRuntimeStatisticsEvent|
 |Erőforrás|Az erőforrás nevét.|
 |ResourceType|Az erőforrástípus neve. Mindig: KISZOLGÁLÓK/ADATBÁZISOK|
 |SubscriptionId|GUID azonosítója, amelyhez tartozik az adatbázis-előfizetés.|
@@ -324,13 +324,13 @@ További információ [Lekérdezéstár futásidejű statisztikai adatok](https:
 
 |Tulajdonság|Leírás|
 |---|---|
-|A TenantId|A bérlő azonosítójával.|
+|TenantId|A bérlő azonosítójával.|
 |SourceSystem|Mindig: Azure|
 |TimeGenerated [UTC]|Időbélyegzőt, ha a napló lett felvéve.|
 |Típus|Mindig: AzureDiagnostics|
-|ResourceProvider|Az erőforrás-szolgáltató neve. Mindig: MICROSOFT. SQL|
-|Kategória|A kategória neve. Mindig: QueryStoreWaitStatistics|
-|OperationName|A művelet neve. Mindig: QueryStoreWaitStatisticsEvent|
+|ResourceProvider|Az erőforrás-szolgáltató neve. Always: MICROSOFT.SQL|
+|Kategória|A kategória neve. Always: QueryStoreWaitStatistics|
+|OperationName|A művelet neve. Always: QueryStoreWaitStatisticsEvent|
 |Erőforrás|Az erőforrás neve|
 |ResourceType|Az erőforrástípus neve. Mindig: KISZOLGÁLÓK/ADATBÁZISOK|
 |SubscriptionId|GUID azonosítója, amelyhez tartozik az adatbázis-előfizetés.|
@@ -362,13 +362,13 @@ További információ [Lekérdezéstár várjon statisztikai adatok](https://doc
 
 |Tulajdonság|Leírás|
 |---|---|
-|A TenantId|A bérlő azonosítójával.|
+|TenantId|A bérlő azonosítójával.|
 |SourceSystem|Mindig: Azure|
 |TimeGenerated [UTC]|Időbélyegzőt, ha a napló lett felvéve.|
 |Típus|Mindig: AzureDiagnostics|
-|ResourceProvider|Az erőforrás-szolgáltató neve. Mindig: MICROSOFT. SQL|
+|ResourceProvider|Az erőforrás-szolgáltató neve. Always: MICROSOFT.SQL|
 |Kategória|A kategória neve. Mindig: hibák|
-|OperationName|A művelet neve. Mindig: ErrorEvent|
+|OperationName|A művelet neve. Always: ErrorEvent|
 |Erőforrás|Az erőforrás neve|
 |ResourceType|Az erőforrástípus neve. Mindig: KISZOLGÁLÓK/ADATBÁZISOK|
 |SubscriptionId|GUID azonosítója, amelyhez tartozik az adatbázis-előfizetés.|
@@ -391,13 +391,13 @@ További információ [SQL Server hibaüzenetek](https://msdn.microsoft.com/en-u
 
 |Tulajdonság|Leírás|
 |---|---|
-|A TenantId|A bérlő azonosítójával.|
+|TenantId|A bérlő azonosítójával.|
 |SourceSystem|Mindig: Azure|
 |TimeGenerated [UTC]|Időbélyegzőt, ha a napló lett felvéve.|
 |Típus|Mindig: AzureDiagnostics|
-|ResourceProvider|Az erőforrás-szolgáltató neve. Mindig: MICROSOFT. SQL|
-|Kategória|A kategória neve. Mindig: DatabaseWaitStatistics|
-|OperationName|A művelet neve. Mindig: DatabaseWaitStatisticsEvent|
+|ResourceProvider|Az erőforrás-szolgáltató neve. Always: MICROSOFT.SQL|
+|Kategória|A kategória neve. Always: DatabaseWaitStatistics|
+|OperationName|A művelet neve. Always: DatabaseWaitStatisticsEvent|
 |Erőforrás|Az erőforrás neve|
 |ResourceType|Az erőforrástípus neve. Mindig: KISZOLGÁLÓK/ADATBÁZISOK|
 |SubscriptionId|GUID azonosítója, amelyhez tartozik az adatbázis-előfizetés.|
@@ -420,11 +420,11 @@ További információ [várakozási statisztika adatbázis](https://docs.microso
 
 |Tulajdonság|Leírás|
 |---|---|
-|A TenantId|A bérlő azonosítójával.|
+|TenantId|A bérlő azonosítójával.|
 |SourceSystem|Mindig: Azure|
 |TimeGenerated [UTC]|Időbélyegzőt, ha a napló lett felvéve.|
 |Típus|Mindig: AzureDiagnostics|
-|ResourceProvider|Az erőforrás-szolgáltató neve. Mindig: MICROSOFT. SQL|
+|ResourceProvider|Az erőforrás-szolgáltató neve. Always: MICROSOFT.SQL|
 |Kategória|A kategória neve. Mindig: időtúllépés|
 |OperationName|A művelet neve. Mindig: TimeoutEvent|
 |Erőforrás|Az erőforrás neve|
@@ -443,11 +443,11 @@ További információ [várakozási statisztika adatbázis](https://docs.microso
 
 |Tulajdonság|Leírás|
 |---|---|
-|A TenantId|A bérlő azonosítójával.|
+|TenantId|A bérlő azonosítójával.|
 |SourceSystem|Mindig: Azure|
 |TimeGenerated [UTC]|Időbélyegzőt, ha a napló lett felvéve.|
 |Típus|Mindig: AzureDiagnostics|
-|ResourceProvider|Az erőforrás-szolgáltató neve. Mindig: MICROSOFT. SQL|
+|ResourceProvider|Az erőforrás-szolgáltató neve. Always: MICROSOFT.SQL|
 |Kategória|A kategória neve. Mindig: blokkok|
 |OperationName|A művelet neve. Mindig: BlockEvent|
 |Erőforrás|Az erőforrás neve|
@@ -466,7 +466,7 @@ További információ [várakozási statisztika adatbázis](https://docs.microso
 ### <a name="intelligent-insights-dataset"></a>Intelligens Insights adatkészlet
 További információ a [intelligens Insights naplóformátumban](sql-database-intelligent-insights-use-diagnostics-log.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Naplózás engedélyezése és a metrikák és a napló kategóriák különböző Azure-szolgáltatás által támogatott megértéséhez, olvassa el:
 

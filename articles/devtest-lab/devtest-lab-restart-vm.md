@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: v-craic
-ms.openlocfilehash: ffa669e2d07a93e9e5071ac8aab81ec14ea24eab
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: e784b6ebffa215fc090af0f915900a41972fb778
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="restart-a-vm-in-a-lab-in-azure-devtest-labs"></a>Indítsa újra a virtuális gép egy tesztkörnyezetben, a Azure DevTest Labs szolgáltatásban
 Gyorsan és egyszerűen a virtuális gép újraindításához a DevTest Labs szolgáltatásban Ez a cikk utasításait követve. Vegye figyelembe a következő virtuális gép újraindítása előtt:
@@ -37,7 +37,7 @@ Gyorsan és egyszerűen a virtuális gép újraindításához a DevTest Labs szo
 
 ## <a name="steps-to-restart-a-vm-in-a-lab-in-azure-devtest-labs"></a>Indítsa újra a virtuális gépek a Azure DevTest Labs szolgáltatásban egy tesztkörnyezetben lépései
 1. Jelentkezzen be az [Azure Portalra](http://go.microsoft.com/fwlink/p/?LinkID=525040).
-1. Válassza ki **több szolgáltatások**, majd válassza ki **DevTest Labs** a listából.
+1. Válassza ki **minden szolgáltatás**, majd válassza ki **DevTest Labs** a listából.
 1. Labs listában jelölje ki a labor, amely tartalmazza a virtuális gép újraindítja.  
 1. A bal oldali panelen válassza ki a **saját virtuális gépek**. 
 1. A virtuális gépek listájából válassza ki a virtuális gép.

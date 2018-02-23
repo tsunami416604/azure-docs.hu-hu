@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/01/2018
 ms.author: sethm
-ms.openlocfilehash: 8bb5b7e27291a06a713f0dfc7d5ca5a0a961de4c
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 8fd70380dbb88f379789e1a4730934dcd38cac5a
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="receive-events-from-azure-event-hubs-using-the-net-framework"></a>Események fogadása az Azure Event Hubsból a .NET-keretrendszer használatával
 
@@ -45,7 +45,7 @@ Első lépésként az [Azure Portalon](https://portal.azure.com) hozzon létre e
 
 Az [Event Processor Host][EventProcessorHost] használatához egy [Azure Storage-fiók][Azure Storage account] szükséges:
 
-1. Jelentkezzen be az [Azure Portalra][Azure portal], és kattintson az **Új** gombra a képernyő bal felső részén.
+1. Jelentkezzen be a [Azure-portálon][Azure portal], és kattintson a **hozzon létre egy erőforrást** , a képernyő bal felső.
 2. Kattintson a **Tárolás**, majd a **Tárfiók** elemre.
    
     ![](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-storage1.png)

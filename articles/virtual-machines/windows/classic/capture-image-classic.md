@@ -16,13 +16,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: cynthn
-ms.openlocfilehash: 6f7d8e8b3d1ed7c8a06f7e11fea492eec8b60409
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: ee6371faa9c3cc72104ba0eb05d17226679fa420
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 02/21/2018
 ---
-# <a name="capture-an-image-of-an-azure-windows-virtual-machine-created-with-the-classic-deployment-model"></a>Hagyományos módon üzembe helyezett Azure -beli windowsos virtuális gép lemezképének létrehozása.
+# <a name="capture-an-image-of-an-azure-windows-virtual-machine-created-with-the-classic-deployment-model"></a>Hagyományos módon üzembe helyezett Azure -beli windowsos virtuális gép lemezképének létrehozása
 > [!IMPORTANT]
 > Azure az erőforrások létrehozására és kezelésére két különböző üzembe helyezési modellel rendelkezik: [Resource Manager és klasszikus](../../../resource-manager-deployment-model.md). Ez a cikk a klasszikus telepítési modell használatát bemutatja. A Microsoft azt javasolja, hogy az új telepítések esetén a Resource Manager modellt használja. Erőforrás-kezelő modell információkért lásd: [egy általánosított virtuális Gépet az Azure-ban a felügyelt lemezképének](../capture-image-resource.md).
 > [!INCLUDE [virtual-machines-common-classic-createportal](../../../../includes/virtual-machines-classic-portal.md)]
@@ -57,7 +57,7 @@ Egy lemezkép az Azure virtuális gép rögzítése, előtt ajánlott a cél vir
 
    ![Futtassa a Sysprep eszközt](./media/capture-image/SysprepGeneral.png)
 5. A Sysprep leállítja a virtuális gépet, mely az Azure portálon, hogy a virtuális gép állapotának módosítása **leállítva**.
-6. Az Azure portálon kattintson **virtuális gépek (klasszikus)** , és válassza ki a felvenni kívánt virtuális gépet. A **Virtuálisgép-rendszerképek (klasszikus)** csoport megtalálható-e **számítási** megtekintésekor **további szolgáltatások**.
+6. Az Azure portálon kattintson **virtuális gépek (klasszikus)** , és válassza ki a felvenni kívánt virtuális gépet. A **Virtuálisgép-rendszerképek (klasszikus)** csoport megtalálható-e **számítási** megtekintésekor **minden szolgáltatás**.
 
 7. A parancssávon kattintson **rögzítése**.
 
@@ -74,7 +74,7 @@ Egy lemezkép az Azure virtuális gép rögzítése, előtt ajánlott a cél vir
     ![Lemezkép-rögzítési sikeres](./media/capture-image/VMCapturedImageAvailable.png)
 
 ## <a name="next-steps"></a>További lépések
-A lemezkép készen áll a virtuális gépek létrehozásához használható. Ennek beállításához hozzon létre egy virtuális gép kiválasztásával a **további szolgáltatások** menüpont a szolgáltatások menü alján **Virtuálisgép-rendszerképek (klasszikus)** a a **számítási** csoport. Útmutatásért lásd: [virtuális gép létrehozása lemezkép](createportal.md).
+A lemezkép készen áll a virtuális gépek létrehozásához használható. Ennek beállításához hozzon létre egy virtuális gép kiválasztásával a **minden szolgáltatás** menüpont a szolgáltatások menü alján **Virtuálisgép-rendszerképek (klasszikus)** a a **számítási** csoport. Útmutatásért lásd: [virtuális gép létrehozása lemezkép](createportal.md).
 
 [How to sign in to a virtual machine running Windows Server]:connect-logon.md
 [How to Use Sysprep: An Introduction]: http://technet.microsoft.com/library/bb457073.aspx

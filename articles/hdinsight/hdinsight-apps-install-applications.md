@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/06/2017
+ms.date: 02/16/2018
 ms.author: jgao
-ms.openlocfilehash: 9924a9656f2e2e268356b8ce293d58afc3d535a9
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: cfaad24e7bf1c38f3be1e13c88fc932be0bd502c
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="install-third-party-hadoop-applications-on-azure-hdinsight"></a>Külső gyártótól származó Hadoop-alkalmazások telepítése az Azure HDInsighton
 
@@ -33,13 +33,12 @@ Az alábbi lista tartalmazza a közzétett alkalmazásokhoz:
 * **AtScale Eszközintelligencia Platform** bekapcsolja a HDInsight-fürt kibővített OLAP-kiszolgálót. Az alkalmazás lehetővé teszi a lekérdezés egy interaktív használatával az Üzletiintelligencia-eszközök a Microsoft Excel, a Power bi Tableau szoftver a QlikView adatsorokat.
 * **A HDInsight CDAP cask** az első egyesített integrációs platformot kínál a big Data típusú adatok, alkalmazások és adatok tavakat üzemi 80 %-kal kivágása az állásidő. Ez az alkalmazás kizárólag a Standard HBase 3.4-fürtöket támogatja.
 * **A HDInsight DATAIKU DDS** lehetővé teszi az adatok szakemberek prototípusként, elkészítéséhez és magas adott szolgáltatások telepítését, amelyek nyers adatok átalakítása impactful üzleti előrejelzéseket.
-* **Datameer**: a [Datameer](http://www.datameer.com/documentation/display/DAS50/Home?ls=Partners&lsd=Microsoft&c=Partners&cd=Microsoft) interaktív módot kínál az elemzőknek a Big Data-eredmények felfedezésére, elemzésére és vizuális megjelenítésére. Vonjon be további adatforrásokat, fedezzen fel új kapcsolatokat, és kapjon még gyorsabban választ kérdéseire.
 * **A HDInsight (béta) H2O mesterséges Eszközintelligencia** H2O készült vízjel támogatja a következő elosztott algoritmusok: GLM, natív Bayes, elosztott véletlenszerű erdő, átmenetes kiemelése gép, Neurális hálózatokat, mély tanulási, a K-közép, PEM, Alacsony Rank modellek, Anomáliadetektálás és Autoencoders általánosítva van.
 * **Kyligence Analytics Platform** Kyligence Analytics Platform (KAP) Apache Kylin és Apache Hadoop kapcsolva, nagyvállalati használatra kész adatraktár; a alárendelt második biztosít késés jelentős mértékű adatkészlethez lekérdezésére és egyszerűbbé teszi a adatelemzés üzleti felhasználók és az elemzők. 
 * **Paxata önkiszolgáló adatok előkészítése**
-* **SnapLogic Hadooplex** hdinsighton futó a SnapLogic Hadooplex lehetővé teszi az ügyfelek önkiszolgáló adatfeldolgozást és szinte bármilyen forrás előkészítése a Microsoft Azure cloud platform megadásával üzleti elemzéseket gyorsabb eléréséhez.
 * **Spark-feladatkiszolgálót KNIME Spark végrehajtó** Spark-feladatkiszolgálót KNIME Spark végrehajtó és a KNIME Analytics Platform csatlakoztatásával a HDInsight-fürtök szolgál.
 * A **Streamsets Data Collector for HDInsight** olyan, átfogó funkciókat kínáló integrált fejlesztőkörnyezetet (IDE) biztosít, amelyben bármely irányú, stream- és batch-adatokat összefűző feldolgozási folyamatok tervezése, tesztelése, üzembe helyezése és felügyelete lehetséges, továbbá különféle streamen belüli transzformációkat is tartalmaz, és mindehhez nincs szükség egyedi kód írására. 
+* **[Trifacta](http://www.trifacta.com/)**  lehetővé teszi az adatok mérnökök és elemzők hatékonyabban vizsgálatát, és az előkészítés különböző modern gépi tanulási áttörést jelentő felhasználói élmény, a munkafolyamat és architektúra felügyelniük.
 * **WANdisco Fusion HDI App** lehetővé teszi, hogy konzisztens létesített kapcsolat adatok bárhol található változásakor. Ön hozzáférést bármikor elérheti az adatait és biztosít bárhol nincs állásidő és a nem működőképes.
 
 A cikkben szereplő utasítások az Azure Portalon alapulnak. Az Azure Resource Manager-sablont a portálról is exportálhatja, vagy beszerezheti a Resource Manager-sablon egy példányát a szállítóktól, majd az Azure PowerShell és az Azure parancssori felület segítségével üzembe helyezheti a sablont.  Lásd: [Hadoop létrehozása a Resource Manager-sablonok használatával HDInsight clusters](hdinsight-hadoop-create-linux-clusters-arm-templates.md).
@@ -58,14 +57,10 @@ Az alábbi eljárásból megtudhatja, hogyan telepíthet HDInsight-alkalmazások
 4. Kattintson az **Applications** (Alkalmazások) elemre a **Configurations** (Konfigurációk) kategóriában. Láthatja, hogy a telepített alkalmazások listáját. Ha nem látja az Alkalmazások elemet, az azt jelenti, hogy a HDInsight-fürt jelen verziójához nem érhetők el alkalmazások.
    
     ![HDInsight-alkalmazások menü a portálon](./media/hdinsight-apps-install-applications/hdinsight-apps-portal-menu.png)
-5. Kattintson a **Hozzáadás** a menüből. 
-   
-    ![HDInsight-alkalmazások, telepített alkalmazások](./media/hdinsight-apps-install-applications/hdinsight-apps-installed-apps.png)
-   
-    Megjelenik a meglévő HDInsight-alkalmazások listája.
+5. Kattintson a **Hozzáadás** a menüből. Megjelenik a meglévő HDInsight-alkalmazások listája.
    
     ![HDInsight-alkalmazások, elérhető alkalmazások](./media/hdinsight-apps-install-applications/hdinsight-apps-list.png)
-6. Kattintson a kívánt alkalmazásra, fogadja el a jogi feltételeket, majd kattintson a **Kiválasztás** gombra.
+6. Kattintson az elérhető alkalmazások közül, és kövesse az útmutatást követve fogadja el a jogi feltételeket.
 
 A portál értesítései között megtekintheti a telepítési állapotot (ehhez kattintson a portál felső részén található harang ikonra). Az alkalmazás telepítése után az alkalmazás megjelenik a telepített alkalmazások listájában.
 
@@ -80,7 +75,7 @@ A portál megjeleníti a fürthöz tartozó telepített HDInsight-alkalmazásoka
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. A bal oldali menüben kattintson a **HDInsight Clusters** (HDInsight-fürtök) elemre. 
 3. Kattintson a kívánt HDInsight-fürtre.
-4. A **beállítások**, kattintson a **alkalmazások** alatt a **általános** kategóriát. A telepített alkalmazások találhatók, a jobb oldalon. 
+4. A **beállítások**, kattintson a **alkalmazások** alatt a **konfigurációs** kategóriát. A telepített alkalmazások találhatók, a jobb oldalon. 
    
     ![HDInsight-alkalmazások, telepített alkalmazások](./media/hdinsight-apps-install-applications/hdinsight-apps-installed-apps-with-apps.png)
 5. A tulajdonságok megjelenítéséhez kattintson a kívánt telepített alkalmazásra. Az XML-tulajdonságlisták:

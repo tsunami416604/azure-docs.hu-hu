@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/31/2017
 ms.author: jdial
-ms.openlocfilehash: 552f37dd704de25159bc0f0ad34fdae9ed8b73f5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6beb9ae1b64e27df0a4eefefd592c7850efc7d2d
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="log-analytics-for-network-security-groups-nsgs"></a>Naplóelemzés hálózati biztonsági csoportokhoz
 
@@ -46,7 +46,7 @@ Diagnosztikai naplózás engedélyezni kell a *minden* NSG szeretne adatokat gy�
 
 ### <a name="azure-portal"></a>Azure Portal
 
-A portál segítségével engedélyezi a naplózást, jelentkezzen be a [portal](https://portal.azure.com). Kattintson a **további szolgáltatások**, majd írja be a *hálózati biztonsági csoportok*. Válassza ki a naplózás engedélyezése kívánt NSG. Kövesse az utasításokat, amelyben nem számítási erőforrásokat a [engedélyezése a diagnosztikai naplókat a portálon](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#how-to-enable-collection-of-resource-diagnostic-logs) cikk. Válassza ki **NetworkSecurityGroupEvent**, **NetworkSecurityGroupRuleCounter**, vagy mindkét kategóriák a naplók.
+A portál segítségével engedélyezi a naplózást, jelentkezzen be a [portal](https://portal.azure.com). Kattintson a **minden szolgáltatás**, majd írja be a *hálózati biztonsági csoportok*. Válassza ki a naplózás engedélyezése kívánt NSG. Kövesse az utasításokat, amelyben nem számítási erőforrásokat a [engedélyezése a diagnosztikai naplókat a portálon](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#how-to-enable-collection-of-resource-diagnostic-logs) cikk. Válassza ki **NetworkSecurityGroupEvent**, **NetworkSecurityGroupRuleCounter**, vagy mindkét kategóriák a naplók.
 
 ### <a name="powershell"></a>PowerShell
 

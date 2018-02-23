@@ -23,6 +23,10 @@
       items:
         - name: Linux rendszerű virtuális gépről
           href: msi-tutorial-linux-vm-access-arm.md
+    - name: Virtuális gép MSI használata az Azure Cosmos DB eléréséhez
+      items:
+        - name: Linux rendszerű virtuális gépről
+          href: msi-tutorial-linux-vm-access-cosmosdb.md
     - name: Virtuális gép MSI használata egy Azure-tároló eléréséhez
       items:
         - name: Linux rendszerű virtuális gépről hozzáférési kulccsal

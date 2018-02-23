@@ -1,7 +1,7 @@
 ---
-title: "Az Azure piactér Publisher útmutató"
+title: "Az Azure piactér és AppSource Publisher útmutatója"
 description: "Lépésről lépésre ismerteti, és az Azure piactéren új közzétevők ellenőrzőlisták közzététele"
-services: marketplace
+services: Marketplace, Compute, Storage, Networking, Blockchain, Security
 documentationcenter: 
 author: ellacroi
 manager: msmbaldwin
@@ -14,17 +14,17 @@ ms.devlang:
 ms.topic: article
 ms.date: 01/18/2018
 ms.author: ellacroi
-ms.openlocfilehash: 0017986f9766fb8ad9fe15f04a064273ca675f9f
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: d02d6e942dfc503dd87a8ebcb6e2ddcf6b6065c5
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/21/2018
 ---
-# <a name="azure-marketplace-publisher-guide"></a>Az Azure piactér Publisher útmutató
+# <a name="azure-marketplace-and-appsource-publisher-guide"></a>Az Azure piactér és AppSource Publisher útmutatója
 
-Üdvözli a piactér Publisher útmutatója tartalmazza. Ez az útmutató célja Candidate verzióra, és a meglévő közzétevők megtudhatja, hogyan tudják kihasználni az Azure piactér és AppSource kirakatokkal az alkalmazások és szolgáltatások, nő a Microsoft számos üzleti listázásához. Ez az útmutató végén kell többet megtudjon az alábbi témakörök mindegyikének és tudja, hol találhatók további információk:
+Üdvözli a [Azure piactér](https://azuremarketplace.microsoft.com) és [AppSource](https://appsource.microsoft.com) Publisher útmutató. Ez az útmutató célja segíteni az új és meglévő közzétevők megérteni, hogyan használhatók ki az Azure piactéren és AppSource kirakatokkal, az alkalmazások és szolgáltatások közzétételéhez szükséges lépéseket, és hogyan cége a Microsofttal közösen. Ez az útmutató végén kell többet megtudjon az alábbi témakörök mindegyikének és tudja, hol találhatók további információk:
 
-- Milyen előnyökkel piactér részt
+- Milyen előnyökkel jár a listát a piactér kirakatokkal egyikében
 - Mik az Azure piactér és AppSource
 - Hogyan használhatók ki a kirakatokkal
 - Mely kirakat megfelel az ajánlatok és szolgáltatások 
@@ -36,30 +36,33 @@ ms.lasthandoff: 02/01/2018
 - Optimalizálja a listát, és nyissa meg piacra jutási erőforrásokat meghajtó hatás használata
 - Súgó és támogatás WHERE kérdésekre az Azure piactérről, AppSource, vagy a közzétételi útmutatóban lépjen kapcsolatba a piactér csapatának  **cloudmarketplace@microsoft.com** . 
 
-## <a name="the-benefits-of-participating-in-marketplace"></a>A piactér részt előnyei
+## <a name="benefits-of-participating-in-the-marketplace"></a>Részt vesz a piactér előnyei
 
-Piactér a Microsoft közös Ugrás piacra jutási tevékenységek launchpadről és üzleti növekedésének megfelelően lendítõtömeggel. Indítsa el az előléptetés, igény szerinti létrehozásának és az értékesítési és közös használ, a Piactéri ajánlat portfóliót lehet a felhő üzleti motor centerpiece. Nincs részt vesz a piactér díja van. Célunk a legjobb megoldás, amely a fiókpartner-ökoszisztéma nyújt, Microsoft-ügyfelek csatlakozhatnak.
+Az Azure piactér és AppSource a Microsoft közös Ugrás piacra jutási tevékenységek indító pontok és lendítõtömeggel üzleti növekedésének megfelelően. Indítsa el az előléptetés, igény szerinti létrehozásának és az értékesítési és közös használ, a megtekintését a felhő üzleti motor centerpiece lehet. Nincs részt vesz a piactér díja van. Célunk a legjobb megoldás és a szolgáltatások, amely a fiókpartner-ökoszisztéma nyújt, Microsoft-ügyfelek csatlakozhatnak.
 
 Az üzleti nő a piactér lehetőségeinek kihasználásához:
 
 - **Készítése érdeklődők és értékesítési lehetőségek.** Írjon be egy bővített portfóliót megoldások az új piacok a Microsoft cloud platform. Felülértékesítési és kereszt-értékesít piactér ajánlatokat. 
-- **Javíthatja az üzleti értékekre, és növelje a meglévő és új ügyfelek üzlet mérete.** Üzlet mérete és a cím ügyfélszolgálatnak problémás pontok nő, amikor a felhő helyezi át a munkaterheléseket. Megnövelheti üzlet jövedelmezőségre teljes megoldásokat kínál. 
-- **Gyakorlatban használható elemzések lekérése.** A sikerességi arány ennél a sikeres. A Cloud Partner portálra, mi működik-e a keresztül nyerhet, mi részletes útmutatást hozta létre, és maximalizálhatja a kampány tevékenységeket.
+- **Javíthatja az üzleti értékekre, és növelje a meglévő és új ügyfelek üzlet mérete.** Üzlet mérete és a cím ügyfélszolgálatnak problémás pontok nő, amikor a felhő helyezi át a munkaterheléseket. Csökkentse az értékesítési ciklusok, és növelheti üzlet jövedelmezőségre teljes megoldásokat kínál, a cél bizonyos munkaterhelések és iparági forgatókönyvek.
+- **Gyakorlatban használható elemzések lekérése.** A sikerességi arány ennél a sikeres. Mélyebb betekintés az a Cloud Partner portálra keresztül a listaelemek teljesítményére. Ismerje meg, mi hajt végre, mi részletes útmutatást hozta létre, és maximalizálhatja a kampány tevékenységeket.
+
+>[!NOTE]
+>Alkalmazások, amely az Office insights érik el az a közzétételi folyamat Office-alkalmazásokkal.
 
 ## <a name="what-are-azure-marketplace-and-appsource"></a>Mik az Azure piactér és AppSource?
 
-A Microsoft biztosít, amelyek lehetővé teszik a partnerek számára, hogy a listában ajánlatok kísérletek engedélyezése, és közvetlenül a Microsoft ügyfelei és az ökoszisztémákhoz transact két különböző piactér kirakatokkal: [Azure piactér] (https://azuremarketplace.microsoft.com) és () [AppSource] https://appsource.microsoft.com). Ezek kirakatokkal engedélyezése a felhasználók kereséséhez, próbálja meg, és alkalmazásokat vásárolhat és egyre gyorsabban jelennek meg a digitális átalakítása, és közzétevők súgó szolgáltatások nő a vállalatok számára a hozzáférést a Microsoft ügyfelei és az ökoszisztémákhoz partner növelésével.
+A Microsoft biztosít két különböző piactér kirakatokkal, amelyek lehetővé teszik a partnerek számára, hogy a listában ajánlatok kísérletek engedélyezése, és közvetlenül a Microsoft ügyfelei és az ökoszisztémákhoz transact: [Azure piactér] (https://azuremarketplace.microsoft.com) és () [AppSource] https://appsource.microsoft.com). Ezek kirakatokkal engedélyezése a felhasználók kereséséhez, próbálja meg, és alkalmazásokat vásárolhat és egyre gyorsabban jelennek meg a digitális átalakítása, és közzétevők súgó szolgáltatások nő a vállalatok számára a hozzáférést a Microsoft ügyfelei és az ökoszisztémákhoz partner növelésével.
  
-A piactér kirakatokkal célcsoportok és a Microsoft cloud termékek pontosan mit kell található ügyfelek igazodik. Minden egyes áruháznak speciális közzétételi beállítások segítségével maximalizálhatja a közzétételi való befektetés az alábbi táblázat foglalja össze:
+A piactér kirakatokkal célcsoportok és a Microsoft cloud termékek szükséges található ügyfelek igazodik. Minden egyes áruháznak speciális közzétételi beállítások segítségével maximalizálhatja a közzétételi való befektetés az alábbi táblázat foglalja össze:
 
 
 |          |Azure Piactér |AppSource  |
 |---------|---------|---------|
 |Célközönség     |Informatikai szakemberek számára, a fejlesztők (specialistája szerepkörei tartalmazzák, DBAs, SecOps, DevOps, stb.)    | Sor az üzleti döntéshozók (a specialistája szerepkör tartalmazza a beszerzést, a gyártási, a számviteli, a stb.)      |
-|Beépített bővítése     |Azure         | Azure, a Dynamics 365, az Office 365, a Power BI és a kiemelt alkalmazások       |
-|Megoldások és a szolgáltatások típusai     |  Infrastruktúra-megoldások és szolgáltatások   | Befejezett sor üzleti alkalmazások és szolgáltatások        |
-|Közzétételi beállítások     |  Megkereshetnek, tanácsadási szolgáltatásokat kínálnak, próbaverzió, virtuális gép megoldás sablonokat, és a felügyelt alkalmazások       |  Megkereshetnek, szolgáltatások ajánlatot vagy próbaverzióra tanácsadás       |
-|A felhasználói élményt     | Azure-portál és a parancssori felület         | Az Office 365, Dynamics 365 Power BI-ban Office ügyfél alkalmazások       |
+|A beépített vagy bővítése     |Azure         | Azure, a Dynamics 365, az Office 365, a Power BI és a kiemelt alkalmazások       |
+|Megoldások és a szolgáltatások típusai     |  Infrastruktúra-megoldások és szolgáltatások   | Befejezett sor üzleti felhőalapú alkalmazások, az Office 365-bővítmények és a szolgáltatások        |
+|Közzétételi beállítások     |  Megkereshetnek, tanácsadási szolgáltatásokat kínálnak, próbaverzió, virtuális gép megoldás sablonokat, és a felügyelt alkalmazások       |  Ingyenes próbaverzió, lekérése most tesztelése, lépjen kapcsolatba Me kínált tanácsadás      |
+|Alkalmazáson belüli élményt biztosít a felhasználók a hozzáférést az alkalmazások és szolgáltatások alkalmazását környezetében  | Azure-portál és a parancssori felület         | Az Office 365, Dynamics 365 Power BI-ban Office ügyfél alkalmazások       |
 
 ## <a name="leveraging-these-storefronts"></a>Ezek kirakatokkal kihasználva
 
@@ -75,54 +78,60 @@ Informatikai szakemberek és a felhő fejlesztők keresztül végezhetnek a **Az
 |**A méretezhető mechanizmussal kell külső alkalmazások és szolgáltatások**   | Lehetővé teszi, hogy létrehozását és méretezhető központi telepítésének harmadik féltől származó alkalmazások és szolgáltatások konfigurálása        |
 |**Új alkalmazások és szolgáltatások integrálását, és a már meglévő megoldások használatához szükséges**  |   Harmadik féltől származó alkalmazások és szolgáltatások könnyen integrálható a meglévő megoldások Azure      |
 
-Üzleti felhasználók megszólítása használatával **AppSource** felderítésére, majd próbálja meg a sor az üzleti SaaS-alkalmazások és szolgáltatások: 
+Az üzleti felhasználók megszólítása **AppSource** keresése, próbálja meg és üzleti SaaS-alkalmazásokhoz és megvalósítási szolgáltatások meghajtó üzleti eredmények számítanak, és csökkentse idő érték:: 
 
 
 |Ügyfél szükséges  |AppSource  |
 |---------|---------|
-|**Szeretné kiterjeszteni Dynamics 365, az Office 365, a Power bi-ban és a kiemelt alkalmazások funkció**   |  Lehetővé teszi az ügyfelek a Microsoft cloud platform lehetőségek bővítése céljából a harmadik féltől származó alkalmazások és szolgáltatások használatára       |
-|**A megfelelő alkalmazás vagy szolgáltatás felderítéséhez kihívást találja**    |   Biztosít egy lehetőségekkel felderítésére és próba alkalmazások és szolgáltatások beépülő modulok és több      |
-|**Az iparág-specifikus üzletági megoldásra van szükségük**   | Lehetővé teszi, hogy minden iparági megoldások, hogy az ügyfelek található szükséges        |
-|**Üzleti-specifikus megoldások igényel**    | Lehetővé teszi, hogy minden üzletági és üzleti probléma, beleértve az ügyfélszolgálat, HR, műveletek és sok más megoldások        |
+|**Az üzleti megoldások, amelyek használhatók a Microsoft-termékek keresése már használata** | Lehetővé teszi az ügyfeleknek külső alkalmazások és szolgáltatások segítségével a Microsoft felhőalapú alkalmazások és technológiákat.       |
+|**Könnyedén megtalálhatja a jobb oldalon a megfelelő megoldás, illetve implementációjára szolgáltatás lehetővé teszi.**    |   Biztosít egy lehetőségekkel észlelése próbaidőszak, és alkalmazások és szolgáltatások és bővítmények      |
+|**Az üzleti megoldások címzéséhez az adott üzleti kihívást iparág-specifikus sor**   | Cím kapcsolatos követelmények között számos iparágakban segítségével végzett végpontok közötti iparági megoldásokat biztosít     |
+|**Alkalmazások termelékenység, hatékonyságát és üzleti elemzések készítése javítása érdekében**    | Alkalmazások biztosít üzleti, beleértve az ügyfélszolgálat, HR, műveletek és sok más        |
+| **Alkalmazások egyedi helyzetükhöz érdekében partnert tapasztalt végrehajtása** | Itt katalógusát a szolgáltatások ajánlatok tanácsadás megoldások alapján Dynamics 365, a Power bi-ban, a powerapps segítségével, és 3. fél alkalmazások állnak rendelkezésre AppSource üzleti felhasználók tanácsadás található szolgáltatások tervezési képes biztosítani a kiszámítható eredményekkel |
 
 ## <a name="understanding-the-differences-between-storefronts"></a>Kirakatokkal közötti különbségek ismertetése
 
-Egy kirakat kezdődik-e a szolgáltatásokat a célközönség azonosító kiválasztása: Azure piactér igazítását az informatikai szakemberek és fejlesztők igényeit, és az üzleti felhasználók AppSource igazodik. A megoldás mindkét célközönség célozza, ha csak egyszer listájába az mindkét kirakatokkal közzé kell.
+Egy kirakat kezdődik-e a szolgáltatásokat a célközönség azonosító kiválasztása: Azure piactér igazítását az informatikai szakemberek és fejlesztők igényeit, és AppSource igazodik az üzleti felhasználók igényeinek. A megoldás mindkét célközönség célozza, ha csak egyszer listájába az mindkét kirakatokkal közzé kell.
  
 Vegye figyelembe az egyes kirakat további előnyei:
 
 |Storefront juttatás  |Azure Piactér  |AppSource   |
 |---------|---------|---------|
-|**Számlázási rugalmasságot**    | A virtuális gépek, "Használatalapú" számlázási lehetőségek, használja a Microsofttal kötött nagyvállalati szerződése vagy webes közvetlen értékesítési modellek. Árképzési beállítások is, ahol egy ajánlatot az termékbevételezésekor szabad ingyenes szint előfizetés, valamint egy próbálja azt most előfizetésének promotionally szabad után, amely átalakítja a szolgáltatás fizetős korlátozott időtartamra. "Kapcsolja a saját licenc" aktiválási is közzétevők támogatásához mindkét számlázási lehetőség helyzetekben lehetősége virtuális gépek vannak telepítve az Azure-alkalmazások (például a megoldás sablon vagy a felügyelt alkalmazások) használata, ha az összes Azure-erőforrások kiépítése számlázása közvetlenül az ügyfél számára | AppSource kínál a próbaverziója zökkenőmentes kiépítés, de jelenleg nem biztosítja a commerce engedélyezett közzétételi beállítás; Ez lehetővé teszi, hogy kihasználja az aktuális rendezés és számlázási infrastruktúra invesztálni és módosítások nélkül        |
-|**Lehetővé teszi a többi partner-kapcsolatok**     |Az Azure Piactér jelenleg nem teszi lehetővé a közzétevőt úgy, hogy egy szolgáltatás szolgáltató vagy a kézbesítési partnerek csatolása vonatkozó ajánlatot         |  A független szoftverszállítók rendszerintegrátoroktól és szolgáltatók által felügyelt kapcsolható szabott megvalósítási forgatókönyvek esetén új ügyfelek együttműködési értékesítő támogatása      |
+|**Számlázási rugalmasságot**    | A virtuális gépek, "Használatalapú" számlázási lehetőségek, használja a Microsofttal kötött nagyvállalati szerződése vagy webes közvetlen értékesítési modellek. Árképzési beállítások is, ahol egy ajánlatot az termékbevételezésekor szabad ingyenes szint előfizetés, valamint egy próbálja azt most előfizetésének promotionally szabad után, amely átalakítja a szolgáltatás fizetős korlátozott időtartamra. "Kapcsolja a saját licenc" aktiválási is közzétevők támogatásához mindkét számlázási lehetőség helyzetekben lehetősége virtuális gépek vannak telepítve az Azure-alkalmazások (például a megoldás sablon vagy a felügyelt alkalmazások) használata, ha az összes Azure-erőforrások kiépítése számlázása közvetlenül az ügyfél számára | AppSource kínál a próbaverziója kiépítését, de jelenleg nem biztosítja a commerce engedélyezett közzétételi beállítás; Ez lehetővé teszi, hogy kihasználja az aktuális rendezés és számlázási infrastruktúra invesztálni és módosítások nélkül        |
+|**Lehetővé teszi a többi partner-kapcsolatok**     |Az Azure Piactér jelenleg nem teszi lehetővé a közzétevőt úgy, hogy a szolgáltatás szolgáltató vagy a kézbesítési partnerek csatolása az ajánlat, de ez a funkció ekkor elindul a 2018         |  A független szoftverszállítók rendszerintegrátoroktól és szolgáltatók által felügyelt kapcsolható szabott megvalósítási forgatókönyvek esetén új ügyfelek együttműködési értékesítő támogatása      |
 |**Automatizálás**     |    Az Azure Piactér jelenleg nem teszi lehetővé a közzétevőt úgy, hogy egy szolgáltatás szolgáltató vagy a kézbesítési partnerek csatolása vonatkozó ajánlatot     | Használja ki az automatizált Szolgáltatottszoftver-bővítmény szolgáltatáskiépítéssel és Solution Templates segítségével automatizálhatja a Szolgáltatottszoftver-alapú adatok gyűjtése és a központi telepítési forgatókönyvek        |A független szoftverszállítók rendszerintegrátoroktól és szolgáltatók által felügyelt kapcsolható szabott megvalósítási forgatókönyvek esetén új ügyfelek együttműködési értékesítő támogatása
 |**Több Felhőtípusok**     |   Közzéteszi a nyilvános felhő- és a helyszíni megoldások Azure vermen keresztül, vagy Azure Government és regionális felhők, beleértve a kínai és Németországban közzététele      |    AppSource jelenleg nem nyújtanak támogatást Azure verem, Azure Government vagy regionális felhők     |
-|**Az ügyfél számára a környezet bemutató**     |  A megoldás az Azure portálon élményét környezetfüggő keresés (virtuális gépek és sablonok megoldás) elérhetővé tétele       |  Az alkalmazáson belüli élményt nyújt a Microsoft-termékek elérhetővé a megoldás       |
+|**Az ügyfél számára a környezet bemutató**     |  A megoldás az Azure portálon élményét környezetfüggő keresés (virtuális gépek és sablonok megoldás) elérhetővé tétele       |  A Microsoft-termékek, például Dynamics 365, a Power BI az Office 365 és az alkalmazáson belüli kezelőfelület segítségével további vásárlók    |
 
 ## <a name="select-a-publishing-option"></a>Válassza ki a közzétételi beállítást
 
 Minden egyes kirakat támogatja több közzétételi beállítások és Ajánlattípusaival: lista létrehozása és Transact. Válassza ki az ajánlat típusa, amely a legjobban jelképezi a az alkalmazás és szolgáltatás részletes adatai. Minden közzétételi beállítások rendszerében partnerek vezethet a megosztás eléréséhez. 
 
+Ez a szakasz végigvezeti a rendelkezésre álló lehetőségeket, hogy mindkét kirakatokkal a. 
 
-|**Közzétételi beállítás**  | **Az ajánlattípus** | **Kirakat**  |
+
+|**Közzétételi beállítás**  | **Az ajánlattípus** | **Storefront**  |
 |---------|---------|---------|
-|**List**    |    Megkereshetnek, szolgáltatás tanácsadás     |  Az Azure piactér, AppSource       |
-|**Próbaverzió**   |     Ingyenes próbaverzió, SaaS-próbaverzióra, interaktív bemutató, tesztelése    |  Az Azure piactér, AppSource       |
+|**List**    |    Megkereshetnek, szolgáltatás tanácsadás     |  Azure Marketplace, AppSource       |
+|**Próbaverzió**   |     Ingyenes próbaverzió, SaaS-próbaverzióra, interaktív bemutató, tesztelése    |  Azure Marketplace, AppSource       |
 |**Transact**     |   Virtuális gép, sablon megoldás, felügyelt alkalmazás      |    Azure Piactér     |
 
-### <a name="list"></a>LISTA
+### <a name="list"></a>LIST
 
 Használjon **forduljon Me** egy próba - vagy tranzakciószintű részvétel esetén nem valósítható meg. Ez a megközelítés előnye, hogy lehetővé teszi, hogy a megoldás a piaci a közzétevők azonnali megkezdéséhez, amely képes elindítani az üzleti lendkerék eligazodást üzletek be kell nurtured érdeklődők fogadása. Azonban a hátránya, hogy az ügyfél engagement korlátozva, szemben a más típusú.
 
+>[!IMPORTANT]
+>Ügyfél Me ajánlott listaelem típus, és csak olyan esetekben használható fennáll semmilyen módon nem lehet létrehozni egy próbaverziója. Ügyfél engagement próbaverziójában és Transact kínál. Ha bármilyen típusú próbaverziója, a bevezetési folyamat varázsló végigvezeti a forgatókönyvtől függően ezek a lehetőségek egyikére.
+
 Amikor az ajánlat tevődik össze szolgáltatások (pl., felméréseket, megvalósításokhoz, műhelyek), használja a **Consulting Services tanácsadó szolgálat** típus kínálnak. Ajánlat hatókör, időtartama és ár javítani kell, egyetlen ügyfél számára kell lennie, és helyszíni kell elvégezni.
 
-### <a name="trial"></a>PRÓBAVERZIÓ
+### <a name="trial"></a>TRIAL
 
 A próbaverzió élményt nyújtó növeli az ügyfeleknek, és ezért egy gazdagabb elérhetővé tegyék a megoldást kínál engagement szintjét. A próbaverzió lehetővé teszi az ügyfelek a megoldás felfedezése megvásárlása előtt. Próbaverzió nyújthassunk hogy magasabb veszélyét annak, hogy az előléptetés a kirakatokkal a, és az ügyfél kapcsolattartás során több és több funkcióval érdeklődők kell látnia.
  
 Az összes próbaverzió beállítások vannak telepítve, azokat a próbaverzió környezet és/vagy az Azure-előfizetéssel, nem pedig a felhasználói környezet vagy az Azure-előfizetést. Próbaverzió kell felhasználói vezetett további beszerzésének nélkül és minimális, ha bármely, egy egyszerű befejezéséhez további konfigurációs használati eset. Próbaverzió tartalmaznia kell szabad támogatási legalább a próbaidőszak alatt. Próbaverziós felhasználók nurtured legyen, és figyeli a legjobb eredmények elérése érdekében a szándékos értékelési útvonalon. Közzétevők javasoljuk, hogy a piactér érdeklődők, mind a közzétevő saját alkalmazásbeli az eszközintelligencia segítségével figyelheti és kezelheti a próbaverziós felhasználók.
 
-Nincsenek 3 jellemző próbaverzió forgatókönyvek:
+Nincsenek 4 jellemző próbaverzió forgatókönyvek:
 
 
 |**Próba beállítás**  |**Főbb előnyök**  |**Válassza a beállítást, ha...**  |
@@ -130,6 +139,7 @@ Nincsenek 3 jellemző próbaverzió forgatókönyvek:
 |**Ingyenes próbaverzió**    |     Lehetővé teszi, hogy az ügyfél előtt egy automatikus módszerrel átalakítása fizetett vásárolnak, próbálja meg a termék, és lehetővé teszi, hogy az ügyfél és a közös engagement a Microsoft értékesítési csoportok fogalmak igazolása |     A megoldásban ez egy virtuális gép vagy megoldás sablon vagy a megoldás egy SaaS kínál, és hogy az ajánlat egy több-bérlős Szolgáltatottszoftver-termék, akkor lehet futtassa az ügyfél felületet, akinek gyorsan, ha már egyetlen bérlő van, de ad hozzá, az ügyfelek első "Vendég us sszon'|
 **Kipróbálása**     |     Lehetővé teszi, hogy az ügyfél előtt vásárolnak, próbálja meg a termék, és ez elősegítheti a megoldás a előre konfigurált telepítő |   A megoldás a virtuális gép, Megoldássablonban vagy egybérlős SaaS-alkalmazás, vagy összetett kiépítését, vagy nem rendelkezik a próbaverzió átalakítása fizetett ajánlat metódus |
 |**Interaktív bemutató**    |  Lehetővé teszi az ügyfelek a a terméket telepítő összetettsége nélkül művelet megjelenítéséhez       |    A megoldás, hogy a próbaidőszak a érhető nehezen összetett telepítési van szükség.     |
+
 
 #### <a name="free-trial"></a>Free Trial (Ingyenes próba)
 
@@ -159,7 +169,10 @@ Az Azure piactérről, használja a **virtuális gép** amikor a megoldást már
 
 Használjon egy **Azure Megoldássablonban** amikor megoldást igényel a virtuális készülék túl további üzembe helyezési és konfigurálási automation. Megoldás sablonok automatizálhatja egy vagy több virtuálisgép-erőforrások kiépítése, és emellett építhető ki hálózati és tárolási erőforrásokat. Megoldás sablonok előnyei automation egyetlen virtuális gépeket, valamint a teljes IaaS-alapú megoldás környezetekben. Megoldás sablonok létrehozásával kapcsolatos további [Itt](https://github.com/MicrosoftDocs/azure-docs).
 
-Használja az Azure felügyelt alkalmazásokból való üzembe helyezés esetén egy virtuális gép vagy a teljes IaaS-alapú megoldás egy ügyfél előfizetését, amikor a közzétevőt vagy az ügyfél által a 3. fél, például egy SI vagy MSP által kezelt megoldás. További információ [által felügyelt alkalmazások építése Itt](https://docs.microsoft.com/azure/managed-applications/overview). Gyakran ismételt kérdések listájáért lásd: a [Azure piactéren GYIK](https://azure.microsoft.com/marketplace/faq/).
+Használjon egy **Azure felügyelt alkalmazás** való üzembe helyezés esetén egy virtuális gép vagy a teljes IaaS-alapú megoldás egy ügyfél előfizetését, amikor a közzétevőt vagy az ügyfél által a 3. fél, például egy SI vagy MSP által kezelt megoldás. További információ [által felügyelt alkalmazások építése Itt](https://docs.microsoft.com/azure/managed-applications/overview). Gyakran ismételt kérdések listájáért lásd: a [Azure piactéren GYIK](https://azure.microsoft.com/marketplace/faq/).
+
+>[!NOTE]
+> Felügyelt alkalmazások központilag telepíthető a piactéren keresztül kell lennie. Ha felhasználói communciation problémát jelent, vegye figyelembe, hogy meg tudják érheti el az ügyfelek érdekelt Ha átfutási megosztás engedélyezve van.
 
 ### <a name="azure-certified"></a>Azure Certified
 
@@ -197,11 +210,11 @@ Ezzel szemben ha engedélyezi a kapcsolja a saját licenc lehetőség:
 |A licenc költség     | Licenc díj egyeztetett és közzétevő által kiszámlázott        |
 |---------|---------|
 |Az Azure felhasználás költsége (D1/1-mag)    | $0.14 óránként         |
-|**Ügyfél lesz számlázva, Microsoft által**     | **$0.14 óránként**        |
+|**Ügyfél lesz számlázva, Microsoft által**     | $0.14 óránként        |
 
 Ebben a forgatókönyvben a Microsoft számára a közzétett virtuálisgép-lemezkép óránként 0.14 $ váltók stb. 
 
-|**Microsoft váltók**    |   **$0.14 óránként**      |
+|**Microsoft váltók**    |   $0.14 óránként      |
 |---------|---------|
 |A Microsoft megtartja az Azure-felhasználás költsége     |    $0.14 óránként     |
 |A Microsoft megtartja a licenc költség 0 %     |  0,00 $ óránként       |
@@ -227,7 +240,7 @@ Nagyvállalati ügyfeleink az Azure-ra vonatkozó előzetes pénzügyi köteleze
 |---------|---------|---------|
 |**Részvétel házirendek**    | Tekintse át az Azure piactér részvételét házirendek [itt] (https://azure.microsoft.com/support/legal/marketplace/participation-policies/).       | Lista, próbaverzió Transact        |
 |**Integráció a Microsoft**    | Az Azure piactér ajánlatok kell kihasználja kiterjesztése a Microsoft Azure-szolgáltatások, például a számítási, hálózati vagy tárolási, illetve hangolhatók össze a meglévő Azure piactér kategóriát, például adatbázisok, biztonság, hálózat, stb. A teljes listát található [Itt](https://azuremarketplace.microsoft.com/marketplace/apps).        | Lista, próbaverzió Transact        |
-|**Célközönség**    | Az Azure piactér ajánlatokat az informatikai szakemberek számára, a felhő fejlesztők és az egyéb technikai felhasználói szerepkörök kell lennie.       |  Lista, próbaverzió Transact 
+|Célközönség    | Az Azure piactér ajánlatokat az informatikai szakemberek számára, a felhő fejlesztők és az egyéb technikai felhasználói szerepkörök kell lennie.       |  Lista, próbaverzió Transact 
 |**Felügyeleti vezethet**    | Érdeklődők kap a piactérről, engedélyeznie kell a CRM (Marketo, Microsoft Dynamics vagy Salesforce) átfutási adatok fogadására.        |   Lista, próbaverzió Transact      |
 |**Adatvédelmi szabályzatát, illetve a használati feltételek**     |   Az adatvédelmi szabályzat egy nyilvános URL-CÍMEN keresztül elérhetőnek kell lennie, és a használati feltételeket kell bemeneti szövegként közzététele során.      |   Lista, próbaverzió Transact      |
 |**Támogatás**     |  Az ajánlat tartalmaznia kell egy nyilvánosan elérhető támogatási URL-címet, ahol az ügyfelek talál segítséget. A próbaverzió támogatási meg kell adni további költségek nélkül a próbaidőszak.       |  Próbaverzió Transact       |
@@ -252,10 +265,10 @@ Nagyvállalati ügyfeleink az Azure-ra vonatkozó előzetes pénzügyi köteleze
 ### <a name="prerequisites-specific-to-consulting-services-publishing"></a>Közzététel szolgáltatások tanácsadás vonatkozó Előfeltételek
 
 
-|**Követelmények** |**Részletek**  |**Közzétételi beállítás**  |
+|Követelmények |**Részletek**  |**Közzétételi beállítás**  |
 |---------|---------|---------|
 |**Szolgáltatások ajánlat jellemzői**     | Az egyeztetett szolgáltatás kézbesített rögzített hatókör, időtartam, rögzített rögzített ár (vagy szabad) kell lennie. engagement, elsősorban értékesítési célú, egyetlen ügyfél korlátozódik, és helyszíni végzett        |    Lista     |
-|**Partner tanácsadás követelményei**    |   **Csak AppSource.**  Az ügyfél Engagement Dynamics 365 [ezüst vagy arany felhő felhasználói kapcsolat felügyeleti kompetencia](https://partner.microsoft.com/en-us/membership/cloud-customer-relationship-management-competency). A pénzügyi és műveletek Enterprise edition Dynamics 365: ezüst vagy [vállalati erőforrás tervezési] (https://partner.microsoft.com/en-us/membership/enterprise-resource-planning-competency) Gold kompetencia, és egy minimális bevétel, 25 Ft felhőben Műveletek a záró 12 hónapon belül. Dynamics 365 pénzügyi, illetve műveletek, Business edition: szolgálhat [felhőalapú szolgáltatások szolgáltató (CSP)](https://partner.microsoft.com/en-us/cloud-solution-provider) vagy [digitális Partner a rekord (DPOR)](https://partner.microsoft.com/en-us/membership/digital-partner-of-record) legalább egy ügyfél. A Power BI: A feltételeknek [megoldás Partner] (file:///C:/Users/ellacroi/Downloads/BI%20Partner%20Program%20Overview%20 & % 20Incentives.pdf). PowerApps: Van egy [Partner Showcase] (https://powerapps.microsoft.com/en-us/partner-showcase/) megoldás |    Lista     |
+|**Partner tanácsadás követelményei**    |   **AppSource only.**  Az ügyfél Engagement Dynamics 365 [ezüst vagy arany felhő felhasználói kapcsolat felügyeleti kompetencia](https://partner.microsoft.com/en-us/membership/cloud-customer-relationship-management-competency). A pénzügyi és műveletek Enterprise edition Dynamics 365: ezüst vagy [vállalati erőforrás tervezési] (https://partner.microsoft.com/en-us/membership/enterprise-resource-planning-competency) Gold kompetencia, és egy minimális bevétel, 25 Ft felhőben Műveletek a záró 12 hónapon belül. Dynamics 365 pénzügyi, illetve műveletek, Business edition: szolgálhat [felhőalapú szolgáltatások szolgáltató (CSP)](https://partner.microsoft.com/en-us/cloud-solution-provider) vagy [digitális Partner a rekord (DPOR)](https://partner.microsoft.com/en-us/membership/digital-partner-of-record) legalább egy ügyfél. A Power BI: A feltételeknek [megoldás Partner] (file:///C:/Users/ellacroi/Downloads/BI%20Partner%20Program%20Overview%20 & % 20Incentives.pdf). PowerApps: Van egy [Partner Showcase] (https://powerapps.microsoft.com/en-us/partner-showcase/) megoldás |    Lista     |
 
 ## <a name="using-azure-active-directory-to-enable-trials"></a>Az Azure Active Directory használatával kísérletek engedélyezése
 Az Azure Active Directory (AAD) egy identitás felhőszolgáltatás, amely lehetővé teszi, hogy a hitelesítést a Microsoft munkahelyi vagy iskolai fiók az iparági szabványos protokollok segítségével: OAuth és az OpenID Connect. További tudnivalók az AAD [Itt](https://www.microsoft.com/en-us/cloud-platform/azure-active-directory-features). 
@@ -295,7 +308,22 @@ Az egyetlen bérlői alkalmazások több lehetőség áll rendelkezésre:
 - Fejlesztés egy ügyfél "Tesztelése" /
 - Egy több-bérlős bemutató mintaalkalmazás SSO összeállítása
 
-## <a name="cloud-partner-portal-pre-publishing-checklist"></a>Előzetes közzététel ellenőrzőlista cloud Partner portálra
+##<a name="publishing-processes-by-product-for-office-dynamics-and-power-bi"></a>Az Office, Dynamics, és a Power BI termék közzétételi folyamatok
+Office-, Dynamics, és a Power BI AppSource alkalmazások esetén, többet is megtudhat az adott dokumentációjában ebben a szakaszban a meghatározott követelmények. 
+
+
+|Product |Közzétételi információkat  |
+|---------|---------|
+|Office 365     |    Tekintse át a [közzétételi folyamat és irányelveket]( https://docs.microsoft.com/en-us/office/dev/store/submit-to-the-office-store).     |
+|Dynamics 365 a pénzügyi és műveletek  |   Enterprise Edition való fejlesztéskor tekintse át a [közzétételi folyamat és irányelveket](https://docs.microsoft.com/en-us/dynamics365/unified-operations/dev-itpro/lcs-solutions/lcs-solutions-app-source)      |
+|Az ügyfél Engagement Dynamics 365 |Tekintse át a [közzétételi folyamat és irányelveket](https://docs.microsoft.com/en-us/dynamics365/customer-engagement/developer/publish-app-appsource) |
+|Power BI   |     Tekintse át a [folyamat és az útmutatást.]( https://docs.microsoft.com/en-us/power-bi/developer/office-store)    |
+|Cortana Intelligence     |    További tudnivalók [AppSource a Cortana](https://docs.microsoft.com/en-us/azure/machine-learning/team-data-science-process/cortana-intelligence-appsource-publishing-guide)     |
+|AppSource tanácsadás ajánlatok     |  Tekintse át a [irányelvek és megtudhatja, hogyan nyújt az ajánlatot.]( https://smp-cdn-prod.azureedge.net/documents/Microsoft%20AppSource%20Partner%20Listing%20Guidelines.pdf)    |
+
+
+
+## <a name="cloud-partner-portal-pre-publishing-checklist-for-azure-marketplace"></a>Cloud Partner portálra előre közzététele az Azure piactér ellenőrzőlista
 
 A közzétételi folyamat elindítása előtt érdemes egy ajánlatot létrehozásához szükséges összetevők megismerése. A következő összetevők az ajánlat létrehozása közzétételi munkafolyamat az a Cloud Partner portálra elvégzéséhez szükséges. 
 
@@ -343,12 +371,12 @@ A közzétételi folyamat elindítása előtt érdemes egy ajánlatot létrehoz�
 |**Teszt meghajtó videó (Max 1)**     |  Csak kipróbálása       |
 |**Teszt meghajtó ország vagy régió rendelkezésre állása**    |   Csak kipróbálása      |
 |**Azure erőforráscsoport-név**   |         |
-|**Az Azure előfizetés-azonosító**     |  Csak kipróbálása       |
+|**Azure Subscription ID**     |  Csak kipróbálása       |
 |**Az Azure AD-bérlő azonosítója**   |    Csak kipróbálása     |
-|**Azure AD-alkalmazás azonosítója**  |  Csak kipróbálása       |
+|**Azure AD App ID**  |  Csak kipróbálása       |
 |**Az Azure AD alkalmazás-kulcs**     |   Csak kipróbálása      |
 
-### <a name="storefrontmarketplace"></a>Kirakat/piactér
+### <a name="storefrontmarketplace"></a>Storefront/Marketplace
 
 
 |Szüksége lesz a összetevő közzététele  |Az ajánlattípus  |
@@ -364,7 +392,7 @@ A közzétételi folyamat elindítása előtt érdemes egy ajánlatot létrehoz�
 
 |Szüksége lesz a összetevő közzététele  |Az ajánlattípus  |
 |---------|---------|
-|**Verziószám**     |    Transact "Azure alkalmazásokat (megoldás sablonok és a felügyelt alkalmazások)     |
+|Verziószám     |    Transact "Azure alkalmazásokat (megoldás sablonok és a felügyelt alkalmazások)     |
 |**A csomagfájl a sablonfájlokat importálni és createUIDefinitionFile tartalmazó**   |Transact "Azure alkalmazásokat (megoldás sablonok és a felügyelt alkalmazások)         |
 |**Operációs rendszer részletei**    |   Transact "virtuális gépek      |
 |**Portok és protokollok használata**    |  Transact "virtuális gépek       |
@@ -388,14 +416,14 @@ Ebben a szakaszban a lépések azt ismertetik: legyen, a közzétevő, az Azure 
 
 A teljes piactérre közzétételi folyamat egy e-mail címet, amely azonosítja a piactér fiókot fogja használni. Ez az e-mail cím egy Microsoft ID regisztrálni kell, és mindkét fog történni a [Microsoft Developer Center](https://developer.microsoft.com/) és [Cloud Partner portálra](https://cloudpartner.azure.com/). Csak egy Microsoft ID-fiókot az Azure piactér és AppSource ajánlatokról kell lennie, és határozottan ajánlott, hogy nincsenek megosztva, más szolgáltatásokkal vagy kínál.
 
-A kiválasztott e-mail címet lehetőleg kell a vállalati tartományhoz, és az informatikai csapat által vezérelt. Tekintse át a függelék: iránymutatásokat létrehozása a Microsoft ID piactér fiók kezelése és a függelék: Útmutató a Microsoft IDs az aad-ben összevont tartományban irányelvek előzetes létrehozása egy. 
+A kiválasztott e-mail címet lehetőleg kell a vállalati tartományhoz, és az informatikai csapat által vezérelt. Tekintse át a részeket [irányelvek és hogyan Tos](#Guidelines-and-How-Tos) irányelvek beleértve a Microsoft ID piactér fiók kezelése és az útmutató a Microsoft IDs létrehozásához AAD összevont tartományokban irányelvek előzetes létrehozása egy. 
 
 #### <a name="submit-the-marketplace-nomination-form"></a>A piactér jelölési űrlap elküldése
 A piactér bevezetési folyamat részeként meg kell küldenie jelölési űrlap, az alkalmazás vagy szolgáltatás ajánlat, a vállalati információk és a szintű támogatást biztosító akkor-nak adatokat küld.  
 Az űrlap elküldése után a piactér team tekintse át az alkalmazást, és a kérelem érvényesítése. Ha a kérelem áttekintette van, a rendszer értesíti, szükséges legyen, a Cloud Partner portálra egy jóváhagyott fele végrehajtani a következő lépéssel e-mailben. Küldjön a jelölési a:
 
-Az Azure piactér jelölési: http://aka.ms/listonazuremarketplace   
-AppSource jelölési: http://aka.ms/listonappsource
+Azure Marketplace Nomination: http://aka.ms/listonazuremarketplace   
+AppSource Nomination: http://aka.ms/listonappsource
 
 #### <a name="register-in-the-developer-center"></a>Regisztrálja a fejlesztői központban
 
@@ -423,175 +451,6 @@ A közzétevő profil eléréséhez a piactér fiókot (Microsoft ID) használja
 
 A Cloud Partner portálra használatával részletes információkért tekintse meg a [további](https://cloudpartner.azure.com/#Learn) belül a portálon, majd kattintson a dokumentáció a menüben. 
 
-## <a name="how-to-grow-your-business-with-marketplace"></a>Hogyan Piactéri cége
-
-A következő gyakorlati tanácsok a marketing segítségével, valamint az üzleti előnyt piactéren keresztül maximalizálása beállítását, az Ugrás piacra jutási és a Microsoft közös Sell kezdeményezéseket, sikeres. A [Microsoft Partner Network (MPN)](https://partner.microsoft.com/membership) az átjárót az összes nem Piactéri kapcsolódó marketing és szoftveres erőforrások. 
-
-Az alkalmazás közzététele és kötelezettségvállalás ügyfél központú igény szerint és a partner engagement súgó meghajtó ügyfél növekedés számára a vállalati minőségét. Ezek a tevékenységek személyesen segítségével a Microsoft tartóssá piacra jutási nyissa meg a munkahelyi és a szolgáltatás fő megoldások között a piactér kirakatokkal. 
-
-Ez a szakasz bemutatja, hogyan ajánlat létrehozásakor marketing ajánlott eljárásai alapján a következő ellenőrzőlista:
-
-- A meghajtó-forgalom és az engagement listaelem optimalizáltuk I.
-- Létrehozott üzenetkezelési a webhelyen, a meghajtó-forgalom a piactér tőzsdei a lap egy egyedi követően kihasználva.
-- Egy teszt meghajtó vagy más próbaverzió, hogy az ügyfelek tapasztalhat, az élő Azure-on futó ajánlat már közzétett.
-- I megtervezése és saját marketing és promóció kampányok meghajtó tájékoztatási és engagement beépített.
-- Igény szerinti átfutási. generációs már engedélyezve van, így minden alkalommal, amikor valaki működik, vagy az alkalmazás központi telepítése tesztelése, neve és kapcsolattartási adataikat jelenik.
-- Már megismerte és a partner elérhető források listáját nekem keresztül kapcsolódnak a [Microsoft Partner Network (MPN)](https://partner.microsoft.com/membership).
-
-### <a name="create-a-great-listing"></a>Hozzon létre egy nagyszerű listázása
-
-A lista tartalmazza a piactéren néha lehetnek a lehetséges ügyfél első interakcióba. Bármely első benyomást, például azt szeretné, hogy erős legyen, és valamit a célközönséget szeretne nyomon követheti. Néhány dolgot alapvető teheti az első benyomást teheti a piactéren nagyszerű!
-
-- **Található:** írási kulcs szavak és kifejezések a vevő meg fogja keresni az ajánlat leírását. 
-- **Visual kell:** képek és videók segítségével a felhasználók megjelenítése a legfontosabb jellemzők, és a felhasználói élmény is segítik. Gondolja át mi megjelenítheti, hogy segítséget nyújt a értékajánlatához fájlmegosztásba vagy a központi felső kérdések megválaszolása.
-- **Egy felhasználói élményt nyújtja:** kedvelik előtt vásárolnak kipróbálásához. Érdeklődők bemutatók, kísérleteket, előállítja, és teszt meghajtók bizonyítja, hogy több ügyfél üzletek vezethet. Minél erősebb a próbaverziója biztosíthat a erősebb az érdeklődési, létre kell hoznia. Már észleltünk, hogy az tesztelése (átlagos) részletes útmutatást eredménye a lezárt 40 % illeszkedő kereskedelmi ajánlatokat.
-- **Ismerje meg a célközönséget súgó:** akkor javasoljuk, hogy áttekintése igényel a világos és egyszerű tartani, amíg nincs is sok helyet, hogy a termékkel kapcsolatos további források mutasson. Használja ezt a helyet a termék funkciója, és hogyan egy beválik, ha az ügyfelek igényeinek megfelelően; rövid üzenetet Ne ijedjen további további anyagok közvetlen őket. Ha ezeknek az oktatási anyagok és hivatkozások nyomon követheti az értékesítési stratégia, így akkor is lehet következetesen gondozásának tartalom rendkívüli vezet.
-- **Kihasználhatja a minősítések & értékelést:** lehetővé az ügyfelek értékesítési a terméket az Ön. Ügyfél tanácsadáson lehet a legnagyobb illesztőprogram az értékesítési és gyakran vevők hová ahhoz, azok a a termék olvashat. Több erős értékelést rendelkező is segít állítható magasabbra ajánlatát a keresési eredményekben és kulcs kiemelt területre.
-
-### <a name="build-a-great-landing-page"></a>Build kiváló kezdőlapja
-A kezdőlapja a vállalati webhelyen az Azure piactéren listázása piactér az igény szerinti generációs tevékenységekből átjárót. 
-
-Kezdje a célok azonosítása. A piactér megoldások döntse el, a cél-ügyfél, aki, és mit kíván tenni. A minta műveletek lenne "Tesztelése a megoldás" vagy "Get megoldás most." A kezdőlapja kihasználható több marketing taktikai semmi az események, WebCast előadások és közösségi tanulmányok, műszaki képzési munkamenetek és sajtóközleményét között. A egységesebb üzenetkezelő, így hívása művelet, a későbbiekben a megoldás lesz kereséséhez.
-
-Ha a kampány terv kész, kövesse az alábbi gyakorlati tanácsok, és mi a lap a kezdőlapja hatékonyságának maximalizálása fejlesztéskor elkerülése érdekében fontolja meg: 
-
-
-|Ajánlott eljárás  |A következőkre elkerülése érdekében  |
-|---------|---------|
-|**Milyen felhasználói problémát, a megoldás megoldja fogalmazza meg, és hogyan használja az Azure fordulhat elő, hogy ki**    |  Sikertelen a fogalmazza meg, amelyben a megoldás plus Azure működnek együtt a módjai       |
-|**Hozzon létre egy rövid, könnyen megjegyezhető URL-címe**    |    Hosszú URL-címek nem megjegyezhető, és keresse meg erősen     |
-|**Adja hozzá a megfelelő visual tartalomhoz: egy ügyfél testimonial video- vagy megoldás architektúrája a gyakorlati tanácsok**   |   Túl sok pedig SMS használatával teheti a célközönséget finomhangolhatják a, és állítsa le a böngészést Önnel      |
-|**Hozzon létre a piactér katalógus lap látogatóinak közvetlen művelet egyértelmű hívása**    |   Túl sok hivatkozásokat vagy lehetséges műveletek rendelkező az oldalon       |
-|**A művelet hívása be a fejléc vagy egyértelműen körülhatárolt szakasz**    |  A bekezdés szövegének listázása piactér mutató hivatkozások beágyazás       |
-|**Vizsgálja meg a legjobb kulcsszavak, és optimalizálja a Keresés lap**    | Feltéve, hogy a termék neve keresés magasabb prioritású hoz létre        |
-|**Kihasználhatja a hirdetési kampányokra kulcsszavak**    |  A webes tulajdonságai között számos különböző kulcsszó használatával hígítsuk a hirdetés beruházások       |
-|**Vonatkozó termékek neveit és a "fent a modellrészek" kulcsszavak**     | Így a felhasználók milyen termék vagy a megoldás területeknek görgetnie        |
-|**Márka szimbólumokat (például az Azure Certified *) segítségével ellenőrizheti azokat a megoldás, és megfelelően Microsoft branding irányelvek**    |    Microsoft márka nem engedélyezett szimbólumokat használatával     |
-
-* További információ a [Azure hitelesített jelvény](https://azure.microsoft.com/support/legal/marketplace/certified-guidelines/ ). [Microsoft Partner Network (MPN)](https://partner.microsoft.com/en-us/membership/how-it-works) tagjai férhetnek hozzá további erőforrásokat a keresztül branding [márka központi](https://microsoft.sharepoint.com/teams/brandcentral) és hozzáférni a [embléma jelentéskészítő](https://logobuilder.partner.microsoft.com) eszköz. Kattintson ide további illesztése [MPN](https://partner.microsoft.com/en-us/membership/how-it-works). 
-
-### <a name="promoting-your-new-offer"></a>Az új ajánlat támogatása
-
-#### <a name="building-an-effective-marketing-campaign"></a>Egy hatékony Marketing kampány felépítése
-Egy marketingkampányt promóciós tevékenységek sorozata vagy taktikai marketing célzó befolyásoló tényezők a célközönséget a kívánt műveletet vagy eredménye. A Kampány tervezésekor, az alábbi műveleteket kell elvégezni:
-
-#### <a name="know-your-audience"></a>A célközönség ismerete
-
-Először ellenőrizze, akik a vevő, aki a befolyással bíró személy? A taktikai és az egyes csoportok művelet hívásainak eltérőek lehetnek. A kiértékelési kérdéseket:
-
-- Mennyi vezérlő rendelkezik a vevő a vásárlási döntési keresztül? 
-- Mekkora hatást rendelkezik befolyással a bíró személy? 
-- Mi a befolyással bíró személy befolyásolják? 
-- Tegye befolyásolja költségvetés vagy melyik megoldás nek? 
-
-Ezekre a kérdésekre adott válaszokat ismerete segítséget nyújt a dollár alkalmazáslicencekbe való és miként ossza el a dollár döntések.
-
-#### <a name="define-where-your-audience-learns"></a>Adja meg, ahol a célközönséget megtanulja
-
-A vásárlói keresztül útjuk módja 90 %-át a piactéren, amikor meglátogatják időpontjára. Vásárlók hozza ez tart a döntéshozatali folyamat megoldások megtanulni, és a beállítások előre értékeléséhez. Azt szeretné, a kampány célja, hogy ahol megtudhatja, a vásárlók és néhány véleményvezér kell kialakítani. Minden egyes iparági, függőleges vagy kategória célközönségét a különböző. Nem a célközönséget tanulják meg online, e-mailt, kereskedelmi vásárokon, közösségi vagy megbízható tanácsadók beszélgetést? Attól függően, hogy hol és hogyan a célközönséget megtanulja érdemes tevékenységek tervezése, és ennek megfelelően terjesztése a költeni. Ezek taktikai kombinációja lesz a kampány stratégia.
-
-#### <a name="create-clear-campaign-goals"></a>Törölje a jelet kampány célok létrehozása
-
-Szüksége lesz a piactér kampány sikeres definiálására, és törölje a jelet KPI-k létrehozása. Több kampányok különböző end célok futhat. Természetesen az összes szeretnénk értékesítési növelése sikertelen volt. A végső felrajzolásával megnövekedett bevétel vagy ügyfelek beszerzési. Azonban marketingkampányok előfordulhat, hogy összekapcsolását célok a vásárlásának ciklus egyéb szakaszaiban.
-
-Például ha újonnan indul el a terméket a piactéren azt tapasztalhatja a fókusz legjobb költött célközönség oktatási és az érdeklődési létrehozásával. Sikeres definiálhatók a Piactér listaelem regisztrált érdeklődők számával. Ebben az esetben a marketing taktikai (és kezdőlapján) az ügyfelek rajzolási a piactér tőzsdei volna koncentrálhat.
-
-Ha próbaverzió készletként a piactéren és, hogy a termék igényel engagement és beszerzési előtt bizonyos szintű ismeri, a kampány cél kísérletek száma letöltött készíthet. Ebben az esetben az a kampány taktikai CTA volna összpontosítani jelentősen egy próba a piactér támogatása. 
-
-Ha a termék vagy a kategória jól ismert, és állítsa be a piactér dönthet a próba lépés kihagyásához és a célközönséget, közvetlenül a "Vásárlás" hivatkozást a piactéren történő közvetlen beszerzési képességek állnak a rendelkezésére.
-
-Több érett pontok úgy is dönt, hogy a kampány próbálkozások összpontosítani upselling az ajánlatot az előzményekben a vásárlói bázisunk, és ebben az esetben a meghajtó művelet felé nőtt beszerzési a piactéren. A taktikai összpontosítania, akkor ezzel az ügyfelek számára a "Vásárlás" a piactéren. A KPI lehet a bevétel piactéren keresztül.
-
-A kampány hatékonyságának maximalizálása kulcs függetlenül az ajánlatot lejárat és a kitűzött célokat a szervezet a cél a célzott marad, és a kimenő integrált marketing taktikai készlete leképezési igazodik a cél.
-
-Az Azure piactéren új közzétevő alatt részeként Mi az alábbiakat javasoljuk, szabad piactér GTM előnyöket. Meg kell fontolnunk, kritikus hogyan használhatók ki a előnyök a kampány stratégiában. Lehetővé teszik a marketing csapat ismeri a piactér kampány célokat és a kívánt célközönség-művelet. Ezen termékek esetében be a tervbe működéséhez azt is testre szabhatók.
-
-Többek között a sablonok, a webes tartalom, a képzési és a eszközök történő előléptetéséhez az üzleti látogasson el a bővítés piacra jutási nyissa meg a [www. MicrosoftGoToMarket.com](https://www.MicrosoftGoToMarket.com) tartalmakra a kampány létrehozásához és ajánlott eljárások marketing, a Microsoft [intelligens Partner Marketing](https://partner.microsoft.com/en-US/smart-partner-marketing), a Microsoft Partner Network programot.
-
-#### <a name="marketplace-gtm-benefits"></a>Piactér GTM előnyei
-
-Új listák a piactéren lesz jogosult szabad piactér GTM előnyeit. Amennyiben a listában, az egész szakemberei marketing fog érheti el Önnek gyorsan létrehozhatja ezeket a tevékenységeket. Nincs szükség ahhoz, hogy, kivéve, ha azt érheti el bevonásához. 
-
-A tevékenységek nyújtunk eltérőek lehetnek attól függően, hogy a megoldás állapota a piactéren. Előnyeit, amelyek rendelkeznek egy próbaverziója vagy piactér képességeire transact ajánlatokhoz jelentősen csökkenti.
-
-A maximalizálása érdekében ezek a tevékenységek a hatását, akkor javasoljuk, hogy rendelkezik a végrehajtásra kész indítási tervvel. Érdemes lehet a kezdőlapja kihasználhatja a ezek taktikai számos. Vegye figyelembe, hogy OCP katalógus (egy kereskedelmi Partner katalógus) egy előnye, hogy a Microsoft Partner Network tagjai. 
-
-![Piactér GTM előnyei](./media/marketplace-publishers-guide/marketplace-gtm-promotion.png)
-
-A sablonok, a webes tartalom, a képzési és a előléptetni a vállalati eszközök támogatásához látogasson el a [Microsoft nyissa meg a piaci](https://www.microsoftgotomarket.com).
-
-#### <a name="enable-lead-sharing"></a>Nyújtják megosztásának engedélyezése
-
-Győződjön meg arról, hogy az érdeklődési felügyeleti engedélyezve van a Piactéri ajánlat úgy, hogy megkapja a kapcsolattartási adatok piactér ügyfeleinek. Ezek az érdeklődők szolgáljon igény szerinti generációs kampányok szolgálat, a mező értékesítőknek, és hogyan működik-e az ajánlatot információt értékesítési mozdulatok. 
-
-Gyakorlati tanácsok a érdeklődők használatához a következők:
-
-- A érdeklődők minősítése és pontozási őket, értékesítési lehetőségek
-- Azok a értékesítési folyamatok gondozásának
-- Általános kampány marketingstratégia összhangban igazítása
-
-Ezek érdeklődők bemutatják a Piactéri ajánlat és a technológiai nagyon célzott felhasználó iránt, és úgy kell kezelni a potenciálisan sok megkeresésének legegyszerűbb módja részt vevő ügyfelek. Egy vezető létrehozásakor a piactéren hasonló segítséget a Microsoft mező értékesítő CRM jön létre. 
-
-Azonban piactér érdeklődők különböznek a Microsoft értékesítő minősített érdeklődők, amelyek a közös értékesítési program szolgáltatása. A közös értékesít program eléréséhez kapcsolatban további tudnivalókat lásd az alábbi. 
-
-#### <a name="promote-your-business-through-microsoft"></a>A Microsoft vállalatra előléptetése
-
-Számos személyek és csoportok Microsoft, amelynek kizárólagos célja partnereink támogatja és eladási betartásának vizsgálatára van súrlódás belül van. Most, hogy a piactér szereplő megnyitott a piactér programok és erőforrások elérésére. 
-
-Ha még nem már akár a [Microsoft Partner Network (MPN)](https://partner.microsoft.com), legyen az első lépése. MPN Microsoft navigáláshoz útmutatást nyújt "az új üzleti lehetőségek: Kapcsolódás a csapatok vagy partnerek, megoldásokkal kapcsolatos információkat és betanítása a skillset méretének növelése érdekében.
-A legjobb további lépéseket is szükség nyissa meg a partner még több előnyt eléréséhez és -erőforrások:
-
-1.  Kihasználhatja a [Core előnyöket](https://partner.microsoft.com/en-US/membership/core-benefits) a Microsoft Partner Network részeként core előnyeit, amelyik segíthet a időmegtakarítás készlete kapni, és amíg erősíti képességeit, jobb pénz osztja ki az ügyfelek és a build kapcsolatok a teljes üzleti lehetőségeit elérni.
-
-2.  Vett szolgáltatás érvényessége alatt a [felhő Platform kompetencia](https://partner.microsoft.com/en-us/membership/cloud-platform-competency) kompetenciát megszerzéséhez lehetővé teszi a megkülönböztetéséhez saját kezűleg a Microsoft kiterjedtnek partner hálózaton belül, valamint a műszaki szakértelmét és az ügyfél sikeres piacon bemutatása. Kompetenciát megszerzéséhez előfeltétele is sok kulcsok fiókpartner programok, például a közös értékesít.
-
-3.  Válnak [közös értékesít készen](https://partner.microsoft.com/en-US/reach-customers/promote-your-business) a program lehetővé teszi, és a Microsoft eladók és a cél ügyfél lehetőségek a többi partner közötti együttműködés és a tervezési. A megoldás a megoldás-katalógusban az értékesítő láthatóvá válik, és a eladók dolgoznak, és Önnek győzelmével is megkapja.
-
-#### <a name="merchandising"></a>Kereskedelmi 
-A közzétételi folyamat részeként milyen típusú ajánlat létrehozásához minősül, és válasszon egy kategóriát az előfizetéshez Azure piactér alkalma. Gondoskodjon róla, hogy kategória pontos a megoldás, hogy a lehetséges ügyfeleket pontosan fog megjelenni. 
-
-Az Azure piactérről kihasználhatja a kiemelt alkalmazások amikor engedélyezve van a próbaverziót és Transact. Tekintse át a piactér GTM előnyöket tudni, hogy kiemelt alkalmazások hogyan illeszkedik a Go piacra jutási előnyeit környezetében. 
-
-Kiemelt alkalmazások közül választ alapú amelyeken alkalmazásokat adja meg a lehető legjobb felhasználói élményhez marketing engagement felhasználói és használja kiváló minőségű partner. Ez magában foglalja az átjáróra a listában az egyértelműség, megbízhatóság a technológia, és a felhasználók platform használatának növekedésére, és a kiváló minőségű marketinganyagokat létrehozásának engagement szintjét. 
-
-Az alkalmazás éppen kiemelt esélyét maximalizálása érdekében kell a Piactéri ajánlat sikeres beruházásának, és vegye figyelembe, hogy az ajánlat kiváló felhasználói élményt nyújtsanak a következő módszerek: 
-
-- Biztosítsa, hogy a marketing összetevők feltöltött és megjelenítését megfelelően
-- Csatlakozás a [Microsoft Partner Network](https://partner.microsoft.com/membership) és és a partner-ökoszisztéma megszólítása
-- Az Azure piactéren ajánlatot kiváló minőségű forgalom meghajtót, kiváló minőségű igény szerinti generációs kampányok létrehozásával
-- Gondoskodjon arról, hogy minden Azure megoldások és alkalmazás elérhető az Azure piactéren
-- Az Azure piactér ajánlatok fogyasztásának növekedését befolyásoló tényezők igény, olyan magas színvonalú ügyfélszolgálat, és a termék a kellő időben frissítéseket biztosít
-
-## <a name="analytics-and-reporting"></a>Elemzés és jelentéskészítés
-
-A Cloud Partner portálra Insights területen jelenik meg az ajánlat teljesítmény magas szintű áttekintését. Ez a szakasz ismerteti a jelentéseket a következők:  
-- Összegző pillanatkép rendelések
-- Használat
-- Központi telepítés
-- Ügyfél trendek Insights kezdőlapján
-- Részletes rendeléseket, a használat és a felhasználói adatok
-- Rendeléseket és használati havi összegzését, vagy egy hat hónapos trend nézetben látható
-- Használati/rendelések szeletelhetők több feltétel alapján
-
-Részletes jelentések megjelenítése a felhasználói adatok, például a cég nevét, és le az irányítószámot, földrajzi hely, így hasonlítsa össze az ügyfelek és a eladók kártalanítja. Az alábbi lista tartalmazza a konkrét attribútumok nyújtunk kapcsolatos ügyfelei az alábbiakra:
-- Viszonteladó
-- Utónév
-- Vezetéknév
-- E-mail cím
-- Cég neve
-- A tranzakció dátuma
-- Előfizetés neve
-- Az Azure előfizetés-azonosító (csak az ügyfelek PAYG)
-- A felhő példány neve
-- Rendelés száma
-- Ügyfél ország terület
-- Ügyfél város
-- Ügyfél-kommunikáció kulturális környezet
-- Ügyfél irányítószám
-
-Az ajánlott eljárás a jelentésekben megjelenő információkat, hogy a saját belső adatokkal összehangolandó, és segítségével azt a marketing kampány műveletek rangsorolására. 
-
-Cloud Partner portálra Insights Analytics szakasza tartalmaz egy Power bi-ban, amely lehetővé teszi az alkalmazás részletei lapon látható forgalom alapján gazdag irányítópultot. Ezt az irányítópultot az új szolgáltatásai a folyamatban lévő módon már megkezdődött. A Cloud Partner portálra belül a dokumentáció a Microsoft Campaigns, egy olyan mechanizmus, amellyel beállíthatja a kampányok, nyomon követése a portálon.
 
 ## <a name="getting-support"></a>Keresztüli támogatás
 
@@ -600,7 +459,7 @@ Ez az az Azure piactéren a támogatási lehetőségeket listája:
 **Az Azure piactér általános kapcsolatos kérdésekben:**
 |Támogatási csatornán keresztül |Leírás |
 |---------|---------|
-|E-mail:cloudmarketplace@microsoft.com     |  A bevezetési támogatást a terjesztési lista. A bevezetési kérésekhez, felderítési munkamenetek és architektúra tervezési munkamenetek (ADS) partnerekkel beállítása használ.        |
+|E-mail: cloudmarketplace@microsoft.com     |  A bevezetési támogatást a terjesztési lista. A bevezetési kérésekhez, felderítési munkamenetek és architektúra tervezési munkamenetek (ADS) partnerekkel beállítása használ.        |
 
 **Az Azure piactér támogatási közzététele:**
 
@@ -633,9 +492,9 @@ Amp-testdrive@microsoft.com |   Bevezetési hozzáférést biztosít a teszt meg
 
 |Támogatási csatornán keresztül  |Leírás  |
 |---------|---------|
-|E-mail:cosell@microsoft.com    |  Támogatja a bevezetési folyamat és a közös értékesít program kapcsolatos kérdésekre. Közép-európai időzónában alapján.        |
-|E-mail:gtm@microsoft.com    |  Nyissa meg piacra jutási előnyei és a program kérdések támogatja. Közép-európai időzónában üzleti óra.        |
-|E-mail:CEBrand@Microsoft.com     |  Azure emblémák és branding márka használatával kapcsolatos kérdésekre ad választ.       |
+|E-mail: cosell@microsoft.com    |  Támogatja a bevezetési folyamat és a közös értékesít program kapcsolatos kérdésekre. Közép-európai időzónában alapján.        |
+|E-mail: gtm@microsoft.com    |  Nyissa meg piacra jutási előnyei és a program kérdések támogatja. Közép-európai időzónában üzleti óra.        |
+|E-mail: CEBrand@Microsoft.com     |  Azure emblémák és branding márka használatával kapcsolatos kérdésekre ad választ.       |
 
 ## <a name="guidelines-and-how-tos"></a>Irányelvek és használati útmutatók
 
@@ -644,7 +503,7 @@ Amp-testdrive@microsoft.com |   Bevezetési hozzáférést biztosít a teszt meg
 A vállalati fiók létrehozásakor követi ezeket az irányelveket, ha egynél több személy kell megnyitni a fiókot a Microsoft-fiókkal bejelentkezik a fiók eléréséhez.
 
 >[!IMPORTANT]
->Lehetővé teszi több felhasználó is elérheti a fejlesztői központban regisztrált fiókjában, javasoljuk, hogy az Azure Active Directoryval egyéni felhasználók számára, ki férhet hozzá a fiókot az egyéni bejelentkezik szerepkörök hozzárendelése az Azure AD hitelesítő adatait. További információért tekintse át a [AAD összevont tartományok segítséget](#guidance-with-aad-federated-domains). Hozzon létre egy e-mail-címét használja a vállalati tartományhoz, de nem egy egyetlen individual'for példa Microsoft-fiókja windowsapps@fabrikam.com.
+>Lehetővé teszi több felhasználó is elérheti a fejlesztői központban regisztrált fiókjában, javasoljuk, hogy az Azure Active Directoryval egyéni felhasználók számára, ki férhet hozzá a fiókot az egyéni bejelentkezik szerepkörök hozzárendelése az Azure AD hitelesítő adatait. További információért tekintse át a [AAD összevont tartományok segítséget](#guidance-with-aad-federated-domains). A Microsoft-fiók, amelyhez tartozik például a vállalat tartománya, de nem egy személy e-mail címmel történő létrehozásához windowsapps@fabrikam.com.
 
 - A lehető legkevesebb fejlesztők a Microsoft-fiókhoz való hozzáférés korlátozásához.
 - A vállalati e-mailek terjesztési lista, amely tartalmazza az összes felhasználó el tudja érni a fejlesztői fiók beállítása, és ez az e-mail cím hozzá biztonsági adataihoz. Ez lehetővé teszi, hogy az alkalmazottak a listán szereplő megkapni a biztonsági kódokat, ha szükséges, és a Microsoft-fiók biztonsági adatainak kezelése. Ha egy terjesztési listát beállítása esetén nem valósítható meg, az egyéni e-mail fiók tulajdonosának kell eléréséhez, és a biztonsági kódot (például ha új biztonsági adatokat a fiók hozzáadódik, vagy ha azt kell elérni egy új eszközről) felkéréskor megosztás elérhető legyen.

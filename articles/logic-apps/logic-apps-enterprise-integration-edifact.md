@@ -15,11 +15,11 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 07/26/2016
 ms.author: LADocs; jonfan
-ms.openlocfilehash: fc9a0068de5f9464133eec0b043fbba1dc0fbde7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 68009b74a410f7e854de675a1d8d0c32e310d2c9
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="exchange-edifact-messages-for-enterprise-integration-with-logic-apps"></a>A logic apps vállalati integrációs Exchange EDIFACT-üzenetek
 
@@ -42,12 +42,12 @@ Miután [integrációs-fiók létrehozása](../logic-apps/logic-apps-enterprise-
 
 ## <a name="create-an-edifact-agreement"></a>EDIFACT-egyezmény létrehozása 
 
-1.  Jelentkezzen be az [Azure Portalra](http://portal.azure.com "Azure Portal") A bal oldali menüben válassza ki a **további szolgáltatások**.
+1.  Jelentkezzen be az [Azure Portalra](http://portal.azure.com "Azure Portal") A bal oldali menüben válassza ki a **minden szolgáltatás**.
 
     > [!TIP]
-    > Ha nem lát **további szolgáltatások**, lehetséges, hogy először bontsa ki a menüben. Jelölje be a becsukott menü felső részén **megjelenítése menü**.
+    > Ha nem lát **minden szolgáltatás**, lehetséges, hogy először bontsa ki a menüben. Jelölje be a becsukott menü felső részén **megjelenítése menü**.
 
-    ![A bal oldali menüben válassza a "Szolgáltatás"](./media/logic-apps-enterprise-integration-edifact/edifact-0.png)
+    ![A bal oldali menüben válassza a "Minden szolgáltatások"](./media/logic-apps-enterprise-integration-edifact/edifact-0.png)
 
 2. A keresőmezőbe írja be a "integrációt" a szűrőhöz. Az eredmények listájában válassza **integrációs fiókok**.
 
@@ -72,14 +72,14 @@ Ha nem lát minden integrációs fiókok [hozzon létre egyet első](../logic-ap
 
     | Tulajdonság | Leírás |
     | --- | --- |
-    | Név |A szerződés nevét |
+    | Name (Név) |A szerződés nevét |
     | A szerződés típusa | EDIFACT kell lennie. |
-    | Fogadó Partner |Egy szerződést kell a gazdagép és a Vendég partner. A fogadó partner szervezet, amely beállítja a szerződés jelöli. |
-    | Gazdagép identitását |A fogadó partner azonosítója |
-    | Vendég Partner |Egy szerződést kell a gazdagép és a Vendég partner. A Vendég partnert a szervezet, amely a gazdagép partnerrel üzleti jelöli. |
-    | Vendég identitás |A Vendég partner azonosítója |
-    | Beállítások |Minden szerződés által fogadott üzenetek alkalmazni ezeket a tulajdonságokat. |
-    | Beállítások küldése |Ezeket a tulajdonságokat a szerződés által küldött összes üzenet vonatkozik. |
+    | Gazdagéppartner |Egy szerződést kell a gazdagép és a Vendég partner. A fogadó partner szervezet, amely beállítja a szerződés jelöli. |
+    | Gazdagép-identitás |A fogadó partner azonosítója |
+    | Vendégpartner |Egy szerződést kell a gazdagép és a Vendég partner. A Vendég partnert a szervezet, amely a gazdagép partnerrel üzleti jelöli. |
+    | Vendégidentitás |A Vendég partner azonosítója |
+    | Fogadási beállítások |Minden szerződés által fogadott üzenetek alkalmazni ezeket a tulajdonságokat. |
+    | Küldési beállítások |Ezeket a tulajdonságokat a szerződés által küldött összes üzenet vonatkozik. |
 
 ## <a name="configure-how-your-agreement-handles-received-messages"></a>Hogyan a szerződés leírók fogadott üzenetek konfigurálása
 
@@ -100,15 +100,15 @@ Most már a szerződés készen áll a bejövő üzenetek, amelyek megfelelnek a
 
 | Tulajdonság | Leírás |
 | --- | --- |
-| UNB6.1 (címzett hivatkozás jelszó) |Adjon meg egy 1 és 14 karakter közötti alfanumerikus érték. |
-| UNB6.2 (címzett hivatkozás minősítő) |Adjon meg egy alfanumerikus érték legalább egy karaktert, és legfeljebb két karakter. |
+| UNB6.1 (címzett referenciajelszava) |Adjon meg egy 1 és 14 karakter közötti alfanumerikus érték. |
+| UNB6.2 (címzett referenciaminősítője) |Adjon meg egy alfanumerikus érték legalább egy karaktert, és legfeljebb két karakter. |
 
 ### <a name="acknowledgments"></a>Nyugták
 
 | Tulajdonság | Leírás |
 | --- | --- |
 | Üzenet visszaigazolása (CONTRL) |Válassza ezt a jelölőnégyzetet a műszaki (CONTRL) visszaigazolás a interchange küldő való visszatéréshez. A visszaigazolás nem jut hozzá a interchange küldő, a szerződés küldése beállítások alapján. |
-| A nyugtázási (CONTRL) |Válassza ezt a jelölőnégyzetet a működési (CONTRL) visszaigazolás térjen vissza a interchange küldő a nyugtázás a rendszer elküldi a interchange küldő, a szerződés küldése beállítások alapján. |
+| Nyugtázás (CONTRL) |Válassza ezt a jelölőnégyzetet a működési (CONTRL) visszaigazolás térjen vissza a interchange küldő a nyugtázás a rendszer elküldi a interchange küldő, a szerződés küldése beállítások alapján. |
 
 ### <a name="schemas"></a>Sémák
 
@@ -122,14 +122,14 @@ Most már a szerződés készen áll a bejövő üzenetek, amelyek megfelelnek a
 | UNG2.2 (A KÜLDŐ ALKALMAZÁS KÓD MINŐSÍTŐ) |Adjon meg egy alfanumerikus érték egy legfeljebb négy karakter hosszú lehet. |
 | SÉMA |Válassza ki a korábban feltöltött sémát használni kívánt társított integrációs fiókjából. |
 
-### <a name="control-numbers"></a>Vezérlő számok
+### <a name="control-numbers"></a>Ellenőrzőszámok
 | Tulajdonság | Leírás |
 | --- | --- |
 | Ellenőrző szám Interchange ismétlődések letiltása |Ismétlődő kereszteződéseket blokkolására, jelölje be ezt a tulajdonságot. Választásakor a EDIFACT dekódolási művelet ellenőrzi, kapott adatcserét adatcsere-ellenőrző szám (UNB5) nem egyezik meg a korábban feldolgozott interchange ellenőrzési számot. Ha találat esetén elvégez, az adatcsere nincs feldolgozva. |
 | Ismétlődő UNB5 ellenőrzésének gyakorisága (napokban) |Ha úgy döntött, hogy engedélyezi a duplikált interchange vezérlő számok, megadhatja a napok számát mikor kell végrehajtani az ellenőrzést, azzal, hogy a megfelelő értékre állítja ezt a beállítást. |
 | Csoport-ellenőrzőszám ismétlődésének letiltása |Letilthatja felcserélődések számokkal duplikált csoportokhoz vezérlő (UNG5), jelölje be ezt a tulajdonságot. |
 | Tranzakciókészlet-ellenőrzőszám ismétlődésének letiltása |Letilthatja felcserélődések számokkal ismétlődő tranzakció set vezérlő (UNH1), jelölje be ezt a tulajdonságot. |
-| EDIFACT nyugtázási ellenőrző szám |A tranzakció set hivatkozási számok használatra megadását a nyugtázás, adja meg egy értéket az előtag, hivatkozási számos és egy utótagként. |
+| EDIFACT szerinti nyugtázás-ellenőrző szám |A tranzakció set hivatkozási számok használatra megadását a nyugtázás, adja meg egy értéket az előtag, hivatkozási számos és egy utótagként. |
 
 ### <a name="validations"></a>Ellenőrzések
 
@@ -137,12 +137,12 @@ Most már a szerződés készen áll a bejövő üzenetek, amelyek megfelelnek a
 
 | Tulajdonság | Leírás |
 | --- | --- |
-| Üzenet típusa |Válassza ki a EDI-üzenet típusa. |
-| EDI érvényesítése |EDI-érvényesítést hajt végre a séma EDI tulajdonságok, hosszára, üres adatelemek és záró elválasztók által definiált adattípusok. |
-| Kiterjesztett érvényesítése |Ha az adattípus nem EDI, érvényesítési az elem követelménynek, és engedélyezett ismétlési, enumerálások és adatok elem hossza érvényesítési (min vagy max). |
-| Kezdő/záró nullából engedélyezése |Minden további, kezdő vagy záró nulla, és az szóköz karakter. Ne távolítsa el ezeket a karaktereket. |
-| Trim kezdő/záró nullából |Távolítsa el a kezdő vagy záró nulla és karaktereket. |
-| Záró elválasztó házirend |Záró elválasztók készítése. <p>Válassza ki **nem engedélyezett** záró határoló és elválasztók, a kapott interchange. Ha cseréje a záró határoló és elválasztókat, az adatcsere van deklarálva nem érvényes. <p>Válassza ki **nem kötelező** kereszteződéseket vagy záró határoló és elválasztók nélkül fogadásához. <p>Válassza ki **kötelező** Ha kapott adatcsere rendelkeznie kell záró határoló és elválasztókat. |
+| Üzenettípus |Válassza ki a EDI-üzenet típusa. |
+| EDI-ellenőrzés |EDI-érvényesítést hajt végre a séma EDI tulajdonságok, hosszára, üres adatelemek és záró elválasztók által definiált adattípusok. |
+| Bővített ellenőrzés |Ha az adattípus nem EDI, érvényesítési az elem követelménynek, és engedélyezett ismétlési, enumerálások és adatok elem hossza érvényesítési (min vagy max). |
+| Kezdő/záró nullák engedélyezése |Minden további, kezdő vagy záró nulla, és az szóköz karakter. Ne távolítsa el ezeket a karaktereket. |
+| Kezdő/záró nullák levágása |Távolítsa el a kezdő vagy záró nulla és karaktereket. |
+| Záróelválasztó-szabályzat |Záró elválasztók készítése. <p>Válassza ki **nem engedélyezett** záró határoló és elválasztók, a kapott interchange. Ha cseréje a záró határoló és elválasztókat, az adatcsere van deklarálva nem érvényes. <p>Válassza ki **nem kötelező** kereszteződéseket vagy záró határoló és elválasztók nélkül fogadásához. <p>Válassza ki **kötelező** Ha kapott adatcsere rendelkeznie kell záró határoló és elválasztókat. |
 
 ### <a name="internal-settings"></a>Belső beállítások
 
@@ -176,15 +176,15 @@ Most már a szerződés készen áll a kimenő üzenetek, amelyek megfelelnek a 
 | UNB1.2 (szintaxis verzió) |Válasszon ki egy értéket közötti **1** és **4**. |
 | UNB2.3 (feladó fordított irányú útválasztási címe) |Adja meg legalább egy karaktert és 14 karakterek alfanumerikus értékét. |
 | UNB3.3 (címzett fordított irányú útválasztási címe) |Adja meg legalább egy karaktert és 14 karakterek alfanumerikus értékét. |
-| UNB6.1 (címzett hivatkozás jelszó) |Adja meg legalább egy és 14 karakterek alfanumerikus értékét. |
-| UNB6.2 (címzett hivatkozás minősítő) |Adjon meg egy alfanumerikus érték legalább egy karaktert, és legfeljebb két karakter. |
-| UNB7 (Alkalmazásazonosító referencia) |Adjon meg egy legalább egy karaktert és 14 karakterek alfanumerikus érték |
+| UNB6.1 (címzett referenciajelszava) |Adja meg legalább egy és 14 karakterek alfanumerikus értékét. |
+| UNB6.2 (címzett referenciaminősítője) |Adjon meg egy alfanumerikus érték legalább egy karaktert, és legfeljebb két karakter. |
+| UNB7 (alkalmazás hivatkozásazonosítója) |Adjon meg egy legalább egy karaktert és 14 karakterek alfanumerikus érték |
 
 ### <a name="acknowledgment"></a>Tudomásul vétele
 | Tulajdonság | Leírás |
 | --- | --- |
 | Üzenet visszaigazolása (CONTRL) |Jelölje be ezt a jelölőnégyzetet, ha a központi partner várhatóan kap egy műszaki (CONTRL). A beállítással megadható, hogy a központi partner, aki az üzenetet küld, a Vendég partnertől nyugtázást kéri. |
-| A nyugtázási (CONTRL) |Akkor válassza ezt a jelölőnégyzetet, ha a szolgáltatott partner várhatóan kap egy funkcionális (CONTRL). A beállítással megadható, hogy a központi partner, aki az üzenetet küld, a Vendég partnertől nyugtázást kéri. |
+| Nyugtázás (CONTRL) |Akkor válassza ezt a jelölőnégyzetet, ha a szolgáltatott partner várhatóan kap egy funkcionális (CONTRL). A beállítással megadható, hogy a központi partner, aki az üzenetet küld, a Vendég partnertől nyugtázást kéri. |
 | SG1-/SG4-hurok létrehozása az elfogadott tranzakciókészletekhez |Ha úgy döntött, hogy egy funkcionális nyugtázási kérelem, jelölje be a jelölőnégyzetet SG1/HK4 hurkok generációja hatályos működési CONTRL nyugták elfogadott tranzakció csoportjai számára. |
 
 ### <a name="schemas"></a>Sémák
@@ -198,9 +198,9 @@ Most már a szerződés készen áll a kimenő üzenetek, amelyek megfelelnek a 
 ### <a name="envelopes"></a>Borítékok
 | Tulajdonság | Leírás |
 | --- | --- |
-| UNB8 (feldolgozás prioritását kód) |Adjon meg egy szedett egynél több karakter hosszú. |
-| UNB10 (kommunikációs megállapodás) |Adjon meg egy alfanumerikus érték legalább egy karaktert, és legfeljebb 40 karakter. |
-| UNB11 (tesztelése mutató) |A jelölőnégyzet azt jelzi, hogy a létrehozott interchange vizsgálati adatok |
+| UNB8 (feldolgozási prioritási kód) |Adjon meg egy szedett egynél több karakter hosszú. |
+| UNB10 (kommunikációs egyezmény) |Adjon meg egy alfanumerikus érték legalább egy karaktert, és legfeljebb 40 karakter. |
+| UNB11 (tesztjelző) |A jelölőnégyzet azt jelzi, hogy a létrehozott interchange vizsgálati adatok |
 | UNA-szegmens (szolgáltatás sztringjére vonatkozó javaslatok) használata |Válassza ezt a jelölőnégyzetet a küldendő adatcserét UNA szegmens létrehozásához. |
 | UNG-szegmensek (funkciócsoport-fejléc) használata |Válassza ezt a jelölőnégyzetet, a Vendég partnernek küldött üzenetek funkcionális csoport fejlécben csoportosítási szegmensek létrehozására. A következő értékeket fogja használni a UNG szegmensek létrehozása: <p>A **UNG1**, adja meg legalább egy karaktert és legfeljebb hat karakterből álló alfanumerikus értékét. <p>A **UNG2.1**, adjon meg egy alfanumerikus érték legalább egy karaktert és egy legfeljebb 35 karakter hosszú lehet. <p>A **UNG2.2**, adjon meg egy alfanumerikus érték egy legfeljebb négy karakter hosszú lehet. <p>A **UNG3.1**, adjon meg egy alfanumerikus érték legalább egy karaktert és egy legfeljebb 35 karakter hosszú lehet. <p>A **UNG3.2**, adjon meg egy alfanumerikus érték egy legfeljebb négy karakter hosszú lehet. <p>A **UNG6**, adja meg legalább egy és legfeljebb három karakterből álló alfanumerikus értékét. <p>A **UNG7.1**, adja meg legalább egy karaktert és legfeljebb három karakterből álló alfanumerikus értékét. <p>A **UNG7.2**, adja meg legalább egy karaktert és legfeljebb három karakterből álló alfanumerikus értékét. <p>A **UNG7.3**, adjon meg egy legalább 1 karakter és 6 karakterből álló alfanumerikus érték. <p>A **UNG8**, adja meg legalább egy karaktert és 14 karakterek alfanumerikus értékét. |
 
@@ -212,18 +212,18 @@ Eltérő karakterkészlete, egy másik csoportját az egyes üzenet használand�
 | --- | --- |
 | UNB1.1 (rendszerazonosító) |Válassza ki a kimenő interchange alkalmazandó EDIFACT karakterkészletet. |
 | Séma |A legördülő listából válassza ki a sémát. Minden egyes sorára befejezése után a rendszer automatikusan hozzáadja az új sort. A kijelölt séma válassza ki az szerepel, amely szeretné használni, a következő elválasztó leírások alapján. |
-| A bemeneti típus |Válassza ki a bemeneti típusát a legördülő listából. |
-| Az összetevő elválasztó |Önálló összetett adatok elemek, írja be a következőt egy egyetlen karaktert. |
-| Adatok elem elválasztó |Külön egyszerű adatelemek összetett adatelemek belül, adjon meg egy egyetlen karaktert. |
-| Szegmens lezáró |Egy EDI-szegmens jelezheti, írja be a következőt egy egyetlen karaktert. |
+| Bevitel típusa |Válassza ki a bemeneti típusát a legördülő listából. |
+| Összetevő-elválasztó |Önálló összetett adatok elemek, írja be a következőt egy egyetlen karaktert. |
+| Adatelem-elválasztó |Külön egyszerű adatelemek összetett adatelemek belül, adjon meg egy egyetlen karaktert. |
+| Szegmenslezáró |Egy EDI-szegmens jelezheti, írja be a következőt egy egyetlen karaktert. |
 | Utótag |Válassza ki a szegmens azonosítóját használt karakter. Ha egy utótagot ad meg, majd a szegmens lezáró adatok elem lehet üres. Ha a szegmens lezáró üres, majd ki kell jelölnie egy utótagot. |
 
-### <a name="control-numbers"></a>Vezérlő számok
+### <a name="control-numbers"></a>Ellenőrzőszámok
 | Tulajdonság | Leírás |
 | --- | --- |
-| UNB5 (Interchange ellenőrző szám) |Írjon be egy előtagot, egy interchange ellenőrző szám és egy utótagként értékek tartományán. Ezek az értékek egy kimenő interchange létrehozásához használt. Az előtag és utótag opcionálisak, amíg a vezérlő számot kell megadni. Az ellenőrző szám értéke akkor nő, minden új üzenet; az előtag és utótag ugyanaz marad. |
-| UNG5 (csoportos ellenőrző szám) |Írjon be egy előtagot, egy interchange ellenőrző szám és egy utótagként értékek tartományán. Ezeket az értékeket a vezérlő csoportszám létrehozásához használt. Az előtag és utótag opcionálisak, amíg a vezérlő számot kell megadni. Az ellenőrző szám értéke akkor nő, minden új üzenet a maximális érték eléréséig; az előtag és utótag ugyanaz marad. |
-| UNH1 (üzenet fejlécének hivatkozás száma) |Írjon be egy előtagot, egy interchange ellenőrző szám és egy utótagként értékek tartományán. Ezeket az értékeket az üzenet fejlécének hivatkozási szám létrehozásához használt. Az előtag és utótag opcionálisak, amíg a hivatkozási számot kell megadni. A hivatkozási számot értéke akkor nő, minden új üzenet; az előtag és utótag ugyanaz marad. |
+| UNB5 (adatcsere-ellenőrző szám) |Írjon be egy előtagot, egy interchange ellenőrző szám és egy utótagként értékek tartományán. Ezek az értékek egy kimenő interchange létrehozásához használt. Az előtag és utótag opcionálisak, amíg a vezérlő számot kell megadni. Az ellenőrző szám értéke akkor nő, minden új üzenet; az előtag és utótag ugyanaz marad. |
+| UNG5 (csoportellenőrző szám) |Írjon be egy előtagot, egy interchange ellenőrző szám és egy utótagként értékek tartományán. Ezeket az értékeket a vezérlő csoportszám létrehozásához használt. Az előtag és utótag opcionálisak, amíg a vezérlő számot kell megadni. Az ellenőrző szám értéke akkor nő, minden új üzenet a maximális érték eléréséig; az előtag és utótag ugyanaz marad. |
+| UNH1 (üzenetfejléc hivatkozási száma) |Írjon be egy előtagot, egy interchange ellenőrző szám és egy utótagként értékek tartományán. Ezeket az értékeket az üzenet fejlécének hivatkozási szám létrehozásához használt. Az előtag és utótag opcionálisak, amíg a hivatkozási számot kell megadni. A hivatkozási számot értéke akkor nő, minden új üzenet; az előtag és utótag ugyanaz marad. |
 
 ### <a name="validations"></a>Ellenőrzések
 
@@ -231,12 +231,12 @@ Eltérő karakterkészlete, egy másik csoportját az egyes üzenet használand�
 
 | Tulajdonság | Leírás |
 | --- | --- |
-| Üzenet típusa |Válassza ki a EDI-üzenet típusa. |
-| EDI érvényesítése |EDI-érvényesítést hajt végre a séma, hosszára, üres adatelemek és záró elválasztók EDI tulajdonságainak által definiált adattípusok. |
-| Kiterjesztett érvényesítése |Ha az adattípus nem EDI, érvényesítési az elem követelménynek, és engedélyezett ismétlési, enumerálások és adatok elem hossza érvényesítési (min vagy max). |
-| Kezdő/záró nullából engedélyezése |Minden további, kezdő vagy záró nulla, és az szóköz karakter. Ne távolítsa el ezeket a karaktereket. |
-| Trim kezdő/záró nullából |Távolítsa el a kezdő vagy záró nulla karakterből. |
-| Záró elválasztó házirend |Záró elválasztók készítése. <p>Válassza ki **nem engedélyezett** záró határoló és elküldött adatcsere elválasztó. Ha cseréje a záró határoló és elválasztókat, az adatcsere van deklarálva nem érvényes. <p>Válassza ki **nem kötelező** kereszteződéseket vagy záró határoló és elválasztók nélkül küldhet. <p>Válassza ki **kötelező** Ha elküldött cseréje a záró határoló és elválasztókat rendelkeznie kell. |
+| Üzenettípus |Válassza ki a EDI-üzenet típusa. |
+| EDI-ellenőrzés |EDI-érvényesítést hajt végre a séma, hosszára, üres adatelemek és záró elválasztók EDI tulajdonságainak által definiált adattípusok. |
+| Bővített ellenőrzés |Ha az adattípus nem EDI, érvényesítési az elem követelménynek, és engedélyezett ismétlési, enumerálások és adatok elem hossza érvényesítési (min vagy max). |
+| Kezdő/záró nullák engedélyezése |Minden további, kezdő vagy záró nulla, és az szóköz karakter. Ne távolítsa el ezeket a karaktereket. |
+| Kezdő/záró nullák levágása |Távolítsa el a kezdő vagy záró nulla karakterből. |
+| Záróelválasztó-szabályzat |Záró elválasztók készítése. <p>Válassza ki **nem engedélyezett** záró határoló és elküldött adatcsere elválasztó. Ha cseréje a záró határoló és elválasztókat, az adatcsere van deklarálva nem érvényes. <p>Válassza ki **nem kötelező** kereszteződéseket vagy záró határoló és elválasztók nélkül küldhet. <p>Válassza ki **kötelező** Ha elküldött cseréje a záró határoló és elválasztókat rendelkeznie kell. |
 
 ## <a name="find-your-created-agreement"></a>A létrehozott megállapodás keresése
 

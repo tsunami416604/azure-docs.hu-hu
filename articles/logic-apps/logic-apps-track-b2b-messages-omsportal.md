@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/21/2017
 ms.author: LADocs; padmavc
-ms.openlocfilehash: 128abd504785227c1f27debd329d46d358e6e516
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: d62be25678044ead469f65362b6f47c1a2df893b
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="track-b2b-communication-in-the-microsoft-operations-management-suite-oms"></a>A Microsoft Operations Management Suite (OMS) B2B kommunikációs nyomon követése
 
@@ -47,7 +47,7 @@ Miután beállította a B2B kommunikációját két üzleti folyamatok vagy a in
 
 Ahhoz, hogy a logikai alkalmazás B2B messages nyomon OMS, hozzá kell adnia a **Logic Apps B2B** megoldást jelent az OMS-portálon. További információ [megoldások hozzáadása OMS](../log-analytics/log-analytics-get-started.md).
 
-1. Az a [Azure-portálon](https://portal.azure.com), válassza a **több szolgáltatások**. Keresse meg a "naplóelemzési", és válassza a **Naplóelemzési** itt látható módon:
+1. Az a [Azure-portálon](https://portal.azure.com), válassza a **minden szolgáltatás**. Keresse meg a "naplóelemzési", és válassza a **Naplóelemzési** itt látható módon:
 
    ![A Naplóelemzési keresése](media/logic-apps-track-b2b-messages-omsportal/browseloganalytics.png)
 

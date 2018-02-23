@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 935431783b08919049c5c24b56285647bc7b35ba
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3c6efbc5da37a2ac500a575419263c0f21cca4b7
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="monitor-vpn-gateways-with-network-watcher-troubleshooting"></a>VPN-átjárók a hálózati figyelőt hibaelhárításban figyelése
 
@@ -51,7 +51,7 @@ Ez a forgatókönyv megkezdése előtt rendelkeznie kell a következő előfelt�
 
 ### <a name="create-the-runbook"></a>Hozza létre a runbookot
 
-Az első lépés a példa konfigurálására, hogy hozza létre a runbookot. A példa egy futtató fiókot. A futtató fiókokkal kapcsolatos további tudnivalókért keresse fel a [Runbookok hitelesítéséhez az Azure-beli futtató fiók](../automation/automation-sec-configure-azure-runas-account.md)
+Az első lépés a példa konfigurálására, hogy hozza létre a runbookot. A példa egy futtató fiókot. A futtató fiókokkal kapcsolatos további tudnivalókért keresse fel a [Runbookok hitelesítéséhez az Azure-beli futtató fiók](../automation/automation-create-runas-account.md)
 
 ### <a name="step-1"></a>1. lépés
 
@@ -183,7 +183,7 @@ Kattintson a Mentés menteni az ütemezést a runbookhoz.
 
 ![10. lépés][10]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy megismerhesse a integrálása az Azure Automation szolgáltatásban hibaelhárítási hálózati figyelőt, megtudhatja, hogyan csomag rögzíti a virtuális gép riasztásokat kiváltó ellátogatva [hozzon létre egy riasztási kiváltott csomagrögzítéssel Azure hálózati figyelőt](network-watcher-alert-triggered-packet-capture.md).
 

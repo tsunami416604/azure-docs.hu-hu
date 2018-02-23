@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: On Demand
-ms.date: 02/13/2018
+ms.date: 02/20/2018
 ms.reviewer: genemi
 ms.author: dmalik
-ms.openlocfilehash: 95e5b2fafa20e636957aacb10dbdf9e1fd02cf8f
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
-ms.translationtype: HT
+ms.openlocfilehash: 33ce521903265f60715f66220c4d038cf6d86671
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-sql-database"></a>Virtuális hálózati szolgáltatás végpontok és szabályok az Azure SQL Database használata
 
@@ -127,9 +127,6 @@ Lehetősége van a [szerepköralapú hozzáférés-vezérlést (RBAC)] [ rbac-wh
 ## <a name="limitations"></a>Korlátozások
 
 Az Azure SQL Database a virtuális hálózati szabályok funkció rendelkezik a következő korlátozások vonatkoznak:
-
-- Jelenleg az Azure Web Apps az alhálózat, amely rendelkezik **Szolgáltatásvégpontok** kapcsolva biztosítja nem még függvény az elvárásoknak megfelelően. Ez a funkció engedélyezése dolgozunk.
-    - Amíg ez a szolgáltatás teljesen megvalósítva, javasoljuk a webalkalmazás áthelyezése egy másik alhálózatot, amely nem rendelkezik az SQL-e kapcsolva Szolgáltatásvégpontok.
 
 - A tűzfalon az SQL-adatbázis minden egyes virtuális hálózati szabály alhálózat hivatkozik. A hivatkozott alhálózatok ugyanabban a földrajzi régióban az SQL-adatbázist futtató kiszolgálón kell futnia.
 

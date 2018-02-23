@@ -15,11 +15,11 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 07/21/2017
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 8ad8281744293a05b50f8664a7e5a3fea7aa7b33
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: f0376070a8bec7d97f54e9a198d5d67a9751334c
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="monitor-status-set-up-diagnostics-logging-and-turn-on-alerts-for-azure-logic-apps"></a>Állapotának figyelésére, diagnosztikai naplózás beállítása és az Azure Logic Apps riasztás bekapcsolása
 
@@ -29,7 +29,7 @@ Hibák vagy egyéb lehetséges problémákat kapcsolatos értesítéseket kapni,
 
 ## <a name="view-runs-and-trigger-history-for-your-logic-app"></a>Nézet futtatása és a Logic Apps alkalmazást eseményindító előzményei
 
-1. A Logic Apps alkalmazást az kereséséhez a [Azure-portálon](https://portal.azure.com), a fő Azure menüben válassza a **további szolgáltatások**. A keresőmezőbe a "logic apps" található, és válassza a **a Logic apps**.
+1. A Logic Apps alkalmazást az kereséséhez a [Azure-portálon](https://portal.azure.com), a fő Azure menüben válassza a **minden szolgáltatás**. A keresési mezőbe, írja be a "logikai alkalmazások", és válassza a **a Logic apps**.
 
    ![A logikai alkalmazás keresése](./media/logic-apps-monitor-your-logic-apps/find-your-logic-app.png)
 
@@ -97,7 +97,7 @@ Kezdés előtt kell az OMS-munkaterület rendelkezik. Ismerje meg, [OMS-munkater
    3. A **OMS-munkaterület**, jelölje be az OMS-munkaterület naplózásának használni.
    4. A **napló**, jelölje be a **WorkflowRuntime** kategóriát.
    5. Válassza ki a metrika időközt.
-   6. Amikor elkészült, válassza ki a **mentése**.
+   6. Ha elkészült, kattintson a **Mentés** gombra.
 
    ![Válassza ki az OMS-munkaterület és a naplózási adatokat](media/logic-apps-monitor-your-logic-apps/send-diagnostics-data-log-analytics-workspace.png)
 
@@ -109,7 +109,7 @@ Most található események és egyéb adatok eseményindító események, esem�
 
 Található, és tekintse meg az eseményeket a Logic Apps alkalmazást, például Indítás, futtassa az eseményeket, és műveleti események, kövesse az alábbi lépéseket.
 
-1. Az a [Azure-portálon](https://portal.azure.com), válassza a **több szolgáltatások**. Keresse meg a "naplóelemzési", és válassza a **Naplóelemzési** itt látható módon:
+1. Az a [Azure-portálon](https://portal.azure.com), válassza a **minden szolgáltatás**. Keresse meg a "naplóelemzési", és válassza a **Naplóelemzési** itt látható módon:
 
    ![Válassza ki a "Naplóelemzési"](media/logic-apps-monitor-your-logic-apps/browseloganalytics.png)
 

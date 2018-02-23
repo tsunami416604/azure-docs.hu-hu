@@ -15,11 +15,11 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 03/16/2017
 ms.author: robmcm
-ms.openlocfilehash: 768c94fe0d2d6cfafc1f8b57256012e01de0f7a9
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: b166d2af56051b7d90eba0d50e1ea41f96c1109e
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="how-to-run-a-java-application-server-on-a-virtual-machine-created-with-the-classic-deployment-model"></a>Javás alkalmazáskiszolgáló futtatása hagyományos módon üzembe helyezett virtuális gépen
 > [!IMPORTANT]
@@ -44,7 +44,7 @@ A virtuális gépen futó Tomcat telepítése befejeződött eredményez.
 
 ## <a name="to-create-a-virtual-machine"></a>Virtuális gép létrehozása
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).  
-2. Kattintson a **új**, kattintson a **számítási**, majd kattintson a **láthatja az összes** a a **a kiemelt alkalmazások**.
+2. Kattintson a **hozzon létre egy erőforrást**, kattintson **számítási**, majd kattintson a **láthatja az összes** a a **a kiemelt alkalmazások**.
 3. Kattintson a **JDK**, kattintson a **JDK 8** a a **JDK** ablaktáblán.  
    Virtuálisgép-lemezképek támogató **JDK 6** és **JDK 7** érhető el, ha örökölt alkalmazásokat, amelyek nem kész a JDK 8-ban.
 4. A JDK 8 ablaktábla, válassza a **klasszikus**, majd kattintson a **létrehozása**.
@@ -93,7 +93,7 @@ A külső gépekről futtató Tomcat megtekintéséhez szükség hozzon létre e
 2. Kattintson a **virtuális gépek (klasszikus)**.
 3. Kattintson a virtuális gépet, hogy fut a Java-alkalmazáskiszolgáló nevét.
 4. Kattintson a **Végpontok** elemre.
-5. Kattintson az **Add** (Hozzáadás) parancsra.
+5. Kattintson a **Hozzáadás** parancsra.
 6. Az a **végpont hozzáadása** párbeszédpanel:
    1. Adjon meg egy nevet a végpont; például **HttpIn**.
    2. Válassza ki **TCP** a protokoll.
@@ -121,7 +121,7 @@ A külső gépekről futtató Tomcat megtekintéséhez szükség hozzon létre e
 10. Az a **neve** képernyőn, adja meg a szabály nevét, például a **HttpIn** (a szabály neve nem szükséges azonban felel meg a végpont neve), és kattintson a **Befejezés**.  
     ![Új bejövő szabály neve][NewRuleName]
 
-Ezen a ponton a Tomcat webhely egy külső böngészőből megtekinthető legyen. A webböngésző cím ablakban írja be az URL-cím a  **http://*a\_DNS\_neve*. cloudapp.net**, ahol ***a\_DNS\_neve*** a virtuális gép létrehozásakor adott meg DNS-neve.
+Ezen a ponton a Tomcat webhely egy külső böngészőből megtekinthető legyen. A webböngésző cím ablakban írja be az URL-cím a **http://*a\_DNS\_neve*. cloudapp.net**, ahol ***a\_DNS\_neve*** a virtuális gép létrehozásakor adott meg DNS-neve.
 
 ## <a name="application-lifecycle-considerations"></a>Alkalmazás életciklusa kapcsolatos szempontok
 * Nem sikerült létrehozni a saját webalkalmazások archívumából (WAR), és hozzá kell adnia a **webapps** mappa. Például egy alapszintű Java szolgáltatás lap (JSP) dinamikus webes projekt létrehozása és exportálni kell a WAR-fájlt. Ezután másolja a WAR az Apache Tomcat **webapps** mappa a virtuális gépen, majd futtassa a böngészőben.
@@ -131,7 +131,7 @@ Ezen a ponton a Tomcat webhely egy külső böngészőből megtekinthető legyen
 
     Az, hogy automatikusan elinduljon Tomcat előnye, hogy kezdődik futtatásakor, amikor a virtuális gép újraindítása után (például a számítógép újraindítása szükséges szoftverfrissítések telepítése után).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Érdemes lehet felvenni a Java-alkalmazások és egyéb szolgáltatások (például az Azure Storage, service bus és SQL-adatbázis) olvashat. A rendelkezésre álló információk megtekintése a [Java fejlesztői központ](https://azure.microsoft.com/develop/java/).
 
 [virtual_machine_tomcat]:media/java-run-tomcat-app-server/WA_VirtualMachineRunningApacheTomcat.png

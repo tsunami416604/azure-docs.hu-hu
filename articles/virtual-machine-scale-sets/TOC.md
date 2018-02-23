@@ -30,6 +30,9 @@
 #### [Automatikus skálázás haladó szinten](../monitoring-and-diagnostics/insights-advanced-autoscale-virtual-machine-scale-sets.md)
 ### [Méretezésicsoport-alkalmazások](virtual-machine-scale-sets-deploy-app.md)
 ### [Adatlemezek használata méretezési csoportokkal](virtual-machine-scale-sets-attached-disks.md)
+### Méretezési csoportokban lévő lemezek titkosítása
+#### [A PowerShell használata](virtual-machine-scale-sets-encrypt-disks-ps.md)
+#### [Az Azure CLI 2.0 használata](virtual-machine-scale-sets-encrypt-disks-cli.md)
 ### [Nagyméretű méretezési csoportokkal végzett munka](virtual-machine-scale-sets-placement-groups.md)
 ### [Méretezési csoport sablonjának konvertálása felügyelt lemez használatához](virtual-machine-scale-sets-convert-template-to-md.md)
 

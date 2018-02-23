@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 01/19/2018
 ms.author: asaxton
-ms.openlocfilehash: 7eb64cce37f2655b72ab9b5fadedf7581fe007fb
-ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
+ms.openlocfilehash: 9b7d0bc31946d6022e9bfae463f4a22eb12c2a58
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="scale-your-power-bi-embedded-capacity"></a>A Power BI Embedded kapacitás méretezése
 
@@ -33,9 +33,9 @@ A parancs feltételezi, hogy a Power BI Embedded kapacitás hozott létre. Ha ne
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
-2. Válassza ki **további szolgáltatások** > **Power BI Embedded** a kapacitások megjelenítéséhez.
+2. Válassza ki **minden szolgáltatás** > **Power BI Embedded** a kapacitások megjelenítéséhez.
 
-    ![További szolgáltatások az Azure portálon](media/scale-capacity/azure-portal-more-services.png)
+    ![Azure-portálon belül minden szolgáltatás](media/scale-capacity/azure-portal-more-services.png)
 
 3. Válassza ki a kapacitás méretezésére.
 

@@ -41,6 +41,8 @@
 #### [Üzenetek átvitele, zárolása és elszámolása](message-transfers-locks-settlement.md)
 #### [Üzenetek előkészítése és időbélyegek](message-sequencing.md)
 #### [Üzenetek lejárata (élettartama)](message-expiration.md)
+#### [Üzenetkezelés az Azure Event Griddel](service-bus-to-event-grid-integration-concept.md)
+#### [Azure Event Grid-példák](service-bus-to-event-grid-integration-example.md)
 ### [Hitelesítés és engedélyezés](service-bus-authentication-and-authorization.md)
 #### [Migrálás ACS-ről SAS rendszerre](service-bus-migrate-acs-sas.md)
 #### [Hitelesítés közös hozzáférésű jogosultságkódokkal](service-bus-sas.md)

@@ -8,18 +8,22 @@ editor: TomShinder
 ms.assetid: 
 ms.service: security
 ms.topic: article
-ms.date: 08/07/2017
+ms.date: 02/16/2018
 ms.author: Barclayn
 ms.custom: AzLog
-ms.openlocfilehash: 3cd80817bf8b2ef2f66e9942eddc186a3eb5b5e4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e5bd27c94569228693d1a9c80c6e5362b50c4a44
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="azure-log-integration-tutorial-process-azure-key-vault-events-by-using-event-hubs"></a>Azure napló integrációs Útmutató: az Event Hubs használatával folyamat az Azure Key Vault-események
 
 Használhatja az Azure napló integrációs naplózott események beolvasásához, és elérhetővé teszi azokat a biztonsági információk és az esemény (SIEM) felügyeleti rendszerbe. Ez az oktatóanyag azt szemlélteti, hogyan Azure napló integrációs használható az Azure Event Hubs beszerzett naplók feldolgozása.
+
+>[!IMPORTANT]
+>Az előnyben részesített módszere integrálása az Azure naplókat, hogy a SIEM gyártója által biztosított Azure figyelő összekötővel, és ezeket a következő [utasításokat](../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md). Azonban ha a SIEM-szállító Azure figyelése nem biztosít egy összekötőt, akkor előfordulhat, hogy fogja tudni használni Azure napló integrációs ideiglenes megoldásként (Ha a SIEM Azure napló integrációs támogatja) addig, amíg az ilyen összekötő nem érhető el.
+
  
 Ez az oktatóanyag segítségével Ismerkedjen meg a hogyan Azure napló integráció és az Event Hubs működik együtt a példa a lépéseket követve, és hogyan minden lépés támogatja a megoldást. Majd is eltarthat, mire hogy megismerte itt létrehozása a saját lépéseket a vállalat egyedi igényeinek támogatására.
 
@@ -86,13 +90,13 @@ Ebben a cikkben szereplő lépések végrehajtásához, a következők szükség
 
    ![PowerShell-ablakot](./media/security-azure-log-integration-keyvault-eventhub/login-azurermaccount.png)
 5. Hozzon létre változókat értékeket, amelyeket a rendszer később tárolásához. Adja meg a következő PowerShell-sorok. Szükség lehet az értékeket a környezet beállításához.
-    - ```$subscriptionName = ‘Visual Studio Ultimate with MSDN’```(Az előfizetés neve eltérő lehet. Tekintheti meg az előző parancs részeként.)
-    - ```$location = 'West US'```(Ezt a változót használja felelt meg a helyet, ahol erőforrásokat kell létrehozni. Módosíthatja ezt a változót a bárhol lehet.)
+    - ```$subscriptionName = ‘Visual Studio Ultimate with MSDN’``` (Az előfizetés neve eltérő lehet. Tekintheti meg az előző parancs részeként.)
+    - ```$location = 'West US'``` (Ezt a változót használja felelt meg a helyet, ahol erőforrásokat kell létrehozni. Módosíthatja ezt a változót a bárhol lehet.)
     - ```$random = Get-Random```
-    - ``` $name = 'azlogtest' + $random```(A neve bármi lehet, de ez csak kisbetűket és számokat kell tartalmaznia.)
-    - ``` $storageName = $name```(Ezt a változót használja a tárfiók nevének.)
-    - ```$rgname = $name ```(Ez a változó lesz használható az erőforráscsoport neve.)
-    - ``` $eventHubNameSpaceName = $name```(Ez az esemény hub névtér nevét.)
+    - ``` $name = 'azlogtest' + $random``` (A neve bármi lehet, de ez csak kisbetűket és számokat kell tartalmaznia.)
+    - ``` $storageName = $name``` (Ezt a változót használja a tárfiók nevének.)
+    - ```$rgname = $name ``` (Ez a változó lesz használható az erőforráscsoport neve.)
+    - ``` $eventHubNameSpaceName = $name``` (Ez az esemény hub névtér nevét.)
 6. Adja meg az előfizetést, hogy a működik:
     
     ```Select-AzureRmSubscription -SubscriptionName $subscriptionName```
@@ -175,7 +179,7 @@ Minden event hubs AzLog parancsot:
 
 Egy perc vagy, a két legutóbbi parancsok futtatására megtekintheti az JSON-fájlok létrehozása folyamatban. A könyvtár figyelésével ellenőrizheti, hogy **C:\users\AzLog\EventHubJson**.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Azure Naplóelemzés integrációs – gyakori kérdések](security-azure-log-integration-faq.md)
 - [Ismerkedés az Azure napló integráció](security-azure-log-integration-get-started.md)

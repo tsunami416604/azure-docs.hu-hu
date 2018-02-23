@@ -1,10 +1,10 @@
 ---
-title: "Windows SQL Server 2017 virtuális gépek konfigurálása az Azure portálon |} Microsoft Docs"
+title: "Kialakítási útmutató Windows SQL Server virtuális gépek az Azure portálon |} Microsoft Docs"
 description: "Ez az útmutató útmutató ismerteti a beállítások a Windows az SQL Server 2017 virtuális gépek létrehozása az Azure portálon."
 services: virtual-machines-windows
 documentationcenter: na
 author: rothja
-manager: jhubbard
+manager: craigg
 tags: azure-resource-manager
 ms.assetid: 1aff691f-a40a-4de2-b6a0-def1384e086e
 ms.service: virtual-machines-sql
@@ -12,28 +12,29 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: infrastructure-services
-ms.date: 12/12/2017
+ms.date: 02/15/2018
 ms.author: jroth
-ms.openlocfilehash: 440c783de73652ad2d312cd92db8635dc65df9ed
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: 23a1f008e2c51325b7e9c7676847d55d7ccb7d44
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 02/21/2018
 ---
-# <a name="how-to-create-a-windows-sql-server-virtual-machine-in-the-azure-portal"></a>A Windows az SQL Server virtuális gép létrehozása az Azure-portálon
+# <a name="how-to-provision-a-windows-sql-server-virtual-machine-in-the-azure-portal"></a>Útmutató a Windows az SQL Server rendszerű virtuális gép az Azure-portálon
 
-Ez az útmutató végigvezeti az elérhető beállításokról, amikor egy Windows SQL Server virtuális gép létrehozása az Azure portálon. A lépések során a különböző lehetőségek megismerését saját SQL Server virtuális gép létrehozásához. Vagy egy konkrét szakaszra referenciaként lépjen egy adott lépésben a portálon.
+Ez az útmutató részletesen az elérhető beállításokról Windows SQL Server virtuális gép létrehozásakor az Azure portálon. Ez a cikk ismerteti a további konfigurációs beállítások, mint a [SQL Server virtuális gép gyors üzembe helyezés](quickstart-sql-vm-create-portal.md), amely további osztályig egy lehetséges létesítési feladat kerül. 
 
-> [!TIP]
-> Gyorsan használatba portál az alapértelmezett értékekkel, tekintse meg a [Azure gyors üzembe helyezés – SQL Server virtuális gép létrehozása a portálon](quickstart-sql-vm-create-portal.md).
+Ez az útmutató segítségével a saját SQL Server virtuális gép létrehozása. Másik lehetőségként használja referenciának az Azure portálon elérhető beállítások.
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
-## <a id="select"></a> SQL virtuálisgép-rendszerkép kiválasztása a katalógusból
+## <a id="select"></a> SQL Server virtuális gép a gyűjtemény lemezképei
+
+Egy SQL Server virtuális gép létrehozásakor válassza ki egy számos előre konfigurált lemezképet a virtuális gép gyűjteményből. A következő lépések bemutatják, hogyan válassza ki az SQL Server 2017 lemezképeket.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) a saját fiókjával.
 
-1. Az Azure Portalon kattintson az **Új** elemre. A portál megnyitja az **Új** ablakot.
+1. Az Azure portálon kattintson **hozzon létre egy erőforrást**. A portál megnyitja az **Új** ablakot.
 
 1. Az **Új** ablakban kattintson a **Számítás**, majd az **Összes megjelenítése** elemre.
 
@@ -52,20 +53,20 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 1. Válassza az **Ingyenes SQL Server-licenc: Windows Server 2016-on futó SQL Server 2017 Developer** nevű rendszerképet.
 
    > [!TIP]
-   > Ez az oktatóanyag azért a Developer kiadást alkalmazza, mert az az SQL Server teljes körű verziója, amely fejlesztési-tesztelési célokra ingyenesen használható. Csak a virtuális gép futtatásával járó költségeket kell kifizetni. Azonban ebben az oktatóanyagban bármelyik rendszerképet választhatja.
+   > A fejlesztői edition ebben a bemutatóban használhatja, mert az egy teljes körű, szabad SQL Server kiadása fejlesztői teszteléshez. Csak a virtuális gép futtatásával járó költségeket kell kifizetni. Azonban szabadon válasszon a forgatókönyv a lemezképet. A rendelkezésre álló rendszerképek, olvassa el a [SQL Server Windows virtuális gépek – áttekintés](virtual-machines-windows-sql-server-iaas-overview.md#payasyougo).
 
    > [!TIP]
-   > Az SQL-alapú virtuális gépek rendszerképeinek percalapú díjszabása tartalmazza az SQL-kiszolgáló licencelési költségeit (kivéve a Developer és az Express kiadások esetén). Az SQL Server Developer ingyenesen használható fejlesztési/tesztelési célokra (üzemi környezetben nem), az SQL Express pedig ingyenesen használható kisebb számítási feladatokhoz (1 GB-nál kisebb memória, 10 GB-nál kevesebb tárhely). Van egy másik lehetőség is: a saját licenc használata (BYOL), amely esetben csak a virtuális gépért kell fizetni. Az ilyen rendszerképek nevei {BYOL} előtagot kapnak. 
+   > Az SQL Server licencelési költségei be vannak építve a virtuális gép létrehozása és a változó díjszabás perc edition és a magok. Azonban az SQL Server Developer kiadásában a szabad (nem éles) fejlesztési/tesztelési, és az SQL Express szabad egyszerűsített munkaterhelésekhez (kevesebb mint 1 GB memória, kevesebb, mint 10 GB tárhely). Emellett bring your-saját-licencet (BYOL) és a fizetési csak a virtuális gép számára. Az ilyen rendszerképek nevei {BYOL} előtagot kapnak. 
    >
    > A lehetőségekkel kapcsolatos további információkért tekintse meg [az SQL Server Azure virtuális gépek díjszabási útmutatóját](virtual-machines-windows-sql-server-pricing-guidance.md).
 
 1. Ellenőrizze, hogy a **Telepítési modell kiválasztása** alatt a **Resource Manager** van-e kiválasztva. Az új virtuális gépek esetén az ajánlott üzemi modell a Resource Manager. 
 
-1. Kattintson a **Létrehozás** gombra.
+1. Kattintson a **Create** (Létrehozás) gombra.
 
     ![SQL virtuális gép létrehozása a Resource Manager használatával](./media/virtual-machines-windows-portal-sql-server-provision/azure-compute-sql-deployment-model.png)
 
-## <a id="configure"></a> A virtuális gép konfigurálása
+## <a id="configure"></a> Konfigurációs beállítások
 Az SQL Server rendszerű virtuális gépek konfigurálására öt ablak szolgál.
 
 | Lépés | Leírás |
@@ -95,7 +96,7 @@ Az **Alapvető beállítások** ablakban adja meg a következő információkat:
   > [!NOTE]
   > Az Azure szolgáltatásban futó SQL Server üzemelő példányok tesztelésekor vagy a velük való megismerkedéskor érdemes egy új erőforráscsoportot használni. A tesztelés befejezése után törölje az erőforráscsoportot a virtuális gép és az erőforráscsoporthoz társított összes erőforrás automatikus törléséhez. További információ az erőforráscsoportokkal kapcsolatban: [Azure Resource Manager Overview](../../../azure-resource-manager/resource-group-overview.md) (Az Azure Resource Manager áttekintése).
 
-* Válassza ki a **helyet** az üzemelő példányt futtató Azure-régiónak megfelelően.
+* Válassza ki a **hely** az az Azure-régió, a telepítés futtatásához.
 
 * Kattintson az **OK** gombra a beállítások mentéséhez.
 
@@ -106,7 +107,7 @@ Az **Alapvető beállítások** ablakban adja meg a következő információkat:
 A **Méret** lépésben válassza ki a virtuális gép méretét a **Méret kiválasztása** ablakban. Az ablak kezdetben a választott rendszerkép alapján jeleníti meg az ajánlott gépméreteket.
 
 > [!IMPORTANT]
-> A **Méret kiválasztása** ablakban megjelenő, becsült havi költségek nem tartalmazzák az SQL Server licencelési költségeit. Ez egyedül a virtuális gép költsége. Az SQL Server Express és Developer kiadásai esetében ez a teljes becsült költség. Más kiadások esetében tekintse meg a [Windows rendszerű virtuális gépek árképzését ismertető oldalt](https://azure.microsoft.com/pricing/details/virtual-machines/windows/), és válassza ki az SQL Server megfelelő kiadását. Lásd még [az SQL Server Azure virtuális gépek díjszabási útmutatóját](virtual-machines-windows-sql-server-pricing-guidance.md).
+> A **Méret kiválasztása** ablakban megjelenő, becsült havi költségek nem tartalmazzák az SQL Server licencelési költségeit. Ez a becslés önmagában VM költsége. SQL Server Express és a fejlesztői verziója Ez a becslés a teljes becsült költségét. Más kiadások esetében tekintse meg a [Windows rendszerű virtuális gépek árképzését ismertető oldalt](https://azure.microsoft.com/pricing/details/virtual-machines/windows/), és válassza ki az SQL Server megfelelő kiadását. Lásd még [az SQL Server Azure virtuális gépek díjszabási útmutatóját](virtual-machines-windows-sql-server-pricing-guidance.md).
 
 ![SQL virtuális gépek méretbeállításai](./media/virtual-machines-windows-portal-sql-server-provision/azure-sql-vm-choose-a-size.png)
 
@@ -124,13 +125,13 @@ A **Beállítások** ablakban konfigurálhatja az Azure-tárolót, a hálózatot
 * A **Tároló** területen válassza az **Igen** lehetőséget a **Felügyelt lemezek használata** beállítás alatt.
 
    > [!NOTE]
-   > A Microsoft a Managed Disks használatát javasolja az SQL Server esetében. A Managed Disks szolgáltatás a háttérben kezeli a tárterületet. Emellett ha ugyanabban a rendelkezésre állási csoportban több, a Managed Diskset használó virtuális gép található, az Azure elosztja a tárolási erőforrásokat, hogy megfelelő redundanciát biztosítson. További információkért lásd az [Azure Managed Disks áttekintését](../../../storage/storage-managed-disks-overview.md). A felügyelt lemezek a rendelkezésre állási csoportokban való használatával kapcsolatos részletekért lásd: [Felügyelt lemezek használata rendelkezésre állási csoporthoz tartozó virtuális gépekkel](../manage-availability.md).
+   > A Microsoft a Managed Disks használatát javasolja az SQL Server esetében. A Managed Disks szolgáltatás a háttérben kezeli a tárterületet. Emellett ha ugyanabban a rendelkezésre állási csoportban több, a Managed Diskset használó virtuális gép található, az Azure elosztja a tárolási erőforrásokat, hogy megfelelő redundanciát biztosítson. További információ: [felügyelt lemezek áttekintése Azure] [... / felügyelt lemezek-overview.md). A felügyelt lemezek a rendelkezésre állási csoportokban való használatával kapcsolatos részletekért lásd: [Felügyelt lemezek használata rendelkezésre állási csoporthoz tartozó virtuális gépekkel](../manage-availability.md).
 
-* A **Hálózat** alatt elfogadhatja az automatikusan kitöltött értékeket. Az egyes funkciókra kattintva manuálisan is konfigurálhatja a **virtuális hálózatot**, az **alhálózatot**, a **nyilvános IP-címet** és a **hálózati biztonsági csoportot**. A jelen oktatóanyag esetén használja az alapértelmezett értékeket.
+* A **Hálózat** alatt elfogadhatja az automatikusan kitöltött értékeket. Az egyes funkciókra kattintva manuálisan is konfigurálhatja a **virtuális hálózatot**, az **alhálózatot**, a **nyilvános IP-címet** és a **hálózati biztonsági csoportot**. Ez a bemutató céljából használja az alapértelmezett értékeket.
 
 * Alapértelmezés szerint az Azure ugyanazzal a tárfiókkal engedélyezi a **Figyelést**, amely a virtuális géphez ki lett jelölve. Ezeket a beállításokat itt módosíthatja.
 
-* Ebben az oktatóanyagban a **Rendelkezésre állási csoport** területen meghagyhatja az alapértelmezett **nincs** beállítást. Ha SQL AlwaysOn rendelkezésre állási csoportok beállítását tervezi, konfigurálja a rendelkezésre állást, hogy később ne kelljen újra létrehoznia a virtuális gépet.  További információk: [Manage the Availability of Virtual Machines](../manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (Virtuális gépek rendelkezésre állásának kezelése).
+* A **rendelkezésre állási csoport**, meghagyhatja az alapértelmezett **nincs** forgatókönyvhöz. Ha SQL AlwaysOn rendelkezésre állási csoportok beállítását tervezi, konfigurálja a rendelkezésre állást, hogy később ne kelljen újra létrehoznia a virtuális gépet.  További információk: [Manage the Availability of Virtual Machines](../manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (Virtuális gépek rendelkezésre állásának kezelése).
 
 Ha végzett a beállítások konfigurálásával, kattintson az **OK** gombra.
 
@@ -149,12 +150,12 @@ Az **SQL Server beállításai** ablakban konfigurálhatja az SQL Server adott b
 
 ### <a name="connectivity"></a>Kapcsolatok
 
-Az **SQL kapcsolatok** alatt adja meg, milyen típusú hozzáférést szeretne az ezen a virtuális gépen futó SQL Server-példányhoz. A jelen oktatóanyag esetén válassza a **Nyilvános (internet)** lehetőséget, hogy az SQL Serverhez csatlakozhassanak gépek vagy szolgáltatások az interneten keresztül. Ha ezt a lehetőséget választja, az Azure automatikusan úgy konfigurálja a tűzfalat és a hálózati biztonsági csoportot, hogy az 1433-as porton engedélyezve legyen a forgalom.
+Az **SQL kapcsolatok** alatt adja meg, milyen típusú hozzáférést szeretne az ezen a virtuális gépen futó SQL Server-példányhoz. Ez a bemutató céljából, jelölje ki a **nyilvános (internet)** gépek és szolgáltatások az interneten lévő SQL Server kapcsolatok lehetővé tételéhez. Ha ezt a lehetőséget választja, az Azure automatikusan úgy konfigurálja a tűzfalat és a hálózati biztonsági csoportot, hogy az 1433-as porton engedélyezve legyen a forgalom.
 
 ![SQL kapcsolati lehetőségek](./media/virtual-machines-windows-portal-sql-server-provision/azure-sql-arm-connectivity-alt.png)
 
 > [!TIP]
-> Alapértelmezés szerint az SQL Server a jól ismert **1433-as** portot figyeli. A nagyobb biztonság érdekében az előző párbeszédpanelen módosítsa a portot egy nem alapértelmezett, például az 1401-es portra. Ha így tesz, ehhez a porthoz kell csatlakoznia az összes ügyféleszközzel, például az SSMS-sel.
+> Alapértelmezés szerint az SQL Server a jól ismert **1433-as** portot figyeli. A nagyobb biztonság érdekében az előző párbeszédpanelen módosítsa a portot egy nem alapértelmezett, például az 1401-es portra. Ha módosítja a port, csatlakoznia kell ezt a portot, az összes ügyféleszközök elől, például az SSMS használatával.
 
 Ahhoz, hogy az SQL Serverhez az interneten keresztül csatlakozni lehessen, engedélyeznie kell az SQL Server-hitelesítést is, aminek ismertetését a következő szakaszban olvashatja.
 
@@ -165,21 +166,16 @@ Ha nem szeretné engedélyezni az adatbázis-alrendszerhez az interneten kereszt
 
 Általánosságban elmondható, hogy a forgatókönyv által lehetővé tett legszigorúbb kapcsolódási korlátozás kiválasztásával növelhető a biztonság. Hálózati biztonsági csoportszabályok és SQL-/Windows-hitelesítés használatával azonban mindegyik lehetőség biztosítható. A hálózati biztonsági csoportot a virtuális gép létrehozása után szerkesztheti. További információkért lásd [az SQL Server Azure-beli virtuális gépeken történő futtatásának biztonsági szempontjait](virtual-machines-windows-sql-security.md).
 
-> [!NOTE]
-> Az SQL Server Express kiadás virtuálisgép-rendszerképe nem engedélyezi automatikusan a TCP/IP-protokollt. Ez még a nyilvános és a magán kapcsolati lehetőségekre is érvényes. Az Express kiadás esetén a virtuális gép létrehozása után [manuálisan kell engedélyezni a TCP/IP-protokollt](#configure-sql-server-to-listen-on-the-tcp-protocol) az SQL Server Configuration Manager használatával.
-
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Hitelesítés
 
 Ha SQL Server-hitelesítésre van szüksége, kattintson az **Engedélyezés** lehetőségre az **SQL-hitelesítés** alatt.
 
 ![SQL Server-hitelesítés](./media/virtual-machines-windows-portal-sql-server-provision/azure-sql-arm-authentication.png)
 
 > [!NOTE]
-> Ha az SQL Servert az interneten keresztül tervezi elérni (vagyis a Nyilvános kapcsolódási beállítást választja), akkor itt kell engedélyeznie az SQL-hitelesítést. Az SQL Serverhez való nyilvános hozzáféréshez SQL-hitelesítésre van szükség.
-> 
-> 
+> Ha azt tervezi, SQL-kiszolgáló eléréséhez az interneten (a nyilvános kapcsolódási beállítást választja), engedélyeznie kell itt az SQL-hitelesítést. Az SQL Serverhez való nyilvános hozzáféréshez SQL-hitelesítésre van szükség.
 
-Ha engedélyezi az SQL Server-hitelesítést, adjon meg egy **bejelentkezési nevet** és egy **jelszót**. Ez a felhasználónevet SQL Server-hitelesítési bejelentkezési névként, és egyben a **sysadmin** rögzített kiszolgálói szerepkör egy tagjaként is konfigurálja a szolgáltatás. További információk a hitelesítési módokról: [Choose an Authentication Mode](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode) (Hitelesítési mód kiválasztása).
+Ha engedélyezi az SQL Server-hitelesítést, adjon meg egy **bejelentkezési nevet** és egy **jelszót**. Ez a felhasználónevet SQL Server-hitelesítési bejelentkezési névként, és egyben a **sysadmin** rögzített kiszolgálói szerepkör egy tagjaként is konfigurálja a szolgáltatás. További információkat a hitelesítési módokról [a hitelesítési mód kiválasztását leíró](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode) cikkben talál.
 
 Ha nem engedélyezi az SQL Server-hitelesítést, akkor a helyi virtuális gépen lévő rendszergazdai fiók használatával is csatlakozhat az SQL Server-példányhoz.
 
@@ -215,7 +211,7 @@ További információk: [Automated Patching for SQL Server in Azure Virtual Mach
 
 Az **Automatikus biztonsági mentés** területen engedélyezheti az összes adatbázis automatikus mentését. Az automatikus biztonsági mentés alapértelmezés szerint le van tiltva.
 
-Az SQL automatikus biztonsági mentésének engedélyezésekor konfigurálhatja a következőket:
+Az SQL automatikus biztonsági mentésének engedélyezésekor konfigurálhatja a következő beállításokat:
 
 * Biztonsági mentések megőrzési ideje (napokban)
 * A biztonsági mentésekhez használt tárfiók
@@ -248,7 +244,7 @@ További információkért lásd: [Configure Azure Key Vault Integration for SQL
 
 ### <a name="sql-server-machine-learning-services"></a>SQL Server Machine Learning-szolgáltatások
 
-Dönthet úgy, hogy engedélyezi az [SQL Server Machine Learning-szolgáltatásokat](https://msdn.microsoft.com/library/mt604845.aspx). Ez lehetőséget nyújt az SQL Server 2017 továbbfejlesztett elemzéseinek használatára. Kattintson az **Engedélyezés** elemre az **SQL Server beállításai** ablakban.
+Dönthet úgy, hogy engedélyezi az [SQL Server Machine Learning-szolgáltatásokat](https://msdn.microsoft.com/library/mt604845.aspx). Ez a beállítás lehetővé teszi a speciális elemzés használata az SQL Server 2017. Kattintson az **Engedélyezés** elemre az **SQL Server beállításai** ablakban.
 
 ![SQL Server Machine Learning-szolgáltatások engedélyezése](./media/virtual-machines-windows-portal-sql-server-provision/azure-vm-sql-server-r-services.png)
 
@@ -275,15 +271,15 @@ A géphez való hozzáférés lehetővé teszi, hogy igény szerint közvetlenü
 
 ## <a id="connect"></a> Távoli csatlakozás az SQL Serverhez
 
-Ebben az útmutatóban **Nyilvános** hozzáférést választottunk a virtuális géphez és **SQL Server-hitelesítéshez**. Ezek a beállítások automatikusan úgy konfigurálták a virtuális gépet, hogy az az internetről bármely ügyfél számára engedélyezi az SQL Serverhez való csatlakozást (feltéve, hogy helyes SQL-bejelentkezési névvel rendelkeznek).
+Ez a forgatókönyv a választott **nyilvános** hozzáférést a virtuális gép és **SQL Server-hitelesítés**. Ezek a beállítások automatikusan úgy konfigurálták a virtuális gépet, hogy az az internetről bármely ügyfél számára engedélyezi az SQL Serverhez való csatlakozást (feltéve, hogy helyes SQL-bejelentkezési névvel rendelkeznek).
 
 > [!NOTE]
 > Ha az üzembe helyezés során nem a nyilvános hozzáférést választotta, akkor az üzembe helyezés után a portálon keresztül módosíthatja az SQL csatlakozási beállításait. További információ: [Az SQL csatlakozási beállításainak módosítása](virtual-machines-windows-sql-connect.md#change).
 
-A következő szakaszok bemutatják, hogyan csatlakozhat a virtuális gépén található SQL Server-példányhoz egy másik számítógépről az interneten keresztül.
+A következő szakaszok bemutatják, hogyan kapcsolódni az SQL Server Virtuálisgép-példány az interneten keresztül.
 
 [!INCLUDE [Connect to SQL Server in a VM Resource Manager](../../../../includes/virtual-machines-sql-server-connection-steps-resource-manager.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ az SQL Server használatáról az Azure-ban: [SQL Server on Azure Virtual Machines](virtual-machines-windows-sql-server-iaas-overview.md) (SQL Server az Azure virtuális gépeken) és [Frequently Asked Questions](virtual-machines-windows-sql-server-iaas-faq.md) (Gyakran ismételt kérdések).
