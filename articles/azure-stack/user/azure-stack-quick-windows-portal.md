@@ -2,18 +2,19 @@
 title: "Azure verem Quick Start - Windows virtuális gép létrehozása"
 description: "Azure verem Quick Start - Windows virtuális gép létrehozása a portálon"
 services: azure-stack
-author: ErikjeMS
-manager: byronr
+author: brenduns
+manager: femila
 ms.service: azure-stack
 ms.topic: quickstart
 ms.date: 09/15/2017
-ms.author: erikje
+ms.author: brenduns
+ms.reviewer: 
 ms.custom: mvc
-ms.openlocfilehash: 64a623b3f5cb443e0676e7d89d7040837be95737
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
+ms.openlocfilehash: 9df976fd26318038ab4152863638e262d7f284aa
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="create-a-windows-virtual-machine-with-the-azure-stack-portal"></a>Windows rendszerű virtuális gép létrehozása a verem Azure portállal
 
@@ -46,5 +47,5 @@ Jelentkezzen be a verem Azure portálra. A cím az Azure-verem portál függ, ho
 
 Amikor már nincs szüksége a virtuális gépet, törölje az erőforráscsoportot, virtuális gép és az összes kapcsolódó erőforrások. Ehhez a virtuális gép lapon jelölje ki az erőforráscsoportot, majd kattintson **törlése**.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A gyors egyszerű Windows rendszerű virtuális gép telepítése után. További információt a verem Azure virtuális gépek, továbbra is [szempontok a virtuális gépek Azure-készletben](azure-stack-vm-considerations.md).

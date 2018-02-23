@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 06/22/2017
 ms.author: jeedes
 ms.openlocfilehash: 57ee7770193641d0e13da2c7f8aaa6cfc6aefe73
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hosted-graphite"></a>Oktatóanyag: Azure Active Directoryval integrált üzemeltetett grafit
 
@@ -110,9 +110,9 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-hostedgraphite-tutorial/tutorial_hostedgraphite_url.png)
 
-    a. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe:`https://www.hostedgraphite.com/metadata/<user id>`
+    a. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe: `https://www.hostedgraphite.com/metadata/<user id>`
 
-    b. Az a **válasz URL-CÍMEN** szövegmező, adja meg a következő minta használatával URL-címe:`https://www.hostedgraphite.com/complete/saml/<user id>`
+    b. Az a **válasz URL-CÍMEN** szövegmező, adja meg a következő minta használatával URL-címe: `https://www.hostedgraphite.com/complete/saml/<user id>`
 
 4. Az a **üzemeltetett grafit tartomány és az URL-címek** szakaszban, ha szeretne beállítani az alkalmazás **Szolgáltató kezdeményezett mód**, hajtsa végre a következő lépéseket:
    
@@ -120,7 +120,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
   
     a. Kattintson a **megjelenítése speciális URL-beállításainak** beállítás
 
-    b. Az a **URL-cím bejelentkezési** szövegmező, adja meg a következő minta használatával URL-címe:`https://www.hostedgraphite.com/login/saml/<user id>/`   
+    b. Az a **URL-cím bejelentkezési** szövegmező, adja meg a következő minta használatával URL-címe: `https://www.hostedgraphite.com/login/saml/<user id>/`   
 
     > [!NOTE] 
     > Ne feledje, hogy ezek nincsenek a valódi értékek. Akkor kell frissíteni ezeket az értékeket a tényleges azonosítója, válasz és bejelentkezési az URL-címe. Ahhoz, hogy ezeket az értékeket, elvégezheti a hozzáférés -> az alkalmazás oldalán, vagy forduljon a SAML-alapú telepítő [üzemeltetett grafit támogatási csoport](mailto:help@hostedgraphite.com).
@@ -205,7 +205,7 @@ Ez a szakasz célja üzemeltetett grafit Britta Simon nevű felhasználót létr
 Nincs ebben a szakaszban az Ön művelet elem. Új felhasználó jön létre az üzemeltetett grafit elérésére, ha még nem létezik tett kísérlet során.
 
 >[!NOTE]
->Hozza létre a felhasználó manuálisan kell, ha szeretné-e a üzemeltetett grafit támogatási csoportjához keresztül < mailto:help@hostedgraphite.com >. 
+>Hozza létre a felhasználó manuálisan kell, ha szeretné-e a üzemeltetett grafit támogatási csoportjához keresztül <mailto:help@hostedgraphite.com>. 
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználó hozzárendelése
 
