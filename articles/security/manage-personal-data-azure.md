@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: barclayn
-ms.openlocfilehash: 97e8d23d90821489575b3ac6e8f1e810b7ce25a9
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: 51dca8955745b40a9126b142ea15e707fe58bc72
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="manage-personal-data-in-microsoft-azure"></a>A Microsoft Azure-ban személyes adatok kezelése
 
@@ -59,23 +59,23 @@ A könyvtár egy globális rendszergazdai fiókkal kell bejelentkeznie.
 
 1. Jelentkezzen be a [Azure-portálon](https://portal.azure.com) egy olyan fiókkal, amely a címtár globális rendszergazdája.
 
-2. Válassza ki **további szolgáltatások**, adja meg **felhasználók és csoportok** a szövegmezőbe, majd válassza ki azt a **Enter**.
+2. Válassza ki **minden szolgáltatás**, adja meg **felhasználók és csoportok** a szövegmezőbe, majd válassza ki azt a **Enter**.
 
-    ![Media/image1.png](media/manage-personal-data-azure/image001.png)
+    ![media/image1.png](media/manage-personal-data-azure/image001.png)
 
 3. Az a **felhasználók és csoportok** panelen válassza **felhasználók**.
 
-    ![Media/image2.png](media/manage-personal-data-azure/image003.png)
+    ![media/image2.png](media/manage-personal-data-azure/image003.png)
 
 4. Az a **felhasználók és csoportok - felhasználók** panelen válasszon ki egy felhasználót a listából, és ezt követően a kiválasztott felhasználó paneljén válassza **profil** frissíteni vagy javítani kell felhasználói profillal kapcsolatos információk megtekintéséhez.
 
-    ![Media/image3.png](media/manage-personal-data-azure/image005.png)
+    ![media/image3.png](media/manage-personal-data-azure/image005.png)
 
 5. Javítsa ki vagy frissíteni az adatait, és ezt követően a parancssávon válassza **mentéséhez.**
 
 6.  A kiválasztott felhasználó paneljén válassza **munkahelyi adatai** megtekinteni a felhasználó munkahelyi adatokat, frissíteni vagy javítani kell.
 
-    ![Media/image4.png](media/manage-personal-data-azure/image007.png)
+    ![media/image4.png](media/manage-personal-data-azure/image007.png)
 
 7. Javítsa ki vagy frissíteni a felhasználó munkahelyi adatokat, és ezt követően a parancssávon válassza **mentéséhez.**
 
@@ -83,17 +83,17 @@ A könyvtár egy globális rendszergazdai fiókkal kell bejelentkeznie.
 
 1. Jelentkezzen be a [Azure-portálon](https://portal.azure.com) egy olyan fiókkal, amely a címtár globális rendszergazdája.
 
-2. Válassza ki **további szolgáltatások**, adja meg **felhasználók és csoportok** a szövegmezőbe, majd válassza ki azt a **Enter**.
+2. Válassza ki **minden szolgáltatás**, adja meg **felhasználók és csoportok** a szövegmezőbe, majd válassza ki azt a **Enter**.
 
     ![](media/manage-personal-data-azure/image001.png)
 
 3. Az a **felhasználók és csoportok** panelen válassza **felhasználók**.
 
-    ![Media/image2.png](media/manage-personal-data-azure/image003.png)
+    ![media/image2.png](media/manage-personal-data-azure/image003.png)
 
 4. A **Felhasználók és csoportok – Felhasználók** panelen válasszon ki egy felhasználót a listából.
 
-    ![Media/image3.png](media/manage-personal-data-azure/image007.png)
+    ![media/image3.png](media/manage-personal-data-azure/image007.png)
 
 5. A kiválasztott felhasználó paneljén válassza **áttekintése**, majd a parancssávon válassza **törlése**.
 
