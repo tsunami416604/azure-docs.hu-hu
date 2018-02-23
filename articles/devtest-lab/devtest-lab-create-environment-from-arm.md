@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2017
 ms.author: v-craic
-ms.openlocfilehash: 55a6c5cd5a0544b297bb68841c5ff0314f48dcc9
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.openlocfilehash: b4582dd03ceb1c2104f6e93c55a65e5a2b968c0a
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-multi-vm-environments-and-paas-resources-with-azure-resource-manager-templates"></a>Hozzon létre virtuális Gépre kiterjedő környezetek és PaaS-erőforrások Azure Resource Manager-sablonok
 
@@ -65,7 +65,7 @@ Többféle végezhető el a tárházat az Azure Resource Manager-sablonok rendsz
 A következő lépések végigvezetik a tárház hozzáadása a tesztkörnyezet az Azure portál használatával. 
 
 1. Jelentkezzen be az [Azure Portalra](http://go.microsoft.com/fwlink/p/?LinkID=525040).
-1. Válassza ki **több szolgáltatások**, majd válassza ki **DevTest Labs** a listából.
+1. Válassza ki **minden szolgáltatás**, majd válassza ki **DevTest Labs** a listából.
 1. Válassza ki a kívánt labor labs listájának megtekintéséhez.   
 1. A tesztlabor a **áttekintése** ablaktáblán válassza előbb **konfigurációs és házirendek**.
 
@@ -95,7 +95,7 @@ A következő szakasz végigvezeti környezetek létrehozása az Azure Resource 
 Az Azure Resource Manager sablon tárház van konfigurálva a tesztkörnyezetben, ha a labor felhasználók olyan környezetet, az alábbi lépéseket az Azure-portál használatával hozhat létre:
 
 1. Jelentkezzen be az [Azure Portalra](http://go.microsoft.com/fwlink/p/?LinkID=525040).
-1. Válassza ki **több szolgáltatások**, majd válassza ki **DevTest Labs** a listából.
+1. Válassza ki **minden szolgáltatás**, majd válassza ki **DevTest Labs** a listából.
 1. Válassza ki a kívánt labor labs listájának megtekintéséhez.   
 1. A labor panelén válassza ki a **Add +**.
 1. A **base válasszon** ablaktáblán megjelennek azok az alap lemezképeket, a lista tetején található Azure Resource Manager-sablonok használatával. Válassza ki a kívánt Azure Resource Manager-sablon.
@@ -110,9 +110,9 @@ Az Azure Resource Manager sablon tárház van konfigurálva a tesztkörnyezetben
     > Nincsenek több paraméter - még akkor is, ha a megadott – a megjelenített értékek üres értékeket. Ezért ha a felhasználók ezeket az értékeket rendel a paraméterek az Azure Resource Manager-sablonok, DevTest Labs nem jeleníti meg az értékeket. Ehelyett üres beviteli mezők láthatók, ahol labor felhasználókat kell adnia egy értéket a környezet létrehozásakor.
     > 
     > - GENERÁCIÓS EGYEDI
-    > - -EGYEDI - GENERÁCIÓS [N]
-    > - GENERÁCIÓS SSH-PUB-KULCS
-    > - GENERÁCIÓS-JELSZÓ 
+    > - GEN-UNIQUE-[N]
+    > - GEN-SSH-PUB-KEY
+    > - GEN-PASSWORD 
  
 1. Válassza ki **Hozzáadás** a környezetet hozhat létre. A környezet elindítja az állapot megjelenő létrehozását azonnal a **a virtuális gépek** listája. Új erőforráscsoport automatikusan hozta létre a labor az Azure Resource Manager sablon definiált összes erőforrások biztosításához.
 1. A környezet létrehozása után válassza ki a környezet a **a virtuális gépek** lista használatával nyissa meg az erőforrás-csoport ablaktáblán, és keresse meg az összes környezetben kiosztott erőforrásokat.

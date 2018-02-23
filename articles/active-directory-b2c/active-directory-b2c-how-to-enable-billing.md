@@ -12,11 +12,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/05/2017
 ms.author: parja
-ms.openlocfilehash: 063c00fe47be25b9359e80d71abfaf453c7a7074
-ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
+ms.openlocfilehash: c61cf24083ac3422e30dabf8514dcbd3aec0599d
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="linking-an-azure-subscription-to-an-azure-ad-b2c-tenant"></a>Azure-előfizetéssel összekapcsolása egy Azure AD B2C bérlő
 
@@ -44,7 +44,7 @@ Nyissa meg az Azure AD-bérlő bemutató az Azure-előfizetéshez. Nyissa meg a 
 
 ## <a name="find-azure-ad-b2c-in-the-azure-marketplace"></a>Az Azure AD B2C található az Azure piactéren
 
-Kattintson az **Új** gombra. A **Keresés a piactéren** mezőbe írja be a következőt: `B2C`.
+Kattintson a **hozzon létre egy erőforrást** gombra. A **Keresés a piactéren** mezőbe írja be a következőt: `B2C`.
 
 ![A Keresés a piactér mező gomb és a szöveg az Azure AD B2C hozzáadása](../../includes/media/active-directory-b2c-create-tenant/find-azure-ad-b2c.png)
 

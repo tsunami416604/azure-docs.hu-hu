@@ -1,6 +1,6 @@
 ---
 title: "Az Azure biztonsági ajánlott eljárásairól és mintáiról |} Microsoft Docs"
-description: "A cikk bemutatja Azure ajánlott biztonsági eljárások és minták és az ajánlott biztonsági eljárások az Azure-erőforrás válogatott listáját."
+description: "A cikkben az Azure biztonsági ajánlott eljárásairól és mintáiról listáját az Azure-erőforrás."
 services: azure-security
 documentationcenter: na
 author: TomShinder
@@ -12,38 +12,30 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2017
-ms.author: terrylan
-ms.openlocfilehash: c8a25d64f3925ec963d8d02c827bd2045994feac
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.date: 2/16/2018
+ms.author: 
+ms.openlocfilehash: 5176f679971d542e67dfc6ff04a729fa52bc3f6e
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="azure-security-best-practices-and-patterns"></a>Az Azure biztonsági ajánlott eljárásairól és mintáiról
-Már van a következő, az Azure biztonsági ajánlott eljárások és minták cikkeket. Győződjön meg arról, hogy a webhelyét rendszeres időközönként frissítéseket az Azure biztonsági ajánlott eljárásairól és mintáiról egyre bővülő listáját lásd:  
 
-* [Azure-hálózat ajánlott biztonsági eljárások](azure-security-network-security-best-practices.md)
-* [Gyakorlati tanácsok az Azure data biztonsági és titkosítás](azure-security-data-encryption-best-practices.md)
-* [Az Identitáskezelés és a hozzáférés szabályozásához ajánlott biztonsági eljárások](azure-security-identity-management-best-practices.md)
-* [Az eszközök internetes hálózatát ajánlott biztonsági eljárások](azure-security-iot-best-practices.md)
-* [Azure IaaS ajánlott biztonsági eljárások] (azure-security-iaas.md)
 * [Az Azure határ ajánlott biztonsági eljárások](../best-practices-network-security.md)
+* [Azure-adatbázishoz ajánlott biztonsági eljárások](azure-database-security-best-practices.md)
+* [Gyakorlati tanácsok az Azure data biztonsági és titkosítás](azure-security-data-encryption-best-practices.md)
+* [Azure-identitás kezelése és hozzáférés szabályozása ajánlott biztonsági eljárások](azure-security-identity-management-best-practices.md)
+* [Azure-hálózat ajánlott biztonsági eljárások](azure-security-network-security-best-practices.md)
+* [Az Azure operational biztonsági gyakorlati tanácsok](azure-operational-security-best-practices.md)
+* [Az Azure PaaS gyakorlati tanácsok](https://docs.microsoft.com/azure/security/security-paas-deployments) 
+* [Az Azure Service Fabric ajánlott biztonsági eljárások](security-best-practices-and-patterns.md)
+* [Ajánlott eljárások az Azure virtuális gép biztonsági](azure-service-fabric-security-best-practices.md)
 * [Biztonságos hibrid hálózati architektúra megvalósítása az Azure-ban](../guidance/guidance-iaas-ra-secure-vnet-hybrid.md)
-* [Azure PaaS ajánlott eljárásokat] (https://docs.microsoft.com/azure/security/security-paas-deployments)
+* [Az eszközök internetes hálózatát ajánlott biztonsági eljárások](azure-security-iot-best-practices.md)* [biztonságossá tétele PaaS adatbázisokat az Azure-ban](security-paas-applications-using-sql.md)
+* [A PaaS webes és mobilalkalmazásokhoz, használja az Azure App Service biztonságossá tétele](security-paas-applications-using-app-services.md)
+* [PaaS web- és mobilalkalmazások védelme az Azure Storage segítségével](security-paas-applications-using-storage.md)
+* [Ajánlott biztonsági eljárások az Azure IaaS munkaterhelések](azure-security-iaas.md)
 
-Azure tartalmaz egy biztonságos platform, amelyen a megoldásokat hozhat létre. Azt is adja meg, szolgáltatásokat és technológiákat biztonságosabbá a megoldások Azure-on. A sok lehetőségeket, mert sokan rendelkezik zöngés Mi a Microsoft azt javasolja, hogy ajánlott eljárásairól és mintáiról biztonsági javítására iránt.
 
-Azt az egyik fontos megérteni, és hozott létre a dokumentumok lehetősége is van, a megfelelő környezet megadott leíró gyűjteménye, melyekkel biztonságosabbá teheti az Azure-környezetekhez.
 
-Ezek ajánlott eljárások és minták cikkek arról lesz szó ajánlott eljárásokról és a meghatározott témakörök hasznos minták gyűjteménye. Ezek ajánlott eljárásairól és mintáiról ezeknek a technológiáknak a élmény származik, és az ügyfelek feladatokat, például saját maga.
-
-Az ajánlott eljárás minden igyekeztünk ismertetik:
-
-* Mi az az ajánlott eljárás szerint
-* Miért érdemes, hogy a legjobb engedélyezése
-* Milyen lehet az eredmény, ha nem engedélyezi az ajánlott eljárás szerint
-* Az ajánlott eljárás szerint lehetséges alternatívák
-* Hogyan megismerheti az ajánlott eljárás engedélyezése
-
-Kíváncsian többek között az Azure biztonsági architektúrája és ajánlott eljárások a további cikkeket. Ha nincsenek témakörök, amelyek szeretne felvenni, ossza meg velünk, ez a lap alján a vitafórum területen.

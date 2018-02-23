@@ -4,7 +4,7 @@ description: "Az oktatóanyag bemutatja, hogyan hozzon létre egy mindig a rende
 services: virtual-machines-windows
 documentationcenter: na
 author: MikeRayMSFT
-manager: jhubbard
+manager: craigg
 editor: 
 tags: azure-service-management
 ms.assetid: a2453032-94ab-4775-b976-c74d24716728
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/31/2017
 ms.author: mikeray
-ms.openlocfilehash: 8e506be42aea4fb3c48c29b771a78dcf694f4518
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 38bb77c6b1d083bd6b52b785a991f24965d00e12
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="configure-an-external-listener-for-always-on-availability-groups-in-azure"></a>Egy külső figyelőt a Always On rendelkezésre állási csoportok konfigurálása az Azure-ban
 > [!div class="op_single_selector"]
@@ -59,7 +59,7 @@ Az egyes virtuális gépek Azure replikájának üzemeltető, létre kell hoznia
 3. Ellenőrizze, hogy a **neve** és **nyilvános Port** a figyelő használni kívánt végpont már nem használja. Az alábbi példában a neve "MyEndpoint", a port pedig a "1433".
 4. A helyi ügyfélen, töltse le és telepítse [a legújabb PowerShell-modul](https://azure.microsoft.com/downloads/).
 5. Indítsa el **Azure PowerShell**. Új PowerShell-munkamenetben, ahol az Azure felügyeleti modulok terhelését.
-6. Futtatás **Get-AzurePublishSettingsFile**. Ez a parancsmag egy böngészőt, és töltse le a közzétételi beállítások fájlja egy helyi könyvtárba irányítja. Kérheti a bejelentkezési hitelesítő adatok Azure-előfizetése.
+6. Run **Get-AzurePublishSettingsFile**. Ez a parancsmag egy böngészőt, és töltse le a közzétételi beállítások fájlja egy helyi könyvtárba irányítja. Kérheti a bejelentkezési hitelesítő adatok Azure-előfizetése.
 7. Futtassa a **Import-AzurePublishSettingsFile** elérési útját a letöltött közzétételi beállítások fájlja parancsot:
    
         Import-AzurePublishSettingsFile -PublishSettingsFile <PublishSettingsFilePath>

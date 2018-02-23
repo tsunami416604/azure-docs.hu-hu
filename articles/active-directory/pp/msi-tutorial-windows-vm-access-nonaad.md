@@ -14,11 +14,11 @@ ms.workload: identity
 ms.date: 12/15/2017
 ms.author: daveba
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 6730679f055dd0ccbb32e4185e4bfcae9cd49d41
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 151a0a1fee72c7bd7adcda8e23ebb06d96e822ae
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="use-a-windows-vm-managed-service-identity-msi-to-access-azure-key-vault"></a>Az Azure Key Vault eléréséhez használja a Windows virtuális gép felügyelt szolgáltatás identitásának (MSI) 
 
@@ -48,7 +48,7 @@ Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.az
 
 Ebben az oktatóanyagban azt hozzon létre egy új Windows virtuális Gépet. A meglévő virtuális MSI is engedélyezheti.
 
-1.  Kattintson az Azure Portal bal felső sarkában található **Új** gombra.
+1.  Kattintson a **hozzon létre egy erőforrást** az Azure portál bal felső sarkában.
 2.  Válassza a **Számítás**, majd a **Windows Server 2016 Datacenter** elemet. 
 3.  Adja meg a virtuális gép adatait. A **felhasználónév** és **jelszó** létrehozott itt van a hitelesítő adatok használatával jelentkezzen be a virtuális gép.
 4.  Válassza ki a megfelelő **előfizetés** a virtuális gép meg a legördülő listában.

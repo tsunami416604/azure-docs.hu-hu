@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/11/2017
 ms.author: gokuma;bradsev
-ms.openlocfilehash: 8f1477c5fd8f57a815eeb603d2bde580bf78cca2
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: a2422d8a79d102accb72476f6934bae38603973a
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="data-science-virtual-machine-data-ingestion-tools"></a>Adatok tudományos virtuális gép adatok adatfeldolgozást eszközök
 
@@ -83,7 +83,18 @@ Az alábbiakban néhány adtunk meg a DSVM adatok mozgása eszközök.
 | A gyakori felhasználási      | Importálás CSV-fájl egy SQL Server táblába, SQL Server tábla exportálása fájlba.      |
 |  Hogyan használja az / futtatni?    |   Nyisson meg egy parancssort, majd írja be a `bcp` Ha segítséget szeretne kérni.    |
 | Minták mutató hivatkozások      | [A tömeges másolási segédprogram](https://docs.microsoft.com/sql/tools/bcp-utility)      |
-| A DSVM a kapcsolódó eszközök      | SQL Server, az Sqlcmd használatával      |
+| A DSVM a kapcsolódó eszközök      | SQL Server, sqlcmd      |
+
+## <a name="blobfuse"></a>blobfuse
+
+|    |           |
+| ------------- | ------------- |
+| Mi ez?   | Eszköz csatlakoztatása az Azure blob-tároló Linux fájlrendszer.      |
+| Támogatott DSVM verziók      | Linux      |
+| A gyakori felhasználási      | Olvasását és írását a tárolóban lévő blobok      |
+|  Hogyan használja az / futtatni?    |   Futtatás _blobfuse_ a terminálon.    |
+| Minták mutató hivatkozások      | [a Githubon blobfuse) [https://github.com/Azure/azure-storage-fuse]      |
+| A DSVM a kapcsolódó eszközök      | Az Azure parancssori      |
 
 
 ## <a name="microsoft-data-management-gateway"></a>A Microsoft adatkezelési átjáró

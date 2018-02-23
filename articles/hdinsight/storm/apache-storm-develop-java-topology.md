@@ -14,21 +14,18 @@ ms.devlang: java
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 12/01/2017
+ms.date: 02/20/2018
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.openlocfilehash: ca566aed706d4598c6067d42bdbec08d16dc3841
-ms.sourcegitcommit: 80eb8523913fc7c5f876ab9afde506f39d17b5a1
+ms.openlocfilehash: 2403261f05d9e5aab2e50939720b3eb007aecd6e
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="create-an-apache-storm-topology-in-java"></a>Hozzon létre egy Apache Storm-topológia a Java nyelven
 
 Útmutató az Apache Storm egy Java-alapú topológiák létrehozását is. A Storm-topológia, amely egy word-count alkalmazást hoz létre. Maven használatával hozza létre, és a projekt csomag. Ezt követően megtanulhatja a fluxus keretrendszerrel topológia meghatározása.
-
-> [!NOTE]
-> Fluxus keretében elérhető Storm 0.10.0-s vagy újabb verzió. A Storm 0.10.0-s HDInsight 3.3 és 3.4 érhető el.
 
 A jelen dokumentumban leírt lépések elvégzése után a topológia telepítene a HDInsight alatt futó Apache Storm.
 
@@ -47,7 +44,7 @@ A jelen dokumentumban leírt lépések elvégzése után a topológia telepíten
 
 A következő környezeti változók Java és a JDK telepítésekor lehet beállítani. Azonban ellenőrizni kell, hogy léteznek, illetve a rendszer a megfelelő értékeket tartalmaz.
 
-* **JAVA_HOME** -érdemes mutasson a mappát, ahová a Java-futtatókörnyezet (JRE) telepítve van. Például egy Unix vagy Linux terjesztési nem rendelkezhet hasonló érték `/usr/lib/jvm/java-8-oracle`. A Windows rendszerben kellene hasonló érték`c:\Program Files (x86)\Java\jre1.8`
+* **JAVA_HOME** -érdemes mutasson a mappát, ahová a Java-futtatókörnyezet (JRE) telepítve van. Például egy Unix vagy Linux terjesztési nem rendelkezhet hasonló érték `/usr/lib/jvm/java-8-oracle`. A Windows rendszerben kellene hasonló érték `c:\Program Files (x86)\Java\jre1.8`
 
 * **Elérési út** -tartalmaznia kell a következő elérési utak:
 
@@ -80,8 +77,8 @@ Ez a parancs létrehoz egy könyvtárat nevű `WordCount` az aktuális helyen, a
 
 A generált vizsgálat és az alkalmazásfájlok törlése:
 
-* **src\test\java\com\microsoft\example\AppTest.Java**
-* **src\main\java\com\microsoft\example\App.Java**
+* **src\test\java\com\microsoft\example\AppTest.java**
+* **src\main\java\com\microsoft\example\App.java**
 
 ## <a name="add-maven-repositories"></a>Adja hozzá a Maven tárházak
 
@@ -781,7 +778,7 @@ Trident alkalmazások Maven-projektek használatával is létrehozható. Az alap
 
 A Trident kapcsolatos további információkért tekintse meg a [Trident API – áttekintés](http://storm.apache.org/documentation/Trident-API-Overview.html).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Rendelkezik megtudta, hogyan hozhat létre a Storm-topológia Java használatával. Most megtudhatja, hogyan:
 

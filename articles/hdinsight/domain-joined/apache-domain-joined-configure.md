@@ -13,17 +13,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 01/24/2018
+ms.date: 02/15/2018
 ms.author: saurinsh
-ms.openlocfilehash: 6284b246c071fb99a8b47845aca34b6262e5b856
-ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
+ms.openlocfilehash: b4d71eeb0aab75e67e851f867f194ed7578d0d1c
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="configure-domain-joined-hdinsight-sandbox-environment"></a>Tartományhoz csatlakozó HDInsight védőfal mögötti környezet konfigurálása
 
-Ismerje meg, hogyan állíthat be az Active Directory önálló Azure HDInsight-fürtök és [Apache Pletyka](http://hortonworks.com/apache/ranger/) kihasználásához erős hitelesítést és a gazdag szerepköralapú hozzáférés-vezérlést (RBAC) házirendek. További információkért lásd: [bevezetni a tartományhoz a HDInsight-fürtök](apache-domain-joined-introduction.md).
+Ismerje meg, hogyan állíthat be az Active Directory önálló Azure HDInsight-fürtök és [Apache Pletyka](http://hortonworks.com/apache/ranger/) kihasználásához erős hitelesítést és a gazdag szerepköralapú hozzáférés-vezérlést (RBAC) házirendek. További információkért lásd: [bevezetni a tartományhoz a HDInsight-fürtök](apache-domain-joined-introduction.md). 
+
+> [!IMPORTANT]
+> Alapértelmezés szerint a beállítás csak használható az Azure Storage-fiókok használatával. Az Azure Data Lake Store használatához az Active Directory egy új Azure Active Directory szinkronizálása.
 
 Nélkül tartományhoz HDInsight-fürtöt, az egyes fürtökön csak van a Hadoop HTTP-felhasználói fiókot, és egy SSH-felhasználói fiókot.  A több felhasználó-hitelesítési elérhető használatával:
 
@@ -40,6 +43,7 @@ Active Directory önálló Ez a cikk az Azure infrastruktúra-szolgáltatáson f
     - HDInsight-fürt létrehozása
 
 > [!IMPORTANT]
+> 
 > Oozie nincs engedélyezve a HDInsight-tartományhoz.
 
 ## <a name="prerequisite"></a>Előfeltétel

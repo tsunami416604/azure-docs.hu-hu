@@ -4,7 +4,7 @@ description: "A különböző Azure virtuális gépeken futó SQL Server HADR st
 services: virtual-machines-windows
 documentationcenter: na
 author: MikeRayMSFT
-manager: jhubbard
+manager: craigg
 editor: 
 tags: azure-service-management
 ms.assetid: 53981f7e-8370-4979-b26a-93a5988d905f
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/27/2017
 ms.author: mikeray
-ms.openlocfilehash: a81b956107ef82f40ad5304808068a7573ca7d27
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e9b4ca959b93e097bb52a841cec02cc476ef5f48
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="high-availability-and-disaster-recovery-for-sql-server-in-azure-virtual-machines"></a>Magas rendelkezésre állás és vészhelyreállítás az Azure-beli SQL Server-alapú virtuális gépeken
 
@@ -69,7 +69,7 @@ Rendelkezik egy vész-helyreállítási megoldást hibrid-környezetben használ
 | Technológia | Példa architektúrák |
 | --- | --- |
 | **Rendelkezésre állási csoportok** |Egyes rendelkezésre állási másodpéldányok futó Azure virtuális gépek és egyéb helyileg futó többhelyes vész-helyreállítási replika. A munkakörnyezeti helyet is lehet a helyi vagy egy Azure-adatközpontban található.<br/>![Rendelkezésre állási csoportok](./media/virtual-machines-windows-sql-high-availability-dr/hybrid_dr_alwayson.gif)<br/>Az összes rendelkezésre állási másodpéldányok ugyanazt a feladatátvevő fürtöt kell lennie, mert a fürt mindkét hálózatok (több alhálózatos feladatátvevő fürt) kell span. Ez a konfiguráció Azure és a helyszíni hálózat között virtuális Magánhálózati kapcsolat szükséges.<br/><br/>Sikeres vész-helyreállítási adatbázis telepítenie kell egy replika tartományvezérlő, a vész-helyreállítási helyen.<br/><br/>Úgy is hozzáadása varázslóval replika szolgáltatáshoz az ssms Azure replikájának hozzáadása egy meglévő Always On rendelkezésre állási csoportnak. További információkért lásd az oktatóanyag: Azure terjessze ki az Always On rendelkezésre állási csoportnak. |
-| **Az adatbázis-tükrözés** |Egy Azure virtuális gép és a többi futó fut egy partneri helyszíni többhelyes vész-helyreállítási kiszolgálói tanúsítványok használatával. Partnerek nem kell lennie az Active Directory-tartományhoz, és nem VPN-kapcsolatra szükség.<br/>![Az adatbázis-tükrözés](./media/virtual-machines-windows-sql-high-availability-dr/hybrid_dr_dbmirroring.gif)<br/>Egy másik adatbázis-tükrözési forgatókönyv egy Azure virtuális gép és a többi futó helyszíni ugyanabban a tartományban az Active Directory többhelyes vész-helyreállítási fut egy partneri magában foglalja. A [VPN-kapcsolat az Azure virtuális hálózat és a helyszíni hálózat között](../../../vpn-gateway/vpn-gateway-site-to-site-create.md) szükséges.<br/><br/>Sikeres vész-helyreállítási adatbázis telepítenie kell egy replika tartományvezérlő, a vész-helyreállítási helyen. |
+| **Az adatbázis-tükrözés** |Egy Azure virtuális gép és a többi futó fut egy partneri helyszíni többhelyes vész-helyreállítási kiszolgálói tanúsítványok használatával. Partnerek nem kell lennie az Active Directory-tartományhoz, és nem VPN-kapcsolatra szükség.<br/>![Az adatbázis-tükrözés](./media/virtual-machines-windows-sql-high-availability-dr/hybrid_dr_dbmirroring.gif)<br/>Egy másik adatbázis-tükrözési forgatókönyv egy Azure virtuális gép és a többi futó helyszíni ugyanabban a tartományban az Active Directory többhelyes vész-helyreállítási fut egy partneri magában foglalja. A [VPN-kapcsolat az Azure virtuális hálózat és a helyszíni hálózat között](../../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md) szükséges.<br/><br/>Sikeres vész-helyreállítási adatbázis telepítenie kell egy replika tartományvezérlő, a vész-helyreállítási helyen. |
 | **Naplóküldés** |Egy Azure virtuális gép és a többi futó helyszíni többhelyes vész-helyreállítási-t futtató kiszolgáló egy. Naplóküldésben függ Windows fájlmegosztás, így nincs szükség a VPN-kapcsolat az Azure virtuális hálózat és a helyszíni hálózat között.<br/>![Naplóküldés](./media/virtual-machines-windows-sql-high-availability-dr/hybrid_dr_log_shipping.gif)<br/>Sikeres vész-helyreállítási adatbázis telepítenie kell egy replika tartományvezérlő, a vész-helyreállítási helyen. |
 | **Biztonsági mentés és visszaállítás az Azure Blob Storage szolgáltatással** |A helyi biztonsági másolat közvetlenül az Azure blob storage vész-helyreállítási éles környezetben használt adatbázisait.<br/>![Biztonsági mentés és visszaállítás](./media/virtual-machines-windows-sql-high-availability-dr/hybrid_dr_backup_restore.gif)<br/>További információkért lásd: [biztonsági mentése és visszaállítása az SQL Server Azure virtuális gépek](virtual-machines-windows-sql-backup-recovery.md). |
 | **A Replicate és a feladatátvételt az SQL Server az Azure-bA az Azure Site Recovery szolgáltatással** |A helyszíni üzemi SQL Server közvetlenül az Azure Storage vész-helyreállítási replikálni.<br/>![Replikálása az Azure Site Recovery segítségével](./media/virtual-machines-windows-sql-high-availability-dr/hybrid_dr_standalone_sqlserver-asr.png)<br/>További információkért lásd: [védelme SQL Server SQL Server vészhelyreállítási és az Azure Site Recovery segítségével](../../../site-recovery/site-recovery-sql.md). |
@@ -104,7 +104,7 @@ A figyelő beállításának két fő lehetőség: a külső (nyilvános) vagy b
 Tartalmaznia kell a rendelkezésre állási csoport több Azure alhálózattal (például olyan környezetben, Azure-régiók keverve) is, ha az ügyfél kapcsolati karakterlánc "**MultisubnetFailover = True**". Az eredmény párhuzamos próbálnak meg kapcsolódni a különböző alhálózatokon a replikához. Egy figyelő beállításával kapcsolatos útmutatásért lásd:
 
 * [Egy ILB figyelőt, a rendelkezésre állási csoportok konfigurálása az Azure-](virtual-machines-windows-portal-sql-ps-alwayson-int-listener.md).
-* [Egy külső figyelőt a rendelkezésre állási csoportok konfigurálása az Azure-](../classic/ps-sql-ext-listener.md).
+* [Egy külső figyelőt a rendelkezésre állási csoportok konfigurálása az Azure-](../sqlclassic/virtual-machines-windows-classic-ps-sql-ext-listener.md).
 
 Továbbra is csatlakozhat minden egyes rendelkezésre állási másodpéldány külön csatlakozzon közvetlenül a szolgáltatáspéldányt. Is mivel a rendelkezésre állási csoportok visszamenőleg kompatibilis az adatbázis-tükrözési ügyfelek, csatlakozhat a rendelkezésre állási másodpéldányok, például adatbázis-tükrözési partnerei mindaddig, amíg a replikák konfigurált adatbázis-tükrözés hasonlít:
 
@@ -129,7 +129,7 @@ Ha telepíti a HADR megoldás feltételezve, hogy a nagy hálózati késés a he
 ### <a name="geo-replication-support"></a>A georeplikáció támogatása
 Az Azure-lemezeket a georeplikáció nem támogatja a adatfájl és a különálló lemezek tárolását ugyanazon adatbázis naplófájlját. Georedundáns replikál az egyes lemezek külön és aszinkron módon. Ez a módszer biztosítja belül egyetlen lemezt a georeplikált másolatán, de több lemez georeplikált példánya között nem írási sorrendjét. Ha konfigurálja az adatfájl és a naplófájl külön lemezeken tárolja az adatbázis, a helyreállított lemezek katasztrófa utáni tartalmazhat az adatfájl legújabb példányát, mint a naplófájl, amely az SQL Server és a tranzakciók ACID tulajdonságainak írási előre bejelentkezési. Ha nem rendelkezik arra, hogy letiltsa a tárfiók georeplikáció, adatainak és naplókönyvtárainak található összes fájl egy adott adatbázis ugyanazon a lemezen legyen. Ha az adatbázis mérete miatt több lemez kell használnia, akkor kell telepíteni adatredundanciát biztosításához a fent felsorolt vész-helyreállítási megoldások egyikét.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ha az SQL Server Azure virtuális gép létrehozásához szüksége, tekintse meg [Azure SQL Server virtuális gépek kiépítése](virtual-machines-windows-portal-sql-server-provision.md).
 
 Ahhoz, hogy a legjobb teljesítmény érdekében az SQL Serverről az Azure virtuális gép futó, tekintse meg az útmutató [teljesítmény ajánlott eljárások az SQL Server Azure virtuális gépek](virtual-machines-windows-sql-performance.md).

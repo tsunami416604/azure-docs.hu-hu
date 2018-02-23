@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/9/2017
 ms.author: LADocs; divswa
-ms.openlocfilehash: 8da2bc9645e432ddf0e9f627c7b5e30c44fd74b6
-ms.sourcegitcommit: 963e0a2171c32903617d883bb1130c7c9189d730
+ms.openlocfilehash: 2f9f27dc74348909b89941c2bb17ccdf610dba33
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="monitor-and-get-insights-about-logic-app-runs-with-operations-management-suite-oms-and-log-analytics"></a>Logikai alkalmazás figyelése és a get észrevételeket fut, az Operations Management Suite (OMS) és a Naplóelemzési
 
@@ -35,7 +35,7 @@ Kezdés előtt kell az OMS-munkaterület rendelkezik. Ismerje meg, [OMS-munkater
 
 ## <a name="turn-on-diagnostics-logging-when-creating-logic-apps"></a>A logic apps létrehozásakor diagnosztikai naplózás bekapcsolása
 
-1. A [Azure-portálon](https://portal.azure.com), logikai alkalmazás létrehozása. Válasszon **új** > **vállalati integrációs** > **logikai alkalmazás** > **létrehozása**.
+1. A [Azure-portálon](https://portal.azure.com), logikai alkalmazás létrehozása. Válasszon **hozzon létre egy erőforrást** > **vállalati integrációs** > **logikai alkalmazás**.
 
    ![Logikai alkalmazás létrehozása](media/logic-apps-monitor-your-logic-apps-oms/find-logic-apps-azure.png)
 
@@ -152,7 +152,7 @@ Ha Ön már engedélyezve van a Naplóelemzési a logikai alkalmazás létrehoz�
 
      ![Az Azure Log Analytics - lekérdezési nézet](media/logic-apps-monitor-your-logic-apps-oms/query.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [B2B üzenetek megfigyelése](../logic-apps/logic-apps-monitor-b2b-message.md)
 

@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: jgao
-ms.openlocfilehash: 8a3119b636d69e031ee69a0e4a5c0ef7faf6776f
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.openlocfilehash: 544a11f5d9e92f081a8ae494529b7d8ef19551fa
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="analyze-website-logs-using-a-custom-python-library-with-spark-cluster-on-hdinsight"></a>Egy egyéni Python kódtár használata a HDInsight Spark-fürt webhelyek naplóinak elemzése
 
@@ -94,7 +94,7 @@ Miután az adatok mentése Hive tábla a következő szakaszban nem fog csatlako
         sc.addPyFile('wasb:///HdiSamples/HdiSamples/WebsiteLogSampleData/iislogparser.py')
 
 
-1. `iislogparser`funkció `parse_log_line` , amely visszaadja a `None` Ha egy napló sor a fejlécsor lesz, és egy példányát adja vissza a `LogLine` osztály, ha egy napló sor ütközik. Használja a `LogLine` osztály a napló csak a Sorok kinyerése a RDD:
+1. `iislogparser` funkció `parse_log_line` , amely visszaadja a `None` Ha egy napló sor a fejlécsor lesz, és egy példányát adja vissza a `LogLine` osztály, ha egy napló sor ütközik. Használja a `LogLine` osztály a napló csak a Sorok kinyerése a RDD:
 
         def parse_line(l):
             import iislogparser
@@ -211,7 +211,6 @@ Miután az adatok mentése Hive tábla a következő szakaszban nem fog csatlako
 * [Spark és BI: Interaktív adatelemzés végrehajtása a Spark on HDInsight használatával, BI-eszközökkel](apache-spark-use-bi-tools.md)
 * [Spark és Machine Learning: A Spark on HDInsight használata az épület-hőmérséklet elemzésére HVAC-adatok alapján](apache-spark-ipython-notebook-machine-learning.md)
 * [Spark és Machine Learning: A Spark on HDInsight használata az élelmiszervizsgálati eredmények előrejelzésére](apache-spark-machine-learning-mllib-ipython.md)
-* [Spark Streaming: A Spark on HDInsight használata valós idejű streamelési alkalmazások összeállítására](../hdinsight-apache-spark-eventhub-streaming.md)
 
 ### <a name="create-and-run-applications"></a>Alkalmazások létrehozása és futtatása
 * [Önálló alkalmazás létrehozása a Scala használatával](apache-spark-create-standalone-application.md)

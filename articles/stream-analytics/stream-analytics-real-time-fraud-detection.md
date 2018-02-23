@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
 ms.author: sngun
-ms.openlocfilehash: cc581142ca2c75bbee80f9d980c4984b4863a6cf
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
-ms.translationtype: HT
+ms.openlocfilehash: a3b61b0eeef9ffc97b0cc06a8de44859e4d6db85
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="get-started-using-azure-stream-analytics-real-time-fraud-detection"></a>Az Azure Stream Analytics első lépéseiben: valós idejű csalások felderítése
 
@@ -61,7 +61,7 @@ Adatfolyam elemzéséhez, *betöltési* Azure be azt. Egy tipikus módja adatok 
 ### <a name="create-a-namespace-and-event-hub"></a>A névtér és az event hub létrehozása
 Ebben az eljárásban először létre kell hoznia egy event hub névtér, és ezután hozzáadhat új eseményközpont tartalmazni. Event hub névterek logikailag csoportosítják a kapcsolódó esemény bus példányok szolgálnak. 
 
-1. Jelentkezzen be az Azure-portálon, majd kattintson a **új** > **az eszközök internetes hálózatát** > **Eseményközpont**. 
+1. Jelentkezzen be az Azure-portálon, majd kattintson a **hozzon létre egy erőforrást** > **az eszközök internetes hálózatát** > **Eseményközpont**. 
 
 2. Az a **névtér létrehozása** panelen adja meg például a névtér nevét `<yourname>-eh-ns-demo`. A névtér egy tetszőleges nevet is használhat, de a neve nem érvényes URL- és Azure között egyedinek kell lennie. 
     
@@ -165,7 +165,7 @@ Most, hogy egy az események streamjét a hívást, beállíthat egy Stream Anal
 
 ### <a name="create-the-job"></a>A feladat létrehozása 
 
-1. Az Azure portálon kattintson **új** > **az eszközök internetes hálózatát** > **Stream Analytics-feladat**.
+1. Az Azure portálon kattintson **hozzon létre egy erőforrást** > **az eszközök internetes hálózatát** > **Stream Analytics-feladat**.
 
 2. A feladat neve `sa_frauddetection_job_demo`, adjon meg egy előfizetési, erőforráscsoportot és helyet.
 

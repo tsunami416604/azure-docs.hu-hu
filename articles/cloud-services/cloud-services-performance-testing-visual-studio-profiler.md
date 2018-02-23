@@ -15,11 +15,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 11/18/2016
 ms.author: mikejo
-ms.openlocfilehash: 5e3c729ce3e75665078d7f33baed943087fbe0ca
-ms.sourcegitcommit: b83781292640e82b5c172210c7190cf97fabb704
+ms.openlocfilehash: ee7febeb04d3a956b4a0a11b69f8f34acee23067
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="testing-the-performance-of-a-cloud-service-locally-in-the-azure-compute-emulator-using-the-visual-studio-profiler"></a>Az Azure Compute Emulator használatával a Visual Studio Profilkészítő helyileg egy felhőalapú szolgáltatás teljesítményének tesztelése
 Számos különféle eszközöket és technikákat tesztelési felhőalapú szolgáltatások érhetők el.
@@ -44,31 +44,35 @@ Ezek az utasítások is használhatja, egy meglévő projektjébe vagy egy új p
 
 Célra, például néhány kódot hozzáadása a projekthez, amely sok időt vesz igénybe, és bemutatja a nyilvánvaló teljesítmény kapcsolatos problémára. Például adja hozzá a következő kódot a feldolgozói szerepkör projekt:
 
-    public class Concatenator
+```csharp
+public class Concatenator
+{
+    public static string Concatenate(int number)
     {
-        public static string Concatenate(int number)
+        int count;
+        string s = "";
+        for (count = 0; count < number; count++)
         {
-            int count;
-            string s = "";
-            for (count = 0; count < number; count++)
-            {
-                s += "\n" + count.ToString();
-            }
-            return s;
+            s += "\n" + count.ToString();
         }
+        return s;
     }
+}
+```
 
 Ez a kód hívja a RunAsync metódusában a feldolgozói szerepkör RoleEntryPoint származtatott osztályban. (Figyelmen kívül hagyhatja a figyelmeztetést jelenít meg a metódus szinkron módon fut.)
 
-        private async Task RunAsync(CancellationToken cancellationToken)
-        {
-            // TODO: Replace the following with your own logic.
-            while (!cancellationToken.IsCancellationRequested)
-            {
-                Trace.TraceInformation("Working");
-                Concatenator.Concatenate(10000);
-            }
-        }
+```csharp
+private async Task RunAsync(CancellationToken cancellationToken)
+{
+    // TODO: Replace the following with your own logic.
+    while (!cancellationToken.IsCancellationRequested)
+    {
+        Trace.TraceInformation("Working");
+        Concatenator.Concatenate(10000);
+    }
+}
+```
 
 Hozza létre, és futtassa a felhőalapú szolgáltatás helyileg nélkül hibakeresés (Ctrl + F5), a megoldás konfiguráció beállítva a **kiadás**. Ez biztosítja, hogy minden fájlja és mappája jönnek létre alkalmazást futtató helyi, és biztosítja, hogy az emulátorok vannak-e indítva. Indítsa el a Compute Emulator felhasználói felületén a tálcáról annak ellenőrzéséhez, hogy fut-e a feldolgozói szerepkör.
 
@@ -88,9 +92,11 @@ Ha a projektmappa egy hálózati meghajtón van, a Profilkészítő ekkor megké
  Is csatolhat egy webes szerepkör WaIISHost.exe való csatolásával.
 Ha több szerepkör folyamata az alkalmazásban, a folyamatazonosító segítségével különböztetheti meg szeretné. A Process objektum elérésével programozott módon lekérdezheti a folyamatazonosító. Például ha ezt a kódot ad hozzá a Run metódus szerepkör RoleEntryPoint származtatott osztály, vessen egy pillantást a naplót a Compute Emulator felhasználói felületén tudni, melyik folyamat való csatlakozáshoz.
 
-    var process = System.Diagnostics.Process.GetCurrentProcess();
-    var message = String.Format("Process ID: {0}", process.Id);
-    Trace.WriteLine(message, "Information");
+```csharp
+var process = System.Diagnostics.Process.GetCurrentProcess();
+var message = String.Format("Process ID: {0}", process.Id);
+Trace.WriteLine(message, "Information");
+```
 
 A napló megtekintéséhez indítsa el a Compute Emulator felhasználói felületén.
 
@@ -126,16 +132,18 @@ Ebben a cikkben hozzáadott a karakterláncot kapott kódot, ha megjelenik egy f
 ## <a name="4-make-changes-and-compare-performance"></a>4: módosításokat, és hasonlítsa össze a teljesítmény
 A teljesítmény előtt és után kódváltoztatást is összehasonlíthatja.  Állítsa le a futó folyamattal, és cserélje le a karakterlánc-összefűzés művelet StringBuilder használatát a kód szerkesztése:
 
-    public static string Concatenate(int number)
+```csharp
+public static string Concatenate(int number)
+{
+    int count;
+    System.Text.StringBuilder builder = new System.Text.StringBuilder("");
+    for (count = 0; count < number; count++)
     {
-        int count;
-        System.Text.StringBuilder builder = new System.Text.StringBuilder("");
-        for (count = 0; count < number; count++)
-        {
-             builder.Append("\n" + count.ToString());
-        }
-        return builder.ToString();
+        builder.Append("\n" + count.ToString());
     }
+    return builder.ToString();
+}
+```
 
 Hajtsa végre egy másik teljesítmény futtassa, és hasonlítsa össze a teljesítmény. A teljesítmény Explorer az fut ugyanabban a munkamenetben, ha akkor is csak válassza ki mindkét jelentést, a helyi menü megnyitásához, és válassza **összehasonlítása teljesítmény jelentések**. Egy másik teljesítmény munkamenetben futtató összehasonlítandó, nyissa meg a **elemzés** menüben, és válassza **összehasonlítása teljesítmény jelentések**. A megjelenő párbeszédpanelen adja meg a fájlt.
 
@@ -155,7 +163,7 @@ Gratulálunk! Ön a profilkészítőhöz tartozó megtette az első lépéseket.
 * Ha a parancssorból, különösen a globális beállítások profilkészítési parancsok használt győződjön meg arról, hogy VSPerfClrEnv /globaloff meghívása és, hogy VsPerfMon.exe le lett állítva.
 * Ha az üzenet jelenik meg, amikor a mintavételi, "PRF0025: nem történt adatgyűjtés," Ellenőrizze, hogy a csatolt folyamat CPU-tevékenység van-e. Előfordulhat, hogy alkalmazásokat, amelyek nem tűnik, hogy minden számítási munka tudott mintavételi adatokat.  Lehetőség arra is, hogy a folyamat kilépett a előtt minden olyan végezhető el. Ellenőrizze, hogy, hogy a Run metódus egy szerepkörhöz vannak profilkészítési nem ér véget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A Visual Studio Profilkészítő nem támogatja az Azure bináris fájljai az emulátorban tagolása, de ha memóriafoglalás vizsgálni kívánt, ez a lehetőség választhatja, ha profilkészítési. Dönthet úgy is párhuzamossági profilkészítési, segítségével határozza meg, hogy szálak jelentős időt használják a zárolások vannak, vagy profilkészítési interakció, réteg segítségével nyomon követésük Ez teljesítményproblémákat okozhat, ha a fizetősökbe, az alkalmazások közötti kommunikáció során leggyakrabban gyakran között az adatszint és egy feldolgozói szerepkört.  Lehet, amely az alkalmazás létrehozza az adatbázis-lekérdezések megtekintése és a profilkészítési adatokat használni a használatára az adatbázis javítása érdekében. Réteg interakció profilkészítési kapcsolatos információkért lásd a következő blogbejegyzésben [forgatókönyv: a réteg interakció Profiler használatával a Visual Studio Team System 2010][3].
 
 [1]: http://msdn.microsoft.com/library/azure/hh369930.aspx

@@ -4,7 +4,7 @@ description: "Ajánlott eljárásokat biztosít a megfelelő SQL Server virtuál
 services: virtual-machines-windows
 documentationcenter: na
 author: rothja
-manager: jhubbard
+manager: craigg
 editor: 
 tags: azure-service-management
 ms.assetid: 
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 10/17/2017
 ms.author: jroth
-ms.openlocfilehash: fa1611944d266001a54c4d78205c942a5226d97b
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: fe04aa382a3e829b201dbe92442f841fb29fff15
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="pricing-guidance-for-sql-server-azure-vms"></a>Útmutató a SQL Server Azure virtuális gépek díjszabása
 
@@ -112,13 +112,13 @@ SQL Server 2016 Azure virtuális gép valamelyik, a bring your-saját-licencet l
 
 Felesleges költségek elkerülése érdekében válassza ki az optimális virtuális gép méretét, és vegye figyelembe a nem folyamatos munkaterhelések szakaszos leállítások.
 
-### <a id="machinesize"></a>A virtuális gép megfelelő méretezés
+### <a id="machinesize"></a> A virtuális gép megfelelő méretezés
 
 Az SQL Server licencelési költségeit közvetlenül kapcsolódik az magok száma. Válassza ki a Processzor, memória, tárolási és i/o-sávszélesség várt igényeinek megfelelő Virtuálisgép-méretet. Lehetséges gépméretet teljes listáját lásd: [Windows Virtuálisgép-méretek](https://docs.microsoft.com/azure/virtual-machines/windows/sizes) és [Linux Virtuálisgép-méretek](https://docs.microsoft.com/azure/virtual-machines/linux/sizes?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 Nincsenek új méreteket jól használható bizonyos típusú SQL Server számítási feladatait. Ezek a gépek méretű memória, tárolási és i/o-sávszélesség magas szintű karbantartása, de egy alacsonyabb virtualizált magok száma rendelkeznek. Vegyük példaként a következő példa:
 
-| Virtuális gép mérete | Vcpu | Memory (Memória) | Maximális lemezek | A maximális i/o-teljesítmény | SQL-licencelési költségeit. | A teljes költségek (számítási + licencelés) |
+| Virtuális gép mérete | Virtuális magok | Memory (Memória) | Maximális lemezek | A maximális i/o-teljesítmény | SQL-licencelési költségeit. | A teljes költségek (számítási + licencelés) |
 |---|---|---|---|---|---|---|
 | **Standard_DS14v2** | 16 | 112 GB | 32 | 51,200 IOPS vagy 768 MB/s | | |
 | **Standard_DS14-4v2** | 4 | 112 GB | 32 | 51,200 IOPS vagy 768 MB/s | 75 %-kal alacsonyabb | 57 %-kal alacsonyabb |
@@ -143,7 +143,7 @@ Az egyéb munkafolyamatok, fontolja meg automatikusan leállítani, és Azure vi
 > [!IMPORTANT]
 > Leállítás és felszabadítás, a virtuális gép egyetlen lehetséges módja elkerülése érdekében. Egyszerűen leállítása vagy az Energiagazdálkodási lehetőségek használatával állítsa le a virtuális gép továbbra is terhel használat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Általános Azure díjszabása útmutatásért lásd: [Azure számlázás és költség felügyeleti váratlan költségek megakadályozása](../../../billing/billing-getting-started.md).
 

@@ -4,7 +4,7 @@ description: "Megtudhatja, hogyan használható az Azure Key Vault SQL Server ti
 services: virtual-machines-windows
 documentationcenter: 
 author: rothja
-manager: jhubbard
+manager: craigg
 editor: 
 tags: azure-service-management
 ms.assetid: ab8d41a7-1971-4032-ab71-eb435c455dc1
@@ -16,11 +16,11 @@ ms.workload: iaas-sql-server
 ms.date: 02/17/2017
 ms.author: jroth
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2a9ac5763bb934bd0646e47c3936f7bdd0d603b1
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 5fd0fb1f8ac9bb0132c64c195d4cc9c86ef8edd0
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="configure-azure-key-vault-integration-for-sql-server-on-azure-virtual-machines-classic"></a>SQL Server az Azure Key Vault-integráció konfigurálása az Azure virtuális gépeken (klasszikus)
 > [!div class="op_single_selector"]
@@ -53,8 +53,8 @@ A következő táblázat a következő szakaszban a PowerShell parancsfájl futt
 | Paraméter | Leírás | Példa |
 | --- | --- | --- |
 | **$akvURL** |**A kulcstároló URL-címe** |"https://contosokeyvault.vault.azure.net/" |
-| **$spName** |**Egyszerű szolgáltatásnév** |"5-4e11-af04eb07b669ccf2 fde2b411 - 33d" |
-| **$spSecret** |**Egyszerű titok** |"9VTJSQwzlFepD8XODnzy8n2V01Jd8dAjwm/azF1XDKM =" |
+| **$spName** |**Egyszerű szolgáltatásnév** |"fde2b411-33d5-4e11-af04eb07b669ccf2" |
+| **$spSecret** |**Egyszerű titok** |"9VTJSQwzlFepD8XODnzy8n2V01Jd8dAjwm/azF1XDKM=" |
 | **$credName** |**Hitelesítő adat neve**: Az AKV-integráció létrehoz egy hitelesítő adatot az SQL Serverben, amely hozzáférést biztosít a virtuális gépnek a Key Vaulthoz. Válasszon egy nevet ennek a hitelesítő adatnak. |"mycred1" |
 | **$vmName** |**Virtuális gép neve**: egy korábban létrehozott SQL virtuális gép nevét. |"myvmname" |
 | **$serviceName** |**Szolgáltatásnév**: SQL virtuális gép társított a Felhőszolgáltatás neve. |"mycloudservicename" |

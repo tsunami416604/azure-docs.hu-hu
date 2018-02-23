@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/12/2018
 ms.author: cherylmc
-ms.openlocfilehash: b18e01a780f6371ecae3298a6f3f41949090b9e8
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: 0ca7b7ca9435d1ba05a2cc0951f5bc88b51bf81b
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-native-azure-certificate-authentication-point-to-site-configurations"></a>Hozzon létre és telepíthető a VPN ügyfél-konfigurációs fájlok natív Azure tanúsítvány hitelesítési pont-pont konfigurációk
 
@@ -66,6 +66,11 @@ Létrehozhat ügyfél-konfigurációs fájlok powershellel, vagy az Azure portá
 ## <a name="installwin"></a>Telepítse a Windows VPN-ügyfélcsomag-konfiguráció
 
 Használhatja az azonos VPN-ügyfél konfigurációs csomag a Windows-ügyfél számítógépekre, mindaddig, amíg a verziót az ügyfél architektúrájának megfelelő. Által támogatott ügyfél operációs rendszerek listájáért lásd: a pont-pont szakasza a [VPN Gateway – gyakori kérdések](vpn-gateway-vpn-faq.md#P2S).
+
+>[!NOTE]
+>Rendszergazdai jogosultságokkal kell rendelkeznie az ügyfélszámítógépen Windows ahonnan szeretné csatlakoztatni.
+>
+>
 
 A következő lépésekkel konfigurálhatja a natív Windows VPN-ügyfél esetében a tanúsítványalapú hitelesítéshez:
 
@@ -118,4 +123,4 @@ Kattintson a **Hozzáadás** importálásához.
 
 Térjen vissza a cikkhez [végezze el a P2S konfigurálását](vpn-gateway-howto-point-to-site-rm-ps.md).
 
-P2S hibaelhárítási információkért [Azure hibaelhárítási pont – hely kapcsolatok](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md).
+A pont–hely hibaelhárítási információiért tekintse át az [Azure pont–hely kapcsolatok hibaelhárításával](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md) foglalkozó cikket.

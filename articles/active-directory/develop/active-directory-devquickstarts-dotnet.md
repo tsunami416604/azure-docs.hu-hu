@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/30/2017
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 9b1118b0159437e179b09b179571ed1460c3daf6
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: 91efb85d17bd6ba57b1dc14253257f3f20e37c92
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="azure-ad-net-desktop-wpf-getting-started"></a>Az Azure AD .NET asztali (WPF) első lépések
 [!INCLUDE [active-directory-devquickstarts-switcher](../../../includes/active-directory-devquickstarts-switcher.md)]
@@ -47,7 +47,7 @@ Ahhoz, hogy az alkalmazás a jogkivonatok lekérésére, először regisztrálja
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. A felső eszköztáron kattintson a fiókhoz, majd a a **Directory** menüben válassza ki az Active Directory-bérlőt, ahová be szeretné-e az alkalmazás regisztrálásához.
-3. Kattintson a **több szolgáltatások** a bal oldali navigációs válassza **Azure Active Directory**.
+3. Kattintson a **minden szolgáltatás** a bal oldali navigációs válassza **Azure Active Directory**.
 4. Kattintson a **App regisztrációk** válassza **Hozzáadás**.
 5. Kövesse az utasításokat, és hozzon létre egy új **natív ügyfélalkalmazás**.
   * A **neve** az alkalmazás ismerteti az alkalmazást a végfelhasználók számára
@@ -131,7 +131,7 @@ private void SignOut(object sender = null, RoutedEventArgs args = null)
 }
 ```
 
-* Azonban ha a felhasználó nem a "Sign Out" gombra kattintva érdemes a felhasználói munkamenetet a következő alkalommal futtatja a DirectorySearcher a karbantartása.  Az alkalmazás indításakor ellenőrizze az adal-t a jogkivonatok gyorsítótárát, vagy egy meglévő jogkivonatot, és ennek megfelelően frissíti a felhasználói felületen.  Az a `CheckForCachedToken()` módszer, egy másik hívás `AcquireTokenAsync(...)`, ezúttal benyújtása a `PromptBehavior.Never` paraméter.  `PromptBehavior.Never`adal-t jelzi, hogy a felhasználói bejelentkezés nem kéri, és ADAL helyette kell kivételt jelez, ha nem adja vissza egy token.
+* Azonban ha a felhasználó nem a "Sign Out" gombra kattintva érdemes a felhasználói munkamenetet a következő alkalommal futtatja a DirectorySearcher a karbantartása.  Az alkalmazás indításakor ellenőrizze az adal-t a jogkivonatok gyorsítótárát, vagy egy meglévő jogkivonatot, és ennek megfelelően frissíti a felhasználói felületen.  Az a `CheckForCachedToken()` módszer, egy másik hívás `AcquireTokenAsync(...)`, ezúttal benyújtása a `PromptBehavior.Never` paraméter.  `PromptBehavior.Never` adal-t jelzi, hogy a felhasználói bejelentkezés nem kéri, és ADAL helyette kell kivételt jelez, ha nem adja vissza egy token.
 
 ```csharp
 public async void CheckForCachedToken() 

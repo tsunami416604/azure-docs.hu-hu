@@ -23,28 +23,28 @@ Az oktatóanyag elvégzéséhez egy aktív Azure-fiókra lesz szüksége. Ha nin
 
 ## <a name="before-you-start"></a>Előkészületek
 
-Mielőtt bármilyen kódot írna az eszközhöz, ki kell építenie az előre konfigurált távoli figyelési megoldást, és meg kell adnia egy új egyéni eszközt ebben a megoldásban.
+Kód írása az eszköz, mielőtt a távoli felügyeleti előkonfigurált megoldás üzembe helyezése, és a fizikai eszköz hozzáadása a megoldáshoz.
 
-### <a name="provision-your-remote-monitoring-preconfigured-solution"></a>Az előre konfigurált távoli figyelési megoldás kiépítése
+### <a name="deploy-your-remote-monitoring-preconfigured-solution"></a>A távoli felügyeleti előkonfigurált megoldás üzembe helyezése
 
 A **hűtő** eszköz ebben az oktatóanyagban létrehozhat adatokat küld egy példányát a [távoli megfigyelési](../articles/iot-suite/iot-suite-remote-monitoring-explore.md) előre konfigurált megoldás. Ha a távoli felügyeleti előkonfigurált megoldás még nem már megtörtént, az Azure-fiókjába, lásd: [a távoli felügyeleti előkonfigurált megoldás üzembe helyezéséhez](../articles/iot-suite/iot-suite-remote-monitoring-deploy.md)
 
-A távoli figyelési megoldás kiépítésének befejezte után kattintson az **Indítás** gombra a megoldás irányítópultjának a böngészőben történő megnyitásához.
+Ha a telepítési folyamat befejezte a távoli felügyeleti megoldás, gombra kattintva **indítása** a megoldás irányítópult megnyitása a böngészőben.
 
 ![A megoldás irányítópultja](media/iot-suite-selector-connecting/dashboard.png)
 
-### <a name="provision-your-device-in-the-remote-monitoring-solution"></a>Az eszköz kiépítése a távoli figyelési megoldásban
+### <a name="add-your-device-to-the-remote-monitoring-solution"></a>Az eszköz hozzáadása a távoli felügyeleti megoldás
 
 > [!NOTE]
-> Ha már kiépített egy eszközt a megoldásában, kihagyhatja ezt a lépést. Az eszköz kapcsolati karakterláncot, amely kérheti le az Azure-portálon, az ügyfélalkalmazás létrehozásakor van szüksége.
+> Ha már van egy eszközt a megoldásban, kihagyhatja ezt a lépést. Azonban a következő lépésre van szükség az eszköz kapcsolati karakterlánc. Egy eszköz kapcsolati karakterláncnak a következőről kérheti le a [Azure-portálon](https://portal.azure.com) vagy a [az iot](https://docs.microsoft.com/cli/azure/iot?view=azure-cli-latest) parancssori eszköz.
 
-Ahhoz, hogy egy eszköz előre konfigurált megoldáshoz csatlakozhasson, érvényes hitelesítő adatokkal kell azonosítania magát az IoT Hubon. Hogy az eszköz kapcsolati karakterlánc, amely tartalmazza a hitelesítő adatokat, az eszköz a megoldás mentéséhez lehetőséget. Az eszköz kapcsolati karakterlánc szerepel az ügyfélalkalmazás az oktatóanyag későbbi részében.
+Ahhoz, hogy egy eszköz előre konfigurált megoldáshoz csatlakozhasson, érvényes hitelesítő adatokkal kell azonosítania magát az IoT Hubon. Hogy az eszköz kapcsolati karakterlánc, amely tartalmazza ezeket a hitelesítő adatokat, az eszköz a megoldás mentéséhez lehetőséget. Az eszköz kapcsolati karakterlánc szerepel az ügyfélalkalmazás az oktatóanyag későbbi részében.
 
 Hozzáad egy eszközt a távoli felügyeleti megoldás, végezze el az alábbi lépéseket a **eszközök** lap a megoldásban:
 
 1. Válasszon **+ új eszköz**, és válassza a **fizikai** , a **eszköztípus**:
 
-    ![A fizikai eszköz kiépítése](media/iot-suite-selector-connecting/devicesprovision.png)
+    ![Fizikai eszköz hozzáadása](media/iot-suite-selector-connecting/devicesprovision.png)
 
 1. Adja meg **fizikai-hűtő** , az eszközazonosító. Válassza ki a **szimmetrikus kulcs** és **automatikus kulcsok létrehozása** beállítások:
 
@@ -54,9 +54,7 @@ Hozzáad egy eszközt a távoli felügyeleti megoldás, végezze el az alábbi l
 
     ![Olvashatók be hitelesítő adatok](media/iot-suite-selector-connecting/credentials.png)
 
-Keresse meg az eszköz kell az előkonfigurált megoldás való csatlakozáskor használandó hitelesítő adatokat, navigáljon a böngészőben az Azure portálon. Jelentkezzen be az előfizetéshez.
-
-Most már kiépített egy fizikai eszköz a távoli figyelési előre aktiválja megoldás. A következő szakaszokban, amelyek a hitelesítő adatai a megoldás való kapcsolódáshoz használ az ügyfélalkalmazás megvalósítása.
+Hogy most egy fizikai eszköz hozzáadni a távoli figyelési előkonfigurált megoldást, és az áttelepítés előtt feljegyzett eszköz kapcsolati karakterláncában. A következő szakaszokban, amely az eszköz kapcsolati karakterláncát a megoldás való kapcsolódáshoz használ az ügyfélalkalmazás megvalósítása.
 
 Az ügyfélalkalmazás valósítja meg a beépített **hűtő** eszközmodell. Egy előre konfigurált megoldás eszköz típusa határozza meg az alábbiakat az eszköz:
 

@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/23/2018
 ms.author: magoedte
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 68bf84d0f848b60885d3976d3991b606e77ed074
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: f6ec6dd46d28518baf6f105dd232a4b0e77a8c6f
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="add-azure-log-analytics-management-solutions-to-your-workspace"></a>A munkaterület Azure Log Analytics-kezelési megoldások hozzáadása
 
@@ -46,8 +46,7 @@ Telepíthető megoldások Azure piactérről kattintva a **most töltse le innen
 
 ## <a name="add-a-management-solution"></a>Adja hozzá az olyan felügyeleti megoldást
 1. Ha még nem tette meg, jelentkezzen be az [Azure Portalra](https://portal.azure.com) Azure-előfizetésével.
-2. Az a **új** részen **piactér**, jelölje be **figyelés + felügyeleti**.
-3. Az a **figyelés + felügyeleti** panelen kattintson a **láthatja az összes**.  
+2. Válassza ki **hozzon létre egy erőforrást** > **figyelés + felügyeleti** > **láthatja az összes**.  
     ![Figyelés és felügyelet panelen](./media/log-analytics-add-solutions/monitoring-management-blade.png)  
 4. Jobb oldalán **megoldások**, kattintson a **további**.
 5. Az a **megoldások** panelen válassza ki a felügyeleti megoldás, amely hozzá szeretne adni a munkaterületre.  

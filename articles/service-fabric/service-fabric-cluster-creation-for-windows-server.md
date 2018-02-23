@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/10/2017
-ms.author: chackdan;maburlik;dekapur
-ms.openlocfilehash: 4b3b1e8a368419fe4014802f7b2a35b7ae3fba3c
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.author: dekapur;chackdan;maburlik
+ms.openlocfilehash: 7d65845d21205e22a3e5b0868acb637ff614fb42
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-a-standalone-cluster-running-on-windows-server"></a>A Windows Server rendszert futtató önálló fürt létrehozása
 Azure Service Fabric használatával Service Fabric-fürtök létrehozása a virtuális gépek vagy a Windows Server rendszerű számítógépek. Ez azt jelenti, telepítése és a Service Fabric-alkalmazások futtatása bármely összekapcsolt Windows Server számítógépek tartalmazó környezetben is kell azt a helyszíni vagy bármely felhőalapú szolgáltatóhoz. A Service Fabric biztosít a telepítési csomagot a különálló Windows Server csomag nevű Service Fabric-fürtök létrehozása.
@@ -136,7 +136,7 @@ Most csatlakozhat a fürthöz, a Service Fabric Explorerrel vagy közvetlenül a
 Adja hozzá, vagy távolítsa el a csomópontok a különálló Service Fabric-fürt számára, az üzleti igényeinek változását. Lásd: [különálló Service Fabric-fürt a csomópontok hozzáadásához és eltávolításához](service-fabric-cluster-windows-server-add-remove-nodes.md) a részletes lépéseket.
 
 <a id="removecluster" name="removecluster_anchor"></a>
-## <a name="remove-a-cluster"></a>A fürt eltávolítása
+## <a name="remove-a-cluster"></a>Fürt eltávolítása
 Egy fürt eltávolításához futtassa a *RemoveServiceFabricCluster.ps1* PowerShell-szkriptet a csomag mappájából, és adja meg a JSON-konfigurációs fájl elérési útját. Megadhatja a törlés naplójának mentési helyét is.
 
 Ezt a parancsfájlt, amely csomópontként a fürt konfigurációs fájlban felsorolt minden gép rendszergazdai hozzáféréssel rendelkezik gépi. Az ezt a parancsfájlt futtató számítógép nem rendelkezik a fürt részeként.
@@ -185,7 +185,7 @@ Telemetria letiltása, adja hozzá a következőt *tulajdonságok* a fürt confi
 <a id="previewfeatures" name="previewfeatures_anchor"></a>
 
 ## <a name="preview-features-included-in-this-package"></a>Előzetes verziójú funkciók a csomagban
-nincs.
+Nincs.
 
 
 > [!NOTE]
@@ -193,7 +193,7 @@ nincs.
 > 
 > 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Központi telepítése, és távolítsa el az alkalmazásokat a PowerShell használatával](service-fabric-deploy-remove-applications.md)
 * [Önálló Windows-fürt konfigurációs beállításai](service-fabric-cluster-manifest.md)
 * [Különálló Service Fabric-fürt a csomópontok hozzáadásához és eltávolításához](service-fabric-cluster-windows-server-add-remove-nodes.md)

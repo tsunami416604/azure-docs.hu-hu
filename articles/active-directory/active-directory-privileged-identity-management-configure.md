@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 09/18/2017
 ms.author: barclayn
 ms.custom: pim
-ms.openlocfilehash: c35b0c4171d411bd0c0483866f88780757cb3ee8
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: 94855cf102764532fa0a6718541beffe93230fd1
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>Mi az Azure AD Privileged Identity Management?
 
@@ -54,7 +54,7 @@ Az Azure AD Privileged Identity Management indíthatja a [Azure-portálon](https
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/) a címtára globális rendszergazdájaként.
 2. Ha a szervezet több címtárral rendelkezik, akkor kattintson a felhasználónevére az Azure Portal jobb felső sarkában. Válassza ki a könyvtárat, ahol az Azure AD Privileged Identity Management fogja használni.
-3. Válassza a **További szolgáltatások** lehetőséget, és a Szűrők szövegmezővel keresse meg az **Azure AD Privileged Identity Management** alkalmazást.
+3. Válassza ki **minden szolgáltatás** , és keresse meg a Szűrő mezőbe segítségével **Azure AD Privileged Identity Management**.
 4. Jelölje be a **Rögzítés az irányítópulton** jelölőnégyzetet, majd kattintson a **Létrehozás** gombra. Megnyílik a Privileged Identity Management alkalmazás.
 
 Ha Ön az első, aki a címtárban az Azure AD Privileged Identity Management használata, akkor navigáljon az Azure Active directory szerepkörök és az Azure Active directory szerepkörök, keresse meg a [biztonsági varázsló](active-directory-privileged-identity-management-security-wizard.md) végigvezeti a kezdeti hozzárendelés felületet. Ezt követően automatikusan vált az első **biztonsági rendszergazda** és **kiemelt szerepkörű rendszergazda** a könyvtár.
@@ -125,7 +125,7 @@ Az Azure erőforrás-szerepkörök (előzetes verzió) szerepkör-beállítások
 
 ![](./media/active-directory-privileged-identity-management-configure/role-settings-details.png)
 
-## <a name="role-activation"></a>Szerepkör aktiválása
+## <a name="role-activation"></a>Szerepkör-aktiválás
 
 A [szerepkört aktiváló](active-directory-privileged-identity-management-how-to-activate-role.md), egy erre jogosult rendszergazda kér egy időhöz kötött "aktiválás" a szerepkörhöz. Az aktiválás használatával kell adniuk a **a szerepkör aktiválásához** Azure AD Privileged Identity Management beállítása.
 

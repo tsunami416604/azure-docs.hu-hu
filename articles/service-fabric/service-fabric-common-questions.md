@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/18/2017
 ms.author: chackdan
-ms.openlocfilehash: a9b7490fd51a2a39e6438856041fb25110ddde69
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.openlocfilehash: facbb980f57b4e70c34b238a8b8fbd988cb20d57
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>A Service Fabric gyakori kérdések
 
@@ -36,14 +36,14 @@ Ha érdekli, ebben a forgatókönyvben, javasoljuk, hogy forduljon az beszerzés
 
 Néhány mérlegelendő szempont ezzel kapcsolatban: 
 
-1. A Service Fabric-fürt erőforrás az Azure-ban, regionális ma, vagy sem a virtuálisgép-méretezési beállítja, hogy a fürt épül. Ez azt jelenti, hogy a regionális hibája esetén elveszhetnek képes kezelni a fürt az Azure Resource Manager vagy az Azure portálon keresztül. Ez akkor fordulhat elő, annak ellenére, hogy a fürt továbbra is futni fog, és közvetlenül használni tudná. Emellett Azure ma nem lehetővé teszik a rendelkezik egyetlen virtuális hálózaton használható régiók között. Ez azt jelenti, hogy az Azure-ban több területi fürt szükséges [az egyes virtuális gépek, a Virtuálisgép-méretezési készlet a nyilvános IP-címek](../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md#public-ipv4-per-virtual-machine) vagy [Azure VPN Gatewayek](../vpn-gateway/vpn-gateway-about-vpngateways.md). A fenti hálózatkezelési lehetőségek hatással különböző van a költségek, teljesítmény, és bizonyos mértékben alkalmazás tervét, hogy így körültekintően elemzés és tervezése előtt meg kell adni egy ilyen környezet állandó.
-2. A karbantartási, kezeléséhez, és ezek a gépek figyelését válhat bonyolult, különösen akkor, ha átnyúlhatnak _típusok_ a környezetek, például különböző szolgáltatók közötti vagy a helyszíni erőforrások és az Azure közötti. Ügyelni kell arra, hogy frissítéseket, figyelés, felügyeleti és diagnosztikai értendők a fürt és az alkalmazások az ilyen környezetekben termelési számítási feladatokhoz futtatása előtt. Ha már rendelkezik Azure-ban vagy a saját adatközpontját belül problémák megoldásához élmény rengeteg, akkor valószínű, hogy ezek azonos megoldások is alkalmazható, ha épület kimenő, vagy a Service Fabric-fürt fut. 
+1. A Service Fabric-fürt erőforrás az Azure-ban, regionális ma, vagy sem a virtuálisgép-méretezési beállítja, hogy a fürt épül. Ez azt jelenti, hogy a regionális hibája esetén elveszhetnek képes kezelni a fürt az Azure Resource Manager vagy az Azure-portálon keresztül. Ez akkor fordulhat elő, annak ellenére, hogy a fürt továbbra is futni fog, és közvetlenül használni tudná. Emellett Azure ma nem lehetővé teszik a rendelkezik egyetlen virtuális hálózaton használható régiók között. Ez azt jelenti, hogy az Azure-ban több területi fürt szükséges [az egyes virtuális gépek, a Virtuálisgép-méretezési készlet a nyilvános IP-címek](../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md#public-ipv4-per-virtual-machine) vagy [Azure VPN Gatewayek](../vpn-gateway/vpn-gateway-about-vpngateways.md). A fenti hálózatkezelési lehetőségek hatással különböző van a költségek, teljesítmény, és bizonyos mértékben alkalmazás tervét, hogy így körültekintően elemzés és tervezése előtt meg kell adni egy ilyen környezet állandó.
+2. A karbantartási, kezeléséhez, és ezek a gépek figyelését válhat bonyolult, különösen akkor, ha átnyúlhatnak _típusok_ a környezetek, például különböző szolgáltatók közötti vagy a helyszíni erőforrások és az Azure közötti. Ügyelni kell arra, hogy frissítéseket, figyelés, felügyeleti és diagnosztikai értendők a fürt és az alkalmazások az ilyen környezetekben termelési számítási feladatokhoz futtatása előtt. Ha már rendelkezik tapasztalattal az Azure-ban vagy a saját adatközpontját problémák megoldásához, akkor valószínű, hogy ezek azonos megoldások is alkalmazható, ha épület kimenő, vagy a Service Fabric-fürt fut. 
 
 ### <a name="do-service-fabric-nodes-automatically-receive-os-updates"></a>Hajtsa végre a Service Fabric-csomópontok automatikusan frissítését az operációs rendszer?
 
 Nem ma de ez történik akkor is, amely Azure kívánja szállítani közös kérelmet.
 
-Az idő alatt kell [alkalmazás megadott](service-fabric-patch-orchestration-application.md) , hogy az operációs rendszerek a Service Fabric-csomópont alatt maradnak javított és naprakészek legyenek.
+Az idő alatt kell [alkalmazás megadott](service-fabric-patch-orchestration-application.md) , hogy az operációs rendszerek a Service Fabric-csomópont alatt maradnak javított, naprakész állapotban.
 
 A kihívás az operációs rendszer frissítése érdekében, hogy ezek általában a számítógép újraindítása szükséges a gépet, amely ideiglenes rendelkezésre állást eredményez. Önmagában ez nem probléma, mivel a Service Fabric automatikusan átirányítja a forgalmat olyan szolgáltatási más csomópontokra. Azonban ha operációs rendszer frissítése érdekében van megfelelő koordináció hiányában a fürtön, nincs a lehetséges, hogy sok csomópont egyszerre leáll. Ilyen egyidejű újraindítások okozhat a teljes rendelkezésre állást egy szolgáltatás, vagy legalább egy adott partícióra (az állapotalapú szolgáltatás).
 
@@ -53,7 +53,7 @@ A jövőben tervezzük támogatja az operációs rendszer frissítési házirend
 
 **Válasz rövid** – nem 
 
-**Hosszú válasz** – Bár a nagy virtuálisgép-méretezési csoportok lehetővé teszik a virtuális gépek méretezési készlet legfeljebb 1000 Virtuálisgép-példányok méretezési, akkor nem így elhelyezési csoportok (PGs) használatával. Tartalék tartományok (FDs) és a frissítési tartományok (UDs) belül egy elhelyezési csoport Service fabric használ FDs és UDs elhelyezési döntések a szolgáltatás replikák/szolgáltatás példányainak csak megegyeznek. Mivel a FDs és UDs összehasonlítható elhelyezési csoporton belül csak ú nem tudja azt használni. Például, ha a PG1 VM1 a FD-topológia = 0, és a PG2 VM9 a FD-topológia = 4, ez nem jelenti azt, hogy VM1 és vm2 virtuális gépnek a két különböző hardver Rackszekrények, ezért ú nem használható a FD értékek ebben az esetben elhelyezési vonatkozó döntések meghozatalában.
+**Hosszú válasz** – Bár a nagy virtuálisgép-méretezési csoportok lehetővé teszik a virtuális gépek méretezési készlet legfeljebb 1000 Virtuálisgép-példányok méretezési, akkor nem így elhelyezési csoportok (PGs) használatával. Tartalék tartományok (FDs) és a frissítési tartományok (UDs) belül egy elhelyezési csoport Service fabric használ FDs és UDs elhelyezési döntések a szolgáltatás replikák/szolgáltatás példányainak csak megegyeznek. Mivel a FDs és UDs elhelyezési csoporton belül csak összehasonlítható, ú nem tudja azt használni. Például, ha a PG1 VM1 a FD-topológia = 0, és a PG2 VM9 a FD-topológia = 4, ez nem jelenti azt, hogy VM1 és vm2 virtuális gépnek a két különböző hardver Rackszekrények, ezért ú nem használható a FD értékek ebben az esetben elhelyezési vonatkozó döntések meghozatalában.
 
 Jelenleg más problémákat nagy virtuálisgép-méretezési csoportok, például a 4. szint hiánya betölteni a terheléselosztási támogatását. További [nagy részleteinek méretezése beállítása](../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md)
 
@@ -86,22 +86,25 @@ Ha szeretné az alkalmazást tesztelni, mielőtt telepítené a fürtöket létr
 
 Napjainkban fejlesztjük fejlett élményt, amíg való telepítésért felelős a frissítést. Frissítenie kell az operációsrendszer-lemezképek, a virtuális gépek a fürt egyik virtuális gép egyszerre. 
 
+### <a name="can-i-encrypt-attached-data-disks-in-a-cluster-node-type-virtual-machine-scale-set"></a>Titkosíthatja a mellékelt adatok lemezt a fürt csomóponttípus (virtuálisgép-méretezési csoport)?
+Igen.  További információkért lásd: [hozzon létre egy fürtöt csatolt adatlemezek](../virtual-machine-scale-sets/virtual-machine-scale-sets-attached-disks.md#create-a-service-fabric-cluster-with-attached-data-disks), [lemezek (PowerShell) titkosítása](../virtual-machine-scale-sets/virtual-machine-scale-sets-encrypt-disks-ps.md), és [lemezek (CLI) titkosítása](../virtual-machine-scale-sets/virtual-machine-scale-sets-encrypt-disks-cli.md).
+
 ## <a name="container-support"></a>Tároló-támogatás
 
 ### <a name="why-are-my-containers-that-are-deployed-to-sf-unable-to-resolve-dns-addresses"></a>Miért van a tárolók nem oldható fel DNS címek ú telepített?
 
 A probléma 5.6.204.9494 lévő fürtökön érkezett jelentés verziója 
 
-**Megoldás** : kövesse [Ez a dokumentum](service-fabric-dnsservice.md) ahhoz, hogy a DNS service fabric-szolgáltatás a fürtön.
+**Megoldás**: kövesse [Ez a dokumentum](service-fabric-dnsservice.md) ahhoz, hogy a DNS service fabric-szolgáltatás a fürtön.
 
-**Javítsa ki** : frissítés a fürt támogatott verzióra, amely értéke magasabb, mint 5.6.204.9494, ha azok elérhetők. Ha az automatikus frissítések beállítása a fürt, majd a fürt automatikusan frissíti a rögzített probléma verziót.
+**Javítsa ki**: frissítés a fürt támogatott verzióra, amely értéke magasabb, mint 5.6.204.9494, ha azok elérhetők. Ha az automatikus frissítések beállítása a fürt, majd a fürt automatikusan frissíti a rögzített probléma verziót.
 
   
 ## <a name="application-design"></a>Alkalmazás tervezése
 
 ### <a name="whats-the-best-way-to-query-data-across-partitions-of-a-reliable-collection"></a>Adatait kérdezi le. a legjobb módszer mekkora megbízható gyűjtemény partíciók között?
 
-Megbízható gyűjtemények jellemzően [particionált](service-fabric-concepts-partitioning.md) ahhoz, hogy a nagyobb teljesítmény és átviteli kibővítési. Ez azt jelenti, hogy az adott szolgáltatás állapotának terjedhetnek 10 egység vagy 100-as egység gépek között. A teljes adatkészlet keresztül műveletek végrehajtásához néhány lehetőség közül választhat:
+Megbízható gyűjtemények jellemzően [particionált](service-fabric-concepts-partitioning.md) ahhoz, hogy a nagyobb teljesítmény és átviteli kibővítési. Ez azt jelenti, hogy az adott szolgáltatás állapotának terjedhetnek több tíz vagy több száz gépek között. A teljes adatkészlet keresztül műveletek végrehajtásához néhány lehetőség közül választhat:
 
 - Hozzon létre egy szolgáltatás, amely egy másik szolgáltatást a szükséges adatok bekérésére partíciók lekérdezésével.
 - Hozzon létre egy szolgáltatás, amely egy másik szolgáltatás minden partíciója fogadhat adatokat.
@@ -112,24 +115,24 @@ Megbízható gyűjtemények jellemzően [particionált](service-fabric-concepts-
 
 Szereplője lettek kialakítva független egység állapot és a számítást, és nem célszerű a futási időben aktorállapot széleskörű lekérdezések végrehajtásához. Ha egy lekérdezést kell aktorállapot a teljes szétosztva, érdemes vagy:
 
-- Lecserélve az állapot-nyilvántartó megbízható szolgáltatáshoz, a aktorszolgáltatások, úgy, hogy az összes adat gyűjtését szereplője száma a szolgáltatás a partíciók száma kérelmek hálózati száma.
+- A aktorszolgáltatások cseréje az állapot-nyilvántartó megbízható szolgáltatásokat, úgy, hogy az összes adat gyűjtését szereplője száma a szolgáltatás a partíciók száma kérelmek hálózati száma.
 - A rendszeres időközönként állapotukra könnyebb lekérdezése külső tárolóhoz szereplője megtervezése. Újabb verzióiban ez a megközelítés lesz csak kivitelezhető, ha a lekérdezések végrehajtásához esetén nincs szükség a működését.
 
 ### <a name="how-much-data-can-i-store-in-a-reliable-collection"></a>Mennyi adatot tud tárolni egy megbízható gyűjtemény?
 
 Megbízható szolgáltatások általában particionáltak, így a tárolhatja csak korlátozza a fürt rendelkezik gépek számát, és az elérhető memória mennyiségének ezeken a számítógépeken.
 
-Tegyük fel tegyük fel, hogy egy megbízható gyűjtemény 100 partíciók 3 replikák egy szolgáltatást a 1kb méretű átlagos objektumok tárolására. Most tegyük fel, hogy rendelkezik-e a 16gb memóriája gépenként 10 gép fürtben. Az egyszerűség és a nagyon óvatosan feltételeztük, hogy az operációs rendszerek és rendszerszolgáltatások, a Service Fabric-futtatókörnyezet és a szolgáltatások felhasználásához 6gb, így a 10 GB-os gépenként érhető el, vagy 100gb a fürt.
+Tegyük fel tegyük fel, hogy egy megbízható gyűjtemény 100 partíciók 3 replikák egy szolgáltatást a 1 kb méretű átlagos objektumok tárolására. Most tegyük fel, hogy rendelkezik-e a 16gb memóriája gépenként 10 gép fürtben. Az egyszerűség és a óvatosan feltételeztük, hogy az operációs rendszerek és rendszerszolgáltatások, a Service Fabric-futtatókörnyezet és a szolgáltatások felhasználásához 6gb, így a 10 GB-os gépenként érhető el, vagy 100 gb a fürt.
 
 Figyelembe vételével kell lennie a minden objektumon tárolt három időpontokban (egy elsődleges és két replika), akkor egy körülbelül 35 millió objektumok elegendő memória áll rendelkezésre a gyűjteményben teljes kapacitás üzemi. Azt javasoljuk azonban alatt rugalmas hiba tartományhoz és egy frissítési tartomány, amely körülbelül 1/3 kapacitás jelöli, és akkor adjon meg kevesebb nagyjából 23 millió egyidejű elvész.
 
 Vegye figyelembe, hogy a számítási is feltételezi, hogy:
 
-- Hogy az adatok így vannak elrendezve a partíciók terjesztését többé-kevésbé egységes, és, hogy Ön éppen reporting terhelési metrika a fürt erőforrás-kezelő. Alapértelmezés szerint a Service Fabric rendszer terheléselosztásához replikáinak száma alapján. A fenti példában, célszerű helyezni 10 elsődleges replika és 20 másodlagos replika a fürt minden csomópontjának. Betöltési, amely egyenlően elosztva a partíciók esetén, amelyek működik. Betöltési nincs még akkor is, ha jelenteniük kell terhelés, hogy az erőforrás-kezelő együtt csomag kisebb replikákat, és lehetővé teszi a nagyobb replikák egy egyedi csomóponton több memóriát használ.
+- Hogy az adatok így vannak elrendezve a partíciók terjesztését többé-kevésbé egységes, és, hogy Ön éppen reporting terhelési metrika a fürt erőforrás-kezelő. Alapértelmezés szerint a Service Fabric betölti egyenleg replikáinak száma alapján. A fenti példában, célszerű helyezni 10 elsődleges replika és 20 másodlagos replikák a fürt minden csomópontjának. Betöltési, amely egyenlően elosztva a partíciók esetén, amelyek működik. Betöltési nincs még akkor is, ha jelenteniük kell terhelés, hogy az erőforrás-kezelő együtt csomag kisebb replikákat, és lehetővé teszi a nagyobb replikák egy egyedi csomóponton több memóriát használ.
 
 - A szóban forgó megbízható szolgáltatás fogja a fürt csak egy tárolni állapotát. Mivel több szolgáltatás telepítene egy fürtöt, kell lennie az erőforrások szem előtt tartva, hogy minden egyes kell futtatni, és az állapot kezelése.
 
-- Hogy egyrészt a fürt nem növekvő vagy zsugorítását. További gépek hozzáadásakor a Service Fabric fog egyensúlyba kihasználhatják a további kapacitást, amíg gépek száma meghaladja a szolgáltatást, a partíciók száma, mivel az egyes replika gépek nem terjedhetnek ki replikát. Ezzel szemben ha gépek eltávolításával csökkentse a fürt méretét, a replikák szigorúbban csomagolt tartalmaz, és teljes kapacitásának rendelkezik.
+- Hogy egyrészt a fürt nem növekvő vagy zsugorítását. További gépek hozzáadásakor a Service Fabric fog egyensúlyba kihasználhatják a további kapacitást, amíg gépek száma meghaladja a szolgáltatást, a partíciók száma, mivel az egyes replika gépek nem terjedhetnek ki replikát. Ezzel szemben gépek eltávolításával csökkentse a fürt méretét, ha a replikák szigorúbban vannak csomagolva és teljes kapacitásának rendelkezik.
 
 ### <a name="how-much-data-can-i-store-in-an-actor"></a>Mennyi adatot is tárolnak a egy szereplő?
 
@@ -141,12 +144,12 @@ Csakúgy, mint a megbízható szolgáltatások szereplő szolgáltatásnak is t�
 
 Tárolók csomag szolgáltatások és függőségi viszonyaikat egyszerű módszert kínál, úgy, hogy következetesen minden környezetben futtatni, és egy gépen csak elkülönített módon kapnak. A Service Fabric kínál telepíthetnek és kezelhetnek szolgáltatásokat, például a módon [, amely rendelkezik egy tárolóba van csomagolva szolgáltatások](service-fabric-containers-overview.md).
 
-### <a name="are-you-planning-to-open-source-service-fabric"></a>Tervezi nyissa meg a Service Fabric forrás?
+### <a name="are-you-planning-to-open-source-service-fabric"></a>Tervezi nyílt forráskódú Service Fabric?
 
-Azt szeretné, nyissa meg a reliable services és a Githubon megbízható szereplője keretrendszerek adatforrásra, és elfogadja ezeket a projektek közösségi hozzájárulások. Kérjük, kövesse a [Service Fabric blog](https://blogs.msdn.microsoft.com/azureservicefabric/) azok még jelent további részletekért.
+Azt tervezi, hogy nyílt forráskódú a megbízható szolgáltatások és megbízható szereplője keretrendszerek a Githubon, és fogadja el ezeket a projektek közösségi hozzájárulások. Kövesse a [Service Fabric blog](https://blogs.msdn.microsoft.com/azureservicefabric/) azok még jelent további részletekért.
 
-Az elem jelenleg nem tervezi, hogy nyissa meg a forrás-e a Service Fabric-futtatókörnyezet.
+A rendszer jelenleg nem nyílt forráskódú tervezi a Service Fabric-futtatókörnyezet.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [További tudnivalók a Service Fabric Alapfogalmak és ajánlott eljárások](https://mva.microsoft.com/en-us/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=tbuZM46yC_5206218965)

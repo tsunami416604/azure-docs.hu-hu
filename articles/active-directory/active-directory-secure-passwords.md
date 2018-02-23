@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/28/2017
 ms.author: barlan
-ms.openlocfilehash: 683badcfb67dd9e98058d560a6b13d1a3474d3e9
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 19c8d9084c9ce03d347e58b3359b65cdbcd80651
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="a-multi-tiered-approach-to-azure-ad-password-security"></a>Az Azure AD-jelszó biztonsági többrétegű megközelítése
 
@@ -46,7 +46,7 @@ Az Azure AD és a Microsoft-fiókrendszer megközelítések bizonyítása ipará
 * Dinamikusan letiltott jelszavak
 * Intelligens jelszózárolás
 
-A jelszókezelés aktuális eredményei alapján kapcsolatos információkért lásd [jelszó útmutatást](http://aka.ms/passwordguidance).
+A jelszókezelés aktuális eredményei alapján kapcsolatos információkért lásd [jelszó útmutatást](https://aka.ms/passwordguidance).
 
 ### <a name="dynamically-banned-passwords"></a>Dinamikusan letiltott jelszavak
 
@@ -80,7 +80,7 @@ Jelszó alaphelyzetbe állítása, az Azure Active Directoryban kapcsolatos info
   >Ha Ön Azure AD-rendszergazda, javasolt a [Windows Hello](https://www.microsoft.com/windows/windows-hello) használata, hogy a felhasználók egyáltalán ne is hozhassanak létre hagyományos jelszavakat.
   >
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Saját jelszó frissítése](active-directory-passwords-update-your-own-password.md)
 * [Az Azure-identitáskezelés alapjai](fundamentals-identity.md)

@@ -15,7 +15,7 @@ A virtuális merevlemezek és a virtuális gépek az Azure-erőforrások két k�
 
 A virtuális gép helyreállításának első lépése magának a virtuális gép erőforrásnak a törlése. A virtuális gép törlésével a virtuális merevlemezek a tárfiókban maradnak. A virtuális gép törlését követően a virtuális merevlemezt csatlakoztathatja egy másik virtuális géphez a hibák megkeresése és elhárítása érdekében. 
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com). 
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). 
 2. A bal oldali menüben kattintson a **Virtuális gépek (klasszikus)** elemre.
 3. Válassza ki a hibás virtuális gépet, kattintson a **Lemezek** elemre, majd azonosítsa a virtuális merevlemez nevét. 
 4. Válassza ki az operációs rendszer merevlemezét, és a **Hely** mezőben azonosítsa a virtuális merevlemezt tároló tárfiók nevét. Az alábbi példában a közvetlenül a „.blob.core.windows.net” előtt álló karakterlánc a tárfiók neve.
@@ -57,6 +57,6 @@ Miután a hibákat kijavította, válassza le a meglévő virtuális merevlemezt
 Egy virtuális Gépet hozhat létre az eredeti virtuális merevlemez [Azure-portálon](https://portal.azure.com).
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. A portálon, válassza a bal felső at **új** > **számítási** > **virtuális gép** > **a gyűjtemény**.
+2. A portálon, válassza a bal felső at **hozzon létre egy erőforrást** > **számítási** > **virtuális gép** > **a Gyűjteményelem**.
 3. A **Kép kiválasztása** szakaszban válassza a **Saját lemezek** lehetőséget, majd válassza ki az eredeti virtuális merevlemezt. Ellenőrizze a helyadatokat. Ez az a régió, ahol a virtuális gépet üzembe kell helyezni. Válassza a Tovább gombot.
 4. A **Virtuális gép konfigurációja** szakaszban írja be a virtuális gép nevét, majd válasszon méretet a virtuális gép számára.

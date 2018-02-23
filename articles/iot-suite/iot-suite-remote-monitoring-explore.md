@@ -7,16 +7,16 @@ author: dominicbetts
 manager: timlt
 ms.author: dobett
 ms.service: iot-suite
-ms.date: 12/12/2017
+ms.date: 02/15/2018
 ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: d8943db3ec6ef5875b2b884d42ea25dbb44a30e5
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 5bc01c7e70e6837989c6bebd843ba1f41c8c5aeb
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="explore-the-capabilities-of-the-remote-monitoring-preconfigured-solution"></a>A távoli felügyeleti előkonfigurált megoldás funkcióinak felfedezése
 
@@ -31,6 +31,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * Egy riasztás válaszolni
 > * Az eszközök a belső vezérlőprogram frissítése
 > * Az eszközök rendszerezéséhez
+> * Állítsa le és indítsa el a szimulált eszköz
 
 A következő videó bemutatja a távoli felügyeleti megoldás részletes útmutatás:
 
@@ -230,6 +231,16 @@ Eszközök használata a címkenevek hozhat létre.
 
 Most már a Contoso operátor lekérdezheti a működési csapat anélkül, hogy az eszközök bármit módosíthat alapú eszközök.
 
+## <a name="stop-simulated-devices"></a>Állítsa le a szimulált eszköz
+
+A beállítások menü használatával állítsa le a szimulált eszköz. Ez segít a tesztelés és a megoldás felfedezése költségek csökkentése érdekében. Indítsa el, vagy állítsa le a szimulált eszköz:
+
+1. Válassza ki a **beállítások** ikonra.
+
+1. Majd átváltása **futtató** be- és kikapcsolása:
+
+    ![Gépház menü](media/iot-suite-remote-monitoring-explore/settings.png)
+
 ## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóprogramban megismerte a:
@@ -239,6 +250,7 @@ Ebben az oktatóprogramban megismerte a:
 > * Egy riasztás válaszolni
 > * Az eszközök a belső vezérlőprogram frissítése
 > * Az eszközök rendszerezéséhez
+> * Állítsa le és indítsa el a szimulált eszköz
 
 Most, hogy rendelkezik megismerte a távoli felügyeleti megoldás, a javasolt lépéseket a távoli felügyeleti megoldás a szolgáltatásokkal kapcsolatos további:
 

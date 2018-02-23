@@ -49,7 +49,7 @@
             - name: A Beeline használata
               href: ../hadoop/apache-hadoop-use-hive-beeline.md
               maintainContext: true
-            - name: A cURL használata
+            - name: A REST API használata
               href: ../hadoop/apache-hadoop-use-hive-curl.md
               maintainContext: true
             - name: Azure PowerShell használatával
@@ -227,6 +227,12 @@
             - name: Az Ambari REST API használata
               href: ../hdinsight-hadoop-manage-ambari-rest-api.md
               maintainContext: true
+        - name: HDInsight-fürt méretezése
+          href: ../hdinsight-scaling-best-practices.md
+          maintainContext: true
+        - name: Külső metaadat-tárolók használata
+          href: ../hdinsight-use-external-metadata-stores.md
+          maintainContext: true
         - name: HDInsight-fürt naplóinak kezelése
           href: ../hdinsight-log-management.md
           maintainContext: true

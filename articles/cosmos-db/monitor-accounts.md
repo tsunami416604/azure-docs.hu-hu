@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: mimig
-ms.openlocfilehash: f07489172306b4f6d03b5a9b1399ed92e007c3c1
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 0e9a47e6a1a5c7a44c5553742d6c5c81f8ca7286
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="monitor-azure-cosmos-db"></a>Az Azure Cosmos DB figyelése
 A Azure Cosmos DB-fiókok a figyelheti a [Azure-portálon](https://portal.azure.com/). Minden Azure Cosmos DB fiók metrikák tartalmazó teljes csomag érhető el átviteli, a tároló, a rendelkezésre állási, a késés és a konzisztencia figyelése.
@@ -26,7 +26,7 @@ A Azure Cosmos DB-fiókok a figyelheti a [Azure-portálon](https://portal.azure.
 Metrikák áttekintheti a fiók lapon, az új mérőszámok lap vagy az Azure-figyelő.
 
 ## <a name="view-performance-metrics-on-the-metrics-page"></a>A metrikák oldalon nézet metrikák
-1. Az a [Azure-portálon](https://portal.azure.com/), kattintson a **több szolgáltatások**, görgessen **adatbázisok**, kattintson a **Azure Cosmos DB**, és kattintson a nevére, az Azure-beli Cosmos DB-fiók, amelynek szeretné teljesítménymutatók megtekintése.
+1. Az a [Azure-portálon](https://portal.azure.com/), kattintson a **minden szolgáltatás**, görgessen **adatbázisok**, kattintson a **Azure Cosmos DB**, és kattintson a nevére, az Azure-beli Cosmos DB-fiók, amelynek szeretné teljesítménymutatók megtekintése.
 2. Ha az új értékkel, erőforrás menüben a **figyelés**, kattintson a **metrikák**.
 3. A metrikák lap megnyitásakor, válassza ki a gyűjteményt, hogy tekintse át a a **következő gyűjtemény(ek) készleteit szinkronizálja** legördülő listán.
 
@@ -42,7 +42,7 @@ Metrikák áttekintheti a fiók lapon, az új mérőszámok lap vagy az Azure-fi
 5. A közül **elérhető**, kiválaszthatja a megjelenítendő metrikákat. Használja a CTRL gombra, jelölje ki. 
 
 ## <a name="view-performance-metrics-on-the-account-page"></a>A fiók lapon nézet metrikák
-1. Az a [Azure-portálon](https://portal.azure.com/), kattintson a **több szolgáltatások**, görgessen **adatbázisok**, kattintson a **Azure Cosmos DB**, és kattintson a nevére, az Azure-beli Cosmos DB-fiók, amelynek szeretné teljesítménymutatók megtekintése.
+1. Az a [Azure-portálon](https://portal.azure.com/), kattintson a **minden szolgáltatás**, görgessen **adatbázisok**, kattintson a **Azure Cosmos DB**, és kattintson a nevére, az Azure-beli Cosmos DB-fiók, amelynek szeretné teljesítménymutatók megtekintése.
 2. A **figyelés** fókuszban alapértelmezés szerint megjeleníti a következő csempék találhatók:
    
    * Az aktuális napra kérelmek teljes száma.
@@ -53,7 +53,7 @@ Metrikák áttekintheti a fiók lapon, az új mérőszámok lap vagy az Azure-fi
 4. A **metrika** lap részleteit jeleníti meg, hogy az összes kérelmet. 
 
 ## <a name="set-up-alerts-in-the-portal"></a>A portál értesítések beállítása
-1. Az a [Azure-portálon](https://portal.azure.com/), kattintson a **több szolgáltatások**, kattintson a **Azure Cosmos DB**, és kattintson a nevére, amelynek szeretné beállítani a teljesítmény Azure Cosmos DB fiók metrika riasztásokat.
+1. Az a [Azure-portálon](https://portal.azure.com/), kattintson a **minden szolgáltatás**, kattintson a **Azure Cosmos DB**, és kattintson a nevére, amelynek szeretné beállítani a teljesítmény Azure Cosmos DB fiók metrika riasztásokat.
 2. Az erőforrás menüjében kattintson **riasztási szabályok** riasztási szabályok lapjának megnyitásához.  
    ![Képernyőfelvétel a riasztás szabályok kijelölve](./media/monitor-accounts/madocdb10.5.png)
 3. Az a **riasztási szabályok** kattintson **riasztás hozzáadása**.  
@@ -72,7 +72,7 @@ Metrikák áttekintheti a fiók lapon, az új mérőszámok lap vagy az Azure-fi
 A fiók szintű metrikák elérhető a portálon, például a fiók tárolási használati és a végösszeg kérelmeket, az SQL API-k segítségével nem érhetők el. Használati adatok, a gyűjtemény szintjén azonban az SQL API-k használatával kérheti le. Gyűjtemény szolgáltatásiszint-adatok beolvasása, tegye a következőket:
 
 * A REST API-t használandó [végezze el a gyűjtemény egy GET](https://msdn.microsoft.com/library/mt489073.aspx). A kvóta- és használati adatokat a gyűjtemény eredmény abban az esetben az x-ms-erőforráskvótát és az x-ms-erőforrás-használat fejlécek, a válaszban.
-* A .NET SDK használatához a [DocumentClient.ReadDocumentCollectionAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.readdocumentcollectionasync.aspx) metódus, amely adja vissza egy [ResourceResponse](https://msdn.microsoft.com/library/dn799209.aspx) például tartalmazó használati tulajdonság  **CollectionSizeUsage**, **DatabaseUsage**, **DocumentUsage**, stb.
+* A .NET SDK használatához a [DocumentClient.ReadDocumentCollectionAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.readdocumentcollectionasync.aspx) metódus, amely adja vissza egy [ResourceResponse](https://msdn.microsoft.com/library/dn799209.aspx) például tartalmazó használati tulajdonság ** CollectionSizeUsage**, **DatabaseUsage**, **DocumentUsage**, stb.
 
 További metrikák elérésére, a [Azure figyelő SDK](https://www.nuget.org/packages/Microsoft.Azure.Insights). Elérhető metrikai meghatározásainak hívásával kérhető:
 
@@ -84,6 +84,6 @@ Egyéni metrikák beolvasása lekérdezések használja a következő formátumo
 
 További információkért lásd: [erőforrás metrikák beolvasása az Azure figyelő REST API-n keresztül](https://blogs.msdn.microsoft.com/cloud_solution_architect/2016/02/23/retrieving-resource-metrics-via-the-azure-insights-api/). Vegye figyelembe, hogy a "Azure Insights" névre lett átnevezve "Azure figyelés".  Ezt a blogbejegyzést régebbi nevére hivatkozik.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Azure Cosmos DB kapacitás tervezésével kapcsolatos további tudnivalókért tekintse meg a [Azure Cosmos DB kapacitás planner Számológép](https://www.documentdb.com/capacityplanner).
 

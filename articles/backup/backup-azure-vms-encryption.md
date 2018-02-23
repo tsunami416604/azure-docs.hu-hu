@@ -15,11 +15,11 @@ ms.workload: storage-backup-recovery
 ms.date: 10/13/2017
 ms.author: pajosh;markgal;trinadhk; sogup
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 509e891207d1469ed244eab4512ec66420284fd5
-ms.sourcegitcommit: 901a3ad293669093e3964ed3e717227946f0af96
+ms.openlocfilehash: 4a1a3c5eb5550967e0a0e045ec508a86cd80ee03
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="back-up-and-restore-encrypted-virtual-machines-with-azure-backup"></a>Biztonsági mentése és visszaállítása az Azure Backup szolgáltatással titkosított virtuális gépek
 Ez a cikk beszél biztonsági mentése és visszaállítása a virtuális gépek (VM) Azure biztonsági mentéssel lépéseit. Azt is hibák esetén támogatott forgatókönyveket, előfeltételeket és hibaelhárítási lépésekkel kapcsolatos részletes adatokat biztosít.
@@ -48,7 +48,7 @@ Ez a cikk beszél biztonsági mentése és visszaállítása a virtuális gépek
 Az alábbi lépések segítségével állítsa be a biztonsági mentés célja, adja meg a házirendet, elemek konfigurálása és a biztonsági mentés.
 
 ### <a name="configure-backup"></a>Biztonsági mentés konfigurálása
-1. Ha már rendelkezik nyissa meg a Recovery Services-tároló, folytassa a következő lépéssel. Ha nem rendelkezik nyissa meg a Recovery Services-tároló, de az Azure-portálon az Ön a **Hub** menüjében válassza **Tallózás**.
+1. Ha már rendelkezik nyissa meg a Recovery Services-tároló, folytassa a következő lépéssel. Ha nem rendelkezik nyissa meg a Recovery Services-tároló, de van az Azure portálon, válassza a **minden szolgáltatás**.
 
    a. Az erőforrások listájába írja be a következőt: **Recovery Services**.
 
@@ -65,10 +65,10 @@ Az alábbi lépések segítségével állítsa be a biztonsági mentés célja, 
 3. Az a **biztonsági mentés** csempe, jelölje be **biztonsági mentési cél**.
 
       ![A forgatókönyv panel](./media/backup-azure-vms-encryption/select-backup-goal-one.png)
-4. A **a számítási feladatok futtató?**, jelölje be **Azure**. A **miről szeretne biztonsági másolatot készíteni?**, jelölje be **virtuális gép**. Válassza ki **OK**.
+4. A **a számítási feladatok futtató?**, jelölje be **Azure**. A **miről szeretne biztonsági másolatot készíteni?**, jelölje be **virtuális gép**. Ezután kattintson az **OK** gombra.
 
    ![Forgatókönyv panel megnyitása](./media/backup-azure-vms-encryption/select-backup-goal-two.png)
-5. A **válassza ki a biztonsági mentési házirend**, válassza ki a biztonsági mentési házirendet kíván alkalmazni a tárolóba. Válassza ki **OK**.
+5. A **válassza ki a biztonsági mentési házirend**, válassza ki a biztonsági mentési házirendet kíván alkalmazni a tárolóba. Ezután kattintson az **OK** gombra.
 
       ![Biztonsági mentési házirend kiválasztása](./media/backup-azure-vms-encryption/setting-rs-backup-policy-new.png)
 
@@ -98,7 +98,7 @@ Ha már biztonsági mentés alatt a Recovery Services-tároló virtuális gépek
 
 ## <a name="provide-permissions-to-backup"></a>Engedélyek biztosítása a biztonsági mentés
 Az alábbi lépések segítségével vonatkozó engedélyek biztosítása a kulcstároló eléréséhez, és biztonsági másolatot készít a titkosított virtuális gépek biztonsági mentése.
-1. Válassza ki **további szolgáltatások**, keresse meg a **tárolók kulcs**.
+1. Válassza ki **minden szolgáltatás**, keresse meg a **tárolók kulcs**.
 
     ![Kulcstartók](./media/backup-azure-vms-encryption/search-key-vault.png)
     

@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 11/01/2017
+ms.date: 02/14/2018
 ms.author: owend
-ms.openlocfilehash: 10f34fe17c6b8faad3bcb7bcffe9d9c3c0d8b10a
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 54b9c9df1c368575c271a44e4738a2fc25ac4798
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-an-azure-analysis-services-server-in-azure-portal"></a>Az Azure Analysis Services-kiszolgáló létrehozása az Azure-portálon
 Ez a cikk végigvezeti egy Analysis Services-kiszolgáló erőforrás létrehozása az Azure-előfizetéshez.
@@ -50,12 +50,12 @@ A rövid útmutató elvégzéséhez a következőkre lesz szüksége:
    * **IP-címek**: tarifacsomag kiválasztása. Táblázatos modellek legfeljebb 400 GB támogatottak. További tudnivalókért lásd: [Azure Analysis Services díjszabása](https://azure.microsoft.com/pricing/details/analysis-services/).
 4. Kattintson a **Create** (Létrehozás) gombra.
 
-Hozzon létre egy percet; általában tesz gyakran csak néhány másodpercig. Ha a kiválasztott **portálon**, keresse meg a portálhoz, és az új kiszolgáló. Vagy keresse meg **további szolgáltatások** > **Analysis Services** megjelenítéséhez, ha a kiszolgáló készen áll-e.
+Hozzon létre egy percet; általában tesz gyakran csak néhány másodpercig. Ha a kiválasztott **portálon**, keresse meg a portálhoz, és az új kiszolgáló. Vagy keresse meg **minden szolgáltatás** > **Analysis Services** megjelenítéséhez, ha a kiszolgáló készen áll-e.
 
  ![Irányítópult](./media/analysis-services-create-server/aas-create-server-dashboard.png)
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Miután létrehozta a kiszolgáló, [a modell rendszerbe állítása](analysis-services-deploy.md) hozzá SSDT vagy ssms alkalmazásával.
 
 A modell központi telepítése a kiszolgálóra a helyi adatforrások csatlakozik, ha telepíteni szeretné egy [helyszíni adatátjáró](analysis-services-gateway.md) a hálózat egyik számítógépén.

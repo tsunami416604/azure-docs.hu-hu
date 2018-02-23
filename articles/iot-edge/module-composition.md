@@ -9,11 +9,11 @@ ms.author: kgremban
 ms.date: 10/05/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: f3bc2f14b182e502c651ff44ef49b88cd34e1f50
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: 5de67b6f1ce79934a3a6aab623d2e77a56a8ce76
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="understand-how-iot-edge-modules-can-be-used-configured-and-reused---preview"></a>Megérteni, hogyan használható a IoT peremhálózati modulok, konfigurálva, és használja fel újra – előzetes
 
@@ -28,7 +28,7 @@ A *üzembe helyezési jegyzék* JSON-dokumentumok, amelyeket ismerteti:
 
 Az Azure IoT peremhálózati oktatóanyagok hoz egy üzembe helyezési jegyzék haladjon végig a varázsló az Azure IoT peremhálózati portálon létre. Egy üzembe helyezési jegyzék programozott módon, REST- vagy a IoT Hub SDK is alkalmazhat. Tekintse meg [telepítés és figyelés] [ lnk-deploy] IoT peremhálózati központi telepítések további információt.
 
-Magas szinten az üzembe helyezési jegyzék konfigurálja a kívánt tulajdonságokkal IoT peremhálózati eszköz a telepített IoT peremhálózati modulok. Ezek a modulok két mindig találhatók: a peremhálózati ügynök és a peremhálózati központ.
+Magas szinten az üzembe helyezési jegyzék konfigurálja az IoT peremhálózati modulok IoT peremhálózati eszköz a telepített egy modul iker kívánt tulajdonságait. Ezek a modulok két mindig találhatók: a peremhálózati ügynök és a peremhálózati központ.
 
 A jegyzékfájl Ez a struktúra követi:
 
@@ -96,10 +96,10 @@ A feltétel által támogatott bármely feltétel lehet a [IoT-központ lekérde
 
 A gyűjtő a következők egyike lehet:
 
-| a fogadó | Leírás |
+| Fogadó | Leírás |
 | ---- | ----------- |
 | `$upstream` | Az üzenet küldése az IoT hubhoz |
-| `BrokeredEndpoint("/modules/{moduleId}/inputs/{input}")` | A bemeneti üzenet küldése `{input}` modul`{moduleId}` |
+| `BrokeredEndpoint("/modules/{moduleId}/inputs/{input}")` | A bemeneti üzenet küldése `{input}` modul `{moduleId}` |
 
 Fontos megjegyezni, hogy él hub: legalább egyszeri garanciákat nyújt, ami azt jelenti, hogy üzenetek helyben lesz tárolva abban az esetben egy útvonalat nem lehet kézbesíteni az üzenetet a fogadó, pl. a peremhálózati hub nem lehet csatlakozni az IoT-központ vagy a cél modul nincs csatlakoztatva.
 
@@ -112,6 +112,8 @@ Az üzembe helyezési jegyzék adhatja meg a modul a két ügynök Edge szakasz�
 Ha az üzembe helyezési jegyzékben meg van adva a kívánt tulajdonságokkal, bármelyik kívánt tulajdonságot jelenleg a modul iker felülírja.
 
 Ha egy modul iker kívánt tulajdonságok az üzembe helyezési jegyzékben nincs megadva, az IoT-központ nem módosítják a modul iker bármely olyan módon, és állítsa be a kívánt tulajdonságokat programozott módon lesz.
+
+Ugyanazt a mechanizmust, amely lehetővé teszi az eszköz twins módosítása modul twins módosítására szolgálnak. Tekintse meg a [eszköz iker – útmutató fejlesztőknek](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-device-twins) további tájékoztatást talál.   
 
 ### <a name="deployment-manifest-example"></a>Manifest központi telepítés példája
 
@@ -209,12 +211,12 @@ Kívánt tulajdonságai vannak beállítva, amikor egy üzembe helyezési jegyz�
 | systemModules.edgeHub.settings.image | Az él központnak a lemezkép URI. | Igen |
 | systemModules.edgeHub.settings.createOptions | A peremhálózati hub tároló létrehozásához a beállításokat tartalmazó stringified JSON. [Docker-beállítások létrehozása][lnk-docker-create-options] | Nem |
 | systemModules.edgeHub.configuration.id | A telepítésben Ez a modul telepített azonosítója. | Ezt állítja be az IoT-központ alkalmazásakor a jegyzékfájlban központi telepítéssel. Nem része egy üzembe helyezési jegyzékben. |
-| modulok. {moduleId} .version | Ez a modul verziója megfelelő, felhasználó által definiált karakterláncot. | Igen |
-| modulok. {moduleId} .type | "Docker" lehet. | Igen |
-| modulok. {moduleId} .restartPolicy | {"soha" \| "a-sikertelen" \| "az-a nem megfelelő" \| "always"} | Igen |
-| modulok. {moduleId}.settings.image | A modul lemezkép URI. | Igen |
-| modulok. {moduleId}.settings.createOptions | A modul tároló létrehozásához a beállításokat tartalmazó stringified JSON. [Docker-beállítások létrehozása][lnk-docker-create-options] | Nem |
-| modulok. {moduleId}.configuration.id | A telepítésben Ez a modul telepített azonosítója. | Ezt állítja be az IoT-központ alkalmazásakor a jegyzékfájlban központi telepítéssel. Nem része egy üzembe helyezési jegyzékben. |
+| modules.{moduleId}.version | Ez a modul verziója megfelelő, felhasználó által definiált karakterláncot. | Igen |
+| modules.{moduleId}.type | "Docker" lehet. | Igen |
+| modules.{moduleId}.restartPolicy | {"soha" \| "a-sikertelen" \| "meg-a nem megfelelő" \| "always"} | Igen |
+| modules.{moduleId}.settings.image | A modul lemezkép URI. | Igen |
+| modules.{moduleId}.settings.createOptions | A modul tároló létrehozásához a beállításokat tartalmazó stringified JSON. [Docker-beállítások létrehozása][lnk-docker-create-options] | Nem |
+| modules.{moduleId}.configuration.id | A telepítésben Ez a modul telepített azonosítója. | Ezt állítja be az IoT-központ alkalmazásakor a jegyzékfájlban központi telepítéssel. Nem része egy üzembe helyezési jegyzékben. |
 
 ### <a name="edge-agent-twin-reported-properties"></a>Peremhálózati ügynök iker jelentett tulajdonságai
 
@@ -236,10 +238,10 @@ A következő táblázat az információt, amely a kívánt tulajdonságokkal á
 | lastDesiredVersion | Az int utolsó hivatkozik a kívánt tulajdonságokkal dolgozza fel a peremhálózati ügynök verzióját. |
 | lastDesiredStatus.code | Ez az az állapotkódot az Edge ügynök által látott utolsó kívánt tulajdonságokkal hivatkozik. Megengedett értékek: `200` sikeres, `400` Érvénytelen konfiguráció `412` érvénytelen séma verziója `417` a kívánt tulajdonságai nincsenek megadva, `500` sikertelen |
 | lastDesiredStatus.description | Az állapot szöveges leírása |
-| DeviceHealth | `healthy`Ha az összes modul futási állapotát `running` vagy `stopped`, `unhealthy` egyéb |
-| configurationHealth. {deploymentId} .health | `healthy`Ha a futási állapotát a központi telepítés {deploymentId} által beállított összes modul `running` vagy `stopped`, `unhealthy` egyéb |
+| DeviceHealth | `healthy` Ha az összes modul futási állapotát `running` vagy `stopped`, `unhealthy` egyéb |
+| configurationHealth.{deploymentId}.health | `healthy` Ha a futási állapotát a központi telepítés {deploymentId} által beállított összes modul `running` vagy `stopped`, `unhealthy` egyéb |
 | runtime.platform.OS | Jelentéskészítés az eszközön futó operációs rendszer |
-| Runtime.platform.Architecture | A Processzor architektúrájától Reporting az eszközön |
+| runtime.platform.architecture | A Processzor architektúrájától Reporting az eszközön |
 | systemModules.edgeAgent.runtimeStatus | A jelzett állapot peremhálózati ügynök: {"fut" \| "nem megfelelő"} |
 | systemModules.edgeAgent.statusDescription | A peremhálózati ügynök jelentett állapotát a leírását. |
 | systemModules.edgeHub.runtimeStatus | Biztonsági központ aktuális állapota: {"fut" \| "leállt" \| "sikertelen" \| "leállítási" \| "nem megfelelő"} |
@@ -249,13 +251,13 @@ A következő táblázat az információt, amely a kívánt tulajdonságokkal á
 | systemModules.edgeHub.lastExitTimeUtc | Ha biztonsági központ utolsó kilépett idő |
 | systemModules.edgeHub.lastRestartTimeUtc | Biztonsági központ utolsó újraindításakor idő |
 | systemModules.edgeHub.restartCount | Ez a modul az újraindítási házirend részeként újraindult ennyiszer. |
-| modulok. {moduleId} .runtimeStatus | A modul aktuális állapota: {"fut" \| "leállt" \| "sikertelen" \| "leállítási" \| "nem megfelelő"} |
-| modulok. {moduleId} .statusDescription | A modul sérült állapotba, ha az aktuális állapotát a leírását. |
-| modulok. {moduleId} .exitCode | Ha kilépett, a modul tároló által jelentett a kilépési kód |
-| modulok. {moduleId} .startTimeUtc | Ha a modul utolsó elindításának ideje |
-| modulok. {moduleId} .lastExitTimeUtc | Ha a modul utolsó kilépett idő |
-| modulok. {moduleId} .lastRestartTimeUtc | Ha a modul utolsó újraindítása idő |
-| modulok. {moduleId} .restartCount | Ez a modul az újraindítási házirend részeként újraindult ennyiszer. |
+| modules.{moduleId}.runtimeStatus | A modul aktuális állapota: {"fut" \| "leállt" \| "sikertelen" \| "leállítási" \| "nem megfelelő"} |
+| modules.{moduleId}.statusDescription | A modul sérült állapotba, ha az aktuális állapotát a leírását. |
+| modules.{moduleId}.exitCode | Ha kilépett, a modul tároló által jelentett a kilépési kód |
+| modules.{moduleId}.startTimeUtc | Ha a modul utolsó elindításának ideje |
+| modules.{moduleId}.lastExitTimeUtc | Ha a modul utolsó kilépett idő |
+| modules.{moduleId}.lastRestartTimeUtc | Ha a modul utolsó újraindítása idő |
+| modules.{moduleId}.restartCount | Ez a modul az újraindítási házirend részeként újraindult ennyiszer. |
 
 ## <a name="reference-edge-hub-module-twin"></a>Útmutató: Peremhálózati hub modul iker
 

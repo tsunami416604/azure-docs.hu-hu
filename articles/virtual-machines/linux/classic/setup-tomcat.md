@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2015
 ms.author: ningk
-ms.openlocfilehash: b76f6f7f53bc649fbc740a79e182f81f3fd983c7
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: f3bd3167c9a879a876774e5d91fbb10fd340c6a8
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="set-up-tomcat7-on-a-linux-virtual-machine-with-azure"></a>A Linux virtuális gépek Azure-ral Tomcat7 beállítása
 Apache Tomcat (vagy egyszerűen Tomcat is korábban Dzsakarta Tomcat) egy nyílt forráskódú webkiszolgáló és a servlet tároló fejlesztett az Apache szoftver Foundation (ASP). Tomcat valósítja meg, a Java Servlet és a Sun Microsystems JavaServer lapok (JSP) előírásoknak. Tomcat Java kód futtatására tiszta Java HTTP-web server környezetet biztosít. A legegyszerűbb konfiguráció, a Tomcat egyetlen operációs rendszer folyamatban fut. Ez a folyamat fut, a Java virtuális gép (JVM). Minden HTTP-kérelem böngészőből Tomcat végzi a rendszer a Tomcat folyamat külön szálban.  
@@ -55,7 +55,7 @@ Egy másik ezt a módszert előnye, hogy nem kell különböző jelszóból beje
 Kövesse az alábbi lépéseket az SSH hitelesítési kulcs létrehozásához.
 
 1. Töltse le és telepítse a PuTTYgen a következő helyről: [http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)
-2. Futtassa a Puttygen.exe.
+2. Run Puttygen.exe.
 3. Kattintson a **Generate** a kulcs létrehozásához. A folyamat során annak véletlenszerű növelhető az egér mozgatásával ablakban üres terület felett.  
    ![PuTTY kulcs generátor Képernyőkép az előállítás új kulcs gombra][1]
 4. A létrehozás folyamat után Puttygen.exe jeleníti meg az új nyilvános kulcshoz.  
@@ -64,7 +64,7 @@ Kövesse az alábbi lépéseket az SSH hitelesítési kulcs létrehozásához.
 6. Kattintson a **mentés titkos kulcs**, és mentse a munkafüzetet egy privateKey.ppk nevű fájlt.
 
 ### <a name="step-2-create-the-image-in-the-azure-portal"></a>2. lépés: A lemezkép létrehozása az Azure-portálon
-1. Az a [portal](https://portal.azure.com/), kattintson a **új** a tálcán a képfájl létrehozásához. Válassza ki a Linux képet, amely alapul, az igényeknek megfelelően. Az alábbi példában az Ubuntu 14.04 kép.
+1. Az a [portal](https://portal.azure.com/), kattintson a **hozzon létre egy erőforrást** a tálcán a képfájl létrehozásához. Válassza ki a Linux képet, amely alapul, az igényeknek megfelelően. Az alábbi példában az Ubuntu 14.04 kép.
 ![A portál, az új gombra megjelenítő képernyőkép][3]
 
 2. A **állomásnév**, adja meg a nevét, és az internetes ügyfeleket a virtuális gép elérésére használt URL-címet. Adja meg a DNS-nevét, például tomcatdemo utolsó része. Azure tomcatdemo.cloudapp.net, ekkor létrehozza URL-CÍMÉT.  
@@ -86,11 +86,11 @@ Az Azure-végpontok közé tartozik a TCP vagy UDP protokoll, valamint nyilváno
    ![Képernyőkép a virtuális gépek könyvtár][5]
 2. A virtuális géphez a végpont hozzáadásához kattintson a **végpontok** mezőbe.
    ![A végpontok mezőben képernyőkép][6]
-3. Kattintson az **Add** (Hozzáadás) parancsra.  
+3. Kattintson a **Hozzáadás** parancsra.  
 
    1. A végpont, adjon meg egy nevet a következőben szereplő végpontnál **végpont**, és írja be a 80-as **nyilvános Port**.  
 
-      A 80-as értékre állítva, nem kell tartalmaznia a portszámot a Tomcat elérésére használt URL-címben. Például http://tomcatdemo.cloudapp.net.    
+      A 80-as értékre állítva, nem kell tartalmaznia a portszámot a Tomcat elérésére használt URL-címben. For example, http://tomcatdemo.cloudapp.net.    
 
       Ha beállította azt egy másik értékre, például a 81-es, akkor Tomcat elérésére az URL-címet adja meg a portszámot. Például http://tomcatdemo.cloudapp.net:81 /.
    2. Adja meg a 8080-as **magánhálózati Port**. Alapértelmezés szerint a Tomcat a 8080-as TCP-portot figyeli. Ha módosította az alapértelmezett port a Tomcat figyelésére, frissítenie kell **magánhálózati Port** ugyanaz, mint a Tomcat port figyelésére kell.  
@@ -265,7 +265,7 @@ A csatlakozás után kell megjelennie a következőhöz hasonló:
         sudo yum telepítés w3m w3m-img
 
 
-        w3m 8080  
+        w3m http://localhost:8080  
 #### <a name="solution"></a>Megoldás
 
   * Ha a Tomcat-figyelési port nem ugyanaz, mint a végpont a virtuális gép felé irányuló forgalom a magánhálózati port, módosítania kell a magánhálózati port ugyanaz, mint a Tomcat port figyelésére.   

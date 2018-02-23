@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2017
 ms.author: kasing
-ms.openlocfilehash: 01bccb2f8d103faf77b39825a1f9ff663329ed7a
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: 38bc949917f6bb56486ad6267044ef2f19e33fcb
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-azure-powershell"></a>Telepítse át IaaS-erőforrásokra a klasszikus Azure Resource Manager Azure PowerShell használatával
 Ezeket a lépéseket mutatja be Azure PowerShell-parancsok használatával telepítse át az infrastruktúra erőforrásként egy szolgáltatási (IaaS) a klasszikus telepítési modellből az Azure Resource Manager telepítési modellhez.
@@ -59,7 +59,7 @@ A telepítési utasításokért lásd: [telepítése és konfigurálása az Azur
 Az áttelepítés végrehajtásához meg kell adni az előfizetés társadminisztrátoraként a [Azure-portálon](https://portal.azure.com).
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. A központ menüben válassza ki a **előfizetés**. Ha nem látja, válassza ki a **további szolgáltatások**.
+2. A központ menüben válassza ki a **előfizetés**. Ha nem látja, válassza ki a **minden szolgáltatás**.
 3. Keresse meg a megfelelő előfizetés bejegyzést, majd tekintse meg a **saját SZEREPKÖR** mező. Egy közös rendszergazda értékének kell _fiókadminisztrátor_.
 
 Ha nem tud társadminisztrátorának hozzáadni, majd kérje meg, egy szolgáltatás-rendszergazda vagy a közös rendszergazdát az előfizetéshez tartozó saját kezűleg hozzá.   
@@ -340,7 +340,7 @@ Az előkészített konfiguráció megfelelőnek tűnik, ha előre, és végleges
     Move-AzureStorageAccount -Commit -StorageAccountName $storageAccountName
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [IaaS-erőforrásokra a klasszikus Azure Resource Manager platform által támogatott áttelepítésének áttekintése](migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [Műszaki részletes bemutatója a platform által támogatott áttelepítési a klasszikus Azure Resource Managerbe](migration-classic-resource-manager-deep-dive.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [Az IaaS-erőforrások klasszikusból Azure Resource Manager-alapú környezetbe való áttelepítésének megtervezése](migration-classic-resource-manager-plan.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)

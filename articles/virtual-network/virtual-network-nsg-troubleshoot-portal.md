@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/23/2016
 ms.author: anithaa
-ms.openlocfilehash: 92816a5b1a74be5b64d974ad9ade47374db5db10
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 5998aa0e0b281ead859c24d792c3e175e3cca899
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="troubleshoot-network-security-groups-using-the-azure-portal"></a>Hálózati biztonsági csoportok az Azure portál használatával hibaelhárítása
 > [!div class="op_single_selector"]
@@ -47,7 +47,7 @@ Az alábbi lépésekkel hibáinak elhárítása az NSG-ket a virtuális gépek:
 A hatékony biztonsági szabályok teljes listáját megtekintheti a hálózati Adapterhez, maga a virtuális gépről. Azt is megteheti, módosítása, és a hálózati adapter és az alhálózati NSG-szabályok törlése a hatékony szabályokat paneljéről, ha Ön rendelkezik engedéllyel a műveletek végrehajtására.
 
 1. Az Azure portál, Azure-fiókkal rendelkező https://portal.azure.com bejelentkezni. Ön fiókjához társítva kell lenni a *Microsoft.Network/networkInterfaces/effectiveNetworkSecurityGroups/action* műveletet a hálózati adapter. Műveletek fiókokhoz rendeléséhez, lásd: [egyedi szerepkörök létrehozását, hozzáférés-vezérlési átruházásához](../active-directory/role-based-access-control-custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#actions).
-2. Kattintson a **további szolgáltatások**, majd kattintson a **virtuális gépek** a megjelenő listában.
+2. Kattintson a **minden szolgáltatás**, majd kattintson a **virtuális gépek** a megjelenő listában.
 3. Jelöljön ki egy virtuális Gépet, a listában megjelenő hibaelhárítása, és a beállítások egy virtuális gép panel jelenik meg.
 4. Kattintson a **derítse & felmerülő problémák megoldásához** , és válassza a gyakori probléma. Ehhez a példához **nem lehet csatlakozni a windowsos virtuális Gépemhez** van kiválasztva. 
    
@@ -96,7 +96,7 @@ A hatékony biztonsági szabályok teljes listáját megtekintheti a hálózati 
 Ha a virtuális gép forgalom áramlását kihatással van a megadott hálózati adapter, az alábbi lépések végrehajtásával a hatékony szabályok teljes listáját megtekintheti a hálózati adapter a hálózati adapterek környezetben:
 
 1. Az Azure portálon, a https://portal.azure.com bejelentkezni.
-2. Kattintson a **további szolgáltatások**, majd kattintson a **hálózati illesztőt** a megjelenő listában.
+2. Kattintson a **minden szolgáltatás**, majd kattintson **hálózati illesztőt** a megjelenő listában.
 3. Válasszon hálózati interfészt. Az alábbi képen látható, a hálózati adapter nevű *VM1-NIC1* van kiválasztva.
    
     ![](./media/virtual-network-nsg-troubleshoot-portal/image5.png)
@@ -113,7 +113,7 @@ Ha a virtuális gép forgalom áramlását kihatással van a megadott hálózati
 Ha módosítja az NSG-szabályok, érdemes lehet tekintse át a szabályok egy adott virtuális Gépet felvenni a hatását. A hatékony biztonsági szabályok teljes listáját megtekintheti a hálózati adapterek összes adataként megadott NSG, anélkül, hogy a megadott NSG paneljéről környezetben váltson. Az NSG belüli hatékony szabály elhárításához végezze el az alábbi lépéseket:
 
 1. Az Azure portálon, a https://portal.azure.com bejelentkezni.
-2. Kattintson a **további szolgáltatások**, majd kattintson a **hálózati biztonsági csoportok** a megjelenő listában.
+2. Kattintson a **minden szolgáltatás**, majd kattintson a **hálózati biztonsági csoportok** a megjelenő listában.
 3. Válasszon egy NSG. Az alábbi képen látható az NSG nevű VM1-NSG-t választotta ki.
    
     ![](./media/virtual-network-nsg-troubleshoot-portal/image6.png)

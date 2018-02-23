@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 084fdf2f9a65eed3e444851afb88390aacf33738
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0ae4e874d0fd0922295a4ec7ad719a0a1fb108c8
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="configuring-cluster-resource-manager-settings-for-service-fabric-services"></a>A Service Fabric-szolgáltatások fürt resource manager beállításainak konfigurálása
 A Service Fabric fürt erőforrás-kezelő lehetővé teszi, hogy a minden részletre kiterjedő szabályozhatják a minden személy nevű szolgáltatás meghatározó szabályok. Minden elnevezett szolgáltatás hogyan azt kell kiosztani a fürt szabályokat adhat meg. Minden elnevezett szolgáltatás is meghatározhatók szeretnének metrikák készletét a jelentéshez, beleértve a fontos hogyan vannak az adott szolgáltatáshoz. A három különböző feladatok szolgáltatások konfigurálása megszakad:
@@ -40,7 +40,7 @@ Nincsenek más típusú elhelyezési szabályokat, amelyek hasznosak lehetnek a 
 
 Más elhelyezési szabályokat korrelációk és házirendek úgy vannak konfigurálva.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - Adatok gyűjtése le hogyan kezeli a Service Fabric fürt erőforrás-kezelő a használati és a fürt teljes kapacitását. A metrikák és konfigurálásuk módját kapcsolatos további tudnivalókért tekintse meg [Ez a cikk](service-fabric-cluster-resource-manager-metrics.md)
 - Kapcsolat a szolgáltatások a állíthatja be az egyik mód. Nincs közös, de ha esetleg szükség lenne rá megismerheti az [Itt](service-fabric-cluster-resource-manager-advanced-placement-rules-affinity.md)
 - Nincsenek sok különböző elhelyezési szabályokat, amelyek a szolgáltatás nem tudja kezelni a további helyzeteket is konfigurálhatja. Azt is megtudhatja, azokat a különböző elhelyezési házirendeket kapcsolatos [Itt](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md)

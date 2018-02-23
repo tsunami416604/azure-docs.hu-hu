@@ -15,11 +15,11 @@ ms.date: 01/04/2018
 ms.author: billmath
 ms.reviewer: asteen
 ms.custom: it-pro
-ms.openlocfilehash: 00307311ca2bc1432f2de3755575adf1804f9c77
-ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
+ms.openlocfilehash: dc314d8d2a0e7a099b0eff294d43995ea3809c90
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="hide-an-application-from-users-experience-in-azure-active-directory"></a>Az alkalmazás a felhasználói élmény az Azure Active Directoryban elrejtése
 
@@ -38,7 +38,7 @@ A helyzettől függően az alábbi lépések segítségével alkalmazások a hoz
 Az alábbi lépések segítségével az alkalmazás a felhasználó hozzáférési panel és Office 365 app kilövők elrejtése.
 
 1.  Jelentkezzen be a [Azure-portálon](https://portal.azure.com) egy olyan fiókkal, amely a címtár globális rendszergazdája.
-2.  Válassza ki **további szolgáltatások**, adja meg **Azure Active Directory** a szövegmezőbe, majd válassza ki azt a **Enter**.
+2.  Válassza ki **minden szolgáltatás**, adja meg **Azure Active Directory** a szövegmezőbe, majd válassza ki azt a **Enter**.
 3.  Az a **Azure Active Directory - *directoryname***  képernyő (Ez azt jelenti, hogy az Azure ad Szolgáltatáshoz képernyőn a kezelt könyvtár), válasszon **vállalati alkalmazások**.
 ![Vállalati alkalmazások](media/active-directory-coreapps-hide-third-party-app/app1.png)
 4.  Az a **vállalati alkalmazások** képernyőn válassza ki **összes alkalmazás**. Kezelheti az alkalmazások listájának megtekintéséhez.
@@ -54,7 +54,7 @@ Az alábbi lépések segítségével az alkalmazás a felhasználó hozzáféré
 A következő lépésekkel minden Office 365-alkalmazást a hozzáférési panelen igényelheti elrejtése. Ezek az alkalmazások továbbra is formájában lesz látható az Office 365 portálra.
 
 1.  Jelentkezzen be a [Azure-portálon](https://portal.azure.com) egy olyan fiókkal, amely a címtár globális rendszergazdája.
-2.  Válassza ki **további szolgáltatások**, adja meg **Azure Active Directory** a szövegmezőbe, majd válassza ki azt a **Enter**.
+2.  Válassza ki **minden szolgáltatás**, adja meg **Azure Active Directory** a szövegmezőbe, majd válassza ki azt a **Enter**.
 3.  Az a **Azure Active Directory - *directoryname***  képernyő (Ez azt jelenti, hogy az Azure ad Szolgáltatáshoz képernyőn a kezelt könyvtár), válasszon **felhasználói beállítások**.
 4.  Az a **felhasználói beállítások** képernyőn, a **vállalati alkalmazások** kiválasztása **Igen** a **csak értesülhet az Office 365 portálOffice365-alkalmazások**.
 

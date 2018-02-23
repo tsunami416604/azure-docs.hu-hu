@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2018
 ms.author: billgib
-ms.openlocfilehash: eec7f9262dd8e8cccb5ba68cbe2f12581cd01470
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: a13eeb79320360da078ee19a61cc32a2e1f35354
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="provision-and-catalog-new-tenants-using-the--application-per-tenant-saas-pattern"></a>A Szolgáltatottszoftver-mintát bérlőnként alkalmazással biztosítása és a katalógus új bérlők
 
@@ -30,7 +30,7 @@ Ez a cikk két fő részből áll:
 * Egy oktatóanyag, amely kiemeli a minta PowerShell-kódot, amely éri el a kiépítési és katalogizálása
     * Az oktatóprogram a Wingtip jegyek minta SaaS-alkalmazáshoz, az önálló app típusú bérlői mintában igazodó.
 
-## <a name="application-per-tenant-pattern"></a>Alkalmazás típusú bérlői mintában
+## <a name="standalone-application-per-tenant-pattern"></a>Bérlői minta egy önálló alkalmazás
 Az önálló app típusú bérlői mintában a több-bérlős SaaS-alkalmazásokhoz több mintái egyike.  Ebben a mintában egy különálló alkalmazás ki van építve, az egyes bérlők számára. Az alkalmazás alkalmazás-szintű összetevők és az SQL-adatbázis foglalja magában.  Minden bérlő alkalmazás gyártója által biztosított előfizetés is telepíthető.  Másik lehetőségként az Azure kínál a [kezelt alkalmazások program](https://docs.microsoft.com/en-us/azure/managed-applications/overview) alkalmazás is lehet üzembe helyezett egy bérlői előfizetéshez és a bérlői nevében a szállító által felügyelt. 
 
    ![alkalmazás / bérlői minta](media/saas-standaloneapp-provision-and-catalog/standalone-app-pattern.png)
@@ -59,7 +59,7 @@ Mindegyik bérlő szükséges egy új Azure erőforráscsoport, amely erőforrá
 
 Ezen oktatóanyag segítségével megtanulhatja a következőket:
 * A katalógus kiépítése
-* A bérlői adatbázisok a katalógusban korábban telepített regisztrálása
+* A bérlői mintaadatbázisokat központilag telepített regisztrálása során korábban küldje el a katalógusban
 * Egy további bérlői kiépíteni, és regisztrálja a katalógusban
 
 Az Azure Resource Manager sablon telepítése és konfigurálja az alkalmazást, a bérlő adatbázis létrehozása és inicializálása azt bacpac fájl majd importálása szolgál. A kérést, előfordulhat, hogy több percig, mielőtt a műveletet kiváltó várósorba kerülnek.
@@ -148,3 +148,5 @@ Ez az oktatóanyag bemutatta az alábbiakat:
 > * Ügyfélszoftverek központi telepítése a Wingtip jegyek SaaS önálló alkalmazás.
 > * A kiszolgálók és adatbázisok, amelyek az alkalmazás alkotják.
 > * Hogyan mintaerőforrásokat leállításához kapcsolódó számlázási törlése.
+
+Ismerje meg az adatbázis-/-bérlő verziójával különböző több-bérlős forgatókönyvek támogatása céljából a katalógus használatáról az [Wingtip jegyek SaaS-alkalmazás](https://docs.microsoft.com/en-us/azure/sql-database/saas-dbpertenant-wingtip-app-overview).  

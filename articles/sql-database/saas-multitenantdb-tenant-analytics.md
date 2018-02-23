@@ -15,11 +15,11 @@ ms.devlang:
 ms.topic: article
 ms.date: 11/08/2017
 ms.author: anjangsh; billgib; genemi
-ms.openlocfilehash: 549b6abf5728e50ee365f40326263d391e4b26fd
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: c6c83f4ac93dd105b2f311250061b8880f5d2a5b
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="cross-tenant-analytics-using-extracted-data"></a>Több-bérlős analytics kibontott adatok használata
 
@@ -76,7 +76,7 @@ Az oktatóanyag teljesítéséhez meg kell felelnie az alábbi előfeltételekne
 - A Wingtip Szolgáltatottszoftver-parancsfájlok és az alkalmazás [forráskód](https://github.com/Microsoft/WingtipTicketsSaaS-MultiTenantDB) letöltődnek a Githubról. Ügyeljen arra, hogy *feloldása a zip-fájl* tartalmának kibontása előtt. Tekintse meg a [általános útmutatást](saas-tenancy-wingtip-app-guidance-tips.md) töltse le és feloldása a Wingtip jegyek Szolgáltatottszoftver-parancsfájlok lépéseit.
 - A Power BI Desktop telepítve van. [A Power BI Desktop letöltése](https://powerbi.microsoft.com/downloads/)
 - A köteg további bérlő van kiépítve, tekintse meg a [ **rendelkezés bérlők oktatóanyag**](saas-multitenantdb-provision-and-catalog.md).
-- Egy feladat fiókot és a feladat fiók adatbázis létrejött. Tekintse meg a megfelelő lépéseket a [ **séma felügyeleti oktatóanyag**](saas-multitenantdb-schema-management.md#create-a-job-account-database-and-new-job-account).
+- Egy feladat ügynök és a feladat ügynök adatbázis létrejött. Tekintse meg a megfelelő lépéseket a [ **séma felügyeleti oktatóanyag**](saas-multitenantdb-schema-management.md#create-a-job-agent-database-and-new-job-agent).
 
 ### <a name="create-data-for-the-demo"></a>A bemutató-adatok létrehozása
 
@@ -228,7 +228,7 @@ Korábban meg felderíteni, hogy a jegy értékesítési általában a kiszámí
 
 A Wingtip jegyek SaaS több-bérlős adatbázis-alkalmazás adatait bérlői trendeket megfigyelhető volt. Az alkalmazás megfelelően tájékoztatják a Szolgáltatottszoftver-alkalmazásszállítók számára az üzleti döntések más módokon is fontolóra. A bérlők igényeinek jobban elemeket, a szállítók is. Remélhetőleg ebben az oktatóanyagban van felszerelve, bérlői adatokon építve a vállalatok számára az adatvezérelt döntések elemzés végrehajtásához szükséges eszközök.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 

@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 01/25/2018
 ms.author: jdial
 ms.custom: 
-ms.openlocfilehash: 264dc38383b9adad70325f7fb7802b1dcf2da1c0
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 61100b9786245204502686a47e5aae2a6d210259
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-a-virtual-network-using-the-azure-portal"></a>Virtuális hálózat létrehozása az Azure Portallal
 
@@ -102,7 +102,7 @@ Kommunikáció a érvényesítéséhez *myVm2*, adja meg a következő parancsot
 mstsc /v:myVm2
 ```
 
-A távoli asztali kapcsolat nem sikeres, mert mindkét virtuális gép van rendelve a magánhálózati IP-címek a *alapértelmezett* alhálózat és a távoli asztal meg nyitva, alapértelmezés szerint a Windows tűzfalon keresztül. Biztosan csatlakozni tudjanak *myVm2* állomásnév szerint, mert az Azure DNS-névfeloldás automatikusan biztosít a virtuális hálózaton belül minden gazdagép. Egy parancs parancssori futtatásával pingelni a *myVm1*, a *myVm2*.
+A távoli asztali kapcsolat nem sikeres, mert mindkét virtuális gép van rendelve a magánhálózati IP-címek a *alapértelmezett* alhálózat és a távoli asztal meg nyitva, alapértelmezés szerint a Windows tűzfalon keresztül. Biztosan csatlakozni tudjanak *myVm2* állomásnév szerint, mert az Azure DNS-névfeloldás automatikusan biztosít a virtuális hálózaton belül minden gazdagép. Egy parancssorból ping *myVm1*, a *myVm2*.
 
 ```
 ping myvm1

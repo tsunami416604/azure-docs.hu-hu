@@ -14,11 +14,11 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
-ms.openlocfilehash: dbf531302e53ca52e24dbd2ba954defad391060f
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 9a4f85b88959fb90f156779d09d168e0ddbe3da5
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="topologies-for-azure-ad-connect"></a>Azure AD Connect-topológiák
 Ez a cikk ismerteti a különböző helyszíni és az Azure AD Connect szinkronizálási szolgáltatás, a kulcs integrációs megoldást használó Azure Active Directory (Azure AD) topológiákat. Ez a cikk egyaránt támogatott, és nem támogatott konfigurációkat tartalmazza.
@@ -114,7 +114,7 @@ Néhány Office 365 számítási feladattal bizonyos korlátozások a támogatot
 | Exchange Online | További információ a támogatott Exchange online hibrid topológiák: [hibrid telepítések esetén több Active Directory-erdő](https://technet.microsoft.com/library/jj873754.aspx). |
 | Skype Vállalati verzió | Több helyszíni erdővel használata esetén csak a fiók-erőforrás szolgának használata támogatott. További információkért lásd: [környezeti követelményei a Skype vállalati Server 2015](https://technet.microsoft.com/library/dn933910.aspx). |
 
-Ha nagyobb cég áll, akkor érdemes használni a [Office 365 PreferredDataLocation](active-directory-aadconnectsync-feature-preferreddatalocation.md) szolgáltatás. Ez lehetővé teszi, hogy adja meg, melyik adatközpontban régióban, a felhasználó resocues találhatók.
+Ha nagyobb cég áll, akkor érdemes használni a [Office 365 PreferredDataLocation](active-directory-aadconnectsync-feature-preferreddatalocation.md) szolgáltatás. Ez lehetővé teszi, hogy adja meg, melyik adatközpontban régióban, a felhasználó erőforrások találhatók.
 
 ## <a name="staging-server"></a>Átmeneti kiszolgáló
 ![Átmeneti kiszolgálói topológia](./media/active-directory-aadconnect-topologies/MultiForestStaging.png)

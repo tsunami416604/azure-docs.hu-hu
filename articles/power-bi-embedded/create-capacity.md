@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 09/28/2017
 ms.author: asaxton
-ms.openlocfilehash: 1902e5c18cd7083ceeda79e6b9e779e4baaf175a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: bf7eb967760338626cd7e0465b16dc570e5f582a
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-power-bi-embedded-capacity-in-the-azure-portal"></a>Power BI Embedded kapacitás létrehozása az Azure portálon
 
@@ -41,7 +41,7 @@ A rövid útmutató elvégzéséhez a következőkre lesz szüksége:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
-2. Válassza ki **+ (új)** > **adatok + analitika**.
+2. Válassza ki **hozzon létre egy erőforrást** > **adatok + analitika**.
 
 3. A keresőmezőbe, keresse meg a *Power BI Embedded*.
 
@@ -62,11 +62,11 @@ A rövid útmutató elvégzéséhez a következőkre lesz szüksége:
 
 6. Kattintson a **Létrehozás** gombra.
 
-Létrehozási általában tesz egy percet; gyakran csak néhány másodpercig. Ha a kiválasztott **rögzítés az irányítópulton**, keresse meg az irányítópultot az új kapacitás. Vagy keresse meg **további szolgáltatások** > **Power BI Embedded** megtekintéséhez, hogy készen áll-e a kapacitást.
+Létrehozási általában tesz egy percet; gyakran csak néhány másodpercig. Ha a kiválasztott **rögzítés az irányítópulton**, keresse meg az irányítópultot az új kapacitás. Vagy keresse meg **minden szolgáltatás** > **Power BI Embedded** megtekintéséhez, hogy készen áll-e a kapacitást.
 
 ![A Power BI Embedded kapacitással rendelkező Azure-portál irányítópultjának](media/create-capacity/azure-portal-dashboard.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az új Power BI Embedded kapacitás használatához tallózással keresse meg a Power BI felügyeleti portál munkaterületek hozzárendelni. További információkért lásd: [Kapacitások kezelése a Power BI Premium és a Power BI Embedded szolgáltatásban](https://powerbi.microsoft.com/documentation/powerbi-admin-premium-manage/).
 

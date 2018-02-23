@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/05/2016
 ms.author: edmaca
-ms.openlocfilehash: e49d1a0e0ccc6567d0a6841817667717ff5dba76
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 15b3b44e45a59f44bd9bbd96dce867cc87fa410c
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="manage-azure-data-lake-analytics-by-using-the-azure-portal"></a>Azure Data Lake Analytics kezelése az Azure portál használatával
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
@@ -33,7 +33,7 @@ ms.lasthandoff: 10/11/2017
 ### <a name="create-an-account"></a>Fiók létrehozása
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. Kattintson az **Új** > **Intelligencia és elemzés** > **Data Lake Analytics** elemre.
+2. Kattintson a **hozzon létre egy erőforrást** > **Eszközintelligencia + analitika** > **Data Lake Analytics**.
 3. Adja meg az alábbi elemek értékeit: 
    1. **Név**: a Data Lake Analytics-fiók nevét.
    2. **Előfizetés**: a fiók használható az Azure-előfizetés.
@@ -78,7 +78,7 @@ A Data Lake Analytics segítségével hozzáférés további zárolása a Data L
 
 Ha más Azure-szolgáltatásokkal, például az Azure Data Factory vagy a virtuális gépek, a Data Lake Analytics-fiók, győződjön meg arról, hogy **Azure-szolgáltatások engedélyezése** van kapcsolva **a**. 
 
-### <a name="set-up-a-firewall-rule"></a>A tűzfalszabályok beállítása
+### <a name="set-up-a-firewall-rule"></a>Tűzfalszabály beállítása
 
 1. Az Azure-portálon lépjen a Data Lake Analytics-fiókhoz.
 2. A bal oldali menüben kattintson **tűzfal**.
@@ -241,14 +241,14 @@ Nincs minden fiókhoz beállított alapértelmezett házirend. Az alapértelmeze
 1. Az Azure-portálon lépjen a Data Lake Analytics-fiókhoz.
 2. Kattintson a **Tulajdonságok** elemre.
 3. A **feladat elküldése korlátok**, keresse meg a szerkeszteni kívánt házirendet.
-4.  Hogy a **törlése** és **szerkesztése** beállítások, a tábla a jobb oldali oszlopban kattintson **...** .
+4.  Hogy a **törlése** és **szerkesztése** beállítások, a tábla a jobb oldali oszlopban kattintson **... **.
 
 ### <a name="additional-resources-for-job-policies"></a>További erőforrásokat a feladat házirendek
 * [Házirend által írt blogbejegyzés áttekintése](https://blogs.msdn.microsoft.com/azuredatalake/2017/06/08/managing-your-azure-data-lake-analytics-compute-resources-overview/)
 * [Fiók szintű szabályzatok által írt blogbejegyzés](https://blogs.msdn.microsoft.com/azuredatalake/2017/06/08/managing-your-azure-data-lake-analytics-compute-resources-account-level-policy/)
 * [Feladat szintű szabályzatok által írt blogbejegyzés](https://blogs.msdn.microsoft.com/azuredatalake/2017/06/08/managing-your-azure-data-lake-analytics-compute-resources-job-level-policy/)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Az Azure Data Lake Analytics áttekintése](data-lake-analytics-overview.md)
 * [Ismerkedés a Data Lake Analytics az Azure portál használatával](data-lake-analytics-get-started-portal.md)

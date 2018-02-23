@@ -1,19 +1,21 @@
-1. Jelentkezzen be az [Azure Portalra].
-2. Kattintson az **+ÚJ** > **Web + mobil** > **Mobile App** elemre, majd adjon meg egy nevet a mobilalkalmazás háttérrendszerének.
-3. Az **Erőforráscsoport** beállításánál válasszon ki egy létező erőforráscsoportot, vagy hozzon létre egy újat (az alkalmazás nevének használatával). 
+1. Jelentkezzen be a(z) a [Azure-portálon].
+2. Válassza ki **+ új** > **Web + mobil** > **mobilalkalmazás**, majd meg egy nevet a Mobile Apps háttér és.
+3. A **erőforráscsoport**, válasszon ki egy meglévő erőforráscsoportot, vagy hozzon létre egy újat (az alkalmazás neve használatával). 
+4. A **App Service-csomag**, az alapértelmezett terv (a a [Standard csomagra](https://azure.microsoft.com/pricing/details/app-service/)) van kiválasztva. Igény szerint kiválaszthatja egy másik csomagot, vagy [hozzon létre egy újat](../articles/app-service/app-service-plan-manage.md#create-an-app-service-plan). 
+
+   Az App Service-csomag beállításai határozzák meg a [helyét, a szolgáltatások, a költség és a számítási erőforrásokat](https://azure.microsoft.com/pricing/details/app-service/) az alkalmazáshoz társított. További információk az App Service csomagokban hogyan hozzon létre egy új csomagot egy másik tarifacsomagban réteg és a kívánt helyre, a következő látható: [Azure App Service-csomagok részletes áttekintése](../articles/app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md).
    
-    Kiválaszthat egy másik App Service-csomagot, vagy újat is létrehozhat. Az App Service-csomagokkal, valamint az új csomagok egy másik tarifacsomagban és a kívánt helyen történő létrehozásával kapcsolatos további információk: [Azure App Service plans in-depth overview](../articles/app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md) (Az Azure App Service-csomagok részletes áttekintése).
-4. Az **App Service-csomag** elemnél az alapértelmezett ([standard szintbe](https://azure.microsoft.com/pricing/details/app-service/) tartozó) csomag van kiválasztva. Igény szerint kiválaszthatja egy másik csomagot, vagy [hozzon létre egy újat](../articles/app-service/app-service-plan-manage.md#create-an-app-service-plan). Az App Service-csomag beállításai határozzák meg az alkalmazáshoz társított [helyet, szolgáltatásokat, költségeket és számítási erőforrásokat](https://azure.microsoft.com/pricing/details/app-service/). 
+5. Kattintson a **Létrehozás** gombra. Ebben a lépésben létrehozza a Mobile Apps háttér. 
+6. Az a **beállítások** ablaktáblán az új Mobile Apps háttér, válasszon **gyors üzembe helyezési** > saját ügyfélalkalmazás-platformjára > **adatbázis csatlakoztatása**. 
    
-    A csomag kiválasztása után kattintson a **Létrehozás** gombra. Létrejön a mobilalkalmazás háttérrendszere. 
-5. A mobilalkalmazás új háttérrendszerének **Beállítások** panelén kattintson az **Első lépések** lehetőségre, majd a saját ügyfélalkalmazás-platformjára, végül az **Adatbázis csatlakoztatása** lehetőségre. 
+   ![Kapcsolódás adatbázis megerősítése](./media/app-service-mobile-dotnet-backend-create-new-service/dotnet-backend-create-data-connection.png)
+7. Az a **adatkapcsolat hozzáadása** ablaktáblán válassza előbb **SQL-adatbázis** > **hozzon létre egy új adatbázist**. Adja meg az adatbázis nevét, válasszon egy tarifacsomagot, és válassza **Server**. Ezt az új adatbázist többször is felhasználhatja. Ha már rendelkezik adatbázissal ugyanazon a helyen, választhatja a **Meglévő adatbázis használata** lehetőséget is. Egy adatbázis egy másik helyen, mert a sávszélességhez kötődő költségekkel és nagyobb késleltetéssel járhat használata nem ajánlott.
    
-    ![](./media/app-service-mobile-dotnet-backend-create-new-service/dotnet-backend-create-data-connection.png)
-6. Az **Adatkapcsolat hozzáadása** panelen kattintson az **SQL Database** > **Új adatbázis létrehozása** lehetőségre, adja meg az adatbázis nevét a **Név** mezőben, válassza ki a tarifacsomagot, majd kattintson a **Kiszolgáló** elemre.  Ezt az új adatbázist többször is felhasználhatja. Ha már rendelkezik adatbázissal ugyanazon a helyen, választhatja a **Meglévő adatbázis használata** lehetőséget is. Más helyen található adatbázis használata nem ajánlott, mert ez további, a sávszélességhez kötődő költségekkel és nagyobb késleltetéssel járhat.
-   
-    ![](./media/app-service-mobile-dotnet-backend-create-new-service/dotnet-backend-create-db.png)
-7. Az **Új kiszolgáló** panelen írjon be egy egyedi kiszolgálónevet a **Kiszolgáló neve** mezőbe, adjon meg egy felhasználónevet és egy jelszót, jelölje be az **Azure-szolgáltatások kiszolgálói hozzáférésének engedélyezése** jelölőnégyzetet, majd kattintson az **OK** gombra. Létrejön az új adatbázis.
-8. Az **Adatkapcsolat hozzáadása** panelen kattintson a **Kapcsolati karakterlánc** elemre, írja be az adatbázishoz tartozó felhasználónevet és jelszót, majd kattintson az **OK** gombra. Várjon pár percet, amíg az adatbázis telepítése sikeresen befejeződik, mielőtt továbblépne.
+   ![Egy adatbázis kiválasztása](./media/app-service-mobile-dotnet-backend-create-new-service/dotnet-backend-create-db.png)
+8. A a **új kiszolgáló** ablaktáblán meg egy egyedi nevet a a **kiszolgálónév** adja meg a felhasználónevét és jelszavát, válassza ki **engedélyezése Azure-szolgáltatások kiszolgálói hozzáférésének**, válassza ki a  **OK**. Ez a lépés az új adatbázist hoz létre.
+9. Vissza a **adatkapcsolat hozzáadása** ablaktáblán válassza előbb **kapcsolati karakterlánc**, adja meg a felhasználónevet és jelszót az adatbázist, és válassza ki **OK**. 
+
+   Várjon néhány percet, amíg az adatbázis sikeresen telepített, mielőtt továbblép.
 
 <!-- URLs. -->
-[Azure Portalra]: https://portal.azure.com/
+[Azure-portálon]: https://portal.azure.com/

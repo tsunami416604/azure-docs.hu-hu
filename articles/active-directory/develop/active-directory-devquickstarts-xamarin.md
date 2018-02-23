@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/30/2017
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 94a7d35115420d455fe94e1173abf76622172f6f
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: 77ac6a7cfe089fa934592c412c75a9f33efde5e8
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="azure-ad-xamarin-getting-started"></a>Ismerkedés az Azure AD Xamarin
 [!INCLUDE [active-directory-devquickstarts-switcher](../../../includes/active-directory-devquickstarts-switcher.md)]
@@ -50,7 +50,7 @@ Ahhoz, hogy az alkalmazás a jogkivonatok lekérésére, először regisztrálja
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. A felső eszköztáron kattintson a fiókját. Ekkor a a **Directory** listára, válassza ki az Active Directory-bérlőt, ahol az alkalmazást regisztrálni kívánt.
-3. Kattintson a **több szolgáltatások** a bal oldali ablaktáblán, és válassza a **Azure Active Directory**.
+3. Kattintson a **minden szolgáltatás** a bal oldali ablaktáblán, és válassza a **Azure Active Directory**.
 4. Kattintson a **App regisztrációk**, majd válassza ki **Hozzáadás**.
 5. Hozzon létre egy új **natív ügyfélalkalmazás**, kövesse az utasításokat.
   * **Név** az alkalmazásnak, hogy a felhasználók ismerteti.
@@ -96,7 +96,7 @@ Most, hogy egy alkalmazást az Azure ad-ben, telepítse az adal-t, és az identi
 ## <a name="step-4-use-adal-to-get-tokens-from-azure-ad"></a>4. lépés: Használja az adal TÁRAT jogkivonatok lekérni az Azure AD
 Szinte teljes egészében az alkalmazás hitelesítési logikát létrejönnie `DirectorySearcher.SearchByAlias(...)`. Minden szükséges, a platform-specifikus projektben felelt meg a környezetfüggő paramétere a `DirectorySearcher` PCL.
 
-1. Nyissa meg a DirectorySearcher.cs, és adja hozzá az új paramétere a `SearchByAlias(...)` metódust. `IPlatformParameters`az a környezetfüggő paraméter, amely magában foglalja a platform-specifikus objektumok, amelyek a hitelesítés végrehajtásához szükséges adal-t.
+1. Nyissa meg a DirectorySearcher.cs, és adja hozzá az új paramétere a `SearchByAlias(...)` metódust. `IPlatformParameters` az a környezetfüggő paraméter, amely magában foglalja a platform-specifikus objektumok, amelyek a hitelesítés végrehajtásához szükséges adal-t.
 
     ```csharp
     public static async Task<List<User>> SearchByAlias(string alias, IPlatformParameters parent)
@@ -123,7 +123,7 @@ Ez a művelet továbbítja az adal-t az Azure AD-val kommunikációhoz szükség
     ...
     ```
 
-    `AcquireTokenAsync(...)`először próbálja elküldeni a kért erőforrás (az ebben az esetben Graph API) jogkivonatot arra kéri a felhasználóktól a hitelesítő adataikat (keresztül gyorsítótárazását, vagy frissíteni a régi jogkivonatok) nélkül. Szükség esetén ez mutatja felhasználók az Azure AD bejelentkezési oldal a kért token beszerzése előtt.
+    `AcquireTokenAsync(...)` először próbálja elküldeni a kért erőforrás (az ebben az esetben Graph API) jogkivonatot arra kéri a felhasználóktól a hitelesítő adataikat (keresztül gyorsítótárazását, vagy frissíteni a régi jogkivonatok) nélkül. Szükség esetén ez mutatja felhasználók az Azure AD bejelentkezési oldal a kért token beszerzése előtt.
 4. A hozzáférési jogkivonat csatolása a Graph API-kérelem a a **engedélyezési** fejléc:
 
     ```csharp

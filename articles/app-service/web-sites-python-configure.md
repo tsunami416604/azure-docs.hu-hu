@@ -15,11 +15,11 @@ ms.devlang: python
 ms.topic: article
 ms.date: 02/26/2016
 ms.author: huvalo
-ms.openlocfilehash: 86e19d5bb942937779665eb60d9dc0654c16747d
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: fa5f9afbc595f06bd41e8670fab7730b610f570e
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="configuring-python-with-azure-app-service-web-apps"></a>Python konfigurálása az Azure App Service Web Apps alkalmazások
 Ez az oktatóanyag ismerteti, szerzői és egy alapszintű Web Server átjáró felület (WSGI) kompatibilis Python alkalmazást beállításának beállítások [Azure App Service Web Apps](http://go.microsoft.com/fwlink/?LinkId=529714).
@@ -36,7 +36,7 @@ Az Azure piactéren a Bottle, a Django és a Flask keretrendszerek sablonjait ta
 ## <a name="web-app-creation-on-azure-portal"></a>Webalkalmazás létrehozása az Azure-portálon
 Ez az oktatóanyag azt feltételezi, hogy egy meglévő Azure-előfizetés és az Azure-portál eléréséhez.
 
-Ha még nem rendelkezik egy létező webalkalmazása, létrehozhat egyet a [Azure-portálon](https://portal.azure.com).  Kattintson az új gombra a bal felső sarokban, majd **Web + mobil** > **webalkalmazás**.
+Ha még nem rendelkezik egy létező webalkalmazása, létrehozhat egyet a [Azure-portálon](https://portal.azure.com). Kattintson a bal felső **hozzon létre egy erőforrást** > **Web + mobil** > **webalkalmazás**.
 
 ## <a name="git-publishing"></a>Git-közzététel
 Konfigurálja az újonnan létrehozott webalkalmazáshoz tartozó Git-közzétételt a [Local Git Deployment to Azure App Service](app-service-deploy-local-git.md) (Helyi Git-üzembehelyezés az Azure App Service-ben) részben megadott utasítások szerint. Ez az oktatóanyag a Git segítségével létrehozására, kezelésére és a Python webalkalmazás közzététele az Azure App Service.
@@ -207,9 +207,9 @@ Statikus fájlok a webkiszolgáló közvetlenül kezel, Python kódját, javítj
 
 A fenti példákban a lemezen a statikus fájlokat meg kell felelnie a hely URL-címét. Ez azt jelenti, hogy kérelmet `http://pythonapp.azurewebsites.net/static/site.css` szolgálja ki a fájl a lemezen `\static\site.css`.
 
-`WSGI_ALT_VIRTUALENV_HANDLER`van, amelyben meg kell határoznia a WSGI kezelő. A fenti példákban rendelkezik `app.wsgi_app` , mert a kezelő nevű függvény `wsgi_app` a `app.py` a gyökérmappában.
+`WSGI_ALT_VIRTUALENV_HANDLER` van, amelyben meg kell határoznia a WSGI kezelő. A fenti példákban rendelkezik `app.wsgi_app` , mert a kezelő nevű függvény `wsgi_app` a `app.py` a gyökérmappában.
 
-`PYTHONPATH`testre szabható, de ha a requirements.txt fájlban megadásával a virtuális környezetben telepíti a függőségek, nem szabad módosítani szeretné azt.
+`PYTHONPATH` testre szabható, de ha a requirements.txt fájlban megadásával a virtuális környezetben telepíti a függőségek, nem szabad módosítani szeretné azt.
 
 ## <a name="virtual-environment-proxy"></a>Virtuális környezet Proxy
 A következő parancsfájl beolvasni a WSGI kezelő, illetve aktiválja a virtuális környezet és a naplófájlok hibák szolgál. Általános és módosítások nélkül használható tervezték.
@@ -349,7 +349,7 @@ Tartalmát `ptvs_virtualenv_proxy.py`:
 ## <a name="troubleshooting---virtual-environment"></a>Hibaelhárítás – Virtuális környezet
 [!INCLUDE [web-sites-python-troubleshooting-virtual-environment](../../includes/web-sites-python-troubleshooting-virtual-environment.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információ: [Python fejlesztői központban](/develop/python/).
 
 > [!NOTE]

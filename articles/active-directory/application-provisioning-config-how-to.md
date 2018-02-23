@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: a41c09cc5a13c8326e22e315801b81c86d125c0e
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: da7050edae282c90c4f92c588ce8fe501ccba50d
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="how-to-configure-user-provisioning-to-an-azure-ad-gallery-application"></a>A felhasználók átadása egy Azure AD-katalógusában alkalmazás konfigurálása
 
@@ -31,7 +31,7 @@ Az Azure portálon a **kiépítési** egy vállalati alkalmazást jeleníti meg,
 
 Ha manuális az egyetlen mód egy adott alkalmazás látható, az azt jelenti, hogy nincs automatikus az Azure AD összekötő kiépítése még létrehozva az alkalmazás. Vagy az azt jelenti, hogy az alkalmazás nem támogatja a működéséhez szükséges felhasználói API szerint az automatikus létesítési összekötő létrehozásához.
 
-Ha azt szeretné, a megadott alkalmazások automatikus kiépítés támogatás kéréséhez, a kérelem kitöltheti <http://aka.ms/aadapprequest>.
+Ha azt szeretné, a megadott alkalmazások automatikus kiépítés támogatás kéréséhez, kitöltötte a kérelmek használatával az [Azure Active Directory Alkalmazáskérelmeinek](https://aka.ms/aadapprequest).
 
 ## <a name="configuring-an-application-for-automatic-provisioning"></a>Alkalmazások konfigurálása az Automatikus kiépítés
 
@@ -50,6 +50,6 @@ Alkalmazás oktatóprogramok találhatók [integrálhatja SaaS-alkalmazásokhoz 
 
 Kiépítés beállítása során figyelembe kell venni egy fontos dolog lehet áttekintése és konfigurálása a attribútum-leképezésekhez és a munkafolyamatok, amelyek meghatározzák, milyen felhasználói (vagy a csoport) tulajdonságok folyamata az Azure AD az alkalmazásnak. Ez magában foglalja a "egyező property" beállítás használható egyedileg azonosíthatja és felel meg a felhasználókat/csoportokat a két rendszer között. További információ a fontos folyamatban.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [Attribútum-leképezésekhez kiépítés az SaaS-alkalmazásokhoz az Azure Active Directory felhasználói testreszabása](https://docs.microsoft.com/azure/active-directory/active-directory-saas-customizing-attribute-mappings)
 

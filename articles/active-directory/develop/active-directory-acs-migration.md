@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/14/2017
 ms.author: dastrock
-ms.openlocfilehash: f3de9016fe29a51ab2c7fb9e93fcd33af0f0e871
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: f634adbacc8e1fc128ecef15ad38f2f8b28eb25d
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="migrate-from-the-azure-access-control-service"></a>A hozzáférés-vezérlés Azure-szolgáltatás áttelepítése
 
@@ -84,11 +84,11 @@ Minden Microsoft felhőszolgáltatás, amely fogadja a hozzáférés-vezérlés 
 | Szolgáltatás | Útmutatás |
 | ------- | -------- |
 | Azure Service Bus | [Közös hozzáférésű jogosultságkód áttelepítése](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-migrate-acs-sas) |
-| Az Azure Service Bus-továbbító | [Közös hozzáférésű jogosultságkód áttelepítése](https://docs.microsoft.com/azure/service-bus-relay/relay-migrate-acs-sas) |
-| Az Azure Managed Cache | [Migrate to Azure Redis Cache (Áttelepítés Azure Redis Cache-re)](https://docs.microsoft.com/azure/redis-cache/cache-faq#which-azure-cache-offering-is-right-for-me) |
-| Azure datamarket szolgáltatásból | [A kognitív szolgáltatások API-k áttelepítése](https://docs.microsoft.com/azure/machine-learning/studio/datamarket-deprecation) |
+| Azure Service Bus Relay | [Közös hozzáférésű jogosultságkód áttelepítése](https://docs.microsoft.com/azure/service-bus-relay/relay-migrate-acs-sas) |
+| Azure Managed Cache | [Migrate to Azure Redis Cache (Áttelepítés Azure Redis Cache-re)](https://docs.microsoft.com/azure/redis-cache/cache-faq#which-azure-cache-offering-is-right-for-me) |
+| Azure DataMarket | [A kognitív szolgáltatások API-k áttelepítése](https://docs.microsoft.com/azure/machine-learning/studio/datamarket-deprecation) |
 | BizTalk Services | [Az Azure App Service Logic Apps szolgáltatás áttelepítése](https://docs.microsoft.com/azure/machine-learning/studio/datamarket-deprecation) |
-| Az Azure Media Services | [Telepítse át az Azure AD-alapú hitelesítés](https://azure.microsoft.com/blog/azure-media-service-aad-auth-and-acs-deprecation/) |
+| Azure Media Services | [Telepítse át az Azure AD-alapú hitelesítés](https://azure.microsoft.com/blog/azure-media-service-aad-auth-and-acs-deprecation/) |
 | Azure Backup | [Az Azure Backup szolgáltatás ügynökének frissítése](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq) |
 
 <!-- Dynamics CRM: Migrate to new SDK, Dynamics team handling privately -->
@@ -145,7 +145,7 @@ Magas szinten *Azure Active Directory oka valószínűleg az áttelepítéshez a
 | OAuth 2.0 | Vázlat 13 támogatása | RFC 6749, a legtöbb modern megadását támogatása |
 | WS-Trust | Támogatott | Nem támogatott |
 | **Token formátumok** | | |
-| JWT-T | A béta támogatott | Támogatott |
+| JWT | A béta támogatott | Támogatott |
 | SAML 1.1 | Támogatott | Előzetes verzió |
 | SAML 2.0 | Támogatott | Támogatott |
 | SWT | Támogatott | Nem támogatott |
@@ -180,7 +180,7 @@ Egy másik módszert is, hogy kövesse [kódmintában](https://github.com/Azure-
 
 Ha úgy dönt, ezt a módszert használja, meg kell ismernie [kulcsváltás bejelentkezés az Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-signing-key-rollover). Ezt a módszert használja az Azure AD globális probléma jogkivonatok aláírókulcsot használja. Alapértelmezés szerint WIF nem frissíti automatikusan aláírási kulcsokat. Az Azure AD a globális aláírási kulcsokat forog, amikor a WIF-implementációjának szüksége van, a módosítások elfogadására irányuló elő kell készíteni.
 
-Ha integrálható az Azure AD keresztül az OpenID Connect vagy OAuth protokollt, javasoljuk, így. Tudunk kiterjedt dokumentáció és útmutatás az Azure AD integrálása a webes alkalmazás érhető el a [az Azure Active Directory fejlesztői útmutatója](http://aka.ms/aaddev).
+Ha integrálható az Azure AD keresztül az OpenID Connect vagy OAuth protokollt, javasoljuk, így. Tudunk kiterjedt dokumentáció és útmutatás az Azure AD integrálása a webes alkalmazás érhető el a [az Azure Active Directory fejlesztői útmutatója](https://aka.ms/aaddev).
 
 <!-- TODO: If customers ask about authZ, let's put a blurb on role claims here -->
 
@@ -208,7 +208,7 @@ Az alábbi táblázat összehasonlítja a szolgáltatások hozzáférés-vezérl
 | OAuth 2.0 | Vázlat 13 támogatása | RFC 6749, a legtöbb modern megadását támogatása |
 | WS-Trust | Támogatott | Nem támogatott |
 | **Token formátumok** | | |
-| JWT-T | A béta támogatott | Támogatott |
+| JWT | A béta támogatott | Támogatott |
 | SAML 1.1 | Támogatott | Nem támogatott |
 | SAML 2.0 | Támogatott | Nem támogatott |
 | SWT | Támogatott | Nem támogatott |
@@ -231,7 +231,7 @@ Ha úgy dönt, hogy az Azure AD B2C-e a legjobb áttelepítési útvonal az alka
 Bizonyos esetekben előfordulhat, hogy az Azure AD és az Azure AD B2C nem elegendő a hozzáférés-vezérlés cserélnie a webalkalmazások fő kód módosítása nélkül. Néhány gyakori példán állhatnak:
 
 - Jelentkezzen be például a Google vagy Facebook közösségi Identitásszolgáltatók a WIF vagy a WS-Federation használó webalkalmazásokat.
-- Hajtsa végre a közvetlen összevonási vállalati webalkalmazások szolgáltató azonosítsa a WS-Federation protokollon keresztül.
+- Webes alkalmazásokhoz, amelyek a vállalati identitásszolgáltató közvetlen összevonáshoz végre a WS-Federation protokollon keresztül.
 - A webes alkalmazásokat, amelyek a hozzáférés-vezérlés által kiállított jogkivonatokat a jogcím egy közösségi identitásszolgáltató (például a Google vagy Facebook-on) által kiállított jogkivonat van szükség.
 - Összetett token átalakítási szabályok, amelyek az Azure AD vagy az Azure AD B2C nem képesek alkalmazások.
 - Több-bérlős webes alkalmazásokhoz, amelyek ACS segítségével központilag kezelheti a sok különböző identitás-szolgáltatóktól összevonáshoz
@@ -282,7 +282,7 @@ Is használhatja az Azure AD kiszolgálók hitelesítéshez az OAuth ügyfél hi
 | Hogyan kell regisztrálni az ügyfél | Szolgáltatásidentitás létrehozása kezelési portál hozzáférés-vezérlés | Egy másik Azure AD-webalkalmazás létrehozása az Azure portálon |
 | Használt protokoll |-OAuth ÚJRAINDULÁS protokoll<br />-OAuth 2.0 Vázlat 13 ügyfél hitelesítő adatai megadják | OAuth 2.0 ügyfél hitelesítő adatai megadják |
 | Ügyfél-hitelesítési módszer |-Egyszerű jelszó<br />-Aláírt SWT<br />-Egy összevont identitáskezelési szolgáltató SAML jogkivonat |-Egyszerű jelszó<br />-A JWT aláírt |
-| Token formátumok |-JWT<br />-SAML 1.1<br />-SAML 2.0<br />-SWT<br /> | Csak a JWT |
+| Token formátumok |- JWT<br />-SAML 1.1<br />- SAML 2.0<br />- SWT<br /> | Csak a JWT |
 | Token átalakítása |-Jogcímeket adhatnak hozzá egyéni<br />-Ha-akkor egyszerű jogcímek kiállítási logika | Egyéni jogcímeket adhatnak hozzá | 
 | Konfigurációs és felügyeleti feladatok automatizálásához | Hozzáférés-vezérlési Management szolgáltatásban keresztül | A Microsoft Graph és az Azure AD Graph API használatával támogatott |
 

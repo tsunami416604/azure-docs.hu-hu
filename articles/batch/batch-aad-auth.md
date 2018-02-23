@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 09/28/2017
 ms.author: danlep
-ms.openlocfilehash: 82cd6e04693d0cf38b7608fb380a723291c87ffe
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 8ad9c3a779ca52140a78ae905e4825f3144976aa
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>Kötegelt szolgáltatási megoldások és az Active Directory hitelesítéséhez
 
@@ -92,7 +92,7 @@ Hitelesítés integrált hitelesítés, kell biztosítania az alkalmazás enged�
 
 Miután megismerte [az alkalmazás regisztrálva](#register-your-application-with-an-azure-ad-tenant), kövesse az alábbi lépéseket az Azure-portálon való hozzáférést, a Batch szolgáltatás:
 
-1. Az Azure portál bal oldali navigációs ablaktábláján válassza **több szolgáltatások**, kattintson a **App regisztrációk**.
+1. Az Azure portál bal oldali navigációs ablaktábláján válassza **minden szolgáltatás**. Kattintson a **App regisztrációk**.
 2. Keresse meg az alkalmazás regisztrációk a listában az alkalmazás nevét:
 
     ![Keresse meg az alkalmazás neve](./media/batch-aad-auth/search-app-registration.png)
@@ -124,7 +124,7 @@ Ha az alkalmazás egy egyszerű szolgáltatás végzi a hitelesítést, elküld 
 
 Kövesse az alábbi lépéseket az Azure-portálon:
 
-1. Az Azure portál bal oldali navigációs ablaktábláján válassza **több szolgáltatások**, kattintson a **App regisztrációk**.
+1. Az Azure portál bal oldali navigációs ablaktábláján válassza **minden szolgáltatás**. Kattintson a **App regisztrációk**.
 2. Keresse meg az alkalmazás regisztrációk a listában az alkalmazás nevét.
 3. Megjelenítés a **beállítások** panelen. Az a **API-hozzáférés** szakaszban jelölje be **kulcsok**.
 4. A kulcs létrehozásához adja meg a kulcs leírását. Ezután válassza ki a kulcs egy vagy két éves időtartammal. 

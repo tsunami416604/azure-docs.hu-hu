@@ -1,10 +1,10 @@
-Ebben a szakaszban a kód a meglévő Mobile Apps háttér-projekt egy leküldéses értesítést küldeni, minden alkalommal, amikor egy új listaelem frissítenie. Ez működteti a [sablon](../articles/notification-hubs/notification-hubs-templates-cross-platform-push-messages.md) funkció az Azure Notification Hubs, platformfüggetlen leküldéses értesítések engedélyezése. A különböző ügyfelek regisztrálva van a leküldéses értesítések sablonokkal, és egyetlen univerzális leküldéses el tudja érni a ügyfélplatformokon összes.
+Ebben a szakaszban a kód a meglévő Mobile Apps háttér-projekt egy leküldéses értesítést küldeni, minden alkalommal, amikor egy új listaelem frissítenie. Ez a folyamat által van-e kapcsolva a [sablon](../articles/notification-hubs/notification-hubs-templates-cross-platform-push-messages.md) funkció az Azure Notification Hubs, amely lehetővé teszi a platformok közötti leküldéses értesítések. A különböző ügyfelek regisztrálva van a leküldéses értesítések sablonokkal, és egyetlen univerzális leküldéses el tudja érni a ügyfélplatformokon összes.
 
 Válasszon egyet az alábbi eljárások a háttér-projekt típusának megfelelő&mdash;vagy [.NET háttér](#dotnet) vagy [Node.js háttér](#nodejs).
 
 ### <a name="dotnet"></a>.NET háttér-projekt
-1. A Visual Studióban, kattintson a jobb gombbal a projekt, és kattintson a **NuGet-csomagok kezelése**. Keresse meg `Microsoft.Azure.NotificationHubs`, és kattintson a **telepítése**. Ez telepíti a háttérből értesítések küldése a Notification Hubs könyvtárban.
-2. A kiszolgáló projektben nyissa meg a **tartományvezérlők** > **TodoItemController.cs**, és adja hozzá a következő using utasításokat:
+1. A Visual Studióban kattintson a jobb gombbal a projekt. Válassza ki **NuGet-csomagok kezelése**. Keresse meg `Microsoft.Azure.NotificationHubs`, majd válassza ki **telepítése**. Ez a folyamat telepíti a háttérből értesítések küldése a Notification Hubs könyvtárban.
+2. A kiszolgáló projektben nyissa meg a **tartományvezérlők** > **TodoItemController.cs**. Majd adja hozzá a következő using utasításokat:
 
         using System.Collections.Generic;
         using Microsoft.Azure.NotificationHubs;
@@ -16,7 +16,7 @@ Válasszon egyet az alábbi eljárások a háttér-projekt típusának megfelel�
         MobileAppSettingsDictionary settings =
             this.Configuration.GetMobileAppSettingsProvider().GetMobileAppSettings();
 
-        // Get the Notification Hubs credentials for the Mobile App.
+        // Get the Notification Hubs credentials for the mobile app.
         string notificationHubName = settings.NotificationHubName;
         string notificationHubConnection = settings
             .Connections[MobileAppSettingsKeys.NotificationHubConnectionString].ConnectionString;
@@ -25,8 +25,8 @@ Válasszon egyet az alábbi eljárások a háttér-projekt típusának megfelel�
         NotificationHubClient hub = NotificationHubClient
         .CreateClientFromConnectionString(notificationHubConnection, notificationHubName);
 
-        // Sending the message so that all template registrations that contain "messageParam"
-        // will receive the notifications. This includes APNS, GCM, WNS, and MPNS template registrations.
+        // Send the message so that all template registrations that contain "messageParam"
+        // receive the notifications. This includes APNS, GCM, WNS, and MPNS template registrations.
         Dictionary<string,string> templateParams = new Dictionary<string,string>();
         templateParams["messageParam"] = item.Text + " was added to the list.";
 
@@ -45,12 +45,12 @@ Válasszon egyet az alábbi eljárások a háttér-projekt típusának megfelel�
                 .Error(ex.Message, null, "Push.SendAsync Error");
         }
 
-    Ezt az elemet tartalmazó sablon értesítést küld. Szöveg, ha egy új elem szerepel.
+    Ez a folyamat, amely tartalmazza az elemet sablon értesítést küld. Szöveg, ha egy új elem szerepel.
 4. A projekt közzé.
 
 ### <a name="nodejs"></a>NODE.js háttér-projekt
 1. Ha még nem tette meg, [a gyors üzembe helyezés háttér-projekt letöltése](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#download-quickstart), vagy más használja a [az Azure portálon online szerkesztő](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#online-editor).
-2. Cserélje le a meglévő kódot a todoitem.js a következő:
+2. A meglévő kódot a todoitem.js cserélje le a következő kódot:
 
         var azureMobileApps = require('azure-mobile-apps'),
         promises = require('azure-mobile-apps/src/utilities/promises'),
@@ -60,17 +60,17 @@ Válasszon egyet az alábbi eljárások a háttér-projekt típusának megfelel�
 
         table.insert(function (context) {
         // For more information about the Notification Hubs JavaScript SDK,
-        // see http://aka.ms/nodejshubs
+        // see http://aka.ms/nodejshubs.
         logger.info('Running TodoItem.insert');
 
         // Define the template payload.
         var payload = '{"messageParam": "' + context.item.text + '" }';  
 
-        // Execute the insert.  The insert returns the results as a Promise,
+        // Execute the insert. The insert returns the results as a promise.
         // Do the push as a post-execute action within the promise flow.
         return context.execute()
             .then(function (results) {
-                // Only do the push if configured
+                // Only do the push if configured.
                 if (context.push) {
                     // Send a template notification.
                     context.push.send(null, payload, function (error) {
@@ -81,7 +81,7 @@ Válasszon egyet az alábbi eljárások a háttér-projekt típusának megfelel�
                         }
                     });
                 }
-                // Don't forget to return the results from the context.execute()
+                // Don't forget to return the results from the context.execute().
                 return results;
             })
             .catch(function (error) {
@@ -91,5 +91,5 @@ Válasszon egyet az alábbi eljárások a háttér-projekt típusának megfelel�
 
         module.exports = table;  
 
-    Ez egy új cikk behelyezésekor a item.text tartalmazó sablon értesítést küld.
-3. A fájlt a helyi számítógépen szerkesztésekor közzé a projekt.
+    Ez a folyamat, amely tartalmazza a item.text, ha egy új elem szerepel sablon értesítést küld.
+3. Ha manuálisan szerkeszti a fájlt a helyi számítógépen, közzé a projekt.

@@ -4,7 +4,7 @@ description: "Ez a cikk azt ismerteti, hogyan SQL Server feladatátvevő fürt p
 services: virtual-machines
 documentationCenter: na
 authors: MikeRayMSFT
-manager: jhubbard
+manager: craigg
 editor: monicar
 tags: azure-service-management
 ms.assetid: 9fc761b1-21ad-4d79-bebc-a2f094ec214d
@@ -16,11 +16,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 09/26/2017
 ms.author: mikeray
-ms.openlocfilehash: ec35b4a02c04d5b6d0bbf9049927529258c3825b
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 8c957b1f2b4466ba68d81885fb014ad4026a47d2
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="configure-sql-server-failover-cluster-instance-on-azure-virtual-machines"></a>Azure virtuális gépeken futó SQL Server-példány feladatátvevő fürt konfigurálása
 
@@ -117,7 +117,7 @@ Az előfeltételek teljesülnek folytassa a a feladatátvevő fürt. Az első l�
       >[!IMPORTANT]
       >Nem állíthatók be vagy rendelkezésre állási csoport egy virtuális gép létrehozása után módosítsa.
 
-   Kép kiválasztása a Azure piactérről. Használhatja a Piactéri lemezkép, amely tartalmazza a Windows Server és SQL Server, vagy csak a Windows Server. További információkért lásd: [áttekintése az SQL Server Azure virtuális gépeken](../../virtual-machines-windows-sql-server-iaas-overview.md)
+   Kép kiválasztása a Azure piactérről. Használhatja a Piactéri lemezkép, amely tartalmazza a Windows Server és SQL Server, vagy csak a Windows Server. További információkért lásd: [áttekintése az SQL Server Azure virtuális gépeken](virtual-machines-windows-sql-server-iaas-overview.md)
 
    Az Azure katalógusában hivatalos SQL Server-rendszerképeit közé tartozik a telepített SQL Server-példány, valamint az SQL Server telepítési szoftver és a szükséges kulcs.
 
@@ -352,7 +352,7 @@ A terheléselosztó létrehozása:
    - **Virtuális hálózati**: és a virtuális gépek ugyanahhoz a hálózathoz.
    - **Alhálózati**: a virtuális gépek azonos alhálózaton.
    - **Magánhálózati IP-cím**: az SQL Server FCI fürt hálózati erőforráshoz hozzárendelt azonos IP-cím.
-   - **előfizetés**: az Azure-előfizetést.
+   - **Előfizetés**: az Azure-előfizetést.
    - **Erőforráscsoport**: ugyanabban az erőforráscsoportban használják a virtuális gépeket.
    - **Hely**: Azure ugyanott használják a virtuális gépeket.
    Tekintse meg az alábbi képen látható:

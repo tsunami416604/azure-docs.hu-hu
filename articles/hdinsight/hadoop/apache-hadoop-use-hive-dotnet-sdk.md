@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/20/2017
 ms.author: jgao
-ms.openlocfilehash: 642b02b06caaa7f2c5df71227d75281c0778a483
-ms.sourcegitcommit: 901a3ad293669093e3964ed3e717227946f0af96
+ms.openlocfilehash: 93649c51c6dd6c158e3870a2fa75d92ae4579b7e
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="run-hive-queries-using-hdinsight-net-sdk"></a>A HDInsight .NET SDK használatával Hive-lekérdezések futtatása
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]
@@ -40,7 +40,7 @@ Ez a cikk megkezdése előtt rendelkeznie kell a következő elemek:
 
 * **A Visual Studio 2013 vagy 2015/2017**.
 
-## <a name="submit-hive-queries-using-hdinsight-net-sdk"></a>Küldje el a Hive-lekérdezéseket a HDInsight .NET SDK használatával
+## <a name="run-a-hive-query"></a>Hive-lekérdezések futtatása
 A HDInsight .NET SDK biztosít a .NET ügyféloldali kódtáraknál, így azokat könnyebben működéséhez a .NET-HDInsight-fürtökkel. 
 
 **Feladatok küldéséhez**

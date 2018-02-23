@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: bradsev
-ms.openlocfilehash: fed2e9af3e9765ce5a2486fe9468d3ca690a0d5d
-ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
+ms.openlocfilehash: 05884fd39db284e268f31987e5ad7a47b9f87ebf
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2018
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="move-data-from-an-on-premises-sql-server-to-sql-azure-with-azure-data-factory"></a>Adatok áthelyezése egy helyi SQL server SQL Azure és az Azure Data Factory
 Ez a témakör bemutatja, hogyan tárolt adatok mozgatása egy helyi SQL Server-adatbázis SQL Azure adatbázishoz keresztül Azure Blob Storage használata az Azure Data Factory (ADF).
@@ -61,12 +61,12 @@ Ez az oktatóanyag feltételezi, hogy rendelkezik:
 >
 >
 
-## <a name="upload-data"></a>Az adatok feltöltése a helyszíni SQL Server
+## <a name="upload-data"></a> Az adatok feltöltése a helyszíni SQL Server
 Használjuk a [NYC Taxi dataset](http://chriswhong.com/open-data/foil_nyc_taxi/) az áttelepítési folyamat bemutatásához. A következőt: Taxi adatkészlet érhető el, a feladás egy vagy több, az Azure blob storage leírtaknak megfelelően [NYC Taxi adatok](http://www.andresmh.com/nyctaxitrips/). Az adatok van két fájlt, a trip_data.csv fájlt, amely tartalmazza-e vissza adatokat, és a trip_far.csv fájlt, amely a jegy minden út kifizette ára részleteit tartalmazza. A minta és az ezek a fájlok leírása szerepelnek [NYC Taxi Utazgatással adatkészlet leírása](sql-walkthrough.md#dataset).
 
 Az itt megadott saját adatok eljárás igazítja, vagy hajtsa végre a következőt: Taxi adatkészlet szerint. Töltse fel a következőt: Taxi dataset a helyszíni SQL Server-adatbázisba, kövesse az ismertetett eljárás [tömeges adatok importálása az SQL Server-adatbázisba](sql-walkthrough.md#dbload). Ezek az utasítások az Azure virtuális gép az SQL Server, de a helyszíni SQL Server feltöltését eljárás megegyezik.
 
-## <a name="create-adf"></a>Egy Azure Data Factory létrehozása
+## <a name="create-adf"></a> Egy Azure Data Factory létrehozása
 Egy új Azure Data Factory és az erőforráscsoport létrehozására vonatkozó utasításokat a [Azure-portálon](https://portal.azure.com/) biztosított [hozzon létre egy Azure Data Factory](../../data-factory/v1/data-factory-build-your-first-pipeline-using-editor.md#create-a-data-factory). Az új ADF-példány neve *adfdsp* és az erőforráscsoport létrehozásánál *adfdsprg*.
 
 ## <a name="install-and-configure-up-the-data-management-gateway"></a>Telepítse és konfigurálja az adatkezelési átjáró mentése
@@ -113,7 +113,7 @@ Három definíciói az ADF adatcsatorna van szükség:
 >
 >
 
-### <a name="adf-table-onprem-sql"></a>A helyszíni SQL-tábla
+### <a name="adf-table-onprem-sql">A helyszíni SQL-tábla</a>
 A helyszíni SQL Server-definíció van megadva a következő JSON-fájlban:
 
         {
@@ -178,7 +178,7 @@ Másolás fájlba a tábla JSON-definícióból nevű *bloboutputtabledef.json* 
 
     New-AzureDataFactoryTable -ResourceGroupName adfdsprg -DataFactoryName adfdsp -File C:\temp\bloboutputtabledef.json  
 
-### <a name="adf-table-azure-sq"></a>Az SQL Azure-tábla
+### <a name="adf-table-azure-sql">Az SQL Azure-tábla</a>
 Definíciója a következő táblázatban az SQL Azure kimeneti (ebben a sémában az adatokat a blob érkező képezi le) a következőket:
 
     {

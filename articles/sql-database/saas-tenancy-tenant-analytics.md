@@ -1,5 +1,5 @@
 ---
-title: "Elemzési lekérdezések futtatása adatbázisok |} Microsoft Docs"
+title: "Futtassa a kibontott adatok több-bérlős analytics |} Microsoft Docs"
 description: "Több-bérlős elemzési lekérdezések kibontani a több Azure SQL Database adatbázist adatokkal."
 keywords: "sql database-oktatóanyag"
 services: sql-database
@@ -15,18 +15,18 @@ ms.devlang:
 ms.topic: article
 ms.date: 11/08/2017
 ms.author: anjangsh; billgib; genemi
-ms.openlocfilehash: fb4311f28f55cfeb3f07a441adde18ae95f39e90
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: 62f09a7ff353783b0f54202554d126bf59ee941a
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="cross-tenant-analytics-using-extracted-data"></a>Több-bérlős analytics kibontott adatok használata
 
-Ebben az oktatóanyagban, végezze el a teljes analytics forgatókönyvhöz. A forgatókönyv bemutatja, hogyan engedélyezheti a analytics a vállalkozások intelligens vonatkozó döntések meghozatalában. Minden bérlő adatbázisból beolvasott adatok felhasználásával, segítségével analytics betekintést nyerhet bérlői viselkedése, beleértve a minta Wingtip jegyek SaaS-alkalmazás használatát. Ebben a forgatókönyvben a három lépést foglal magában: 
+Ebben az oktatóanyagban, végezze el a teljes analytics forgatókönyvhöz. A forgatókönyv bemutatja, hogyan engedélyezheti a analytics a vállalkozások intelligens vonatkozó döntések meghozatalában. Minden bérlő adatbázisból beolvasott adatok felhasználásával, segítségével analytics betekintést nyerhet bérlői viselkedést és alkalmazás-használat. Ebben a forgatókönyvben a három lépést foglal magában: 
 
-1.  **Adatok kinyerése** minden bérlő adatbázisból az analytics-tárolóba.
-2.  **A kibontott adatok optimalizálása** analytics feldolgozásra.
+1.  **Bontsa ki** minden bérlő adatbázis adatait és **terhelés** az analytics-tárolóba.
+2.  **A kibontott adatok átalakítása** analytics feldolgozásra.
 3.  Használjon **üzleti intelligencia** kimenő hasznos insights, amelyek révén is ismerteti. megrajzolásához eszközök. 
 
 Ezen oktatóanyag segítségével megtanulhatja a következőket:
@@ -42,29 +42,28 @@ Ezen oktatóanyag segítségével megtanulhatja a következőket:
 
 ## <a name="offline-tenant-analytics-pattern"></a>Kapcsolat nélküli bérlői analytics minta
 
-SaaS-alkalmazások fejlesztése bérlői adatok a felhőben tárolt hatalmas mennyiségű hozzáféréssel rendelkeznek. Az adatokat biztosít a művelet és az alkalmazás használatát, és a bérlők viselkedését insights gazdag forrását. Ezek insights szolgáltatás fejlesztési használhatóság fejlesztések és egyéb befektetések az alkalmazás és a platform is ismerteti.
+Több-bérlős SaaS-alkalmazásokhoz általában rendelkeznek bérlői adatok a felhőben tárolt hatalmas mennyiségű. Ezeket az adatokat biztosít a művelet észrevételeket gazdag forrását és az alkalmazás használatát, és a bérlők viselkedését. Ezek insights szolgáltatás fejlesztési használhatóság fejlesztések és egyéb befektetések az alkalmazás és a platform is ismerteti.
 
-Az adatok elérése az összes bérlőre vonatkozó használata egyszerű, amikor az adatok csak egy több-bérlős adatbázisban. De a hozzáférés összetettebb, ha akár több ezer adatbázis léptékű pontjain. Egy összetettségét tame módja analytics adatbázisba vagy az adatraktárban adatokat nyerhet ki. Majd lekérdezése az analytics tároló az elemzések gyűjtését a jegyektől adatok minden bérlő.
+Az összes bérlőre vonatkozó adatok elérése használata egyszerű, amikor az adatok csak egy több-bérlős adatbázisban. De a hozzáférés összetettebb, amikor adatbázisok több ezer léptékű pontjain. Tame összetettségét, valamint a tranzakciós adatok elemzési lekérdezések gyakorolt hatásának minimalizálása érdekében egy módja az adatok kinyerése a célra készült elemzés adatbázis vagy adatraktár.
 
-Ez az oktatóanyag egy teljes analytics-forgatókönyvet az adott minta SaaS-alkalmazáshoz mutat. Első, a rugalmas feladatok adatokat az egyes bérlői adatbázisból kibontásával ütemezésére szolgálnak. Az adatküldés analytics tárolóhoz. Az analytics-tároló egy SQL-adatbázis vagy egy SQL Data Warehouse sikerült lennie. A nagyméretű adatok kiolvasásához [Azure Data Factory](../data-factory/introduction.md) commended van.
+Ez az oktatóanyag a Wingtip jegyek SaaS-alkalmazás teljes analytics forgatókönyv mutat. Első, *rugalmas feladatok* adatok kinyerése minden egyes bérlői adatbázisához, és töltse be az átmeneti tárolási táblákból analytics tárolóban. Az analytics-tároló egy SQL-adatbázis vagy egy SQL Data Warehouse sikerült lennie. A nagyméretű adatok kiolvasásához [Azure Data Factory](../data-factory/introduction.md) ajánlott.
 
-Ezt követően az összesített adatokat egy aprítva-e [csillag-séma](https://www.wikipedia.org/wiki/Star_schema) táblákat. A táblák egy központi ténytábla és a kapcsolódó dimenziótáblák foglalják magukban:
+Ezt követően az összesített adatok olyan készlete alakul [csillag-séma](https://www.wikipedia.org/wiki/Star_schema) táblákat. A táblák egy központi ténytábla és a kapcsolódó dimenziótáblák áll.  A jegyektől Wingtip:
 
 - A csillag-séma a központi ténytábla jegy adatokat tartalmaz.
-- A dimenziótáblák helyszínek, események, az ügyfelek adatait tartalmazza, és dátumokat vásároljon.
+- A dimenziótáblák helyszínek, események, az ügyfelek leíró, és dátumokat vásároljon.
 
-Együtt a központi és táblák engedélyezése hatékony analitikai dimenziófeldolgozás. Ebben az oktatóanyagban használt csillag-séma a következő kép jelenik meg:
+A központi tény- és dimenziótáblák táblák együtt hatékony elemzésfeldolgozási engedélyezése. Ebben az oktatóanyagban használt csillag-séma a következő ábrán látható:
  
 ![architectureOverView](media/saas-tenancy-tenant-analytics/StarSchema.png)
 
-Végezetül a csillag-séma táblák megkérdezi a. A lekérdezés eredményeinek vizuálisan megjelennek a jelölje ki a bérlő viselkedést és az alkalmazás használatát. A csillag-sémát a lekérdezések, amelyek segítenek a következőhöz hasonló elemek felderítése is futtathatja:
+Végezetül az analytics tároló le kell kérdezni használatával **Power bi** jelölje ki a bérlő viselkedést és a Wingtip jegyek alkalmazás használatát. Lekérdezéseket futtat, amely:
+ 
+- Az egyes helyszínekkel relatív időben népszerűvé vált megjelenítése
+- Jelölje ki a minták jegy értékesítési különböző események esetén
+- Különböző helyszínek relatív sikeres eladási ki az esemény megjelenítése
 
-- Ki van vásárlás jegyek és mely helyszínére.
-- Rejtett mintákat és trendeket a következő területeken:
-    - A jegyektől az értékesítési.
-    - Az egyes helyszínekkel relatív népszerűségét.
-
-Mindegyik bérlő következetesen hogyan használja a szolgáltatás ismertetése elemeket, igényeiknek service-csomagok létrehozása lehetőséget kínál. Ez az oktatóanyag példákat alapvető insights, amely a bérlői adataiból adatokat is.
+Mindegyik bérlő hogyan használja a szolgáltatás ismertetése felfedezése, mely beállítások monetizing a szolgáltatást, és javítják a szolgáltatás segítségével sikeresebb bérlők szolgál. Ez az oktatóanyag, amely a bérlői adataiból adatokat is insights típusú alapvető példákat tartalmaz.
 
 ## <a name="setup"></a>Beállítás
 
@@ -76,7 +75,7 @@ Az oktatóanyag teljesítéséhez meg kell felelnie az alábbi előfeltételekne
 - A Wingtip jegyek SaaS adatbázis / bérlői parancsfájlok és az alkalmazás [forráskód](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant/) letöltődnek a Githubról. Lásd: Töltse le az utasításokat. Ügyeljen arra, hogy *feloldása a zip-fájl* tartalmának kibontása előtt. Tekintse meg a [általános útmutatást](saas-tenancy-wingtip-app-guidance-tips.md) töltse le és feloldása a Wingtip jegyek Szolgáltatottszoftver-parancsfájlok lépéseit.
 - A Power BI Desktop telepítve van. [A Power BI Desktop letöltése](https://powerbi.microsoft.com/downloads/)
 - A köteg további bérlő van kiépítve, tekintse meg a [ **rendelkezés bérlők oktatóanyag**](saas-dbpertenant-provision-and-catalog.md).
-- Egy feladat fiókot és a feladat fiók adatbázis létrejött. Tekintse meg a megfelelő lépéseket a [ **séma felügyeleti oktatóanyag**](saas-tenancy-schema-management.md#create-a-job-account-database-and-new-job-account).
+- Egy feladat fiókot és a feladat fiók adatbázis létrejött. Tekintse meg a megfelelő lépéseket a [ **séma felügyeleti oktatóanyag**](saas-tenancy-schema-management.md#create-a-job-agent-database-and-new-job-agent).
 
 ### <a name="create-data-for-the-demo"></a>A bemutató-adatok létrehozása
 
@@ -228,7 +227,7 @@ Korábban meg felderíteni, hogy a jegy értékesítési általában a kiszámí
 
 A WingTip alkalmazás bérlői adatait trendeket megfigyelhető volt. Az alkalmazás megfelelően tájékoztatják a Szolgáltatottszoftver-alkalmazásszállítók számára az üzleti döntések más módokon is fontolóra. A bérlők igényeinek jobban elemeket, a szállítók is. Remélhetőleg ebben az oktatóanyagban van felszerelve, bérlői adatokon építve a vállalatok számára az adatvezérelt döntések elemzés végrehajtásához szükséges eszközök.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 

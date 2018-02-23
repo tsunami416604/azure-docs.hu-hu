@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 03/01/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2b9ad6da3963fefc5441581d113f6f690bd72be0
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: d46b869815fef44a8137bb5121133a1c0140ca30
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="working-with-management-solutions-in-azure-preview"></a>Felügyeleti megoldások Azure (előzetes verzió) használatával
 > [!NOTE]
@@ -36,7 +36,7 @@ Több módon keresése és telepítése a felügyeleti megoldás, a következő 
 A Microsoft által biztosított megoldások és megbízható partnerei az Azure-portálon az Azure piactérről is települ.
 
 1. Jelentkezzen be az Azure Portalra.
-2. A bal oldali panelen válassza ki a **további szolgáltatások**.
+2. A bal oldali panelen válassza ki a **minden szolgáltatás**.
 3. Görgessen le a vagy **megoldások** vagy típus *megoldások* be a **szűrő** párbeszédpanel.
 4. Kattintson a **+ Hozzáadás** gombra.
 5. Keresse meg a megoldások, amelyek továbbra is érdekli vagy keresse meg azt, kattintson a **szűrő** gombra, vagy írja be a a **keresési Everthing** mezőbe.
@@ -92,7 +92,7 @@ Ellenőrizheti a Naplóelemzési munkaterület és a következő eljárás segí
 A következő eljárás segítségével a tekintse meg a felügyeleti megoldásokra a munkaterületek csatolva az Azure-előfizetéshez.
 
 1. Jelentkezzen be az Azure Portalra.
-2. A bal oldali panelen válassza ki a **további szolgáltatások**.
+2. A bal oldali panelen válassza ki a **minden szolgáltatás**.
 3. Görgessen le a vagy **megoldások** vagy típus *megoldások* be a **szűrő** párbeszédpanel.
 4. A munkaterületek telepített megoldások jelenik meg.
 

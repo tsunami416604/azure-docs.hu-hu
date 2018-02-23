@@ -17,11 +17,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/11/2017
 ms.author: jgao
-ms.openlocfilehash: 864d34306dad2915a15b032a27600cefdc632bb9
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.openlocfilehash: 0e1d7b46aeaf8f21fdf2942f986643746dad3313
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="use-spark-mllib-to-build-a-machine-learning-application-and-analyze-a-dataset"></a>Spark MLlib segítségével a machine learning-alkalmazás létrehozása és elemzése a DataSet adatkészlet
 
@@ -79,9 +79,9 @@ Az alábbi lépéseket, a most kialakított egy modell megtekintéséhez, mi tar
         from pyspark.sql.types import *
 
 ## <a name="construct-an-input-dataframe"></a>Egy bemeneti dataframe szerkezet
-Használhatunk `sqlContext` csatlakoztatva átalakításokat hajthattak végre a strukturált adatok. Az első feladata a mintaadatok betöltése ((**Food_Inspections1.csv**)) egy Spark SQL *dataframe*.
+Használhat `sqlContext` csatlakoztatva átalakításokat hajthattak végre a strukturált adatok. Az első feladata a mintaadatok betöltése ((**Food_Inspections1.csv**)) egy Spark SQL *dataframe*.
 
-1. Mivel a nyers adatok CSV formátumban, igazolnia kell a Spark-környezet használata való lekérésére a fájl minden sora a memóriába strukturálatlan szövegként; Ezt követően használja a Python a fürt megosztott kötetei szolgáltatás könyvtár minden sort külön-külön elemzése.
+1. Mivel a nyers adatok CSV formátumban, kell használnia a Spark-környezetben való lekérésére a fájl minden sora a memóriába strukturálatlan szövegként; Ezt követően használja a Python a fürt megosztott kötetei szolgáltatás könyvtár minden sort külön-külön elemzése.
 
         def csvParse(s):
             import csv
@@ -93,7 +93,7 @@ Használhatunk `sqlContext` csatlakoztatva átalakításokat hajthattak végre a
 
         inspections = sc.textFile('wasb:///HdiSamples/HdiSamples/FoodInspectionData/Food_Inspections1.csv')\
                         .map(csvParse)
-1. Most már tudunk a CSV-fájlt, egy RDD.  Szeretné megtudni, az adatok a séma, nem beolvasni egy sort a RDD.
+1. Most már rendelkezik egy RDD, a CSV-fájlt.  Tudni, hogy az adatok a séma, akkor le egy sort a RDD.
 
         inspections.take(1)
 
@@ -120,7 +120,7 @@ Használhatunk `sqlContext` csatlakoztatva átalakításokat hajthattak végre a
           '41.97583445690982',
           '-87.7107455232781',
           '(41.97583445690982, -87.7107455232781)']]
-1. Az előző kimeneti biztosítanak számunkra a bemeneti fájl séma képet. Ez magában foglalja a minden létrehozását, a kialakítása, a címet, és az ellenőrzések, a helyre, többek között az adatok nevét. Néhány oszlopot, amely a prediktív elemzési során hasznosak, és csoportosítsa az eredményeket egy dataframe, amely majd használatával hozzon létre egy ideiglenes táblát, most kiválasztása
+1. Az előző kimeneti biztosítanak számunkra a bemeneti fájl séma képet. Ez magában foglalja a minden létrehozását, a kialakítása, a címet, és az ellenőrzések, a helyre, többek között az adatok nevét. Most kiválasztása néhány oszlopot, amely a prediktív elemzési során hasznosak, és csoportosítsa az eredményeket, egy dataframe, amelyet a későbbiekben egy ideiglenes tábla létrehozásához használhat.
 
         schema = StructType([
         StructField("id", IntegerType(), False),
@@ -130,7 +130,7 @@ Használhatunk `sqlContext` csatlakoztatva átalakításokat hajthattak végre a
 
         df = sqlContext.createDataFrame(inspections.map(lambda l: (int(l[0]), l[1], l[12], l[13])) , schema)
         df.registerTempTable('CountResults')
-1. Most már rendelkezik egy *dataframe*, `df` amelyen most a elemzés elvégezni. Egy ideiglenes tábla hívás is tudunk **CountResults**. Azt a dataframe jelentőséggel négy oszlop szerepel: **azonosító**, **neve**, **eredmények**, és **megsértésének**.
+1. Most már rendelkezik egy *dataframe*, `df` amelyiken az elemzés végezheti el. Azt is, hogy egy ideiglenes tábla hívás **CountResults**. Azt a dataframe jelentőséggel négy oszlop szerepel: **azonosító**, **neve**, **eredmények**, és **megsértésének**.
 
     Folytassuk az adatok mintát:
 
@@ -172,7 +172,7 @@ Használhatunk `sqlContext` csatlakoztatva átalakításokat hajthattak végre a
         |  Pass w/ Conditions|
         |     Out of Business|
         +--------------------+
-1. Gyors képi megjelenítés segíthet OK információ ezen eredmények a terjesztéséről. Egy ideiglenes tábla az adatok már tudunk **CountResults**. A következő SQL-lekérdezés futtatható jobb megértése, hogyan jutnak el az eredmények eléréséhez a táblázaton.
+1. Gyors képi megjelenítés segíthet OK információ ezen eredmények a terjesztéséről. Már az adatok egy ideiglenes tábla **CountResults**. A következő SQL-lekérdezés futtatható jobb megértése, hogyan jutnak el az eredmények eléréséhez a táblázaton.
 
         %%sql -o countResultsdf
         SELECT results, COUNT(results) AS cnt FROM CountResults GROUP BY results
@@ -203,12 +203,12 @@ Használhatunk `sqlContext` csatlakoztatva átalakításokat hajthattak végre a
 
    * Nem található üzleti
    * Sikertelen
-   * Fázis
+   * Sikeres
    * Feltételek keresztüli rendelkező PSS
    * Üzleti kívül
 
-     Ossza meg velünk fejlesztése modell, amely kitalálni a egy étele ellenőrző eredményeit a megsértésének megadott. Mivel logisztikai regresszió egy bináris osztályozási módszer, így az adatok csoportosításához két kategóriába sorolhatók: **sikertelen** és **átadni**. Egy "átadni keresztüli rendelkező feltételek" még nem állt le a hozzáférési, ha azt a modell betanítását, javasolt a két eredményt egyenértékű. Az eredmények ("Üzleti nem található" vagy "Out üzleti") adatok, hogy távolítsa el azokat a gyakorlókészlethez nem hasznosak. Ez kell lennie rendben, mivel ezek két kategóriába mégis jött létre az eredmények nagyon kis százalékát.
-1. Ossza meg velünk lépjen tovább, és alakítsa át a meglévő dataframe (`df`) egy új dataframe, ahol minden egyes ellenőrzés címke-megsértésének párban szerepel-e be. Ebben az esetben a címke `0.0` jelenti. a hiba, a címkék `1.0` sikeres, és a címke jelöli `-1.0` egyes eredményeket e két mellett jelöli. A Microsoft kiszűrhetők az egyéb eredmények az új adatok keret számításakor.
+     Ossza meg velünk fejlesztése modell, amely kitalálni a egy étele ellenőrző eredményeit a megsértésének megadott. Mivel logisztikai regresszió egy bináris osztályozási módszer, így az adatok csoportosításához két kategóriába sorolhatók: **sikertelen** és **átadni**. Egy "átadni keresztüli rendelkező feltételek" még nem állt le a hozzáférési, ha a modell betanítását, érdemes a két eredményt egyenértékű. Az eredmények ("Üzleti nem található" vagy "Out üzleti") adatok, akkor távolítsa el azokat a gyakorlókészlethez nem hasznosak. Ez kell lennie rendben, mivel ezek két kategóriába mégis jött létre az eredmények nagyon kis százalékát.
+1. Ossza meg velünk lépjen tovább, és alakítsa át a meglévő dataframe (`df`) egy új dataframe, ahol minden egyes ellenőrzés címke-megsértésének párban szerepel-e be. Ebben az esetben a címke `0.0` jelenti. a hiba, a címkék `1.0` sikeres, és a címke jelöli `-1.0` egyes eredményeket e két mellett jelöli. Az egyéb eredmények ki szűrni, amikor az új adatok keretet számítástechnika.
 
         def labelForResults(s):
             if s == 'Fail':
@@ -233,11 +233,11 @@ Használhatunk `sqlContext` csatlakoztatva átalakításokat hajthattak végre a
         [Row(label=0.0, violations=u"41. PREMISES MAINTAINED FREE OF LITTER, UNNECESSARY ARTICLES, CLEANING  EQUIPMENT PROPERLY STORED - Comments: All parts of the food establishment and all parts of the property used in connection with the operation of the establishment shall be kept neat and clean and should not produce any offensive odors.  REMOVE MATTRESS FROM SMALL DUMPSTER. | 35. WALLS, CEILINGS, ATTACHED EQUIPMENT CONSTRUCTED PER CODE: GOOD REPAIR, SURFACES CLEAN AND DUST-LESS CLEANING METHODS - Comments: The walls and ceilings shall be in good repair and easily cleaned.  REPAIR MISALIGNED DOORS AND DOOR NEAR ELEVATOR.  DETAIL CLEAN BLACK MOLD LIKE SUBSTANCE FROM WALLS BY BOTH DISH MACHINES.  REPAIR OR REMOVE BASEBOARD UNDER DISH MACHINE (LEFT REAR KITCHEN). SEAL ALL GAPS.  REPLACE MILK CRATES USED IN WALK IN COOLERS AND STORAGE AREAS WITH PROPER SHELVING AT LEAST 6' OFF THE FLOOR.  | 38. VENTILATION: ROOMS AND EQUIPMENT VENTED AS REQUIRED: PLUMBING: INSTALLED AND MAINTAINED - Comments: The flow of air discharged from kitchen fans shall always be through a duct to a point above the roofline.  REPAIR BROKEN VENTILATION IN MEN'S AND WOMEN'S WASHROOMS NEXT TO DINING AREA. | 32. FOOD AND NON-FOOD CONTACT SURFACES PROPERLY DESIGNED, CONSTRUCTED AND MAINTAINED - Comments: All food and non-food contact equipment and utensils shall be smooth, easily cleanable, and durable, and shall be in good repair.  REPAIR DAMAGED PLUG ON LEFT SIDE OF 2 COMPARTMENT SINK.  REPAIR SELF CLOSER ON BOTTOM LEFT DOOR OF 4 DOOR PREP UNIT NEXT TO OFFICE.")]
 
 ## <a name="create-a-logistic-regression-model-from-the-input-dataframe"></a>A bemeneti dataframe logisztikai regressziós modell létrehozása
-A végső feladata a teljesítményadatokká alakítani a címkézett logisztikai regresszió által elemezhető formátumú. A bemeneti logisztikai regresszió algoritmushoz kell lenniük, amelyek *címke-funkció vektoros párok*, ahol a "szolgáltatás"vektor a bemeneti pontot jelölő számok vektor. Igen igazolnia kell alakítani az "megsértésének", amely félig strukturált és a szabad szöveges, a gép könnyen értelmezhető formára valós szám tömbjének sok megjegyzéseket tartalmaz.
+A végső feladata a teljesítményadatokká alakítani a címkézett logisztikai regresszió által elemezhető formátumú. A bemeneti logisztikai regresszió algoritmushoz kell lenniük, amelyek *címke-funkció vektoros párok*, ahol a "szolgáltatás"vektor a bemeneti pontot jelölő számok vektor. Így kell alakítani az "megsértésének", amely félig strukturált és a szabad szöveges, a gép könnyen értelmezhető formára valós szám tömbjének sok megjegyzéseket tartalmaz.
 
 Tanulási megközelítés természetes nyelvű feldolgozása egy szabványos számítógép, hogy minden distinct szó hozzárendelése egy "index", és akkor továbbítja a vektoros a gépi tanulási algoritmus úgy, hogy minden egyes súgóindex-értéket tartalmaz a relatív gyakoriságot karakterláncban szó.
 
-MLlib leegyszerűsíti a művelet elvégzéséhez. Első lépésként "tokenize" minden megsértésének karakterlánc beolvasása az egyes szavak minden karakterlánc. Ezt követően egy `HashingTF` jogkivonatok minden készlete alakítani egy szolgáltatás vektort, majd adhatók át a logisztikai regresszió algoritmus a modell összeállításához. Azt végezze el az összes lépés sorrendben használja a "futószalag".
+MLlib leegyszerűsíti a művelet elvégzéséhez. Első lépésként "tokenize" minden megsértésének karakterlánc beolvasása az egyes szavak minden karakterlánc. Ezt követően egy `HashingTF` jogkivonatok minden készlete alakítani egy szolgáltatás vektort, majd adhatók át a logisztikai regresszió algoritmus a modell összeállításához. Az összes lépés elvégzésével sorrendben használja a "futószalag".
 
     tokenizer = Tokenizer(inputCol="violations", outputCol="words")
     hashingTF = HashingTF(inputCol=tokenizer.getOutputCol(), outputCol="features")
@@ -247,7 +247,7 @@ MLlib leegyszerűsíti a művelet elvégzéséhez. Első lépésként "tokenize"
     model = pipeline.fit(labeledData)
 
 ## <a name="evaluate-the-model-on-a-separate-test-dataset"></a>Értékelje ki a modellt a külön tesztelési adatkészletre
-A korábban létrehozott modell használhatjuk *előrejelzése* mely új ellenőrzések eredményeinek kell, a megfigyelt szabálysértések alapján. Ebben a modellben az adatkészlettel betanítása azt **Food_Inspections1.csv**. Ossza meg velünk használjon egy második dataset **Food_Inspections2.csv**található *kiértékelése* ebben a modellben az új adatok erősségével. A második készlet (**Food_Inspections2.csv**) már a fürthöz tartozó alapértelmezett tárolót kell megadni.
+Csak akkor használhatja a korábban létrehozott *előrejelzése* mely új ellenőrzések eredményeinek kell, a szabálysértések megfigyelt alapján. Ebben a modellben az adatkészlettel betanítása meg **Food_Inspections1.csv**. Ossza meg velünk használjon egy második dataset **Food_Inspections2.csv**található *kiértékelése* ebben a modellben az új adatok erősségével. A második készlet (**Food_Inspections2.csv**) már a fürthöz tartozó alapértelmezett tárolót kell megadni.
 
 1. A következő kódrészletet hoz létre egy új dataframe **predictionsDf** , amely tartalmazza a modell által generált előrejelzését. A kódrészletben is létrehoz egy ideiglenes táblát **előrejelzéseket** a dataframe alapján.
 
@@ -279,7 +279,7 @@ A korábban létrehozott modell használhatjuk *előrejelzése* mely új ellenő
         predictionsDf.take(1)
 
    Nincs olyan előrejelzésre lévő teszt az első bejegyzés.
-1. A `model.transform()` metódus ugyanazt az átalakítást vonatkozik semmilyen új adatot az azonos sémával, és hogyan adatok előrejelzése érkeznek. Hogyan pontos volt az előrejelzéseket, hogy néhány egyszerű statisztikai tehetünk ennek:
+1. A `model.transform()` metódus ugyanazt az átalakítást vonatkozik semmilyen új adatot az azonos sémával, és hogyan adatok előrejelzése érkeznek. Hogyan pontos volt az előrejelzéseket, hogy néhány egyszerű statisztikai teheti meg:
 
         numSuccesses = predictionsDf.where("""(prediction = 0 AND results = 'Fail') OR
                                               (prediction = 1 AND (results = 'Pass' OR
@@ -301,9 +301,9 @@ A korábban létrehozott modell használhatjuk *előrejelzése* mely új ellenő
     Logisztikai regresszió használata Spark lehetőséget ad olyan pontos modell megsértésének leírását angol nyelven, és hogy egy adott üzleti volna továbbítja, vagy a étele ellenőrzése sikertelen közötti kapcsolat.
 
 ## <a name="create-a-visual-representation-of-the-prediction"></a>Az előrejelzés vizuális ábrázolását létrehozása
-A Microsoft hogyan most hozhat létre és segítsen végső képi megjelenítés OK Ez a vizsgálat eredményei.
+Most összeállíthatja a végső képi megjelenítés és segítsen OK kapcsolatos Ez a vizsgálat eredményeit.
 
-1. Először a különböző előrejelzéseket és az eredmények kivonja a a **előrejelzéseket** korábban létrehozott ideiglenes tábla. A következő lekérdezések külön a kimeneti adatok *true_positive*, *false_positive*, *true_negative*, és *false_negative*. Az alábbi lekérdezésekben azt kapcsolja ki a képi megjelenítés használatával `-q` , és a kimeneti (használatával `-o`), majd használható a dataframes a `%%local` magic.
+1. Indítsa el a különböző előrejelzéseket és az eredmények kibontása a a **előrejelzéseket** korábban létrehozott ideiglenes tábla. A következő lekérdezések külön a kimeneti adatok *true_positive*, *false_positive*, *true_negative*, és *false_negative*. Az alábbi lekérdezésekben kikapcsolja a képi megjelenítés használatával `-q` , és a kimeneti (használatával `-o`), majd használható a dataframes a `%%local` magic.
 
         %%sql -q -o true_positive
         SELECT count(*) AS cnt FROM Predictions WHERE prediction = 0 AND results = 'Fail'
@@ -343,7 +343,6 @@ Miután befejezte az alkalmazás fut, állítsa le a notebook az erőforrások k
 ### <a name="scenarios"></a>Forgatókönyvek
 * [Spark és BI: Interaktív adatelemzés végrehajtása a Spark on HDInsight használatával, BI-eszközökkel](apache-spark-use-bi-tools.md)
 * [Spark és Machine Learning: A Spark on HDInsight használata az épület-hőmérséklet elemzésére HVAC-adatok alapján](apache-spark-ipython-notebook-machine-learning.md)
-* [Spark Streaming: A Spark on HDInsight használata valós idejű streamelési alkalmazások összeállítására](apache-spark-eventhub-streaming.md)
 * [A webhelynapló elemzése a Spark on HDInsight használatával](apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="create-and-run-applications"></a>Alkalmazások létrehozása és futtatása

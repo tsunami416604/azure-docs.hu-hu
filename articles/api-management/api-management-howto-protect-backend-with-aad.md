@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2017
 ms.author: apimpm
-ms.openlocfilehash: 1ba7a415a56f5147e73faa48fcd51151c3c818a8
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 695db2f5e6ffe794d76d0b9126dc231ed8a87d2c
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="how-to-protect-a-web-api-backend-with-azure-active-directory-and-api-management"></a>Hogyan védi meg a webes API háttéralkalmazás az Azure Active Directory és az API Management
 A következő videó bemutatja, hogyan egy webes API háttéralkalmazás létrehozásához, és a védelmét, és Azure Active Directory és az API Management OAuth 2.0 protokoll használatával.  Ez a cikk áttekintése és további információt a videó lépéseit tartalmazza. A 24 perces videó bemutatja, hogyan számára:
@@ -33,11 +33,11 @@ A következő videó bemutatja, hogyan egy webes API háttéralkalmazás létreh
 > 
 
 ## <a name="create-an-azure-ad-directory"></a>Az Azure AD-címtár létrehozása
-A webes API háttéralkalmazás, az Azure Active Directoryval kell biztonságossá egy AAD-bérlőt. Ez a videó egy bérlő nevű **APIMDemo** szolgál. Hozzon létre egy AAD-bérlőt, hogy jelentkezzen be a [klasszikus Azure portál](https://manage.windowsazure.com) kattintson **új**->**alkalmazásszolgáltatások**->**Active Directory**  -> **Directory**->**egyéni létrehozás**. 
+A webes API háttéralkalmazás, az Azure Active Directoryval kell biztonságossá egy AAD-bérlőt. Ez a videó egy bérlő nevű **APIMDemo** szolgál. Hozzon létre egy AAD-bérlőt, hogy jelentkezzen be a [klasszikus Azure portál](https://manage.windowsazure.com) kattintson **új**->**alkalmazásszolgáltatások**->**Active Directory ** -> **Directory**->**egyéni létrehozás**. 
 
 ![Azure Active Directory][api-management-create-aad-menu]
 
-Ebben a példában egy nevű könyvtár **APIMDemo** létrejön egy alapértelmezett tartomány nevű **DemoAPIM.onmicrosoft.com**. Ez a könyvtár használja a rendszer a videó keresztül.
+Ebben a példában szereplő könyvtár neve **APIMDemo** létrejön egy alapértelmezett tartomány nevű **DemoAPIM.onmicrosoft.com**. Ez a könyvtár használja a rendszer a videó keresztül.
 
 ![Azure Active Directory][api-management-create-aad]
 
@@ -46,7 +46,7 @@ Ebben a lépésben egy webes API háttéralkalmazás létrehozása a Visual Stud
 
 ![Visual Studio][api-management-new-web-app]
 
-Kattintson a **Web API** a a **jelöljön ki egy sablon listát** egy webes API-projekt létrehozása. Konfigurálhatja az Azure Directory hitelesítési kattintson **hitelesítés módosítása**.
+Kattintson a **Web API** a a **jelöljön ki egy sablon listát** egy webes API-projekt létrehozása. Az Azure Directory hitelesítési megadásához kattintson **hitelesítés módosítása**.
 
 ![Új projekt][api-management-new-project]
 
@@ -70,7 +70,7 @@ Meg lehet kérni jelentkezzen be Azure, és a Web App beállításához használ
 
 ![Konfigurálás][api-management-configure-web-app]
 
-Ebben a példában új **App Service-csomag** nevű **APIMAADDemo** van megadva.
+Ebben a példában egy új **App Service-csomag** nevű **APIMAADDemo** van megadva.
 
 Kattintson a **OK** a webalkalmazás konfigurálása és a projekt létrehozásához.
 
@@ -192,7 +192,7 @@ API-kat úgy vannak konfigurálva, a portálról API publisher, amely az Azure p
 
 A műveleteket lehet [manuálisan hozzáadni az API-k](api-management-howto-add-operations.md), vagy az importálható lesz. Ez a videó műveletek importált 6:40 kezdődő Swagger formátumú.
 
-Hozzon létre egy fájlt `calcapi.json` következő tartalommal, és mentse azt a számítógépet. Győződjön meg arról, hogy a `host` pontok attribútum a webes API háttéralkalmazás segítségével. Ebben a példában a `"host": "apimaaddemo.azurewebsites.net"` eszközt használjuk.
+Hozzon létre egy fájlt `calcapi.json` következő tartalommal, és mentse azt a számítógépet. Győződjön meg arról, hogy a `host` pontok attribútum a webes API háttéralkalmazás segítségével. Ebben a példában `"host": "apimaaddemo.azurewebsites.net"` szolgál.
 
 ```json
 {
@@ -387,9 +387,9 @@ Válasszon **webes alkalmazáshoz és/vagy webes API**, adjon meg egy nevet, és
 
 ![Új alkalmazás][api-management-aad-new-application-devportal-1]
 
-A **bejelentkezési URL-cím** adja meg az URL-címet a API Management szolgáltatás és a hozzáfűző `/signin`. Ebben a példában a `https://contoso5.portal.azure-api.net/signin` eszközt használjuk.
+A **bejelentkezési URL-cím** adja meg az URL-címet a API Management szolgáltatás és a hozzáfűző `/signin`. Ebben a példában `https://contoso5.portal.azure-api.net/signin` szolgál.
 
-A **azonosító URL-címet** adja meg az URL-címet a API Management szolgáltatás és a hozzáfűző néhány egyedi karaktert. Ezek lehetnek a kívánt karaktereket, és ebben a példában `https://contoso5.portal.azure-api.net/dp` szolgál. Ha a kívánt **alkalmazás tulajdonságainak** vannak konfigurálva, kattintson a pipa jelre az alkalmazás létrehozása.
+A **azonosító URL-címet** adja meg az URL-címet a API Management szolgáltatás és a hozzáfűző néhány egyedi karaktert. Ezek lehetnek a kívánt karaktereket és a jelen példában `https://contoso5.portal.azure-api.net/dp` szolgál. Ha a kívánt **alkalmazás tulajdonságainak** vannak konfigurálva, kattintson a pipa jelre az alkalmazás létrehozása.
 
 ![Új alkalmazás][api-management-aad-new-application-devportal-2]
 
@@ -410,7 +410,7 @@ Ezt követően adja meg **engedélyezési végpont URL-címet** és **végponti 
 
 ![engedélyezési kiszolgáló][api-management-add-authorization-server-1a]
 
-Ezek az értékek lekérhetők a **App végpontok** az AAD-alkalmazást a fejlesztői portálon létrehozott oldalán. Eléréséhez a végpontok navigáljon a **konfigurálása** lapján az AAD-alkalmazást, és kattintson a **végpontok megtekintése**.
+Ezek az értékek lekérhetők a **App végpontok** az AAD-alkalmazást a fejlesztői portálon létrehozott oldalán. A végpontok szeretne használni, keresse meg a **konfigurálása** lapján az AAD-alkalmazást, és kattintson a **végpontok megtekintése**.
 
 ![Alkalmazás][api-management-aad-devportal-application]
 
@@ -472,7 +472,7 @@ Kattintson a **API-k** a bal oldali menüben, majd kattintson a **Számológép*
 
 ![A Számológép API][api-management-calc-api]
 
-Keresse meg a **biztonsági** lapon jelölje a **OAuth 2.0** jelölőnégyzetet, válassza ki a kívánt engedélyezési kiszolgálót a a **engedélyezési server** legördülő, kattintson **Mentés**.
+Keresse meg a **biztonsági** lapon jelölje a **OAuth 2.0** jelölőnégyzetet, válassza ki a kívánt engedélyezési kiszolgálót a a **engedélyezési server** legördülő, kattintson** Mentés**.
 
 ![A Számológép API][api-management-enable-aad-calculator]
 
@@ -495,7 +495,7 @@ Kattintson a **küldése** meg és jegyezze fel a **válaszállapot** a **200 OK
 A következő eljárással a videó 16:30 kezdődik, és konfigurálja a egyszerű asztali alkalmazást az API számára. Az első lépés az asztali alkalmazás regisztrálása az Azure ad-ben, és adjon neki hozzáférés a címtárhoz, és által a háttérszolgáltatáshoz. 18:25 nincs a művelet a Számológép API hívása az asztali alkalmazások bemutatója.
 
 ## <a name="configure-a-jwt-validation-policy-to-pre-authorize-requests"></a>Előre a kérések hitelesítése JWT érvényesítési házirend konfigurálása
-Az utolsó eljárás videóban 20:48 kezdődik, és bemutatja, hogyan használható a [érvényesítése JWT](https://msdn.microsoft.com/library/azure/034febe3-465f-4840-9fc6-c448ef520b0f#ValidateJWT) előre engedélyezésére kérelmek érvényesítésével megjeleníthető az egyes bejövő kérelmek a hozzáférési jogkivonatok házirend. Ha a kérelem nem érvényesíti a JWT érvényesítése házirend, a kérelem API Management le van tiltva, és nem kerül át, mentén háttérkiszolgálóra.
+Az utolsó eljárás videóban 20:48 kezdődik, és bemutatja, hogyan használható a [érvényesítése JWT](api-management-access-restriction-policies.md#ValidateJWT) előre engedélyezésére kérelmek érvényesítésével megjeleníthető az egyes bejövő kérelmek a hozzáférési jogkivonatok házirend. Ha a kérelem nem érvényesíti a JWT érvényesítése házirend, a kérelem API Management le van tiltva, és nem kerül át, mentén háttérkiszolgálóra.
 
 ```xml
 <validate-jwt header-name="Authorization" failed-validation-httpcode="401" failed-validation-error-message="Unauthorized. Access token is missing or invalid.">

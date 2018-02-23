@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2018
 ms.author: v-jysur
-ms.openlocfilehash: a51ba4b45b7f6c72037d5c562a4ccd59e601cee4
-ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
+ms.openlocfilehash: e0cae844e8b7f3eab68ed02dbcd17f4d1cebfd25
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>Csatlakozás ITSM termékek vagy szolgáltatások IT Service Management-összekötő
 Ez a cikk tájékoztatást ad azokról a ITSM termékszolgáltatásból és az informatikai szolgáltatás Management Connector (ITSMC) közötti kapcsolat konfigurálása a Log Analyticshez központilag a a munkaelemek kezeléséhez. ITSMC kapcsolatos további információkért lásd: [áttekintése](log-analytics-itsmc-overview.md).
@@ -185,11 +185,12 @@ A következő szakaszok részletesen bemutatják a ServiceNow termék csatlakozt
 ### <a name="prerequisites"></a>Előfeltételek
 Győződjön meg arról, a következő előfeltételek teljesülését:
 - A ITSMC telepítve. További információ: [felvétele az IT Service Connector megoldás](log-analytics-itsmc-overview.md#adding-the-it-service-management-connector-solution).
-- A ServiceNow támogatott verziók: Dzsakarta, Isztambul, Helsinki, Geneva
+- A ServiceNow támogatott verziók: Kingston, Dzsakarta, Isztambul, Helsinki, Geneva.
 
 **A ServiceNow rendszergazdák a következőképpen kell a ServiceNow példányban**:
 - Ügyfél-azonosító és a ServiceNow termék ügyfélkulcs létrehozása. Ügyfél-azonosító és a titkos kulcs létrehozása módjáról további információkért lásd: a következő információkat szükség szerint:
 
+    - [A Kingston OAuth beállítása](https://docs.servicenow.com/bundle/kingston-platform-administration/page/administer/security/concept/OAuth-setup.html)
     - [A Dzsakarta OAuth beállítása](https://docs.servicenow.com/bundle/jakarta-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
     - [A Isztambuli OAuth beállítása](https://docs.servicenow.com/bundle/istanbul-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
     - [A Helsinki OAuth beállítása](https://docs.servicenow.com/bundle/helsinki-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
@@ -199,7 +200,7 @@ Győződjön meg arról, a következő előfeltételek teljesülését:
 - Telepítse a Microsoft OMS-integráció (ServiceNow alkalmazás) felhasználói alkalmazás. [További információk](https://store.servicenow.com/sn_appstore_store.do#!/store/application/ab0265b2dbd53200d36cdc50cf961980/1.0.1 ).
 - A felhasználó az alkalmazás telepítve van az integráció felhasználói szerepkört létrehozni. Az integráció felhasználói szerepkör létrehozása található [Itt](#create-integration-user-role-in-servicenow-app).
 
-### <a name="connection-procedure"></a>**Kapcsolat létesítése**
+### <a name="connection-procedure"></a>Kapcsolat létesítése
 A következő eljárással ServiceNow VPN-kapcsolat létrehozásához:
 
 

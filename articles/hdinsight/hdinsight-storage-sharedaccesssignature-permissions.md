@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 01/25/2018
 ms.author: larryfr
-ms.openlocfilehash: 83a93f433769e880a729cd918198909696071594
-ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
+ms.openlocfilehash: d3e37ba0f590cf0572b84a53bdd407af63a19d36
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="use-azure-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>Azure Storage megosztott hozzáférési aláírásokkal segítségével adatokat a hdinsight eszközben való hozzáférés korlátozása
 
@@ -216,7 +216,7 @@ Ha egy meglévő Linux-alapú fürtöt, a SAS-t is hozzáadhat a **core-hely** k
    > [!IMPORTANT]
    > A módosítás érvénybe léptetéséhez újra kell indítania számos szolgáltatást.
 
-6. Válassza ki az Ambari webes felhasználói felület, **HDFS** a bal oldali listában, és válassza **indítsa újra az összes érintett** a a **szolgáltatás műveletek** legördülő listában kattintson a jobb. Amikor a rendszer kéri, válassza ki a __összhangban indítsa újra az összes__.
+6. Válassza ki az Ambari webes felhasználói felület, **HDFS** a bal oldali listában, és válassza **indítsa újra az összes érintett** a a **szolgáltatás műveletek** legördülő listában kattintson a jobb. Amikor a rendszer kéri, válassza ki a __megerősítése indítsa újra az összes__.
 
     Ismételje meg ezt a folyamatot MapReduce2 és YARN.
 

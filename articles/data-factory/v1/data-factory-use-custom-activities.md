@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: spelluru
 robots: noindex
-ms.openlocfilehash: cfdee4450b0ef88d593d401009a7d7f29c24780b
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 855cb5b9cda873a2966465062d0164b2b054b1cd
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Egyéni tevékenységek használata Azure Data Factory-folyamatban
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -421,7 +421,7 @@ A jelen szakaszban végrehajtandó lépések a következők:
 
 ### <a name="step-1-create-the-data-factory"></a>1. lépés: Az adat-előállító létrehozása
 1. Az Azure-portálon való bejelentkezés után hajtsa végre az alábbi lépéseket:
-   1. A bal oldali menüben kattintson a **NEW** (ÚJ) elemre.
+   1. Kattintson a **hozzon létre egy erőforrást** a bal oldali menüben.
    2. Kattintson a **adatok + analitika** a a **új** panelen.
    3. Kattintson a **Data Factory** elemre a **Data analytics** (Adatelemzés) panelen.
    
@@ -441,7 +441,7 @@ A jelen szakaszban végrehajtandó lépések a következők:
 A társított szolgáltatások adattárakat vagy számítási szolgáltatásokat társítanak az Azure data factoryhez. Ebben a lépésben kapcsolhat az Azure Storage-fiók és az Azure Batch-fiók a data factory.
 
 #### <a name="create-azure-storage-linked-service"></a>Azure Storage társított szolgáltatás létrehozása
-1. Kattintson a **Szerző és központi telepítése** csempét a **adat-előállító** paneljén **CustomActivityFactory**. A Data Factory Editor láthatja.
+1. Kattintson a **Szerző és központi telepítése** csempét a **adat-előállító** paneljén **CustomActivityFactory**. Ekkor megjelenik a Data Factory Editor.
 2. Kattintson a **az új adattároló** a parancs megnyitásához, és válassza a **az Azure storage**. A szerkesztőben megjelenik az Azure Storage társított szolgáltatás létrehozására szolgáló JSON-parancsfájl.
     
     ![Az új adattároló - Azure Storage](media/data-factory-use-custom-activities/new-data-store-menu.png)

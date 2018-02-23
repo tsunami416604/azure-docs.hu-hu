@@ -4,7 +4,7 @@ description: "Ismerteti az automatikus biztonsági mentés szolgáltatás az SQL
 services: virtual-machines-windows
 documentationcenter: na
 author: rothja
-manager: jhubbard
+manager: craigg
 editor: 
 tags: azure-service-management
 ms.assetid: 3333e830-8a60-42f5-9f44-8e02e9868d7b
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/23/2018
 ms.author: jroth
-ms.openlocfilehash: 81910dd9c2743484ca65bd21e400a1a52e961a19
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: 05f5ec690fbf1ea2f4f6a6d927685d7a34ac9273
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="automated-backup-for-sql-server-in-azure-virtual-machines-classic"></a>Automatikus biztonsági mentés az SQL Server Azure virtuális gépekben (klasszikus)
 > [!div class="op_single_selector"]
@@ -69,7 +69,7 @@ A következő táblázat ismerteti a beállításokat, amelyek az automatikus bi
 | --- | --- | --- |
 | **Automatikus biztonsági mentés** |Engedélyezi/letiltja (letiltva) |Engedélyezi vagy letiltja az automatikus biztonsági mentés az SQL Server 2014 Standard vagy Enterprise rendszert futtató Azure virtuális gép esetében. |
 | **Megőrzési időtartam** |1-30 nap (30 nap) |A biztonsági másolatot a megőrizni kívánt napok száma. |
-| **Storage Account** |Azure storage-fiók (a storage-fiók létrehozása a megadott virtuális gép) |Azure-tárfiók a blob Storage tárolóban végzett tárolása automatikus biztonsági mentés fájlok használatára. Egy tároló összes biztonsági mentési fájlok tárolására szolgáló ezen a helyen jön létre. A biztonságimásolat-fájl elnevezési tartalmazza a dátum, idő és a gép nevét. |
+| **Tárfiók** |Azure storage-fiók (a storage-fiók létrehozása a megadott virtuális gép) |Azure-tárfiók a blob Storage tárolóban végzett tárolása automatikus biztonsági mentés fájlok használatára. Egy tároló összes biztonsági mentési fájlok tárolására szolgáló ezen a helyen jön létre. A biztonságimásolat-fájl elnevezési tartalmazza a dátum, idő és a gép nevét. |
 | **Titkosítás** |Engedélyezi/letiltja (letiltva) |Engedélyezi vagy letiltja a titkosítást. Ha titkosítás engedélyezve van, a biztonsági másolat visszaállítása a tanúsítványok találhatók a megadott tárfiókhoz a ugyanazon automaticbackup tárolóban, az azonos elnevezési konvenció. Ha a jelszó is módosul, egy új tanúsítványt hoz létre, hogy a jelszó, de a régi tanúsítvány marad a korábbi biztonsági másolatok. |
 | **Jelszó** |Jelszó szöveg (nincs) |A titkosítási kulcsok jelszava. Erre csak akkor van szükség, ha engedélyezve van-e a titkosítás. Titkosított biztonsági másolat visszaállítása a helyes jelszót és a kapcsolódó kerül a biztonsági mentés idején használt tanúsítvány kell lennie. | **Biztonsági mentési rendszer adatbázisok** | Engedélyezi/letiltja (letiltva) | A Master, Model és MSDB teljes biztonsági másolatok készítése |
 | **Konfigurálja a biztonsági mentés ütemezése** | Manuális vagy automatikus (automatikus) | Válassza ki **automatikus** számára automatikusan teljes és a naplófájl biztonsági mentések napló növekedési alapján. Válassza ki **manuális** számára adja meg a teljes ütemezését, valamint naplófájl-biztonsági mentések. |

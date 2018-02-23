@@ -61,6 +61,7 @@
 # Útmutató
 ## [VPN Gateway figyelése az Azure Automationnel](network-watcher-monitor-with-azure-automation.md)
 ## [Helyszíni kapcsolatok diagnosztizálása VPN Gateway használatával](network-watcher-diagnose-on-premises-connectivity.md)
+## [Hálózati kapcsolatok monitorozása](connection-monitor.md)
 ## [Megfelelőségi vizsgálat és naplózás végrehajtása a hálózaton a PowerShell használatával](network-watcher-nsg-auditing-powershell.md)
 ## [Application Gateway-naplók elemzése az Azure Log Analyticsben](../log-analytics/log-analytics-azure-networking-analytics.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)
 ## Csomagrögzítés

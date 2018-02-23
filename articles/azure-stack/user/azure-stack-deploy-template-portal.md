@@ -3,8 +3,8 @@ title: "A portál Azure verem sablonok telepítése |} Microsoft Docs"
 description: "Megtudhatja, hogyan használhatja az Azure-verem portált sablonok telepítése."
 services: azure-stack
 documentationcenter: 
-author: HeathL17
-manager: byronr
+author: brenduns
+manager: femila
 editor: 
 ms.assetid: eafa60f2-16c9-4ef1-b724-47709e9ea29e
 ms.service: azure-stack
@@ -13,12 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
-ms.author: helaw
-ms.openlocfilehash: 630d86ed7e3558ae2c8a62f4e1a94f10ca11812d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: brenduns
+ms.reviewer: 
+ms.openlocfilehash: 30c077747685ad7617148e9130926120420b098b
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="deploy-templates-using-the-azure-stack-portal"></a>Üzembe helyezheti a sablonokat a verem Azure portál használatával
 
@@ -35,6 +36,6 @@ Resource Manager-sablonok telepítése, és jogosultságok kiosztása egyetlen, 
 5. Kattintson a **erőforráscsoport**, válasszon egy meglévő erőforráscsoportot, vagy hozzon létre egy újat, és kattintson **OK**.
 6. Kattintson a **Create** (Létrehozás) gombra. Egy új csempe az irányítópulton a sablon-üzembehelyezés előrehaladását követi nyomon.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [Sablonok üzembe helyezése a PowerShell-lel](azure-stack-deploy-template-powershell.md)
 

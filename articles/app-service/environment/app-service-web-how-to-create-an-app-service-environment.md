@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 7/11/2017
 ms.author: ccompy
-ms.openlocfilehash: ef0dc1b820f42b73af3af3882085729ecc21230c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2741ea2931ddd7989fc05e1cddbeedb80bf30410
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="how-to-create-an-app-service-environment-v1"></a>Az App Service létrehozása környezet 1-es verzió 
 
@@ -42,13 +42,13 @@ Fontos figyelembe vennie a dolgokhoz, nem módosíthatja. Nem módosítható a A
 Amikor a kiadási VNet, és adja meg egy alhálózatot, győződjön meg arról, hogy nem elég nagy ahhoz, hogy jövőbeli növekedésének. 
 
 ### <a name="creating-an-app-service-environment-v1"></a>Alkalmazás létrehozása szolgáltatás környezet 1-es verzió
-Az App Service Environment-környezet v1 kell megkeresnie Azure piactéren létrehozásához ***App Service Environment-környezet v1***, vagy új átnézi -> Web + mobil -> App Service Environment-környezet. Egy ASEv1 létrehozása:
+Az App Service Environment-környezet v1 létrehozásához Azure piactéren kereshet ***App Service Environment-környezet v1***, vagy halad át **hozzon létre egy erőforrást** -> **Web + mobil**  ->  **App Service Environment-környezet**. Egy ASEv1 létrehozása:
 
-1. Adja meg a ASE nevét. A ASE megadott nevét a ASE létrehozott alkalmazásokhoz használható. Ha a hajlamosnak neve appsvcenvdemo altartománynév lenne. *appsvcenvdemo.p.azurewebsites.net*. Ha így hozott létre az alkalmazás neve *mytestapp* akkor megcímezhető: *mytestapp.appsvcenvdemo.p.azurewebsites.net*. Szóköz nem használható a ASE nevében. Nagybetűk a nevet használja, ha a tartomány neve lesz nevű kisbetűs teljes verzióját. Ha a egy ILB majd a ASE neve nem szerepel a altartomány de inkább explicit módon megadott ASE létrehozása során
+1. Adja meg a ASE nevét. A ASE számára megadott név lesz a ASE létrehozott alkalmazások. Ha a név a hajlamosnak appsvcenvdemo, altartománynév lenne: *appsvcenvdemo.p.azurewebsites.net*. Ha így hozott létre az alkalmazás neve *mytestapp*, lenne a következő megcímezhető *mytestapp.appsvcenvdemo.p.azurewebsites.net*. Szóköz nem használható a ASE nevében. Nagybetűből kell állnia a nevet használja, ha a tartomány neve lesz nevű kisbetűs teljes verzióját. Egy ILB használatakor a ASE neve nem szerepel a altartomány, de ehelyett explicit módon megadott ASE létrehozása során.
    
     ![][1]
-2. Válassza ki előfizetését. A ASE használt előfizetés fontos is, hogy ASE összes alkalmazást jön létre. Nem helyezhető el a ASE egy Vnetet, amely egy másik előfizetésben található
-3. Válassza ki vagy adja meg egy új erőforráscsoportot. Az erőforráscsoport a ASE használt azonosnak kell lennie, amely a virtuális hálózat szolgál. Ha egy már meglévő virtuális hálózat majd az erőforráscsoport kiválasztása a ASE a frissíti a virtuális hálózat tükrözi.
+2. Válassza ki előfizetését. Az előfizetés, használja a ASE is olyan alkalmazásokra lesznek érvényesek az összes adott ASE hoz létre. A ASE nem helyez egy virtuális hálózatot, amely egy másik előfizetésben található.
+3. Válassza ki vagy adja meg egy új erőforráscsoportot. Az erőforráscsoport a ASE használt azonosnak kell lennie, amely a virtuális hálózat szolgál. Egy már meglévő virtuális hálózatot választ ki, ha az erőforráscsoport kiválasztása a ASE a frissíti a virtuális hálózat tükrözi.
    
     ![][2]
 4. Adja meg a virtuális hálózat és a hely beállításokat. Ha szeretné, hozzon létre új virtuális hálózatot, vagy válasszon ki egy már meglévő virtuális hálózatot. Ha egy új virtuális hálózat ezután megadhatja a nevét és helyét. Az új Vnetet fog rendelkezni, a cím tartomány 192.168.250.0/23 és nevű alhálózat **alapértelmezett** , amely 192.168.250.0/24 típusúként van definiálva. Egy korábban létező klasszikus és Resource Manager virtuális hálózat is egyszerűen válassza. A VIP választást határozza meg, ha a ASE közvetlenül elérhető az internetről (külső), vagy ha egy belső Load Balancer (ILB) használja. További információt, olvassa el őket [egy belső terheléselosztó használata az App Service-környezetek][ILBASE]. Ha egy külső VIP típusú majd kiválaszthatja a rendszer hozza létre IPSSL célokra hány külső IP-címeket. Ha belső majd szeretné adja meg az altartományt, amelyet a ASE fog használni. ASEs telepíthető a virtuális hálózatok, amelyek *vagy* nyilvános-címtartományokat, *vagy* RFC1918 címterek (azaz Magáncímeket). Ahhoz, hogy egy virtuális hálózatot egy nyilvános-címtartománnyal rendelkező, szüksége lesz a VNet időben létrehozásához. Amikor kiválaszt egy már meglévő virtuális hálózat akkor hozzon létre egy új alhálózatot ASE létrehozása során. **Nem használhat egy korábban létrehozott alhálózati a portálon. Létrehozhat egy ASE már meglévő alhálózattal, a resource manager-sablon használatával ASE létrehozásakor.** Egy ASE létrehozása egy sablon használatát az információkat, [egy App Service Environment-környezet létrehozása sablonból] [ ILBAseTemplate] és itt [ILB App Service-környezetek létrehozása sablonból][ASEfromTemplate].
@@ -72,7 +72,7 @@ Információ az automatikus skálázás van egy útmutató itt: [egy App Service
 
 Nincsenek további függőségek, amelyek nem érhető el, például az adatbázis és a tárolási testreszabáshoz. Ezek az Azure-ban kezelt és a rendszer kapható. A rendszer storage legfeljebb 500 GB-ig támogatja a teljes App Service Environment-környezet és az adatbázis az Azure-ban módosul, a rendszer a skála igény szerint.
 
-## <a name="getting-started"></a>Bevezetés
+## <a name="getting-started"></a>Első lépések
 App Service Environment-környezet v1 megkezdéséhez, lásd: [az App Service Environment-környezet v1 bemutatása][WhatisASE]
 
 [!INCLUDE [app-service-web-try-app-service](../../../includes/app-service-web-try-app-service.md)]

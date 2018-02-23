@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 09/17/2017
 ms.author: kgremban
 ms.custom: pim
-ms.openlocfilehash: e1bc0f27b14beef91b4deb68dc625d75195445fb
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 6611bd07ad4c65953349c62cae3ece735fd85e70
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="securing-privileged-access-in-azure-ad"></a>Az Azure Active Directory biztonságossá tétele a privilegizált hozzáférési jogosultsága.
 Emelt szintű hozzáférés biztonságossá tétele Ez kritikus első lépés egy modern szervezet üzleti eszközök védelme érdekében. Kiemelt jogosultságú fiókok azok a fiókok, felügyelheti és kezelheti az informatikai rendszerek. A támadók számítógépes ezeket a fiókokat ahhoz, hogy hozzáférjenek a szervezetek adatokhoz és rendszerek célként. Emelt szintű hozzáférés biztonságossá tételéhez, a fiókok és a kockázat, hogy egy rosszindulatú felhasználó rendszert kell különíteni.
@@ -50,7 +50,7 @@ További információkért lásd: [többtényezős hitelesítés az Office 365 �
 ## <a name="time-bound-privileges"></a>Időhöz kötött jogosultságokkal
 Egyes szervezetek tapasztalhatja, hogy túl sok felhasználó rendelkeznek magas szintű jogosultsággal rendelkező szerepkört. A felhasználó előfordulhat, hogy érhetőek el a szerepkör egy adott tevékenységet, például a Feliratkozás a szolgáltatás azonban nem használja ezeket az engedélyeket gyakran ezt követően.
 
-Jogosultságokat a kitettség idő csökkentése, és növelje a használatukat lássák, korlátozza a felhasználók számára csak véve a jogosultságait az "igény szerint" (JIT), vagy rendeljen hozzá ezeket a szerepköröket egy rövidebb időtartam a folyamatot a jogosultságok automatikusan visszavonja. Az Azure Active Directory, az Azure-erőforrások (előzetes verzió) és a Microsoft Online Services, használhatja [az Azure AD Privileged Identity Management (PIM)](http://aka.ms/AzurePIM).
+Jogosultságokat a kitettség idő csökkentése, és növelje a használatukat lássák, korlátozza a felhasználók számára csak véve a jogosultságait az "igény szerint" (JIT), vagy rendeljen hozzá ezeket a szerepköröket egy rövidebb időtartam a folyamatot a jogosultságok automatikusan visszavonja. Az Azure Active Directory, az Azure-erőforrások (előzetes verzió) és a Microsoft Online Services, használhatja [az Azure AD Privileged Identity Management (PIM)](https://aka.ms/AzurePIM).
 
 ![A PIM irányítópult][2]
 
@@ -68,7 +68,7 @@ Feltételes hozzáférés-vezérlést Azure Active Directory ellenőrzi a megado
 * Engedélyezése [Azure AD Identity Protection](../active-directory-identityprotection.md)
 * Engedélyezése [feltételes hozzáférés-vezérlést](../active-directory-conditional-access-azure-portal.md)
 
-Egy teljes biztonsági terv felépítésével további információkért lásd: az "ügyfél feladatkörei és terv" részében a [vállalati fejlesztők a Microsoft Cloud biztonsági](http://aka.ms/securecustomer) dokumentum. Bővebben módon vegye fel a Microsoft-szolgáltatások az alábbi témakörök egyik segít, forduljon a Microsoft képviselőjével, vagy keresse fel a [számítógépes megoldások lap](https://www.microsoft.com/en-us/microsoftservices/campaigns/cybersecurity-protection.aspx).
+Egy teljes biztonsági terv felépítésével további információkért lásd: az "ügyfél feladatkörei és terv" részében a [vállalati fejlesztők a Microsoft Cloud biztonsági](https://aka.ms/securecustomer) dokumentum. Bővebben módon vegye fel a Microsoft-szolgáltatások az alábbi témakörök egyik segít, forduljon a Microsoft képviselőjével, vagy keresse fel a [számítógépes megoldások lap](https://www.microsoft.com/en-us/microsoftservices/campaigns/cybersecurity-protection.aspx).
 
 <!--Image references-->
 [1]: ../media/active-directory-privileged-identity-management-configure/Search_PIM.png

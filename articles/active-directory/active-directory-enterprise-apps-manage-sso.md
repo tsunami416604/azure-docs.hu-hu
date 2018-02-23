@@ -15,18 +15,18 @@ ms.workload: identity
 ms.date: 09/19/2017
 ms.author: curtand
 ms.reviewer: asmalser
-ms.openlocfilehash: 61579af23acf466a11ae59832a02cb75ba39dc26
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: dd251ca4696101911293caa59c54c3354a1627a5
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="managing-single-sign-on-for-enterprise-apps"></a>Egyszeri bejelentkezés a vállalati alkalmazások kezelése
 
 Ez a cikk ismerteti, hogyan használható a [Azure-portálon](https://portal.azure.com) való egyszeri bejelentkezés beállításainak kezelése vállalati alkalmazások. Vállalati alkalmazások olyan alkalmazások, telepített és a szervezetén belül. Ez a cikk vonatkozik, különösen az alkalmazásokat, az újonnan hozzáadott a [Azure Active Directory alkalmazáskatalógusában](active-directory-appssoaccess-whatis.md#get-started-with-the-azure-ad-application-gallery). 
 
 ## <a name="finding-your-apps-in-the-portal"></a>A portál az alkalmazások keresése
-Minden vállalati alkalmazás, amely az egyszeri bejelentkezés beállítása tekinthetők meg és felügyelete az Azure-portálon. Az alkalmazások találhatók a **több szolgáltatások** &gt; **vállalati alkalmazások** a portál szakaszban. 
+Minden vállalati alkalmazás, amely az egyszeri bejelentkezés beállítása tekinthetők meg és felügyelete az Azure-portálon. Az alkalmazások találhatók a **minden szolgáltatás** &gt; **vállalati alkalmazások** a portál szakaszban. 
 
 ![Vállalati alkalmazások panel][1]
 
@@ -63,7 +63,7 @@ Ez az adott rendszergazdák megtekintéséhez és szerkesztéséhez a attribútu
 
 A támogatott csak szerkeszthető attribútum a **felhasználói azonosító** attribútum. Ez az attribútum értéke a mező az Azure ad-ben, amely egyedileg azonosítja az egyes felhasználói az alkalmazáson belül. Például ha az alkalmazás telepítve lett, az "E-mail cím" a felhasználónév és azonosítójának használatával, majd a volna értéke a "user.mail" mezőre az Azure ad-ben.
 
-### <a name="saml-signing-certificate"></a>SAML-aláíró tanúsítványa
+### <a name="saml-signing-certificate"></a>SAML-aláíró tanúsítvány
 Ez a szakasz az Azure AD a SAML kiadott jogkivonatokat, minden alkalommal, amikor a felhasználó hitelesíti magát az alkalmazás aláírásához használt tanúsítvány részleteit jeleníti meg. Lehetővé teszi a ellenőrizni kell, hogy az aktuális tanúsítvány tulajdonságainak többek között a lejárati dátum.
 
 ### <a name="application-configuration"></a>Alkalmazáskonfiguráció

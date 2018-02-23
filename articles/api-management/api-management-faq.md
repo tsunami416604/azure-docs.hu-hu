@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
 ms.openlocfilehash: 1903655a262583f1ba78b728bf404a81278e2275
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="azure-api-management-faqs"></a>Az Azure API Management – gyakori kérdések
 Válaszok a gyakori kérdéseket, a mintákat és ajánlott eljárások az Azure API Management.
@@ -51,7 +51,7 @@ Válaszok a gyakori kérdéseket, a mintákat és ajánlott eljárások az Azure
 Akkor is kapcsolatba velünk a következő beállítások egyikét:
 
 * A kérdéseit a [API Management MSDN fórum](https://social.msdn.microsoft.com/forums/azure/home?forum=azureapimgmt).
-* E-mail küldése < mailto:apimgmt@microsoft.com >.
+* E-mail küldése <mailto:apimgmt@microsoft.com>.
 * Funkció kérés küldése a [Azure visszajelzési fórumon](https://feedback.azure.com/forums/248703-api-management).
 
 ### <a name="what-does-it-mean-when-a-feature-is-in-preview"></a>Mit jelent, ha a szolgáltatás egyelőre?

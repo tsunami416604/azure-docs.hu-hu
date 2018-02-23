@@ -2,7 +2,7 @@
   href: index.yml
 - name: Áttekintés
   items:
-    - name: Az Azure Policy áttekintése
+    - name: Az Azure szabályzatának áttekintése
       href: azure-policy-introduction.md
 - name: Gyors útmutatók
   expanded: true
@@ -25,13 +25,17 @@
   items:
     - name: Azure szabályzatdefiníciók struktúrája
       href: policy-definition.md
+- name: Útmutatók
+  items:
+    - name: Szabályzatok létrehozása a REST API-val
+      href: policy-insights.md
 - name: Referencia
   items:
     - name: Azure CLI
       href: /cli/azure/policy
     - name: Azure PowerShell
       href: '/powershell/module/azurerm.resources/#policies'
-- name: Erőforrások
+- name: További források
   items:
     - name: Azure-ütemterv
       href: 'https://azure.microsoft.com/roadmap/'

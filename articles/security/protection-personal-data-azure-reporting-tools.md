@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/24/2017
 ms.author: barclayn
-ms.openlocfilehash: 7ce6297d7d6b61ac95df58db3fa1a2a0a123a64e
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 397161cf2eaea9712fec352a45f5fc49e8da486c
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="document-protection-of-personal-data-with-azure-reporting-tools"></a>Dokumentálja a személyes adatok védelme az Azure-ral Jelentéskészítő eszközök
 
@@ -144,7 +144,7 @@ Számos módon az adatokat a műveletnapló és más Azure-figyelő erőforráso
 
 - Lekérheti az adatok Azure figyelő REST API használatával, parancssori felület parancsait [PowerShell](https://docs.microsoft.com/powershell/) parancsmagok vagy a .NET SDK-val.
 
-Ismerkedés az Azure-figyelő, jelölje be **több szolgáltatások** az Azure portálon.
+Ismerkedés az Azure-figyelő, jelölje be **minden szolgáltatás** az Azure portálon.
 
 1. Görgessen le a **figyelő** a a **figyeléséhez és felügyeletéhez** szakasz.
 

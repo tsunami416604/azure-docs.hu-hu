@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/30/2017
 ms.author: genemi
-ms.openlocfilehash: 2daf05513127c2d1ab8e4b0196b578e18b6e03e7
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: fbc63cebe8c1456f5eb34666d15f4e00fd55fe5b
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="deploy-and-explore-a-standalone-single-tenant-application-that-uses-azure-sql-database"></a>Központi telepítése, és vizsgálja meg az Azure SQL Database egy önálló single-bérlő alkalmazás
 
@@ -47,11 +47,11 @@ További oktatóanyagok kiadjuk. Ezek lehetővé teszi felfedezése, mely egy ta
 Az alkalmazás központi telepítése a három megadott bérlők esetén:
 
 1. Kattintson az egyes kék **az Azure telepítéséhez** gombra kattintva nyissa meg a központi telepítési sablont a [Azure-portálon](https://portal.azure.com). Minden sablon csak két paraméter; Új erőforráscsoport nevét, és a felhasználónevet, amely megkülönbözteti a központi telepítés az alkalmazás más központi telepítésektől. A következő lépés az értékek beállításával részletes adatokat biztosít.<br><br>
-    <a href="http://aka.ms/deploywingtipsa-contoso" target="_blank"><img style="vertical-align:middle" src="media/saas-standaloneapp-get-started-deploy/deploy.png"/></a>&nbsp; **Contoso energiaoptimalizálást egyszerre Hall**
+    <a href="http://aka.ms/deploywingtipsa-contoso" target="_blank"><img style="vertical-align:middle" src="media/saas-standaloneapp-get-started-deploy/deploy.png"/></a> &nbsp; **Contoso energiaoptimalizálást egyszerre Hall**
 <br><br>
-    <a href="http://aka.ms/deploywingtipsa-dogwood" target="_blank"><img style="vertical-align:middle" src="media/saas-standaloneapp-get-started-deploy/deploy.png"/></a>&nbsp; **Somfát Dojo**
+    <a href="http://aka.ms/deploywingtipsa-dogwood" target="_blank"><img style="vertical-align:middle" src="media/saas-standaloneapp-get-started-deploy/deploy.png"/></a> &nbsp; **Somfát Dojo**
 <br><br>
-    <a href="http://aka.ms/deploywingtipsa-fabrikam" target="_blank"><img style="vertical-align:middle" src="media/saas-standaloneapp-get-started-deploy/deploy.png"/></a>&nbsp; **Fabrikam Jazz Club**
+    <a href="http://aka.ms/deploywingtipsa-fabrikam" target="_blank"><img style="vertical-align:middle" src="media/saas-standaloneapp-get-started-deploy/deploy.png"/></a> &nbsp; **Fabrikam Jazz Club**
 
 2. Adja meg a szükséges paraméterértékeket az egyes központi telepítések.
 
@@ -100,9 +100,7 @@ Mindegyik bérlő adatbázis **hely** a megfelelő telepített alkalmazás app b
 Vizsgáljuk meg a telepített erőforrások:
 
 1. Az a [Azure-portálon](http://portal.azure.com), keresse meg az erőforráscsoportok listáját.
-2. Tekintse meg a **wingtip-sa-katalógus -&lt;felhasználói&gt;**  erőforráscsoportot.
-    - Ez az erőforráscsoport, a a **katalógus-sa -&lt;felhasználói&gt;**  kiszolgáló van telepítve. A kiszolgáló tartalmaz az **tenantcatalog** adatbázis.
-    - Emellett meg kell jelennie a három bérlői erőforráscsoportok.
+2. A három bérlői erőforráscsoportok kell megjelennie.
 3. Nyissa meg a **wingtip-sa-fabrikam -&lt;felhasználói&gt;**  erőforráscsoport, amelyek a Fabrikam Jazz Club telepítési erőforrásokat tartalmazza.  A **fabrikamjazzclub -&lt;felhasználói&gt;**  kiszolgáló tartalmaz az **fabrikamjazzclub** adatbázis.
 
 Minden egyes bérlő adatbázisa 50 DTU *önálló* adatbázis.
@@ -131,6 +129,6 @@ Ez az oktatóanyag bemutatta az alábbiakat:
 > * A kiszolgálók és adatbázisok, amelyek az alkalmazás alkotják.
 > * Hogyan mintaerőforrásokat leállításához kapcsolódó számlázási törlése.
 
-Ezt követően próbálja meg a [biztosítása és a katalógus](saas-standaloneapp-provision-and-catalog.md) oktatóanyag.
+Ezt követően próbálja meg a [biztosítása és a katalógus](saas-standaloneapp-provision-and-catalog.md) oktatóanyag, amely lehetővé teszi a kereszt-bérlői forgatókönyvet séma felügyeletet és a bérlői például számos katalógusát a bérlők használatának néhány.
  
 

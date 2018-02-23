@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/20/2017
 ms.author: cherylmc;ganesr
-ms.openlocfilehash: 08582d03428acb860bc304c365ffa6626ba33903
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: be97f441d6eb2e97d85d598b0ed66718aec97b14
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-and-modify-an-expressroute-circuit"></a>Létrehozásához és módosításához ExpressRoute-kapcsolatcsoportot
 > [!div class="op_single_selector"]
@@ -49,7 +49,7 @@ Egy böngészőből lépjen az [Azure Portalra](http://portal.azure.com), majd j
 > 
 > 
 
-1. ExpressRoute-kapcsolatcsoportot hozhat létre egy új erőforrás létrehozása beállítás kiválasztásával. Kattintson a **új** > **hálózati** > **ExpressRoute**, a következő ábrán látható módon:
+1. ExpressRoute-kapcsolatcsoportot hozhat létre egy új erőforrás létrehozása beállítás kiválasztásával. Kattintson a **hozzon létre egy erőforrást** > **hálózati** > **ExpressRoute**, a következő ábrán látható módon:
 
   ![ExpressRoute-kapcsolatcsoport létrehozása](./media/expressroute-howto-circuit-portal-resource-manager/createcircuit1.png)
 2. Miután rákattintott **ExpressRoute**, láthatja a **létrehozása ExpressRoute-kapcsolatcsoportot** lap. Ha kitöltés alatt az értékeket, ezen az oldalon, győződjön meg arról, hogy megadja a helyes SKU-réteg (Standard vagy prémium) és a számlázási modellt (korlátlan vagy Metered) mérési adatokat.

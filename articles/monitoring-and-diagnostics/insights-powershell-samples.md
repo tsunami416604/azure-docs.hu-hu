@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/17/2017
+ms.date: 2/14/2018
 ms.author: robb
-ms.openlocfilehash: 36836a4528c8ba04eee1c5234fd6d4e0f9545913
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: 3479b9c5bc1c8c77d2c6012b40dc9cd8f8e1708b
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="azure-monitor-powershell-quick-start-samples"></a>A figyelő PowerShell Azure gyors üzembe helyezési-minták
-Ez a cikk jeleníti meg, akkor minták segítséget nyújtanak a figyelő az Azure-szolgáltatások elérésének PowerShell-parancsokat. Azure figyelő lehetővé teszi az automatikus skálázás Felhőszolgáltatásokat, a virtuális gépek és a Web Apps. Lehetővé teszi a riasztási értesítéseket küldeni, vagy hívja a webes URL-címek, a konfigurált telemetriai adatok értékek alapján.
+Ez a cikk jeleníti meg, akkor minták segítséget nyújtanak a figyelő az Azure-szolgáltatások elérésének PowerShell-parancsokat.
 
 > [!NOTE]
 > Az Azure figyelő csak 2016. Szeptembertől 25. az "Azure Insights" nevezett új neve. Azonban a névterek, és így a következő parancsokat tartalmaz a a word "insights."
@@ -93,10 +93,10 @@ A következő parancsot a legutóbbi 1000 események átveszi a műveletnapló:
 Get-AzureRmLog -MaxEvents 1000
 ```
 
-`Get-AzureRmLog`sok más paramétereket támogatja. Tekintse meg a `Get-AzureRmLog` további információt.
+`Get-AzureRmLog` sok más paramétereket támogatja. Tekintse meg a `Get-AzureRmLog` további információt.
 
 > [!NOTE]
-> `Get-AzureRmLog`csak a előzmények számított 15 nyújt. Használja a **- MaxEvents** paraméter lehetővé teszi az utolsó N események meghaladja a 15 nap. 15 napnál régebbi hozzáférés események használja a REST API-t vagy az SDK-val (C# minta a SDK használatával). Ha nem adja meg **StartTime**, akkor az alapértelmezett érték **EndTime** mínusz 1 óra. Ha nem adja meg **EndTime**, akkor az alapértelmezett érték az aktuális idő. Minden alkalommal UTC szerepelnek.
+> `Get-AzureRmLog` csak a előzmények számított 15 nyújt. Használja a **- MaxEvents** paraméter lehetővé teszi az utolsó N események meghaladja a 15 nap. 15 napnál régebbi hozzáférés események használja a REST API-t vagy az SDK-val (C# minta a SDK használatával). Ha nem adja meg **StartTime**, akkor az alapértelmezett érték **EndTime** mínusz 1 óra. Ha nem adja meg **EndTime**, akkor az alapértelmezett érték az aktuális idő. Minden alkalommal UTC szerepelnek.
 > 
 > 
 
@@ -136,7 +136,7 @@ A tároló-erőforrások esetében minden riasztási szabályok beolvasása. Pé
 Get-AzureRmAlertRule -ResourceGroup montest -TargetResourceId /subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig
 ```
 
-`Get-AzureRmAlertRule`más paramétereket támogatja. Lásd: [Get-AlertRule](https://msdn.microsoft.com/library/mt282459.aspx) további információt.
+`Get-AzureRmAlertRule` más paramétereket támogatja. Lásd: [Get-AlertRule](https://msdn.microsoft.com/library/mt282459.aspx) további információt.
 
 ## <a name="create-metric-alerts"></a>Riasztások metrika létrehozása
 Használhatja a `Add-AlertRule` parancsmag létrehozására, frissítésére, és tiltsa le a riasztási szabályt.
@@ -145,12 +145,12 @@ E-mailek és a webhook tulajdonságok használatával hozhat létre `New-AzureRm
 
 A következő táblázat ismerteti a használt paraméterek és értékek használatával metrika riasztás létrehozása.
 
-| A paraméter | érték |
+| paraméter | érték |
 | --- | --- |
-| Név |simpletestdiskwrite |
+| Name (Név) |simpletestdiskwrite |
 | A riasztási szabály helye |USA keleti régiója |
 | ResourceGroup |montest |
-| Targetresourceid azonosítója |/Subscriptions/S1/resourceGroups/montest/Providers/Microsoft.COMPUTE/virtualMachines/testconfig |
+| TargetResourceId |/subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig |
 | A riasztás létrehozott MetricName |\PhysicalDisk (_Total) \Disk/mp. Tekintse meg a `Get-MetricDefinitions` parancsmag lekéri a pontos mérték nevét kapcsolatos |
 | Operátor |GreaterThan |
 | A küszöbérték (száma másodpercenként a Ez a mérőszám a) |1 |
@@ -199,6 +199,22 @@ Get-AzureRmMetricDefinition -ResourceId <resource_id> | Format-Table -Property N
 ```
 
 Az elérhető lehetőségek teljes listáját `Get-AzureRmMetricDefinition` érhető el [Get-MetricDefinitions](https://msdn.microsoft.com/library/mt282458.aspx).
+
+## <a name="create-and-manage-activity-log-alerts"></a>Tevékenységnapló értesítések létrehozása és kezelése
+Használhatja a `Set-AzureRmActivityLogAlert` parancsmag tevékenységnapló riasztás beállításához. Tevékenységnapló riasztást megköveteli, hogy először adja meg a feltételeit, feltételek álló dictionary, majd hozzon létre egy riasztást, amely használja ezeket a feltételeket.
+
+```PowerShell
+
+$condition1 = New-AzureRmActivityLogAlertCondition -Field 'category' -Equals 'Administrative'
+$condition2 = New-AzureRmActivityLogAlertCondition -Field 'operationName' -Equals 'Microsoft.Compute/virtualMachines/write'
+$additionalWebhookProperties = New-Object "System.Collections.Generic.Dictionary``2[System.String,System.String]"
+$additionalWebhookProperties.Add('customProperty', 'someValue')
+$actionGrp1 = New-AzureRmActionGroup -ActionGroupId 'actiongr1' -WebhookProperties $dict
+Set-AzureRmActivityLogAlert -Location 'Global' -Name 'alert on VM create' -ResourceGroupName 'myResourceGroup' -Scope '/' -Action $actionGrp1 -Condition $condition1, $condition2
+
+```
+
+A további webhook tulajdonságainak megadása nem kötelező. Vissza a tartalmát egy tevékenység napló riasztási használatával kaphat `Get-AzureRmActivityLogAlert`.
 
 ## <a name="create-and-manage-autoscale-settings"></a>Automatikus skálázási beállítások létrehozása és kezelése
 (A webes alkalmazás, virtuális gép, a felhőalapú szolgáltatás vagy virtuálisgép-méretezési csoport) erőforrás rendelkezhet beállított csak egy automatikus skálázási beállítás.

@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 10/27/2017
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: 35064c792b72222d59b1d3f0913a92a4a2b34612
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 5143abdde715424a41a53bb661db342acf817e0c
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="manage-cost-of-data-retention-with-your-log-analytics-workspace"></a>A Naplóelemzési munkaterület az adatok megőrzése költségét kezelése
 Feliratkozás a Naplóelemzési, attól függően, hogy a terv választja, nincs a megadott korlát a csatlakoztatott adatforrások által létrehozott adatokat mennyi ideig tárolja a munkaterületen.  Ebben a cikkben ismertetett szempontok alapján, amelyek hatással lehetnek arra, hogy ezek az adatok megőrzése és ezt a határértéket konfigurálása különböző időszakokra vonatkozó költségek mutatja be.   
@@ -44,11 +44,11 @@ Használatakor a *szabad* tervezze meg, ha folyamatosan túllépi az engedélyez
 ## <a name="change-the-data-retention-period"></a>Módosítsa az Adatmegőrzés időtartama 
 
 1. Jelentkezzen be az [Azure Portalra](http://portal.azure.com). 
-2. Kattintson a **további szolgáltatások** bal alsó sarokban található. Az erőforrások listájába írja be a **Log Analytics** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza ki **Analytics jelentkezzen**.
+2. Kattintson a **minden szolgáltatás**. Az erőforrások listájába írja be a **Log Analytics** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza a **Log Analytics** elemet.
 3. A Naplóelemzési előfizetések ablaktáblában jelölje ki a munkaterület módosítani a listából.
 4. A munkaterület lapján kattintson a **megőrzési** a bal oldali ablaktáblán.
 5. A munkaterület megőrzési ablaktábla a csúszkával növelheti vagy csökkentheti a napok számát, és kattintson a **mentése**.  Ha a *szabad* réteget, nem tudják módosítani az Adatmegőrzés időtartama, és frissítenie kell a fizetős csomagra ezzel a beállítással szabályozása érdekében.<br><br> ![Munkaterület adatmegőrzési beállításának módosítása](media/log-analytics-manage-cost/manage-cost-change-retention.png)
 
-## <a name="next-steps"></a>Következő lépések  
+## <a name="next-steps"></a>További lépések  
 
 Annak eldöntéséhez, hogy mennyi adatot gyűjt, mely források és a használat és a költséghatékonyság kezeléséhez küldött adatok különböző típusú üzenetet küld, lásd: [Naplóelemzési a használati adatok elemzése](log-analytics-usage.md)

@@ -12,13 +12,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 01/30/2018
+ms.date: 02/15/2018
 ms.author: juluk
-ms.openlocfilehash: 08426b6142dd125a5981d65635ecc55336cb3d15
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 21a050373a9901220e106534464a8c13565bb3d8
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="limitations-of-azure-cloud-shell"></a>Azure-felhőbe rendszerhéj korlátozásai
 
@@ -33,7 +33,6 @@ A felhő rendszerhéj munkamenet biztosító a gép csak átmenetileg létezik, 
 * Csatlakoztatott tárolóval, csak azokat a módosításokat, belül a `clouddrive` directory megmaradnak. A Bash a `$Home` directory is megőrződjenek.
 * Azure fájlmegosztásokat csak belülről lehet csatlakoztatni az [hozzárendelve régió](persisting-shell-storage.md#mount-a-new-clouddrive).
   * A Bash, futtassa az `env` állítja be a régióban található `ACC_LOCATION`.
-* Az Azure Files csak a helyileg redundáns tárolás és a georedundáns tárolás fiókokat támogatja.
 
 ### <a name="browser-support"></a>Webböngésző támogatása
 
@@ -55,18 +54,11 @@ Felhő rendszerhéj készült interaktív használati eseteket. Ennek eredménye
 
 ### <a name="user-permissions"></a>Felhasználói engedélyek
 
-Engedélyek vannak beállítva, normál felhasználóként sudo hozzáférés nélkül. Bármely telepítési kívül a `$Home` könyvtár nem őrzi meg.
-
-### <a name="clouddrive-smb-limited-permissions"></a>Clouddrive SMB korlátozott engedélyekkel
-Bizonyos parancsok belül a `clouddrive` könyvtárába, például `git clone`, nem rendelkezik megfelelő engedélyekkel bizonyos fájlok írható/olvasható. Ha elérte ezt a problémát, próbálja újra a a `$Home` könyvtárat, amelyhez nem tartozik az SMB-korlátozások.
+Engedélyek vannak beállítva, normál felhasználóként sudo hozzáférés nélkül. Bármely telepítési kívül a `$Home` vagy `clouddrive` directory nem őrzi meg.
 
 ### <a name="editing-bashrc"></a>.Bashrc szerkesztése
 
-Szerkesztés .bashrc, így váratlan hibákat okozhat felhő rendszerhéj elvégzendő járjon el.
-
-### <a name="bashhistory"></a>.bash_history
-
-Lehet, hogy az előzmények bash parancsok felhő rendszerhéj munkamenet megszakítása vagy egyidejű munkamenetek miatt inkonzisztens.
+Hajtson végre figyelmeztetés szerkesztése .bashrc, így váratlan hibákat okozhatnak felhő rendszerhéj Bash.
 
 ## <a name="powershell-limitations"></a>PowerShell-korlátozások
 

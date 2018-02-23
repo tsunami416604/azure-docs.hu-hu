@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 81602766848a91331c8d811ea1c8ec3ffae44b96
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: a59ea7c9e111f8ae5b0d9bd620faa5495c3924b7
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-a-virtual-network-using-an-azure-resource-manager-template"></a>Azure Resource Manager-sablonnal virtuális hálózat létrehozása
 
@@ -39,9 +39,9 @@ Ez a cikk azt ismerteti, hogyan hozhat létre egy Vnetet az Azure Resource Manag
 - [PowerShell (klasszikus)](virtual-networks-create-vnet-classic-netcfg-ps.md)
 - [Parancssori felület (klasszikus)](virtual-networks-create-vnet-classic-cli.md)
 
-Ismertetjük, hogy miként tölthet le és módosíthat egy meglévő ARM-sablont a GitHubból, és miként helyezheti üzembe a sablont a GitHubból, PowerShellből és az Azure parancssori felületéről.
+Megtudhatja, hogyan tölthet le és módosíthat és a meglévő Azure Resource Manager-sablont a Githubból, és a sablont a Githubból, PowerShell és az Azure parancssori felület telepítése.
 
-Ha közvetlenül a GitHubból helyezi üzembe az ARM-sablont, változtatások nélkül, ugorjon a [sablon telepítése a githubból](#deploy-the-arm-template-by-using-click-to-deploy) lépésre.
+Ha egyszerűen telepíti az Azure Resource Manager-sablon közvetlenül a Githubból, változtatások nélkül, ugorjon [központi telepítése egy sablont a githubból](#deploy-the-arm-template-by-using-click-to-deploy).
 
 [!INCLUDE [virtual-networks-create-vnet-scenario-include](../../includes/virtual-networks-create-vnet-scenario-include.md)]
 
@@ -52,11 +52,11 @@ Töltse le a meglévő sablon létrehozhat egy Vnetet két alhálózattal a Gith
 2. Kattintson az **azuredeploy.json**, majd a **RAW** elemre.
 3. Mentse a fájlt egy helyi mappába a számítógépén.
 4. Ha ismeri a sablonok, ugorjon a 7.
-5. Nyissa meg az előbb mentett fájlt, és nézze meg az 5. sorban a **parameters** (paraméterek) alatt látható tartalmakat. Az ARM-sablonparaméterek az üzembe helyezés során kitölthető paraméterek helyőrzőiként működnek.
+5. Nyissa meg a fájlt mentette, és tekintse meg a tartalom **paraméterek** 5. sorban. Az Azure Resource Manager-sablonparaméterek az üzembe helyezés során kitölthető paraméterek helyőrzőiként működnek.
    
    | Paraméter | Leírás |
    | --- | --- |
-   | **hely** |Az Azure-régió, ahol a VNet létrejön |
+   | **hely** |Azure-régió, ahol a VNet létrejön. |
    | **vnetName** |Az új VNet neve |
    | **addressPrefix** |A VNet címtere CIDR-formátumban |
    | **subnet1Name** |Az első VNet neve |
@@ -71,7 +71,7 @@ Töltse le a meglévő sablon létrehozhat egy Vnetet két alhálózattal a Gith
 6. Ellenőrizze a **resources** (erőforrások) alatt látható tartalmat, és figyelje meg a következőket:
    
    * **type**. A sablon által létrehozott erőforrástípus. Ebben az esetben a **Microsoft.Network/virtualNetworks**, ami egy VNetet jelöl.
-   * **Név** Az erőforrás neve. Figyelje meg a **[parameters('vnetName')]** használatát, amely azt jelzi, hogy a nevet a felhasználó vagy egy paraméterfájl adja meg az üzembe helyezés során bemenetként.
+   * **Név** Az erőforrás neve. Figyelje meg a **[parameters('vnetName')]**, ami azt jelenti, hogy a telepítés során a felhasználó vagy egy paraméterfájl a bemenetként megadott név.
    * **properties**. Az erőforrás tulajdonságainak listája. Ez a sablon a címteret és az alhálózati tulajdonságokat használja a VNet létrehozása során.
 7. Lépjen vissza a [mintasablon lapra](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vnet-two-subnets).
 8. Kattintson az **azuredeploy-paremeters.json**, majd a **RAW** elemre.
@@ -231,7 +231,7 @@ Használja fel a Microsoft által kezelt elérhető GitHub-tárakba feltöltött
    
     ![Üzembe helyezési csempe küldése a betekintő portálban](./media/virtual-networks-create-vnet-arm-template-click-include/figure4.png)
 
-10. Miután a telepítés befejeződött, az Azure portálon kattintson a **további szolgáltatások**, típus *virtuális hálózatok* szót a Szűrő mezőbe, amely akkor jelenik meg, majd kattintson a virtuális hálózatokat a virtuális hálózatok panelen. Kattintson a panel *TestVNet*. Az a *TestVNet* panelen kattintson a **alhálózatok** megtekintéséhez a létrehozott alhálózatok, az alábbi ábrán látható módon:
+10. Miután a telepítés befejeződött, az Azure portálon kattintson a **minden szolgáltatás**, típus *virtuális hálózatok* szót a Szűrő mezőbe, amely akkor jelenik meg, majd kattintson a virtuális hálózatokat a virtuális hálózatok panelen. Kattintson a panel *TestVNet*. Az a *TestVNet* panelen kattintson a **alhálózatok** megtekintéséhez a létrehozott alhálózatok, az alábbi ábrán látható módon:
     
      ![VNet létrehozása a betekintő portálon](./media/virtual-networks-create-vnet-arm-template-click-include/figure5.png)
 

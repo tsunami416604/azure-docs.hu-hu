@@ -12,13 +12,13 @@ ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/06/2017
+ms.date: 02/14/2018
 ms.author: owend
-ms.openlocfilehash: 14bdbf3dd6d940cc3f4b665658f0c789916a2597
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: d00f6bbc285cca028f22ced69ad03d8a2814d76a
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="azure-analysis-services-scale-out"></a>Az Azure Analysis Services kibővített
 
@@ -42,7 +42,7 @@ Feldolgozási műveletek befejezése után a feldolgozási kiszolgáló és a le
 
 ## <a name="monitor-qpu-usage"></a>A figyelő QPU kihasználtsága
 
- Ha kibővített megállapításához a kiszolgálóra szükség, a kiszolgáló figyelése az Azure-portálon metrikák használatával. Ha a QPU rendszeresen maxes ki, az azt jelenti, a modellekkel lekérdezések száma meghaladja a terv QPU korlátozást. A lekérdezés készlet feladat várólista hossza metrika is növekszik, ha a lekérdezés szál-készlet várólistája lévő lekérdezések száma meghaladja a rendelkezésre álló QPU. További tudnivalókért lásd: [server metrikát](analysis-services-monitor.md).
+ Ha kibővített megállapításához a kiszolgálóra szükség, a kiszolgáló figyelése az Azure-portálon metrikák használatával. Ha a QPU rendszeresen maxes ki, az azt jelenti, a modellekkel lekérdezések száma meghaladja a terv QPU korlátozást. A lekérdezés készlet feladat várólista hossza metrika is növekszik, ha a lekérdezés szál-készlet várólistája lévő lekérdezések száma meghaladja a rendelkezésre álló QPU. További tudnivalókért lásd: [A kiszolgáló metrikáinak monitorozása](analysis-services-monitor.md).
 
 ## <a name="configure-scale-out"></a>Kibővített konfigurálása
 
@@ -79,7 +79,7 @@ Használja a **szinkronizálási** műveletet.
 `GET https://<region>.asazure.windows.net/servers/<servername>:rw/models/<modelname>/sync`
 
 ### <a name="powershell"></a>PowerShell
-PowerShell, a szinkronizálási futtatásához [frissítése a legújabb](https://github.com/Azure/azure-powershell/releases) 5.01 vagy magasabb AzureRM modul. Használjon [Sync-AzureAnalysisServicesInstance](https://docs.microsoft.com/powershell/module/azurerm.analysisservices/sync-azureanalysisservicesinstance).
+PowerShell, a szinkronizálási futtatásához [frissítése a legújabb](https://github.com/Azure/azure-powershell/releases) 5.01 vagy magasabb AzureRM modul. Use [Sync-AzureAnalysisServicesInstance](https://docs.microsoft.com/powershell/module/azurerm.analysisservices/sync-azureanalysisservicesinstance).
 
 ## <a name="connections"></a>Kapcsolatok
 

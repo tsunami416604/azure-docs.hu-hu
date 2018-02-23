@@ -11,11 +11,11 @@ ms.service: logic-apps
 ms.topic: article
 ms.date: 11/30/2017
 ms.author: LADocs; estfan
-ms.openlocfilehash: e31f30e46c3a49ff9eca72cb82c16acb731427bf
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 3d99dabe778b9b9234db9fe130ba503cd8b57834
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="monitor-virtual-machine-changes-with-azure-event-grid-and-logic-apps"></a>Virtuális gép módosítások Azure esemény rács és logikai alkalmazások figyelése
 
@@ -51,7 +51,7 @@ Először logikai alkalmazás létrehozása és hozzáadása, amely figyeli a vi
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). 
 
-2. A főmenü Azure bal felső sarokban válassza **új** > **vállalati integrációs** > **logikai alkalmazás**.
+2. A főmenü Azure bal felső sarokban válassza **hozzon létre egy erőforrást** > **vállalati integrációs** > **logikai alkalmazás**.
 
    ![Logikai alkalmazás létrehozása](./media/monitor-virtual-machine-changes-event-grid-logic-app/azure-portal-create-logic-app.png)
 
@@ -109,7 +109,7 @@ Először logikai alkalmazás létrehozása és hozzáadása, amely figyeli a vi
    
    ![Példa esemény rács eseményindító részletei](./media/monitor-virtual-machine-changes-event-grid-logic-app/logic-app-event-grid-trigger-details.png)
 
-9. Mentse a Logic Apps alkalmazást. A tervező eszköztárán válassza a **Mentés** parancsot. Csukja össze, és egy művelet részleteit a Logic Apps alkalmazást elrejtése, válassza ki a művelet címsorában.
+9. Mentse a logikai alkalmazást. A tervező eszköztárán válassza a **Mentés** parancsot. Csukja össze, és egy művelet részleteit a Logic Apps alkalmazást elrejtése, válassza ki a művelet címsorában.
 
    ![A logikai alkalmazás mentése](./media/monitor-virtual-machine-changes-event-grid-logic-app/logic-app-event-grid-save.png)
 
@@ -134,7 +134,7 @@ Adja meg a kifejezés:
 
    `@equals(triggerBody()?['data']['operationName'], 'Microsoft.Compute/virtualMachines/write')`
 
-   A feltétel most néz ki ebben a példában:
+   A feltétel most a következő példához hasonlít:
 
    ![Üres feltétel](./media/monitor-virtual-machine-changes-event-grid-logic-app/logic-app-condition-expression.png)
 
@@ -150,7 +150,7 @@ Adja meg a kifejezés:
 
    ![Logic app feltétel](./media/monitor-virtual-machine-changes-event-grid-logic-app/logic-app-condition-1.png)
 
-5. Mentse a Logic Apps alkalmazást.
+5. Mentse a logikai alkalmazást.
 
 ## <a name="send-email-when-your-virtual-machine-changes"></a>E-mail küldése, ha a virtuális gép vált
 
@@ -198,7 +198,7 @@ Ezután adja hozzá egy [ *művelet* ](../logic-apps/logic-apps-overview.md#logi
 
    ![Befejezett logikai alkalmazás](./media/monitor-virtual-machine-changes-event-grid-logic-app/logic-app-completed.png)
 
-5. Mentse a Logic Apps alkalmazást. Csukja össze, és minden művelet részleteit a Logic Apps alkalmazást elrejtése, válassza ki a művelet címsorában.
+5. Mentse a logikai alkalmazást. Csukja össze, és minden művelet részleteit a Logic Apps alkalmazást elrejtése, válassza ki a művelet címsorában.
 
    ![A logikai alkalmazás mentése](./media/monitor-virtual-machine-changes-event-grid-logic-app/logic-app-event-grid-save-completed.png)
 

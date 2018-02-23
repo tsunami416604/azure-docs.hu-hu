@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
 ms.openlocfilehash: d02c29fa6239cb36cb5fb95da4d325cca57952aa
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="an-application-proxy-application-takes-too-long-to-load"></a>Az alkalmazásproxy alkalmazás betöltése túl sokáig tart
 
@@ -31,9 +31,9 @@ Ha ezeket a szempontokat nem segít, sajnos nem rendelkezik jelenleg tudunk telj
 Az alkalmazásproxy-szolgáltatás a adatközpontjaiban található az a [összekötő portok vizsgálati eszköz](https://aadap-portcheck.connectorporttest.msappproxy.net/). 
 
 ## <a name="feedback-on-application-proxy-data-center-locations"></a>Alkalmazásproxy data center helyeken visszajelzés 
-Előfordulhat, hogy Azure-adatközpont, amely még nem jelennek meg a alkalmazásproxy, de az Ön a nagy késleltetésű fokozása vezetne. Az Adatközpont-helyen < aadapfeedback@microsoft.com > , tervezze meg, hogy bontsa ki a visszajelzést is használjuk.
+Előfordulhat, hogy Azure-adatközpont, amely még nem jelennek meg a alkalmazásproxy, de az Ön a nagy késleltetésű fokozása vezetne. Az Adatközpont-helyen <aadapfeedback@microsoft.com> tehát használhatjuk visszajelzése megtervezése szerint azt a csomópontot.
 
 Jelenleg néhány további képességeket, amelyek a bérlők számára, amelyet jelenleg a hosszú késések fordulnak elő a várakozási fokozásához dolgozik, és ügyeljen arra, hogy a megosztás után rendelkezésre álló dokumentáció.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [A meglévő helyszíni proxykiszolgálókkal működik](application-proxy-working-with-proxy-servers.md)

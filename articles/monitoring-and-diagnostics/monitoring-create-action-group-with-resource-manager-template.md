@@ -1,8 +1,8 @@
 ---
 title: "A művelet csoportok létrehozása a Resource Manager-sablonok |} Microsoft Docs"
 description: "Útmutató: egy művelet csoport létrehozása az Azure Resource Manager-sablon használatával."
-author: anirudhcavale
-manager: orenr
+author: dkamstra
+manager: chrad
 editor: 
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/31/2017
-ms.author: ancav
-ms.openlocfilehash: 5e715cad5cb28ad0c763ffb29c43e9ee98741699
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.date: 02/16/2018
+ms.author: dukek
+ms.openlocfilehash: 1f97bf1e1e5c2800c2cdc16a6bcc1837f178e408
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-an-action-group-with-a-resource-manager-template"></a>A művelet-csoport létrehozása a Resource Manager-sablon
 Ez a cikk bemutatja, hogyan használható egy [Azure Resource Manager sablon](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates) művelet csoportok konfigurálásához. Sablonok segítségével automatikusan állíthatja be, amelyek felhasználhatók a meghatározott típusú riasztások művelet csoportok. E művelet csoportok győződjön meg arról, hogy a helyes felek értesítést kap figyelmeztetést.
@@ -33,7 +33,7 @@ Először azt ismerteti, hogyan egy művelet csoport, hol találhatók a művele
 
 ## <a name="resource-manager-templates-for-an-action-group"></a>Egy művelet csoport Resource Manager-sablonok
 
-Művelet-csoport létrehozása a Resource Manager sablonnal, hozzon létre egy erőforrást a típusú `Microsoft.Insights/actionGroups`. Majd adja meg az összes kapcsolódó tulajdonságok. Az alábbiakban a két minta sablonok művelet-csoport létrehozása.
+A Resource Manager sablonnal művelet csoport létrehozásához típusú erőforrás létrehozása `Microsoft.Insights/actionGroups`. Majd adja meg az összes kapcsolódó tulajdonságok. Az alábbiakban a két minta sablonok művelet-csoport létrehozása.
 
 ```json
 {
@@ -56,7 +56,7 @@ Művelet-csoport létrehozása a Resource Manager sablonnal, hozzon létre egy e
   "resources": [
     {
       "type": "Microsoft.Insights/actionGroups",
-      "apiVersion": "2017-04-01",
+      "apiVersion": "2018-03-01",
       "name": "[parameters('actionGroupName')]",
       "location": "Global",
       "properties": {
@@ -139,7 +139,7 @@ Művelet-csoport létrehozása a Resource Manager sablonnal, hozzon létre egy e
   "resources": [
     {
       "type": "Microsoft.Insights/actionGroups",
-      "apiVersion": "2017-04-01",
+      "apiVersion": "2018-03-01",
       "name": "[parameters('actionGroupName')]",
       "location": "Global",
       "properties": {

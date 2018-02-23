@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/30/2017
 ms.author: dadobali
 ms.custom: aaddev
-ms.openlocfilehash: 619334b3ca65654fd845a62c2fc068156d94d6fc
-ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
+ms.openlocfilehash: 6c949c07c95c5d965b31725bce4ab2deac646bca
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="azure-ad-android-getting-started"></a>Ismerkedés az Azure AD Android
 [!INCLUDE [active-directory-devquickstarts-switcher](../../../includes/active-directory-devquickstarts-switcher.md)]
@@ -52,7 +52,7 @@ Azt még feltéve, hogy van-e regisztrálása a Teendőlista REST API-t korábba
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. A felső eszköztáron kattintson a fiókját. Az a **Directory** menüben válassza ki az Azure AD-bérlőt, ahová az alkalmazás regisztrálásához.
-3. Kattintson a **több szolgáltatások** a bal oldali ablaktáblán, és válassza a **Azure Active Directory**.
+3. Kattintson a **minden szolgáltatás** a bal oldali ablaktáblán, és válassza a **Azure Active Directory**.
 4. Kattintson a **App regisztrációk**, majd válassza ki **Hozzáadás**.
 5. Adjon egy rövid nevet az alkalmazáshoz (például **TodoListService**) elemre, jelölje be **webalkalmazás és/vagy webes API**, és kattintson a **következő**.
 6. A bejelentkezési URL-címhez adja meg a minta az alap URL-címet. Alapértelmezés szerint ez a `https://localhost:8080`.
@@ -70,7 +70,7 @@ Azt még feltéve, hogy van-e regisztrálása korábban hivatkozott mintaalkalma
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. A felső eszköztáron kattintson a fiókját. Az a **Directory** menüben válassza ki az Azure AD-bérlőt, ahová az alkalmazás regisztrálásához.
-3. Kattintson a **több szolgáltatások** a bal oldali ablaktáblán, és válassza a **Azure Active Directory**.
+3. Kattintson a **minden szolgáltatás** a bal oldali ablaktáblán, és válassza a **Azure Active Directory**.
 4. Kattintson a **App regisztrációk**, majd válassza ki **Hozzáadás**.
 5. Adjon egy rövid nevet az alkalmazáshoz (például **TodoListClient-Android**) elemre, jelölje be **natív ügyfélalkalmazás**, és kattintson a **következő**.
 6. Az átirányítási URI-t, írja be `http://TodoListClient`. Kattintson a **Befejezés** gombra.
@@ -85,9 +85,9 @@ A Maven build, használhatja a legfelső szinten pom.xml:
 2. Kövesse a [a Maven környezet beállítása Androidhoz készült előfeltételei](https://github.com/MSOpenTech/azure-activedirectory-library-for-android/wiki/Setting-up-maven-environment-for-Android).
 3. Az SDK 19 emulátor beállítása.
 4. Nyissa meg a gyökérmappájába, ahol a tárházban klónozott.
-5. Futtassa ezt a parancsot:`mvn clean install`
-6. Módosítsa a könyvtárat arra a gyors üzembe helyezési minta:`cd samples\hello`
-7. Futtassa ezt a parancsot:`mvn android:deploy android:run`
+5. Futtassa ezt a parancsot: `mvn clean install`
+6. Módosítsa a könyvtárat arra a gyors üzembe helyezési minta: `cd samples\hello`
+7. Futtassa ezt a parancsot: `mvn android:deploy android:run`
 
    Meg kell jelennie az alkalmazás elindítása.
 8. Adja meg a teszt felhasználói adatokkal.
@@ -375,7 +375,7 @@ Az ADAL-könyvtár ProgressDialog üzenetek angol karakterláncot tartalmaz. Az 
 ### <a name="ntlm-dialog-box"></a>NTLM párbeszédpanel
 1.1.0-ás ADAL-verziót támogatja az NTLM párbeszédpanel, amely a WebViewClient onReceivedHttpAuthRequest esemény feldolgozása. Az elrendezés és a párbeszédpanel karakterláncok személyre is szabhatja.
 
-### <a name="cross-app-sso"></a>Alkalmazások közötti SSO
+### <a name="cross-app-sso"></a>Cross-app SSO
 Ismerje meg, [az Android alkalmazások közötti SSO engedélyezése az ADAL használatával](active-directory-sso-android.md).  
 
 [!INCLUDE [active-directory-devquickstarts-additional-resources](../../../includes/active-directory-devquickstarts-additional-resources.md)]

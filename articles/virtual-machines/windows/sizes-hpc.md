@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 07/28/2017
+ms.date: 02/21/2018
 ms.author: jonbeck
-ms.openlocfilehash: fc2cae8208baa211db2166c9d66a83153fa7b445
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: dfeb6b0cbd74ff5a5b11b730c6413df189096ab8
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="high-performance-compute-vm-sizes"></a>Nagy teljesítményű számítási Virtuálisgép-méretek
 
@@ -36,13 +36,7 @@ Ez az interfész lehetővé teszi az RDMA-kompatibilis példányok egy InfiniBan
 
 Az RDMA-kompatibilis Windows virtuális gépek, az Azure RDMA hálózati elérésére vonatkozó követelmények a következők: 
 
-* **Operációs rendszer**
-  
-  Windows Server 2012 R2, Windows Server 2012-ben
-  
-  > [!NOTE]
-  > Jelenleg a Windows Server 2016 nem támogatja az Azure-ban RDMA-kapcsolatot.
-  >
+* **Operációs rendszer** – Windows Server 2016-os, Windows Server 2012 R2, Windows Server 2012-ben
 
 * **Rendelkezésre állási csoportot, vagy a felhőalapú szolgáltatás** – RDMA-kompatibilisek-e a virtuális gépek, az azonos rendelkezésre állási csoport (Ha használja az Azure Resource Manager telepítési modell) vagy az ugyanazon a felhőalapú szolgáltatás telepítése (Ha használja a klasszikus üzembe helyezési modellel). Azure Batch használja, ha az RDMA-kompatibilisek-e virtuális gépek ugyanabban a készletben kell lennie.
 
@@ -52,7 +46,7 @@ Az RDMA-kompatibilis Windows virtuális gépek, az Azure RDMA hálózati eléré
 
 * **RDMA hálózati címterüket** – az Azure-ban az RDMA hálózati fenntartja a cím terület 172.16.0.0/16. MPI alkalmazásokat futtasson egy Azure virtuális hálózatra-példányt, győződjön meg arról, hogy a virtuális hálózat címtere nem fedi át a RDMA hálózati.
 
-* **HpcVmDrivers Virtuálisgép-bővítmény** -RDMA-kompatibilis virtuális gépeken, hozzá kell adni a HpcVmDrivers bővítmény telepítése a Windows hálózati eszköz-illesztőprogramok a RDMA hálózati kapcsolatot. (Egyes telepítések A8 és A9 példányok, a HpcVmDrivers a kiterjesztés kerül automatikusan.) A Virtuálisgép-bővítmény hozzáadása a virtuális gépek, használhatja a [Azure PowerShell](/powershell/azure/overview) parancsmagok. 
+* **HpcVmDrivers Virtuálisgép-bővítmény** - RDMA-kompatibilis virtuális gépeken, adja hozzá a Windows hálózati RDMA-kapcsolatot az eszközillesztők telepítéséhez HpcVmDrivers kiterjesztést. (Egyes telepítések A8 és A9 példányok, a HpcVmDrivers a kiterjesztés kerül automatikusan.) A Virtuálisgép-bővítmény hozzáadása a virtuális gépek, használhatja a [Azure PowerShell](/powershell/azure/overview) parancsmagok. 
 
   
   A következő parancsot a legújabb 1.1-es verzió HpcVMDrivers bővítményt telepít egy meglévő RDMA-kompatibilis nevű virtuális gép *myVM* nevű erőforráscsoportban telepített *myResourceGroup* a a  *USA nyugati régiója* régió:
@@ -78,7 +72,7 @@ Az RDMA-kompatibilis Windows virtuális gépek, az Azure RDMA hálózati eléré
 - [Tárolásra optimalizált](../virtual-machines-windows-sizes-storage.md)
 - [GPU-optimalizált](sizes-gpu.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ellenőrzőlista a számítási igényű példányok használata HPC Pack a Windows Server, lásd: [MPI-alkalmazások futtatására HPC Pack Windows RDMA fürt beállítása](classic/hpcpack-rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 

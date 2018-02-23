@@ -12,11 +12,11 @@ ms.custom:
 ms.devlang: 
 ms.topic: article
 ms.date: 02/01/2018
-ms.openlocfilehash: 76ed1a93af22620ccc2074168b3ff20f6bb4c37d
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 936d3718c84cad49221e64b65e60bea7e37a523c
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="data-preparations-python-extensions"></a>Előkészített Python adatkiterjesztések
 Beépített szolgáltatásai között a funkció hézagok kitöltése módja Azure Machine Learning adatok előkészített bővítési több szinten tartalmazza. Ebben a dokumentumban a Python-parancsfájl bővíthetőséget szerkezeti azt. 
@@ -101,7 +101,7 @@ Számítási célja a csomagok telepítéséhez kell módosítani a conda_depend
 ### <a name="windows"></a>Windows 
 A Windows helyen található, a Python és a parancsfájlok könyvtárát alkalmazásspecifikus telepítése található. Az alapértelmezett hely a következő:  
 
-`C:\Users\<user>\AppData\Local\AmlWorkbench\Python\Scripts.` 
+`C:\Users\<user>\AppData\Local\AmlWorkbench\Python\Scripts` 
 
 Ezután futtassa az alábbi parancsok egyikét: 
 
@@ -114,7 +114,7 @@ vagy
 ### <a name="mac"></a>Mac 
 A Mac helyen található, a Python és a parancsfájlok könyvtárát alkalmazásspecifikus telepítése található. Az alapértelmezett hely a következő: 
 
-`/Users/<user>/Library/Caches/AmlWorkbench>/Python/bin` 
+`/Users/<user>/Library/Caches/AmlWorkbench/Python/bin` 
 
 Ezután futtassa az alábbi parancsok egyikét: 
 

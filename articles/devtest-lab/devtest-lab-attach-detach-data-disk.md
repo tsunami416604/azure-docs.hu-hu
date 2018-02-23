@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: v-craic
-ms.openlocfilehash: c1f83097fe4e5da3a46f693d37b001dbb6831527
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: 7a0a86f658ac19bfb197c7e233b8717bf9fba40b
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="attach-or-detach-a-data-disk-to-a-virtual-machine-in-azure-devtest-labs"></a>Csatolása vagy leválasztása adatlemezt a Azure DevTest Labs szolgáltatásban virtuális géphez
 [Azure-lemezeket felügyelt](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview) kezeli a virtuális gép adatlemezek társított tárfiókokat. Egy felhasználó nevű új lemezre egy virtuális géphez, típusa és szükséges lemez méretét adja meg, és az Azure hoz létre, és automatikusan kezeli a lemezt. Az adatlemez majd a virtuális gép választható le, és vagy később az azonos virtuális géphez, vagy egy másik virtuális géphez, amely ugyanahhoz a felhasználóhoz tartozik csatolt objektumkörnyezetben.
@@ -35,7 +35,7 @@ Mielőtt adatlemezt csatol egy virtuális Gépre, tekintse át a ezek a tippek:
 Kövesse az alábbi lépéseket létrehozásához, és új felügyelt adatlemezt csatolni egy virtuális Gépet az Azure DevTest Labs szolgáltatásban.
 
 1. Jelentkezzen be az [Azure Portalra](http://go.microsoft.com/fwlink/p/?LinkID=525040).
-1. Válassza ki **több szolgáltatások**, majd válassza ki **DevTest Labs** a listából.
+1. Válassza ki **minden szolgáltatás**, majd válassza ki **DevTest Labs** a listából.
 1. Válassza ki a kívánt labor labs listájának megtekintéséhez. 
 1. A listájáról **a virtuális gépek**, jelöljön ki egy futó virtuális Gépet.
 1. A bal oldali menüben válassza ki a **lemezek**.

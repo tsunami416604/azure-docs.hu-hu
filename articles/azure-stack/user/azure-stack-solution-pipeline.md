@@ -3,8 +3,8 @@ title: "Telepítse az alkalmazást az Azure és az Azure verem |} Microsoft Docs
 description: "Megtudhatja, hogyan telepíthet alkalmazásokat az Azure és az Azure-verem és a hibrid CI/CD."
 services: azure-stack
 documentationcenter: 
-author: HeathL17
-manager: byronr
+author: brenduns
+manager: femila
 editor: 
 ms.service: azure-stack
 ms.workload: na
@@ -12,13 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/25/2017
-ms.author: helaw
+ms.author: brenduns
+ms.reviewer: 
 ms.custom: mvc
-ms.openlocfilehash: 83bb401d5d65cd2c34015a1a14673363aeee81d7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6c073376db196b7d6c73c38d6a0a7b2c24949528
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="deploy-apps-to-azure-and-azure-stack"></a>Alkalmazások telepítése Azure és az Azure verem
 *A következőkre vonatkozik: Azure verem integrált rendszerek és az Azure verem szoftverfejlesztői készlet*
@@ -71,7 +72,7 @@ Ebben a szakaszban egy egyszerű ASP.NET-alkalmazás létrehozása, és hogy VST
 ### <a name="commit-and-push-changes-to-vsts"></a>Véglegesítse és változásainak leküldése VSTS
 1.  Válassza ki a legördülő listában, majd kattintson a Visual Studio Team Intéző segítségével **módosítások**.
 2.  Adja meg a véglegesítési üzenetet, és válassza ki **véglegesíti az összes**. A fájl mentése, kattintson az Igen gombra menti az összes kérheti.
-3.  Miután véglegesített, Visual Studio szinkronizálni a módosításokat a projekthez kínál. Válassza ki **szinkronizálási**.
+3.  Miután véglegesített, Visual Studio szinkronizálni a módosításokat a projekthez kínál. Válassza a **Szinkronizálás** elemet.
 
     ![a véglegesítési képernyőt ábrázoló, amikor befejeződött a véglegesítési kép](./media/azure-stack-solution-pipeline/image1.png)
 
@@ -114,7 +115,7 @@ Most, hogy egy üres kiadás definíciója elkészítette és azt a build kötő
     | Paraméter | Érték |
     | ----- | ----- |
     |Hitelesítési módszer| Adja meg hitelesítő adatokat|
-    |URL-címe | Az Azure portálról lekért webes alkalmazás FTP URL-címe |
+    |Kiszolgáló URL-címe | Az Azure portálról lekért webes alkalmazás FTP URL-címe |
     |Felhasználónév | Felhasználónév FTP hitelesítő adatok webalkalmazás létrehozásakor beállított |
     |Jelszó | Webalkalmazás FTP hitelesítő adatok létrehozásakor létrehozott jelszó|
     |Forráskönyvtár | $(System.DefaultWorkingDirectory)\**\ |
@@ -158,7 +159,7 @@ Most, hogy a létrehozott kiadási, konfigurálhatja a közzététel a webalkalm
     | Paraméter | Érték |
     | -----     | ----- |
     |Hitelesítési módszer| Adja meg hitelesítő adatokat|
-    |URL-címe | Verem Azure portálról lekért webes alkalmazás FTP URL-címe |
+    |Kiszolgáló URL-címe | Verem Azure portálról lekért webes alkalmazás FTP URL-címe |
     |Felhasználónév | Felhasználónév FTP hitelesítő adatok webalkalmazás létrehozásakor beállított |
     |Jelszó | Webalkalmazás FTP hitelesítő adatok létrehozásakor létrehozott jelszó|
     |Forráskönyvtár | $(System.DefaultWorkingDirectory)\**\ |
@@ -198,7 +199,7 @@ A hibrid CI/CD sorban, Azure verem közzétételi végső lépése most tesztelh
 
 Más hibrid felhő mintára építőelemként most már használhatja az új hibrid CI/CD folyamat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben az oktatóanyagban megtanulta, hogyan hozhat létre egy hibrid CI/CD-feldolgozási:
 
 > [!div class="checklist"]

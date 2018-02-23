@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 3be59e32de22e0939ee887fba1d20829f1ef22eb
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: 8198fbe9f919638565357c61ba487e47a8f5229c
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="bindings-for-durable-functions-azure-functions"></a>Kötések tartós függvények (az Azure Functions)
 
@@ -42,8 +42,8 @@ Az Azure Functions a Visual Studio eszközök használata esetén a vezénylési
 }
 ```
 
-* `orchestration`a vezénylési neve van. Ez az érték ügyfelek szeretne elindítani az új példányokat orchestrator függvény segítségével. Ez a tulajdonság nem kötelező. Ha nincs megadva, a függvény nevét használja.
-* `version`a vezénylési verzió címkét van. Ügyfelek, indítsa el az orchestration egy új példányát tartalmaznia kell a megfelelő verzió címkét. Ez a tulajdonság nem kötelező. Ha nincs megadva, a üres karakterláncot kell használni. Versioning további információkért lásd: [Versioning](durable-functions-versioning.md).
+* `orchestration` a vezénylési neve van. Ez az érték ügyfelek szeretne elindítani az új példányokat orchestrator függvény segítségével. Ez a tulajdonság nem kötelező. Ha nincs megadva, a függvény nevét használja.
+* `version` a vezénylési verzió címkét van. Ügyfelek, indítsa el az orchestration egy új példányát tartalmaznia kell a megfelelő verzió címkét. Ez a tulajdonság nem kötelező. Ha nincs megadva, a üres karakterláncot kell használni. Versioning további információkért lásd: [Versioning](durable-functions-versioning.md).
 
 > [!NOTE]
 > A beállítás értéke a `orchestration` vagy `version` tulajdonságok jelenleg nem ajánlott.
@@ -116,8 +116,8 @@ Fejlesztési használata az Azure-portálon, a tevékenység indítási határoz
 }
 ```
 
-* `activity`a tevékenység esetén. Ez az érték az orchestrator funkciók segítségével a tevékenység függvény meghívása. Ez a tulajdonság nem kötelező. Ha nincs megadva, a függvény nevét használja.
-* `version`a tevékenység verzió címke van. Az orchestrator függvények meghívása tevékenységgel tartalmaznia kell a megfelelő verzió címke. Ez a tulajdonság nem kötelező. Ha nincs megadva, a üres karakterláncot kell használni. További információkért lásd: [Versioning](durable-functions-versioning.md).
+* `activity` a tevékenység esetén. Ez az érték az orchestrator funkciók segítségével a tevékenység függvény meghívása. Ez a tulajdonság nem kötelező. Ha nincs megadva, a függvény nevét használja.
+* `version` a tevékenység verzió címke van. Az orchestrator függvények meghívása tevékenységgel tartalmaznia kell a megfelelő verzió címke. Ez a tulajdonság nem kötelező. Ha nincs megadva, a üres karakterláncot kell használni. További információkért lásd: [Versioning](durable-functions-versioning.md).
 
 > [!NOTE]
 > A beállítás értéke a `activity` vagy `version` tulajdonságok jelenleg nem ajánlott.
@@ -172,7 +172,7 @@ public static string SayHello([ActivityTrigger] string name)
 
 ## <a name="orchestration-client"></a>Vezénylési ügyfél
 
-Az orchestration ügyfél kötés lehetővé teszi az orchestrator functions interaktív funkciók írását. Például működhet a vezénylési példányok a következő módon:
+Az orchestration ügyfél kötés lehetővé teszi az orchestrator functions interaktív funkciók írását. Például akkor műveleteket hajthat végre vezénylési példányok a következő módon:
 * Indítsa el őket.
 * Lekérdezési azok állapotát.
 * Állítsa le azokat.
@@ -192,8 +192,8 @@ Parancsprogramnyelv használata (pl. *.csx* fájlok) fejlesztési, a vezénylés
 }
 ```
 
-* `taskHub`-Forgatókönyvekben, ahol több függvény alkalmazás megosztása ugyanazt a tárfiókot, de el legyen különítve egymástól kell használni. Ha nincs megadva, az alapértelmezett érték a `host.json` szolgál. Ezt az értéket meg kell egyeznie a cél az orchestrator függvény által használt érték.
-* `connectionName`-A tárolási fiók kapcsolati karakterláncot tartalmazó alkalmazásbeállítás neve. Ez a kapcsolati karakterlánc által képviselt tárfiók azonosnak kell lennie a cél az orchestrator-funkciók által alkalmazott. Ha nincs megadva, a függvény alkalmazás alapértelmezett tárolási fiók kapcsolati karakterlánca szolgál.
+* `taskHub` -Forgatókönyvekben, ahol több függvény alkalmazás megosztása ugyanazt a tárfiókot, de el legyen különítve egymástól kell használni. Ha nincs megadva, az alapértelmezett érték a `host.json` szolgál. Ezt az értéket meg kell egyeznie a cél az orchestrator függvény által használt érték.
+* `connectionName` -A tárolási fiók kapcsolati karakterláncot tartalmazó alkalmazásbeállítás neve. Ez a kapcsolati karakterlánc által képviselt tárfiók azonosnak kell lennie a cél az orchestrator-funkciók által alkalmazott. Ha nincs megadva, a függvény alkalmazás alapértelmezett tárolási fiók kapcsolati karakterlánca szolgál.
 
 > [!NOTE]
 > A legtöbb esetben azt javasoljuk, hogy hagyja ki ezeket a tulajdonságokat, és az alapértelmezett viselkedés támaszkodnak.

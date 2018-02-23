@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 09/14/2017
 ms.author: LADocs; millopis; estfan
-ms.openlocfilehash: f385d832deed2eaf8ea21eb75d62944cbbf3d13d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 216745f9f540235ee48661eae922a5ae0e716e01
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="connect-to-data-sources-on-premises-from-logic-apps-with-on-premises-data-gateway"></a>A helyszíni adatforrások csatlakozni a logic Apps alkalmazásokból, a helyszíni adatok átjáróval
 
@@ -35,8 +35,8 @@ Az átjáró a helyszíni e adatforrásokkal létesített kapcsolatokat is támo
 *   MySQL
 *   Oracle Database
 *   PostgreSQL
-*   SAP-alkalmazáskiszolgáló 
-*   SAP üzenet kiszolgáló
+*   SAP alkalmazáskiszolgáló 
+*   SAP üzenetkiszolgáló
 *   SharePoint
 *   SQL Server
 *   Teradata
@@ -63,21 +63,19 @@ Az átjáró más szolgáltatásokkal való használatával kapcsolatos informá
   > [!NOTE]
   > A Windows-fiók eltér a helyi adatforrások, való kapcsolódáshoz használt fiók és az Azure-ból munkahelyi vagy iskolai fiók használatával jelentkezzen be a felhőalapú szolgáltatások.
 
-## <a name="set-up-the-data-gateway-connection"></a>Az átjáró-kapcsolat beállítása
-
-### <a name="1-install-the-on-premises-data-gateway"></a>1. A helyszíni adatátjáró telepítése
+## <a name="install-the-on-premises-data-gateway"></a>A helyszíni adatátjáró telepítése
 
 Ha még nem tette meg, kövesse a [az helyszíni átjáró telepítésének lépéseit](logic-apps-gateway-install.md). A többi lépés a folytatás előtt győződjön meg arról, hogy az átjáró a helyi számítógépen telepítve.
 
 <a name="create-gateway-resource"></a>
 
-### <a name="2-create-an-azure-resource-for-the-on-premises-data-gateway"></a>2. Hozzon létre egy Azure-erőforrás a helyszíni adatok átjáró
+## <a name="create-an-azure-resource-for-the-on-premises-data-gateway"></a>Hozzon létre egy Azure-erőforrás a helyszíni adatok átjáró
 
 Miután telepítette az átjárót a helyi számítógépen, létre kell hoznia az Ön data gateway elemmel olyan erőforrásként az Azure-ban. Ebben a lépésben az Azure-előfizetéshez is társítja az átjáró-erőforráshoz.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com "Azure Portal") Győződjön meg arról, hogy az Azure ugyanazzal a munkahelyi vagy iskolai e-mail címet az átjáró telepítéséhez használt.
 
-2. A fő Azure menüben válasszon **új** > **vállalati integrációs** > **helyszíni adatátjáró** itt látható módon:
+2. A fő Azure menüben válasszon **hozzon létre egy erőforrást** > **vállalati integrációs** > **helyszíni adatátjáró**:
 
    !["A helyszíni adatok gateway" található](./media/logic-apps-gateway-connection/find-on-premises-data-gateway.png)
 
@@ -103,7 +101,7 @@ Miután telepítette az átjárót a helyi számítógépen, létre kell hoznia 
     * **Telepítési neve**: Ha nincs kiválasztva, akkor az átjáró telepítésének, válassza ki a korábban telepített átjárót. 
 
     Az átjáró erőforrás hozzáadása az Azure irányítópultra, válassza a **rögzítés az irányítópulton**. 
-    Amikor elkészült, válassza ki a **létrehozása**.
+    Ha elkészült, kattintson a **Létrehozás** gombra.
 
     Példa:
 
@@ -115,7 +113,7 @@ Miután telepítette az átjárót a helyi számítógépen, létre kell hoznia 
 
 <a name="connect-logic-app-gateway"></a>
 
-### <a name="3-connect-your-logic-app-to-the-on-premises-data-gateway"></a>3. A Logic Apps alkalmazást csatlakozni a helyszíni adatátjáró
+## <a name="connect-your-logic-app-to-the-on-premises-data-gateway"></a>A Logic Apps alkalmazást csatlakozni a helyszíni adatátjáró
 
 Most, hogy a data gateway erőforrás elkészítette és az Azure-előfizetéshez társított erőforrás, a Logic Apps alkalmazást és az átjáró közötti kapcsolat létrehozása.
 
@@ -126,7 +124,7 @@ Most, hogy a data gateway erőforrás elkészítette és az Azure-előfizetéshe
 
 2. Adjon hozzá egy összekötőt, amely támogatja a helyi kapcsolatokat, például az SQL Server.
 
-3. Válassza ki a következő sorrendben történik, **keresztül, a helyszíni adatátjáró**, adjon meg egy egyedi kapcsolatnevet és a szükséges adatokat, és válassza ki a használni kívánt adatok átjáró-erőforráshoz. Amikor elkészült, válassza ki a **létrehozása**.
+3. Válassza ki a következő sorrendben történik, **keresztül, a helyszíni adatátjáró**, adjon meg egy egyedi kapcsolatnevet és a szükséges adatokat, és válassza ki a használni kívánt adatok átjáró-erőforráshoz. Ha elkészült, kattintson a **Létrehozás** gombra.
 
    > [!TIP]
    > Egy egyedi kapcsolatnevet segítségével könnyen később, hogy a kapcsolat azonosítására, különösen akkor, ha több kapcsolatot is létrehozhat. Ha alkalmazható, tartalmazzák a tartománynevet a felhasználónévhez. 
@@ -157,6 +155,7 @@ Miután egy gateway-kapcsolatot hoz létre a Logic Apps alkalmazást, érdemes k
    > Ha a frissítések nem lép érvénybe, próbálja meg [leállításával és újraindításával az átjáró Windows-szolgáltatás](./logic-apps-gateway-install.md#restart-gateway).
 
 <a name="change-delete-gateway-resource"></a>
+
 ## <a name="switch-or-delete-your-on-premises-data-gateway-resource"></a>Váltás, vagy a helyszíni adatok átjáró erőforrás törlése
 
 Hozzon létre egy másik átjáró erőforrást, rendelje hozzá az átjárót egy másik erőforráscsoportban, vagy távolítsa el az átjáró-erőforráshoz, törölheti az átjáró-erőforráshoz az átjáró telepítésének befolyásolása nélkül. 
@@ -166,11 +165,12 @@ Hozzon létre egy másik átjáró erőforrást, rendelje hozzá az átjárót e
 3. Válasszon **helyszíni Data Gateway**, és az erőforrás eszköztáron válassza **törlése**.
 
 <a name="faq"></a>
+
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
 [!INCLUDE [existing-gateway-location-changed](../../includes/logic-apps-existing-gateway-location-changed.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [A logikai alkalmazások védelme](./logic-apps-securing-a-logic-app.md)
 * [Gyakori példák és forgatókönyvek a logic Apps alkalmazások](./logic-apps-examples-and-scenarios.md)

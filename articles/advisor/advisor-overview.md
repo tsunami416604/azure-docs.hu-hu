@@ -14,25 +14,25 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/16/2016
 ms.author: kumud
-ms.openlocfilehash: 906450f75557820bb27762707c3328b08b23cccb
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: 8ae99c7ce6382626657777d003a1cb82348c4aba
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="introduction-to-azure-advisor"></a>Bevezetés az Azure Advisor
 
 További tudnivalók az Azure Advisor főbb képességei, és gyakran feltett kérdésekre adott válaszok.
 
 ## <a name="what-is-advisor"></a>Mi az az Advisor?
-Az Advisor egy személyre szabott felhő tanácsadó, amelynek segítségével hajtsa végre az ajánlott eljárások az Azure-környezetekhez optimalizálása érdekében. Az erőforrás-konfigurációhoz és használat telemetriai adatai elemzi, és az, amelyek javítják a költséghatékonyság, a teljesítmény, a magas rendelkezésre állású és az Azure-erőforrások biztonsági megoldások javasolja.
+Az Advisor egy személyre szabott felhő tanácsadó, amelynek segítségével hajtsa végre az ajánlott eljárások az Azure-környezetekhez optimalizálása érdekében. Az Advisor elemzi az erőforrások konfiguráció- és használattelemetriáját, és megoldási javaslatokat tesz, amelyek segítségével javítható az Azure-erőforrások költséghatékonysága, teljesítménye, rendelkezésre állása és biztonsága.
 
 Az Advisor szolgáltatásban a következőket teheti:
 * Szerezze be a proaktív, hajtható végre, és személyre szabott ajánlott eljárások a. 
 * A teljes Azure csökkentése érdekében lehetőségek meghatározása teljesítmény, biztonsági és az erőforrások magas rendelkezésre állás javítása televíziózással töltenek.
 * A javasolt műveletek beágyazott javaslatok beszerzése.
 
-Az Advisor keresztül érheti el a [Azure-portálon](https://aka.ms/azureadvisordashboard). Jelentkezzen be a [portal](https://portal.azure.com), keresse meg **Advisor** a navigációs menü, vagy keresse meg azt a **további szolgáltatások** menü.
+Az Advisor keresztül érheti el a [Azure-portálon](https://aka.ms/azureadvisordashboard). Jelentkezzen be a [portal](https://portal.azure.com), keresse meg **Advisor** a navigációs menü, vagy keresse meg azt a **minden szolgáltatás** menü.
 
 Az Advisor irányítópult megjeleníti az előfizetések személyre szabott javaslatok.  Szűrőket adott előfizetések és erőforrástípusok javaslatok megjelenítése.  A javaslatok négy kategóriába oszthatók: 
 
@@ -57,7 +57,7 @@ Ha nem kíván azonnal intézkedhet ajánlása, emlékeztet, hogy egy adott idő
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
 ### <a name="how-do-i-access-advisor"></a>Hogyan érhetem el az Advisor?
-Az Advisor keresztül érheti el a [Azure-portálon](https://aka.ms/azureadvisordashboard). Jelentkezzen be a [portal](https://portal.azure.com), keresse meg **Advisor** a navigációs menü, vagy keresse meg azt a **további szolgáltatások** menü.
+Az Advisor keresztül érheti el a [Azure-portálon](https://aka.ms/azureadvisordashboard). Jelentkezzen be a [portal](https://portal.azure.com), keresse meg **Advisor** a navigációs menü, vagy keresse meg azt a **minden szolgáltatás** menü.
 
 Javaslatokat biztosít a virtuális gép erőforrás-felületen keresztül is megtekintheti. Válassza ki a virtuális gépet, és görgessen a menü javaslatokat biztosít. 
 
@@ -73,7 +73,7 @@ Az Advisor virtuális gépek rendelkezésre állási készletek, alkalmazásátj
 
 Emlékeztet, vagy hagyja figyelmen kívül az ajánlás olyan környezetekben, kattintson a **emlékeztet** hivatkozásra. Megadhat egy időtartamot időszak vagy select **soha** elvetni a javaslat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Advisor-javaslatokra kapcsolatos további információkért lásd:
 

@@ -1,8 +1,8 @@
 ---
 title: "Az Azure portálon művelet csoportok létrehozása és kezelése |} Microsoft Docs"
 description: "Útmutató az Azure portálon művelet csoportok létrehozásához és kezeléséhez."
-author: anirudhcavale
-manager: orenr
+author: dkamstra
+manager: chrad
 editor: 
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
@@ -12,19 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/15/2017
-ms.author: ancav
-ms.openlocfilehash: 9f7f9dcc473e6925000ebe76a6592779c228a9af
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.date: 02/16/2018
+ms.author: dukek
+ms.openlocfilehash: 772b9c2b9532bd2cc37ad89db92545297eecd903
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Az Azure portálon művelet csoportok létrehozása és kezelése
 ## <a name="overview"></a>Áttekintés ##
 Ez a cikk bemutatja, hogyan az Azure portálon művelet csoportok létrehozásához és kezeléséhez.
 
-A művelet csoportok konfigurálható azon műveletek listáját. Ezek a csoportok majd használható napló tevékenységriasztásokat definiálásakor. Ezek a csoportok majd minden egyes napló figyelmeztetés a meghatározásához, biztosítva, hogy ugyanazokat a műveleteket a rendszer minden alkalommal, amikor a tevékenység napló figyelmeztetés felhasználhatók.
+A művelet csoportok konfigurálható azon műveletek listáját. Minden riasztás definiál, biztosítva, hogy ugyanazokat a műveleteket a rendszer minden alkalommal, amikor a figyelmeztetést majd használhatják ezeket a csoportokat.
 
 Egy legfeljebb 10 minden művelet típusú lehet. Egyes műveletek során a következő tulajdonságok tevődik össze:
 
@@ -56,7 +56,7 @@ Művelet csoportok konfigurálása Azure Resource Manager-sablonok használatáv
 
     a. **Név**: Adjon meg egy egyedi azonosítót ehhez a művelethez.
 
-    b. **Művelet típusa**: válassza ki az SMS, e-mailek, webhook, Azure-alkalmazás, ITSM vagy Automation-forgatókönyv.
+    b. **Művelet típusa**: e-mailben vagy SMS vagy az Azure app, Webhook, ITSM vagy Automation-forgatókönyv kiválasztása.
 
     c. **Részletek**: művelet típusa alapján, adjon meg egy telefonszámot, e-mail címét, webhook URI, az Azure app, ITSM kapcsolat, vagy Automation-runbook. A ITSM művelet, továbbá meg **munkaelem** és más mezők a ITSM eszköz szükséges.
 

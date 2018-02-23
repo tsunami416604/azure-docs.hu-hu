@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
 ms.reviwer: japere
-ms.openlocfilehash: 0f50a705d4453970d039c2219aef8e1a411fd533
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 83c3a893fe18f2de2acc4fdbc9b048c92cc71d15
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="problem-signing-in-to-the-access-panel-website"></a>A probléma jelentkezik be a hozzáférési panel webhelyre
 
@@ -32,7 +32,7 @@ Felhasználók is jelentkeznek be a hozzáférési panelre, ha telepítve a munk
 
 -   Windows Server Active Directory felhasználók hitelesíthetők.
 
-Ha a felhasználó rendelkezik előfizetéssel az Azure vagy Office 365 és az Azure-portálon vagy az Office 365-alkalmazás használatával, akkor fog tudni használatát, a hozzáférési Panel zökkenőmentesen anélkül újból bejelentkezni. Jelentkezzen be a felhasználónevet és jelszót a fiókjuk Azure AD-ben nem hitelesített felhasználók kérni. Ha a szervezet összevonási van konfigurálva, írja be a felhasználónevet is használhatók.
+Ha a felhasználó rendelkezik előfizetéssel az Azure vagy Office 365 és az Azure-portálon vagy az Office 365-alkalmazás használatával, akkor fog tudni használatát, a hozzáférési Panel zökkenőmentesen anélkül újból bejelentkezni. Jelentkezzen be a felhasználónevet és jelszót a fiókjuk Azure AD-ben nem hitelesített felhasználók megkezdésére. Ha a szervezet összevonási van konfigurálva, írja be a felhasználónevet is használhatók.
 
 ## <a name="general-issues-to-check-first"></a>Először ellenőrizze a általános problémák 
 
@@ -40,7 +40,7 @@ Ha a felhasználó rendelkezik előfizetéssel az Azure vagy Office 365 és az A
 
 -   Győződjön meg arról, hogy a felhasználó böngészője hozzáadta az URL-CÍMÉT a **megbízható helyek**
 
--   Győződjön meg arról, hogy a felhasználói fiók **engedélyezett** a indított bejelentkezések.
+-   Győződjön meg arról, hogy a felhasználói fiók **engedélyezett** a bejelentkezések.
 
 -   Győződjön meg arról, hogy a felhasználói fiók **nincs zárolva.**
 
@@ -50,7 +50,7 @@ Ha a felhasználó rendelkezik előfizetéssel az Azure vagy Office 365 és az A
 
 -   Győződjön meg arról, hogy egy **feltételes hozzáférési házirend** vagy **Identity Protection** házirend nem blokkolja a hozzáférést.
 
--   Győződjön meg arról, hogy a felhasználó **hitelesítési kapcsolattartási adatai** esetén a multi-factor Authentication vagy feltételes hozzáférési házirendek kényszerítését dátum.
+-   Győződjön meg arról, hogy a felhasználó **hitelesítési kapcsolattartási adatai** naprakész, hogy a multi-factor Authentication vagy feltételes hozzáférési házirendek kényszerítését.
 
 -   A győződjön meg arról is megpróbálja törlésével a böngésző cookie-kat, majd próbálkozzon újból bejelentkezni.
 
@@ -95,9 +95,9 @@ A hozzáférési Panel elérését a felhasználói fiók problémája miatt blo
 
 Ellenőrizze, hogy jelen-e a felhasználói fiók, kövesse az alábbi lépéseket:
 
-1.  Nyissa meg a [ **Azure Portal** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazdája.**
+1.  Nyissa meg a [ **Azure-portálon** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazdája.**
 
-2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **további szolgáltatások** a fő bal oldali navigációs menü alján.
+2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **minden szolgáltatás** a fő bal oldali navigációs menü tetején.
 
 3.  Írja be a **"Azure Active Directory**" a szűrő keresési mezőbe, és válasszon a **Azure Active Directory** elemet.
 
@@ -113,9 +113,9 @@ Ellenőrizze, hogy jelen-e a felhasználói fiók, kövesse az alábbi lépések
 
 A felhasználói fiók állapotának ellenőrzéséhez kövesse az alábbi lépéseket:
 
-1.  Nyissa meg a [ **Azure Portal** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazdája.**
+1.  Nyissa meg a [ **Azure-portálon** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazdája.**
 
-2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **további szolgáltatások** a fő bal oldali navigációs menü alján.
+2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **minden szolgáltatás** a fő bal oldali navigációs menü tetején.
 
 3.  Írja be a **"Azure Active Directory**" a szűrő keresési mezőbe, és válasszon a **Azure Active Directory** elemet.
 
@@ -133,9 +133,9 @@ A felhasználói fiók állapotának ellenőrzéséhez kövesse az alábbi lép�
 
 A jelszó visszaállításához kövesse az alábbi lépéseket:
 
-1.  Nyissa meg a [ **Azure Portal** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazdája.**
+1.  Nyissa meg a [ **Azure-portálon** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazdája.**
 
-2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **további szolgáltatások** a fő bal oldali navigációs menü alján.
+2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **minden szolgáltatás** a fő bal oldali navigációs menü tetején.
 
 3.  Írja be a **"Azure Active Directory**" a szűrő keresési mezőbe, és válasszon a **Azure Active Directory** elemet.
 
@@ -145,17 +145,17 @@ A jelszó visszaállításához kövesse az alábbi lépéseket:
 
 6.  **Keresési** érdekli, felhasználó és **sorára kattintson** kiválasztásához.
 
-7.  Kattintson a **jelszó-átállítási** gombra a felhasználó panel tetején.
+7.  Kattintson a **jelszó-átállítási** gombra, ha a felhasználó panel tetején.
 
-8.  Kattintson a **jelszó-átállítási** gombra a **jelszó-átállítási** panel, amely akkor jelenik meg.
+8.  Kattintson a **jelszó-átállítási** gombra a **jelszó-átállítási** ablaktábla akkor jelenik meg.
 
 9.  Másolás a **ideiglenes jelszó** vagy **adjon meg egy új jelszót** a felhasználó számára.
 
-10. Az új jelszót, amely a felhasználó kommunikációhoz, azok szükséges jelszó módosításához a következő bejelentkezéskor a során az Azure Active Directory.
+10. Az új jelszót, amely a felhasználó kommunikációhoz, azok szükséges jelszó módosításához a következő bejelentkezés során az Azure Active Directory.
 
 ### <a name="enable-self-service-password-reset"></a>Az önkiszolgáló jelszó-visszaállítás engedélyezése
 
-Önkiszolgáló jelszóváltoztatás, kövesse az alábbi telepítési lépéseket:
+Ahhoz, hogy az önkiszolgáló jelszó-visszaállítás, kövesse az alábbi telepítési lépéseket:
 
 -   [Segítségével a felhasználók visszaállíthassák az Azure Active Directory-jelszavaikat](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-getting-started#enable-users-to-reset-their-azure-ad-passwords)
 
@@ -165,9 +165,9 @@ A jelszó visszaállításához kövesse az alábbi lépéseket:
 
 A felhasználó a multi-factor authentication állapotának ellenőrzéséhez kövesse az alábbi lépéseket:
 
-1.  Nyissa meg a [ **Azure Portal** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazdája.**
+1.  Nyissa meg a [ **Azure-portálon** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazdája.**
 
-2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **további szolgáltatások** a fő bal oldali navigációs menü alján.
+2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **minden szolgáltatás** a fő bal oldali navigációs menü tetején.
 
 3.  Írja be a **"Azure Active Directory**" a szűrő keresési mezőbe, és válasszon a **Azure Active Directory** elemet.
 
@@ -175,7 +175,7 @@ A felhasználó a multi-factor authentication állapotának ellenőrzéséhez k�
 
 5.  Kattintson a **minden felhasználó**.
 
-6.  Kattintson a **multi-factor Authentication** gomb a panel tetején.
+6.  Kattintson a **multi-factor Authentication** gombra, ha a panel tetején.
 
 7.  Egyszer a **multi-factor Authentication felügyeleti portál** terhelés esetén gondoskodjon arról, hogy a **felhasználók** fülre.
 
@@ -184,7 +184,7 @@ A felhasználó a multi-factor authentication állapotának ellenőrzéséhez k�
 9.  Válassza ki a felhasználót a felhasználók listájának és **engedélyezése**, **tiltsa le a**, vagy **érvényesítése** többtényezős hitelesítést a kívánt módon működjenek.
 
    >[!NOTE]
-   >Ha egy felhasználó egy **kényszerített** állapotba kerül, előfordulhat, hogy meg őket **letiltott** ideiglenesen ahhoz, hogy azokat vissza a figyelembe. Miután bekerültek vissza, módosíthatja az állapot **engedélyezve** újra a megköveteli tőlük, hogy regisztrálja újra a során a következő bejelentkezéskor a kapcsolattartási adatait. Azt is megteheti, hogy is kövesse a [ellenőrizni kell a felhasználó hitelesítési kapcsolattartási adatait](#check-a-users-authentication-contact-info) ellenőrizze vagy állítsa be ezeket az adatokat a számukra.
+   >Ha egy felhasználó egy **kényszerített** állapotba kerül, előfordulhat, hogy meg őket **letiltott** ideiglenesen ahhoz, hogy azokat vissza a figyelembe. Miután bekerültek vissza, módosíthatja az állapot **engedélyezve** újra a megköveteli tőlük, hogy regisztrálja újra a kapcsolattartási adatait a következő bejelentkezés során. Azt is megteheti, hogy is kövesse a [ellenőrizni kell a felhasználó hitelesítési kapcsolattartási adatait](#check-a-users-authentication-contact-info) ellenőrizze vagy állítsa be ezeket az adatokat a számukra.
    >
    >
 
@@ -192,9 +192,9 @@ A felhasználó a multi-factor authentication állapotának ellenőrzéséhez k�
 
 A felhasználó hitelesítési használt kapcsolattartási adatokat a többtényezős hitelesítést, a feltételes hozzáférés, a Identity Protection és a jelszó-átállítási ellenőrzéséhez kövesse az alábbi lépéseket:
 
-1.  Nyissa meg a [ **Azure Portal** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazdája.**
+1.  Nyissa meg a [ **Azure-portálon** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazdája.**
 
-2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **további szolgáltatások** a fő bal oldali navigációs menü alján.
+2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **minden szolgáltatás** a fő bal oldali navigációs menü tetején.
 
 3.  Írja be a **"Azure Active Directory**" a szűrő keresési mezőbe, és válasszon a **Azure Active Directory** elemet.
 
@@ -214,9 +214,9 @@ A felhasználó hitelesítési használt kapcsolattartási adatokat a többtény
 
 A felhasználói csoporttagság ellenőrzéséhez kövesse az alábbi lépéseket:
 
-1.  Nyissa meg a [ **Azure Portal** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazdája.**
+1.  Nyissa meg a [ **Azure-portálon** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazdája.**
 
-2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **további szolgáltatások** a fő bal oldali navigációs menü alján.
+2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **minden szolgáltatás** a fő bal oldali navigációs menü tetején.
 
 3.  Írja be a **"Azure Active Directory**" a szűrő keresési mezőbe, és válasszon a **Azure Active Directory** elemet.
 
@@ -232,9 +232,9 @@ A felhasználói csoporttagság ellenőrzéséhez kövesse az alábbi lépéseke
 
 A felhasználó licenc-hozzárendeléseket ellenőrzéséhez kövesse az alábbi lépéseket:
 
-1.  Nyissa meg a [ **Azure Portal** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazdája.**
+1.  Nyissa meg a [ **Azure-portálon** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazdája.**
 
-2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **további szolgáltatások** a fő bal oldali navigációs menü alján.
+2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **minden szolgáltatás** a fő bal oldali navigációs menü tetején.
 
 3.  Írja be a **"Azure Active Directory**" a szűrő keresési mezőbe, és válasszon a **Azure Active Directory** elemet.
 
@@ -250,9 +250,9 @@ A felhasználó licenc-hozzárendeléseket ellenőrzéséhez kövesse az alábbi
 
 A licenc hozzárendelése egy felhasználóhoz, kövesse az alábbi lépéseket:
 
-1.  Nyissa meg a [ **Azure Portal** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazdája.**
+1.  Nyissa meg a [ **Azure-portálon** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazdája.**
 
-2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **további szolgáltatások** a fő bal oldali navigációs menü alján.
+2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **minden szolgáltatás** a fő bal oldali navigációs menü tetején.
 
 3.  Írja be a **"Azure Active Directory**" a szűrő keresési mezőbe, és válasszon a **Azure Active Directory** elemet.
 
@@ -288,5 +288,5 @@ támogatási jegy megnyitása a következő információkat, ha rendelkezésre �
 
 -   Fiddler nyomkövetések
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [Adja meg az egyszeri bejelentkezés az alkalmazásokba a Proxy](active-directory-application-proxy-sso-using-kcd.md)

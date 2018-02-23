@@ -16,11 +16,11 @@ ms.topic: get-started-article
 ms.date: 07/17/2017
 ms.author: anandy; billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7e83eece09d9802792b87b89fd334ea67df14dc9
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: ba14244a3f5786ebcd667aa090d0245ce45f741d
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="deploying-active-directory-federation-services-in-azure"></a>Az Active Directory összevonási szolgáltatások üzembe helyezése az Azure-ban
 Az AD FS egyszerű, mégis biztonságos identitás-összevonást, valamint webes egyszeri bejelentkezési (SSO) funkciókat biztosít. Az Azure AD vagy O365 segítségével megvalósított összevonás lehetővé teszi a felhasználóknak a helyszíni bejelentkezési adatok segítségével történő hitelesítést, valamint a felhőben futó erőforrások elérését. Ezért fontos, hogy magas rendelkezésre állást biztosító AD FS-infrastruktúrát alkalmazzon, amely garantálja a helyszíni és a felhőben lévő erőforrások elérhetőségét. Az AD FS Azure-ban történő üzembe helyezésével minimális erőfeszítéssel kialakíthatja a magas rendelkezésre állást.
@@ -354,7 +354,7 @@ A sablon telepítése közben használhat egy meglévő virtuális hálózatot, 
 * [Internetre irányuló terheléselosztó](https://aka.ms/Azure/ILB/Internet)
 * [Tárfiókok](https://aka.ms/Azure/Storage)
 * [Azure virtuális hálózatok](https://aka.ms/Azure/VNet)
-* [Az AD FS és a webalkalmazás-proxy hivatkozások](http://aka.ms/ADFSLinks) 
+* [Az AD FS és a webalkalmazás-proxy hivatkozások](https://aka.ms/ADFSLinks) 
 
 ## <a name="next-steps"></a>További lépések
 * [Helyszíni identitások integrálása az Azure Active Directoryval](active-directory-aadconnect.md)

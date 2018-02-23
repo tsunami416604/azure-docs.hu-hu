@@ -14,59 +14,64 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 01/19/2018
+ms.date: 02/13/2018
 ms.author: larryfr
-ms.openlocfilehash: 5f66e60249af489e695029cbb072f3cc881bb039
-ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
+ms.openlocfilehash: af5fe44b611e8ff9d93aba8a30c71213c452aff9
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="use-ambari-hive-view-with-hadoop-in-hdinsight"></a>Ambari Hive nézete használata a hadooppal a Hdinsightban
 
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]
 
-Megtudhatja, hogyan futtathat Hive-lekérdezéseket Ambari Hive nézet használatával. Ambari egy felügyeleti és figyelési segédprogram Linux-alapú HDInsight-fürtökkel. Az Ambari keresztül elérhető szolgáltatások egyik webes felhasználói Felületet, amely segítségével futtathat Hive-lekérdezéseket.
-
-> [!NOTE]
-> Ambari rendelkezik számos lényeges képességét, hogy ez a dokumentum nem ismerteti. További információkért lásd: [kezelése HDInsight-fürtök az Ambari webes felhasználói felület használatával](../hdinsight-hadoop-manage-ambari.md).
+Megtudhatja, hogyan futtathat Hive-lekérdezéseket Ambari Hive nézet használatával. A Hive nézet lehetővé teszi, optimalizálása, és futtathat Hive-lekérdezéseket a webböngészőben.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A Linux-alapú HDInsight-fürtöt. Fürtök létrehozásával kapcsolatos további információkért lásd: [Hadoop használatának megkezdésében a HDInsight](apache-hadoop-linux-tutorial-get-started.md).
+* A Linux-alapú Hadoop a HDInsight fürt 3.4 vagy újabb verziója.
 
-> [!IMPORTANT]
-> A jelen dokumentumban leírt lépések az Azure HDInsight-fürt által használt Linux igényelnek. Linux az egyetlen operációs rendszer használt a HDInsight 3.4 vagy újabb verziója. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
+  > [!IMPORTANT]
+  > A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
-## <a name="open-the-hive-view"></a>Nyissa meg a Hive nézete
+* Webböngésző
 
-Az Ambari nézetek megnyithatja az Azure-portálról. A HDInsight-fürthöz, majd válassza ki és **Ambari nézetek** a a **Gyorshivatkozások** szakasz.
+## <a name="run-a-hive-query"></a>Hive-lekérdezések futtatása
 
-![a portál Gyorshivatkozások szakasz](./media/apache-hadoop-use-hive-ambari-view/quicklinks.png)
+1. Nyissa meg az [Azure portált](https://portal.azure.com).
 
-Válassza ki a listáról a nézetek, __Hive View__.
+2. A HDInsight-fürthöz, majd válassza ki és **Ambari nézetek** a a **Gyorshivatkozások** szakasz.
 
-![A kiválasztott Hive nézete](./media/apache-hadoop-use-hive-ambari-view/select-hive-view.png)
+    ![a portál Gyorshivatkozások szakasz](./media/apache-hadoop-use-hive-ambari-view/quicklinks.png)
 
-> [!NOTE]
-> Ambari próbál hozzáférni, amikor a program kéri, a helyrendszer felé történő hitelesítésre. Adja meg a rendszergazdai (alapértelmezett `admin`) nevét és jelszavát, amely a fürt létrehozásakor használt fiókot.
+    Amikor a rendszer kéri, hitelesítéshez, használja a fürt bejelentkezési (alapértelmezett `admin`) fiók nevét és jelszavát, amely a fürt létrehozásakor megadott.
 
-Az alábbi képen hasonló lap kell megjelennie:
+3. Válassza ki a listáról a nézetek, __Hive View__.
 
-![A lekérdezés munkalap a Hive nézet képe](./media/apache-hadoop-use-hive-ambari-view/ambari-hive-view.png)
+    ![A kiválasztott Hive nézete](./media/apache-hadoop-use-hive-ambari-view/select-hive-view.png)
 
-## <a name="run-a-query"></a>A lekérdezés futtatása
+    A Hive-megtekintési lapján az alábbi képen hasonlít:
 
-Hive-lekérdezések futtatásához használja a következő lépéseket a Hive nézetből.
+    ![A lekérdezés munkalap a Hive nézet képe](./media/apache-hadoop-use-hive-ambari-view/ambari-hive-view.png)
 
-1. Az a __lekérdezés__ lapon, a következő hiveql illessze be a munkalapra:
+4. Az a __lekérdezés__ lapon, a következő hiveql illessze be a munkalapra:
 
     ```hiveql
     DROP TABLE log4jLogs;
-    CREATE EXTERNAL TABLE log4jLogs(t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string)
+    CREATE EXTERNAL TABLE log4jLogs(
+        t1 string,
+        t2 string,
+        t3 string,
+        t4 string,
+        t5 string,
+        t6 string,
+        t7 string)
     ROW FORMAT DELIMITED FIELDS TERMINATED BY ' '
     STORED AS TEXTFILE LOCATION '/example/data/';
-    SELECT t4 AS sev, COUNT(*) AS cnt FROM log4jLogs WHERE t4 = '[ERROR]' GROUP BY t4;
+    SELECT t4 AS loglevel, COUNT(*) AS count FROM log4jLogs 
+        WHERE t4 = '[ERROR]' 
+        GROUP BY t4;
     ```
 
     Ezekre az utasításokra hajtsa végre a következő műveleteket:
@@ -82,42 +87,20 @@ Hive-lekérdezések futtatásához használja a következő lépéseket a Hive n
 
    * `SELECT`: Kiválasztja az adott oszlop t4 értéke [hiba] összes sorok számát.
 
-     > [!NOTE]
-     > Külső tábla használja, ha egy külső forrásból, frissítenie kell az alapul szolgáló adatokat várt például egy automatizált adatok feltöltése a folyamat vagy egy másik MapReduce művelet. A külső tábla eldobása does *nem* törli az adatokat, csak a tábla definíciójában.
-
     > [!IMPORTANT]
     > Hagyja a __adatbázis__ kiválasztottat __alapértelmezett__. Az ebben a dokumentumban a példákban HDInsight tartozó alapértelmezett adatbázishoz.
 
-2. A lekérdezés indításához használja a **Execute** a munkalap gombra. A gomb narancssárga lesz, és a szöveg a következőre változik **leállítása**.
+5. A lekérdezés indításához használja a **Execute** a munkalap gombra. A gomb narancssárga lesz, és a szöveg a következőre változik **leállítása**.
 
-3. A lekérdezés befejeződését követően a **eredmények** lap megjeleníti a művelet eredménye. A következő szöveget a lekérdezés eredménye:
+6. A lekérdezés befejeződését követően a **eredmények** lap megjeleníti a művelet eredménye. A következő szöveget a lekérdezés eredménye:
 
-        sev       cnt
-        [ERROR]   3
+        loglevel       count
+        [ERROR]        3
 
     Használhatja a **naplók** fülre kattintva megtekintheti a naplózási adatok, a feladat hozott létre.
 
    > [!TIP]
    > Töltse le, vagy a-eredményeket menteni a **-eredményeket menteni** a bal felső legördülő párbeszédpanelén a **lekérdezési folyamat eredményei** szakasz.
-
-4. Ez a lekérdezés első négy sornyi, majd válassza ki és **Execute**. Figyelje meg, hogy nincsenek eredmény a feladat befejezése után. Használja a **Execute** gomb, amikor a lekérdezés van kijelölve, csak a kijelölt utasításokat futtat. Ebben az esetben a kijelölés nem tartozik a végső utasítás, kiolvassa a sorokat a táblában. Ha csak a sor választja, és használjon **Execute**, láthatja, hogy a kívánt eredmény elérése érdekében.
-
-5. A munkalap hozzáadásához használja a **új munkalapra lesznek** gomb alján a **Lekérdezésszerkesztő**. Az új munkalapra adja meg a következő hiveql:
-
-    ```hiveql
-    CREATE TABLE IF NOT EXISTS errorLogs (t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string) STORED AS ORC;
-    INSERT OVERWRITE TABLE errorLogs SELECT t1, t2, t3, t4, t5, t6, t7 FROM log4jLogs WHERE t4 = '[ERROR]';
-    ```
-
-  Ezekre az utasításokra hajtsa végre a következő műveleteket:
-
-   * **Hozzon létre Ha nem létezik táblázat**: egy táblát hoz létre, ha egy nem létezik. Mivel a **külső** kulcsszó nem használható, egy belső tábla jön létre. Egy belső tábla a Hive-adatraktárban tárolja, és teljesen kezeli a struktúra. Eltérően külső táblák egy belső tábla eldobása törli az alapul szolgáló adatokat.
-
-   * **TÁROLT AS ORC**: az adatok optimalizált sor oszlopos (ORC) formátumban tárolja. ORC formátuma egy magas optimalizált és hatékony Hive adatainak tárolásához.
-
-   * **ÍRJA FELÜL AZ INSERT... Válassza ki**: sorát kiválasztja a **log4jLogs** tartalmazó `[ERROR]`, majd beilleszti az adatokat a **errorLogs** tábla.
-
-Használja a **Execute** gombra a lekérdezés futtatására. A **eredmények** lap tartalmaz adatokat, ha a lekérdezés nulla sort adja vissza. A állapota kell **sikeres** a lekérdezés befejeződése után.
 
 ### <a name="visual-explain"></a>Visual ismertetik.
 
@@ -152,9 +135,14 @@ Az a **lekérdezés** lapon lekérdezések mentése nem kötelező. A lekérdez�
 
 ![Lekérdezések lap képe](./media/apache-hadoop-use-hive-ambari-view/saved-queries.png)
 
+> [!TIP]
+> Az alapértelmezett fürttároló lekérdezések tárolja. A lekérdezések a elérési úton található `/user/<username>/hive/scripts`. Ezek egyszerű szövegként tárolt `.hql` fájlokat.
+>
+> Ha törölheti a fürtöt, de a tárolás, a segédprogram például használható [Azure Tártallózó](https://azure.microsoft.com/features/storage-explorer/) vagy Data Lake Tártallózó (a a [Azure Portal](https://portal.azure.com)) a lekérdezések beolvasása.
+
 ## <a name="user-defined-functions"></a>Felhasználó által definiált függvények
 
-Hive felhasználói függvény (UDF) keresztül is kiterjeszthető. Egy UDF segítségével HiveQL funkció vagy logika, amely könnyen modellezve nem valósít meg.
+Kiterjesztheti a Hive felhasználói függvény (UDF) keresztül. Egy UDF segítségével HiveQL funkció vagy logika, amely könnyen modellezve nem valósít meg.
 
 Deklarálja, és mentse egy felhasználó által megadott függvények készletét a **UDF** lapon a Hive View tetején. A felhasználó által megadott függvények használhatók a **Lekérdezésszerkesztő**.
 

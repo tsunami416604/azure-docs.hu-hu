@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 04/20/2017
 ms.author: jeanb
-ms.openlocfilehash: 71929b449f2a0fa55327fd3f9741208506859e85
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: 6478d577c52ffa23c3149c8213f182eaa1e466bd
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="azure-stream-analytics-event-order-considerations"></a>Az Azure Stream Analytics esemény rendelés kapcsolatos szempontok
 
@@ -70,6 +70,9 @@ Az események sorrendje nem megérkezni, hanem a készlet soron tűrési belül 
 * **Eldobott**: vetve.
 
 A Stream Analytics átrendezi a soron tűrési belül fogadott események, amikor a lekérdezés kimenetét a soron tűrési által késleltetett.
+
+### <a name="early-events"></a>Korai események
+Alkalmazás időpontjára feldolgozásakor események, amelyek alkalmazás érték előre a érkezési idő több mint 5 perc vagy eldobni vagy módosítani a konfigurációs beállításnak megfelelően.
 
 ### <a name="example"></a>Példa
 
@@ -124,7 +127,7 @@ Természetesen ez azt jelenti, hogy a kimeneti eseményekben maguk nem megfelel�
 
 Az Azure Stream Analytics segítségével valósítja meg ezt a funkciót a [TIMESTAMP BY OVER](https://msdn.microsoft.com/library/azure/mt573293.aspx) záradékban.
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 * Késő érkezés tűréshatár és a helyességét, és késésre vonatkozó követelmény alapján soron ablak konfigurálása. Is figyelembe venni, hogyan kerülnek az eseményeket.
 * Azt javasoljuk, hogy soron tolerancia értéke kisebb a késő érkezés tolerancia.
 * Több ütemtervet egyesítésekor éppen adatokat az adatforrások és a partíciók az egyik hiánya késleltetheti-e a kimenet egy további késő érkezés tűrési által.
@@ -132,7 +135,7 @@ Az Azure Stream Analytics segítségével valósítja meg ezt a funkciót a [TIM
 ## <a name="get-help"></a>Segítségkérés
 Ha további segítségre van szüksége, próbálkozzon a [Azure Stream Analytics-fórumot](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [A Stream Analytics bemutatása](stream-analytics-introduction.md)
 * [A Stream Analytics használatába](stream-analytics-real-time-fraud-detection.md)
 * [Stream Analytics-feladatok méretezése](stream-analytics-scale-jobs.md)

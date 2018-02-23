@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/18/2017
 ms.author: jdial
-ms.openlocfilehash: c71e188b74ebfd9420f840957e83190cf476b584
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2042bc44df7d3d61bf52d28a910dae1b125b9fdb
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure-beli virtuális hálózat gyakori kérdések (GYIK)
 
@@ -81,7 +81,7 @@ Igen. Felhasználó definiált útválasztás (UDR) is használhatja. További i
 Nem. Csoportos küldéses vagy szórt nem támogatott.
 
 ### <a name="what-protocols-can-i-use-within-vnets"></a>Milyen protokollok Vnetek belül használható?
-TCP, UDP és ICMP TCP/IP protokollt Vnetek belül is használhatja. Csoportos küldés, szórás, IP-be bújtatott IP encapsulated, és Generic Routing Encapsulation (GRE) csomagot a rendszer letiltotta Vnetek belül. 
+TCP, UDP és ICMP TCP/IP protokollt Vnetek belül is használhatja. Egyedi küldéses támogatott Vnetek, kivételével dinamikus állomás konfigurációs Protocol (DHCP) keresztül egyedi küldéses (forrásport UDP/68-as / cél UDP/67-es port). Csoportos küldés, szórás, IP-be bújtatott IP encapsulated, és Generic Routing Encapsulation (GRE) csomagot a rendszer letiltotta Vnetek belül. 
 
 ### <a name="can-i-ping-my-default-routers-within-a-vnet"></a>Megpingelheti a saját alapértelmezett útválasztók egy Vneten belül?
 Nem.
@@ -112,7 +112,7 @@ Igen. Egy VNet csatlakozni egy másik virtuális hálózatot használ:
 - Az Azure VPN-átjáró. Olvassa el a [VNet – VNet-kapcsolatot konfiguráló](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md) cikkben alább. 
 - Vnetben társviszony-létesítés. Olvassa el a [Vnetben társviszony-létesítési áttekintése](virtual-network-peering-overview.md) cikkben alább.
 
-## <a name="name-resolution-dns"></a>Névfeloldás (DNS)
+## <a name="name-resolution-dns"></a>Name Resolution (DNS)
 
 ### <a name="what-are-my-dns-options-for-vnets"></a>Mik azok a DNS-beállítások tartozó Vnetek esetében?
 A döntési táblázattal a [névfeloldás virtuális gépek és a Szerepkörpéldányok](virtual-networks-name-resolution-for-vms-and-role-instances.md) végigvezeti a DNS lapon elérhető beállítások.
@@ -150,7 +150,7 @@ Igen. A Resource Manager üzembe helyezési modellben telepített virtuális gé
 * **Nyilvános:** opcionálisan rendelve az Azure Resource Manager deployment használatával telepített virtuális gépekhez csatlakoztatott hálózati adapterrel. A cím rendelhetők hozzá a statikus vagy dinamikus kiosztási módszerrel. A klasszikus üzembe helyezési modellben telepített összes virtuális gépek és Felhőszolgáltatások szerepkörpéldányokat vannak egy felhőalapú szolgáltatás, amely hozzá van rendelve egy *dinamikus*, nyilvános virtuális IP-címe. Nyilvános *statikus* IP-cím, az úgynevezett egy [lefoglalt IP-cím](virtual-networks-reserved-public-ip.md), opcionálisan rendelhető virtuális IP-címhez. Nyilvános IP-címek rendelhet az egyes virtuális gépek vagy Felhőszolgáltatások szerepkörpéldányok a klasszikus üzembe helyezési modellben telepített. Ezek az úgynevezett [példány szintű nyilvános IP-cím (ILPIP](virtual-networks-instance-level-public-ip.md) megoldást, és dinamikusan is hozzárendelhető.
 
 ### <a name="can-i-reserve-a-private-ip-address-for-a-vm-that-i-will-create-at-a-later-time"></a>Lehet-e foglalni a magánhálózati IP-címet, amely I létrehoz egy későbbi időpontban?
-Nem. A magánhálózati IP-címet nem sikerült lefoglalni. Ha a magánhálózati IP-cím áll rendelkezésre az társítható egy virtuális gép vagy szerepkör-példányt a DHCP-kiszolgáló. Előfordulhat, hogy ezt a virtuális Gépet, vagy nem lehet a magánhálózati IP-címet hozzárendelni kívánt. Azonban módosíthatja a magánhálózati IP-cím, egy korábban létrehozott virtuális gép számára elérhető privát IP-cím.
+Nem. You cannot reserve a private IP address. Ha a magánhálózati IP-cím áll rendelkezésre az társítható egy virtuális gép vagy szerepkör-példányt a DHCP-kiszolgáló. Előfordulhat, hogy ezt a virtuális Gépet, vagy nem lehet a magánhálózati IP-címet hozzárendelni kívánt. Azonban módosíthatja a magánhálózati IP-cím, egy korábban létrehozott virtuális gép számára elérhető privát IP-cím.
 
 ### <a name="do-private-ip-addresses-change-for-vms-in-a-vnet"></a>Hajtsa végre a magánhálózati IP-címek módosítása virtuális gépekhez a Vneten belül?
 Ez a konkrét licenctől függ. Magánhálózati IP-címek dinamikus marad a virtuális gép a Leállítva (felszabadítva), vagy törölték. Statikus magánhálózati IP-címek nem ki a virtuális gép, amíg nem törli.

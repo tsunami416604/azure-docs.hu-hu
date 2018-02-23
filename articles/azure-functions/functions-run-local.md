@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 10/12/2017
 ms.author: glenga
-ms.openlocfilehash: c1a9310d0a09d714f1d58f29e5683097c9dc6b90
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 8b85457c5df9fb15c7eebe8b6fe8fb904f9e6009
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="code-and-test-azure-functions-locally"></a>Kód és az Azure Functions helyi tesztelése
 
@@ -169,7 +169,7 @@ A függvény létrehozásához futtassa a következő parancsot:
 ```
 func new
 ``` 
-`func new`a következő nem kötelező argumentum használatát is támogatja:
+`func new` a következő nem kötelező argumentum használatát is támogatja:
 
 | Argumentum     | Leírás                            |
 | ------------ | -------------------------------------- |
@@ -197,7 +197,7 @@ A funkciók projekt futtatni, futtassa a funkciók állomás. A gazdagép lehet�
 func host start
 ```
 
-`func host start`támogatja a következő beállításokat:
+`func host start` támogatja a következő beállításokat:
 
 | Beállítás     | Leírás                            |
 | ------------ | -------------------------------------- |
@@ -231,6 +231,9 @@ Indítsa el a gazdagépen, és állítsa be a JavaScript-hibakeresés, futtassa:
 ```
 func host start --debug vscode
 ```
+
+> [!IMPORTANT]
+> Csak a támogatott 8.x Node.js hibakereséshez. NODE.js 9.x nem támogatott. 
 
 Ezt követően a Visual Studio Code, az a **Debug** nézetben jelölje ki **csatlakoztatása az Azure Functions**. Töréspontokat csatolása, vizsgálja meg a változók és kód lépéseit.
 
@@ -293,7 +296,7 @@ curl --request POST -H "Content-Type:application/json" --data '{"input":"sample 
 
 Egy függvény segítségével közvetlenül is hívhat `func run <FunctionName>` , és adjon meg a függvény a bemeneti adatok. Ez a parancs hasonlít fut, a függvény használatával a **teszt** fülre az Azure portálon. 
 
-`func run`támogatja a következő beállításokat:
+`func run` támogatja a következő beállításokat:
 
 | Beállítás     | Leírás                            |
 | ------------ | -------------------------------------- |

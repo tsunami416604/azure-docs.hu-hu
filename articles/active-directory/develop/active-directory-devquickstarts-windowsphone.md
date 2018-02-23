@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/30/2017
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: c078ae22255190a37d75a4100ebfffcb6288c4cb
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: fc243f4ca6d323bf2b90cb9ab8fa9b77e1df9f8e
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="azure-ad-windows-phone-getting-started"></a>Ismerkedés az Azure AD Windows Phone
 [!INCLUDE [active-directory-devquickstarts-switcher](../../../includes/active-directory-devquickstarts-switcher.md)]
@@ -55,7 +55,7 @@ Ahhoz, hogy az alkalmazás a jogkivonatok lekérésére, először regisztrálja
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. A felső eszköztáron kattintson a fiókhoz, majd a a **Directory** menüben válassza ki az Active Directory-bérlőt, ahová be szeretné-e az alkalmazás regisztrálásához.
-3. Kattintson a **több szolgáltatások** a bal oldali navigációs válassza **Azure Active Directory**.
+3. Kattintson a **minden szolgáltatás** a bal oldali navigációs válassza **Azure Active Directory**.
 4. Kattintson a **App regisztrációk** válassza **Hozzáadás**.
 5. Kövesse az utasításokat, és hozzon létre egy új **natív ügyfélalkalmazás**.
   * A **neve** az alkalmazás ismerteti az alkalmazást a végfelhasználók számára

@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 07/20/2017
 ms.author: priyamo
 ms.reviewer: elisol
-ms.openlocfilehash: 4f32f57d4c8b3e13d2aa31b04ee10bb46a6c71f7
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 8f5d4ba82fcf3c963373b0e90b707a7d86fc0fea
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="register-your-application-with-your-azure-active-directory-tenant"></a>Az alkalmazás regisztrálása az Azure Active Directory-bérlő
 
@@ -27,7 +27,7 @@ Az Azure portál segítségével regisztrálhatja alkalmazását az Azure Active
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. Válassza ki az Azure AD-bérlő fiókja kiválasztja az oldal jobb felső sarkában.
-3. A bal oldali navigációs ablaktábláján válassza **több szolgáltatások**, kattintson a **App regisztrációk**, és kattintson a **hozzáadása**.
+3. A bal oldali navigációs ablaktábláján válassza **minden szolgáltatás**, kattintson a **App regisztrációk**, és kattintson a **hozzáadása**.
 4. Kövesse az utasításokat az új alkalmazás létrehozásához. Ha szeretné, hogy a webes alkalmazások és natív alkalmazások példák, tekintse meg a [quickstarts](active-directory-developers-guide.md).
   * A webes alkalmazásokhoz, adja meg a **bejelentkezési URL-cím**, az alap URL-CÍMÉT az alkalmazásához. Ez az adott felhasználó tud egyszerre bejelentkezni például `http://localhost:12345`.
 <!--TODO: add once App ID URI is configurable: The **App ID URI** is a unique identifier for your application. The convention is to use `https://<tenant-domain>/<app-name>`, e.g. `https://contoso.onmicrosoft.com/my-first-aad-app`-->
@@ -40,7 +40,7 @@ Könnyen módosíthatja egy meglévő alkalmazás beállításait az Azure port�
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. Válassza ki az Azure AD-bérlő fiókja kiválasztja az oldal jobb felső sarkában.
-3. A bal oldali navigációs ablaktábláján válassza **több szolgáltatások**, kattintson a **App regisztrációk**, és válassza ki az alkalmazást a listából.
+3. A bal oldali navigációs ablaktábláján válassza **minden szolgáltatás**, kattintson a **App regisztrációk**, és válassza ki az alkalmazást a listából.
 4. Kattintson a **beállítások** kattintva nyissa meg az alkalmazás beállításait tartalmazó oldalt.
   * A **tulajdonságok** lap lehetővé teszi, hogy módosítsa az alkalmazás általános adatokat. Ez magában foglalja az alkalmazás nevét, a bejelentkezési URL-cím és a kijelentkezési URL-CÍMÉT.
   * A **válasz URL-címek** lap lehetővé teszi egy válasz URL-CÍMEN, amely ahol küld az Azure AD a token válaszokat.
@@ -54,11 +54,11 @@ A beágyazott jegyzék szerkesztő segítségével bizonyos alkalmazás tulajdon
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. Válassza ki az Azure AD-bérlő fiókja kiválasztja az oldal jobb felső sarkában.
-3. A bal oldali navigációs ablaktábláján válassza **több szolgáltatások**, kattintson a **App regisztrációk**, és válassza ki az alkalmazást a listából.
+3. A bal oldali navigációs ablaktábláján válassza **minden szolgáltatás**, kattintson a **App regisztrációk**, és válassza ki az alkalmazást a listából.
 4. Kattintson a **Manifest** az alkalmazás oldalról a jegyzék beágyazott-szerkesztő megnyitásához.
 5. Közvetlenül a jegyzékfájl módosítja, és mentheti, ha készen áll. Alternatív megoldásként letöltheti a a jegyzékfájl nyissa meg a kedvenc szerkesztőben, és a frissített jegyzékfájl feltöltéséhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 1. Tekintse meg a [Quickstarts](active-directory-developers-guide.md) részletes forgatókönyvek végrehajtása az Azure AD hitelesítési kérelmek számára.
 2. Tekintse meg a teljes listáját a mintakódok [GitHub](https://github.com/azure-samples).

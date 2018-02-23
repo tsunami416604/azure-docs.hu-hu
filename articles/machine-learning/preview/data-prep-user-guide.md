@@ -12,11 +12,11 @@ ms.custom:
 ms.devlang: 
 ms.topic: article
 ms.date: 02/01/2018
-ms.openlocfilehash: a75ad760fe7f9663c5b43500581170d5f8671a13
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 2879daf4b5ba072a3a9b11ec87c01e5904b6a5dc
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="data-preparations-user-guide"></a>Adatok előkészített felhasználói útmutatója 
 Az Azure Machine Learning adatok előkészített élmény nagy mennyiségű funkciók széles körét biztosítja. Ez a cikk a felhasználói élmény a legalsó szintű részeit dokumentumokat.
@@ -89,7 +89,7 @@ Oszthatja ketté:
 4. Után **feltételek**, jelölje be **szűrt kimenő sorokat tartalmazó létrehozása Adatfolyamblokk** oszthatja ketté beállítani egy új adatfolyama nem megjelenítési eredménye.
 
 
-Ez az eljárás további előkészítést igénylő adatok elkülönítésére gyakran használják. Miután wrangle villás adatkészlet, általában egyesítheti az adatokat az eredeti adatfolyam eredményhalmazt. Az egyesítés (elágazás művelet fordítva), végrehajtásához használja a következő műveletek egyikét:
+Ez az eljárás további előkészítést igénylő adatok elkülönítésére gyakran használják. A villás dataset előkészítése után általában a eredményhalmazt, az eredeti adatfolyam egyesítheti az adatokat. Az egyesítés (elágazás művelet fordítva), végrehajtásához használja a következő műveletek egyikét:
 
 - **Sor hozzáfűzése**. Két vagy több adatfolyamok függőleges egyesítési (row-wise). 
 - **Oszlopok hozzáfűzése**. Két vagy több adatfolyamok vízszintesen egyesítési (column-wise).

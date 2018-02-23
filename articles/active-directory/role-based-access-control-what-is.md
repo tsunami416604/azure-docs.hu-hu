@@ -14,11 +14,11 @@ ms.workload: identity
 ms.date: 01/02/2018
 ms.author: rolyon
 ms.reviewer: rqureshi
-ms.openlocfilehash: aa0f5be837daf70c8d9ede38b3fd9b4230f4e1c9
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 6eb51cb8dc8c158f5412334a09493172f2973c74
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="get-started-with-role-based-access-control-in-the-azure-portal"></a>Szerepköralapú hozzáférés-vezérlés az Azure-portálon az első lépései
 A vállalat biztonsági célú van szükségük a pontos engedélyeket ad az alkalmazottak kell összpontosítania. Túl sok engedélyeket is elérhetővé teheti a támadásokkal fiókkal. Túl kevés engedélyek, az azt jelenti, hogy az alkalmazottak nem munkavégzéséhez hatékony. Azure szerepköralapú hozzáférés-vezérlés (RBAC) segít a részletes hozzáféréskezelést az Azure felajánlásával oldja meg a problémát.
@@ -58,7 +58,7 @@ A gyermekhatókör örökölt, hogy a szülő hatókörök számára biztosítso
 ## <a name="azure-rbac-vs-classic-subscription-administrators"></a>Az Azure RBAC és a hagyományos előfizetés rendszergazdái
 [Hagyományos előfizetés rendszergazdák és a társadminisztrátoroknak](../billing/billing-add-change-azure-subscription-administrator.md) az Azure-előfizetés teljes hozzáféréssel rendelkeznek. -Erőforrások kezelésére a [Azure-portálon](https://portal.azure.com), Azure Resource Manager API-k és a klasszikus üzembe helyezési modell API-k. Az RBAC-modellben a hagyományos adminisztrátorait a tulajdonosi szerepkört az előfizetés hatókörben vannak társítva.
 
-Csak az Azure portál és az új Azure Resource Manager API-kat támogatja az Azure RBAC. Felhasználók és az alkalmazások rendelt RBAC-szerepkörök nem használható az Azure klasszikus telepítési modellel API-k.
+Csak az Azure portál és az új Azure Resource Manager API-kat támogatja az Azure RBAC. Felhasználók és az alkalmazások rendelt RBAC-szerepkörök az Azure klasszikus telepítési modell API-k nem használható.
 
 ## <a name="authorization-for-management-vs-data-operations"></a>Engedélyezési és adatok az operations Management
 Az Azure RBAC az Azure-erőforrások felügyeleti műveletek csak támogatja az Azure-portál és az Azure Resource Manager API-k. Nem lehet engedélyezni, az összes adat szintű műveletet Azure-erőforrások. Például engedélyezheti valaki Storage-fiókok kezeléséhez, de nem a blobok vagy a táblák egy Tárfiókon belül. Hasonlóképpen SQL-adatbázis kezelése, de nem szereplő táblák.

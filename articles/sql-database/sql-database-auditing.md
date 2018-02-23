@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/07/2017
 ms.author: giladm
-ms.openlocfilehash: 791761e33e0daa470668e268e5392a4b9361a1bd
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 0994bdc7e6c86e10f7002649830fc59ad3d1a045
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Ismerkedés az SQL-adatbázis naplózási szolgáltatásával
 Az Azure SQL database naplózási nyomon követi az adatbázis-események, mind az írás őket naplózási jelentkezzen be az Azure storage-fiók. A naplózás is:
@@ -42,7 +42,8 @@ Konfigurálhatja a kategóriák, különböző típusú naplózás leírtak szer
 > [!IMPORTANT]
 > Naplók írt **hozzáfűző Blobok** egy Azure Blob Storage az Azure-előfizetése.
 >
-> **VNet a tárolási** jelenleg **nem támogatott**.
+> * **Prémium szintű Storage** jelenleg **nem támogatott** által hozzáfűző blobokat.
+> * **VNet a tárolási** jelenleg **nem támogatott**.
 
 ## <a id="subheading-8"></a>Adja meg a kiszolgálói szintű és adatbázis-szintű naplózási házirend
 

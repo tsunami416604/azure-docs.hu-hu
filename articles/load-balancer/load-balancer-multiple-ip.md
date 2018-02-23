@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: ecb64aa13b3b08f7b054a0665df3dc0cdb3e09bd
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 02388162ac4d2d86255c0a65d8b94253047f3983
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="load-balancing-on-multiple-ip-configurations-by-using-the-azure-portal"></a>Terheléselosztás több IP-konfigurációk az Azure portál használatával
 
@@ -89,7 +89,7 @@ Hozza létre a terheléselosztó-konfigurációhoz:
 
 1. Keresse meg az Azure-portálon: http://portal.azure.com. Jelentkezzen be az Azure-fiókjával.
 
-2. A képernyő bal felső sarokban válassza **új** > **hálózati** > **terheléselosztó**. Válassza ki, **létrehozása**.
+2. A képernyő bal felső sarokban válassza **hozzon létre egy erőforrást** > **hálózati** > **terheléselosztó**. Válassza ki, **létrehozása**.
 
 3. A **létrehozás terheléselosztó**, írja be a terheléselosztó nevét. Ebben a forgatókönyvben a név használunk **mylb**.
 
@@ -191,7 +191,7 @@ A szabályok konfigurálása után jelennek meg a terheléselosztó a **terhelé
 
 ### <a name="step-7-configure-dns-records"></a>7. lépés: A DNS-rekordok konfigurálása
 
-Utolsó lépésként állítsa be a DNS-erőforrásrekordok a terheléselosztóhoz tartozó előtér-IP-címekkel mutasson. A tartományok Azure DNS-ben is tárolhatja. Az Azure DNS-sel terheléselosztással kapcsolatos további információkért lásd: [Azure DNS használata más Azure-szolgáltatásokkal](../dns/dns-for-azure-services.md).
+Utolsó lépésként állítsa be a DNS-erőforrásrekordok a terheléselosztóhoz tartozó előtér-IP-címekkel mutasson. You can host your domains in Azure DNS. Az Azure DNS-sel terheléselosztással kapcsolatos további információkért lásd: [Azure DNS használata más Azure-szolgáltatásokkal](../dns/dns-for-azure-services.md).
 
 ## <a name="next-steps"></a>További lépések
 - További tudnivalók az Azure a terheléselosztási egyesítése [terheléselosztás szolgáltatások használata az Azure-ban](../traffic-manager/traffic-manager-load-balancing-azure.md).

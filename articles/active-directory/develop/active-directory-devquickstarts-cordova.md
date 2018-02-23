@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/30/2017
 ms.author: vittorib
 ms.custom: aaddev
-ms.openlocfilehash: b489add83a462d1d3902831d63be0b70e2443718
-ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
+ms.openlocfilehash: d6f1d545265f0965a03afb23e5791cdd5e5e379c
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="azure-ad-cordova-getting-started"></a>Ismerkedés az Azure AD Cordova
 [!INCLUDE [active-directory-devquickstarts-switcher](../../../includes/active-directory-devquickstarts-switcher.md)]
@@ -88,11 +88,11 @@ Az Azure AD számára csak ismert alkalmazások jogkivonatokat. Az Azure AD a al
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. A felső eszköztáron kattintson a fiókját. Az a **Directory** menüben válassza ki az Azure AD-bérlőt, ahová az alkalmazás regisztrálásához.
-3. Kattintson a **több szolgáltatások** a bal oldali ablaktáblán, és válassza a **Azure Active Directory**.
+3. Kattintson a **minden szolgáltatás** a bal oldali ablaktáblán, és válassza a **Azure Active Directory**.
 4. Kattintson a **App regisztrációk**, majd válassza ki **Hozzáadás**.
 5. Kövesse az utasításokat, és hozzon létre egy **natív ügyfélalkalmazás**. (Bár a Cordova-alkalmazásokkal HTML-alapú, most létrehozzuk natív ügyfélalkalmazás itt. A **natív ügyfélalkalmazás** beállítást, vagy az alkalmazás nem fog működni.)
   * **Név** az alkalmazás a felhasználók számára ismerteti.
-  * **Átirányítási URI** az URI azonosítót ad vissza a jogkivonatok az alkalmazáshoz. Adja meg **http://MyDirectorySearcherApp**.
+  * **Átirányítási URI** az URI azonosítót ad vissza a jogkivonatok az alkalmazáshoz. Enter **http://MyDirectorySearcherApp**.
 
 Regisztráció befejezése után az Azure AD egy egyedi alkalmazás Azonosítót rendel az alkalmazáshoz. Ez az érték a következő szakaszokban lévő lesz szüksége. Az újonnan létrehozott alkalmazás az alkalmazás lapon találja.
 
@@ -121,8 +121,8 @@ Több módon is Cordova-alkalmazás létrehozása. Ebben az oktatóanyagban a Co
 
 3. A www másolja a alapszintű projekt tartalmának másolása a Fájlkezelőben vagy a következő parancsot a rendszerhéj használatával:
 
-  * Windows:`xcopy ..\NativeClient-MultiTarget-Cordova\DirSearchClient www /E /Y`
-  * Mac:`cp -r  ../NativeClient-MultiTarget-Cordova/DirSearchClient/* www`
+  * Windows: `xcopy ..\NativeClient-MultiTarget-Cordova\DirSearchClient www /E /Y`
+  * Mac: `cp -r  ../NativeClient-MultiTarget-Cordova/DirSearchClient/* www`
 
 4. Adja hozzá az engedélyezési lista beépülő modult. Erre akkor szükség, a Graph API meghívására.
 
@@ -244,9 +244,9 @@ Utólagosan végez a keresési megjelenítése minden kérdés környezetnek kö
 Az alkalmazás futtatásához konkrét szükséges lépések eltérhetnek a platformon.
 
 ### <a name="windows-10"></a>Windows 10
-   / Táblagép:`cordova run windows --archs=x64 -- --appx=uap`
+   / Táblagép: `cordova run windows --archs=x64 -- --appx=uap`
 
-   A Mobile (a számítógép csatlakozik a Windows 10 Mobile eszközt igényel):`cordova run windows --archs=arm -- --appx=uap --phone`
+   A Mobile (a számítógép csatlakozik a Windows 10 Mobile eszközt igényel): `cordova run windows --archs=arm -- --appx=uap --phone`
 
    > [!NOTE]
    > Az első futtatás során előfordulhat, hogy kérni jelentkeznek be egy fejlesztői licencet. További információkért lásd: [fejlesztői licenc](https://msdn.microsoft.com/library/windows/apps/hh974578.aspx).
@@ -258,25 +258,25 @@ Az alkalmazás futtatásához konkrét szükséges lépések eltérhetnek a plat
    > Az első futtatás során előfordulhat, hogy kérni jelentkeznek be egy fejlesztői licencet. További információkért lásd: [fejlesztői licenc](https://msdn.microsoft.com/library/windows/apps/hh974578.aspx).
 
 ### <a name="windows-phone-81"></a>Windows Phone 8.1
-   Egy csatlakoztatott eszközön futtatása:`cordova run windows --device -- --phone`
+   Egy csatlakoztatott eszközön futtatása: `cordova run windows --device -- --phone`
 
-   Az alapértelmezett emulátor futtatásához:`cordova emulate windows -- --phone`
+   Az alapértelmezett emulátor futtatásához: `cordova emulate windows -- --phone`
 
    Használjon `cordova run windows --list -- --phone` összes elérhető tárolók megtekintéséhez és `cordova run windows --target=<target_name> -- --phone` az alkalmazás futtatásához egy adott eszköz vagy az emulátor (például `cordova run windows --target="Emulator 8.1 720P 4.7 inch" -- --phone`).
 
 ### <a name="android"></a>Android
-   Egy csatlakoztatott eszközön futtatása:`cordova run android --device`
+   Egy csatlakoztatott eszközön futtatása: `cordova run android --device`
 
-   Az alapértelmezett emulátor futtatásához:`cordova emulate android`
+   Az alapértelmezett emulátor futtatásához: `cordova emulate android`
 
    Ellenőrizze, hogy létrehozott egy emulátor példány AVD Manager segítségével az "Előfeltételek" szakaszban leírtak szerint.
 
    Használjon `cordova run android --list` összes elérhető tárolók megtekintéséhez és `cordova run android --target=<target_name>` az alkalmazás futtatásához egy adott eszköz vagy az emulátor (például `cordova run android --target="Nexus4_emulator"`).
 
 ### <a name="ios"></a>iOS
-   Egy csatlakoztatott eszközön futtatása:`cordova run ios --device`
+   Egy csatlakoztatott eszközön futtatása: `cordova run ios --device`
 
-   Az alapértelmezett emulátor futtatásához:`cordova emulate ios`
+   Az alapértelmezett emulátor futtatásához: `cordova emulate ios`
 
    > [!NOTE]
    > Győződjön meg arról, hogy a `ios-sim` csomag az emulátor futni. További információkért tekintse meg az "Előfeltételek" szakaszban.

@@ -14,11 +14,11 @@ ms.workload: infrastructure
 ms.date: 02/01/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d41df9b9d9bd518bb507b0fcde001f35c11e6264
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
-ms.translationtype: HT
+ms.openlocfilehash: 9ef09e33803a976e05e555ec7ae9eb872d237137
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="sap-hana-large-instances-high-availability-and-disaster-recovery-on-azure"></a>SAP HANA nagy példányok magas rendelkezésre állási és vészhelyreállítási helyreállítási az Azure-on 
 
@@ -111,7 +111,7 @@ SAP HANA Azure (nagy példányok) két biztonsági mentési és helyreállítás
 A tároló-infrastruktúra az alapul szolgáló SAP HANA (nagy példányok) Azure storage-pillanatfelvételekkel kötetek támogatja. Biztonsági mentési és a kötetek helyreállítása támogatott, azzal a következőket kell figyelembe venni:
 
 - Teljes-adatbázis biztonsági másolatait, helyett tárolási kötet pillanatfelvételeket készít a gyakran.
-- Pillanatkép kiváltó/hana/adatok, hana/log és /hana/shared (tartalmazza a /usr/sap) kötetek, a tárolási pillanatkép indít el egy SAP HANA pillanatkép készítése a tárolási pillanatkép végrehajtása előtt. Az SAP HANA-pillanatkép végleges napló visszaállítását a telepítő pontja a tárolási pillanatkép a helyreállítás után.
+- Pillanatkép kiváltó /hana/data és /hana/shared (tartalmazza a /usr/sap) keresztül kötetek, a tárolási pillanatkép indít el egy SAP HANA pillanatkép készítése a tárolási pillanatkép végrehajtása előtt. Az SAP HANA-pillanatkép végleges napló visszaállítását a telepítő pontja a tárolási pillanatkép a helyreállítás után.
 - A pont, ahol a tárolási pillanatkép sikeresen végrehajtva, miután a SAP HANA-pillanatkép törlését.
 - Tranzakció-naplók biztonsági másolatainak gyakran kerül, és a /hana/logbackups kötet vagy az Azure-ban tárolja. A tranzakciónapló biztonsági mentések külön-külön pillanatképet tartalmazó /hana/logbackups kötet indíthat el. Ebben az esetben nem kell végrehajtani HANA pillanatképet.
 - Ha vissza kell állítania egy adatbázis egy bizonyos mértékig időben, a Microsoft Azure támogatási szolgálatához (a termelési kimaradásáról) vagy a SAP HANA az Azure Service Management bizonyos tárolási pillanatkép visszaállítása kérést. Példa: a tervezett visszaállítás védőfal rendszer eredeti állapotát.
@@ -149,7 +149,7 @@ A következő szakaszok ezeket a pillanatképeket, beleértve az általános aj�
 - SAP HANA-táblák nagyobb átszervezések során storage-pillanatfelvételekkel kerülni kell, ha lehetséges.
 - Storage-pillanatfelvételekkel előfeltételt az Azure (nagy példányok) SAP HANA a vész-helyreállítási képességeit kihasználva.
 
-### <a name="pre-requisites-for-leveraging-self-service-storage-snapshots"></a>Önkiszolgáló storage-pillanatfelvételekkel hasznosítására vonatkozó Előfeltételek
+### <a name="prerequisites-for-leveraging-self-service-storage-snapshots"></a>Önkiszolgáló storage-pillanatfelvételekkel hasznosítására vonatkozó Előfeltételek
 
 Győződjön meg arról, hogy a pillanatkép parancsprogram sikeresen hajt végre, győződjön meg arról, hogy Perl a Linux operációs rendszeren a HANA nagy példányok kiszolgálón van telepítve. A nagy példány HANA egység a Perl előre előre telepített. A perl verzió ellenőrzéséhez használja a következő parancsot:
 
@@ -290,7 +290,7 @@ HANABackupCustomerDetails.txt
 Mivel a perl-parancsfájlokat foglalkozik: 
 
 - Soha ne módosítsa a parancsfájlok, hacsak ezt a Microsoft Operations kéri.
-- Módosítsa a parancsfájl vagy egy paraméterfájl kéri, mindig használjon a linux szövegszerkesztőbe, például "vi" és a nem a Windows szerkesztők például a Jegyzettömbben. Windows-szerkesztővel, a fájl formátumát megsérülhet.
+- Módosítsa a parancsfájl vagy egy paraméterfájl kéri, mindig használjon a Linux szövegszerkesztőbe, például "vi" és a nem a Windows szerkesztők például a Jegyzettömbben. Windows-szerkesztővel, a fájl formátumát megsérülhet.
 - Mindig a legújabb parancsfájlok használata. A Githubból letöltheti a legújabb verzióra.
 - A fekvő parancsfájlokat ugyanazon verzióját használja.
 - A parancsfájlok tesztelése, és lekérése kényelmes a szükséges paraméterek és a parancsfájl a termelési rendszerben közvetlenül használata előtt.
@@ -299,7 +299,7 @@ Mivel a perl-parancsfájlokat foglalkozik:
 
 A különböző parancsfájlok és a fájlok célja:
 
-- **Azure\_hana\_backup.pl**: ezt a parancsfájlt a storage-pillanatfelvételekkel végrehajtani a HANA napló, adatokat vagy megosztott kötetek, a/hana/logbackups köteten, vagy az operációs rendszer cron ütemezni.
+- **Azure\_hana\_backup.pl**: ezt a parancsfájlt a storage-pillanatfelvételekkel végrehajtani a HANA adatok és megosztott kötetek, a/hana/logbackups köteten, vagy az operációs rendszer cron ütemezni.
 - **Azure\_hana\_replikációs\_status.pl**: ezt a parancsfájlt biztosít a replikációs állapot a munkakörnyezeti helyet a vész-helyreállítási hely körül alapvető adatait. A parancsfájl figyelőket, és győződjön meg arról, hogy a replikáció, és ebben az elemeknek a méretét mutatja, a rendszer replikálja. Is nyújt útmutatást, ha túl sokáig tart a replikációt, vagy ha a kapcsolat nem működik.
 - **Azure\_hana\_pillanatkép\_details.pl**: Ez a parancsfájl minden pillanatképet, kötetenként, a környezetben meglévő kapcsolatos alapvető tudnivalókat listáját tartalmazza. Ez a parancsfájl futtathatja az elsődleges kiszolgálón vagy egy kiszolgáló egységen, a vész-helyreállítási helyen. A parancsfájl a következő adatokat, minden olyan kötetre, amely tartalmazza a pillanatképek bontásban tartalmazza:
    * A teljes pillanatképek a kötet mérete

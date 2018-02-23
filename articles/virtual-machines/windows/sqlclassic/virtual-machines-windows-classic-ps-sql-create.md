@@ -4,7 +4,7 @@ description: "Lépéseket és a PowerShell-parancsfájlok biztosít az Azure vir
 services: virtual-machines-windows
 documentationcenter: na
 author: rothja
-manager: jhubbard
+manager: craigg
 tags: azure-service-management
 ms.assetid: b73be387-9323-4e08-be53-6e5928e3786e
 ms.service: virtual-machines-sql
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/07/2017
 ms.author: jroth
-ms.openlocfilehash: c3bd4329e8a22ce8503d6593560d29c2a3135e83
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 66f44e27562f33373e0b67fe6e0ebf9c6bf99e03
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="provision-a-sql-server-virtual-machine-using-azure-powershell-classic"></a>Egy SQL Server rendszerű virtuális gép (klasszikus) Azure PowerShell használatával
 
@@ -76,7 +76,7 @@ Az SQL Server virtuális gépen egy felhőalapú szolgáltatás, amely egy adott
    ```
 
    > [!NOTE]
-   > Új tárfiók szükséges, ha először létre kell hoznia egy kisbetű minden tárfiók nevét az alábbi példában látható módon a New-AzureStorageAccount paranccsal:`New-AzureStorageAccount -StorageAccountName "<storage account name>" -Location $dcLocation`
+   > Új tárfiók szükséges, ha először létre kell hoznia egy kisbetű minden tárfiók nevét az alábbi példában látható módon a New-AzureStorageAccount paranccsal: `New-AzureStorageAccount -StorageAccountName "<storage account name>" -Location $dcLocation`
 
 4. A cél tárfiók neve való hozzárendelése a **$staccount**. Ezután **Set-AzureSubscription** az előfizetés és az aktuális tárfiók.
 
@@ -195,7 +195,7 @@ New-AzureVM –ServiceName $svcname -VMs $vm1
 
 A számítógép a távoli asztal való bejelentkezés után konfigurálja az SQL Servert az utasítások alapján [egy Azure virtuális gép az SQL Server-kapcsolat beállításának lépései](virtual-machines-windows-classic-sql-connect.md#steps-for-configuring-sql-server-connectivity-in-an-azure-vm).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A PowerShell használatával a virtuális gépek rendszerbe állításához további útmutatás található a [virtual machines – dokumentáció](../classic/create-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 

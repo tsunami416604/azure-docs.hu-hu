@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: manage
-ms.date: 12/14/2017
+ms.date: 02/20/2018
 ms.author: acomet
-ms.openlocfilehash: a16c2230c26865913285cb8cbd5b0f81426acdd1
-ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
+ms.openlocfilehash: 6c8278be32ae6c6452283ba946a36f363dd4d76d
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="cheat-sheet-for-azure-sql-data-warehouse"></a>Az Azure SQL Data Warehouse lap cheat
 Ez Adatlap biztosít hasznos tipp és ajánlott eljárások az Azure SQL Data Warehouse megoldások készítéséhez. Mielőtt hozzáfogna, kapcsolatos további részletek lévő egyes lépések olvasásával [Azure SQL Data Warehouse munkaterhelés minták és víruskereső minták](https://blogs.msdn.microsoft.com/sqlcat/2017/09/05/azure-sql-data-warehouse-workload-patterns-and-anti-patterns), amely ismerteti, hogy mi az SQL Data Warehouse és mit nem.
@@ -121,7 +121,7 @@ Végül a számítási optimalizált réteg használatával minden erőforrásos
 Munkavégzés további [erőforrás osztályok és feldolgozási].
 
 ## <a name="lower-your-cost"></a>A költségek csökkentése
-Az SQL Data Warehouse alapfunkciója azt a képességet felfüggesztése, ha nem használ, ami leállítja a számlázási számítási erőforrásokat. Egy másik fontos jellemző az erőforrások méretezhetősége. Felfüggesztés és a méretezésről az Azure-portálon, vagy PowerShell-parancsok segítségével végezhető.
+Az SQL Data Warehouse alapfunkciója azt a képességet [számítási erőforrások kezelése](sql-data-warehouse-manage-compute-overview.md). Akár szüneteltetheti is, az adatraktár amikor nem használja, ami leállítja a számlázási számítási erőforrásokat. A a teljesítményigények kielégítése érdekében erőforrások méretezheti. Felfüggesztéséhez használja a [Azure-portálon](pause-and-resume-compute-portal.md) vagy [PowerShell](pause-and-resume-compute-powershell.md). Méretezhető, használja a [Azure-portálon](quickstart-scale-compute-portal.md), [Powershell](quickstart-scale-compute-powershell.md), [T-SQL](quickstart-scale-compute-tsql.md), vagy egy [REST API](sql-data-warehouse-manage-compute-rest-api.md#scale-compute).
 
 Automatikus skálázás most már a időpontban szeretné az Azure Functions:
 

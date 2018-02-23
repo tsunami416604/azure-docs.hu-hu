@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 01/25/2018
 ms.author: jdial
 ms.custom: 
-ms.openlocfilehash: b2fc8a622549a9858c6c769a7e648fe07a3d01c1
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 2cb32ddc67060d9860d172b90cc399622c52b04b
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-a-virtual-network-using-the-azure-cli"></a>Hozzon létre egy virtuális hálózatot az Azure parancssori felület használatával
 
@@ -70,7 +70,7 @@ Az adatokat egy másik része érkezett a **címelőtagja** a *10.0.0.0/24* a a 
 
 A virtuális hálózati lehetővé teszi, hogy számos különböző Azure-erőforrások közvetlenül kommunikálhatnak egymással. A virtuális hálózatba telepítése erőforrás egy típus egy virtuális gépet. Hozzon létre két virtuális gép a virtuális hálózat, hogy ellenőrizze a virtuális hálózatban lévő virtuális gépek közötti kommunikáció egy későbbi lépésben működésének megismerése.
 
-A virtuális gép létrehozása a [az virtuális gép létrehozása](/cli/azure/vm#az_vm_create) parancsot. Az alábbi példa létrehoz egy virtuális gépet, nevű *myVm1*. Ha SSH-kulcsok még nem léteznek a kulcs alapértelmezett helye, a parancs létrehozza azokat. Ha konkrét kulcsokat szeretné használni, használja az `--ssh-key-value` beállítást. A `--no-wait` beállítás hoz létre a virtuális gép a háttérben, így továbbra is a következő lépéssel.
+Hozzon létre egy virtuális gépet az [az vm create](/cli/azure/vm#az_vm_create) paranccsal. Az alábbi példa létrehoz egy virtuális gépet, nevű *myVm1*. Ha SSH-kulcsok még nem léteznek a kulcs alapértelmezett helye, a parancs létrehozza azokat. Ha konkrét kulcsokat szeretné használni, használja az `--ssh-key-value` beállítást. A `--no-wait` beállítás hoz létre a virtuális gép a háttérben, így továbbra is a következő lépéssel.
 
 ```azurecli-interactive 
 az vm create \
@@ -81,7 +81,7 @@ az vm create \
   --no-wait
 ```
 
-Azure automatikusan létrehozza a virtuális gép a *alapértelmezett* alhálózata a *myVirtualNetwork* virtuális hálózat, mert a virtuális hálózat már létezik az erőforráscsoportot, és nem virtuális hálózat vagy a parancsban megadva alhálózat. Azure DHCP automatikusan rendelt 10.0.0.4 a virtuális gép létrehozása, mert az első elérhető címe a *alapértelmezett* alhálózat. A helyre, amely a virtuális gép jön létre a virtuális hálózat szerepel ugyanazon a helyen kell lennie. A virtuális gép nem kell lennie, a virtuális gép ugyanabban az erőforráscsoportban, ha az ebben a cikkben.
+Azure automatikusan létrehozza a virtuális gép a *alapértelmezett* alhálózata a *myVirtualNetwork* virtuális hálózat, mert a virtuális hálózat már létezik az erőforráscsoportot, és nem virtuális hálózat vagy a parancsban megadva alhálózat. Azure DHCP automatikusan rendelt 10.0.0.4 a virtuális gép létrehozása, mert az első elérhető címe a *alapértelmezett* alhálózat. A helyre, amely a virtuális gép jön létre a virtuális hálózat szerepel ugyanazon a helyen kell lennie. A virtuális gép nem kell lennie a virtuális hálózatnak ugyanahhoz az erőforráscsoporthoz tartozik, ha az ebben a cikkben.
 
 Hozzon létre egy második virtuális gépet. Alapértelmezés szerint az Azure is létrehoz a virtuális gép a *alapértelmezett* alhálózat.
 

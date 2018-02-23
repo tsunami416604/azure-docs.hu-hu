@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 01/08/2018
+ms.date: 02/21/2018
 ms.author: larryfr
-ms.openlocfilehash: 8bd5bebb04303b83a21bc1434e713ce26de54ae9
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: e0ca77fb49bfdd0a47c7efe746d58a93dd4eafc1
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>Azure virtuális hálózat használatával Azure HDInsight kiterjesztése
 
@@ -210,7 +210,7 @@ Ambari és más weblapok a virtuális hálózaton keresztül csatlakozhat, tegye
 
 2. A csomópont és a portot, amelyet a szolgáltatás elérhető megállapításához lásd: a [a HDInsight Hadoop-szolgáltatás által használt portok](./hdinsight-hadoop-port-settings-for-services.md) dokumentum.
 
-## <a id="networktraffic"></a>Hálózati forgalom vezérlése
+## <a id="networktraffic"></a> Hálózati forgalom vezérlése
 
 Egy Azure virtuális hálózatot a hálózati forgalmat a következő módszerekkel is vezérelhető:
 
@@ -227,7 +227,7 @@ Felügyelt szolgáltatásként HDInsight Azure felhőben Azure állapotát és a
 
 HDInsight szolgáltatások számos portot teszi elérhetővé. Ha egy virtuális készülékre tűzfalat használ, engedélyeznie kell a forgalom a portokon folyik a szolgáltatások. További információkért lásd: a [szükséges portok] szakaszban.
 
-### <a id="hdinsight-ip"></a>A hálózati biztonsági csoportok és a felhasználó által definiált útvonalak HDInsight
+### <a id="hdinsight-ip"></a> A hálózati biztonsági csoportok és a felhasználó által definiált útvonalak HDInsight
 
 Ha a kíván használni **hálózati biztonsági csoportok** vagy **felhasználó által definiált útvonalak** szabályozza a hálózati forgalmat, HDInsight telepítése előtt a következő műveleteket:
 
@@ -250,7 +250,7 @@ Hálózati biztonsági csoport vagy felhasználó által definiált útvonalak t
 
 A kényszerített bújtatás a beállítás a felhasználói útválasztási ahol alhálózatból származó összes forgalmat egy adott hálózaton vagy a helyre, például a helyszíni hálózat kényszeríti. HDInsight does __nem__ támogatási kényszerített bújtatást.
 
-## <a id="hdinsight-ip"></a>Szükséges IP-címek
+## <a id="hdinsight-ip"></a> Szükséges IP-címek
 
 > [!IMPORTANT]
 > Azure-állapot és a felügyeleti szolgáltatás képes kommunikálni a HDInsight kell lennie. A hálózati biztonsági csoport vagy felhasználó által definiált útvonalakat, ha ezen szolgáltatások HDInsight eléréséhez az IP-címekről érkező forgalom engedélyezésére.
@@ -299,6 +299,7 @@ Ha hálózati biztonsági csoport vagy felhasználó által definiált útvonala
     | &nbsp; | USA keleti régiója | 13.82.225.233</br>40.71.175.99 | 443 | Bejövő |
     | &nbsp; | USA északi középső régiója | 157.56.8.38</br>157.55.213.99 | 443 | Bejövő |
     | &nbsp; | USA nyugati középső régiója | 52.161.23.15</br>52.161.10.167 | 443 | Bejövő |
+    | &nbsp; | USA nyugati régiója | 13.64.254.98</br>23.101.196.19 | 443 | Bejövő |
     | &nbsp; | USA nyugati régiója, 2. | 52.175.211.210</br>52.175.222.222 | 443 | Bejövő |
 
     Az IP-címek az Azure Government használandó információkért lásd: a [Azure Government Eszközintelligencia + analitika](https://docs.microsoft.com/azure/azure-government/documentation-government-services-intelligenceandanalytics) dokumentum.
@@ -307,7 +308,7 @@ Ha hálózati biztonsági csoport vagy felhasználó által definiált útvonala
 
 További információkért lásd: a [hálózati forgalom vezérlése](#networktraffic) szakasz.
 
-## <a id="hdinsight-ports"></a>Szükséges portok
+## <a id="hdinsight-ports"></a> Szükséges portok
 
 Ha a hálózat használatával kíván **virtuális készülék tűzfal** megvédi a virtuális hálózatot, engedélyeznie kell a kimenő adatforgalmat a következő portokat:
 
@@ -499,7 +500,7 @@ Az alábbi lépések segítségével hozzon létre egy virtuális hálózatot, a
 > az network nsg rule create -g RESOURCEGROUPNAME --nsg-name hdisecure -n hdirule5 --protocol "*" --source-port-range "*" --destination-port-range "22" --source-address-prefix "*" --destination-address-prefix "VirtualNetwork" --access "Allow" --priority 306 --direction "Inbound"
 > ```
 
-## <a id="example-dns"></a>Példa: DNS-konfiguráció
+## <a id="example-dns"></a> Példa: DNS-konfiguráció
 
 ### <a name="name-resolution-between-a-virtual-network-and-a-connected-on-premises-network"></a>Névfeloldás egy virtuális és a csatlakoztatott helyszíni hálózat között
 

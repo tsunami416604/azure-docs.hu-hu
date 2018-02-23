@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/26/2017
 ms.author: magoedte
-ms.openlocfilehash: 3a87e491e43c141d0afb08aa455c0d9682828ea1
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 624c861db9bb318c368cef04965da0a73dd028d8
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview-in-log-analytics"></a>Azure SQL adatbázis Azure SQL elemzés (előzetes verzió) Naplóelemzési figyelése
 
@@ -60,7 +60,7 @@ Az alábbi táblázat áttekintést nyújt az ebben a megoldásban támogatott �
 A következő lépésekkel adja hozzá az Azure SQL elemzési megoldások a munkaterületre.
 
 1. Az Azure SQL elemzési megoldások hozzáadása a munkaterület [Azure piactér](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.AzureSQLAnalyticsOMS?tab=Overview) vagy ismertetett folyamatot követve [hozzáadni a Naplóelemzési megoldások a megoldások gyűjteményből](log-analytics-add-solutions.md).
-2. Az Azure portálon kattintson **új** (a + szimbólumra), majd válassza az erőforrások listájához, **figyelés + felügyeleti**.  
+2. Az Azure portálon kattintson **hozzon létre egy erőforrást** > **figyelés + felügyeleti**.  
     ![Felügyelet és kezelés](./media/log-analytics-azure-sql/monitoring-management.png)
 3. Az a **figyelés + felügyeleti** listában kattintson **láthatja az összes**.
 4. Az a **ajánlott** listában, kattintson **további**, majd új listájában keresse meg **Azure SQL elemzés (előzetes verzió)** meg és jelölje ki.  

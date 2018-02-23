@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
 ms.author: samacha
-ms.openlocfilehash: 82b9c861fee820cdb0ca1891e0e62436f422d838
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 98784783beccc19df916920fc41364a23e6bae11
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="how-to-create-a-data-analytics-processing-job-for-stream-analytics"></a>A Stream Analytics egy analytics feldolgozási feladatot létrehozása
 A legfelső szintű erőforrás Azure Stream Analytics egy Stream Analytics-feladat.  Egy vagy több bemeneti adatforrások, a lekérdezés megadása a data transformation, és legalább egy kimeneti tárolókat eredmények írt áll. Együtt ezek lehetővé teszik a felhasználónak az adatfolyamként történő adatáttelepítések esetében feldolgozása adatelemzés végrehajtása.
@@ -27,7 +27,7 @@ A legfelső szintű erőforrás Azure Stream Analytics egy Stream Analytics-fela
 A Stream Analytics használatának megkezdéséhez először hozzon létre egy új Stream Analytics-feladat.  Vegye figyelembe, hogy ez a művelet nem számlázási hatással van, amíg a feladat elindult.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
-2. Válassza ki **új** > **adatok + analitika** > **Stream Analytics-feladat**.
+2. Válassza ki **hozzon létre egy erőforrást** > **adatok + analitika** > **Stream Analytics-feladat**.
 3. Kattintson a **Létrehozás** gombra.
    
 3. Adja meg a Stream Analytics-feladat kívánt beállításait.
@@ -47,7 +47,7 @@ A Stream Analytics-feladat, létre kell néhány percet is igénybe vehet. A ál
 ## <a name="get-help"></a>Segítségkérés
 További támogatásért keresse fel az [Azure Stream Analytics-fórumot](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Az Azure Stream Analytics bemutatása](stream-analytics-introduction.md)
 * [Get started using Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md) (Bevezetés az Azure Stream Analytics használatába)
 * [Scale Azure Stream Analytics jobs](stream-analytics-scale-jobs.md) (Azure Stream Analytics-feladatok méretezése)

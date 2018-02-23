@@ -14,11 +14,11 @@ ms.workload: identity
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: asteen
-ms.openlocfilehash: e825e6be79efad5dfb385f96901a2b5682027963
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: f4035e4c1ef2bc78256ed842bc4b1ac65ecf8b53
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="managing-applications-with-azure-active-directory"></a>Alkalmazások kezelése az Azure Active Directoryban
 A tényleges munkafolyamat vagy a tartalom túl vállalatok rendelkeznek összes alkalmazás két alapvető követelményei:
@@ -78,7 +78,7 @@ Ha az Azure AD segítségével kezelheti az alkalmazásokat és az egyszeri beje
 * Hitelesítés a felhasználó a helyszíni (pl. AD) vagy Azure AD-fiókot történik.
 * Engedélyezési végrehajtja a Azure AD-hozzárendelés és a védelmi házirend egységes felhasználói élmény biztosítása, és így lehetővé teszi bármilyen alkalmazás, függetlenül annak belső funkciói a hozzárendelés, a helyek és a többtényezős hitelesítés feltételek hozzáadása.
 
-Ez fontos tudni, hogy a hitelesítési módjának helyeztek-e meg a célalkalmazás változik, attól függően, hogy az alkalmazás az Azure ad-val lett integrálva.
+Fontos megérteni, hogy az engedélyezési végrehajtása a célalkalmazás válaszából módja attól függően, hogy az alkalmazás az Azure ad-val lett integrálva változik.
 
 * **Szolgáltató által előre integrált alkalmazások** például Office 365 és Azure, ezek a közvetlenül az Azure AD épül, és az átfogó identitás- és hozzáférés kezelésére alkalmas a tőle függő alkalmazások. Ezek az alkalmazások elérésére engedélyezve van a címtáradatokat és a hitelesítési karakterláncok kiállításához.
 * **A Microsoft és az egyéni alkalmazások előre integrált alkalmazások** ezek a belső alkalmazásspecifikus címtár támaszkodnak, és az Azure AD függetlenül is működőképesek független felhőalapú alkalmazásokhoz. Ezek az alkalmazások elérésére engedélyezve van az alkalmazás hitelesítő adatok az alkalmazás fiókhoz hozzárendelt kiállításával. Attól függően, hogy az alkalmazások képességei a hitelesítő adatokat lehet egy összevonási token vagy a felhasználónév- és a jelszót, amely korábban az alkalmazás lett kiépítve.
@@ -90,13 +90,13 @@ Például ha egy felhasználó csatlakozik a szervezet, szeretné az Azure AD be
 A modern vállalatok informatikai részlegek ismerik gyakran nem minden a felhőalapú alkalmazások vannak használatban lévő. A Cloud App Discovery együtt az Azure AD lehetőséget biztosít a megoldás az alkalmazások észlelésére.
 
 ## <a name="account-management"></a>Fiókkezelés
-Hagyományosan a különböző alkalmazások kezelésére egy kézi művelet által végrehajtott informatikai vagy a szervezet személyes támogatja. Az Azure AD fiókkezelés teljesen automatizált minden szolgáltató integrált alkalmazások és az automatizált felhasználókiépítése támogató Microsoft vagy SAML JIT előre integrált alkalmazások között.
+Hagyományosan a különböző alkalmazások kezelésére egy kézi művelet által végrehajtott informatikai vagy a szervezet támogatási személyzetnek. Az Azure AD fiókkezelés teljesen automatizálja minden szolgáltató integrált alkalmazások és az automatizált felhasználókiépítése vagy SAML fordítója kiosztása támogató Microsoft által előre integrált alkalmazások között.
 
 ## <a name="automated-user-provisioning"></a>Automatizált felhasználókiépítése
 Egyes alkalmazások automation felületek létrehozására és Eltávolítás (vagy deaktiválása) fiókok adja meg. Ha egy szolgáltató ilyen interfész, az Azure ad elkészítéséhez használja. Ez csökkenti a működési költségek, mivel a felügyeleti feladatok automatikusan megtörténik, és javítja a biztonsági környezet, mivel csökkenti a jogosulatlan hozzáférés esélyét.
 
 ## <a name="access-management"></a>Hozzáférés-kezelés
-Az Azure AD használatával egyéni alkalmazások vagy alapú hozzárendelések szabály hozzáférés kezelése. Delegálhatja hozzáférés-kezeléshez a szervezet biztosítja a legjobb felügyeletet és a támogató személyzet terhelésének csökkentése a megfelelő személyeknek.
+Az Azure ad-vel kezelheti használó egyéni alkalmazások vagy alapú hozzárendelések szabály eléréséhez. Delegálhatja hozzáférés-kezeléshez a szervezet biztosítja a legjobb felügyeletet és a támogató személyzet terhelésének csökkentése a megfelelő személyeknek.
 
 ## <a name="on-premises-applications"></a>Helyszíni alkalmazások
 A beépített alkalmazásban proxy lehetővé teszi a felhasználók számára, ami azt eredményezi, a helyszíni alkalmazások közzétételét élmény modern felhőalapú alkalmazására és a következő előnyöket is konzisztens hozzáférést az Azure AD-figyelési, jelentéskészítési és biztonsági képességeket.

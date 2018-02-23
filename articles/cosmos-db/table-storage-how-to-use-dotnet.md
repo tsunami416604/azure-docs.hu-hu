@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/30/2018
 ms.author: mimig
-ms.openlocfilehash: f95d66950feb8729a7edcad3e02ea9a932123e16
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 317adaac1551cf00e25640f1d99429ad76d598a2
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="get-started-with-azure-table-storage-using-net"></a>Az Azure Table Storage használatának első lépései a .NET-keretrendszerrel
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -85,7 +85,7 @@ Az Azure CosmosDB tábla kódtárat bármilyen .NET-alkalmazás, beleértve az A
 ### <a name="use-nuget-to-install-the-required-packages"></a>A szükséges csomagok telepítése a NuGettel
 Nincsenek a projektben az oktatóanyag elvégzéséhez hivatkoznia kell három csomagok:
 
-* [Az Azure Storage közös .NET-keretrendszerhez készült (előzetes verzió)](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/). 
+* [Az Azure Storage közös .NET-keretrendszerhez készült (8.6.0-preview)](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/8.6.0-preview). 
 * [A Microsoft Azure CosmosDB tábla .NET-keretrendszerhez készült](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table). Ez a csomag az Azure Table storage-fiók vagy Azure Cosmos DB tábla API-fiók adatforrásaihoz programozott hozzáférést biztosít.
 * [A Microsoft Azure Configuration Manager könyvtár a .NET-hez](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/): Ez a csomag egy osztályt biztosít a konfigurációs fájlban található kapcsolati karakterlánc elemzéséhez, függetlenül attól, hogy az alkalmazás hol fut.
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: juluk
-ms.openlocfilehash: a2c5348ea2ea02917472c1c3ae3bb518364c6848
-ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
+ms.openlocfilehash: 300630919ed832b059dd96fa0f35f89b52b0430d
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="features--tools-for-bash-in-azure-cloud-shell"></a>Szolgáltatások & Azure Cloud rendszerhéj Bash eszközei
 
@@ -37,7 +37,7 @@ A felhő rendszerhéj bash biztonságosan és automatikusan hitelesíti felhaszn
 
 ### <a name="ssh-into-azure-linux-virtual-machines"></a>SSH-ból az Azure Linux virtuális gépek
 
-Linux virtuális gép létrehozása az Azure CLI 2.0 létrehozhat egy alapértelmezett SSH-kulcs és elhelyezheti a `$Home` könyvtár. SSH elhelyezéséhez kulcsoknak `$Home` lehetővé teszi, hogy közvetlenül SSH-kapcsolatok Azure Linux virtuális gépekhez közvetlenül a felhő rendszerhéj. Kulcsok tartják acc_<user>.img a fájlmegosztáson, ajánlott eljárások használatával, vagy a megosztás hozzáférés a fájlmegosztáshoz vagy kulcsok használata.
+Linux virtuális gép létrehozása az Azure CLI 2.0 létrehozhat egy alapértelmezett SSH-kulcs és elhelyezheti a `$Home` könyvtár. SSH elhelyezéséhez kulcsoknak `$Home` lehetővé teszi, hogy SSH-kapcsolatok Azure Linux virtuális gépekhez közvetlenül a felhő rendszerhéjából. Kulcsok tartják acc_<user>.img a fájlmegosztáson, ajánlott eljárások használatával, vagy a megosztás hozzáférés a fájlmegosztáshoz vagy kulcsok használata.
 
 ### <a name="home-persistence-across-sessions"></a>$Home adatmegőrzési munkamenetei között
 
@@ -47,6 +47,10 @@ Ezenkívül a felhőalapú rendszerhéj Bash a `$Home` directory, az Azure fájl
 Fájlok kívüli `$Home` és a gép állapota nem maradnak meg a munkamenetek között.
 
 [Ismerje meg a felhő rendszerhéj Bash fájlok tárolásakor.](persisting-shell-storage.md)
+
+### <a name="deep-integration-with-open-source-tooling"></a>Nyílt forráskódú tooling való mély integráció
+
+A felhő rendszerhéj bash nyílt forrású eszközök például Terraform és Ansible előre konfigurált hitelesítési tartalmaz. Próbálja ki a példa forgatókönyvek a.
 
 ## <a name="tools"></a>Eszközök
 

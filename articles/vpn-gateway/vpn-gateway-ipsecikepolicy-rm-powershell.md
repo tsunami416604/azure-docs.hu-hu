@@ -1,6 +1,6 @@
 ---
 title: "S2S VPN- és VNet – VNet kapcsolatokhoz IPsec/IKE-házirend konfigurálása: Azure Resource Manager: PowerShell |} Microsoft Docs"
-description: "Ez a cikk bemutatja, hogyan S2S és VNet – VNet kapcsolatokhoz IPsec/IKE-házirend konfigurálása az Azure VPN Gatewayek Azure Resource Manager és a PowerShell használatával."
+description: "S2S és VNet – VNet kapcsolatokhoz IPsec/IKE-házirend konfigurálása az Azure VPN Gatewayek Azure Resource Manager és a PowerShell használatával."
 services: vpn-gateway
 documentationcenter: na
 author: yushwang
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/12/2017
+ms.date: 02/14/2018
 ms.author: yushwang
-ms.openlocfilehash: 323c008f7da833d627b35621a24cc29db1283847
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: 19233ccd306f507ef2e36bee878aa9705c115780
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="configure-ipsecike-policy-for-s2s-vpn-or-vnet-to-vnet-connections"></a>S2S VPN- és VNet – VNet kapcsolatokhoz IPsec/IKE-házirend konfigurálása
 
@@ -44,7 +44,7 @@ Ez a cikk bemutatja, és hozhat létre és IPsec/IKE-szabályzat beállítása e
 > 3. Meg kell adnia a internetes KULCSCSERE (alapmód) és a IPsec (gyorsmódú) algoritmusok és a paraméterek. A részleges házirend-megadás nem engedélyezett.
 > 4. Vegye fel a kapcsolatot VPN szállító műszaki győződjön meg arról, a házirend a helyszíni VPN-eszközök esetén támogatott. S2S vagy a VNet – VNet kapcsolatokhoz a nem tud, ha a házirendek nem kompatibilisek.
 
-## <a name ="workflow"></a>1 - munkafolyamat létrehozása és IPsec/IKE házirend beállítása. rész
+## <a name ="workflow">1 - munkafolyamat létrehozása és IPsec/IKE házirend beállítása. rész</a>
 Ez a szakasz ismerteti a munkafolyamat létrehozásához, és a S2S VPN- vagy a VNet – VNet kapcsolat IPsec/IKE-házirend frissítése:
 1. Virtuális hálózat és VPN-átjáró létrehozása
 2. Helyi hálózati átjáró a helyi kapcsolat vagy egy másik virtuális hálózati közötti és VNet – VNet-kapcsolatot az átjáró létrehozása
@@ -111,7 +111,7 @@ A következő táblázat felsorolja a megfelelő Diffie-Hellman csoport, az egy�
 
 További részletekért lásd: [RFC3526](https://tools.ietf.org/html/rfc3526) és [RFC5114](https://tools.ietf.org/html/rfc5114).
 
-## <a name ="crossprem"></a>3. rész – hozzon létre egy új S2S VPN-kapcsolat IPsec/IKE-házirend
+## <a name ="crossprem">3. rész – hozzon létre egy új S2S VPN-kapcsolat IPsec/IKE-házirend</a>
 
 Ez a szakasz bemutatja, hogyan hozzon létre egy S2S VPN-kapcsolatot az IPsec/IKE házirendjével. Az alábbi lépéseket a kapcsolat létrehozása, az ábrán látható módon:
 
@@ -220,7 +220,7 @@ Opcionálisan hozzáadhat "-UsePolicyBasedTrafficSelectors $True" a létrehozás
 > Miután egy IPsec-/ h.rend kapcsolat van megadva, az Azure VPN gateway csak elküldi vagy elfogadja a IPsec/IKE-a megadott titkosítási algoritmusok és a kulcs szintjeiről a adott kapcsolat. Győződjön meg arról, hogy a kapcsolat a helyszíni VPN-eszköz használ, vagy fogadja el a pontos házirend kombináció, ellenkező esetben az S2S VPN-alagút fog létrehozni a.
 
 
-## <a name ="vnet2vnet"></a>Rész 4 – hozzon létre egy új VNet – VNet-kapcsolatot IPsec/IKE-házirend
+## <a name ="vnet2vnet">Rész 4 – hozzon létre egy új VNet – VNet-kapcsolatot IPsec/IKE-házirend</a>
 
 Hozzon létre egy VNet – VNet-kapcsolatot az IPsec/IKE házirendjével hasonlóak az S2S VPN-kapcsolatot. A következő minta parancsfájlokat hozza létre a kapcsolat, az ábrán látható módon:
 

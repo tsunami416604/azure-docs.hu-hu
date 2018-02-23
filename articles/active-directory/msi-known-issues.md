@@ -14,11 +14,11 @@ ms.tgt_pltfrm:
 ms.workload: identity
 ms.date: 12/12/2017
 ms.author: daveba
-ms.openlocfilehash: 0541e63a1d3467b9691032e66892efe8f0f0cad8
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: c8b25082170eb03c1ebc5965e273868982a3846f
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="faqs-and-known-issues-with-managed-service-identity-msi-for-azure-active-directory"></a>Gyakori kérdések és ismert problémákat a felügyelt szolgáltatás Identity (MSI) az Azure Active Directory
 
@@ -46,6 +46,7 @@ A következő Linux terjesztésekről MSI támogatja:
 - 7.1 – centOS
 - RedHat 7.2
 - Ubuntu 15.04
+- Ubuntu 16.04
 
 Más Linux terjesztésekről jelenleg nem támogatottak, és a bővítményt a nem támogatott disztribúciók meghiúsulhat.
 

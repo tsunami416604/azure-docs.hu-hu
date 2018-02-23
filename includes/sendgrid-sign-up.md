@@ -2,7 +2,7 @@ Az Azure-ügyfelek havonta 25 000 ingyenes e-mailt oldhatnak fel. Ez a havi 25 0
 
 ### <a name="to-sign-up-for-a-sendgrid-account"></a>SendGrid-fiók regisztrálása
 1. Jelentkezzen be a [Azure-portálon][Azure portal].
-2. A bal oldali menüben kattintson az **Új** lehetőségre.
+2. A bal oldali menüben kattintson a **hozzon létre egy erőforrást**.
 
     ![command-bar-new][command-bar-new]
 3. Kattintson a **Bővítmények**, majd pedig a **SendGrid Email Delivery** lehetőségre.
@@ -45,7 +45,7 @@ Az Azure-ügyfelek havonta 25 000 ingyenes e-mailt oldhatnak fel. Ez a havi 25 0
 
     ![api-keys][api-keys]
 
-3. Kattintson az **API-kulcs létrehozása** legördülő listára, és válassza az **Általános API-kulcs** lehetőséget.
+3. Kattintson a **API-kulcs létrehozása**.
 
     ![general-api-key][general-api-key]
 4. Adja meg legalább a **Kulcs nevét**, biztosítson teljes hozzáférést a **Levélküldés** számára, majd válassza a **Mentés** lehetőséget.

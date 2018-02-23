@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 07/06/2017
 ms.author: samacha
-ms.openlocfilehash: 243ee799d2cddb1baf5b8046eee6eaf182463d2e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d06681c687f5cd3eb10d375499266c7e78be1558
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="performing-sentiment-analysis-by-using-azure-stream-analytics-and-azure-machine-learning"></a>Azure Stream Analytics és az Azure Machine Learning segítségével véleményeket elemzések végrehajtását
 Ez a cikk ismerteti, hogyan gyorsan beállíthat egy egyszerű Azure Stream Analytics-feladat, amely az Azure Machine Learning. Akkor használhatja Machine Learning véleményeket analytics a Cortana Intelligence Gallery a streamadatok szöveg elemzésére és valós időben a céggel kapcsolatos véleményeket pontszám meghatározásához. A Cortana Intelligence Suite használata lehetővé teszi ennek a feladatnak anélkül, hogy a menő a céggel kapcsolatos véleményeket elemzési modell létrehozásának bemutatása.
@@ -57,7 +57,7 @@ Magas szinten a feladatokat, ebben a cikkben bemutatott, tegye a következőket:
 ## <a name="create-a-storage-container-and-upload-the-csv-input-file"></a>Hozzon létre egy tárolót, és a bemeneti CSV-fájl feltöltése
 Ezt a lépést minden CSV-fájl, például a rendelkezésre álló a Githubból is használhatja.
 
-1. Az Azure portálon kattintson **új** &gt; **tárolási** &gt; **tárfiók**.
+1. Az Azure portálon kattintson **hozzon létre egy erőforrást** &gt; **tárolási** &gt; **tárfiók**.
 
    ![új tárfiók létrehozása](./media/stream-analytics-machine-learning-integration-tutorial/azure-portal-create-storage-account.png)
 
@@ -128,7 +128,7 @@ Mostantól létrehozhat egy Stream Analytics-feladat, a minta Twitter-üzeneteke
 
 1. Nyissa meg az [Azure Portal](https://portal.azure.com).  
 
-2. Kattintson a **új** > **az eszközök internetes hálózatát** > **Stream Analytics-feladat**. 
+2. Kattintson a **hozzon létre egy erőforrást** > **az eszközök internetes hálózatát** > **Stream Analytics-feladat**. 
 
    ![Egy új Stream Analytics-feladathoz kapcsolódnak az Azure portál elérési útja](./media/stream-analytics-machine-learning-integration-tutorial/azure-portal-new-iot-sa-job.png)
    
@@ -269,7 +269,7 @@ Azure Machine Learning-függvény vonatkozó metrikáinak is megtekintheti. A k�
 * **Események működéséhez** a kérelemben szereplő események számát jelzi. Alapértelmezés szerint a Machine Learning webszolgáltatásba az egyes kérelmek legfeljebb 1000 eseményeket tartalmazza.  
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Az Azure Stream Analytics bemutatása](stream-analytics-introduction.md)
 * [Azure Stream Analytics Query Language Reference](https://msdn.microsoft.com/library/azure/dn834998.aspx) (Referencia az Azure Stream Analytics lekérdezési nyelvhez)

@@ -15,15 +15,13 @@ Klasszikus virtuális gépeket adhat hozzá a rendelkezésre állási készlet k
 > 
 > 
 
-## <a id="createset"></a>1. lehetőség: hozzon létre egy virtuális gép és a rendelkezésre állási készlet egyszerre
+## <a id="createset"> </a>1. lehetőség: Hozzon létre egy virtuális gép és a rendelkezésre állási készlet egyszerre
 Ehhez használhatja az Azure portálon vagy az Azure PowerShell-parancsokat.
 
 Az Azure portál használata:
 
 1. Ha még nem tette meg, jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. A központ menüben kattintson a **+ új**, és kattintson a **virtuális gép**.
-   
-    ![Kép helyettesítő szövege](./media/virtual-machines-common-classic-configure-availability/ChooseVMImage.png)
+2. Kattintson a **hozzon létre egy erőforrást** > **számítási**.
 3. Válassza ki a használni kívánt piactér virtuálisgép-lemezkép. Ha szeretné, hozzon létre egy Linux vagy a Windows virtuális gépet.
 4. A kijelölt virtuális gép esetében ellenőrizze, hogy a telepítési modell **klasszikus** majd **létrehozása**
    
@@ -38,11 +36,11 @@ Az Azure portál használata:
 
 Azure PowerShell-parancsok használatával hozzon létre egy Azure virtuális gépen, és adja hozzá egy új vagy meglévő rendelkezésre állási csoport, lásd: [hozhat létre és konfigurálja a Windows-alapú virtuális gépek előre Azure PowerShell használata](../articles/virtual-machines/windows/classic/create-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 
-## <a id="addmachine"></a>2. lehetőség: egy meglévő virtuális gép rendelkezésre állási csoportok hozzáadása
+## <a id="addmachine"> </a>2. lehetőség: Hozzáadása egy meglévő virtuális gép rendelkezésre állási csoportok
 Az Azure-portálon adhat hozzá meglévő klasszikus virtuális gépek rendelkezésre állási beállítása, vagy hozzon létre egy újat a számukra. (Ne feledje, hogy az azonos rendelkezésre állási csoport a virtuális gépek azonos a felhőszolgáltatáshoz kell tartoznia.) A lépései megegyeznek szinte. Az Azure PowerShell a virtuális gép adhat hozzá egy meglévő rendelkezésre állási csoportot.
 
 1. Ha még nem tette meg, jelentkezzen be a [Azure-portálon](https://portal.azure.com).
-2. A központ menüben kattintson a **virtuális gépek (klasszikus)**.
+2. Kattintson a bal oldali menü **virtuális gépek (klasszikus)**.
    
     ![Kép helyettesítő szövege](./media/virtual-machines-common-classic-configure-availability/ChooseClassicVM.png)
 3. Virtuális gépek listájából válassza ki a virtuális gép hozzá a kívánt nevét.

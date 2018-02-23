@@ -15,28 +15,28 @@ ms.workload: identity
 ms.date: 07/26/2017
 ms.author: asmalser
 ms.reviewer: asmalser
-ms.openlocfilehash: 122dbdb838377a36020f9ec692b38544004e676c
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 846ec63d47ebc787fa1edbf1968f1a843e96ac9d
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>Vállalati alkalmazások az Azure portálon kiépítés felhasználói fiók kezelése
 Ez a cikk ismerteti, hogyan használható a [Azure-portálon](https://portal.azure.com) automatikus felhasználói fiók üzembe helyezést és megszüntetést újra a számítógépet, amelyek támogatják ezt, különösen azokat, a "kiemelt" kategóriából a ahozzáadottalkalmazásokkezelése[ Az Azure Active Directory alkalmazáskatalógusában](active-directory-appssoaccess-whatis.md#get-started-with-the-azure-ad-application-gallery). Automatikus felhasználói fiók kiépítése és annak működéséről kapcsolatos további információkért lásd: [Felhasználókiépítés és -megszüntetés automatizálása a SaaS-alkalmazásokhoz az Azure Active Directoryval](active-directory-saas-app-provisioning.md).
 
 ## <a name="finding-your-apps-in-the-portal"></a>A portál az alkalmazások keresése
-Az egyszeri bejelentkezéshez egy könyvtárban, a használatával directory rendszergazda által beállított összes alkalmazás a [Azure Active Directory alkalmazáskatalógusában](active-directory-appssoaccess-whatis.md#get-started-with-the-azure-ad-application-gallery), tekinthetők meg és kezelhetők a [Azure-portálon](https://portal.azure.com). Az alkalmazások találhatók a **több szolgáltatások** &gt; **vállalati alkalmazások** a portál szakaszban. Vállalati alkalmazások olyan alkalmazások, telepített és a szervezetén belül.
+Az egyszeri bejelentkezéshez egy könyvtárban, a használatával directory rendszergazda által beállított összes alkalmazás a [Azure Active Directory alkalmazáskatalógusában](active-directory-appssoaccess-whatis.md#get-started-with-the-azure-ad-application-gallery), tekinthetők meg és kezelhetők a [Azure-portálon](https://portal.azure.com). Az alkalmazások találhatók a **minden szolgáltatás** &gt; **vállalati alkalmazások** a portál szakaszban. Vállalati alkalmazások olyan alkalmazások, telepített és a szervezetén belül.
 
-![Vállalati alkalmazások panel][0]
+![Vállalati alkalmazások ablaktábla][0]
 
-Válassza a **összes alkalmazás** a bal oldali hivatkozást vannak konfigurálva, beleértve az alkalmazások a gyűjteményből hozzáadott összes alkalmazások listáját tartalmazza. Az erőforrás panel az alkalmazáshoz, ahol jelentések megtekinthetők az alkalmazáshoz, és különböző beállítások kezelheti egy alkalmazás kiválasztása tölti be.
+Válassza a **összes alkalmazás** a bal oldali hivatkozást vannak konfigurálva, beleértve az alkalmazások a gyűjteményből hozzáadott összes alkalmazások listáját tartalmazza. Az erőforrás ablaktáblán az alkalmazáshoz, ahol jelentések megtekinthetők az alkalmazáshoz, és különböző beállítások kezelheti egy alkalmazás kiválasztása tölti be.
 
 Felhasználói fiók kialakítási beállításai kezelhető kiválasztásával **kiépítési** a bal oldalon.
 
-![Alkalmazás erőforráspanelen][1]
+![Alkalmazás erőforrás ablaktábla][1]
 
 ## <a name="provisioning-modes"></a>Üzembe helyezési mód
-A **kiépítési** panel kezdődik egy **mód** menü, amely bemutatja, milyen üzembe helyezési mód támogatja egy vállalati alkalmazás, és lehetővé teszik. Az elérhető lehetőségek a következők:
+A **kiépítési** ablaktábla kezdődik egy **mód** menü, amely bemutatja, milyen üzembe helyezési mód támogatja egy vállalati alkalmazás, és lehetővé teszik. Az elérhető lehetőségek a következők:
 
 * **Automatikus** – Ez a beállítás akkor jelenik meg, ha az Azure AD automatikus API-alapú üzembe helyezés és/vagy az alkalmazás felhasználói fiókokat megszüntetést támogatja. Válassza ezt a módot jeleníti meg, amely végigvezeti a rendszergazdák a az alkalmazás felhasználói felügyeleti API csatlakozni az Azure AD konfigurálása, fiók-hozzárendelések és a munkafolyamatok, amelyek meghatározzák, hogyan felhasználói fiókhoz kell adatfolyam az Azure AD közötti létrehozásának illesztőfelület és a alkalmazást, és kezelése az Azure AD szolgáltatás kiépítését.
 * **Manuális** -e beállítás jelenik meg, ha az Azure AD nem támogatja a felhasználói fiókok ezen alkalmazás automatikus kiépítése. Ez a beállítás azt jelenti, hogy felhasználói fiókot rögzíti az alkalmazásban tárolt felügyelni a külső folyamat, a felhasználó felügyeleti és üzembe helyezési képesség maga az alkalmazás (amelyek magukban foglalhatják SAML fordítója kiépítése) alapján.
@@ -54,7 +54,7 @@ Ez az adott rendszergazdák megtekintéséhez és szerkesztéséhez, milyen felh
 
 Nincs olyan előre konfigurált megfeleltetéseket az Azure AD felhasználói és minden SaaS-alkalmazás felhasználói objektumok között. Egyes alkalmazások más típusú objektumok, például a csoportok vagy névjegyek kezelése. Egyikének kiválasztásával a leképezések az a táblázat a jobbra, ahol azok megtekinthetők és testre szabott hozzárendelési szerkesztőt.
 
-![Alkalmazás erőforráspanelen][2]
+![Alkalmazás erőforrás ablaktábla][2]
 
 Támogatott testreszabások a következők:
 
@@ -81,6 +81,6 @@ Hivatkozásokkal a **tevékenységgel kapcsolatos jelentés kiépítés**, amely
 Reméljük, például a Azure AD felhasználói élményt. Ne hamarosan visszajelzését! Visszajelzését és ötleteket javítására szolgáló utáni a **felügyeleti portál** szakasza a [visszajelzési fórumon](https://feedback.azure.com/forums/169401-azure-active-directory/category/162510-admin-portal).  Ritkán használt adatok új dolgai minden nap kiépítésével foglalkozó még érdeklődőbbek és felhasználása a shape útmutatást és határozza meg, mi készíteni.
 
 
-[0]: ./media/active-directory-enterprise-apps-manage-provisioning/enterprise-apps-blade.PNG
+[0]: ./media/active-directory-enterprise-apps-manage-provisioning/enterprise-apps-pane.PNG
 [1]: ./media/active-directory-enterprise-apps-manage-provisioning/enterprise-apps-provisioning.PNG
 [2]: ./media/active-directory-enterprise-apps-manage-provisioning/enterprise-apps-provisioning-mapping.PNG

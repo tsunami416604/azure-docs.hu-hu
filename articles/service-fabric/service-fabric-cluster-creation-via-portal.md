@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 02/01/2018
+ms.date: 02/09/2018
 ms.author: chackdan
-ms.openlocfilehash: 7537d7015ee8739be4b9ba08846866d4cfbe38be
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 4a42e36307f440a29740d947314f91dffac51a42
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-a-service-fabric-cluster-in-azure-using-the-azure-portal"></a>A Service Fabric-fürt létrehozása az Azure-ban az Azure-portálon
 > [!div class="op_single_selector"]
@@ -82,7 +82,7 @@ Az alkalmazás igényeinek éles fürt létrehozása magában foglalja a néhán
 ![Keresse meg a Service Fabric fürt sablont az Azure portálon.][SearchforServiceFabricClusterTemplate]
 
 1. Jelentkezzen be az [Azure Portalra][azure-portal].
-2. Kattintson a **új** új erőforrás sablon hozzáadását. Keresse meg a Service Fabric-fürt-sablon a **piactér** alatt **mindent**.
+2. Kattintson a **hozzon létre egy erőforrást** új erőforrás sablon hozzáadását. Keresse meg a Service Fabric-fürt-sablon a **piactér** alatt **mindent**.
 3. Válassza ki **Service Fabric-fürt** a listából.
 4. Keresse meg a **Service Fabric-fürt** panelen kattintson a **létrehozása**,
 5. A **létrehozása a Service Fabric-fürt** panel rendelkezik a következő négy lépést:
@@ -134,6 +134,7 @@ A biztonságos tesztfürthöz beállításának könnyen elvégzésére, adtunk 
 #####<a name="basic-option"></a>Alapszintű beállítás
 Kövesse a képernyőn hozzáadása vagy egy meglévő keyvault felhasználhatja és tanúsítvány hozzáadásához. A tanúsítvány hozzáadása szinkron eljárás, és úgy kell várja meg a tanúsítványt létrehozni.
 
+
 A képernyő navigál, amíg az előző folyamat befejeződött, a kísértésnek ellenáll.
 
 ![CreateKeyVault]
@@ -142,7 +143,7 @@ Most, hogy a tanúsítványt a keyvault ad hozzá, a rendszer kérni fogja a hoz
 
 ![CreateKeyVault2]
 
-Kattintson a speciális hozzáférési házirendek szerint, és engedélyezze a hozzáférést a virtuális gépek telepítése. Javasoljuk, hogy a sablon a központi telepítést engedélyeznie is.
+Kattintson a speciális hozzáférési házirendek szerint, és engedélyezze a hozzáférést a virtuális gépek telepítése. Javasoljuk, hogy a sablon a központi telepítést engedélyeznie is. Ha létrejött a beállításokat, akkor ne feledje el, kattintson a **mentése** gombra, majd zárja be a a **hozzáférési házirendek** ablaktáblán.
 
 ![CreateKeyVault3]
 

@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 12/04/2017
+ms.date: 01/26/2018
 ms.author: larryfr
-ms.openlocfilehash: b451a80934a19f8a38ab9e8ace358674827aefa0
-ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
+ms.openlocfilehash: c830abdf8220f222a06b771b8c9fc905146420b4
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="run-hive-queries-with-hadoop-in-hdinsight-using-rest"></a>A többi használatával HDInsight Hadoop Hive-lekérdezések futtatása
 
@@ -28,24 +28,57 @@ ms.lasthandoff: 01/18/2018
 
 Megtudhatja, hogyan futtathat Hive-lekérdezéseket a Hadoop on Azure HDInsight-fürt a WebHCat REST API használatával.
 
-[Curl](http://curl.haxx.se/) bemutatják, hogyan kezelheti a HDInsight nyers HTTP-kérelmek használatával szolgál. A [jq](http://stedolan.github.io/jq/) segédprogram segítségével dolgozza fel a többi kérelem által visszaadott JSON-adatokat.
+## <a name="prerequisites"></a>Előfeltételek
 
-> [!NOTE]
-> Ha ismeri a Linux-alapú Hadoop-kiszolgálókat használ, de még nem használta a HDInsight, tekintse meg a [mit kell tudnia a Linux-alapú HDInsight Hadoop](../hdinsight-hadoop-linux-information.md) dokumentum.
+* A Linux-alapú Hadoop a HDInsight fürt 3.4 vagy újabb verziója.
+
+  > [!IMPORTANT]
+  > A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
+
+* A többi ügyfél. Ez a dokumentum a Windows Powershellt használja és [Curl](http://curl.haxx.se/) példák.
+
+    > [!NOTE]
+    > Az Azure PowerShell használata a HDInsight Hive dedikált-parancsmagokat kínál. További információkért lásd: a [használja az Azure PowerShell Hive](apache-hadoop-use-hive-powershell.md) dokumentum.
+
+Ez a dokumentum is használja a Windows PowerShell és [Jq](http://stedolan.github.io/jq/) JSON-adatokat adott vissza, a többi kérelmek folyamathoz.
 
 ## <a id="curl"></a>Hive-lekérdezések futtatása
 
 > [!NOTE]
 > Használata cURL vagy más REST kommunikációt használ a Webhcattel, hitelesítenie kell a kéréseket a HDInsight fürt rendszergazdája a felhasználónév és jelszó megadásával.
 >
-> Ezen szakasz parancsaiban cserélje le **admin** a felhasználó a fürtön. Cserélje le a **CLUSTERNAME** elemet a fürt nevére. Amikor a rendszer kéri, írja be a jelszót a felhasználói fiók.
->
 > A REST API védelméről [alapszintű hitelesítés](http://en.wikipedia.org/wiki/Basic_access_authentication) gondoskodik. Győződjön meg arról, hogy a hitelesítő adatait biztonságos módon küldje a kiszolgáló érdekében mindig végezzen kérelmek HTTP Secure (HTTPS).
 
-1. Egy parancssorból a következő paranccsal ellenőrizze, hogy tud-e kapcsolódni a HDInsight-fürthöz:
+1. A fürt bejelentkezési ebben a dokumentumban a parancsfájlok által használt beállításához használja a következő parancsok egyikét:
 
     ```bash
-    curl -u admin -G https://CLUSTERNAME.azurehdinsight.net/templeton/v1/status
+    read -p "Enter your cluster login account name: " LOGIN
+    ```
+
+    ```powershell
+    $creds = Get-Credential -UserName admin -Message "Enter the cluster login name and password"
+    ```
+
+2. A fürt nevének megadásához használja a következő parancsok egyikét:
+
+    ```bash
+    read -p "Enter the HDInsight cluster name: " CLUSTERNAME
+    ```
+
+    ```powershell
+    $clusterName = Read-Host -Prompt "Enter the HDInsight cluster name"
+    ```
+
+3. Győződjön meg arról, hogy tud-e csatlakozni a HDInsight-fürthöz, használja a következő parancsok egyikét:
+
+    ```bash
+    curl -u $LOGIN -G https://$CLUSTERNAME.azurehdinsight.net/templeton/v1/status)
+    ```
+    
+    ```powershell
+    $resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/templeton/v1/status" `
+       -Credential $creds
+    $resp.Content
     ```
 
     Az alábbihoz hasonló választ kapnak:
@@ -56,13 +89,19 @@ Megtudhatja, hogyan futtathat Hive-lekérdezéseket a Hadoop on Azure HDInsight-
 
     Ezen parancs paraméterei a következők:
 
-    * **-u** - A kérés hitelesítéséhez használt felhasználónév és jelszó.
-    * **-G** -azt jelzi, hogy a kérelem a GET műveletet.
+    * `-u` -A felhasználónevet és a kérés hitelesítéséhez használt jelszót.
+    * `-G` -Azt jelzi, hogy a kérelem a GET műveletet.
 
-   Az URL-cím, az elején **https://CLUSTERNAME.azurehdinsight.net/templeton/v1**, minden olyan kérelem esetében megegyezik. Az elérési út **/status**, azt jelzi, hogy a kérelem vissza WebHCat (más néven Templeton) állapota a kiszolgálóhoz. A Hive verzióját is kérheti a következő paranccsal:
+   Az URL-cím elejére `https://$CLUSTERNAME.azurehdinsight.net/templeton/v1`, minden olyan kérelem esetében megegyezik. Az elérési út `/status`, azt jelzi, hogy a kérelem vissza WebHCat (más néven Templeton) állapota a kiszolgálóhoz. A Hive verzióját is kérheti a következő paranccsal:
 
     ```bash
-    curl -u admin -G https://CLUSTERNAME.azurehdinsight.net/templeton/v1/version/hive
+    curl -u $LOGIN -G https://$CLUSTERNAME.azurehdinsight.net/templeton/v1/version/hive
+    ```
+
+    ```powershell
+    $resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/templeton/v1/version/hive" `
+       -Credential $creds
+    $resp.Content
     ```
 
     A kérelem választ ad az alábbihoz hasonló:
@@ -71,83 +110,70 @@ Megtudhatja, hogyan futtathat Hive-lekérdezéseket a Hadoop on Azure HDInsight-
         {"module":"hive","version":"0.13.0.2.1.6.0-2103"}
     ```
 
-2. Használja a következő nevű tábla létrehozása **log4jLogs**:
+4. Használja a következő nevű tábla létrehozása **log4jLogs**:
 
     ```bash
-    curl -u admin -d user.name=admin -d execute="set+hive.execution.engine=tez;DROP+TABLE+log4jLogs;CREATE+EXTERNAL+TABLE+log4jLogs(t1+string,t2+string,t3+string,t4+string,t5+string,t6+string,t7+string)+ROW+FORMAT+DELIMITED+FIELDS+TERMINATED+BY+' '+STORED+AS+TEXTFILE+LOCATION+'/example/data/';SELECT+t4+AS+sev,COUNT(*)+AS+count+FROM+log4jLogs+WHERE+t4+=+'[ERROR]'+AND+INPUT__FILE__NAME+LIKE+'%25.log'+GROUP+BY+t4;" -d statusdir="/example/curl" https://CLUSTERNAME.azurehdinsight.net/templeton/v1/hive
+    JOBID=`curl -s -u $LOGIN -d user.name=$LOGIN -d execute="set+hive.execution.engine=tez;DROP+TABLE+log4jLogs;CREATE+EXTERNAL+TABLE+log4jLogs(t1+string,t2+string,t3+string,t4+string,t5+string,t6+string,t7+string)+ROW+FORMAT+DELIMITED+FIELDS+TERMINATED+BY+' '+STORED+AS+TEXTFILE+LOCATION+'/example/data/';SELECT+t4+AS+sev,COUNT(*)+AS+count+FROM+log4jLogs+WHERE+t4+=+'[ERROR]'+AND+INPUT__FILE__NAME+LIKE+'%25.log'+GROUP+BY+t4;" -d statusdir="/example/rest" https://$CLUSTERNAME.azurehdinsight.net/templeton/v1/hive | jq .id`
+    echo $JOBID
     ```
 
-    Ehhez a kérelemhez használt a következő paramétereket:
+    ```powershell
+    $reqParams = @{"user.name"="admin";"execute"="set hive.execution.engine=tez;DROP TABLE log4jLogs;CREATE EXTERNAL TABLE log4jLogs(t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string) ROW FORMAT DELIMITED BY ' ' STORED AS TEXTFILE LOCATION '/example/data/;SELECT t4 AS sev,COUNT(*) AS count FROM log4jLogs WHERE t4 = '[ERROR]' GROUP BY t4;";"statusdir"="/example/rest"}
+    $resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/templeton/v1/hive" `
+       -Credential $creds `
+       -Body $reqParams `
+       -Method POST
+    $jobID = (ConvertFrom-Json $resp.Content).id
+    $jobID
+    ```
 
-   * **-d** - óta `-G` nem használ, akkor a kérelmet az alapértelmezett a POST metódussal. `-d`Megadja a küldött adatértékekkel mellékel a kérelemhez.
+    A kérelem a POST metódussal, amelyhez a kérés részeként adatokat küld a REST API-t használ. A következő adatok értékek a kérelem küldésekor:
 
-     * **User.name** – a parancsot futtató felhasználónak.
-     * **végrehajtás** -a HiveQL utasítás végrehajtásához.
-     * **statusdir** -címtárban, ami a feladat állapotát a rendszer írja.
+     * `user.name` -A a parancsot futtató felhasználónak.
+     * `execute` -A HiveQL utasítás végrehajtásához.
+     * `statusdir` – A könyvtár írt meg a feladat állapotát.
 
    Ezekre az utasításokra hajtsa végre a következő műveleteket:
    
-   * **DROP TABLE** -Ha a tábla már létezik, az törlődik.
-   * **A külső tábla létrehozása** -táblát hoz létre egy új "külső" struktúra. Külső táblák csak a tábladefiníció Hive tárolja. Az adatok marad az eredeti helyen.
+   * `DROP TABLE` -Ha a tábla már létezik, akkor az törlődik.
+   * `CREATE EXTERNAL TABLE` -Táblát hoz létre egy új "külső" struktúra. Külső táblák csak a tábladefiníció Hive tárolja. Az adatok marad az eredeti helyen.
 
      > [!NOTE]
      > Külső táblák kell használni, amikor külső forrásból frissítenie kell az alapul szolgáló adatokat várt. Például egy automatizált adatok feltöltési folyamat vagy egy másik MapReduce művelet.
      >
      > A külső tábla eldobása does **nem** törli az adatokat, csak a tábla definíciójában.
 
-   * **SOR formátum** – hogyan az adatok formázását. Az egyes naplókon mezők vannak szóközzel elválasztva.
-   * **AS TEXTFILE helyen tárolt** - tárolja az adatokat (a példa/adatkönyvtár) és szövegként tárolt.
-   * **Válassza ki** -választja ki az összes sorok számát ahol oszlop **t4** értéke **[hiba]**. A jelen nyilatkozat értéket ad vissza, **3** ahány három ezt az értéket tartalmazó sorok.
+   * `ROW FORMAT` -Az adatok formázását. Az egyes naplókon mezők vannak szóközzel elválasztva.
+   * `STORED AS TEXTFILE LOCATION` -Az adatok tárolására (a példa/adatkönyvtár) és szövegként tárolt.
+   * `SELECT` -Választja ki az összes sorok számát ahol oszlop **t4** értéke **[hiba]**. A jelen nyilatkozat értéket ad vissza, **3** ahány három ezt az értéket tartalmazó sorok.
 
      > [!NOTE]
      > Figyelje meg, hogy a HiveQL utasítások szóközt helyébe a `+` karakter Curl használata esetén. Szóközt, például az elválasztó idézőjelek közé zárt értékek nem helyébe kell `+`.
 
-   * **INPUT__FILE__NAME PÉLDÁUL "% 25.log"** – a jelen nyilatkozat korlátozza a keresési végződése fájlok csak használandó. napló.
+      Ez a parancs visszaadja a Feladatazonosítót a feladat állapotának ellenőrzéséhez használható.
 
-     > [!NOTE]
-     > A `%25` %, kódolású URL-cím formájában van, így a tényleges feltétel `like '%.log'`. A %-nak kell lennie a URL-kódolású, akkor a rendszer egy különleges karakterek URL-címeket.
-
-   Ez a parancs visszaadja a Feladatazonosítót a feladat állapotának ellenőrzéséhez használható.
-
-    ```json
-       {"id":"job_1415651640909_0026"}
-    ```
-
-3. A feladat állapotának ellenőrzéséhez használja a következő parancsot:
+5. A feladat állapotának ellenőrzéséhez használja a következő parancsot:
 
     ```bash
-    curl -G -u admin -d user.name=admin https://CLUSTERNAME.azurehdinsight.net/templeton/v1/jobs/JOBID | jq .status.state
+    curl -G -u $LOGIN -d user.name=$LOGIN https://$CLUSTERNAME.azurehdinsight.net/templeton/v1/jobs/$JOBID | jq .status.state
     ```
 
-    Cserélje le **JOBID** az előző lépésben visszaadott értékkel. Például, ha a visszatérési érték volt `{"id":"job_1415651640909_0026"}`, majd **JOBID** lenne `job_1415651640909_0026`.
+    ```powershell
+    $reqParams=@{"user.name"="admin"}
+    $resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/templeton/v1/jobs/$jobID" `
+       -Credential $creds `
+       -Body $reqParams
+    # ConvertFrom-JSON can't handle duplicate names with different case
+    # So change one to prevent the error
+    $fixDup=$resp.Content.Replace("jobID","job_ID")
+    (ConvertFrom-Json $fixDup).status.state
+    ```
 
     Ha a feladat befejeződött, az állapota **sikeres**.
 
-   > [!NOTE]
-   > A Curl kérelem egy JavaScript Object Notation (JSON) dokumentumot, a feladat információkat ad vissza. Csak a állapotérték beolvasásához használt Jq.
-
-4. Ha a feladat állapota módosult **sikeres**, a feladat eredményeinek lekérése Azure Blob Storage tárolóban. A `statusdir` a lekérdezés átadott paraméter tartalmazza a hely a kimeneti fájl; ebben az esetben az **/példa/curl**. Ez a cím tárolja a kimenetét a **példa/curl** könyvtárban lévő a fürtök alapértelmezett tárolót.
+6. Ha a feladat állapota módosult **sikeres**, a feladat eredményeinek lekérése Azure Blob Storage tárolóban. A `statusdir` a lekérdezés átadott paraméter tartalmazza a hely a kimeneti fájl; ebben az esetben az `/example/rest`. Ez a cím tárolja a kimenetét a `example/curl` könyvtárban lévő a fürtök alapértelmezett tárolót.
 
     Listáról, és ezek a fájlok letöltésére a [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli). Az Azure Storage az Azure parancssori felület használatával kapcsolatos további információkért tekintse meg a [Azure CLI 2.0 használata Azure Storage](https://docs.microsoft.com/azure/storage/storage-azure-cli#create-and-manage-blobs) dokumentum.
-
-5. A következő utasítások használatával hozzon létre egy új "belső" táblát nevű **errorLogs**:
-
-    ```bash
-    curl -u admin -d user.name=admin -d execute="set+hive.execution.engine=tez;CREATE+TABLE+IF+NOT+EXISTS+errorLogs(t1+string,t2+string,t3+string,t4+string,t5+string,t6+string,t7+string)+STORED+AS+ORC;INSERT+OVERWRITE+TABLE+errorLogs+SELECT+t1,t2,t3,t4,t5,t6,t7+FROM+log4jLogs+WHERE+t4+=+'[ERROR]'+AND+INPUT__FILE__NAME+LIKE+'%25.log';SELECT+*+from+errorLogs;" -d statusdir="/example/curl" https://CLUSTERNAME.azurehdinsight.net/templeton/v1/hive
-    ```
-
-    Ezekre az utasításokra hajtsa végre a következő műveleteket:
-
-   * **Hozzon létre Ha nem létezik táblázat** -táblázatot hoz létre, ha még nem létezik. A jelen nyilatkozat létrehoz egy belső tábla, és a Hive-adatraktárban tárolja. Ez a táblázat Hive kezeli.
-
-     > [!NOTE]
-     > Ellentétben a külső táblákhoz az alapul szolgáló adatokat egy belső tábla eldobása törli.
-
-   * **TÁROLT AS ORC** -tárolja az adatokat optimalizált sor oszlopos (ORC) formátumban. ORC formátuma egy magas optimalizált és hatékony Hive adatainak tárolásához.
-   * **ÍRJA FELÜL AZ INSERT... Válassza ki** -sorát kiválasztja a **log4jLogs** tartalmazó **[hiba]**, majd szúrja be az adatokat a **errorLogs** tábla.
-   * **Válassza ki** -választja ki az összes sort az új **errorLogs** tábla.
-
-6. Használja ismét a feladat állapotának ellenőrzése a feladat Azonosítóját. Ha sikeres, az Azure parancssori felület leírt használja korábban töltse le, és tekintse meg az eredményeket. A kimeneti tartalmaznia kell a három sort, ezek mindegyike tartalmazhat **[hiba]**.
 
 ## <a id="nextsteps"></a>Következő lépések
 

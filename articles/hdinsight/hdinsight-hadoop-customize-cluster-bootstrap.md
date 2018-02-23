@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/03/2018
 ms.author: jgao
-ms.openlocfilehash: ea5453f98c427304fd0b437ba27846a008da2585
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: 2bead1a879811349e4bee5dfebdcbbb838130b81
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="customize-hdinsight-clusters-using-bootstrap"></a>Rendszerindítási HDInsight-fürtök testreszabása
 
@@ -86,7 +86,7 @@ PowerShell parancsfájl teljes működő található [függelék](#appendix-powe
 **A módosítás ellenőrzése:**
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. Kattintson a bal oldali menü **a HDInsight-fürtök**. Ha nem látja, kattintson a **további szolgáltatások** első.
+2. Kattintson a bal oldali menü **a HDInsight-fürtök**. Ha nem látja, kattintson a **minden szolgáltatás** első.
 3. Kattintson arra a fürtre, újonnan létrehozott a PowerShell-parancsfájl használatával.
 4. Kattintson a **irányítópult** az Ambari felhasználói felületének megnyitásához a panel tetején.
 5. Kattintson a **Hive** a bal oldali menüből.

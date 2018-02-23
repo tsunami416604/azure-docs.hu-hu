@@ -3,17 +3,17 @@ title: "Az Azure IoT peremhálózati SQL modul |} Microsoft Docs"
 description: "A Microsoft SQL-modulok, az Azure Functions adatok formázásához peremhálózaton adatok tárolására."
 services: iot-edge
 keywords: 
-author: ebertrams
+author: kgremban
 manager: timlt
 ms.author: kgremban, ebertrams
-ms.date: 02/07/2018
+ms.date: 02/21/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: f7ff069a2536d0138be8cbb32eefba342e1e9275
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 4b66a699e4c58662cadd799cf6aec83b9d34b7e6
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="store-data-at-the-edge-with-sql-server-databases"></a>SQL Server-adatbázisok a peremhálózaton adatok tárolásához
 
@@ -92,7 +92,6 @@ Alapértelmezés szerint ez a szakasz a kód tárolót hoz létre az SQL Server 
              }
           }
         }
-      }
    ```
 
 3. Attól függően, hogy az operációs rendszer Ön által futtatott frissítse az SQL-modul beállításait az alábbi kódra: 
@@ -101,7 +100,7 @@ Alapértelmezés szerint ez a szakasz a kód tárolót hoz létre az SQL Server 
 
       ```json
       "image": "microsoft/mssql-server-windows-developer",
-      "createOptions": "{\r\n\t"Env": [\r\n\t\t"ACCEPT_EULA=Y",\r\n\t\t"sa_password=Strong!Passw0rd"\r\n\t],\r\n\t"HostConfig": {\r\n\t\t"Mounts": [{\r\n\t\t\t"Target": "C:\\mssql",\r\n\t\t\t"Source": "sqlVolume",\r\n\t\t\t"Type": "volume"\r\n\t\t}],\r\n\t\t"PortBindings": {\r\n\t\t\t"1433/tcp": [{\r\n\t\t\t\t"HostPort": "1401"\r\n\t\t\t}]\r\n\t\t}\r\n\t}\r\n}"
+      "createOptions": "{\r\n\t"Env": [\r\n\t\t"ACCEPT_EULA=Y",\r\n\t\t"sa_password=Strong!Passw0rd"\r\n\t],\r\n\t"HostConfig": {\r\n\t\t"Mounts": [{\r\n\t\t\t"Target": "C:\\\\mssql",\r\n\t\t\t"Source": "sqlVolume",\r\n\t\t\t"Type": "volume"\r\n\t\t}],\r\n\t\t"PortBindings": {\r\n\t\t\t"1433/tcp": [{\r\n\t\t\t\t"HostPort": "1401"\r\n\t\t\t}]\r\n\t\t}\r\n\t}\r\n}"
       ```
 
    * Linux:
@@ -118,7 +117,7 @@ Alapértelmezés szerint ez a szakasz a kód tárolót hoz létre az SQL Server 
 8. A peremhálózati futásidejű elindításához válassza ki a **peremhálózati: Start peremhálózati** a parancs paletta.
 
 >[!TIP]
->Minden alkalommal, SQL Server tárolókat hozhat létre, éles környezetben, akkor [alapértelmezett rendszergazdai jelszavának módosítása](https://docs.microsoft.com/sql/linux/quickstart-install-connect-docker.md#change-the-sa-password).
+>Minden alkalommal, SQL Server tárolókat hozhat létre, éles környezetben, akkor [alapértelmezett rendszergazdai jelszavának módosítása](https://docs.microsoft.com/sql/linux/quickstart-install-connect-docker#change-the-sa-password).
 
 ## <a name="create-the-sql-database"></a>Az SQL-adatbázis létrehozása
 
@@ -132,7 +131,7 @@ A parancssori eszköz csatlakozni az adatbázishoz:
    ```
 
 * Linux    
-   ```cmd
+   ```bash
    Docker exec -it sql 'bash'
    ```
 
@@ -144,7 +143,7 @@ Nyissa meg az SQL-parancs eszköz:
    ```
 
 * Linux
-   ```cmd
+   ```bash
    /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P 'Strong!Passw0rd'
    ```
 
@@ -189,7 +188,7 @@ IoT peremhálózati automatikusan létrehozza a híd (Linux) vagy a NAT (Windows
 
 * Linux
 
-   ```cmd
+   ```bash
    sudo docker network inspect azure-iot-edge
    ```
 
@@ -309,7 +308,7 @@ A parancssori eszköz csatlakozni az adatbázishoz:
    ```
 
 * Linux    
-   ```cmd
+   ```bash
    Docker exec -it sql 'bash'
    ```
 
@@ -321,7 +320,7 @@ Nyissa meg az SQL-parancs eszköz:
    ```
 
 * Linux
-   ```cmd
+   ```bash
    /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P 'Strong!Passw0rd'
    ```
 

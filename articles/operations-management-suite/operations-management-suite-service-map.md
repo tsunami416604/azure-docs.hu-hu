@@ -1,6 +1,6 @@
 ---
-title: "A Service Map megoldás használata az Operations Management Suite |} Microsoft Docs"
-description: "Szolgáltatástérkép egy Operations Management Suite megoldás, amely automatikusan észleli a Windows és Linux rendszerek alkalmazás-összetevők, és leképezi a szolgáltatások közötti kommunikáció. Ez a cikk a Service Map telepítése a környezetben, és használja azt a különféle forgatókönyvekhez, amik részletesen."
+title: "Szolgáltatástérkép megoldást használni az Azure-ban |} Microsoft Docs"
+description: "A Service Map az Azure egyik megoldása, amely automatikusan felderíti az alkalmazás-összetevőket Windows és Linux rendszereken, és feltérképezi a szolgáltatások közötti kommunikációt. Ez a cikk a Service Map telepítése a környezetben, és használja azt a különféle forgatókönyvekhez, amik részletesen."
 services: operations-management-suite
 documentationcenter: 
 author: daveirwin1
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/22/2016
 ms.author: daseidma;bwren;dairwin
-ms.openlocfilehash: 993dff7657a73803ca21677e19b08946fb89bfa2
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.openlocfilehash: 84a43a4f04d7cd89d0d968acb436d196353eb81d
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 02/21/2018
 ---
-# <a name="use-the-service-map-solution-in-operations-management-suite"></a>Az Operations Management Suite a Szolgáltatástérkép megoldás használja
+# <a name="using-service-map-solution-in-azure"></a>Szolgáltatástérkép megoldást használni az Azure-ban
 A Szolgáltatástérkép automatikusan felderíti az alkalmazás-összetevőket Windows és Linux rendszereken, és feltérképezi a szolgáltatások közötti kommunikációt. Szolgáltatástérkép, használatával megtekintheti a kiszolgálók, amelyek Ön szerint egyik módja: összekapcsolt rendszerekhez, hogy a kritikus szolgáltatásokhoz. Szolgáltatástérkép jeleníti meg a kiszolgálók, a folyamatok közötti kapcsolatokat, és portok között bármely TCP-csatlakoztatott architektúra, a konfiguráció nem szükséges másik ügynököt telepíteni.
 
-Ez a cikk ismerteti a Szolgáltatástérkép használatával részleteit. Szolgáltatástérkép és bevezetési ügynökök konfigurálásával kapcsolatos további információkért lásd: [Operations Management Suite megoldás konfigurálása a Service Map](operations-management-suite-service-map-configure.md).
+Ez a cikk ismerteti a Szolgáltatástérkép használatával részleteit. Szolgáltatástérkép és bevezetési ügynökök konfigurálásával kapcsolatos további információkért lásd: [konfigurálása a Service Map megoldás az Azure-ban](operations-management-suite-service-map-configure.md).
 
 
 ## <a name="use-cases-make-your-it-processes-dependency-aware"></a>Eseteinek: Ellenőrizze az informatikai feldolgozza a fürttámogató függőség
@@ -32,7 +32,7 @@ Ez a cikk ismerteti a Szolgáltatástérkép használatával részleteit. Szolg�
 Szolgáltatástérkép függőségek közös hivatkozás térképet automatikusan létrehozza a kiszolgálón, a folyamatok és a harmadik féltől származó szolgáltatással. Észleli, és hozzárendeli az összes TCP-függőség, jelzés nélküli kapcsolatok, a távoli külső rendszerek függ, és a hagyományos sötét területet a hálózaton, például az Active Directory függőségeket azonosító. Szolgáltatástérkép deríti fel, amely a felügyeleti rendszer létesíteni, hibás hálózati kapcsolatok gondoskodik a potenciális server hibás konfigurációja, a szolgáltatáskimaradás és a hálózati problémák azonosításához.
 
 ### <a name="incident-management"></a>Incidenskezelés
-Szolgáltatástérkép segít, hogy bemutatja, hogyan kapcsolódnak a rendszerek, és egymást érintő probléma elkülönítési a munka bizonytalanságát megszüntetéséhez. Mellett azonosítása sikertelen kapcsolatok, ennek segítségével azonosíthatja a helytelenül konfigurált terheléselosztók, kritikus szolgáltatások meglepő vagy túlzott terhelése, és ügyfelek, például a fejlesztői gépek beszélgetne éles rendszerek esetén. a támadó. Integrált munkafolyamatokkal rendelkező Operations Management Suite módosítása nyomon követése, azt is láthatja, hogy a change esemény egy háttér-gépen, vagy szolgáltatás ismerteti az alapvető ok egy incidens.
+Szolgáltatástérkép segít, hogy bemutatja, hogyan kapcsolódnak a rendszerek, és egymást érintő probléma elkülönítési a munka bizonytalanságát megszüntetéséhez. Mellett azonosítása sikertelen kapcsolatok, ennek segítségével azonosíthatja a helytelenül konfigurált terheléselosztók, kritikus szolgáltatások meglepő vagy túlzott terhelése, és ügyfelek, például a fejlesztői gépek beszélgetne éles rendszerek esetén. a támadó. A módosítása követést integrált munkafolyamatok használatával azt is láthatja, hogy a change esemény egy háttér-gépen, vagy szolgáltatás ismerteti az alapvető ok egy incidens.
 
 ### <a name="migration-assurance"></a>Áttelepítési megbízhatósági
 Szolgáltatástérkép használatával hatékonyan megtervezése programot, egyre gyorsabban jelennek meg, és a segítségével győződjön meg arról, hogy semmi sem hátrahagyott és jelzés nélküli nem kiesések Azure áttelepítések ellenőrzése. Minden egymástól kölcsönösen függnek, áttelepítése együtt, mérje fel a Rendszerkonfiguráció és a kapacitás, és adja meg, hogy a futó rendszer van még kiszolgáló felhasználók, vagy egy jelölt leszerelése áttelepítési helyett a rendszer felderíthetők. A lépés befejezése után, akkor is ellenőrizhesse ügyfél terhelés és identitás ellenőrzése, hogy a vizsgálati rendszerek és az ügyfelek csatlakoznak. Ha az alhálózat tervezési és a tűzfal-meghatározások problémák vannak, a Service Map maps sikertelen kapcsolatok mutasson, a kapcsolatot igénylő rendszerek.
@@ -41,7 +41,7 @@ Szolgáltatástérkép használatával hatékonyan megtervezése programot, egyr
 Ha a használja az Azure Site Recovery, és kell meghatározása a helyreállítási folyamata az alkalmazás-környezethez, a Service Map súgó automatikusan láthatja, hogyan rendszerek támaszkodnak egymástól annak érdekében, hogy a helyreállítási terv nem megbízható. Egy kritikus fontosságú kiszolgáló vagy csoport kiválasztása, és tekintse meg az ügyfeleknek, azonosíthatja, mely előtér-rendszerek helyreállítása után a kiszolgáló visszaállítása, és elérhető. Ezzel szemben kritikus fontosságú kiszolgálók háttér-függőségek megtekintésével azonosíthatja, mely rendszerek helyreállítása előtt a rendszer visszaállítja a fókusz rendszerek.
 
 ### <a name="patch-management"></a>A javítások
-Szolgáltatástérkép javítja a használatára az Operations Management Suite rendszer frissítések értékelését jelenít meg, amelyek egyéb csoportok és a kiszolgálók a szolgáltatástól függenek, így akkor is értesítést küldhet nekik előre le a rendszer a javítás végrehajtása előtt. Szolgáltatástérkép is javítja a javítás-kezelés az Operations Management Suite azáltal, hogy bemutatja, hogy a szolgáltatások elérhető és megfelelően csatlakoztatott után lett, és újraindul.
+Szolgáltatástérkép Ön miként használja a rendszer frissítés felmérése fokozza a jelenít meg, amelyek egyéb csoportok és a kiszolgálók a szolgáltatástól függenek, így akkor is értesítést küldhet nekik előre le a rendszer a javítás végrehajtása előtt. Szolgáltatástérkép is javítja a javítások azáltal, hogy bemutatja, hogy a szolgáltatások elérhető és megfelelően csatlakoztatott után lett, és újraindul.
 
 
 ## <a name="mapping-overview"></a>Leképezési áttekintése
@@ -54,7 +54,7 @@ Gépek bővíthetők a leképezés a futó megjelenítése a kijelölt időtarto
 Alapértelmezés szerint a Szolgáltatástérkép maps megjelenítése a függőségi adatokat az elmúlt 30 percben. Bal felső idő vezérlők használatával lekérdezheti a maps korábbi idő porttartományok akár egy óráig hogyan függőségek kikeresi az elmúlt (például incidens vagy előtt változott meg valami) megjelenítéséhez. Szolgáltatástérkép tárolja a fizetős munkaterületek 30 napig, és a munkaterületek 7 napban.
 
 ## <a name="status-badges-and-border-coloring"></a>Állapot jelvények és szegély színezés
-A térkép kiszolgálónként alján lehet a kiszolgáló állapotinformációról igényinek állapot jelvények listáját. A jelvények jelzi, hogy a kiszolgáló, az Operations Management Suite megoldás Integrációk egyikéből néhány információt. Egy jelvény kattintva viszi közvetlenül a jobb oldali állapot részleteit. A jelenleg elérhető állapot jelvények tartalmazza a riasztások, a ügyfélszolgálatához, a módosítások, a biztonsági és a frissítések.
+A térkép kiszolgálónként alján lehet a kiszolgáló állapotinformációról igényinek állapot jelvények listáját. A jelvények jelzi, hogy a kiszolgáló, a megoldás Integrációk egyikéből néhány információt. Egy jelvény kattintva viszi közvetlenül a jobb oldali állapot részleteit. A jelenleg elérhető állapot jelvények tartalmazza a riasztások, a ügyfélszolgálatához, a módosítások, a biztonsági és a frissítések.
 
 Attól függően, hogy az állapot jelvények súlyossága gép csomópont szegélyek színes piros (kritikus), sárga (figyelmeztetés), vagy kék (tájékoztató). A szín a állapot jelvények bármelyikét legsúlyosabb károkat okozó állapotát jelöli. Szürke szegélyt megadni a csomópont, amelynek nincs Állapotjelzők jelzi.
 
@@ -130,15 +130,15 @@ Bizonyos folyamatok szolgálnak ki adott szerepkörök gépek: webalkalmazás-ki
 | ![Alkalmazáskiszolgáló](media/oms-service-map/role-application-server.png) | Alkalmazáskiszolgáló |
 | ![Adatbázis-kiszolgáló](media/oms-service-map/role-database.png) | Adatbázis-kiszolgáló |
 | ![LDAP-kiszolgáló](media/oms-service-map/role-ldap.png) | LDAP-kiszolgáló |
-| ![SMB-kiszolgálón](media/oms-service-map/role-smb.png) | SMB-kiszolgálón |
+| ![SMB server](media/oms-service-map/role-smb.png) | SMB server |
 
 ![Szerepkör ikon](media/oms-service-map/role-icons.png)
 
 
-## <a name="failed-connections"></a>Nem sikerült kapcsolatok
+## <a name="failed-connections"></a>Sikertelen kapcsolatok
 Nem sikerült kapcsolatok együtt jelennek meg a Service Map maps folyamatok és a számítógépek, piros szaggatott vonal jelzi, hogy egy folyamat vagy port eléréséhez ügyfélrendszer meghiúsul. Hibás kapcsolatok minden rendszer a Service Map telepített ügynökkel küld jelentést, hogy a rendszer esetén a sikertelen kapcsolódás kísérlet azt. Szolgáltatástérkép ezt a folyamatot nem sikerült kapcsolatot létesíteni a TCP-szoftvercsatornák megfigyelésével méri. Ez a hiba eredhet tűzfal, az ügyfél vagy kiszolgáló vagy a távoli szolgáltatás nem volt elérhető helytelen beállítása.
 
-![Nem sikerült kapcsolatok](media/oms-service-map/failed-connections.png)
+![Sikertelen kapcsolatok](media/oms-service-map/failed-connections.png)
 
 Hibás kapcsolatok elősegítheti a hibaelhárítást, áttelepítési érvényesítési, biztonsági elemzés és a teljes architectural understanding ismertetése. Nem sikerült kapcsolatok néha ártalmatlan, de gyakran pontok közvetlenül a problémát, például egy feladatátvételi környezetet hirtelen kiderül, hogy nem érhető el, vagy két alkalmazásrétegek nem képes kommunikálni a felhőben az áttelepítés után.
 
@@ -159,7 +159,7 @@ Kiszolgálóport csoportok jelölőnégyzetéből, amelyek megfelelnek a kiszolg
 ## <a name="context-menu"></a>Helyi menü
 A három ponttal (…) a lap tetején kattintson jobb bármely kiszolgáló jeleníti meg, hogy a kiszolgáló a helyi menü.
 
-![Nem sikerült kapcsolatok](media/oms-service-map/context-menu.png)
+![Sikertelen kapcsolatok](media/oms-service-map/context-menu.png)
 
 ### <a name="load-server-map"></a>Betöltési server térkép
 Kattintson a **terhelés Server térkép** új leképezés a kijelölt kiszolgálón, az új fókusz gép viszi.
@@ -168,12 +168,12 @@ Kattintson a **terhelés Server térkép** új leképezés a kijelölt kiszolgá
 Kattintson a **megjelenítése Self-Links** újrarajzolások számában megadva a kiszolgáló csomópontjára, így azokat az önhivatkozások, amelyek kezdődnek és zárulnak folyamatok belül a kiszolgáló TCP-kapcsolatok. Ha erre az önhivatkozások jelennek meg, a menü parancs változások **elrejtése Self-Links**, így kikapcsolhatja azokat.
 
 ## <a name="computer-summary"></a>A számítógép összefoglaló
-A **gép összegzés** ablaktáblán egy kiszolgáló operációs rendszer, függőség számát és az Operations Management Suite megoldásait adatait áttekintését tartalmazza. Ezen adatok közé tartoznak a teljesítménymutatók, szolgáltatásjegyek ügyfélszolgálati, változások követését, biztonsági és frissítéseket.
+A **gép összegzés** ablaktáblán egy kiszolgáló operációs rendszer, függőség száma és egyéb megoldások adatait áttekintését tartalmazza. Ezen adatok közé tartoznak a teljesítménymutatók, szolgáltatásjegyek ügyfélszolgálati, változások követését, biztonsági és frissítéseket.
 
 ![Gép összefoglalás ablaktábla](media/oms-service-map/machine-summary.png)
 
 ## <a name="computer-and-process-properties"></a>Számítógép és a folyamat tulajdonságai
-Navigálás a Szolgáltatástérkép térkép, kiválaszthatja a gépek és a folyamatok ahhoz, hogy azok tulajdonságaival kapcsolatos további környezetben. Gépek DNS-neve, IPv4 címek, CPU és memória kapacitás, virtuális gép típusa, operációs rendszer és verzió, a időt és az Operations Management Suite és a Service Map ügynökök azonosítók újraindítás utolsó kapcsolatos adatok megadása.
+Navigálás a Szolgáltatástérkép térkép, kiválaszthatja a gépek és a folyamatok ahhoz, hogy azok tulajdonságaival kapcsolatos további környezetben. Gépek DNS-neve, IPv4 címek, CPU és memória kapacitás, virtuális gép típusa, operációs rendszer és verzió, a időt és az OMS Szolgáltatáshoz és a Service Map ügynökök azonosítók újraindítás utolsó kapcsolatos adatok megadása.
 
 ![Számítógép-tulajdonságok panelen](media/oms-service-map/machine-properties.png)
 
@@ -185,8 +185,8 @@ A **folyamat összegzése** ablaktábla a folyamat kapcsolatban, beleértve anna
 
 ![Folyamat összefoglalás ablaktábla](media/oms-service-map/process-summary.png)
 
-## <a name="operations-management-suite-alerts-integration"></a>Az Operations Management Suite riasztások integráció
-Szolgáltatástérkép integrálódik az Operations Management Suite riasztások a kiválasztott időtartomány égetett riasztások a kiválasztott kiszolgálóhoz tartozó megjeleníthető. A kiszolgáló megjelenít egy ikont, ha nincsenek az aktuális riasztásokat, és a **gép riasztások** ablaktábla listázza a riasztásokat.
+## <a name="alerts-integration"></a>Riasztások integráció
+Szolgáltatástérkép integrálható a Log Analyticshez a kijelölt időtartományban égetett riasztások a kiválasztott kiszolgálóhoz tartozó megjeleníthető riasztás. A kiszolgáló megjelenít egy ikont, ha nincsenek az aktuális riasztásokat, és a **gép riasztások** ablaktábla listázza a riasztásokat.
 
 ![Gép riasztások panelen](media/oms-service-map/machine-alerts.png)
 
@@ -197,13 +197,13 @@ Ahhoz, hogy a Service Map vonatkozó értesítések megjelenítése, hozzon lét
 ![Riasztások konfigurálása](media/oms-service-map/alert-configuration.png)
 
 
-## <a name="operations-management-suite-log-events-integration"></a>Operations Management Suite naplózási események integráció
+## <a name="log-events-integration"></a>Naplózási események integráció
 Szolgáltatástérkép integrálható a naplófájl-keresési megjelenítése a kiválasztott kiszolgálóhoz tartozó összes elérhető napló események száma a kijelölt időtartományban. Esemény száma naplófájl-keresési ugorhat, és az egyéni naplózási eseményeket a listában bármely sorára kattintson.
 
 ![Gép naplóeseményeket ablaktábla](media/oms-service-map/log-events.png)
 
-## <a name="operations-management-suite-service-desk-integration"></a>Az Operations Management Suite szolgáltatás ügyfélszolgálati integráció
-Szolgáltatástérkép integráció az informatikai szolgáltatás Management-összekötő akkor automatikus, ha a két megoldás engedélyezve és konfigurálva az Operations Management Suite-munkaterülettel. Az integráció a Szolgáltatástérkép lett címkézve "Ügyfélszolgálatához." További információkért lásd: [ITSM munkaelemek IT Service Management-összekötő segítségével központilag kezelheti](https://docs.microsoft.com/azure/log-analytics/log-analytics-itsmc-overview).
+## <a name="service-desk-integration"></a>Ügyfélszolgálat integráció
+Szolgáltatástérkép integráció az informatikai szolgáltatás Management-összekötő akkor automatikus, ha a két megoldás engedélyezve és konfigurálva a Naplóelemzési munkaterület. Az integráció a Szolgáltatástérkép lett címkézve "Ügyfélszolgálatához." További információkért lásd: [ITSM munkaelemek IT Service Management-összekötő segítségével központilag kezelheti](https://docs.microsoft.com/azure/log-analytics/log-analytics-itsmc-overview).
 
 A **gép ügyfélszolgálatához** ablaktábla listázza a kijelölt időtartományban a kiválasztott kiszolgálóhoz tartozó összes informatikai szolgáltatások kezelésében eseményt. A kiszolgáló megjelenít egy ikont, ha az aktuális elem és a gép ügyfélszolgálatához ablaktábla listázza azokat.
 
@@ -214,8 +214,8 @@ A cikk a csatlakoztatott ITSM megoldásban megnyitásához kattintson **nézet m
 A naplófájl-keresési elem részleteinek megtekintéséhez kattintson **jelenjen meg a keresési napló**.
 
 
-## <a name="operations-management-suite-change-tracking-integration"></a>Az Operations Management Suite változások követése integráció
-Szolgáltatástérkép integráció a változások követése akkor automatikus, ha a két megoldás engedélyezve és konfigurálva az Operations Management Suite-munkaterülettel.
+## <a name="change-tracking-integration"></a>Nyomkövetési integrációs módosítása
+Szolgáltatástérkép integráció a változások követése akkor automatikus, ha a két megoldás engedélyezve és konfigurálva Naplóelemzési munkaterületet.
 
 A **gép változások követése** ablaktábla listázza az összes módosításokat, a legutóbbi első, valamint egy hivatkozást a naplóban keresse meg a további részletek lebontva.
 
@@ -226,7 +226,7 @@ Az alábbi képen, amelyeket konfigurációváltozás esemény részletes nézet
 ![Konfigurációváltozás esemény](media/oms-service-map/configuration-change-event.png)
 
 
-## <a name="operations-management-suite-performance-integration"></a>Az Operations Management Suite teljesítmény-integráció
+## <a name="performance-integration"></a>Teljesítmény-integráció
 A **gépek teljesítménye** ablaktábla megjeleníti a kiválasztott kiszolgálóhoz tartozó szabványos teljesítménymutatók. A mérőszámok közé tartozik a CPU kihasználtsága, memória-felhasználás, küldött és fogadott hálózati bájtok és a legfelső szintű folyamatok listáját által küldött és fogadott hálózati bájtok.
 
 ![Gép teljesítmény ablaktábla](media/oms-service-map/machine-performance.png)
@@ -245,20 +245,20 @@ Linux:
 - A hálózati Adapter(*)\\küldött bájtok/s
 - A hálózati Adapter(*)\\fogadott bájtok/s
 
-Ahhoz, hogy a hálózati teljesítményadatokat, kell is engedélyezte az Operations Management Suite átviteli adatok 2.0 megoldás.
+Ahhoz, hogy a hálózati teljesítményadatokat, kell is engedélyezve van az átvitel közbeni adatok 2.0-megoldás a munkaterületen.
  
-## <a name="operations-management-suite-security-integration"></a>Az Operations Management Suite biztonsági integráció
-Biztonsági és a naplózási szolgáltatás térkép integrációját akkor automatikus, ha a két megoldás engedélyezve és konfigurálva az Operations Management Suite-munkaterülettel.
+## <a name="security-integration"></a>Biztonsági integráció
+Biztonsági és a naplózási szolgáltatás térkép integrációját akkor automatikus, ha a két megoldás engedélyezve és konfigurálva a Naplóelemzési munkaterület.
 
-A **gép biztonsági** ablaktábla megjeleníti azokat az adatokat az Operations Management Suite biztonsági és hitelesítési megoldás a kijelölt kiszolgálóra vonatkozóan. A panelen a kiszolgáló függőben lévő biztonsági problémák összegzését a kijelölt időtartományban sorolja fel. Kattintson bármelyik a biztonsági problémák csukja le a velük kapcsolatos részletek napló keresése.
+A **gép biztonsági** ablaktábla megjeleníti azokat a biztonsági és hitelesítési megoldás a kiválasztott kiszolgálóhoz tartozó adatokat. A panelen a kiszolgáló függőben lévő biztonsági problémák összegzését a kijelölt időtartományban sorolja fel. Kattintson bármelyik a biztonsági problémák csukja le a velük kapcsolatos részletek napló keresése.
 
 ![Számítógép biztonsági ablaktábla](media/oms-service-map/machine-security.png)
 
 
-## <a name="operations-management-suite-updates-integration"></a>Az Operations Management Suite frissítések integráció
-Szolgáltatástérkép integráció a frissítéskezelés akkor automatikus, ha a két megoldás engedélyezve és konfigurálva az Operations Management Suite-munkaterülettel.
+## <a name="updates-integration"></a>Frissítések integráció
+Szolgáltatástérkép integráció a frissítéskezelés akkor automatikus, ha a két megoldás engedélyezve és konfigurálva a napló Anlaytics munkaterületen.
 
-A **Machine frissítések** ablaktáblán jelennek meg az Operations Management Suite frissítés felügyeleti megoldás a kiválasztott kiszolgálóhoz tartozó adatokat. A panelen a kiszolgáló a hiányzó frissítésekkel összegzését a kijelölt időtartományban sorolja fel.
+A **Machine frissítések** ablaktáblán megjelennek azok a frissítés-kezelési megoldás a kiválasztott kiszolgálóhoz tartozó adatokat. A panelen a kiszolgáló a hiányzó frissítésekkel összegzését a kijelölt időtartományban sorolja fel.
 
 ![Gép változások követése ablaktábla](media/oms-service-map/machine-updates.png)
 
@@ -272,12 +272,12 @@ Külön rekordot minden egyedi számítógép és a folyamat mellett a rekordoka
 
 Nincsenek egyedi folyamatok és -számítógépek azonosításához használható belsőleg generált tulajdonságokat:
 
-- Számítógép: Használata ResourceId vagy ResourceName_s a számítógépet az Operations Management Suite-munkaterülethez belül egyedi azonosításához.
-- Folyamat: Használata ResourceId egy folyamatot, az Operations Management Suite-munkaterülethez belül egyedi azonosításához. ResourceName_s egyedi, a gép, amelyen a folyamat fut (MachineResourceName_s) keretén belül 
+- Számítógép: Használata ResourceId vagy ResourceName_s a számítógépet a Naplóelemzési munkaterület belül egyedi azonosításához.
+- Folyamat: Használata ResourceId a Naplóelemzési munkaterület belül a folyamat egyedi azonosításához. ResourceName_s egyedi, a gép, amelyen a folyamat fut (MachineResourceName_s) keretén belül 
 
 Több rekord is tartozhat egy adott folyamat és a megadott időtartomány számítógépe, mert a lekérdezések visszaadhatják egynél több rekordot ugyanazon a számítógépen vagy folyamat. Csak a legutóbbi rekord egészítse "|} a deduplikáció ResourceId"a lekérdezéshez.
 
-### <a name="servicemapcomputercl-records"></a>ServiceMapComputer_CL rekordok
+### <a name="servicemapcomputercl-records"></a>ServiceMapComputer_CL records
 Típusú rekordok *ServiceMapComputer_CL* van a Service Map ügynökkel kiszolgálók Hardverleltár-adatait. Ezeket a rekordokat az alábbi táblázatban a jellemzőkkel rendelkezik:
 
 | Tulajdonság | Leírás |
@@ -304,7 +304,7 @@ Típusú rekordok *ServiceMapComputer_CL* van a Service Map ügynökkel kiszolg�
 
 
 
-### <a name="servicemapprocesscl-type-records"></a>ServiceMapProcess_CL típusú rekordok
+### <a name="servicemapprocesscl-type-records"></a>ServiceMapProcess_CL Type records
 Típusú rekordok *ServiceMapProcess_CL* rendelkezik TCP kapcsolódó eljárások a Hardverleltár-adatait a Szolgáltatástérkép ügynökök kiszolgálókon. Ezeket a rekordokat az alábbi táblázatban a jellemzőkkel rendelkezik:
 
 | Tulajdonság | Leírás |
@@ -354,10 +354,10 @@ Keresés helye (ServiceMapComputer_CL) "10.229.243.232" |} összefoglalója arg_
 ServiceMapProcess_CL |} Ha MachineResourceName_s == "m-559dbcd8-3130-454d-8d1d-f624e57961bc" |} összefoglalója arg_max(TimeGenerated, *) ResourceId által
 
 ### <a name="list-all-computers-running-sql"></a>Megjeleníti az SQL futtató összes számítógépet
-ServiceMapComputer_CL |} Ha a ResourceName_s (((ServiceMapProcess_CL) a keresési "\*sql\*" |} különböző MachineResourceName_s)) |} különböző ComputerName_s
+ServiceMapComputer_CL | where ResourceName_s in ((search in (ServiceMapProcess_CL) "\*sql\*" | distinct MachineResourceName_s)) | distinct ComputerName_s
 
 ### <a name="list-all-unique-product-versions-of-curl-in-my-datacenter"></a>A saját adatközpont curl összes egyedi termék verziójának felsorolása
-ServiceMapProcess_CL |} Ha ExecutableName_s == "curl" |} különböző ProductVersion_s
+ServiceMapProcess_CL | where ExecutableName_s == "curl" | distinct ProductVersion_s
 
 ### <a name="create-a-computer-group-of-all-computers-running-centos"></a>Hozzon létre egy számítógépcsoportot CentOS rendszerrel működő számítógépek
 ServiceMapComputer_CL |} ahol "CentOS" OperatingSystemFullName_s contains_cs |} különböző ComputerName_s

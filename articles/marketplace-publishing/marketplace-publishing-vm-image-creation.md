@@ -14,11 +14,11 @@ ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 01/05/2017
 ms.author: hascipio; v-divte
-ms.openlocfilehash: 8915abbb27184c2f0b47747e422e5a4fa7bc1cbb
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 0379592f1c4f6e9d3f6fd2127b8e34e99a8b0176
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="guide-to-create-a-virtual-machine-image-for-the-azure-marketplace"></a>Útmutató a virtuálisgép-lemezkép létrehozása az Azure piactéren
 Ez a cikk **2. lépés**, végigvezeti azokon a virtuális merevlemezeket (VHD), ha telepíti az Azure piactéren előkészítése. A virtuális merevlemezek a Termékváltozat alapját. A folyamat eltér attól függően, hogy meg van adva egy Linux- vagy Windows-alapú Termékváltozat. Ez a cikk mindkét forgatókönyvet ismertet. Ez a folyamat végrehajtható párhuzamosan [fióklétrehozás és a regisztrációs][link-acct-creation].
@@ -127,7 +127,7 @@ Határozottan javasoljuk, hogy a VHD-t, a felhőben fejleszt Remote Desktop Prot
 
 **Csatlakozás RDP segítségével a [Microsoft Azure-portálon][link-azure-portal]**
 
-1. Válassza ki **Tallózás** > **virtuális gépek**.
+1. Válassza ki **minden szolgáltatás** > **virtuális gépek**.
 2. A virtuális gépek panelje megnyílik. Győződjön meg arról, hogy szeretné csatlakoztatni a virtuális gép fut, és állítsa be azt a központilag telepített virtuális gépek listájáról.
 3. Ekkor megnyílik egy panel, amely leírja a kiválasztott virtuális Géphez. A lap tetején kattintson **Connect**.
 4. Adja meg a felhasználónevet és a kiépítés során megadott jelszót kéri.
@@ -136,7 +136,7 @@ Határozottan javasoljuk, hogy a VHD-t, a felhőben fejleszt Remote Desktop Prot
 
 A helyi számítógép a távoli asztali fájl letöltéséhez használjon a [Get-AzureRemoteDesktopFile parancsmag][link-technet-2]. Ez a parancsmag használatához szükséges tudja a nevét, a szolgáltatás és a virtuális gép neve. Ha a virtuális gép hozott létre a [Microsoft Azure-portálon][link-azure-portal], ezeket az információkat a virtuális gép tulajdonságok található:
 
-1. Válassza a Microsoft Azure portál **Tallózás** > **virtuális gépek**.
+1. Válassza a Microsoft Azure portál **minden szolgáltatás** > **virtuális gépek**.
 2. A virtuális gépek panelje megnyílik. Válassza ki a központilag telepített virtuális gép.
 3. Ekkor megnyílik egy panel, amely leírja a kiválasztott virtuális Géphez.
 4. Kattintson a **Tulajdonságok** elemre.
@@ -214,7 +214,6 @@ A virtuális gép egy felhasználó a Virtuálisgép-lemezkép központi telepí
 
 1. Ugrás a **új** > **számítási** > **virtuális gép** > **gyűjteményből**.
 
-    ![rajz][img-manage-vm-new]
 2. Nyissa meg a **képek**, majd válassza ki a Virtuálisgép-lemezkép, amelyből a virtuális gép üzembe helyezése:
 
    1. Figyelmesen elolvassa az melyik képfájlját választania, mert a **képek** operációsrendszer-lemezképek és a Virtuálisgép-rendszerképek listák megtekintése.
@@ -407,15 +406,15 @@ SAS URL-cím használatával a Microsoft Azure Tártallózó létrehozásának l
 
     Generált SAS URL-cím tároló szint és most létre kell azt hozzáadása a virtuális merevlemez nevét.
 
-    Tároló szintű SAS URL-címének formátuma:`https://testrg009.blob.core.windows.net/vhds?st=2016-04-22T23%3A05%3A00Z&se=2016-04-30T23%3A05%3A00Z&sp=rl&sv=2015-04-05&sr=c&sig=J3twCQZv4L4EurvugRW2klE2l2EFB9XyM6K9FkuVB58%3D`
+    Tároló szintű SAS URL-címének formátuma: `https://testrg009.blob.core.windows.net/vhds?st=2016-04-22T23%3A05%3A00Z&se=2016-04-30T23%3A05%3A00Z&sp=rl&sv=2015-04-05&sr=c&sig=J3twCQZv4L4EurvugRW2klE2l2EFB9XyM6K9FkuVB58%3D`
 
-    Helyezze be a virtuális merevlemez neve után következő SAS URL-címben a tároló neve`https://testrg009.blob.core.windows.net/vhds/<VHD NAME>?st=2016-04-22T23%3A05%3A00Z&se=2016-04-30T23%3A05%3A00Z&sp=rl&sv=2015-04-05&sr=c&sig=J3twCQZv4L4EurvugRW2klE2l2EFB9XyM6K9FkuVB58%3D`
+    Helyezze be a virtuális merevlemez neve után következő SAS URL-címben a tároló neve `https://testrg009.blob.core.windows.net/vhds/<VHD NAME>?st=2016-04-22T23%3A05%3A00Z&se=2016-04-30T23%3A05%3A00Z&sp=rl&sv=2015-04-05&sr=c&sig=J3twCQZv4L4EurvugRW2klE2l2EFB9XyM6K9FkuVB58%3D`
 
     Példa:
 
     ![rajz](media/marketplace-publishing-vm-image-creation/img5.2_15.png)
 
-    TestRGVM201631920152.vhd a VHD neveként, akkor VHD SAS URL-t`https://testrg009.blob.core.windows.net/vhds/TestRGVM201631920152.vhd?st=2016-04-22T23%3A05%3A00Z&se=2016-04-30T23%3A05%3A00Z&sp=rl&sv=2015-04-05&sr=c&sig=J3twCQZv4L4EurvugRW2klE2l2EFB9XyM6K9FkuVB58%3D`
+    TestRGVM201631920152.vhd a VHD neveként, akkor VHD SAS URL-t `https://testrg009.blob.core.windows.net/vhds/TestRGVM201631920152.vhd?st=2016-04-22T23%3A05%3A00Z&se=2016-04-30T23%3A05%3A00Z&sp=rl&sv=2015-04-05&sr=c&sig=J3twCQZv4L4EurvugRW2klE2l2EFB9XyM6K9FkuVB58%3D`
 
     - Győződjön meg arról, hogy a lemezkép-fájl neve és **".vhd"** URI szerepelnek.
     - Az aláírás középső, győződjön meg arról, hogy **"sp = rl"** jelenik meg. Ez azt jelenti, hogy olvasási és lista hozzáférés sikeresen biztosítja-e.
@@ -471,11 +470,11 @@ Azure parancssori felület használatával SAS URL-cím létrehozásának lépé
 
     `https://st20151.blob.core.windows.net/vhds?st=2016-10-25T07%3A00%3A00Z&se=2016-11-02T07%3A00%3A00Z&sp=rl&sv=2015-12-11&sr=c&sig=wnEw9RfVKeSmVgqDfsDvC9IHhis4x0fc9Hu%2FW4yvBxk%3D`
 
-7.  Helyezze be a virtuális merevlemez neve után SAS URL-címben a tároló neve alább látható módon`https://st20151.blob.core.windows.net/vhds/<VHDName>?st=2016-10-25T07%3A00%3A00Z&se=2016-11-02T07%3A00%3A00Z&sp=rl&sv=2015-12-11&sr=c&sig=wnEw9RfVKeSmVgqDfsDvC9IHhis4x0fc9Hu%2FW4yvBxk%3D`
+7.  Helyezze be a virtuális merevlemez neve után SAS URL-címben a tároló neve alább látható módon `https://st20151.blob.core.windows.net/vhds/<VHDName>?st=2016-10-25T07%3A00%3A00Z&se=2016-11-02T07%3A00%3A00Z&sp=rl&sv=2015-12-11&sr=c&sig=wnEw9RfVKeSmVgqDfsDvC9IHhis4x0fc9Hu%2FW4yvBxk%3D`
 
     Példa:
 
-    TestRGVM201631920152.vhd a VHD neveként, akkor VHD SAS URL-t
+    TestRGVM201631920152.vhd a VHD neveként, akkor VHD SAS URL-t 
 
     `https://st20151.blob.core.windows.net/vhds/ TestRGVM201631920152.vhd?st=2016-10-25T07%3A00%3A00Z&se=2016-11-02T07%3A00%3A00Z&sp=rl&sv=2015-12-11&sr=c&sig=wnEw9RfVKeSmVgqDfsDvC9IHhis4x0fc9Hu%2FW4yvBxk%3D`
 

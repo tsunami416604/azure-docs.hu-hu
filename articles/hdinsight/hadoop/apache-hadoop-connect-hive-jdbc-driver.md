@@ -14,13 +14,13 @@ ms.devlang: java
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/28/2017
+ms.date: 02/20/2018
 ms.author: larryfr
-ms.openlocfilehash: 7da4a7e0a60fd1e5c78f53b0a8e7ab333c5d2465
-ms.sourcegitcommit: 4bd369fc472dced985239aef736fece42fecfb3b
+ms.openlocfilehash: c56a4ec4d1abea5a862172966697747cbb3d234c
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="query-hive-through-the-jdbc-driver-in-hdinsight"></a>Lekérdezés Hive hdinsight JDBC-illesztőt keresztül
 
@@ -102,9 +102,9 @@ SQuirreL SQL JDBC-ügyfél, amely segítségével távolról ugyanúgy futtathat
 
         3. A csatlakozás után másolja a következő fájlokat a távoli asztali munkamenetből a helyi számítógépre. Nevű helyi könyvtárba helyezze őket `hivedriver`.
 
-            * C:\apps\dist\hive-0.14.0.2.2.9.1-7\lib\hive-JDBC-0.14.0.2.2.9.1-7-Standalone.JAR
-            * C:\apps\dist\hadoop-2.6.0.2.2.9.1-7\share\hadoop\common\hadoop-Common-2.6.0.2.2.9.1-7.JAR
-            * C:\apps\dist\hadoop-2.6.0.2.2.9.1-7\share\hadoop\common\lib\hadoop-auth-2.6.0.2.2.9.1-7.JAR
+            * C:\apps\dist\hive-0.14.0.2.2.9.1-7\lib\hive-jdbc-0.14.0.2.2.9.1-7-standalone.jar
+            * C:\apps\dist\hadoop-2.6.0.2.2.9.1-7\share\hadoop\common\hadoop-common-2.6.0.2.2.9.1-7.jar
+            * C:\apps\dist\hadoop-2.6.0.2.2.9.1-7\share\hadoop\common\lib\hadoop-auth-2.6.0.2.2.9.1-7.jar
 
             > [!NOTE]
             > Lehet, hogy a fürt másik a verziószámok szerepel az elérési útját és fájlnevét.
@@ -122,7 +122,7 @@ SQuirreL SQL JDBC-ügyfél, amely segítségével távolról ugyanúgy futtathat
 4. Illesztőprogram hozzáadása párbeszédpanelen adja meg a következő információkat:
 
     * **Név**: struktúra
-    * **Példa URL-cím**:`jdbc:hive2://localhost:443/default;transportMode=http;ssl=true;httpPath=/hive2`
+    * **Példa URL-cím**: `jdbc:hive2://localhost:443/default;transportMode=http;ssl=true;httpPath=/hive2`
     * **Extra osztály elérési útja**: korábban letöltött a Hozzáadás gombra a jar-fájlok hozzáadása
     * **Osztálynév**: org.apache.hive.jdbc.HiveDriver
 
@@ -140,7 +140,7 @@ SQuirreL SQL JDBC-ügyfél, amely segítségével távolról ugyanúgy futtathat
 
     * **Illesztőprogram**: a legördülő lista segítségével válassza ki a **Hive** illesztőprogram
 
-    * **URL-CÍM**:`jdbc:hive2://CLUSTERNAME.azurehdinsight.net:443/default;transportMode=http;ssl=true;httpPath=/hive2`
+    * **URL-CÍM**: `jdbc:hive2://CLUSTERNAME.azurehdinsight.net:443/default;transportMode=http;ssl=true;httpPath=/hive2`
 
         Cserélje le a **CLUSTERNAME** kifejezést a HDInsight-fürt nevére.
 

@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 12/01/2017
+ms.date: 02/20/2018
 ms.author: larryfr
-ms.openlocfilehash: c21b575e9e055b2dec69bea270012b91df2b662b
-ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
+ms.openlocfilehash: 9f733ee6c193a695dacaf7c390402e12407e198d
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="understand-and-resolve-errors-received-from-webhcat-on-hdinsight"></a>Ismertetés és a HDInsight WebHCat hibák megoldásához
 
@@ -49,8 +49,8 @@ Ha a következő alapértelmezett értékek számát, azt WebHCat teljesítmény
 | Beállítás | Művelet | Alapértelmezett érték |
 | --- | --- | --- |
 | [yarn.Scheduler.Capacity.maximum-alkalmazások][maximum-applications] |Az aktív lehet egyidejű feladatok maximális száma (folyamatban vagy fut) |10,000 |
-| [templeton.Exec.max-procs][max-procs] |Egyidejűleg szolgáltatható kérelmek maximális száma |20 |
-| [mapreduce.jobhistory.max-kor-ms][max-age-ms] |Az, hogy hány napig feladatelőzmények megmaradnak |7 nap |
+| [templeton.exec.max-procs][max-procs] |Egyidejűleg szolgáltatható kérelmek maximális száma |20 |
+| [mapreduce.jobhistory.max-age-ms][max-age-ms] |Az, hogy hány napig feladatelőzmények megmaradnak |7 nap |
 
 ## <a name="too-many-requests"></a>Túl sok a kérelem
 
@@ -86,7 +86,7 @@ Ha a következő alapértelmezett értékek számát, azt WebHCat teljesítmény
 | --- | --- |
 | Belső szemétgyűjtés folyamatban van a WebHCat folyamaton belül |Várjon, amíg a szemétgyűjtő befejeződését, vagy indítsa újra a WebHCat szolgáltatást |
 | Az erőforrás-kezelő szolgáltatás válaszára várakozás időkorlátja lejárt. Ez a hiba akkor fordulhat elő, amikor aktív kérelmek száma a megadott maximális értéket (alapértelmezett érték 10 000) |Várjon, amíg a jelenleg futó feladat befejeződik, vagy növelje az egyidejű feladat korlát módosításával `yarn.scheduler.capacity.maximum-applications`. További információkért lásd: a [módosítása konfigurációs](#modifying-configuration) szakasz. |
-| Minden feladat keresztül beolvasására tett kísérlet a [GET /jobs](https://cwiki.apache.org/confluence/display/Hive/WebHCat+Reference+Jobs) hívás közben `Fields` beállítása`*` |Nem beolvasni a *összes* feladat részletei. Ehelyett használja `jobid` beolvasni csak nagyobb, mint egyes feladatazonosítót a feladat részleteit. Vagy, ne használja`Fields` |
+| Minden feladat keresztül beolvasására tett kísérlet a [GET /jobs](https://cwiki.apache.org/confluence/display/Hive/WebHCat+Reference+Jobs) hívás közben `Fields` beállítása `*` |Nem beolvasni a *összes* feladat részletei. Ehelyett használja `jobid` beolvasni csak nagyobb, mint egyes feladatazonosítót a feladat részleteit. Vagy, ne használja `Fields` |
 | A WebHCat-szolgáltatás nem működik HeadNode feladatátvétel során |Két perc várakozás, majd próbálja megismételni a műveletet |
 | Webhcaten keresztül küldött 500-nál több függőben lévő feladatok |Várjon, amíg jelenleg függő feladatok már befejeződtek több feladat elküldése előtt |
 

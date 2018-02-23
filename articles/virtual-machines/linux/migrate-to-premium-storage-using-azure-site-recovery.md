@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2017
 ms.author: luywang
-ms.openlocfilehash: 5912a395798f2a37ed939b771698282ae594ce8e
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: 5d6eb958169b7bf04e206c861250ffd98670652b
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="migrate-to-premium-storage-by-using-azure-site-recovery"></a>Prémium szintű Storage telepítse át az Azure Site Recovery segítségével
 
@@ -80,7 +80,7 @@ A Site Recovery segítségével Azure IaaS virtuális gépeket áttelepíteni, r
 ### <a name="step-1-create-a-recovery-services-vault"></a>1. lépés: A Recovery Services-tároló létrehozása
 
 1. Nyissa meg az [Azure portált](https://portal.azure.com).
-2. Válassza ki **új** > **felügyeleti** > **biztonsági mentés** és **(OMS) helyreállítási hely**. Választhatja azt is megteheti, **Tallózás** > **Recovery Services-tároló** > **Hozzáadás**. 
+2. Válassza ki **hozzon létre egy erőforrást** > **felügyeleti** > **biztonsági mentés** és **Site Recovery (OMS)**. Választhatja azt is megteheti, **Tallózás** > **Recovery Services-tároló** > **Hozzáadás**. 
 3. Adjon meg egy régiót, amelyben a virtuális gépeket a rendszer replikálja. Ugyanabban a régióban áttelepítéshez válassza ki a régiót, amelyben a forrás virtuális gépeket és a forrás storage-fiókok is. 
 
 ### <a name="step-2-choose-your-protection-goals"></a>2. lépés: Jelölje ki a védelmi célok megválasztása 
@@ -157,7 +157,7 @@ Ellenőrizze, hogy a konfigurációs kiszolgáló sikeresen társítva a replik�
 
    Virtuális gép feladatátadása két ideiglenes lemezek fog rendelkezni: egyet az elsődleges virtuális gép, a másik a virtuális Gépet a helyreállítási régióban kiépítés során létrehozott. Az ideiglenes a(z) replikáció előtt, telepítse a mobilitási szolgáltatást a replikáció engedélyezése előtt. Az ideiglenes lemez kihagyása kapcsolatos további információkért lásd: [lemezek kizárása a replikációból](../../site-recovery/vmware-walkthrough-overview.md).
 
-2. Replikáció engedélyezése az alábbiak szerint:
+2. A replikációt a következők szerint engedélyezheti:
    1. Válassza ki **alkalmazás replikálása** > **forrás**. Replikáció első alkalommal történő engedélyezését, válassza ki a **+ replikálás** a további gépek replikációjának engedélyezése a tárolóban lévő állapottal.
    2. Az 1. lépésben beállítása **forrás** folyamat kiszolgálóként.
    3. A 2. lépésben adja meg a feladatátvételt követően üzembe helyezési modellel, a prémium szintű tárfiók át, egy standard szintű tárfiókot naplókat, és hogy áthelyezze a virtuális hálózat mentéséhez.

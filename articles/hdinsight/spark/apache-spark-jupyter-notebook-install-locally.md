@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: nitinme
-ms.openlocfilehash: 1508faf7a05461de65b7a4c2f68e2ef9bbd7e19d
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.openlocfilehash: 5549c175c280961b09f5996e3387a50dae31222f
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="install-jupyter-notebook-on-your-computer-and-connect-to-apache-spark-on-hdinsight"></a>Jupyter notebook telepítse a számítógépre, és kapcsolódjon az Apache Spark on HDInsight
 
@@ -55,9 +55,9 @@ Jupyter notebookok telepítése előtt telepítenie kell az Python. Python és a
 
 A Spark magic telepítéséhez útmutatást a PySpark és Spark mag, hajtsa végre a szereplő telepítési útmutatást a [sparkmagic dokumentáció](https://github.com/jupyter-incubator/sparkmagic#installation) a Githubon. Az első lépés a Spark magic dokumentációjának arra kéri, hogy a Spark magic telepítése. Cserélje le a következő parancsokat a HDInsight-fürthöz fog csatlakozni verziójától függően, hogy a hivatkozás első lépése. Ezután kövesse a további lépéseket a Spark magic dokumentációjában. Ha a különböző kernelek telepíteni kívánja, 3. lépés a Spark magic telepítési utasításokat szakaszban kell elvégeznie.
 
-* A fürtök v3.4 telepítenie sparkmagic 0.2.3`pip install sparkmagic==0.2.3`
+* A fürtök v3.4 telepítenie sparkmagic 0.2.3 `pip install sparkmagic==0.2.3`
 
-* A fürtök v3.5 és v3.6 telepítse a következő futtatásával sparkmagic 0.11.2`pip install sparkmagic==0.11.2`
+* A fürtök v3.5 és v3.6 telepítse a következő futtatásával sparkmagic 0.11.2 `pip install sparkmagic==0.11.2`
 
 ## <a name="configure-spark-magic-to-connect-to-hdinsight-spark-cluster"></a>Spark magic való kapcsolódáshoz a HDInsight Spark-fürt konfigurálása
 
@@ -150,7 +150,6 @@ Számos oka, hogy miért érdemes Jupyter telepítse a számítógépre, és csa
 * [Spark és BI: Interaktív adatelemzés végrehajtása a Spark on HDInsight használatával, BI-eszközökkel](apache-spark-use-bi-tools.md)
 * [Spark és Machine Learning: A Spark on HDInsight használata az épület-hőmérséklet elemzésére HVAC-adatok alapján](apache-spark-ipython-notebook-machine-learning.md)
 * [Spark és Machine Learning: A Spark on HDInsight használata az élelmiszervizsgálati eredmények előrejelzésére](apache-spark-machine-learning-mllib-ipython.md)
-* [Spark Streaming: A Spark on HDInsight használata valós idejű streamelési alkalmazások összeállítására](apache-spark-eventhub-streaming.md)
 * [A webhelynapló elemzése a Spark on HDInsight használatával](apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="create-and-run-applications"></a>Alkalmazások létrehozása és futtatása

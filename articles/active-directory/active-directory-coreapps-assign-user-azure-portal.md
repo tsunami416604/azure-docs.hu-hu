@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/30/2017
 ms.author: daveba
 ms.reviewer: luleon
-ms.openlocfilehash: 827d5c8669eb54630adbaba0306e73b5de6a7137
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: b65284f799eca956c30db21d5d4171d0495297ea
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="assign-a-user-or-group-to-an-enterprise-app-in-azure-active-directory"></a>Egy felhasználó vagy csoport hozzárendelése egy vállalati alkalmazás Azure Active Directoryban
 Egy felhasználó vagy csoport hozzárendelése egy vállalati alkalmazás, a vállalati alkalmazások kezelésére a megfelelő engedélyekkel kell rendelkeznie, és a címtár globális rendszergazdának kell lennie.
@@ -28,7 +28,7 @@ Egy felhasználó vagy csoport hozzárendelése egy vállalati alkalmazás, a v�
 
 ## <a name="how-do-i-assign-user-access-to-an-enterprise-app-in-the-azure-portal"></a>Hogyan oszthatok ki a felhasználói hozzáférés a vállalati alkalmazásokhoz az Azure-portálon?
 1. Jelentkezzen be a [Azure-portálon](https://portal.azure.com) egy olyan fiókkal, amely a címtár globális rendszergazdája.
-2. Válassza ki **további szolgáltatások**, a mezőben adja meg Azure Active Directoryban, és válassza **Enter**.
+2. Válassza ki **minden szolgáltatás**, a mezőben adja meg Azure Active Directoryban, és válassza **Enter**.
 3. Az a **Azure Active Directory - *directoryname***  (Ez azt jelenti, hogy az Azure AD panelen a kezelt könyvtár) panelen válassza ki **vállalati alkalmazások**.
 
     ![Vállalati alkalmazások megnyitásakor](./media/active-directory-coreapps-assign-user-azure-portal/open-enterprise-apps.png)
@@ -94,7 +94,7 @@ Ebben a példában a felhasználó Britta Simon rendeli hozzá a a [Microsoft mu
         
 3. Futtassa a parancsot `$sp.AppRoles` elérhetővé válik a munkahelyi Analytics alkalmazás szerepkörök megjelenítéséhez. Ebben a példában szeretnénk Britta Simon az elemző (korlátozott hozzáférés) szerepkör hozzárendelése.
     
-    ![Munkahelyi Analytics szerepkör](media/active-directory-coreapps-assign-user-azure-portal/workplace-analytics-role.png)
+    ![Workplace Analytics Role](media/active-directory-coreapps-assign-user-azure-portal/workplace-analytics-role.png)
 
 4. Rendelje hozzá a szerepkör nevét a `$app_role_name` változó.
         
@@ -110,7 +110,7 @@ Ebben a példában a felhasználó Britta Simon rendeli hozzá a a [Microsoft mu
     New-AzureADUserAppRoleAssignment -ObjectId $user.ObjectId -PrincipalId $user.ObjectId -ResourceId $sp.ObjectId -Id $appRole.Id
     ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Összes saját csoportok](active-directory-groups-view-azure-portal.md)
 * [Egy felhasználó vagy csoport-hozzárendelés eltávolítása a vállalati alkalmazások](active-directory-coreapps-remove-assignment-azure-portal.md)
 * [Tiltsa le a felhasználói bejelentkezéseket a vállalati alkalmazás](active-directory-coreapps-disable-app-azure-portal.md)

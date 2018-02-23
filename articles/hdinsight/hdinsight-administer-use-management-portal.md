@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-ms.openlocfilehash: ecaad702843a63bb82b781339d25fde10df0a0a4
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 77c47809a01e9ff2bb851163f9adf987738f98f6
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="manage-windows-based-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>A HDInsight Windows-alapú Hadoop-fürtök kezelése az Azure portál használatával
 
@@ -43,7 +43,7 @@ A cikk elkezdéséhez az alábbiakkal kell rendelkeznie:
 1. Jelentkezzen be [https://portal.azure.com](https://portal.azure.com).
 2. A portál megnyitása után végezhetők el:
 
-   * Kattintson a **új** új fürt létrehozása a bal oldali menüből:
+   * Kattintson a **hozzon létre egy erőforrást** új fürt létrehozása a bal oldali menüből:
 
        ![a HDInsight-fürt új gomb](./media/hdinsight-administer-use-management-portal/azure-portal-new-button.png)
    * Kattintson a **a HDInsight-fürtök** a bal oldali menüből.
@@ -352,7 +352,7 @@ Távoli asztal használatával csatlakozzon a fürthöz, és a Hadoop parancsot 
 1. Csatlakozzon a fürthöz, a távoli asztal használatával.
 2. Kattintson duplán az asztalon **Hadoop parancssori**.
 
-    ![HDI. HadoopCommandLine][image-hadoopcommandline]
+    ![HDI.HadoopCommandLine][image-hadoopcommandline]
 
     További információk a Hadoop-parancsok: [Hadoop-parancsok hivatkozás](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/CommandsManual.html).
 
@@ -365,7 +365,7 @@ Előző képernyőképen látható a mappa neve verziószáma a Hadoop beágyazo
     cd %sqoop_home%
     cd %hcatalog_home%
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben a cikkben megtanulta rendelkezik a HDInsight-fürtök létrehozása a portál használatával, és nyissa meg a parancssori eszköz a Hadoop. További tudnivalókért tekintse meg a következő cikkeket:
 
 * [Felügyelheti a HDInsight az Azure PowerShell használatával](hdinsight-administer-use-powershell.md)

@@ -36,6 +36,8 @@
       href: delivery-and-retry.md
 - name: Útmutatók
   items:
+    - name: Események fogadása HTTP-végponton
+      href: receive-events.md
     - name: Adatok streamelése az Event Hubsból adattárházba
       href: event-grid-event-hubs-integration.md
     - name: Értesítések küldése az IoT Hub eseményeiről

@@ -6,11 +6,11 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 01/08/2018
 ms.author: raynew
-ms.openlocfilehash: 2e17d30dcc95677053fd6c8c1ee75fd3cc0afb5b
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: d588dc6037b6295594301b577fe9df31d169a9e6
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="discover-and-assess-a-large-vmware-environment"></a>Fedezze fel és nagy VMware-környezet felmérése
 
@@ -19,7 +19,7 @@ Ez a cikk ismerteti, hogyan használatával a helyszíni virtuális gépek (VM) 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - **VMware**: A virtuális gépek, amelyek az áttelepíteni kívánt vCenter Server 5.5, 6.0 vagy 6.5 kell kezelnie. Emellett kell egy ESXi gazdagépen futó verziójával 5.0-s vagy újabb, a gyűjtő VM telepítése.
-- **vCenter fiók**: olvasási fiók vCenter-kiszolgáló eléréséhez szükséges. Az Azure áttelepítése ezt a fiókot használja a helyszíni virtuális gépek felderítése.
+- **vCenter fiók**: olvasási fiók vCenter-kiszolgáló eléréséhez szükséges. Az Azure Migrate ezt a fiókot használja a helyszíni virtuális gépek felderítéséhez.
 - **Engedélyek**: A vCenter Server, hozzon létre egy virtuális Gépet petesejtek formátumú fájl importálásával engedélyekre van szükség.
 - **Statisztika beállítások**: A statisztika vcenter Server kell beállítás 3. szint telepítés megkezdése előtt. Ha a szintje alacsonyabb, mint 3, a frissítésfelmérő működni fog, de a tárolási és hálózati teljesítményadatok nem gyűjthetők. A méret javaslatok ebben az esetben alapjául Processzor- és teljesítményadatokat és a lemezek és a hálózati adapterek konfigurációs adatait.
 
@@ -49,42 +49,50 @@ Az azonos Azure áttelepítése gyűjtő segítségével egy vagy több projekte
 - Azt javasoljuk, értékelési célokra, akkor ne gépek egymástól függő szolgáltatásainak ugyanabban a projektben és értékelési belül. A vCenter Server ellenőrizze, hogy a függő gépek ugyanazon a mappa, datacenter vagy fürt értékeléséhez.
 
 
-## <a name="create-a-project"></a>A projekt létrehozása
+## <a name="create-a-project"></a>Projekt létrehozása
 
 A követelményeknek megfelelően Azure áttelepítése projekt létrehozása:
 
 1. Válassza ki az Azure-portálon **hozzon létre egy erőforrást**.
-2. Keresse meg **Azure áttelepítése**, és válassza ki a szolgáltatást **Azure áttelepítése (előzetes verzió)** a keresési eredmények között. Ezután kattintson a **Létrehozás** elemre.
+2. Keressen az **Azure Migrate** kifejezésre, és válassza ki az **Azure Migrate (előzetes verzió)** elemet a keresési eredmények közül. Ezután kattintson a **Létrehozás** elemre.
 3. Adja meg a projekt nevét és az Azure-előfizetés a projekthez.
 4. Hozzon létre egy új erőforráscsoportot.
 5. Adja meg a helyet, ahol a projekt létrehozásához, majd válassza ki szeretné **létrehozása**. Vegye figyelembe, hogy a virtuális gépeket egy másik célhelyet a továbbra is felmérheti. A projekt helyére a metaadatok összegyűjtött a helyszíni virtuális gépek tárolására szolgál.
 
 ## <a name="set-up-the-collector-appliance"></a>A gyűjtő készülék beállítása
 
-Azure áttelepítése létrehoz egy a helyszíni virtuális Gépre, a gyűjtő készülék néven ismert. A virtuális gép deríti fel a helyszíni VMware virtuális gépek, és a rájuk vonatkozó metaadatok küld az Azure áttelepítése szolgáltatás. A gyűjtő készülék beállításához petesejtek fájl letöltésére, és importálja azt a helyszíni vCenter Server-példányhoz.
+Az Azure Migrate létrehoz egy gyűjtőberendezésnek nevezett helyszíni virtuális gépet. A virtuális gép deríti fel a helyszíni VMware virtuális gépek, és a rájuk vonatkozó metaadatok küld az Azure áttelepítése szolgáltatás. A gyűjtő készülék beállításához petesejtek fájl letöltésére, és importálja azt a helyszíni vCenter Server-példányhoz.
 
-### <a name="download-the-collector-appliance"></a>Töltse le az adatgyűjtő-készülék
+### <a name="download-the-collector-appliance"></a>A gyűjtőberendezés letöltése
 
 Ha több projekt van, akkor töltse le az adatgyűjtő készülék csak egyszer vCenter-kiszolgáló. Töltse le, és állítsa be a készülék, után kell futtatnia minden olyan projekthez, és a projekt egyedi Azonosítóját és kulcsát meg.
 
 1. Azure áttelepítése projekt kijelölni **bevezetés** > **felderítési & felmérési** > **gépek felderítése**.
 2. A **gépek észlelése**, jelölje be **letöltése**, a petesejtek fájl letöltéséhez.
-3. A **projekt hitelesítő adatok másolása**, másolja le az Azonosítót, és a projekt kulcsát. Szükség van ezekre a gyűjtő konfigurálásakor.
+3. A **projekt hitelesítő adatok másolása**, másolja le az Azonosítót, és a projekt kulcsát. Ezekre a gyűjtő konfigurálásához lesz szüksége.
 
    
-### <a name="verify-the-collector-appliance"></a>Ellenőrizze az adatgyűjtő-készülék
+### <a name="verify-the-collector-appliance"></a>A gyűjtőberendezés ellenőrzése
 
 Ellenőrizze, hogy a petesejtek fájlt biztonságos telepítése előtt:
 
-1. A számítógépen, amelyre a fájlt letöltötte nyissa meg egy rendszergazdai parancsablakot.
-2. A következő parancsot a kivonat létrehozásához a petesejtjének:
+1. A gépen, amelyre a fájlt letöltötte, nyisson meg egy rendszergazdai parancsablakot.
+2. Futtassa a következő parancsot az OVA kivonatának létrehozásához:
 
    ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
 
-   Példa használati:```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
+   Gyakorlati példa: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
 3. Győződjön meg arról, hogy a létrehozott kivonatoló megegyezik-e a következő beállításokat.
+
+    1.0.8.59 petesejtek verziójához
+
+    **Algoritmus** | **Kivonat értéke**
+    --- | ---
+    MD5 | 71139e24a532ca67669260b3062c3dad
+    SHA1 | 1bdf0666b3c9c9a97a07255743d7c4a2f06d665e
+    SHA256 | 6b886d23b24c543f8fc92ff8426cd782a77efb37750afac397591bda1eab8656  
  
-    1.0.8.49 petesejtek verziójához
+    Az OVA 1.0.8.49-es verziója esetében
 
     **Algoritmus** | **Kivonat értéke**
     --- | ---
@@ -92,7 +100,7 @@ Ellenőrizze, hogy a petesejtek fájlt biztonságos telepítése előtt:
     SHA1 | 4367a1801cf79104b8cd801e4d17b70596481d6f
     SHA256 | fda59f076f1d7bd3ebf53c53d1691cc140c7ed54261d0dc4ed0b14d7efef0ed9
 
-    A petesejtek verziója 1.0.8.40:
+    Az OVA 1.0.8.40-es verziója esetében:
 
     **Algoritmus** | **Kivonat értéke**
     --- | ---
@@ -106,14 +114,14 @@ A letöltött fájlt a vCenter-kiszolgáló importálása:
 
 1. Válassza ki a vSphere ügyfélkonzol **fájl** > **OVF-sablon telepítése**.
 
-    ![OVF telepítése](./media/how-to-scale-assessment/vcenter-wizard.png)
+    ![Az OVF telepítése](./media/how-to-scale-assessment/vcenter-wizard.png)
 
 2. Az OVF-sablon központi telepítése varázslóban > **forrás**, adja meg a petesejtek fájl helyét.
-3. A **neve** és **hely**, adjon meg egy rövid nevet a gyűjtő virtuális gép számára, és a készlet objektum található, amely a virtuális gép üzemelni fog.
-5. A **állomás/fürt**, adja meg a gazdagép vagy fürt a gyűjtő virtuális gép elindul.
-7. A tároló adja meg a célhelyet, a gyűjtő virtuális gép számára.
-8. A **lemezformátum**, adja meg a lemez típusát és méretét.
-9. A **Hálózatleképezés**, adja meg a hálózatot, amelyhez a gyűjtő Virtuálisgép kapcsolódik. A hálózati metaadatok küldésére Azure internetkapcsolat szükséges. 
+3. A **Name** (Név) és a **Location** (Hely) mezőben adjon meg egy rövid nevet a gyűjtő virtuális gépnek, valamint az azt futtató leltárobjektumnak.
+5. A **Host/Cluster** (Gazdagép/fürt) mezőben adja meg a gazdagépet vagy fürtöt, amelyen a gyűjtő virtuális gép futni fog.
+7. A tárolóban adja meg a célhelyet a gyűjtő virtuális gép tárolásához.
+8. A **Disk Format** (Lemezformátum) mezőben adja meg a lemez típusát és méretét.
+9. A **Network Mapping** (Hálózatleképezés) mezőben adja meg a hálózatot, amelyhez a gyűjtő virtuális gép kapcsolódni fog. A hálózati metaadatok küldésére Azure internetkapcsolat szükséges. 
 10. Tekintse át és hagyja jóvá a beállításokat, majd válassza ki **Befejezés**.
 
 ## <a name="identify-the-id-and-key-for-each-project"></a>Azonosítsa az ID és a kulcsok minden olyan projekthez
@@ -145,43 +153,43 @@ A következő táblázatban a értékelési eredmények, amelyek befolyásolják
 > [!WARNING]
 > Ha csak magasabb szintű statisztika, tart naponta a teljesítményszámlálók létrehozásához. Igen azt javasoljuk, hogy a felderítés egy nap után.
 
-## <a name="run-the-collector-to-discover-vms"></a>Futtassa a gyűjtő virtuális gépek felderítése
+## <a name="run-the-collector-to-discover-vms"></a>A gyűjtő futtatása a virtuális gépek felderítéséhez
 
 Minden felderítés, végre kell hajtania a gyűjtő felderítéséhez szükséges hatókörében virtuális gépek futnak. Futtassa a másikat a másik után. Egyidejű felderítések nem támogatottak, és mindegyik felderítés rendelkeznie kell egy másik hatókört.
 
-1. A vSphere Client-konzolon kattintson a jobb gombbal a virtuális gép > **nyissa meg a konzolt**.
+1. A vSphere Client-konzolon kattintson a jobb gombbal a virtuális gépre, majd kattintson az **Open Console** (Konzol megnyitása) elemre.
 2. Adja meg a nyelvet, időzóna és a készülék jelszó beállításai.
 3. Az asztalon, válassza ki a **futtassa a gyűjtő** helyi.
 4. Nyissa meg az Azure áttelepítése gyűjtő **előfeltétel** , majd:
 
-   a. Fogadja el a licencfeltételeket, és a külső adatokat olvasni.
+   a. Fogadja el a licencfeltételeket, és olvassa el a külső szolgáltatóval kapcsolatos információkat.
 
    A gyűjtő ellenőrzi, hogy a virtuális gép rendelkezik-e internet-hozzáféréssel.
    
-   b. Ha a virtuális gép fér hozzá az internethez olyan proxyn keresztül, válassza ki a **proxybeállítások**, adja meg a proxykiszolgáló címét és a figyelő portja. Adjon meg hitelesítő adatokat, ha a proxy hitelesítést igényel.
+   b. Ha a virtuális gép fér hozzá az internethez olyan proxyn keresztül, válassza ki a **proxybeállítások**, adja meg a proxykiszolgáló címét és a figyelő portja. Adja meg a hitelesítő adatokat, ha a proxykiszolgáló hitelesítést igényel.
 
-   A gyűjtő ellenőrzi, hogy a gyűjtő szolgáltatás fut-e. A szolgáltatás a gyűjtő virtuális gép alapértelmezés szerint telepítve van.
+   A gyűjtő ellenőrzi, hogy a gyűjtő szolgáltatás fut-e. A szolgáltatás alapértelmezés szerint telepítve van a gyűjtő virtuális gépen.
 
    c. Töltse le és telepítse a VMware PowerCLI.
 
-5. A **adja meg a vCenter-kiszolgáló adatait**, tegye a következőket:
+5. A **Specify vCenter Server details** (vCenter Server adatainak megadása) területen tegye a következőket:
     - Adja meg a név (FQDN) vagy a vCenter-kiszolgáló IP-címét.
     - A **felhasználónév** és **jelszó**, adja meg a csak olvasható fiók hitelesítő adatait, amelyet a gyűjtő virtuális gépek felderítése a vCenter Server fog használni.
-    - A **hatókörét**, válassza ki a virtuális gép felderítési hatókörét. A gyűjtő képes felderíteni csak az adott hatókörben lévő virtuális gépek. Egy adott mappában, a datacenter vagy a fürt állítható be hatókör. Hogy 1000-nél több virtuális gép nem tartalmaz. 
+    - A **hatókörét**, válassza ki a virtuális gép felderítési hatókörét. A gyűjtő képes felderíteni csak az adott hatókörben lévő virtuális gépek. A hatókör egy adott mappára, adatközpontra vagy fürtre állítható be. Hogy 1000-nél több virtuális gép nem tartalmaz. 
 
 6. A **megadása áttelepítési projekt**, adja meg az Azonosítót, és a projekt kulcsát. Nem másolja őket, ha a gyűjtő VM nyissa meg az Azure-portálon. A projekt **áttekintése** lapon jelölje be **gépek felderítése** , és másolja az értékeket.  
-7. A **gyűjtemény folyamatjelző**, a felderítési folyamat figyelésére, és győződjön meg arról, hogy a virtuális gépek gyűjtött metaadatai a hatókörben. A gyűjtő megadja egy hozzávetőleges felderítés időtartamát.
+7. A **gyűjtemény folyamatjelző**, a felderítési folyamat figyelésére, és győződjön meg arról, hogy a virtuális gépek gyűjtött metaadatai a hatókörben. Az adatgyűjtő mutatja a felderítés hozzávetőleges időtartamát.
 
 
-### <a name="verify-vms-in-the-portal"></a>Ellenőrizze a virtuális gépek a portálon
+### <a name="verify-vms-in-the-portal"></a>Virtuális gépek ellenőrzése a portálon
 
-Felderítési idő függ VMs hány derít fel. Általában 100 virtuális gépekhez, felderítési befejezi a gyűjtő követően egy óra körül. 
+A felderítési idő a felderített virtuális gépek számától függ. Általában 100 virtuális gépekhez, felderítési befejezi a gyűjtő követően egy óra körül. 
 
 1. Válassza ki az áttelepítési Planner projektben **kezelése** > **gépek**.
-2. Ellenőrizze, hogy a portálon jelennek meg a felderíteni kívánt virtuális gépeket.
+2. Ellenőrizze, hogy a felderíteni kívánt virtuális gépek megjelennek-e a portálon.
 
 
 ## <a name="next-steps"></a>További lépések
 
 - Megtudhatja, hogyan [hozzon létre egy csoportot](how-to-create-a-group.md) értékeléséhez.
-- [További](concepts-assessment-calculation.md) kapcsolatos értékelések kiszámítási módját.
+- [További információk](concepts-assessment-calculation.md) az értékelések számításával kapcsolatban.

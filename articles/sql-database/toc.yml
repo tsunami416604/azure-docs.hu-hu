@@ -378,8 +378,8 @@
               href: saas-dbpertenant-restore-single-tenant.md
             - name: Bérlői séma kezelése
               href: saas-tenancy-schema-management.md
-            - name: Alkalmi lekérdezések futtatása
-              href: saas-tenancy-adhoc-analytics.md
+            - name: Bérlők közötti jelentéskészítés
+              href: saas-tenancy-cross-tenant-reporting.md
             - name: ETL elemzéshez
               href: saas-tenancy-tenant-analytics.md
         - name: Több-bérlős adatbázis

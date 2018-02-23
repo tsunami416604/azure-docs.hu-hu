@@ -1,4 +1,4 @@
-Kattintson az **Új** gombra. A **Keresés a piactéren** mezőbe írja be a következőt: `Azure Active Directory B2C`.
+Kattintson a **hozzon létre egy erőforrást** gombra. A **Keresés a piactéren** mezőbe írja be a következőt: `Azure Active Directory B2C`.
 
 ![A kiemelt Hozzáadás gomb és az Azure Active Directory B2C szöveg a Keresés a piactéren mezőben](./media/active-directory-b2c-create-tenant/find-azure-ad-b2c.png)
 

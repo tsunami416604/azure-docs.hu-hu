@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/19/2016
 ms.author: robb
-ms.openlocfilehash: 7dd8c6e1fbfba2587aadb3410c3a769b57e06001
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: b4f1f8900637f23220f9a89adbb321707c49e2d3
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="send-cloud-service-virtual-machine-or-service-fabric-diagnostic-data-to-application-insights"></a>A felhőalapú szolgáltatás, a virtuális gép vagy a Service Fabric diagnosztikai adatok küldése az Application insights szolgáltatással
 Felhőszolgáltatások, virtuális gép, virtuálisgép-méretezési csoportok és a Service Fabric összes adatok összegyűjtéséhez használja az Azure Diagnostics-bővítmény.  Az Azure diagnosztikai adatokat küld az Azure Storage-táblákat.  Azonban is minden cső vagy más helyekre Azure Diagnostics kiterjesztéssel 1.5-ös vagy újabb adatok egy részét.
@@ -67,7 +67,7 @@ Példa az konfigurálását, a fogadó Application Insights:
 
 - A **ApplicationInsights** elem azt adja meg a Application insights-erőforrást, ahol az Azure diagnosztikai adatok küldése instrumentation kulcsa.
     - Ha még nem rendelkezik egy meglévő Application Insights-erőforrást, lásd: [hozzon létre egy új Application Insights-erőforrást](../application-insights/app-insights-create-new-resource.md) további információ a erőforrás létrehozása, és a rendszerállapot-kulcs beolvasása.
-    - Ha egy felhőalapú szolgáltatást biztosít az Azure SDK 2.8 fejleszt, a instrumentation kulcs automatikusan feltöltődik értékkel. Az érték alapján a **APPINSIGHTS_INSTRUMENTATIONKEY** szolgáltatás konfigurációs beállítás, amikor a Felhőszolgáltatás-projekt-csomagban. Lásd: [használja az Application Insights az Azure Diagnostics Felhőszolgáltatás kapcsolatos problémák elhárítása](../cloud-services/cloud-services-dotnet-diagnostics-applicationinsights.md).
+    - Ha egy felhőalapú szolgáltatást biztosít az Azure SDK 2.8 fejleszt, a instrumentation kulcs automatikusan feltöltődik értékkel. Az érték alapján a **APPINSIGHTS_INSTRUMENTATIONKEY** szolgáltatás konfigurációs beállítás, amikor a Felhőszolgáltatás-projekt-csomagban. Lásd: [az Application Insights használja a Cloud Serviceshez](../application-insights/app-insights-cloudservices.md).
 
 - A **csatornák** egy vagy több elemet tartalmaz **csatorna** elemek.
     - A *neve* egyedi attribútum hivatkozik a csatorna.
@@ -219,7 +219,7 @@ Az előző beállítás szerint a következő sorokat jelentése a következő:
 - **A naplózási szint a csatorna nem haladhatja meg a naplózási szint esetében mi az Azure diagnostics gyűjtött.** Például nem gyűjteni a naplókat elem alkalmazásnaplóban hibák, és próbálja meg elküldeni a részletes naplókat az Application Insights fogadó. A *scheduledTransferLogLevelFilter* attribútum mindig gyűjtése egyenlő vagy több naplót, mint a naplók próbál küldeni a fogadó.
 - **Az Application Insights Azure diagnostics bővítmény által gyűjtött blob adatokat nem lehet elküldeni.** Például semmit alatt megadott a *könyvtárak* csomópont. Összeomlási memóriaképek a tényleges összeomlási memóriakép továbbítja a rendszer a blob-tároló, és csak olyan, hogy létrejött-e a összeomlási biztonsági másolatot a rendszer értesítést küld az Application Insights.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Ismerje meg, hogyan [tekintse meg az Azure diagnostics](https://docs.microsoft.com/azure/application-insights/app-insights-cloudservices#view-azure-diagnostic-events) az Application insights szolgáltatással.
 * Használjon [PowerShell](../cloud-services/cloud-services-diagnostics-powershell.md) engedélyezi az Azure diagnostics bővítményt az alkalmazáshoz.
 * Használjon [Visual Studio](../vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines.md) engedélyezi az Azure diagnostics bővítményt az alkalmazáshoz

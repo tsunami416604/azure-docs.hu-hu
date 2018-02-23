@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/29/2016
 ms.author: LADocs; padmavc
-ms.openlocfilehash: 4f58a587c1f10aea1cee89e46fa9ec340e0d21c6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: db2d9313e443ebc9dd32fcb905b0ae62219e4bbf
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="validate-xml-with-schemas-for-azure-logic-apps-and-the-enterprise-integration-pack"></a>Ellenőrizze az XML a sémák Azure Logic Apps és a vállalati integrációs csomag
 
@@ -26,9 +26,9 @@ Sémák győződjön meg arról, hogy az XML-dokumentumok kap érvényes és a v
 
 ## <a name="add-a-schema"></a>A séma hozzáadása
 
-1. Válassza ki az Azure-portálon **további szolgáltatások**.
+1. Válassza ki az Azure-portálon **minden szolgáltatás**.
 
-    ![Azure-portálon "Szolgáltatás"](media/logic-apps-enterprise-integration-schemas/overview-11.png)
+    ![Azure-portálon "Az összes szolgáltatás"](media/logic-apps-enterprise-integration-schemas/overview-11.png)
 
 2. A szűrő a keresőmezőbe írja be **integrációs**, és válassza ki **integrációs fiókok** eredmények listájáról.
 
@@ -130,6 +130,6 @@ Az Azure mutat be egy üzenet, hogy a séma sikeresen feltöltve.
 
     ![A fiókhoz, amely a kijelölt "sémák" integráció](media/logic-apps-enterprise-integration-schemas/delete-31.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [További tudnivalók a vállalati integrációs csomag](logic-apps-enterprise-integration-overview.md "további információ a vállalati integrációs csomag").  
 

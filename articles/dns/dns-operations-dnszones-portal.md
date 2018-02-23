@@ -12,11 +12,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/18/2017
 ms.author: gwallace
-ms.openlocfilehash: 69a509612e6204fc93dd42bf2fe69cb165b5777c
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: cfb1debf9447cd66856b73166a133d5d498fcc79
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="how-to-manage-dns-zones-in-the-azure-portal"></a>DNS-zónák kezelése az Azure-portálon
 
@@ -31,7 +31,7 @@ Ez a cikk bemutatja, hogyan a DNS-zónák kezelése az Azure portál használat�
 ## <a name="create-a-dns-zone"></a>DNS-zóna létrehozása
 
 1. Jelentkezzen be az Azure Portalra
-2. A központi menüben kattintson az **Új > Hálózatkezelés >** elemre, majd kattintson a **DNS-zóna** elemre a DNS-zóna létrehozása panel megnyitásához.
+2. A központ menüben kattintson, majd **hozzon létre egy erőforrást > Hálózat >** , majd **DNS-zóna** hozzon létre DNS-zóna panel megnyitásához.
 
     ![DNS-zóna](./media/dns-operations-dnszones-portal/openzone650.png)
 

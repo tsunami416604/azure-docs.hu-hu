@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 8/25/2017
 ms.author: mlearned
 ms.custom: Jenkins
-ms.openlocfilehash: dbb30809ab68079666ecfa81a896c1d5101fb6fb
-ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
+ms.openlocfilehash: 4d45ed14be499ed927f1433e134a029066146eea
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="scale-your-jenkins-deployments-to-meet-demand-with-azure-vm-agents"></a>Bővítse a Jenkins telepítéseit igényeknek Azure virtuális gép ügynökkel
 
@@ -91,7 +91,7 @@ Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
             }
      ```
 
-    A befejezett szolgáltatásnevet kell használnia a `id` mezőt **előfizetés-azonosító**, a `appId` értékének **ügyfél-azonosító**, `password` a **Ügyfélkulcs**, és egy URL-címet **OAuth 2.0 Token-végpont** a `https://login.windows.net/<tenant_value>`. Válassza ki **Hozzáadás** hozzáadása a szolgáltatásnév és a beépülő modul az újonnan létrehozott hitelesítő adatok használatára konfigurálja.
+    A befejezett szolgáltatásnevet kell használnia a `id` mezőt **előfizetés-azonosító**, a `appId` értékének **ügyfél-azonosító**, `password` a **Ügyfélkulcs**, és `tenant` a **bérlői azonosító**. Válassza ki **Hozzáadás** hozzáadása a szolgáltatásnév és a beépülő modul az újonnan létrehozott hitelesítő adatok használatára konfigurálja.
 
     ![Az Azure szolgáltatás egyszerű konfigurálása](./media/jenkins-azure-vm-agents/new-service-principal.png)
 
@@ -130,7 +130,7 @@ Válassza ki **sablon ellenőrzése** ellenőrizze a konfigurációt, és jelöl
 2. Adja meg `demoproject1` a nevét, és válassza ki a **Freestyle projekt**, majd jelölje be **OK**.
 3. Az a **általános** lapra, majd **korlátozása, ahol a projekt futtatható** és típus `ubuntu` a **Feliratkifejezés**. Megjelenik egy üzenet, erősítse meg, hogy a címke a felhő konfigurációja az előző lépésben létrehozott által kiszolgált. 
    ![Feladat beállítása](./media/jenkins-azure-vm-agents/job-config.png)
-4. Az a **forrás kód felügyeleti** lapon jelölje be **Git** , és adja hozzá a következő URL-címet a **tárház URL-CÍMÉT** mező:`https://github.com/spring-projects/spring-petclinic.git`
+4. Az a **forrás kód felügyeleti** lapon jelölje be **Git** , és adja hozzá a következő URL-címet a **tárház URL-CÍMÉT** mező: `https://github.com/spring-projects/spring-petclinic.git`
 5. Az a **Build** lapon jelölje be **Hozzáadás összeállítása lépés**, majd **meghívása a legfelső szintű Maven célok**. Adja meg `package` a a **célok** mező.
 6. Válassza ki **mentése** menteni a feladat definíciójához.
 
@@ -142,7 +142,7 @@ Válassza ki **sablon ellenőrzése** ellenőrizze a konfigurációt, és jelöl
 
 ![Konzolkimenet](./media/jenkins-azure-vm-agents/console-output.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [CI/CD-ről az Azure App Service](java-deploy-webapp-tutorial.md)

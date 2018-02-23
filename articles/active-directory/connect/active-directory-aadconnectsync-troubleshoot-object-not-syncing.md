@@ -14,15 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
-ms.openlocfilehash: 7176ebd0515008147bd3797dcb760f35e2d85d45
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: e68b70ce87a6fedab1b85bf2800a50e512910dea
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="troubleshoot-an-object-that-is-not-synchronizing-to-azure-ad"></a>Olyan objektum, amely nem szinkronizál az Azure AD-hibáinak elhárítása
 
 Ha egy objektum nem szinkronizál az Azure AD a várt módon, majd azok több oka. Ha hiba e-mailben kapott az Azure AD vagy az Azure AD Connect Health hibát látja, majd beolvassa [exportálási hibák elhárítása](active-directory-aadconnect-troubleshoot-sync-errors.md) helyette. De ha a probléma, ha az objektum nincs az Azure AD hibaelhárítási, majd a témakör, hogy a felhasználó. Bemutatja, hogyan lehet a helyszíni összetevő az Azure AD Connect szinkronizálási szolgáltatás hibát talál.
+
+>[!IMPORTANT]
+>Azure Active Directory (AAD) Connect telepítés verziójával <verison> vagy magasabb, használja a [hibaelhárítása a feladat](active-directory-aadconnect-troubleshoot-objectsync.md) objektum szinkronizálási kapcsolatos problémák elhárítása a varázslóban. 
 
 A hibák megkereséséhez fog nézze meg több különböző helyen, a következő sorrendben:
 
@@ -36,7 +39,7 @@ Start [Synchronization Service Managert](active-directory-aadconnectsync-service
 A műveletek a lap a Synchronization Service Managert esetén, ahol el kell kezdenie a hibaelhárítást. A műveletek lapon a legutóbbi művelet eredményei láthatók.  
 ![Sync Service Manager](./media/active-directory-aadconnectsync-troubleshoot-object-not-syncing/operations.png)  
 
-Felső részén minden futtatásakor krónikus sorrendben jeleníti meg. Alapértelmezés szerint a műveletek az elmúlt hét napban tartja információinak naplózásához, de ez a beállítás használatával módosítható a [Feladatütemező](active-directory-aadconnectsync-feature-scheduler.md). Bármely futtatása, amelyek nem szerepelnek egy sikeres állapotnak keresni szeretne. Rendezés a fejlécek kattintva módosíthatja.
+Felső részén látható minden futtatásakor időrendi sorrendben. Alapértelmezés szerint a műveletek az elmúlt hét napban tartja információinak naplózásához, de ez a beállítás használatával módosítható a [Feladatütemező](active-directory-aadconnectsync-feature-scheduler.md). Bármely futtatása, amelyek nem szerepelnek egy sikeres állapotnak keresni szeretne. Rendezés a fejlécek kattintva módosíthatja.
 
 A **állapot** oszlop a legfontosabb adatokat, és a legsúlyosabb károkat okozó problémát futtató jeleníti meg. A leggyakoribb állapotokról a prioritásuk szerinti sorrendben kell vizsgálni gyors összegzése (ahol * több lehetséges hiba karakterláncok jelzi).
 
@@ -78,14 +81,14 @@ Ha nem találja az objektum keres, majd az lehet, hogy a rendszer kiszűrt rende
 
 Jelölje ki az Azure AD-összekötő egy másik keresési **hatókör** válassza ki **függőben lévő importálás**, és válassza ki a **hozzáadása** jelölőnégyzetet. Ez a keresés lehetővé teszi minden szinkronizált objektumnak az Azure ad-ben, amely nem rendelhető hozzá a helyi objektum.  
 ![Összekötő terület keresési árva](./media/active-directory-aadconnectsync-troubleshoot-object-not-syncing/cssearchorphan.png)  
-Azokat az objektumokat egy másik szinkronizálási motor vagy a szinkronizálási motor a különböző szűrési konfigurációval rendelkezik hozott létre. Ez a nézet olvashat egy listát **árva** már nem kezelt objektumok. Át kell tekintenie a ezen a listán, és fontolja meg ezek az objektumok eltávolítását a [Azure AD PowerShell](http://aka.ms/aadposh) parancsmagok.
+Azokat az objektumokat egy másik szinkronizálási motor vagy a szinkronizálási motor a különböző szűrési konfigurációval rendelkezik hozott létre. Ez a nézet olvashat egy listát **árva** már nem kezelt objektumok. Át kell tekintenie a ezen a listán, és fontolja meg ezek az objektumok eltávolítását a [Azure AD PowerShell](https://aka.ms/aadposh) parancsmagok.
 
 ### <a name="cs-import"></a>CS importálása
 Cs-objektum megnyitásakor nincsenek lap tetején. A **importálása** lapon láthatók az importálás után előkészített adatok.  
 ![CS objektum](./media/active-directory-aadconnectsync-troubleshoot-object-not-syncing/csobject.png)    
 A **régi érték** jeleníti meg, mi jelenleg tárolódik a csatlakozás és a **új érték** mi érkezett a forrásrendszerben, és nem alkalmazták. Ha nem sikerül az objektumra, majd változtatások nincsenek feldolgozva.
 
-**Hiba történt**  
+Hiba történt  
 ![CS objektum](./media/active-directory-aadconnectsync-troubleshoot-object-not-syncing/cssyncerror.png)  
 A **szinkronizálási hiba** lap csak akkor látható, ha a probléma oka az objektum. További információkért lásd: [szinkronizálási hibák elhárítása](#troubleshoot-errors-in-operations-tab).
 

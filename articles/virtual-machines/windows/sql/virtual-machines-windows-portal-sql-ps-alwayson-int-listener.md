@@ -4,7 +4,7 @@ description: "Rendelkezésre állási csoport figyelői konfigurálása az Azure
 services: virtual-machines
 documentationcenter: na
 author: MikeRayMSFT
-manager: jhubbard
+manager: craigg
 editor: monicar
 ms.assetid: 14b39cde-311c-4ddf-98f3-8694e01a7d3b
 ms.service: virtual-machines-sql
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/22/2017
 ms.author: mikeray
-ms.openlocfilehash: 74fa1e4c9cfa608a9a385f3dd82a0599fbcc421c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5efb72f450261e098b638af023001ddb2a5015cf
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="configure-one-or-more-always-on-availability-group-listeners---resource-manager"></a>Egy vagy több Always On rendelkezésre állási csoport figyelői - erőforrás-kezelő konfigurálása
 Ez a témakör bemutatja, hogyan:
@@ -28,13 +28,13 @@ Ez a témakör bemutatja, hogyan:
 
 Egy rendelkezésre állási csoport figyelőjének egy virtuális hálózat neve, amely az ügyfelek kapcsolódnak az adatbázis eléréséhez. Az Azure virtuális gépeken a terheléselosztó a figyelő az IP-címet tartalmazza. A load balancer irányítja a forgalmat, hogy a mintavételi portot nem SQL Server példányához. Általában a rendelkezésre állási csoport belső terheléselosztót használja. Az Azure belső terheléselosztót rendelkezhet egy vagy több IP-címeket. Minden IP-cím egy adott mintavételi portot használja. Ez a dokumentum bemutatja, hogyan lehet PowerShell használatával egy terheléselosztó létrehozása vagy IP-címek hozzáadása a meglévő terheléselosztó az SQL Server rendelkezésre állási csoport. 
 
-Több IP-címek kiosztása a belső terheléselosztók lehetőséget egy új Azure-ba, és csak érhető el a Resource Manager modellt. Ez a feladat befejezéséhez szükség lehet a Resource Manager modellt az Azure virtuális gépeken telepített SQL Server rendelkezésre állási csoport. Mindkét SQL Server virtuális gépek ugyanabban a rendelkezésre állási csoportba kell tartoznia. Használhatja a [Microsoft sablon](virtual-machines-windows-portal-sql-alwayson-availability-groups.md) automatikusan a rendelkezésre állási csoport létrehozásához az Azure Resource Manager. Ez a sablon automatikusan létrehozza a rendelkezésre állási csoport, beleértve a belső terheléselosztó meg. Ha kívánja, akkor [kézzel konfigurálásához az Always On rendelkezésre állási csoport](virtual-machines-windows-portal-sql-alwayson-availability-groups-manual.md).
+Több IP-címek kiosztása a belső terheléselosztók lehetőséget egy új Azure-ba, és csak érhető el a Resource Manager modellt. Ez a feladat befejezéséhez szükség lehet a Resource Manager modellt az Azure virtuális gépeken telepített SQL Server rendelkezésre állási csoport. Mindkét SQL Server virtuális gépek ugyanabban a rendelkezésre állási csoportba kell tartoznia. Használhatja a [Microsoft sablon](virtual-machines-windows-portal-sql-alwayson-availability-groups.md) automatikusan a rendelkezésre állási csoport létrehozásához az Azure Resource Manager. Ez a sablon automatikusan létrehozza a rendelkezésre állási csoport, beleértve a belső terheléselosztó meg. Ha kívánja, akkor [kézzel konfigurálásához az Always On rendelkezésre állási csoport](virtual-machines-windows-portal-sql-availability-group-tutorial.md).
 
 Ez a témakör megköveteli, hogy a rendelkezésre állási csoportok már be van állítva.  
 
 Kapcsolódó témakörök az alábbiak:
 
-* [AlwaysOn rendelkezésre állási csoportok konfigurálása Azure virtuális gépen (GUI)](virtual-machines-windows-portal-sql-alwayson-availability-groups-manual.md)   
+* [AlwaysOn rendelkezésre állási csoportok konfigurálása Azure virtuális gépen (GUI)](virtual-machines-windows-portal-sql-availability-group-tutorial.md)   
 * [Egy VNet – VNet-kapcsolat beállítása az Azure Resource Manager és a PowerShell használatával](../../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md)
 
 [!INCLUDE [Start your PowerShell session](../../../../includes/sql-vm-powershell.md)]
@@ -98,7 +98,7 @@ foreach($VMName in $VMNames)
     }
 ```
 
-## <a name="Add-IP"></a>Mintaparancsfájl: IP-cím hozzáadása a meglévő terheléselosztó a PowerShell használatával
+## <a name="Add-IP"></a> Mintaparancsfájl: IP-cím hozzáadása a meglévő terheléselosztó a PowerShell használatával
 Egynél több rendelkezésre állási csoport, vegye fel egy további IP-címet a terheléselosztóhoz. Minden IP-cím a saját terheléselosztási szabály, a mintavételi portot és az első port szükséges.
 
 Az előtér-portot használja a portot, amelyet az SQL Server-példány való csatlakozáskor használandó alkalmazásokat. Másik rendelkezésre állási csoportok IP-címet a azonos előtér-portot is használhat.
@@ -195,8 +195,8 @@ Vegye figyelembe a következő irányelveket a rendelkezésre állási csoport f
 * A belső terheléselosztót csak érhető el a figyelő a virtuális hálózaton belül.
 
 
-## <a name="for-more-information"></a>További információ
-További információkért lásd: [beállítása Always On rendelkezésre állási csoport az Azure virtuális gép manuálisan](virtual-machines-windows-portal-sql-alwayson-availability-groups-manual.md).
+## <a name="for-more-information"></a>További tudnivalók
+További információkért lásd: [beállítása Always On rendelkezésre állási csoport az Azure virtuális gép manuálisan](virtual-machines-windows-portal-sql-availability-group-tutorial.md).
 
 ## <a name="powershell-cmdlets"></a>PowerShell-parancsmagok
 A következő PowerShell-parancsmagok használatával hozzon létre az Azure virtuális gépek belső terheléselosztót.

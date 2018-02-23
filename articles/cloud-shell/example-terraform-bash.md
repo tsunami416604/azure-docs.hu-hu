@@ -1,6 +1,6 @@
 ---
 title: "Telepítheti az Azure-felhőbe rendszerhéj Bash Terraform |} Microsoft Docs"
-description: "A Bash Terraform az Azure-erőforrások telepítése"
+description: "Az Azure-felhőbe rendszerhéj Bash Terraform üzembe helyezéséhez"
 services: Azure
 documentationcenter: 
 author: tomarcher
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: tarcher
-ms.openlocfilehash: c75b5d521dc3eacaf5c5921c35442b1afeb4fa13
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: 6df6a3a5242e0a5fc5c03136e1cd20967a93487a
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 02/21/2018
 ---
-# <a name="terraform-and-bash-in-cloud-shell"></a>Terraform és Bash felhő rendszerhéj
+# <a name="deploy-with-terraform-from-bash-in-azure-cloud-shell"></a>Az Azure-felhőbe rendszerhéj Bash Terraform üzembe helyezéséhez
 Ez a cikk bemutatja, hogyan nevű erőforráscsoport létrehozása a [Terraform AzureRM szolgáltató](https://www.terraform.io/docs/providers/azurerm/index.html). 
 
 [Hashicorp Terraform](https://www.terraform.io/) nyílt forráskódú eszköz, amely egységes API-k, amely lehet szerkeszteni, tekintse át a csoport tagjai között megosztott és rendszerverzióval ellátott deklaratív konfigurációs fájlok. A Microsoft-AzureRM szolgáltató Azure Resource Manager segítségével a AzureRM API-k által támogatott erőforrások interakcióra használatos. 
@@ -186,6 +186,6 @@ Destroy complete! Resources: 1 destroyed.
 
 Sikeresen létrehozott egy Azure-erőforrás Terraform keresztül. Látogasson el a következő lépések és folytathatja az felhő rendszerhéj.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [További tudnivalók az Terraform Azure-szolgáltató](https://www.terraform.io/docs/providers/azurerm/#)<br>
 [A felhő rendszerhéj gyors üzembe helyezés bash](quickstart.md)

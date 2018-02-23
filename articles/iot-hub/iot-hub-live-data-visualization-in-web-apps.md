@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/16/2017
 ms.author: xshi
-ms.openlocfilehash: e037f5c29cabf8e5d0d3e7ded187280a0652d5c3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 54a2defd6bfe2396e24584c686698d3215893cfd
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="visualize-real-time-sensor-data-from-your-azure-iot-hub-by-using-the-web-apps-feature-of-azure-app-service"></a>Az Azure IoT hub a valós idejű érzékelőadatok megjelenítése az Azure App Service Web Apps szolgáltatásának használatával
 
@@ -49,7 +49,7 @@ Ebben az oktatóanyagban elsajátíthatja, hogyan jelenítheti meg az IoT-közpo
 
 ## <a name="create-a-web-app"></a>Webalkalmazás létrehozása
 
-1. Az a [Azure-portálon](https://ms.portal.azure.com/), kattintson a **új** > **Web + mobil** > **webalkalmazás**.
+1. Az a [Azure-portálon](https://portal.azure.com/), kattintson a **hozzon létre egy erőforrást** > **Web + mobil** > **webalkalmazás**.
 2. Adja meg egy egyedi feladat nevét, ellenőrizze az előfizetés, adjon meg egy erőforráscsoportot és helyet, jelölje be **rögzítés az irányítópulton**, és kattintson a **létrehozása**.
 
    Azt javasoljuk, hogy legyen, mint az erőforráscsoport válassza ki az ugyanazon a helyen. Ezzel segítséget nyújt a feldolgozási sebesség, és csökkenti az adatátvitelt.
@@ -115,7 +115,7 @@ Az IoT hub származó, meg kell jelennie a hőmérséklet és a páratartalom va
 > [!NOTE]
 > Ellenőrizze, hogy a mintaalkalmazás fut-e az eszközön. Ha nem, elérhetővé válik egy üres diagram, olvassa el az oktatóanyagok alatt [beállítani az eszközét](iot-hub-raspberry-pi-kit-node-get-started.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A webalkalmazás sikeresen használtuk az IoT hub a valós idejű érzékelőadatok megjelenítéséhez.
 
 Egy Azure IoT Hub-adatok ábrázolása alternatív módja, lásd: [használjon Power BI segítségével ábrázolhatja az IoT hub a valós idejű érzékelőadatok](iot-hub-live-data-visualization-in-power-bi.md).

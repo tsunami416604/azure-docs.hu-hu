@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/25/2017
 ms.author: obloch
-ms.openlocfilehash: 99a430810b915f4ca06d9c07182319eff1fa299e
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 05a025a02046ff091b4fea75404cb74aad2e07fa
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="azure-iot-device-sdk-for-c"></a>Az Azure IoT-eszközök SDK C-hez
 
@@ -27,6 +27,10 @@ A **Azure IoT-eszközök SDK** úgy tervezték, hogy az üzenetek üzenetek kül
 Az Azure IoT-eszközök SDK c ANSI C maximalizálása hordozhatóságát (C99) nyelven van megírva. A szolgáltatás elérhetővé teszi a könyvtárak az való működésre több platformokon és eszközökön, különösen akkor, ha a lemez minimalizálja a szolgáltatást, és memóriaigény prioritását.
 
 Számos platformon, amelyre az SDK-t tesztelték van (lásd: a [Azure IoT eszköz katalógus hitelesített](https://catalog.azureiotsuite.com/) részletekért). Bár ez a cikk a Windows-platformon futó mintakód forgatókönyvek tartalmaz, akkor a jelen cikkben ismertetett kódot megegyezik a támogatott platformok tartományán keresztül.
+
+A következő videó áttekintést nyújt az Azure IoT SDK c:
+
+>[!VIDEO https://channel9.msdn.com/Shows/Internet-of-Things-Show/Azure-IoT-C-SDK-insights/Player]
 
 Ez a cikk bemutatja az Azure IoT-eszközök SDK architektúrája a c kiszolgálóra. Azt mutatja be az eszköz kódtár inicializálása adatokat küldeni az IoT-központ és üzenetek fogadása. A cikkben szereplő információkat kell lennie ahhoz, hogy az SDK használatának első, de a szalagtárakkal kapcsolatos további információkra mutató hivatkozások is biztosít.
 

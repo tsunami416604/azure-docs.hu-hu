@@ -4,7 +4,7 @@ description: "Ez a cikk a klasszikus üzembe helyezési modellel létrehozott er
 services: virtual-machines-windows
 documentationcenter: 
 author: danielsollondon
-manager: jhubbard
+manager: craigg
 editor: monicar
 tags: azure-service-management
 ms.assetid: 7ccf99d7-7cce-4e3d-bbab-21b751ab0e88
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/01/2017
 ms.author: jroth
-ms.openlocfilehash: f637e3c744d61f6fda755c162609d7cc9f4619c7
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 3d3fdd8865a293c5e2f0df6a97910ac8e2a07d4c
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="use-azure-premium-storage-with-sql-server-on-virtual-machines"></a>Az Azure Premium Storage és az SQL Server együttes használata virtuális gépeken
 ## <a name="overview"></a>Áttekintés
@@ -46,10 +46,10 @@ Tekintse meg az SQL Server Azure virtuális gépek további háttérinformáció
 Prémium szintű Storage használatával több előfeltételei van.
 
 ### <a name="machine-size"></a>Mérete
-Prémium szintű Storage használatához szüksége lesz DS adatsorozat virtuális gépek (VM) használja. DS adatsorozat gépek nem használta a felhőszolgáltatásban előtt, ha törli a meglévő virtuális Gépet, a csatlakoztatott lemezek tároljuk, és majd új felhőalapú szolgáltatás létrehozása előtt újra létrehozni a virtuális gép méreteként DS * szerepkör. További információ a virtuálisgép-méretek: [virtuális gépek és Felhőszolgáltatások mérete az Azure-](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Prémium szintű Storage használatához kell használnia a virtuális gépek (VM) DS adatsorozat. DS adatsorozat gépek nem használta a felhőszolgáltatásban előtt, ha törli a meglévő virtuális Gépet, a csatlakoztatott lemezek tároljuk, és majd új felhőalapú szolgáltatás létrehozása előtt újra létrehozni a virtuális gép méreteként DS * szerepkör. További információ a virtuálisgép-méretek: [virtuális gépek és Felhőszolgáltatások mérete az Azure-](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 ### <a name="cloud-services"></a>Felhőszolgáltatások
-Csak használata virtuális gépek DS * prémium szintű Storage az új felhőalapú szolgáltatás létrehozásakor. Ha az SQL Server Always On használ az Azure-ban, az mindig a figyelő az Azure belső vagy külső terheléselosztási terheléselosztó IP-cím egy felhőalapú szolgáltatás társított fog hivatkozni. Ez a cikk foglalkozik, hogyan telepítheti át az ebben a forgatókönyvben rendelkezésre állásának a.
+Csak használata virtuális gépek DS * prémium szintű Storage az új felhőalapú szolgáltatás létrehozásakor. Ha az SQL Server Always On használ az Azure-ban, az mindig a figyelő az Azure belső vagy külső terheléselosztási terheléselosztó IP-cím egy felhőalapú szolgáltatás társított hivatkozik. Ez a cikk foglalkozik, hogyan telepítheti át az ebben a forgatókönyvben rendelkezésre állásának a.
 
 > [!NOTE]
 > DS * kell a első virtuális gép, amely az új felhőalapú szolgáltatás van telepítve.
@@ -61,7 +61,7 @@ Virtuális gépek DS * kell konfigurálnia a virtuális hálózatot (VNET) kell 
 
 ![RegionalVNET][1]
 
-A Microsoft támogatási jegy áttelepíteni egy regionális vnetre is növelheti, Microsoft olyan módosítást, majd a hálózati konfigurációban AffinityGroup-tulajdonság módosításához a regionális Vnetek, az áttelepítés befejezéséhez. Először exportálja a PowerShell a hálózati konfigurációt, és lecseréli a **AffinityGroup** tulajdonságot a **VirtualNetworkSite** elem egy **hely** tulajdonság. Adja meg `Location = XXXX` ahol `XXXX` egy Azure-régióban van. Importálja az új konfigurációt.
+A Microsoft támogatási jegy áttelepíteni egy regionális vnetre is módosíthatja. Microsoft majd módosítást végez. Az áttelepítéshez regionális Vnetek, a hálózati konfigurációban AffinityGroup tulajdonsága módosítható. Először exportálja a PowerShell a hálózati konfigurációt, és lecseréli a **AffinityGroup** tulajdonságot a **VirtualNetworkSite** elem egy **hely** tulajdonság. Adja meg `Location = XXXX` ahol `XXXX` egy Azure-régióban van. Importálja az új konfigurációt.
 
 Például annak eldöntéséhez, hogy a következő VNET konfigurációját:
 
@@ -86,7 +86,7 @@ Helyezze át a egy regionális VNETRE, Nyugat-Európában, módosítsa a konfigu
     </VirtualNetworkSite>
 
 ### <a name="storage-accounts"></a>Tárfiókok
-Akkor hozzon létre egy új tárfiókot, amely prémium szintű Storage van konfigurálva. Figyelje meg, hogy a storage-fiók nem egyedi virtuális merevlemezek, a prémium szintű Storage használata van beállítva azonban a DS * adatsorozat virtuális gépek használatakor csatolhat a VHD-k a prémium és standard szintű tárolást fiókokhoz. A érdemes lehet, hogy lehet, ha nem szeretné helyezni a az operációs rendszer virtuális Merevlemezt a prémium szintű Storage-fiók.
+Prémium szintű Storage konfigurált új tárfiók létrehozásához szükséges. Figyelje meg, hogy a storage-fiók nem egyedi virtuális merevlemezek, a prémium szintű Storage használata van beállítva azonban a DS * adatsorozat virtuális gépek használatakor csatolhat a VHD-k a prémium és standard szintű tárolást fiókokhoz. A érdemes lehet, hogy lehet, ha nem szeretné helyezni a az operációs rendszer virtuális Merevlemezt a prémium szintű Storage-fiók.
 
 A következő **New-AzureStorageAccountPowerShell** parancsot a "Premium_LRS" **típus** hoz létre a prémium szintű Storage-fiókok:
 
@@ -111,7 +111,7 @@ Mivel másik gyorsítótármappa beállítás javaslatok csatolt VHD-k, dönthet
 >
 >
 
-Azonban, amelyek össze több virtuális merevlemezzel, akkor tekintse meg a Windows a tárolóhelyek használata a eredeti parancsfájlok azonosításához, amelyek csatlakoztatott virtuális merevlemezek olyan milyen adott készletben, így után beállíthatja a gyorsítótár beállításait ennek megfelelően az egyes lemezek.
+Azonban, amelyek össze több virtuális merevlemezzel kell tekintse meg a Windows a tárolóhelyek használata a eredeti parancsfájlok azonosításához, amelyek csatlakoztatott virtuális merevlemezek olyan milyen adott készletben, így után beállíthatja a gyorsítótár beállításait ennek megfelelően az egyes lemezek.
 
 Nincs elérhető mutatjuk be, amely a VHD-k leképezi a tárolókészlet eredeti parancsfájlt, ha az alábbi lépések segítségével határozza meg a lemez tárolási készlet leképezési.
 
@@ -138,14 +138,14 @@ Az egyes lemezek tegye a következőket:
 
 Most már használhatja ezt az információt, rendelje hozzá a VHD-k csatolva tárolókészletek a fizikai lemezek.
 
-Virtuális merevlemezek tárolókészletek a fizikai lemezek leképezése után, majd is leválasztani és keresztül másolja őket a prémium szintű Storage-fiók, majd csatolja őket a megfelelő gyorsítótár-beállításokkal. Lásd: a példában a [függelék](#appendix-migrating-a-multisite-always-on-cluster-to-premium-storage), 8 – 12 lépést. A lépések bemutatják, hogyan bontsa ki a virtuális gép csatlakoztatott virtuális merevlemez lemezkonfigurációt CSV-fájlba, másolja a VHD-k, a lemez konfigurációs gyorsítótár beállításainak módosításához és végül telepítse újra a virtuális gép sorozataként DS VM a csatlakoztatott lemezeket.
+Virtuális merevlemezek tárolókészletek a fizikai lemezek leképezése után, majd is leválasztani és keresztül másolja őket a prémium szintű Storage-fiók, majd csatolja őket a megfelelő gyorsítótár-beállításokkal. A következő példa a a [függelék](#appendix-migrating-a-multisite-always-on-cluster-to-premium-storage), 8 – 12 lépést. A lépések bemutatják, hogyan bontsa ki a virtuális gép csatlakoztatott virtuális merevlemez lemezkonfigurációt CSV-fájlba, másolja a VHD-k, a lemez konfigurációs gyorsítótár beállításainak módosításához és végül telepítse újra a virtuális gép sorozataként DS VM a csatlakoztatott lemezeket.
 
 ### <a name="vm-storage-bandwidth-and-vhd-storage-throughput"></a>Virtuális gép tárolási sávszélesség és a virtuális merevlemez tárolási teljesítmény
-A tárolási teljesítményt mértékét megadott DS * Virtuálisgép-méret és a virtuális merevlemez méretét. A virtuális gépek rendelkeznek, különböző juttatások csatolt VHD-k számát és a maximális sávszélesség (MB/s) támogatja azokat. Tekintse meg az adott sávszélesség számok [virtuális gépek és Felhőszolgáltatások mérete az Azure-](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+A tárolási teljesítményt mértékét megadott DS * Virtuálisgép-méret és a virtuális merevlemez méretét. A virtuális gépek különböző juttatások csatolt VHD-k számát és a maximális sávszélesség (MB/s) támogatják-e rendelkeznie. Tekintse meg az adott sávszélesség számok [virtuális gépek és Felhőszolgáltatások mérete az Azure-](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 Nagyobb IOPS mérete nagyobb a érhetők el. Ez akkor érdemes megfontolni, amikor az áttelepítési útvonalának. További információkért [lásd a táblázatot IOPS és lemeztípusok](../premium-storage.md#scalability-and-performance-targets).
 
-Mindemellett érdemes lehet megfontolnia, virtuális gépek támogatják az összes csatolt lemezek különböző maximális lemez sávszélesség rendelkezik-e. Nagy terhelés a maximális sávszélesség álljon rendelkezésre a Virtuálisgép-szerepkör méretéhez sikerült telítsük. Például egy Standard_DS14 támogatja legfeljebb 512 MB/s. három P30 lemezzel, ezért a virtuális lemez sávszélességét telítsük sikerült. De ebben a példában az átviteli sebesség korlátja sikerült túllépve, attól függően, hogy olvasási és írási IOs kombinációját.
+Végül fontolja meg, a virtuális gépek rendelkezik-e, amely támogatja a csatlakoztatott lemezek különböző maximális lemez sávszélesség. Nagy terhelés a maximális sávszélesség álljon rendelkezésre a Virtuálisgép-szerepkör méretéhez sikerült telítsük. Például egy Standard_DS14 támogatja legfeljebb 512 MB/s. három P30 lemezzel, ezért a virtuális lemez sávszélességét telítsük sikerült. De ebben a példában az átviteli sebesség korlátja sikerült túllépve, attól függően, hogy olvasási és írási IOs kombinációját.
 
 ## <a name="new-deployments"></a>Új központi telepítéséhez
 A következő két szakaszok bemutatják, hogyan telepítheti az SQL Server VMs prémium szintű Storage. Ahogy korábban említettük, nem feltétlenül kell elhelyezni az operációsrendszer-lemezképet, a prémium szintű storage. Akkor célszerű használni, ha bármely intenzív IO munkaterhelések helyezze az operációs rendszer virtuális merevlemez szándékos volt ehhez.
@@ -197,7 +197,7 @@ Az alábbi példa bemutatja, hogyan helyezze el az operációs rendszer virtuál
     New-AzureStorageContainer -Name $containerName -Context $xioContext
 
 #### <a name="step-5-placing-os-vhd-on-standard-or-premium-storage"></a>5. lépés: az operációs rendszer virtuális Merevlemezt a Standard vagy prémium szintű Storage helyezi el.
-    #NOTE: Set up subscription and default storage account which will be used to place the OS VHD in
+    #NOTE: Set up subscription and default storage account which is used to place the OS VHD in
 
     #If you want to place the OS VHD Premium Storage Account
     Set-AzureSubscription -SubscriptionName $mysubscription -CurrentStorageAccount  $newxiostorageaccountname  
@@ -232,7 +232,7 @@ Az alábbi példa bemutatja, hogyan helyezze el az operációs rendszer virtuál
     $vmConfigsl = New-AzureVMConfig -Name $vmName -InstanceSize $newInstanceSize -ImageName $image  -AvailabilitySetName $availabilitySet  ` | Add-AzureProvisioningConfig -Windows ` -AdminUserName $userName -Password $pass | Set-AzureSubnet -SubnetNames $subnet | Set-AzureStaticVNetIP -IPAddress $ipaddr
 
     #Add Data and Log Disks to VM Config
-    #Note the size specified ‘-DiskSizeInGB 1023’, this will attach 2 x P30 Premium Storage Disk Type
+    #Note the size specified ‘-DiskSizeInGB 1023’, this attaches 2 x P30 Premium Storage Disk Type
     #Utilising the Premium Storage enabled Storage account
 
     $vmConfigsl | Add-AzureDataDisk -CreateNew -DiskSizeInGB 1023 -LUN 0 -HostCaching "ReadOnly"  -DiskLabel "DataDisk1" -MediaLocation "https://$newxiostorageaccountname.blob.core.windows.net/vhds/$vmName-data1.vhd"
@@ -316,7 +316,7 @@ Itt hoz létre a virtuális Gépet a lemezkép és a VHD-k két Premium Storage:
     $subnet = "Clients"
     $ipaddr = "192.168.0.41"
 
-    #This will need to be a new cloud service
+    #This needs to be a new cloud service
     $destcloudsvc = "danregsvcamsxio2"
 
     #Use to DS Series VM
@@ -348,15 +348,15 @@ Itt hoz létre a virtuális Gépet a lemezkép és a VHD-k két Premium Storage:
 
 Nincsenek az Always On rendelkezésre állási csoportok és azok, amelyek nem használó SQL Server-telepítések kapcsolatos szempontokat. Ha nem használják a mindig bekapcsolva, és rendelkezik egy meglévő önálló SQL Server, prémium szintű Storage frissíthet egy új felhőalapú szolgáltatás és a tárolási fiók használatával. Vegye figyelembe a következő lehetőségeket:
 
-* **Hozzon létre egy új SQL Server virtuális gép**. Új SQL Server virtuális gép egy prémium szintű Storage-fiókot használó hozhat létre, az új központi megfelelően. Majd készítsen biztonsági másolatot, és az SQL Server-konfigurációs és felhasználói adatbázisok visszaállítása. Az alkalmazás kell frissíteni, hogy az új SQL Server hivatkoznak, ha azt kívül és belül is hozzáférnek. Minden "kívül db" objektumok másolja, mintha csinált (SxS) SQL Server párhuzamos áttelepítés kellene. Ez magában foglalja az objektumok, például a bejelentkezési adatok, a tanúsítványokat és a csatolt kiszolgálók.
-* **Telepítse át a meglévő SQL Server virtuális**. Ehhez szükséges az SQL Server virtuális gép offline állapotba helyezése, majd áthelyezte azt egy új felhőalapú szolgáltatás, mely tartalmazza, másolja a csatlakoztatott virtuális merevlemezek mindegyikét a prémium szintű Storage-fiók. A virtuális gép online állapotba kerül, ha az alkalmazás a kiszolgáló állomásneve, mielőtt hivatkozik. Vegye figyelembe, hogy a meglévő lemez mérete befolyásolja a teljesítményt nyújt. Például egy 400 GB lemezterület lekérdezi kerekíti egy P20. Ha tudja, hogy nincs szüksége a lemez teljesítménye akkor képes a virtuális Gépet a DS adatsorozat virtuális gépként hozza létre, és csatolja a prémium szintű Storage VHD-k az mérete/teljesítmény specifikáció van szüksége. Ezután leválasztása sikerült, és csatlakoztassa újra az SQL-adatbázis a fájlokat.
+* **Hozzon létre egy új SQL Server virtuális gép**. Új SQL Server virtuális gép egy prémium szintű Storage-fiókot használó hozhat létre, az új központi megfelelően. Majd biztonsági mentéséhez, és az SQL Server konfigurációs és a felhasználó adatbázisok helyreállításához. Az alkalmazást kell frissíteni, hogy az új SQL Server hivatkoznak, ha azt kívül és belül is hozzáférnek. Minden "kívül db" objektumok másolja, mintha csinált (SxS) SQL Server párhuzamos áttelepítés kellene. Ez magában foglalja az objektumok, például a bejelentkezési adatok, a tanúsítványokat és a csatolt kiszolgálók.
+* **Telepítse át a meglévő SQL Server virtuális**. Ehhez szükséges, az SQL Server virtuális gép offline állapotba helyezése, majd áthelyezte azt egy új felhőalapú szolgáltatás, mely tartalmazza, másolja a csatlakoztatott virtuális merevlemezek mindegyikét a prémium szintű Storage-fiók. A virtuális gép online állapotba kerül, ha az alkalmazás hivatkozik, a kiszolgáló állomásneve, előtt. Vegye figyelembe, hogy a meglévő lemez mérete befolyásolja a teljesítményt nyújt. Például egy 400 GB lemezterület lekérdezi kerekíti egy P20. Ha tudja, hogy nincs szüksége a lemez teljesítménye akkor képes a virtuális Gépet a DS adatsorozat virtuális gépként hozza létre, és csatolja a prémium szintű Storage VHD-k az mérete/teljesítmény specifikáció van szüksége. Ezután leválasztása sikerült, és csatlakoztassa újra az SQL-adatbázis a fájlokat.
 
 > [!NOTE]
-> Érdemes figyelembe méretétől függően a mérete, a virtuális merevlemez a lemezek másolásának azt jelenti, hogy prémium szintű tároló lemez típusát esnek, ez határozza meg a lemez teljesítménye megadását. Mentés a legközelebbi lemezre round Azure lesz mérete, így ha egy 400 GB lemezterület, ez kerekíti az egy P20. Attól függően, hogy a meglévő IO-követelményeket az operációs rendszer virtuális merevlemez nincs szükség lehet át ezt a prémium szintű Storage-fiók.
+> Amikor kell ügyelnie méretétől függően a mérete, a virtuális merevlemez a lemezek másolásának azt jelenti, hogy a prémium szintű tároló lemez típusát esnek, ez határozza meg a lemez teljesítménye megadását. Az Azure kerekítése a legközelebbi lemez méretét, akár úgy egy 400 GB lemezterület, akkor ez felfelé kerekíti a P20. Attól függően, hogy a meglévő IO-követelményeket az operációs rendszer virtuális merevlemez nincs szükség lehet át ezt a prémium szintű Storage-fiók.
 >
 >
 
-Ha az SQL Server külsőleg érhető el, a cloud service VIP változik. Is kell frissítés végpontok, a hozzáférés-vezérlési listák és a DNS-beállításait.
+Ha az SQL Server külsőleg érhető el, majd a felhőalapú szolgáltatás VIP megváltozik. Is a záró pontot, a hozzáférés-vezérlési listák és a DNS-beállításait.
 
 ## <a name="existing-deployments-that-use-always-on-availability-groups"></a>Always On rendelkezésre állási csoportok használó meglévő központi telepítések
 > [!NOTE]
@@ -364,7 +364,7 @@ Ha az SQL Server külsőleg érhető el, a cloud service VIP változik. Is kell 
 >
 >
 
-Kezdetben ebben a szakaszban követően áttekintjük hogyan Always On Azure hálózatkezelési működjön. Azt fogja majd lebontva két olyan eset az áttelepítés: áttelepítéseket, ahol is megengedett némi állásidővel, és áttelepítéseket, ahol minimális állásidővel kell elérni.
+Kezdetben ebben a szakaszban úgy tekintünk, hogyan Always On Azure hálózatkezelési működjön. Azt majd lebontva két olyan eset az áttelepítés: áttelepítéseket, ahol is megengedett némi állásidővel, és áttelepítéseket, ahol minimális állásidővel kell elérni.
 
 A helyszíni SQL Server Always On rendelkezésre állási csoportok használatára a figyelő a helyi, amely egy virtuális DNS-nevet egy IP-cím, egy vagy több SQL Server-kiszolgálók között megosztott együtt regisztrálja. Ha az ügyfelek csatlakoznak a figyelő az elsődleges SQL-kiszolgáló IP-keresztül halad. Ez az a kiszolgáló, amely a mindig az IP-erőforrás tulajdonosa adott időpontban.
 
@@ -373,7 +373,7 @@ A helyszíni SQL Server Always On rendelkezésre állási csoportok használatá
 A Microsoft Azure lehet hozzárendelni egy hálózati Adaptert a virtuális Gépen csak egy IP-címet így az ugyanazon a helyszínen, mint absztrakciós réteget eléréséhez Azure használja az IP-cím, amely hozzá van rendelve a belső/külső terheléselosztó (ILB/ELB). Az IP-erőforrás, amelyet a kiszolgálók között, a ILB-/ ELB azonos IP-van beállítva. Ez a DNS-ben közzétett és ügyfélforgalmat a ILB-/ ELB azt az SQL-kiszolgáló elsődleges replikára továbbítja. A ILB-/ ELB tudja, melyik SQL Server elsődleges óta mintavételt számára, hogy megvizsgálja a mindig az IP-erőforrást használ. Az előző példában azt mintavétel az üzembe helyezett ELB/ILB által hivatkozott végpont minden csomópont, a attól válaszol az elsődleges SQL-kiszolgáló.
 
 > [!NOTE]
-> A Példánynak és üzembe helyezett ELB mindkét rendelt adott Azure cloud Service szolgáltatásra, ezért bármely áttelepülés a felhőbe az Azure-ban lesz valószínűleg azt jelenti, hogy a Load Balancer IP változik.
+> A Példánynak és üzembe helyezett ELB is egy adott Azure rendelt felhőalapú szolgáltatás, ezért bármely áttelepülés a felhőbe az Azure valószínűleg azt jelenti, hogy a Load Balancer IP változik.
 >
 >
 
@@ -390,7 +390,7 @@ Egyik stratégia, hogy több másodlagos adatbázis hozzáadása az Always On re
 * A fürt ellenőrzése.
 * Új másodlagos adatbázis-tesztelési mindig a feladatátvételt.
 
-Használata Windows Tárolókészletek a virtuális Gépen belül magasabb IO átviteli sebesség eléréséhez, akkor a rendszer offline állapotra állítja a teljes fürt ellenőrzése során. A teszttel ellenőrizheti, ha a csomópontok hozzáadása a fürthöz. A teszt futtatása szükséges idő változhat, így kell tesztelje, hogy mennyi ideig Ez eltarthat egy megközelítőleges időpont, amikor a beolvasandó reprezentatív tesztelési környezetben.
+Ha használja a virtuális Gépen belül Windows Tárolókészletek IO nagyobb átviteli teljesítményt, akkor a rendszer offline állapotba kerül a teljes fürt ellenőrzése során. A teszttel ellenőrizheti, ha a csomópontok hozzáadása a fürthöz. A teszt futtatása szükséges idő változhat, így kell tesztelje a reprezentatív tesztkörnyezetet beolvasni egy hozzávetőleges idejét mennyi ideig Ez időt vesz igénybe.
 
 Idő, ahol végezheti el kézi feladatátvételre és tesztelési chaos csomóponton az újonnan hozzáadott magas rendelkezésre állású mindig a funkciók a várt módon kell telepíteni.
 
@@ -425,7 +425,7 @@ Idő, ahol végezheti el kézi feladatátvételre és tesztelési chaos csomópo
 ##### <a name="advantages"></a>Előnyei
 * Új SQL-kiszolgálók lehet tesztelni (SQL Server alkalmazás) előtt mindig a történő hozzáadásuk.
 * Módosítsa a Virtuálisgép-méretet, és testre szabhatja a tárolót az pontos igényeinek megfelelően. Azonban hasznos lenne azonos tartani az SQL teljes elérési utat.
-* Az adatbázis biztonsági mentések átvitele a másodlagos replikák elkezdésének szabályozhatja. Ez eltér az Azure használatával **Start-AzureStorageBlobCopy** parancsmag VHD-k, másolása, mert ez egy aszinkron másolatot.
+* Azt is szabályozhatja az adatbázis biztonsági mentések átvitele a másodlagos replikák indításakor. Ez eltér az Azure használatával **Start-AzureStorageBlobCopy** parancsmag VHD-k, másolása, mert ez egy aszinkron másolatot.
 
 ##### <a name="disadvantages"></a>Hátrányok
 * Windows Tárolókészletek használata esetén nincs fürt állásidő az új további csomópontokat a teljes fürt ellenőrzése során.
@@ -468,7 +468,7 @@ A minimális állásidő érdekében egyik stratégia, hogy egy meglévő felhő
 * Ha választja, a fürt mindig a csoport offline állapotba ki az IP-címek felcserélése, nincs további állásidő. Ez a hozzáadott IP-cím erőforrás egy OR függőségi és a lehetséges tulajdonosok használatával elkerülheti a. A "Hozzáadás IP-cím erőforrás ugyanazon az alhálózaton" című része a [függelék](#appendix-migrating-a-multisite-always-on-cluster-to-premium-storage).
 
 > [!NOTE]
-> Ha azt szeretné, hogy a hozzáadott részt vesz a partnerként mindig a feladatátvevő csomópont kell egy hivatkozást a terhelés eloszlik beállítása az Azure végpont hozzáadása. Amikor futtatja a **Add-AzureEndpoint** ehhez parancsot, nyissa meg a jelenlegi kapcsolatok maradjon, de a figyelő új kapcsolatot nem fogja tudni hozható létre, amíg a terheléselosztó frissítette. A tesztelés ez fordult elő az elmúlt 90-120seconds, ez kell vizsgálni.
+> Ha azt szeretné, hogy a hozzáadott részt vesz a partnerként mindig a feladatátvevő csomópont kell egy hivatkozást a terhelés eloszlik beállítása az Azure végpont hozzáadása. Amikor futtatja a **Add-AzureEndpoint** ehhez parancsot, nyissa meg a jelenlegi kapcsolatok maradjon, de a figyelő új kapcsolatot nem képesek hozható létre, amíg a terheléselosztó frissítette. A tesztelés ez fordult elő az elmúlt 90-120seconds, ez kell vizsgálni.
 >
 >
 
@@ -480,8 +480,8 @@ A minimális állásidő érdekében egyik stratégia, hogy egy meglévő felhő
 
 ##### <a name="disadvantages"></a>Hátrányok
 * Nincs magas rendelkezésre ÁLLÁSÚ és vész-Helyreállítási átmenetileg megszakad az áttelepítés során.
-* Ez ugyanis egy 1:1-áttelepítés, a minimális virtuális gép mérete által támogatott virtuális merevlemezek, a száma, ezért nem lehet a virtuális gépek downsize használni fog.
-* Ebben a forgatókönyvben szeretné használni az Azure **Start-AzureStorageBlobCopy** parancsmag, amely aszinkron. Nincs nincs SLA-t a Másolás befejezése. A példányok idő változó, amíg ez függ a várakozási sorban is függ a mennyiségű adatot továbbít. A másolási idő növeli a Ha az adatátvitelt lesz egy másik Azure-adatközponthoz, amely támogatja a prémium szintű Storage egy másik régióban. Ha csak 2 csomópontok, inkább egy lehetséges megoldás, abban az esetben a Másolás tovább tart, mint a tesztelés. Ez magában foglalhatja a következő ötleteket.
+* Mivel ez egy 1:1 áttelepítési, kell használni egy minimális Virtuálisgép-méretet, amely támogatja a virtuális merevlemezek, a száma, így nem lehet a virtuális gépek downsize.
+* Ebben a forgatókönyvben szeretné használni az Azure **Start-AzureStorageBlobCopy** parancsmag, amely aszinkron. Nincs nincs SLA-t a Másolás befejezése. A példányok idő változó, amíg ez függ a várakozási sorban is függ, a mennyiségű adatot továbbít. A másolási idő növeli a Ha az adatátvitelt lesz egy másik Azure-adatközponthoz, amely támogatja a prémium szintű Storage egy másik régióban. Ha csak 2 csomópontok, inkább egy lehetséges megoldás, abban az esetben a Másolás tovább tart, mint a tesztelés. Ez magában foglalhatja a következő ötleteket.
   * Adja hozzá egy ideiglenes 3. az SQL Server-csomópont a magas rendelkezésre ÁLLÁSÚ egyeztetett állásidővel az áttelepítés előtt.
   * Futtassa az áttelepítés Azure ütemezett karbantartás kívül.
   * Győződjön meg arról, a fürt kvóruma megfelelően konfigurálta-e.  
@@ -523,8 +523,8 @@ Vegye figyelembe a következő példa egy hibrid mindig a konfiguráció:
 
 ##### <a name="disadvantages"></a>Hátrányok
 * Attól függően, hogy az ügyfél-hozzáférési az SQL-kiszolgálón lehet nagyobb késéseket amikor SQL Server egy másik tartományvezérlő futtatja az alkalmazást.
-* A másolási idő a VHD-k prémium szintű Storage hosszú lehet. Ez befolyásolhatja a döntést kell-e őrizni a csomópont a rendelkezésre állási csoportban. Megfontolandó szempontok a amikor napló intenzív feladata betölti az áttelepítés során futnak, mivel az elsődleges csomópont kell tartani a árvává tranzakciókat a tranzakciónaplóban. Ezért ez sikerült jelentősen megnő.
-* Ebben a forgatókönyvben szeretné használni az Azure **Start-AzureStorageBlobCopy** parancsmag, amely aszinkron. Nincs nincs SLA befejezését követően. A példányok idő változik, ez függ a várakozási sorban, miközben is függ a mennyiségű adatot továbbít. Ezért csak egy csomópont van a 2. adatközpontban, abban az esetben a Másolás tovább tart, mint a tesztelés megoldás lépéseket kell tennie. Ez magában foglalhatja a következő ötleteket.
+* A másolási idő a VHD-k prémium szintű Storage hosszú lehet. Ez befolyásolhatja a döntést kell-e őrizni a csomópont a rendelkezésre állási csoportban. Megfontolandó szempontok a amikor napló intenzív feladata betölti az áttelepítés során futnak, mivel az elsődleges csomópont csak a árvává tranzakciók megtartja a tranzakciós napló. Ezért ez sikerült jelentősen megnő.
+* Ebben a forgatókönyvben szeretné használni az Azure **Start-AzureStorageBlobCopy** parancsmag, amely aszinkron. Nincs nincs SLA befejezését követően. A példányok idő változik, ez függ a várakozási sorban, miközben a mennyiségű adatot továbbít a is függ. Ezért csak egy csomópont van a 2. adatközpontban, abban az esetben a Másolás tovább tart, mint a tesztelés megoldás lépéseket kell tennie. A kárenyhítési lépések közé tartozik a következő tippeket:
   * Adja hozzá a 2. az SQL ideiglenes csomópontot a magas rendelkezésre ÁLLÁSÚ egyeztetett állásidővel az áttelepítés előtt.
   * Futtassa az áttelepítés Azure ütemezett karbantartás kívül.
   * Győződjön meg arról, a fürt kvóruma megfelelően konfigurálta-e.
@@ -546,7 +546,7 @@ Ez a forgatókönyv feltételezi, hogy rendelkezik saját telepítési dokument�
 * Váltás a AFP SQL1 és SQL2
 
 ## <a name="appendix-migrating-a-multisite-always-on-cluster-to-premium-storage"></a>Függelék: A prémium szintű Storage mindig a fürt egy többhelyes áttelepítése
-Ez a témakör további része a többhelyes mindig a fürt átalakítani a prémium szintű Storage egy részletes példát biztosít. Is átalakítja a figyelő a külső terheléselosztással (ELB) egy belső terheléselosztón (ILB).
+Az a cikk hátralévő része a többhelyes mindig a fürt átalakítani a prémium szintű Storage egy részletes példát biztosít. Is átalakítja a figyelő a külső terheléselosztással (ELB) egy belső terheléselosztón (ILB).
 
 ### <a name="environment"></a>Környezet
 * Windows 2k12 / SQL 2k12
@@ -556,7 +556,7 @@ Ez a témakör további része a többhelyes mindig a fürt átalakítani a pré
 ![Appendix1][11]
 
 ### <a name="vm"></a>VM:
-Ebben a példában fogjuk áthelyezése egy üzembe helyezett ELB ILB bemutatása. Üzembe helyezett ELB volt elérhető ILB, mielőtt, így ez azt jelenti, hogy hogyan lehet váltani a az áttelepítés során.
+Ebben a példában fogjuk áthelyezése egy üzembe helyezett ELB a ILB történő bemutatása. Üzembe helyezett ELB volt elérhető ILB, mielőtt, így ez azt jelenti, hogy hogyan lehet váltani a Példánynak az áttelepítés során.
 
 ![Appendix2][12]
 
@@ -600,8 +600,8 @@ Ebben a példában fogjuk áthelyezése egy üzembe helyezett ELB ILB bemutatás
     $destcloudsvc = "danNewSvcAms"
     New-AzureService $destcloudsvc -Location $location
 
-#### <a name="step-2-increase-the-permitted-failures-on-resources-optional"></a>2. lépés: Az erőforrás engedélyezett hibák növelése<Optional>
-Bizonyos erőforrások, amelyek az Always On rendelkezésre állási csoportnak nincsenek korlátozások a hány sikertelen végrehajtása esetén, amelyek adott időszakban, amikor a Fürtszolgáltatás megpróbálja újraindítani az erőforráscsoport fordul elő. Növeli a miközben meg van útmutató alapján ez az eljárás óta Ha ezt elmulasztja manuálisan eseményindító és feladatátvételi feladatátvételek állítja le ezt a határt hamarosan kaphat gépek ajánlott.
+#### <a name="step-2-increase-the-permitted-failures-on-resources-optional"></a>2. lépés: Az erőforrás engedélyezett hibák növelése <Optional>
+Bizonyos erőforrások, amelyek az Always On rendelkezésre állási csoportnak nincsenek korlátozások a hány sikertelen végrehajtása esetén, amelyek adott időszakban, ahol a fürt próbálja meg újraindítani az erőforráscsoport fordul elő. Növeli a miközben meg van útmutató alapján ez az eljárás óta Ha ezt elmulasztja manuálisan eseményindító és feladatátvételi feladatátvételek állítja le ezt a határt hamarosan kaphat gépek ajánlott.
 
 A hiba támogatást ehhez a Feladatátvevőfürt-kezelőben, kétszeres körültekintő lenne keresse fel a mindig bekapcsolva erőforráscsoport tulajdonságait:
 
@@ -609,23 +609,23 @@ A hiba támogatást ehhez a Feladatátvevőfürt-kezelőben, kétszeres körült
 
 Módosítsa a maximális hibák 6.
 
-#### <a name="step-3-addition-ip-address-resource-for-cluster-group-optional"></a>3. lépés: IP-cím hozzáadása erőforrás fürt csoport<Optional>
-Ha csak egy IP-cím a fürt csoport, és ez a felhő alhálózati igazodik, ügyeljen arra, ha véletlenül kapcsolat nélküli minden fürtcsomópontnak a felhőben, majd a fürt IP-erőforrás a hálózaton, és a fürt hálózati neve nem lesz képes online állapotba. Esetén ez megakadályozza majd frissítések a fürt más erőforrásai.
+#### <a name="step-3-addition-ip-address-resource-for-cluster-group-optional"></a>3. lépés: IP-cím hozzáadása erőforrás fürt csoport <Optional>
+Ha csak egy IP-címet a fürtcsoportban, és ez a felhő alhálózati igazodik a, ügyeljen arra, ha véletlenül kapcsolat nélküli minden fürtcsomópontnak a felhőben a hálózat a fürt IP- és hálózati fürtnév rendszer nem fogja tudni online állapotba. Ebben a helyzetben a fürt más erőforrásai megakadályozza a frissítéseket.
 
 #### <a name="step-4-dns-configuration"></a>4. lépés: DNS-konfiguráció
-Zavartalan végrehajtásához átmenet attól függ, hogyan DNS folyamatban van szükség, és frissíti.
-Mindig telepítve van, ha létrehoz egy Windows fürterőforrás-csoporthoz, ha Feladatátvevőfürt-kezelő megnyitásához jelenik meg, hogy legalább három erőforrások lesz, a kettő, hogy a dokumentum hivatkozik:
+Végrehajtási sima átmenet, attól függ, hogyan DNS folyamatban van szükség, és frissíti.
+Mindig telepítve van, ha létrehoz egy Windows fürterőforrás-csoporthoz, ha a Feladatátvevőfürt-kezelő megnyitásához arról, hogy legalább három erőforrással rendelkezik, a kettő, a dokumentum hivatkozó:
 
-* Virtuális hálózat neve (VNN) – Ez az a DNS-nevét, hogy az ügyfélszámítógépek csatlakozhatnak, ha szeretne csatlakozni az SQL Server Always On keresztül.
-* IP-cím erőforrás – Ez a VNN társított IP-cím, több is van, és többhelyes konfigurációban hely/alhálózatot / IP-cím lesz.
+* Virtuális hálózat neve (VNN) – a DNS-nevét, amely az ügyfelek csatlakozhatnak, ha szeretne csatlakozni az SQL Server Always On keresztül.
+* IP-cím erőforrás – az IP-cím, amely a VNN társított, több is van, és többhelyes konfigurációban van hely/alhálózatot / IP-címet.
 
-Ha a Kapcsolódás az SQL Server, az SQL Server Client illesztőprogram lekéri a DNS-rekordokat, a figyelő társított, és csatlakozni próbálnak minden mindig a hozzárendelt IP-cím, alatt arról lesz szó néhány befolyásoló tényezők is ez.
+Amikor csatlakozik az SQL Server, az SQL Server Client illesztőprogram kéri le a DNS-rekordokat, a figyelő társított, és megpróbál csatlakozni minden mindig a hozzárendelt IP-cím. Ezután arról lesz szó néhány befolyásoló tényezők is ez.
 
 A figyelő neve társított egyidejű DNS-rekordok száma attól függ, nem csak kapcsolódó, IP-címek száma, de a "RegisterAllIpProviders'setting a Feladatátvételi fürtszolgáltatás az Always ON VNN erőforrás.
 
 Ha telepít mindig az Azure-ban különböző lépést a figyelő és IP-címek létrehozása, kell manuálisan konfigurálnia a "RegisterAllIpProviders' 1, ez eltér a egy helyszíni mindig a telepítés már állítottak 1.
 
-Ha a "RegisterAllIpProviders" értéke 0, majd csak akkor jelenik meg egy a figyelő társított DNS-rekordot a DNS-ben:
+Ha "RegisterAllIpProviders" 0, akkor csak akkor jelenik meg egy DNS-rekordot a DNS-ben a figyelő társított:
 
 ![Appendix4][14]
 
@@ -633,7 +633,7 @@ Ha 'RegisterAllIpProviders' 1:
 
 ![Appendix5][15]
 
-Az alábbi kódot fogja írassa ki a VNN beállítások és állítsa be az Ön, Megjegyzés: a változtatás érvénybe léptetéséhez szüksége lesz a VNN offline állapotba, és kapcsolja vissza online-e véve a figyelő offline állapotban, amely az ügyfél-kapcsolódási problémákat.
+Az alábbi kódot ki a VNN beállítások listázása, és beállítja azt. A módosítás érvényre szeretné a VNN offline állapotba, és kapcsolja be újra online. Ez a figyelő időt vesz igénybe offline okozó ügyfél kapcsolat megszűnésének.
 
     ##Always On Listener Name
     $ListenerName = "Mylistener"
@@ -642,9 +642,9 @@ Az alábbi kódot fogja írassa ki a VNN beállítások és állítsa be az Ön,
     ##Set RegisterAllProvidersIP
     Get-ClusterResource $ListenerName| Set-ClusterParameter RegisterAllProvidersIP  1
 
-Egy későbbi lépésben áttelepítési kell frissíteni a mindig bekapcsolva figyelő frissített IP-címet, amely a használatával hivatkozik a terheléselosztó Ez magában foglalja az IP-cím erőforrás eltávolítása és hozzáadását. Az IP-frissítés után ellenőrizze az új IP-címet a DNS-zónában frissítették, és, hogy az ügyfelek frissítése a helyi gyorsítótárban kell.
+Egy későbbi lépésben áttelepítési frissítenie kell a mindig bekapcsolva figyelő frissített IP-címet, amely hivatkozik a terheléselosztó, ebbe beletartozik egy IP-cím erőforrás eltávolítása és hozzáadását. Az IP-frissítés után ellenőrizze az új IP-címet a DNS-zónában frissítették, és, hogy az ügyfelek frissítése a helyi gyorsítótárban kell.
 
-Ha az ügyfelek egy másik hálózati szegmensben találhatók, és egy másik DNS-kiszolgáló hivatkozik, akkor fontolja meg, mi történik, DNS-zóna átviteli kapcsolatos az áttelepítés során az alkalmazás csatlakozzon újra, akkor fog megtörténni által korlátozott legalább bármely a zóna átviteli idő a figyelő új IP-címet. Ha itt időkorlát alatt, érdemes tárgyalja, és a Windows-csoportok egy növekményes zónaletöltés kényszerítése, és a DNS-állomásrekord is helyezheti a egy alacsonyabb élettartam (TTL), ezért az ügyfelek frissítése. További információkért lásd: [növekményes zónaátvitelek](https://technet.microsoft.com/library/cc958973.aspx) és [Start-DnsServerZoneTransfer](https://technet.microsoft.com/library/jj649917.aspx).
+Ha az ügyfelek egy másik hálózati szegmensben találhatók, és egy másik DNS-kiszolgáló hivatkozik, fontolja meg, mi történik, DNS-zóna átviteli kapcsolatos az áttelepítés során, az alkalmazás csatlakozzon újra idő kell legalább a zóna átviteli idő bármely új IP-korlátozza a figyelő címtartományát. Ha itt időkorlát alatt, érdemes tárgyalja, és a Windows-csoportok egy növekményes zónaletöltés kényszerítése, és a DNS-állomásrekord is helyezheti a egy alacsonyabb élettartam (TTL), ezért az ügyfelek frissítése. További információkért lásd: [növekményes zónaátvitelek](https://technet.microsoft.com/library/cc958973.aspx) és [Start-DnsServerZoneTransfer](https://technet.microsoft.com/library/jj649917.aspx).
 
 Az élettartam a DNS-rekord, a figyelő az Always On Azure társított alapértelmezés az 1200-as másodperc. Kezdésként érdemes lehet csökkenteni Ez a korlátozás ahhoz, hogy az ügyfelek az áttelepítés során frissítse a DNS a frissített IP-cím a figyelő időpontja esetén. Tekintse meg, és a konfiguráció módosítása a VNN konfigurációjának kimenő okai:
 
@@ -656,15 +656,16 @@ Az élettartam a DNS-rekord, a figyelő az Always On Azure társított alapérte
     #Set HostRecordTTL Examples
     Get-ClusterResource $ListenerName| Set-ClusterParameter -Name "HostRecordTTL" 120
 
-Vegye figyelembe, minél kisebb a "HostRecordTTL", a DNS-forgalom nagyobb mennyiségű történik.
+> [!NOTE]
+> Minél alacsonyabb HostRecordTTL, a DNS-forgalom nagyobb mennyiségű következik be.
 
 ##### <a name="client-application-settings"></a>Ügyfél-Alkalmazásbeállítások
-Ha az SQL-ügyfélalkalmazást támogatja a .net 4.5 SQLClient, akkor használhatja "MULTISUBNETFAILOVER = TRUE" kulcsszót, ez ajánlott kell alkalmazni, mivel lehetővé teszi a gyorsabb kapcsolat SQL Always On rendelkezésre állási csoportnak a feladatátvétel során. A mindig bekapcsolva figyelő párhuzamosan társított összes IP-címek keresztül enumerálása, és átadta szigorúbb TCP-kapcsolat újrapróbálkozási sebességét.
+Ha az SQL-ügyfélalkalmazást támogatja a .net 4.5 SQLClient, akkor használhatja "MULTISUBNETFAILOVER = TRUE" kulcsszó. Ezt a kulcsszót kell alkalmazni, mivel lehetővé teszi a gyorsabb kapcsolat SQL Always On rendelkezésre állási csoportnak a feladatátvétel során. A mindig bekapcsolva figyelő párhuzamosan társított összes IP-címek keresztül enumerálása, és átadta szigorúbb TCP-kapcsolat újrapróbálkozási sebességét.
 
-A fenti beállításokat kapcsolatos további információkért lásd: [MultiSubnetFailover kulcsszó és a kapcsolódó szolgáltatások](https://msdn.microsoft.com/library/hh213080.aspx#MultiSubnetFailover). Lásd még: [SqlClient támogatja a magas rendelkezésre állási, vészhelyreállítási](https://msdn.microsoft.com/library/hh205662\(v=vs.110\).aspx).
+Az előző beállításaival kapcsolatos további információkért lásd: [MultiSubnetFailover kulcsszó és a kapcsolódó szolgáltatások](https://msdn.microsoft.com/library/hh213080.aspx#MultiSubnetFailover). Lásd még: [SqlClient támogatja a magas rendelkezésre állási, vészhelyreállítási](https://msdn.microsoft.com/library/hh205662\(v=vs.110\).aspx).
 
 #### <a name="step-5-cluster-quorum-settings"></a>5. lépés: Fürt kvórumbeállításainak megadása
-Legalább egy SQL Server le egyszerre tart kívánja, módosítania kell a fürt Kvórum beállítása, 2-csomópontokkal fájl megosztási tanúsító (FSW) használata, állítsa be a kvórum csomóponttöbbség engedélyezése és felhasználását a dinamikus szavazás , és ezek lehetővé teszik a egyetlen csomópontot állandó marad.
+Legalább egy SQL Server le egyszerre tart kívánja, módosítania kell a fürt Kvórum beállítása, ha két csomópont fájl megosztási tanúsító (FSW) használatával, állítsa be a kvórum csomóponttöbbség engedélyezése és felhasználását a dinamikus szavazás , lehetővé teszi a egyetlen csomópontot állandó marad.
 
     Set-ClusterQuorum -NodeMajority  
 
@@ -676,15 +677,15 @@ Kezelését és konfigurálását a fürtkvórum további információkért lás
     #GET ACL Rules for Each EP, this example is for the Always On Endpoint
     Get-AzureVM -ServiceName $destcloudsvc -Name $vmNameToMigrate | Get-AzureAclConfig -EndpointName "myAOEndPoint-LB"  
 
-Mentse azokat a szövegfájl.
+Mentse ezt a szöveget egy fájlba.
 
 #### <a name="step-7-change-failover-partners-and-replication-modes"></a>7. lépés: Feladatátvételi partnerként és replikációs mód módosítása
-Ha 2-nél több SQL-kiszolgáló, "Szinkron" módosítsa a feladatátvételt egy másik másodlagos egy másik tartományvezérlő vagy a helyszíni és teszik az automatikus feladatátvételi Partner (AFP) kell, ez pedig, magas rendelkezésre ÁLLÁSÚ karbantartása, míg a módosításokat. Ezt megteheti a TSQL használatával is módosíthatja, ha a szolgáltatáshoz az SSMS:
+Ha több mint két SQL-kiszolgáló, "Szinkron" módosítsa a feladatátvételt egy másik másodlagos egy másik tartományvezérlő vagy a helyszíni és teszik az automatikus feladatátvételi Partner (AFP) kell, ez pedig, magas rendelkezésre ÁLLÁSÚ karbantartása, míg a módosításokat. Ezt megteheti a TSQL használatával is módosíthatja, ha a szolgáltatáshoz az SSMS:
 
 ![Appendix6][16]
 
 #### <a name="step-8-remove-secondary-vm-from-cloud-service"></a>8. lépés: Másodlagos virtuális gép eltávolítása a felhőalapú szolgáltatás
-Meg kell lennie áttelepítésének tervezése felhő másodlagos csomópont először, ha jelenleg az elsődleges, akkor kell kezdeményezni kézi feladatátvételre.
+Meg kell lennie áttelepítésének tervezése a felhő másodlagos csomópont először. Ha ez a csomópont jelenleg elsődleges, akkor kézi feladatátvételt kell kezdeményezni.
 
     $vmNameToMigrate="dansqlams2"
 
@@ -736,7 +737,7 @@ Meg kell lennie áttelepítésének tervezése felhő másodlagos csomópont el�
 #### <a name="step-9-change-disk-caching-settings-in-csv-file-and-save"></a>9. lépés: Lemez gyorsítótárazási beállítások a CSV-fájlban, és mentse
 A adatkötetek ezeket kell megadni csak OLVASHATÓ.
 
-TLOG kötetek ezeket érdemes lehet nincs értékűre állítani.
+TLOG kötetek ezeket kell lehet nincs értékűre állítani.
 
 ![Appendix7][17]
 
@@ -943,9 +944,9 @@ Ezen a ponton várja meg a másodlagos teljesen szinkronizálja újra a helyi cs
     Remove-AzureVM -ServiceName $sourceSvc -Name $vmNameToMigrate
 
 #### <a name="step-18-change-disk-caching-settings-in-csv-file-and-save"></a>18. lépés: Lemez gyorsítótárazási beállítások a CSV-fájlban, és mentse
-A adatkötetek ezeket kell megadni csak OLVASHATÓ.
+A adatkötetek a gyorsítótár beállításainak READONLY kell megadni.
 
-TLOG kötetek ezeket érdemes lehet nincs értékűre állítani.
+TLOG kötetek a gyorsítótár beállításainak nincs értékre kell állítani.
 
 ![Appendix11][21]
 
@@ -1073,22 +1074,22 @@ Az egyes blobok információt:
     #http://msdn.microsoft.com/library/azure/dn495192.aspx
 
 #### <a name="step-23-test-failover"></a>23. lépés: Feladatátvételi teszt
-Ha most hagyja, az áttelepített csomópont szinkronizálja a helyszíni mindig a csomóponttal, elhelyezéséhez szinkron replikáció módra, és várjon, amíg azt szinkronizálva. Ezután az első csomópontot a helyszínen a feladatátvétel áttelepíti, vagyis a AFP. Után, amely működött, módosítsa a AFP áttelepített utolsó csomópontja.
+Várjon, amíg az áttelepített csomópont szinkronizálja a helyszíni mindig a csomóponttal. Szinkron replikáció mód elhelyezése, és várjon, amíg azt szinkronizálva. Ezután az első csomópontot a helyszínen a feladatátvétel áttelepíti, vagyis a AFP. Után, amely működött, módosítsa a AFP áttelepített utolsó csomópontja.
 
 Feladatátvételi tesztek összes csomópontok között kell, és bár chaos tesztek annak biztosítása érdekében feladatátvételek work várt, egy időben manor futnak.
 
 #### <a name="step-24-put-back-cluster-quorum-settings--dns-ttl--failover-pntrs--sync-settings"></a>24. lépés: Helyezze vissza fürt kvórumbeállításainak megadása / DNS-élettartam / feladatátvételi Pntrs / szinkronizálási beállítások
 ##### <a name="adding-ip-address-resource-on-same-subnet"></a>Azonos alhálózatban lévő IP-cím erőforrás hozzáadása
-Ha csak 2 SQL-kiszolgálóval rendelkezik, és szeretne áttérni őket az új felhőalapú szolgáltatás, de szeretné, hogy továbbra is ugyanazon az alhálózaton, elkerülheti a figyelő offline véve törli az eredeti mindig az IP-címet, és adja hozzá az új IP-cím. Ha a virtuális gépeket telepít át egy másik alhálózat nem kell ehhez, mert egy további fürthálózat, alhálózaton hivatkozhat lesz.
+Ha csak két SQL-kiszolgáló és szeretne áttérni őket az új felhőalapú szolgáltatás, de szeretné, hogy továbbra is ugyanazon az alhálózaton, elkerülheti a figyelő offline véve törli az eredeti mindig az IP-címet, és adja hozzá az új IP-cím. Ha a virtuális gépeket telepít át egy másik alhálózatnak, nem kell, amíg egy fürt további hálózati által hivatkozott alhálózat ehhez.
 
 Miután a áttelepített másodlagos felvet és hozzáadni az új IP-cím erőforrás a meglévő elsődleges feladatátvétel előtt az új felhőalapú szolgáltatás, ezeket a lépéseket belül a Feladatátvevőfürt-kezelőt kell tennie:
 
 Adja hozzá az IP-cím, tekintse meg a [függelék](#appendix-migrating-a-multisite-alwayson-cluster-to-premium-storage), 14 lépésben.
 
-1. Az aktuális IP-cím erőforrás az alábbi példában "dansqlams4" a "Meglévő elsődleges SQL Server", a lehetséges tulajdonos módosítása:
+1. Az aktuális IP-cím erőforrás a példában "dansqlams4" a "Meglévő elsődleges SQL Server", a lehetséges tulajdonos módosítása:
 
     ![Appendix13][23]
-2. Az új IP-cím erőforrás "Áttelepítve másodlagos SQL-kiszolgáló", az alábbi példában "dansqlams5" lehetséges tulajdonos módosítása:
+2. Az új IP-cím erőforrás "Áttelepítve másodlagos SQL-kiszolgáló", "dansqlams5" példában a lehetséges tulajdonos módosítása:
 
     ![Appendix14][24]
 3. Miután ezt állítja be a következőket teheti feladatátvevő, és az utolsó csomópont áttelepítésekor a lehetséges tulajdonosok módosítani kell úgy, hogy a csomópont lehetséges tulajdonosa meg van adva:

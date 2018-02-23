@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 5e6910ea52f880e28378c9bf7fde02d080bc2e58
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 98dc12a857d910e8822dcfbb61209aa9ef773f47
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="azure-active-directory-connect-health-operations"></a>Az Azure Active Directory Connect Health üzemeltetése
 Ez a témakör ismerteti a különböző műveletek Azure Active Directory (Azure AD) Connect Health használatával végezheti el.
@@ -42,6 +42,9 @@ Konfigurálhatja az Azure AD Connect Health szolgáltatás e-mail értesítést,
 
 ## <a name="delete-a-server-or-service-instance"></a>Egy kiszolgáló vagy a szolgáltatás példány törlése
 
+>[!NOTE] 
+> Az Azure AD premium licenccel a törlés lépéseket szükség.
+
 Bizonyos esetekben érdemes a figyelt kiszolgáló eltávolítása. Itt van szüksége lehet az Azure AD Connect Health szolgáltatás eltávolít egy kiszolgálót.
 
 Amikor egy kiszolgáló törölni, vegye figyelembe a következőket:
@@ -51,7 +54,11 @@ Amikor egy kiszolgáló törölni, vegye figyelembe a következőket:
 * Ez a művelet nem törli az erről a kiszolgálóról már begyűjtött adatokat. El az adatok törlése az Azure adatmegőrzési házirend szerint.
 * Ez a művelet elvégzése után Ha el szeretné indítani a figyelést ugyanazon a kiszolgálón újra, akkor távolítsa el és telepítse újra a Health Agent ügynököt a kiszolgálón.
 
-### <a name="to-delete-a-server-from-the-azure-ad-connect-health-service"></a>Kiszolgáló törlése az Azure AD Connect Health szolgáltatás
+### <a name="delete-a-server-from-the-azure-ad-connect-health-service"></a>Kiszolgáló törlése az Azure AD Connect Health szolgáltatás
+
+>[!NOTE] 
+> Az Azure AD premium licenccel a törlés lépéseket szükség.
+
 Az Azure AD Connect Health Active Directory összevonási szolgáltatások (AD FS) és az Azure AD Connect (Sync):
 
 1. Nyissa meg a **Server** a panel a **kiszolgálólista** panel eltávolítani kívánt kiszolgáló nevét kiválasztva.
@@ -133,7 +140,7 @@ Most már a listán szereplő felhasználók és csoportok hozzáféréssel rend
 >
 
 #### <a name="step-3-share-the-blade-location-with-users-or-groups"></a>3. lépés: A panel helye megoszthatja a felhasználók vagy csoportok
-1. Engedélyek hozzárendelése után a felhasználó hozzáférhet-e az Azure AD Connect Health címen [Itt](http://aka.ms/aadconnecthealth).
+1. Engedélyek hozzárendelése után a felhasználó hozzáférhet-e az Azure AD Connect Health címen [Itt](https://aka.ms/aadconnecthealth).
 2. A panelen a felhasználó rögzíthető a panelen, illetve a különböző részeit, az irányítópult megnyitásához. Egyszerűen kattintson a **rögzítés az irányítópulton** ikonra.<br>
    ![Képernyőfelvétel az Azure AD Connect Health RBAC PIN-kód panelen, a rögzítés ikonja kiemelve](./media/active-directory-aadconnect-health/RBAC_pin_blade.png)
 
@@ -148,7 +155,7 @@ Eltávolíthatja a felhasználó vagy egy csoportot az Azure AD Connect Health R
 
 [//]: # (End of RBAC section)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Azure AD Connect Health](active-directory-aadconnect-health.md)
 * [Az Azure AD Connect Health-ügynök telepítése](active-directory-aadconnect-health-agent-install.md)
 * [Az Azure AD Connect Health használata az AD FS szolgáltatással](active-directory-aadconnect-health-adfs.md)

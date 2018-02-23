@@ -17,11 +17,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/14/2017
 ms.author: jgao
-ms.openlocfilehash: af4538bb398e6b18aeb9703ba5099b0e2c70fa64
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: 39c1be51d7aa54691a6ff55483138a603c3fabed
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="set-up-clusters-in-hdinsight-with-hadoop-spark-kafka-and-more"></a>Hdinsight Hadoop, Spark, Kafka és több fürt beállítása
 
@@ -68,7 +68,7 @@ Kövesse a alapvető fürttelepítés ehhez a képernyőn megjelenő utasításo
 
 [Az Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) egy Azure-erőforráscsoportot néven a munkát az erőforrásokkal egy csoportként az alkalmazásban. Telepítéséhez, frissítéséhez, figyelése, vagy törli az összes erőforrást egyetlen, koordinált műveletben az alkalmazáshoz.
 
-## <a name="cluster-types"></a>Fürt típusa és konfigurálása
+## <a name="cluster-types">Fürt típusa és konfigurálása</a>
 Az Azure HDInsight jelenleg a következő fürttípusok, az összetevők arra, hogy bizonyos funkciók biztosít.
 
 > [!IMPORTANT]
@@ -84,7 +84,7 @@ Az Azure HDInsight jelenleg a következő fürttípusok, az összetevők arra, h
 | [Kafka](kafka/apache-kafka-introduction.md) | A valós idejű streamelési adatok folyamatok és alkalmazások készítéséhez használható elosztott adatfolyam platform |
 | [R Server](r-server/r-server-overview.md) |Különböző big Data típusú adatok statisztika, prediktív modellezési és gépi tanulási képességek |
 | [Spark](spark/apache-spark-overview.md) |A memórián belüli feldolgozást, interaktív lekérdezések micro-kötegelt adatfolyam feldolgozása |
-| [A Storm](storm/apache-storm-overview.md) |Valós idejű eseményfeldolgozás |
+| [Storm](storm/apache-storm-overview.md) |Valós idejű eseményfeldolgozás |
 
 
 ### <a name="hdinsight-version"></a>HDInsight-verzió
@@ -127,6 +127,8 @@ Konfigurálása során az alapértelmezett tároló végpont, adja meg egy Azure
 
 ### <a name="optional-metastores"></a>Nem kötelező a metaadattárakat
 Nem kötelező a Hive vagy az Oozie metaadattárakat hozhat létre. Azonban nem minden fürttípus támogatja a metaadattárakat, és Azure SQL Data Warehouse nem kompatibilis a metaadattárakat a. 
+
+További információkért lásd: [külső metaadatait tárolja az Azure HDInsight használata](./hdinsight-use-external-metadata-stores.md).
 
 > [!IMPORTANT]
 > Amikor létrehoz egy egyéni metaadattárhoz, ne használjon kötőjeleket, kötőjeleket vagy szóközöket az adatbázis nevét. Ennek hatására a Fürtlétrehozási folyamat sikertelen lesz.

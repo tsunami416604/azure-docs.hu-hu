@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/17/2018
 ms.author: renash
-ms.openlocfilehash: c4a5f7d28601867c383b8b348568e4bb580a81eb
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: eb5c7d0fcb9e1106dbc0aa577ba5ecfa1bf6bee7
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="work-with-share-snapshots-preview"></a>Megosztás pillanatképekkel (előzetes verzió)
 Egy megosztás pillanatkép (előzetes verzió) egy olyan Azure fájlok megosztási egy időben lesz végrehajtva csak olvasható verziója telepítve. Megosztás pillanatképének létrehozása után azt is kell olvasni, másolja, vagy törölni, de nem módosított. Készítsen biztonsági másolatot a megosztás, ahogyan megjelenik egy időben el módszert kínál a megosztás pillanatképet. 
@@ -246,13 +246,12 @@ A kimenet jelenik meg, hogy a letöltött fájl és a tulajdonságait tartalma m
 }
 ```
 
-<<<<<<< HEAD
 ### <a name="file-share-snapshot-operations-in-azure-powershell"></a>Fájlmegosztás pillanatképet készíteni az Azure PowerShell műveletei
 Azure Powershell használatával műveleteket azonos listaelem megosztás pillanatképeket, például böngészési közös pillanatkép tartalmat, visszaállítása vagy a fájlok letöltését megosztás pillanatkép, vagy a megosztás pillanatképek törlése.
 
 #### <a name="list-share-snapshots"></a>Lista megosztás pillanatképek
 
-Előfordulhat, hogy felsorolja megosztás pillanatképek egy adott használatával`Get-AzureStorageShare`
+Előfordulhat, hogy felsorolja megosztás pillanatképek egy adott használatával `Get-AzureStorageShare`
 
 ```powershell
 Get-AzureStorageShare -Name "ContosoShare06" -SnapshotTime "6/16/2017 9:48:41 AM +00:00"
@@ -281,11 +280,7 @@ $directory = Get-AzureStorageFile -ShareName "ContosoShare06" -Path "ContosoWork
 Get-AzureStorageFileContent -Share $snapshot -Path $file -Destination $directory
 ```
 
-
-## <a name="delete-azure-files-share-snapshot"></a>Azure-fájlok megosztási pillanatkép törlése
-=======
 ## <a name="delete-a-share-snapshot"></a>Megosztás pillanatkép törlése
->>>>>>> 6a1833e10031fbf1ab204bb1f30cb54cf5fbcada
 
 Az Azure-portálon, PowerShell, CLI-t, a REST API-t vagy a Storage szolgáltatás SDK használatával törölje a megosztást pillanatképeket. Az alábbi szakaszok azt ismertetik, hogyan megosztás pillanatképek törlése az Azure-portálon, a parancssori felület és a PowerShell használatával.
 

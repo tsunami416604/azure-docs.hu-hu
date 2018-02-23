@@ -14,13 +14,14 @@
 # Referencia
 ## [Kódminták](https://azure.microsoft.com/en-us/resources/samples/?service=active-directory)
 ## [Az Azure AD Connect Health verzióelőzményei](active-directory-aadconnect-health-version-history.md)
+## [GDPR-megfelelőség és az Azure AD Connect Health](active-directory-aadconnect-health-gdpr.md)
 
-# Kapcsolódó
+# Kapcsolódó témakörök
 ## [Helyszíni identitások integrálása az Azure Active Directoryval](../active-directory-aadconnect.md)
 ## [Azure AD Connect és összevonás](../active-directory-aadconnectfed-whatis.md)
 ## [Hibrid identitáskezelés – kialakítási útmutató](../active-directory-hybrid-identity-design-considerations-overview.md)
 
-# Erőforrások
+# További források
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=security-identity)
 ##[Azure AD Connect Health – gyakori kérdések](active-directory-aadconnect-health-faq.md)
 ## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)

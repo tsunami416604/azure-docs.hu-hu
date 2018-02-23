@@ -15,23 +15,22 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/29/2017
+ms.date: 02/14/2018
 ms.author: jgao
-ms.openlocfilehash: 074415ba50ecdb1799093a3ead3bdd22fd02cc15
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: 97305ec6774e89e776653adbcdcf86b1cd63642f
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="apache-spark-bi-using-data-visualization-tools-with-azure-hdinsight"></a>Apache Spark BI adatok képi megjelenítés eszközökkel Azure hdinsightban
 
-Ismerje meg, hogyan használható [Microsoft Power BI](http://powerbi.microsoft.com) és [Tableau](http://www.tableau.com) Azure HDInsight az Apache Spark-fürt adatainak megjelenítéséhez.
+Ismerje meg, hogyan használható [Microsoft Power BI](http://powerbi.microsoft.com) Azure HDInsight az Apache Spark-fürt adatainak megjelenítéséhez.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * **Fejezze be a cikk [interaktív lekérdezések futtatására a hdinsight Spark-fürtjei](./apache-spark-load-data-run-query.md)**.
 * **A Power BI**: [Power BI Desktop](https://powerbi.microsoft.com/en-us/desktop/) és [Power BI próba-előfizetés](https://app.powerbi.com/signupredirect?pbi_source=web) (nem kötelező).
-* **Tableau**: [Tableau asztali](http://www.tableau.com/products/desktop) és [Microsoft Spark ODBC-illesztőprogram](http://go.microsoft.com/fwlink/?LinkId=616229).
 
 
 ## <a name="hivetable"></a>Ellenőrizze az adatokat
@@ -183,47 +182,49 @@ A Power BI szolgáltatás lehetővé teszi a jelentések és irányítópultok m
 
 A visual rögzítve az irányítópulton – az egyéb látványelemek felvétele a jelentésbe, és az azonos irányítópulton rögzítheti őket. További információ a jelentések és irányítópultok: [jelentéseket a Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-reports/)és [Power BI-irányítópultjain](https://powerbi.microsoft.com/documentation/powerbi-service-dashboards/).
 
-## <a name="tableau"></a>Használja a Tableau asztal 
+<!--
+## <a name="tableau"></a>Use Tableau Desktop 
 
 > [!NOTE]
-> Ez a szakasz esetén csak az Azure HDInsight létrehozott Spark 1.5.2-fürtök alkalmazható.
+> This section is applicable only for Spark 1.5.2 clusters created in Azure HDInsight.
 >
 >
 
-1. Telepítés [Tableau asztali](http://www.tableau.com/products/desktop) az Apache Spark BI oktatóanyag futtató számítógépen.
+1. Install [Tableau Desktop](http://www.tableau.com/products/desktop) on the computer where you are running this Apache Spark BI tutorial.
 
-2. Győződjön meg arról, hogy számítógépen is van telepítve a Microsoft Spark ODBC-illesztőprogram. Az illesztőprogram telepítése [Itt](http://go.microsoft.com/fwlink/?LinkId=616229).
+2. Make sure that computer also has Microsoft Spark ODBC driver installed. You can install the driver from [here](http://go.microsoft.com/fwlink/?LinkId=616229).
 
-1. Tableau asztal indításakor. Kattintson a bal oldali panelen való kapcsolódásra, közül **Spark SQL**. Ha a bal oldali ablaktáblán alapértelmezés szerint nem szerepel a Spark SQL, megtalálhatja azt kattintson **több kiszolgálók**.
-2. A Spark SQL kapcsolati párbeszédpanelen adja meg az értékeket, a képernyőfelvételen látható módon, és kattintson a **OK**.
+1. Launch Tableau Desktop. In the left pane, from the list of server to connect to, click **Spark SQL**. If Spark SQL is not listed by default in the left pane, you can find it by click **More Servers**.
+2. In the Spark SQL connection dialog box, provide the values as shown in the screenshot, and then click **OK**.
 
-    ![Csatlakozás az Apache Spark BI fürthöz](./media/apache-spark-use-bi-tools/connect-to-tableau-apache-spark-bi.png "csatlakozás az Apache Spark BI fürthöz")
+    ![Connect to a cluster for Apache Spark BI](./media/apache-spark-use-bi-tools/connect-to-tableau-apache-spark-bi.png "Connect to a cluster for Apache Spark BI")
 
-    A hitelesítési legördülő listákból **Microsoft Azure HDInsight szolgáltatás** lehetőség csak akkor, ha telepítette a [Microsoft Spark ODBC-illesztőprogram](http://go.microsoft.com/fwlink/?LinkId=616229) azon a számítógépen.
-3. A következő képernyőn a a **séma** legördülő menüben kattintson a **található** ikonra, végül **alapértelmezett**.
+    The authentication drop-down lists **Microsoft Azure HDInsight Service** as an option, only if you installed the [Microsoft Spark ODBC Driver](http://go.microsoft.com/fwlink/?LinkId=616229) on the computer.
+3. On the next screen, from the **Schema** drop-down, click the **Find** icon, and then click **default**.
 
-    ![Található séma a következő Apache Spark BI](./media/apache-spark-use-bi-tools/tableau-find-schema-apache-spark-bi.png "Apache Spark BI keresés sémája")
-4. Az a **tábla** , majd kattintson a **található** ikonra kattintva ismét elérhető a fürt összes Hive táblák listázása. Megjelenik a **hvac** létrehozott korábban a notebook tábla.
+    ![Find schema for Apache Spark BI](./media/apache-spark-use-bi-tools/tableau-find-schema-apache-spark-bi.png "Find schema for Apache Spark BI")
+4. For the **Table** field, click the **Find** icon again to list all the Hive tables available in the cluster. You should see the **hvac** table you created earlier using the notebook.
 
-    ![Az Apache Spark BI tábla található](./media/apache-spark-use-bi-tools/tableau-find-table-apache-spark-bi.png "Apache Spark bi keresési tábla")
-5. Áthúzással a tábla a jobb felső mezőbe. Tableau importálja az adatokat, és a séma példának a vörös téglalappal alapján jeleníti meg.
+    ![Find table for Apache Spark BI](./media/apache-spark-use-bi-tools/tableau-find-table-apache-spark-bi.png "Find table for Apache Spark BI")
+5. Drag and drop the table to the top box on the right. Tableau imports the data and displays the schema as highlighted by the red box.
 
-    ![Vegyen fel táblák a Tableau Apache Spark BI](./media/apache-spark-use-bi-tools/tableau-add-table-apache-spark-bi.png "Tableau Apache Spark bi táblák hozzáadása")
-6. Kattintson a **Munka1** lap bal alsó. Ellenőrizze, hogy a átlagos cél és a tényleges összes épület-hőmérsékletek jelennek meg. minden egyes dátum képi megjelenítés. Húzza **dátum** és **azonosító létrehozása** való **oszlopok** és **tényleges Temp**/**céloz Temp** való **sorok**. A **jelek**, jelölje be **terület** Spark adatábrázolási interaktív terület használandó.
+    ![Add tables to Tableau for Apache Spark BI](./media/apache-spark-use-bi-tools/tableau-add-table-apache-spark-bi.png "Add tables to Tableau for Apache Spark BI")
+6. Click the **Sheet1** tab at the bottom left. Make a visualization that shows the average target and actual temperatures for all buildings for each date. Drag **Date** and **Building ID** to **Columns** and **Actual Temp**/**Target Temp** to **Rows**. Under **Marks**, select **Area** to use an area map for Spark data visualization.
 
-     ![Adja hozzá a mezőket a Spark adatábrázolási](./media/apache-spark-use-bi-tools/spark-data-visualization-add-fields.png "Spark adatábrázolási mezők hozzáadása")
-7. Alapértelmezés szerint a hőmérséklet mezők láthatók szerint összesítést. Ha az átlaghőmérséklet inkább megjeleníteni kívánt, megteheti, a legördülő listában az alábbi képernyőfelvételen látható módon:
+     ![Add fields for Spark data visualization](./media/apache-spark-use-bi-tools/spark-data-visualization-add-fields.png "Add fields for Spark data visualization")
+7. By default, the temperature fields are shown as aggregate. If you want to show the average temperatures instead, you can do so from the drop-down, as shown in the following screenshot:
 
-    ![Átlagos Spark adatok vizuális megjelenítéshez tartozó hőmérséklet érvénybe](./media/apache-spark-use-bi-tools/spark-data-visualization-average-temperature.png "átlagos Spark adatok vizuális megjelenítéshez tartozó hőmérséklet igénybe")
+    ![Take average of temperature for Spark data visualization](./media/apache-spark-use-bi-tools/spark-data-visualization-average-temperature.png "Take average of temperature for Spark data visualization")
 
-8. Akkor is super-adhat egy hőmérséklet-leképezést keresztül, a másik cél- és a tényleges hőmérsékletek közötti különbség jobb arculatának eléréséhez. Mozgassa az egeret a alacsonyabb terület térkép sarkába, amíg megjelenik a kijelölt piros kör leíró alakzat. A térkép húzza a többi leképezési felső, és az egérrel kiadási, amikor megjelenik a kijelölt piros téglalap alakú.
+8. You can also super-impose one temperature map over the other to get a better feel of difference between target and actual temperatures. Move the mouse to the corner of the lower area map until you see the handle shape highlighted in a red circle. Drag the map to the other map on the top and release the mouse when you see the shape highlighted in red rectangle.
 
-    ![A Spark adatábrázolási maps egyesítése](./media/apache-spark-use-bi-tools/spark-data-visualization-merge-maps.png "egyesítési leképezi a Spark adatábrázolási")
+    ![Merge maps for Spark data visualization](./media/apache-spark-use-bi-tools/spark-data-visualization-merge-maps.png "Merge maps for Spark data visualization")
 
-     Az adatok vizuális kell módosítani a képernyőfelvételen látható módon:
+     Your data visualization should change as shown in the screenshot:
 
-    ![A Spark adatábrázolási tableau kimeneti](./media/apache-spark-use-bi-tools/spark-data-visualization-tableau-output.png "Spark adatábrázolási Tableau kimenete")
-9. Kattintson a **mentése** a munkalap mentéséhez. Irányítópultok létrehozása, és egy vagy több felvétele.
+    ![Tableau output for Spark data visualization](./media/apache-spark-use-bi-tools/spark-data-visualization-tableau-output.png "Tableau output for Spark data visualization")
+9. Click **Save** to save the worksheet. You can create dashboards and add one or more sheets to it.
+-->
 
 ## <a name="next-steps"></a>További lépések
 

@@ -5,16 +5,16 @@ services: cost-management
 keywords: 
 author: bandersmsft
 ms.author: banders
-ms.date: 01/30/2018
+ms.date: 02/14/2018
 ms.topic: article
 ms.service: cost-management
 manager: carmonm
 ms.custom: 
-ms.openlocfilehash: b3c7c19543d50ed91129a2040bea1db1c4df1ea7
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 0d33f434dccae7836ae7774afbdf9b80d4685eb4
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="frequently-asked-questions-for-azure-cost-management"></a>Gyakori kérdések az Azure költség Management
 
@@ -58,7 +58,7 @@ Ha bármely optimalizáló javaslat adatai nem tekinthetők meg, a legvalószín
 
 Aktivált fiókra:
 
-1.  A Cloudyn portálon kattintson **beállítások** a felső, jobb és válassza ki a **felhő fiókok**.
+1.  A Cloudyn portálon kattintson a **Settings** (Beállítások) gombra a jobb felső sarokban, és válassza a **Cloud Accounts** (Felhőbeli fiókok) lehetőséget.
 2.  A Microsoft Azure-fiók lapon keresse meg a fiókokat, amelyek rendelkeznek egy **aktivált** előfizetés.
 3.  Kattintson a jobb oldalán egy aktivált fiókhoz, a **szerkesztése** egy ceruza levő szimbólum.
 4.  A bérlői és sebessége azonosító automatikusan észleli. Kattintson a **Tovább** gombra.
@@ -116,9 +116,9 @@ Egy entitás további CSP fiókok hozzáadásához válassza **MSP hozzáférés
 
 Lehetséges, hogy a különböző pénznemeket használó több Azure-fiókra. Költség jelentéseket Cloudyn azonban ne jelenjen meg egynél több pénznem típusa jelentésenként.
 
-Ha különböző pénznemek használatával több előfizetéssel rendelkezik, egy szülőentitás és annak gyermek entitás pénznemek jelennek meg a a  **$**  szimbólum. A javasolt ajánlott kerülheti el a különböző pénznemek entitás ugyanabba a hierarchiába. Más szóval egy entitás struktúrájából összes előfizetés megegyező pénznemet kell használni.
+Ha különböző pénznemek használatával több előfizetéssel rendelkezik, egy szülőentitás és annak gyermek entitás pénznemek jelennek USD  **$** . A javasolt ajánlott kerülheti el a különböző pénznemek entitás ugyanabba a hierarchiába. Más szóval egy entitás struktúrájából összes előfizetés megegyező pénznemet kell használni.
 
-Cloudyn automatikusan észleli a nagyvállalati szerződés előfizetés pénznem és mutatja be megfelelően a jelentésekben.  Azonban Cloudyn csak jelenít meg a  **$**  CSP és a web-közvetlen Azure-fiókra.
+Cloudyn automatikusan észleli a nagyvállalati szerződés előfizetés pénznem és mutatja be megfelelően a jelentésekben.  Azonban Cloudyn csak jeleníti USD  **$**  CSP és a web-közvetlen Azure-fiókra.
 
 ## <a name="what-are-cloudyn-data-refresh-timelines"></a>Mik azok a Cloudyn adatok frissítése ütemtervek?
 

@@ -88,6 +88,7 @@
 #### [Azure PowerShell-példák csoportalapú licenceléshez](active-directory-licensing-ps-examples.md)
 #### [Az Azure AD termékeinek és szolgáltatáscsomagjainak referenciája](active-directory-licensing-product-and-service-plan-reference.md)
 ### [Office 365-csoportok lejáratának beállítása](active-directory-groups-lifecycle-azure-portal.md)
+### [A csoportokra vonatkozó elnevezési szabályzat kényszerítése](groups-naming-policy.md)
 ### [Az összes csoport megtekintése](active-directory-groups-view-azure-portal.md)
 ### [Csoportszintű hozzáférés biztosítása az SaaS-alkalmazásokhoz](active-directory-accessmanagement-group-saasapps.md)
 ### [Törölt Office 365-csoport visszaállítása](active-directory-groups-restore-azure-portal.md)
@@ -217,7 +218,9 @@
 ##### [Távoli asztal](application-proxy-publish-remote-desktop.md)
 ##### [SharePoint](application-proxy-enable-remote-access-sharepoint.md)
 ##### [Microsoft Teams](application-proxy-teams.md)
+#### [PowerShell](https://docs.microsoft.com/powershell/module/azuread)
 #### [Hibaelhárítás](active-directory-application-proxy-troubleshoot.md)
+
 
 ### Vállalati alkalmazások kezelése
 #### [Felhasználók hozzárendelése](active-directory-coreapps-assign-user-azure-portal.md)

@@ -4,7 +4,7 @@ description: "Ismerje meg, hogyan futtathat teljes SQL Server-kiadásokat az Azu
 services: virtual-machines-windows
 documentationcenter: 
 author: rothja
-manager: jhubbard
+manager: craigg
 tags: azure-service-management
 ms.assetid: c505089e-6bbf-4d14-af0e-dd39a1872767
 ms.service: virtual-machines-sql
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 12/14/2017
 ms.author: jroth
-ms.openlocfilehash: 95a18e4b2437ca628e84f6d6f580e12f2f26e111
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: 268ae1dae1a247ee63adef22403f89680daa4961
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="what-is-sql-server-on-azure-virtual-machines-windows"></a>Mi az az Azure Virtual Machines szolgáltatásban futó SQL Server? (Windows)
 
@@ -94,7 +94,7 @@ A Felhasználói élmény fokozása program (CEIP) alapértelmezés szerint enge
 ### <a name="windows-virtual-machines"></a>Windows rendszerű virtuális gépek
 * [Virtual Machines – áttekintés](../overview.md)
 
-### <a name="storage"></a>Storage
+### <a name="storage"></a>Tárolás
 * [A Microsoft Azure Storage bemutatása](../../../storage/common/storage-introduction.md)
 
 ### <a name="networking"></a>Hálózat
@@ -106,7 +106,7 @@ A Felhasználói élmény fokozása program (CEIP) alapértelmezés szerint enge
 * [Az SQL Server dokumentációja](https://docs.microsoft.com/sql/index)
 * [Az Azure SQL Database összehasonlítása](../../../sql-database/sql-database-paas-vs-sql-server-iaas.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az SQL Server használatának első lépései az Azure virtuális gépeken:
 

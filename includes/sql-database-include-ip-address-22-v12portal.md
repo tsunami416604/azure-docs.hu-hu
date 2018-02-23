@@ -17,13 +17,11 @@ articles/sql-database/sql-database-connect-query.md
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
-2. A bal oldali listában válassza ki a **Tallózás**. 
+2. A bal oldali listában válassza ki a **minden szolgáltatás**. 
 
 3. Görgessen és válassza ki **SQL Server-kiszolgálók**. 
    
     ![Az Azure SQL adatbázis-kiszolgáló található a portálon][b21-FindServerInPortal]
-4. Az egyszerűség kedvéért minimalizálása érdekében a **Tallózás** panelen.
-
 5. A Szűrő mezőbe írja be annak a kiszolgálónak a nevét elindításához. A sor jelenik meg.
 
 6. Jelölje ki a kiszolgáló sort. A kiszolgáló egy panel jelenik meg.

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 04/27/2017
 ms.author: tamram
-ms.openlocfilehash: 26d4adf4f74f9aacc4cf8cf24be293ebdb4d63c8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 054e9686a1acae09f4dd3b7d841d82eae1fc88a9
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="authenticate-batch-management-solutions-with-active-directory"></a>Hitelesítés kötegelt megoldásokat az Active Directoryban
 
@@ -49,7 +49,7 @@ Ezt követően az alkalmazás az Azure Resource Manager API-hoz való hozzáfér
 
 Kövesse az alábbi lépéseket az Azure-portálon:
 
-1. Az Azure portál bal oldali navigációs ablaktábláján válassza **több szolgáltatások**, kattintson a **App regisztrációk**, és kattintson a **Hozzáadás**.
+1. Az Azure portál bal oldali navigációs ablaktábláján válassza **minden szolgáltatás**, kattintson a **App regisztrációk**, és kattintson a **Hozzáadás**.
 2. Keresse meg az alkalmazás regisztrációk a listában az alkalmazás nevét:
 
     ![Keresse meg az alkalmazás neve](./media/batch-aad-auth-management/search-app-registration.png)
@@ -122,7 +122,7 @@ AuthenticationResult authResult = authContext.AcquireToken(ResourceUri,
 
 Miután megadta a hitelesítő adatait, a mintaalkalmazást a hitelesített kérelmeket kiadni a Batch szolgáltatás lépne. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a futó a [AccountManagement mintaalkalmazás][acct_mgmt_sample], lásd: [kezelése Batch fiókjainak és kvótáinak, a Batch Management ügyféloldali kódtára a .NET](batch-management-dotnet.md) .
 

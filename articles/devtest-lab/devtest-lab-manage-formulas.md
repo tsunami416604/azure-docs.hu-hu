@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/07/2017
 ms.author: v-craic
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3dcd285761774c3cd1050976894f1f15db61b52c
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: 330f6ae246697d54c6bce0690346652b5f2e2dd0
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="manage-azure-devtest-labs-formulas"></a>Azure DevTest Labs képletek kezelése
 
@@ -40,7 +40,7 @@ A következő lépések végigvezetik egy egyéni lemezképet, Piactéri lemezk�
 
 1. Jelentkezzen be az [Azure Portalra](http://go.microsoft.com/fwlink/p/?LinkID=525040).
 
-2. Válassza ki **több szolgáltatások**, majd válassza ki **DevTest Labs** a listából.
+2. Válassza ki **minden szolgáltatás**, majd válassza ki **DevTest Labs** a listából.
 
 3. Válassza ki a kívánt labor labs listájának megtekintéséhez.  
 
@@ -87,7 +87,7 @@ A következő lépések végigvezetik a meglévő virtuális alapuló képlet l�
 > 
 
 1. Jelentkezzen be az [Azure Portalra](http://go.microsoft.com/fwlink/p/?LinkID=525040).
-2. Válassza ki **több szolgáltatások**, majd válassza ki **DevTest Labs** a listából.
+2. Válassza ki **minden szolgáltatás**, majd válassza ki **DevTest Labs** a listából.
 3. Válassza ki a kívánt labor labs listájának megtekintéséhez.  
 4. A tesztlabor a **áttekintése** panelen válassza ki a virtuális gép, amelyből létre szeretne hozni a képlet.
    
@@ -104,7 +104,7 @@ A következő lépések végigvezetik a meglévő virtuális alapuló képlet l�
 A képlet módosításához kövesse az alábbi lépéseket:
 
 1. Jelentkezzen be az [Azure Portalra](http://go.microsoft.com/fwlink/p/?LinkID=525040).
-2. Válassza ki **több szolgáltatások**, majd válassza ki **DevTest Labs** a listából.
+2. Válassza ki **minden szolgáltatás**, majd válassza ki **DevTest Labs** a listából.
 3. Válassza ki a kívánt labor labs listájának megtekintéséhez.  
 4. A labor paneljén válassza **képletek (újrafelhasználható körrel)**.
    
@@ -116,7 +116,7 @@ A képlet módosításához kövesse az alábbi lépéseket:
 A képlet törléséhez kövesse az alábbi lépéseket:
 
 1. Jelentkezzen be az [Azure Portalra](http://go.microsoft.com/fwlink/p/?LinkID=525040).
-2. Válassza ki **több szolgáltatások**, majd válassza ki **DevTest Labs** a listából.
+2. Válassza ki **minden szolgáltatás**, majd válassza ki **DevTest Labs** a listából.
 3. Válassza ki a kívánt labor labs listájának megtekintéséhez.  
 4. A tesztlabor a **beállítások** panelen válassza **képletek**.
    

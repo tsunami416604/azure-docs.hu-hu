@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: iainfou
-ms.openlocfilehash: f63a2cdeaec512bed4fd0f86ef7c9d5a9b77d7f6
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: be463b18c049c8b92c21cfde82defcf76718a5f0
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="how-to-capture-a-classic-linux-virtual-machine-as-an-image"></a>Klasszikus linuxos virtuális gép rögzítése lemezképként
 > [!IMPORTANT]
@@ -76,7 +76,7 @@ Ezek a lépések feltételezik, hogy korábban már létrehozott egy Azure virtu
     ```azurecli
     azure vm shutdown myVM
     ```
-   Ha szükséges, megtekintheti az előfizetésében használatával létrehozott virtuális gépek listája`azure vm list`
+   Ha szükséges, megtekintheti az előfizetésében használatával létrehozott virtuális gépek listája `azure vm list`
 
    > [!NOTE]
    > Az Azure portál használata, jelölje ki a virtuális Gépet, és kattintson **leállítása** a virtuális gép leállítása.
@@ -98,7 +98,7 @@ Ezek a lépések feltételezik, hogy korábban már létrehozott egy Azure virtu
    azure vm image list
    ```
 
-   Az a [Azure-portálon](http://portal.azure.com), megjelenik az új lemezképet a **Virtuálisgép-rendszerképek (klasszikus)** , amely a **számítási** szolgáltatások. Van-e hozzáférési **Virtuálisgép-rendszerképek (klasszikus)** kattintva _további szolgáltatások_ alján található az Azure szolgáltatás a lista, majd a **számítási** szolgáltatások.   
+   Az a [Azure-portálon](http://portal.azure.com), megjelenik az új lemezképet a **Virtuálisgép-rendszerképek (klasszikus)** , amely a **számítási** szolgáltatások. Van-e hozzáférési **Virtuálisgép-rendszerképek (klasszikus)** kattintva **minden szolgáltatás** tetején található az Azure szolgáltatás a lista, majd a **számítási** szolgáltatások.   
 
    ![Lemezkép-rögzítési sikeres](./media/capture-image/VMCapturedImageAvailable.png)
 

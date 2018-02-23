@@ -6,24 +6,23 @@ documentationcenter:
 author: curtand
 manager: mtillman
 editor: 
-ms.assetid: 9f2090e6-3af4-4f07-bbb2-1d18dae89b73
 ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.tgt_pltfrm: 
+ms.devlang: 
 ms.topic: article
-ms.date: 12/06/2017
+ms.date: 02/20/2018
 ms.author: curtand
 ms.reviewer: kairaz.contractor
 ms.custom: it-pro;
-ms.openlocfilehash: 331dafc9164e315c84036fa0af11820e89066f36
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 75df4436d5d36878f361e87f34d9bfc8bed1e58f
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>Azure Active Directory-parancsmagok csoportbeállítások konfigurálásához
-Ez a cikk az Azure Active Directory (Azure AD) PowerShell-parancsmagok használatával történő létrehozásához és frissítési csoportokká utasításokat tartalmaz. Ez a tartalom csak az Office 365-csoportok vonatkozik. 
+Ez a cikk az Azure Active Directory (Azure AD) PowerShell-parancsmagok használatával történő létrehozásához és frissítési csoportokká utasításokat tartalmaz. Ez a tartalom csak az Office 365-csoportok (más néven egyesített csoportok) vonatkozik. 
 
 > [!IMPORTANT]
 > Egyes beállítások egy Azure Active Directory Premium P1 licenc szükséges. További információkért lásd: a [sablonbeállítások](#template-settings) tábla.
@@ -42,7 +41,7 @@ Ha ismeri a keresett beállítás nevét, használhatja az alábbi parancsmagot,
 ```
 
 ## <a name="create-settings-at-the-directory-level"></a>A könyvtár szintjén beállítások létrehozása
-Ezeket a lépéseket beállítások létrehozása könyvtár szinten, amelyek vonatkoznak az összes Office 365 (egyesített) csoportok a címtárban.
+Ezeket a lépéseket beállítások létrehozása könyvtár szinten, amelyek vonatkoznak az összes Office 365-csoportokat a címtárban.
 
 1. A DirectorySettings parancsmagok meg kell adnia a használni kívánt SettingsTemplate Azonosítóját. Ha nem ismeri ezt az Azonosítót, ez a parancsmag az összes beállítások sablonok listáján adja vissza:
   
@@ -55,7 +54,7 @@ Ezeket a lépéseket beállítások létrehozása könyvtár szinten, amelyek vo
   Id                                   DisplayName         Description
   --                                   -----------         -----------
   62375ab9-6b52-47ed-826b-58e47e0e304b Group.Unified       ...
-  08d542b9-071f-4e16-94b0-74abb372e3d9 Group.Unified.Guest Settings for a specific Unified Group
+  08d542b9-071f-4e16-94b0-74abb372e3d9 Group.Unified.Guest Settings for a specific Office 365 group
   16933506-8a8d-4f0d-ad58-e1db05a5b929 Company.BuiltIn     Setting templates define the different settings that can be used for the associ...
   4bc7f740-180e-4586-adb6-38b2e9024e6b Application...
   898f1161-d651-43d1-805c-3b0b388a9fc2 Custom Policy       Settings ...
@@ -93,20 +92,19 @@ Az alábbiakban a Group.Unified SettingsTemplate megadott beállításoknak. Elt
 
 | **Beállítás** | **Leírás** |
 | --- | --- |
-|  <ul><li>EnableGroupCreation<li>Típus: logikai<li>Alapértelmezett: igaz |A jelzőt, amely azt jelzi, hogy egyesített csoport létrehozása a könyvtárban által engedélyezett nem rendszergazda felhasználóknak. Ez a beállítás nem szükséges egy Azure Active Directory Premium P1 licencet.|
-|  <ul><li>GroupCreationAllowedGroupId<li>Típus: Karakterlánc<li>Alapértelmezett érték: "" |A biztonsági csoport, amelynek a tagjai hozhatnak létre egységes csoportok GUID akkor is, ha EnableGroupCreation == false. |
+|  <ul><li>EnableGroupCreation<li>Típus: logikai<li>Alapértelmezett: igaz |A jelzőt, amely azt jelzi, hogy Office 365-csoport létrehozása a könyvtárban által engedélyezett nem rendszergazda felhasználóknak. Ez a beállítás nem szükséges egy Azure Active Directory Premium P1 licencet.|
+|  <ul><li>GroupCreationAllowedGroupId<li>Típus: Karakterlánc<li>Alapértelmezett érték: "" |A biztonsági csoport, amelynek a tagjai hozhatnak létre az Office 365-csoportok GUID akkor is, ha EnableGroupCreation == false. |
 |  <ul><li>UsageGuidelinesUrl<li>Típus: Karakterlánc<li>Alapértelmezett érték: "" |A csoport használatára vonatkozó irányelvek mutató hivatkozást. |
 |  <ul><li>ClassificationDescriptions<li>Típus: Karakterlánc<li>Alapértelmezett érték: "" | Besorolási leírások vesszővel tagolt listája. |
 |  <ul><li>DefaultClassification<li>Típus: Karakterlánc<li>Alapértelmezett érték: "" | A besorolás, amely használható a alapértelmezett besorolást egy csoportra, ha nincs megadva.|
-|  <ul><li>PrefixSuffixNamingRequirement<li>Típus: Karakterlánc<li>Alapértelmezett érték: "" | Ne használjon. Nincs megvalósítva. |
-| <ul><li>CustomBlockedWordsList<li>Típus: Karakterlánc<li>Alapértelmezett érték: "" | Ne használjon. Nincs megvalósítva. |
+|  <ul><li>PrefixSuffixNamingRequirement<li>Típus: Karakterlánc<li>Alapértelmezett érték: "" | Legfeljebb 64 karakter hosszúságú lehet, amely meghatározza az Office 365-csoportok beállítása elnevezési karakterlánc. További információkért lásd: [elnevezési vonatkozó szabályzat alkalmazása az Office 365-csoportok (előzetes verzió)](groups-naming-policy.md). |
+| <ul><li>CustomBlockedWordsList<li>Típus: Karakterlánc<li>Alapértelmezett érték: "" | Vesszővel elválasztott karakterlánc, amely a felhasználók nem engedélyezhető a felügyeleticsoport-nevek és aliasok használandó kifejezések közül. További információkért lásd: [elnevezési vonatkozó szabályzat alkalmazása az Office 365-csoportok (előzetes verzió)](groups-naming-policy.md). |
 | <ul><li>EnableMSStandardBlockedWords<li>Típus: logikai<li>Alapértelmezett érték: "False" | Ne használja
 |  <ul><li>AllowGuestsToBeGroupOwner<li>Típus: logikai<li>Alapértelmezett: hamis | Logikai érték-e a Vendég felhasználói csoportok tulajdonosa lehet jelző. |
-|  <ul><li>AllowGuestsToAccessGroups<li>Típus: logikai<li>Alapértelmezett: igaz | Jelző logikai érték beolvasása-e a Vendég felhasználó rendelkezhet egyesített csoportok tartalomhoz való hozzáférést.  Ez a beállítás nem szükséges egy Azure Active Directory Premium P1 licencet.|
+|  <ul><li>AllowGuestsToAccessGroups<li>Típus: logikai<li>Alapértelmezett: igaz | Jelző logikai érték beolvasása-e a Vendég felhasználó rendelkezhet Office 365 csoportok tartalomhoz való hozzáférést.  Ez a beállítás nem szükséges egy Azure Active Directory Premium P1 licencet.|
 |  <ul><li>GuestUsageGuidelinesUrl<li>Típus: Karakterlánc<li>Alapértelmezett érték: "" | A Vendég használatára vonatkozó irányelvek mutató hivatkozás URL-címét. |
 |  <ul><li>AllowToAddGuests<li>Típus: logikai<li>Alapértelmezett: igaz | Egy logikai jelző Vendégek hozzáadása a következő könyvtár számára engedélyezett-e.|
-|  <ul><li>ClassificationList<li>Típus: Karakterlánc<li>Alapértelmezett érték: "" |Egyesített csoportok alkalmazható érvényes osztályozási értékeket vesszővel tagolt listája. |
-
+|  <ul><li>ClassificationList<li>Típus: Karakterlánc<li>Alapértelmezett érték: "" |Office 365-csoportok alkalmazható érvényes osztályozási értékeket vesszővel tagolt listája. |
 
 ## <a name="read-settings-at-the-directory-level"></a>A könyvtár szintjén beállítások beolvasása
 Ezeket a lépéseket a címtár összes Office-csoport könyvtár szintjén beállítások olvasása.
@@ -138,6 +136,7 @@ Ezeket a lépéseket a címtár összes Office-csoport könyvtár szintjén beá
   ClassificationDescriptions
   DefaultClassification
   PrefixSuffixNamingRequirement
+  CustomBlockedWordsList        
   AllowGuestsToBeGroupOwner     False 
   AllowGuestsToAccessGroups     True
   GuestUsageGuidelinesUrl
@@ -157,7 +156,7 @@ Ezeket a lépéseket a címtár összes Office-csoport könyvtár szintjén beá
   Id                                   DisplayName            Description
   --                                   -----------            -----------
   62375ab9-6b52-47ed-826b-58e47e0e304b Group.Unified          ...
-  08d542b9-071f-4e16-94b0-74abb372e3d9 Group.Unified.Guest    Settings for a specific Unified Group
+  08d542b9-071f-4e16-94b0-74abb372e3d9 Group.Unified.Guest    Settings for a specific Office 365 group
   4bc7f740-180e-4586-adb6-38b2e9024e6b Application            ...
   898f1161-d651-43d1-805c-3b0b388a9fc2 Custom Policy Settings ...
   5cf42378-d67d-4f36-ba46-e8b86229381d Password Rule Settings ...
@@ -186,7 +185,7 @@ Ezeket a lépéseket a címtár összes Office-csoport könyvtár szintjén beá
 
 ## <a name="update-settings-at-the-directory-level"></a>A könyvtár szintjén beállításainak frissítése
 
-Ezeket a lépéseket a címtár összes egyesített csoportot könyvtár szintjén beállítások frissítése. Ezek a példák feltételezik, hogy már létezik a beállítási objektumot a címtárban.
+Ezeket a lépéseket az összes Office 365-csoportokat a címtárban könyvtár szintjén beállítások frissítése. Ezek a példák feltételezik, hogy már létezik a beállítási objektumot a címtárban.
 
 1. A meglévő beállítások objektum keresése:
   ```

@@ -14,21 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/23/2017
 ms.author: LADocs; mandia
-ms.openlocfilehash: 716e7b5bab8725dea0fd2b760d0e46e8e892c5b4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f7ec63810fe78b38c574ec39369d5926f80e595e
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="what-is-an-integration-account"></a>Mi az az integráció fiókkal?
 
 Integráció fiók lehetővé teszi, hogy vállalati integrációs alkalmazások összetevők, beleértve a sémák, térképeket, tanúsítványok, partnerek és megállapodások kezeléséhez. Minden integrációs alkalmazást hoz létre egy integrációs fiók használatával hozzáférni a sémák, maps, tanúsítványokat, és így tovább.
 
-## <a name="create-an-integration-account"></a>Integráció-fiók létrehozása
+## <a name="create-an-integration-account"></a>Integrációs fiók létrehozása
 
-1.  Jelentkezzen be az [Azure Portalra](http://portal.azure.com "Azure Portal") A bal oldali menüben válassza ki a **további szolgáltatások**.
+1.  Jelentkezzen be az [Azure Portalra](http://portal.azure.com "Azure Portal") A bal oldali menüben válassza ki a **minden szolgáltatás**.
 
-    ![Válassza ki a "Szolgáltatás"](./media/logic-apps-enterprise-integration-accounts/account-1.png)
+    ![Jelölje be "az összes szolgáltatás"](./media/logic-apps-enterprise-integration-accounts/account-1.png)
 
 2. A keresőmezőbe írja be a "integrációt" a szűrőhöz. Az eredmények listájában válassza **integrációs fiókok**.
 
@@ -85,9 +85,9 @@ Most, hogy fiókja integráció a Logic Apps alkalmazást kapcsolódik, a B2B ö
 
 ## <a name="delete-your-integration-account"></a>Az integráció fiók törlése
 
-1. Válassza ki **további szolgáltatások**.
+1. Válassza ki **minden szolgáltatás**.
 
-    ![Válassza ki a "Szolgáltatás"](./media/logic-apps-enterprise-integration-accounts/account-1.png)
+    ![Jelölje be "az összes szolgáltatás"](./media/logic-apps-enterprise-integration-accounts/account-1.png)
 
 2. A keresőmezőbe írja be a "integrációt" a szűrőhöz. Az eredmények listájában válassza **integrációs fiókok**.
 
@@ -110,9 +110,9 @@ Integráció fiók áthelyezése egy másik Azure-előfizetés vagy az erőforr�
 > [!IMPORTANT]
 > Minden parancsfájl használata az új erőforrás-azonosítók integrációs fiók áthelyezése után frissítenie kell.
 
-1. Válassza ki **további szolgáltatások**.
+1. Válassza ki **minden szolgáltatás**.
 
-    ![Válassza ki a "Szolgáltatás"](./media/logic-apps-enterprise-integration-accounts/account-1.png)
+    ![Jelölje be "az összes szolgáltatás"](./media/logic-apps-enterprise-integration-accounts/account-1.png)
 
 2. A keresőmezőbe írja be a "integrációt" a szűrőhöz. Az eredmények listájában válassza **integrációs fiókok**.
 
@@ -126,6 +126,6 @@ Integráció fiók áthelyezése egy másik Azure-előfizetés vagy az erőforr�
 
     ![Válassza ki a módosítás erőforráscsoportba vagy módosítás előfizetés](./media/logic-apps-enterprise-integration-accounts/move-2.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [További információ a megállapodások](../logic-apps/logic-apps-enterprise-integration-agreements.md "vállalati integrációs megállapodások ismertetése")  
 

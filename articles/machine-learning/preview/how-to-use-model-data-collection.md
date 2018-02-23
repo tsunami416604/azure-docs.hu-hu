@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 09/12/2017
-ms.openlocfilehash: 6f9786b75f5160ceaa4dd269a91d7f3a4b6700d5
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.openlocfilehash: 5e6a79a9b716b6797a1af21f0dcb911219b77207
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="collect-model-data-by-using-data-collection"></a>Adatgyűjtés a modell adatainak gyűjtéséről
 
@@ -88,7 +88,7 @@ A modell adatgyűjtés használatához a következő módosításokat a pontozá
 Az összegyűjtött adatok megtekintése a blob Storage tárolóban:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. Válassza ki **további szolgáltatások**.
+2. Válassza ki **minden szolgáltatás**.
 3. Írja be a keresőmezőbe, **tárfiókok** válassza ki az Enter billentyűt.
 4. Az a **tárfiókok** keresési panelen válassza a **tárfiók** erőforrás. Annak megállapításához, a tárfiók, tegye a következőket:
 

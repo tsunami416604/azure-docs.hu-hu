@@ -15,11 +15,11 @@ ms.date: 01/30/2018
 ms.author: rolyon
 ms.reviewer: rqureshi
 ms.custom: it-pro
-ms.openlocfilehash: 520a52161438c967b7614ab01b2e9892612254f0
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 82fa6d3f04dc528c0e2d95dae82e7a7f8787ea7c
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="built-in-roles-for-azure-role-based-access-control"></a>Az Azure szerepköralapú hozzáférés-vezérlés beépített szerepkörök
 Azure szerepköralapú hozzáférés-vezérlés (RBAC) tartalmaz a következő beépített szerepkörök, felhasználók, csoportok és szolgáltatások rendelhető. A beépített szerepkörök definíciója nem módosítható. Azonban létrehozhat [egyéni szerepkörök az Azure RBAC](role-based-access-control-custom-roles.md) a szervezet igényeinek megfelelően.
@@ -48,7 +48,7 @@ Ez a cikk csak a különböző szerepkörök ma foglalkozik. Amikor szerepkör h
 | [Biztonságimásolat-felelős](#backup-operator) | Kezelheti a biztonsági mentéshez, kivéve, hogy eltávolítja a biztonsági mentés, a Recovery Services-tároló |
 | [Biztonsági mentési olvasó](#backup-reader) | Megtekintheti az összes biztonsági mentési szolgáltatások  |
 | [Számlázási olvasó](#billing-reader) | Megtekintheti az összes számlázási adatokat  |
-| [BizTalk közreműködő](#biztalk-contributor) |Kezelheti a BizTalk szolgáltatások |
+| [BizTalk Contributor](#biztalk-contributor) |Kezelheti a BizTalk szolgáltatások |
 | [ClearDB MySQL DB Contributor](#cleardb-mysql-db-contributor) |Kezelheti a ClearDB MySQL-adatbázisok |
 | [Közreműködő](#contributor) |Hozzáférés kivételével mindent felügyelhetnek. |
 | [Data Factory közreműködő](#data-factory-contributor) |Hozhat létre, és kezelhet az adat-előállítók és gyermekerőforrásait rajtuk. |
@@ -61,9 +61,8 @@ Ez a cikk csak a különböző szerepkörök ma foglalkozik. Amikor szerepkör h
 | [Figyelési olvasó](#monitoring-reader) |Minden figyelési adatot is olvashat |
 | [A közreműködői figyelése](#monitoring-contributor) |Figyelési adatok olvashatja és figyelési beállításainak szerkesztése |
 | [Hálózati közreműködő](#network-contributor) |Kezelheti az összes hálózati erőforrás |
-| [Új New Relic APM fiók közreműködői](#new-relic-apm-account-contributor) |Új New Relic teljesítmény Alkalmazáskezelés fiókok és alkalmazások is kezelése |
 | [Tulajdonos](#owner) |Mindent felügyelhetnek, beleértve a hozzáférést |
-| [Olvasó](#reader) |Mindent megtekinthetnek, de nem módosítható |
+| [Reader](#reader) |Mindent megtekinthetnek, de nem módosítható |
 | [Redis gyorsítótár közreműködő](#redis-cache-contributor) |Kezelheti a Redis gyorsítótár |
 | [A Feladatütemező feladat gyűjtemények közreműködő](#scheduler-job-collections-contributor) |Kezelheti a scheduler feladatgyűjteményei |
 | [Keresési szolgáltatás közreműködő](#search-service-contributor) |Kezelheti a keresési szolgáltatások |
@@ -74,7 +73,7 @@ Ez a cikk csak a különböző szerepkörök ma foglalkozik. Amikor szerepkör h
 | [Webhely-helyreállítási operátor](#site-recovery-operator) | Kezelheti a feladatátvétel és a feladat-visszavételi művelet Site Recovery Recovery Services-tároló |
 | [Webhely-helyreállítási olvasó](#site-recovery-reader) | Megtekintheti a Site Recovery összes felügyeleti művelet  |
 | [SQL DB Contributor](#sql-db-contributor) |SQL-adatbázisok, de nem a biztonsági házirendek kezeléséhez |
-| [SQL biztonságkezelő](#sql-security-manager) |Kezelheti az SQL Server-kiszolgálók és adatbázisok biztonsági házirendek |
+| [SQL Security Manager](#sql-security-manager) |Kezelheti az SQL Server-kiszolgálók és adatbázisok biztonsági házirendek |
 | [SQL Server közreműködő](#sql-server-contributor) |SQL Server-kiszolgálók és adatbázisok, de nem a biztonsági házirendek kezeléséhez |
 | [Hagyományos tárolási fiók közreműködői](#classic-storage-account-contributor) |Kezelheti a klasszikus tárfiókokba |
 | [Tárolási fiók közreműködői](#storage-account-contributor) |Kezelheti a storage-fiókok |
@@ -308,7 +307,7 @@ Hozzáférés kivételével mindent felügyelhetnek
 | --- | --- |
 | * |Hozzon létre és kezelheti az erőforrásokat bármilyen típusú |
 
-| **NotActions** |  |
+| NotActions |  |
 | --- | --- |
 | Microsoft.Authorization/*/Delete |Szerepkörök és szerepkör-hozzárendelések nem lehet törölni |
 | Microsoft.Authorization/*/Write |Nem hozható létre, szerepkörök és szerepkör-hozzárendelések |
@@ -360,7 +359,7 @@ Minden tekintheti meg és csatlakozni, a start, újraindítás és leállítás 
 | Microsoft.Storage/storageAccounts/listKeys/action |Tárfiókkulcsok listázása |
 
 ### <a name="dns-zone-contributor"></a>A DNS-zóna közreműködője
-DNS-zónák és rekordok is kezelheti.
+Can manage DNS zones and records.
 
 | **Műveletek** |  |
 | --- | --- |
@@ -403,7 +402,7 @@ Az összes figyelési adatokat (metrikákat, naplói, stb.) el tud olvasni. Lás
 
 | **Műveletek** |  |
 | --- | --- |
-| * / olvasása |Olvassa el az erőforrásokat bármilyen típusú, kivéve a titkos kulcsok. |
+| */read |Olvassa el az erőforrásokat bármilyen típusú, kivéve a titkos kulcsok. |
 | Microsoft.OperationalInsights/workspaces/search/action |Log Analytics-adatok keresése |
 | Microsoft.Support/* |Hozzon létre és támogatási jegyek kezelése |
 
@@ -412,7 +411,7 @@ Az összes figyelési adatokat (metrikákat, naplói, stb.) el tud olvasni. Lás
 
 | **Műveletek** |  |
 | --- | --- |
-| * / olvasása |Olvassa el az erőforrásokat bármilyen típusú, kivéve a titkos kulcsok. |
+| */read |Olvassa el az erőforrásokat bármilyen típusú, kivéve a titkos kulcsok. |
 | Microsoft.Insights/AlertRules/* |Olvasási, írási és törlési riasztási szabályok. |
 | Microsoft.Insights/components/* |Olvasási, írási és törlési Application Insights összetevőinek. |
 | Microsoft.Insights/DiagnosticSettings/* |Olvasási, írási és törlési diagnosztikai beállítások. |
@@ -441,19 +440,6 @@ Kezelheti az összes hálózati erőforrás
 | Microsoft.Resources/subscriptions/resourceGroups/read |Olvassa el az erőforráscsoport-sablonok |
 | Microsoft.Support/* |Hozzon létre és támogatási jegyek kezelése |
 
-### <a name="new-relic-apm-account-contributor"></a>New Relic APM-fiókközreműködő
-Új New Relic teljesítmény Alkalmazáskezelés fiókok és alkalmazások is kezelése
-
-| **Műveletek** |  |
-| --- | --- |
-| Microsoft.Authorization/*/read |Olvassa el szerepköröket és hozzárendelések szerepkör |
-| Microsoft.Insights/alertRules/* |Hozzon létre és riasztási szabályok kezelése |
-| Microsoft.ResourceHealth/availabilityStatuses/read |Az erőforrások állapotának olvasása |
-| Microsoft.Resources/deployments/* |Hozzon létre és erőforrás-csoport központi telepítések felügyeletéhez szükséges |
-| Microsoft.Resources/subscriptions/resourceGroups/read |Olvassa el az erőforráscsoport-sablonok |
-| Microsoft.Support/* |Hozzon létre és támogatási jegyek kezelése |
-| NewRelic.APM/accounts/* |New Relic alkalmazás teljesítmény felügyeleti fiókok létrehozása és kezelése |
-
 ### <a name="owner"></a>Tulajdonos
 Mindent felügyelhetnek, beleértve a hozzáférést
 
@@ -466,7 +452,7 @@ Mindent megtekinthetnek, de nem módosítható
 
 | **Műveletek** |  |
 | --- | --- |
-| * / olvasása |Olvassa el az erőforrásokat bármilyen típusú, kivéve a titkos kulcsok. |
+| */read |Olvassa el az erőforrásokat bármilyen típusú, kivéve a titkos kulcsok. |
 
 ### <a name="redis-cache-contributor"></a>Redis gyorsítótárak közreműködője
 Kezelheti a Redis gyorsítótár
@@ -601,7 +587,7 @@ Feladatátvétel és a feladat-visszavétel is, de nem más Site Recovery felüg
 | Microsoft.RecoveryServices/vaults/replicationEvents/read | Replikációs események olvasása |
 | Microsoft.RecoveryServices/vaults/replicationFabrics/checkConsistency/action | A hálók egységességének ellenőrzése |
 | Microsoft.RecoveryServices/vaults/replicationFabrics/read | Olvassa el a replikációs hálók |
-| Microsoft.RecoveryServices/vaults/replicationFabrics/ reassociateGateway/művelet | Társítsa a replikációs átjáró újból |
+| Microsoft.RecoveryServices/vaults/replicationFabrics/ reassociateGateway/action | Társítsa a replikációs átjáró újból |
 | Microsoft.RecoveryServices/vaults/replicationFabrics/renewcertificate/action | Replikációs háló tanúsítványának megújítása |
 | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationNetworks/read | Olvassa el a replikációs háló hálózatok |
 | ReplicationNetworks/replicationNetworkMappings/olvasás Microsoft.RecoveryServices/vaults/replicationFabrics/ | Olvassa el a replikációs háló hálózatleképezés |
@@ -610,28 +596,28 @@ Feladatátvétel és a feladat-visszavétel is, de nem más Site Recovery felüg
 | Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationProtectionContainers/replicationProtectedItems/applyRecoveryPoint/művelet | Egy adott helyreállítási pont alkalmazása |
 | Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationProtectionContainers/replicationProtectedItems/failoverCommit/művelet | Egy sikertelen a feladatátvétel véglegesítése elem |
 | Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationProtectionContainers/replicationProtectedItems/plannedFailover/művelet | Indítson el egy védett elem tervezett feladatátvételt |
-| ReplicationProtectionContainers/replicationProtectedItems/olvasás Microsoft.RecoveryServices/vaults/replicationFabrics/ | Minden védett elemek listájának beolvasása |
-| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationProtectionContainers replicationProtectedItems/recoveryPoints/olvasása | A rendelkezésre álló helyreállítási pontok listájának beolvasása |
-| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationProtectionContainers/replicationProtectedItems/repairReplication/művelet | Javítsa ki a védett elem replikációs |
-| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationProtectionContainers/replicationProtectedItems/védelem-Újrabeállítási/művelet | Indítsa el újra a védett elem védelmét|
-| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationProtectionContainers/replicationProtectedItems/testFailover/művelet | Indítsa el a védett elem feladatátvételi tesztje |
-| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationProtectionContainers/replicationProtectedItems/testFailoverCleanup/művelet | Indítsa el a feladatátvételi teszt karbantartása |
+| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationProtectionContainers/replicationProtectedItems/read | Minden védett elemek listájának beolvasása |
+| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationProtectionContainers/replicationProtectedItems/recoveryPoints/read | A rendelkezésre álló helyreállítási pontok listájának beolvasása |
+| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationProtectionContainers/replicationProtectedItems/ repairReplication/action | Javítsa ki a védett elem replikációs |
+| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationProtectionContainers/replicationProtectedItems/reProtect/action | Indítsa el újra a védett elem védelmét|
+| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationProtectionContainers/replicationProtectedItems/testFailover/action | Indítsa el a védett elem feladatátvételi tesztje |
+| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationProtectionContainers/replicationProtectedItems/ testFailoverCleanup/action | Indítsa el a feladatátvételi teszt karbantartása |
 | Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationProtectionContainers/replicationProtectedItems/unplannedFailover/művelet | A védett elem nem tervezett feladatátvételének indítása |
 | Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationProtectionContainers/replicationProtectedItems/updateMobilityService/művelet | A mobilitási szolgáltatás frissítése |
 | ReplicationProtectionContainers/replicationProtectionContainerMappings/olvasás Microsoft.RecoveryServices/vaults/replicationFabrics/ | Olvassa el a védelmi tároló hozzárendelések |
 | Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationRecoveryServicesProviders olvasása | Olvasási Recovery Services-szolgáltatók |
-| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationRecoveryServicesProviders/refreshProvider/művelet | Frissítse a Recovery Services-szolgáltató |
+| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationRecoveryServicesProviders/refreshProvider/action | Frissítse a Recovery Services-szolgáltató |
 | Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationStorageClassifications olvasása | Olvassa el a replikációs hálók tartozó tárhelybesorolások |
 | ReplicationStorageClassifications/replicationStorageClassificationMappings/olvasás Microsoft.RecoveryServices/vaults/replicationFabrics/ | Olvassa el a tárolási besorolás hozzárendelések |
 | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationvCenters/read | Olvassa el a vCenter-információ regisztrálva |
 | Microsoft.RecoveryServices/vaults/replicationJobs/* | Fájlreplikációs feladatok létrehozásához és kezeléséhez |
 | Microsoft.RecoveryServices/vaults/replicationPolicies/read | Olvassa el a replikációs házirendhez |
-| Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/ failoverCommit/művelet | A helyreállításhoz szükséges feladatátvételi feladatátvételi véglegesítése |
-| Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/ plannedFailover/művelet | A helyreállítási terv feladatátvételének indítása |
+| Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/ failoverCommit/action | A helyreállításhoz szükséges feladatátvételi feladatátvételi véglegesítése |
+| Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/ plannedFailover/action | A helyreállítási terv feladatátvételének indítása |
 | Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/read | A helyreállítási tervek olvasása |
 | Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/reProtect/action | Indítsa el újra a helyreállítási terv védelme |
 | Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/testFailover/action | Indítsa el a helyreállítási terv teszt feladatátvétele |
-| Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/ testFailoverCleanup/művelet | Indítsa el a helyreállítási terv feladatátvételi teszt karbantartása |
+| Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/ testFailoverCleanup/action | Indítsa el a helyreállítási terv feladatátvételi teszt karbantartása |
 | Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/ unplannedFailover/művelet | Indítsa el a helyreállítási terv nem tervezett feladatátvétel |
 | Microsoft.RecoveryServices/Vaults/storageConfig/read | Olvassa el a tárolási konfigurációt a Recovery Services-tároló |
 | Microsoft.RecoveryServices/Vaults/tokenInfo/read | Olvasási Recovery Services-tároló jogkivonat adatai |
@@ -662,8 +648,8 @@ Recovery Services-tárolónak a Site Recovery állapot figyelheti és támogatá
 | ReplicationNetworks/replicationNetworkMappings/olvasás Microsoft.RecoveryServices/vaults/replicationFabrics/  | Olvassa el a replikációs háló hálózatleképezés |
 | Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationProtectionContainers olvasása  |  Olvassa el a védelmi tároló |
 | ReplicationProtectionContainers/replicationProtectableItems/olvasás Microsoft.RecoveryServices/vaults/replicationFabrics/  | Minden védhető elemek listájának beolvasása |
-| ReplicationProtectionContainers/replicationProtectedItems/olvasás Microsoft.RecoveryServices/vaults/replicationFabrics/  | Minden védett elemek listájának beolvasása |
-| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationProtectionContainers replicationProtectedItems/recoveryPoints/olvasása  | A rendelkezésre álló helyreállítási pontok listájának beolvasása |
+| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationProtectionContainers/replicationProtectedItems/read  | Minden védett elemek listájának beolvasása |
+| Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationProtectionContainers/replicationProtectedItems/recoveryPoints/read  | A rendelkezésre álló helyreállítási pontok listájának beolvasása |
 | ReplicationProtectionContainers/replicationProtectionContainerMappings/olvasás Microsoft.RecoveryServices/vaults/replicationFabrics/  | Olvassa el a védelmi tároló hozzárendelések |
 | Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationRecoveryServicesProviders olvasása  | Olvasási Recovery Services-szolgáltatók |
 | Microsoft.RecoveryServices/vaults/replicationFabrics/ replicationStorageClassifications olvasása  | Olvassa el a replikációs hálók tartozó tárhelybesorolások |
@@ -688,10 +674,10 @@ SQL-adatbázisok, de nem a biztonsági házirendek kezeléséhez
 | Microsoft.Resources/deployments/* |Hozzon létre és erőforrás-csoport központi telepítések felügyeletéhez szükséges |
 | Microsoft.Resources/subscriptions/resourceGroups/read |Olvassa el az erőforráscsoport-sablonok |
 | Microsoft.Sql/servers/databases/* |Létrehozásához és kezeléséhez az SQL-adatbázisok |
-| Microsoft.Sql/servers/read |Olvassa el az SQL Server-kiszolgálók |
+| Microsoft.Sql/servers/read |Read SQL Servers |
 | Microsoft.Support/* |Hozzon létre és támogatási jegyek kezelése |
 
-| **NotActions** |  |
+| NotActions |  |
 | --- | --- |
 | Microsoft.Sql/servers/databases/auditingPolicies/* |Naplózási házirendek nem szerkeszthető. |
 | Microsoft.Sql/servers/databases/auditingSettings/* |Naplózási beállítások nem szerkeszthetők. |
@@ -724,7 +710,7 @@ Kezelheti az SQL Server-kiszolgálók és adatbázisok biztonsági házirendek
 | Microsoft.Sql/servers/databases/schemas/tables/read |Olvassa el az SQL server adatbázistáblák |
 | Microsoft.Sql/servers/databases/securityAlertPolicies/* |SQL server adatbázis biztonsági riasztási szabályzatok létrehozása és kezelése |
 | Microsoft.Sql/servers/databases/securityMetrics/* |Létrehozásához és kezeléséhez az SQL server-adatbázis biztonsági metrikák |
-| Microsoft.Sql/servers/read |Olvassa el az SQL Server-kiszolgálók |
+| Microsoft.Sql/servers/read |Read SQL Servers |
 | Microsoft.Sql/servers/securityAlertPolicies/* |SQL server biztonsági riasztás szabályzatok létrehozása és kezelése |
 | Microsoft.Support/* |Hozzon létre és támogatási jegyek kezelése |
 
@@ -741,7 +727,7 @@ SQL Server-kiszolgálók és adatbázisok, de nem a biztonsági házirendek keze
 | Microsoft.Sql/servers/* |Hozzon létre és SQL-kiszolgálók kezelése |
 | Microsoft.Support/* |Hozzon létre és támogatási jegyek kezelése |
 
-| **NotActions** |  |
+| NotActions |  |
 | --- | --- |
 | Microsoft.Sql/servers/auditingPolicies/* |SQL server naplózási házirendek nem szerkeszthető. |
 | Microsoft.Sql/servers/auditingSettings/* |SQL server naplózási beállítások nem szerkeszthetők. |
@@ -795,7 +781,7 @@ Kezelheti a felhasználói hozzáférés az Azure-erőforrások
 
 | **Műveletek** |  |
 | --- | --- |
-| * / olvasása |Olvassa el az erőforrásokat bármilyen típusú, kivéve a titkos kulcsok. |
+| */read |Olvassa el az erőforrásokat bármilyen típusú, kivéve a titkos kulcsok. |
 | Microsoft.Authorization/* |Engedélyezési kezelése |
 | Microsoft.Support/* |Hozzon létre és támogatási jegyek kezelése |
 

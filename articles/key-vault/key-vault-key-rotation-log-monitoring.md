@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/07/2017
 ms.author: jodehavi;stgriffi
-ms.openlocfilehash: 2de788fabcae501d1a388bcea6b7759c9ea269cc
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 793f35bfd2e5e6b22e0804f01a69c0c20990d211
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="set-up-azure-key-vault-with-end-to-end-key-rotation-and-auditing"></a>Az Azure Key Vault beállítása végpontok közötti kulcsforgatással és auditálással
 ## <a name="introduction"></a>Bevezetés
@@ -255,12 +255,12 @@ A következő lépés [hozzon létre egy Azure Service Bus-üzenetsorba](../serv
 
 1. Service Bus-névtér létrehozása (Ha már rendelkezik egy, a, folytassa a 2. lépésben használni kívánt).
 2. Keresse meg a service bus az Azure portálon, és válassza ki a létrehozandó sorból névteret.
-3. Válassza ki **új** válassza **Service Bus > várólista** , és írja be a szükséges adatokat.
+3. Válassza ki **hozzon létre egy erőforrást**, **vállalati integrációs**, **Service Bus**, majd adja meg a szükséges adatokat.
 4. Válassza ki a Service Bus kapcsolati információit a névtér kiválasztásával, majd **kapcsolatadatok**. Szüksége lesz ezt az információt a következő szakaszban.
 
 Ezt követően [egy Azure-függvény létrehozása](../azure-functions/functions-create-first-azure-function.md) kérdezze le a kulcstároló naplóit a tárfiókon belül, és új események átvételéhez. Ez lesz az ütemezés szerint kiváltó függvényt.
 
-Egy Azure-függvény létrehozása, válassza a **új > függvény App** az Azure portálon. A létrehozás során egy meglévő üzemeltetési terv használja, vagy hozzon létre egy újat. Sikerült is választhat dinamikus üzemeltetéséhez. További részleteket a beállításokat tartalmazó függvény található [az Azure Functions méretezése](../azure-functions/functions-scale.md).
+Egy Azure-függvény létrehozása, válassza a **hozzon létre egy erőforrást**, keresése a piactéren _függvény App_, és kattintson a **létrehozása**. A létrehozás során egy meglévő üzemeltetési terv használja, vagy hozzon létre egy újat. Sikerült is választhat dinamikus üzemeltetéséhez. További részleteket a beállításokat tartalmazó függvény található [az Azure Functions méretezése](../azure-functions/functions-scale.md).
 
 Az Azure-függvény létrehozása esetén keresse meg a fájlt, és válassza a időzítőt, függvény és C\#. Kattintson a **Ez a függvény létrehozása**.
 
