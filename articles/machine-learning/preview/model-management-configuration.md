@@ -4,17 +4,17 @@ description: "Ez a dokumentum ismerteti a lépéseket és fogalmak beállítás�
 services: machine-learning
 author: raymondlaghaeian
 ms.author: raymondl
-manager: neerajkh
-ms.reviewer: garyericson, jasonwhowell, mldocs
+manager: hjerez
+ms.reviewer: jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 08/29/2017
-ms.openlocfilehash: 151e7c2dc808a8fa117a0d7a1950185abe9e3152
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 45ddd4dc6fb5559c020706e2784158b1319f9b52
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="model-management-setup"></a>Modell kezelésének beállítása
 
@@ -107,7 +107,7 @@ A helyi környezet setup parancs az előfizetésében hoz létre a következőke
 - Erőforráscsoport (Ha nincs megadva)
 - a storage-fiók
 - Egy Azure-tárolót beállításjegyzék (ACR)
-- Az Application insights
+- Application Insights
 
 Telepítés sikeres befejezése után állítsa be a környezet használható a következő parancsot:
 
@@ -129,7 +129,7 @@ A fürt környezet setup parancs az előfizetésében hoz létre a következőke
 - a storage-fiók
 - Egy Azure-tárolót beállításjegyzék (ACR)
 - Egy Azure tároló szolgáltatás (ACS) fürt Kubernetes központi telepítés
-- Az Application insights
+- Application Insights
 
 Az erőforráscsoport, a tárfiók, valamint a ACR gyorsan hoz létre. Az ACS telepítési akár 20 percig is tarthat. 
 
@@ -167,5 +167,5 @@ Most már készen áll a mentett modell webszolgáltatásként központi telepí
 az ml service create realtime --model-file [model file/folder path] -f [scoring file e.g. score.py] -n [your service name] -s [schema file e.g. service_schema.json] -r [runtime for the Docker container e.g. spark-py or python] -c [conda dependencies file for additional python packages]
 ```
 
-### <a name="next-steps"></a>Következő lépések
+### <a name="next-steps"></a>További lépések
 Tekintse meg a gyűjteményben sok minták.

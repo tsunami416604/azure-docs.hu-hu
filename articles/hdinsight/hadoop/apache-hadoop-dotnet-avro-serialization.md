@@ -14,14 +14,14 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/06/2017
+ms.date: 02/22/2018
 ms.author: jgao
 ms.custom: hdiseo17may2017
-ms.openlocfilehash: 04f76d15f12b52d7b47011010a5ce20cc45174ee
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: 5bb2ee2b9b838cc9feca60eca6b2c721ca58ed45
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="serialize-data-in-hadoop-with-the-microsoft-avro-library"></a>A Microsoft az Avro Library Hadoop adatok szerializálása
 
@@ -48,7 +48,7 @@ Az Apache Avro szerializálási formátum széles körben használt Azure HDInsi
 A .NET könyvtár az avro-hoz támogatja a szerializálási objektumok két módon:
 
 * **Fejlécreflexiós** -a JSON-séma a következő típusokhoz automatikusan össze az adatokat a .NET típusú szerializálandó szerződés attribútumok.
-* **általános rekord** -A JSON-séma explicit módon megadott által képviselt rekordban a [ **AvroRecord** ](http://msdn.microsoft.com/library/microsoft.hadoop.avro.avrorecord.aspx) Ha nincs .NET-típus megadásával írhatja le a sémát, az adatok a meglévő osztály szerializálni.
+* **általános rekord** -A JSON-séma explicit módon megadott által képviselt rekordban a [ **AvroRecord** ](http://msdn.microsoft.com/library/microsoft.hadoop.avro.avrorecord.aspx) indulásakor nem .NET-típusok jelen a sémát szerializálandó leírására.
 
 Ha az adatok séma ismert író és az adatfolyam olvasó, az adatküldés sémájú nélkül. Azokban az esetekben az Avro objektum tároló fájl használata esetén a séma tárolja a fájlon belül. Más paraméterek, például a használt adatok tömörítési kodek adható meg. Ezek a forgatókönyvek részletesen ismertetett és a következő kód példákban szereplő megoldásokat:
 
@@ -78,7 +78,7 @@ A Microsoft az Avro Library tartalmaz egy kód generálása segédprogram, amely
 3. A mappában C:\SDK\src\Microsoft.Hadoop.Avro.Tools, és futtassa a build.bat. (A fájl hívások MSBuild a 32 bites terjesztési a .NET-keretrendszer. Ha azt szeretné, hogy 64 bites verzióját használja, szerkesztése build.bat, a megjegyzéseket, a fájlban a következő.) Győződjön meg arról, hogy a build sikeres. (Egyes rendszerek MSBuild készíthet figyelmeztetéseket. Ezek a figyelmeztetések nem befolyásolják a segédprogram mindaddig, amíg nincsenek build hibák.)
 4. A lefordított segédprogram C:\SDK\Bin\Unsigned\Release\Microsoft.Hadoop.Avro.Tools található.
 
-Ahhoz, hogy ismeri a parancssori szintaxist, a mappából, ahol a kód generálása segédprogram-e végre az alábbi parancsot:`Microsoft.Hadoop.Avro.Tools help /c:codegen`
+Ahhoz, hogy ismeri a parancssori szintaxist, a mappából, ahol a kód generálása segédprogram-e végre az alábbi parancsot: `Microsoft.Hadoop.Avro.Tools help /c:codegen`
 
 A segédprogram teszteléséhez C# osztályokat is generálása a megadott forráskódja minta JSON-fájl. Hajtsa végre a következő parancsot:
 

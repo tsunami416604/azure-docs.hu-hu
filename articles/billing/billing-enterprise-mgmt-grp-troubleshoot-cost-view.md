@@ -10,24 +10,22 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/25/2017
+ms.date: 2/22/2017
 ms.author: rithorn
-ms.openlocfilehash: acdcf5b772cbaca1827663b49d5cc8cafa238108
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 54c7610f1a0d3de2503ef471ca9adc0db423f530
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="troubleshoot-enterprise-cost-views"></a>Nézetek költség vállalati hibaelhárítása 
 
 Vállalati regisztrációkat belül beállításokat a rendszer több, amely a felhasználót a regisztráció belül nem tudják megjeleníteni a költségeket.  Ezek a beállítások kezelik a beléptetési rendszergazdája, vagy a partner által a tagság nem vásárolt közvetlenül a Microsofttal.  Ez a cikk segít megérteni a Mik azok a beállítások, és milyen hatással lesznek a regisztrációt. Ezek a beállítások függetlenek a [Azure RBAC-szerepkörök](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure). 
 
-> [!Note]
-> Ez a funkció jelenleg magán előnézetben. [Itt regisztrálhat](https://forms.office.com/Pages/DesignPage.aspx#FormId=v4j5cvGGr0GRqy180BHbR0YtfU6ham9OsGsPPYdu2xdUNk1BQUwzTkUyOVc5NUpCTFcwR0pIOVFETS4u) kell rendelkeznie a csatlakozás az előzetes regisztrációját.     
 
 ## <a name="enabling-access-to-costs"></a>Költségek való hozzáférés engedélyezése
 
-Azért jelent meg, egy üzenet nem engedélyezett, amelyek vagy *"költség nézetek le vannak tiltva a regisztrációs."* Amikor költség információkat keres? ![nem engedélyezett](media/billing-enterprise-mgmt-groups/unauthorized.png)
+Ön jelent meg, egy üzenet nem engedélyezett, vagy *"költség nézetek le vannak tiltva a regisztrációs."* Amikor költség információkat keres? ![nem engedélyezett](media/billing-enterprise-mgmt-groups/unauthorized.png)
 
 Lehet, hogy a következő okok egyikéből adódóan:
 
@@ -43,8 +41,7 @@ Lehet, hogy a következő okok egyikéből adódóan:
 ## <a name="asset-is-unavailable"></a>Nem érhető el az eszköz? 
 Ha azért kapta, egy hibaüzenet "Ez az eszköz nem érhető el" Amikor megpróbál hozzáférni egy előfizetés vagy egy felügyeleti csoportot, majd nincs a megfelelő szerepkör ezen elem megtekintéséhez.  
 
-![eszköz nem található](media/billing-enterprise-mgmt-groups/asset-not-found.png)
+![asset-not-found](media/billing-enterprise-mgmt-groups/asset-not-found.png)
 
 Kérje a rendszergazda az előfizetés vagy felügyeleti csoportok hozzáférést.  
 * Előfizetések hivatkozhat [átruházásához hozzáférés-vezérlés (RBAC)](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure) dokumentum segítséget, amelyen a szerepkör szükséges.
-* A felügyeleti csoportok a Szerepalapú hozzáférés nem érhető el, és. hamarosan már az. Forduljon a vállalati portál felügyeletéhez hozzárendelt elérhető legyen.   

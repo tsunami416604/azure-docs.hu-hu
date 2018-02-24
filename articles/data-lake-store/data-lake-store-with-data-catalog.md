@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/28/2017
+ms.date: 02/21/2018
 ms.author: nitinme
-ms.openlocfilehash: 93de6a574b306e3fd8959454709e84a57ee4fc10
-ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
+ms.openlocfilehash: e341f6a4b3a6aef0a328aa4f5d8c9ae92dc24137
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="register-data-from-data-lake-store-in-azure-data-catalog"></a>Data Lake Store-ból adatokat regisztrálni kell az Azure Data Catalog
 Ebben a cikkben, megtudhatja, hogyan integrálható az Azure Data Lake Store az Azure Data Catalog, hogy az adatok felderíthető egy szervezeten belül a Data Catalog integrálásával. Az adatok katalogizálása további információkért lásd: [Azure Data Catalog](../data-catalog/data-catalog-what-is-data-catalog.md). Forgatókönyvek, amelyben használhatja a Data Catalog ismertetése: [Azure Data Catalog gyakori forgatókönyvei](../data-catalog/data-catalog-common-scenarios.md).
@@ -78,7 +78,7 @@ Az oktatóanyag elkezdéséhez az alábbiakkal kell rendelkeznie:
     * [A Data Catalog adatforrások ellátása megjegyzésekkel](../data-catalog/data-catalog-how-to-annotate.md)
     * [A Data Catalog dokumentum adatforrások](../data-catalog/data-catalog-how-to-documentation.md)
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 * [A Data Catalog adatforrások ellátása megjegyzésekkel](../data-catalog/data-catalog-how-to-annotate.md)
 * [A Data Catalog dokumentum adatforrások](../data-catalog/data-catalog-how-to-documentation.md)
 * [Data Lake Store más Azure-szolgáltatásokkal integrálja](data-lake-store-integrate-with-other-services.md)

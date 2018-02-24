@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 02/12/2018
+ms.date: 02/21/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c62ea8efe56186a2f3ee934823b4ea03775037b0
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 365101fc6267a5a295462d7a9902e5fd25964086
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="azure-cosmos-db-net-core-sdk-for-sql-api-release-notes-and-resources"></a>Az Azure Cosmos DB .NET Core SDK API-SQL: kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
@@ -45,7 +45,7 @@ ms.lasthandoff: 02/13/2018
 
 <tr><td>**Minták**</td><td>[.NET-Kódminták](sql-api-dotnet-samples.md)</td></tr>
 
-<tr><td>Első lépések</td><td>[Ismerkedés az Azure Cosmos DB .NET Core-SDK-val](sql-api-dotnetcore-get-started.md)</td></tr>
+<tr><td>**Első lépések**</td><td>[Ismerkedés az Azure Cosmos DB .NET Core-SDK-val](sql-api-dotnetcore-get-started.md)</td></tr>
 
 <tr><td>**Webes alkalmazás oktatóanyag**</td><td>[Webalkalmazás fejlesztése a Azure Cosmos DB](sql-api-dotnet-application.md)</td></tr>
 
@@ -59,7 +59,11 @@ Az Azure Cosmos DB .NET Core SDK legújabb verziójával szolgáltatásparitást
 > [!NOTE] 
 > Az Azure Cosmos DB .NET Core SDK még nem kompatibilis az univerzális Windows Platform (UWP-) alkalmazásokat. Ha érdekli a .NET Core-SDK-t támogató UWP-alkalmazások, e-mailek küldése [ askcosmosdb@microsoft.com ](mailto:askcosmosdb@microsoft.com).
 
-### <a name="a-name180181"></a><a name="1.8.0"/>1.8.1
+### <a name="a-name182182"></a><a name="1.8.2"/>1.8.2
+
+* Rögzített időszakos SessionConsistency versenyhelyzet lépett fel.
+
+### <a name="a-name181181"></a><a name="1.8.1"/>1.8.1
 
 * Rögzített regressziós ahol FeedOptions.MaxItemCount = -1 egy System.ArithmeticException kivételt okozott: méretet a rendszer negatív.
 * Egy új ToString() függvényét QueryMetrics hozzá.
@@ -165,6 +169,7 @@ Ha az SDK-val kapcsolatos kérdése van, továbbá hogy [StackOverflow](http://s
 
 | Verzió | Kiadás dátuma | Kivezetési dátum |
 | --- | --- | --- |
+| [1.8.2](#1.8.2) |2018. február 21. |--- |
 | [1.8.1](#1.8.1) |2018. február 05. |--- |
 | [1.7.1](#1.7.1) |2017. november 16. |--- |
 | [1.7.0](#1.7.0) |2017. november 10. |--- |

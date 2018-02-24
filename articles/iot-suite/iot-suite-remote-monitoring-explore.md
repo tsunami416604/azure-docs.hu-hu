@@ -7,16 +7,16 @@ author: dominicbetts
 manager: timlt
 ms.author: dobett
 ms.service: iot-suite
-ms.date: 02/15/2018
+ms.date: 02/22/2018
 ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: 5bc01c7e70e6837989c6bebd843ba1f41c8c5aeb
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 96d701860abcc645b37d0420fe352da2adeb992f
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="explore-the-capabilities-of-the-remote-monitoring-preconfigured-solution"></a>A távoli felügyeleti előkonfigurált megoldás funkcióinak felfedezése
 
@@ -114,7 +114,7 @@ Az a **karbantartási** lapon megtekintheti az adatokat a szabály a hűtő nyom
 
     ![Karbantartási lap rendelkezik kiváltott riasztások listáját jeleníti meg.](media/iot-suite-remote-monitoring-explore/maintenancealarmlist.png)
 
-1. A lista első riasztás, a legutóbbi egy. Kattintson a **hűtő nyomás** riasztás társított eszközök és telemetriai adatainak megtekintése. A telemetriai adatokat egy nyomás csúcs a hűtő a jeleníti meg:
+1. A lista első riasztás, a legutóbbi egy. Kattintson a **hűtő nyomás túl magas** riasztás társított eszközök és telemetriai adatainak megtekintése. A telemetriai adatok nyomás igényeiben jelentkező a hűtő a jeleníti meg:
 
     ![Karbantartási lap megjeleníti a kiválasztott riasztáshoz telemetriai adat](media/iot-suite-remote-monitoring-explore/maintenancetelemetry.png)
 
@@ -159,12 +159,12 @@ A szükséges feladatok végrehajtásához használja a **eszközök** lap. Ind�
 
     ![Jelöljön ki egy eszközt, az eszközök lapon](media/iot-suite-remote-monitoring-explore/devicesselect.png)
 
-1. Kattintson a **ütemezés** gombra, majd válassza a **vezérlőprogram-frissítés**. Adja meg az értékeket **feladatnév** és **belső vezérlőprogram URI**. Válasszon **alkalmaz** a feladat futtatása most ütemezése:
+1. Kattintson a **ütemezés** gombra, majd válassza a **vezérlőprogram-frissítés**. Adja meg az értékeket **feladatnév**, **belsővezérlőprogram-verziónként**, és **belső vezérlőprogram URI**. Válasszon **alkalmaz** a feladat futtatása most ütemezése:
 
     ![Az eszköz belső vezérlőprogram-frissítés ütemezése](media/iot-suite-remote-monitoring-explore/devicesschedulefirmware.png)
 
     > [!NOTE]
-    > A szimulált eszköz valamennyi URL-cím, tetszés szerint használhatja a **belső vezérlőprogram URI** érték. A szimulált eszköz nem érhető el az URL-címet.
+    > A szimulált eszköz valamennyi URL-cím, tetszés szerint használhatja a **belső vezérlőprogram URI** és bármely értéke csak szeretne a **belsővezérlőprogram-verziónként**. A szimulált eszköz nem érhető el az URL-címet.
 
 1. Megjegyzés: a feladat befolyásolja, hogy hány eszköz, és válassza a **alkalmaz**:
 

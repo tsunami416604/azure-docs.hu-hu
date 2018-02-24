@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: e16c8b9e8bfb75226d7dec32e545da72cba107e9
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 7aa963e7f7463dbc06ba98e4876ea5d98f6921c8
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Referencia - IoT-központ kvóták és sávszélesség-szabályozás
 
@@ -31,6 +31,8 @@ A Termékváltozat is meghatározza, hogy az IoT-központ az összes művelet ki
 
 ## <a name="operation-throttles"></a>A művelet szabályozások
 Művelet szabályozások percben tartományok lesznek alkalmazva, és célja, hogy visszaélés megakadályozására arány korlátozások is. Az IoT-központ ad vissza, amikor csak lehetséges hibák elkerülése érdekében megkísérli, de elindítja a kivételek ad vissza, ha a késleltetési túl sokáig sérül.
+
+Egy adott időpontban növelhető kvótákat vagy korlátozásokat késleltetési által kiosztott egység az IoT-központ számának növelése.
 
 A következő táblázat a kényszerített szabályozások. Értékek egyes hubhoz hivatkozik.
 
@@ -50,15 +52,11 @@ A következő táblázat a kényszerített szabályozások. Értékek egyes hubh
 
 <sup>1</sup>8 KB-os sávszélesség-szabályozás mérő mérete.
 
-> [!IMPORTANT]
-> A *eszközcsatlakozás* késleltetési szabályozza a sebesség, amellyel új eszköz kapcsolatok hozhatók létre és az IoT-központ. A *eszközcsatlakozás* késleltetési nem szabályozza a egyidejűleg csatlakoztatott eszközök maximális számát. A szabályozási attól függ, hogy az IoT hub kiépített egységek száma.
+A *eszközcsatlakozás* késleltetési szabályozza a sebesség, amellyel új eszköz kapcsolatok hozhatók létre és az IoT-központ. A *eszközcsatlakozás* késleltetési nem szabályozza a egyidejűleg csatlakoztatott eszközök maximális számát. A szabályozási attól függ, hogy az IoT hub kiépített egységek száma.
 
 Például ha vásárol S1 egyetlen egységben, kap egy 100-kapcsolatok a késleltetési. Ezért 100 000 eszközt a csatlakozáshoz tart legalább 1 000 másodperc (körülbelül 16 perc). Rendelkezik a identitásjegyzékhez-ben regisztrált eszközök annyi egyidejűleg csatlakoztatott eszközök azonban akkor is.
 
 Az IoT-központot egy részletes ismertető a sávszélesség-szabályozás viselkedését, lásd a következő blogbejegyzésben [IoT Hub-szabályozás és][lnk-throttle-blog].
-
-> [!NOTE]
-> Egy adott időpontban növelhető kvótákat vagy korlátozásokat késleltetési által kiosztott egység az IoT-központ számának növelése.
 
 > [!IMPORTANT]
 > Identitás kapcsolatos műveletek az eszközkezelés és a üzembe helyezési forgatókönyvek futásidejű használatra lettek tervezve. Keresztül támogatja a olvasása vagy frissítése nagyszámú eszköz identitások [importálni és exportálni a feladatokat][lnk-importexport].

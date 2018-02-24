@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: wesmc
-ms.openlocfilehash: 7e6bb974565810ebb8d8e21d1c274d42d6d39e55
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: 5c877222c9ce409ea8758d5830f79e4a8b64fd8f
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="ssh-support-for-azure-app-service-on-linux"></a>Az Azure App Service-Linux SSH-támogatás
 
@@ -54,7 +54,7 @@ Ezen lépések végrehajtása az Azure App Service-tárházban, mint látható [
 1. Tartalmazza a `openssh-server` telepítés [ `RUN` utasítás](https://docs.docker.com/engine/reference/builder/#run) a lemezképet, és a beállított fiók jelszavát a legfelső szintű Dockerfile a `"Docker!"`.
 
     > [!NOTE]
-    > Ez a konfiguráció nem teszi lehetővé a tároló külső kapcsolatot. SSH csak a Kudu keresztül érhető el vagy SCM helyhez, ami hitelesített közzétételi hitelesítő adatok használatával.
+    > Ez a konfiguráció nem tesz elérhetővé külső kapcsolatokat a tárolóhoz. SSH csak a Kudu keresztül érhető el vagy SCM helyhez, ami hitelesített közzétételi hitelesítő adatok használatával.
 
     ```docker
     # ------------------------
@@ -69,14 +69,14 @@ Ezen lépések végrehajtása az Azure App Service-tárházban, mint látható [
 
     > [!NOTE]
     > A *sshd_config* tartalmaznia kell a következő, vagy a kapcsolat hibája esetén: 
-    > * `Ciphers`tartalmaznia kell legalább a következők egyikét: `aes128-cbc,3des-cbc,aes256-cbc`.
-    > * `MACs`tartalmaznia kell legalább a következők egyikét: `hmac-sha1,hmac-sha1-96`.
+    > * `Ciphers` tartalmaznia kell legalább a következők egyikét: `aes128-cbc,3des-cbc,aes256-cbc`.
+    > * `MACs` tartalmaznia kell legalább a következők egyikét: `hmac-sha1,hmac-sha1-96`.
 
     ```docker
     COPY sshd_config /etc/ssh/
     ```
 
-1. Port 2222 közé tartozik a [ `EXPOSE` utasítás](https://docs.docker.com/engine/reference/builder/#expose) a Dockerfile számára. Bár a gyökér szintű jelszó is ismert, port 2222 nem érhető el az internetről. Egy belső egyetlen port elérhető csak által a virtuális magánhálózat híd hálózati tárolókra is.
+1. Port 2222 közé tartozik a [ `EXPOSE` utasítás](https://docs.docker.com/engine/reference/builder/#expose) a Dockerfile számára. Bár a rendszergazdai szintű jelszó ismert, a 2222-es port nem érhető el az internet irányából. Egy belső egyetlen port elérhető csak által a virtuális magánhálózat híd hálózati tárolókra is.
 
     ```docker
     EXPOSE 2222 80
@@ -99,11 +99,11 @@ A Dockerfile használja a [ `CMD` utasítás](https://docs.docker.com/engine/ref
     CMD ["/bin/init_container.sh"]
     ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Tekintse meg a következő hivatkozásokat az tárolókat webalkalmazás vonatkozó további információért. Kérdések és problémákat is közzétesz a [fórumban](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazurewebsitespreview).
+Tekintse meg a következő hivatkozásokat az tárolókat webalkalmazás vonatkozó további információért. Kérdéseit és észrevételeit megoszthatja [fórumunkon](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazurewebsitespreview).
 
-* [A tárolók webalkalmazás egyéni Docker-lemezkép használata](quickstart-custom-docker-image.md)
-* [Használatával a .NET Core Linux Azure App Service-ben](quickstart-dotnetcore.md)
-* [Ruby használata Linux Azure App Service-ben](quickstart-ruby.md)
-* [Az Azure App Service webalkalmazás tárolók – gyakori kérdések](app-service-linux-faq.md)
+* [Egyéni Docker-rendszerkép használata a Web App for Containers szolgáltatásban](quickstart-docker-go.md)
+* [A .NET Core használata a Linuxon futó Azure App Service-ben](quickstart-dotnetcore.md)
+* [A Ruby használata a Linuxon futó Azure App Service-ben](quickstart-ruby.md)
+* [Azure App Service Web App for Containers – gyakori kérdések](app-service-linux-faq.md)

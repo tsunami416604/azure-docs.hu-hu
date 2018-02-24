@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/01/2017
 ms.author: larryfr
-ms.openlocfilehash: 0ae573922938b775900b839a24a917e4211fbadc
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 1ed98856753854b0d6baee5bfa74d0623043aa99
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="create-hdinsight-clusters-using-the-azure-cli"></a>Az Azure parancssori felület használata a HDInsight-fürtök létrehozása
 
@@ -29,8 +29,9 @@ ms.lasthandoff: 12/11/2017
 Ez a dokumentum az útmutató egy HDInsight 3.5-ös verzióját az Azure CLI 1.0 fürtöt hoz létre lépéseit.
 
 > [!IMPORTANT]
-> A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](hdinsight-component-versioning.md#hdinsight-windows-retirement).
-
+> Ez a témakör ismerteti, hogyan használható az Azure CLI 1.0 hozhat létre HDInsight-fürtöt. A parancssori felület ezen verziója elavult, és a HDInsight-fürtök létrehozására vonatkozó nem már támogatja az Azure CLI 2.0-s.
+>
+> Azure PowerShell használatával létrehozni, és a HDInsight-fürtök kezelése. További információkért lásd: a [HDInsight-fürtök létrehozása az Azure PowerShell](hdinsight-hadoop-create-linux-clusters-azure-powershell.md) dokumentum.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -41,7 +42,7 @@ Ez a dokumentum az útmutató egy HDInsight 3.5-ös verzióját az Azure CLI 1.0
 * **Azure parancssori felület (CLI)**. A jelen dokumentumban leírt lépések alapján utolsó történő teszteléskor az Azure CLI 0.10.14 verziója.
 
     > [!IMPORTANT]
-    > A jelen dokumentumban leírt lépések az Azure CLI 2.0 nem működik. Az Azure CLI 2.0 nem támogatja a HDInsight-fürtök létrehozása.
+    > Az Azure CLI 1.0 elavult, és a HDInsight-fürtök létrehozására vonatkozó nem már támogatja az Azure CLI 2.0-s.
 
 ## <a name="log-in-to-your-azure-subscription"></a>Bejelentkezés az Azure-előfizetésbe
 
@@ -127,7 +128,7 @@ Az alábbi lépéseket kell elvégezni a parancssorból, például a PowerShell 
 
 Ha problémába ütközik a HDInsight-fürtök létrehozása során, tekintse meg [a hozzáférés-vezérlésre vonatkozó követelményeket](hdinsight-administer-use-portal-linux.md#create-clusters).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy sikeresen létrehozta az Azure parancssori felület használatával HDInsight-fürtöt, használja a következő áttekintésével megismerheti, hogyan használható a fürt:
 
@@ -139,7 +140,7 @@ Most, hogy sikeresen létrehozta az Azure parancssori felület használatával H
 
 ### <a name="hbase-clusters"></a>HBase-fürtökkel
 
-* [Az a HDInsight HBase első lépései](hbase/apache-hbase-tutorial-get-started-linux.md)
+* [A HDInsighton futó HBase használatának első lépései](hbase/apache-hbase-tutorial-get-started-linux.md)
 * [A HDInsight HBase Java-alkalmazások fejlesztése](hbase/apache-hbase-build-java-maven-linux.md)
 
 ### <a name="storm-clusters"></a>Storm-fürtök

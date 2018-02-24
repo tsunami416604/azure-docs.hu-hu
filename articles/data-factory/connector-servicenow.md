@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/12/2018
+ms.date: 02/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 28ecdc541bc7e95dfa6d7c1b2d984cba0654699f
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 64b0982ab1d0b212120d962d4c47a1b8db8ca025
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="copy-data-from-servicenow-using-azure-data-factory-beta"></a>Adatok másolása az Azure Data Factory (béta) használata a ServiceNow
 
@@ -114,11 +114,11 @@ Adatok másolása a ServiceNow, állítsa be a forrás típusa a másolási tev�
 
 Megadásakor a séma- és oszlop ServiceNow a lekérdezésben, vegye figyelembe a következőket:
 
-- **Séma:** ServiceNow meg kellene adni a séma szerint lekérdezést `Actual` vagy `Display` vessen egy pillantást azt a paraméterét, amely `sysparm_display_value` igaz vagy hamis értéket, ha hívása [ServiceNow restful API-k](https://developer.servicenow.com/app.do#!/rest_api_doc?v=jakarta&id=r_AggregateAPI-GET). 
-- **Oszlop:** aktuális értékét az oszlop neve `[columne name]_value` pedig a megjelenítési érték `[columne name]_display_value`.
+- **Séma:** adja meg a séma szerint `Actual` vagy `Display` ServiceNow a lekérdezésben, vessen egy pillantást azt a paraméterét, amely `sysparm_display_value` igaz vagy hamis értéket, ha hívása [ServiceNow restful API-k](https://developer.servicenow.com/app.do#!/rest_api_doc?v=jakarta&id=r_AggregateAPI-GET). 
+- **Oszlop:** az oszlop nevét, a tényleges érték `Actual` scehma van `[columne name]_value`, a megjelenítési érték alatti `Display` sémája `[columne name]_display_value`. Megjegyzés: az oszlop nevét kell a lekérdezésben használt séma leképezés.
 
 **Mintalekérdezés:** 
- `SELECT distinct col_value, col_display_value FROM Actual.alm_asset` vagy `SELECT distinct col_value, col_display_value FROM Display.alm_asset`
+ `SELECT col_value FROM Actual.alm_asset` vagy `SELECT col_display_value FROM Display.alm_asset`
 
 **Példa**
 

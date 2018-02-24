@@ -4,13 +4,13 @@ description: "Ismert problémák a Azure át, és a hibaelhárítási tippek gya
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: troubleshooting
-ms.date: 12/12/2017
+ms.date: 02/21/2018
 ms.author: raynew
-ms.openlocfilehash: 1fcc9e12e63eda73d53ae2085bc2a64d31ea2067
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: 249de45dbd9bedf1b3c2d2a5957acf31d6c0d243
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="troubleshoot-azure-migrate"></a>Az Azure Migrate hibaelhárítása
 
@@ -24,14 +24,14 @@ ms.lasthandoff: 12/12/2017
 Ez akkor fordulhat elő, ha a gép, használja a rendszer proxy mögött van. Győződjön meg arról, hogy az engedélyezési hitelesítő adatok megadása, ha a proxy szüksége van rá.
 Ha bármilyen URL-alapú tűzfal proxy segítségével szabályozhatja a kimenő kapcsolat, mindenképp érdemes engedélyezett URL-címeket az alábbi szükséges:
 
-**URL-CÍME** | **Cél**  
+**URL-cím** | **Cél**  
 --- | ---
-*. portal.azure.com | Szükséges ellenőrizze a kapcsolatot az Azure-szolgáltatás, és érvényesítésére időszinkronizálást ad ki.
-*. oneget.org | Szükséges letöltése a powershell-alapú vCenter PowerCLI modul.
+*.portal.azure.com | Szükséges ellenőrizze a kapcsolatot az Azure-szolgáltatás, és érvényesítésére időszinkronizálást ad ki.
+*.oneget.org | Szükséges letöltése a powershell-alapú vCenter PowerCLI modul.
 
 **A gyűjtő nem tud kapcsolódni a projekt a projekt azonosítójával, és kulcs másolását a portálról.**
 
-Győződjön meg arról, hogy másolja, és a megfelelő információk beillesztett. Elhárításához telepítse a Microsoft Monitoring Agent (MMA) az alábbiak szerint:
+Győződjön meg arról, hogy másolja, és a megfelelő információk beillesztett. Elhárításához telepítse a Microsoft Monitoring Agent (MMA), és győződjön meg arról, ha a MMA az alábbiak szerint csatlakozhat a project:
 
 1. A gyűjtő VM, töltse le a [MMA](https://go.microsoft.com/fwlink/?LinkId=828603).
 2. A telepítés elindításához kattintson duplán a letöltött fájlt.
@@ -67,15 +67,15 @@ Ahhoz, hogy a lemezek és a hálózati teljesítmény adatok gyűjtését, módo
 
 ## <a name="troubleshoot-readiness-issues"></a>Készültségi elhárítása
 
-**A probléma** | **Javítás**
+**A probléma** | **Fix**
 --- | ---
-Rendszerindító típusa nem támogatott | Módosítsa a BIOS áttelepítés futtatása előtt.
-Lemez száma meghaladja a korlátot | Távolítsa el a nem használt lemezeket a gépen az áttelepítés előtt.
-Lemez mérete meghaladja a korlátot | Áttelepítés előtt kisebb, mint 4 TB-os lemezeken igazodjon. 
-A megadott helyen nem érhető el lemez | Ellenőrizze, hogy a lemez a célként megadott helyen az áttelepítés előtt.
-A lemez nem érhető el a megadott redundancia | A lemez kell használniuk az értékelés (alapértelmezés szerint LRS) beállítások között megadott redundancia tárolási típusát.
-Lemez alkalmasságát belső hiba miatt nem állapítható meg. | Próbálja meg létrehozni egy új assessment a csoporthoz. 
-Virtuális gép és a szükséges maggal és a memória nem található | Azure azokat nem a megfelelő Virtuálisgép-típussá. Csökkentse a memória és a helyi gép magok száma, az áttelepítés előtt. 
+Nem támogatott rendszerindítási típus | Azure nem támogatja a virtuális gépek az EFI rendszerindítási típusa. Javasoljuk, hogy a rendszerindító típus konvertálása BIOS áttelepítés futtatása előtt. <br/><br/>Használhat [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/tutorial-migrate-on-premises-to-azure) a ilyen virtuális gépek az áttelepítés végrehajtásához, mivel azt konvertálja a virtuális gép rendszerindító típusú BIOS az áttelepítés során.
+A lemezek száma meghaladja a korlátot | Távolítsa el a nem használt lemezeket a gépen az áttelepítés előtt.
+A lemezméret meghaladja a korlátot | Azure támogatja a lemez mérete legfeljebb 4 TB-os. Áttelepítés előtt kisebb, mint 4 TB-os lemezeken igazodjon. 
+A lemez nem érhető el a megadott helyen | Ellenőrizze, hogy a lemez a célként megadott helyen az áttelepítés előtt.
+A lemez a megadott redundanciával nem érhető el | A lemez kell használniuk az értékelés (alapértelmezés szerint LRS) beállítások között megadott redundancia tárolási típusát.
+Belső hiba miatt nem sikerült meghatározni a lemez alkalmasságát | Próbálja meg létrehozni egy új assessment a csoporthoz. 
+Nem található a szükséges magokkal és memóriával rendelkező virtuális gép | Azure azokat nem a megfelelő Virtuálisgép-típussá. Csökkentse a memória és a helyi gép magok száma, az áttelepítés előtt. 
 Egy vagy több nem alkalmas lemezt. | Győződjön meg arról, hogy a helyi lemezek 4 TB-os vagy az áttelepítés futtatása előtt.
 Egy vagy több nem alkalmas hálózati adapterrel. | Távolítsa el a nem használt hálózati adapterek a gépről áttelepítés előtt.
 Virtuális gép alkalmasságát belső hiba miatt nem állapítható meg. | Próbálja meg létrehozni egy új assessment a csoporthoz. 
@@ -83,12 +83,15 @@ Belső hiba miatt egy vagy több lemezt alkalmazhatósági nem állapítható me
 Belső hiba miatt egy vagy több hálózati adapter alkalmazhatósági nem állapítható meg. | Próbálja meg létrehozni egy új assessment a csoporthoz.
 A virtuális gép nem található a szükséges tárolási teljesítmény eléréséhez. | A tárolási teljesítményt (IOPS/átvitel) a gép szükséges túllépi Azure VM-támogatási szolgálathoz. Az áttelepítés előtt gép tárolási követelmények csökkentése.
 A virtuális gép nem található a szükséges hálózati teljesítmény eléréséhez. | A hálózati teljesítmény (be/ki) a gép szükséges túllépi Azure VM-támogatási szolgálathoz. Csökkentse a hálózati követelmények, a gép. 
-A virtuális gép nem található a megadott tarifacsomagok. | Ellenőrizze az árképzési szint beállításait. 
+A virtuális gép nem található a megadott tarifacsomagot. | Ha ez a tarifacsomag be van állítva, a Standard, fontolja meg a virtuális gép downsizing Azure áttelepítése előtt. Ha a méretezési réteg Basic, érdemes a assessment árképzési szintjének módosítása a szabványos. 
 A virtuális gép nem található a megadott helyen. | Használjon egy másik célhelyet az áttelepítés előtt.
-Linux operációs rendszer támogatási problémák | Ellenőrizze, hogy még fut a 64 bites támogatott ezekkel [operációs rendszerek](../virtual-machines/linux/endorsed-distros.md).
-Windows operációs rendszer támogatási problémák | Győződjön meg arról, hogy támogatott operációs rendszert futtatja. [További információ](concepts-assessment-calculation.md#azure-suitability-analysis)
-Ismeretlen operációs rendszer. | Ellenőrizze, hogy helyes-e a vcenter programban megadott operációs rendszer, és ismételje meg a felderítési folyamat.
-Visual Studio előfizetést igényel. | Ügyféloldali Windows operációs rendszereken csak a Visual Studio (MSDN) előfizetések támogatottak.
+Ismeretlen operációs rendszer | Az operációs rendszer a virtuális gép vCenter-kiszolgáló, amelyek miatt Azure áttelepítése nem tudja azonosítani a virtuális gép Azure készültségét mint az "Egyéb" van megadva. Győződjön meg arról, hogy az a gépen futó operációs rendszer [támogatott](https://aka.ms/azureoslist) az Azure-ban a gép áttelepítése előtt.
+Feltételesen támogatott Windows operációs rendszer | Az operációs rendszer támogatási dátum végét a rendszer megfelelt, és szüksége van egy egyéni támogatja a szerződés (CSA) a [támogatja az Azure-ban](https://aka.ms/WSosstatement), fontolja meg az operációs rendszer frissítése az Azure-bA áttelepítése előtt.
+Nem támogatott Windows operációs rendszer | Csak az Azure támogatja [Windows operációsrendszer-verziók kijelölt](https://aka.ms/WSosstatement), érdemes frissíteni az operációs rendszer, a gép az Azure-bA áttelepítése előtt. 
+Feltételesen által támogatott Linux operációs rendszer | Azure csak hozzá támogatást [kijelölt Linux operációsrendszer-verziók](../virtual-machines/linux/endorsed-distros.md), érdemes frissíteni az operációs rendszer, a gép az Azure-bA áttelepítése előtt.
+Unendorsed Linux operációs rendszer | A gép előfordulhat, hogy indítsa el az Azure-ban, de nem az operációs rendszer támogatott Azure által biztosított, érdemes frissíteni az operációs rendszer egy [által támogatott Linux verzió](../virtual-machines/linux/endorsed-distros.md) Azure áttelepítése előtt
+Az operációs rendszer bitszáma nem támogatott | Virtuális gépek 32 bites operációs rendszer előfordulhat, hogy indítsa el az Azure-ban, de javasoljuk, hogy 32 bites operációs rendszere a virtuális gép frissíthető a 64 bites Azure áttelepítése előtt.
+Visual Studio előfizetést igényel. | A gépek rendelkezik egy Windows ügyfél OS belül futó, amely csak a Visual Studio-előfizetéssel támogatott.
 
 
 ## <a name="collect-logs"></a>Naplógyűjtéshez

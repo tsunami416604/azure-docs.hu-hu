@@ -12,14 +12,14 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/29/2017
+ms.date: 02/21/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 06445845ef8f93a06cb4b52e07108965cc3b7f8a
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 775db415e667729f6eecf8223a84f5ac0aa45c4c
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="batch-service-quotas-and-limits"></a>A Bach szolgáltatás kvótái és korlátozásai
 
@@ -39,9 +39,10 @@ Ha szeretné futtatni a termelési számítási feladatokhoz kötegben, szüksé
 ## <a name="resource-quotas"></a>Erőforráskvóták
 [!INCLUDE [azure-batch-limits](../../includes/azure-batch-limits.md)]
 
-### <a name="quotas-in-user-subscription-mode"></a>Kvótákat felhasználói előfizetési módban
 
-Ha egy korábbi verzióját a kötegelt API Batch-fiók létrehozása az alkalmazáskészlet foglalási módban használt **felhasználói előfizetési**, kvóták alkalmazása eltérő. Ebben a módban, amely már nem ajánlott, kötegelt virtuális gépek és egyéb erőforrások jönnek létre közvetlenül az előfizetés készlet létrehozásakor. Az Azure Batch magok kvóta nem vonatkozik az ebben a módban létrehozott fiók. Ehelyett az előfizetéshez tartozó területi kvóták számítási mag, és más erőforrások alkalmazza. További információ a ezek mely százalékértékénél kéri [Azure-előfizetés és szolgáltatási korlátok, kvóták és megkötések](../azure-subscription-service-limits.md).
+### <a name="cores-quotas-in-user-subscription-mode"></a>Magok kvótákat felhasználói előfizetési módban
+
+Ha tárolókészlet foglalási módban létrehozott Batch-fiók **felhasználói előfizetési**, kvóták alkalmazása eltérő. Ebben a módban kötegelt virtuális gépek és egyéb erőforrások jönnek létre közvetlenül az előfizetés készlet létrehozásakor. Az Azure Batch magok kvóták nem vonatkoznak az ebben a módban létrehozott fiók. Ehelyett az előfizetéshez tartozó területi kvóták számítási mag, és más erőforrások alkalmazza. További információ a ezek mely százalékértékénél kéri [Azure-előfizetés és szolgáltatási korlátok, kvóták és megkötések](../azure-subscription-service-limits.md).
 
 ## <a name="other-limits"></a>Egyéb korlátozások
 | **Erőforrás** | **Felső korlát** |
@@ -108,7 +109,7 @@ Ha a támogatási kérelmet küldött, az Azure támogatási kapcsolatba lép Ö
 ## <a name="related-topics"></a>Kapcsolódó témakörök
 * [Az Azure portál használata az Azure Batch-fiók létrehozása](batch-account-create-portal.md)
 * [Azure Batch funkcióinak áttekintése](batch-api-basics.md)
-* [Azure-előfizetés és szolgáltatási korlátok, kvóták és megkötések](../azure-subscription-service-limits.md)
+* [Az Azure-előfizetések és -szolgáltatások korlátozásai, kvótái és megkötései](../azure-subscription-service-limits.md)
 
 [portal]: https://portal.azure.com
 [portal_classic_increase]: https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/

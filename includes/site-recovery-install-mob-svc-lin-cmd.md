@@ -9,7 +9,7 @@
   ```
   sudo ./install -d <Install Location> -r MS -v VmWare -q
   ```
-3. Telepítés befejezése után kell a mobilitási szolgáltatás és a konfigurációs kiszolgáló regisztrálva. A következő parancsot a mobilitási szolgáltatás regisztrálása a konfigurációs kiszolgáló.
+3. Telepítésének befejezése után a mobilitási szolgáltatás szerepelnie kell a konfigurációs kiszolgálón. Futtassa a mobilitási szolgáltatás regisztrálása a konfigurációs kiszolgáló a következő parancsot:
 
   ```
   /usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh -i <CSIP> -P /var/passphrase.txt
@@ -24,10 +24,10 @@ Usage:
 
 |Paraméter|Típus|Leírás|Lehetséges értékek|
 |-|-|-|-|
-|-r |Kötelező|Megadja, hogy kell telepíteni a mobilitási szolgáltatás (MS), vagy MasterTarget(MT) kell telepíteni.|MS </br> MT|
-|-d |Optional|Hely, ahol a mobilitási szolgáltatás telepítve lesz|/usr/local/ASR|
-|-v|Kötelező|Adja meg a platform, amelyen a mobilitási szolgáltatás található első </br> </br>-** VMware: használja ezt az értéket, ha egy virtuális gépen futó mobilitási szolgáltatás telepít *VMware vSphere ESXi-gazdagépek*, *, Hyper-V-gazdagépek és *fizikai kiszolgálók* </br> -** Azure: használja ezt az értéket, ha telepíti az ügynököt az Azure infrastruktúra-szolgáltatási virtuális gép| VMware </br> Azure|
-|-k|Optional|Meghatározza, hogy a telepítő futtatásához csendes módban| –|
+|-r |Kötelező|Megadja, hogy a mobilitási szolgáltatás (MS) kell telepíteni, vagy MasterTarget (MT) kell telepíteni.|MS </br> MT|
+|-d |Optional|Hely, ahol telepítve van.|/usr/local/ASR|
+|-v|Kötelező|Adja meg azt a platformot, amelyre telepítve van. </br> </br>- **VMware**: használja ezt az értéket, ha a mobilitási szolgáltatás telepítése a futó virtuális gép *VMware vSphere ESXi-gazdagépek*, *Hyper-V-gazdagépek*, és *fizikai kiszolgálók*. </br> - **Azure**: használja ezt az értéket, ha az ügynök telepítése egy Azure IaaS virtuális gépen.| VMware </br> Azure|
+|-k|Optional|Meghatározza, hogy a telepítő futtatásához csendes módban.| –|
 
 
 #### <a name="mobility-service-configuration-command-line"></a>Mobilitási szolgáltatás konfigurációs parancssor
@@ -41,4 +41,4 @@ UnifiedAgentConfigurator.sh -i <CSIP> -P <PassphraseFilePath>
 |Paraméter|Típus|Leírás|Lehetséges értékek|
 |-|-|-|-|
 |-i |Kötelező|IP-címe a konfigurációs kiszolgálón|Bármilyen érvényes IP-cím|
-|-P |Kötelező|A kapcsolat jelszava mentett tartalmazó fájl teljes elérési út|Bármilyen érvényes mappa|
+|-P |Kötelező|Menti a fájlt, ha a kapcsolat hozzáférési kód fájl teljes elérési útja|Bármilyen érvényes mappa|

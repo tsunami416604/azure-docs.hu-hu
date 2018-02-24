@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2017
 ms.author: aelnably;wesmc
-ms.openlocfilehash: cccbd4952c66d3d8140e2a03e3b76afaa5ba3fbf
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: 84bc344438d5542cc6409fa50aa6e55eb547c6a8
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="continuous-deployment-with-web-app-for-containers"></a>A webalkalmazás az tárolókat folyamatos üzembe helyezés
 
@@ -83,12 +83,12 @@ A Webhook URL-címhez, meg kell adnia az URL-címet szerzett **3. lépés**
 
 A lemezkép frissítésekor a lekérdezi a web app frissül automatikusan a új lemezképpel.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Mi az Azure App Service Linux?](./app-service-linux-intro.md)
-* [Azure-tárolót beállításjegyzék](https://azure.microsoft.com/services/container-registry/)
-* [Használatával a .NET Core Linux Azure App Service-ben](quickstart-dotnetcore.md)
-* [Ruby használata Linux Azure App Service-ben](quickstart-ruby.md)
-* [A tárolók webalkalmazás egyéni Docker-lemezkép használata](quickstart-custom-docker-image.md)
-* [Az Azure App Service webalkalmazás tárolók – gyakori kérdések](./app-service-linux-faq.md)
+* [Azure Container Registry](https://azure.microsoft.com/services/container-registry/)
+* [A .NET Core használata a Linuxon futó Azure App Service-ben](quickstart-dotnetcore.md)
+* [A Ruby használata a Linuxon futó Azure App Service-ben](quickstart-ruby.md)
+* [Egyéni Docker-rendszerkép használata a Web App for Containers szolgáltatásban](quickstart-docker-go.md)
+* [Azure App Service Web App for Containers – gyakori kérdések](./app-service-linux-faq.md)
 * [Webalkalmazás az Azure CLI 2.0 használatával tárolók kezelése](./app-service-linux-cli.md)

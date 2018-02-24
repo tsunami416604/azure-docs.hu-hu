@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/28/2017
+ms.date: 02/21/2018
 ms.author: nitinme
-ms.openlocfilehash: c10362fa1d5d9e4316dd94a3d08c9e1fcd3eb985
-ms.sourcegitcommit: 651a6fa44431814a42407ef0df49ca0159db5b02
+ms.openlocfilehash: d76f756e7a6fe77886f0d4e00ab8b23273b4e09d
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="disaster-recovery-guidance-for-data-in-data-lake-store"></a>A Data Lake Store adatok vész helyreállítási útmutatást
 
@@ -42,7 +42,7 @@ A véletlen törlés megakadályozása érdekében ajánlott először megadni a
 
 A szervezetek [diagnosztikai naplózást](data-lake-store-diagnostic-logs.md) is engedélyezhetnek az Azure Data Lake Store-fiókhoz az adathozzáférés naplóinak begyűjtése érdekében, amelyek információkat nyújthatnak arról, hogy ki törölte vagy frissítette a fájlokat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Az Azure Data Lake Store használatának első lépései](data-lake-store-get-started-portal.md)
 * [Biztonságos adattárolás a Data Lake Store-ban](data-lake-store-secure-data.md)
 

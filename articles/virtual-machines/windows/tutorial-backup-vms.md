@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 07/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 20760650b093216a2929de580f5971c45e0534a8
-ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
+ms.openlocfilehash: 9638c7148d4347bb9cbc9e48022037ee6cb983d7
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="back-up-windows-virtual-machines-in-azure"></a>Készítsen biztonsági másolatot a Windows virtuális gépek Azure-ban
 
@@ -92,7 +92,7 @@ Ebben a példában megmutatjuk, hogyan helyreállítása a bináris fájl, amely
 18. A helyi számítógépen, térjen vissza az Azure portál és a böngészőlapon **3. lépés: a lemez leválasztása a helyreállítás után** kattintson a **lemez leválasztása** gombra. Ha ezt a lépést, a kapcsolat a csatlakozási pont nem automatikusan Bezárás 12 óra elteltével. E 12 óra elteltével le kell töltenie egy új parancsfájl egy új csatlakoztatási pont létrehozásához.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
@@ -104,7 +104,7 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 Előzetes további virtuális gépek figyelésével kapcsolatos következő oktatóanyagot.
 
 > [!div class="nextstepaction"]
-> [Virtuális gépek figyelése](tutorial-monitoring.md)
+> [Virtuális gépek szabályozására.](tutorial-govern-resources.md)
 
 
 

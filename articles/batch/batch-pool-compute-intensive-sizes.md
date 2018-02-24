@@ -12,13 +12,13 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/05/2018
+ms.date: 02/21/2018
 ms.author: danlep
-ms.openlocfilehash: dc28c3a9d46baa8e8d2136ffccbb4e7ff6675b1e
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 181e9bd7c17e4618edd63dd92d70947a61c68758
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="use-rdma-capable-or-gpu-enabled-instances-in-batch-pools"></a>Használja az RDMA-kompatibilisek-e vagy GPU-kompatibilis példány kötegelt készletek
 
@@ -33,9 +33,11 @@ Ez a cikk útmutatást és példákat használhatja néhány speciális méretű
 
 ## <a name="subscription-and-account-limits"></a>Előfizetés és korlátai
 
-* **Kvóták** – a [dedikált magok kvóta értéke Batch-fiók](batch-quota-limit.md#resource-quotas) korlátozhatja, vagy a típus csomópontokat adhat hozzá a Batch-készlet. A kvóta eléréséhez, ha úgy dönt, hogy az RDMA-kompatibilis, GPU-t, vagy más multicore Virtuálisgép-méretek nagy valószínűséggel áll. Alapértelmezés szerint ez a kvóta 20 mag. Egy külön kvóta vonatkozik [alacsony prioritású virtuális gépek](batch-low-pri-vms.md), ha használja őket. 
+* **Kvótái és korlátai** – a [dedikált magok kvóta értéke Batch-fiók](batch-quota-limit.md#resource-quotas) korlátozhatja, vagy a típus csomópontokat adhat hozzá a Batch-készlet. A kvóta eléréséhez, ha úgy dönt, hogy az RDMA-kompatibilis, GPU-t, vagy más multicore Virtuálisgép-méretek nagy valószínűséggel áll. Egy külön kvóta vonatkozik [alacsony prioritású virtuális gépek](batch-low-pri-vms.md), ha használja őket. 
 
-Ha a kvóta növelését van szüksége, nyissa meg egy [online felhasználói támogatási kérelem](../azure-supportability/how-to-create-azure-support-request.md) díjmentesen.
+  Például NCv2 ND, korlátozott korlátozott kapacitás miatt ezen felül használja a Batch-fiók, az egyes virtuális gép címcsaládokból. Ezek családok használata csak érhető el az alapértelmezett 0 magok a kvóta növelését kérésével.  
+
+  Ha a kvóta növelését van szüksége, nyissa meg egy [online felhasználói támogatási kérelem](../azure-supportability/how-to-create-azure-support-request.md) díjmentesen.
 
 * **Régiónkénti elérhetőség** - számítási igényű virtuális gépek nem állnak rendelkezésre a régiókban, ahol a Batch-fiókokat hozhat létre. Ellenőrizze, hogy rendelkezésre áll-e a mérete, lásd: [régiónként rendelkezésre álló termékek](https://azure.microsoft.com/regions/services/).
 
@@ -50,10 +52,10 @@ Az RDMA és a GPU képességek számítási igényű méretű csak bizonyos oper
 | Méret | Képesség | Operációs rendszerek | Szükséges szoftverek | Készlet beállításai |
 | -------- | -------- | ----- |  -------- | ----- |
 | [H16r, H16mr, A8, A9](../virtual-machines/linux/sizes-hpc.md#rdma-capable-instances) | RDMA | Ubuntu 16.04 LTS,<br/>SUSE Linux Enterprise Server 12 HPC, vagy<br/>CentOS-alapú HPC<br/>(Az azure piactéren) | Intel MPI 5 | Csomópontok közötti kommunikáció engedélyezéséhez egyidejű feladat a végrehajtás letiltása |
-| [NC, NCv2, ND adatsorozat *](../virtual-machines/linux/n-series-driver-setup.md#install-cuda-drivers-for-nc-ncv2-and-nd-vms) | NVIDIA Tesla GPU (függ a sorozat) | Ubuntu 16.04 LTS,<br/>Red Hat Enterprise Linux 7.3, vagy<br/>CentOS-alapú 7.3<br/>(Az azure piactéren) | NVIDIA CUDA eszközkészlet 9.1 illesztőprogramok | – | 
-| [Portok HV-sorozat](../virtual-machines/linux/n-series-driver-setup.md#install-grid-drivers-for-nv-vms) | NVIDIA Tesla M60 GPU | Ubuntu 16.04 LTS,<br/>Red Hat Enterprise Linux 7.3, vagy<br/>CentOS-alapú 7.3<br/>(Az azure piactéren) | NVIDIA rács 4.3 illesztőprogramok | – |
+| [NC, NCv2, ND adatsorozat *](../virtual-machines/linux/n-series-driver-setup.md#install-cuda-drivers-for-nc-ncv2-and-nd-vms) | NVIDIA Tesla GPU (függ a sorozat) | Ubuntu 16.04 LTS,<br/>Red Hat Enterprise Linux 7.3 vagy 7.4, vagy<br/>7.3 vagy 7.4 centOS<br/>(Az azure piactéren) | NVIDIA CUDA eszközkészlet illesztőprogramok | – | 
+| [Portok HV-sorozat](../virtual-machines/linux/n-series-driver-setup.md#install-grid-drivers-for-nv-vms) | NVIDIA Tesla M60 GPU | Ubuntu 16.04 LTS,<br/>Red Hat Enterprise Linux 7.3, vagy<br/>7.3 centOS<br/>(Az azure piactéren) | NVIDIA rács illesztőprogramok | – |
 
-* Ubuntu 16.04 LTS vagy CentOS-alapú 7.3 HPC (az Azure piactérről) az Intel MPI RDMA-kapcsolatot NC24r, NC24r_v2 és ND24r virtuális gépek esetén támogatott.
+* Ubuntu 16.04 LTS (az Azure piactérről) az Intel MPI RDMA-kapcsolatot NC24r, NC24rs_v2 és ND24r virtuális gépek esetén támogatott.
 
 
 
@@ -61,11 +63,11 @@ Az RDMA és a GPU képességek számítási igényű méretű csak bizonyos oper
 
 | Méret | Képesség | Operációs rendszerek | Szükséges szoftverek | Készlet beállításai |
 | -------- | ------ | -------- | -------- | ----- |
-| [H16r, H16mr, A8, A9](../virtual-machines/windows/sizes-hpc.md#rdma-capable-instances) | RDMA | Windows Server 2012 R2 vagy<br/>A Windows Server 2012 (az Azure piactéren) | Microsoft MPI 2012 R2 vagy újabb verzióját, vagy<br/> Intel MPI 5<br/><br/>HpcVMDrivers Azure Virtuálisgép-bővítmény | Csomópontok közötti kommunikáció engedélyezéséhez egyidejű feladat a végrehajtás letiltása |
-| [NC, NCv2, ND adatsorozat *](../virtual-machines/windows/n-series-driver-setup.md) | NVIDIA Tesla GPU (függ a sorozat) | Windows Server 2016 vagy <br/>Windows Server 2012 R2 (az Azure piactéren) | NVIDIA Tesla illesztőprogramok vagy CUDA eszközkészlet 9.1 illesztőprogramok| – | 
-| [Portok HV-sorozat](../virtual-machines/windows/n-series-driver-setup.md) | NVIDIA Tesla M60 GPU | Windows Server 2016 vagy<br/>Windows Server 2012 R2 (az Azure piactéren) | NVIDIA rács 4.3 illesztőprogramok | – |
+| [H16r, H16mr, A8, A9](../virtual-machines/windows/sizes-hpc.md#rdma-capable-instances) | RDMA | Windows Server 2016-ot, 2012 R2-ben vagy<br/>2012 (az azure piactéren) | Microsoft MPI 2012 R2 vagy újabb verzióját, vagy<br/> Intel MPI 5<br/><br/>HpcVMDrivers Azure Virtuálisgép-bővítmény | Csomópontok közötti kommunikáció engedélyezéséhez egyidejű feladat a végrehajtás letiltása |
+| [NC, NCv2, ND adatsorozat *](../virtual-machines/windows/n-series-driver-setup.md) | NVIDIA Tesla GPU (függ a sorozat) | Windows Server 2016 vagy <br/>2012 R2 (az Azure piactéren) | NVIDIA Tesla illesztőprogramok vagy CUDA eszközkészlet illesztőprogramok| – | 
+| [Portok HV-sorozat](../virtual-machines/windows/n-series-driver-setup.md) | NVIDIA Tesla M60 GPU | Windows Server 2016 vagy<br/>2012 R2 (az Azure piactéren) | NVIDIA rács illesztőprogramok | – |
 
-* RDMA-kapcsolatot NC24r, NC24r_v2 és ND24r virtuális gépek HpcVMDrivers bővítmény és Microsoft MPI vagy Intel MPI Windows Server 2012 R2 (az Azure piactérről) használata támogatott.
+* RDMA-kapcsolatot NC24r, NC24rs_v2 és ND24rs virtuális gépek HpcVMDrivers bővítmény és Microsoft MPI vagy Intel MPI a Windows Server 2016 vagy a Windows Server 2012 R2 (az Azure piactérről) használata támogatott.
 
 ### <a name="windows-pools---cloud-services-configuration"></a>Windows-készletek - Felhőszolgáltatások konfigurálása
 
@@ -75,7 +77,7 @@ Az RDMA és a GPU képességek számítási igényű méretű csak bizonyos oper
 
 | Méret | Képesség | Operációs rendszerek | Szükséges szoftverek | Készlet beállításai |
 | -------- | ------- | -------- | -------- | ----- |
-| [H16r, H16mr, A8, A9](../virtual-machines/windows/sizes-hpc.md#rdma-capable-instances) | RDMA | Windows Server 2012 R2,<br/>Windows Server 2012, or<br/>Windows Server 2008 R2 (Vendég operációsrendszer-család) | Microsoft MPI 2012 R2 vagy újabb verzióját, vagy<br/>Intel MPI 5<br/><br/>HpcVMDrivers Azure Virtuálisgép-bővítmény | Csomópontok közötti kommunikáció engedélyezése<br/> Tiltsa le az egyidejű feladat a végrehajtás |
+| [H16r, H16mr, A8, A9](../virtual-machines/windows/sizes-hpc.md#rdma-capable-instances) | RDMA | Windows Server 2016-ot, 2012 R2, 2012, vagy<br/>2008 R2 (Vendég operációsrendszer-család) | Microsoft MPI 2012 R2 vagy újabb verzióját, vagy<br/>Intel MPI 5<br/><br/>HpcVMDrivers Azure Virtuálisgép-bővítmény | Csomópontok közötti kommunikáció engedélyezése<br/> Tiltsa le az egyidejű feladat a végrehajtás |
 
 
 
@@ -109,7 +111,7 @@ Windows MPI alkalmazások futtatásához Azure A8 csomópontok készletét, tele
 
 | Beállítás | Érték |
 | ---- | ----- | 
-| **Képtípus** | Cloud Services |
+| **Rendszerkép típusa** | Cloud Services |
 | **Operációsrendszer-család** | Windows Server 2012 R2 (4 operációsrendszer-család) |
 | **Csomópont mérete** | A8 Standard |
 | **Fürtök csomóponton belüli kommunikációjához kommunikáció engedélyezve** | True (Igaz) |
@@ -129,8 +131,8 @@ Linux NC csomópontok készletét CUDA alkalmazások futtatásához, telepítend
 
 | Beállítás | Érték |
 | ---- | ---- |
-| **Képtípus** | Kép: egyéni |
-| **Kép: egyéni** | A lemezkép nevét |
+| **Rendszerkép típusa** | Kép: egyéni |
+| Kép: egyéni | A lemezkép nevét |
 | **Csomópont ügynök SKU** | Batch.node.ubuntu 16.04 |
 | **Csomópont mérete** | NC6 Standard |
 

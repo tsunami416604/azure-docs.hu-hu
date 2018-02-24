@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
-ms.openlocfilehash: 9c35e796cb823b2b059b726f099d658ee5e8192b
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: d82a91aa51b6684e6bf88de142d00705a0ceddba
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Előfeltételek az Azure AD Connect
 Ez a témakör ismerteti a szükséges előfeltételek és az Azure AD Connect hardverkövetelményeinek.
@@ -61,7 +61,7 @@ Az Azure AD Connect telepítése előtt van néhány dolog, amelyekre szüksége
 ### <a name="sql-server-used-by-azure-ad-connect"></a>Az Azure AD Connect által használt SQL Server
 * Az identitásadatok tárolásához az Azure AD Connectnek szüksége van egy SQL Server-adatbázisra. Alapértelmezés szerint telepítve van egy SQL Server 2012 Express LocalDB (az SQL Server Express egy világos verzió). SQL Server Express méretkorlátja 10 GB-os, amely lehetővé teszi a körülbelül 100 000 objektumok kezelése. Ha nagyobb mennyiségű directory-objektumok kezelése van szüksége, a telepítővarázsló mutasson az SQL Server egy másik telepítésre szeretné.
 * Egy külön SQL Server használatakor, majd ezek a követelmények vonatkoznak:
-  * Az Azure AD Connect támogatja az összes változatban is elkészíti a Microsoft SQL Server SQL Server 2008 (a legújabb szervizcsomaggal) az SQL Server 2016 SP1. A Microsoft Azure SQL-adatbázis **nem támogatott** -adatbázisként.
+  * Az Azure AD Connect a Microsoft SQL Server SQL Server 2008 (a legújabb szervizcsomaggal) az SQL Server 2016 SP1 összes verzióit támogatja. A Microsoft Azure SQL-adatbázis **nem támogatott** -adatbázisként.
   * Nem betűérzékeny SQL-rendezést kell használnia. Ezek rendezések azonosítják a \_CI_ neve. Az **nem támogatott** egy kis-és nagybetűket rendezés használatára, által azonosított \_CS_ neve.
   * SQL-példányonként egy szinkronizálási motor csak akkor is. Az **nem támogatott** FIM vagy MIM Sync, a DirSync vagy az Azure AD Sync SQL-példány megosztása.
 
@@ -149,13 +149,13 @@ Előtt verzió 1.1.614.0 alapértelmezés szerint az Azure AD Connect a Szinkron
 Az Azure AD Connect telepítése az Active Directory összevonási szolgáltatások vagy a webalkalmazás-Proxy használatakor ellenőrizze ezeket a követelményeket:
 
 * Ha a célkiszolgáló tartományhoz csatlakozik, majd győződjön meg arról, hogy engedélyezve van-e a Windows távoli felügyelete
-  * Egy emelt szintű PSH parancs ablakban paranccsal`Enable-PSRemoting –force`
+  * Egy emelt szintű PSH parancs ablakban paranccsal `Enable-PSRemoting –force`
 * Ha a célkiszolgáló egy a tartományhoz nem csatlakoztatott WAP gépen, akkor néhány további követelmények
   * A cél számítógépen (WAP gép):
     * Győződjön meg arról a Rendszerfelügyeleti webszolgáltatások (Rendszerfelügyeleti webszolgáltatások / WS-Management) szolgáltatás fut-e a szolgáltatások beépülő modul használatával
-    * Egy emelt szintű PSH parancs ablakban paranccsal`Enable-PSRemoting –force`
+    * Egy emelt szintű PSH parancs ablakban paranccsal `Enable-PSRemoting –force`
   * A számítógépen, amelyen a varázsló fut (Ha a célszámítógép a tartományhoz nem csatlakozó vagy nem megbízható tartomány):
-    * Egy emelt szintű PSH parancs ablakban a parancs használata`Set-Item WSMan:\localhost\Client\TrustedHosts –Value <DMZServerFQDN> -Force –Concatenate`
+    * Egy emelt szintű PSH parancs ablakban a parancs használata `Set-Item WSMan:\localhost\Client\TrustedHosts –Value <DMZServerFQDN> -Force –Concatenate`
     * A Kiszolgálókezelőben:
       * gépkészlet DMZ WAP állomás hozzáadása (a Kiszolgálókezelő -> kezelés -> kiszolgálók hozzáadása... DNS lapon)
       * A Kiszolgálókezelő minden kiszolgálók lap: kattintson jobb gombbal a WAP-kiszolgáló, és válassza ki a kezelés másként..., a WAP-számítógép helyi (nem tartományi) hitelesítő adatok megadása

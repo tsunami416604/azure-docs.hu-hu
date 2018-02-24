@@ -3,18 +3,18 @@ title: "Elméleti áttekintése Azure Machine Learning modell kezelése |} Micro
 description: Ez a dokumentum az Azure Machine Learning modell fogalmait ismerteti.
 services: machine-learning
 author: nk773
-ms.author: neerajkh, padou
+ms.author: padou
 manager: mwinkle
-ms.reviewer: garyericson, jasonwhowell, mldocs
+ms.reviewer: jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/20/2017
-ms.openlocfilehash: 0474e7ae77128a46fc6218de814913d07aa63d97
-ms.sourcegitcommit: 80eb8523913fc7c5f876ab9afde506f39d17b5a1
+ms.openlocfilehash: 931dfae740996325cc62071a861e81ef5f67548b
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2017
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="azure-machine-learning-model-management"></a>Azure Machine Learning Modellkezelés
 
@@ -32,7 +32,7 @@ Az Azure Machine Learning modell kezelése a modell verziók egy jegyzéket bizt
 
 Az Azure Machine Learning-számítási környezetek beállítása és kezelése az üzemeltetési modellek méretezhető fürtök segítségével. A számítási környezet Azure tárolószolgáltatások alapul. Azure tárolószolgáltatások biztosít a Machine Learning API-k automatikus kitettség REST API-végpontokon a következő szolgáltatásokkal:
 
-- Authentication
+- Hitelesítés
 - Terheléselosztás
 - Automatikus kibővített
 - Titkosítás
@@ -70,7 +70,7 @@ Az előző lépésben a jegyzék segítségével a saját környezetükben táro
 - [Kubernetes alapú Azure Tárolószolgáltatásban](https://docs.microsoft.com/azure/container-service/kubernetes/container-service-kubernetes-walkthrough)
 - A helyi tároló szolgáltatások
 - Fejlesztési környezetekben
-- Az IoT-eszközök
+- IoT-eszközök
 
 A Docker-alapú indexelése lemezképek az összes szükséges függőségek Előrejelzés létrehozásához szükséges. 
 
@@ -123,5 +123,5 @@ Az alábbi ábrán a teljes munkafolyamat ezekről a fogalmakról leíró rögz�
 
    Abszolút. A szolgáltatások vagy végpontok 100 x futtathatja ugyanazon a fürtön. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Első lépések a modell kezelése, lásd: [konfigurálásához modellben felügyeleti](deployment-setup-configuration.md).

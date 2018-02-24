@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/01/2017
 ms.author: jeedes
-ms.openlocfilehash: 8e54630d97dee2388ffc9c8877faeac269df1609
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: 60430f08f54232db619efd054ca3a7d9a44f4cdc
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks---admin-ui"></a>Oktatóanyag: Azure Active Directoryval integrált Palo Alto hálózatok - rendszergazda felhasználói felület
 
@@ -106,11 +106,14 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
 3. Az a **Palo Alto hálózatok - rendszergazda felhasználói felület tartomány és az URL-címek** területen tegye a következőket:
 
-    ![Palo Alto hálózatok - rendszergazda felhasználói felület tartomány és URL-címek egyszeri bejelentkezés információk](./media/active-directory-saas-paloaltoadmin-tutorial/tutorial_paloaltoadmin_url.png)
+    ![Palo Alto hálózatok - rendszergazda felhasználói felület tartomány és URL-címek egyszeri bejelentkezés információk](./media/active-directory-saas-paloaltoadmin-tutorial/tutorial_general_show_advanced_url.png)
+    
+    a. Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe: `https://<Customer Firewall FQDN>/php/login.php`
 
-    a. Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe:`https://<Customer Firewall FQDN>/php/login.php`
-
-    b. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe:`https://<Customer Firewall FQDN>/SAML20/SP`
+    b. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe: `https://<Customer Firewall FQDN>:443/SAML20/SP`
+    
+    c. Az a **válasz URL-CÍMEN** szövegmező, írja be a helyességi feltétel fogyasztói Service (ACS) URL-CÍMÉT a következő mintát: `https://<Customer Firewall FQDN>:443/SAML20/SP/ACS`
+    
 
     > [!NOTE] 
     > Ezek az értékek nincsenek valós. Frissítheti ezeket az értékeket a tényleges bejelentkezési URL-cím és azonosítója. Ügyfél [Palo Alto hálózatok - rendszergazda felhasználói felület ügyfél-támogatási csoport](https://support.paloaltonetworks.com/support) beolvasni ezeket az értékeket. 
@@ -163,13 +166,71 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
 11. Hajtsa végre a következő importálási ablakban műveletek
 
-    ![Palo Alto egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-paloaltoadmin-tutorial/tutorial_paloaltoadmin_admin3.png)
+    ![Palo Alto egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-paloaltoadmin-tutorial/tutorial_paloaltoadmin_idp.png)
 
-    a. Az a **profilnév** szövegmező, adjon meg egy nevet például Azure AD felügyeleti felhasználói felület.
+    a. Az a **profilnév** szövegmező, adjon meg egy nevet például AzureAD felügyeleti felhasználói felület.
     
     b. A **Identity Provider metaadatok**, kattintson a **Tallózás** jelölje ki a metadata.xml fájlt, amely az Azure-portálról letöltött
     
-    c. Kattintson az **OK** gombra
+    c. Kijelölésének "**ellenőrizze a szolgáltató Identitástanúsítvány**"
+    
+    d. Kattintson az **OK** gombra
+    
+    e. A konfigurációk a tűzfalon véglegesítése a határidő kiválasztásával **véglegesítése** gomb
+
+12. Válassza ki **SAML-Identitásszolgáltatóként** az előző lépésben létrehozott SAML Identity Provider profilt (pl. AzureAD felügyeleti felhasználói felület) parancsra, majd a bal oldali navigációs sávon a. 
+    
+  ![Palo Alto hálózatok egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-paloaltoadmin-tutorial/tutorial_paloaltoadmin_idp_select.png)
+
+13. A következő műveleteket végez a **SAML Identity Provider Server-profil** ablak
+
+  ![Palo Alto hálózatok egyetlen jelentkezzen ki konfigurálása](./media/active-directory-saas-paloaltoadmin-tutorial/tutorial_paloaltoadmin_slo.png)
+  
+  a. Az a **identitási Provieder SLO URL-cím** szövegmező, távolítsa el a korábban importált SLO URL-címet, és adja hozzá a következő URL-címe: `https://login.microsoftonline.com/common/wsfederation?wa=wsignout1.0`
+  
+  b. Kattintson az **OK** gombra
+
+
+14. Kattintson a Palo Alto hálózatok tűzfal felügyeleti felhasználói felület **eszköz** válassza **rendszergazdai szerepkörök**
+
+15. Kattintson a **Hozzáadás** gombra. A rendszergazda szerepkör profil ablakban adja meg a rendszergazdai szerepkört (pl. fwadmin) nevét. A rendszergazda szerepkör nevének egyeznie kell az identitásszolgáltató által küldött SAML-rendszergazdai szerepkör attribútum nevét. 5. lépésben a rendszergazda szerepkör nevét és értékét létrejöttek. 
+
+  ![Palo Alto hálózatok rendszergazdai szerepkör konfigurálása](./media/active-directory-saas-paloaltoadmin-tutorial/tutorial_paloaltoadmin_adminrole.png)
+  
+16. Kattintson a tűzfal felügyeleti felhasználói felület, **eszköz** válassza **hitelesítési profil**
+
+17. Kattintson a **Hozzáadás** gombra. A hitelesítési profil ablakban a következő műveleteket: 
+
+ ![Palo Alto hálózatok hitelesítési profil konfigurálása](./media/active-directory-saas-paloaltoadmin-tutorial/tutorial_paloaltoadmin_authentication_profile.png)
+
+   a. Az a **neve** szövegmező, adjon meg egy nevet például AzureSAML_Admin_AuthProfile
+    
+   b. A **típus** legördülő menüből válassza **SAML** 
+   
+   c. Az IdP Server-profil legördülő menüben válassza ki a megfelelő szolgáltató Identitáskiszolgálók SAML-profilt (pl. a AzureAD felügyeleti felhasználói felület)
+   
+   c. Jelölje ki "**engedélyezése egyetlen kijelentkezési**" jelölőnégyzet
+    
+   d. Rendszergazdai szerepkör attribútum szövegmezőben adja meg az attribútumnak a nevét (pl. adminrole). 
+   
+   e. Válassza ki a Speciális lapon, és kattintson a **Hozzáadás** gomb engedélyezése lista ablaktáblán. Válassza ki az összes, vagy válassza ki az adott felhasználókat és csoportokat, ezzel a profillal hitelesítheti. Amikor egy felhasználó hitelesíti magát, a tűzfal felel meg a társított felhasználónév vagy a csoport ebben a listában szereplő bejegyzések alapján. Ha nem adja hozzá bejegyzéseket, egy felhasználó sem képes hitelesíteni.
+   
+   ![Palo Alto hálózatok hitelesítési profil konfigurálása](./media/active-directory-saas-paloaltoadmin-tutorial/tutorial_paloaltoadmin_allowlist.png)
+   
+   f. Kattintson az **OK** gombra
+
+18. Ahhoz, hogy a rendszergazdák számára, hogy a SAML SSO-t Azure használni, kattintson a **eszköz** válassza **telepítő**. A telepítő ablaktábla, válassza a **felügyeleti** fülre, és kattintson a alatt fogaskerék ikonra **hitelesítési beállítások**. 
+
+ ![Palo Alto hálózatok hitelesítési beállításainak konfigurálása](./media/active-directory-saas-paloaltoadmin-tutorial/tutorial_paloaltoadmin_authsetup.png)
+
+19. Válassza ki a 17. lépésben létrehozott SAML-alapú hitelesítés profilt. (e.g. AzureSAML_Admin_AuthProfile)
+
+ ![Palo Alto hálózatok hitelesítési beállításainak konfigurálása](./media/active-directory-saas-paloaltoadmin-tutorial/tutorial_paloaltoadmin_authsettings.png)
+
+20. Kattintson az **OK** gombra
+
+21. Véglegesítse a konfigurációs kiválasztásával **véglegesítése** gombra.
+
 
 > [!TIP]
 > Ezek az utasítások belül tömör verziója most el tudja olvasni a [Azure-portálon](https://portal.azure.com), míg az alkalmazás beállításakor!  Ez az alkalmazás a hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentációja keresztül a **konfigurációs** szakasz alján. További Itt a embedded dokumentációjából szolgáltatásról: [az Azure AD beágyazott dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)

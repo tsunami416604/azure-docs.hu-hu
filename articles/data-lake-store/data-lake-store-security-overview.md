@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/28/2017
+ms.date: 02/21/2018
 ms.author: nitinme
-ms.openlocfilehash: d65341ae79a8894d054503e0b0807dee3e4cca8c
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: e3df23e8803d8b34cc4178f8047d0fe2172d04be
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="security-in-azure-data-lake-store"></a>Az Azure Data Lake Store biztonsági
 Sok vállalat vannak kihasználja a big data elemzésre szolgáló üzleti elemzéseket felhasználóinál intelligens döntéseket. Egy szervezet előfordulhat, hogy rendelkezik egy összetett és szabályozott környezetben, a különböző felhasználók növekvő számú. Győződjön meg arról, hogy kritikus fontosságú üzleti adatokat tárolja a rendszer biztonsága érdekében együtt a megfelelő szintű hozzáférést biztosít az egyéni felhasználók számára a vállalati létfontosságú. Azure Data Lake Store célja e biztonsági követelményeknek. Ebből a cikkből megtudhatja, Data Lake Store biztonsági képességeivel kapcsolatos többek között:
