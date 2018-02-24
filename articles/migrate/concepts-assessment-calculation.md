@@ -6,11 +6,11 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 06/02/2017
 ms.author: raynew
-ms.openlocfilehash: db09ff30ff9f3852e84162b8400572e76515230f
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: b264e2ceac4e76faa37d21972b94cfe323aa3ce5
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="assessment-calculations"></a>Értékelési számítások
 
@@ -109,11 +109,11 @@ Ha a méretezési kritériumot *regisztrációja, mivel a helyszíni méretezés
  
 ### <a name="confidence-rating"></a>Megbízhatósági minősítése
 
-Azure telepítse át az egyes assessment társítva, amely az 1 csillag az 5 csillagokra (1 csillag alatt legalacsonyabb és legmagasabb alatt 5 csillagos) abban, hogy minősítéssel. A megbízhatósági minősítést rendel az értékelés kiszámításához szükséges adatpontok rendelkezésre állása alapján értékelését. A program segít becsléséhez át Azure által biztosított mérete ajánlások megbízhatóságát. 
+Azure telepítse át az egyes assessment társítva, amely az 1 csillag az 5 csillag (1 csillag alatt a legalacsonyabb és a legmagasabb alatt 5 csillag) abban, hogy minősítéssel. A megbízhatósági minősítést rendel az értékelés kiszámításához szükséges adatpontok rendelkezésre állása alapján értékelését. A megbízhatósági besorolása értékeléssel becsült mérete ajánlások át Azure által biztosított megbízhatóság nyújt segítséget. 
 
-Megbízhatósági minősítés akkor hasznos, ha is *teljesítmény-alapú méretezési* , nem minden adatpontok érhetők el. A *regisztrációja, mivel a helyszíni méretezési*, az vetett bizalmat minősítés mindig 5 csillagos, ha Azure telepítse át a virtuális gép méretének szükséges összes adatot. 
+Megbízhatósági minősítés akkor hasznos, ha is *teljesítmény-alapú méretezési* , Azure át lehet, hogy nincs elegendő adatpont a használat alapú méretezési teendő. A *regisztrációja, mivel a helyszíni méretezési*, az vetett bizalmat minősítés mindig 5 csillagos Azure áttelepítése a virtuális gép méretének kell adatpontok rendelkezik. 
 
-A teljesítmény-alapú méretezési Azure át kell a kihasználtsági adatok CPU és memória. A virtuális Géphez csatlakozik, lemezek, az olvasási/írási IOPS kell és átviteli teljesítmény-alapú méretezési elvégzéséhez. Hasonló módon az összes hálózati adapteren a virtuális Géphez csatlakozik, Azure át kell a hálózati vagy kikapcsolása méretezési teljesítmény-alapú. Ha a fenti kihasználtsági számok nem érhető el a vCenter Server, az Azure áttelepítése végezhető el mérete ajánlás nem lehet megbízható. Attól függően, hogy a rendelkezésre álló adatpontok százaléka a megbízhatóság besorolása értékelési biztosítja:
+A virtuális gép teljesítmény-alapú méretezésének, Azure át kell a kihasználtsági adatok CPU és memória. Emellett a virtuális Géphez csatlakozik, lemezek, kell az olvasási/írási iops-érték és a teljesítményt. Hasonló módon az összes hálózati adapteren a virtuális Géphez csatlakozik, Azure át kell a hálózati vagy kikapcsolása méretezési teljesítmény-alapú. Ha a fenti kihasználtsági számok nem érhető el a vCenter Server, az Azure áttelepítése végezhető el mérete ajánlás nem lehet megbízható. Attól függően, hogy a rendelkezésre álló adatpontok százaléka a megbízhatóság besorolása értékelési biztosítja:
 
    **Az adatpontok rendelkezésre állása** | Megbízhatósági minősítése
    --- | ---
@@ -121,16 +121,16 @@ A teljesítmény-alapú méretezési Azure át kell a kihasználtsági adatok CP
    21%-40% | 2 csillag
    41%-60% | 3 csillag
    61%-80% | 4 csillag
-   81%-100% | 5 csillagos
+   81%-100% | 5 csillag
 
 Egy értékelési nem lehet elérhető a következő okok egyikéből adódóan adatpontok:
-- A statisztika beállítás a vCenter-kiszolgáló nincs beállítva a 3. és az értékelés szinten teljesítmény-alapú méretezése a méretezési feltételként rendelkezik. 3 szintje alacsonyabb a vCenter Server statisztika beállítás esetén teljesítményadatokat lemezek és a hálózati nem gyűjtenek a vCenter Server alkalmazásból. A lemez és hálózat áttelepítése Azure által biztosított javaslat a Mi lett lefoglalva a helyszíni ebben az esetben csak alapján. A tároláshoz Azure telepítse át azt javasolja, hogy standard lemezek, nincs mód, ha a lemez van a magas IOPS/teljesítmény, a prémium szintű lemezekhez.
-- A statisztika vCenter Server lett beállítását egy rövid időre 3 szintű kicking a felderítés kikapcsolása előtt. Például ha módosítja a statisztika érvényes szint ma 3 és megszervezni ki használatával a gyűjtő készülék holnap (után 24 óra), a felderítés létrehozásakor egy napig értékelését, hogy az adatpontok. De ha módosítja a teljesítmény időtartama assessment tulajdonságai egy hónap, a lemeznek leáll az vetett bizalmat minősítés, és nem érhető el a hálózati teljesítmény adatok az elmúlt egy hónapig. Ha azt szeretné, figyelembe kell venni az egy hónap utolsó teljesítményadatait, javasoljuk, hogy őrizze meg a vCenter statisztika beállítást úgy, hogy 3-as szintű előtt indítsa el a felderítési egy hónapig. 
+- A statisztika beállítás a vCenter-kiszolgáló nincs beállítva a 3. és az értékelés szinten teljesítmény-alapú méretezése a méretezési feltételként rendelkezik. 3 szintje alacsonyabb a vCenter Server statisztika beállítás esetén teljesítményadatokat lemezek és a hálózati nem gyűjtenek a vCenter Server alkalmazásból. Ebben az esetben a lemez és hálózat áttelepítése Azure által biztosított javaslat nincs kihasználtsági-alapú. A tároláshoz Azure át azt javasolja, hogy standard lemezek, anélkül, hogy figyelembe véve az IOPS/átviteli sebessége a lemezen, Azure áttelepítése nem azonosítja, hogy a lemez kell egy prémium szintű lemez az Azure-ban.
+- A statisztika a vCenter Server beállítás több szintre 3 egy rövidebb időtartam kicking a felderítés kikapcsolása előtt. Most tegyük a forgatókönyvet, ahol módosíthatja a statisztikák beállítását a 3 ma és megszervezni használatával a gyűjtő készülék holnap (24 óra) elteltével felderítési ki. Hoz létre egy napig értékelését, ha az adatpont van, és a abban, hogy az assessment minősítése lenne 5 csillagos. De egy hónapra módosítani a teljesítmény időtartama assessment tulajdonságai, a lemeznek leáll az vetett bizalmat értékelést, és a hálózati teljesítmény adatok az elmúlt egy hónapig nem érhető el. Ha azt szeretné, figyelembe kell venni az egy hónap utolsó teljesítményadatait, javasoljuk, hogy őrizze meg a vCenter statisztika beállítást úgy, hogy 3-as szintű előtt indítsa el a felderítési egy hónapig. 
 - Néhány virtuális géppel állítsa le az időtartam, amelynek az értékelést kiszámítása során. Ha a virtuális gépek van kapcsolva az egyes időtartam, vCenter-kiszolgáló nem fog teljesítményadatok adott időszakra. 
 - Néhány virtuális géppel az időszakot, amelynek az értékelést számítani Between lettek létrehozva. Például az értékelést létrehozásakor az utolsó, de néhány virtuális géppel előzményeinek jöttek létre a környezetben csak egy hete. Ebben az esetben az új virtuális gépek előzményeinek csak akkor van a teljes ideje.
 
 > [!NOTE]
-> Ha bármely assessment a abban, hogy minősítése 3 csillag alatt van, várunk javasoljuk, hogy 3, módosítsa a vCenter-kiszolgáló statisztikák beállítások szintjén assessment figyelembe venni kívánt időtartama (1 nap/1 hét/1 hónap), és tegye a felderítés és az értékelés. Ha az előző nem hajtható végre, a teljesítmény-alapú méretezési nem lehet megbízható és a javasoljuk, hogy váltani *regisztrációja, mivel a helyszíni méretezési* assessment tulajdonságainak módosításával.
+> Ha bármely assessment a abban, hogy minősítése 4 csillag alatt van, várunk javasoljuk, hogy 3, módosítsa a vCenter-kiszolgáló statisztikák beállítások szintjén assessment figyelembe venni kívánt időtartama (1 nap/1 hét/1 hónap), és tegye a felderítés és az értékelés. Ha az előző nem hajtható végre, a teljesítmény-alapú méretezési nem lehet megbízható és a javasoljuk, hogy váltani *regisztrációja, mivel a helyszíni méretezési* assessment tulajdonságainak módosításával.
 
 ## <a name="monthly-cost-estimation"></a>Havi költség becslése
 

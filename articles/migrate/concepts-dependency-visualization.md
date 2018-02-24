@@ -4,13 +4,13 @@ description: "Értékelési számítások az Azure áttelepítése szolgáltatá
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 12/12/2017
+ms.date: 2/21/2018
 ms.author: raynew
-ms.openlocfilehash: 10bc249aa70852dce71c96e46319925cececdd8b
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: 886977764517f1fec89eee77fc3263d30ff9ab31
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="dependency-visualization"></a>Függőségek vizualizációja
 
@@ -35,7 +35,7 @@ Függőség képi megjelenítés használata esetén meg kell töltse le és tel
 
 ## <a name="do-i-need-to-pay-for-it"></a>Kell azt díj ellenében?
 
-Igen. Alapértelmezés szerint a Naplóelemzési munkaterület jön létre, de függőségi képi megjelenítés használata az Azure áttelepítése nem használ. Ha függőségi képi megjelenítés használja (vagy a munkaterületen kívül Azure áttelepítése), van szó, a munkaterület-használat.  [További](https://azure.microsoft.com/pricing/details/insight-analytics/) vonatkozó Szolgáltatástérkép megoldás. 
+További tudnivalókat az Azure Migrate díjszabásáról [itt](https://azure.microsoft.com/pricing/details/azure-migrate/) talál. 
 
 ## <a name="how-do-i-manage-the-workspace"></a>Hogyan kezelhetem a munkaterület?
 
@@ -43,6 +43,6 @@ A Naplóelemzési munkaterület kívül Azure áttelepítéséhez használható.
 
 Ne törölje a hozta létre Azure az áttelepítés munkaterületen, hacsak nem törli az áttelepítési projekt. Ha így tesz, függőségek nem működik megfelelően.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Csoport gépek gép függőségek](how-to-create-group-machine-dependencies.md)

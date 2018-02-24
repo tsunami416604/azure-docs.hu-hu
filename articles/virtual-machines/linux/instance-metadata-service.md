@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/10/2017
 ms.author: harijayms
-ms.openlocfilehash: 40b684fe5681123f3c32d3984b2725f97b427f1b
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: 9222fcebd51ff13e797f40f3fdb0ddaa955d2611
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="azure-instance-metadata-service"></a>Az Azure példány metaadat-szolgáltatás
 
@@ -38,8 +38,8 @@ Régiók                                        | Rendelkezésre állási?      
 -----------------------------------------------|-----------------------------------------------|-----------------
 [Minden általánosan elérhető globális Azure-régió](https://azure.microsoft.com/regions/)     | Általánosan elérhető   | 2017-04-02, 2017-08-01
 [Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | Általánosan elérhető | 2017-04-02
-[Az Azure Kínában](https://www.azure.cn/)                                                           | Általánosan elérhető | 2017-04-02
-[Az Azure-Németország](https://azure.microsoft.com/overview/clouds/germany/)                    | Általánosan elérhető | 2017-04-02
+[Azure China](https://www.azure.cn/)                                                           | Általánosan elérhető | 2017-04-02
+[Azure Germany](https://azure.microsoft.com/overview/clouds/germany/)                    | Általánosan elérhető | 2017-04-02
 
 Ez a táblázat frissülni fog, amikor a szolgáltatás frissítések érhetők el, és vagy új verziók érhetők el
 
@@ -75,8 +75,8 @@ A következő táblázat a más adatok formátumok API-k támogathatja a hivatko
 
 API | Alapértelmezett adatformátum | Eltérő formátumban
 --------|---------------------|--------------
-/instance | JSON | Szöveg
-/scheduledevents | JSON | nincs
+/instance | json | Szöveg
+/scheduledevents | json | nincs
 
 Egy nem alapértelmezett válaszformátum szeretne használni, adja meg a kért formátumát a kérelem lekérdezési karakterlánc paraméterként. Példa:
 
@@ -98,7 +98,7 @@ HTTP-állapotkód | Ok
 404 – Nem található | A kért elem nem létezik. 
 405 metódus nem engedélyezett | Csak `GET` és `POST` kérelmek támogatottak.
 429 túl sok kérelem | Az API-t jelenleg legfeljebb 5 lekérdezések száma másodpercenként
-500 szolgáltatási hiba     | Némi várakozás után próbálja meg újra
+500 Service Error     | Némi várakozás után próbálja meg újra
 
 ### <a name="examples"></a>Példák
 
@@ -284,8 +284,8 @@ Adatok | Leírás | Bevezetett verziója
 location | Azure-régió, a virtuális gép fut. | 2017-04-02 
 név | A virtuális gép neve | 2017-04-02
 ajánlat | A VM-lemezkép információkat nyújtanak. Kép: Azure-galériából telepített lemezképek nincs csak ezt az értéket. | 2017-04-02
-Közzétevő | A Virtuálisgép-lemezkép kiadója | 2017-04-02
-Termékváltozat | A VM-lemezkép adott Termékváltozat | 2017-04-02
+publisher | A Virtuálisgép-lemezkép kiadója | 2017-04-02
+sku | A VM-lemezkép adott Termékváltozat | 2017-04-02
 verzió: | A Virtuálisgép-lemezkép verziója | 2017-04-02
 osType | Linux- vagy Windows | 2017-04-02
 platformUpdateDomain |  [Frissítési tartományok](manage-availability.md) a virtuális gép fut. | 2017-04-02
@@ -294,15 +294,15 @@ vmId | [Egyedi azonosító](https://azure.microsoft.com/blog/accessing-and-using
 vmSize | [Virtuálisgép-mérettel](sizes.md) | 2017-04-02
 subscriptionId | A virtuális gép Azure-előfizetés | 2017-08-01
 tags | [Címkék](../../azure-resource-manager/resource-group-using-tags.md) a virtuális gép  | 2017-08-01
-erőforráscsoport-név | [Erőforráscsoport](../../azure-resource-manager/resource-group-overview.md) a virtuális gép | 2017-08-01
+resourceGroupName | [Erőforráscsoport](../../azure-resource-manager/resource-group-overview.md) a virtuális gép | 2017-08-01
 placementGroupId | [Elhelyezési csoport](../../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) a virtuálisgép-méretezési állítva | 2017-08-01
-IPv4/privateipaddress tulajdonságot | A virtuális gép helyi IPv4-címe | 2017-04-02
-IPv4-vagy nyilvános | A virtuális gép nyilvános IPv4-cím | 2017-04-02
-alhálózat és címét | A virtuális gép alhálózati cím | 2017-04-02 
-/ előtagot. | Példa 24 alhálózati előtag | 2017-04-02 
-IPv6/IP-cím | A virtuális gép helyi IPv6-cím | 2017-04-02 
+ipv4/privateIpAddress | A virtuális gép helyi IPv4-címe | 2017-04-02
+ipv4/publicIpAddress | A virtuális gép nyilvános IPv4-cím | 2017-04-02
+subnet/address | A virtuális gép alhálózati cím | 2017-04-02 
+subnet/prefix | Példa 24 alhálózati előtag | 2017-04-02 
+ipv6/ipAddress | A virtuális gép helyi IPv6-cím | 2017-04-02 
 MacAddress | Virtuális gép mac-cím | 2017-04-02 
-scheduledevents | Jelenleg a nyilvános előzetes lásd: [scheduledevents](scheduled-events.md) | 2017-03-01
+scheduledevents | Lásd: [scheduledevents](scheduled-events.md) | 2017-03-01
 
 ## <a name="example-scenarios-for-usage"></a>Példa használati forgatókönyvek  
 
@@ -376,17 +376,17 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute?api-vers
 
 Nyelv | Példa 
 ---------|----------------
-Ruby     | https://github.com/Microsoft/azureimds/BLOB/Master/IMDSSample.RB
-Indítás  | https://github.com/Microsoft/azureimds/BLOB/Master/imdssample.go            
-Python   | https://github.com/Microsoft/azureimds/BLOB/Master/IMDSSample.PY
-C++      | https://github.com/Microsoft/azureimds/BLOB/Master/IMDSSample-Windows.cpp
-C#       | https://github.com/Microsoft/azureimds/BLOB/Master/IMDSSample.cs
-JavaScript | https://github.com/Microsoft/azureimds/BLOB/Master/IMDSSample.js
-PowerShell | https://github.com/Microsoft/azureimds/BLOB/Master/IMDSSample.ps1
-Bash       | https://github.com/Microsoft/azureimds/BLOB/Master/IMDSSample.SH
-Perl       | https://github.com/Microsoft/azureimds/BLOB/Master/IMDSSample.pl
-Java       | https://github.com/Microsoft/azureimds/BLOB/Master/imdssample.Java
-Visual Basic | https://github.com/Microsoft/azureimds/BLOB/Master/IMDSSample.vb
+Ruby     | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.rb
+Indítás  | https://github.com/Microsoft/azureimds/blob/master/imdssample.go            
+Python   | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.py
+C++      | https://github.com/Microsoft/azureimds/blob/master/IMDSSample-windows.cpp
+C#       | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.cs
+JavaScript | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.js
+PowerShell | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.ps1
+Bash       | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.sh
+Perl       | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.pl
+Java       | https://github.com/Microsoft/azureimds/blob/master/imdssample.java
+Visual Basic | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.vb
     
 
 ## <a name="faq"></a>GYIK
@@ -411,4 +411,4 @@ Visual Basic | https://github.com/Microsoft/azureimds/BLOB/Master/IMDSSample.vb
     
 ## <a name="next-steps"></a>További lépések
 
-- További információ a [ütemezett események](scheduled-events.md) API **nyilvános előzetes verziójában** a példány metaadat-szolgáltatás által biztosított.
+- További információ [ütemezett események](scheduled-events.md).

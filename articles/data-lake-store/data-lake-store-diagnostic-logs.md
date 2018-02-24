@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/28/2017
+ms.date: 02/21/2018
 ms.author: nitinme
-ms.openlocfilehash: 5e1c3df24b0fc3e733981ab3f8814a9e6641f5f1
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: b58a4b215b13d2e57a69a94a60e3e37471c926c8
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-store"></a>Diagnosztikai naplók az Azure Data Lake Store elérése
 További diagnosztikai a Data Lake Store-fiók és a fiókja gyűjtött naplók megtekintéséhez a naplózás engedélyezéséhez.
@@ -82,9 +82,9 @@ A Data Lake Store-fiók a naplóadatok megtekintéséhez két módja van.
    
     ![Diagnosztikai naplózás nézet](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs-storage-account-structure.png "diagnosztikai naplók megtekintése")
    
-    Tegyük fel a teljes elérési útját, és egy naplófájlba lehet`https://adllogs.blob.core.windows.net/insights-logs-audit/resourceId=/SUBSCRIPTIONS/<sub-id>/RESOURCEGROUPS/myresourcegroup/PROVIDERS/MICROSOFT.DATALAKESTORE/ACCOUNTS/mydatalakestore/y=2016/m=07/d=18/h=04/m=00/PT1H.json`
+    Tegyük fel a teljes elérési útját, és egy naplófájlba lehet `https://adllogs.blob.core.windows.net/insights-logs-audit/resourceId=/SUBSCRIPTIONS/<sub-id>/RESOURCEGROUPS/myresourcegroup/PROVIDERS/MICROSOFT.DATALAKESTORE/ACCOUNTS/mydatalakestore/y=2016/m=07/d=18/h=04/m=00/PT1H.json`
    
-    Hasonlóképpen a teljes elérési útját a napló lehet`https://adllogs.blob.core.windows.net/insights-logs-requests/resourceId=/SUBSCRIPTIONS/<sub-id>/RESOURCEGROUPS/myresourcegroup/PROVIDERS/MICROSOFT.DATALAKESTORE/ACCOUNTS/mydatalakestore/y=2016/m=07/d=18/h=14/m=00/PT1H.json`
+    Hasonlóképpen a teljes elérési útját a napló lehet `https://adllogs.blob.core.windows.net/insights-logs-requests/resourceId=/SUBSCRIPTIONS/<sub-id>/RESOURCEGROUPS/myresourcegroup/PROVIDERS/MICROSOFT.DATALAKESTORE/ACCOUNTS/mydatalakestore/y=2016/m=07/d=18/h=14/m=00/PT1H.json`
 
 ## <a name="understand-the-structure-of-the-log-data"></a>A naplózási adatok szerkezete ismertetése
 A naplózási és kérelem naplók JSON formátumban vannak. Ez a szakasz azt nézze meg a kérelem JSON szerkezete és a naplók.
@@ -132,8 +132,8 @@ A naplózási és kérelem naplók JSON formátumban vannak. Ez a szakasz azt n�
 | HttpMethod |Karakterlánc |A művelethez használt HTTP-metódust. Például beolvasása. |
 | Útvonal |Karakterlánc |Az elérési út a művelet végrehajtásának ideje |
 | RequestContentLength |int |A HTTP-kérelem a tartalom hossza |
-| clientRequestId |Karakterlánc |Az azonosító, amely egyedileg azonosítja az ehhez a kérelemhez |
-| Kezdő időpont |Karakterlánc |Az a kiszolgáló fogadja a kérelem ideje |
+| ClientRequestId |Karakterlánc |Az azonosító, amely egyedileg azonosítja az ehhez a kérelemhez |
+| StartTime |Karakterlánc |Az a kiszolgáló fogadja a kérelem ideje |
 | Befejezés időpontja |Karakterlánc |Az idő, ahol a kiszolgáló által küldött választ |
 
 ### <a name="audit-logs"></a>Naplók

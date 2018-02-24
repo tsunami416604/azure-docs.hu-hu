@@ -9,11 +9,11 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 01/11/2018
 ms.author: anoopkv
-ms.openlocfilehash: 939115aedd624dde637f00c02865b1adab47c7c4
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: 7210a6d754f2c13c915955f2b401d19f3a55649e
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="install-mobility-service-vmware-or-physical-to-azure"></a>Telepítse a mobilitási szolgáltatás (VMware vagy fizikai az Azure-bA)
 Az Azure Site Recovery mobilitási szolgáltatás egy számítógépen végbemenő adatírásokat, és ezután továbbítja őket a folyamatkiszolgálónak. Minden számítógépre (VMware virtuális gép vagy fizikai kiszolgálón), amely az Azure-bA replikálni kívánt telepíteni a mobilitási szolgáltatás. Az alábbi módszerek használatával védeni kívánt kiszolgálók mobilitási szolgáltatás telepítése:
@@ -27,18 +27,18 @@ Az Azure Site Recovery mobilitási szolgáltatás egy számítógépen végbemen
 
 
 >[!IMPORTANT]
-> Kezdve verziója 9.7.0.0, a Windows virtuális gépek (VM), a mobilitási szolgáltatás telepítési is telepíti a legújabb elérhető [Azure Virtuálisgép-ügynök](../virtual-machines/windows/extensions-features.md#azure-vm-agent). Ha a számítógép nem keresztül az Azure-ba, a számítógép megfelel-e a Virtuálisgép-bővítmény használatára vonatkozó előfeltételek telepítése.
+> Verzió 9.7.0.0, a Windows virtuális gépeken, kezdve a mobilitási szolgáltatás telepítési is telepíti a legújabb elérhető [Azure Virtuálisgép-ügynök](../virtual-machines/windows/extensions-features.md#azure-vm-agent). Ha a számítógép nem keresztül az Azure-ba, a számítógép megfelel-e a Virtuálisgép-bővítmény használatára vonatkozó előfeltételek telepítése.
 
 ## <a name="prerequisites"></a>Előfeltételek
 Előfeltételként szükséges lépések végrehajtása előtt manuálisan telepítenie mobilitási szolgáltatás a kiszolgálón:
 1. Jelentkezzen be a konfigurációs kiszolgáló, és nyissa meg egy parancssori ablakot rendszergazdaként.
-2. Módosítsa a könyvtárat a bin mappát, és hozza létre jelszót fájlt:
+2. Módosítsa a könyvtárat a bin mappát, és hozza létre jelszót fájlt.
 
     ```
     cd %ProgramData%\ASR\home\svsystems\bin
     genpassphrase.exe -v > MobSvc.passphrase
     ```
-3. A jelszó fájlt tárolja biztonságos helyen. A fájlt a mobilitási szolgáltatás telepítése során használja.
+3. A jelszó fájlt tárolja biztonságos helyen. A fájlt használja a mobilitási szolgáltatás telepítése során.
 4. Minden támogatott operációs rendszerek a mobilitási szolgáltatás telepítők a %ProgramData%\ASR\home\svsystems\pushinstallsvc\repository mappában találhatók.
 
 ### <a name="mobility-service-installer-to-operating-system-mapping"></a>Mobilitási szolgáltatás installer-operációs rendszer leképezése
@@ -60,7 +60,7 @@ Előfeltételként szükséges lépések végrehajtása előtt manuálisan telep
 ## <a name="install-mobility-service-manually-by-using-the-gui"></a>Telepítse manuálisan a mobilitási szolgáltatást a grafikus felhasználói felület használatával
 
 >[!IMPORTANT]
-> Használatakor a **konfigurációs kiszolgáló** replikálásához **Azure IaaS virtuális gépek** a egy Azure előfizetés vagy régió másik majd **használhatja a parancssor alapú telepítési** módszer
+> Ha a konfigurációs kiszolgáló Azure IaaS virtuális gépek replikálásához egy Azure előfizetés vagy régió egy másik, a parancssor alapú telepítési módszer használata.
 
 [!INCLUDE [site-recovery-install-mob-svc-gui](../../includes/site-recovery-install-mob-svc-gui.md)]
 
@@ -74,7 +74,7 @@ Előfeltételként szükséges lépések végrehajtása előtt manuálisan telep
 
 
 ## <a name="install-mobility-service-by-push-installation-from-azure-site-recovery"></a>Telepítse a mobilitási szolgáltatás leküldéses telepítése az Azure Site Recovery által
-A mobilitási szolgáltatás leküldéses telepítéséhez tegye a Site Recovery segítségével, minden célszámítógépen a következő előfeltételeknek kell megfelelnie:
+A mobilitási szolgáltatás leküldéses telepítéséhez a Site Recovery segítségével teheti meg. Minden célszámítógépen meg kell felelnie a következő előfeltételek teljesülését.
 
 [!INCLUDE [site-recovery-prepare-push-install-mob-svc-win](../../includes/site-recovery-prepare-push-install-mob-svc-win.md)]
 
@@ -82,25 +82,26 @@ A mobilitási szolgáltatás leküldéses telepítéséhez tegye a Site Recovery
 
 
 > [!NOTE]
-Az Azure-portálon a mobilitási szolgáltatás telepítése után válassza ki a **+ replikálás** gombra kattintva indítsa el a virtuális gépek védelmét.
+Az Azure-portálon a mobilitási szolgáltatás telepítése után válasszon **+ replikálás** ezen virtuális gépek védelmének megkezdéséhez.
 
 ## <a name="update-mobility-service"></a>Frissítse a mobilitási szolgáltatás
 
 > [!WARNING]
-> Győződjön meg arról, hogy a konfigurációs kiszolgáló, a kibővített folyamat kiszolgálók és a kiszolgálók bármelyike a fő célkiszolgálón, amelyek a központi telepítés részét frissül a mobilitási szolgáltatást a védett kiszolgálókon a frissítés megkezdése előtt.
+> Győződjön meg arról, hogy a konfigurációs kiszolgáló, kibővített folyamat kiszolgálókat, és bármely fő célkiszolgálóra, amely a központi telepítés részét képezik frissítve lett, mielőtt megkezdené a mobilitási szolgáltatás frissítése a védett kiszolgálókon.
 
-1. Az Azure portálon keresse meg a <Your Vault> replikált elemek Nézet ->.
-2. Ha a **konfigurációs kiszolgáló** már frissült a legújabb verzióra, akkor megjelenik egy értesítés, hogy az olvasások *új helyet a helyreállítási replikációs ügynök frissítés érhető el. Történő telepítéséhez kattintson a*
+1. Az Azure-portálon keresse meg a *a tároló neve* > **replikált elemek** nézet.
+2. Ha a kiszolgáló már frissült a legújabb verzióra, megjelenik egy értesítés, hogy olvassa be az "új hely helyreállítási replikációs ügynök frissítés érhető el. Ide kattintva telepítheti."
 
-     ![ReplicatedItems](.\media\site-recovery-vmware-to-azure-install-mob-svc\replicated-item-notif.png)
-3. Kattintson az értesítés nyissa meg a virtuális gép kiválasztása lapon.
-4. Válassza ki a virtuális gépeknek meg futó mobilitási szolgáltatás frissítése, és kattintson az OK gombra.
+     ![Replikált elemek ablak](.\media\site-recovery-vmware-to-azure-install-mob-svc\replicated-item-notif.png)
+3. Válassza ki a virtuális gép kiválasztása lapon nyissa meg az értesítést.
+4. Válassza ki a virtuális gépek futó mobilitási szolgáltatás frissítése, és válassza ki a kívánt **OK**.
 
-     ![ReplicatedItemsVMList](.\media\site-recovery-vmware-to-azure-install-mob-svc\update-okpng.png)
-5. A kijelölt virtuális gépek mindegyikének a frissítés Mobilitásiszolgáltatás feladat elindul.
+     ![Replikált elemek VM listája](.\media\site-recovery-vmware-to-azure-install-mob-svc\update-okpng.png)
+
+A frissítés Mobilitásiszolgáltatás feladat elindul a kijelölt virtuális gépek mindegyikéhez.
 
 > [!NOTE]
-> [További](site-recovery-vmware-to-azure-manage-configuration-server.md) frissítésével a mobilitási szolgáltatás telepítéséhez használt fiók jelszava
+> [További](site-recovery-vmware-to-azure-manage-configuration-server.md) frissítésével a mobilitási szolgáltatás telepítéséhez használt fiók jelszavát.
 
 ## <a name="uninstall-mobility-service-on-a-windows-server-computer"></a>Távolítsa el a mobilitási szolgáltatást a Windows Server rendszerben
 Az alábbi módszerek valamelyikével távolítsa el a mobilitási szolgáltatás egy Windows Server rendszeren.
@@ -113,15 +114,15 @@ Az alábbi módszerek valamelyikével távolítsa el a mobilitási szolgáltatá
 1. Nyisson meg egy parancssori ablakot rendszergazdaként.
 2. Távolítsa el a mobilitási szolgáltatást, futtassa a következő parancsot:
 
-```
-MsiExec.exe /qn /x {275197FC-14FD-4560-A5EB-38217F80CBD1} /L+*V "C:\ProgramData\ASRSetupLogs\UnifiedAgentMSIUninstall.log"
-```
+    ```
+    MsiExec.exe /qn /x {275197FC-14FD-4560-A5EB-38217F80CBD1} /L+*V "C:\ProgramData\ASRSetupLogs\UnifiedAgentMSIUninstall.log"
+    ```
 
 ## <a name="uninstall-mobility-service-on-a-linux-computer"></a>Távolítsa el a mobilitási szolgáltatás egy Linux-számítógép
 1. A Linux-kiszolgálón jelentkezzen be egy **legfelső szintű** felhasználó.
 2. A terminálban keresse /user/local/ASR.
 3. Távolítsa el a mobilitási szolgáltatást, futtassa a következő parancsot:
 
-```
-uninstall.sh -Y
-```
+    ```
+    uninstall.sh -Y
+    ```

@@ -14,11 +14,11 @@ ms.workload: identity
 ms.date: 12/15/2017
 ms.author: daveba
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 8820691f5b7c6dbd2c15faede75de123f779b167
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: b0b5b991b7d2baaa40ebedbd19247717e91aa027
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="faq-and-known-issues-with-managed-service-identity-msi-for-azure-active-directory"></a>Gyakori kérdések és ismert problémákat a felügyelt szolgáltatás Identity (MSI) az Azure Active Directory
 
@@ -128,5 +128,4 @@ az vm update -n <VM Name> -g <Resource Group> --remove tags.fixVM
  - `sudo bash -c "/var/lib/waagent/Microsoft.ManagedIdentity.ManagedIdentityExtensionForLinux-1.0.0.8/msi-extension-handler disable"`
  - `sudo bash -c "/var/lib/waagent/Microsoft.ManagedIdentity.ManagedIdentityExtensionForLinux-1.0.0.8/msi-extension-handler enable"`
 - A vmagent esetében a Windows jelenleg nem támogatja a felhasználó hozzárendelt MSI-fájl. 
-- A szerepkör hozzárendelése egy olyan MSI Csomaghoz, elért egy erőforrást jelenleg nem szükséges különleges engedély. 
 - Ha egy virtuális gép rendelkezik egy felhasználó lehet hozzárendelve MSI, de a rendszer nem rendelnek MSI, a portál felhasználói felületének fog engedélyezettként MSI-fájl. A rendszer MSI hozzárendelt engedélyezéséhez az Azure Resource Manager-sablon, egy Azure CLI vagy az SDK.

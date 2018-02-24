@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/28/2017
+ms.date: 02/22/2018
 ms.author: larryfr
-ms.openlocfilehash: a972344e2b6205fbcf69d2969c42211ec5b24869
-ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
+ms.openlocfilehash: 18b7b5d56acb4d9d0c2ed007f0521193e37d82e8
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="deploy-and-manage-apache-storm-topologies-on-hdinsight"></a>Központi telepítése és kezelése a HDInsight alatt futó Apache Storm-topológiák
 
@@ -44,7 +44,7 @@ Ebben a dokumentumban alapismeretei kezelése és figyelése a Storm a HDInsight
   * A Visual Studio 2012 [4. frissítés](http://www.microsoft.com/download/details.aspx?id=39305)
 
   * A Visual Studio 2013-as verziójának [4. frissítés](http://www.microsoft.com/download/details.aspx?id=44921) vagy [Visual Studio 2013 Community](http://go.microsoft.com/fwlink/?LinkId=517284)
-  * [A Visual Studio 2015](https://www.visualstudio.com/downloads/)
+  * [Visual Studio 2015](https://www.visualstudio.com/downloads/)
 
   * A Visual Studio 2015 (minden kiadás)
 
@@ -65,7 +65,7 @@ A HDInsight Tools elküldeni a C# vagy hibrid topológiák a Storm fürthöz has
 
 3. Az a **új projekt** párbeszédpanelen bontsa ki **telepített** > **sablonok**, majd válassza ki **HDInsight**. Válassza ki a listáról a sablonok **Storm minta**. A párbeszédpanel alján írja be az alkalmazás nevét.
 
-    ![Kép](./media/apache-storm-deploy-monitor-topology-linux/sample.png)
+    ![image](./media/apache-storm-deploy-monitor-topology-linux/sample.png)
 
 4. A **Megoldáskezelőben**, kattintson jobb gombbal a projektre, és válassza ki **Submit a HDInsight alatt futó Storm**.
 
@@ -86,7 +86,7 @@ A HDInsight Tools elküldeni a C# vagy hibrid topológiák a Storm fürthöz has
 
         storm jar /usr/hdp/current/storm-client/contrib/storm-starter/storm-starter-topologies-*.jar org.apache.storm.starter.WordCountTopology WordCount
 
-    A paranccsal elindítja a példa WordCount-topológia a fürtön. Ez a topológia véletlenszerűen állít elő, a mondatok, és majd megjeleníti az összes szó a mondatok előfordulását.
+    Ez a parancs elindítja a fürtön a WordCount példatopológiát. Ez a topológia véletlenszerűen állít elő, a mondatok, és majd megjeleníti az összes szó a mondatok előfordulását.
 
    > [!NOTE]
    > A topológia a fürtre történő elküldésekor a fürtöt tartalmazó jar-fájlt a `storm` parancs használata előtt kell másolnia. A fájl átmásolása a fürtre, használja a `scp` parancsot. Például: `scp FILENAME.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:FILENAME.jar`
@@ -226,9 +226,9 @@ A teljesen minősített tartománynevét (FQDN) találhat az átjárócsomópont
 
 * **Az SSH-munkamenetet**: a parancs `headnode -f` az SSH-munkamenetet a fürthöz.
 * **Az Ambari webes**: válasszon **szolgáltatások** a lap tetején, majd válassza ki **Storm**. Az a **összegzés** lapon jelölje be **Storm felhasználói felület Server**. A csomópont a Storm felhasználói felülete és a REST API-t üzemeltető teljes Tartománynevét a lap tetején jelenik meg.
-* **Az Ambari REST API**: a parancs `curl -u admin:PASSWORD -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/STORM/components/STORM_UI_SERVER"` a csomópontot, a Storm felhasználói felület és a REST API-n futó vonatkozó információk lekéréséhez. Cserélje le **jelszó** a fürt rendszergazdai jelszóval. Cserélje le **CLUSTERNAME** a fürt nevéhez. A válaszban a "gazdaszámítógép_neve"-bejegyzése tartalmazza a csomópont teljesen minősített Tartománynevét.
+* **Az Ambari REST API**: a parancs `curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/STORM/components/STORM_UI_SERVER"` a csomópontot, a Storm felhasználói felület és a REST API-n futó vonatkozó információk lekéréséhez. Cserélje le **CLUSTERNAME** a fürt nevéhez. Amikor a rendszer kéri, adja meg a jelszót a bejelentkezéshez (rendszergazda) fiók. A válaszban a "gazdaszámítógép_neve"-bejegyzése tartalmazza a csomópont teljesen minősített Tartománynevét.
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Hitelesítés
 
 A REST API-kérésnek kell használnia **az egyszerű hitelesítés**, így a HDInsight fürt rendszergazdája nevet és jelszót használják.
 
@@ -239,7 +239,7 @@ A REST API-kérésnek kell használnia **az egyszerű hitelesítés**, így a HD
 
 Információ a REST API visszaadott csak lehet a fürtön belül használható. Visszaadott Zookeeper kiszolgálók teljesen minősített tartománynevét (FQDN) például az internetről nem érhető el.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Megtudhatja, hogyan [Maven használatával fejlesztése Java-alapú topológiák](apache-storm-develop-java-topology.md).
 

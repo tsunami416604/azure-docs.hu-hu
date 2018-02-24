@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/10/2017
 ms.author: harijayms
-ms.openlocfilehash: 2694c25b0db7a4a0b9f527ec67e62fede5de6a80
-ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
+ms.openlocfilehash: 903177506c31ec96452cbbdbade4a3d91dbf7571
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="azure-instance-metadata-service"></a>Az Azure példány metaadat-szolgáltatás
 
@@ -75,8 +75,8 @@ A következő táblázat a más adatok formátumok API-k támogathatja a hivatko
 
 API | Alapértelmezett adatformátum | Eltérő formátumban
 --------|---------------------|--------------
-/instance | JSON | Szöveg
-/scheduledevents | JSON | nincs
+/instance | json | Szöveg
+/scheduledevents | json | nincs
 
 Egy nem alapértelmezett válaszformátum szeretne használni, adja meg a kért formátumát a kérelem lekérdezési karakterlánc paraméterként. Példa:
 
@@ -302,7 +302,7 @@ subnet/address | A virtuális gép alhálózati cím | 2017-04-02
 subnet/prefix | Példa 24 alhálózati előtag | 2017-04-02 
 ipv6/ipAddress | A virtuális gép helyi IPv6-cím | 2017-04-02 
 MacAddress | Virtuális gép mac-cím | 2017-04-02 
-scheduledevents | Jelenleg a nyilvános előzetes verziójához. Lásd: [ütemezett események](scheduled-events.md) | 2017-03-01
+scheduledevents | Lásd: [ütemezett események](scheduled-events.md) | 2017-03-01
 
 ## <a name="example-scenarios-for-usage"></a>Példa használati forgatókönyvek  
 
@@ -411,4 +411,4 @@ Visual Basic | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.vb
     
 ## <a name="next-steps"></a>További lépések
 
-- További információ a [ütemezett események](scheduled-events.md) API **nyilvános előzetes verziójában** a példány metaadat-szolgáltatás által biztosított.
+- További információ [ütemezett események](scheduled-events.md)

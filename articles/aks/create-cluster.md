@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 02/12/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 3e884bc16680d74801911547045deb48246afccd
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 37d6dfc0aa6b3e4fcd88a53e83a3a3d7f2157681
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="create-an-azure-container-service-aks-cluster"></a>Egy Azure tároló szolgáltatás (AKS) fürt létrehozása
 
@@ -21,7 +21,7 @@ Az Azure-tároló szolgáltatás (AKS) fürtöt vagy az Azure parancssori felül
 
 ## <a name="azure-cli"></a>Azure CLI
 
-Használja a [az aks létrehozása] [ az-aks-create] parancs futtatásával törölheti a AKS fürtöt.
+Használja a [az aks létrehozása] [ az-aks-create] parancsot a AKS fürt létrehozásához.
 
 ```azurecli-interactive
 az aks create --resource-group myResourceGroup --name myAKSCluster

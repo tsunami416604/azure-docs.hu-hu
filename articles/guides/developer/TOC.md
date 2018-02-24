@@ -22,7 +22,7 @@
 ### [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-vm)
 ### [Windows](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-manage-vm)
 ## [Azure-kapcsolattal rendelkező függvény létrehozása](https://docs.microsoft.com/azure/azure-functions/functions-create-an-azure-connected-function)
-## [Dockerrel üzembe helyezett webalkalmazás Linuxon](https://docs.microsoft.com/azure/app-service/containers/quickstart-custom-docker-image) 
+## [Dockerrel üzembe helyezett webalkalmazás Linuxon](https://docs.microsoft.com/azure/app-service/containers/quickstart-docker-go) 
 
 # Példák
 ## Azure CLI

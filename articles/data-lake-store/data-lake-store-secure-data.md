@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/28/2017
+ms.date: 02/21/2018
 ms.author: nitinme
-ms.openlocfilehash: e246abaf8d1d7939765e1c878f6dfaf6375294f6
-ms.sourcegitcommit: 651a6fa44431814a42407ef0df49ca0159db5b02
+ms.openlocfilehash: aa71a1cc48449c6ef48365b301bf9e297c0597ae
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="securing-data-stored-in-azure-data-lake-store"></a>Azure Data Lake Store-ban tárolt adatok védelme
 Adatok védelme az Azure Data Lake Store egy három lépéses megközelítés.
@@ -150,7 +150,7 @@ Biztonsági csoportok hozzáférés-vezérlési listák eltávolítja az Azure D
    
     ![Engedélyeket csoportosításához](./media/data-lake-store-secure-data/adl.remove.acl.png "csoportosításához engedélyek hozzárendelése")
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 * [Az Azure Data Lake Store áttekintése](data-lake-store-overview.md)
 * [Adatok másolása az Azure Storage Blobs Data Lake Store-bA](data-lake-store-copy-data-azure-storage-blob.md)
 * [Az Azure Data Lake Analytics használata a Data Lake Store-ral](../data-lake-analytics/data-lake-analytics-get-started-portal.md)

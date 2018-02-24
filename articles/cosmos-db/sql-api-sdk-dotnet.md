@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 02/12/2018
+ms.date: 02/21/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 796a455ffb906a47ab4ac9ae069537b0d7a31156
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: b9cf32ed54b831d12b9e511ab70f017991f359a6
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="azure-cosmos-db-net-sdk-for-sql-api-download-and-release-notes"></a>Az Azure Cosmos DB .NET SDK API-SQL: Töltse le és a kibocsátási megjegyzések
 > [!div class="op_single_selector"]
@@ -45,7 +45,7 @@ ms.lasthandoff: 02/13/2018
 
 <tr><td>**Minták**</td><td>[.NET-Kódminták](sql-api-dotnet-samples.md)</td></tr>
 
-<tr><td>Első lépések</td><td>[Ismerkedés az Azure Cosmos DB .NET SDK-val](sql-api-get-started.md)</td></tr>
+<tr><td>**Első lépések**</td><td>[Ismerkedés az Azure Cosmos DB .NET SDK-val](sql-api-get-started.md)</td></tr>
 
 <tr><td>**Webes alkalmazás oktatóanyag**</td><td>[Webalkalmazás fejlesztése a Azure Cosmos DB](sql-api-dotnet-application.md)</td></tr>
 
@@ -53,6 +53,10 @@ ms.lasthandoff: 02/13/2018
 </table></br>
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
+### <a name="a-name12021202"></a><a name="1.20.2"/>1.20.2
+
+* Rögzített időszakos SessionConsistency versenyhelyzet lépett fel.
+
 ### <a name="a-name12011201"></a><a name="1.20.1"/>1.20.1
 
 * Rögzített regressziós ahol FeedOptions.MaxItemCount = -1 egy System.ArithmeticException kivételt okozott: méretet a rendszer negatív.
@@ -285,6 +289,7 @@ A szolgáltatás bármely Azure Cosmos DB kivont SDK használatával kérelmeket
 
 | Verzió | Kiadás dátuma | Kivezetési dátum |
 | --- | --- | --- |
+| [1.20.2](#1.20.2) |2018. február 21. |--- |
 | [1.20.1](#1.20.1) |2018. február 05. |--- |
 | [1.19.1](#1.19.1) |2017. november 16. |--- |
 | [1.19.0](#1.19.0) |2017. november 10. |--- |

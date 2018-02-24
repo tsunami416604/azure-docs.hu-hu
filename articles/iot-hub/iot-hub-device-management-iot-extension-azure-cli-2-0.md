@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/16/2018
 ms.author: menchi
-ms.openlocfilehash: 760a6a30513308aa59c5e253e3b91e28cf9e3241
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: e83aa590cc41abcd661e6f0fef450833c816dac4
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="use-the-iot-extension-for-azure-cli-20-for-azure-iot-hub-device-management"></a>Az Azure CLI 2.0 IoT bővítményt használja Azure IoT Hub eszközkezeléshez
 
@@ -66,21 +66,21 @@ Azure CLI 2.0 és az IoT-bővítmény futtatása az Azure CLI 2.0 különböző 
 - Az IoT-bővítményének telepítése. A legegyszerűbb módszer `az extension add --name azure-cli-iot-ext`. [Az IoT-bővítmény fontos](https://github.com/Azure/azure-iot-cli-extension/blob/master/README.md) többféle módon, a bővítmény telepítéséhez ismerteti.
 
 
-## <a name="login-to-your-azure-account"></a>Jelentkezzen be az Azure-fiókjával
+## <a name="log-in-to-your-azure-account"></a>Jelentkezzen be az Azure-fiókjával
 
-Bejelentkezés az Azure-fiókjával a következő parancs futtatásával:
+Jelentkezzen be az Azure-fiókjával a következő parancs futtatásával:
 
 ```bash
 az login
 ```
 
-## <a name="use-the-iot-extension-for-azure-cli-20-with-direct-methods"></a>Az Azure CLI 2.0 IoT bővítményt használja a közvetlen módszer
+## <a name="direct-methods"></a>Közvetlen metódusok
 
 ```bash
 az iot hub invoke-device-method --device-id <your device id> --hub-name <your hub name> --method-name <the method name> --method-payload <the method payload>
 ```
 
-## <a name="use-the-iot-extension-for-azure-cli-20-with-twins-desired-properties"></a>Az IoT-bővítmény használja az Azure CLI 2.0 iker a kívánt tulajdonságokkal
+## <a name="device-twin-desired-properties"></a>A két szükséges tulajdonságai
 
 Állítsa be a kívánt tulajdonság intervallumát 3000 = a következő parancs futtatásával:
 
@@ -90,7 +90,7 @@ az iot hub device-twin update -n <your hub name> -d <your device id> --set prope
 
 Ez a tulajdonság elolvashatja az eszközről.
 
-## <a name="use-the-iot-extension-for-azure-cli-20-with-twins-reported-properties"></a>Az IoT-bővítmény használja az Azure CLI 2.0 iker által jelentett tulajdonságokkal
+## <a name="device-twin-reported-properties"></a>A két eszköz jelentett tulajdonságai
 
 Az eszköz jelentett tulajdonságait olvassa be a következő parancs futtatásával:
 
@@ -100,7 +100,7 @@ az iot hub device-twin update -n <your hub name> -d <your device id> --set prope
 
 A tulajdonságok egyike $metadata. az eszköz megjelenítheti az utolsó $lastUpdated küld vagy üzenetet kap.
 
-## <a name="use-the-iot-extension-for-azure-cli-20-with-twins-tags"></a>Az IoT-bővítmény használja az Azure CLI 2.0 iker tartozó címkékkel
+## <a name="device-twin-tags"></a>Eszköz iker címkék
 
 A címkéket és az eszköz Tulajdonságok megjelenítése a következő parancs futtatásával:
 
@@ -114,7 +114,7 @@ A mező szerepkör hozzáadása = a hőmérséklet és a páratartalom az eszkö
 az iot hub device-twin update --hub-name <your hub name> --device-id <your device id> --set tags = '{"role":"temperature&humidity"}}'
 ```
 
-## <a name="use-the-iot-extension-for-azure-cli-20-with-device-twins-queries"></a>Az IoT-bővítmény használja az Azure CLI 2.0 eszköz twins lekérdezések
+## <a name="device-twin-queries"></a>Eszköz iker lekérdezések
 
 Eszközök a szerepkör címkével ellátott lekérdezése = "a hőmérséklet és a páratartalom" a következő parancs futtatásával:
 

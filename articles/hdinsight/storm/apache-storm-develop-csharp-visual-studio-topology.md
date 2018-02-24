@@ -9,18 +9,19 @@ editor: cgronlun
 tags: azure-portal
 ms.assetid: 380d804f-a8c5-4b20-9762-593ec4da5a0d
 ms.service: hdinsight
-ms.custom: hdinsightactive
+ms.custom: 
 ms.devlang: java
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 11/27/2017
 ms.author: larryfr
-ms.openlocfilehash: d777d467b3f0d4ef6101dffa551ec5c85feb209c
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ROBOTS: NOINDEX
+ms.openlocfilehash: c89556cf66526f793ab81383e205ff45075385a3
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="develop-c-topologies-for-apache-storm-by-using-the-data-lake-tools-for-visual-studio"></a>C#-topológiák fejlesztése az Apache Storm által a Data Lake tools for Visual Studio használatával
 
@@ -33,7 +34,7 @@ Azt is megtudhatja, hogyan C# és Java összetevők használó hibrid topológi�
 
 Egy Linux-alapú fürttel C#-topológiák használatához frissítenie kell a Microsoft.SCP.Net.SDK NuGet-csomagot a projekt által használt 0.10.0.6 verzió vagy újabb. A csomag verziójának a HDInsightban telepített Storm főverziójával is egyeznie kell.
 
-| HDInsight-verzió | A Storm verzióját | SCP.NET verzió | Alapértelmezett monó verzió |
+| HDInsight-verzió | A Storm verzióját | SCP.NET version | Alapértelmezett monó verzió |
 |:-----------------:|:-------------:|:---------------:|:--------------------:|
 | 3.3 |0.10.x |0.10.x.x</br>(csak a Windows-alapú HDInsight) | NA |
 | 3.4 | 0.10.0.x | 0.10.0.x | 3.2.8 |
@@ -42,9 +43,6 @@ Egy Linux-alapú fürttel C#-topológiák használatához frissítenie kell a Mi
 
 > [!IMPORTANT]
 > A Linux-alapú fürtök C#-topológiáinak a .NET 4.5-öt kell használnia, és a Mono segítségével futhatnak a HDInsight-fürtön. Ellenőrizze [monó kompatibilitási](http://www.mono-project.com/docs/about-mono/compatibility/) az esetleges kompatibilitási problémák.
-
-> [!WARNING]
-> Ha német nyelvű verziót SCP.NET projektek elkészítése során problémákat tapasztal 1.0.0.x, forduljon a Microsoft támogatási szolgálatához segítségért.
 
 ## <a name="install-visual-studio"></a>A Visual Studio telepítése
 
@@ -110,7 +108,7 @@ namespace ConsoleApplication2
 
 A Data Lake tools for Visual Studio adja meg a következő sablonokat:
 
-| Projekttípus | Azt mutatja be |
+| Projekt típusa | Azt mutatja be |
 | --- | --- |
 | Storm-alkalmazás |Egy üres Storm-topológia projektet. |
 | A Storm Azure SQL Writer minta |Megtudhatja, hogyan lehet írni az Azure SQL Database. |
@@ -124,7 +122,7 @@ A Data Lake tools for Visual Studio adja meg a következő sablonokat:
 | A Storm-minta |Alapszintű word-count topológiához. |
 
 > [!WARNING]
-> Nem minden sablonok a Linux-alapú hdinsight eszközzel fog működni. A sablonok által használt Nuget-csomagok nem lehet monó kompatibilis. Ellenőrizze a [monó kompatibilitási](http://www.mono-project.com/docs/about-mono/compatibility/) dokumentum, és használja a [.NET hordozhatóság Analyzer](../hdinsight-hadoop-migrate-dotnet-to-linux.md#automated-portability-analysis) potenciális problémák azonosításához.
+> Nem minden sablonok Linux-alapú HDInsight működik. A sablonok által használt NuGet-csomagok nem lehet monó kompatibilis. Ellenőrizze a [monó kompatibilitási](http://www.mono-project.com/docs/about-mono/compatibility/) dokumentum, és használja a [.NET hordozhatóság Analyzer](../hdinsight-hadoop-migrate-dotnet-to-linux.md#automated-portability-analysis) potenciális problémák azonosításához.
 
 A jelen dokumentumban leírt lépések segítségével a alapszintű Storm-alkalmazás projekt típus olyan topológiák létrehozását is.
 
@@ -169,7 +167,7 @@ Ezt példatopológia összetevő, és együttműködik Storm on HDInsight 3.5, l
 
    * **Sikertelen** (csak tranzakciós topológia): rekordokat, amelyek vannak sikertelen – a feldolgozás a topológia más összetevők kezeli. A sikertelen metódusának lehetővé teszi, hogy újra dolgozhatók újra létrehozza a rekordban.
 
-2. Cserélje le a tartalmát a **Spout** osztály a következő szöveggel. A spout véletlenszerűen azokat a topológia bocsát ki egy mondat helyett szerepel.
+2. Cserélje le a tartalmát a **Spout** osztály a következő szöveggel: A spout véletlenszerűen megfelelően kibocsát egy mondat azokat a topológia.
 
     ```csharp
     private Context ctx;
@@ -290,7 +288,7 @@ Ezt példatopológia összetevő, és együttműködik Storm on HDInsight 3.5, l
     }
     ```
 
-5. Nyissa meg **Counter.cs**, és cserélje ki a osztály tartalmát a következőre:
+5. Nyissa meg **Counter.cs**, és cserélje ki a osztály tartalmát az alábbira:
 
     ```csharp
     private Context ctx;
@@ -352,7 +350,7 @@ A grafikus, amely meghatározza, hogyan a közötti adatáramlás összetevők s
 
 A mondatok a spout a kibocsátott, és továbbítja őket a elválasztó bolt példányai. Az elválasztó bolt bontja szavakat, amely továbbítja őket a számláló bolt a mondatok.
 
-Szószámot helyileg használatban van a teljesítményszámláló-példány, mert azt szeretnénk, győződjön meg arról, hogy szavak flow ugyanazon teljesítményszámláló bolt-példányra végzi el. Minden példány nyomon követi a szavakat. Az elválasztó bolt nem tart fenn, mert tényleg nem számít, az elválasztó példányok kap mely mondat helyett szerepel.
+Szószámot helyileg használatban van a teljesítményszámláló-példány, mert győződjön meg arról, hogy szavak flow ugyanazon teljesítményszámláló bolt példányra szeretné. Minden példány nyomon követi a szavakat. Az elválasztó bolt nem tart fenn, mert tényleg nem számít, az elválasztó példányok kap mely mondat helyett szerepel.
 
 Nyissa meg **Program.cs**. A fontos módszer **GetTopologyBuilder**, amely segítségével meghatározhatja, hogy a topológia elküldött Storm legyen. Cserélje le a tartalmát **GetTopologyBuilder** a fentiekben említett topológia végrehajtásához a következő kóddal:
 
@@ -472,7 +470,7 @@ Példa egy hibrid topológia, hozzon létre egy projektet, és jelölje ki **Sto
   > Ebben a verzióban is bemutatja, hogyan használják ki egy szövegfájlból Clojure kód egy Java-összetevő.
 
 
-Váltás a topológia, amikor a projekthez használt, egyszerűen helyezze át a `[Active(true)]` nyilatkozatot, így a topológia szeretné használni, a fürt való továbbítás előtt.
+Váltás a topológia, amikor a projekthez használt, helyezze át a `[Active(true)]` nyilatkozatot, így a topológia szeretné használni, a fürt való továbbítás előtt.
 
 > [!NOTE]
 > A projekt részeként biztosított összes a Java-fájlokat, amelyek szükségesek a **JavaDependency** mappa.
@@ -703,7 +701,7 @@ Egyszerűen a topológia telepíthető a fürtre, néhány esetben azonban szük
 
 ### <a name="log-information"></a>Naplóadatok
 
-Könnyen bejelentkezhet információkat a topológia összetevői használatával `Context.Logger`. Például a következő létrehoz egy tájékoztató naplóbejegyzés:
+Könnyen bejelentkezhet információkat a topológia összetevői használatával `Context.Logger`. Például a következő parancs létrehoz egy tájékoztató naplóbejegyzés:
 
 ```csharp
 Context.Logger.Info("Component started");
@@ -746,7 +744,7 @@ Ha a `hdinsight-scpwebapi.out` a napló tartalmaz egy `FileNotFoundException`, e
 * A JDK nincs a fejlesztési környezet elérési útját. Győződjön meg arról, hogy a JDK telepítve van-e a fejlesztési környezetet, és hogy `%JAVA_HOME%/bin` az elérési út része.
 * Java függősége hiányzik. Ellenőrizze, hogy a küldése részeként beleértve a minden szükséges .jar fájlt.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Például az adatok feldolgozása az Event Hubs, [feldolgozni az eseményeket az Azure Event Hubs a HDInsight alatt futó Storm](apache-storm-develop-csharp-event-hub-topology.md).
 

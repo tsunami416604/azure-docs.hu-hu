@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/28/2017
-ms.openlocfilehash: 16c72f8c22307a124fdb670aabca771084c0d1ec
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: aaa9705aed59b5cf78100eda9997bb1ca74845b9
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="azure-machine-learning-experimentation-service-configuration-files"></a>Az Azure Machine Learning kísérletezhet szolgáltatás konfigurációs fájlok
 
@@ -36,7 +36,7 @@ Ez a fájl egy [conda környezet fájl](https://conda.io/docs/using/envs.html#cr
 
 Ebben a fájlban adja meg, amelyet a parancsfájl végrehajtása a Python-csomagokat. Az Azure ML kísérletezhet szolgáltatás a conda környezet a Docker-lemezképben szerint függőségeinek listájának hoz létre. A csomagok listáját itt a-végrehajtó motor elérhetőnek kell lennie. Éppen ezért csomagok kell szerepel csatornák, mint:
 
-* [continuum.IO](https://anaconda.org/conda-forge/repo)
+* [continuum.io](https://anaconda.org/conda-forge/repo)
 * [PyPI](https://pypi.python.org/pypi)
 * a nyilvánosan elérhető végponton (URL)
 * vagy egy helyi fájl elérési útját
@@ -143,7 +143,7 @@ _\<számítási cél neve > .compute_ fájl határozza meg a számítási cél a
 
 **sharedVolumes**: jelezze, hogy végrehajtó motorja kell használnia a Docker jelző megosztott kötet szolgáltatást, hogy küldje el a projektfájlok oda-vissza. Ez a jelző engedélyezve van a rendelkező felgyorsíthatja a végrehajtási óta Docker férhetnek hozzá projektek közvetlenül nélkül másolja őket. Célszerű beállítani _hamis_ hogy a Docker-motorhoz fut a Windows mennyiségi megosztása lehet, hogy a Windows a Docker flaky óta. Állítsa az értékét _igaz_ macOS vagy Linux rendszeren fut. Ha.
 
-**nvidiaDocker**: ezt a jelzőt, ha beállítása _igaz_, ismerteti az Azure ML kísérletezhet szolgáltatás használatára _nvidia-docker_ parancsot, szemben a normál _docker_ parancs, a Docker lemezkép elindításához. A _nvidia-docker_ motor lehetővé teszi, hogy a Docker-tároló hozzáférés GPU hardverre. A beállításra akkor szükség, ha azt szeretné, hogy a Docker-tároló GPU végrehajtási futtatásához. Csak a Linux-állomáshoz támogatja _nvidia-docker_. Például az Azure Linux-alapú DSVM részét képező _nvidia-docker_. _NVIDIA-docker_ mostantól nem támogatott a Windows.
+**nvidiaDocker**: ezt a jelzőt, ha beállítása _igaz_, ismerteti az Azure ML kísérletezhet szolgáltatás használatára _nvidia-docker_ parancsot, szemben a normál _docker_parancs, a Docker lemezkép elindításához. A _nvidia-docker_ motor lehetővé teszi, hogy a Docker-tároló hozzáférés GPU hardverre. A beállításra akkor szükség, ha azt szeretné, hogy a Docker-tároló GPU végrehajtási futtatásához. Csak a Linux-állomáshoz támogatja _nvidia-docker_. Például az Azure Linux-alapú DSVM részét képező _nvidia-docker_. _NVIDIA-docker_ mostantól nem támogatott a Windows.
 
 **nativeSharedDirectory**: Ez a tulajdonság meghatározza a alapkönyvtárának (például: _~/.azureml/share/_) számítási egyazon célobjektum futó fájlok is menteni ahhoz, hogy oszthatók meg. Ha ezt a beállítást használják egy Docker-tároló használatakor _sharedVolumes_ , meg kell igaz értékre. Ellenkező esetben végrehajtása meghiúsul.
 
@@ -166,8 +166,8 @@ _"az ml kísérlet submit foo.runconfig"_ automatikusan futtatja a parancsot _my
 **Környezeti változók**: Ez a szakasz lehetővé teszi a felhasználók a környezeti változókat beállítani, azok futtatása. Felhasználó megadhatja a környezeti változók név-érték párok használatával a következő formátumban:
 ```
 EnvironmentVariables:
-"EXAMPLE_ENV_VAR1": "Example Value1"
-"EXAMPLE_ENV_VAR2": "Example Value2"
+  "EXAMPLE_ENV_VAR1": "Example Value1"
+  "EXAMPLE_ENV_VAR2": "Example Value2"
 ```
 
 Ezek a környezeti változók felhasználói kód érhetők el. Például a phyton kódot kiírja a "EXAMPLE_ENV_VAR" nevű környezeti változó
@@ -210,5 +210,5 @@ A fenti helyettesítés alapján, a következő példakód most olvassa be az "m
 ```
 df = datasource.load_datasource('mylocal.dsource')
 ```
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információ [kísérletezhet szolgáltatáskonfiguráció](experimentation-service-configuration.md).

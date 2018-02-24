@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/03/2017
+ms.date: 02/22/2018
 ms.author: jgao
-ms.openlocfilehash: 4bd7f5b584030f9c1554b56895493837d2eac357
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 3577b06bfb23457c17099902a7ac9fb8eb6e3087
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="optimize-hive-queries-in-azure-hdinsight"></a>Az Azure HDInsight Hive-lekérdezések optimalizálása
 
@@ -177,7 +177,7 @@ Nincsenek további optimalizálás módszereket is fontolóra veheti, például:
 * **Csatlakozás optimalizálási:** struktúrájának lekérdezés-végrehajtás javítsa a táblákra és felhasználói mutatók szükségességének tervezése az optimális. További információkért lásd: [optimalizálási csatlakozás](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+JoinOptimization#LanguageManualJoinOptimization-JoinOptimization).
 * **Növelje a szűkítő**.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben a cikkben megtanulta rendelkezik Hive lekérdezés több közös optimalizálási módszert. További tudnivalókért tekintse meg a következő cikkeket:
 
 * [Apache Hive hdinsight használata](hadoop/hdinsight-use-hive.md)

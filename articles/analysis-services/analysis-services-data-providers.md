@@ -13,37 +13,37 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 02/21/2018
+ms.date: 02/22/2018
 ms.author: owend
-ms.openlocfilehash: 2149330eb711fea76a144f5ec748ae6760c7746a
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: e5159f8c6e8c271230151f71bf3057d07fc75c21
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="client-libraries-for-connecting-to-azure-analysis-services"></a>Ügyfél-könyvtárakban csatlakozás Azure Analysis Services szolgáltatáshoz
 
 Ügyfél könyvtárak olyan ügyfél-alkalmazások és eszközök Analysis Services-kiszolgálókhoz való kapcsolódáshoz szükséges. 
 
-## <a name="download-the-latest-client-libraries"></a>Töltse le a legfrissebb klienskódtárak segítségével  
+## <a name="download-the-latest-client-libraries-windows-installer"></a>Töltse le a legfrissebb klienskódtárak segítségével (Windows Installer)  
 
 |Letöltés  |Verzió  | 
 |---------|---------|
 |[MSOLAP (amd64)](https://go.microsoft.com/fwlink/?linkid=829576)    |    15.0.300.129.01      |
 |[MSOLAP (x86)](https://go.microsoft.com/fwlink/?linkid=829575)     |    15.0.300.129.01      |
-|[AMO](https://go.microsoft.com/fwlink/?linkid=829578)     |   15.0.300.129.01      |
-|[ADOMD](https://go.microsoft.com/fwlink/?linkid=829577)     |    115.0.300.129.01      |
+|[AMO](https://go.microsoft.com/fwlink/?linkid=829578)     |   15.0.2      |
+|[ADOMD](https://go.microsoft.com/fwlink/?linkid=829577)     |    15.0.2      |
 
-## <a name="amo-and-adomd-on-nuget"></a>AMO és a NuGet ADOMD
+## <a name="amo-and-adomd-nuget-packages"></a>AMO és ADOMD (NuGet-csomagok)
 
-Analysis Services Management Objects (AMO) és ADOMD ügyfélkódtáraival érhetők el a telepítésre alkalmas csomag [NuGet.org](https://www.nuget.org/). 
+Analysis Services Management Objects (AMO) és ADOMD ügyfélkódtáraival érhetők el a telepítésre alkalmas csomag [NuGet.org](https://www.nuget.org/). Ajánlott áttelepítette NuGet hivatkozások használata a Windows Installer helyett. 
 
 |Csomag  |Verzió  | 
 |---------|---------|
 |[AMO](https://www.nuget.org/packages/Microsoft.AnalysisServices.retail.amd64/)    |    15.0.2      |
 |[ADOMD](https://www.nuget.org/packages/Microsoft.AnalysisServices.AdomdClient.retail.amd64/)     |   15.0.2      |
 
-Ajánlott áttelepítette NuGet hivatkozások MSI-telepítő használata helyett. 
+
 
 NuGet csomag szerelvények AssemblyVersion hajtsa végre a szemantikai versioning: fő. KISEBB. JAVÍTÁS. NuGet-hivatkozásokat a várt verzió betölteni, még akkor is, ha egy másik verziója található a GAC-ban (MSI-telepítés eredő). JAVÍTÁS minden egyes kiadásához. AMO és ADOMD verziók tárolják a szinkronizálás.
 
@@ -67,9 +67,7 @@ A Microsoft ügyfél alkalmazások, például a Power BI Desktop és az Excel te
 
 ### <a name="amo"></a>AMO  
 
- AMO egy felügyelt ügyféloldali kódtár használt kiszolgálók felügyelete és adatok definíciójával. Eszközök és az ügyfélalkalmazások által használt, és telepítve. Például az SQL Server Management Studio (SSMS) AMO Analysis Services elérésére használja.  
-  
- Használja az AMO kapcsolat általában minimális, amely `“data source=\<servername>”`. A kapcsolat létrejötte után az API használatával az adatbázis-gyűjtemények és a főbb objektum használatát. Az SSDT, mind az SSMS csatlakozhatnak AMO egy Analysis Services-példányon.  
+ AMO egy felügyelt ügyféloldali kódtár használt kiszolgálók felügyelete és adatok definíciójával. Eszközök és az ügyfélalkalmazások által használt, és telepítve. Például az SQL Server Management Studio (SSMS) AMO Analysis Services elérésére használja. Használja az AMO kapcsolat általában minimális, amely `“data source=\<servername>”`. A kapcsolat létrejötte után az API használatával az adatbázis-gyűjtemények és a főbb objektum használatát. Az SSDT, mind az SSMS csatlakozhatnak AMO egy Analysis Services-példányon.  
 
   
 ### <a name="adomd"></a>ADOMD
@@ -83,21 +81,21 @@ A Microsoft ügyfél alkalmazások, például a Power BI Desktop és az Excel te
   
 ### <a name="oleddb-msolap"></a>OLEDDB (MSOLAP)  
   
-1.  Nyissa meg a következőt: `C:\Program Files\Microsoft Analysis Services\AS OLEDB\140`. Ha egynél több mappát, válassza ki a nagyobb számot.
+1.  Nyissa meg a "C:\Program Files\Microsoft Analysis Services\AS OLEDB\. Ha egynél több mappát, válassza ki a nagyobb számot.
   
-2.  Kattintson a jobb gombbal **msolap.dll** > **tulajdonságok** > **részletek**. Ha a dll-fájl neve msolap140.dll, régebbi, mint a legújabb verzióra, és kell frissíteni.
+2.  Kattintson a jobb gombbal **msolap.dll** > **tulajdonságok** > **részletek**. Ha a fájlnév msolap140.dll, a régebbi, mint a legújabb verzióra, és kell frissíteni.
     
     ![Ügyfél a szalagtár adatait](media/analysis-services-data-providers/aas-msolap-details.png)
     
   
 ### <a name="amo"></a>AMO
 
-1. Nyissa meg a következőt: `C:\Windows\Microsoft.NET\assembly\GAC_MSIL\Microsoft.AnalysisServices\v4.0_14.0.0.0__89845dcd8080cc91`.
+1. Nyissa meg a következőt: `C:\Windows\Microsoft.NET\assembly\GAC_MSIL\Microsoft.AnalysisServices\`. Ha egynél több mappát, válassza ki a nagyobb számot.
 2. Kattintson a jobb gombbal **Microsoft.AnalysisServices** > **tulajdonságok** > **részletek**.  
 
 ### <a name="adomd"></a>ADOMD
 
-1. Nyissa meg a következőt: `C:\Windows\Microsoft.NET\assembly\GAC_MSIL\Microsoft.AnalysisServices.AdomdClient\v4.0_14.0.0.0__89845dcd8080cc91`.
+1. Nyissa meg a következőt: `C:\Windows\Microsoft.NET\assembly\GAC_MSIL\Microsoft.AnalysisServices.AdomdClient\`. Ha egynél több mappát, válassza ki a nagyobb számot.
 2. Right-click **Microsoft.AnalysisServices.AdomdClient** > **Properties** > **Details**.  
 
 

@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/03/2017
+ms.date: 02/22/2018
 ms.author: jgao
-ms.openlocfilehash: 1d3dba645acf51a7dcdd42fa23c82db962244b62
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 08f71340fea7424262fc9c549351bd50bcfcafe2
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="create-hbase-clusters-on-hdinsight-in-azure-virtual-network"></a>Hozzon létre HBase-fürtökkel a HDInsight az Azure-beli virtuális hálózathoz
 Útmutató az Azure HDInsight HBase-fürtök létrehozása egy [Azure Virtual Network][1].
@@ -44,7 +44,7 @@ Ebben a szakaszban egy Linux-alapú HBase fürt létrehozása a függő Azure St
 > Néhány tulajdonság kódolva a sablonba. Példa:
 >
 > * **Hely**: USA keleti régiója 2. régiója
-> * **Fürt verziószáma**: 3.6.
+> * **Fürt verziója**: 3.6
 > * **A fürt feldolgozó csomópontok száma**: 2. régiója
 > * **Alapértelmezett tárfiók**: egy egyedi karakterlánc
 > * **Virtuális hálózati név**: &lt;fürt neve >-hálózatok
@@ -91,7 +91,7 @@ Az új HBase fürtöt használatának megkezdése előtt, akkor az eljárásokka
 
    * Egy webes böngésző segítségével az Ambari hívást:
 
-     Keresse meg a https://&lt;ClusterName >.azurehdinsight.net/api/v1/clusters/&lt;ClusterName > / üzemeltető? minimal_response = true. A JSON-fájl, a DNS-utótagok változik.
+     Browse to https://&lt;ClusterName>.azurehdinsight.net/api/v1/clusters/&lt;ClusterName>/hosts?minimal_response=true. A JSON-fájl, a DNS-utótagok változik.
    * Az Ambari webhelyet használja:
 
      1. Keresse meg a https://&lt;ClusterName >. azurehdinsight.net.
@@ -243,15 +243,15 @@ Ezeket az információkat a Java-alkalmazások használatához hajtsa végre a l
 >
 >
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben az oktatóanyagban megtudta, hogyan hozhat létre HBase-fürtöt. További tudnivalókért lásd:
 
 * [Első lépései a hdinsight eszközzel](../hadoop/apache-hadoop-linux-tutorial-get-started.md)
 * [Üres peremhálózati csomópontok használata a Hdinsightban](../hdinsight-apps-use-edge-node.md)
 * [HBase-replikálás konfigurálása a HDInsightban](apache-hbase-replication.md)
 * [Hdinsight Hadoop-fürtök létrehozása](../hdinsight-hadoop-provision-linux-clusters.md)
-* [A HBase a Hadoop HDInsight használatának megkezdése](./apache-hbase-tutorial-get-started-linux.md)
-* [Virtual Network áttekintése](../../virtual-network/virtual-networks-overview.md)
+* [A HBase és a Hadoop használatának első lépései a HDInsightban](./apache-hbase-tutorial-get-started-linux.md)
+* [A Virtual Network áttekintése](../../virtual-network/virtual-networks-overview.md)
 
 [1]: http://azure.microsoft.com/services/virtual-network/
 [2]: http://technet.microsoft.com/library/ee176961.aspx

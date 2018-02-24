@@ -27,13 +27,13 @@ UnifiedAgent.exe /Role <MS|MT> /InstallLocation <Install Location> /Platform “
 
 | Paraméter|Típus|Leírás|Lehetséges értékek|
 |-|-|-|-|
-|/ Szerepkör|Kötelező|Megadja, hogy kell telepíteni a mobilitási szolgáltatás (MS), vagy MasterTarget(MT) kell telepíteni.|MS </br> MT|
-|/InstallLocation|Optional|Hely, ahol telepítve van|A számítógép bármely mappája|
-|/ Platform|Kötelező|Adja meg a platform, amelyen a mobilitási szolgáltatás található első </br> </br>- **VMware** : használja ezt az értéket, ha egy virtuális gépen futó mobilitási szolgáltatás telepít *VMware vSphere ESXi-gazdagépek*, *Hyper-V-gazdagépek* és *fizikai kiszolgálók* </br> - **Azure** : használja ezt az értéket, ha telepíti az ügynököt egy Azure IaaS virtuális Gépen| VMware </br> Azure|
-|/ Beavatkozás nélküli|Optional|Meghatározza, hogy a telepítő futtatásához csendes módban| NA|
+|/ Szerepkör|Kötelező|Megadja, hogy a mobilitási szolgáltatás (MS) kell telepíteni, vagy MasterTarget (MT) kell telepíteni.|MS </br> MT|
+|/InstallLocation|Optional|Hely, ahol telepítve van.|A számítógép bármely mappája|
+|/Platform|Kötelező|Adja meg azt a platformot, amelyre telepítve van. </br> </br>- **VMware**: használja ezt az értéket, ha a mobilitási szolgáltatás telepítése a futó virtuális gép *VMware vSphere ESXi-gazdagépek*, *Hyper-V-gazdagépek*, és *fizikai kiszolgálók*. </br> - **Azure**: használja ezt az értéket, ha az ügynök telepítése egy Azure IaaS virtuális gépen. | VMware </br> Azure|
+|/Silent|Optional|Meghatározza, hogy a telepítő futtatásához csendes módban.| –|
 
 >[!TIP]
-> A telepítési naplókban találhatók %ProgramData%\ASRSetupLogs\ASRUnifiedAgentInstaller.log
+> A telepítési naplókban találhatók % ProgramData%\ASRSetupLogs\ASRUnifiedAgentInstaller.log.
 
 #### <a name="mobility-service-registration-command-line-arguments"></a>Parancssori argumentumok a mobilitási szolgáltatás regisztrációs
 
@@ -44,9 +44,9 @@ UnifiedAgentConfigurator.exe  /CSEndPoint <CSIP> /PassphraseFilePath <Passphrase
 
   | Paraméter|Típus|Leírás|Lehetséges értékek|
   |-|-|-|-|
-  |/ CSEndPoint |Kötelező|A konfigurációs kiszolgáló IP-címe| Bármilyen érvényes IP-cím|
+  |/CSEndPoint |Kötelező|A konfigurációs kiszolgáló IP-címe| Bármilyen érvényes IP-cím|
   |/PassphraseFilePath|Kötelező|A hozzáférési kód helye |Bármilyen érvényes UNC vagy helyi elérési útja|
 
 
 >[!TIP]
-> A AgentConfiguration naplók %ProgramData%\ASRSetupLogs\ASRUnifiedAgentConfigurator.log alatt találhatók
+> A Gazdagépügynök-konfigurálási naplók % ProgramData%\ASRSetupLogs\ASRUnifiedAgentConfigurator.log alatt található.

@@ -8,22 +8,23 @@ manager: jhubbard
 editor: cgronlun
 ms.assetid: 67f9d08c-eea0-401b-952b-db765655dad0
 ms.service: hdinsight
-ms.custom: hdinsightactive
+ms.custom: 
 ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 11/27/2017
 ms.author: larryfr
-ms.openlocfilehash: 9ad160377a8779ae917e6fd2d605ee01b12c3e2a
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ROBOTS: NOINDEX
+ms.openlocfilehash: fe1cf3eab1f0ca930b516e4ab44f1e2439cb3e07
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="process-events-from-azure-event-hubs-with-storm-on-hdinsight-c"></a>Az Azure Event Hubs (C#) futó Storm eseményeinek
 
-Megismerheti az Azure Event Hubs a HDInsight alatt futó Apache Storm. Ez a dokumentum olvasása és írása az adatok Evbent hubs használja a C# Storm-topológia
+Megismerheti az Azure Event Hubs a HDInsight alatt futó Apache Storm. Ez a dokumentum olvasása és írása az adatokat az Event Hubs használ a C# Storm-topológia
 
 > [!NOTE]
 > Ez a projekt Java verziója: [feldolgozni az eseményeket az Azure Event Hubs (Java) futó Storm](https://azure.microsoft.com/resources/samples/hdinsight-java-storm-eventhub/).
@@ -36,9 +37,6 @@ A jelen dokumentumban leírt lépések SCP.NET, a NuGet-csomagot, amely megkönn
 > A jelen dokumentumban leírt lépések a Visual Studio Windows fejlesztői környezetre támaszkodnak, amíg a lefordított projekt küldheti el Storm on HDInsight-fürt által használt Linux. Csak a Linux-alapú fürtök létrehozása után 28 2016 októberétől kezdve, SCP.NET topológiákat támogatja.
 
 HDInsight 3.4 és nagyobb használata monó C#-topológiák futtatásához. Ebben a dokumentumban bemutatott példában a HDInsight 3.6 működik. Ha a HDInsight a saját .NET megoldások létrehozását tervezi, akkor ellenőrizze a [monó kompatibilitási](http://www.mono-project.com/docs/about-mono/compatibility/) lehetséges incompatibilities dokumentumában.
-
-> [!WARNING]
-> Ha német nyelvű verziót SCP.NET projektek elkészítése során problémákat tapasztal 1.0.0.x, forduljon a Microsoft támogatási szolgálatához segítségért.
 
 ### <a name="cluster-versioning"></a>Fürt versioning
 
@@ -138,15 +136,15 @@ Töltse le az Event Hubs spout, és az összetevőt erről a boltok [https://git
 
 Hozzon létre egy könyvtárat nevű `eventhubspout`, és mentse a fájlt a könyvtárba.
 
-## <a name="configure-event-hubs"></a>Az Event Hubs konfigurálása
+## <a name="configure-event-hubs"></a>Configure Event Hubs
 
 Az Event Hubs ebben a példában az adatforrást. A "Létrehoz egy eseményközpontot" szakaszában foglaltak [Bevezetés az Event Hubs használatába](../../event-hubs/event-hubs-create.md).
 
-1. Az eseményközpont létrehozása után megtekintheti a **EventHub** panel az Azure portál, majd válassza az **megosztott elérési házirendek**. Válassza ki **+ Hozzáadás** a következő házirendek hozzáadása:
+1. Az eseményközpont létrehozása után megtekintheti a **EventHub** az Azure portál, majd válassza a beállítások **megosztott elérési házirendek**. Válassza ki **+ Hozzáadás** a következő házirendek hozzáadása:
 
-   | Név | Engedélyek |
+   | Name (Név) | Engedélyek |
    | --- | --- |
-   | író |Küldés |
+   | szerkesztő |Küldés |
    | olvasó |Figyelés |
 
     ![Képernyőkép a fájlmegosztás hozzáférési házirendek ablak](./media/apache-storm-develop-csharp-event-hub-topology/sas.png)
@@ -227,7 +225,7 @@ A topológiák leállításához válassza ki az egyes topológia a **Storm-topo
 
 [!INCLUDE [delete-cluster-warning](../../../includes/hdinsight-delete-cluster-warning.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a dokumentumban rendelkezik megtudta, hogyan használja a Java Event hub spout, és a C#-topológiák adatait az Azure Event Hubs boltok. C#-topológiák létrehozásával kapcsolatos további tudnivalókért olvassa el a következőket:
 
