@@ -45,7 +45,7 @@
               href: azure-stack-vm-considerations.md
             - name: Virtuálisgép-lemezek kezelése
               href: azure-stack-manage-vm-disks.md
-        - name: Storage
+        - name: Tárolás
           items:
             - name: Áttekintés
               href: azure-stack-storage-overview.md
@@ -115,23 +115,27 @@
               href: azure-stack-deploy-template-powershell.md
             - name: Üzembe helyezés a Visual Studióval
               href: azure-stack-deploy-template-visual-studio.md
-- name: Referencia
+- name: Leírások
   items:
     - name: Azure Stack PowerShell
       href: /powershell/azure/azure-stack/overview?view=azurestackps-1.2.10
     - name: Azure Stack parancssori felület
       href: /cli/azure/?view=azure-cli-2017-03-09-profile
-- name: Kapcsolódó
+- name: Kapcsolódó témakörök
   items:
     - name: Az Azure Stack operátori dokumentációja
       href: /azure/azure-stack/
-- name: Erőforrások
+- name: További források
   items:
-    - name: Azure-ütemterv
-      href: 'https://azure.microsoft.com/roadmap/'
-    - name: MSDN-fórum
-      href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStack'
+    - name: Azure verem menetrend
+      href: 'https://azure.microsoft.com/roadmap/?tag=azure-stack'
+    - name: Azure verem MSDN fórum
+      href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStack'
+    - name: Az Azure verem dokumentációra vonatkozó visszajelzés
+      href: 'https://feedback.azure.com/forums/344565-azure-stack?category_id=160275'
     - name: Díjszabási információk
       href: 'https://azure.microsoft.com/overview/azure-stack/how-to-buy/'
     - name: Stack Overflow
       href: 'http://stackoverflow.com/questions/tagged/azure-stack'
+    - name: Képzés és tanúsítványok
+      href: 'https://docs.microsoft.com/azure/azure-stack/azure-stack-train-and-cert'

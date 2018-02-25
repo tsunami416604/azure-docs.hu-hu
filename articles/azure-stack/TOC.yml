@@ -57,8 +57,12 @@
         - name: Azure verem telepítési PKI-követelmények
           href: azure-stack-pki-certs.md
           items:
-            - name: PKI-tanúsítványok lekérése Azure Alkalmazásveremben üzembe
+            - name: Azure verem PKI-tanúsítványok beszerzése
               href: azure-stack-get-pki-certs.md
+            - name: Azure verem PKI-tanúsítványok előkészítése
+              href: prepare-pki-certs.md
+            - name: Azure verem PKI-tanúsítványok ellenőrzése
+              href: validate-pki-certs.md
         - name: Identitásintegráció
           href: azure-stack-integrate-identity.md
         - name: Az Azure verem regisztrálása
@@ -168,6 +172,10 @@
           href: azure-stack-security-foundations.md
         - name: Identitás
           items:
+            - name: Identitás áttekintése
+              href: azure-stack-identity-overview.md
+            - name: Identitás-architektúra
+              href: azure-stack-identity-architecture.md
             - name: Az RBAC kezelése
               href: azure-stack-manage-permissions.md
             - name: Felhasználók hozzáadása az Azure AD-hez
@@ -288,13 +296,15 @@
       href: /azure/azure-stack/user/
 - name: További források
   items:
-    - name: Azure-ütemterv
-      href: 'https://azure.microsoft.com/roadmap/'
-    - name: MSDN-fórum
-      href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStack'
+    - name: Azure verem menetrend
+      href: 'https://azure.microsoft.com/roadmap/?tag=azure-stack'
+    - name: Azure verem MSDN fórum
+      href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStack'
+    - name: Az Azure verem dokumentációra vonatkozó visszajelzés
+      href: 'https://feedback.azure.com/forums/344565-azure-stack?category_id=160275'
     - name: Díjszabási információk
       href: 'https://azure.microsoft.com/overview/azure-stack/how-to-buy/'
     - name: Stack Overflow
       href: 'http://stackoverflow.com/questions/tagged/azure-stack'
     - name: Képzés és tanúsítványok
-      href: azure-stack-train-and-cert.md
+      href: 'https://docs.microsoft.com/azure/azure-stack/azure-stack-train-and-cert'
