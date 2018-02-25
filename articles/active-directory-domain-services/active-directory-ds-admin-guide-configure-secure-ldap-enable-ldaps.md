@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/15/2017
+ms.date: 02/23/2018
 ms.author: maheshu
-ms.openlocfilehash: d55abe651f69e3539e7584b40a7aedf419bccda1
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: 8b6c1dec6f97311e5fb92f2adef8685b59cbeb2c
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2017
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="configure-secure-ldap-ldaps-for-an-azure-ad-domain-services-managed-domain"></a>Biztonságos LDAP (LDAPS) használatos az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz tartozó konfigurálása
 
@@ -113,7 +113,6 @@ Az alábbi táblázat mutatja be egy minta NSG-t is konfigurálhat, biztonságos
 ## <a name="troubleshooting"></a>Hibaelhárítás
 Ha sikerült csatlakozni a biztonságos LDAP a felügyelt tartományra, hajtsa végre a következő hibaelhárítási lépéseket:
 * Győződjön meg arról, hogy a kibocsátó lánc biztonságos LDAP tanúsítvány megbízható-e az ügyfélen. Választhatja a legfelső szintű hitelesítésszolgáltató hozzáadása a megbízható főtanúsítvány-tárolóba való a megbízhatósági kapcsolat létrehozása az ügyfélen.
-* Győződjön meg arról, hogy a biztonságos LDAP nem tanúsítványt egy köztes hitelesítésszolgáltatót, amely egy friss windows gépen alapértelmezés szerint nem megbízható.
 * Győződjön meg arról, hogy az LDAP-ügyfél (például az ldp.exe) csatlakozik-e a biztonságos LDAP végpont egy DNS-név, ne az IP-címet.
 * Ellenőrizze az LDAP-ügyfél kapcsolódik a nyilvános IP-címre oldja fel a rendszer biztonságos LDAP a felügyelt tartomány DNS-nevét.
 * Ellenőrizze, hogy a biztonságos LDAP a felügyelt tartományok tanúsítványnál a tulajdonos vagy a tulajdonos alternatív neve attribútum DNS-nevét.

@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/25/2017
 ms.author: laviswa
-ms.openlocfilehash: 69466b15d2a37bee0353a283c9bab59563f3670e
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 8425c9eae1bb7b50edec1d36d4e7c80b49b243ac
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="sql-queries-for-azure-cosmos-db"></a>Azure Cosmos adatbázis SQL-lekérdezések
 
@@ -174,7 +174,7 @@ Szeretnénk felhívja a figyelmet a Cosmos DB lekérdezési nyelv eddig is látt
 * Cosmos DB csak szigorú JSON-dokumentumokat támogat. Ez azt jelenti, hogy a rendszert és a kifejezések csak JSON típusok kezelésére korlátozódnak. Tekintse meg a [JSON-specifikáció](http://www.json.org/) további részleteket.  
 * A Cosmos DB gyűjtemény egy olyan sémamentes tároló JSON-dokumentumot. Tartalmazási, és nem a primary key és idegen kulcs kapcsolatokat a rendszer implicit módon rögzíti a kapcsolatokat, az adatok entitások belül, és egy gyűjtemény dokumentumok között. Ez egy fontos eleme érdemes a jelen cikkben ismertetett intra-dokumentum illesztések alapján mutat.
 
-## <a id="Indexing"></a>A cosmos DB indexelő
+## <a id="Indexing"></a> A cosmos DB indexelő
 Ahhoz, hogy feltölti az SQL-szintaxis, az Azure Cosmos Adatbázisba indexelési tervezési felfedezése érdemes. 
 
 Adatbázis indexek célja a különböző űrlapok és alakzatok lekérdezések kiszolgálására minimális erőforrás-felhasználás (például CPU és a bemeneti/kimeneti) ugyanakkor biztosítható a jó teljesítmény és kis késleltetése. Adatbázis lekérdezése a megfelelő index a választott gyakran, mennyi tervezést és kísérletezés igényel. Ezt a módszert használja az adatbázisok séma nélküli, ahol az adatok nem felelnek meg a szigorú séma, és gyorsan fejlődésének kihívást jelent. 
@@ -203,7 +203,7 @@ A `FROM <from_specification>` záradék használata nem kötelező, kivéve, ha 
 
 A lekérdezés, például `SELECT * FROM Families` azt jelzi, hogy a teljes családok gyűjteményt a forrás, amelyben enumerálása. Egy legfelső szintű speciális azonosítója segítségével határoz meg a gyűjtemény neve helyett a gyűjteményben. Az alábbi lista tartalmazza a szabályokat, amelyek lekérdezésenként lépnek érvénybe:
 
-* A gyűjtemény akkor jelölhető meg aliasként, például a `SELECT f.id FROM Families AS f` vagy egyszerűen `SELECT f.id FROM Families f`. Itt `f` megegyezik a `Families`. `AS`egy nem kötelező kulcsszót alias azonosító érték.
+* A gyűjtemény akkor jelölhető meg aliasként, például a `SELECT f.id FROM Families AS f` vagy egyszerűen `SELECT f.id FROM Families f`. Itt `f` megegyezik a `Families`. `AS` egy nem kötelező kulcsszót alias azonosító érték.
 * Egyszer aliasnevet, az eredeti adatforrás nem köthető. Például `SELECT Families.id FROM Families f` szintaktikailag hibás, mert "Családokat" azonosítóját már nem lehet feloldani.
 * Lehet, hogy teljesen minősített mutató hivatkozás fog igénylő összes tulajdonság. Szigorú séma való hiányában ez kényszerítése egyetlen nem egyértelmű kötést elkerülése érdekében. Ezért `SELECT id FROM Families f` szintaktikailag óta a tulajdonság nem `id` nincs kötve.
 
@@ -924,7 +924,7 @@ A szűrők együtt is elvégezheti összesíti. Például a következő lekérde
 
     [ 1 ]
 
-A következő táblázat az SQL API-ban támogatott összesítő függvények listáját tartalmazza. `SUM`és `AVG` numerikus érték, keresztül hajtja végre, mivel `COUNT`, `MIN`, és `MAX` karakterláncok, a logikai és nullák keresztül hajtható végre. 
+A következő táblázat az SQL API-ban támogatott összesítő függvények listáját tartalmazza. `SUM` és `AVG` numerikus érték, keresztül hajtja végre, mivel `COUNT`, `MIN`, és `MAX` karakterláncok, a logikai és nullák keresztül hajtható végre. 
 
 | Használat | Leírás |
 |-------|-------------|
@@ -937,7 +937,7 @@ A következő táblázat az SQL API-ban támogatott összesítő függvények li
 Összesíti egy tömb iteráció eredményeit keresztül is elvégezhető. További információkért lásd: [tömb iterációs lekérdezésekben](#Iteration).
 
 > [!NOTE]
-> Az Azure-portálon Query Explorer használata esetén vegye figyelembe, hogy összesítési lekérdezések a részlegesen összesített eredmények adhat vissza a lekérdezés lap. Az SDK-k egyetlen értéket összesítő összes oldalán hoz létre. 
+> Az Azure-portálon adatkezelő használatakor vegye figyelembe, hogy összesítési lekérdezések a részlegesen összesített eredmények adhat vissza a lekérdezés lap. Az SDK-k egyetlen értéket összesítő összes oldalán hoz létre. 
 > 
 > Kód használatával összesítési lekérdezések végrehajtásához szükséges .NET SDK 1.12.0, a .NET Core SDK 1.1.0-ás vagy a Java SDK 1.9.5 vagy újabb.    
 >
@@ -1205,7 +1205,7 @@ Ebben a példában a fenti példában természetes bővítménye, és végrehajt
         }
     }
 
-`AndersenFamily`egy gyermek, aki rendelkezik egy háziállat rendelkezik. Igen, a határokon termék eredményez több sorban is (1\*1\*1) a család. WakefieldFamily, azonban a két gyermekelemek tartoznak, de csak egy "Jesse" gyermeket kedvtelésből. Jesse két kedvtelésből, ha rendelkezik. Ezért a határokon termék eredményez 1\*1\*2 = 2 család a sort.
+`AndersenFamily` egy gyermek, aki rendelkezik egy háziállat rendelkezik. Igen, a határokon termék eredményez több sorban is (1\*1\*1) a család. WakefieldFamily, azonban a két gyermekelemek tartoznak, de csak egy "Jesse" gyermeket kedvtelésből. Jesse két kedvtelésből, ha rendelkezik. Ezért a határokon termék eredményez 1\*1\*2 = 2 család a sort.
 
 A következő példában nincs egy kiegészítő szűrőt `pet`. Ez nem tartalmazza az összes rekordokat, ahol a háziállatának neve nincs "Árnyékmásolat". Figyelje meg, hogy azt képesek tömbök, az a rekord elemek szűrő származó rekordokat létrehozni, és az elemek kombinációja projektre. 
 
@@ -1394,7 +1394,7 @@ Cosmos DB számos beépített funkciót is támogatja a közös műveleteket, p�
 |-------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------|
 | Matematikai funkciók  | ABS, felső határ, EXP, EMELET, napló, LOG10, ENERGIAGAZDÁLKODÁSI, CIKLIKUS, bejelentkezési, SQRT, SZÖGLETES, csonk, ARCCOS, ARCSIN, ATAN, ATN2, COS, tűz, fok, PI, radiánban megadott szög, EG és TAN |
 | Írja be az ellenőrzési funkciók | IS_ARRAY, IS_BOOL, IS_NULL, IS_NUMBER, IS_OBJECT, IS_STRING, IS_DEFINED és IS_PRIMITIVE                                                           |
-| Karakterlánc-függvények        | CONCAT, tartalmazza, megadott módon VÉGZŐDŐ, INDEX_OF, balra, hossza, alsó, LTRIM, csere, REPLIKÁLJA, NÉVKERESÉSI, jobbra, RTRIM, megadott módon KEZDŐDŐ, SUBSTRING és felső       |
+| Karakterlánc        | CONCAT, tartalmazza, megadott módon VÉGZŐDŐ, INDEX_OF, balra, hossza, alsó, LTRIM, csere, REPLIKÁLJA, NÉVKERESÉSI, jobbra, RTRIM, megadott módon KEZDŐDŐ, SUBSTRING és felső       |
 | A tömb funkciók         | ARRAY_CONCAT, ARRAY_CONTAINS, ARRAY_LENGTH és ARRAY_SLICE                                                                                         |
 | Térbeli funkciók       | ST_DISTANCE, ST_WITHIN, ST_INTERSECTS, ST_ISVALID és ST_ISVALIDDETAILED                                                                           | 
 
@@ -1495,7 +1495,7 @@ Ezeket a funkciókat használ, most lekérdezéseket is futtathat a következőh
 
     [true]
 
-### <a name="string-functions"></a>Karakterlánc-függvények
+### <a name="string-functions"></a>Karakterlánc
 A következő skaláris függvények végrehajtania egy műveletet a bemeneti karakterlánc-értékkel, és a karakterlánc, a numerikus és logikai értéket adja vissza. Itt a következő táblázat a beépített karakterlánc:
 
 | Használat | Leírás |
@@ -1784,7 +1784,7 @@ A LINQ szolgáltatónál tartalmazza az SQL .NET SDK-val támogatott LINQ operá
 * **Ha**: szűrők lefordítani az SQL WHERE, és támogatja a közötti címfordítás & &, || és! az SQL-operátorok
 * **A selectmany metódus**: lehetővé teszi a tömbök számára az SQL JOIN záradékban visszagörgetésének. Lánc/nest tömbelemek szűrési kifejezésekben használható
 * **OrderBy és OrderByDescending**: az eszköz ORDER BY növekvő/csökkenő
-* **Count**, **Sum**, **Min**, **maximális**, és **átlagos** összesítő és a megfelelő aszinkron operátorok **CountAsync**, **SumAsync**, **MinAsync**, **MaxAsync**, és **AverageAsync**.
+* **Count**, **Sum**, **Min**, **maximális**, és **átlagos** összesítő, és aszinkron megfelelő operátorok**CountAsync**, **SumAsync**, **MinAsync**, **MaxAsync**, és **AverageAsync**.
 * **CompareTo**: tartomány módon történő összehasonlítása az eszköz. Gyakran használt karakterláncok óta fontosságúak nem hasonlítható össze az .NET
 * **Igénybe**: az eszköz egy lekérdezés eredményeként előálló korlátozó SQL felső
 * **Matematikai függvények**: támogatja a fordítás. NET tartozó Abs, ARCCOS, ARCSIN, Atan Cos felső határa, Exp, emelet, napló, Log10, Pow, ciklikus, bejelentkezési, EG, Sqrt, Tan, a megfelelő SQL beépített funkciók Truncate.
@@ -2212,7 +2212,7 @@ A következő példa bemutatja illesztések, LINQ selectmany metódus használat
 
 A .NET-ügyfél automatikusan a lekérdezés eredményének a fentiek szerint foreach blokkok oldalain telepítéseket. A REST API szakaszában bemutatott lekérdezési lehetőségek is elérhetők a .NET SDK használatával a `FeedOptions` és `FeedResponse` osztályok CreateDocumentQuery metódus. A lapok száma vezérelhető a `MaxItemCount` beállítást. 
 
-Lapozófájl létrehozásával közvetlenül is szabályozhatja `IDocumentQueryable` használatával a `IQueryable` objektumot, majd ehhez beolvassa a` ResponseContinuationToken` gépet értékeket, és átadja őket `RequestContinuationToken` a `FeedOptions`. `EnableScanInQuery`vizsgálatok engedélyezésére, amikor a lekérdezés nem támogatja a konfigurált indexelési házirend állítható be. A particionált gyűjtemények használhatják `PartitionKey` futtatásához a lekérdezés egyetlen partícióazonosító (bár a Cosmos DB is automatikusan kinyerése Ez a lekérdezés szövegének), és `EnableCrossPartitionQuery` esetleg több partíciót kell futtatni a lekérdezések futtatásához. 
+Lapozófájl létrehozásával közvetlenül is szabályozhatja `IDocumentQueryable` használatával a `IQueryable` objektumot, majd ehhez beolvassa a` ResponseContinuationToken` gépet értékeket, és átadja őket `RequestContinuationToken` a `FeedOptions`. `EnableScanInQuery` vizsgálatok engedélyezésére, amikor a lekérdezés nem támogatja a konfigurált indexelési házirend állítható be. A particionált gyűjtemények használhatják `PartitionKey` futtatásához a lekérdezés egyetlen partícióazonosító (bár a Cosmos DB is automatikusan kinyerése Ez a lekérdezés szövegének), és `EnableCrossPartitionQuery` esetleg több partíciót kell futtatni a lekérdezések futtatásához. 
 
 Tekintse meg [Azure Cosmos DB .NET minták](https://github.com/Azure/azure-documentdb-net) további mintákat tartalmazó lekérdezések. 
 

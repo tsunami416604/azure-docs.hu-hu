@@ -16,21 +16,21 @@ ms.workload: infrastructure
 ms.date: 01/25/2018
 ms.author: jdial
 ms.custom: 
-ms.openlocfilehash: 091e7e6cabf325cdd9d4289e7d22e71c583d91db
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: dd8203763eb6abd19e2b3483636dc4d80f7effdf
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="create-a-virtual-network-using-powershell"></a>Hozzon létre egy virtuális hálózatot PowerShell használatával
 
-Ebből a cikkből megismerheti, hogyan hozhat létre virtuális hálózatot. Virtuális hálózat létrehozása után két virtuális gépek telepítése a virtuális hálózathoz, és közvetlenül a Microsoftnak egymás közötti kommunikációhoz.
+Ebből a cikkből megismerheti, hogyan hozhat létre virtuális hálózatot. Miután létrehozta a virtuális hálózat, a két virtuális gép a köztük folyó kommunikációt magánhálózati tesztelése a virtuális hálózat telepít.
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-powershell.md)]
 
-Ha PowerShell telepítéséhez és használatához helyileg, ez az oktatóanyag igényel-e az Azure PowerShell modul verziója 5.1.1-es vagy újabb. A telepített verzió megkereséséhez futtassa ` Get-Module -ListAvailable AzureRM`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Login-AzureRmAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
+Ha PowerShell telepítéséhez és használatához helyileg, ez a cikk igényel-e a AzureRM PowerShell modul verziója 5.1.1-es vagy újabb. A telepített verzió megkereséséhez futtassa ` Get-Module -ListAvailable AzureRM`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Login-AzureRmAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
 
 ## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
@@ -42,7 +42,7 @@ New-AzureRmResourceGroup -Name myResourceGroup -Location EastUS
 
 ## <a name="create-a-virtual-network"></a>Virtuális hálózat létrehozása
 
-A virtuális hálózat létrehozása [New-AzureRmVirtualNetwork](/powershell/module/azurerm.network/new-azurermvirtualnetwork). Az alábbi példa létrehoz egy alapértelmezett nevű virtuális hálózatot *myVirtualNetwork* a a *EastUS* helye:
+Hozzon létre egy virtuális hálózatot a [New-AzureRmVirtualNetwork](/powershell/module/azurerm.network/new-azurermvirtualnetwork) paranccsal. Az alábbi példa létrehoz egy alapértelmezett nevű virtuális hálózatot *myVirtualNetwork* a a *EastUS* helye:
 
 ```azurepowershell-interactive
 $virtualNetwork = New-AzureRmVirtualNetwork `
@@ -71,9 +71,11 @@ Az alhálózat beállítása írni a virtuális hálózat [Set-AzureRmVirtualNet
 $virtualNetwork | Set-AzureRmVirtualNetwork
 ```
 
-## <a name="create-virtual-machines"></a>Virtuális gépek létrehozása
+## <a name="test-network-communication"></a>Tesztelje a hálózati kommunikációban
 
-A virtuális hálózati lehetővé teszi, hogy számos különböző Azure-erőforrások közvetlenül kommunikálhatnak egymással. A virtuális hálózatba telepítése erőforrás egy típus egy virtuális gépet. Hozzon létre két virtuális gép a virtuális hálózat, hogy ellenőrizze a virtuális hálózatban lévő virtuális gépek közötti kommunikáció egy későbbi lépésben működésének megismerése.
+A virtuális hálózati lehetővé teszi, hogy számos különböző Azure-erőforrások közvetlenül kommunikálhatnak egymással. A virtuális hálózatba telepítése erőforrás egy típus egy virtuális gépet. Hozzon létre két virtuális gép a virtuális hálózat, hogy ellenőrizhesse a azokat egy későbbi lépésben titkos kommunikációját.
+
+### <a name="create-virtual-machines"></a>Virtuális gépek létrehozása
 
 A virtuális gép létrehozása [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm). Ennek a lépésnek a futtatásakor a rendszer a hitelesítő adatok megadását kéri. Az itt megadott értékek határozzák meg a virtuális géphez tartozó felhasználónevet és jelszavát. A helyre, amely a virtuális gép jön létre a virtuális hálózat szerepel ugyanazon a helyen kell lennie. A virtuális gép nem kell lennie, a virtuális gép ugyanabban az erőforráscsoportban, ha az ebben a cikkben. A `-AsJob` paraméter lehetővé teszi, hogy a parancs futtatása a háttérben, így a következő feladathoz is.
 
@@ -108,7 +110,7 @@ New-AzureRmVm `
 ```
 A virtuális gép létrehozásához néhány percet vesz igénybe. A létrehozott virtuális géppel kapcsolatos létrehozás után, az Azure ad eredményül kimenetet. Bár a nem a visszaadott kimeneti Azure társítva *10.0.0.5* való a *myVm2* virtuális gép, mert ez volt a következő elérhető cím az alhálózat.
 
-## <a name="connect-to-a-virtual-machine"></a>Csatlakozzon a virtuális géphez
+### <a name="connect-to-a-virtual-machine"></a>Csatlakozzon a virtuális géphez
 
 Használja a [Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) parancs sikeresen lefut egy virtuális gép nyilvános IP-címét. Azure egy nyilvános, Internet irányítható IP-címet rendel alapértelmezés szerint a virtuális gépeken. A nyilvános IP-cím hozzá van rendelve a virtuális gép egy [rendelt egyes Azure-régiókban címkészletet](https://www.microsoft.com/download/details.aspx?id=41653). Azure tudja, melyik nyilvános IP-cím hozzá van rendelve egy virtuális gépet, miközben a virtuális gépen futó operációs rendszer van nincs tájékoztatási bármely nyilvános IP-cím hozzárendelve. A következő példa a nyilvános IP-címét adja vissza a *myVm1* virtuális gépet:
 
@@ -124,7 +126,7 @@ mstsc /v:<publicIpAddress>
 
 A távoli asztal protokoll (RDP) fájl létrehozott, a számítógép letölti és megnyitni. Adja meg a felhasználónevet és a virtuális gép létrehozásakor a megadott jelszó, és kattintson **OK**. A bejelentkezés során egy figyelmeztetés jelenhet meg a tanúsítvánnyal kapcsolatban. A csatlakozás folytatásához kattintson az **Igen** vagy **Folytatás** gombra.
 
-## <a name="validate-communication"></a>Kommunikációs ellenőrzése
+### <a name="validate-communication"></a>Kommunikációs ellenőrzése
 
 Kísérlet történt Pingelje meg egy Windows virtuális gép leáll, mert ping keresztül nem engedélyezett a Windows tűzfal alapértelmezés szerint. Engedélyezi a ping *myVm1*, adja meg a következő parancsot a parancssorba:
 
@@ -138,7 +140,7 @@ Kommunikáció a érvényesítéséhez *myVm2*, adja meg a következő parancsot
 mstsc /v:myVm2
 ```
 
-A távoli asztali kapcsolat nem sikeres, mert mindkét virtuális gép van rendelve a magánhálózati IP-címek a *alapértelmezett* alhálózat és a távoli asztal meg nyitva, alapértelmezés szerint a Windows tűzfalon keresztül. Biztosan csatlakozni tudjanak *myVm2* állomásnév szerint, mert az Azure DNS-névfeloldás automatikusan biztosít a virtuális hálózaton belül minden gazdagép. Egy parancs futtatásával pingelni a *myVm1*, a *myVm2*.
+A távoli asztali kapcsolat nem sikeres, mert mindkét virtuális gép van rendelve a magánhálózati IP-címek a *alapértelmezett* alhálózat és a távoli asztal meg nyitva, alapértelmezés szerint a Windows tűzfalon keresztül. Biztosan csatlakozni tudjanak *myVm2* állomásnév szerint, mert az Azure DNS-névfeloldás automatikusan biztosít a virtuális hálózaton belül minden gazdagép. Egy parancs parancssori futtatásával pingelni a *myVm1*, a *myVm2*.
 
 ```
 ping myvm1
@@ -152,9 +154,11 @@ ping bing.com
 
 Négy választ kap bing.com. Alapértelmezés szerint a virtuális gépek virtuális hálózatban képes kommunikálni a kimenő internetkapcsolat.
 
+A távoli asztali munkamenet bezárásához. 
+
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs szüksége, használhatja a [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) parancs beírásával távolítsa el az erőforráscsoportot és a benne található erőforrásokat. A távoli asztali munkamenethez való kilépéshez, majd futtassa a következő parancsot a-csoport törléséhez a számítógépről:
+Ha már nincs szüksége, használhatja a [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) parancs beírásával távolítsa el az erőforráscsoport és az összes olyan erőforrást tartalmaz:
 
 ```azurepowershell-interactive 
 Remove-AzureRmResourceGroup -Name myResourceGroup -Force
@@ -162,8 +166,7 @@ Remove-AzureRmResourceGroup -Name myResourceGroup -Force
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben egy alapértelmezett virtuális hálózatot egyetlen alhálózattal és két virtuális gép üzembe. Annak megismerése, hogyan hozzon létre egy egyéni virtuális hálózatot, több alhálózattal és alapvető virtuális hálózati felügyeleti feladatok elvégzésére, továbbra is az egyéni virtuális hálózat létrehozása és kezelése az oktatóanyag.
-
+Ebben a cikkben üzembe egy alapértelmezett virtuális hálózatot egyetlen alhálózattal. Annak megismerése, hogyan hozhat létre egyéni virtuális hálózatot, több alhálózattal, továbbra is az oktatóanyag egy egyéni virtuális hálózat létrehozásához.
 
 > [!div class="nextstepaction"]
-> [Hozzon létre egy egyéni virtuális hálózatot és az adatbázis felügyeletét](virtual-networks-create-vnet-arm-pportal.md#powershell)
+> [Egyéni virtuális hálózat létrehozása](virtual-networks-create-vnet-arm-pportal.md#powershell)

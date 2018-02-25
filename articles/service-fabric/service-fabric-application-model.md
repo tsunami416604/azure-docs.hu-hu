@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 12/07/2017
+ms.date: 2/23/2018
 ms.author: ryanwi
-ms.openlocfilehash: d5f6fbb9d9c0bc0d9762f8d6b4b4eb3b02d29adc
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 506daa2dc0612fc49a67c5faf3c7ab51ac90126f
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="model-an-application-in-service-fabric"></a>A Service Fabric alkalmazás minta
 Ez a cikk áttekintést nyújt az Azure Service Fabric alkalmazásmodell és hogyan adhat meg a kérelem és a service manifest-fájlok segítségével.
@@ -48,7 +48,7 @@ Az alábbi ábrán látható, az alkalmazások és a szolgáltatáspéldány, a 
 > 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - További tudnivalók [alkalmazás méretezhetőség](service-fabric-concepts-scalability.md).
 - További tudnivalók a szolgáltatás [állapot](service-fabric-concepts-state.md), [particionálás](service-fabric-concepts-partitioning.md), és [rendelkezésre állási](service-fabric-availability-services.md).
 - További információ az alkalmazások és szolgáltatások definiált hogyan [alkalmazás és szolgáltatás jegyzékfájlokban](service-fabric-application-and-service-manifests.md).

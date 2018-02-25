@@ -12,13 +12,13 @@ ms.devlang: dotNet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 8/9/2017
+ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: cbe7e338ac7da9dc7e8d03cb1bb07a69af70cb17
-ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
+ms.openlocfilehash: 79b4700b0b0b6897c19117044d37623a2f6ea8df
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="use-docker-volume-plug-ins-and-logging-drivers-in-your-container"></a>Docker kötet beépülő modulok és naplózás-illesztőprogramok a tárolóban
 Az Azure Service Fabric támogatja megadó [Docker kötet beépülő modulok](https://docs.docker.com/engine/extend/plugins_volume/) és [Docker naplózási illesztőprogramok](https://docs.docker.com/engine/admin/logging/overview/) a tárolószolgáltatás számára. Akkor is megmaradnak az adatok [Azure fájlok](https://azure.microsoft.com/services/storage/files/) Ha a tároló áthelyezése vagy egy másik állomás újraindul.

@@ -2,23 +2,17 @@
 title: "A tárolók és blobok az Azure Blob storage nyilvános olvasási hozzáférés engedélyezése |} Microsoft Docs"
 description: "Útmutató: elérhetővé tárolók és blobok névtelen hozzáféréshez, és hogyan programokon keresztül férhet hozzá."
 services: storage
-documentationcenter: 
 author: tamram
-manager: timlt
-editor: tysonn
-ms.assetid: a2cffee6-3224-4f2a-8183-66ca23b2d2d7
+manager: jeconnoc
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2017
 ms.author: tamram
-ms.openlocfilehash: f52079c72be298daaa45074e516f911022780392
-ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.openlocfilehash: 4ddafb095816b5be82a18faa9c60869094e5e4c6
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="manage-anonymous-read-access-to-containers-and-blobs"></a>Tárolók és blobok névtelen olvasási hozzáférésének kezelése
 Engedélyezheti a névtelen, nyilvános olvasási hozzáférés egy tároló és a benne található blobokat az Azure Blob Storage tárolóban. Ezzel a módszerrel csak olvasható hozzáférést biztosíthat ezeken az erőforrásokon a fiókkulcs megosztása nélkül, és anélkül, hogy a közös hozzáférésű jogosultságkód (SAS).
@@ -130,8 +124,8 @@ Az alábbi táblázat bemutatja, hogy milyen műveletek is hívható névtelen f
 | Tároló hozzáférés-vezérlési lista beállítása |Csak a tulajdonos |Csak a tulajdonos |
 | Törli a tárolót |Csak a tulajdonos |Csak a tulajdonos |
 | Lista Blobok |Összes |Csak a tulajdonos |
-| Helyezze a Blob |Csak a tulajdonos |Csak a tulajdonos |
-| A Blob beolvasása |Összes |Összes |
+| Put Blob |Csak a tulajdonos |Csak a tulajdonos |
+| Get Blob |Összes |Összes |
 | A Blob tulajdonságainak beolvasása |Összes |Összes |
 | A Blob tulajdonságainak beállítása |Csak a tulajdonos |Csak a tulajdonos |
 | A Blob metaadatot beszerezni |Összes |Összes |
@@ -140,15 +134,15 @@ Az alábbi táblázat bemutatja, hogy milyen műveletek is hívható névtelen f
 | (Csak a véglegesített blokkolja) tiltólista beolvasása |Összes |Összes |
 | (Csak a nem véglegesített blokkok vagy blokkok) tiltólista beolvasása |Csak a tulajdonos |Csak a tulajdonos |
 | PUT tiltólista |Csak a tulajdonos |Csak a tulajdonos |
-| A Blob törlése |Csak a tulajdonos |Csak a tulajdonos |
-| A Blob másolása |Csak a tulajdonos |Csak a tulajdonos |
-| Pillanatkép Blob |Csak a tulajdonos |Csak a tulajdonos |
-| Címbérlet Blob |Csak a tulajdonos |Csak a tulajdonos |
+| Delete Blob |Csak a tulajdonos |Csak a tulajdonos |
+| Copy Blob |Csak a tulajdonos |Csak a tulajdonos |
+| Snapshot Blob |Csak a tulajdonos |Csak a tulajdonos |
+| Lease Blob |Csak a tulajdonos |Csak a tulajdonos |
 | Helyezze a lap |Csak a tulajdonos |Csak a tulajdonos |
 | Get tartományokat |Összes |Összes |
 | Hozzáfűző Blob |Csak a tulajdonos |Csak a tulajdonos |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Az Azure Storage szolgáltatásainak hitelesítése](https://msdn.microsoft.com/library/azure/dd179428.aspx)
 * [Közös hozzáférésű Jogosultságkód (SAS) használatával](../common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)

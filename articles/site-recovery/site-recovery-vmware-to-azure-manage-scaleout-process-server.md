@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: backup-recovery
-ms.date: 06/29/2017
+ms.date: 02/22/2018
 ms.author: anoopkv
-ms.openlocfilehash: e5c01de19917235c34c035415df86291b9152bf0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b2c2f8c6a10ca5098956de2402925bd9422212f8
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="manage-a-scale-out-process-server"></a>Kibővített folyamat kiszolgáló kezelése
 
@@ -145,4 +145,4 @@ Is igénybe vehet fel a 15 perc, a Folyamatkiszolgáló törlésre megfelelően 
 | --- | --- | --- | --- |
 |4 Vcpu (2 sockets * @ 2,5 GHz-es 2 mag), 8 GB-os memória |300 GB |250 GB vagy kevesebb |Kisebb vagy 85 gépek replikálása. |
 |8 Vcpu (2 sockets * @ 2,5 GHz, 4 mag), 12-GB memória |600 GB |250 GB és 1 TB |Replikálja a 85-150 gépek között. |
-|12 Vcpu (2 sockets * @ 2,5 GHz-es 6 mag) 24-GB memória |1 TB |1 TB-os és 2 TB |150-225 gépek közti replikálásához. |
+|12 Vcpu (2 sockets * @ 2,5 GHz-es 6 mag) 24-GB memória |1 TB |1 TB to 2 TB |150-225 gépek közti replikálásához. |

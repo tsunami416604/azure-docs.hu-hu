@@ -14,13 +14,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/28/2017
+ms.date: 02/21/2018
 ms.author: nitinme
-ms.openlocfilehash: 7faa1fa1537dd71bdf0493d92f26ddda2ae59264
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: de7847055c00fe9d0d1cc08cf5ba5d2ab54a9fc0
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="known-issues-for-apache-spark-cluster-on-hdinsight"></a>A HDInsight az Apache Spark-fürt kapcsolatos ismert problémák
 
@@ -29,7 +29,7 @@ Ez a dokumentum nyomon követi az összes ismert problémák a HDInsight Spark n
 ## <a name="livy-leaks-interactive-session"></a>Livy szivárgást interaktív munkamenet
 Újraindításakor Livy (az Ambari, illetve a virtuális gép újraindítás headnode 0) egy interaktív munkamenet-életben egy interaktív feladat munkamenet kiszivárgott. Emiatt az új feladatok is elakadt a elfogadott állapotban, és nem indítható el.
 
-Megoldás:
+**Megoldás:**
 
 Az alábbi eljárás segítségével orvosolhatja a problémát:
 
@@ -49,14 +49,14 @@ Az alábbi eljárás segítségével orvosolhatja a problémát:
 ## <a name="spark-history-server-not-started"></a>Spark előzmények kiszolgáló nem indult el
 Spark előzmények kiszolgáló nem automatikusan elindul a fürt létrehozása után.  
 
-Megoldás: 
+**Megoldás:** 
 
 Manuálisan indítsa el az előzmények server Ambari.
 
 ## <a name="permission-issue-in-spark-log-directory"></a>A Spark naplókönyvtár engedély probléma
 Amikor hdiuser spark-submit egy feladatot ad meg, nincs-e egy hiba java.io.FileNotFoundException: /var/log/spark/sparkdriver_hdiuser.log (engedély megtagadva) és az illesztőprogram-napló nem készül. 
 
-Megoldás:
+**Megoldás:**
 
 1. Hdiuser hozzáadása a Hadoop-csoporthoz. 
 2. Adja meg a 777 engedélyek /var/log/spark a fürt létrehozása után. 
@@ -67,7 +67,7 @@ Megoldás:
 
 A Spark-Phoenix összekötő egy HDInsight Spark-fürt nem támogatott.
 
-Megoldás:
+**Megoldás:**
 
 A Spark-HBase-összekötő kell helyette használni. Az utasításokért lásd: [használata Spark-HBase-összekötő](https://blogs.msdn.microsoft.com/azuredatalake/2016/07/25/hdinsight-how-to-use-spark-hbase-connector/).
 
@@ -78,9 +78,9 @@ Az alábbiakban néhány Jupyter notebookok kapcsolatos ismert problémák.
 A Spark HDInsight-fürtökkel használt Jupyter notebookok fájlnevekben nem rendelkezhet nem ASCII-karaktereket. Ha mégis megpróbálja feltölteni a fájlt a Jupyter felhasználói felületen, amelynek a nem ASCII-fájl nevét, az nem csendes (Ez azt jelenti, hogy Jupyter nem teszi lehetővé a fájl feltöltéséhez, de a megjelenő hibaüzenet nem lépett vagy). 
 
 ### <a name="error-while-loading-notebooks-of-larger-sizes"></a>Nagyobb méretű notebookok betöltése közben hiba
-Láthatja, hogy hiba ** `Error loading notebook` ** Ha nagyobb méretű notebookok tölthető be.  
+Láthatja, hogy hiba  **`Error loading notebook`**  Ha nagyobb méretű notebookok tölthető be.  
 
-Megoldás:
+**Megoldás:**
 
 Ha ez a hibaüzenet azt jelenti az adatok elveszett vagy sérült.  Továbbra is a lemezen vannak jegyzetfüzetek `/var/lib/jupyter`, és azok eléréséhez a fürthöz SSH is. További információk: [Az SSH használata HDInsighttal](../hdinsight-hadoop-linux-use-ssh-unix.md).
 

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 12/12/2017
 ms.author: glenga
-ms.openlocfilehash: 5e94ba1a45bccefedfa0017ad0123942e66f70bb
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 683ef1ebffaec74df95b454d717857d55b8026dd
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="azure-functions-c-script-csx-developer-reference"></a>Az Azure parancsfájl (.csx) fejlesztői leírás funkciók C#
 
@@ -191,32 +191,15 @@ public class Order
 
 Relatív elérési utat is használhatja a `#load` irányelv:
 
-* `#load "mylogger.csx"`a függvény mappában található fájl betöltése.
-* `#load "loadedfiles\mylogger.csx"`a függvény mappában mappában található fájl betöltése.
-* `#load "..\shared\mylogger.csx"`Ez azt jelenti, hogy egy függvény mappát ugyanazon a szinten mappában található fájl betöltése közvetlenül alatt *wwwroot*.
+* `#load "mylogger.csx"` a függvény mappában található fájl betöltése.
+* `#load "loadedfiles\mylogger.csx"` a függvény mappában mappában található fájl betöltése.
+* `#load "..\shared\mylogger.csx"` Ez azt jelenti, hogy egy függvény mappát ugyanazon a szinten mappában található fájl betöltése közvetlenül alatt *wwwroot*.
 
 A `#load` direktíva csak működik *.csx* fájlok, nem pedig az *.cs* fájlokat.
 
 ## <a name="binding-to-method-return-value"></a>Kötése metódus visszatérési értéke
 
-Használhatja a metódus visszatérési érték egy kimeneti kötés neve `$return` a *function.json*:
-
-```json
-{
-    "type": "queue",
-    "direction": "out",
-    "name": "$return",
-    "queueName": "outqueue",
-    "connection": "MyStorageConnectionString",
-}
-```
-
-```csharp
-public static string Run(string input, TraceWriter log)
-{
-    return input;
-}
-```
+Használhatja a metódus visszatérési érték egy kimeneti kötés neve `$return` a *function.json*. Tekintse meg a [eseményindítók és kötések](functions-triggers-bindings.md#using-the-function-return-value).
 
 ## <a name="writing-multiple-output-values"></a>Több kimeneti értékeinek írása
 
@@ -236,7 +219,7 @@ public static void Run(ICollector<string> myQueueItem, TraceWriter log)
 
 A folyamatos átviteli naplók, a C# kimeneti jelentkeznek, tartalmazza a típusú argumentumot `TraceWriter`. Ajánlott nevezze el `log`. Kerülje a `Console.Write` az Azure Functions. 
 
-`TraceWriter`a van definiálva a [Azure WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Host/TraceWriter.cs). A naplózási szint a `TraceWriter` konfigurálható [host.json](functions-host-json.md).
+`TraceWriter` a van definiálva a [Azure WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Host/TraceWriter.cs). A naplózási szint a `TraceWriter` konfigurálható [host.json](functions-host-json.md).
 
 ```csharp
 public static void Run(string myBlob, TraceWriter log)
@@ -264,17 +247,31 @@ public async static Task ProcessQueueMessageAsync(
 
 ## <a name="cancellation-tokens"></a>Megszakítási jogkivonatok
 
-Egyes műveletek szabályos leállítást igényel. Mindig is írhat kódot, amelyet kezelni tud összeomló ajánlott, azokban az esetekben, ahol szeretné kezelni leállítási kérelmeket, adja meg a [CancellationToken](https://msdn.microsoft.com/library/system.threading.cancellationtoken.aspx) megadott argumentum.  A `CancellationToken` valósul meg, hogy jelezze, hogy a gazdagép leállítása elindul.
+A következő függvényt fogad el egy [CancellationToken](https://msdn.microsoft.com/library/system.threading.cancellationtoken.aspx) paraméter, amely lehetővé teszi az operációs rendszer, hogy értesítse a kódot a függvény készül, hogy megszűnik. Az értesítés segítségével győződjön meg arról, hogy a függvény nem bontható váratlanul oly módon, hogy az adatok inkonzisztens állapotban hagyja.
+
+A következő példa bemutatja, hogyan közelgő függvény futása kereséséhez.
 
 ```csharp
-public async static Task ProcessQueueMessageAsyncCancellationToken(
-    string blobName,
-    Stream blobInput,
-    Stream blobOutput,
+using System;
+using System.IO;
+using System.Threading;
+
+public static void Run(
+    string inputText,
+    TextWriter logger,
     CancellationToken token)
+{
+    for (int i = 0; i < 100; i++)
     {
-        await blobInput.CopyToAsync(blobOutput, 4096, token);
+        if (token.IsCancellationRequested)
+        {
+            logger.WriteLine("Function was cancelled at iteration {0}", i);
+            break;
+        }
+        Thread.Sleep(5000);
+        logger.WriteLine("Normal processing for queue message={0}", inputText);
     }
+}
 ```
 
 ## <a name="importing-namespaces"></a>Névterek importálása
@@ -432,7 +429,7 @@ using (var output = await binder.BindAsync<T>(new BindingTypeAttribute(...)))
 }
 ```
 
-`BindingTypeAttribute`a .NET-attribútum, amely meghatározza a kötés és `T` bemeneti vagy kimeneti típus a kötési típus által támogatott. `T`nem lehet egy `out` típusú paraméter (például `out JObject`). Például a Mobile Apps tábla kimeneti kötése támogatja [hat kimeneti típusok](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs#L17-L22), de csak használható [ICollector<T> ](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) vagy [IAsyncCollector<T> ](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs)a `T`.
+`BindingTypeAttribute` a .NET-attribútum, amely meghatározza a kötés és `T` bemeneti vagy kimeneti típus a kötési típus által támogatott. `T` nem lehet egy `out` típusú paraméter (például `out JObject`). Például a Mobile Apps tábla kimeneti kötése támogatja [hat kimeneti típusok](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs#L17-L22), de csak használható [ICollector<T> ](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) vagy [IAsyncCollector<T> ](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs)a `T`.
 
 ### <a name="single-attribute-example"></a>Egyetlen attribútum – példa
 

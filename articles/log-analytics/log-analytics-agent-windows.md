@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/14/2017
+ms.date: 02/22/2018
 ms.author: magoedte
-ms.openlocfilehash: 87513ef82b5f754669a3a21dd736ecab6fb26fba
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 3bb023cfd94c7b87550d692101d30f922de80bf9
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="connect-windows-computers-to-the-log-analytics-service-in-azure"></a>Windows számítógépek csatlakoztatása a Log Analytics szolgáltatás az Azure-ban
 
@@ -26,28 +26,28 @@ Ahhoz, hogy a figyelheti és kezelheti a virtuális gépek vagy fizikai számít
 
 A figyelt Windows-számítógépen az ügynök van megadva, a Microsoft Monitoring Agent szolgáltatást. A Microsoft Monitoring Agent szolgáltatást a naplófájlok és a Windows Eseménynapló teljesítményadatokat és egyéb telemetriai eseményeit gyűjti. Akkor is, ha az ügynök nem képes kommunikálni a Log Analytics szolgáltatással, és jelentéseket küldeni, az ügynök továbbra is fut, és az összegyűjtött adatokat a figyelt számítógép lemezén várólisták. Ha a kapcsolat helyreállt, a Microsoft Monitoring Agent szolgáltatást gyűjtött adatokat küld a szolgáltatás.
 
-Az ügynök az alábbi módszerek egyikének használatával telepíthetők. A legtöbb telepítések ezen módszerek kombinálhatja lehet telepíteni a számítógépek, más-más részhalmazához.
+Az ügynök az alábbi módszerek egyikének használatával telepíthetők. A legtöbb telepítések ezen módszerek kombinálhatja lehet telepíteni a számítógépek, más-más részhalmazához.  Az egyes módszerek használatával részletei a cikk későbbi részében is szerepelnek.
 
 * Manuális telepítés. A telepítő a számítógépen a parancssorból, a telepítővarázslóval manuálisan fut, vagy telepíthető egy meglévő szoftver terjesztési eszköz használatával.
 * Azure Automation-Célállapotkonfiguráció (DSC). A DSC használata az Azure Automationben parancsprogrammal a környezetében már telepített Windows rendszerű számítógépeken.  
 * PowerShell-parancsfájlt.
 * Resource Manager-sablon virtuális gépek helyszíni Windows Azure-készletben.  
 
-A Windows-ügynök telepítésének hálózati és rendszerkövetelményeivel kapcsolatban lásd a [környezet adatainak az Azure Log Analytics használatával való gyűjtésével foglalkozó szakaszt](log-analytics-concept-hybrid.md#prerequisites).
+A Windows-ügynök telepítése a hálózati és a rendszer követelmények megértése érdekében tekintse át a [Előfeltételek a Windows rendszerű számítógépeken](log-analytics-concept-hybrid.md#prerequisites).
 
 ## <a name="obtain-workspace-id-and-key"></a>A munkaterület-azonosító és -kulcs lekérése
-A Windowshoz készült Microsoft Monitoring Agent telepítése előtt szüksége lesz a Log Analytics-munkaterület azonosítójára és kulcsára.  Szükség az egyes telepítési módszerek megfelelően konfigurálni az ügynököt, és képes sikeresen kommunikálni a Naplóelemzési szolgáltatással a telepítés során.  
+A Windowshoz készült Microsoft Monitoring Agent telepítése előtt szüksége lesz a Log Analytics-munkaterület azonosítójára és kulcsára.  Szükség az egyes telepítési módszerek megfelelően konfigurálni az ügynököt, és képes sikeresen kommunikálni a kereskedelmi Azure Naplóelemzés és az USA szövetségi kormányzatának felhő telepítés során.  
 
 1. Az Azure portálon kattintson **minden szolgáltatás**. Az erőforrások listájába írja be a **Log Analytics** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza a **Log Analytics** elemet.
 2. A Naplóelemzési munkaterület, jelölje ki az ügynök konfigurálásáról jelenteni szeretné a munkaterületen.
 3. Válassza ki a **Speciális beállítások** elemet.<br><br> ![A Log Analytics speciális beállításai](media/log-analytics-quick-collect-azurevm/log-analytics-advanced-settings-01.png)<br><br>  
 4. Válassza ki a **Csatlakoztatott források**, majd a **Windowsos kiszolgálók** elemet.   
-5. A **Munkaterület-azonosító** és az **Elsődleges kulcs** jobb oldalán lévő érték. Másolja ki és illessze be mindkettőt a kedvenc szerkesztőjébe.   
+5. Másolja és illessze be a kedvenc szerkesztő a **munkaterület azonosítója** és **elsődleges kulcs**.    
    
-## <a name="install-the-agent-using-setup"></a>Telepítse az ügynököt, a telepítőprogram használatával
-Az alábbi lépésekkel telepíthető és konfigurálható az ügynök a Log Analytics használatához az Azure és az Azure Government-felhőben a Microsoft Monitoring Agent telepítőjének használatával a számítógépén.  Az ügynök telepítőprogramját a letöltött fájl tartalmazza, és annak érdekében, hogy ki kell nyerni 
+## <a name="install-the-agent-using-setup-wizard"></a>Telepítse az ügynököt telepítő varázsló segítségével
+Az alábbi lépéseket telepítse, és konfigurálni az ügynököt a Naplóelemzési Azure és az Azure Government felhőben található, a számítógépre a Microsoft Monitoring Agent a telepítővarázsló segítségével.  
 
-1. A **Windowsos kiszolgálók** lapon válassza ki a Windows operációs rendszer processzorarchitektúrájának megfelelő verziójú **Windows-ügynök letöltése** lehetőséget.
+1. A napló Analyics munkaterületen a a **Windows kiszolgálók** lap, amelybe korábban, válassza ki a megfelelő **Windows-ügynök letöltése** verzió letöltése attól függően, hogy a processzor architektúrája a Windows operációs rendszer.   
 2. Futtassa a telepítőt, és telepítse az ügynököt a számítógépre.
 2. Az **Üdvözöljük** lapon kattintson a **Tovább** gombra.
 3. A **Licencfeltételek** oldalon olvassa el és fogadja el a licencet, majd kattintson az **Elfogadom** gombra.
@@ -63,7 +63,7 @@ Az alábbi lépésekkel telepíthető és konfigurálható az ügynök a Log Ana
 Ennek végeztével a **Microsoft Monitoring Agent** megjelenik a **Vezérlőpulton**. Erősítse meg a jelentések szolgáltatáshoz, tekintse át [Naplóelemzési ügynök ellenőrzésére](#verify-agent-connectivity-to-log-analytics). 
 
 ## <a name="install-the-agent-using-the-command-line"></a>Telepítse az ügynököt, a parancssor használatával
-Az ügynök a letöltött fájl csomag egy önálló telepítő IExpress létre.  A telepítőprogram az ügynök és a fájlokat a csomagban található, és megfelelően a parancssorból a következő példákban telepítéséhez ki kell.  Ez a metódus támogatja, hogy az Azure kereskedelmi és az USA szövetségi kormányzatának felhőbeli konfigurálása.  
+Az ügynök a letöltött fájl csomag egy önálló telepítő IExpress létre.  A telepítőprogram az ügynök és a fájlokat a csomagban található, és megfelelően a parancssorból a következő példákban telepítéséhez ki kell.    
 
 >[!NOTE]
 >Ha azt szeretné, az ügynök frissítése, hogy szeretné használni, a parancsprogram-kezelési API Naplóelemzési. A témakörben [kezelése és karbantartása a Log Analyticshez ügynök a Windows és Linux](log-analytics-agent-manage.md) további tájékoztatást talál.
@@ -84,13 +84,13 @@ A következő táblázat ismerteti a az ügynök, beleértve az Automation DSC h
 2. Csendes telepítse az ügynököt, és konfigurálja azt, hogy az Azure kereskedelmi felhőben munkaterület mappából kibontotta a telepítési fájlokat be: 
    
      ```dos
-    setup.exe /qn ADD_OPINSIGHTS_WORKSPACE=1 OPINSIGHTS_WORKSPACE_AZURE_CLOUD_TYPE=0 OPINSIGHTS_WORKSPACE_ID=<your workspace id> OPINSIGHTS_WORKSPACE_KEY=<your workspace key> AcceptEndUserLicenseAgreement=1
+    setup.exe /qn NOAPM=1 ADD_OPINSIGHTS_WORKSPACE=1 OPINSIGHTS_WORKSPACE_AZURE_CLOUD_TYPE=0 OPINSIGHTS_WORKSPACE_ID=<your workspace id> OPINSIGHTS_WORKSPACE_KEY=<your workspace key> AcceptEndUserLicenseAgreement=1
     ```
 
    vagy az ügynök számára, hogy Azure Amerikai Egyesült államokbeli kormányzati felhő konfigurálásához írja be: 
 
      ```dos
-    setup.exe /qn ADD_OPINSIGHTS_WORKSPACE=1 OPINSIGHTS_WORKSPACE_AZURE_CLOUD_TYPE=1 OPINSIGHTS_WORKSPACE_ID=<your workspace id> OPINSIGHTS_WORKSPACE_KEY=<your workspace key> AcceptEndUserLicenseAgreement=1
+    setup.exe /qn NOAPM=1 ADD_OPINSIGHTS_WORKSPACE=1 OPINSIGHTS_WORKSPACE_AZURE_CLOUD_TYPE=1 OPINSIGHTS_WORKSPACE_ID=<your workspace id> OPINSIGHTS_WORKSPACE_KEY=<your workspace key> AcceptEndUserLicenseAgreement=1
     ```
 
 ## <a name="install-the-agent-using-dsc-in-azure-automation"></a>Telepítse az ügynököt az Azure Automation DSC használata
@@ -122,6 +122,7 @@ A kódot közvetlenül az ügynök telepítési csomag lekérdezni, használhatj
         $OPSINSIGHTS_WS_KEY = Get-AutomationVariable -Name "OPSINSIGHTS_WS_KEY"
 
         Import-DscResource -ModuleName xPSDesiredStateConfiguration
+        Import-DscResource –ModuleName PSDesiredStateConfiguration
 
         Node OMSnode {
             Service OIService
@@ -141,7 +142,7 @@ A kódot közvetlenül az ügynök telepítési csomag lekérdezni, használhatj
                 Path  = $OIPackageLocalPath
                 Name = "Microsoft Monitoring Agent"
                 ProductId = "8A7F2C51-4C7D-4BFD-9014-91D11F24AAE2"
-                Arguments = '/C:Deploy"setup.exe /qn ADD_OPINSIGHTS_WORKSPACE=1 OPINSIGHTS_WORKSPACE_ID=' + $OPSINSIGHTS_WS_ID + ' OPINSIGHTS_WORKSPACE_KEY=' + $OPSINSIGHTS_WS_KEY + ' AcceptEndUserLicenseAgreement=1"'
+                Arguments = '/C:"setup.exe /qn NOAPM=1 ADD_OPINSIGHTS_WORKSPACE=1 OPINSIGHTS_WORKSPACE_ID=' + $OPSINSIGHTS_WS_ID + ' OPINSIGHTS_WORKSPACE_KEY=' + $OPSINSIGHTS_WS_KEY + ' AcceptEndUserLicenseAgreement=1"'
                 DependsOn = "[xRemoteFile]OIPackage"
             }
         }
@@ -154,7 +155,7 @@ A kódot közvetlenül az ügynök telepítési csomag lekérdezni, használhatj
 
 ## <a name="verify-agent-connectivity-to-log-analytics"></a>A Naplóelemzési ügynök kapcsolat ellenőrzése
 
-Az ügynök instalaltion végrehajtása után ellenőrzése, hogy sikeresen csatlakozott, és reporting kétféleképpen végezhető.  
+Ha az ügynök telepítése befejeződött, ellenőrzése, hogy sikeresen csatlakozott, és reporting kétféleképpen végezhető.  
 
 A számítógépről a **Vezérlőpult**, keresse meg az elemet **Microsoft Monitoring Agent**.  Válassza ki azt, és a a **Azure Naplóelemzés (OMS)** lapon, az ügynök megjelenjen-e a következő üzenet: **a Microsoft Monitoring Agent sikeresen csatlakozott-e a Microsoft Operations Management Suite szolgáltatással.**<br><br> ![MMA kapcsolati állapota a Log Analytics felé](media/log-analytics-quick-collect-windows-computer/log-analytics-mma-laworkspace-status.png)
 

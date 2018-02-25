@@ -14,13 +14,13 @@ ms.devlang:
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/28/2017
+ms.date: 02/23/2018
 ms.author: larryfr
-ms.openlocfilehash: a780a7d954486dbce402e4bf45be55af8ad36ab9
-ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
+ms.openlocfilehash: 8c9a901b8922bf349959438487c88e3df4f2ebea
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="apache-spark-streaming-dstream-example-with-kafka-on-hdinsight"></a>Apache Spark streaming (DStream) például Kafka a HDInsight a
 
@@ -97,7 +97,7 @@ Ez a példa befejezéséhez kövesse a `README.md`.
 
 A jelen dokumentumban leírt lépések az azonos Azure erőforráscsoport mindkét fürtöket létrehozni, mert az erőforráscsoportot az Azure portálon törölheti. A csoport törlése eltávolítja a következő Ez a dokumentum, az Azure-beli virtuális hálózatra és a fürt által használt tárfiók által létrehozott összes erőforrást.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a példában megtanulta, hogyan használható a Spark olvasási és írási Kafka. Az alábbi hivatkozások segítségével felderíteni a más módon történő együttműködésre Kafka:
 

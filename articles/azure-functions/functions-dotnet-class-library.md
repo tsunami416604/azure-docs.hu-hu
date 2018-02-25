@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 12/12/2017
 ms.author: glenga
-ms.openlocfilehash: 8a098d2ecc004b1593310579c47c53778858e799
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 9e9aa8a36d363ce28d61c5ba3cfe758520a626cf
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="azure-functions-c-developer-reference"></a>Az Azure Functions C# fejlesztői leírás
 
@@ -84,6 +84,31 @@ public static class SimpleExampleWithOutput
 }
 ```
 
+### <a name="order-of-parameters"></a>A paraméterek sorrendje
+
+Paramétereket a függvényaláíráshoz a sorrendje nem lényeges. Például helyezhet el trigger paraméterek előtt vagy után más kötésekben, és adhat meg a tranzakciónaplókat tartalmazó paraméter előtt vagy után eseményindító vagy kötelező paraméterek.
+
+### <a name="binding-expressions"></a>Kötési kifejezésként
+
+Kötési kifejezésekben attribútum konstruktorparaméterek és a Függvényparaméterek használható. Például a következő kód jogosultságot kap a várólistában, figyelheti a Alkalmazásbeállítás nevét, és onnan kapta, hogy a várólista üzenet létrehozása idején a `insertionTime` paraméter.
+
+```csharp
+public static class BindingExpressionsExample
+{
+    [FunctionName("LogQueueMessage")]
+    public static void Run(
+        [QueueTrigger("%queueappsetting%")] string myQueueItem,
+        DateTimeOffset insertionTime,
+        TraceWriter log)
+    {
+        log.Info($"Message content: {myQueueItem}");
+        log.Info($"Created at: {insertionTime}");
+    }
+}
+```
+
+További információkért lásd: **kötelező kifejezések és minták** a [eseményindítók és kötések](functions-triggers-bindings.md#binding-expressions-and-patterns).
+
 ### <a name="conversion-to-functionjson"></a>Function.json átalakítása
 
 Az összeállítási folyamat létrehoz egy *function.json* fájlban egy függvény a build mappában. Ahogy azt korábban említettük, ez a fájl nem célja, hogy közvetlenül szerkeszthetők. Nem kötelező konfigurációjának módosítása, vagy tiltsa le a függvény a fájl szerkesztésével. 
@@ -119,22 +144,7 @@ Minden kötésnek rendelkezik saját támogatott típusok; például egy blob es
 
 ## <a name="binding-to-method-return-value"></a>Kötése metódus visszatérési értéke
 
-A metódus visszatérési érték használhat egy kimeneti kötése a következő példában látható módon:
-
-```csharp
-public static class ReturnValueOutputBinding
-{
-    [FunctionName("CopyQueueMessageUsingReturnValue")]
-    [return: Queue("myqueue-items-destination")]
-    public static string Run(
-        [QueueTrigger("myqueue-items-source-2")] string myQueueItem,
-        TraceWriter log)
-    {
-        log.Info($"C# function processed: {myQueueItem}");
-        return myQueueItem;
-    }
-}
-```
+A metódus visszatérési érték használható egy kimeneti kötése az attribútum a metódus visszatérési érték alkalmazásával. Tekintse meg a [eseményindítók és kötések](functions-triggers-bindings.md#using-the-function-return-value).
 
 ## <a name="writing-multiple-output-values"></a>Több kimeneti értékeinek írása
 
@@ -162,7 +172,7 @@ public static class ICollectorExample
 
 A folyamatos átviteli naplók, a C# kimeneti jelentkeznek, tartalmazza a típusú argumentumot `TraceWriter`. Ajánlott nevezze el `log`. Kerülje a `Console.Write` az Azure Functions. 
 
-`TraceWriter`a van definiálva a [Azure WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Host/TraceWriter.cs). A naplózási szint a `TraceWriter` konfigurálható [host.json](functions-host-json.md).
+`TraceWriter` a van definiálva a [Azure WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Host/TraceWriter.cs). A naplózási szint a `TraceWriter` konfigurálható [host.json](functions-host-json.md).
 
 ```csharp
 public static class SimpleExample
@@ -202,18 +212,28 @@ public static class AsyncExample
 
 ## <a name="cancellation-tokens"></a>Megszakítási jogkivonatok
 
-Egyes műveletek szabályos leállítást igényel. Mindig is írhat kódot, amelyet kezelni tud összeomló ajánlott, azokban az esetekben, ahol szeretné kezelni leállítási kérelmeket, adja meg a [CancellationToken](https://msdn.microsoft.com/library/system.threading.cancellationtoken.aspx) megadott argumentum.  A `CancellationToken` valósul meg, hogy jelezze, hogy a gazdagép leállítása elindul.
+A következő függvényt fogad el egy [CancellationToken](https://msdn.microsoft.com/library/system.threading.cancellationtoken.aspx) paraméter, amely lehetővé teszi az operációs rendszer, hogy értesítse a kódot a függvény készül, hogy megszűnik. Az értesítés segítségével győződjön meg arról, hogy a függvény nem bontható váratlanul oly módon, hogy az adatok inkonzisztens állapotban hagyja.
+
+A következő példa bemutatja, hogyan közelgő függvény futása kereséséhez.
 
 ```csharp
 public static class CancellationTokenExample
 {
-    [FunctionName("BlobCopy")]
-    public static async Task RunAsync(
-        [BlobTrigger("sample-images/{blobName}")] Stream blobInput,
-        [Blob("sample-images-copies/{blobName}", FileAccess.Write)] Stream blobOutput,
+    public static void Run(
+        [QueueTrigger("inputqueue")] string inputText,
+        TextWriter logger,
         CancellationToken token)
     {
-        await blobInput.CopyToAsync(blobOutput, 4096, token);
+        for (int i = 0; i < 100; i++)
+        {
+            if (token.IsCancellationRequested)
+            {
+                logger.WriteLine("Function was cancelled at iteration {0}", i);
+                break;
+            }
+            Thread.Sleep(5000);
+            logger.WriteLine("Normal processing for queue message={0}", inputText);
+        }
     }
 }
 ```
@@ -258,7 +278,7 @@ Adja meg a következő kötés dolgozik:
   }
   ```
 
-  `BindingTypeAttribute`a .NET-attribútum, amely meghatározza a kötés és `T` bemeneti vagy kimeneti típus a kötési típus által támogatott. `T`nem lehet egy `out` típusú paraméter (például `out JObject`). Például a Mobile Apps tábla kimeneti kötése támogatja [hat kimeneti típusok](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs#L17-L22), de csak használható [ICollector<T> ](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) vagy [IAsyncCollector<T> ](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs)imperatív kötést.
+  `BindingTypeAttribute` a .NET-attribútum, amely meghatározza a kötés és `T` bemeneti vagy kimeneti típus a kötési típus által támogatott. `T` nem lehet egy `out` típusú paraméter (például `out JObject`). Például a Mobile Apps tábla kimeneti kötése támogatja [hat kimeneti típusok](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs#L17-L22), de csak használható [ICollector<T> ](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) vagy [IAsyncCollector<T> ](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs)imperatív kötést.
 
 ### <a name="single-attribute-example"></a>Egyetlen attribútum – példa
 

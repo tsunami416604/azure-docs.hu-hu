@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2018
 ms.author: jeedes
-ms.openlocfilehash: 76bbee514eac36aec8eaf84e8a20f85a27559fc7
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: ad12dfd525afe1bde7026535dceb25556abf0a96
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adp-federated-sso"></a>Oktatóanyag: Azure Active Directoryval integrált ADP összevont egyszeri bejelentkezés
 
@@ -122,7 +122,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Az egyszeri bejelentkezés információk ADP összevont egyszeri Bejelentkezéses tartomány és az URL-címek](./media/active-directory-saas-adpfederatedsso-tutorial/tutorial_adpfederatedsso_url.png)
 
-    Az a **azonosító** szövegmezőhöz URL-címet írja be:`https://fed.adp.com/` 
+    Az a **azonosító** szövegmezőhöz URL-címet írja be: `https://fed.adp.com/` 
     
 5. ADP összevont egyszeri bejelentkezési alkalmazás a SAML helyességi feltételek egy meghatározott formátumban, amelyek megkövetelik olyan egyéni attribútum-leképezésekhez hozzáadása a SAML-jogkivonat attribútumok konfigurációs vár. Az alábbi képernyőfelvételen látható egy példa a. A jogcím neve mindig lesz **"PersonImmutableID"** és amelynek értéke azt van leképezve **employeeid**. 
 
@@ -197,9 +197,8 @@ Az Ön képviselőjével is ADP megerősítő megérkezésekor a ADP Services-sz
     ![Egyszeri bejelentkezés kapcsolat konfigurálása][4]
 
 7. A a **egyszeri bejelentkezés** párbeszédablakban válassza **mód** , **társított bejelentkezés** az alkalmazás csatolni **ADP összevont egyszeri Bejelentkezéses**.
-<!---Loc Comment:Sentence "to link your application to ADP Federated SSO." should be concatenated with the previous sentence--->
 
-    ![Single sign-on linked](./media/active-directory-saas-adpfederatedsso-tutorial/tutorial_adpfederatedsso_linked.png)
+    ![Egyszeri bejelentkezés kapcsolódó](./media/active-directory-saas-adpfederatedsso-tutorial/tutorial_adpfederatedsso_linked.png)
 
 8. Keresse meg a **konfigurálása bejelentkezési URL-cím** területen tegye a következőket:
 

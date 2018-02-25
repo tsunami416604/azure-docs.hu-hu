@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/15/2018
+ms.date: 02/23/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 30c8911105e95860899385caf40f8a250c1c340e
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 7e4a65d81a7dade9ae63a24657d15a97a3a588b2
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="conditional-access-in-azure-active-directory"></a>Feltételes hozzáférés az Azure Active Directoryban
 
@@ -108,7 +108,7 @@ További információkért lásd: [beállítása az Azure Active Directory felt�
 
 ### <a name="license-requirements-for-using-conditional-access"></a>Feltételes hozzáférés használatának követelményei licenc
 
-Feltételes hozzáférés a használatához a prémium szintű Azure AD / nagyvállalati mobilitási + biztonsági licenc. A követelmények teljesítéséhez a megfelelő licenc megkereséséhez lásd: [nagyvállalati mobilitási + biztonsági árképzési beállítások](https://www.microsoft.com/cloud-platform/enterprise-mobility-security-pricing).
+A feltételes hozzáférés használatának Azure AD Premium licenc szükséges. A követelmények teljesítéséhez a megfelelő licenc megkereséséhez lásd: [összehasonlítása az ingyenes, a Basic és a Premium verziók általánosan elérhető szolgáltatások](https://www.microsoft.com/en-us/cloud-platform/azure-active-directory-features).
 
 
 ## <a name="next-steps"></a>További lépések

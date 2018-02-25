@@ -1,25 +1,24 @@
 ---
-title: "Hálózatleképezés replikációja, Hyper-V virtuális gépek VMM-felhőkben Site Recovery szolgáltatással kapcsolatos |} Microsoft Docs"
+title: "A hálózatleképezés a Hyper-V virtuális gép (a VMM-mel) replikáció az Azure Site Recovery szolgáltatással kapcsolatos |} Microsoft Docs"
 description: "Ismerteti, hogyan állíthatja be a hálózatra való leképezést a VMM-felhőkben, az Azure Site Recovery szolgáltatással felügyelt Hyper-V virtuális gépek replikációját."
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 02/13/2018
+ms.date: 02/22/2018
 ms.author: raynew
-ms.openlocfilehash: 5b8ebf3bd118a7b082949b3f3c6ef60a07641ba1
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 524de918bd24d51680110dc2af213bf328e349fd
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/24/2018
 ---
-# <a name="about-network-mapping-for-hyper-v-vm-with-vmm-replication"></a>Hálózatleképezés a Hyper-V virtuális gép a VMM replikációs kapcsolatban 
+# <a name="prepare-network-mapping-for-hyper-v-vm-replication-to-azure"></a>Hálózatleképezés előkészítése Hyper-V rendszerű virtuális gépek Azure-ba történő replikálásához
 
 
-Ez a cikk segít megismernie és megterveznie leképezése során replikációs Hyper-V virtuális gépek a System Center Virtual Machine Manager (VMM) felhők, használja a [Azure Site Recovery szolgáltatás](site-recovery-overview.md).
+Ez a cikk segít az megértéséhez, valamint a hálózatleképezés előkészítése a System Center Virtual Machine Manager (VMM) felhők Hyper-V virtuális gépek replikálása az Azure-bA vagy másodlagos helyre, ha használja a [Azure Site Recovery](site-recovery-overview.md) szolgáltatás.
 
-A hálózatleképezés akkor használatos, ha a Hyper-V virtuális gépek replikálása kezelése a VMM-felhőhöz, másodlagos VMM-felhőhöz, vagy az Azure-bA.
 
 ## <a name="prepare-network-mapping-for-replication-to-azure"></a>A replikáció az Azure hálózatleképezés előkészítése
 
@@ -123,4 +122,5 @@ Hálózati leképezése VMNetwork1-Chicagói módosul. | VM-1 VMNetwork1-Chicag�
 
 ## <a name="next-steps"></a>További lépések
 
-[További tudnivalók](hyper-v-vmm-networking.md) IP-címzés VMM másodlagos helyre a feladatátvételt követően.
+- [További tudnivalók](hyper-v-vmm-networking.md) IP-címzés VMM másodlagos helyre a feladatátvételt követően.
+- [További tudnivalók](concepts-on-premises-to-azure-networking.md) IP-címzést, az Azure-bA a feladatátvételt követően.

@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 09/29/2017
+ms.date: 02/22/2018
 ms.author: asgang
-ms.openlocfilehash: 028aa0f23c3a7c98c4801d9e306c5dcfa35aab80
-ms.sourcegitcommit: 2d1153d625a7318d7b12a6493f5a2122a16052e0
+ms.openlocfilehash: 1b63515970f81b1cab679287d84707d531fd102a
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2017
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="replicate-applications-running-on-vmware-virtual-machines-to-azure"></a>Az Azure-bA VMware virtuális gépeken futó alkalmazások replikálása
 
@@ -50,7 +50,7 @@ VMware virtuális gépek replikálásához:
 1. Kattintson **2. lépés: Az alkalmazás replikálása** > **Forrás** elemre. A replikálás első alkalommal történő engedélyezését követően kattintson a tárolóban elérhető **+Replikálás** elemre a további gépek replikációjának engedélyezéséhez.
 2. Az a **forrás** lap > **forrás**, válassza ki a konfigurációs kiszolgálót.
 3. A **számítógép típusú**, jelölje be **virtuális gépek** vagy **fizikai gépek**.
-4. A **vCenter vagy vSphere Hipervizorra**jelölje be a vCenter-kiszolgáló, amely kezeli a vSphere-gazdagép, vagy jelölje ki a gazdagépet. Ez a beállítás nem megfelelő, ha a fizikai gépeket replikál.
+4. A **vCenter/vSphere hipervizor** mezőben válassza ki a vSphere-gazdagépet felügyelő vCenter-kiszolgálót, vagy válassza ki magát a gazdagépet. Ez a beállítás nem megfelelő, ha a fizikai gépeket replikál.
 5. Válassza ki a folyamatkiszolgáló, amely a konfigurációs kiszolgáló neve lesz, ha még nem hozott létre minden olyan további folyamat kiszolgálóhoz. Ezután kattintson az **OK** gombra.
 
     ![Replikációs forrás engedélyezése](./media/site-recovery-vmware-to-azure/enable-replication2.png)
@@ -84,7 +84,7 @@ VMware virtuális gépek replikálásához:
     >    * Virtuális gépek és fizikai kiszolgálók gyűjtse össze, hogy látni lehessen a munkaterhelések. Több virtuális Gépre kiterjedő konzisztencia engedélyezése hatással lehet a számítási feladat teljesítményére. Csak akkor, ha a gép ugyanaz az alkalmazás fut, és konzisztencia kell használni.
 
     ![A replikáció engedélyezése](./media/site-recovery-vmware-to-azure/enable-replication7.png)
-14. Kattintson a **engedélyezze a replikálást**. Előrehaladásának nyomon követheti a **Védelemengedélyezési** feladat **beállítások** > **feladatok** > **Site Recovery-feladatok**. A **Védelem véglegesítése** feladat befejeződését követően a gép készen áll a feladatátvételre.
+14. Kattintson a **Replikáció engedélyezése** elemre. A **Védelem engedélyezése** feladat előrehaladását a **Beállítások** > **Feladatok** > **Site Recovery-feladatok** menüpontban követheti nyomon. A **Védelem véglegesítése** feladat befejeződését követően a gép készen áll a feladatátvételre.
 
 > [!NOTE]
 > Ha a számítógép kész az ügyfélleküldéses telepítést, a mobilitási szolgáltatás telepítve van, ha engedélyezve van a védelem. Miután az összetevő telepítve van a számítógépen, a védelmi feladatot elindul, és sikertelen lesz. A meghibásodás után meg kézzel kell újraindítania az egyes. Az újraindítás után újra megkezdi a védelmi feladat, és a kezdeti replikálást.
@@ -119,7 +119,7 @@ Ezután ellenőrizheti a forrásgép tulajdonságait. Ne feledje, hogy az Azure 
     Például ha a forrásgépen két hálózati adaptert, és a célgép mérete négy támogatja, a célgépen két adapter rendelkezik. Ha a forrásgépen két adapter, de a cél méretét csak támogat egy, a célgépen csak egy adapterrel rendelkezik.
     - Ha a virtuális gépnek több hálózati adapter, minden csatlakoznak az ugyanazon a hálózaton. Emellett az elsőt a listán látható lesz a *alapértelmezett* az Azure virtuális gép hálózati adapteréhez.
 
-### <a name="azure-hybrid-use-benefit"></a>Azure hibrid használata juttatás
+### <a name="azure-hybrid-use-benefit"></a>Azure Hybrid Use Benefit
 
 Microsoft Szoftverbiztosítással az ügyfelek használhatják Azure hibrid használja juttatásra, licencelési költségeit, amelyek áttelepítése az Azure Windows Server-gépek mentheti, vagy vész-helyreállítási Azure használ. Ha Ön jogosult az Azure hibrid használja kiszolgálóterhelések használják ki a használandó, megadhatja, hogy a virtuális géphez hozzárendelt az előnyök egyike az Azure Site Recovery hoz létre, ha egy feladatátvevő. Ehhez tegye a következőket:
 - Nyissa meg a replikált virtuális gép számítási és hálózati tulajdonságok szakaszába.
@@ -135,7 +135,7 @@ További információ [Azure hibrid használata juttatás](https://aka.ms/azure-
 * Az operációs rendszer lemezének alaplemeznek és a nem dinamikus lemez kell lennie.
 * Generációs 2/UEFI-kompatibilis virtuális gépek az operációsrendszer-családot Windows kell lennie, és a rendszerindító lemez 300 GB-nál kisebbnek kell lennie.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Miután a védelem, és a gép elérte-e egy védett állapotot, próbálja meg egy [feladatátvételi](site-recovery-failover.md) ellenőrizze, hogy az alkalmazás megjelenik az Azure-ban, vagy nem.
 

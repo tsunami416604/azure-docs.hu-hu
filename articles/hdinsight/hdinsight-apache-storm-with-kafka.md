@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 01/31/2018
 ms.author: larryfr
-ms.openlocfilehash: 866dd3abbcca12413d0e02651826365166db616f
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 9e714b1dc97fb12c2994537d33cefd98b5c9cf99
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="use-apache-kafka-with-storm-on-hdinsight"></a>Apache Kafka használata a HDInsight alatt futó Storm
 
@@ -36,7 +36,7 @@ Ebben a dokumentumban bemutatott példában kódja megtalálható [https://githu
 
 Ez a projekt fordítása, a következő konfigurációs a fejlesztési környezet szüksége:
 
-* [Java JDK 1.8](https://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html) vagy újabb verzióját. HDInsight 3.5-ös vagy újabb rendszer szükséges Java 8.
+* [Java JDK 1.8](http://www.oracle.com/technetwork/pt/java/javase/downloads/jdk8-downloads-2133151.html) vagy újabb verzióját. HDInsight 3.5-ös vagy újabb rendszer szükséges Java 8.
 
 * [Maven 3.x](https://maven.apache.org/download.cgi)
 
@@ -46,11 +46,11 @@ Ez a projekt fordítása, a következő konfigurációs a fejlesztési környeze
 
 Az alábbi környezeti változókat a fejlesztő munkaállomás Java és a JDK telepítésekor lehet beállítani. Azonban ellenőrizni kell, hogy léteznek, illetve a rendszer a megfelelő értékeket tartalmaz.
 
-* `JAVA_HOME`-a a JDK mappáját kell mutatnia.
-* `PATH`-a következő elérési utakat kell tartalmaznia:
+* `JAVA_HOME` -a a JDK mappáját kell mutatnia.
+* `PATH` -a következő elérési utakat kell tartalmaznia:
   
-    * `JAVA_HOME`(vagy ezzel egyenértékű elérési).
-    * `JAVA_HOME\bin`(vagy ezzel egyenértékű elérési).
+    * `JAVA_HOME` (vagy ezzel egyenértékű elérési).
+    * `JAVA_HOME\bin` (vagy ezzel egyenértékű elérési).
     * A mappát, ahová a Maven telepítve van.
 
 ## <a name="create-the-clusters"></a>A fürtök létrehozása
@@ -121,7 +121,7 @@ A projekt két topológiát tartalmaz:
     Ez a topológia a Storm HdfsBolt adatokat írni az alapértelmezett tároló a Storm-fürt használja.
 ### <a name="flux"></a>Flux
 
-A topológia meghatározása [fluxus](https://storm.apache.org/releases/1.1.0/flux.html). Fluxus bemutatott Storm 0.10.x, és lehetővé teszi a topológia konfigurációjával kód külön. A fluxus keretrendszert használó topológia esetén a topológia egy YAM fájlban definiálva van. A YAM fájl a topológia része lehet. A topológia elküldésekor használt önálló fájl is lehet. Fluxus futásidőben, ebben a példában használt változók behelyettesítését is támogatja.
+A topológia meghatározása [fluxus](https://storm.apache.org/releases/1.1.2/flux.html). Fluxus bemutatott Storm 0.10.x, és lehetővé teszi a topológia konfigurációjával kód külön. A fluxus keretrendszert használó topológia esetén a topológia egy YAM fájlban definiálva van. A YAM fájl a topológia része lehet. A topológia elküldésekor használt önálló fájl is lehet. Fluxus futásidőben, ebben a példában használt változók behelyettesítését is támogatja.
 
 Az alábbi topológiák futási időben vannak megadva a következő paraméterek:
 
@@ -131,7 +131,7 @@ Az alábbi topológiák futási időben vannak megadva a következő paramétere
 
 * `${kafka.zookeeper.hosts}`: A gazdagépeken futó Zookeeper a Kafka fürtben.
 
-Fluxus topológiák további információkért lásd: [https://storm.apache.org/releases/1.1.0/flux.html](https://storm.apache.org/releases/1.1.0/flux.html).
+Fluxus topológiák további információkért lásd: [https://storm.apache.org/releases/1.1.2/flux.html](https://storm.apache.org/releases/1.1.2/flux.html).
 
 ## <a name="download-and-compile-the-project"></a>Töltse le és a projekt lefordítása
 
@@ -255,7 +255,7 @@ Fluxus topológiák további információkért lásd: [https://storm.apache.org/
 
     * `--remote`: Küldje el a Nimbus topológiát. A topológia van elosztva a fürt munkavégző csomópontjaihoz.
 
-    * `-R /writer.yaml`: Használja a `writer.yaml` fájl a topológiát. `-R`azt jelzi, hogy az erőforrás szerepel-e a jar-fájlra. A jar gyökerébe ezért van `/writer.yaml` elérési útja azt.
+    * `-R /writer.yaml`: Használja a `writer.yaml` fájl a topológiát. `-R` azt jelzi, hogy az erőforrás szerepel-e a jar-fájlra. A jar gyökerébe ezért van `/writer.yaml` elérési útja azt.
 
     * `--filter`: Bejegyzések feltöltése a `writer.yaml` topológiáját szereplő értékek a `dev.properties` fájlt. Például értékének a `kafka.topic` bejegyzés a fájlban cserélje le azt a `${kafka.topic}` topológia meghatározása bejegyzést.
 

@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 02/07/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 409dd26cc1dfcb1c562d175a43e842b213501d03
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 126f5c4db355af19a7151a267115127757b17599
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="azure-to-azure-replication-architecture"></a>Azure-az Azure-bA replikációs architektúrája
 
@@ -46,8 +46,8 @@ Ha engedélyezi az Azure Virtuálisgép-replikációt, az alábbi erőforrások 
 
 **Erőforrás** | **Részletek**
 --- | ---
-Cél-erőforráscsoport | Az erőforráscsoport, amelybe a replikált virtuális gépek a feladatátvételt követően tartoznak.
-Virtuális hálózati cél | A virtuális hálózatot, amelyben replikált virtuális gépek a feladatátvétel után. A hálózatleképezés jön létre a forrás és cél virtuális hálózatok között, és ez fordítva is igaz.
+**Cél-erőforráscsoport** | Az erőforráscsoport, amelybe a replikált virtuális gépek a feladatátvételt követően tartoznak.
+**Virtuális hálózati cél** | A virtuális hálózatot, amelyben replikált virtuális gépek a feladatátvétel után. A hálózatleképezés jön létre a forrás és cél virtuális hálózatok között, és ez fordítva is igaz.
 **Gyorsítótár-storage-fiókok** | Ahhoz a forrás virtuális gép változásai replikálódnak a cél tárfiókkal, ezeket nyomon követheti és a gyorsítótár tárfiók a forráshely küldött. Ez a lépés biztosítja a virtuális Gépen futó termelési alkalmazások gyakorolt minimális hatás mellett.
 **Cél storage-fiókok**  | Storage-fiók, amelyhez a rendszer replikálja az adatokat a célhelyre.
 **Cél rendelkezésre állási csoportok**  | Rendelkezésre állási készletek, amelyek a replikált virtuális gépek a feladatátvétel után.
@@ -69,10 +69,10 @@ Replikálás engedélyezve van, mint a Site Recovery bővítmény mobilitási sz
  - Az Office 365 authentication URL-címek vagy IP-címek
  - Gyorsítótár tárolási fiók IP-címek
 
-Ha engedélyezi a virtuális Gépre kiterjedő konzisztencia, a replikációs csoport gépek kommunikálhatnak egymással 20004 porton keresztül. Ellenőrizze, hogy nem blokkolja-e a belső kommunikáció 20004 porton keresztül a virtuális gépek közötti tűzfal készüléket.
+Ha engedélyezte a több virtuális gépre kiterjedő konzisztenciát, a replikációs csoportban található gépek a 20004-es porton kommunikálnak egymással. Ellenőrizze, hogy nem blokkolja-e tűzfal a virtuális gépek között a 20004-es porton keresztül zajló belső kommunikációt.
 
 > [!IMPORTANT]
-Ha azt szeretné, hogy a Linux virtuális gépek a replikációs csoport részeként, győződjön meg arról, a kimenő adatforgalmat a port 20004 manuálisan megnyitott állapotokban az adott Linux verzió útmutatást.
+Ha Linux rendszerű virtuális gépeket szeretne egy replikációs csoport részévé tenni, győződjön meg arról, hogy a 20004-es port esetében a kimenő adatforgalom manuális megnyitása megtörtént-e az adott Linux-verzió útmutatásainak megfelelően.
 
 ### <a name="step-3"></a>3. lépés
 

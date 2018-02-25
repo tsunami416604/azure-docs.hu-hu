@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/28/2017
+ms.date: 02/21/2018
 ms.author: nitinme
-ms.openlocfilehash: 5a4c7d944577685182240a24c522db4542c09fc2
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.openlocfilehash: 6e44ffc26bbb618e0ff14d412ed77e4827232b42
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="use-hdinsight-spark-cluster-to-analyze-data-in-data-lake-store"></a>A Data Lake Store adatok elemzése a HDInsight Spark-fürt használatával
 
@@ -136,7 +136,7 @@ HDInsight-fürtök Data Lake Store további tárhely és az Azure Storage-Blobba
 8. Az alkalmazás futtatását követően állítsa le a notebookot az erőforrások felszabadítása érdekében. Ehhez a notebook **File** (Fájl) menüjében kattintson a **Close and Halt** (Bezárás és leállítás) elemre. Ezzel leállítja és bezárja a notebookot.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Önálló Scala alkalmazás futtatását a Apache Spark-fürt létrehozása](apache-spark-create-standalone-application.md)
 * [Azure eszköztára IntelliJ HDInsight Tools használatával Spark-alkalmazások HDInsight Spark Linux-fürt létrehozása](apache-spark-intellij-tool-plugin.md)

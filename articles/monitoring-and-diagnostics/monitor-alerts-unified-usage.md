@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/05/2018
 ms.author: vinagara
-ms.openlocfilehash: 5e4068cc694b623f67d998f410f207356efd873f
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: b537bb42d43c4232c100061322e09bf492f2a20f
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/24/2018
 ---
-# <a name="create-view-and-manage-alerts-using-azure-monitor---alerts-preview"></a>Hozzon létre, riasztások megtekintése és kezelése figyelővel Azure - riasztások (előzetes verzió)
+# <a name="create-view-and-manage-alerts-using-azure-monitor---alerts-preview"></a>Hozzon létre, megtekintheti és kezelheti a riasztásokat figyelővel Azure - riasztások (előzetes verzió)
 
 ## <a name="overview"></a>Áttekintés
 Ez a cikk bemutatja, hogyan állíthat be riasztásokat a felületen új riasztások (előzetes verzió) Azure-portálon belül. Riasztási szabály definíciója van három részből áll:
@@ -28,14 +28,14 @@ Ez a cikk bemutatja, hogyan állíthat be riasztásokat a felületen új riaszt�
 - Feltételek: Adott feltétel, vagy programot, amely jel látható, ha indíthat el művelet
 - Művelet: A fogadó egy értesítés - adott hívás küldött e-mailben, SMS, webhook stb.
 
-Riasztások (előzetes verzió) kifejezést használja **napló riasztások** megadásával írhatja le a riasztások alapján egyéni lekérdezés esetén a jel [Azure Naplóelemzés](../log-analytics/log-analytics-tutorial-viewdata.md). A metrika riasztási funkció hívása [közel valós idejű metrika riasztások](monitoring-near-real-time-metric-alerts.md) a meglévő riasztások a felhasználói élmény néven **metrika riasztások** riasztásokban (előzetes verzió). A *metrika riasztások*, egyes erőforrástípusok biztosítanak [többdimenziós metrikák](monitoring-metric-charts.md) az adott Azure-erőforrás és ilyen erőforrás pontosabb további szűrők használata a tehető ezért riasztásai Dimenziók; az ilyen riasztások nevezzük **Multi-Dimensional metrika riasztások**.
+Riasztás (előzetes verzió) kifejezést használja **napló riasztások** megadásával írhatja le a riasztások alapján egyéni lekérdezés esetén a jel [Azure Naplóelemzés](../log-analytics/log-analytics-tutorial-viewdata.md) vagy [Azure Application Insights](../application-insights/app-insights-analytics.md). A metrika riasztási funkció hívása [közel valós idejű metrika riasztások](monitoring-near-real-time-metric-alerts.md) a meglévő riasztások a felhasználói élmény néven **metrika riasztások** riasztásokban (előzetes verzió). A *metrika riasztások*, egyes erőforrástípusok biztosítanak [többdimenziós metrikák](monitoring-metric-charts.md) az adott Azure-erőforrás és ilyen erőforrás pontosabb további szűrők használata a tehető ezért riasztásai Dimenziók; az ilyen riasztások nevezzük **Multi-Dimensional metrika riasztások**.
 Az Azure riasztások (előzetes verzió) is a riasztási szabályok és a segítségével felügyelheti azokat egy helyen; egyesített nézetét jeleníti meg beleértve az összes feloldatlan riasztások megtekintése. További tudnivalók funkciói [Azure Alerts(Preview) – áttekintés](monitoring-overview-unified-alerts.md).
 
 > [!NOTE]
-> Amíg Azure riasztások (előzetes verzió) biztosít egy új és továbbfejlesztett élmény riasztásokat hoznak létre az Azure-ban. A meglévő [Azure riasztások](monitoring-overview-alerts.md) élmény használható marad.
+> Amíg Azure riasztások (előzetes verzió) biztosít egy új és továbbfejlesztett élmény riasztásokat hoznak létre az Azure-ban. A meglévő [Azure riasztások](monitoring-overview-alerts.md) élmény továbbra is használható
 >
 
-Részletes útmutató a Azure figyelmeztetések (előzetes verzió) használatával a következő részletes van.
+Részletes tovább részletes útmutató a Azure figyelmeztetések (előzetes verzió) használatával.
 
 ## <a name="create-an-alert-rule-with-the-azure-portal"></a>Riasztási szabályt létrehozni és az Azure portál
 1. Az a [portal](https://portal.azure.com/), jelölje be **figyelő** és - FIGYELŐ szakaszban válasszon **riasztások (előzetes verzió)**.  
@@ -81,16 +81,13 @@ Részletes útmutató a Azure figyelmeztetések (előzetes verzió) használatá
 
     ![Többdimenziós metrika jel logikát konfigurálása](./media/monitor-alerts-unified/AlertsPreviewCriteriaMultiDim.png)
 
-8. *Riasztások jelentkezzen*: Győződjön meg arról **erőforrástípus** egy elemzés forrása, például a *Naplóelemzési*/*Application Insights*, majd egyszer megfelelő **erőforrás** van kiválasztva, kattintson a *végzett*. Következő az a **adja meg a feltételeket** elérhető, az erőforrás- és a jel listából jel beállítások listájának megtekintése gombra **egyéni napló keresés** beállítást a kiválasztott jelentkezzen figyelőszolgáltatás például *napló Elemzés*/*az Application Insights*.
+8. *Riasztások jelentkezzen*: Győződjön meg arról **erőforrástípus** egy elemzés forrása, például a *Naplóelemzési* vagy *Application Insights*, majd egyszer megfelelő  **erőforrás** van kiválasztva, kattintson a *végzett*. Következő az a **adja meg a feltételeket** elérhető, az erőforrás- és a jel listából jel beállítások listájának megtekintése gombra **egyéni napló keresés** beállítást a kiválasztott jelentkezzen figyelőszolgáltatás például *napló Elemzés* vagy *az Application Insights*.
 
    ![Válasszon ki egy erőforrástípust - egyéni napló keresése](./media/monitor-alerts-unified/AlertsPreviewResourceSelectionLog.png)
 
    > [!NOTE]
 
-   > **Riasztások preview** listák mentett napló keres típusként jel - napló (mentett lekérdezés), ha a kiválasztott erőforrás Naplóelemzési.
-   Hogy a lekérdezés Analytics tökéletes, és mentse azokat a jövőbeli használatra - további részletek elérhető [naplóelemzési napló kereséssel](../log-analytics/log-analytics-log-searches.md). Ezután a riasztási szabályok alapján közvetlenül, ezeket a lekérdezéseket hozhat létre, a mentett keresések a következő minta képernyőn látható módon:
-
-   ![Válasszon ki egy erőforrástípust - egyéni napló keresése](./media/monitor-alerts-unified/AlertsPreviewResourceSelectionLog-new.png)
+   > (Előzetes verzió) listák importálhatja analytics lekérdezési jel típusként - riasztások **napló (mentett lekérdezés)**, a fenti ábrán látható módon. A felhasználók a lekérdezés Analytics tökéletes és mentheti későbbi használatra a riasztások – használatával érhető el lekérdezés mentése részletesebben [naplóelemzési napló kereséssel](../log-analytics/log-analytics-log-searches.md) vagy [megosztott lekérdezés az application insightsban elemzés](../log-analytics/log-analytics-overview.md). 
 
 9.  *Riasztások jelentkezzen*: a kijelölt lekérdezés, mert így is fel kell tüntetni **keresési lekérdezés** mezőben; Ha a lekérdezés szintaxisa nem megfelelő a mező piros hibaüzenet jelenik meg. Ha a lekérdezés szintaxisát,-hivatkozás jelenik meg a megadott lekérdezés régebbi adatok végeznünk a időszak utolsó hat órán át az előző hét kapcsolóval grafikon.
 
@@ -125,7 +122,7 @@ A **napló riasztások** riasztások alapulhat:
     A **napló riasztások** további funkciókkal felülbírálhatja az alapértelmezett műveletek érhető el:
 
     - **E-mailes értesítés**: az e-mailben művelet csoport keresztül küldött felülbírálások tulajdonos. Az üzenet törzse nem módosítható.
-    - **Egyéni Json-adattartalmat tartalmaznak**: felülírja a webhook Json művelet csoportok által használt, és helyette az alapértelmezett adattartalom cserélje le a egyéni hasznos adatok között. A webhook formátumok további részletekért lásd: [webhook műveleti napló riasztások](monitor-alerts-unified-log-webhook.md)
+    - **Egyéni Json-adattartalmat tartalmaznak**: felülírja a webhook Json művelet csoportok által használt, és helyette az alapértelmezett adattartalom cserélje le a egyéni hasznos adatok között. A webhook formátumok további információkért lásd: [webhook műveleti napló riasztások](monitor-alerts-unified-log-webhook.md)
 
         ![A művelet felülbírálásokat napló riasztások](./media/monitor-alerts-unified/AlertsPreviewOverrideLog.png)
 

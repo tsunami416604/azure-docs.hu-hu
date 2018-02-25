@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/28/2017
+ms.date: 02/21/2018
 ms.author: nitinme
-ms.openlocfilehash: 6428c6d9fcb577f18221ee48a61456c460bd8176
-ms.sourcegitcommit: 651a6fa44431814a42407ef0df49ca0159db5b02
+ms.openlocfilehash: bd69d3c353c7f44efb37e2359412aa3a9f3e8f8d
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="using-azure-data-lake-store-for-big-data-requirements"></a>Azure Data Lake Store használatát a big Data típusú adatok követelmények
 Nagy adatfeldolgozási négy fő szakaszból áll:
@@ -41,7 +41,7 @@ Ez jelöli, amelyek kisebb adatkészletek prototípusának a big Data típusú a
 | Adatforrás | Betöltési használatával |
 | --- | --- |
 | Helyi számítógép |<ul> <li>[Azure Portal](/data-lake-store-get-started-portal.md)</li> <li>[Azure PowerShell](data-lake-store-get-started-powershell.md)</li> <li>[Az Azure platformfüggetlen parancssori felület 2.0](data-lake-store-get-started-cli-2.0.md)</li> <li>[A Data Lake Tools for Visual Studio használatával](../data-lake-analytics/data-lake-analytics-data-lake-tools-get-started.md) </li></ul> |
-| Az Azure Storage-Blobba |<ul> <li>[Azure Data Factory](../data-factory/connector-azure-data-lake-store.md)</li> <li>[AdlCopy eszköz](data-lake-store-copy-data-azure-storage-blob.md)</li><li>[HDInsight-fürtön futó ból a DistCp](data-lake-store-copy-data-wasb-distcp.md)</li> </ul> |
+| Azure Storage Blob |<ul> <li>[Azure Data Factory](../data-factory/connector-azure-data-lake-store.md)</li> <li>[AdlCopy eszköz](data-lake-store-copy-data-azure-storage-blob.md)</li><li>[HDInsight-fürtön futó ból a DistCp](data-lake-store-copy-data-wasb-distcp.md)</li> </ul> |
 
 ### <a name="streamed-data"></a>Adatfolyamként továbbított adatok
 Adatok, például alkalmazások, eszközök, érzékelőket és stb különböző forrásokból létrehozható jelképez. Ezek az adatok különböző eszközök által történő egy Data Lake Store meghatározták. Ezek az eszközök általában fog rögzítése és feldolgozni az adatokat az esemény által alapon valós idejű, majd írja be az események kötegekben a Data Lake Store, hogy azok további dolgozhatók fel.
@@ -63,7 +63,7 @@ Ez a fajta adatkészlet kifejezetten feltüntettük mert web server napló adato
 
 * [Az Azure platformfüggetlen parancssori felület 2.0](data-lake-store-get-started-cli-2.0.md)
 * [Azure PowerShell](data-lake-store-get-started-powershell.md)
-* [Az Azure Data Lake Store .NET SDK](data-lake-store-get-started-net-sdk.md)
+* [Azure Data Lake Store .NET SDK](data-lake-store-get-started-net-sdk.md)
 * [Azure Data Factory](../data-factory/copy-activity-overview.md)
 
 Web server napló adatfeltöltési, valamint a más típusú adatok (például közösségi hangulati elemek adatok) feltöltése akkor a saját egyéni parancsfájlok alkalmazások írni, mert azt a rugalmasságot biztosít az adatok feltöltése az összetevő a nagyobb big Data típusú adatok alkalmazás részeként jó módszer. Egyes esetekben ez a kód is igénybe vehet az űrlap egy parancsfájl vagy egy egyszerű parancssori segédprogrammal. Más esetekben a kód egy üzleti alkalmazás vagy megoldás nagy adatfeldolgozási integrálja használható.
@@ -72,13 +72,13 @@ Web server napló adatfeltöltési, valamint a más típusú adatok (például k
 A legtöbb HDInsight-fürttípusok (Hadoop, HBase, Storm) Data Lake Store támogatják az adatok tárolási tára. A HDInsight-fürtök elérni az adatokat az Azure Storage Blobs (WASB). A jobb teljesítmény érdekében átmásolhatja az adatokat WASB be a fürthöz tartozó Data Lake Store-fiókba. A következő eszközök segítségével másolja az adatokat.
 
 * [Apache ból a DistCp](data-lake-store-copy-data-wasb-distcp.md)
-* [AdlCopy szolgáltatás](data-lake-store-copy-data-azure-storage-blob.md)
+* [AdlCopy Service](data-lake-store-copy-data-azure-storage-blob.md)
 * [Azure Data Factory](../data-factory/connector-azure-data-lake-store.md)
 
 ### <a name="data-stored-in-on-premises-or-iaas-hadoop-clusters"></a>Tárolt adatokat a helyszíni vagy infrastruktúra-szolgáltatási Hadoop fürtök
 Nagy mennyiségű adat tárolható meglévő Hadoop-fürtök, helyi HDFS használatával gépeken. A Hadoop-fürtök egy helyi központi esetleg lehet, hogy az infrastruktúra-szolgáltatási fürtöt az Azure-on belül. Előfordulhat, hogy az ilyen adatok másolása az Azure Data Lake Store megközelítésre egyszeri vagy ismétlődő módon követelményeinek. Ennek eléréséhez használható különböző lehetőség áll rendelkezésre. Az alábbiakban olvashat egy listát alternatívák és a kapcsolódó kompromisszumot.
 
-| Módszer | Részletek | Előnyei | Megfontolandó szempontok |
+| Approach | Részletek | Előnyei | Megfontolandó szempontok |
 | --- | --- | --- | --- |
 | Adatok másolása közvetlenül a Hadoop-fürtök az Azure Data Lake Store az Azure Data Factory (ADF) használatával |[ADF HDFS adatforrásként támogatja.](../data-factory/connector-hdfs.md) |ADF out-of-az-box támogatást biztosít az HDFS és első-végpontok kezelése és figyelése |Az adatkezelési átjáró telepített helyszíni vagy a az IaaS a fürt szükséges |
 | Adatok exportálása a Hadoop-fájlok formájában. Ezután másolja a fájlokat az Azure Data Lake Store megfelelő mechanizmussal. |Azure Data Lake Store használatával másolhat fájlokat: <ul><li>[Az Azure PowerShell, a Windows operációs rendszer](data-lake-store-get-started-powershell.md)</li><li>[Az Azure platformfüggetlen parancssori felület 2.0 a nem - Windows operációs rendszer](data-lake-store-get-started-cli-2.0.md)</li><li>Minden Data Lake Store SDK használatával egyéni alkalmazás</li></ul> |Gyors megkezdéséhez. Testre szabott feltöltések teheti |Folyamat, amely magában foglalja a több technológiák. Kezelési és figyelési eszközök testreszabott jellegéből időbeli kihívást kell nőhet |
@@ -123,7 +123,7 @@ Az alábbi eljárások segítségével a saját parancsfájl/alkalmazás adatok 
 
 * [Az Azure platformfüggetlen parancssori felület 2.0](data-lake-store-get-started-cli-2.0.md)
 * [Azure PowerShell](data-lake-store-get-started-powershell.md)
-* [Az Azure Data Lake Store .NET SDK](data-lake-store-get-started-net-sdk.md)
+* [Azure Data Lake Store .NET SDK](data-lake-store-get-started-net-sdk.md)
 
 ## <a name="visualize-data-in-data-lake-store"></a>A Data Lake Store-adatok ábrázolása
 A szolgáltatások kombinációját hozhat létre a Data Lake Store-ban tárolt adatok vizuális ábrázolásai.

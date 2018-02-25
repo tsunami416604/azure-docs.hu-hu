@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/16/2016
 ms.author: kumud
-ms.openlocfilehash: 8ae99c7ce6382626657777d003a1cb82348c4aba
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: a4096b11a828cf6676aa22b11c4dd4d75f3b0286
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="introduction-to-azure-advisor"></a>Bevezetés az Azure Advisor
 
@@ -52,7 +52,7 @@ Egy kategóriát az adott kategóriába javaslatok listájának megjelenítésé
 
 Válassza ki ahhoz a javaslat megvalósításához ajánlott beavatkozást.  Egy egyszerű felületen nyílik meg, amely lehetővé teszi a javaslat megvalósítását, vagy tekintse meg a dokumentációt, amely segítséget nyújt végrehajtására.  Ajánlást bevezetése után is igénybe vehet az Advisor ismeri fel, amely naponta.
 
-Ha nem kíván azonnal intézkedhet ajánlása, emlékeztet, hogy egy adott időszakra vonatkozóan, vagy zárja be azt.  Ha nem szeretne kapni egy előfizetéshez vagy erőforráscsoporthoz javaslatok, konfigurálhatja az Advisor csak a megadott előfizetésekhez és erőforráscsoportokhoz javaslatok létrehozni.
+Ha nem kíván azonnal intézkedhet ajánlása, halassza el az adott időszakra vonatkozóan, vagy zárja be azt.  Ha nem szeretne kapni egy előfizetéshez vagy erőforráscsoporthoz javaslatok, konfigurálhatja az Advisor csak a megadott előfizetésekhez és erőforráscsoportokhoz javaslatok létrehozni.
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
@@ -69,9 +69,9 @@ Az előfizetéshez tartozó Advisor-javaslatokra megszerzéséhez először regi
 
 Az Advisor virtuális gépek rendelkezésre állási készletek, alkalmazásátjárót, alkalmazásszolgáltatások, SQL Server-kiszolgálók, SQL-adatbázisok és Redis Cache vonatkozó javaslatokkal szolgál.
 
-### <a name="can-i-snooze-or-dismiss-a-recommendation"></a>Emlékeztet vagy hagyja figyelmen kívül az ajánlás?
+### <a name="can-i-postpone-or-dismiss-a-recommendation"></a>Halassza el vagy hagyja figyelmen kívül az ajánlás?
 
-Emlékeztet, vagy hagyja figyelmen kívül az ajánlás olyan környezetekben, kattintson a **emlékeztet** hivatkozásra. Megadhat egy időtartamot időszak vagy select **soha** elvetni a javaslat.
+Halassza el, vagy hagyja figyelmen kívül az ajánlás olyan környezetekben, kattintson a **elhalasztás** hivatkozásra. Megadhat egy elhalasztás időszak vagy select **soha** elvetni a javaslat.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: glenga
-ms.openlocfilehash: 90a192f58f0e4b285f7aece8a3555c08df051f38
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: e7141d92a186bec67c374bd5046ee08047feedec
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Az Azure Functions eseményindítók és kötések fogalmak
 
@@ -43,7 +43,7 @@ Visual Studio használatával hozzon létre egy osztálytár funkciók fejleszt�
 
 Információ arról, hogy mely kötések még csak előzetes verziójúak vagy üzemi használatra jóváhagyott: [támogatott nyelv](supported-languages.md).
 
-## <a name="example-queue-trigger-and-table-output-binding"></a>Példa: a várólista eseményindító és tábla kimeneti kötése
+## <a name="example-trigger-and-binding"></a>Példa eseményindító és kötés
 
 Tegyük fel, hogy egy új sort írhat Azure Table storage, amikor egy új üzenet jelenik meg az Azure Queue storage. Ebben a forgatókönyvben az Azure Queue valósítható tárolási eseményindító és az Azure Table storage kimeneti kötése. 
 
@@ -79,7 +79,7 @@ Megtekintheti és szerkesztheti a tartalmát *function.json* az Azure portálon 
 > [!NOTE]
 > Értékének `connection` , amely tartalmazza a kapcsolati karakterlánc, nem pedig magát a kapcsolati karakterlánc alkalmazásbeállítás neve. Kötések kapcsolat használatát a legjobb kényszerítéséhez Alkalmazásbeállítások tárolt karakterláncok gyakorlat az, hogy *function.json* szolgáltatás titkos kulcsokat tartalmaz.
 
-Ez a C# parancsfájlkód, amely kompatibilis a eseményindító és kötés. Figyelje meg, hogy a paraméter, amely a várólista üzenettartalom neve `order`; a név szükség, mert a `name` tulajdonságérték *function.json* van`order` 
+Ez a C# parancsfájlkód, amely kompatibilis a eseményindító és kötés. Figyelje meg, hogy a paraméter, amely a várólista üzenettartalom neve `order`; a név szükség, mert a `name` tulajdonságérték *function.json* van `order` 
 
 ```cs
 #r "Newtonsoft.Json"
@@ -124,7 +124,7 @@ function generateRandomId() {
 }
 ```
 
-Egy osztálytár, a következő eseményindítót és a kötési információ &mdash; várólista és a táblázat neve, a storage-fiókok függvény bemeneti és kimeneti paramétereinek &mdash; attribútumok biztosítja:
+Egy osztálytár, a következő eseményindítót és a kötési információ &mdash; várólista és a táblázat neve, a storage-fiókok függvény bemeneti és kimeneti paramétereinek &mdash; function.json fájl helyett attribútumok biztosítja. Például:
 
 ```csharp
  public static class QueueTriggerTableOutput
@@ -156,18 +156,59 @@ Egy osztálytár, a következő eseményindítót és a kötési információ &m
 
 Az összes eseményindítók és kötések vannak egy `direction` tulajdonságot a *function.json* fájlt:
 
-- Az eseményindítók az irány mindig van kapcsolva`in`
-- Bemeneti és kimeneti kötések használhatják `in` és`out`
+- Az eseményindítók az irány mindig van kapcsolva `in`
+- Bemeneti és kimeneti kötések használhatják `in` és `out`
 - Néhány kötések támogatja a speciális paraméterirányt `inout`. Ha `inout`, csak a **speciális szerkesztő** érhető el a **integráció** fülre.
 
 Használata esetén [egy osztálytár attribútumokat](functions-dotnet-class-library.md) eseményindítók és kötések konfigurálásához irányát az attribútumok konstruktorában megadott vagy következtetni a paraméter típusának.
 
-## <a name="using-the-function-return-type-to-return-a-single-output"></a>A függvény visszatérési típusa használatával egyetlen kimeneti vissza
+## <a name="using-the-function-return-value"></a>Függvény visszatérési értéke
 
-A fenti példa bemutatja, hogyan kimeneti adhat egy kötést, amely a megadott függvény visszatérési értéke használandó *function.json* különleges értéke `$return` a a `name` tulajdonság. (Ez csak akkor támogatott a nyelveket, amelyeken a visszatérési érték, például a parancsfájl C#, JavaScript és F #.) Ha egy függvény több kimeneti kötése, `$return` csak az egyik a kimeneti kötéseket. 
+Visszatérési értékkel rendelkező nyelven köthető egy kimeneti kötése az eredményül kapott értéket:
+
+* A C# osztálytár a metódus visszatérési érték a kimeneti kötése attribútum vonatkozik.
+* Más nyelveken, állítsa be a `name` tulajdonság *function.json* való `$return`.
+
+Ha írási egynél több elem van szüksége, használja a [gyűjtő objektum](functions-reference-csharp.md#writing-multiple-output-values) a visszatérési érték helyett. Ha több kimeneti kötése, használ az eredményül kapott értéket csak az egyiket.
+
+Tekintse meg a nyelvspecifikus példát:
+
+* [C#](#c-example)
+* [C# script (.csx)](#c-script-example)
+* [F#](#f-example)
+* [JavaScript](#javascript-example)
+
+### <a name="c-example"></a>C# – példa
+
+Az alábbiakban C#-kódban, amely az eredményül kapott értéket használ egy kimeneti kötése, aszinkron például követi:
+
+```cs
+[FunctionName("QueueTrigger")]
+[return: Blob("output-container/{id}")]
+public static string Run([QueueTrigger("inputqueue")]WorkItem input, TraceWriter log)
+{
+    string json = string.Format("{{ \"id\": \"{0}\" }}", input.Id);
+    log.Info($"C# script processed queue message. Item={json}");
+    return json;
+}
+```
+
+```cs
+[FunctionName("QueueTrigger")]
+[return: Blob("output-container/{id}")]
+public static Task<string> Run([QueueTrigger("inputqueue")]WorkItem input, TraceWriter log)
+{
+    string json = string.Format("{{ \"id\": \"{0}\" }}", input.Id);
+    log.Info($"C# script processed queue message. Item={json}");
+    return Task.FromResult(json);
+}
+```
+
+### <a name="c-script-example"></a>C# parancsfájl – példa
+
+Itt van a kimeneti kötése a *function.json* fájlt:
 
 ```json
-// excerpt of function.json
 {
     "name": "$return",
     "type": "blob",
@@ -176,10 +217,9 @@ A fenti példa bemutatja, hogyan kimeneti adhat egy kötést, amely a megadott f
 }
 ```
 
-Az alábbi megjelenítése Példák hogyan visszatérési típusok használhatók kimeneti kötések C# parancsfájl, JavaScript és F #.
+Ez a C# parancsfájlkód, aszinkron például követi:
 
 ```cs
-// C# example: use method return value for output binding
 public static string Run(WorkItem input, TraceWriter log)
 {
     string json = string.Format("{{ \"id\": \"{0}\" }}", input.Id);
@@ -189,7 +229,6 @@ public static string Run(WorkItem input, TraceWriter log)
 ```
 
 ```cs
-// C# example: async method, using return value for output binding
 public static Task<string> Run(WorkItem input, TraceWriter log)
 {
     string json = string.Format("{{ \"id\": \"{0}\" }}", input.Id);
@@ -198,21 +237,49 @@ public static Task<string> Run(WorkItem input, TraceWriter log)
 }
 ```
 
+### <a name="f-example"></a>F # – példa
+
+Itt van a kimeneti kötése a *function.json* fájlt:
+
+```json
+{
+    "name": "$return",
+    "type": "blob",
+    "direction": "out",
+    "path": "output-container/{id}"
+}
+```
+
+A F # kód itt látható:
+
+```fsharp
+let Run(input: WorkItem, log: TraceWriter) =
+    let json = String.Format("{{ \"id\": \"{0}\" }}", input.Id)   
+    log.Info(sprintf "F# script processed queue message '%s'" json)
+    json
+```
+
+### <a name="javascript-example"></a>JavaScript – példa
+
+Itt van a kimeneti kötése a *function.json* fájlt:
+
+```json
+{
+    "name": "$return",
+    "type": "blob",
+    "direction": "out",
+    "path": "output-container/{id}"
+}
+```
+
+A JavaScript, az eredményül kapott értéket a második paraméterben kerül `context.done`:
+
 ```javascript
-// JavaScript: return a value in the second parameter to context.done
 module.exports = function (context, input) {
     var json = JSON.stringify(input);
     context.log('Node.js script processed queue message', json);
     context.done(null, json);
 }
-```
-
-```fsharp
-// F# example: use return value for output binding
-let Run(input: WorkItem, log: TraceWriter) =
-    let json = String.Format("{{ \"id\": \"{0}\" }}", input.Id)   
-    log.Info(sprintf "F# script processed queue message '%s'" json)
-    json
 ```
 
 ## <a name="binding-datatype-property"></a>Kötés dataType tulajdonsága
@@ -232,13 +299,32 @@ Például a JavaScriptek dinamikusan beírt nyelven, használja a `dataType` tul
 
 Más beállításokat a `dataType` vannak `stream` és `string`.
 
-## <a name="resolving-app-settings"></a>Alkalmazásbeállítások feloldása
+## <a name="binding-expressions-and-patterns"></a>Kötelező kifejezések és minták
 
-Ajánlott eljárásként titkos kulcsok és a kapcsolati karakterláncok használatával kell irányítani Alkalmazásbeállítások, nem pedig konfigurációs fájlok. Ez korlátozza, hogy ezeknek a kulcsoknak access, és lehetővé teszi a biztonságos tárolására *function.json* a egy nyilvános verziókövetési tárházzal.
+Az egyik leghatékonyabb részeit, eseményindítók és kötések *kötési kifejezésként*. Az a *function.json* fájlt, és függvényparamétereket és kód, használhatja a különböző forrásokból származó értékek feloldható kifejezések.
+
+A legtöbb kifejezések használatával őket kapcsos zárójelek azonosítja. A várólista funkció, például a `{queueTrigger}` oldja fel a sor szövege. Ha a `path` tulajdonság a BLOB kimeneti kötése `container/{queueTrigger}` és egy üzenetsor váltja ki a függvény `HelloWorld`, nevű blob `HelloWorld` jön létre.
+
+Kötési kifejezés típusai
+
+* [Alkalmazásbeállítások](#binding-expressions---app-settings)
+* [Eseményindító fájl neve](#binding-expressions---trigger-file-name)
+* [Eseményindító metaadatok](#binding-expressions---trigger-metadata)
+* [JSON hasznos adat található](#binding-expressions---json-payloads)
+* [Új GUID-ja](#binding-expressions---create-guids)
+* [Aktuális dátum és idő](#binding-expressions---current-time)
+
+### <a name="binding-expressions---app-settings"></a>Kötési kifejezésként - Alkalmazásbeállítások
+
+Ajánlott eljárásként titkos kulcsok és a kapcsolati karakterláncok használatával kell irányítani Alkalmazásbeállítások, nem pedig konfigurációs fájlok. Ez korlátozza, hogy ezeknek a kulcsoknak access, és lehetővé teszi a biztonságos, mint például a fájlok tárolására szolgáló *function.json* a nyilvános forráskódú vezérlő tárházak találhatók.
 
 Alkalmazásbeállítások is hasznosak, ha meg szeretné változtatni a konfiguráció a környezet alapján. Például egy tesztkörnyezetben, érdemes lehet egy másik várólista vagy a blob-tároló figyelésére.
 
-Alkalmazásbeállítások fakadó problémák megoldásával, amikor egy érték szimpla százalékjelek, például a `%MyAppSetting%`. Vegye figyelembe, hogy a `connection` eseményindítók és kötések tulajdonsága egy különleges esetben, és automatikusan feloldja az értékeket, ha az alkalmazás beállításait. 
+App beállítás kötési kifejezésekben másképp azonosítja a kötés kifejezésekre: kapcsos zárójelek helyett százalékjelek csomagolni vannak. Például ha a kimeneti blob kötési útvonal `%Environment%/newblob.txt` és a `Environment` app beállítás értéke `Development`, blob létrejön a `Development` tároló.
+
+Egy függvény helyben fut, amikor app beállításértékek származik a *local.settings.json* fájlt.
+
+Vegye figyelembe, hogy a `connection` eseményindítók és kötések tulajdonsága egy különleges esetben, és automatikusan feloldja az értékeket, Alkalmazásbeállítások százalékjelek nélkül. 
 
 A következő példa egy egy Alkalmazásbeállítás használó Azure Queue Storage eseményindító `%input-queue-name%` elindítani a várólista meghatározásához.
 
@@ -268,9 +354,75 @@ public static void Run(
 }
 ```
 
-## <a name="trigger-metadata-properties"></a>Eseményindító metaadat-tulajdonságainak
+### <a name="binding-expressions---trigger-file-name"></a>Kötési kifejezésként - eseményindító fájl neve
 
-Sok eseményindítók mellett a hasznos adatforgalmat egy eseményindító (például az üzenetsorban található üzenetet függvény kiváltó) által biztosított, adja meg a további metaadatokat értékét. Ezeket az értékeket a C# és F # vagy tulajdonságok bemeneti paraméter használható a `context.bindings` JavaScript objektumban. 
+A `path` Blob eseményindító egy mintát, amely lehetővé teszi, hogy tekintse meg az eseményindító blob meg más kötésekben nevét, és működnek kódot is járhat. A mintát adja meg, melyik blobok elindítható egy függvény meghívása szűrési feltételeket is tartalmazhatnak.
+
+A következő Blob eseményindító kötés, például a a `path` minta `sample-images/{filename}`, ami létrehoz egy kötési kifejezése nevű `filename`:
+
+```json
+{
+  "bindings": [
+    {
+      "name": "image",
+      "type": "blobTrigger",
+      "path": "sample-images/{filename}",
+      "direction": "in",
+      "connection": "MyStorageConnection"
+    },
+    ...
+```
+
+A kifejezés `filename` majd használható egy kimeneti kötése a létrehozás alatt áll a BLOB nevének megadásához:
+
+```json
+    ...
+    {
+      "name": "imageSmall",
+      "type": "blob",
+      "path": "sample-images-sm/{filename}",
+      "direction": "out",
+      "connection": "MyStorageConnection"
+    }
+  ],
+}
+```
+
+Funkciókódot hozzáfér az ugyanazon érték használatával `filename` paraméter neve:
+
+```csharp
+// C# example of binding to {filename}
+public static void Run(Stream image, string filename, Stream imageSmall, TraceWriter log)  
+{
+    log.Info($"Blob trigger processing: {filename}");
+    // ...
+} 
+```
+
+<!--TODO: add JavaScript example -->
+<!-- Blocked by bug https://github.com/Azure/Azure-Functions/issues/248 -->
+
+Az azonos nem tudják használni a kötés kifejezések és a minták azokra az attribútumokra vonatkozik az osztálykönyvtárakhoz. A következő példában a attribútum konstruktorparaméterek megegyeznek `path` értékeket az előző *function.json* példák: 
+
+```csharp
+[FunctionName("ResizeImage")]
+public static void Run(
+    [BlobTrigger("sample-images/{filename}")] Stream image,
+    [Blob("sample-images-sm/{filename}", FileAccess.Write)] Stream imageSmall,
+    string filename,
+    TraceWriter log)
+{
+    log.Info($"Blob trigger processing: {filename}");
+    // ...
+}
+
+```
+
+A fájlnevet, például a bővítmény részei a kifejezéseket is létrehozhat. A Blob elérési út karakterláncát kifejezések és minták használatával további információkért lásd: a [tárolási blob kötési hivatkozási](functions-bindings-storage-blob.md).
+ 
+### <a name="binding-expressions---trigger-metadata"></a>Kötési kifejezés - eseményindító metaadatok
+
+Sok eseményindítók mellett a hasznos adatforgalmat egy eseményindító (például az üzenetsorban található üzenetet függvény kiváltó tartalmának) által biztosított, adja meg a további metaadatokat értékét. Ezeket az értékeket a C# és F # vagy tulajdonságok bemeneti paraméter használható a `context.bindings` JavaScript objektumban. 
 
 Például az Azure Queue storage eseményindító támogatja a következő tulajdonságokkal:
 
@@ -304,112 +456,11 @@ A metaadatok értékek érhetők el az *function.json* fájl tulajdonságai. Teg
 
 A megfelelő áttekintésével foglalkozó cikkben minden eseményindító metaadat-tulajdonságainak részleteit ismerteti. Egy vonatkozó példáért lásd: [várólista eseményindító metaadatok](functions-bindings-storage-queue.md#trigger---message-metadata). Dokumentáció is rendelkezésre áll, az a **integráció** a portál lapján, a a **dokumentáció** című szakaszt a kötési konfigurációja területen.  
 
-## <a name="binding-expressions-and-patterns"></a>Kötelező kifejezések és minták
+### <a name="binding-expressions---json-payloads"></a>Kötési kifejezésként - JSON hasznos adat található
 
-Az egyik leghatékonyabb részeit, eseményindítók és kötések *kötési kifejezésként*. A konfigurációban az egyik kötéshez ezután felhasználhatók más kötésekben vagy a kód a minta kifejezésekre adhat meg. Eseményindító metaadatok is használható a kötési kifejezésekben, az előző szakaszban ismertetett módon.
+Ha egy eseményindító hasznos JSON, hivatkozhat más kötésekben ugyanabban a függvényben, és a funkciókódot konfigurációja tulajdonságát.
 
-Tegyük fel például, egy adott blob storage tárolót, hasonlóan a képek átméretezése szeretné a **kép méret** -sablon a **új függvény** az Azure-portál oldalának (lásd a **minták**  forgatókönyv). 
-
-Itt a *function.json* definíciója:
-
-```json
-{
-  "bindings": [
-    {
-      "name": "image",
-      "type": "blobTrigger",
-      "path": "sample-images/{filename}",
-      "direction": "in",
-      "connection": "MyStorageConnection"
-    },
-    {
-      "name": "imageSmall",
-      "type": "blob",
-      "path": "sample-images-sm/{filename}",
-      "direction": "out",
-      "connection": "MyStorageConnection"
-    }
-  ],
-}
-```
-
-Figyelje meg, hogy a `filename` paraméter van megadva a blob eseményindító definícióját, mind a blob a kimeneti kötése. Ez a paraméter funkciókódot is használható.
-
-```csharp
-// C# example of binding to {filename}
-public static void Run(Stream image, string filename, Stream imageSmall, TraceWriter log)  
-{
-    log.Info($"Blob trigger processing: {filename}");
-    // ...
-} 
-```
-
-<!--TODO: add JavaScript example -->
-<!-- Blocked by bug https://github.com/Azure/Azure-Functions/issues/248 -->
-
-Az azonos nem tudják használni a kötés kifejezések és a minták azokra az attribútumokra vonatkozik az osztálykönyvtárakhoz. Például ez egy kép átméretezése függvény osztály könyvtárban:
-
-```csharp
-[FunctionName("ResizeImage")]
-[StorageAccount("AzureWebJobsStorage")]
-public static void Run(
-    [BlobTrigger("sample-images/{name}")] Stream image, 
-    [Blob("sample-images-sm/{name}", FileAccess.Write)] Stream imageSmall, 
-    [Blob("sample-images-md/{name}", FileAccess.Write)] Stream imageMedium)
-{
-    var imageBuilder = ImageResizer.ImageBuilder.Current;
-    var size = imageDimensionsTable[ImageSize.Small];
-
-    imageBuilder.Build(image, imageSmall,
-        new ResizeSettings(size.Item1, size.Item2, FitMode.Max, null), false);
-
-    image.Position = 0;
-    size = imageDimensionsTable[ImageSize.Medium];
-
-    imageBuilder.Build(image, imageMedium,
-        new ResizeSettings(size.Item1, size.Item2, FitMode.Max, null), false);
-}
-
-public enum ImageSize { ExtraSmall, Small, Medium }
-
-private static Dictionary<ImageSize, (int, int)> imageDimensionsTable = new Dictionary<ImageSize, (int, int)>() {
-    { ImageSize.ExtraSmall, (320, 200) },
-    { ImageSize.Small,      (640, 400) },
-    { ImageSize.Medium,     (800, 600) }
-};
-```
-
-### <a name="create-guids"></a>GUID azonosítók létrehozása
-
-A `{rand-guid}` kötési kifejezés létrehoz egy GUID Azonosítót. A következő példában egy GUID hozzon létre egy egyedi blob neve: 
-
-```json
-{
-  "type": "blob",
-  "name": "blobOutput",
-  "direction": "out",
-  "path": "my-output-container/{rand-guid}"
-}
-```
-
-### <a name="current-time"></a>Aktuális idő
-
-A kötési kifejezés `DateTime` feloldása egy olyan `DateTime.UtcNow`.
-
-```json
-{
-  "type": "blob",
-  "name": "blobOutput",
-  "direction": "out",
-  "path": "my-output-container/{DateTime}"
-}
-```
-
-## <a name="bind-to-custom-input-properties"></a>Egyéni bemeneti tulajdonságok kötése
-
-Kötési kifejezésként tulajdonságok határozzák meg az eseményindító forgalma maga is hivatkozhat. Érdemes lehet például egy olyan webhook megadott fájlnév a blob storage fájlba dinamikusan kötni.
-
-Például a következő *function.json* tulajdonságot használja `BlobName` az eseményindító forgalma a:
+Az alábbi példa azt mutatja meg a *function.json* fájl, amely egy blob neve megkapja a JSON-ban webhook függvény: `{"BlobName":"HelloWorld.txt"}`. Egy Blob bemeneti kötése beolvassa a blob, és a HTTP kimeneti kötése értéket ad vissza a blob tartalmát a HTTP-válasz. Figyelje meg, hogy a Blob bemeneti kötése azáltal közvetlenül a blob nevének beolvasása a `BlobName` tulajdonság (`"path": "strings/{BlobName}"`)
 
 ```json
 {
@@ -424,7 +475,7 @@ Például a következő *function.json* tulajdonságot használja `BlobName` az 
       "name": "blobContents",
       "type": "blob",
       "direction": "in",
-      "path": "strings/{BlobName}",
+      "path": "strings/{BlobName.FileName}.{BlobName.Extension}",
       "connection": "AzureWebJobsStorage"
     },
     {
@@ -436,7 +487,7 @@ Például a következő *function.json* tulajdonságot használja `BlobName` az 
 }
 ```
 
-Ehhez a C# és F #, meg kell határoznia egy POCO, amely meghatározza a mezőket, amelyeknek deszerializálása az eseményindító tartalmaz.
+Ennek a C# és F # működéséhez szükséges egy osztály, amely meghatározza a mezők nem deszerializálhatók, az alábbi példában látható módon:
 
 ```csharp
 using System.Net;
@@ -458,7 +509,7 @@ public static HttpResponseMessage Run(HttpRequestMessage req, BlobInfo info, str
 }
 ```
 
-A JavaScript JSON-deszerializálás automatikusan történik, és közvetlenül a tulajdonságok használhatók.
+A JavaScript JSON-deszerializálás automatikusan történik.
 
 ```javascript
 module.exports = function (context, info) {
@@ -476,9 +527,67 @@ module.exports = function (context, info) {
 }
 ```
 
-## <a name="configuring-binding-data-at-runtime"></a>Futásidőben kötés adatok konfigurálása
+#### <a name="dot-notation"></a>Felépítését
 
-C# és egyéb .NET-nyelveket, használhat egy imperatív kötés mintát, szemben a deklaratív kötések *function.json* és attribútumok. Imperatív kötés akkor hasznos, ha a kötési paraméterekhez kell számítani a Tervező helyett futásidejű időpontban. További tudnivalókért lásd: [imperatív kötéseken keresztül futásidőben kötés](functions-reference-csharp.md#imperative-bindings) a C# fejlesztői útmutatóban.
+A tulajdonságokat a JSON-adattartalmat némelyike tulajdonságokkal rendelkező objektumok, ha azokat közvetlenül által pontjelöléssel hivatkozhat. Tegyük fel például, hogy a JSON néz ki:
+
+```json
+{"BlobName": {
+  "FileName":"HelloWorld",
+  "Extension":"txt"
+  }
+}
+```
+
+Olvassa el a közvetlenül `FileName` , `BlobName.FileName`. A JSON formátumú Íme, mi a `path` tulajdonságot az előző példában az alábbihoz hasonlóan fog kinézni:
+
+```json
+"path": "strings/{BlobName.FileName}.{BlobName.Extension}",
+```
+
+A C# a két osztály kellene:
+
+```csharp
+public class BlobInfo
+{
+    public BlobName BlobName { get; set; }
+}
+public class BlobName
+{
+    public string FileName { get; set; }
+    public string Extension { get; set; }
+}
+```
+
+### <a name="binding-expressions---create-guids"></a>Kötési kifejezés - GUID-EK létrehozása
+
+A `{rand-guid}` kötési kifejezés létrehoz egy GUID Azonosítót. A következő blob elérési utat egy `function.json` fájlt hoz létre egy blobot egy nevet, például a *50710cb5-84b9 - 4d 87 – 9d 83-a03d6976a682.txt*.
+
+```json
+{
+  "type": "blob",
+  "name": "blobOutput",
+  "direction": "out",
+  "path": "my-output-container/{rand-guid}"
+}
+```
+
+### <a name="binding-expressions---current-time"></a>A kötési kifejezésként - jelenlegi időpontnál
+
+A kötési kifejezés `DateTime` feloldása egy olyan `DateTime.UtcNow`. A következő blob elérési utat egy `function.json` fájlt hoz létre egy blobot egy nevet, például a *2018-02-16T17-59-55Z.txt*.
+
+```json
+{
+  "type": "blob",
+  "name": "blobOutput",
+  "direction": "out",
+  "path": "my-output-container/{DateTime}"
+}
+```
+
+## <a name="binding-at-runtime"></a>Futásidejű kötés
+
+C# és egyéb .NET-nyelveket, használhat egy imperatív kötés mintát, szemben a deklaratív kötések *function.json* és attribútumok. Imperatív kötés akkor hasznos, ha a kötési paraméterekhez kell számítani a Tervező helyett futásidejű időpontban. További tudnivalókért tekintse meg a [C# fejlesztői leírás](functions-dotnet-class-library.md#binding-at-runtime) vagy a [C# parancsfájl fejlesztői leírás](functions-reference-csharp.md#binding-at-runtime).
 
 ## <a name="functionjson-file-schema"></a>Function.JSON fájl séma
 

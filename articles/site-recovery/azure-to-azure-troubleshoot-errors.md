@@ -7,13 +7,13 @@ manager: rochakm
 ms.service: site-recovery
 ms.devlang: na
 ms.topic: article
-ms.date: 02/12/2018
+ms.date: 02/22/2018
 ms.author: sujayt
-ms.openlocfilehash: be43e34976682847c4756e062ec5b638ebc26063
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 7292948c40b184a58eb3e27aecac28e2227a29f8
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-issues"></a>Azure-Azure virtuális gép replikálási problémák elhárítása
 
@@ -22,7 +22,7 @@ Ez a cikk ismerteti az Azure Site Recovery replikálódik, és az Azure virtuál
 ## <a name="azure-resource-quota-issues-error-code-150097"></a>Azure-erőforrás kvótájának problémák (hibakód: 150097)
 Az előfizetés engedélyezni kell a cél régióban, a vész-helyreállítási régió használni kívánt Azure virtuális gépek létrehozásához. Emellett az előfizetés adott méretű virtuális gépek létrehozásához engedélyezett kvóta elegendő kell rendelkeznie. Alapértelmezés szerint a Site Recovery választja ki a cél virtuális gép méretének virtuális gép forrásaként. Ha a megfelelő méret nem érhető el, a legközelebbi lehetséges mérete automatikusan nek. Ha nincsenek egyező méretét, amely támogatja a forrás Virtuálisgép-konfiguráció, ez a hibaüzenet jelenik meg:
 
-Hibakód: | **Lehetséges okok** | A javaslat
+**Hibakód:** | **Lehetséges okok** | **A javaslat**
 --- | --- | ---
 150097<br></br>**Üzenet**: nem sikerült engedélyezni a replikálást a virtuális gép VmName. | -Az előfizetés-azonosító nem elképzelhető, hogy engedélyezve a célhelyen régió bármely virtuális gépek létrehozásához.</br></br>-Az előfizetés-azonosító nincs engedélyezve, vagy nem rendelkezik elegendő kvótával régió célhelyet a megadott Virtuálisgép-méretek létrehozásához.</br></br>-A megfelelő cél virtuális gép méretét, amely megfelel a forrás virtuális gép hálózati száma (2) a régió célhelyen az előfizetés-azonosító nem található.| Ügyfél [Azure számlázási támogatás segítségét](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) a szükséges Virtuálisgép-méretek a célhelyen az előfizetéshez tartozó virtuális gép létrehozásának engedélyezéséhez. Az engedélyezése után próbálkozzon újra a sikertelen műveletet.
 
@@ -35,7 +35,7 @@ Ha a célhely kapacitás korlátozást tartalmaz, tiltsa le a replikációt, maj
 
 Ha a legfrissebb megbízható legfelső szintű tanúsítványok nem található meg a virtuális Gépet, az "Engedélyezés replikációs" munkahelye sikertelen lehet. A tanúsítványok nélkül Ha a hitelesítése és engedélyezése a Site Recovery szolgáltatás hívások a virtuális gép sikertelen. "A replikáció engedélyezése" Helyhelyreállítás sikertelen feladat a hibaüzenet jelenik meg:
 
-Hibakód: | **Lehetséges ok** | **Javaslatok**
+**Hibakód:** | **Lehetséges ok** | **Javaslatok**
 --- | --- | ---
 151066<br></br>**Üzenet**: a Site Recovery konfigurálása nem sikerült. | A szükséges megbízható legfelső szintű tanúsítványokat használ a hitelesítéshez és a hitelesítés nem található a számítógépen. | -A Windows operációs rendszert futtató virtuális gép, győződjön meg arról, hogy találhatók-e a megbízható legfelső szintű tanúsítványok a számítógépen. További információ: [konfigurálása a megbízható főtanúsítványok és nem engedélyezett tanúsítványok](https://technet.microsoft.com/library/dn265983.aspx).<br></br>-A Linux operációs rendszert futtató virtuális gép, kövesse az útmutatást a Linux operációs rendszer verziója forgalmazó által közzétett megbízható legfelső szintű tanúsítványok.
 
@@ -161,7 +161,7 @@ Az engedélyezési lista [a szükséges URL-címek](azure-to-azure-about-network
 
 A virtuális Géphez csatlakozik, az új lemez inicializálni kell.
 
-Hibakód: | **Lehetséges okok** | **Javaslatok**
+**Hibakód:** | **Lehetséges okok** | **Javaslatok**
 --- | --- | ---
 150039<br></br>**Üzenet**: egy megfelelő lemezt a virtuális Gépet, amelynek az ugyanazon logikai egység értéke belül jelentett a nem megfeleltetni az Azure data lemez (DiskName) (DiskURI) rendelkező logikai egységen (LUN) (LUNValue). | – Új adatlemezt lett csatolva a virtuális gép, de az nem lett inicializálva.</br></br>– A virtuális Gépen belül a adatlemez megfelelően nem jelent a logikai érték, ahol a lemezt a virtuális Géphez lett csatolva.| Győződjön meg arról, hogy az adatlemezek inicializálása, majd próbálja megismételni a műveletet.</br></br>Windows: [Attach és az új lemez inicializálása](https://docs.microsoft.com/azure/virtual-machines/windows/attach-managed-disk-portal).</br></br>Linux: [lévő Linux új adatlemezt inicializálása](https://docs.microsoft.com/azure/virtual-machines/linux/add-disk).
 

@@ -15,13 +15,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/11/2017
+ms.date: 02/22/2018
 ms.author: nitinme
-ms.openlocfilehash: 2be4477528c9109151c4737eabc16741cc020ce8
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 87e60bcc097157c733c1e08356b7cd9ea48bb868
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="kernels-for-jupyter-notebook-on-spark-clusters-in-azure-hdinsight"></a>Az Azure hdinsight Spark-fürtjei Jupyter notebookokhoz kernelek 
 
@@ -135,7 +135,11 @@ Megnyithatja a **Spark Magic 00 - [OLVASHATÓ első] Kernel szolgáltatások** a
 
 ## <a name="where-are-the-notebooks-stored"></a>A notebookok tároló?
 
-Jupyter notebookok a fürthöz tartozó tárfiókba menti a **/HdiNotebooks** mappa.  Notebookok, szöveges fájlt és mappát hoz létre a Jupyter belül érhetők el a tárfiókból.  Például, ha a Jupyter használatával hozzon létre egy mappát **SajátMappa** egy hordozható **myfolder/mynotebook.ipynb**, érheti el, hogy a notebook `/HdiNotebooks/myfolder/mynotebook.ipynb` a tárfiókon belül.  A névkeresési akkor is igaz, ez azt jelenti, hogy ha feltöltött jegyzetfüzet közvetlenül tárolási fiókját a `/HdiNotebooks/mynotebook1.ipynb`, valamint Jupyterről származó látható a notebook.  Notebookok maradni a tárfiókot, a fürtök törlése után is.
+Ha a fürt Azure Storage használja, mint az alapértelmezett tárfiókot, Jupyter notebookok tárfiókba menti a **/HdiNotebooks** mappa.  Notebookok, szöveges fájlt és mappát hoz létre a Jupyter belül érhetők el a tárfiókból.  Például, ha a Jupyter használatával hozzon létre egy mappát **SajátMappa** egy hordozható **myfolder/mynotebook.ipynb**, érheti el, hogy a notebook `/HdiNotebooks/myfolder/mynotebook.ipynb` a tárfiókon belül.  A névkeresési akkor is igaz, ez azt jelenti, hogy ha feltöltött jegyzetfüzet közvetlenül tárolási fiókját a `/HdiNotebooks/mynotebook1.ipynb`, valamint Jupyterről származó látható a notebook.  Notebookok maradni a tárfiókot, a fürtök törlése után is.
+
+> [!NOTE]
+> A HDInsight-fürtök az Azure Data Lake Store az alapértelmezett tárolóként ne tároljon notebookok társított tárolási.
+>
 
 Notebookok menti a tárfiók módja kompatibilis a HDFS. Így, ha az SSH-ból a fürt használhatja fájl parancsok látható módon a következő kódrészletet:
 
@@ -143,8 +147,7 @@ Notebookok menti a tárfiók módja kompatibilis a HDFS. Így, ha az SSH-ból a 
     hdfs dfs –copyToLocal /HdiNotebooks                    # Download the contents of the HdiNotebooks folder
     hdfs dfs –copyFromLocal example.ipynb /HdiNotebooks   # Upload a notebook example.ipynb to the root folder so it’s visible from Jupyter
 
-
-Abban az esetben, ha a fürt a tárfiók elérése problémák vannak, a notebookok is tárolja a headnode `/var/lib/jupyter`.
+Függetlenül attól, hogy a fürt használja az Azure Storage vagy az Azure Data Lake Store, az alapértelmezett tárfiókot, a notebookok is tárolja, a fürt headnode `/var/lib/jupyter`.
 
 ## <a name="supported-browser"></a>Támogatott böngésző
 

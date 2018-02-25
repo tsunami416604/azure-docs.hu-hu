@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/07/2017
 ms.author: chackdan
-ms.openlocfilehash: e5dd1ebd290c950c7f2bda3dae088f3ee7f836fd
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: 6675603bf741b1a668ba387c8304d2e2b7ab4e12
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="create-a-service-fabric-cluster-by-using-azure-resource-manager"></a>A Service Fabric-fürt létrehozása az Azure Resource Manager használatával 
 > [!div class="op_single_selector"]
@@ -52,7 +52,7 @@ Ezeket a célokat szolgál, hogy a tanúsítvány a következő követelményekn
 
 * A tanúsítványnak tartalmaznia kell egy titkos kulccsal. Ezek a tanúsítványok általában rendelkeznek bővítmények .pfx vagy .pem  
 * A kulcscseréhez használt, amely exportálható személyes információcsere (.pfx) fájlba a tanúsítványt kell létrehozni.
-* A **tanúsítvány tulajdonosának nevét meg kell egyeznie a tartományt, amelyikhez a Service Fabric-fürt eléréséhez használt**. A megfelelő szükség az SSL protokoll a fürt HTTPS felügyeleti végpont és a Service Fabric Explorerben talál. Az SSL-tanúsítványt egy hitelesítésszolgáltatótól (CA) származó nem szerezze be a *. cloudapp.azure.com tartomány. Be kell szereznie egy egyéni tartománynevet a fürt számára. A hitelesítésszolgáltató tanúsítvány kérése, amikor a tanúsítvány tulajdonosának nevét meg kell egyeznie az egyéni tartománynevet, amelyekkel a fürt számára.
+* A **tanúsítvány tulajdonosának nevét meg kell egyeznie a tartományt, amelyikhez a Service Fabric-fürt eléréséhez használt**. A megfelelő szükség az SSL protokoll a fürt HTTPS felügyeleti végpont és a Service Fabric Explorerben talál. Az SSL-tanúsítványt egy hitelesítésszolgáltatótól (CA) származó nem szerezze be a *. cloudapp.azure.com tartomány. Egyéni tartománynevet kell beszereznie a fürt számára. Amikor tanúsítványt igényel egy hitelesítésszolgáltatótól, a tanúsítvány tulajdonosnevének meg kell felelnie a fürthöz használt egyéni tartománynévnek.
 
 ### <a name="set-up-azure-active-directory-for-client-authentication-optional-but-recommended"></a>Azure Active Directory beállítása az ügyfél-hitelesítéshez (nem kötelező, de ajánlott)
 
@@ -127,12 +127,12 @@ $vaultName="myvault"
 $vaultResourceGroupName="myvaultrg"
 $CertSubjectName="mycluster.westus.cloudapp.azure.com"
 $certPassword="Password!1" | ConvertTo-SecureString -AsPlainText -Force 
-$vmpassword="Password!1" | ConvertTo-SecureString -AsPlainText -Force
+$vmpassword="Password!4321" | ConvertTo-SecureString -AsPlainText -Force
 $vmuser="myadmin"
 $os="WindowsServer2016DatacenterwithContainers"
 $certOutputFolder="c:\certificates"
 
-New-AzureRmServiceFabricCluster -ResourceGroupName $resourceGroupName -CertificateOutputFolder $certOutputFolder -CertificatePassword $certpassword -CertificateSubjectName $CertSubjectName -OS $os -VmPassword $vmpassword -VmUserName $vmuser 
+New-AzureRmServiceFabricCluster -ResourceGroupName $resourceGroupName -Location $resourceGroupLocation -CertificateOutputFolder $certOutputFolder -CertificatePassword $certpassword -CertificateSubjectName $CertSubjectName -OS $os -VmPassword $vmpassword -VmUserName $vmuser 
 
 ```
 
@@ -144,7 +144,7 @@ declare vaultResourceGroupName="myvaultrg"
 declare vaultName="myvault"
 declare CertSubjectName="mylinux.westus.cloudapp.azure.com"
 declare vmpassword="Password!1"
-declare certpassword="Password!1"
+declare certpassword="Password!4321"
 declare vmuser="myadmin"
 declare vmOs="UbuntuServer1604"
 declare certOutputFolder="c:\certificates"
@@ -232,11 +232,11 @@ $resourceGroupName="mylinux"
 $vaultName="myvault"
 $vaultResourceGroupName="myvaultrg"
 $certPassword="Password!1" | ConvertTo-SecureString -AsPlainText -Force 
-$vmpassword=("Password!1" | ConvertTo-SecureString -AsPlainText -Force) 
+$vmpassword=("Password!4321" | ConvertTo-SecureString -AsPlainText -Force) 
 $vmuser="myadmin"
 $os="WindowsServer2016DatacenterwithContainers"
 
-New-AzureRmServiceFabricCluster -ResourceGroupName $resourceGroupName -KeyVaultResouceGroupName $vaultResourceGroupName -KeyVaultName $vaultName -CertificateFile C:\MyCertificates\chackocertificate3.pfx -CertificatePassword $certPassword -OS $os -VmPassword $vmpassword -VmUserName $vmuser 
+New-AzureRmServiceFabricCluster -ResourceGroupName $resourceGroupName -Location $resourceGroupLocation -KeyVaultResouceGroupName $vaultResourceGroupName -KeyVaultName $vaultName -CertificateFile C:\MyCertificates\chackocertificate3.pfx -CertificatePassword $certPassword -OS $os -VmPassword $vmpassword -VmUserName $vmuser 
 
 ```
 
@@ -292,7 +292,7 @@ $templateFilePath="c:\mytemplates\mytemplate.json"
 $certificateFile="C:\MyCertificates\chackonewcertificate3.pem"
 
 
-New-AzureRmServiceFabricCluster -ResourceGroupName $resourceGroupName -TemplateFile $templateFilePath -ParameterFile $parameterFilePath -KeyVaultResouceGroupName $vaultResourceGroupName -KeyVaultName $vaultName -CertificateFile $certificateFile -CertificatePassword #certPassword
+New-AzureRmServiceFabricCluster -ResourceGroupName $resourceGroupName -Location $resourceGroupLocation -TemplateFile $templateFilePath -ParameterFile $parameterFilePath -KeyVaultResouceGroupName $vaultResourceGroupName -KeyVaultName $vaultName -CertificateFile $certificateFile -CertificatePassword #certPassword
 
 ```
 
@@ -375,7 +375,7 @@ Az Azure AD-alkalmazások, a parancsfájl által létrehozott előtag ClusterNam
 
 WebApplicationReplyUrl az alapértelmezett végpont az Azure AD a felhasználóknak ad vissza, miután a bejelentkezés befejezéséhez. Ez a végpont állítja be a fürtöt, amely alapértelmezés szerint a Service Fabric Explorer végpontja:
 
-https://&lt;cluster_domain&gt;: 19080/Explorer
+https://&lt;cluster_domain&gt;:19080/Explorer
 
 Jelentkezzen be az Azure AD-bérlő rendszergazdai jogosultsággal rendelkező fiók kéri. Miután bejelentkezik, a parancsfájl hoz létre, a web- és natív alkalmazások a Service Fabric-fürt képviseli. Ha megnézi a bérlős alkalmazásokhoz a [Azure-portálon][azure-portal], két új bejegyzést kell megjelennie:
 

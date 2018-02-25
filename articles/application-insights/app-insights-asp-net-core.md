@@ -11,55 +11,208 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 03/14/2017
+ms.date: 02/21/2018
 ms.author: mbullwin
-ms.openlocfilehash: 74f99dd6f31ecff7c838d8f710a7fe4279ce0ea9
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: e9fb3e68db66449d9ca3b43e6974910cb9477e62
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="application-insights-for-aspnet-core"></a>ASP.Net Core-hoz készült Application Insights
-[Az Application Insights](app-insights-overview.md) lehetővé teszi, hogy a webalkalmazás rendelkezésre állását, teljesítményét és használatának figyelése. A széles körben elérhető módon működő alkalmazások teljesítményével és hatékonyságával kapcsolatos visszajelzések birtokában tájékozott döntéseket hozhat a fejlesztés irányát illetően az egyes fejlesztési fázisokban.
 
-![Példa](./media/app-insights-asp-net-core/sample.png)
+Azure Application Insights biztosít a webalkalmazás a kód szintre részletes megfigyelését. Könnyedén figyelheti a webalkalmazás rendelkezésre állását, teljesítményét és használatát. Emellett egyszerűen azonosíthatja és diagnosztizálhatja az alkalmazás hibáit anélkül, hogy meg kellene várnia, amíg egy felhasználó jelenti azokat.
 
-Szüksége lesz egy előfizetés [Microsoft Azure](http://azure.com). Jelentkezzen be egy Microsoft-fiókkal – ez tartozhat a Windowshoz, az XBox Live-hoz vagy egyéb Microsoft felhőszolgáltatásokhoz. A csoport lehet egy szervezeti Azure-előfizetéssel: a nyilvános venni azt a Microsoft-fiókjával.
+Ez a cikk végigvezeti az ASP.NET Core minta létrehozása [Razor lapok](https://docs.microsoft.com/aspnet/core/mvc/razor-pages/?tabs=visual-studio) alkalmazás Visual Studio, és hogy milyen figyelése az Azure Application insights szolgáltatással.
 
-## <a name="getting-started"></a>Bevezetés
+## <a name="prerequisites"></a>Előfeltételek
 
-* A Visual Studio Solution Explorerben kattintson jobb gombbal a projektre, és válassza ki **konfigurálja az Application Insights**, vagy **Hozzáadás > Application Insights**. [További információk](app-insights-asp-net.md).
-* Ha nem látja ezeket menüparancsai, kövesse a [manuális első lépések útmutató](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Getting-Started). Erre a projekt egy Visual Studio verziója előtt 2017 hozták létre, ha szeretne.
+- NET Core 2.0.0 SDK vagy újabb.
+- [A Visual Studio 2017](https://www.visualstudio.com/downloads/) 15.3 vagy az ASP.NET és a webes fejlesztési áttelepítendő feladatokhoz újabb verziója.
 
-## <a name="using-application-insights"></a>Az Application Insights használata
-Jelentkezzen be a [Microsoft Azure-portálon](https://portal.azure.com), jelölje be **összes erőforrás** vagy **Application Insights**, majd válassza ki a figyelheti az alkalmazást a létrehozott erőforrás.
+## <a name="create-an-aspnet-core-project-in-visual-studio"></a>Az ASP.NET Core projekt létrehozása a Visual Studióban
 
-Egy külön böngészőablakban használja az alkalmazást egy ideig. Láthatja, hogy az Application Insights diagramok szereplő adatok. (Lehetséges, hogy a frissítés gombra.) Nem lesznek csak kisebb mennyiségű adatot közben kidolgozása, de a diagramokat valóban származnak életben tegye közzé az alkalmazást, és a sok felhasználóval rendelkezik. 
+1. Kattintson a jobb gombbal, majd indítsa el **Visual Studio 2017** rendszergazdaként.
+2. Válassza ki **fájl** > **új** > **projekt** (Ctrl-Shift-N).
 
-A – Áttekintés lapon látható legfontosabb teljesítményi diagramok: kiszolgáló válaszideje, lapbetöltési idő és a sikertelen kérelmek száma. Kattintson bármelyik olyan diagram további diagramok és adatok megjelenítéséhez.
+   ![Képernyőfelvétel a Visual Studio új projekt Fájlmenüt](./media/app-insights-asp-net-core/0001-file-new-project.png)
 
-A portál nézetek három fő kategóriába sorolhatók:
+3. Bontsa ki a **Visual C#** > Válasszon **.NET Core** > **ASP.NET Core webalkalmazás**. Adjon meg egy **neve** > **megoldásnév** > ellenőrzése **hozzon létre új Git-tárház**.
 
-* [Metrikaböngésző](app-insights-metrics-explorer.md) diagramjait és a metrikák és számát, például válaszidejét, hiba díjszabás vagy a saját metrikákat jeleníti meg a [API](app-insights-api-custom-events-metrics.md). Szűrés, és szegmentálja a data tulajdonság értékével jobban megismerheti a felhasználók és az alkalmazás.
-* [Keresés Explorer](app-insights-diagnostic-search.md) események, például bizonyos kérésekre, kivételek, naplókivonatokat vagy magának a létrehozott események felsorolja a [API](app-insights-api-custom-events-metrics.md). Szűrje és az események kereséséhez, és keresse meg kell vizsgálni a problémákat a kapcsolódó események között.
-* [Elemzés](app-insights-analytics.md) lehetővé teszi, hogy az SQL-szerű lekérdezéseket futtatnia a telemetriai adatokat, és a hatékony analitikai és diagnosztikai eszköz.
+   ![Képernyőfelvétel a Visual Studio új projekt varázsló](./media/app-insights-asp-net-core/0002-new-project-web-application.png)
 
-## <a name="alerts"></a>Riasztások
-* Automatikusan elérhetővé [proaktív diagnosztikai riasztások](app-insights-proactive-diagnostics.md) , amely közli, hiba sebességét és más metrikákkal rendellenes változásaira vonatkozó.
-* Állítson be [rendelkezésreállás figyelésére szolgáló tesztek](app-insights-monitor-web-app-availability.md) tesztelje a webhelyet, folyamatosan helyekről világszerte, és e-mailek, ahogy bármely tesztelése sikertelen.
-* Állítson be [metrika riasztások](app-insights-monitor-web-app-availability.md) tudni, hogy ha például a válaszidők vagy kivétel díjszabás metrikák nyissa meg külső elfogadható határértékeket.
+4. Válassza ki **.Net Core** > **ASP.NET Core 2.0** **webes alkalmazás** > **OK**.
+
+    ![Képernyőfelvétel a Visual Studio új projekt kijelölés Fájlmenüt](./media/app-insights-asp-net-core/0003-dot-net-core.png)
+
+## <a name="add-application-insights-telemetry"></a>Application Insights Telemetria hozzáadása
+
+1. Válassza ki **projekt** > **Application Insights Telemetria hozzáadása...** (Másik lehetőségként kattintson a jobb egérgombbal **kapcsolódó szolgáltatások** > kapcsolódó szolgáltatási adja hozzá.)
+
+    ![Képernyőfelvétel a Visual Studio új projekt kijelölés Fájlmenüt](./media/app-insights-asp-net-core/0004-add-application-insights-telemetry.png)
+
+2. Válassza a **Start Free** (Ingyenes verzió indítása) lehetőséget.
+
+    ![Képernyőfelvétel a Visual Studio új projekt kijelölés Fájlmenüt](./media/app-insights-asp-net-core/0005-start-free.png)
+
+3. Válassza ki a megfelelő **előfizetés** > **erőforrás** >, és hogy gyűjtemény több mint 1 GB-os havi engedélyezi-e > **regisztrálása**.
+
+    ![Képernyőfelvétel a Visual Studio új projekt kijelölés Fájlmenüt](./media/app-insights-asp-net-core/0006-register.png)
+
+## <a name="changes-made-to-your-project"></a>A projekt Made módosításai
+
+Application Insights jelenleg még a nagyon alacsony többletterhelést okoznak. Az Application Insights telemetria hozzáadásával a projekt módosítások ellenőrzése:
+
+Válassza ki **nézet** > **Explorer csapat** (Ctrl +\, Ctrl + M) > **projekt** > **módosítások**
+
+- Teljes négy változásai:
+
+  ![Képernyőkép a fájlok módosította az Application Insights hozzáadása](./media/app-insights-asp-net-core/0007-changes.png)
+
+- Egy új fájl jön létre:
+
+   **ConnectedService.json**
+
+  ![Képernyőkép a fájlok módosította az Application Insights hozzáadása](./media/app-insights-asp-net-core/0008-connectedservice-json.png)
+
+- Három fájlok módosítja:
+
+  **appsettings.json**
+
+   ![Képernyőkép a fájlok módosította az Application Insights hozzáadása](./media/app-insights-asp-net-core/0009-appsettings-json.png)
+
+  **ContosoDotNetCore.csproj**
+
+   ![Képernyőkép a fájlok módosította az Application Insights hozzáadása](./media/app-insights-asp-net-core/0010-contoso-netcore-csproj.png)
+
+   **Program.cs**
+
+   ![Képernyőkép a fájlok módosította az Application Insights hozzáadása](./media/app-insights-asp-net-core/0011-program-cs.png)
+
+## <a name="synthetic-transactions-with-powershell"></a>Szintetikus tranzakciók a PowerShell használatával
+
+Elindítani az alkalmazást, és kattint körül hivatkozások manuálisan teszt forgalom létrehozásához használható. Azonban érdemes gyakran hozzon létre egy egyszerű szintetikus tranzakció PowerShell.
+
+1. Az alkalmazás futtatása az IIS Express kattintva ![Képernyőfelvétel a Visual Studio IIS Express ikon](./media/app-insights-asp-net-core/0012-iis-express.png)
+
+2. Másolja az URL-címet a webböngésző cím sorából. Az a formátum http://localhost: {véletlenszerű portszám}
+
+   ![Képernyőkép a böngészőcímsorba URL-címe](./media/app-insights-asp-net-core/0013-copy-url.png)
+
+3. Futtassa a következő PowerShell-hurok 100 szintetikus tranzakciók szemben a teszt alkalmazás létrehozásához. Módosítsa a portszámot után **localhost:** megfelelően az előző lépésben másolt URL-címét.
+
+   ```PS
+   for ($i = 0 ; $i -lt 100; $i++)
+   {
+    Invoke-WebRequest -uri http://localhost:50984/
+   }
+   ```
+
+## <a name="open-application-insights-portal"></a>Nyissa meg az Application Insights portálon találja meg
+
+A fenti szakaszban leírt PowerShell futtatása után nyissa meg az Application Insights tranzakciók megtekintése, és győződjön meg arról, hogy gyűjtenek adatokat. 
+
+A Visual Studio menüjében válassza **projekt** > **Application Insights** > **nyitott Application Insights portál**
+
+   ![Képernyőkép a Application Insights – áttekintés](./media/app-insights-asp-net-core/0014-portal-01.png)
+
+> [!NOTE]
+> A példa a fenti képernyőfelvételen látható **élő adatfolyam**, **lapmegtekintés betöltési ideje**, és **tartozó sikertelen kérelmek** jelenleg nincsenek összegyűjtött. A következő szakaszban haladhat végig a minden egyes. Ha már gyűjtött **élő adatfolyam**, és **lapmegtekintés betöltési ideje**, csak kövesse a lépéseket **tartozó sikertelen kérelmek**.
+
+## <a name="collect-failed-requests-live-stream--page-view-load-time"></a>Sikertelen kérelmek, élő adatfolyam & lapmegtekintés betöltési idő gyűjtése
+
+### <a name="failed-requests"></a>Sikertelen kérések
+
+Technikailag **tartozó sikertelen kérelmek** vannak gyűjtenek, de még nincs történt. Egy egyéni kivétel mentén gyorsabban is hozzá kell adni a létező projekt egy valós kivétel szimulálásához. Ha az alkalmazás továbbra is fut a Visual Studio a folytatás előtt **állítsa le a hibakeresést** (Shift + F5)
+
+1. A **Megoldáskezelőben** > bontsa ki a **lapok** > **About.cshtml** > Nyissa meg a **About.cshtml.cs**.
+
+   ![Képernyőfelvétel a Visual Studio Solution Explorerben](./media/app-insights-asp-net-core/0015-solution-explorer-about.png)
+
+2. A kivétel hozzáadása ``Message=`` > a fájlhoz a módosítás mentéséhez.
+
+   ```C#
+   throw new Exception("Test Exception");
+   ```
+
+   ![Képernyőkép a kivétel kódja](./media/app-insights-asp-net-core/000016-exception.png)
+
+### <a name="live-stream"></a>Élő stream
+
+Az ASP.NET Core frissítése az Application Insights élő adatfolyam funkciók eléréséhez a **Microsoft.ApplicationInsights.AspNetCore 2.2.0** NuGet-csomagok.
+
+Válassza ki a Visual Studio eszközből **projekt** > **NuGet-csomagok kezelése** > **Microsoft.ApplicationInsights.AspNetCore** > verziója **2.2.0** > **frissítés**.
+
+  ![Képernyőfelvétel a NuGet-Csomagkezelő](./media/app-insights-asp-net-core/0017-update-nuget.png)
+
+Több megerősítést kér fordulhat elő, olvassa el és fogadja el, ha elfogadja a változtatásokat.
+
+### <a name="page-view-load-time"></a>Lapmegtekintés betöltési ideje
+
+1. A Visual Studio programban navigáljon **Megoldáskezelőben** > **lapok** > két fájlt kell módosítani: **_Layout.cshtml**, és **_ ViewImports.cshtml**
+
+2. A **_ViewImports.cshtml**, adja hozzá:
+
+   ```C#
+   @using Microsoft.ApplicationInsights.AspNetCore
+   @inject JavaScriptSnippet snippet
+   ```
+     ![Képernyőkép a _ViewImports.cshtml kód módosítása](./media/app-insights-asp-net-core/00018-view-imports.png)
+
+3. A **Layout.cshtml** adja hozzá az alábbi előtt a ``</head>`` címke, de más parancsfájlokat előtt.
+
+    ```C#
+    @Html.Raw(snippet.FullScript)
+    ```
+    ![Képernyőkép a layout.cshtml kód módosítása](./media/app-insights-asp-net-core/0018-layout-cshtml.png)
+
+### <a name="test-failed-requests-page-view-load-time-live-stream"></a>Teszt sikertelen volt a kérelmeket, a lap betöltési ideje, az élő adatfolyam
+
+Most, hogy befejezte az előző lépéseket ügyfélfunkciókkal tesztelheti, és győződjön meg arról, hogy minden működik.
+
+1. Az alkalmazás futtatása az IIS Express kattintva ![Képernyőfelvétel a Visual Studio IIS Express ikon](./media/app-insights-asp-net-core/0012-iis-express.png)
+
+2. Keresse meg a **kapcsolatos** lap elindítani a teszt kivétel. (Ha hibakeresési módban futtatja, akkor kattintson **Folytatás** a Visual Studióban, mielőtt a kivétel fog észlelnie kell az Application Insights.)
+
+3. Futtassa újra a szimulált PowerShell tranzakció parancsfájl korábbi (esetleg módosítsa a port számát, a parancsfájl.)
+
+4. Ha nincs megnyitva, a Visual Studio menüből válassza a alkalmazások Insights – áttekintés **projekt** > **Application Insights** > **alkalmazás megnyitása Insights portálon találja meg**. 
+
+   > [!TIP]
+   > Ha még nem látja az új forgalom, ellenőrizze a **időtartománynak** kattintson **frissítése**.
+
+   ![Képernyőfelvétel a áttekintése ablakban](./media/app-insights-asp-net-core/0019-overview-updated.png)
+
+5. Válassza ki az élő adatfolyam
+
+   ![Képernyőkép a metrikák élő adatfolyam](./media/app-insights-asp-net-core/0020-live-metrics-stream.png)
+
+   (Ha a PowerShell parancsfájl továbbra is futnak, megtekintheti az élő metrika, ha már nem futtassa a parancsfájlt ismét élő adatfolyam nyissa meg.)
+
+## <a name="app-insights-sdk-comparison"></a>App Insights SDK összehasonlítása
+
+Az Application Insights termékcsoport merevlemez dolgozott a eléréséhez szolgáltatásparitást között a lehető legközelebb a [.NET-keretrendszer SDK teljes](https://github.com/Microsoft/ApplicationInsights-dotnet) és a .net Core SDK. A 2.2.0 kiadása a [ASP.NET Core SDK](https://github.com/Microsoft/ApplicationInsights-aspnetcore) az Application Insights szolgáltatás résnek nagymértékben be van zárva.
+
+Bővebb információt a különbségek és közötti kompromisszumot [.NET és a .NET Core](https://docs.microsoft.com/en-us/dotnet/standard/choosing-core-framework-server).
+
+   | SDK összehasonlítása | ASP.NET        | Az ASP.NET Core 2.1.0    | Az ASP.NET Core 2.2.0 |
+  |:-- | :-------------: |:------------------------:|:----------------------:|
+   | **Élő metrikák**      | **+** |**-** | **+** |
+   | **Kiszolgáló Telemetriai csatorna** | **+** |**-** | **+**|
+   |**Adaptív mintavétel**| **+** | **-** | **+**|
+   | **SQL függőségi hívások esetében**     | **+** |**-** | **+**|
+   | **Teljesítményszámlálók*** | **+** | **-**| **-**|
+
+_Teljesítményszámlálók_ ebben a környezetben hivatkozik [kiszolgálóoldali teljesítményszámlálók](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-performance-counters) , például a processzor, memória és a lemezkihasználtság lekéréséhez.
+
+## <a name="open-source-sdk"></a>Open-source SDK
+[Olvassa el, és hozzájárulnak a kódot](https://github.com/Microsoft/ApplicationInsights-aspnetcore#recent-updates)
 
 ## <a name="video"></a>Videó
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player] 
 
-## <a name="open-source"></a>Nyílt forráskód
-[Olvassa el, és hozzájárulnak a kódot](https://github.com/Microsoft/ApplicationInsights-aspnetcore#recent-updates)
-
-
-## <a name="next-steps"></a>Következő lépések
-* [Telemetriai adatok felvétele a weblapok](app-insights-javascript.md) a figyelő lap használati és teljesítményadatokat.
-* [Függőségek figyelése](app-insights-asp-net-dependencies.md) megjelenítéséhez, ha a többi, SQL vagy más külső erőforrások lassítja meg.
+## <a name="next-steps"></a>További lépések
+* [Megismerkedhet a felhasználók Forgalomáramlás](app-insights-usage-flows.md) tudni, hogy a felhasználók hogyan navigálnak az alkalmazás.
 * [Az API-val](app-insights-api-custom-events-metrics.md) a saját eseményeket és metrikákat az alkalmazás teljesítményét és használatának részletes nézet küldését.
-* [Rendelkezésreállás figyelésére szolgáló tesztek](app-insights-monitor-web-app-availability.md) ellenőrizze a világszerte folyamatosan az alkalmazást. 
-
+* [Rendelkezésreállás figyelésére szolgáló tesztek](app-insights-monitor-web-app-availability.md) ellenőrizze a világszerte folyamatosan az alkalmazást.

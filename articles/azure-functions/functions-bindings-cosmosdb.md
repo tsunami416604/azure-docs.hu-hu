@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: glenga
-ms.openlocfilehash: e1cf4da324d082e0ee09feb3344cd2340ab59af7
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 1a57d26e0f1188a2dea29beba52fde090aa82ca8
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions"></a>Az Azure Functions Azure Cosmos DB kötései
 
@@ -127,7 +127,7 @@ A JavaScript-kód itt látható:
 
 ## <a name="trigger---attributes"></a>Eseményindító - attribútumok
 
-A [C# osztálykönyvtárakhoz](functions-dotnet-class-library.md), használja a [CosmosDBTrigger](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.DocumentDB/Trigger/CosmosDBTriggerAttribute.cs) attribútumot, amelyet a NuGet-csomag [Microsoft.Azure.WebJobs.Extensions.DocumentDB](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DocumentDB).
+A [C# osztálykönyvtárakhoz](functions-dotnet-class-library.md), használja a [CosmosDBTrigger](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.CosmosDB/Trigger/CosmosDBTriggerAttribute.cs) attribútumot, amelyet a NuGet-csomag [Microsoft.Azure.WebJobs.Extensions.CosmosDB](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.CosmosDB).
 
 Az attribútum konstruktora időt vesz igénybe, az adatbázis és gyűjtemény nevét. Ezeket a beállításokat és egyéb tulajdonságok konfigurálható kapcsolatos információkért lásd: [eseményindító - konfigurációs](#trigger---configuration). Íme egy `CosmosDBTrigger` metódus-aláírás attribútum példát:
 
@@ -150,12 +150,12 @@ Az alábbi táblázat ismerteti a beállított kötés konfigurációs tulajdons
 
 |Function.JSON tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-|**típusa** || meg kell `cosmosDBTrigger`. |
+|**Típusa** || meg kell `cosmosDBTrigger`. |
 |**direction** || meg kell `in`. Ez a paraméter rendszer automatikusan beállítja az eseményindítót hoz létre az Azure portálon. |
 |**name** || A dokumentumok a változások listájának jelölő függvény kódban használt változó neve. | 
 |**connectionStringSetting**|**ConnectionStringSetting** | A figyelt Azure Cosmos DB fiók való kapcsolódáshoz használt kapcsolati karakterlánc tartalmazó alkalmazásbeállítás neve. |
 |**databaseName**|**DatabaseName**  | A figyelt gyűjtemény Azure Cosmos DB adatbázis neve. |
-|**collectionName** |**CollectionName** | A figyelt gyűjtemény nevét. |
+|**CollectionName** |**CollectionName** | A figyelt gyűjtemény nevét. |
 |**leaseConnectionStringSetting** | **LeaseConnectionStringSetting** | (Választható) A kapcsolati karakterláncot a szolgáltatás, amely tartalmazza a címbérlet gyűjteményt tartalmazó alkalmazásbeállítás neve. Ha nincs megadva, a `connectionStringSetting` értéket használja. Ez a paraméter értéke a kötés a portálon létrehozásakor automatikusan. A kapcsolati karakterláncot a bérletek gyűjtemény írási engedéllyel kell rendelkeznie.|
 |**leaseDatabaseName** |**LeaseDatabaseName** | (Választható) Az adatbázis, amely tárolja a bérletek tároló gyűjtemény nevét. Ha nincs megadva, az értékét a `databaseName` beállítást használja. Ez a paraméter értéke a kötés a portálon létrehozásakor automatikusan. |
 |**leaseCollectionName** | **LeaseCollectionName** | (Választható) A bérletek tároló gyűjtemény nevét. Ha nincs megadva, az érték `leases` szolgál. |
@@ -207,7 +207,7 @@ Első, `Id` és `Maker` értékei egy `CarReview` példány annak a várólistá
             [FunctionName("SingleEntry")]
             public static void Run(
                 [QueueTrigger("car-reviews", Connection = "StorageConnectionString")] CarReview carReview,
-                [DocumentDB("cars", "car-reviews", PartitionKey = "{maker}", Id= "{id}", ConnectionStringSetting = "CarReviewsConnectionString")] CarReview document,
+                [CosmosDB("cars", "car-reviews", PartitionKey = "{maker}", Id= "{id}", ConnectionStringSetting = "CarReviewsConnectionString")] CarReview document,
                 TraceWriter log)
             {
                 log.Info( $"Selected Review - {document?.Review}"); 
@@ -363,7 +363,7 @@ Az alábbi példa mutatja egy [C# függvény](functions-dotnet-class-library.md)
     [FunctionName("CosmosDBSample")]
     public static HttpResponseMessage Run(
         [HttpTrigger(AuthorizationLevel.Anonymous, "get")] HttpRequestMessage req,
-        [DocumentDB("test", "test", ConnectionStringSetting = "CosmosDB", SqlQuery = "SELECT top 2 * FROM c order by c._ts desc")] IEnumerable<object> documents)
+        [CosmosDB("test", "test", ConnectionStringSetting = "CosmosDB", SqlQuery = "SELECT top 2 * FROM c order by c._ts desc")] IEnumerable<object> documents)
     {
         return req.CreateResponse(HttpStatusCode.OK, documents);
     }
@@ -445,21 +445,21 @@ A JavaScript-kód itt látható:
 
 ## <a name="input---attributes"></a>Bemenet – attribútumok
 
-A [C# osztálykönyvtárakhoz](functions-dotnet-class-library.md), használja a [DocumentDB](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.DocumentDB/DocumentDBAttribute.cs) attribútumot, amelyet a NuGet-csomag [Microsoft.Azure.WebJobs.Extensions.DocumentDB](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DocumentDB).
+A [C# osztálykönyvtárakhoz](functions-dotnet-class-library.md), használja a [CosmosDB](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.CosmosDB/CosmosDBAttribute.cs) attribútumot, amelyet a NuGet-csomag [Microsoft.Azure.WebJobs.Extensions.CosmosDB](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.CosmosDB).
 
 Az attribútum konstruktora időt vesz igénybe, az adatbázis és gyűjtemény nevét. Ezeket a beállításokat és egyéb tulajdonságok konfigurálható kapcsolatos információkért lásd: [a következő konfigurációs szakasz](#input---configuration). 
 
 ## <a name="input---configuration"></a>Adjon meg - konfiguráció
 
-Az alábbi táblázat ismerteti a beállított kötés konfigurációs tulajdonságok a *function.json* fájl és a `DocumentDB` attribútum.
+Az alábbi táblázat ismerteti a beállított kötés konfigurációs tulajdonságok a *function.json* fájl és a `CosmosDB` attribútum.
 
 |Function.JSON tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-|**típusa**     || meg kell `documentdb`.        |
+|**Típusa**     || meg kell `documentdb`.        |
 |**direction**     || meg kell `in`.         |
 |**name**     || A kötési paraméter, a függvény a dokumentum jelölő neve.  |
 |**databaseName** |**DatabaseName** |A a dokumentum tartalmazó adatbázis.        |
-|**collectionName** |**CollectionName** | A gyűjtemény, amely tartalmazza a dokumentum nevét. |
+|**CollectionName** |**CollectionName** | A gyűjtemény, amely tartalmazza a dokumentum nevét. |
 |**id**    | **Azonosító** | A dokumentum beolvasása azonosítója. Ez a tulajdonság támogatja a kötések paraméterek. További tudnivalókért lásd: [egy kötési kifejezése egyéni bemeneti tulajdonságok kötése](functions-triggers-bindings.md#bind-to-custom-input-properties). Ne állítsa be mind a **azonosító** és **sqlQuery** tulajdonságait. Ha nem állít egy, a rendszer lekéri a teljes gyűjteményt. |
 |**sqlQuery**  |**SqlQuery**  | Egy Azure Cosmos adatbázis SQL-lekérdezésben használt több dokumentumot. A tulajdonság támogatja a futásidejű kötések, például: `SELECT * FROM c where c.departmentId = {departmentId}`. Ne állítsa be mind a **azonosító** és **sqlQuery** tulajdonságait. Ha nem állít egy, a rendszer lekéri a teljes gyűjteményt.|
 |**connection**     |**ConnectionStringSetting**|Az Alkalmazásbeállítás, amely tartalmazza az Azure Cosmos DB kapcsolati karakterlánc nevét.        |
@@ -500,7 +500,7 @@ Az alábbi példa mutatja egy [C# függvény](functions-dotnet-class-library.md)
     [FunctionName("QueueToDocDB")]        
     public static void Run(
         [QueueTrigger("myqueue-items", Connection = "AzureWebJobsStorage")] string myQueueItem,
-        [DocumentDB("ToDoList", "Items", Id = "id", ConnectionStringSetting = "myCosmosDB")] out dynamic document)
+        [CosmosDB("ToDoList", "Items", Id = "id", ConnectionStringSetting = "myCosmosDB")] out dynamic document)
     {
         document = new { Text = myQueueItem, id = Guid.NewGuid() };
     }
@@ -705,15 +705,15 @@ A JavaScript-kód itt látható:
 
 ## <a name="output---attributes"></a>Kimeneti - attribútumok
 
-A [C# osztálykönyvtárakhoz](functions-dotnet-class-library.md), használja a [DocumentDB](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.DocumentDB/DocumentDBAttribute.cs) attribútumot, amelyet a NuGet-csomag [Microsoft.Azure.WebJobs.Extensions.DocumentDB](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DocumentDB).
+A [C# osztálykönyvtárakhoz](functions-dotnet-class-library.md), használja a [CosmosDB](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.CosmosDB/CosmosDBAttribute.cs) attribútumot, amelyet a NuGet-csomag [Microsoft.Azure.WebJobs.Extensions.CosmosDB](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.CosmosDB).
 
-Az attribútum konstruktora időt vesz igénybe, az adatbázis és gyűjtemény nevét. Ezeket a beállításokat és egyéb tulajdonságok konfigurálható kapcsolatos információkért lásd: [kimeneti - konfigurációs](#output---configuration). Íme egy `DocumentDB` metódus-aláírás attribútum példát:
+Az attribútum konstruktora időt vesz igénybe, az adatbázis és gyűjtemény nevét. Ezeket a beállításokat és egyéb tulajdonságok konfigurálható kapcsolatos információkért lásd: [kimeneti - konfigurációs](#output---configuration). Íme egy `CosmosDB` metódus-aláírás attribútum példát:
 
 ```csharp
     [FunctionName("QueueToDocDB")]        
     public static void Run(
         [QueueTrigger("myqueue-items", Connection = "AzureWebJobsStorage")] string myQueueItem,
-        [DocumentDB("ToDoList", "Items", Id = "id", ConnectionStringSetting = "myCosmosDB")] out dynamic document)
+        [CosmosDB("ToDoList", "Items", Id = "id", ConnectionStringSetting = "myCosmosDB")] out dynamic document)
     {
         ...
     }
@@ -723,15 +723,15 @@ Tekintse meg a teljes például [kimeneti - C# példa](#output---c-example).
 
 ## <a name="output---configuration"></a>Kimeneti - konfiguráció
 
-Az alábbi táblázat ismerteti a beállított kötés konfigurációs tulajdonságok a *function.json* fájl és a `DocumentDB` attribútum.
+Az alábbi táblázat ismerteti a beállított kötés konfigurációs tulajdonságok a *function.json* fájl és a `CosmosDB` attribútum.
 
 |Function.JSON tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-|**típusa**     || meg kell `documentdb`.        |
+|**Típusa**     || meg kell `documentdb`.        |
 |**direction**     || meg kell `out`.         |
 |**name**     || A kötési paraméter, a függvény a dokumentum jelölő neve.  |
 |**databaseName** | **DatabaseName**|Az adatbázis, a gyűjteményt, ahol a dokumentum létre tartalmazó.     |
-|**collectionName** |**CollectionName**  | A gyűjtemény, ahol létrehozzák a dokumentum neve. |
+|**CollectionName** |**CollectionName**  | A gyűjtemény, ahol létrehozzák a dokumentum neve. |
 |**createIfNotExists**  |**CreateIfNotExists**    | Egy logikai értéket, amely azt jelzi, hogy a gyűjtemény létrehozása, ha még nem létezik. Az alapértelmezett érték *hamis* új gyűjtemények létrejövő fenntartott átviteli, amelyek hatással vannak költsége van. További tájékoztatás a [díjszabási lapon](https://azure.microsoft.com/pricing/details/documentdb/) olvasható.  |
 |**partitionKey**|**PartitionKey** |Amikor `CreateIfNotExists` igaz értékű, meghatározza a partíció kulcs elérési útja a létrehozott gyűjteményhez.|
 |**collectionThroughput**|**CollectionThroughput**| Ha `CreateIfNotExists` igaz értékű, meghatározza a [átviteli](../cosmos-db/set-throughput.md) a létrehozott gyűjtemény.|
@@ -750,7 +750,7 @@ Alapértelmezés szerint amikor a a függvénynek a kimeneti paraméter írni eg
 
 | Kötelező | Leírások |
 |---|---|
-| DocumentDB | [A DocumentDB hibakódok](https://docs.microsoft.com/en-us/rest/api/documentdb/http-status-codes-for-documentdb) |
+| CosmosDB | [CosmosDB hibakódok](https://docs.microsoft.com/en-us/rest/api/documentdb/http-status-codes-for-documentdb) |
 
 ## <a name="next-steps"></a>További lépések
 

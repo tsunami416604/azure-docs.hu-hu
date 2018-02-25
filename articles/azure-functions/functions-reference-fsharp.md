@@ -16,11 +16,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/09/2016
 ms.author: syclebsc
-ms.openlocfilehash: 314f528a1fcef2c7afb0eedba012023f3bc9502b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 039306b093d92b66883edcca10e42f7b1dbc7245
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="azure-functions-f-developer-reference"></a>Az Azure Functions F # fejlesztői leírás
 [!INCLUDE [functions-selector-languages](../../includes/functions-selector-languages.md)]
@@ -82,7 +82,7 @@ let Run(blob: string, output: byref<string>, log: TraceWriter) =
     output <- input
 ```
 
-## <a name="async"></a>Aszinkron
+## <a name="async"></a>Async
 A `async` munkafolyamat is használható, de az eredmény vissza kell adnia egy `Task`. Ezt megteheti a `Async.StartAsTask`, például:
 
 ```fsharp
@@ -172,7 +172,7 @@ Egy szerkesztővel, amely támogatja az F # fordítóprogram szolgáltatások se
 #r "Microsoft.Azure.WebJobs.Host.dll"
 #endif
 
-open Sytem
+open System
 open Microsoft.Azure.WebJobs.Host
 
 let Run(blob: string, output: byref<string>, log: TraceWriter) =
@@ -184,7 +184,7 @@ A kód az Azure Functions végrehajtásakor feldolgozza az adatforrással, amely
 <a name="package"></a>
 
 ## <a name="package-management"></a>Felügyeleti csomag
-Az F # függvény NuGet-csomagok használatához vegye fel a `project.json` fájlt a a függvény mappa, a függvény app fájlrendszer. Példa `project.json` hozzáad egy NuGet csomag hivatkozást tartalmazó `Microsoft.ProjectOxford.Face` 1.1.0-ás verzió:
+Az F # függvény NuGet-csomagok használatához vegye fel a `project.json` fájlt a függvény app fájlrendszer a függvény mappájába. Példa `project.json` hozzáad egy NuGet csomag hivatkozást tartalmazó `Microsoft.ProjectOxford.Face` 1.1.0-ás verzió:
 
 ```json
 {
@@ -258,13 +258,13 @@ let mylog(log: TraceWriter, text: string) =
 
 Elérési utak biztosít a `#load` helyéhez viszonyított irányelv vannak a `.fsx` fájlt.
 
-* `#load "logger.fsx"`a függvény mappában található fájl betöltése.
-* `#load "package\logger.fsx"`található fájl betöltése a `package` mappája a függvény.
-* `#load "..\shared\mylogger.fsx"`található fájl betöltése a `shared` mappaként a funkciót, ez azt jelenti, hogy ugyanazon a szinten mappát közvetlenül a `wwwroot`.
+* `#load "logger.fsx"` a függvény mappában található fájl betöltése.
+* `#load "package\logger.fsx"` található fájl betöltése a `package` mappája a függvény.
+* `#load "..\shared\mylogger.fsx"` található fájl betöltése a `shared` mappaként a funkciót, ez azt jelenti, hogy ugyanazon a szinten mappát közvetlenül a `wwwroot`.
 
 A `#load` direktíva csak együttműködve `.fsx` (F # parancsfájl) fájlok, és nem a `.fs` fájlokat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információkért lásd a következőket:
 
 * [F # útmutató](/dotnet/articles/fsharp/index)

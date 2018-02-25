@@ -14,13 +14,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/28/2017
+ms.date: 02/21/2018
 ms.author: nitinme
-ms.openlocfilehash: 1fe81286c395a529a14ba87edc26390a2bab3f90
-ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
+ms.openlocfilehash: c306c66354f34fc945a5fe0ffa11d63bce4d7005
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="use-multiple-hdinsight-clusters-with-an-azure-data-lake-store-account"></a>Több HDInsight-fürt használata az Azure Data Lake Store-fiók
 
@@ -42,9 +42,9 @@ Ahhoz, hogy a gyökérmappa-szerkezetében hatékonyan használhatják a HDInsig
 
 |Mappa  |Engedélyek  |Tulajdonos felhasználó  |Tulajdonoscsoport  | Nevesített felhasználó | Nevesített felhasználó engedélyek | Nevesített csoport | Elnevezett csoportját engedélyek |
 |---------|---------|---------|---------|---------|---------|---------|---------|
-|/ | rwxr-x – x  |Rendszergazda |Rendszergazda  |Egyszerű szolgáltatásnév |--x  |FINGRP   |r-x         |
-|/Clusters | rwxr-x – x |Rendszergazda |Rendszergazda |Egyszerű szolgáltatásnév |--x  |FINGRP |r-x         |
-|/ fürtök/pénzügyi | rwxr-x – t |Rendszergazda |FINGRP  |Egyszerű szolgáltatásnév |rwx  |-  |-     |
+|/ | rwxr-x--x  |adminisztrátor |adminisztrátor  |Szolgáltatásnév |--x  |FINGRP   |r-x         |
+|/Clusters | rwxr-x--x |adminisztrátor |adminisztrátor |Szolgáltatásnév |--x  |FINGRP |r-x         |
+|/ fürtök/pénzügyi | rwxr-x--t |adminisztrátor |FINGRP  |Szolgáltatásnév |rwx  |-  |-     |
 
 A következő táblában:
 
@@ -96,7 +96,7 @@ Ahogy az a YARN JIRA kapcsolódó korábbi, azaz nyilvános erőforrásokat, mik
 #### <a name="workaround"></a>Megkerülő megoldás
 Set olvasási-végrehajtási engedélyeinek **mások** keresztül a hierarchiában, például  **/** , **/fürtök** és   **/fürtök/pénzügyi** a fenti táblázatban látható módon.
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
 * [HDInsight-fürtök létrehozása a Data Lake Store tárolóként](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)
 

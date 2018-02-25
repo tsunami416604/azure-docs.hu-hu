@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/03/2017
+ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: acfd26674aafab4ed1925d6b33967f917058b1be
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: beacf34ae0cf7cfd55b63a862d3dabce99248939
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="troubleshoot-application-upgrades"></a>Alkalmazásfrissítések hibaelhárítása
 Ez a cikk ismerteti az Azure Service Fabric-alkalmazás és azok megoldását frissítése körül gyakori problémák némelyikéről.
@@ -213,7 +213,7 @@ Frissítés nem sikerülne addig nem kerülhet sor gyorsabb, mint a *HealthCheck
 
 A frissítési idő egy frissítési tartomány korlátozza *UpgradeDomainTimeout*.  Ha *HealthCheckRetryTimeout* és *HealthCheckStableDuration* mindkettő nem nulla, és az alkalmazás állapotának tartja oda-vissza vált, akkor a frissítés végül időtúllépése a *UpgradeDomainTimeout*. *UpgradeDomainTimeout* számbavételi le egyszer a frissítés az aktuális frissítési tartomány kezdete a kezdődik.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [Az alkalmazás használata a Visual Studio frissítése](service-fabric-application-upgrade-tutorial.md) végigvezeti Önt az alkalmazásfrissítés Visual Studio használatával.
 
 [Az alkalmazás használatával Powershell frissítése](service-fabric-application-upgrade-tutorial-powershell.md) végigvezeti Önt az alkalmazásfrissítés PowerShell használatával.

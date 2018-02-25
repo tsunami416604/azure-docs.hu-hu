@@ -1,6 +1,6 @@
 ---
-title: "Célállapotkonfiguráció Azure áttekintés |} Microsoft Docs"
-description: "A Microsoft Azure-kiterjesztés kezelője segítségével a PowerShell célállapot-konfiguráció áttekintése. Többek között az Előfeltételek, architektúra, parancsmagok..."
+title: "Állapotkonfiguráció szükséges Azure áttekintés |} Microsoft Docs"
+description: "Ismerje meg, hogyan használhatja a Microsoft Azure-kiterjesztés kezelője a PowerShell szükséges konfiguráló (DSC). A cikk Előfeltételek, architektúrájának és parancsmagokat tartalmazza."
 services: virtual-machines-windows
 documentationcenter: 
 author: mgreenegit
@@ -16,105 +16,85 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 02/02/2018
 ms.author: migreene
-ms.openlocfilehash: ed8b5bc54baa3a5abfb596b202f0af58e1b6c74f
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 14d29223435e9a133b112a61f2ecdde0aad581a2
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="introduction-to-the-azure-desired-state-configuration-extension-handler"></a>Az Azure célállapot-konfiguráció kiterjesztés kezelőjének bemutatása
 
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
-Az Azure Virtuálisgép-ügynök és a kapcsolódó bővítmények a Microsoft Azure infrastruktúra-szolgáltatásokat a részét képezik.
-Virtuálisgép-bővítmények olyan szoftverösszetevők, amelyek a virtuális gép bővíthetők, és egyszerűbbé tehető a virtuális gép különböző felügyeleti műveleteket.
+Az Azure Virtuálisgép-ügynök és a kapcsolódó bővítmények a Microsoft Azure infrastruktúra-szolgáltatások részét képezik. Virtuálisgép-bővítmények olyan szoftverösszetevők, amelyek VM bővíthetők, és egyszerűbbé tehető a virtuális gép különböző felügyeleti műveleteket.
 
-Az elsődleges-és nagybetűhasználattal rendszerindításának egy virtuális Gépet nem a kívánt állapot konfigurációs kiterjesztése a [Azure Automation DSC szolgáltatás](../../automation/automation-dsc-overview.md) biztosít [előnyöket](https://docs.microsoft.com/en-us/powershell/dsc/metaconfig.md#pull-service) beleértve a folyamatos felügyeletét, a Virtuálisgép-konfiguráció és egyéb működési eszközök – például a figyelés Azure való integráció.
+Az elsődleges-és nagybetűhasználattal a Azure kívánt állapot konfigurációs szolgáltatása (DSC) bővítményt a virtuális gépek rendszerindításának érték a [Azure Automation DSC szolgáltatás](../../automation/automation-dsc-overview.md). Biztosít egy virtuális gép rendszerindítása [előnyöket](https://docs.microsoft.com/en-us/powershell/dsc/metaconfig#pull-service) , amelyek tartalmazzák a Virtuálisgép-konfiguráció és egyéb működési eszközök – például a figyelés Azure integráció folyamatos kezelését.
 
-Is lehetőség a DSC-bővítményt, az Azure Automation DSC szolgáltatástól függetlenül, azonban a telepítés során előforduló szinguláris művelet, és nincs folyamatban lévő reporting vagy helyileg a virtuális Gépen belül a nem konfigurációkezeléshez.
+A DSC-bővítményt az Automation DSC szolgáltatás függetlenül is használhatja. Azonban ez magában foglalja a központi telepítése során egy szinguláris műveleteket. Nincs folyamatban lévő reporting vagy konfigurációkezelés áll rendelkezésre, nem helyileg a virtuális gép.
 
-Ez a cikk forgatókönyveket, a bevezetési Azure Automation DSC-bővítményt és hogyan használható a DSC-bővítményt eszközként konfigurációk hozzárendelése az Azure SDK-t használó virtuális gépek adatait tartalmazza.
+Ez a cikk mindkét forgatókönyvet ismerteti: Automation bevezetése a DSC-bővítményt használja, és használja a DSC-bővítményt eszközként konfigurációk hozzárendelése a virtuális gépek az Azure SDK segítségével.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- **Helyi számítógép** - kommunikál az Azure Virtuálisgép-bővítmény, az Azure-portálon vagy az Azure PowerShell SDK használatával kell.
-- **A Vendégügynök** – az Azure virtuális gép a DSC-konfiguráció által konfigurált kell lennie, amely támogatja a Windows Management Framework (WMF) 4.0-s vagy újabb operációs. Támogatott operációsrendszer-verziók teljes listája megtalálható az oldal [DSC-bővítmény verzióelőzmények](https://blogs.msdn.microsoft.com/powershell/2014/11/20/release-history-for-the-azure-dsc-extension/).
+- **Helyi számítógép**: kommunikál az Azure Virtuálisgép-bővítmény, az Azure-portálon vagy az Azure PowerShell SDK-t kell használnia.
+- **A Vendégügynök**: az Azure virtuális gép a DSC-konfiguráció által konfigurált, amely támogatja a Windows Management Framework (WMF) 4.0-s vagy újabb operációs kell lennie. A támogatott operációsrendszer-verziók teljes listájáért lásd: a [DSC-bővítmény verzióelőzmények](https://blogs.msdn.microsoft.com/powershell/2014/11/20/release-history-for-the-azure-dsc-extension/).
 
 ## <a name="terms-and-concepts"></a>Kifejezések és fogalmak
 
 Ez az útmutató a következő fogalmakat ismeretét feltételezi:
 
-- **Konfigurációs** -A DSC-konfiguráció dokumentum.
-- **Csomópont** -céljának DSC-konfiguráció. A jelen dokumentum "csomópont" mindig hivatkozik egy Azure virtuális Gépen.
-- **Konfigurációs adatok** - konfiguráció környezeti adatokat tartalmazó .psd1 fájlt.
+- **Konfigurációs**: A DSC-konfiguráció dokumentum.
+- **Csomópont**: egy cél DSC-konfiguráció. Ebben a dokumentumban *csomópont* mindig egy Azure virtuális gép hivatkozik.
+- **Konfigurációs adatok**: konfiguráció környezeti adatok .psd1 fájlt.
 
-## <a name="architectural-overview"></a>Az architektúra áttekintése
+## <a name="architecture"></a>Architektúra
 
-Az Azure DSC-bővítmény az Azure Virtuálisgép-ügynök keretrendszer használatával kézbesíti, kihirdeti, és a jelentés az Azure virtuális gépeken futó DSC-konfigurációk.
-A DSC-bővítményt egy konfigurációs dokumentum és a paraméterek fogadja el.
-Ha nincs fájl áll rendelkezésre, egy [konfigurációs parancsfájl alapértelmezett](###default-configuration-script) csak a metaadat-ban történő beállítását használt kiterjesztésű beágyazott [helyi Configuration Manager](https://docs.microsoft.com/en-us/powershell/dsc/metaconfig).
+Az Azure DSC-bővítmény az Azure Virtuálisgép-ügynök keretrendszer használatával kézbesíti, kihirdeti, és a jelentés az Azure virtuális gépeken futó DSC-konfigurációk. A DSC-bővítményt egy konfigurációs dokumentum és a paraméterek fogadja el. Ha nincs fájl áll rendelkezésre, egy [konfigurációs parancsfájl alapértelmezett](#default-configuration-script) kiterjesztésű van beágyazva. Az alapértelmezett konfigurációs parancsfájl használatával csak metaadat beállított [helyi Configuration Manager](https://docs.microsoft.com/en-us/powershell/dsc/metaconfig).
 
-A bővítmény hívásakor először egy verziója, a Windows Management Framework (WMF) használatával a következő programot telepíti:
+A bővítmény hívásakor először a következő logika használatával telepíti a WMF verziója:
 
-1. Ha az Azure virtuális gép operációs rendszere Windows Server 2016-os, semmilyen művelet nem lesz végrehajtva. Windows Server 2016 már telepített PowerShell legújabb verzióját.
-2. Ha a `wmfVersion` tulajdonság van megadva, a WMF adott verziója van telepítve, kivéve, ha a virtuális gép operációs rendszere kompatibilis.
-3. Ha nincs `wmfVersion` tulajdonság van megadva, a WMF legújabb megfelelő verziója telepítve van.
+* Ha az Azure virtuális gép operációs rendszere Windows Server 2016-os, semmilyen művelet nem lesz végrehajtva. Windows Server 2016 már telepített PowerShell legújabb verzióját.
+* Ha a **wmfVersion** tulajdonság van megadva, a WMF verzió telepítve van, kivéve, ha nem, hogy a virtuális gép operációs rendszere kompatibilis.
+* Ha nincs **wmfVersion** tulajdonság van megadva, a WMF legújabb megfelelő verziója telepítve van.
 
-A WMF telepítése újraindítást igényel.
-Az újraindítást követően a bővítmény megadott .zip fájl letölti a `modulesUrl` tulajdonságot, ha a megadott.
-Ha ezen a helyen az Azure blob Storage tárolóban, SAS-tokennel is megadhatók a `sasToken` tulajdonság a fájl elérésére.
-A .zip letöltése és kicsomagolása, után a konfigurációs függvény meghatározott `configurationFunction` futtatjuk a MOF-fájlt létrehozni.
-A bővítmény majd futtatja az `Start-DscConfiguration -Force` a generált MOF-fájlt használ.
-A bővítmény kimeneti rögzíti, és az Azure állapot csatorna írja azt.
+A WMF telepítése újraindítást igényel. Az újraindítás után a bővítmény a .zip-fájlban megadott letölti a **modulesUrl** tulajdonság, ha a megadott. Ha ezen a helyen az Azure Blob Storage tárolóban, megadhat egy SAS-jogkivonat a a **sasToken** tulajdonság a fájl elérésére. A .zip letöltése és kicsomagolása, után a konfigurációs függvény meghatározott **configurationFunction** felveszi .mof-fájl létrehozása. A bővítmény majd futtatja az **Start-DscConfiguration-Force** a generált .mof fájl használatával. A bővítmény kimeneti rögzíti, és az Azure állapot csatorna írja azt.
 
 ### <a name="default-configuration-script"></a>Alapértelmezett konfigurációs parancsfájl
 
-Az Azure DSC-bővítményt tartalmaz egy alapértelmezett konfigurációs parancsfájlt, ha használható a virtuális gép Azure Automation DSC szolgáltatásra.
-A parancsprogram paramétereinek összhangban legyenek a konfigurálható tulajdonságainak [helyi Configuration Manager](https://docs.microsoft.com/en-us/powershell/dsc/metaconfig).
-A parancsfájl paramétereit, [dokumentált](extensions-dsc-template.md##default-configuration-script) és a teljes parancsfájl érhető el [GitHub](https://github.com/Azure/azure-quickstart-templates/blob/master/dsc-extension-azure-automation-pullserver/UpdateLCMforAAPull.zip?raw=true).
+Az Azure DSC-bővítményt tartalmaz egy alapértelmezett konfigurációs parancsfájlt, amely rendelkezik tekinthető használni bevezetésében, egy virtuális Gépet az Azure Automation DSC szolgáltatásra. A parancsprogram paramétereinek összhangban legyenek a konfigurálható tulajdonságainak [helyi Configuration Manager](https://docs.microsoft.com/en-us/powershell/dsc/metaconfig). A parancsfájl paramétereit, lásd: [konfigurációs parancsfájl alapértelmezett](extensions-dsc-template.md#default-configuration-script) a [célállapot-konfiguráció bővítmény Azure Resource Manager-sablonok](extensions-dsc-template.md). A teljes parancsfájl, tekintse meg a [GitHub-sablon Azure gyors üzembe helyezés](https://github.com/Azure/azure-quickstart-templates/blob/master/dsc-extension-azure-automation-pullserver/UpdateLCMforAAPull.zip?raw=true).
 
-## <a name="dsc-extension-in-arm-templates"></a>Az ARM-sablonok DSC-bővítményt
+## <a name="dsc-extension-in-resource-manager-templates"></a>A DSC-bővítményt a Resource Manager-sablonok
 
-Az Azure Resource Manager (ARM) a központi telepítési sablonok, amelyek a várt használata a legtöbb esetben a DSC-bővítményt.
-Az útmutatást és példákat a DSC-bővítményt ARM központi telepítési sablonok, beleértve a dedikált dokumentációs oldal jelenik meg [kívánt állapot konfigurációs kiterjesztése Azure Resource Manager-sablonok](extensions-dsc-template.md).
+A legtöbb esetben a Resource Manager központi telepítési sablonok a várt módon használható a DSC-bővítményt. További információt és példákat a DSC-bővítményt tartalmazza a Resource Manager központi telepítési sablonok [célállapot-konfiguráció bővítmény Azure Resource Manager-sablonok](extensions-dsc-template.md).
 
 ## <a name="dsc-extension-powershell-cmdlets"></a>A DSC-bővítmény PowerShell-parancsmagok
 
-DSC-bővítményt kezelése a PowerShell-parancsmagok használata leginkább interaktív hibaelhárítását és információgyűjtés forgatókönyvek.
-A parancsmagok segítségével csomag közzététele és DSC-bővítmény telepítésének figyelése.
-Vegye figyelembe, hogy parancsmagokat a DSC-bővítményt kell még nem frissített történő együttműködésre a [alapértelmezett konfigurációs parancsfájl](###default-configuration-script).
+A PowerShell-parancsmagok használatával kezelheti a DSC-bővítményt az interaktív hibaelhárítási és információgyűjtési forgatókönyvek legérdemesebb használni. A parancsmagok segítségével csomag közzététele és DSC-bővítmény telepítésének figyelése. Vegye figyelembe, hogy a DSC-bővítmény parancsmagok még nem frissített történő együttműködésre a [konfigurációs parancsfájl alapértelmezett](#default-configuration-script).
 
-`Publish-AzureRMVMDscConfiguration`időt vesz igénybe, a konfigurációs fájlban, keres a DSC tőle függő erőforrások és a konfiguráció és a konfigurációs kihirdeti szükséges DSC erőforrásokat tartalmazó .zip fájlt hoz létre.
-A csomag helyileg is létrehozhat a `-ConfigurationArchivePath` paraméter.
-Ellenkező esetben a .zip-fájlt az Azure blob storage közzéteszi, és biztosítja a SAS-tokennel rendelkező.
+A **Publish-AzureRMVMDscConfiguration** parancsmag időt vesz igénybe, a konfigurációs fájlban, keres a DSC tőle függő erőforrások, és létrehoz egy .zip fájlt. A zip-fájlt a konfigurációs és a DSC-erőforrások, amelyek szükségesek ahhoz, hogy a konfigurációs kihirdeti tartalmazza. A parancsmag használatával helyben is létrehozhat a csomag a *- ConfigurationArchivePath* paraméter. Ellenkező esetben a parancsmag közzéteszi a blob-tároló zip-fájlt, és majd biztonságossá tételére egy SAS-tokennel rendelkező.
 
-A zip-fájlt, a parancsmag által létrehozott a .ps1 konfigurációs parancsfájl az archív mappa gyökerében van.
-Erőforrások, hogy a modul mappát az archív mappába helyezi.
+A .ps1 konfigurációs parancsfájl, amely a parancsmag létrehozza a .zip-fájlt az archív mappa gyökerében van. A modul mappába kerül erőforrások archív mappájában.
 
-`Set-AzureRMVMDscExtension`a beállításokat, amelyek használatával a PowerShell DSC-bővítményt a Virtuálisgép-konfigurációs objektum esetében.
+A **Set-AzureRMVMDscExtension** parancsmag esetében a PowerShell DSC-bővítményhez olyan beállításokat egy virtuális gép konfigurációs objektumban.
 
-`Get-AzureRMVMDscExtension`Lekéri egy adott virtuális gép DSC-bővítmény állapotának.
+A **Get-AzureRMVMDscExtension** parancsmag beolvassa a DSC-bővítmény állapotát egy adott virtuális gép.
 
-`Get-AzureRMVMDscExtensionStatus`a DSC-konfiguráció a DSC-bővítmény kezelő helyeztek állapotát olvassa be.
-Ez a művelet végrehajtható egyetlen virtuális gép vagy csoportján.
+A **Get-AzureRMVMDscExtensionStatus** parancsmag beolvassa a DSC-konfiguráció, amely a DSC-bővítmény kezelő végrehajtása állapotát. Ez a művelet egy virtuális vagy virtuális gépek egy csoportján hajtható végre.
 
-`Remove-AzureRMVMDscExtension`a bővítmény kezelő eltávolítja a megadott virtuális géppel.
-Ez a parancsmag does **nem** távolítsa el a konfigurációt, távolítsa el a WMF, vagy módosítsa a virtuális gépen a alkalmazott beállításokat.
-Csak a bővítmény kezelő távolítja el. 
+A **Remove-AzureRMVMDscExtension** parancsmag eltávolítja a bővítmény kezelő egy adott virtuális géptől. Ez a parancsmag does *nem* távolítsa el a konfigurációt, távolítsa el a WMF, vagy módosítsa a virtuális Gépen a alkalmazott beállításokat. Csak a bővítmény kezelő távolítja el. 
 
-A DSC-bővítményt AzureRM-parancsmagokkal kapcsolatos fontos információkat:
+Erőforrás-kezelő DSC-bővítmény parancsmagok fontos információkat:
 
 - Az Azure Resource Manager parancsmagjainak szinkronizáltak.
-- Erőforráscsoport-név, a VMName, a ArchiveStorageAccountName, a verziót és a hely összes kötelező paraméterek tartoznak.
-- ArchiveResourceGroupName megadása nem kötelező paraméter. Ez a paraméter is megadhat, ha a tárfiók tartozik egy másik erőforráscsoportban található, mint ahol a virtuális gép létrehozása.
-- Az automatikus frissítési kapcsoló lehetővé teszi, hogy a kiterjesztés kezelője a legfrissebb verzióra, és a rendelkezésre álló automatikus frissítés. Megjegyzés: Ez a paraméter van okozhat újraindítja a virtuális Gépre, a WMF egy új verzióinak kiadásakor.
+- A *ResourceGroupName*, *VMName*, *ArchiveStorageAccountName*, *verzió*, és *hely*paraméterek is kötelező megadni.
+- *ArchiveResourceGroupName* egy nem kötelező paraméter. Ez a paraméter is megadhat, ha a tárfiók tartozik egy másik erőforráscsoportban található, mint ahol a virtuális gép létrehozása.
+- Használja a **AutoUpdate** kapcsolót, hogy a kiterjesztés kezelő automatikus frissítése a legújabb verzióra a rendelkezésre álló. Vegye figyelembe, hogy ez a paraméter rendelkezik-e újraindítást okozhat a virtuális Gépre, ha egy új verziója WMF szabadul fel.
 
-### <a name="getting-started-with-cmdlets"></a>Ismerkedés a parancsmagok
+### <a name="get-started-with-cmdlets"></a>Ismerkedés a parancsmagok
 
-Az Azure DSC-bővítmény által képes a DSC-konfiguráció dokumentumokat közvetlenül konfigurálására Azure virtuális gépek telepítése során bár ez nem regisztrálja az Azure Automation csomópont, a csomópont lesz **nem*-központi felügyeletét.
+Az Azure DSC-bővítményt a DSC-konfiguráció dokumentumok segítségével közvetlenül konfigurálása az Azure virtuális gépek telepítése során. Ezt a lépést nem regisztrálja az Automation csomópont. A csomópont *nem* központilag felügyelt.
 
-A következő konfiguráció egy egyszerű példa.
-Mentse helyileg "IisInstall.ps1":
+Az alábbi példában egy egyszerű példa konfiguráció látható. Mentse helyileg a konfigurációs IisInstall.ps1.
 
 ```powershell
 configuration IISInstall
@@ -130,14 +110,14 @@ configuration IISInstall
 }
 ```
 
-Helyezze a IisInstall.ps1 parancsfájl a megadott virtuális gép, végrehajtani a konfigurációs és jelentéseket küldhetnek vissza állapota az alábbi lépéseket.
+Az alábbi parancsokat a IisInstall.ps1 parancsfájl a megadott virtuális gép helyezze el. A parancsok is végrehajtani a konfigurációs, és jelentést készít a biztonsági állapotát.
 
 ```powershell
 $resourceGroup = "dscVmDemo"
 $location = "westus"
 $vmName = "myVM"
 $storageName = "demostorage"
-#Publish the configuration script into user storage
+#Publish the configuration script to user storage
 Publish-AzureRmVMDscConfiguration -ConfigurationPath .\iisInstall.ps1 -ResourceGroupName $resourceGroup -StorageAccountName $storageName -force
 #Set the VM to run the DSC configuration
 Set-AzureRmVmDscExtension -Version 2.72 -ResourceGroupName $resourceGroup -VMName $vmName -ArchiveStorageAccountName $storageName -ArchiveBlobName iisInstall.ps1.zip -AutoUpdate:$true -ConfigurationName "IISInstall"
@@ -145,38 +125,32 @@ Set-AzureRmVmDscExtension -Version 2.72 -ResourceGroupName $resourceGroup -VMNam
 
 ## <a name="azure-portal-functionality"></a>Az Azure portál funkció
 
-Tallózással keresse meg a virtuális gépek. A beállítások -> Általános kattintson "Kiterjesztésekkel."
-Egy új ablak jön létre.
-Kattintson a "Hozzáadás" gombra, és válassza ki a PowerShell DSC.
+A portál beállítása DSC:
 
-A portál van szüksége.
-**Modulok vagy parancsfájl**: Ez a mező megadása kötelező (az űrlap nem lett frissítve a [alapértelmezett konfigurációs parancsfájl](###default-configuration-script).
-Egy konfigurációs parancsfájl tartalmazó .ps1 fájlt, vagy a legfelső szintű és a tőle függő összes erőforrásról, a modul mappákban belül a .zip .ps1 konfigurációs parancsfájl .zip fájl szükséges.
-A létrehozás a `Publish-AzureVMDscConfiguration -ConfigurationArchivePath` parancsmag az Azure PowerShell SDK tartalmazza.
-A zip-fájlt a SAS-jogkivonat által védett felhasználói blob-tároló van töltve.
+1. Ugrás a virtuális gép. 
+2. A **beállítások** > **általános**, jelölje be **bővítmények**. 
+3. A létrehozott új ablaktábla, válassza a **Hozzáadás**, majd válassza ki **PowerShell DSC**.
 
-**Konfigurációs adatok psd1 kiterjesztésű fájl**: Ez a mező nem kötelező megadni.
-Ha a konfiguráció szükséges .psd1 a konfigurációs adatfájlt, használja ebben a mezőben jelölje ki, majd töltse fel a felhasználó blob-tároló, a SAS-jogkivonat által védett ahol.
+A portál a következő beavatkozást igényel:
 
-**Konfiguráció neve modulhoz minősített**: .ps1 fájlok rendelkezhet több konfigurációs funkciók.
-Adja meg a konfigurációs .ps1 parancsfájl követ egy "\' és a konfigurációs függvény neve.
-Például ha a .ps1 parancsfájl "configuration.ps1" nevet, és a konfiguráció "IisInstall", írja be:`configuration.ps1\IisInstall`
+* **Modulok vagy parancsfájl**: Ez a mező megadása kötelező (az űrlap nem lett frissítve a [konfigurációs parancsfájl alapértelmezett](#default-configuration-script)). Konfigurációs modulok és a parancsfájlokat egy konfigurációs parancsfájl .ps1 fájlt vagy a meghajtó gyökérkönyvtárát .ps1 konfigurációs parancsfájl .zip fájl szükséges. Egy .zip fájl használatakor tőle függő összes erőforrásról szerepelnie kell a .zip modul mappákat. A .zip fájl segítségével létrehozható a **Publish-AzureVMDscConfiguration - ConfigurationArchivePath** parancsmag, amely az Azure PowerShell SDK megtalálható. A zip-fájlt a felhasználó blobtárolóba feltöltött, és egy SAS-jogkivonat által védett.
 
-**Konfigurációs argumentumok**: Ha a konfigurációs függvény argumentummal, adja meg őket itt formátumú `argumentName1=value1,argumentName2=value2`.
-Megjegyzés: ezt a formátumot más formátumú, mint hogyan konfigurációs argumentumot fogad PowerShell-parancsmagok és a Resource Manager-sablonok használatával.
+* **Konfigurációs adatok psd1 kiterjesztésű fájl**: Ez a mező nem kötelező megadni. Ha a konfiguráció szükséges .psd1 a konfigurációs adatfájlt, használja a ebben a mezőben jelölje ki az adatok mezőt, és töltse fel azt a felhasználói blob-tároló. A konfigurációs adatfájlt védi-e egy SAS-jogkivonat a blob Storage tárolóban.
 
-## <a name="logging"></a>Naplózás
-Naplók kerülnek:
+* **Konfiguráció neve modulhoz minősített**: .ps1 fájl több konfigurációs funkciók is felvehet. Adja meg a konfigurációs .ps1 parancsfájl követ \\ és a konfigurációs függvény neve. Például, ha a .ps1 parancsfájlt a név configuration.ps1 és a konfigurációs van **IisInstall**, adja meg **configuration.ps1\IisInstall**.
+
+* **Konfigurációs argumentumok**: Ha a konfigurációs függvény argumentummal, adja meg őket itt formátumban **argumentName1 = érték1, argumentName2 = érték2**. Ebben a formátumban, amelyben konfigurációs argumentumokat fogadják el és PowerShell-parancsmagok és a Resource Manager-sablonok más formátumú.
+
+## <a name="logs"></a>Logs
+Hely naplózza a következő helyen:
 
 ```powerShell
-C:\WindowsAzure\Logs\Plugins\Microsoft.Powershell.DSC\[Version Number]
+C:\WindowsAzure\Logs\Plugins\Microsoft.Powershell.DSC\<version number>
 ```
 
 ## <a name="next-steps"></a>További lépések
-További információ a PowerShell DSC [látogasson el a PowerShell dokumentációs központban](https://msdn.microsoft.com/powershell/dsc/overview). 
+* A PowerShell DSC kapcsolatos további információkért lásd a [PowerShell dokumentációs központban](https://msdn.microsoft.com/powershell/dsc/overview). 
+* Vizsgálja meg a [Resource Manager-sablon a DSC-bővítmény](extensions-dsc-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
+* A PowerShell DSC használatával felügyelhető további funkciókat, és további DSC-erőforrásokat, keresse meg a [PowerShell-galériában](https://www.powershellgallery.com/packages?q=DscResource&x=0&y=0).
+* További információk a konfigurációk a bizalmas paraméterek átadása: [biztonságosan a DSC-bővítmény kezelő a hitelesítő adatok kezelése](extensions-dsc-credentials.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
-Vizsgálja meg a [Azure Resource Manager sablon a DSC-bővítmény](extensions-dsc-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
-
-A PowerShell DSC kezelhető további funkciók kereséséhez [keresse meg a PowerShell-galériában](https://www.powershellgallery.com/packages?q=DscResource&x=0&y=0) további DSC-erőforrásokat.
-
-Bizalmas paraméterek átadása a konfigurációk a részletekért lásd: [biztonságosan a DSC-bővítmény kezelő a hitelesítő adatok kezelése](extensions-dsc-credentials.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).

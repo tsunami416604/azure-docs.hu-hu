@@ -11,11 +11,11 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/26/2018
 ms.author: davidmu
-ms.openlocfilehash: eb07b1811b017f71a003be26522e6b213a300321
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 62063c42ab15a071a4500417a5d8adf6bfeac97f
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="create-an-application-gateway-with-path-based-routing-rules-using-the-azure-portal"></a>Hozzon létre egy alkalmazás elérési útja-alapú útválasztási szabályokat az Azure portál használatával
 
@@ -71,7 +71,7 @@ Egy virtuális hálózatot az Ön által létrehozott erőforrások közötti ko
 1. Kattintson a **összes erőforrás** a bal oldali menüből, majd **myVNet** erőforrások listából.
 2. Kattintson a **alhálózatok**, és kattintson a **alhálózati**.
 
-    ![Hozzon létre az alhálózatot](./media/application-gateway-create-url-route-portal/application-gateway-subnet.png)
+    ![Alhálózat létrehozása](./media/application-gateway-create-url-route-portal/application-gateway-subnet.png)
 
 3. Adja meg *myBackendSubnet* neveként az alhálózati majd **OK**.
 
@@ -120,7 +120,7 @@ Ebben a példában az Alkalmazásátjáró háttér-kiszolgálóként használan
 ## <a name="create-backend-pools-with-the-virtual-machines"></a>Háttér-címkészletek létrehozása a virtuális gépekkel
 
 1. Kattintson a **összes erőforrás** majd **myAppGateway**.
-2. Kattintson a **háttérkészletek**. Alapértelmezett címkészlet automatikusan jött létre az Alkalmazásátjáró. Kattintson a **appGateayBackendPool**.
+2. Kattintson a **háttérkészletek**. Alapértelmezett címkészlet automatikusan jött létre az Alkalmazásátjáró. Click **appGatewayBackendPool**.
 3. Kattintson a **Hozzáadás cél** hozzáadása *myVM1* appGatewayBackendPool számára.
 
     ![Adja hozzá a háttérkiszolgálókon](./media/application-gateway-create-url-route-portal/application-gateway-backend.png)

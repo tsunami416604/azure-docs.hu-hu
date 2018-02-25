@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 8/9/2017
+ms.date: 2/23/2018
 ms.author: masnider;
-ms.openlocfilehash: 601b1c7713c9785d949c1c72000ec7f3f63dd682
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3c583d99a63c13a0a2ab351f82a4f5ff6840788a
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="reliable-services-overview"></a>A Reliable Services áttekintése
 Az Azure Service Fabric leegyszerűsíti az írást, és az állapotmentes és állapotalapú Reliable Services kezelése. Ez a témakör ismerteti:
@@ -45,7 +45,7 @@ Megbízható szolgáltatások lehetővé teszi egy egyszerű, hatékony, legfels
 * A moduláris kommunikációs modellt. Használja az Ön által választott, például a HTTP-alapú, átvitel [Web API](service-fabric-reliable-services-communication-webapi.md), websocket elemeket, egyéni TCP protokollt, vagy bármely más. Megbízható szolgáltatások néhány nagy out-of-az-box beállítások is használhatja, vagy megadhatja a saját adja meg.
 * Állapotalapú szolgáltatások esetén a Reliable Services programozási modell lehetővé teszi, hogy következetesen és megbízhatóan használatával tárolhatja a jobb oldalon lévő a szolgáltatás állapota [megbízható gyűjtemények](service-fabric-reliable-services-reliable-collections.md). Megbízható gyűjtemények olyan egyszerű magas rendelkezésre állású és megbízható gyűjteményosztály, amely bárki, aki használta a C# gyűjtemények ismerős lesz. Hagyományosan szolgáltatások megbízható állapotkezelés szükséges külső rendszerekkel. Megbízható gyűjteményéhez az állapot tárolhatja mellett a számítási az azonos magas rendelkezésre állás és a megbízhatóság már származnak szolgáltatásokat a magas rendelkezésre állású külső tárolókat. Ebben a modellben a késés is támogatja, mert meg vannak elhelyezése a számítási és a működéséhez szükséges állapot.
 
-Ezt a videót a Microsoft Virtual Academy Reliable services áttekintése:<center>
+Ezt a videót a Microsoft Virtual Academy Reliable services áttekintése: <center>
 <a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=HhD9566yC_4106218965">
 <img src="./media/service-fabric-reliable-services-introduction/ReliableServicesVid.png" WIDTH="360" HEIGHT="244" />
 </a>
@@ -113,7 +113,7 @@ Ha az alkalmazás van szüksége, az alábbi jellemző, akkor érdemes lehet meg
 * Az alkalmazás kell fenntartania változások nyomon követése az egységek állapot.
 * Fejlesztése vagy harmadik fél fejlett, egyéni állapotszolgáltatója használni kívánt.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Megbízható szolgáltatások – első lépések](service-fabric-reliable-services-quick-start.md)
 * [Megbízható szolgáltatás használati speciális](service-fabric-reliable-services-advanced-usage.md)
 * [A Reliable Actors programozási modell](service-fabric-reliable-actors-introduction.md)

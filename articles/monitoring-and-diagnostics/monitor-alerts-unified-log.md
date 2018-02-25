@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2018
 ms.author: vinagara
-ms.openlocfilehash: f6072e4e8a9ab72f677c35e498e31b5218579f1b
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 438776e7f0885dbdb0d66ccdd18d854e14beb299
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="log-alerts-in-azure-monitor---alerts-preview"></a>Napló riasztások figyelése Azure - riasztások (előzetes verzió)
 Ez a cikk részletesen ismerteti, hogyan riasztási szabályok elemzési lekérdezések használata az Azure-riasztások (előzetes verzió), és különböző típusú riasztási szabályok napló közötti különbségeket ismerteti.
@@ -27,11 +27,20 @@ Jelenleg Azure riasztások (előzetes verzió), támogatja jelentkezzen ki riasz
 
 > [!WARNING]
 
-> Jelenleg napló riasztásait az Azure-riasztások (előzetes verzió) nem támogatja a kereszt-munkaterület vagy az alkalmazások közötti lekérdezések.
+> Jelenleg napló riasztással Azure riasztások (előzetes verzió) nem támogatja a kereszt-munkaterület vagy az alkalmazások közötti lekérdezések.
+
+Emellett a felhasználók is tökéletes Analytics platform választott Azure-ban a lekérdezések, majd *importálja azokat az értesítések (előzetes verzió) használható a lekérdezés mentésével*. Lépést kell végrehajtania:
+- Az Application Insights: Nyissa meg az Analytics-portálról érvényesítése a lekérdezés és az eredményeket. Mentse az egyedi névvel rendelkező *megosztott lekérdezések*.
+- A Naplóelemzési: Nyissa meg a napló kereséshez, ellenőrizze a lekérdezés és az eredményeket. Majd menteni, ebbe a kategóriába egyedi neve.
+
+Amikor [egy napló riasztás létrehozása a riasztások (előzetes verzió)](monitor-alerts-unified-usage.md), megjelenik a korábban mentett lekérdezés jel típusként felsorolt **napló (mentett lekérdezés)**; az alábbi példában ismertetett módon: ![mentett lekérdezés riasztások importálása](./media/monitor-alerts-unified/AlertsPreviewResourceSelectionLog-new.png)
+
+> [!NOTE]
+> Használatával **napló (mentett lekérdezés)** riasztások van egy importálási eredmények. Az elemzés után végzett módosításokat ezért nem lesz tükröző mentett riasztási szabályok és fordítva.
 
 ## <a name="log-alert-rules"></a>Napló riasztási szabályok
 
-Riasztások napló lekérdezések automatikusan futtatása rendszeres időközönként (előzetes verzió) Azure riasztások jönnek létre.  Ha a napló lekérdezés eredményeit az adott feltételeknek megfelelő, egy riasztás rekord jön létre. A szabály automatikusan követően futtathatja egy vagy több művelet proaktív a riasztás értesíti, vagy egy másik folyamat használja, a runbookok futtatása azonos hívási [művelet csoportok](monitoring-action-groups.md).  Különböző típusú riasztási szabályok az elemzés végrehajtásához használja a másik programot.
+Riasztások napló lekérdezések automatikusan futtatása rendszeres időközönként (előzetes verzió) Azure riasztások jönnek létre.  Ha a napló lekérdezés eredményeit az adott feltételeknek megfelelő, egy riasztás rekord jön létre. A szabály automatikusan követően futtathatja egy vagy több műveletek proaktív értesítést küldenek, a figyelmeztetés vagy meg kíván hívni egy másik folyamat, például a külső alkalmazás használatával történő adatküldés [json-alapú webhook](monitor-alerts-unified-log-webhook.md)használatával [művelet csoportok](monitoring-action-groups.md). Különböző típusú riasztási szabályok az elemzés végrehajtásához használja a másik programot.
 
 A riasztási szabályok határozzák meg a következő adatokat:
 
@@ -47,24 +56,26 @@ A Naplóelemzési minden riasztási szabály a két típus egyike.  Ezek a típu
 
 Riasztási szabály típusa közötti különbségek a következők:
 
-- **Találatok száma** riasztási szabály mindig létrehoz egy riasztás rövid **metrika mérési** riasztási szabály a minden objektumon meghaladja a küszöbértéket, riasztást hoz létre.
+- ** Eredmények riasztási szabályok száma mindig létrehoz egy riasztás rövid **metrika mérési** riasztási szabály a minden objektumon meghaladja a küszöbértéket, riasztást hoz létre.
 - **Találatok száma** riasztási szabályok riasztást hoznak létre, amikor a küszöbérték elérése esetén egy alkalommal. **Metrika mérési** riasztási szabályok riasztást hozhat létre, a küszöbérték túllépésekor bizonyos számú alkalommal keresztül egy adott időintervallumban.
 
 ## <a name="number-of-results-alert-rules"></a>Eredmények riasztási szabályok száma
-**Találatok száma** riasztási szabályok egyetlen riasztás létrehozása, ha a keresési lekérdezés által visszaadott rekordok száma meghaladja a küszöbértéket.
+**Találatok száma** riasztási szabályok egyetlen riasztás létrehozása, ha a keresési lekérdezés által visszaadott rekordok száma meghaladja a küszöbértéket. Ez a riasztási szabály típus ideális, ha olyan esemény, például a Windows eseménynaplóiban keresse meg, a Syslog, webalkalmazás válasz és egyéni naplói.  Érdemes lehet a riasztás létrehozása, ha egy adott hibaesemény jön létre, vagy ha több hibaesemények belül egy adott időkerete jönnek létre.
 
-**Küszöbérték**: küszöbértéke egy **eredmények száma** riasztási szabály egy adott értéknél kisebb vagy nagyobb.  Ha a napló keresés által visszaadott rekordok számát a feltételeknek, egy riasztás jön létre.
+**Küszöbérték**: küszöbértéke egy ** eredmények riasztási szabályok száma nagyobb, mint vagy egy adott értéknél kisebb.  Ha a napló keresés által visszaadott rekordok számát a feltételeknek, egy riasztás jön létre.
 
-### <a name="scenarios"></a>Forgatókönyvek
-
-#### <a name="events"></a>Események
-Riasztási szabály az ilyen típusú ideális munkavégzés az eseményekkel, például a Windows eseménynaplóiban keresse meg, a Syslog, és az egyéni naplózza.  Érdemes lehet a riasztás létrehozása, ha egy adott hibaesemény jön létre, vagy ha több hibaesemények belül egy adott időkerete jönnek létre.
-
-Riasztást küld, egyetlen esemény, az eredmények csak meg 0-nál nagyobbnak, és mind a gyakoriság időkerete öt perc.  A lekérdezés futó minden öt perc és egy egyszeri esemény, a lekérdezés futtatása legutóbbi indítása óta létrehozott ellenőrzése.  Hosszabb gyakorisága miatt késhet az esemény gyűjtött és a riasztás létrehozása között eltelő idő.
-
-Egyes alkalmazások jelentkezhetnek be, amely nem feltétlenül riasztás alkalmi hiba.  Az alkalmazás például újra a folyamatot a hibaesemény létrehozott és a következő alkalommal majd sikeres.  Ebben az esetben nem érdemes lehet a riasztás létrehozása, kivéve, ha több esemény egy adott időpontban időszakban jönnek létre.  
+Riasztás egy adott eseményhez, az eredmények csak 0-nál nagyobb meg, és keressen egy egyszeri esemény, a lekérdezés futtatása legutóbbi indítása óta létrehozott. Egyes alkalmazások jelentkezhetnek be, amely nem feltétlenül riasztás alkalmi hiba.  Az alkalmazás például újra a folyamatot a hibaesemény létrehozott és a következő alkalommal majd sikeres.  Ebben az esetben nem érdemes lehet a riasztás létrehozása, kivéve, ha több esemény egy adott időpontban időszakban jönnek létre.  
 
 Bizonyos esetekben érdemes lehet egy esemény hiányában hozzon létre egy riasztást.  Például egy folyamat esetleg naplózása rendszeres annak jelzésére, hogy megfelelően működik-e.  Ha egy ilyen eseményt belül egy adott időkerete nem jelentkeznek, majd riasztást kell létrehozni.  Ebben az esetben akkor értékre kell állítania a küszöbérték **1-nél kevesebb**.
+
+### <a name="example"></a>Példa
+Egy olyan esetet, ahol szeretné megnézni, ha a webes alkalmazás biztosítja a felhasználók 500 kód válaszul (vagyis) belső kiszolgálóhiba. Riasztási szabály okozna a következő adatokkal:  
+**Lekérdezés:** kérelmek |} ahol resultCode == "500"<br>
+**Időablak:** 30 perc<br>
+**Riasztási gyakoriságot:** öt perc<br>
+**Küszöbérték:** kiváló 0-nál<br>
+
+Majd riasztást fog futni a lekérdezés 5 percenként, az adatok - rekordot keres, ahol eredménykódja volt 500 30 perc. Ha található ilyen is egy rekord, akkor a riasztás és az eseményindító beállított műveletet következik be.
 
 ## <a name="metric-measurement-alert-rules"></a>Metrika mérési riasztási szabályok
 
@@ -74,7 +85,7 @@ Bizonyos esetekben érdemes lehet egy esemény hiányában hozzon létre egy ria
 
 > [!NOTE]
 
-> A lekérdezés aggregátumfüggvényt nevű/nevű kell lennie: AggregatedValue, és adjon meg számértéket.
+> A lekérdezés aggregátumfüggvényt nevű/nevű kell lennie: AggregatedValue, és adjon meg számértéket. 
 
 
 **Csoport mező**: egy rekord, egy összesített értéket ebben a mezőben minden példánya létrejön, és riasztás is generálható minden.  Például, ha az egyes számítógépek riasztás létrehozása, használhatja **számítógépenként**   
@@ -84,6 +95,8 @@ Bizonyos esetekben érdemes lehet egy esemény hiányában hozzon létre egy ria
 > Metrika mérési riasztási szabályok az Application Insights alapuló megadhatja a mező az adatok csoportosításához. Ehhez használja a **összesített a** beállítást a szabályát leíró definíció beolvasása.   
 
 **Időköz**: az időtartam alatt, amelyben az adatokat összesített értéket határoz meg.  Például, ha a megadott **öt perc**, létrehozott egy rekordot az a csoportmező, 5 perces időközönként a riasztás megadott időszak alatt összesített értéket minden egyes példányánál.
+> [!NOTE]
+> Bin függvény kell használható lekérdezésben. Is egyenlőtlen időközök előállítása esetén az időszak Bin függvény - készlettel riasztás helyette használandó bin_at funkció ehelyett gondoskodjon arról, hogy egy rögzített pont
 
 **Küszöbérték**: küszöbértéke figyelmeztetési metrika mérési szabályok határozzák meg az összesített érték és a behatolások.  A naplófájl-keresési bármely adatpont meghaladja ezt az értéket, ha a jövőben éri figyelembe.  Ha megszegése az összes objektum az eredmények száma meghaladja a megadott értéket, majd riasztást hoz létre, hogy az objektum.
 
@@ -104,6 +117,8 @@ Ebben a példában külön riasztások létrehozott KSZLG02 és srv03 mivel azok
 
 
 ## <a name="next-steps"></a>További lépések
+* Megértéséhez [webhookműveletek napló riasztások](monitor-alerts-unified-log-webhook.md)
 * [Azure riasztások (előzetes verzió) áttekintése](monitoring-overview-unified-alerts.md)
 * További tudnivalók [Azure riasztások használatával (előzetes verzió)](monitor-alerts-unified-usage.md)
+* További információ [Application insights szolgáltatással](../application-insights/app-insights-analytics.md)
 * További információ [Naplóelemzési](../log-analytics/log-analytics-overview.md).    
