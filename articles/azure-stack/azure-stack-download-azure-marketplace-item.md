@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/30/2018
+ms.date: 02/22/2018
 ms.author: brenduns
 ms.reviewer: jeffgo
-ms.openlocfilehash: a5b321bc06ef14207eddf5aa77ff983ada1e409f
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 27b575a1baa793794480d16e91f0f96355b3d303
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="download-marketplace-items-from-azure-to-azure-stack"></a>Töltse le a Piactéri elemek az Azure-ból az Azure-verem
 
@@ -44,7 +44,7 @@ Hogy mely tartalmak ahhoz, hogy szerepeljen a verem Azure piactér mellett dönt
 
     ![](media/azure-stack-download-azure-marketplace-item/image03.png)
 
-5. Válassza ki a elemet a listában, és kattintson a **letöltése**. Ezzel elindítja a kijelölt elemhez tartozó Virtuálisgép-lemezkép letöltése. Letöltési ideje eltérők lehetnek.
+5. Válassza ki a elemet a listában, és kattintson a **letöltése**. A Virtuálisgép-lemezkép letöltése elkezdte kijelölt elemhez. Letöltési ideje eltérők lehetnek.
 
     ![](media/azure-stack-download-azure-marketplace-item/image04.png)
 
@@ -62,7 +62,7 @@ A gépen, amely internetkapcsolattal rendelkezik az alábbi lépések segítség
 
 1. Nyissa meg rendszergazdaként a PowerShell-konzolban és [Azure verem adott PowerShell-modulok telepítése](azure-stack-powershell-install.md). Győződjön meg arról, hogy telepítse **PowerShell 1.2.11 verzió vagy újabb**.  
 
-2. Adja hozzá az Azure-fiókot regisztrálni Azure verem használt. Ehhez futtassa a **Add-AzureRmAccount** parancsmag paraméter nélkül. Az Azure-fiók hitelesítő adatainak megadását kéri, és előfordulhat, hogy a fiók konfigurációja alapján 2-factor authentication használatával.  
+2. Adja hozzá az Azure-fiókot regisztrálni Azure verem használt. A fiók hozzáadásához futtassa a **Add-AzureRmAccount** parancsmag paraméter nélkül. Az Azure-fiók hitelesítő adatainak megadását kéri, és előfordulhat, hogy a fiók konfigurációja alapján 2-factor authentication használatával.  
 
 3. Ha több előfizetéssel rendelkezik, a következő paranccsal válassza ki, amelyiket a regisztrációhoz használja:  
 
@@ -75,16 +75,16 @@ A gépen, amely internetkapcsolattal rendelkezik az alábbi lépések segítség
 
    ```PowerShell
    # Download the tools archive.
-   invoke-webrequest https://github.com/Azure/AzureStack-Tools/archive/vnext.zip `
-     -OutFile vnext.zip
+   invoke-webrequest https://github.com/Azure/AzureStack-Tools/archive/master.zip `
+     -OutFile master.zip
 
    # Expand the downloaded files.
-   expand-archive vnext.zip `
+   expand-archive master.zip `
      -DestinationPath . `
      -Force
 
    # Change to the tools directory.
-   cd \AzureStack-Tools-vnext
+   cd \AzureStack-Tools-master
 
    ```
 
@@ -94,7 +94,7 @@ A gépen, amely internetkapcsolattal rendelkezik az alábbi lépések segítség
    Import-Module .\ Syndication\AzureStack.MarketplaceSyndication.psm1
 
    Sync-AzSOfflineMarketplaceItem `
-     -destination “<Destination folder path>” `
+     -destination "<Destination folder path>" `
      -AzureTenantID $AzureContext.Tenant.TenantId `
      -AzureSubscriptionId $AzureContext.Subscription.Id  
    ```
@@ -103,15 +103,17 @@ A gépen, amely internetkapcsolattal rendelkezik az alábbi lépések segítség
 
    ![Az Azure piactéren elemek előugró ablak](./media/azure-stack-download-azure-marketplace-item/image05.png)
 
-7. A letölteni kívánt lemezkép kiválasztása (választhat több lemezképet a Ctrl billentyűt lenyomva), és jegyezze fel, a lemezkép verziója, akkor meg ebben a verzióban a következő szakaszban-lemezkép importálása > kattintson **Ok** > fogadja el a jogi feltételeket a gombra kattintva **Igen**. Képek listájának használatával is végezhet a **adja meg a feltételeket** lehetőséget. A letöltés eltart egy ideig, attól függően, hogy a lemezkép méretét. Egyszer kép letöltése érhető el a korábban megadott cél elérési útban. A letöltés Azpkg formátuma VHD fájlt, és a gyűjtemény elemeinek tartalmazza.  
+7. Válassza ki a lemezképet, amelyet szeretne letölteni, és jegyezze fel, a lemezkép verziója. A Ctrl billentyűt lenyomva több lemezképet választhat. A kép verzióját használja a következő szakaszban-lemezkép importálása.  Ezután kattintson **Ok**, majd fogadja el a jogi feltételeket kattintva **Igen**. Képek listájának használatával is végezhet a **adja meg a feltételeket** lehetőséget. 
+
+   A letöltés eltart egy ideig, attól függően, hogy a lemezkép méretét. Egyszer kép letöltése érhető el a korábban megadott cél elérési útban. A letöltés Azpkg formátuma VHD fájlt, és a gyűjtemény elemeinek tartalmazza.
 
 ### <a name="import-the-image-and-publish-it-to-azure-stack-marketplace"></a>A lemezkép importálása, és tegye közzé a verem Azure piactér
 
-1. A kép & gyűjtemény csomag letöltése után mentse őket, és a tartalom cserélhető lemezmeghajtókra AzureStack-eszközök – vnext mappában, és másolja az Azure-verem környezetben (másolhatja, hogy helyileg bárhova például: "C:\MarketplaceImages".)   
+1. A kép és a gyűjtemény csomag letöltése után mentse őket, és a tartalom cserélhető lemezmeghajtókra AzureStack főkiszolgálós eszközök mappában, és másolja az Azure-verem környezetben (másolhatja azt helyileg bárhova például: "C:\MarketplaceImages").   
 
 2. A kép importálása, előtt csatlakoztatni kell az Azure-verem üzemeltető környezetben ismertetett lépések segítségével [Azure verem operátor PowerShell környezet konfigurálása](azure-stack-powershell-configure-admin.md).  
 
-3. A lemezkép importálása Azure verem az Add-AzsVMImage parancsmag segítségével. Ez a parancsmag használata esetén győződjön meg arról, a közzétevő, az ajánlat és más paraméterértékek lecseréli az értékeket, amelyeket a kép. Letölthető a "publisher", "ajánlattétel" és "sku" értékek a korábban letöltött Azpkg fájl imageReference objektumból kép és a "version" érték 6. lépésben az előző szakaszban.
+3. A lemezkép importálása Azure verem az Add-AzsVMImage parancsmag segítségével. A parancsmag használatakor győződjön meg arról, hogy a *publisher*, *kínálnak*, és más paraméterértékeket a kép importált értékekkel. Beszerezheti a *publisher*, *kínálnak*, és *sku* értékek a képet az imageReference objektum korábban letöltött Azpkg fájl és a  *verzió* az előző szakaszban 6. lépés értékét.
 
    ```json
    "imageReference": {
@@ -131,8 +133,8 @@ A gépen, amely internetkapcsolattal rendelkezik az alábbi lépések segítség
     -offer "WindowsServer" `
     -sku "2016-Datacenter-Server-Core" `
     -osType Windows `
-    -Version "2017.09.25" `
-    -OsDiskLocalPath "C:\AzureStack-Tools-master\Syndication\Microsoft.WindowsServer2016DatacenterServerCore-ARM-Eval.2017.09.25.vhd" `
+    -Version "2016.127.20171215" `
+    -OsDiskLocalPath "C:\AzureStack-Tools-master\Syndication\Windows-Server-2016-DatacenterCore-20171215-en.us-127GB.vhd" `
     -CreateGalleryItem $False `
     -Location Local
    ```
