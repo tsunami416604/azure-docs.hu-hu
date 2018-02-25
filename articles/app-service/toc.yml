@@ -4,7 +4,7 @@
   items:
     - name: Tudnivalók a Web Appsról
       href: app-service-web-overview.md
-    - name: Tudnivalók a tárolókhoz készült Web Appról
+    - name: Tudnivalók a Linux rendszeren futó App Service-ről
       href: containers/app-service-linux-intro.md
     - name: Tudnivalók az App Service-környezetekről
       href: environment/intro.md
