@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 8/9/2017
+ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: fc98bdd8b3597810b0c07563af507e93c611f769
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: dc5e81ff7e5466d258624cee80c520c848bd60fa
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="capacity-planning-for-service-fabric-applications"></a>Kapacitástervezés a Service Fabric-alkalmazások
 Ez a dokumentum útmutatást ad az Azure Service Fabric-alkalmazások futtatásához szükséges erőforrások (CPU-k, memória, lemezes tárolás) becslésére módjáról. Gyakori, hogy az erőforrás-követelményei változnak az idők is. Túl sok erőforrás általában a szolgáltatás fejlesztés/tesztelés, és ezután ugyan több erőforrást, éles környezetben módba, és az alkalmazás növekszik időben népszerűvé vált a szükséges. Az alkalmazás tervezésekor gondolja, hogy a hosszú távú követelmények keresztül, és lehetőségeket, amelyek lehetővé teszik a szolgáltatás méretezhető, nagy felhasználói igényeknek.
@@ -58,7 +58,7 @@ Most alapján ezt az információt, a táblázatban látható, hogy fizikailag s
 
 ![Számolótáblába, kiszámítása][Image1]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Tekintse meg [particionálás Service Fabric szolgáltatások] [ 10] tudhat meg többet a particionálás a szolgáltatáshoz.
 
 <!--Image references-->

@@ -13,13 +13,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/28/2017
+ms.date: 02/21/2018
 ms.author: nitinme
-ms.openlocfilehash: e9fe49873a03867bdc55239eb4af623f0587f4f8
-ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
+ms.openlocfilehash: 8ce1d6300731af5ae972675a08ef64f5c4ffa342
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="migrating-to-azure-resource-manager-based-development-tools-for-hdinsight-clusters"></a>A Fejlesztőeszközök Azure Resource Manager-alapú HDInsight-fürtök áttelepítése
 
@@ -37,21 +37,21 @@ Az alapszintű Azure Service Management (ASM) használatával történő együtt
 
 A HDInsight Azure Resource Manageren keresztül használatához alapvető parancsok a következők:
 
-* `azure hdinsight cluster create`-hoz létre egy új HDInsight-fürt
-* `azure hdinsight cluster delete`– egy meglévő HDInsight-fürt törlése
-* `azure hdinsight cluster show`– egy meglévő fürthöz kapcsolatos információk megjelenítése
-* `azure hdinsight cluster list`– ismerteti az Azure-előfizetés a HDInsight-fürtök
+* `azure hdinsight cluster create` -hoz létre egy új HDInsight-fürt
+* `azure hdinsight cluster delete` – egy meglévő HDInsight-fürt törlése
+* `azure hdinsight cluster show` – egy meglévő fürthöz kapcsolatos információk megjelenítése
+* `azure hdinsight cluster list` – ismerteti az Azure-előfizetés a HDInsight-fürtök
 
 Használja a `-h` kapcsolót, hogy a paraméterek és kapcsolók érhető el minden egyes parancsnál.
 
 ### <a name="new-commands"></a>Új parancsok
 Elérhető az Azure Resource Manager új parancsok a következők:
 
-* `azure hdinsight cluster resize`-dinamikusan változik adhatja meg a fürt feldolgozó csomópontjainak számát
-* `azure hdinsight cluster enable-http-access`-HTTPs-hozzáférést biztosít a fürt (az alapértelmezés)
-* `azure hdinsight cluster disable-http-access`-letiltja a HTTPs-hozzáférés a fürthöz
-* `azure hdinsight script-action`-parancsokat biztosít létrehozása vagy kezelése Parancsfájlműveletek egy fürtön
-* `azure hdinsight config`-parancsok biztosít a konfigurációs fájl létrehozása, amely használható a `hdinsight cluster create` parancs használatával adja meg a konfigurációs adatokat.
+* `azure hdinsight cluster resize` -dinamikusan változik adhatja meg a fürt feldolgozó csomópontjainak számát
+* `azure hdinsight cluster enable-http-access` -HTTPs-hozzáférést biztosít a fürt (az alapértelmezés)
+* `azure hdinsight cluster disable-http-access` -letiltja a HTTPs-hozzáférés a fürthöz
+* `azure hdinsight script-action` -parancsokat biztosít létrehozása vagy kezelése Parancsfájlműveletek egy fürtön
+* `azure hdinsight config` -parancsok biztosít a konfigurációs fájl létrehozása, amely használható a `hdinsight cluster create` parancs használatával adja meg a konfigurációs adatokat.
 
 ### <a name="deprecated-commands"></a>Elavult parancsok
 Ha használja a `azure hdinsight job` parancsok elküldeni a HDInsight-fürtjét, feladatok ezek nem állnak rendelkezésre az ARM-parancsok használatával. Ha programozottan feladatok elküldéséhez a HDInsight parancsfájlok van szüksége, helyette használja a HDInsight által biztosított REST API-k. A REST API-k használatával feladatok elküldésekor további információkért lásd a következő dokumentumokat.
@@ -65,18 +65,18 @@ Információk más módjairól MapReduce futtatásához, struktúra, és interak
 ### <a name="examples"></a>Példák
 **Fürt létrehozása**
 
-* Régi parancs (ASM)-`azure hdinsight cluster create myhdicluster --location northeurope --osType linux --storageAccountName mystorage --storageAccountKey <storagekey> --storageContainer mycontainer --userName admin --password mypassword --sshUserName sshuser --sshPassword mypassword`
-* Új parancs (ARM)-`azure hdinsight cluster create myhdicluster -g myresourcegroup --location northeurope --osType linux --clusterType hadoop --defaultStorageAccountName mystorage --defaultStorageAccountKey <storagekey> --defaultStorageContainer mycontainer --userName admin -password mypassword --sshUserName sshuser --sshPassword mypassword`
+* Régi parancs (ASM)- `azure hdinsight cluster create myhdicluster --location northeurope --osType linux --storageAccountName mystorage --storageAccountKey <storagekey> --storageContainer mycontainer --userName admin --password mypassword --sshUserName sshuser --sshPassword mypassword`
+* Új parancs (ARM)- `azure hdinsight cluster create myhdicluster -g myresourcegroup --location northeurope --osType linux --clusterType hadoop --defaultStorageAccountName mystorage --defaultStorageAccountKey <storagekey> --defaultStorageContainer mycontainer --userName admin -password mypassword --sshUserName sshuser --sshPassword mypassword`
 
 **A fürtök törlésével**
 
-* Régi parancs (ASM)-`azure hdinsight cluster delete myhdicluster`
-* Új parancs (ARM)-`azure hdinsight cluster delete mycluster -g myresourcegroup`
+* Régi parancs (ASM)- `azure hdinsight cluster delete myhdicluster`
+* Új parancs (ARM)- `azure hdinsight cluster delete mycluster -g myresourcegroup`
 
 **Lista fürtök**
 
-* Régi parancs (ASM)-`azure hdinsight cluster list`
-* Új parancs (ARM)-`azure hdinsight cluster list`
+* Régi parancs (ASM)- `azure hdinsight cluster list`
+* Új parancs (ARM)- `azure hdinsight cluster list`
 
 > [!NOTE]
 > A parancs megadásával az erőforrás csoport használatával `-g` csak a fürtök ad vissza a megadott erőforráscsoportban.
@@ -85,18 +85,18 @@ Információk más módjairól MapReduce futtatásához, struktúra, és interak
 
 **Fürt információ megjelenítése**
 
-* Régi parancs (ASM)-`azure hdinsight cluster show myhdicluster`
-* Új parancs (ARM)-`azure hdinsight cluster show myhdicluster -g myresourcegroup`
+* Régi parancs (ASM)- `azure hdinsight cluster show myhdicluster`
+* Új parancs (ARM)- `azure hdinsight cluster show myhdicluster -g myresourcegroup`
 
 ## <a name="migrating-azure-powershell-to-azure-resource-manager"></a>Az Azure PowerShell áttelepítése az Azure Resource Manager számára
 Az Azure PowerShell általános információk az Azure Resource Managerrel (ARM) módban található [az Azure PowerShell használata Azure Resource Managerrel](../powershell-azure-resource-manager.md).
 
-Az Azure PowerShell ARM-parancsmagok telepített-mellé a címterület-kezelési parancsmagokkal is lehet. A két mód a parancsmag elkülönítsék névvel.  Az ARM üzemmódban van *AzureRmHDInsight* való hasonlítás parancsmag nevében szereplő *AzureHDInsight* a címterület-kezelési módban.  Például *New-AzureRmHDInsightCluster* vs. *Új AzureHDInsightCluster*. Paraméterek és kapcsolók hírek nevük lehet, hogy legyen, és nincsenek sok új paraméter elérhető ARM használatakor.  Például több parancsmagok szükséges nevű új kapcsoló *- ResourceGroupName*. 
+Az Azure PowerShell ARM-parancsmagok telepített-mellé a címterület-kezelési parancsmagokkal is lehet. A két mód a parancsmag elkülönítsék névvel.  Az ARM üzemmódban van *AzureRmHDInsight* való hasonlítás parancsmag nevében szereplő *AzureHDInsight* a címterület-kezelési módban.  Például *New-AzureRmHDInsightCluster* vs. *New-AzureHDInsightCluster*. Paraméterek és kapcsolók hírek nevük lehet, hogy legyen, és nincsenek sok új paraméter elérhető ARM használatakor.  Például több parancsmagok szükséges nevű új kapcsoló *- ResourceGroupName*. 
 
 A HDInsight-parancsmagokat használhatja, csatlakozzon az Azure-fiókjával, és az új erőforráscsoport létrehozása:
 
 * Login-AzureRmAccount vagy [válasszon-AzureRmProfile](https://msdn.microsoft.com/library/mt619310.aspx). Lásd: [hitelesítéséhez az Azure Resource Manager egyszerű szolgáltatás](../azure-resource-manager/resource-group-authenticate-service-principal.md)
-* [Új-AzureRmResourceGroup](https://msdn.microsoft.com/library/mt603739.aspx)
+* [New-AzureRmResourceGroup](https://msdn.microsoft.com/library/mt603739.aspx)
 
 ### <a name="renamed-cmdlets"></a>Átnevezett parancsmagok
 A HDInsight ASM-parancsmagok a Windows PowerShell-konzolban listázásához:
@@ -107,33 +107,33 @@ A következő táblázat a címterület-kezelési parancsmagok és a nevek a ARM
 
 | Címterület-kezelési parancsmagok | ARM-parancsmagok |
 | --- | --- |
-| Add-AzureHDInsightConfigValues |[Adja hozzá AzureRmHDInsightConfigValues](https://msdn.microsoft.com/library/mt603530.aspx) |
-| Add-AzureHDInsightMetastore |[Adja hozzá AzureRmHDInsightMetastore](https://msdn.microsoft.com/library/mt603670.aspx) |
-| Add-AzureHDInsightScriptAction |[Adja hozzá AzureRmHDInsightScriptAction](https://msdn.microsoft.com/library/mt603527.aspx) |
-| Add-AzureHDInsightStorage |[Adja hozzá AzureRmHDInsightStorage](https://msdn.microsoft.com/library/mt619445.aspx) |
+| Add-AzureHDInsightConfigValues |[Add-AzureRmHDInsightConfigValues](https://msdn.microsoft.com/library/mt603530.aspx) |
+| Add-AzureHDInsightMetastore |[Add-AzureRmHDInsightMetastore](https://msdn.microsoft.com/library/mt603670.aspx) |
+| Add-AzureHDInsightScriptAction |[Add-AzureRmHDInsightScriptAction](https://msdn.microsoft.com/library/mt603527.aspx) |
+| Add-AzureHDInsightStorage |[Add-AzureRmHDInsightStorage](https://msdn.microsoft.com/library/mt619445.aspx) |
 | Get-AzureHDInsightCluster |[Get-AzureRmHDInsightCluster](https://msdn.microsoft.com/library/mt619371.aspx) |
 | Get-AzureHDInsightJob |[Get-AzureRmHDInsightJob](https://msdn.microsoft.com/library/mt603590.aspx) |
 | Get-AzureHDInsightJobOutput |[Get-AzureRmHDInsightJobOutput](https://msdn.microsoft.com/library/mt603793.aspx) |
 | Get-AzureHDInsightProperties |[Get-AzureRmHDInsightProperties](https://msdn.microsoft.com/library/mt603546.aspx) |
-| Grant-AzureHDInsightHttpServicesAccess |[Támogatás-AzureRmHDInsightHttpServicesAccess](https://msdn.microsoft.com/library/mt619407.aspx) |
-| Grant-AzureHdinsightRdpAccess |[Támogatás-AzureRmHDInsightRdpServicesAccess](https://msdn.microsoft.com/library/mt603717.aspx) |
+| Grant-AzureHDInsightHttpServicesAccess |[Grant-AzureRmHDInsightHttpServicesAccess](https://msdn.microsoft.com/library/mt619407.aspx) |
+| Grant-AzureHdinsightRdpAccess |[Grant-AzureRmHDInsightRdpServicesAccess](https://msdn.microsoft.com/library/mt603717.aspx) |
 | Invoke-AzureHDInsightHiveJob |[Invoke-AzureRmHDInsightHiveJob](https://msdn.microsoft.com/library/mt603593.aspx) |
-| New-AzureHDInsightCluster |[Új AzureRmHDInsightCluster](https://msdn.microsoft.com/library/mt619331.aspx) |
-| New-AzureHDInsightClusterConfig |[Új AzureRmHDInsightClusterConfig](https://msdn.microsoft.com/library/mt603700.aspx) |
-| New-AzureHDInsightHiveJobDefinition |[Új AzureRmHDInsightHiveJobDefinition](https://msdn.microsoft.com/library/mt619448.aspx) |
-| New-AzureHDInsightMapReduceJobDefinition |[Új AzureRmHDInsightMapReduceJobDefinition](https://msdn.microsoft.com/library/mt603626.aspx) |
-| New-AzureHDInsightPigJobDefinition |[Új AzureRmHDInsightPigJobDefinition](https://msdn.microsoft.com/library/mt603671.aspx) |
-| New-AzureHDInsightSqoopJobDefinition |[Új AzureRmHDInsightSqoopJobDefinition](https://msdn.microsoft.com/library/mt608551.aspx) |
-| New-AzureHDInsightStreamingMapReduceJobDefinition |[Új AzureRmHDInsightStreamingMapReduceJobDefinition](https://msdn.microsoft.com/library/mt603626.aspx) |
+| New-AzureHDInsightCluster |[New-AzureRmHDInsightCluster](https://msdn.microsoft.com/library/mt619331.aspx) |
+| New-AzureHDInsightClusterConfig |[New-AzureRmHDInsightClusterConfig](https://msdn.microsoft.com/library/mt603700.aspx) |
+| New-AzureHDInsightHiveJobDefinition |[New-AzureRmHDInsightHiveJobDefinition](https://msdn.microsoft.com/library/mt619448.aspx) |
+| New-AzureHDInsightMapReduceJobDefinition |[New-AzureRmHDInsightMapReduceJobDefinition](https://msdn.microsoft.com/library/mt603626.aspx) |
+| New-AzureHDInsightPigJobDefinition |[New-AzureRmHDInsightPigJobDefinition](https://msdn.microsoft.com/library/mt603671.aspx) |
+| New-AzureHDInsightSqoopJobDefinition |[New-AzureRmHDInsightSqoopJobDefinition](https://msdn.microsoft.com/library/mt608551.aspx) |
+| New-AzureHDInsightStreamingMapReduceJobDefinition |[New-AzureRmHDInsightStreamingMapReduceJobDefinition](https://msdn.microsoft.com/library/mt603626.aspx) |
 | Remove-AzureHDInsightCluster |[Remove-AzureRmHDInsightCluster](https://msdn.microsoft.com/library/mt619431.aspx) |
-| Revoke-AzureHDInsightHttpServicesAccess |[A visszavonási-AzureRmHDInsightHttpServicesAccess](https://msdn.microsoft.com/library/mt619375.aspx) |
-| Revoke-AzureHdinsightRdpAccess |[A visszavonási-AzureRmHDInsightRdpServicesAccess](https://msdn.microsoft.com/library/mt603523.aspx) |
+| Revoke-AzureHDInsightHttpServicesAccess |[Revoke-AzureRmHDInsightHttpServicesAccess](https://msdn.microsoft.com/library/mt619375.aspx) |
+| Revoke-AzureHdinsightRdpAccess |[Revoke-AzureRmHDInsightRdpServicesAccess](https://msdn.microsoft.com/library/mt603523.aspx) |
 | Set-AzureHDInsightClusterSize |[Set-AzureRmHDInsightClusterSize](https://msdn.microsoft.com/library/mt603513.aspx) |
 | Set-AzureHDInsightDefaultStorage |[Set-AzureRmHDInsightDefaultStorage](https://msdn.microsoft.com/library/mt603486.aspx) |
 | Start-AzureHDInsightJob |[Start-AzureRmHDInsightJob](https://msdn.microsoft.com/library/mt603798.aspx) |
-| Stop-AzureHDInsightJob |[STOP-AzureRmHDInsightJob](https://msdn.microsoft.com/library/mt619424.aspx) |
-| Use-AzureHDInsightCluster |[Használjon-AzureRmHDInsightCluster](https://msdn.microsoft.com/library/mt619442.aspx) |
-| Wait-AzureHDInsightJob |[Várjon, amíg-AzureRmHDInsightJob](https://msdn.microsoft.com/library/mt603834.aspx) |
+| Stop-AzureHDInsightJob |[Stop-AzureRmHDInsightJob](https://msdn.microsoft.com/library/mt619424.aspx) |
+| Use-AzureHDInsightCluster |[Use-AzureRmHDInsightCluster](https://msdn.microsoft.com/library/mt619442.aspx) |
+| Wait-AzureHDInsightJob |[Wait-AzureRmHDInsightJob](https://msdn.microsoft.com/library/mt603834.aspx) |
 
 ### <a name="new-cmdlets"></a>Új parancsmagok
 Az alábbiakban az új parancsmagok, amelyek csak a ARM módban érhető el. 
@@ -153,7 +153,7 @@ További használati információkért lásd: [testreszabása Linux-alapú HDIns
 * **Adja hozzá AzureRmHDInsightClusterIdentity**: ad hozzá egy fürt identitását egy fürt konfigurációs objektumot, hogy a HDInsight-fürt elérhessék az Azure Data Lake tárolja. Lásd: [HDInsight-fürtök létrehozása az Azure PowerShell használatával a Data Lake Store](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell.md).
 
 ### <a name="examples"></a>Példák
-**Fürt létrehozása**
+Fürt létrehozása
 
 Régi parancs (ASM): 
 
@@ -187,7 +187,7 @@ Régi parancs (ASM):
         -SshCredential $sshCredentials
 
 
-**Fürt törlése**
+Fürt törlése
 
 Régi parancs (ASM):
 

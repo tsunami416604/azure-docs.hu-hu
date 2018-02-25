@@ -1,6 +1,6 @@
 ---
-title: "Php-ből a table storage használata |} Microsoft Docs"
-description: "Használata php-ből a Table szolgáltatás létrehozásához, és törölni kívánja a táblázatot, és helyezze, törlése, és a tábla lekérdezése."
+title: "Hogyan használható az Azure Storage Table szolgáltatás vagy az Azure Cosmos DB tábla API php-ből |} Microsoft Docs"
+description: "Használata php-ből a Table szolgáltatás API létrehozása, és törölni kívánja a táblázatot, és helyezze, törlése, és a tábla lekérdezése."
 services: cosmos-db
 documentationcenter: php
 author: mimig1
@@ -12,83 +12,114 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: php
 ms.topic: article
-ms.date: 11/03/2017
+ms.date: 02/22/2018
 ms.author: mimig
-ms.openlocfilehash: 7fa82875ba823f1a4a9a886d4f699ca6757c3a3b
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 4965247d77e8a3a9f5dbaa2e70952993b4bdf4ff
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/24/2018
 ---
-# <a name="how-to-use-azure-table-storage-from-php"></a>Php-ből a Azure Table storage használata
+# <a name="how-to-use-azure-storage-table-service-or-cosmos-db-table-api-from-php"></a>Hogyan használható az Azure Storage Table szolgáltatás vagy Cosmos DB tábla API php-ből
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
-[!INCLUDE [storage-table-cosmos-db-langsoon-tip-include](../../includes/storage-table-cosmos-db-langsoon-tip-include.md)]
+[!INCLUDE [storage-table-cosmos-db-tip-include](../../includes/storage-table-cosmos-db-tip-include.md)]
 
 ## <a name="overview"></a>Áttekintés
-Ez az útmutató bemutatja, hogyan hajthat végre a gyakori forgatókönyvek az Azure Table szolgáltatással. A mintákat a PHP és -felhasználási nyelven íródtak a [Azure SDK for PHP][download]. Az ismertetett forgatókönyvek **létrehozása és egy tábla törlésével és beszúrását, törlését és entitások egy tábla lekérdezése**. Az Azure Table szolgáltatás további információkért tekintse meg a [további lépések](#next-steps) szakasz.
+Ez az útmutató bemutatja, hogyan hajthat végre a gyakori forgatókönyvek az Azure Storage Table szolgáltatás és az Azure Cosmos DB tábla API használatával. A mintákat a PHP és -felhasználási nyelven íródtak a [Azure SDK for PHP][download]. Az ismertetett forgatókönyvek **létrehozása és egy tábla törlése**, és **beszúrását, törlését és entitások egy tábla lekérdezése**. Az Azure Table szolgáltatás további információkért tekintse meg a [további lépések](#next-steps) szakasz.
 
 [!INCLUDE [storage-table-concepts-include](../../includes/storage-table-concepts-include.md)]
 
-[!INCLUDE [storage-create-account-include](../../includes/storage-create-account-include.md)]
+## <a name="create-an-azure-service-account"></a>Az Azure szolgáltatás-fiók létrehozása
+
+Dolgozhat Azure Table storage vagy Azure Cosmos DB tábla API segítségével. További ehhez beolvassa a szolgáltatások közötti különbségekről [ajánlatok tábla](table-introduction.md#table-offerings). Hozzon létre egy fiókot a szolgáltatás használni fog lesz szüksége. 
+
+### <a name="create-an-azure-storage-account"></a>Azure Storage-fiók létrehozása
+
+Az első tárfiók létrehozásához legegyszerűbb módja a [Azure-portálon](https://portal.azure.com). További tudnivalókért lásd: [Create a storage account](../storage/common/storage-create-storage-account.md#create-a-storage-account) (Tárfiók létrehozása).
+
+A Storage-fiók használatával is létrehozhat [Azure PowerShell](../storage/common/storage-powershell-guide-full.md) vagy [Azure CLI](../storage/common/storage-azure-cli.md).
+
+Ha nem szeretné most hozzon létre egy tárfiókot, futtathatja és tesztelheti a kódját a helyi környezetben is használhatja az Azure Storage emulator. További információkért lásd: [Fejlesztés és tesztelés az Azure Storage Emulatorral](../storage/common/storage-use-emulator.md).
+
+### <a name="create-an-azure-cosmos-db-account"></a>Azure Cosmos DB-fiók létrehozása
+
+Egy Azure Cosmos DB fiók létrehozását, lásd: [tábla API-fiók létrehozása](create-table-dotnet.md#create-a-database-account).
 
 ## <a name="create-a-php-application"></a>PHP-alkalmazás létrehozása
-A csak az Azure Table szolgáltatás hozzáférő PHP-alkalmazások létrehozására vonatkozó mérete a hivatkozási osztályok az Azure SDK-ban a php a kód. A fejlesztői eszközök hozhat létre az alkalmazás, például a Jegyzettömbbel.
 
-Ebben az útmutatóban hívható a PHP-alkalmazás helyileg, vagy egy Azure webes szerepkörről, a feldolgozói szerepkör vagy a webhely belül futó tábla szolgáltatás funkciók használatára.
+A csak a Storage Table szolgáltatás vagy az Azure Cosmos DB tábla API eléréséhez PHP-alkalmazás létrehozásának mérete az azure-storage-tábla SDK osztályok hivatkozni a php a kód. A fejlesztői eszközök hozhat létre az alkalmazás, például a Jegyzettömbbel.
 
-## <a name="get-the-azure-client-libraries"></a>Az Azure Ügyfélkódtárai beolvasása
-[!INCLUDE [get-client-libraries](../../includes/get-client-libraries.md)]
+Ebben az útmutatóban használja a Storage Table szolgáltatás vagy Azure Cosmos DB hívható a PHP-alkalmazás helyileg, vagy egy Azure webes szerepkörről, a feldolgozói szerepkör vagy a webhely belül futó szolgáltatásokat.
 
-## <a name="configure-your-application-to-access-the-table-service"></a>Állítsa be az alkalmazását, a Table szolgáltatás eléréséhez
-Az Azure Table szolgáltatás API-kat használ, meg kell:
+## <a name="get-the-client-library"></a>Az ügyfél-függvénytár
 
-1. A robotot fájl használatával hivatkozik a [require_once] [ require_once] utasítást, és
-2. Bármely osztályok segítségével lehet hivatkozni.
+1. Hozzon létre egy fájlt a projekt gyökérkönyvtárában található composer.json, és az alábbi kód hozzáadása:
+```json
+{
+  "require": {
+    "microsoft/azure-storage-table": "*"
+  }
+}
+```
+2. Töltse le [composer.phar](http://getcomposer.org/composer.phar) a gyökérkönyvtárba. 
+3. Nyisson meg egy parancssort, és hajtsa végre a következő parancsot a projekt gyökérkönyvtárában:
+```
+php composer.phar install
+```
+Azt is megteheti, lépjen a [Azure Storage tábla PHP ügyféloldali kódtár](https://github.com/Azure/azure-storage-php/tree/master/azure-storage-table) a Githubon a forráskód klónozását.
 
-A következő példa bemutatja, hogyan a robotot fájl és a hivatkozás a **ServicesBuilder** osztály.
 
-> [!NOTE]
-> Ebben a cikkben szereplő példák azt feltételezik, hogy telepítette az Azure-szerkesztő segítségével, a PHP Klienskódtárak segítségével. Ha a könyvtárak manuálisan telepítette, hivatkoznia kell a <code>WindowsAzure.php</code> robotjába fájlt.
->
->
+## <a name="add-required-references"></a>Adja hozzá a szükséges hivatkozások
+A Storage Table szolgáltatás vagy Azure Cosmos DB API-kat használ, a következőket kell tennie:
+
+* A robotot fájl használatával hivatkozik a [require_once] [ require_once] utasítást, és
+* Bármely osztályok használata hivatkozik.
+
+A következő példa bemutatja, hogyan a robotot fájl és a hivatkozás a **TableRestProxy** osztály.
 
 ```php
 require_once 'vendor/autoload.php';
-use WindowsAzure\Common\ServicesBuilder;
+use MicrosoftAzure\Storage\Table\TableRestProxy;
 ```
 
 Az alábbi példákban a `require_once` utasítás mindig megjelenik, de csak a szükséges végrehajtandó például osztályok hivatkozott.
 
-## <a name="set-up-an-azure-storage-connection"></a>Az Azure storage-kapcsolat beállítása
-Az Azure Table szolgáltatásügyfél hozható létre, először egy érvényes kapcsolati karakterláncot kell rendelkeznie. A szolgáltatás kapcsolati karakterlánc formátuma:
-
-Élő szolgáltatások elérésére:
+## <a name="add-a-storage-table-service-connection"></a>Adja hozzá a tárolási tábla szolgáltatáskapcsolódási
+A tárolási Table szolgáltatásügyfél példányt létrehozni, először rendelkeznie kell érvényes kapcsolati karakterláncot. A Storage szolgáltatás kapcsolati karakterlánc formátuma:
 
 ```php
-DefaultEndpointsProtocol=[http|https];AccountName=[yourAccount];AccountKey=[yourKey]
+$connectionString = "DefaultEndpointsProtocol=[http|https];AccountName=[yourAccount];AccountKey=[yourKey]"
 ```
 
-Az emulátor tárolóinak eléréséhez:
+## <a name="add-an-azure-cosmos-db-connection"></a>Egy Azure Cosmos adatbázis-kapcsolat hozzáadása
+Egy Azure Cosmos Adatbázistáblájából ügyfél példányt létrehozni, először egy érvényes kapcsolati karakterláncot kell rendelkeznie. Az Azure Cosmos DB kapcsolati karakterlánc formátuma:
 
 ```php
-UseDevelopmentStorage=true
+$connectionString = "DefaultEndpointsProtocol=[https];AccountName=[myaccount];AccountKey=[myaccountkey];TableEndpoint=[https://myendpoint/]";
 ```
 
-Bármely Azure szolgáltatás ügyfele létrehozásához kell használnia a **ServicesBuilder** osztály. A következőket teheti:
+## <a name="add-a-storage-emulator-connection"></a>A Storage emulator kapcsolat hozzáadása
+Az emulátor tároló elérésére:
+
+```php
+UseDevelopmentStorage = true
+```
+
+Az Azure Table szolgáltatásügyfél vagy Azure Cosmos DB ügyfél létrehozásához kell használnia a **TableRestProxy** osztály. A következőket teheti:
 
 * a kapcsolati karakterláncot adja át a közvetlenül vagy
-* használja a **CloudConfigurationManager (CCM)** ellenőrizze a kapcsolati karakterlánc több külső forrás:
-  * Alapértelmezés szerint mellékelt egy külső adatforrás - környezeti változók támogatása
-  * új forrásból történő kiterjesztésével adhat hozzá a **ConnectionStringSource** osztály
+* Használja a **CloudConfigurationManager (CCM)** ellenőrizze a kapcsolati karakterlánc több külső forrás:
+  * Alapértelmezés szerint az tartalmaz egy külső adatforrás - környezeti változók támogatása.
+  * Új forrásból történő kiterjesztésével adhat hozzá a `ConnectionStringSource` osztály.
 
-Az itt leírt példák a kapcsolati karakterlánc közvetlenül fog adható át.
+Az itt leírt példák a kapcsolati karakterlánc közvetlenül át.
 
 ```php
 require_once 'vendor/autoload.php';
 
-use WindowsAzure\Common\ServicesBuilder;
+use MicrosoftAzure\Storage\Table\TableRestProxy;
 
-$tableRestProxy = ServicesBuilder::getInstance()->createTableService($connectionString);
+$tableClient = TableRestProxy::createTableService($connectionString);
 ```
 
 ## <a name="create-a-table"></a>Tábla létrehozása
@@ -97,22 +128,22 @@ A **TableRestProxy** objektum lehetővé teszi, hogy a tábla létrehozása a **
 ```php
 require_once 'vendor\autoload.php';
 
-use WindowsAzure\Common\ServicesBuilder;
+use MicrosoftAzure\Storage\Table\TableRestProxy;
 use MicrosoftAzure\Storage\Common\ServiceException;
 
-// Create table REST proxy.
-$tableRestProxy = ServicesBuilder::getInstance()->createTableService($connectionString);
+// Create Table REST proxy.
+$tableClient = TableRestProxy::createTableService($connectionString);
 
 try    {
     // Create table.
-    $tableRestProxy->createTable("mytable");
+    $tableClient->createTable("mytable");
 }
 catch(ServiceException $e){
     $code = $e->getCode();
     $error_message = $e->getMessage();
     // Handle exception based on error codes and messages.
     // Error codes and messages can be found here:
-    // http://msdn.microsoft.com/library/azure/dd179438.aspx
+    // https://docs.microsoft.com/rest/api/storageservices/Table-Service-Error-Codes
 }
 ```
 
@@ -124,13 +155,13 @@ Egy entitás felvételére egy táblához, hozzon létre egy új **entitás** ob
 ```php
 require_once 'vendor/autoload.php';
 
-use WindowsAzure\Common\ServicesBuilder;
+use MicrosoftAzure\Storage\Table\TableRestProxy;
 use MicrosoftAzure\Storage\Common\ServiceException;
 use MicrosoftAzure\Storage\Table\Models\Entity;
 use MicrosoftAzure\Storage\Table\Models\EdmType;
 
 // Create table REST proxy.
-$tableRestProxy = ServicesBuilder::getInstance()->createTableService($connectionString);
+$tableClient = TableRestProxy::createTableService($connectionString);
 
 $entity = new Entity();
 $entity->setPartitionKey("tasksSeattle");
@@ -142,12 +173,12 @@ $entity->addProperty("DueDate",
 $entity->addProperty("Location", EdmType::STRING, "Home");
 
 try{
-    $tableRestProxy->insertEntity("mytable", $entity);
+    $tableClient->insertEntity("mytable", $entity);
 }
 catch(ServiceException $e){
     // Handle exception based on error codes and messages.
     // Error codes and messages are here:
-    // http://msdn.microsoft.com/library/azure/dd179438.aspx
+    // https://docs.microsoft.com/rest/api/storageservices/Table-Service-Error-Codes
     $code = $e->getCode();
     $error_message = $e->getMessage();
 }
@@ -155,18 +186,18 @@ catch(ServiceException $e){
 
 További információ a táblázat tulajdonságai és típusok: [ismertetése a Table szolgáltatás adatmodell][table-data-model].
 
-A **TableRestProxy** osztály entitások beszúrására szolgáló két alternatív módszert kínál: **insertOrMergeEntity** és **insertOrReplaceEntity**. Ezeket a módszereket használja, hozzon létre egy új **entitás** , és adja át paraméterként mindkét módszer. Az egyes módszerek szúrnak az entitás, ha nem létezik. Ha már létezik az entitás, **insertOrMergeEntity** tulajdonságértékek frissíti, ha a tulajdonságai már léteznek, és hozzáadja az új tulajdonságok ha azok nem léteznek, miközben **insertOrReplaceEntity** teljesen lecseréli a meglévő entitás. A következő példa bemutatja, hogyan használható **insertOrMergeEntity**. Ha az entitás `PartitionKey` "tasksSeattle" és `RowKey` "1" már nem létezik, szúrja be. Azonban ha azt korábban beszúrt (a fenti példa szerint), a `DueDate` tulajdonság frissülni fog, és a `Status` tulajdonság megkapja. A `Description` és `Location` tulajdonságok is frissülnek, de értékekkel, amely hatékonyan hagyja őket változatlan marad. Ha ez utóbbi a tulajdonság a volt nem szerepel a példában látható módon, de a célentitás már létezett, meglévő értékeik változatlan marad.
+A **TableRestProxy** osztály entitások beszúrására szolgáló két alternatív módszert kínál: **insertOrMergeEntity** és **insertOrReplaceEntity**. Ezeket a módszereket használja, hozzon létre egy új **entitás** , és adja át paraméterként mindkét módszer. Az egyes módszerek szúrnak az entitás, ha nem létezik. Ha már létezik az entitás, **insertOrMergeEntity** tulajdonságértékek frissíti, ha a tulajdonságai már léteznek, és hozzáadja az új tulajdonságok ha azok nem léteznek, miközben **insertOrReplaceEntity** teljesen lecseréli a meglévő entitás. A következő példa bemutatja, hogyan használható **insertOrMergeEntity**. Ha az entitás `PartitionKey` "tasksSeattle" és `RowKey` "1" már nem létezik, szúrja be. Azonban ha azt korábban beszúrt (a fenti példa szerint), a `DueDate` tulajdonság frissül, és a `Status` tulajdonság hozzá lett adva. A `Description` és `Location` tulajdonságok is frissülnek, de értékekkel, amely hatékonyan hagyja őket változatlan marad. Ha ez utóbbi a tulajdonság a volt nem szerepel a példában látható módon, de a célentitás már létezett, meglévő értékeik változatlan marad.
 
 ```php
 require_once 'vendor/autoload.php';
 
-use WindowsAzure\Common\ServicesBuilder;
+use MicrosoftAzure\Storage\Table\TableRestProxy;
 use MicrosoftAzure\Storage\Common\ServiceException;
 use MicrosoftAzure\Storage\Table\Models\Entity;
 use MicrosoftAzure\Storage\Table\Models\EdmType;
 
 // Create table REST proxy.
-$tableRestProxy = ServicesBuilder::getInstance()->createTableService($connectionString);
+$tableClient = TableRestProxy::createTableService($connectionString);
 
 //Create new entity.
 $entity = new Entity();
@@ -185,12 +216,12 @@ $entity->addProperty("Status", EdmType::STRING, "Complete"); // Added Status fie
 try    {
     // Calling insertOrReplaceEntity, instead of insertOrMergeEntity as shown,
     // would simply replace the entity with PartitionKey "tasksSeattle" and RowKey "1".
-    $tableRestProxy->insertOrMergeEntity("mytable", $entity);
+    $tableClient->insertOrMergeEntity("mytable", $entity);
 }
 catch(ServiceException $e){
     // Handle exception based on error codes and messages.
     // Error codes and messages are here:
-    // http://msdn.microsoft.com/library/azure/dd179438.aspx
+    // https://docs.microsoft.com/rest/api/storageservices/Table-Service-Error-Codes
     $code = $e->getCode();
     $error_message = $e->getMessage();
     echo $code.": ".$error_message."<br />";
@@ -203,19 +234,19 @@ A **TableRestProxy -> getEntity** módszer lehetővé teszi egyetlen entitás le
 ```php
 require_once 'vendor/autoload.php';
 
-use WindowsAzure\Common\ServicesBuilder;
+use MicrosoftAzure\Storage\Table\TableRestProxy;
 use MicrosoftAzure\Storage\Common\ServiceException;
 
 // Create table REST proxy.
-$tableRestProxy = ServicesBuilder::getInstance()->createTableService($connectionString);
+$tableClient = TableRestProxy::createTableService($connectionString);
 
 try    {
-    $result = $tableRestProxy->getEntity("mytable", "tasksSeattle", 1);
+    $result = $tableClient->getEntity("mytable", "tasksSeattle", 1);
 }
 catch(ServiceException $e){
     // Handle exception based on error codes and messages.
     // Error codes and messages are here:
-    // http://msdn.microsoft.com/library/azure/dd179438.aspx
+    // https://docs.microsoft.com/rest/api/storageservices/Table-Service-Error-Codes
     $code = $e->getCode();
     $error_message = $e->getMessage();
     echo $code.": ".$error_message."<br />";
@@ -232,21 +263,21 @@ Entitás lekérdezések össze szűrők használata (további információkért 
 ```php
 require_once 'vendor/autoload.php';
 
-use WindowsAzure\Common\ServicesBuilder;
+use MicrosoftAzure\Storage\Table\TableRestProxy;
 use MicrosoftAzure\Storage\Common\ServiceException;
 
 // Create table REST proxy.
-$tableRestProxy = ServicesBuilder::getInstance()->createTableService($connectionString);
+$tableClient = TableRestProxy::createTableService($connectionString);
 
 $filter = "PartitionKey eq 'tasksSeattle'";
 
 try    {
-    $result = $tableRestProxy->queryEntities("mytable", $filter);
+    $result = $tableClient->queryEntities("mytable", $filter);
 }
 catch(ServiceException $e){
     // Handle exception based on error codes and messages.
     // Error codes and messages are here:
-    // http://msdn.microsoft.com/library/azure/dd179438.aspx
+    // https://docs.microsoft.com/rest/api/storageservices/Table-Service-Error-Codes
     $code = $e->getCode();
     $error_message = $e->getMessage();
     echo $code.": ".$error_message."<br />";
@@ -265,21 +296,21 @@ Az előző példában használt ugyanilyen mintájú segítségével bármely r�
 ```php
 require_once 'vendor/autoload.php';
 
-use WindowsAzure\Common\ServicesBuilder;
+use MicrosoftAzure\Storage\Table\TableRestProxy;
 use MicrosoftAzure\Storage\Common\ServiceException;
 
 // Create table REST proxy.
-$tableRestProxy = ServicesBuilder::getInstance()->createTableService($connectionString);
+$tableClient = TableRestProxy::createTableService($connectionString);
 
 $filter = "Location eq 'Office' and DueDate lt '2012-11-5'";
 
 try    {
-    $result = $tableRestProxy->queryEntities("mytable", $filter);
+    $result = $tableClient->queryEntities("mytable", $filter);
 }
 catch(ServiceException $e){
     // Handle exception based on error codes and messages.
     // Error codes and messages are here:
-    // http://msdn.microsoft.com/library/azure/dd179438.aspx
+    // https://docs.microsoft.com/rest/api/storageservices/Table-Service-Error-Codes
     $code = $e->getCode();
     $error_message = $e->getMessage();
     echo $code.": ".$error_message."<br />";
@@ -293,28 +324,28 @@ foreach($entities as $entity){
 ```
 
 ## <a name="retrieve-a-subset-of-entity-properties"></a>Entitás tulajdonságai részhalmazát
-A lekérdezés Entitástulajdonságok egy részének kérheti le. Ezzel a módszerrel nevű *leképezése*, csökkenti a sávszélesség, és javíthatja a lekérdezési teljesítményt, különösen olyan nagyméretű entitásokat. Kérhető tulajdonság megadásához adja át a tulajdonság nevét a **-> addSelectField** metódust. Ön a metódus hívása többször fel további tulajdonságokat. Végrehajtása után **TableRestProxy -> queryEntities**, a visszaadott entitások csak van a megadott tulajdonságokat. (Ha táblaentitásokat részhalmazát adja vissza, használjon szűrőt a lekérdezések a fenti ábrán.)
+A lekérdezés Entitástulajdonságok egy részének kérheti le. Ezzel a módszerrel nevű *leképezése*, csökkenti a sávszélesség, és javíthatja a lekérdezési teljesítményt, különösen olyan nagyméretű entitásokat. Egy tulajdonság beolvasása megadásához adja át a tulajdonság nevét a **-> addSelectField** metódust. Ön a metódus hívása többször fel további tulajdonságokat. Végrehajtása után **TableRestProxy -> queryEntities**, a visszaadott entitások csak van a megadott tulajdonságokat. (Ha táblaentitásokat részhalmazát adja vissza, használjon szűrőt a lekérdezések a fenti ábrán.)
 
 ```php
 require_once 'vendor/autoload.php';
 
-use WindowsAzure\Common\ServicesBuilder;
+use MicrosoftAzure\Storage\Table\TableRestProxy;
 use MicrosoftAzure\Storage\Common\ServiceException;
 use MicrosoftAzure\Storage\Table\Models\QueryEntitiesOptions;
 
 // Create table REST proxy.
-$tableRestProxy = ServicesBuilder::getInstance()->createTableService($connectionString);
+$tableClient = TableRestProxy::createTableService($connectionString);
 
 $options = new QueryEntitiesOptions();
 $options->addSelectField("Description");
 
 try    {
-    $result = $tableRestProxy->queryEntities("mytable", $options);
+    $result = $tableClient->queryEntities("mytable", $options);
 }
 catch(ServiceException $e){
     // Handle exception based on error codes and messages.
     // Error codes and messages are here:
-    // http://msdn.microsoft.com/library/azure/dd179438.aspx
+    // https://docs.microsoft.com/rest/api/storageservices/Table-Service-Error-Codes
     $code = $e->getCode();
     $error_message = $e->getMessage();
     echo $code.": ".$error_message."<br />";
@@ -332,36 +363,33 @@ foreach($entities as $entity){
 ```
 
 ## <a name="update-an-entity"></a>Egy entitás frissítése
-Meglévő entitás használatával frissíthető a **entitás -> setProperty** és **entitás -> addProperty** entitást, és ezután hívása módszerek **TableRestProxy updateEntity ->**. A következő példa egy entitás lekéri, módosítja egy tulajdonságot, egy másik tulajdonságának eltávolítja és új tulajdonsággal. Vegye figyelembe, hogy eltávolításához a tulajdonság érték beállítása **null**.
+Használatával frissítheti a meglévő entitás a **entitás -> setProperty** és **entitás -> addProperty** entitást, és ezután hívása módszerek **TableRestProxy updateEntity->**. A következő példa egy entitás lekéri, módosítja egy tulajdonságot, egy másik tulajdonságának eltávolítja és új tulajdonsággal. Vegye figyelembe, hogy eltávolításához a tulajdonság érték beállítása **null**.
 
 ```php
 require_once 'vendor/autoload.php';
 
-use WindowsAzure\Common\ServicesBuilder;
+use MicrosoftAzure\Storage\Table\TableRestProxy;
 use MicrosoftAzure\Storage\Common\ServiceException;
 use MicrosoftAzure\Storage\Table\Models\Entity;
 use MicrosoftAzure\Storage\Table\Models\EdmType;
 
 // Create table REST proxy.
-$tableRestProxy = ServicesBuilder::getInstance()->createTableService($connectionString);
+$tableClient = TableRestProxy::createTableService($connectionString);
 
-$result = $tableRestProxy->getEntity("mytable", "tasksSeattle", 1);
+$result = $tableClient->getEntity("mytable", "tasksSeattle", 1);
 
 $entity = $result->getEntity();
-
 $entity->setPropertyValue("DueDate", new DateTime()); //Modified DueDate.
-
 $entity->setPropertyValue("Location", null); //Removed Location.
-
 $entity->addProperty("Status", EdmType::STRING, "In progress"); //Added Status.
 
 try    {
-    $tableRestProxy->updateEntity("mytable", $entity);
+    $tableClient->updateEntity("mytable", $entity);
 }
 catch(ServiceException $e){
     // Handle exception based on error codes and messages.
     // Error codes and messages are here:
-    // http://msdn.microsoft.com/library/azure/dd179438.aspx
+    // https://docs.microsoft.com/rest/api/storageservices/Table-Service-Error-Codes
     $code = $e->getCode();
     $error_message = $e->getMessage();
     echo $code.": ".$error_message."<br />";
@@ -374,27 +402,27 @@ Entitás törlése, adja át a táblázat nevét, és az entitás `PartitionKey`
 ```php
 require_once 'vendor/autoload.php';
 
-use WindowsAzure\Common\ServicesBuilder;
+use MicrosoftAzure\Storage\Table\TableRestProxy;
 use MicrosoftAzure\Storage\Common\ServiceException;
 
 // Create table REST proxy.
-$tableRestProxy = ServicesBuilder::getInstance()->createTableService($connectionString);
+$tableClient = TableRestProxy::createTableService($connectionString);
 
 try    {
     // Delete entity.
-    $tableRestProxy->deleteEntity("mytable", "tasksSeattle", "2");
+    $tableClient->deleteEntity("mytable", "tasksSeattle", "2");
 }
 catch(ServiceException $e){
     // Handle exception based on error codes and messages.
     // Error codes and messages are here:
-    // http://msdn.microsoft.com/library/azure/dd179438.aspx
+    // https://docs.microsoft.com/rest/api/storageservices/Table-Service-Error-Codes
     $code = $e->getCode();
     $error_message = $e->getMessage();
     echo $code.": ".$error_message."<br />";
 }
 ```
 
-Vegye figyelembe, hogy párhuzamossági ellenőrzések állíthatók be a Etag, hogy egy entitás használatával a törlendő a **DeleteEntityOptions -> setEtag** metódus és a sikeres a **DeleteEntityOptions** objektum **deleteEntity** negyedik paraméterként.
+Párhuzamossági ellenőrzésére, az Etag entitás használatával a törlendő állíthatja be a **DeleteEntityOptions -> setEtag** metódus és a sikeres a **DeleteEntityOptions** objektum  **deleteEntity** negyedik paraméterként.
 
 ## <a name="batch-table-operations"></a>Kötegelt tábla műveletek
 A **TableRestProxy -> kötegelt** módszer lehetővé teszi egyetlen kérelem több műveletek végrehajtása. A mintát itt magában foglalja a műveletek hozzáadása **BatchRequest** objektumot, és ezután átadja a **BatchRequest** az objektum a **TableRestProxy -> kötegelt** metódust. A művelet hozzáadása egy **BatchRequest** objektum többször hívása a következő módszerek egyikét:
@@ -406,19 +434,25 @@ A **TableRestProxy -> kötegelt** módszer lehetővé teszi egyetlen kérelem t�
 * **addInsertOrMergeEntity** (hozzáad egy insertOrMergeEntity művelet)
 * **addDeleteEntity** (hozzáad egy deleteEntity művelet)
 
-A következő példa bemutatja, hogyan hajthat végre **insertEntity** és **deleteEntity** egyetlen kérelem műveletek:
+A következő példa bemutatja, hogyan hajthat végre **insertEntity** és **deleteEntity** egyetlen kérelem műveletei. 
+
+> [!NOTE]
+> Azure Cosmos DB egyelőre nem támogatják a kötegműveletek táblákhoz. 
 
 ```php
 require_once 'vendor/autoload.php';
 
-use WindowsAzure\Common\ServicesBuilder;
+use MicrosoftAzure\Storage\Table\TableRestProxy;
 use MicrosoftAzure\Storage\Common\ServiceException;
 use MicrosoftAzure\Storage\Table\Models\Entity;
 use MicrosoftAzure\Storage\Table\Models\EdmType;
 use MicrosoftAzure\Storage\Table\Models\BatchOperations;
 
-    // Create table REST proxy.
-$tableRestProxy = ServicesBuilder::getInstance()->createTableService($connectionString);
+// Configure a connection string for Storage Table service.
+$connectionString = "DefaultEndpointsProtocol=[http|https];AccountName=[yourAccount];AccountKey=[yourKey]"
+
+// Create table REST proxy.
+$tableClient = TableRestProxy::createTableService($connectionString);
 
 // Create list of batch operation.
 $operations = new BatchOperations();
@@ -439,12 +473,12 @@ $operations->addInsertEntity("mytable", $entity1);
 $operations->addDeleteEntity("mytable", "tasksSeattle", "1");
 
 try    {
-    $tableRestProxy->batch($operations);
+    $tableClient->batch($operations);
 }
 catch(ServiceException $e){
     // Handle exception based on error codes and messages.
     // Error codes and messages are here:
-    // http://msdn.microsoft.com/library/azure/dd179438.aspx
+    // https://docs.microsoft.com/rest/api/storageservices/Table-Service-Error-Codes
     $code = $e->getCode();
     $error_message = $e->getMessage();
     echo $code.": ".$error_message."<br />";
@@ -459,20 +493,20 @@ Végezetül törölni kívánja a táblázatot, adja át a táblázat nevét, ho
 ```php
 require_once 'vendor/autoload.php';
 
-use WindowsAzure\Common\ServicesBuilder;
+use MicrosoftAzure\Storage\Table\TableRestProxy;
 use MicrosoftAzure\Storage\Common\ServiceException;
 
 // Create table REST proxy.
-$tableRestProxy = ServicesBuilder::getInstance()->createTableService($connectionString);
+$tableClient = TableRestProxy::createTableService($connectionString);
 
 try    {
     // Delete table.
-    $tableRestProxy->deleteTable("mytable");
+    $tableClient->deleteTable("mytable");
 }
 catch(ServiceException $e){
     // Handle exception based on error codes and messages.
     // Error codes and messages are here:
-    // http://msdn.microsoft.com/library/azure/dd179438.aspx
+    // https://docs.microsoft.com/rest/api/storageservices/Table-Service-Error-Codes
     $code = $e->getCode();
     $error_message = $e->getMessage();
     echo $code.": ".$error_message."<br />";
@@ -480,16 +514,16 @@ catch(ServiceException $e){
 ```
 
 ## <a name="next-steps"></a>További lépések
-Most, hogy megismerte az Azure Table szolgáltatás alapjait, az alábbi hivatkozásokból tájékozódhat az összetettebb tárolási feladatok elvégzéséről.
+Most, hogy megismerte az Azure Table szolgáltatás és az Azure Cosmos DB alapjait, az alábbi hivatkozásokból további.
 
 * A [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) egy ingyenes, önálló alkalmazás, amelynek segítségével vizuálisan dolgozhat Azure Storage-adatokkal Windows, macOS és Linux rendszereken.
 
 * [A PHP fejlesztői központ](/develop/php/).
 
-[download]: http://go.microsoft.com/fwlink/?LinkID=252473
+[download]: https://packagist.org/packages/microsoft/azure-storage-table
 [require_once]: http://php.net/require_once
-[table-service-timeouts]: http://msdn.microsoft.com/library/azure/dd894042.aspx
+[table-service-timeouts]: https://docs.microsoft.com/rest/api/storageservices/setting-timeouts-for-table-service-operations
 
-[table-data-model]: http://msdn.microsoft.com/library/azure/dd179338.aspx
-[filters]: http://msdn.microsoft.com/library/azure/dd894031.aspx
-[entity-group-transactions]: http://msdn.microsoft.com/library/azure/dd894038.aspx
+[table-data-model]: https://docs.microsoft.com/rest/api/storageservices/Understanding-the-Table-Service-Data-Model
+[filters]: https://docs.microsoft.com/rest/api/storageservices/Querying-Tables-and-Entities
+[entity-group-transactions]: https://docs.microsoft.com/rest/api/storageservices/Performing-Entity-Group-Transactions

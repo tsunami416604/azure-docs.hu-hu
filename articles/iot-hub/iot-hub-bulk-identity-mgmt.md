@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/03/2017
 ms.author: dobett
-ms.openlocfilehash: d2a6660b93fee1e1fc24269eb7075e5243ce88ed
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.openlocfilehash: 699237c68258243b5f654f5dc57e616e3a22177a
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="manage-your-iot-hub-device-identities-in-bulk"></a>Az IoT Hub eszköz identitásai tömeges kezelése
 
@@ -49,7 +49,18 @@ JobProperties exportJob = await registryManager.ExportDevicesAsync(containerSasU
 > [!NOTE]
 > Használatához a **RegistryManager** osztály a C#-kódban, adja hozzá a **Microsoft.Azure.Devices** NuGet-csomagot a projekthez. A **RegistryManager** osztály a **Microsoft.Azure.Devices** névtér.
 
-Használhatja a **RegistryManager** osztály állapotának lekérdezése a **feladat** használatával a visszaadott **JobProperties** metaadatok.
+Használhatja a **RegistryManager** osztály állapotának lekérdezése a **feladat** használatával a visszaadott **JobProperties** metaadatok. Egy példányának létrehozása a **RegistryManager** osztály, használja a **CreateFromConnectionString** módszert:
+
+```csharp
+RegistryManager registryManager = RegistryManager.CreateFromConnectionString("{your IoT Hub connection string}");
+```
+
+A kapcsolati karakterlánc megkeresése az IoT hub, az Azure-portálon:
+
+- Nyissa meg az IoT hub.
+- Válassza ki **megosztott elérési házirendek**.
+- Jelöljön ki egy házirendet, figyelembe véve a szükséges engedélyekkel.
+- A képernyő jobb oldali panelen másolja ki a ConnectionString kapcsolódási karakterláncban.
 
 A következő C# kódrészletet öt másodpercenként kérdezze le a megjelenítéséhez, ha a feladat végrehajtása befejeződött mutatja be:
 
@@ -236,11 +247,11 @@ Ha az importált fájl iker metaadatokat tartalmaz, a metaadatok felülírja a m
 
 Használja az opcionális **amelyben a importMode** tulajdonság szerializációs adatok importálása az egyes eszközök az importálási folyamat eszközönkénti szabályozására. A **amelyben a importMode** tulajdonságnak a következő beállításokat:
 
-| amelyben a importMode | Leírás |
+| importMode | Leírás |
 | --- | --- |
 | **createOrUpdate** |Ha egy eszköz nem létezik a megadott **azonosító**, újonnan regisztrálva van. <br/>Ha az eszköz már létezik, a megadott bemeneti adatok nélkül tekintettel felülírja a meglévő adatokat a **ETag** érték. <br> A felhasználó megadja a két adatok az eszköz adatokkal együtt. A kettős etag, ha meg van adva, akkor feldolgozott egymástól függetlenül az eszköz etag. Ha eltérést okoz a meglévő iker etag, egy hiba kerül a naplófájlba írást. |
 | **létrehozás** |Ha egy eszköz nem létezik a megadott **azonosító**, újonnan regisztrálva van. <br/>Ha az eszköz már létezik, egy hiba kerül a naplófájlba írást. <br> A felhasználó megadja a két adatok az eszköz adatokkal együtt. A kettős etag, ha meg van adva, akkor feldolgozott egymástól függetlenül az eszköz etag. Ha eltérést okoz a meglévő iker etag, egy hiba kerül a naplófájlba írást. |
-| **frissítés** |Ha egy eszköz már létezik a megadott **azonosító**, a megadott bemeneti adatok nélkül tekintettel felülírja a meglévő adatokat a **ETag** érték. <br/>Ha az eszköz nem létezik, egy hiba kerül a naplófájlba írást. |
+| **update** |Ha egy eszköz már létezik a megadott **azonosító**, a megadott bemeneti adatok nélkül tekintettel felülírja a meglévő adatokat a **ETag** érték. <br/>Ha az eszköz nem létezik, egy hiba kerül a naplófájlba írást. |
 | **updateIfMatchETag** |Ha egy eszköz már létezik a megadott **azonosító**, meglévő információt felülírja a megadott bemeneti adatok csak akkor, ha van egy **ETag** felel meg. <br/>Ha az eszköz nem létezik, egy hiba kerül a naplófájlba írást. <br/>Ha egy **ETag** eltérés, hiba ír a naplófájlba írást. |
 | **createOrUpdateIfMatchETag** |Ha egy eszköz nem létezik a megadott **azonosító**, újonnan regisztrálva van. <br/>Ha az eszköz már létezik, meglévő információt felülírja a megadott bemeneti adatok csak akkor, ha van egy **ETag** felel meg. <br/>Ha egy **ETag** eltérés, hiba ír a naplófájlba írást. <br> A felhasználó megadja a két adatok az eszköz adatokkal együtt. A kettős etag, ha meg van adva, akkor feldolgozott egymástól függetlenül az eszköz etag. Ha eltérést okoz a meglévő iker etag, egy hiba kerül a naplófájlba írást. |
 | **törlés** |Ha egy eszköz már létezik a megadott **azonosító**, nélkül tekintettel törlődik a **ETag** érték. <br/>Ha az eszköz nem létezik, egy hiba kerül a naplófájlba írást. |

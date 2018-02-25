@@ -11,15 +11,15 @@ ms.devlang:
 ms.topic: article
 ms.tgt_pltfrm: 
 ms.workload: identity
-ms.date: 01/30/2018
+ms.date: 02/23/2018
 ms.author: rolyon
 ms.reviewer: rqureshi
 ms.custom: it-pro
-ms.openlocfilehash: 82fa6d3f04dc528c0e2d95dae82e7a7f8787ea7c
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: e49f555b2ae972cd3a0437fc44d2331aaeb5e955
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="built-in-roles-for-azure-role-based-access-control"></a>Az Azure szerepköralapú hozzáférés-vezérlés beépített szerepkörök
 Azure szerepköralapú hozzáférés-vezérlés (RBAC) tartalmaz a következő beépített szerepkörök, felhasználók, csoportok és szolgáltatások rendelhető. A beépített szerepkörök definíciója nem módosítható. Azonban létrehozhat [egyéni szerepkörök az Azure RBAC](role-based-access-control-custom-roles.md) a szervezet igényeinek megfelelően.
@@ -51,6 +51,7 @@ Ez a cikk csak a különböző szerepkörök ma foglalkozik. Amikor szerepkör h
 | [BizTalk Contributor](#biztalk-contributor) |Kezelheti a BizTalk szolgáltatások |
 | [ClearDB MySQL DB Contributor](#cleardb-mysql-db-contributor) |Kezelheti a ClearDB MySQL-adatbázisok |
 | [Közreműködő](#contributor) |Hozzáférés kivételével mindent felügyelhetnek. |
+| [A cosmos DB fiók olvasó szerepkört](#cosmos-db-account-reader-role) |Azure Cosmos DB fiókadatokhoz tudja olvasni. |
 | [Data Factory közreműködő](#data-factory-contributor) |Hozhat létre, és kezelhet az adat-előállítók és gyermekerőforrásait rajtuk. |
 | [DevTest Labs felhasználó](#devtest-labs-user) |Minden tekintheti meg és csatlakozni, a start, újraindítás és leállítás virtuális gépek |
 | [DNS-zóna közreműködő](#dns-zone-contributor) |Kezelheti a DNS-zónák és rekordok |
@@ -307,10 +308,23 @@ Hozzáférés kivételével mindent felügyelhetnek
 | --- | --- |
 | * |Hozzon létre és kezelheti az erőforrásokat bármilyen típusú |
 
-| NotActions |  |
+| **NotActions** |  |
 | --- | --- |
 | Microsoft.Authorization/*/Delete |Szerepkörök és szerepkör-hozzárendelések nem lehet törölni |
 | Microsoft.Authorization/*/Write |Nem hozható létre, szerepkörök és szerepkör-hozzárendelések |
+
+### <a name="cosmos-db-account-reader-role"></a>Cosmos DB-fiók olvasói szerepköre
+Azure Cosmos DB fiókadatokhoz el tud olvasni. Lásd: [DocumentDB-fiók közreműködői](#documentdb-account-contributor) Azure Cosmos DB kezelésére.
+
+| **Műveletek** |  |
+| --- | --- |
+|Microsoft.Authorization/*/read|Olvasási szerepkörökhöz és szerepkör-hozzárendelések elolvashatják a minden felhasználó számára megadott engedélyek|
+|Microsoft.DocumentDB/*/read|Olvassa el a gyűjtemény|
+|Microsoft.DocumentDB/databaseAccounts/readonlykeys/action|Olvassa el a csak olvasható kulcsok panelen|
+|Microsoft.Insights/Metrics/read|Olvassa el a fiók metrikák|
+|Microsoft.Insights/MetricDefinitions/read|Olvassa el a metrikák definíciók|
+|Microsoft.Resources/subscriptions/resourceGroups/read|Olvassa el az erőforráscsoport-sablonok|
+|Microsoft.Support/*|Hozzon létre és támogatási jegyek kezelése|
 
 ### <a name="data-factory-contributor"></a>Data Factory közreműködője
 Létrehozása és kezelése az adat-előállítók és gyermekerőforrásait rajtuk.
@@ -677,7 +691,7 @@ SQL-adatbázisok, de nem a biztonsági házirendek kezeléséhez
 | Microsoft.Sql/servers/read |Read SQL Servers |
 | Microsoft.Support/* |Hozzon létre és támogatási jegyek kezelése |
 
-| NotActions |  |
+| **NotActions** |  |
 | --- | --- |
 | Microsoft.Sql/servers/databases/auditingPolicies/* |Naplózási házirendek nem szerkeszthető. |
 | Microsoft.Sql/servers/databases/auditingSettings/* |Naplózási beállítások nem szerkeszthetők. |
@@ -727,7 +741,7 @@ SQL Server-kiszolgálók és adatbázisok, de nem a biztonsági házirendek keze
 | Microsoft.Sql/servers/* |Hozzon létre és SQL-kiszolgálók kezelése |
 | Microsoft.Support/* |Hozzon létre és támogatási jegyek kezelése |
 
-| NotActions |  |
+| **NotActions** |  |
 | --- | --- |
 | Microsoft.Sql/servers/auditingPolicies/* |SQL server naplózási házirendek nem szerkeszthető. |
 | Microsoft.Sql/servers/auditingSettings/* |SQL server naplózási beállítások nem szerkeszthetők. |

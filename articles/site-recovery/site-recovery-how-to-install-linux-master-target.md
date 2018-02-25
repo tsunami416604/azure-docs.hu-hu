@@ -3,7 +3,7 @@ title: "Egy Linuxos fő célkiszolgáló feladatátvételi telepítése az Azure
 description: "A Linux virtuális gép újbóli védelméhez, mielőtt van szüksége a Linuxos fő célkiszolgáló. Megtudhatja, hogyan telepítsen."
 services: site-recovery
 documentationcenter: 
-author: rajani-janaki-ram
+author: nsoneji
 manager: gauravd
 editor: 
 ms.assetid: 44813a48-c680-4581-a92e-cecc57cc3b1e
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: 
-ms.date: 11/22/2017
-ms.author: rajanaki
-ms.openlocfilehash: 11f9385c1082011ee690f48f2579b6f3b156d125
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.date: 02/22/2018
+ms.author: nisoneji
+ms.openlocfilehash: 27b38eafd9ab5da11d66ede4d446a4952e30c534
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="install-a-linux-master-target-server"></a>A Linuxos fő célkiszolgáló telepítése
 Miután a rendszer átadja a virtuális gépek Azure-ba, akkor is feladat-visszavételt a virtuális gépeket a helyszíni hely. A feladat-visszavételt, állítsa a virtuális gépet az Azure-ból a helyszíni helyre kell. Ez a folyamat szüksége van egy a helyszíni fő célkiszolgáló forgalom fogadására. 
@@ -265,7 +265,7 @@ Adatmegőrzési lemez létrehozásához tegye a következőket:
     
     Válassza ki **beszúrása** a fájl szerkeszthető. Hozzon létre egy új sort, és helyezze be a következő szöveg. A kijelölt többutas az előző parancs azonosítója alapján többutas Lemezazonosítót szerkesztése.
 
-    **/dev/eseményleképező/ <Retention disks multipath id> /mnt/megőrzési ext4 rw 0 0**
+     **/dev/eseményleképező/ <Retention disks multipath id> /mnt/megőrzési ext4 rw 0 0**
 
     Válassza ki **Esc**, majd írja be **: wq** (írása, és lépjen ki a) a szerkesztő ablak bezárásához.
 

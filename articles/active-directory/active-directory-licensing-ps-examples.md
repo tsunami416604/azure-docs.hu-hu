@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/05/2017
 ms.author: curtand
-ms.openlocfilehash: 82d4bdbe60fe403ea07ed958e9aec9dbf4e9fbb8
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: 6a518f9c7ddb11de2b459d5d28c404316eb62355
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="powershell-examples-for-group-based-licensing-in-azure-ad"></a>PowerShell-példák az Azure Active Directory biztonságicsoport-alapú licenckezeléshez
 
@@ -27,6 +27,9 @@ Csoportalapú licenckezelési teljes funkciók is elérhetővé a [Azure-portál
 
 > [!NOTE]
 > Parancsmagok futtatása előtt győződjön meg arról, hogy csatlakozik a bérlő először futtassa a `Connect-MsolService` parancsmag.
+
+>[!WARNING]
+>Ez a kód bemutatási célokra példaként valósul meg. Ha a környezetben használandó, fontolja meg, vizsgálja, hogy először egy kis méretű, vagy egy külön tesztelési bérlőn. Előfordulhat, hogy úgy, hogy a kód a környezet konkrét igényeinek.
 
 ## <a name="view-product-licenses-assigned-to-a-group"></a>A csoporthoz rendelt termék licencek megtekintése
 A [Get-MsolGroup](/powershell/module/msonline/get-msolgroup?view=azureadps-1.0) parancsmag segítségével kérje le a csoportházirend-objektum, majd ellenőrizze a *licencek* tulajdonság: felsorolja az összes termék licenccel jelenleg a csoport.
@@ -70,7 +73,7 @@ c2652d63-9161-439b-b74e-fcd8228a7074 EMSandOffice             {ENTERPRISEPREMIUM
 ```
 
 ## <a name="get-statistics-for-groups-with-licenses"></a>Megtekintheti a statisztikákat a licenccel rendelkező csoportok
-A licenccel rendelkező csoportok alapszintű statisztikákat is tud jelentéseket. Az alábbi példa azt felsorolja a teljes felhasználói, a csoport már hozzárendelt licenccel rendelkező felhasználók száma, valamint a felhasználók, akiknek licencek hozzárendelése nem sikerült a csoport száma.
+A licenccel rendelkező csoportok alapszintű statisztikákat is tud jelentéseket. Az alábbi példában a parancsfájl teljes felhasználószám, már hozzá van rendelve a csoport-licenccel rendelkező felhasználók száma, és a felhasználók, akiknek licencek hozzárendelése nem sikerült a csoport tartalmazza.
 
 ```
 #get all groups with licenses
@@ -141,7 +144,7 @@ ObjectId                             DisplayName             GroupType Descripti
 ```
 ## <a name="get-all-users-with-license-errors-in-a-group"></a>Minden felhasználó licenc hibákkal csoport lekérése
 
-A megadott egy csoportot, amely tartalmazza az egyes kapcsolódó hibák licenceléséhez most listázhatja azokat a hibák által érintett összes felhasználó. A felhasználó túl lehet más csoportokhoz, a hibák. Azonban a következő példa azt szűkíteni a csak az adott csoportra vonatkozó hibák ellenőrzésével a **ReferencedObjectId** tulajdonság az egyes **IndirectLicenseError** bejegyzés a felhasználó.
+Egy csoportot, amely tartalmazza a licenc kapcsolatos hibák miatt most listán és ezek a hibák által érintett összes felhasználó. A felhasználó túl lehet más csoportokhoz, a hibák. Azonban a következő példa azt szűkíteni a csak az adott csoportra vonatkozó hibák ellenőrzésével a **ReferencedObjectId** tulajdonság az egyes **IndirectLicenseError** bejegyzés a felhasználó.
 
 ```
 #a sample group with errors
@@ -167,10 +170,10 @@ ObjectId                             DisplayName      License Error
 ```
 ## <a name="get-all-users-with-license-errors-in-the-entire-tenant"></a>Minden felhasználó licenc hibákkal a teljes bérlő lekérése
 
-Egy vagy több csoportjára licenc hibák rendelkező felhasználók listáját, az alábbi parancsfájlt is használható. Ez a parancsfájl felsorolja soronként egy felhasználónként, Licenchiba, amely lehetővé teszi az összes hiba a forrás egyértelműen azonosításához.
+A következő parancsfájl egy vagy több csoportjára licenc hibák rendelkező felhasználók is használható. A parancsfájl kinyomtatja soronként egy felhasználónként, Licenchiba, amely lehetővé teszi az összes hiba a forrás egyértelműen azonosításához.
 
 > [!NOTE]
-> Ez a parancsfájl a bérlő számára, amely nem feltétlenül optimális nagy bérlők lévő összes felhasználó számára.
+> Ezt a parancsfájlt a bérlő számára, amely nem feltétlenül optimális nagy bérlők számára az összes felhasználó enumerálása.
 
 ```
 Get-MsolUser -All | Where {$_.IndirectLicenseErrors } | % {   
@@ -302,7 +305,7 @@ ObjectId                             SkuId       AssignedDirectly AssignedFromGr
 ## <a name="remove-direct-licenses-for-users-with-group-licenses"></a>Távolítsa el a csoport-licenccel rendelkező felhasználók közvetlen licenceinek
 A parancsfájl célja, hogy távolítsa el a felesleges közvetlen licencek a felhasználók, akik már öröklik a azonos licenc egy csoportból; például részeként egy [Csoportalapú licencelési való váltás](https://docs.microsoft.com/azure/active-directory/active-directory-licensing-group-migration-azure-portal).
 > [!NOTE]
-> Fontos először ellenőrzi, hogy a közvetlen licenceket távolítható el, nem engedélyezi több szolgáltatást, mint az örökölt licencek. Ellenkező esetben a közvetlen licenc eltávolítása bármikor letilthatja a felhasználók számára a szolgáltatások és az adatok elérésére. Jelenleg nincs lehetőség a PowerShell segítségével ellenőrizze, melyik szolgáltatás be legyen kapcsolva keresztül örökölt licencek vs közvetlen. A parancsfájl azt határozza meg tudjuk szolgáltatások minimális szintű csoportokból öröklődtek és ellenőrizzük ezzel szemben.
+> Fontos először ellenőrzi, hogy a közvetlen licenceket távolítható el, nem engedélyezi több szolgáltatást, mint az örökölt licencek. Ellenkező esetben a közvetlen licenc eltávolítása bármikor letilthatja a felhasználók számára a szolgáltatások és az adatok elérésére. Jelenleg nincs lehetőség a PowerShell segítségével ellenőrizze, melyik szolgáltatás be legyen kapcsolva keresztül örökölt licencek vs közvetlen. A parancsfájl adtuk meg tudjuk csoportokból öröklődtek, és ellenőrizze, szolgáltatások minimális szintű ellen, győződjön meg arról, hogy a felhasználók nem váratlanul elveszítik szolgáltatásokhoz való hozzáférés.
 
 ```
 #BEGIN: Helper functions used by the script
@@ -382,7 +385,7 @@ function GetDisabledPlansForSKU
 {
     Param([string]$skuId, [string[]]$enabledPlans)
 
-    $allPlans = Get-MsolAccountSku | where {$_.AccountSkuId -ieq $skuId} | Select -ExpandProperty ServiceStatus | Where {$_.ProvisioningStatus -ine "PendingActivation"} | Select -ExpandProperty ServicePlan | Select -ExpandProperty ServiceName
+    $allPlans = Get-MsolAccountSku | where {$_.AccountSkuId -ieq $skuId} | Select -ExpandProperty ServiceStatus | Where {$_.ProvisioningStatus -ine "PendingActivation" -and $_.ServicePlan.TargetClass -ieq "User"} | Select -ExpandProperty ServicePlan | Select -ExpandProperty ServiceName
     $disabledPlans = $allPlans | Where {$enabledPlans -inotcontains $_}
 
     return $disabledPlans
@@ -476,7 +479,7 @@ aadbe4da-c4b5-4d84-800a-9400f31d7371 User has no direct license to remove. Skipp
 
 ## <a name="next-steps"></a>További lépések
 
-A licenc-kezelő csoportokon keresztül beállítása szolgáltatással kapcsolatos további tudnivalókért olvassa el a következőket:
+A licenc-kezelő csoportokon keresztül beállítása szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 
 * [Mi az a csoport-alapú licencelése az Azure Active Directoryban?](active-directory-licensing-whatis-azure-portal.md)
 * [Licencek hozzárendelése az Azure Active Directory csoport](active-directory-licensing-group-assignment-azure-portal.md)

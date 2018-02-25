@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 8/9/2017
+ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 85935e60bba4b27972282700e2e9c9a22b403bdb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e71275d437aabdd5699f0d462fddc5a190ff19db
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="role-based-access-control-for-service-fabric-clients"></a>A Service Fabric ügyfelek szerepköralapú hozzáférés-vezérlés
 Azure Service Fabric két különböző hozzáférést vezérlő típusokat támogatja az ügyfelek csatlakoznak a Service Fabric-fürt: rendszergazdai és felhasználói. Hozzáférés-vezérlés lehetővé teszi, hogy a fürt rendszergazdája a különböző csoportok számára, így a fürt biztonságosabb bizonyos fürtműveletekben való hozzáférés korlátozásához.  
@@ -50,7 +50,7 @@ A rendszergazdai hozzáférés-vezérlő típusa minden FabricClient API teljes 
 * **RecoverServicePartitions**: szolgáltatáspartíciók helyreállítása                             
 * **RecoverSystemPartitions**: rendszer szolgáltatáspartíciók helyreállítása                             
 
-### <a name="cluster-operations"></a>Fürt működését
+### <a name="cluster-operations"></a>Fürtműveletek
 * **ProvisionFabric**: MSI-fájl és/vagy a fürt manifest kiépítése                             
 * **UpgradeFabric**: fürt frissítések indítása                             
 * **UnprovisionFabric**: MSI-fájl és/vagy a fürt manifest kiépítés megszüntetésére                         
@@ -101,7 +101,7 @@ A rendszergazdai hozzáférés-vezérlés is hozzáfér a fenti műveletekre.
 ## <a name="changing-default-settings-for-client-roles"></a>Ügyfél-szerepkörök alapértelmezett beállításainak módosítása
 A fürt jegyzékfájl biztosíthat felügyeleti képességek az ügyfél szükség esetén. Címen bármikor módosíthatja az alapértelmezett érték a **Hálóbeállításokat** során lehetőséget [fürtlétrehozás](service-fabric-cluster-creation-via-portal.md), és az előző beállítások megadása a **neve**, **admin**, **felhasználói**, és **érték** mezők.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [A Service Fabric-fürt biztonsági](service-fabric-cluster-security.md)
 
 [A Service Fabric-fürt létrehozása](service-fabric-cluster-creation-via-portal.md)

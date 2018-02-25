@@ -14,11 +14,11 @@ ms.devlang: cpp
 ms.topic: article
 ms.date: 12/25/2016
 ms.author: aasthan
-ms.openlocfilehash: da969e3f619c9703ea0c02a148f11a9509d6e988
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: b1dc49a9da42aa3630618c8099a7994950b313b4
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="azure-cosmos-db-c-console-application-tutorial-for-the-sql-api"></a>Az Azure Cosmos DB: C++ konzol oktatóanyag az SQL API-hoz.
 > [!div class="op_single_selector"]
@@ -52,7 +52,7 @@ Nincs elég ideje? Ne aggódjon! A teljes megoldás elérhető a [GitHubon](http
 Most pedig lássunk neki!
 
 ## <a name="prerequisites-for-the-c-tutorial"></a>A C++ oktatóanyag előfeltételei
-Győződjön meg róla, hogy rendelkezik az alábbiakkal:
+Győződjön meg arról, hogy a következőket:
 
 * Aktív Azure-fiók. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt. 
 
@@ -74,14 +74,14 @@ Hozzunk létre egy Azure Cosmos DB-fiókot. Ha már rendelkezik egy használni k
 4. Ha létrejött a projekt, nyissa meg a NuGet-csomagkezelőt. Ehhez kattintson a jobb gombbal a **hellodocumentdb** projektre a **Solution Explorer** (Megoldáskezelő) felületén, és kattintson a **Manage NuGet Packages** (NuGet-csomagok kezelése) lehetőségre. 
    
     ![A projektmenüben a Manage NuGet Package (NuGet-csomagok kezelése) parancsot bemutató képernyőkép](media/sql-api-cpp-get-started/nuget.png)
-5. A **NuGet: hellodocumentdb** lapon kattintson a **Browse** (Tallózás) gombra, majd keressen a *documentdbcpp* kifejezésre. Az eredményekben válassza a DocumentDbCPP elemet az alábbi képernyőképen látható módon. Ez a csomag a C++ REST SDK hivatkozásait telepíti, amely a DocumentDbCPP függősége.  
+5. A **NuGet: hellodocumentdb** lapon kattintson a **Browse** (Tallózás) gombra, majd keressen a *documentdbcpp* kifejezésre. Az eredményeket válassza ki a DocumentDbCPP, az alábbi képernyőfelvételen látható módon:   
    
     ![A kiemelt DocumentDbCpp csomagot bemutató képernyőkép](media/sql-api-cpp-get-started/cpp.png)
    
-    Miután a csomagokat a projekthez adta, készen állunk a kódírásra.   
+    Ez a csomag a C++ REST SDK hivatkozásait telepíti, amely a DocumentDbCPP függősége. A csomagok érhetőek el a projekt, ha minden beállítás néhány kódot ír elindításához áll.   
 
 ## <a id="Config"></a>3. lépés: Kapcsolat részleteinek másolása az Azure Portalról az Azure Cosmos DB-adatbázisba
-Nyissa meg az [Azure Portalt](https://portal.azure.com), és lépjen a létrehozott Azure Cosmos DB-adatbázisfiókra. A következő lépésben szükségünk lesz az URI-re és az elsődleges kulcsra az Azure Portalról, hogy kapcsolatot hozzunk létre a C++ kódrészletből. 
+Nyithat [Azure-portálon](https://portal.azure.com) , és keresse meg a létrehozott Azure Cosmos DB fiókkal. A C++ kódrészletet a kapcsolatot létesíteni az URI és az elsődleges kulcs a következő lépésben az Azure portálról van szükség. 
 
 ![Azure Cosmos DB URI és kulcsok az Azure Portalon](media/sql-api-cpp-get-started/nosql-tutorial-keys.png)
 
@@ -104,7 +104,7 @@ Nyissa meg az [Azure Portalt](https://portal.azure.com), és lépjen a létrehoz
     Most, hogy az ügyfél kóddal, vessen egy pillantást a Azure Cosmos DB erőforrásokat.
 
 ## <a id="CreateDBColl"></a>5. lépés: C++ adatbázis és gyűjtemény létrehozása
-A lépés elvégzése előtt az Azure Cosmos DB-t nem ismerő felhasználók érdekében vegyük át az adatbázis, a gyűjtemény és a dokumentumok kapcsolatát. Az [adatbázisok](sql-api-resources.md#databases) a dokumentumtároló gyűjtemények között particionált logikai tárolói. A [gyűjtemények](sql-api-resources.md#collections) JSON-dokumentumokat és a kapcsolódó JavaScript alkalmazáslogikát tartalmazó tárolók. Az Azure Cosmos DB hierarchikus erőforrásmodellről és fogalmakról további információt az [Azure Cosmos DB hierarchikus erőforrásmodell és fogalmak](sql-api-resources.md) című cikkben talál.
+Mielőtt elvégezné ezt a lépést, hogyan működnek együtt a adatbázis, gyűjtemény és dokumentumok azok is, akik az Azure Cosmos Adatbázishoz új keresztül ugorjunk. Az [adatbázisok](sql-api-resources.md#databases) a dokumentumtároló gyűjtemények között particionált logikai tárolói. A [gyűjtemények](sql-api-resources.md#collections) JSON-dokumentumokat és a kapcsolódó JavaScript alkalmazáslogikát tartalmazó tárolók. Az Azure Cosmos DB hierarchikus erőforrásmodellről és fogalmakról további információt az [Azure Cosmos DB hierarchikus erőforrásmodell és fogalmak](sql-api-resources.md) című cikkben talál.
 
 Egy adatbázis és egy megfelelő gyűjtemény létrehozása érdekében adja a következő kódot a fő függvény végére. Ez létrehozza a „FamilyRegistry” nevű adatbázist és a „FamilyCollection” nevű gyűjteményt az előző lépésben megadott ügyfél-konfigurációval.
 
@@ -134,12 +134,12 @@ A [dokumentumok](sql-api-resources.md#documents) a felhasználó által megadott
       wcout << ex.message();
     }
 
-Összefoglalva, ez a kód Azure Cosmos DB-adatbázist, -gyűjteményt és -dokumentumokat hoz létre, amelyeket a Dokumentumkezelőben kérhet le az Azure Portalon. 
+Összefoglalva, ez a kód egy Azure Cosmos DB adatbázis, gyűjtemény és dokumentumok, amely lekérheti az adatkezelő Azure-portálon hoz létre. 
 
 ![C++ oktatóanyag – A fiók, az adatbázis, a gyűjtemény és a dokumentumok hierarchikus kapcsolatát ábrázoló diagram](media/sql-api-cpp-get-started/docs.png)
 
 ## <a id="QueryDB"></a>7. lépés: Az Azure Cosmos DB-erőforrások lekérdezése
-Az Azure Cosmos DB támogatja az egyes gyűjteményekben tárolt JSON-dokumentumokon végzett [részletes lekérdezéseket](sql-api-sql-query.md). Az alábbi mintakód egy SQL szintaxissal készített lekérdezést mutat be, amelyet az előző lépésben létrehozott dokumentumokra vonatkozóan futtathat le.
+Az Azure Cosmos DB támogatja az egyes gyűjteményekben tárolt JSON-dokumentumokon végzett [részletes lekérdezéseket](sql-api-sql-query.md). Az alábbi mintakód bemutatja az előző lépésben létrehozott is futtathatók a dokumentumok SQL-szintaxis használatával létrehozott lekérdezést.
 
 A függvény az adatbázis és a gyűjtemény egyedi azonosítóját vagy erőforrás-azonosítóját veszi fel argumentumokként a dokumentum ügyfelével együtt. Adja ezt a kódot a fő függvény elé.
 
@@ -218,7 +218,7 @@ Másolja és illessze be a következő kódrészletet (cleanup (tisztítás) fü
     }
 
 ## <a id="Run"></a>11. lépés: A teljes C++ alkalmazás futtatása!
-Ezzel hozzáadtuk a különböző Azure Cosmos DB-erőforrások létrehozására, lekérdezésére, módosítására és törlésére szolgáló kódot.  Mindezek összegzéséhez adjunk hívásokat a különböző függvényekhez a hellodocumentdb.cpp fájlban lévő fő függvényből néhány diagnosztikai üzenettel együtt.
+Ezzel hozzáadta a kód létrehozása, lekérdezése, módosítása és törlése különböző Azure Cosmos DB erőforrások.  Most hozzá kell fűznie ez mentése mellett néhány diagnosztikai üzenetek hellodocumentdb.cpp fő funkciója különböző funkcióhoz hívásainak hozzáadásával.
 
 Ehhez cserélje le az alkalmazás fő függvényét a következő kóddal. Ez felülírja a 3. lépésben a kódba másolt account_configuration_uri és primary_key elemet, ezért mentse a sort, vagy másolja le az értékeket ismét a portálból. 
 
@@ -271,7 +271,7 @@ Ehhez cserélje le az alkalmazás fő függvényét a következő kóddal. Ez fe
 
 Most az F5 billentyűt lenyomva vagy a terminálablakban az alkalmazást megkeresve és a végrehajtható fájlt futtatva felépítheti és futtathatja a kódot a Visual Studióban. 
 
-Meg kell jelennie az első lépések alkalmazás kimenetének. A kimenetnek meg kell egyeznie az alábbi képernyőképpel.
+Meg kell jelennie az első lépések alkalmazás kimenetének. A kimenetnek meg kell egyeznie az alábbi képernyőfelvételen:
 
 ![Azure Cosmos DB C++ alkalmazás kimenete](media/sql-api-cpp-get-started/console.png)
 
@@ -283,9 +283,9 @@ A cikkben szereplő összes példát tartalmazó GetStarted-megoldás lefordít�
 * [Azure Cosmos DB-fiók][create-account].
 * A GitHubon elérhető [GetStarted](https://github.com/stalker314314/DocumentDBCpp) megoldás.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Ismerje meg, hogyan [figyelhet egy Azure Cosmos DB-fiókot](monitor-accounts.md).
-* Futtasson lekérdezéseket a minta-adatkészleteken a [Query Playground](https://www.documentdb.com/sql/demo) (Tesztlekérdezések) használatával.
+* Lekérdezések futtatása egy minta-adatkészleteken a [Tesztlekérdezéseket](https://www.documentdb.com/sql/demo).
 * A programozási modellel kapcsolatos további tudnivalókat az [Azure Cosmos DB-dokumentációs oldalának](https://azure.microsoft.com/documentation/services/cosmos-db/) Develop (Fejlesztés) szakaszában találja.
 
 [create-account]: create-sql-api-dotnet.md#create-account

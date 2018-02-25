@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/21/2017
+ms.date: 02/23/2017
 ms.author: billmath
-ms.openlocfilehash: 2d172b22d00f21062237a1af1742bad6a03c864c
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 58ca992f9fcf9a03d917f0dc250a292c4d5f49e5
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Az Azure Active Directory zökkenőmentes egyszeri bejelentkezés: első lépések
 
@@ -99,7 +99,7 @@ Alapértelmezés szerint a böngésző automatikusan kiszámítja a megfelelő z
    - **Érték neve**: az Azure AD URL-CÍMÉT a Kerberos-jegyek továbbított ahol.
    - **Érték** (adatok): **1** az Intranet zóna jelzi.
 
-   Az eredmény így néz ki:
+    Az eredmény így néz ki:
 
     Value: https://autologon.microsoftazuread-sso.com
   
@@ -125,11 +125,11 @@ Alapértelmezés szerint a böngésző automatikusan kiszámítja a megfelelő z
 
 #### <a name="mozilla-firefox-all-platforms"></a>Mozilla Firefox (minden platform)
 
-Mozilla Firefox automatikusan nem használja a Kerberos-hitelesítést. Minden felhasználó manuálisan kell hozzáadnia az Azure AD URL-címeket a Firefox beállításait, az alábbi lépéseket követve:
+Mozilla Firefox automatikusan nem használja a Kerberos-hitelesítést. Minden felhasználó manuálisan kell hozzáadnia az Azure AD URL-CÍMÉT a Firefox beállításait, az alábbi lépéseket követve:
 1. Futtassa a Firefox, és adja meg `about:config` a böngésző címsorába. Hagyja figyelmen kívül belőle értesítéseket, amelyek akkor jelennek meg.
 2. Keresse meg a **network.negotiate-auth.trusted-URI-azonosítók** beállítás. Ez a beállítás a Firefox a megbízható helyek a Kerberos-hitelesítést sorolja fel.
 3. Kattintson a jobb gombbal, és válassza ki **módosítás**.
-4. Enter https://autologon.microsoftazuread-sso.com, https://aadg.windows.net.nsatc.net in the field.
+4. Adja meg https://autologon.microsoftazuread-sso.com mezőben.
 5. Válassza ki **OK** és a böngészőben nyissa meg újra.
 
 #### <a name="safari-mac-os"></a>Safari (Mac OS)
@@ -138,7 +138,7 @@ Győződjön meg arról, hogy a Mac OS futtató számítógép egy tartományhoz
 
 #### <a name="google-chrome-all-platforms"></a>Google Chrome (minden platform)
 
-Ha felülbírálva a [AuthNegotiateDelegateWhitelist](https://www.chromium.org/administrators/policy-list-3#AuthNegotiateDelegateWhitelist) vagy a [AuthServerWhitelist](https://www.chromium.org/administrators/policy-list-3#AuthServerWhitelist) házirend-beállítások a környezetben, győződjön meg arról, hogy hozzáadta-e az Azure AD URL-címek (https:// AutoLogon.microsoftazuread-sso.com és https://aadg.windows.net.nsatc.net) is számukra.
+Ha felülbírálva a [AuthNegotiateDelegateWhitelist](https://www.chromium.org/administrators/policy-list-3#AuthNegotiateDelegateWhitelist) vagy a [AuthServerWhitelist](https://www.chromium.org/administrators/policy-list-3#AuthServerWhitelist) házirend-beállítások a környezetben, győződjön meg arról, hogy ad hozzá az Azure AD URL-címe (https://autologon.microsoftazuread-sso.com) azokat is.
 
 #### <a name="google-chrome-mac-os-only"></a>Google Chrome (Mac OS csak)
 

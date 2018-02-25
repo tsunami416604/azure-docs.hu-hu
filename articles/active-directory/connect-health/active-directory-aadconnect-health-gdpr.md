@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/18/2018
 ms.author: billmath
-ms.openlocfilehash: b9a0b9027bbead00300040186e453933b3a7f46b
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: d66f717f546271a5e5c3c49d6cbaef1c190d18d8
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="gdpr-compliance-and-azure-ad-connect-health"></a>GDPR megfelelőség és az Azure AD Connect Health 
 
@@ -35,6 +35,8 @@ Az Azure AD Connect Health beleesik a **adatfeldolgozó** GDPR besorolási kateg
 
 ## <a name="data-retention-policy"></a>Adatmegőrzési szabályzat
 Az Azure AD Connect Health nem-jelentések készítéséhez, hajtsa végre az analytics vagy 30 napon túl áttekintést adnak. Ezért az Azure AD Connect Health nem tárolja, feldolgozni, és bármely 30 napon túl adatok megőrzése mellett. Ez a kialakítás megfelel a GDPR szabályzat, a Microsoft adatvédelmi megfelelőségi szabályzatok és az adatmegőrzési házirendek az Azure AD. 
+
+Az aktív kiszolgáló **Állapotfigyelő szolgáltatás adatokat nem folyamatosan naprakész adatokat tartalmazzon** **hiba** riasztásai több mint 30 egymást követő nap javasoljuk, hogy a nem adatok elérte-e a Connect Health adott időtartam során. Ezek a kiszolgálók letiltásra kerül, és nem jelenik meg a Connect Health portálon. A kiszolgálók engedélyezéséhez el kell távolítania és [telepítse újra a health agent](active-directory-aadconnect-health-agent-install.md). Vegye figyelembe, hogy ez nem vonatkozik **figyelmeztetések** rendelkező ugyanolyan típusú riasztást. Figyelmeztetés azt jelzi, hogy részleges adat hiányzik a kiszolgálóról, figyelmeztetést kap. 
  
 ## <a name="disable-data-collection-and-monitoring-in-azure-ad-connect-health"></a>Tiltsa le az adatok gyűjtésével és az Azure AD Connect Health ellenőrzése
 Az Azure AD Connect Health lehetővé teszi, hogy állítsa le az adatgyűjtést az egyes figyelt kiszolgálókhoz vagy a figyelt szolgáltatás egy példánya. Például egyéni ADFS (Active Directory összevonási szolgáltatások) kiszolgálókat, amelyek figyelése az Azure AD Connect Health-gyűjtésének állíthatók le. Adatgyűjtés a teljes az AD FS-példányhoz az Azure AD Connect Health figyelt is leállíthatja. Ha Ön úgy dönt, hogy engedélyezi, a hozzájuk tartozó kiszolgálók törlődnek az Azure AD Connect Health portálon adatgyűjtés leállítása után. 
@@ -53,7 +55,7 @@ Ha kikapcsolja az adatok gyűjtésével és a figyelt a különálló kiszolgál
 - A figyelt szolgáltatás példányához tartozó minden adat törlődik a Microsoft Azure adatmegőrzési szabályzatának megfelelően.
 
 ### <a name="disable-data-collection-and-monitoring-for-a-monitored-server"></a>Tiltsa le az adatgyűjtést és a figyelt kiszolgáló figyelése
-Lásd: [kiszolgáló eltávolítása az Azure AD Connect Health](active-directory-aadconnect-health-operations.md#to-delete-a-server-from-the-azure-ad-connect-health-service).
+Lásd: [kiszolgáló eltávolítása az Azure AD Connect Health](active-directory-aadconnect-health-operations.md#delete-a-server-from-the-azure-ad-connect-health-service).
 
 ### <a name="disable-data-collection-and-monitoring-for-an-instance-of-a-monitored-service"></a>Adatgyűjtés és a figyelt szolgáltatás egy példánya figyelésének letiltása
 Lásd: [egy szolgáltatáspéldány eltávolítása az Azure AD Connect Health](active-directory-aadconnect-health-operations.md#delete-a-service-instance-from-azure-ad-connect-health-service).

@@ -8,11 +8,11 @@ ms.service: event-grid
 ms.topic: article
 ms.date: 01/30/2018
 ms.author: babanisa
-ms.openlocfilehash: 2b0039c7b90ef6f003641e096521f84885171c26
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 9d1f0eed28a1c1c6776ddba89480adcedfc599a5
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="azure-event-grid-event-schema"></a>Az Azure Event rács esemény séma
 
@@ -30,7 +30,7 @@ A következő példa bemutatja az összes esemény-közzétevők által használ
 [
   {
     "topic": string,
-    "subject": string,    
+    "subject": string,
     "id": string,
     "eventType": string,
     "eventTime": string,
@@ -72,7 +72,7 @@ Például az Azure Blob storage esemény közzé séma van:
   }
 ]
 ```
- 
+
 ## <a name="event-properties"></a>Esemény tulajdonságai
 
 Összes esemény a következő azonos legfelső szintű adatokat tartalmazzák:
@@ -92,7 +92,9 @@ Az objektum tulajdonságait, lásd: a következő Eseményforrás:
 
 * [Azure-előfizetések (műveletek)](event-schema-subscriptions.md)
 * [Blob Storage](event-schema-blob-storage.md)
-* [Az Event hubs](event-schema-event-hubs.md)
+* [Event Hubs](event-schema-event-hubs.md)
+* [Service Bus](event-schema-service-bus.md)
+* [IoT Hub](event-schema-iot-hub.md)
 * [Erőforráscsoportok (műveletek)](event-schema-resource-groups.md)
 
 Az esemény-közzétevő egyéni témakörök határozza meg, az objektum. A legfelső szintű adatok szabványos erőforrás által definiált eseményként is ugyanazokat a mezőket kell tartalmaznia. Események közzététele egyéni témakörökre mutatnak, gondolja át az események tárgya útválasztási és szűrés modellezési.

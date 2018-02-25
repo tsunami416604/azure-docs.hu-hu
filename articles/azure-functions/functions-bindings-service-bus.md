@@ -16,11 +16,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/01/2017
 ms.author: tdykstra
-ms.openlocfilehash: ed26abdb76083b9a18f79276ebf4294b4b6967b1
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 472d61debff016cfd3df79bae1f63e176c14849d
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Az Azure Functions az Azure Service Bus kötései
 
@@ -56,6 +56,8 @@ public static void Run(
 }
 ```
 
+Ebben a példában az Azure Functions verziójához 1.x; a 2.x [a hozzáférési jogok paraméter nincs megadva](#trigger---configuration).
+ 
 ### <a name="trigger---c-script-example"></a>Eseményindító - C# parancsfájl – példa
 
 A következő példa bemutatja egy Service Bus eseményindító kötelező egy *function.json* fájlt és egy [C# parancsfájl függvény](functions-reference-csharp.md) , amely a kötés használja. A függvény egy Service Bus-üzenetsor naplózza.
@@ -150,7 +152,9 @@ A [C# osztálykönyvtárakhoz](functions-dotnet-class-library.md), ha egy Servic
 
 * [ServiceBusTriggerAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/ServiceBusTriggerAttribute.cs)NuGet-csomagot a definiált [Microsoft.Azure.WebJobs.ServiceBus](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.ServiceBus)
 
-  Az attribútum konstruktora a várólista vagy a témakör és előfizetés neve vesz igénybe. A kapcsolat hozzáférési jogosultságokat is megadható. Ha nem ad meg hozzáférési jogosultságokat, az alapértelmezett érték `Manage`. A hozzáférési jogok beállítás kiválasztása esetén, tekintse meg a a [eseményindító - konfigurációs](#trigger---configuration) szakasz. Íme egy példa, amely megjeleníti a karakterlánc-paraméterrel használt attribútum:
+  Az attribútum konstruktora a várólista vagy a témakör és előfizetés neve vesz igénybe. Az Azure Functions verziójában 1.x, azt is megadhatja a kapcsolat hozzáférési jogosultsága. Ha nem ad meg hozzáférési jogosultságokat, az alapértelmezett érték `Manage`. További információkért lásd: a [eseményindító - konfigurációs](#trigger---configuration) szakasz.
+
+  Íme egy példa, amely megjeleníti a karakterlánc-paraméterrel használt attribútum:
 
   ```csharp
   [FunctionName("ServiceBusQueueTriggerCSharp")]                    
@@ -207,26 +211,27 @@ Az alábbi táblázat ismerteti a beállított kötés konfigurációs tulajdons
 
 |Function.JSON tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-|**típusa** | n/a | "ServiceBusTrigger" értékre kell állítani. Ez a tulajdonság rendszer automatikusan beállítja az eseményindítót hoz létre az Azure portálon.|
+|**Típusa** | n/a | "ServiceBusTrigger" értékre kell állítani. Ez a tulajdonság rendszer automatikusan beállítja az eseményindítót hoz létre az Azure portálon.|
 |**direction** | n/a | "A" értékre kell állítani. Ez a tulajdonság rendszer automatikusan beállítja az eseményindítót hoz létre az Azure portálon. |
 |**name** | n/a | Az üzenetsor vagy témakör üzenet funkciókódot jelölő neve. "$Return" értékre való hivatkozáshoz függvény visszatérési értéke. | 
 |**queueName**|**QueueName**|A várólista figyelése neve.  Csak akkor, ha a várólista nem a témakör a figyelés beállítása.
-|**topicName**|**TopicName**|A témakör a figyelheti neve. Állítsa be, csak akkor, ha a témakör a várólista nem figyelni.|
+|topicName|**topicName**|A témakör a figyelheti neve. Állítsa be, csak akkor, ha a témakör a várólista nem figyelni.|
 |**subscriptionName**|**SubscriptionName**|Az előfizetés figyelése neve. Állítsa be, csak akkor, ha a témakör a várólista nem figyelni.|
 |**connection**|**Kapcsolat**|A Service Bus kapcsolati karakterlánc az ehhez a kötéshez használandó tartalmazó alkalmazásbeállítás neve. Ha az alkalmazás neve "AzureWebJobs" kezdődik, megadhatja a név csak a maradékot. Ha például `connection` "MyServiceBus", hogy a Functions futtatókörnyezete keresi, hogy az alkalmazás neve "AzureWebJobsMyServiceBus." Ha nem adja meg `connection` üres, a Functions futtatókörnyezete használja az alapértelmezett Service Bus kapcsolati karakterlánc a "AzureWebJobsServiceBus" nevű Alkalmazásbeállítás.<br><br>Szerezzen be egy kapcsolati karakterláncot, kövesse a lépéseket látható [a felügyeleti hitelesítő adatok beszerzése](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md#obtain-the-management-credentials). A kapcsolati karakterláncnak kell lennie, a Service Bus-névtér, nem kizárólagosan az adott üzenetsor vagy témakör. |
-|**accessRights**|**Access (Hozzáférés)**|Hozzáférési jogosultsága a kapcsolódási karakterláncban. Lehetséges értékek a következők `manage` és `listen`. Az alapértelmezett érték `manage`, amely azt jelzi, hogy a `connection` rendelkezik a **kezelése** engedéllyel. Ha használja a kapcsolati karakterláncot, amely nem rendelkezik a **kezelése** engedély, `accessRights` "figyelésére". Ellenkező esetben a futásidejű meghiúsulhat igénylő műveletek végrehajtását megkísérlő funkciók jogosultságaik kezelését.|
+|**accessRights**|**Access (Hozzáférés)**|Hozzáférési jogosultsága a kapcsolódási karakterláncban. Lehetséges értékek a következők `manage` és `listen`. Az alapértelmezett érték `manage`, amely azt jelzi, hogy a `connection` rendelkezik a **kezelése** engedéllyel. Ha használja a kapcsolati karakterláncot, amely nem rendelkezik a **kezelése** engedély, `accessRights` "figyelésére". Ellenkező esetben a futásidejű meghiúsulhat igénylő műveletek végrehajtását megkísérlő funkciók jogosultságaik kezelését. Az Azure Functions verziójában 2.x, ez a tulajdonság nem érhető el, mert a Storage szolgáltatás SDK legújabb verziója nem támogatja a működés felügyelete.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 ## <a name="trigger---usage"></a>Eseményindító - használat
 
-C# és C# a parancsfájlt, nyissa meg az üzenetsor vagy témakör üzenet metódusparaméter használatával `string paramName`. A C# parancsfájl `paramName` érték szerepel a `name` tulajdonsága *function.json*. A következő típusú helyett használhatja `string`:
+A C# és C# a parancsfájlt a következő paraméter esetében is használhatja, az üzenetsor vagy témakör üzenet:
 
-* `byte[]`-Bináris adatoknál lehet hasznos.
+* `string` -Ha az üzenet szövegét.
+* `byte[]` -Bináris adatoknál lehet hasznos.
 * Egyéni típusa: Ha az üzenet tartalmaz JSON, az Azure Functions próbálja meg a JSON-adatok deszerializálása.
-* `BrokeredMessage`-Lehetővé teszi a deszerializált üzenetet a [BrokeredMessage.GetBody<T>()](https://msdn.microsoft.com/library/hh144211.aspx) metódust.
+* `BrokeredMessage` -Lehetővé teszi a deszerializált üzenetet a [BrokeredMessage.GetBody<T>()](https://msdn.microsoft.com/library/hh144211.aspx) metódust.
 
-A JavaScript, hozzáférhetnek az üzenetsor vagy témakör üzenet használatával `context.bindings.<name>`. `<name>`az érték szerepel a `name` tulajdonsága *function.json*. A Service Bus message átad egy karakterlánc- vagy JSON-objektum a funkciót a.
+A JavaScript, hozzáférhetnek az üzenetsor vagy témakör üzenet használatával `context.bindings.<name from function.json>`. A Service Bus message átad egy karakterlánc- vagy JSON-objektum a funkciót a.
 
 ## <a name="trigger---poison-messages"></a>Eseményindító - elhalt üzenetek
 
@@ -445,29 +450,32 @@ Az alábbi táblázat ismerteti a beállított kötés konfigurációs tulajdons
 
 |Function.JSON tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-|**típusa** | n/a | "A Szolgáltatásbusz" értékre kell állítani. Ez a tulajdonság rendszer automatikusan beállítja az eseményindítót hoz létre az Azure portálon.|
+|**Típusa** | n/a | "A Szolgáltatásbusz" értékre kell állítani. Ez a tulajdonság rendszer automatikusan beállítja az eseményindítót hoz létre az Azure portálon.|
 |**direction** | n/a | "Ki" értékre kell állítani. Ez a tulajdonság rendszer automatikusan beállítja az eseményindítót hoz létre az Azure portálon. |
 |**name** | n/a | A várólista vagy funkciókódot témakörében jelölő neve. "$Return" értékre való hivatkozáshoz függvény visszatérési értéke. | 
 |**queueName**|**QueueName**|A várólista nevét.  Állítsa be, csak akkor, ha üzenetküldésre várólista, a témakör a nem.
-|**topicName**|**TopicName**|A témakör a figyelheti neve. Csak akkor, ha üzenetküldésre témakör, a várólista nem beállítása.|
+|topicName|**topicName**|A témakör a figyelheti neve. Csak akkor, ha üzenetküldésre témakör, a várólista nem beállítása.|
 |**subscriptionName**|**SubscriptionName**|Az előfizetés figyelése neve. Csak akkor, ha üzenetküldésre témakör, a várólista nem beállítása.|
 |**connection**|**Kapcsolat**|A Service Bus kapcsolati karakterlánc az ehhez a kötéshez használandó tartalmazó alkalmazásbeállítás neve. Ha az alkalmazás neve "AzureWebJobs" kezdődik, megadhatja a név csak a maradékot. Ha például `connection` "MyServiceBus", hogy a Functions futtatókörnyezete keresi, hogy az alkalmazás neve "AzureWebJobsMyServiceBus." Ha nem adja meg `connection` üres, a Functions futtatókörnyezete használja az alapértelmezett Service Bus kapcsolati karakterlánc a "AzureWebJobsServiceBus" nevű Alkalmazásbeállítás.<br><br>Szerezzen be egy kapcsolati karakterláncot, kövesse a lépéseket látható [a felügyeleti hitelesítő adatok beszerzése](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md#obtain-the-management-credentials). A kapcsolati karakterláncnak kell lennie, a Service Bus-névtér, nem kizárólagosan az adott üzenetsor vagy témakör.|
-|**accessRights**|**Access (Hozzáférés)** |Hozzáférési jogosultsága a kapcsolódási karakterláncban. Lehetséges értékek a következők: "kezelése" és "figyelő". Az alapértelmezett érték a "kezelése", ami azt jelenti, hogy rendelkezik-e a kapcsolat **kezelése** engedélyek. Ha használja a kapcsolati karakterláncot, amely nem rendelkezik **kezelése** engedélyek beállítása `accessRights` "figyelésére". Ellenkező esetben a futásidejű meghiúsulhat igénylő műveletek végrehajtását megkísérlő funkciók jogosultságaik kezelését.|
+|**accessRights**|**Access (Hozzáférés)**|Hozzáférési jogosultsága a kapcsolódási karakterláncban. Lehetséges értékek a következők `manage` és `listen`. Az alapértelmezett érték `manage`, amely azt jelzi, hogy a `connection` rendelkezik a **kezelése** engedéllyel. Ha használja a kapcsolati karakterláncot, amely nem rendelkezik a **kezelése** engedély, `accessRights` "figyelésére". Ellenkező esetben a futásidejű meghiúsulhat igénylő műveletek végrehajtását megkísérlő funkciók jogosultságaik kezelését. Az Azure Functions verziójában 2.x, ez a tulajdonság nem érhető el, mert a Storage szolgáltatás SDK legújabb verziója nem támogatja a működés felügyelete.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 ## <a name="output---usage"></a>Kimeneti - használat
 
-C# és C# a parancsfájlt, nyissa meg az üzenetsor vagy témakör metódusparaméter használatával `out string paramName`. A C# parancsfájl `paramName` érték szerepel a `name` tulajdonsága *function.json*. A következő típusú paraméter használhatja:
+Az Azure Functions 1.x, a futtatókörnyezet a várólista létrehozása, ha még nem létezik, és meg van `accessRights` való `manage`. Funkciók verziójában 2.x, az üzenetsor vagy témakör már léteznie kell; Ha megadja az üzenetsor vagy témakör, amely nem létezik, a szolgáltatás sikertelen lesz. 
 
-* `out T paramName` - `T`bármely JSON-szerializálható típusú lehet. Ha a paraméter értéke nem null, ha kilép, a függvény, funkciók az üzenet null objektumot hoz létre.
-* `out string`-Ha a paraméter értéke nem null, amikor a függvény kilép, a funkciók nem hoz létre egy üzenetet.
-* `out byte[]`-Ha a paraméter értéke nem null, amikor a függvény kilép, a funkciók nem hoz létre egy üzenetet.
-* `out BrokeredMessage`-Ha a paraméter értéke nem null, amikor a függvény kilép, a funkciók nem hoz létre egy üzenetet.
+A C# és C# a parancsfájlt a következő paraméter típusok használhatók a kimeneti kötés:
 
-A több üzenet létrehozása a C# vagy C# parancsfájl függvény, használhat `ICollector<T>` vagy `IAsyncCollector<T>`. Egy üzenet jön létre, ha meghívja a `Add` metódust.
+* `out T paramName` - `T` bármely JSON-szerializálható típusú lehet. Ha a paraméter értéke nem null, ha kilép, a függvény, funkciók az üzenet null objektumot hoz létre.
+* `out string` -Ha a paraméter értéke nem null, amikor a függvény kilép, a funkciók nem hoz létre egy üzenetet.
+* `out byte[]` -Ha a paraméter értéke nem null, amikor a függvény kilép, a funkciók nem hoz létre egy üzenetet.
+* `out BrokeredMessage` -Ha a paraméter értéke nem null, amikor a függvény kilép, a funkciók nem hoz létre egy üzenetet.
+* `ICollector<T>` vagy `IAsyncCollector<T>` – több üzenetet létrehozásához. Egy üzenet jön létre, ha meghívja a `Add` metódust.
 
-JavaScript, nyissa meg az üzenetsor vagy témakör segítségével `context.bindings.<name>`. `<name>`az érték szerepel a `name` tulajdonsága *function.json*. Rendelhet egy karakterlánc, egy bájttömböt vagy egy Javascript-objektum (deszerializálni a JSON-ba) `context.binding.<name>`.
+Aszinkron funkciók, használja a visszatérési értéket vagy `IAsyncCollector` ahelyett, hogy egy `out` paraméter.
+
+JavaScript, nyissa meg az üzenetsor vagy témakör segítségével `context.bindings.<name from function.json>`. Rendelhet egy karakterlánc, egy bájttömböt vagy egy Javascript-objektum (deszerializálni a JSON-ba) `context.binding.<name>`.
 
 ## <a name="exceptions-and-return-codes"></a>Kivételeket és a visszatérési kódok
 

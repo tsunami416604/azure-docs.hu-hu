@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 11/21/2017
+ms.date: 02/22/2018
 ms.author: asgang
-ms.openlocfilehash: 7a8cd09731ccdf7ad7385f7e707125c3902ebdf2
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 9e0c602646009b20c8d4f8a29d55b7f44a089131
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="troubleshoot-on-premises-vmwarephysical-server-replication-issues"></a>Helyszíni VMware vagy fizikai kiszolgáló replikációs problémák elhárítása
 Specifikus hibaüzenet jelenhet meg, ha a VMware virtuális gépek vagy fizikai kiszolgálók Azure Site Recovery segítségével. Ez a cikk részletesen néhány, a hibát, és azok megoldását hibaelhárítási Gyakori hibaüzenetek.
@@ -83,11 +83,11 @@ Ha nem lehet csatlakozni, majd ellenőrizze, ha a hozzáférési probléma okozz
 
   `*.backup.windowsazure.com:` replikációs adatátvitelhez és vezényléshez
 
-  `*.blob.core.windows.net:`A tárfiók, hogy a tároló replikált adatok elérésére használt
+  `*.blob.core.windows.net:` A tárfiók, hogy a tároló replikált adatok elérésére használt
 
   `*.hypervrecoverymanager.windowsazure.com:` replikációkezelési műveletekhez és vezényléshez
 
-  `time.nist.gov`és `time.windows.com`: rendszer és a globális időhöz közötti időszinkronizálást ellenőrizhető.
+  `time.nist.gov` és `time.windows.com`: rendszer és a globális időhöz közötti időszinkronizálást ellenőrizhető.
 
 URL-címéből **Azure Government felhő**:
 
@@ -115,5 +115,5 @@ Nyissa meg azt, majd kattintson a művelet > tulajdonságainak módosítása. A 
 
 * **Ellenőrizze, ha a sávszélesség-szabályozás nem korlátozott folyamatkiszolgáló**: növelje a sávszélességet, és ellenőrizze, hogy a probléma továbbra is léteznek.
 
-##<a name="next-steps"></a>Következő lépések
+##<a name="next-steps"></a>További lépések
 Ha további segítségre van szüksége, majd indítsa el a lekérdezés [Azure Site Recovery fórum](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr). Egy aktív közösségi van, és a mérnökök egyik fog tudni segíteni.

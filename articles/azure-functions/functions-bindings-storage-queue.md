@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 10/23/2017
 ms.author: glenga
-ms.openlocfilehash: ce28b6eea9843ce423b57e539a844b4dacb552aa
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: e2f9c75ba6e43f93aeb742b9eceebf846ec85cbf
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="azure-queue-storage-bindings-for-azure-functions"></a>Az Azure Functions az Azure várólista tárolási kötések
 
@@ -213,7 +213,7 @@ Az alábbi táblázat ismerteti a beállított kötés konfigurációs tulajdons
 
 |Function.JSON tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-|**típusa** | n/a| meg kell `queueTrigger`. Ez a tulajdonság rendszer automatikusan beállítja az eseményindítót hoz létre az Azure portálon.|
+|**Típusa** | n/a| meg kell `queueTrigger`. Ez a tulajdonság rendszer automatikusan beállítja az eseményindítót hoz létre az Azure portálon.|
 |**direction**| n/a | Az a *function.json* csak fájlt. meg kell `in`. Ez a tulajdonság rendszer automatikusan beállítja az eseményindítót hoz létre az Azure portálon. |
 |**name** | n/a |A várólista a funkciókódot jelölő neve.  | 
 |**queueName** | **QueueName**| A várólista, és kérdezze le a neve. | 
@@ -234,16 +234,16 @@ A JavaScript, használjon `context.bindings.<name>` a várólista elem tartalom 
 
 ## <a name="trigger---message-metadata"></a>Eseményindító - üzenet metaadatok
 
-A várólista eseményindító biztosít több metaadat-tulajdonságot. Ezeket a tulajdonságokat meg más kötésekben kötési kifejezés részeként vagy a kód paramétereiben használható. Az értékek rendelkezik a azonos szemantikákkal, [CloudQueueMessage](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.queue.cloudqueuemessage).
+A várólista eseményindító biztosít több [metaadat-tulajdonságainak](functions-triggers-bindings.md#binding-expressions---trigger-metadata). Ezeket a tulajdonságokat meg más kötésekben kötési kifejezés részeként vagy a kód paramétereiben használható. Az értékek rendelkezik a azonos szemantikákkal, [CloudQueueMessage](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.queue.cloudqueuemessage).
 
 |Tulajdonság|Típus|Leírás|
 |--------|----|-----------|
 |`QueueTrigger`|`string`|Várólista hasznos (ha érvényes karakterlánc). A várólista hibaüzenet karakterláncként, hasznos `QueueTrigger` nevű változó értéke a `name` tulajdonság *function.json*.|
 |`DequeueCount`|`int`|Ez az üzenet várólistából nincs kivéve. eléréseinek a száma.|
-|`ExpirationTime`|`DateTimeOffset?`|Az üzenet lejárati ideje.|
+|`ExpirationTime`|`DateTimeOffset`|Az üzenet lejárati ideje.|
 |`Id`|`string`|Várólista azonosító.|
-|`InsertionTime`|`DateTimeOffset?`|Az üzenet a várólistához lett adva időpontja.|
-|`NextVisibleTime`|`DateTimeOffset?`|Az üzenet mellett látható lesz ideje.|
+|`InsertionTime`|`DateTimeOffset`|Az üzenet a várólistához lett adva időpontja.|
+|`NextVisibleTime`|`DateTimeOffset`|Az üzenet mellett látható lesz ideje.|
 |`PopReceipt`|`string`|A pop visszaigazolás.|
 
 ## <a name="trigger---poison-messages"></a>Eseményindító - elhalt üzenetek
@@ -251,6 +251,18 @@ A várólista eseményindító biztosít több metaadat-tulajdonságot. Ezeket a
 Ha nem sikerül egy várólista funkció, az Azure Functions újrapróbálkozik a függvény legfeljebb ötször egy adott várólistában üzenet, beleértve az első próbálkozás. Minden öt kísérlet sikertelen, ha a functions futtatókörnyezete ad hozzá egy üzenet nevű várólista  *&lt;originalqueuename >-poison*. Írhat egy folyamat üzenetek működnek, mint az elhalt üzenetsorból naplózásukhoz, vagy értesítést küld, hogy manuális beavatkozást van szükség.
 
 Az elhalt üzenetek manuálisan kezeléséhez, ellenőrizze a [dequeueCount](#trigger---message-metadata) , az üzenetsorban lévő üzenetet.
+
+## <a name="trigger---polling-algorithm"></a>Eseményindító - lekérdezési algoritmus
+
+A várólista eseményindító bevezet egy véletlenszerű exponenciális vissza az indító algoritmus üresjárati-várólista tárolási tranzakciós költségeket a lekérdezési hatásainak csökkentése érdekében.  Ha üzenet található, a futtatókörnyezet két másodpercet vár, és ellenőrzi, egy másik üzenet; Ha egyetlen üzenet sem található, azt, mielőtt újra próbálkozna körülbelül négy másodpercet vár. A várakozási idő után további sikertelenül megpróbálják a várólista üzenet jelenik meg, folyamatosan nő, nem éri a maximális várakozási idő, alapértelmezett értéke, egy perc alatt. A maximális várakozási idő az állíthatók be a `maxPollingInterval` tulajdonságot a [host.json fájl](functions-host-json.md#queues).
+
+## <a name="trigger---concurrency"></a>Eseményindító - feldolgozási
+
+Ha több várakozó üzenetsor-üzeneteket, a várólista eseményindító lekéri az üzenetkötegek, és elindítja a függvény példányokat párhuzamosan dolgozza fel őket. Alapértelmezés szerint a Köteg mérete 16. Amikor a feldolgozott számát 8 megkapja, a futtatókörnyezet egy másik köteg lekérdezi, és megkezdi az üzenetek feldolgozását. Így a maximális száma párhuzamos éppen feldolgozott üzeneteinek másodpercenkénti egy virtuális gépen (VM) függvény 24. Ezt a határt külön vonatkozik minden várólista-eseményindítóval aktivált függvény minden egyes virtuális gépen. A függvény alkalmazást több virtuális gépek méretezze át, ha egyes virtuális gépek eseményindítók várja meg, és megkísérli futtatni a funkciók. Például ha egy függvény app 3 virtuális gépek méretezze át, egy várólista-eseményindítóval aktivált függvény az egyidejű példányok maximális száma alapértelmezett 72.
+
+A köteg méretének és egy új kötegelt beolvasásakor küszöbértéke is szeretné tenni a konfigurálását a [host.json fájl](functions-host-json.md#queues). Ha azt szeretné, minimálisra csökkentése érdekében a várólista-eseményindítókkal aktivált függvényeket függvény alkalmazásban párhuzamos futtatáshoz, beállíthatja a köteg méretének 1. Ez a beállítás megszünteti az egyidejűségi csak, feltéve, hogy a függvény app futó egyetlen virtuális gép (VM). 
+
+A várólista eseményindító automatikusan megakadályozza, hogy egy függvény feldolgozási sor üzenetet többször; funkciók nem kell az idempotent kell írni.
 
 ## <a name="trigger---hostjson-properties"></a>Eseményindító - host.json tulajdonságai
 
@@ -435,7 +447,7 @@ Az alábbi táblázat ismerteti a beállított kötés konfigurációs tulajdons
 
 |Function.JSON tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-|**típusa** | n/a | meg kell `queue`. Ez a tulajdonság rendszer automatikusan beállítja az eseményindítót hoz létre az Azure portálon.|
+|**Típusa** | n/a | meg kell `queue`. Ez a tulajdonság rendszer automatikusan beállítja az eseményindítót hoz létre az Azure portálon.|
 |**direction** | n/a | meg kell `out`. Ez a tulajdonság rendszer automatikusan beállítja az eseményindítót hoz létre az Azure portálon. |
 |**name** | n/a | A várólista a funkciókódot jelölő neve. Beállítása `$return` hivatkozni, a függvény visszatérési értéke.| 
 |**queueName** |**QueueName** | A várólista neve. | 

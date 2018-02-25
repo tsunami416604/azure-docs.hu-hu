@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 01/12/2018
+ms.date: 02/22/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 49e367d4bf1ae2e060b77b0259771403c81a56d6
-ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
+ms.openlocfilehash: 72c46efdb5ccddde59660d49d323d79de8d87050
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/13/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="set-up-gpu-drivers-for-n-series-vms-running-windows-server"></a>Windows Server rendszert futtató N sorozatú virtuális gépek GPU illesztőprogramok beállítása
 A Windows Server 2016 vagy a Windows Server 2012 R2 rendszert futtató Azure N sorozatú virtuális gépek GPU lehetőségeinek kihasználásához, telepítse a támogatott NVIDIA video-illesztőprogramok. Ez a cikk lépéseit illesztőprogram beállítása az N-sorozatú virtuális gép telepítése után. Telepítési információk illesztőprogram érhető el is [Linux virtuális gépek](../linux/n-series-driver-setup.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
@@ -57,10 +57,6 @@ A GPU eszköz állapotát lekérdező, futtassa a [nvidia-smi](https://developer
 ## <a name="rdma-network-connectivity"></a>RDMA hálózati kapcsolat
 
 RDMA hálózati kapcsolat engedélyezhető RDMA N sorozatú virtuális gépek engedélyezve van, például az azonos rendelkezésre állási készlet NC24r telepítve. Telepítse a Windows hálózati illesztőprogramokat, amelyek lehetővé teszik az RDMA-kapcsolatot a HpcVmDrivers bővítmény szerepelnie kell. A Virtuálisgép-bővítmény adhat hozzá egy RDMA-kompatibilis N sorozatú virtuális gépre [Azure PowerShell](/powershell/azure/overview) az Azure Resource Manager parancsmagok.
-
-> [!NOTE]
-> Jelenleg csak Windows Server 2012 R2 támogatja az RDMA hálózati N sorozatú virtuális gépeken.
-> 
 
 A legújabb 1.1-es verziójának telepítése HpcVMDrivers bővítmény egy meglévő RDMA-kompatibilis virtuális gépen az USA nyugati régiója régióban myVM nevű virtuális:
   ```PowerShell

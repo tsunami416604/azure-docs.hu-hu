@@ -15,11 +15,11 @@ ms.devlang:
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: rafats
-ms.openlocfilehash: 3fa321a3354be3eb7dce2ff886cd40c6c9f1ebbb
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: e0940ab11f8840ffa2dbdbfd739340f8af5caf51
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="working-with-the-change-feed-support-in-azure-cosmos-db"></a>A módosítás adatcsatorna-támogatás az Azure Cosmos Adatbázisba használata
 
@@ -70,7 +70,6 @@ Például a hírcsatorna módosítását, feladatokat végezheti el a következ�
 
 * Frissítse a gyorsítótárat, search-index vagy adatraktár Azure Cosmos DB-ben tárolt adatokkal.
 * Alkalmazásszintű adatok rétegezési és archiválási alkalmazására, ez azt jelenti, hogy "gyakran használt adatokkal" tárolása Azure Cosmos DB és elavulnak "ritkán használt adatok", a [Azure Blob Storage](../storage/common/storage-introduction.md) vagy [Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md).
-* Kötegelt elemzés megvalósítása az adatok használatával [Apache Hadoop](run-hadoop-with-hdinsight.md).
 * Egy másik particionálási sémát rendelkező Azure Cosmos DB fiókot nulla várakozási-ideje áttelepítés végrehajtható.
 * Alkalmazzon [lambda folyamatok Azure](https://blogs.technet.microsoft.com/msuspartner/2016/01/27/azure-partner-community-big-data-advanced-analytics-and-lambda-architecture/) rendelkező Azure Cosmos DB. Azure Cosmos-adatbázis, amely kezeli az adatfeldolgozást és a lekérdezés, és az alacsony TCO lambda architektúrák megvalósítása adatbázis méretezhető megoldást kínál. 
 * Kapni az eszközök, érzékelőket, infrastruktúra és az alkalmazások esemény adatainak tárolásához és feldolgozásához ezeket az eseményeket valós idejű [Azure Stream Analytics](../stream-analytics/stream-analytics-documentdb-output.md), [alatt futó Apache Storm](../hdinsight/storm/apache-storm-overview.md), vagy [Apache Spark](../hdinsight/spark/apache-spark-overview.md). 

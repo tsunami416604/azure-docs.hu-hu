@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/10/2017
+ms.date: 02/23/2018
 ms.author: daveba
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: e4d143b4937a1f6c1c21783ae357dbe617816e73
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: d5d704dac58d65dd7d62bc3eca400f9541714d5d
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="redirect-hardcoded-links-for-apps-published-with-azure-ad-application-proxy"></a>Az Azure AD alkalmazásproxy közzétett alkalmazásokhoz szoftveresen kötött hivatkozások átirányítása
 
@@ -27,7 +27,7 @@ Az Azure AD-alkalmazásproxy elérhetővé teszi a helyszíni alkalmazások a t�
 
 Győződjön meg arról, hogy hivatkozások azonos belüli és a vállalati hálózaton kívüli működik a legjobban a külső URL-címeket az alkalmazások azonos a belső URL-címek konfigurálásához. Használjon [egyéni tartományok](active-directory-application-proxy-custom-domains.md) a külső URL-címeket kell rendelkeznie a vállalati tartomány neve helyett az alapértelmezett alkalmazástartomány-proxy konfigurálása.
 
-Ha a bérlő nem használhat egyéni tartományok, a hivatkozás fordítási szolgáltatást az alkalmazásproxy tartja a hivatkozásokat, függetlenül attól, hol találhatók a felhasználók működik. Ha alkalmazásokat, majd közvetlenül a belső végpontok vagy a portok, a közzétett alkalmazás külső Proxy URL belső URL-is leképezheti. Ha engedélyezve van a hivatkozás fordítása, és a közzétett belső hivatkozások használatával HTML, CSS, és válassza a JavaScript-címkék alkalmazásproxy történő. Majd az alkalmazásproxy fordítja le őket, hogy a felhasználók beolvasása folyamatos élményt.
+Ha a bérlő nem használhat egyéni tartományok, a hivatkozás fordítási szolgáltatást az alkalmazásproxy tartja a hivatkozásokat, függetlenül attól, hol találhatók a felhasználók működik. Ha alkalmazásokat, majd közvetlenül a belső végpontok vagy a portok, a közzétett alkalmazás külső Proxy URL belső URL-is leképezheti. Ha hivatkozás fordítási engedélyezve van, és a közzétett belső hivatkozások használatával HTML- és CSS történő alkalmazásproxy, az alkalmazásproxy fordítja le azokat, hogy a felhasználók folyamatos élményt beolvasása.
 
 >[!NOTE]
 >A hivatkozás fordítási van a bérlők számára, hogy valamilyen okból nem használható egyéni tartományok azonos belső és külső URL-címéből alkalmazások rendelkeznek. Ez a funkció engedélyezése előtt tekintse meg, ha [egyéni tartományok az Azure AD alkalmazásproxy](active-directory-application-proxy-custom-domains.md) akkor is képes működni.
@@ -64,7 +64,7 @@ Ha engedélyezi az előnyöket alkalmazás fordítása hivatkozás, a költsége
 A jobb teljesítmény és biztonság érdekében egyes hivatkozások nem szerepelnek:
 
 - Hivatkozások nem kód címkék belül. 
-- Hivatkozások nem HTML, CSS vagy JavaScript. 
+- Nincs a HTML- vagy CSS hivatkozásokat. 
 - Belső hivatkozások megnyitása más. E-mail vagy azonnali üzenet keresztül küldött, vagy más dokumentumban szereplő hivatkozások nem fordítható le. A felhasználók a külső URL-címre ugrás tudnia kell.
 
 E helyzetek egyikében támogatásához szükséges, ha használni azonos belső és külső URL-címek hivatkozás fordítási helyett.  
@@ -84,7 +84,7 @@ Most amikor a felhasználók hozzáférése az alkalmazáshoz, a proxy automatik
 
 ## <a name="send-feedback"></a>Visszajelzés küldése
 
-Azt szeretnénk, hogy a működnek az alkalmazások a szolgáltatás segítségével. Azt több mint 30 címkék keresse meg a HTML-vagy CSS és is figyelembe véve, amely JavaScript esetekben támogatásához. Ha rendelkezik, amelyek nem szerepelnek alatt létrehozott hivatkozások példát, küldjön egy kódrészletet a [Application Proxy visszajelzés](mailto:aadapfeedback@microsoft.com). 
+Azt szeretnénk, hogy a működnek az alkalmazások a szolgáltatás segítségével. A HTML-vagy CSS azt keresés több mint 30 címkék. Ha rendelkezik, amelyek nem szerepelnek alatt létrehozott hivatkozások példát, küldjön egy kódrészletet a [Application Proxy visszajelzés](mailto:aadapfeedback@microsoft.com). 
 
 ## <a name="next-steps"></a>További lépések
 [Egyéni tartományok használata az Azure AD-alkalmazásproxy](active-directory-application-proxy-custom-domains.md) szeretné, hogy a belső és külső URL-CÍMÉRE

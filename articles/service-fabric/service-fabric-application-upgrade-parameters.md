@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 8/9/2017
+ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: c12c4fc6cabd695101abf922eba77b9cd3ee00fa
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 4dafedb3fef821cd2562cf47937d034fdc59d92e
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="application-upgrade-parameters"></a>Alkalmazásfrissítési paraméterek
 Ez a cikk ismerteti a különböző paraméterek, amelyek érvényesek az Azure Service Fabric-alkalmazás frissítése során. A paraméternek számít a nevét és az alkalmazás verziója. Az időtúllépések és állapot-ellenőrzést, a frissítés során alkalmazott szabályozó forgatógombját, és azok adja meg a házirendekben, amelyek kell alkalmazni, ha egy frissítés sikertelen lesz.

@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 10/30/2017
+ms.date: 02/22/2018
 ms.author: raynew
-ms.openlocfilehash: da120d8e325867eaf9eb8b9be1ae8d9152db54c4
-ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
+ms.openlocfilehash: 256bad0c3c06182b6be2b647ae27db90fe69724d
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="support-matrix-for-replication-to-a-secondary-site-with-azure-site-recovery"></a>A replikálás az Azure Site Recovery egy másodlagos hely támogatási mátrix
 
@@ -35,7 +35,7 @@ Ez a cikk összefoglalja, hogy mi támogatja, ha használja a [Azure Site Recove
 
   
 
-## <a name="host-servers"></a>Kiszolgálók
+## <a name="host-servers"></a>Host servers
 
 **Üzembe helyezés** | **Támogatás**
 --- | ---
@@ -55,7 +55,7 @@ A következő táblázat összefoglalja az operációs rendszer támogatása gé
 
 A következő tárolási csak Linux gépek replikálhatja:
 
-- Fájlrendszer (EXT3, ETX4, ReiserFS, XFS).
+- File system (EXT3, ETX4, ReiserFS, XFS).
 - A többutas szoftver-eszköz leképező.
 - Kötetkezelő (LVM2).
 - HP CCISS vezérlő tároló fizikai kiszolgálók nem támogatottak.
@@ -69,7 +69,7 @@ A következő tárolási csak Linux gépek replikálhatja:
 --- | --- | ---
 A hálózati adapterek összevonása | Igen | Igen
 VLAN | Igen | Igen
-IPv4-alapú | Igen | Igen
+IPv4 | Igen | Igen
 IPv6 | Nem | Nem
 
 ### <a name="guest-vms"></a>Vendég virtuális gépek
@@ -77,21 +77,21 @@ IPv6 | Nem | Nem
 **Konfigurálás** | **VMware vagy fizikai kiszolgáló** | **A Hyper-V (a VMM-mel)**
 --- | --- | ---
 A hálózati adapterek összevonása | Nem | Nem
-IPv4-alapú | Igen | Igen
+IPv4 | Igen | Igen
 IPv6 | Nem | Nem
-Statikus IP-címet (Windows) | Igen | Igen
+Static IP (Windows) | Igen | Igen
 Statikus IP-címet (Linux) | Igen | Igen
-Több hálózati Adapterrel | Igen | Igen
+Multi-NIC | Igen | Igen
 
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>Tárolás
 
 ### <a name="host-storage"></a>Tárolók
 
 **Tárhely (gazdagép)** | **VMware vagy fizikai kiszolgáló** | **A Hyper-V (a VMM-mel)**
 --- | --- | ---
-NFS | Igen | N/A
-SMB 3.0 | N/A | Igen
+NFS | Igen | –
+SMB 3.0 | – | Igen
 SAN (ISCSI) | Igen | Igen
 (MPIO) többutas | Igen | Igen
 
@@ -99,21 +99,21 @@ SAN (ISCSI) | Igen | Igen
 
 **Konfigurálás** | **VMware vagy fizikai kiszolgáló** | **A Hyper-V (a VMM-mel)**
 --- | --- | ---
-VMDK-FÁJL | Igen | N/A
-VHD/VHDX | N/A | Igen (legfeljebb 16 lemez)
-Generációból 2 virtuális gép | N/A | Igen
+VMDK | Igen | –
+VHD/VHDX | – | Igen (legfeljebb 16 lemez)
+Generációból 2 virtuális gép | – | Igen
 Megosztott fürtlemez | Igen  | Nem
 Titkosított lemez | Nem | Nem
-UEFI| Igen | N/A
+UEFI| Igen | –
 NFS | Nem | Nem
 SMB 3.0 | Nem | Nem
-RDM | Igen | N/A
+RDM | Igen | –
 > 1 TB méretű lemez | Igen | Igen
 A csíkozott > 1 TB-os kötet<br/><br/> LVM | Igen | Igen
 Tárolóhelyek | Nem | Igen
 Gyakran használt adatok hozzáadása lemez | Igen | Nem
 Lemez kizárása | Igen | Igen
-(MPIO) többutas | N/A | Igen
+(MPIO) többutas | – | Igen
 
 ## <a name="vaults"></a>Tárolók
 
@@ -124,13 +124,13 @@ Tárolási, hálózati, Azure virtuális gépek között (belül vagy között, 
 
 ## <a name="provider-and-agent"></a>Provider és Agent
 
-**Name (Név)** | **Leírás** | **Legújabb verzió** | **Részletek**
+**Name (Név)** | **Leírás** | **legújabb verzió** | **Részletek**
 --- | --- | --- | --- | ---
 **Az Azure Site Recovery Providert** | Koordinálja a helyszíni kiszolgálók és az Azure közötti kommunikáció <br/><br/> A helyszíni VMM-kiszolgálókon, vagy a Hyper-V kiszolgálókon telepítve, ha nincs VMM-kiszolgáló | 5.1.19 ([elérhető portálról](http://aka.ms/downloaddra)) | [Legújabb funkcióit és javításokat](https://support.microsoft.com/kb/3155002)
-**Mobilitási szolgáltatás** | Koordinálja a helyszíni VMware Server vagy fizikai kiszolgálók és a másodlagos hely közötti replikálás<br/><br/> VMware virtuális gép vagy fizikai kiszolgálók replikálni kívánt telepítve  | N/A (elérhető a portál) | N/A
+**Mobilitási szolgáltatás** | Koordinálja a helyszíni VMware Server vagy fizikai kiszolgálók és a másodlagos hely közötti replikálás<br/><br/> VMware virtuális gép vagy fizikai kiszolgálók replikálni kívánt telepítve  | N/A (elérhető a portál) | –
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Hyper-V virtuális gépek VMM-felhőkben replikálása egy másodlagos helyre](tutorial-vmm-to-vmm.md)
 - [VMware-alapú virtuális gépek és fizikai kiszolgálók replikálása másodlagos helyre](tutorial-vmware-to-vmware.md)

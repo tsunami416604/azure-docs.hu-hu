@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/14/2017
 ms.author: ericrad
-ms.openlocfilehash: 79cbdb4d7c11fac0ca27758e92b44799ce0c1a3e
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
-ms.translationtype: HT
+ms.openlocfilehash: 1f4c542c179f196e61457ddba6b9dfe76dd1dc79
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="azure-metadata-service-scheduled-events-for-linux-vms"></a>Azure metaadat-szolgáltatás: Linux virtuális gépek ütemezett eseménye
 
@@ -27,7 +27,8 @@ ms.lasthandoff: 02/23/2018
 
 További információk a Windows az ütemezett eseményekről: [ütemezett eseményeket a Windows virtuális gépek](../windows/scheduled-events.md).
 
-[!IMPORTANT] Általában ütemezett események érhető el az összes Azure-régió. Lásd: [verzióját és régiónkénti elérhetőség](#version-and-region-availability) legújabb kiadás információt.
+> [!Note] 
+> Általában ütemezett események érhető el az összes Azure-régió. Lásd: [verzióját és régiónkénti elérhetőség](#version-and-region-availability) legújabb kiadás információt.
 
 ## <a name="why-use-scheduled-events"></a>Ütemezett események miért érdemes használni?
 

@@ -12,20 +12,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/08/2017
+ms.date: 02/22/2018
 ms.author: sethm
-ms.openlocfilehash: 6c92acee9d7609f4fedcddd40563b1a55fa08fac
-ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
+ms.openlocfilehash: be23d919b0c96d6c9b96ee328d1b18ad978a9dcc
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="chaining-service-bus-entities-with-auto-forwarding"></a>Automatikus-továbbítást a Service Bus-entitások láncolás
 
 A Service Bus *automatikus-továbbítási* funkciója lehetővé teszi a tanúsítványlánc egy várólista vagy az előfizetés egy másik várólistához vagy témakör, amely ugyanazt a névteret része. Ha automatikus-továbbítás engedélyezve van, a Service Bus automatikusan kerülnek, az első sor vagy (forrás) előfizetés-kezelési üzenetek eltávolítja, és beírja a második üzenetsor vagy témakör (cél). Ne feledje, hogy továbbra is közvetlenül a cél entitáshoz elküldeni egy üzenetet. Ezenkívül nincs lehetőség a tanúsítványlánc egy al, például a kézbesítetlen levelek várólistájára, egy másik várólistához vagy témakör.
 
 ## <a name="using-auto-forwarding"></a>Automatikus-továbbítás használatával
-Automatikus-továbbítási beállításával engedélyezheti a [QueueDescription.ForwardTo] [ QueueDescription.ForwardTo] vagy [SubscriptionDescription.ForwardTo] [ SubscriptionDescription.ForwardTo] tulajdonságainak a [QueueDescription] [ QueueDescription] vagy [SubscriptionDescription] [ SubscriptionDescription] objektumokat a forrás, az alábbi példában látható módon.
+
+Automatikus-továbbítási beállításával engedélyezheti a [QueueDescription.ForwardTo] [ QueueDescription.ForwardTo] vagy [SubscriptionDescription.ForwardTo] [ SubscriptionDescription.ForwardTo] a tulajdonságok a [QueueDescription] [ QueueDescription] vagy [SubscriptionDescription] [ SubscriptionDescription] objektumokat a forrás és a a Példa:
 
 ```csharp
 SubscriptionDescription srcSubscription = new SubscriptionDescription (srcTopic, srcSubscriptionName);
@@ -35,7 +36,7 @@ namespaceManager.CreateSubscription(srcSubscription));
 
 A cél entitás léteznie kell a forrásentitás létrehozásakor. Ha a célként megadott entitás nem létezik, a Service Bus létrehozása a forrásentitás kérdésnél kivételt adja vissza.
 
-Automatikus-továbbítás segítségével horizontális felskálázás témakör megjelenítéséhez. A Service Bus korlátok a [adott témában előfizetések száma](service-bus-quotas.md) 2000 számára. Hozzon létre a második szintű témakörök további előfizetések lehetővé teszi. Vegye figyelembe, hogy akkor is, ha Ön nem köti a Service Bus korlátozás előfizetések számát, a második szintű témakörök hozzáadása javíthatja a teljes átviteli képessége – a témakör.
+Automatikus-továbbítás segítségével horizontális felskálázás témakör megjelenítéséhez. A Service Bus korlátok a [adott témában előfizetések száma](service-bus-quotas.md) 2000 számára. Hozzon létre a második szintű témakörök további előfizetések lehetővé teszi. Akkor is, ha Ön nem köti a Service Bus korlátozás előfizetések számát, a második szintű témakörök hozzáadása javíthatja a teljes átviteli képessége – a témakör.
 
 ![Automatikus-továbbítási forgatókönyv][0]
 
@@ -55,7 +56,7 @@ A Service Bus egy művelet egyes a továbbított üzenet váltók stb. Például
 
 Hozzon létre olyan előfizetést, amelyet egy másik üzenetsor vagy témakör legyen láncolva, valamint az előfizetés létrehozója rendelkeznie kell **kezelése** engedélyekkel a forrás- és a cél entitás. A forrás témakör üzenetküldésre csak szükséges **küldése** engedélyekkel a forrás témakör.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Automatikus-továbbítási kapcsolatos részletes információkért lásd a következő témaköröket:
 

@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/09/2017
 ms.author: cynthn
-ms.openlocfilehash: 172ad5198f7c813ed114f9fe3caea3d6a5dc6a97
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: 84f6f0c13e8c06aa934d98ecc3c3e4a61f95c641
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="create-a-managed-image-of-a-generalized-vm-in-azure"></a>Egy felügyelt képre egy általánosított virtuális gép létrehozása az Azure-ban
 
@@ -55,7 +55,7 @@ Győződjön meg arról, hogy a Sysprep által a gépen futó kiszolgálói szer
 3. A **neve**, írja be szeretné használni a lemezkép nevét.
 4. A **erőforráscsoport** válassza **hozzon létre új** , és adjon meg egy nevet, vagy válasszon **meglévő** , és válasszon egy erőforráscsoportot használni a legördülő listából.
 5. Ha azt szeretné, hogy a forrás virtuális gép törlése után a kép létrehozott, jelölje be **automatikusan törli a lemezkép létrehozása után a virtuális gép**.
-6. Amikor elkészült, kattintson a **létrehozása**.
+6. Ha végzett, kattintson a **Létrehozás** gombra.
 16. A lemezkép létrehozása után látni fogja, hogy egy **kép** erőforrás az erőforráscsoport erőforrásainak listája.
 
 
@@ -65,7 +65,7 @@ Győződjön meg arról, hogy a Sysprep által a gépen futó kiszolgálói szer
 Lemezkép létrehozása a közvetlenül a virtuális gépről biztosítja, hogy a kép tartalmazza a virtuális gép, beleértve az operációs rendszer lemezének és adatlemezeket társított lemezeket. Ez a példa bemutatja, hogyan hozzon létre egy felügyelt képre egy virtuális gép által használt lemezek kezelését.
 
 
-Mielőtt elkezdené, győződjön meg arról, hogy rendelkezik-e a legújabb verzióját a AzureRM.Compute PowerShell-modult. A következő parancsot a telepítéshez.
+Mielőtt elkezdené, győződjön meg arról, hogy rendelkezik-e a legújabb verzióját a AzureRM.Compute PowerShell-modult. A következő parancsot a telepítéshez. (Használata `Get-Module` ellenőrzéséhez melyik verzió van.)
 
 ```azurepowershell-interactive
 Install-Module AzureRM.Compute -RequiredVersion 2.6.0

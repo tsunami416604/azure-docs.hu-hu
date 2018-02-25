@@ -2,17 +2,17 @@
 title: "Azure Service Fabric parancssori felület használatával Azure Service Fabric-alkalmazások kezelése"
 description: "Ismerje meg, hogyan helyezhet üzembe és alkalmazások eltávolítása egy Azure Service Fabric-fürt Azure Service Fabric parancssori felület használatával"
 services: service-fabric
-author: samedder
+author: Christina-Kang
 manager: timlt
 ms.service: service-fabric
 ms.topic: article
 ms.date: 08/22/2017
-ms.author: edwardsa
-ms.openlocfilehash: 6c8501e8c863e1240a277bf8064118a2b113a81b
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.author: bikang
+ms.openlocfilehash: 2d330921b66a1c261298601dad46f00f66659037
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="manage-an-azure-service-fabric-application-by-using-azure-service-fabric-cli"></a>Az Azure Service Fabric-alkalmazás kezelése az Azure Service Fabric parancssori felület használatával
 
@@ -75,7 +75,7 @@ Az image store alkalmazáscsomag törléséhez használja a következő parancso
 sfctl store delete --content-path app_package_dir
 ```
 
-`content-path`annak a könyvtárnak az alkalmazás létrehozásakor feltöltött nevének kell lennie.
+`content-path` annak a könyvtárnak az alkalmazás létrehozásakor feltöltött nevének kell lennie.
 
 ### <a name="create-an-application-from-an-application-type"></a>Alkalmazástípusok az alkalmazás létrehozása
 
@@ -85,7 +85,7 @@ Az alkalmazás kiépítése után a következő paranccsal nevet, és az alkalma
 sfctl application create --app-name fabric:/TestApp --app-type TestAppType --app-version 1.0
 ```
 
-`app-name`Ez a név az alkalmazáspéldány használni szeretne. További paraméterek lekérheti az előzőleg létrehozott alkalmazás jegyzékében.
+`app-name` Ez a név az alkalmazáspéldány használni szeretne. További paraméterek lekérheti az előzőleg létrehozott alkalmazás jegyzékében.
 
 Az alkalmazás nevét a előtaggal kell kezdődnie `fabric:/`.
 
@@ -164,7 +164,7 @@ Ha egy alkalmazás frissítése folyamatban van, az állapot lekérhető haszná
 
 Végül, ha egy frissítés folyamatát, és hozzá lehet megszakítani, használhatja a `sfctl application upgrade-rollback` vissza tudják állítani a frissítést.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Service Fabric CLI alapjai](service-fabric-cli.md)
 * [A Service Fabric Linux első lépések](service-fabric-get-started-linux.md)
