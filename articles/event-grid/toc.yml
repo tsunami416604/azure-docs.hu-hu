@@ -36,14 +36,16 @@
       href: delivery-and-retry.md
 - name: Útmutatók
   items:
+    - name: Közzététel egyéni témakörben
+      href: post-to-custom-topic.md
     - name: Események fogadása HTTP-végponton
       href: receive-events.md
     - name: Adatok streamelése az Event Hubsból adattárházba
       href: event-grid-event-hubs-integration.md
     - name: Értesítések küldése az IoT Hub eseményeiről
       href: publish-iot-hub-events-to-logic-apps.md
-    - name: Közzététel egyéni témakörben
-      href: post-to-custom-topic.md
+    - name: Service Bus-események figyelése a Functions és a Logic Apps használatával
+      href: ../service-bus-messaging/service-bus-to-event-grid-integration-example.md?toc=%2fazure%2fevent-grid%2ftoc.json
     - name: Sablonok esemény-előfizetésekhez
       href: event-subscription-template.md
     - name: Eseménykézbesítés figyelése
