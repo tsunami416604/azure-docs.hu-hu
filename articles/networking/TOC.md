@@ -23,6 +23,7 @@
 ### [Helyszíni kapcsolódás – VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ### [Helyszíni kapcsolódás – dedikált](../expressroute/expressroute-introduction.md?toc=%2fazure%2fnetworking%2ftoc.json)
 
+
 # Bevezetés
 ## [Az első virtuális hálózat létrehozása](../virtual-network/quick-create-portal.md?toc=%2fazure%2fnetworking%2ftoc.json)
 
@@ -47,6 +48,7 @@
 ### [Csomagrögzítés kezelése](../network-watcher/network-watcher-packet-capture-manage-portal.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ### [Útválasztás következő ugrásának meghatározása](../network-watcher/network-watcher-check-next-hop-portal.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ### [Virtuális gép IP-forgalmának ellenőrzése](../network-watcher/network-watcher-check-ip-flow-verify-portal.md?toc=%2fazure%2fnetworking%2ftoc.json)
+### [A hálózatmonitorozás áttekintése](network-monitoring-overview.md?toc=%2fazure%2fnetworking%2ftoc.json)
 
 ## Mintaszkriptek
 ### [Azure CLI](cli-samples.md)

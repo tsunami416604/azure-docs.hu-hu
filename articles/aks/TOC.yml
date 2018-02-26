@@ -55,6 +55,8 @@
       items:
         - name: Statikus IP-cím
           href: static-ip.md
+        - name: Bejövő forgalom és TLS
+          href: ingress.md
     - name: Biztonság és hitelesítés
       items:
         - name: Egyszerű szolgáltatás létrehozása

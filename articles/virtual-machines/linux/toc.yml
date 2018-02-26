@@ -33,21 +33,23 @@
       href: tutorial-virtual-network.md
     - name: 9 – Virtuális gépek biztonsági mentése
       href: tutorial-backup-vms.md
-    - name: 10 – Virtuális gépek figyelése és frissítése
+    - name: 10 – Virtuális gépek szabályozása
+      href: tutorial-govern-resources.md
+    - name: 11 – Virtuális gépek monitorozása és frissítése
       href: tutorial-monitoring.md
-    - name: 11 – A virtuális gépek biztonságának kezelése
+    - name: 12 – Virtuális gépek biztonságának kezelése
       href: tutorial-azure-security.md
-    - name: 12 - A Jenkins üzembe helyezése
+    - name: 13 – A Jenkins üzembe helyezése
       href: tutorial-jenkins-github-docker-cicd.md
-    - name: 13 - CI/CD a Team Services használatával
+    - name: 14 – CI/CD a Team Services használatával
       href: tutorial-build-deploy-jenkins.md
-    - name: 14a – LAMP-verem létrehozása
+    - name: 15a – LAMP-verem létrehozása
       href: tutorial-lamp-stack.md
-    - name: 14b – LEMP-verem létrehozása
+    - name: 15b – LEMP-verem létrehozása
       href: tutorial-lemp-stack.md
-    - name: 14c – MEAN-verem létrehozása
+    - name: 15c – MEAN-verem létrehozása
       href: tutorial-mean-stack.md
-    - name: 15 – Webkiszolgáló védelme SSL-lel
+    - name: 16 – Webkiszolgáló védelme SSL-lel
       href: tutorial-secure-web-server.md
 - name: Példák
   items:

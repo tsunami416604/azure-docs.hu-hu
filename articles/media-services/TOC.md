@@ -36,11 +36,9 @@
 #### [Adategységek felügyelete több tárfiókban](meda-services-managing-multiple-storage-accounts.md)
 ### [Kvóták és korlátozások](media-services-quotas-and-limitations.md)
 ## [Postman konfigurálása](media-rest-apis-with-postman.md)
-### Igényalapú streaming
-#### [Környezet](postman-environment.md)
-#### [Gyűjtemény](postman-collection.md)
-### Live streaming (Élő adatfolyam)
-#### [Gyűjtemény](postman-live-streaming-collection.md)
+### [Igényalapú streaming gyűjtemény](postman-collection.md)
+### [Élő streaming gyűjtemény](postman-live-streaming-collection.md)
+### [Környezet](postman-environment.md)
 ## Tartalom feltöltése
 ### Fájlok feltöltése egy fiókba
 #### [Azure Portal](media-services-portal-upload-files.md)

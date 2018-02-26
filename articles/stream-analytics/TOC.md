@@ -62,6 +62,7 @@
 ### [Eseményrendezési szempontok](stream-analytics-out-of-order-and-late-events.md)
 ### [Eseményközpont olvasói korlátai](stream-analytics-event-hub-consumer-groups.md)
 ### [Diagnosztikai naplók](stream-analytics-job-diagnostic-logs.md)
+### [Nem megfelelően formázott események lekérése](stream-analytics-malformed-events.md)
 
 ## Automatizálás
 ### [A Management .NET SDK használata](stream-analytics-dotnet-management-sdk.md)

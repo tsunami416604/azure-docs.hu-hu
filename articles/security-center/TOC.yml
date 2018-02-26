@@ -48,61 +48,62 @@
           href: security-center-customize-os-security-config.md
         - name: Biztonsági szabályzat az Azure Policyval
           href: security-center-azure-policy.md
-    - name: A biztonsági állapot figyelése
-      href: security-center-monitoring.md
-    - name: Identitás és hozzáférés
-      href: security-center-identity-access.md
     - name: Biztonsági javaslatok megvalósítása
       href: security-center-recommendations.md
-    - name: Számítási biztonság
-      href: security-center-virtual-machine-recommendations.md
+    - name: A biztonsági állapot figyelése
+      href: security-center-monitoring.md
       items:
-        - name: Lemeztitkosítás alkalmazása
-          href: security-center-apply-disk-encryption.md
-        - name: Rendszerfrissítések alkalmazása
-          href: security-center-apply-system-updates.md
-        - name: Titkosítás engedélyezése tárfiókokon
-          href: security-center-enable-encryption-for-storage-account.md
-        - name: Virtuálisgép-ügynök engedélyezése
-          href: security-center-enable-vm-agent.md
-        - name: Endpoint Protection telepítése
-          href: security-center-install-endpoint-protection.md
-        - name: Rendszerfrissítések utáni újraindítás
-          href: 'security-center-apply-system-updates.md#reboot-after-system-updates'
-        - name: Biztonsági konfigurációk javítása
-          href: security-center-remediate-os-vulnerabilities.md
-        - name: Operációs rendszer verziójának frissítése
-          href: security-center-update-os-version.md
-        - name: A sebezhetőségi felmérés nincs telepítve
-          href: security-center-vulnerability-assessment-recommendations.md
-    - name: Hálózati biztonság
-      href: security-center-network-recommendations.md
-      items:
-        - name: Új generációs tűzfal hozzáadása
-          href: security-center-add-next-generation-firewall.md
-        - name: Hálózati biztonsági csoportok engedélyezése
-          href: security-center-enable-network-security-groups.md
-        - name: Az internetre kapcsolódó végpontok hozzáférésének korlátozása
-          href: security-center-restrict-access-through-internet-facing-endpoints.md
-        - name: Csak az újgenerációs tűzfalon keresztül haladjon a forgalom
-          href: 'security-center-add-next-generation-firewall.md#route-traffic-through-ngfw-only'
-    - name: Tárolás- és adatbiztonság
-      href: security-center-sql-service-recommendations.md
-      items:
-        - name: Naplózás és fenyegetésészlelés engedélyezése az SQL-adatbázisokon
-          href: security-center-enable-auditing-on-sql-databases.md
-        - name: Naplózás és fenyegetésészlelés engedélyezése az SQL Servereken
-          href: security-center-enable-auditing-on-sql-servers.md
-        - name: Transzparens adattitkosítás engedélyezése
-          href: security-center-enable-transparent-data-encryption.md
-    - name: Alkalmazások biztonsága
-      href: security-center-application-recommendations.md
-      items:
-        - name: Webalkalmazási tűzfal hozzáadása
-          href: security-center-add-web-application-firewall.md
-        - name: Alkalmazásvédelem véglegesítése
-          href: 'security-center-add-web-application-firewall.md#finalize-application-protection'
-    - name: Felhővédelmi funkciók
+        - name: Számítási biztonság
+          href: security-center-virtual-machine-recommendations.md
+          items:
+            - name: Lemeztitkosítás alkalmazása
+              href: security-center-apply-disk-encryption.md
+            - name: Rendszerfrissítések alkalmazása
+              href: security-center-apply-system-updates.md
+            - name: Titkosítás engedélyezése tárfiókokon
+              href: security-center-enable-encryption-for-storage-account.md
+            - name: Virtuálisgép-ügynök engedélyezése
+              href: security-center-enable-vm-agent.md
+            - name: Endpoint Protection telepítése
+              href: security-center-install-endpoint-protection.md
+            - name: Rendszerfrissítések utáni újraindítás
+              href: 'security-center-apply-system-updates.md#reboot-after-system-updates'
+            - name: Biztonsági konfigurációk javítása
+              href: security-center-remediate-os-vulnerabilities.md
+            - name: Operációs rendszer verziójának frissítése
+              href: security-center-update-os-version.md
+            - name: A sebezhetőségi felmérés nincs telepítve
+              href: security-center-vulnerability-assessment-recommendations.md
+        - name: Hálózati biztonság
+          href: security-center-network-recommendations.md
+          items:
+            - name: Új generációs tűzfal hozzáadása
+              href: security-center-add-next-generation-firewall.md
+            - name: Hálózati biztonsági csoportok engedélyezése
+              href: security-center-enable-network-security-groups.md
+            - name: Az internetre kapcsolódó végpontok hozzáférésének korlátozása
+              href: security-center-restrict-access-through-internet-facing-endpoints.md
+            - name: Csak az újgenerációs tűzfalon keresztül haladjon a forgalom
+              href: 'security-center-add-next-generation-firewall.md#route-traffic-through-ngfw-only'
+        - name: Tárolás- és adatbiztonság
+          href: security-center-sql-service-recommendations.md
+          items:
+            - name: Naplózás és fenyegetésészlelés engedélyezése az SQL-adatbázisokon
+              href: security-center-enable-auditing-on-sql-databases.md
+            - name: Naplózás és fenyegetésészlelés engedélyezése az SQL Servereken
+              href: security-center-enable-auditing-on-sql-servers.md
+            - name: Transzparens adattitkosítás engedélyezése
+              href: security-center-enable-transparent-data-encryption.md
+        - name: Alkalmazások biztonsága
+          href: security-center-application-recommendations.md
+          items:
+            - name: Webalkalmazási tűzfal hozzáadása
+              href: security-center-add-web-application-firewall.md
+            - name: Alkalmazásvédelem véglegesítése
+              href: 'security-center-add-web-application-firewall.md#finalize-application-protection'
+        - name: Identitás és hozzáférés
+          href: security-center-identity-access.md
+    - name: Felhővédelmi funkciók alkalmazása
       items:
         - name: Igény szerinti hozzáférés
           href: security-center-just-in-time.md
@@ -136,7 +137,7 @@
           href: security-center-threat-intel.md
         - name: Vizsgálat
           href: security-center-investigation.md
-    - name: Automatizálás és vezénylés
+    - name: Biztonsági munkafolyamatok automatizálása
       items:
         - name: Logic Apps-forgatókönyvek
           href: security-center-playbooks.md

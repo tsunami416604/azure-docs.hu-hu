@@ -19,6 +19,8 @@
 ### [Azure CLI](vpn-gateway-howto-site-to-site-resource-manager-cli.md)
 ### [(Klasszikus) Azure Portal](vpn-gateway-howto-site-to-site-classic-portal.md)
 
+## [VPN-eszközök konfigurációs szkriptjeinek letöltése](vpn-gateway-download-vpndevicescript.md)
+
 ## Pont–hely kapcsolatok konfigurálása – hitelesítés natív Azure-tanúsítvánnyal
 ### Pont–hely VPN-kapcsolat konfigurálása
 #### [Azure Portal](vpn-gateway-howto-point-to-site-resource-manager-portal.md)

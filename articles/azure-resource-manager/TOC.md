@@ -3,6 +3,7 @@
 ## [Erőforrás-szolgáltatók és típusaik](resource-manager-supported-services.md)
 ## [A Resource Manager-alapú és a klasszikus üzemi modell](resource-manager-deployment-model.md)
 ## [Előfizetés-irányítás](resource-manager-subscription-governance.md)
+## [Erőforrások rendszerezése felügyeleti csoportokkal](management-groups-overview.md)
 
 # Bevezetés
 ## [Sablon létrehozása és üzembe helyezése](resource-manager-create-first-template.md)
@@ -45,7 +46,8 @@
 ### [REST API](resource-manager-rest-api.md)
 ### [Címkék használata az erőforrások rendszerezéséhez](resource-group-using-tags.md)
 ### [Erőforrások áthelyezése új csoportba vagy előfizetésbe](resource-group-move-resources.md)
-### [Előfizetések rendszerezése felügyeleti csoportokkal](../billing/billing-enterprise-mgmt-group-overview.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
+### [Felügyeleti csoportok létrehozása](management-groups-create.md)
+### [Felügyeleti csoportok kezelése](management-groups-manage.md)
 ### [Irányítási példák](resource-manager-subscription-examples.md)
 ### [Felügyelt alkalmazások](../managed-applications/overview.md)
 

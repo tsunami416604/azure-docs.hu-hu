@@ -44,9 +44,9 @@
           href: storage-monitor-troubleshoot-storage-application.md
     - name: Magas rendelkezésre állás tervezése felhőalapú tároláshoz
       items:
-        - name: Biztosítsa alkalmazása magas rendelkezésre állását
+        - name: 1 – Alkalmazás magas rendelkezésre állásának biztosítása
           href: storage-create-geo-redundant-storage.md
-        - name: Hiba szimulálás RA-GRS tárolóval
+        - name: 2 – Hiba szimulálása RA-GRS tárolóval
           href: storage-simulate-failure-ragrs-account-app.md
     - name: Helyszíni adatok migrálása a felhőbe az AzCopyval
       href: ../common/storage-use-azcopy-migrate-on-premises-data.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
@@ -54,13 +54,13 @@
       href: storage-unstructured-search.md
     - name: Tárolási alkalmazás teljesítményének és skálázhatóságának optimalizálása
       items:
-        - name: Virtuális gép és Storage-fiók létrehozása
+        - name: 1 – Virtuális gép és tárfiók létrehozása
           href: storage-blob-scalable-app-create-vm.md
-        - name: Nagy mennyiségű adat feltöltése Azure Storage-fiókba
+        - name: 2 – Nagy mennyiségű adat feltöltése egy Azure Storage-fiókba
           href: storage-blob-scalable-app-upload-files.md
-        - name: Nagy mennyiségű adat letöltése Azure Storage-fiókból
+        - name: 3 – Nagy mennyiségű adat letöltése egy Azure Storage-fiókból
           href: storage-blob-scalable-app-download-files.md
-        - name: Átviteli sebességgel és késéssel kapcsolatos mérőszámok ellenőrzése
+        - name: 4 – Átviteli sebességgel és késéssel kapcsolatos metrikák ellenőrzése
           href: storage-blob-scalable-app-verify-metrics.md
 - name: Példák
   items:
