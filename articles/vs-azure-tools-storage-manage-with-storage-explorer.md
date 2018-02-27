@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2017
 ms.author: cawa
-ms.openlocfilehash: 7f86c5abb47cdd69cf07410570b02ba0076d1c18
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 27b3775d81ec6dc093dae4ee46167c5d5a9c9e19
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="get-started-with-storage-explorer-preview"></a>Ismerkedés a Tártallózó alkalmazással (előzetes verzió)
 ## <a name="overview"></a>Áttekintés
@@ -28,6 +28,16 @@ Az Azure Tártallózó (előzetes verzió) egy különálló alkalmazás, amelyn
 
 ## <a name="prerequisites"></a>Előfeltételek
 * [A Tártallózó (előzetes verzió) letöltése és telepítése](http://www.storageexplorer.com)
+
+> [!NOTE]
+> A Linux disztribúciókkal eltérő Ubuntu 16.04 szükség lehet manuálisan kell telepítenie néhány függősége. Általában a következő csomagok szükségesek:
+> * libgconf-2-4
+> * libsecret
+> * Naprakész ÖET
+>
+> Attól függően, hogy a distro lehet többi csomagot, telepítenie kell. A Tártallózó [kibocsátási megjegyzések](https://go.microsoft.com/fwlink/?LinkId=838275&clcid=0x409) néhány disztribúciókkal az adott lépést tartalmaznak.
+>
+>
 
 ## <a name="connect-to-a-storage-account-or-service"></a>Csatlakozás egy tárfiókhoz vagy -szolgáltatáshoz
 A Tártallózó (előzetes verzió) számos különféle módot kínál a tárfiókokhoz való csatlakozáshoz. Megteheti például a következőt:
@@ -240,18 +250,18 @@ Emellett a Azure előfizetéssel Azure Cosmos DB fiókok kezelése, kapcsolódni
     ![connection-string][22]
 
  ## <a name="connect-to-azure-data-lake-store-by-uri"></a>Csatlakozás az Azure Data Lake Store URI
-Ha szeretne hozzáférni az erőforrásokhoz, amelyek nem szerepelnek az előfizetés. De mások adja meg, hogy az URI azonosító lekérése az erőforrásokat. Ebben az esetben csatlakozhat Data Lake Store Uri segítségével, miután bejelentkezett. Tekintse meg a következő lépéseket.
+Előfordulhat, hogy szeretne hozzáférni olyan erőforrásokhoz, amelyek nem szerepelnek az előfizetésében, de mások biztosítják az erőforrások URI-jének lekéréséhez szükséges engedélyt. Ilyen esetben a bejelentkezés után csatlakozhat a Data Lake Store-hoz az URI segítségével. Tekintse át a következő lépéseket.
 1. Nyissa meg a Tártallózót (előzetes verzió).
-2. A bal oldali ablaktáblán bontsa ki a **helyi és a kapcsolódó**.
-3. Kattintson a jobb gombbal **Data Lake Store**, és válassza – a helyi menüből – a **kapcsolódás a Data Lake Store...** .
+2. A bal oldali panelen bontsa ki a **Helyi és csatolt** elemet.
+3. Kattintson a jobb gombbal a **Data Lake Store** elemre, és a helyi menüből válassza a **Csatlakozás a Data Lake Store-hoz…** lehetőséget.
 
-    ![csatlakozni a Data Lake Store helyi menü](./media/vs-azure-tools-storage-manage-with-storage-explorer/storageexplorer-adls-uri-attach.png)
+    ![csatlakozás a Data Lake Store-hoz a helyi menüben](./media/vs-azure-tools-storage-manage-with-storage-explorer/storageexplorer-adls-uri-attach.png)
 
-4. Adja meg az Uri, majd az eszköz navigál, hol található a megadott URL-CÍMÉT.
+4. Adja meg az URI-t. Ezután az eszköz a megadott URL helyére lép.
 
-    ![csatlakozni a Data Lake Store környezet párbeszédpanel](./media/vs-azure-tools-storage-manage-with-storage-explorer/storageexplorer-adls-uri-attach-dialog.png)
+    ![csatlakozás a Data Lake Store-hoz – kontextus párbeszédpanel](./media/vs-azure-tools-storage-manage-with-storage-explorer/storageexplorer-adls-uri-attach-dialog.png)
 
-    ![csatlakozni a Data Lake Store eredménye](./media/vs-azure-tools-storage-manage-with-storage-explorer/storageexplorer-adls-attach-finish.png)
+    ![csatlakozás a Data Lake Store-hoz – eredmény](./media/vs-azure-tools-storage-manage-with-storage-explorer/storageexplorer-adls-attach-finish.png)
 
 ## <a name="search-for-storage-accounts"></a>Tárfiókok keresése
 Ha szeretne egy tároló-erőforrás található és nem tudja, ahol van, használja a keresési mezőbe a bal oldali ablaktábla tetején a erőforrás kereséséhez.

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2016
 ms.author: crdun
-ms.openlocfilehash: f3d89c627f462c9e34b2ff067972be56f5bed32f
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: e94f08b9b9dad20c6f47367c47eb49aea59f4bd8
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="article-top"></a>A meglévő Azure Mobile szolgáltatás áttelepítése az Azure App Service
 Az a [Azure App Service általános rendelkezésre állását], Azure Mobile Services-webhelyek könnyen áttelepíthető helyi előnyeit az Azure App Service összes funkcióját.  Ez a dokumentum azt ismerteti, mi történik, ha az Azure App Service telepítheti át webhelyét az Azure Mobile Services.
@@ -32,7 +32,7 @@ Az Azure Mobile szolgáltatás kapcsolja be a Mobile Service egy [Azure App Serv
 Microsoft van javasolja, hogy az áttelepített az Azure Mobile szolgáltatás számára, hogy kihasználja az Azure App Service, beleértve a szolgáltatásait:
 
 * Új üzemeltetési funkciók, például a [WebJobs] és [egyéni tartománynevek].
-* Figyelés és hibaelhárítás az új New Relic vagy [Application Insights].
+* Figyelés és hibaelhárítás [Application Insights].
 * Beépített DevOps tooling, beleértve a [átmeneti üzembe helyezési ponti]visszaállítási és az éles tesztelése.
 * [Automatikus méretezése], terheléselosztás, és [teljesítményfigyelés].
 
@@ -80,7 +80,7 @@ Kiindulási pontként a következő rétegek javasoljuk:
 | Mobilszolgáltatás Tarifacsomagot | Az App Service Tarifacsomagot |
 |:--- |:--- |
 | Ingyenes |F1 – Ingyenes |
-| Alapszintű |A K1 Basic |
+| Alapszintű |B1 Basic |
 | Standard |S1 – Standard |
 
 Nincs rugalmasan kiválasztani a tarifacsomag az alkalmazáshoz.  Tekintse meg [App Service szolgáltatás díjszabása] az új App Service díjszabás teljes leírását.
@@ -127,7 +127,7 @@ A PublishSettings-fájl a számítógép letölti.  Általában nevezik *sitenam
 
 1. Nyissa meg a Visual Studio és az Azure Mobile Services mobilszolgáltatás-projektet.
 2. Kattintson a jobb gombbal a projektre a a **Megoldáskezelőben** válassza **közzététel...**
-3. Kattintson a **importálása**
+3. Kattintson az **Importálás** gombra
 4. Kattintson a **Tallózás** válassza ki a letöltött közzététele beállításfájl.  Kattintson az **OK** gombra
 5. Kattintson a **kapcsolat ellenőrzése** a közzétételi beállítások munkahelyi biztosításához.
 6. Kattintson a **közzététel** a webhely közzététele.
@@ -184,7 +184,7 @@ Megjegyzés: **MS\_AadTenants** bérlői tartományok (a "Engedélyezett bérlő
 >
 >
 
-### <a name="easytables"></a>Adatok
+### <a name="easytables"></a>Data
 A *adatok* a Mobile Servicesben lap váltotta *könnyen táblák* az Azure portálon.  Egyszerű táblák elérése:
 
 1. Jelentkezzen be az [Azure portálra].
@@ -269,9 +269,9 @@ A következő további beállításokkal: áttelepített Mobile szolgáltatás �
 | Alkalmazás-beállítás | Leírás |
 |:--- |:--- |
 | **MS\_MobileServiceName** |Az alkalmazás neve |
-| **MS\_MobileServiceDomainSuffix** |A megadott tartománynév előtagja. Egytényezős Azure-mobile.net |
+| **MS\_MobileServiceDomainSuffix** |The domain prefix. Egytényezős azure-mobile.net |
 | **MS\_ApplicationKey** |Az alkalmazás kulcs |
-| **MS\_főkulcsos** |Az alkalmazás főkulcs |
+| **MS\_MasterKey** |Az alkalmazás főkulcs |
 
 Az alkalmazás kulcs és a főkulcs megegyeznek az alkalmazás kulcsok eredeti Mobile szolgáltatás.  Különösen az Alkalmazáskulcsot által küldött mobil ügyfelek használatát a mobil API érvényesítéséhez.
 

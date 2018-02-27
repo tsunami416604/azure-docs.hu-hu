@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/18/2017
 ms.author: genemi
-ms.openlocfilehash: dc652b1d0357a815b14820fc837d7a287e5d4ba0
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 3bbfdccd020f5efc7510d9688ea38f5e1af4ebde
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="deploy-and-explore-a-sharded-multi-tenant-application-that-uses-azure-sql-database"></a>Központi telepítése, és vizsgálja meg a szilánkos több-bérlős alkalmazás által használt Azure SQL adatbázis
 
@@ -59,11 +59,11 @@ Az oktatóanyag teljesítéséhez meg kell felelnie az alábbi előfeltételekne
 
 #### <a name="plan-the-names"></a>A nevek megtervezése
 
-Ebben a szakaszban a lépések két helyen, ahol meg kell adnia az Ön, mint a nevek nincsenek egy *felhasználói* és az új *erőforráscsoport*. A személy nevű *Reino Finley*, javasoljuk, hogy a következő szerepel:
-- *Felhasználó:* &nbsp; **af1** &nbsp; *(saját monogramja, valamint egy számjegy.)*
-- *Erőforráscsoport:* &nbsp; **wingtip-af1** &nbsp; *(ajánlott kisbetű szerepelhet. "Hozzáfűzés a kötőjelet, majd a felhasználónevet.)*
+Ebben a szakaszban a lépések adjon meg egy *felhasználói* érték, amely gondoskodik arról, hogy erőforrásnevek megkülönböztetik a globálisan egyedi, és nevezze el a *erőforráscsoport* hozta létre a központi telepítés összes erőforrását tartalmazó az alkalmazás. A személy nevű *Reino Finley*, javasoljuk, hogy:
+- *Felhasználó:* **af1***(saját monogramja, valamint egy számjegy.   Használjon egy másik értéket (pl. af2) Ha telepít központilag az alkalmazást még egyszer.)*
+- *Erőforráscsoport:* **wingtip-dpt-af1** *(wingtip-dpt azt jelzi, ez az adatbázis-/-bérlő alkalmazást. A felhasználó nevét af1 fűznek ad eredményül a benne található erőforrások nevét az erőforráscsoport neve.)*
 
-Most válassza ki a nevét, és írja le.
+Most válassza ki a nevét, és írja le. 
 
 #### <a name="steps"></a>Lépések
 
@@ -72,7 +72,7 @@ Most válassza ki a nevét, és írja le.
 
     [![A gomb telepítse az Azure.][image-deploy-to-azure-blue-48d]][link-aka-ms-deploywtp-mtapp-52k]
 
-2. Adja meg a szükséges paraméterértékeket a telepítés.
+1. Adja meg a szükséges paraméterértékeket a telepítés.
 
     > [!IMPORTANT]
     > Az ebben a bemutatóban ne használja a már meglévő erőforráscsoport-sablonok, kiszolgálóknak vagy készletek. Válassza a **hozzon létre egy új erőforráscsoportot**. Ha végzett az alkalmazással, törölje a létrehozott erőforráscsoportot a kapcsolódó számlázások leállításához.
@@ -82,12 +82,12 @@ Most válassza ki a nevét, és írja le.
         - Válassza ki a **hely** a legördülő listából.
     - A **felhasználói** -javasoljuk, hogy egy rövid válassza **felhasználói** érték.
 
-3. **Az alkalmazás üzembe helyezése**.
+1. **Az alkalmazás üzembe helyezése**.
 
     - Kattintson a gombra kattintva elfogadja a feltételeket és kikötéseket.
     - Kattintson a **Purchase** (Vásárlás) gombra.
 
-4. Központi telepítés állapotának figyelésére kattintva **értesítések**, vagyis a harang ikonra a keresőmezőbe jobbra. Telepíti a Wingtip alkalmazást körülbelül öt percet vesz igénybe.
+1. Központi telepítés állapotának figyelésére kattintva **értesítések**, vagyis a harang ikonra a keresőmezőbe jobbra. Telepíti a Wingtip alkalmazást körülbelül öt percet vesz igénybe.
 
    ![üzembe helyezés sikeres](media/saas-multitenantdb-get-started-deploy/succeeded.png)
 
@@ -127,7 +127,7 @@ Egyes helyszínekkel lekérdezi egy személyre szabott webalkalmazást a listáb
 Egy központi **események Hub** weblap mutató hivatkozásokat biztosít a bérlők számára az adott környezetben. Az alábbi lépések segítségével tapasztalhat a **események Hub** weblap és egy adott webalkalmazás:
 
 1. Nyissa meg a **események Hub** a böngészőben:
-    - http://events.Wingtip. &lt;Felhasználói&gt;. trafficmanager.net &nbsp; *(csere &lt;felhasználói&gt; a központi telepítés felhasználói értékkel.)*
+    - http://events.Wingtip-MT.&lt;felhasználói&gt;. trafficmanager.net &nbsp; *(csere &lt;felhasználói&gt; a központi telepítés felhasználói értékkel.)*
 
     ![eseményközpont](media/saas-multitenantdb-get-started-deploy/events-hub.png)
 
@@ -139,7 +139,7 @@ Egy központi **események Hub** weblap mutató hivatkozásokat biztosít a bér
 
 A bejövő kérelmek terjesztési szabályozására, a Wingtip alkalmazás használ [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md). Az események lapról, az egyes bérlők számára a bérlő neve szerepel az URL-CÍMÉT. Minden egyes URL-címet is az adott felhasználó érték. Minden egyes URL-cím obeys látható formátuma a következő lépések segítségével:
 
-- http://events.wingtip.&lt;USER&gt;.trafficmanager.net/*fabrikamjazzclub*
+- http://events.wingtip-mt.&lt;user&gt;.trafficmanager.net/*fabrikamjazzclub*
 
 1. Az események alkalmazás elemzi a bérlő nevét az URL-címről. A bérlő neve *fabrikamjazzclub* az előző példa URL-címben.
 2. Az alkalmazás ezután csak a bérlő nevét, a katalógus használatával eléréséhez kulcs létrehozásához [shard térkép felügyeleti](sql-database-elastic-scale-shard-map-management.md).

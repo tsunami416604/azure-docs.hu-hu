@@ -8,7 +8,7 @@ Megvásárolhatja fenntartott virtuálisgép-példánya a [Azure-portálon](http
 
 ## <a name="buy-a-reserved-virtual-machine-instance"></a>A fenntartott virtuális gépet példánya megvásárlása
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
-2. Válassza ki **további szolgáltatások** > **foglalások**.
+2. Válassza ki **minden szolgáltatás** > **foglalások**.
 3. Válassza ki **Hozzáadás** új foglalás megvásárlásához.
 4. Töltse ki a kötelező mezőket. Virtuális gép a kiválasztott attribútumok csak akkor lekérni a Foglalás kedvezményeket megfelelő példányok. A Virtuálisgép-példányok, amelyek beszerzése a kedvezményeket tényleges száma attól függ, a hatókör és a kiválasztott mennyiség.
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/03/2016
 ms.author: LADocs; padmavc
-ms.openlocfilehash: 0570aab14283b38f9efcc50636f0c0c1c8e3ed13
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: MT
+ms.openlocfilehash: 0357e67a8920a57b2ab8b79ebd8dd3a64d888478
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="learn-about-certificates-and-enterprise-integration-pack"></a>A tanúsítványok és az Enterprise Integration Pack ismertetése
 ## <a name="overview"></a>Áttekintés
@@ -44,7 +44,7 @@ A tanúsítvány feltöltése után érhető el segítségével biztosíthatja a
 
 A nyilvános tanúsítványokat feltöltése a integrációs fiókjába, az Azure-portálon való bejelentkezés után részletes lépései a következők:
 
-1. Válassza ki **további szolgáltatások** , és írja be **integrációs** szűrő keresőmezőbe. Válassza ki **integrációs fiókok** eredmények listájáról     
+1. Válassza ki **minden szolgáltatás** , és írja be **integrációs** szűrő keresőmezőbe. Válassza ki **integrációs fiókok** eredmények listájáról     
 ![Válassza ki a Tallózás gombra](media/logic-apps-enterprise-integration-certificates/overview-1.png)  
 2. Válassza a kívánt felvenni a tanúsítványt integrációs fiókot.  
 ![Válassza ki a kívánt felvenni a tanúsítványt integrációs fiókot](media/logic-apps-enterprise-integration-certificates/overview-3.png)  
@@ -67,7 +67,7 @@ Használatához a *személyes tanúsítvány* a logic apps B2B képességeket, a
 1. [Töltse fel a titkos kulcsot a Key Vault](../key-vault/key-vault-get-started.md "további információ a Key Vault") , és adjon meg egy **kulcs neve** 
    
    > [!TIP]
-   > Engedélyeznie kell a Logic Apps a Key Vault műveletek végrehajtásához. Ön hozzáférést biztosíthat a Logic Apps szolgáltatás egyszerű a következő PowerShell-parancs segítségével:`Set-AzureRmKeyVaultAccessPolicy -VaultName 'TestcertKeyVault' -ServicePrincipalName '7cd684f4-8a78-49b0-91ec-6a35d38739ba' -PermissionsToKeys decrypt, sign, get, list`  
+   > Engedélyeznie kell a Logic Apps a Key Vault műveletek végrehajtásához. Ön hozzáférést biztosíthat a Logic Apps szolgáltatás egyszerű a következő PowerShell-parancs segítségével: `Set-AzureRmKeyVaultAccessPolicy -VaultName 'TestcertKeyVault' -ServicePrincipalName '7cd684f4-8a78-49b0-91ec-6a35d38739ba' -PermissionsToKeys decrypt, sign, get, list`  
    > 
    > 
 
@@ -88,7 +88,7 @@ A személyes tanúsítványok feltöltése a integrációs fiókjába, az Azure-
    >   
 
 5. Válassza ki a **erőforráscsoport**, **Key Vault**, **kulcsnév** válassza ki a **OK** gombra.  
-![Tanúsítvány hozzáadása](media/logic-apps-enterprise-integration-certificates/privatecertificate-1.png)  
+![tanúsítvány hozzáadása](media/logic-apps-enterprise-integration-certificates/privatecertificate-1.png)  
 6. Válassza ki a **tanúsítványok** csempére. Az újonnan hozzáadott tanúsítványt kell megjelennie.
 ![Tekintse meg az új tanúsítvány](media/logic-apps-enterprise-integration-certificates/privatecertificate-2.png)  
 

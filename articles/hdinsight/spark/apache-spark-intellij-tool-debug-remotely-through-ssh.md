@@ -17,11 +17,11 @@ ms.devlang:
 ms.topic: article
 ms.date: 11/25/2017
 ms.author: jejiang
-ms.openlocfilehash: 6ea6d94453583c6b5ed680f96ebc43d33d0262a0
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: dfffe935cd7e896fb251a3ed40a5493fbf836a6c
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="debug-spark-applications-locally-or-remotely-on-an-hdinsight-cluster-with-azure-toolkit-for-intellij-through-ssh"></a>A Spark-alkalmazások hibakeresését helyileg vagy távolról az Azure-eszközkészlet a HDInsight-fürtök az IntelliJ SSH-n keresztül
 
@@ -57,7 +57,7 @@ Ez a cikk nyújt részletes útmutatást Azure eszköztára IntelliJ HDInsight e
 
       ![Hibakeresési-projekt létrehozása](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-create-projectfor-debug-remotely.png)
 
-   d. Válassza ki **következő**.     
+   d. Kattintson a **Tovább** gombra.     
  
 2. A következő **új projekt** ablakban tegye a következőket:
 
@@ -170,7 +170,6 @@ Ez a hiba megoldásához [töltse le a végrehajtható fájl](http://public-repo
 * [Spark és BI: interaktív adatelemzés végrehajtása a Spark hdinsight BI-eszközökkel](apache-spark-use-bi-tools.md)
 * [Spark és Machine Learning: Spark on HDInsight HVAC-adatok épület-hőmérséklet elemzésére használata](apache-spark-ipython-notebook-machine-learning.md)
 * [Spark és Machine Learning: A Spark on HDInsight használata az élelmiszervizsgálati eredmények előrejelzésére](apache-spark-machine-learning-mllib-ipython.md)
-* [Spark Streaming: Spark on HDInsight használata valós idejű streamelési alkalmazásokat hozhatnak létre](apache-spark-eventhub-streaming.md)
 * [A webhelynapló elemzése a Spark on HDInsight használatával](../hdinsight-apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="create-and-run-applications"></a>Alkalmazások létrehozása és futtatása

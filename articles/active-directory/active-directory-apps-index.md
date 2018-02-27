@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: markvi
 ms.reviewer: asteen
-ms.openlocfilehash: eaceab7d0dba7719452000cc4e1bd19baa28af9e
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: ccbe48e4c7fdb25e003aedc048194e041865710e
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="article-index-for-application-management-in-azure-active-directory"></a>Article Index for Application Management in Azure Active Directory (Az Azure Active Directory segítségével végzett alkalmazásfelügyeletre vonatkozó cikkek jegyzéke)
 Ezen a lapon minden egyes dokumentum írása az alkalmazással kapcsolatos szolgáltatásokra vonatkozó az Azure Active Directory (Azure AD) átfogó listáját tartalmazza.
@@ -53,7 +53,7 @@ Egyszeri bejelentkezés lehetővé teszi a különböző alkalmazások és szolg
 | Útmutató a következő cikket: |  |
 |:---:| --- |
 | Összevonási és más bejelentkezési bemutatása |[Egyszeri bejelentkezés az Azure ad szolgáltatással](active-directory-appssoaccess-whatis.md) |
-| Az Azure AD-val előre integrált Szolgáltatottszoftver-alkalmazásoknál ezer egyszerűsített egyszeri bejelentkezés konfigurációs lépések |[Ismerkedés az Azure AD application gallery a](active-directory-appssoaccess-whatis.md#get-started-with-the-azure-ad-application-gallery)<br /><br />[Összevonási támogató előre integrált alkalmazások teljes listája](http://aka.ms/aadfederatedapps)<br /><br />[Az alkalmazás felvétele az Azure AD-Alkalmazásgyűjtemény](active-directory-app-gallery-listing.md) |
+| Az Azure AD-val előre integrált Szolgáltatottszoftver-alkalmazásoknál ezer egyszerűsített egyszeri bejelentkezés konfigurációs lépések |[Ismerkedés az Azure AD application gallery a](active-directory-appssoaccess-whatis.md#get-started-with-the-azure-ad-application-gallery)<br /><br />[Összevonási támogató előre integrált alkalmazások teljes listája](active-directory-saas-tutorial-list.md)<br /><br />[Az alkalmazás felvétele az Azure AD-Alkalmazásgyűjtemény](active-directory-app-gallery-listing.md) |
 | Több mint 150 app oktatóanyagok konfigurálásával egyszeri bejelentkezés alkalmazásokhoz, mint [Salesforce](active-directory-saas-salesforce-tutorial.md), [ServiceNow](active-directory-saas-servicenow-tutorial.md), [Google Apps](active-directory-saas-google-apps-tutorial.md), [Workday](active-directory-saas-workday-tutorial.md), és sok más |[Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](active-directory-saas-tutorial-list.md) |
 | Manuálisan állítsa be, és az egyszeri bejelentkezés konfigurációs testreszabása |[Hogyan való konfigurálása összevont egyszeri bejelentkezést az alkalmazásokat, amelyek nem találhatók az Azure Active Directory Alkalmazáskatalógusában](application-config-sso-how-to-configure-federated-sso-non-gallery.md)<br /><br />[A SAML-jogkivonat előzetesen beépített alkalmazások számára kiállított jogcímek testreszabása](active-directory-saml-claims-customization.md) |
 | A összevont alkalmazásokat, az SAML-protokollt használó hibaelhárítási útmutatója |[Hibaelhárítási SAML-alapú egyszeri bejelentkezést.](active-directory-saml-debugging.md) |

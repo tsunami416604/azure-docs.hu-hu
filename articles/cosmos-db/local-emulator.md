@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/15/2018
 ms.author: danoble
-ms.openlocfilehash: 2512ba4ea89bd3477c7901cda29ab3682d834195
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 4b18ad16338722cc9dbd314eded900fdd554ecec
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="use-the-azure-cosmos-db-emulator-for-local-development-and-testing"></a>Az Azure Cosmos DB Emulator használja a helyi fejlesztéshez és teszteléshez
 
@@ -255,7 +255,7 @@ Beállítások listájának megtekintéséhez írja be a `CosmosDB.Emulator.exe 
 </tr>
 <tr>
   <td>NoExplorer</td>
-  <td>Ne jelenjen meg indításkor dokumentumkezelő.</td>
+  <td>Ne jelenjen meg indításkor adatkezelő.</td>
   <td>CosmosDB.Emulator.exe /NoExplorer</td>
   <td></td>
 </tr>
@@ -317,7 +317,7 @@ Gyűjtemény létrehozása után az aktuális partíciók száma túl lett lépv
 
 A rendelkezésre álló gyűjtemények száma az Azure Cosmos DB Emulator módosításához tegye a következőket:
 
-1. Törli az összes helyi Azure Cosmos DB emulátor adatokat kattintson a jobb gombbal a **Azure Cosmos DB emulátor** ikonra a tálcán, majd kattintson az **adatok alaphelyzetbe állítása... **.
+1. Törli az összes helyi Azure Cosmos DB emulátor adatokat kattintson a jobb gombbal a **Azure Cosmos DB emulátor** ikonra a tálcán, majd kattintson az **adatok alaphelyzetbe állítása...** .
 2. Ez a mappa C:\Users\user_name\AppData\Local\CosmosDBEmulator összes emulátor adatok törlése.
 3. Minden nyitott példányokat kilépéshez kattintson a jobb gombbal a **Azure Cosmos DB emulátor** ikonra a tálcán, majd kattintson az **kilépési**. Az összes példányhoz való kilépéshez egy percet is igénybe vehet.
 4. Telepítse a legújabb verzióját a [Azure Cosmos DB emulátor](https://aka.ms/cosmosdb-emulator).

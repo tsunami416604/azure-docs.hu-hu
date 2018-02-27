@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/10/2017
 ms.author: makohli
-ms.openlocfilehash: dc89cd29e1e8038f0ff317ff6acee332218ebce7
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
-ms.translationtype: MT
+ms.openlocfilehash: d15f91c91281eae28ddaff52af3ee8e617f142c1
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="get-started-with-azure-advisor"></a>Ismerkedés az Azure Advisor szolgáltatással
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 11/08/2017
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-2. Kattintson a bal oldali ablaktáblában **Advisor**.  Ha az Advisor nem látja a bal oldali panelen, kattintson a **további szolgáltatások**.  A szolgáltatás menü ablaktáblán alatt **figyelés és felügyelet**, kattintson a **Advisor**.
+2. Kattintson a bal oldali ablaktáblában **Advisor**.  Ha az Advisor nem látja a bal oldali panelen, kattintson a **minden szolgáltatás**.  A szolgáltatás menü ablaktáblán alatt **figyelés és felügyelet**, kattintson a **Advisor**.
  Az Advisor irányítópult jelenik meg.
 
    ![Hozzáférés az Azure Advisor az Azure portál használatával](./media/advisor-get-started/advisor-portal-menu.png) 
@@ -128,7 +128,7 @@ Az Advisor lehetővé teszi, hogy töltse le a javaslatok összegzését.  A jav
 
 A letöltési beállítás tiszteletben tartja az Advisor irányítópult alkalmazott szűrőket.  Ha egy adott javaslat kategóriát vagy javaslat megtekintésekor a letöltési lehetőséget választja, a letöltött összegzés csak az adott kategória vagy javaslat adatait tartalmazza. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Advisor kapcsolatos további információkért lásd:
 * [Bevezetés az Azure Advisor](advisor-overview.md)

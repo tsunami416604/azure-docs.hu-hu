@@ -3,7 +3,7 @@ title: "Hibaelhárítás a Kerberos által korlátozott delegálás konfiguráci
 description: "Hibaelhárítás a Kerberos által korlátozott delegálás konfigurációi alkalmazásproxy."
 services: active-directory
 documentationcenter: 
-author: daveba
+author: MarkusVi
 manager: mtillman
 ms.assetid: 
 ms.service: active-directory
@@ -11,13 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/11/2017
-ms.author: asteen
-ms.openlocfilehash: 7b31f53e14e3f9a175e5dda95a18eb89dbca99dc
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.date: 02/09/2018
+ms.author: markvi
+ms.reviewer: harshja
+ms.openlocfilehash: a580b0afbd34623986ea8a3f60147a937c423e5e
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="troubleshoot-kerberos-constrained-delegation-configurations-for-application-proxy"></a>Hibaelhárítás a Kerberos által korlátozott delegálás alkalmazásproxy konfigurációi
 
@@ -33,7 +34,7 @@ Ez a cikk lehetővé teszi a következő előfeltételek:
 
 -   A közzétett célalkalmazás Kerberos IIS és a Microsoft végrehajtásának alapul.
 
--   A kiszolgáló és az alkalmazás gazdagépek egyetlen Active Directory-tartományban találhatók. Részletes tájékoztatást közötti tartományok és erdők forgatókönyvek megtalálhatók a [Kerberos által korlátozott Delegálás tanulmány](http://aka.ms/KCDPaper).
+-   A kiszolgáló és az alkalmazás gazdagépek egyetlen Active Directory-tartományban találhatók. Részletes tájékoztatást közötti tartományok és erdők forgatókönyvek megtalálhatók a [Kerberos által korlátozott Delegálás tanulmány](https://aka.ms/KCDPaper).
 
 -   A tulajdonos alkalmazás közzé van téve egy Azure-ban bérlői előtti hitelesítés engedélyezve van, és a felhasználók-azonosítóknak hitelesítésre űrlapalapú hitelesítésen keresztül. Gazdag ügyfél-hitelesítési forgatókönyvei nem vonatkozik ez a cikk, de egy bizonyos ponton a jövőben hozzáadni.
 
@@ -51,7 +52,7 @@ Különösen a szakasz a Kerberos által korlátozott Delegálás konfigurálás
 
 -   Ahol lehetséges, lehetőleg ne tároljon minden aktív IP-CÍMEK/Azonosítók eszközök közötti összekötő gazdagépek és -tartományvezérlő, mivel azok néha keresztül zavaró és zavarják a core keresztüli RPC-adatforgalmat
 
-Javasoljuk, hogy delegálás tesztelje a forgatókönyvet a legegyszerűbb. A több változót bevezetése, annál nagyobb lehet, hogy a tartalom. Például korlátozza a tesztelést egyetlen összekötőt értékes időt takaríthat, és további összekötők a problémák megoldása után lehet hozzáadni.
+A legegyszerűbb esetben delegálás kell tesztelni. A több változót bevezetése, annál nagyobb lehet, hogy a tartalom. Például korlátozza a tesztelést egyetlen összekötőt értékes időt takaríthat, és további összekötők a problémák megoldása után lehet hozzáadni.
 
 Néhány környezeti tényezők is problémát eredményezhetnek. Tesztelés során minimalizálása érdekében a architektúrát, hogy az operációs rendszer legalább a környezeti tényezők elkerülése érdekében. Például helytelenül konfigurált belső tűzfal hozzáférés-vezérlési listák nem ritka, ezért lehetőség van a tartományvezérlők és a háttéralkalmazás rögtön keresztül engedélyezett összekötő származó összes forgalmat. 
 
@@ -79,7 +80,7 @@ Ha van a távoli, majd a fő probléma mindenképpen létezik-e. Indítsa el a f
 
 **Ügyfelek előhitelesítése** – a külső felhasználó hitelesítéséhez az Azure-bA böngésző használatával.
 
-Előtti hitelesítéshez az Azure-bA alatt elengedhetetlen a Kerberos által korlátozott Delegálás SSO függvénynek. Ez kell lehet tesztelni és címzett először, ha probléma merül fel. Az előhitelesítési szakasza nem rendelkezik kapcsolattal a Kerberos által korlátozott vagy a közzétett alkalmazáshoz. Meg kell viszonylag egyszerűen kijavíthatja az esetleges eltéréseket által megerősítést ellenőrzése a tulajdonos fiók létezik-e az Azure-ban, és, hogy nincs letiltva vagy letiltva. A böngészőben a hibaválaszba általában leíró elég okának megértéséhez. Győződjön meg arról, ha nem biztos, hogy más kapcsolatos problémák elhárítása leírásokat is ellenőrizheti.
+Előtti hitelesítéshez az Azure-bA alatt elengedhetetlen a Kerberos által korlátozott Delegálás SSO függvénynek. Kell tesztelni, és megoldható ez, ha probléma merül. Az előhitelesítési szakasza nem rendelkezik kapcsolattal a Kerberos által korlátozott vagy a közzétett alkalmazáshoz. Meg kell viszonylag egyszerűen kijavíthatja az esetleges eltéréseket által megerősítést ellenőrzése a tulajdonos fiók létezik-e az Azure-ban, és, hogy nincs letiltva vagy letiltva. A böngészőben a hibaválaszba általában leíró elég okának megértéséhez. Győződjön meg arról, ha nem biztos, hogy más kapcsolatos problémák elhárítása leírásokat is ellenőrizheti.
 
 **Delegálás szolgáltatás** – az Azure Proxy-összekötő Kerberos-szolgáltatásjegyet beszerzése a KDC (Kerberos kulcskiosztó központ), a felhasználók nevében.
 
@@ -103,13 +104,13 @@ Ahogy korábban említettük, a böngésző hibaüzenetek általában megadja a 
 
 -   Ellenőrizze, hogy tartományi házirend érvényesítve van-e korlátozni a [Kerberos kiállított jogkivonatokat mérete legfeljebb](https://blogs.technet.microsoft.com/askds/2012/09/12/maxtokensize-and-windows-8-and-windows-server-2012/), mert ez megakadályozza, hogy az összekötő egy token if megszerezni található túl nagy
 
-A hálózati nyomkövetés rögzítése a connector állomás- és a KDC között cseréjét az beszerzése a problémák alacsony szintű részletesebben a következő ajánlott lépés lesz. További részleteket, [mélyreható kapcsolatos problémák elhárítása papír](https://aka.ms/proxytshootpaper).
+A hálózati nyomkövetés rögzítése a connector állomás- és a KDC között cseréjét az beszerzése a problémák alacsony szintű részletesebben a következő ajánlott lépés lesz. További információkért tekintse meg, [mélyreható kapcsolatos problémák elhárítása papír](https://aka.ms/proxytshootpaper).
 
-Ha jegykezelési megfelelőnek tűnik, meg kell jelennie a naplófájlokban, amely meghatározza, hogy, hogy a hitelesítés a 401-es visszaadó miatt nem sikerült egy eseményt. Ez általában azt jelzi, hogy a célalkalmazás elutasítása a jegyet, ezért folytatásához a következő következő szakaszára.
+Ha jegykezelési megfelelőnek tűnik, meg kell jelennie a naplófájlokban, amely meghatározza, hogy, hogy a hitelesítés a 401-es visszaadó miatt nem sikerült egy eseményt. Ez általában azt jelzi, hogy a célalkalmazás elutasítása a jegyet, ezért folytatásához a következő következő szakaszára:
 
 **A célalkalmazás** -a fogyasztó az összekötő által biztosított Kerberos jegy
 
-Ezen a ponton várható az összekötő elküldött egy Kerberos szolgáltatás a háttér jegy fejlécként belül az első alkalmazás-kérelmekre.
+Ebben a szakaszban az összekötő az első alkalmazásigénylést belül fejlécként a Kerberos szolgáltatásjegy küldött a háttér várt.
 
 -   Az alkalmazás belső URL-cím segítségével meghatározott a portálon, ellenőrizze, hogy az alkalmazás közvetlenül a böngészőből az összekötő állomáson elérhető. Ezután bejelentkezhet sikeresen megtörtént. Részleteket ezzel az összekötő hibaelhárítása oldalon található.
 
@@ -125,7 +126,7 @@ Ezen a ponton várható az összekötő elküldött egy Kerberos szolgáltatás 
 
 2.  Ideiglenesen távolítsa el az NTLM IIS helyen, és hozzáférés app IE összekötő gazdagép közvetlenül a szolgáltatók listájából. Már nem a szolgáltatók listája az NTLM, a tudni hozzáférni az alkalmazáshoz, csak Kerberos használatával kell lennie. Ha ez nem sikerül, majd, amelyek arra utalnak, hogy van-e az alkalmazás konfigurációs probléma, és a Kerberos-hitelesítés nem működik.
 
-Ha Kerberos nem érhető el, ellenőrizze az alkalmazás hitelesítési beállításait is győződjön meg arról, hogy az IIS egyezteti NTLM alatta csak a legfelső szerepel. (Nem egyezteti: a kerberos vagy Negotiate: PKU2U). Csak továbbra is, ha Kerberos működőképességét.
+Ha Kerberos nem érhető el, ellenőrizze az alkalmazás hitelesítési beállításait is győződjön meg arról, hogy az IIS egyezteti NTLM alatta csak a legfelső szerepel. (Nem egyezteti: a Kerberos vagy Negotiate: PKU2U). Csak továbbra is, ha Kerberos működőképességét.
 
    ![Windows-hitelesítésszolgáltatók](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic7.png)
    
@@ -141,7 +142,7 @@ Ha Kerberos nem érhető el, ellenőrizze az alkalmazás hitelesítési beállí
 
     ![IIS alkalmazás konfigurációs ablak](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic9.png)
 
-    Miután eldöntötte, hogy az identitás, probléma az alábbi cmd jelenít meg, győződjön meg arról, hogy ennek a fióknak a mindenképpen van konfigurálva az egyszerű Szolgáltatásnevet. Például`setspn –q http/spn.wacketywack.com`
+    Miután eldöntötte, hogy az identitás, probléma az alábbi cmd jelenít meg, győződjön meg arról, hogy ennek a fióknak a mindenképpen van konfigurálva az egyszerű Szolgáltatásnevet. Például  `setspn –q http/spn.wacketywack.com`
 
     ![SetSPN parancssori ablakban](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic10.png)
 
@@ -152,6 +153,16 @@ Ha Kerberos nem érhető el, ellenőrizze az alkalmazás hitelesítési beállí
 -   Nyissa meg az IIS, és válassza a **Konfigurációszerkesztő** az alkalmazás lehetőséget, és navigáljon a **system.webServer/security/authentication/windowsAuthentication** való győződjön meg arról, hogy az érték **UseAppPoolCredentials** van **igaz**
 
    ![Az IIS konfigurációs app készletek hitelesítőadat-beállítás](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic12.png)
+
+Az érték módosítása után **igaz**, az összes gyorsítótárazott Kerberos-jegyek kell őket távolítani a háttérkiszolgálóról. Ehhez a következő parancs futtatásával:
+
+```powershell
+Get-WmiObject Win32_LogonSession | Where-Object {$_.AuthenticationPackage -ne 'NTLM'} | ForEach-Object {klist.exe purge -li ([Convert]::ToString($_.LogonId, 16))}
+``` 
+
+További információkért lásd: [a Kerberos jegy ügyfélgyorsítótár kiürítése az összes munkamenetek](https://gallery.technet.microsoft.com/scriptcenter/Purge-the-Kerberos-client-b56987bf).
+
+
 
 Miközben folyamatban elősegíti a Kerberos-művelet is engedélyezve van, a Kernel mód hagyja a teljesítmény fokozása hatására a jegyet a kért szolgáltatás visszafejteni a számítógépfiók számára. Ezt a helyi rendszer, így ez igaz break Kerberos által korlátozott Delegálás értékre, ha az alkalmazás a farmban lévő több kiszolgálón is nevezik.
 

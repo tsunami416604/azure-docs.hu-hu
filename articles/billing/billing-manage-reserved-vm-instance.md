@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/06/2017
 ms.author: vikdesai
-ms.openlocfilehash: 8f75bab7fc795a59dabfedca5a4889622f66b73a
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: f3f5f974630c4bf1c68599e26612ed729b55bcfc
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="manage-reserved-virtual-machine-instances"></a>Fenntartott virtuálisgép-példányok kezelése
 
@@ -28,7 +28,7 @@ Miután vásárol egy Azure fenntartott Virtuálisgép-példány, érdemes lehet
 
 A Foglalás körét frissítése: 
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
-2. Válassza ki **további szolgáltatások** > **foglalások**.
+2. Válassza ki **minden szolgáltatás** > **foglalások**.
 3. Válassza ki a foglalás.
 4. Válassza ki **beállítások** > **konfigurációs**.
 5. A hatókör módosítása. Ha módosítja a hatókörre osztja, jelölhet ki a tulajdonos előfizetések. Csak a Foglalás azonos számlázási összefüggésben belül előfizetések választható ki. A számlázási környezetben az előfizetést, ha a Foglalás vásárolt kiválasztott határozza meg. A hatókör csak a használatalapú ajánlatok MS-AZR - 0003P előfizetések és a vállalati ajánlat MS-AZR - 0017P előfizetések vonatkozik. A nagyvállalati szerződés fejlesztési és tesztelési célú előfizetések nem jogosultak a Foglalás kedvezményeket eléréséhez.
@@ -69,7 +69,7 @@ Akkor is hozzáférésének kezelése foglalások egymástól függetlenül olya
  
 A Foglalás kezelési delegálása: 
 1.  Jelentkezzen be az [Azure portálra](https://portal.azure.com).
-2.  Válassza ki **több szolgáltatások** > **foglalás** a lista foglalásokat, amely rendelkezik hozzáféréssel.
+2.  Válassza ki **minden szolgáltatás** > **foglalás** a lista foglalásokat, amely rendelkezik hozzáféréssel.
 3.  Válassza ki a kívánt hozzáférést biztosíthat más felhasználók foglalás.
 4.  Válassza ki **hozzáférés-vezérlés (IAM)** a menüben.
 5.  Válassza ki **Hozzáadás** > **szerepkör** > **tulajdonos** (vagy egy másik szerepkört, ha azt szeretné, hogy korlátozott hozzáférést). 

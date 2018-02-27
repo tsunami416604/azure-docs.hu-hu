@@ -13,13 +13,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/27/2017
+ms.date: 02/21/2018
 ms.author: nitinme
-ms.openlocfilehash: ca2cf642cfff2961dcb0dd18f0e712f61d6915c2
-ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
+ms.openlocfilehash: 2c43b9aabda56e1204870575e86934bf93d05882
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="use-azure-log-analytics-to-monitor-hdinsight-clusters"></a>A HDInsight-fürtök figyelése Azure Log Analytics segítségével
 
@@ -71,7 +71,7 @@ A Naplóelemzési Azure PowerShell használatával engedélyezheti. A parancsmag
 Enable-AzureRmHDInsightOperationsManagementSuite
 ```
 
-Lásd: [Enable-AzureRmHDInsightOperationsManagementSuite](https://docs.microsoft.com/powershell/module/azurerm.hdinsight/Enable-AzureRmHDInsightOperationsManagementSuite?view=azurermps-5.0.0).
+See [Enable-AzureRmHDInsightOperationsManagementSuite](https://docs.microsoft.com/powershell/module/azurerm.hdinsight/Enable-AzureRmHDInsightOperationsManagementSuite?view=azurermps-5.0.0).
 
 Le szeretné tiltani, a parancsmag van 
 
@@ -79,8 +79,8 @@ Le szeretné tiltani, a parancsmag van
 Disable-AzureRmHDInsightOperationsManagementSuite
 ```
 
-Lásd: [Disable-AzureRmHDInsightOperationsManagementSuite](https://docs.microsoft.com/powershell/module/azurerm.hdinsight/disable-azurermhdinsightoperationsmanagementsuite?view=azurermps-5.0.0).
+See [Disable-AzureRmHDInsightOperationsManagementSuite](https://docs.microsoft.com/powershell/module/azurerm.hdinsight/disable-azurermhdinsightoperationsmanagementsuite?view=azurermps-5.0.0).
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [HDInsight-fürt felügyeleti megoldások hozzáadni a Naplóelemzési](hdinsight-hadoop-oms-log-analytics-management-solutions.md)

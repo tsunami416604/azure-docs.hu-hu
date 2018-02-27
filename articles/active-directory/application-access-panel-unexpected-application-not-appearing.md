@@ -14,15 +14,15 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
 ms.reviwer: japere
-ms.openlocfilehash: 0abb9e992f408ab6df073891047c9afc7716054f
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 5cb8b600f77c5b7dae91204126e64ec7b9a861ae
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="an-assigned-application-is-not-appearing-on-the-access-panel"></a>Egy hozzárendelt alkalmazás nem jelenik meg a hozzáférési panel
 
-A hozzáférési Panel egy webes portál, amely lehetővé teszi a felhasználó munkahelyi vagy iskolai fiókkal az Azure Active Directory (Azure AD) a megtekintése, és indítsa el a felhőalapú alkalmazások, hogy az Azure AD-rendszergazda engedélyezte őket hozzáférés annak. Ezeket az alkalmazásokat úgy vannak konfigurálva, az Azure AD portálon a felhasználó nevében. Az alkalmazás megfelelően konfigurálva legyen, és a felhasználó vagy egy csoport, a felhasználó tagja a hozzáférési panelen az alkalmazást.
+A hozzáférési Panel egy webes portál, amely lehetővé teszi, hogy a felhasználó munkahelyi vagy iskolai fiókkal az Azure Active Directory (Azure AD) a megtekintése, és indítsa el a felhőalapú alkalmazások, hogy az Azure AD-rendszergazda engedélyezte őket hozzáférés. Ezeket az alkalmazásokat úgy vannak konfigurálva, az Azure AD portálon a felhasználó nevében. Az alkalmazás megfelelően konfigurálva legyen, és a felhasználó vagy egy csoport, a felhasználó tagja a hozzáférési panelen az alkalmazást.
 
 Alkalmazások azért jelent meg a felhasználó típusa a következő kategóriákba tartoznak:
 
@@ -72,15 +72,15 @@ Egy alkalmazás kell az Azure AD-galériából konfigurálása:
 
 Hozzáadhat egy alkalmazást az Azure AD-gyűjteményből, kövesse az alábbi lépéseket:
 
-1.  Nyissa meg a [Azure Portal](https://portal.azure.com) , és jelentkezzen be egy **globális rendszergazda** vagy **társadminisztrátornak**
+1.  Nyissa meg a [Azure-portálon](https://portal.azure.com) , és jelentkezzen be egy **globális rendszergazda** vagy **társadminisztrátornak**
 
-2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **további szolgáltatások** a fő bal oldali navigációs menü alján.
+2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **minden szolgáltatás** a fő bal oldali navigációs menü tetején.
 
 3.  Írja be a **"Azure Active Directory**" a szűrő keresési mezőbe, és válasszon a **Azure Active Directory** elemet.
 
-4.  Kattintson a **vállalati alkalmazások** az Azure Active Directory bal oldali navigációs menüjében.
+4.  Kattintson a **vállalati alkalmazások** Azure Active Directory bal oldali navigációs menüjében.
 
-5.  Kattintson a **Hozzáadás** gombra a jobb felső sarkában a **vállalati alkalmazások** panelen.
+5.  Kattintson a **Hozzáadás** gombra a jobb felső sarkában a **vállalati alkalmazások** ablaktáblán.
 
 6.  Az a **adjon meg egy nevet** a szövegmező a **hozzáadása a gyűjteményből** területen írja be az alkalmazás nevét.
 
@@ -90,23 +90,23 @@ Hozzáadhat egy alkalmazást az Azure AD-gyűjteményből, kövesse az alábbi l
 
 9.  Kattintson a **Hozzáadás** gombra, vegye fel az alkalmazást.
 
-Egy rövid időszak után el az alkalmazás konfigurációs panelen láthatók.
+Rövid ideig akkor lehet az alkalmazás konfigurációs ablaktáblája.
 
 #### <a name="configure-single-sign-on-for-an-application-from-the-azure-ad-gallery"></a>Egyszeri bejelentkezés egy alkalmazás az Azure AD-galériából konfigurálása
 
 Egyszeri bejelentkezés egy alkalmazás konfigurálásához kövesse az alábbi lépéseket:
 
-1.  Nyissa meg a [ **Azure Portal** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazda** vagy **Co-rendszergazda segítségét.**
+1.  Nyissa meg a [ **Azure-portálon** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazda** vagy **Co-rendszergazda segítségét.**
 
-2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **további szolgáltatások** a fő bal oldali navigációs menü alján.
+2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **minden szolgáltatás** a fő bal oldali navigációs menü tetején.
 
 3.  Írja be a **"Azure Active Directory**" a szűrő keresési mezőbe, és válasszon a **Azure Active Directory** elemet.
 
-4.  Kattintson a **vállalati alkalmazások** az Azure Active Directory bal oldali navigációs menüjében.
+4.  Kattintson a **vállalati alkalmazások** Azure Active Directory bal oldali navigációs menüjében.
 
 5.  Kattintson a **összes alkalmazás** az alkalmazások listájának megtekintéséhez.
 
-  * Ha azt szeretné, hogy itt megjelennek az alkalmazás nem látja, használja a **szűrő** vezérlő tetején a **összes alkalmazások listáját** és állítsa be a **megjelenítése** lehetőséggel **összes alkalmazást.**
+  * Ha azt szeretné, hogy itt megjelennek az alkalmazás nem látja, használja a **szűrő** vezérlő tetején a **összes alkalmazások listáját** és állítsa be a **megjelenítése** lehetőséggel **összes Alkalmazások.**
 
 6.  Válassza ki az egyszeri bejelentkezés konfigurálni kívánt alkalmazást.
 
@@ -124,7 +124,7 @@ Egyszeri bejelentkezés egy alkalmazás konfigurálásához kövesse az alábbi 
 
 11. Az a **felhasználói attribútumok**, válassza ki a felhasználók egyedi azonosítója a **felhasználói azonosító** legördülő menüből.
 
-12. **Választható lehetőség:** kattintson **nézet és egyéb felhasználói attribútumok szerkesztése** kell küldeni a alkalmazását a SAML-jogkivonat felhasználói bejelentkezés attribútumok szerkesztéséhez.
+12. **Választható lehetőség:** kattintson **nézet és egyéb felhasználói attribútumok szerkesztése** kell küldeni a SAML-jogkivonat az alkalmazásnak a felhasználók bejelentkeznek az attribútumok szerkesztése.
 
    Attribútum hozzáadása:
 
@@ -132,7 +132,7 @@ Egyszeri bejelentkezés egy alkalmazás konfigurálásához kövesse az alábbi 
 
    2. Kattintson a **mentéséhez.** Az új attribútumot a táblázatban látható.
 
-13. Kattintson a **konfigurálása &lt;alkalmazásnév&gt;**  hozzáférés dokumentációjának egyszeri bejelentkezést az alkalmazás konfigurálásához. Is hogy rendelkezik, a metadata URL-címek és az egyszeri bejelentkezés beállítása az alkalmazáshoz szükséges tanúsítvány.
+13. Kattintson a **konfigurálása &lt;alkalmazásnév&gt;**  hozzáférés dokumentációjának egyszeri bejelentkezést az alkalmazás konfigurálásához. Is hogy a metadata URL-címek és az egyszeri bejelentkezés beállítása az alkalmazáshoz szükséges tanúsítvány.
 
 14. Kattintson a **mentése** a konfiguráció mentéséhez.
 
@@ -142,17 +142,17 @@ Egyszeri bejelentkezés egy alkalmazás konfigurálásához kövesse az alábbi 
 
 Válassza ki a felhasználói azonosító, vagy adja hozzá a felhasználói attribútumok, kövesse az alábbi lépéseket:
 
-1.  Nyissa meg a [ **Azure Portal** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazda** vagy **Co-rendszergazda segítségét.**
+1.  Nyissa meg a [ **Azure-portálon** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazda** vagy **Co-rendszergazda segítségét.**
 
-2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **további szolgáltatások** a fő bal oldali navigációs menü alján.
+2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **minden szolgáltatás** a fő bal oldali navigációs menü tetején.
 
 3.  Írja be a **"Azure Active Directory**" a szűrő keresési mezőbe, és válasszon a **Azure Active Directory** elemet.
 
-4.  Kattintson a **vállalati alkalmazások** az Azure Active Directory bal oldali navigációs menüjében.
+4.  Kattintson a **vállalati alkalmazások** Azure Active Directory bal oldali navigációs menüjében.
 
 5.  Kattintson a **összes alkalmazás** az alkalmazások listájának megtekintéséhez.
 
-  * Ha nem látja az alkalmazás szeretné itt jelenik meg, akkor használja a **szűrő** vezérlő tetején a **összes alkalmazások listáját** és állítsa be a **megjelenítése** lehetőséggel **összes alkalmazást.**
+  * Ha nem látja az alkalmazás szeretné itt jelenik meg, akkor használja a **szűrő** vezérlő tetején a **összes alkalmazások listáját** és állítsa be a **megjelenítése** lehetőséggel  **Minden alkalmazást.**
 
 6.  Válassza ki az alkalmazást, az egyszeri bejelentkezés konfigurálta.
 
@@ -161,11 +161,11 @@ Válassza ki a felhasználói azonosító, vagy adja hozzá a felhasználói att
 8.  Az a **felhasználói attribútumok** területen válassza ki a felhasználók egyedi azonosítója a **felhasználói azonosító** legördülő menüből. A kiválasztott beállítás a várt érték a felhasználó hitelesítésére az alkalmazásban egyezniük kell.
 
    >[!NOTE] 
-   >Az Azure AD a NameID attribútum (felhasználói azonosító) formátumát a megadott érték alapján kijelölése, vagy a SAML AuthRequest az alkalmazás által kért formátuma. További információ látogasson el a [egyszeri bejelentkezés SAML protokoll](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-on-protocol-reference#authnrequest) NameIDPolicy szakaszban.
+   >Az Azure AD választ, a a NameID attribútum (felhasználói azonosító) a kijelölt érték alapján vagy formátumban a SAML AuthRequest az alkalmazás által kért. További információ látogasson el a [egyszeri bejelentkezés SAML protokoll](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-on-protocol-reference#authnrequest) NameIDPolicy szakaszban.
    >
    >
 
-9.  Felhasználói attribútumok hozzáadásához kattintson **nézet és egyéb felhasználói attribútumok szerkesztése** kell küldeni a alkalmazását a SAML-jogkivonat felhasználói bejelentkezés attribútumok szerkesztéséhez.
+9.  Felhasználói attribútumok hozzáadásához kattintson **nézet és egyéb felhasználói attribútumok szerkesztése** kell küldeni a SAML-jogkivonat az alkalmazásnak a felhasználók bejelentkeznek az attribútumok szerkesztése.
 
    Attribútum hozzáadása:
 
@@ -177,17 +177,17 @@ Válassza ki a felhasználói azonosító, vagy adja hozzá a felhasználói att
 
 Az alkalmazás metaadatainak vagy tanúsítvány letöltéséhez az Azure AD, kövesse az alábbi lépéseket:
 
-1.  Nyissa meg a [ **Azure Portal** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazda** vagy **Co-rendszergazda segítségét.**
+1.  Nyissa meg a [ **Azure-portálon** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazda** vagy **Co-rendszergazda segítségét.**
 
-2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **további szolgáltatások** a fő bal oldali navigációs menü alján.
+2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **minden szolgáltatás** a fő bal oldali navigációs menü tetején.
 
 3.  Írja be a **"Azure Active Directory**" a szűrő keresési mezőbe, és válasszon a **Azure Active Directory** elemet.
 
-4.  Kattintson a **vállalati alkalmazások** az Azure Active Directory bal oldali navigációs menüjében.
+4.  Kattintson a **vállalati alkalmazások** Azure Active Directory bal oldali navigációs menüjében.
 
 5.  Kattintson a **összes alkalmazás** az alkalmazások listájának megtekintéséhez.
 
-  * Ha azt szeretné, hogy itt megjelennek az alkalmazás nem látja, használja a **szűrő** vezérlő tetején a **összes alkalmazások listáját** és állítsa be a **megjelenítése** lehetőséggel **összes alkalmazást.**
+  * Ha azt szeretné, hogy itt megjelennek az alkalmazás nem látja, használja a **szűrő** vezérlő tetején a **összes alkalmazások listáját** és állítsa be a **megjelenítése** lehetőséggel **összes Alkalmazások.**
 
 6.  Válassza ki az alkalmazást, az egyszeri bejelentkezés konfigurálta.
 
@@ -213,15 +213,15 @@ Beállíthat egy nem galéria-alkalmazást, akkor kell rendelkeznie az Azure AD 
 
 Egyszeri bejelentkezés egy alkalmazás, amely nincs az Azure AD-katalógus konfigurálásához kövesse az alábbi lépéseket:
 
-1.  Nyissa meg a [ **Azure Portal** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazda** vagy **Co-rendszergazda segítségét.**
+1.  Nyissa meg a [ **Azure-portálon** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazda** vagy **Co-rendszergazda segítségét.**
 
-2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **további szolgáltatások** a fő bal oldali navigációs menü alján.
+2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **minden szolgáltatás** a fő bal oldali navigációs menü tetején.
 
 3.  Írja be a **"Azure Active Directory**" a szűrő keresési mezőbe, és válasszon a **Azure Active Directory** elemet.
 
-4.  Kattintson a **vállalati alkalmazások** az Azure Active Directory bal oldali navigációs menüjében.
+4.  Kattintson a **vállalati alkalmazások** Azure Active Directory bal oldali navigációs menüjében.
 
-5.  Kattintson a **Hozzáadás** gombra a jobb felső sarkában a **vállalati alkalmazások** panelen.
+5.  Kattintson a **Hozzáadás** gombra a jobb felső sarkában a **vállalati alkalmazások** ablaktáblán.
 
 6.  Kattintson a **nem-gyűjtemény alkalmazás** a a **saját alkalmazás felvétele** szakasz.
 
@@ -241,7 +241,7 @@ Egyszeri bejelentkezés egy alkalmazás, amely nincs az Azure AD-katalógus konf
 
 12. Az a **felhasználói attribútumok**, válassza ki a felhasználók egyedi azonosítója a **felhasználói azonosító** legördülő menüből.
 
-13. **Választható lehetőség:** kattintson **nézet és egyéb felhasználói attribútumok szerkesztése** kell küldeni a alkalmazását a SAML-jogkivonat felhasználói bejelentkezés attribútumok szerkesztéséhez.
+13. **Választható lehetőség:** kattintson **nézet és egyéb felhasználói attribútumok szerkesztése** kell küldeni a SAML-jogkivonat az alkalmazásnak a felhasználók bejelentkeznek az attribútumok szerkesztése.
 
    Attribútum hozzáadása:
 
@@ -249,23 +249,23 @@ Egyszeri bejelentkezés egy alkalmazás, amely nincs az Azure AD-katalógus konf
 
    2. Kattintson a **mentéséhez.** Az új attribútumot a táblázatban látható.
 
-14. Kattintson a **konfigurálása &lt;alkalmazásnév&gt;**  hozzáférés dokumentációjának egyszeri bejelentkezést az alkalmazás konfigurálásához. Is hogy rendelkezik, az Azure AD URL-címek és az alkalmazáshoz szükséges tanúsítvány.
+14. Kattintson a **konfigurálása &lt;alkalmazásnév&gt;**  hozzáférés dokumentációjának egyszeri bejelentkezést az alkalmazás konfigurálásához. Is hogy az Azure AD URL-címek és az alkalmazáshoz szükséges tanúsítványokat.
 
 #### <a name="select-user-identifier-and-add-user-attributes-to-be-sent-to-the-application"></a>Válassza ki a felhasználói azonosítóját, és elküldi az alkalmazás felhasználói attribútumok hozzáadása
 
 Válassza ki a felhasználói azonosító, vagy adja hozzá a felhasználói attribútumok, kövesse az alábbi lépéseket:
 
-1.  Nyissa meg a [ **Azure Portal** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazda** vagy **Co-rendszergazda segítségét.**
+1.  Nyissa meg a [ **Azure-portálon** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazda** vagy **Co-rendszergazda segítségét.**
 
-2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **további szolgáltatások** a fő bal oldali navigációs menü alján.
+2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **minden szolgáltatás** a fő bal oldali navigációs menü tetején.
 
 3.  Írja be a **"Azure Active Directory**" a szűrő keresési mezőbe, és válasszon a **Azure Active Directory** elemet.
 
-4.  Kattintson a **vállalati alkalmazások** az Azure Active Directory bal oldali navigációs menüjében.
+4.  Kattintson a **vállalati alkalmazások** Azure Active Directory bal oldali navigációs menüjében.
 
 5.  Kattintson a **összes alkalmazás** az alkalmazások listájának megtekintéséhez.
 
-   * Ha azt szeretné, hogy itt megjelennek az alkalmazás nem látja, használja a **szűrő** vezérlő tetején a **összes alkalmazások listáját** és állítsa be a **megjelenítése** lehetőséggel **összes alkalmazást.**
+   * Ha azt szeretné, hogy itt megjelennek az alkalmazás nem látja, használja a **szűrő** vezérlő tetején a **összes alkalmazások listáját** és állítsa be a **megjelenítése** lehetőséggel **összes Alkalmazások.**
 
 6.  Válassza ki az alkalmazást, az egyszeri bejelentkezés konfigurálta.
 
@@ -274,11 +274,11 @@ Válassza ki a felhasználói azonosító, vagy adja hozzá a felhasználói att
 8.  Az a **felhasználói attribútumok** területen válassza ki a felhasználók egyedi azonosítója a **felhasználói azonosító** legördülő menüből. A kiválasztott beállítás a várt érték a felhasználó hitelesítésére az alkalmazásban egyezniük kell.
 
    >[!NOTE] 
-   >Az Azure AD a NameID attribútum (felhasználói azonosító) formátumát a megadott érték alapján kijelölése, vagy a SAML AuthRequest az alkalmazás által kért formátuma. További információ látogasson el a [egyszeri bejelentkezés SAML protokoll](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-on-protocol-reference#authnrequest) NameIDPolicy szakaszban.
+   >Az Azure AD választ, a a NameID attribútum (felhasználói azonosító) a kijelölt érték alapján vagy formátumban a SAML AuthRequest az alkalmazás által kért. További információ látogasson el a [egyszeri bejelentkezés SAML protokoll](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-on-protocol-reference#authnrequest) NameIDPolicy szakaszban.
    >
    >
 
-9.  Felhasználói attribútumok hozzáadásához kattintson **nézet és egyéb felhasználói attribútumok szerkesztése** kell küldeni a alkalmazását a SAML-jogkivonat felhasználói bejelentkezés attribútumok szerkesztéséhez.
+9.  Felhasználói attribútumok hozzáadásához kattintson **nézet és egyéb felhasználói attribútumok szerkesztése** kell küldeni a SAML-jogkivonat az alkalmazásnak a felhasználók bejelentkeznek az attribútumok szerkesztése.
 
    Attribútum hozzáadása:
 
@@ -290,17 +290,17 @@ Válassza ki a felhasználói azonosító, vagy adja hozzá a felhasználói att
 
 Az alkalmazás metaadatainak vagy tanúsítvány letöltéséhez az Azure AD, kövesse az alábbi lépéseket:
 
-1.  Nyissa meg a [ **Azure Portal** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazda** vagy **Co-rendszergazda segítségét.**
+1.  Nyissa meg a [ **Azure-portálon** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazda** vagy **Co-rendszergazda segítségét.**
 
-2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **további szolgáltatások** a fő bal oldali navigációs menü alján.
+2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **minden szolgáltatás** a fő bal oldali navigációs menü tetején.
 
 3.  Írja be a **"Azure Active Directory**" a szűrő keresési mezőbe, és válasszon a **Azure Active Directory** elemet.
 
-4.  Kattintson a **vállalati alkalmazások** az Azure Active Directory bal oldali navigációs menüjében.
+4.  Kattintson a **vállalati alkalmazások** Azure Active Directory bal oldali navigációs menüjében.
 
 5.  Kattintson a **összes alkalmazás** az alkalmazások listájának megtekintéséhez.
 
-   * Ha azt szeretné, hogy itt megjelennek az alkalmazás nem látja, használja a **szűrő** vezérlő tetején a **összes alkalmazások listáját** és állítsa be a **megjelenítése** lehetőséggel **összes alkalmazást.**
+   * Ha azt szeretné, hogy itt megjelennek az alkalmazás nem látja, használja a **szűrő** vezérlő tetején a **összes alkalmazások listáját** és állítsa be a **megjelenítése** lehetőséggel **összes Alkalmazások.**
 
 6.  Válassza ki az alkalmazást, az egyszeri bejelentkezés konfigurálta.
 
@@ -322,15 +322,15 @@ Egy alkalmazás kell az Azure AD-galériából konfigurálása:
 
 Hozzáadhat egy alkalmazást az Azure AD-gyűjteményből, kövesse az alábbi lépéseket:
 
-1.  Nyissa meg a [Azure Portal](https://portal.azure.com) , és jelentkezzen be egy **globális rendszergazda** vagy **társadminisztrátornak**
+1.  Nyissa meg a [Azure-portálon](https://portal.azure.com) , és jelentkezzen be egy **globális rendszergazda** vagy **társadminisztrátornak**
 
-2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **további szolgáltatások** a fő bal oldali navigációs menü alján.
+2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **minden szolgáltatás** a fő bal oldali navigációs menü tetején.
 
 3.  Írja be a **"Azure Active Directory**" a szűrő keresési mezőbe, és válasszon a **Azure Active Directory** elemet.
 
-4.  Kattintson a **vállalati alkalmazások** az Azure Active Directory bal oldali navigációs menüjében.
+4.  Kattintson a **vállalati alkalmazások** Azure Active Directory bal oldali navigációs menüjében.
 
-5.  Kattintson a **Hozzáadás** gombra a jobb felső sarkában a **vállalati alkalmazások** panelen.
+5.  Kattintson a **Hozzáadás** gombra a jobb felső sarkában a **vállalati alkalmazások** ablaktáblán.
 
 6.  Az a **adjon meg egy nevet** a szövegmező a **hozzáadása a gyűjteményből** területen írja be az alkalmazás nevét.
 
@@ -340,23 +340,23 @@ Hozzáadhat egy alkalmazást az Azure AD-gyűjteményből, kövesse az alábbi l
 
 9.  Kattintson a **Hozzáadás** gombra, vegye fel az alkalmazást.
 
-Egy rövid időszak után el az alkalmazás konfigurációs panelen láthatók.
+Rövid ideig tekintse meg az alkalmazás konfigurációs ablaktáblán.
 
 #### <a name="configure-the-application-for-password-single-sign-on"></a>Állítsa be az alkalmazását jelszó egyszeri bejelentkezést.
 
 Egyszeri bejelentkezés egy alkalmazás konfigurálásához kövesse az alábbi lépéseket:
 
-1.  Nyissa meg a [ **Azure Portal** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazda** vagy **Co-rendszergazda segítségét.**
+1.  Nyissa meg a [ **Azure-portálon** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazda** vagy **Co-rendszergazda segítségét.**
 
-2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **további szolgáltatások** a fő bal oldali navigációs menü alján.
+2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **minden szolgáltatás** a fő bal oldali navigációs menü tetején.
 
 3.  Írja be a **"Azure Active Directory**" a szűrő keresési mezőbe, és válasszon a **Azure Active Directory** elemet.
 
-4.  Kattintson a **vállalati alkalmazások** az Azure Active Directory bal oldali navigációs menüjében.
+4.  Kattintson a **vállalati alkalmazások** Azure Active Directory bal oldali navigációs menüjében.
 
 5.  Kattintson a **összes alkalmazás** az alkalmazások listájának megtekintéséhez.
 
-   * Ha azt szeretné, hogy itt megjelennek az alkalmazás nem látja, használja a **szűrő** vezérlő tetején a **összes alkalmazások listáját** és állítsa be a **megjelenítése** lehetőséggel **összes alkalmazást.**
+   * Ha azt szeretné, hogy itt megjelennek az alkalmazás nem látja, használja a **szűrő** vezérlő tetején a **összes alkalmazások listáját** és állítsa be a **megjelenítése** lehetőséggel **összes Alkalmazások.**
 
 6.  Válassza ki az egyszeri bejelentkezés konfigurálni kívánt alkalmazást.
 
@@ -380,37 +380,37 @@ Egy alkalmazás kell az Azure AD-galériából konfigurálása:
 
 Hozzáadhat egy alkalmazást az Azure AD-gyűjteményből, kövesse az alábbi lépéseket:
 
-1.  Nyissa meg a [Azure Portal](https://portal.azure.com) , és jelentkezzen be egy **globális rendszergazda** vagy **társadminisztrátor**.
+1.  Nyissa meg a [Azure-portálon](https://portal.azure.com) , és jelentkezzen be egy **globális rendszergazda** vagy **társadminisztrátor**.
 
-2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **további szolgáltatások** a fő bal oldali navigációs menü alján.
+2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **minden szolgáltatás** a fő bal oldali navigációs menü tetején.
 
 3.  Írja be a **"Azure Active Directory**" a szűrő keresési mezőbe, és válasszon a **Azure Active Directory** elemet.
 
-4.  Kattintson a **vállalati alkalmazások** az Azure Active Directory bal oldali navigációs menüjében.
+4.  Kattintson a **vállalati alkalmazások** Azure Active Directory bal oldali navigációs menüjében.
 
-5.  Kattintson a **Hozzáadás** gombra a jobb felső sarkában a **vállalati alkalmazások** panelen.
+5.  Kattintson a **Hozzáadás** gombra a jobb felső sarkában a **vállalati alkalmazások** ablaktáblán.
 
 6.  Kattintson a **nem-gyűjtemény alkalmazás.**
 
 7.  Adja meg az alkalmazás nevét a **neve** szövegmező. Válassza ki **hozzáadása.**
 
-Egy rövid időszak után el az alkalmazás konfigurációs panelen láthatók.
+Rövid ideig akkor lehet az alkalmazás konfigurációs ablaktáblája.
 
 #### <a name="configure-the-application-for-password-single-sign-on"></a>Állítsa be az alkalmazását jelszó egyszeri bejelentkezést.
 
 Egyszeri bejelentkezés egy alkalmazás konfigurálásához kövesse az alábbi lépéseket:
 
-1.  Nyissa meg a [ **Azure Portal** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazda** vagy **Co-rendszergazda segítségét.**
+1.  Nyissa meg a [ **Azure-portálon** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazda** vagy **Co-rendszergazda segítségét.**
 
-2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **további szolgáltatások** a fő bal oldali navigációs menü alján.
+2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **minden szolgáltatás** a fő bal oldali navigációs menü tetején.
 
 3.  Írja be a **"Azure Active Directory**" a szűrő keresési mezőbe, és válasszon a **Azure Active Directory** elemet.
 
-4.  Kattintson a **vállalati alkalmazások** az Azure Active Directory bal oldali navigációs menüjében.
+4.  Kattintson a **vállalati alkalmazások** Azure Active Directory bal oldali navigációs menüjében.
 
 5.  Kattintson a **összes alkalmazás** az alkalmazások listájának megtekintéséhez.
 
-    1.  Ha azt szeretné, hogy itt megjelennek az alkalmazás nem látja, használja a **szűrő** vezérlő tetején a **összes alkalmazások listáját** és állítsa be a **megjelenítése** lehetőséggel **összes alkalmazást.**
+    1.  Ha azt szeretné, hogy itt megjelennek az alkalmazás nem látja, használja a **szűrő** vezérlő tetején a **összes alkalmazások listáját** és állítsa be a **megjelenítése** lehetőséggel **összes Alkalmazások.**
 
 6.  Válassza ki az egyszeri bejelentkezés konfigurálni kívánt alkalmazást.
 
@@ -418,7 +418,7 @@ Egyszeri bejelentkezés egy alkalmazás konfigurálásához kövesse az alábbi 
 
 8.  Válassza ki a módot **jelszóalapú bejelentkezés.**
 
-9.  Adja meg a **bejelentkezési URL-cím**. Ez az URL-CÍMÉT ahol adja meg a felhasználók a felhasználónevével és jelszavával bejelentkezni. Győződjön meg arról, a mezők bejelentkezési URL-címen láthatók.
+9.  Adja meg a **bejelentkezési URL-cím**. Ez az URL-CÍMÉT ahol adja meg a felhasználók a felhasználónevével és jelszavával bejelentkezni. Győződjön meg arról, a bejelentkezési mezők láthatók az URL-címen.
 
 10. [Felhasználók hozzárendelése az alkalmazás](#how-to-assign-a-user-to-an-application-directly).
 
@@ -440,13 +440,13 @@ A felhasználó nem lehet annak, hogy egy alkalmazás a hozzáférési panelen, 
 
 Ellenőrizze, hogy ha a felhasználó hozzá van rendelve az alkalmazást, kövesse az alábbi lépéseket:
 
-1.  Nyissa meg a [ **Azure Portal** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazdája.**
+1.  Nyissa meg a [ **Azure-portálon** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazdája.**
 
-2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **további szolgáltatások** a fő bal oldali navigációs menü alján.
+2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **minden szolgáltatás** a fő bal oldali navigációs menü tetején.
 
 3.  Írja be a **"Azure Active Directory**" a szűrő keresési mezőbe, és válasszon a **Azure Active Directory** elemet.
 
-4.  Kattintson a **vállalati alkalmazások** az Azure Active Directory bal oldali navigációs menüjében.
+4.  Kattintson a **vállalati alkalmazások** Azure Active Directory bal oldali navigációs menüjében.
 
 5.  Kattintson a **összes alkalmazás** az alkalmazások listájának megtekintéséhez.
 
@@ -462,31 +462,31 @@ Ellenőrizze, hogy ha a felhasználó hozzá van rendelve az alkalmazást, köve
 
 Hozzárendelése egy vagy több felhasználó alkalmazás közvetlenül, kövesse az alábbi lépéseket:
 
-1.  Nyissa meg a [ **Azure Portal** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazda**.
+1.  Nyissa meg a [ **Azure-portálon** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazda**.
 
-2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **további szolgáltatások** a fő bal oldali navigációs menü alján.
+2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **minden szolgáltatás** a fő bal oldali navigációs menü tetején.
 
 3.  Írja be a **"Azure Active Directory**" a szűrő keresési mezőbe, és válasszon a **Azure Active Directory** elemet.
 
-4.  Kattintson a **vállalati alkalmazások** az Azure Active Directory bal oldali navigációs menüjében.
+4.  Kattintson a **vállalati alkalmazások** Azure Active Directory bal oldali navigációs menüjében.
 
 5.  Kattintson a **összes alkalmazás** az alkalmazások listájának megtekintéséhez.
 
-  * Ha azt szeretné, hogy itt megjelennek az alkalmazás nem látja, használja a **szűrő** vezérlő tetején a **összes alkalmazások listáját** és állítsa be a **megjelenítése** lehetőséggel **összes alkalmazást.**
+  * Ha azt szeretné, hogy itt megjelennek az alkalmazás nem látja, használja a **szűrő** vezérlő tetején a **összes alkalmazások listáját** és állítsa be a **megjelenítése** lehetőséggel **összes Alkalmazások.**
 
 6.  Válassza ki szeretné osztani a felhasználót, hogy a listában az alkalmazást.
 
 7.  Ha az alkalmazás betölt, kattintson **felhasználók és csoportok** az alkalmazás bal oldali navigációs menüjében.
 
-8.  Kattintson a **Hozzáadás** gombra kattint, a a **felhasználók és csoportok** nyissa meg a listában a **hozzáadása hozzárendelés** panelen.
+8.  Kattintson a **Hozzáadás** gombra kattint, a a **felhasználók és csoportok** nyissa meg a listában a **hozzáadása hozzárendelés** ablaktáblán.
 
-9.  Kattintson a **felhasználók és csoportok** a választó a **hozzáadása hozzárendelés** panelen.
+9.  Kattintson a **felhasználók és csoportok** a választó a **hozzáadása hozzárendelés** ablaktáblán.
 
 10. Írja be a **teljes név** vagy **e-mail cím** érdekli hozzárendelése a felhasználó a **Keresés név vagy e-mail cím alapján** keresőmezőbe.
 
 11. Vigye a **felhasználói** a listában, hogy láthatóvá váljon a **jelölőnégyzet**. A felhasználói profil fénykép vagy adja hozzá a felhasználót emblémát jelölőnégyzetét, kattintson a **kijelölt** listája.
 
-12. **Választható lehetőség:** Ha azt szeretné, hogy **egynél több felhasználó hozzáadása**, egy másik típus **teljes név** vagy **e-mail cím** be a **Keresés név vagy e-mail cím alapján** mező, és a jelölőnégyzet bejelölésével adja hozzá a felhasználót, hogy a **kijelölt** listája.
+12. **Választható lehetőség:** Ha azt szeretné, hogy **egynél több felhasználó hozzáadása**, egy másik típus **teljes név** vagy **e-mail cím** azokat a **Keresés név vagy e-mail cím** mező, és a jelölőnégyzet bejelölésével adja hozzá a felhasználót, hogy a **kijelölt** listája.
 
 13. Ha elkészült, válassza a felhasználók, kattintson a **válasszon** gombra kattintva vegye fel a listára a felhasználók és csoportok hozzá kell rendelni az alkalmazáshoz.
 
@@ -500,9 +500,9 @@ Rövid ideig a kijelölt felhasználók tudják elindítani ezeket az alkalmazá
 
 A felhasználó licenc-hozzárendeléseket ellenőrzéséhez kövesse az alábbi lépéseket:
 
-1.  Nyissa meg a [ **Azure Portal** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazdája.**
+1.  Nyissa meg a [ **Azure-portálon** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazdája.**
 
-2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **további szolgáltatások** a fő bal oldali navigációs menü alján.
+2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **minden szolgáltatás** a fő bal oldali navigációs menü tetején.
 
 3.  Írja be a **"Azure Active Directory**" a szűrő keresési mezőbe, és válasszon a **Azure Active Directory** elemet.
 
@@ -514,15 +514,15 @@ A felhasználó licenc-hozzárendeléseket ellenőrzéséhez kövesse az alábbi
 
 7.  Kattintson a **licencek** megtekintéséhez, amely licencek, a felhasználó jelenleg hozzá van rendelve.
 
-  * Ha a felhasználó hozzá van rendelve egy Office licenc a engedélyezése első fél Office-alkalmazásokat jelennek meg a felhasználó hozzáférési Panel.
+  * Ha a felhasználó hozzá van rendelve egy Office-licencet, ezzel első fél Office alkalmazások jelennek meg a felhasználó hozzáférési Panel.
 
 ### <a name="how-to-assign-a-user-a-license"></a>Egy felhasználói licenc hozzárendelése 
 
 A licenc hozzárendelése egy felhasználóhoz, kövesse az alábbi lépéseket:
 
-1.  Nyissa meg a [ **Azure Portal** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazdája.**
+1.  Nyissa meg a [ **Azure-portálon** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazdája.**
 
-2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **további szolgáltatások** a fő bal oldali navigációs menü alján.
+2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **minden szolgáltatás** a fő bal oldali navigációs menü tetején.
 
 3.  Írja be a **"Azure Active Directory**" a szűrő keresési mezőbe, és válasszon a **Azure Active Directory** elemet.
 
@@ -558,9 +558,9 @@ Egy felhasználó lehet annak, hogy egy alkalmazás a hozzáférési Panel a mer
 
 Ellenőrizze a csoport tagságát, kövesse az alábbi lépéseket:
 
-1.  Nyissa meg a [ **Azure Portal** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazdája.**
+1.  Nyissa meg a [ **Azure-portálon** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazdája.**
 
-2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **további szolgáltatások** a fő bal oldali navigációs menü alján.
+2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **minden szolgáltatás** a fő bal oldali navigációs menü tetején.
 
 3.  Írja be a **"Azure Active Directory**" a szűrő keresési mezőbe, és válasszon a **Azure Active Directory** elemet.
 
@@ -580,35 +580,35 @@ Ellenőrizze a csoport tagságát, kövesse az alábbi lépéseket:
 
 Közvetlenül egy alkalmazás hozzárendelése egy vagy több csoportot, kövesse az alábbi lépéseket:
 
-1.  Nyissa meg a [ **Azure Portal** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazda**.
+1.  Nyissa meg a [ **Azure-portálon** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazda**.
 
-2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **további szolgáltatások** a fő bal oldali navigációs menü alján.
+2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **minden szolgáltatás** a fő bal oldali navigációs menü tetején.
 
 3.  Írja be a **"Azure Active Directory**" a szűrő keresési mezőbe, és válasszon a **Azure Active Directory** elemet.
 
-4.  Kattintson a **vállalati alkalmazások** az Azure Active Directory bal oldali navigációs menüjében.
+4.  Kattintson a **vállalati alkalmazások** Azure Active Directory bal oldali navigációs menüjében.
 
 5.  Kattintson a **összes alkalmazás** az alkalmazások listájának megtekintéséhez.
 
-  * Ha azt szeretné, hogy itt megjelennek az alkalmazás nem látja, használja a **szűrő** vezérlő tetején a **összes alkalmazások listáját** és állítsa be a **megjelenítése** lehetőséggel **összes alkalmazást.**
+  * Ha azt szeretné, hogy itt megjelennek az alkalmazás nem látja, használja a **szűrő** vezérlő tetején a **összes alkalmazások listáját** és állítsa be a **megjelenítése** lehetőséggel **összes Alkalmazások.**
 
 6.  Válassza ki szeretné osztani a felhasználót, hogy a listában az alkalmazást.
 
 7.  Ha az alkalmazás betölt, kattintson **felhasználók és csoportok** az alkalmazás bal oldali navigációs menüjében.
 
-8.  Kattintson a **Hozzáadás** gombra kattint, a a **felhasználók és csoportok** nyissa meg a listában a **hozzáadása hozzárendelés** panelen.
+8.  Kattintson a **Hozzáadás** gombra kattint, a a **felhasználók és csoportok** nyissa meg a listában a **hozzáadása hozzárendelés** ablaktáblán.
 
-9.  Kattintson a **felhasználók és csoportok** a választó a **hozzáadása hozzárendelés** panelen.
+9.  Kattintson a **felhasználók és csoportok** a választó a **hozzáadása hozzárendelés** ablaktáblán.
 
 10. Írja be a **teljes csoportnév** érdekli való hozzárendelése a csoport a **Keresés név vagy e-mail cím alapján** keresőmezőbe.
 
 11. Vigye a **csoport** a listában, hogy láthatóvá váljon a **jelölőnégyzet**. A csoport profilképet vagy adja hozzá a felhasználót emblémát jelölőnégyzetét, kattintson a **kijelölt** listája.
 
-12. **Nem kötelező:** Ha azt szeretné, hogy **egynél több csoport hozzáadása**, egy másik típus **teljes csoportnév** be a **Keresés név vagy e-mail cím alapján** mező, és kattintson a jelölőnégyzetbe, a csoport hozzáadása a **kijelölt** lista.
+12. **Nem kötelező:** Ha azt szeretné, hogy **egynél több csoport hozzáadása**, egy másik típus **teljes csoportnév** be a **Keresés név vagy e-mail cím alapján** keresési mezőbe, és a jelölőnégyzet bejelölésével a csoport hozzáadása a **kijelölt** listája.
 
 13. Ha befejezte a csoportok kiválasztásával, kattintson a **válasszon** gombra kattintva vegye fel a listára a felhasználók és csoportok hozzá kell rendelni az alkalmazáshoz.
 
-14. **Választható lehetőség:** kattintson a **Szerepkörválasztás** a választó a **hozzáadása hozzárendelés** panelt, és válassza ki a szerepkör hozzárendelése a kijelölt csoportok.
+14. **Nem kötelező:** kattintson a **Szerepkörválasztás** a választó a **hozzáadása hozzárendelés** szerepkör hozzárendelése a kijelölt csoportok kiválasztása ablakban.
 
 15. Kattintson a **hozzárendelése** gombra az alkalmazás a kiválasztott csoportok számára.
 
@@ -616,9 +616,9 @@ Rövid ideig a kijelölt felhasználók tudják elindítani ezeket az alkalmazá
 
 ### <a name="check-if-a-user-is-part-of-group-assigned-to-a-license"></a>Annak ellenőrzése, hogy a felhasználó csoporthoz hozzárendelt licenc
 
-1.  Nyissa meg a [ **Azure Portal** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazdája.**
+1.  Nyissa meg a [ **Azure-portálon** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazdája.**
 
-2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **további szolgáltatások** a fő bal oldali navigációs menü alján.
+2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **minden szolgáltatás** a fő bal oldali navigációs menü tetején.
 
 3.  Írja be a **"Azure Active Directory**" a szűrő keresési mezőbe, és válasszon a **Azure Active Directory** elemet.
 
@@ -640,9 +640,9 @@ Rövid ideig a kijelölt felhasználók tudják elindítani ezeket az alkalmazá
 
 A licenc hozzárendelése egy csoporthoz, kövesse az alábbi lépéseket:
 
-1.  Nyissa meg a [ **Azure Portal** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazdája.**
+1.  Nyissa meg a [ **Azure-portálon** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazdája.**
 
-2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **további szolgáltatások** a fő bal oldali navigációs menü alján.
+2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **minden szolgáltatás** a fő bal oldali navigációs menü tetején.
 
 3.  Írja be a **"Azure Active Directory**" a szűrő keresési mezőbe, és válasszon a **Azure Active Directory** elemet.
 
@@ -667,6 +667,6 @@ A licenc hozzárendelése egy csoporthoz, kövesse az alábbi lépéseket:
 >
 >
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [Új felhasználók hozzáadása az Azure Active Directoryhoz](active-directory-users-create-azure-portal.md)
 
