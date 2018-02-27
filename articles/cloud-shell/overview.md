@@ -12,13 +12,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 01/17/2018
+ms.date: 02/15/2018
 ms.author: juluk
-ms.openlocfilehash: b710c324f72fa56a2ebad0d1b35052639611d30d
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: da415f4fb276f3d86d3ff1634a08fa11eabe6e7f
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="overview-of-azure-cloud-shell"></a>Azure-felhőbe rendszerhéj áttekintése
 Azure Cloud rendszerhéjjal egy interaktív, a böngésző által elérhető rendszerhéj Azure-erőforrások kezeléséhez.
@@ -69,9 +69,9 @@ Felhő rendszerhéj kérni fogja az erőforrás létrehozása első indítási c
 Egy helyileg redundáns tárolás (LRS) fiókot és az Azure-fájlok létrehozhatók az Ön nevében. Azure-fájlok Bash és a PowerShell környezetben használandó, ha úgy dönt, hogy egyaránt. Rendszeres tárolási költségek vonatkoznak.
 
 Három erőforrások hozza létre az Ön nevében:
-1. Az erőforráscsoport neve:`cloud-shell-storage-<region>`
-2. A Tárfiók neve:`cs<uniqueGuid>`
-3. A fájlmegosztás neve:`cs-<user>-<domain>-com-<uniqueGuid>`
+1. Az erőforráscsoport neve: `cloud-shell-storage-<region>`
+2. A Tárfiók neve: `cs<uniqueGuid>`
+3. A fájlmegosztás neve: `cs-<user>-<domain>-com-<uniqueGuid>`
 
 > [!Note]
 > Felhő rendszerhéj bash is létrehoz egy alapértelmezett 5 GB-os lemezre lemezképet `$Home`. Például az SSH-kulcsok a $Home könyvtárban található összes fájl megmaradnak, a csatlakoztatott Azure fájlmegosztás tárolja a felhasználói lemezképet. Alkalmazza az ajánlott eljárásokat, ha a fájlok mentése a $Home címtár és a csatlakoztatott Azure-fájlmegosztáshoz.
@@ -83,7 +83,7 @@ Speciális beállítás rendelje hozzá a meglévő erőforrásokat felhő rends
 A tárolási telepítő parancssorból, kattintson a "Show speciális beállítások" További beállítások megjelenítéséhez.
 
 > [!Note]
-> Legördülő lista az előzetesen hozzárendelt felhő rendszerhéj pedig a LRS/Georedundáns tárfiókok szűrve.
+> Legördülő lista az előzetesen hozzárendelt felhő rendszerhéj pedig a LRS/Georedundáns/ZRS tárfiókok szűrve.
 
 [További információk a felhő rendszerhéj tárolási, az Azure fájlmegosztások frissítése, és a feltöltése/letöltése fájlok.](persisting-shell-storage.md)
 

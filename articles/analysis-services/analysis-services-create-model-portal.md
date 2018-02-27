@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 11/01/2017
+ms.date: 02/14/2018
 ms.author: owend
-ms.openlocfilehash: 0a70ce4a106b8d9103080f050ab2317cd69348c1
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 038cfb72cfc98fdddaca6751b321c11066527e56
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-a-model-in-azure-portal"></a>A modell létrehozása Azure-portálon
 
@@ -68,7 +68,7 @@ Az új modell jelenik meg a böngészőben. Itt a következőket teheti:
 > Modell metaadatainak szerkesztése, illetve a böngészőben új mértékek létrehozása menti ezeket a módosításokat az Azure-ban a modellhez. Ha még dolgozik a modell SSDT, a Power BI Desktop vagy az Excel, a modell szinkronban kérheti le.
 
 
-## <a name="next-steps"></a>Következő lépések 
+## <a name="next-steps"></a>További lépések 
 [Adatbázis-szerepkörök és a felhasználók kezelése](analysis-services-database-users.md)  
 [Kapcsolódás Excellel](analysis-services-connect-excel.md)  
 

@@ -3,8 +3,8 @@ title: "Linux-lemezképek hozzáadása Azure verem"
 description: "Megtudhatja, hogyan Linux lemezképek hozzáadása Azure verem."
 services: azure-stack
 documentationcenter: 
-author: anjayajodha
-manager: byronr
+author: brenduns
+manager: femila
 editor: 
 ms.service: azure-stack
 ms.workload: na
@@ -12,12 +12,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 9/25/2017
-ms.author: anajod
-ms.openlocfilehash: a8763c01cba4e5a9eaa3b7842b627d6eb9661a95
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: MT
+ms.author: brenduns
+ms.reviewer: anajod
+ms.openlocfilehash: 29e5443de4dc43efe6d536b0f8b9cfc6ad37a669
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="add-linux-images-to-azure-stack"></a>Linux-lemezképek hozzáadása Azure verem
 
@@ -94,6 +95,6 @@ Előkészítheti a saját Linux kép a következő utasítások egyikének haszn
 2. [Adja hozzá a piactér](azure-stack-add-vm-image.md). Győződjön meg arról, hogy a `OSType` paraméter értéke `Linux`.
 3. A lemezkép hozzáadása a piactéren, után a Piactéri elemet létrejön, és felhasználók telepítheti egy Linux virtuális gép.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [Az ajánlat Azure verem szolgáltatások áttekintése](azure-stack-offer-services-overview.md)
 

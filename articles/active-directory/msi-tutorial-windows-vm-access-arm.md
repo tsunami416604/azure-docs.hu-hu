@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: de73481bc171ff5884ccdb42f374b2f9138e599c
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 57d79abc4f82eec896639c1dcb11c25e4cb353f9
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="use-a-windows-vm-managed-service-identity-msi-to-access-resource-manager"></a>Erőforrás-kezelő eléréséhez használja a Windows virtuális gép felügyelt szolgáltatás identitásának (MSI)
 
@@ -43,7 +43,7 @@ Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.az
 
 Ebben az oktatóanyagban azt hozzon létre egy új Windows virtuális Gépet.  A meglévő virtuális MSI is engedélyezheti.
 
-1.  Kattintson az Azure Portal bal felső sarkában található **Új** gombra.
+1.  Kattintson a **hozzon létre egy erőforrást** gomb az Azure portál bal felső sarkában található.
 2.  Válassza a **Számítás**, majd a **Windows Server 2016 Datacenter** elemet. 
 3.  Adja meg a virtuális gép adatait. A **felhasználónév** és **jelszó** létrehozott itt van a hitelesítő adatok használatával jelentkezzen be a virtuális gép.
 4.  Válassza ki a megfelelő **előfizetés** a virtuális gép meg a legördülő listában.

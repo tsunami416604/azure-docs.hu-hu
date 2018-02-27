@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/12/2018
+ms.date: 02/23/2018
 ms.author: cherylmc
-ms.openlocfilehash: 5e041de12105770a16e43b5ff4f918a1eba92b2a
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: ff590ecb5091695d6105b510f563251fe43412fe
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="generate-and-export-certificates-for-point-to-site-connections-using-powershell-on-windows-10-or-windows-server-2016"></a>Létrehozása és exportálása a tanúsítványok a PowerShell-lel Windows 10 vagy Windows Server 2016 pont – hely kapcsolatok
 
@@ -78,7 +78,7 @@ A példa a deklarált "$cert" változót előző szakaszából. Ha a gyökér ö
 Módosítsa, majd futtassa a példa egy ügyfél-tanúsítvány előállításához. Ha az alábbi példa azt a módosítása nélkül futtatja, eredménye "P2SChildCert" nevű ügyfél-tanúsítványt.  Ha szeretné a gyermek tanúsítvány elnevezése valami mást, módosítsa a CN-érték. Ne módosítsa a TextExtension ebben a példában futtatásakor. Az ügyfél tanúsítványát, létrehozhat "Tanúsítványok - aktuális User\Personal\Certificates" automatikusan telepíti a számítógépre.
 
 ```powershell
-New-SelfSignedCertificate -Type Custom -KeySpec Signature `
+New-SelfSignedCertificate -Type Custom -DnsName P2SChildCert -KeySpec Signature `
 -Subject "CN=P2SChildCert" -KeyExportPolicy Exportable `
 -HashAlgorithm sha256 -KeyLength 2048 `
 -CertStoreLocation "Cert:\CurrentUser\My" `
@@ -116,7 +116,7 @@ Ha további ügyféltanúsítványok létrehozni, vagy nem használja az ugyanaz
 4.  Módosítsa, majd futtassa a példa egy ügyfél-tanúsítvány előállításához. Ha az alábbi példa azt a módosítása nélkül futtatja, eredménye "P2SChildCert" nevű ügyfél-tanúsítványt. Ha szeretné a gyermek tanúsítvány elnevezése valami mást, módosítsa a CN-érték. Ne módosítsa a TextExtension ebben a példában futtatásakor. Az ügyfél tanúsítványát, létrehozhat "Tanúsítványok - aktuális User\Personal\Certificates" automatikusan telepíti a számítógépre.
 
   ```powershell
-  New-SelfSignedCertificate -Type Custom -KeySpec Signature `
+  New-SelfSignedCertificate -Type Custom -DnsName P2SChildCert -KeySpec Signature `
   -Subject "CN=P2SChildCert" -KeyExportPolicy Exportable `
   -HashAlgorithm sha256 -KeyLength 2048 `
   -CertStoreLocation "Cert:\CurrentUser\My" `

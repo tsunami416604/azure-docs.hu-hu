@@ -4,7 +4,7 @@ description: "Ez az oktatóanyag bemutatja, hogyan hozhat létre egy SQL Server 
 services: virtual-machines
 documentationCenter: na
 authors: MikeRayMSFT
-manager: jhubbard
+manager: craigg
 editor: monicar
 tags: azure-service-management
 ms.assetid: 08a00342-fee2-4afe-8824-0db1ed4b8fca
@@ -16,11 +16,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/09/2017
 ms.author: mikeray
-ms.openlocfilehash: 228ca9ca5fddc493d27bfd6a40df5ee7306d6aa9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 70e483f8b64648200bd6f0898a2877c2bf95e590
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="configure-always-on-availability-group-in-azure-vm-manually"></a>Konfigurálás mindig a rendelkezésre állási csoport az Azure virtuális gép manuálisan
 
@@ -40,13 +40,13 @@ A következő táblázat felsorolja az előfeltételeket, amelyeket végre kell 
 
 |  |Követelmény |Leírás |
 |----- |----- |----- |
-|![Négyzetes](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png) | Két SQL-kiszolgáló | -Az Azure rendelkezésre állási csoportok <br/> -Egyetlen tartományban <br/> -A Feladatátvételi fürtszolgáltatás telepítése |
-|![Négyzetes](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)| Windows Server | A fürt tanúsító fájlmegosztás |  
-|![Négyzetes](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|SQL Server-szolgáltatásfiók | Tartományi fiók |
-|![Négyzetes](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|SQL Server Agent szolgáltatásfiók használatával | Tartományi fiók |  
-|![Négyzetes](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|Tűzfal portjainak megnyitása | -SQL kiszolgáló: **1433** az alapértelmezett példány esetén <br/> -Adatbázis-tükrözési végpontját: **5022** vagy minden elérhető port <br/> -Azure terheléselosztói mintavétel: **59999** vagy minden elérhető port |
-|![Négyzetes](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|Adja hozzá a Feladatátvételi fürtszolgáltatás | Mindkét SQL Server szükség erre a szolgáltatásra |
-|![Négyzetes](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|Telepítési tartományi fiók | -Minden egyes SQL Server helyi rendszergazdája <br/> – SQL Server SysAdmin (rendszergazda) rögzített kiszolgálói szerepkör az SQL Server minden példányának tagja  |
+|![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png) | Two SQL Servers | -Az Azure rendelkezésre állási csoportok <br/> -Egyetlen tartományban <br/> -A Feladatátvételi fürtszolgáltatás telepítése |
+|![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)| Windows Server | A fürt tanúsító fájlmegosztás |  
+|![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|SQL Server-szolgáltatásfiók | Tartományi fiók |
+|![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|SQL Server Agent szolgáltatásfiók használatával | Tartományi fiók |  
+|![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|Tűzfal portjainak megnyitása | -SQL kiszolgáló: **1433** az alapértelmezett példány esetén <br/> -Adatbázis-tükrözési végpontját: **5022** vagy minden elérhető port <br/> -Azure terheléselosztói mintavétel: **59999** vagy minden elérhető port |
+|![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|Adja hozzá a Feladatátvételi fürtszolgáltatás | Mindkét SQL Server szükség erre a szolgáltatásra |
+|![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|Telepítési tartományi fiók | -Minden egyes SQL Server helyi rendszergazdája <br/> – SQL Server SysAdmin (rendszergazda) rögzített kiszolgálói szerepkör az SQL Server minden példányának tagja  |
 
 
 Az oktatóanyag elkezdéséhez kell [végezze el az Azure virtuális gépek létrehozását a Always On rendelkezésre állási csoportok használatának előfeltételei](virtual-machines-windows-portal-sql-availability-group-prereq.md). Ha az Előfeltételek már megadta, de is ugorhat való [fürt létrehozása](#CreateCluster).
@@ -55,7 +55,7 @@ Az oktatóanyag elkezdéséhez kell [végezze el az Azure virtuális gépek lét
 <!--**Procedure**: *This is the first “step”. Make titles H2’s and short and clear – H2’s appear in the right pane on the web page and are important for navigation.*-->
 
 <a name="CreateCluster"></a>
-##A fürt létrehozása
+## A fürt létrehozása
 
 Az Előfeltételek elvégzése után az első lépés a Windows Server feladatátvevő fürt, amely tartalmazza a két SQL-kiszolgálója és egy tanúsító kiszolgáló létrehozásához.  
 
@@ -72,7 +72,7 @@ Az Előfeltételek elvégzése után az első lépés a Windows Server feladatá
    | Oldal | Beállítások |
    | --- | --- |
    | Előkészületek |Alapértelmezések használata |
-   | Kiszolgálók kiválasztása |Írja be az első SQL-kiszolgáló neve a **kiszolgáló nevének megadása** kattintson **Hozzáadás**. |
+   | Select Servers |Írja be az első SQL-kiszolgáló neve a **kiszolgáló nevének megadása** kattintson **Hozzáadás**. |
    | Érvényesítési figyelmeztetés |Válassza ki **szám I nem igényel Microsoft-támogatást ehhez a fürthöz, és ezért nem szeretné, hogy az érvényesítési tesztek futtatásához. A Tovább gombra kattintva, továbbra is a fürt létrehozása**. |
    | Hozzáférési pont a fürt felügyeletéhez |Írja be a fürt nevét, például **SQLAGCluster1** a **fürtnév**.|
    | Megerősítés |Használhatja az alapértelmezett értékeket, kivéve, ha a tárolóhelyek használata. Lásd a táblázat utáni megjegyzést. |
@@ -221,7 +221,7 @@ Repeat these steps on the second SQL Server.
 7. A **Object Explorer**, kattintson a jobb gombbal **adatbázisok** kattintson **új adatbázis**.
 8. A **adatbázisnév**, típus **MyDB1**, majd kattintson a **OK**.
 
-### <a name="backupshare"></a>Hozzon létre egy biztonsági mentési megosztást
+### <a name="backupshare"></a> Hozzon létre egy biztonsági mentési megosztást
 
 1. Az első, az SQL Server **Kiszolgálókezelő**, kattintson a **eszközök**. Nyissa meg **számítógép-kezelés**.
 
@@ -337,7 +337,7 @@ Ezen a ponton rendelkezik egy rendelkezésre állási csoporthoz az SQL Server k
 
 <a name="configure-internal-load-balancer"></a>
 
-## <a name="create-an-azure-load-balancer"></a>Hozzon létre egy Azure terheléselosztó
+## <a name="create-an-azure-load-balancer"></a>Azure-terheléselosztó létrehozása
 
 Azure virtuális gépeken futó SQL Server rendelkezésre állási csoport terheléselosztó szükséges. A terheléselosztó a rendelkezésre állási csoport figyelője az IP-címet tartalmazza. Ez a szakasz a terheléselosztó létrehozása az Azure portálon foglalja össze.
 
@@ -381,7 +381,7 @@ A terheléselosztó konfigurálásához szüksége a háttérkészlet, a mintav�
    | **Name (Név)** | Adjon meg egy szöveges nevet | SQLLBBE
    | **Társított** | Válassza ki a listából | Rendelkezésre állási csoport
    | **A rendelkezésre állási csoport** | Adjon nevet a rendelkezésre állási csoport, amelyek az SQL Server virtuális gépen | sqlAvailabilitySet |
-   | **Virtuális gépek** |A két Azure SQL Server virtuális gép neve | SQL Server-0, SQL Server-1
+   | **Virtuális gépek** |A két Azure SQL Server virtuális gép neve | sqlserver-0, sqlserver-1
 
 1. Írja be a háttérkészlethez nevét.
 
@@ -404,7 +404,7 @@ A terheléselosztó konfigurálásához szüksége a háttérkészlet, a mintav�
    | **Name (Név)** | Szöveg | SQLAlwaysOnEndPointProbe |
    | **Protocol (Protokoll)** | Válassza ki a TCP | TCP |
    | **Port** | Minden nem használt portot | 59999 |
-   | **Időköz**  | Másodpercben mintavételi kísérletek közötti idő |5 |
+   | **Intervallum**  | Másodpercben mintavételi kísérletek közötti idő |5 |
    | **Sérült küszöbérték** | Egymást követő sikertelen mintavételek bekövetkező akkor, ha a nem megfelelő virtuális gépek száma  | 2 |
 
 1. Kattintson a **OK** beállítása a állapotmintáihoz.
@@ -421,7 +421,7 @@ A terheléselosztó konfigurálásához szüksége a háttérkészlet, a mintav�
    | **Protocol (Protokoll)** | Válassza ki a TCP |TCP |
    | **Port** | A port az SQL Server-példány használata | 1433 |
    | **Háttér-Port** | Ha a fix IP-Címek értéke a közvetlen kiszolgálói visszatérési nem használja ezt a mezőt | 1433 |
-   | **Hálózatfigyelő** |A mintavétel a megadott név | SQLAlwaysOnEndPointProbe |
+   | **Probe** |A mintavétel a megadott név | SQLAlwaysOnEndPointProbe |
    | **Munkamenet megőrzését** | Legördülő lista | **Egyik sem** |
    | **Üresjárati időtúllépés** | Tartsa nyitva, a TCP-kapcsolat perc | 4 |
    | **Lebegőpontos IP (közvetlen kiszolgálói válasz)** | |Engedélyezve |
@@ -431,7 +431,7 @@ A terheléselosztó konfigurálásához szüksége a háttérkészlet, a mintav�
 
 1. Kattintson a **OK** a terheléselosztási szabályok beállítása.
 
-## <a name="configure-listener"></a>A figyelő konfigurálása
+## <a name="configure-listener"></a> A figyelő konfigurálása
 
 A következő lépés egy rendelkezésre állási csoport figyelőjének beállítása a feladatátvevő fürtön.
 
@@ -497,6 +497,6 @@ Az SQLCMD kapcsolat automatikusan csatlakozik bármely SQL Server-példányt az 
 
 <!--**Next steps**: *Reiterate what users have done, and give them interesting and useful next steps so they want to go on.*-->
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [IP-cím hozzáadása egy terheléselosztót egy másik rendelkezésre állási csoport](virtual-machines-windows-portal-sql-ps-alwayson-int-listener.md#Add-IP).

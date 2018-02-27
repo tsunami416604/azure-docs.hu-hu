@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/03/2016
 ms.author: cephalin
-ms.openlocfilehash: 1cfe7ec37ad8b24a8bd9ab2bf67e95675a57b675
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6b71aa004095a94bea84623fd2b5dbdfc1f81af0
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="troubleshoot-slow-web-app-performance-issues-in-azure-app-service"></a>Az Azure App Service lassú web app teljesítménnyel kapcsolatos problémák hibaelhárítása
 Ez a cikk segítséget nyújt a lassú web app teljesítménnyel kapcsolatos problémák elhárítása [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714).
@@ -58,10 +58,10 @@ Ez a beállítás lehetővé teszi annak megállapítása, ha az alkalmazás van
 
 A metrikák, amelyeket a webalkalmazás figyelésére érdemes vannak
 
-* Munkakészlet átlagos memória
+* Átlagos memória-munkakészlet
 * Átlagos válaszidő
 * CPU-idő
-* Memória munkakészlete
+* Memória-munkakészlet
 * Kérelmek
 
 ![webes alkalmazás teljesítményének figyelése](./media/app-service-web-troubleshoot-performance-degradation/1-monitor-metrics.png)
@@ -83,18 +83,14 @@ Hasznos üzemidő rendszer figyeli a HTTP válaszkódot használatával, és vá
 Lásd még [Azure webhelyek tartja be és a Végpontmonitoring kijelző - lengyel Schackow rendelkező](https://channel9.msdn.com/Shows/Azure-Friday/Keeping-Azure-Web-Sites-up-plus-Endpoint-Monitoring-with-Stefan-Schackow) videó a végpontmonitoring kijelző.
 
 #### <a name="application-performance-monitoring-using-extensions"></a>Alkalmazásteljesítmény-figyelési bővítményekkel
-Ugyanígy figyelheti az alkalmazások teljesítményéről használatával *bővítmények hely*.
+Ugyanígy figyelheti az alkalmazások teljesítményéről használatával egy *bővítmény hely*.
 
 Minden egyes App Service web app egy bővíthető felügyeleti végpontot, amely lehetővé teszi telepített eszközök hatékony készletének használata a webhely kiterjesztéseket biztosít. Bővítmények a következők: 
 
 - Szerkesztők kód, például [Visual Studio Team Services](https://www.visualstudio.com/products/what-is-visual-studio-online-vs.aspx). 
 - A kapcsolódó erőforrások, például a MySQL-adatbázis felügyeleti eszközeit a webes alkalmazás csatlakozik.
 
-[Az Azure Application Insights](/services/application-insights/) és [New Relic](/marketplace/partners/newrelic/newrelic/) két a Teljesítményfigyelő rendelkezésre álló hely bővítmények. New Relic használatához futásidőben ügynököt telepít. Azure Application Insights használatához újra kell építeni a kódot az SDK-val, és bővítménye által biztosított további adatokhoz való hozzáférés is telepíthet. Az SDK-val lehetővé teszi, hogy írhat kódot a használati és részletesebben az alkalmazás teljesítményének figyelése.
-
-Az Application Insights használatához tekintse meg a [a webes alkalmazások teljesítményének figyelésére](../application-insights/app-insights-web-monitor-performance.md).
-
-New Relic használatát ismerteti [új New Relic teljesítmény Alkalmazáskezelés Azure](../store-new-relic-cloud-services-dotnet-application-performance-management.md).
+[Az Azure Application Insights](/services/application-insights/) egy Teljesítményfigyelő helyrendszer-bővítmény is elérhető. Az Application Insights használatához újra kell építeni a kódot az SDK-val. Bővítménye által biztosított további adatokhoz való hozzáférés is telepíthet. Az SDK-val lehetővé teszi, hogy írhat kódot a használati és részletesebben az alkalmazás teljesítményének figyelése. További információkért lásd: [a webes alkalmazások teljesítményének figyelésére](../application-insights/app-insights-web-monitor-performance.md).
 
 <a name="collect" />
 
@@ -137,7 +133,7 @@ Az Azure App Service támogatási portálon tesz lehetővé a három lépést az
 
 1. Figyelje meg a jelenlegi viselkedése
 2. Diagnosztikai adatok gyűjtése és a beépített elemzőkkel futtató elemzése
-3. Csökkentése
+3. Problémamegoldás
 
 Ha a probléma most történik, kattintson a **elemzés** > **diagnosztika** > **diagnosztizálása most** diagnosztikai munkamenet létrehozására, amelyek gyűjti a HTTP-naplókat, az Eseménynapló, memóriaképek, PHP hibanaplókat és a PHP-folyamat jelentés.
 

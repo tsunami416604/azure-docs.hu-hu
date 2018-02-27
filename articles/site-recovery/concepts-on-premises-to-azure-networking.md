@@ -3,7 +3,7 @@ title: "IP-címzés beállítása az Azure-bA az Azure Site Recovery feladatátv
 description: "Ismerteti, hogyan lehet IP-címzési való csatlakozáshoz Azure virtuális gépek a feladatátvételt követően az Azure Site Recovery helyszíni beállítása"
 services: site-recovery
 documentationcenter: 
-author: prateek9us
+author: mayanknayar
 manager: carmonm
 editor: 
 ms.assetid: f02cdbea-0940-48bf-9fa5-f38d9e584fae
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 11/14/2017
-ms.author: pratshar
-ms.openlocfilehash: 5519a965d9828cfa1e73ba12f8acd1d509a36a66
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.date: 02/22/2018
+ms.author: manayar
+ms.openlocfilehash: 9b14f6ea361d3c1d7402d1a8aeb10695a8726edb
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="set-up-ip-addressing-to-connect-after-failover-to-azure"></a>Az IP-címzést, az Azure-bA a feladatátvételt követően kapcsolódni
 
@@ -88,7 +88,7 @@ A vnet – vnet-kapcsolatot, a feladatátvétel után mellett Woodgrove pont-pon
 
 Ez [blogbejegyzés](http://azure.microsoft.com/blog/2014/09/04/networking-infrastructure-setup-for-microsoft-azure-as-a-disaster-recovery-site/) ismerteti, hogyan állíthatja be az Azure hálózati infrastruktúra, ha már nincs szükség IP-címek megőrizni a feladatátvételt követően. Az kezdődik-e az alkalmazás leírása, hogyan állíthatja be a helyszíni hálózat és az Azure-ban megvizsgálja, és folyamat végén a feladatátvételeket a futtatásával kapcsolatos információkat. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [Feladatátvétel futtatása](site-recovery-failover.md)
 
 

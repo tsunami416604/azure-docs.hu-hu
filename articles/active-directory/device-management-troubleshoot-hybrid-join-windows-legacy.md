@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 11/08/2017
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: f1b92c604e20198714e9697bf4d08b3f71f23ae3
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
-ms.translationtype: MT
+ms.openlocfilehash: 5657df412b1f2b7d4d43d7551289620ae4d77de2
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-down-level-devices"></a>Hibaelhárítás az Azure Active Directory hibrid csatlakoztatott régebbi eszközök 
 
@@ -62,7 +62,7 @@ Ez a témakör nyújt hibaelhárítási útmutatót a lehetséges problémák me
 
 1. Nyissa meg a parancssort rendszergazdaként 
 
-2. Típusa`"%programFiles%\Microsoft Workplace Join\autoworkplace.exe /i"`
+2. Típusa `"%programFiles%\Microsoft Workplace Join\autoworkplace.exe /i"`
 
 A parancs egy párbeszédpanelt, amely lehetővé teszi az illesztési állapotával kapcsolatos további adatokat jeleníti meg.
 
@@ -82,6 +82,18 @@ Ha a hybrid Azure AD join nem volt sikeres, a párbeszédpanel biztosít inform�
 - Nincs bejelentkezve tartományi felhasználóként
 
     ![A munkahelyi csatlakoztatás Windows](./media/active-directory-device-registration-troubleshoot-windows-legacy/03.png)
+    
+    Számos különböző okokból miért Ez akkor történhet.
+    
+    1. Ha a bejelentkezett felhasználó nem tartományi felhasználó (például egy helyi felhasználót). Hibrid az Azure AD-kezelés régebbi eszközök csatlakoztatása csak tartományi felhasználók esetén támogatott.
+    
+    2. Ha bármilyen okból Autoworkplace.exe történő Azure AD vagy AD FS csendes hitelesítés sikertelen lesz. Néhány lehetséges ok lehet kimenő kötött hálózati csatlakozási problémák (az Előfeltételek ellenőrzése) URL az Azure AD-, vagy hogy a többtényezős hitelesítés a felhasználó számára engedélyezett/konfigurálva, de WIAORMUTLIAUTHN nincs konfigurálva az összevonási kiszolgálón (ellenőrzés konfigurációs lépések) is. Egy másik lehetőség, a hitelesítőtartomány felderítése (HRD) lap arra vár, hogy a felhasználói beavatkozás meggátolja, hogy a Autoworkplace.exe csendes megszerezni egy 
+    
+    3. Ha a szervezet használja az Azure AD zökkenőmentes egyszeri bejelentkezést, a következő URL-címeket nem találhatók meg az eszköz Internet Explorer intranetes beállításai:
+    - https://autologon.microsoftazuread-sso.com
+    - https://aadg.windows.net.nsatc.net
+    
+    és a "Állapotsor parancsfájl segítségével a frissítések engedélyezése" beállítást engedélyezni kell az Intranet zóna.
 
 - A kvóta elérve
 
@@ -107,6 +119,6 @@ Az állapot információt az eseménynaplóban a is talál **alkalmazások és s
 
   - A felhasználó elérte a határértéket, az eszközök. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Kérdéseit, tekintse meg a [eszköz felügyeleti kapcsolatos gyakori kérdések](device-management-faq.md)  

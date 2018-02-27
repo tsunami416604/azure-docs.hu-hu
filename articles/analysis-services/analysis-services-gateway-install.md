@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 10/30/2017
+ms.date: 02/14/2018
 ms.author: owend
-ms.openlocfilehash: 9ba36c4cf932cab2e449b12a307639184feab049
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: c2cbe1c60f67c689a38d1585245610a6fa73bff4
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="install-and-configure-an-on-premises-data-gateway"></a>Telepítse és konfigurálja a helyszíni adatátjáró
 Egy a helyszíni adatok átjáróra szükség, ha egy vagy több Azure Analysis Services kiszolgáló ugyanabban a régióban kapcsolódnak a helyszíni adatforrások. Az átjáró kapcsolatos további információkért lásd: [helyszíni adatátjáró](analysis-services-gateway.md).
@@ -64,7 +64,7 @@ Egy a helyszíni adatok átjáróra szükség, ha egy vagy több Azure Analysis 
    > [!NOTE]
    > Ha jelentkezik be egy olyan tartományi fiók, van leképezve a szervezeti fiók az Azure ad-ben. A szervezeti fiók lesz az átjáró rendszergazdájához.
 
-## <a name="register"></a>Regisztráció
+## <a name="register"></a>Register
 Ahhoz, hogy hozzon létre egy átjáró erőforrást az Azure-ban, regisztrálnia kell az átjáró Felhőszolgáltatáshoz telepítette a helyi példány. 
 
 1.  Válassza ki **ezen a számítógépen egy új átjáró regisztrálása**.
@@ -117,6 +117,6 @@ Miután telepíteni és regisztrálni az átjárót, szüksége átjáró erőfo
 
 Ennyi az egész. Ha a portok megnyitásához, vagy tegye a hibaelhárításra van szüksége, ügyeljen arra, hogy tekintse meg [helyszíni adatátjáró](analysis-services-gateway.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Analysis Services kezelése](analysis-services-manage.md)   
 * [Adatok beolvasása az Azure Analysis Services](analysis-services-connect.md)

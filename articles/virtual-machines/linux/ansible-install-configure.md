@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/18/2017
 ms.author: iainfou
-ms.openlocfilehash: a27d4422e0d7b116d2aea6f743b9efc27570cdb9
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 91173a14d40f8259927af720986a4efbc9c573ce
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="install-and-configure-ansible-to-manage-virtual-machines-in-azure"></a>Telepítse és konfigurálja az Azure virtuális gépek kezeléséhez Ansible
 Ez a cikk részletesen Ansible és a szükséges Azure Python SDK-modulok telepítése a leggyakrabban használt Linux disztribúciókkal részénél. Más disztribúciókkal Ansible telepíthető a telepített csomagok, hogy elférjen az adott platform beállításával. Szeretne létrehozni Azure-erőforrások biztonságos elérését, is megismerheti, hogyan hozhat létre és Ansible használandó hitelesítő adatok megadása. 
@@ -28,7 +28,7 @@ További telepítési opciókon és a további platformok lépéseket, tekintse 
 
 
 ## <a name="install-ansible"></a>Ansible telepítése
-Először hozzon létre egy erőforráscsoportot a [az csoport létrehozása](/cli/azure/group#az_group_create). Az alábbi példa létrehoz egy erőforráscsoportot *myResourceGroupAnsible* a a *eastus* helye:
+Először hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#az_group_create) paranccsal. Az alábbi példa létrehoz egy erőforráscsoportot *myResourceGroupAnsible* a a *eastus* helye:
 
 ```azurecli
 az group create --name myResourceGroupAnsible --location eastus
@@ -144,7 +144,7 @@ Ansible kommunikál az Azure-ban, a felhasználónév és jelszó vagy egy egysz
 Hozzon létre egy egyszerű állomás számítógépen [az ad sp létrehozása-az-rbac](/cli/azure/ad/sp#create-for-rbac) és a hitelesítő adatait, amelyet a Ansible kimeneti:
 
 ```azurecli
-az ad sp create-for-rbac --query [client_id: appId, secret: password, tenant: tenant]
+az ad sp create-for-rbac --query '{"client_id": appId, "secret": password, "tenant": tenant}'
 ```
 
 A kimenet a fenti parancsok például a következőképpen történik:

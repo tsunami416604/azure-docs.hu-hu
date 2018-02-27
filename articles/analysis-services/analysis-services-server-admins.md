@@ -13,21 +13,21 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 11/01/2017
+ms.date: 02/14/2018
 ms.author: owend
-ms.openlocfilehash: 6a42baf9fd880264e4130c009f27935a4743de21
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: d90f1e3df8f5934d5c334ec72b5726f105842ca1
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="manage-server-administrators"></a>Kiszolgáló-rendszergazdák kezelése
-Kiszolgáló-rendszergazdák, amelyek a kiszolgálón található bérlőjének kell lennie egy érvényes felhasználó vagy csoport az Azure Active Directory (Azure AD). Használhat **Analysis Services rendszergazdák** a vezérlő panelen a kiszolgáló Azure-portálon, vagy a kiszolgáló tulajdonságai szolgáltatáshoz az ssms kiszolgáló-rendszergazdák kezeléséhez. 
+Kiszolgáló-rendszergazdák, amelyek a kiszolgálón található bérlőjének kell lennie egy érvényes felhasználó vagy csoport az Azure Active Directory (Azure AD). Használhat **Analysis Services rendszergazdák** a kiszolgáló Azure-portálon, vagy a kiszolgáló Tulajdonságok szolgáltatáshoz az ssms kiszolgáló-rendszergazdák kezeléséhez. 
 
 ## <a name="to-add-server-administrators-by-using-azure-portal"></a>Kiszolgáló-rendszergazdák hozzáadása az Azure portál használatával
-1. A kiszolgáló a vezérlő paneljén kattintson **Analysis Services rendszergazdák**.
-2. Az a  **\<kiszolgálónév >-Analysis Services rendszergazdák** panelen kattintson a **Hozzáadás**.
-3. Az a **kiszolgáló-rendszergazdák hozzáadása** panelen válassza ki a felhasználói fiókokat az Azure ad- vagy meghívhatja a külső felhasználók e-mail címét.
+1. Az a kattintson a portálon, a kiszolgáló **Analysis Services rendszergazdák**.
+2. A  **\<kiszolgáló_neve >-Analysis Services rendszergazdák**, kattintson a **Hozzáadás**.
+3. A **kiszolgáló-rendszergazdák hozzáadása**, válassza ki a felhasználói fiókokat az Azure ad- vagy meghívhatja a külső felhasználók e-mail címét.
 
     ![Kiszolgáló-rendszergazdák az Azure portálon](./media/analysis-services-server-admins/aas-manage-users-admins.png)
 
@@ -38,7 +38,7 @@ Kiszolgáló-rendszergazdák, amelyek a kiszolgálón található bérlőjének 
    
     ![Kiszolgáló-rendszergazdák hozzáadása a szolgáltatáshoz az ssms](./media/analysis-services-server-admins/aas-manage-users-ssms.png)
 
-## <a name="next-steps"></a>Következő lépések 
+## <a name="next-steps"></a>További lépések 
 [Hitelesítés és felhasználói engedélyek](analysis-services-manage-users.md)  
 [Adatbázis-szerepkörök és a felhasználók kezelése](analysis-services-database-users.md)  
 [Szerepköralapú hozzáférés-vezérlés](../active-directory/role-based-access-control-what-is.md)  

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/10/2017
 ms.author: markgal
-ms.openlocfilehash: 58080d0e045f1825e89287fc421b7e84db36331e
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
-ms.translationtype: MT
+ms.openlocfilehash: 925aa88d32f6f5cea252616cf079faf35857eb8a
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="monitor-and-manage-azure-recovery-services-vaults-and-servers-for-windows-machines"></a>Windows-gépek Azure Recovery Services-tárolóinak és -kiszolgálóinak figyelése és kezelése
 
@@ -32,13 +32,11 @@ Ez a cikk áttekintést az Azure-portál és a Microsoft Azure Backup szolgálta
 A Recovery Services-tároló irányítópult látható a részleteit, illetve a Recovery Services-tároló attribútumait.
 
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com/) használata az Azure-előfizetéshez.
-2. A központ menüben kattintson a **több szolgáltatások**.
-
-    ![Recovery Services-tárolók 1.lépés listájának megnyitása](./media/backup-azure-manage-windows-server/open-rs-vault-list.png) <br/>
+2. Kattintson a **minden szolgáltatás**. 
 
 3. Nyissa meg a Recovery Services-tároló szeretné. A párbeszédpanelen, kezdje el begépelni **Recovery Services**. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Kattintson a **Recovery Services-tárolók** megjelenítse a Recovery Services-tárolók az előfizetésben.
 
-    ![Recovery Services-tároló létrehozása – 1. lépés](./media/backup-azure-manage-windows-server/browse-to-rs-vaults-2.png) <br/>
+     ![Recovery Services-tárolók 1.lépés listájának megnyitása](./media/backup-azure-manage-windows-server/open-rs-vault-list.png) <br/>
 
     A Recovery Services-tárolók listáját nyitja meg.
 
@@ -74,9 +72,9 @@ Az irányítópult tetején:
 ## <a name="alerts-for-backups-using-azure-backup-agent"></a>A biztonsági mentéseket az Azure Backup szolgáltatás ügynöke riasztások:
 | Riasztási szint | Értesítések küldése |
 | --- | --- |
-| Kritikus |Sikertelen biztonsági mentéshez, helyreállítási hiba |
-| Figyelmeztetés |A biztonsági mentés befejeződött, de figyelmeztetéseket generált (Ha < 100 fájlok nem készül biztonsági mentés okozta problémák miatt, és 1 000 000 > fájlok sikeresen biztonsági mentése) |
-| Tájékoztató |None |
+| Kritikus | a biztonsági mentés sikertelen, a helyreállítási hiba és a késleltetett delete például valaki a védelmet az leállásakor adatok törlése |
+| Figyelmeztetés | biztonsági mentés befejeződött, de figyelmeztetésekkel (Ha < 100 fájlok nem készül biztonsági mentés okozta problémák miatt, és 1 000 000 > fájlok sikeresen biztonsági mentése) |
+| Tájékoztató | jelenleg nincs információs riasztások léptek fel érhetők el az Azure Backup szolgáltatás ügynöke |
 
 ## <a name="manage-backup-alerts"></a>Biztonsági riasztások kezelése
 Kattintson a **biztonsági mentési riasztások** csempére kattintva nyissa meg a **biztonsági mentési riasztások** menü és kezelheti a riasztásokat.
@@ -146,7 +144,7 @@ Biztonsági mentés mind a helyszíni feladatokat, (Ha a helyszíni kiszolgáló
 
 Az irányítópult a biztonsági mentés területen a biztonsági mentési feladat csempe feladatok számát jeleníti meg:
 
-* folyamatban van
+* folyamatban
 * nem sikerült az elmúlt 24 órában.
 
 A biztonsági mentési feladatok kezeléséhez kattintson a **biztonsági mentési feladatok** csempe, amely a biztonsági mentési feladatok menü megnyitása.
@@ -187,7 +185,7 @@ Nyissa meg a **Microsoft Azure Backup szolgáltatás ügynökének** (rákeresve
 
 Az a **műveletek** érhető el a biztonságimásolat-készítő ügynök konzol jobb akkor hajtsa végre az alábbi felügyeleti feladatokat:
 
-* Kiszolgáló regisztrálása
+* Register Server
 * Biztonsági mentés ütemezése
 * Biztonsági másolat készítése
 * Tulajdonságainak módosítása
@@ -282,7 +280,7 @@ Elemre a szabályozás engedélyezéséhez:
     ![Windows Server biztonsági mentés ütemezése](./media/backup-azure-manage-windows-server/finish-exclusions.png)
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
-**1. KÉRDÉS. A biztonsági mentési feladat állapota: módon fejezte be az Azure Backup szolgáltatás ügynöke, miért nem az beszerzése kerülnek azonnal portálon?**
+**Q1. A biztonsági mentési feladat állapota: módon fejezte be az Azure Backup szolgáltatás ügynöke, miért nem az beszerzése kerülnek azonnal portálon?**
 
 1. válasz Nincs maximális késleltetés 15 perc között a biztonsági mentési feladat állapotát a következő megjelenik az Azure Backup szolgáltatás ügynöke és az Azure-portálon.
 
@@ -290,7 +288,7 @@ Elemre a szabályozás engedélyezéséhez:
 
 A.2 riasztás jelenik meg, az Azure biztonsági mentési hiba 20 perc belül.
 
-**3. NEGYEDÉVÉBEN. Ha egy e-mailt nem küldi el, ha értesítések beállítása eset van?**
+**Q3. Ha egy e-mailt nem küldi el, ha értesítések beállítása eset van?**
 
 3. válasz Az alábbiakban az esetekben, amikor az értesítés nem lesz elküldve riasztás zaj csökkentése érdekében:
 
@@ -307,10 +305,10 @@ A.2 riasztás jelenik meg, az Azure biztonsági mentési hiba 20 perc belül.
 2. Feltételezve, hogy a folyamat nem fut, nyissa meg a **Vezérlőpult** , és keresse meg a szolgáltatások listájában. Indítsa el, vagy indítsa újra a **Microsoft Azure Recovery Services Management Agent**.
 
     További információért keresse meg a naplózásra kerül:<br/>
-   `<AzureBackup_agent_install_folder>\Microsoft Azure Recovery Services Agent\Temp\GatewayProvider*`Példa:<br/>
+   `<AzureBackup_agent_install_folder>\Microsoft Azure Recovery Services Agent\Temp\GatewayProvider*` Példa:<br/>
    `C:\Program Files\Microsoft Azure Recovery Services Agent\Temp\GatewayProvider0.errlog`
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Windows Server vagy a Windows ügyfél visszaállítása az Azure-ból](backup-azure-restore-windows-server.md)
 * Azure biztonsági mentés kapcsolatos további információkért lásd: [Azure biztonsági mentés áttekintése](backup-introduction-to-azure-backup.md)
 * Látogasson el a [Azure biztonsági mentési fórum](http://go.microsoft.com/fwlink/p/?LinkId=290933)

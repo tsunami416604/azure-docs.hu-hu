@@ -14,11 +14,11 @@ ms.workload: identity
 ms.date: 12/15/2017
 ms.author: skwan
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: a0e352efb05890d824842acf2c75d8836750546f
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 742b76e17b7ad00a70b0d18895c0b59ebe044d47
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="use-a-windows-vm-managed-service-identity-msi-to-access-azure-data-lake-store"></a>Azure Data Lake Store eléréséhez használja a Windows virtuális gép felügyelt szolgáltatás identitásának (MSI)
 
@@ -45,7 +45,7 @@ Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.az
 
 Ebben az oktatóanyagban azt hozzon létre egy új Windows virtuális Gépet.  A meglévő virtuális MSI is engedélyezheti.
 
-1. Kattintson az Azure Portal bal felső sarkában található **Új** gombra.
+1. Kattintson a **hozzon létre egy erőforrást** az Azure portál bal felső sarkában.
 2. Válassza a **Számítás**, majd a **Windows Server 2016 Datacenter** elemet. 
 3. Adja meg a virtuális gép adatait. A **felhasználónév** és **jelszó** létrehozott itt van a hitelesítő adatok használatával jelentkezzen be a virtuális gép.
 4. Válassza ki a megfelelő **előfizetés** a virtuális gép meg a legördülő listában.

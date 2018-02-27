@@ -1,9 +1,9 @@
 ---
-title: "Hálózati Teljesítményfigyelő konfigurálása az Azure ExpressRoute-Kapcsolatcsoportok (előzetes verzió) |} Microsoft Docs"
-description: "NPM konfigurálása Azure ExpressRoute-Kapcsolatcsoportok. (Előzetes verzió)"
+title: "Hálózati Teljesítményfigyelő konfigurálása az Azure ExpressRoute-Kapcsolatcsoportok |} Microsoft Docs"
+description: "Konfigurálja a felhő alapú hálózatfigyelési az Azure ExpressRoute-Kapcsolatcsoportok."
 documentationcenter: na
 services: expressroute
-author: cherylmc
+author: ajaycode
 manager: timlt
 editor: 
 tags: azure-resource-manager
@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/31/2018
-ms.author: pareshmu
-ms.openlocfilehash: 269c2e8a7867521b34128980e33ed97aa7b62a04
-ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
-ms.translationtype: MT
+ms.date: 02/14/2018
+ms.author: agummadi
+ms.openlocfilehash: 4d5bf1550ecd5982e51c0ae8d3917102d2f7c253
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/21/2018
 ---
-# <a name="configure-network-performance-monitor-for-expressroute-preview"></a>Konfigurálja a hálózati Teljesítményfigyelő az ExpressRoute (előzetes verzió)
+# <a name="configure-network-performance-monitor-for-expressroute"></a>Az ExpressRoute hálózati Teljesítményfigyelő konfigurálása
 
 Hálózati teljesítmény figyelése (NPM) egy olyan felhőalapú hálózati felügyeleti megoldás, amely figyeli az Azure-alapú telepítések és (fiókirodákban, stb.) a helyszíni helyek közötti kapcsolatot. NPM része a Microsoft Operations Management Suite (OMS). NPM most kibővíti az ExpressRoute, amely lehetővé teszi a hálózati teljesítmény figyeléséhez használja a magánhálózati társviszony-létesítés ExpressRoute-Kapcsolatcsoportok keresztül. NPM az ExpressRoute konfigurálásakor hálózati problémák azonosításához, és kiszűri észlelését.
 
@@ -49,7 +49,7 @@ Figyelheti a világ minden részén ExpressRoute-Kapcsolatcsoportok üzemeltetet
 * Délkelet-Ázsia 
 * Dél-kelet-Ausztrália
 
-## <a name="workflow"></a>Munkafolyamat
+## <a name="workflow"></a>munkafolyamat
 
 Több kiszolgáló figyelési ügynökök telepítve vannak a helyszíni és az Azure-ban. Az ügynökök kommunikálnak egymással, de ne küldjön adatokat, azok TCP kézfogás csomagok küldése. Az ügynökök közötti kommunikáció lehetővé teszi, hogy az Azure-t azoknak a hálózati topológia és a forgalmat több elérési út.
 
@@ -62,9 +62,15 @@ Több kiszolgáló figyelési ügynökök telepítve vannak a helyszíni és az 
 
 Használata hálózati Teljesítményfigyelő más objektumok, vagy a szolgáltatások figyelésére, és már rendelkezik munkaterület a támogatott régiók egyikéhez sem, ha az 1. lépésben és a 2. lépés kihagyhatja, és a konfiguráció 3. lépés megkezdése.
 
-## <a name="configure"></a>1. lépés:, (az előfizetést, a Vnetek az ExpressRoute Circuit(s)) csatolva van a munkaterület létrehozása
+## <a name="configure"></a>1. lépés: A munkaterület létrehozása
+
+Munkaterület létrehozása, amely rendelkezik az ExpressRoute circuit(s) Vnetek hivatkozásra az előfizetést.
 
 1. Az a [Azure-portálon](https://portal.azure.com), válassza ki az előfizetést, amely rendelkezik a Vnetek társítottak, az ExpressRoute-kapcsolatcsoportot. Majd keresse meg a szolgáltatások listájában a **piactér** "Hálózati Teljesítményfigyelő". Megnyitásához kattintson a vissza a **hálózati Teljesítményfigyelő** lap.
+
+>[!NOTE]
+>Előfordulhat, hogy hozzon létre egy új munkaterületet, vagy egy meglévő munkaterületen.  Ha szeretne egy meglévő munkaterületen, győződjön meg róla, hogy a munkaterület áttelepítése megtörtént-e az új lekérdezési nyelv. [További információ...](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-log-search-upgrade)
+>
 
   ![portal](.\media\how-to-npm\3.png)<br><br>
 2. A fő alján **hálózati Teljesítményfigyelő** kattintson **létrehozása** megnyitásához **hálózati Teljesítményfigyelő - hozzon létre új megoldás** lap. Kattintson a **OMS-munkaterület - ki kell jelölnie egy munkaterület** munkaterületek lapjának megnyitásához. Kattintson a **+ hozzon létre új munkaterület** munkaterület lapjának megnyitásához.
@@ -79,29 +85,25 @@ Használata hálózati Teljesítményfigyelő más objektumok, vagy a szolgálta
   >[!NOTE]
   >Az ExpressRoute-kapcsolatcsoport a világon bárhol lehet, és nem rendelkezik a munkaterületen ugyanabban a régióban kell.
   >
-
-
+  
   ![Munkaterület](.\media\how-to-npm\4.png)<br><br>
 4. Kattintson a **OK** mentéséhez és a beállítások-sablon üzembe helyezése. Amikor érvényesíti a sablont, kattintson a **létrehozása** központi telepítése a munkaterületen.
 5. A munkaterület központi telepítése után nyissa meg a **NetworkMonitoring(name)** létrehozott erőforrás. Ellenőrizze a beállításokat, majd kattintson a **megoldás további konfigurálást igényel**.
 
   ![további beállítások](.\media\how-to-npm\5.png)
-6. A a **hálózati Teljesítményfigyelő Üdvözöljük** lapon jelölje be **szintetikus tranzakciók használata TCP**, kattintson a **Submit**. A TCP tranzakciókat csak történő elérhetővé tételéhez és megszünteti a kapcsolatot használják. Nem küld adatokat a TCP-kapcsolatokon keresztül.
-
-  ![Szintetikus tranzakciók TCP](.\media\how-to-npm\6.png)
 
 ## <a name="agents"></a>2. lépés: Telepítse és konfigurálja az ügynökök
 
 ### <a name="download"></a>2.1: az ügynök telepítési fájl letöltése
 
-1. Az a **hálózati teljesítmény figyelési konfiguráció - TCP-telepítőből** az erőforrás a a **OMS-ügynökök telepítése** területen kattintson az ügynök, amely megfelel a kiszolgáló processzor- és letöltése a a telepítő fájl.
+1. Lépjen a **általános beállítások** lapján a **hálózati teljesítmény figyelési konfiguráció** lap az erőforrás. Kattintson az ügynök, amely megfelel a kiszolgáló processzor a a **OMS-ügynökök telepítése** szakaszt, és töltse le a telepítő fájlját.
 
   >[!NOTE]
   >Az ügynököt telepíteni kell a Windows Server (2008 SP1 vagy újabb). Windows asztali operációs rendszer és a Linux operációs rendszert futtató ExpressRoute-Kapcsolatcsoportok megfigyelése nincs támogatva. 
   >
   >
 2. Ezután másolja a **munkaterület azonosítója** és **elsődleges kulcs** a Jegyzettömbbe.
-3. Az a **ügynökök konfigurálása** szakaszban, töltse le a Powershell-parancsfájlt. A PowerShell-parancsfájl segítségével nyissa meg a megfelelő tűzfal port a TCP-tranzakciók.
+3. Az a **OMS-ügynökök konfigurálása figyelés a TCP protokollt használó** szakaszban, töltse le a Powershell-parancsfájlt. A PowerShell-parancsfájl segítségével nyissa meg a megfelelő tűzfal port a TCP-tranzakciók.
 
   ![PowerShell-szkript](.\media\how-to-npm\7.png)
 
@@ -217,7 +219,7 @@ Az összes figyelt ExpressRoute-Kapcsolatcsoportok listájának megtekintéséhe
 
   ![circuit_list](.\media\how-to-npm\circuits.png)
 
-#### <a name="trend"></a>Adatvesztés, a késés és a teljesítmény alakulását
+#### <a name="trend"></a>Adatvesztés, a késleltetés és a teljesítmény alakulását
 
 A sávszélesség, a késés és a veszteség diagram olyan interaktív. Akkor is nagyíthatja diagramokat, minden szakasza egér vezérlők használatával. Megtekintheti a sávszélesség, a késés és a veszteség adatok más időközönkénti kattintva **dátum/idő**, a műveletek gomb bal felső alatt található.
 

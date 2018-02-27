@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: nitinme
-ms.openlocfilehash: 3a673d2ad58f85f5437c378a1d05aa4963893df1
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 315a879368e522cc17eeff7be766f0c8a38d470b
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="use-azure-toolkit-for-intellij-to-debug-spark-applications-remotely-in-hdinsight-through-vpn"></a>Az intellij-t Azure eszközkészlet segítségével távolról a VPN-en keresztül a HDInsight Spark-alkalmazások
 
@@ -94,7 +94,7 @@ Azt javasoljuk, hogy is fürtöt hoz létre az Apache Spark on Azure hdinsight l
 
     a. Válassza ki **HDInsight** > **a Spark on HDInsight (Scala)**.
 
-    b. Válassza ki **következő**.
+    b. Kattintson a **Tovább** gombra.
 2. A következő **új projekt** párbeszédpanelen tegye a következőket, majd válassza ki **Befejezés**:
 
     - Adja meg a projekt nevét és helyét.
@@ -241,7 +241,7 @@ Azt javasoljuk, hogy is fürtöt hoz létre az Apache Spark on Azure hdinsight l
 ## <a name="step-5-run-the-application-in-debug-mode"></a>5. lépés: Futtassa az alkalmazást hibakeresési módban
 1. Az IntelliJ IDEA projektben nyissa meg `SparkSample.scala` , és hozzon létre a töréspont `val rdd1`. Az a **töréspont létrehozása a** előugró menüből válassza **függvény executeJob sor**.
 
-    ![Töréspont](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/create-breakpoint.png)
+    ![Töréspont hozzáadása](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/create-breakpoint.png)
 2. Futtassa az alkalmazást, válassza ki a **Debug futtassa** megjelenítő gombra a **távoli Futtatás** konfigurációs legördülő listát.
 
     ![Válassza ki a hibakeresési futtatása gombra](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/debug-run-mode.png)
@@ -275,7 +275,6 @@ Azt javasoljuk, hogy is fürtöt hoz létre az Apache Spark on Azure hdinsight l
 * [Spark és BI: interaktív adatelemzés végrehajtása a Spark hdinsight BI-eszközökkel](apache-spark-use-bi-tools.md)
 * [Spark és Machine Learning: Spark on HDInsight HVAC-adatok épület-hőmérséklet elemzésére használata](apache-spark-ipython-notebook-machine-learning.md)
 * [Spark és Machine Learning: A Spark on HDInsight használata az élelmiszervizsgálati eredmények előrejelzésére](apache-spark-machine-learning-mllib-ipython.md)
-* [Spark Streaming: Spark on HDInsight használata valós idejű streamelési alkalmazásokat hozhatnak létre](apache-spark-eventhub-streaming.md)
 * [A webhelynapló elemzése a Spark on HDInsight használatával](../hdinsight-apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="create-and-run-applications"></a>Alkalmazások létrehozása és futtatása

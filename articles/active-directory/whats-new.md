@@ -14,14 +14,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/05/2017
+ms.date: 02/15/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: ccee4fd0359ab9fe8bd025ead9a2d0993bb718f2
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
-ms.translationtype: MT
+ms.openlocfilehash: 7cdeb0a996835f976e6c80e9831479a2ff917434
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Újdonságok az Azure Active Directoryban?
 
@@ -219,7 +219,7 @@ További információkért lásd: [kevesebb bejelentkezési kérdésben: az új 
 
 **Típus:** új szolgáltatás  
 **Szolgáltatás kategória:** használati feltételek  
-**A termék képesség:** irányítás
+**A termék képesség:** Cégirányítási/megfelelőségi
  
 A beállítás a rendszergazdák a felhasználónak kell bontsa ki a használati feltételeket a feltételek elfogadása előtt.
 
@@ -251,7 +251,7 @@ További információkért lásd: [Mi az Azure AD Privileged Identity Management
  
 A December 2017 a összevonási támogatást a következő új alkalmazások az alkalmazásgyűjtemény lettek hozzáadva:
 
-[Accredible](https://go.microsoft.com/fwlink/?linkid=863523), Adobe élmény kezelő [EFI digitális kirakat](https://go.microsoft.com/fwlink/?linkid=861685), [Communifire](https://go.microsoft.com/fwlink/?linkid=861676) CybSafe, [FactSet](https://go.microsoft.com/fwlink/?linkid=863525), [kép WORKS](https://go.microsoft.com/fwlink/?linkid=863517), [MOBI](https://go.microsoft.com/fwlink/?linkid=863521), [MobileIron az Azure AD-integrációs](https://go.microsoft.com/fwlink/?linkid=858027), [Reflektive](https://go.microsoft.com/fwlink/?linkid=863518), [felbontása GmbHbambuszaSAMLSSO](https://go.microsoft.com/fwlink/?linkid=863520), [Bitbucket felbontása GmbH a SAML SSO](https://go.microsoft.com/fwlink/?linkid=863519), [Vodeclic](https://go.microsoft.com/fwlink/?linkid=863522), WebHR, Zenegy Azure AD-integrációra.
+[Accredible](https://go.microsoft.com/fwlink/?linkid=863523), Adobe élmény kezelő [EFI digitális kirakat](https://go.microsoft.com/fwlink/?linkid=861685), [Communifire](https://go.microsoft.com/fwlink/?linkid=861676) CybSafe, [FactSet](https://go.microsoft.com/fwlink/?linkid=863525), [kép WORKS](https://go.microsoft.com/fwlink/?linkid=863517), [MOBI](https://go.microsoft.com/fwlink/?linkid=863521), [MobileIron az Azure AD-integrációs](https://go.microsoft.com/fwlink/?linkid=858027), [Reflektive](https://go.microsoft.com/fwlink/?linkid=863518), [felbontása GmbH bambusz a SAML SSO](https://go.microsoft.com/fwlink/?linkid=863520), [Bitbucket felbontása GmbH a SAML SSO](https://go.microsoft.com/fwlink/?linkid=863519), [Vodeclic](https://go.microsoft.com/fwlink/?linkid=863522), WebHR, Zenegy Azure AD-integrációra.
 
 Az összes rendelkezésre álló oktatóanyag teljes áttekintése, lásd: [SaaS alkalmazások integrálása az Azure Active Directoryval](https://aka.ms/appstutorial).
 
@@ -494,7 +494,7 @@ Most belefoglalható (vagy kizárása) macOS eszköz platform feltétele az Azur
 
 További információkért lásd:
 
-- [MacOS eszközök megfelelőségi szabályzat létrehozása az Intune-nal](https://aka.ms/macoscompliancepolicy)
+- [Megfelelőségi szabályzat létrehozása MacOS-eszközökhöz az Intune-nal](https://aka.ms/macoscompliancepolicy)
 - [Feltételes hozzáférés az Azure ad-ben](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)
 
 
@@ -666,7 +666,7 @@ További információkért lásd: [a többtényezős hitelesítés az Azure port
 
 **Típus:** új szolgáltatás  
 **Szolgáltatás kategória:** használati feltételek  
-**A termék képesség:** irányítás  
+**A termék képesség:** Cégirányítási/megfelelőségi  
 
 
 
@@ -709,7 +709,7 @@ További információkért lásd: [Privileged Identity Management az Azure-erőf
 
 **Típus:** új szolgáltatás  
 **Szolgáltatás kategória:** értékelést eléréséhez  
-**A termék képesség:** irányítás  
+**A termék képesség:** Cégirányítási/megfelelőségi  
 
 
 

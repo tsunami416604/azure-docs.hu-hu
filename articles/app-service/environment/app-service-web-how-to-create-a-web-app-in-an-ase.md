@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 7/11/2017
 ms.author: ccompy
-ms.openlocfilehash: b031807073313e9e093dbc7576ecfd3d2a970abe
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1e8540409c6174ad02bd2d9d57c53e0279f49871
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-a-web-app-in-an-app-service-environment-v1"></a>Hozzon létre egy webalkalmazást az App Service Environment-környezet v1
 
@@ -38,7 +38,7 @@ Ez az oktatóanyag bemutatja, hogyan web Apps alkalmazások létrehozásához, �
 Ez az oktatóanyag feltételezi, hogy létrehozott egy App Service Environment-környezet. Ha, amely még nem végzett, lásd: [egy App Service Environment-környezet létrehozása](app-service-web-how-to-create-an-app-service-environment.md). 
 
 ## <a name="create-a-web-app"></a>Webalkalmazás létrehozása
-1. Az a [Azure Portal](https://portal.azure.com/), kattintson a **új > Web + mobil > webalkalmazás**. 
+1. Az a [Azure Portal](https://portal.azure.com/), kattintson a **hozzon létre egy erőforrást > Web + mobil > webalkalmazás**. 
    
     ![][1]
 2. Válassza ki előfizetését.  
@@ -47,7 +47,7 @@ Ez az oktatóanyag feltételezi, hogy létrehozott egy App Service Environment-k
 3. Válasszon ki vagy hozzon létre egy erőforráscsoportot.
    
     *Erőforráscsoportok* lehetővé teszik a kapcsolódó Azure-erőforrások kezeléséhez egységet, és akkor hasznos, ha létrehozó *szerepköralapú hozzáférés-vezérlés* (RBAC) szabályok az alkalmazásokhoz. További információkért lásd: [Azure Resource Manager áttekintése][ResourceGroups]. 
-4. Válassza ki, vagy hozzon létre egy App Service-csomag.
+4. Válassza ki vagy hozzon létre egy App Service-csomagot.
    
     *App Service-csomagok* kezelt készlet azokból a webalkalmazásokból.  Normális esetben ha árképzés lehetőséget választja, az ár alkalmazza az App Service-csomagra, nem pedig az egyes alkalmazásokra. -Környezetben kell fizetnie a számítási példányokért az ASE rendelt ahelyett, hogy az ASP van felsorolva.  Méretezést kívánó egy webalkalmazást, akkor növelheti az App Service példányai példányainak száma terv és az összes hatással van a webalkalmazások, hogy a tervben.  Néhány funkció, például hely tárhelyek vagy virtuális integráció belül a csomag mennyiség korlátozások is.  További információkért lásd: [Azure App Service-csomagok áttekintése](../azure-web-sites-web-hosting-plans-in-depth-overview.md)
    
@@ -63,7 +63,7 @@ Ez az oktatóanyag feltételezi, hogy létrehozott egy App Service Environment-k
     Ha a ASE egy belső VIP és egy alkalmazás URL-CÍMÉT használja abban, hogy ASE elem: [*sitename*]. [ *ASE létrehozásakor megadott altartomány*]   
     Miután kiválasztotta az ASP ASE létrehozása során látni fogja az alábbi frissítése altartomány **neve**
 
-## <a name="createplan"></a>Az App Service-csomag létrehozása
+## <a name="createplan"></a> Az App Service-csomag létrehozása
 Az App Service-környezetek App Service-csomagot hoz létre, amikor munkavégző a választott eltérőek, ahány megosztott dolgozókat-környezetben.  A munkavállalók kell használni azok, amelyekre a ASE a rendszergazda által lefoglalt  Ez azt jelenti, hogy hozzon létre egy új csomagot, meg kell rendelkeznie a ASE feldolgozókészletek, mint a példányok száma összesen rendelt összes már az adott munkavégző készletét a tervek további munkavállalók.  Nincs elég munkavállalók a ASE munkavégző készletét. a csomag létrehozása, ha szüksége ASE rendszergazdától őket hozzá dolgozni.
 
 Az App Service-csomagokról egy App Service Environment-környezet által üzemeltetett másik különbség a kijelölés árképzési hiánya.  Ha az App Service-környezetek, a rendszer által felhasznált számítási erőforrások fizet, és a csomagok hozzáadott díja nem rendelkeznek az adott környezetben.  Általában az App Service-csomag létrehozásakor, válassza ki a tarifacsomagot, amely megadja, hogy a számlázási.  Az App Service Environment-környezet alapvetően helyen tartalom létrehozásához használható.  A környezet és a tartalom tárolására szolgáló nem kell fizetnie.

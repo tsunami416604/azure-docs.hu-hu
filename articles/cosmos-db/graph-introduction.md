@@ -12,11 +12,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/05/2017
 ms.author: lbosq
-ms.openlocfilehash: 14921dbeb0b670e4ec29a224caca07da12bfb82b
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: ba58377614326a10405be4a64d4b39f116b75bfe
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="introduction-to-azure-cosmos-db-graph-api"></a>Bevezetés az Azure Cosmos DB: Graph API
 
@@ -107,22 +107,14 @@ Használhatja az Azure parancssori felület (CLI), Azure PowerShell vagy az Azur
 
 Az alábbi táblázat a népszerű Gremlin illesztőprogramok szemben Azure Cosmos DB használható:
 
-| Letöltés | Dokumentáció |
-| --- | --- |
-| [Java](https://mvnrepository.com/artifact/com.tinkerpop.gremlin/gremlin-java) |[Gremlin JavaDoc](http://tinkerpop.apache.org/javadocs/current/full/) |
-| [Node.js](https://www.npmjs.com/package/gremlin) |[Gremlin-JavaScript a Githubon](https://github.com/jbmusso/gremlin-javascript) |
-| [Gremlin konzol](https://tinkerpop.apache.org/downloads.html) |[TinkerPop docs](http://tinkerpop.apache.org/docs/current/reference/#gremlin-console) |
-
-Azure Cosmos-adatbázis is biztosít, amely rendelkezik a Gremlin kiterjesztésmetódusok .NET könyvtár az [Azure Cosmos DB SDK-k](sql-api-sdk-dotnet.md) NuGet útján. A szalagtár "egy folyamaton belüli" Gremlin kiszolgáló csatlakozzon közvetlenül a adatok partíciók használó biztosít.
-
-| Letöltés | Dokumentáció |
-| --- | --- |
-| [.NET](https://www.nuget.org/packages/Microsoft.Azure.Graphs/) |[Microsoft.Azure.Graphs](https://msdn.microsoft.com/library/azure/dn948556.aspx) |
-
-Használatával a [Azure Cosmos DB emulátor](local-emulator.md), használhatja a .NET Graph API-t a fenti fejlesztéséhez és teszteléséhez helyileg Azure-előfizetés létrehozása, és ezzel járó költségeket nélkül. Ha elégedett az alkalmazást az emulátorban alakulását, átválthat a felhőben Azure Cosmos DB fiókkal.
-
-> [!NOTE]
-> Gremlin Lekérdezések érvényesítése támogatása [Azure Cosmos DB emulátor](local-emulator.md) csak akkor áll rendelkezésre .NET Graph API-n keresztül.
+| Letöltés | Dokumentáció | Első lépések |
+| --- | --- | --- |
+| [.NET](http://tinkerpop.apache.org/docs/3.3.1/reference/#gremlin-DotNet) | [A Githubon Gremlin.NET](https://github.com/apache/tinkerpop/tree/master/gremlin-dotnet) | [Hozzon létre Graph .NET használatával](create-graph-dotnet.md) |
+| [Java](https://mvnrepository.com/artifact/com.tinkerpop.gremlin/gremlin-java) | [Gremlin JavaDoc](http://tinkerpop.apache.org/javadocs/current/full/) | [Hozzon létre Graph javás környezetekben](create-graph-java.md) |
+| [Node.js](https://www.npmjs.com/package/gremlin) | [Gremlin-JavaScript a Githubon](https://github.com/jbmusso/gremlin-javascript) | [Node.js segítségével Graph létrehozása](create-graph-nodejs.md) |
+| [Python](http://tinkerpop.apache.org/docs/3.3.1/reference/#gremlin-python) | [Gremlin-Python a Githubon](https://github.com/apache/tinkerpop/tree/master/gremlin-python) | [Hozzon létre Graph pythonos környezetekben](create-graph-python.md) |
+| [PHP](https://packagist.org/packages/brightzone/gremlin-php) | [Gremlin-PHP a Githubon](https://github.com/PommeVerte/gremlin-php) | [A Graph használatával PHP létrehozása](create-graph-php.md) |
+| [Gremlin konzol](https://tinkerpop.apache.org/downloads.html) | [TinkerPop docs](http://tinkerpop.apache.org/docs/current/reference/#gremlin-console) |  [Hozzon létre Graph Gremlin konzol használata](create-graph-gremlin-console.md) |
 
 ## <a name="scenarios-for-graph-support-of-azure-cosmos-db"></a>Azure Cosmos DB graph-támogatása forgatókönyvei
 Az alábbiakban néhány forgatókönyv graph támogatási Azure Cosmos-adatbázis helyének:

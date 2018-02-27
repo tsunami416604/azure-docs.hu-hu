@@ -12,14 +12,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/31/2018
+ms.date: 02/20/2018
 ms.author: jeffgilb
 ms.reviewer: ppacent
-ms.openlocfilehash: d96e2e6767ca01c8c16403a8846e3ab9d16796bc
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 89f3ceeb95b4a8b498523e0d73930740bcadd268
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="azure-stack-public-key-infrastructure-certificate-requirements"></a>Az Azure verem nyilvános kulcsokra épülő infrastruktúrát tanúsítványkövetelmények
 Azure verem van egy nyilvános infrastruktúra-hálózaton kívülről hozzáférhető nyilvános IP-címtartományból egy kis készletét a verem Azure-szolgáltatások, és esetleg a bérlői virtuális gépek használatával. Azure verem központi telepítése során a megfelelő DNS-neveit Azure verem nyilvános infrastruktúra végpontokkal PKI-tanúsítványok szükségesek. Ez a cikk nyújt tájékoztatást:
@@ -37,6 +37,7 @@ Az alábbi lista a tanúsítvány Azure verem telepítéséhez szükséges köve
 - A tanúsítvány-aláírási algoritmus nem lehet SHA1, erősebb kell lennie. 
 - A tanúsítvány formátumban kell lennie PFX, mint a nyilvános és titkos kulcsok szükségesek az Azure-verem telepítéséhez. 
 - A tanúsítvány pfx-fájlok rendelkeznie érték "Digitális aláírás" és "KeyEncipherment" a "Kulcshasználat" mezőben.
+- A tanúsítvány pfx-fájlok rendelkeznie kell az "Kiszolgálói hitelesítés (1.3.6.1.5.5.7.3.1)" és "Ügyfél-hitelesítés (1.3.6.1.5.5.7.3.2)" értéket a "Kibővített kulcshasználat" mezőben.
 - Minden tanúsítvány pfx-fájlok a jelszavakat, meg kell egyeznie a központi telepítés során
 - Győződjön meg arról, hogy a tulajdonos nevét és minden tanúsítványok tulajdonosának alternatív nevét egyezik-e a sikertelen központi telepítéssel elkerülése érdekében ebben a cikkben leírt előírásoknak.
 
