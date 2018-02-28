@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 11/08/2017
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 5657df412b1f2b7d4d43d7551289620ae4d77de2
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
-ms.translationtype: HT
+ms.openlocfilehash: ecf77a614922ef58cdfb2b2c8174f66e01ea9b46
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-down-level-devices"></a>Hibaelhárítás az Azure Active Directory hibrid csatlakoztatott régebbi eszközök 
 
@@ -55,7 +55,6 @@ Ez a témakör nyújt hibaelhárítási útmutatót a lehetséges problémák me
 
 - Egy telepítse újra az operációs rendszer vagy egy manuális unregister és regisztrálja újra az lehet, hogy hozzon létre egy új regisztrációs Azure ad-val, és a felhasználó adatai lap az Azure portálon több bejegyzést eredményez. 
 
-
 ## <a name="step-1-retrieve-the-registration-status"></a>1. lépés: A regisztráció állapotának lekérése 
 
 **A regisztráció állapotának ellenőrzése:**  
@@ -87,13 +86,14 @@ Ha a hybrid Azure AD join nem volt sikeres, a párbeszédpanel biztosít inform�
     
     1. Ha a bejelentkezett felhasználó nem tartományi felhasználó (például egy helyi felhasználót). Hibrid az Azure AD-kezelés régebbi eszközök csatlakoztatása csak tartományi felhasználók esetén támogatott.
     
-    2. Ha bármilyen okból Autoworkplace.exe történő Azure AD vagy AD FS csendes hitelesítés sikertelen lesz. Néhány lehetséges ok lehet kimenő kötött hálózati csatlakozási problémák (az Előfeltételek ellenőrzése) URL az Azure AD-, vagy hogy a többtényezős hitelesítés a felhasználó számára engedélyezett/konfigurálva, de WIAORMUTLIAUTHN nincs konfigurálva az összevonási kiszolgálón (ellenőrzés konfigurációs lépések) is. Egy másik lehetőség, a hitelesítőtartomány felderítése (HRD) lap arra vár, hogy a felhasználói beavatkozás meggátolja, hogy a Autoworkplace.exe csendes megszerezni egy 
+    2. Ha bármilyen okból Autoworkplace.exe történő Azure AD vagy AD FS csendes hitelesítés sikertelen lesz. Néhány lehetséges ok lehet kimenő kötött hálózati csatlakozási problémák (az Előfeltételek ellenőrzése) URL az Azure AD-, vagy ha a többtényezős hitelesítés a felhasználó számára engedélyezett/konfigurálva, de WIAORMUTLIAUTHN nincs konfigurálva az összevonási kiszolgálón (ellenőrzés konfigurációs lépések) is. Egy másik lehetőség, felhasználói beavatkozás meggátolja, hogy a Autoworkplace.exe csendes a jogkivonat beszerzése vár a hitelesítőtartomány felderítése (HRD) lap.
     
     3. Ha a szervezet használja az Azure AD zökkenőmentes egyszeri bejelentkezést, a következő URL-címeket nem találhatók meg az eszköz Internet Explorer intranetes beállításai:
-    - https://autologon.microsoftazuread-sso.com
-    - https://aadg.windows.net.nsatc.net
     
-    és a "Állapotsor parancsfájl segítségével a frissítések engedélyezése" beállítást engedélyezni kell az Intranet zóna.
+       - https://autologon.microsoftazuread-sso.com
+       - https://aadg.windows.net.nsatc.net
+    
+       és a "Állapotsor parancsfájl segítségével a frissítések engedélyezése" beállítást engedélyezni kell az Intranet zóna.
 
 - A kvóta elérve
 

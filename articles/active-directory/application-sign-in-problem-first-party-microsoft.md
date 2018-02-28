@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: 880be5f27ca4198004511e01e63cdb3d72f107d5
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 1dc727f46785d2896544d8ef9098259f9ab994d1
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 ## <a name="problems-signing-in-to-a-microsoft-application"></a>Bejelentkezés Microsoft-alkalmazáshoz problémák
 
@@ -35,7 +35,7 @@ A probléma elhárításához indítsa el a a [általános probléma területet,
 
 ## <a name="general-problem-areas-with-application-access-to-consider"></a>Általános probléma területet, és fontolja meg az alkalmazás-hozzáférés
 
-Az alábbiakban olvashat egy listát az általános problémás területek, amely tovább részletezhető Ha egy meghatározni, hogy hol kell elkezdeni, de ajánlott elolvasni a bemutató lépéseit az induláshoz gyorsan: [forgatókönyv: hibaelhárítása a Microsoft Application hozzáférés](#walkthrough-steps-to-troubleshoot-microsoft-application-access).
+Az alábbiakban olvashat egy listát részletezhető Ha egy meghatározni, hogy hol kell elkezdeni általános problémát területének, de ajánlott elolvasni a bemutató lépéseit az induláshoz gyorsan: [forgatókönyv: hibaelhárítása a Microsoft Application hozzáférés](#walkthrough-steps-to-troubleshoot-microsoft-application-access).
 
 -   [A felhasználói fiókkal kapcsolatos problémák](#problems-with-the-users-account)
 
@@ -47,7 +47,7 @@ Az alábbiakban olvashat egy listát az általános problémás területek, amel
 
 ## <a name="steps-to-troubleshoot-microsoft-application-access"></a>Microsoft Application hozzáférés hibaelhárítása
 
-Alább néhány gyakori problémák segítsen futnak be, amikor a felhasználók nem jelentkezhetnek be a Microsoft-alkalmazások.
+Az alábbiakban néhány gyakori probléma, segítsen a futtatását, amikor a felhasználók nem jelentkezhetnek be egy Microsoft-alkalmazáshoz.
 
 -   Először ellenőrizze a általános problémák
 
@@ -113,9 +113,9 @@ Alkalmazás-hozzáférés blokkolható az alkalmazáshoz rendelt felhasználó k
 
 Ellenőrizze, hogy jelen-e a felhasználói fiók, kövesse az alábbi lépéseket:
 
-1.  Nyissa meg a [ **Azure Portal** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazdája.**
+1.  Nyissa meg a [ **Azure-portálon** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazdája.**
 
-2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **további szolgáltatások** a fő bal oldali navigációs menü alján.
+2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **minden szolgáltatás** a fő bal oldali navigációs menü tetején.
 
 3.  Írja be a **"Azure Active Directory**" a szűrő keresési mezőbe, és válasszon a **Azure Active Directory** elemet.
 
@@ -131,9 +131,9 @@ Ellenőrizze, hogy jelen-e a felhasználói fiók, kövesse az alábbi lépések
 
 A felhasználói fiók állapotának ellenőrzéséhez kövesse az alábbi lépéseket:
 
-1.  Nyissa meg a [ **Azure Portal** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazdája.**
+1.  Nyissa meg a [ **Azure-portálon** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazdája.**
 
-2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **további szolgáltatások** a fő bal oldali navigációs menü alján.
+2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **minden szolgáltatás** a fő bal oldali navigációs menü tetején.
 
 3.  Írja be a **"Azure Active Directory**" a szűrő keresési mezőbe, és válasszon a **Azure Active Directory** elemet.
 
@@ -151,9 +151,9 @@ A felhasználói fiók állapotának ellenőrzéséhez kövesse az alábbi lép�
 
 A jelszó visszaállításához kövesse az alábbi lépéseket:
 
-1.  Nyissa meg a [ **Azure Portal** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazdája.**
+1.  Nyissa meg a [ **Azure-portálon** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazdája.**
 
-2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **további szolgáltatások** a fő bal oldali navigációs menü alján.
+2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **minden szolgáltatás** a fő bal oldali navigációs menü tetején.
 
 3.  Írja be a **"Azure Active Directory**" a szűrő keresési mezőbe, és válasszon a **Azure Active Directory** elemet.
 
@@ -163,9 +163,9 @@ A jelszó visszaállításához kövesse az alábbi lépéseket:
 
 6.  **Keresési** érdekli, felhasználó és **sorára kattintson** kiválasztásához.
 
-7.  Kattintson a **jelszó-átállítási** gombra a felhasználó panel tetején.
+7.  Kattintson a **jelszó-átállítási** gombra, ha a felhasználó panel tetején.
 
-8.  Kattintson a **jelszó-átállítási** gombra a **jelszó-átállítási** panel, amely akkor jelenik meg.
+8.  Kattintson a **jelszó-átállítási** gombra a **jelszó-átállítási** ablaktábla akkor jelenik meg.
 
 9.  Másolás a **ideiglenes jelszó** vagy **adjon meg egy új jelszót** a felhasználó számára.
 
@@ -183,9 +183,9 @@ A jelszó visszaállításához kövesse az alábbi lépéseket:
 
 A felhasználó a multi-factor authentication állapotának ellenőrzéséhez kövesse az alábbi lépéseket:
 
-1.  Nyissa meg a [ **Azure Portal** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazdája.**
+1.  Nyissa meg a [ **Azure-portálon** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazdája.**
 
-2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **további szolgáltatások** a fő bal oldali navigációs menü alján.
+2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **minden szolgáltatás** a fő bal oldali navigációs menü tetején.
 
 3.  Írja be a **"Azure Active Directory**" a szűrő keresési mezőbe, és válasszon a **Azure Active Directory** elemet.
 
@@ -193,7 +193,7 @@ A felhasználó a multi-factor authentication állapotának ellenőrzéséhez k�
 
 5.  Kattintson a **minden felhasználó**.
 
-6.  Kattintson a **multi-factor Authentication** gomb a panel tetején.
+6.  Kattintson a **multi-factor Authentication** gombra, ha a panel tetején.
 
 7.  Egyszer a **multi-factor Authentication felügyeleti portál** terhelés esetén gondoskodjon arról, hogy a **felhasználók** fülre.
 
@@ -207,9 +207,9 @@ A felhasználó a multi-factor authentication állapotának ellenőrzéséhez k�
 
 A felhasználó hitelesítési használt kapcsolattartási adatokat a többtényezős hitelesítést, a feltételes hozzáférés, a Identity Protection és a jelszó-átállítási ellenőrzéséhez kövesse az alábbi lépéseket:
 
-1.  Nyissa meg a [ **Azure Portal** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazdája.**
+1.  Nyissa meg a [ **Azure-portálon** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazdája.**
 
-2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **további szolgáltatások** a fő bal oldali navigációs menü alján.
+2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **minden szolgáltatás** a fő bal oldali navigációs menü tetején.
 
 3.  Írja be a **"Azure Active Directory**" a szűrő keresési mezőbe, és válasszon a **Azure Active Directory** elemet.
 
@@ -229,9 +229,9 @@ A felhasználó hitelesítési használt kapcsolattartási adatokat a többtény
 
 A felhasználói csoporttagság ellenőrzéséhez kövesse az alábbi lépéseket:
 
-1.  Nyissa meg a [ **Azure Portal** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazdája.**
+1.  Nyissa meg a [ **Azure-portálon** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazdája.**
 
-2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **további szolgáltatások** a fő bal oldali navigációs menü alján.
+2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **minden szolgáltatás** a fő bal oldali navigációs menü tetején.
 
 3.  Írja be a **"Azure Active Directory**" a szűrő keresési mezőbe, és válasszon a **Azure Active Directory** elemet.
 
@@ -247,9 +247,9 @@ A felhasználói csoporttagság ellenőrzéséhez kövesse az alábbi lépéseke
 
 A felhasználó licenc-hozzárendeléseket ellenőrzéséhez kövesse az alábbi lépéseket:
 
-1.  Nyissa meg a [ **Azure Portal** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazdája.**
+1.  Nyissa meg a [ **Azure-portálon** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazdája.**
 
-2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **további szolgáltatások** a fő bal oldali navigációs menü alján.
+2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **minden szolgáltatás** a fő bal oldali navigációs menü tetején.
 
 3.  Írja be a **"Azure Active Directory**" a szűrő keresési mezőbe, és válasszon a **Azure Active Directory** elemet.
 
@@ -265,9 +265,9 @@ A felhasználó licenc-hozzárendeléseket ellenőrzéséhez kövesse az alábbi
 
 A licenc hozzárendelése egy felhasználóhoz, kövesse az alábbi lépéseket:
 
-1.  Nyissa meg a [ **Azure Portal** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazdája.**
+1.  Nyissa meg a [ **Azure-portálon** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazdája.**
 
-2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **további szolgáltatások** a fő bal oldali navigációs menü alján.
+2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **minden szolgáltatás** a fő bal oldali navigációs menü tetején.
 
 3.  Írja be a **"Azure Active Directory**" a szűrő keresési mezőbe, és válasszon a **Azure Active Directory** elemet.
 
@@ -289,7 +289,7 @@ A licenc hozzárendelése egy felhasználóhoz, kövesse az alábbi lépéseket:
 
 ## <a name="problems-with-groups"></a>A csoportokkal kapcsolatos problémák
 
-Alkalmazás-hozzáférés blokkolható egy csoportot, amely hozzá van rendelve az alkalmazás kapcsolatos probléma miatt. Az alábbiakban néhány módszert, hibaelhárítási és csoportokkal vagy csoporttagsággal kapcsolatos problémák megoldásához:
+Alkalmazás-hozzáférés blokkolható egy csoportot, amely hozzá van rendelve az alkalmazás kapcsolatos probléma miatt. Bizonyos értelemben csoportokkal vagy csoporttagsággal kapcsolatos problémák megoldásához és hibaelhárítást végezhessen a következők:
 
 -   [Ellenőrizze a csoport tagságát](#check-a-groups-membership)
 
@@ -305,9 +305,9 @@ Alkalmazás-hozzáférés blokkolható egy csoportot, amely hozzá van rendelve 
 
 Ellenőrizze a csoport tagságát, kövesse az alábbi lépéseket:
 
-1.  Nyissa meg a [ **Azure Portal** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazdája.**
+1.  Nyissa meg a [ **Azure-portálon** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazdája.**
 
-2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **további szolgáltatások** a fő bal oldali navigációs menü alján.
+2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **minden szolgáltatás** a fő bal oldali navigációs menü tetején.
 
 3.  Írja be a **"Azure Active Directory**" a szűrő keresési mezőbe, és válasszon a **Azure Active Directory** elemet.
 
@@ -323,9 +323,9 @@ Ellenőrizze a csoport tagságát, kövesse az alábbi lépéseket:
 
 A dinamikus csoport tagsági feltételek ellenőrzéséhez kövesse az alábbi lépéseket:
 
-1.  Nyissa meg a [ **Azure Portal** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazdája.**
+1.  Nyissa meg a [ **Azure-portálon** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazdája.**
 
-2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **további szolgáltatások** a fő bal oldali navigációs menü alján.
+2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **minden szolgáltatás** a fő bal oldali navigációs menü tetején.
 
 3.  Írja be a **"Azure Active Directory**" a szűrő keresési mezőbe, és válasszon a **Azure Active Directory** elemet.
 
@@ -343,9 +343,9 @@ A dinamikus csoport tagsági feltételek ellenőrzéséhez kövesse az alábbi l
 
 A csoporthoz hozzárendelt licencekkel ellenőrzéséhez kövesse az alábbi lépéseket:
 
-1.  Nyissa meg a [ **Azure Portal** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazdája.**
+1.  Nyissa meg a [ **Azure-portálon** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazdája.**
 
-2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **további szolgáltatások** a fő bal oldali navigációs menü alján.
+2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **minden szolgáltatás** a fő bal oldali navigációs menü tetején.
 
 3.  Írja be a **"Azure Active Directory**" a szűrő keresési mezőbe, és válasszon a **Azure Active Directory** elemet.
 
@@ -361,9 +361,9 @@ A csoporthoz hozzárendelt licencekkel ellenőrzéséhez kövesse az alábbi lé
 
 Újból feldolgozza a csoporthoz hozzárendelt licenceket, kövesse az alábbi lépéseket:
 
-1.  Nyissa meg a [ **Azure Portal** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazdája.**
+1.  Nyissa meg a [ **Azure-portálon** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazdája.**
 
-2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **további szolgáltatások** a fő bal oldali navigációs menü alján.
+2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **minden szolgáltatás** a fő bal oldali navigációs menü tetején.
 
 3.  Írja be a **"Azure Active Directory**" a szűrő keresési mezőbe, és válasszon a **Azure Active Directory** elemet.
 
@@ -384,11 +384,11 @@ A csoporthoz hozzárendelt licencekkel ellenőrzéséhez kövesse az alábbi lé
 
 ### <a name="assign-a-group-a-license"></a>Egy csoport a licenc hozzárendelése
 
-A licenc hozzárendelése egy csoporthoz, kövesse az alábbi lépéseket:
+Licenc hozzárendelése egy csoportot, kövesse az alábbi lépéseket:
 
-1.  Nyissa meg a [ **Azure Portal** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazdája.**
+1.  Nyissa meg a [ **Azure-portálon** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazdája.**
 
-2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **további szolgáltatások** a fő bal oldali navigációs menü alján.
+2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **minden szolgáltatás** a fő bal oldali navigációs menü tetején.
 
 3.  Írja be a **"Azure Active Directory**" a szűrő keresési mezőbe, és válasszon a **Azure Active Directory** elemet.
 
@@ -419,9 +419,9 @@ A licenc hozzárendelése egy csoporthoz, kövesse az alábbi lépéseket:
 
 Ellenőrizze, illetve ellenőrizhető egy feltételes hozzáférési szabályzatot:
 
-1.  Nyissa meg a [ **Azure Portal** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazdája.**
+1.  Nyissa meg a [ **Azure-portálon** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazdája.**
 
-2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **további szolgáltatások** a fő bal oldali navigációs menü alján.
+2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **minden szolgáltatás** a fő bal oldali navigációs menü tetején.
 
 3.  Írja be a **"Azure Active Directory**" a szűrő keresési mezőbe, és válasszon a **Azure Active Directory** elemet.
 
@@ -442,9 +442,9 @@ Ellenőrizze, illetve ellenőrizhető egy feltételes hozzáférési szabályzat
 
 Ellenőrizze, vagy egyetlen alkalmazás jelenleg ellenőrizni konfigurált feltételes hozzáférési szabályzatot:
 
-1.  Nyissa meg a [ **Azure Portal** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazdája.**
+1.  Nyissa meg a [ **Azure-portálon** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazdája.**
 
-2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **további szolgáltatások** a fő bal oldali navigációs menü alján.
+2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **minden szolgáltatás** a fő bal oldali navigációs menü tetején.
 
 3.  Írja be a **"Azure Active Directory**" a szűrő keresési mezőbe, és válasszon a **Azure Active Directory** elemet.
 
@@ -474,9 +474,9 @@ Ellenőrizze, vagy egyetlen alkalmazás jelenleg ellenőrizni konfigurált felt�
 
 Ellenőrizze, illetve ellenőrizhető egy feltételes hozzáférési szabályzatot:
 
-1.  Nyissa meg a [ **Azure Portal** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazdája.**
+1.  Nyissa meg a [ **Azure-portálon** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazdája.**
 
-2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **további szolgáltatások** a fő bal oldali navigációs menü alján.
+2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **minden szolgáltatás** a fő bal oldali navigációs menü tetején.
 
 3.  Írja be a **"Azure Active Directory**" a szűrő keresési mezőbe, és válasszon a **Azure Active Directory** elemet.
 
@@ -514,16 +514,16 @@ Alkalmazás-hozzáférés blokkolható, mert a megfelelő engedélyekkel a hozz�
 
 ### <a name="perform-administrator-level-consent-for-a-single-tenant-application"></a>Hajtsa végre a rendszergazdai hozzájárulási egyetlen bérlői alkalmazások
 
--   A **egyetlen bérlői alkalmazások** (mint fejleszt, vagy a szervezet saját), engedélyek kéréséhez, amely végezheti el egy **rendszergazdai szintű hozzájárulási** művelet globális rendszergazdaként jelentkezik be, majd kattintson az összes felhasználó nevében a **engedélyeket** gomb tetején a **alkalmazás beállításjegyzék -&gt; összes alkalmazás -&gt; válasszon ki egy alkalmazást -&gt; szükséges engedélyek** panelen.
+-   A **egyetlen bérlői alkalmazások** (mint fejleszt, vagy a szervezet saját), engedélyek kéréséhez, amely hajthat végre egy **rendszergazdai szintű hozzájárulási** nevében összes művelet Jelentkezzen be globális rendszergazdaként, majd kattintson a felhasználók a **engedélyeket** gomb tetején a **alkalmazás beállításjegyzék -&gt; összes alkalmazás -&gt; válasszon ki egy alkalmazást -&gt; Szükséges engedélyek** ablaktáblán.
 
 -   A **bármely alkalmazás fejlesztett a V1 vagy V2 alkalmazásmodell**, kényszerítheti a rendszergazdai hozzájárul az utasítások alapján történik a **az engedélyeket kérhet a directory-rendszergazda** szakasza [használatával a rendszergazda jóváhagyását végpont](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes#using-the-admin-consent-endpoint).
 
 ### <a name="perform-administrator-level-consent-for-a-multi-tenant-application"></a>Hajtsa végre a rendszergazdai hozzájárulási egy több-bérlős alkalmazáshoz
 
--   A **több-bérlős alkalmazásokhoz** adott kérelem engedélyek (például egy alkalmazás egy harmadik féltől származó, vagy a Microsoft, házon belül fejlesztett alkalmazásokra) hajthat végre egy **rendszergazdai szintű hozzájárulási** műveletet. Jelentkezzen be globális rendszergazdaként, és kattintson a a **engedélyeket** gombra kattint, az a **vállalati alkalmazások –&gt; összes alkalmazás -&gt; válasszon ki egy alkalmazást -&gt; engedélyek** panel (rendelkezésre álló hamarosan).
+-   A **több-bérlős alkalmazásokhoz** adott kérelem engedélyek (például egy alkalmazás egy harmadik féltől származó, vagy a Microsoft, házon belül fejlesztett alkalmazásokra) hajthat végre egy **rendszergazdai szintű hozzájárulási** műveletet. Jelentkezzen be globális rendszergazdaként, és kattintson a a **engedélyeket** alatt gombra a **vállalati alkalmazások –&gt; összes alkalmazás -&gt; válasszon ki egy alkalmazást -&gt; engedélyek**  ablaktáblán (rendelkezésre álló hamarosan).
 
 -   Is előírható, a rendszergazdai hozzájárul az utasítások alapján történik a **az engedélyeket kérhet a directory-rendszergazda** szakasza [használatával a rendszergazda jóváhagyását végpont](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes#using-the-admin-consent-endpoint).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [A rendszergazda jóváhagyását végpont használatával](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes#using-the-admin-consent-endpoint)
 
