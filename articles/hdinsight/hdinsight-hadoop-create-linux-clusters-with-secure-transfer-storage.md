@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/06/2017
+ms.date: 02/22/2018
 ms.author: jgao
-ms.openlocfilehash: 9b537595fd8224536f67989d7529f6030347bfab
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: fd27837e4b40b34551092be5d75eb770730d97a4
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="create-hadoop-cluster-with-secure-transfer-storage-accounts-in-azure-hdinsight"></a>Biztonságos átvitelű tárfiókokkal rendelkező Hadoop-fürt létrehozása az Azure HDInsightban
 
@@ -45,7 +45,7 @@ Ebben a szakaszban egy Hadoop-fürtöt hozhat létre a HDInsightban egy [Azure R
 
 2. Kövesse az utasításokat a fürt a következő specifikációkkal való létrehozásához: 
 
-    - Adja meg a HDInsight 3.6-os verzióját.  Az alapértelmezett verzió a 3.5. A 3.6-os vagy újabb verzió szükséges.
+    - Adja meg a HDInsight 3.6-os verzióját.  A 3.6-os vagy újabb verzió szükséges.
     - Adjon meg egy biztonságos átvitel használatára képes tárfiókot.
     - Rövid nevet adjon a tárfióknak.
     - Már korábban létre kell hozni a tárfiókot és a blobtárolót is. 
@@ -66,7 +66,7 @@ További, biztonságos átvitel használatára képes tárfiókok hozzáadásár
 - Egy fürt létrehozása az [Azure Portal](https://portal.azure.com) használatával és a kapcsolódó tárfiók megadása.
 - Szkriptműveleteket használata további, biztonságos átvitel használatára képes tárfiókok meglévő HDInsight-fürthöz történő hozzáadásához.  További információkért lásd: [Add additional storage accounts to HDInsight](hdinsight-hadoop-add-storage.md) (További tárfiókok hozzáadása a HDInsighthoz).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben az oktatóanyagban megtanulhatta, hogyan hozhat létre HDInsight-fürtöt, és hogyan engedélyezheti a biztonságos átvitelt a tárfiókokba.
 
 A HDInsight használatával történő adatelemzésről az alábbi cikkekben talál további információt:
