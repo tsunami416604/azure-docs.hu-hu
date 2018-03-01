@@ -10,11 +10,11 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: 897c45322148aeb088f1ec2e7f8d9f46b58c71aa
-ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
+ms.openlocfilehash: 04e379e1bbd84929fca68cf2de8ebfcc217a51d2
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="start-analyzing-your-mobile-app-with-app-center-and-application-insights"></a>A mobilalkalmazás elemzésének első lépései az App Center és az Application Insights használatával
 
@@ -66,7 +66,7 @@ Ha meg szeretne győződni arról, hogy az App Center fogadja az egyéni esemén
 Ha az alkalmazás egyéni eseményeket küld, és az App Center fogadja ezeket az eseményeket, létre kell hoznia egy App Center-típusú Application Insights-erőforrást az Azure Portalon:
 
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
-2. Válassza az **Új** > **Felügyelet és kezelés** > **Application Insights** elemet.
+2. Válassza az **Erőforrás létrehozása** > **Monitoring és felügyelet** > **Application Insights** elemet.
 
     ![Application Insights-erőforrások hozzáadása](./media/app-insights-mobile-center-quickstart/add.png)
 
@@ -164,7 +164,7 @@ Az Application Insights-erőforrás törlése:
 1. Az Azure Portal bal oldali menüjében kattintson az **Erőforráscsoportok** lehetőségre, majd válassza ki az erőforráscsoportot, amelyben az Application Insights-erőforrás létrejött.
 2. Nyissa meg a törölni kívánt Application Insights-erőforrást. Kattintson a **Törlés** gombra az erőforrás felső menüjében, és hagyja jóvá. Ez véglegesen törölni fogja az adatok Application Insightsba exportált másolatát.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Ismerje meg, hogyan használják az ügyfelek az alkalmazást](app-insights-usage-overview.md)

@@ -1,10 +1,10 @@
 ---
 title: "Virtuális hálózat csatlakoztatása másik virtuális hálózathoz virtuális hálózatok közötti kapcsolattal: Azure CLI | Microsoft Docs"
-description: "Ez a cikk lépésről lépésre bemutatja, hogyan csatlakoztathatók a virtuális hálózatok egymáshoz virtuális hálózatok közötti kapcsolat és az Azure CLI használatával."
+description: "Virtuális hálózatokat csatlakoztathat egymáshoz virtuális hálózatok közötti kapcsolat és az Azure CLI használatával."
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
-manager: timlt
+manager: jpconnock
 editor: 
 tags: azure-resource-manager
 ms.assetid: 0683c664-9c03-40a4-b198-a6529bf1ce8b
@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/29/2017
+ms.date: 02/14/2018
 ms.author: cherylmc
-ms.openlocfilehash: 663e3cb35308b354c7221e34ac6fcfc8eda15f2a
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 32afd5bd3f972aa1cb1d90e0b10ebff4a761f2e3
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-azure-cli"></a>Virtuális hálózatok közötti VPN Gateway-kapcsolat konfigurálása az Azure CLI használatával
 
-Ebből a cikkből megtudhatja, hogyan csatlakoztathatók a virtuális hálózatok egymáshoz virtuális hálózatok közötti kapcsolattal. A virtuális hálózatok lehetnek azonos vagy eltérő régiókban, illetve azonos vagy eltérő előfizetésekben. Amikor különböző előfizetésekről csatlakoztat virtuális hálózatokat, az előfizetéseket nem kell társítani ugyanazzal az Active Directory-bérlővel.
+Ez a cikk bemutatja, hogyan lehet virtuális hálózatokat csatlakoztatni virtuális hálózatok közötti kapcsolat használatával. A virtuális hálózatok lehetnek azonos vagy eltérő régiókban, illetve azonos vagy eltérő előfizetésekben. Amikor különböző előfizetésekről csatlakoztat virtuális hálózatokat, az előfizetéseket nem kell társítani ugyanazzal az Active Directory-bérlővel.
 
 A cikkben ismertetett lépések a Resource Manager-alapú üzemi modellre vonatkoznak, és az Azure CLI-t használják. Ezt a konfigurációt más üzembehelyezési eszközzel vagy üzemi modellel is létrehozhatja, ha egy másik lehetőséget választ az alábbi listáról:
 
@@ -49,7 +49,7 @@ Virtuális hálózatok közötti kapcsolat konfigurálásával könnyedén kapcs
 
 Amikor bonyolult hálózati konfigurációkkal dolgozik, a virtuális hálózatok közötti kapcsolatok konfigurációs lépései helyett érdemesebb lehet a [helyek közötti kapcsolat](vpn-gateway-howto-site-to-site-resource-manager-cli.md) lépéseit használni virtuális hálózatai összekapcsolására. A helyek közötti kapcsolatokra vonatkozó lépésekkel manuálisan hozhatja létre és konfigurálhatja a helyi hálózati átjárókat. Az egyes virtuális hálózatok helyi hálózati átjárója helyi helyként kezeli a többi virtuális hálózatot. Így további címtereket határozhat meg a helyi hálózati átjáróhoz a forgalom irányítása érdekében. Ha egy virtuális hálózat címtere megváltozik, manuálisan frissítenie kell a megfelelő helyi hálózati átjárót a változás tükrözése érdekében. Az átjáró nem frissül automatikusan.
 
-### <a name="vnet-peering"></a>Virtuális hálózatok közötti társviszony
+### <a name="vnet-peering"></a>Társviszony létesítése virtuális hálózatok között
 
 Érdemes megfontolni a virtuális hálózatok virtuális hálózatok közötti társviszony útján történő összekötését. A virtuális hálózatok közötti társviszony nem használ VPN-átjárót, és más korlátozásokkal rendelkezik. Emellett a [virtuális hálózatok közötti társviszony díjszabásának](https://azure.microsoft.com/pricing/details/virtual-network) kiszámítása máshogy történik, mint a [virtuális hálózatok közötti VPN-átjáró](https://azure.microsoft.com/pricing/details/vpn-gateway) esetén. További információ: [Társviszony létesítése virtuális hálózatok között](../virtual-network/virtual-network-peering-overview.md).
 
@@ -381,7 +381,7 @@ Ez a lépés két CLI-munkamenetre van felosztva, amelyek jelölése **[1. előf
 ## <a name="faq"></a>Virtuális hálózatok közötti kapcsolat – gyakori kérdések
 [!INCLUDE [vpn-gateway-vnet-vnet-faq](../../includes/vpn-gateway-faq-vnet-vnet-include.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Miután a kapcsolat létrejött, hozzáadhat virtuális gépeket a virtuális hálózataihoz. További információkért tekintse meg a [Virtual Machines-dokumentációt](https://docs.microsoft.com/azure/#pivot=services&panel=Compute).
 * Információk a BGP-ről: [A BGP áttekintése](vpn-gateway-bgp-overview.md) és [A BGP konfigurálása](vpn-gateway-bgp-resource-manager-ps.md).

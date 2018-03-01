@@ -14,11 +14,11 @@ ms.topic: quickstart
 ms.date: 06/13/2017
 ms.author: ccompy
 ms.custom: mvc
-ms.openlocfilehash: 9f7343102cf7af6d7f2ba6b4b2f08b7b855da6f8
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: 7480c1f71a64e31b65cc76f28734df6f424a6b3f
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-and-use-an-internal-load-balancer-with-an-app-service-environment"></a>Belső terheléselosztó létrehozása és használata App Service Environmenttel #
 
@@ -55,7 +55,7 @@ Néhány dolog, amit nem tehet meg ILB ASE használata esetén:
 
 Az ILB ASE létrehozása:
 
-1. Az Azure Portalon válassza az **Új** > **Web + Mobil** > **App Service Environment** elemet.
+1. Az Azure Portalon válassza az **Erőforrás létrehozása** > **Web + mobil** > **App Service Environment** elemet.
 
 2. Válassza ki előfizetését.
 
@@ -106,7 +106,7 @@ Ha a **VIP típusa** beállítást **Belsőre** állítja, akkor nem az ASE neve
 
 Az ILB ASE környezetben a sima ASE környezettel megegyező módon hozhat létre alkalmazást.
 
-1. Az Azure Portalon válassza az **Új** > **Web + Mobil** > **Web** vagy **Mobil** vagy **API-alkalmazás** lehetőséget.
+1. Az Azure Portalon válassza az **Erőforrás létrehozása** > **Web + mobil** > **Webes alkalmazás** vagy **Mobilalkalmazás** vagy **API-alkalmazás** elemet.
 
 2. Adja meg az alkalmazás nevét.
 

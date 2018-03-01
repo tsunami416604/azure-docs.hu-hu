@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 09/17/2017
 ms.author: barclayn
 ms.custom: pim
-ms.openlocfilehash: 11b5d1bc4e931ad902b623fe55e62097ae40d8ef
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 9f51daabef7d1e02917869e4e6943b8ea28b56f5
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="start-using-azure-ad-privileged-identity-management"></a>Az Azure AD Privileged Identity Management használatba vétele
 
@@ -33,7 +33,7 @@ Az Azure AD Privileged Identity Management használata előtt fel kell vennie az
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/) a címtára globális rendszergazdájaként.
 2. Ha a szervezet több címtárral rendelkezik, akkor kattintson a felhasználónevére az Azure Portal jobb felső sarkában. Válassza ki azt a címtárat, amelyben a PIM használatát tervezi.
-3. Válassza a **További szolgáltatások** lehetőséget, és a Szűrők szövegmezővel keresse meg az **Azure AD Privileged Identity Management** alkalmazást.
+3. Válassza a **Minden szolgáltatás** lehetőséget, és a Szűrő szövegmezővel keresse meg az **Azure AD Privileged Identity Management** elemet.
 4. Jelölje be a **Rögzítés az irányítópulton** jelölőnégyzetet, majd kattintson a **Létrehozás** gombra. Megnyílik a Privileged Identity Management alkalmazás.
 
 Ha Ön az első, aki a címtárban az Azure AD Privileged Identity Management alkalmazást használja, akkor automatikusan megkapja a címtár **biztonsági rendszergazda** és **kiemelt szerepkörű rendszergazda** szerepkörét. Csak a kiemelt szerepkörű rendszergazdák kezelhetik a felhasználók Azure AD-címtárra vonatkozó szerepkör-hozzárendeléseit. Továbbá futtathatja a [biztonsági varázslót](active-directory-privileged-identity-management-security-wizard.md). Ez végigvezeti Önt az első felderítési és hozzárendelési élményen.
@@ -51,7 +51,7 @@ Az Azure AD Privileged Identity Management beállítása után az alkalmazás mi
 - A bal oldali navigációs menü kezelési szakaszában található **Azure AD-címtár szerepköreinek kezelése** azt az irányítópultot jeleníti meg, amelyen a kiemelt szerepkörök rendszergazdái kezelhetik a szerepkör-hozzárendeléseket, módosíthatják a szerepköraktiválási beállításokat, elindíthatják a hozzáférési felülvizsgálatokat stb. Ez az irányítópult kizárólag a kiemelt szerepkörrel rendelkező rendszergazdák számára érhető el. Ezek a felhasználók a Saját nézet nevű speciális irányítópulthoz is hozzáférhetnek. A Saját nézet irányítópult csak az irányítópulthoz hozzáférő felhasználó információit jeleníti meg az egész bérlő helyett.
 - A bal oldali navigációs menü kezelési szakaszában található **Azure-erőforrásszerepkörök (Előnézet)** azon előfizetési erőforrások listáját jeleníti meg, amelyekhez szerepkör-hozzárendelése van. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [Az Azure AD Privileged Identity Management áttekintése](active-directory-privileged-identity-management-configure.md) további részleteket tartalmaz arról, hogyan kezelheti a rendszergazdai hozzáférést a szervezetében.
 
 [!INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]

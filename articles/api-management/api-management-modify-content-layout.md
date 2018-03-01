@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 02/09/2017
 ms.author: antonba
-ms.openlocfilehash: 708c803c36c182ed90e04731b12d4ade00ae7ffb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: bcf48ab8dd3b57ace70fa713074b13a992940002
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="modify-the-content-and-layout-of-pages-on-the-developer-portal-in-azure-api-management"></a>Oldalak tartalmának és elrendezésének módosítása a fejlesztői portálon az Azure API Managementben
 A fejlesztői portál három alapvető módon szabható testre az Azure API Managementben:
 
 * [A statikus oldalak tartalmának és oldalelrendezési elemeinek szerkesztése][modify-content-layout] (magyarázat az útmutatóban)
 * [A teljes fejlesztői portál oldalelemeihez használt stílusok frissítése][customize-styles]
-* [A portál által létrehozott oldalakhoz használt sablonok módosítása][portal-templates] (például: API-dokumentáció, termékek, felhasználói hitelesítés stb.)
+* [A portál által létrehozott oldalakhoz használt sablonok módosítása][portal-templates] (például API-dokumentáció, termékek, felhasználói hitelesítés stb.)
 
 ## <a name="page-structure"></a>A fejlesztői portál oldalainak szerkezete
 
@@ -35,43 +35,26 @@ A fejlesztői portál egy tartalomkezelő rendszeren alapul. Az egyes oldalak el
 
 Az összes widget szerkeszthető. 
 * Az egyes oldalak fő tartalmai a „Tartalmak” widgetben találhatók. Egy oldal tartalmának szerkesztésekor ennek a widgetnek a tartalmát szerkeszti.
-* Az összes oldalelrendezési elem a többi widgetben található. Az ezeken a widgeteken végrehajtott módosítások az összes oldalra érvényesek lesznek. A továbbiakban ezeket „elrendezési widgeteknek” nevezzük.
+* Az összes oldalelrendezési elem a többi widgetben található. A widgeteken végrehajtott módosítások az összes oldalra érvényesek. Ezeket „elrendezési widgeteknek” nevezzük.
 
 A napi szintű oldalszerkesztés során általában csak a Tartalom widget szerkesztésére kerül sor, amely minden egyes laphoz különböző tartalommal rendelkezik.
 
 ## <a name="modify-layout-widget"></a>Elrendezési widget tartalmának módosítása
 
-A fejlesztői portál tartalmát az Azure Portalon keresztül elérhető közzétevő portálon lehet módosítani. Az eléréséhez kattintson a **Közzétevő portál** elemre az API Management-példány szolgáltatási eszköztárából.
+A fejlesztői portál elérhető az Azure Portalról. 
 
-![Közzétevő portál][api-management-management-console]
-
-A widget tartalmának szerkesztéséhez kattintson a bal oldali **Fejlesztői portál** menü **Widgetek** elemére. Ebben a példában a Fejléc widget tartalmát módosítjuk. Válassza ki a listából a **Fejléc** nevű widgetet.
-
-![Widgetek fejléc][api-management-widgets-header]
-
-A fejléc tartalmát a **Törzs** mezőben lehet szerkeszteni. Módosítsa a szöveget a kívánt értékekre, majd kattintson az oldal alján található **Mentés** gombra.
+1. Kattintson a **Fejlesztői portál** elemre az API Management-példány eszköztárán.
+2. A widgetek tartalmának szerkesztéséhez kattintson a két ecsetet ábrázoló ikonra a bal oldalon található **Fejlesztői** portál menüben. 
+3. A fejléc tartalmának módosításához görgessen a bal oldali lista **Fejléc** szakaszához.
+    
+    A widgetek a mezőkön belülről szerkeszthetők.
+4. Ha készen áll a módosítások közzétételére, kattintson a lap alján található **Közzététel** gombra.
 
 Most már a fejlesztői portál mindegyik oldalán az új fejléc fog megjelenni.
 
-> Ha a közzétevő portálon tartózkodik, és meg szeretné nyitni a fejlesztői portált, kattintson a **Fejlesztői portál** lehetőségre a felső menüsoron.
-> 
-> 
-
-## <a name="edit-page-contents"></a>Oldal tartalmának szerkesztése
-
-A létező tartalomoldalak listájának megtekintéséhez kattintson a **Tartalom** lehetőségre a közzétevő portál **Fejlesztői portál** menüjében.
-
-![Tartalom kezelése][api-management-customization-manage-content]
-
-A fejlesztői portál kezdőlapján megjelenített tartalmak szerkesztéséhez kattintson a **Kezdőlap** lehetőségre. Hajtsa végre a kívánt módosításokat, tekintse meg az előnézetet, ha szeretné, majd kattintson a **Közzététel most** parancsra, hogy mindenki számára láthatóvá tegye őket.
-
-> A kezdőlap egy speciális elrendezést használ, amellyel megjelenítheti a szalagcímeket az oldal tetején. Ez a szalagcím nem szerkeszthető a **Tartalom** szakaszban. A szalagcím szerkesztéséhez kattintson a **Fejlesztői portál** menü **Widgetek** elemére, válassza az **Aktuális réteg** listában a **Kezdőlap** lehetőséget, majd nyissa meg a **Kiemelt szakasz** **Szalagcím** elemét. A widget tartalmai ugyanúgy szerkeszthetők, mint bármely más oldal.
-> 
-> 
-
 ## <a name="next-steps"></a>Következő lépések
 * [A teljes fejlesztői portál oldalelemeihez használt stílusok frissítése][customize-styles]
-* [A portál által létrehozott oldalakhoz használt sablonok módosítása][portal-templates] (például: API-dokumentáció, termékek, felhasználói hitelesítés stb.)
+* [A portál által létrehozott oldalakhoz használt sablonok módosítása][portal-templates] (például API-dokumentáció, termékek, felhasználói hitelesítés stb.)
 
 [Structure of developer portal pages]: #page-structure
 [Modifying the contents of a layout widget]: #modify-layout-widget

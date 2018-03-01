@@ -1,6 +1,6 @@
 ---
-title: "Azure napló Analytics riasztások események válaszolni |} Microsoft Docs"
-description: "Ez az oktatóanyag segít megérteni a riasztásokat a fontos információk az OMS-adattárban lévő azonosítására proaktív problémák értesíti, vagy azokat kijavításának műveletek meghívása Naplóelemzési."
+title: "Eseményekre való válaszadás Azure Log Analytics-riasztásokkal | Microsoft Docs"
+description: "Az oktatóanyag segítségével megismerheti, hogyan lehet elérni, hogy a Log Analytics-riasztások azonosítsák az OMS-adattár fontos információit, és proaktívan értesítsék Önt a problémákról, vagy műveleteket indítsanak el ezek megoldására."
 services: log-analytics
 documentationcenter: log-analytics
 author: MGoedtel
@@ -15,62 +15,62 @@ ms.topic: tutorial
 ms.date: 09/20/2017
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: 3ab8d32eb4b3f2748249f40139de76c8e7f4d971
-ms.sourcegitcommit: e6029b2994fa5ba82d0ac72b264879c3484e3dd0
-ms.translationtype: MT
+ms.openlocfilehash: fcfaa849f67ffcfa69672d116837e96d318c2124
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 02/21/2018
 ---
-# <a name="respond-to-events-with-log-analytics-alerts"></a>A napló Analytics riasztásokkal kapcsolatos események válaszolni
-Log Analytics riasztások határozza meg a Naplóelemzési tárházban fontos adatokat.  Riasztási szabályok, amelyek automatikusan futnak a napló keresések rendszeres időközönként létrehozzák őket, és ha a napló keresés eredményeit az adott feltételeknek megfelelő majd egy riasztási rekord jön létre, és beállítható automatikus válasz végrehajtásához.  Ez az oktatóanyag folytatása, akkor az a [Log Analytics-adatok létrehozása és a megosztáshoz irányítópultok](log-analytics-tutorial-dashboards.md) oktatóanyag.   
+# <a name="respond-to-events-with-log-analytics-alerts"></a>Eseményekre való válaszadás Log Analytics-riasztásokkal
+A Log Analytics-riasztások azonosítják a Log Analytics-adattárban található fontos információkat. A riasztásokat riasztási szabályok hozzák létre, amelyek rendszeres időközönként automatikusan naplókereséseket futtatnak. Ha a naplókeresés eredménye megfelel bizonyos feltételeknek, létrejön egy riasztásbejegyzés, amelyet konfigurálni lehet egy automatikus válasz végrehajtására.  Ez az oktatóanyag a [Log Analytics-adatokat tartalmazó irányítópultok létrehozása és megosztása](log-analytics-tutorial-dashboards.md) oktatóanyag folytatása.   
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Riasztási szabály létrehozása
-> * E-mail értesítés küldése a riasztási szabály konfigurálása
+> * Riasztási szabály konfigurálása e-mail-értesítés küldésére
 
-A példa az oktatóanyag elvégzéséhez rendelkeznie kell egy meglévő virtuális gép [csatlakozik a Naplóelemzési munkaterület](log-analytics-quick-collect-azurevm.md).  
+Az oktatóanyagban található példa elvégzéséhez szüksége lesz egy meglévő virtuális gépre, amely [a Log Analytics-munkaterülethez csatlakozik](log-analytics-quick-collect-azurevm.md).  
 
-## <a name="log-in-to-azure-portal"></a>Jelentkezzen be Azure-portálon
-Jelentkezzen be az Azure portálon, a [https://portal.azure.com](https://portal.azure.com). 
+## <a name="log-in-to-azure-portal"></a>Bejelentkezés az Azure Portalra
+Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) címen. 
 
 ## <a name="create-alerts"></a>Riasztások létrehozása
 
-A riasztási szabályok, amelyek automatikusan futnak a napló keresések rendszeres időközönként riasztások jönnek létre.  Riasztások adott mérőszámok alapján is létrehozhat, illetve bizonyos események létrehozásakor egy eseményt, vagy adott számú esemény egy adott időpontban időszakban hozott létre.  Például riasztások segítségével értesítést küldenek, ha átlagos CPU-használat meghaladja a meghatározott küszöbérték és a Linux-démon nem fut vagy esemény jön létre, amikor egy adott Windows-szolgáltatás.   Ha a napló keresés eredményeit az adott feltételeknek megfelelő, egy riasztás rekord jön létre. A szabály úgy automatikusan futtatja egy vagy több műveletek proaktív értesítést küldenek, a figyelmeztetés vagy meg kíván hívni egy másik folyamat. 
+A riasztásokat riasztási szabályok hozzák létre, amelyek rendszeres időközönként automatikus naplókereséseket futtatnak.  Riasztásokat megadott teljesítménymetrikák alapján, illetve bizonyos események létrehozásakor vagy hiányakor hozhat létre, illetve akkor, ha egy adott időtartományon belül több esemény jön létre.  A riasztások segítségével értesülhet például arról, ha az átlagos processzorhasználat meghalad egy bizonyos küszöbértéket, vagy ha létrejön egy esemény, amikor egy adott Windows-szolgáltatás vagy Linux-démon nem fut.   Ha a naplókeresés eredménye megfelel bizonyos feltételeknek, létrejön egy riasztásbejegyzés. A szabály ekkor automatikusan lefuttathat egy vagy több műveletet, hogy proaktívan értesítse Önt a riasztásról, vagy meghívjon egy másik folyamatot. 
 
-A következő példában létrehozhatunk egy metrika mérési riasztási szabály, amely minden számítógép-objektum egy riasztást fog létrehozni a lekérdezés egy érték, amely meghaladja a 90 %-os küszöbértéket.
+A következő példában létre fog hozni egy metrikamérési riasztási szabályt, amely a lekérdezés összes olyan számítógép-objektumához létrehoz egy riasztást, amelynek értéke meghaladja a 90%-os küszöbértéket.
 
-1. Az Azure portálon kattintson **további szolgáltatások** bal alsó sarokban található. Az erőforrások listájába írja be a **Log Analytics** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza ki **Analytics jelentkezzen**...
-2. Indítsa el az OMS-portálon, és az OMS-portálon kiválasztásával a **áttekintése** lapon jelölje be **naplófájl-keresési**.  
-3. Válassza ki **Kedvencek** a portál és a felső a **mentett keresések** a jobb oldali ablaktáblán válassza ki a lekérdezés *Azure virtuális gépek - processzorhasználat*.  
-4. Kattintson a **riasztási** nyissa meg a lap tetején a **riasztási szabály hozzáadása** képernyő.  
-5. A riasztási szabály konfigurálása a következő információkat:  
-   a. Adjon meg egy **neve** a riasztás például *VM processzorhasználata túllépte > 90*  
-   b. A **időkerete**, adjon meg egy időtartományt a lekérdezéshez, például *30*.  A lekérdezés visszaadja csak azt jelzi, hogy az aktuális időponthoz képest ebben a tartományban jöttek létre.  
-   c. **Riasztási gyakoriságot** határozza meg, milyen gyakran kell futtatni a lekérdezést.  A jelen példában adja meg a *5* percben, amely a megadott időszak belül esedékes.  
-   d. Válassza ki **metrikus** , és írja be *90* a **összesítve érték** , és írja be *3* a **eseményindító riasztás alapján**   
-   e. A **műveletek**, e-mail értesítések letiltása.
-6. Kattintson a **mentése** a riasztási szabály befejezéséhez. Futtatása azonnal elindul.<br><br> ![Riasztási szabály – példa](media/log-analytics-tutorial-response/log-analytics-alert-01.png)
+1. Az Azure Portalon kattintson a **Minden szolgáltatás** lehetőségre. Az erőforrások listájába írja be a **Log Analytics** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza a **Log Analytics** elemet.
+2. Nyissa meg az OMS-portált az OMS-portál lehetőség kiválasztásával, majd az **Áttekintés** lapon válassza a **Naplókeresés** elemet.  
+3. A portál tetején válassza a **Kedvencek** lehetőséget, majd a jobb oldalon található **Mentett keresések** panelen válassza ki az *Azure-beli virtuális gépek – Processzorhasználat* lekérdezést.  
+4. Kattintson az oldal tetején található **Riasztás** lehetőségre a **Riasztási szabály hozzáadása** képernyő megnyitásához.  
+5. Konfigurálja a riasztási szabályt az alábbi információkkal:  
+   a. Adjon meg egy **Nevet** a riasztás számára, például *Virtuális gép processzorhasználata túllépve: >90*  
+   b. Az **Időtartomány** mezőben adjon meg egy időtartományt a lekérdezés számára, például a *30* értéket.  A lekérdezés csak azokat a rekordokat adja vissza, amelyek az aktuális idő ezen tartományában jöttek létre.  
+   c. A **Riasztási időköz** határozza meg, hogy milyen gyakran kell futtatni a lekérdezést.  Ebben a példában adjon meg *5* percet, amely még benne van a megadott időtartományban.  
+   d. Válassza ki a **Metrikamérés** lehetőséget, majd az **Aggregált érték** mezőben adja meg a *90* értéket, a **Riasztás aktiválásának oka**  mezőben pedig a *3* értéket.  
+   e. A **Műveletek** területen tiltsa le az e-mail-értesítéseket.
+6. Kattintson a **Mentés** gombra a riasztási szabály jóváhagyásához. Azonnal el fog indulni.<br><br> ![Példa a riasztási szabályra](media/log-analytics-tutorial-response/log-analytics-alert-01.png)
 
-A Naplóelemzési riasztási szabályok által létrehozott riasztás rekordok típusa lehet **riasztás** és az egy SourceSystem **OMS**.<br><br> ![Riasztási eseményeit – példa](media/log-analytics-tutorial-response/log-analytics-alert-events-01.png)  
+A Log Analytics riasztási szabályai által létrehozott riasztásbejegyzésekhez **Riasztás** típus és **OMS** SourceSystem van beállítva.<br><br> ![Példa a létrehozott riasztási eseményekre](media/log-analytics-tutorial-response/log-analytics-alert-events-01.png)  
 
 ## <a name="alert-actions"></a>Riasztási műveletek
-A riasztások például hozzon létre az e-mail értesítések, indítsa el a speciális műveleteket is végrehajthat egy [Automation-runbook](../automation/automation-runbook-types.md), egy webhook a ITSM incidenskezelés rendszerben, vagy a eseményrekord létrehozásához használja a [informatikai Service Management-összekötő megoldás](log-analytics-itsmc-overview.md) adott válaszként, ha a riasztási feltétel teljesülése esetén.   
+A riasztásokkal speciális műveleteket is végrehajthat, például létrehozhat egy e-mail-értesítést, elindíthat egy [Automation-runbookot](../automation/automation-runbook-types.md), valamint létrehozhat egy incidensrekordot az ITSM incidenskezelő rendszerben egy webhook használatával, vagy az [Informatikai szolgáltatásfelügyeleti összekötő megoldással](log-analytics-itsmc-overview.md) a riasztási feltételek teljesülésére adott válaszként.   
 
-E-mailek műveletek részleteit a riasztást e-mail küldése egy vagy több címzett. Megadhatja, hogy az e-mail tárgya, de annak tartalma Naplóelemzési által összeállított szabványos formátumban.  Most frissítés a riasztási szabály a korábban létrehozott, és konfigurálja úgy, hogy e-mail értesíti helyett a riasztási rekord, a naplófájl-keresési aktívan figyelését.     
+Az e-mailes műveletek e-mailt küldenek egy vagy több címzettnek a riasztás részleteiről. Az e-mail tárgyát megadhatja, a tartalma azonban szabványos, és a Log Analytics hozza létre.  Most pedig frissítsük a korábban létrehozott riasztási szabályt, és konfiguráljuk úgy, hogy e-mailben értesítse Önt ahelyett, hogy aktívan figyelné a riasztásbejegyzést egy naplókereséssel.     
 
-1. Az OMS-portálon, a felső menüben válassza ki **beállítások** majd **riasztások**.
-2. A riasztási szabályok a listából kattintson a ceruza ikonra a korábban létrehozott riasztás mellett.
-3. A **műveletek** területen e-mail értesítések engedélyezése.
-4. Adjon meg egy **tulajdonos** az e-mailek, például a *processzor kihasználtsága meghaladja küszöbérték > 90*.
-5. A címzett egy vagy több e-mail címek hozzáadása a **címzettek** mező.  Ha több címet ad meg, majd külön a címeket pontosvesszővel (;).
-6. Kattintson a **mentése** a riasztási szabály befejezéséhez. Futtatása azonnal elindul.<br><br> ![Az e-mailben értesítést riasztási szabálya](media/log-analytics-tutorial-response/log-analytics-alert-02.png)
+1. Az OMS-portálon a felső menüben válassza a **Beállítások**, majd a **Riasztások** elemet.
+2. A riasztási szabályok listájában kattintson a korábban létrehozott riasztás melletti ceruza ikonra.
+3. A **Műveletek** területen engedélyezze az e-mail-értesítéseket.
+4. Adja meg az e-mail **tárgyát**, például *A processzorhasználat meghaladta a küszöbértéket: >90*.
+5. A **Címzettek** mezőben adja meg egy vagy több címzett e-mail-címét.  Ha több címet ad meg, pontosvesszővel (;) válassza el őket.
+6. Kattintson a **Mentés** gombra a riasztási szabály jóváhagyásához. Azonnal el fog indulni.<br><br> ![Riasztási szabály e-mail-értesítéssel](media/log-analytics-tutorial-response/log-analytics-alert-02.png)
 
-## <a name="next-steps"></a>Következő lépések
-Ebben az oktatóanyagban megtanulta, hogyan riasztás szabályok proaktív azonosítása és válaszolni a problémát, a napló keresések futtatásakor ütemezett időközönként, és egy adott feltételeknek.  
+## <a name="next-steps"></a>További lépések
+Ez az oktatóanyag bemutatta, hogyan képesek a riasztási szabályok proaktívan azonosítani a hibákat, valamint válaszolni rájuk, amikor az ütemezett naplókeresések futtatásakor az eredmények megfelelnek bizonyos feltételeknek.  
 
-Kövesse a hivatkozásra kattintva megtekintheti az előre elkészített Naplóelemzési parancsfájl minták.  
+Kövesse ezt a hivatkozást az előre felépített Log Analytics-szkriptminták megtekintéséhez.  
 
 > [!div class="nextstepaction"]
-> [Naplófájl Analytics parancsfájl minták](powershell-samples.md)
+> [Log Analytics-szkriptminták](powershell-samples.md)

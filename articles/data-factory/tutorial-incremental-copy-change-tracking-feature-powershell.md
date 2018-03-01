@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/22/2018
 ms.author: jingwang
-ms.openlocfilehash: d2cf578d6328e6e53d1081b9ab4de3ad262390df
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 69a2967be1709c3b3e3bd9fa5854482ecc5e3aba
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information"></a>Adatok növekményes betöltése az Azure SQL Database-ből az Azure Blob Storage-ba változáskövetési adatok használatával 
 Az oktatóanyag során egy Azure-beli adat-előállítót hoz létre egy olyan folyamattal, amely változásadatokat tölt be a forrás Azure SQL Database-ben lévő **változáskövetési** adatok alapján egy Azure Blob Storage-be.  
@@ -445,7 +445,7 @@ Invoke-AzureRmDataFactoryV2Pipeline -PipelineName "FullCopyPipeline" -ResourceGr
 ### <a name="monitor-the-full-copy-pipeline"></a>A teljes másolási folyamat megfigyelése
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. Kattintson a **További szolgáltatások** elemre, végezzen keresést a `data factories` kulcsszóval, és válassza az **Adat-előállítók** lehetőséget. 
+2. Kattintson a **Minden szolgáltatás** elemre, végezzen keresést a `data factories` kulcsszóval, és válassza az **Adat-előállítók** lehetőséget. 
 
     ![Adat-előállítók menü](media\tutorial-incremental-copy-change-tracking-feature-powershell\monitor-data-factories-menu-1.png)
 3. Keresse meg az **adat-előállítóját** az adat-előállítók listájában, és kattintson rá az Adat-előállító lap megnyitásához. 

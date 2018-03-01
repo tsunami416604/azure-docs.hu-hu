@@ -1,35 +1,33 @@
 ---
-title: "Méretezhető alkalmazások virtuális gép és a storage-fiók létrehozása az Azure-ban |} Microsoft Docs"
-description: "Egy Azure blob storage használatával méretezhető alkalmazás futtatásához használt virtuális gép telepítése"
+title: "Virtuális gép és tárfiók létrehozása egy méretezhető alkalmazás számára az Azure-ban | Microsoft Docs"
+description: "Ismerkedjen meg a skálázható alkalmazások futtatására szolgáló virtuális gépek üzembe helyezésével az Azure Blob Storage használatával"
 services: storage
 documentationcenter: 
-author: georgewallace
+author: tamram
 manager: jeconnoc
-editor: 
 ms.service: storage
 ms.workload: web
-ms.tgt_pltfrm: na
 ms.devlang: csharp
 ms.topic: tutorial
-ms.date: 12/12/2017
-ms.author: gwallace
+ms.date: 02/20/2018
+ms.author: tamram
 ms.custom: mvc
-ms.openlocfilehash: 0fd1cd93ca6faabcbe0007136fe427028e722733
-ms.sourcegitcommit: 4256ebfe683b08fedd1a63937328931a5d35b157
-ms.translationtype: MT
+ms.openlocfilehash: aafb79a021b76b1347314815b1786a23f699be7a
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/23/2017
+ms.lasthandoff: 02/22/2018
 ---
-# <a name="create-a-virtual-machine-and-storage-account-for-a-scalable-application"></a>Virtuális gép és a méretezhető alkalmazások storage-fiók létrehozása
+# <a name="create-a-virtual-machine-and-storage-account-for-a-scalable-application"></a>Virtuális gép és tárfiók létrehozása egy méretezhető alkalmazás számára
 
-Ez az oktatóanyag egy sorozat része. Ez az oktatóanyag bemutatja, hogy az alkalmazás, amely feltölti és töltse le a nagy adatmennyiségek véletlenszerű egy Azure storage-fiók. Amikor végzett, van egy feltöltés, és töltse le a nagy mennyiségű adatok tárfiókba egy virtuális gépen futó konzolalkalmazással.
+Ez az oktatóanyag egy sorozat első része. Ez az oktatóanyag egy olyan alkalmazás üzembe helyezését mutatja be, amely nagy mennyiségű véletlenszerű adat fel- és letöltését végzi egy Azure Storage-fiók használatával. Az oktatóanyagban egy virtuális gépen futó konzolalkalmazást hoz majd létre, amely nagy mennyiségű adatot tölt fel és le egy tárfiókba vagy tárfiókból.
 
-A rész az adatsorozatok megismerheti, hogyan:
+A sorozat első részében a következőkkel ismerkedhet meg:
 
 > [!div class="checklist"]
 > * Create a storage account
 > * Virtuális gép létrehozása
-> * Egyéni parancsfájl-kiterjesztés konfigurálása
+> * Egyéni szkriptbővítmény konfigurálása
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
@@ -47,9 +45,9 @@ New-AzureRmResourceGroup -Name myResourceGroup -Location EastUS
 
 ## <a name="create-a-storage-account"></a>Create a storage account
  
-A minta 50 nagy fájlok feltöltése az Azure Storage-fiók egy blob-tárolóba. A storage-fiók egy egyedi névteret tárolhatja és érheti el az Azure storage-adatobjektumok biztosít. Hozzon létre egy tárfiókot az Ön által létrehozott erőforráscsoport a [New-AzureRmStorageAccount](/powershell/module/AzureRM.Storage/New-AzureRmStorageAccount) parancsot.
+A minta 50 nagy méretű fájlt tölt fel egy Azure Storage-fiókban lévő blobtárolóba. A tárfiók egy egyedi névteret biztosít az Azure Storage-adatobjektumok tárolásához és hozzáféréséhez. A [New-AzureRmStorageAccount](/powershell/module/AzureRM.Storage/New-AzureRmStorageAccount) paranccsal hozzon létre egy tárfiókot a létrehozott erőforráscsoportban.
 
-Az alábbi parancs helyettesítse a saját globálisan egyedi nevet a Blob storage-fiók, ahol megjelenik a `<blob_storage_account>` helyőrző.
+A következő parancsban a `<blob_storage_account>` helyőrző helyett írja be a saját globálisan egyedi Blob Storage-fióknevét.
 
 ```powershell-interactive
 $storageAccount = New-AzureRmStorageAccount -ResourceGroupName myResourceGroup `
@@ -102,19 +100,19 @@ New-AzureRmVM -ResourceGroupName $resourceGroup -Location $location -VM $vmConfi
 Write-host "Your public IP address is $($pip.IpAddress)"
 ```
 
-## <a name="deploy-configuration"></a>Deploy konfigurációja
+## <a name="deploy-configuration"></a>Az üzembe helyezés konfigurálása
 
-Ebben az oktatóanyagban nincsenek előfeltételek, amelyet a virtuális gépen kell telepíteni. Az egyéni parancsprogramok futtatására szolgáló bővítmény használatával futtatni egy PowerShell-parancsfájlt, amely a következő feladatokat hajtja végre:
+Ebben az oktatóanyagban bizonyos előfeltételeket kell telepíteni a virtuális gépen. Az egyéni szkriptbővítmény olyan PowerShell-szkriptek futtatására szolgál, amelyek a következő feladatokat hajtják végre:
 
 > [!div class="checklist"]
-> * Telepítse a .NET 2.0
-> * A telepítés chocolatey
-> * Telepítse a GIT
-> * A minta-tárház klónozása
-> * Állítsa vissza a NuGet-csomagok
-> * 1 GB-os 50 fájl véletlenszerű adatokat hoz létre
+> * A .NET Core 2.0 telepítése
+> * A Chocolatey telepítése
+> * A GIT telepítése
+> * A mintatár klónozása
+> * NuGet-csomagok visszaállítása
+> * 50 1 GB-os véletlenszerű adatokkal feltöltött fájlt hoz létre
 
-Futtassa a következő parancsmagot a virtuális gép konfigurációjának véglegesítéséhez. Ez a lépés 5-15 percet is igénybe vehet.
+Futtassa az alábbi parancsmagot a virtuális gép konfigurációjának véglegesítéséhez. Ez a lépés 5–15 percet is igénybe vehet.
 
 ```azurepowershell-interactive
 # Start a CustomScript extension to use a simple PowerShell script to install .NET core, dependencies, and pre-create the files to upload.
@@ -128,14 +126,14 @@ Set-AzureRMVMCustomScriptExtension -ResourceGroupName myResourceGroup `
 
 ## <a name="next-steps"></a>További lépések
 
-Az adatsorozat egyik részében megismerte tárfiók létrehozásához, egy virtuális gép telepítése és konfigurálása a virtuális gép például hogyan szükséges előfeltételek:
+A sorozat első részében megismerkedett a tárfiókok létrehozásával, a virtuális gépek üzembe helyezésével, illetve a virtuális gépnek az előírt előfeltételek szerinti konfigurálásával, például a következőkkel:
 
 > [!div class="checklist"]
 > * Create a storage account
 > * Virtuális gép létrehozása
-> * Egyéni parancsfájl-kiterjesztés konfigurálása
+> * Egyéni szkriptbővítmény konfigurálása
 
-Előzetes nagy mennyiségű adatot feltölteni a exponenciális újrapróbálkozási és a párhuzamosság használó tárfiókot az adatsorozat két részét.
+A sorozat második részében nagy mennyiségű adatot fog feltölteni egy tárfiókba exponenciális újrapróbálkozás és párhuzamosság alkalmazásával.
 
 > [!div class="nextstepaction"]
-> [Nagy mennyiségű tárfiókba párhuzamosan nagy fájlok feltöltése](storage-blob-scalable-app-upload-files.md)
+> [Nagy mennyiségű nagyméretű fájl párhuzamos feltöltése egy tárfiókba](storage-blob-scalable-app-upload-files.md)

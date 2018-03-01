@@ -1,43 +1,41 @@
 ---
-title: "Töltse le a nagy adatmennyiségek véletlenszerű Azure Storage-ból |} Microsoft Docs"
-description: "A nagy adatmennyiségek véletlenszerű letöltését egy Azure Storage-fiókot az Azure SDK használata"
+title: "Nagy mennyiségű véletlenszerű adat letöltése az Azure Storage-ból | Microsoft Docs"
+description: "Megismerkedhet nagy mennyiségű véletlenszerű adat letöltésével egy Azure Storage-fiókból az Azure SDK használatával"
 services: storage
 documentationcenter: 
-author: georgewallace
+author: tamram
 manager: jeconnoc
-editor: 
 ms.service: storage
 ms.workload: web
-ms.tgt_pltfrm: na
 ms.devlang: csharp
 ms.topic: tutorial
-ms.date: 12/12/2017
-ms.author: gwallace
+ms.date: 02/20/2018
+ms.author: tamram
 ms.custom: mvc
-ms.openlocfilehash: 3842860acb1c0fdd9e07f6d2f678ac5d5304003b
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
-ms.translationtype: MT
+ms.openlocfilehash: 673dc8fc7fd5d08f9541595af16078d44c7f8308
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 02/22/2018
 ---
-# <a name="download-large-amounts-of-random-data-from-azure-storage"></a>Az Azure storage nagy adatmennyiségek véletlenszerű letöltése
+# <a name="download-large-amounts-of-random-data-from-azure-storage"></a>Nagy mennyiségű véletlenszerű adat letöltése az Azure Storage-ból
 
-Ez az oktatóanyag három egy sorozat része. Ez az oktatóanyag bemutatja, hogyan töltheti le az Azure storage nagy mennyiségű adat.
+Ez az oktatóanyag egy sorozat harmadik része. Ez az oktatóanyag azt mutatja be, hogyan tölthető le nagy mennyiségű adat az Azure Storage-ból.
 
-A sorozat három része a megismerheti, hogyan:
+A sorozat harmadik részében az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Az alkalmazás frissítése
 > * Az alkalmazás futtatása
-> * Ellenőrizze a kapcsolatok száma
+> * A kapcsolatok számának ellenőrzése
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag teljesítéséhez végrehajtotta az előző tárolási oktatóanyag: [töltse fel a nagy adatmennyiségek véletlenszerű párhuzamosan az Azure storage][previous-tutorial].
+Az oktatóanyag teljesítéséhez el kell végeznie az előző Storage-oktatóanyagot, amelynek címe: [Nagy mennyiségű véletlenszerű adat párhuzamos feltöltése az Azure Storage-ba][previous-tutorial].
 
-## <a name="remote-into-your-virtual-machine"></a>A virtuális géppé távoli
+## <a name="remote-into-your-virtual-machine"></a>A virtuális gép távoli vezérlése
 
- A virtuális gép létrehozásához a távoli asztali munkamenetgazda, a következő paranccsal a helyi számítógépen. Cserélje le a virtuális gép nyilvános IP-címét. Ha a rendszer erre kéri, adja meg a virtuális gép létrehozásakor használt hitelesítő adatokat.
+ Használja az alábbi parancsot a helyi gépén, ha egy távoli asztali munkamenetet szeretne létrehozni a virtuális géppel. Cserélje le az IP-címet a virtuális gépe nyilvános IP-címére. Ha a rendszer erre kéri, adja meg a virtuális gép létrehozásakor használt hitelesítő adatokat.
 
 ```
 mstsc /v:<publicIpAddress>
@@ -45,7 +43,7 @@ mstsc /v:<publicIpAddress>
 
 ## <a name="update-the-application"></a>Az alkalmazás frissítése
 
-Az előző oktatóanyagban csak feltöltött fájlok a tárfiókhoz. Nyissa meg `D:\git\storage-dotnet-perf-scale-app\Program.cs` egy szövegszerkesztőben. Cserélje le a `Main` metódus a következő példával. Ez a példa megjegyzéseit a feltöltési feladat ki, és uncomments a letöltési feladat és a feladat törli a tárfiókot, ha a teljes tartalmát.
+Az előző oktatóanyagban csak a tárfiókba töltött fel fájlokat. Nyissa meg a következőt egy szövegszerkesztőben: `D:\git\storage-dotnet-perf-scale-app\Program.cs`. Cserélje le a `Main` metódust az alábbi mintára. Ez a példa megjegyzésként szerepelteti a feltöltési feladatot, a letöltési feladatot és a művelet befejeződésekor a tárfiók tartalmának törlési feladatát azonban nem.
 
 ```csharp
 public static void Main(string[] args)
@@ -85,7 +83,7 @@ public static void Main(string[] args)
 }
 ```
 
-Az alkalmazás frissítését követően kell építenie az alkalmazást újra. Nyissa meg a `Command Prompt` , és keresse meg `D:\git\storage-dotnet-perf-scale-app`. Építse újra az alkalmazás futtatásával `dotnet build` az alábbi példában látható módon:
+Az alkalmazás frissítését követően újra létre kell hoznia az alkalmazást. Nyisson meg egy `Command Prompt` elemet, és keresse meg a következőt: `D:\git\storage-dotnet-perf-scale-app`. Az alkalmazás újbóli létrehozása a `dotnet build` futtatásával történik, az alábbi példában látható módon:
 
 ```
 dotnet build
@@ -93,23 +91,23 @@ dotnet build
 
 ## <a name="run-the-application"></a>Az alkalmazás futtatása
 
-Most, hogy az alkalmazást újra lett építve az az idő a frissített kód az alkalmazás futtatásához. Ha nem már meg van nyitva, nyissa meg a `Command Prompt` , és keresse meg `D:\git\storage-dotnet-perf-scale-app`.
+Most, hogy az alkalmazás újra létre lett hozva, futtathatja az alkalmazást a frissített kóddal. Ha még nem tette meg, nyisson meg egy `Command Prompt` elemet, és keresse meg a következőt: `D:\git\storage-dotnet-perf-scale-app`.
 
-Típus `dotnet run` az alkalmazás futtatásához.
+Az alkalmazás futtatásához írja be a következőt: `dotnet run`.
 
 ```
 dotnet run
 ```
 
-Az alkalmazás olvassa a tárolókban található a megadott tárfiók a **storageconnectionstring**. Azt a blobok 10 egy idő az telepítéseket a [ListBlobsSegmented](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobcontainer.listblobssegmented?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_CloudBlobContainer_ListBlobsSegmented_System_String_System_Boolean_Microsoft_WindowsAzure_Storage_Blob_BlobListingDetails_System_Nullable_System_Int32__Microsoft_WindowsAzure_Storage_Blob_BlobContinuationToken_Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_Microsoft_WindowsAzure_Storage_OperationContext_) módszer a tárolókban, és letölti azokat a helyi számítógép-használatával a [DownloadToFileAsync](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblob.downloadtofileasync?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_CloudBlob_DownloadToFileAsync_System_String_System_IO_FileMode_Microsoft_WindowsAzure_Storage_AccessCondition_Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_Microsoft_WindowsAzure_Storage_OperationContext_) metódus.
-Az alábbi táblázat a [BlobRequestOptions](/dotnet/api/microsoft.windowsazure.storage.blob.blobrequestoptions?view=azure-dotnet) meghatározott minden egyes BLOB letöltés.
+Az alkalmazás a **storageconnectionstring** karakterlánccal megadott tárfiókban lévő tárolókat olvassa. Az alkalmazás egyszerre 10 blobon halad végig a [ListBlobsSegmented](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobcontainer.listblobssegmented?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_CloudBlobContainer_ListBlobsSegmented_System_String_System_Boolean_Microsoft_WindowsAzure_Storage_Blob_BlobListingDetails_System_Nullable_System_Int32__Microsoft_WindowsAzure_Storage_Blob_BlobContinuationToken_Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_Microsoft_WindowsAzure_Storage_OperationContext_) metódussal a tárolókban, majd letölti azokat a helyi gépre a [DownloadToFileAsync](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblob.downloadtofileasync?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_CloudBlob_DownloadToFileAsync_System_String_System_IO_FileMode_Microsoft_WindowsAzure_Storage_AccessCondition_Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_Microsoft_WindowsAzure_Storage_OperationContext_) metódussal.
+Az alábbi táblázatban az egyes letöltött blobokhoz megadott [BlobRequestOptions](/dotnet/api/microsoft.windowsazure.storage.blob.blobrequestoptions?view=azure-dotnet) paraméter látható.
 
 |Tulajdonság|Érték|Leírás|
 |---|---|---|
-|[DisableContentMD5Validation](/dotnet/api/microsoft.windowsazure.storage.blob.blobrequestoptions.disablecontentmd5validation?view=azure-dotnet)| igaz| Ez a tulajdonság letiltja az MD5 kivonatoló feltöltött tartalmat ellenőrzése. Gyorsabb átvitelt letiltja az MD5 ellenőrzést hoz létre. Azonban nem erősíti meg a érvényességi vagy a átvitt fájlok integritásában. |
-|[StorBlobContentMD5](/dotnet/api/microsoft.windowsazure.storage.blob.blobrequestoptions.storeblobcontentmd5?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_StoreBlobContentMD5)| false| Ez a tulajdonság határozza meg, ha az MD5 kivonatoló kiszámítása és tárolja.   |
+|[DisableContentMD5Validation](/dotnet/api/microsoft.windowsazure.storage.blob.blobrequestoptions.disablecontentmd5validation?view=azure-dotnet)| true| Ez a tulajdonság letiltja a feltöltött tartalom MD5-kivonat ellenőrzését. A gyorsabb átvitel érdekében tiltsa le az MD5-ellenőrzést. Így azonban nem biztosított a folyamatban lévő átvitelben érintett fájlok érvényessége vagy integritása. |
+|[StorBlobContentMD5](/dotnet/api/microsoft.windowsazure.storage.blob.blobrequestoptions.storeblobcontentmd5?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_StoreBlobContentMD5)| false| Ez a tulajdonság határozza meg, hogy az MD5 kivonatoló kiszámítása és tárolása megtörtént-e.   |
 
-A `DownloadFilesAsync` feladat a következő példa látható:
+A következő példában az `DownloadFilesAsync` feladat látható:
 
 ```csharp
 private static async Task DownloadFilesAsync()
@@ -195,7 +193,7 @@ private static async Task DownloadFilesAsync()
 
 ### <a name="validate-the-connections"></a>A kapcsolatok ellenőrzése
 
-A fájlok letöltése folyamatban van, amíg a tárfiókhoz ellenőrizheti az egyidejű kapcsolatok száma. Nyissa meg a `Command Prompt` és típus `netstat -a | find /c "blob:https"`. Ez a parancs megjeleníti az éppen megnyitott használatával kapcsolatok számát `netstat`. A következő példa bemutatja egy hasonló kimeneti látottaknak futtatásakor az oktatóanyag magát. A példában látható, mivel volt több mint 280 kapcsolatok, nyissa meg, ha a véletlenszerű fájlok letöltését a tárfiók.
+A fájlok letöltése közben ellenőrizheti a tárfiók egyidejű kapcsolatainak számát. Nyisson meg egy `Command Prompt` elemet, és írja be a következőt: `netstat -a | find /c "blob:https"`. Ez a parancs a `netstat` használatával mutatja a jelenleg megnyitott kapcsolatok számát. A következő példa egy ahhoz hasonló kimenetet mutat be, mint amit akkor láthat, ha saját maga futtatja az oktatóanyagot. Ahogy a példában látható, több mint 280 kapcsolat volt megnyitva a véletlenszerű fájlok tárfiókból történő letöltése közben.
 
 ```
 C:\>netstat -a | find /c "blob:https"
@@ -206,15 +204,15 @@ C:\>
 
 ## <a name="next-steps"></a>További lépések
 
-A sorozat három része megtanulta, nagy adatmennyiségek véletlenszerű letölti a tárfiókból, például:
+A sorozat harmadik részében megismerkedett a nagy mennyiségű véletlenszerű adat tárfiókból történő letöltésével, például a következőkkel:
 
 > [!div class="checklist"]
 > * Az alkalmazás futtatása
-> * Ellenőrizze a kapcsolatok száma
+> * A kapcsolatok számának ellenőrzése
 
-Előzetes ellenőrzése a portálon átviteli sebesség és a késleltetés metrikák adatsorozat négy részét.
+A sorozat negyedik részében az átviteli sebességgel és a késéssel kapcsolatos mérőszámok portálon történő ellenőrzésével ismerkedhet meg.
 
 > [!div class="nextstepaction"]
-> [Ellenőrizze az átviteli sebesség és a késleltetés metrikákat a portálon](storage-blob-scalable-app-verify-metrics.md)
+> [Átviteli sebességgel és késéssel kapcsolatos mérőszámok ellenőrzése a portálon](storage-blob-scalable-app-verify-metrics.md)
 
 [previous-tutorial]: storage-blob-scalable-app-upload-files.md

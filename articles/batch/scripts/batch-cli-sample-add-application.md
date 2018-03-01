@@ -1,60 +1,61 @@
 ---
-title: "Az Azure CLI parancsfájl minta - alkalmazás hozzáadása a kötegben |} Microsoft Docs"
-description: "Az Azure CLI parancsfájl minta - kötegben alkalmazás hozzáadása"
+title: "Azure CLI-példaszkript – Alkalmazás hozzáadása a Batch szolgáltatásban | Microsoft Docs"
+description: "Azure CLI-példaszkript – Alkalmazás hozzáadása a Batch szolgáltatásban"
 services: batch
 documentationcenter: 
-author: annatisch
-manager: daryls
-editor: tysonn
+author: dlepow
+manager: jeconnoc
+editor: 
 ms.assetid: 
 ms.service: batch
 ms.devlang: azurecli
-ms.topic: article
+ms.topic: sample
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 05/02/2017
-ms.author: antisch
-ms.openlocfilehash: cbfe8ab565ecf7f298a9a6c0f0c8298c675f178c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: MT
+ms.date: 01/29/2018
+ms.author: danlep
+ms.openlocfilehash: 348e94e745350173196aeb64df3a814a05dd9144
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/01/2018
 ---
-# <a name="adding-applications-to-azure-batch-with-azure-cli"></a>Az Azure CLI Azure Batch-alkalmazások hozzáadása
+# <a name="cli-example-add-an-application-to-an-azure-batch-account"></a>Parancssori felületi példa: Alkalmazás hozzáadása egy Azure Batch-fiókhoz
 
-Ez a parancsfájl bemutatja, hogyan állíthatja be az Azure Batch-készlet vagy a feladat használható alkalmazás. Alkalmazás beállítása a csomag a végrehajtható fájlt, és függőségeit, .zip fájlba. Ebben a példában a végrehajtható fájl zip-fájl neve "saját-alkalmazás-exe.zip".
+Ez a szkript bemutatja, hogyan lehet hozzáadni egy alkalmazást az Azure Batch-készlettel vagy feladattal való használatra. Amikor előkészít egy alkalmazást a Batch-fiókjához való hozzáadáshoz, csomagolja be a végrehajtható fájlt – valamennyi függőségével együtt – egy zip-fájlba. 
 
-## <a name="prerequisites"></a>Előfeltételek
+[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-- Telepítse az Azure parancssori felület használatával a utasításokat a [Azure parancssori felület telepítési útmutató](https://docs.microsoft.com/cli/azure/install-azure-cli), ha még nem tette meg.
-- Batch-fiók létrehozása, ha még nem rendelkezik. Lásd: [Batch-fiók létrehozása az Azure parancssori felülettel](https://docs.microsoft.com/azure/batch/scripts/batch-cli-sample-create-account) számára egy fiókot hoz létre parancsfájlt.
+Ha a parancssori felület helyi telepítése és használata mellett dönt, a témakörben leírt lépésekhez az Azure CLI 2.0.20-as vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése](/cli/azure/install-azure-cli). 
 
-## <a name="sample-script"></a>Mintaparancsfájl
+## <a name="example-script"></a>Példaszkript
 
-[!code-azurecli[main](../../../cli_scripts/batch/add-application/add-application.sh "Add Application")]
+[!code-azurecli-interactive[main](../../../cli_scripts/batch/add-application/add-application.sh "Add Application")]
 
-## <a name="clean-up-application"></a>Alkalmazás törlése
+## <a name="clean-up-deployment"></a>Az üzemelő példány eltávolítása
 
-Miután lefuttatta a fenti minta parancsfájlt, a következő parancsokat az alkalmazások és a feltöltött alkalmazáscsomagok eltávolítása.
+A következő paranccsal távolítható el az erőforráscsoport és az ahhoz kapcsolódó összes erőforrás.
 
-```azurecli
-az batch application package delete -g myresourcegroup -n mybatchaccount --application-id myapp --version 1.0 --yes
-az batch application delete -g myresourcegroup -n mybatchaccount --application-id myapp --yes
+```azurecli-interactive
+az group delete --name myResourceGroup
 ```
 
-## <a name="script-explanation"></a>Parancsfájl ismertetése
+## <a name="script-explanation"></a>Szkript ismertetése
 
-A parancsfájl a következő parancsok töltsön fel egy alkalmazáscsomagot, és hozzon létre egy alkalmazást.
-Minden egyes parancsa a tábla-parancs-specifikus dokumentációjára mutató hivatkozásokat.
+A szkript a következő parancsokat használja.
+A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
 | Parancs | Megjegyzések |
 |---|---|
-| [az kötegelt alkalmazás létrehozása](https://docs.microsoft.com/cli/azure/batch/application#az_batch_application_create) | Alkalmazást hoz létre.  |
-| [az kötegelt alkalmazás beállítása](https://docs.microsoft.com/cli/azure/batch/application#az_batch_application_set) | Alkalmazás tulajdonságainak frissítése.  |
-| [az kötegelt alkalmazáscsomag létrehozása](https://docs.microsoft.com/cli/azure/batch/application/package#az_batch_application_package_create) | A megadott alkalmazás ad hozzá egy alkalmazáscsomagot.  |
+| [az group create](/cli/azure/group#az_group_create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
+| [az storage account create](/cli/azure/storage/account#az_storage_account_create) | Létrehoz egy tárfiókot. |
+| [az batch account create](/cli/azure/batch/account#az_batch_account_create) | Létrehoz egy Batch-fiókot. |
+| [az batch account login](/cli/azure/batch/account#az_batch_account_login) | Hitelesíti a megadott Batch-fiókot további parancssori felületi interakcióhoz.  |
+| [az batch application create](/cli/azure/batch/application#az_batch_application_create) | Létrehoz egy alkalmazást.  |
+| [az batch application package create](/cli/azure/batch/application/package#az_batch_application_package_create) | Hozzáad egy alkalmazáscsomagot a megadott alkalmazáshoz.  |
+| [az batch application set](/cli/azure/batch/application#az_batch_application_set) | Frissíti egy alkalmazás tulajdonságait.  |
+| [az group delete](/cli/azure/group#az_group_delete) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-További információ az Azure parancssori felület: [Azure CLI dokumentáció](https://docs.microsoft.com/cli/azure/overview).
-
-További kötegelt CLI parancsfájl minták megtalálhatók a [Azure Batch CLI dokumentáció](../batch-cli-samples.md).
+Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](https://docs.microsoft.com/cli/azure/overview).

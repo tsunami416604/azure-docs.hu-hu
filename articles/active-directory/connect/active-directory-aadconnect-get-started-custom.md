@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/02/2018
+ms.date: 02/15/2018
 ms.author: billmath
-ms.openlocfilehash: a12bd2ec296acfb810c8805c92941e5bf70c6ccb
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: ee16fe9e15e52fea482e0db34857780449c2ccb4
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>Az Azure AD Connect testreszabott telepítése
 Az Azure AD Connect **Custom settings** (Egyéni beállítások) menüje akkor használható, ha részletesebb beállításokra van szükség a telepítéshez. Akkor van rá szükség, ha több erdővel rendelkezik vagy ha választható szolgáltatásokat kíván konfigurálni, amelyeket a gyorstelepítés nem tartalmaz. Minden olyan esetben szükséges, ahol a [**gyorstelepítés**](active-directory-aadconnect-get-started-express.md) beállítás nem megfelelő az üzemelő példányhoz vagy a topológiához.
@@ -39,7 +39,7 @@ Amikor a szinkronizálási szolgáltatásokat telepíti, a választható konfigu
 | Választható konfiguráció | Leírás |
 | --- | --- |
 | Meglévő SQL Server használata |A használatával megadhatja az SQL Server nevét és a példány nevét. Válassza ezt a lehetőséget, ha már rendelkezik adatbázis-kiszolgálóval, amelyet használni kíván. Adja meg a példány nevét, majd vesszővel elválasztva egy portszámot az **Instance Name** (Példány neve) mezőben, ha az SQL Serveren nincs engedélyezve a tallózás. |
-| Meglévő szolgáltatásfiók használata |Alapértelmezés szerint az Azure AD Connect egy helyi szolgáltatásfiókot használ, amelyet a szinkronizálási szolgáltatások használhatnak. Amennyiben távoli SQL-kiszolgálót vagy egy hitelesítést igénylő proxyt használ, egy **felügyelt szolgáltatásfiókra** lesz szüksége, vagy egy, a tartományban lévő szolgáltatásfiókra, és ismernie kell a jelszót. Ezekben az esetekben adja meg a használni kívánt fiókot. Bizonyosodjon meg róla, hogy a telepítést futtató felhasználó rendszergazda az SQL Serveren, hogy létre lehessen hozni bejelentkezési adatokat a szolgáltatásfiókhoz. További információ: [Azure AD Connect-fiókok és -engedélyek](active-directory-aadconnect-accounts-permissions.md#azure-ad-connect-sync-service-account) |
+| Meglévő szolgáltatásfiók használata |Alapértelmezés szerint az Azure AD Connect egy helyi szolgáltatásfiókot használ, amelyet a szinkronizálási szolgáltatások használhatnak. Amennyiben távoli SQL-kiszolgálót vagy egy hitelesítést igénylő proxyt használ, egy **felügyelt szolgáltatásfiókra** lesz szüksége, vagy egy, a tartományban lévő szolgáltatásfiókra, és ismernie kell a jelszót. Ezekben az esetekben adja meg a használni kívánt fiókot. Bizonyosodjon meg róla, hogy a telepítést futtató felhasználó rendszergazda az SQL Serveren, hogy létre lehessen hozni bejelentkezési adatokat a szolgáltatásfiókhoz.  További információ: [Azure AD Connect-fiókok és -engedélyek](active-directory-aadconnect-accounts-permissions.md#azure-ad-connect-sync-service-account). </br></br>A legújabb buildben az SQL-rendszergazda sávon kívül kiépítheti az adatbázist, majd az Azure AD Connect-rendszergazda adatbázis-tulajdonosi jogosultságokkal telepítheti.  További információ: [Az Azure AD Connect telepítése SQL-lel delegált rendszergazdai engedélyekkel](active-directory-aadconnect-sql-delegation.md).|
 | Egyéni szinkronizálási csoportok megadása |Alapértelmezés szerint az Azure AD Connect létrehoz négy helyi csoportot a kiszolgálón a szinkronizálási szolgáltatások telepítésekor. Ezek a csoportok a következők: Administrators (Rendszergazdák) csoport, Operators (Operátorok) csoport, Browse (Tallózás) csoport és Password Reset (Jelszó-visszaállítás) csoport. Itt megadhatja a saját csoportjait. A csoportoknak helyi csoportoknak kell lenniük a kiszolgálón, és nem lehetnek a tartományban. |
 
 ### <a name="user-sign-in"></a>Felhasználói bejelentkezés
@@ -96,7 +96,7 @@ Tekintse át az összes **Not Added** (Hozzá nem adott) és **Not Verified** (N
 > Az átmenő hitelesítés engedélyezésekor legalább egy ellenőrzött tartománnyal kell rendelkeznie, hogy továbbléphessen a varázslóban.
 
 > [!WARNING]
-> A Másik azonosító használata nem kompatibilis az összes Office 365 számítási feladattal. A további információkat a [Másik bejelentkezési azonosító konfigurálása](https://technet.microsoft.com/library/dn659436.aspx) című rész tartalmazza.
+> A Másik azonosító használata nem kompatibilis az összes Office 365 számítási feladattal. A további információkat a [Másik bejelentkezési azonosító konfigurálása](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id) című rész tartalmazza.
 >
 >
 

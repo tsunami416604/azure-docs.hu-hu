@@ -10,11 +10,11 @@ ms.service: microsoft-genomics
 ms.workload: genomics
 ms.topic: quickstart
 ms.date: 12/07/2017
-ms.openlocfilehash: 71f5e4d1288a361c4b52ff45fb4c6601fa39a757
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: ed2048755317649d160bcfd71519af715067b99b
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="quickstart-run-a-workflow-through-the-microsoft-genomics-service"></a>Rövid útmutató: Munkafolyamat futtatása a Microsoft Genomics szolgáltatással
 
@@ -84,7 +84,7 @@ Az említett csomagokat `pip`, `easy_install` vagy szabványos `setup.py` eljár
 
 
 ### <a name="test-the-microsoft-genomics-client"></a>A Microsoft Genomics-kliens tesztelése
-A Microsoft Genomics-kliens teszteléséhez töltse le a konfigurációs fájlt a Genomics-fiókból. Lépjen be Genomics-fiókjába a következő módon: kattintson a bal alsó sarokban található **További szolgáltatások** gombra, majd szűréssel válassza ki a Genomics-fiókokat.
+A Microsoft Genomics-kliens teszteléséhez töltse le a konfigurációs fájlt a Genomics-fiókból. Lépjen be Genomics-fiókjába. Ehhez kattintson a bal felső sarokban található **Minden szolgáltatás** elemre, majd szűréssel válassza ki a Genomics-fiókokat.
 
 
 ![Microsoft Genomics szűrése az Azure Portalon](./media/quickstart-run-genomics-workflow-portal/genomics-filter-box.png "Microsoft Genomics szűrése az Azure Portalon")

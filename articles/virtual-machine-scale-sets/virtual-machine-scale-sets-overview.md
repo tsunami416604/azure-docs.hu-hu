@@ -16,11 +16,11 @@ ms.topic: get-started-article
 ms.date: 09/01/2017
 ms.author: negat
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6c796377b90fb3cd697f6d77589e3995b3eac338
-ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
+ms.openlocfilehash: ea842ecb40e2aff3316ed255388412597bb28eae
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="what-are-virtual-machine-scale-sets-in-azure"></a>Mik azok a virtuálisgép-méretezési csoportok az Azure-ban?
 A virtuálisgép-méretezési csoportok olyan számítási Azure-erőforrások, amelyek egymással teljesen azonos virtuális gépek csoportjainak üzembe helyezésére és felügyeletére használhatók. Az egyformán konfigurált virtuális gépeket tartalmazó méretezési csoportok a valódi automatikus méretezés támogatására készültek – szükségtelenné téve a virtuális gépek előzetes kiépítését. Ezzel is egyszerűsödik a nagy számítási igényű, nagy adatmennyiséget kezelő és tárolóalapú számítási feladatokra koncentráló nagyméretű szolgáltatások kiépítése.
@@ -33,7 +33,7 @@ A méretezési csoportokkal kapcsolatban további információkat tudhat meg az 
 * [Virtual Machine Scale Sets with Guy Bowerman](https://channel9.msdn.com/Shows/Cloud+Cover/Episode-191-Virtual-Machine-Scale-Sets-with-Guy-Bowerman) (A virtuálisgép-méretezési csoportokról Guy Bowerman mesél)
 
 ## <a name="creating-and-managing-scale-sets"></a>Méretezési csoportok létrehozása és kezelése
-Ha méretezési csoportokat szeretne létrehozni az [Azure Portalon](https://portal.azure.com), válassza az **új** lehetőséget, majd írja be a keresőmezőbe a **scale** (méretezés) szót. Az eredmények között megjelenik a **Virtual machine scale set** (Virtuálisgép-méretezési csoport) kifejezés. Ezután kitöltheti a méretezési csoport testreszabásához és üzembe helyezéséhez szükséges mezőket. A portálon alapszintű automatikus méretezési szabályokat is beállíthat a processzorhasználat alapján. A méretezési csoport kezeléséhez az Azure Portalt, az [Azure PowerShell-parancsmagokat](virtual-machine-scale-sets-windows-manage.md) vagy az Azure CLI 2.0-t használhatja.
+Ha skálázási csoportokat szeretne létrehozni az [Azure Portalon](https://portal.azure.com), válassza az **Erőforrás létrehozása** lehetőséget, majd írja be a keresőmezőbe a **skálázás** szót. Az eredmények között megjelenik a **Virtual machine scale set** (Virtuálisgép-méretezési csoport) kifejezés. Ezután kitöltheti a méretezési csoport testreszabásához és üzembe helyezéséhez szükséges mezőket. A portálon alapszintű automatikus méretezési szabályokat is beállíthat a processzorhasználat alapján. A méretezési csoport kezeléséhez az Azure Portalt, az [Azure PowerShell-parancsmagokat](virtual-machine-scale-sets-windows-manage.md) vagy az Azure CLI 2.0-t használhatja.
 
 A [rendelkezésre állási zónákban](virtual-machine-scale-sets-use-availability-zones.md) méretezési csoportok helyezhetők üzembe.
 

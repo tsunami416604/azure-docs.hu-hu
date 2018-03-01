@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 9919e326613ce81db32f1d72a8cb5e3668992885
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: f8082b632e9fef4aa5d46deb35e415f2b1c55dda
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="monitor-your-on-premises-identity-infrastructure-and-synchronization-services-in-the-cloud"></a>A helyszíni identitás-infrastruktúra és a szinkronizálási szolgáltatások megfigyelése a felhőben
 Az Azure Active Directory (Azure AD) Connect Health segít megfigyelni a helyszíni identitás-infrastruktúrát és a szinkronizálási szolgáltatásokat, és további betekintést nyújt a működésükbe. Megbízható Office 365- és Microsoft Online Services-kapcsolat fenntartását teszi lehetővé olyan fontos identitás-összetevők megfigyelésével, mint például az Active Directory összevonási szolgáltatások (AD FS) kiszolgálói, az Azure AD Connect-kiszolgálók (más néven a szinkronizálási motor) vagy az Active Directory-tartományvezérlők stb. Ezen összetevők legfontosabb adatpontjait is könnyen hozzáférhetővé teszi, így lekérdezhetővé válnak a használatra és egyéb lényeges jellemzőkre vonatkozó adatok, hogy megalapozott döntéseket hozhasson.
@@ -110,7 +110,7 @@ Az Azure AD Connect Health használatának elkezdéséhez hajtsa végre a követ
 Az Azure AD Connect Health portálon riasztásokat, teljesítményfigyelési adatokat és használatelemzési információkat tekinthet meg. Az Azure AD Connect Health fő panelje a https://aka.ms/aadconnecthealth címen található. A panelek az ablakoknak megfelelő funkciót töltenek be. A fő panelen a **Gyors üzembe helyezés**, az Azure AD Connect Health szolgáltatásai és további konfigurációs lehetőségek láthatók. Tekintse meg az alábbi képernyőfelvételt, valamint az azt követő rövid magyarázatot. Az ügynökök üzembe helyezése után az állapotfigyelő szolgáltatás automatikusan azonosítja az Azure AD Connect Health által monitorozott szolgáltatásokat.
 
 > [!NOTE]
-> A licencelési információkért lásd: [Azure AD Connect – gyakori kérdések](active-directory-aadconnect-health-faq.md) vagy [Az Azure AD díjszabási oldala](https://aka.ms/aadpricing).
+> A licencelési információkért lásd: [Azure AD Connect Health – gyakori kérdések](active-directory-aadconnect-health-faq.md) vagy [Az Azure AD díjszabási oldala](https://aka.ms/aadpricing).
     
 ![Az Azure AD Connect Health portál](./media/active-directory-aadconnect-health/portal4.png)
 

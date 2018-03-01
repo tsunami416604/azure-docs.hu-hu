@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 05/01/2017
 ms.author: mbullwin
-ms.openlocfilehash: 8f7a2344b6676a9067cf0adff04f49a73ce457fc
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: 5b8e35a953c936949af0d496345f537ad85fc359
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="monitor-your-nodejs-services-and-apps-with-application-insights"></a>A Node.js szolgáltatások és appok figyelése az Application Insights segítségével
 
@@ -47,7 +47,7 @@ Mielőtt hozzákezd, győződjön meg róla, hogy rendelkezik Azure-előfizetés
 
 
 1. Jelentkezzen be az [Azure Portalra][portal].
-2. Válassza az **Új** > **Fejlesztői eszközök** > **Application Insights** elemet. Az erőforrás tartalmaz egy végpontot a telemetriai adatok fogadására, valamint az érkező adatok, a mentett jelentések és irányítópultok, a szabály- és riasztási konfigurációk és továbbiak tárolására.
+2. Válassza az **Erőforrás létrehozása** > **Fejlesztői eszközök** > **Application Insights** elemet. Az erőforrás tartalmaz egy végpontot a telemetriai adatok fogadására, valamint az érkező adatok, a mentett jelentések és irányítópultok, a szabály- és riasztási konfigurációk és továbbiak tárolására.
 
   ![Application Insights-erőforrás létrehozása](./media/app-insights-nodejs/03-new_appinsights_resource.png)
 
@@ -208,7 +208,7 @@ server.on("listening", () => {
 });
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [A telemetria figyelése a portálon](app-insights-dashboards.md)
 * [Analytics-lekérdezések írása a telemetriai adatokhoz](app-insights-analytics-tour.md)

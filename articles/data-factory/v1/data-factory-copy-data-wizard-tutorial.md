@@ -15,11 +15,11 @@ ms.topic: get-started-article
 ms.date: 01/22/2018
 ms.author: spelluru
 robots: noindex
-ms.openlocfilehash: f6fc7e0597176e2c23bc82581c86b951542fbc23
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 462038d21ea061e7cff8322ab4ce12f45844dca7
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="tutorial-create-a-pipeline-with-copy-activity-using-data-factory-copy-wizard"></a>Oktatóanyag: Másolási tevékenységgel rendelkező folyamat létrehozása a Data Factory Másolás varázslója használatával
 > [!div class="op_single_selector"]
@@ -49,7 +49,7 @@ Az oktatóanyag elvégzése előtt hajtsa végre [Az oktatóanyag áttekintése]
 Ebben a lépésben az Azure Portal használatával létrehozza az **ADFTutorialDataFactory** nevű Azure data factoryt.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. Kattintson a **+ ÚJ** elemre a jobb felső sarokban, kattintson az **Adatok + analitika**, majd a **Data Factory** elemre. 
+2. Kattintson az **Erőforrás létrehozása** elemre a jobb felső sarokban, kattintson az **Adatok + analitika**, majd a **Data Factory** elemre. 
    
    ![New (Új)->DataFactory](./media/data-factory-copy-data-wizard-tutorial/new-data-factory-menu.png)
 2. A **New data factory** (Új data factory) panelen:

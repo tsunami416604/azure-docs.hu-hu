@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 01/31/2018
 ms.author: anithaa
 ms.custom: 
-ms.openlocfilehash: e705946dca839e6b8e11872ad5431f125b9fb41d
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 1e52b89cf8ac1a8ddeaa7e08ebd3734d1affe98e
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="configure-virtual-network-service-endpoints"></a>Virtuális hálózati szolgáltatásvégpontok konfigurálása
 
@@ -62,8 +62,8 @@ Az előzetes verzióban a virtuális hálózatok szolgáltatásvégponti funkci�
 
 1. Nyissa meg az [Azure Portalt](https://portal.azure.com/).
 Jelentkezzen be az Azure-ba az Azure-fiókjával. Ha nincs Azure-fiókja, regisztráljon egy ingyenes próbaverzióra. A fióknak rendelkeznie kell a megfelelő [engedélyekkel](#provisioning) egy virtuális hálózat és egy szolgáltatásvégpont létrehozásához.
-2. Kattintson az +Új > Hálózat > Virtuális hálózat > +Hozzáadás parancsra.
-3. A Virtuális hálózat létrehozása panelen adja meg a következő értékeket, majd kattintson a Létrehozás parancsra:
+2. Kattintson az **Erőforrás létrehozása** > **Hálózat** > **Virtuális hálózat** > **+Hozzáadás** lehetőségre.
+3. A „Virtuális hálózat létrehozása” panelen adja meg a következő értékeket, majd kattintson a **Létrehozás** parancsra:
 
 Beállítás | Érték
 ------- | -----
