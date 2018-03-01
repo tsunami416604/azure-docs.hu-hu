@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2018
+ms.date: 02/26/2018
 ms.author: abnarain
-ms.openlocfilehash: 898e6914a427b2e8864d97a7188eb718811ce263
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: ebe0523849b4709424e2f4bdac00f6bf98bf7cf4
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="azure-data-factory---security-considerations-for-data-movement"></a>Az Azure Data Factory - adatátvitelt jelölik a kapcsolódó biztonsági szempontok
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -122,7 +122,7 @@ Virtuális hálózat a logikai reprezentációjává a hálózaton, a felhőben.
 
 A következő táblázat összefoglalja a hálózati és eltérő kombinációja a forrás- és hibrid adatmozgás helyeit alapján önálló üzemeltetett integrációs futásidejű konfigurációs javaslatait.
 
-| Forrás      | Cél                              | Hálózati konfiguráció                    | Integrációs futásidejű beállítása                |
+| Forrás      | Cél                              | Hálózati konfiguráció                    | Integrációs modul telepítése                |
 | ----------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
 | Helyszíni követelmények | Virtuális gépek és felhőszolgáltatások üzembe helyezett virtuális hálózatok | IPSec VPN (pont – hely vagy pont-pont) | Az önálló üzemeltetett integrációs futásidejű lehet telepítve a helyi vagy egy Azure virtuális gép (VM) virtuális hálózat |
 | Helyszíni követelmények | Virtuális gépek és felhőszolgáltatások üzembe helyezett virtuális hálózatok | Az ExpressRoute (magánhálózati társviszony-létesítés)           | Az önálló üzemeltetett integrációs futásidejű lehet telepítve a helyi vagy egy Azure virtuális gépen a virtuális hálózat |
@@ -150,8 +150,8 @@ A következő táblázat **kimenő port** és a tartomány vonatkozó követelm�
 | `*.servicebus.windows.net`    | 443, 80        | Az önálló üzemeltetett integrációs futtatókörnyezet adatátviteli szolgáltatások adat-előállítóban való kapcsolódáshoz szükséges |
 | `*.core.windows.net`          | 443            | Csatlakozhat a önálló üzemeltetett integrációs futtatókörnyezet Azure Storage-fiók használatakor a [másolási előkészített](copy-activity-performance.md#staged-copy) szolgáltatás. |
 | `*.frontend.clouddatahub.net` | 443            | Az Azure Data Factory szolgáltatásnak való kapcsolódáshoz szükséges önálló üzemeltetett integrációs futásidőben. |
-| `*.database.windows.net`      | 1433           | (Nem kötelező) szükséges, ha a cél az Azure SQL Database az Azure SQL Data Warehouse- /. Funkcióival előkészített adatok másolása az Azure SQL Database vagy az Azure SQL Data Warehouse az 1433-as port megnyitása nélkül. |
-| `*.azuredatalakestore.net`    | 443            | (Nem kötelező) szükséges, ha a célként megadott Azure Data Lake store |
+| `*.database.windows.net`      | 1433           | (Nem kötelező) szükséges/az Azure SQL Database másolásakor / Azure SQL Data Warehouse. Funkcióival előkészített adatok másolása az Azure SQL Database vagy az Azure SQL Data Warehouse az 1433-as port megnyitása nélkül. |
+| `*.azuredatalakestore.net`<br>`login.microsoftonline.com/<tenant>/oauth2/token`    | 443            | (Nem kötelező) szükség, ha a másolt/a: Azure Data Lake store |
 
 > [!NOTE] 
 > Lehet, hogy a portok kezelése / megfelelő adatforrások szükség szerint szinten engedélyezett tartomány a vállalati tűzfalon. Ez a táblázat csak akkor használja az Azure SQL Database, az Azure SQL Data Warehouse, az Azure Data Lake Store példaként.   

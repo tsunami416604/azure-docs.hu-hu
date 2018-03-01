@@ -12,15 +12,15 @@ ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 12/22/2017
+ms.date: 02/22/2018
 ms.author: ryanwi
-ms.openlocfilehash: b611a447dd6669a09ca16c816de74acd7f3e8c7e
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: d3a4c7a308bdf7132cebffc13a5e7214ec73eaf2
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 02/27/2018
 ---
-# <a name="sfctl-is"></a>sfctl van
+# <a name="sfctl-is"></a>sfctl értéke
 Lekérdezi és parancsainak elküldését az infrastruktúra-szolgáltatás.
 
 ## <a name="commands"></a>Parancsok
@@ -34,14 +34,14 @@ Lekérdezi és parancsainak elküldését az infrastruktúra-szolgáltatás.
 ## <a name="sfctl-is-command"></a>sfctl parancs
 Meghívja az adott infrastruktúra szolgáltatáspéldányon egy felügyeleti parancs.
 
-Fürtöknél az infrastruktúra-szolgáltatás, konfigurálva egy vagy több példányát Ez az API biztosítja az infrastruktúra-specifikus parancsokat küldhet az adott példányára. Elérhető parancsok és a megfelelő választ formátumukban eltérőek lehetnek attól függően, az infrastruktúra, amelyen fut a fürtön. Ez az API támogatja a Service Fabric-platformról; nem célja, hogy közvetlenül a kódból használni. .
+Fürtöknél az infrastruktúra-szolgáltatás, konfigurálva egy vagy több példányát Ez az API biztosítja az infrastruktúra-specifikus parancsokat küldhet az adott példányára. Elérhető parancsok és a megfelelő választ formátumukban eltérőek lehetnek attól függően, az infrastruktúra, amelyen fut a fürtön. Ez az API támogatja a Service Fabric-platformról; nem célja, hogy közvetlenül a kódból használni. 
 
 ### <a name="arguments"></a>Argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| – [szükséges] parancsot| Meg kell hívni a parancs szövege. A parancs tartalma infrastruktúra-specifikus.  : Alapértelmezés parancsot.|
-| --service-id     | Az infrastruktúra-szolgáltatás identitásának. Az infrastruktúra-szolgáltatás nélkül teljes neve a "fabric:" URI-séma. Ez a paraméter csak az infrastruktúra-szolgáltatás fut egynél több példánnyal rendelkező fürtök kötelező.|
+| – [szükséges] parancsot| Meg kell hívni a parancs szövege. A parancs tartalma infrastruktúra-specifikus. |
+| --service-id     | Az infrastruktúra-szolgáltatás identitásának. Az azonosító: a teljes nevet, az infrastruktúra-szolgáltatás nélkül a "fabric:" URI-séma. Ez a paraméter csak az infrastruktúra-szolgáltatás fut egynél több példánnyal rendelkező fürtök kötelező.|
 | – időtúllépés -t     | Időtúllépését másodpercben.  Alapértelmezett: 60.|
 
 ### <a name="global-arguments"></a>Globális argumentumok
@@ -63,8 +63,8 @@ Fürtöknél az infrastruktúra-szolgáltatás, konfigurálva egy vagy több pé
 
 |Argumentum|Leírás|
 | --- | --- |
-| – [szükséges] parancsot| Meg kell hívni a parancs szövege. A parancs tartalma infrastruktúra-specifikus.  : Alapértelmezés lekérdezés.|
-| --service-id     | Az infrastruktúra-szolgáltatás identitásának. Az infrastruktúra-szolgáltatás nélkül teljes neve a "fabric:" URI-séma. Ez a paraméter csak több mint egy infrastruktúra-szolgáltatás fut-példánnyal rendelkező fürtök szükség.|
+| – [szükséges] parancsot| Meg kell hívni a parancs szövege. A parancs tartalma infrastruktúra-specifikus.|
+| --service-id     | Az infrastruktúra-szolgáltatás identitásának. Az azonosító: a teljes nevet, az infrastruktúra-szolgáltatás nélkül a "fabric:" URI-séma. Ez a paraméter csak több mint egy infrastruktúra-szolgáltatás fut-példánnyal rendelkező fürtök szükség.|
 | – időtúllépés -t     | Időtúllépését másodpercben.  Alapértelmezett: 60.|
 
 ### <a name="global-arguments"></a>Globális argumentumok

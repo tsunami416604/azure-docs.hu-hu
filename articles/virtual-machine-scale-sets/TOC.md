@@ -1,3 +1,5 @@
+# [A Virtual Machines Scale Sets dokumentációja](index.md)
+
 # Áttekintés
 ## [Mik a virtuálisgép-méretezési csoportok?](virtual-machine-scale-sets-overview.md)
 

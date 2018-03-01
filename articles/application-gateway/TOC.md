@@ -1,3 +1,5 @@
+# [Az Application Gateway dokumentációja](index.md)
+
 # Áttekintés
 ## [Mi az Application Gateway?](application-gateway-introduction.md)
 ## [Application Gateway – gyakori kérdések](application-gateway-faq.md)

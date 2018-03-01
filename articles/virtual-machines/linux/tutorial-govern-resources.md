@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/21/2018
 ms.author: tomfitz
-ms.openlocfilehash: 8a1e0b3e56dab5500d60b0610cddccaf095c8d97
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 86ac3ec390c7aa9bc24a90ef2ee582f97f8b5407
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="virtual-machine-governance-with-azure-cli"></a>Virtuális gép irányítás Azure parancssori felülettel
 
@@ -55,7 +55,7 @@ A virtuális gép megoldások kezelése, számos három erőforrás-specifikus s
 
 Szerepkörök hozzárendelése az egyéni felhasználók számára, helyett célszerűbb gyakran [Azure Active Directory-csoport létrehozása](../../active-directory/active-directory-groups-create-azure-portal.md) a felhasználók, akik hasonló műveletekre. Adott csoporthoz, majd rendelje hozzá a megfelelő szerepkörhöz. Ez a cikk leegyszerűsítése hoz létre egy Azure Active Directory-csoport tagjai nélkül. Ez a csoport továbbra is hozzárendelése szerepkörhöz hatókörhöz. 
 
-Az alábbi példa létrehoz egy Azure Active Directory csoport nevű *VMDemoContributors* és a levelezési becenév *vmDemoGroup*.
+Az alábbi példa létrehoz egy Azure Active Directory csoport nevű *VMDemoContributors* és a levelezési becenév *vmDemoGroup*. A levelezési becenév szolgálja ki a csoporthoz tartozó aliast.
 
 ```azurecli-interactive
 adgroupId=$(az ad group create --display-name VMDemoContributors --mail-nickname vmDemoGroup --query objectId --output tsv)

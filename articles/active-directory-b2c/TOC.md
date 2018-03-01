@@ -1,3 +1,5 @@
+# [Az Azure AD B2C dokumentációja](index.md)
+
 # [Áttekintés](active-directory-b2c-overview.md)
 
 # Bevezetés

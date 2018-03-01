@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/20/2017
 ms.author: suhuruli
-ms.openlocfilehash: f21561269e90e3643ef5d8d48ee28712ee7f611c
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: db6ad8b83ce34a8b86de822bc074e8a13345a1b4
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="set-up-a-linux-service-fabric-cluster-on-your-windows-developer-machine"></a>A Windows fejlesztői gépen Linux Service Fabric-fürt beállítása
 
@@ -29,7 +29,6 @@ Service Fabric-fürtök Linux-alapú Windows natív módon nem futnak. Egy helyi
 
 * Legalább 4 GB RAM
 * A [Docker](https://store.docker.com/editions/community/docker-ce-desktop-windows) legújabb verziója
-* Hozzáférés a Service Fabric Docker-tároló beépített [rendszerképéhez](https://hub.docker.com/r/servicefabricoss/service-fabric-onebox/)
 
 >[!TIP]
 > * A hivatalos Docker szerepel a lépések követésével [dokumentáció](https://store.docker.com/editions/community/docker-ce-desktop-windows/plans/docker-ce-desktop-windows-tier?tab=instructions) Docker telepíthető a Windows. 
@@ -42,7 +41,7 @@ Egy helyi Docker-tároló beállításához és egy Service Fabric-fürt rajta v
 1. A rendszerkép lekérése a Docker Hub adattárából:
 
     ```powershell
-    docker pull servicefabricoss/service-fabric-onebox
+    docker pull microsoft/service-fabric-onebox
     ```
 
 2. Frissítse a Docker-démon konfigurációját a gazdagépen a következő értékekkel, és indítsa újra a Docker-démont: 
@@ -58,11 +57,11 @@ Egy helyi Docker-tároló beállításához és egy Service Fabric-fürt rajta v
 3. Indítson el egy Service Fabric beépített tárolópéldányt a rendszerképpel:
 
     ```powershell
-    docker run -itd -p 19080:19080 --name sfonebox servicefabricoss/service-fabric-onebox
+    docker run -itd -p 19080:19080 --name sfonebox microsoft/service-fabric-onebox
     ```
     >[!TIP]
     > * Ha megad egy nevet a tárolópéldányhoz, átláthatóbb módon kezelheti. 
-    > * Ha az alkalmazás bizonyos portokon figyel, ezt további -p címkékkel kell meghatározni. Ha például az alkalmazás a 8080-as porton figyel, futtassa a következőt: docker run -itd -p 19080:19080 -p 8080:8080 --name sfonebox servicefabricoss/service-fabric-onebox
+    > * Ha az alkalmazás bizonyos portokon figyel, ezt további -p címkékkel kell meghatározni. Például akkor, ha az alkalmazás figyel a következőn: 8080-as porton, futtatási docker futtassa - itd -p 19080:19080 -p 8080:8080--name sfonebox microsoft/service-háló-onebox
 
 4. Jelentkezzen be a Docker-tárolóba interaktív SSH-módban:
 
@@ -82,7 +81,7 @@ Egy helyi Docker-tároló beállításához és egy Service Fabric-fürt rajta v
     > [!NOTE]
     > Az Eclipse beépülő modul jelenleg nem támogatott a Windows rendszeren. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Ismerkedés a [eclipse-ben](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-eclipse)
 * Tekintse meg az egyéb [Java-minták](https://github.com/Azure-Samples/service-fabric-java-getting-started)
 

@@ -1,3 +1,5 @@
+# [A Notification Hubs dokumentációja](index.md)
+
 # Áttekintés
 ## [Mi az az Azure Notification Hubs?](notification-hubs-push-notification-overview.md)
 # Első lépések
@@ -65,7 +67,7 @@
 ## [.NET](/dotnet/api/microsoft.azure.notificationhubs)
 ## [REST](/rest/api/notificationhubs)
 
-# Erőforrások
+# További források
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
 ## [MSDN-fórum](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=notificationhubs)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/notification-hubs/)

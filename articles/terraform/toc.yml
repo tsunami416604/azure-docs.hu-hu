@@ -1,3 +1,5 @@
+- name: Terraform az Azure-on – Dokumentáció
+  href: index.yml
 - name: Áttekintés
   items:
     - name: Az Azure-on futtatott Terraform ismertetése

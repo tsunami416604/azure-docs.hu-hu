@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2017
 ms.author: apimpm
-ms.openlocfilehash: 695db2f5e6ffe794d76d0b9126dc231ed8a87d2c
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
-ms.translationtype: MT
+ms.openlocfilehash: b11d80d1837d6474c7ee88f173de43e00fbb6cd5
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="how-to-protect-a-web-api-backend-with-azure-active-directory-and-api-management"></a>Hogyan védi meg a webes API háttéralkalmazás az Azure Active Directory és az API Management
 A következő videó bemutatja, hogyan egy webes API háttéralkalmazás létrehozásához, és a védelmét, és Azure Active Directory és az API Management OAuth 2.0 protokoll használatával.  Ez a cikk áttekintése és további információt a videó lépéseit tartalmazza. A 24 perces videó bemutatja, hogyan számára:
@@ -33,7 +33,7 @@ A következő videó bemutatja, hogyan egy webes API háttéralkalmazás létreh
 > 
 
 ## <a name="create-an-azure-ad-directory"></a>Az Azure AD-címtár létrehozása
-A webes API háttéralkalmazás, az Azure Active Directoryval kell biztonságossá egy AAD-bérlőt. Ez a videó egy bérlő nevű **APIMDemo** szolgál. Hozzon létre egy AAD-bérlőt, hogy jelentkezzen be a [klasszikus Azure portál](https://manage.windowsazure.com) kattintson **új**->**alkalmazásszolgáltatások**->**Active Directory ** -> **Directory**->**egyéni létrehozás**. 
+A webes API háttéralkalmazás, Azure Active Directory használatával biztonságos először egy AAD-bérlőt kell rendelkeznie. Ez a videó egy bérlő nevű **APIMDemo** szolgál. Hozzon létre egy AAD-bérlőt, hogy jelentkezzen be a [klasszikus Azure portál](https://manage.windowsazure.com) kattintson **új**->**alkalmazásszolgáltatások**->**Active Directory**  -> **Directory**->**egyéni létrehozás**. 
 
 ![Azure Active Directory][api-management-create-aad-menu]
 
@@ -472,7 +472,7 @@ Kattintson a **API-k** a bal oldali menüben, majd kattintson a **Számológép*
 
 ![A Számológép API][api-management-calc-api]
 
-Keresse meg a **biztonsági** lapon jelölje a **OAuth 2.0** jelölőnégyzetet, válassza ki a kívánt engedélyezési kiszolgálót a a **engedélyezési server** legördülő, kattintson** Mentés**.
+Keresse meg a **biztonsági** lapon jelölje a **OAuth 2.0** jelölőnégyzetet, válassza ki a kívánt engedélyezési kiszolgálót a a **engedélyezési server** legördülő, kattintson **Mentés**.
 
 ![A Számológép API][api-management-enable-aad-calculator]
 

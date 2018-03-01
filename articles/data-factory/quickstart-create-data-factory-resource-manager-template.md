@@ -3,21 +3,21 @@ title: "Azure-beli adat-előállító létrehozása Resource Manager-sablon hasz
 description: "Ebben az oktatóprogramban egy egyszerű minta Azure Data Factory-folyamatot fog létrehozni egy Azure Resource Manager-sablon segítségével."
 services: data-factory
 documentationcenter: 
-author: spelluru
+author: douglaslMS
 manager: jhubbard
-editor: monicar
+editor: 
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
 ms.date: 01/22/2018
-ms.author: spelluru
-ms.openlocfilehash: 5008d8f0ce36f09ff26bf10fadbf14da6b474ea9
-ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
+ms.author: douglasl
+ms.openlocfilehash: 50f6bebffbf9eb88ec2c725184793d1ea9291312
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="tutorial-create-an-azure-data-factory-using-azure-resource-manager-template"></a>Oktatóanyag: Azure-beli adat-előállító létrehozása Azure Resource Manager-sablon használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -428,7 +428,7 @@ Az üzembe helyezett eseményindító leállított állapotban van. Az eseményi
     ```
 
 ## <a name="monitor-the-pipeline"></a>A folyamat figyelése
-1. Miután bejelentkezett az [Azure Portalra](https://portal.azure.com/), kattintson a **További szolgáltatások** elemre, végezzen keresést a kulcsszóval (például **adat-el**), és válassza az **Adat-előállítók** lehetőséget.
+1. Miután bejelentkezett az [Azure Portalra](https://portal.azure.com/), kattintson a **Minden szolgáltatás** elemre, végezzen keresést a kulcsszóval (például: **adat-el**), és válassza az **Adat-előállítók** lehetőséget.
 
     ![Böngészés az adat-előállítók menüjében](media/quickstart-create-data-factory-resource-manager-template/browse-data-factories-menu.png)
 2. Az **Adat-előállítók** lapon kattintson a létrehozott adat-előállítóra. Szükség esetén szűrje a listát az adat-előállító nevével.  

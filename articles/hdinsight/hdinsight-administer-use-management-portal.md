@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-ms.openlocfilehash: 77c47809a01e9ff2bb851163f9adf987738f98f6
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 0b34f861b306dc62cbdbf97378a1c370494bbb20
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="manage-windows-based-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>A HDInsight Windows-alapú Hadoop-fürtök kezelése az Azure portál használatával
 
@@ -294,7 +294,7 @@ A HDInsight lekérdezés konzol az alábbi szolgáltatásokat tartalmazza:
     ![HDInsight portal YARN felhasználói felületen](./media/hdinsight-administer-use-management-portal/hdinsight-yarn-ui.png)
 
 ## <a name="run-hive-queries"></a>Hive-lekérdezések futtatása
-Hive-feladatok futtatása a portálról, kattintson a **Hive szerkesztő** a HDInsight lekérdezés konzolon. Lásd: [nyissa meg a HDInsight-lekérdezés konzol](#open-hdinsight-query-console).
+A portálról Hive-feladatok futtatásához kattintson **Hive szerkesztő** a HDInsight lekérdezés konzolon. Lásd: [nyissa meg a HDInsight-lekérdezés konzol](#open-hdinsight-query-console).
 
 ## <a name="monitor-jobs"></a>Feladatok figyelése
 A portálról feladat figyeléséhez kattintson **Feladatelőzményekben** a HDInsight lekérdezés konzolon. Lásd: [nyissa meg a HDInsight-lekérdezés konzol](#open-hdinsight-query-console).
@@ -356,7 +356,7 @@ Távoli asztal használatával csatlakozzon a fürthöz, és a Hadoop parancsot 
 
     További információk a Hadoop-parancsok: [Hadoop-parancsok hivatkozás](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/CommandsManual.html).
 
-Előző képernyőképen látható a mappa neve verziószáma a Hadoop beágyazott. A verziószám módosítható a fürtön telepíteni a Hadoop-összetevők verziója alapján. Hadoop környezeti változók segítségével tekintse meg a mappákra. Példa:
+Előző képernyőképen látható a mappa neve verziószáma a Hadoop beágyazott. A verziószám módosíthatja a fürtön telepíteni a Hadoop-összetevők verziója alapján. Hadoop környezeti változók segítségével tekintse meg a mappákra. Példa:
 
     cd %hadoop_home%
     cd %hive_home%

@@ -12,25 +12,17 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/30/2018
+ms.date: 02/27/2018
 ms.author: sethm
-ms.openlocfilehash: 9b7be70d726edfa9dbda3719d431e532106724b6
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 08b78f59dc758f12556f332546ccb6043bef2812
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="what-is-event-hubs"></a>Mi az Event Hubs?
 
 Az Azure Event Hubs egy kiválóan méretezhető adatstreamelési platform és eseményfeldolgozó szolgáltatás, amely másodpercenként több millió esemény fogadására és feldolgozására képes. Az Event Hubs képes az elosztott szoftverek és eszközök által generált események, adatok vagy telemetria feldolgozására és tárolására. Az eseményközpontokba elküldött adatok bármilyen valós idejű elemzési szolgáltató vagy kötegelési/tárolóadapter segítségével átalakíthatók és tárolhatók. Az alacsony késésű és nagy méretű [közzétételi-feliratkozási képességeket](/biztalk/core/publish-and-subscribe-architecture) biztosító Event Hubs az „első lépcsőfok” a big data jellegű adatmennyiségek kezelése irányában.
-
-## <a name="why-use-event-hubs"></a>Miért érdemes az Event Hubs platformot használni?
-
-Az Event Hubs esemény- és telemetriakezelési képességei különösen az alábbiakhoz hasznosak:
-
-* alkalmazások kialakítása,
-* felhasználói élmények vagy munkafolyamatok feldolgozása,
-* az eszközök internetes hálózatát (IoT) érintő forgatókönyvek.
 
 Az Event Hubs segítségével lehetségessé válik például a viselkedéskövetés a mobilalkalmazásokban, a forgalmi információk gyűjtése a webfarmokról, a játékbeli események rögzítése a konzolos játékokban, vagy telemetriaadatok gyűjtése az ipari gépekről, csatlakoztatott járművekről vagy más eszközökről.
 

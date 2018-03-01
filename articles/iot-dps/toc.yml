@@ -7,8 +7,10 @@
 - name: Gyors útmutatók
   expanded: true
   items:
-    - name: Automatikus kiépítés beállítása
+    - name: Automatikus kiépítés beállítása – Portál
       href: quick-setup-auto-provision.md
+    - name: Automatikus kiépítés beállítása – Sablon
+      href: quick-setup-auto-provision-rm.md
     - name: Szimulált eszköz létrehozása
       items:
         - name: TPM
@@ -91,6 +93,8 @@
       href: how-to-revoke-device-access-portal.md
     - name: Eszközök leépítése
       href: how-to-unprovision-devices.md
+    - name: Tulajdonlástanúsítási eljárás X.509-es hitelesítésszolgáltatói tanúsítványokra vonatkozóan
+      href: how-to-verify-certificates.md
     - name: A HSM használata az SDK-val
       href: use-hsm-with-sdk.md
     - name: Eszközkiépítési szolgáltatás hozzáférés-vezérlése
@@ -99,6 +103,8 @@
       href: how-to-manage-dps-with-cli.md
     - name: Fejlesztés SDK-eszközök használatával
       href: how-to-use-sdk-tools.md
+    - name: Csatlakozás az MXChip IoT DevKithez
+      href: how-to-connect-mxchip-iot-devkit.md
 - name: Referencia
   items:
     - name: REST

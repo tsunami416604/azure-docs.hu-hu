@@ -1,3 +1,5 @@
+# [A Mobile Engagement dokumentációja](index.md)
+
 # [Áttekintés](mobile-engagement-overview.md)
 ## [Összehasonlítás a kapcsolódó szolgáltatásokkal](mobile-engagement-comparison.md)
 ## [Funkciók áttekintése](mobile-engagement-key-features.md)
@@ -119,14 +121,14 @@
 
 
 
-# Kapcsolódó
+# Kapcsolódó témakörök
 ## SDK-tartalom
 ### [Android SDK](mobile-engagement-android-sdk-content.md)
 ### [iOS SDK](mobile-engagement-ios-sdk-content.md)
 ### [Univerzális Windows-alkalmazások SDK](mobile-engagement-windows-store-sdk-content.md)
 ### [Windows Phone Silverlight SDK](mobile-engagement-windows-phone-sdk-content.md)
 
-# Erőforrások
+# További források
 ## [.NET API-minta](mobile-engagement-dotnet-sdk-service-api.md)
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/mobile-engagement/)

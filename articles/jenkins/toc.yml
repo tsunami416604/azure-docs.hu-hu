@@ -1,4 +1,4 @@
-- name: A Jenkins az Azure-on
+- name: A Jenkins on Azure dokumentációja
   href: index.yml
 - name: Áttekintés
   items:
@@ -20,7 +20,7 @@
     - name: CI/CD–Linuxos virtuális gépek
       href: /azure/virtual-machines/linux/tutorial-jenkins-github-docker-cicd
       maintainContext: true
-    - name: Azure-erőforrások létrehozása egy folyamat feladatában
+    - name: Azure-erőforrások létrehozás egy folyamat feladatában
       href: /azure/jenkins/execute-cli-jenkins-pipeline
       maintainContext: true
     - name: Skálázás Azure virtuálisgép-ügynökökkel

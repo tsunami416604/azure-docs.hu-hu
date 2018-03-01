@@ -1,6 +1,8 @@
+# [A Multi-factor Authentication dokumentációja](index.md)
+
 # Áttekintés
 ## [Mi az az Azure Multi-Factor Authentication?](multi-factor-authentication.md)
-## [Működés](multi-factor-authentication-how-it-works.md)
+## [Működési elv](multi-factor-authentication-how-it-works.md)
 ## [Az Azure MFA beszerzése](multi-factor-authentication-versions-plans.md)
 
 # Bevezetés
@@ -54,6 +56,6 @@
 ### [Kérdezzen](https://social.msdn.microsoft.com/Forums/newthread?category=windowsazureplatform&forum=windowsazureactiveauthentication&prof=required)
 ### [NPS-bővítmény hibái](multi-factor-authentication-nps-errors.md)
 
-# Erőforrások
+# További források
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=security-identity)
 ## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)

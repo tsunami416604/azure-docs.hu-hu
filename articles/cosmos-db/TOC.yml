@@ -258,6 +258,8 @@
               href: mongodb-robomongo.md
             - name: A Mongoose használata
               href: mongodb-mongoose.md
+            - name: Olvasási beállítás használata
+              href: mongodb-readpreference.md
             - name: A MongoDB-funkciók támogatása
               href: mongodb-feature-support.md
             - name: Angular oktatóanyag-sorozat

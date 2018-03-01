@@ -15,11 +15,11 @@ ms.date: 08/14/2017
 ms.author: joflore
 ms.reviewer: richagi
 ms.custom: H1Hack27Feb2017; it-pro
-ms.openlocfilehash: 8c3ceb8a455ea32ebbd1393aa2484b8b8c898ef8
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: ee8b89ab93fd10129cbb0e0634c5c920a928f1c1
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>A meglévő hálózati házirend-kiszolgáló infrastruktúra integrálása az Azure multi-factor Authentication
 
@@ -63,7 +63,7 @@ Windows Server 2008 R2 SP1 vagy újabb.
 Ezek a könyvtárak a rendszer automatikusan telepíti a kiterjesztéssel.
 
 -   [Visual C++ újraterjeszthető csomag a Visual Studio 2013 (X64)](https://www.microsoft.com/download/details.aspx?id=40784)
--   [Microsoft Active Directory modul Windows Powershellhez készült Azure 1.1.166.0 verziója](https://connect.microsoft.com/site1164/Downloads/DownloadDetails.aspx?DownloadID=59185)
+-   [Microsoft Active Directory modul Windows Powershellhez készült Azure 1.1.166.0 verziója](https://www.powershellgallery.com/packages/MSOnline/1.1.166.0)
 
 A Microsoft Active Directory modul Windows Powershellhez készült Azure telepítve van, ha még nincs jelen, a telepítési folyamat részeként futtatja konfigurációs parancsfájl használatával. Nincs szükség a modul időben telepítésére, ha még nincs telepítve.
 
@@ -191,7 +191,7 @@ Ha a multi-factor Authentication nem regisztrált felhasználók, azt is meghat�
 
 | Kulcs | Érték | Alapértelmezett |
 | --- | ----- | ------- |
-| REQUIRE_USER_MATCH | IGAZ/HAMIS | Nincs beállítva (egyenértékű TRUE) |
+| REQUIRE_USER_MATCH | TRUE/FALSE | Nincs beállítva (egyenértékű TRUE) |
 
 Ez a beállítás célja határozza meg, mi a teendő, ha a felhasználó nincs regisztrálva az MFA szolgáltatásra. Ha a kulcs nem létezik, nincs beállítva vagy az értéke igaz, és a felhasználó nincs regisztrálva, majd a bővítmény nem sikerül az MFA-kérdést. Ha a kulcs hamis értékre van állítva, és a felhasználó nincs regisztrálva, a hitelesítés folytatódik MFA végrehajtása nélkül. Ha a felhasználó regisztrálta az MFA, hitelesítenie kell a multi-factor Authentication szolgáltatás akkor is, ha REQUIRE_USER_MATCH hamis értékre van állítva.
 
@@ -243,7 +243,7 @@ Győződjön meg arról, hogy fut-e AD Connectet, és, hogy a felhasználó megt
 Ellenőrizze, hogy a https://adnotifications.windowsazure.com elérhető-e az NPS-bővítményt futtató kiszolgálóról.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Bejelentkezés másik azonosítók konfigurálása, vagy állítsa be a kivételek listájához a kétlépéses ellenőrzést végző nem szabad IP-címekről [speciális konfigurációs beállítások az NPS-bővítmény a többtényezős hitelesítés](nps-extension-advanced-configuration.md)
 

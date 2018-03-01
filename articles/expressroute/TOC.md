@@ -1,3 +1,5 @@
+# [Az ExpressRoute dokumentációja](index.md)
+
 # Áttekintés
 ## [Mi az az ExpressRoute?](expressroute-introduction.md)
 ## [ExpressRoute – Gyakori kérdések](expressroute-faqs.md)
@@ -70,14 +72,14 @@
 ## [REST](https://msdn.microsoft.com/library/azure/mt586720)
 ## [REST (klasszikus)](https://msdn.microsoft.com/library/azure/dn606310)
 
-# Kapcsolódó
-## [Virtual Network](/azure/virtual-network/)
+# Kapcsolódó témakörök
+## [Virtuális hálózat](/azure/virtual-network/)
 ## [VPN Gateway](/azure/vpn-gateway/)
-## [Virtual Machines](/azure/virtual-machines/)
+## [Virtuális gépek](/azure/virtual-machines/)
 ## [Load Balancer](/azure/load-balancer/)
 ## [Traffic Manager](/azure/traffic-manager/)
 
-# Erőforrások
+# További források
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=networking)
 ## [Esettanulmányok](https://customers.microsoft.com/Pages/advancedsearch.aspx?mrmcproducts=More%20Products)
 ## [Hálózatkezelési blog](https://azure.microsoft.com/blog/topics/networking/)

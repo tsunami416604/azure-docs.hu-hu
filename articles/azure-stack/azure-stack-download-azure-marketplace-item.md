@@ -15,11 +15,11 @@ ms.topic: get-started-article
 ms.date: 02/22/2018
 ms.author: brenduns
 ms.reviewer: jeffgo
-ms.openlocfilehash: 27b575a1baa793794480d16e91f0f96355b3d303
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 3437bc9f164cbdc6c923498b978291ced6278744
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="download-marketplace-items-from-azure-to-azure-stack"></a>Töltse le a Piactéri elemek az Azure-ból az Azure-verem
 
@@ -109,7 +109,7 @@ A gépen, amely internetkapcsolattal rendelkezik az alábbi lépések segítség
 
 ### <a name="import-the-image-and-publish-it-to-azure-stack-marketplace"></a>A lemezkép importálása, és tegye közzé a verem Azure piactér
 
-1. A kép és a gyűjtemény csomag letöltése után mentse őket, és a tartalom cserélhető lemezmeghajtókra AzureStack főkiszolgálós eszközök mappában, és másolja az Azure-verem környezetben (másolhatja azt helyileg bárhova például: "C:\MarketplaceImages").   
+1. A kép és a gyűjtemény csomag letöltése után mentse őket, és a tartalom cserélhető lemezmeghajtókra AzureStack főkiszolgálós eszközök mappában, és másolja az Azure-verem környezetben (másolhatja azt helyileg bárhova például: "C:\MarketplaceImages").     
 
 2. A kép importálása, előtt csatlakoztatni kell az Azure-verem üzemeltető környezetben ismertetett lépések segítségével [Azure verem operátor PowerShell környezet konfigurálása](azure-stack-powershell-configure-admin.md).  
 
