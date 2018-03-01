@@ -12,13 +12,13 @@ ms.devlang: dotNet
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/19/2017
+ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 25976ba919454e26f1dd7965de5db7c4f80b9355
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fff5a5310fc45534cec864b235501b75e3836241
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="differences-between-service-fabric-on-linux-and-windows"></a>A Service Fabric Linux és Windows rendszerhez készült verziója közötti különbségek
 
@@ -91,7 +91,7 @@ A fejlesztői eszközök eltérnek Windows és Linux rendszeren. Windows rendsze
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [A fejlesztőkörnyezet előkészítése Linuxon](service-fabric-get-started-linux.md)
 * [A fejlesztőkörnyezet előkészítése OSX-en](service-fabric-get-started-mac.md)
 * [Az első Service Fabric Java-alkalmazás létrehozása és üzembe helyezése Linux rendszeren Yeoman használatával](service-fabric-create-your-first-linux-application-with-java.md)

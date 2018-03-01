@@ -6,14 +6,14 @@ author: neilpeterson
 manager: timlt
 ms.service: container-service
 ms.topic: tutorial
-ms.date: 10/24/2017
+ms.date: 02/22/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 33725eb64399f446ff540a36f702c80107958242
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 4ee59782a0e40f9d09023a75862ab0f8415e6d12
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="run-applications-in-azure-container-service-aks"></a>Alkalmazások futtatása az Azure Container Service (AKS) szolgáltatásban
 
@@ -104,6 +104,10 @@ azure-vote-front   10.0.34.242   52.179.23.131   80:30676/TCP   2m
 Az alkalmazás megtekintéséhez navigáljon a külső IP-címhez.
 
 ![Egy Azure-beli Kubernetes-fürt képe](media/container-service-kubernetes-tutorials/azure-vote.png)
+
+Ha az alkalmazás nem töltődött be, ennek oka a rendszerkép-regisztrációs adatbázis engedélyezési problémája lehet.
+
+Az alábbi lépéseket követve [engedélyezheti a hozzáférést a Kubernetes titkos kódján keresztül](https://docs.microsoft.com/en-us/azure/container-registry/container-registry-auth-aks#access-with-kubernetes-secret).
 
 ## <a name="next-steps"></a>További lépések
 

@@ -15,13 +15,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/27/2017
+ms.date: 02/22/2018
 ms.author: jgao
-ms.openlocfilehash: 1e9d5ca475424c99b30c62252f4b0abc9bd09078
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: 0f3e8f00b1cee1141277f4dee21fabf993e69ba0
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="connect-to-azure-hdinsight-and-run-hive-queries-using-data-lake-tools-for-visual-studio"></a>Kapcsolódás az Azure HDInsighthoz és Hive-lekérdezések futtatása a Data Lake Tools for Visual Studio használatával
 
@@ -253,7 +253,7 @@ A Data Lake Tools for Visual Studio támogatja a Pig-parancsfájlok létrehozás
 * Ha az eredmények NULL értékekkel kezdődnek, az eredmények jelenleg nem jelennek meg. Megoldottuk ezt a problémát, és ha elakad ennél a hibánál, lépjen kapcsolatba a terméktámogatással.
 * A Visual Studio által létrehozott HQL-parancsfájl a felhasználó helyi régióbeállításaitól függően kódolt. Lehet, hogy nem fut megfelelően, ha a felhasználó binárisként tölti fel a parancsfájlt a fürtbe.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben a cikkben megtanulta, hogyan csatlakozhat a HDInsight-fürtökhöz a Visual Studio-eszközből a Data Lake (HDInsight) -eszközök csomaggal, és hogyan futtathat Hive-lekérdezéseket. További információkért lásd:
 
 * [A Hadoop Hive használata a HDInsightban](hdinsight-use-hive.md)
