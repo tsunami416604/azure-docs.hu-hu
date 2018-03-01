@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: 95934ce8be3570918f72ed7f8101a3599512abed
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 365f00ced38a1ddc20df211121fba43efff8ea87
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="getting-started"></a>A Mobile Services-t használom, miben válhat előnyömre az App Service?
 ## <a name="overview"></a>Áttekintés
@@ -28,7 +28,7 @@ Az Ön által jelenleg használt Mobile Services mobilszolgáltatás biztonságb
 * Új üzemeltetési funkciók, többek között a WebJobs használata, egyéni CNAME-ek és jobb ellenőrzés
 * Integráció a Traffic Managerrel
 * Kapcsolat létesítése a helyszíni erőforrásokkal és VPN-ekkel hibrid kapcsolatok és virtuális hálózat használatával
-* Az alkalmazáshoz kötődő figyelés, riasztás és hibaelhárítás a NewRelic vagy az AppInsights segítségével
+* Az alkalmazáshoz kötődő monitorozás, riasztás és hibaelhárítás az AppInsights segítségével
 * Szélesebb választék a mögöttes számítási erőforrások és az árképzés terén
 * Beépített automatikus skálázás, terheléselosztás és teljesítményfigyelés
 * Beépített átmeneti üzembe helyezési, biztonsági mentési, visszaállítási és működés közbeni tesztelési funkciók
@@ -54,7 +54,7 @@ Az *Azure App Service* szélesebb körben és több funkcióval támogatja az AS
 A Mobile Servicesben a háttéralkalmazás kódjának összes példánya kisebb méretű virtuális gépeken futott. Az *Azure App Service* szolgáltatásban jóval szélesebb körben választhatja meg a virtuális gépek méretét. Ezenfelül az ügyfelektől beérkező terhelés esetén gyors vertikális vagy horizontális skálázást végezhet a korábbi teljesítménymutatók alapján.
 
 ## <a name="be-in-the-know"></a>Részletes információk a rendszerről
-A felmerülő problémákról Ön és csapata is valós időben értesülhet az automatikus figyelési funkciók és riasztások segítségével. Ha szeretne részleteiben is tisztában lenni a mobilalkalmazás teljesítményével, a New Relic és az AppInsights által biztosított fejlett alkalmazáselemzési és -monitorozási funkciókat is integrálhatja. Az *Azure App Service*-szel mostantól számos különböző teljesítmény-mérőszámon alapuló riasztást állíthat be, akár programozott módon, akár az Azure Portalon.
+A felmerülő problémákról Ön és csapata is valós időben értesülhet az automatikus figyelési funkciók és riasztások segítségével. Ha szeretne részleteiben is tisztában lenni a mobilalkalmazás teljesítményével, az AppInsights által biztosított fejlett alkalmazáselemzési és -monitorozási funkciókat is integrálhatja. Az *Azure App Service*-szel mostantól számos különböző teljesítmény-mérőszámon alapuló riasztást állíthat be, akár programozott módon, akár az Azure Portalon.
 
 ## <a name="keep-your-assets-safe"></a>Védelem objektumai számára
 A szolgáltatás automatikus biztonsági mentést készít a háttéralkalmazásról és az adatbázisról. Kódja és adatai még katasztrófa esetén sem vesznek el, és könnyen helyreállíthatók, így magabiztosan vezetheti üzletét.

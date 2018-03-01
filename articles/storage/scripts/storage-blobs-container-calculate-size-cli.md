@@ -1,6 +1,6 @@
 ---
-title: "Az Azure CLI-parancsfájlt minta - kiszámításához blob-tároló mérete |} Microsoft Docs"
-description: "Az Azure Blob storage-tároló méretének kiszámításához a tárolóban lévő blobok méretének összegzésével."
+title: "Azure CLI-példaszkript – Blobtároló méretének kiszámítása | Microsoft Docs"
+description: "Egy Azure-blobtároló méretének kiszámítása a tárolóban lévő blobok méretének összeadásával."
 services: storage
 documentationcenter: na
 author: tamram
@@ -15,47 +15,47 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 06/28/2017
 ms.author: tamram
-ms.openlocfilehash: 61a553e47a642aead323a19d0724fdccc94a6282
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
-ms.translationtype: MT
+ms.openlocfilehash: f9213018969ab47ce2e78d8c119f22dedaff9452
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 02/01/2018
 ---
-# <a name="calculate-the-size-of-a-blob-storage-container"></a>A Blob storage-tároló méretének kiszámítása
+# <a name="calculate-the-size-of-a-blob-storage-container"></a>Blob Storage-tároló méretének kiszámítása
 
-Ez a parancsfájl az Azure Blob storage-tároló mérete a tárolóban lévő blobok méretének összegzésével számítja ki.
+Ez a szkript kiszámítja egy Azure-blobtároló méretét a tárolóban lévő blobok méretének összeadásával.
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 > [!IMPORTANT]
-> A parancssori felület parancsfájl egy becsült mérete biztosít a tárolóhoz, és számlázási számítások nem használható.
+> Ez a parancssori felületi példaszkript a tároló becsült méretét adja meg, ezért nem használható számlázási számításokhoz.
 
-## <a name="sample-script"></a>Mintaparancsfájl
+## <a name="sample-script"></a>Példaszkript
 
 [!code-azurecli[main](../../../cli_scripts/storage/calculate-container-size/calculate-container-size.sh?highlight=2-3 "Calculate container size")]
 
 ## <a name="clean-up-deployment"></a>Az üzemelő példány eltávolítása 
 
-A következő parancsot az erőforráscsoport, a tároló és az összes kapcsolódó erőforrások eltávolításához.
+Az alábbi paranccsal eltávolítható az erőforráscsoport, a tároló és az összes kapcsolódó erőforrás.
 
 ```azurecli-interactive
 az group delete --name myResourceGroup
 ```
 
-## <a name="script-explanation"></a>Parancsfájl ismertetése
+## <a name="script-explanation"></a>Szkript ismertetése
 
-A parancsfájl a következő parancsokat a Blob storage tárolót méretének kiszámításához. A tábla hivatkozások parancs vonatkozó dokumentációt összes elemére.
+Ez a szkript a következő parancsokat használja a Blob Storage-tároló méretének kiszámításához. A táblázatban lévő összes elem a hozzá tartozó dokumentációra hivatkozik.
 
 | Parancs | Megjegyzések |
 |---|---|
-| [az csoport létrehozása](/cli/azure/group#create) | Az összes erőforrás tároló erőforrás csoportot hoz létre. |
-| [az tárolási blob feltöltése](/cli/azure/storage/account#create) | Helyi fájlok feltölt egy Azure Blob storage tárolók. |
-| [az tárolási blob listája](/cli/azure/storage/account/keys#list) | Egy Azure Blob storage tárolóban lévő blobok sorolja fel. |
+| [az group create](/cli/azure/group#az_group_create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
+| [az storage blob upload](/cli/azure/storage/account#az_storage_account_create) | Helyi fájlokat tölt fel egy Azure Blob Storage-tárolóba. |
+| [az storage blob list](/cli/azure/storage/account/keys#az_storage_account_keys_list) | Felsorolja az Azure Blob Storage-tárolóban található blobokat. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-További információ az Azure parancssori felület: [Azure CLI dokumentáció](/cli/azure/overview).
+Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](/cli/azure/overview).
 
-További tárhely CLI parancsfájl minták megtalálhatók a [Azure Blob Storage Azure CLI minták](../blobs/storage-samples-blobs-cli.md).
+További Storage CLI-példaszkripteket [az Azure Blob Storage Azure CLI-példái](../blobs/storage-samples-blobs-cli.md) között találhat.

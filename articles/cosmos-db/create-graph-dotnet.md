@@ -15,17 +15,17 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 01/08/2018
 ms.author: lbosq
-ms.openlocfilehash: c7fff37e1b59fd90952826a1410a8dd8c6931e77
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: 38869444d43a3fb5c37a222ef58d30fc607106aa
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="azure-cosmos-db-build-a-net-framework-or-core-application-using-the-graph-api"></a>Azure Cosmos DB: .NET-keretrendszer vagy Core-alkalmazás létrehozása a Graph API használatával
 
 Az Azure Cosmos DB a Microsoft globálisan elosztott, többmodelles adatbázis-szolgáltatása. Segítségével gyorsan létrehozhat és lekérdezhet dokumentum, kulcs/érték és gráf típusú adatbázisokat, amelyek mindegyike felhasználja az Azure Cosmos DB középpontjában álló globális elosztási és horizontális skálázhatósági képességeket. 
 
-A bevezető bemutatja, hogyan hozhat létre az Azure Portal segítségével Azure Cosmos DB-fiókot, adatbázist és gráfot (tárolót). Ezután megtudhatja hogyan hozhat létre és futtathat egy, a [Graph API-val](graph-sdk-dotnet.md) létrehozott konzolalkalmazást.  
+A bevezető bemutatja, hogyan hozhat létre az Azure Portal segítségével Azure Cosmos DB-fiókot, adatbázist és gráfot (tárolót). Ezután a nyílt forráskódú [Gremlin Net](http://tinkerpop.apache.org/docs/3.2.7/reference/#gremlin-DotNet)-illesztőprogram segítségével létrehozhat és futtathat egy konzolalkalmazást.  
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -45,63 +45,98 @@ Ha a Visual Studio 2017 már telepítve van, győződjön meg arról, hogy minde
 
 ## <a name="clone-the-sample-application"></a>A mintaalkalmazás klónozása
 
-Most pedig klónozunk egy Graph API-alkalmazást a GitHubról, beállítjuk a kapcsolati karakterláncot, majd futtatni fogjuk az alkalmazást. Látni fogja, milyen egyszerű az adatokkal programozott módon dolgozni. 
+A következő lépésekben elvégezheti a Graph API-alkalmazás klónozását a GitHubról, beállíthatja a kapcsolati sztringet, és futtathatja az alkalmazást. Látni fogja, milyen egyszerű az adatokkal programozott módon dolgozni. 
 
-A mintaprojekt a .NET Core projektformátumot használja, és úgy lett beállítva, hogy a következő keretrendszereket célozza:
- - netcoreapp2.0
- - net461
+1. Nyisson meg egy git-terminálablakot, például a git basht, és a `cd` paranccsal lépjen a munkakönyvtárba.  
 
-1. Nyisson meg egy git terminálablakot, például a git bash eszközt, és a `cd` paranccsal lépjen egy munkakönyvtárba.  
-
-2. Futtassa a következő parancsot a mintatárház klónozásához. 
+2. Futtassa a következő parancsot a minta tárház klónozásához. 
 
     ```bash
-    git clone https://github.com/Azure-Samples/azure-cosmos-db-graph-dotnet-getting-started.git
+    git clone https://github.com/Azure-Samples/azure-cosmos-db-graph-gremlindotnet-getting-started.git
     ```
 
-3. Ezután nyissa meg a Visual Studiót, majd a megoldásfájlt. 
+3. Ezután nyissa meg a Visual Studiót, majd a megoldásfájlt.
+
+4. Állítsa vissza a projektben lévő NuGet-csomagokat. Ennek tartalmaznia kell a Gremlin.Net-illesztőprogramot, valamint a Newtonsoft.Json-csomagot.
+
+5. A Gremlin.Net-illesztőprogram 3.2.7-es verzióját kézzel is telepítheti a Nuget csomagkezelővel vagy a [nuget parancssori segédprogrammal](https://docs.microsoft.com/en-us/nuget/install-nuget-client-tools): 
+
+    ```bash
+    nuget install Gremlin.Net -Version 3.2.7
+    ```
 
 ## <a name="review-the-code"></a>A kód áttekintése
 
 Tekintsük át, hogy mi történik az alkalmazásban. Nyissa meg a Program.cs fájlt: az itt található kódsorok hozzák létre az Azure Cosmos DB erőforrásokat. 
 
-* A DocumentClient inicializálva van. 
+* Állítsa be a kapcsolat paramétereit a fent létrehozott fiók alapján (19. sor): 
 
     ```csharp
-    using (DocumentClient client = new DocumentClient(
-        new Uri(endpoint),
-        authKey,
-        new ConnectionPolicy { ConnectionMode = ConnectionMode.Direct, ConnectionProtocol = Protocol.Tcp }))
+    private static string hostname = "your-endpoint.gremlin.cosmosdb.azure.com";
+    private static int port = 443;
+    private static string authKey = "your-authentication-key";
+    private static string database = "your-database";
+    private static string collection = "your-collection-or-graph";
     ```
 
-* A rendszer létrehozza az új adatbázist.
+* A végrehajtandó Gremlin-parancsok egy szótárban szerepelnek (26. sor):
 
     ```csharp
-    Database database = await client.CreateDatabaseIfNotExistsAsync(new Database { Id = "graphdb" });
-    ```
-
-* A rendszer létrehozza az új gráfot.
-
-    ```csharp
-    DocumentCollection graph = await client.CreateDocumentCollectionIfNotExistsAsync(
-        UriFactory.CreateDatabaseUri("graphdb"),
-        new DocumentCollection { Id = "graph" },
-        new RequestOptions { OfferThroughput = 1000 });
-    ```
-* A `CreateGremlinQuery` metódus használatával a program Gremlinnel kapcsolatos lépések sorozatát hajtja végre.
-
-    ```csharp
-    // The CreateGremlinQuery method extensions allow you to execute Gremlin queries and iterate
-    // results asychronously
-    IDocumentQuery<dynamic> query = client.CreateGremlinQuery<dynamic>(graph, "g.V().count()");
-    while (query.HasMoreResults)
+    private static Dictionary<string, string> gremlinQueries = new Dictionary<string, string>
     {
-        foreach (dynamic result in await query.ExecuteNextAsync())
-        {
-            Console.WriteLine($"\t {JsonConvert.SerializeObject(result)}");
-        }
-    }
+        { "Cleanup",        "g.V().drop()" },
+        { "AddVertex 1",    "g.addV('person').property('id', 'thomas').property('firstName', 'Thomas').property('age', 44)" },
+        { "AddVertex 2",    "g.addV('person').property('id', 'mary').property('firstName', 'Mary').property('lastName', 'Andersen').property('age', 39)" },
+        { "AddVertex 3",    "g.addV('person').property('id', 'ben').property('firstName', 'Ben').property('lastName', 'Miller')" },
+        { "AddVertex 4",    "g.addV('person').property('id', 'robin').property('firstName', 'Robin').property('lastName', 'Wakefield')" },
+        { "AddEdge 1",      "g.V('thomas').addE('knows').to(g.V('mary'))" },
+        { "AddEdge 2",      "g.V('thomas').addE('knows').to(g.V('ben'))" },
+        { "AddEdge 3",      "g.V('ben').addE('knows').to(g.V('robin'))" },
+        { "UpdateVertex",   "g.V('thomas').property('age', 44)" },
+        { "CountVertices",  "g.V().count()" },
+        { "Filter Range",   "g.V().hasLabel('person').has('age', gt(40))" },
+        { "Project",        "g.V().hasLabel('person').values('firstName')" },
+        { "Sort",           "g.V().hasLabel('person').order().by('firstName', decr)" },
+        { "Traverse",       "g.V('thomas').out('knows').hasLabel('person')" },
+        { "Traverse 2x",    "g.V('thomas').out('knows').hasLabel('person').out('knows').hasLabel('person')" },
+        { "Loop",           "g.V('thomas').repeat(out()).until(has('id', 'robin')).path()" },
+        { "DropEdge",       "g.V('thomas').outE('knows').where(inV().has('id', 'mary')).drop()" },
+        { "CountEdges",     "g.E().count()" },
+        { "DropVertex",     "g.V('thomas').drop()" },
+    };
+    ```
 
+
+* Hozzon létre egy `GremlinServer` kapcsolati objektumot a fent megadott paraméterekkel (52. sor):
+
+    ```csharp
+    var gremlinServer = new GremlinServer(hostname, port, enableSsl: true, 
+                                                    username: "/dbs/" + database + "/colls/" + collection, 
+                                                    password: authKey);
+    ```
+
+* Hozzon létre egy új `GremlinClient` objektumot (56. sor):
+
+    ```csharp
+    var gremlinClient = new GremlinClient(gremlinServer);
+    ```
+
+* Hajtsa végre az egyes Gremlin-lekérdezéseket a `GremlinClient` objektummal egy aszinkron feladatban (63. sor). Ez a fent meghatározott szótárból (26. sor) olvassa be a Gremlin-lekérdezéseket:
+
+    ```csharp
+    var task = gremlinClient.SubmitAsync<dynamic>(query.Value);
+    task.Wait();
+    ```
+
+* Kérje le az eredményt, és olvassa be a szótárként formázott értékeket, a Newtonsoft.Json `JsonSerializer` osztályával:
+
+    ```csharp
+    foreach (var result in task.Result)
+    {
+        // The vertex results are formed as dictionaries with a nested dictionary for their properties
+        string output = JsonConvert.SerializeObject(result);
+        Console.WriteLine(String.Format("\tResult:\n\t{0}", output));
+    }
     ```
 
 ## <a name="update-your-connection-string"></a>A kapcsolati karakterlánc frissítése
@@ -114,45 +149,43 @@ Lépjen vissza az Azure Portalra a kapcsolati karakterlánc adataiért, majd má
 
     ![Hozzáférési kulcs megtekintése és másolása az Azure Portal Kulcsok oldalán](./media/create-graph-dotnet/keys.png)
 
-2. Nyissa meg a appsettings.json fájlt a Visual Studio 2017-ben, majd illessze be az értéket a `FILLME` helyére a következőben: `endpoint`. 
+2. A Program.cs fájlban illessze be az értéket a `your-endpoint` helyett a 19. sorban lévő `hostname` változóban. 
 
-    `"endpoint": "https://FILLME.documents.azure.com:443/",`
+    `"private static string hostname = "your-endpoint.gremlin.cosmosdb.azure.com";`
 
     A végpontértéknek most így kell kinéznie:
 
-    `"endpoint": "https://testgraphacct.documents.azure.com:443/",`
+    `"private static string hostname = "testgraphacct.gremlin.cosmosdb.azure.com";`
 
-3. Másolja az **ELSŐDLEGES KULCS** értékét a portálról, és adja meg az App.config fájl AuthKey kulcsaként, majd mentse a módosításokat. 
+3. Másolja a portálról az **ELSŐDLEGES KULCS** értékét, és illessze be azt az `authkey` változóba, lecserélve a `"your-authentication-key"` helyőrzőt a 21. sorban. 
 
-    `"authkey": "FILLME"`
+    `private static string authKey = "your-authentication-key";`
 
-4. Mentse az appsettings.json fájlt. 
+4. A fent létrehozott adatbázis adatait használva illessze be az adatbázis nevét a 22. sorban lévő `database` változóba. 
+
+    `private static string database = "your-database";`
+
+5. A fentiekben létrehozott gyűjtemény információival illessze be a gyűjteményt (amely a gráf neve is) a 23. sorban található `collection` változóba. 
+
+    `private static string collection = "your-collection-or-graph";`
+
+6. Mentse a Program.cs fájlt. 
 
 Az alkalmazás frissítve lett minden olyan információval, amely az Azure Cosmos DB-vel való kommunikációhoz szükséges. 
 
 ## <a name="run-the-console-app"></a>A konzolalkalmazás futtatása
 
-Az alkalmazás futtatása előtt javasolt a *Microsoft.Azure.Graphs* csomag legújabb verzióra történő frissítése.
+Az alkalmazás futtatásához nyomja le a CTRL + F5 billentyűkombinációt. Az alkalmazás megjeleníti a Gremlin lekérdezési parancsait és a konzolon lévő eredményeket is.
 
-1. A Visual Studióban kattintson a jobb gombbal a **GraphGetStarted** projektre a **Megoldáskezelőben**, majd kattintson a **NuGet-csomagok kezelése** elemre. 
-
-2. A NuGet csomagkezelő **Tallózás** mezőjébe írja be *Microsoft.Azure.Graphs* kifejezést, és jelölje be az **Előzetes verzió is** jelölőnégyzetet. 
-
-3. Az eredményekből frissítse a **Microsoft.Azure.Graphs** kódtárat a csomag legújabb verziójára. Ezzel telepíti az Azure Cosmos DB gráfbővítmény kódtárcsomagja és annak összes függőségét.
-
-    Ha a megoldás módosításainak áttekintéséről szóló üzenetet kap, kattintson az **OK** gombra. Ha a licenc elfogadásáról szóló üzenetet kap, kattintson az **Elfogadom** gombra.
-
-4. Az alkalmazás futtatásához nyomja le a CTRL + F5 billentyűkombinációt.
-
-   A konzolablakban megjelennek a gráfhoz hozzáadandó csúcspontok és élek. Miután a parancsfájl futása befejeződött, nyomja meg kétszer az ENTER billentyűt a konzolablak bezárásához.
+   A konzolablakban megjelennek a gráfhoz hozzáadandó csúcspontok és élek. Miután a szkript futása befejeződött, nyomja le az ENTER billentyűt a konzolablak bezárásához.
 
 ## <a name="browse-using-the-data-explorer"></a>Tallózás az Adatkezelővel
 
 Ezután visszaléphet az Adatkezelőbe az Azure Portalon, ahol tallózhatja és lekérdezheti az új gráfadatokat.
 
-1. Az Adatkezelőben az új adatbázis a Gráfok ablaktáblán jelenik meg. Bontsa ki a **graphdb**, **graphcollz** pontokat, és kattintson a **Gráf** lehetőségre.
+1. Az Adatkezelőben az új adatbázis a Gráfok ablaktáblán jelenik meg. Bontsa ki az adatbázis és a gyűjtemény csomópontjait, és kattintson a **Gráf** elemre.
 
-2. Kattintson a **Szűrő alkalmazása** gombra a gráf összes csúcspontjának megtekintéséhez az alapértelmezett lekérdezéssel. A mintaalkalmazás által létrehozott adatokat a Gráfok ablaktáblán találja.
+2. Kattintson a **Szűrő alkalmazása** gombra a gráf összes csúcspontjának az alapértelmezett lekérdezéssel történő megtekintéséhez. A mintaalkalmazás által létrehozott adatokat a Gráfok ablaktáblán találja.
 
     Szabadon nagyíthatja és kicsinyítheti a gráfot, kibonthatja a gráf megjelenítési területét, további csúcspontokat vehet fel, illetve áthelyezheti a csúcspontokat a megjelenítési felületen.
 

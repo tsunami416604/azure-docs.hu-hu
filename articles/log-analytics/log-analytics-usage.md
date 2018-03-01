@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 02/13/2018
 ms.author: magoedte
-ms.openlocfilehash: 9125f3db8929a41f49ff3ae53de9f3a71f5bf051
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: 8d6baa6b46290c7a332f5cf780c7f70680fb6a2c
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="analyze-data-usage-in-log-analytics"></a>Az adathasználat elemzése a Log Analyticsben
 A Log Analytics információkat biztosít a gyűjtött adatok mennyiségéről, valamint arról, hogy mely rendszerek küldték az adatokat és milyen típusú adatokat küldtek.  A **Log Analytics használati** irányítópultján megtekintheti, hogy mennyi adatot küld a rendszer a Log Analytics szolgáltatásnak. Az irányítópult megjeleníti, hogy az egyes megoldások mennyi adatot gyűjtenek össze, és a számítógépek mennyi adatot küldenek.
@@ -44,13 +44,17 @@ A **Log Analytics-használat** irányítópult az alábbi információkat jelen�
 ![A Használat irányítópult](./media/log-analytics-usage/usage-dashboard01.png)
 
 ### <a name="to-work-with-usage-data"></a>A használati adatok használata
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. Az Azure Portalon kattintson a bal alsó sarokban található **További szolgáltatások** elemre. Az erőforrások listájába írja be a **Log Analytics** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza a **Log Analytics** elemet.<br><br> ![Azure Portal](media/log-analytics-quick-collect-azurevm/azure-portal-01.png)<br><br>  
-3. A Log Analytics-munkaterületek listájában válasszon ki egy munkaterületet.
-4. A bal oldali panelen található listában válassza ki a **Log Analytics-használat** lehetőséget.
-5. A **Log Analytics-használat** irányítópulton kattintson az **Idő: Elmúlt 24 óra** elemre az időintervallum módosításához.<br><br> ![időintervallum](./media/log-analytics-usage/time.png)<br><br>
-6. Tekintse meg a kívánt területeket megjelenítő használatikategória-paneleket. Válasszon ki egy panelt, majd kattintson az egyik elemére további részletek megtekintéséhez a [naplókeresésben](log-analytics-log-searches.md).<br><br> ![példa adathasználati panelre](./media/log-analytics-usage/blade.png)<br><br>
-7. A Naplók keresése irányítópulton tekintse meg a keresés eredményeit.<br><br> ![példa használati panelre a naplókeresésben](./media/log-analytics-usage/usage-log-search.png)
+1. Ha még nem tette meg, jelentkezzen be az [Azure Portalra](https://portal.azure.com) Azure-előfizetésével.
+2. Kattintson a **Minden szolgáltatás** lehetőségre, és az erőforrások listájába írja be a **Log Analytics** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Kattintson a **Log Analytics** elemre.  
+    ![Azure-központ](./media/log-analytics-usage/hub.png)
+3. A **Log Analytics** irányítópultja megjeleníti a munkaterületek listáját. Jelöljön ki egy munkaterületet.
+4. A *munkaterületek* irányítópultján kattintson a **Log Analytics-használat** elemre.
+5. A **Log Analytics-használat** irányítópulton kattintson az **Idő: Elmúlt 24 óra** elemre az időintervallum módosításához.  
+    ![időintervallum](./media/log-analytics-usage/time.png)
+6. Tekintse meg a kívánt területeket megjelenítő használatikategória-paneleket. Válasszon ki egy panelt, majd kattintson az egyik elemére további részletek megtekintéséhez a [naplókeresésben](log-analytics-log-searches.md).  
+    ![példa adathasználati panelre](./media/log-analytics-usage/blade.png)
+7. A Naplók keresése irányítópulton tekintse meg a keresés eredményeit.  
+    ![példa használati panelre a naplókeresésben](./media/log-analytics-usage/usage-log-search.png)
 
 ## <a name="create-an-alert-when-data-collection-is-higher-than-expected"></a>Riasztás létrehozása, amikor az adatgyűjtés szintje a vártnál magasabb
 Ez a szakasz ismerteti, hogyan hozhat létre riasztást, ha:

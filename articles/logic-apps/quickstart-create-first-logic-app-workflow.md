@@ -16,11 +16,11 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 1/12/2018
 ms.author: LADocs; estfan
-ms.openlocfilehash: 9b6b9df01f0e56cac3fe45bd0ef8290ca1587a1a
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: d382144c202b2b7f5623f2cca2a82c384387e8ca
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="quickstart-build-your-first-logic-app-workflow---azure-portal"></a>Rövid útmutató: Az első logikaialkalmazás-munkafolyamat összeállítása – Azure Portal
 
@@ -38,7 +38,7 @@ Jelentkezzen be az <a href="https://portal.azure.com" target="_blank">Azure Port
 
 ## <a name="create-your-logic-app"></a>A logikai alkalmazás létrehozása 
 
-1. Az Azure fő menüjéből válassza az **Új** > **Enterprise Integration** > **Logic App** elemet.
+1. Az Azure fő menüjéből válassza az **Erőforrás létrehozása** > **Enterprise Integration** > **Logic App** elemet.
 
    ![Logikai alkalmazás létrehozása](./media/quickstart-create-first-logic-app-workflow/create-logic-app.png)
 
@@ -48,7 +48,7 @@ Jelentkezzen be az <a href="https://portal.azure.com" target="_blank">Azure Port
 
    | Beállítás | Érték | Leírás | 
    | ------- | ----- | ----------- | 
-   | **Név** | MyFirstLogicApp | A logikai alkalmazás neve | 
+   | **Name (Név)** | MyFirstLogicApp | A logikai alkalmazás neve | 
    | **Előfizetés** | <*your-Azure-subscription-name*> | Az Azure-előfizetés neve | 
    | **Erőforráscsoport** | My-First-LA-RG | A kapcsolódó erőforrások rendezéséhez használt [Azure-erőforráscsoport](../azure-resource-manager/resource-group-overview.md) neve | 
    | **Hely** | USA 2. keleti régiója | A logikai alkalmazás információinak tárolására szolgáló régió | 

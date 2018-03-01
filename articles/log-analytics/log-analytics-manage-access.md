@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/12/2017
 ms.author: magoedte
-ms.openlocfilehash: 1549408c6885ee556a142ab7de613ebb1629070d
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: 5121535768b7fb430486c1c2c623e1a3a488858f
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="manage-workspaces"></a>Munkaterületek kezelése
 
@@ -34,7 +34,7 @@ Munkaterület létrehozásához az alábbiak szükségesek:
 ## <a name="determine-the-number-of-workspaces-you-need"></a>A szükséges munkaterületek számának meghatározása
 A munkaterület egy Azure-erőforrás, továbbá egy tároló is, amelyben az adatok összegyűjtése, összesítése, elemzése és az Azure Portalon való megjelenítése történik.
 
-Azure-előfizetésenként több munkaterülettel rendelkezhet, és több munkaterülethez is hozzáférhet. A munkaterületek számának minimalizálásával kérhető le és vethető össze a legnagyobb mennyiségű adat, mivel egyszerre több munkaterületről nem hajtható végre lekérdezés. Ez a szakasz azt ismerteti, hogy mikor lehet hasznos egynél több munkaterület létrehozása.
+Azure-előfizetésenként több munkaterülettel rendelkezhet, és több munkaterülethez is hozzáférhet. Korábban csak az aktuális munkaterületen belüli adatokat lehetett elemezni, ami korlátozta az előfizetésben megadott többi munkaterület lekérdezését. Most már [több munkaterületről hajthat végre lekérdezést](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-cross-workspace-search), így a teljes rendszerre kiterjedően megtekintheti az adatait. Ez a szakasz azt ismerteti, hogy mikor lehet hasznos egynél több munkaterület létrehozása.
 
 A munkaterületek jelenleg a következőket biztosítják:
 
@@ -62,10 +62,10 @@ A munkaterületek adatait az Azure Portalon tekintheti meg.
 #### <a name="view-workspace-information-in-the-azure-portal"></a>Munkaterületek adatainak megtekintése az Azure Portalon
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. Kattintson az Azure Portal bal alsó sarkában található **További szolgáltatások** elemre.  Az erőforrások listájába írja be a **Log Analytics** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Kattintson a **Log Analytics** elemre.  
-    ![Azure-központ](./media/log-analytics-manage-access/hub.png)  
-3. Válasszon egy munkaterületet a Log Analytics-előfizetések panelen.
-4. A munkaterület paneljén a munkaterület adatai és a további információkra mutató hivatkozások szerepelnek.  
+2. Kattintson a **Minden szolgáltatás** lehetőségre.  Az erőforrások listájába írja be a **Log Analytics** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Kattintson a **Log Analytics** elemre.  
+    ![Képernyőkép az Azure bal oldali menüjéről](./media/log-analytics-manage-access/hub.png)  
+3. Válasszon egy munkaterületet a Log Analytics-előfizetések lapon.
+4. A munkaterület oldalán a munkaterület adatai és a további információkra mutató hivatkozások szerepelnek.  
     ![munkaterület részletei](./media/log-analytics-manage-access/workspace-details.png)  
 
 
@@ -207,7 +207,7 @@ A következő lépésekkel adhat hozzá egy felhasználót vagy csoportot egy mu
      >
      >
 4. Válassza ki a hozzáadni kívánt felhasználó vagy csoport típusát: **Rendszergazda**, **Közreműködő** vagy **ReadOnly felhasználó**.  
-5. Kattintson az **Add** (Hozzáadás) parancsra.
+5. Kattintson a **Hozzáadás** parancsra.
 
    Microsoft-fiók hozzáadásakor egy meghívót kap a munkaterület használatára a korábban megadott e-mail címére. Ha a felhasználó követi az OMS-meghívóban leírtakat, hozzáférhet a munkaterülethez.
    Szervezeti fiók hozzáadásakor a felhasználó azonnal hozzáférést kaphat a Log Analytics megoldáshoz.  
@@ -259,7 +259,7 @@ Minden 2016. szeptember 26. után létrehozott munkaterület a létrehozásukkor
 ### <a name="to-link-a-workspace-to-an-azure-subscription-in-the-azure-portal"></a>Munkaterület társítása egy Azure-előfizetéshez az Azure Portalon
 1. Jelentkezzen be az [Azure Portalra](http://portal.azure.com).
 2. Keresse meg a **Log Analytics** elemet, majd jelölje ki.
-3. Ekkor megjelenik a meglévő munkaterületek listája. Kattintson az **Add** (Hozzáadás) parancsra.  
+3. Ekkor megjelenik a meglévő munkaterületek listája. Kattintson a **Hozzáadás** parancsra.  
    ![munkaterületek listája](./media/log-analytics-manage-access/manage-access-link-azure01.png)
 4. Az **OMS-munkaterület** részen kattintson a **Vagy meglévő társítása** gombra.  
    ![meglévő társítása](./media/log-analytics-manage-access/manage-access-link-azure02.png)
@@ -292,6 +292,6 @@ Igény szerint módosíthatja a munkaterülethez tartozó Azure Active Directory
 3. Adja meg Azure Active Directory-tartománya rendszergazdájának identitását. Ezután megjelenik a visszaigazolás, hogy munkaterülete társítva lett Azure Active Directory-tartományához.  
     ![társított munkaterületek visszaigazolása](./media/log-analytics-manage-access/manage-access-add-adorg02.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Az adathasználat értelmezését](log-analytics-usage.md) ismertető cikkből megtudhatja, hogyan elemezze a számítógépekről küldött és a megoldások által összegyűjtött adatköteteket.
 * A [Log Analytics-felügyeleti megoldások az Azure Piactérről történő hozzáadását](log-analytics-add-solutions.md) ismertető cikk alapján új funkciókat adhat hozzá és adatokat gyűjthet.

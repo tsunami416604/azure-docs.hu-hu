@@ -15,11 +15,11 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.date: 11/10/2017
 ms.author: heidist
-ms.openlocfilehash: bebfdfdf72014019a49a6da0e512e72932b096ac
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: 22eeccfd692cca74bc0cf12c3400d717c103332f
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="how-to-crawl-an-azure-sql-database-using-azure-search-indexers"></a>Azure SQL-adatbázis feltérképezése Azure Search-indexelők használatával
 
@@ -121,7 +121,7 @@ Az alábbi gyakorlat azzal a feltételezéssel él, hogy Ön nem rendelkezik sem
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/). 
 
-2. Adatbázis, kiszolgáló és erőforráscsoport létrehozásához kattintson az **Új** > **SQL Database** lehetőségre. Használhatja az alapértelmezett beállításokat és a legalacsonyabb szintű tarifacsomagot. A kiszolgáló létrehozásának egyik előnye, hogy megadhat egy rendszergazdai felhasználónevet és jelszót, amelyekre egy későbbi lépésben lesz szüksége a táblák létrehozásához és betöltéséhez.
+2. Adatbázis, kiszolgáló és erőforráscsoport létrehozásához kattintson az **Erőforrás létrehozása** > **SQL Database** lehetőségre. Használhatja az alapértelmezett beállításokat és a legalacsonyabb szintű tarifacsomagot. A kiszolgáló létrehozásának egyik előnye, hogy megadhat egy rendszergazdai felhasználónevet és jelszót, amelyekre egy későbbi lépésben lesz szüksége a táblák létrehozásához és betöltéséhez.
 
    ![Új adatbázis oldal](./media/search-indexer-tutorial/indexer-new-sqldb.png)
 

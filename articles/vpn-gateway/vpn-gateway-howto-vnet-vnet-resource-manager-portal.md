@@ -4,7 +4,7 @@ description: "VPN Gateway-kapcsolatot hozhat létre virtuális hálózatok köz�
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
-manager: timlt
+manager: jpconnock
 editor: 
 tags: azure-resource-manager
 ms.assetid: a7015cfc-764b-46a1-bfac-043d30a275df
@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/29/2017
+ms.date: 02/14/2018
 ms.author: cherylmc
-ms.openlocfilehash: 406cb4faf53bde5f615593e2e904d91a1d90a729
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: a24bd41adbe26b1905f7817f5e5888e492d234f4
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-the-azure-portal"></a>Virtuális hálózatok közötti VPN-átjárókapcsolat konfigurálása az Azure Portalon
 
-Ebből a cikkből megtudhatja, hogyan csatlakoztathatók a virtuális hálózatok egymáshoz virtuális hálózatok közötti kapcsolattal. A virtuális hálózatok lehetnek azonos vagy eltérő régiókban, illetve azonos vagy eltérő előfizetésekben. Amikor különböző előfizetésekről csatlakoztat virtuális hálózatokat, az előfizetéseket nem kell társítani ugyanazzal az Active Directory-bérlővel. 
+Ez a cikk bemutatja, hogyan lehet virtuális hálózatokat csatlakoztatni virtuális hálózatok közötti kapcsolat használatával. A virtuális hálózatok lehetnek azonos vagy eltérő régiókban, illetve azonos vagy eltérő előfizetésekben. Amikor különböző előfizetésekről csatlakoztat virtuális hálózatokat, az előfizetéseket nem kell társítani ugyanazzal az Active Directory-bérlővel. 
 
 A cikkben ismertetett lépések a Resource Manager-alapú üzemi modellre vonatkoznak, és az Azure Portalt használják. Ezt a konfigurációt más üzembehelyezési eszközzel vagy üzemi modellel is létrehozhatja, ha egy másik lehetőséget választ az alábbi listáról:
 
@@ -51,7 +51,7 @@ Virtuális hálózatok közötti kapcsolat konfigurálásával könnyedén kapcs
 
 Amikor bonyolult hálózati konfigurációkkal dolgozik, érdemesebb lehet a [helyek közötti kapcsolatokra](vpn-gateway-howto-site-to-site-resource-manager-portal.md) vonatkozó lépéseket használni. A helyek közötti IPsec-kapcsolatokra vonatkozó lépésekkel manuálisan hozhatja létre és konfigurálhatja a helyi hálózati átjárókat. Az egyes virtuális hálózatok helyi hálózati átjárója helyi helyként kezeli a többi virtuális hálózatot. Így további címtereket határozhat meg a helyi hálózati átjáróhoz a forgalom irányítása érdekében. Ha egy virtuális hálózat címtere megváltozik, frissítenie kell a megfelelő helyi hálózati átjárót a változás tükrözése érdekében. Az átjáró nem frissül automatikusan.
 
-### <a name="vnet-peering"></a>Virtuális hálózatok közötti társviszony
+### <a name="vnet-peering"></a>Társviszony létesítése virtuális hálózatok között
 
 Érdemes megfontolni a virtuális hálózatok virtuális hálózatok közötti társviszony útján történő összekötését. A virtuális hálózatok közötti társviszony nem használ VPN-átjárót, és más korlátozásokkal rendelkezik. Emellett a [virtuális hálózatok közötti társviszony díjszabásának](https://azure.microsoft.com/pricing/details/virtual-network) kiszámítása máshogy történik, mint a [virtuális hálózatok közötti VPN-átjáró](https://azure.microsoft.com/pricing/details/vpn-gateway) esetén. További információ: [Társviszony létesítése virtuális hálózatok között](../virtual-network/virtual-network-peering-overview.md).
 
@@ -190,7 +190,7 @@ A virtuális hálózatok közötti kapcsolatokról további információt a gyak
 
 [!INCLUDE [vpn-gateway-vnet-vnet-faq](../../includes/vpn-gateway-faq-vnet-vnet-include.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A [Hálózati biztonság](../virtual-network/security-overview.md) című témakörben talál információt egy adott virtuális hálózatban található erőforrásokra irányuló hálózati forgalom korlátozásáról.
 

@@ -12,11 +12,11 @@ ms.devlang: na
 ms.service: virtual-machines-sql
 ms.workload: iaas-sql-server
 ms.technology: database-engine
-ms.openlocfilehash: 8d714718e4fc27f0abbfede8fe6d0e2693698ec1
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 4105e0b4038f5dc09c503ac90ba7ad67c2fd93b8
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="provision-a-linux-sql-server-virtual-machine-in-the-azure-portal"></a>Linux rendszerű SQL Server-virtuálisgép létrehozása az Azure Portalon
 
@@ -41,9 +41,9 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
-1. A bal oldali panelen kattintson az **Új** elemre.
+1. A bal oldali panelen kattintson az **Erőforrás létrehozása** elemre.
 
-1. Az **Új** panelen kattintson a **Compute** elemre.
+1. Az **Erőforrás létrehozása** panelen kattintson a **Számítás** elemre.
 
 1. Kattintson az **Összes megjelenítése** elemre a **Kiemelt** fejléc mellett.
 
@@ -174,7 +174,7 @@ Ez az oktatóanyag egy Red Hat Enterprise Linux (RHEL) rendszerű virtuális gé
    sudo firewall-cmd --reload
    ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy van egy SQL Server 2017-es virtuális gépe az Azure-ban, helyileg csatlakozhat az **sqlcmd** használatával, és Transact-SQL-lekérdezéseket futtathat.
 

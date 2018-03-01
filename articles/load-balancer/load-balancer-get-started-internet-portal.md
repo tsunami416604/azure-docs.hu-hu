@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 29c74c2cc58e7cab1364b2fc2c74951440dea0ab
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: ff61008710766830640c0de31bf9fd23198946fd
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="creating-an-internet-facing-load-balancer-using-the-azure-portal"></a>Internetkapcsolattal rendelkező terheléselosztó létrehozása az Azure Portallal
 
@@ -57,7 +57,7 @@ További információkat szerezhet a terheléselosztónak az Azure Resource Mana
 > A példa feltételezi, hogy Ön rendelkezik egy **myVNet** nevű virtuális hálózattal. A művelet elvégzéséhez lásd a [Virtuális hálózat létrehozása](../virtual-network/virtual-networks-create-vnet-arm-pportal.md) című részt. Feltételezi továbbá, hogy a **myVNet** hálózat tartalmaz egy **LB-Subnet-BE** nevű alhálózatot és két virtuális gépet (**web1** és **web2**) a **myVNet** ugyanazon **myAvailSet** nevű rendelkezésre állási csoportján belül. A virtuális gépek létrehozásához tekintse meg [ezt a hivatkozást](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 1. Egy böngészőből keresse fel az Azure Portalt: [http://portal.azure.com](http://portal.azure.com), majd jelentkezzen be az Azure-fiókjával.
-2. A képernyő bal felső részén válassza ki az **Új** > **Hálózat** > **Terheléselosztó** elemet.
+2. A képernyő bal felső részén válassza az **Erőforrás létrehozása** > **Hálózat** > **Terheléselosztó** elemet.
 3. A **Terheléselosztó létrehozása** panelen írja be a terheléselosztó nevét. Most **myLoadBalancer** a neve.
 4. A **Típus** alatt válassza ki a **Nyilvános** elemet.
 5. A **Nyilvános IP-cím** alatt hozzon létre egy új nyilvános IP-címet **myPublicIP** néven.
@@ -105,7 +105,7 @@ További információkat szerezhet a terheléselosztónak az Azure Resource Mana
 
 Terheléselosztó törléséhez válassza ki az eltávolítani kívánt terheléselosztót. A *Terheléselosztó* panelen kattintson a panel tetején található **Törlés** gombra. Ezután válassza ki az **Igen** lehetőséget, ha a rendszer megkérdezi.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Bevezetés a belső terheléselosztók konfigurálásába](load-balancer-get-started-ilb-arm-cli.md)
 

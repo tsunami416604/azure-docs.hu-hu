@@ -1,6 +1,6 @@
 1. Jelentkezzen be az [Azure Portalra].
 
-2. Kattintson az **Új** lehetőségre.
+2. Kattintson az **Erőforrás létrehozása** gombra.
 
 3. A keresőmezőbe írja be a **Mobile Apps** kifejezést.
 

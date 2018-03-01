@@ -1,6 +1,6 @@
 ---
-title: "Azure IoT peremhálózati hibaelhárítása |} Microsoft Docs"
-description: "Gyakori problémák megoldásában, és ismerje meg a hibaelhárítási képességek az Azure IoT peremhálózati"
+title: "Az Azure IoT Edge hibaelhárítása | Microsoft Docs"
+description: "Az Azure IoT Edge gyakori problémáinak megoldása és a hibaelhárítási készségek elsajátítása"
 services: iot-edge
 keywords: 
 author: kgremban
@@ -10,92 +10,92 @@ ms.date: 12/15/2017
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 3f61f0bf8234e747ae38146d1a5ea030e3163fa3
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
-ms.translationtype: MT
+ms.openlocfilehash: 5de069eb35e88c1dce6dcfa5a1661e8ab87302b1
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/21/2018
 ---
-# <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Gyakori problémák és megoldások Azure IoT szegély
+# <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Az Azure IoT Edge gyakori problémái és azok megoldásai
 
-A környezetben futó Azure IoT biztonsági problémákat tapasztal, használja a cikk útmutatóként hibakeresési és feloldási. 
+Ha a környezetében az Azure IoT Edge futtatásakor problémákat tapasztal, ezt a cikket útmutatóként használhatja a hibaelhárításhoz és a megoldáshoz. 
 
-## <a name="standard-diagnostic-steps"></a>Standard szintű diagnosztikai lépései 
+## <a name="standard-diagnostic-steps"></a>Általános diagnosztikai lépések 
 
-Ha problémát tapasztal, további információ az IoT-peremhálózati eszköz állapotát a tároló naplókat és az üzeneteket, amelyek megfelelnek az eszközre érkező vagy oda irányuló megtekintésével. A parancsok és eszközök használata ebben a szakaszban összegyűjteni. 
+Ha problémát tapasztal, a tárolónaplók és az eszközre küldött és az arról származó üzenetek áttekintésével további információt tudhat meg az IoT Edge-eszköz állapotáról. Az ebben a szakaszban szereplő parancsokkal és eszközökkel további információt gyűjthet. 
 
-* Tekintse meg a naplókat a problémák észlelése docker-tároló. Indítsa el a telepített tárolókat, majd tekintse meg a tárolók a IoT peremhálózati futásidejű alkotó: ügynök Edge és biztonsági központja. A peremhálózati ügynök naplók az egyes tárolókban életciklusát általában adatainak megadása. A peremhálózati Hub naplók üzenetküldési és útválasztási adatainak megadása. 
+* A hibák észleléséhez tekintse meg a Docker-tárolók naplóit. Kezdje az üzembe helyezett tárolókkal, majd tekintse meg az IoT Edge-futtatókörnyezetet alkotó tárolókat: az Edge Agentet és az Edge Hubot. Az Edge Agent-naplók általában az egyes tárolók életciklusáról nyújtanak információt. Az Edge Hub-naplók az üzenetküldésről és az útválasztásról nyújtanak információt. 
 
    ```cmd
    docker logs <container name>
    ```
 
-* A peremhálózati Hub áthaladás üzenetek megjelenítése, és elemzések gyűjt az eszköz tulajdonságok frissítések részletes naplókat a futtatókörnyezet tárolókból.
+* Tekintse meg az Edge Hubon áthaladó üzeneteket, és az eszköztulajdonságok frissítéseiről gyűjtsön információt a futtatókörnyezet tárolóiból származó részletes naplókkal.
 
    ```cmd
    iotedgectl setup --runtime-log-level DEBUG
    ```
 
-* Ha csatlakozási problémákba ütközhetnek, vizsgálja meg a peremhálózati eszköz környezeti változók, például az eszköz kapcsolati karakterlánc:
+* Ha csatlakozási problémákba ütközik, vizsgálja meg a peremhálózati eszköz környezeti változóit, például az eszköz kapcsolati karakterláncát:
 
    ```cmd
    docker exec edgeAgent printenv
    ```
 
-Az IoT-központ és az IoT-peremeszközök között küldött üzenetek is ellenőrizheti. Ezek az üzenetek segítségével meg a [Azure IoT eszközkészlet](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) Visual Studio Code-kiterjesztését. További útmutatásért lásd: [hasznos eszköz Azure IoT fejlesztésekor](https://blogs.msdn.microsoft.com/iotdev/2017/09/01/handy-tool-when-you-develop-with-azure-iot/).
+Az IoT Hub és az IoT Edge-eszközök között küldött üzeneteket is ellenőrizheti. Ezeket az üzeneteket a Visual Studio Code [Azure IoT-eszközkészlet](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) bővítményével tekintheti meg. További útmutatásért lásd [az Azure IoT-fejlesztések esetén hasznos eszközt](https://blogs.msdn.microsoft.com/iotdev/2017/09/01/handy-tool-when-you-develop-with-azure-iot/).
 
-Után vizsgálja meg a naplókat és az üzenetek információt, is megpróbálhatja újraindítani az Azure IoT peremhálózati futásidejű:
+Miután megvizsgálta a naplók és üzenetek információit, az Azure IoT Edge-futtatókörnyezet újraindításával is megpróbálkozhat:
 
    ```cmd
    iotedgectl restart
    ```
 
-## <a name="edge-agent-stops-after-about-a-minute"></a>A szegély ügynök leállítása után körülbelül egy perce
+## <a name="edge-agent-stops-after-about-a-minute"></a>Az Edge Agent körülbelül egy perc után leáll
 
-A peremhálózati ügynök elindul és futtatása sikeresen körülbelül egy perce, majd leállítja. A naplók jelzi, hogy a peremhálózati ügynök megpróbál kapcsolódni az IoT hubhoz AMQP keresztül, és körülbelül 30 másodperc múlva próbálja meg AMQP keresztül websocket protokoll használatával kapcsolódó levelezőprogramokkal. Ha nem sikerül, a peremhálózati ügynök kilép. 
+Az Edge Agent elindul, és körülbelül egy percig sikeresen fut, majd leáll. A naplók szerint az Edge Agent megpróbál kapcsolódni az IoT Hubhoz AMQP-n keresztül, és körülbelül 30 másodperc múlva megpróbál csatlakozni az AMQP használatával websocketen keresztül. Ha ez nem sikerül, az Edge Agent kilép. 
 
-Példa peremhálózati ügynök naplói:
+Példa az Edge Agent-naplókra:
 
-```
+```output
 2017-11-28 18:46:19 [INF] - Starting module management agent. 
 2017-11-28 18:46:19 [INF] - Version - 1.0.7516610 (03c94f85d0833a861a43c669842f0817924911d5) 
 2017-11-28 18:46:19 [INF] - Edge agent attempting to connect to IoT Hub via AMQP... 
 2017-11-28 18:46:49 [INF] - Edge agent attempting to connect to IoT Hub via AMQP over WebSocket... 
 ```
 
-### <a name="root-cause"></a>Alapvető OK
-A hálózati konfigurációt a gazdagép hálózati meggátolja, hogy a hálózat elérése a a peremhálózati ügynök. Az ügynök megpróbálja először csatlakoznak AMQP (port: 5671) keresztül. Ha ez nem sikerül, a rendszer megkísérli websocket elemeket (a 443-as port).
+### <a name="root-cause"></a>Gyökérok
+A gazdahálózaton egy hálózati konfiguráció meggátolja, hogy az Edge Agent elérje a hálózatot. Az ügynök először megpróbál AMQP-n keresztül csatlakozni (az 5671-es porton). Ha ez nem sikerül, a websockettel próbálkozik (a 443-as porton).
 
-Az IoT-Edge futásidejű állít be a modulok mindegyikének egy hálózati kommunikációhoz. Linux a hálózati híd hálózatról. A Windows használja a hálózati címfordítást. A probléma napjainkban egyre általánosabbá Windows tárolók a NAT-hálózatot használó Windows-eszközökön. 
+Az IoT Edge-futtatókörnyezet minden modulon beállít egy-egy hálózatot a kommunikációhoz. Linux rendszeren ez a hálózat egy hídhálózat. Windows rendszeren NAT-ot használ. Ez a probléma gyakoribb a NAT-hálózatot használó Windows-tárolókat igénybe vevő windowsos eszközökön. 
 
 ### <a name="resolution"></a>Megoldás:
-Győződjön meg arról, hogy van-e az internethez híd/NAT hálózathoz hozzárendelt IP-címek egy útvonalat. A VPN-konfiguráció a gazdagépen néha a IoT peremhálózati hálózati felülbírálja. 
+Győződjön meg arról, hogy elérhető egy útvonal az internethez az ehhez a híd-/NAT-hálózathoz rendelt IP-címek esetén. Néha a gazdagépen lévő VPN-konfiguráció felülbírálja az IoT Edge-hálózatot. 
 
-## <a name="edge-hub-fails-to-start"></a>Biztonsági központ nem indul el
+## <a name="edge-hub-fails-to-start"></a>Az Edge Hub nem indul el
 
-Biztonsági központ nem tudja elindítani, és a naplók a következő üzenet megrendelése: 
+Az Edge Hub nem indul el, és a következő üzenetet írja a naplókba: 
 
-```
+```output
 One or more errors occurred. 
 (Docker API responded with status code=InternalServerError, response=
 {\"message\":\"driver failed programming external connectivity on endpoint edgeHub (6a82e5e994bab5187939049684fb64efe07606d2bb8a4cc5655b2a9bad5f8c80): 
 Error starting userland proxy: Bind for 0.0.0.0:443 failed: port is already allocated\"}\n) 
 ```
 
-### <a name="root-cause"></a>Alapvető OK
-Egy másik folyamat, a gazdagépen 443-as porton van kötve. A peremhálózati Hub port: 5671 képezi le, és az átjáró alkalmazásának típusai a 443-as. A port hozzárendelése sikertelen lesz, ha egy másik folyamat már rendelkezik kötött ezt a portot. 
+### <a name="root-cause"></a>Gyökérok
+A gazdagépen egy másik folyamat foglalja le a 443-as portot. Az Edge Hub az 5671-es és a 443-as portot képezi le az átjáró-forgatókönyvekhez. Ez a portleképezés sikertelen, ha egy másik folyamat már lefoglalta a portot. 
 
 ### <a name="resolution"></a>Megoldás:
-Keresse meg, és leállítja a folyamatot, amely 443-as portot használja. Ez a folyamat általában azt a kiszolgálót.
+Keresse meg, és állítsa le a 443-as portot használó folyamatot. Ez a folyamat általában a webkiszolgáló.
 
-## <a name="edge-agent-cant-access-a-modules-image-403"></a>Peremhálózati ügynök nem érhető el egy modul lemezképe (403)
-A tároló nem fut, és a peremhálózati ügynök naplók megjelenítése a 403-as hiba. 
+## <a name="edge-agent-cant-access-a-modules-image-403"></a>Az Edge Agent nem éri el egy modul rendszerképét (403)
+Egy tároló nem fut, és az Edge Agent-naplók a 403-as hibát tartalmazzák. 
 
-### <a name="root-cause"></a>Alapvető OK
-A peremhálózati ügynök nincs engedélye a modul kép eléréséhez. 
+### <a name="root-cause"></a>Gyökérok
+Az Edge Agentnek nincs engedélye egy modul rendszerképének eléréséhez. 
 
 ### <a name="resolution"></a>Megoldás:
-Próbálja meg fut a `iotedgectl login` újra a parancsot.
+Próbálja meg ismét futtatni az `iotedgectl login` parancsot.
 
 ## <a name="next-steps"></a>További lépések
-Gondolja, hogy egy hiba található a IoT peremhálózati platform? Kérjük [küldje el a problémát](https://github.com/Azure/iot-edge/issues) , hogy a Folytatás javítása érdekében. 
+Úgy gondolja, hogy hibát talált az IoT Edge platformon? Kérjük, a kijavításához [küldje el a problémát](https://github.com/Azure/iot-edge/issues). 

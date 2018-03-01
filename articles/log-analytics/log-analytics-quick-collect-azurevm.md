@@ -15,11 +15,11 @@ ms.topic: quickstart
 ms.date: 01/04/2018
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: 5ce4e530dde0f7a050e3b43f469154d679f25a34
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: be43701f96a71ad5cd9239c4ec7b3eea7fd6db21
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="collect-data-about-azure-virtual-machines"></a>Adatgyűjtés Azure-beli virtuális gépekről
 Az [Azure Log Analytics](log-analytics-overview.md) képes rá, hogy közvetlenül gyűjtsön adatokat az Ön környezetében található Azure-beli virtuális gépekről és egyéb erőforrásokról egy adattárba, részletes elemzés és összehasonlítás céljából.  Ez a rövid útmutató azt ismerteti, hogyan konfigurálhatja néhány egyszerű lépésben az Azure-beli Linux vagy Windows rendszerű virtuális gépekről történő adatgyűjtést.  
@@ -30,7 +30,7 @@ A rövid útmutató feltételezi, hogy rendelkezik egy meglévő Azure-beli virt
 Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) címen. 
 
 ## <a name="create-a-workspace"></a>Munkaterület létrehozása
-1. Az Azure Portalon kattintson a bal alsó sarokban található **További szolgáltatások** elemre. Az erőforrások listájába írja be a **Log Analytics** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza a **Log Analytics** elemet.<br> ![Azure Portal](media/log-analytics-quick-collect-azurevm/azure-portal-01.png)<br>  
+1. Az Azure Portalon kattintson a **Minden szolgáltatás** lehetőségre. Az erőforrások listájába írja be a **Log Analytics** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza a **Log Analytics** elemet.<br> ![Azure Portal](media/log-analytics-quick-collect-azurevm/azure-portal-01.png)<br>  
 2. Kattintson a **Létrehozás** parancsra, majd válassza ki a következő elemek beállításait:
 
   * Adja meg az új **OMS-munkaterület** nevét, például: *DefaultLAWorkspace*. 

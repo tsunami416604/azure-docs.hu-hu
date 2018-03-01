@@ -10,11 +10,11 @@ ms.topic: quickstart
 ms.date: 09/25/2017
 ms.author: johnkem
 ms.custom: mvc
-ms.openlocfilehash: 636dc0fcae1bc2647cd59add5957884971015ce2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b0a79f46788dc7efb588110dc50805c45c373a49
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="audit-and-receive-notifications-about-important-actions-in-your-azure-subscription"></a>Az Azure-előfizetés fontosabb műveleteivel kapcsolatos értesítések naplózása és fogadása
 
@@ -22,13 +22,13 @@ Az **Azure-tevékenységnapló** az Azure előfizetés-szintű eseményeit tarta
 
 Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
-## <a name="log-in-to-the-azure-portal"></a>Jelentkezzen be az Azure portálra.
+## <a name="log-in-to-the-azure-portal"></a>Bejelentkezés az Azure Portalra
 
 Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
 ## <a name="create-a-network-security-group"></a>Hálózati biztonsági csoport létrehozása
 
-1. Kattintson az Azure Portal bal felső sarkában található **Új** gombra.
+1. Kattintson az Azure Portal bal felső sarkában található **Erőforrás létrehozása** gombra.
 
 2. Válassza a **Hálózatkezelés**, majd a **Hálózati biztonsági csoport** elemet.
 
@@ -93,7 +93,7 @@ A riasztás teszteléséhez ismételje meg az előző szakaszt (**hozzon létre 
 
 Ha már nincs rájuk szükség, törölje az erőforráscsoportot és a hálózati biztonsági csoportot. Ehhez írja be a létrehozott erőforráscsoport nevét a portál tetején található keresőmezőbe, és kattintson az erőforráscsoport nevére. A megjelenő szakaszban kattintson az **Erőforráscsoport törlése** gombra, írja be az erőforráscsoport nevét, és kattintson a **Törlés** gombra.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban egy művelet végrehajtásával létrehozott egy tevékenységnapló-eseményt, majd létrehozott egy tevékenységnapló-riasztást, hogy értesüljön róla, ha a művelet a jövőben megismétlődik. Ezután tesztelte a riasztást a művelet ismételt elvégzésével. Az Azure 90 napra visszamenőleg teszi elérhetővé a Tevékenységnapló eseményeit. Ha 90 napnál hosszabb ideig kell megőriznie az eseményeket, próbálja meg archiválni a Tevékenységnapló adatait a többi monitorozási adattal együtt.
 

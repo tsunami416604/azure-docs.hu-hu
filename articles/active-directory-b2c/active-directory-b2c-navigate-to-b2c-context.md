@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 4/13/2017
 ms.author: parakhj
-ms.openlocfilehash: 6c1fd08c52f33a062d06e0593cbbe00346bb44f1
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: a9b9f71d0c11aee238661d57fd2e5246f1bf0842
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="switching-to-your-azure-ad-b2c-tenant"></a>Átváltás az Azure AD B2C-bérlőre
 
@@ -32,15 +32,15 @@ Az Azure AD B2C-bérlőre való navigáláshoz az Azure AD B2C-bérlő globális
 1. A bérlők között az e-mail-címére vagy a jobb felső sarokban található képre kattintva válthat.
 1. A megjelenő `Directory` listában válassza ki a kezelni kívánt Azure AD B2C-bérlőt.
 
-Az Azure Portal megjelenítése ekkor frissül.  Sikeresen bejelentkezett az Azure Portalra az Azure AD B2C-bérlője kontextusában.
+Az Azure Portal frissül.  Sikeresen bejelentkezett az Azure Portalra az Azure AD B2C-bérlője kontextusában.
 
-## <a name="navigate-to-the-b2c-features-blade"></a>Lépjen a B2C funkciók paneljére
+## <a name="navigate-to-the-b2c-features-pane"></a>Lépjen a B2C funkciók ablaktáblára
 
 1. Kattintson a képernyő bal oldalán található **Tallózás** navigációs elemre.
-1. Kattintson a **További szolgáltatások** elemre, majd keresse meg az `Azure AD B2C` elemet a bal oldali navigációs panelen.  (A bal oldali kezdőpulthoz való rögzítéshez kattintson az Azure AD B2C-től balra található csillagra.)
-1. A B2C-funkciók paneljéhez való hozzáféréshez kattintson az **Azure AD B2C** elemre.
+1. Kattintson a **Minden szolgáltatás** elemre, majd keresse meg az `Azure AD B2C` elemet a bal oldali navigációs ablaktáblán.  (A bal oldali kezdőpulthoz való rögzítéshez kattintson az Azure AD B2C-től balra található csillagra.)
+1. A B2C-funkciók ablaktábla eléréséhez kattintson az **Azure AD B2C** elemre.
    
-    ![A B2C-funkciók panel tallózásának képernyőképe](./media/active-directory-b2c-get-started/b2c-browse.png)
+    ![A B2C-funkciók ablaktábla tallózásának képernyőképe](./media/active-directory-b2c-get-started/b2c-browse.png)
 
 > [!IMPORTANT]
-> A B2C bérlő globális rendszergazdájának kell lennie ahhoz, hogy hozzáférhessen a B2C funkciók panelhez. Más bérlők globális rendszergazdái vagy felhasználói nem férhetnek hozzá a panelhez.  A B2C-bérlőre az Azure Portal jobb felső sarkában található bérlőváltó használatával válthat át.
+> A B2C-bérlő globális rendszergazdájának kell lennie ahhoz, hogy hozzáférhessen a B2C-funkciók ablaktáblához. Más bérlők globális rendszergazdái vagy felhasználói nem férhetnek hozzá a panelhez.  A B2C-bérlőre az Azure Portal jobb felső sarkában található bérlőváltó használatával válthat át.

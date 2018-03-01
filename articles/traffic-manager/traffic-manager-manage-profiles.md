@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/10/2017
 ms.author: kumud
-ms.openlocfilehash: a5164282264124835692bc72a4ab61891aa7af9d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e19f8f373fed8c7e9ab64f2fc9e34eba182af717
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="manage-an-azure-traffic-manager-profile"></a>Az Azure Traffic Manager-profilok kezelése
 
@@ -31,8 +31,8 @@ Az Azure Portal használatával Traffic Manager-profilokat hozhat létre. A prof
 ### <a name="to-create-a-traffic-manager-profile"></a>Traffic Manager-profil létrehozása
 
 1. Egy böngészőben jelentkezzen be az [Azure Portalra](http://portal.azure.com). Ha még nincs fiókja, regisztrálhat egy [egy hónapos ingyenes próbaverzióra](https://azure.microsoft.com/free/). 
-2. A **Hub** menüben kattintson az **Új** > **Hálózatkezelés** > **Az összes megjelenítése** elemre, kattintson a **Traffic Manager**-profilra a **Traffic Manager-profil létrehozása** panel megnyitásához, majd kattintson a **Létrehozás** gombra.
-3. A **Traffic Manager-profil létrehozása** panelen adja meg a következőket:
+2. Kattintson az **Erőforrás létrehozása** > **Hálózat** > **Traffic Manager-profil** > **Létrehozás** lehetőségre.
+4. A **Traffic Manager-profil létrehozása** területen adja meg a következőket:
     1. A **Név** területen adja meg a profil nevét. Ennek a névnek egyedinek kell lennie a trafficmanager.net zónában és a(z) <name>, trafficmanager.net DNS-nevet eredményezi, amellyel elérhető a Traffic Manager-profil.
     2. Az **Útválasztási módszer** területen válassza a **Prioritás** útválasztási módszert.
     3. Az **Előfizetés** területen válassza ki azt az előfizetést, amely alatt létre szeretné hozni ezt a profilt
@@ -51,23 +51,25 @@ Letilthat létező profilokat, így a Traffic Manager nem hivatkozik a konfigur�
 2. A forgalom többé nem lesz a végpontokra irányítva a Traffic Manager-profil beállításain keresztül.
 3. Egy böngészőben jelentkezzen be az [Azure Portalra](http://portal.azure.com).
 2. A portál keresősávjában keressen rá a módosítani kívánt **Traffic Manager-profil** nevére, majd kattintson a Traffic Manager-profilra a megjelenített eredmények között.
-3. A **Traffic Manager-profil** panelen kattintson az **Áttekintés** gombra, az Áttekintés panelen kattintson a **Letiltás** gombra, majd erősítse meg a Traffic Manager-profil letiltását.
+3. Kattintson az **Áttekintés** > **Letiltás** lehetőségre.
+4. Erősítse meg a Traffic Manager-profil letiltását.
 
 ### <a name="to-enable-a-profile"></a>A profilok engedélyezése
 
 1. Egy böngészőben jelentkezzen be az [Azure Portalra](http://portal.azure.com).
 2. A portál keresősávjában keressen rá a módosítani kívánt **Traffic Manager-profil** nevére, majd kattintson a Traffic Manager-profilra a megjelenített eredmények között.
-3. A **Traffic Manager-profil** panelen kattintson az **Áttekintés** gombra, majd az Áttekintés panelen kattintson az **Engedélyezés** gombra.
-5. Ha egyéni tartománynevet használ, hozzon létre egy CNAME-erőforrásrekordot az internetes DNS-kiszolgálón, amely a Traffic Manager-profil tartománynevére mutat.
-6. A forgalom ismét a végpontokra lesz irányítva.
+3. Kattintson az **Áttekintés** > **Engedélyezés** lehetőségre.
+1. Ha egyéni tartománynevet használ, hozzon létre egy CNAME-erőforrásrekordot az internetes DNS-kiszolgálón, amely a Traffic Manager-profil tartománynevére mutat.
+2. A forgalom ismét a végpontokra lesz irányítva.
 
 ### <a name="to-delete-a-profile"></a>A profilok törlése
 
 1. Győződjön meg arról, hogy az internetes DNS-kiszolgálón érvényes DNS-erőforrásrekord már nem használ olyan CNAME-erőforrásrekordot, amely a Traffic Manager-profil tartománynevére mutat.
 2. A portál keresősávjában keressen rá a módosítani kívánt **Traffic Manager-profil** nevére, majd kattintson a Traffic Manager-profilra a megjelenített eredmények között.
-3. A **Traffic Manager-profil** panelen kattintson az **Áttekintés** gombra, az Áttekintés panelen kattintson a **Törlés** gombra, majd erősítse meg a Traffic Manager-profil törlését.
+3. Kattintson az **Áttekintés** > **Törlés** gombra.
+4. Erősítse meg a Traffic Manager-profil törlését.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Végpont hozzáadása](traffic-manager-endpoints.md)
 * [Prioritásos útválasztási mód konfigurálása](traffic-manager-configure-priority-routing-method.md)

@@ -1,92 +1,92 @@
 ---
-title: "Fájlok visszaállítása egy virtuális Gépet az Azure Backup szolgáltatással |} Microsoft Docs"
-description: "Útmutató: a fájlszintű helyreállítást végrehajtani a biztonsági mentési és helyreállítási szolgáltatások egy Azure virtuális gépen."
-services: backup, virtual-machines
+title: "Fájlok visszaállítása egy virtuális gépre az Azure Backuppal | Microsoft Docs"
+description: "Megtudhatja, hogyan végezhet fájlszintű helyreállítást egy Azure-beli virtuális gépen a Backup és a Recovery Services használatával."
+services: backup
 documentationcenter: virtual-machines
 author: markgalioto
 manager: carmonm
 editor: 
 tags: azure-resource-manager, virtual-machine-backup
 ms.assetid: 
-ms.service: backup, virtual-machines
+ms.service: backup
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/29/2017
+ms.date: 2/14/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: e1bbae56b70c50fcf691db47efd9dc587686e7da
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
-ms.translationtype: MT
+ms.openlocfilehash: 77084c5663f9e12347c243c4e78160657d7443b2
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 02/21/2018
 ---
-# <a name="restore-files-to-a-virtual-machine-in-azure"></a>Fájlok visszaállítása az Azure virtuális géphez
-Az Azure Backup georedundáns helyreállítás tárolók tárolt helyreállítási pontokat hoz létre. Helyreállításakor a helyreállítási pont, az egész virtuális gép vagy a fájlokat is helyreállíthatja. Ez a cikk részletezi az egyes fájlok visszaállítása. Ezen oktatóanyag segítségével megtanulhatja a következőket:
+# <a name="restore-files-to-a-virtual-machine-in-azure"></a>Fájlok visszaállítása Azure-beli virtuális gépekre
+Az Azure Backup georedundáns helyreállítási tárolókban tárolt helyreállítási pontokat hoz létre. Helyreállítási pontról történő visszaállításkor visszaállíthatja a teljes virtuális gépet, vagy csak egyes fájlokat. Ez a cikk részletesen ismerteti az egyes fájlok visszaállításának módját. Ezen oktatóanyag segítségével megtanulhatja a következőket:
 
 > [!div class="checklist"]
-> * Lista, és válassza a helyreállítási pontok
-> * A helyreállítási pont csatlakozni a virtuális gépek
-> * A helyreállítási pont fájlok visszaállítása
+> * Helyreállítási pontok listázása és kiválasztása
+> * Helyreállítási pont csatlakoztatása egy virtuális géphez
+> * Fájlok visszaállítása egy helyreállítási pontból
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Telepítése és a parancssori felület helyileg használata mellett dönt, ha ez az oktatóanyag van szükség, hogy futnak-e az Azure parancssori felület 2.0.18 verzió vagy újabb. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése](/cli/azure/install-azure-cli). 
+Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.0.18-as vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése](/cli/azure/install-azure-cli). 
 
 
 ## <a name="prerequisites"></a>Előfeltételek
-Ez az oktatóanyag egy Linux virtuális Gépet, amely védett az Azure Backup szolgáltatással van szükség. Ezzel szimulálva egy véletlen fájl törlése és a helyreállítási folyamat, egy lap a webkiszolgáló törölnie. Ha egy Linux virtuális Gépet, amely egy webkiszolgálón fut, és a védett az Azure Backup szolgáltatással van szüksége, tekintse meg [készítsen biztonsági másolatot a virtuális gép az Azure-ban a parancssori felület](quick-backup-vm-cli.md).
+Ehhez az oktatóanyaghoz olyan Linux rendszerű virtuális gépre van szükség, amelyet az Azure Backup véd. A fájl véletlen törlésének és a helyreállítási folyamatnak a szimulálásához töröljön egy oldalt egy webkiszolgálóról. Ha szüksége van egy linuxos virtuális gépre, amely egy webkiszolgálót futtat, és amelyet az Azure Backup véd, lásd: [Virtuális gép biztonsági mentése az Azure-ban a parancssori felület használatával](quick-backup-vm-cli.md).
 
 
 ## <a name="backup-overview"></a>A biztonsági mentés áttekintése
-Ha Azure biztonsági másolatot, a biztonsági mentési bővítményt a virtuális Gépre időpontban pillanatképet készít. A tartalék mellék a virtuális Gépen telepítve van, ha az első biztonsági mentés van szükség. Azure biztonsági mentés is is pillanatkép készítése a mögöttes tároló Ha a virtuális gép nem fut, amikor megtörténik a biztonsági mentés.
+Amikor az Azure biztonsági mentést kezdeményez, a virtuális gépen futó biztonsági mentési bővítmény időponthoz kötött pillanatképet készít. A biztonsági mentési bővítmény az első biztonsági mentés kérésekor települ a virtuális gépre. Az Azure Backup akkor is tud pillanatképet készíteni az alapul szolgáló tárolóról, ha a virtuális gép a biztonsági mentés közben nem fut.
 
-Alapértelmezés szerint Azure biztonsági mentési időt vesz igénybe a fájlrendszer konzisztens biztonsági mentése. Amennyiben az Azure Backup a pillanatfelvételt, az adatok átvitele történik meg a Recovery Services-tároló. Hatékonyságának maximalizálása érdekében Azure biztonsági mentési azonosítja, és csak az adatok a korábbi biztonsági mentés óta módosult blokkok átvitele.
+Alapértelmezés szerint az Azure Backup a fájlrendszerrel konzisztens biztonsági másolatot készít. Amikor az Azure Backup elkészítette a pillanatképet, az adatok átkerülnek a helyreállítási tárba. A maximális hatékonyság érdekében az Azure Backup csak azokat az adatblokkokat azonosítja és továbbítja, amelyek az előző biztonsági mentés óta változtak.
 
-Ha az adatok átvitele befejeződött, a rendszer eltávolítja a pillanatkép, és egy helyreállítási pontot hoz létre.
+Ha az adatátvitel befejeződött, a rendszer eltávolítja a pillanatképet, és létrehoz egy helyreállítási pontot.
 
 
-## <a name="delete-a-file-from-a-vm"></a>Fájl törlése a virtuális gépek
-Ha véletlenül törli vagy módosítja a fájlt, helyreállíthatja a fájlok helyreállítási pontból. Ez a folyamat teszi keresse meg a fájlok biztonsági mentés egy helyreállítási pontot, és visszaállítása csak a szükséges fájlokat. Ebben a példában azt töröl egy fájlt egy webkiszolgálón a fájlszintű helyreállítási folyamat bemutatásához.
+## <a name="delete-a-file-from-a-vm"></a>Fájl törlése egy virtuális gépről
+Ha véletlenül törölt vagy módosított egy fájlt, arra is van lehetősége, hogy a helyreállítási pontból csak egyes fájlokat állítson vissza. Ez a folyamat lehetővé teszi a helyreállítási pont biztonsági másolatában szereplő fájlok tallózását, és csak a szükséges fájlok visszaállítását. Ebben a példában a fájlszintű helyreállítási folyamat bemutatásához törölni fogunk egy fájlt egy webkiszolgálóról.
 
-1. Csatlakoztassa a virtuális Gépet, szerezze be a virtuális Gépet, az IP-címe [az vm megjelenítése](/cli/azure/vm?view=azure-cli-latest#az_vm_show):
+1. A virtuális géphez való csatlakozáshoz kérje le a virtuális gép IP-címét az [az vm show](/cli/azure/vm?view=azure-cli-latest#az_vm_show) paranccsal:
 
      ```azurecli-interactive
      az vm show --resource-group myResourceGroup --name myVM -d --query [publicIps] --o tsv
      ```
 
-2. Győződjön meg arról, hogy a webhely jelenleg működik, nyissa meg a virtuális gép a nyilvános IP-címet egy webböngészőben. Hagyja nyitva a böngészőablak.
+2. Annak ellenőrzéséhez, hogy a webhely jelenleg működik-e, nyissa meg a virtuális gép a nyilvános IP-címét egy webböngészőben. Ne zárja be a böngészőablakot.
 
     ![Alapértelmezett NGINX-weblap](./media/tutorial-restore-files/nginx-working.png)
 
-3. Csatlakoztassa a virtuális Gépet az SSH. Cserélje le *publicIpAddress* a nyilvános IP-címmel, amely egy előző parancs beolvasott:
+3. Csatlakozzon a virtuális géphez SSH-val. Cserélje le a *publicIpAddress* kifejezést a korábbi paranccsal beolvasott nyilvános IP-címre:
 
     ```bash
     ssh publicIpAddress
     ```
 
-4. Az alapértelmezett oldal törlése a webkiszolgáló, */var/www/html/index.nginx-debian.html* az alábbiak szerint:
+4. Törölje a webkiszolgáló alapértelmezett lapját a */var/www/html/index.nginx-debian.html* címről az alábbiak szerint:
 
     ```bash
     sudo rm /var/www/html/index.nginx-debian.html
     ```
 
-5. A böngészőben a weblap frissítése. A webhely már nem betölti a lapon, a következő példában látható módon:
+5. A webböngészőben frissítse a weblapot. A webhely már nem tölti be a lapot, ahogy azt a következő példa is mutatja:
 
-    ![NGINX webhely már nem töltődik alapértelmezett oldal](./media/tutorial-restore-files/nginx-broken.png)
+    ![Az NGINX webhely már nem tölti be az alapértelmezett oldalt](./media/tutorial-restore-files/nginx-broken.png)
 
-6. Zárja be a virtuális gép SSH-munkamenetet az alábbiak szerint:
+6. Zárja be a virtuális gép felé indított SSH-munkamenetet a következőképpen:
 
     ```bash
     exit
     ```
 
 
-## <a name="generate-file-recovery-script"></a>Fájl-helyreállítási parancsfájl létrehozása
-A fájlok visszaállítására, az Azure Backup biztosít, amely összeköti a helyreállítási pont, mint egy helyi meghajtó a virtuális gépen futtatandó parancsprogram. Keresse meg a helyi meghajtó, a virtuális gépért fájlok visszaállítása, majd válassza le a helyreállítási pont. Azure biztonsági mentés továbbra is fennáll, készítsen biztonsági másolatot az adatairól a hozzárendelt ütemezés és a megőrzési házirend alapján.
+## <a name="generate-file-recovery-script"></a>Fájlhelyreállítási szkript létrehozása
+A fájlok visszaállításához az Azure Backup egy, a virtuális gépen futtatható szkriptet biztosít, amely helyi meghajtóként csatlakoztatja a helyreállítási pontot. Ezen a helyi meghajtón megkeresheti és visszaállíthatja a fájlokat a virtuális gépre. Ha ezzel végzett, válassza le a helyreállítási pont. Az Azure Backup a hozzárendelt ütemezési és megőrzési szabályzat szerint folytatja az adatok biztonsági mentését.
 
-1. A lista helyreállítási pontok a virtuális gép használata [az biztonsági mentési recoverypoint lista](https://docs.microsoft.com/cli/azure/backup/recoverypoint?view=azure-cli-latest#az_backup_recoverypoint_list). Ebben a példában azt a legutóbbi helyreállítási pont a virtuális Géphez kiválasztandó nevű *myVM* a védett *myRecoveryServicesVault*:
+1. A virtuális gép helyreállítási pontjainak listázásához használja [az backup recoverypoint list](https://docs.microsoft.com/cli/azure/backup/recoverypoint?view=azure-cli-latest#az_backup_recoverypoint_list) parancsot. Ebben a példában kiválasztjuk a virtuális gép legutóbbi, *myVM* nevű helyreállítási pontját, amelyet a rendszer a *myRecoveryServicesVault* tárolóban őriz:
 
     ```azurecli-interactive
     az backup recoverypoint list \
@@ -98,9 +98,9 @@ A fájlok visszaállítására, az Azure Backup biztosít, amely összeköti a h
         --output tsv
     ```
 
-2. Alkalmazásazonosítójának beszerzéséhez a parancsfájlt, amely csatlakozik, vagy felhőszolgáltatásában, a virtuális géphez a helyreállítási pont [az biztonságimásolat-visszaállítással fájlok csatlakoztatási-rp](https://docs.microsoft.com/cli/azure/backup/restore/files?view=azure-cli-latest#az_backup_restore_files_mount_rp). A következő példa a parancsfájl beolvassa a virtuális gép nevű *myVM* a védett *myRecoveryServicesVault*.
+2. A helyreállítási pontot a virtuális géphez kapcsoló vagy csatlakoztató szkript beszerzéséhez használja az [az backup restore files mount-rp](https://docs.microsoft.com/cli/azure/backup/restore/files?view=azure-cli-latest#az_backup_restore_files_mount_rp) parancsot. Az alábbi példa a *myVM* nevű, a *myRecoveryServicesVault* tárolóban őrzött virtuális géphez tartozó szkriptet szerzi be.
 
-    Cserélje le *myRecoveryPointName* nevű, a helyreállítási pont az előző parancsban szereplő beszerzett:
+    Cserélje le a *myRecoveryPointName* kifejezést az előző paranccsal beszerzett helyreállítási pont nevére:
 
     ```azurecli-interactive
     az backup restore files mount-rp \
@@ -111,43 +111,43 @@ A fájlok visszaállítására, az Azure Backup biztosít, amely összeköti a h
         --rp-name myRecoveryPointName
     ```
 
-    A parancsfájlt a rendszer letölti és egy jelszó jelenik meg, az alábbi példában látható módon:
+    A rendszer az alábbi példában látható módon letölti a szkriptet, és megjeleníti a jelszót:
 
     ```
     File downloaded: myVM_we_1571974050985163527.sh. Use password c068a041ce12465
     ```
 
-3. A parancsfájl át a virtuális Gépet, használja a biztonságos másolása (SCP). Adja meg a letöltött parancsfájl nevét, és cserélje le *publicIpAddress* a virtuális gép a nyilvános IP-címmel. Győződjön meg arról, a záró `:` a szolgáltatáskapcsolódási pont végén parancsot az alábbiak szerint:
+3. A szkriptet a biztonságos másolás (Secure Copy – SCP) használatával továbbítsa a virtuális gépre. Adja meg a letöltött szkript nevét, és cserélje le *publicIpAddress* kifejezést a virtuális gép nyilvános IP-címére. Győződjön meg arról, hogy a `:` zárókarakter szerepel az SCP-parancs végén az alább látható módon:
 
     ```bash
     scp myVM_we_1571974050985163527.sh 52.174.241.110:
     ```
 
 
-## <a name="restore-file-to-your-vm"></a>Állítsa vissza a fájlt a virtuális géphez
-A helyreállítási másolni a virtuális Gépet, parancsfájl most csatlakozhat a helyreállítási pont, és fájlokat.
+## <a name="restore-file-to-your-vm"></a>Fájl visszaállítása a virtuális gépre
+Most, hogy a helyreállítási szkript a virtuális gépre van másolva, csatlakoztathatja a helyreállítási pontot, és visszaállíthatja a fájlokat.
 
-1. Csatlakoztassa a virtuális Gépet az SSH. Cserélje le *publicIpAddress* a nyilvános IP-cím a virtuális gép az alábbiak szerint:
+1. Csatlakozzon a virtuális géphez SSH-val. Cserélje le *publicIpAddress* kifejezést a virtuális gép nyilvános IP-címére az alább látható módon:
 
     ```bash
     ssh publicIpAddress
     ```
 
-2. A parancsfájl működéséhez engedélyezéséhez adja hozzá a végrehajtási jogosultságokkal rendelkező **chmod**. Adja meg a saját parancsfájl nevét:
+2. A szkript megfelelő működéséhez adjon hozzá végrehajtási jogosultságokat a **chmod** parancs használatával. Adja meg saját szkriptje nevét:
 
     ```bash
     chmod +x myVM_we_1571974050985163527.sh
     ```
 
-3. Csatlakoztassa a helyreállítási pont, futtassa a parancsfájlt. Adja meg a saját parancsfájl nevét:
+3. A helyreállítási pont csatlakoztatásához futtassa a szkriptet. Adja meg saját szkriptje nevét:
 
     ```bash
     ./myVM_we_1571974050985163527.sh
     ```
 
-    A parancsfájl futtatása, mert éri el a helyreállítási pontot jelszó megadását kéri. Adja meg a jelszót, az előző a kimenetben megjelenő [az biztonságimásolat-visszaállítással fájlok csatlakoztatási-rp](https://docs.microsoft.com/cli/azure/backup/restore/files?view=azure-cli-latest#az_backup_restore_files_mount_rp) jön létre a helyreállítási parancsprogram-utasítás.
+    A szkript futtatásakor a rendszer kéri, hogy adja meg a jelszót a helyreállítási pont eléréséhez. Adja meg a helyreállítási szkriptet létrehozó, előzőleg futtatott [az backup restore files mount-rp](https://docs.microsoft.com/cli/azure/backup/restore/files?view=azure-cli-latest#az_backup_restore_files_mount_rp) parancs kimenetében szereplő jelszót.
 
-    A parancsfájl kimenetében lehetővé teszi az elérési út a helyreállítási pont. Az alábbi példa kimenetben látható, hogy a helyreállítási pont csatlakoztatva van-e a */home/azureuser/myVM-20170919213536/Volume1*:
+    A szkript kimenetében megtalálható a helyreállítási pont elérési útja. Az alábbi példa kimenetében látható, hogy a helyreállítási pont csatlakoztatva van a */home/azureuser/myVM-20170919213536/Volume1* címen:
 
     ```
     Microsoft Azure VM Backup - File Recovery
@@ -169,25 +169,25 @@ A helyreállítási másolni a virtuális Gépet, parancsfájl most csatlakozhat
     ************ Open File Explorer to browse for files. ************
     ```
 
-4. Használjon **cp** másolni a csatlakoztatott helyreállítási pontból NGINX alapértelmezett weblap vissza az eredeti fájl helyére. Cserélje le a */home/azureuser/myVM-20170919213536/Volume1* csatlakoztatási pontot a saját helyét:
+4. A **cp** parancs használatával másolja vissza az NGINX alapértelmezett weblapot a csatlakoztatott helyreállítási pontról fájl eredeti helyére. Cserélje le a */home/azureuser/myVM-20170919213536/Volume1* csatlakoztatási pontot a saját helyére:
 
     ```bash
     sudo cp /home/azureuser/myVM-20170919213536/Volume1/var/www/html/index.nginx-debian.html /var/www/html/
     ```
 
-6. A böngészőben a weblap frissítése. A webhely most töltődik megfelelően újra, a következő példában látható módon:
+6. A webböngészőben frissítse a weblapot. A webhely most ismét megfelelően betöltődik az alábbi példában látható módon:
 
-    ![NGINX webhely most már megfelelően tölt be](./media/tutorial-restore-files/nginx-restored.png)
+    ![Az NGINX webhely most már megfelelően betöltődik](./media/tutorial-restore-files/nginx-restored.png)
 
-7. Zárja be a virtuális gép SSH-munkamenetet az alábbiak szerint:
+7. Zárja be a virtuális gép felé indított SSH-munkamenetet a következőképpen:
 
     ```bash
     exit
     ```
 
-8. A helyreállítási pont leválasztani a virtuális Gépet a [az biztonságimásolat-visszaállítással fájlok leválasztása rp](https://docs.microsoft.com/cli/azure/backup/restore/files?view=azure-cli-latest#az_backup_restore_files_unmount_rp). Az alábbi példa leválasztja a helyreállítási pont nevű virtuális gép *myVM* a *myRecoveryServicesVault*.
+8. Válassza le a helyreállítási pontot a virtuális gépről az [az backup restore files unmount-rp](https://docs.microsoft.com/cli/azure/backup/restore/files?view=azure-cli-latest#az_backup_restore_files_unmount_rp) paranccsal. Az alábbi példa leválasztja a helyreállítási pontot a *myRecoveryServicesVault* tárolóban őrzött *myVM* nevű virtuális gépről.
 
-    Cserélje le *myRecoveryPointName* nevű, a helyreállítási pont beolvasott parancsokat:
+    Cserélje le a *myRecoveryPointName* kifejezést az előző parancsokkal beszerzett helyreállítási pont nevére:
     
     ```azurecli-interactive
     az backup restore files unmount-rp \
@@ -198,16 +198,16 @@ A helyreállítási másolni a virtuális Gépet, parancsfájl most csatlakozhat
         --rp-name myRecoveryPointName
     ```
 
-## <a name="next-steps"></a>Következő lépések
-Ebben az oktatóanyagban egy helyreállítási pontot egy virtuális Géphez kapcsolódó, és vissza a fájlokat egy webkiszolgálón. Megismerte, hogyan végezheti el az alábbi műveleteket:
+## <a name="next-steps"></a>További lépések
+Ebben az oktatóanyagban egy helyreállítási pontot csatlakoztatott egy virtuális géphez, és visszaállította egy webkiszolgáló fájljait. Megismerte, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
-> * Lista, és válassza a helyreállítási pontok
-> * A helyreállítási pont csatlakozni a virtuális gépek
-> * A helyreállítási pont fájlok visszaállítása
+> * Helyreállítási pontok listázása és kiválasztása
+> * Helyreállítási pont csatlakoztatása egy virtuális géphez
+> * Fájlok visszaállítása egy helyreállítási pontból
 
-Továbblépés a következő oktatóanyag tájékozódhat a biztonsági mentése a Windows Server az Azure-bA.
+Folytassa a következő oktatóanyaggal, amely azt ismerteti, hogyan végezhető biztonsági mentés Windows Serverről az Azure-ba.
 
 > [!div class="nextstepaction"]
-> [Azure biztonsági mentés a Windows Server](tutorial-backup-windows-server-to-azure.md)
+> [Windows Server biztonsági mentése az Azure-ba](tutorial-backup-windows-server-to-azure.md)
 

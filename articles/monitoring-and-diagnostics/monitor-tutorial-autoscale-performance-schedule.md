@@ -7,14 +7,14 @@ services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
 ms.service: monitoring-and-diagnostics
 ms.topic: tutorial
-ms.date: 09/25/2017
+ms.date: 12/11/2017
 ms.author: ancav
 ms.custom: mvc
-ms.openlocfilehash: 012183b8e6c15d62eda2534985bf73140187d7af
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: f956a9436126c2a46d80b20770d7d86309e5b3af
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-an-autoscale-setting-for--azure-resources-based-on-performance-data-or-a-schedule"></a>Automatikus méretezési beállítás Azure-erőforrásokhoz teljesítményadatok vagy ütemezés alapján
 
@@ -35,30 +35,28 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
 Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
 ## <a name="create-a-web-app-and-app-service-plan"></a>Webalkalmazás és App Service-csomag létrehozása
-1. Kattintson az **Új** lehetőségre a bal oldali navigációs ablaktáblán.
-
+1. Kattintson az **Erőforrás létrehozása** lehetőségre a bal oldali navigációs ablaktáblán.
 2. Keresse meg és válassza ki a *Webalkalmazás* elemet, és kattintson a **Létrehozás** elemre.
-
-3. Adja meg az alkalmazás nevét, például: *MyTestScaleWebApp*. Hozzon létre egy új erőforráscsoportot, például *myResourceGroup* néven, és helyezze el egy szabadon választott erőforráscsoportban.
+3. Adja meg az alkalmazás nevét, például: *MyTestScaleWebApp*. Hozzon létre egy új erőforráscsoportot, például „myResourceGroup” néven, és helyezze el egy szabadon választott erőforráscsoportban.
 
 A rendszer néhány percen belül üzembe helyezi az erőforrásokat. Az oktatóanyag fennmaradó részében használja a webalkalmazást és a vonatkozó App Service-csomagot.
 
    ![Új alkalmazás létrehozása a portálon](./media/monitor-tutorial-autoscale-performance-schedule/Web-App-Create.png)
 
 ## <a name="navigate-to-autoscale-settings"></a>Az automatikus méretezési beállítások megnyitása
-1. Kattintson a bal oldali navigációs ablaktáblán a **Figyelés** eleme. Ha az oldal betöltött, kattintson az **Automatikus méretezés** lapra.
+1. Kattintson a bal oldali navigációs ablaktáblán a **Figyelés** eleme. Ha az oldal betöltött, kattintson az **Automatikus skálázás** lapra.
 2. Itt találja az előfizetéséhez tartozó azon erőforrások listáját, amelyek támogatják az automatikus méretezést. Keresse meg az oktatóanyag korábbi részében létrehozott App Service-csomagot, és kattintson rá.
 
     ![Az automatikus méretezési beállítások megnyitása](./media/monitor-tutorial-autoscale-performance-schedule/monitor-blade-autoscale.png)
 
-3. Az automatikus méretezéshez kattintson az **Automatikus méretezés engedélyezése** gombra.
+3. Az automatikus skálázáshoz kattintson az **Automatikus skálázás engedélyezése** gombra.
 
-A következő néhány lépés segít kitölteni az automatikus méretezési képernyőt, hogy az a következőképp nézzen ki:
+A következő néhány lépés segít kitölteni az automatikus skálázási képernyőt, hogy az a következőképp nézzen ki:
 
    ![Automatikus méretezési beállítás mentése](./media/monitor-tutorial-autoscale-performance-schedule/Autoscale-Setting-Save.png)
 
  ## <a name="configure-default-profile"></a>Alapértelmezett profil konfigurálása
-1. Adjon egy **nevet** az automatikus méretezési beállításnak.
+1. Adjon egy **nevet** az automatikus skálázási beállításnak.
 2. Az alapértelmezett profilban a **Skálázási mód** legyen „Skálázás adott példányszámra”.
 3. Állítsa a példányszámot **1**-re. Ez a beállítás biztosítja, hogy ha nincs másik aktív vagy működő profil, akkor az alapértelmezett profil példányszáma visszaáll 1-re.
 
@@ -81,7 +79,7 @@ A következő néhány lépés segít kitölteni az automatikus méretezési ké
 
 ## <a name="create-a-scale-out-rule"></a>Felskálázási szabály létrehozása
 
-1. A „Hétfőtől péntekig profil” alatt
+1. A „Hétfőtől péntekig profil” alatt.
 
 2. Kattintson a **Szabály hozzáadása** hivatkozásra.
 
@@ -102,7 +100,7 @@ Ez a szabály biztosítja, hogy ha a webalkalmazás 5 perc vagy annál rövidebb
 ## <a name="create-a-scale-in-rule"></a>Leskálázási szabály létrehozása
 Javasoljuk, hogy a felskálázási szabályok mellett mindig legyen beállítva egy leskálázási szabály is. Ezzel biztosítható, hogy ne legyen túl sok erőforrás üzembe helyezve. Ez azt jelenti, hogy ne fusson több példány, mint amennyi az aktuális terhelés kezeléséhez szükséges. 
 
-1. A „Hétfőtől péntekig profil” alatt
+1. A „Hétfőtől péntekig profil” alatt.
 
 2. Kattintson a **Szabály hozzáadása** hivatkozásra.
 
@@ -118,7 +116,7 @@ Javasoljuk, hogy a felskálázási szabályok mellett mindig legyen beállítva 
 
     ![Leskálázási szabály létrehozása](./media/monitor-tutorial-autoscale-performance-schedule/Scale-In-Rule.png)
 
-8. **Mentse** az automatikus méretezési beállítást.
+8. **Mentse** az automatikus skálázási beállítást.
 
     ![Automatikus méretezési beállítás mentése](./media/monitor-tutorial-autoscale-performance-schedule/Autoscale-Setting-Save.png)
 
@@ -133,7 +131,7 @@ Az imént létrehozott automatikus méretezési beállítás felskálázási fel
 
 4. Válassza ki a listából az oktatóanyag során használt App Service-csomagot.
 
-5. Az automatikus méretezési beállításnál kattintson a **Futtatási előzmények** lapra.
+5. Az automatikus skálázási beállításnál kattintson a **Futtatási előzmények** lapra.
 
 6. Egy ábrát láthat, amely megjeleníti az App Service-csomag példányszámait az idő elteltével.
 
@@ -152,13 +150,13 @@ Az automatikus méretezési beállítás leskálázási feltétele akkor aktivá
 
 4. Válassza ki a listából az oktatóanyag során használt App Service-csomagot.
 
-5. Az automatikus méretezési beállításnál kattintson a **Futtatási előzmények** lapra.
+5. Az automatikus skálázási beállításnál kattintson a **Futtatási előzmények** lapra.
 
 6. Egy ábrát láthat, amely megjeleníti az App Service-csomag példányszámait az idő elteltével.
 
 7. Néhány percen belül a példányszámnak 2-ről 1-re kell csökkennie. Ez a folyamat legalább 100 percig tart.  
 
-8. Az ábra alatt láthatók az automatikus méretezési beállítás által végrehajtott skálázási műveletek tevékenységnapló-bejegyzései.
+8. Az ábra alatt láthatók az automatikus skálázási beállítás által végrehajtott skálázási műveletek tevékenységnapló-bejegyzései.
 
     ![Leskálázási műveletek megtekintése](./media/monitor-tutorial-autoscale-performance-schedule/Scale-In-Chart.png)
 

@@ -1,6 +1,6 @@
 ---
-title: "Parancssori felület példa-egy Azure SQL-adatbázis létrehozása |} Microsoft Docs"
-description: "A parancsfájllal Azure CLI például SQL-adatbázis létrehozása."
+title: "CLI-példa – Azure SQL-adatbázis létrehozása | Microsoft Docs"
+description: "Ezzel az Azure CLI-példaszkripttel létrehozhat egy SQL-adatbázist."
 services: sql-database
 documentationcenter: sql-database
 author: janeng
@@ -16,15 +16,15 @@ ms.tgt_pltfrm: sql-database
 ms.workload: database
 ms.date: 10/11/2017
 ms.author: janeng
-ms.openlocfilehash: 404d43a6f2fa38276b9517e9542f1e50a4b1980b
-ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
-ms.translationtype: MT
+ms.openlocfilehash: 5824821a2e1f06425cae46cf8b3cf28582e63056
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 02/01/2018
 ---
-# <a name="use-cli-to-create-a-single-azure-sql-database-and-configure-a-firewall-rule"></a>Parancssori felület használatával hozzon létre egy Azure SQL-adatbázis és a tűzfalszabályok konfigurálása
+# <a name="use-cli-to-create-a-single-azure-sql-database-and-configure-a-firewall-rule"></a>Egy Azure SQL-adatbázis létrehozása és egy tűzfalszabály konfigurálása a parancssori felület használatával
 
-Az Azure CLI mintaparancsfájl egy Azure SQL Database adatbázist hoz létre, és egy kiszolgálószintű tűzfalszabály konfigurálása. Miután a parancsfájl sikeresen lefutott, az SQL-adatbázis elérhető az összes Azure-szolgáltatások és a konfigurált IP-címet. 
+Ez az Azure CLI-példaszkript létrehoz egy Azure SQL-adatbázist, és konfigurál egy kiszolgálószintű tűzfalszabályt. Miután a szkript sikeresen lefutott, az SQL Database elérhető lesz az összes Azure-szolgáltatásból és a konfigurált IP-címről. 
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -32,33 +32,33 @@ Az Azure CLI mintaparancsfájl egy Azure SQL Database adatbázist hoz létre, é
 
 Ha a parancssori felület helyi telepítése és használata mellett dönt, a témakörben leírt lépésekhez az Azure parancssori felületének 2.0-s vagy annál újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli). 
 
-## <a name="sample-script"></a>Mintaparancsfájl
+## <a name="sample-script"></a>Példaszkript
 
 [!code-azurecli-interactive[main](../../../cli_scripts/sql-database/create-and-configure-database/create-and-configure-database.sh?highlight=9-10 "Create SQL Database")]
 
 ## <a name="clean-up-deployment"></a>Az üzemelő példány eltávolítása
 
-A parancsfájl-minta futtatása után a következő parancs segítségével távolítsa el az erőforráscsoportot és a vele társított összes erőforrást.
+A példaszkript futtatása után a következő paranccsal távolítható el az erőforráscsoport és az összes ahhoz kapcsolódó erőforrás.
 
 ```azurecli-interactive
 az group delete --name myResourceGroup
 ```
 
-## <a name="script-explanation"></a>Parancsfájl ismertetése
+## <a name="script-explanation"></a>Szkript ismertetése
 
-A parancsfájl a következő parancsokat. Minden egyes parancsa a tábla-parancs adott dokumentációjára mutató hivatkozásokat.
+A szkript a következő parancsokat használja. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
 | Parancs | Megjegyzések |
 |---|---|
-| [az csoport létrehozása](/cli/azure/group#az_group_create) | Az összes erőforrás tároló erőforrás csoportot hoz létre. |
-| [az sql-kiszolgáló létrehozása](/cli/azure/sql/server#az_sql_server_create) | Az SQL-adatbázist futtató logikai kiszolgáló létrehozása. |
-| [az sql server tűzfal létrehozása](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_create) | Engedélyezi a kiszolgálón lévő összes SQL-adatbázis elérését a megadott IP-címtartomány egy tűzfalszabályt hoz létre. |
-| [az sql-adatbázis létrehozása](/cli/azure/sql/db#az_sql_db_create) | Az SQL-adatbázis létrehozása a logikai kiszolgálón. |
-| [az csoport törlése](/cli/azure/resource#delete) | Egy olyan erőforráscsoport, beleértve az összes beágyazott erőforrások törlése. |
+| [az group create](/cli/azure/group#az_group_create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
+| [az sql server create](/cli/azure/sql/server#az_sql_server_create) | Létrehoz egy logikai kiszolgálót, amelyen az SQL Database szolgáltatás fut. |
+| [az sql server firewall create](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_create) | Létrehoz egy tűzfalszabályt, amely engedélyezi a kiszolgálón lévő összes SQL Database-adatbázis elérését a megadott IP-címtartományból. |
+| [az sql db create](/cli/azure/sql/db#az_sql_db_create) | Létrehozza az SQL Database-adatbázist a logikai kiszolgálón. |
+| [az group delete](/cli/azure/resource#az_resource_delete) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-További információ az Azure parancssori felület: [Azure CLI dokumentáció](https://docs.microsoft.com/cli/azure/overview).
+Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](https://docs.microsoft.com/cli/azure/overview).
 
-További SQL-adatbázis CLI parancsfájl minták megtalálhatók a [dokumentáció az Azure SQL Database](../sql-database-cli-samples.md).
+További SQL Database CLI-példaszkripteket az [Azure SQL Database dokumentációjában](../sql-database-cli-samples.md) találhat.
 

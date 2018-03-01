@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 01/09/2018
 ms.author: nitinme
-ms.openlocfilehash: 38a8792588e013a0105ea57b20b2560f0acf02e6
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: c5b0f5250a08915e987a1eb5229f2c4648e660fd
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="get-started-with-azure-data-lake-store-using-the-azure-portal"></a>Az Azure Data Lake Store használatának első lépései az Azure Portal használatával
 > [!div class="op_single_selector"]
@@ -38,7 +38,7 @@ Az oktatóanyag elkezdéséhez az alábbiakkal kell rendelkeznie:
 ## <a name="create-an-azure-data-lake-store-account"></a>Azure Data Lake Store-fiók létrehozása
 
 1. Jelentkezzen be az új [Azure Portalra](https://portal.azure.com).
-2. Kattintson a **NEW** (új) **Data + Storage** (Adatok és tárolás), majd az **Azure Data Lake Store** elemre. Olvassa el az **Azure Data Lake Store** panelen látható információkat, majd kattintson a panel bal alsó sarkában található **Create** (Létrehozás) elemre.
+2. Kattintson az **Erőforrás létrehozása** elemre, kattintson az **Adatok + tárolás** elemre, majd az **Azure Data Lake Store** elemre. Olvassa el az **Azure Data Lake Store** panelen látható információkat, majd kattintson a panel bal alsó sarkában található **Create** (Létrehozás) elemre.
 3. Az **Új Data Lake Store** panelen adja meg az értékeket az alábbi képernyőfelvételen látható módon:
    
     ![Új Azure Data Lake Store-fiók létrehozása](./media/data-lake-store-get-started-portal/ADL.Create.New.Account.png "Új Azure Data Lake Store-fiók létrehozása")

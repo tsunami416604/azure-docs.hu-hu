@@ -7,14 +7,14 @@ services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
 ms.service: monitoring-and-diagnostics
 ms.topic: quickstart
-ms.date: 09/25/2017
+ms.date: 02/08/2018
 ms.author: ancav
 ms.custom: mvc
-ms.openlocfilehash: 08d63d47a99bdf9480299a74634bc0e9a09e691e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3c1a6271d0cb2157cb23f1dd4193eadba2c1679b
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="receive-a-notification-when-a-metric-value-meets-a-condition"></a>Értesítés kérése, ha egy metrikaérték megfelel egy feltételnek
 
@@ -30,11 +30,11 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 ## <a name="create-a-logic-app"></a>Logikai alkalmazás létrehozása
 
-1. Kattintson az Azure Portal bal felső sarkában található **Új** gombra.
+1. Kattintson az Azure Portal bal felső sarkában található **Erőforrás létrehozása** gombra.
 
-2. Keressen a „logikai alkalmazás” kifejezésre, majd válassza a **Logikai alkalmazás** lehetőséget. Hozzon létre egy új erőforráscsoportot **myResourceGroup** névvel. Használja az alapértelmezett helyet. Kattintson a **Létrehozás** gombra.
+2. Keressen a „logikai alkalmazás” kifejezésre, majd válassza a **Logikai alkalmazás** lehetőséget. Kattintson a **Létrehozás** gombra.
 
-3. Adja meg a logikai alkalmazásra vonatkozó adatokat, és jelölje be a **Rögzítés az irányítópulton** lehetőséget. Amikor végzett, kattintson a **Létrehozás** gombra.
+3. Adja meg a logikai alkalmazás adatait az alábbi ábrán látható módon.  Használja az alapértelmezett helyet. Jelölje be a **Rögzítés az irányítópulton** lehetőséget.  Amikor végzett, kattintson a **Létrehozás** gombra. 
 
     ![Írja be a logikai alkalmazás alapvető adatait a portálon.](./media/monitoring-quick-resource-metric-alert-portal/create-logic-app-portal.png)  
 
@@ -61,6 +61,8 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 12. Kattintson a **Save** (Mentés) gombra.
 
+13. A logikai alkalmazás futtatási műveletei akár 5 percig is eltarthatnak.  
+
 ## <a name="view-metrics-for-your-logic-app"></a>A logikai alkalmazás metrikáinak megtekintése
 
 1. Kattintson a **Figyelés** lehetőségre a bal oldali navigációs ablaktáblán.
@@ -71,7 +73,7 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 4. Módosítsa a diagram **Időtartomány** értékét úgy, hogy az az elmúlt órára vonatkozó adatokat tartalmazza.
 
-5. Ekkor egy diagramnak kell megjelennie, amely a logikai alkalmazás által az elmúlt órában elindított futtatásokat ábrázolja.
+5. Ekkor egy diagramnak kell megjelennie, amely a logikai alkalmazás által az elmúlt órában elindított futtatásokat ábrázolja. Ha nem látja, akkor várjon legalább 5 percet az előző lépés után. Ezt követően frissítse a böngészőt. 
 
     ![Metrikadiagram rajzolása a logikai alkalmazás erőforrásához](./media/monitoring-quick-resource-metric-alert-portal/logic-app-metric-chart.png)
 
@@ -108,7 +110,7 @@ Az ebben a gyűjteményben lévő többi rövid útmutató erre a rövid útmuta
 
 5. A panelen kattintson a jelen rövid útmutatóban előzőleg létrehozott logikai alkalmazásra, majd kattintson a **Törlés** lehetőségre.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebből a rövid útmutatóból megismerhette, hogyan hozhat létre metrikariasztásokat az erőforrásaihoz. Ha bővebb információt szeretne a metrikariasztásokról, kattintással lépjen a riasztások áttekintéséhez.
 
