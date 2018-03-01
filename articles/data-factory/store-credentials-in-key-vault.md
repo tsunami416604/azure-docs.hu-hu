@@ -10,19 +10,19 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2017
+ms.date: 02/26/2017
 ms.author: jingwang
-ms.openlocfilehash: 42643c73368597d1caea4aba12bc7b64b7440970
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 51318a6bb4f88759984531b005c65712b6817ec0
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="store-credential-in-azure-key-vault"></a>Hitelesítő adatok tárolása az Azure Key Vault
 
-Az adattároló hitelesítő adatait tárolhatja egy [Azure Key Vault](../key-vault/key-vault-whatis.md). Az Azure Data Factory olvassa be a hitelesítő adatokat, a tárolót használó tevékenység végrehajtása közben.
+Az adattároló, és kiszámítja a hitelesítő adatok tárolhatók egy [Azure Key Vault](../key-vault/key-vault-whatis.md). Az Azure Data Factory lekéri a hitelesítő adatokat, használja az adatok tárolási/számítási tevékenység végrehajtása közben.
 
-Jelenleg az összekötők összes másolási tevékenység támogatja ez a szolgáltatás - ellenőrizze, hogy a "társított szolgáltatás tulajdonságai" szakaszában szerepel [minden összekötő témakör](copy-activity-overview.md#supported-data-stores-and-formats) részleteiről. Más típusú tevékenységek támogatása, és számítási kapcsolódó szolgáltatás később határozza meg.
+Jelenleg az egyéni tevékenység kivételével az összes tevékenységtípus támogatja ezt a szolgáltatást. -Összekötő konfigurációjában, ellenőrizze a "társított szolgáltatás tulajdonságai" szakaszban [minden összekötő témakör](copy-activity-overview.md#supported-data-stores-and-formats) részleteiről.
 
 > [!NOTE]
 > Ez a cikk a Data Factory 2. verziójára vonatkozik, amely jelenleg előzetes verzióban érhető el. A Data Factory szolgáltatásnak, amely általánosan elérhető (GA), 1 verziójának használatakor lásd [adat-előállító version1 dokumentációja](v1/data-factory-introduction.md).
