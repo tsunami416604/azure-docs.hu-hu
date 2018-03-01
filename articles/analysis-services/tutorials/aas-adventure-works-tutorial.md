@@ -15,17 +15,17 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 02/10/2018
 ms.author: owend
-ms.openlocfilehash: ecc95181f61f556b18fa820617ea5ad0636c7a4b
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 3bc0ed965aea043fd5c105752ec39d07c4af818f
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="azure-analysis-services---adventure-works-tutorial"></a>Azure Analysis Services – Adventure Works-oktatóanyag
 
 Ez az oktatóanyag azzal kapcsolatos leckéket tartalmaz, hogyan hozhat létre és helyezhet üzembe táblázatos modelleket az 1400-as kompatibilitási szinten a Visual Studio és az [SQL Server Data Tools (SSDT)](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt) együttes használatával.  
 
-Ha most ismerkedik az Analysis Services szolgáltatással és a táblázatos modellezéssel, akkor ebből az oktatóanyagból sajátíthatja el leggyorsabban az alapszintű táblázatos modellek Visual Studio használatával történő létrehozását és üzembe helyezését. Ha az előfeltételek teljesültek, két-három óra szükséges a befejezésig.  
+Ha most ismerkedik az Analysis Services szolgáltatással és a táblázatos modellezéssel, akkor ebből az oktatóanyagból sajátíthatja el leggyorsabban az alapszintű táblázatos modellek Visual Studióval történő létrehozását és üzembe helyezését. Ha az előfeltételek teljesültek, két-három óra szükséges a befejezésig.  
   
 ## <a name="what-you-learn"></a>Ismertetett témák   
   
@@ -43,7 +43,7 @@ Ha most ismerkedik az Analysis Services szolgáltatással és a táblázatos mod
   
 -   Modellobjektumok és -adatok védelme szerepkörökkel rendelkező felhasználói tagok létrehozásával.  
   
--   Táblázatos modell üzembe helyezése egy **Azure Analysis Services**-kiszolgálón vagy egy helyszíni SQL Server 2017 Analysis Services-kiszolgálón.  
+-   Táblázatos modell üzembe helyezése egy **Azure Analysis Services**-kiszolgálón vagy **SQL Server 2017 Analysis Services**-kiszolgálón az SSDT-vel.  
   
 ## <a name="prerequisites"></a>Előfeltételek  
 Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:  

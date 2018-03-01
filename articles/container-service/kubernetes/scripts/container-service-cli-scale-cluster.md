@@ -1,6 +1,6 @@
 ---
-title: "Az Azure CLI parancsfájl minta - skálázási egy ACS-fürthöz |} Microsoft Docs"
-description: "Az Azure CLI parancsfájl minta - skálázási egy ACS-fürthöz"
+title: "Azure CLI-példaszkript – ACS-fürt méretezése | Microsoft Docs"
+description: "Azure CLI-példaszkript – ACS-fürt méretezése"
 services: container-service
 documentationcenter: 
 author: neilpeterson
@@ -16,21 +16,21 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/30/2017
 ms.author: nepeters
-ms.openlocfilehash: 14e9f9d85bc0c1428240f15831632eafe2a0f80e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: MT
+ms.openlocfilehash: d12299d08fa989c0990ae45a41c638470e1075a6
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/01/2018
 ---
-# <a name="scale-an-azure-container-service-cluster"></a>Egy Azure Tárolószolgáltatási fürt méretezése
+# <a name="scale-an-azure-container-service-cluster"></a>Azure Container Service-fürt méretezése
 
-Ez a minta méretekkel és az Azure Tárolószolgáltatás. 
+Ez a példa egy Azure Container Service-t méretez. 
 
 [!INCLUDE [sample-cli-install](../../../../includes/sample-cli-install.md)]
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="sample-script"></a>Mintaparancsfájl
+## <a name="sample-script"></a>Példaszkript
 
 ```azurecli
 az acs scale --resource-group myResourceGroup --name myK8SCluster --new-agent-count 5
@@ -38,23 +38,23 @@ az acs scale --resource-group myResourceGroup --name myK8SCluster --new-agent-co
 
 ## <a name="clean-up-deployment"></a>Az üzemelő példány eltávolítása 
 
-A következő parancsot az erőforráscsoport, virtuális gép és az összes kapcsolódó erőforrások eltávolítása.
+Az alábbi paranccsal eltávolítható az erőforráscsoport, a virtuális gép és az összes kapcsolódó erőforrás.
 
 ```azurecli
 az group delete --name myResourceGroup
 ```
 
-## <a name="script-explanation"></a>Parancsfájl ismertetése
+## <a name="script-explanation"></a>Szkript ismertetése
 
-A parancsfájl a következő parancsokat a központi telepítés létrehozásához. A parancs adott dokumentáció tábla mutató összes elemére.
+A szkript a következő parancsokat használja az üzemelő példány létrehozásához. A táblázatban lévő összes elem a hozzá tartozó dokumentációra hivatkozik.
 
 | Parancs | Megjegyzések |
 |---|---|
-| [az acs-skála](/cli/azure/acs#scale) | Az ACS-fürt méretezése. |
+| [az acs scale](/cli/azure/acs#az_acs_scale) | Egy ACS-fürt méretezése. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-További információ az Azure parancssori felület: [Azure CLI dokumentáció](https://docs.microsoft.com/cli/azure/overview).
+Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](https://docs.microsoft.com/cli/azure/overview).
 
-További Azure-tároló szolgáltatás CLI parancsfájl minták megtalálhatók a [Azure Tárolószolgáltatás-dokumentáció](../cli-samples.md).
+További Azure Container Service CLI-példaszkripteket az [Azure Container Service dokumentációjában](../cli-samples.md) találhat.
 

@@ -15,11 +15,11 @@ ms.topic: get-started-article
 ms.date: 01/22/2018
 ms.author: spelluru
 robots: noindex
-ms.openlocfilehash: 20a2e50fa3e1f81655566d9dfd7fb0cc62a2844c
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 898d3a6fe7b3fa5be6f70eb2e0e7f3a48f82adef
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="tutorial-use-azure-resource-manager-template-to-create-a-data-factory-pipeline-to-copy-data"></a>Oktatóanyag: Azure Resource Manager-sablonok használata Data Factory-folyamatok létrehozására adatmásolás céljából 
 > [!div class="op_single_selector"]
@@ -340,7 +340,7 @@ Hozzon létre egy **ADFCopyTutorialARM-Parameters.json** elnevezésű JSON-fájl
 ## <a name="monitor-pipeline"></a>Folyamat figyelése
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) az Azure-fiókkal.
-2. A bal oldali menüben kattintson az **Adat-előállítók** lehetőségre (vagy) kattintson a **További szolgáltatások** **INTELLIGENCIA ÉS ELEMZÉS** kategóriájában található **Adat-előállítók** lehetőségre.
+2. A bal oldali menüben kattintson az **Adat-előállítók** lehetőségre (vagy) kattintson a **Minden szolgáltatás** **INTELLIGENCIA ÉS ELEMZÉS** kategóriájában található **Adat-előállítók** lehetőségre.
    
     ![Adat-előállítók menü](media/data-factory-copy-activity-tutorial-using-azure-resource-manager-template/data-factories-menu.png)
 3. Az **Adat-előállítók** lapon keressen rá az adat-előállítóra (AzureBlobToAzureSQLDatabaseDF). 

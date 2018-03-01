@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 03/21/2017
 ms.author: edmaca
-ms.openlocfilehash: 2722a2d72ed90ea0005362563ecaee30750c040a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ad5316add4b7806a03e777aee1757841ed866070
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-azure-portal"></a>Az Azure Data Lake Analytics használatának első lépései az Azure Portallal
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
@@ -34,7 +34,7 @@ Az oktatóanyag elindításához **Azure-előfizetéssel** kell rendelkeznie. L�
 A következő lépésben egyidejűleg hozhat létre fiókot a Data Lake Analytics és a Data Lake Store szolgáltatáshoz.  Ez az egyszerű lépés csupán 60 másodpercet vesz igénybe.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. Kattintson az **Új** >  **Adatok + analitika** > **Data Lake Analytics** elemre.
+2. Kattintson az **Erőforrás létrehozása** >  **Adatok + analitika** > **Data Lake Analytics** elemre.
 3. Adja meg az alábbi elemek értékeit:
    * **Név**: Nevezze el a Data Lake Analytics-fiókot (kizárólag kisbetűk és számok használhatók).
    * **Előfizetés:** Válassza ki az Analytics-fiókhoz használt Azure-előfizetést.
@@ -42,7 +42,7 @@ A következő lépésben egyidejűleg hozhat létre fiókot a Data Lake Analytic
    * **Hely**. Válasszon egy Azure-adatközpontot az Azure Data Lake Analytics-fiókhoz.
    * **Data Lake Store**: Az útmutatót követve hozzon létre egy új Data Lake Store-fiókot, vagy válasszon ki egy már meglévőt. 
 4. Igény szerint tarifacsomagot is választhat a Data Lake Analytics-fiókhoz.
-5. Kattintson a **Létrehozás** gombra. 
+5. Kattintson a **Create** (Létrehozás) gombra. 
 
 
 ## <a name="your-first-u-sql-script"></a>Az első U-SQL-szkript
@@ -71,7 +71,7 @@ OUTPUT @a
 5. Sikertelen művelet esetén lásd: [Data Lake Analytics-feladatok figyelése és hibaelhárítása](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md).
 6. Kattintson a **Kimenet** fülre, majd a `data.csv` elemre. 
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
 * Ismerkedés a U-SQL-alkalmazások fejlesztésével: [Develop U-SQL scripts using Data Lake Tools for Visual Studio](data-lake-analytics-data-lake-tools-get-started.md) (U-SQL-parancsfájlok fejlesztése a Data Lake Tools for Visual Studio használatával).
 * A U-SQL nyelv megismerése: [Get started with Azure Data Lake Analytics U-SQL language](data-lake-analytics-u-sql-get-started.md) (Ismerkedés az Azure Data Lake Analytics U-SQL nyelvével).

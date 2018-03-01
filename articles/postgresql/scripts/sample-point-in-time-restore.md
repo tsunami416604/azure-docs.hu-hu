@@ -1,48 +1,48 @@
 ---
-title: "Az Azure CLI-parancsfájlt: egy PostgreSQL-kiszolgálóhoz tartozó Azure-adatbázis visszaállítása"
-description: "A parancsfájlpéldát Azure parancssori felület egy MySQL-kiszolgálóhoz tartozó Azure-adatbázis és az adatbázisok visszaállítása egy korábbi időpontra időben jeleníti meg."
+title: "Azure CLI-szkript: Azure Database for PostgreSQL-kiszolgáló visszaállítása"
+description: "Ez az Azure CLI-példaszkript bemutatja egy Azure Database for MySQL-kiszolgáló és a hozzá tartozó adatbázisok visszaállítását egy korábbi időpontra."
 services: postgresql
 author: v-chenyh
 ms.author: v-chenyh
 manager: jhubbard
 editor: jasonwhowell
-ms.service: postgresql-database
+ms.service: postgresql
 ms.devlang: azure-cli
 ms.topic: sample
 ms.custom: mvc
 ms.date: 01/12/2018
-ms.openlocfilehash: dfc53ae10055b0e8583fb0c705e605bbbb999760
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
-ms.translationtype: MT
+ms.openlocfilehash: 242dd836a629d3accd0c43a72b4549e93145168f
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 02/01/2018
 ---
-# <a name="restore-an-azure-database-for-postgresql-server-using-azure-cli"></a>Egy Azure parancssori felület használatával PostgreSQL-kiszolgálóhoz tartozó Azure-adatbázis visszaállítása
-A parancsfájlpéldát CLI időben PostgreSQL-kiszolgáló egy Azure-adatbázis visszaállítása egy korábbi időpontra.
+# <a name="restore-an-azure-database-for-postgresql-server-using-azure-cli"></a>Azure Database for PostgreSQL-kiszolgáló visszaállítása az Azure CLI használatával
+Ez az Azure CLI-példaszkript visszaállít egy Azure Database for PostgreSQL-kiszolgálót egy korábbi időpontra.
 
 [!INCLUDE [cloud-shell-try-it](../../../includes/cloud-shell-try-it.md)]
 
-Ha telepítése és a parancssori felület helyileg használata mellett dönt, ez a minta van szükség, hogy az Azure parancssori felület verzióját futtatja, 2.0-s vagy újabb. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli). 
+Ha a parancssori felület helyi telepítése és használata mellett dönt, a példában leírt lépésekhez az Azure CLI 2.0-s vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli). 
 
-## <a name="sample-script"></a>Mintaparancsfájl
-Ez a parancsfájlpélda módosítsa a kijelölt sorok testre szabhatja a rendszergazda felhasználónevét és jelszavát. Cserélje le a saját előfizetés-azonosító. az-figyelő utasítással használt előfizetés-azonosító
+## <a name="sample-script"></a>Példaszkript
+A példaszkriptben módosítsa a kiemelt sorokat, és adja meg azokban a rendszergazdai felhasználónevét és jelszavát. Cserélje le az „az monitor”-parancsokban használt előfizetés-azonosítót a saját előfizetés-azonosítójára.
 [!code-azurecli-interactive[main](../../../cli_scripts/postgresql/backup-restore/backup-restore.sh?highlight=15-16 "Restore Azure Database for PostgreSQL.")]
 
 ## <a name="clean-up-deployment"></a>Az üzemelő példány eltávolítása
-A parancsfájl-minta futtatása után a következő parancs segítségével távolítsa el az erőforráscsoportot és a vele társított összes erőforrást.
+A példaszkript futtatása után a következő paranccsal távolítható el az erőforráscsoport és az összes ahhoz kapcsolódó erőforrás.
 [!code-azurecli-interactive[main](../../../cli_scripts/postgresql/backup-restore/delete-postgresql.sh  "Delete the resource group.")]
 
-## <a name="script-explanation"></a>Parancsfájl ismertetése
-A parancsfájl a következő parancsokat. Minden egyes parancsa a tábla-parancs adott dokumentációjára mutató hivatkozásokat.
+## <a name="script-explanation"></a>Szkript ismertetése
+A szkript a következő parancsokat használja. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
-| **A parancs** | **Megjegyzések** |
+| **Parancs** | **Megjegyzések** |
 |---|---|
-| [az csoport létrehozása](/cli/azure/group#az_group_create) | Az összes erőforrás tároló erőforrás csoportot hoz létre. |
-| [az postgresql-kiszolgáló létrehozása](/cli/azure/postgresql/server#az_msql_server_create) | Az adatbázisokat üzemeltető PostgreSQL-kiszolgáló létrehozása. |
-| [az postgresql-kiszolgálójának visszaállítását](/cli/azure/postgresql/server#az_msql_server_restore) | A kiszolgáló helyreállítása biztonsági másolatból. |
-| [az csoport törlése](/cli/azure/group#az_group_delete) | Egy olyan erőforráscsoport, beleértve az összes beágyazott erőforrások törlése. |
+| [az group create](/cli/azure/group#az_group_create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
+| [az postgresql server create](/cli/azure/postgresql/server#az_msql_server_create) | Létrehoz egy PostgreSQL-kiszolgálót, amelyen az adatbázisok futnak. |
+| [az postgresql server restore](/cli/azure/postgresql/server#az_msql_server_restore) | Visszaállít egy kiszolgálót egy biztonsági másolatból. |
+| [az group delete](/cli/azure/group#az_group_delete) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 
 ## <a name="next-steps"></a>További lépések
-- További információt az Azure parancssori felület: [Azure CLI dokumentáció](/cli/azure/overview).
-- Próbálja meg a további parancsfájlok: [PostgreSQL Azure-adatbázis Azure CLI-minták](../sample-scripts-azure-cli.md)
-- [Biztonsági mentése és visszaállítása egy kiszolgálóhoz az Azure-adatbázis az Azure portál használatával PostgreSQL](../howto-restore-server-portal.md)
+- Az Azure parancssori felületével kapcsolatos további információért tekintse meg az [Azure CLI dokumentációját](/cli/azure/overview).
+- További szkripteket [az Azure Database for PostgreSQL-hez készült Azure CLI-példák](../sample-scripts-azure-cli.md) között találhat.
+- [Egy Azure Database for PostgreSQL-kiszolgáló biztonsági mentése és visszaállítása az Azure Portal használatával](../howto-restore-server-portal.md)

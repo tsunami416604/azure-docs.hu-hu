@@ -1,6 +1,6 @@
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. Kattintson az **Új**, a **Web + Mobil**, majd a **Mobile Engagement** elemre.
+2. Kattintson az **Erőforrás létrehozása**, a **Web + Mobil**, majd a **Mobile Engagement** elemre.
    
     ![](./media/mobile-engagement-create-app-in-portal-new/browse-azme-extension.png)
 3. A megjelenő **Új Mobile Engagement-alkalmazáskatalógus** panelen egy alkalmazáskatalógust hozhat létre. Adja meg a következő információkat:
