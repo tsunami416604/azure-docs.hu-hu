@@ -15,11 +15,11 @@ ms.topic: get-started-article
 ms.date: 11/14/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2e1b5ae05429cba34e3ea71f95414417bffd99a6
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 5efe804806cb9c14a483e7393f0e8202897d53d6
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-a-batch-account-with-the-azure-portal"></a>Batch-fiók létrehozása az Azure Portalon
 
@@ -41,7 +41,7 @@ További ismereteket a Batch-fiókokról és -forgatókönyvekről a [funkciók 
 > Egy Batch-fiók létrehozásakor általában érdemes az alapértelmezett **Batch szolgáltatás** módot választani, amelynek keretében a készleteket a rendszer a háttérben foglalja le az Azure által felügyelt előfizetésekben. A szintén választható **felhasználói előfizetés** mód esetében, amelynek használata a legtöbb forgatókönyvben már nem javasolt, a Batch virtuális gépei és egyéb erőforrásai közvetlenül az előfizetésben jönnek létre egy készlet létrehozásakor. Ha felhasználói előfizetési módban szeretne létrehozni Batch-fiókot, az előfizetését az Azure Batchben is regisztrálnia kell, és egy Azure Key Vaulttal is társítania kell.
 
 1. Jelentkezzen be az [Azure Portalra][azure_portal].
-2. Kattintson az **Új** elemre, és keresse meg a Marketplace-en a **Batch szolgáltatást**.
+2. Kattintson az **Erőforrás létrehozása** elemre, és keresse meg a Marketplace-en a **Batch szolgáltatást**.
 
     ![Batch a Piactéren][marketplace_portal]
 3. Válassza ki a **Batch szolgáltatást**, kattintson a **Létrehozás** elemre, majd adja meg az **Új Batch-fiók** beállításait. Lásd az alábbi részleteket.

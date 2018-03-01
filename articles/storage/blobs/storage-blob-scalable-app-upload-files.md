@@ -1,85 +1,82 @@
 ---
-title: "Töltse fel a nagy adatmennyiségek véletlenszerű Azure Storage párhuzamosan |} Microsoft Docs"
-description: "Töltse fel a nagy adatmennyiségek véletlenszerű párhuzamosan egy Azure Storage-fiókot az Azure SDK használata"
+title: "Nagy mennyiségű véletlenszerű adat párhuzamos feltöltése az Azure Storage-ba | Microsoft Docs"
+description: "Ebből a cikkből megtudhatja, hogy az Azure SDK hogyan használható nagy mennyiségű véletlenszerű adat párhuzamos feltöltésére egy Azure Storage-fiókba"
 services: storage
-documentationcenter: 
-author: georgewallace
+author: tamram
 manager: jeconnoc
-editor: 
 ms.service: storage
 ms.workload: web
-ms.tgt_pltfrm: na
 ms.devlang: csharp
 ms.topic: tutorial
-ms.date: 12/12/2017
-ms.author: gwallace
+ms.date: 02/20/2018
+ms.author: tamram
 ms.custom: mvc
-ms.openlocfilehash: 98f3f69c6025d61caac20e13b573651854952432
-ms.sourcegitcommit: 4256ebfe683b08fedd1a63937328931a5d35b157
-ms.translationtype: MT
+ms.openlocfilehash: 39a48007bdcd055df4529074a67b5b8a6db2d8b4
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/23/2017
+ms.lasthandoff: 02/22/2018
 ---
-# <a name="upload-large-amounts-of-random-data-in-parallel-to-azure-storage"></a>Töltse fel a nagy adatmennyiségek véletlenszerű párhuzamosan az Azure storage
+# <a name="upload-large-amounts-of-random-data-in-parallel-to-azure-storage"></a>Nagy mennyiségű véletlenszerű adat párhuzamos feltöltése az Azure Storage-ba
 
-Ez az oktatóanyag a két egy sorozat része. Ez az oktatóanyag bemutatja, hogy az alkalmazás, amely nagy mennyiségű adatot véletlenszerű feltölt egy Azure storage-fiókot.
+Ez az oktatóanyag egy sorozat második része. Ez az oktatóanyag egy olyan alkalmazás üzembe helyezését mutatja be, amely nagy mennyiségű véletlenszerű adat feltöltését végzi egy Azure tárfiókba.
 
-A második rész a sorozat, megismerheti, hogyan:
+A sorozat második részében az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * A kapcsolati karakterlánc konfigurálása
-> * Az alkalmazás létrehozása
+> * Kapcsolati karakterlánc konfigurálása
+> * Az alkalmazás buildelése
 > * Az alkalmazás futtatása
-> * Ellenőrizze a kapcsolatok száma
+> * A kapcsolatok számának ellenőrzése
 
-Azure blob Storage tárolóban tárolja az adatokat egy méretezhető szolgáltatást biztosít. Annak érdekében, hogy az alkalmazás van, mint performant lehető, hogyan működik a blob storage ajánlott ismeretét. Az Azure-blobokat határértékeit ismerete fontos, ismerje meg, ezek a korlátozások bővebben látogasson el a: [blob storage méretezhetőségi célok](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#azure-blob-storage-scale-targets).
+Az Azure Blob Storage skálázható szolgáltatást biztosít adatainak tárolásához. Ahhoz, hogy az alkalmazás a lehető legjobb teljesítménnyel működhessen, ajánlatos megismerkedni a Blob Storage működésével. Fontos ismerni az Azure blobok korlátait, amelyekről további információt a [Blob Storage skálázhatósági céljait](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#azure-blob-storage-scale-targets) ismertető részben találhat.
 
-[Partíció elnevezési](../common/storage-performance-checklist.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#subheading47) van egy másik fontos tényező, egy nagy teljesítményű alkalmazás blobs használata tervezésekor. Az Azure storage egy tartomány-alapú particionálási sémát használja a méretezés és a terhelés elosztása. Ez a konfiguráció azt jelenti, hogy nyissa meg, hogy hasonló elnevezési konvenciókat vagy az előtagok fájlok egyazon partícióra kerüljenek. A működési elvet alatt feltölteni a fájlok a tároló nevét tartalmazza. Ebben az oktatóanyagban rendelkező GUID neveket is szerint véletlenszerűen generált tartalmat fájlok használata. Majd feltölti öt különböző tárolók véletlenszerű nevekkel.
+A [partíció elnevezése](../common/storage-performance-checklist.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#subheading47) is egy fontos szempont a nagy teljesítményű, blobokat használó alkalmazások tervezésekor. Az Azure Storage egy tartományalapú particionálási sémát használ a skálázáshoz és a terheléselosztáshoz. Ez a konfiguráció azt jelenti, hogy a hasonló elnevezési konvenciókkal vagy előtagokkal rendelkező fájlok ugyanarra a partícióra kerülnek. Ez a logika magában foglalja a tároló nevét, amelybe a fájlokat feltöltik. Ebben az oktatóanyagban olyan fájlokat használ, amelyek nevek helyett GUID-azonosítókkal, valamint véletlenszerűen létrehozott tartalmakkal rendelkeznek. Ezeket azután öt különböző, véletlenszerű nevű tárolóba töltjük fel.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag teljesítéséhez végrehajtotta az előző tárolási oktatóanyag: [hozzon létre egy virtuális gép és a méretezhető alkalmazások tárfiók][previous-tutorial].
+Az oktatóanyag teljesítéséhez el kell végeznie az előző tárolási oktatóanyagot: [Virtuális gép és tárfiók létrehozása skálázható alkalmazások számára][previous-tutorial].
 
-## <a name="remote-into-your-virtual-machine"></a>A virtuális géppé távoli
+## <a name="remote-into-your-virtual-machine"></a>A virtuális gép távoli vezérlése
 
-A helyi számítógépen a következő parancs segítségével hozzon létre egy távoli asztali munkamenetet a virtuális gép. Cserélje le a virtuális gép nyilvános IP-címét. Amikor a rendszer kéri, adja meg a virtuális gép létrehozásakor használt hitelesítő adatokat.
+Használja az alábbi parancsot a helyi gépén, ha egy távoli asztali kapcsolatot szeretne létrehozni a virtuális géphez. Cserélje le az IP-címet a virtuális gépe nyilvános IP-címére. Ha a rendszer erre kéri, adja meg a virtuális gép létrehozásakor használt hitelesítő adatokat.
 
 ```
 mstsc /v:<publicIpAddress>
 ```
 
-## <a name="configure-the-connection-string"></a>A kapcsolati karakterlánc konfigurálása
+## <a name="configure-the-connection-string"></a>Kapcsolati karakterlánc konfigurálása
 
-Az Azure portálon lépjen a tárfiókhoz. Válassza ki **hívóbetűk** alatt **beállítások** tárfiókba. Másolás a **kapcsolati karakterlánc** az az elsődleges vagy másodlagos kulcsot. Jelentkezzen be a virtuális gép az előző oktatóanyag létrehozott. Nyissa meg a **parancssor** rendszergazdaként, futtassa a `setx` parancsot a `/m` kapcsoló, a parancs menti egy gép beállítást környezeti változót. A környezeti változó nem érhető el, amíg Ön töltse be újra a **parancssor**. Cserélje le  **\<storageConnectionString\>**  a következő mintában:
+Az Azure Portalon lépjen a tárfiókra. Válassza a **Hozzáférési kulcsok** lehetőséget a tárfiók **Beállítások** területén. Másolja ki az elsődleges vagy a másodlagos kulcs **kapcsolati karakterláncát**. Jelentkezzen be az előző oktatóanyagban létrehozott virtuális gépbe. Nyissa meg rendszergazdaként a **parancssort** és futtassa a `setx` parancsot a `/m` kapcsolóval. Ez a parancs egy gépbeállításhoz tartozó környezeti változó értékét menti. A környezeti változó nem érhető el, amíg újra be nem tölti a **parancssort**. Cserélje le a **\<storageConnectionString\>** kifejezést a következő mintában:
 
 ```
 setx storageconnectionstring "<storageConnectionString>" /m
 ```
 
-Amikor befejeződött, nyissa meg a másik **parancssor**, keresse meg `D:\git\storage-dotnet-perf-scale-app` és írja be `dotnet build` hozható létre az alkalmazás.
+Ha végzett, nyissa meg újból a **parancssort**, lépjen be a `D:\git\storage-dotnet-perf-scale-app` mappába, és gépelje be a következő parancsot az alkalmazás buildeléséhez: `dotnet build`.
 
 ## <a name="run-the-application"></a>Az alkalmazás futtatása
 
-Navigáljon a `D:\git\storage-dotnet-perf-scale-app`.
+Nyissa meg a `D:\git\storage-dotnet-perf-scale-app` címet.
 
-Típus `dotnet run` az alkalmazás futtatásához. Az első futtatásakor `dotnet` feltölt a helyi csomag gyorsítótár visszaállítási sebesség növelése és a kapcsolat nélküli hozzáférés engedélyezése. Ez a parancs végrehajtásához egy percre foglal, és csak egyszer történik.
+Az alkalmazás futtatásához írja be a következőt: `dotnet run`. A `dotnet` parancs első futtatásakor feltölti a helyi csomaggyorsítótárat, hogy javítsa a visszaállítási sebességet és, hogy offline hozzáférést tegyen lehetővé. A parancs végrehajtása akár egy percet is igénybe vehet, és csak egyszer kell végrehajtani.
 
 ```
 dotnet run
 ```
 
-Az alkalmazás öt véletlenszerűen tárolók hoz létre, és megkezdi az átmeneti könyvtárban található fájlok feltöltése a tárfiókba. Az alkalmazás 100 állítja a minimális szálak és a [DefaultConnectionLimit](https://msdn.microsoft.com/library/system.net.servicepointmanager.defaultconnectionlimit(v=vs.110).aspx) 100 használatával biztosítható, hogy számos egyidejű kapcsolatok mikor engedélyezése az alkalmazás futtatása.
+Az alkalmazás öt, véletlenszerűen elnevezett tárolót hoz létre, és megkezdi az átmeneti könyvtárban lévő fájlok feltöltését a tárfiókba. Az alkalmazás a szálak minimális számát 100-ra állítja, a [DefaultConnectionLimit](https://msdn.microsoft.com/library/system.net.servicepointmanager.defaultconnectionlimit(v=vs.110).aspx) változó értékét pedig 100-ra annak érdekében, hogy az alkalmazás futtatása közben nagy számú párhuzamosan futó kapcsolat legyen futtatható.
 
-Szálkezelési és a kapcsolat korlátbeállításai mellett a [BlobRequestOptions](/dotnet/api/microsoft.windowsazure.storage.blob.blobrequestoptions?view=azure-dotnet) a a [UploadFromStreamAsync](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblockblob.uploadfromstreamasync?view=azure-dotnet) metódus párhuzamossági használja, és tiltsa le az MD5 kivonatoló érvényesítése vannak konfigurálva. A fájlok feltöltése a 100 MB-os blokkok, ez a konfiguráció jobb teljesítményt nyújt, de lehet, hogy költséges használata egy rosszul végrehajtása hálózati, mintha az egész 100 MB-os letiltása sikertelen. a rendszer ismét megkísérli.
+A szálkezelési és a kapcsolati korlátozások beállításán felül az [UploadFromStreamAsync](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblockblob.uploadfromstreamasync?view=azure-dotnet) metódus [BlobRequestOptions](/dotnet/api/microsoft.windowsazure.storage.blob.blobrequestoptions?view=azure-dotnet) beállítása úgy van konfigurálva, hogy párhuzamosságot használjon és letiltsa az MD5-kivonat érvényesítését. A fájlok feltöltése 100 MB méretű blokkokban történik. Ez a konfiguráció jobb teljesítményt biztosít, a használata azonban gyengén teljesítő hálózaton nem ajánlott, mert hiba esetén a teljes 100 MB-os blokk feltöltését újra kell kezdeni.
 
 |Tulajdonság|Érték|Leírás|
 |---|---|---|
-|[ParallelOperationThreadCount](/dotnet/api/microsoft.windowsazure.storage.blob.blobrequestoptions.paralleloperationthreadcount?view=azure-dotnet)| 8| A beállítás feltöltésekor a rendszer blokkolja bontja a blob. A legnagyobb teljesítmény érdekében ezt az értéket magok száma 8 alkalommal kell lennie. |
-|[DisableContentMD5Validation](/dotnet/api/microsoft.windowsazure.storage.blob.blobrequestoptions.disablecontentmd5validation?view=azure-dotnet)| igaz| Ez a tulajdonság letiltja az MD5 kivonatoló feltöltött tartalmat ellenőrzése. Gyorsabb átvitelt letiltja az MD5 ellenőrzést hoz létre. Azonban nem erősíti meg a érvényességi vagy a átvitt fájlok integritásában.   |
-|[StorBlobContentMD5](/dotnet/api/microsoft.windowsazure.storage.blob.blobrequestoptions.storeblobcontentmd5?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_StoreBlobContentMD5)| false| Ez a tulajdonság határozza meg, ha az MD5 kivonatoló kiszámítása és a fájl tárolja.   |
-| [A RetryPolicy](/dotnet/api/microsoft.windowsazure.storage.blob.blobrequestoptions.retrypolicy?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_RetryPolicy)| 2 másodperces leállítási 10 maximális ismételt próbálkozás után |Meghatározza, hogy a kérelmek az újrapróbálkozási házirendet. Kapcsolódási hibák újra, akkor a ebben a példában egy [ExponentialRetry](/dotnet/api/microsoft.windowsazure.storage.retrypolicies.exponentialretry?view=azure-dotnet) konfigurálta a 2-második leállásait és 10 az újrapróbálkozások maximális számát. Ez a beállítás akkor fontos, amikor az alkalmazás lekérdezi megközelíti a elérte-e a [blob storage méretezhetőségi célok](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#azure-blob-storage-scale-targets).  |
+|[ParallelOperationThreadCount](/dotnet/api/microsoft.windowsazure.storage.blob.blobrequestoptions.paralleloperationthreadcount?view=azure-dotnet)| 8| A beállítás feltöltéskor blokkokra töri a blobot. A legjobb teljesítmény érdekében ennek az értéknek a magok számának 8-szorosának kell lennie. |
+|[DisableContentMD5Validation](/dotnet/api/microsoft.windowsazure.storage.blob.blobrequestoptions.disablecontentmd5validation?view=azure-dotnet)| true| Ez a tulajdonság letiltja a feltöltött tartalom MD5-kivonat ellenőrzését. A gyorsabb átvitel érdekében tiltsa le az MD5-ellenőrzést. Így azonban nem biztosított a folyamatban lévő átvitelben érintett fájlok érvényessége vagy integritása.   |
+|[StorBlobContentMD5](/dotnet/api/microsoft.windowsazure.storage.blob.blobrequestoptions.storeblobcontentmd5?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_StoreBlobContentMD5)| false| Ez a tulajdonság határozza meg, hogy az MD5 kivonatoló kiszámítása és fájlban való tárolása megtörtént-e.   |
+| [RetryPolicy](/dotnet/api/microsoft.windowsazure.storage.blob.blobrequestoptions.retrypolicy?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_RetryPolicy)| 2-second backoff with 10 max retry |A kérések újrapróbálkozási szabályzatát határozza meg. Kapcsolódási hiba esetén a rendszer újra próbálkozik, ebben a példában az [ExponentialRetry](/dotnet/api/microsoft.windowsazure.storage.retrypolicies.exponentialretry?view=azure-dotnet) szabályzat 2 másodperces leállításra és legfeljebb 10 újrapróbálkozásra van konfigurálva. Ez a beállítás akkor fontos, ha az alkalmazás lassan eléri a [blob storage skálázhatósági célértékét](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#azure-blob-storage-scale-targets).  |
 
-A `UploadFilesAsync` feladat a következő példa látható:
+A következő példában az `UploadFilesAsync` feladat látható:
 
 ```csharp
 private static async Task UploadFilesAsync()
@@ -156,7 +153,7 @@ private static async Task UploadFilesAsync()
 }
 ```
 
-A következő példa egy olyan csonkolt alkalmazás kimenet, a Windows rendszeren futó.
+Az alábbi példa a Windowson futtatott alkalmazás kimenetének egy része.
 
 ```
 Created container https://mystorageaccount.blob.core.windows.net/9efa7ecb-2b24-49ff-8e5b-1d25e5481076
@@ -177,7 +174,7 @@ Upload has been completed in 142.0429536 seconds. Press any key to continue
 
 ### <a name="validate-the-connections"></a>A kapcsolatok ellenőrzése
 
-Amíg a fájlok feltöltése a tárfiókhoz ellenőrizheti létesített egyidejű kapcsolatok számát. Nyissa meg a **parancssor** és típus `netstat -a | find /c "blob:https"`. Ez a parancs megjeleníti az éppen megnyitott használatával kapcsolatok számát `netstat`. A következő példa bemutatja egy hasonló kimeneti látottaknak futtatásakor az oktatóanyag magát. A példában látható, mivel volt 800 kapcsolatok, nyissa meg, ha a véletlenszerű fájlok feltöltése a tárfiókba. Ez az érték egész fut a feltöltés módosítja. A párhuzamos blokk adattömbök feltöltésével jóval kevesebb a tartalom átviteléhez szükséges időt.
+A fájlok feltöltése közben ellenőrizheti a tárfiók egyidejű kapcsolatainak számát. Nyissa meg a **parancssort**, és írja be a `netstat -a | find /c "blob:https"` parancsot. Ez a parancs a `netstat` használatával mutatja a jelenleg megnyitott kapcsolatok számát. A következő példa egy ahhoz hasonló kimenetet mutat be, mint amit akkor láthat, ha saját maga futtatja az oktatóanyagot. Ahogy a példában látható, 800 kapcsolat volt megnyitva a fájlok tárfiókba történő véletlenszerű feltöltése közben. Ez az érték a feltöltés futtatása során folyamatosan változik. Blokkrészek párhuzamos feltöltésével a tartalmak áthelyezéséhez szükséges idő jelentősen csökken.
 
 ```
 C:\>netstat -a | find /c "blob:https"
@@ -188,17 +185,17 @@ C:\>
 
 ## <a name="next-steps"></a>További lépések
 
-Az adatsorozat két részén megismerte nagy adatmennyiségek véletlenszerű feltöltése a tárfiókba párhuzamosan, például hogy miként:
+A sorozat második részében megismerkedett a nagy mennyiségű véletlenszerű adat tárfiókba történő párhuzamos feltöltésével, többek között a következőkkel:
 
 > [!div class="checklist"]
-> * A kapcsolati karakterlánc konfigurálása
-> * Az alkalmazás létrehozása
+> * Kapcsolati karakterlánc konfigurálása
+> * Az alkalmazás buildelése
 > * Az alkalmazás futtatása
-> * Ellenőrizze a kapcsolatok száma
+> * A kapcsolatok számának ellenőrzése
 
-Előzetes a nagy mennyiségű adat letöltését a tárfiók adatsorozat három részét.
+A sorozat harmadik részében nagy mennyiségű adatot fog letölteni egy tárfiókból.
 
 > [!div class="nextstepaction"]
-> [Nagy mennyiségű tárfiókba párhuzamosan nagy fájlok feltöltése](storage-blob-scalable-app-download-files.md)
+> [Nagy mennyiségű nagyméretű fájl párhuzamos feltöltése egy tárfiókba](storage-blob-scalable-app-download-files.md)
 
 [previous-tutorial]: storage-blob-scalable-app-create-vm.md

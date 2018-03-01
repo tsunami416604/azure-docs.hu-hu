@@ -15,11 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 01/08/2018
 ms.author: owend
-ms.openlocfilehash: 3442de96f346ef211672064584700a7ce183d929
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: 251795f394d30418e1c03ec7b92fec40a75b2c3d
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="deploy"></a>Üzembe helyezés
 
@@ -28,7 +28,7 @@ Ebben a leckében az üzembehelyezési tulajdonságokat fogja konfigurálni: meg
 A lecke elvégzésének várható időtartama: **5 perc**  
   
 ## <a name="prerequisites"></a>Előfeltételek  
-Ez a témakör a táblázatos modellezéssel foglalkozó oktatóanyag részét képezi, amelyet a megfelelő sorrendben kell elvégezni. A jelen leckében található feladatok végrehajtása előtt be kell fejeznie az előző leckét ([12. lecke: Elemzés az Excelben](../tutorials/aas-lesson-12-analyze-in-excel.md)).  
+Ez a cikk a táblázatos modellezéssel foglalkozó oktatóanyag részét képezi, amelyet a megfelelő sorrendben kell elvégezni. A jelen leckében található feladatok végrehajtása előtt be kell fejeznie az előző leckét ([12. lecke: Elemzés az Excelben](../tutorials/aas-lesson-12-analyze-in-excel.md)).  
 
 > [!IMPORTANT]  
 > Ahhoz, hogy üzembe helyezést végezhessen a távoli Analysis Services-kiszolgálón, [rendszergazdai jogosultságokkal](../analysis-services-server-admins.md) kell rendelkeznie.  
@@ -67,6 +67,9 @@ Ez a témakör a táblázatos modellezéssel foglalkozó oktatóanyag részét k
   
 3. Miután az üzembe helyezés sikeresen befejeződött, nyugodtan kattintson a **Bezárás** gombra.  
   
+
+Ez a lecke a táblázatos modell az SSDT-ből történő üzembe helyezésének leggyakoribb és legegyszerűbb módszerét ismerteti. A speciális üzembehelyezési lehetőségek, például az üzembehelyezési varázsló, illetve az XMLA és AMO használatával végzett automatizálás nagyobb rugalmasságot és egységességet kínálnak, valamint lehetővé teszik az üzembe helyezések ütemezését. További tudnivalók: [Táblázatosmodell-megoldások üzembe helyezése](https://docs.microsoft.com/sql/analysis-services/tabular-models/tabular-model-solution-deployment-ssas-tabular).
+
 ## <a name="conclusion"></a>Összegzés  
 Gratulálunk! Végzett az első Analysis Services-beli táblázatos modellje elkészítésével és üzembe helyezésével. Ez az oktatóanyag végigvezette a táblázatos modellek létrehozásával kapcsolatos leggyakoribb feladatokon. Most, hogy az Adventure Works internetes értékesítési modell üzembe lett helyezve, az SQL Server Management Studio segítségével felügyelheti azt – létrehozhat feldolgozási szkripteket és egy biztonsági mentési tervet. Most már a felhasználók is kapcsolódhatnak a modellhez jelentéskészítő ügyfélalkalmazások útján (pl.: Microsoft Excel vagy Power BI).  
 

@@ -17,11 +17,11 @@ ms.workload: Active
 ms.date: 11/17/2017
 ms.author: cakarst
 ms.reviewer: barbkess
-ms.openlocfilehash: a1f504f5bb728ce080e51678d44ed4eef4c3faa7
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 4bb9b4a01d3efb90486e34d2b0eb5cfeef66e50c
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="tutorial-use-polybase-to-load-data-from-azure-blob-storage-to-azure-sql-data-warehouse"></a>Oktatóanyag: Adatok betöltése az Azure Blob Storage-ból az Azure SQL Data Warehouse-ba a PolyBase használatával.
 
@@ -54,7 +54,7 @@ Az Azure SQL Data Warehouse [számítási erőforrások](performance-tiers.md) e
 
 Kövesse az alábbi lépéseket egy üres SQL-adattárház létrehozásához. 
 
-1. Kattintson az Azure Portal bal felső sarkában az **Új** gombra.
+1. Kattintson az Azure Portal bal felső sarkában található **Erőforrás létrehozása** gombra.
 
 2. Az **Új** oldalon válassza az **Adatbázisok** elemet, majd az **Új **oldal** Kiemelt **területén válassza az** SQL Data Warehouse** lehetőséget.
 

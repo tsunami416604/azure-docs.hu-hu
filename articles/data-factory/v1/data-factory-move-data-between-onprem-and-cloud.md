@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: e326a512bdb9c30068845b51e86795a410e6c9b3
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 49683da9f03871cbe5c27dd06d27111864eb489e
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="move-data-between-on-premises-sources-and-the-cloud-with-data-management-gateway"></a>Adatok áthelyezése a helyszíni adatforrások és az adatkezelési átjáró a felhő között
 > [!NOTE]
@@ -55,7 +55,7 @@ Ez a forgatókönyv megkezdése előtt rendelkeznie kell a következő előfelt�
 Ebben a lépésben az Azure Data Factory nevű példány létrehozásához használhatja az Azure-portálon **ADFTutorialOnPremDF**.
 
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
-2. Kattintson a **+ új**, kattintson a **Eszközintelligencia + analitika**, és kattintson a **adat-előállító**.
+2. Kattintson a **hozzon létre egy erőforrást**, kattintson a **Eszközintelligencia + analitika**, és kattintson **adat-előállító**.
 
    ![New (Új)->DataFactory](./media/data-factory-move-data-between-onprem-and-cloud/NewDataFactoryMenu.png)  
 3. Az a **új adat-előállító** lapján adja meg **ADFTutorialOnPremDF** nevét.
@@ -131,7 +131,7 @@ Ebben a lépésben az Azure Data Factory nevű példány létrehozásához haszn
    * **Frissítések ütemezése** telepíteni kell a nap adott időpontban.
    * Ha az átjáró megtekintése **utolsó frissítés**.
    * Adja meg, amelyen az átjáró frissítése telepíthető időpontját.
-8. Váltás a **beállítások** fülre. A megadott tanúsítvány a **tanúsítvány** szakasz titkosítása/visszafejtése a hitelesítő adatokat a helyszíni adattároló meg a portál használatával. (választható) Kattintson a **módosítás** használhatja saját tanúsítvány is. Alapértelmezés szerint az átjáró a Data Factory szolgáltatásnak automatikusan létrehozza a tanúsítványt használja.
+8. Váltson a **Settings** (Beállítások) lapra. A megadott tanúsítvány a **tanúsítvány** szakasz titkosítása/visszafejtése a hitelesítő adatokat a helyszíni adattároló meg a portál használatával. (választható) Kattintson a **módosítás** használhatja saját tanúsítvány is. Alapértelmezés szerint az átjáró a Data Factory szolgáltatásnak automatikusan létrehozza a tanúsítványt használja.
 
     ![Átjáró tanúsítvány konfigurálása](./media/data-factory-move-data-between-onprem-and-cloud/gateway-certificate.png)
 

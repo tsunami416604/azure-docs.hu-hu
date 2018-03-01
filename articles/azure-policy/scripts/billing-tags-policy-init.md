@@ -1,6 +1,6 @@
 ---
-title: "Az Azure házirend json-mintát - számlázási címkéket házirend kezdeményezésére |} Microsoft Docs"
-description: "Ehhez json minta házirend szükséges értékeket a megadott kód költség center és a termék nevét."
+title: "Azure Policy JSON-példa – Számlázási címkék szabályzatának kezdeményezése | Microsoft Docs"
+description: "Ehhez a JSON-példaszabályzathoz a költséghely és a terméknév címkének a megadott értékekkel kell rendelkeznie."
 services: azure-policy
 documentationcenter: 
 author: bandersmsft
@@ -15,23 +15,23 @@ ms.workload:
 ms.date: 10/30/2017
 ms.author: banders
 ms.custom: mvc
-ms.openlocfilehash: decceb2acc11cc7b3457c6d9364d57ee9c252a4a
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
-ms.translationtype: MT
+ms.openlocfilehash: d9f964ed6d2f04898b649194d0824cb7f3c31e2d
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 02/09/2018
 ---
-# <a name="billing-tags-policy-initiative"></a>Számlázási címkék házirend kezdeményezés
+# <a name="billing-tags-policy-initiative"></a>Számlázási címkék szabályzatának kezdeményezése
 
-Ehhez házirend szükséges értékeket a megadott kód költség center és a termék nevét. Beépített házirendek vonatkoznak, és kényszerítse a szükséges címkéket használ. Megadhatja a szükséges értékeket a címkék.
+Ehhez a szabályzathoz a költséghely és a terméknév címkének a megadott értékekkel kell rendelkeznie. A példa beépített szabályzatokat használ a szükséges címkék hozzáadásához és előírásához. A címkék szükséges értékeit Ön adja meg.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="sample-template"></a>Minta sablon
+## <a name="sample-template"></a>Példasablon
 
 [!code-json[main](../../../policy-templates/samples/PolicyInitiatives/multiple-billing-tags/azurepolicyset.json "Billing Tags Policy Initiative")]
 
-A sablon használatával telepíthető a [Azure-portálon](#deploy-with-the-portal) vagy [PowerShell](#deploy-with-powershell).
+A sablon az [Azure Portal](#deploy-with-the-portal) vagy a [PowerShell](#deploy-with-powershell) használatával helyezhető üzembe.
 
 ## <a name="deploy-with-the-portal"></a>Üzembe helyezés a portállal
 
@@ -50,14 +50,35 @@ $policyset= New-AzureRmPolicySetDefinition -Name "multiple-billing-tags" -Displa
 New-AzureRmPolicyAssignment -PolicySetDefinition $policyset -Name <assignmentname> -Scope <scope>  -costCenterValue <required value for Cost Center tag> -productNameValue <required value for product Name tag>  -Sku @{"Name"="A1";"Tier"="Standard"}
 ```
 
-### <a name="clean-up-powershell-deployment"></a>PowerShell központi telepítés tisztítása
+### <a name="clean-up-powershell-deployment"></a>PowerShell-üzembehelyezés eltávolítása
 
-A következő parancsot az erőforráscsoport, virtuális gép és az összes kapcsolódó erőforrások eltávolítása.
+Az alábbi paranccsal eltávolítható az erőforráscsoport, a virtuális gép és az összes kapcsolódó erőforrás.
 
 ```powershell
 Remove-AzureRmResourceGroup -Name myResourceGroup
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="apply-tags-to-existing-resources"></a>Címkék hozzáadása meglévő erőforrásokhoz
 
-- További Azure csoportházirend-sablon minták erővel [sablonok Azure házirend](../json-samples.md).
+A szabályzatok hozzárendelését követően aktiválhat egy frissítést, amely az összes létező erőforráson alkalmazza a hozzáadott címkeszabályzatokat. A következő szkript minden egyéb címkét megőriz az erőforrásokon:
+
+```powershell
+$group = Get-AzureRmResourceGroup -Name "ExampleGroup" 
+
+$resources = Find-AzureRmResource -ResourceGroupName $group.ResourceGroupName 
+
+foreach($r in $resources)
+{
+    try{
+        $r | Set-AzureRmResource -Tags ($a=if($r.Tags -eq $NULL) { @{}} else {$r.Tags}) -Force -UsePatchSemantics
+    }
+    catch{
+        Write-Host  $r.ResourceId + "can't be updated"
+    }
+}
+```
+
+
+## <a name="next-steps"></a>További lépések
+
+- További Azure Policy-példasablonokért lásd az [Azure Policy-sablonok](../json-samples.md) témakörét.
