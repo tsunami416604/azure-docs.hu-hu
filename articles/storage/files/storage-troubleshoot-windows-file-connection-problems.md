@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: genli
-ms.openlocfilehash: 5aacc8a920c9343c5efa89128aabb1505fc2d9aa
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 073d163e139c9fd400e4b3177c26d4ddb6228ed0
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>A Windows Azure fájlok problémák megoldásához
 
@@ -141,7 +141,7 @@ A net use parancs perjellel (/) értelmezi a parancssori kapcsolót. Ha a felhas
 
 A probléma megoldásához használhatja az alábbi lépések egyikét:
 
-- Futtassa a következő PowerShell-parancsot:
+- Futtassa az alábbi PowerShell-parancsot:
 
   `New-SmbMapping -LocalPath y: -RemotePath \\server\share -UserName accountName -Password "password can contain / and \ etc" `
 
@@ -164,6 +164,12 @@ Használja az alábbi megoldások valamelyikét:
 
 -   Ugyanazzal a fiókkal, amely tartalmazza az alkalmazás csatlakoztathatja a meghajtót. Használhatja például a PsExec eszköz.
 - A tárfiók nevét és a kulcs továbbítja a felhasználó nevében, és a password paraméter a háló paranccsal.
+- A cmdkey paranccsal adja hozzá a hitelesítő adatokat a hitelesítőadat-kezelő. A szolgáltatás fiók környezetében, az interaktív bejelentkezési vagy runas használatával parancssorból ezt elvégezni.
+  
+  `cmdkey /add:<storage-account-name>.file.core.windows.net /user:AZURE\<storage-account-name> /pass:<storage-account-key>`
+- Képezze le a megosztást közvetlenül csatlakoztatott meghajtóbetűjel használata nélkül. Egyes alkalmazások esetleg nem csatlakozik újra, arra a meghajtóra megfelelően, megbízhatóbb a teljes UNC elérési úton keresztül lehet. 
+
+  `net use * \\storage-account-name.file.core.windows.net\share`
 
 Kövesse ezeket az utasításokat, miután nettó használja a rendszer és a hálózati szolgáltatás fiók futtatásakor fordulhat elő a következő hibaüzenet: "1312 rendszerhiba történt. A megadott bejelentkezési munkamenet nem létezik. Azt is, hogy már befejeződött." Ha ez történik, ügyeljen arra, hogy a felhasználónév nettó használata átadott tartományadatokat (például: "[tárfiók neve]. file.core.windows .net").
 
@@ -180,7 +186,7 @@ Fájl másolása a hálózaton keresztül, akkor először vissza kell fejtenie 
 
 - Használja a **/d másolása** parancsot. Lehetővé teszi a titkosított fájlokat, mint a célhely visszafejtet fájlokat menteni.
 - Állítsa be a következő beállításkulcsot:
-  - Elérési út = HKLM\Software\Policies\Microsoft\Windows\System
+  - Path = HKLM\Software\Policies\Microsoft\Windows\System
   - Értéktípus = DWORD
   - Name = CopyFileAllowDecryptedRemoteDestination
   - Érték = 1

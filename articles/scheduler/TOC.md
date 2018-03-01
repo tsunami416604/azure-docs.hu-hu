@@ -1,4 +1,4 @@
-
+# [A Scheduler dokumentációja](index.md)
 
 # Áttekintés
 ## [A Scheduler ismertetése](scheduler-intro.md)
@@ -24,7 +24,7 @@
 ## [Azure PowerShell](/powershell/module/azurerm.scheduler)
 ## [REST](/rest/api/scheduler)
 
-# Erőforrások
+# További források
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=monitoring-management)
 ## [MSDN-fórum](https://social.msdn.microsoft.com/Forums/home?forum=azurescheduler)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/scheduler/)

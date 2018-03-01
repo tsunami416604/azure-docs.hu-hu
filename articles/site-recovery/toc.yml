@@ -24,13 +24,13 @@
         - name: Az Azure előkészítése
           href: tutorial-prepare-azure.md
         - name: Helyszíni VMware előkészítése
-          href: tutorial-prepare-on-premises-vmware.md
+          href: vmware-azure-tutorial-prepare-on-premises.md
         - name: Vészhelyreállítás beállítása
-          href: tutorial-vmware-to-azure.md
+          href: vmware-azure-tutorial.md
         - name: Vészhelyreállítási próba végrehajtása
           href: tutorial-dr-drill-azure.md
         - name: Feladatátvétel és feladat-visszavétel futtatása
-          href: tutorial-vmware-to-azure-failover-failback.md
+          href: vmware-azure-tutorial-failover-failback.md
     - name: Hyper-V virtuális gépek
       items:
         - name: Az Azure előkészítése
@@ -50,9 +50,9 @@
         - name: Az Azure előkészítése helyszíni replikációhoz
           href: tutorial-prepare-azure.md
         - name: Helyszíni gépek áttelepítése az Azure-ba
-          href: tutorial-migrate-on-premises-to-azure.md
+          href: migrate-tutorial-on-premises-azure.md
         - name: AWS-példányok áttelepítése az Azure-ba
-          href: tutorial-migrate-aws-to-azure.md
+          href: migrate-tutorial-aws-azure.md
         - name: Azure-beli virtuális gépek migrálása másik régióba
           href: azure-to-azure-tutorial-migrate.md
 - name: Alapelvek
@@ -62,11 +62,11 @@
         - name: Azure-ról Azure-ra architektúra
           href: azure-to-azure-architecture.md
         - name: VMware-ről Azure-ra architektúra
-          href: concepts-vmware-to-azure-architecture.md
+          href: vmware-azure-architecture.md
         - name: Hyper-V-ről Azure-ra architektúra
           href: hyper-v-azure-architecture.md
         - name: Fizikairól Azure-ra architektúra
-          href: concepts-physical-to-azure-architecture.md
+          href: physical-azure-architecture.md
         - name: Hyper-V-ről másodlagos helyre architektúra
           href: hyper-v-vmm-architecture.md
     - name: Támogatási követelmények – mátrix
@@ -114,11 +114,11 @@
         - name: Azure-beli virtuális gépek vészhelyreállítása az Azure-ba való migrálás után
           href: azure-to-azure-replicate-after-migration.md
         - name: Fizikai kiszolgálók vészhelyreállítása az Azure-ba
-          href: tutorial-physical-to-azure.md
+          href: physical-azure-disaster-recovery.md
         - name: Hyper-V virtuális gépek vészhelyreállítása egy másodlagos helyre
           href: hyper-v-vmm-disaster-recovery.md
         - name: VMware virtuális gépek és fizikai kiszolgálók vészhelyreállítása másodlagos helyre
-          href: tutorial-vmware-to-vmware.md
+          href: vmware-physical-secondary-disaster-recovery.md
         - name: Vészhelyreállítási próba végrehajtása az Azure-ba
           href: site-recovery-test-failover-to-azure.md
         - name: Hyper-V virtuális gépek másodlagos helyre történő vészhelyreállítási gyakorlatának futtatása
@@ -236,7 +236,7 @@
         - name: Hyper-V-replikálás beállítása az Azure-ba (VMM nélkül) a PowerShell-lel
           href: hyper-v-azure-powershell-resource-manager.md
         - name: Hyper-V-replikálás beállítása az Azure-ba (VMM-el) a PowerShell-lel
-          href: site-recovery-vmm-to-azure-powershell-resource-manager.md
+          href: hyper-v-vmm-powershell-resource-manager.md
         - name: Hyper-V-replikálás beállítása másodlagos VMM-helyre a PowerShell-lel
           href: hyper-v-vmm-powershell-resource-manager.md
     - name: Számítási feladatok
@@ -290,7 +290,7 @@
         - name: Az Azure-ba történő feladatátadás problémái
           href: site-recovery-failover-to-azure-troubleshoot.md
         - name: A védelem újbóli beállításával és a feladat-visszavétellel kapcsolatos problémák
-          href: troubleshoot-failback-reprotect.md
+          href: vmware-azure-troubleshoot-failback-reprotect.md
         - name: Az Azure Site Recovery monitorozása
           href: site-recovery-monitor-and-troubleshoot.md
 - name: Referencia

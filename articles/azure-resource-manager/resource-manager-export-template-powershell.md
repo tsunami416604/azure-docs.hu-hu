@@ -11,28 +11,28 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/01/2017
+ms.date: 02/23/2018
 ms.author: tomfitz
-ms.openlocfilehash: 7543811eb9448222b6e7c266756e68debc7d54be
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a6e36e12717eea61477f55d2d98c00bff31ec643
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="export-azure-resource-manager-templates-with-powershell"></a>A PowerShell-lel Azure Resource Manager-sablonok exportálása
 
 A Resource Manager lehetővé teszi az előfizetéshez tartozó meglévő erőforrások Resource Manager-sablonjainak exportálását. Az így létrehozott sablon használatával megismerheti a sablonok szintaxisát, illetve igény szerint automatizálhatja a megoldás újbóli telepítését.
 
-Fontos megjegyezni, hogy sablonokat két különböző módon lehet exportálni:
+Fontos megjegyezni, hogy két különböző módon sablon exportálása:
 
-* Exportálhatja az üzembe helyezéshez is használt tényleges sablont. Ebben az esetben az exportált sablon pontosan úgy tartalmazza a különböző paramétereket és változókat, ahogy azok az eredeti sablonban szerepeltek. Ez a módszer akkor hasznos, ha egy sablon visszakeresését.
-* A másik megoldás, hogy úgy exportálja a sablont, hogy az az erőforráscsoport aktuális állapotát tükrözze. Ebben az esetben az exportált sablon nem az üzembe helyezéshez használt sablonon alapul. A rendszer ehelyett új sablont hoz létre az erőforráscsoport aktuális állapota alapján. Az exportált sablon számos nem módosítható értéket tartalmaz, és valószínűleg kevesebb paraméter található benne, mint amennyit általában használni szokott. Ez a módszer akkor hasznos, ha módosította az erőforráscsoportot. és most szeretne létrehozni egy sablont az így létrejött egyedi erőforráscsoport alapján.
+* Exportálhatja a **tényleges, a központi telepítéshez használt sablon**. Ebben az esetben az exportált sablon pontosan úgy tartalmazza a különböző paramétereket és változókat, ahogy azok az eredeti sablonban szerepeltek. Ez a módszer akkor hasznos, ha egy sablon visszakeresését.
+* A másik megoldás, hogy úgy exportálja a **létrejött sablont, hogy az az erőforráscsoport aktuális állapotát tükrözze**. Ebben az esetben az exportált sablon nem az üzembe helyezéshez használt sablonon alapul. Ehelyett az alkalmazás létrehozza a sablont, amely a "snapshot" vagy "Mentés" az erőforráscsoport. Az exportált sablon számos nem módosítható értéket tartalmaz, és valószínűleg kevesebb paraméter található benne, mint amennyit általában használni szokott. Ez a beállítás segítségével telepítse újra az erőforrásokat ugyanabban az erőforráscsoportban. Egy másik erőforráscsoport a sablon használatához, előfordulhat, hogy jelentősen módosítható.
 
-Ebben a témakörben mind a két megoldást bemutatjuk.
+Ez a cikk mindkét megközelítés jeleníti meg.
 
 ## <a name="deploy-a-solution"></a>A megoldás üzembe helyezéséhez
 
-A sablon exportálása mindkét megközelítés mutatja be, először egy megoldás telepítésére az előfizetéséhez. Ha már rendelkezik egy erőforráscsoportot az előfizetés az exportálni kívánt, nem rendelkeznek a megoldás üzembe helyezéséhez. Ez a cikk fennmaradó azonban ez a megoldás sablonját hivatkozik. A példaként megadott parancsfájlt a storage-fiók telepíti.
+A sablon exportálása mindkét megközelítés mutatja be, először egy megoldás telepítésére az előfizetéséhez. Ha már rendelkezik egy erőforráscsoportot az exportálni kívánt előfizetés, a megoldás üzembe helyezéséhez nincs. Ez a cikk többi azonban ez a megoldás sablonját hivatkozik. A példaként megadott parancsfájlt a storage-fiók telepíti.
 
 ```powershell
 New-AzureRmResourceGroup -Name ExampleGroup -Location "South Central US"
@@ -61,7 +61,7 @@ Nyissa meg a fájlt, és figyelje meg, hogy a rendszer a központi telepítéshe
 
 ## <a name="export-resource-group-as-template"></a>Erőforráscsoportok exportálása sablonként
 
-Helyett egy sablon fogadása az üzembe helyezési előzményeket, a sablont, amely az erőforráscsoport aktuális állapotát jeleníti meg használatával kérheti le a [Export-AzureRmResourceGroup](/powershell/module/azurerm.resources/export-azurermresourcegroup) parancsot. Ez a parancs használni, amikor sok módosításokat végzett az erőforráscsoporton, és nincs meglévő sablon jelenti. a módosításokat.
+Helyett egy sablon fogadása az üzembe helyezési előzményeket, a sablont, amely az erőforráscsoport aktuális állapotát jeleníti meg használatával kérheti le a [Export-AzureRmResourceGroup](/powershell/module/azurerm.resources/export-azurermresourcegroup) parancsot. Ez a parancs használni, amikor sok módosításokat végzett az erőforráscsoporton, és nincs meglévő sablon jelenti. a módosításokat. Az erőforráscsoport, amelyet felhasználhat az ugyanabban az erőforráscsoportban újratelepíteni pillanatképként szolgál. Az exportált sablon használata az egyéb megoldások, jelentősen módosítania kell azt.
 
 ```powershell
 Export-AzureRmResourceGroup -ResourceGroupName ExampleGroup
@@ -217,7 +217,7 @@ A sablon most a következőképpen néz ki:
 
 A módosított sablon újbóli.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Sablon exportálása a portál használatával kapcsolatos információkért lásd: [Azure Resource Manager-sablonok exportálása létező erőforrásokból](resource-manager-export-template.md).
 * Sablon paraméterek megadásához tekintse meg a [sablonok készítése](resource-group-authoring-templates.md#parameters).
 * Tippek az általános telepítési hibák feloldására, lásd: [hibaelhárítás általános az Azure-telepítés az Azure Resource Manager](resource-manager-common-deployment-errors.md).

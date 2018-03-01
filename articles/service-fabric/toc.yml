@@ -1,10 +1,11 @@
 - name: Service Fabric-dokumentáció
-  href: /azure/service-fabric
+  href: index.yml
 - name: Áttekintés
   items:
     - name: Mi a Service Fabric?
       href: service-fabric-overview.md
 - name: Gyors útmutatók
+  expanded: true
   items:
     - name: .NET-alkalmazás létrehozása
       href: service-fabric-quickstart-dotnet.md

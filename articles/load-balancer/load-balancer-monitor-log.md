@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 36b9379f88ce024c1dcbf9977a873d95076d10df
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4388a1e933a0ebf211b5a7621c74b0622be41a4c
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="log-analytics-for-azure-load-balancer"></a>Naplóelemzés az Azure Load Balancerhez
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 10/11/2017
 Segítségével különböző típusú naplók az Azure-ban kezelésére és hibaelhárítására terheléselosztók. Néhányat ezek a naplók a portálon keresztül is elérhetők. Minden naplók az Azure blob storage kicsomagolja, és különböző eszközök, például az Excel és a Power bi megtekintett. Többet tudhat meg az alábbi listában naplók különböző típusú.
 
 * **A naplók:** használható [Azure-beli Auditnaplók](../monitoring-and-diagnostics/insights-debugging-with-events.md) (korábbi nevén műveleti naplókat) összes művelet nem továbbíthatók a társított Azure-előfizetéseit, és azok állapotának megtekintése. Naplók alapértelmezés szerint engedélyezve vannak, és az Azure portálon is megtekinthetők.
-* **Eseménynaplók riasztási:** Ez a napló segítségével megtekintheti a riasztásokat rasied a terheléselosztó által. A load balancer állapota 5 percenként összegyűjtött. Ez a napló csak íródott, ha egy terhelés terheléselosztó figyelmeztetési esemény jelenik meg.
+* **Eseménynaplók riasztási:** használhatja ezt a naplót a terheléselosztó által kiváltott riasztások megtekintése. A load balancer állapota 5 percenként összegyűjtött. Ez a napló csak íródott, ha egy terhelés terheléselosztó figyelmeztetési esemény jelenik meg.
 * **Állapot-mintavételi naplók:** Ez a napló segítségével megtekintheti a állapotmintáihoz, például a háttér-készletben szereplő példányok, amelyek nem fogadnak kérések a terheléselosztó miatt állapota sikertelen mintavételek száma által észlelt problémákkal. Ez a napló írni, amikor a mintavételi állapota megváltozik.
 
 > [!IMPORTANT]
@@ -145,6 +145,6 @@ Szeretne csatlakozni a tárfiókhoz és a JSON naplóbejegyzéseket esemény és
 * [Megjelenítheti a Power BI az Azure-beli Auditnaplók](http://blogs.msdn.com/b/powerbi/archive/2015/09/30/monitor-azure-audit-logs-with-power-bi.aspx) blogbejegyzést.
 * [Megtekintése és elemzése a Power bi-ban és több Azure-beli Auditnaplók](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/) blogbejegyzést.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [A Load Balancer vizsgálatok ismertetése](load-balancer-custom-probe-overview.md)

@@ -12,15 +12,15 @@ ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 12/22/2017
+ms.date: 02/22/2018
 ms.author: ryanwi
-ms.openlocfilehash: 9d709a0ec2b7de985ac08fe9ee2935848e7a371c
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 01dd1900fe765618e5da20bd289b9c3a021ea9a3
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 02/27/2018
 ---
-# <a name="sfctl-partition"></a>sfctl partíció
+# <a name="sfctl-partition"></a>sfctl-partíció
 Lekérdezi és partíciók valamelyik szolgáltatás kezelése.
 
 ## <a name="commands"></a>Parancsok
@@ -48,7 +48,7 @@ Lekérdezi és partíciók valamelyik szolgáltatás kezelése.
 A megadott Service Fabric-partíción állapotának beolvasása.
 
 Lekérdezi a megadott partíció üzemállapotával kapcsolatos adatokat. Az EventsHealthStateFilter küldött, az állapota alapján a szolgáltatás állapotával kapcsolatos események gyűjtése szűréséhez használja.
-A ReplicasHealthStateFilter használatával szűrhetők a partíción ReplicaHealthState objektumok gyűjteménye. Javasoljuk, hogy a health Store adatbázisban nem létezik megadása esetén a parancsmagnak hibát ad vissza. .
+A ReplicasHealthStateFilter használatával szűrhetők a partíción ReplicaHealthState objektumok gyűjteménye. Javasoljuk, hogy a health Store adatbázisban nem létezik megadása esetén a parancsmagnak hibát ad vissza.
 
 ### <a name="arguments"></a>Argumentumok
 
@@ -101,7 +101,7 @@ Lekérdezi a Service Fabric-szolgáltatás partícióinak listáját. A s a Part
 
 |Argumentum|Leírás|
 | --- | --- |
-| – [szükséges] szolgáltatás azonosítója| A szolgáltatás identitásának. Ez általában az a teljes nevet, a szolgáltatás nélkül a "fabric:" URI-séma. 6.0-s verzió-től kezdődő, hierarchikus nevek vannak tagolva a "~" karakterrel. Például, ha a szolgáltatás neve "fabric://myapp/app1/svc1", a szolgáltatás identitás lenne "myapp ~ az app1 ~ svc1" 6.0 + és "myapp/app1/svc1" korábbi verzióiban.|
+| – [szükséges] szolgáltatás azonosítója| A szolgáltatás identitásának. Ez általában az a teljes nevet, a szolgáltatás nélkül a "fabric:" URI-séma. 6.0-s verzió-től kezdődő, hierarchikus nevek vannak tagolva a "~" karakterrel. Például, ha a szolgáltatás neve "fabric: / myapp/app1/svc1", a szolgáltatás identitás lenne "myapp ~ app1 ~ svc1" 6.0 + és "myapp/app1/svc1" a korábbi verziókban.|
 | ---folytatási| A folytatási támogatójogkivonat-paramétere a következő set eredmények beszerzésére szolgál.         Az eredményeket a rendszer egyetlen válasz nem férnek el a folytatási kód nem üres érték szerepel az API-t adott válaszokat. Ha ez az érték átadása a következő API-hívás, hogy az API-t az eredmények következő készletet ad vissza. Ha nincsenek további eredmények, majd az a folytatási kód nem tartalmaz értéket. Ez a paraméter értéke nem lehet URL-kódolású.|
 | – időtúllépés -t        | Időtúllépését másodpercben.  Alapértelmezett: 60.|
 
@@ -162,7 +162,7 @@ Azt jelzi, hogy a Service Fabric-fürt, hogy kell-e megpróbálni helyreállíta
 ## <a name="sfctl-partition-restart"></a>sfctl partíció újraindítása
 Ez az API vagy egésze a replikák és a példány a megadott partíció újraindul.
 
-Ez az API akkor hasznos, a feladatátvétel tesztelése. Ha célként egy állapotmentes szolgáltatások partíció, restartpartitionmode objektum AllReplicasOrInstances kell lennie. Az a folyamat az azonos OperationID azonosítójú segítségével GetPartitionRestartProgress API hívása. .
+Ez az API akkor hasznos, a feladatátvétel tesztelése. Ha célként egy állapotmentes szolgáltatások partíció, restartpartitionmode objektum AllReplicasOrInstances kell lennie. Az a folyamat az azonos OperationID azonosítójú segítségével GetPartitionRestartProgress API hívása.
 
 ### <a name="arguments"></a>Argumentumok
 
@@ -170,8 +170,8 @@ Ez az API akkor hasznos, a feladatátvétel tesztelése. Ha célként egy állap
 | --- | --- |
 | --Műveletazonosító [szükséges]| Ez az API hívása azonosító egy GUID.  Ez a megfelelő GetProgress API be lett átadva.|
 | --partícióazonosító [szükséges]| A partíció identitását.|
-| – Újraindítás partíció-módú [szükséges]| -Érvénytelen, mert a fenntartott.  API nem továbbítja. -AllReplicasOrInstances - összes replikák és a partíció-példány egyszerre újraindul. -OnlyActiveSecondaries - csak a másodlagos replikák újraindul. .|
-| – [szükséges] szolgáltatás azonosítója| A szolgáltatás identitásának. Ez általában az a teljes nevet, a szolgáltatás nélkül a "fabric:" URI-séma. 6.0-s verzió-től kezdődő, hierarchikus nevek vannak tagolva a "~" karakterrel. Például, ha a szolgáltatás neve "fabric://myapp/app1/svc1", a szolgáltatás identitás lenne "myapp ~ az app1 ~ svc1" 6.0 + és "myapp/app1/svc1" előző v ersions.|
+| – Újraindítás partíció-módú [szükséges]| Indítsa újra a partíciók ismertetik.|
+| – [szükséges] szolgáltatás azonosítója| A szolgáltatás identitásának. Ez általában az a teljes nevet, a szolgáltatás nélkül a "fabric:" URI-séma. 6.0-s verzió-től kezdődő, hierarchikus nevek vannak tagolva a "~" karakterrel. Például, ha a szolgáltatás neve "fabric: / myapp/app1/svc1", a szolgáltatásidentitás lenne "myapp ~ app1 ~ svc1" 6.0 + és "myapp/app1/svc1" az előző megtörtént rsions.|
 | – időtúllépés -t                    | Időtúllépését másodpercben.  Alapértelmezett: 60.|
 
 ### <a name="global-arguments"></a>Globális argumentumok

@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 12/01/2017
+ms.date: 02/23/2018
 ms.author: larryfr
-ms.openlocfilehash: 5e9951132ebb46d1053fbf62528b43e82cc76d2e
-ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
+ms.openlocfilehash: 03214f25858ae340908a1d1b7f3ff7f62d545dc9
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="connect-hdinsight-to-your-on-premise-network"></a>HDInsight csatlakozni a helyi hálózatra
 
@@ -78,7 +78,7 @@ Linux virtuális gép által használt létrehozásához a [kötési](https://ww
 
     ![Egy Ubuntu virtuális gép létrehozása](./media/connect-on-premises-network/create-ubuntu-vm.png)
 
-2. Az a __alapjai__ területen adja meg a következő információkat:
+2. Az __Alapvető beállítások__ szakaszban adja meg a következőket:
 
     * __Név__: egy rövid nevet, amely azonosítja a virtuális gépet. Például __DNSProxy__.
     * __Felhasználónév__: SSH-fiókjának nevét.
@@ -123,7 +123,7 @@ Linux virtuális gép által használt létrehozásához a [kötési](https://ww
     > [!NOTE]
     > Nincsenek az sokféleképpen beszerzése a `ssh` segédprogram. A Linux, Unix és macOS Ez biztosítja az operációs rendszer részeként. Ha Windows használja, fontolja meg az alábbi lehetőségek közül:
     >
-    > * [Azure-felhőbe rendszerhéj](../cloud-shell/quickstart.md)
+    > * [Azure Cloud Shell](../cloud-shell/quickstart.md)
     > * [A Windows 10 Ubuntu bash](https://msdn.microsoft.com/commandline/wsl/about)
     > * [Git (https://git-scm.com/)](https://git-scm.com/)
     > * [OpenSSH (https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH)](https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH)
@@ -332,7 +332,7 @@ Közvetlenül csatlakozhat a HDInsight a virtuális hálózaton keresztül, tegy
     >
     > Például Ambari csak egy központi csomóponton aktív egyszerre lehet. Ha egy központi csomóponton Ambari elérése 404 hibaüzenetet ad vissza, majd fut. a más központi csomóponton.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A HDInsight eszközzel virtuális hálózatban további információkért lásd: [kiterjesztése HDInsight Azure virtuális hálózatok használatával](./hdinsight-extend-hadoop-virtual-network.md).
 

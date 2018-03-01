@@ -10,10 +10,10 @@ ms.service: mysql-database
 ms.topic: article
 ms.date: 09/29/2017
 ms.openlocfilehash: 2c4894ae9a4235f9ced4a8d9b991238543646f53
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="explaining-compute-units-in-azure-database-for-mysql"></a>Azure MySQL-adatbázis elmagyarázza számítási egység
 Ez a témakör ismerteti a számítási egységeket, és mi történik, ha a terhelést eléri a maximális számítási egység fogalma.
@@ -42,5 +42,5 @@ Ha a terhelést eléri a maximális méretre vagy a számítási egység vagy ki
 
 Ha a terhelést eléri a kapcsolatok számának felső határai, explicit hibák aktiválódnak. Erőforrások korlátozások további információkért lásd: [MySQL az Azure Database korlátozásai](concepts-limits.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A tarifacsomagok további információkért lásd: [tarifacsomagok MySQL az Azure-adatbázis](./concepts-service-tiers.md).

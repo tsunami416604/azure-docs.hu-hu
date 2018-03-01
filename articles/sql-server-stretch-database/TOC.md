@@ -1,3 +1,5 @@
+# [Az SQL Server Stretch Database dokumentációja](index.md)
+
 # Áttekintés
 ## [Mi az a Stretch Database?](/sql/sql-server/stretch-database/stretch-database)
 ## [Korlátozások és blokkolási problémák](/sql/sql-server/stretch-database/limitations-for-stretch-database)
@@ -22,7 +24,7 @@
 # Referencia
 ## [Kódminták](https://azure.microsoft.com/en-us/resources/samples/?service=sql-server-database)
 
-# Erőforrások
+# További források
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
 ## [Blog](https://blogs.technet.microsoft.com/dataplatforminsider/tag/stretch-database/)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/sql-server-stretch-database/)

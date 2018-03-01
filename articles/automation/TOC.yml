@@ -19,7 +19,7 @@
       href: automation-watchers-tutorial.md
     - name: Virtuális gépek frissítéseinek kezelése
       href: automation-tutorial-update-management.md
-    - name: Frissítés- és változáskövetés előkészítése
+    - name: Frissítés- és változáskövetés előkészítése runbook alapján
       href: automation-onboard-solutions.md
     - name: Virtuális gépek szoftvereinek azonosítása
       href: automation-tutorial-installed-software.md
@@ -27,20 +27,24 @@
       href: automation-tutorial-troubleshoot-changes.md
 - name: Útmutató
   items:
+    - name: Előkészítés
+      items:
+        - name: Előkészítés Azure-beli virtuális gépről
+          href: automation-onboard-solutions-from-vm.md
+        - name: Előkészítés Automation-fiókból
+          href: automation-onboard-solutions-from-automation-account.md
     - name: Frissítéskezelés
       items:
-        - name: Áttekintés
-          href: ../operations-management-suite/oms-solution-update-management.md?toc=%2fazure%2fautomation%2ftoc.json
+        - name: A frissítéskezelés áttekintése
+          href: automation-update-management.md
         - name: Frissítések kezelése több virtuális gép esetén
           href: manage-update-multi.md
-        - name: SCCM-integráció OMS-frissítéskezeléssel
+        - name: SCCM-integráció frissítéskezeléssel
           href: oms-solution-updatemgmt-sccmintegration.md
     - name: Változások követése
       items:
-        - name: Áttekintés
-          href: ../log-analytics/log-analytics-change-tracking.md?toc=%2fazure%2fautomation%2ftoc.json
-        - name: Virtuális gépek változásainak követése
-          href: automation-vm-change-tracking.md
+        - name: Változáskövetés áttekintése
+          href: automation-change-tracking.md
     - name: Leltár
       items:
         - name: Virtuális gépek kezelése leltár használatával

@@ -1,8 +1,10 @@
+# [A BizTalk Services dokumentációja](index.md)
+
 # Áttekintés
 ## [Kiadások](biztalk-editions-feature-chart.md)
 
 # Első lépések
-## [BizTalk-szolgáltatások létrehozása](biztalk-provision-services.md)
+## [BizTalk Services létrehozása](biztalk-provision-services.md)
 
 # Útmutató
 ## Tervezés és kialakítás
@@ -22,12 +24,12 @@
 ### [Áttekintés](integration-hybrid-connection-overview.md)
 ### [Létrehozás és kezelés](integration-hybrid-connection-create-manage.md)
 
-# Erőforrások
+# További források
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
 ## [MSDN-fórum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurebiztalksvcs)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/biztalk-services/)
 ## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)
-## [Kibocsátási megjegyzések](biztalk-release-notes.md)
+## [Kiadási megjegyzések](biztalk-release-notes.md)
 ## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=biztalk-services)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/biztalk-services)
 ## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=biztalk-services)

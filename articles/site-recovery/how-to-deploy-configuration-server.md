@@ -6,21 +6,21 @@ author: AnoopVasudavan
 manager: gauravd
 ms.service: site-recovery
 ms.topic: article
-ms.date: 01/15/2018
+ms.date: 02/25/2018
 ms.author: anoopkv
-ms.openlocfilehash: 3b09c11d76d5c88b904afa3c6d256bc475992339
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: f7ec02cb4723d8a4ea0847810b1a1822cf20e957
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="deploy-a-configuration-server"></a>Konfigurációs kiszolgáló üzembe helyezése
 
-Telepít egy a helyszíni konfigurációs kiszolgáló használatakor [Azure Site Recovery](site-recovery-overview.md) vész-helyreállítási VMware virtuális gépek és fizikai kiszolgálók Azure-bA. A konfigurációs kiszolgáló koordináták kommunikáció közötti helyszíni VMware és Azure. Adatreplikálás is kezeli. Ez a cikk végigvezeti a lépéseken, amelyekkel a konfigurációs kiszolgáló központi telepítése.
+Telepít egy a helyszíni konfigurációs kiszolgáló használatakor [Azure Site Recovery](site-recovery-overview.md) vész-helyreállítási VMware virtuális gépek és fizikai kiszolgálók Azure-bA. A konfigurációs kiszolgáló koordináták kommunikáció közötti helyszíni VMware és Azure. Adatreplikálás is kezeli. Ez a cikk végigvezeti a lépéseken, amelyekkel a konfigurációs kiszolgáló központi telepítése, ha VMware virtuális gépeket replikál az Azure-bA. [Kövesse az ebben a cikkben](site-recovery-set-up-physical-to-azure.md) Ha, be kell állítania a fizikai kiszolgáló replikációs konfigurációs kiszolgálót.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Azt javasoljuk, hogy telepít egy magas rendelkezésre állású VMware virtuális gépként a konfigurációs kiszolgáló. A fizikai kiszolgáló replikáció esetén a konfigurációs kiszolgáló beállítható a fizikai számítógépen. Minimális hardverkövetelmények a következő táblázat foglalja össze.
+Azt javasoljuk, hogy telepít egy magas rendelkezésre állású VMware virtuális gépként a konfigurációs kiszolgáló. Minimális hardverkövetelmények a következő táblázat foglalja össze.
 
 [!INCLUDE [site-recovery-configuration-server-requirements](../../includes/site-recovery-configuration-and-scaleout-process-server-requirements.md)]
 
@@ -118,4 +118,4 @@ Ha meg szeretne adni egy további hálózati Adapterre a konfigurációs kiszolg
 
 ## <a name="next-steps"></a>További lépések
 
-Tekintse át a vész-helyreállítási beállításával kapcsolatos bemutatók [VMware virtuális gépek](tutorial-vmware-to-azure.md) és [fizikai kiszolgálók](tutorial-physical-to-azure.md) az Azure-bA.
+Állítsa be a vész-helyreállítási [VMware virtuális gépek](tutorial-vmware-to-azure.md) az Azure-bA.

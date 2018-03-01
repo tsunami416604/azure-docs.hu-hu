@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/11/2017
 ms.author: tomfitz
-ms.openlocfilehash: 9fe3d98cd345aae45722295b6c1b7fc3e9036e95
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9015347042ea9cce221ec5febd4ae60cbeac9315
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="track-asynchronous-azure-operations"></a>Az Azure aszinkron műveletek nyomon követése
 Néhány Azure REST művelet aszinkron módon futtatható, mert a művelet nem fejezhető be gyorsan. Ez a témakör ismerteti a válaszban visszaadott értékek keresztül aszinkron műveletek állapotának nyomon követését.  
@@ -26,12 +26,12 @@ Néhány Azure REST művelet aszinkron módon futtatható, mert a művelet nem f
 ## <a name="status-codes-for-asynchronous-operations"></a>Az aszinkron műveletek állapotkódjai
 Egy aszinkron művelet kezdetben adja vissza egy HTTP-állapotkód: a következők:
 
-* 201-es (létrehozva)
-* 202 (elfogadható) 
+* 201 (Created)
+* 202 (Accepted) 
 
 Ha a művelet sikeresen befejeződött, adja vissza, vagy:
 
-* 200-AS (OK)
+* 200 (OK)
 * 204 (üres) 
 
 Tekintse meg a [REST API-dokumentáció](/rest/api/) tekintheti meg a műveletet, amelyek végrehajtása a válaszokat. 
@@ -39,9 +39,9 @@ Tekintse meg a [REST API-dokumentáció](/rest/api/) tekintheti meg a műveletet
 ## <a name="monitor-status-of-operation"></a>Művelet állapotának figyelése
 Az aszinkron REST műveleteinek térjen vissza a fejléc értékei, amelyek segítségével állapítja meg, a művelet állapotát. Nincsenek potenciálisan három térközkaraktert vizsgálata:
 
-* `Azure-AsyncOperation`-A művelet folyamatban lévő állapotának ellenőrzése a következő URL-címe A művelet ezt az értéket adja vissza, ha mindig segítségével (hely) helyett a művelet állapotának nyomon követését.
-* `Location`-URL-cím meghatározásához, ha egy művelet befejeződött. Használja ezt az értéket csak akkor, ha Azure-aszinkron műveletek nem ad vissza.
-* `Retry-After`-Hány másodpercig várjon az aszinkron művelet állapotának ellenőrzésekor.
+* `Azure-AsyncOperation` -A művelet folyamatban lévő állapotának ellenőrzése a következő URL-címe A művelet ezt az értéket adja vissza, ha mindig segítségével (hely) helyett a művelet állapotának nyomon követését.
+* `Location` -URL-cím meghatározásához, ha egy művelet befejeződött. Használja ezt az értéket csak akkor, ha Azure-aszinkron műveletek nem ad vissza.
+* `Retry-After` -Hány másodpercig várjon az aszinkron művelet állapotának ellenőrzésekor.
 
 Nem minden aszinkron művelethez azonban ezeket az értékeket adja vissza. Például szükség lehet az Azure-aszinkron műveletek Fejlécérték egy művelet, és a hely fejléc értékének egy másik művelet. 
 
@@ -82,7 +82,7 @@ Csak `status` az összes választ ad vissza. A hiba objektum ad vissza, ha az á
 Műveletek létrehozása, frissítése vagy törlése (PUT, javítás, Törlés) erőforrás általában vissza egy `provisioningState` érték. Egy művelet befejezése után az alábbi értékek egyike vissza: 
 
 * Sikeres
-* Nem sikerült
+* Meghiúsult
 * Törölve
 
 Minden egyéb értékek azt jelzik, hogy még mindig fut, a műveletet. Az erőforrás-szolgáltató az állapotát jelző testreszabott értéket adhat vissza. Például jelenhet meg **elfogadott** fogadott és megfelelően fut a kérelem esetén.
@@ -191,8 +191,7 @@ https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft
 
 Ha a kérés továbbra is fut, a állapotkód: 202 jelenik meg. Ha a kérelem befejeződött, a 200-as állapotkód kap, és a választörzs a tárfiók már létrehozott tulajdonságait tartalmazza.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Az egyes REST műveletekre vonatkozó dokumentációjáért lásd: [REST API-dokumentáció](/rest/api/).
-* A Resource Manager REST API-n keresztül erőforrások kezelésével kapcsolatos információkért lásd: [a Resource Manager REST API használatával](resource-manager-rest-api.md).
 * a Resource Manager REST API-n keresztül sablonok telepítésével kapcsolatos információkért lásd: [központi telepítése a Resource Manager-sablonok és a Resource Manager REST API erőforrások](resource-group-template-deploy-rest.md).

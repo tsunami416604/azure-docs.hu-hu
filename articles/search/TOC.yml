@@ -5,6 +5,7 @@
     - name: Az Azure Search névjegye
       href: search-what-is-azure-search.md
 - name: Gyors útmutatók
+  expanded: true
   items:
     - name: Szolgáltatás létrehozása
       href: search-create-service-portal.md

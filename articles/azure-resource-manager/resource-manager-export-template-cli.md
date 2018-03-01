@@ -11,28 +11,28 @@ ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/01/2017
+ms.date: 02/23/2018
 ms.author: tomfitz
-ms.openlocfilehash: e93fe5af62893d361b6cc4adac42a7d172235978
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 15e7e811c7cb1777e34f1bfb629fa24a60f9e5cb
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="export-azure-resource-manager-templates-with-azure-cli"></a>Az Azure CLI Azure Resource Manager-sablonok exportálása
 
 A Resource Manager lehetővé teszi az előfizetéshez tartozó meglévő erőforrások Resource Manager-sablonjainak exportálását. Az így létrehozott sablon használatával megismerheti a sablonok szintaxisát, illetve igény szerint automatizálhatja a megoldás újbóli telepítését.
 
-Fontos megjegyezni, hogy sablonokat két különböző módon lehet exportálni:
+Fontos megjegyezni, hogy két különböző módon sablon exportálása:
 
-* Exportálhatja az üzembe helyezéshez is használt tényleges sablont. Ebben az esetben az exportált sablon pontosan úgy tartalmazza a különböző paramétereket és változókat, ahogy azok az eredeti sablonban szerepeltek. Ez a módszer akkor hasznos, ha egy sablon visszakeresését.
-* A másik megoldás, hogy úgy exportálja a sablont, hogy az az erőforráscsoport aktuális állapotát tükrözze. Ebben az esetben az exportált sablon nem az üzembe helyezéshez használt sablonon alapul. A rendszer ehelyett új sablont hoz létre az erőforráscsoport aktuális állapota alapján. Az exportált sablon számos nem módosítható értéket tartalmaz, és valószínűleg kevesebb paraméter található benne, mint amennyit általában használni szokott. Ez a módszer akkor hasznos, ha módosította az erőforráscsoportot. és most szeretne létrehozni egy sablont az így létrejött egyedi erőforráscsoport alapján.
+* Exportálhatja a **tényleges, a központi telepítéshez használt sablon**. Ebben az esetben az exportált sablon pontosan úgy tartalmazza a különböző paramétereket és változókat, ahogy azok az eredeti sablonban szerepeltek. Ez a módszer akkor hasznos, ha egy sablon visszakeresését.
+* A másik megoldás, hogy úgy exportálja a **létrejött sablont, hogy az az erőforráscsoport aktuális állapotát tükrözze**. Ebben az esetben az exportált sablon nem az üzembe helyezéshez használt sablonon alapul. Ehelyett az alkalmazás létrehozza a sablont, amely a "snapshot" vagy "Mentés" az erőforráscsoport. Az exportált sablon számos nem módosítható értéket tartalmaz, és valószínűleg kevesebb paraméter található benne, mint amennyit általában használni szokott. Ez a beállítás segítségével telepítse újra az erőforrásokat ugyanabban az erőforráscsoportban. Egy másik erőforráscsoport a sablon használatához, előfordulhat, hogy jelentősen módosítható.
 
-Ebben a témakörben mind a két megoldást bemutatjuk.
+Ez a cikk mindkét megközelítés jeleníti meg.
 
 ## <a name="deploy-a-solution"></a>A megoldás üzembe helyezéséhez
 
-A sablon exportálása mindkét megközelítés mutatja be, először egy megoldás telepítésére az előfizetéséhez. Ha már rendelkezik egy erőforráscsoportot az előfizetés az exportálni kívánt, nem rendelkeznek a megoldás üzembe helyezéséhez. Ez a cikk fennmaradó azonban ez a megoldás sablonját hivatkozik. A példaként megadott parancsfájlt a storage-fiók telepíti.
+A sablon exportálása mindkét megközelítés mutatja be, először egy megoldás telepítésére az előfizetéséhez. Ha már rendelkezik egy erőforráscsoportot az előfizetés az exportálni kívánt, nem rendelkeznek a megoldás üzembe helyezéséhez. Ez a cikk többi azonban ez a megoldás sablonját hivatkozik. A példaként megadott parancsfájlt a storage-fiók telepíti.
 
 ```azurecli
 az group create --name ExampleGroup --location "Central US"
@@ -55,13 +55,13 @@ A sablon adja vissza. Másolja át a JSON, és menteni a fájlt. Figyelje meg, h
 
 ## <a name="export-resource-group-as-template"></a>Erőforráscsoportok exportálása sablonként
 
-Helyett egy sablon fogadása az üzembe helyezési előzményeket, a sablont, amely az erőforráscsoport aktuális állapotát jeleníti meg használatával kérheti le a [az exportálása](/cli/azure/group#az_group_export) parancsot. Ez a parancs használni, amikor sok módosításokat végzett az erőforráscsoporton, és nincs meglévő sablon jelenti. a módosításokat.
+Helyett egy sablon fogadása az üzembe helyezési előzményeket, a sablont, amely az erőforráscsoport aktuális állapotát jeleníti meg használatával kérheti le a [az exportálása](/cli/azure/group#az_group_export) parancsot. Ez a parancs használni, amikor sok módosításokat végzett az erőforráscsoporton, és nincs meglévő sablon jelenti. a módosításokat. Az erőforráscsoport, amelyet felhasználhat az ugyanabban az erőforráscsoportban újratelepíteni pillanatképként szolgál. Az exportált sablon használata az egyéb megoldások, jelentősen módosítania kell azt.
 
 ```azurecli
 az group export --name ExampleGroup
 ```
 
-A sablon adja vissza. Másolja át a JSON, és menteni a fájlt. Figyelje meg, hogy nem egyezik a GitHub-sablon. Különböző paraméterek és változók nem rendelkezik. A tárolási SKU és hely érték nem módosítható értékeket is. A következő példa bemutatja az exportált sablon, de a sablon némileg eltérő névvel rendelkezik:
+A sablon adja vissza. Másolja át a JSON, és menteni a fájlt. Figyelje meg, hogy nem egyezik a GitHub-sablon. A sablon különböző paraméterek és változók nem rendelkezik. A tárolási SKU és hely érték nem módosítható értékeket is. A következő példa bemutatja az exportált sablon, de a sablon némileg eltérő névvel rendelkezik:
 
 ```json
 {

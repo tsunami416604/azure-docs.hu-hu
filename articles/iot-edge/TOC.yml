@@ -5,6 +5,7 @@
     - name: Tudnivalók az Azure IoT Edge-ről
       href: how-iot-edge-works.md
 - name: Gyors útmutatók
+  expanded: true
   items:
     - name: Üzembe helyezés az Edge-ben – Linux/Mac
       href: quickstart-linux.md

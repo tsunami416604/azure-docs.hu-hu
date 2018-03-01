@@ -1,3 +1,5 @@
+# [A Data Lake Store dokumentációja](index.md)
+
 # Áttekintés
 ## [Az Azure Data Lake Store áttekintése](data-lake-store-overview.md)
 ## [Az Azure Data Lake Store és az Azure Storage összehasonlítása](data-lake-store-comparison-with-blob-storage.md)

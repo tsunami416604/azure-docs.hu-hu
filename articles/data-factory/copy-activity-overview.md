@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/17/2018
+ms.date: 02/26/2018
 ms.author: jingwang
-ms.openlocfilehash: 2095d75ed042ae8be02ae0a1570f8e77d06a3563
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: faad821d406ac155516696c1207c8c9deef8fdab
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Az Azure Data Factory a másolási tevékenység
 
@@ -152,11 +152,11 @@ A másolási tevékenység során Azure Data Factory "Szerző és figyelés" fel
 
 Vizuálisan figyeléséhez a másolási tevékenység során futtatni, nyissa meg a data factory -> **Szerző & figyelő** -> **figyelés lapján**, láthatja, hogy az adatcsatorna listáját fut, a "Tevékenységfutnézet"hivatkozásra **Műveletek** oszlop. 
 
-![A figyelő folyamat fut](./media/load-data-into-azure-data-lake-store/monitor-pipeline-runs.png)
+![Folyamatfuttatások monitorozása](./media/load-data-into-azure-data-lake-store/monitor-pipeline-runs.png)
 
 Kattintson a folyamatot futtató tevékenységek listájának megjelenítéséhez. Az a **műveletek** oszlop, a másolási tevékenység bemeneti, kimeneti, a hibák (Ha a másolási tevékenység futtatása sikertelen lesz) és a részletek a kapcsolat van.
 
-![A figyelő tevékenység fut](./media/load-data-into-azure-data-lake-store/monitor-activity-runs.png)
+![Tevékenységfuttatások monitorozása](./media/load-data-into-azure-data-lake-store/monitor-activity-runs.png)
 
 Kattintson a "**részletek**" hivatkozásra **műveletek** másolási tevékenység végrehajtási részletek és a teljesítményt. Azt jeleníti meg az adatok többek között a következőket kötet/sorok/fájlokat másolni a forrás gyűjtése, a átviteli lépéseket megfelelő időtartamú végighalad, és a konfigurációt használja a másolásának esetéhez adatokat.
 

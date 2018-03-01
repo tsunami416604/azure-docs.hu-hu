@@ -14,18 +14,18 @@ ms.devlang: php
 ms.topic: article
 ms.date: 02/22/2018
 ms.author: mimig
-ms.openlocfilehash: 4965247d77e8a3a9f5dbaa2e70952993b4bdf4ff
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 64ce8206b4b0ab3c831417d6e478f9c059188345
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="how-to-use-azure-storage-table-service-or-cosmos-db-table-api-from-php"></a>Hogyan használható az Azure Storage Table szolgáltatás vagy Cosmos DB tábla API php-ből
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../includes/storage-table-cosmos-db-tip-include.md)]
 
 ## <a name="overview"></a>Áttekintés
-Ez az útmutató bemutatja, hogyan hajthat végre a gyakori forgatókönyvek az Azure Storage Table szolgáltatás és az Azure Cosmos DB tábla API használatával. A mintákat a PHP és -felhasználási nyelven íródtak a [Azure SDK for PHP][download]. Az ismertetett forgatókönyvek **létrehozása és egy tábla törlése**, és **beszúrását, törlését és entitások egy tábla lekérdezése**. Az Azure Table szolgáltatás további információkért tekintse meg a [további lépések](#next-steps) szakasz.
+Ez az útmutató bemutatja, hogyan hajthat végre a gyakori forgatókönyvek az Azure Storage Table szolgáltatás és az Azure Cosmos DB tábla API használatával. A mintákat a PHP és -felhasználási nyelven íródtak a [Azure Storage tábla PHP ügyféloldali kódtár][download]. Az ismertetett forgatókönyvek **létrehozása és egy tábla törlése**, és **beszúrását, törlését és entitások egy tábla lekérdezése**. Az Azure Table szolgáltatás további információkért tekintse meg a [további lépések](#next-steps) szakasz.
 
 [!INCLUDE [storage-table-concepts-include](../../includes/storage-table-concepts-include.md)]
 

@@ -58,9 +58,7 @@
     - name: További források
       items:
         - name: Árképzési szintek
-          href: concepts-service-tiers.md
-        - name: Számítási egységek
-          href: concepts-compute-unit-and-storage.md
+          href: concepts-pricing-tiers.md
         - name: Korlátok
           href: concepts-limits.md
     - name: Adathozzáférés és -biztonság
@@ -69,6 +67,12 @@
           href: concepts-firewall-rules.md
         - name: Az SSL konfigurálása
           href: concepts-ssl-connection-security.md
+    - name: Az üzletmenet folytonossága
+      items:
+        - name: Áttekintés
+          href: concepts-business-continuity.md
+        - name: Biztonsági mentés és visszaállítás
+          href: concepts-backup.md
     - name: Figyelés
       href: concepts-monitoring.md
     - name: Fejlesztés
@@ -77,7 +81,9 @@
           href: concepts-connection-libraries.md
 - name: Útmutatók
   items:
-    - name: Tűzfalszabályok
+    - name: Felhasználók létrehozása
+      href: howto-create-users.md
+    - name: Tűzfal kezelése
       items:
         - name: Azure Portal
           href: howto-manage-firewall-using-portal.md

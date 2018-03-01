@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/27/2018
+ms.date: 02/27/2018
 ms.author: brenduns
 ms.reviewer: jeffgo
-ms.openlocfilehash: bfc55a305fd0099af5cc2bb394420e547d2703bc
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: c82ee87b341de4e85e2eab566f7a3c6fcffdace1
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="azure-marketplace-items-available-for-azure-stack"></a>Azure verem használható az Azure piactéren elemek
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 02/21/2018
 
 
 ## <a name="virtual-machine-extensions"></a>Virtuálisgép-bővítmények
-Tanácsos ezek letöltése, amikor csak szüksége van a Virtuálisgép-bővítmények frissítések érhetők el. A termék szállított bővítmények nem fog frissülni a normál javítási és frissítési folyamat; Ellenőrizze a frissítéseket gyakran. Egyéb bővítményei piactér felügyelet használatával csak érhetők el.
+Használja a virtuális gép (VM) Extensions frissítések érhetők el, amikor kell letöltenie azokat. A termék szállított bővítmények nem frissíti a normál javítási és frissítési folyamat; Ezért ellenőrizze a frissítéseket gyakran. Egyéb bővítményei piactér felügyelet használatával csak érhetők el.
 
 |  | Elem neve | Leírás | Közzétevő | Operációs rendszer típusa |
 | --- | --- | --- | --- | --- |
@@ -42,7 +42,7 @@ Tanácsos ezek letöltése, amikor csak szüksége van a Virtuálisgép-bővítm
 
 ## <a name="microsoft-virtual-machine-images-and-solution-templates"></a>Virtuálisgép-rendszerképek a Microsoft és a megoldás sablonok
 
-A Microsoft Azure verem támogatja a következő Azure piactér virtuális gépek és a megoldás sablonok. Töltse le a függőségek külön-külön jelezve. Alkalmazások, mint az SQL Server és a Machine Learning-kiszolgáló szükséges, megfelelő licencelési, kivéve ahol jelölésű szabad vagy próbaverzióra.
+A Microsoft Azure verem támogatja a következő Azure piactér virtuális gépek és a megoldás sablonok. Töltse le külön-külön jelezve függőségeit. Alkalmazások, mint az SQL Server és a Machine Learning-kiszolgáló szükséges, megfelelő licencelési, kivéve ahol jelölésű szabad vagy próbaverzióra.
 
 |  | Elem neve | Leírás | Közzétevő |
 | --- | --- | --- | --- |
@@ -71,9 +71,9 @@ A Microsoft Azure verem támogatja a következő Azure piactér virtuális gépe
 | ![](media/azure-stack-marketplace-azure-items/sql.png) | [SQL Server 2017 Express SUSE Linux Enterprise Server (SLES) 12 SP2](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.FreeSQLServerLicenseSQLServer2017ExpressonSLES12SP2) | SQL Server 2016 SP1 szabad express verzió. | Microsoft + SUSE |
 | ![](media/azure-stack-marketplace-azure-items/sql.png) | [SUSE Linux Enterprise Server (SLES) 12 SQL Server 2017 Enterprise SP2](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.Microsoft.SQLServer2017EnterpriseonSLES12SP2) | Adatbázis platform intelligens, létfontosságú alkalmazások számára. | Microsoft + SUSE |
 | ![](media/azure-stack-marketplace-azure-items/sql.png) | [SQL Server 2017 Web SUSE Linux Enterprise Server (SLES) 12 SP2](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.Microsoft.SQLServer2017WebonSLES12SP2) | Adatbázis platform intelligens, létfontosságú alkalmazások számára. | Microsoft + SUSE |
-| ![](media/azure-stack-marketplace-azure-items/microsoft.png) | [Microsoft gépi tanulási a Windows Server 2016 9.2.1 kiszolgáló ](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.MicrosoftMachineLearningServer921onWindowsServer2016) | Microsoft gépi tanulási 9.2.1 kiszolgáló a Windows Server 2016. | Microsoft |
-| ![](media/azure-stack-marketplace-azure-items/microsoft.png) | [Microsoft gépi tanulási a 9.2.1 Ubuntu 16.04 Server ](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.MicrosoftMachineLearningServer921onUbuntu1604) | Microsoft gépi tanulási Ubuntu 16.04 9.2.1 kiszolgálón. | Microsoft + kanonikus |
-| ![](media/azure-stack-marketplace-azure-items/microsoft.png) | [Microsoft gépi tanulási a CentOS Linux 7.2 9.2.1 kiszolgáló ](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.MicrosoftMachineLearningServer921onCentOSLinux72) | Microsoft gépi tanulási Server 9.2.1 CentOS Linux 7.2. | Microsoft + Rogue Wave |
+| ![](media/azure-stack-marketplace-azure-items/microsoft.png) | [Microsoft gépi tanulási a Windows Server 2016 9.3.0 kiszolgáló ](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.MicrosoftMachineLearningServer930onWindowsServer2016) | Microsoft gépi tanulási 9.3.0 kiszolgáló a Windows Server 2016. | Microsoft |
+| ![](media/azure-stack-marketplace-azure-items/microsoft.png) | [Microsoft gépi tanulási a 9.3.0 Ubuntu 16.04 Server ](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.MicrosoftMachineLearningServer930onUbuntu1604) | Microsoft gépi tanulási Ubuntu 16.04 9.3.0 kiszolgálón. | Microsoft + kanonikus |
+| ![](media/azure-stack-marketplace-azure-items/microsoft.png) | [Microsoft gépi tanulási a CentOS Linux 7.2 9.3.0 kiszolgáló ](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.MicrosoftMachineLearningServer930onCentOSLinux72) | Microsoft gépi tanulási Server 9.3.0 CentOS Linux 7.2. | Microsoft + Rogue Wave |
 
 
 ## <a name="linux-distributions"></a>Linux-Disztribúciók

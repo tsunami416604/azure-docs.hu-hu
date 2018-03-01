@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: 99c9740e3f19e2a09332317b08e06352ffa8eee7
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 1ec845a6491b406c1aef34609b155a9c3d087427
+ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="get-started-with-application-insights-in-a-java-web-project"></a>Ismerkedés az Application Insights szolgáltatással Java webes projektben
 
@@ -70,12 +70,12 @@ Ezután frissítse a projektfüggőségeket, hogy letöltse a bináris fájlokat
         <groupId>com.microsoft.azure</groupId>
         <artifactId>applicationinsights-web</artifactId>
         <!-- or applicationinsights-core for bare API -->
-        <version>[1.0,)</version>
+        <version>[2.0,)</version>
       </dependency>
     </dependencies>
 ```
 
-* *Build- vagy ellenőrzőösszeg-érvényesítési hibák?* Próbáljon egy adott verziót használni, például a következőt: `<version>1.0.n</version>`. A legújabb verziót az [SDK kiadási megjegyzéseiben](https://github.com/Microsoft/ApplicationInsights-Java#release-notes) vagy a [Maven-összetevőkben](http://search.maven.org/#search%7Cga%7C1%7Capplicationinsights) találja.
+* *Build- vagy ellenőrzőösszeg-érvényesítési hibák?* Próbáljon egy adott verziót használni, például a következőt: `<version>2.0.n</version>`. A legújabb verziót az [SDK kiadási megjegyzéseiben](https://github.com/Microsoft/ApplicationInsights-Java#release-notes) vagy a [Maven-összetevőkben](http://search.maven.org/#search%7Cga%7C1%7Capplicationinsights) találja.
 * *Új SDK-ra kell frissítenie?* Frissítse a projekt függőségeit.
 
 #### <a name="if-youre-using-gradle"></a>Ha Gradle-t használ...
@@ -90,19 +90,19 @@ Ezután frissítse a projektfüggőségeket, hogy letöltse a bináris fájlokat
     }
 
     dependencies {
-      compile group: 'com.microsoft.azure', name: 'applicationinsights-web', version: '1.+'
+      compile group: 'com.microsoft.azure', name: 'applicationinsights-web', version: '2.+'
       // or applicationinsights-core for bare API
     }
 ```
 
-* *Build- vagy ellenőrzőösszeg-érvényesítési hibák? Próbáljon adott verziót használni, például a következőt:* `version:'1.0.n'`. *A legújabb verziót az [SDK kiadási megjegyzéseiben](https://github.com/Microsoft/ApplicationInsights-Java#release-notes) találja.*
+* *Build- vagy ellenőrzőösszeg-érvényesítési hibák? Próbáljon adott verziót használni, például a következőt:* `version:'2.0.n'`. *A legújabb verziót az [SDK kiadási megjegyzéseiben](https://github.com/Microsoft/ApplicationInsights-Java#release-notes) találja.*
 * *Frissítés új SDK-ra*
   * Frissítse a projekt függőségeit.
 
 #### <a name="otherwise-"></a>Egyéb esetben...
 Kézzel adja hozzá az SDK-t:
 
-1. Töltse le a [Javához készült Application Insights SDK-t](https://aka.ms/aijavasdk).
+1. Töltse le a [Javához készült Application Insights SDK-t](https://github.com/Microsoft/ApplicationInsights-Java/releases/latest).
 2. Bontsa ki a bináris fájlokat a zip-fájlból, és adja azokat a projekthez.
 
 ### <a name="questions"></a>Kérdések...
@@ -112,7 +112,7 @@ Kézzel adja hozzá az SDK-t:
   * `applicationinsights-web`– olyan mérőszámokat biztosít, amelyek nyomon követik a HTTP-kérések számát és a válaszidőket. Ezt az összetevőt kihagyhatja, ha nem szeretné automatikusan gyűjteni ezt a telemetriát. hanem például sajátot szeretne írni.
 * *Az SDK frissítése a változások közzétételekor*
 
-  * Töltse le a legújabb [Javához készült Application Insights SDK-t](https://aka.ms/qqkaq6), és cserélje le a régieket.
+  * Töltse le a legújabb [Javához készült Application Insights SDK-t](https://github.com/Microsoft/ApplicationInsights-Java/releases/latest), és cserélje le a régieket.
   * A változások leírását az [SDK kiadási megjegyzéseiben](https://github.com/Microsoft/ApplicationInsights-Java#release-notes) találja.
 
 ## <a name="3-add-an-application-insights-xml-file"></a>3. Application Insights .xml fájl hozzáadása
@@ -379,7 +379,7 @@ Megkapja a válaszidők diagramjait, valamint e-mailes értesítéseket kap, ha 
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Függőségi hívások figyelése](app-insights-java-agent.md)
 * [Unix-teljesítményszámlálók figyelése](app-insights-java-collectd.md)
 * [A weboldalak figyelésével](app-insights-javascript.md) megfigyelheti az oldalbetöltési időket, az AJAX-hívásokat és a böngészőkivételeket.

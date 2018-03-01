@@ -15,17 +15,17 @@ ms.topic: article
 ms.date: 07/08/2016
 ms.author: LADocs; padmavc
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 950cb449b53f400f0f0f860caf5415bbb5212269
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 89066ba062c2b243136a03a52144fd99ae87eddc
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="add-or-update-partners-in-business-to-business-agreements-in-your-workflow"></a>Hozzáadásakor vagy módosításakor a partnerek a munkafolyamat vállalatok szerződések
 
 A partnerek olyan entitásokat, üzleti vállalatközi (B2B) tranzakciók részt, és az exchange-üzenetek között. Létrehozhat, és ezek a tranzakciók a másik szervezet képviselő partnerekkel, előtt is, amely azonosítja, és ellenőrzi az egyes küldött üzenetek az információkat. Miután vitassa meg ezeket az adatokat, és az üzleti kapcsolat készen áll, az integráció fiókban partnerek számára, hogy megfelelnek az Ön is hozhat létre.
 
-## <a name="what-roles-do-partners-have-in-your-integration-account"></a>Milyen szerepkörök rendelkeznek partnerek integrációs fiókja?
+## <a name="what-roles-do-partners-play-in-your-integration-account"></a>Milyen szerepkörök az partnerek, játszani az integráció fiókját?
 
 Adja meg a partnerek között váltott üzenetek részleteit, ezeket a partnerek között létrejött megállapodások kell létrehozni. Azonban létrehozhat egy szerződést, mielőtt hozzá kellett adnia legalább két partner integrációs fiókjába. A szervezet, a szerződés részét kell képeznie a **fogadó partner**. A másik partnert vagy **Vendég partner** azt a szervezetet, amely az üzeneteket a szervezet jelöli. A Vendég partner lehet egy másik vállalat, vagy akár egy részleget a saját szervezetében.
 
@@ -33,61 +33,67 @@ Miután hozzáadta a partnerek, létrehozhat egy szerződést.
 
 Értesítések fogadásához és küldéséhez a beállítások a üzemeltetett Partner szempontból irányulnak. Például egy szerződést a fogadási beállítások határozzák meg, hogyan az üzemeltetett partner kap egy Vendég partner küldött üzenetek. Hasonlóképpen a Küldés beállításai a szerződésben azt jelzik, hogyan az üzemeltetett partner üzeneteket küld a Vendég partner.
 
-## <a name="how-to-create-a-partner"></a>Hogyan hozhat létre a partner?
+## <a name="create-partner"></a>Partner létrehozása
 
-1. Válassza ki az Azure-portálon **Tallózás**.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-    ![](./media/logic-apps-enterprise-integration-overview/overview-1.png)
+2. Válassza ki a fő Azure menü **minden szolgáltatás**. A keresési mezőbe, írja be a "integrációt", és válassza ki **integrációs fiókok**.
 
-2. A szűrő a keresőmezőbe írja be **integrációs**, majd jelölje be **integrációs fiókok** az eredménylistában.
+   ![Integráció fiók](./media/logic-apps-enterprise-integration-partners/account-1.png)
 
-    ![](./media/logic-apps-enterprise-integration-overview/overview-2.png)
+3. A **integrációs fiókok**, ahol a partnerek hozzáadni kívánt integrációs fiók kijelölése.
 
-3. Válassza ki az integráció fiókra, amelyhez a partnerek hozzáadni.
-
-    ![](./media/logic-apps-enterprise-integration-overview/overview-3.png)
+   ![Integráció fiók kiválasztása](./media/logic-apps-enterprise-integration-partners/account-2.png)
 
 4. Válassza ki a **partnerek** csempére.
 
-    ![](./media/logic-apps-enterprise-integration-partners/partner-1.png)
+   ![Válassza ki a "Partners"](./media/logic-apps-enterprise-integration-partners/partner-1.png)
 
-5. A partnerek paneljén válassza **Hozzáadás**.
+5. A **partnerek**, válassza a **Hozzáadás**.
 
-    ![](./media/logic-apps-enterprise-integration-partners/partner-2.png)
+   ![Válassza a "Hozzáadás"](./media/logic-apps-enterprise-integration-partners/partner-2.png)
 
-6. Adja meg a partner nevét, majd válasszon egy **minősítő**. Végül adja meg a **érték** dokumentumok, amelyek az alkalmazások azonosítása.
+6. Adja meg a partner nevét, majd válasszon egy **minősítő**. Adjon meg egy **érték** dokumentumok, az alkalmazások fogadó azonosításához. Amikor elkészült, válassza ki a **OK**.
 
-    ![](./media/logic-apps-enterprise-integration-partners/partner-3.png)
+   ![Partner részletek megadása](./media/logic-apps-enterprise-integration-partners/partner-3.png)
 
-7. A partner-létrehozási folyamat előrehaladásának megtekintéséhez válassza ki a *harang* értesítési ikon.
+7. Válassza ki a **partnerek** újra csempére.
 
-    ![](./media/logic-apps-enterprise-integration-partners/partner-4.png)
+   ![Válassza a "Partners" csempe](./media/logic-apps-enterprise-integration-partners/partner-5.png)
 
-8. Győződjön meg arról, hogy az új partnerek sikerült hozzáadni, jelölje be a **partnerek** csempére.
+   Ekkor megjelenik az új partner. 
 
-    ![](./media/logic-apps-enterprise-integration-partners/partner-5.png)
+   ![Új partner megtekintése](./media/logic-apps-enterprise-integration-partners/partner-6.png)
 
-    Miután kiválasztotta a partnerek csempe, azt is megtudhatja újonnan hozzáadott partnerek a partnerek a panelen.
+## <a name="edit-partner"></a>Partner szerkesztése
 
-    ![](./media/logic-apps-enterprise-integration-partners/partner-6.png)
+1. Az a [Azure-portálon](https://portal.azure.com), található, és válassza ki a integrációs fiókját. Válassza ki a **partnerek** csempére.
 
-## <a name="how-to-edit-existing-partners-in-your-integration-account"></a>Az integráció fiókban meglévő partnerek szerkesztése
+   ![Válassza a "Partners" csempe](./media/logic-apps-enterprise-integration-partners/edit.png)
 
-1. Válassza ki a **partnerek** csempére.
-2. Panel megnyitása után a partnerek, válassza ki a szerkeszteni kívánt partnert.
-3. Az a **frissítés Partner** csempére, hajtsa végre a módosításokat.
-4. Miután elkészült, válassza ki azt **mentése**, vagy a Mégse gombra a módosítások, jelöljön ki **elvetése**.
+2. A **partnerek**, válassza ki a szerkeszteni kívánt partnert.
 
-    ![](./media/logic-apps-enterprise-integration-partners/edit-1.png)
+   ![Válassza ki a törölni kívánt partnert](./media/logic-apps-enterprise-integration-partners/edit-1.png)
 
-## <a name="how-to-delete-a-partner"></a>Egy partner törlése
+3. A **frissítés Partner**, hajtsa végre a módosításokat.
+Miután elkészült, válassza ki azt **mentése**. 
 
-1. Válassza ki a **partnerek** csempére.
-2. A Partner után panel nyílik meg, válassza ki a törölni kívánt partnert.
-3. Válasszon **törlése**.
+   ![Ellenőrizze, és mentse a módosításokat](./media/logic-apps-enterprise-integration-partners/edit-2.png)
 
-    ![](./media/logic-apps-enterprise-integration-partners/delete-1.png)
+   A módosítások visszavonásához jelölje ki a **elvetése**.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="delete-partner"></a>Partner törlése
+
+1. Az a [Azure-portálon](https://portal.azure.com), található, és válassza ki a integrációs fiókját. Válassza ki a **partnerek** csempére.
+
+   ![Válassza a "Partners" csempe](./media/logic-apps-enterprise-integration-partners/delete.png)
+
+2. A **partnerek**, válassza ki a törölni kívánt partnert.
+Válasszon **törlése**.
+
+   ![Partner törlése](./media/logic-apps-enterprise-integration-partners/delete-1.png)
+
+## <a name="next-steps"></a>További lépések
+
 * [További információ a megállapodások](../logic-apps/logic-apps-enterprise-integration-agreements.md "vállalati integrációs megállapodások ismertetése")  
 

@@ -12,13 +12,13 @@ ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 12/22/2017
+ms.date: 02/23/2018
 ms.author: ryanwi
-ms.openlocfilehash: 5c1f485812918397b5b52e650611032c9058e3ee
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 5b30d3732ff00e5bb79e2d58a9f0b3e5b29dedf8
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="sfctl-service"></a>sfctl service
 Létrehozása, törlése, és szolgáltatás, a típusú szolgáltatásokat és a service-csomagok kezelése.
@@ -34,6 +34,7 @@ Létrehozása, törlése, és szolgáltatás, a típusú szolgáltatásokat és 
 |    telepített típusa  | A Service Fabric-fürt egyik csomópontján központilag telepített alkalmazás egy megadott szolgáltatás típusú információ lekérése.|
 |    deployed-type-list| A Service Fabric-fürt egyik csomópontján telepített alkalmazások szolgáltatástípusok kapcsolatos információt tartalmazó listájának beolvasása.|
 |    leírás    | Lekérdezi a meglévő Service Fabric szolgáltatás leírását.|
+|get-container-logs| A Service Fabric-csomópont telepítve tároló tároló naplóinak beolvasása.|
 |    állapot         | A megadott Service Fabric-szolgáltatás állapotának beolvasása.|
 |    információ           | Az adott szolgáltatás a Service Fabric-alkalmazás tartozó információ lekérése.|
 |    lista           | Az alkalmazás azonosítóját. a megadott alkalmazáshoz tartozó összes szolgáltatás információ lekérése|
@@ -56,7 +57,7 @@ A leírás hoz létre a megadott Service Fabric-szolgáltatás.
 
 |Argumentum|Leírás|
 | --- | --- |
-| --app-id [szükséges]| Az alkalmazás identitását. Ez általában az a teljes azonosító nélkül az alkalmazás a "fabric:" URI-séma. 6.0-s verzió-től kezdődő, hierarchikus nevek vannak tagolva a "~" karakterrel. Például, ha az alkalmazás neve "fabric://myapp/app1", az Alkalmazásidentitás lenne "myapp ~ az app1" 6.0 + és "myapp/app1" korábbi verzióiban.|
+| --app-id [szükséges]| Az alkalmazás identitását. Ez általában az a teljes azonosító nélkül az alkalmazás a "fabric:" URI-séma. 6.0-s verzió-től kezdődő, hierarchikus nevek vannak tagolva a "~" karakterrel. Például, ha az alkalmazás neve nem "fabric: / myapp/app1", az Alkalmazásidentitás lenne "myapp ~ az app1" 6.0 + és "myapp/app1" korábbi verzióiban.|
 | --a név [szükséges]| A szolgáltatás neve. Ezt az azonosítót. gyermeke kell           Ez az a teljes név többek között a `fabric:` URI. Például szolgáltatás `fabric:/A/B` alkalmazás gyermeke `fabric:/A`.|
 | --szolgáltatástípus [szükséges]| A szolgáltatás típusának neve.|
 | --aktiválási mód     | Az aktiválás módja a service-csomag.|
@@ -104,7 +105,7 @@ Törli a meglévő Service Fabric-szolgáltatás. Egy szolgáltatás akkor törl
 
 |Argumentum|Leírás|
 | --- | --- |
-| – [szükséges] szolgáltatás azonosítója| A szolgáltatás identitásának. Ez általában az a teljes nevet, a szolgáltatás nélkül a "fabric:" URI-séma. 6.0-s verzió-től kezdődő, hierarchikus nevek vannak tagolva a "~" karakterrel. Például, ha a szolgáltatás neve megkülönbözteti fabric://myapp/app1/svc1 ", a szolgáltatás identitás lenne" myapp ~ az app1 ~ svc1 "6.0 + és" myapp/app1/svc1"korábbi verzióiban.|
+| – [szükséges] szolgáltatás azonosítója| A szolgáltatás identitásának. Ez általában az a teljes nevet, a szolgáltatás nélkül a "fabric:" URI-séma. 6.0-s verzió-től kezdődő, hierarchikus nevek vannak tagolva a "~" karakterrel. Például, ha a szolgáltatás neve megkülönbözteti a fabric: / myapp/app1/svc1 ", a szolgáltatás identitás lenne" myapp ~ app1 ~ svc1 "6.0 + és" myapp/app1/svc1"a korábbi verziókban.|
 | --force-remove      | Távolítsa el a Service Fabric-alkalmazás vagy szolgáltatás kényszerített módon a biztonságos leállításának feladatütemezési áthaladás nélkül. Ez a paraméter használható kényszerített módon törli egy alkalmazás vagy szolgáltatás mely törlésre van, amely megakadályozza, hogy a kódjának hibái miatt csatornainicializálásnak szabályos replikák zárja be.|
 | – időtúllépés -t        | Időtúllépését másodpercben.  Alapértelmezett: 60.|
 
@@ -127,7 +128,7 @@ Lekérdezi a meglévő Service Fabric szolgáltatás leírását. A szolgáltat�
 
 |Argumentum|Leírás|
 | --- | --- |
-| – [szükséges] szolgáltatás azonosítója| A szolgáltatás identitásának. Ez általában az a teljes nevet, a szolgáltatás nélkül a "fabric:" URI-séma. 6.0-s verzió-től kezdődő, hierarchikus nevek vannak tagolva a "~" karakterrel. Például, ha a szolgáltatás neve "fabric://myapp/app1/svc1", a szolgáltatás identitás lenne "myapp ~ az app1 ~ svc1" 6.0 + és "myapp/app1/svc1" korábbi verzióiban.|
+| – [szükséges] szolgáltatás azonosítója| A szolgáltatás identitásának. Ez általában az a teljes nevet, a szolgáltatás nélkül a "fabric:" URI-séma. 6.0-s verzió-től kezdődő, hierarchikus nevek vannak tagolva a "~" karakterrel. Például, ha a szolgáltatás neve "fabric: / myapp/app1/svc1", a szolgáltatás identitás lenne "myapp ~ app1 ~ svc1" 6.0 + és "myapp/app1/svc1" a korábbi verziókban.|
 | – időtúllépés -t        | Időtúllépését másodpercben.  Alapértelmezett: 60.|
 
 ### <a name="global-arguments"></a>Globális argumentumok
@@ -143,13 +144,13 @@ Lekérdezi a meglévő Service Fabric szolgáltatás leírását. A szolgáltat�
 ## <a name="sfctl-service-health"></a>sfctl szolgáltatásának állapota
 A megadott Service Fabric-szolgáltatás állapotának beolvasása.
 
-Lekérdezi a megadott szolgáltatás az egészségügyi adatokat. Az EventsHealthStateFilter küldött, az állapota alapján a szolgáltatás állapotával kapcsolatos események gyűjtése szűréséhez használja. Használja a PartitionsHealthStateFilter szűrése adott vissza partíciók száma a gyűjteményben. Ha megad egy szolgáltatás, amely a health Store adatbázisban nem létezik, ez a parancsmag hibát ad vissza. .
+Lekérdezi a megadott szolgáltatás az egészségügyi adatokat. Az EventsHealthStateFilter küldött, az állapota alapján a szolgáltatás állapotával kapcsolatos események gyűjtése szűréséhez használja. Használja a PartitionsHealthStateFilter szűrése adott vissza partíciók száma a gyűjteményben. Ha megad egy szolgáltatás, amely a health Store adatbázisban nem létezik, ez a parancsmag hibát ad vissza.
 
 ### <a name="arguments"></a>Argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| – [szükséges] szolgáltatás azonosítója| A szolgáltatás identitásának. Ez általában az a teljes nevet, a szolgáltatás nélkül a "fabric:" URI-séma. 6.0-s verzió-től kezdődő, hierarchikus nevek vannak tagolva a "~" karakterrel. Például, ha a szolgáltatás neve "fabric://myapp/app1/svc1", a szolgáltatás identitás lenne "myapp ~ az app1 ~ svc1" 6.0 + és "myapp/app1/svc1" korábbi verzióiban.|
+| – [szükséges] szolgáltatás azonosítója| A szolgáltatás identitásának. Ez általában az a teljes nevet, a szolgáltatás nélkül a "fabric:" URI-séma. 6.0-s verzió-től kezdődő, hierarchikus nevek vannak tagolva a "~" karakterrel. Például, ha a szolgáltatás neve "fabric: / myapp/app1/svc1", a szolgáltatás identitás lenne "myapp ~ app1 ~ svc1" 6.0 + és "myapp/app1/svc1" a korábbi verziókban.|
 | --events-health-state-filter | A gyűjtemény által visszaadott HealthEvent objektumok állapota alapján szűrését teszi lehetővé. Ez a paraméter lehetséges értékei közé tartozik a következő állapotok közül az egyik egész értéket. Csak a szűrőnek megfelelő események adja vissza. Összes esemény összesített állapotát értékeléséhez használt. Ha nincs megadva, a rendszer összes bejegyzés is megjelennek. Az állapot értékei jelző-alapú számbavétel, az érték lehet ezeket az értékeket bitenkénti "Vagy" operátor segítségével. Például ha a megadott érték azonban 6 majd az OK (2) és a figyelmeztető (4) HealthState értékkel rendelkező események is megjelennek. -Alapértelmezett - alapértelmezett értéket. Bármely HealthState megegyezik. A tulajdonság értéke nulla. -None - szűrőt, amely nem egyezik a HealthState értékét. Ahhoz, hogy nincs eredményeket egy adott gyűjtemény állapotok használt. Az érték 1. -Ok - szűrheti, hogy egyező bemeneti érték a HealthState az OK gombra. A 2 érték. -A figyelmeztetési - szűrő, hogy egyező bemeneti healthstate értékét figyelmeztetés. Az érték 4. -Hiba – hiba HealthState értékű bemeneti egyező szűrő. A értéke 8. -Az összes - szűrő, amely megfelel a bemeneti bármely HealthState értékkel. Az érték 65535.|
 |--exclude-health-statistics     | Azt jelzi, hogy a health statisztika vissza kell adni az a lekérdezés eredménye részeként. Alapértelmezés szerint FALSE. A statisztika megjelenítése a hány gyermeke lehet entitások állapota Ok, figyelmeztetés és hiba.|
 | --partitions-health-state-filter| Lehetővé teszi, hogy a partíciók egészségügyi állapot objektumok szűrése az eredmény abban a állapota alapján szolgáltatás állapotának lekérdezés eredménye. Ez a paraméter lehetséges értékei közé tartozik a következő állapotok közül az egyik egész értéket. Csak azokat a partíciókat a szűrőnek megfelelő adja vissza. Minden olyan partíciónak összesített állapotát értékeléséhez használt. Ha nincs megadva, a rendszer összes bejegyzés is megjelennek. Az állapot értékei jelző-alapú számbavétel, az érték lehet ezeket az értékeket bitenkénti "Vagy" operátor segítségével. Például ha a megadott érték azonban "6" majd állapotát a partíciók OK (2) és a figyelmeztető (4) a HealthState értékét is megjelennek. -Alapértelmezett - alapértelmezett értéket. Bármely HealthState megegyezik.                  A tulajdonság értéke nulla. -None - szűrőt, amely nem egyezik a HealthState értékét. Ahhoz, hogy nincs eredményeket egy adott gyűjtemény állapotok használt. Az érték 1. -Ok - szűrheti, hogy egyező bemeneti érték a HealthState az OK gombra. A 2 érték. -A figyelmeztetési - szűrő, hogy egyező bemeneti healthstate értékét figyelmeztetés. Az érték 4. -Hiba – hiba HealthState értékű bemeneti egyező szűrő. A értéke 8. -Az összes - szűrő, amely megfelel a bemeneti bármely HealthState értékkel. Az érték 65535.|
@@ -174,8 +175,8 @@ A megadott Service Fabric-alkalmazáshoz tartozó megadott szolgáltatás inform
 
 |Argumentum|Leírás|
 | --- | --- |
-| – [szükséges] alkalmazás-azonosító| Az alkalmazás identitását. Ez általában az nélkül az alkalmazás teljes nevét a "fabric:" URI-séma. 6.0-s verzió-től kezdődő, hierarchikus nevek vannak tagolva a "~" karakterrel. Például, ha az alkalmazás neve "fabric://myapp/app1", az Alkalmazásidentitás lenne "myapp ~ az app1" 6.0 + és "myapp/app1" korábbi verzióiban.|
-| – [szükséges] szolgáltatás azonosítója| A szolgáltatás identitásának. Ez általában az a teljes nevet, a szolgáltatás nélkül a "fabric:" URI-séma. 6.0-s verzió-től kezdődő, hierarchikus nevek vannak tagolva a "~" karakterrel. Például, ha a szolgáltatás neve "fabric://myapp/app1/svc1", a szolgáltatás identitás lenne "myapp ~ az app1 ~ svc1" 6.0 + és "myapp/app1/svc1" korábbi verzióiban.|
+| – [szükséges] alkalmazás-azonosító| Az alkalmazás identitását. Ez általában az nélkül az alkalmazás teljes nevét a "fabric:" URI-séma. 6.0-s verzió-től kezdődő, hierarchikus nevek vannak tagolva a "~" karakterrel. Például, ha az alkalmazás neve nem "fabric: / myapp/app1", az Alkalmazásidentitás lenne "myapp ~ az app1" 6.0 + és "myapp/app1" korábbi verzióiban.|
+| – [szükséges] szolgáltatás azonosítója| A szolgáltatás identitásának. Ez általában az a teljes nevet, a szolgáltatás nélkül a "fabric:" URI-séma. 6.0-s verzió-től kezdődő, hierarchikus nevek vannak tagolva a "~" karakterrel. Például, ha a szolgáltatás neve "fabric: / myapp/app1/svc1", a szolgáltatás identitás lenne "myapp ~ app1 ~ svc1" 6.0 + és "myapp/app1/svc1" a korábbi verziókban.|
 | – időtúllépés -t            | Időtúllépését másodpercben.  Alapértelmezett: 60.|
 
 ### <a name="global-arguments"></a>Globális argumentumok
@@ -197,7 +198,7 @@ Az alkalmazás azonosítóját. a megadott alkalmazáshoz tartozó összes szolg
 
 |Argumentum|Leírás|
 | --- | --- |
-| – [szükséges] alkalmazás-azonosító| Az alkalmazás identitását. Ez általában az nélkül az alkalmazás teljes nevét a "fabric:" URI-séma. 6.0-s verzió-től kezdődő, hierarchikus nevek vannak tagolva a "~" karakterrel. Például, ha az alkalmazás neve "fabric://myapp/app1", az Alkalmazásidentitás lenne "myapp ~ az app1" 6.0 + és "myapp/app1" korábbi verzióiban.|
+| – [szükséges] alkalmazás-azonosító| Az alkalmazás identitását. Ez általában az nélkül az alkalmazás teljes nevét a "fabric:" URI-séma. 6.0-s verzió-től kezdődő, hierarchikus nevek vannak tagolva a "~" karakterrel. Például, ha az alkalmazás neve nem "fabric: / myapp/app1", az Alkalmazásidentitás lenne "myapp ~ az app1" 6.0 + és "myapp/app1" korábbi verzióiban.|
 | ---folytatási    | A folytatási támogatójogkivonat-paramétere a következő set eredmények beszerzésére szolgál. Az eredményeket a rendszer egyetlen válasz nem férnek el a folytatási kód nem üres érték szerepel az API-t adott válaszokat. Ha ez az érték átadása a következő API-hívás, hogy az API-t az eredmények következő készletet ad vissza. Ha nincsenek további eredmények, majd az a folytatási kód nem tartalmaz értéket. Ez a paraméter értéke nem lehet URL-kódolású.|
 | --service-type-name     | A szolgáltatás típusának neve lekérdezni a szolgáltatások szűrésére használatos.|
 | – időtúllépés -t            | Időtúllépését másodpercben.  Alapértelmezett: 60.|
@@ -245,7 +246,7 @@ Azt jelzi, hogy a Service Fabric-fürt, hogy kell-e megpróbálni helyreállíta
 
 |Argumentum|Leírás|
 | --- | --- |
-| – [szükséges] szolgáltatás azonosítója| A szolgáltatás identitásának. Ez általában az a teljes nevet, a szolgáltatás nélkül a "fabric:" URI-séma. 6.0-s verzió-től kezdődő, hierarchikus nevek vannak tagolva a "~" karakterrel. Például, ha a szolgáltatás neve megkülönbözteti fabric://myapp/app1/svc1 ", a szolgáltatás identitás lenne" myapp ~ az app1 ~ svc1 "6.0 + és" myapp/app1/svc1"korábbi verzióiban.|
+| – [szükséges] szolgáltatás azonosítója| A szolgáltatás identitásának. Ez általában az a teljes nevet, a szolgáltatás nélkül a "fabric:" URI-séma. 6.0-s verzió-től kezdődő, hierarchikus nevek vannak tagolva a "~" karakterrel. Például, ha a szolgáltatás neve megkülönbözteti a fabric: / myapp/app1/svc1 ", a szolgáltatás identitás lenne" myapp ~ app1 ~ svc1 "6.0 + és" myapp/app1/svc1"a korábbi verziókban.|
 | – időtúllépés -t        | Időtúllépését másodpercben.  Alapértelmezett: 60.|
 
 ### <a name="global-arguments"></a>Globális argumentumok
@@ -267,7 +268,7 @@ Hárítsa el a Service Fabric szolgáltatás partíció, a szolgáltatás replik
 
 |Argumentum|Leírás|
 | --- | --- |
-| – [szükséges] szolgáltatás azonosítója| A szolgáltatás identitásának. Ez általában az a teljes nevet, a szolgáltatás nélkül a "fabric:" URI-séma. 6.0-s verzió-től kezdődő, hierarchikus nevek vannak tagolva a "~" karakterrel. Például, ha a szolgáltatás neve "fabric://myapp/app1/svc1", a szolgáltatás identitás lenne "myapp ~ az app1 ~ svc1" 6.0 + és "myapp/app1/svc1" korábbi verzióiban.|
+| – [szükséges] szolgáltatás azonosítója| A szolgáltatás identitásának. Ez általában az a teljes nevet, a szolgáltatás nélkül a "fabric:" URI-séma. 6.0-s verzió-től kezdődő, hierarchikus nevek vannak tagolva a "~" karakterrel. Például, ha a szolgáltatás neve "fabric: / myapp/app1/svc1", a szolgáltatás identitás lenne "myapp ~ app1 ~ svc1" 6.0 + és "myapp/app1/svc1" a korábbi verziókban.|
 | --partíció-kulcs-típusa| A partíciós kulcs típusa. E paraméter megadása kötelező, ha a szolgáltatás partícióséma Int64Range vagy név. A lehetséges értékek követi. -Nincs (1) – azt jelzi, hogy a PartitionKeyValue paraméter nincs megadva. Ez a partíciók particionálás egypéldányosként séma érvénytelen. Ez az alapértelmezett érték. Az érték 1. -Int64Range (2) – azt jelzi, hogy a PartitionKeyValue paraméter egy int64 partíciós kulcs. Ez a partíciók particionálás Int64Range séma érvénytelen. A 2 érték. -Nevű (3) – azt jelzi, hogy a PartitionKeyValue paraméter a partíció nevét. Ez a partíciók particionálás nevesített séma érvénytelen. Az érték 3.|
 | --partition-key-value  | Partíciós kulcs. Ez azért szükséges, ha a szolgáltatás partícióséma Int64Range vagy név.|
 | --previous-rsp-version | A korábban fogadott válasz a verzió mező értéke. Ez azért szükséges, ha a felhasználó ismer, hogy az eredmény volt azonosítóértékeket korábban már elavult.|
@@ -290,7 +291,7 @@ Frissíti az adott szolgáltatást az adott frissítés leírása.
 
 |Argumentum|Leírás|
 | --- | --- |
-| – [szükséges] szolgáltatás azonosítója| A célszolgáltatás frissítéséhez. Ez általában az a teljes azonosító nélkül a szolgáltatást a "fabric:" URI-séma. 6.0-s verzió-től kezdődő, hierarchikus nevek vannak tagolva a "~" karakterrel. Például, ha a szolgáltatás neve "fabric://myapp/app1/svc1", a szolgáltatás identitás lenne "myapp ~ az app1 ~ svc1" 6.0 + és "myapp/app1/svc1" korábbi verzióiban.|
+| – [szükséges] szolgáltatás azonosítója| A célszolgáltatás frissítéséhez. Ez általában az a teljes azonosító nélkül a szolgáltatást a "fabric:" URI-séma. 6.0-s verzió-től kezdődő, hierarchikus nevek vannak tagolva a "~" karakterrel. Például, ha a szolgáltatás neve "fabric: / myapp/app1/svc1", a szolgáltatásidentitás lenne "myapp ~ az app1 ~ svc1" 6.0 + és "myapp/app1/svc1" korábbi verzióiban.|
 | --megkötések         | Az egy elhelyezési korlátozás karakterláncként. Egy elhelyezési korlátozás csomópont-tulajdonságok logikai kifejezésen, és lehetővé teszik a szolgáltatás korlátozása adott csomópontok szolgáltatás követelményeinek megfelelően. Például szeretné elhelyezni a csomópontok NodeType esetén kék szolgáltatás adja meg a következőket: "NodeColor kék ==".|
 | --correlated-service  | A célszolgáltatás függ a neve.|
 | --korrelációs         | A szolgáltatás igazítás kapcsolatot használó meglévő szolgáltatással összefüggéseket.|

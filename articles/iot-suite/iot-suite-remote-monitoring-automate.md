@@ -7,16 +7,16 @@ author: dominicbetts
 manager: timlt
 ms.author: dobett
 ms.service: iot-suite
-ms.date: 12/12/2017
+ms.date: 02/22/2018
 ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: e00c4ab2fc8bb13a765f7c2154555607dddfc651
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: 9d9fbefd81fed506bcc025fa0f44315ec831cf0d
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="detect-issues-using-threshold-based-rules"></a>Küszöbérték-alapú szabályok használatával kapcsolatos problémák észlelése
 
@@ -66,7 +66,7 @@ A szabály létrehozásához a következő értékeket használja:
 
 | Beállítás          | Érték                                 |
 | ---------------- | ------------------------------------- |
-| Név             | Hűtő figyelmeztetés                       |
+| Name (Név)             | Hűtő figyelmeztetés                       |
 | Forrás           | **Hőmérsékletű** eszközcsoport             |
 | Eseményindító mező    | pressure                              |
 | Eseményindító operátor | Nagyobb mint                          |
@@ -98,7 +98,7 @@ Véglegesen törli a szabály, válassza ki a szabály a szabályok listáját, 
 
 Egyszerre több szabály törölheti, ha több szabály válassza ki a listában.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez az oktatóanyag bemutatta, hogyan számára:
 

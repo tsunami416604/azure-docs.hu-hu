@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: Active
-ms.date: 02/12/2018
+ms.date: 02/26/2018
 ms.author: carlrab
-ms.openlocfilehash: c0dc3181d3cd5c642dfca1c0f6031b83726478c0
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: b36af32d900f9426424dd08c43946e7dcb5b39b9
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="what-are-azure-sql-database-service-tiers"></a>Mik az Azure SQL Database szolgáltatási szinteket?
 
@@ -35,8 +35,8 @@ Elsősorban az üzletmenet folytonosságát, a tároló és a teljesítményre v
 |SLA-ban garantált üzemidő|99.99%|99.99%|99.99%|Nincs kép nézetben|
 |Biztonsági mentés megőrzése|7 nap|35 nap|35 nap|
 |CPU|Alacsony|Alacsony, közepes, magas|Közepes, magas|
-|IO átviteli sebesség|Alacsony  | Közepes | Ez ezerszer nagyobb, mint a Standard|
-|I/O várakozási ideje|Prémium szintű nagyobb|Prémium szintű nagyobb|Alacsonyabb, mint a Basic és Standard|
+|IO átviteli sebesség (hozzávetőleges) |2.5 DTU iops-értéket  | 2.5 DTU iops-értéket | DTU 48 iops-értéket|
+|I/O várakozási ideje (hozzávetőleges)|10 ms (írás) (olvasás), 5 ms|10 ms (írás) (olvasás), 5 ms|2 ms (olvasás/írás)|
 |Oszlopcentrikus indexelő és a memórián belüli online Tranzakciófeldolgozási|–|–|Támogatott|
 |||||
 

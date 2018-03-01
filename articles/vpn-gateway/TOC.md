@@ -1,3 +1,5 @@
+# [A VPN Gateway dokumentációja](index.md)
+
 # Áttekintés
 ## [Információk a VPN Gateway-ről](vpn-gateway-about-vpngateways.md)
 ## [VPN Gateway – gyakori kérdések](vpn-gateway-vpn-faq.md)

@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2018
+ms.date: 02/26/2018
 ms.author: jingwang
-ms.openlocfilehash: e4d14f396b3a928975b671d10254cfbcc822a0d3
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: a4d2ccb4b4ba27983537f26e66b5c279f427d466
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="copy-data-to-or-from-azure-sql-database-by-using-azure-data-factory"></a>Másolja a adatok vagy az Azure SQL Database az Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -35,9 +35,12 @@ A/az Azure SQL Database-adatok másolása bármely támogatott fogadó adattár,
 
 Pontosabban Ez az Azure SQL Database az összekötő támogatja:
 
-- SQL-hitelesítéssel adatok másolását.
+- Adatok másolása **SQL-hitelesítés**, és **Azure Active Directory-alkalmazás tokent használó hitelesítés** egyszerű vagy a kezelt Service Identity (MSI).
 - Forrásként SQL-lekérdezést vagy tárolt eljárás használatával adatok beolvasása.
 - A fogadó, mint Hozzáfűzés adatok, célként megadott táblája vagy egyéni logikával tárolt eljárás meghívása másolása során.
+
+> [!IMPORTANT]
+> Ha a Másolás Azure integrációs futásidejű használatával konfigurálja [Azure SQL-kiszolgáló tűzfal](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure) való [a kiszolgálóhoz való hozzáféréshez Azure-szolgáltatások engedélyezése](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure). Ha a Másolás Self-hosted integrációs futásidejű használatával konfigurálása az Azure SQL-kiszolgáló tűzfal engedélyezze a megfelelő IP-címtartomány, beleértve a gép IP-cím segítségével csatlakozzon az Azure SQL Database.
 
 ## <a name="getting-started"></a>Első lépések
 
@@ -52,13 +55,21 @@ A következő tulajdonságok támogatottak csatolt Azure SQL Database szolgálta
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A type tulajdonságot kell beállítani: **AzureSqlDatabase** | Igen |
-| connectionString |Adja meg az Azure SQL Database-példányt a connectionString tulajdonság való kapcsolódáshoz szükséges adatokat. Csak az alapszintű hitelesítést is támogatja. Ez a mező megjelölése a SecureString tárolja biztonságos helyen, a Data factoryban vagy [hivatkozik az Azure Key Vault tárolt titkos kulcs](store-credentials-in-key-vault.md). |Igen |
+| connectionString |Adja meg az Azure SQL Database-példányt a connectionString tulajdonság való kapcsolódáshoz szükséges adatokat. Ez a mező megjelölése a SecureString tárolja biztonságos helyen, a Data factoryban vagy [hivatkozik az Azure Key Vault tárolt titkos kulcs](store-credentials-in-key-vault.md). |Igen |
+| servicePrincipalId | Adja meg az alkalmazás ügyfél-azonosítót. | Igen, a szolgáltatás egyszerű AAD-hitelesítés használatakor. |
+| servicePrincipalKey | Adja meg az alkalmazás kulcsot. Ez a mező megjelölése a SecureString tárolja biztonságos helyen, a Data factoryban vagy [hivatkozik az Azure Key Vault tárolt titkos kulcs](store-credentials-in-key-vault.md). | Igen, a szolgáltatás egyszerű AAD-hitelesítés használatakor. |
+| bérlő | Adja meg a bérlői adatokat (tartomány nevét vagy a bérlő azonosító) alatt az alkalmazás található. Azt az Azure-portál jobb felső sarkában az egér rámutató által kérheti le. | Igen, a szolgáltatás egyszerű AAD-hitelesítés használatakor. |
 | connectVia | A [integrációs futásidejű](concepts-integration-runtime.md) csatlakozni az adattárolóhoz használandó. Használhat Azure integrációs futásidejű vagy Self-hosted integrációs futásidejű (amennyiben az adattároló magánhálózaton található). Ha nincs megadva, akkor használja az alapértelmezett Azure integrációs futásidejű. |Nem |
 
-> [!IMPORTANT]
-> Konfigurálása [Azure SQL Database-tűzfal](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure) az adatbázis-kiszolgálót [a kiszolgálóhoz való hozzáféréshez Azure-szolgáltatások engedélyezése](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure). Emellett konfigurálhatja az adatokat az Azure SQL Database külső az Azure data Factory a helyszíni adatforrásokból beleértve önálló üzemeltetett integrációs futásidejű másolása, megfelelő IP-címtartományt, a gép, amely adatokat küld az Azure SQL Az adatbázis.
+Különböző hitelesítési típusok tekintse meg az alábbi szakaszok az Előfeltételek és a JSON-minták osztályban:
 
-**Példa**
+- [SQL-hitelesítéssel](#using-sql-authentication)
+- [AAD-alkalmazást a hitelesítési jogkivonat - szolgáltatás egyszerű használatával](#using-service-principal-authentication)
+- [AAD-alkalmazást token hitelesítés - felügyelt szolgáltatás identitás használatával](#using-managed-service-identity-authentication)
+
+### <a name="using-sql-authentication"></a>SQL-hitelesítéssel
+
+**SQL-hitelesítéssel kapcsolódószolgáltatás-példa:**
 
 ```json
 {
@@ -69,6 +80,113 @@ A következő tulajdonságok támogatottak csatolt Azure SQL Database szolgálta
             "connectionString": {
                 "type": "SecureString",
                 "value": "Server=tcp:<servername>.database.windows.net,1433;Database=<databasename>;User ID=<username>@<servername>;Password=<password>;Trusted_Connection=False;Encrypt=True;Connection Timeout=30"
+            }
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
+### <a name="using-service-principal-authentication"></a>Szolgáltatás egyszerű hitelesítést használó
+
+Szolgáltatás egyszerű AAD alkalmazás jogkivonat hitelesítési módszer használatához kövesse az alábbi lépéseket:
+
+1. **[Egy Azure Active Directory-alkalmazás létrehozása az Azure-portálon](../azure-resource-manager/resource-group-create-service-principal-portal.md#create-an-azure-active-directory-application).**  Jegyezze fel az alkalmazás nevét, és a következő értékek, melynek segítségével határozza meg a társított szolgáltatás:
+
+    - Alkalmazásazonosító
+    - Alkalmazás kulcs
+    - Bérlőazonosító
+
+2. **[Egy Azure Active Directory-rendszergazda kiépítése](../sql-database/sql-database-aad-authentication-configure.md#create-an-azure-ad-administrator-for-azure-sql-server)**  az Azure SQL Server az Azure portálon, ha még nem tette meg. Az AAD-rendszergazda egy AAD-felhasználó vagy csoport aad-ben, de nem lehet egy egyszerű szolgáltatást. Ebben a lépésben végezhető el, hogy a későbbi lépésben az AAD-identitása segítségével hozzon létre egy tartalmazott adatbázis-felhasználó, a szolgáltatás egyszerű.
+
+3. **Hozzon létre egy tartalmazott adatbázis-felhasználó a szolgáltatás egyszerű**, /, amely kívánja adatok például az SSMS használatával másolja az adatbázist a összekötésével egy AAD-ben identitás rendelkezik legalább ALTER minden FELHASZNÁLÓNAK engedélyt, és a következő T-SQL végrehajtása. További tudnivalókért a tartalmazott adatbázis-felhasználót [Itt](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities).
+    
+    ```sql
+    CREATE USER [your application name] FROM EXTERNAL PROVIDER;
+    ```
+
+4. **Adja meg a szükséges engedélyekkel a szolgáltatás egyszerű** szokásos módon az SQL-felhasználók, pl. alatt végrehajtásával:
+
+    ```sql
+    EXEC sp_addrolemember '[your application name]', 'readonlyuser';
+    ```
+
+5. A ADF konfigurálja a kapcsolódó Azure SQL Database szolgáltatásnak.
+
+
+**Szolgáltatás egyszerű hitelesítést használ a társított szolgáltatás példa:**
+
+```json
+{
+    "name": "AzureSqlDbLinkedService",
+    "properties": {
+        "type": "AzureSqlDatabase",
+        "typeProperties": {
+            "connectionString": {
+                "type": "SecureString",
+                "value": "Server=tcp:<servername>.database.windows.net,1433;Database=<databasename>;User ID=<username>@<servername>;Password=<password>;Trusted_Connection=False;Encrypt=True;Connection Timeout=30"
+            },
+            "servicePrincipalId": "<service principal id>",
+            "servicePrincipalKey": {
+                "type": "SecureString",
+                "value": "<service principal key>"
+            },
+            "tenant": "<tenant info, e.g. microsoft.onmicrosoft.com>"
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
+### <a name="using-managed-service-identity-authentication"></a>Felügyelt identitás-hitelesítéssel
+
+Egy adat-előállító társítható egy [-identitás (MSI)](data-factory-service-identity.md), amely jelenti, hogy az adott adat-előállítóban. A szolgáltatásidentitás használható az Azure SQL Database-hitelesítést, amely lehetővé teszi, hogy a kijelölt gyári hozzáférést, és másolja az adatokat a vagy az adatbázis.
+
+Használja az MSI-alapú AAD alkalmazás tokent használó hitelesítés, kövesse az alábbi lépéseket:
+
+1. **Hozzon létre egy csoportot az Azure ad-ben, és adja hozzá a gyári MSI a csoport**.
+
+    a. A data factory szolgáltatásidentitás Azure-portálon található. Nyissa meg a data factory -> tulajdonságai -> másolása a **IDENTITÁS Szolgáltatásazonosító**.
+
+    b. Telepítse a [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2) modul, a bejelentkezéshez `Connect-AzureAD` parancsot, majd futtassa a következő parancsok futtatásával hozzon létre egy csoportot, és adja hozzá a data factory MSI tagja.
+    ```powershell
+    $Group = New-AzureADGroup -DisplayName "<your group name>" -MailEnabled $false -SecurityEnabled $true -MailNickName "NotSet"
+    Add-AzureAdGroupMember -ObjectId $Group.ObjectId -RefObjectId "<your data factory service identity ID>"
+    ```
+
+2. **[Egy Azure Active Directory-rendszergazda kiépítése](../sql-database/sql-database-aad-authentication-configure.md#create-an-azure-ad-administrator-for-azure-sql-server)**  az Azure SQL Server az Azure portálon, ha még nem tette meg. Az AAD-rendszergazda lehet egy AAD felhasználó vagy csoport aad-ben. Ha a csoportban található MSI engedélyez egy rendszergazdai szerepkört, hagyja ki 3. és 4 alatt, a rendszergazda a DB teljes hozzáféréssel rendelkezik.
+
+3. **Hozzon létre egy tartalmazott adatbázis-felhasználót az AAD-csoport**, /, amely kívánja adatok például az SSMS használatával másolja az adatbázist a összekötésével egy AAD-ben identitás rendelkezik legalább ALTER minden FELHASZNÁLÓNAK engedélyt, és a következő T-SQL végrehajtása. További tudnivalókért a tartalmazott adatbázis-felhasználót [Itt](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities).
+    
+    ```sql
+    CREATE USER [your AAD group name] FROM EXTERNAL PROVIDER;
+    ```
+
+4. **Adja meg a szükséges engedélyekkel az AAD-csoport** szokásos módon az SQL-felhasználók, pl. alatt végrehajtásával:
+
+    ```sql
+    EXEC sp_addrolemember '[your AAD group name]', 'readonlyuser';
+    ```
+
+5. A ADF konfigurálja a kapcsolódó Azure SQL Database szolgáltatásnak.
+
+**MSI-hitelesítéssel kapcsolódószolgáltatás-példa:**
+
+```json
+{
+    "name": "AzureSqlDbLinkedService",
+    "properties": {
+        "type": "AzureSqlDatabase",
+        "typeProperties": {
+            "connectionString": {
+                "type": "SecureString",
+                "value": "Server=tcp:<servername>.database.windows.net,1433;Database=<databasename>;Connection Timeout=30"
             }
         },
         "connectVia": {

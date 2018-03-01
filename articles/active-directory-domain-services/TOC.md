@@ -1,8 +1,11 @@
+# [Az Azure AD Domain Services dokumentációja](index.md)
+
 # Áttekintés
 ## [Az Azure AD tartományi szolgáltatások ismertetése](active-directory-ds-overview.md)
 ## Ez a megfelelő választás Önnek?
 ### [Összehasonlítás a Windows Server AD-vel](active-directory-ds-comparison.md)
 ### [Összehasonlítás az Azure AD Joinnal](active-directory-ds-compare-with-azure-ad-join.md)
+## [Újdonságok](https://azure.microsoft.com/updates/?product=active-directory-ds)
 ## [Szolgáltatások](active-directory-ds-features.md)
 ## [Forgatókönyvek](active-directory-ds-scenarios.md)
 ## [A szinkronizálás működése](active-directory-ds-synchronization.md)
@@ -16,6 +19,7 @@
 ## [5. feladat: jelszavak szinkronizálásának engedélyezése](active-directory-ds-getting-started-password-sync.md)
 
 # Útmutató
+## [Felügyelt tartomány állapotának az ellenőrzése](active-directory-ds-check-health.md)
 ## [Az Azure AD Domain Services használata az Azure CSP-előfizetésekben](active-directory-ds-csp.md)
 ## [Az Azure AD Domain Services engedélyezése a PowerShell-lel](active-directory-ds-enable-using-powershell.md)
 ## Csatlakozás egy felügyelt tartományhoz
@@ -28,7 +32,7 @@
 ## Felügyelt tartomány kezelése
 ### [Felügyelt tartomány kezelése](active-directory-ds-admin-guide-administer-domain.md)
 ### [DNS-kezelés felügyelt tartományon](active-directory-ds-admin-guide-administer-dns.md)
-### [A tartomány állapotának ellenőrzése](active-directory-ds-check-health.md)
+
 ### Biztonságos LDAP konfigurálása felügyelt tartományhoz
 #### [1. feladat: tanúsítvány beszerzése biztonságos LDAP-hoz](active-directory-ds-admin-guide-configure-secure-ldap.md)
 #### [2. feladat: a megbízható LDAP-tanúsítványának exportálása](active-directory-ds-admin-guide-configure-secure-ldap-export-pfx.md)

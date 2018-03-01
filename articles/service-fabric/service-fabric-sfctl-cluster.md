@@ -12,15 +12,15 @@ ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 12/22/2017
+ms.date: 02/22/2018
 ms.author: ryanwi
-ms.openlocfilehash: 5eeff271fea67cd859dff598cae0010cf3b8e13f
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: c83dc3eeb6ca0d66b0c70236354fd7bab80f355f
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 02/27/2018
 ---
-# <a name="sfctl-cluster"></a>sfctl fürt
+# <a name="sfctl-cluster"></a>sfctl-fürt
 Válassza ki, kezelése és a Service Fabric-fürtök működik.
 
 ## <a name="commands"></a>Parancsok
@@ -144,7 +144,7 @@ Ha csatlakozni a biztonságos fürthöz, adja meg (.crt) tanúsítványt és kul
 ## <a name="sfctl-cluster-unprovision"></a>sfctl fürt unprovision
 Leépíteni a következőt: a kódban, illetve konfigurációs csomagokat a Service Fabric-fürt.
 
-Leépíteni a következőt: a kódban, illetve konfigurációs csomagokat a Service Fabric-fürt.
+Leépíteni a következőt: a kódban, illetve konfigurációs csomagokat a Service Fabric-fürt. Külön-külön leépítése kód és a konfiguráció támogatott.
 
 ### <a name="arguments"></a>Argumentumok
 |Argumentum|Leírás|

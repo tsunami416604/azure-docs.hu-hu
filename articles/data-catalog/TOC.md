@@ -1,3 +1,5 @@
+# [A Data Catalog dokumentációja](index.md)
+
 # Áttekintés
 ## [A Data Catalog ismertetése](data-catalog-what-is-data-catalog.md)
 ## [Gyakori forgatókönyvek](data-catalog-common-scenarios.md)
@@ -7,7 +9,7 @@
 ## [Ismerkedés az Azure Data Catalog szolgáltatással](data-catalog-get-started.md)
 ## [Az Azure Data Catalog bevezetése](data-catalog-adopting-data-catalog.md)
 ## [Előfeltételek](data-catalog-prerequisites.md)
-## [Gyakori kérdések](data-catalog-frequently-asked-questions.md)
+## [GYIK](data-catalog-frequently-asked-questions.md)
 
 # Útmutató
 ## [Adatforrások regisztrálása](data-catalog-how-to-register.md)
@@ -29,13 +31,13 @@
 ## [Keresési szintaxis referenciája](/rest/api/datacatalog/data-catalog-search-syntax-reference)
 ## [Fejlesztői fogalmak](data-catalog-developer-concepts.md)
 
-# Erőforrások
+# További források
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
 ## [Az Azure Data Catalog billentyűparancsai](data-catalog-keyboard-shortcuts.md)
 ## [MSDN-fórum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azuredatacatalog)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/data-catalog/)
 ## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)
-## [Kibocsátási megjegyzések](data-catalog-whats-new.md)
+## [Kiadási megjegyzések](data-catalog-whats-new.md)
 ## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=data-catalog)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-data-catalog)
 ## [Terminológia](data-catalog-terminology.md)

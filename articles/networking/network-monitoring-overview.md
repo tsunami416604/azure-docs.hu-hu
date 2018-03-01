@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ajaycode
-ms.openlocfilehash: 6793bd8d2c561554213e9fe645aab018dba7a925
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 6d93821b59e1f69a48c3d5eeda96dad2edddb188
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="network-monitoring-solutions"></a>A hálózatfigyelési megoldások 
 
@@ -34,7 +34,7 @@ Hálózati teljesítmény figyelése (NPM) képességeket, amelyek részesíti e
 * Küldetési kritikus Többrétegű alkalmazások és micro-szolgáltatások
 * Felhasználói helyek és a webes alkalmazás (HTTP/HTTPs) 
 
-## <a name="performance-monitor"></a>Teljesítményfigyelő
+## <a name="performance-monitor"></a>Teljesítménymonitorozás
 
 Teljesítményfigyelő NPM részét képezi, és a hálózat a felhőhöz, hibrid és a helyszíni környezetek figyelése. Távoli fiókirodai és a fiókirodák, a tárolási helyek, a adatközpontok és a felhők közötti hálózati kapcsolat figyelheti. Mielőtt a felhasználók panaszkodnak mert hálózati problémák észlelését. A főbb előnyei a következők:
 
@@ -43,6 +43,8 @@ Teljesítményfigyelő NPM részét képezi, és a hálózat a felhőhöz, hibri
 * Átmeneti és időpontban hálózati problémák, nehezen replikálása
 * Határozza meg a hálózaton, a teljesítmény csökkenését felelős az adott szegmens
 * A hálózati SNMP szükségessége nélkül állapotának figyelésére
+
+![NPM topológia térkép](./media/network-monitoring-overview/npm-topology-map.png) 
 
 További információkért tekintse meg a következő cikkeket:
 
@@ -64,6 +66,22 @@ További információkért tekintse át a következő cikkeket:
 
 * [Network Performance Monitor for ExpressRoute konfigurálása](../expressroute/how-to-npm.md)
 * [blogbejegyzés](https://aka.ms/NPMExRmonitorGA)
+
+## <a name="service-endpoint-monitor"></a>Szolgáltatási végpont-figyelő
+
+Szolgáltatásvégpont figyeléssel, mostantól reachability alkalmazások tesztelése és a helyszíni, a vivőjel hálózatok és a felhő/titkos adatközpontok között szűk keresztmetszetek észleléséhez.
+
+* Végpontok közötti hálózati kapcsolat alkalmazások figyelése
+* Alkalmazások kézbesítéséhez kivizsgált hálózati teljesítményt, pontos helyét a felhasználó és az alkalmazás között az útvonalon teljesítménycsökkenést észlelése
+* Teszt alkalmazás reachability világszerte több felhasználó helyekről
+* Határozza meg a hálózati késés és a csomag veszteséget az üzletági és SaaS-alkalmazásokhoz
+* Határozza meg a hálózaton, gyenge alkalmazásteljesítmény okozó interaktív területek
+* Az Office 365 alkalmazásra, beépített tesztek a Microsoft Office 365, Dynamics 365, a Skype vállalati verzió és más Microsoft-szolgáltatásokban elérhetőség figyelésére
+
+További információkért tekintse át a következő cikkeket:
+
+* [Hálózati Teljesítményfigyelő Szolgáltatásvégpontok figyelés konfigurálása](https://aka.ms/applicationconnectivitymonitorguide)
+* [blogbejegyzés](https://aka.ms/svcendptmonitor)
 
 ## <a name="next-steps"></a>További lépések
 

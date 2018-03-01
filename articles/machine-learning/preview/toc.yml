@@ -9,17 +9,17 @@
       href: model-management-overview.md
 - name: Gyors útmutatók
   items:
-    - name: Telepítés és létrehozás
+    - name: Telepítés és indítás
       href: quickstart-installation.md
 - name: Oktatóanyagok
   items:
-    - name: 1 – Adatok előkészítése
+    - name: '1: Adatok előkészítése'
       href: tutorial-classifying-iris-part-1.md
-    - name: 2 – Modell létrehozása
+    - name: '2: Modellek létrehozása'
       href: tutorial-classifying-iris-part-2.md
-    - name: 3 – Modell üzembe helyezése
+    - name: '3: Modellek üzembe helyezése'
       href: tutorial-classifying-iris-part-3.md
-    - name: 4 – Fejlett adatelőkészítés
+    - name: '4: Fejlett adat-előkészítés'
       href: tutorial-bikeshare-dataprep.md
 - name: Alapelvek
   items:

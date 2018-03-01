@@ -77,6 +77,10 @@
       items:
         - name: A Kubernetes-irányítópult használata
           href: kubernetes-dashboard.md
+    - name: Hibaelhárítás
+      items:
+        - name: SSH-csomópont elérése
+          href: aks-ssh.md
 - name: Referencia
   items:
     - name: Azure CLI

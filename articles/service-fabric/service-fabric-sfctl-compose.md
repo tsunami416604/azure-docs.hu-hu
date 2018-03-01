@@ -12,15 +12,15 @@ ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 12/22/2017
+ms.date: 02/22/2018
 ms.author: ryanwi
-ms.openlocfilehash: 0e35ac70125bc640114a4492498b12ea96800d42
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 19afd35248cc0796eddbb50db4f38b813f5d568e
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 02/27/2018
 ---
-# <a name="sfctl-compose"></a>sfctl összeállítása
+# <a name="sfctl-compose"></a>sfctl-összeállítás
 Létrehozása, törlése és a Docker Compose központi telepítések felügyeletéhez szükséges.
 
 ## <a name="commands"></a>Parancsok
@@ -160,10 +160,9 @@ Ellenőrzi a megadott frissítési paramétert, és elindítja az üzemelő pél
 | --- | --- |
 |   --debug                      | Naplózási növelése az összes hibakeresési naplók megjelenítése.|
 |    – Súgó -h                    | Ez egy súgóüzenet és kilépési megjelenítése.|
- |   – a kimeneti -o                  | Kimeneti formátum.  Megengedett értékek: json, jsonc, tábla, tsv.
-                                   Alapértelmezett: JSON-ná.|
- |   --lekérdezés                      | JMESPath lekérdezési karakterlánc. További információt és példákat http://jmespath.org/ talál.|
- |   – részletes                    | Naplózási növelése. Használatát – a teljes hibakeresési naplók hibakeresési.|
+|   – a kimeneti -o                  | Kimeneti formátum.  Megengedett értékek: json, jsonc, tábla, tsv. Alapértelmezett: JSON-ná.|
+|   --lekérdezés                      | JMESPath lekérdezési karakterlánc. További információt és példákat http://jmespath.org/ talál.|
+|   – részletes                    | Naplózási növelése. Használatát – a teljes hibakeresési naplók hibakeresési.|
 
 ## <a name="next-steps"></a>További lépések
 - [Állítson be](service-fabric-cli.md) a Service Fabric CLI.

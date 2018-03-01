@@ -9,7 +9,7 @@
   items:
     - name: Databricks-munkaterület létrehozása
       href: quickstart-create-databricks-workspace-portal.md
-- name: Erőforrások
+- name: További források
   items:
     - name: Gyakori kérdések
       href: frequently-asked-questions-databricks.md

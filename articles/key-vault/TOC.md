@@ -1,6 +1,8 @@
+# [A Key Vault dokumentációja](index.md)
+
 # Áttekintés
 ## [A Key Vault ismertetése](key-vault-whatis.md)
-## [Szolgáltatás áttekintése](https://azure.microsoft.com/services/key-vault/)
+## [A szolgáltatás áttekintése](https://azure.microsoft.com/services/key-vault/)
 
 # Bevezetés
 ## [Ismerkedés a Key Vaulttal](key-vault-get-started.md)
@@ -48,13 +50,13 @@
 ### [Tárolók tartalmának kezelése](http://azure.github.io/azure-sdk-for-node/azure-keyvault/latest)
 ## [REST](/rest/api/keyvault)
 
-# Kapcsolódó
+# Kapcsolódó témakörök
 ## [Azure Active Directory](https://azure.microsoft.com/documentation/services/active-directory/)
 ## [Azure Rights Management](https://technet.microsoft.com/en-US/dn175750)
 ## [Bővíthető kulcskezelés a Key Vaulttal](https://msdn.microsoft.com/en-us/library/azure/dn198405)
 ## [Többtényezős hitelesítés](https://azure.microsoft.com/documentation/services/multi-factor-authentication/)
 
-# Erőforrások
+# További források
 ## [A kulcsok, titkos kódok és tanúsítványok ismertetése](https://docs.microsoft.com/rest/api/keyvault/about-keys--secrets-and-certificates)
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=security-identity)
 ## [Blog](http://blogs.technet.com/b/kv/)

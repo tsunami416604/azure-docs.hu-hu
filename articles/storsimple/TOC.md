@@ -1,3 +1,5 @@
+# [A StorSimple dokumentációja](index.md)
+
 # StorSimple Virtual Array
 
 ## Áttekintés

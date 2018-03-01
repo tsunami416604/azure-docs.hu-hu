@@ -1,3 +1,5 @@
+# [A Traffic Manager dokumentációja](index.md)
+
 # Áttekintés
 ## [A Traffic Manager ismertetése](traffic-manager-overview.md)
 ## [Útválasztási módszerek](traffic-manager-routing-methods.md)
@@ -41,12 +43,12 @@
 ## [Python](http://azure-sdk-for-python.readthedocs.io/en/latest/sample_azure-mgmt-trafficmanager.html)
 ## [REST](https://msdn.microsoft.com/library/mt163667.aspx)
 
-# Kapcsolódó
+# Kapcsolódó témakörök
 ## [Application Gateway](/azure/application-gateway/)
 ## [Load Balancer](/azure/load-balancer/)
 ## [Azure DNS](/azure/dns/)
 
-# Erőforrások
+# További források
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
 ## [Blog](https://azure.microsoft.com/blog/topics/networking/)
 ## [MSDN-fórum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=WAVirtualMachinesVirtualNetwork)

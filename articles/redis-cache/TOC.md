@@ -1,3 +1,5 @@
+# [A Redis Cache dokumentációja](index.md)
+
 # Áttekintés
 ##[A Redis Cache használatának előnyei](https://azure.microsoft.com/services/cache/)
 ##[Ismerkedés a prémiumszintű funkciókkal](cache-premium-tier-intro.md)
@@ -57,7 +59,7 @@
 ## [Redis parancsok](http://redis.io/commands#)
 ## [REST](https://docs.microsoft.com/rest/api/redis/)
 
-# Erőforrások
+# További források
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=databases)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/cache/)
 ## [Redis Cache-minták](cache-redis-samples.md)

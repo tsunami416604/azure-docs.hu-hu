@@ -1,10 +1,11 @@
-- name: Azure felügyelt alkalmazások
+- name: Az Azure felügyelt alkalmazások dokumentációja
   href: index.yml
 - name: Áttekintés
   items:
     - name: Tudnivalók a felügyelt alkalmazásokról
       href: overview.md
 - name: Gyors útmutatók
+  expanded: true
   items:
     - name: Felügyelt alkalmazás létrehozása
       href: managed-apps-quickstart-cli.md
@@ -30,7 +31,7 @@
       href: update-managed-resources.md
     - name: Közzététel a portál használatával
       href: publish-portal.md
-- name: Hivatkozás
+- name: Referencia
   items:
     - name: Azure CLI
       href: /cli/azure/managedapp

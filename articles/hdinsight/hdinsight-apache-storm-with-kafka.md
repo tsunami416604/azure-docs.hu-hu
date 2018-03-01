@@ -13,13 +13,13 @@ ms.devlang: java
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 01/31/2018
+ms.date: 02/26/2018
 ms.author: larryfr
-ms.openlocfilehash: 9e714b1dc97fb12c2994537d33cefd98b5c9cf99
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: eca3f95b672a7334d77ac027b4774addf4efed2c
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="use-apache-kafka-with-storm-on-hdinsight"></a>Apache Kafka használata a HDInsight alatt futó Storm
 
@@ -172,7 +172,7 @@ Fluxus topológiák további információkért lásd: [https://storm.apache.org/
     ```
 
     > [!IMPORTANT]
-    > A Bash példa feltételezi, hogy `$CLUSTERNAME` a HDInsight-fürt nevét tartalmazza. Azt is feltételezi, hogy [jq](https://stedolan.github.io/jq/) telepítve van. Amikor a rendszer kéri, adja meg a fürt bejelentkezési fiókjának jelszavát.
+    > A Bash példa feltételezi, hogy `$CLUSTERNAME` a HDInsight-fürt nevét tartalmazza. Azt is feltételezi, hogy [jq](https://stedolan.github.io/jq/) 1.5-ös vagy újabb verziója telepítve van. Amikor a rendszer kéri, adja meg a fürt bejelentkezési fiókjának jelszavát.
 
     A visszaadott érték az alábbihoz hasonló:
 
@@ -218,7 +218,7 @@ Fluxus topológiák további információkért lásd: [https://storm.apache.org/
 4. Mentse a `dev.properties` fájlt, és a következő parancs használatával töltse fel azt a Storm-fürt:
 
      ```bash
-    scp dev.properties USERNAME@storm-BASENAME-ssh.azurehdinsight.net:KafkaTopology-1.0-SNAPSHOT.jar
+    scp dev.properties USERNAME@storm-BASENAME-ssh.azurehdinsight.net:dev.properties
     ```
 
     Cserélje le **felhasználónév** rendelkező a fürthöz az SSH-felhasználónév. Cserélje le **BASENAME** a fürt létrehozásakor használt alap névvel.
@@ -287,6 +287,9 @@ Fluxus topológiák további információkért lásd: [https://storm.apache.org/
     Használja a Ctrl + c leállítja a parancsfájlt.
 
 ## <a name="start-the-reader"></a>Indítsa el az olvasó
+
+> [!NOTE]
+> Az olvasó a Storm felhasználói felületén megtekintésekor láthatja a __topológia spoutokkal kapcsolatban lag hiba__ szakasz. Ehhez a példához figyelmen kívül hagyhatja ezt a hibát.
 
 1. Az SSH-munkamenetet a Storm fürthöz alkalmazás az olvasó topológia indítsa el a következő parancsot:
 
