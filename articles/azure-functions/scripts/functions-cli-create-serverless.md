@@ -1,6 +1,6 @@
 ---
-title: "Az Azure CLI-parancsfájlt minták – a kiszolgáló nélküli végrehajtáshoz függvény-alkalmazás létrehozása |} Microsoft Docs"
-description: "Az Azure CLI-parancsfájlt minták – a kiszolgáló nélküli végrehajtáshoz függvény-alkalmazás létrehozása"
+title: "Azure CLI-példaszkript – Függvényalkalmazás létrehozása kiszolgáló nélküli végrehajtáshoz | Microsoft Docs"
+description: "Azure CLI-példaszkript – Függvényalkalmazás létrehozása kiszolgáló nélküli végrehajtáshoz"
 services: functions
 documentationcenter: functions
 author: syntaxc4
@@ -16,42 +16,44 @@ ms.workload: web
 ms.date: 10/04/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: 9436cafa775f2ad658c0c9901f7f8eae769c7052
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: MT
+ms.openlocfilehash: f3e4ce63a8b418b68494262df8a771ac553ad22d
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/09/2018
 ---
-# <a name="create-a-function-app-for-serverless-execution"></a>A kiszolgáló nélküli végrehajtáshoz függvény-alkalmazás létrehozása
+# <a name="create-a-function-app-for-serverless-code-execution"></a>Függvényalkalmazás létrehozása kiszolgáló nélküli kódvégrehajtáshoz
 
-Ez a parancsfájlpélda hoz létre egy Azure függvény alkalmazást, mert a függvények tárolója. A függvény App létre kell hozni a [fogyasztás terv](../functions-scale.md#consumption-plan), ami ideális eseményvezérelt kiszolgáló nélküli munkaterheléseket.
+Ez az Azure Functions-példaszkript egy függvényalkalmazást hoz létre, amely az Ön függvényeinek tárolójaként szolgál. A függvényalkalmazás létrehozása a [használatalapú csomag](../functions-scale.md#consumption-plan) segítségével történik, amely ideális az eseményvezérelt, kiszolgáló nélküli számítási feladatokhoz.
+
+[!INCLUDE [upgrade runtime](../../../includes/functions-cli-version-note.md)]
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Ha telepítése és a parancssori felület helyileg használata mellett dönt, ez a cikk szükséges az, hogy az Azure parancssori felület verzióját futtatja, 2.0-s vagy újabb. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli). 
+Ha a parancssori felület helyi telepítése és használata mellett dönt, a témakörben leírt lépésekhez az Azure CLI 2.0-s vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli). 
 
-## <a name="sample-script"></a>Mintaparancsfájl
+## <a name="sample-script"></a>Példaszkript
 
-Ezt a parancsfájlt hoz létre egy Azure-függvény alkalmazás használata a [fogyasztás terv](../functions-scale.md#consumption-plan).
+Ez a szkript egy Azure-függvényalkalmazást hoz létre a [használatalapú csomag](../functions-scale.md#consumption-plan) segítségével.
 
 [!code-azurecli-interactive[main](../../../cli_scripts/azure-functions/create-function-app-consumption/create-function-app-consumption.sh "Create an Azure Function on a consumption plan")]
 
 [!INCLUDE [cli-script-clean-up](../../../includes/cli-script-clean-up.md)]
 
-## <a name="script-explanation"></a>Parancsfájl ismertetése
+## <a name="script-explanation"></a>Szkript ismertetése
 
-Minden egyes parancsa a tábla-parancs adott dokumentációjára mutató hivatkozásokat. Ezt a parancsfájlt az alábbi parancsokat használja:
+A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik. Ez a szkript a következő parancsokat használja:
 
 | Parancs | Megjegyzések |
 |---|---|
-| [az csoport létrehozása](/cli/azure/group#az_group_create) | Az összes erőforrás tároló erőforrás csoportot hoz létre. |
-| [az storage-fiók létrehozása](/cli/azure/storage/account#az_storage_account_create) | Létrehoz egy Azure Storage-fiókot. |
-| [az functionapp létrehozása](/cli/azure/functionapp#az_functionapp_create) | Létrehoz egy függvény alkalmazást. |
+| [az group create](/cli/azure/group#az_group_create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
+| [az storage account create](/cli/azure/storage/account#az_storage_account_create) | Létrehoz egy Azure Storage-fiókot. |
+| [az functionapp create](/cli/azure/functionapp#az_functionapp_create) | Létrehoz egy függvényalkalmazást. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-További információ az Azure parancssori felület: [Azure CLI dokumentáció](/cli/azure/overview).
+Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](/cli/azure/overview).
 
-További Azure Functions CLI parancsfájl minták megtalálhatók a [dokumentáció az Azure Functions](../functions-cli-samples.md).
+További Azure Functions CLI-példaszkripteket az [Azure Functions dokumentációjában](../functions-cli-samples.md) találhat.

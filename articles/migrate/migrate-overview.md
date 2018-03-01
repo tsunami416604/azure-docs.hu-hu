@@ -7,18 +7,15 @@ ms.topic: overview
 ms.date: 01/08/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 3269b865c4ef3c11a674d7b755faab2bbf5970e3
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: a9e04c7fa2a32ab7be8844b962f4bccdf260af23
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="about-azure-migrate"></a>Az Azure Migrate bemutatása
 
-Az Azure Migrate szolgáltatás a helyszíni számítási feladatokat értékeli ki az Azure-ra történő migráláshoz. A szolgáltatás felméri a migrálásra való alkalmasságot és a teljesítményalapú méretezést, illetve költségbecslést ad a helyi számítógépek Azure-ral történő futtatásával kapcsolatban. Ha átemeléses migráláson gondolkodik, vagy épp a migrálási szakaszok felmérésének elején jár, hasznát veheti ennek a szolgáltatásnak. Az értékelés után olyan szolgáltatásokat használhat a számítógépek Azure-ra történő migrálásához, mint az Azure Site Recovery vagy az Azure Database Migration.
-
-> [!NOTE]
-> Az Azure Migrate jelenleg előzetes verzióban érhető el, és támogatja az éles környezetben futó számítási feladatokat.
+Az Azure Migrate szolgáltatás a helyszíni számítási feladatokat értékeli ki az Azure-ra történő migráláshoz. A szolgáltatás felméri a helyszíni gépek Azure-ra végzett migrálásra való alkalmasságát, lehetővé teszi a teljesítményalapú méretezést, illetve költségbecslést ad a helyi számítógépek Azure-ral történő futtatásával kapcsolatban. Ha átemeléses migráláson gondolkodik, vagy épp a migrálási szakaszok felmérésének elején jár, hasznát veheti ennek a szolgáltatásnak. Az értékelés után olyan szolgáltatásokat használhat a számítógépek Azure-ra történő migrálásához, mint az [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview) vagy az [Azure Database Migration Service](https://docs.microsoft.com/azure/dms/dms-overview).
 
 ## <a name="why-use-azure-migrate"></a>Miért javasolt az Azure Migrate használata?
 
@@ -27,18 +24,17 @@ Az Azure Migrate az alábbiakban nyújt segítséget:
 - **Az Azure használatához szükséges állapot felmérése**: segít megállapítani, hogy a helyszíni számítógépek alkalmasak-e az Azure-ban való futtatásra. 
 - **Javaslatok a méretekkel kapcsolatban**: méretezési javaslatokat kaphat az Azure-beli virtuális gépekhez, a helyszíni virtuális gépek korábbi teljesítménye alapján. 
 - **Becsült havi költség**: megkaphatja a helyszíni gépek Azure-ban való futtatásának költségbecslését.  
-- **Megbízható migrálás**: megjelenítheti a helyszíni virtuális gépek függőségeit olyan gépcsoportok létrehozásához, amelyeket együtt fog értékelni és migrálni. Pontosan megtekintheti az adott számítógép vagy a csoport összes gépének függőségeit.
+- **Megbízható migrálás**: megjelenítheti a helyszíni virtuális gépek függőségeit olyan gépcsoportok létrehozásához, amelyeket együtt fog értékelni és migrálni. 
 
 ## <a name="current-limitations"></a>Aktuális korlátozások
 
-- Jelenleg értékelheti a helyszíni VMware virtuális gépeket az Azure-beli virtuális gépekre való migráláshoz.
+- Jelenleg csak a helyszíni VMware virtuális gépek Azure-beli virtuális gépekre való migrálásának lehetőségeit értékelheti ki. A VMware virtuális gépeket egy 5.5-ös, 6.0-s vagy 6.5-ös verziójú vCenter Servernek kell felügyelnie.
 
 > [!NOTE]
-> A Hyper-V támogatása az ütemterv részét képezi, és hamarosan engedélyezve lesz. Addig is az [Azure Site Recovery Deployment Planner](http://aka.ms/asr-dp-hyperv-doc) használatát javasoljuk a Hyper-V-alapú számítási feladatok migrálásának megtervezéséhez. 
+> A Hyper-V támogatása tervbe van véve, és hamarosan megvalósul. Addig is az [Azure Site Recovery Deployment Planner](http://aka.ms/asr-dp-hyperv-doc) használatát javasoljuk a Hyper-V-alapú számítási feladatok migrálásának megtervezéséhez. 
 
 - Egyetlen felderítéssel akár 1000 virtuális gépet, egyetlen projekt részeként pedig akár 1500 virtuális gépet is felderíthet. Ezenkívül egyetlen értékeléssel akár 400 virtuális gépet is értékelhet. Ha ennél többet kell felderítenie vagy értékelnie, növelheti a felderítések vagy az értékelések számát. [További információk](how-to-scale-assessment.md).
-- Az értékelni kívánt virtuális gépet egy 5.5-ös, 6.0-s vagy 6.5-ös verziójú vCenter Servernek kell felügyelnie.
-- Azure Migrate-projektet csak az USA középnyugati régiójában lehet létrehozni. Ez azonban nem befolyásolja a migrálás megtervezését egy másik Azure-beli célhelyre. A migrálási projekt helyét a rendszer csak a helyszíni környezetből felderített metaadatok tárolására használja.
+- Azure Migrate-projektet csak az USA középnyugati régiójában és keleti régiójában lehet létrehozni. Ez azonban nem befolyásolja a migrálás megtervezését egy másik Azure-beli célhelyre. A migrálási projekt helyét a rendszer csak a helyszíni környezetből felderített metaadatok tárolására használja.
 - Az Azure Migrate kizárólag a felügyelt lemezek migrálásfelmérését támogatja.
 
 ## <a name="what-do-i-need-to-pay-for"></a>Mi az, amiért fizetnem kell?
@@ -48,15 +44,16 @@ További tudnivalókat az Azure Migrate díjszabásáról [itt](https://azure.mi
 
 ## <a name="whats-in-an-assessment"></a>Mit tartalmaz egy értékelés?
 
-Az értékelés segítségével azonosíthatja a helyszíni virtuális gépek Azure-nak való megfelelőségét, valamint javaslatokat kaphat a megfelelő méretre, illetve költségbecsléseket a virtuális gépek Azure-ban történő futtatására vonatkozóan. Az értékelések az alábbi táblázatban összefoglalt tulajdonságokon alapulnak. Ezeket a tulajdonságokat az Azure Migrate portálon módosíthatja. 
+Az értékelés segítségével azonosíthatja a helyszíni virtuális gépek Azure-nak való megfelelőségét, valamint javaslatokat kaphat a megfelelő méretre, illetve költségbecsléseket a virtuális gépek Azure-ban történő futtatására vonatkozóan. Az értékelések a tulajdonságaik módosításával adott igényekhez szabhatók. Alább ismertetjük azokat a tulajdonságokat, amelyeket az értékelés létrehozása során szem előtt kell tartani. 
 
 **Tulajdonság** | **Részletek**
 --- | ---
 **Célhely** | Az Azure-beli hely, ahová a migrálást szeretné végezni. Az alapértelmezetten beállított hely az USA 2. nyugati régiója. 
-**Tárhely-redundancia** | Az a tárolótípus, amelyet az Azure-beli virtuális gépek a migrálás után használni fognak. Az alapértelmezett típus az LRS.
-**Díjszabások** | Az értékelés figyelembe veszi, hogy rendelkezik-e frissítési garanciával, és használhatja-e az [Azure Hybrid Use Benefitet](https://azure.microsoft.com/pricing/hybrid-use-benefit/). Emellett az alkalmazandó Azure-ajánlatokat is figyelembe veszi, és lehetővé teszi, hogy előfizetés-specifikus kedvezményeket (%) adjon meg az ajánlaton felül. 
-**Tarifacsomag** | Megadhatja az Azure-beli virtuális gépek [tarifacsomagját (alapszintű/standard)](../virtual-machines/windows/sizes-general.md). Ez segít abban, hogy megfelelő Azure-beli virtuálisgép-családba végezze a migrálást annak alapján, hogy éles környezetben van-e. Alapértelmezés szerint a rendszer a [standard](../virtual-machines/windows/sizes-general.md) csomagot használja.
-**Teljesítményelőzmények** | Alapértelmezés szerint az Azure Migrate a helyszíni gépek teljesítményét egyhavi előzmények alapján, 95%-os százalékértékkel értékeli ki. Módosíthatja a beállítást.
+**Tárhely-redundancia** | A [tárhely-redundancia](https://docs.microsoft.com/azure/storage/common/storage-redundancy) azon típusa, amelyet az Azure-beli virtuális gépek a migrálás után használni fognak. Az alapértelmezett típus a helyileg redundáns tárolás (Locally Redundant Storage, LRS). Vegye figyelembe, hogy az Azure Migrate csak a felügyelt lemezeken alapuló értékeléseket támogatja, és a felügyelt lemezek csak az LRS-t támogatják, ezért a tulajdonság beállítása jelenleg csak LRS lehet. 
+**Méretezési feltétel** | Az Azure Migrate által használt feltétel a virtuális gépek Azure-nak megfelelő méretezéséhez. A méretezést a helyszíni virtuális gépek *teljesítményelőzményei* alapján végezheti el, vagy méretezheti a virtuális gépeket az Azure-hoz *helyszíniként* is, a teljesítményelőzmények figyelembe vétele nélkül. Az alapértelmezett érték a teljesítményalapú méretezés.
+**Díjszabások** | A költségszámításokhoz az értékelés figyelembe veszi, hogy rendelkezik-e szoftvergaranciával, és jogosult-e az [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-use-benefit/) juttatásra. Emellett azokat az [Azure-ajánlatokat](https://azure.microsoft.com/support/legal/offer-details/) is figyelembe veszi, amelyekre esetleg regisztrált, és lehetővé teszi, hogy előfizetés-specifikus kedvezményeket (%) adjon meg az ajánlaton felül. 
+**Tarifacsomag** | Megadhatja a cél Azure-beli virtuális gépek [tarifacsomagját (alapszintű/standard)](../virtual-machines/windows/sizes-general.md). Például ha azt tervezi, hogy éles környezetet migrál, érdemes a Standard csomagot választani, amely kis késleltetésű virtuális gépeket biztosít, de többe kerülhet. Másrészről ha egy fejlesztői/tesztkörnyezetet használ, érdemes lehet az Alapszintű csomag mellett dönteni, amely nagyobb késleltetésű virtuális gépeket biztosít, alacsonyabb költségek mellett. Alapértelmezés szerint a rendszer a [Standard](../virtual-machines/windows/sizes-general.md) csomagot használja.
+**Teljesítményelőzmények** | Csak akkor alkalmazható, csak ha a méretezési feltétel teljesítményalapú. Alapértelmezés szerint az Azure Migrate a helyszíni gépek teljesítményét az utolsó nap teljesítményelőzményei alapján, 95%-os százalékértékkel értékeli ki. Ezeket az értékeket az értékelés tulajdonságaiban módosíthatja. 
 **Kényelmi faktor** | Az Azure Migrate az értékelés során figyelembe veszi a puffert (kényelmi faktor). Ezt a puffert a rendszer a virtuális gépek gépkihasználtsági adatai (CPU, memória, lemez és hálózat) mellett alkalmazza. A kényelmi faktor áll az olyan problémák mögött, mint a szezonális használat, a rövid teljesítményelőzmények és a jövőbeli használat várható növekedése.<br/><br/> Például egy 10 magos virtuális gép 20%-os kihasználtsággal normál esetben egy 2 magos virtuális gépnek felel meg. 2.0x-es kényelmi faktorral azonban az eredmény ehelyett egy 4 magos virtuális gép. Az alapértelmezett kényelmi beállítás 1.3x.
 
 

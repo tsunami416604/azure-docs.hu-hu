@@ -1,84 +1,81 @@
 ---
-title: "Ellenőrizze az átviteli sebesség és a késleltetés metrikákat a tárfiókon, az Azure portálon |} Microsoft Docs"
-description: "Ismerje meg, hogyan ellenőrizhető az átviteli sebesség és a késleltetés metrikák egy tárfiók a portálon."
+title: "Átviteli sebességgel és késéssel kapcsolatos mérőszámok ellenőrzése tárfiókok esetében az Azure Portalon | Microsoft Docs"
+description: "Megismerkedhet a tárfiókok átviteli sebességével és késésével kapcsolatos mérőszámok ellenőrzésével a portálon."
 services: storage
-documentationcenter: 
-author: georgewallace
+author: tamram
 manager: jeconnoc
-editor: 
 ms.service: storage
 ms.workload: web
-ms.tgt_pltfrm: na
 ms.devlang: csharp
 ms.topic: tutorial
-ms.date: 12/12/2017
-ms.author: gwallace
+ms.date: 02/20/2018
+ms.author: tamram
 ms.custom: mvc
-ms.openlocfilehash: b3102bd4e40e10fe88c12295794da37e359c56f1
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
-ms.translationtype: MT
+ms.openlocfilehash: 5efcb71c4eb67948c69f881c24758631aea989d4
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 02/22/2018
 ---
-# <a name="verify-throughput-and-latency-metrics-for-a-storage-account"></a>A tárfiók átviteli sebesség és a késleltetés metrikáját ellenőrzése
+# <a name="verify-throughput-and-latency-metrics-for-a-storage-account"></a>Átviteli sebességgel és késéssel kapcsolatos mérőszámok ellenőrzése tárfiókok esetében
 
-Ez az oktatóanyag négy és egy sor utolsó részét. Az előző oktatóanyagok megtanulta, hogyan larges adatmennyiségek véletlenszerű le az Azure storage-fiók- és feltöltése. Az oktatóanyag bemutatja, hogyan használhatja metrikák átviteli sebesség és a késleltetés megtekintéséhez az Azure portálon.
+Ez az oktatóanyag egy sorozat negyedik, utolsó része. Az előző oktatóanyagban megismerhette nagy mennyiségű véletlenszerű adat fel- és letöltésének módját egy Azure Storage-fiókba vagy fiókból. Az oktatóanyag a mérőszámok használatát mutatja be az átviteli sebesség és a késés megtekintéséhez az Azure Portalon.
 
-A sorozat négy része a megismerheti, hogyan:
+A sorozat negyedik részében az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * Diagramok konfigurálása az Azure-portálon
+> * Diagramok konfigurálása az Azure Portalon
 > * Átviteli sebességgel és késéssel kapcsolatos mérőszámok ellenőrzése
 
-[Az Azure storage mérőszámainak](../common/storage-metrics-in-azure-monitor.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) Azure figyelő használja azokat a teljesítmény és rendelkezésre állását a tárfiók egyesített áttekintése.
+Az [Azure Storage mérőszámai](../common/storage-metrics-in-azure-monitor.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) az Azure Monitor használatával adnak egységes képet a tárfiók teljesítményéről és rendelkezésre állásáról.
 
-## <a name="configure-metrics"></a>Metrikáinak megadása
+## <a name="configure-metrics"></a>Mérőszámok konfigurálása
 
-Navigáljon a **metrikák (előzetes verzió)** alatt **beállítások** tárfiókba.
+Keresse meg a **Metrikák (előnézet)** lehetőséget a tárfiók **BEÁLLÍTÁSOK** területén.
 
-Válassza ki a Blob a **SUB szolgáltatás** legördülő listán.
+Válassza a Blob lehetőséget az **ALSZOLGÁLTATÁS** legördülő listáról.
 
-A **METRIKA**, válasszon egyet a következő táblázatban található a metrikák:
+A **METRIKA** területen válassza ki a következő táblázatban található mérőszámok egyikét:
 
-A következő mérőszámok segítenek a késés és az alkalmazás átviteli sebesség. Adja meg a portálon a metrikák 1 perces átlagok szerepelnek. A tranzakció befejeződött egy percet közepén, hogy a percben adatok is, ha az átlagos halfed. Az alkalmazás feltöltése és letöltéséhez műveletek lettek túllépte az időkorlátot, és a tényleges időtartama a kimeneti megadott végrehajtásának a fájlok feltöltését és letöltését. Ezt az információt a teljes megértéséhez az átviteli sebesség a portál metrikák együtt használható.
+Az alábbi mérőszámok segítségével képet kaphat az alkalmazás késésével és átviteli sebességével kapcsolatban. A portálon konfigurált mérőszámok egyperces átlagértékek. Ha egy tranzakció egy adott percen belül fejeződik be, akkor az átlagérték kiszámításakor a rendszer megfelezi a kérdéses percet. Az alkalmazásban a fel- és letöltési műveletek időzítve vannak, és a rendszer a kimenetek között megjeleníti a fájlok fel- és letöltéséhez szükséges tényleges időt. Ezek az információk és a portál mérőszámai együttesen teljes körűen értelmezhetővé teszik az átviteli sebességet.
 
 |Metrika|Meghatározás|
 |---|---|
-|**Sikeres E2E késés**|A társzolgáltatás vagy a megadott API-művelet sikeres kérelmek átlagos végpontok közötti késését. Ezt az értéket tartalmazza a szükséges feldolgozási ideje az Azure Storage olvasni a kérelmet, küldés és a választ kap belül.|
-|**Sikeres kiszolgáló késleltetése**|Az Azure Storage által a sikeres kérelmek feldolgozásához használt átlagos ideje. Ez az érték nem tartalmazza a hálózati késés megadott SuccessE2ELatency. |
-|**Tranzakciók**|A társzolgáltatás vagy a megadott API-művelet felé intézett kérések száma. A sikeres és sikertelen kérelmeket, valamint a hibák előállított kérelmek tartozik. A példában a blokkméret 100 MB-ra állította be. Ebben az esetben minden 100 MB-os blokk tranzakció minősül.|
-|**Érkező**|A érkező adatok mennyisége. Ez a szám egy külső ügyféltől érkező tartalmazza az Azure Storage, valamint a bejövő adatok Azure-ban. |
-|**Kimenő forgalom**|A kimenő adatok mennyisége. Ez a szám kilépő külső ügyfélről az Azure Storage, valamint az Azure virtuális tartalmazza. Ez a szám emiatt nem tükrözi számlázható kimenő forgalom. |
+|**Sikeres kérések végpontok közötti késése**|A tárolási szolgáltatás vagy a megadott API-művelet számára elküldött sikeres kérések végpontok közötti késésének átlaga. Ez az érték magában foglalja a kérelem elolvasásához, a válasz elküldéséhez és a válasz visszaigazolásának fogadásához az Azure Storage számára szükséges feldolgozási időt.|
+|**Sikeres kiszolgálói kérések késése**|Az Azure Storage által sikeresen feldolgozott kérések átlagos feldolgozási ideje. Ez az érték nem tartalmazza a SuccessE2ELatency paraméterben megadott hálózati késleltetést. |
+|**Tranzakciók**|Tárolási szolgáltatás vagy a megadott API-művelet számára elküldött kérések száma. Ez az érték a sikeres és sikertelen kérések, valamint a hibára futott kérések számát tartalmazza. Ebben a példában a blokkméret 100 MB-ra lett beállítva. Ebben az esetben minden 100 MB-os blokk tranzakciónak minősül.|
+|**Bejövő forgalom**|A bejövő adatok mennyisége. Ez a szám a külső ügyfél Azure Storage-ba irányuló bejövő adatait és az Azure-on belüli bejövő adatokat egyaránt magában foglalja. |
+|**Kimenő forgalom**|A kimenő adatok mennyisége. Ez a szám a külső ügyfél Azure Storage-ba irányuló kimenő adatait és az Azure-on belüli kimenő adatokat egyaránt magában foglalja. Az eredményül kapott szám nem tükrözi a számlázható kimenő forgalmat. |
 
-Válassza ki **utolsó 24 óra (automatikus)** melletti **idő**. Válasszon **elmúlt egy órában** és **perc** a **részletességet**, majd kattintson a **alkalmaz**.
+Válassza az **Idő** elem melletti **Elmúlt 24 óra (Automatikus)** lehetőséget. Az **Idő részletesség** esetében válassza az **Utolsó óra** és a **Perc** lehetőséget, majd kattintson az **Alkalmaz** gombra.
 
-![Tárolási fiók metrikák](./media/storage-blob-scalable-app-verify-metrics/figure1.png)
+![Tárfiókok mérőszámai](./media/storage-blob-scalable-app-verify-metrics/figure1.png)
 
-Több mint egy metrika a hozzájuk rendelt is lehet, de több metrika hozzárendelése letiltja csoport szerint.
+A diagramokhoz több mérőszám is társítható, ekkor azonban a rendszer letiltja a dimenziók szerinti csoportosítás lehetőségét.
 
 ## <a name="dimensions"></a>Dimenziók
 
-[Dimenziók](../common/storage-metrics-in-azure-monitor.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#metrics-dimensions) mélyebb megismerhetők a diagramok és részletesebb információért használt. Különböző metrikák rendelkezik a különböző dimenziókban. Egy dimenzió, amely elérhető a **API-név** dimenzió. Ez a dimenzió megszakadás a diagram az egyes különálló API-hívás. Az első az alábbi képen látható egy példa a diagram teljes tranzakciók tárfiókok esetén. A második ábrán ugyanaz a diagramterület, de API-val nevet a kiválasztott dimenzió. Ahogy látja, minden tranzakció szerepel jogosultságot ad a további részleteket a hány hívások tett API-név.
+A [Dimenziók](../common/storage-metrics-in-azure-monitor.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#metrics-dimensions) segítségével részletesebben megismerhetők a diagramok, és részletesebb információk nyerhetők ki belőlük. A különböző metrikák eltérő dimenziókkal rendelkeznek. Az egyik rendelkezésre álló dimenzió az **API-név** dimenzió. Ez a dimenzió külön API-hívásokra osztja szét a diagramot. Az első alábbi képen egy tárfiókhoz tartozó összes tranzakció diagramjára látható példa. A második képen ugyanez a diagram látható, ezúttal viszont a kiválasztott API-név dimenzióval együtt. Ahogy látható, a listában szereplő tranzakciók mindegyike további részleteket biztosít az API-név által indított meghívások számával kapcsolatban.
 
-![Tárolási fiók metrikák - tranzakciók nélkül dimenzió](./media/storage-blob-scalable-app-verify-metrics/transactionsnodimensions.png)
+![Tárfiókok mérőszámai – dimenzió nélküli tranzakciók](./media/storage-blob-scalable-app-verify-metrics/transactionsnodimensions.png)
 
-![Tárolási fiók metrikák - tranzakciók](./media/storage-blob-scalable-app-verify-metrics/transactions.png)
+![Tárfiókok mérőszámai – tranzakciók](./media/storage-blob-scalable-app-verify-metrics/transactions.png)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs rá szükség, törölje az erőforráscsoportot, a virtuális gépet és az összes kapcsolódó erőforrást. Ehhez az szükséges, válassza ki az erőforráscsoportot a virtuális gép számára, és válassza a törlés.
+Ha már nincs rá szükség, törölje az erőforráscsoportot, a virtuális gépet és az összes kapcsolódó erőforrást. Ehhez válassza ki a virtuális gép erőforráscsoportját, és kattintson a Törlés elemre.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-A sorozat négy része megismerte a megoldást, például hogy miként metrikáját megtekintése:
+A sorozat negyedik részében megismerkedett a példamegoldáshoz tartozó mérőszámok megtekintésével, például a következőkkel:
 
 > [!div class="checklist"]
-> * Diagramok konfigurálása az Azure-portálon
+> * Diagramok konfigurálása az Azure Portalon
 > * Átviteli sebességgel és késéssel kapcsolatos mérőszámok ellenőrzése
 
-Kövesse a hivatkozásra kattintva megtekintheti az előre elkészített tárolási minták.
+Kövesse ezt a hivatkozást az előre felépített tárolóminták megtekintéséhez.
 
 > [!div class="nextstepaction"]
-> [Az Azure storage parancsfájl minták](storage-samples-blobs-cli.md)
+> [Azure Storage-szkriptminták](storage-samples-blobs-cli.md)
 
 [previous-tutorial]: storage-blob-scalable-app-download-files.md

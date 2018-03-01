@@ -1,7 +1,7 @@
 Győződjön meg róla, hogy már létrehozott egy Service Bus-névteret, az [itt][namespace-how-to] ismertetettek szerint.
 
 1. Jelentkezzen be az [Azure Portalra][azure-portal].
-2. A portál bal oldali navigációs panelén kattintson a **Service Bus** elemre (ha nem lát **Service Bus** elemet, kattintson a **További szolgáltatások** lehetőségre).
+2. A portál bal oldali navigációs panelén kattintson a **Service Bus** (ha a **Service Bus** nem látható, akkor a **Minden szolgáltatás**) elemre.
 3. Kattintson a névtérre, amelyben az üzenetsort létre kívánja hozni. Ebben az esetben ez az **sbnstest1**.
    
     ![Üzenetsor létrehozása][createqueue1]

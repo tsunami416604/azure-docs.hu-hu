@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 05/15/2017
 ms.author: adegeo
-ms.openlocfilehash: f0cdafdb88604b8874a245751246d219e8df3813
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: 704391a60b4ba777b8fd2b156db2ea5587498383
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Ismerkedés az Azure Cloud Services szolgáltatással és az ASP.NET keretrendszerrel
 
@@ -116,7 +116,7 @@ Az alkalmazás felhőben való futtatásához az alábbi lépéseket kell végre
 Az Azure-felhőszolgáltatás az a környezet, amelyben az alkalmazás futni fog.
 
 1. Nyissa meg az [Azure Portalt](https://portal.azure.com) a böngészőjében.
-2. Kattintson az **Új > Számítás > Felhőszolgáltatás** elemre.
+2. Kattintson az **Erőforrás létrehozása > Számítás > Felhőszolgáltatás** elemre.
 
 3. A DNS-név beviteli mezőben adja meg a felhőszolgáltatáshoz tartozó URL-előtagot.
 
@@ -126,7 +126,7 @@ Az Azure-felhőszolgáltatás az a környezet, amelyben az alkalmazás futni fog
 5. Válassza ki a régiót, ahol telepíteni szeretné az alkalmazást.
 
     Ez a mező határozza meg, hogy a felhőszolgáltatása melyik adatközpontban fog üzemelni. Termelési alkalmazások esetében az ügyfeleihez legközelebb eső régiót kellene kiválasztania. A jelen oktatóanyag esetében válassza az Önhöz legközelebbi régiót.
-5. Kattintson a **Létrehozás** gombra.
+5. Kattintson a **Create** (Létrehozás) gombra.
 
     Az alábbi képen egy CSvccontosoads.cloudapp.net URL-címmel ellátott felhőszolgáltatás létrehozása történik.
 
@@ -135,7 +135,7 @@ Az Azure-felhőszolgáltatás az a környezet, amelyben az alkalmazás futni fog
 ### <a name="create-an-azure-sql-database"></a>Azure SQL-adatbázis létrehozása
 Amikor az alkalmazás a felhőben fut, felhőalapú adatbázist fog használni.
 
-1. Az [Azure Portalon](https://portal.azure.com) kattintson az **Új > Adatbázisok > SQL-adatbázis** elemre.
+1. Az [Azure Portalon](https://portal.azure.com) kattintson az **Erőforrás létrehozása > Adatbázisok > SQL Database** elemre.
 2. Az **Adatbázis neve** mezőbe írja be a következőt: *contosoads*.
 3. Az **Erőforráscsoport** szakaszban kattintson a **Meglévő használata** elemre, majd válassza ki a felhőszolgáltatáshoz használt erőforráscsoportot.
 4. Az alábbi kép alapján kattintson a **Kiszolgáló – kötelező beállítások konfigurálása** és az **Új kiszolgáló létrehozása** elemre.
@@ -155,14 +155,14 @@ Amikor az alkalmazás a felhőben fut, felhőalapú adatbázist fog használni.
 9. Kattintson a **Kiválasztás** elemre az új kiszolgáló kijelöléséhez.
 
     ![Új SQL Database-kiszolgáló](./media/cloud-services-dotnet-get-started/newdbserver.png)
-10. Kattintson a **Létrehozás** gombra.
+10. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="create-an-azure-storage-account"></a>Azure-tárfiók létrehozása
 Az Azure-tárfiók erőforrásokat biztosít az üzenetsor és a blob adatainak felhőbeli tárolásához.
 
 Egy valós alkalmazás esetében általában külön fiókot hozna létre az alkalmazás adatai és a naplózási adatok, illetve a tesztadatok és a termelési adatok számára is. Ebben az oktatóanyagban csak egy fiókot fog használni.
 
-1. Az [Azure Portalon](https://portal.azure.com) kattintson az **Új > Tár > Tárfiók – blob, fájl, tábla, üzenetsor**.
+1. Az [Azure Portalon](https://portal.azure.com) kattintson az **Erőforrás létrehozása > Tároló > Tárfiók – blob, fájl, tábla, üzenetsor** elemre.
 2. A **Név** mezőbe írjon be egy URL-előtagot.
 
     Ez az előtag és a mező alatt látható szöveg képezi a tárfiók egyedi URL-címét. Ha a megadott előtag már használatban van, másikat kell választania.
@@ -178,7 +178,7 @@ Egy valós alkalmazás esetében általában külön fiókot hozna létre az alk
     Ha a felhőszolgáltatás és a tárfiók különböző adatközpontokban van (különböző régiókban), a késés mértéke megnő, és az adatközponton kívül használt sávszélességért fizetnie kell. Az adatközponton belül használt sávszélesség ingyenes.
 
     Az Azure-affinitáscsoportok egy olyan mechanizmust biztosítanak, amely minimálisra csökkenti az erőforrások között lévő távolságot az adatközpontban, csökkentve ezáltal a késés mértékét is. A jelen oktatóanyag nem használ affinitáscsoportokat. További információ: [Affinitáscsoportok létrehozása az Azure-ban](http://msdn.microsoft.com/library/jj156209.aspx).
-7. Kattintson a **Létrehozás** gombra.
+7. Kattintson a **Create** (Létrehozás) gombra.
 
     ![Új tárfiók](./media/cloud-services-dotnet-get-started/newstorage.png)
 
@@ -760,7 +760,7 @@ Ha a teljes emulátor használatára szeretné módosítani a projekt beállít�
 
 Az alkalmazás teljes emulátorral való futtatásához rendszergazdai jogosultságokkal kell megnyitnia a Visual Studiót.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A Contoso Ads alkalmazás kialakítása szándékosan egyszerű az első lépéseket ismertető oktatóanyag kedvéért. Nem valósítja meg például a [függőségi beszúrást](http://www.asp.net/mvc/tutorials/hands-on-labs/aspnet-mvc-4-dependency-injection) vagy a [működési minták adattárát és egységét](http://www.asp.net/mvc/tutorials/getting-started-with-ef-using-mvc/advanced-entity-framework-scenarios-for-an-mvc-web-application#repo), nem [használ felületet a naplózáshoz](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/monitoring-and-telemetry#log), nem használ [EF Code First áttelepítést](http://www.asp.net/mvc/tutorials/getting-started-with-ef-using-mvc/migrations-and-deployment-with-the-entity-framework-in-an-asp-net-mvc-application) az adatmodellek kezeléséhez vagy [EF-kapcsolati rugalmasságot](http://www.asp.net/mvc/tutorials/getting-started-with-ef-using-mvc/connection-resiliency-and-command-interception-with-the-entity-framework-in-an-asp-net-mvc-application) az átmeneti hálózati hibák kezeléséhez stb.
 
 Az alábbiakban példákat talál felhőszolgáltatás-alkalmazásokra, amelyek több valós kódolási gyakorlatot mutatnak be az egyszerűbbektől az összetettebbekig:

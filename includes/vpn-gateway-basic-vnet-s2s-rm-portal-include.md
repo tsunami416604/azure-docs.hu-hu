@@ -6,7 +6,7 @@ Az alábbi lépésekkel hozhat létre egy VNetet a Resource Manager-alapú üzem
 >
 
 1. Egy böngészőből lépjen az [Azure Portalra](http://portal.azure.com), majd jelentkezzen be az Azure-fiókjával.
-2. Kattintson az **Új** lehetőségre. A **Keresés a piactéren** mezőbe írja be a „Virtuális hálózat” kifejezést. A visszaadott listában keresse meg a **Virtuális hálózat** elemet, és arra kattintva nyissa meg a **Virtuális hálózat** lapot.
+2. Kattintson az **Erőforrás létrehozása** gombra. A **Keresés a piactéren** mezőbe írja be a „Virtuális hálózat” kifejezést. A visszaadott listában keresse meg a **Virtuális hálózat** elemet, és arra kattintva nyissa meg a **Virtuális hálózat** lapot.
 3. A Virtuális hálózat lap alján, a **Telepítési modell kiválasztása** listában válassza ki a **Resource Manager** elemet, majd kattintson a **Létrehozás** elemre. Ez megnyitja a „Virtuális hálózat létrehozása” lapot.
 
     ![Virtuális hálózat létrehozása lap](./media/vpn-gateway-basic-vnet-s2s-rm-portal-include/vnet.png "Virtuális hálózat létrehozása lap")

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/18/2017
 ms.author: kumud
-ms.openlocfilehash: b2a9a7dbd1fa7da7ebe479ac166602245cdaefde
-ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
+ms.openlocfilehash: 22bf52f7452f182510c3714f7d1c2ca884446953
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="get-started-with-azure-dns-using-the-azure-portal"></a>Bevezetés az Azure DNS Azure Portallal való használatába
 
@@ -34,8 +34,8 @@ Az egyes tartományokhoz tartozó DNS-rekordok üzemeltetése DNS-zónákban tö
 
 ## <a name="create-a-dns-zone"></a>DNS-zóna létrehozása
 
-1. Jelentkezzen be az Azure Portalra
-2. A központi menüben kattintson az **Új > Hálózatkezelés >** elemre, majd kattintson a **DNS-zóna** elemre a **DNS-zóna létrehozása** lap megnyitásához.
+1. Jelentkezzen be az Azure portálra.
+2. A központi menüben kattintson az **Erőforrás létrehozása > Hálózatkezelés >**, majd a **DNS-zóna** elemre a **DNS-zóna létrehozása** lap megnyitásához.
 
     ![DNS-zóna](./media/dns-getstarted-portal/openzone650.png)
 
@@ -96,7 +96,7 @@ A jelen cikkben létrehozott összes erőforrás törléséhez hajtsa végre az 
 1. A portál megköveteli, hogy az erőforráscsoport törlésének megerősítéséhez beírja annak nevét. Kattintson a **Törlés** elemre, írja be a *MyResourceGroup* nevet az erőforráscsoport nevéhez, majd kattintson a **Törlés** gombra. Az erőforráscsoport törlésével az abban foglalt összes erőforrás törölve lesz, ezért mindenképp ellenőrizze az erőforráscsoportok tartalmát azok törlése előtt. A portál törli az erőforráscsoportban lévő összes erőforrást, majd magát az erőforráscsoportot is. Ez a folyamat több percig is eltarthat.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure DNS-sel kapcsolatos további információért lásd [az Azure DNS áttekintését biztosító](dns-overview.md) cikket.
 

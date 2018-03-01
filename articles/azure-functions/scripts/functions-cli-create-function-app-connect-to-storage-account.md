@@ -1,6 +1,6 @@
 ---
-title: "Egy Azure Storage kapcsolódó Azure-függvény létrehozása |} Microsoft Docs"
-description: "Az Azure CLI-parancsfájlt minták –, amely kapcsolódik az Azure Storage Azure-függvény létrehozása"
+title: "Egy Azure Storage-hoz kapcsolódó Azure-függvény létrehozása | Microsoft Docs"
+description: "Azure CLI-példaszkript – Egy Azure Storage-hoz kapcsolódó Azure-függvény létrehozása"
 services: functions
 documentationcenter: functions
 author: ggailey777
@@ -16,49 +16,51 @@ ms.workload:
 ms.date: 04/20/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 363a3fd1c80538495658720274840b921baa8675
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
-ms.translationtype: MT
+ms.openlocfilehash: b4dad0bba7a147f294c5d9ce3a1a1aa8e95058f3
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 02/09/2018
 ---
-# <a name="integrate-function-app-into-azure-storage-account"></a>Függvény alkalmazás integrálja az Azure Storage-fiók
+# <a name="create-a-function-app-that-connects-to-an-azure-storage-account"></a>Egy Azure Storage-fiókhoz kapcsolódó függvényalkalmazás létrehozása
 
-Ez a parancsfájlpélda hoz létre, a függvény alkalmazás és a Storage-fiók.
+Ez az Azure Functions-példaszkript létrehoz egy függvényalkalmazást, amelyet hozzákapcsol egy Azure Storage-fiókhoz. A létrehozott alkalmazásbeállítás, amely a kapcsolatot tartalmazza, egy [tárolási eseményindítóval vagy kötéssel](..\functions-bindings-storage-blob.md) együtt használható. 
+
+[!INCLUDE [upgrade runtime](../../../includes/functions-cli-version-note.md)]
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Ha helyileg a CLI-t használ, győződjön meg arról, hogy az Azure parancssori felület verzióját futtatja, 2.0-s vagy újabb. A verzió megkereséséhez futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése](/cli/azure/install-azure-cli). 
+Ha a helyi CLI-t használja, akkor az Azure CLI 2.0-s vagy újabb verzióját kell futtatnia. A verzió megkereséséhez futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése](/cli/azure/install-azure-cli). 
 
-## <a name="sample-script"></a>Mintaparancsfájl
+## <a name="sample-script"></a>Példaszkript
 
-Ez a minta egy Azure-függvény alkalmazást hoz létre, és hozzáadja a tárolási kapcsolati karakterlánc Alkalmazásbeállítás.
+Ez a példa létrehoz egy Azure-függvényalkalmazást, és hozzáadja a tároló kapcsolati karakterláncát egy alkalmazásbeállításhoz.
 
 [!code-azurecli-interactive[main](../../../cli_scripts/azure-functions/create-function-app-connect-to-storage/create-function-app-connect-to-storage-account.sh "Integrate Function App into Azure Storage Account")]
 
 
 ## <a name="clean-up-deployment"></a>Az üzemelő példány eltávolítása
 
-A parancsfájl-minta futtatása után futtassa a következő parancs futtatásával távolítsa el az erőforráscsoportot, és az összes kapcsolódó erőforrások:
+A példaszkript futtatása után a következő paranccsal távolítható el az erőforráscsoport és az összes kapcsolódó erőforrás:
 
 [!INCLUDE [cli-script-clean-up](../../../includes/cli-script-clean-up.md)]
 
-## <a name="script-explanation"></a>Parancsfájl ismertetése
+## <a name="script-explanation"></a>Szkript ismertetése
 
-A parancsfájl a következő parancsokat. Minden egyes parancsa a tábla-parancs adott dokumentációjára mutató hivatkozásokat.
+A szkript a következő parancsokat használja. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
 | Parancs | Megjegyzések |
 |---|---|
-| [az bejelentkezés](https://docs.microsoft.com/cli/azure/#login) | Jelentkezzen be az Azure-bA. |
-| [az csoport létrehozása](https://docs.microsoft.com/cli/azure/group#az_group_create) | Hozzon létre egy erőforráscsoportot, amelynek a helye |
-| [az storage-fiók létrehozása](https://docs.microsoft.com/cli/azure/storage/account) | Create a storage account |
-| [az functionapp létrehozása](https://docs.microsoft.com/cli/azure/functionapp#az_functionapp_create) | Hozzon létre egy új funkció alkalmazást |
-| [az csoport törlése](https://docs.microsoft.com/cli/azure/group#az_group_delete) | A fölöslegessé vált elemek eltávolítása |
+| [az login](https://docs.microsoft.com/cli/azure/#az_login) | Bejelentkezik az Azure-ba. |
+| [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | Létrehoz egy erőforráscsoportot egy helyen |
+| [az storage account create](https://docs.microsoft.com/cli/azure/storage/account) | Create a storage account |
+| [az functionapp create](https://docs.microsoft.com/cli/azure/functionapp#az_functionapp_create) | Létrehoz egy új függvényalkalmazást. |
+| [az group delete](https://docs.microsoft.com/cli/azure/group#az_group_delete) | A fölöslegessé vált elemek eltávolítása |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-További információ az Azure parancssori felület: [Azure CLI dokumentáció](https://docs.microsoft.com/cli/azure/overview).
+Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](https://docs.microsoft.com/cli/azure/overview).
 
-További Azure Functions CLI parancsfájl minták megtalálhatók a [dokumentáció az Azure Functions](../functions-cli-samples.md).
+További Azure Functions CLI-példaszkripteket az [Azure Functions dokumentációjában](../functions-cli-samples.md) találhat.

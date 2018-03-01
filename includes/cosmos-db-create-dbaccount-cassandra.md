@@ -1,26 +1,26 @@
-1. Egy új böngészőablakban, jelentkezzen be a [Azure-portálon](https://portal.azure.com/).
-2. Kattintson a **új** > **adatbázisok** > **Azure Cosmos DB**.
+1. Egy új böngészőablakban jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+2. Kattintson az **Erőforrás létrehozása** > **Adatbázisok** > **Azure Cosmos DB** lehetőségre.
    
    ![Az Azure Portal Adatbázisok panelje](./media/cosmos-db-create-dbaccount-cassandra/create-nosql-db-databases-json-tutorial-1.png)
 
-3. Az a **új fiók** lapján adja meg az új Azure Cosmos DB fiók beállításait. 
+3. Az **Új fiók** oldalon adja meg az új Azure Cosmos DB-fiók beállításait. 
  
     Beállítás|Ajánlott érték|Leírás
     ---|---|---
-    ID (Azonosító)|*Adjon meg egy egyedi nevet*|Adjon meg egy egyedi nevet a Azure Cosmos DB fiók azonosításához. Mivel *documents.azure.com* rendszer hozzáfűzi az azonosítója, majd való a kapcsolódási pontot létrehozni, használja a egy egyedi, de azonosítható.<br><br>Az azonosító csak kisbetűket, számokat és a kötőjel (-) karaktert tartalmazhatja, valamint 3–50 karakter hosszúságúnak kell lennie.
-    API|Cassandra|Az API-t határozza meg a fiók létrehozásához. Az Azure Cosmos DB biztosít öt API-k az alkalmazás igényeinek leginkább megfelelő: SQL (a dokumentum-adatbázis), Gremlin (graph adatbázis), a mongodb-Protokolltámogatással (a dokumentum-adatbázis), Azure Table és Cassandra, minden egyes igénylő jelenleg egy külön fiókot. <br><br>Válassza ki **Cassandra** , mert a gyors üzembe helyezés lekérdezhető CQL szintaxis használatával wide-oszlop adatbázist létrehozásához.<br><br>Ha Cassandra (wide-oszlop) csak akkor jelenik meg a listában, akkor kell [csatlakozni alkalmazása](../articles/cosmos-db/cassandra-introduction.md#sign-up-now) a Cassandra API programot.<br><br> [További információ a Cassandra API](../articles/cosmos-db/cassandra-introduction.md)|
-    Előfizetés|*Az Ön előfizetése*|Válassza ki a Azure Cosmos DB fiókhoz használni kívánt Azure-előfizetéshez. 
-    Erőforráscsoport|*Itt adhatja meg a egyedi névvel fent ismertetett azonosítója*|Adjon meg egy új erőforráscsoport nevet a fiókjához. Az egyszerűség kedvéért használhat az azonosítójával megegyező nevet. 
-    Hely|*Válassza ki a felhasználók a legközelebb eső régiót*|Válassza ki a földrajzi helyet, ahol Azure Cosmos DB fiókja üzemeltetéséhez. A felhasználók számára, hogy biztosítsa a leggyorsabb hozzáférést az adatok legközelebbi helyet használja.
-    Rögzítés az irányítópulton | Válassza ezt: | Válassza ezt a jelölőnégyzetet, hogy az új adatbázis-fiókja hozzáadódik a portál irányítópultján egyszerűen hozzáférhetnek.
+    ID (Azonosító)|*Adjon meg egy egyedi nevet*|Adjon meg egy egyedi nevet az Azure Cosmos DB-fiók azonosításához. A rendszer a *documents.azure.com* utótaggal egészíti ki a megadott azonosítót a kapcsolódási pont létrehozásához, ezért válasszon egyedi, de felismerhető azonosítót.<br><br>Az azonosító csak kisbetűket, számokat és a kötőjel (-) karaktert tartalmazhatja, valamint 3–50 karakter hosszúságúnak kell lennie.
+    API|Cassandra|A létrehozni kívánt fiók típusát az API határozza meg. Az adott alkalmazás igényei szerint az Azure Cosmos DB a következő öt API-t biztosítja: SQL (dokumentum-adatbázis), Gremlin (gráfadatbázis), MongoDB (dokumentum-adatbázis), Azure-tábla, Cassandra. Jelenleg mindegyikhez külön fiókra van szükség. <br><br>Válassza a **Cassandra** lehetőséget, mivel ebben a rövid útmutatóban olyan széles oszlopú adatbázist fog létrehozni, amely CQL szintaxis használatával kérdezhető le.<br><br>Ha a Cassandra (széles oszlopú) lehetőség nem jelenik meg a listában, akkor [csatlakozási kérelmet kell küldenie](../articles/cosmos-db/cassandra-introduction.md#sign-up-now) a Cassandra API előzetes programjához.<br><br> [További információk a Cassandra API-ról](../articles/cosmos-db/cassandra-introduction.md)|
+    Előfizetés|*Az Ön előfizetése*|Válassza ki az Azure Cosmos DB-fiókhoz használni kívánt Azure-előfizetést. 
+    Erőforráscsoport|*Adja meg a fenti azonosító esetében használt egyedi nevet*|Adja meg a fiók új erőforráscsoport-nevét. Az egyszerűség kedvéért használhat az azonosítójával megegyező nevet. 
+    Hely|*Válassza ki a felhasználóihoz legközelebb eső régiót*|Válassza ki azt a földrajzi helyet, ahol az Azure Cosmos DB-fiókot üzemeltetni fogja. Használja a felhasználókhoz legközelebb lévő helyet, hogy a lehető leggyorsabb hozzáférést biztosítsa az adatokhoz.
+    Rögzítés az irányítópulton | Válassza ezt: | Jelölje be ezt a jelölőnégyzetet, így az új adatbázisfiók a könnyű hozzáférés érdekében megtalálható lesz a portál irányítópultján.
 
     Ezt követően kattintson a **Create** (Létrehozás) gombra.
 
     ![Az Azure Cosmos DB új fiók panele](./media/cosmos-db-create-dbaccount-cassandra/create-nosql-db-databases-json-tutorial-2.png)
 
-4. A fiók létrehozásának folyamata eltart néhány percig. Számítógépfiók létrehozása közben a portál irányítópultján jeleníti meg a **telepítése Azure Cosmos DB** csempére.
+4. A fiók létrehozása eltarthat néhány percig. A fiók létrehozása alatt a portál irányítópultján **Az Azure Cosmos DB üzembe helyezése** csempe látható.
 
-    ![Az Azure portál értesítések csempe](./media/cosmos-db-create-dbaccount-cassandra/deploying-cosmos-db.png)
+    ![Az Azure Portal Értesítések csempéje](./media/cosmos-db-create-dbaccount-cassandra/deploying-cosmos-db.png)
 
-    Ha a fiók létrejött, a **Gratulálunk! A Azure Cosmos DB-fiók létrejött** lap is megjelenik. 
+    Ha a fiók létrehozása megtörtént, a **Gratulálunk! Azure Cosmos DB-fiókja létrejött** lap jelenik meg. 
 
