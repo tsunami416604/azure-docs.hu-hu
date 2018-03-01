@@ -13,13 +13,13 @@ ms.devlang: multiple
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 11/21/2017
+ms.date: 02/07/2018
 ms.author: glenga
-ms.openlocfilehash: e7141d92a186bec67c374bd5046ee08047feedec
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: f43132beb0abae3d4bdf0f538de1b437e6099822
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Az Azure Functions eseményindítók és kötések fogalmak
 
@@ -31,7 +31,7 @@ A *eseményindító* határozza meg, hogyan függvényt hívják. A függvényne
 
 Bemeneti és kimeneti *kötések* a kód az adatokhoz történő kapcsolódáshoz deklaratív lehetőséget biztosít. Kötések nem kötelező, és egy függvény több bemeneti és a kimeneti kötéseket. 
 
-Eseményindítók és kötések lehetővé teszik, hogy kerülje hardcoding dolgozunk szolgáltatások részleteit. Ön függvény függvény paramétereiben kap adatokat (például egy üzenetsor-üzenetet tartalmát). Akkor küldjön adatokat (például egy üzenetsor létrehozásához) a függvény visszatérési értéke egy `out` paraméter, vagy egy [gyűjtő objektum](functions-reference-csharp.md#writing-multiple-output-values).
+Eseményindítók és kötések lehetővé teszik, hogy kerülje hardcoding dolgozunk szolgáltatások részleteit. A függvény függvény paramétereiben kap adatokat (például egy üzenetsor-üzenetet tartalmát). Akkor küldjön adatokat (például egy üzenetsor létrehozásához) a függvény visszatérési értéke egy `out` paraméter, vagy egy [gyűjtő objektum](functions-reference-csharp.md#writing-multiple-output-values).
 
 Amikor funkciók fejlesztése az Azure portál használatával, az eseményindítók és kötések vannak konfigurálva a *function.json* fájlt. A portál egy felhasználói Felületet biztosít az ebben a konfigurációban, de tudja szerkeszteni a fájlt közvetlenül módosítása a **speciális szerkesztő**.
 
@@ -42,6 +42,50 @@ Visual Studio használatával hozzon létre egy osztálytár funkciók fejleszt�
 [!INCLUDE [Full bindings table](../../includes/functions-bindings.md)]
 
 Információ arról, hogy mely kötések még csak előzetes verziójúak vagy üzemi használatra jóváhagyott: [támogatott nyelv](supported-languages.md).
+
+## <a name="register-binding-extensions"></a>Regisztrálja a kötési bővítmény
+
+Verziójában 2.x, az Azure Functions futtatókörnyezettel, explicit módon regisztrálnia kell a [bővítmények kötés](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/dev/README.md) , amelyekkel az függvény alkalmazásban. 
+
+Bővítmények érkeznek NuGet csomag, amelyben a csomag általában kezdetű névvel rendelkező [microsoft.azure.webjobs.extensions](https://www.nuget.org/packages?q=microsoft.azure.webjobs.extensions).  Telepítése és regisztrálása kötés bővítmények módja attól függ, hogyan fejleszthet-e a funkciók: 
+
++ [Helyileg a C# segítségével a Visual Studio vagy Visual STUDIO Code](#precompiled-functions-c)
++ [Helyileg használata az Azure Functions Core eszközök](#local-development-azure-functions-core-tools)
++ [Az Azure-portálon](#azure-portal-development) 
+
+Van egy sor verziójában kötések nem biztosított kiterjesztéseket 2.x. Nem kell regisztrálni a következő eseményindítók és kötések kiterjesztéseinek: HTTP időzítő és Azure Storage. 
+
+Verzióját használja egy függvény alkalmazás telepítésével kapcsolatos információkat a Functions futtatókörnyezete 2.x lásd: [bemutatásához az Azure Functions futásidejű verziók](set-runtime-version.md). Verzió funkciók futásidejű 2.x jelenleg előzetes verzió. 
+
+Ebben a szakaszban szereplő alkalmazáscsomag-verziók csak példaként szolgálnak. Ellenőrizze a [NuGet.org hely](https://www.nuget.org/packages?q=microsoft.azure.webjobs.extensions) meghatározni egy adott bővítmény melyik verziója által a más függőségek, a függvény alkalmazásban szükségesek.    
+
+###  <a name="local-c-development-using-visual-studio-or-vs-code"></a>A Visual Studio vagy Visual STUDIO Code helyi C# fejlesztési 
+
+Visual Studio vagy Visual Studio Code használatánál helyileg fejlesztésére C# funkciók, egyszerűen kell hozzáadnia a NuGet-csomagot a bővítmény. 
+
++ **A Visual Studio**: a NuGet Package Manager eszközök használatára. A következő [Install-Package](https://docs.microsoft.com/nuget/tools/ps-ref-install-package) parancs telepíti az Azure Cosmos adatbázis bővítmény a Csomagkezelő konzolról:
+
+    ```
+    Install-Package Microsoft.Azure.WebJobs.Extensions.CosmosDB -Version 3.0.0-beta6 
+    ```
++ **A Visual Studio Code**: csomagokat telepítheti a parancssor használatával a [dotnet csomag hozzáadása](https://docs.microsoft.com/dotnet/core/tools/dotnet-add-package) a .NET CLI-t, a következő parancsot:
+
+    ```
+    dotnet add package Microsoft.Azure.WebJobs.Extensions.CosmosDB --version 3.0.0-beta6 
+    ```
+
+### <a name="local-development-azure-functions-core-tools"></a>Helyi fejlesztési Azure Functions Core eszközök
+
+[!INCLUDE [Full bindings table](../../includes/functions-core-tools-install-extension.md)]
+
+### <a name="azure-portal-development"></a>Azure portál fejlesztési
+
+Hozzon létre egy függvényt vagy kötés hozzáadása egy meglévő függvény, megkérdezi, ha az eseményindító vagy a hozzáadni kívánt kötési bővítmény regisztrációs igényel.   
+
+Miután az adott bővítmény telepítése folyamatban megjelenik egy figyelmeztetés, kattintson **telepítése** regisztrálni a bővítmény. Csak telepítenie kell minden egyes bővítmény egy adott funkció alkalmazást egyszer. 
+
+>[!Note] 
+>A portál a telepítési folyamat egy fogyasztás terv akár 10 percet vehet igénybe.
 
 ## <a name="example-trigger-and-binding"></a>Példa eseményindító és kötés
 
@@ -70,9 +114,9 @@ Tegyük fel, hogy egy új sort írhat Azure Table storage, amikor egy új üzene
 }
 ```
 
-Az első eleme a `bindings` tömbjének értéke a várólista tárolási eseményindító. A `type` és `direction` tulajdonságok azonosítsa az eseményindító. A `name` tulajdonság a várólista üzenet tartalma fog kapni. függvényparaméter azonosítja. A figyelheti a várólista nevét kell `queueName`, és a kapcsolati karakterlánc: az alkalmazás-beállítás által azonosított `connection`.
+Az első eleme a `bindings` tömbjének értéke a várólista tárolási eseményindító. A `type` és `direction` tulajdonságok azonosítsa az eseményindító. A `name` tulajdonság, amely megkapja a várólista üzenettartalom függvényparaméter azonosítja. A figyelheti a várólista nevét kell `queueName`, és a kapcsolati karakterlánc: az alkalmazás-beállítás által azonosított `connection`.
 
-A második eleme a `bindings` az Azure Table Storage kimeneti kötése. A `type` és `direction` tulajdonságok azonosíthatja a kötés. A `name` tulajdonság határozza meg, hogyan a függvény fog adja meg az új táblazatsorok ebben az esetben a függvény visszatérési értéke. A tábla neve `tableName`, és a kapcsolati karakterlánc: az alkalmazás-beállítás által azonosított `connection`.
+A második eleme a `bindings` az Azure Table Storage kimeneti kötése. A `type` és `direction` tulajdonságok azonosíthatja a kötés. A `name` tulajdonság határozza meg, hogy a függvény biztosítja az új táblázat sor kerül, ebben az esetben a függvény használatával érték. A tábla neve `tableName`, és a kapcsolati karakterlánc: az alkalmazás-beállítás által azonosított `connection`.
 
 Megtekintheti és szerkesztheti a tartalmát *function.json* az Azure portálon kattintson a **speciális szerkesztő** beállítást a **integráció** lapon, a függvény.
 

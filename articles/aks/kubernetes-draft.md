@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 10/24/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: a77e214c1138ce936b2ec6c521950704e5beb3ff
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: 803d9e9ea7411c6de4dd15670f495fa8e169a989
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2017
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="use-draft-with-azure-container-service-aks"></a>Az Azure Tárolószolgáltatás (AKS) vázlat használata
 
@@ -27,28 +27,7 @@ A dokumentumban foglalt lépések feltételezik, hogy korábban már létrehozot
 
 Meg kell egy titkos Docker beállításjegyzék Azure tároló beállításjegyzék (ACR) is. ACR példány telepítésével kapcsolatos útmutatásért lásd: a [Azure tároló beállításjegyzék gyors üzembe helyezés][acr-quickstart].
 
-## <a name="install-helm"></a>Helm telepítése
-
-A Helm CLI ügyfél, amely a fejlesztői rendszeren fut, és lehetővé teszi indítása, leállítása és kezelheti az alkalmazásokat az Helm diagramok.
-
-Telepítse a Helm parancssori felület Mac, használja a `brew`. További telepítési lehetőségekről, tekintse meg [telepítése Helm][install-helm].
-
-```console
-brew install kubernetes-helm
-```
-
-Kimenet:
-
-```
-==> Downloading https://homebrew.bintray.com/bottles/kubernetes-helm-2.6.2.sierra.bottle.1.tar.gz
-######################################################################## 100.0%
-==> Pouring kubernetes-helm-2.6.2.sierra.bottle.1.tar.gz
-==> Caveats
-Bash completion has been installed to:
-  /usr/local/etc/bash_completion.d
-==> Summary
-🍺  /usr/local/Cellar/kubernetes-helm/2.6.2: 50 files, 132.4MB
-```
+Helm is telepíteni kell a AKS fürtben. Helm telepítésével kapcsolatos további információkért lásd: [használata Helm Azure tároló szolgáltatás (AKS)][aks-helm].
 
 ## <a name="install-draft"></a>Vázlat telepítése
 
@@ -227,13 +206,13 @@ Kezdetben a *külső IP-* megjelenik a szolgáltatás `pending`.
 deadly-squid-java   10.0.141.72   <pending>     80:32150/TCP   14m
 ```
 
-Miután a külső IP-cím megváltozott `pending` való egy `IP address`, használja `Control+C` kubectl figyelési megszakításához.
+Miután az EXTERNAL-IP cím `pending` állapotról `IP address` állapotúra változik, a `Control+C` billentyűparanccsal állítsa le a kubectl figyelési folyamatát.
 
 ```
 deadly-squid-java   10.0.141.72   52.175.224.118   80:32150/TCP   17m
 ```
 
-Az alkalmazás megtekintéséhez navigáljon a külső IP-címet.
+Az alkalmazás megtekintéséhez navigáljon a külső IP-címhez.
 
 ```console
 curl 52.175.224.118
@@ -297,7 +276,7 @@ Kimenet:
 Hello World, I'm Java - Draft Rocks!
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Vázlat használatával kapcsolatos további információkért az dokumentációjában vázlat a Githubon.
 
@@ -307,10 +286,10 @@ Vázlat használatával kapcsolatos további információkért az dokumentáció
 <!-- LINKS - external -->
 [draft-documentation]: https://github.com/Azure/draft/tree/master/docs
 [install-draft]: https://github.com/Azure/draft/blob/master/docs/install.md
-[install-helm]: https://github.com/kubernetes/helm/blob/master/docs/install.md
-[kubernetes-ingress]: https://kubernetes.io/docs/concepts/services-networking/ingress/
+[kubernetes-ingress]: ./ingress.md
 [kubernetes-service-loadbalancer]: https://kubernetes.io/docs/concepts/services-networking/service/#type-loadbalancer
 
 <!-- LINKS - internal -->
 [acr-quickstart]: ../container-registry/container-registry-get-started-azure-cli.md
+[aks-helm]: ./kubernetes-helm.md
 [aks-quickstart]: ./kubernetes-walkthrough.md

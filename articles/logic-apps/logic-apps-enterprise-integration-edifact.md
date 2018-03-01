@@ -15,11 +15,11 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 07/26/2016
 ms.author: LADocs; jonfan
-ms.openlocfilehash: 68009b74a410f7e854de675a1d8d0c32e310d2c9
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 4b1ea9966add3cf0d5f75988f11cda57fa4e4cf6
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="exchange-edifact-messages-for-enterprise-integration-with-logic-apps"></a>A logic apps vállalati integrációs Exchange EDIFACT-üzenetek
 
@@ -32,65 +32,63 @@ EDIFACT üzenetváltásra az Azure Logic Apps, mielőtt EDIFACT-egyezmény létr
 
 A szükséges elemeket itt található:
 
-* Egy [integrációs fiók](../logic-apps/logic-apps-enterprise-integration-accounts.md) , amely már definiált és az Azure-előfizetéshez társított  
+* Egy [integrációs fiók](logic-apps-enterprise-integration-create-integration-account.md) , amely már definiált és az Azure-előfizetéshez társított  
 * Legalább két [partnerek](logic-apps-enterprise-integration-partners.md) , amely már definiálva vannak az integráció-fiókban
 
 > [!NOTE]
 > Amikor egy szerződést hoz létre, a üzeneteket fogadni, vagy küld és a partner tartalma a szerződés típusának meg kell egyeznie.
 
-Miután [integrációs-fiók létrehozása](../logic-apps/logic-apps-enterprise-integration-accounts.md) és [adja hozzá a partnerek](logic-apps-enterprise-integration-partners.md), EDIFACT szerződés ezeket a lépéseket követve hozhat létre.
+Miután [integrációs-fiók létrehozása](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) és [adja hozzá a partnerek](logic-apps-enterprise-integration-partners.md), EDIFACT szerződés ezeket a lépéseket követve hozhat létre.
 
 ## <a name="create-an-edifact-agreement"></a>EDIFACT-egyezmény létrehozása 
 
-1.  Jelentkezzen be az [Azure Portalra](http://portal.azure.com "Azure Portal") A bal oldali menüben válassza ki a **minden szolgáltatás**.
+1. Jelentkezzen be az [Azure Portalra](http://portal.azure.com "Azure Portal") 
 
-    > [!TIP]
-    > Ha nem lát **minden szolgáltatás**, lehetséges, hogy először bontsa ki a menüben. Jelölje be a becsukott menü felső részén **megjelenítése menü**.
+2. Válassza ki a fő Azure menü **minden szolgáltatás**. A keresési mezőbe, írja be a "integrációt", és válassza ki **integrációs fiókok**.
 
-    ![A bal oldali menüben válassza a "Minden szolgáltatások"](./media/logic-apps-enterprise-integration-edifact/edifact-0.png)
+   ![Az integráció fiók](./media/logic-apps-enterprise-integration-edifact/edifact-0.png)
 
-2. A keresőmezőbe írja be a "integrációt" a szűrőhöz. Az eredmények listájában válassza **integrációs fiókok**.
+   > [!TIP]
+   > Ha **minden szolgáltatás** nem jelenik meg, lehetséges, hogy először bontsa ki a menüben. Jelölje be a becsukott menü felső részén **szöveg címkéket**.
 
-    ![A "integrációt" szűrheti, válassza ki a "Integrációs fiókok"](./media/logic-apps-enterprise-integration-edifact/edifact-1-3.png)
+3. A **integrációs fiókok**, válassza ki az integráció fiókra, amelyhez a szerződést létrehozásához.
 
-3. Az a **integrációs fiókok** panelt megnyitó, válassza ki az integráció fiókra, amelyhez a szerződést létrehozásához.
-Ha nem lát minden integrációs fiókok [hozzon létre egyet első](../logic-apps/logic-apps-enterprise-integration-accounts.md "integrációs fiókokkal kapcsolatos összes").  
+   ![Válassza ki azt az integráció fiókot, a szerződés létrehozásának a helyét](./media/logic-apps-enterprise-integration-edifact/edifact-1-4.png)
 
-    ![Válassza ki azt az integráció fiókot, a szerződés létrehozásának a helyét](./media/logic-apps-enterprise-integration-edifact/edifact-1-4.png)
+4. Válasszon **megállapodások**. Ha egy megállapodások csempe nem rendelkezik, először vegye fel a csempe.   
 
-4. Válassza ki a **megállapodások** csempére. Ha egy megállapodások csempe nem rendelkezik, először vegye fel a csempe.   
+   ![Válassza a "Szerződés" csempe](./media/logic-apps-enterprise-integration-edifact/edifact-1-5.png)
 
-    ![Válassza a "Szerződés" csempe](./media/logic-apps-enterprise-integration-edifact/edifact-1-5.png)
+5. A szerződések a lapon választhatja ki **Hozzáadás**.
 
-5. Szerződések paneljén válassza **Hozzáadás**.
-
-    ![Válassza a "Hozzáadás"](./media/logic-apps-enterprise-integration-edifact/edifact-agreement-2.png)
+   ![Válassza a "Hozzáadás"](./media/logic-apps-enterprise-integration-edifact/edifact-agreement-2.png)
 
 6. A **Hozzáadás**, adjon meg egy **neve** a szerződés. A **szerződés típusának**, jelölje be **EDIFACT**. Válassza ki a **fogadó Partner**, **gazdagép identitását**, **Vendég Partner**, és **Vendég identitás** a szerződés.
 
-    ![Adja meg a szerződés részletei](./media/logic-apps-enterprise-integration-edifact/edifact-1.png)
+   ![Adja meg a szerződés részletei](./media/logic-apps-enterprise-integration-edifact/edifact-1.png)
 
-    | Tulajdonság | Leírás |
-    | --- | --- |
-    | Name (Név) |A szerződés nevét |
-    | A szerződés típusa | EDIFACT kell lennie. |
-    | Gazdagéppartner |Egy szerződést kell a gazdagép és a Vendég partner. A fogadó partner szervezet, amely beállítja a szerződés jelöli. |
-    | Gazdagép-identitás |A fogadó partner azonosítója |
-    | Vendégpartner |Egy szerződést kell a gazdagép és a Vendég partner. A Vendég partnert a szervezet, amely a gazdagép partnerrel üzleti jelöli. |
-    | Vendégidentitás |A Vendég partner azonosítója |
-    | Fogadási beállítások |Minden szerződés által fogadott üzenetek alkalmazni ezeket a tulajdonságokat. |
-    | Küldési beállítások |Ezeket a tulajdonságokat a szerződés által küldött összes üzenet vonatkozik. |
+   | Tulajdonság | Leírás |
+   | --- | --- |
+   | Name (Név) |A szerződés nevét |
+   | A szerződés típusa | EDIFACT kell lennie. |
+   | Gazdagéppartner |Egy szerződést kell a gazdagép és a Vendég partner. A fogadó partner szervezet, amely beállítja a szerződés jelöli. |
+   | Gazdagép-identitás |A fogadó partner azonosítója |
+   | Vendégpartner |Egy szerződést kell a gazdagép és a Vendég partner. A Vendég partnert a szervezet, amely a gazdagép partnerrel üzleti jelöli. |
+   | Vendégidentitás |A Vendég partner azonosítója |
+   | Fogadási beállítások |Minden szerződés által fogadott üzenetek alkalmazni ezeket a tulajdonságokat. |
+   | Küldési beállítások |Ezeket a tulajdonságokat a szerződés által küldött összes üzenet vonatkozik. |
+   ||| 
 
 ## <a name="configure-how-your-agreement-handles-received-messages"></a>Hogyan a szerződés leírók fogadott üzenetek konfigurálása
 
 Most, hogy a szerződés tulajdonságok beállítása, beállíthatja a módját a jelen szerződés azonosítja, és kezeli a bejövő üzenetek és a szerződés partnerétől kapott.
 
-1.  A **Hozzáadás**, jelölje be **fogadási beállítások**.
+1. A **Hozzáadás**, jelölje be **fogadási beállítások**.
 Állítsa be ezeket a tulajdonságokat a partnerrel, amely az üzenetek Önnel a szerződés alapján. Lásd: e szakasz táblázatai tulajdonság leírásait.
 
-    **Beállítások** van felosztva ezekben a szakaszokban: azonosítók, visszaigazolás, sémákat, vezérlő számok, érvényesítése és belső beállítások.
+   **Beállítások** van felosztva ezekben a szakaszokban: azonosítók, visszaigazolás, sémákat, vezérlő számok, érvényesítése és belső beállítások.
 
-    ![Konfigurálja a "Kapják meg a beállításokat"](./media/logic-apps-enterprise-integration-edifact/edifact-2.png)  
+   ![Konfigurálja a "Kapják meg a beállításokat"](./media/logic-apps-enterprise-integration-edifact/edifact-2.png)  
 
 2. Miután elkészült, ügyeljen arra, hogy a beállítások mentéséhez válasszon **OK**.
 
@@ -211,7 +209,7 @@ Eltérő karakterkészlete, egy másik csoportját az egyes üzenet használand�
 | Tulajdonság | Leírás |
 | --- | --- |
 | UNB1.1 (rendszerazonosító) |Válassza ki a kimenő interchange alkalmazandó EDIFACT karakterkészletet. |
-| Séma |A legördülő listából válassza ki a sémát. Minden egyes sorára befejezése után a rendszer automatikusan hozzáadja az új sort. A kijelölt séma válassza ki az szerepel, amely szeretné használni, a következő elválasztó leírások alapján. |
+| Séma |A legördülő listából válassza ki a sémát. Minden egyes sorára befejezése után a rendszer automatikusan hozzáadja az új sort. A kijelölt séma válassza ki az szerepel, amely szeretné használni, az alábbi elválasztó leírása alapján. |
 | Bevitel típusa |Válassza ki a bemeneti típusát a legördülő listából. |
 | Összetevő-elválasztó |Önálló összetett adatok elemek, írja be a következőt egy egyetlen karaktert. |
 | Adatelem-elválasztó |Külön egyszerű adatelemek összetett adatelemek belül, adjon meg egy egyetlen karaktert. |
@@ -240,13 +238,13 @@ Eltérő karakterkészlete, egy másik csoportját az egyes üzenet használand�
 
 ## <a name="find-your-created-agreement"></a>A létrehozott megállapodás keresése
 
-1.  A szerződés tulajdonságainak a beállítása után a **Hozzáadás** paneljén válassza **OK** hozta létre a szerződést, és az integráció fiók panelen való visszatéréshez.
+1.  A szerződés tulajdonságainak a beállítása után a **Hozzáadás** lapon, válassza ki **OK** hozta létre a szerződés és integrációs fiókjába való visszatéréshez.
 
     Az újonnan hozzáadott foglalt most megjelenik a **megállapodások** listája.
 
-2.  Az integrációs fiókok áttekintése is megtekintheti a szerződéseket. Az integráció-fiók panelen válassza **áttekintése**, majd jelölje be a **megállapodások** csempére. 
+2.  Az integrációs fiókok áttekintése is megtekintheti a szerződéseket. Az integráció felhasználóifiók-menüjéből válassza **áttekintése**, majd jelölje be a **megállapodások** csempére. 
 
-    ![Válassza a minden szerződés megtekintéséhez egymás "Szerződés"](./media/logic-apps-enterprise-integration-edifact/edifact-4.png)   
+    ![Válassza a "Szerződés" csempe](./media/logic-apps-enterprise-integration-edifact/edifact-4.png)   
 
 ## <a name="view-swagger-file"></a>A Swagger-fájl megtekintése
 A Swagger adatai a EDIFACT-összekötő megtekintése: [EDIFACT](/connectors/edifact/).

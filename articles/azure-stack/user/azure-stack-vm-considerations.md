@@ -12,13 +12,13 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/27/2018
+ms.date: 02/23/2018
 ms.author: brenduns
-ms.openlocfilehash: 59053e4beda48fd8474da675e50e02438c79a98e
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 2b39ff3665a4cc3aeddf81b83e0c90c7f770da72
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="considerations-for-virtual-machines-in-azure-stack"></a>Virtuális gépek Azure-készletben szempontjai
 
@@ -41,19 +41,25 @@ Virtuális gépek az igény szerinti, méretezhető számítási erőforrások A
 |Virtuálisgép-méretezési csoportok|Támogatott automatikus méretezése|Automatikus skálázása nem támogatott.<br>Adja hozzá a méretezési készletben, a portál, a Resource Manager-sablonok vagy a PowerShell használatával további példányokat.
 
 ## <a name="virtual-machine-sizes"></a>Virtuálisgép-méretek
+Azure erőforrás-határértékeken elkerülése érdekében az erőforrások (helyi és a szolgáltatásiszint-kiszolgáló) overconsumption többféle módon írja elő. Néhány korlátot helyezi a bérlők által felhasznált erőforrás, nélkül a bérlői felhasználói élmény esetén csökkenhet, ha zajos szomszédos overconsumes erőforrások. 
+- A virtuális hálózati kimenő sávszélesség caps vezessen be olyan. Azure-készletben a Caps felel meg a caps az Azure-ban.  
+- Tároló-erőforrások, az Azure verem tárolási IOPs-korlátok vonatkoznak a bérlők a tárolók eléréséhez erőforrások alapvető overconsumption elkerülése érdekében valósít meg. 
+- Csatolt adatok több lemezzel rendelkező virtuális gépekhez a maximális átviteli sebességgel minden egyes adatlemez 500 IOPS HHDs, de 2300 IOPS SSD-k.
 
-Azure verem támogatja a következő méret:
+A következő táblázat felsorolja a virtuális gépek által támogatott Azure veremben konfigurációjuk együtt:
 
-| Típus | Méret | A támogatott méretek tartomány |
-| --- | --- | --- |
-|Általános célú |Alapszintű A|A0 - A4|
-|Általános célú |Standard A|A0 - A7|
-|Általános célú |D-sorozat|D1 - D4|
-|Általános célú |Dv2-sorozat|D1_v2 - D5_v2|
-|Általános célú |DS-sorozat|DS1 - DS4|
-|Általános célú |DSv2-sorozat|DS1_v2 - DS5_v2|
-|Memóriaoptimalizált|DS-sorozat|DS11 - DS14|
-|Memóriaoptimalizált |DSv2-sorozat|DS11_v2 - DS14_v2|
+| Típus           | Méret          | A támogatott méretek tartomány |
+| ---------------| ------------- | ------------------------ |
+|Általános célú |Alapszintű A        |[A0 - A4](azure-stack-vm-sizes.md#basic-a)                   |
+|Általános célú |Standard A     |[A0 - A7](azure-stack-vm-sizes.md#standard-a)              |
+|Általános célú |D-sorozat       |[D1 - D4](azure-stack-vm-sizes.md#d-series)              |
+|Általános célú |Dv2-sorozat     |[D1_v2 - D5_v2](azure-stack-vm-sizes.md#ds-series)        |
+|Általános célú |DS-sorozat      |[DS1 - DS4](azure-stack-vm-sizes.md#dv2-series)            |
+|Általános célú |DSv2-sorozat    |[DS1_v2 - DS5_v2](azure-stack-vm-sizes.md#dsv2-series)      |
+|Memóriaoptimalizált|D-sorozat       |[D11 - D14](azure-stack-vm-sizes.md#mo-d)            |
+|Memóriaoptimalizált|DS-sorozat      |[DS11 - DS14](azure-stack-vm-sizes.md#mo-ds)|
+|Memóriaoptimalizált|Dv2-sorozat     |[D11_v2 - DS14_v2](azure-stack-vm-sizes.md#mo-dv2)     |
+|Memóriaoptimalizált|DSv2-sorozat-  |[DS11_v2 - DS14_v2](azure-stack-vm-sizes.md#mo-dsv2)    |
 
 Virtuálisgép-méretek és a kapcsolódó erőforrás mennyiségek Azure verem és az Azure közötti megegyeznek. A konzisztencia például memória, magok száma és a szám vagy méretének hozható létre az adatlemezek tartalmazza. Az ugyanazon Virtuálisgép-méretet Azure verem teljesítményét azonban egy adott Azure verem környezetben alapul szolgáló jellemzői függ.
 

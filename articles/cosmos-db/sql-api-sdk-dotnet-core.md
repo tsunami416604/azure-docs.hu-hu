@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 02/21/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 365101fc6267a5a295462d7a9902e5fd25964086
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: fe27577b73c26731647a217c249913d8332c0c59
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="azure-cosmos-db-net-core-sdk-for-sql-api-release-notes-and-resources"></a>Az Azure Cosmos DB .NET Core SDK API-SQL: kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
@@ -61,7 +61,7 @@ Az Azure Cosmos DB .NET Core SDK legújabb verziójával szolgáltatásparitást
 
 ### <a name="a-name182182"></a><a name="1.8.2"/>1.8.2
 
-* Rögzített időszakos SessionConsistency versenyhelyzet lépett fel.
+* Rögzített, hibát talált az egyes versenyhelyzetek, amely időszakos eredményez "Microsoft.Azure.Documents.NotFoundException: az olvasási munkamenet nem érhető el a bemeneti munkameneti jogkivonat" hibák munkamenet konzisztenciaszint használatakor.
 
 ### <a name="a-name181181"></a><a name="1.8.1"/>1.8.1
 

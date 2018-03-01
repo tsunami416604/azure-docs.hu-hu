@@ -7,16 +7,16 @@ author: dominicbetts
 manager: timlt
 ms.author: dobett
 ms.service: iot-suite
-ms.date: 12/12/2017
+ms.date: 02/22/2018
 ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: d26275b6b03115b775990c9efb5d4706fcb829d1
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: dd01246075a5c0db0ed49133ed51fb56d8fcf8e5
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="troubleshoot-and-remediate-device-issues"></a>Hibaelhárítás és szervizelheti azokat a eszközökkel kapcsolatos problémákat
 
@@ -58,6 +58,8 @@ A riasztás megerősíti, hogy válassza ki a **előfordulások riasztás** vál
 
 ![Megerősíti a riasztások](media/iot-suite-remote-monitoring-maintain/maintenanceacknowledge.png)
 
+Megerősíti a riasztás, ha a bekövetkezésének állapota **Visszaigazolva**.
+
 A listában megtekintheti a **prototípus** felelős a hőmérséklet riasztás kiváltó eszköz:
 
 ![Az eszközök, amely a riasztás felsorolása](media/iot-suite-remote-monitoring-maintain/maintenanceresponsibledevice.png)
@@ -82,9 +84,9 @@ Egy adott feladat vagy a metódus hívása részleteinek megtekintéséhez jelö
 
 ![Feladatok részleteinek megjelenítése](media/iot-suite-remote-monitoring-maintain/maintenancejobdetail.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Az oktatóanyag azt bemutatta, hogyan számára:
+Ebben az oktatóanyagban megtudhatta, hogyan:
 
 <!-- Repeat task list from intro -->
 >[!div class="checklist"]

@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/15/2018
 ms.author: billmath
-ms.openlocfilehash: 68b36e1806d3338b07d4c2c400de233aff270132
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: c3956dd379961b119f65bdebe1f5a8038c4fa8f0
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="gdpr-compliance-and-azure-ad-connect"></a>GDPR megfelelőség és az Azure AD Connect 
 
@@ -33,7 +33,7 @@ Az Azure AD Connect telepítés általános adatok védelmi szabályozás megfel
 1.  Kérésre adatok kinyerése a személy, és távolítsa el adatait az adott személy a létesítmények
 2.  Győződjön meg arról, 48 órával adatot nem őrződnek meg.
 
-A tanácsadás az Azure AD Connect csapat azt javasolja, hogy a második lehetőség.  A folyamatban, oka az, hogy a legegyszerűbb messze a bevezetéséhez és karbantartásához.
+Az Azure AD Connect csapat azt javasolja, hogy a második lehetőség óta sokkal egyszerűbb, bevezetéséhez és karbantartásához.
 
 Az Azure AD Connect szinkronizálási kiszolgáló GDPR megfelelőségi hatókör a következő adatokat tárolja:
 1.  Az a személy adatait a **az Azure AD Connect-adatbázis**
