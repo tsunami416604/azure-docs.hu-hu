@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: apimpm
-ms.openlocfilehash: 8576d590568a24df4c3320ec283edba7a28ab032
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: 54fbba197f6609731ffaf3ff15143a28e70a955f
+ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="policies-in-azure-api-management"></a>Házirendek az Azure API Management
 
@@ -27,7 +27,7 @@ Házirendek az átjárón, amely az API-ügyfél és a felügyelt API között h
 
 A házirend-kifejezéseket attribútumértékekként vagy szövegértékekként lehet használni bármelyik API Management házirendben, hacsak a házirend másként nem rendelkezik. Egyes házirendek, például a [folyamatot szabályozhatja] [ Control flow] és [Set változó] [ Set variable] házirendek a házirend-kifejezések alapulnak. További információkért lásd: [házirendek speciális] [ Advanced policies] és [házirend-kifejezések][Policy expressions].
 
-## <a name="sections"></a>Ismertetése házirend konfigurálása
+## <a name="sections"> </a>Házirend-konfiguráció ismertetése
 
 A házirend-definíció egy egyszerű XML-dokumentumban, amely leírja a bejövő és kimenő utasítás sorozata. Az XML-fájl közvetlenül a definíció ablakban szerkeszthető. Egy utasítás listája jobbra, és az aktuális hatókör vonatkozó utasítások engedélyezve van, és a kijelölt.
 
@@ -60,7 +60,7 @@ A konfigurációs oszlik `inbound`, `backend`, `outbound`, és `on-error`. A meg
 
 Ha a kérelem feldolgozása során hiba történt, a többi szükséges lépések a `inbound`, `backend`, vagy `outbound` szakaszok kimarad, és végrehajtási lévő utasítások ugrik a `on-error` szakasz. Úgy, hogy a házirend-utasításoknál a `on-error` tekintse át a hiba a szakasz a `context.LastError` tulajdonság, nézze meg, és testre szabhatja a hiba válasz használatával a `set-body` házirend, és konfigurálása, mi történik, ha a hiba akkor fordul elő. Nincsenek hibakódok beépített lépéseket és a házirend-utasításoknál feldolgozása során előforduló hibákat. További információkért lásd: [hiba történt az API-felügyeleti házirendek kezelése](https://msdn.microsoft.com/library/azure/mt629506.aspx).
 
-## <a name="scopes"></a>Házirendek konfigurálása
+## <a name="scopes"> </a>Házirendek konfigurálása
 
 Házirendek konfigurálásával kapcsolatos további információkért lásd: [beállítása vagy szerkesztheti a szabályzatokat](set-edit-policies.md).
 
@@ -112,12 +112,6 @@ Korlátozza a bejövő kéréseket, és fogadja csak azokat az IP-címről 1.2.3
     <address>1.2.3.4</address>
 </ip-filter>
 ```
-
-## <a name="video"></a>Videó
-
-> [!VIDEO https://channel9.msdn.com/Blogs/AzureApiMgmt/Policy-Expressions-in-Azure-API-Management/player]
-> 
-> 
 
 ## <a name="next-steps"></a>További lépések
 

@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/24/2018
 ms.author: mimig
-ms.openlocfilehash: 2e49613cf37fa625efc7859802db86780dcb128a
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 2b822794cbafa037d4ab3cb23d2a885914c83607
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 02/28/2018
 ---
 > [!div class="op_single_selector"]
 > * [Java](performance-tips-java.md)
@@ -97,7 +97,7 @@ Ezért ha még kérése "Hogyan javítható az adatbázis teljesítménye?" Vegy
     Az Azure Cosmos DB SDK-k a rendszer folyamatosan javult a legjobb teljesítmény elérése érdekében. Tekintse meg a [Azure Cosmos DB SDK](documentdb-sdk-dotnet.md) lapok használatával állapítsa meg a legutóbbi SDK, és tekintse át a fejlesztései.
 2. **Az alkalmazás teljes egypéldányos Azure Cosmos DB ügyfél használata**
 
-    Efach DocumentClient példány szálbiztos, végrehajtja a hatékony kapcsolat kezelése és a címek gyorsítótárazása, ha közvetlen módban működik. Engedélyezése hatékony kapcsolat kezelése és DocumentClient által jobb teljesítmény érdekében javasoljuk, hogy egyetlen példány futhat egy AppDomain DocumentClient használni az alkalmazás élettartamának.
+    Minden egyes DocumentClient példány szálbiztos, végrehajtja a hatékony kapcsolat kezelése és a címek gyorsítótárazása, ha közvetlen módban működik. Engedélyezése hatékony kapcsolat kezelése és DocumentClient által jobb teljesítmény érdekében javasoljuk, hogy egyetlen példány futhat egy AppDomain DocumentClient használni az alkalmazás élettartamának.
 
    <a id="max-connection"></a>
 3. **Növelhető a System.NET névtérbeli MaxConnections állomásonként, ha az átjáró módban**
