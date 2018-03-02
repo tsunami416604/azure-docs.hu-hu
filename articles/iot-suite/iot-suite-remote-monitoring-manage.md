@@ -7,16 +7,16 @@ author: dominicbetts
 manager: timlt
 ms.author: dobett
 ms.service: iot-suite
-ms.date: 12/12/2017
+ms.date: 02/22/2018
 ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: fab3fd4163141aadc06b385f5759c19eece7fd14
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: 66005b78a368c15a463844b3f098eac9fd64f621
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="manage-and-configure-your-devices"></a>Kezelése és az eszközök konfigurálása
 
@@ -42,11 +42,11 @@ Ha még nem telepítette a távoli figyelési megoldást igényelnek, még el ke
 
 ## <a name="add-a-simulated-device"></a>A szimulált eszköz hozzáadása
 
-Keresse meg a **eszközök** a megoldás lapját, és válassza a **új eszköz**. Az a **új eszköz** panelen, kattintson a **szimulált**:
+Keresse meg a **eszközök** a megoldás lapját, és válassza a **+ új eszköz**. Az a **új eszköz** panelen, kattintson a **szimulált**:
 
 ![A szimulált eszköz kiépítése](media/iot-suite-remote-monitoring-manage/devicesprovision.png)
 
-Az eszközök számát hagyja beállítása rendelkezésre **1**. Válasszon **hibás motor** , a **eszközmodell**, és válassza a **alkalmaz** a szimulált eszköz létrehozásához:
+Az eszközök számát hagyja beállítása rendelkezésre **1**. Válassza ki a **hibás motor** eszköz modell, és válassza a **alkalmaz** a szimulált eszköz létrehozásához:
 
 ![A szimulált motor eszköz kiépítése](media/iot-suite-remote-monitoring-manage/devicesprovisionengine.png)
 
@@ -98,7 +98,7 @@ Olyan módosítást, vegye fel a feladatnak a nevét, a tulajdonságértékek fr
 
 A feladat állapotának nyomon követheti a **karbantartási** lapon, válassza ki **feladatok**.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez az oktatóanyag bemutatta, hogyan számára:
 

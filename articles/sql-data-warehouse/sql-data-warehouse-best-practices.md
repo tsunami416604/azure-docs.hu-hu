@@ -13,13 +13,13 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: performance
-ms.date: 12/06/2017
+ms.date: 02/20/2018
 ms.author: barbkess
-ms.openlocfilehash: 861c2c977fa9d0341125127852bc7747dfd6001a
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 50d02b657ec3063b0ca4078844563b4ba7932f37
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="best-practices-for-azure-sql-data-warehouse"></a>Ajánlott eljárások az Azure SQL Data Warehouse-hoz
 Ez a cikk számos ajánlott eljárás gyűjteménye, amelyek segítenek optimális teljesítményt kihozni az Azure SQL Data Warehouse-ból.  A cikkben található fogalmak némelyike könnyen elmagyarázható, míg mások összetettebb fogalmak, amelyeket csak nagy vonalakban mutatunk be.  A cikk célja, hogy némi alapszintű útmutatással és a legfontosabb dolgok hangsúlyozásával segítse Önt az adattárház létrehozásában.  Minden szakasz röviden bemutat egy fogalmat, majd részletesebb cikkekhez irányít át, amelyek a fogalmat alaposabban is körüljárják.
@@ -29,14 +29,8 @@ Ha csak most kezdi el használni az Azure SQL Data Warehouse-t, ne hagyja, hogy 
 Útmutatás a betöltéshez: [Útmutató az adatok betöltéséhez](guidance-for-loading-data.md).
 
 ## <a name="reduce-cost-with-pause-and-scale"></a>Költségek csökkentése felfüggesztés és méretezés által
-Az SQL Data Warehouse egyik legfőbb jellemzője, hogy ha nem használja, felfüggesztheti a szolgáltatást, ezzel leállítva a számítási erőforrások számlázását.  Egy másik fontos jellemző az erőforrások méretezhetősége.  A felfüggesztés és a méretezés az Azure Portalon keresztül vagy PowerShell-parancsok használatával lehetséges.  Ezen funkciók elsajátítása nagy mértékben csökkentheti az adattárházzal kapcsolatos kiadásait, amikor azt épp nem használja.  Ha azt szeretné, hogy az adattárháza folyamatosan rendelkezésre álljon, érdemes lehet azt a legkisebb méretre, a DW100-ra skálázni a felfüggesztés helyett.
+A költségek felfüggesztéssel és skálázással való csökkentéséről további információért tekintse meg a [Számítások kezelése](sql-data-warehouse-manage-compute-overview.md) című szakaszt. 
 
-Lásd még: [Számítási erőforrások használatának felfüggesztése][Pause compute resources], [Számítási erőforrások használatának folytatása][Resume compute resources], [Számítási erőforrások méretezése].
-
-## <a name="drain-transactions-before-pausing-or-scaling"></a>Tranzakciók ürítése felfüggesztés vagy méretezés előtt
-Ha felfüggeszti vagy méretezi az SQL Data Warehouse-t, a felfüggesztési vagy méretezési kérelem elindításakor a színfalak mögött a lekérdezések megszakadnak.  Egy egyszerű választó lekérdezés megszakítása gyors művelet, amelynek szinte semmilyen hatása nincs az üzemelő példány felfüggesztéséhez vagy méretezéséhez szükséges időtartamra.  Azonban a tranzakciós lekérdezések, amelyek adatokat vagy az adatok szerkezetét is módosítják, nem biztos, hogy ilyen hamar le tudnak állni.  **A tranzakciós lekérdezéseknek definíciójuk szerint vagy teljesen be kell fejeződniük, vagy vissza kell állítaniuk az általuk végrehajtott módosításokat.**  A tranzakciós lekérdezések által elvégzett módosítások visszaállítása ugyanannyi, vagy akár hosszabb ideig is tarthat, mint a lekérdezés által elvégzett eredeti módosítás végrehajtása.  Például ha megszakít egy olyan lekérdezést, amely sorokat törölt és már egy órája futott, a rendszernek egy újabb órájába telhet, hogy a törölt sorokat visszaállítsa.  Ha a felfüggesztést vagy a méretezést olyankor futtatja, amikor épp tranzakciók vannak folyamatban, a felfüggesztés vagy a méretezés látszólag hosszú időt vehet igénybe, mivel e műveleteknek meg kell várniuk, amíg a visszaállítás lezajlik.
-
-Lásd még: [Tranzakciók megismerése][Understanding transactions], [Tranzakciók optimalizálása][Optimizing transactions]
 
 ## <a name="maintain-statistics"></a>Statisztikák karbantartása
 Az SQL Serverrel ellentétben az SQL Data Warehouse nem észleli, hozza létre vagy frissíti az oszlopok statisztikáit, hanem ezek manuális karbantartása szükséges.  Noha mindezen a jövőben változtatni tervezünk, egyelőre az SQL Data Warehouse-csomagok optimalizálása érdekében saját kezűleg kell karbantartania a statisztikákat.  Az optimalizáló által létrehozott csomagok csak annyira jók, amennyire az elérhető statisztikák azok.  **A statisztikák megismerésének egyik legjobb módja a mintastatisztikák létrehozása minden oszlopról.**  Ugyanilyen fontos a statisztikák frissítése is, mivel az adatokban jelentős változások történhetnek.  Ennek hagyományos módszere, ha naponta vagy minden betöltés után frissíti a statisztikákat.  Mindig érdemes figyelembe venni, hogyan viszonyul egymáshoz a teljesítmény és a statisztikák létrehozásának és frissítésének költségei. Ha úgy gondolja, hogy túl sokáig tart az összes statisztika karbantartása, lehet, hogy körültekintőbben kell kiválasztania, mely oszlopok rendelkezzenek statisztikákkal vagy melyek igényelnek gyakori frissítést.  Előfordulhat például, hogy csak a dátumoszlopokat szeretné frissíteni, amelyekbe napi rendszerességgel kerülnek új értékek. **A legnagyobb előnnyel az jár, ha az összekapcsolások részét képező, a WHERE záradékban használt és a GROUP BY elemben megtalálható oszlopok statisztikáit kéri le.**
@@ -138,7 +132,7 @@ A szolgáltatással kapcsolatos kéréseit az [Azure SQL Data Warehouse visszaje
 [Monitor your workload using DMVs]: ./sql-data-warehouse-manage-monitor.md
 [Pause compute resources]: ./sql-data-warehouse-manage-compute-overview.md#pause-compute-bk
 [Resume compute resources]: ./sql-data-warehouse-manage-compute-overview.md#resume-compute-bk
-[Számítási erőforrások méretezése]: ./sql-data-warehouse-manage-compute-overview.md#scale-compute
+[Scale compute resources]: ./sql-data-warehouse-manage-compute-overview.md#scale-compute
 [Understanding transactions]: ./sql-data-warehouse-develop-transactions.md
 [Optimizing transactions]: ./sql-data-warehouse-develop-best-practices-transactions.md
 [Troubleshooting]: ./sql-data-warehouse-troubleshoot.md

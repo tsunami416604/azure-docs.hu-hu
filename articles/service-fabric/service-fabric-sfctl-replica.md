@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/22/2017
 ms.author: ryanwi
-ms.openlocfilehash: 422c19dfa9a204d98a898f76bc1af92a05c054d0
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: ba67a2a20d3f3e8e9fbccb2674cea500bfbde3fb
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 02/27/2018
 ---
-# <a name="sfctl-replica"></a>sfctl replika
+# <a name="sfctl-replica"></a>sfctl-replika
 A szolgáltatáspartíciók tartozó replikák kezelése.
 
 ## <a name="commands"></a>Parancsok
@@ -64,7 +64,7 @@ Lekérdezi a telepített Service Fabric-csomópont replika részleteit. Adatok t
 ## <a name="sfctl-replica-health"></a>sfctl a replika állapota
 A Service Fabric állapotalapú szolgáltatási replika- vagy állapotmentes szolgáltatások állapotának beolvasása.
 
-A Service Fabric replika állapotának beolvasása. Az EventsHealthStateFilter használatával szűrhetők a replika állapota alapján jelentett állapotával kapcsolatos események gyűjtése. .
+A Service Fabric replika állapotának beolvasása. Az EventsHealthStateFilter használatával szűrhetők a replika állapota alapján jelentett állapotával kapcsolatos események gyűjtése.
 
 ### <a name="arguments"></a>Argumentumok
 
@@ -72,7 +72,7 @@ A Service Fabric replika állapotának beolvasása. Az EventsHealthStateFilter h
 | --- | --- |
 | --partícióazonosító [szükséges]| A partíció identitását.|
 | --másodpéldány-azonosító [szükséges]| A replika azonosítója.|
-| --events-health-state-filter| A gyűjtemény által visszaadott HealthEvent objektumok állapota alapján szűrését teszi lehetővé. Ez a paraméter lehetséges értékei közé tartozik a következő állapotok közül az egyik egész értéket. Csak a szűrőnek megfelelő események adja vissza. Összes esemény összesített állapotát értékeléséhez használt. Ha nincs megadva, a rendszer összes bejegyzés is megjelennek. Az állapot értékei jelző-alapú számbavétel, az érték lehet ezek segítségével bitenkénti "Vagy" operátor érték kombinációja. Például ha a megadott érték azonban 6 majd az OK (2) és a figyelmeztető (4) HealthState értékkel rendelkező események is megjelennek. -Alapértelmezett - alapértelmezett értéket. Bármely HealthState megegyezik. A tulajdonság értéke nulla. -None - szűrőt, amely nem egyezik a HealthState értékét. Ahhoz, hogy nincs eredményeket egy adott gyűjtemény állapotok használt. Az érték 1. -Ok - szűrheti, hogy egyező bemeneti érték a HealthState az OK gombra. A 2 érték. -A figyelmeztetési - szűrő, hogy egyező bemeneti healthstate értékét figyelmeztetés. Az érték 4. -Hiba – hiba HealthState értékű bemeneti egyező szűrő. A értéke 8. -Az összes - szűrő, amely megfelel a bemeneti bármely HealthState értékkel. Az érték 65535.|
+| --events-health-state-filter| A gyűjtemény által visszaadott HealthEvent objektumok állapota alapján szűrését teszi lehetővé. Ez a paraméter lehetséges értékei közé tartozik a következő állapotok közül az egyik egész értéket. Csak a szűrőnek megfelelő események adja vissza. Összes esemény összesített állapotát értékeléséhez használt. Ha nincs megadva, a rendszer összes bejegyzés is megjelennek. Az állapot értékei jelző-alapú számbavétel, az érték lehet ezeket az értékeket bitenkénti "Vagy" operátor segítségével. Például ha a megadott érték azonban 6 majd az OK (2) és a figyelmeztető (4) HealthState értékkel rendelkező események is megjelennek. -Alapértelmezett - alapértelmezett értéket. Bármely HealthState megegyezik. A tulajdonság értéke nulla. -None - szűrőt, amely nem egyezik a HealthState értékét. Ahhoz, hogy nincs eredményeket egy adott gyűjtemény állapotok használt. Az érték 1. -Ok - szűrheti, hogy egyező bemeneti érték a HealthState az OK gombra. A 2 érték. -A figyelmeztetési - szűrő, hogy egyező bemeneti healthstate értékét figyelmeztetés. Az érték 4. -Hiba – hiba HealthState értékű bemeneti egyező szűrő. A értéke 8. -Az összes - szűrő, amely megfelel a bemeneti bármely HealthState értékkel. Az érték 65535.|
 | – időtúllépés -t             | Időtúllépését másodpercben.  Alapértelmezett: 60.|
 
 ### <a name="global-arguments"></a>Globális argumentumok
@@ -82,13 +82,13 @@ A Service Fabric replika állapotának beolvasása. Az EventsHealthStateFilter h
 | --debug                  | Naplózási növelése az összes hibakeresési naplók megjelenítése.|
 | – Súgó -h                | Ez egy súgóüzenet és kilépési megjelenítése.|
 | – a kimeneti -o              | Kimeneti formátum.  Megengedett értékek: json, jsonc, tábla, tsv.  Alapértelmezett: JSON-ná.|
-| --lekérdezés                  | JMESPath lekérdezési karakterlánc. További információt és példákat http://jmespath.org/ talál.|
+| --lekérdezés                  | JMESPath lekérdezési karakterlánc. További információkért lásd: http://jmespath.org/.|
 | – részletes                | Naplózási növelése. Használatát – a teljes hibakeresési naplók hibakeresési.|
 
 ## <a name="sfctl-replica-info"></a>sfctl replika adatai
 A Service Fabric-partíción replika információ lekérése.
 
-A respons például az azonosító, szerepkör, állapot, rendszerállapot, csomópont, hasznos üzemidő és más a replika adatait.
+A válasz tartalmazza az azonosítója, szerepkör, állapot, állapotát, csomópont nevét, hasznos Üzemidő, és más a replika adatait.
 
 ### <a name="arguments"></a>Argumentumok
 
@@ -96,7 +96,7 @@ A respons például az azonosító, szerepkör, állapot, rendszerállapot, csom
 | --- | --- |
 | --partícióazonosító [szükséges]| A partíció identitását.|
 | --másodpéldány-azonosító [szükséges]| A replika azonosítója.|
-| ---folytatási  | A folytatási támogatójogkivonat-paramétere a következő set eredmények beszerzésére szolgál. Az eredményeket a rendszer egyetlen válasz nem férnek el a folytatási kód nem üres érték szerepel az API-t adott válaszokat. Ha ez az érték átadása a következő API-hívás, hogy az API-t az eredmények következő készletet ad vissza. Ha további eredménytelen majd az a folytatási kód nem tartalmaz értéket. Ez a paraméter értéke nem lehet URL-kódolású.|
+| ---folytatási  | A folytatási támogatójogkivonat-paramétere a következő set eredmények beszerzésére szolgál. Az eredményeket a rendszer egyetlen válasz nem férnek el a folytatási kód nem üres érték szerepel az API-t adott válaszokat. Ha ez az érték átadása a következő API-hívás, hogy az API-t az eredmények következő készletet ad vissza. Ha nincsenek további eredmények, majd az a folytatási kód nem tartalmaz értéket. Ez a paraméter értéke nem lehet URL-kódolású.|
 | – időtúllépés -t          | Időtúllépését másodpercben.  Alapértelmezett: 60.|
 
 ### <a name="global-arguments"></a>Globális argumentumok
@@ -106,7 +106,7 @@ A respons például az azonosító, szerepkör, állapot, rendszerállapot, csom
 | --debug               | Naplózási növelése az összes hibakeresési naplók megjelenítése.|
 | – Súgó -h             | Ez egy súgóüzenet és kilépési megjelenítése.|
 | – a kimeneti -o           | Kimeneti formátum.  Megengedett értékek: json, jsonc, tábla, tsv.  Alapértelmezett: JSON-ná.|
-| --lekérdezés               | JMESPath lekérdezési karakterlánc. További információt és példákat http://jmespath.org/ talál.|
+| --lekérdezés               | JMESPath lekérdezési karakterlánc. További információkért lásd: http://jmespath.org/.|
 | – részletes             | Naplózási növelése. Használatát – a teljes hibakeresési naplók hibakeresési.|
 
 ## <a name="sfctl-replica-list"></a>sfctl listáján

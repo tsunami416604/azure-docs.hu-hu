@@ -12,13 +12,13 @@ ms.topic: hero-article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/23/2018
+ms.date: 02/21/2018
 ms.author: yurid
-ms.openlocfilehash: 959c0e8693f4bba49488bbe85e334599823ad0ed
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: a5c95fc7ddf78987d8a7b135d54f359eb5c49946
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="understanding-security-alerts-in-azure-security-center"></a>Az Azure Security Center biztonsági riasztásainak megismerése
 Ez a cikk segít megismerni az Azure Security Centerben elérhető biztonsági riasztások különböző típusait, valamint a kapcsolódó elemzéseket. A riasztások és incidensek kezelésével kapcsolatos további információkért olvassa el a [Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben](security-center-managing-and-responding-alerts.md) című cikket.
@@ -93,16 +93,11 @@ A Security Center fejlett elemzési módszerekkel azonosítja a feltört erőfor
 * **IIS-naplófájlok letiltása és törlése**: Ez a riasztás az IIS-naplófájlok letiltását és/vagy törlését jelzi, amellyel a támadók gyakran a tevékenységük nyomait igyekeznek eltüntetni.
 * **Gyanús fájltörlés**: Ez a riasztás gyanús fájltörlést jelez, amellyel egy esetleges támadó eltávolíthatja a rosszindulatú bináris fájlokra utaló bizonyítékokat.
 * **Az összes fájl árnyékmásolata törölve lett**: Ez a riasztás azt jelzi, hogy az árnyékmásolatok törölve lettek.
-* **Egy előzményfájl törölve lett**: Ez a riasztás azt jelzi, hogy a parancselőzményeket tartalmazó naplófájlt törölték, így egy esetleges támadó elfedheti a nyomait.
 * **Gyanús fájltörlési parancsok**: Ez a riasztás olyan systeminfo parancskombinációt jelez, amelyet gyakran behatolás utáni öntörlési tevékenységhez használnak.  Bár a *systeminfo.exe* megbízható Windows-eszköznek minősül, az egymás után kétszeri futtatása, majd ezt követően egy törlési parancs használata, ahogy ebben az esetben is történt, igen ritka.
 * **Gyanús fióklétrehozás**: Ez a riasztás azt jelzi, hogy egy meglévő beépített rendszergazdai jogosultságú fiókhoz nagyon hasonló fiókot hoztak létre. Ezzel a technikával a támadók feltűnésmentesen hozhatnak létre rosszindulatú fiókokat.
-* **Gyanús bejelentkezési tevékenység**: Ez a riasztás szokatlan bejelentkezési tevékenységet jelez, amely az SMB-re (Server Message Block) irányuló találgatásos támadásra utal. Ha az érintett erőforrás IIS-kiszolgálóként működik, akkor ezt a riasztást az adott IIS-hitelesítési konfiguráció is okozhatja, amely megbízható.
 * **Gyanús kötet-árnyékmásolati tevékenység**: Ez a riasztás árnyékmásolati törlési tevékenységet jelez az erőforráson. A kötet árnyékmásolata (Volume Shadow Copy, VSC) az adatok pillanatképeit tároló fontos összetevő. Ez a tevékenység általában egy zsarolóprogrammal hozható összefüggésbe, de megbízható tevékenységhez is kapcsolódhat.
 * **Windows beállításjegyzék adatmegőrzési metódusa**: Ez a riasztás egy végrehajtható kód megőrzésére tett kísérletet jelez a Windows beállításjegyzékben. A rosszindulatú folyamatok gyakran alkalmaznak ehhez hasonló technikákat, hogy a rendszer újraindítása után is megmaradjanak.
-* **Windows tűzfal letiltva**: Ez a riasztás azt jelzi, hogy a Windows tűzfalát letiltották.
 * **Gyanús új tűzfalszabály**: Ez a riasztás azt jelzi, hogy egy új tűzfalszabály lett hozzáadva a *netsh.exe* segítségével egy gyanús helyen található végrehajtható fájltól érkező forgalom engedélyezése érdekében.
-* **Új felhasználó lett hozzáadva a rendszergazdák csoportjához**: Ez a riasztás azt jelzi, hogy valaki új felhasználót adott hozzá a helyi rendszergazdai csoporthoz.
-* **Új szolgáltatás lett létrehozva**: Ez a riasztás azt jelzi, hogy valaki új szolgáltatást hozott létre.
 * **Gyanús XCOPY-végrehajtások**: Ez a riasztás XCOPY-végrehajtások egy sorozatát jelzi, amely arra utalhat, hogy az egyik gépet feltörték, és rosszindulatú programok terjesztésére használták.
 * **Jogi nyilatkozat megjelenésének letiltása a felhasználók bejelentkezésekor**: Ez a riasztás azt jelzi, hogy a felhasználók bejelentkezésekor a jogi nyilatkozat megjelenését vezérlő beállításkulcs megváltozott. Ezt a támadók gyakran alkalmazzák egy gazdagép feltörése után.
 * **A rendszer kis- és nagybetűs karakterek rendellenes kombinációját észlelte a parancssorban**: Ez a riasztás kis- és nagybetűs karakterek kombinációjának használatát jelzi a parancssorban. Ezt a technikát a támadók a kis- és nagybetűket megkülönböztető vagy kivonatalapú gépi szabályok elől való elrejtőzésre használják.
@@ -123,15 +118,10 @@ A Security Center fejlett elemzési módszerekkel azonosítja a feltört erőfor
 * **Gyanús Set-ExecutionPolicy- és WinRM-módosítások**: Ez a riasztás olyan konfigurációmódosításokat jelez, amelyek a rosszindulatú ChinaChopper webshell használatával hozhatók összefüggésbe.
 * **Kritikus szolgáltatások letiltása**: Ez a riasztás azt jelzi, hogy a „net.exe stop” parancsot a SharedAccesshez vagy a Windows Biztonsági központhoz hasonló kritikus szolgáltatások leállítására használták.
 * **Az FTP -s kapcsolójának gyanús használata**: Ez a riasztás az FTP-k „-s” kapcsolójának használatát jelzi, amelyet kártevő programok használnak távoli FTP-kiszolgálókon való kapcsolódásra és további rosszindulatú bináris fájlok letöltésére.
-* **Dokumentumok kivonásának előkészítése IIS-backdooron keresztül**: Ez a riasztás dokumentumok kivonásra való összegyűjtését és előkészítését jelzi.
 * **A VBScript.Encode parancs gyanús végrehajtása**: Ez a riasztás a *VBScript.Encode* parancs végrehajtását jelzi, amely olvashatatlan szöveggé kódolja a szkripteket, így megnehezíti a felhasználóknak a kódok vizsgálatát.
 * **VBScript HTTP-objektum lefoglalása**: Ez a riasztás azt jelzi, hogy a parancssorral egy VBScript-fájlt hoztak létre, amely rosszindulatú fájlok letöltésére használható.
 * **Beragadó billentyűs támadás**: Ez a riasztás arra utalhat, hogy egy támadó megpróbálja kihasználni egy kisegítő lehetőség bináris fájlját (például a beragadó billentyűket, a képernyő-billentyűzetet, a narrátort), amellyel kiskaput biztosíthat magának a hozzáféréshez.
 * **Petya zsarolóprogramra utaló jelek**: Ez a riasztás azt jelzi, hogy a rendszer a Petya zsarolóprogramra használatára utaló technikákat észlelt.
-* **Egy kernelmodul be lett töltve**: Ez a riasztás azt jelzi, hogy egy kernelmodult töltöttek be.
-* **Egy kernelmodul el lett távolítva**: Ez a riasztás azt jelzi, hogy egy kernelmodult eltávolítottak.
-* **Rendellenes bejelentkezés egy gépen**: Ez a riasztás azt jelzi, hogy egy felhasználó szokatlan IP-címről jelentkezett be.
-* **Sor került egy fájl letöltésére és végrehajtására**: Ez a riasztás azt jelzi, hogy letöltöttek egy fájlt a gépre, végrehajtási jogosultságot adtak neki, majd végrehajtották.
 * **Az AMSI letiltására tett kísérlet**: Ez a riasztás a kártevőirtó vizsgálati felület (AMSI) letiltására tett kísérletet jelez, amellyel letiltható a kártevők észlelése.
 * **Zsarolóprogramra utaló jelek**: Ez a riasztás olyan gyanús tevékenységet jelez, amely általában képernyőzároló és titkosító zsarolóprogramokkal hozható összefüggésbe.
 * **Követőgyűjtemény gyanús kimeneti fájlja**: Ez a riasztás azt jelzi, hogy egy nyomkövetést (például egy hálózati tevékenységét) begyűjtöttek, és a kimenetét szokatlan fájltípusba továbbították.
@@ -145,14 +135,8 @@ A Security Center fejlett elemzési módszerekkel azonosítja a feltört erőfor
 * **Dinamikus PS-szkript konstrukció**: Ez a riasztás egy PowerShell-szkript dinamikus létrehozását jelzi. Ezt a módszert a támadók szkriptek fokozatos felépítésére használják az illetéktelen hálózati behatolást jelző (IDS) rendszerek megkerülése érdekében.
 * **Metasploitra utaló jelek**: Ez a riasztás a Metasploit-keretrendszerhez kapcsolódó tevékenységet jelez, amely számos, támadáshoz használható funkciót és eszközt biztosít.
 * **Gyanús fióktevékenység**: Ez a riasztás egy géphez való csatlakozásra tett kísérletet jelez egy nemrégiben feltört fiók használatával.
-* **Lehetséges gyanús hozzáférés ütemezési feladatokhoz**: Ez a riasztás egy cron feladat végrehajtását jelzi, amelyet a támadók rosszindulatú programok ütemezett végrehajtásához használnak.
-* **Lehetséges gyanús hozzáférés parancselőzmény-fájlokhoz**: Ez a riasztás a parancsok előzményfájljához való rendellenes hozzáférést jelez.
 * **Fióklétrehozás**: Ez a riasztás új fiók létrehozását jelzi a gépen.
-* **Bash-beállítás módosítása**: Ez a riasztás a Bash-profilhoz való hozzáférést jelez, amely bizonyíték lehet arra, hogy egy támadó rosszindulatú programok ütemezett végrehajtásával próbálkozik.
-* **Gyanús sikertelen sudo kísérletsorozat**: Ez a riasztás sikertelen sudo parancsok sorozatát jelzi, amely gyakran megfigyelhető a jogosulatlan felhasználók jogosultságainak eszkalációjára irányuló találgatásos támadások esetén.
-* **Gyanús sikeres sudo kísérletsorozat**: Ez a riasztás sikertelen sudo kísérletek sorozatát követő sikeres sudo kísérletet jelez, amely gyakran megfigyelhető a jogosulatlan felhasználók jogosultságainak eszkalációjára irányuló találgatásos támadások esetén.
-* **Új felhasználó hozzáadása a sudoers csoporthoz**: Ez a riasztás azt jelzi, hogy felhasználót adtak hozzá a sudoers csoporthoz, amelynek tagjai kiemelt jogosultságokkal futtathatnak parancsokat.
-* **Hálózati bejelentkezés egyszerű szöveges hitelesítő adatokkal**: Ez a riasztás egy hálózati bejelentkezés észlelését jelzi, amelyben a jelszót egyszerű szöveges formában küldték el a hálózaton. Ez gyakran előfordul egy ASP-szkriptről ADVAPI használatával való bejelentkezéskor, illetve ha egy felhasználó az IIS alapszintű hitelesítési módjának használatával jelentkezik be az IIS-re. Az ajánlott módszer nem az alapszintű hitelesítés, hacsak nem az SSL-hez hasonló (például csak HTTPS-kapcsolatokat használó) titkosítási rétegbe van csomagolva.
+
 
 ### <a name="crash-analysis"></a>Összeomlás-elemzés
 
@@ -206,6 +190,8 @@ Ha van további elérhető információ, akkor a biztonsági incidensben, a rias
 - Naplótörlési események
 - PNP-eszköz csatlakoztatása ismeretlen eszközről
 - Beavatkozást nem igénylő riasztások
+- Új fiók létrehozása
+- Fájl dekódolása a certutil eszközzel 
 
 ![Szokatlan hozzáférés miatti riasztás](./media/security-center-alerts-type/security-center-alerts-type-fig20.png)
 

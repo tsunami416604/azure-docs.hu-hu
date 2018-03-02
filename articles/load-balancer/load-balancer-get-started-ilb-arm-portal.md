@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 8f0f575319eec0517366079c637ad7565530ac70
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.openlocfilehash: 5274ec13ec2d04194e2dd4c8ec93be0f78329b23
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-an-internal-load-balancer-in-the-azure-portal"></a>Belső terheléselosztó létrehozása az Azure Portalon
 
@@ -41,7 +41,7 @@ ms.lasthandoff: 01/11/2018
 Az alábbi lépések segítségével hozzon létre egy belső terheléselosztót az Azure Portalon.
 
 1. Egy böngészőből keresse fel az [Azure Portalt](http://portal.azure.com), majd jelentkezzen be az Azure-fiókjával.
-2. A képernyő bal felső részében kattintson az **Új** > **Hálózat** > **Terheléselosztó** elemre.
+2. A képernyő bal felső részében kattintson az **Erőforrás létrehozása** > **Hálózat** > **Terheléselosztó** elemre.
 3. A **Terheléselosztó létrehozása** panelen adja meg a terheléselosztó **nevét**.
 4. A **Típus** területen kattintson a **Belső** lehetőségre.
 5. Kattintson a **Virtuális hálózat** elemre, majd válassza ki azt a virtuális hálózatot, amelyben a terheléselosztót szeretné létrehozni.

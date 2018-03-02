@@ -7,13 +7,13 @@ manager: rochakm
 ms.service: site-recovery
 ms.devlang: na
 ms.topic: article
-ms.date: 02/12/2018
+ms.date: 02/26/2018
 ms.author: sujayt
-ms.openlocfilehash: 73b8a28fa2f2b432f12a230be9326b6696d3908a
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 4383286285f02bad1645344fab43f8b6bdb145cb
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="azure-site-recovery-support-matrix-for-replicating-from-azure-to-azure"></a>Az Azure Site Recovery mátrix a replikálása Azure-bA az Azure-ból
 
@@ -39,14 +39,14 @@ Ez a cikk az Azure Site Recovery replikálódik, és az Azure virtuális gépek 
 
 **Erőforrás-Áthelyezés típusa** | **Támogatott / nem támogatott** | **Megjegyzések**  
 --- | --- | ---
-Erőforráscsoportok közötti áthelyezése közben tároló | Nem támogatott |A Recovery services-tároló csoportok között nem helyezhető át.
+**Erőforráscsoportok közötti áthelyezése közben tároló** | Nem támogatott |A Recovery services-tároló csoportok között nem helyezhető át.
 **Számítási, tárolási és hálózati erőforráscsoportok közötti áthelyezése közben** | Nem támogatott |Ha egy virtuális gép (vagy a kapcsolódó összetevők, például a tárolási és hálózati) után a replikáció, tiltsa le a replikációt, és engedélyezze a replikálást a virtuális gép újra szüksége.
 
 
 
 ## <a name="support-for-deployment-models"></a>Üzembe helyezési modellel támogatása
 
-**Telepítési modell** | **Támogatott / nem támogatott** | **Megjegyzések**  
+**Üzemi modell** | **Támogatott / nem támogatott** | **Megjegyzések**  
 --- | --- | ---
 **Klasszikus** | Támogatott | Csak a klasszikus virtuális gépek replikálása, és végezze el a helyreállítást a klasszikus virtuális gépként. Az erőforrás-kezelő virtuális gépként nem lehet helyreállítani. Ha a klasszikus virtuális gépek virtuális hálózat nélkül, és közvetlenül az Azure-régió, nem támogatott.
 **Resource Manager** | Támogatott |
@@ -93,7 +93,7 @@ Az alábbi támogatási esetén alkalmazható bármilyen munkaterhelést futtat�
 
 ### <a name="supported-ubuntu-kernel-versions-for-azure-virtual-machines"></a>Az Azure virtuális gépek támogatott Ubuntu kernel verziók
 
-**Release** | **Mobilitási szolgáltatás verziója** | Kernel-verzió |
+**Release** | **Mobilitási szolgáltatás verziója** | **Kernel-verzió** |
 --- | --- | --- |
 14.04 LTS | 9.10 | a 3.13.0-121-generic, 3.13.0-24-Generic<br/>a 3.16.0-77-generic, 3.16.0-25-Generic<br/>a 3.19.0-80-generic, 3.19.0-18-Generic<br/>a 4.2.0-42-generic, 4.2.0-18-Generic<br/>a 4.4.0-81-generic 4.4.0-21-Generic |
 14.04 LTS | 9.11 | a 3.13.0-125-generic, 3.13.0-24-Generic<br/>a 3.16.0-77-generic, 3.16.0-25-Generic<br/>a 3.19.0-80-generic, 3.19.0-18-Generic<br/>a 4.2.0-42-generic, 4.2.0-18-Generic<br/>a 4.4.0-83-generic 4.4.0-21-Generic |
@@ -153,8 +153,8 @@ Ideiglenes lemez | Mindig ki vannak zárva a replikációból | Ideiglenes lemez
 A lemezen adatváltozási sebesség | Legfeljebb egy prémium szintű storage a lemezen 10 MB/s és a Standard tárolási lemezenként 2 MB/s | Ha a lemezen a átlagos adatváltozási sebesség meghaladja a 10 MB/s (a Premium) és 2 MB/s (általános) folyamatosan, replikáció nem képes. Azonban ha egy alkalmanként adatokat kapacitásnövelés, és az adatmódosítási arány nagyobb, mint 10 MB/s (a Premium) és 2 MB/s (általános) egy kis ideig, és származnak, replikációs fog szinkronizálásához. Ebben az esetben jelenhet meg némileg késleltetett helyreállítási pontokat.
 Standard szintű storage-fiókok lemezek | Támogatott |
 Prémium szintű storage-fiókok lemezek | Támogatott | Ha egy virtuális gép prémium és standard szintű storage-fiókok elosztva lemezzel rendelkezik, válassza az egyes lemezek ugyanazt a tárolási konfigurációt, hogy a cél régióban másik cél tárfiók
-Standard szintű felügyelt lemez | Nem támogatott |  
-Prémium szintű felügyelt lemez | Nem támogatott |
+Standard szintű felügyelt lemez | Támogatott Azure-régiók Azure Site Recovery használata támogatott. Kormánya felhők jelenleg nem támogatottak.  |  
+Prémium szintű felügyelt lemez | Támogatott Azure-régiók Azure Site Recovery használata támogatott. Kormánya felhők jelenleg nem támogatottak. |
 Tárolóhelyek | Támogatott |         
 Titkosítását (SSE) | Támogatott | Gyorsítótár és a cél storage-fiókok válassza ki az engedélyezett SSE tárfiókot.     
 Azure Disk Encryption (ADE) | Nem támogatott |

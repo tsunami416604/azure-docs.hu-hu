@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/07/2017
 ms.author: v-craic
-ms.openlocfilehash: 3fd1f0ca01e9a800eaf3ba9843c7e3165023ccef
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: a2148f8891c94f457a95282b8a3b7067c86c62ed
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-a-lab-in-azure-devtest-labs"></a>Labor létrehozása az Azure DevTest Labs szolgáltatásban
 Az Azure DevTest Labs szolgáltatásban létrehozott tesztkörnyezet erőforráscsoportokat, például virtuális gépeket (VM-eket) magában foglaló infrastruktúra, amely korlátok és kvóták meghatározásával segíti ezen erőforráscsoportok jobb kezelését. Ez a cikk végigvezeti a tesztkörnyezet Azure Portalon való létrehozásának folyamatán.
@@ -32,9 +32,9 @@ Labor létrehozásához a következőkre van szüksége:
 A következő lépések bemutatják, hogyan használhatja az Azure Portalt labor létrehozására az Azure DevTest Labs szolgáltatásban. 
 
 1. Jelentkezzen be az [Azure Portalra](http://go.microsoft.com/fwlink/p/?LinkID=525040).
-1. A bal oldali főmenüben kattintson a lista alján látható **További szolgáltatások** elemre.
+1. A bal oldali főmenüben kattintson a lista tetején látható **Minden szolgáltatás** elemre.
 
-    ![További szolgáltatások menüpont](./media/devtest-lab-create-lab/more-services-menu-option.png)
+    ![Minden szolgáltatás menüpont](./media/devtest-lab-create-lab/more-services-menu-option.png)
 
 1. Válassza ki a **DevTest Labs** lehetőséget az elérhető szolgáltatások listájából.
 1. A **DevTest Labs** területen válassza a **Hozzáadás** lehetőséget.

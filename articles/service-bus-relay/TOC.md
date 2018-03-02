@@ -1,3 +1,5 @@
+# [A Service Bus Relay dokumentációja](index.md)
+
 # Áttekintés
 ## [Mi az a Relay?](relay-what-is-it.md)
 ## [GYIK](relay-faq.md)

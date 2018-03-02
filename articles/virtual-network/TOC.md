@@ -1,3 +1,5 @@
+# [A Virtual Network dokumentációja](index.md)
+
 # Áttekintés
 ## [Virtuális hálózatok](virtual-networks-overview.md)
 ## [Útválasztás](virtual-networks-udr-overview.md)
@@ -8,7 +10,7 @@
 ## [Tárolóalapú hálózatkezelés](container-networking.md)
 ## [Az üzletmenet folytonossága](virtual-network-disaster-recovery-guidance.md)
 ## [IP-címzés](virtual-network-ip-addresses-overview-arm.md)
-## [Védelem DDOS-támadások ellen](ddos-protection-overview.md)
+## [DDoS Protection](ddos-protection-overview.md)
 ## [GYIK](virtual-networks-faq.md)
 ## Klasszikus
 ### [IP-címzés](virtual-network-ip-addresses-overview-classic.md)
@@ -164,7 +166,7 @@
 ### Virtual machines (Virtuális gépek)
 #### [Virtuális gép áthelyezése másik alhálózatra](virtual-networks-move-vm-role-to-subnet.md)
 ### [Nyilvános IP-címek](virtual-network-public-ip-address.md)
-### Védelem DDOS-támadások ellen
+### DDoS Protection
 #### [Azure Portal](ddos-protection-manage-portal.md)
 #### [Azure PowerShell](ddos-protection-manage-ps.md)
 

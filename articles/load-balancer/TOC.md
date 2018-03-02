@@ -1,8 +1,10 @@
+# [A Load Balancer dokumentációja](index.md)
+
 # Áttekintés
 ## [Mi az a Load Balancer?](load-balancer-overview.md)
 ## [Mi az a Load Balancer Standard?](load-balancer-standard-overview.md)
 ## [Nyilvános Load Balancer](load-balancer-internet-overview.md)
-## [Belső Load Balancer](load-balancer-internal-overview.md)
+## [Belső terheléselosztó](load-balancer-internal-overview.md)
 ## [A Load Balancer vizsgálatok ismertetése](load-balancer-custom-probe-overview.md)
 ## [A magas rendelkezésre állású portok ismertetése](load-balancer-ha-ports-overview.md)
 ## [Azure Resource Manager-támogatás](load-balancer-arm.md)
@@ -65,7 +67,7 @@
 ## [Python](http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.mgmt.network.operations.html#azure.mgmt.network.operations.LoadBalancersOperations)
 ## [REST](https://msdn.microsoft.com/library/azure/mt163651.aspx)
 
-# Kapcsolódó
+# Kapcsolódó témakörök
 ## [Application Gateway](/azure/application-gateway/)
 ## [Express Route](/azure/expressroute/)
 ## [Virtuális hálózat](/azure/virtual-network/)
@@ -74,7 +76,7 @@
 ## [Traffic Manager](/azure/traffic-manager/)
 ## [DNS](/azure/dns/)
 
-# Erőforrások
+# További források
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=networking)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/load-balancer/)
 ## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/08/2017
 ms.author: LADocs; mandia
-ms.openlocfilehash: fa61bbecc51c4f3163bd1cc077391bb102662297
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 8c6dbc507cd1b79fe9424071bc3eb8bf24331a16
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="exchange-as2-messages-for-enterprise-integration-with-logic-apps"></a>A logic apps vállalati integrációs Exchange AS2-üzenetek
 
@@ -40,23 +40,22 @@ Miután [integrációs-fiók létrehozása](../logic-apps/logic-apps-enterprise-
 
 1.  Jelentkezzen be az [Azure Portalra](http://portal.azure.com "Azure Portal")  
 
-2.  A bal oldali menüben válassza ki a **minden szolgáltatás**. A keresési mezőbe, írja be a **integrációs** szűrőként. Az eredmények listájában válassza **integrációs fiókok**.
+2. Válassza ki a fő Azure menü **minden szolgáltatás**. A keresési mezőbe, írja be a "integrációt", és válassza ki **integrációs fiókok**.
 
-    > [!TIP]
-    > Ha nem lát **minden szolgáltatás**, lehetséges, hogy először bontsa ki a menüben. Jelölje be a becsukott menü felső részén **megjelenítése menü**.
+   ![Az integráció fiók](./media/logic-apps-enterprise-integration-as2/overview-1.png)
 
-    ![Minden szolgáltatás, a szűrőt a "integrációt", válassza ki a "Integrációs fiókok"](./media/logic-apps-enterprise-integration-as2/overview-1.png)
+   > [!TIP]
+   > Ha nem lát **minden szolgáltatás**, lehetséges, hogy először bontsa ki a menüben. Jelölje be a becsukott menü felső részén **szöveg címkéket**.
 
-3. Az a **integrációs fiókok** panelt megnyitó, válassza ki az integráció fiókra, amelyhez a szerződést létrehozásához.
-Ha nem lát minden integrációs fiókok [hozzon létre egyet első](../logic-apps/logic-apps-enterprise-integration-accounts.md "integrációs fiókokkal kapcsolatos összes").  
+3. A **integrációs fiókok**, válassza ki az integráció fiókra, amelyhez a szerződést létrehozásához.
 
-    ![Válassza ki a integrációs fiókot a szerződés létrehozásának a helyét](./media/logic-apps-enterprise-integration-overview/overview-3.png)
+   ![Válassza ki a integrációs fiókot a szerződés létrehozásának a helyét](./media/logic-apps-enterprise-integration-overview/overview-3.png)
 
 4. Válassza ki a **megállapodások** csempére. Ha egy megállapodások csempe nem rendelkezik, először vegye fel a csempe.
 
     ![Válassza a "Szerződés" csempe](./media/logic-apps-enterprise-integration-as2/agreement-1.png)
 
-5. Szerződések paneljén válassza **Hozzáadás**.
+5. A **megállapodások**, válassza a **Hozzáadás**.
 
     ![Válassza a "Hozzáadás"](./media/logic-apps-enterprise-integration-as2/agreement-2.png)
 
@@ -166,13 +165,13 @@ Most már a szerződés készen áll a kimenő üzenetek, amelyek megfelelnek a 
 
 ## <a name="find-your-created-agreement"></a>A létrehozott megállapodás keresése
 
-1.  A szerződés tulajdonságainak a beállítása után a **Hozzáadás** paneljén válassza **OK** hozta létre a szerződést, és az integráció fiók panelen való visszatéréshez.
+1. A szerződés tulajdonságainak a beállítása után a **Hozzáadás** lapon, válassza ki **OK** hozta létre a szerződés és integrációs fiókjába való visszatéréshez.
 
     Az újonnan hozzáadott foglalt most megjelenik a **megállapodások** listája.
 
-2.  Az integrációs fiókok áttekintése is megtekintheti a szerződéseket. Az integráció-fiók panelen válassza **áttekintése**, majd jelölje be a **megállapodások** csempére. 
+2. Az integrációs fiókok áttekintése is megtekintheti a szerződéseket. Az integráció felhasználóifiók-menüjéből válassza **áttekintése**, majd jelölje be a **megállapodások** csempére. 
 
-    ![Válassza a minden szerződés megtekintéséhez egymás "Szerződés"](./media/logic-apps-enterprise-integration-as2/agreement-6.png)
+   ![Válassza a minden szerződés megtekintéséhez egymás "Szerződés"](./media/logic-apps-enterprise-integration-as2/agreement-6.png)
 
 ## <a name="view-the-swagger"></a>A swagger megtekintése
 Tekintse meg a [részletek swagger](/connectors/as2/). 

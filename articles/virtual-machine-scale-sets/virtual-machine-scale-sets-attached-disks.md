@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 4/25/2017
 ms.author: negat
-ms.openlocfilehash: 88d4012145172bcd393070904980898d9923ea1c
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 52ea7e35b941d5b1e45f39203757e4a3644cc9a5
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="azure-virtual-machine-scale-sets-and-attached-data-disks"></a>Azure-beli virtuálisgép-méretezési csoportok és csatlakoztatott adatlemezek
 Az Azure-beli [virtuálisgép-méretezési csoportok](/azure/virtual-machine-scale-sets/) mostantól támogatják a csatlakoztatott adatlemezekkel rendelkező virtuális gépeket. Adatlemezeket az Azure Managed Disks használatával létrehozott méretezési csoportok tárolóprofiljában lehet definiálni. Korábban a méretezési csoportokban található virtuális gépekhez csak az operációs rendszer meghajtóját és az ideiglenes meghajtókat lehetett közvetlenül csatlakoztatni.
@@ -61,6 +61,59 @@ Csatlakoztatott adatlemezekkel rendelkező méretezési csoport úgy is létreho
 ```
 
 A következő címen egy teljes, üzembe helyezésre kész példát láthat egy olyan méretezésicsoport-sablonra, amely rendelkezik definiált csatlakoztatott lemezzel: [https://github.com/chagarw/MDPP/tree/master/101-vmss-os-data](https://github.com/chagarw/MDPP/tree/master/101-vmss-os-data).
+
+## <a name="create-a-service-fabric-cluster-with-attached-data-disks"></a>Service Fabric-fürt létrehozása csatlakoztatott adatlemezekkel
+Az Azure-ban futó [Service Fabric](/azure/service-fabric)-fürtök mindegyik [csomóponttípusa](../service-fabric/service-fabric-cluster-nodetypes.md) egy virtuálisgép-skálázási csoporton alapul.  Egy Azure Resource Manager-sablonnal adatlemezeket csatlakoztathat a Service Fabric-fürtöt alkotó skálázási csoport(ok)hoz. Kezdőpontként használhat egy [meglévő sablont](https://github.com/Azure-Samples/service-fabric-cluster-templates). A sablonban adjon egy _dataDisks_ szakaszt a _Microsoft.Compute/virtualMachineScaleSets_ erőforrás(ok) _storageProfile_ eleméhez, és helyezze üzembe a sablont. A következő példa egy 128 GB-os adatlemezt csatlakoztat:
+
+```json
+"dataDisks": [
+    {
+    "diskSizeGB": 128,
+    "lun": 0,
+    "createOption": "Empty"
+    }
+]
+```
+
+Automatikusan particionálhatja, formázhatja és csatlakoztathatja az adatlemezeket a fürt üzembe helyezésekor.  Adjon egy egyéni szkriptbővítményt a skálázási csoport(ok) _virtualMachineProfile_ elemének _extensionProfile_ profiljához.
+
+Ha Windows-fürtön szeretné automatikusan előkészíteni az adatlemez(eke)t, adja hozzá a következőket:
+
+```json
+{
+    "name": "customScript",    
+    "properties": {    
+        "publisher": "Microsoft.Compute",    
+        "type": "CustomScriptExtension",    
+        "typeHandlerVersion": "1.8",    
+        "autoUpgradeMinorVersion": true,    
+        "settings": {    
+        "fileUris": [
+            "https://raw.githubusercontent.com/Azure-Samples/compute-automation-configurations/master/prepare_vm_disks.ps1"
+        ],
+        "commandToExecute": "powershell -ExecutionPolicy Unrestricted -File prepare_vm_disks.ps1"
+        }
+    }
+}
+```
+Ha Linux-fürtön szeretné automatikusan előkészíteni az adatlemez(eke)t, adja hozzá a következőket:
+```json
+{
+    "name": "lapextension",
+    "properties": {
+        "publisher": "Microsoft.Azure.Extensions",
+        "type": "CustomScript",
+        "typeHandlerVersion": "2.0",
+        "autoUpgradeMinorVersion": true,
+        "settings": {
+        "fileUris": [
+            "https://raw.githubusercontent.com/Azure-Samples/compute-automation-configurations/master/prepare_vm_disks.sh"
+        ],
+        "commandToExecute": "bash prepare_vm_disks.sh"
+        }
+    }
+}
+```
 
 ## <a name="adding-a-data-disk-to-an-existing-scale-set"></a>Adatlemez hozzáadása egy már létező méretezési csoporthoz
 > [!NOTE]

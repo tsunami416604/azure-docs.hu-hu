@@ -11,10 +11,10 @@ ms.service: postgresql
 ms.topic: article
 ms.date: 11/03/2017
 ms.openlocfilehash: 9de2d93735942903df9320741baadf2c934bd7ab
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="azure-database-for-postgresql-options-and-performance-understand-whats-available-in-each-pricing-tier"></a>Azure-adatbázishoz tartozó PostgreSQL beállításai és teljesítménye: az egyes tarifacsomagok elérhető
 Egy PostgreSQL-kiszolgálóhoz tartozó Azure-adatbázis létrehozásakor három fő lehetőségek konfigurálása a kiszolgáló számára lefoglalt erőforrások határoz meg. Ezek a lehetőségek a teljesítmény és a kiszolgáló méretezési hatással.
@@ -78,7 +78,7 @@ Számítási egység garantáltan PostgreSQL-kiszolgáló egy Azure-adatbázis s
 | Kiszolgáló maximális IOPS kiépítve | 3000 IOPS | 3000 IOPS | 3000 IOPS | 3000 IOPS |
 | Maximális server kiépített IOPS / GB | Rögzített 3 IOPS / GB | Rögzített 3 IOPS / GB | Rögzített 3 IOPS / GB | Rögzített 3 IOPS / GB |
 
-\*Kiszolgáló tároló maximális a kiszolgáló maximális kiosztott tárolási méretét jelenti.
+\* Kiszolgáló tároló maximális a kiszolgáló maximális kiosztott tárolási méretét jelenti.
 
 ## <a name="storage"></a>Tárolás 
 A tárolási konfiguráció egy Azure-adatbázishoz PostgreSQL-kiszolgáló határozza meg a rendelkezésre álló tárolókapacitás mennyiségét. A szolgáltatás által használt tároló tartalmazza, az adatbázisfájlokat, az ideiglenes fájlok, a tranzakciós naplók és a a PostgreSQL-kiszolgáló naplóit. Vegye figyelembe a futtatásához az adatbázisok és a teljesítménykövetelményekhez (IOPS) lehetőséget választva a tárolási konfiguráció szükséges tárterület mérete.

@@ -9,11 +9,11 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 01/19/2018
 ms.author: tamram
-ms.openlocfilehash: f9692156fa2c1eaf9d3a617d339cdbc210bf6dd1
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 2043f635e30de208a29a3da2fcde6bf2a1223fc8
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-a-storage-account"></a>Create a storage account
 
@@ -161,7 +161,7 @@ Ne feledje ezeket a szabályokat a tárfiók elnevezésekor:
 
 Kövesse az alábbi lépéseket egy általános célú v2-tárfiók létrehozásához az Azure Portalon:
 
-1. Az Azure Portalon nyissa ki bal oldalon a szolgáltatásmenüt, és válassza a **További szolgáltatások** lehetőséget. Ezután görgessen le a **Storage** szakaszig, és válassza a **Storage-fiókok** lehetőséget. A megjelenő **Storage-fiókok** ablakban válassza a **Hozzáadás** lehetőséget.
+1. Az Azure Portalon nyissa ki bal oldalon a szolgáltatásmenüt, és válassza a **Minden szolgáltatás** lehetőséget. Ezután görgessen le a **Storage** szakaszig, és válassza a **Storage-fiókok** lehetőséget. A megjelenő **Storage-fiókok** ablakban válassza a **Hozzáadás** lehetőséget.
 2. Adja meg a tárfiók nevét.
 3. Állítsa be a **Fiók típusa** mezőben a **StorageV2 (általános célú v2)** értéket.
 4. A **Replikáció** mezőben hagyja meg a **Helyileg redundáns tárolás (LRS)** értéket. Ezenkívül a következő lehetőségek közül választhat: **Zónaredundáns tárolás (ZRS előzetes verzió)**, **Georedundáns tárolás (GRS)** vagy **Írásvédett georedundáns tárolás (RA-GRS)**.

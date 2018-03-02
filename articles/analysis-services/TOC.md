@@ -1,3 +1,5 @@
+# [Az Analysis Services dokumentációja](index.md)
+
 # Áttekintés
 ## [Tudnivalók az Analysis Servicesről](analysis-services-overview.md)
 ## [Támogatott adatforrások](analysis-services-datasource.md)
@@ -14,6 +16,7 @@
 
 # Használati útmutató 
 ## [Helyszíni adatátjáró telepítése és konfigurálása](analysis-services-gateway-install.md)
+## [Power BI Desktop-fájlok importálása](analysis-services-import-pbix.md)
 ## [Biztonsági mentés és visszaállítás](analysis-services-backup.md)
 ## [Frissítés a REST API-val](analysis-services-async-refresh.md)
 ## [Horizontális felskálázás konfigurálása](analysis-services-scale-out.md)
@@ -30,25 +33,26 @@
 ### [Kapcsolódás PowerBI-jal](analysis-services-connect-pbi.md)
 ### [.odc fájl létrehozása](analysis-services-odc.md)
 ## Oktatóanyagok
+### [1 – Mintamodell létrehozása](analysis-services-create-sample-model.md)
 ### [Adatmodellezés – Az Adventure Works oktatóanyaga](tutorials/aas-adventure-works-tutorial.md)
-### [1 – Táblázatos modellprojekt létrehozása](tutorials/aas-lesson-1-create-a-new-tabular-model-project.md)
-### [2 – Az adatok beszerzése](tutorials/aas-lesson-2-get-data.md)
-### [3 – Megjelölés dátumtáblaként](tutorials/aas-lesson-3-mark-as-date-table.md) 
-### [4 – Kapcsolatok létrehozása](tutorials/aas-lesson-4-create-relationships.md) 
-### [5 – Számított oszlopok létrehozása](tutorials/aas-lesson-5-create-calculated-columns.md)
-### [6 – Mértékek létrehozása](tutorials/aas-lesson-6-create-measures.md)  
-### [7 – Fő teljesítménymutatók létrehozása](tutorials/aas-lesson-7-create-key-performance-indicators.md)  
-### [8 – Perspektívák létrehozása](tutorials/aas-lesson-8-create-perspectives.md) 
-### [9 – Hierarchiák létrehozása](tutorials/aas-lesson-9-create-hierarchies.md) 
-### [10 – Partíciók létrehozása](tutorials/aas-lesson-10-create-partitions.md) 
-### [11 – Szerepkörök létrehozása](tutorials/aas-lesson-11-create-roles.md)
-### [12 – Elemzés az Excelben](tutorials/aas-lesson-12-analyze-in-excel.md)
-### [13 – Üzembe helyezés](tutorials/aas-lesson-13-deploy.md)
-### [Kiegészítő lecke – Részletsorok](tutorials/aas-supplemental-lesson-detail-rows.md)
-### [Kiegészítő lecke – Dinamikus biztonság](tutorials/aas-supplemental-lesson-dynamic-security.md)
-### [Kiegészítő lecke – Hézagos hierarchiák](tutorials/aas-supplemental-lesson-ragged-hierarchies.md)  
+#### [1 – Táblázatos modellprojekt létrehozása](tutorials/aas-lesson-1-create-a-new-tabular-model-project.md)
+#### [2 – Az adatok beszerzése](tutorials/aas-lesson-2-get-data.md)
+#### [3 – Megjelölés dátumtáblaként](tutorials/aas-lesson-3-mark-as-date-table.md) 
+#### [4 – Kapcsolatok létrehozása](tutorials/aas-lesson-4-create-relationships.md) 
+#### [5 – Számított oszlopok létrehozása](tutorials/aas-lesson-5-create-calculated-columns.md)
+#### [6 – Mértékek létrehozása](tutorials/aas-lesson-6-create-measures.md)  
+#### [7 – Fő teljesítménymutatók létrehozása](tutorials/aas-lesson-7-create-key-performance-indicators.md)  
+#### [8 – Perspektívák létrehozása](tutorials/aas-lesson-8-create-perspectives.md) 
+#### [9 – Hierarchiák létrehozása](tutorials/aas-lesson-9-create-hierarchies.md) 
+#### [10 – Partíciók létrehozása](tutorials/aas-lesson-10-create-partitions.md) 
+#### [11 – Szerepkörök létrehozása](tutorials/aas-lesson-11-create-roles.md)
+#### [12 – Elemzés az Excelben](tutorials/aas-lesson-12-analyze-in-excel.md)
+#### [13 – Üzembe helyezés](tutorials/aas-lesson-13-deploy.md)
+#### [Kiegészítő lecke – Részletsorok](tutorials/aas-supplemental-lesson-detail-rows.md)
+#### [Kiegészítő lecke – Dinamikus biztonság](tutorials/aas-supplemental-lesson-dynamic-security.md)
+#### [Kiegészítő lecke – Hézagos hierarchiák](tutorials/aas-supplemental-lesson-ragged-hierarchies.md)  
 
-# Hivatkozás
+# Referencia
 ## [Azure PowerShell](analysis-services-powershell.md)
 ## [REST](/rest/api/analysisservices)
 ## [DAX](https://msdn.microsoft.com/library/gg413422.aspx)

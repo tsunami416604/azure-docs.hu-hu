@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/07/2017
 ms.author: parakhj
-ms.openlocfilehash: dd84a8da348d0d534ba19a3d61970ec0d8c66cc8
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: aee051946c90c686959066ac14798f807e7b91b0
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="azure-ad-b2c-use-the-azure-ad-graph-api"></a>Az Azure AD B2C: Használja az Azure AD Graph API
 
@@ -99,13 +99,13 @@ Az alkalmazás most is jogosult felhasználók törlése a B2C-bérlő.
 ## <a name="download-configure-and-build-the-sample-code"></a>Töltse le, konfigurálása, és állítsa be a mintakód
 Először letöltötte a mintakódot, és lekérése is fusson. Majd most elindítjuk azt részletes bemutatása.  Is [letöltötte a mintakódot .zip-fájlként](https://github.com/AzureADQuickStarts/B2C-GraphAPI-DotNet/archive/master.zip). Akkor is klónozhatja egy olyan könyvtárba, az Ön által választott:
 
-```
+```cmd
 git clone https://github.com/AzureADQuickStarts/B2C-GraphAPI-DotNet.git
 ```
 
 Nyissa meg a `B2CGraphClient\B2CGraphClient.sln` Visual Studio-megoldást a Visual Studióban. Az a `B2CGraphClient` projektre, nyissa meg a fájlt `App.config`. A három alkalmazásbeállítást cserélje le a saját értékeit:
 
-```
+```xml
 <appSettings>
     <add key="b2c:Tenant" value="{Your Tenant Name}" />
     <add key="b2c:ClientId" value="{The ApplicationID from above}" />
@@ -120,9 +120,9 @@ A jobb gombbal a `B2CGraphClient` megoldás és a minta Újraépítés. Ha siker
 ## <a name="build-user-crud-operations-by-using-the-graph-api"></a>A Graph API használatával hozhat létre felhasználói CRUD műveleteihez
 A B2CGraphClient használatához nyisson meg egy `cmd` Windows parancsot a parancssorba, és módosítsa a könyvtárat a `Debug` könyvtár. Ezután futtassa a `B2C Help` parancsot.
 
-```
-> cd B2CGraphClient\bin\Debug
-> B2C Help
+```cmd
+cd B2CGraphClient\bin\Debug
+B2C Help
 ```
 
 Ez megjeleníti minden egyes parancsnál rövid leírása. Minden alkalommal, amikor aktiválják az alábbi parancsok egyikét `B2CGraphClient` egy kérést küld az Azure AD Graph API-t.
@@ -179,8 +179,8 @@ Authorization: Bearer eyJhbGciOiJSUzI1NiIsIng1dCI6IjdkRC1nZWNOZ1gxWmY3R0xrT3ZwT0
 
 A kérelem megtekintéséhez futtassa:
 
- ```
- > B2C Get-User
+ ```cmd
+ B2C Get-User
  ```
 
 Két fontos dolgot figyelembe venni:
@@ -245,9 +245,9 @@ A legtöbb ezeket a tulajdonságokat a kérésben identitásrendszerében a felh
 
 A kérelem megtekintéséhez futtassa a következő parancsok egyikét:
 
-```
-> B2C Create-User ..\..\..\usertemplate-email.json
-> B2C Create-User ..\..\..\usertemplate-username.json
+```cmd
+B2C Create-User ..\..\..\usertemplate-email.json
+B2C Create-User ..\..\..\usertemplate-username.json
 ```
 
 A `Create-User` parancs fogadja bemeneti paraméterként egy .JSON kiterjesztésű fájlt. Ez tartalmazza a user objektum JSON-ábrázolását. Példakód két minta .JSON kiterjesztésű fájl van: `usertemplate-email.json` és `usertemplate-username.json`. Ezeket a fájlokat a saját igényeinek megfelelően módosíthatja. A kötelező mezőket a fenti mellett több választható mezőket, melyekkel ezeket a fájlokat szerepelnek. A választható mezőket a részletek megtalálhatók a [Azure AD Graph API entitáshivatkozás](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#user-entity).
@@ -279,9 +279,9 @@ Content-Length: 37
 
 Próbálja meg frissíteni a felhasználó frissítése a JSON-fájlokat az új adatokat. Ezután `B2CGraphClient` az alábbi parancsok egyikét futtatja:
 
-```
-> B2C Update-User <user-object-id> ..\..\..\usertemplate-email.json
-> B2C Update-User <user-object-id> ..\..\..\usertemplate-username.json
+```cmd
+B2C Update-User <user-object-id> ..\..\..\usertemplate-email.json
+B2C Update-User <user-object-id> ..\..\..\usertemplate-username.json
 ```
 
 Vizsgálja meg a `B2CGraphClient.SendGraphPatchRequest(...)` metódus talál részletes információt a kérelem küldése.
@@ -291,16 +291,16 @@ Felhasználók B2C-bérlőben lévő több módon is kereshet. Egy, a felhaszná
 
 Egy adott felhasználó keresése a következő parancsok egyikét futtatja:
 
-```
-> B2C Get-User <user-object-id>
-> B2C Get-User <filter-query-expression>
+```cmd
+B2C Get-User <user-object-id>
+B2C Get-User <filter-query-expression>
 ```
 
 Íme néhány példa:
 
-```
-> B2C Get-User 2bcf1067-90b6-4253-9991-7f16449c2d91
-> B2C Get-User $filter=signInNames/any(x:x/value%20eq%20%27joeconsumer@gmail.com%27)
+```cmd
+B2C Get-User 2bcf1067-90b6-4253-9991-7f16449c2d91
+B2C Get-User $filter=signInNames/any(x:x/value%20eq%20%27joeconsumer@gmail.com%27)
 ```
 
 ### <a name="delete-users"></a>Felhasználók törlése
@@ -313,8 +313,8 @@ Authorization: Bearer eyJhbGciOiJSUzI1NiIsIng1dCI6IjdkRC1nZWNOZ1gxWmY3R0xrT3ZwT0
 
 Példa megtekintéséhez írja be ezt a parancsot, és tekintse meg a törlési kérelmet, amelyet a program a konzolhoz:
 
-```
-> B2C Delete-User <object-id-of-user>
+```cmd
+B2C Delete-User <object-id-of-user>
 ```
 
 Vizsgálja meg a `B2CGraphClient.SendGraphDeleteRequest(...)` metódus talál részletes információt a kérelem küldése.
@@ -328,14 +328,14 @@ A B2C-bérlő egyéni attribútumot megadásához tekintse meg a [B2C egyéni at
 
 Megtekintheti a használatával a B2C-bérlő definiált egyéni attribútumok `B2CGraphClient`:
 
-```
-> B2C Get-B2C-Application
-> B2C Get-Extension-Attribute <object-id-in-the-output-of-the-above-command>
+```cmd
+B2C Get-B2C-Application
+B2C Get-Extension-Attribute <object-id-in-the-output-of-the-above-command>
 ```
 
 A kimeneti ezeket a funkciókat, mint felfedi összes egyéni attribútumot, részleteit:
 
-```JSON
+```json
 {
       "odata.type": "Microsoft.DirectoryServices.ExtensionProperty",
       "objectType": "ExtensionProperty",
@@ -353,8 +353,8 @@ A kimeneti ezeket a funkciókat, mint felfedi összes egyéni attribútumot, ré
 
 Használhatja a teljes nevet, például a `extension_55dc0861f9a44eb999e0a8a872204adb_Jersey_Number`, a felhasználói objektumok tulajdonságainál.  Frissítse a .JSON kiterjesztésű fájlt az új tulajdonságot, és a tulajdonság értékét, és futtassa:
 
-```
-> B2C Update-User <object-id-of-user> <path-to-json-file>
+```cmd
+B2C Update-User <object-id-of-user> <path-to-json-file>
 ```
 
 A `B2CGraphClient`, programozott módon kezelje a B2C bérlő felhasználók szolgáltatás-alkalmazással. `B2CGraphClient` saját alkalmazás identitását használja az Azure AD Graph API felé történő hitelesítésre. Egy ügyfélkulcsot a jogkivonatok is megkapja. Mivel használhatja ezt a funkciót az alkalmazásba, ne felejtse néhány fő szempontot B2C-alkalmazásokhoz:

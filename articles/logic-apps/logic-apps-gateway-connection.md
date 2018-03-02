@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 09/14/2017
 ms.author: LADocs; millopis; estfan
-ms.openlocfilehash: 216745f9f540235ee48661eae922a5ae0e716e01
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 5160913b2f08a04f0a985d8ddadd6641a664b258
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="connect-to-data-sources-on-premises-from-logic-apps-with-on-premises-data-gateway"></a>A helyszíni adatforrások csatlakozni a logic Apps alkalmazásokból, a helyszíni adatok átjáróval
 
@@ -75,7 +75,7 @@ Miután telepítette az átjárót a helyi számítógépen, létre kell hoznia 
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com "Azure Portal") Győződjön meg arról, hogy az Azure ugyanazzal a munkahelyi vagy iskolai e-mail címet az átjáró telepítéséhez használt.
 
-2. A fő Azure menüben válasszon **hozzon létre egy erőforrást** > **vállalati integrációs** > **helyszíni adatátjáró**:
+2. A fő Azure menüben válasszon **hozzon létre egy erőforrást** > **vállalati integrációs** > **helyszíni adatátjáró**.
 
    !["A helyszíni adatok gateway" található](./media/logic-apps-gateway-connection/find-on-premises-data-gateway.png)
 
@@ -107,9 +107,10 @@ Miután telepítette az átjárót a helyi számítógépen, létre kell hoznia 
 
     ![Adja meg a helyszíni data gateway létrehozásához szükséges adatok](./media/logic-apps-gateway-connection/createblade.png)
 
-    Található, vagy tekintse meg az Ön data gateway tetszőleges időpontban, akkor főmenüben az Azure Ugrás **több szolgáltatások** > **vállalati integrációs** > **helyszíni adatátjáró** .
+    Található, vagy tekintse meg az Ön data gateway tetszőleges időpontban, a fő Azure menüben válasszon **minden szolgáltatás**. 
+    A keresési mezőbe, írja be a "helyi adatátjáró", majd kattintson a **helyszíni Data Gateways**.
 
-    ![Ugrás a "Szolgáltatás", "Vállalati integrációs", "a helyszíni Data Gateways"](./media/logic-apps-gateway-connection/find-on-premises-data-gateway-enterprise-integration.png)
+    !["A helyszíni Data Gateways" található](./media/logic-apps-gateway-connection/find-on-premises-data-gateway-enterprise-integration.png)
 
 <a name="connect-logic-app-gateway"></a>
 

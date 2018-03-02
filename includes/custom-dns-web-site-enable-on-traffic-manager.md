@@ -21,7 +21,7 @@ Ha nem már hozzáadta a webes alkalmazás a Traffic Manager-végpontként, ezt 
    
     ![](./media/custom-dns-web-site/dncmntask-cname-8.png)
 5. Kattintson a **ellenőrzése** a tartomány neve konfigurációjának mentéséhez.
-6. Gomb megnyomásakor **ellenőrzése** Azure lesz indítsa tartományok ellenőrzésének munkafolyamat. Ez ellenőrzi, hogy a tartomány tulajdonosa, valamint állomásnév rendelkezésre állás és a jelentés sikeres vagy az előírásoknak megfelelő guidence a hiba megoldásával kapcsolatos hiba részleteit.    
+6. Gomb megnyomásakor **ellenőrzése** Azure lesz indítsa tartományok ellenőrzésének munkafolyamat. Ez a tartomány tulajdonosa, valamint állomásnév rendelkezésre állás és a jelentés sikeres vagy részletesek útmutatás javítsa ki a hibát a részletes hiba ellenőrzi.    
 7. Sikeres érvényesítése után **állomásnév hozzáadása** gomb aktívvá válik, és nem fogja tudni a hozzárendelése állomásnév. Most nyissa meg böngészőben az egyéni tartománynevet. Ekkor megjelenik az alkalmazás fut, az egyéni tartománynév használatával. 
    
    Az egyéni tartománynév konfiguráció befejezése után megjelenik a **tartománynevek** webalkalmazás szakasz.

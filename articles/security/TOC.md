@@ -1,4 +1,3 @@
-
 # [Az Azure Security dokumentációja](index.md)
 # [Architektúra és kialakítás](azure-security.md)
 ## [Fejlett fenyegetésészlelés](azure-threat-detection.md)
@@ -110,9 +109,9 @@
 ### [10. követelmény – monitorozás](./blueprints/pci-dss-requirement-10-monitoring.md)
 ### [11. követelmény – tesztelés](./blueprints/pci-dss-requirement-11-testing.md)
 ### [12. követelmény – szabályzat](./blueprints/pci-dss-requirement-12-policy.md)
-
 ## [UK-OFFICIAL](./blueprints/uk-official-three-tier-applications-overview.md)
 ### [Alapelvek áttekintése](./blueprints/uk-official-three-tier-applications-principles-overview.md)
+## [HIPAA/HITRUST-állapotadatok és AI](./blueprints/azure-health.md)
 
 # [Tanulmányok](security-white-papers.md)
 # [Műszaki áttekintések](security-overviews.md)
@@ -139,5 +138,4 @@
 #### [Bemenet-ellenőrzés](azure-security-threat-modeling-tool-input-validation.md)
 #### [Bizalmas adatok](azure-security-threat-modeling-tool-sensitive-data.md)
 #### [Munkamenet-kezelés](azure-security-threat-modeling-tool-session-management.md)
-
 

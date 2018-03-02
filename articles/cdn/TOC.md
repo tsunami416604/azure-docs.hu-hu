@@ -1,3 +1,5 @@
+# [A CDN dokumentációja](index.md)
+
 # [Áttekintés](cdn-overview.md)
 ## [Mi az Azure CDN?](../best-practices-cdn.md?toc=%2fazure%2fcdn%2ftoc.json)
 

@@ -1,3 +1,5 @@
+# [Azure Service Health](index.md)
+
 # Áttekintés
 ## [Mi az Azure Service Health?](service-health-overview.md)
 ## [Mi az Azure Resource Health?](resource-health-overview.md)
@@ -7,7 +9,7 @@
 ### [Konfigurálás a ServiceNow segítségével](service-health-alert-webhook-servicenow.md)
 ### [Konfigurálás a PagerDuty segítségével](service-health-alert-webhook-pagerduty.md)
 ### [Konfigurálás az OpsGenie segítségével](service-health-alert-webhook-opsgenie.md)
-# Erőforrások
+# További források
 ## [Gyakori kérdések](resource-health-faq.md)
 ## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)
 ## [Az Azure Resource Health segítségével elérhető erőforrástípusok és állapot-ellenőrzések](resource-health-checks-resource-types.md)

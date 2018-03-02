@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: wesmc
-ms.openlocfilehash: 5c877222c9ce409ea8758d5830f79e4a8b64fd8f
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 905c257ab40057f05081e54e8680bd818023d886
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="ssh-support-for-azure-app-service-on-linux"></a>Az Azure App Service-Linux SSH-támogatás
 
@@ -29,7 +29,7 @@ App Service Linux támogatja az SSH az alkalmazás tárolóba egyes a beépítet
 
 ![Futásidejű verem](./media/app-service-linux-ssh-support/app-service-linux-runtime-stack.png)
 
-Többek között az SSH-kiszolgálót a lemezkép részeként, és ebben a témakörben leírtak szerint konfigurálja úgy az egyéni Docker-lemezképekkel is használható SSH.
+Is használhatja SSH az egyéni Docker-lemezképekkel többek között az SSH-kiszolgálót a lemezkép részeként, és konfigurálja úgy a cikkben leírtak szerint.
 
 ## <a name="making-a-client-connection"></a>Egy ügyfél-kapcsolatot
 
@@ -49,7 +49,7 @@ Ha Ön nem már hitelesítve, hitelesítik magukat az Azure-előfizetéshez val�
 
 Ahhoz, hogy egy egyéni Docker lemezképeinek SSH-kommunikációhoz a tároló és az ügyfél között az Azure portálon hajtsa végre a következő lépéseket a Docker kép.
 
-Ezen lépések végrehajtása az Azure App Service-tárházban, mint látható [például](https://github.com/Azure-App-Service/node/blob/master/6.9.3/).
+Ezeket a lépéseket az Azure App Service-tárházban, mint látható [például](https://github.com/Azure-App-Service/node/blob/master/6.9.3/).
 
 1. Tartalmazza a `openssh-server` telepítés [ `RUN` utasítás](https://docs.docker.com/engine/reference/builder/#run) a lemezképet, és a beállított fiók jelszavát a legfelső szintű Dockerfile a `"Docker!"`.
 
@@ -65,7 +65,7 @@ Ezen lépések végrehajtása az Azure App Service-tárházban, mint látható [
         && echo "root:Docker!" | chpasswd
     ```
 
-1. Adja hozzá egy [ `COPY` utasítás](https://docs.docker.com/engine/reference/builder/#copy) történő másolásához Dockerfile egy [sshd_config](http://man.openbsd.org/sshd_config) fájlt a */stb/ssh/* könyvtár. A konfigurációs fájl alapján a sshd_config fájlt az Azure-alkalmazásszolgáltatási GitHub-tárházban [Itt](https://github.com/Azure-App-Service/node/blob/master/8.2.1/sshd_config).
+1. Adja hozzá egy [ `COPY` utasítás](https://docs.docker.com/engine/reference/builder/#copy) történő másolásához Dockerfile egy [sshd_config](http://man.openbsd.org/sshd_config) fájlt a */stb/ssh/* könyvtár. A konfigurációs fájlban kell alapozni az az Azure-alkalmazásszolgáltatási GitHub-tárházban sshd_config fájlban [Itt](https://github.com/Azure-App-Service/node/blob/master/8.2.1/sshd_config).
 
     > [!NOTE]
     > A *sshd_config* tartalmaznia kell a következő, vagy a kapcsolat hibája esetén: 
@@ -82,26 +82,28 @@ Ezen lépések végrehajtása az Azure App Service-tárházban, mint látható [
     EXPOSE 2222 80
     ```
 
-1. Ügyeljen arra, hogy [indítsa el az ssh szolgáltatás](https://github.com/Azure-App-Service/node/blob/master/6.9.3/startup/init_container.sh) rendszerhéj-parancsfájl használatával */bin* könyvtár.
+1. Ügyeljen arra, hogy az SSH szolgáltatás elindításához használja a PowerShell parancsfájlhoz (Példa: [init_container.sh](https://github.com/Azure-App-Service/node/blob/master/6.9.3/startup/init_container.sh)).
 
     ```bash
     #!/bin/bash
     service ssh start
     ```
 
-A Dockerfile használja a [ `CMD` utasítás](https://docs.docker.com/engine/reference/builder/#cmd) a parancsfájl futtatásához.
+A Dockerfile használja a [ `ENTRYPOINT` utasítás](https://docs.docker.com/engine/reference/builder/#entrypoint) a parancsfájl futtatásához.
 
     ```docker
-    COPY init_container.sh /bin/
+    COPY startup /opt/startup
     ...
-    RUN chmod 755 /bin/init_container.sh
+    RUN chmod 755 /opt/startup/init_container.sh
     ...
-    CMD ["/bin/init_container.sh"]
+    ENTRYPOINT ["/opt/startup/init_container.sh"]
     ```
 
 ## <a name="next-steps"></a>További lépések
 
-Tekintse meg a következő hivatkozásokat az tárolókat webalkalmazás vonatkozó további információért. Kérdéseit és észrevételeit megoszthatja [fórumunkon](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazurewebsitespreview).
+Kérdések és problémákat is közzétesz a a [Azure fórum](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazurewebsitespreview).
+
+A webalkalmazás az tárolókat további információkért lásd:
 
 * [Egyéni Docker-rendszerkép használata a Web App for Containers szolgáltatásban](quickstart-docker-go.md)
 * [A .NET Core használata a Linuxon futó Azure App Service-ben](quickstart-dotnetcore.md)

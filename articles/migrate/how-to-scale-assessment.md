@@ -6,11 +6,11 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 01/08/2018
 ms.author: raynew
-ms.openlocfilehash: d588dc6037b6295594301b577fe9df31d169a9e6
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: d1063d1f2777095c880896b49249f6de4cda6f3a
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="discover-and-assess-a-large-vmware-environment"></a>Fedezze fel és nagy VMware-környezet felmérése
 
@@ -84,7 +84,15 @@ Ellenőrizze, hogy a petesejtek fájlt biztonságos telepítése előtt:
    Gyakorlati példa: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
 3. Győződjön meg arról, hogy a létrehozott kivonatoló megegyezik-e a következő beállításokat.
 
-    1.0.8.59 petesejtek verziójához
+    1.0.9.2 petesejtek verziójához
+
+    **Algoritmus** | **Kivonat értéke**
+    --- | ---
+    MD5 | 7326020e3b83f225b794920b7cb421fc
+    SHA1 | a2d8d496fdca4bd36bfa11ddf460602fa90e30be
+    SHA256 | f3d9809dd977c689dda1e482324ecd3da0a6a9a74116c1b22710acc19bea7bb2  
+
+    Az OVA 1.0.8.59-es verziója esetén
 
     **Algoritmus** | **Kivonat értéke**
     --- | ---
@@ -158,7 +166,7 @@ A következő táblázatban a értékelési eredmények, amelyek befolyásolják
 Minden felderítés, végre kell hajtania a gyűjtő felderítéséhez szükséges hatókörében virtuális gépek futnak. Futtassa a másikat a másik után. Egyidejű felderítések nem támogatottak, és mindegyik felderítés rendelkeznie kell egy másik hatókört.
 
 1. A vSphere Client-konzolon kattintson a jobb gombbal a virtuális gépre, majd kattintson az **Open Console** (Konzol megnyitása) elemre.
-2. Adja meg a nyelvet, időzóna és a készülék jelszó beállításai.
+2. Adja meg a berendezés nyelv-, időzóna- és jelszóbeállításait.
 3. Az asztalon, válassza ki a **futtassa a gyűjtő** helyi.
 4. Nyissa meg az Azure áttelepítése gyűjtő **előfeltétel** , majd:
 
@@ -168,7 +176,7 @@ Minden felderítés, végre kell hajtania a gyűjtő felderítéséhez szükség
    
    b. Ha a virtuális gép fér hozzá az internethez olyan proxyn keresztül, válassza ki a **proxybeállítások**, adja meg a proxykiszolgáló címét és a figyelő portja. Adja meg a hitelesítő adatokat, ha a proxykiszolgáló hitelesítést igényel.
 
-   A gyűjtő ellenőrzi, hogy a gyűjtő szolgáltatás fut-e. A szolgáltatás alapértelmezés szerint telepítve van a gyűjtő virtuális gépen.
+   A gyűjtő ellenőrzi, hogy fut-e a gyűjtőszolgáltatás. A szolgáltatás alapértelmezés szerint telepítve van a gyűjtő virtuális gépen.
 
    c. Töltse le és telepítse a VMware PowerCLI.
 

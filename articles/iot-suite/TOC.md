@@ -1,3 +1,5 @@
+# [Az IoT Suite dokumentációja](index.md)
+
 # Áttekintés
 ## [Az IoT-architektúra alapelvei](iot-suite-what-is-azure-iot.md)
 ## [Az Azure IoT lehetőségeinek összehasonlítása](iot-suite-options.md)

@@ -12,11 +12,11 @@ documentationcenter:
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 00e0f169c7de2521b15b89c2d935967e51b38960
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: e444e46b9044d822731683781112be83c8c6db04
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="set-up-the-iot-hub-device-provisioning-service-with-the-azure-portal"></a>IoT Hub eszközkiépítési szolgáltatás beállítása az Azure Portallal
 
@@ -25,13 +25,13 @@ Ezek a lépések azt mutatják be, hogyan történik az Azure felhőbeli erőfor
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 
-## <a name="log-in-to-the-azure-portal"></a>Jelentkezzen be az Azure portálra.
+## <a name="log-in-to-the-azure-portal"></a>Bejelentkezés az Azure Portalra
 
 Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
 ## <a name="create-an-iot-hub"></a>IoT Hub létrehozása
 
-1. Kattintson az Azure Portal bal felső sarkában található **Új** gombra.
+1. Kattintson az Azure Portal bal felső sarkában található **Erőforrás létrehozása** gombra.
 
 2. Válassza az **Eszközök internetes hálózata**, majd az **IoT Hub** elemeket, végül pedig kattintson a **Létrehozás** gombra. 
 
@@ -44,9 +44,9 @@ Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
 ## <a name="create-a-new-instance-for-the-iot-hub-device-provisioning-service"></a>Új példány létrehozása az IoT Hub eszközkiépítési szolgáltatáshoz
 
-1. Kattintson az Azure Portal bal felső sarkában található **Új** gombra.
+1. Kattintson az Azure Portal bal felső sarkában található **Erőforrás létrehozása** gombra.
 
-2. *Keresse meg a Marketplace piactéren* az **eszközkiépítési szolgáltatást**. Válassza az **IoT eszközkiépítési szolgáltatás** elemet, és kattintson a **Létrehozás** gombra. 
+2. *Keresse meg a Marketplace piactéren* az **eszközkiépítési szolgáltatást**. Válassza az **IoT Hub Device Provisioning Service** elemet, és kattintson a **Létrehozás** gombra. 
 
 3. **Nevezze el** az eszközkiépítési szolgáltatás példányát. Válassza ki az ehhez a példányhoz használni kívánt előfizetést, és nevezzen meg egy új vagy létező erőforráscsoportot. Válassza ki a helyet. Amikor végzett, kattintson a **Létrehozás** gombra.
 
@@ -65,7 +65,7 @@ Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
     ![A hub nevének csatolása a DPS példányhoz a portálpanelen](./media/quick-setup-auto-provision/link-iot-hub-to-dps-portal.png)  
 
-3. Most látnia kell a kiválasztott hubot az **Összekapcsolt IoT-központok** panelen. Lehetséges, hogy a **Frissítés** gombra kell kattintania az **Összekapcsolt IoT-központok** megjelenítéséhez.
+3. Most látnia kell a kiválasztott hubot a **Csatolt IoT Hubok** panelen. Lehetséges, hogy a **Frissítés** gombra kell kattintania az **Összekapcsolt IoT-központok** megjelenítéséhez.
 
 
 
@@ -76,7 +76,7 @@ Az ebben a gyűjteményben lévő többi rövid útmutató erre a rövid útmuta
 1. Az Azure Portal bal oldali menüjében kattintson az **Összes erőforrás** lehetőségre, majd válassza ki az eszközkiépítési szolgáltatást. Az **Összes erőforrás** panel felső részén kattintson a **Törlés** elemre.  
 2. Az Azure Portal bal oldali menüjében kattintson az **Összes erőforrás** lehetőségre, majd válassza ki az IoT Hubot. Az **Összes erőforrás** panel felső részén kattintson a **Törlés** elemre.  
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban IoT Hubot és eszközkiépítési szolgáltatás példányt helyezett üzembe, és csatolta a két erőforrást. Ha szimulált eszköz kiépítéséhez szeretné használni ezt a beállítást, folytassa a szimulált eszköz létrehozásának rövid útmutatójával.
 

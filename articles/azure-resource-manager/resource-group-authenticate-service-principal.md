@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 12/28/2017
 ms.author: tomfitz
-ms.openlocfilehash: 8262162ce73176426057af4654f12614cac85472
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 103e4ca5ffd6c9dfe5043af9d8f75763705eb939
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="use-azure-powershell-to-create-a-service-principal-to-access-resources"></a>Szolgáltatásnév létrehozása erőforrások eléréséhez az Azure PowerShell használatával
 
@@ -36,7 +36,7 @@ A legegyszerűbben a portálon ellenőrizheti, hogy rendelkezik-e megfelelő jog
 
 Most folytassa a szakasz a hitelesítéséhez:
 
-* [jelszó](#create-service-principal-with-password)
+* [Jelszó](#create-service-principal-with-password)
 * [önaláírt tanúsítvány](#create-service-principal-with-self-signed-certificate)
 * [a hitelesítésszolgáltató tanúsítványa](#create-service-principal-with-certificate-from-certificate-authority)
 
@@ -403,7 +403,7 @@ Select-AzureRmProfile -Path c:\Users\exampleuser\profile\exampleSP.json
 > A hozzáférési jogkivonat lejár, így csak a működik a mentett profil használatával mindaddig, amíg a lexikális elem érvénytelen.
 >  
 
-Azt is megteheti hívhat meg REST műveleteinek-e jelentkezni a powershellből. A hitelesítési válaszra kérheti le a hozzáférési jogkivonat más műveletek való használatra. Lásd a példát a hozzáférési jogkivonat beolvasása REST műveleteinek figyelőn, [generálása egy hozzáférési jogkivonat](resource-manager-rest-api.md#generating-an-access-token).
+Azt is megteheti hívhat meg REST műveleteinek-e jelentkezni a powershellből. A hitelesítési válaszra kérheti le a hozzáférési jogkivonat más műveletek való használatra. Lásd a példát a hozzáférési jogkivonat beolvasása REST műveleteinek figyelőn, [a kérelem létrehozása](/rest/api/#create-the-request).
 
 ## <a name="debug"></a>Hibakeresés
 

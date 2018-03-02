@@ -1,3 +1,5 @@
+# [A Power BI Embedded dokumentációja](index.md)
+
 # Áttekintés
 ## [A Power BI Embedded](what-is-power-bi-embedded.md)
 

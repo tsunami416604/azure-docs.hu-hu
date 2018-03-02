@@ -15,11 +15,11 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.date: 05/01/2017
 ms.author: heidist
-ms.openlocfilehash: 710543b5423d2b651545151eb4a8d426720e28e0
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: 286408fb0c3aa2b83cf17a4646f6f7420b6884f4
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="import-data-to-azure-search-using-the-portal"></a>Adatok importálása az Azure Search szolgáltatásba a portál használatával
 Az Azure portál Azure Search irányítópultján található **Adatok importálása** varázsló segítségével az adatok betölthetők egy indexbe. 
@@ -49,7 +49,7 @@ Az Adatok importálása varázsló az alábbi adatforrások használatát támog
 Egybesimított adatkészlet a kötelező bemenet. Az importálás kizárólag egyedi táblából, adatbázisnézetből és egyenértékű adatszerkezetből végezhető el. Az adatszerkezetet a varázsló futtatása előtt létre kell hoznia.
 
 ## <a name="connect-to-your-data"></a>Csatlakozás az adatokhoz
-1. Jelentkezzen be a [Azure Portalra](https://portal.azure.com), és nyissa meg a szolgáltatás irányítópultját. Az gyorselérési sávon a **További szolgáltatások** elemre kattintva kereshet az aktuális előfizetésben meglévő „keresési szolgáltatásokat”. 
+1. Jelentkezzen be a [Azure Portalra](https://portal.azure.com), és nyissa meg a szolgáltatás irányítópultját. A gyorselérési sávon a **Minden szolgáltatás** elemre kattintva kereshet az aktuális előfizetésben meglévő „keresési szolgáltatásokat”. 
 2. Az Adatok importálása panel csúsztatott megnyitásához kattintson a parancssávon található **Adatok importálása** elemre.  
 3. Az indexelő által használt adatforrás-definíció megadásához kattintson a **Csatlakozás az adatokhoz** lehetőségre. Előfizetésen belüli adatforrások esetében a varázsló általában észleli és elolvassa a kapcsolatadatokat, és minimalizálja az általános konfigurációs követelményeket.
 

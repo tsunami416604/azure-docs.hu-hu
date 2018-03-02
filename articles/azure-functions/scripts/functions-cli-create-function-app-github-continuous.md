@@ -1,6 +1,6 @@
 ---
-title: "Hozzon létre egy függvényt, amely a Githubból a rendszer az Azure-ban |} Microsoft Docs"
-description: "Egy függvény alkalmazás létrehozása és telepítése az Azure Functions használatával GitHub-tárházban funkciókódot."
+title: "GitHubról üzembe helyezett függvény létrehozása az Azure-ban | Microsoft Docs"
+description: "Egy függvényalkalmazás létrehozása és függvénykód üzembe helyezése egy GitHub-adattárból az Azure Functions használatával."
 services: functions
 ms.service: functions
 keywords: 
@@ -10,46 +10,50 @@ ms.author: cfowler
 ms.date: 01/09/2018
 ms.topic: sample
 ms.custom: mvc
-ms.openlocfilehash: c4224bc7973cd1e3ca36799db9f23a124fcba807
-ms.sourcegitcommit: 6fb44d6fbce161b26328f863479ef09c5303090f
-ms.translationtype: MT
+ms.openlocfilehash: 9ad38a7ff00e5cea2cf958b4cb69679a27f84d4a
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 02/09/2018
 ---
-# <a name="create-a-function-in-azure-that-is-deployed-from-github"></a>Hozzon létre egy függvényt, amely a Githubból a rendszer az Azure-ban
+# <a name="create-a-function-app-in-azure-that-is-deployed-from-github"></a>GitHubról üzembe helyezett függvényalkalmazás létrehozása az Azure-ban
 
-Ez a parancsfájlpélda hoz létre, a függvény alkalmazás használatával az [fogyasztás terv](../functions-scale.md#consumption-plan) kapcsolódó erőforrásokkal, és folyamatosan telepíti a funkciókódot a GitHub-tárházban. Ez a példa lesz szüksége:
+Ez az Azure Functions-példaszkript létrehoz egy függvényalkalmazást, valamint az ahhoz kapcsolódó erőforrásokat, a [használatalapú csomag segítségével](../functions-scale.md#consumption-plan). Ezután egy GitHub-adattárból konfigurálja a függvénykódot folyamatos üzembe helyezéshez. 
 
-* GitHub-tárházban funkciók kóddal, a rendszergazdai jogosultsággal kell rendelkeznie.
-* A [személyes hozzáférési jogkivonat (PAT)](https://help.github.com/articles/creating-an-access-token-for-command-line-use) a GitHub-fiókjában.
+[!INCLUDE [upgrade runtime](../../../includes/functions-cli-version-note.md)]
+
+A példához a következők szükségesek:
+
+* Egy GitHub-adattár a függvénykóddal, amelyhez rendszergazdai jogosultság szükséges.
+* Egy [személyes hozzáférési jogkivonat (PAT)](https://help.github.com/articles/creating-an-access-token-for-command-line-use) a GitHub-fiókjához.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Ha inkább használja az Azure parancssori felület helyileg, akkor telepítse, és 2.0-s vagy újabb verzióját használja. Azt az Azure CLI-verziót, `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli). 
+Ha inkább a helyi Azure CLI-t használja, akkor az Azure CLI 2.0-s vagy újabb verzióját kell telepítenie és futtatnia. Az Azure CLI verziójának megállapításához futtassa az `az --version` parancsot. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli). 
 
-## <a name="sample-script"></a>Mintaparancsfájl
+## <a name="sample-script"></a>Példaszkript
 
-Ez a minta egy Azure-függvény alkalmazás létrehozza, és telepíti a Githubról funkciókódot.
+Ez a példa létrehoz egy Azure-függvényalkalmazást, és üzembe helyezi a függvény kódját a GitHubról.
 
 [!code-azurecli-interactive[main](../../../cli_scripts/azure-functions/deploy-function-app-with-function-github-continuous/deploy-function-app-with-function-github-continuous.sh?highlight=3-4 "Azure Service")]
 
 [!INCLUDE [cli-script-clean-up](../../../includes/cli-script-clean-up.md)]
 
-## <a name="script-explanation"></a>Parancsfájl ismertetése
+## <a name="script-explanation"></a>Szkript ismertetése
 
-Minden egyes parancsa a tábla-parancs adott dokumentációjára mutató hivatkozásokat. Ezt a parancsfájlt az alábbi parancsokat használja:
+A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik. Ez a szkript a következő parancsokat használja:
 
 | Parancs | Megjegyzések |
 |---|---|
-| [az csoport létrehozása](https://docs.microsoft.com/cli/azure/group#az_group_create) | Az összes erőforrás tároló erőforrás csoportot hoz létre. |
-| [az storage-fiók létrehozása](https://docs.microsoft.com/cli/azure/appservice/plan#az_appservice_plan_create) | App Service-csomag létrehozása. |
-| [az functionapp létrehozása](https://docs.microsoft.com/cli/azure/appservice/web#az_appservice_web_delete) |
-| [az App Service web verziókezelő konfiguráció](https://docs.microsoft.com/cli/azure/appservice/web/source-control#az_appservice_web_source_control_config) | Egy függvény app társítja a Git vagy Mercurial tárházba. |
+| [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
+| [az storage account create](https://docs.microsoft.com/cli/azure/appservice/plan#az_appservice_plan_create) | Létrehoz egy App Service-csomagot. |
+| [az functionapp create](https://docs.microsoft.com/cli/azure/appservice/web#az_appservice_web_delete) |
+| [az appservice web source-control config](https://docs.microsoft.com/cli/azure/appservice/web/source-control#az_appservice_web_source_control_config) | Társít egy függvényalkalmazást egy Git- vagy Mercurial-adattárhoz. |
 
 ## <a name="next-steps"></a>További lépések
 
-További információ az Azure parancssori felület: [Azure CLI dokumentáció](https://docs.microsoft.com/cli/azure/overview).
+Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](https://docs.microsoft.com/cli/azure/overview).
 
-További Azure Functions CLI parancsfájl minták megtalálhatók a [dokumentáció az Azure Functions](../functions-cli-samples.md).
+További Azure Functions CLI-példaszkripteket az [Azure Functions dokumentációjában](../functions-cli-samples.md) találhat.

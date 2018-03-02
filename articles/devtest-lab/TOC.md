@@ -1,3 +1,5 @@
+# [A Devtest Labs dokumentációja](index.md)
+
 # Áttekintés
 ## [Információk az Azure DevTest Labs szolgáltatásról](devtest-lab-overview.md)
 ## [Alapelvek](devtest-lab-concepts.md)
@@ -65,7 +67,7 @@
 ## Integrálás a CI/CD-vel
 ### [Laborok integrálása VSTS CI/CD-folyamatába](devtest-lab-integrate-ci-cd-vsts.md)
 
-# Hivatkozás
+# Referencia
 ## [CLI 2.0](/cli/azure/lab)
 ## [PowerShell](/powershell/module/azurerm.devtestlabs/#devtest_labs)
 ### [Tesztkörnyezetek automatikus létrehozása vagy módosítása](devtest-lab-use-arm-and-powershell-for-lab-resources.md)

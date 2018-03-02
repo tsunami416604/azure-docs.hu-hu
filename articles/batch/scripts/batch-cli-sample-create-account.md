@@ -1,73 +1,60 @@
 ---
-title: "Az Azure CLI-parancsfájlt minta - Batch-fiók létrehozása |} Microsoft Docs"
-description: "Az Azure CLI-parancsfájlt minta - Batch-fiók létrehozása"
+title: "Azure CLI-példaszkript – Batch-fiók létrehozása – Batch szolgáltatás | Microsoft Docs"
+description: "Azure CLI-példaszkript – Batch-fiók létrehozása Batch szolgáltatás módban"
 services: batch
 documentationcenter: 
-author: annatisch
-manager: daryls
-editor: tysonn
+author: dlepow
+manager: jeconnoc
+editor: 
 ms.assetid: 
 ms.service: batch
 ms.devlang: azurecli
-ms.topic: article
+ms.topic: sample
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 05/02/2017
-ms.author: antisch
-ms.openlocfilehash: fd2f4682a04c557b69bbfce115f41c54a96d462c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: MT
+ms.date: 01/29/2018
+ms.author: danlep
+ms.openlocfilehash: e8e8e475c1fe32346dde39e187a007ec7f62a2f3
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/01/2018
 ---
-# <a name="create-a-batch-account-with-the-azure-cli"></a>Batch-fiók létrehozása az Azure parancssori felülettel
+# <a name="cli-example-create-a-batch-account-in-batch-service-mode"></a>CLI-példa: Batch-fiók létrehozása Batch szolgáltatás módban
 
-Ezt a parancsfájlt hoz létre az Azure Batch-fiók, és megjeleníti a fiók a különféle tulajdonságainak lekérdezése, és frissíti.
+Ezt a szkript létrehoz egy Azure Batch-fiókot Batch szolgáltatás módban, és bemutatja, hogyan lehet lekérdezni vagy frissíteni a fiók különböző tulajdonságait. Amikor létrehozunk egy Batch-fiókot az alapértelmezett Batch szolgáltatás módban, a számítási csomópontok hozzárendelését a Batch szolgáltatás belsőleg végzi el. A lefoglalt számítási csomópontokra egy külön vCPU- (mag-) kvóta vonatkozik, a fiók hitelesítéséhez pedig megosztott kulcsos hitelesítő adatok vagy egy Azure Active Directory-token használható.
 
-## <a name="prerequisites"></a>Előfeltételek
+[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Telepítse az Azure parancssori felület használatával a utasításokat a [Azure parancssori felület telepítési útmutató](https://docs.microsoft.com/cli/azure/install-azure-cli), ha még nem tette meg.
+Ha a parancssori felület helyi telepítése és használata mellett dönt, a témakörben leírt lépésekhez az Azure CLI 2.0.20-as vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése](/cli/azure/install-azure-cli). 
 
-## <a name="batch-account-sample-script"></a>Batch-fiók parancsfájlpéldát
+## <a name="example-script"></a>Példaszkript
 
-Batch-fiók létrehozásakor alapértelmezés szerint a számítási csomópontok belső rendeli hozzá a Batch szolgáltatás. Lefoglalt számítási csomópontok részt vesznek egy külön core kvótát, és a fiók hitelesítése keresztül megosztott kulcs hitelesítő adatai vagy az Azure Active Dirctory tokent.
-
-[!code-azurecli[main](../../../cli_scripts/batch/create-account/create-account.sh "Create Account")]
-
-## <a name="batch-account-using-user-subscription-sample-script"></a>Batch-fiók felhasználói előfizetés minta parancsfájl használatával
-
-Úgy is dönthet, hogy a Batch számítási csomópontjainak létrehozása a saját Azure-előfizetésben rendelkezik.
-Fiókok kialakítása, amelyek számítási csomópontok a előfizetéssé hitelesíteni kell az Azure Active Directory-tokent keresztül, és a számítási csomópontok lefoglalt az előfizetési kvóta is beleszámít. Fiók létrehozása az ebben a módban, a Key Vault hivatkozás egy kell adnia a fiók létrehozásakor.
-
-[!code-azurecli[main](../../../cli_scripts/batch/create-account/create-account-user-subscription.sh  "Create Account using User Subscription")]
+[!code-azurecli-interactive[main](../../../cli_scripts/batch/create-account/create-account.sh "Create Account")]
 
 ## <a name="clean-up-deployment"></a>Az üzemelő példány eltávolítása
 
-Miután a fenti minta parancsfájlok valamelyike, futtassa a következő parancs futtatásával távolítsa el az erőforráscsoportot, és az összes kapcsolódó erőforrások (beleértve a Batch-fiókok, Azure Storage-fiókokat és Azure kulcstárolójának).
+A következő paranccsal távolítható el az erőforráscsoport és az ahhoz kapcsolódó összes erőforrás.
 
-```azurecli
+```azurecli-interactive
 az group delete --name myResourceGroup
 ```
 
-## <a name="script-explanation"></a>Parancsfájl ismertetése
+## <a name="script-explanation"></a>Szkript ismertetése
 
-A parancsfájl a következő parancsokat egy erőforráscsoport, a Batch-fiók és minden kapcsolódó erőforrás létrehozásához. Minden egyes parancsa a tábla-parancs-specifikus dokumentációjára mutató hivatkozásokat.
+A szkript a következő parancsokat használja. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
 | Parancs | Megjegyzések |
 |---|---|
-| [az csoport létrehozása](https://docs.microsoft.com/cli/azure/group#az_group_create) | Az összes erőforrás tároló erőforrás csoportot hoz létre. |
-| [az a batch-fiók létrehozása](https://docs.microsoft.com/cli/azure/batch/account#az_batch_account_create) | A Batch-fiók létrehozása  |
-| [az batch-fiók beállítása](https://docs.microsoft.com/cli/azure/batch/account#az_batch_account_set) | A Batch-fiók tulajdonságainak frissítése.  |
-| [az batch-fiók megjelenítése](https://docs.microsoft.com/cli/azure/batch/account#az_batch_account_show) | Lekérdezi a megadott Batch-fiók adatait.  |
-| [az kötegelt fióklista kulcsok](https://docs.microsoft.com/cli/azure/batch/account/keys#az_batch_account_keys_list) | Lekérdezi a megadott Batch-fiók hozzáférési kulcsainak listázása.  |
-| [az batch-fiók bejelentkezési](https://docs.microsoft.com/cli/azure/batch/account#az_batch_account_login) | A megadott Batch-fiók további CLI interakció azonosítja.  |
-| [az storage-fiók létrehozása](https://docs.microsoft.com/cli/azure/storage/account#az_storage_account_create) | Tárfiók létrehozása. |
-| [az keyvault létrehozása](https://docs.microsoft.com/cli/azure/keyvault#az_keyvault_create) | Kulcstároló létrehozása. |
-| [az keyvault-szabály beállítása](https://docs.microsoft.com/cli/azure/keyvault#az_keyvault_set_policy) | A biztonsági házirend a megadott kulcstároló frissítése. |
-| [az csoport törlése](https://docs.microsoft.com/cli/azure/group#az_group_delete) | Egy olyan erőforráscsoport, beleértve az összes beágyazott erőforrások törlése. |
+| [az group create](/cli/azure/group#az_group_create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
+| [az batch account create](/cli/azure/batch/account#az_batch_account_create) | Létrehoz egy Batch-fiókot. |
+| [az storage account create](/cli/azure/storage/account#az_storage_account_create) | Létrehoz egy tárfiókot. |
+| [az batch account set](/cli/azure/batch/account#az_batch_account_set) | Frissíti a Batch-fiók tulajdonságait.  |
+| [az batch account show](/cli/azure/batch/account#az_batch_account_show) | Lekérdezi a megadott Batch-fiók adatait.  |
+| [az batch account keys list](/cli/azure/batch/account/keys#az_batch_account_keys_list) | Lekérdezi a megadott Batch-fiók hozzáférési kulcsait.  |
+| [az batch account login](/cli/azure/batch/account#az_batch_account_login) | Hitelesíti a megadott Batch-fiókot további parancssori felületi interakcióhoz.  |
+| [az group delete](/cli/azure/group#az_group_delete) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-További információ az Azure parancssori felület: [Azure CLI dokumentáció](https://docs.microsoft.com/cli/azure/overview).
-
-További kötegelt CLI parancsfájl minták megtalálhatók a [Azure Batch CLI dokumentáció](../batch-cli-samples.md).
+Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](/cli/azure/overview).

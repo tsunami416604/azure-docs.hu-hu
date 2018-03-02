@@ -11,8 +11,12 @@
 ## [Az Azure AD Connect Health műveletei](active-directory-aadconnect-health-operations.md)
 ## [Hibák a szinkronizálás során](../active-directory-aadconnect-troubleshoot-sync-errors.md)
 
+# Hibaelhárítás
+## [Azure AD Connect Health – gyakori kérdések](active-directory-aadconnect-health-faq.md)
+## [Az állapotfigyelési szolgáltatás adatai nem naprakészek](active-directory-aadconnect-health-data-freshness.md)
+
 # Referencia
-## [Kódminták](https://azure.microsoft.com/en-us/resources/samples/?service=active-directory)
+## [Kódminták](https://azure.microsoft.com/resources/samples/?service=active-directory)
 ## [Az Azure AD Connect Health verzióelőzményei](active-directory-aadconnect-health-version-history.md)
 ## [GDPR-megfelelőség és az Azure AD Connect Health](active-directory-aadconnect-health-gdpr.md)
 
@@ -23,5 +27,4 @@
 
 # További források
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=security-identity)
-##[Azure AD Connect Health – gyakori kérdések](active-directory-aadconnect-health-faq.md)
 ## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)

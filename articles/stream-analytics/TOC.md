@@ -1,3 +1,5 @@
+# [A Stream Analytics dokumentációja](index.md)
+
 # Áttekintés
 ## [Mi a Stream Analytics?](stream-analytics-introduction.md)
 ## [A Storm és a Stream Analytics összehasonlítása](stream-analytics-comparison-storm.md)

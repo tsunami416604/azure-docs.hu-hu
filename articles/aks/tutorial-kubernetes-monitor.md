@@ -1,66 +1,66 @@
 ---
-title: "Az Azure útmutató - figyelő Kubernetes Kubernetes"
-description: "AKS oktatóanyag - figyelő Kubernetes a Microsoft Operations Management Suite (OMS)"
+title: "Azure-on futó Kubernetes oktatóanyag – A Kubernetes monitorozása"
+description: "AKS oktatóanyag – A Kubernetes monitorozása a Microsoft Operations Management Suite (OMS) használatával"
 services: container-service
 author: neilpeterson
 manager: timlt
 ms.service: container-service
 ms.topic: tutorial
-ms.date: 10/24/2017
+ms.date: 02/22/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: b01aa01df198ce75b2f8b66d28a2db68b1c30b87
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
-ms.translationtype: MT
+ms.openlocfilehash: 2fedd615733e3bf51469d3b69d5fe51e3e99087e
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/24/2018
 ---
-# <a name="monitor-azure-container-service-aks"></a>A figyelő az Azure Tárolószolgáltatás (AKS)
+# <a name="monitor-azure-container-service-aks"></a>Az Azure Container Service (AKS) monitorozása
 
-A Kubernetes fürt és a tárolók figyelése fontos, különösen akkor, ha egy éles fürt futtató több alkalmazással rendelkező léptékű.
+A Kubernetes-fürt és -tárolók monitorozása kritikus fontosságú, különösen, ha egy éles fürtöt futtat skálázható módon, több alkalmazással.
 
-Ebben az oktatóanyagban a AKS fürt használatával figyelés konfigurálása a [Log Analytics-tárolók megoldást][log-analytics-containers].
+Ebben az oktatóanyagban az AKS-fürt monitorozását a [Log Analytics tárolószolgáltatásával][log-analytics-containers] konfigurálja.
 
-Ebben az oktatóanyagban nyolc, hét részét tartalmazza a következő feladatokat:
+Ez az oktatóanyag, amely egy nyolcrészes sorozat hetedik része, a következő feladatokon vezet végig:
 
 > [!div class="checklist"]
-> * A felügyeleti megoldás tároló konfigurálása
-> * A figyelő az ügynökök konfigurálása
-> * Elérni az Azure-portálon figyelési adatait.
+> * A tároló monitorozására szolgáló megoldás konfigurálása
+> * A monitorozási ügynökök konfigurálása
+> * Hozzáférés a monitorozási információkhoz az Azure Portalon
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Az előző oktatóanyagok tároló lemezképek, a feltöltött Azure tároló beállításjegyzék ezeket a lemezképeket és a létrehozott Kubernetes fürt alkalmazás lett csomagolva.
+Az előző oktatóanyagokban egy alkalmazást csomagoltunk tárolórendszerképekbe, a rendszerképeket feltöltöttük az Azure Container Registrybe, és létrehoztunk egy Kubernetes-fürtöt.
 
-Ha nem volna ezeket a lépéseket, és szeretné követéséhez, vissza [oktatóanyag 1 – létrehozás tároló képek][aks-tutorial-prepare-app].
+Ha ezeket a lépéseket még nem hajtotta végre, és szeretné követni az oktatóanyagot, lépjen vissza az [1. oktatóanyag – Tárolórendszerképek létrehozása][aks-tutorial-prepare-app] részhez.
 
-## <a name="configure-the-monitoring-solution"></a>A figyelési megoldás konfigurálása
+## <a name="configure-the-monitoring-solution"></a>A monitorozási megoldás konfigurálása
 
-Válassza ki az Azure-portálon **új** keresse meg a `Container Monitoring Solution`. Ha található, válassza ki a **létrehozása**.
+Az Azure Portalon válassza az **Erőforrás létrehozása** lehetőséget, és keresse meg a `Container Monitoring Solution` elemet. Ha megtalálta, kattintson a **Létrehozás** elemre.
 
 ![Megoldás hozzáadása](./media/container-service-tutorial-kubernetes-monitor/add-solution.png)
 
-Hozzon létre egy új OMS-munkaterület, vagy válasszon egy meglévőt. Az OMS-munkaterület űrlap végigvezeti a folyamat.
+Hozzon létre új OMS-munkaterületet, vagy válasszon ki egy meglévőt. Az OMS-munkaterület űrlapja végigvezeti a folyamaton.
 
-A munkaterület létrehozása esetén **rögzítés az irányítópulton** partnerek.
+A könnyebb elérhetőség érdekében a munkaterület létrehozásakor jelölje be a **Rögzítés az irányítópulton** beállítást.
 
 ![OMS-munkaterület](./media/container-service-tutorial-kubernetes-monitor/oms-workspace.png)
 
-Ha elkészült, válassza ki a **OK**. Ellenőrzés befejezése után válassza ki a **létrehozása** létrehozni a tárolót, felügyeleti megoldás.
+Ha elkészült, kattintson az **OK** gombra. Az ellenőrzés után kattintson a **Létrehozás** gombra a tárolómonitorozó megoldás létrehozásához.
 
-Ha a munkaterületet létrejött, jelölőnégyzetként jelenik meg az Azure portálon.
+Amint a munkaterület létrejött, megjelenik az Azure Portalon.
 
-## <a name="get-workspace-settings"></a>Munkaterület beállításainak beolvasása
+## <a name="get-workspace-settings"></a>Munkaterület beállításainak lekérése
 
-A naplóelemzési munkaterület azonosítója és kulcsa van szükség a Kubernetes csomópontokon a megoldás ügynök konfigurálása.
+A megoldásügynök Kubernetes-csomópontokon való konfigurálásához szükség lesz a Log Analytics-munkaterület azonosítójára és kulcsára.
 
-Válassza ki az értékek lekérésére, **OMS-munkaterület** a tároló-megoldásokkal bal oldali menüből. Válassza ki **speciális beállítások** és tekintse meg a **MUNKATERÜLET azonosítója** és a **elsődleges kulcs**.
+Az értékek lekéréséhez válassza az **OMS-munkaterület** lehetőséget a tárolómegoldásokat tartalmazó bal oldali menüből. Válassza a **Speciális beállítások** lehetőséget, és jegyezze fel a **MUNKATERÜLET AZONOSÍTÓJÁT** és az **ELSŐDLEGES KULCSOT**.
 
-## <a name="configure-monitoring-agents"></a>Figyelés ügynökök konfigurálása
+## <a name="configure-monitoring-agents"></a>Monitorozási ügynökök konfigurálása
 
-A következő Kubernetes jegyzékfájl a tárolófigyelő ügynökök Kubernetes fürt konfigurálásához használható. Létrehoz egy Kubernetes [DaemonSet][kubernetes-daemonset], amely egyetlen pod fut a fürt minden csomópontján.
+A következő Kubernetes-jegyzékfájl a tárolómonitorozási ügynökök konfigurálásához használható a Kubernetes-fürtön. Létrehoz egy Kubernetes [DaemonSet][kubernetes-daemonset] elemet, amely minden fürtcsomóponton egy podot futtat.
 
-A következő szöveg nevű fájlba mentése `oms-daemonset.yaml`, és cserélje le a helyőrző értékeket az `WSID` és `KEY` a napló Analytics munkaterületének Azonosítóját és kulcsát.
+Mentse az alábbi szöveget egy `oms-daemonset.yaml` nevű fájlban, és a `WSID` és a `KEY` helyőrzőértékeket cserélje le a Log Analytics-munkaterület azonosítójára és kulcsára.
 
 ```YAML
 apiVersion: extensions/v1beta1
@@ -131,15 +131,15 @@ spec:
        path: /var/lib/docker/containers/
 ```
 
-A DaemonSet létrehozása a következő parancsot:
+A DaemonSet létrehozásához használja a következő parancsot:
 
-```azurecli-interactive
+```azurecli
 kubectl create -f oms-daemonset.yaml
 ```
 
-A DaemonSet létrehozott megtekintéséhez futtassa:
+A DaemonSet létrejöttének ellenőrzéséhez futtassa a következőt:
 
-```azurecli-interactive
+```azurecli
 kubectl get daemonset
 ```
 
@@ -150,29 +150,29 @@ NAME       DESIRED   CURRENT   READY     UP-TO-DATE   AVAILABLE   NODE-SELECTOR 
 omsagent   3         3         3         3            3           beta.kubernetes.io/os=linux   8m
 ```
 
-Miután az ügynökök futnak, OMS betöltési és feldolgozni az adatokat több percet vesz igénybe.
+Ha az ügynökök futnak, az OMS számára az adatok betöltése és feldolgozása több percet vesz igénybe.
 
-## <a name="access-monitoring-data"></a>Figyelési adatok hozzáférés
+## <a name="access-monitoring-data"></a>Monitorozási adatok elérése
 
-Az Azure-portálon válassza ki a Naplóelemzési munkaterület sikeresen rögzítve a portál Irányítópultjára. Kattintson a **tároló figyelésére szolgáló megoldás** csempére. Itt található információk a AKS fürt és a tárolók a fürtből.
+Az Azure Portalon válassza ki a Log Analytics-munkaterületet, amely a portál irányítópultján van rögzítve. Kattintson a **Tárolómonitorozási megoldás** csempére. Itt információkat találhat az AKS-fürtről és a fürtön található tárolókról.
 
 ![Irányítópult](./media/container-service-tutorial-kubernetes-monitor/oms-containers-dashboard.png)
 
-Tekintse meg a [Azure Log Analytics-dokumentáció] [ log-analytics-docs] kérdez le, és a figyelési adatok elemzése részletes útmutatást.
+A monitorozási adatok lekérdezésére és elemzésére vonatkozó részletes útmutatásért tekintse meg az [Azure Log Analytics-dokumentációját][log-analytics-docs].
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban az OMS Kubernetes fürt figyeli. Feladatok kezelt tartalmazza:
+Ebben az oktatóanyagban az OMS használatával monitorozta a Kubernetes-fürtöt. A következők feladatokat hajtottuk végre:
 
 > [!div class="checklist"]
-> * A felügyeleti megoldás tároló konfigurálása
-> * A figyelő az ügynökök konfigurálása
-> * Elérni az Azure-portálon figyelési adatait.
+> * A tároló monitorozására szolgáló megoldás konfigurálása
+> * A monitorozási ügynökök konfigurálása
+> * Hozzáférés a monitorozási információkhoz az Azure Portalon
 
-A következő oktatóanyag tájékozódhat az új verzióra frissíti Kubernetes továbblépés.
+Folytassa a következő oktatóanyaggal, amely a Kurbernetes új verzióra történő frissítését ismerteti.
 
 > [!div class="nextstepaction"]
-> [Frissítési Kubernetes][aks-tutorial-upgrade]
+> [Kubernetes frissítése][aks-tutorial-upgrade]
 
 <!-- LINKS - external -->
 [kubernetes-daemonset]: https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/

@@ -15,11 +15,11 @@ ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.date: 12/04/2017
 ms.author: heidist
-ms.openlocfilehash: 098faa777746ac23ce7e88aa01fc727f88d4259c
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 528fd6e82079f37c1e9f907e081a1e918abd241e
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-query-and-filter-an-azure-search-index-in-the-portal"></a>Azure Search-index létrehozása, lekérdezése és szűrése a portálon
 
@@ -43,10 +43,10 @@ Az oktatóanyag azt feltételezi, hogy rendelkezik [Azure-előfizetéssel](https
 Ha nem szeretne azonnal szolgáltatást létesíteni, megtekinthet egy 6 perces bemutatót az oktatóanyag lépéseiről, amely nagyjából az [Azure Search áttekintővideójának](https://channel9.msdn.com/Events/Connect/2016/138) harmadik percénél kezdődik.
 
 ## <a name="find-your-service"></a>A szolgáltatása megkeresése
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. Nyissa meg az Azure Search szolgáltatás irányítópultját. Ha nem rögzítette a szolgáltatás csempéjét az irányítópulton, az alábbi módon találhatja meg azt: 
    
-   * Az ugrósávon kattintson a bal oldali navigációs ablaktábla alján található **További szolgáltatások** lehetőségre.
+   * Az ugrósávon kattintson a bal oldali navigációs panelen található **Minden szolgáltatás** elemre.
    * A keresőmezőbe gépelje a *search* kifejezést az előfizetéséhez elérhető keresési szolgáltatások listájának lekéréséhez. A keresett szolgáltatásnak meg kell jelennie a listában. 
 
 ## <a name="check-for-space"></a>Szabad terület ellenőrzése
@@ -211,7 +211,7 @@ A térinformatikai keresés az [edm.GeographyPoint adattípuson](https://docs.mi
 
 + A térinformatikai keresés hasznos lehet, ha a keresőalkalmazás rendelkezik „keresés a közelben” funkcióval vagy térképes navigációt használ. Ez azonban nem teljes szöveges keresés. Ha a városok vagy országok nevére való keresés felhasználói követelmény, akkor a koordináták mellett adjon meg városok vagy országok nevét tartalmazó mezőket.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 + Módosítsa az imént létrehozott objektumok bármelyikét. Miután egyszer lefuttatta a varázslót, visszatérhet és megtekintheti vagy módosíthatja az egyes összetevőket: az indexet, az indexelőt és az adatforrást. Bizonyos szerkesztések, például a mező adattípusának módosítása nem engedélyezett az indexben, de a legtöbb tulajdonságok és beállítás módosítható.
 

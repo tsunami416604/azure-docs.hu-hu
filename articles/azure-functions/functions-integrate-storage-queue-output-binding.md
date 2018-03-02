@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 09/19/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 07b864c72696fbcfc0119b978e2ab9a51307291a
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.openlocfilehash: a17897dc76b47f3fb7b6eb5076160faf6c5ae9c9
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="add-messages-to-an-azure-storage-queue-using-functions"></a>Üzenetek hozzáadása az Azure Storage üzenetsorába a Functions szolgáltatás használatával
 
@@ -40,7 +40,7 @@ A gyorsútmutató elvégzéséhez:
 
 Ebben a szakaszban a portál felhasználói felületén fogja hozzáadni egy üzenetsor-tároló kimeneti kötését a korábban létrehozott függvényhez. Ez a kötés lehetővé teszi, hogy minimális méretű kód írásával hozhasson létre üzenetsori üzeneteket. Nem kell kódot írnia olyan feladatok elvégzéséhez, mint például egy tárolási kapcsolat megnyitása, egy üzenetsor létrehozása vagy egy üzenetsor-hivatkozás beszerzése. Ezeket a feladatokat az Azure Functions futtatókörnyezete és üzenetsorának kimeneti kötése végzi el Ön helyett.
 
-1. Az Azure Portalon nyissa meg [Az első függvény létrehozása az Azure Portalon](functions-create-first-azure-function.md) útmutatóban létrehozott függvényalkalmazás oldalát. Ehhez válassza a **További szolgáltatások > Függvényalkalmazások** lehetőséget, majd válassza ki a függvényalkalmazást.
+1. Az Azure Portalon nyissa meg [Az első függvény létrehozása az Azure Portalon](functions-create-first-azure-function.md) útmutatóban létrehozott függvényalkalmazás oldalát. Ehhez válassza a **Minden szolgáltatás > Függvényalkalmazások** lehetőséget, majd válassza ki a függvényalkalmazást.
 
 2. Válassza ki a korábbi rövid útmutatóban létrehozott függvényt.
 

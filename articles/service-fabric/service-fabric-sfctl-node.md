@@ -12,15 +12,15 @@ ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 12/22/2017
+ms.date: 02/22/2018
 ms.author: ryanwi
-ms.openlocfilehash: b94c5a7d6c3c74e1dd66559dea288238c35d664c
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 50c7fe38d8bf7b14adf437f85c758e465e7d231d
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 02/27/2018
 ---
-# <a name="sfctl-node"></a>sfctl csomópont
+# <a name="sfctl-node"></a>sfctl-csomópont
 A csomópontok, amely egy fürt része legyen kezelése.
 
 ## <a name="commands"></a>Parancsok
@@ -30,13 +30,13 @@ A csomópontok, amely egy fürt része legyen kezelése.
 |    letiltása       | A Service Fabric fürt csomópontokat a megadott inaktiválási szándék inaktiválása.|
 |    engedélyezése        | A Service Fabric fürtcsomóponton, amely inaktív aktiválása.|
 |    állapot        | Lekérdezi a Service Fabric-csomópont állapotát.|
-|    információ          | A Service Fabric-fürt a csomópontok listájának beolvasása.|
+|    információ          | Egy adott csomópont a információ lekérése a Service Fabric-fürt.|
 |    lista          | A Service Fabric-fürt a csomópontok listájának beolvasása.|
 |    betöltés          | Lekérdezi a terhelés adatokat a Service Fabric-csomópont.|
 |    remove-state  | A Service Fabric értesíti az, hogy a csomópont a megőrzött állapot véglegesen eltávolították vagy elveszett.|
 |    report-health | A Service Fabric-csomópont állapotát jelentést küld.|
 |    Indítsa újra a       | A Service Fabric fürt csomópont újraindul.|
-|    váltás    | Elindítja vagy leállítja egy fürt csomópontja.|
+|    átmenet    | Elindítja vagy leállítja egy fürt csomópontja.|
 |    átmenet-állapot| Lekérdezi egy StartNodeTransition használatának műveletnek az előrehaladását.|
 
 
@@ -50,7 +50,7 @@ A Service Fabric fürt csomópontokat a megadott inaktiválási szándék inakti
 |Argumentum|Leírás|
 | --- | --- |
 | --csomópontnév [szükséges]| A csomópont neve.|
-| --az inaktiválást-leképezés | Ismerteti a leképezés vagy a csomópont inaktiválása okát. A lehetséges értékek követi. -Pause - azt jelzi, hogy a csomópont szüneteltetni kell. Az érték 1. -Újraindítás - azt jelzi, hogy a célt a csomópont újra kell indítani egy rövid időn belül. A 2 érték. -RemoveData - azt jelzi, hogy a szándéka az, a csomópont adatokat távolítja el. Az érték 3. .|
+| --az inaktiválást-leképezés | Ismerteti a leképezés vagy a csomópont inaktiválása okát. |
 | – időtúllépés -t       | Időtúllépését másodpercben.  Alapértelmezett: 60.|
 
 ### <a name="global-arguments"></a>Globális argumentumok
@@ -109,9 +109,9 @@ Lekérdezi a Service Fabric-csomópont állapotát. Az EventsHealthStateFilter h
 | – részletes                | Naplózási növelése. Használatát – a teljes hibakeresési naplók hibakeresési.|
 
 ## <a name="sfctl-node-info"></a>sfctl csomópont adatai
-A Service Fabric-fürt a csomópontok listájának beolvasása.
+Egy adott csomópont a információ lekérése a Service Fabric-fürt.
 
-Egy adott csomópont a információ lekérése a Service Fabric-fürt. A válasz például a, állapot, azonosítója, rendszerállapot, hasznos üzemidő és egyéb a csomópont részletei.
+Lekérdezi az adatokat egy adott csomópont a Service Fabric Cluster.The a válasz például a neve, állapota, azonosítója, rendszerállapot, hasznos üzemidő és egyéb a csomópont részletei.
 
 ### <a name="arguments"></a>Argumentumok
 
@@ -133,14 +133,14 @@ Egy adott csomópont a információ lekérése a Service Fabric-fürt. A válasz
 ## <a name="sfctl-node-list"></a>sfctl csomópontlista
 A Service Fabric-fürt a csomópontok listájának beolvasása.
 
-A csomópontok végpont a Service Fabric-fürt a csomópontok információt adja vissza. A válasz tartalmazza a neve, állapota, azonosítója, rendszerállapot, hasznos üzemidő és más a csomópont részletei.
+A Service Fabric-fürt a csomópontok listájának beolvasása. A válasz tartalmazza a neve, állapota, azonosítót, rendszerállapot, hasznos üzemidő és más a csomópont részletei.
 
 ### <a name="arguments"></a>Argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
 | ---folytatási| A folytatási támogatójogkivonat-paramétere a következő set eredmények beszerzésére szolgál. Az eredményeket a rendszer egyetlen válasz nem férnek el a folytatási kód nem üres érték szerepel az API-t adott válaszokat.      Ha ez az érték átadása a következő API-hívás, hogy az API-t az eredmények következő készletet ad vissza. Ha nincsenek további eredmények, majd az a folytatási kód nem tartalmaz értéket. Ez a paraméter értéke nem lehet URL-kódolású.|
-| --node-status-filter| A csomópontok a NodeStatus alapján szűrését teszi lehetővé. Csak azoknak a csomópontoknak, amely megfelelő a megadott szűrőérték adja vissza. A szűrő értéke a következők egyike lehet. -alapértelmezett – a szűrő értéke megegyezik minden csomópont állapotú megfelelően excepts ismeretlen vagy eltávolítva. – az összes - a szűrő értéke megegyezik az összes csomópontot. -be – ez a szűrő értéke megegyezik a csomópontokra, amelyeket működik. -lefelé – Ez a szűrő értéke megegyezik a csomópontokra, amelyeket nem működnek. -engedélyezi - e érték megegyezik szűrőcsomópontoknak állapotának engedélyezése az engedélyezni kívánt alatt álló. -letiltása folyamatban van - e érték megegyezik szűrőcsomópontoknak, hogy letiltja, állapotú letiltása folyamatban van. -letiltva - az érték megegyezik szűrőcsomópontoknak, amelyek le vannak tiltva. – Ismeretlen – a szűrő értéke megegyezik a csomópont, amelynek állapota ismeretlen. A csomópont ismeretlen állapotú lenne, ha a Service Fabric nincs csomóponton mérvadó információkat. Ez akkor fordulhat elő, ha a rendszer futási időben csomópont értesül. -eltávolította - e érték megegyezik szűrőcsomópontoknak állapotú törlődik. Ezek a csomópontokra, amelyeken a fürt RemoveNodeState API használatával el lesznek távolítva. .      Alapértelmezett: alapértelmezett.|
+| --node-status-filter| A csomópontok a NodeStatus alapján szűrését teszi lehetővé. Csak azoknak a csomópontoknak, amely megfelelő a megadott szűrőérték adja vissza. A szűrő értéke a következők egyike lehet. Alapértelmezett: alapértelmezett.|
 | – időtúllépés -t     | Időtúllépését másodpercben.  Alapértelmezett: 60.|
 
 ### <a name="global-arguments"></a>Globális argumentumok
@@ -156,7 +156,7 @@ A csomópontok végpont a Service Fabric-fürt a csomópontok információt adja
 ## <a name="sfctl-node-load"></a>sfctl csomópont betöltése
 Lekérdezi a terhelés adatokat a Service Fabric-csomópont.
 
-Lekérdezi a terhelés adatokat a Service Fabric-csomópont.
+A Service Fabric csomópont a load vagy a meghatározott kapacitás rendelkező metrikák terhelés adatainak beolvasása.
 
 ### <a name="arguments"></a>Argumentumok
 
@@ -203,7 +203,7 @@ A Service Fabric fürt csomópont újraindul.
 Elindítja vagy leállítja egy fürt csomópontja.
 
 Elindítja vagy leállítja egy fürt csomópontja.  Egy fürtcsomópont egy folyamatot, nem pedig magát az operációs rendszer példány.
-Indítja el a csomópontot, adja át a "Start" NodeTransitionType paramétereként. Csomópont leállítása a NodeTransitionType paraméter át a "Stop". Ez az API - művelet kezdődik, amikor a az API-t adja vissza, a csomópont esetleg nem végzett még tér át. Az azonos OperationID azonosítójú lekérni a műveletnek az előrehaladását a GetNodeTransitionProgress hívja. .
+Indítja el a csomópontot, adja át a "Start" NodeTransitionType paramétereként. Csomópont leállítása a NodeTransitionType paraméter át a "Stop". Ez az API - művelet kezdődik, amikor a az API-t adja vissza, a csomópont esetleg nem végzett még tér át. Az azonos OperationID azonosítójú lekérni a műveletnek az előrehaladását a GetNodeTransitionProgress hívja. 
 
 ### <a name="arguments"></a>Argumentumok
 
@@ -211,7 +211,7 @@ Indítja el a csomópontot, adja át a "Start" NodeTransitionType paramétereké
 | --- | --- |
 | --csomópont-példány-azonosító [szükséges]| A csomópont a célcsomóponton Példányazonosítója. Ez GetNodeInfo API-n keresztül kell meghatározni.|
 | --csomópontnév [szükséges]| A csomópont neve.|
-| – [szükséges] csomópont-átviteli-típusa| Hajtsa végre az áttérés típusát jelöli.                       NodeTransitionType.Start elindít egy leállított csomópont.                       NodeTransitionType.Stop, hogy egy csomópont leáll. -Érvénytelen, mert a fenntartott.  API nem továbbítja. -A kezdési - átmenet mentése leállt csomóponton. -Stop - átmenet egy naprakész csomópont leállt. .|
+| – [szükséges] csomópont-átviteli-típusa| Hajtsa végre az áttérés típusát jelöli.                       NodeTransitionType.Start elindít egy leállított csomópont.                       NodeTransitionType. Állítsa le, hogy egy csomópont leáll. |
 | --Műveletazonosító [szükséges]| Ez az API hívása azonosító egy GUID.  Ez a megfelelő GetProgress API be lett átadva.|
 | --stop-duration-in-seconds [Required]| Az időtartam (másodpercben), a csomópont tartása leállt.  A minimális értéke 600, a maximális hossz 14400. Az idő lejárta után a csomópont automatikusan leállást vissza.|
 | – időtúllépés -t                      | Időtúllépését másodpercben.  Alapértelmezett: 60.|

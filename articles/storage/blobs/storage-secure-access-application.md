@@ -1,45 +1,42 @@
 ---
-title: "Biztonságos hozzáférés a felhőben az Azure Storage alkalmazásadatokról a |} Microsoft Docs"
-description: "Az alkalmazás felhőben tárolt adatainak biztonságos jogkivonatokat, a titkosítás és a HTTPS SAS használatával"
+title: "Biztonságos hozzáférés egy alkalmazás adataihoz a felhőben az Azure Storage segítségével | Microsoft Docs"
+description: "Alkalmazásainak adatait SAS-jogkivonatok, titkosítás és HTTPS protokoll segítségével tudhatja biztonságban a felhőben"
 services: storage
-documentationcenter: 
-author: georgewallace
-manager: timlt
-editor: 
+author: tamram
+manager: jeconnoc
 ms.service: storage
 ms.workload: web
-ms.tgt_pltfrm: na
 ms.devlang: csharp
 ms.topic: tutorial
-ms.date: 09/19/2017
-ms.author: gwallace
+ms.date: 02/20/2018
+ms.author: tamram
 ms.custom: mvc
-ms.openlocfilehash: c43165e230a00b6a4408637fd2290a21800d07b9
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
-ms.translationtype: MT
+ms.openlocfilehash: 7b7a45073d8d518700f866d9701c3ba64e665dc2
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 02/22/2018
 ---
-# <a name="secure-access-to-an-applications-data-in-the-cloud"></a>Biztonságos hozzáférés a felhőben tárolt adatainak egy alkalmazás
+# <a name="secure-access-to-an-applications-data-in-the-cloud"></a>Biztonságos hozzáférés egy alkalmazás adataihoz a felhőben
 
-Ez az oktatóanyag három egy sorozat része. Megismerheti, hogyan biztosíthat biztonságos hozzáférést a tárfiókhoz. 
+Ez az oktatóanyag egy sorozat harmadik része. Megtudhatja, hogyan teheti biztonságossá a tárfiókhoz való hozzáférést. 
 
-A sorozat három része a megismerheti, hogyan:
+A sorozat harmadik részében az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * A miniatűrök eléréséhez használja az SAS-tokenje
+> * A miniatűr képekhez a SAS-tokenek segítségével férhet hozzá
 > * Kiszolgálóoldali titkosítás bekapcsolása
-> * Csak HTTPS átviteli engedélyezése
+> * Csak HTTPS-protokollal történő átvitel engedélyezése
 
-[Az Azure blob storage](../common/storage-introduction.md#blob-storage) alkalmazások fájljainak tárolásához egy robusztus szolgáltatást biztosít. Ez az oktatóanyag bővíti [az előző témakörben] [ previous-tutorial] bemutatja a biztonságos hozzáférés a tárfiók a webalkalmazásból. Ha végzett a képek lesznek titkosítva, és a webalkalmazás a miniatűr képeket elérésére használja a biztonságos SAS-tokenje.
+Az [Azure Blob Storage](../common/storage-introduction.md#blob-storage) stabil szolgáltatást biztosít az alkalmazások fájljainak tárolásához. Az oktatóanyag kibővíti [az előző témakört][previous-tutorial], hogy bemutassa, hogyan teheti biztonságossá a tárfiókhoz való hozzáférést egy webalkalmazásból. Az oktatóanyag elvégzése után a rendszer titkosítja a képeket, és a webalkalmazás biztonságos SAS-jogkivonatok segítségével fér hozzá a miniatűr képekhez.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag teljesítéséhez végrehajtotta az előző tárolási oktatóanyag: [automatizálás átméretezése feltöltött lemezképeket rácshoz esemény][previous-tutorial]. 
+Az oktatóanyag teljesítéséhez el kell végeznie az előző tárolási oktatóanyagot: [Feltöltött képek átméretezésének automatizálása az Event Grid használatával][previous-tutorial]. 
 
-## <a name="set-container-public-access"></a>Tároló nyilvános hozzáférés beállítása
+## <a name="set-container-public-access"></a>A tároló nyilvános hozzáférésének beállítása
 
-Ez az oktatóanyag sorozat része SAS-tokenje használ a miniatűrök eléréséhez. Ebben a lépésben beállíthatja a nyilvános elérhetőségét a _OK_ tárolót, hogy `off`.
+Az oktatóanyag-sorozat ezen részében SAS-jogkivonatokat használunk a miniatűr képekhez való hozzáféréshez. Ebben a lépésben a _thumbs_ tároló nyilvános hozzáférését `off` értékre állítja be.
 
 ```azurecli-interactive 
 blobStorageAccount=<blob_storage_account>
@@ -51,13 +48,13 @@ az storage container set-permission \ --account-name $blobStorageAccount \ --acc
 --public-access off
 ``` 
 
-## <a name="configure-sas-tokens-for-thumbnails"></a>Miniatűrök SAS-tokenje konfigurálása
+## <a name="configure-sas-tokens-for-thumbnails"></a>SAS-jogkivonatok konfigurálása miniatűr képekhez
 
-Az oktatóanyag adatsorozat egyik részében a webes alkalmazás lemezképet rögzíthet a nyilvános tárolók lett megjelenítő. Ez a sorozat része, használhatja az [biztonságos hozzáférési Jogosultságkód (SAS)](../common/storage-dotnet-shared-access-signature-part-1.md#what-is-a-shared-access-signature) -jogkivonat beolvasása a miniatűr képét. SAS-tokenje lehetővé teszik a korlátozott hozzáférést biztosít egy tárolót vagy a blob IP, protokoll, időtartam alapján, illetve jogokat engedélyezett.
+Az oktatóanyag-sorozat első részében a webalkalmazás egy nyilvános tárolóból származó képeket jelenített meg. A sorozat ezen részében a [közös hozzáférésű jogosultságkód (SAS)](../common/storage-dotnet-shared-access-signature-part-1.md#what-is-a-shared-access-signature) jogkivonatai segítségével kérjük le a miniatűr képeket. A SAS-jogkivonatok segítségével korlátozott hozzáférést biztosíthat egy tárolóhoz vagy blobhoz IP-cím, protokoll, időintervallum vagy engedélyezett jogosultságok alapján.
 
-Ebben a példában a forráskódraktárban használja a `sasTokens` fiókirodai, amelynek egy frissített kódminta. Törölje a meglévő GitHub-telepítéssel a [az webalkalmazás központi telepítési forrás törlése](/cli/azure/webapp/deployment/source#az_webapp_deployment_source_delete). Ezután konfigurálja a Githubon központi telepítést, hogy a webes alkalmazás a [az webalkalmazás központi telepítési forrás konfigurációs](/cli/azure/webapp/deployment/source#az_webapp_deployment_source_config) parancsot.  
+A példában a forráskód adattára a `sasTokens` ágat használja, amely egy frissített kódmintát tartalmaz. Törölje a meglévő GitHub-telepítést az [az webapp deployment source delete](/cli/azure/webapp/deployment/source#az_webapp_deployment_source_delete) parancs segítségével. Azután konfigurálja a GitHub-telepítést a webalkalmazásba az [az webapp deployment source config](/cli/azure/webapp/deployment/source#az_webapp_deployment_source_config) parancs segítségével.  
 
-Az alábbi parancs `<web-app>` a webes alkalmazás neve.  
+Az alábbi parancsban a `<web-app>` a webalkalmazás neve.  
 
 ```azurecli-interactive 
 az webapp deployment source delete --name <web-app> --resource-group myResourceGroup
@@ -67,7 +64,7 @@ az webapp deployment source config --name <web_app> \
 --repo-url https://github.com/Azure-Samples/storage-blob-upload-from-webapp
 ``` 
 
-A `sasTokens` a tárház frissítések fiókirodai a `StorageHelper.cs` fájlt. Ez a felváltja a `GetThumbNailUrls` az alábbi példakód a feladatot. A frissített feladat kéri le a Miniatűr URL-címeket úgy, hogy egy [SharedAccessBlobPolicy](/dotnet/api/microsoft.windowsazure.storage.blob.sharedaccessblobpolicy?view=azure-dotnet) a kezdési ideje, a lejárati idő és a SAS-jogkivonat engedélyeinek megadásához. Amennyiben a webes alkalmazás telepített most lekéri a miniatűrök egy SAS-jogkivonat használatával URL-címet. A frissített feladatot az alábbi példában látható:
+Az adattár `sasTokens` ága frissíti a `StorageHelper.cs` fájlt. A `GetThumbNailUrls` feladatot az alábbi példakóddal cseréli ki. A frissített feladat lekéri a miniatűrök URL-címeit úgy, hogy egy [SharedAccessBlobPolicy](/dotnet/api/microsoft.windowsazure.storage.blob.sharedaccessblobpolicy?view=azure-dotnet) szabályzat segítségével kezdési időpontot, lejárati időpontot és engedélyeket ad meg a SAS-jogkivonat számára. Telepítést követően a webalkalmazás mostantól SAS-jogkivonatot használó URL-címmel kéri le a miniatűr képeket. A frissített feladat az alábbi példában látható:
     
 ```csharp
 public static async Task<List<string>> GetThumbNailUrls(AzureStorageConfig _storageConfig)
@@ -133,7 +130,7 @@ public static async Task<List<string>> GetThumbNailUrls(AzureStorageConfig _stor
 }
 ```
 
-A következő osztályokat, tulajdonságokat és módszerek használják az előző feladatban:
+Az előző feladatban használt osztályok, tulajdonságok és metódusok a következők:
 
 |Osztály  |Tulajdonságok| Metódusok  |
 |---------|---------|---------|
@@ -142,23 +139,23 @@ A következő osztályokat, tulajdonságokat és módszerek használják az elő
 |[CloudBlobClient](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobclient?view=azure-dotnet)     | |[GetContainerReference](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobclient.getcontainerreference?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_CloudBlobClient_GetContainerReference_System_String_)         |
 |[CloudBlobContainer](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobcontainer?view=azure-dotnet)     | |[SetPermissionsAsync](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobcontainer.setpermissionsasync?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_CloudBlobContainer_SetPermissionsAsync_Microsoft_WindowsAzure_Storage_Blob_BlobContainerPermissions_) <br> [ListBlobsSegmentedAsync](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobcontainer.listblobssegmentedasync?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_CloudBlobContainer_ListBlobsSegmentedAsync_System_String_System_Boolean_Microsoft_WindowsAzure_Storage_Blob_BlobListingDetails_System_Nullable_System_Int32__Microsoft_WindowsAzure_Storage_Blob_BlobContinuationToken_Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_Microsoft_WindowsAzure_Storage_OperationContext_)       |
 |[BlobContinuationToken](/dotnet/api/microsoft.windowsazure.storage.blob.blobcontinuationtoken?view=azure-dotnet)     |         |
-|[BlobResultSegment](/dotnet/api/microsoft.windowsazure.storage.blob.blobresultsegment?view=azure-dotnet)    | [Eredmények](/dotnet/api/microsoft.windowsazure.storage.blob.blobresultsegment.results?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_BlobResultSegment_Results)         |
+|[BlobResultSegment](/dotnet/api/microsoft.windowsazure.storage.blob.blobresultsegment?view=azure-dotnet)    | [Results](/dotnet/api/microsoft.windowsazure.storage.blob.blobresultsegment.results?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_BlobResultSegment_Results)         |
 |[CloudBlockBlob](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblockblob?view=azure-dotnet)    |         | [GetSharedAccessSignature](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblob.getsharedaccesssignature?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_CloudBlob_GetSharedAccessSignature_Microsoft_WindowsAzure_Storage_Blob_SharedAccessBlobPolicy_)
 |[SharedAccessBlobPolicy](/dotnet/api/microsoft.windowsazure.storage.blob.sharedaccessblobpolicy?view=azure-dotnet)     | [SharedAccessStartTime](/dotnet/api/microsoft.windowsazure.storage.blob.sharedaccessblobpolicy.sharedaccessstarttime?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_SharedAccessBlobPolicy_SharedAccessStartTime)<br>[SharedAccessExpiryTime](/dotnet/api/microsoft.windowsazure.storage.blob.sharedaccessblobpolicy.sharedaccessexpirytime?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_SharedAccessBlobPolicy_SharedAccessExpiryTime)<br>[Engedélyek](/dotnet/api/microsoft.windowsazure.storage.blob.sharedaccessblobpolicy.permissions?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_SharedAccessBlobPolicy_Permissions) |        |
 
 ## <a name="server-side-encryption"></a>Kiszolgálóoldali titkosítás
 
-[Az Azure Storage szolgáltatás titkosítási (SSE)](../common/storage-service-encryption.md) segítségével hatékonyan védheti, valamint az adatok védelme. SSE titkosítja az adatokat nyugalmi, titkosítási, visszafejtési és kulcskezelés kezelése. Összes adat titkosítva van, 256 bites [AES titkosítási](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard), a legerősebb blokk egyik Rejtjelek érhető el.
+Az [Azure Storage Service Encryption (SSE)](../common/storage-service-encryption.md) segít az adatok biztonságos megőrzésében. Az SSE titkosítja az inaktív adatokat, valamint titkosítási, visszafejtési és kulcskezelési feladatokat lát el. Minden adat titkosítása 256 bites [AES-titkosítással](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) történik, amely a jelenleg elérhető egyik legerősebb blokktitkosító.
 
-A következő példa engedélyezi a titkosítást a blobok. Titkosítás engedélyezése előtt létrehozott meglévő blobok nem titkosítottak. A `x-ms-server-encrypted` blob a kérelem fejlécében a blob titkosítási állapotát jeleníti meg.
+Az alábbi példában engedélyezi a blobok titkosítását. A meglévő, a titkosítás engedélyezése előtt létrehozott blobok nincsenek titkosítva. A blobra vonatkozó kérés `x-ms-server-encrypted` fejléce a blob titkosítási állapotát mutatja.
 
 ```azurecli-interactive
 az storage account update --encryption-services blob --name <storage-account-name> --resource-group myResourceGroup
 ```
 
-Most, hogy engedélyezve van, töltse fel az új képet a webalkalmazás.
+Töltsön fel egy új képet a webalkalmazásba most, hogy engedélyezve van a titkosítás.
 
-Használatával `curl` kapcsolóját `-I` csak a fejlécek lekéréséhez helyettesítse a saját értékeit `<storage-account-name>`, `<container>`, és `<blob-name>`.  
+A `curl` és a `-I` kapcsoló együttes használatával kérje le csak a fejléceket, majd helyettesítse be a saját értékeit a következőkhöz: `<storage-account-name>`, `<container>` és `<blob-name>`.  
 
 ```azurecli-interactive
 sasToken=$(az storage blob generate-sas \
@@ -173,7 +170,7 @@ sasToken=$(az storage blob generate-sas \
 curl https://<storage-account-name>.blob.core.windows.net/<container>/<blob-name>?$sasToken -I
 ```
 
-A válaszban, vegye figyelembe a `x-ms-server-encrypted` fejléc megjelenítése `true`. Ezt a fejlécet azonosítja, hogy az SSE most titkosítja az adatokat.
+A válaszban a `x-ms-server-encrypted` fejléc értéke `true`. Ez a fejléc adja meg, hogy az adat mostantól SSE technológiával van titkosítva.
 
 ```
 HTTP/1.1 200 OK
@@ -192,21 +189,21 @@ x-ms-server-encrypted: true
 Date: Mon, 11 Sep 2017 19:27:46 GMT
 ```
 
-## <a name="enable-https-only"></a>Csak a HTTPS engedélyezéséhez
+## <a name="enable-https-only"></a>Csak HTTPS engedélyezése
 
-Győződjön meg arról, hogy a tárfiók érkező vagy oda irányuló kérelmek adatok biztonságos, hogy csak HTTPS kérelmek korlátozhatja. Frissítse a tárolási fiók szükséges protokollt használatával a [az tárolási fiók frissítés](/cli/azure/storage/account#az_storage_account_update) parancsot.
+A tárfiókba érkező és az onnan kimenő adatkérések biztonsága érdekében korlátozhatja a kéréseket a HTTPS-protokoll használatára. Frissítse a tárfiók által kért protokollt az [az storage account update](/cli/azure/storage/account#az_storage_account_update) parancs segítségével.
 
 ```azurecli-interactive
 az storage account update --resource-group myresourcegroup --name <storage-account-name> --https-only true
 ```
 
-Tesztelje a kapcsolatot használja `curl` használatával a `HTTP` protokoll.
+Tesztelje a kapcsolatot a `HTTP` használatával a `curl` protokollal.
 
 ```azurecli-interactive
 curl http://<storage-account-name>.blob.core.windows.net/<container>/<blob-name> -I
 ```
 
-Most, hogy biztonságos átvitele szükség, a következő hibaüzenet jelenik meg:
+Most, hogy biztonságos átvitel szükséges, az alábbi üzenetet kapja:
 
 ```
 HTTP/1.1 400 The account being accessed does not support http.
@@ -214,16 +211,16 @@ HTTP/1.1 400 The account being accessed does not support http.
 
 ## <a name="next-steps"></a>További lépések
 
-A sorozat három része megtanulta, hogyan biztosíthat biztonságos hozzáférést a tárfiókhoz, például hogy miként:
+A sorozat harmadik részében megtanulta, hogy miként teheti biztonságossá a tárfiókhoz való hozzáférést, többek között:
 
 > [!div class="checklist"]
-> * A miniatűrök eléréséhez használja az SAS-tokenje
+> * A miniatűr képekhez a SAS-tokenek segítségével férhet hozzá
 > * Kiszolgálóoldali titkosítás bekapcsolása
-> * Csak HTTPS átviteli engedélyezése
+> * Csak HTTPS-protokollal történő átvitel engedélyezése
 
-Előzetes áttekintésével megismerheti, hogyan figyelheti és a felhőalapú tároló-alkalmazás az adatsorozat négy részét.
+A sorozat negyedik részében a felhőalapú tárolási alkalmazások monitorozásának és hibaelhárításának módjaival ismerkedhet meg.
 
 > [!div class="nextstepaction"]
-> [Figyelésére és hibaelhárítására alkalmazás felhő kiszolgálóalkalmazás-tároló](storage-monitor-troubleshoot-storage-application.md)
+> [Monitorozás és hibaelhárítás alkalmazás felhőalkalmazás-tárolójában](storage-monitor-troubleshoot-storage-application.md)
 
 [previous-tutorial]: ../../event-grid/resize-images-on-storage-blob-upload-event.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json

@@ -1,3 +1,5 @@
+# [A DNS dokumentációja](index.md)
+
 # Áttekintés
 
 ## [Mi az Azure DNS?](dns-overview.md)
@@ -55,7 +57,7 @@
 ## [Python](http://azure-sdk-for-python.readthedocs.io/en/latest/sample_azure-mgmt-dns.html)
 ## [REST](/rest/api/dns/)
 
-# Kapcsolódó
+# Kapcsolódó témakörök
 ## [Application Gateway](/azure/application-gateway/)
 ## [Virtuális hálózat](/azure/virtual-network/)
 ## [Virtuális gép](/azure/virtual-machines/)
@@ -63,7 +65,7 @@
 ## [Traffic Manager](/azure/traffic-manager/)
 ## [Webalkalmazások](/azure/app-service/)
 
-# Erőforrások
+# További források
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=networking)
 ## [Funkciókérések](https://feedback.azure.com/forums/217313-networking/category/77466-domain-name-service-dns-traffic-manager)
 ## [MSDN-fórum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=WAVirtualMachinesVirtualNetwork)

@@ -11,11 +11,11 @@ ms.topic: hero-article
 ms.workload: big-compute
 ms.date: 05/22/2017
 ms.author: shwetams
-ms.openlocfilehash: c48171d8634a651718a0775183414f463c6a468c
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: ce3d6d5aa721f84bda6d8de6eac161deb934a1e5
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="get-started-with-batch-sdk-for-nodejs"></a>Ismerkedés a Node.js-hez készült Batch SDK-val
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 12/18/2017
 >
 >
 
-Ebben a cikkben megismerheti a Batch-ügyfelek kiépítésének alapjait Node.js-ben, az [Azure Batch Node.js SDK](http://azure.github.io/azure-sdk-for-node/azure-batch/latest/) használatával. Részletes, lépésekre osztott módon ismerkedhet meg a Batch-alkalmazásokhoz tartozó forgatókönyvekkel és azok a Node.js-ügyfél használatával történő beállításával.  
+Ebben a cikkben megismerheti a Batch-ügyfelek kiépítésének alapjait Node.js-ben, az [Azure Batch Node.js SDK](/javascript/api/overview/azure/batch) használatával. Részletes, lépésekre osztott módon ismerkedhet meg a Batch-alkalmazásokhoz tartozó forgatókönyvekkel és azok a Node.js-ügyfél használatával történő beállításával.  
 
 ## <a name="prerequisites"></a>Előfeltételek
 Ez a cikk a Node.js és a Linux gyakorlati ismeretét feltételezi. Azt is feltételezi, hogy rendelkezik egy, a Batch- és Storage-szolgáltatások létrehozásához szükséges hozzáférési jogosultságokkal ellátott Azure-fiókkal.
@@ -73,7 +73,7 @@ Ezzel a paranccsal telepítheti az Azure Batch Node SDK legújabb verzióját.
 
 ### <a name="step-2-create-an-azure-batch-account"></a>2. lépés: Azure Batch-fiók létrehozása
 
-A fiókot az [Azure Portalon](batch-account-create-portal.md) vagy a parancssorból ([Powershell](batch-powershell-cmdlets-get-started.md) /[Azure CLI](https://docs.microsoft.com/cli/azure/overview)) hozhatja létre.
+A fiókot az [Azure Portalon](batch-account-create-portal.md) vagy a parancssorból ([Powershell](batch-powershell-cmdlets-get-started.md) /[Azure CLI](/cli/azure/overview)) hozhatja létre.
 
 Az alábbi parancsokkal az Azure CLI-n keresztül hozhat létre egy fiókot.
 
@@ -357,8 +357,8 @@ A kód több tevékenységet ad hozzá a készlethez. Minden egyes tevékenység
 
 A portálon részletesen megtekinthetők a tevékenységek és a feladatok állapotai. Használhatja az Azure Node SDK listázási és lekérési funkcióit is. Részletes információkat a dokumentáció [hivatkozását](http://azure.github.io/azure-sdk-for-node/azure-batch/latest/Job.html) megnyitva talál.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ha korábban nem használta a szolgáltatást, olvassa el [az Azure Batch szolgáltatásainak áttekintését](batch-api-basics.md) tartalmazó cikket.
-- A Batch API megismeréséhez lásd a [Batch – Node.js-referenciát](http://azure.github.io/azure-sdk-for-node/azure-batch/latest/).
+- A Batch API megismeréséhez lásd a [Batch – Node.js-referenciát](/javascript/api/overview/azure/batch).
 

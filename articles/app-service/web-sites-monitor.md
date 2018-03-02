@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: byvinyal
-ms.openlocfilehash: 72694743a9e1f520211d133dcc0d7f473c087f38
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: fdc4329806d416811352d0d4dbc8dd3bce25aa0b
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="how-to-monitor-apps-in-azure-app-service"></a>Útmutató: az Azure App Service-alkalmazások figyelése
 [App Service](http://go.microsoft.com/fwlink/?LinkId=529714) a beépített felügyeleti funkciókat biztosítja a [Azure-portálon](https://portal.azure.com).
@@ -97,7 +97,7 @@ Az egy **alkalmazás**, a rendelkezésre álló adatok gyűjtése le van:
   * HTTP-állapotkódot eredményez kérelmek száma > = 500, de a < 600.
 * **Memória munkakészlete**
   * A MIB-adatbázisból az alkalmazás által használt memória pillanatnyi mérete.
-* **Kérések**
+* **kérések**
   * Az eredményül kapott HTTP-állapotkód függetlenül kérelmek teljes száma.
 
 Az egy **App Service-csomag**, a rendelkezésre álló adatok gyűjtése le van:
@@ -143,7 +143,7 @@ Megtekintheti a különböző állapotának **kvóták** és **metrikák** érin
 **Kvóták** található a beállítások >**kvóták**. A UX lehetővé teszi, hogy tekintse át: (1) a kvóták nevét, (2) a átállítási időközt, (3) a jelenlegi korlátozását és (4) aktuális értékét.
 
 ![][metrics]
-**Metrikák** lehet hozzáférés közvetlenül az erőforrás oldalról. Testre szabhatja a diagram: (1) **kattintson** , és válassza ki (2) **diagram szerkesztése**.
+**Metrikák** elérhető közvetlenül az erőforrás-lapon. Testre szabhatja a diagram: (1) **kattintson** , és válassza ki (2) **diagram szerkesztése**.
 Itt módosíthatja a (3) **időtartománynak**, (4) **diagramtípus**, és (5) **metrikák** megjelenítéséhez.  
 
 Ön talál további információt itt metrikák: [szolgáltatás metrikát](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md).

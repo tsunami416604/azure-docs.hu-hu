@@ -1,10 +1,10 @@
 ---
-title: "SQL Servert futtató, Windows rendszerű virtuális gép létrehozása az Azure Portalon | Microsoft Docs"
+title: "SQL Servert futtató, Windows rendszerű virtuális gép létrehozása a portálon | Microsoft Docs"
 description: "Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre Windows rendszerű SQL Server 2017 virtuális gépet az Azure Portalon."
 services: virtual-machines-windows
 documentationcenter: na
 author: rothja
-manager: jhubbard
+manager: craigg
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
 ms.devlang: na
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: infrastructure-services
 ms.date: 12/12/2017
 ms.author: jroth
-ms.openlocfilehash: 2bf2382094f88c8c57077df10473b5f3a2e4c127
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: e6ae3937a9805dfec8784efaf8370117754a03ad
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 02/21/2018
 ---
-# <a name="create-a-sql-server-2017-windows-virtual-machine-in-the-azure-portal"></a>SQL Server 2017-et futtató, Windows rendszerű virtuális gép létrehozása az Azure Portalon
+# <a name="quickstart-create-a-sql-server-2017-windows-virtual-machine-in-the-azure-portal"></a>Rövid útmutató: SQL Server 2017-et futtató, Windows rendszerű virtuális gép létrehozása az Azure Portalon
 
 > [!div class="op_single_selector"]
 > * [Windows](quickstart-sql-vm-create-portal.md)
@@ -27,13 +27,16 @@ ms.lasthandoff: 12/12/2017
 
 Ez a rövid útmutató részletesen bemutatja egy SQL Servert futtató virtuális gép létrehozását az Azure Portalon.
 
+> [!TIP]
+> Ez a rövid útmutató bemutatja az SQL virtuális gépek gyors kiépítését és az azokhoz való csatlakozást. Az SQL virtuális gépek többi kiépítési lehetőségéről további információért tekintse meg a [Windows SQL Server virtuális gépek Azure Portalon való kiépítésének útmutatóját](virtual-machines-windows-portal-sql-server-provision.md).
+
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 ## <a id="select"></a> SQL Server virtuálisgép-rendszerkép kiválasztása
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) a saját fiókjával.
 
-1. Az Azure Portalon kattintson az **Új** elemre. A portál megnyitja az **Új** ablakot.
+1. Az Azure Portalon kattintson az **Erőforrás létrehozása** gombra. 
 
 1. A keresőmezőbe írja be az **Windows Server 2016-on futó SQL Server 2017 Developer** kifejezést, majd nyomja le az ENTER billentyűt.
 
@@ -137,7 +140,7 @@ A géphez való hozzáférés lehetővé teszi, hogy igény szerint közvetlenü
 
 Ha nem szükséges, hogy az SQL virtuális gép folyamatosan fusson, a szükségtelen költségeket elkerülendő leállíthatja az épp használaton kívüli gépet. Emellett véglegesen törölheti a virtuális géppel társított erőforrásokat, ha törli a társított erőforráscsoportot a portálon. Ez véglegesen törli magát a virtuális gépet is, ezért ezt a parancsot körültekintően alkalmazza. További információk: [Azure-erőforrások kezelése a portálon keresztül](../../../azure-resource-manager/resource-group-portal.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban egy SQL Server 2017-et futtató virtuális gépet hozott létre az Azure Portalon. Az adatok az új SQL Serverre való migrálásával kapcsolatos további információkért lásd a következő cikket.
 

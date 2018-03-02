@@ -2,7 +2,7 @@
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-2. Válassza az **Új** > **Web + mobil** > **Értesítési központ** elemet.
+2. Válassza az **Erőforrás létrehozása** > **Web + mobil** > **Értesítési központ** elemet.
    
       ![Azure Portal – Értesítési központ létrehozása](./media/notification-hubs-portal-create-new-hub/notification-hubs-azure-portal-create.png)
       

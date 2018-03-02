@@ -10,10 +10,10 @@ ms.service: postgresql
 ms.topic: article
 ms.date: 09/26/2017
 ms.openlocfilehash: dbb9f733455fa0492358b24b178c8c637ff08c71
-ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="explaining-compute-units-in-azure-database-for-postgresql"></a>Azure-adatbázis PostgreSQL elmagyarázza számítási egység
 Ez a témakör ismerteti a számítási egységeket, és mi történik, amikor a számítási feladatok eléri a maximális szintet számítási egység fogalma.
@@ -42,5 +42,5 @@ Ha a számítási feladatok eléri a maximális méretre a számítási egység 
 
 Ha a terhelést eléri a kapcsolatok számának felső határai, explicit hibák aktiválódnak. Erőforrások korlátozások további információkért lásd: [PostgreSQL Azure adatbázis korlátozásai](concepts-limits.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A tarifacsomagok további információkért lásd: [Azure-adatbázis a tarifacsomagok PostgreSQL](./concepts-service-tiers.md).

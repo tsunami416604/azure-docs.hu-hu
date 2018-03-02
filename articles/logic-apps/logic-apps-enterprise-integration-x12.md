@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2017
 ms.author: LADocs; padmavc
-ms.openlocfilehash: 7a274ad33b7181d238203290cf63937df5f13bbc
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: c644dd98d468a8c99625c45bad3f06031ff22b4e
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="exchange-x12-messages-for-enterprise-integration-with-logic-apps"></a>A logic apps vállalati integrációs Exchange X12 állapotüzenete
 
@@ -31,37 +31,34 @@ Előtt X12 tudjon cserélni az Azure Logic Apps üzenetek, létre kell hoznia eg
 
 A szükséges elemeket itt található:
 
-* Egy [integrációs fiók](../logic-apps/logic-apps-enterprise-integration-accounts.md) , amely már definiált és az Azure-előfizetéshez társított
+* Egy [integrációs fiók](logic-apps-enterprise-integration-create-integration-account.md) , amely már definiált és az Azure-előfizetéshez társított
 * Legalább két [partnerek](../logic-apps/logic-apps-enterprise-integration-partners.md) , amely az integráció fiókban definiált és a X12 konfigurált azonosítója alapján **üzleti identitások**    
-* Egy szükséges [séma](../logic-apps/logic-apps-enterprise-integration-schemas.md) való feltöltése a [integrációs fiók](../logic-apps/logic-apps-enterprise-integration-accounts.md)
+* Egy szükséges [séma](../logic-apps/logic-apps-enterprise-integration-schemas.md) integrációs fiókjába feltölthető
 
-Miután [integrációs-fiók létrehozása](../logic-apps/logic-apps-enterprise-integration-accounts.md), [adja hozzá a partnerek](logic-apps-enterprise-integration-partners.md), és egy [séma](../logic-apps/logic-apps-enterprise-integration-schemas.md) , hogy a használni kívánt, létrehozhat egy X12 szerződés által a következő lépéseket.
+Miután [integrációs-fiók létrehozása](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md), [adja hozzá a partnerek](logic-apps-enterprise-integration-partners.md), és egy [séma](../logic-apps/logic-apps-enterprise-integration-schemas.md) , hogy a használni kívánt, létrehozhat egy X12 szerződés által a következő lépéseket.
 
 ## <a name="create-an-x12-agreement"></a>Hozzon létre egy X12 megállapodás
 
-1.  Jelentkezzen be az [Azure Portalra](http://portal.azure.com "Azure Portal") A bal oldali menüben válassza ki a **minden szolgáltatás**. 
+1. Jelentkezzen be az [Azure Portalra](http://portal.azure.com "Azure Portal") 
 
-    > [!TIP]
-    > Ha nem lát **minden szolgáltatás**, lehetséges, hogy először bontsa ki a menüben. Jelölje be a becsukott menü felső részén **megjelenítése menü**.
+2. Válassza a fő Azure menü **minden szolgáltatás**. A keresési mezőbe, írja be a "integrációt", és válassza ki **integrációs fiókok**.  
 
-    ![A bal oldali menüben válassza a "Minden szolgáltatások"](./media/logic-apps-enterprise-integration-x12/account-1.png)
+   ![Az integráció fiók](./media/logic-apps-enterprise-integration-x12/account-1.png)
 
-2.  A keresési mezőbe írja be a "integrációt" szűrőként. Az eredmények listájában válassza **integrációs fiókok**.  
+   > [!TIP]
+   > Ha **minden szolgáltatás** nem jelenik meg, lehetséges, hogy először bontsa ki a menüben. Jelölje be a becsukott menü felső részén **megjelenítése menü**.
 
-    ![A "integrációt" szűrheti, válassza ki a "Integrációs fiókok"](./media/logic-apps-enterprise-integration-x12/account-2.png)
+3. A **integrációs fiókok**, válassza ki az integráció fiókra, amelyhez való hozzáadásához.
 
-3. Az a **integrációs fiókok** panelt megnyitó, válassza ki az integráció fiókra, amelyhez való hozzáadásához.
-Ha nem lát minden integrációs fiókok [hozzon létre egyet első](../logic-apps/logic-apps-enterprise-integration-accounts.md "integrációs fiókokkal kapcsolatos összes").
-
-    ![Válassza ki azt az integráció fiókot, a szerződés létrehozásának a helyét](./media/logic-apps-enterprise-integration-x12/account-3.png)
+   ![Válassza ki azt az integráció fiókot, a szerződés létrehozásának a helyét](./media/logic-apps-enterprise-integration-x12/account-3.png)
 
 4. Válassza ki **áttekintése**, majd jelölje be a **megállapodások** csempére. Ha egy megállapodások csempe nem rendelkezik, először vegye fel a csempe. 
 
-    ![Válassza a "Szerződés" csempe](./media/logic-apps-enterprise-integration-as2/agreement-1.png)
+   ![Válassza a "Szerződés" csempe](./media/logic-apps-enterprise-integration-as2/agreement-1.png)
 
-5. Szerződések paneljén válassza **Hozzáadás**.
+5. A **megállapodások**, válassza a **Hozzáadás**.
 
-    ![Válassza a "Hozzáadás"](./media/logic-apps-enterprise-integration-as2/agreement-2.png)     
+   ![Válassza a "Hozzáadás"](./media/logic-apps-enterprise-integration-as2/agreement-2.png)     
 
 6. A **Hozzáadás**, adjon meg egy **neve** a szerződés. A szerződés típusának kiválasztása **X12**. Válassza ki a **fogadó Partner**, **gazdagép identitását**, **Vendég Partner**, és **Vendég identitás** a szerződés. Tulajdonság kapcsolatos további tudnivalókért lásd a táblázat az ebben a lépésben.
 
@@ -263,7 +260,7 @@ Eltérő karakterkészlete, az egyes üzenet egy másik halmaz adhatja meg. Ha e
 | Tulajdonság | Leírás |
 | --- | --- |
 | Ahhoz, hogy használható |A tulajdonságok, válassza ki a X12 karakterkészlet érvényesítésére. A beállítások a Basic, a kibővített és az UTF8. |
-| Séma |A legördülő listából válassza ki a sémát. Minden egyes sorára befejezése után a rendszer automatikusan hozzáadja az új sort. A kijelölt séma válassza ki az szerepel, amely szeretné használni, a következő elválasztó leírások alapján. |
+| Séma |A legördülő listából válassza ki a sémát. Minden egyes sorára befejezése után a rendszer automatikusan hozzáadja az új sort. A kijelölt séma válassza ki az szerepel, amely szeretné használni, az alábbi elválasztó leírása alapján. |
 | Bevitel típusa |Válassza ki a bemeneti típusát a legördülő listából. |
 | Összetevő-elválasztó |Önálló összetett adatok elemek, írja be a következőt egy egyetlen karaktert. |
 | Adatelem-elválasztó |Külön egyszerű adatelemek összetett adatelemek belül, adjon meg egy egyetlen karaktert. |
@@ -291,13 +288,13 @@ Eltérő karakterkészlete, az egyes üzenet egy másik halmaz adhatja meg. Ha e
 
 ## <a name="find-your-created-agreement"></a>A létrehozott megállapodás keresése
 
-1.  A szerződés tulajdonságainak a beállítása után a **Hozzáadás** paneljén válassza **OK** hozta létre a szerződést, és az integráció fiók panelen való visszatéréshez.
+1.  A szerződés tulajdonságainak a beállítása után a **Hozzáadás** lapon, válassza ki **OK** hozta létre a szerződés és integrációs fiókjába való visszatéréshez.
 
     Az újonnan hozzáadott foglalt most megjelenik a **megállapodások** listája.
 
-2.  Az integrációs fiókok áttekintése is megtekintheti a szerződéseket. Az integráció-fiók panelen válassza **áttekintése**, majd jelölje be a **megállapodások** csempére.
+2.  Az integrációs fiókok áttekintése is megtekintheti a szerződéseket. Az integráció felhasználóifiók-menüjéből válassza **áttekintése**, majd jelölje be a **megállapodások** csempére.
 
-    ![Válassza a minden szerződés megtekintéséhez egymás "Szerződés"](./media/logic-apps-enterprise-integration-x12/x12-1-5.png)   
+    ![Válassza a "Szerződés" csempe](./media/logic-apps-enterprise-integration-x12/x12-1-5.png)   
 
 ## <a name="view-the-swagger"></a>A swagger megtekintése
 Tekintse meg a [részletek swagger](/connectors/x12/). 

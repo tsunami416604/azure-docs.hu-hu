@@ -10,6 +10,8 @@
       href: tutorial-assessment-vmware.md
 - name: Alapelvek
   items:
+    - name: Gyűjtői alapelvek
+      href: concepts-collector.md
     - name: Értékelési számítások
       href: concepts-assessment-calculation.md
     - name: Függőségek vizualizációja

@@ -17,12 +17,12 @@
   items:
     - name: 1 – A használat és a költségek áttekintése
       href: tutorial-review-usage.md
-    - name: 2 – Az adathozzáférés szabályozása
-      href: tutorial-user-access.md
-    - name: 3 - Kiadások előrejelzése
+    - name: 2 – Kiadások előrejelzése
       href: tutorial-forecast-spending.md
-    - name: 4 – Költségek kezelése
+    - name: 3 – Költségek kezelése
       href: tutorial-manage-costs.md
+    - name: 4 – Az adathozzáférés szabályozása
+      href: tutorial-user-access.md
 - name: Alapelvek
   items:
     - name: A költségjelentések értelmezése

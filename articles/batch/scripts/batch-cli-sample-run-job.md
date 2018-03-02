@@ -1,64 +1,62 @@
 ---
-title: "Az Azure CLI parancsfájl minta - fut egy feladat kötegelt |} Microsoft Docs"
-description: "Az Azure CLI parancsfájl minta - kötegelt feladat fut"
+title: "Azure CLI-példaszkript – Batch-feladat futtatása | Microsoft Docs"
+description: "Azure CLI-példaszkript – Feladat futtatása a Batch szolgáltatással"
 services: batch
 documentationcenter: 
-author: annatisch
-manager: daryls
+author: dlepow
+manager: jeconnoc
 editor: tysonn
 ms.assetid: 
 ms.service: batch
 ms.devlang: azurecli
-ms.topic: article
+ms.topic: sample
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 05/02/2017
-ms.author: antisch
-ms.openlocfilehash: 73d93622d418359be421e043d0af4e4befc6f4b4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: MT
+ms.date: 01/29/2018
+ms.author: danlep
+ms.openlocfilehash: a782bed39720ac8f4b62b082dd43a2604faf1ca6
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/01/2018
 ---
-# <a name="running-jobs-on-azure-batch-with-azure-cli"></a>Azure Batch Azure parancssori felülettel futó feladatok
+# <a name="cli-example-run-a-job-and-tasks-with-azure-batch"></a>Parancssori felületi példa: Feladatok és tevékenységek futtatása az Azure Batch segítségével
 
-Ezt a parancsfájlt hoz létre egy kötegelt és feladatok sorozata ad hozzá a feladatot. Azt is bemutatja, hogyan kell egy feladat és a feladatok figyelése. Végül azt jeleníti meg a Batch szolgáltatás hatékonyan kapcsolatos feladatokról további információk a feladat lekérdezése.
+Ez a szkript létrehoz egy Batch-feladatot, amelyhez tevékenységeket ad hozzá. Emellett bemutatja a feladat és a hozzá tartozó tevékenységek monitorozásának menetét. 
 
-## <a name="prerequisites"></a>Előfeltételek
+[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-- Telepítse az Azure parancssori felület használatával a utasításokat a [Azure parancssori felület telepítési útmutató](https://docs.microsoft.com/cli/azure/install-azure-cli), ha még nem tette meg.
-- Batch-fiók létrehozása, ha még nem rendelkezik. Lásd: [Batch-fiók létrehozása az Azure parancssori felülettel](https://docs.microsoft.com/azure/batch/scripts/batch-cli-sample-create-account) számára egy fiókot hoz létre parancsfájlt.
-- Ha még nem még meg egy kezdő tevékenység-ről futtatva alkalmazások konfigurálása. Lásd: [hozzáadása az Azure CLI Azure Batch-alkalmazások](https://docs.microsoft.com/azure/batch/scripts/batch-cli-sample-add-application) egy minta parancsfájlt, amelynek alkalmazást hoz létre, és egy alkalmazáscsomag feltöltését az Azure-bA.
-- Konfigurálja a készletben, amelyen a feladat futni fog. Lásd: [kezelése Azure Batch készletek Azure parancssori felülettel](https://docs.microsoft.com/azure/batch/batch-cli-sample-manage-pool) egy parancsfájlt hoz létre a készlet egy felhőalapú szolgáltatás konfigurációja vagy a virtuálisgép-konfiguráció számára.
+Ha a parancssori felület helyi telepítése és használata mellett dönt, a témakörben leírt lépésekhez az Azure CLI 2.0.20-as vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése](/cli/azure/install-azure-cli). 
 
-## <a name="sample-script"></a>Mintaparancsfájl
+## <a name="example-script"></a>Példaszkript
 
-[!code-azurecli[main](../../../cli_scripts/batch/run-job/run-job.sh "Run Job")]
+[!code-azurecli-interactive[main](../../../cli_scripts/batch/run-job/run-job.sh "Run Job")]
 
-## <a name="clean-up-job"></a>Feladat tisztítása
+## <a name="clean-up-deployment"></a>Az üzemelő példány eltávolítása
 
-Miután lefuttatta a fenti minta parancsfájlt, a következő paranccsal távolítsa el a feladatot, és a feladatokat. Vegye figyelembe, hogy a készlet külön törölni kell. Lásd: [kezelése Azure Batch készletek Azure parancssori felülettel](./batch-cli-sample-manage-pool.md) létrehozása és törlése készletek olvashat.
+A következő paranccsal távolítható el az erőforráscsoport és az ahhoz kapcsolódó összes erőforrás.
 
-```azurecli
-az batch job delete --job-id myjob
+```azurecli-interactive
+az group delete --name myResourceGroup
 ```
 
-## <a name="script-explanation"></a>Parancsfájl ismertetése
+## <a name="script-explanation"></a>Szkript ismertetése
 
-A parancsfájl a következő parancsokat egy kötegelt és a feladatok létrehozásához. Minden egyes parancsa a tábla-parancs-specifikus dokumentációjára mutató hivatkozásokat.
+A szkript a következő parancsokat használja. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
 | Parancs | Megjegyzések |
 |---|---|
-| [az batch-fiók bejelentkezési](https://docs.microsoft.com/cli/azure/batch/account#az_batch_account_login) | Batch-fiók hitelesítése.  |
-| [hozza létre az kötegelt](https://docs.microsoft.com/cli/azure/batch/job#az_batch_job_create) | Létrehoz egy kötegelt feladatot.  |
-| [az kötegelt feladat beállítása](https://docs.microsoft.com/cli/azure/batch/job#az_batch_job_set) | A kötegelt frissítések tulajdonságai.  |
-| [az kötegelt feladat megjelenítése](https://docs.microsoft.com/cli/azure/batch/job#az_batch_job_show) | Lekérdezi a megadott kötegelt részleteit.  |
-| [az kötegelt feladat létrehozása](https://docs.microsoft.com/cli/azure/batch/task#az_batch_task_create) | A megadott kötegelt ad hozzá egy feladatot.  |
-| [az kötegelt feladat megjelenítése](https://docs.microsoft.com/cli/azure/batch/task#az_batch_task_show) | Lekérdezi a megadott kötegelt feladat részletes adatait.  |
-| [az kötegelt tevékenység listája](https://docs.microsoft.com/cli/azure/batch/task#az_batch_task_list) | A megadott feladathoz tartozó feladatokat sorolja fel.  |
+| [az group create](/cli/azure/group#az_group_create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
+| [az batch account create](/cli/azure/batch/account#az_batch_account_create) | Létrehoz egy Batch-fiókot. |
+| [az batch account login](/cli/azure/batch/account#az_batch_account_login) | Hitelesíti a megadott Batch-fiókot további parancssori felületi interakcióhoz.  |
+| [az batch pool create](https://docs.microsoft.com/cli/azure/batch/pool#az_batch_pool_create) | Létrehozza számítási csomópontok egy készletét.  |
+| [az batch job create](https://docs.microsoft.com/cli/azure/batch/job#az_batch_job_create) | Létrehoz egy Batch-feladatot.  |
+| [az batch task create](https://docs.microsoft.com/cli/azure/batch/task#az_batch_task_create) | Hozzáad egy tevékenységet a megadott Batch-feladathoz.  |
+| [az batch job set](https://docs.microsoft.com/cli/azure/batch/job#az_batch_job_set) | Frissíti egy Batch-feladat tulajdonságait.  |
+| [az batch job show](https://docs.microsoft.com/cli/azure/batch/job#az_batch_job_show) | Lekérdezi a megadott Batch-feladat részleteit.  |
+| [az batch task show](https://docs.microsoft.com/cli/azure/batch/task#az_batch_task_show) | Lekérdezi a megadott Batch-feladat egy tevékenységének részleteit.  |
+| [az group delete](/cli/azure/group#az_group_delete) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-További információ az Azure parancssori felület: [Azure CLI dokumentáció](https://docs.microsoft.com/cli/azure/overview).
-
-További kötegelt CLI parancsfájl minták megtalálhatók a [Azure Batch CLI dokumentáció](../batch-cli-samples.md).
+Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](/cli/azure/overview).

@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/12/2018
 ms.author: LADocs; estfan
-ms.openlocfilehash: ff9a396f09b675e798e2b2a04fdf0fdb0cdaa09d
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 4360249367632a01e4357c527f595f8416c7cc38
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="check-traffic-with-a-scheduler-based-logic-app"></a>Forgalom ellenőrzése ütemezőn alapuló logikai alkalmazás használatával
 
@@ -53,7 +53,7 @@ Jelentkezzen be az <a href="https://portal.azure.com" target="_blank">Azure Port
 
 ## <a name="create-your-logic-app"></a>A logikai alkalmazás létrehozása
 
-1. Az Azure fő menüjéből válassza az **Új** > **Enterprise Integration** > **Logic App** elemet.
+1. Az Azure fő menüjéből válassza az **Erőforrás létrehozása** > **Enterprise Integration** > **Logic App** elemet.
 
    ![Logikai alkalmazás létrehozása](./media/tutorial-build-scheduled-recurring-logic-app-workflow/create-logic-app.png)
 
@@ -96,7 +96,7 @@ Adja hozzá az ismétlődési [eseményindítót](../logic-apps/logic-apps-overv
    | ------- | ----- | ----------- | 
    | **Intervallum** | 1 | Az ellenőrzések között kivárt intervallumok száma | 
    | **Gyakoriság** | Hét | Az ismétlődéshez használni kívánt időegység | 
-   | **Időzóna** | Nincs | Csak akkor érvényes, ha megadja a kezdési időt. Akkor hasznos, ha nem helyi időzónát ad meg. | 
+   | **Időzóna** | None | Csak akkor érvényes, ha megadja a kezdési időt. Akkor hasznos, ha nem helyi időzónát ad meg. | 
    | **Kezdési idő** | Nincs | Késlelteti az ismétlődést a megadott dátumig és időpontig. További információkért lásd: [Rendszeresen futó feladatok és a munkafolyamatok ütemezése](../connectors/connectors-native-recurrence.md). | 
    | **Ezeken a napokon** | Hétfő, kedd, szerda, csütörtök, péntek | Csak akkor érhető el, ha a **Gyakoriság** értéke „Hét” | 
    | **Ezekben az órákban** | 7, 8, 9 | Csak akkor érhető el, ha a **Gyakoriság** értéke „Hét” vagy „Nap”. Válassza ki, hogy a nap melyik órájában fusson az ismétlődés. Ez a példa 7, 8 és 9 órakor fut. | 
@@ -147,8 +147,8 @@ Most, hogy van eseményindítója, adjon hozzá egy olyan [műveletet](../logic-
    | **Optimalizálás** | timeWithTraffic | Az útvonal optimalizálására szolgáló paraméter (például távolság, utazási idő a jelenlegi forgalom mellett stb.). Válassza ki a következő paramétert: „timeWithTraffic” | 
    | **Távolság mértékegysége** | <*igény-szerint*> | Az útvonalhoz használt távolság-mértékegység. A cikk a következő egységet használja: „Mérföld”  | 
    | **Közlekedési mód** | Vezetés | Az útvonalhoz használt közlekedési mód. Válassza ki a következő módot: „Vezetés” | 
-   | **Tranzit dátuma és időpontja** | Nincs | Csak a tranzit módra vonatkozik | 
-   | **Dátum és időpont típusa** | None | Csak a tranzit módra vonatkozik | 
+   | **Tranzit dátuma és időpontja** | None | Csak a tranzit módra vonatkozik | 
+   | **Dátum és időpont típusa** | Nincs | Csak a tranzit módra vonatkozik | 
    |||| 
 
    További információk ezekről a paraméterekről: [Útvonal kiszámítása](https://msdn.microsoft.com/library/ff701717.aspx).

@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/21/2018
 ms.author: tomfitz
-ms.openlocfilehash: cbc3e2eecf9a17a8d0a0ec59dbb2b653f13ad4e3
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 9952660dc177b542d8477dc85c62d76d16e8c54e
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="virtual-machine-governance-with-azure-powershell"></a>Az Azure PowerShell virtuálisgép-irányítás
 
@@ -55,7 +55,7 @@ A virtuális gép megoldások kezelése, számos három erőforrás-specifikus s
 
 Szerepkörök hozzárendelése az egyéni felhasználók számára, helyett célszerűbb gyakran [Azure Active Directory-csoport létrehozása](../../active-directory/active-directory-groups-create-azure-portal.md) a felhasználók, akik hasonló műveletekre. Adott csoporthoz, majd rendelje hozzá a megfelelő szerepkörhöz. Ez a cikk leegyszerűsítése hoz létre egy Azure Active Directory-csoport tagjai nélkül. Ez a csoport továbbra is hozzárendelése szerepkörhöz hatókörhöz. 
 
-Az alábbi példa létrehoz egy Azure Active Directory csoport nevű *VMDemoContributors* és a levelezési becenév *vmDemoGroup*.
+Az alábbi példa létrehoz egy Azure Active Directory csoport nevű *VMDemoContributors* és a levelezési becenév *vmDemoGroup*. A levelezési becenév szolgálja ki a csoporthoz tartozó aliast.
 
 ```azurepowershell-interactive
 $adgroup = New-AzureADGroup -DisplayName VMDemoContributors `

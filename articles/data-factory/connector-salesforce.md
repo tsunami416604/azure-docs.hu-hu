@@ -11,17 +11,17 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2018
+ms.date: 02/26/2018
 ms.author: jingwang
-ms.openlocfilehash: 4b2561aa338707567b44237e668e9d6d1a01bfea
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 3d48f1f3df7b626ec33b07b6275581821453f626
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="copy-data-from-and-to-salesforce-by-using-azure-data-factory"></a>Adatok másolása a kezdő és a Salesforce Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [1 - általánosan elérhető verzió](v1/data-factory-salesforce-connector.md)
+> * [1. verzió – Általánosan elérhető](v1/data-factory-salesforce-connector.md)
 > * [2. verzió – Előzetes verzió](connector-salesforce.md)
 
 Ez a cikk ismerteti, hogyan használja a másolási tevékenység az Azure Data Factory a kezdő és a Salesforce-adatok másolása. Buildekről nyújtanak a [másolási tevékenység áttekintése](copy-activity-overview.md) cikket, amely megadja a másolási tevékenység általános áttekintést.
@@ -187,6 +187,7 @@ Adatok másolása Salesforce, állítsa be a forrás típusa a másolási tevék
 |:--- |:--- |:--- |
 | type | A type tulajdonságot a másolási tevékenység forrás értékre kell állítani **SalesforceSource**. | Igen |
 | lekérdezés |Az egyéni lekérdezés segítségével adatokat olvasni. Használhatja az SQL-92 lekérdezés vagy [Salesforce objektum Query Language (SOQL)](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm) lekérdezés. Például: `select * from MyTable__c`. | Nem (Ha a "tableName" adatkészlet paraméter van megadva) |
+| readBehavior | Azt jelzi, hogy a meglévő rekordok lekérdezése, vagy nem kérdezhető le minden rekordot, beleértve a törölt néhányat a meglévők közül. Ha nincs megadva, az alapértelmezés lesz a korábbi. <br>Megengedett értékek: **lekérdezés** (alapértelmezett), **queryAll**.  | Nem |
 
 > [!IMPORTANT]
 > A "__c" részét **API-név** bármilyen egyéni objektum szükséges.
@@ -292,8 +293,8 @@ A Salesforce Lomtárból letölthető a törölt rekordok lekérdezéséhez mega
 
 A SOQL vagy SQL-lekérdezés megadása esetén a dátum és idő formátumú különbség figyelmet fordítania. Példa:
 
-* **SOQL minta**:`SELECT Id, Name, BillingCity FROM Account WHERE LastModifiedDate >= @{formatDateTime(pipeline().parameters.StartTime,'yyyy-MM-ddTHH:mm:ssZ')} AND LastModifiedDate < @{formatDateTime(pipeline().parameters.EndTime,'yyyy-MM-ddTHH:mm:ssZ')}`
-* **SQL-minta**:`SELECT * FROM Account WHERE LastModifiedDate >= {ts'@{formatDateTime(pipeline().parameters.StartTime,'yyyy-MM-dd HH:mm:ss')}'} AND LastModifiedDate < {ts'@{formatDateTime(pipeline().parameters.EndTime,'yyyy-MM-dd HH:mm:ss')}'}"`
+* **SOQL minta**: `SELECT Id, Name, BillingCity FROM Account WHERE LastModifiedDate >= @{formatDateTime(pipeline().parameters.StartTime,'yyyy-MM-ddTHH:mm:ssZ')} AND LastModifiedDate < @{formatDateTime(pipeline().parameters.EndTime,'yyyy-MM-ddTHH:mm:ssZ')}`
+* **SQL-minta**: `SELECT * FROM Account WHERE LastModifiedDate >= {ts'@{formatDateTime(pipeline().parameters.StartTime,'yyyy-MM-dd HH:mm:ss')}'} AND LastModifiedDate < {ts'@{formatDateTime(pipeline().parameters.EndTime,'yyyy-MM-dd HH:mm:ss')}'}"`
 
 ## <a name="data-type-mapping-for-salesforce"></a>Adattípus-leképezést Salesforce
 

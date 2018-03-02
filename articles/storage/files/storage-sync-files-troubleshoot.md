@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2017
 ms.author: wgries
-ms.openlocfilehash: 378330149aebc1936846472a522631308fe3eb80
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 506781ac83e75d558badbd3a8842533e314a8dfa
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="troubleshoot-azure-file-sync-preview"></a>Hibaelhárítás az Azure fájlszinkronizálás (előzetes verzió)
 Sync szolgáltatás használatával Azure fájl (előzetes verzió) központosítása fájlmegosztások a szervezet Azure fájlokban, ugyanakkor változatlanul megőrizze a rugalmasság, a teljesítmény és a kompatibilitási egy helyszíni fájlkiszolgáló. Azure fájlszinkronizálás átalakítja a Windows Server az Azure fájlmegosztás gyors gyorsítótárába. Minden protokoll, amely a Windows Server helyileg, az adatok eléréséhez használhatja, többek között a ftps-t, SMB és NFS. Akkor is annyi gyorsítótárak világszerte szükség szerint.
@@ -145,15 +145,14 @@ Ha a szinkronizálás nem sikerül, a kiszolgálón:
 <a id="replica-not-ready"></a>**Szinkronizálás sikertelen, hiba: "0x80c8300f - a replika nem áll készen a szükséges művelet"**  
 A probléma várható, ha egy felhő-végpont létrehozása és az Azure fájlmegosztások használja, amely adatokat tartalmaz. A módosítás észlelési feladat befejezése után (akár 24 órát vehet igénybe) Azure fájlmegosztás futó Szinkronizáló kell kezdődnie, megfelelően működik-e.
 
-<a id="broken-sync-files"></a>**Egyes fájlok nem sikerült szinkronizálni hibaelhárítása**  
-Ha egyes fájloknál szinkronizálása:
-1. Az Eseménynaplóban tekintse át a működési és diagnosztikai eseménynaplóit, alkalmazások és Services\Microsoft\FileSync\Agent alatt.
-2. Ellenőrizze, hogy nincsenek-e leírókkal fájlon.
 
     > [!NOTE]
-    > Azure fájl szinkronizálása a VSS-pillanatképeket megnyitott kezelőkkel rendelkező fájlok rendszeres időközönként vesz igénybe.
+    > Azure File Sync periodically takes VSS snapshots to sync files that have open handles.
 
 Jelenleg nem támogatjuk erőforrás áthelyezése egy másik előfizetés vagy, áthelyezése egy másik Azure ad bérlői.  Ha az előfizetés helyezi át a különböző bérlők, Azure fájlmegosztás tulajdonjog változásáról alapján szolgáltatás elérhetetlenné válik. A bérlő módosul, ha szüksége lesz a kiszolgáló végpontok és a felhőbeli végpont törlése (lásd: a szinkronizálási csoportok kezelése szakasz utasításokat újra használható Azure fájlmegosztás tisztítása) és a szinkronizálási csoport újbóli létrehozása.
+
+<a id="doesnt-have-enough-free-space"></a>**Ez a számítógép nem rendelkezik elegendő szabad helyének hibája**  
+Ha a portál állapotát jeleníti meg a "Számítógép nem rendelkezik elegendő szabad lemezterület" a probléma oka az lehet, hogy kevesebb mint 1 GB szabad lemezterület a köteten marad.  Például ha egy 1,5 GB kötet, szinkronizálási csak tudnak .5GB használatára, ha a probléma kattint bontsa ki a kiszolgáló végpont használja a kötet méretét.
 
 ## <a name="cloud-tiering"></a>Felhőbeli rétegzés 
 Nincsenek hibák, a felhőben két elérési utak rétegezéséhez:

@@ -1,3 +1,5 @@
+# [A Data Lake Analytics dokumentációja](index.md)
+
 # Áttekintés
 ## [A Data Lake Analytics ismertetése](data-lake-analytics-overview.md)
 

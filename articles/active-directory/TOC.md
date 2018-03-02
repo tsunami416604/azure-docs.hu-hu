@@ -1,3 +1,5 @@
+# [Az Azure Active Directory dokumentációja](index.md)
+
 # Áttekintés
 ## [Mi az az Azure Active Directory?](active-directory-whatis.md)
 ## [Tudnivalók az Azure-identitáskezelésről](identity-fundamentals.md)
@@ -248,6 +250,13 @@
 ##### [Konfigurálás](active-directory-application-config-content-map.md)
 ##### [Bejelentkezés](active-directory-application-sign-in-content-map.md)
 ##### [Kiépítés](active-directory-application-provisioning-content-map.md)
+###### [Felhasználó létrehozásának ellenőrzése](application-provisioning-when-will-provisioning-finish-specific-user.md)
+###### [A létrehozás hosszú ideig tart](application-provisioning-when-will-provisioning-finish.md)
+###### [Felhasználók létrehozásának konfigurálása](application-provisioning-config-how-to.md)
+###### [Probléma merül fel a létrehozás konfigurálása során](application-provisioning-config-problem.md)
+###### [Probléma merül fel a rendszergazdai hitelesítő adatok mentése során](application-provisioning-config-problem-storage-limit.md)
+###### [Egyetlen felhasználó létrehozása sem történt meg](application-provisioning-config-problem-no-users-provisioned.md)
+###### [Helytelen felhasználók lettek létrehozva](application-provisioning-config-problem-wrong-users-provisioned.md)
 ##### [Hozzáférés-kezelés](active-directory-application-access-content-map.md)
 ##### [Hozzáférési panel](active-directory-application-access-panel-content-map.md)
 ##### [Alkalmazásproxy](active-directory-application-proxy-content-map.md)
