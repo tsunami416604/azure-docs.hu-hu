@@ -13,14 +13,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/15/2017
+ms.date: 02/27/2018
 ms.author: anhoh
 ms.custom: mvc
-ms.openlocfilehash: 103f4200ea24c34c066a11c7b49676f51f252589
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: 036683698c49b8acb8a83117ac823c90fef0b2b3
+ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="azure-cosmos-db-data-migration-tool"></a>Azure Cosmos DB: Az adatáttelepítési eszköz
 
@@ -34,7 +34,7 @@ Mely API lesz a Azure Cosmos DB használni?
 * **[MongoDB API](mongodb-introduction.md)**  -az adatok áttelepítési eszköz jelenleg nem támogatja a Azure Cosmos DB MongoDB API forrásként és célként. Ha azt szeretné, kívül MongoDB API gyűjtemények az Azure Cosmos Adatbázisba vagy az adatok áttelepítéséhez, tekintse meg a [Azure Cosmos DB: adatok áttelepítése a MongoDB API](mongodb-migrate.md) utasításokat. Az adatok áttelepítési eszköz segítségével exportál adatokat az MongoDB Azure Cosmos DB SQL API gyűjteményekre való használathoz az SQL API-t továbbra is használhatja. 
 * **[Graph API](graph-introduction.md)**  -az adatok áttelepítési eszköz jelenleg nem egy támogatott import eszközt, a Graph API-fiókok. 
 
-Ez az oktatóanyag ismerteti a következő feladatokat:
+Ez az oktatóanyag a következő feladatokat mutatja be:
 
 > [!div class="checklist"]
 > * Az adatáttelepítési eszköz telepítése
@@ -61,7 +61,7 @@ Az adatok áttelepítési eszköz egy nyílt forráskódú megoldás, amellyel k
 Amíg az importálási eszköz tartalmazza a grafikus felhasználói felületen (dtui.exe), azt is is vezeti a parancssorból (dt.exe). Valójában nincs lehetősége van arra beállítása a felhasználói felületen az importálás után a hozzárendelt parancs kimenetét. Táblázatos forrásadatok (pl. az SQL Server vagy CSV-fájlokban) is kell alakítani, úgy, hogy az importálás során hozható létre a is a hierarchikus kapcsolat (aldokumentumok). Adatforrás-beállításokkal kapcsolatos további, a minta parancssor minden forrás, a cél lehetőségekkel, valamint a Megtekintés importálási eredmények importálása olvasási megtartása.
 
 ## <a id="Install"></a>Telepítés
-Az áttelepítési eszköz a forráskód nem elérhető a Githubon található [ebben a tárházban](https://github.com/azure/azure-documentdb-datamigrationtool) és egy lefordított elérhető a [Microsoft Download Center](http://www.microsoft.com/downloads/details.aspx?FamilyID=cda7703a-2774-4c07-adcc-ad02ddc1a44d). Akkor lehet, hogy vagy a megoldás összeállításához vagy egyszerűen letöltéséhez és kibontásához a lefordított az Ön által választott könyvtárra. Ezután futtassa vagy:
+Az áttelepítési eszköz a forráskód nem elérhető a Githubon található [ebben a tárházban](https://github.com/azure/azure-documentdb-datamigrationtool). Töltse le és helyileg a megoldás összeállításához, majd futtassa vagy:
 
 * **Dtui.exe**: az eszköz grafikus felület verziója
 * **DT.exe**: az eszköz parancssori verziója
@@ -77,7 +77,7 @@ Az eszköz telepítését követően a rendszer az idő, importálja az adatokat
 * [CSV-fájlok](#CSV)
 * [Azure Table storage](#AzureTableSource)
 * [Amazon DynamoDB](#DynamoDBSource)
-* [A BLOB](#BlobImport)
+* [Blob](#BlobImport)
 * [Az Azure Cosmos DB gyűjtemények](#SQLSource)
 * [HBase](#HBaseSource)
 * [Az Azure Cosmos DB tömeges importálással](#SQLBulkImport)
@@ -167,7 +167,7 @@ A kapcsolati karakterlánc formátuma a szokásos SQL kapcsolati karakterlánc-f
 
 A beágyazási elválasztó tulajdonság importálása során (alárendelt dokumentumok) hierarchikus kapcsolat létrehozásához használt. Vegye figyelembe a következő SQL-lekérdezést:
 
-*Válassza ki a TÍPUSKONVERZIÓ (BusinessEntityID AS varchar) azonosítója, neve, mint [Address.AddressType] AddressType, AddressLine1 [Address.AddressLine1], [Address.Location.City] városát, StateProvinceName [Address.Location.StateProvinceName], irányítószám szerint [Address.PostalCode], CountryRegionName [Address.CountryRegionName], a Sales.vStoreWithAddresses ahol AddressType = "Main Office"*
+*Válassza ki a TÍPUSKONVERZIÓ (BusinessEntityID AS varchar) azonosítója, neve, mint [Address.AddressType] AddressType, AddressLine1 [Address.AddressLine1], [Address.Location.City] városát, StateProvinceName [Address.Location.StateProvinceName], irányítószám szerint [ Address.PostalCode], [Address.CountryRegionName], a Sales.vStoreWithAddresses CountryRegionName ahol AddressType = "Főiroda"*
 
 Amely a következő (részleges) eredményeket ad vissza:
 
@@ -175,7 +175,7 @@ Amely a következő (részleges) eredményeket ad vissza:
 
 Vegye figyelembe például Address.AddressType és Address.Location.StateProvinceName aliasok. A beágyazási elválasztó megadásával ".", az importálási eszköz cím és Address.Location aldokumentumok létrehozza az importálás során. Íme egy példa az Azure Cosmos Adatbázisba az eredményül kapott dokumentum:
 
-*{"id": "956", "Name": "Egyeztetését értékesítés és a szolgáltatás", "Cím": {"AddressType": "Main Office", "AddressLine1": "#500-75 O'Connor utca", "Hely": {"Város": "Ottawai", "StateProvinceName": "Ontario"}, "Irányítószám": "K4B 1S2", "CountryRegionName": "Kanada"}}*
+*{"id": "956", "Name": "Egyeztetését értékesítés és a szolgáltatás", "Cím": {"AddressType": "Main Office", "AddressLine1": "#500-75 O'Connor utca", "Hely": {"Város": "Ottawai", "StateProvinceName": "Ontario"}, "Irányítószám": "K4B 1S2", "CountryRegionName": " Kanada"}}*
 
 Az alábbiakban néhány importálása az SQL Server parancssori minták:
 
@@ -549,7 +549,7 @@ Ezután válassza naplózását, kritikus, vagy a hibaüzeneteket. Végül, dön
    
     ![Az Azure Cosmos DB JSON képernyőkép exportálási beállítás](./media/import-data/newimport.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban ezt a következő feladatokat:
 
