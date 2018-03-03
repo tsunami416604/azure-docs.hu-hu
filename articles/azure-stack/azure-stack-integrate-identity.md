@@ -2,18 +2,19 @@
 title: "Az Azure verem datacenter integrációs - identitás"
 description: "Útmutató: Azure verem AD FS integrálása az AD FS adatközpont"
 services: azure-stack
-author: mattbriggs
+author: jeffgilb
+manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 02/01/2018
+ms.date: 02/28/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
 keywords: 
-ms.openlocfilehash: 03dc26ba3fcf10b52f6d6b77445de3f6770c4162
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 9e71707f13a14cb4cd0bc9cc7cd7d13dd7bb38e5
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="azure-stack-datacenter-integration---identity"></a>Az Azure verem datacenter integrációs - identitás
 Az identitás-szolgáltatóktól Azure verem Azure Active Directory (Azure AD) vagy Active Directory összevonási szolgáltatások (AD FS) használatával telepítheti. Azure verem központi telepítése előtt meg kell nyitnia a választás. AD FS segítségével központi telepítés is nevezzük Azure verem kapcsolat nélküli módban való telepítése.

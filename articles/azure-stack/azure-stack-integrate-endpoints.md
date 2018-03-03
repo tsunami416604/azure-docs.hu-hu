@@ -3,29 +3,30 @@ title: "Azure datacenter integráció a verem - végpontok közzététele"
 description: "Útmutató: Azure verem végpontok közzététele az adatközpontban található"
 services: azure-stack
 author: jeffgilb
+manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 02/16/2018
+ms.date: 02/28/2018
 ms.author: jeffgilb
 ms.reviewer: wamota
 keywords: 
-ms.openlocfilehash: 8af533147f3cc12f2334a43e7b672c69d0d25802
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 8dec686b9ccf87009a23cedf6023f15b84a0f155
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="azure-stack-datacenter-integration---publish-endpoints"></a>Azure datacenter integráció a verem - végpontok közzététele
-Az Azure verem több virtuális IP-címek (VIP) a infrastruktúra-szerepkörök beállítása. A virtuális IP-címek a nyilvános IP-címkészletből foglal le. A szoftver által meghatározott hálózati rétegben hozzáférés-vezérlési listaként (ACL) minden egyes VIP védi. Hozzáférés-vezérlési listákat a megoldás további támogatnia kell a is használhatók a fizikai kapcsolók (TORs és bmc-n) keresztül. A DNS-bejegyzés jön létre a külső DNS-zónában, a központi telepítéskor megadott végpontok.
+Az Azure verem hoz létre az infrastruktúra-szerepkör virtuális IP-címek (VIP). A virtuális IP-címek a nyilvános IP-címkészletből foglal le. A szoftver által meghatározott hálózati rétegben hozzáférés-vezérlési listaként (ACL) minden egyes VIP védi. Hozzáférés-vezérlési listákat a megoldás további támogatnia kell a is használhatók a fizikai kapcsolók (TORs és bmc-n) keresztül. A DNS-bejegyzés jön létre a külső DNS-zónában, a központi telepítéskor megadott végpontok.
 
 
 A következő architekturális ábrán az látható, a különböző hálózati rétegek és a hozzáférés-vezérlési listák:
 
-![Architekturális diagramja](media/azure-stack-integrate-endpoints/Integrate-Endpoints-01.png)
+![Szerkezeti kép](media/azure-stack-integrate-endpoints/Integrate-Endpoints-01.png)
 
 ## <a name="ports-and-protocols-inbound"></a>Portok és protokollok (bejövő)
 
-A külső hálózatokat közzétételi Azure verem végpontok szükséges infrastruktúra VIP alább láthatók. A listán látható minden egyes végpont, a szükséges portot és protokollt. További erőforrás-szolgáltató, például az erőforrás-szolgáltató SQL és más, a szükséges végpontok ismertetnek az adott erőforrás-szolgáltató telepítési dokumentációját.
+Infrastruktúra készlete virtuális IP-címek szükségesek a külső hálózatokat közzétételi Azure verem végpontok. A *végpont (VIP)* táblázat minden egyes végpont, a szükséges portot és protokollt. Tekintse meg a további erőforrás-szolgáltatók, köztük az SQL erőforrás-szolgáltató igénylő végpontok az adott erőforrás szolgáltató telepítési dokumentációját.
 
 Virtuális IP-címek nem jelennek meg, mert nem Azure közzétételi verem szükséges belső infrastruktúra.
 
@@ -70,4 +71,5 @@ Az Azure verem csak a transzparens proxy kiszolgálókat támogatja. Egy közpon
 
 
 ## <a name="next-steps"></a>További lépések
+
 [Azure verem PKI-követelmények](azure-stack-pki-certs.md)

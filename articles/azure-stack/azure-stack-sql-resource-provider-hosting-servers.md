@@ -3,21 +3,21 @@ title: "Kiszolgálók Azure veremben üzemeltető SQL |} Microsoft Docs"
 description: "SQL-példány az SQL Adapter erőforrás-szolgáltató használatával történő üzembe helyezéséhez hozzáadása"
 services: azure-stack
 documentationCenter: 
-author: JeffGoldner
-manager: bradleyb
+author: mattbriggs
+manager: femila
 editor: 
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/14/2017
-ms.author: JeffGo
-ms.openlocfilehash: da76eaf92bf27195b4f1780511818a7689300f66
-ms.sourcegitcommit: 3fca41d1c978d4b9165666bb2a9a1fe2a13aabb6
+ms.date: 02/28/2018
+ms.author: mabrigg
+ms.openlocfilehash: 0a29ef133a045b2828777050f2d7a204c0add4a8
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="add-hosting-servers-for-use-by-the-sql-adapter"></a>Az SQL-adapter általi használatra üzemeltetési kiszolgáló hozzáadása
 
@@ -65,11 +65,11 @@ Már kiépített kiszolgálót futtató önálló hozzáadásához kövesse az a
 
   A **SQL üzemeltető kiszolgálók** panel, amelyen keresztül csatlakozhat az SQL Server erőforrás-szolgáltató, amely az erőforrás-szolgáltató háttér módon ellenőrizhető, hogy az SQL Server tényleges példányait.
 
-  ![Üzemeltetési kiszolgáló](./media/azure-stack-sql-rp-deploy/sqladapterdashboard.png)
+  ![Hosting Servers](./media/azure-stack-sql-rp-deploy/sqladapterdashboard.png)
 
 3. Az űrlap kitöltése a kapcsolódási adatait. az SQL Server-példány.
 
-  ![Új üzemeltetési kiszolgálóhoz](./media/azure-stack-sql-rp-deploy/sqlrp-newhostingserver.png)
+  ![New Hosting Server](./media/azure-stack-sql-rp-deploy/sqlrp-newhostingserver.png)
 
     Nem kötelezően megadhatja a példány nevét, és egy portszámot megadható, ha a példány nem hozzá van rendelve az alapértelmezett port a 1433-as értéket.
 
@@ -130,7 +130,7 @@ SQL Always On üzemeltetési kiszolgáló hozzáadásához kövesse az alábbi l
 
 4. SQL Always On rendelkezésre állási csoportnak példányok támogatásának engedélyezése jelölőnégyzet.
 
-    ![Üzemeltetési kiszolgáló](./media/azure-stack-sql-rp-deploy/AlwaysOn.PNG)
+    ![Hosting Servers](./media/azure-stack-sql-rp-deploy/AlwaysOn.PNG)
 
 5. Adja hozzá az SQL Always On példány egy másikra. Önálló kiszolgálók nem keverhetők az Always On osztályt a azonos Termékváltozat. Amely az első üzemeltető kiszolgálót hozzáadásakor határozza meg. Ezt követően kombinálhat típusokhoz próbál hibát eredményez.
 
@@ -163,6 +163,6 @@ A beállítások módosításához kattintson **Tallózás** &gt; **felügyeleti
 ![Frissítés a rendszergazdai jelszó](./media/azure-stack-sql-rp-deploy/sqlrp-update-password.PNG)
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Adatbázisok hozzáadása](azure-stack-sql-resource-provider-databases.md)

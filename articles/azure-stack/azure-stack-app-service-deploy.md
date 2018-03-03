@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/29/2018
 ms.author: brenduns
 ms.reviewer: anwestg
-ms.openlocfilehash: d4394463be02d067b8228099acd30a0421ce4be9
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 570ef0b782e073220af8bc7299cc4ad388d47136
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="add-an-app-service-resource-provider-to-azure-stack"></a>Az App Service erőforrás-szolgáltató hozzáadása Azure verem
 *A következőkre vonatkozik: Azure verem integrált rendszerek és az Azure verem szoftverfejlesztői készlet*
@@ -70,7 +70,7 @@ App Service erőforrás-szolgáltató telepítéséhez kövesse az alábbi lép�
 
     ![Az App Service-telepítő](media/azure-stack-app-service-deploy/image03.png)
 
-7. Adja meg a fájlmegosztás adatait, és kattintson a **következő**. A fájlmegosztás címe például kell használnia a teljesen minősített tartománynevét a fájlkiszolgáló \\\appservicefileserver.local.cloudapp.azurestack.external\websites, vagy az IP-címet, például \\\10.0.0.1\websites.
+7. Adja meg a fájlmegosztás adatait, és kattintson a **következő**. A fájlmegosztás címét a teljesen minősített tartománynevét a fájlkiszolgáló, vagy az IP-címet kell használnia. Például \\\appservicefileserver.local.cloudapp.azurestack.external\websites, vagy \\\10.0.0.1\websites.
 
     ![Az App Service-telepítő](media/azure-stack-app-service-deploy/image04.png)
 
@@ -83,7 +83,7 @@ App Service erőforrás-szolgáltató telepítéséhez kövesse az alábbi lép�
 
     ![Az App Service-telepítő](media/azure-stack-app-service-deploy/image05.png)
 
-9. Az egyes a három tanúsítvány fájl jelölőnégyzetéből, kattintson a **Tallózás** , és keresse meg a megfelelő tanúsítványfájlt. Minden tanúsítványt meg kell adnia a jelszót. Ezek a tanúsítványok azok létrehozott a [hozza létre a szükséges tanúsítványokat lépés](azure-stack-app-service-deploy.md#create-the-required-certificates). Kattintson a **következő** után írja be az adatokat.
+9. Az egyes a három tanúsítvány fájl jelölőnégyzetéből, kattintson a **Tallózás** , és keresse meg a megfelelő tanúsítványfájlt. Írja be mindegyik tanúsítvány jelszavát. Ezek a tanúsítványok azok létrehozott a [hozza létre a szükséges tanúsítványokat lépés](azure-stack-app-service-deploy.md#create-the-required-certificates). Kattintson a **következő** után írja be az adatokat.
 
     | Box | Tanúsítvány fájl neve – példa |
     | --- | --- |
@@ -99,7 +99,7 @@ App Service erőforrás-szolgáltató telepítéséhez kövesse az alábbi lép�
 
     ![Az App Service-telepítő](media/azure-stack-app-service-deploy/image07.png)    
 
-11. Tekintse át a szerepkör példánya és a Termékváltozat-beállítások. Az alapértelmezett beállításokat a rendszer feltölti a példány és az egyes szerepkörökhöz ASDK-telepítés minimális Termékváltozat minimális számát. VCPU és memória követelmények összefoglalása tervezze meg a központi telepítés segítségével valósul meg. Miután elvégezte a beállításokat, kattintson a **következő**.
+11. Tekintse át a szerepkör példánya és a Termékváltozat-beállítások. Az alapértelmezett példány és az egyes szerepkörökhöz ASDK-telepítés minimális Termékváltozat minimális számú feltöltéséhez. VCPU és memória követelmények összefoglalása tervezze meg a központi telepítés segítségével valósul meg. Miután elvégezte a beállításokat, kattintson a **következő**.
 
     > [!NOTE]
     > Az üzemi környezetek útmutatása [Azure App Service kiszolgálói szerepkörök Azure verem Kapacitástervezését](azure-stack-app-service-capacity-planning.md).

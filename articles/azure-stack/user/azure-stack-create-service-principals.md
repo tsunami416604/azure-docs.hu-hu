@@ -3,21 +3,21 @@ title: "Hozzon létre egy egyszerű Azure verem |} Microsoft Docs"
 description: "Hozzon létre egy új szolgáltatás egyszerű erőforrásokhoz való hozzáférés kezelésére használható a szerepköralapú hozzáférés-vezérlés az Azure Resource Manager ismerteti."
 services: azure-resource-manager
 documentationcenter: na
-author: heathl17
-manager: byronr
+author: mattbriggs
+manager: femila
 ms.assetid: 7068617b-ac5e-47b3-a1de-a18c918297b6
 ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/25/2017
-ms.author: helaw
-ms.openlocfilehash: 058b01a37e2858801895fd22cf73dd6bd342ca04
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 02/28/2018
+ms.author: mabrigg
+ms.openlocfilehash: 3a22efa4ace8b779f51ca5036b7df536b8c39313
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="provide-applications-access-to-azure-stack"></a>Alkalmazások elérést biztosíthat az Azure-verem
 
@@ -33,7 +33,7 @@ Szolgáltatásnevekről előnyösebb fut az alkalmazás a saját hitelesítő ad
 * Nem kell módosítani az alkalmazás hitelesítő adatokat, ha az Ön feladatkörei módosítása.
 * Tanúsítvány segítségével automatizálhatja a hitelesítést egy felügyelet nélküli parancsfájl végrehajtása közben.  
 
-## <a name="getting-started"></a>Bevezetés
+## <a name="getting-started"></a>Első lépések
 
 Attól függően, hogy hogyan telepített Azure verem akkor először hozzon létre egy szolgáltatás egyszerű.  Ez a dokumentum végigvezeti az egyszerű szolgáltatás létrehozása [Azure Active Directory (Azure AD)](azure-stack-create-service-principals.md#create-service-principal-for-azure-ad) és [Active Directory összevonási Services(AD FS)](azure-stack-create-service-principals.md#create-service-principal-for-ad-fs).  Ha létrehozta az egyszerű szolgáltatás, az AD FS és az Azure Active Directory közös ismertetett lépések használt [engedélyek delegálása](azure-stack-create-service-principals.md#assign-role-to-service-principal) a szerepkörhöz.     
 
@@ -137,6 +137,6 @@ A hatókör szintjén található az előfizetés, erőforráscsoportból vagy e
 
 Most, hogy létrehozni egy egyszerű szolgáltatást és szerepkört rendeltek, használatának megkezdése Ez az alkalmazáson belül Azure verem erőforrások eléréséhez.  
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Felhasználói engedélyek kezelése](azure-stack-manage-permissions.md)

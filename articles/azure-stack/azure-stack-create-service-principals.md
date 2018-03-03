@@ -3,21 +3,21 @@ title: "Hozzon létre egy egyszerű Azure verem |} Microsoft Docs"
 description: "Hozzon létre egy új szolgáltatás egyszerű erőforrásokhoz való hozzáférés kezelésére használható a szerepköralapú hozzáférés-vezérlés az Azure Resource Manager ismerteti."
 services: azure-resource-manager
 documentationcenter: na
-author: heathl17
-manager: byronr
+author: mattbriggs
+manager: femila
 ms.assetid: 7068617b-ac5e-47b3-a1de-a18c918297b6
 ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/17/2017
-ms.author: helaw
-ms.openlocfilehash: 96d5cdfc28759fd516eab5fd97c6cf444af08cf6
-ms.sourcegitcommit: bd0d3ae20773fc87b19dd7f9542f3960211495f9
+ms.date: 02/25/2018
+ms.author: mabrigg
+ms.openlocfilehash: 64c424ee7045ae20b3fba6433166039580387d76
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="provide-applications-access-to-azure-stack"></a>Alkalmazások elérést biztosíthat az Azure-verem
 
@@ -33,7 +33,7 @@ Szolgáltatásnevekről előnyösebb fut az alkalmazás a saját hitelesítő ad
 * Nem kell módosítani az alkalmazás hitelesítő adatokat, ha az Ön feladatkörei módosítása.
 * Tanúsítvány segítségével automatizálhatja a hitelesítést egy felügyelet nélküli parancsfájl végrehajtása közben.  
 
-## <a name="getting-started"></a>Bevezetés
+## <a name="getting-started"></a>Első lépések
 
 Attól függően, hogy hogyan telepített Azure verem akkor először hozzon létre egy szolgáltatás egyszerű.  Ez a dokumentum végigvezeti az egyszerű szolgáltatás létrehozása [Azure Active Directory (Azure AD)](azure-stack-create-service-principals.md#create-service-principal-for-azure-ad) és [Active Directory összevonási Services(AD FS)](azure-stack-create-service-principals.md#create-service-principal-for-ad-fs).  Ha létrehozta az egyszerű szolgáltatás, az AD FS és az Azure Active Directory közös ismertetett lépések használt [engedélyek delegálása](azure-stack-create-service-principals.md#assign-role-to-service-principal) a szerepkörhöz.     
 
@@ -85,9 +85,9 @@ A következő információkra szükség az automation paraméterek bemenetként:
 
 |Paraméter|Leírás|Példa|
 |---------|---------|---------|
-|Név|Az SPN-fiók nevét|MyAPP|
+|Name (Név)|Az SPN-fiók nevét|MyAPP|
 |ClientCertificates|Tanúsítvány objektumokból álló tömb|X509 tanúsítvány|
-|ClientRedirectUris<br>(Választható)|Alkalmazás átirányítási URI|         |
+|ClientRedirectUris<br>(Választható lehetőség)|Alkalmazás átirányítási URI|         |
 
 **Példa**
 
@@ -160,7 +160,7 @@ A hatókör szintjén található az előfizetés, erőforráscsoportból vagy e
 
 Most, hogy létrehozni egy egyszerű szolgáltatást és szerepkört rendeltek, használatának megkezdése Ez az alkalmazáson belül Azure verem erőforrások eléréséhez.  
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Felhasználók hozzáadása az AD FS szolgáltatáshoz](azure-stack-add-users-adfs.md)
 [felhasználói engedélyeinek kezelése](azure-stack-manage-permissions.md)

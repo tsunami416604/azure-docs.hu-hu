@@ -2,16 +2,17 @@
 title: "Bevezetés az Azure-verem hálózatkezelés"
 description: "További tudnivalók az Azure verem hálózatkezelés"
 services: azure-stack
-author: ScottNapolitan
+author: mattbriggs
+manager: femila
 ms.service: azure-stack
 ms.topic: get-started-article
-ms.date: 9/25/2017
-ms.author: victorh
-ms.openlocfilehash: 02406ef396fdaa40cb4d46f32d0b2b00c4ec295e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 02/28/2018
+ms.author: mabrigg
+ms.openlocfilehash: 1d2067653e357ee6dbc9a469f238531c80684f19
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="introduction-to-azure-stack-networking"></a>Bevezetés az Azure-verem hálózatkezelés
 
@@ -28,6 +29,6 @@ Azure verem különböző használható együtt vagy külön-külön hálózati 
 - Üzembe helyezési és konfigurációs eszközök: egy webes portál vagy a platformfüggetlen parancssori eszközök telepítését és konfigurálását a hálózati erőforrásokhoz.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Azure verem hálózati szempontjai](azure-stack-network-differences.md)
 

@@ -3,22 +3,21 @@ title: "Az Azure-készletben DNS |} Microsoft Docs"
 description: DNS az Azure Stackben
 services: azure-stack
 documentationcenter: 
-author: ScottNapolitan
-manager: byronr
-editor: 
+author: mattbriggs
+manager: femila
 ms.assetid: 
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 9/25/2017
-ms.author: victorh
-ms.openlocfilehash: ac93b5eb4228cef373428b7b69932d5993d54fa0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 02/28/2018
+ms.author: mabrigg
+ms.openlocfilehash: 394abe5295af4ed99e48d50b5886ac93af87e875
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="dns-in-azure-stack"></a>DNS az Azure Stackben
 
@@ -68,7 +67,7 @@ Az alábbi információk Azure verem DNS vonatkozik, és kis mértékben eltér 
 
 Az Azure verem DNS támogatja az Azure Resource Manager címkék használatával a DNS-zóna erőforrás. Nem támogatja címkék a DNS-rekordhalmazok, bár a "metadata" alternatív támogatja a DNS-rekord állítja be a következő leírtak szerint.
 
-**Metaadatok**
+**Metadata**
 
 Rekordhalmaz címkék alternatívájaként Azure verem DNS-ben támogatja a ellátása megjegyzésekkel rekordhalmazok "metadata" használatával. Címkék hasonló, metaadatok lehetővé teszi minden rekordhalmaz név-érték párok társítani. Például ez lehet hasznos minden rekordhalmaz céljának rögzítéséhez. Címkék, ellentétben a metaadatok nem használható az Azure számlázásának szűrt megjelenítésére szolgáló, és nem adható meg az Azure Resource Manager-házirend.
 
@@ -84,8 +83,8 @@ Az Azure verem DNS REST API szintjén ETag-EK megadott HTTP-fejlécek használat
 
 | Fejléc | Viselkedés|
 |--------|---------|
-| None   | A PUT mindig sikeres (nincs Etag ellenőrzése)|
-| IF-match| PUT csak akkor sikeres, ha erőforrás létezik, és az Etag megfelel|
+| Nincs   | A PUT mindig sikeres (nincs Etag ellenőrzése)|
+| If-match| PUT csak akkor sikeres, ha erőforrás létezik, és az Etag megfelel|
 | IF-match *| A PUT csak akkor sikeres, ha erőforrás létezik-e|
 | IF-none-match *| PUT csak akkor sikeres, ha az erőforrás nem létezik.|
 
@@ -99,5 +98,5 @@ A következő alapértelmezett korlátokat alkalmazza, ha Azure verem DNS-sel:
 | Egyes zónák rekordhalmazok| 5000|
 | Rekordok száma rekordkészlete| 20|
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [Azure verem IDN bemutatása](azure-stack-understanding-dns.md)

@@ -3,8 +3,8 @@ title: "Azure verem biztonsági vezérlők megértése |} Microsoft Docs"
 description: "Szolgáltatás-rendszergazdaként Azure verem biztonsági vezérlők megismerése"
 services: azure-stack
 documentationcenter: 
-author: Heathl17
-manager: byronr
+author: mattbriggs
+manager: femila
 editor: 
 ms.assetid: cccac19a-e1bf-4e36-8ac8-2228e8487646
 ms.service: azure-stack
@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2017
-ms.author: helaw
-ms.openlocfilehash: 106fcf7b0edc095a52e82d58ad48a73084b65d1e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 02/28/2018
+ms.author: mabrigg
+ms.openlocfilehash: fa0800f03d823769dcd9f01601689122b0d09ec5
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="azure-stack-infrastructure-security-posture"></a>Az Azure verem infrastruktúra biztonságot
 
@@ -31,10 +31,10 @@ Azure-készletben az alábbi két egyszerre használható biztonsági előírás
 ## <a name="security-approach"></a>Biztonsági módszer
 Azure verem úgy lett kialakítva, a biztonságot a modern fenyegetésekkel szembeni védelmét, és a a fő megfelelőségi szabványok követelményeinek teljesítéséhez lett létrehozva. Ennek eredményeképpen a biztonságot az Azure-verem infrastruktúra két oszlopok épül:
 
- - **Tegyük fel megszegésre kerül.** Azt feltételezi, hogy a rendszer már nem tettek kezdve azt összpontosítani *észlelésére, és a behatolás hatásának korlátozása* és a támadások megelőzése érdekében csak közben. 
- - **Alapértelmezés szerint megerősítve.**  Az infrastruktúra futó jól meghatározott hardvereket és szoftvereket, mivel azt *engedélyezése, konfigurálni és biztonsági szolgáltatások ellenőrzése* , amely általában megmaradnak az ügyfél számára megvalósításához.
+ - **Tegyük fel megszegésre kerül.** Azt feltételezi, hogy a rendszer már nem tettek kezdve összpontosítani *észlelésére, és a behatolás hatásának korlátozása* és a támadások megelőzése érdekében csak közben. 
+ - **Alapértelmezés szerint megerősítve.**  Mivel az infrastruktúra futó jól meghatározott hardver- és *engedélyezése, konfigurálni és biztonsági szolgáltatások ellenőrzése* , amely a bal oldali ügyfelek megvalósításához.
 
-Azure verem egy integrált rendszert, a rendszer, mert a biztonságot az Azure-verem infrastruktúra Microsoft határozzák meg.  Csakúgy, mint az Azure bérlők felelősek meghatározása a bérlői terhelések biztonsági állapotát. Ez a dokumentum a biztonságot az Azure-verem infrastruktúra eligazodást Tudásbázis biztosít.
+Azure verem egy integrált rendszert, a rendszer, mert a biztonságot az Azure-verem infrastruktúra Microsoft határozzák meg. Csakúgy, mint az Azure bérlők felelősek meghatározása a bérlői terhelések biztonsági állapotát. Ez a dokumentum a biztonságot az Azure-verem infrastruktúra eligazodást Tudásbázis biztosít.
 
 ## <a name="data-at-rest-encryption"></a>Adatok inaktív adatok titkosítása
 Minden Azure verem az infrastrukturális és bérlői adatok titkosítása a Bitlocker használatával. A titkosítási fizikai elvész vagy ellopják az Azure-verem tárolási összetevőinek véd. 
@@ -54,7 +54,7 @@ A fennmaradó titkos kulcsok, amelyek nincsenek csoport által felügyelt szolg�
 ## <a name="code-integrity"></a>A kódintegritás
 Az Azure verem alkalmazza a legújabb Windows Server 2016 funkciókat. Az egyik legyen a Windows Defender Eszközvédelem, amely alkalmazások engedélyezése biztosít, és biztosítja, hogy csak hitelesített kód futtatása az Azure-verem infrastruktúráján belül. 
 
-Microsoft vagy az OEM partner által aláírt engedélyezett kódot, és megtalálható a Microsoft által megadott házirend megadott engedélyezett szoftverek listáját. Ez azt jelenti csak az Azure-verem infrastruktúra futtatását jóváhagyott szoftverek hajtható végre. Jogosulatlan kódot próbál le vannak tiltva, és naplózási jön létre.
+Microsoft vagy az OEM partner által aláírt engedélyezett kódot, és megtalálható a Microsoft által megadott házirend megadott engedélyezett szoftverek listáját. Ez azt jelenti csak az Azure-verem infrastruktúra futtatását jóváhagyott szoftverek hajtható végre. Jogosulatlan kódot próbál le van tiltva, és naplózási jön létre.
 
 A Eszközvédelem házirend is megakadályozza, hogy külső ügynökeinek és szoftverének az Azure-verem infrastruktúrában működő.
 
@@ -71,7 +71,7 @@ Azure verem felügyeleti szabályozza az egy adott célhoz három belépési pon
 3. Az alacsony szintű műveleteket, például data center integrációs vagy forgatókönyvek támogatása, Azure verem közzétesz egy PowerShell-végpont nevű [kiemelt végpont](azure-stack-privileged-endpoint.md). Ehhez a végponthoz tesz elérhetővé, csak szerepel az engedélyezési listán parancsmagokat, és fokozottan ellenőrzi.
 
 ## <a name="network-controls"></a>Hálózati vezérlő
-Hálózati hozzáférés-vezérlési List(ACL) többrétegű Azure verem infrastruktúra tartalmaz.  A hozzáférés-vezérlési jogosulatlan hozzáférés elkerülése érdekében az infrastruktúra-összetevőihez, és csak az elérési utakat a működéséhez szükséges infrastruktúra kommunikációt korlátozza. 
+Hálózati hozzáférés-vezérlési List(ACL) többrétegű Azure verem infrastruktúra tartalmaz. A hozzáférés-vezérlési jogosulatlan hozzáférés elkerülése érdekében az infrastruktúra-összetevőihez, és csak az elérési utakat a működéséhez szükséges infrastruktúra kommunikációt korlátozza. 
 
 Hálózati hozzáférés-vezérlési listákat a három réteg lépnek érvénybe:
 1.  Állvány kapcsolók tetejéhez

@@ -3,8 +3,8 @@ title: "Windows Azure Pack virtuális gépek Azure-veremből kezelése |} Micros
 description: "Útmutató a Windows Azure Pack (WAP) virtuális gépek kezelése a felhasználói portál Azure-készletben."
 services: azure-stack
 documentationcenter: 
-author: walterov
-manager: byronr
+author: mattbriggs
+manager: femila
 editor: 
 ms.assetid: 213c2792-d404-4b44-8340-235adf3f8f0b
 ms.service: azure-stack
@@ -12,13 +12,13 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2017
-ms.author: walterov
-ms.openlocfilehash: b07a18055d149e20cd605a892063eccecf3df8a4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 02/28/2018
+ms.author: mabrigg
+ms.openlocfilehash: a7e4896c84938b392a86f4d9609c4932324c785d
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="manage-windows-azure-pack-virtual-machines-from-azure-stack"></a>Windows Azure Pack virtuális gépek Azure-veremből kezelése
 
@@ -97,7 +97,7 @@ Több felhőalapú mód engedélyezéséhez futtatnia kell az Add-AzurePackConne
 | -------- | ------------- | ------- |  
 | AzurePackClouds | A Windows Azure Pack csatlakozók URI. Az URI-k meg kell egyeznie a Windows Azure Pack bérlői portálon. | @{CloudName = "AzurePack1"; CloudEndpoint = "https://waptenantportal1:40005"},@{CloudName = "AzurePack2"; CloudEndpoint = "https://waptenantportal2:40005"}<br><br>  (Alapértelmezés szerint a port érték 40005.) |  
 | AzureStackCloudName | A helyi Azure verem felhő képviselő címkéje.| "AzureStack" |
-| DisableMultiCloud | A kapcsoló több felhőalapú mód letiltása.| N/A |
+| DisableMultiCloud | A kapcsoló több felhőalapú mód letiltása.| – |
 | | |
 
 Az Add-AzurePackConnector.ps1 parancsprogrammal a központi telepítést követően azonnal, vagy újabb. A parancsfájl futtatásához a telepítés után azonnal használja az azonos Windows PowerShell-munkamenetben, ahol Azure Alkalmazásveremben üzembe befejeződött. Ellenkező esetben nyithatja meg egy új Windows PowerShell-munkamenetet rendszergazdaként (bejelentkezett a azurestackadmin fiókot).
@@ -163,7 +163,7 @@ Az előzetes kiadás használja a Windows Azure Pack-összekötő csak tesztelé
     ```
      d. Módosítsa a könyvtárat a **c:\inetpub** , és ellenőrizze, hogy telepítve vannak-e a három új helyeket:
 
-       * MgmtSvc-összekötő
+       * MgmtSvc-Connector
 
        * MgmtSvc-ConnectorExtension
 
@@ -183,7 +183,7 @@ Az előzetes kiadás használja a Windows Azure Pack-összekötő csak tesztelé
     | -------- | ------------- | ------- |  
     | TenantPortalFQDN | A Windows Azure Pack bérlői portál teljes Tartományneve. | tenant.contoso.com | 
     | TenantAPIFQDN | A Windows Azure Pack bérlői API teljes Tartománynevét. | tenantapi.contoso.com  |
-    | AzureStackPortalFQDN | Az Azure-verem felhasználói portál teljes Tartományneve. | Portal.local.azurestack.external |
+    | AzureStackPortalFQDN | Az Azure-verem felhasználói portál teljes Tartományneve. | portal.local.azurestack.external |
     | | |
     
      ```powershell
@@ -216,8 +216,8 @@ Az előzetes kiadás használja a Windows Azure Pack-összekötő csak tesztelé
 
     | Paraméter | Leírás | Példa |
     | --------- | ------------| ------- |
-   | SQL Server | A Microsoft.MgmtSvc.Store adatbázist tartalmazó SQL Server neve. Ez a paraméter megadása kötelező. | SQL Server | 
-   | dataFile | A kimeneti fájl, amely korábban az Azure-verem több felhőalapú mód konfigurálása során létrejött. Ez a paraméter megadása kötelező. | AzurePack-06-27-15-50.txt | 
+   | SqlServer | A Microsoft.MgmtSvc.Store adatbázist tartalmazó SQL Server neve. Ez a paraméter megadása kötelező. | SQLServer | 
+   | DataFile | A kimeneti fájl, amely korábban az Azure-verem több felhőalapú mód konfigurálása során létrejött. Ez a paraméter megadása kötelező. | AzurePack-06-27-15-50.txt | 
    | PromptForSqlCredential | Azt jelzi, hogy a parancsfájl kell kérni interaktív módon az SQL Server-példányhoz való kapcsolódáskor használandó SQL-hitelesítés hitelesítő adatokat. A megadott hitelesítő adatokat kell jogosultsága adatbázisokat, sémákat, távolítsa el, és törölje a felhasználói bejelentkezések. Ha nincs megadva, a parancsfájl azt feltételezi, hogy a jelenlegi felhasználói környezet hozzáfér. | Nincs érték szükséges. |
    |  |  |
 
@@ -277,5 +277,5 @@ cd C:\temp\WAPConnector\Setup\Scripts
 4. Ismert problémákkal kapcsolatban lásd: [Microsoft Azure verem hibaelhárítási](azure-stack-troubleshooting.md).
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [A rendszergazda és a felhasználói portálon Azure verem használata](azure-stack-manage-portals.md)
