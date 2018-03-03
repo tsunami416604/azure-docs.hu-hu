@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/08/2017
 ms.author: jeffgilb
-ms.openlocfilehash: 0fa0d00112e731a9f2effd453ba74f5561fca358
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: 2410b1a3c3c2856cceda87ced7e66f140ea0c323
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="azure-stack-deployment-prerequisites"></a>Azure Stack üzembehelyezési előfeltételek
 
@@ -58,7 +58,7 @@ Központi telepítése előtt [Azure verem szoftverfejlesztői készlet](azure-s
 * SAS SSD + SAS HDD
 * NVMe
 
-\*Csatlakoztatott lehetőséggel nem RAID-vezérlők nem ismeri fel az adathordozó típusát. Az ilyen vezérlők a HDD és SSD meghajtókat „nem meghatározottként” jelölik meg. Ebben az esetben az SSD állandó tárolóként lesz használva gyorsítótáreszköz helyett. Ezért a szoftverfejlesztői készlet e SSD meghajtókon is telepíthet.
+\* Csatlakoztatott lehetőséggel nem RAID-vezérlők nem ismeri fel az adathordozó típusát. Az ilyen vezérlők a HDD és SSD meghajtókat „nem meghatározottként” jelölik meg. Ebben az esetben az SSD állandó tárolóként lesz használva gyorsítótáreszköz helyett. Ezért a szoftverfejlesztői készlet e SSD meghajtókon is telepíthet.
 
 **Példa HBA-kra:** LSI 9207-8i, LSI-9300-8i vagy LSI-9265-8i átmenő módban
 
@@ -122,9 +122,9 @@ Győződjön meg róla, hogy egy DHCP-kiszolgáló elérhető azon a hálózaton
 ### <a name="internet-access"></a>Internetelérés
 Azure verem internet-hozzáférésre van szüksége, közvetlenül vagy transzparens proxyra. Azure verem nem támogatja az Internet-hozzáférés engedélyezése a WebProxy beállításait. A gazdagép IP, mind az új IP-cím (amelyet a DHCP vagy statikus IP-cím) a MAS BGPNAT01 rendelt érhessék el az Internet kell lennie. A graph.windows.net és login.microsoftonline.com tartományok 80-as és 443-as portot használják.
 
+K: az ASDK futtassa egy Azure virtuális gépen? V: nem. A mai akkor hivatalosan nem támogatott.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [Az Azure verem development kit központi telepítési csomag](https://azure.microsoft.com/overview/azure-stack/try/?v=try)
 
 [Azure verem szoftverfejlesztői készlet telepítése](azure-stack-run-powershell-script.md)
-

@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/25/2017
+ms.date: 02/28/2018
 ms.author: brenduns
 ms.reviewer: alfredop
-ms.openlocfilehash: 06690d5251954b204b28928b3fe670669000aa7c
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 287bc04660664facbe99d2cb80ae6c92e41c4111
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="delegate-offers-in-azure-stack"></a>Ajánlat delegálása az Azure Stackben
 
@@ -58,7 +58,7 @@ Az alábbi szakaszok azt ismertetik, hogyan arra, hogy egy delegált szolgáltat
 
 ## <a name="set-up-roles"></a>Szerepkörök beállítása
 
-Munkahelyi delegált szolgáltató megtekintéséhez szükséges további Azure AD-fiókok Azure verem operátor fiókja mellett. Ha nem rendelkezik őket, hozza létre a két fiókokat. A fiókok Azure AD-felhasználó is tartozhatnak. Azt nevezzük őket a delegált szolgáltató és a felhasználó.
+Munkahelyi delegált szolgáltató megtekintéséhez szükséges további Azure AD-fiókok Azure verem operátor fiókja mellett. Ha ez a két fiók nem rendelkezik, hozzon létre őket. A fiókok Azure AD-felhasználó is tartozik, és nevezzük a delegált szolgáltató és a felhasználó.
 
 | **Szerepkör** | **Szervezeti jogok** |
 | --- | --- |
@@ -71,9 +71,9 @@ Munkahelyi delegált szolgáltató megtekintéséhez szükséges további Azure 
 2. Az ajánlat, amely lehetővé teszi a felhasználók számára válik delegált szolgáltatók létrehozása:
    
    a.  [Hozzon létre egy csomagot](azure-stack-create-plan.md).
-       A tervnek mindenképp tartalmaznia kell csak az előfizetések szolgáltatást. Ebben a cikkben egy nevű díjcsomagot használjuk **PlanForDelegation**.
+       A tervnek mindenképp tartalmaznia kell csak az előfizetések szolgáltatást. Ebben a cikkben egy nevű díjcsomagot az **PlanForDelegation**.
    
-   b.  [Hozzon létre egy ajánlatot](azure-stack-create-offer.md) a terv alapján. Ebben a cikkben egy ajánlatot nevű használjuk **OfferToDP**.
+   b.  [Hozzon létre egy ajánlatot](azure-stack-create-offer.md) a terv alapján. Ebben a cikkben az ajánlatot nevű **OfferToDP**.
    
    c.  Az ajánlat létrehozásának befejezése után a meghatalmazott-szolgáltató felvétele előfizetőként az ajánlat. Ehhez jelölje **előfizetések** > **Hozzáadás** > **új bérlő előfizetés**.
    
@@ -86,9 +86,9 @@ Munkahelyi delegált szolgáltató megtekintéséhez szükséges további Azure 
 
 ## <a name="azure-stack-operator-creates-the-delegated-offer"></a>Az Azure verem operátor hoz létre delegált vonatkozó ajánlatot
 
-A delegált szolgáltató most hozott létre. A következő lépés, ha a terv és az ajánlat, amely delegálni fog, és amelyek az ügyfelek. Célszerű határozza meg az ajánlat kívánt meg szeretné tekinteni, mert delegált szolgáltató nem fogja tudni megváltoztatni a csomagok és a kvóták tartalmazza az ügyfeleket.
+A delegált szolgáltató most hozott létre. A következő lépés, ha a terv és az ajánlat, amely delegálni fog, és amelyek az ügyfelek. Célszerű határozza meg az ajánlat kívánt a felhasználók látható legyen, a meghatalmazott szolgáltató nem módosíthatók, a csomagok és a kvóták tartalmazza.
 
-1. Azure verem kezelőként [hozzon létre egy csomagot](azure-stack-create-plan.md) és [ajánlatot](azure-stack-create-offer.md) alapján. Ebben a cikkben egy ajánlatot nevű használjuk **DelegatedOffer.**
+1. Azure verem kezelőként [hozzon létre egy csomagot](azure-stack-create-plan.md) és [ajánlatot](azure-stack-create-offer.md) alapján. Ebben a cikkben az ajánlatot nevű **DelegatedOffer.**
    
    > [!NOTE]
    > Ez az ajánlat nem kell lennie a nyilvános. Ha úgy dönt, hogy azt nyilvános. A legtöbb esetben azonban csak a szeretné delegált szolgáltatók számára, hogy jogosult az elérésére. A következő lépésekben ismertetett személyes ajánlat delegálását, követően a delegált szolgáltató hozzáfér.
@@ -104,14 +104,14 @@ A delegált szolgáltató most hozott létre. A következő lépés, ha a terv �
 
 ## <a name="delegated-provider-customizes-the-offer"></a>Delegált szolgáltató testreszabása vonatkozó ajánlatot
 
-Jelentkezzen be a felhasználói portál átadott szolgáltató. Majd hozzon létre egy új ajánlatot a delegált ajánlat sablonként.
+Jelentkezzen be a felhasználói portálra a delegált szolgáltatóként, és ezután hozzon létre egy új ajánlatot a delegált ajánlat egy sablon segítségével.
 
 1. Válassza ki **új** > **bérlői kínál + tervek** > **kínálnak**.
 
     ![Hozzon létre egy új ajánlatot](media/azure-stack-delegated-provider/image5.png)
 
 
-1. Adjon nevet az ajánlatra. Itt választjuk **ResellerOffer**. Válassza ki a használandó kiinduló azt, majd válassza ki a delegált ajánlat **létrehozása**.
+1. Adjon nevet az ajánlatra. Ebben a cikkben az **ResellerOffer**. Válassza ki a használandó kiinduló azt, majd válassza ki a delegált ajánlat **létrehozása**.
    
    ![A név hozzárendelése](media/azure-stack-delegated-provider/image6.png)
 
@@ -122,7 +122,7 @@ Jelentkezzen be a felhasználói portál átadott szolgáltató. Majd hozzon lé
 
 2. Ezekről az ajánlatokról saját portálon keresztül mutatja meg a delegált szolgáltató URL-CÍMÉT. Ezekről az ajánlatokról láthatók csak a delegált portálon keresztül. Található, és módosítsa az URL-címet:
    
-    a.  Válassza ki **Tallózás** > **további szolgáltatások** >  **előfizetések**. Ezután válassza ki a delegált szolgáltató előfizetést. Ebben az esetben van **DPSubscription** > **tulajdonságok**.
+    a.  Válassza ki **Tallózás** > **további szolgáltatások** > **előfizetések**. Ezután válassza ki a delegált szolgáltató előfizetést. Például **DPSubscription** > **tulajdonságok**.
    
     b.  Másolja a portál URL-cím egy külön helyre, például a Jegyzettömböt.
    
@@ -134,7 +134,7 @@ Jelentkezzen be a felhasználói portál átadott szolgáltató. Majd hozzon lé
 1. Egy új böngészőablakot, keresse meg a delegált portál URL-címet, amelyet az előző lépésben mentett. Jelentkezzen be a portálra egy olyan felhasználó nevében. 
    
    >[!NOTE]
-   > A delegált portal használni ezt a lépést. A delegált ajánlatok nem láthatók el más módon.
+   >A delegált ajánlatok nem láthatók, kivéve, ha a meghatalmazott portál. 
 
 2. Az irányítópulton, válassza ki a **egy előfizetés**. Láthatja, hogy csak a delegált ajánlatokat a delegált szolgáltató által létrehozott jelennek meg a felhasználó számára:
 

@@ -3,22 +3,21 @@ title: "Csatlakozás a Tártallózó verem Azure-előfizetéshez"
 description: "Kapcsolódás tárolási Exporer verem Azure-előfizetéshez"
 services: azure-stack
 documentationcenter: 
-author: xiaofmao
-manager: 
-editor: 
+author: mattbriggs
+manager: femila
 ms.assetid: 
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 9/25/2017
+ms.date: 02/28/2018
 ms.author: xiaofmao
-ms.openlocfilehash: c7e6d70148d39fd74f6409a0a239833f8e9f7614
-ms.sourcegitcommit: d03907a25fb7f22bec6a33c9c91b877897e96197
+ms.openlocfilehash: bad4b6b0d829fb68dc25e84406a453071a36476a
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="connect-storage-explorer-to-an-azure-stack-subscription"></a>Csatlakozás a Tártallózó verem Azure-előfizetéshez
 
@@ -87,7 +86,7 @@ Most már készen áll a Tártallózó verem Azure-előfizetéshez csatlakozni.
     * **ARM erőforrás végpontja**: Az Azure Resource Manager-erőforrás végpontjának mintái:
 
         * A felhő üzemeltetője:<br> https://adminmanagement.local.azurestack.external   
-        * Bérlő:<br> https://Management.local.azurestack.external
+        * Bérlő:<br> https://management.local.azurestack.external
  
     * **A bérlői azonosító**: nem kötelező. Ezt az értéket csak akkor kell megadni, ha meg kell határozni a könyvtárat.
 
@@ -98,7 +97,7 @@ Most már készen áll a Tártallózó verem Azure-előfizetéshez csatlakozni.
 
     ![A tárfiókok listája, benne az Azure Stack-előfizetéssel rendelkező fiókokkal][31]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Ismerkedés a Tártallózó (előzetes verzió)](../../vs-azure-tools-storage-manage-with-storage-explorer.md)
 * [Verem az Azure Storage: különbségek és szempontok](azure-stack-acs-differences.md)
 

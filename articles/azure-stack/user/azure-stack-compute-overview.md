@@ -2,16 +2,17 @@
 title: "Bevezetés az Azure-verem virtuális gépek"
 description: "További tudnivalók a verem Azure virtuális gépek"
 services: azure-stack
-author: anjayajodha
+author: mattbriggs
+manager: femila
 ms.service: azure-stack
 ms.topic: get-started-article
-ms.date: 9/25/2017
-ms.author: victorh
-ms.openlocfilehash: c37ad8ac5b6c37261e22237e843dd97e2bbd09f9
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.date: 02/28/2018
+ms.author: mabrigg
+ms.openlocfilehash: 2453f2449124cb4956797e0d9748f1ee3bf0d9ad
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="introduction-to-azure-stack-virtual-machines"></a>Bevezetés az Azure-verem virtuális gépek
 
@@ -87,7 +88,7 @@ A bővítményekkel a következő gyakori feladatok végezhetők el:
 Az erőforrások az alábbi táblázat a virtuális gép által használt, és vagy a virtuális gép létrehozásakor létrehozása léteznie kell.
 
 
-|Erőforrás|Kötelező|Leírás|
+|Erőforrás|Szükséges|Leírás|
 |---------|---------|---------|
 |Erőforráscsoport|Igen|A virtuális gépnek egy erőforráscsoport tagjának kell lennie.|
 |Tárfiók|Igen|A virtuális gépnek szüksége van egy tárfiókra a virtuális merevlemezek tárolásához.|
@@ -105,7 +106,7 @@ A következő táblázat információkat az első lépések a virtuális gép l�
 |Módszer|Cikk|
 |---------|---------|
 |Verem Azure portálon|Windows rendszerű virtuális gép létrehozása a verem Azure portállal<br>[A verem Azure portál használatával Linux virtuális gép létrehozása](azure-stack-quick-linux-portal.md)|
-|Sablonok|Az Azure verem gyorsindítási sablonok találhatók:<br> [https://github.com/Azure/AzureStack-quickstart-Templates](https://github.com/Azure/AzureStack-QuickStart-Templates)|
+|Sablonok|Az Azure verem gyorsindítási sablonok találhatók:<br> [https://github.com/Azure/AzureStack-QuickStart-Templates](https://github.com/Azure/AzureStack-QuickStart-Templates)|
 |PowerShell|[Windows virtuális gép létrehozása Azure-készletben a PowerShell használatával](azure-stack-quick-create-vm-windows-powershell.md)<br>[Linux virtuális gép létrehozása Azure-készletben a PowerShell használatával](azure-stack-quick-create-vm-linux-powershell.md)|
 |parancssori felület|[Windows virtuális gép létrehozása Azure-készletben parancssori felület használatával](azure-stack-quick-create-vm-windows-cli.md)<br>[Linux virtuális gép létrehozása Azure-készletben parancssori felület használatával](azure-stack-quick-create-vm-linux-cli.md)|
 
@@ -128,6 +129,6 @@ A következő táblázat néhány virtuális gép információt kaphat módot.
 
 Használhatja a **Connect** a verem Azure portál csatlakozni a virtuális gép gombjára.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Virtuális gépek Azure-készletben szempontjai](azure-stack-vm-considerations.md)
 

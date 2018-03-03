@@ -8,15 +8,15 @@ editor:
 ms.assetid: 
 ms.service: azure-stack
 ms.topic: article
-ms.date: 9/25/2017
+ms.date: 02/28/2018
 ms.author: brenduns
 ms.reviewer: anajod
 keywords: 
-ms.openlocfilehash: 6e4c1145b8ff4665024b4532cf9cc9ac6a0a24a1
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: cb8ac5435b7a5c6deb9d4571696c79b2ed15c93a
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="make-virtual-machine-scale-sets-available-in-azure-stack"></a>Azure-készletben elérhetővé virtuálisgép-méretezési csoportok
 
@@ -24,7 +24,7 @@ ms.lasthandoff: 02/21/2018
 
 Virtuálisgép-méretezési csoportok az Azure-verem számítási erőforrás. Üzembe helyezését, és az azonos virtuális gépek kezelésére használhatja őket. Az összes virtuális gép-e konfigurálva a, méretezési készlet nem szükséges előre létesítési virtuális gépek. Megkönnyíti a nagy méretű szolgáltatások nagy számítási, a big Data típusú adatok és a tárolóalapú munkafolyamatok célzó.
 
-Ez a témakör végigvezeti Önt az Azure-verem piactéren méretezési csoportok elérhetővé a folyamat. Ez az eljárás befejezése után a felhasználók hozzáadhatnak virtuálisgép-méretezési állítja az előfizetések.
+Ez a cikk végigvezeti a folyamat méretezési csoportok elérhetővé a verem Azure piactéren. Ez az eljárás befejezése után a felhasználók hozzáadhatnak virtuálisgép-méretezési állítja az előfizetések.
 
 Virtuálisgép-méretezési csoportok Azure veremben olyanok, mint az Azure virtuálisgép-méretezési készlet. További információkért tekintse meg a következő videók:
 * [Mark Russinovich talks Azure Scale Sets](https://channel9.msdn.com/Blogs/Regular-IT-Guy/Mark-Russinovich-Talks-Azure-Scale-Sets/) (Mark Russinovich ismerteti az Azure-alapú méretezési csoportokat)
@@ -81,7 +81,7 @@ Távolítsa el a virtuális gépek méretezési készlet gyűjteményelem, és f
     Remove-AzsVMSSGalleryItem
 
 > [!NOTE]
-> A gyűjteményelem azonnal nem lehet eltávolítani. Szükség lehet többször is frissítenie a portál a piactérről eltávolítása előtt.
+> A gyűjteményelem azonnal nem lehet eltávolítani. Éjszakai kell többször is frissítenie a portál az elem látható a piactérről eltávolítása előtt.
 
 
 ## <a name="next-steps"></a>További lépések

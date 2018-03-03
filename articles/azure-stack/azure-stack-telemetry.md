@@ -12,20 +12,20 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 12/08/2017
+ms.date: 03/01/2018
 ms.author: jeffgilb
 ms.reviewer: comartin
-ms.openlocfilehash: 5cd8d4045764b753c5fdd81ade98d69c72709881
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 87f7157f8ab826553d8fb638b9f28d5594f68ed6
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="azure-stack-telemetry"></a>Az Azure verem telemetriai adat
 
 *A következőkre vonatkozik: Azure verem integrált rendszerek és az Azure verem szoftverfejlesztői készlet*
 
-Azure verem rendszeradatok vagy telemetriai adatokat automatikusan feltöltése a Microsoftnak a kapcsolódó felhasználói élményt keresztül. Azure verem telemetriai adatokat a gyűjtött adatokat arra szolgál, elsősorban a felhasználói élmény javítása érdekében a Microsoft csapatai által, valamint a biztonsági, rendszerállapot, minőségét és teljesítményének elemzése.
+Azure verem rendszeradatok vagy telemetriai adatokat automatikusan feltöltése a Microsoftnak a kapcsolódó felhasználói élményt keresztül. Az Azure-verem telemetriai adatokat gyűjtött adatokat elsősorban a felhasználói élmény javítása érdekében a Microsoft csapatai által, valamint a biztonsági, az állapot, a minőségi és a Teljesítményelemzés szolgál.
 
 Azure verem kezelőként telemetriai vállalati központi telepítéshez értékes információkat biztosíthat, és lehetővé teszi az hangot, amelyek segítségével Azure verem alakzat jövőbeli verzióiban.
 
@@ -38,11 +38,11 @@ Azure verem telemetriai alapul, a Windows Server 2016 kapcsolódó felhasználó
 > Telemetriai adatok folyamat támogatásához port 443-as (HTTPS) nyissa meg a hálózaton kell lennie. A kapcsolódó felhasználói élményt és Telemetriai összetevő kapcsolódik a Microsoft adatkezelés szolgáltatás https://v10.vortex-win.data.microsoft.com. A kapcsolódó felhasználói élményt és Telemetriai összetevő is csatlakozik https://settings-win.data.microsoft.com konfigurációs információk letöltése.
 
 ## <a name="privacy-considerations"></a>Adatvédelmi megfontolások
-Az ETW-szolgáltatás telemetriai adatokat továbbítja védett felhőbeli tárhelyén. A telemetriai adatok elérésére minimális jogosultságokkal rendelkező útmutatók elvét. Csak Microsoft személyek érvényes üzleti van szükség a telemetriai adataihoz való hozzáférés engedélyezett. A Microsoft nem osztja meg személyes adatok harmadik felekkel ügyfeleink kivételével az ügyfél belátása vagy leírt korlátozott céljából a [Azure verem adatvédelmi nyilatkozat](http://windows.microsoft.com/windows/preview-privacy-statement). Azt megosztása üzleti jelentések számítógépgyártók és a partnerek, amely tartalmazza az összesített, anonimizált telemetriai adatokat. Egy belső Microsoft team, beleértve az adatokat, adatvédelmi és jogi felügyeleti érdekelt felek adatmegosztás döntések hozhatók.
+Az ETW-szolgáltatás telemetriai adatokat továbbítja védett felhőbeli tárhelyén. A telemetriai adatok elérésére minimális jogosultságokkal rendelkező útmutatók elvét. Csak Microsoft személyek érvényes üzleti van szükség a telemetriai adataihoz való hozzáférés engedélyezett. A Microsoft adatokat nem megosztó személyes felhasználói harmadik felekkel, kivéve az ügyfél belátása vagy leírt korlátozott céljából a [Microsoft adatvédelmi nyilatkozatát](https://privacy.microsoft.com/PrivacyStatement). Az OEM és a partnerek összesített, anonimizált telemetriai adatokat tartalmazó üzleti jelentések megosztott. Egy belső Microsoft team, beleértve az adatokat, adatvédelmi és jogi felügyeleti érdekelt felek adatmegosztás döntések hozhatók.
 
-Microsoft a tartja, és információt minimalizálásáról eljárásokat. Igyekszünk összegyűjteni csak a igazolnia kell, és tároljuk, csak addig, szükség szerint biztosítani a szolgáltatást, vagy elemzés céljából. Hogyan működik az Azure verem rendszer és az Azure-szolgáltatásokkal kapcsolatos információk nagy részét a rendszer törli hat hónapban. Foglalja össze, vagy hosszabb ideig folyamatosan összesített adatokat.
+Microsoft a tartja, és információt minimalizálásáról eljárásokat. Igyekeztünk csak a szükséges adatokat gyűjt, és tároljuk, csak addig, szükség szerint biztosítani a szolgáltatást, vagy elemzés céljából. Hogyan működik az Azure verem rendszer és az Azure-szolgáltatásokkal kapcsolatos információk nagy részét a rendszer törli hat hónapban. Foglalja össze, vagy hosszabb ideig folyamatosan összesített adatokat.
 
-Tudjuk, hogy az adatvédelmi és a felhasználók adatok biztonsága nagyon fontos.  A gondos és átfogó megközelítés átirányította ügyfelek adatainak és az Azure veremnek megfelelő felhasználói adatok védelmét. A rendszergazdák vezérlők szolgáltatásait és adatvédelmi beállítások testreszabásához bármikor rendelkezik. A kötelezettségvállalás átláthatóság és a megbízhatóság az törlése:
+Tudjuk, hogy az adatvédelmi és a felhasználói adatok biztonsága fontos.  A gondos és átfogó megközelítés átirányította ügyfelek adatainak és az Azure veremnek megfelelő felhasználói adatok védelmét. A rendszergazdák vezérlők szolgáltatásait és adatvédelmi beállítások testreszabásához bármikor rendelkezik. A kötelezettségvállalás átláthatóság és a megbízhatóság az törlése:
 - Folyamatban, nyissa meg az ügyfelekkel kapcsolatos adatokat gyűjt a Microsoft típusú.
 - Vállalati ügyfelek azt be vezérlő – azok a saját adatvédelmi beállítások is testre szabhatók.
 - A Microsoft kerülnek ügyfél adatvédelmi és biztonsági előre.
@@ -59,12 +59,12 @@ Telemetria teszi a Microsoft jobban megérteni, hogyan telepítsék központilag
 Például az ügyfél használati tárolók, tárolási és hálózati konfigurációk társított Azure verem szerepkörök. A meghajtó és az egyes a kezelési és figyelési megoldások eszközintelligencia elemzéseket is használjuk.  Segítségével az ügyfelek minőségi eseményadatokat, és a Mentés azáltal, hogy kevesebb támogatási pénz meghívja a Microsoftnak.
 
 ## <a name="manage-telemetry-collection"></a>Telemetria gyűjtemény kezelése
-Nem ajánlott kikapcsolni a telemetriai adatokat a szervezetében, telemetriai adatokat adja meg, hogy a javított termékfunkciók és stabilitását meghajtók adatait. Felismertük, hogy bizonyos esetekben erre akkor lehet szükség. 
+Telemetriai adatokat, hogy a javított termékfunkciók és stabilitását meghajtók biztosít a szervezet telemetria kikapcsolása nem ajánlott. Felismertük, hogy bizonyos esetekben erre akkor lehet szükség. 
 
 Ezek a példányok konfigurálhatók a beállításjegyzékbeli beállítások központi telepítés előtti használatával, vagy a telemetriai adatok végpontok feladás egy vagy több központi telepítéssel a Microsoftnak küldött telemetriai szint.
 
 ### <a name="asdk-set-telemetry-level-in-the-windows-registry"></a>ASDK: telemetriai szint beállítása a Windows beállításjegyzékben
-A Windows Beállításszerkesztőt segítségével manuálisan telemetriai szintjének beállítása a fizikai állomáson Azure verem üzembe helyezése előtt. Ha a kezelési házirendek már létezik, például a csoportházirend felülírja a következő beállításjegyzék-beállítást. 
+A Windows Beállításszerkesztőt segítségével manuálisan telemetriai szintjének beállítása a fizikai állomáson Azure verem üzembe helyezése előtt. Ha a kezelési házirendek már létezik, például a csoportházirend felülírja a beállításjegyzék-beállítást. 
 
 Azure verem a development kit gazdagépen való telepítése előtt a CloudBuilder.vhdx indul, és egy emelt szintű PowerShell-ablakban futtassa az alábbi parancsfájlt:
 
@@ -91,8 +91,8 @@ A telemetriai adatok szintek a következők: összegző és kategorizált be né
  - Processzor és memória attribútumait, például a magok száma, memória mérete 
  - Tárolási attribútumok, például a meghajtók, típusát és méretét.
 - **Telemetria funkció**, többek között a következőket feltöltött események, az eldobott események és az utolsó százaléka feltöltés ideje.
-- **Minőségi kapcsolatos információkért** , amely segít a Microsoft fejlesztése alapszinten megértse, hogyan Azure verem hajt végre. Példa: hardverkonfigurációhoz a kritikus riasztások száma.
-- **Kompatibilitási adatok** mely segít arról, hogy mely erőforrás-szolgáltató a rendszer és a virtuális gép van telepítve, és azonosítja az esetleges kompatibilitási problémák megértése.
+- **Minőségi kapcsolatos információ** , amely segít a Microsoft fejlesztése alapszinten megértse, hogyan Azure verem hajt végre. Példa: hardverkonfigurációhoz a kritikus riasztások száma.
+- ** Kompatibilitási adatok nyújt arról, hogy mely erőforrás-szolgáltató a rendszer és a virtuális gép van telepítve, és azonosítja az esetleges kompatibilitási problémák megértése.
 
 **2 (speciális)**. További betekintést nyerjen, többek között: az operációs rendszer, és más Azure-verem szolgáltatások használatának módját, hogyan működnek, speciális megbízhatósági adatok és az alapszintű és a biztonsági szintek adatait. 
 
@@ -101,7 +101,7 @@ A telemetriai adatok szintek a következők: összegző és kategorizált be né
 > [!NOTE]
 > Az alapértelmezett telemetriai szintű értéke 2 (speciális).
 
-Vegye figyelembe, hogy Windows és az Azure-verem telemetria kikapcsolása is letiltja a SQL telemetriai adatokat. További információt a Windows Server telemetriai következményeit beállítások kérjük, hivatkozás a [Windows Telemetriai tanulmány](https://aka.ms/winservtelemetry). 
+Windows és az Azure-verem telemetria kikapcsolása is letiltja az SQL telemetriai adatokat. A Windows Server telemetriai beállítások következményeit kapcsolatos további információkért tekintse meg a [Windows Telemetriai tanulmány](https://aka.ms/winservtelemetry). 
 
 > [!IMPORTANT]
 > A telemetriai adatok szinteket csak a Microsoft Azure verem összetevők vonatkoznak. A felhőszolgáltatások kívül telemetriai szinten kommunikálhatnak, nem a Microsofttól származó szoftverek összetevők és az Azure verem hardverszállító partnerétől a hardver életciklus állomáson futó szolgáltatások. Az Azure-verem megoldás hardverszolgáltatót telemetriai szabályzatát, és hogyan részt vevő, vagy nem vesznek részt együtt kell működnie. 
@@ -109,8 +109,8 @@ Vegye figyelembe, hogy Windows és az Azure-verem telemetria kikapcsolása is le
 ### <a name="asdk-and-multinode-enable-or-disable-telemetry-after-deployment"></a>ASDK és MultiNode: engedélyezheti vagy tilthatja le a telemetriai adatokat a központi telepítést követően
 
 Letiltása és engedélyezése telemetriai telepítés után, akkor hozzáféréssel kell rendelkeznie a a Rendszerjogosultságú végpont (EGP) amely a virtuális gépeken ERCS hagyja.
-1.  Engedélyezése:`Set-Telemetry -Enable`
-2.  Letiltása:`Set-Telemetry -Disable`
+1.  Engedélyezése: `Set-Telemetry -Enable`
+2.  Letiltása: `Set-Telemetry -Disable`
 
 A paraméter részletei: 
 > . A paraméter engedélyezése – bekapcsolásához válassza a telemetriai adatok feltöltése 
@@ -143,7 +143,7 @@ if($psSession)
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [Az Azure verem development kit központi telepítési csomag](https://azure.microsoft.com/overview/azure-stack/try/?v=try)
 
 [Azure verem szoftverfejlesztői készlet telepítése](azure-stack-run-powershell-script.md)

@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/29/2018
 ms.author: brenduns
 ms.reviewer: anwestg
-ms.openlocfilehash: 310bea356ac611a92d9e3899da5d4fb19c50e94e
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 277ed277b14886d386e097e0ce4bef8add5d4ba1
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="configure-deployment-sources"></a>Központi telepítés forrásának konfigurálása
 *A következőkre vonatkozik: Azure verem integrált rendszerek és az Azure verem szoftverfejlesztői készlet*
@@ -27,7 +27,7 @@ ms.lasthandoff: 02/21/2018
 
 App Service Azure veremben több verziókövetési szolgáltatók igény szerinti telepítését támogatja. Ez a funkció lehetővé teszi, hogy a forrás vezérlő tárolóhelyekkel való közvetlen telepítése alkalmazásfejlesztők. Szeretnék csatlakozni a tárolóhelyekkel App Service konfigurálása, a felhő üzemeltetője először konfigurálnia kell a veremben Azure App Service és a szolgáltatót a verziókövetési közötti integrációt.  
 
-A helyi Git mellett támogatott verziókövetési szolgáltatók a következők:
+Helyi Git mellett a következő verziókövetési szolgáltatók támogatottak:
 
 * GitHub
 * Bitbucket szolgáltatásokhoz
@@ -94,7 +94,8 @@ A feladat végrehajtásához Microsoft Account csatolva a OneDrive-fiókja kell 
 2. A **alkalmazásaimból**, kattintson a **hozzáadhat egy alkalmazást**.
 ![A OneDrive-alkalmazások][10]
 3. Adjon meg egy **neve** adja meg az új alkalmazás regisztrációja **veremben Azure App Service**, és kattintson a **alkalmazás létrehozása**
-4. A következő képernyőn az új alkalmazás tulajdonságok listája. Rekord a **alkalmazásazonosító**. ![Onedrive vállalati verzió alkalmazás tulajdonságai][11]
+4. A következő képernyőn az új alkalmazás tulajdonságok listája. Rekord a **Alkalmazásazonosító**.
+![Onedrive vállalati verzió alkalmazás tulajdonságai][11]
 5. A **alkalmazás titkos kulcsok**, kattintson a **új jelszó létrehozása**. Jegyezze fel a **jön létre új jelszót**. Ez az alkalmazás titkos kulcs és nincs lekérhető kattintás után **OK** ebben a szakaszban.
 6. A **platformok** kattintson **hozzáadása Platform** válassza **webes**.
 7. Adja meg a **átirányítási URI**.  Alapértelmezett Azure verem telepítésében, az átirányítási URI-van az űrlap https://portal.local.azurestack.external/tokenauthorize, ha le egy másik tartományba helyettesítő azurestack.local a tartomány ![onedrive vállalati verzió alkalmazás - hozzáadása Webes platform jöhet létre][12]
@@ -106,7 +107,7 @@ A feladat végrehajtásához Microsoft Account csatolva a OneDrive-fiókja kell 
 10.  Egy új böngészőlapon vagy ablakban jelentkezzen be az Azure verem felügyeleti portál (https://adminportal.local.azurestack.external) a szolgáltatás-rendszergazdaként.
 11.  Keresse meg a **erőforrás-szolgáltató** válassza ki a **App Service erőforrás szolgáltató Admin**.
 12. Kattintson a **forrás vezérlőkonfiguráció**.
-13. Másolja és illessze be a **alkalmazásazonosító** azokat a **ügyfél-azonosító** beviteli mezőt és **jelszó** be a **Ügyfélkulcs** beviteli mezőt a onedrive vállalati verzióhoz.
+13. Másolja és illessze be a **Alkalmazásazonosító** azokat a **ügyfél-azonosító** beviteli mezőt és **jelszó** be a **Ügyfélkulcs** beviteli mezőt a onedrive vállalati verzióhoz.
 14. Kattintson a **Save** (Mentés) gombra.
 
 ## <a name="configure-dropbox"></a>Konfigurálja a dropbox-bA
