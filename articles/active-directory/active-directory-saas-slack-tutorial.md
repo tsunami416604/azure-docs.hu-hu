@@ -4,20 +4,20 @@ description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Az
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: femila
 ms.assetid: ffc5e73f-6c38-4bbb-876a-a7dd269d4e1c
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/08/2017
+ms.date: 02/28/2018
 ms.author: jeedes
-ms.openlocfilehash: 67d95b48520cd990428447dc775d9af22528c0f0
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: cd0cecde7f98e73911e7dec734cffeeee6f09a72
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-slack"></a>Oktatóanyag: Azure Active Directoryval integrált Slackhez
 
@@ -110,9 +110,9 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-slack-tutorial/tutorial_slack_url.png)
 
-    a. Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe:`https://<companyname>.slack.com`
+    a. Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe: `https://<companyname>.slack.com`
 
-    b. Az a **azonosító** szövegmező, írja be az URL-cím:`https://slack.com`
+    b. Az a **azonosító** szövegmező, írja be az URL-cím: `https://slack.com`
 
     > [!NOTE] 
     > Az érték nincs valós. Frissítse az értéket a tényleges bejelentkezési az URL-címmel rendelkezik. Ügyfél [Slack támogatási csoport](https://slack.com/help/contact) a érték
@@ -121,14 +121,17 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
     
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-slack-tutorial/tutorial_slack_attribute.png)
 
+    > [!NOTE] 
+    > Ha a felhasználó rendelkezik-e **e-mail cím** hozzárendelve az Office365 használ, akkor csak akkor lesz kitöltve, ellenkező esetben a **e-mail cím** jogcím nem fog megjelenni a SAML-jogkivonat.
+
 5. Az a **felhasználói attribútumok** a szakasz a **egyszeri bejelentkezés** párbeszédablakban válassza **user.mail** , **felhasználói azonosító** és az alábbi táblázatban szereplő minden egyes sorhoz kapcsolódóan végezze el a következő lépéseket:
     
     | Attribútum neve | Attribútum értéke |
     | --- | --- |
-    | Utónév | User.givenName |
-    | Vezetéknév | User.surname |
-    | User.Email | User.mail |  
-    | User.Username | User.userPrincipalName |
+    | first_name | user.givenname |
+    | last_name | user.surname |
+    | User.Email | user.mail |  
+    | User.Username | user.userprincipalname |
 
     a. Kattintson a **attribútum** megnyitásához **attribútum szerkesztése** párbeszédpanel mezőbe, majd hajtsa végre a következő lépéseket:
 
@@ -137,8 +140,10 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
     a. Az a **neve** szövegmező, írja be az adott sorhoz feltüntetett attribútumot nevét.
     
     b. Az a **érték** listára, válassza ki a sorhoz látható attribútum értéke.
+
+    c. Hagyja a **Namespace** üres.
     
-    c. Kattintson az **OK** gombra
+    d. Kattintson az **OK** gombra
 
 6. A a **SAML-aláíró tanúsítványa** kattintson **tanúsítvány (Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
 

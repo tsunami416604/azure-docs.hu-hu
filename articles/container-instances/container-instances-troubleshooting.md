@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 01/02/2018
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: 1fd3b2c251860e883519744b11fcfc2b925cd2fa
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: 561729e5e495500222ccec5b4b536a3152cb25e3
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="troubleshoot-deployment-issues-with-azure-container-instances"></a>Azure-tároló példányaival telepítési problémák elhárításához
 
@@ -91,6 +91,10 @@ A kimenet a tárolót, és telepítési eseményeket (Itt látható csonkolt) co
 ## <a name="common-deployment-issues"></a>Gyakori telepítési problémákkal
 
 Van néhány gyakori problémákat fiók a központi telepítésben lévő legtöbb hibákat.
+
+## <a name="image-version-not-supported"></a>Lemezkép-verziója nem támogatott
+
+Kép van megadva, hogy Azure tároló példányok nem támogatja, ha hiba visszatér űrlap `ImageVersionNotSupported`. A hiba az értéke megjelenik `The version of image '{0}' is not supported.`. Ez a hiba jelenleg vonatkozik Windows 1709 képek használatát mérséklése LTS Windows-lemezkép. Windows 1709 képek támogatása a feldolgozása folyamatban van.
 
 ## <a name="unable-to-pull-image"></a>Nem sikerült lekéréses kép
 

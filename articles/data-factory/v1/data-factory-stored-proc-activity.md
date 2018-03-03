@@ -3,7 +3,7 @@ title: "SQL Server tárolt eljárási tevékenység"
 description: "Ismerje meg, hogyan használhatja az SQL Server tárolt eljárási tevékenység meghívni a Data Factory-folyamat az az Azure SQL Database vagy az Azure SQL Data Warehouse tárolt eljárást."
 services: data-factory
 documentationcenter: 
-author: spelluru
+author: douglaslMS
 manager: jhubbard
 editor: monicar
 ms.assetid: 1c46ed69-4049-44ec-9b46-e90e964a4a8e
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/10/2018
-ms.author: spelluru
+ms.author: douglasl
 robots: noindex
-ms.openlocfilehash: be0bdf771327e57a75a4f95b513f9e80aeaef5a4
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: f6da8c18c1ac8fbcea217f41c34d50a86b001b11
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="sql-server-stored-procedure-activity"></a>SQL Server tárolt eljárási tevékenység
 > [!div class="op_single_selector" title1="Transformation Activities"]
@@ -93,12 +93,12 @@ A következő forgatókönyv egy folyamaton belül a tárolt eljárási tevéken
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 2. Kattintson a **új** a bal oldali menüben kattintson **Eszközintelligencia + analitika**, és kattintson a **adat-előállító**.
 
-    ![Új data factory](media/data-factory-stored-proc-activity/new-data-factory.png)    
+    ![Új adat-előállító](media/data-factory-stored-proc-activity/new-data-factory.png)    
 3. Az a **új adat-előállító** panelen adjon meg **SProcDF** nevét. Az Azure Data Factory neve **globálisan egyedi**. A névvel, a gyári sikeres létrehozásának engedélyezése a data factory neve előtag van szüksége.
 
-   ![Új data factory](media/data-factory-stored-proc-activity/new-data-factory-blade.png)         
+   ![Új adat-előállító](media/data-factory-stored-proc-activity/new-data-factory-blade.png)         
 4. Válassza ki a **Azure-előfizetés**.
-5. A **erőforráscsoport**, hajtsa végre a következő lépésekből áll:
+5. Az **Erőforráscsoportban** hajtsa végre a következő lépések egyikét:
    1. Kattintson a **hozzon létre új** , és adja meg az erőforráscsoport nevét.
    2. Kattintson a **meglévő** , és válasszon ki egy meglévő erőforráscsoportot.  
 6. Válassza ki a Data Factory **helyét**.
@@ -212,7 +212,7 @@ Figyelje meg a következő tulajdonságokkal:
     ![Diagram csempe](media/data-factory-stored-proc-activity/data-factory-slices.png)
 4. A szelet esetén a **készen** állapot, futtassa a `select * from sampletable` győződjön meg arról, hogy az adatok lett szúrja be a tábla a következő tárolt eljárást az Azure SQL-adatbázis lekérdezése.
 
-   ![kimeneti adatok](./media/data-factory-stored-proc-activity/output.png)
+   ![Kimeneti adatok](./media/data-factory-stored-proc-activity/output.png)
 
    Lásd: [a folyamat figyelése](data-factory-monitor-manage-pipelines.md) Azure Data Factory folyamatok figyelésével kapcsolatos részletes információk.  
 

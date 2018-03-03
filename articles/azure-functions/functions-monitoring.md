@@ -1,5 +1,5 @@
 ---
-title: "Az Azure Functions figyelése"
+title: "Az Azure Functions monitorozása"
 description: "Útmutató az Azure Functions Azure Application Insights használhatók függvény végrehajtása."
 services: functions
 author: tdykstra
@@ -15,13 +15,13 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/15/2017
 ms.author: tdykstra
-ms.openlocfilehash: 6f38fe1e99c734bf09a403ea93b6487a71110cac
-ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
+ms.openlocfilehash: d2a61f5f51e3c4a1de6baa79493cb2c7380c76b6
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/13/2018
+ms.lasthandoff: 03/02/2018
 ---
-# <a name="monitor-azure-functions"></a>Az Azure Functions figyelése
+# <a name="monitor-azure-functions"></a>Az Azure Functions monitorozása
 
 ## <a name="overview"></a>Áttekintés 
 
@@ -167,7 +167,7 @@ Naplózási szintjének `None` esetén, tekintse meg a következő szakaszban.
 
 ### <a name="configure-logging-in-hostjson"></a>Naplózás konfigurálása az host.json
 
-A *host.json* fájl konfigurálja az Application Insights küld egy függvény alkalmazás milyen mértékű naplózása. Kategórián adja meg a minimális naplózási szint küldeni. Íme egy példa:
+A *host.json* fájl konfigurálja az Application Insights küld egy függvény alkalmazás milyen mértékű naplózása. Kategórián adja meg a minimális naplózási szint küldeni. Például:
 
 ```json
 {
@@ -221,7 +221,7 @@ Ezek a naplók "kérelmek", az Application Insights megjelenítése. Azt jelzik,
 
 Ezek a naplók íródtak `Information` szinten, ezért ha szűrheti a `Warning` vagy újabb verziók esetén nem látja az adatok.
 
-### <a name="category-hostaggregator"></a>Kategória Host.Aggregator
+### <a name="category-hostaggregator"></a>Category Host.Aggregator
 
 Ezek a naplók biztosít számát, valamint a függvény meghívásához átlagok képest egy [konfigurálható](#configure-the-aggregator) időszakának idő. Az alapértelmezett időtartam 30 másodperc vagy 1000 eredményeket, amelyik előbb következik be. 
 
@@ -243,7 +243,7 @@ A funkciókódot által írt naplók "Függvény" kategóriába tartoznak, és l
 
 ## <a name="configure-the-aggregator"></a>A gyűjtő konfigurálása
 
-Az előző szakaszban leírtaknak megfelelően a futtatókörnyezet függvény végrehajtások adatait egy meghatározott időtartamra vonatkozóan összesíti. Az alapértelmezett időtartam 30 másodperc, vagy 1000 fut, amelyik előbb eléri. Ez a beállítás konfigurálása a *host.json* fájlt.  Íme egy példa:
+Az előző szakaszban leírtaknak megfelelően a futtatókörnyezet függvény végrehajtások adatait egy meghatározott időtartamra vonatkozóan összesíti. Az alapértelmezett időtartam 30 másodperc, vagy 1000 fut, amelyik előbb eléri. Ez a beállítás konfigurálása a *host.json* fájlt.  Például:
 
 ```json
 {
@@ -256,7 +256,7 @@ Az előző szakaszban leírtaknak megfelelően a futtatókörnyezet függvény v
 
 ## <a name="configure-sampling"></a>A mintavétel konfigurálása
 
-Az Application Insights rendelkezik egy [mintavételi](../application-insights/app-insights-sampling.md) funkciója, amely védeni az előállító néha a csúcsterhelés túl sok telemetriai adatokat. A telemetriai adatok elemek száma meghaladja a megadott mértékben, az Application Insights hozzákezd véletlenszerűen figyelmen kívül hagyja a bejövő elemek egy része. Beállíthatja, hogy a mintavételi *host.json*.  Íme egy példa:
+Az Application Insights rendelkezik egy [mintavételi](../application-insights/app-insights-sampling.md) funkciója, amely védeni az előállító néha a csúcsterhelés túl sok telemetriai adatokat. A telemetriai adatok elemek száma meghaladja a megadott mértékben, az Application Insights hozzákezd véletlenszerűen figyelmen kívül hagyja a bejövő elemek egy része. Beállíthatja, hogy a mintavételi *host.json*.  Például:
 
 ```json
 {
@@ -354,6 +354,7 @@ Használhatja a [Microsoft.ApplicationInsights](https://www.nuget.org/packages/M
 using System;
 using System.Net;
 using Microsoft.ApplicationInsights;
+using Microsoft.ApplicationInsights.DataContracts;
 using Microsoft.ApplicationInsights.Extensibility;
 using Microsoft.Azure.WebJobs;
 using System.Net.Http;
@@ -370,7 +371,7 @@ namespace functionapp0915
             System.Environment.GetEnvironmentVariable(
                 "APPINSIGHTS_INSTRUMENTATIONKEY", EnvironmentVariableTarget.Process);
 
-        private static TelemetryClient telemetry = 
+        private static TelemetryClient telemetryClient = 
             new TelemetryClient() { InstrumentationKey = key };
 
         [FunctionName("HttpTrigger2")]
@@ -391,35 +392,51 @@ namespace functionapp0915
 
             // Set name to query string or body data
             name = name ?? data?.name;
-
-            telemetry.Context.Operation.Id = context.InvocationId.ToString();
-            telemetry.Context.Operation.Name = "cs-http";
-            if (!String.IsNullOrEmpty(name))
-            {
-                telemetry.Context.User.Id = name;
-            }
-            telemetry.TrackEvent("Function called");
-            telemetry.TrackMetric("Test Metric", DateTime.Now.Millisecond);
-            telemetry.TrackDependency("Test Dependency", 
-                "swapi.co/api/planets/1/", 
-                start, DateTime.UtcNow - start, true);
-
+         
+            // Track an Event
+            var evt = new EventTelemetry("Function called");
+            UpdateTelemetryContext(evt.Context, context, name);
+            telemetryClient.TrackEvent(evt);
+            
+            // Track a Metric
+            var metric = new MetricTelemetry("Test Metric", DateTime.Now.Millisecond);
+            UpdateTelemetryContext(metric.Context, context, name);
+            telemetryClient.TrackMetric(metric);
+            
+            // Track a Dependency
+            var dependency = new DependencyTelemetry
+                {
+                    Name = "GET api/planets/1/",
+                    Target = "swapi.co",
+                    Data = "https://swapi.co/api/planets/1/",
+                    Timestamp = start,
+                    Duration = DateTime.UtcNow - start,
+                    Success = true
+                };
+            UpdateTelemetryContext(dependency.Context, context, name);
+            telemetryClient.TrackDependency(dependency);
+            
             return name == null
                 ? req.CreateResponse(HttpStatusCode.BadRequest, 
                     "Please pass a name on the query string or in the request body")
                 : req.CreateResponse(HttpStatusCode.OK, "Hello " + name);
         }
-    }
+        
+        // This correllates all telemetry with the current Function invocation
+        private static void UpdateTelemetryContext(TelemetryContext context, ExecutionContext functionContext, string userName)
+        {
+            context.Operation.Id = functionContext.InvocationId.ToString();
+            context.Operation.ParentId = functionContext.InvocationId.ToString();
+            context.Operation.Name = functionContext.FunctionName;
+            context.User.Id = userName;
+        }
+    }    
 }
 ```
 
 Ne hívja `TrackRequest` vagy `StartOperation<RequestTelemetry>`, mivel látni fogja, a függvény meghívása ismétlődő kérelmek.  A Functions futtatókörnyezete automatikusan nyomon követi a kérelmeket.
 
-Állítsa be `telemetry.Context.Operation.Id` az a meghívási azonosító a függvény minden egyes indításakor. Ez lehetővé teszi egy adott funkció meghíváshoz összes telemetriai elemek összefüggéseket.
-
-```cs
-telemetry.Context.Operation.Id = context.InvocationId.ToString();
-```
+Nincs beállítva `telemetryClient.Context.Operation.Id`. Ez egy globális beállítás, és helytelen correllation okoz, ha sok funkciók fut egyszerre. Ehelyett hozzon létre egy új telemetriai példányt (`DependencyTelemetry`, `EventTelemetry`), és módosítsa a `Context` tulajdonság. Akkor továbbítja a telemetria-példány a megfelelő `Track` metódusa `TelemetryClient` (`TrackDependency()`, `TrackEvent()`). Ez biztosítja, hogy rendelkezik-e a megfelelő correllation részletes aktuális függvény hívásához a telemetriai adatokat.
 
 ## <a name="custom-telemetry-in-javascript-functions"></a>A JavaScript-funkcióként egyéni telemetria
 
@@ -503,6 +520,10 @@ PS C:\> Get-AzureWebSiteLog -Name <function app name> -Tail
 ```
 
 További információkért lásd: [hogyan adatfolyam-naplók](../app-service/web-sites-enable-diagnostic-log.md#streamlogs).
+
+### <a name="viewing-log-files-locally"></a>Helyileg naplófájlok megtekintése
+
+[!INCLUDE [functions-local-logs-location](../../includes/functions-local-logs-location.md)]
 
 ## <a name="next-steps"></a>További lépések
 

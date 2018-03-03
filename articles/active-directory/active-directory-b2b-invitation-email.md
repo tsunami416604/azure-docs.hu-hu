@@ -3,7 +3,7 @@ title: "Az elemek a B2B együttműködés meghívó e-mail - Azure Active Direct
 description: "Az Azure Active Directory B2B együttműködés meghívó e-mail sablon"
 services: active-directory
 documentationcenter: 
-author: sasubram
+author: twooley
 manager: mtillman
 editor: 
 tags: 
@@ -12,12 +12,13 @@ ms.service: active-directory
 ms.topic: article
 ms.workload: identity
 ms.date: 05/23/2017
-ms.author: sasubram
-ms.openlocfilehash: d3529397762cdb814e939b53d8c789add4955149
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.author: twooley
+ms.reviewer: sasubram
+ms.openlocfilehash: 0d26fc4758b2defc3f1b8b5643daafdac4d2baac
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="the-elements-of-the-b2b-collaboration-invitation-email---azure-active-directory"></a>A B2B együttműködés meghívó e-mail - Azure Active Directory elemei
 
@@ -32,7 +33,7 @@ Vizsgáljuk meg az e-mailt néhány elemeinek így megtudhatja, hogyan lehet a l
 Az e-mail tárgyát a következő mintát követi: meghívjuk az &lt;tenantname&gt; szervezet
 
 ### <a name="from-address"></a>Feladó címe
-A LinkedIn-szerű minta a feladó címe az használjuk.  Legyen törölje a jelet a meghívó, aki és amely a vállalati és is elmagyarázza, hogy az e-mailt származik-e a Microsoft e-mail cím. A formátum: &lt;megjelenített nevével meghívó&gt; a &lt;tenantname&gt; (keresztül Microsoft)<invites@microsoft.com>
+A LinkedIn-szerű minta a feladó címe az használjuk.  Legyen törölje a jelet a meghívó, aki és amely a vállalati és is elmagyarázza, hogy az e-mailt származik-e a Microsoft e-mail cím. A formátum: &lt;megjelenített nevével meghívó&gt; a &lt;tenantname&gt; (keresztül Microsoft) <invites@microsoft.com>
 
 ### <a name="reply-to"></a>Válasz címzettje
 A válaszcím e-mailben a meghívó e-mail érhető el, ha van beállítva, hogy a megválaszolása az e-mailt küld egy e-mailt vissza a meghívó.

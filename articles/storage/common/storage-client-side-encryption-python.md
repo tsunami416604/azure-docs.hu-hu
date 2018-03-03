@@ -14,11 +14,11 @@ ms.devlang: python
 ms.topic: article
 ms.date: 05/11/2017
 ms.author: lakasa
-ms.openlocfilehash: bf6696cfdfe9fc18dd2f000162a4e787a7ca6e21
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c925b41d1654bd5c9b40438c4b6b9f402ec4bac2
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="client-side-encryption-with-python-for-microsoft-azure-storage"></a>A Microsoft Azure Storage Python ügyféloldali titkosítás
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]
@@ -106,6 +106,10 @@ Ha egy kötegelt környezetben vezető hozza létre a tableservice batch() metó
 Vegye figyelembe, hogy entitások titkosítva legyenek-e, mint a batch a kötegelt titkosítási házirenddel (entitások nincs titkosítva a tableservice titkosítási házirenddel kötegelt véglegesítése időpontjában) való beszúrása.
 
 ### <a name="queries"></a>Lekérdezések
+> [!NOTE]
+> Az entitások titkosítva vannak, mert titkosított szűrő lekérdezéseket nem futtatható.  Kísérli meg, ha eredmények lesz helytelen, mert a szolgáltatás volna az összehasonlítani kívánt titkosított adatok nem titkosított adatokat.
+> 
+>
 Lekérdezési műveletek végrehajtásához meg kell adnia egy kulcs feloldó, amely képes feloldani az eredménykészletben a kulcsokat. Ha a lekérdezés eredményében található entitás nem oldható fel egy szolgáltatót, az ügyféloldali kódtár kivételhibát hiba. A lekérdezés, amely végrehajtja a kiszolgáló oldalán leképezések, az ügyféloldali kódtár felveszi különleges titkosítási metaadat-tulajdonságainak (\_ClientEncryptionMetadata1 és \_ClientEncryptionMetadata2) a kijelölt oszlopok alapértelmezés szerint.
 
 > [!IMPORTANT]
@@ -146,7 +150,7 @@ A kulcs feloldó legalább meg kell valósítania egy metódust,, hogy adott kul
 ### <a name="requireencryption-mode"></a>RequireEncryption mód
 Felhasználók engedélyezheti üzemmódot ahol feltöltések és a letöltött fájl titkosítva kell lennie. Ebben a módban a megpróbálja feltölteni az adatokat egy titkosítási házirend nélkül, vagy a szolgáltatás a nem titkosított adatok letöltése sikertelen lesz az ügyfélen. A **require_encryption** jelzőt a service objektum a viselkedését szabályozza.
 
-### <a name="blob-service-encryption"></a>BLOB szolgáltatás titkosítási
+### <a name="blob-service-encryption"></a>Blob service encryption
 Állítsa be a titkosítás házirendmezők blockblobservice objektumon. Minden más kezelik az ügyféloldali kódtár által belsőleg.
 
 ```python
@@ -170,7 +174,7 @@ my_block_blob_service.create_blob_from_stream(container_name, blob_name, stream)
 blob = my_block_blob_service.get_blob_to_bytes(container_name, blob_name)
 ```
 
-### <a name="queue-service-encryption"></a>Várólista titkosítását
+### <a name="queue-service-encryption"></a>Queue service encryption
 Állítsa be a titkosítás házirendmezők queueservice objektumon. Minden más kezelik az ügyféloldali kódtár által belsőleg.
 
 ```python
@@ -238,6 +242,6 @@ encrypted_property_1 = EntityProperty(EdmType.STRING, value, encrypt=True)
 ## <a name="encryption-and-performance"></a>Titkosítás és teljesítmény
 Vegye figyelembe, hogy a tároló eredményezi további teljesítményigény titkosítása. A tartalomkulcs és IV kell létrejönnie, a tartalom titkosítva kell lennie és további metaadatokat kell kell formázva és fel kell tölteni. Ez a terhelés a titkosított adatok mennyisége függvényében. Azt javasoljuk, hogy az ügyfelek mindig tesztelje az alkalmazások fejlesztése során teljesítmény.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Töltse le a [Azure Storage ügyféloldali kódtára a Java PyPi csomag](https://pypi.python.org/pypi/azure-storage)
 * Töltse le a [az Azure Storage ügyféloldali kódtára a Pythonhoz forráskód a Githubról](https://github.com/Azure/azure-storage-python)

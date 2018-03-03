@@ -14,17 +14,17 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 12/09/2017
 ms.author: milanga;juliako;
-ms.openlocfilehash: 5741a484dcda05e3143b5f896ddee2e8591dabee
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 7a16745fc21d03f81ca6140ace54f84468749364
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="detect-face-and-emotion-with-azure-media-analytics"></a>Arcfelismerés és az Azure Media Analytics Érzelemfelismerési észlelése
 ## <a name="overview"></a>Áttekintés
 A **Azure Media Arcfelismerési érzékelő** media processzor (MP) lehetővé teszi a száma, nyomon követésére típusú áthelyezések, és akkor is fel tudja mérni a célközönség részvételét és reakciót arcfelismerést kifejezések keresztül. Ez a szolgáltatás két funkciókat tartalmazza: 
 
-* **Arcfelismerési észlelése**
+* **arcfelismerési észlelése**
   
     Arcfelismerési észlelési talál, és nyomon követi a videó emberi lapjaira. Több lapokat észlelhető, és ezt követően nyomon követheti az adott vissza egy JSON-fájlban ideje és helye metaadatokkal körül, mozgás. Során nyomon követése, megkísérli adjon egységes azonosító ugyanazon felületére, amíg a személy van Navigálás a képernyőn, még akkor is, ha kényszerítő vagy röviden hagyja a keret.
   
@@ -64,12 +64,14 @@ Arcfelismerési érzékelő (ahol az események törik fel, ha túl nagy elért�
 ### <a name="task-configuration-preset"></a>A feladat konfigurációja (beállítás)
 A feladat létrehozásakor **Azure Media Arcfelismerési érzékelő**, meg kell adnia egy konfigurációs készletet. A következő konfigurációs készlet folyamat csak arcfelismerési észlelése.
 
+```json
     {
       "version":"1.0",
       "options":{
           "TrackingMode": "Fast"
       }
     }
+```
 
 #### <a name="attribute-descriptions"></a>Az attribútumok leírása
 | Attribútum neve | Leírás |
@@ -79,6 +81,7 @@ A feladat létrehozásakor **Azure Media Arcfelismerési érzékelő**, meg kell
 ### <a name="json-output"></a>JSON kimeneti
 A következő példa a JSON-kimenetét csonkolódott.
 
+```json
     {
     "version": 1,
     "timescale": 30000,
@@ -123,8 +126,8 @@ A következő példa a JSON-kimenetét csonkolódott.
                 "height": 0.151389
             }
             ],
+```
 
-        . . . 
 
 ## <a name="emotion-detection-input-and-output-example"></a>Érzelemfelismerés bemeneti és kimeneti példa
 ### <a name="input-video"></a>A bemeneti videó
@@ -133,6 +136,7 @@ A következő példa a JSON-kimenetét csonkolódott.
 ### <a name="task-configuration-preset"></a>A feladat konfigurációja (beállítás)
 A feladat létrehozásakor **Azure Media Arcfelismerési érzékelő**, meg kell adnia egy konfigurációs készletet. A következő konfigurációs beállítás határozza meg a érzelemfelismerés alapján JSON létrehozásához.
 
+```json
     {
       "version": "1.0",
       "options": {
@@ -141,6 +145,7 @@ A feladat létrehozásakor **Azure Media Arcfelismerési érzékelő**, meg kell
         "aggregateEmotionIntervalMs": "342"
       }
     }
+```
 
 
 #### <a name="attribute-descriptions"></a>Az attribútumok leírása
@@ -161,6 +166,7 @@ Alább összesített ablakot, és időköz beállítások értékei használata 
 ### <a name="json-output"></a>JSON kimeneti
 Összesített érzelemfelismerési (csonkolt) a kimeneti JSON:
 
+```json
     {
      "version": 1,
      "timescale": 30000,
@@ -311,6 +317,7 @@ Alább összesített ablakot, és időköz beállítások értékei használata 
                  "anger": 0,
                  "disgust": 0,
                  "fear": 0,
+```
 
 ## <a name="limitations"></a>Korlátozások
 * A támogatott bemeneti videó formátumnak tartalmaznia kell MP4 MOV és WMV.
@@ -324,10 +331,12 @@ A következő program bemutatja hogyan:
 
 1. Hozzon létre egy eszközt, és adathordozó-fájl feltöltése az objektumba.
 2. Hozzon létre egy feladatot a következő json-készletet tartalmazó konfigurációs fájl alapján arcfelismerési észlelési feladatokkal: 
-   
-        {
-            "version": "1.0"
-        }
+
+    ```json
+            {
+                "version": "1.0"
+            }
+    ```
 3. A kimeneti JSON-fájlok letöltésére. 
 
 #### <a name="create-and-configure-a-visual-studio-project"></a>Egy Visual Studio-projekt létrehozása és konfigurálása
@@ -336,7 +345,7 @@ A következő program bemutatja hogyan:
 
 #### <a name="example"></a>Példa
 
-```
+```csharp
 using System;
 using System.Configuration;
 using System.IO;

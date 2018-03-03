@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/15/2017
 ms.author: dekapur
-ms.openlocfilehash: 69750db615460b3ac69ba9ffe707a970ca8e2e11
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: fd4c28c2317356cbc6e3fd4d46a10509c029d530
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="event-aggregation-and-collection-using-eventflow"></a>Esemény összevonásának és a gyűjtemény EventFlow használatával
 
@@ -32,12 +32,12 @@ EventFlow bináris NuGet-csomagok készletként érhetők el. Service Fabric-szo
 
 Látni fogja a különböző csomagok listája jelenik meg, az "A bemeneti" és "Kimeneti" címkével ellátott. EventFlow különböző különböző naplózási szolgáltatók és elemzőkkel támogatja. A szolgáltatásüzemeltetési EventFlow attól függően, hogy a forrás- és az alkalmazásnaplókat a megfelelő csomagokat kell tartalmaznia. A core ServiceFabric csomag mellett is szükség van legalább egy bemeneti és kimeneti konfigurálva. Hozzáadhat például a következő csomagok Application insights szolgáltatásnak elküldött EventSource események:
 
-* `Microsoft.Diagnostics.EventFlow.Input.EventSource`a szolgáltatás az EventSource osztályból származik, és a szabványos EventSources adatok rögzítéséhez *Microsoft-ServiceFabric-szolgáltatások* és *Microsoft-ServiceFabric-szereplője*)
-* `Microsoft.Diagnostics.EventFlow.Output.ApplicationInsights`(fogjuk küldeni a naplókat az Azure Application Insights-erőforrás)
+* `Microsoft.Diagnostics.EventFlow.Inputs.EventSource` a szolgáltatás az EventSource osztályból származik, és a szabványos EventSources adatok rögzítéséhez *Microsoft-ServiceFabric-szolgáltatások* és *Microsoft-ServiceFabric-szereplője*)
+* `Microsoft.Diagnostics.EventFlow.Outputs.ApplicationInsights` (fogjuk küldeni a naplókat az Azure Application Insights-erőforrás)
 * `Microsoft.Diagnostics.EventFlow.ServiceFabric`(lehetővé teszi, hogy a Service Fabric szolgáltatáskonfiguráció EventFlow folyamat inicializálása és jelentéseket, a Service Fabric állapotjelentések diagnosztikai adatok küldésének problémákat)
 
 >[!NOTE]
->`Microsoft.Diagnostics.EventFlow.Input.EventSource`csomag igényli-e a projekt, amelyekre a .NET-keretrendszer 4.6-os vagy újabb. Ellenőrizze, hogy beállította a megfelelő célkeretrendszer a projekt tulajdonságait a csomag telepítése előtt.
+>`Microsoft.Diagnostics.EventFlow.Inputs.EventSource` csomag igényli-e a projekt, amelyekre a .NET-keretrendszer 4.6-os vagy újabb. Ellenőrizze, hogy beállította a megfelelő célkeretrendszer a projekt tulajdonságait a csomag telepítése előtt.
 
 A csomagok telepítése után a következő lépés, hogy konfigurálja és EventFlow engedélyezése a szolgáltatásban.
 
@@ -147,7 +147,7 @@ EventFlow támogatja a Service Fabric-beállítások és alkalmazások paremeter
 servicefabric:/<section-name>/<setting-name>
 ```
 
-`<section-name>`a Service Fabric konfigurációs szakasz neve és `<setting-name>` adva egy EventFlow beállítás konfigurálásához használt konfigurációs beállítás. Olvassa el a további információt ebben az esetben lépjen [Service Fabric-beállítás- és alkalmazás támogatása](https://github.com/Azure/diagnostics-eventflow#support-for-service-fabric-settings-and-application-parameters).
+`<section-name>` a Service Fabric konfigurációs szakasz neve és `<setting-name>` adva egy EventFlow beállítás konfigurálásához használt konfigurációs beállítás. Olvassa el a további információt ebben az esetben lépjen [Service Fabric-beállítás- és alkalmazás támogatása](https://github.com/Azure/diagnostics-eventflow#support-for-service-fabric-settings-and-application-parameters).
 
 ## <a name="verification"></a>Ellenőrzés
 

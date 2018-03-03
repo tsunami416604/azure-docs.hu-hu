@@ -3,7 +3,7 @@ title: "Az Azure Data Factory - JSON-Parancsprogramokról |} Microsoft Docs"
 description: "JSON-sémákat biztosít a Data Factory-entitásokhoz."
 services: data-factory
 documentationcenter: 
-author: spelluru
+author: sharonlo101
 manager: jhubbard
 editor: 
 ms.service: data-factory
@@ -12,13 +12,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/10/2018
-ms.author: spelluru
+ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 9457e90f378cf7b30810ca9cadfcad139e91e2d4
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 519a762e5f89533f4425d38e4a1ca76d8e3dd40f
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="azure-data-factory---json-scripting-reference"></a>Az Azure Data Factory - JSON-Parancsprogramokról
 > [!NOTE]
@@ -54,7 +54,7 @@ Következő táblázat az adatcsatorna JSON-definícióból a tulajdonságokat:
 | vége |Befejező dátum-idő az adatcsatorna. Ha a megadott ISO-formátumban kell lennie. Például: 2014-10-14T17:32:41 <br/><br/>Akkor adja meg a helyi időt, például egy keleti TÉLI idő lehet. Példa: `2016-02-27T06:00:00**-05:00`, vagyis 6 AM becsült<br/><br/>A folyamat határozatlan idejű futásra, adja meg a 9999-09-09 end tulajdonság értékét. |Nem <br/><br/>Ha a start tulajdonság értékét adja meg, meg kell adnia end tulajdonság értéke.<br/><br/>Tekintse meg a megjegyzéseket az **start** tulajdonság. |
 | isPaused |Ha a feldolgozási sor igaz értékre való beállítása nem működik. Alapértelmezett érték = false. Ez a tulajdonság segítségével engedélyezheti vagy tilthatja le. |Nem |
 | pipelineMode |Az ütemezési módszer a következő feldolgozási sor fut. Két érték engedélyezett: (alapértelmezett), ütemezett alkalommal.<br/><br/>"Ütemezett" azt jelzi, hogy a folyamat az aktív időszak (kezdő és záró idő) alapján meghatározott időközönként. "Alkalommal" jelzi, hogy a folyamat csak egyszer fut-e. Létrehozását követően alkalommal adatcsatornák nem lehet módosítani/frissített jelenleg. Lásd: [Onetime csővezeték](data-factory-create-pipelines.md#onetime-pipeline) alkalommal beállítás vonatkozó további információért. |Nem |
-| ExpirationTime |Időtartam, amelyek a feldolgozási sor érvényes, és kiépített maradjon létrehozása után. Ha nem rendelkezik minden aktív sikertelen volt, vagy függőben lévő fut, a folyamat a rendszer automatikusan törli lejárati időpont után. |Nem |
+| expirationTime |Időtartam, amelyek a feldolgozási sor érvényes, és kiépített maradjon létrehozása után. Ha nem rendelkezik minden aktív sikertelen volt, vagy függőben lévő fut, a folyamat a rendszer automatikusan törli lejárati időpont után. |Nem |
 
 
 ## <a name="activity"></a>Tevékenység 
@@ -100,13 +100,13 @@ A házirendek milyen hatással a futtatási viselkedés tevékenység, kifejezet
 
 | Tulajdonság | Megengedett értékek | Alapértelmezett érték | Leírás |
 | --- | --- | --- | --- |
-| Egyidejűségi |Egész szám <br/><br/>A maximális érték: 10 |1 |A tevékenység egyidejű végrehajtások száma.<br/><br/>Meghatározza, hogy a párhuzamos tevékenység végrehajtások, amely akkor fordulhat elő, a másik szeletek számát. Például ha egy tevékenység kell végighaladnia rendelkezésre álló adatok, nagyobb feldolgozási értéke számos felgyorsítja az adatok feldolgozása. |
+| concurrency |Egész szám <br/><br/>A maximális érték: 10 |1 |A tevékenység egyidejű végrehajtások száma.<br/><br/>Meghatározza, hogy a párhuzamos tevékenység végrehajtások, amely akkor fordulhat elő, a másik szeletek számát. Például ha egy tevékenység kell végighaladnia rendelkezésre álló adatok, nagyobb feldolgozási értéke számos felgyorsítja az adatok feldolgozása. |
 | executionPriorityOrder |NewestFirst<br/><br/>OldestFirst |OldestFirst |Meghatározza, hogy feldolgozott adatszeletek sorrendje.<br/><br/>Például ha 2 szeletek (du. 4: egy azonban és délután 5 óra egy másik tulajdonságnak), és mindkét végrehajtási függőben van. Ha a executionPriorityOrder NewestFirst kell, a szelet, délután 5 óra lesz elsőként feldolgozva. Hasonlóképpen ha OldestFIrst kell executionPriorityORder, majd a szelet du. 4: dolgoz fel. |
 | retry |Egész szám<br/><br/>A maximális érték 10 is lehet. |0 |Az adatok feldolgozása a szeletre vonatkozó hiba van megjelölve, mielőtt újrapróbálkozások száma. Egy adatszelet tevékenység végrehajtása a rendszer ismét megkísérli legfeljebb a megadott újrapróbálkozások maximális számát. Az újra gombra a lehető leghamarabb a meghibásodás után történik. |
-| timeout |A TimeSpan |00:00:00 |A tevékenység időkorlátja. . Példa: 00:10:00 (azt jelenti, időtúllépés 10 perc)<br/><br/>Ha az érték nincs megadva vagy 0, az időtúllépési érték végtelen.<br/><br/>A szelet adatok feldolgozási ideje meghaladja a időtúllépési értéket, ha azt megszakadt, és a rendszer megkísérli újra feldolgozását. Az újrapróbálkozások száma attól függ, hogy az újra gombra tulajdonság. Időtúllépés történik, ha a beállítás időtúllépésbe került. |
-| Késleltetés |A TimeSpan |00:00:00 |Adja meg a késleltetés, elindul a szelet feldolgozásának előtt.<br/><br/>Egy adatszelet tevékenység végrehajtása után a késleltetési idő legyen a várt végrehajtási ideje elmúlt elindult.<br/><br/>. Példa: 00:10:00 (magában foglalja a késleltetést a 10 perc) |
-| hosszú újrapróbálkozás |Egész szám<br/><br/>A maximális érték: 10 |1 |Sikertelen volt a szelet végrehajtása előtt hosszú újrapróbálkozási kísérletek száma.<br/><br/>hosszú újrapróbálkozás kísérletek által longRetryInterval távolságban helyezkednek el. Ha meg kell adnia egy újrapróbálkozási kísérletek között eltelt idő, így hosszú újrapróbálkozás használja. Ha mind az újra gombra, és a hosszú újrapróbálkozás meg van adva, minden hosszú újrapróbálkozás kísérlet tartalmazza újrapróbálkozások és kísérletek maximális számát. Próbálkozzon újra * hosszú újrapróbálkozás.<br/><br/>Ha például a tevékenység-házirend van a következő beállításokat:<br/>Próbálkozzon újra: 3<br/>hosszú újrapróbálkozás: 2. régiója<br/>longRetryInterval: 01:00:00<br/><br/>Tegyük fel, nincs végrehajtandó csak egy szelet (állapot vár) és a tevékenység végrehajtása meghiúsul minden alkalommal. Eredetileg nem lenne 3 egymást követő végrehajtási kísérletek. A szelet állapota minden kísérlet után újra lehet. Miután először 3 kísérletet keresztül történik, a szelet állapota hosszú újrapróbálkozás lehet.<br/><br/>Egy óra (Ez azt jelenti, hogy longRetryInteval tartozó érték) nem lenne a 3 egymást követő végrehajtási kísérletek egy másik készlet. Ezt követően a szelet állapota akkor sikertelen, és nincs további újrapróbálkozások volna kísérli meg a. Ezért a teljes 6 történt kísérlet.<br/><br/>Ha bármely végrehajtása sikeres, a szelet állapota Kész és nincs további újrapróbálkozások próbált vannak.<br/><br/>hosszú újrapróbálkozás függő adatok nem determinisztikus időpontokban érkeznek vagy flaky akkor következik be, mely az adatfeldolgozás alatt a környezetben használható. Ilyen esetekben újrapróbálkozások egymás után nem segíthet ezzel, és ezzel egy időszak után időt a kívánt kimeneti eredményez.<br/><br/>Járjon el a Word: nincs beállítva hosszú újrapróbálkozás vagy longRetryInterval magas értékeit. Általában a magasabb értékkel rendszeres problémákkal utalnak. |
-| longRetryInterval |A TimeSpan |00:00:00 |Hosszú újrapróbálkozások közötti késleltetés |
+| timeout |TimeSpan |00:00:00 |A tevékenység időkorlátja. . Példa: 00:10:00 (azt jelenti, időtúllépés 10 perc)<br/><br/>Ha az érték nincs megadva vagy 0, az időtúllépési érték végtelen.<br/><br/>A szelet adatok feldolgozási ideje meghaladja a időtúllépési értéket, ha azt megszakadt, és a rendszer megkísérli újra feldolgozását. Az újrapróbálkozások száma attól függ, hogy az újra gombra tulajdonság. Időtúllépés történik, ha a beállítás időtúllépésbe került. |
+| Késleltetés |TimeSpan |00:00:00 |Adja meg a késleltetés, elindul a szelet feldolgozásának előtt.<br/><br/>Egy adatszelet tevékenység végrehajtása után a késleltetési idő legyen a várt végrehajtási ideje elmúlt elindult.<br/><br/>. Példa: 00:10:00 (magában foglalja a késleltetést a 10 perc) |
+| longRetry |Egész szám<br/><br/>A maximális érték: 10 |1 |Sikertelen volt a szelet végrehajtása előtt hosszú újrapróbálkozási kísérletek száma.<br/><br/>hosszú újrapróbálkozás kísérletek által longRetryInterval távolságban helyezkednek el. Ha meg kell adnia egy újrapróbálkozási kísérletek között eltelt idő, így hosszú újrapróbálkozás használja. Ha mind az újra gombra, és a hosszú újrapróbálkozás meg van adva, minden hosszú újrapróbálkozás kísérlet tartalmazza újrapróbálkozások és kísérletek maximális számát. Próbálkozzon újra * hosszú újrapróbálkozás.<br/><br/>Ha például a tevékenység-házirend van a következő beállításokat:<br/>Próbálkozzon újra: 3<br/>longRetry: 2<br/>longRetryInterval: 01:00:00<br/><br/>Tegyük fel, nincs végrehajtandó csak egy szelet (állapot vár) és a tevékenység végrehajtása meghiúsul minden alkalommal. Eredetileg nem lenne 3 egymást követő végrehajtási kísérletek. A szelet állapota minden kísérlet után újra lehet. Miután először 3 kísérletet keresztül történik, a szelet állapota hosszú újrapróbálkozás lehet.<br/><br/>Egy óra (Ez azt jelenti, hogy longRetryInteval tartozó érték) nem lenne a 3 egymást követő végrehajtási kísérletek egy másik készlet. Ezt követően a szelet állapota akkor sikertelen, és nincs további újrapróbálkozások volna kísérli meg a. Ezért a teljes 6 történt kísérlet.<br/><br/>Ha bármely végrehajtása sikeres, a szelet állapota Kész és nincs további újrapróbálkozások próbált vannak.<br/><br/>hosszú újrapróbálkozás függő adatok nem determinisztikus időpontokban érkeznek vagy flaky akkor következik be, mely az adatfeldolgozás alatt a környezetben használható. Ilyen esetekben újrapróbálkozások egymás után nem segíthet ezzel, és ezzel egy időszak után időt a kívánt kimeneti eredményez.<br/><br/>Járjon el a Word: nincs beállítva hosszú újrapróbálkozás vagy longRetryInterval magas értékeit. Általában a magasabb értékkel rendszeres problémákkal utalnak. |
+| longRetryInterval |TimeSpan |00:00:00 |Hosszú újrapróbálkozások közötti késleltetés |
 
 ### <a name="typeproperties-section"></a>typeProperties szakasz
 A typeProperties szakaszban nem egyezik, minden egyes tevékenységhez. Átalakítás tevékenységek rendelkezik csak a típus tulajdonságokat. Lásd: [adatok ÁTALAKÍTÁSA tevékenységek](#data-transformation-activities) szakasz ebben a cikkben egy folyamat átalakítása tevékenységek meghatározó JSON-minták. 
@@ -288,7 +288,7 @@ A következő táblázat ismerteti a fenti JSON-tulajdonságokat:
 | type | A dataset típusa. Meg kell adni az Azure Data Factory által támogatott típusok egyikét (például: AzureBlob, AzureSqlTable). Lásd: [ADATTÁROLÓKHOZ](#data-stores) szakasz az adatok áruházak és a Data Factory által támogatott adatkészlet-típusok. | 
 | struktúra | Az adatkészlet sémája. Tartalmaz oszlopok, azok típusok, stb. | Nem |NA |
 | typeProperties | A kiválasztott típus megfelelő tulajdonságok. Lásd: [ADATTÁROLÓKHOZ](#data-stores) szakaszban a támogatott típusok és azok tulajdonságait. |Igen |NA |
-| external | Logikai jelző, amely adja meg, hogy a data factory-folyamathoz explicit módon létrehozott adatkészlet vagy nem. |Nem |hamis |
+| external | Logikai jelző, amely adja meg, hogy a data factory-folyamathoz explicit módon létrehozott adatkészlet vagy nem. |Nem |false |
 | rendelkezésre állás | A feldolgozási időszakában vagy az adatkészlet üzemi slicing modell határoz meg. Az adatkészlet modell felosztás a részletekért lásd: [ütemezés és a végrehajtás](data-factory-scheduling-and-execution.md) cikk. |Igen |NA |
 | szabályzat |Meghatározza a feltételek vagy a feltétellel, hogy a dataset szeletek teljesítenie kell. <br/><br/>További információkért lásd: [Dataset házirend](#Policy) szakasz. |Nem |NA |
 
@@ -298,7 +298,7 @@ Minden egyes oszlopának a **struktúra** a szakasz a következő tulajdonságok
 | --- | --- | --- |
 | név |Az oszlop neve. |Igen |
 | type |Az oszlop adattípusát.  |Nem |
-| Kulturális környezet |.NET-alapú kulturális környezet lehet használni, ha a típus meg van adva, de a .NET-típus `Datetime` vagy `Datetimeoffset`. Alapértelmezett érték a `en-us`. |Nem |
+| Kulturális környezet |.NET-alapú kulturális környezet lehet használni, ha a típus meg van adva, de a .NET-típus `Datetime` vagy `Datetimeoffset`. Az alapértelmezett szint a `en-us`. |Nem |
 | Formátumban |Formázó karakterlánc, használandó típus van megadva, és a .NET-típus `Datetime` vagy `Datetimeoffset`. |Nem |
 
 A következő példában a dataset adatkészletben három oszlopot `slicetimestamp`, `projectname`, és `pageviews` és típus: karakterlánc, karakterlánc és tizedes kulcsattribútumokkal.
@@ -320,7 +320,7 @@ A következő táblázat ismerteti a használható tulajdonságok a **rendelkez�
 | interval |Megadja egy szorzóval gyakoriság<br/><br/>"X időköz" határozza meg, milyen gyakran a szelet jön létre.<br/><br/>Ha módosítania kell a adatkészlet kell szeletelhetők óránként, beállíthatja <b>gyakorisága</b> való <b>óra</b>, és <b>időköz</b> való <b>1</b>.<br/><br/><b>Megjegyzés:</b>: perces gyakoriságot ad meg, ha azt javasoljuk, hogy beállította az intervallum nem lehet kisebb, mint 15 |Igen |NA |
 | stílus |Meghatározza, hogy a szelet akkor a rendszer az időköz kezdő/végén.<ul><li>StartOfInterval</li><li>EndOfInterval</li></ul><br/><br/>Ha gyakoriságának beállítása hónapot és stílus EndOfInterval beállítása, a szelet hónap utolsó napján elő. Ha a stílus StartOfInterval van megadva, a szelet hónap első napján elő.<br/><br/>Ha nap gyakoriságának beállítása és stílus EndOfInterval beállítása, a szelet elő az elmúlt órában a nap.<br/><br/>Ha gyakoriságának beállítása óra és stílus EndOfInterval beállítása, a szelet elő az órát végén. Például egy adatszelethez du. 1 – 2 óra időszakban, a szelet hozzák 2 du. |Nem |EndOfInterval |
 | anchorDateTime |Határozza meg az idő az ütemező által használt adatkészlet szelet határok számítási abszolút pozíciója. <br/><br/><b>Megjegyzés:</b>: Ha a AnchorDateTime részekből dátum, amelyek részletesebben, mint a gyakorisága, akkor a részletesebb részek figyelmen kívül lesznek hagyva. <br/><br/>Például ha a <b>időköz</b> van <b>óránkénti</b> (gyakoriság: óra és időköz: 1) és a <b>AnchorDateTime</b> tartalmaz <b>percet és másodpercet</b>a <b>percet és másodpercet</b> a AnchorDateTime részei a rendszer figyelmen kívül hagyja. |Nem |01/01/0001 |
-| Az offset |TimeSpan érték, amely a kezdő és a záró összes adatkészlet szeletek vette. <br/><br/><b>Megjegyzés:</b>: Ha anchorDateTime és az offset is meg van adva, az eredmény a kombinált shift-e. |Nem |NA |
+| offset |TimeSpan érték, amely a kezdő és a záró összes adatkészlet szeletek vette. <br/><br/><b>Megjegyzés:</b>: Ha anchorDateTime és az offset is meg van adva, az eredmény a kombinált shift-e. |Nem |NA |
 
 A következő rendelkezésre állási szakasz Megadja, hogy a kimeneti adatkészlet előállított óránként (vagy) bemeneti adatkészlet óránkénti áll rendelkezésre:
 
@@ -357,7 +357,7 @@ Azure Data Factory hozzák alatt álló adatkészlet, kivéve azt állapotúkén
 | Name (Név) | Leírás | Szükséges | Alapértelmezett érték |
 | --- | --- | --- | --- |
 | dataDelay |A külső adatokat az adott szelet rendelkezésre állásának az ellenőrzését késleltetési idő. Például ha óránkénti érhető el az adatokat, ellenőrizze, hogy a külső adatok elérhetők legyenek és a megfelelő szelet készen áll az dataDelay használatával késleltethető.<br/><br/>Csak a jelenlegi időpont vonatkozik.  Például ha 1:00 PM azonnal, és az értéke 10 perc, az érvényesítési kezdődik, 1:10 óra.<br/><br/>Ez a beállítás nincs hatással a szeletek a múltban (szelet befejezési időpontja + dataDelay szeletek < most) dolgoznak fel késedelem nélkül.<br/><br/>Idő nagyobb, mint 23:59 óra kell megadni, használja a `day.hours:minutes:seconds` formátumban. Például adja meg a 24 órát, ne használja 24:00:00. Ehelyett használjon 1.00:00:00. Ha 24:00:00 használja, akkor a rendszer 24 napos (24.00:00:00). 1 nap és 4 óra adja meg 1:04:00:00. |Nem |0 |
-| RetryInterval |A várakozási idő közötti hiba, a következő kísérlet próbálkozzon újra. Ha egy try sikertelen, a következő kísérlet retryInterval utánra esik. <br/><br/>Ha 1:00 PM most, az első lépések az első próbálkozás. Ha az első ellenőrzési ellenőrzés időtartam 1 perc és a művelet sikertelen volt, a következő újrapróbálkozási jelenleg 1:00 + 1 perc (időtartam) + 1 perces (újrapróbálkozási időköz) = 1:02 PM. <br/><br/>A múltban szeletek nincs késleltetés. Az újrapróbálkozási azonnal történik. |Nem |00:01:00 (1 perc) |
+| retryInterval |A várakozási idő közötti hiba, a következő kísérlet próbálkozzon újra. Ha egy try sikertelen, a következő kísérlet retryInterval utánra esik. <br/><br/>Ha 1:00 PM most, az első lépések az első próbálkozás. Ha az első ellenőrzési ellenőrzés időtartam 1 perc és a művelet sikertelen volt, a következő újrapróbálkozási jelenleg 1:00 + 1 perc (időtartam) + 1 perces (újrapróbálkozási időköz) = 1:02 PM. <br/><br/>A múltban szeletek nincs késleltetés. Az újrapróbálkozási azonnal történik. |Nem |00:01:00 (1 perc) |
 | retryTimeout |Az egyes újrapróbálkozások időkorlátját.<br/><br/>Ha ez a tulajdonság 10 percre van beállítva, az érvényesítési kell elvégezni, 10 percen belül. Ha az érvényesítés végrehajtásához 10 percnél hosszabb ideig tart, az ismételt próbálkozás túllépi az időkorlátot.<br/><br/>Ha az érvényesítéshez bármilyen kísérlet időkorlátja lejár, a szelet időtúllépésbe került van megjelölve. |Nem |00:10:00 (10 perc) |
 | maximumRetry |Ellenőrizze, hogy elérhető-e a külső adatok futtatásainak száma. A megengedett maximális értéke 10. |Nem |3 |
 
@@ -429,7 +429,7 @@ A data factory használatával az Azure storage-fiók összekapcsolása a **fió
 }
 ```
 
-#### <a name="azure-storage-sas-linked-service"></a>Az Azure Storage SAS társított szolgáltatás
+#### <a name="azure-storage-sas-linked-service"></a>Azure Storage SAS Linked Service
 A társított Azure Storage SAS-szolgáltatás lehetővé teszi egy Azure Storage-fiók összekapcsolása egy Azure data factory egy közös hozzáférésű Jogosultságkód (SAS) használatával. Az adat-előállítóban minden/specifikus erőforrások (blobtárolóban /) a tárolóban lévő korlátozott/időhöz kötött hozzáférést biztosít. Az Azure storage-fiók összekapcsolása egy adat-előállító közös hozzáférésű Jogosultságkód használatával, a társított Azure Storage SAS-szolgáltatás létrehozása. Egy Azure Storage SAS meghatározásához társított szolgáltatás, állítsa be a **típus** a társított szolgáltatás **AzureStorageSas**. Ezután megadhatja tulajdonságait a következő a **typeProperties** szakasz:   
 
 | Tulajdonság | Leírás | Szükséges |
@@ -593,12 +593,12 @@ Egy Azure Data Lake Store meghatározásához társított szolgáltatás, a tár
 | type | A type tulajdonságot kell beállítani: **AzureDataLakeStore** | Igen |
 | dataLakeStoreUri | Adja meg az Azure Data Lake Store-fiók adatait. A következő formátumban: `https://[accountname].azuredatalakestore.net/webhdfs/v1` vagy `adl://[accountname].azuredatalakestore.net/`. | Igen |
 | subscriptionId | Azure-előfizetése azonosítóját, amelyhez a Data Lake Store tartozik. | A fogadó szükséges |
-| erőforráscsoport-név | Azure erőforráscsoport-név, amely a Data Lake Store tartozik. | A fogadó szükséges |
+| resourceGroupName | Azure erőforráscsoport-név, amely a Data Lake Store tartozik. | A fogadó szükséges |
 | servicePrincipalId | Adja meg az alkalmazás ügyfél-azonosítót. | Igen (a szolgáltatás egyszerű hitelesítés) |
 | servicePrincipalKey | Adja meg az alkalmazás kulcsot. | Igen (a szolgáltatás egyszerű hitelesítés) |
 | bérlő | Adja meg a bérlői adatokat (tartomány nevét vagy a bérlő azonosító) alatt az alkalmazás található. Azt az Azure-portál jobb felső sarkában az egér rámutató által kérheti le. | Igen (a szolgáltatás egyszerű hitelesítés) |
 | Engedélyezési | Kattintson a **engedélyezés** gombra a **Data Factory Editor** , és írja be a hitelesítő adatok, amelyek az automatikusan létrehozott engedélyezési URL-címet rendel hozzá ehhez a tulajdonsághoz. | Igen (a felhasználói hitelesítő)|
-| Munkamenet-azonosító | OAuth munkamenet-azonosító az OAuth hitelesítési munkamenetből. Minden munkamenet-azonosító egyedi, és előfordulhat, hogy csak egyszer használható. Ez a beállítás automatikusan létrejön a Data Factory Editor használatakor. | Igen (a felhasználói hitelesítő) |
+| sessionId | OAuth munkamenet-azonosító az OAuth hitelesítési munkamenetből. Minden munkamenet-azonosító egyedi, és előfordulhat, hogy csak egyszer használható. Ez a beállítás automatikusan létrejön a Data Factory Editor használatakor. | Igen (a felhasználói hitelesítő) |
 
 #### <a name="example-using-service-principal-authentication"></a>Példa: a szolgáltatás egyszerű hitelesítést használó
 ```json
@@ -837,7 +837,7 @@ Adatok másolása az Azure Cosmos adatbázisából, állítsa be a **adatforrás
 
 | **Tulajdonság** | **Leírás** | **Megengedett értékek** | **Szükséges** |
 | --- | --- | --- | --- |
-| lekérdezés |Adja meg a lekérdezés adatainak olvasására. |Lekérdezés-karakterlánc hossza Azure Cosmos DB által támogatott. <br/><br/>Példa:`SELECT c.BusinessEntityID, c.PersonType, c.NameStyle, c.Title, c.Name.First AS FirstName, c.Name.Last AS LastName, c.Suffix, c.EmailPromotion FROM c WHERE c.ModifiedDate > \"2009-01-01T00:00:00\"` |Nem <br/><br/>Ha nincs megadva, az SQL-utasítást, amely végrehajtja a rendszer:`select <columns defined in structure> from mycollection` |
+| lekérdezés |Adja meg a lekérdezés adatainak olvasására. |Lekérdezés-karakterlánc hossza Azure Cosmos DB által támogatott. <br/><br/>Példa: `SELECT c.BusinessEntityID, c.PersonType, c.NameStyle, c.Title, c.Name.First AS FirstName, c.Name.Last AS LastName, c.Suffix, c.EmailPromotion FROM c WHERE c.ModifiedDate > \"2009-01-01T00:00:00\"` |Nem <br/><br/>Ha nincs megadva, az SQL-utasítást, amely végrehajtja a rendszer: `select <columns defined in structure> from mycollection` |
 | nestingSeparator |Jelzi, hogy a dokumentum van beágyazva speciális karakter |Bármely karakter. <br/><br/>Azure Cosmos-adatbázis egy NoSQL-tároló JSON-dokumentumok, amelyben beágyazott struktúrákat engedélyezett. Az Azure Data Factory lehetővé teszi, hogy a felhasználó nestingSeparator, amely használatával a hierarchia jelöléséhez "." a fenti példákban. A elválasztóval, a másolási tevékenység hoz létre a "Name" objektum három gyermekek elemekkel először középső és az utolsó, "Name.First", "Name.Middle" és "Name.Last" tábla definíciójában. |Nem |
 
 #### <a name="example"></a>Példa
@@ -884,7 +884,7 @@ Adatok másolása az Azure Cosmos Adatbázishoz, állítsa be a **típus gyűjt�
 | **Tulajdonság** | **Leírás** | **Megengedett értékek** | **Szükséges** |
 | --- | --- | --- | --- |
 | nestingSeparator |A forrás oszlop nevét jelzi, hogy a beágyazott dokumentum egy különleges karakterek van szükség. <br/><br/>Például fent: `Name.First` a kimeneti táblát hoz létre a következő JSON struktúrában a Cosmos DB dokumentumban:<br/><br/>"Name": {<br/>    "Első": "John"<br/>}, |A beágyazási szinteket elválasztó karakter.<br/><br/>Alapértelmezett érték `.` (pont). |A beágyazási szinteket elválasztó karakter. <br/><br/>Alapértelmezett érték `.` (pont). |
-| WriteBatchSize |Dokumentumok létrehozásához Azure Cosmos DB szolgáltatás párhuzamos kérelmek száma.<br/><br/>A teljesítmény úgy finomhangolhatja, e tulajdonság használatával vagy az Azure Cosmos Adatbázisból adatok másolásakor. A jobb teljesítmény számíthat, mivel több párhuzamos kérelem Azure Cosmos DB writeBatchSize növelésével. Azonban kell elkerülheti a sávszélesség-szabályozás, amely képes throw a hibaüzenet a következő: "Ez nagy lekérő".<br/><br/>Sávszélesség-szabályozás tényező, beleértve a dokumentumok, a dokumentumok számát méretét, indexelő házirend célgyűjteményt stb határoz meg. A másolási műveletek segítségével jobban gyűjtemény (például S3) rendelkezik a legtöbb átviteli sebesség érhető el (2500 kérés egység/másodperc). |Egész szám |Nem (alapértelmezett: 5) |
+| writeBatchSize |Dokumentumok létrehozásához Azure Cosmos DB szolgáltatás párhuzamos kérelmek száma.<br/><br/>A teljesítmény úgy finomhangolhatja, e tulajdonság használatával vagy az Azure Cosmos Adatbázisból adatok másolásakor. A jobb teljesítmény számíthat, mivel több párhuzamos kérelem Azure Cosmos DB writeBatchSize növelésével. Azonban kell elkerülheti a sávszélesség-szabályozás, amely képes throw a hibaüzenet a következő: "Ez nagy lekérő".<br/><br/>Sávszélesség-szabályozás tényező, beleértve a dokumentumok, a dokumentumok számát méretét, indexelő házirend célgyűjteményt stb határoz meg. A másolási műveletek segítségével jobban gyűjtemény (például S3) rendelkezik a legtöbb átviteli sebesség érhető el (2500 kérés egység/másodperc). |Egész szám |Nem (alapértelmezett: 5) |
 | writeBatchTimeout |Várakozási idő a művelet befejezését, mielőtt azt az időkorlátot. |A TimeSpan<br/><br/> Példa: "00: 30:00" (30 perc). |Nem |
 
 #### <a name="example"></a>Példa
@@ -1048,7 +1048,7 @@ Adatok másolása az Azure SQL Database, állítsa be a **típus gyűjtése** a 
 | Tulajdonság | Leírás | Megengedett értékek | Szükséges |
 | --- | --- | --- | --- |
 | writeBatchTimeout |Várakozási idő a kötegelt beszúrási művelet befejezését, mielőtt azt az időkorlátot. |A TimeSpan<br/><br/> Példa: "00: 30:00" (30 perc). |Nem |
-| WriteBatchSize |Szúr be az SQL-tábla adatokat, amikor a puffer mérete eléri writeBatchSize. |Egész szám (sorok száma) |Nem (alapértelmezett: 10000) |
+| writeBatchSize |Szúr be az SQL-tábla adatokat, amikor a puffer mérete eléri writeBatchSize. |Egész szám (sorok száma) |Nem (alapértelmezett: 10000) |
 | sqlWriterCleanupScript |Adja meg egy lekérdezést a másolási tevékenység végrehajtása úgy, hogy egy adott szelet adatait. |A lekérdezési utasítást. |Nem |
 | sliceIdentifierColumnName |Adja meg a másolási tevékenység során automatikusan létrejön szelet azonosítóval, amely távolítja el az adatokat egy adott szelet, amikor futtassa újra a kitöltésének oszlop nevét. |Egy oszlop binary(32) adattípusú oszlop neve. |Nem |
 | sqlWriterStoredProcedureName |A tárolt eljárás neve a cél táblázatba upserts (frissítés/Beszúrás) adatok. |A tárolt eljárás neve. |Nem |
@@ -1225,12 +1225,12 @@ Adatok másolása az Azure SQL Data Warehouse, állítsa be a **típus gyűjtés
 | --- | --- | --- | --- |
 | sqlWriterCleanupScript |Adja meg egy lekérdezést a másolási tevékenység végrehajtása úgy, hogy egy adott szelet adatait. |A lekérdezési utasítást. |Nem |
 | allowPolyBase |Azt jelzi, hogy (ha alkalmazható), a PolyBase használata helyett BULKINSERT mechanizmus. <br/><br/> **Az ajánlott módszer az adatok betöltése az SQL Data Warehouse PolyBase a használata.** |True (Igaz) <br/>Hamis (alapértelmezés) |Nem |
-| kapcsolódó polyBaseSettings |Egy csoport, amely tulajdonságok megadott, amikor a **allowPolybase** tulajdonsága **igaz**. |&nbsp; |Nem |
+| polyBaseSettings |Egy csoport, amely tulajdonságok megadott, amikor a **allowPolybase** tulajdonsága **igaz**. |&nbsp; |Nem |
 | rejectValue |Megadja a szám vagy is el kell utasítani, mielőtt a lekérdezés nem sikerült sorokat százalékát. <br/><br/>További információ a PolyBase utasítsa el a beállítások elemre a **argumentumok** szakasza [külső tábla létrehozása (Transact-SQL)](https://msdn.microsoft.com/library/dn935021.aspx) témakör. |0 (alapértelmezés), 1, 2... |Nem |
 | rejectType |Határozza meg, hogy a rejectValue beállítás konstans értéket vagy százalékában van megadva. |Érték (alapértelmezett), százalékos aránya |Nem |
-| rejectSampleValue |Mielőtt a PolyBase újraszámítja a visszautasított sorok százalékát beolvasandó sorok számát határozza meg. |1, 2... |Igen, ha **rejectType** van **százalékos aránya** |
+| rejectSampleValue |Mielőtt a PolyBase újraszámítja a visszautasított sorok százalékát beolvasandó sorok számát határozza meg. |1, 2, … |Igen, ha **rejectType** van **százalékos aránya** |
 | useTypeDefault |Megadja, hogyan legyen kezelve tagolt szövegfájlok a hiányzó értékeket, amikor a PolyBase kér le adatokat a szövegfájlból.<br/><br/>Ezt a tulajdonságot, az argumentumok ismertető részben olvashat [létrehozása külső FÁJLFORMÁTUM (Transact-SQL)](https://msdn.microsoft.com/library/dn935026.aspx). |IGAZ, hamis (alapértelmezés) |Nem |
-| WriteBatchSize |Adatok beszúrása a SQL táblázatba, amikor a puffer mérete eléri writeBatchSize |Egész szám (sorok száma) |Nem (alapértelmezett: 10000) |
+| writeBatchSize |Adatok beszúrása a SQL táblázatba, amikor a puffer mérete eléri writeBatchSize |Egész szám (sorok száma) |Nem (alapértelmezett: 10000) |
 | writeBatchTimeout |Várakozási idő a kötegelt beszúrási művelet befejezését, mielőtt azt az időkorlátot. |A TimeSpan<br/><br/> Példa: "00: 30:00" (30 perc). |Nem |
 
 #### <a name="example"></a>Példa
@@ -1415,7 +1415,7 @@ A data factory használatával az Azure storage-fiók összekapcsolása a **fió
 }  
 ```
 
-#### <a name="azure-storage-sas-linked-service"></a>Az Azure Storage SAS társított szolgáltatás
+#### <a name="azure-storage-sas-linked-service"></a>Azure Storage SAS Linked Service
 A társított Azure Storage SAS-szolgáltatás lehetővé teszi egy Azure Storage-fiók összekapcsolása egy Azure data factory egy közös hozzáférésű Jogosultságkód (SAS) használatával. Az adat-előállítóban minden/specifikus erőforrások (blobtárolóban /) a tárolóban lévő korlátozott/időhöz kötött hozzáférést biztosít. Az Azure storage-fiók összekapcsolása egy adat-előállító közös hozzáférésű Jogosultságkód használatával, a társított Azure Storage SAS-szolgáltatás létrehozása. Egy Azure Storage SAS meghatározásához társított szolgáltatás, állítsa be a **típus** a társított szolgáltatás **AzureStorageSas**. Ezután megadhatja tulajdonságait a következő a **typeProperties** szakasz:   
 
 | Tulajdonság | Leírás | Szükséges |
@@ -1481,7 +1481,7 @@ Adatok másolása az Azure Table Storage, állítsa be a **adatforrástípust** 
 | Tulajdonság | Leírás | Megengedett értékek | Szükséges |
 | --- | --- | --- | --- |
 | azureTableSourceQuery |Az egyéni lekérdezés segítségével adatokat olvasni. |Azure-tábla lekérdezési karakterlánc. Példák a következő szakaszban. |Nem. Amikor egy Táblanév egy azureTableSourceQuery nélkül van megadva, a tábla összes rekordot a cél lesz másolva. Ha egy azureTableSourceQuery is meg van adva, a cél a táblázatból, amely eleget tesz a lekérdezés rekordok lesz másolva. |
-| azureTableSourceIgnoreTableNotFound |Azt jelzi, hogy a tábla kivétel swallow nem létezik. |IGAZ<br/>HAMIS |Nem |
+| azureTableSourceIgnoreTableNotFound |Azt jelzi, hogy a tábla kivétel swallow nem létezik. |IGAZ<br/>FALSE |Nem |
 
 #### <a name="example"></a>Példa
 
@@ -1537,7 +1537,7 @@ Adatok másolása az Azure Table Storage, állítsa be a **típus gyűjtése** a
 | azureTablePartitionKeyName |Adja meg az oszlop, amelynek értékeket fogja használni, mint partíciókulcsok nevét. Ha nincs megadva, a partíciós kulcs AzureTableDefaultPartitionKeyValue lesz. |Egy oszlop neve. |Nem |
 | azureTableRowKeyName |Adja meg az oszlop, amelynek oszlop értékeit sor kulcsaként vannak használatban. Ha nincs megadva, minden egyes sorára használjon a GUID Azonosítót. |Egy oszlop neve. |Nem |
 | azureTableInsertType |A mód lehet adatokat beszúrni az Azure-tábla.<br/><br/>Ez a tulajdonság szabja meg, hogy rendelkeznek-e a meglévő sorokat a táblában az egyező partíció-és sorkulcsok cseréje vagy egyesített értékükre. <br/><br/>Ezeket a beállításokat (lemezegyesítési és -csere) működése, lásd: [Insert vagy az egyesítéses entitás](https://msdn.microsoft.com/library/azure/hh452241.aspx) és [Insert vagy az entitás cseréje](https://msdn.microsoft.com/library/azure/hh452242.aspx) témaköröket. <br/><br> Ez a beállítás a sor szintjén, a táblázatok szintjén nem vonatkozik, és sem a lehetőség törli a kimeneti táblához, amely nem szerepel a bemeneti sorokat. |Egyesítés (alapértelmezett)<br/>cserélje le |Nem |
-| WriteBatchSize |Amikor writeBatchSize vagy writeBatchTimeout találati adatok beillesztése az Azure-tábla. |Egész szám (sorok száma) |Nem (alapértelmezett: 10000) |
+| writeBatchSize |Amikor writeBatchSize vagy writeBatchTimeout találati adatok beillesztése az Azure-tábla. |Egész szám (sorok száma) |Nem (alapértelmezett: 10000) |
 | writeBatchTimeout |Adatok szúr be az Azure-táblázatra, ha a writeBatchSize vagy writeBatchTimeout találati |A TimeSpan<br/><br/>Példa: "00: 20:00" (20 perc) |Nem (alapértelmezett tároló ügyfél alapértelmezett időtúllépési érték 90 másodperc) |
 
 #### <a name="example"></a>Példa
@@ -1707,7 +1707,7 @@ Az IBM DB2 meghatározásához társított szolgáltatás, állítsa be a **típ
 | kiszolgáló |A DB2-kiszolgáló neve. |Igen |
 | adatbázis |Neve a DB2-adatbázishoz. |Igen |
 | Séma |Az adatbázisban séma neve. A séma neve a kis-és nagybetűket. |Nem |
-| AuthenticationType |A DB2-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa. Lehetséges értékek a következők: névtelen, alapszintű és a Windows. |Igen |
+| authenticationType |A DB2-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa. Lehetséges értékek a következők: névtelen, alapszintű és a Windows. |Igen |
 | felhasználónév |Adja meg a felhasználónevet Basic vagy Windows-hitelesítés használata. |Nem |
 | jelszó |Adja meg a felhasználónévhez megadott felhasználói fiók jelszavát. |Nem |
 | gatewayName |Az átjáró, amely használatával a Data Factory szolgáltatásnak csatlakoznia a helyszíni DB2-adatbázishoz való kapcsolódáshoz neve. |Igen |
@@ -1823,7 +1823,7 @@ Egy MySQL meghatározásához társított szolgáltatás, állítsa be a **típu
 | kiszolgáló |A MySQL-kiszolgáló neve. |Igen |
 | adatbázis |A MySQL-adatbázis neve. |Igen |
 | Séma |Az adatbázisban séma neve. |Nem |
-| AuthenticationType |A MySQL-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa. Lehetséges értékek a következők: `Basic`. |Igen |
+| authenticationType |A MySQL-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa. Lehetséges értékek a következők: `Basic`. |Igen |
 | felhasználónév |Adja meg a felhasználónevet a MySQL-adatbázishoz való kapcsolódáshoz. |Igen |
 | jelszó |Adja meg a megadott felhasználói fiók jelszavát. |Igen |
 | gatewayName |Az átjáró, amely a Data Factory szolgáltatásnak csatlakoznia való kapcsolódáshoz a helyszíni MySQL-adatbázis neve. |Igen |
@@ -2005,7 +2005,7 @@ Adatok másolása az Oracle-adatbázishoz, állítsa be a **adatforrástípust**
 
 | Tulajdonság | Leírás | Megengedett értékek | Szükséges |
 | --- | --- | --- | --- |
-| oracleReaderQuery |Az egyéni lekérdezés segítségével adatokat olvasni. |SQL-lekérdezési karakterlánc. Például:`select * from MyTable` <br/><br/>Ha nincs megadva, az SQL-utasítást, amely végrehajtja a rendszer:`select * from MyTable` |Nem (Ha **tableName** a **dataset** van megadva) |
+| oracleReaderQuery |Az egyéni lekérdezés segítségével adatokat olvasni. |SQL-lekérdezési karakterlánc. Például:`select * from MyTable` <br/><br/>Ha nincs megadva, az SQL-utasítást, amely végrehajtja a rendszer: `select * from MyTable` |Nem (Ha **tableName** a **dataset** van megadva) |
 
 #### <a name="example"></a>Példa
 
@@ -2058,7 +2058,7 @@ Adatok másolása az Oracle-adatbázishoz am, állítsa be a **típus gyűjtése
 | Tulajdonság | Leírás | Megengedett értékek | Szükséges |
 | --- | --- | --- | --- |
 | writeBatchTimeout |Várakozási idő a kötegelt beszúrási művelet befejezését, mielőtt azt az időkorlátot. |A TimeSpan<br/><br/> . Példa: 00:30:00 (30 perc). |Nem |
-| WriteBatchSize |Szúr be az SQL-tábla adatokat, amikor a puffer mérete eléri writeBatchSize. |Egész szám (sorok száma) |Nem (alapértelmezett: 100) |
+| writeBatchSize |Szúr be az SQL-tábla adatokat, amikor a puffer mérete eléri writeBatchSize. |Egész szám (sorok száma) |Nem (alapértelmezett: 100) |
 | sqlWriterCleanupScript |Adja meg egy lekérdezést a másolási tevékenység végrehajtása úgy, hogy egy adott szelet adatait. |A lekérdezési utasítást. |Nem |
 | sliceIdentifierColumnName |Adja meg a másolási tevékenység során automatikusan létrejön szelet azonosító, amely segítségével távolítja el az adatokat egy adott szelet, amikor futtassa újra a töltse ki az oszlopnevet. |Egy oszlop binary(32) adattípusú oszlop neve. |Nem |
 
@@ -2114,7 +2114,7 @@ Egy PostgreSQL meghatározásához társított szolgáltatás, állítsa be a **
 | kiszolgáló |A PostgreSQL-kiszolgáló neve. |Igen |
 | adatbázis |A PostgreSQL-adatbázis neve. |Igen |
 | Séma |Az adatbázisban séma neve. A séma neve a kis-és nagybetűket. |Nem |
-| AuthenticationType |A PostgreSQL-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa. Lehetséges értékek a következők: névtelen, alapszintű és a Windows. |Igen |
+| authenticationType |A PostgreSQL-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa. Lehetséges értékek a következők: névtelen, alapszintű és a Windows. |Igen |
 | felhasználónév |Adja meg a felhasználónevet Basic vagy Windows-hitelesítés használata. |Nem |
 | jelszó |Adja meg a felhasználónévhez megadott felhasználói fiók jelszavát. |Nem |
 | gatewayName |Az átjáró, amely használatával a Data Factory szolgáltatásnak csatlakoznia a helyszíni PostgreSQL-adatbázishoz való kapcsolódáshoz neve. |Igen |
@@ -2341,7 +2341,7 @@ Egy SAP HANA meghatározásához társított szolgáltatás, állítsa be a **t�
 Tulajdonság | Leírás | Megengedett értékek | Szükséges
 -------- | ----------- | -------------- | --------
 kiszolgáló | A kiszolgálóra az SAP HANA-példány neve. Ha a kiszolgáló egy testreszabott portot használ, adja meg a `server:port`. | karakterlánc | Igen
-AuthenticationType | Hitelesítés típusa. | Karakterlánc. "Basic" vagy "Windows" | Igen 
+authenticationType | Hitelesítés típusa. | Karakterlánc. "Basic" vagy "Windows" | Igen 
 felhasználónév | Az SAP-kiszolgálóhoz hozzáféréssel rendelkező felhasználó neve | karakterlánc | Igen
 jelszó | A felhasználó jelszavát. | karakterlánc | Igen
 gatewayName | Az átjáró, amely a Data Factory szolgáltatásnak csatlakoznia való kapcsolódáshoz a helyszíni SAP HANA-példány neve. | karakterlánc | Igen
@@ -2609,7 +2609,7 @@ Adatok másolása az SQL Server-adatbázishoz, állítsa be a **típus gyűjtés
 | Tulajdonság | Leírás | Megengedett értékek | Szükséges |
 | --- | --- | --- | --- |
 | writeBatchTimeout |Várakozási idő a kötegelt beszúrási művelet befejezését, mielőtt azt az időkorlátot. |A TimeSpan<br/><br/> Példa: "00: 30:00" (30 perc). |Nem |
-| WriteBatchSize |Szúr be az SQL-tábla adatokat, amikor a puffer mérete eléri writeBatchSize. |Egész szám (sorok száma) |Nem (alapértelmezett: 10000) |
+| writeBatchSize |Szúr be az SQL-tábla adatokat, amikor a puffer mérete eléri writeBatchSize. |Egész szám (sorok száma) |Nem (alapértelmezett: 10000) |
 | sqlWriterCleanupScript |Adja meg a lekérdezést úgy, hogy egy adott szelet adatait végrehajtásához másolási tevékenységhez. További információkért lásd: [ismételhetőség](#repeatability-during-copy) szakasz. |A lekérdezési utasítást. |Nem |
 | sliceIdentifierColumnName |Adja meg a másolási tevékenység során automatikusan létrejön szelet azonosító, amely segítségével távolítja el az adatokat egy adott szelet, amikor futtassa újra a töltse ki az oszlopnevet. További információkért lásd: [ismételhetőség](#repeatability-during-copy) szakasz. |Egy oszlop binary(32) adattípusú oszlop neve. |Nem |
 | sqlWriterStoredProcedureName |A tárolt eljárás neve a cél táblázatba upserts (frissítés/Beszúrás) adatok. |A tárolt eljárás neve. |Nem |
@@ -2672,7 +2672,7 @@ Adja meg a Sybase társított a szolgáltatás, állítsa be a **típus** a tár
 | kiszolgáló |A Sybase-kiszolgáló neve. |Igen |
 | adatbázis |Neve a Sybase-adatbázishoz. |Igen |
 | Séma |Az adatbázisban séma neve. |Nem |
-| AuthenticationType |A Sybase-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa. Lehetséges értékek a következők: névtelen, alapszintű és a Windows. |Igen |
+| authenticationType |A Sybase-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa. Lehetséges értékek a következők: névtelen, alapszintű és a Windows. |Igen |
 | felhasználónév |Adja meg a felhasználónevet Basic vagy Windows-hitelesítés használata. |Nem |
 | jelszó |Adja meg a felhasználónévhez megadott felhasználói fiók jelszavát. |Nem |
 | gatewayName |Az átjáró, amely használatával a Data Factory szolgáltatásnak csatlakoznia a helyszíni Sybase-adatbázishoz való kapcsolódáshoz neve. |Igen |
@@ -2790,7 +2790,7 @@ Adja meg a teradata rendszerhez társított a szolgáltatás, állítsa be a **t
 | Tulajdonság | Leírás | Szükséges |
 | --- | --- | --- |
 | kiszolgáló |A Teradata-kiszolgáló neve. |Igen |
-| AuthenticationType |A Teradata-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa. Lehetséges értékek a következők: névtelen, alapszintű és a Windows. |Igen |
+| authenticationType |A Teradata-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa. Lehetséges értékek a következők: névtelen, alapszintű és a Windows. |Igen |
 | felhasználónév |Adja meg a felhasználónevet Basic vagy Windows-hitelesítés használata. |Nem |
 | jelszó |Adja meg a felhasználónévhez megadott felhasználói fiók jelszavát. |Nem |
 | gatewayName |Az átjáró, amely használatával a Data Factory szolgáltatásnak csatlakoznia a helyszíni Teradata-adatbázishoz való kapcsolódáshoz neve. |Igen |
@@ -2903,9 +2903,9 @@ Kapcsolódó Cassandra szolgáltatás definiálásához, állítsa be a **típus
 
 | Tulajdonság | Leírás | Szükséges |
 | --- | --- | --- |
-| gazdagép |Egy vagy több IP-címek vagy Cassandra kiszolgálók állomás nevét.<br/><br/>IP-címek vagy állomásnevek kiszolgálókhoz való kapcsolódáshoz összes egyidejűleg vesszővel tagolt listáját adja meg. |Igen |
+| gazdagép |One or more IP addresses or host names of Cassandra servers.<br/><br/>IP-címek vagy állomásnevek kiszolgálókhoz való kapcsolódáshoz összes egyidejűleg vesszővel tagolt listáját adja meg. |Igen |
 | port |A TCP-portot, amelyen a Cassandra kiszolgáló ügyfélkapcsolatokat. |Nem, alapértelmezett érték: 9042 |
-| AuthenticationType |Basic vagy Anonymous |Igen |
+| authenticationType |Basic vagy Anonymous |Igen |
 | felhasználónév |Adja meg a felhasználói fiók felhasználónevét. |Igen, ha authenticationType beállítása alapszintű. |
 | jelszó |Adja meg a felhasználói fiók jelszavát. |Igen, ha authenticationType beállítása alapszintű. |
 | gatewayName |A helyszíni Cassandra adatbázishoz való csatlakozáshoz használt átjáró neve. |Igen |
@@ -2937,7 +2937,7 @@ Cassandra dataset határozza meg, állítsa be a **típus** a DataSet **Cassandr
 
 | Tulajdonság | Leírás | Szükséges |
 | --- | --- | --- |
-| kulcstérértesítések használatával |Kulcstérértesítések használatával vagy séma Cassandra adatbázis nevét. |Igen (Ha **lekérdezés** a **CassandraSource** nincs definiálva). |
+| keyspace |Kulcstérértesítések használatával vagy séma Cassandra adatbázis nevét. |Igen (Ha **lekérdezés** a **CassandraSource** nincs definiálva). |
 | tableName |A tábla Cassandra adatbázis neve. |Igen (Ha **lekérdezés** a **CassandraSource** nincs definiálva). |
 
 #### <a name="example"></a>Példa
@@ -3032,7 +3032,7 @@ A MongoDB meghatározásához társított szolgáltatás, állítsa be a **típu
 | --- | --- | --- |
 | kiszolgáló |Kiszolgáló IP-címét vagy állomásnevét kiszolgálónevét a mongodb-Protokolltámogatással. |Igen |
 | port |A MongoDB-kiszolgálóhoz a kapcsolatok figyelésére használt TCP portot. |Nem kötelező, alapértelmezett érték: 27017 |
-| AuthenticationType |Alapszintű, vagy névtelen. |Igen |
+| authenticationType |Alapszintű, vagy névtelen. |Igen |
 | felhasználónév |Felhasználói fiók MongoDB eléréséhez. |Igen (Ha alapszintű hitelesítést használ). |
 | jelszó |A felhasználó jelszavát. |Igen (Ha alapszintű hitelesítést használ). |
 | authSource |A MongoDB-adatbázist, amely a hitelesítő adatok kereséséhez használni kívánt nevét. |Választható (Ha alapszintű hitelesítést használ). alapértelmezett: a rendszergazdai fiókot és a databaseName tulajdonsággal megadott adatbázis használ. |
@@ -3177,7 +3177,7 @@ Adja meg az Amazon S3 adatkészlethez, állítsa be a **típus** a DataSet **Ama
 | --- | --- | --- | --- |
 | bucketName |S3 gyűjtő neve. |Karakterlánc |Igen |
 | kulcs |S3 objektum kulcsa. |Karakterlánc |Nem |
-| előtag |S3 objektum kulcshoz előtag. Kiválasztott objektumok, amelynek kulcsait a előtaggal kezdődik. Érvényes, csak ha kulcsa üres. |Karakterlánc |Nem |
+| prefix |S3 objektum kulcshoz előtag. Kiválasztott objektumok, amelynek kulcsait a előtaggal kezdődik. Érvényes, csak ha kulcsa üres. |Karakterlánc |Nem |
 | verzió: |Ha engedélyezve van a S3 versioning S3 objektum verziója. |Karakterlánc |Nem |
 | Formátumban | A következő formátumban típusok támogatottak: **szöveges**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Állítsa be a **típus** tulajdonság a formátuma a következő értékek egyikét. További információkért lásd: [szövegformátum](data-factory-supported-file-and-compression-formats.md#text-format), [Json formátumban](data-factory-supported-file-and-compression-formats.md#json-format), [az Avro formátum](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc formátum](data-factory-supported-file-and-compression-formats.md#orc-format), és [Parquet formátum](data-factory-supported-file-and-compression-formats.md#parquet-format) szakaszok. <br><br> Ha azt szeretné, hogy **másolja a fájlokat-van** közötti fájlalapú tárolók (bináris másolhatja azokat), hagyja ki a Formátum szakasz mindkét bemeneti és kimeneti adatkészlet-definíciókban. |Nem | |
 | Tömörítés | Adja meg a típus és az adatok tömörítése szintjét. Támogatott típusok a következők: **GZip**, **Deflate**, **BZip2**, és **ZipDeflate**. A támogatott szintek a következők: **Optimal** és **leggyorsabb**. További információkért lásd: [formátumú és tömörítést az Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Nem | |
@@ -3326,7 +3326,7 @@ Egy helyszíni fájlrendszer hozzákapcsolhatja egy az Azure data factory, a **a
 | Forgatókönyv | A társított szolgáltatás definíciójának üzemeltetéséhez | Az adatkészlet-definícióban folderPath |
 | --- | --- | --- |
 | Az adatkezelési átjáró gépen helyi mappában: <br/><br/>Példák: D:\\ \* vagy D:\folder\subfolder\\* |D:\\ \\ (az adatok felügyeleti átjáró 2.0-s és újabb verziók) <br/><br/> a localhost (korábbi verzióihoz mint adatok felügyeleti átjáró 2.0-s) |. \\ \\ vagy mappa\\\\almappa (az adatok felügyeleti átjáró 2.0-s és újabb verziók) <br/><br/>D:\\ \\ vagy D:\\\\mappa\\\\almappa (az átjáró verziója alatt 2.0-s) |
-| Távoli megosztott mappa: <br/><br/>Példák: \\ \\myserver\\megosztása\\ \* vagy \\ \\myserver\\megosztása\\mappa\\almappa\\* |\\\\\\\\myserver\\\\megosztása |. \\ \\ vagy mappa\\\\almappa |
+| Távoli megosztott mappa: <br/><br/>Példák: \\ \\myserver\\megosztása\\ \* vagy \\ \\myserver\\megosztása\\mappa\\almappa\\* |\\\\\\\\myserver\\\\share |. \\ \\ vagy mappa\\\\almappa |
 
 
 #### <a name="example-using-username-and-password-in-plain-text"></a>Példa: Felhasználónév és jelszó használatával egyszerű szöveges
@@ -3370,7 +3370,7 @@ Adja meg a fájlrendszer adatkészletet, állítsa be a **típus** a DataSet **f
 | Tulajdonság | Leírás | Szükséges |
 | --- | --- | --- |
 | folderPath |Adja meg a részleges elérési útja a mappához. Az escape-karakter használata "\" a speciális karakterek a karakterláncban. Lásd: [minta kapcsolódó szolgáltatás és az adatkészlet-definíciók](#sample-linked-service-and-dataset-definitions) példákat.<br/><br/>Ez a tulajdonság a kombinálhatja **partitionBy** szeretné, hogy a mappa elérési utak alapján szelet kezdő és záró dátum-idő. |Igen |
-| fileName |Adja meg a fájl nevét a **folderPath** Ha azt szeretné, hogy a tábla egy adott fájlra a mappában. Ha nem ad meg ehhez a tulajdonsághoz értéket, a tábla a mappában lévő összes fájlt mutat.<br/><br/>Nincs megadva fájlnév egy kimeneti adatkészletet, a létrehozott fájl neve esetén a következő formátumban: <br/><br/>`Data.<Guid>.txt`(Példa: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt) |Nem |
+| fileName |Adja meg a fájl nevét a **folderPath** Ha azt szeretné, hogy a tábla egy adott fájlra a mappában. Ha nem ad meg ehhez a tulajdonsághoz értéket, a tábla a mappában lévő összes fájlt mutat.<br/><br/>Nincs megadva fájlnév egy kimeneti adatkészletet, a létrehozott fájl neve esetén a következő formátumban: <br/><br/>`Data.<Guid>.txt` (Példa: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt) |Nem |
 | fileFilter |Adjon meg egy szűrőt, amely minden fájl helyett a fájlok Tárolónév részhalmazának kiválasztására szolgál. <br/><br/>Két érték engedélyezett: `*` (több karaktert) és `?` (egyetlen karakter).<br/><br/>1. példa: "fileFilter": "* .log"<br/>2. példa: "fileFilter": 2016 - 1-?. txt"<br/><br/>Vegye figyelembe, hogy fileFilter egy bemeneti fájlmegosztási adatkészlet esetében alkalmazható. |Nem |
 | partitionedBy |PartitionedBy segítségével adjon meg egy dinamikus folderPath/fájlnevet idősorozat adatok. Példa: az adatok óránkénti paraméteres folderPath. |Nem |
 | Formátumban | A következő formátumban típusok támogatottak: **szöveges**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Állítsa be a **típus** tulajdonság a formátuma a következő értékek egyikét. További információkért lásd: [szövegformátum](data-factory-supported-file-and-compression-formats.md#text-format), [Json formátumban](data-factory-supported-file-and-compression-formats.md#json-format), [az Avro formátum](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc formátum](data-factory-supported-file-and-compression-formats.md#orc-format), és [Parquet formátum](data-factory-supported-file-and-compression-formats.md#parquet-format) szakaszok. <br><br> Ha azt szeretné, hogy **másolja a fájlokat-van** közötti fájlalapú tárolók (bináris másolhatja azokat), hagyja ki a Formátum szakasz mindkét bemeneti és kimeneti adatkészlet-definíciókban. |Nem |
@@ -3548,15 +3548,15 @@ Egy FTP meghatározásához társított szolgáltatás, állítsa be a **típus*
 
 | Tulajdonság | Leírás | Szükséges | Alapértelmezett |
 | --- | --- | --- | --- |
-| gazdagép |Az FTP-kiszolgáló neve vagy IP-cím |Igen |&nbsp; |
-| AuthenticationType |A hitelesítés típusának megadása |Igen |Alapszintű, a névtelen |
+| gazdagép |Name or IP address of the FTP Server |Igen |&nbsp; |
+| authenticationType |A hitelesítés típusának megadása |Igen |Alapszintű, a névtelen |
 | felhasználónév |Az FTP-kiszolgálóhoz hozzáféréssel rendelkező felhasználó |Nem |&nbsp; |
 | jelszó |A felhasználó (felhasználónév) jelszavát |Nem |&nbsp; |
 | encryptedCredential |Az FTP-kiszolgáló eléréséhez titkosított hitelesítő adatokat |Nem |&nbsp; |
 | gatewayName |A helyszíni FTP-kiszolgálóhoz csatlakozni az adatkezelési átjáró átjáró neve |Nem |&nbsp; |
 | port |Port, amelyet az FTP-kiszolgáló figyel |Nem |21 |
-| enableSsl |Adja meg, hogy a TLS/SSL csatornán keresztül FTP használata |Nem |igaz |
-| enableServerCertificateValidation |Adja meg, hogy engedélyezi az FTP-használ, a TLS/SSL csatornán keresztül kiszolgálói SSL-tanúsítvány hitelesítése |Nem |igaz |
+| enableSsl |Adja meg, hogy a TLS/SSL csatornán keresztül FTP használata |Nem |true |
+| enableServerCertificateValidation |Adja meg, hogy engedélyezi az FTP-használ, a TLS/SSL csatornán keresztül kiszolgálói SSL-tanúsítvány hitelesítése |Nem |true |
 
 #### <a name="example-using-anonymous-authentication"></a>Példa: A névtelen hitelesítést használó
 
@@ -3636,7 +3636,7 @@ Adja meg az FTP-adatkészlet, állítsa be a **típus** a DataSet **fájlmegoszt
 | --- | --- | --- |
 | folderPath |Sub mappa elérési útját. Használja az escape-karakter "\" a speciális karakterek a karakterláncban. Lásd: [minta kapcsolódó szolgáltatás és az adatkészlet-definíciók](#sample-linked-service-and-dataset-definitions) példákat.<br/><br/>Ez a tulajdonság a kombinálhatja **partitionBy** szeretné, hogy a mappa elérési utak alapján szelet kezdő és záró dátum-idő. |Igen 
 | fileName |Adja meg a fájl nevét a **folderPath** Ha azt szeretné, hogy a tábla egy adott fájlra a mappában. Ha nem ad meg ehhez a tulajdonsághoz értéket, a tábla a mappában lévő összes fájlt mutat.<br/><br/>Ha nincs megadva fájlnév egy kimeneti adatkészletet, a létrehozott fájl nevét a következő lenne ebben a formátumban: <br/><br/>Adatok. <Guid>.txt (Példa: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |Nem |
-| fileFilter |Adjon meg egy szűrőt, amely minden fájl helyett a fájlok Tárolónév részhalmazának kiválasztására szolgál.<br/><br/>Két érték engedélyezett: `*` (több karaktert) és `?` (egyetlen karakter).<br/><br/>1. példa:`"fileFilter": "*.log"`<br/>2. példa:`"fileFilter": 2016-1-?.txt"`<br/><br/> fileFilter is alkalmazható egy bemeneti fájlmegosztási az adatkészlethez. Ez a tulajdonság a HDFS nem támogatott. |Nem |
+| fileFilter |Adjon meg egy szűrőt, amely minden fájl helyett a fájlok Tárolónév részhalmazának kiválasztására szolgál.<br/><br/>Két érték engedélyezett: `*` (több karaktert) és `?` (egyetlen karakter).<br/><br/>1. példa: `"fileFilter": "*.log"`<br/>2. példa: `"fileFilter": 2016-1-?.txt"`<br/><br/> fileFilter is alkalmazható egy bemeneti fájlmegosztási az adatkészlethez. Ez a tulajdonság a HDFS nem támogatott. |Nem |
 | partitionedBy |Adjon meg egy dinamikus folderPath idő adatsor fájlnevét partitionedBy használható. Például folderPath adatok óránkénti paraméteres. |Nem |
 | Formátumban | A következő formátumban típusok támogatottak: **szöveges**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Állítsa be a **típus** tulajdonság a formátuma a következő értékek egyikét. További információkért lásd: [szövegformátum](data-factory-supported-file-and-compression-formats.md#text-format), [Json formátumban](data-factory-supported-file-and-compression-formats.md#json-format), [az Avro formátum](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc formátum](data-factory-supported-file-and-compression-formats.md#orc-format), és [Parquet formátum](data-factory-supported-file-and-compression-formats.md#parquet-format) szakaszok. <br><br> Ha azt szeretné, hogy **másolja a fájlokat-van** közötti fájlalapú tárolók (bináris másolhatja azokat), hagyja ki a Formátum szakasz mindkét bemeneti és kimeneti adatkészlet-definíciókban. |Nem |
 | Tömörítés | Adja meg a típus és az adatok tömörítése szintjét. Támogatott típusok a következők: **GZip**, **Deflate**, **BZip2**, és **ZipDeflate**; és a támogatott szintek a következők: **Optimal** és **leggyorsabb**. További információkért lásd: [formátumú és tömörítést az Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Nem |
@@ -3776,7 +3776,7 @@ Adja meg a HDFS adatkészletet, állítsa be a **típus** a DataSet **fájlmegos
 
 | Tulajdonság | Leírás | Szükséges |
 | --- | --- | --- |
-| folderPath |A mappa elérési útját. Példa:`myfolder`<br/><br/>Használja az escape-karakter "\" a speciális karakterek a karakterláncban. Például: folder\subfolder, adja meg a mappa\\\\almappa és d:\samplefolder, adja meg a d:\\\\mappába.<br/><br/>Ez a tulajdonság a kombinálhatja **partitionBy** szeretné, hogy a mappa elérési utak alapján szelet kezdő és záró dátum-idő. |Igen |
+| folderPath |A mappa elérési útját. Példa: `myfolder`<br/><br/>Használja az escape-karakter "\" a speciális karakterek a karakterláncban. Például: folder\subfolder, adja meg a mappa\\\\almappa és d:\samplefolder, adja meg a d:\\\\mappába.<br/><br/>Ez a tulajdonság a kombinálhatja **partitionBy** szeretné, hogy a mappa elérési utak alapján szelet kezdő és záró dátum-idő. |Igen |
 | fileName |Adja meg a fájl nevét a **folderPath** Ha azt szeretné, hogy a tábla egy adott fájlra a mappában. Ha nem ad meg ehhez a tulajdonsághoz értéket, a tábla a mappában lévő összes fájlt mutat.<br/><br/>Ha nincs megadva fájlnév egy kimeneti adatkészletet, a létrehozott fájl nevét a következő lenne ebben a formátumban: <br/><br/>Adatok. <Guid>.txt (például:: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |Nem |
 | partitionedBy |Adjon meg egy dinamikus folderPath idő adatsor fájlnevét partitionedBy használható. Példa: folderPath adatok óránkénti paraméteres. |Nem |
 | Formátumban | A következő formátumban típusok támogatottak: **szöveges**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Állítsa be a **típus** tulajdonság a formátuma a következő értékek egyikét. További információkért lásd: [szövegformátum](data-factory-supported-file-and-compression-formats.md#text-format), [Json formátumban](data-factory-supported-file-and-compression-formats.md#json-format), [az Avro formátum](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc formátum](data-factory-supported-file-and-compression-formats.md#orc-format), és [Parquet formátum](data-factory-supported-file-and-compression-formats.md#parquet-format) szakaszok. <br><br> Ha azt szeretné, hogy **másolja a fájlokat-van** közötti fájlalapú tárolók (bináris másolhatja azokat), hagyja ki a Formátum szakasz mindkét bemeneti és kimeneti adatkészlet-definíciókban. |Nem |
@@ -3978,7 +3978,7 @@ Adja meg az SFTP adatkészlethez, állítsa be a **típus** a DataSet **fájlmeg
 | --- | --- | --- |
 | folderPath |Sub mappa elérési útját. Használja az escape-karakter "\" a speciális karakterek a karakterláncban. Lásd: [minta kapcsolódó szolgáltatás és az adatkészlet-definíciók](#sample-linked-service-and-dataset-definitions) példákat.<br/><br/>Ez a tulajdonság a kombinálhatja **partitionBy** szeretné, hogy a mappa elérési utak alapján szelet kezdő és záró dátum-idő. |Igen |
 | fileName |Adja meg a fájl nevét a **folderPath** Ha azt szeretné, hogy a tábla egy adott fájlra a mappában. Ha nem ad meg ehhez a tulajdonsághoz értéket, a tábla a mappában lévő összes fájlt mutat.<br/><br/>Ha nincs megadva fájlnév egy kimeneti adatkészletet, a létrehozott fájl nevét a következő lenne ebben a formátumban: <br/><br/>Adatok. <Guid>.txt (Példa: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |Nem |
-| fileFilter |Adjon meg egy szűrőt, amely minden fájl helyett a fájlok Tárolónév részhalmazának kiválasztására szolgál.<br/><br/>Két érték engedélyezett: `*` (több karaktert) és `?` (egyetlen karakter).<br/><br/>1. példa:`"fileFilter": "*.log"`<br/>2. példa:`"fileFilter": 2016-1-?.txt"`<br/><br/> fileFilter is alkalmazható egy bemeneti fájlmegosztási az adatkészlethez. Ez a tulajdonság a HDFS nem támogatott. |Nem |
+| fileFilter |Adjon meg egy szűrőt, amely minden fájl helyett a fájlok Tárolónév részhalmazának kiválasztására szolgál.<br/><br/>Két érték engedélyezett: `*` (több karaktert) és `?` (egyetlen karakter).<br/><br/>1. példa: `"fileFilter": "*.log"`<br/>2. példa: `"fileFilter": 2016-1-?.txt"`<br/><br/> fileFilter is alkalmazható egy bemeneti fájlmegosztási az adatkészlethez. Ez a tulajdonság a HDFS nem támogatott. |Nem |
 | partitionedBy |Adjon meg egy dinamikus folderPath idő adatsor fájlnevét partitionedBy használható. Például folderPath adatok óránkénti paraméteres. |Nem |
 | Formátumban | A következő formátumban típusok támogatottak: **szöveges**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Állítsa be a **típus** tulajdonság a formátuma a következő értékek egyikét. További információkért lásd: [szövegformátum](data-factory-supported-file-and-compression-formats.md#text-format), [Json formátumban](data-factory-supported-file-and-compression-formats.md#json-format), [az Avro formátum](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc formátum](data-factory-supported-file-and-compression-formats.md#orc-format), és [Parquet formátum](data-factory-supported-file-and-compression-formats.md#parquet-format) szakaszok. <br><br> Ha azt szeretné, hogy **másolja a fájlokat-van** közötti fájlalapú tárolók (bináris másolhatja azokat), hagyja ki a Formátum szakasz mindkét bemeneti és kimeneti adatkészlet-definíciókban. |Nem |
 | Tömörítés | Adja meg a típus és az adatok tömörítése szintjét. Támogatott típusok a következők: **GZip**, **Deflate**, **BZip2**, és **ZipDeflate**. Támogatott szintek a következők: **Optimal** és **leggyorsabb**. További információkért lásd: [formátumú és tömörítést az Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Nem |
@@ -4158,7 +4158,7 @@ Adja meg a HTTP-adatkészletet, állítsa be a **típus** a DataSet **Http**, é
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | relativeUrl | Az erőforrás adatokat tartalmazó relatív URL-CÍMÉT. Ha nincs megadva, csak a megadott URL-cím a társított szolgáltatás definíciójának használja. <br><br> Dinamikus URL-cím létrehozásához használható [adat-előállító funkciók és rendszerváltozók](data-factory-functions-variables.md), például: `"relativeUrl": "$$Text.Format('/my/report?month={0:yyyy}-{0:MM}&fmt=csv', SliceStart)"`. | Nem |
-| requestMethod | HTTP-metódus. Két érték engedélyezett **beolvasása** vagy **POST**. | Nem. Alapértelmezett érték a `GET`. |
+| requestMethod | HTTP-metódus. Két érték engedélyezett **beolvasása** vagy **POST**. | Nem. Az alapértelmezett szint a `GET`. |
 | additionalHeaders | További HTTP-kérelemfejlécekben. | Nem |
 | requestBody | A HTTP-kérelmek törzsében. | Nem |
 | Formátumban | Ha azt szeretné, hogy egyszerűen **lekérik az adatokat, HTTP-végpont-van** nélkül elemzés azt, hagyja ki a formátumot beállítások. <br><br> Ha azt szeretné, a HTTP-válasz tartalom elemzése során másolása, a következő formátumban típusok támogatottak: **szöveges**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. További információkért lásd: [szövegformátum](data-factory-supported-file-and-compression-formats.md#text-format), [Json formátumban](data-factory-supported-file-and-compression-formats.md#json-format), [az Avro formátum](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc formátum](data-factory-supported-file-and-compression-formats.md#orc-format), és [Parquet formátum](data-factory-supported-file-and-compression-formats.md#parquet-format) szakaszok. |Nem |
@@ -4835,7 +4835,7 @@ A következő táblázat ismerteti az igény szerinti HDInsight társított szol
 | Tulajdonság | Leírás | Szükséges |
 | --- | --- | --- |
 | type |A type tulajdonságot kell megadni **HDInsightOnDemand**. |Igen |
-| Nagyobbnak |A fürt munkavégző/adatok csomópontok száma. A HDInsight-fürt együtt ez a tulajdonság a megadott munkavégző csomópontok száma 2 átjárócsomópontokkal hozza létre. A csomópontok egy 4 munkavégző csomópontot tartalmazó fürtben veszi 24 mag, 4 mag, rendelkező standard, D3 méretű vannak (4\*a munkavégző csomópontokról, valamint 2 processzormag, 4 = 16\*az átjárócsomópontokkal processzormag, 4 = 8). Lásd: [hdinsight létrehozása Linux-alapú Hadoop-fürtök](../../hdinsight/hdinsight-hadoop-provision-linux-clusters.md) a standard, D3 réteg vonatkozó további információért. |Igen |
+| clusterSize |A fürt munkavégző/adatok csomópontok száma. A HDInsight-fürt együtt ez a tulajdonság a megadott munkavégző csomópontok száma 2 átjárócsomópontokkal hozza létre. A csomópontok egy 4 munkavégző csomópontot tartalmazó fürtben veszi 24 mag, 4 mag, rendelkező standard, D3 méretű vannak (4\*a munkavégző csomópontokról, valamint 2 processzormag, 4 = 16\*az átjárócsomópontokkal processzormag, 4 = 8). Lásd: [hdinsight létrehozása Linux-alapú Hadoop-fürtök](../../hdinsight/hdinsight-hadoop-provision-linux-clusters.md) a standard, D3 réteg vonatkozó további információért. |Igen |
 | timetolive |A megengedett üresjárati idő az igény szerinti HDInsight-fürthöz. Meghatározza, mennyi ideig az igény szerinti HDInsight-fürt aktív marad egy tevékenység fut, ha nincsenek a fürt más aktív feladatok befejezése után.<br/><br/>Például ha egy tevékenység futott 6 percig tart, és az élettartam értéke 5 perc, a fürt marad, a figyelő életben 5 perc, a 6 percnél feldolgozásának a tevékenység futtatása után. Ha egy másik tevékenységfuttatási 6 percnél időkeretet, dolgoz fel ugyanabban a fürtben.<br/><br/>Igény szerinti HDInsight fürtök létrehozásával egy (igénybe vehet) drága művelet, ezt a beállítást, mint egy adat-előállító teljesítményének javításával újból felhasználja az igény szerinti HDInsight-fürtök által szükséges Igen használja.<br/><br/>A TimeToLive tulajdonság értékét 0-ra állítja be, ha törölni a fürtöt, amint a tevékenység futtatása feldolgozott. Másrészről Ha a magas érték, a fürt felfüggesztheti üresjárati feleslegesen magas költségeket eredményez. Ezért fontos, hogy beállította-e a megfelelő értéket a igényei szerint.<br/><br/>Több folyamatok is használ az igény szerinti HDInsight-fürt ugyanazt a példányát, ha a timetolive tulajdonság értékének megfelelően van beállítva. |Igen |
 | verzió: |A HDInsight-fürt verziószáma. További információkért lásd: [HDInsight-verziókról támogatott az Azure Data Factory](data-factory-compute-linked-services.md#supported-hdinsight-versions-in-azure-data-factory). |Nem |
 | linkedServiceName |Az Azure tárolás társított szolgáltatásának történő tárolására és feldolgozására adatok az igény szerinti fürt által használható. <p>Jelenleg nem hozható létre, amely egy Azure Data Lake Store használ a tárolási igény szerinti HDInsight-fürtöt. Ha szeretné tárolni az eredményadatok a HDInsight-feldolgozás alatt álló egy Azure Data Lake Store-ból, a másolási tevékenység segítségével az adatok másolása az Azure Blob Storage-ból az Azure Data Lake Store.</p>  | Igen |

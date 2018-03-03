@@ -3,7 +3,7 @@ title: "Megfigyelés és kezelés adatok folyamatok - Azure |} Microsoft Docs"
 description: "Útmutató: a figyelés és a felügyeleti alkalmazás segítségével Azure adat-előállítók és a folyamatok felügyeletét és kezelését."
 services: data-factory
 documentationcenter: 
-author: spelluru
+author: sharonlo101
 manager: jhubbard
 editor: monicar
 ms.assetid: f3f07bc4-6dc3-4d4d-ac22-0be62189d578
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/10/2018
-ms.author: spelluru
+ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 0678e9bf6ea9e4161fc291729f1480ac7082796a
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 4d4371b1372a7ed492faacf16813ae3e3f4c4697
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-monitoring-and-management-app"></a>Figyelheti és kezelheti az Azure Data Factory adatcsatornák a figyelés és felügyelet alkalmazással
 > [!div class="op_single_selector"]
@@ -150,10 +150,10 @@ A Diagram nézet alján megjelenik az ilyen gombokat: Nagyítás a, Kicsinyíté
 
 ![Diagram nézet Nagyítás parancsok](./media/data-factory-monitor-manage-app/DiagramViewZoomCommands.png)
 
-### <a name="activity-windows-list"></a>A tevékenységek Windows listája
+### <a name="activity-windows-list"></a>Tevékenységablakok lista
 A tevékenység Windows a középső ablaktáblán alján megjelenik az erőforrás-kezelővel vagy a Diagram nézetben kiválasztott adatkészlet összes tevékenység windows. Alapértelmezés szerint a lista van, csökkenő sorrendben, ami azt jelenti, hogy megjelenik-e a legújabb tevékenység ablak tetején.
 
-![A tevékenységek Windows listája](./media/data-factory-monitor-manage-app/ActivityWindowsList.png)
+![Tevékenységablakok lista](./media/data-factory-monitor-manage-app/ActivityWindowsList.png)
 
 Ebben a listában nem frissülnek automatikusan, ezért a frissítés gombra az eszköztáron kézi frissítéséhez.  
 
@@ -195,7 +195,7 @@ Tevékenység windows a következő állapotok valamelyikében lehet:
 <td>A tevékenység ablakban feldolgozása folyamatban van.</td>
 </tr>
 <tr>
-<td rowspan="4">Sikertelen</td><td>Időtúllépésbe került</td><td>A tevékenység végrehajtási tevékenység által megengedett érték időt vett igénybe.</td>
+<td rowspan="4">Meghiúsult</td><td>Időtúllépésbe került</td><td>A tevékenység végrehajtási tevékenység által megengedett érték időt vett igénybe.</td>
 </tr>
 <tr>
 <td>Törölve</td><td>A tevékenység ablakban felhasználói művelet megszakította.</td>
@@ -324,9 +324,9 @@ A következő táblázat a rendelkezésre álló eseményeket és állapotokat (
 
 | esemény neve | status | A részállapot |
 | --- | --- | --- |
-| A tevékenység futtatása megkezdődött |Elindítva |Indulás alatt |
+| A tevékenység futtatása megkezdődött |Elindítva |Indítás |
 | A tevékenység futtatása befejeződött |Sikeres |Sikeres |
-| A tevékenység futtatása befejeződött |Sikertelen |Nem sikerült erőforrás-elosztás<br/><br/>Sikertelen végrehajtása<br/><br/>Időtúllépés<br/><br/>Érvényesítés<br/><br/>Elhagyott |
+| A tevékenység futtatása befejeződött |Meghiúsult |Nem sikerült erőforrás-elosztás<br/><br/>Sikertelen végrehajtása<br/><br/>Időtúllépés<br/><br/>Érvényesítés<br/><br/>Elhagyott |
 | Igény szerinti HDI-fürtöt létrehozni elindítva |Elindítva |-|
 | Igény szerinti HDI-fürtnek sikeresen létrehozva |Sikeres |-|
 | Igény szerinti HDI-fürtnek törlése |Sikeres |-|

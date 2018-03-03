@@ -14,11 +14,11 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 04/12/2017
 ms.author: cenkd;juliako
-ms.openlocfilehash: d7c33dc0a3c1f01cc53a91e05feb33272cb21f47
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 1266c7b6c1539f84eafea1007999fb4360184857
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="live-streaming-with-on-premises-encoders-that-create-multi-bitrate-streams"></a>Élő Stream továbbítása helyszíni kódolókkal, amely többféle sávszélességű adatfolyamok létrehozása
 ## <a name="overview"></a>Áttekintés
@@ -135,7 +135,7 @@ Az IP-címek, amelyek jogosultak videókat közzétenni a csatorna adhat meg. Az
 
 Ha egyetlen IP-címek vannak megadva, és határoz meg szabálydefiníciót, az IP-cím engedélyezett. Ha az összes IP-címnek szeretne engedélyt adni, hozzon létre egy szabályt, és állítsa be a következő értéket: 0.0.0.0/0.
 
-### <a name="channel-preview"></a>Csatorna előnézeti
+### <a name="channel-preview"></a>Csatorna előnézete
 #### <a name="preview-urls"></a>Kép URL-címek
 Csatorna előnézeti végpont (előzetes verzió URL-cím), amelyekkel előzetes megtekintéséhez és az adatfolyam érvényesítése előtt további feldolgozás és a szállítási adja meg.
 
@@ -171,19 +171,19 @@ Archivált tartalom törléséhez állítsa le és törölje a programot, és t�
 ## <a id="states"></a>Csatorna állapotok és számlázási
 Az aktuális állapot csatorna a lehetséges értékek a következők:
 
-* **Leállítva**: a csatorna kezdeti állapotában Ez az a létrehozása után. Ebben az állapotban lévő csatorna tulajdonságainak frissítése is, de streaming nem engedélyezett.
+* **Leállítva**: a csatorna kezdeti állapotában Ez az a létrehozása után. Ebben az állapotban a csatorna tulajdonságai módosíthatók, a streamelés azonban nem engedélyezett.
 * **Kezdési**: A csatorna indítása folyamatban van. Ebben az állapotban sem a frissítés, sem a streamelés nem engedélyezett. Ha hiba lép fel, és a csatorna ad vissza a **leállítva** állapotát.
 * **Futó**: A csatorna élő adatfolyamok tud feldolgozni.
 * **Leállítása**: A csatorna leállítását. Ebben az állapotban sem a frissítés, sem a streamelés nem engedélyezett.
 * **Törlés**: A csatorna törlése folyamatban van. Ebben az állapotban sem a frissítés, sem a streamelés nem engedélyezett.
 
-Az alábbi táblázat bemutatja, hogyan csatorna szerint térkép számlázási módra.
+Az alábbi táblázat azt ismerteti, hogy az egyes csatornaállapotok esetében miként alakul a számlázási mód.
 
-| Csatorna állapota | Portál felhasználói felületének mutatók | Számlázandó? |
+| Csatorna állapota | Jelzése a portál kezelőfelületén | Számlázandó? |
 | --- | --- | --- | --- |
-| **Indítása** |**Indítása** |Nem (átmeneti állapot) |
+| **Starting** |**Starting** |Nem (átmeneti állapot) |
 | **Fut** |**Készen áll a** (nincs futó programok)<p><p>vagy<p>**Adatfolyam-** (legalább egy futó program) |Igen |
-| **Leállítása** |**Leállítása** |Nem (átmeneti állapot) |
+| **Stopping** |**Stopping** |Nem (átmeneti állapot) |
 | **Leállt** |**Leállt** |Nem |
 
 ## <a id="cc_and_ads"></a>Lezárt feliratok és az ad beszúrási
@@ -209,6 +209,10 @@ Egy helyszíni élő kódoló többféle sávszélességű adatfolyamot küldeni
 Az alábbiakban a csatornák és kapcsolódó összetevők kapcsolódó egyéb szempontok:
 
 * Minden alkalommal, amikor újrakonfigurálja az élő kódoló, hívja az **alaphelyzetbe** módszer a csatornán. A csatorna visszaállítása előtt akkor állítsa le a programot. A csatorna visszaállítása után indítsa újra a programot.
+
+  > [!NOTE]
+  > A program újraindításakor kell társíthatja egy új eszközt, és hozzon létre egy új lokátort. 
+  
 * Egy csatornát csak akkor, ha az állítható le a **futtató** állapotot és a csatornán minden program lett leállítva.
 * Alapértelmezés szerint csak öt csatornák adhat hozzá a Media Services-fiókhoz. További információkért lásd: [kvóták és korlátozások](media-services-quotas-and-limitations.md).
 * Csak akkor, ha a csatorna kell fizetni az **futtató** állapotát. További információkért lásd: a [állapotok és számlázási csatorna](media-services-live-streaming-with-onprem-encoders.md#states) szakasz.

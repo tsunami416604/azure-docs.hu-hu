@@ -14,20 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/09/2017
 ms.author: juliako
-ms.openlocfilehash: d8e740e969f68c85842f42c109328423da1b4414
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: dc7748c3058cd2aca907e3bc564b2ad18090db28
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="how-to-deliver-an-asset-by-download"></a>Útmutató: egy eszköz letöltés biztosításához
-Ebben a témakörben ismertetett beállítások tölteni a Media Services adathordozó eszközök kézbesítéséhez. Számos alkalmazás-forgatókönyveket a Media Services tartalom biztosíthat. Töltse le az adathordozó eszközök, vagy egy lokátor segítségével elérhet. A médiatartalom küldhet egy másik alkalmazás vagy egy másik szolgáltatóhoz. Jobb teljesítmény és méretezhetőség is biztosíthat tartalmat egy Content Delivery Network (CDN) használatával.
+A cikk ismerteti a Media Services feltöltött adathordozó eszközök kézbesítéséhez beállítások. Számos alkalmazás-forgatókönyveket a Media Services tartalom biztosíthat. Kódolás, töltse le a generált adathordozó eszközök vagy a streamelési lokátor segítségével elérhet. Jobb teljesítmény és méretezhetőség is biztosíthat tartalmat egy Content Delivery Network (CDN) használatával.
 
 Ez a példa bemutatja, hogyan adathordozó eszközök letölteni a Media Services a helyi számítógépen. A kód lekéri a Feladatazonosító és fér hozzá a Media Services-fiókjához társított feladatok a **OutputMediaAssets** gyűjtemény (amely a készlet egy vagy több kimeneti adathordozó eszközök fut egy feladat annak az eredménye). A példa bemutatja, hogyan töltheti le kimeneti adathordozó eszközök egy feladatot, de ugyanezt a megközelítést, más eszközök letöltésére is alkalmazhat.
 
 >[!NOTE]
->A különböző AMS-szabályzatok (például a Locator vagy a ContentKeyAuthorizationPolicy) esetében a korlát 1 000 000 szabályzat. Ha mindig ugyanazokat a napokat/hozzáférési engedélyeket használja (például olyan keresők szabályzatait, amelyek hosszú ideig érvényben maradnak, vagyis nem feltöltött szabályzatokat), a szabályzatazonosítónak is ugyanannak kell lennie. További információ [ebben](media-services-dotnet-manage-entities.md#limit-access-policies) a témakörben érhető el.
+>A különböző AMS-szabályzatok (például a Locator vagy a ContentKeyAuthorizationPolicy) esetében a korlát 1 000 000 szabályzat. Az azonos házirend-azonosító akkor használja, ha mindig használja az ugyanazon nap / hozzáférési engedélyek, például a lokátorokat, amelyek célja, hogy továbbra is érvényben hosszú ideje (nem feltöltés házirendek) házirendek. További információkért tekintse meg [ezt](media-services-dotnet-manage-entities.md#limit-access-policies) a cikket.
 
+```csharp
     // Download the output asset of the specified job to a local folder.
     static IAsset DownloadAssetToLocal( string jobId, string outputFolder)
     {
@@ -76,7 +77,7 @@ Ez a példa bemutatja, hogyan adathordozó eszközök letölteni a Media Service
     {
         Console.WriteLine(string.Format("{0} % download progress. ", e.Progress));
     }
-
+```
 
 
 ## <a name="media-services-learning-paths"></a>Media Services képzési tervek

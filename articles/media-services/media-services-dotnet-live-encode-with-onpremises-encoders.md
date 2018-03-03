@@ -14,11 +14,11 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 12/09/2017
 ms.author: cenkdin;juliako
-ms.openlocfilehash: 49246df64372939288354acce768cdc366a85440
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 5c59300cd5dc8dcb67ba3b2e035bb7a3b9dce216
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="how-to-perform-live-streaming-with-on-premises-encoders-using-net"></a>Élő Stream továbbítása helyszíni kódolókkal .NET használatával
 > [!div class="op_single_selector"]
@@ -69,7 +69,7 @@ Az alábbi példakód bemutatja, hogyan érhetők el a következő feladatokat:
 
 Az élő kódolók konfigurálásával kapcsolatos további információkért lásd: [Azure Media Services RMTP-támogatása és valós idejű kódolók](https://azure.microsoft.com/blog/2014/09/18/azure-media-services-rtmp-support-and-live-encoders/).
 
-```
+```csharp
 using System;
 using System.Collections.Generic;
 using System.Configuration;

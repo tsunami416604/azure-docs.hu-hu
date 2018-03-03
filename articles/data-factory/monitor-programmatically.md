@@ -3,7 +3,7 @@ title: "Programozott módon figyelheti az Azure data factory |} Microsoft Docs"
 description: "Ismerje meg, hogy egy adat-előállítóban folyamat figyelése különböző software development Kit (SDK-k) használatával."
 services: data-factory
 documentationcenter: 
-author: spelluru
+author: douglaslMS
 manager: jhubbard
 editor: 
 ms.service: data-factory
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2018
-ms.author: spelluru
-ms.openlocfilehash: 8d47ebe5ad40aee8289420e8424ec4d745baf2df
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.author: douglasl
+ms.openlocfilehash: 95934de9b84270ff112489a7b67f622dad609970
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="programmatically-monitor-an-azure-data-factory"></a>Egy Azure data factory programozott módon figyelése
 Ez a cikk ismerteti az adat-előállító adatcsatorna figyelése különböző software development Kit (SDK-k) használatával. 

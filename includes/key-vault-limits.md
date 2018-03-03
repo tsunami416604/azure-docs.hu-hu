@@ -13,6 +13,6 @@ Titkos kulcsok, a Tárfiókkulcsok felügyelt és a tároló tranzakciók:
 | Minden tranzakció |2000 |
 |
 
-Lásd: [szabályozás útmutató az Azure Key Vault](../key-vault/key-vault-ovw-throttling.md) kapcsolatos információk kezeléséhez, ha túllépik szabályozás.
+Lásd: [szabályozás útmutató az Azure Key Vault](../articles/key-vault/key-vault-ovw-throttling.md) kapcsolatos információk kezeléséhez, ha túllépik szabályozás.
 
 <sup>1</sup> előfizetés kiterjedő maximális minden tranzakció esetében, amely kulcstároló korlátja 5 x. Ha például HSM - előfizetésenként más tranzakciók korlátozva, és 5000 tranzakciók előfizetésenként 10 másodperc.

@@ -12,20 +12,20 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/11/2017
+ms.date: 2/28/2018
 ms.author: oanapl
-ms.openlocfilehash: 271d02bf5793ccb4ca8cbc4eeb8a6c5cfdd74f03
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.openlocfilehash: d226b8f8b3252fe82cd5077d235f301cfaa83654
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="introduction-to-service-fabric-health-monitoring"></a>A Service Fabric állapotmonitorozásának bemutatása
 Az Azure Service Fabric egy állapotmodell sokoldalú, rugalmasan és bővíthető állapotának kiértékelését és a jelentéskészítés biztosító vezet be. A modell lehetővé teszi, hogy a fürt és a benne a szolgáltatás állapotának közel valós idejű figyelését. Egyszerűen állapottal kapcsolatos adatok beszerzéséhez, és kijavíthatja az esetleges problémák ahhoz, hogy kaszkádolt és okozhat nagy kimaradások esetén. A tipikus modell szolgáltatások küldjön jelentést a helyi nézetek alapján, és, hogy arra, hogy általános információkat összesíti fürt szintű nézet.
 
 A Service Fabric összetevői a gazdag állapotmodell segítségével jelentést az aktuális állapot. Ugyanazt a mechanizmust segítségével jelentés állapotát, az alkalmazások. Fektet kiváló minőségű állapotfigyelő reporting, amely rögzíti az egyéni feltételek, ha észleli, és a futó alkalmazás sokkal könnyebben kapcsolatos problémák megoldása.
 
-A következő Microsoft Virtual Academy videó is ismerteti a Service Fabric állapotmodellt és használatának módját:<center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=tevZw56yC_1906218965">
+A következő Microsoft Virtual Academy videó is ismerteti a Service Fabric állapotmodellt és használatának módját: <center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=tevZw56yC_1906218965">
 <img src="./media/service-fabric-health-introduction/HealthIntroVid.png" WIDTH="360" HEIGHT="244">
 </a></center>
 
@@ -76,7 +76,7 @@ A lehetséges [állapotokat](https://docs.microsoft.com/dotnet/api/system.fabric
 
 * **OK**. Entitás állapota kifogástalan. Nincsenek küldött, vagy saját gyermekéhez. (ha alkalmazható) ismert problémák.
 * **Figyelmeztetés**. Az entitásnak van néhány problémát, de továbbra is működhet megfelelően. Például késések fordulnak elő, de azok nem indítják el működési probléma merül fel még. Bizonyos esetekben a figyelmeztetési feltételének megoldhatja maga külső beavatkozás nélkül. Ezekben az esetekben állapotjelentések felhívják a figyelmet, és adja meg, mi láthatósága van folyamatban. Más esetekben a figyelmeztetési feltételének ronthatja egy súlyos hiba, felhasználói beavatkozás nélkül.
-* **Hiba**. Az entitás nem kifogástalan. A művelet kell végezni az entitás, az állapot javításához, mert nem tud megfelelően működni.
+* **Error**. Az entitás nem kifogástalan. A művelet kell végezni az entitás, az állapot javításához, mert nem tud megfelelően működni.
 * **Ismeretlen**. Az entitás a health Store adatbázisban nem létezik. Ennek az elosztott lekérdezések, amelyek több összetevőből származó eredmények egyesítése lehet lekérni. Például a get-csomópont listalekérdezés ugrik **FailoverManager**, **ClusterManager**, és **HealthManager**; alkalmazás listalekérdezés ugrik  **ClusterManager** és **HealthManager**. A lekérdezések eredményeit a rendszer több összetevő egyesíteni. Ha egy másik rendszerösszetevő adja vissza, amely nem található a health Store adatbázisban entitás, az egyesített eredmény tartalmaz-e az ismeretlen állapot. Egy entitás oka nem a tárolóban állapotjelentések még nem dolgozott, vagy az entitás törölve lett törlése után.
 
 ## <a name="health-policies"></a>Házirendek
@@ -119,7 +119,7 @@ A konfigurálható házirendek a következők:
 * [A ConsiderWarningAsError](https://docs.microsoft.com/dotnet/api/system.fabric.health.applicationhealthpolicy.considerwarningaserror.aspx). Meghatározza, hogy kezelni a figyelmeztetési állapot jelentenek hibaként állapot kiértékelésekor. Alapértelmezett: false.
 * [MaxPercentUnhealthyDeployedApplications](https://docs.microsoft.com/dotnet/api/system.fabric.health.applicationhealthpolicy.maxpercentunhealthydeployedapplications). A maximális megengedett százalékos értékét határozza meg, hogy a nem megfelelő lehet, mielőtt az alkalmazás tekinthető hiba a központilag telepített alkalmazások. Ez a százalékérték keresztül az alkalmazások jelenleg telepítve vannak a a fürtben lévő csomópontok száma nem megfelelő a telepített alkalmazások számát elosztjuk. A számítási csomópontok kis számú hiba tűrését kerekít. Alapértelmezett százalékos aránya: nulla.
 * [DefaultServiceTypeHealthPolicy](https://docs.microsoft.com/dotnet/api/system.fabric.health.applicationhealthpolicy.defaultservicetypehealthpolicy). Adja meg az alapértelmezett service type állapotházirend minden szolgáltatás esetében az alkalmazás alapértelmezett állapotházirend váltja fel.
-* [Servicetypehealthpolicymap paraméterek hiányzó értékei](https://docs.microsoft.com/dotnet/api/system.fabric.health.applicationhealthpolicy.servicetypehealthpolicymap). Szolgáltatás állapotházirendeket szolgáltatás típusonkénti térképére biztosít. Ezek a házirendek cserélje le az alapértelmezett szolgáltatás típus állapotházirendeket, ha az egyes megadott szolgáltatás. Például ha egy alkalmazás egy állapot nélküli átjáró szolgáltatás típusa, egy állapot-nyilvántartó motor szolgáltatás, beállíthatja a health azok tesztelési másképp. Szolgáltatástípus száma szabályzat megadása esetén is révén a részletesebben vezérelhető, a szolgáltatás állapotáról.
+* [ServiceTypeHealthPolicyMap](https://docs.microsoft.com/dotnet/api/system.fabric.health.applicationhealthpolicy.servicetypehealthpolicymap). Szolgáltatás állapotházirendeket szolgáltatás típusonkénti térképére biztosít. Ezek a házirendek cserélje le az alapértelmezett szolgáltatás típus állapotházirendeket, ha az egyes megadott szolgáltatás. Például ha egy alkalmazás egy állapot nélküli átjáró szolgáltatás típusa, egy állapot-nyilvántartó motor szolgáltatás, beállíthatja a health azok tesztelési másképp. Szolgáltatástípus száma szabályzat megadása esetén is révén a részletesebben vezérelhető, a szolgáltatás állapotáról.
 
 ### <a name="service-type-health-policy"></a>Service type állapotházirend
 A [service type állapotházirend](https://docs.microsoft.com/dotnet/api/system.fabric.health.servicetypehealthpolicy) értékelje ki, és a szolgáltatások és szolgáltatások gyermekei összesítése módját adja meg. A házirend tartalmazza:
@@ -199,10 +199,10 @@ A [állapotjelentések](https://docs.microsoft.com/dotnet/api/system.fabric.heal
 * **SourceId**. Egy karakterlánc, amely egyedileg azonosítja az egészségügyi esemény jelentéskészítői.
 * **Entitás azonosítója**. Azonosítja az entitást, amikor a jelentésben van érvényben. Ez eltér a [entitástípus](service-fabric-health-introduction.md#health-entities-and-hierarchy):
   
-  * A fürt. nincs.
+  * A fürt. Nincs.
   * Csomópont. Csomópont neve (karakterlánc).
   * az alkalmazás. Alkalmazás neve (URI). Az alkalmazáspéldány telepítése a fürt nevét jelöli.
-  * A szolgáltatás. Szolgáltatás neve (URI). A fürtben telepített service-példány nevét jelöli.
+  * Service. Szolgáltatás neve (URI). A fürtben telepített service-példány nevét jelöli.
   * A partíció. Partíció azonosítója (GUID). A partíció egyedi azonosítóját jelöli.
   * A replika. Az állapotalapú szolgáltatási másodpéldány-azonosító, vagy az állapot nélküli szolgáltatáspéldány-Azonosítóval (INT64).
   * DeployedApplication. Az alkalmazásnév (URI) és a csomópont neve (karakterlánc).
@@ -211,7 +211,7 @@ A [állapotjelentések](https://docs.microsoft.com/dotnet/api/system.fabric.heal
 * **Leírás**. Egy karakterlánc, amely lehetővé teszi, hogy a jelentési a állapotesemény kapcsolatos részletes információk. **SourceId**, **tulajdonság**, és **HealthState** teljesen le kell írnia a jelentést. A leírás ad emberek számára olvasható jelentés adatai. A szöveg egyszerűbbé teszi a rendszergazdák és felhasználók számára az állapotjelentést ismertetése.
 * **HealthState**. Egy [számbavételi](service-fabric-health-introduction.md#health-states) , amely leírja, hogy a jelentés állapotának. Az elfogadott értékei OK, figyelmeztetés és hiba.
 * **A TimeToLive tulajdonság**. Timespan érték, amely azt jelzi, hogy mennyi ideig az állapotjelentést érvényes. Alapján kialakulhat **RemoveWhenExpired**, ez lehetővé teszi, hogy a health Store adatbázisban ismernie a lejárt események kiértékelni. Alapértelmezés szerint az érték a végtelen, és a jelentés érvényes tartja.
-* **RemoveWhenExpired**. Olyan logikai érték. Ha true értéke esetén a lejárt állapotjelentése automatikusan eltávolítja a health Store adatbázisban, és a jelentés nem befolyásolja a entitás állapotának kiértékelését. A jelentés egy megadott időszak alatt csak érvényes, és a jelentéskészítő nem kell explicit módon ürítse használt. Jelentések törlése a health Store adatbázisban is használható (például egy figyelő módosul, és leállítja az előző és tulajdonság jelentéseinek). Egy jelentés ezzel a rövid TimeToLive együtt RemoveWhenExpired törli az összes előző állapotát, a health store-ból is küldheti. Ha a beállítás értéke FALSE, az állapot kiértékelésekor a hiba a lejárt jelentés kell kezelni. A hamis értéket jelzi a health Store adatbázisban számára, hogy a forrás jelentést kell rendszeresen ezt a tulajdonságot. Ha nem, majd kell van a figyelő kódjával. A figyelő állapotát annak eldöntéséhez, hogy az eseményt, amely során rögzített.
+* **RemoveWhenExpired**. A Boolean. Ha true értéke esetén a lejárt állapotjelentése automatikusan eltávolítja a health Store adatbázisban, és a jelentés nem befolyásolja a entitás állapotának kiértékelését. A jelentés egy megadott időszak alatt csak érvényes, és a jelentéskészítő nem kell explicit módon ürítse használt. Jelentések törlése a health Store adatbázisban is használható (például egy figyelő módosul, és leállítja az előző és tulajdonság jelentéseinek). Egy jelentés ezzel a rövid TimeToLive együtt RemoveWhenExpired törli az összes előző állapotát, a health store-ból is küldheti. Ha a beállítás értéke FALSE, az állapot kiértékelésekor a hiba a lejárt jelentés kell kezelni. A hamis értéket jelzi a health Store adatbázisban számára, hogy a forrás jelentést kell rendszeresen ezt a tulajdonságot. Ha nem, majd kell van a figyelő kódjával. A figyelő állapotát annak eldöntéséhez, hogy az eseményt, amely során rögzített.
 * **SequenceNumber**. Pozitív egésznek kell lennie a egyre növekvő, a jelentések sorrendet jelöli. Elavult jelentések hálózati késések vagy más olyan problémák miatt késői kapott észlelésére szolgál által a health Store adatbázisban. Kisebb vagy egyenlő, mint a legtöbb legutóbb alkalmazott számát a ugyanaz az entitás, a forrás és a tulajdonság a sorszám esetén jelentést elutasítva. Ha nincs megadva, a sorszám automatikusan létrejön. Fontos a sorszám helyezése csak állapotváltozáskor jelentésekor. Ebben az esetben a forrás megjegyezhető akkor küldi el a jelentéseket, és biztosíthatja az adatok helyreállítás feladatátvétel van szüksége.
 
 Négy darabot információk – SourceId, entitás azonosítója, Property és HealthState--szükségesek a minden jelentés. A SourceId karakterlánc nem engedélyezett a előtaggal kezdődik "**System.**", amely rendszer jelentések számára van fenntartva. Ugyanaz az entitás nincs az azonos forrásból és a tulajdonság csak egy jelentés. A forrás és a tulajdonsághoz több jelentések fedjék át egymást, egészségügyi ügyféloldali (ha ezek vannak kötegelni) vagy az egészségügyi ügyféloldali tárolja. A csere alapul sorszámok; újabb jelentéskészítés (a magasabb sorszámok) cserélje le a régebbi jelentéseket.

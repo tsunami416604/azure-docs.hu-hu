@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/02/2017
 ms.author: adsolank
-ms.openlocfilehash: 02f634c2af04b6b372642ab0e6a17a5d29f16450
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b3163454213db0afb94e668e4c56924d7833d769
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="hyperlapse-media-files-with-azure-media-hyperlapse"></a>Médiafájlok feldolgozása az Azure Media hyperlapse használatával
 Az Azure Media Hyperlapse egy Media processzor (MP), amely zökkenőmentes idő letelt videók hoz első, aki vagy művelet – kamera tartalomról.  A felhő alapú testvérének [Microsoft Research asztali Hyperlapse Pro és Hyperlapse Mobile phone-alapú](http://aka.ms/hyperlapse), az Azure Media Services Microsoft Hyperlapse használja az Azure Media Services Media feldolgozása a jelentős mértékű vízszintes skálázása és parallelize platform tömeges Hyperlapse feldolgozása.
@@ -47,7 +47,7 @@ Ha a tartalom a Media Services-fiókját, szüksége lesz a konfigurációs kés
 A következő egy példa egy szabványos konfigurációs fájl XML- és a JSON:
 
 **XML-készletet:**
-
+```xml
     <?xml version="1.0" encoding="utf-16"?>
     <Preset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="1.0" xmlns="http://www.windowsazure.com/media/encoding/Preset/2014/03">
         <Sources>
@@ -57,9 +57,10 @@ A következő egy példa egy szabványos konfigurációs fájl XML- és a JSON:
             <Speed>12</Speed>
         </Options>
     </Preset>
+```
 
 **JSON-készletet:**
-
+```json
     {
         "Version":1.0,
         "Sources": [
@@ -73,8 +74,9 @@ A következő egy példa egy szabványos konfigurációs fájl XML- és a JSON:
             "Stabilize":false
         }
     }
+```
 
-### <a id="sample_code"></a>Microsoft Hyperlapse az AMS .NET SDK-val
+### <a id="sample_code"></a> Microsoft Hyperlapse az AMS .NET SDK-val
 A következő metódus feltölt egy médiafájlt eszközként, és létrehoz egy feladatot az Azure Media Hyperlapse Media processzorral rendelkező.
 
 > [!NOTE]
@@ -85,6 +87,7 @@ A következő metódus feltölt egy médiafájlt eszközként, és létrehoz egy
 > 
 > 
 
+```csharp
         static bool RunHyperlapseJob(string input, string output, string hyperConfig)
         {
             // create asset with input file
@@ -197,6 +200,7 @@ A következő metódus feltölt egy médiafájlt eszközként, és létrehoz egy
 
         return processor;
     }
+```
 
 ### <a id="file_types"></a>Támogatott fájltípusok
 * MP4

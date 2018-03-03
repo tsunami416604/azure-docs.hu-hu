@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/12/2016
 ms.author: crdun
-ms.openlocfilehash: a9c7c5dbbc50ccf8c5383be28e96dfb82af48559
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.openlocfilehash: 3ed607d80e6d40a9a466c5277eca636203c13ec2
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="add-push-notifications-to-your-xamarinforms-app"></a>Leküldéses értesítések hozzáadása a Xamarin.Forms-alkalmazás
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
@@ -152,6 +152,7 @@ A háttérrendszer működésében FCM konfigurált adhat hozzá összetevők é
         using Android.App;
         using Android.Content;
         using Android.Media;
+        using Android.Support.V7.App;
         using Android.Util;
         using Firebase.Messaging;
 
@@ -182,7 +183,7 @@ A háttérrendszer működésében FCM konfigurált adhat hozzá összetevők é
                 intent.AddFlags(ActivityFlags.ClearTop);
                 var pendingIntent = PendingIntent.GetActivity(this, 0, intent, PendingIntentFlags.OneShot);
 
-                var notificationBuilder = new Notification.Builder(this)
+                var notificationBuilder = new NotificationCompat.Builder(this)
                     .SetSmallIcon(Resource.Drawable.ic_stat_ic_notification)
                     .SetContentTitle("New Todo Item")
                     .SetContentText(messageBody)
@@ -202,7 +203,7 @@ Most már áll készen áll a teszt leküldéses értesítések Android-eszköz�
 ### <a name="test-push-notifications-in-your-android-app"></a>Teszt leküldéses értesítések Android-alkalmazás
 Az első két lépés csak egy emulátorának tesztelést esetén szükséges.
 
-1. Győződjön meg arról, üzembe vagy hibakeresés egy virtuális eszközön, amely rendelkezik a Google API-k, célként beállítva, az Android virtuális eszközt kezelőjét alább látható módon vannak.
+1. Győződjön meg arról, üzembe vagy egy eszközt vagy emulátort a Google Play-szolgáltatások konfigurált hibakeresést vannak. Ez úgy, hogy ellenőrizhető a **lejátszása** alkalmazások vannak telepítve az eszközökön és-emulátor.
 2. A Google-fiók kattintva vegyen fel új Android-eszköz **alkalmazások** > **beállítások** > **fiók hozzáadása**. Kövesse az utasításokat egy meglévő Google-fiók hozzáadása az eszközt, vagy hozzon létre egy újat.
 3. A Visual Studio és Xamarin Studióban, kattintson a jobb gombbal a **Droid** projektre, kattintson **beállítás kezdőprojektként**.
 4. Kattintson a **futtatása** a projekt felépítéséhez és az Android-eszköz vagy az emulátor indítsa el az alkalmazást.

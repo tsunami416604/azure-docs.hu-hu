@@ -1,6 +1,6 @@
 ---
-title: "Oktatóanyag: Azure Active Directory-integráció ADP összevont egyszeri bejelentkezési modellel |} Microsoft Docs"
-description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és ADP összevont egyszeri Bejelentkezést."
+title: "Oktatóanyag: Azure Active Directoryval integrált ADP |} Microsoft Docs"
+description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és ADP között."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -12,32 +12,32 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/02/2018
+ms.date: 02/27/2018
 ms.author: jeedes
-ms.openlocfilehash: ad12dfd525afe1bde7026535dceb25556abf0a96
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 1e0a35fd76f9eb6335685f05b8936b0b5105f6b2
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/02/2018
 ---
-# <a name="tutorial-azure-active-directory-integration-with-adp-federated-sso"></a>Oktatóanyag: Azure Active Directoryval integrált ADP összevont egyszeri bejelentkezés
+# <a name="tutorial-azure-active-directory-integration-with-adp"></a>Oktatóanyag: Azure Active Directoryval integrált ADP
 
-Ebben az oktatóanyagban elsajátíthatja ADP összevont egyszeri Bejelentkezéses integrálása az Azure Active Directory (Azure AD).
+Ebben az oktatóanyagban elsajátíthatja ADP integrálása az Azure Active Directory (Azure AD).
 
-ADP összevont egyszeri Bejelentkezéses integrálása az Azure AD lehetővé teszi a következő előnyöket biztosítja:
+ADP integrálása az Azure AD lehetővé teszi a következő előnyöket biztosítja:
 
-- Azt is szabályozhatja az Azure AD, aki hozzáfér ADP összevont egyszeri Bejelentkezést.
-- Az Azure AD-fiókok a engedélyezheti a felhasználóknak, hogy automatikusan lekérni aláírt a ADP összevont egyszeri Bejelentkezést (egyszeri bejelentkezés).
+- Az Azure AD, aki hozzáfér ADP szabályozhatja.
+- Engedélyezheti a felhasználóknak, hogy automatikusan beolvasása bejelentkezett ADP (egyszeri bejelentkezés) számára a saját Azure AD-fiókok.
 - A fiók egyetlen központi helyen – az Azure-portálon kezelheti.
 
 Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure AD-integrációs konfigurálásához ADP összevont egyszeri bejelentkezési modellel, a következőkre van szükség:
+Az Azure AD-integrációs ADP konfigurálni, kell a következő elemek:
 
 - Az Azure AD szolgáltatásra
-- Egy engedélyezett ADP összevont SSO-előfizetés
+- Az engedélyezett ADP előfizetéssel
 
 > [!NOTE]
 > Ez az oktatóanyag lépéseit teszteléséhez nem ajánlott használata termelési környezetben.
@@ -50,13 +50,13 @@ Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javasla
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 Ebben az oktatóanyagban tesztelése az Azure AD egyszeri bejelentkezéshez egy tesztkörnyezetben. Ebben az oktatóanyagban leírt forgatókönyv két fő építőelemeket áll:
 
-1. A gyűjteményből ADP összevont Egyszeri hozzáadása
+1. A gyűjteményből ADP hozzáadása
 2. És tesztelés az Azure AD konfigurálása egyszeri bejelentkezés
 
-## <a name="adding-adp-federated-sso-from-the-gallery"></a>A gyűjteményből ADP összevont Egyszeri hozzáadása
-Az Azure AD integrálása a ADP összevont Egyszeri konfigurálásához kell hozzáadnia ADP összevont egyszeri Bejelentkezést a gyűjteményből a felügyelt SaaS-alkalmazások listájára.
+## <a name="adding-adp-from-the-gallery"></a>A gyűjteményből ADP hozzáadása
+Az Azure AD integrálása a ADP konfigurálásához kell hozzáadnia ADP a gyűjteményből a felügyelt SaaS-alkalmazások listájára.
 
-**Adja hozzá a ADP összevont egyszeri Bejelentkezést a gyűjteményből, hajtsa végre az alábbi lépéseket:**
+**A gyűjteményből ADP hozzáadásához hajtsa végre az alábbi lépéseket:**
 
 1.  Jelentkezzen be rendszergazdaként a Microsoft Azure identitáskezelési szolgáltató környezetben.
 
@@ -72,35 +72,35 @@ Az Azure AD integrálása a ADP összevont Egyszeri konfigurálásához kell hoz
 
     ![Az új alkalmazás gomb][3]
 
-5. Írja be a keresőmezőbe, **ADP összevont egyszeri Bejelentkezéses**, jelölje be **ADP összevont egyszeri Bejelentkezéses** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+5. Írja be a keresőmezőbe, **ADP**, jelölje be **ADP** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
-    ![ADP összevont egyszeri Bejelentkezést az eredménylistában](./media/active-directory-saas-adpfederatedsso-tutorial/tutorial_adpfederatedsso_addfromgallery.png)
+    ![Az eredménylistában ADP](./media/active-directory-saas-adpfederatedsso-tutorial/tutorial_adp_addfromgallery.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés tesztelése és konfigurálása
 
-Ebben a szakaszban, konfigurálás és tesztelés az Azure AD az egyszeri bejelentkezés ADP összevont SSO "Britta Simon" nevű tesztfelhasználó alapján.
+Ebben a szakaszban, konfigurálás és tesztelés az Azure AD egyszeri bejelentkezéshez "Britta Simon" nevű tesztfelhasználó alapján ADP.
 
-Az egyszeri bejelentkezés működéséhez az Azure AD meg kell tudja, hogy mi a párjukhoz felhasználó ADP összevont egyszeri Bejelentkezést a felhasználók az Azure AD. Ez azt jelenti az Azure AD-felhasználó és a kapcsolódó ADP összevont egyszeri Bejelentkezéses felhasználó közötti kapcsolat kapcsolatot kell létrehozni.
+Az egyszeri bejelentkezés működéséhez az Azure AD meg kell tudja, hogy mi a párjukhoz felhasználó ADP a felhasználó Azure AD-ben. Ez azt jelenti egy Azure AD-felhasználó és a kapcsolódó felhasználó a ADP közötti kapcsolat kapcsolatot kell létrehozni.
 
-ADP összevont egyszeri Bejelentkezést, rendelje hozzá a értékének a **felhasználónév** értékeként Azure AD-ben a **felhasználónév** a hivatkozás kapcsolat létrehozására.
+ADP, rendelje hozzá a értékének a **felhasználónév** értékeként Azure AD-ben a **felhasználónév** a hivatkozás kapcsolat létrehozására.
 
-Az Azure AD az egyszeri bejelentkezés ADP összevont egyszeri bejelentkezési modellel tesztelése és konfigurálása, hogy végezze el a következő építőelemeket kell:
+Az Azure AD egyszeri bejelentkezést a ADP tesztelése és konfigurálása, hogy végezze el a következő építőelemeket kell:
 
 1. **[Az Azure AD az egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – lehetővé teszi a felhasználók a szolgáltatás használatához.
 2. **[Hozzon létre egy Azure AD-teszt felhasználó](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezést a Britta Simon teszteléséhez.
-3. **[Hozzon létre egy ADP összevont egyszeri Bejelentkezéses tesztfelhasználó](#create-an-adp-federated-sso-test-user)**  - való egy megfelelője a Britta Simon ADP összevont egyszeri Bejelentkezést, amely csatolva van a felhasználó az Azure AD-ábrázolását.
+3. **[Hozzon létre egy ADP tesztfelhasználó](#create-an-adp-test-user)**  - való egy megfelelője a Britta Simon ADP, amely csatolva van a felhasználó az Azure AD-ábrázolását.
 4. **[Rendelje hozzá az Azure AD-teszt felhasználó](#assign-the-azure-ad-test-user)**  - Britta Simon használata az Azure AD az egyszeri bejelentkezés engedélyezése.
 5. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure portálon, és konfigurálása egyszeri bejelentkezéshez az ADP összevont egyszeri bejelentkezés alkalmazásokhoz.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure portálon, és konfigurálása egyszeri bejelentkezéshez az ADP alkalmazásban.
 
-**Konfigurálja az Azure AD az egyszeri bejelentkezés ADP összevont egyszeri bejelentkezési modellel, hajtsa végre az alábbi lépéseket:**
+**Konfigurálása az Azure AD az egyszeri bejelentkezés ADP, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure portálon a a **ADP összevont egyszeri Bejelentkezéses** alkalmazás integráció lapján, kattintson a **tulajdonságai lap** és hajtsa végre a következő lépéseket: 
+1. Az Azure portálon a a **ADP** alkalmazás integráció lapján, kattintson a **tulajdonságai lap** és hajtsa végre a következő lépéseket: 
 
-    ![Egyszeri bejelentkezés tulajdonságai](./media/active-directory-saas-adpfederatedsso-tutorial/tutorial_adpfederatedsso_prop.png)
+    ![Egyszeri bejelentkezés tulajdonságai](./media/active-directory-saas-adpfederatedsso-tutorial/tutorial_adp_prop.png)
 
     a. Állítsa be a **engedélyezve van, hogy a felhasználók bejelentkezési** érték mező **Igen**.
 
@@ -110,25 +110,25 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     d. Állítsa be a **a felhasználók számára látható** érték mező **nem**.
 
-2. Kattintson a **egyszeri bejelentkezés** a **ADP összevont egyszeri Bejelentkezéses** alkalmazás integráció lapján.
+2. Kattintson a **egyszeri bejelentkezés** a **ADP** alkalmazás integráció lapján.
 
     ![Egyszeri bejelentkezés kapcsolat konfigurálása][4]
 
 3. Az a **egyszeri bejelentkezés** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezése.
  
-    ![Egyszeri bejelentkezés párbeszédpanel](./media/active-directory-saas-adpfederatedsso-tutorial/tutorial_adpfederatedsso_samlbase.png)
+    ![Egyszeri bejelentkezés párbeszédpanel](./media/active-directory-saas-adpfederatedsso-tutorial/tutorial_adp_samlbase.png)
 
-4. Az a **ADP összevont egyszeri Bejelentkezéses tartomány és az URL-címek** területen tegye a következőket:
+4. Az a **ADP tartomány és az URL-címek** területen tegye a következőket:
 
-    ![Az egyszeri bejelentkezés információk ADP összevont egyszeri Bejelentkezéses tartomány és az URL-címek](./media/active-directory-saas-adpfederatedsso-tutorial/tutorial_adpfederatedsso_url.png)
+    ![Az egyszeri bejelentkezés információk ADP tartomány és az URL-címek](./media/active-directory-saas-adpfederatedsso-tutorial/tutorial_adp_url.png)
 
     Az a **azonosító** szövegmezőhöz URL-címet írja be: `https://fed.adp.com/` 
     
-5. ADP összevont egyszeri bejelentkezési alkalmazás a SAML helyességi feltételek egy meghatározott formátumban, amelyek megkövetelik olyan egyéni attribútum-leképezésekhez hozzáadása a SAML-jogkivonat attribútumok konfigurációs vár. Az alábbi képernyőfelvételen látható egy példa a. A jogcím neve mindig lesz **"PersonImmutableID"** és amelynek értéke azt van leképezve **employeeid**. 
+5. A ADP alkalmazás a SAML helyességi feltételek egy meghatározott formátumban, amelyek megkövetelik olyan egyéni attribútum-leképezésekhez hozzáadása a SAML-jogkivonat attribútumok konfigurációs vár. Az alábbi képernyőfelvételen látható egy példa a. A jogcím neve mindig lesz **"PersonImmutableID"** és amelynek értéke azt van leképezve **employeeid**. 
 
-    A felhasználó Azure ad-ADP összevont egyszeri bejelentkezési leképezés a elvégzett Itt a **employeeid** , de ez leképezheti alkalmazás beállításai alapján egy másik értéket. Ezért kérjük, munkahelyi rendelkező [ADP támogatási csoport](https://www.adp.com/contact-us/overview.aspx) először használja a helyes azonosító egy olyan felhasználó, és képezze le az értéket a a **"PersonImmutableID"** jogcímek.
+    Itt állítva az Azure AD ADP akkor történik meg a **employeeid** , de ez leképezheti alkalmazás beállításai alapján egy másik értéket. Ezért kérjük, munkahelyi rendelkező [ADP támogatási csoport](https://www.adp.com/contact-us/overview.aspx) először használja a helyes azonosító egy olyan felhasználó, és képezze le az értéket a a **"PersonImmutableID"** jogcímek.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-adpfederatedsso-tutorial/tutorial_adpfederatedsso_attribute.png)
+    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-adpfederatedsso-tutorial/tutorial_adp_attribute.png)
 
 6. A a **felhasználói attribútumok** a szakasz a **egyszeri bejelentkezés** párbeszédpanelen konfigurálja a SAML-jogkivonat attribútum, az ábrán látható módon, és hajtsa végre a következő lépéseket:
     
@@ -153,9 +153,9 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
 7. Az a **SAML-aláíró tanúsítványa** területen kattintson **metaadatainak XML-kódja** és mentse a metaadat-fájlt a számítógépen.
 
-    ![A tanúsítvány letöltési hivatkozását](./media/active-directory-saas-adpfederatedsso-tutorial/tutorial_adpfederatedsso_certificate.png) 
+    ![A tanúsítvány letöltési hivatkozását](./media/active-directory-saas-adpfederatedsso-tutorial/tutorial_adp_certificate.png) 
 
-8. Egyszeri bejelentkezés konfigurálása **ADP összevont egyszeri Bejelentkezéses** oldalon kell feltölteni a letöltött **metaadatainak XML-kódja** a a [ADP összevont egyszeri Bejelentkezéses webhely](https://adpfedsso.adp.com/public/login/index.fcc).
+8. Egyszeri bejelentkezés konfigurálása **ADP** oldalon kell feltölteni a letöltött **metaadatainak XML-kódja** a a [ADP webhely](https://adpfedsso.adp.com/public/login/index.fcc).
 
 > [!NOTE]  
 > Ez a folyamat eltarthat néhány nap múlva. 
@@ -178,13 +178,13 @@ Az Ön képviselőjével is ADP megerősítő megérkezésekor a ADP Services-sz
 
     ![Az új alkalmazás gomb][3]
 
-4. Írja be a keresőmezőbe, **ADP összevont egyszeri Bejelentkezéses**, jelölje be **ADP összevont egyszeri Bejelentkezéses** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+4. Írja be a keresőmezőbe, **ADP**, jelölje be **ADP** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
-    ![ADP összevont egyszeri Bejelentkezést az eredménylistában](./media/active-directory-saas-adpfederatedsso-tutorial/tutorial_adpfederatedsso_addservicegallery.png)
+    ![Az eredménylistában ADP](./media/active-directory-saas-adpfederatedsso-tutorial/tutorial_adp_addservicegallery.png)
 
-5. Az Azure portálon a a **ADP összevont egyszeri Bejelentkezéses** alkalmazás integráció lapján, kattintson a **tulajdonságai lap** és hajtsa végre a következő lépéseket:  
+5. Az Azure portálon a a **ADP** alkalmazás integráció lapján, kattintson a **tulajdonságai lap** és hajtsa végre a következő lépéseket:  
 
-    ![Egyszeri bejelentkezés linkedproperties](./media/active-directory-saas-adpfederatedsso-tutorial/tutorial_adpfederatedsso_linkedproperties.png)
+    ![Egyszeri bejelentkezés linkedproperties](./media/active-directory-saas-adpfederatedsso-tutorial/tutorial_adp_linkedproperties.png)
 
     a.  Állítsa be a **engedélyezve van, hogy a felhasználók bejelentkezési** érték mező **Igen**.
 
@@ -192,19 +192,19 @@ Az Ön képviselőjével is ADP megerősítő megérkezésekor a ADP Services-sz
 
     c.  Állítsa be a **a felhasználók számára látható** érték mező **Igen**.
 
-6. Kattintson a **egyszeri bejelentkezés** a **ADP összevont egyszeri Bejelentkezéses** alkalmazás integráció lapján.
+6. Kattintson a **egyszeri bejelentkezés** a **ADP** alkalmazás integráció lapján.
 
     ![Egyszeri bejelentkezés kapcsolat konfigurálása][4]
 
-7. A a **egyszeri bejelentkezés** párbeszédablakban válassza **mód** , **társított bejelentkezés** az alkalmazás csatolni **ADP összevont egyszeri Bejelentkezéses**.
+7. Az a **egyszeri bejelentkezés** párbeszédablakban válassza **mód** , **társított bejelentkezés**. az alkalmazás csatolásához **ADP**.
 
-    ![Egyszeri bejelentkezés kapcsolódó](./media/active-directory-saas-adpfederatedsso-tutorial/tutorial_adpfederatedsso_linked.png)
+    ![Egyszeri bejelentkezés kapcsolódó](./media/active-directory-saas-adpfederatedsso-tutorial/tutorial_adp_linked.png)
 
 8. Keresse meg a **konfigurálása bejelentkezési URL-cím** területen tegye a következőket:
 
-    ![Egyszeri bejelentkezés prop](./media/active-directory-saas-adpfederatedsso-tutorial/tutorial_adpfederatedsso_linkedsignon.png)
+    ![Egyszeri bejelentkezés prop](./media/active-directory-saas-adpfederatedsso-tutorial/tutorial_adp_linkedsignon.png)
                                                               
-    a. Beillesztés a **felhasználói URL-CÍMEN**, amely a fenti másolta **tulajdonságai lap** (alkalmazásból a fő ADP összevont SSO).
+    a. Beillesztés a **felhasználói URL-CÍMEN**, amely a fenti másolta **tulajdonságai lap** (alkalmazásból a fő ADP).
                                                              
     b. Az alábbiakban az 5-alkalmazásokat, amelyek támogatják a különböző **továbbítási állapot URL-címek**. Rendelkezik a megfelelő hozzáfűzendő **továbbítási állapot URL-cím** manuálisan érték az adott alkalmazás a **felhasználói URL-CÍMEN**.
     
@@ -274,25 +274,25 @@ Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta
 
     d. Kattintson a **Create** (Létrehozás) gombra.
  
-### <a name="create-an-adp-federated-sso-test-user"></a>Hozzon létre egy ADP összevont egyszeri Bejelentkezéses tesztfelhasználó számára
+### <a name="create-an-adp-test-user"></a>Hozzon létre egy ADP tesztfelhasználó számára
 
-Ez a szakasz célja Britta Simon meghívta ADP összevont egyszeri Bejelentkezéses felhasználó létrehozásához. Együttműködve [ADP támogatási csoport](https://www.adp.com/contact-us/overview.aspx) a felhasználók hozzáadása a ADP összevont egyszeri bejelentkezési fiók.
+Ez a szakasz célja ADP Britta Simon nevű felhasználót létrehozni. Együttműködve [ADP támogatási csoport](https://www.adp.com/contact-us/overview.aspx) a felhasználók hozzáadása a ADP fiók.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Rendelje hozzá az Azure AD-teszt felhasználó
 
-Ebben a szakaszban Britta Simon használandó Azure egyszeri bejelentkezés által biztosított hozzáférés ADP összevont egyszeri bejelentkezés engedélyezése.
+Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés ADP Azure egyszeri bejelentkezéshez használandó.
 
 ![A felhasználói szerepkör hozzárendelése][200] 
 
-**Britta Simon hozzárendelése ADP összevont egyszeri Bejelentkezést, hajtsa végre a következő lépéseket:**
+**Britta Simon hozzárendelése ADP, hajtsa végre az alábbi lépéseket:**
 
 1. Az Azure-portálon, nyissa meg az alkalmazások nézet, majd nyissa meg a könyvtár nézetet, és navigáljon **vállalati alkalmazások** kattintson **összes alkalmazás**.
 
     ![Felhasználó hozzárendelése][201] 
 
-2. Az alkalmazások listában válassza ki a **ADP összevont egyszeri Bejelentkezéses**.
+2. Az alkalmazások listában válassza ki a **ADP**.
 
-    ![Az alkalmazások listáját a ADP összevont egyszeri Bejelentkezéses hivatkozás](./media/active-directory-saas-adpfederatedsso-tutorial/tutorial_adpfederatedsso_app.png)  
+    ![Az alkalmazások listáját a ADP hivatkozás](./media/active-directory-saas-adpfederatedsso-tutorial/tutorial_adp_app.png)  
 
 3. A bal oldali menüben kattintson a **felhasználók és csoportok**.
 
@@ -312,15 +312,13 @@ Ebben a szakaszban Britta Simon használandó Azure egyszeri bejelentkezés ált
 
 Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen tesztelése.
 
-Ha a hozzáférési Panel ADP összevont egyszeri Bejelentkezéses mozaik gombra kattint, akkor kell beolvasása automatikusan bejelentkezett ADP összevont egyszeri Bejelentkezéses Alkalmazásmódosítások.
+Ha a hozzáférési panelen ADP csempére kattint, akkor kell beolvasása automatikusan bejelentkezett az ADP alkalmazására.
 A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáférési Panel bemutatása](active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>További források
 
 * [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](active-directory-saas-tutorial-list.md)
 * [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](active-directory-appssoaccess-whatis.md)
-
-
 
 <!--Image references-->
 

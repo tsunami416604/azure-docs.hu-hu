@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/11/2017
+ms.date: 2/28/2018
 ms.author: oanapl
-ms.openlocfilehash: f2a07d58938ae77701d8df8099ec0aedf1524d6b
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: a402c1ab3b4e481cb75ec291949c6f523e162103
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="use-system-health-reports-to-troubleshoot"></a>Rendszerállapot-jelentések használata a hibaelhárítás során
 Azure Service Fabric-összetevők adja meg, hogy közvetlenül a kezdő verzióról a fürt összes entitásának a rendszerállapot-jelentéseket. A [a health Store adatbázisban](service-fabric-health-introduction.md#health-store) hoz létre, és törli a rendszer-jelentéseken alapuló entitásokat. Azt is rendszerezi azokat a hierarchiában, amely rögzíti az entitás interakciókat.

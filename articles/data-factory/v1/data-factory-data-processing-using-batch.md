@@ -3,7 +3,7 @@ title: "A nagyméretű adatkészletek feldolgozásához adat-előállító és k
 description: "Ismerteti, hogyan lehet egy Azure Data Factory-folyamat túl nagy adatmennyiségek feldolgozni a párhuzamos feldolgozása az Azure Batch funkció használatával."
 services: data-factory
 documentationcenter: 
-author: spelluru
+author: sharonlo101
 manager: jhubbard
 editor: monicar
 ms.assetid: 688b964b-51d0-4faa-91a7-26c7e3150868
@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/10/2018
-ms.author: spelluru
+ms.author: shlo
 robots: noindex
-ms.openlocfilehash: af2c12cac5846ae1c4bc693bacaf72ab327fb87f
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 3b886babe07a0bd1fa725286b5471055fc626dc1
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>Folyamat nagy méretű adatkészletek adat-előállító és kötegelt használatával
 > [!NOTE]
-> Ez a cikk vonatkozik 1 a Azure Data Factory általánosan elérhető. Ha 2-es verziójának a Data Factory szolgáltatásnak, amely jelenleg előzetes verzióban érhető, [egyéni tevékenységek 2-es verzióját a Data factoryban](../transform-data-using-dotnet-custom-activity.md).
+> Ez a cikk az Azure Data Factory általánosan elérhető 1-es verziójára vonatkozik. Ha 2-es verziójának a Data Factory szolgáltatásnak, amely jelenleg előzetes verzióban érhető, [egyéni tevékenységek 2-es verzióját a Data factoryban](../transform-data-using-dotnet-custom-activity.md).
 
 Ez a cikk ismerteti a minta megoldás, amely helyezi át, és feldolgozza a nagy méretű adatkészletek automatikus és ütemezett módon architektúrát. Emellett biztosítja a megoldás megvalósításához a Data Factory és az Azure Batch egy végpont forgatókönyv.
 
@@ -130,7 +130,7 @@ Használja [Azure Storage Explorer 6](https://azurestorageexplorer.codeplex.com/
 
    ![Mappa-és almappák](./media/data-factory-data-processing-using-batch/image3.png)
 
-   `Inputfolder`és `outputfolder` a legfelső szintű mappák `mycontainer`. A `inputfolder` mappa almappákat dátum-időbélyegeket (éééé-hh-nn-ÓÓ) rendelkezik.
+   `Inputfolder` és `outputfolder` a legfelső szintű mappák `mycontainer`. A `inputfolder` mappa almappákat dátum-időbélyegeket (éééé-hh-nn-ÓÓ) rendelkezik.
 
    Ha Tártallózó, használja a következő lépésben, a következő nevű feltöltött: `inputfolder/2015-11-16-00/file.txt`, `inputfolder/2015-11-16-01/file.txt`, és így tovább. Ez a lépés automatikusan a mappákat hoz létre.
 
@@ -556,9 +556,9 @@ Társított szolgáltatások adattárolókhoz hivatkozásra, vagy egy adat-elő�
 
    ![Új adattároló](./media/data-factory-data-processing-using-batch/image7.png)
 
-3. Cserélje le **fióknév** a tárfiók nevével. Cserélje le **fiókkulcs** a tárfiók hozzáférési kulccsal. A tárelérési kulcs beszerzéséről további tudnivalókért lásd: [nézet, a másolás és a hívóbetűk újragenerálása tárolási](../../storage/common/storage-create-storage-account.md#manage-your-storage-account).
+3. Cserélje le az **account name** kifejezést a tárfiókja nevére. Az **account key** kifejezést cserélje le a tárfiók hozzáférési kulcsára. A tárelérési kulcs beszerzéséről további tudnivalókért lásd: [nézet, a másolás és a hívóbetűk újragenerálása tárolási](../../storage/common/storage-create-storage-account.md#manage-your-storage-account).
 
-4. Válassza ki **telepítés** a parancssávon, a társított szolgáltatás telepítéséhez.
+4. A társított szolgáltatás üzembe helyezéséhez kattintson a parancssáv **Üzembe helyezés** elemére.
 
    ![Üzembe helyezés](./media/data-factory-data-processing-using-batch/image8.png)
 
@@ -593,7 +593,7 @@ Ebben a lépésben a Batch-fiók, amely a data factory egyéni tevékenységek f
    
    e. Adja meg **StorageLinkedService** a a **linkedServiceName** tulajdonság. Az előző lépésben létrehozott szolgáltatásnak. A tárolót használja a rendszer egy átmeneti területre, fájlok és a naplókat.
 
-3. Válassza ki **telepítés** a parancssávon, a társított szolgáltatás telepítéséhez.
+3. A társított szolgáltatás üzembe helyezéséhez kattintson a parancssáv **Üzembe helyezés** elemére.
 
 #### <a name="step-3-create-datasets"></a>3. lépés: Adatkészletek létrehozása
 Ebben a lépésben hoz létre a bemeneti és kimeneti adatok adatkészletek.
@@ -803,7 +803,7 @@ Ebben a lépésben létrehoz egy folyamatot egy tevékenységet, a korábban lé
     - A **isPaused** tulajdonsága hamis értékre van beállítva, alapértelmezés szerint. A folyamat a rendszer azonnal futtatja ebben a példában a szeletek indítsa el a régebbi, mert. Állíthatja ezt a tulajdonságot **igaz** felfüggeszti a feldolgozási sorban lévő és állítsa vissza azt **hamis** újraindítására.
     -   A **start** és **end** alkalommal egymástól öt órát. A szeletek hourly, előállítása, öt szeletek hozzák létre a folyamat.
 
-3. Válassza ki **telepítés** üzembe a folyamatot a parancssávon.
+3. A folyamat üzembe helyezéséhez kattintson a parancssor **Üzembe helyezés** elemére.
 
 #### <a name="step-5-test-the-pipeline"></a>5. lépés: A folyamat tesztelése
 Ebben a lépésben a folyamat a bemeneti mappákba fájlok ejtésével tesztelése. Indítsa el a feldolgozási sor tesztelték bemeneti mappáinak egy fájl.

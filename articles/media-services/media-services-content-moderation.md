@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/06/2018
 ms.author: sajagtap
-ms.openlocfilehash: 43e22e553b5243d6edc413c7a667089793f95396
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 1b473a6aef87e5f4c75be2becbf814ecaaab6f3a
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="use-azure-media-content-moderator-to-detect-possible-adult-and-racy-content"></a>Azure Media tartalom moderátor segítségével lehetséges felnőtt és ellopható tartalomtípusok
 
@@ -61,13 +61,13 @@ A kimeneti JSON az alábbi elemeket tartalmazza:
 | start |A kezdési időt az első esemény a "ticks." |
 | Időtartam |A hosszát a töredéke a "ticks." |
 | interval |Az időszak mindegyik esemény bejegyzése a töredéke a "ticks." |
-| [események](#events-json-elements) |Minden esemény klip jelöli, és minden egyes klip kulcsképek észlelt, és adott időtartamig belül követhetők tartalmazza. Események egy tömb. A külső tömb egy időköz jelöli. A belső tömb 0 vagy több olyan eseményeket, amelyek ezen a ponton az időben történtek áll.|
+| [Események](#events-json-elements) |Minden esemény klip jelöli, és minden egyes klip kulcsképek észlelt, és adott időtartamig belül követhetők tartalmazza. Események egy tömb. A külső tömb egy időköz jelöli. A belső tömb 0 vagy több olyan eseményeket, amelyek ezen a ponton az időben történtek áll.|
 
 ### <a name="events-json-elements"></a>Események JSON-elemek szerepelnek
 
 |Elem|Leírás|
 |---|---|
-| reviewRecommended | `true`vagy `false` attól függően, hogy a **adultScore** vagy **racyScore** haladhatja meg a belső küszöbértékeket. |
+| reviewRecommended | `true` vagy `false` attól függően, hogy a **adultScore** vagy **racyScore** haladhatja meg a belső küszöbértékeket. |
 | adultScore | 0,00 való 0,99 terjedő skálán lehetséges felnőtt tartalom abban, hogy pontszámot. |
 | racyScore | 0,00 való 0,99 terjedő skálán lehetséges ellopható tartalom abban, hogy pontszámot. |
 | index | a keret az első keret közötti skálán index index utolsó keret index. |
@@ -90,6 +90,7 @@ A következő .NET kódminta a Media Services .NET SDK használatával tartalom 
 Tekintse meg a [tartalom moderátor videó gyors üzembe helyezés](../cognitive-services/Content-Moderator/video-moderation-api.md) a teljes forráskód és a Visual Studio-projektet.
 
 
+```csharp
     /// <summary>
     /// Run the Content Moderator job on the designated Asset from local file or blob storage
     /// </summary>
@@ -155,14 +156,14 @@ Tekintse meg a [tartalom moderátor videó gyors üzembe helyezés](../cognitive
         DownloadAsset(job.OutputMediaAssets.First(), OUTPUT_FOLDER);
     }
 
-A teljes forráskód és a Visual Studio-projekt, tekintse meg a [tartalom moderátor videó gyors üzembe helyezés](../cognitive-services/Content-Moderator/video-moderation-api.md).
+For the full source code and the Visual Studio project, check out the [Content Moderator video quickstart](../cognitive-services/Content-Moderator/video-moderation-api.md).
 
-### <a name="json-output"></a>JSON kimeneti
+### JSON output
 
-A következő példa egy tartalom moderátor JSON kimeneti csonkolódott.
+The following example of a Content Moderator JSON output was truncated.
 
 > [!NOTE]
-> Másodpercben keyframe helyét timestamp/időskálára =
+> Location of a keyframe in seconds = timestamp/timescale
 
     {
     "version": 2,
@@ -213,7 +214,7 @@ A következő példa egy tartalom moderátor JSON kimeneti csonkolódott.
     }
     ]
     }
-
+```
 
 ## <a name="media-services-learning-paths"></a>Media Services képzési tervek
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]

@@ -12,11 +12,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: mbullwin
-ms.openlocfilehash: bd09e2a21c25097fa4b378cb2dbe2787edbb1967
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: 4139e3675e2202cc42b6b8d7ff7562e9c9d693bb
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="metric-telemetry-application-insights-data-model"></a>Metrika telemetriai: Application Insights adatmodell
 
@@ -31,7 +31,7 @@ A mérőszám a rendszer és a folyamat számlálók képviselő:
 | **.NET neve**             | **Platform független neve** | **REST API-név** | **Leírás**
 | ------------------------- | -------------------------- | ----------------- | ---------------- 
 | `\Processor(_Total)\% Processor Time` | Megoldás folyamatban... | [processorCpuPercentage](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FprocessorCpuPercentage) | gép Processzorainak száma
-| `\Memory\Available Bytes`                 | Megoldás folyamatban... | [memoryAvailableBytes](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FmemoryAvailableBytes) | a lemezen rendelkezésre álló memória
+| `\Memory\Available Bytes`                 | Megoldás folyamatban... | [memoryAvailableBytes](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FmemoryAvailableBytes) | A számítógépen futó folyamatok számára rendelkezésre álló bájtok számának fizikai memória mennyiségét mutatja. A terület mennyisége a nullázott, szabad és készenléti memória használatát megengedő számítható. Szabad memória használható. megakadályozhatja, hogy a későbbi folyamatok jelent meg, egy előző folyamat; által használt adatokat a program nullákat helyez kitöltött memórialapok áll nullázott memória készenléti memória az memória, el lett távolítva a folyamat munkakészletének (a fizikai memória) útközben lemezre, de az átlagot lehet. Lásd: [memória objektum](https://msdn.microsoft.com/library/ms804008.aspx)
 | `\Process(??APP_WIN32_PROC??)\% Processor Time` | Megoldás folyamatban... | [processCpuPercentage](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FprocessCpuPercentage) | A folyamat az alkalmazást futtató Processzor
 | `\Process(??APP_WIN32_PROC??)\Private Bytes`      | Megoldás folyamatban... | [processPrivateBytes](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FprocessPrivateBytes) | az alkalmazást a folyamat által használt memória
 | `\Process(??APP_WIN32_PROC??)\IO Data Bytes/sec` | Megoldás folyamatban... | [processIOBytesPerSecond](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FprocessIOBytesPerSecond) | i/o-műveletek futtatja az alkalmazást futtató folyamat
@@ -40,7 +40,7 @@ A mérőszám a rendszer és a folyamat számlálók képviselő:
 | `\ASP.NET Applications(??APP_W3SVC_PROC??)\Request Execution Time`   | Megoldás folyamatban... | [requestExecutionTime](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FrequestExecutionTime) | a kérelmek átlagos végrehajtási idő
 | `\ASP.NET Applications(??APP_W3SVC_PROC??)\Requests In Application Queue` | Megoldás folyamatban... | [requestsInQueue](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FrequestsInQueue) | a sorhoz feldolgozásra váró kérelmek száma
 
-## <a name="name"></a>Név
+## <a name="name"></a>Name (Név)
 
 Az Application Insights portál és a felhasználói felületen szeretné metrika neve. 
 
@@ -52,7 +52,7 @@ Mérési egyetlen értéket. Az összesítés egyéni mértékek összege.
 
 Metrika súlyának a összesített metrika. Nem lehet beállítani a mérés.
 
-## <a name="min"></a>Perc
+## <a name="min"></a>Min.
 
 Az összesített metrika minimális értéke. Nem lehet beállítani a mérés.
 
@@ -70,7 +70,7 @@ Egyéni tulajdonság metrika `CustomPerfCounter` beállítása `true` jelzi, hog
 
 [!INCLUDE [application-insights-data-model-properties](../../includes/application-insights-data-model-properties.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ismerje meg, hogyan használható [Application Insights API egyéni események és metrikák](app-insights-api-custom-events-metrics.md#trackmetric).
 - Lásd: [adatmodell](application-insights-data-model.md) Application Insights-típusok és az adatok modell.

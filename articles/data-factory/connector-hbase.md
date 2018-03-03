@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2018
+ms.date: 02/28/2018
 ms.author: jingwang
-ms.openlocfilehash: 47a4f6a56c1e5a47f70bb6d6ba2dd980346653ad
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 543d0ec5d0c94b793b1e825d44356039b366908a
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="copy-data-from-hbase-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatával HBase 
 
@@ -45,7 +45,7 @@ HBase kapcsolódó szolgáltatás támogatott a következő tulajdonságokkal:
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A type tulajdonságot kell beállítani: **HBase** | Igen |
-| gazdagép | A kiszolgáló IP-címét vagy állomásnevét kiszolgálónevét a HBase. (azaz 192.168.222.160)  | Igen |
+| gazdagép | A kiszolgáló IP-címét vagy állomásnevét kiszolgálónevét a HBase. (i.e. 192.168.222.160, [clustername].azurehdinsight.net)  | Igen |
 | port | A TCP-portot, amely a HBase-példány használja a kapcsolatok figyelésére. Az alapértelmezett érték: 9090.  | Nem |
 | httpPath | A részleges URL-címet a HBase-kiszolgáló megfelelő. (azaz /gateway/sandbox/hbase/version)  | Nem |
 | authenticationType | A HBase-kiszolgálóhoz való csatlakozáshoz használandó hitelesítési módszert. <br/>Két érték engedélyezett: **névtelen**, **alapvető** | Igen |
@@ -57,7 +57,7 @@ HBase kapcsolódó szolgáltatás támogatott a következő tulajdonságokkal:
 | allowSelfSignedServerCert | Megadja, hogy engedélyezi a kiszolgáló önaláírt tanúsítványokat. Az alapértelmezett értéke hamis.  | Nem |
 | connectVia | A [integrációs futásidejű](concepts-integration-runtime.md) csatlakozni az adattárolóhoz használandó. Használhatja Self-hosted integrációs futásidejű vagy Azure integrációs futásidejű (ha az adattároló nyilvánosan elérhető). Ha nincs megadva, akkor használja az alapértelmezett Azure integrációs futásidejű. |Nem |
 
-**Példa**
+**Példa a HDInsights HBase:**
 
 ```json
 {
@@ -65,9 +65,36 @@ HBase kapcsolódó szolgáltatás támogatott a következő tulajdonságokkal:
     "properties": {
         "type": "HBase",
         "typeProperties": {
-            "host" : "<host>",
+            "host" : "<cluster name>.azurehdinsight.net",
+            "port" : "443",
+            "httpPath" : "<e.g. hbaserest>",
+            "authenticationType" : "Basic",
+            "username" : "<username>",
+            "password": {
+                 "type": "SecureString",
+                 "value": "<password>"
+            },
+            "enableSsl" : true
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
+**Általános HBase példa:**
+
+```json
+{
+    "name": "HBaseLinkedService",
+    "properties": {
+        "type": "HBase",
+        "typeProperties": {
+            "host" : "<host e.g. 192.168.222.160>",
             "port" : "<port>",
-            "httpPath" : "/gateway/sandbox/hbase/version",
+            "httpPath" : "<e.g. /gateway/sandbox/hbase/version>",
             "authenticationType" : "Basic",
             "username" : "<username>",
             "password": {

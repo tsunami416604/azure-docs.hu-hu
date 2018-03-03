@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/15/2018
 ms.author: juluk
-ms.openlocfilehash: 21a050373a9901220e106534464a8c13565bb3d8
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 245e2e1ca52e7d3c5bd22d5f2569e3e8d7ae6671
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="limitations-of-azure-cloud-shell"></a>Azure-felhőbe rendszerhéj korlátozásai
 
@@ -54,11 +54,11 @@ Felhő rendszerhéj készült interaktív használati eseteket. Ennek eredménye
 
 ### <a name="user-permissions"></a>Felhasználói engedélyek
 
-Engedélyek vannak beállítva, normál felhasználóként sudo hozzáférés nélkül. Bármely telepítési kívül a `$Home` vagy `clouddrive` directory nem őrzi meg.
+Engedélyek vannak beállítva, normál felhasználóként sudo hozzáférés nélkül. Bármely telepítési kívül a `$Home` könyvtár nem őrzi meg.
 
 ### <a name="editing-bashrc"></a>.Bashrc szerkesztése
 
-Hajtson végre figyelmeztetés szerkesztése .bashrc, így váratlan hibákat okozhatnak felhő rendszerhéj Bash.
+Szerkesztés .bashrc, így váratlan hibákat okozhat felhő rendszerhéj elvégzendő járjon el.
 
 ## <a name="powershell-limitations"></a>PowerShell-korlátozások
 
@@ -68,7 +68,7 @@ Azure Cloud rendszerhéj (előzetes verzió) PowerShell előzetes inicializálá
 
 ### <a name="no-home-directory-persistence"></a>No $Home directory adatmegőrzési
 
-Írt adatok `$Home` bármely alkalmazás (például: git, vim, megint mások) nem maradnak PowerShell-munkamenetek között. Megkerülő megoldásért [talál](troubleshooting.md#powershell-resolutions).
+Írt adatok `$Home` bármely alkalmazás (például: git, vim, megint mások) nem maradnak PowerShell-munkamenetek között. Megkerülő megoldásért [talál](troubleshooting.md#powershell-troubleshooting).
 
 ### <a name="default-file-location-when-created-from-azure-drive"></a>Alapértelmezett helye az Azure-meghajtóról létrehozásakor:
 

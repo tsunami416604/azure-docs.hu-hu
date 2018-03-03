@@ -14,15 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/16/2018
 ms.author: billmath
-ms.openlocfilehash: 843582a980280a14f033c6d27965867c063039e2
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 81d08d3d3d08e9cc96b39cbdf2d639e939fdf3d4
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Az Azure AD Connect: Verziókiadások
 Az Azure Active Directory (Azure AD) csapat rendszeresen frissíti az Azure AD Connect új szolgáltatásait és funkcióit. Nem minden kiegészítéseket célrendszerekhez vonatkoznak.
-"Ez a cikk segítséget nyújtanak a kiadott verziók nyomon követheti, és tudni, hogy szükséges-e a legújabb verzióra frissíteni vagy nem úgy van kialakítva.
+
+Ez a cikk úgy van kialakítva, segítséget nyújtanak a kiadott verziók nyomon követheti, és tudni, hogy szükséges-e vagy nem a legújabb verzióra frissíteni.
 
 Ez az kapcsolódó témaköröket:
 
@@ -36,14 +37,12 @@ Szükséges engedélyek | Egy frissítés alkalmazásához szükséges engedély
 Töltse le |} [Azure AD Connect letöltése](http://go.microsoft.com/fwlink/?LinkId=615771).
 
 ## <a name="117490"></a>1.1.749.0
-Állapota: Válassza ki az ügyfelek kiadott
-
+Állapot: Jelölje be az ügyfelek, amelyeken engedélyezve az automatikus frissítési AADConnect bérlők kis- és véletlenszerű szakasza jelenleg terjesztése ebben a kiadásban megjelent. Ez a csoport a bérlő kiterjed az elkövetkező hetektől mindaddig, amíg az automatikus frissítési ügyfelei 100 %-os kapott ebben a kiadásban. Ezt követően lesz közzétesszük általános letöltési a buildet a fenti letöltés hivatkozásra - jelenleg tervezett a közepes az március 2018.
 >[!NOTE]
 >Az új verzió a frissítés befejezése után automatikusan indít el egy teljes szinkronizálást és az Azure AD-összekötő teljes importálást és teljes szinkronizálást az AD-összekötő. Mivel ez eltarthat egy ideig, az Azure AD Connect környezet méretétől függően győződjön meg arról, hogy elvégezte-e a szükséges lépéseket ezt támogatja, vagy tartsa addig, amíg az erre alkalmas időpontban talált frissítéséről.
 
 ### <a name="azure-ad-connect"></a>Azure AD Connect
 #### <a name="fixed-issues"></a>Javított problémák
-* Időzítési hárítsa el a háttér partíció szűréshez feladatok lapon mikor
 * Hárítsa el időzítési az háttérfeladatok partíció szűrés lap a következő lapra váltáskor.
 
 * Egy hiba, a hozzáférés-megsértés a configdb elemre egyéni művelet során okozott rögzített
@@ -59,7 +58,7 @@ Töltse le |} [Azure AD Connect letöltése](http://go.microsoft.com/fwlink/?Lin
 
 #### <a name="new-features-and-improvements"></a>Új szolgáltatásait és fejlesztéseit
 
-* Az Általános dátum védelmi szabályozás (GDPR) vonatkozó adatvédelmi beállítások hozzáadása.  A GDPR azt is jelzik, hogy milyen típusú (telemetria, rendszerállapot, stb.), a Microsofttal megosztott felhasználói adatok részletes online dokumentáció mutató hivatkozásokat, és teszik lehetővé a felhasználók a beállítások módosításához.  Beadás az alábbiakkal:
+* Az általános adatok védelmi szabályozás (GDPR) vonatkozó adatvédelmi beállítások hozzáadása.  A GDPR azt is jelzik, hogy milyen típusú (telemetria, rendszerállapot, stb.), a Microsofttal megosztott felhasználói adatok részletes online dokumentáció mutató hivatkozásokat, és teszik lehetővé a felhasználók a beállítások módosításához.  Beadás az alábbiakkal:
 
 
     - Adatok megosztása és adatvédelmi értesítést a tiszta telepítése EULA lapjának.

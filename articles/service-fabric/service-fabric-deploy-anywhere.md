@@ -3,7 +3,7 @@ title: "Azure Service Fabric-fürtök létrehozása a Windows Server és Linux |
 description: "Futtassa a Windows Server és Linux, ami azt jelenti, képes lesz központi telepítéséhez és a Service Fabric alkalmazások üzemeltetését bárhol Service Fabric-fürtök futtathatja a Windows Server vagy Linux rendszerű."
 services: service-fabric
 documentationcenter: .net
-author: Chackdan
+author: dkkapur
 manager: timlt
 editor: 
 ms.assetid: 19ca51e8-69b9-4952-b4b5-4bf04cded217
@@ -12,13 +12,13 @@ ms.devlang: dotNet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/19/2017
-ms.author: chackdan
-ms.openlocfilehash: e3cfad19e42af24edd68befd7b1eac8cef41a1d6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 02/28/2018
+ms.author: dekapur
+ms.openlocfilehash: 63b7bfa5ca357470f5ed36a4cdf943cee779f0fc
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="create-service-fabric-clusters-on-windows-server-or-linux"></a>Service Fabric-fürtök létrehozása a Windows Server vagy Linux
 Az Azure Service Fabric-fürt olyan hálózathoz csatlakozó virtuális vagy fizikai gépek, amelybe a mikroszolgáltatások telepíteni és felügyelni. Egy számítógép vagy virtuális Gépet, amely egy fürt része egy fürtcsomópont neve. Fürtök méretezhető, több ezer. Ha új csomópont hozzáadása a fürthöz, a Service Fabric újra egyensúlyba hozza a szolgáltatás partíció replikákat és a példányt a növekvő számának a csomópontok között. A teljes javítja az alkalmazások teljesítményéről, és csökkenti a versengés a memória a hozzáférést. Ha a fürt a csomópontok nem használ a hatékony, csökkentheti a fürtben található csomópontok számát. A Service Fabric újra újra egyensúlyba hozza a partíció replikákat és a példány között jobb kihasználása érdekében a hardver minden egyes csomóponton csomópontok csökkent száma.
@@ -33,7 +33,12 @@ Megtörténik a fürtök létrehozását az ilyen operációs rendszert futtató
 
 * Windows Server 2012 R2
 * Windows Server 2016 
-* Linux Ubuntu 16.04  
+* Windows Server 1709
+* Linux Ubuntu 16.04
+
+> [!NOTE]
+> Ha úgy dönt, hogy a Windows Server 1709 Service Fabric, akkor vegye figyelembe, hogy (1.) nincs a hosszú távú karbantartási ág, ezért lehet, hogy helyezze át a verziók a jövőben, és (2.) Ha a tároló üzembe helyezése, Windows Server 2016 épülő tárolók nem működik a Windows Server  1709, és ez fordítva is igaz (hogy kell építeni őket telepíteni őket).
+>
 
 ## <a name="create-service-fabric-standalone-clusters-on-premises-or-with-any-cloud-provider"></a>A Service Fabric önálló helyszíni fürtök létrehozása vagy bármely felhőalapú szolgáltatóhoz
 Service Fabric biztosít az egy telepítési csomagot hozhat létre önálló Service Fabric fürt helyszíni vagy bármely felhőalapú szolgáltató.
@@ -71,7 +76,7 @@ A helyszíni előnyöket lehetőséget, így ha az adott funkciókra van szüks�
 * **Diagnosztika:** Azure, az Azure diagnostics és Naplóelemzési nyújtunk integráció.
 * **Automatikus skálázással:** az Azure-fürtök esetén nyújtunk automatikus skálázás beépített funkcióval, virtuálisgép-méretezési csoportok-miatt. A helyszíni, vagy egyéb felhőalapú környezetben akkor hozhat létre a saját automatikus skálázás funkció vagy skálája a Service Fabric elérhetővé tévő API-k segítségével manuálisan fürtöket a méretezéshez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Hozzon létre egy fürtöt virtuális gépek vagy a Windows Server rendszerű számítógépek: [Service Fabric-fürt létrehozása a Windows Server](service-fabric-cluster-creation-for-windows-server.md)
 * Fürt létrehozása a virtuális gépek vagy Linux operációs rendszert futtató számítógépeken: [Linux-fürt létrehozása](service-fabric-cluster-creation-via-portal.md)

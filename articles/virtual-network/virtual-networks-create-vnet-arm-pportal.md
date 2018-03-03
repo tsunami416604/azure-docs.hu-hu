@@ -1,239 +1,161 @@
 ---
-title: "Hozzon létre egy Azure virtuális hálózatra, több alhálózattal |} Microsoft Docs"
-description: "Megtudhatja, hogyan hozhat létre virtuális hálózatot, több alhálózattal az Azure-ban."
+title: "Hozzon létre egy Azure virtuális hálózatra, több alhálózattal - portál |} Microsoft Docs"
+description: "Megtudhatja, hogyan hozhat létre virtuális hálózatot, az Azure portál használatával több alhálózattal."
 services: virtual-network
 documentationcenter: 
 author: jimdial
-manager: timlt
+manager: jeconnoc
 editor: 
 tags: azure-resource-manager
-ms.assetid: 4ad679a4-a959-4e48-a317-d9f5655a442b
+ms.assetid: 
 ms.service: virtual-network
-ms.devlang: NA
-ms.topic: article
+ms.devlang: na
+ms.topic: 
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/26/2017
+ms.date: 03/01/2018
 ms.author: jdial
 ms.custom: 
-ms.openlocfilehash: f82a95ec9543b2d53ef28bf7f15315e23cf4893a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 201da4e6ec86a6c2a79a9e948245c0d83708c3f9
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/02/2018
 ---
-# <a name="create-a-virtual-network-with-multiple-subnets"></a>Hozzon létre egy virtuális hálózatot, több alhálózattal
+# <a name="create-a-virtual-network-with-multiple-subnets-using-the-azure-portal"></a>Hozzon létre egy virtuális hálózatot, az Azure portál használatával több alhálózattal
 
-Ebben az oktatóanyagban útmutató alapszintű Azure virtuális hálózat létrehozása, amely rendelkezik a nyilvános és titkos különálló alhálózatokat. Erőforrások virtuális hálózatok kommunikálhatnak egymással, és más hálózatok, virtuális hálózathoz csatlakozó erőforrásokkal. Azure-erőforrások, például a virtuális gépek, az App Service-környezetek, a virtuálisgép-méretezési csoportok, a Azure HDInsight és a felhőszolgáltatások hozhat létre a virtuális hálózaton belül az azonos vagy különböző alhálózatokon. Erőforrások létrehozása, különböző alhálózatokon lehetővé teszi bejövő és kimenő adatforgalma alhálózat egymástól függetlenül a hálózati forgalom szűrésére [hálózati biztonsági csoportok](virtual-networks-create-nsg-arm-pportal.md), és a [alhálózatok közötti forgalmat](virtual-network-create-udr-arm-ps.md) a hálózaton keresztül virtuális készülékek, például egy tűzfal, ha úgy dönt, hogy. 
+A virtuális hálózati lehetővé teszi, hogy számos különböző Azure-erőforrások való kommunikációhoz az internetes és közvetlenül egymás mellett. Több alhálózattal a virtuális hálózat létrehozása lehetővé teszi, hogy a hálózati szegmenseket, így szűrheti vagy -vezérlőket a alhálózatok közötti forgalmat. A cikkben megismerheti, hogyan:
 
-A következő szakaszok tartalmazzák a lépéseket, amelyek segítségével virtuális hálózat létrehozása a [Azure-portálon](#portal), az Azure parancssori felület ([Azure CLI](#azure-cli)), [Azure PowerShell](#powershell), és egy [Azure Resource Manager sablon](#resource-manager-template). Az eredmény megegyezik, függetlenül attól, hogy a virtuális hálózat létrehozásához használhat. Egy eszköz hivatkozásra kattintva az oktatóanyag szakaszt. További információk [virtuális hálózati](virtual-network-manage-network.md) és [alhálózati](virtual-network-manage-subnet.md) beállításait.
+> [!div class="checklist"]
+> * Virtuális hálózat létrehozása
+> * Alhálózat létrehozása
+> * Virtuális gépek közötti hálózati kommunikációhoz tesztelése
 
-Ez a cikk nyújt tájékoztatást a Resource Manager telepítési modell, amely a üzembe helyezési modellel, azt javasoljuk, amikor új virtuális hálózatok létrehozása a virtuális hálózat létrehozása. Ha egy virtuális hálózat (klasszikus) létrehozásához szüksége, tekintse meg [hozzon létre egy virtuális hálózatot (klasszikus)](create-virtual-network-classic.md). Ha nem ismeri az Azure üzembe helyezési modellel, lásd: [megértéséhez Azure üzembe helyezési modellel](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
-## <a name="portal"></a>Azure-portálon
+## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba 
 
-1. A böngészőben, válassza a [Azure-portálon](https://portal.azure.com). Jelentkezzen be a [Azure-fiók](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#account). Ha nincs Azure-fiókja, regisztráljon egy [ingyenes próbaverzióra](https://azure.microsoft.com/offers/ms-azr-0044p).
-2. Kattintson a portál **+ új** > **hálózati** > **virtuális hálózati**.
-3. Az a **virtuális hálózat létrehozása** panelen adja meg a következő értékeket, és kattintson a **létrehozása**:
+Jelentkezzen be az Azure Portalra a http://portal.azure.com webhelyen.
 
-    |Beállítás|Érték|
-    |---|---|
-    |Név|myVNet|
-    |Címtér|10.0.0.0/16|
-    |Alhálózat neve|Nyilvános|
-    |Alhálózati címtartomány|10.0.0.0/24|
-    |Erőforráscsoport|Hagyja **hozzon létre új** kiválasztva, és írja be **myResourceGroup**.|
-    |Egyes előfizetésekhez és helyekhez|Válassza ki az egyes előfizetésekhez és helyekhez.
+## <a name="create-a-virtual-network"></a>Virtuális hálózat létrehozása
 
-    Ha most ismerkedik az Azure-ba, további információ [erőforráscsoportok](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group), [előfizetések](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription), és [helyek](https://azure.microsoft.com/regions) (más néven *régiók*).
-4. A portál csak egy alhálózat is létrehozhat, ha a virtuális hálózat létrehozása. Ebben az oktatóanyagban létrehoz egy második alhálózatot a virtuális hálózat létrehozása után. Később létrehozhat az internetről elérhető erőforrások a **nyilvános** alhálózat. Is létrehozhat, amelyek nem érhetők el az interneten lévő erőforrásokat a **titkos** alhálózat. A második alhálózat létrehozásához az **keresési erőforrások** a lap tetején mezőbe írja be **myVnet**. A keresési eredmények között kattintson **myVnet**. Ha ezzel a névvel több virtuális hálózat előfizetése van, ellenőrizze az erőforráscsoportok szereplő minden egyes virtuális hálózati. Győződjön meg arról, hogy kattintson a **myVnet** keresési eredmények, amelyek erőforráscsoportban **myResourceGroup**.
-5. A a **myVnet** panel alatt **beállítások**, kattintson a **alhálózatok**.
-6. Az a **myVnet - alhálózatok** panelen kattintson a **+ alhálózati**.
-7. Az a **alhálózat hozzáadása** panelen a **neve**, adja meg **titkos**. A **-címtartományt**, adja meg **10.0.1.0/24**.  Kattintson az **OK** gombra.
-8. Az a **myVnet - alhálózatok** panelt, tekintse át az alhálózatokat. Megtekintheti a **nyilvános** és **titkos** létrehozott alhálózatokat.
-9. **Választható lehetőség:** végezze el a felsorolt további oktatóanyagok [további lépések](#next-steps) hálózati forgalom szűrésére minden egyes alhálózatot a hálózati biztonsági csoportokkal, egy hálózati virtuális készüléken keresztül alhálózatok közötti forgalom a bejövő és kimenő adatforgalma , vagy a virtuális hálózathoz csatlakozni más virtuális hálózatok és a helyszíni hálózatokhoz.
-10. **Választható lehetőség:** törli az Ön által létrehozott ebben az oktatóanyagban szereplő lépések végrehajtásával erőforrást [törli az erőforrást](#delete-portal).
+1. Válassza ki **+ hozzon létre egy erőforrást** a felső, bal oldali sarkában az Azure-portálon.
+2. Válassza ki **hálózati**, majd válassza ki **virtuális hálózati**.
+3. Ahogy az alábbi képen is látható, adja meg a *myVirtualNetwork* a **neve**, **myResourceGroup** a **erőforráscsoport**, *Nyilvános* alhálózat **neve**, a 10.0.0.0/24 alhálózat **-címtartományt**, jelölje be a **hely** és a  **Előfizetés**, fogadja el a többi alapértelmezett beállításokat, majd válassza ki **létrehozása**:
 
-## <a name="azure-cli"></a>Azure CLI
+    ![Virtuális hálózat létrehozása](./media/virtual-networks-create-vnet-arm-pportal/create-virtual-network.png)
 
-Az Azure parancssori felület parancsait megegyeznek, hogy a parancsok a Windows, Linux vagy macOS hajtható végre. Vannak azonban parancsfájlok különbségei operációs rendszer ismertetése. A parancsfájl a következő lépések a rendszerhéjakba hajtja végre. 
+    A **Címtéren** és **-címtartományt** CIDR-formátumban vannak megadva. A megadott **Címtéren** az IP-címek 10.0.0.0-10.0.255.254 tartalmazza. A **címtartomány** meg egy alhálózathoz, belül kell lennie a **Címtéren** a virtuális hálózathoz definiált. Azure DHCP egy alhálózati címtartományt az IP-címet rendel egy alhálózaton üzembe helyezett erőforrás. Azure csak rendel a címek 10.0.0.4-10.0.0.254 belül üzembe helyezett erőforrás a **nyilvános** alhálózatot, mert Azure fenntartja az első négy címeket (10.0.0.0-10.0.0.3 az alhálózat ebben a példában) és a legutóbbi címek () az alhálózat ebben a példában 10.0.0.255-ig) minden alhálózatban.
 
-1. [Telepítse és konfigurálja az Azure parancssori felület](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json). Ellenőrizze, hogy a telepített Azure CLI legújabb verziója. Segítség kérése parancssori felület parancsait, írja be a következőt `az <command> --help`. Ahelyett, hogy a parancssori felület és a szükséges előfeltételek telepítése, az Azure-felhő rendszerhéj is használhatja. Az Azure Cloud Shell olyan ingyenes Bash-felület, amelyet közvetlenül futtathat az Azure Portalon. A felhő rendszerhéj az Azure parancssori felület előtelepített és konfigurált a fiókhoz rendelkezik. A felhő rendszerhéj használatához kattintson a felhő rendszerhéj (**> _**) gomb tetején a [portal](https://portal.azure.com) vagy egyszerűen kattintson a *kipróbálás* gombra a következő lépések a. 
-2. Ha a parancssori felület helyben fut, jelentkezzen be Azure-bA a `az login` parancsot. A felhő-rendszerhéj használata, ha már jelentkezett be.
-3. Tekintse át a következő parancsfájl és észrevételeit. A böngészőben másolja a parancsfájlt, és illessze be a CLI-munkamenethez:
+## <a name="create-a-subnet"></a>Alhálózat létrehozása
 
-    ```azurecli-interactive
-    #!/bin/bash
+1. Az a **keresést az erőforrások, a szolgáltatások és a dokumentumok** a portál felső mezőbe írja be a szöveget *myVirtualNetwork*. Ha **myVirtualNetwork** megjelenik a keresési eredmények között, jelölje be.
+2. Válassza ki **alhálózatok** majd **+ alhálózati**, az alábbi ábrán látható módon:
+
+     ![Adjon hozzá egy alhálózatot](./media/virtual-networks-create-vnet-arm-pportal/add-subnet.png)
+
+3. Az a **alhálózat hozzáadása** megjelenő, a szövegmezőbe írja be *titkos* a **neve**, adja meg *10.0.1.0/24* a **-címtartományt**, majd válassza ki **OK**. 
+
+Az Azure virtuális hálózatok és alhálózatok üzemi használatra való telepítése előtt javasoljuk, hogy alaposan megismerje a címterület [szempontok](virtual-network-manage-network.md#create-a-virtual-network) és [virtuális hálózati korlátok](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits). Amennyiben az erőforrások telepítése alhálózatokra, virtuális hálózati és alhálózati módosításokat, például megváltoztatni a címtartományt, alhálózatok belül rendszerbe meglévő Azure-erőforrások újratelepítés lehet szükség.
+
+## <a name="test-network-communication"></a>Tesztelje a hálózati kommunikációban
+
+A virtuális hálózati lehetővé teszi, hogy számos különböző Azure-erőforrások való kommunikációhoz az internetes és közvetlenül egymás mellett. A virtuális hálózatba telepítése erőforrás egy típus egy virtuális gépet. Hozzon létre két virtuális gép a virtuális hálózat, amellyel tesztelheti őket, és az Internet közötti hálózati kommunikációhoz egy későbbi lépésben.
+
+### <a name="create-virtual-machines"></a>Virtuális gépek létrehozása
+
+1. Válassza ki **+ hozzon létre egy erőforrást** a felső, bal oldali sarkában az Azure-portálon.
+2. Válassza a **Számítás**, majd a **Windows Server 2016 Datacenter** elemet. Kiválaszthatja, hogy egy másik operációs rendszer, de a többi lépések azt feltételezik, hogy kiválasztott **Windows Server 2016 Datacenter**. 
+3. Válassza ki vagy adja meg a következő információkat **alapjai**, majd jelölje be **OK**:
+    - **Név**: *myVmWeb*
+    - **Erőforráscsoport**: válasszon **meglévő** majd *myResourceGroup*.
+    - **Hely**: válasszon *USA keleti régiója*.
+
+    A **felhasználónév** és **jelszó** meg egy későbbi lépésben használt. A jelszónak legalább 12 karakter hosszúságúnak kell lennie, [az összetettségre vonatkozó követelmények teljesülése mellett](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm). A **hely** és **előfizetés** kijelölt meg kell egyeznie a hely és a virtuális hálózat előfizetése. Ez nem szükséges, hogy ugyanahhoz az erőforráscsoporthoz tartozik, a virtuális hálózati jött létre, de ugyanabban az erőforráscsoportban van kiválasztva, ez az oktatóanyag a választotta.
+4. Válassza ki a Virtuálisgép-méretet a **méret kiválasztása**.
+5. Válassza ki vagy adja meg a következő információkat **beállítások**, majd jelölje be **OK**:
+    - **Virtuális hálózati**: Gondoskodjon arról, hogy **myVirtualNetwork** van kiválasztva. Ha nem, válassza ki **virtuális hálózati** majd **myVirtualNetwork** alatt **válasszon virtuális hálózati**.
+    - **Alhálózati**: Gondoskodjon arról, hogy **nyilvános** van kiválasztva. Ha nem, válassza ki a **alhálózati** , és válassza **nyilvános** alatt **alhálózat kiválasztása**, az alábbi ábrán látható módon:
     
-    # Create a resource group.
-    az group create \
-      --name myResourceGroup \
-      --location eastus
-    
-    # Create a virtual network with one subnet named Public.
-    az network vnet create \
-      --name myVnet \
-      --resource-group myResourceGroup \
-      --subnet-name Public
-    
-    # Create an additional subnet named Private in the virtual network.
-    az network vnet subnet create \
-      --name Private \
-      --address-prefix 10.0.1.0/24 \
-      --vnet-name myVnet \
-      --resource-group myResourceGroup
+        ![Virtuális gép beállításait](./media/virtual-networks-create-vnet-arm-pportal/virtual-machine-settings.png)
+ 
+6. A **létrehozása** a a **összegzés**, jelölje be **létrehozása** elindítani a virtuális gépek telepítése során.
+7. Fejezze be újra 1-6. lépéseket, de meg *myVmMgmt* a a **neve** a virtuális gép, és válassza ki **titkos** a a **alhálózati**.
+
+A virtuális gépek létrehozása több percig is tarthat. Ne folytassa a hátralévő lépéseket addig mindkét virtuális gépek jönnek létre.
+
+### <a name="communicate-between-virtual-machines-and-with-the-internet"></a>A virtuális gépek között, és az internetes kommunikáció
+
+1. Az a *keresési* a portál felső mezőbe írja be a szöveget *myVmMgmt*. Ha **myVmMgmt** megjelenik a keresési eredmények között, jelölje be.
+2. Távoli asztali kapcsolat létrehozása a *myVmMgmt* virtuális gép kiválasztásával **Connect**, az alábbi ábrán látható módon:
+
+    ![Csatlakozás virtuális géphez](./media/virtual-networks-create-vnet-arm-pportal/connect-to-virtual-machine.png)  
+
+3. Csatlakoztassa a virtuális Gépet, nyissa meg a letöltött RDP-fájlt. Ha a rendszer kéri, válassza ki a **Connect**.
+4. Adja meg a felhasználónevet és a virtuális gép létrehozásakor a megadott jelszó (válassza ki szeretne **több lehetőséget**, majd **használjon más fiókot**, ha a megadott hitelesítő adatok megadását, a virtuális gép létrehozása), majd válassza ki **OK**.
+5. A bejelentkezés során egy figyelmeztetés jelenhet meg a tanúsítvánnyal kapcsolatban. Válassza ki **Igen** gombra a kapcsolat.
+6. Egy későbbi lépésben ping folytatott kommunikációhoz használandó a *myVmMgmt* virtuális gépek létrehozását a *myVmWeb* virtuális gépet. Ping az ICMP, amely alapértelmezés szerint a Windows tűzfalon keresztül megtagadva. A Windows tűzfalon keresztül ICMP engedélyezéséhez az alábbi parancs beírásával a parancssorba:
+
     ```
-    
-4. Miután befejezte a parancsfájlt futtat, tekintse át a virtuális hálózati alhálózat. Másolja a következő parancsot, és illessze be a CLI-munkamenethez:
-
-    ```azurecli
-    az network vnet subnet list --resource-group myResourceGroup --vnet-name myVnet --output table
+    netsh advfirewall firewall add rule name=Allow-ping protocol=icmpv4 dir=in action=allow
     ```
 
-5. **Választható lehetőség:** végezze el a felsorolt további oktatóanyagok [további lépések](#next-steps) hálózati forgalom szűrésére minden egyes alhálózatot a hálózati biztonsági csoportokkal, egy hálózati virtuális készüléken keresztül alhálózatok közötti forgalom a bejövő és kimenő adatforgalma , vagy a virtuális hálózathoz csatlakozni más virtuális hálózatok és a helyszíni hálózatokhoz.
-6. **Nem kötelező**: törli az Ön által létrehozott ebben az oktatóanyagban szereplő lépések végrehajtásával erőforrást [törli az erőforrást](#delete-cli).
+    Bár a ping használatban van ebben a cikkben, lehetővé téve az ICMP az üzemi környezetek a Windows tűzfalon keresztül nem ajánlott.
+7. Biztonsági okokból általában távolról csatlakozhat a virtuális hálózat virtuális gépek számának korlátozása. Ebben az oktatóanyagban a *myVmMgmt* történő felügyeletére szolgál a virtuális gép a *myVmWeb* virtuális gép virtuális hálózatban. A távoli asztal a *myVmWeb* virtuális gépek létrehozását a *myVmMgmt* virtuális gépet, adja meg a következő parancsot a parancssorba:
 
-## <a name="powershell"></a>PowerShell
+    ``` 
+    mstsc /v:myVmWeb
+    ```
+8. Való kommunikációra a *myVmMgmt* virtuális gépek létrehozását a *myVmWeb* virtuális gépet, adja meg a következő parancsot a parancssorba:
 
-1. Telepítse a PowerShell [AzureRm](https://www.powershellgallery.com/packages/AzureRM/) moduljának legújabb verzióját. Ha először használja a PowerShellt, olvassa el az [Azure PowerShell áttekintését](/powershell/azure/overview?toc=%2fazure%2fvirtual-network%2ftoc.json).
-2. A PowerShell-munkamenetben jelentkezzen be Azure-bA a [Azure-fiók](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#account) használatával a `login-azurermaccount` parancsot.
+    ```
+    ping myvmmgmt
+    ```
 
-3. Tekintse át a következő parancsfájl és észrevételeit. A böngészőben másolja a parancsfájlt, és illessze be a PowerShell-munkamenethez:
+    A következő egy példa a kimenetre hasonló kimenetet jelenhet meg:
+    
+    ```
+    Pinging myvmmgmt.dar5p44cif3ulfq00wxznl3i3f.bx.internal.cloudapp.net [10.0.1.4] with 32 bytes of data:
+    Reply from 10.0.1.4: bytes=32 time<1ms TTL=128
+    Reply from 10.0.1.4: bytes=32 time<1ms TTL=128
+    Reply from 10.0.1.4: bytes=32 time<1ms TTL=128
+    Reply from 10.0.1.4: bytes=32 time<1ms TTL=128
+    
+    Ping statistics for 10.0.1.4:
+        Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
+    Approximate round trip times in milli-seconds:
+        Minimum = 0ms, Maximum = 0ms, Average = 0ms
+    ```
+      
+    Láthatja, hogy a cím a *myVmMgmt* virtuális gép 10.0.1.4. 10.0.1.4 volt az első elérhető IP-címek tartománya, a *titkos* alhálózati központilag telepített a *myVmMgmt* az előző lépésben a virtuális gép.  Azt látja, hogy a virtuális gép teljesen minősített tartománynevét *myvmmgmt.dar5p44cif3ulfq00wxznl3i3f.bx.internal.cloudapp.net*. Bár a *dar5p44cif3ulfq00wxznl3i3f* a tartománynév része nem egyezik a virtuális gép, a tartomány nevét az többi részének azonosak. Alapértelmezés szerint az összes Azure virtuális gép használja az alapértelmezett Azure DNS szolgáltatást. Az összes virtuális gép a virtuális hálózaton belül az azonos virtuális hálózatban, Azure alapértelmezett DNS-szolgáltatás segítségével más virtuális gépek képes névfeloldásra. Azure alapértelmezett DNS-szolgáltatás helyett használhatja a saját DNS-kiszolgáló vagy a saját szolgáltatása az Azure DNS-szolgáltatás. További információkért lásd: [névfeloldáshoz a saját DNS-kiszolgáló](virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-using-your-own-dns-server) vagy [titkos tartományok Azure DNS használatával](../dns/private-dns-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+
+9. Internet Information Services (IIS) telepítése a Windows Server a a *myVmWeb* virtuális gépet, adja meg a következő parancsot egy PowerShell-munkamenetben:
 
     ```powershell
-    # Create a resource group.
-    New-AzureRmResourceGroup `
-      -Name myResourceGroup `
-      -Location eastus
-    
-    # Create the public and private subnets.
-    $Subnet1 = New-AzureRmVirtualNetworkSubnetConfig `
-      -Name Public `
-      -AddressPrefix 10.0.0.0/24
-    $Subnet2 = New-AzureRmVirtualNetworkSubnetConfig `
-      -Name Private `
-      -AddressPrefix 10.0.1.0/24
-    
-    # Create a virtual network.
-    $Vnet=New-AzureRmVirtualNetwork `
-      -ResourceGroupName myResourceGroup `
-      -Location eastus `
-      -Name myVnet `
-      -AddressPrefix 10.0.0.0/16 `
-      -Subnet $Subnet1,$Subnet2
+    Install-WindowsFeature -name Web-Server -IncludeManagementTools
     ```
 
-4. Tekintse át a virtuális hálózati alhálózat, másolja be a következő parancsot, és illessze be a PowerShell-munkamenethez:
+10. A telepítés végeztével az IIS, válassza le a *myVmWeb* a távoli asztali munkamenetgazda, így a a *myVmMgmt* távoli asztali munkamenetet. Nyisson meg egy webböngészőt, és keresse meg a http://myvmweb. Az IIS üdvözlőlap láthatja.
+11. Válassza le a *myVmMgmt* távoli asztali munkamenetet.
+12. Kísérlet történt az IIS a saját számítógépéről üdvözli a lapnak a megtekintésére. Azure létrehozásakor a *myVmWeb* virtuális gép, egy nyilvános IP-cím erőforrás nevű *myVmWeb* is létrejött, de a virtuális géphez rendelt. Láthatja, hogy 52.170.5.92 be lett-e rendelve a *myVmMgmt* a képen látható, a 2. lépésben a virtuális gép. Rendelt nyilvános IP-cím kereséséhez a *myVmWeb* virtuális gépet, a Keresés *myVmWeb* a keresési mezőbe, majd jelölje ki a keresési eredmények megjelenésekor. 
 
-    ```powershell
-    $Vnet.subnets | Format-Table Name, AddressPrefix
-    ```
+    Bár a virtuális gép nem kell egy nyilvános IP-címet kap, Azure rendel hozzá egy nyilvános IP-cím minden virtuális gépet hoz létre, alapértelmezés szerint. Útján kommunikálnak az interneten a virtuális gép, egy nyilvános IP-címet kell rendelni a virtuális géphez. Minden virtuális gépek kommunikálhatnak az internettel kimenő, függetlenül attól, egy nyilvános IP-címet a virtuális géphez van rendelve. Az Azure-ban kimenő internetes kapcsolatok kapcsolatos további információkért lásd: [az Azure-ban kimenő kapcsolatok](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
-5. **Választható lehetőség:** végezze el a felsorolt további oktatóanyagok [további lépések](#next-steps) hálózati forgalom szűrésére minden egyes alhálózatot a hálózati biztonsági csoportokkal, egy hálózati virtuális készüléken keresztül alhálózatok közötti forgalom a bejövő és kimenő adatforgalma , vagy a virtuális hálózathoz csatlakozni más virtuális hálózatok és a helyszíni hálózatokhoz.
-6. **Nem kötelező**: törli az Ön által létrehozott ebben az oktatóanyagban szereplő lépések végrehajtásával erőforrást [törli az erőforrást](#delete-powershell).
+    A saját számítógépen keresse meg a nyilvános IP-címét a *myVmWeb* virtuális gépet. A saját számítógépéről IIS-üdvözli a lapnak a megtekintésére irányuló kísérlet sikertelen lesz. A kísérlet meghiúsul, mert a virtuális gépek üzembe helyezése, amikor Azure alapértelmezés szerint minden egyes virtuális gép hálózati biztonsági csoport létrehozása. 
 
-## <a name="resource-manager-template"></a>Resource Manager-sablon
+    Hálózati biztonsági csoport biztonsági szabályokat, amelyek engedélyezik vagy megtagadják a bejövő és kimenő hálózati forgalom port és az IP-címet tartalmazza. Az alapértelmezett hálózati biztonsági csoport létrehozása Azure lehetővé teszi a kommunikációt az azonos virtuális hálózatban lévő erőforrások közötti összes portokon keresztül. Windows virtuális gépek esetén az alapértelmezett hálózati biztonsági csoport minden bejövő forgalom megtagadja az interneten összes portokon keresztül, fogadja el a TCP-port 3389-es (RDP). Ennek eredményeképpen alapértelmezés szerint is RDP közvetlenül a *myVmWeb* virtuális gép az internetről, annak ellenére, hogy nem érdemes port 3389 nyissa meg a webkiszolgálón. Webböngészés 80-as porton keresztül kommunikál, mivel kommunikációs az internetről sikertelen, mert nincs szabály az alapértelmezett hálózati biztonsági csoport átengedi a forgalmat a 80-as porton keresztül.
 
-Egy virtuális hálózatot az Azure Resource Manager-sablon segítségével telepíthet. A sablonokkal kapcsolatos további tudnivalókért lásd: [Mi az erőforrás-kezelő](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#template-deployment). A sablon eléréséhez és a paraméterekkel kapcsolatos további, tekintse meg a [hozzon létre egy virtuális hálózatot, két alhálózattal](https://azure.microsoft.com/resources/templates/101-vnet-two-subnets/) sablont. A sablon segítségével telepíthet a [portal](#template-portal), [Azure CLI](#template-cli), vagy [PowerShell](#template-powershell).
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-A sablon telepítése után választható lépéseket:
+Már nincs szükség, ha az erőforráscsoport és a benne található összes erőforrást törli: 
 
-1. Fejezze be a felsorolt további oktatóanyagok [további lépések](#next-steps) hálózati forgalom mindkét minden egyes alhálózatot a hálózati biztonsági csoportokkal, egy hálózati virtuális készüléken keresztül alhálózatok közötti forgalom szűrésére, vagy csatlakoztassa a virtuális más virtuális hálózatok és a helyszíni hálózatokhoz hálózaton.
-2. Törli az Ön által létrehozott ebben az oktatóanyagban szereplő bármely alszakaszaiban lépések végrehajtásával erőforrást [törli az erőforrást](#delete).
+1. Adja meg *myResourceGroup* a a **keresési** a portál felső részén. Amikor látja **myResourceGroup** válassza ki azt a keresési eredmények között.
+2. Válassza az **Erőforráscsoport törlése** elemet.
+3. Adja meg *myResourceGroup* a **típus az ERŐFORRÁSCSOPORT-név:** válassza **törlése**.
 
-### <a name="template-portal"></a>Azure-portálon
+## <a name="next-steps"></a>További lépések
 
-1. A böngészőben nyissa meg a [sablonlap](https://azure.microsoft.com/resources/templates/101-vnet-two-subnets).
-2. Kattintson a **az Azure telepítéséhez** gombra. Ha még nem jelentkezett be az Azure-ba, jelentkezzen be az Azure portál bejelentkezési képernyőn megjelenő.
-3. Jelentkezzen be a portál használatával a [Azure-fiók](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#account). Ha nincs Azure-fiókja, regisztráljon egy [ingyenes próbaverzióra](https://azure.microsoft.com/offers/ms-azr-0044p).
-4. Adja meg a következő értékeket a Paraméterek:
+Ebben az oktatóanyagban megtudta, hogyan telepíthet egy virtuális hálózatot, több alhálózattal. Is megtanulta, hogy egy Windows rendszerű virtuális gép létrehozásakor az Azure létrehoz egy hálózati adapteren, hogy azt a virtuális gép csatlakozik, és létrehoz egy hálózati biztonsági csoportot, amely csak forgalom 3389-es porton keresztül az internetről. A következő oktatóanyag áttekintésével megismerheti, hogyan alhálózatokra, és nem az egyes virtuális gépek hálózati forgalom szűrésére továbblépés.
 
-    |Paraméter|Érték|
-    |---|---|
-    |Előfizetés|Jelölje ki az előfizetését|
-    |Erőforráscsoport|myResourceGroup|
-    |Hely|Válasszon ki egy helyet|
-    |Vnet neve|myVNet|
-    |Virtuális hálózat címelőtag|10.0.0.0/16|
-    |Subnet1Prefix|10.0.0.0/24|
-    |Subnet1Name|Nyilvános|
-    |Subnet2Prefix|10.0.1.0/24|
-    |Subnet2Name|Saját|
-
-5. Fogadja el a használati feltételeket, és kattintson a **beszerzési** központi telepítése a virtuális hálózat.
-
-### <a name="template-cli"></a>Az Azure parancssori felület
-
-1. [Telepítse és konfigurálja az Azure parancssori felület](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json). Ellenőrizze, hogy a telepített Azure CLI legújabb verziója. Segítség kérése parancssori felület parancsait, írja be a következőt `az <command> --help`. Ahelyett, hogy a parancssori felület és a szükséges előfeltételek telepítése, az Azure-felhő rendszerhéj is használhatja. Az Azure Cloud Shell olyan ingyenes Bash-felület, amelyet közvetlenül futtathat az Azure Portalon. A felhő rendszerhéj az Azure parancssori felület előtelepített és konfigurált a fiókhoz rendelkezik. A felhő rendszerhéj használatához kattintson a felhő rendszerhéj **> _** gomb tetején a [portal](https://portal.azure.com), vagy kattintson a **kipróbálás** gombra a következő lépések a. 
-2. Ha a parancssori felület helyben fut, jelentkezzen be Azure-bA a `az login` parancsot. A felhő-rendszerhéj használata, ha már jelentkezett be.
-3. Hozzon létre egy erőforráscsoportot a virtuális hálózat, másolja be a következő parancsot, és illessze be a CLI-munkamenethez:
-
-    ```azurecli-interactive
-    az group create --name myResourceGroup --location eastus
-    ```
-    
-4. Telepítheti a sablon használatával a következő paraméterek közül:
-    - **Alapértelmezett paraméterértékek**. Írja be a következő parancsot:
-    
-        ```azurecli-interactive
-        az group deployment create --resource-group myResourceGroup --name VnetTutorial --template-uri https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vnet-two-subnets/azuredeploy.json`
-        ```
-    - **Egyéni paraméterértékek**. Töltse le, és módosítsa a sablon, a sablon telepítése előtt. Is telepíthet a sablon parancssori paraméterek használatával, vagy a sablon telepítéséhez egy külön paraméterek fájllal. A sablon és a paraméterek fájlok letöltéséhez kattintson a **keresse meg a Githubon** gombra a [hozzon létre egy virtuális hálózatot, két alhálózattal](https://azure.microsoft.com/resources/templates/101-vnet-two-subnets/) mintasablon lapot. A github webhelyen, kattintson a **azuredeploy.parameters.json** vagy **azuredeploy.json** fájlt. Kattintson a **Raw** gombra kattintva jelenítse meg a fájlt. A böngészőben másolja a fájl tartalmát. A tartalom mentése fájlba a számítógépen. Módosítsa a sablon paraméter értékét, vagy a sablon telepítéséhez egy külön paraméterek fájllal.  
-
-    E módszerekkel sablonok telepítésével kapcsolatos további tudnivalókért írja be a következőt `az group deployment create --help`.
-
-### <a name="template-powershell"></a>PowerShell
-
-1. Telepítse a PowerShell [AzureRm](https://www.powershellgallery.com/packages/AzureRM/) moduljának legújabb verzióját. Ha először használja a PowerShellt, olvassa el az [Azure PowerShell áttekintését](/powershell/azure/overview?toc=%2fazure%2fvirtual-network%2ftoc.json).
-2. A PowerShell-munkamenetben, a bejelentkezéshez a [Azure-fiók](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#account), adja meg `login-azurermaccount`.
-3. Hozzon létre egy erőforráscsoportot a virtuális hálózat, írja be a következő parancsot:
-
-    ```powershell
-    New-AzureRmResourceGroup -Name myResourceGroup -Location eastus
-    ```
-    
-4. Telepítheti a sablon használatával a következő paraméterek közül:
-    - **Alapértelmezett paraméterértékek**. Írja be a következő parancsot:
-    
-        ```powershell
-        New-AzureRmResourceGroupDeployment -Name VnetTutorial -ResourceGroupName myResourceGroup -TemplateUri https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vnet-two-subnets/azuredeploy.json
-        ```
-        
-    - **Egyéni paraméterértékek**. Töltse le, és módosítsa a sablon telepítése előtt. Is telepíthet a sablon parancssori paraméterek használatával, vagy a sablon telepítéséhez egy külön paraméterek fájllal. A sablon és a paraméterek fájlok letöltéséhez kattintson a **keresse meg a Githubon** gombra a [hozzon létre egy virtuális hálózatot, két alhálózattal](https://azure.microsoft.com/resources/templates/101-vnet-two-subnets/) mintasablon lapot. A github webhelyen, kattintson a **azuredeploy.parameters.json** vagy **azuredeploy.json** fájlt. Kattintson a **Raw** gombra kattintva jelenítse meg a fájlt. A böngészőben másolja a fájl tartalmát. A tartalom mentése fájlba a számítógépen. Módosítsa a sablon paraméter értékét, vagy a sablon telepítéséhez egy külön paraméterek fájllal.  
-
-    E módszerekkel sablonok telepítésével kapcsolatos további tudnivalókért írja be a következőt `Get-Help New-AzureRmResourceGroupDeployment`. 
-
-## <a name="delete"></a>Erőforrások törlése
-
-Ez az oktatóanyag befejezése után előfordulhat, hogy törölni kívánja az erőforrásokat, amelyek hozott létre, így használati költségek. Erőforráscsoport törlésével, az erőforráscsoport összes erőforrást is törli.
-
-### <a name="delete-portal"></a>Azure-portálon
-
-1. A portál keresési mezőbe, írja be a **myResourceGroup**. A keresési eredmények között kattintson **myResourceGroup**.
-2. Az a **myResourceGroup** panelen kattintson a **törlése** ikonra.
-3. A törlés megerősítéséhez a a **típus az ERŐFORRÁSCSOPORT neve** adja meg a **myResourceGroup**, és kattintson a **törlése**.
-
-### <a name="delete-cli"></a>Az Azure parancssori felület
-
-Adja meg egy parancssori munkamenetet a következő parancsot:
-
-```azurecli-interactive
-az group delete --name myResourceGroup --yes
-```
-
-### <a name="delete-powershell"></a>PowerShell
-
-A PowerShell-munkamenetben írja be a következő parancsot:
-
-```powershell
-Remove-AzureRmResourceGroup -Name myResourceGroup -Force
-```
-
-## <a name="next-steps"></a>Következő lépések
-
-- Minden virtuális hálózati és alhálózati beállításaival kapcsolatos további tudnivalókért lásd: [virtuális hálózatok kezeléséhez](virtual-network-manage-network.md#view-vnet) és [kezelheti a virtuális hálózati alhálózat](virtual-network-manage-subnet.md#create-subnet). Számos közül a virtuális hálózatok és alhálózatok éles környezetben különbözőek a követelmények teljesítéséhez.
-- Bejövő és kimenő forgalmat szűrés létrehozásával és alkalmazásával [hálózati biztonsági csoportok](virtual-networks-nsg.md) alhálózatokra.
-- Hozzon létre egy hálózati virtuális készüléken keresztül alhálózatok közötti forgalmat [felhasználó által definiált útvonalak](virtual-network-create-udr-arm-ps.md) és az útvonalak alkalmazása az egyes alhálózatokon.
-- Hozzon létre egy [Windows](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-network%2ftoc.json) vagy egy [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) virtuális gép egy meglévő virtuális hálózatban.
-- Hozzon létre két virtuális hálózatok csatlakoztatása egy [virtuális hálózati társviszony-létesítés](virtual-network-peering-overview.md) a virtuális hálózatok között.
-- A virtuális hálózati csatlakozás egy helyszíni hálózat segítségével egy [VPN-átjáró](../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) vagy [Azure ExpressRoute](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md?toc=%2fazure%2fvirtual-network%2ftoc.json) körön.
+> [!div class="nextstepaction"]
+> [Hálózati forgalom szűrésére alhálózathoz](./virtual-networks-create-nsg-arm-pportal.md)

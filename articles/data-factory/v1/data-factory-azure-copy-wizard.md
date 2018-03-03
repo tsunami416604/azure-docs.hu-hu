@@ -3,9 +3,9 @@ title: "Data Factory Azure másolása varázsló |} Microsoft Docs"
 description: "Ismerje meg az adatokat másolni a támogatott adatforrások mosdók a Data Factory Azure másolása varázsló használatával kapcsolatban."
 services: data-factory
 documentationcenter: 
-author: spelluru
-manager: jhubbard
-editor: monicar
+author: linda33wj
+manager: 
+editor: 
 ms.assetid: 0974eb40-db98-4149-a50d-48db46817076
 ms.service: data-factory
 ms.workload: data-services
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/22/2018
-ms.author: spelluru
+ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: d9f3fea0db5a08fc91d9e4dc525b48575c512634
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: aeed2b2413f14b60d018ebd4f09293d6c41554d2
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="azure-data-factory-copy-wizard"></a>Az Azure Data Factory másolása varázsló
 > [!NOTE]
@@ -44,7 +44,7 @@ A varázsló a big Data típusú adatok szem előtt, támogatja a különböző 
 ## <a name="automatic-data-preview"></a>Automatikus megtekintés
 Ahhoz, hogy ellenőrizze, hogy az adatokat másolni kívánt megtekintheti a kijelölt adatforrásból származó adatok egy részét. Ezenkívül ha az adatok a fájlt, a varázsló a szövegfájlt a sor- és határolójel és séma automatikusan további elemzi.
 
-![Fájl formázási beállítások](./media/data-factory-copy-wizard/file-format-settings.png)
+![A Fájlformátum beállításai](./media/data-factory-copy-wizard/file-format-settings.png)
 
 ## <a name="schema-capture-and-mapping"></a>Séma rögzítési és -leképezés
 A séma, bemeneti adatokat előfordulhat, hogy a kimeneti adatokat egyes esetekben sémája nem egyezik meg. Ebben a forgatókönyvben kell hozzárendelni a cél séma oszlopok a forrás séma oszlopokat.

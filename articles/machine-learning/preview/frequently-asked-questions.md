@@ -5,16 +5,16 @@ services: machine-learning
 author: serinakaye
 ms.author: serinak
 manager: mwinkle
-ms.reviewer: garyericson, jasonwhowell, mldocs
+ms.reviewer: jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 08/30/2017
-ms.openlocfilehash: 94c6576f92b5a004e0fd509c1dc6e091c294658a
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: ef1486bb65da7ca49e2d03273a47a3a3ee05150e
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="azure-machine-learning-frequently-asked-questions"></a>Gyakori kérdések az Azure Machine Learning
 
@@ -23,14 +23,6 @@ ms.lasthandoff: 12/18/2017
 **Mi az Azure Machine Learning?**
 
 Az Azure Machine Learning egy teljes körűen felügyelt Azure-szolgáltatás lehetővé teszi, hogy hozzon létre, tesztelheti, kezelése és központi telepítése a gépi tanulási és AI modellek. Az új szolgáltatásokat és letölthető alkalmazás egy kódot-első megközelítés, amely kihasználja a felhő, a helyszíni és az Edge böngésző számára adja meg a vonat, telepíthet, kezelheti az ajánlatot, és figyelje a modellek tápellátáshoz, a sebesség és a rugalmasságot. Azt is megteheti az Azure Machine Learning Studio kínál egy webböngésző-alapú, visual fogd és vidd fejlesztői környezet nem kódolás esetén szükséges. 
-
-**Hogyan kezdjem el az előzetes?**
-
-A kezdéshez legkönnyebben a kísérleti szolgáltatás az Azure-előfizetés. A portálról is szabad munkaterület alkalmazás letöltése vagy egy modell felügyeleti fiók. Emellett letöltheti a dokumentációs oldalát útmutatókat, videók, bemutató kódot és több. 
-
-**Nincs Azure-előfizetéssel. Lehet próbálni a új szolgáltatások?**
-
-A Microsoft Azure portfóliót részeként az új szolgáltatások az Azure-előfizetés szükséges. Emellett erőforrásokat, például az erőforráscsoportok, virtuális gépek stb létrehozásához megfelelő engedélyekkel kell rendelkeznie. 
 
 **Ahol régiók a következők a új szolgáltatások érhetők el?**
 
@@ -52,7 +44,7 @@ Sajnos jelenleg támogatott Python csak. Jelenleg az R-integráció dolgozik, é
 
 **Hogyan Azure Machine Learning kapcsolódik a Microsoft Machine Learning a Spark?**
 
-A: MMLSpark biztosít a részletes tanulási, és a hatékonyságot, kiemeléssel Apache Spark adatok tudományos eszközök megkönnyítik a kísérleti és -az-a-legkorszerűbb algoritmusokat. MMLSpark kínál a Microsoft kognitív eszközkészlet és OpenCV Spark gépi tanulási folyamatok integrálását. A képnek és szövegnek adatok hatékony, magas szinten méretezhető prediktív és elemzési modellek hozhat létre. MMLSpark egy nyílt forráskódú licenc érhető el, és AML munkaterület fogyasztható modellek és algoritmusok halmazát tartalmazza. MMLSpark további információkért látogasson el a termék dokumentációját. 
+MMLSpark biztosít a részletes tanulási, és a hatékonyságot, kiemeléssel Apache Spark adatok tudományos eszközök megkönnyítik a kísérleti és -az-a-legkorszerűbb algoritmusokat. MMLSpark kínál a Microsoft kognitív eszközkészlet és OpenCV Spark gépi tanulási folyamatok integrálását. A képnek és szövegnek adatok hatékony, magas szinten méretezhető prediktív és elemzési modellek hozhat létre. MMLSpark egy nyílt forráskódú licenc érhető el, és AML munkaterület fogyasztható modellek és algoritmusok halmazát tartalmazza. MMLSpark további információkért látogasson el a termék dokumentációját. 
 
 **Az új eszközök és szolgáltatások által támogatott Spark mely verzióival? Felső rész**
 
@@ -135,7 +127,7 @@ Nem. Az Azure Machine Learning-munkaterület egy ingyenes alkalmazást. amely ko
 
 **Támogatott parancssori képességeket?**
 
-A: az Azure Machine Learning Igen, a teljes CLI-felületet biztosít. A Machine Learning CLI az Azure Machine Learning-munkaterület alapértelmezés szerint telepítve van. A rendszer a Adattudomány Linux virtuális gépet az Azure részeként is biztosít, és a lesz integrálni a [Azure parancssori felület](https://docs.microsoft.com/cli/azure/overview?view=azure-cli-latest)
+Igen, az Azure Machine Learning egy teljes CLI-felületet biztosít. A Machine Learning CLI az Azure Machine Learning-munkaterület alapértelmezés szerint telepítve van. A rendszer a Adattudomány Linux virtuális gépet az Azure részeként is biztosít, és a lesz integrálni a [Azure parancssori felület](https://docs.microsoft.com/cli/azure/overview?view=azure-cli-latest)
 
 
 **Használhatok Jupyter notebookok munkaterület?**
@@ -144,7 +136,7 @@ Igen! Munkaterület, az ügyfél üzemeltetési alkalmazásként munkaterület a
 
 **Mely Jupyter Notebook kernelek támogatottak?**
 
-A: munkaterület mellékelt Jupyter a jelenlegi verziója elindítja egy Python 3 kernel, és egy kiegészítő rendszermag a aml_config mappában lévő minden egyes "runconfig" fájlhoz. Támogatott konfigurációk a következők:
+Munkaterület mellékelt Jupyter jelenlegi verziója elindítja a Python 3 kernel, és egy kiegészítő rendszermag a aml_config mappában lévő minden egyes "runconfig" fájlhoz. Támogatott konfigurációk a következők:
 - Helyi Python
 - A helyi vagy távoli Docker Python
 
@@ -176,7 +168,7 @@ A nyilvános előzetes verziójához a munkaterület "Származnia oszlop szerint
 
 **Vannak-e bármilyen adatok mérete korlátozások Azure Machine Learning-munkaterület, kísérletezhet vagy modell kezelése?**
 
-A: az új szolgáltatások nem ugyanazok az adatok korlátozások. Vannak azonban a környezet, amelyben hajtja végre az adatok előkészítése, a modell betanítási, a kísérletezés vagy a központi telepítés által bevezetett korlátozások. Például egy helyi környezet képzési céloz meg, ha korlátozott szabad hely a merevlemezen. Azt is megteheti Ha a HDInsight céloz meg, bármely társított mérete korlátozza vagy kiszámítására korlátozások. 
+Az új szolgáltatások nem, ugyanazok az adatok korlátozások. Vannak azonban a környezet, amelyben hajtja végre az adatok előkészítése, a modell betanítási, a kísérletezés vagy a központi telepítés által bevezetett korlátozások. Például egy helyi környezet képzési céloz meg, ha korlátozott szabad hely a merevlemezen. Azt is megteheti Ha a HDInsight céloz meg, bármely társított mérete korlátozza vagy kiszámítására korlátozások. 
 
 ## <a name="algorithms-and-libraries"></a>Algoritmusok és tárak
 
@@ -187,45 +179,3 @@ A kép termékeink és szolgáltatásaink közé tartozik a legjobb a nyílt for
 **Azure Machine Learning hogyan kapcsolódik a Microsoft kognitív eszközkészlet?**
 
 A [Microsoft kognitív eszközkészlet](https://www.microsoft.com/cognitive-toolkit/) az új eszközök és szolgáltatások által támogatott sok keretrendszerek egyike. A kognitív eszközkészlet egy egységes mély tanulási eszközkészlet, amely lehetővé teszi használnak, és népszerű gépi tanulási adatcsatorna-továbbító Neurális hálózatokat, Convolutional hálók, beleértve a modellek egyesítése Sequence-Sequence és ismétlődő hálózatok. A Microsoft kognitív eszközkészlet további tudnivalókért keresse fel a [termékdokumentációjának](https://docs.microsoft.com/cognitive-toolkit/). 
-
-## <a name="pricing-and-billing"></a>Árak és számlázás
-
-**Vannak, díjszabási Azure Machine Learning előzetes?** 
-
-V: az Azure Machine Learning-munkaterület alkalmazást az Azure-előfizetők ingyenes. A kísérleti szolgáltatás és a modell kezelése kínál az ingyenes rétegek fizetett szinteken, nyilvános előzetes kedvezményes áron avialable mellett.
-
-**I megterheljük futtattam hány kísérletek alapján?**
-
-Nem. A kísérletezés szolgáltatásban korlátlan számú kísérlet elvégezhető, a fizetendő díjat pedig kizárólag a felhasználók száma határozza meg. A kísérletezéshez felhasznált számítási erőforrásokért külön díjat számolunk fel.  Javasoljuk, hogy a megoldás a legjobb modell elérésének több kísérletek végrehajtása. 
-
-**I kiszabott alapján hány alkalommal a webszolgáltatások lesz neve?**
-
-Nem. Webszolgáltatások hívhatók szükséges, a számlázási modell kezelése hatással nélkül gyakorisággal. Az üzemelő példányok méretezését teljes egészében Ön határozhatja meg az alkalmazások szükségleteihez igazodva.
-
-**Hogyan méretezheti I vásárolt, az Azure Machine Learning modell kezelése az egységek száma?**
-
-Módosíthatja a egységek száma felfelé vagy lefelé, az Azure-portálon vagy a parancssori felület használatával. 
-
-**Mi lesz a számlázási megjelenését?**
-
-Váltók naponta előállítása. A számlázás tekintetében a nap kezdete az UTC szerinti éjfél. A számlázás havi rendszerességgel történik. Külön díjak sem merülnek fel a bármely Azure-szolgáltatások, az Azure Machine Learning együtt használni. Díjak lehetnek, azonban nem csak: 
-- Számítási díjakat
-- HDInsight
-- Azure Container Service
-- Azure Container Registry 
-- Azure Blob Storage
-- Application Insights
-- Azure Key Vault
-- Visual Studio Team Services
-- Az Azure Event Hubs
-- Az Azure Stream Analytics a a további részleteket, vagy egy minta számlázási megtekintéséhez látogasson el az árképzést ismertető oldalra. 
-
-## <a name="support-and-training"></a>Támogatás és betanítás
-
-**Hol kaphatok képzést az Azure Machine Learning használatáról?**
-
-Az [Azure Machine Learning dokumentációs központjában](./overview-what-is-azure-ml.md) oktatóvideókat és útmutatókat talál az Azure Machine Learning használatáról. Ezek a lépésenkénti útmutatók a szolgáltatások esetében, és az adatok tudományos életciklusát ismertetik. A Machine Learning központját folyamatosan új anyagokkal bővítjük. Kérelmezheti, a felhasználó-visszajelzési fórumon további tanulási anyagok esetében.
-
-**Hol kaphatok támogatást az Azure Machine Learninghez?**
-
-Ha technikai támogatást nyissa meg Azure támogatásához, és válassza ki a Machine Learning. Az Azure Machine Learning is rendelkezik egy aktív közösségi [StackOverflow](https://stackoverflow.com/questions/tagged/azure-machine-learning) "Azure-gépi tanulásra", a csapat által figyelt címkézését.  Javaslatok és funkciókra vonatkozó kérések küldheti el a [Azure Machine Learning visszajelzés](https://feedback.azure.com/forums/257792-machine-learning) hely. 

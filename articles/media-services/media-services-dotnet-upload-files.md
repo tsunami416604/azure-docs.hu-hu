@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/12/2017
 ms.author: juliako
-ms.openlocfilehash: ec8c1da633374ba684f6a0a895c542ee76ef73b8
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: f688c8f28b1dfd9a54e4dc39120851c144bbeffe
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="upload-files-into-a-media-services-account-using-net"></a>Fájlok feltöltése a Media Services-fiók .NET használatával
 > [!div class="op_single_selector"]
@@ -37,32 +37,32 @@ Az adategységben található fájlokat **adategység-fájloknak** nevezzük. A 
 > 
 > * A Media Services a IAssetFile.Name tulajdonság értékét használja, amikor az adatfolyam-tartalmak (például http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters.) a URL-címek kiépítéséhez Emiatt százalék-kódolás nem engedélyezett. Értékét a **neve** tulajdonság nem lehet a következő [százalék kódolás-fenntartott karakterek](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters):! *' ();: @& = + $, /? % # [] ". Emellett csak lehet egy "." a fájlnévkiterjesztés.
 > * A név hossza nem lehet hosszabb 260 karakternél.
-> * A Media Services által feldolgozható maximális támogatott fájlméret korlátozott. A fájlméretre vonatkozó korlátozással kapcsolatban további információt [ebben](media-services-quotas-and-limitations.md) a témakörben talál.
-> * A különböző AMS-szabályzatok (például a Locator vagy a ContentKeyAuthorizationPolicy) esetében a korlát 1 000 000 szabályzat. Ha mindig ugyanazokat a napokat/hozzáférési engedélyeket használja (például olyan keresők szabályzatait, amelyek hosszú ideig érvényben maradnak, vagyis nem feltöltött szabályzatokat), a szabályzatazonosítónak is ugyanannak kell lennie. További információ [ebben](media-services-dotnet-manage-entities.md#limit-access-policies) a témakörben érhető el.
+> * A Media Services által feldolgozható maximális támogatott fájlméret korlátozott. A fájlméretre vonatkozó korlátozással kapcsolatban további információt [ebben](media-services-quotas-and-limitations.md) a cikkben talál.
+> * A különböző AMS-szabályzatok (például a Locator vagy a ContentKeyAuthorizationPolicy) esetében a korlát 1 000 000 szabályzat. Ha mindig ugyanazokat a napokat/hozzáférési engedélyeket használja (például olyan keresők szabályzatait, amelyek hosszú ideig érvényben maradnak, vagyis nem feltöltött szabályzatokat), a szabályzatazonosítónak is ugyanannak kell lennie. További információkért tekintse meg [ezt](media-services-dotnet-manage-entities.md#limit-access-policies) a cikket.
 > 
 
-Eszközök létrehozásakor a következő titkosítási beállításokat is megadhat. 
+Eszközök létrehozásakor a következő titkosítási beállításokat adhat meg:
 
-* **Nincs** – Nincs titkosítás. Ez az alapértelmezett érték. Vegye figyelembe, hogy ez a beállítás használatakor a tartalom nem védett átvitel, sem tárolás közben.
-  Ha egy MP4-fájlt progresszív letöltés útján tervez továbbítani, használja ezt a lehetőséget. 
+* **Nincs** – Nincs titkosítás. Ez az alapértelmezett érték. Ez a beállítás használatakor a tartalom nem védett átvitel, sem tárolás közben.
+  Ha azt tervezi, hogy egy MP4 fájlt progresszív letöltés útján használja ezt a beállítást: 
 * **CommonEncryption** -használja ezt a beállítást, ha már titkosítva és általános titkosítás vagy a PlayReady DRM által (például védett Smooth Streaming egy PlayReady DRM) védett tartalmat.
 * **EnvelopeEncrypted** – használja ezt a beállítást, ha AES által titkosított HLS. Megjegyzés: ehhez a fájlokat a Transform Manager használatával kell kódolni és titkosítani.
-* **StorageEncrypted** - titkosítja a tiszta tartalom helyileg az AES-256 bites titkosítás használata, és feltölti azt Azure Storage helyén titkosítása. A Storage-titkosítással védett adategységek titkosítása a kódolás előtt automatikusan fel lesz oldva, és egy titkosított fájlrendszerbe kerülnek; az új kimeneti adategységként való újbóli feltöltés előtt pedig lehetőség van az újbóli titkosításukra. A tárolás titkosítása elsődleges használati eset az, amikor biztonságossá tételéhez a kiváló minőségű bemeneti médiafájljait erős titkosítással aktívan a lemezen.
+* **StorageEncrypted** - titkosítja a tiszta tartalom helyileg az AES-256 bites titkosítás használata, és feltölti azt Azure Storage helyén titkosítása. A Storage-titkosítással védett adategységek titkosítása a kódolás előtt automatikusan fel lesz oldva, és egy titkosított fájlrendszerbe kerülnek; az új kimeneti adategységként való újbóli feltöltés előtt pedig lehetőség van az újbóli titkosításukra. A Storage-titkosítás elsősorban akkor hasznos, ha a kiváló minőségű bemeneti médiafájljait erős titkosítással szeretné védeni a lemezen való tároláskor.
   
     A Media Services biztosít az eszközök, nem over tömörített digitális Manager (DRM) például a lemezen tárolás titkosítása.
   
-    Ha az adategységen tárolótitkosítást alkalmaz, konfigurálnia kell az adategység továbbítási házirendjét. További információ: [objektumtovábbítási szabályzat konfigurálása](media-services-dotnet-configure-asset-delivery-policy.md).
+    Ha az adategységen tárolótitkosítást alkalmaz, konfigurálnia kell az adategység továbbítási házirendjét. További információkért lásd: [objektumtovábbítási szabályzat konfigurálása](media-services-dotnet-configure-asset-delivery-policy.md).
 
-Ha az eszköz titkosítva, amelyet megad egy **CommonEncrypted** lehetőséget, vagy egy **EnvelopeEncypted** beállítást, szüksége lesz az objektum hozzárendelése egy **ContentKey**. További információkért lásd: [létrehozása egy ContentKey](media-services-dotnet-create-contentkey.md). 
+Ha az eszköz titkosítva, amelyet megad egy **CommonEncrypted** lehetőséget, vagy egy **EnvelopeEncypted** beállítás, hozzá kell rendelni a objektum egy **ContentKey**. További információkért lásd: [létrehozása egy ContentKey](media-services-dotnet-create-contentkey.md). 
 
-Ha az eszköz titkosítva, amelyet megad egy **StorageEncrypted** beállítás, a Media Services SDK, a .NET hoz létre egy **StorateEncrypted** **ContentKey** a a eszköz.
+Ha az eszköz titkosítva, amelyet megad egy **StorageEncrypted** beállítás, a Media Services SDK, a .NET-hoz létre egy **StorateEncrypted** **ContentKey** az objektum.
 
-Ez a témakör bemutatja a Media Services .NET SDK-t, valamint a Media Services .NET SDK-bővítmények használata fájlok feltöltése a Media Services-objektumba.
+Ez a cikk bemutatja, hogyan használja a Media Services .NET SDK-t, valamint a Media Services .NET SDK-bővítmények fájlok feltöltése a Media Services-objektumba.
 
 ## <a name="upload-a-single-file-with-media-services-net-sdk"></a>Media Services .NET SDK-val egy fájl feltöltése
-Az alábbi példakód .NET SDK használatával egyetlen fájl feltöltése. A AccessPolicy és lokátor létrehozása és a feltöltés függvény megsemmisül. 
+A következő kód .NET használatával egyetlen fájl feltöltése. A AccessPolicy és lokátor létrehozása és a feltöltés függvény megsemmisül. 
 
-
+```csharp
         static public IAsset CreateAssetAndUploadSingleFile(AssetCreationOptions assetCreationOptions, string singleFilePath)
         {
             if (!File.Exists(singleFilePath))
@@ -83,6 +83,7 @@ Az alábbi példakód .NET SDK használatával egyetlen fájl feltöltése. A Ac
 
             return inputAsset;
         }
+```
 
 
 ## <a name="upload-multiple-files-with-media-services-net-sdk"></a>Media Services .NET SDK-val több fájl feltöltése
@@ -93,7 +94,7 @@ A kód a következőket teszi:
 * Létrehoz egy üres eszköz az előző lépésben meghatározott CreateEmptyAsset metódussal.
 * Létrehoz egy **AccessPolicy** -példányt, engedélyekkel és hozzáférési időtartama határozza meg az eszközre.
 * Létrehoz egy **lokátor** példánya, amely hozzáférést biztosít az eszközhöz.
-* Létrehoz egy **BlobTransferClient** példány. Ez a típus jelképezi ügyfél, amely az Azure-blobokat működik. Ebben a példában használjuk az ügyfél feltöltési előrehaladásának figyeléséhez. 
+* Létrehoz egy **BlobTransferClient** példány. Ez a típus jelképezi ügyfél, amely az Azure-blobokat működik. Ebben a példában az ügyfél figyeli a feltöltési folyamatáról. 
 * A megadott könyvtárban található fájlok keresztül enumerálása, és létrehoz egy **AssetFile** -példány minden fájlt.
 * A Media Services segítségével feltölti a fájlokat a **UploadAsync** metódust. 
 
@@ -102,6 +103,7 @@ A kód a következőket teszi:
 > 
 > 
 
+```csharp
         static public IAsset CreateAssetAndUploadMultipleFiles(AssetCreationOptions assetCreationOptions, string folderPath)
         {
             var assetName = "UploadMultipleFiles_" + DateTime.UtcNow.ToString();
@@ -157,41 +159,48 @@ A kód a következőket teszi:
             Console.WriteLine("{0}% upload competed for {1}.", e.ProgressPercentage, e.LocalFile);
         }
     }
+```
 
 
+Eszközök nagy számú feltöltését, vegye figyelembe a következőket:
 
-Eszközök nagy számú feltöltését, vegye figyelembe a következőket.
-
-* Hozzon létre egy új **CloudMediaContext** szálankénti objektum. A **CloudMediaContext** osztály nincs többszálú futtatásra.
+* Hozzon létre egy új **CloudMediaContext** szálankénti objektum. A **CloudMediaContext** osztály nincs szálbiztos.
 * Az alapértelmezett érték 2 nagyobb értékre mint 5 NumberOfConcurrentTransfers növelése A tulajdonság beállítása hatással van az összes példányát **CloudMediaContext**. 
 * Az alapértelmezett érték 10 ParallelTransferThreadCount megőrizni.
 
 ## <a id="ingest_in_bulk"></a>A Media Services .NET SDK használatával tömeges választásával dolgozhat fel eszközök
 Nagy eszköz fájlok feltöltése lehet a szűk keresztmetszetek eszköz létrehozása során. Választásával dolgozhat fel eszközök tömeges vagy a "tömeges választásával dolgozhat" fel, magában foglalja a leválasztásával eszköz létrehozását a feltöltési folyamat során. A tömeges választásával dolgozhat fel módszer használatához hozzon létre a jegyzékfájl (IngestManifest), amely az eszköz és az ahhoz tartozó fájlokat ismerteti. Az Ön által választott a fájlfeltöltési módszer segítségével a társított fájlok feltöltése a jegyzékfájl blob tárolóhoz. A Microsoft Azure Media Services a blob tároló a jegyzékfájl társított figyeli. Miután egy fájlt tölt fel az a blob-tároló, a Microsoft Azure Media Services befejezte a jegyzékfájlban (IngestManifestAsset) az eszköz konfigurációján alapul eszköz létrehozását.
 
-Hozzon létre egy új IngestManifest hívja meg a Create metódus által a CloudMediaContext az IngestManifests gyűjtemény. Ezzel a módszerrel hoz létre egy új IngestManifest a jegyzékfájl-nevet.
+Hozzon létre egy új IngestManifest, hívja meg a Create metódussal a CloudMediaContext az IngestManifests gyűjtemény által elérhetővé tett tárolókra. Ez a módszer új IngestManifest hoz létre a jegyzékfájl-nevet.
 
+```csharp
     IIngestManifest manifest = context.IngestManifests.Create(name);
+```
 
-Az eszközöket, amely a tömeges IngestManifest társítva lesz létrehozni. Az eszköz tömeges választásával dolgozhat fel a kívánt titkosítási beállításainak megadása
+A tömeges IngestManifest társított eszközök létrehozása. Az eszköz tömeges választásával dolgozhat fel a kívánt titkosítási beállításainak megadása
 
+```csharp
     // Create the assets that will be associated with this bulk ingest manifest
     IAsset destAsset1 = _context.Assets.Create(name + "_asset_1", AssetCreationOptions.None);
     IAsset destAsset2 = _context.Assets.Create(name + "_asset_2", AssetCreationOptions.None);
+```
 
-Egy IngestManifestAsset egy eszköz társít egy tömeges IngestManifest tömeges választásával dolgozhat fel. Azt is, amelyek minden eszköz a AssetFiles társítja. Hozzon létre egy IngestManifestAsset, használja a Create metódussal a kiszolgáló a környezetben.
+Egy IngestManifestAsset egy eszköz társít egy tömeges IngestManifest tömeges választásával dolgozhat fel. Azt is hozzárendeli a AssetFiles, amely minden eszközhöz. Hozzon létre egy IngestManifestAsset, használja a Create metódussal a kiszolgáló a környezetben.
 
-A következő példa bemutatja, hozzáadását két új IngestManifestAssets, amelyek a két eszközök tömeges korábban létrehozott társítják betöltési jegyzékben. Minden IngestManifestAsset is hozzárendeli a minden eszköz lesz feltöltve fájlokat alatt tömeges választásával dolgozhat fel.  
+A következő példa bemutatja, hozzáadását két új IngestManifestAssets, amelyek a két eszközök tömeges korábban létrehozott társítják betöltési jegyzékben. Minden IngestManifestAsset is hozzárendeli a minden eszköz feltöltése fájlokat alatt tömeges választásával dolgozhat fel.  
 
+```csharp
     string filename1 = _singleInputMp4Path;
     string filename2 = _primaryFilePath;
     string filename3 = _singleInputFilePath;
 
     IIngestManifestAsset bulkAsset1 =  manifest.IngestManifestAssets.Create(destAsset1, new[] { filename1 });
     IIngestManifestAsset bulkAsset2 =  manifest.IngestManifestAssets.Create(destAsset2, new[] { filename2, filename3 });
+```
 
-A nagy sebességű ügyfélalkalmazás képes az eszköz fájlok feltöltése a blob storage tárolók által megadott URI-Azonosítót is használhatja a **IIngestManifest.BlobStorageUriForUpload** a IngestManifest tulajdonsága. Egy figyelmet a jelentősebb nagy sebességű feltöltési szolgáltatás [Aspera igény szerinti Azure alkalmazáshoz](https://datamarket.azure.com/application/2cdbc511-cb12-4715-9871-c7e7fbbb82a6). Ahogy az az alábbi Kódpélda az eszközök fájlok feltöltéséhez kódot is írhat.
+A nagy sebességű ügyfélalkalmazás képes az eszköz fájlok feltöltése a blob storage tárolók által megadott URI-Azonosítót is használhatja a **IIngestManifest.BlobStorageUriForUpload** a IngestManifest tulajdonsága. Egy fontos a nagy sebességű feltöltési szolgáltatás [Aspera igény szerinti Azure alkalmazáshoz](https://datamarket.azure.com/application/2cdbc511-cb12-4715-9871-c7e7fbbb82a6). Ahogy az az alábbi Kódpélda az eszközök fájlok feltöltéséhez kódot is írhat.
 
+```csharp
     static void UploadBlobFile(string destBlobURI, string filename)
     {
         Task copytask = new Task(() =>
@@ -214,18 +223,21 @@ A nagy sebességű ügyfélalkalmazás képes az eszköz fájlok feltöltése a 
 
         copytask.Start();
     }
+```
 
-A minta a jelen témakörben használt eszköz fájlok feltöltése a kódját a következő kódrészlet példa látható.
+A kód a minta a cikk ezt használja az eszköz fájlok feltöltése a következő kódrészlet példa látható:
 
+```csharp
     UploadBlobFile(manifest.BlobStorageUriForUpload, filename1);
     UploadBlobFile(manifest.BlobStorageUriForUpload, filename2);
     UploadBlobFile(manifest.BlobStorageUriForUpload, filename3);
-
+```
 
 A tömeges választásával dolgozhat fel társított összes eszköz előrehaladását segítségével meghatározhatja egy **IngestManifest** statisztika tulajdonságának lekérdezésével a **IngestManifest**. Folyamatban lévő információk frissítéséhez kell használnia egy új **CloudMediaContext** minden alkalommal, amikor lekérdezi a statisztika tulajdonság.
 
 A következő példa bemutatja, hogy egy IngestManifest által lekérdezési a **azonosító**.
 
+```csharp
     static void MonitorBulkManifest(string manifestID)
     {
        bool bContinue = true;
@@ -257,12 +269,13 @@ A következő példa bemutatja, hogy egy IngestManifest által lekérdezési a *
              bContinue = false;
        }
     }
-
+```
 
 
 ## <a name="upload-files-using-net-sdk-extensions"></a>Töltse fel a fájlokat a .NET SDK-bővítmények
-Az alábbi példa bemutatja, hogyan .NET SDK-bővítmények használatával egyetlen fájl feltöltéséhez. Ebben az esetben a **CreateFromFile** módszert használ, de az aszinkron verzióját is rendelkezésre áll (**CreateFromFileAsync**). A **CreateFromFile** módszer lehetővé teszi a adja meg a fájl, a titkosítási beállítással, és egy visszahívási ahhoz, hogy a fájl feltöltési folyamatáról.
+A következő példa bemutatja, hogyan .NET SDK-bővítmények használatával egyetlen fájl feltöltéséhez. Ebben az esetben a **CreateFromFile** módszert használ, de az aszinkron verzióját is rendelkezésre áll (**CreateFromFileAsync**). A **CreateFromFile** módszer lehetővé teszi a adja meg a fájl, a titkosítási beállítással, és egy visszahívási ahhoz, hogy a fájl feltöltési folyamatáról.
 
+```csharp
     static public IAsset UploadFile(string fileName, AssetCreationOptions options)
     {
         IAsset inputAsset = _context.Assets.CreateFromFile(
@@ -277,10 +290,13 @@ Az alábbi példa bemutatja, hogyan .NET SDK-bővítmények használatával egye
 
         return inputAsset;
     }
+```
 
 Az alábbi példa UploadFile függvényt, és adja meg a tárolás titkosítása az eszköz létrehozása beállításként.  
 
+```csharp
     var asset = UploadFile(@"C:\VideoFiles\BigBuckBunny.mp4", AssetCreationOptions.StorageEncrypted);
+```
 
 ## <a name="next-steps"></a>További lépések
 
@@ -295,7 +311,7 @@ Emellett az Azure Functions használatával is elindíthatja a kódolási felada
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
 ## <a name="next-step"></a>Következő lépés
-Most, hogy egy eszköz a Media Services feltöltött, navigáljon a [hogyan kérhet egy adathordozó processzor] [ How to Get a Media Processor] témakör.
+Most, hogy egy eszköz a Media Services feltöltött, navigáljon a [hogyan kérhet egy adathordozó processzor] [ How to Get a Media Processor] cikk.
 
 [How to Get a Media Processor]: media-services-get-media-processor.md
 

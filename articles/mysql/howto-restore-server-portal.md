@@ -1,54 +1,81 @@
 ---
-title: "Egy kiszolgálóhoz az Azure-adatbázis visszaállítása a MySQL |} Microsoft Docs"
+title: "A MySQL egy kiszolgálóhoz az Azure-adatbázis visszaállítása"
 description: "Ez a cikk ismerteti a kiszolgáló Azure-adatbázis visszaállítása a MySQL az Azure portál használatával."
 services: mysql
-author: v-chenyh
-ms.author: v-chenyh
-manager: jhubbard
+author: ajlam
+ms.author: andrela
+manager: kfile
 editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
-ms.date: 09/15/2017
-ms.openlocfilehash: 6c1c0f8a0c0e59661b70b787b551b8cfdb024cda
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 02/28/2018
+ms.openlocfilehash: 5bef3f11d0b546fbd6b1161b20d7dfb81e975f99
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/02/2018
 ---
-# <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-mysql-by-using-the-azure-portal"></a>Készítsen biztonsági másolatot, és egy kiszolgálóhoz az Azure-adatbázis visszaállítása a MySQL az Azure portál használatával
+# <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-mysql-using-the-azure-portal"></a>Készítsen biztonsági másolatot, és a kiszolgáló Azure-adatbázis visszaállítása a MySQL az Azure portál használatával
 
 ## <a name="backup-happens-automatically"></a>Automatikusan megtörténik a biztonsági mentés
-Amikor MySQL az Azure-adatbázist használja, az adatbázis-szolgáltatás automatikusan teszi a szolgáltatás biztonsági másolatot, ötpercenként. 
+A MySQL-kiszolgálók Azure-adatbázis biztonsági mentése rendszeresen visszaállítási szolgáltatások engedélyezése. Ezzel a szolgáltatással is visszaállíthatja a kiszolgáló és az adatbázisok egy korábbi-időpontban, egy új kiszolgálóra.
 
-A biztonsági mentések esetén érhetők el a 7 napja alapszintű rétegben, és 35 napon Standard csomag használata esetén. További információkért lásd: [MySQL szolgáltatási szinteket az Azure-adatbázis](concepts-service-tiers.md)
+## <a name="prerequisites"></a>Előfeltételek
+Ez az útmutató útmutató befejezéséhez lesz szüksége:
+- Egy [a MySQL-kiszolgáló és az adatbázis Azure-adatbázis](quickstart-create-mysql-server-database-using-azure-portal.md)
 
-Az automatikus biztonsági mentési szolgáltatás használatával állítsa vissza a kiszolgáló és az adatbázisok be egy új kiszolgálót egy korábbi-időpontban.
+## <a name="set-backup-configuration"></a>Biztonsági mentési konfigurációjának beállítása
 
-## <a name="restore-in-the-azure-portal"></a>Állítsa vissza az Azure-portálon
-Azure MySQL-adatbázis visszaállítása a kiszolgáló egy adott időben és a teszi a kiszolgáló egy új példányát. Az új kiszolgáló használatával az adatok helyreállításához. 
+Vagy helyileg redundáns vagy földrajzilag redundáns történő biztonsági mentésekre a kiszolgáló létrehozásakor, a kiszolgáló konfigurálása közötti választás a **Tarifacsomagot** ablak.
 
-Például ha egy táblázat véletlenül ma délben el lett dobva, sikerült visszaállítása előtt déltől idő és a hiányzó tábla és adatokat lekérdezni a server új példányát.
+> [!NOTE]
+> Miután a kiszolgáló akkor jön létre, milyen típusú redundancia rendelkezik, helyileg redundáns földrajzilag redundáns vs nem állítható át.
+>
 
-Az alábbi lépéseket a minta-kiszolgáló helyreállítása egy adott pontra időpont:
+Az Azure portálon keresztül a kiszolgáló létrehozása során a **Tarifacsomagot** időszak, ahol ki kell választania vagy **helyileg redundáns** vagy **földrajzilag redundáns** biztonsági mentés a kiszolgáló. Ebben az ablakban is, ahol ki kell választania a **biztonsági mentés megőrzési időszak** – mennyi ideig (a napok száma) a kiszolgáló biztonsági másolatait tárolni szeretné.
 
-1. Jelentkezzen be a [Azure-portálon](https://portal.azure.com/)
+   ![Tarifacsomag - válassza ki a biztonsági mentési redundancia](./media/howto-restore-server-portal/pricing-tier.png)
 
-2. Keresse meg a MySQL-kiszolgálóhoz tartozó Azure-adatbázis. A bal oldali panelen válassza ki a **összes erőforrás**, és válassza ki a kiszolgálót a listából.
+Ezeket az értékeket létrehozásakor beállításával kapcsolatos további információkért lásd: a [MySQL server gyors üzembe helyezés az Azure Database](quickstart-create-mysql-server-database-using-azure-portal.md).
 
-3.  A kiszolgáló – áttekintés panel tetején kattintson **visszaállítása** az eszköztáron. A visszaállítás panel nyílik meg.
-![Visszaállítás gombra.](./media/howto-restore-server-portal/click-restore-button.png)
+A biztonsági mentés megőrzési idő módosítható a következő lépések során a kiszolgálón:
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+2. Válassza ki a MySQL-kiszolgálóhoz tartozó Azure-adatbázis. Ez a művelet megnyitja az **áttekintése** lap.
+3. Válassza ki **Tarifacsomagot** a menüben a **beállítások**. A csúszkával módosítható a **biztonsági mentés megőrzési időszak** a 7-es vagy 35 nap közötti, igény szerint.
+Az alábbi képernyőképen az értékre nőtt 34 nap.
+![Biztonsági mentés megőrzési időszak nőtt](./media/howto-restore-server-portal/3-increase-backup-days.png)
 
-4. Töltse ki a visszaállítási űrlapot a szükséges adatokkal:
+4. Kattintson a **OK** a módosítás megerősítéséhez.
 
-- **Visszaállítási pont (idő szerint UTC)**: Dátumválasztó és idő kiválasztása, válasszon ki egy pontot időben történő visszaállításához. A megadott ideje UTC formátumban, valószínűleg kell konvertálni a helyi idő (UTC).
-- **Új kiszolgáló visszaállításához**: Adjon meg egy új kiszolgálónevet, a meglévő kiszolgálóról történő visszaállítására.
-- **Hely**: A régió beállítása automatikusan tölti fel a forrás kiszolgálón régiót, és nem módosítható.
-- **IP-címek**: árképzési szint kiválasztása automatikusan tölti fel az azonos árképzési szint a forráskiszolgáló, és az itt nem módosíthatók. 
-![PITR visszaállítása](./media/howto-restore-server-portal/pitr-restore.png)
+A biztonsági mentés megőrzési időszak irányító milyen távolságban az idő lekérhető pont időponthoz kötött visszaállítás, mivel elérhető biztonsági másolatokat alapul. A következő szakaszban leírt további pont időponthoz kötött visszaállítás. 
 
-5. Kattintson a **OK** való visszaállítása a kiszolgáló a megadott idő. 
+## <a name="point-in-time-restore-in-the-azure-portal"></a>Az Azure portálon pont időponthoz kötött visszaállítás
+Azure MySQL-adatbázis lehetővé teszi a kiszolgáló helyreállítása vissza egy-időpontban, és azokat a kiszolgáló egy új példányát. A következő új kiszolgáló használata az adatok helyreállításához, vagy az ügyfél alkalmazásokat az új kiszolgálóra mutasson.
 
-6. A visszaállítás befejezése után keresse meg az új kiszolgálóra lett létrehozva, és ellenőrizze, hogy az adatbázisok visszaállítása várt módon történt.
+Például ha egy táblázat véletlenül dobva délben ma, akkor sikerült visszaállítása előtt déltől idő, a hiányzó tábla és adatokat lekérdezni az új példányt a kiszolgáló. Időpontban visszaállítást a kiszolgálón szint, nem az adatbázis szintjén.
 
-## <a name="next-steps"></a>Következő lépések
-- [MySQL az Azure-adatbázis adatkapcsolattárak](concepts-connection-libraries.md).
+Az alábbi lépéseket a minta kiszolgáló visszaállítása a-időpontban:
+1. Az Azure-portálon válassza ki a MySQL-kiszolgálóhoz tartozó Azure-adatbázis. 
+
+2. A kiszolgáló eszköztárán **áttekintése** lapon jelölje be **visszaállítása**.
+
+   ![Azure-adatbázis MySQL - áttekintése - Visszaállítás gomb](./media/howto-restore-server-portal/2-server.png)
+
+3. Töltse ki a visszaállítási űrlapot a szükséges adatokkal:
+
+   ![MySQL - visszaállítási információk az Azure-adatbázis ](./media/howto-restore-server-portal/3-restore.png)
+  - **Visszaállítási pont**: válassza ki a-időpontban a visszaállítani kívánt.
+  - **Célkiszolgáló**: Adjon meg egy nevet az új kiszolgálóra.
+  - **Hely**: a régió nem választhatók ki. Alapértelmezés szerint az ugyanaz, mint a forráskiszolgálón.
+  - **A tarifacsomag**: ezek a paraméterek nem módosítható, ha a pont időponthoz kötött visszaállítás során. Ugyanaz, mint a forráskiszolgálóé. 
+
+4. Kattintson a **OK** visszaállítása a kiszolgálón történő visszaállításához, egy-időpontban. 
+
+5. Miután a visszaállítás befejezését, keresse meg az új kiszolgálóra, amely az adatok helyreállt a várt módon ellenőrzése jön létre.
+
+>[!Note]
+>Vegye figyelembe a időpontban visszaállítás által létrehozott új kiszolgáló rendelkezik-e az azonos felügyeleti bejelentkezési nevet és jelszót, amely a meglévő kiszolgáló, a-időpontban érvényes választott. Módosíthatja a jelszót az új kiszolgáló **áttekintése** lap.
+
+## <a name="next-steps"></a>További lépések
+- További információ a szolgáltatás [biztonsági mentések](concepts-backup.md).
+- További információ [az üzletmenet folytonossága](concepts-business-continuity.md) beállítások.

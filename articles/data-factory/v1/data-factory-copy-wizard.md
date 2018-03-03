@@ -3,9 +3,9 @@ title: "Másolja az adatokat könnyen másolása varázsló – Azure |} Microso
 description: "Ismerje meg az adatokat másolni a támogatott adatforrások mosdók a Data Factory másolása varázsló használatával kapcsolatban."
 services: data-factory
 documentationcenter: 
-author: spelluru
-manager: jhubbard
-editor: monicar
+author: linda33wj
+manager: 
+editor: 
 ms.assetid: f904972f-cd33-48db-9755-2b3196ae4168
 ms.service: data-factory
 ms.workload: data-services
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/22/2018
-ms.author: spelluru
+ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: c993b1dfb0055da84751c042efccf42d943375d9
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 8f618c6efd96fd74e88f56a378b9d73cfa47b8da
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="copy-or-move-data-easily-with-azure-data-factory-copy-wizard"></a>Átmásolnia vagy áthelyeznie az adatokat könnyen az Azure Data Factory másolása varázsló
 > [!NOTE]
@@ -45,7 +45,7 @@ A varázsló a big Data típusú adatok szem előtt a kezdetektől úgy van kial
 ## <a name="automatic-data-preview"></a>Automatikus megtekintés
 A varázsló lehetővé teszi, hogy tekintse át a választott adatforrással kapcsolatosan, hogy ellenőrizze, hogy az adatok a másolni kívánt adatokat az adatok egy részét. Ezenkívül ha az adatok szövegfájlba, másolása varázsló kijelölt szöveg sor és oszlop elválasztókat és séma automatikusan további. 
 
-![Fájl formázási beállítások](./media/data-factory-copy-wizard/file-format-settings.png)
+![A Fájlformátum beállításai](./media/data-factory-copy-wizard/file-format-settings.png)
 
 ## <a name="schema-capture-and-mapping"></a>Séma rögzítési és -leképezés
 A séma, bemeneti adatokat előfordulhat, hogy a kimeneti adatokat egyes esetekben sémája nem egyezik meg. Ebben a forgatókönyvben kell hozzárendelni a cél séma oszlopok a forrás séma oszlopokat. 

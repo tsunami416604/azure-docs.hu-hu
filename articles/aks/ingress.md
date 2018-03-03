@@ -9,17 +9,17 @@ ms.topic: article
 ms.date: 2/21/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: f0a674daab177d71658c546fa4719892a33ed869
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: c25a0171bd412050a7c94e9b077436cd1ebe893b
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="https-ingress-on-azure-container-service-aks"></a>Azure tárolószolgáltatás (AKS) HTTPS érkező
 
 Az érkező vezérlőhöz egy adott szoftver, amely fordított proxy, konfigurálható a forgalom útválasztásához megszüntetése, és a TLS Kubernetes szolgáltatásokhoz. Kubernetes érkező erőforrások érkező szabályok és az egyes Kubernetes szolgáltatások útvonalak konfigurálására szolgálnak. Az érkező vezérlőhöz és érkező szabályokat használ, egy külső cím forgalom irányítására vonatkozik több szolgáltatásra Kubernetes fürtben használható.
 
-Ez a dokumentum végigvezeti egy minta központi telepítése a [NGIX érkező vezérlő] [ nginx-ingress] Azure tároló szolgáltatás (AKS) fürtben. Emellett a [KUBE-LEGO] [ kube-lego] projekt használt automatikus létrehozása és konfigurálása [most titkosítása] [ lets-encrypt] tanúsítványokat. Végül több alkalmazást futtathatók a AKS fürtben, amelyek érhető el egyetlen címen keresztül.
+Ez a dokumentum végigvezeti egy minta központi telepítése a [NGINX érkező vezérlő] [ nginx-ingress] Azure tároló szolgáltatás (AKS) fürtben. Emellett a [KUBE-LEGO] [ kube-lego] projekt használt automatikus létrehozása és konfigurálása [most titkosítása] [ lets-encrypt] tanúsítványokat. Végül több alkalmazást futtathatók a AKS fürtben, amelyek érhető el egyetlen címen keresztül.
 
 ## <a name="install-an-ingress-controller"></a>Egy érkező controller telepítése
 
@@ -58,8 +58,8 @@ IP="52.224.125.195"
 DNSNAME="demo-aks-ingress"
 
 # Get resource group and public ip name
-RESOURCEGROUP=$(az network public-ip list --query "[?contains(ipAddress, '$IP')].[resourceGroup]" --output tsv)
-PIPNAME=$(az network public-ip list --query "[?contains(ipAddress, '$IP')].[name]" --output tsv)
+RESOURCEGROUP=$(az network public-ip list --query "[?ipAddress!=null]|[?contains(ipAddress, '$IP')].[resourceGroup]" --output tsv)
+PIPNAME=$(az network public-ip list --query "[?ipAddress!=null]|[?contains(ipAddress, '$IP')].[name]" --output tsv)
 
 # Update public ip address with dns name
 az network public-ip update --resource-group $RESOURCEGROUP --name  $PIPNAME --dns-name $DNSNAME
@@ -68,7 +68,7 @@ az network public-ip update --resource-group $RESOURCEGROUP --name  $PIPNAME --d
 Ha szükséges, a következő paranccsal lekérni a teljes Tartománynevet. Frissítse az IP-cím érték, amely az érkező vezérlő.
 
 ```azurecli
-az network public-ip list --query "[?contains(ipAddress, '52.224.125.195')].[dnsSettings.fqdn]" --output tsv
+az network public-ip list --query "[?ipAddress!=null]|[?contains(ipAddress, '52.224.125.195')].[dnsSettings.fqdn]" --output tsv
 ```
 
 A bejövő adatok vezérlő már elérhető a teljes Tartománynevet.

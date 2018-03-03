@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/23/2018
+ms.date: 02/28/2018
 ms.author: mimig
-ms.openlocfilehash: b63c778f02b88bea4d68206f441aef7b32172c24
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: d263c4f5ad14f6692a7c8f6e66429b439a52a84a
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="request-units-in-azure-cosmos-db"></a>Az Azure Cosmos DB egység kérése
 Most már hozzáférhető: Azure Cosmos DB [kérelem egység Számológép](https://www.documentdb.com/capacityplanner). További információ: [megbecsülheti, az átviteli sebesség kell](request-units.md#estimating-throughput-needs).
@@ -55,7 +55,7 @@ Azt javasoljuk, hogy Kezdésként tekintse meg az alábbi videót, ahol Aravind 
 ## <a name="specifying-request-unit-capacity-in-azure-cosmos-db"></a>Adja meg a kérelem egység kapacitás az Azure Cosmos DB
 Egy új gyűjteményt, táblázat vagy graph indításakor, akkor az itt megadott kérelemegység (RU / másodperc) másodpercenként kívánt foglalt. A létesített átviteli sebesség alapján, Azure Cosmos DB foglal le, a gyűjtemény üzemeltetésére fizikai partíciók és elágazást/rebalances adatok között partíciók növekedésével azt.
 
-Azure Cosmos DB konténerek létrehozhatók, rögzített vagy korlátlan. Rögzített méretű tárolók rendelkezik egy legfeljebb 10 GB és 10000 RU/s átviteli sebesség. Hozzon létre egy korlátlan számú tárolót meg kell adnia egy minimális átviteli sebességgel 1000 RU/mp és egy [partíciókulcs](partition-data.md). Az adatok kell kell-e osztani több partíciót, szükség egy partíciós kulcs, amely rendelkezik egy nagy számosságot (több millió különböző értékeket 100) kiválasztásához. A partíciós kulcs számos különböző értékekkel kiválasztásával, győződjön meg arról, hogy a gyűjtemény/tábla/graph és a kérelmek is méretezhető egységesen Azure Cosmos DB. 
+Azure Cosmos DB konténerek létrehozhatók, rögzített vagy korlátlan. A rögzített méretű tárolók mérete legfeljebb 10 GB, feldolgozási sebessége legfeljebb 10000 RU/s lehet. Hozzon létre egy korlátlan számú tárolót meg kell adnia egy minimális átviteli sebességgel 1000 RU/mp és egy [partíciókulcs](partition-data.md). Az adatok kell kell-e osztani több partíciót, szükség egy partíciós kulcs, amely rendelkezik egy nagy számosságot (több millió különböző értékeket 100) kiválasztásához. A partíciós kulcs számos különböző értékekkel kiválasztásával, győződjön meg arról, hogy a gyűjtemény/tábla/graph és a kérelmek is méretezhető egységesen Azure Cosmos DB. 
 
 > [!NOTE]
 > A partíciós kulcs, a logikai határ, és nem egy fizikai egy. Emiatt nem kell külön partíciókulcs-értékek számának korlátozása. Valójában célszerűbb értékűeknek több partíciós kulcs kisebb, mint Azure Cosmos DB rendelkezik további terheléselosztási beállításai.
@@ -92,6 +92,10 @@ await client.ReplaceOfferAsync(offer);
 ```
 
 Ha megváltoztatja az átviteli sebesség, nincs hatással a következő rendelkezésre állási, a tároló. Az új fenntartott átviteli sebességet általában hatékony alkalmazásra, az új átviteli másodpercen belül.
+
+## <a name="throughput-isolation-in-globally-distributed-databases"></a>Átviteli sebesség elkülönítési globálisan elosztott adatbázisok
+
+Ha az adatbázis replikálása egynél több régióban, Azure Cosmos DB el vannak különítve átviteli annak érdekében, hogy egy régióban RU használati nem befolyásolja a RU használati egy másik régióban. Például ha adatokat írni egy régió tartozik, és adatokat olvasni egy másik régióban, az a régió az írási művelet végrehajtásához használt RUs nem lépnek a RUs használt régióban b RUs vannak nincs-e osztani a régiókban, ahol telepítése után az olvasási művelet befejeződött. Minden egyes régió, ahol az adatbázis replikálódik rendelkezik kiépített RUs teljes mennyisége. Globális replikációval kapcsolatos további információkért lásd: [miként ossza el a globális adatok Azure Cosmos DB](distribute-data-globally.md).
 
 ## <a name="request-unit-considerations"></a>Kérelem egység kapcsolatos szempontok
 Az Azure Cosmos DB tároló foglalása a kérelem egységek számának becslése, fontos figyelembe venni a következő változókat:
@@ -209,7 +213,7 @@ Példa:
 6. A megadott műveletek másodpercenkénti futtatásához várhatóan becsült száma szükséges kérelemegység kiszámításához.
 
 ## <a id="GetLastRequestStatistics"></a>A MongoDB GetLastRequestStatistics parancshoz használható API
-Mongodb-protokolltámogatással API támogatja egy egyéni parancs *getLastRequestStatistics*, a kérelem kell fizetni a megadott műveletek beolvasásakor.
+A MongoDB API támogatja egy egyéni parancs *getLastRequestStatistics*, a kérelem kell fizetni a megadott műveletek beolvasásakor.
 
 Például a Mongo rendszerhéj hajtható végre a kérelem díjat ellenőrizni szeretné a műveletet.
 ```
@@ -235,10 +239,10 @@ Ennek a szem előtt, megbecsülheti a fenntartott átviteli sebességet, az alka
 > 
 > 
 
-## <a name="use-api-for-mongodbs-portal-metrics"></a>MongoDB a portál metrikáihoz API használata
-A legegyszerűbben úgy beszerezni kérelem jó becslése egység költségek az API-MongoDB-adatbázist, hogy használja a [Azure-portálon](https://portal.azure.com) metrikákat. Az a *kérelem* és *kérelem kell fizetni* diagramokat, a kérelem egységek minden művelet nem használ-e, és hány kérelemegység használják ki egy másik viszonyítva felmérését kaphat.
+## <a name="use-mongodb-api-portal-metrics"></a>Használja a MongoDB API portál metrikák
+A legegyszerűbben úgy beszerezni kérelem jó becslése egység költségek a MongoDB API-adatbázis, hogy használja a [Azure-portálon](https://portal.azure.com) metrikákat. Az a *kérelem* és *kérelem kell fizetni* diagramokat, a kérelem egységek minden művelet nem használ-e, és hány kérelemegység használják ki egy másik viszonyítva felmérését kaphat.
 
-![API-t a MongoDB portál metrikák][6]
+![MongoDB API portál metrikák][6]
 
 ## <a name="a-request-unit-estimation-example"></a>A kérelem egység becslés – példa
 Vegye figyelembe a következő ~ 1 KB-os dokumentum:
@@ -343,8 +347,8 @@ Ha a .NET SDK-ügyfél és a LINQ-lekérdezések, majd a legtöbbször ennek soh
 
 Ha egynél több ügyfél összesítve felett a kérelmek aránya működő esetleg nem elegendő az alapértelmezett újrapróbálási viselkedése, és az ügyfél egy DocumentClientException állapotkóddal 429 kivételhibát az alkalmazáshoz. Például ez esetben érdemes újrapróbálási viselkedése és rutinok kezelése vagy a tároló a fenntartott átviteli sebesség növelése az alkalmazás hibás programot.
 
-## <a id="RequestRateTooLargeAPIforMongoDB"></a> Mongodb-protokolltámogatással meghaladja a fenntartott átviteli sebességének korlátai API-ban.
-Alkalmazások, amelyek mérete meghaladja a kiosztott kérelemegység gyűjtemény halmozódni fog, amíg a sebesség esik fenntartott szint alatt. A szabályozási esetén a háttér megelőző jelleggel véget ér a kérelmet egy *16500* hibakód - *túl sok kérelem*. Alapértelmezés szerint API-t a MongoDB automatikusan megpróbálja legfeljebb 10-szer visszatérése előtt egy *túl sok kérelem* hibakód. Ha sok kap *túl sok kérelem* hibakódok, akkor fontolja meg vagy hozzáadását újrapróbálási viselkedése a az alkalmazás hibakezelési rutinok vagy [a gyűjteményafenntartottátvitelisebességnövelése](set-throughput.md).
+## <a id="RequestRateTooLargeAPIforMongoDB"></a> Meghaladja a fenntartott átviteli sebességének korlátai a MongoDB API-ban.
+Alkalmazások, amelyek mérete meghaladja a kiosztott kérelemegység gyűjtemény halmozódni fog, amíg a sebesség esik fenntartott szint alatt. A szabályozási esetén a háttér megelőző jelleggel véget ér a kérelmet egy *16500* hibakód - *túl sok kérelem*. Alapértelmezés szerint a MongoDB API automatikusan újrapróbálkozik legfeljebb 10-szer kell a visszatérésre egy *túl sok kérelem* hibakód. Ha sok kap *túl sok kérelem* hibakódok, akkor fontolja meg vagy hozzáadását újrapróbálási viselkedése a az alkalmazás hibakezelési rutinok vagy [a gyűjteményafenntartottátvitelisebességnövelése](set-throughput.md).
 
 ## <a name="next-steps"></a>További lépések
 További információt az Azure Cosmos DB adatbázisok fenntartott átviteli sebességet, ismerheti meg ezeket az erőforrásokat:

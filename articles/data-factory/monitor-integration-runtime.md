@@ -3,21 +3,21 @@ title: "Az Azure Data Factory integrációs futásidejű figyelése |} Microsoft
 description: "Útmutató az Azure Data Factory integrációs futásidejű különböző típusú."
 services: data-factory
 documentationcenter: 
-author: spelluru
-manager: jhubbard
-editor: monicar
+author: douglaslMS
+manager: 
+editor: 
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/23/2017
-ms.author: spelluru
-ms.openlocfilehash: b243115eef7e59279fbb1df2a3e3c288477a5b8c
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.author: douglasl
+ms.openlocfilehash: 74a4ad6438f9e66331f76e87d20d1eb8b29e8451
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>Az Azure Data Factoryben az integrációs futásidejű figyelése  
 **Integrációs futásidejű** a számítási infrastruktúrától által használt Azure Data Factory adatok integrációs szolgáltatásainak különböző hálózati környezetek között. Integráció futtatókörnyezetek adat-előállító által kínált három típusa van:
@@ -180,7 +180,7 @@ Azure-SSIS integrációs futásidejű rendszere egy teljes körűen felügyelt f
 
 | status | Leírás |
 | ------ | ----------- | 
-| Indulás alatt | Ez a csomópont előkészítésére. |
+| Indítás | Ez a csomópont előkészítésére. |
 | Elérhető | Ahhoz, hogy SSIS-csomagok központi telepítése és végrehajtási készen áll az ezen a csomóponton. |
 | Újrahasznosítása | Ez a csomópont folyamatban javítani vagy újraindítása. |
 | Nem érhető el | Ez a csomópont nem ahhoz, hogy SSIS-csomagok központi telepítése és végrehajtási készen álljon, és végrehajthatóként hibák vagy problémák léptek fel, sikerült feloldani. |
@@ -190,7 +190,7 @@ Azure-SSIS integrációs futásidejű rendszere egy teljes körűen felügyelt f
 | Általános állapota | Leírás | 
 | -------------- | ----------- | 
 | Kezdeti | Az Azure-SSIS-integrációs futásidejű csomópont még nem lettek lefoglalva/előkészítve. | 
-| Indulás alatt | Az Azure-SSIS-integrációs futásidejű csomópontjai folyamatban van a lefoglalt/készített, és számlázási megkezdődött. |
+| Indítás | Az Azure-SSIS-integrációs futásidejű csomópontjai folyamatban van a lefoglalt/készített, és számlázási megkezdődött. |
 | Elindítva | Az Azure-SSIS-integrációs futásidejű csomópontjai törölték a lefoglalt/készített, és ahhoz, hogy SSIS-csomagok központi telepítése és végrehajtási készen állnak. |
 | Leállítás  | Az Azure-SSIS-integrációs futásidejű csomópontjai kiadott. |
 | Leállítva | Az Azure-SSIS-integrációs futásidejű csomópontjai kiadott és számlázási leállt. |

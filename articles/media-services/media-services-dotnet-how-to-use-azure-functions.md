@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 12/09/2017
 ms.author: juliako
-ms.openlocfilehash: f99fe340b6cfebaafb04af9dba8abf9cb0f09a2b
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 999f2cef7d70c4f1b45076300312664defdeb3f5
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="develop-azure-functions-with-media-services"></a>A Media Services az Azure Functions fejlesztése
 
@@ -63,11 +63,11 @@ A függvény az alkalmazást telepíti, ha megtalálja között **alkalmazásszo
 2. Válassza ki a **C#** nyelvi és **adatfeldolgozási** forgatókönyv.
 3. Válasszon **BlobTrigger** sablont. Ez a funkció akkor váltódik ki, amikor egy blob be van töltve a **bemeneti** tároló. A **bemeneti** neve van megadva az a **elérési**, a következő lépésben.
 
-    ![Fájlok](./media/media-services-azure-functions/media-services-azure-functions004.png)
+    ![fájl megjelenítése](./media/media-services-azure-functions/media-services-azure-functions004.png)
 
 4. Miután **BlobTrigger**, néhány további vezérlők megjelenik a lapon.
 
-    ![Fájlok](./media/media-services-azure-functions/media-services-azure-functions005.png)
+    ![fájl megjelenítése](./media/media-services-azure-functions/media-services-azure-functions005.png)
 
 4. Kattintson a **Create** (Létrehozás) gombra. 
 
@@ -75,9 +75,9 @@ A függvény az alkalmazást telepíti, ha megtalálja között **alkalmazásszo
 
 Az Azure-függvény kódot és egyéb fájlokat ebben a szakaszban ismertetett társítva. Ha az Azure-portál használatával hozzon létre egy függvényt **function.json** és **run.csx** , a rendszer létrehozza. Adja hozzá, vagy töltse fel kell egy **project.json** fájlt. Ez a szakasz a többi röviden bemutatja az egyes fájlok biztosít, és bemutatja a definíciójukat.
 
-![Fájlok](./media/media-services-azure-functions/media-services-azure-functions003.png)
+![fájl megjelenítése](./media/media-services-azure-functions/media-services-azure-functions003.png)
 
-### <a name="functionjson"></a>Function.JSON
+### <a name="functionjson"></a>function.json
 
 A function.json fájl határozza meg, a függvénykötés és egyéb konfigurációs beállításokkal. A futtatókörnyezet ezt a fájlt határozza meg a figyelendő események és adja át az adatokat, és vissza adatokat, a függvény végrehajtása használja. További információkért lásd: [Azure functions HTTP és a webhook kötések](../azure-functions/functions-reference.md#function-code).
 
@@ -86,7 +86,7 @@ A function.json fájl határozza meg, a függvénykötés és egyéb konfigurác
 
 Cserélje le a meglévő function.json fájl tartalmát az alábbira:
 
-```
+```json
 {
   "bindings": [
     {
@@ -101,13 +101,13 @@ Cserélje le a meglévő function.json fájl tartalmát az alábbira:
 }
 ```
 
-### <a name="projectjson"></a>Project.JSON
+### <a name="projectjson"></a>project.json
 
 A project.json függőségeket tartalmaz. Íme egy példa **project.json** fájlt, amely tartalmazza a kötelező .NET Azure Media Services Nuget-csomagot. Vegye figyelembe, hogy a verziószámok módosítása legújabb frissítéseit a csomagokhoz, ellenőrizze a legújabb verzióját. 
 
 Adja hozzá a következő definícióját project.json. 
 
-```
+```json
 {
   "frameworks": {
     "net46":{
@@ -123,7 +123,7 @@ Adja hozzá a következő definícióját project.json.
 
 ```
     
-### <a name="runcsx"></a>Run.csx
+### <a name="runcsx"></a>run.csx
 
 Ez a C#-kódban a függvénynél.  Figyelők alatt meghatározni a függvény egy fiókot a tároló nevű **bemeneti** (Ez mi az az elérési út lett megadva) új MP4-fájlokat. Miután egy fájlt a storage tárolóba megszakad, a blob eseményindító végrehajtja a függvény.
     
@@ -136,7 +136,7 @@ A valós életben esetben valószínűleg szeretne nyomon követheti a feladat e
 
 Cserélje le a meglévő run.csx fájl tartalmát az alábbira: Miután a kattintson a függvényt definiáló **mentéséhez, és futtassa**.
 
-```
+```csharp
 #r "Microsoft.WindowsAzure.Storage"
 #r "Newtonsoft.Json"
 #r "System.Web"
@@ -339,7 +339,7 @@ A függvény teszteléséhez töltse fel az MP4-fájlokat kell a **bemeneti** a 
 >[!NOTE]
 > Egy blob eseményindító használatakor a fogyasztás terven létezhet legfeljebb 10 perces késleltetést új blobok feldolgozása után egy függvény app inaktív állapotba került. A függvény alkalmazás futtatása után blobok feldolgozása azonnal megtörténik. További információkért lásd: [Blob-tároló eseményindítók és kötések](https://docs.microsoft.com/azure/azure-functions/functions-bindings-storage-blob#blob-storage-triggers-and-bindings).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ekkor készen áll a Media Services-alkalmazás elkezdje. 
  

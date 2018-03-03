@@ -3,7 +3,7 @@ title: "Hasonlítsa össze a B2B együttműködés és az Azure Active Directory
 description: "Mi az Azure Active Directory B2B együttműködés és az Azure AD B2C közötti különbség?"
 services: active-directory
 documentationcenter: 
-author: sasubram
+author: twooley
 manager: mtillman
 editor: 
 tags: 
@@ -14,12 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
 ms.date: 03/15/2017
-ms.author: sasubram
-ms.openlocfilehash: beca92e9259835fffa9178f558e9762637594570
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: twooley
+ms.reviewer: sasubram
+ms.openlocfilehash: ae3ebdceb65c04b98965f81f52997da457bd7845
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="compare-b2b-collaboration-and-b2c-in-azure-active-directory"></a>Hasonlítsa össze a B2B együttműködés és az Azure Active Directory B2C
 
@@ -38,7 +39,7 @@ Márkajelzési: Állomás/meghívása szervezet márka szolgál.  |    Branding:
 További információ: [blogbejegyzés](https://blogs.technet.microsoft.com/enterprisemobility/2017/02/01/azure-ad-b2b-new-updates-make-cross-business-collab-easy/), [dokumentáció](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)  | További információ: [termékoldalára](https://azure.microsoft.com/en-us/services/active-directory-b2c/), [dokumentáció](https://docs.microsoft.com/azure/active-directory-b2c/)
 
 
-### <a name="next-steps"></a>Következő lépések
+### <a name="next-steps"></a>További lépések
 
 Ismerje meg az Azure AD B2B együttműködés további cikkeit:
 

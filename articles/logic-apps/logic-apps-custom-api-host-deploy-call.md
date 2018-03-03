@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/26/2017
 ms.author: LADocs; stepsic
-ms.openlocfilehash: 3df59ec172b037daaeed9e3eb69ffb990d70d8a5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c7a240bf5b7ed5e7780b90f438d2e336ee79f0b3
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="deploy-and-call-custom-apis-from-logic-app-workflows"></a>Központi telepítése, és hívja meg egyedi API-kat a logic app munkafolyamatok
 
@@ -35,17 +35,17 @@ Az egyéni API-t a logikai alkalmazás hívása előtt telepítse az API-webalka
 
 2. Az alkalmazás menüjében, amely megnyitja a **API**, válassza a **API-definíció**. Állítsa be a **API definition hely** a OpenAPI swagger.json fájl URL-címet.
 
-   Általában az URL-cím jelenik meg, a következő formátumban:`https://{name}.azurewebsites.net/swagger/docs/v1)`
+   Általában az URL-cím jelenik meg, a következő formátumban: `https://{name}.azurewebsites.net/swagger/docs/v1)`
 
    ![Az egyéni API-OpenAPI fájl csatolása](./media/logic-apps-custom-api-deploy-call/custom-api-swagger-url.png)
 
-3. A **API**, válassza a **CORS**. Állítsa be a CORS-házirend a **engedélyezett eredeteket** való  **"*"** (minden engedélyezése).
+3. A **API**, válassza a **CORS**. Állítsa be a CORS-házirend a **engedélyezett eredeteket** való **"*"** (összes engedélyezése).
 
    Ez a beállítás lehetővé teszi a kérelmek az Logic App-tervezőből.
 
    ![A Logic App Designer kérések engedélyezése az egyéni API](./media/logic-apps-custom-api-deploy-call/custom-api-cors.png)
 
-További információkért lásd: [létre Node.js RESTful API](../app-service/app-service-web-tutorial-rest-api.md).
+További információkért lásd: [futtatni egy RESTful API-t az Azure App Service CORS](../app-service/app-service-web-tutorial-rest-api.md).
 
 ## <a name="call-your-custom-api-from-logic-app-workflows"></a>Az egyéni API-t hívja a logic app munkafolyamatok
 
@@ -57,6 +57,6 @@ Az API-definíció tulajdonságait és a CORS beállítása után az egyéni API
 
 *  API-k, beleértve az API-k, amelyek nem rendelkeznek, vagy tehetnek közzé, egy OpenAPI dokumentum hívására bármikor létrehozhat egy kérelmet a [HTTP-művelet](../connectors/connectors-native-http.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Egyéni összekötő áttekintése](../logic-apps/custom-connector-overview.md)

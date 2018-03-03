@@ -3,7 +3,7 @@ title: "B2B együttműködés a felhasználói jogcímek hozzárendelése az Azu
 description: "a jogcímek referencia az Azure Active Directory B2B együttműködés leképezése"
 services: active-directory
 documentationcenter: 
-author: sasubram
+author: twooley
 manager: mtillman
 editor: 
 tags: 
@@ -14,12 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
 ms.date: 03/15/2017
-ms.author: sasubram
-ms.openlocfilehash: 439219087d0a5027c729e9d0e0ecb90bd2a9de3c
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: twooley
+ms.reviewer: sasubram
+ms.openlocfilehash: 3fe75e96c153a7cbcad638d606d0fbc248bd983a
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="b2b-collaboration-user-claims-mapping-in-azure-active-directory"></a>B2B együttműködés a felhasználói jogcímek hozzárendelése az Azure Active Directoryban
 
@@ -36,7 +37,7 @@ Előfordulhat, hogy miért szerkesztése a SAML-jogkivonat kiadott jogcímeket k
 Tájékoztatást adhat hozzá és szerkeszthet a jogcímeket, tekintse meg a jogcímek testreszabása, ez a cikk [előre integrált alkalmazások az Azure Active Directoryban a SAML-jogkivonat kiállított jogcímek testreszabása](develop/active-directory-saml-claims-customization.md). A B2B együttműködés a felhasználók, NameID és UPN kereszt-bérlő leképezési biztonsági okokból nem.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerje meg az Azure AD B2B együttműködés további cikkeit:
 

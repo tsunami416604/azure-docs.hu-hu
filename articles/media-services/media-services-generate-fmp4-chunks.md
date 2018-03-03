@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/09/2017
 ms.author: juliako
-ms.openlocfilehash: 7273e51342f4e9fc68a8b3d3b145d119b4eab122
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: f497954f82e209c1547fca0943169d53f4ab517a
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/02/2018
 ---
 #  <a name="create-an-encoding-task-that-generates-fmp4-chunks"></a>Állít elő, fMP4 adattömbök kódolási feladat létrehozása
 
@@ -25,10 +25,11 @@ ms.lasthandoff: 12/11/2017
 
 Ez a cikk bemutatja, hogyan hoz létre töredezett MP4-kódolási feladat létrehozása (fMP4) adattömbök ISO MP4-fájlok helyett. FMP4 adattömbök létrehozásához használja a **Media Encoder Standard** vagy **Media Encoder prémium munkafolyamat** kódolási feladat létrehozása, és adja meg a kódoló **AssetFormatOption.AdaptiveStreaming** beállítás, ahogy az következő kódrészletet:  
     
+```csharp
     task.OutputAssets.AddNew(@"Output Asset containing fMP4 chunks", 
             options: AssetCreationOptions.None, 
             formatOption: AssetFormatOption.AdaptiveStreaming);
-
+```
 
 ## <a id="encoding_with_dotnet"></a>A Media Services .NET SDK kódolás
 
@@ -47,7 +48,7 @@ Az alábbi példakód Media Services .NET SDK-t használja a következő feladat
 
 #### <a name="example"></a>Példa
 
-```
+```csharp
 using System;
 using System.Configuration;
 using System.Linq;

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/09/2017
 ms.author: juliako
-ms.openlocfilehash: b0391bb627ab899960d38b4eaf4478a6cdb8bd0b
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 3354b0122b9025c5da2fb55439620a56c6c985d9
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="customizing-media-encoder-standard-presets"></a>Testreszabás Media Encoder Standard készletek
 
@@ -28,7 +28,7 @@ Ez a cikk bemutatja, hogyan kódolásra speciális a Media Encoder Standard (MES
 
 Ez a cikk bemutatja, hogyan testre szabhatja egy előre definiált alapul véve a [H264 Multiple Bitrate 720p](media-services-mes-preset-H264-Multiple-Bitrate-720p.md) beállított és a rétegek számának csökkentését. A [Media Encoder Standard testreszabása készletek](media-services-advanced-encoding-with-mes.md) a cikk bemutatja, egyéni készletek speciális kódolási feladatok végrehajtásához használható.
 
-## <a id="customizing_presets"></a>Egy MES készletet testreszabása
+## <a id="customizing_presets"></a> Egy MES készletet testreszabása
 
 ### <a name="original-preset"></a>Eredeti készlet
 
@@ -38,7 +38,7 @@ A JSON-ban meghatározott mentése a [H264 Multiple Bitrate 720p](media-services
 
 Nyissa meg a **CustomPreset_JSON.json** fájlt, és távolítsa el az első három rétegek **H264Layers** , a fájl néz ki.
 
-    
+```json 
     {  
       "Version": 1.0,  
       "Codecs": [  
@@ -107,7 +107,7 @@ Nyissa meg a **CustomPreset_JSON.json** fájlt, és távolítsa el az első hár
         }  
       ]  
     }  
-    
+```
 
 ## <a id="encoding_with_dotnet"></a>A Media Services .NET SDK kódolás
 
@@ -132,7 +132,7 @@ Az alábbi példakód Media Services .NET SDK-t használja a következő feladat
 
 #### <a name="example"></a>Példa   
 
-```
+```csharp
 using System;
 using System.Configuration;
 using System.IO;

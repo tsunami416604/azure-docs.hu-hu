@@ -15,18 +15,21 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 02/26/2018
 ms.author: owend
-ms.openlocfilehash: 43eab587a1e5209069a248f1e2e1f57af158a2b8
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: e0be0c69b501d7e93c65bcf23d4dd1b6bfa89caf
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="import-a-power-bi-desktop-file"></a>A Power BI Desktop-fájl importálása
 
-Létrehozhat egy új modell az Azure-AS importálásával egy Power BI Desktop-fájl (pbix-fájlt). Modell metaadatait, a gyorsítótárazott adatokat és adatforrás-kapcsolatok importálása. Jelentések és a képi megjelenítések nincsenek importálva. Egyszer kiszolgálóját, a modell módosítható frissítése és importintézkedésekkel a pbix-fájlt, a portál webes designer (előzetes verzió) szolgáltatásának használatát, vagy SQL Server Management Studio (SSMS) használatával. Importált modellek nem megnyitható vagy Visual Studio exportált.
+Létrehozhat egy új modell az Azure-AS importálásával egy Power BI Desktop-fájl (pbix-fájlt). Modell metaadatait, a gyorsítótárazott adatokat és adatforrás-kapcsolatok importálása. Jelentések és a képi megjelenítések nincsenek importálva.
 
-> [!NOTE]
-> Ha a helyszíni adatforrások, csatlakozik a pbix-modell egy [helyszíni átjáró](analysis-services-gateway.md) kiszolgálóját konfigurálni kell.
+**Korlátozások**   
+- A pbix-modell csatlakoztatni kell [Analysis Services támogatott adatforrások](analysis-services-datasource.md) csak. 
+- A pbix-modell nem lehet élő vagy DirectQuery kapcsolatok. 
+- Ha a helyszíni adatforrások, csatlakozik a pbix-modell egy [helyszíni adatátjáró](analysis-services-gateway.md) az Analysis Services-kiszolgálónak kell konfigurálni.
+- Importálás sikertelen lehet, ha a pbix-fájlt adatmodell Analysis Services nem támogatja a metaadatokat tartalmaz.
 
 ## <a name="to-import-from-pbix"></a>Pbix-fájlt importálása
 

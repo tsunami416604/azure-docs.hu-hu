@@ -1,24 +1,24 @@
 ---
 title: "Azure költség felügyeleti költség jelentések ismertetése |} Microsoft Docs"
-description: "Ez a cikk segít megérteni a Cloudyn jelentések alapszintű struktúrát és funkcióit."
+description: "Ez a cikk segít megérteni a Cloudyn költség felügyeleti jelentések alapszintű struktúrát és funkcióit."
 services: cost-management
 keywords: 
 author: bandersmsft
 ms.author: banders
-ms.date: 01/30/2018
+ms.date: 03/01/2018
 ms.topic: article
 ms.service: cost-management
 manager: carmonm
 ms.custom: 
-ms.openlocfilehash: 38c1313f42a58403e158cad9c2930b6541da5adc
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 4effd63fbd9cb972a0d130826a7347dd34561792
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/02/2018
 ---
-# <a name="understanding-cost-reports"></a>A költségjelentések értelmezése
+# <a name="understanding-cost-management-reports"></a>Költség jelentések ismertetése
 
-Ez a cikk segít megérteni a Cloudyn jelentések alapszintű struktúrát és funkcióit. A legtöbb Cloudyn jelentések intuitív és egy egységes megjelenés és működés. Ez a cikk elolvasása után készen áll a jelentésekre. Számos szabványos szolgáltatást a különböző jelentéseket, lehetővé téve, keresse meg a jelentések kihívásokra keresztül érhetőek el. Jelentések testre szabható, és kiszámításához ki és jelenítheti meg az eredmények több lehetőség közül választhat.
+Ez a cikk segít megérteni a Cloudyn költség felügyeleti jelentések alapszintű struktúrát és funkcióit. A legtöbb Cloudyn jelentések intuitív és egy egységes megjelenés és működés. Ez a cikk elolvasása után készen áll a költség felügyeleti jelentéseket használhatja. Számos szabványos szolgáltatást a különböző jelentéseket, lehetővé téve, keresse meg a jelentések kihívásokra keresztül érhetőek el. Jelentések testre szabható, és kiszámításához ki és jelenítheti meg az eredmények több lehetőség közül választhat.
 
 ## <a name="report-fields-and-options"></a>Jelentésmezők és beállítások
 
@@ -77,7 +77,7 @@ Az előző ábrán minden számozott területen a következő információ rész
      - Környezet
      - Költség kódot
 
-5. **Szűrők**
+5. **szűrők**
 
     Egyetlen vagy többszörös kiválasztási szűrők segítségével beállíthatja a kijelölt értékekre tartományokat. Szeretne szűrőt beállítani, kattintson a **Hozzáadás** , és válassza ki a szűrő kategóriákat és az értékeket.
 
@@ -118,7 +118,7 @@ Az előző ábrán minden számozott területen a következő információ rész
 
     A megjelenítése/elrejtése beállítás nincs hatással a jelentésekben.
 
-12.   **Megjelenítési formátum**
+12.   **megjelenítési formátum**
 
     Megjelenítési formátum segítségével válassza ki a grafikon vagy tábla különböző nézeteket.
 
@@ -131,6 +131,27 @@ Az előző ábrán minden számozott területen a következő információ rész
 14. **Műveletek**
 
     Műveletek segítségével mentése, exportálhatja vagy ütemezni a jelentést.
+
+## <a name="save-and-schedule-reports"></a>Mentse és jelentések ütemezése
+
+Miután létrehozott egy jelentést, mentheti későbbi használatra. Mentett jelentések érhetők el **saját eszközök** > **jelentések**. Ha módosítja egy meglévő jelentést, és menti, a jelentés mentése új verzióként. Vagy új jelentésként mentheti.
+
+### <a name="save-a-report-to-the-cloudyn-portal"></a>Jelentés mentése a Cloudyn portálra
+
+Kattintson a jelentés megtekintésekor **műveletek** , és válassza **saját jelentések mentése**. A jelentés neve és majd adjon hozzá egy saját URL-cím vagy az automatikusan létrehozott URL-címet használja. Igény szerint is **megosztása** nyilvánosan másokkal a szervezet vagy a jelentés megoszthatja az entitáshoz. Ha nem ugyanazt a jelentést, személyes jelentés marad, és megtekintheti, hogy csak. Mentse a jelentést.
+
+
+### <a name="save-a-report-to-cloud-provider-storage"></a>A tárolási szolgáltató felhőbe jelentés mentése
+
+Ahhoz, hogy a jelentés mentése a felhőbeli szolgáltatás szolgáltatója, már konfigurálnia kell egy tárfiókot. Kattintson a jelentés megtekintésekor **műveletek** , és válassza **ütemezni a jelentést**. A jelentés neve és majd adjon hozzá egy saját URL-cím vagy az automatikusan létrehozott URL-címet használja. Válassza ki **tárolási mentése** majd válassza ki a tárfiókot, vagy vegyen fel egy másikat. Adja meg, amely lekérdezi a jelentés fájlnév fűzött előtagot. Válassza ki a fürt megosztott kötetei szolgáltatás vagy a JSON formátumú fájlokat, és mentse a jelentést.
+
+### <a name="schedule-a-report"></a>Ütemezhet egy jelentést
+
+Rendszeres időközönként jelentéseket futtathat, és képes címzett lista vagy a felhőbeli szolgáltatás szolgáltatója tárfiók küldött. Kattintson a jelentés megtekintésekor **műveletek** , és válassza **ütemezni a jelentést**. E-mailben elküldi a jelentést, és a storage-fiók mentése. A **ütemezés**, válassza ki az időköz (napi, heti vagy havi). Heti és havi válassza ki a napot vagy a dátumok kézbesíti, és válassza ki azt az időpontot. Mentse az ütemezett jelentést. Ha az Excel jelentés formátumot, a program mellékletként küldi a jelentést. E-mailek tartalomformátumra kiválasztásakor jelentés eredményeinek formátuma a diagramon megjelenő érkeznek, mint egy grafikonon.
+
+### <a name="export-a-report-as-a-csv-file"></a>Jelentés exportálása CSV-fájlként
+
+Kattintson a jelentés megtekintésekor **műveletek** , és válassza **összes jelentésadatok exportálása**. Megjelenik egy előugró ablak, és egy CSV-fájl letöltése.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -13,11 +13,11 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 12/09/2017
 ms.author: juliako
-ms.openlocfilehash: 5a6e1b5bc377d3fc4ad47fdfb37da4853c3bb827
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 7c94f59eaa079677223083339f111cf73b13632e
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="copying-existing-blobs-into-a-media-services-asset"></a>Egy Media Services objektumba meglévő BLOB másolása
 Ez a cikk bemutatja, hogyan blobok átmásolni a storage-fiók egy új Azure Media Services (AMS) eszköz használatával [Azure Media Services .NET SDK-bővítmények](https://github.com/Azure/azure-sdk-for-media-services-extensions/).
@@ -51,7 +51,7 @@ A lépések a cikkben, vagy letöltheti a kódot, a cikkben leírt mintát [Itt]
 1. A fejlesztési környezet beállítása, a [Media Services-fejlesztés a .NET](media-services-dotnet-how-to-use.md). 
 2. Adja hozzá az appSettings szakaszt a .config kiterjesztésű fájlt, és frissítse az értékeket, a Media Services-fiókok, a cél tárfiókkal és a eszköz azonosítóját.  
 
-```   
+```xml
 <appSettings>
     <add key="AMSSourceAADTenantDomain" value="tenant"/>
     <add key="AMSSourceRESTAPIEndpoint" value="endpoint"/>
@@ -77,7 +77,7 @@ A lépések a cikkben, vagy letöltheti a kódot, a cikkben leírt mintát [Itt]
 
 Az alábbi használ a bővítmény **IAsset.Copy** módszer minden fájl másolása a forrás eszközt egyetlen kiterjesztés cél objektumba.
 
-```
+```csharp
 using System;
 using Microsoft.WindowsAzure.MediaServices.Client;
 using System.Linq;
@@ -167,7 +167,7 @@ namespace CopyExistingBlobsIntoAsset
 1. A fejlesztési környezet beállítása, a [Media Services-fejlesztés a .NET](media-services-dotnet-how-to-use.md). 
 2. Adja hozzá az appSettings szakaszt a .config kiterjesztésű fájlt, és frissítse az értékeket a forrás tárolási és a célkiszolgáló AMS fiókok alapján.
 
-```
+```xml
 <appSettings>
     <add key="SourceStorageAccountName" value="name" />
     <add key="SourceStorageAccountKey" value="key" />
@@ -187,9 +187,9 @@ namespace CopyExistingBlobsIntoAsset
 A következő kódot másolja át BLOB storage-fiók egy Media Services-objektumba. 
 
 >[!NOTE]
->A különböző AMS-szabályzatok (például a Locator vagy a ContentKeyAuthorizationPolicy) esetében a korlát 1 000 000 szabályzat. Ha mindig ugyanazokat a napokat/hozzáférési engedélyeket használja (például olyan keresők szabályzatait, amelyek hosszú ideig érvényben maradnak, vagyis nem feltöltött szabályzatokat), a szabályzatazonosítónak is ugyanannak kell lennie. További információkért lásd: [ez](media-services-dotnet-manage-entities.md#limit-access-policies) cikk.
+>A különböző AMS-szabályzatok (például a Locator vagy a ContentKeyAuthorizationPolicy) esetében a korlát 1 000 000 szabályzat. Ha mindig ugyanazokat a napokat/hozzáférési engedélyeket használja (például olyan keresők szabályzatait, amelyek hosszú ideig érvényben maradnak, vagyis nem feltöltött szabályzatokat), a szabályzatazonosítónak is ugyanannak kell lennie. További információkért tekintse meg [ezt](media-services-dotnet-manage-entities.md#limit-access-policies) a cikket.
 
-```
+```csharp
 using System;
 using System.Configuration;
 using System.Linq;
@@ -371,7 +371,8 @@ namespace CopyExistingBlobsIntoAsset
     }
 }
 ```
-## <a name="next-steps"></a>Következő lépések
+
+## <a name="next-steps"></a>További lépések
 
 Most már kódolhatja a feltöltött adategységeket. További információ: [Encode Assets](media-services-portal-encode.md) (Adategységek kódolása).
 

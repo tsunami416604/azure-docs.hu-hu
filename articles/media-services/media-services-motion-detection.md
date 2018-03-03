@@ -13,17 +13,17 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 12/09/2017
 ms.author: milanga;juliako;
-ms.openlocfilehash: dd422308ed728ed4e8bc35daee3bd50f0f02aaac
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 9c391101c82868eb3c9cc92dc55c920fdbd5f4e8
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="detect-motions-with-azure-media-analytics"></a>Az Azure Media Analytics mozdulatok észlelése
 ## <a name="overview"></a>Áttekintés
 A **Azure Media mozgásérzékelő** media processzor (MP) lehetővé teszi a szakaszok egy egyébként hosszú és Eseménytelen video házirendsablonokkal hatékonyan azonosításához. Mozgásérzékelés statikus kamerák felvételei szakaszok a videó hol mozgásérzékelési jelentkezik azonosításához használhatja. Az időbélyegzőket és a határoló régió, ahol az esemény történt a metaadatokat tartalmazó JSON-fájlt hoz létre.
 
-Cél biztonsági videó hírcsatornák, ez a technológia el tudja mozgásérzékelési kategorizálása kapcsolódó eseményeket és vakriasztások például árnyékok és megvilágítási módosításokat. Ez lehetővé teszi, hogy a biztonsági riasztások generálása kamera hírcsatornák közben igényt érdeklő pillanat kinyerése rendkívül hosszú felügyeleti videók végtelen irreleváns események, éppen címünkre nélkül.
+Cél biztonsági videó hírcsatornák, ez a technológia el tudja mozgásérzékelési kategorizálása kapcsolódó eseményeket és vakriasztások például árnyékok és megvilágítási módosításokat. Ez lehetővé teszi, hogy a biztonsági riasztások generálása kamera hírcsatornák közben igényt érdeklő pillanat kinyerése hosszú felügyeleti videók végtelen irreleváns események, éppen címünkre nélkül.
 
 A **Azure Media mozgásérzékelő** felügyeleti csomag jelenleg előzetes verzió.
 
@@ -38,15 +38,17 @@ A feladat létrehozásakor **Azure Media mozgásérzékelő**, meg kell adnia eg
 ### <a name="parameters"></a>Paraméterek
 A következő paramétereket használhatja:
 
-| Név | Beállítások | Leírás | Alapértelmezett |
+| Name (Név) | Beállítások | Leírás | Alapértelmezett |
 | --- | --- | --- | --- |
 | sensitivityLevel |Karakterlánc: "alacsony", "közepes", "magas" |Beállítja az érzékenységi szint mely mozdulatok jelenti. Ez úgy, hogy a vakriasztások számának módosítása |"közepes" |
-| frameSamplingValue |Pozitív egész szám |A készletek algoritmus gyakorisága futtatja. 1 egyenlő minden keret, 2 azt jelenti, hogy minden 2. keret, és így tovább. |1 |
+| frameSamplingValue |Pozitív egész szám |A készletek algoritmus gyakorisága futtatja. 1 egyenlő minden keret, 2 azt jelenti, hogy minden második keret, és így tovább. |1 |
 | detectLightChange |Logikai: "true", "false" |Megadja, hogy e könnyű módosítások jelentik az eredmények között |"False" |
-| mergeTimeThreshold |Idő xs: Óó: pp:<br/>. Példa: 00:00:03 |Adja meg az időszak, ahol 2 esemény lesz kombinált és 1 jelentett mozgásérzékelési események között. |00:00:00 |
-| detectionZones |A tömb észlelési zónák:<br/>-Észlelési zóna: 3 vagy több pontok bájttömb<br/>-Pont egy x és y koordináta 0, 1. |Ismerteti a sokszög észlelési zónák használandó listáját.<br/>Eredmények a zónákat az azonosítója, először egy folyamatban "id" a jelentett: 0 |Egy zóna, amely magában foglalja a teljes keret. |
+| mergeTimeThreshold |Idő xs: Óó: pp:<br/>. Példa: 00:00:03 |Megadja a időszak mozgásérzékelési események hol vannak a 2 esemény között kell kombinált és jelentése szerint az 1. |00:00:00 |
+| detectionZones |A tömb észlelési zónák:<br/>-Észlelési zóna: 3 vagy több pontok bájttömb<br/>-Pont, az x és y koordináta 0, 1. |Ismerteti a sokszög észlelési zónák használandó listáját.<br/>Eredmények a zónákat az azonosítója, először egy folyamatban "id" a jelentett: 0 |Egy zóna, amely magában foglalja a teljes keret. |
 
 ### <a name="json-example"></a>JSON-példa
+
+```json
     {
       "version": "1.0",
       "options": {
@@ -74,10 +76,10 @@ A következő paramétereket használhatja:
         ]
       }
     }
-
+```
 
 ## <a name="motion-detector-output-files"></a>Mozgásérzékelő – érzékelő kimeneti fájlok
-A mozgás észlelése a JSON-fájl adja vissza a kimeneti adategységen, amely a mozgásérzékelési riasztások, és azok kategóriák belül a videó ismerteti. A fájl ideje és időtartama észlelte a videóból mozgásérzékelési fogja tartalmazni.
+A mozgás észlelése a JSON-fájl a kimeneti adategységen, amely a mozgásérzékelési riasztások, és azok kategóriák belül a videó ismerteti adja vissza. A fájl ideje és időtartama észlelte a videóból mozgásérzékelési kapcsolatos információkat tartalmaz.
 
 A Mozgásérzékelési érzékelő API mutatók biztosít, miután egy videó rögzített háttérben mozgó objektumok (például a kamera). A mozgásérzékelő be van tanítva, téves riasztásokat, például a megvilágítási és árnyékmásolat módosítások csökkentése érdekében. Aktuális korlátozások algoritmusok éjszakai stratégiai videók, félig átlátható és kis objektumok tartalmazza.
 
@@ -93,7 +95,7 @@ A következő táblázat ismerteti a kimeneti JSON-fájl elemeinek.
 | --- | --- |
 | Verzió |Ez a videó API verziója vonatkozik. A jelenlegi verzió: 2. |
 | időskálára |A videó másodpercenként "ticks". |
-| Eltolás |A "ticks" időbélyegeket időeltolódás. Videó API-k 1.0-s verziójában az mindig 0 lesz. A jövőben támogatott forgatókönyveket, ezt az értéket módosíthatja. |
+| Eltolás |Időbélyegeket "ticks". az idő eltolása Videó API-k 1.0-s verziójában az mindig 0 lesz. A jövőben támogatott forgatókönyveket, ezt az értéket módosíthatja. |
 | képkockasebességhez |A videó képkockasebessége. |
 | Szélesség, Hosszúság |A szélességét és magasságát képpontban hivatkozik. |
 | Indítás |A start időbélyegzőjéhez viszonyítva a "ticks". |
@@ -107,8 +109,9 @@ A következő táblázat ismerteti a kimeneti JSON-fájl elemeinek.
 | Szögletes zárójelbe] |Minden egyes zárójel az esemény egy időköz jelöli. Üres szögletes az adott időköz azt jelenti, hogy semmilyen volt észlelhető. |
 | Helyek |Az új belépési események alapján sorolja fel a helyre, ahol a mozgásérzékelési történt. Ez a pontosabb, mint a észlelési zónákat. |
 
-A JSON kimeneti például
+A következő JSON példa mutatja:
 
+```json
     {
       "version": 2,
       "timescale": 23976,
@@ -150,8 +153,8 @@ A JSON kimeneti például
                 "regionId": 0
               }
             ],
+```
 
-    …
 ## <a name="limitations"></a>Korlátozások
 * A támogatott bemeneti videó formátumnak tartalmaznia kell MP4 MOV és WMV.
 * Mozgásérzékelés álló háttér videók van optimalizálva. Az algoritmus összpontosít téves riasztásokat, például a megvilágítási érintő változtatások, valamint az árnyékok csökkentése.
@@ -164,33 +167,36 @@ A következő program bemutatja hogyan:
 1. Hozzon létre egy eszközt, és adathordozó-fájl feltöltése az objektumba.
 2. Hozzon létre egy feladatot a következő json-készletet tartalmazó konfigurációs fájl alapján Videós mozgásérzékelési észlelési feladatokkal: 
    
-        {
-          "Version": "1.0",
-          "Options": {
-            "SensitivityLevel": "medium",
-            "FrameSamplingValue": 1,
-            "DetectLightChange": "False",
-            "MergeTimeThreshold":
-            "00:00:02",
-            "DetectionZones": [
-              [
-                {"x": 0, "y": 0},
-                {"x": 0.5, "y": 0},
-                {"x": 0, "y": 1}
-               ],
-              [
-                {"x": 0.3, "y": 0.3},
-                {"x": 0.55, "y": 0.3},
-                {"x": 0.8, "y": 0.3},
-                {"x": 0.8, "y": 0.55},
-                {"x": 0.8, "y": 0.8},
-                {"x": 0.55, "y": 0.8},
-                {"x": 0.3, "y": 0.8},
-                {"x": 0.3, "y": 0.55}
-              ]
-            ]
-          }
-        }
+    ```json
+            {
+            "Version": "1.0",
+            "Options": {
+                "SensitivityLevel": "medium",
+                "FrameSamplingValue": 1,
+                "DetectLightChange": "False",
+                "MergeTimeThreshold":
+                "00:00:02",
+                "DetectionZones": [
+                [
+                    {"x": 0, "y": 0},
+                    {"x": 0.5, "y": 0},
+                    {"x": 0, "y": 1}
+                ],
+                [
+                    {"x": 0.3, "y": 0.3},
+                    {"x": 0.55, "y": 0.3},
+                    {"x": 0.8, "y": 0.3},
+                    {"x": 0.8, "y": 0.55},
+                    {"x": 0.8, "y": 0.8},
+                    {"x": 0.55, "y": 0.8},
+                    {"x": 0.3, "y": 0.8},
+                    {"x": 0.3, "y": 0.55}
+                ]
+                ]
+            }
+            }
+    ```
+
 3. A kimeneti JSON-fájlok letöltésére. 
 
 #### <a name="create-and-configure-a-visual-studio-project"></a>Egy Visual Studio-projekt létrehozása és konfigurálása
@@ -199,7 +205,7 @@ A következő program bemutatja hogyan:
 
 #### <a name="example"></a>Példa
 
-```
+```csharp
 
 using System;
 using System.Configuration;
