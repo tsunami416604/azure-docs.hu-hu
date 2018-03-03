@@ -14,11 +14,11 @@ ms.devlang: java
 ms.topic: article
 ms.date: 05/11/2017
 ms.author: lakasa
-ms.openlocfilehash: 9f9ed8043d3671beacb9fabeb9e96604a8f065ab
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b4f3814ac2dbc8b74cef8f5fcb0540b7509efa0d
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="client-side-encryption-and-azure-key-vault-with-java-for-microsoft-azure-storage"></a>A Microsoft Azure tárolás Java ügyféloldali titkosítás és az Azure Key Vault
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]
@@ -59,7 +59,7 @@ Titkosítás során az ügyféloldali kódtár létre egy véletlenszerű inicia
 > 
 > 
 
-Egy titkosított blob letöltése magában foglalja a teljes blob használatával a tartalom lekérése a  **letöltése*/openInputStream** kényelmi módszerek. A burkolt CEK kicsomagolják, és ha a felhasználók számára a visszafejtett adatokat a IV (tárolt blob metaadatai ebben az esetben) együtt használja.
+Egy titkosított blob letöltése magában foglalja a teljes blob használatával a tartalom lekérése a **letöltési * / openInputStream** kényelmi módszerek. A burkolt CEK kicsomagolják, és ha a felhasználók számára a visszafejtett adatokat a IV (tárolt blob metaadatai ebben az esetben) együtt használja.
 
 Egy tetszőleges tartomány letöltése (**downloadRange*** módszerek) a titkosított BLOB magában foglalja a kis mennyiségű sikeresen visszafejtése a kért használható további adatokat kíván gyűjteni a felhasználók által biztosított tartomány beállítása tartomány.  
 
@@ -99,6 +99,10 @@ Tábla adattitkosítás a következőképpen működik:
 A kötegelt műveletek az azonos KEK is használni fogja kötegelt művelet sorait, mivel az ügyféloldali kódtár csak egy beállítások objektum (és ezáltal egy házirend vagy KEK) kötegelt művelet. Azonban az ügyféloldali kódtár belső létrehoz egy új véletlenszerű IV és soronkénti véletlenszerű CEK a kötegben. Felhasználók is beállíthatja a kötegben minden művelethez más tulajdonságokkal titkosítására Ez a viselkedés meghatározása a titkosítási feloldó.
 
 ### <a name="queries"></a>Lekérdezések
+> [!NOTE]
+> Az entitások titkosítva vannak, mert titkosított szűrő lekérdezéseket nem futtatható.  Kísérli meg, ha eredmények lesz helytelen, mert a szolgáltatás volna az összehasonlítani kívánt titkosított adatok nem titkosított adatokat.
+> 
+>
 Lekérdezési műveletek végrehajtásához meg kell adnia egy kulcs feloldó, amely képes feloldani az eredménykészletben a kulcsokat. Ha a lekérdezés eredményében található entitás nem oldható fel egy szolgáltatót, az ügyféloldali kódtár kivételhibát hiba. A lekérdezés, amely végrehajtja a kiszolgáló oldalán leképezések az ügyféloldali kódtár felveszi különleges titkosítási metaadat-tulajdonságainak (_ClientEncryptionMetadata1 és _ClientEncryptionMetadata2) alapértelmezés szerint a kijelölt oszlopokban.
 
 ## <a name="azure-key-vault"></a>Azure Key Vault
@@ -149,7 +153,7 @@ Felhasználók engedélyezheti üzemmódot ahol feltöltések és a letöltött 
 
 Tegyük fel például, **CloudBlobClient.getDefaultRequestOptions().setRequireEncryption(true)** kényszeríteni a titkosítást, az összes blob-ügyfél objektum keresztül végrehajtott műveleteket.
 
-### <a name="blob-service-encryption"></a>BLOB szolgáltatás titkosítási
+### <a name="blob-service-encryption"></a>Blob service encryption
 Hozzon létre egy **BlobEncryptionPolicy** objektumot, majd állítsa be a kérelem beállításai (API vagy egy ügyfél szinten használatával **DefaultRequestOptions**). Minden más kezelik az ügyféloldali kódtár által belsőleg.
 
 ```java
@@ -171,7 +175,7 @@ ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 blob.download(outputStream, null, options, null);
 ```
 
-### <a name="queue-service-encryption"></a>Várólista titkosítását
+### <a name="queue-service-encryption"></a>Queue service encryption
 Hozzon létre egy **QueueEncryptionPolicy** objektumot, majd állítsa be a kérelem beállításai (API vagy egy ügyfél szinten használatával **DefaultRequestOptions**). Minden más kezelik az ügyféloldali kódtár által belsőleg.
 
 ```java
@@ -247,7 +251,7 @@ public void setEncryptedProperty1(final String encryptedProperty1) {
 ## <a name="encryption-and-performance"></a>Titkosítás és teljesítmény
 Vegye figyelembe, hogy a tároló eredményezi további teljesítményigény titkosítása. A tartalomkulcs és IV kell létrejönnie, a tartalom titkosítva kell lennie és további metaadatok kell kell formázva és fel kell tölteni. Ez a terhelés a titkosított adatok mennyisége függvényében. Azt javasoljuk, hogy az ügyfelek mindig tesztelje az alkalmazások fejlesztése során teljesítmény.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Töltse le a [Azure Storage ügyféloldali kódtára a Java-Maven-csomag](http://mvnrepository.com/artifact/com.microsoft.azure/azure-storage)  
 * Töltse le a [Azure Storage ügyféloldali kódtára a Java-forráskód a Githubról](https://github.com/Azure/azure-storage-java)   
 * Töltse le az Azure Key Vault Maven kódtár Java-Maven-csomagok:

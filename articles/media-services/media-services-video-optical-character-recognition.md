@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 12/09/2017
 ms.author: juliako
-ms.openlocfilehash: 739e80633f828e8c14f024dc22971e7d8858cf78
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 03b9de7374880cdb2741821edae246bffaf3f921
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="use-azure-media-analytics-to-convert-text-content-in-video-files-into-digital-text"></a>Azure Médiaelemzés használatával videofájlok a szöveges tartalom átalakítása digitális szöveg
 ## <a name="overview"></a>Áttekintés
@@ -51,6 +51,7 @@ A feladat konfigurációja (beállítás). A feladat létrehozásakor **Azure Me
 
 #### <a name="json-preset-example"></a>Előre definiált JSON-példa
 
+```json
     {
         "Version":1.0, 
         "Options": 
@@ -69,8 +70,11 @@ A feladat konfigurációja (beállítás). A feladat létrehozásakor **Azure Me
              ]
         }
     }
+```
 
 #### <a name="xml-preset-example"></a>Előre definiált XML-példa
+
+```xml
     <?xml version=""1.0"" encoding=""utf-16""?>
     <VideoOcrPreset xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"" xmlns:xsd=""http://www.w3.org/2001/XMLSchema"" Version=""1.0"" xmlns=""http://www.windowsazure.com/media/encoding/Preset/2014/03"">
       <Options>
@@ -88,6 +92,7 @@ A feladat konfigurációja (beállítás). A feladat létrehozásakor **Azure Me
        <TextOrientation>Up</TextOrientation>
       </Options>
     </VideoOcrPreset>
+```
 
 ## <a name="ocr-output-files"></a>OCR kimeneti fájlok
 A OCR media processzor eredménye egy JSON-fájlt.
@@ -102,7 +107,7 @@ A kimenet tartalmazza a következő attribútumokat:
 | időskálára |"ticks" videó másodpercenként |
 | Eltolás |az időbélyegekhez időeltolódás. Videó API-k 1.0-s verziójában az mindig 0 lesz. |
 | képkockasebességhez |A videó képkockasebessége |
-| Szélessége |szélesség képpontban videó |
+| width |szélesség képpontban videó |
 | Magassága |magasságát képpontban |
 | töredék |időalapú adattömböket, amelybe a metaadatok darabolásos van videó tömbje |
 | start |a "ticks" töredéket kezdete |
@@ -118,6 +123,7 @@ A kimenet tartalmazza a következő attribútumokat:
 ### <a name="json-output-example"></a>JSON kimeneti példa
 A következő kimeneti példa az általános videó információkat és több videó töredék tartalmazza. Minden videó töredékben szereplő minden egyes régió, a nyelvet és a szöveg irányú OCR mp észlelt tartalmaz. A régió minden word sor ebben a régióban a sor szövege, a sor helye és a sor minden word információkkal (word tartalmat, pozíció és abban, hogy) is tartalmaz. A következő egy példa, és szeretnék bizonyos megjegyzéseket beágyazott.
 
+```json
     {
         "version": 1, 
         "timescale": 90000, 
@@ -170,6 +176,7 @@ A következő kimeneti példa az általános videó információkat és több vi
             }
         ]
     }
+```
 
 ## <a name="net-sample-code"></a>.NET mintakód
 
@@ -185,7 +192,7 @@ A következő program bemutatja hogyan:
 
 #### <a name="example"></a>Példa
 
-```
+```csharp
 using System;
 using System.Configuration;
 using System.IO;

@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: rli
-ms.openlocfilehash: c10145661a8c575381493c9aaa901c3ef92c2e81
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 602b4303dd1940791c11b8b71ac6a27f0474a6d5
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/02/2018
 ---
-# <a name="azure-cdn-rules-engine"></a>Az Azure CDN szabálymotor
-Ez a témakör részletes leírását tartalmazza a rendelkezésre álló egyezés feltételek és a szolgáltatások az Azure Content Delivery Network (CDN) [szabálymotor](cdn-rules-engine.md).
+# <a name="azure-cdn-rules-engine-reference"></a>Az Azure CDN szabályok motor-hivatkozás
+Ez a cikk részletes leírását tartalmazza a rendelkezésre álló egyezés feltételek és a szolgáltatások számára az Azure Content Delivery Network (CDN) [szabálymotor](cdn-rules-engine.md).
 
-A HTTP szabálymotor lett kialakítva, hogy hogyan adott típusú kérelmet a végső hatóság dolgozza fel a CDN-t.
+A szabályok motor lett kialakítva, hogy hogyan adott típusú kérelmet a végső hatóság dolgozza fel a CDN-t.
 
 **Gyakori használati**:
 
@@ -33,50 +33,50 @@ A HTTP szabálymotor lett kialakítva, hogy hogyan adott típusú kérelmet a v�
 - Egyéni adatok tárolására.
 
 ## <a name="terminology"></a>Terminológia
-Egy szabály van meghatározva használatával [ **feltételes kifejezések**](cdn-rules-engine-reference-conditional-expressions.md), [ **megfelelő**](cdn-rules-engine-reference-match-conditions.md), és [  **szolgáltatások**](cdn-rules-engine-reference-features.md). Ezeket az elemeket az alábbi ábrán vannak kiemelve.
+Egy szabály van meghatározva használatával [ **feltételes kifejezések**](cdn-rules-engine-reference-conditional-expressions.md), [ **feltételek egyeznek**](cdn-rules-engine-reference-match-conditions.md), és [ **szolgáltatások**](cdn-rules-engine-reference-features.md). Ezeket az elemeket az alábbi ábrán vannak kiemelve:
 
  ![CDN-egyeztetés feltétel](./media/cdn-rules-engine-reference/cdn-rules-engine-terminology.png)
 
 ## <a name="syntax"></a>Szintaxis
 
-A speciális karakterek kezelni módon miként egy egyeznek az állapot vagy a szolgáltatás kezeli a szöveges értékek függően változik. Egy egyeznek az állapot vagy a szolgáltatás szöveg értelmezhetik a következő módszerek valamelyikével:
+Speciális karakterek kezelik, amelyben módon miként egy egyeznek az állapot vagy a szolgáltatás kezeli a szöveges értékek függően változik. Egy egyeznek az állapot vagy a szolgáltatás szöveg értelmezhetik a következő módszerek valamelyikével:
 
 1. [**Szöveges értékek**](#literal-values) 
 2. [**Helyettesítő karakteres értékek**](#wildcard-values)
 3. [**A reguláris kifejezések**](#regular-expressions)
 
 ### <a name="literal-values"></a>Szöveges értékek
-Szöveg, amelyet a rendszer könyvtárelválasztóként értelmezi konstans érték % szimbólum kivételével minden speciális karakterek kezeli az értéket, amelyet egyeztetni részeként. Más szóval szövegkonstans felel meg a feltétel beállítása `\'*'\` csak kell teljesíteni, ha, amely pontos értékek (azaz `\'*'\`) található.
+Szöveg, amelyet a rendszer könyvtárelválasztóként értelmezi konstans érték % szimbólum kivételével minden speciális karaktereket kezeli az értéket, amelyet egyeztetni részeként. Más szóval szövegkonstans felel meg a feltétel beállítása `\'*'\` csak teljesül, hogy pontos értékek amikor (Ez azt jelenti, hogy `\'*'\`) található.
  
-A százalékos szimbólum meghatározására szolgál URL-kódolást (pl. `%20`).
+A százalékos szimbólum meghatározására szolgál URL-kódolást (például `%20`).
 
 ### <a name="wildcard-values"></a>Helyettesítő karakteres értékek
-Szöveg, amelyet egy helyettesítő karakteres értékként értelmezi további jelentése rendel különleges karaktereket. A következő táblázat ismerteti, hogyan kell értelmezni a következő set karaktereket.
+Szöveg helyettesítő értékként értelmezi, speciális karakterek további jelentése rendel hozzá. A következő táblázat ismerteti, hogyan karakterek a következők emelendők értelmezi:
 
 Karakter | Leírás
 ----------|------------
-\ | Fordított perjel karaktert a ebben a táblázatban megadott karaktereket. Egy fordított perjel közvetlenül a speciális karaktert, érdemes lehet escape-karaktersorozatot tartalmazó előtt meg kell adni.<br/>Például a következő szintaxissal lehet kilépni csillag:`\*`
-% | A százalékos szimbólum meghatározására szolgál URL-kódolást (pl. `%20`).
+\ | Fordított perjel karaktert a ebben a táblázatban megadott karaktereket. Egy fordított perjel közvetlenül a speciális karaktert, érdemes lehet escape-karaktersorozatot tartalmazó előtt meg kell adni.<br/>Például a következő szintaxissal lehet kilépni csillag: `\*`
+% | A százalékos szimbólum meghatározására szolgál URL-kódolást (például `%20`).
 * | A csillag karakter egy vagy több karaktert jelölő helyettesítő elemként jelen.
-Lemezterület | A szóköz karakter azt jelzi, hogy egyeznek feltétel lehet teljesíteni vagy a megadott értékek vagy mintákat.
-"érték" | Szimpla idézőjel nincs speciális jelentéssel. Azonban szimpla idézőjelben készlete szolgál annak jelzésére, hogy egy érték konstansérték kell kezelni. A következőképpen használhatók:<br><br/>-, Akkor meg kell, amikor csak a megadott értéke megegyezik az összehasonlítási érték bármely részének egyezés feltételt.  Például `'ma'` megfelelő a következő karakterláncok bármelyikét: <br/><br/>/Business/**ma**rathon/asset.htm<br/>**Ma**p.gif<br/>/ üzleti/sablont. **ma**p<br /><br />-Lehetővé teszi egy speciális karakter konstans karakterként adni. Például adhatnak meg szövegkonstans szóköz karakter a szóköz karakter a szimpla idézőjelben belül befoglaló (azaz `' '` vagy `'sample value'`).<br/>-Lehetővé teszi egy üres értéket kell megadni. Adjon meg egy üres értéket az szimpla idézőjelben csoportja (azaz ").<br /><br/>**Fontos:**<br/>-Ha a megadott érték nem tartalmaz helyettesítő karakter, majd azt automatikusan minősül konstans érték. Ez azt jelenti, hogy nem kell adjon meg olyan szimpla idézőjelben.<br/>– Ha egy fordított perjel nem karaktert egy másik ebben a táblázatban, majd azt figyelmen kívül a szimpla idézőjelben belül megadott.<br/>-Adjon meg egy speciális karaktert, mert használatával egy fordított perjel karaktert a literális karakter másik módja (azaz `\`).
+Szóköz | A szóköz karakter azt jelzi, hogy egyeznek feltétel lehet teljesíteni vagy a megadott értékek vagy mintákat.
+"érték" | Szimpla idézőjel nincs speciális jelentéssel. Azonban szimpla idézőjelben készlete szolgál annak jelzésére, hogy egy érték konstansérték kell kezelni. A következőképpen használhatók:<br><br/>-, Akkor meg kell, amikor csak a megadott értéke megegyezik az összehasonlítási érték bármely részének egyezés feltételt.  Például `'ma'` megfelelő a következő karakterláncok bármelyikét: <br/><br/>/business/**ma**rathon/asset.htm<br/>**ma**p.gif<br/>/ üzleti/sablont. **ma**p<br /><br />-Lehetővé teszi egy speciális karakter konstans karakterként adni. Például adhatnak meg szövegkonstans szóköz karakter a szóköz karakter a szimpla idézőjelben belül befoglaló (Ez azt jelenti, hogy `' '` vagy `'sample value'`).<br/>-Lehetővé teszi egy üres értéket kell megadni. Adjon meg egy üres értéket az szimpla idézőjelben csoportja (Ez azt jelenti, hogy ").<br /><br/>**Fontos:**<br/>-Ha a megadott érték nem tartalmaz helyettesítő karakter, majd automatikusan minősül konstans érték, amely azt jelenti, hogy nem kell adjon meg olyan szimpla idézőjelben.<br/>– Ha egy fordított perjel nem karaktert egy másik ebben a táblázatban, akkor rendszer figyelmen kívül hagyja a szimpla idézőjelben belül van megadva.<br/>-Adjon meg egy speciális karaktert, mert használatával egy fordított perjel karaktert a literális karakter másik módja (Ez azt jelenti, hogy `\`).
 
-### <a name="regular-expressions"></a>A reguláris kifejezések
+### <a name="regular-expressions"></a>Reguláris kifejezések
 
-A reguláris kifejezések egy mintát, amely egy szöveges értéket belül keresendő határozza meg. Reguláris kifejezés notation adott jelentését szimbólumok számos különböző határozza meg. A következő táblázat azt jelzi, hogyan különleges karakterek feltételek egyeznek és reguláris kifejezések támogató szolgáltatások kezeli.
+Reguláris kifejezések meghatározása egy mintát, amely egy szöveges értéket belül kell keresni. Reguláris kifejezés notation adott jelentését szimbólumok számos különböző határozza meg. A következő táblázat azt jelzi, hogyan különleges karakterek feltételek egyeznek és reguláris kifejezések támogató szolgáltatások kezeli.
 
 Speciális karakter | Leírás
 ------------------|------------
-\ | Egy fordított perjel lehet kilépni a karaktert, a következő lépések azt. Ez azt eredményezi, hogy ez a karakter, ahelyett, hogy a reguláris kifejezés jelentését konstansérték kell kezelni. Például a következő szintaxissal lehet kilépni csillag:`\*`
-% | A százalékos szimbólum pontos jelentése attól függ, hogy a használatát.<br/><br/> `%{HTTPVariable}`: Ez a szintaxis egy HTTP-változó azonosítja.<br/>`%{HTTPVariable%Pattern}`: Ez a szintaxis százalékos szimbólum változó és a elválasztó HTTP azonosítására használ.<br />`\%`: Escape százalékos szimbólum lehetővé teszi, hogy konstans érték használandó vagy URL-kódolást jelzi (pl. `\%20`).
+\ | Egy fordított perjel lehet kilépni a karaktert, a következő lépések informatikai, amely azt eredményezi, ez a karakter, ahelyett, hogy a reguláris kifejezés jelentését konstansérték kell kezelni. Például a következő szintaxissal lehet kilépni csillag: `\*`
+% | A százalékos szimbólum pontos jelentése attól függ, hogy a használatát.<br/><br/> `%{HTTPVariable}`: Ez a szintaxis egy HTTP-változó azonosítja.<br/>`%{HTTPVariable%Pattern}`: Ez a szintaxis százalékos szimbólum változó és a elválasztó HTTP azonosítására használ.<br />`\%`: Escape százalékos szimbólum lehetővé teszi, hogy konstans érték használandó vagy URL-kódolást jelzéséhez (például `\%20`).
 * | A csillag karakter lehetővé teszi, hogy az előző karaktert megfeleltethetők nulla vagy több alkalommal. 
-Lemezterület | A szóköz karakter konstans karakterként általában rendszer kezeli. 
+Szóköz | A szóköz karakter konstans karakterként általában rendszer kezeli. 
 "érték" | Szimpla idézőjelben literális karaktereket tekintendők. Szimpla idézőjelben készlete nem rendelkezik speciális jelentéssel.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Szabályok motor egyezés feltételek](cdn-rules-engine-reference-match-conditions.md)
 * [Szabályok motor feltételes kifejezések](cdn-rules-engine-reference-conditional-expressions.md)
 * [Szabályok adatbázismotor-szolgáltatások](cdn-rules-engine-reference-features.md)
-* [A szabályok használata alapértelmezett HTTP működés felülbírálata](cdn-rules-engine.md)
+* [A szabályok használata HTTP működés felülbírálásához](cdn-rules-engine.md)
 * [Az Azure CDN áttekintése](cdn-overview.md)

@@ -13,82 +13,95 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 02/14/2018
+ms.date: 02/27/2018
 ms.author: owend
-ms.openlocfilehash: 33115ee35670407c3b046f70a5fbebc47284b4b9
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 9f2a4acdd0a2b29bc1485f62c0049f0065cbf711
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Az Azure Analysis Services támogatott adatforrások
-Azure Analysis Services-kiszolgálók esetén támogatja az adatforrások a felhőben és a szervezet helyszíni csatlakozik. További támogatott adatforrások folyamatosan felvétel alatt. Gyakran ellátogatnia webhelyünkre. 
 
-A következő adatforrások jelenleg támogatottak:
+Az adatforrások és összekötők jelennek meg adatok beolvasása vagy a Visual Studio importálása varázsló az Azure Analysis Services és az SQL Server Analysis Services jelennek meg. Azonban nem minden adatforrások és összekötők látható az Azure Analysis Services használata támogatott. A típusú adatforrások csatlakozhat számos tényezőtől függ, mint a modell kompatibilitási szint, a rendelkezésre álló adatok összekötők, a hitelesítési típus, a szolgáltatók és a helyszíni gateway-támogatás. 
 
-| Felhő  |
-|---|
-| Azure Blob Storage*  |
-| Azure SQL Database  |
-| Az Azure Data warehouse-bA |
+## <a name="azure-data-sources"></a>Azure-adatforrással
 
+|Adatforrás  |Memóriabeli  |DirectQuery  |
+|---------|---------|---------|
+|Azure SQL Database     |   Igen      |    Igen      |
+|Azure SQL Data Warehouse     |   Igen      |   Igen       |
+|Azure Blob Storage*     |   Igen       |    Nem      |
+|Azure Table Storage*    |   Igen       |    Nem      |
+|Az Azure Cosmos DB (béta) *     |  Igen        |  Nem        |
+|Azure Data Lake Store*     |   Igen       |    Nem      |
+|Azure HDInsight HDFS*     |     Igen     |   Nem       |
+|Az Azure HDInsight Spark (béta) *     |   Igen       |   Nem       |
+|A MySQL (előzetes verzió) Azure-adatbázis *     |   Igen       |   Nem      |
+|Azure-adatbázis PostgreSQL (előzetes verzió) *     | Igen         |  Nem       |
+||||
 
-| Helyszíni követelmények  |   |   |   |
-|---|---|---|---|
-| Access-adatbázishoz  | Mappa * | Oracle Database  | Teradata-adatbázis |
-| Active Directory*  | JSON-dokumentum *  | Postgre SQL adatbázis *  |XML tábla * |
-| Analysis Services  | A bináris * sorok  | SAP HANA *  |
-| Analytics Platform System  | MySQL-adatbázis  | SAP Business Warehouse *  | |
-| Dynamics CRM*  | Az OData-adatcsatorna *  | SharePoint*  |
-| Az Excel-munkafüzet  | Az ODBC-lekérdezés  | SQL Database  |
-| Exchange*  | OLE DB RENDSZERHEZ  | Sybase-adatbázis  |
+\* A táblázatos 1 400 modellek csak.
 
-\* A táblázatos 1 400 modellek csak. 
+**Provider**   
+A memóriában és csatlakozás az Azure adatforrásokhoz DirectQuery-modellekre használata a .NET Framework Data Provider az SQL Server.
 
-> [!IMPORTANT]
-> A helyszíni adatforrásokhoz való csatlakozás igényel egy [helyszíni adatátjáró](analysis-services-gateway.md) környezetét a számítógépen.
+## <a name="on-premises-data-sources"></a>Helyszíni adatforrások
 
-## <a name="data-providers"></a>Adatszolgáltatók
+Csatlakozás helyszíni erőforrásait és Azure AS-kiszolgáló szükséges egy helyszíni átjárót. Átjáró használata esetén a 64 bites szolgáltatók szükség.
 
-Az Azure Analysis Services adatmodellekben szükség lehet különböző adatszolgáltatók, egyes adatforrásokhoz való kapcsolódáskor. Bizonyos esetekben csatlakozás az adatforrásokhoz, például az SQL Server Native Client (SQLNCLI11) natív szolgáltatók használata táblázatos modellek hibát adhat vissza.
+### <a name="in-memory-and-directquery"></a>A memória és a DirectQuery
 
-Egy felhőbeli adatát csatlakozó adatmodellekben forrás például az Azure SQL Database, ha eltérő SQLOLEDB natív szolgáltatók használatához hibaüzenet jelenhet: **"a provider" "SQLNCLI11.1" nincs regisztrálva.** Vagy, ha egy DirectQuery modell csatlakozik a helyi adatforrások, ha natív szolgáltatók hibaüzenet jelenhet: **"hiba történt a sorkészlet OLE DB létrehozásakor. Helytelen szintaxis a(z) "KORLÁTJA" közelében "**.
-
-A következő adatforrás-szolgáltatók támogatottak a memóriában vagy a DirectQuery-modellekre adatok a felhőben, vagy a helyszíni adatforrások való csatlakozáskor:
-
-### <a name="cloud"></a>Felhő
-| **Adatforrás** | **Memóriabeli** | **DirectQuery** |
+|Adatforrás | A memória szolgáltató | DirectQuery-szolgáltató |
 |  --- | --- | --- |
-| Azure SQL Data Warehouse |.NET framework Data Provider az SQL Server |.NET framework Data Provider az SQL Server |
-| Azure SQL Database |.NET framework Data Provider az SQL Server |.NET framework Data Provider az SQL Server | |
+| SQL Server |SQL Server natív ügyfél 11.0, Microsoft OLE DB-szolgáltató az SQL Server, a .NET Framework Data Provider az SQL Server | .NET framework Data Provider az SQL Server |
+| SQL Server Data Warehouse |SQL Server natív ügyfél 11.0, Microsoft OLE DB-szolgáltató az SQL Server, a .NET Framework Data Provider az SQL Server | .NET framework Data Provider az SQL Server |
+| Oracle |Microsoft OLE DB-szolgáltató az Oracle, Oracle-adatszolgáltatóban a .NET-hez |Oracle-adatszolgáltatóban a .NET-hez | |
+| Teradata |OLE DB-szolgáltató a teradata rendszerhez, Teradata-adatszolgáltatója a .NET-hez |Teradata-adatszolgáltatója a .NET-hez | |
+| | | |
 
-### <a name="on-premises-via-gateway"></a>A helyszíni (átjáró) keresztül
-|**Adatforrás** | **Memóriabeli** | **DirectQuery** |
-|  --- | --- | --- |
-| SQL Server |SQL Server natív ügyfél 11.0 |.NET framework Data Provider az SQL Server |
-| SQL Server |Microsoft OLE DB-szolgáltató az SQL Server |.NET framework Data Provider az SQL Server | |
-| SQL Server |.NET framework Data Provider az SQL Server |.NET framework Data Provider az SQL Server | |
-| Oracle |Microsoft OLE DB-szolgáltató az Oracle rendszerhez |Oracle-adatszolgáltatóban a .NET-hez | |
-| Oracle |Oracle-adatszolgáltatóban a .NET-hez |Oracle-adatszolgáltatóban a .NET-hez | |
-| Teradata |OLE DB-szolgáltató a teradata rendszerhez |Teradata-adatszolgáltatója a .NET-hez | |
-| Teradata |Teradata-adatszolgáltatója a .NET-hez |Teradata-adatszolgáltatója a .NET-hez | |
-| Analytics Platform System |.NET framework Data Provider az SQL Server |.NET framework Data Provider az SQL Server | |
+### <a name="in-memory-only"></a>A memóriában csak
 
-> [!NOTE]
-> Győződjön meg arról, 64 bites szolgáltató van telepítve, a helyszíni átjáró használatakor.
-> 
-> 
+|Adatforrás  |  
+|---------|---------|
+|Access-adatbázishoz     |  
+|Active Directory*     |  
+|Analysis Services     |  
+|Analytics Platform System     |  
+|Dynamics CRM*     |  
+|Az Excel-munkafüzet     |  
+|Exchange*     |  
+|Mappa *     | 
+|JSON-dokumentum *     |  
+|A bináris * sorok     | 
+|MySQL-adatbázis     | 
+|Az OData-adatcsatorna *     |  
+|Az ODBC-lekérdezés     | 
+|OLE DB RENDSZERHEZ     |   
+|Postgre SQL adatbázis *    | 
+|SAP HANA *    |  
+|SAP Business Warehouse *    |  
+|SharePoint*     |   
+|Sybase-adatbázis     |  
+|XML tábla *    |  
+|||
+ 
+\* A táblázatos 1 400 modellek csak.
+
+## <a name="specifying-a-different-provider"></a>Egy másik szolgáltató megadása
+
+Az Azure Analysis Services adatmodellekben szükség lehet különböző adatszolgáltatók, egyes adatforrásokhoz való kapcsolódáskor. Bizonyos esetekben csatlakozás az adatforrásokhoz, például az SQL Server Native Client (SQLNCLI11) natív szolgáltatók használata táblázatos modellek hibát adhat vissza. Ha eltérő SQLOLEDB natív szolgáltatókat használ, a hibaüzenet jelenhet: **a szolgáltató nincs regisztrálva "SQLNCLI11.1"**. Vagy, ha a Kapcsolódás a helyi adatforrások DirectQuery modell és natív szolgáltatókat használ, a hibaüzenet jelenhet: **hiba történt a sorkészlet OLE DB létrehozásakor. Helytelen szintaxis a(z) "KORLÁTJA" közelében**.
 
 Amikor telepít egy helyi SQL Server Analysis Services táblázatos modell Azure Analysis Services, akkor lehet szükség módosítani a szolgáltatót.
 
-**Egy adatforrás-szolgáltatója megadása**
+**A szolgáltató megadása**
 
 1. Az SSDT > **táblázatos modell Explorer** > **adatforrások**, kattintson a jobb gombbal az adatforrás-kapcsolat, és kattintson a **adatforrás szerkesztése**.
 2. A **kapcsolat szerkesztése**, kattintson a **speciális** a Speciális tulajdonságok ablak megnyitásához.
 3. A **speciális tulajdonságok** > **szolgáltatók**, majd válassza ki a megfelelő szolgáltatót.
 
 ## <a name="impersonation"></a>A megszemélyesítés
-Bizonyos esetekben elképzelhető különböző megszemélyesítési fiókot szeretne megadni. Megszemélyesítési fiókhoz SSDT vagy SSMS adható meg.
+Bizonyos esetekben elképzelhető különböző megszemélyesítési fiókot szeretne megadni. A Visual Studio (SSDT) vagy az SSMS megszemélyesítési fiókhoz adható meg.
 
 A helyszíni adatforrások:
 
@@ -100,6 +113,6 @@ Felhő adatforrások:
 * Ha az SQL-hitelesítést használ, a megszemélyesítési szolgáltatás fióknak kell lennie.
 
 ## <a name="next-steps"></a>További lépések
-Ha a helyszíni adatforrások, ügyeljen arra, hogy telepítse a [helyszíni átjáró](analysis-services-gateway.md).   
-A kiszolgáló SSDT vagy SSMS kezelésével kapcsolatos további tudnivalókért lásd: [kezelheti a kiszolgálót](analysis-services-manage.md).
+[A helyszíni átjáró](analysis-services-gateway.md)   
+[A kiszolgáló kezelése](analysis-services-manage.md)   
 

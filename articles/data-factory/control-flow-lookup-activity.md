@@ -5,19 +5,19 @@ services: data-factory
 documentationcenter: 
 author: sharonlo101
 manager: jhubbard
-editor: shlo
+editor: 
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/10/2018
-ms.author: spelluru
-ms.openlocfilehash: 02e4d7cd062364cae2edad0c76e3a009bb6c1bda
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.author: shlo
+ms.openlocfilehash: 2f551e97b833460c7c4ccd276b0df1dae562c03b
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="lookup-activity-in-azure-data-factory"></a>Az Azure Data Factory keresési tevékenység
 Keresési tevékenység olvasására vagy külső forrásból kereshet egy rekord, a tábla neve vagy az érték használható. Erre a kimenetre a későbbi tevékenységek is hivatkozhatnak. 
@@ -62,9 +62,9 @@ A keresési tevékenység által visszaadott sorok maximális száma **5000**, �
 ## <a name="type-properties"></a>A típus tulajdonságai
 Name (Név) | Leírás | Típus | Kötelező?
 ---- | ----------- | ---- | --------
-Adatkészlet | Az adatkészlet-hivatkozásban biztosít a kereséshez. A támogatott adatkészlet típusok jelenleg a következők:<ul><li>`AzureBlobDataset`a [Azure Blob Storage tárolóban](connector-azure-blob-storage.md#dataset-properties) forrásaként</li><li>`FileShareDataset`a [fájlrendszer](connector-file-system.md#dataset-properties) forrásaként</li><li>`AzureSqlTableDataset`a [Azure SQL Database](connector-azure-sql-database.md#dataset-properties) vagy [Azure SQL Data Warehouse](connector-azure-sql-data-warehouse.md#dataset-properties) forrásaként</li><li>`SqlServerTable`a [SQL Server](connector-sql-server.md#dataset-properties) forrásaként</li><li>`AzureTableDataset`a [Azure Table storage](connector-azure-table-storage.md#dataset-properties) forrásaként</li> | Kulcs/érték pár | Igen
+Adatkészlet | Az adatkészlet-hivatkozásban biztosít a kereséshez. A támogatott adatkészlet típusok jelenleg a következők:<ul><li>`AzureBlobDataset` a [Azure Blob Storage tárolóban](connector-azure-blob-storage.md#dataset-properties) forrásaként</li><li>`FileShareDataset` a [fájlrendszer](connector-file-system.md#dataset-properties) forrásaként</li><li>`AzureSqlTableDataset` a [Azure SQL Database](connector-azure-sql-database.md#dataset-properties) vagy [Azure SQL Data Warehouse](connector-azure-sql-data-warehouse.md#dataset-properties) forrásaként</li><li>`SqlServerTable` a [SQL Server](connector-sql-server.md#dataset-properties) forrásaként</li><li>`AzureTableDataset` a [Azure Table storage](connector-azure-table-storage.md#dataset-properties) forrásaként</li> | Kulcs/érték pár | Igen
 forrás | Adatkészlet-specifikus forrás tulajdonságait, ugyanaz, mint a másolási tevékenység forrását tartalmazza. Beolvasása – részletek minden egyes megfelelő összekötő cikkben "Másolása a tevékenység tulajdonságai" szakaszában. | Kulcs/érték pár | Igen
-firstRowOnly | Azt jelzi, hogy csak az első sor vagy az összes sor visszaadása. | Logikai | Nem. Alapértelmezett érték a `true`.
+firstRowOnly | Azt jelzi, hogy csak az első sor vagy az összes sor visszaadása. | Logikai | Nem. Az alapértelmezett szint a `true`.
 
 ## <a name="use-the-lookup-activity-result-in-a-subsequent-activity"></a>Használja a keresési tevékenység eredménye a következő tevékenységben
 

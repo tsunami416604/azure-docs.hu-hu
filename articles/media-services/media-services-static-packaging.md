@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: juliako
-ms.openlocfilehash: 33fb0a18ea3e5bfec044a216c8e6a78942e3af40
-ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
+ms.openlocfilehash: de6cbf954f175777407432845ece24ac49198e46
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="using-azure-media-packager-to-accomplish-static-packaging-tasks"></a>Azure Media csomagoló segítségével statikus csomagolás feladatok végrehajtása
 > [!NOTE]
@@ -58,6 +58,7 @@ Ez a szakasz bemutatja, hogyan kell feldolgozni a érvényesítési feladatot. A
 
 A MP4-fájlok, a Media Services csomagoló érvényesítése, hozzon létre egy saját jegyzékfájl (.ism) fájlt, és töltse fel a forrásfájlok együtt a Media Services figyelembe. Alább a .ism-fájlt mintát elő a Media Encoder Standard. A fájlnevek-és nagybetűk. Ellenőrizze azt is, a szöveget a .ism-fájlt az UTF-8 kódolása.
 
+```xml
     <?xml version="1.0" encoding="utf-8" standalone="yes"?>
     <smil xmlns="http://www.w3.org/2001/SMIL20/Language">
       <head>
@@ -76,11 +77,13 @@ A MP4-fájlok, a Media Services csomagoló érvényesítése, hozzon létre egy 
         </switch>
       </body>
     </smil>
+```
 
 Ha elvégezte az adaptív sávszélességű MP4 típusú beállításkészlettel, dinamikus becsomagolás vehet igénybe. A dinamikus csomagolás lehetővé teszi, hogy a megadott protokoll adatfolyamok további csomagolására nélkül. További információkért lásd: [dinamikus becsomagolás](media-services-dynamic-packaging-overview.md).
 
 A következő példakód az Azure Media Services .NET SDK-bővítmények használja.  Győződjön meg arról, hogy frissítse a kódot, hogy a mappára, ahol a bemeneti MP4-fájlokat és .ism-fájlt találhatók. És is, ahol a MediaPackager_ValidateTask.xml fájl is található. Az XML-fájl definiálva van [feladat az adott néven beállítás az Azure Media csomagoló](http://msdn.microsoft.com/library/azure/hh973635.aspx) cikk.
 
+```csharp
     using Microsoft.WindowsAzure.MediaServices.Client;
     using System;
     using System.Collections.Generic;
@@ -244,6 +247,7 @@ A következő példakód az Azure Media Services .NET SDK-bővítmények haszná
             }
         }
     }
+```
 
 ## <a name="using-static-encryption-to-protect-your-smooth-and-mpeg-dash-with-playready"></a>Statikus titkosítással védelme érdekében a Smooth és MPEG DASH, a Playreadyvel
 A tartalmaknak a PlayReady védeni kívánt, ha megválaszthatja, használatával [a dinamikus titkosítás](media-services-protect-with-playready-widevine.md) (ajánlott) vagy statikus titkosítás (a jelen szakaszban ismertetett).
@@ -263,6 +267,7 @@ Ne felejtse el frissíteni a következő kódot úgy, hogy a bemeneti MP4-fájlo
 
 A példa az UpdatePlayReadyConfigurationXMLFile módszer, amely dinamikus frissítése a MediaEncryptor_PlayReadyProtection.xml fájl segítségével határozza meg. Ha a rendelkezésre álló kulcs kezdőérték, használhatja a CommonEncryption.GeneratePlayReadyContentKey metódus a tartalom keySeedValue és KeyId értékek alapján a kulcs létrehozásához.
 
+```csharp
     using System;
     using System.Collections.Generic;
     using System.Configuration;
@@ -694,6 +699,7 @@ A példa az UpdatePlayReadyConfigurationXMLFile módszer, amely dinamikus friss�
             }
         }
     }
+```
 
 ## <a name="using-static-encryption-to-protect-hlsv3-with-aes-128"></a>Statikus titkosítást használ az AES-128 HLSv3 védelmére
 Ha szeretné titkosítani a HLS az AES-128, akkor a dinamikus (ajánlott) vagy statikus titkosítást (a jelen szakasz útmutatásai). Ha úgy dönt, hogy a dinamikus titkosítás használatához, tekintse meg [AES-128 a dinamikus titkosítás segítségével és a kulcs kézbesítési szolgáltatás](media-services-protect-with-aes128.md).
@@ -707,6 +713,7 @@ Ha szeretné titkosítani a HLS az AES-128, akkor a dinamikus (ajánlott) vagy s
 
 A jelen szakaszban ismertetett példa kódolja multibitrate MP4-fájlokat, és ezután csomagokat MP4 Smooth Streaming a mezzazine-fájlt (ebben az esetben MP4). Majd csomagok Smooth Streaming be HTTP Live Streaming (HLS) titkosított adatfolyam 128 bites Advanced Encryption Standard (AES) titkosítással. Ne felejtse el frissíteni a következő kódot úgy, hogy a bemeneti MP4-fájlokat tartalmazó mappát mutasson. És is, ahol a MediaPackager_MP4ToSmooth.xml és MediaPackager_SmoothToHLS.xml konfigurációs fájlok találhatók. Ezeket a fájlokat a definíciója megtalálhatja a [feladat az adott néven beállítás az Azure Media csomagoló](http://msdn.microsoft.com/library/azure/hh973635.aspx) cikk.
 
+```csharp
     using System;
     using System.Collections.Generic;
     using System.Configuration;
@@ -975,6 +982,7 @@ A jelen szakaszban ismertetett példa kódolja multibitrate MP4-fájlokat, és e
             }
         }
     }
+```
 
 ## <a name="using-static-encryption-to-protect-hlsv3-with-playready"></a>Statikus titkosítással védelméhez HLSv3 a Playreadyvel
 A tartalmaknak a PlayReady védeni kívánt, ha megválaszthatja, használatával [a dinamikus titkosítás](media-services-protect-with-playready-widevine.md) (ajánlott) vagy statikus titkosítás (a jelen szakaszban ismertetett).
@@ -990,6 +998,7 @@ Media Services most egy szolgáltatás, amelynek segítségével a Microsoft Pla
 
 Ne felejtse el frissíteni a következő kódot úgy, hogy a bemeneti MP4-fájlokat tartalmazó mappát mutasson. És is, ahol a MediaPackager_MP4ToSmooth.xml MediaPackager_SmoothToHLS.xml és MediaEncryptor_PlayReadyProtection.xml fájlok találhatók. MediaPackager_MP4ToSmooth.xml és MediaPackager_SmoothToHLS.xml meghatározásának [feladat az adott néven beállítás az Azure Media csomagoló](http://msdn.microsoft.com/library/azure/hh973635.aspx) és MediaEncryptor_PlayReadyProtection.xml definiálva van a [feladat az adott néven beállítás az Azure Media Titkosító](http://msdn.microsoft.com/library/azure/hh973610.aspx) cikk.
 
+```csharp
     using System;
     using System.Collections.Generic;
     using System.Configuration;
@@ -1452,6 +1461,7 @@ Ne felejtse el frissíteni a következő kódot úgy, hogy a bemeneti MP4-fájlo
 
         }
     }
+```
 
 ## <a name="media-services-learning-paths"></a>Media Services képzési tervek
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]

@@ -3,22 +3,16 @@ title: "Azure Import/Export használatával történő adatátvitelhez számára
 description: "Megtudhatja, hogyan importálási létrehozni és exportálni a feladatokat az adatoknak az Azure Storage érkező vagy oda irányuló az Azure portálon."
 author: muralikk
 manager: syadav
-editor: tysonn
 services: storage
-documentationcenter: 
-ms.assetid: 668f53f2-f5a4-48b5-9369-88ec5ea05eb5
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 10/03/2017
+ms.date: 02/28/2018
 ms.author: muralikk
-ms.openlocfilehash: 0c34b7ce028ef0fae77322513f62557fa9f9929c
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: e9fce2530bc4e654304b946cea1715ac8e2ce6fa
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="use-the-microsoft-azure-importexport-service-to-transfer-data-to-azure-storage"></a>Az adatok átviteléhez az Azure Storage a Microsoft Azure Import/Export szolgáltatás használata
 Ebben a cikkben azt részletes útmutatást nyújtanak az Azure Import/Export szolgáltatás használatával biztonságos átvitelére a nagy mennyiségű adatok Azure Blob storage és Azure fájlok által az Azure adatközpontba szállítási lemezmeghajtókat. Ez a szolgáltatás adatok átviteléhez az Azure storage merevlemez-meghajtók és a helyszíni helyek szállítás is használható. A SATA egyetlen lemezmeghajtó adatait vagy Azure Blob storage-vagy Azure fájlok importálhatók. 
@@ -31,25 +25,34 @@ Ebben a cikkben azt részletes útmutatást nyújtanak az Azure Import/Export sz
 Kövesse az alábbi lépéseket, ha a lemezen lévő adatok Azure Storage importálható.
 ### <a name="step-1-prepare-the-drives-using-waimportexport-tool-and-generate-journal-files"></a>1. lépés: Készítse elő a meghajtó/s WAImportExport eszközzel, és napló fájl/s készítése.
 
-1.  Az adatok Azure Storage importálható azonosításához. Ennek oka lehet egy helyi kiszolgálón vagy egy hálózati megosztásra önálló fájlok és könyvtárak.
+1.  Az adatok Azure Storage importálható azonosításához. Importálhatja a helyi kiszolgálón vagy egy hálózati megosztásra önálló fájlok és könyvtárak.
 2.  Attól függően, hogy az adatok teljes mérete be kell szereznie a szükséges számú 2,5 hüvelyk SSD vagy 2,5" vagy 3.5-ös" SATA II vagy III merevlemez-meghajtókat.
 3.  Csatlakoztassa közvetlenül használatával SATA merevlemez-meghajtók vagy külső USB-adapterek egy windows-számítógépre.
-4.  Hozzon létre egy NTFS-kötet minden merevlemez-meghajtón, és rendeljen meghajtóbetűjelet a köteten. Nincs csatlakozási pontok le.
-5.  A windows-gépen titkosítás engedélyezéséhez bit tároló titkosítási az NTFS-köteten. Kövesse az utasításokat a https://technet.microsoft.com/en-us/library/cc731549(v=ws.10).aspx.
-6.  Másolás & Beillesztés húzza & dobja el vagy Robocopy, illetve bármely ilyen eszköz lemezeken ezen titkosított egyetlen kötetek adatok másolása teljesen.
+1.  Hozzon létre egy NTFS-kötet minden merevlemez-meghajtón, és rendeljen meghajtóbetűjelet a köteten. Nincs csatlakozási pontok le.
+2.  A windows-gépen titkosítás engedélyezéséhez bit tároló titkosítási az NTFS-köteten. Kövesse az utasításokat a https://technet.microsoft.com/en-us/library/cc731549(v=ws.10).aspx.
+3.  Másolás & Beillesztés húzza & dobja el vagy Robocopy, illetve bármely ilyen eszköz lemezeken ezen titkosított egyetlen kötetek adatok másolása teljesen.
 7.  WAImportExport V1 letöltését https://www.microsoft.com/en-us/download/details.aspx?id=42659
 8.  Csomagolja ki, hogy az alapértelmezett mappa waimportexportv1. Például C:\WaImportExportV1  
 9.  Futtatás rendszergazdaként, és nyissa meg a PowerShell vagy a parancssorból, és módosítsa a könyvtárat a tömörítetlen mappába. Például cd C:\WaImportExportV1
-10. Másolja a következő parancsot a Jegyzettömbbe, és szerkesztheti a parancssor létrehozásához.
-  ./WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session #1 /sk:***== /t:D /bk:*** /srcdir:D: \ /dstdir:ContainerName / /skipwrite
+10. Másolja a következő parancsot egy szövegszerkesztőben, és szerkesztheti a parancssor létrehozásához:
+
+    ```
+    ./WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#1 /sk:***== /t:D /bk:*** /srcdir:D:\ /dstdir:ContainerName/ 
+    ```
     
-    egy fájl neve /j: napló .jrn kiterjesztésű nevezik. A napló-fájl jön létre minden meghajtó, és ezért javasoljuk, hogy a lemez sorozatszám használata a napló fájlnév.
-    /SK: az azure Storage-fiók kulcsát. / t: a szállítási lemez meghajtóbetűjelet. Például D /bk: az a meghajtó /srcdir bit tároló kulcsa: a lemez szállítási meghajtóbetűjelet követ: \. Például D:\
-    /dstdir: a neve, amelyre az adatokat importálni az Azure-tárolót.
-    /skipwrite 
-    
-11. Az egyes szállítási lemezt ismételje meg a 10.
-12. A parancssor minden Futtatás /j: paraméterrel megadott nevű napló fájl jön létre.
+    A következő táblázat ismerteti a parancssori kapcsolókról:
+
+    |Beállítás  |Leírás  |
+    |---------|---------|
+    |/j:     |A napló kiterjesztésű, a .jrn neve. A napló fájl meghajtónkénti jön létre. A lemez sorozatszám napló fájlneve használata javasolt.         |
+    |/sk:     |Az Azure-Tárfiók kulcsának.         |
+    |/t:     |A meghajtó betűjelével szállítani a lemezen. Például meghajtó `D`.         |
+    |/bk:     |A BitLocker kulcs a meghajtón.         |
+    |/srcdir:     |A meghajtóbetűjelet, a lemez szállítási követ `:\`. Például: `D:\`.         |
+    |/dstdir:     |Az Azure Storage a cél-tároló neve         |
+
+1. Az egyes szállítási lemezt ismételje meg a 10.
+2. A parancssor minden Futtatás /j: paraméterrel megadott nevű napló fájl jön létre.
 
 ### <a name="step-2-create-an-import-job-on-azure-portal"></a>2. lépés: Az importálási feladat létrehozása Azure-portál.
 
@@ -88,6 +91,11 @@ Ebben a szakaszban látható a szolgáltatás használatához szükséges előfe
 
 ### <a name="storage-account"></a>Tárfiók
 Meglévő Azure-előfizetés és az Import/Export szolgáltatás használata egy vagy több storage-fiókokat kell rendelkeznie. Az Azure Import/Export csak klasszikus, a Blob Storage-fiókok és a általános célú v1 tárfiókok támogatja. Minden feladat adatátvitel vagy a csak egy tárfiókot is használható. Más szóval egy egyetlen importálási/exportálási feladatok nem terjedhetnek ki több tárfiókok között. Új tárfiók létrehozásával kapcsolatos további információkért lásd: [a Storage-fiók létrehozása](storage-create-storage-account.md#create-a-storage-account).
+
+> [!IMPORTANT] 
+> Az Azure importálási exportálása szolgáltatás nem támogatja a storage-fiókok ahol a [virtuális hálózati Szolgáltatásvégpontok](../../virtual-network/virtual-network-service-endpoints-overview.md) szolgáltatás engedélyezve van. 
+> 
+> 
 
 ### <a name="data-types"></a>Adattípusok
 Azure Import/Export szolgáltatás segítségével az adatok másolása **blokk** blobokat, **lap** blobot, vagy **fájlok**. Viszont csak akkor exportálható **blokk** blobokat, **lap** blobok vagy **Append** BLOB az Azure storage-ban Ez a szolgáltatás. A szolgáltatás támogatja az Azure storage Azure fájlok csak importálása. Azure-fájlok exportálása jelenleg nem támogatott.

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 01/26/2018
 ms.author: tdykstra
-ms.openlocfilehash: e1d623c831a912598db72ccd0242cf827c88ee6c
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 2a6fe85c2c3d6d4f44dc197db6c28ebbc2b1d431
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="event-grid-trigger-for-azure-functions"></a>Az Azure Functions rács eseményindító
 
@@ -148,7 +148,7 @@ Az alábbi táblázat ismerteti a beállított kötés konfigurációs tulajdons
 
 |Function.JSON tulajdonság |Leírás|
 |---------|---------|----------------------|
-| **típusa** | Szükséges – kell állítani `eventGridTrigger`. |
+| **Típusa** | Szükséges – kell állítani `eventGridTrigger`. |
 | **direction** | Szükséges – kell állítani `in`. |
 | **name** | Kötelező – a változó nevét, amely megkapja a eseményadatok paramétereként függvény a kódban használt. |
 
@@ -318,7 +318,7 @@ Használjon például egy eszköz [Postman](https://www.getpostman.com/) vagy [c
 http://localhost:7071/admin/extensions/EventGridExtensionConfig?functionName={methodname}
 ``` 
 
-A `functionName` paraméternek kell lennie a metódus nevét, a név nem szerepel a `FunctionName` attribútum. Ezért ha több funkciók projektben van szükségük egyedi metódus neve lehet (összes elnevezett `Run`) helyi tesztelése az esemény rács eseményindítók.
+A `functionName` paraméternek kell lennie a megadott név a `FunctionName` attribútum.
 
 Az alábbi képek a fejléc megjelenítése, és a kérelem törzse a Postman:
 
@@ -379,7 +379,7 @@ A vizsgálni kívánt típusú esemény rács előfizetéssel, hozzon létre, é
 https://{subdomain}.ngrok.io/admin/extensions/EventGridExtensionConfig?functionName={methodname}
 ``` 
 
-A `functionName` paraméternek kell lennie a metódus nevét, a név nem szerepel a `FunctionName` attribútum. Ezért ha több funkciók projektben van szükségük egyedi metódus neve lehet (összes elnevezett `Run`) helyi tesztelése az esemény rács eseményindítók.
+A `functionName` paraméternek kell lennie a megadott név a `FunctionName` attribútum.
 
 Íme egy példa az Azure parancssori felület használatával:
 

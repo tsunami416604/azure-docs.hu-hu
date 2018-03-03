@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 02/12/2018
 ms.author: glenga
-ms.openlocfilehash: e44261e8ee62ce6a91110da0ec0bc489c426f688
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 6ef2719a100ff65d69caa8d05ccfee23851adbcb
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions"></a>Az Azure Functions az Azure Blob storage kötések
 
@@ -32,7 +32,7 @@ Ez a cikk ismerteti az Azure Functions kötések Azure Blob storage használata.
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
 > [!NOTE]
-> [Csak a BLOB storage-fiókok](../storage/common/storage-create-storage-account.md#blob-storage-accounts) nem támogatottak. A BLOB storage eseményindítók és kötések általános célú tárfiók szükséges. 
+> [Csak a BLOB storage-fiókok](../storage/common/storage-create-storage-account.md#blob-storage-accounts) blob eseményindítók nem támogatottak. A BLOB storage eseményindítók általános célú tárfiók szükséges. A bemeneti és kimeneti kötések csak a blob storage-fiókok is használhatja.
 
 ## <a name="trigger"></a>Eseményindító
 

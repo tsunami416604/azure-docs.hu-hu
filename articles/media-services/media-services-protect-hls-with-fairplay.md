@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/09/2017
 ms.author: juliako
-ms.openlocfilehash: 2ab743cadf91be05e1d2b2edf3143d8c14ae2bdb
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 91f117c3b1b166a069b93c238380140f19e49280
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="protect-your-hls-content-with-apple-fairplay-or-microsoft-playready"></a>A tartalom Apple FairPlay vagy a Microsoft PlayReady HLS védelme
 Az Azure Media Services lehetővé teszi, hogy dinamikusan titkosítani a HTTP-Live Streaming (HLS) a következő formátum használatával:  
@@ -81,7 +81,7 @@ A következő műveleteket kell beállítania a FPS ügyféloldali:
 FairPlay titkosított adatfolyam lejátszását, első lekérni egy valódi kérje meg, és majd a valódi tanúsítvány jön létre. A folyamat minden három részből hoz létre:
 
   * .der fájl
-  * .pfx-fájlt
+  * .pfx file
   * a .pfx jelszavát
 
 A következő ügyfelek támogatják a HLS **AES-128 CBC** titkosítási: OS X, az Apple TV IOS Safari böngésző.
@@ -89,8 +89,8 @@ A következő ügyfelek támogatják a HLS **AES-128 CBC** titkosítási: OS X, 
 ## <a name="configure-fairplay-dynamic-encryption-and-license-delivery-services"></a>FairPlay dinamikus titkosítás és licenc licenctovábbítási szolgáltatások konfigurálása
 Az alábbi lépések általános FairPlay a eszközök védelmére, a Media Services licenctovábbítási szolgáltatása segítségével, valamint a dinamikus titkosítás használatával.
 
-1. Hozzon létre egy eszközt, és a fájlok feltöltése az objektumba.
-2. Az adaptív sávszélességű MP4 típusú beállításkészlettel fájlt tartalmazó objektum kódolása.
+1. Hozzon létre egy objektumot, és töltse fel bele a fájlokat.
+2. Kódolja a fájlt tartalmazó objektumot az adaptív sávszélességű MP4 típusú beállításkészlettel.
 3. Hozzon létre egy tartalomkulcsot, és társítsa a kódolt objektumhoz.  
 4. Konfigurálja a tartalomkulcs hitelesítési szabályzatát. Adja meg az alábbiakat:
 
@@ -116,7 +116,7 @@ Az alábbi lépések általános FairPlay a eszközök védelmére, a Media Serv
      > * Egy másik IAssetDeliveryPolicy HLS FairPlay konfigurálása
      >
      >
-6. Hozzon létre egy OnDemand-lokátort a streamelési URL-cím beszerzése.
+6. Hozzon létre egy OnDemand-lokátort a streamelési URL-cím lekéréséhez.
 
 ## <a name="use-fairplay-key-delivery-by-player-apps"></a>FairPlay kulcs kézbesítési player alkalmazások használatát
 Az IOS SDK player alkalmazásokat fejleszthet. Nem fogja tudni FairPlay tartalom lejátszása, be kell megvalósítani a licenc exchange protokoll. Ez a protokoll Apple nincs megadva. Esetén a minden alkalmazás kulcs kézbesítési kérelem küldése. A Media Services FairPlay kulcs kézbesítési szolgáltatás vár a SPC lesz üzenetként www-form-url kódolt feladás egy vagy több, a következő formában:
@@ -128,7 +128,7 @@ Az IOS SDK player alkalmazásokat fejleszthet. Nem fogja tudni FairPlay tartalom
 >
 >
 
-## <a name="streaming-urls"></a>Adatfolyam-továbbítási URL-címek
+## <a name="streaming-urls"></a>Streamelési URL-ek
 Ha az objektum egynél több DRM lett titkosítva, egy titkosítási címke használjon az adatfolyam-továbbítási URL-cím: (formátum = "m3u8-aapl" titkosítási = "xxx").
 
 A következők érvényesek:
@@ -146,8 +146,10 @@ A következők érvényesek:
 1. Állítsa be a fejlesztési környezetet, és töltse fel az app.config fájlt a kapcsolatadatokkal a [.NET-keretrendszerrel történő Media Services-fejlesztést](media-services-dotnet-how-to-use.md) ismertető dokumentumban leírtak szerint. 
 2. Adja hozzá a következő elemeket az app.config fájlban megadott **appSettings** szakaszhoz:
 
-        <add key="Issuer" value="http://testacs.com"/>
-        <add key="Audience" value="urn:test"/>
+    ```xml
+            <add key="Issuer" value="http://testacs.com"/>
+            <add key="Audience" value="urn:test"/>
+    ```
 
 ## <a name="example"></a>Példa
 
@@ -156,11 +158,11 @@ A következő példa bemutatja teszi a Media Services használatát a FairPlay t
 Írja felül a Program.cs fájlban található kódot az itt látható kóddal.
 
 >[!NOTE]
->A különböző AMS-szabályzatok (például a Locator vagy a ContentKeyAuthorizationPolicy) esetében a korlát 1 000 000 szabályzat. Ha mindig ugyanazokat a napokat/hozzáférési engedélyeket használja (például olyan keresők szabályzatait, amelyek hosszú ideig érvényben maradnak, vagyis nem feltöltött szabályzatokat), a szabályzatazonosítónak is ugyanannak kell lennie. További információkért lásd: [ez](media-services-dotnet-manage-entities.md#limit-access-policies) cikk.
+>A különböző AMS-szabályzatok (például a Locator vagy a ContentKeyAuthorizationPolicy) esetében a korlát 1 000 000 szabályzat. Ha mindig ugyanazokat a napokat/hozzáférési engedélyeket használja (például olyan keresők szabályzatait, amelyek hosszú ideig érvényben maradnak, vagyis nem feltöltött szabályzatokat), a szabályzatazonosítónak is ugyanannak kell lennie. További információkért tekintse meg [ezt](media-services-dotnet-manage-entities.md#limit-access-policies) a cikket.
 
 Módosítsa úgy a változókat, hogy a bemeneti fájlok tárolásához Ön által használt mappákra mutassanak.
 
-```
+```csharp
 using System;
 using System.Collections.Generic;
 using System.Configuration;

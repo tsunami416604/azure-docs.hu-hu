@@ -1,5 +1,5 @@
 ---
-title: "Médiaadatfolyam-továbbítást az Azure Content Delivery Network keresztül optimalizálása"
+title: "Médiaadatfolyam-továbbítást keresztül Azure CDN optimalizálása"
 description: "Adatfolyam-továbbítási médiafájlok zökkenőmentes kézbesítésre optimalizálása"
 services: cdn
 documentationcenter: 
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2017
 ms.author: v-semcev
-ms.openlocfilehash: 02cd0fe30a2a14f42a16ed12f714d496bbb23b36
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3c42f54a99a85377ebe4df6959237f906d37591b
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/02/2018
 ---
-# <a name="media-streaming-optimization-via-the-azure-content-delivery-network"></a>Médiaadatfolyam-továbbítást az Azure Content Delivery Network keresztül optimalizálása 
+# <a name="media-streaming-optimization-via-azure-cdn"></a>Médiaadatfolyam-továbbítást keresztül Azure CDN optimalizálása 
  
 A nagy felbontású video egyre gyakoribbá válik az interneten, és a nagy fájlok kézbesítését nehézségek hoz létre. Az igény szerinti videó egyenletes lejátszható várt vagy a hálózatok és ügyfelek különböző video eszközök élő a világ számos országában dolgoznak. A médiaadatfolyam-továbbítást fájlok gyors és hatékony mechanizmus alapvető fontosságú élvezetesebbé és zökkenőmentes felhasználói élményt nyújtsanak.  
 
@@ -60,10 +60,10 @@ Ha az Azure Content Delivery Network Akamai azt észleli, hogy az eszköz egy ad
 A rövid negatív gyorsítótárazási idő az eredeti kiszervezési hasznos, sok felhasználó kérése egy kódrészletet, amely még nem létezik. Példa: Ha a csomagok nem érhetők el a forrásból, hogy a második élő adatfolyam. A gyorsítótárazási már intervallum segít kiszervezése a forrás érkező kéréseket, mert videotartalom általában nem módosította.
  
 
-|   | Általános webes kézbesítés | Általános médiaadatfolyam-továbbítást | Videotartalom médiaadatfolyam-továbbítást  
+|   | Általános webes kézbesítés | Általános médiastreaming | Videotartalom médiaadatfolyam-továbbítást  
 --- | --- | --- | ---
-Gyorsítótárazás: pozitív <br> 200-AS, 203, 300, HTTP <br> 301, 302, és 410 | 7 nap |365 nap | 365 nap   
-Gyorsítótárazás: negatív. <br> HTTP 204, 305, 404, <br> és 405 | None | 1 másodperc | 1 másodperc
+Gyorsítótárazás: pozitív <br> HTTP 200, 203, 300, <br> 301, 302, és 410 | 7 nap |365 nap | 365 nap   
+Gyorsítótárazás: negatív. <br> HTTP 204, 305, 404, <br> és 405 | Nincs | 1 másodperc | 1 másodperc
  
 ### <a name="deal-with-origin-failure"></a>Az eredeti hiba kezelésére  
 
@@ -81,7 +81,7 @@ Támogatott adatfolyam-továbbítási típusok | Fájlkiterjesztések
 --- | ---  
 Apple HLS | m3u8, m3u, m3ub, kulcsot ts, aac
 Az Adobe HDS | f4m, f4x, drmmeta, a rendszerindítás, f4f,<br>Seg-illetheti URL-cím szerkezete <br> (reguláris kifejezéssel egyező: ^(/.*)Seq(\d+)-Frag(\d+)
-KÖTŐJEL | mpd, kötőjelet, divx, ismv, m4s, m4v, mp4, mp4v, <br> sidx, webm, mp4a, m4a, isma
+DASH | mpd, kötőjelet, divx, ismv, m4s, m4v, mp4, mp4v, <br> sidx, webm, mp4a, m4a, isma
 Smooth streaming | / jegyzékfájl /, töredék/QualityLevels / /
   
 

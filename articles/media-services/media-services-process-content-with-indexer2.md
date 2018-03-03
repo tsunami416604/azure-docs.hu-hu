@@ -13,11 +13,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 12/09/2017
 ms.author: adsolank;juliako;
-ms.openlocfilehash: 075daadae42340dfc9c7510a8010e337210e6e01
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: c78a4d2d3a1b0f84d488e7358c875c9708ac6107
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="indexing-media-files-with-azure-media-indexer-2-preview"></a>Az Azure Media Indexer 2 előzetes verziójú médiafájlok indexelő
 ## <a name="overview"></a>Áttekintés
@@ -45,7 +45,7 @@ Hang- vagy fájlok
 ### <a name="output-files"></a>Kimeneti fájlok
 Az indexelő feladat feliratfájlokat fájlok hozhat létre a következő formátumban:  
 
-* **SZÁMI**
+* **SAMI**
 * **TTML**
 * **WebVTT**
 
@@ -56,6 +56,7 @@ A feladat létrehozása az indexelő **Azure Media Indexer 2 Preview**, meg kell
 
 A következő JSON azokat a rendelkezésre álló paramétereket állítja be.
 
+```json
     {
       "version":"1.0",
       "Features":
@@ -69,6 +70,7 @@ A következő JSON azokat a rendelkezésre álló paramétereket állítja be.
            "Type":"SpReco"
         }]
     }
+```
 
 ## <a name="supported-languages"></a>Támogatott nyelvek
 Az Azure Media Indexer 2 Preview beszéd-szöveg (megadásakor a nyelv nevének a feladat konfigurációja, a szögletes zárójelbe használata 4 karakterből álló kódot alább látható módon) a következő nyelveket támogatja:
@@ -96,20 +98,23 @@ A következő program bemutatja hogyan:
 
 1. Hozzon létre egy eszközt, és adathordozó-fájl feltöltése az objektumba.
 2. Hozzon létre egy feladatot az indexelési feladat a következő json-készletet tartalmazó konfigurációs fájl alapján:
-   
-        {
-          "version":"1.0",
-          "Features":
-            [
-               {
-               "Options": {
-                    "Formats":["WebVtt","ttml"],
-                    "Language":"enUs",
-                    "Type":"RecoOptions"
-               },
-               "Type":"SpReco"
-            }]
-        }
+
+    ```json
+            {
+            "version":"1.0",
+            "Features":
+                [
+                {
+                "Options": {
+                        "Formats":["WebVtt","ttml"],
+                        "Language":"enUs",
+                        "Type":"RecoOptions"
+                },
+                "Type":"SpReco"
+                }]
+            }
+    ```
+    
 3. A kimeneti fájlok letöltéséhez. 
    
 #### <a name="create-and-configure-a-visual-studio-project"></a>Egy Visual Studio-projekt létrehozása és konfigurálása
@@ -118,7 +123,7 @@ A következő program bemutatja hogyan:
 
 #### <a name="example"></a>Példa
 
-```
+```csharp
 using System;
 using System.Configuration;
 using System.IO;

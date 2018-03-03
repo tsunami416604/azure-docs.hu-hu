@@ -1,5 +1,5 @@
 ---
-title: "Az Azure Content Delivery Network keresztül nagy méretű fájlok letöltési optimalizálása"
+title: "Nagy méretű fájlok letöltési optimalizálási Azure CDN használatával"
 description: "Nagy fájlok letöltése, tekintse meg a mélység optimalizálása"
 services: cdn
 documentationcenter: 
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2017
 ms.author: v-semcev
-ms.openlocfilehash: 7a5d5d1d0de24ebb0a5115ede1e572f38454bd78
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6e6266fdaaac6a1a1a5d3a5595c10f79fd9f01a7
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/02/2018
 ---
-# <a name="large-file-download-optimization-via-the-azure-content-delivery-network"></a>Az Azure Content Delivery Network keresztül nagy méretű fájlok letöltési optimalizálása
+# <a name="large-file-download-optimization-via-azure-cdn"></a>Nagy méretű fájlok letöltési optimalizálási Azure CDN használatával
 
 Az interneten keresztül kézbesíteni tartalom méretének egyre nő, fejlettebb funkciókat, továbbfejlesztett grafikus és multimédiás tartalom miatt. A növekedési célja a számos tényező közé tartoznak: szélessávú behatolást vagy a biztonság, a nagyobb alacsony költségű tárolóeszközök, a széles körű nő az nagy felbontású videók és internetkapcsolattal rendelkező eszközök (IoT). A nagy fájlok gyors és hatékony mechanizmus alapvető fontosságú élvezetesebbé és zökkenőmentes felhasználói élményt nyújtsanak.
 
@@ -67,9 +67,9 @@ A gyorsítótárazza a CDN bármely adattömböket, érkezett. A teljes fájl gy
 Nagy méretű fájlok optimalizálási más alapértelmezett gyorsítótár lejárati idővel az általános webes kézbesítési használja. Pozitív és negatív gyorsítótárazást a HTTP válaszkódot alapján közötti különbséget tesz. Ha a forráskiszolgáló keresztül a cache-control lejárati időt határozza meg, vagy egy fejléc a következő a válasz lejár, a a CDN eleget tegyen ezt az értéket. Ha a forrás nem ad meg, és a fájl megfelel a optimalizálási típus típusú és bármekkora méretű feltételeinek, a CDN nagy méretű fájlok optimalizálási az alapértelmezett értékeket használ. A CDN egyébként általános webes kézbesítésre használja az alapértelmezett értékeket.
 
 
-|    | Általános webes | Nagy méretű fájlok optimalizálása 
+|    | Általános webes | Nagyméretű fájlok optimalizálása 
 --- | --- | --- 
-Gyorsítótárazás: pozitív <br> 200-AS, 203, 300, HTTP <br> 301, 302, és 410 | 7 nap |1 nap  
+Gyorsítótárazás: pozitív <br> HTTP 200, 203, 300, <br> 301, 302, és 410 | 7 nap |1 nap  
 Gyorsítótárazás: negatív. <br> HTTP 204, 305, 404, <br> és 405 | None | 1 másodperc 
 
 ### <a name="deal-with-origin-failure"></a>Az eredeti hiba kezelésére
@@ -82,7 +82,7 @@ Ha a kapcsolat időtúllépés miatt megszakadt, a CDN újrapróbálja többszö
 
 Az alábbi táblázat a nagy méretű fájlok optimalizálási teljesítését feltételek csoportja:
 
-Az állapot | Értékek 
+Feltétel | Értékek 
 --- | --- 
 Támogatott fájltípusok | 3g, 2, 3gp, az ASP, avi, bz2, dmg, exe, f4v, flv, <br> GZ, hdp, iso, jxr, m4v, mkv, mov, mp4, <br> MPEG, mpg, mts, pkg, qt, erőforrás-kezelő, swf, bont, <br> TGZ, wdp, webm, webp, wma, wmv, zip  
 Minimális mérete | 10 MB 

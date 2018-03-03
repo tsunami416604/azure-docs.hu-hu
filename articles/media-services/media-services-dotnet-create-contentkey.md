@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: juliako
-ms.openlocfilehash: 3280a6fcde59bae360da7cb9fea4bb649f984e43
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 8700370dfb577cca95327caa923e2ef893165735
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="create-contentkeys-with-net"></a>A .NET ContentKeys létrehozása
 > [!div class="op_single_selector"]
@@ -43,6 +43,7 @@ Titkosított eszközöknek kell társítani **ContentKey**s. A cikkből megtudha
 ## <a name="contentkeytype"></a>ContentKeyType
 A tartalom létrehozása a értékeket, hogy kell-e állítva mikor kulcsa a tartalom írja be. A következő értékek közül választhat. 
 
+```csharp
     public enum ContentKeyType
     {
         /// <summary>
@@ -66,10 +67,12 @@ A tartalom létrehozása a értékeket, hogy kell-e állítva mikor kulcsa a tar
         /// </summary>
         EnvelopeEncryption = 4
     }
+```
 
 ## <a id="envelope_contentkey"></a>Boríték típus ContentKey létrehozása
 A következő kódrészletet hoz létre egy tartalomkulcsot a boríték titkosítási típus. Ezután a kulcs társít a megadott eszköz.
 
+```csharp
     static public IContentKey CreateEnvelopeTypeContentKey(IAsset asset)
     {
         // Create envelope encryption content key
@@ -98,15 +101,16 @@ A következő kódrészletet hoz létre egy tartalomkulcsot a boríték titkosí
         return randomBytes;
     }
 
-Hívás
+call
 
     IContentKey key = CreateEnvelopeTypeContentKey(encryptedsset);
-
+```
 
 
 ## <a id="common_contentkey"></a>Általános típus ContentKey létrehozása
 A következő kódrészletet hoz létre egy tartalomkulcsot a közös titkosítási típus. Ezután a kulcs társít a megadott eszköz.
 
+```csharp
     static public IContentKey CreateCommonTypeContentKey(IAsset asset)
     {
         // Create common encryption content key
@@ -137,10 +141,10 @@ A következő kódrészletet hoz létre egy tartalomkulcsot a közös titkosít�
 
         return returnValue;
     }
-Hívás
+call
 
     IContentKey key = CreateCommonTypeContentKey(encryptedsset); 
-
+```
 
 ## <a name="media-services-learning-paths"></a>Media Services képzési tervek
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]

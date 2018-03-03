@@ -3,7 +3,7 @@ title: "Az Azure Active Directory B2B együttműködés SaaS-alkalmazások konfi
 description: "Azure Active Directory B2B együttműködés kód és a PowerShell-példák"
 services: active-directory
 documentationcenter: 
-author: sasubram
+author: twooley
 manager: mtillman
 editor: 
 tags: 
@@ -14,12 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
 ms.date: 05/23/2017
-ms.author: sasubram
-ms.openlocfilehash: dc0bb3950f30b2ea676de406538e3a463ad21429
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: twooley
+ms.reviewer: sasubram
+ms.openlocfilehash: e2206ca8ddee867b9ea48911f70793010989ad69
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="configure-saas-apps-for-b2b-collaboration"></a>B2B együttműködés SaaS-alkalmazások konfigurálása
 
@@ -100,7 +101,7 @@ Engedélyezheti a felhasználók számára a vendégfelhasználók mezőben az A
 
 Például a Dropbox a meghívott személyeknek a mezőben a meghívott személyeknek a meghívó a Box alkalmazásához a kell beváltani.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure AD B2B együttműködés, tekintse meg a következő cikkeket:
 

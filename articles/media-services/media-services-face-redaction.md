@@ -13,11 +13,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 12/09/2017
 ms.author: juliako;
-ms.openlocfilehash: 2e936379968f74eb8bea420916acea2b8d96bb24
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 73d2f7135e85b829b1ecbd9eb0264024df36244a
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="redact-faces-with-azure-media-analytics"></a>Az Azure Media Analytics lapok kivonása
 ## <a name="overview"></a>Áttekintés
@@ -52,11 +52,12 @@ A **elemzése** fázis a két-fázis munkafolyamat videó bemenetből fogad adat
 | --- | --- | --- |
 | Bemeneti eszköz |foo.bar |Videó WMV, MPV vagy MP4 formátumban |
 | Bemeneti config |Konfigurációs feladat az adott néven beállítás |{"version": "1.0', a"beállítások": {"mode":"elemezni"}} |
-| Kimeneti eszköz |foo_annotations.JSON |A jegyzet adatok arcfelismerési helyek JSON formátumban. Ez a felhasználó módosítása a mezőkbe határolókeret fellazítja szerkeszthető. Lásd az alábbi minta. |
+| Kimeneti eszköz |foo_annotations.json |A jegyzet adatok arcfelismerési helyek JSON formátumban. Ez a felhasználó módosítása a mezőkbe határolókeret fellazítja szerkeszthető. Lásd az alábbi minta. |
 | Kimeneti eszköz |foo_thumb%06d.jpg [foo_thumb000001.jpg, foo_thumb000002.jpg] |Az egyes levágott jpg arc, ahol a számot jelzi a felületen címkeazonosító észlelt |
 
 #### <a name="output-example"></a>Példa a kimenetre:
 
+```json
     {
       "version": 1,
       "timescale": 24000,
@@ -103,6 +104,7 @@ A **elemzése** fázis a két-fázis munkafolyamat videó bemenetből fogad adat
             ],
 
     … truncated
+```
 
 ### <a name="redact-mode"></a>Mód kivonása
 A második fázis a munkafolyamat bemenetei, egyetlen eszköz kombinálni kell nagyobb számú vesz igénybe.
@@ -114,7 +116,7 @@ Az elemzési fázis kimenete nem tartalmazza az eredeti videó. A videó kell a 
 | Fázis | Fájlnév | Megjegyzések |
 | --- | --- | --- |
 | Bemeneti eszköz |foo.bar |Videó WMV, MPV vagy MP4 formátumban. Ugyanaz, mint 1. lépés videó. |
-| Bemeneti eszköz |foo_annotations.JSON |első lépése, opcionális módosításokkal jegyzetek metaadatfájl. |
+| Bemeneti eszköz |foo_annotations.json |első lépése, opcionális módosításokkal jegyzetek metaadatfájl. |
 | Bemeneti eszköz |foo_IDList.txt (nem kötelező) |Választható új sor tagolt arcfelismerési kivonás azonosítók listája. Ha üresen hagyja a mezőt, ez minden életleníti. |
 | Bemeneti config |Konfigurációs feladat az adott néven beállítás |{"version": "1.0', a"beállítások": {"mode":"Kihagyás"}} |
 | Kimeneti eszköz |foo_redacted.mp4 |Videó fellazítja alkalmazott jegyzetek alapján |
@@ -138,7 +140,9 @@ A életlenítés típusú mintában találja.
 
 ### <a name="example-json"></a>JSON-NÁ. példa:
 
+```json
     {'version':'1.0', 'options': {'Mode': 'Combined', 'BlurType': 'High'}}
+```
 
 #### <a name="low"></a>Alacsony
 
@@ -172,8 +176,16 @@ A következő program bemutatja hogyan:
 
 1. Hozzon létre egy eszközt, és adathordozó-fájl feltöltése az objektumba.
 2. Hozzon létre egy feladatot a tapasztalt kivonási tevékenységek, a következő json-készletet tartalmazó konfigurációs fájl alapján: 
-   
-        {'version':'1.0', 'options': {'mode':'combined'}}
+
+    ```json
+            {
+                'version':'1.0',
+                'options': {
+                    'mode':'combined'
+                }
+            }
+    ```
+
 3. A kimeneti JSON-fájlok letöltésére. 
 
 #### <a name="create-and-configure-a-visual-studio-project"></a>Egy Visual Studio-projekt létrehozása és konfigurálása
@@ -182,7 +194,7 @@ A következő program bemutatja hogyan:
 
 #### <a name="example"></a>Példa
 
-```
+```csharp
 using System;
 using System.Configuration;
 using System.IO;
@@ -350,7 +362,7 @@ namespace FaceRedaction
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 

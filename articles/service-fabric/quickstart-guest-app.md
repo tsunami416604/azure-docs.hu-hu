@@ -9,16 +9,16 @@ editor:
 ms.assetid: 
 ms.service: service-fabric
 ms.devlang: dotNet
-ms.topic: hero-article
+ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/06/2017
 ms.author: adegeo
-ms.openlocfilehash: 304d22c14f6877138213db14333773f1e293c57a
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
-ms.translationtype: HT
+ms.openlocfilehash: 1130ce3231b9e96a03d3e8dc5f75721dd0415928
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="host-a-nodejs-application-on-azure-service-fabric"></a>Node.js-alkalmazás üzemeltetése az Azure Service Fabricban
 
@@ -135,7 +135,7 @@ Keresse meg ezt a címet, ahol láthatja a `HELLO WORLD` választ.
 
 Ne felejtse el törölni az összes erőforrást, amelyet létrehozott ebben az útmutatóban, mert ezek fizetősek.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információk a [futtatható vendégalkalmazásokról](service-fabric-deploy-existing-app.md).
 
 <!-- Image References -->

@@ -3,7 +3,7 @@ title: "Figyelheti és folyamatok kezelése az Azure portál és a PowerShell ha
 description: "Útmutató az Azure portál és az Azure PowerShell használatával az Azure adat-előállítók és a folyamatok létrehozott felügyeletét és kezelését."
 services: data-factory
 documentationcenter: 
-author: spelluru
+author: sharonlo101
 manager: jhubbard
 editor: monicar
 ms.assetid: 9b0fdc59-5bbe-44d1-9ebc-8be14d44def9
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/10/2018
-ms.author: spelluru
+ms.author: shlo
 robots: noindex
-ms.openlocfilehash: d9e7b1d020a99e939ea01c43c7e5e935188b212e
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: b361ca67ebece9ba1ced1010835eb90586dd7359
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-azure-portal-and-powershell"></a>Figyelheti és kezelheti az Azure Data Factory-folyamatok az Azure portál és a PowerShell használatával
 > [!div class="op_single_selector"]
@@ -55,7 +55,7 @@ Ez a szakasz azt is ismerteti, hogyan dataset szelet átkerül egy állapotból 
 
    A data factory kezdőlapjának kell megjelennie.
 
-   ![Data factory panel](./media/data-factory-monitor-manage-pipelines/data-factory-blade.png)
+   ![Adat-előállító panel](./media/data-factory-monitor-manage-pipelines/data-factory-blade.png)
 
 #### <a name="diagram-view-of-your-data-factory"></a>A data factory a diagram nézet
 A **Diagram** egy adat-előállító nézete egytáblás üveg felügyeletéhez és a data factory és az eszközök kezeléséhez. Megtekintéséhez a **Diagram** , a data factory megtekintéséhez kattintson az **Diagram** a kezdőlapon az adat-előállítóban.
@@ -120,7 +120,7 @@ A dataset szeletek adat-előállító a következő állapotok egyike lehet:
 <td>A szelet feldolgozása folyamatban van.</td>
 </tr>
 <tr>
-<td rowspan="4">Sikertelen</td><td>Időtúllépésbe került</td><td>A tevékenység végrehajtási tevékenység által megengedett érték időt vett igénybe.</td>
+<td rowspan="4">Meghiúsult</td><td>Időtúllépésbe került</td><td>A tevékenység végrehajtási tevékenység által megengedett érték időt vett igénybe.</td>
 </tr>
 <tr>
 <td>Törölve</td><td>A szelet felhasználói művelet megszakította.</td>
@@ -134,7 +134,7 @@ A dataset szeletek adat-előállító a következő állapotok egyike lehet:
 <td>Kész</td><td>-</td><td>A szelet készen áll a felhasználásra.</td>
 </tr>
 <tr>
-<td>Kihagyva</td><td>None</td><td>A szelet feldolgozása folyamatban nem.</td>
+<td>Kihagyva</td><td>Nincs</td><td>A szelet feldolgozása folyamatban nem.</td>
 </tr>
 <tr>
 <td>Nincs</td><td>-</td><td>A szelet használt létezett egy eltérő állapottal, de a rendszer visszaállította.</td>
@@ -368,7 +368,7 @@ A következő táblázat az elérhető műveletek és állapotok (és részálla
 
 | Művelet neve | status | A részállapot |
 | --- | --- | --- |
-| RunStarted |Elindítva |Indulás alatt |
+| RunStarted |Elindítva |Indítás |
 | RunFinished |Nem sikerült / sikeres volt. |FailedResourceAllocation<br/><br/>Sikeres<br/><br/>FailedExecution<br/><br/>Időtúllépésbe került<br/><br/>< megszakítva<br/><br/>FailedValidation<br/><br/>Elhagyott |
 | OnDemandClusterCreateStarted |Elindítva | |
 | OnDemandClusterCreateSuccessful |Sikeres | |
@@ -624,7 +624,7 @@ Cserélje le *subscriptionId*, *resourceGroupName*, és *dataFactoryName* a mint
 * FailedRuns
 * SuccessfulRuns
 
-**A riasztás telepítése**
+A riasztás telepítése
 
 A riasztás telepítéséhez használja az Azure PowerShell-parancsmag **New-AzureRmResourceGroupDeployment**, a következő példában látható módon:
 

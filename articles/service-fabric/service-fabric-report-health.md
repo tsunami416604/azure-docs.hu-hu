@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/11/2017
+ms.date: 2/28/2018
 ms.author: oanapl
-ms.openlocfilehash: 88d80271e744d6f00afd1ff1c3df29180565b59e
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.openlocfilehash: 1cd429ed8252573f8e8c3ed11d6c841cba855b52
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="add-custom-service-fabric-health-reports"></a>Egyéni Service Fabric-állapotjelentések hozzáadása
 Az Azure Service Fabric vezet be a [állapotmodell](service-fabric-health-introduction.md) úgy tervezték, hogy sérült fürt és az alkalmazás feltételeket az adott entitások jelzőt. A health modellje **állapotfigyelő jelentéskészítők** (rendszer összetevőit és watchdogs). Könnyű és gyors diagnosztikai és javítási célja. Szolgáltatás írók szükség az társaságuk vonatkozó állapotát. Minden olyan esetben, kedvezőtlen hatással lehet az egészségügyi kell kiválasztását, különösen akkor, ha segíthet megközelíti a legfelső szintű jelző problémák. Az állapotadatok is mentheti időt és erőfeszítést Hibakeresés és a vizsgálat. Támogató különösen akkor törölje a jelet, ha a szolgáltatás megfelelően működik, és a felhőben léptékű (magán- vagy Azure).
@@ -214,7 +214,7 @@ public static void SendReport(object obj)
 ```
 
 ### <a name="powershell"></a>PowerShell
-A rendszerállapot-jelentések küldése  **küldési-ServiceFabric*EntityType*HealthReport **.
+A rendszerállapot-jelentések küldése **küldési-ServiceFabric*EntityType*HealthReport**.
 
 A következő példa bemutatja rendszeres jelentés készítését a csomópont CPU-értékek. A jelentések küldjön 30 másodpercenként, és egyszerre élettartama pedig két perc rendelkeznek. Járnak, ha a jelentéskészítő problematikus, hiba: a csomópont kiértékelése történik. Ha a CPU küszöbértéket, a jelentésben van figyelmeztetési állapotot. Ha a CPU-t továbbra is a küszöbérték fölött hibát jelentett több, mint a beállított időn. Ellenkező esetben a jelentéskészítő elküldi a állapota az OK gombra.
 

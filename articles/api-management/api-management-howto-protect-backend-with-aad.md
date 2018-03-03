@@ -13,36 +13,27 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2017
 ms.author: apimpm
-ms.openlocfilehash: b11d80d1837d6474c7ee88f173de43e00fbb6cd5
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
-ms.translationtype: HT
+ms.openlocfilehash: 2a5be24aba8a675290045b282cc64dda4b7c594e
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="how-to-protect-a-web-api-backend-with-azure-active-directory-and-api-management"></a>Hogyan védi meg a webes API háttéralkalmazás az Azure Active Directory és az API Management
-A következő videó bemutatja, hogyan egy webes API háttéralkalmazás létrehozásához, és a védelmét, és Azure Active Directory és az API Management OAuth 2.0 protokoll használatával.  Ez a cikk áttekintése és további információt a videó lépéseit tartalmazza. A 24 perces videó bemutatja, hogyan számára:
 
-* Hozza létre egy webes API háttéralkalmazás, és biztosíthatja az AAD - kezdő pozíció: 1:30-ben
-* Importálja az API-t az API Management - 7:10 kezdődő
-* A fejlesztői portálra, ahol az API - kezdő pozíció: 9:09 konfigurálása
-* Az API - 18:08 kezdve az asztali alkalmazások konfigurálása
-* Előre engedélyezze a kérelmek – 20:47 kezdődő JWT érvényesítési házirend konfigurálása
-
-> [!VIDEO https://channel9.msdn.com/Blogs/AzureApiMgmt/Protecting-Web-API-Backend-with-Azure-Active-Directory-and-API-Management/player]
-> 
-> 
+Ez a témakör bemutatja, hogyan állíthatja össze egy webes API háttéralkalmazás, és megvédi az OAuth 2.0 protokollt használó Azure Active Directory és az API Management.  
 
 ## <a name="create-an-azure-ad-directory"></a>Az Azure AD-címtár létrehozása
-A webes API háttéralkalmazás, Azure Active Directory használatával biztonságos először egy AAD-bérlőt kell rendelkeznie. Ez a videó egy bérlő nevű **APIMDemo** szolgál. Hozzon létre egy AAD-bérlőt, hogy jelentkezzen be a [klasszikus Azure portál](https://manage.windowsazure.com) kattintson **új**->**alkalmazásszolgáltatások**->**Active Directory**  -> **Directory**->**egyéni létrehozás**. 
+A webes API háttéralkalmazás, Azure Active Directory használatával biztonságos először egy AAD-bérlőt kell rendelkeznie. Hozzon létre egy AAD-bérlőt, hogy jelentkezzen be a [klasszikus Azure portál](https://manage.windowsazure.com) kattintson **új**->**alkalmazásszolgáltatások**->**Active Directory**  -> **Directory**->**egyéni létrehozás**. 
 
 ![Azure Active Directory][api-management-create-aad-menu]
 
-Ebben a példában szereplő könyvtár neve **APIMDemo** létrejön egy alapértelmezett tartomány nevű **DemoAPIM.onmicrosoft.com**. Ez a könyvtár használja a rendszer a videó keresztül.
+Ebben a példában szereplő könyvtár neve **APIMDemo** létrejön egy alapértelmezett tartomány nevű **DemoAPIM.onmicrosoft.com**. 
 
 ![Azure Active Directory][api-management-create-aad]
 
 ## <a name="create-a-web-api-service-secured-by-azure-active-directory"></a>Azure Active Directory által biztosított webes API szolgáltatás létrehozása
-Ebben a lépésben egy webes API háttéralkalmazás létrehozása a Visual Studio 2013. Ez a lépés a videó kezdődik, 1:30. Webes API háttéralkalmazás-projekt létrehozása a Visual Studio kattintson **fájl**->**új**->**projekt**, és válassza a **ASP.NET webalkalmazás Alkalmazás** a a **webes** sablonok listájának. Ez a videó a projekt neve **APIMAADDemo**. A projekt létrehozásához kattintson az **OK** gombra. 
+Ebben a lépésben egy webes API háttéralkalmazás létrehozása a Visual Studio 2013. Webes API háttéralkalmazás-projekt létrehozása a Visual Studio kattintson **fájl**->**új**->**projekt**, és válassza a **ASP.NET webalkalmazás Alkalmazás** a a **webes** sablonok listájának. 
 
 ![Visual Studio][api-management-new-web-app]
 
@@ -75,7 +66,6 @@ Ebben a példában egy új **App Service-csomag** nevű **APIMAADDemo** van mega
 Kattintson a **OK** a webalkalmazás konfigurálása és a projekt létrehozásához.
 
 ## <a name="add-the-code-to-the-web-api-project"></a>Adja hozzá a kódot a Web API-projekt
-A következő lépése a videó hozzáadja a kódot a Web API-projektet. Ez a lépés 4:35 kezdődik.
 
 Ebben a példában a webes API és a vezérlő alapvető Számológép szolgáltatás megvalósítja. A szolgáltatás a modell hozzáadásához kattintson a jobb gombbal **modellek** a **Solution Explorer** válassza **Hozzáadás**, **osztály**. Az osztály neve `CalcInput` kattintson **Hozzáadás**.
 
@@ -161,14 +151,13 @@ public class CalcController : ApiController
 Nyomja le az **F6** építsenek, és ellenőrizze a megoldást.
 
 ## <a name="publish-the-project-to-azure"></a>A projekt közzététele az Azure-ban
-Ebben a lépésben a Visual Studio projekt közzé van téve az Azure-bA. Ez a lépés a videó 5:45 kezdődik.
 
 A projekt közzététele az Azure-ba, kattintson a jobb gombbal a **APIMAADDemo** a Visual Studio projekt, és válassza a **közzététel**. Az alapértelmezett beállítások megtartásához a **webhely közzététele** párbeszédpanel megnyitásához, és kattintson **közzététel**.
 
 ![Webes közzététel][api-management-web-publish]
 
 ## <a name="grant-permissions-to-the-azure-ad-backend-service-application"></a>Engedélyezze, hogy az Azure AD szolgáltatás háttéralkalmazás
-Egy új alkalmazást a háttérszolgáltatáshoz jön létre az Azure AD-címtár a webes API-projekt konfigurálása és a közzétételi folyamat részeként. Ebben a lépésben a videó, 6:13, kezdve a webes API háttéralkalmazás megadott engedélyekkel.
+Egy új alkalmazást a háttérszolgáltatáshoz jön létre az Azure AD-címtár a webes API-projekt konfigurálása és a közzétételi folyamat részeként.
 
 ![Alkalmazás][api-management-aad-backend-app]
 
@@ -352,7 +341,7 @@ Hajtsa végre a következő lépésekkel állíthatja be a Számológép API.
 Az API importálása után megjelenik az API összefoglaló lapja a közzétevő portálon.
 
 ## <a name="call-the-api-unsuccessfully-from-the-developer-portal"></a>Sikertelenül hívja az API-t a fejlesztői portálján
-Ezen a ponton az API-t az API Management importálva van, de nem még hívható sikeresen a developer portálról, mert a háttérszolgáltatáshoz védi az Azure AD-alapú hitelesítés. Ezt a video-7:40 az alábbi lépéseket követve kezdődő mutatják.
+Ezen a ponton az API-t az API Management importálva van, de nem még hívható sikeresen a developer portálról, mert a háttérszolgáltatáshoz védi az Azure AD-alapú hitelesítés. 
 
 Kattintson a **fejlesztői portálján** a közzétevő portál jobb felső szélétől.
 
@@ -373,9 +362,9 @@ Kattintson a **küldése** meg és jegyezze fel a választ állapotának **401 n
 A kérelem nem engedélyezett, mert a háttér-API Azure Active Directory által védett. Az API-t a fejlesztői sikeresen hívása előtt portal engedélyezéséhez OAuth 2.0 használatával fejlesztők be kell állítani. Ez a folyamat az alábbi szakaszokban ismertetett.
 
 ## <a name="register-the-developer-portal-as-an-aad-application"></a>A fejlesztői portálján regisztrálható egy AAD-alkalmazást
-Az első lépés a fejlesztői portálján engedélyezéséhez OAuth 2.0 használatával fejlesztők konfigurálása, hogy regisztrálja a fejlesztői portálján egy AAD-alkalmazást. Ezt mutatják 8:27 videóban kezdve.
+Az első lépés a fejlesztői portálján engedélyezéséhez OAuth 2.0 használatával fejlesztők konfigurálása, hogy regisztrálja a fejlesztői portálján egy AAD-alkalmazást. 
 
-Ez a videó, ebben a példában az első lépés a keresse meg az Azure AD-bérlő **APIMDemo** , és keresse meg a **alkalmazások** fülre.
+Nyissa meg az Azure AD-bérlő. Ebben a példában válassza **APIMDemo** , és keresse meg a **alkalmazások** fülre.
 
 ![Új alkalmazás][api-management-aad-new-application-devportal]
 
@@ -394,7 +383,7 @@ A **azonosító URL-címet** adja meg az URL-címet a API Management szolgáltat
 ![Új alkalmazás][api-management-aad-new-application-devportal-2]
 
 ## <a name="configure-an-api-management-oauth-20-authorization-server"></a>Az API Management OAuth 2.0 hitelesítési kiszolgáló konfigurálása
-A következő lépés az OAuth 2.0 hitelesítési kiszolgáló konfigurálása az API Management. Ebben a lépésben bemutatott 9:43 kezdődik a videóban.
+A következő lépés az OAuth 2.0 hitelesítési kiszolgáló konfigurálása az API Management. 
 
 Kattintson a **biztonsági** kattintson a bal oldalon található API-kezelés menü, **OAuth 2.0**, és kattintson a **adja hozzá az engedélyezési** kiszolgáló.
 
@@ -466,7 +455,7 @@ Kattintson a **delegált engedélyek** a **APIMAADDemo** , és jelölje be a **h
 ![Engedélyek hozzáadása][api-management-aad-add-delegated-permissions]
 
 ## <a name="enable-oauth-20-user-authorization-for-the-calculator-api"></a>A Számológép API OAuth 2.0 felhasználó engedélyezése
-Most, hogy az OAuth 2.0-kiszolgáló van konfigurálva, megadhatja az API biztonsági beállításait. Ebben a lépésben bemutatott 14:30 kezdődik a videóban.
+Most, hogy az OAuth 2.0-kiszolgáló van konfigurálva, megadhatja az API biztonsági beállításait. 
 
 Kattintson a **API-k** a bal oldali menüben, majd kattintson a **Számológép** is megtekinthetik és konfigurálhatják a beállításai.
 
@@ -477,7 +466,7 @@ Keresse meg a **biztonsági** lapon jelölje a **OAuth 2.0** jelölőnégyzetet,
 ![A Számológép API][api-management-enable-aad-calculator]
 
 ## <a name="successfully-call-the-calculator-api-from-the-developer-portal"></a>Sikeresen meg tudja hívni a Számológép API a developer portálról
-Most, hogy az OAuth 2.0 hitelesítési az API konfigurálva van, a fejlesztői központból sikeresen hívható a műveleteket. Ebben a lépésben bemutatott a 15:00-tól kezdve a videó.
+Most, hogy az OAuth 2.0 hitelesítési az API konfigurálva van, a fejlesztői központból sikeresen hívható a műveleteket. 
 
 Lépjen vissza a **két egész számok hozzáadása** műveletet a fejlesztői portálján, majd kattintson a Számológép szolgáltatás **kipróbálás**. Jegyezze fel az új elem a **engedélyezési** szakasz megfelelő a hitelesítési kiszolgáló, az előzőekben adott hozzá.
 
@@ -492,10 +481,12 @@ Kattintson a **küldése** meg és jegyezze fel a **válaszállapot** a **200 OK
 ![A Számológép API][api-management-devportal-response]
 
 ## <a name="configure-a-desktop-application-to-call-the-api"></a>Az API hívása asztali alkalmazások konfigurálása
-A következő eljárással a videó 16:30 kezdődik, és konfigurálja a egyszerű asztali alkalmazást az API számára. Az első lépés az asztali alkalmazás regisztrálása az Azure ad-ben, és adjon neki hozzáférés a címtárhoz, és által a háttérszolgáltatáshoz. 18:25 nincs a művelet a Számológép API hívása az asztali alkalmazások bemutatója.
+
+Az API hívása egyszerű asztali alkalmazások konfigurálása. Az első lépés az asztali alkalmazás regisztrálása az Azure ad-ben, és adjon neki hozzáférés a címtárhoz, és által a háttérszolgáltatáshoz. 
 
 ## <a name="configure-a-jwt-validation-policy-to-pre-authorize-requests"></a>Előre a kérések hitelesítése JWT érvényesítési házirend konfigurálása
-Az utolsó eljárás videóban 20:48 kezdődik, és bemutatja, hogyan használható a [érvényesítése JWT](api-management-access-restriction-policies.md#ValidateJWT) előre engedélyezésére kérelmek érvényesítésével megjeleníthető az egyes bejövő kérelmek a hozzáférési jogkivonatok házirend. Ha a kérelem nem érvényesíti a JWT érvényesítése házirend, a kérelem API Management le van tiltva, és nem kerül át, mentén háttérkiszolgálóra.
+
+Használja a [érvényesítése JWT](api-management-access-restriction-policies.md#ValidateJWT) előre engedélyezésére kérelmek érvényesítésével megjeleníthető az egyes bejövő kérelmek a hozzáférési jogkivonatok házirend. Ha a kérelem nem érvényesíti a JWT érvényesítése házirend, a kérelem API Management le van tiltva, és nem kerül át, mentén háttérkiszolgálóra.
 
 ```xml
 <validate-jwt header-name="Authorization" failed-validation-httpcode="401" failed-validation-error-message="Unauthorized. Access token is missing or invalid.">
@@ -508,7 +499,7 @@ Az utolsó eljárás videóban 20:48 kezdődik, és bemutatja, hogyan használha
 </validate-jwt>
 ```
 
-Egy másik bemutató konfigurálása, és ez a házirend használatával, lásd: [felhő fedik le a epizód 177: több API-felügyeleti funkciókat](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) és előretekerés 13:50. Gyors továbbítsa 15:00, a házirendek a Helyicsoportházirend-szerkesztő konfigurált megjelenítéséhez, majd a művelet hívása a developer portálról, és a szükséges engedélyezési jogkivonat anélkül bemutatója 18:50.
+További információkért lásd: [felhő fedik le a epizód 177: több API Management szolgáltatást](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) és előretekerés 13:50. Gyors továbbítsa 15:00, a házirendek a Helyicsoportházirend-szerkesztő konfigurált megjelenítéséhez, majd a művelet hívása a developer portálról, és a szükséges engedélyezési jogkivonat anélkül bemutatója 18:50.
 
 ## <a name="next-steps"></a>További lépések
 * Tekintse meg több [videók](https://azure.microsoft.com/documentation/videos/index/?services=api-management) API-kezeléssel kapcsolatos.

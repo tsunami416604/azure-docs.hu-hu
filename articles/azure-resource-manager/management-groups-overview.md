@@ -10,17 +10,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 2/22/2018
+ms.date: 2/28/2018
 ms.author: rithorn
-ms.openlocfilehash: bc7d98851e8d84d7db8586138608220c838ca776
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 1264bf77b6d922f5beb22177d1ac63efa9386ef2
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>Az Azure felügyeleti csoportok-erőforrások rendszerezése 
 
-Ha több előfizetéssel rendelkezik, rendszerezheti őket a szállító "felügyeleti csoport" nevű hozzáférési házirend és megfelelőség kezeléséhez az előfizetések között. Ezek a tárolók biztosítanak vállalati szintű felügyeleti függetlenül attól, milyen típusú előfizetések lehetséges, hogy nagy léptékben.  
+Ha több előfizetéssel rendelkezik, rendszerezheti őket a szállító "felügyeleti csoport" nevű hozzáférési házirend és megfelelőség kezeléséhez az előfizetések között. Felügyeleti csoportjai vállalati szintű felügyeleti függetlenül attól, milyen típusú előfizetések lehetséges, hogy nagy léptékben.  
 
 A felügyeleti csoport funkciót egy nyilvános előzetes verziójában érhető el. Indíthatja a felügyeleti csoportok, jelentkezzen be a [Azure-portálon](https://portal.azure.com) keresse meg a **felügyeleti csoportok** a a **minden szolgáltatás** szakasz. 
 
@@ -70,7 +70,7 @@ Miközben bármely [beépített RBAC szerepkör](../active-directory/role-based-
 Felügyeleti csoportok kapcsolatos további információkért lásd: 
 - [Azure-erőforrások rendszerezéséhez felügyeleti csoportok létrehozása](management-groups-create.md)
 - [Módosítása, törlése és a felügyeleti csoportok kezelése](management-groups-manage.md)
-- [Az Azure Powershell modul telepítése](https://www.powershellgallery.com/packages/AzureRM.ManagementGroups/0.0.1-preview)
+- [Az Azure PowerShell modul telepítése](https://www.powershellgallery.com/packages/AzureRM.ManagementGroups/0.0.1-preview)
 - [Tekintse át a REST API-specifikáció](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/managementgroups/resource-manager/Microsoft.Management/preview/2018-01-01-preview)
 - [Az Azure CLI-bővítményének telepítése](https://docs.microsoft.com/en-us/cli/azure/extension?view=azure-cli-latest#az_extension_list_available)
 

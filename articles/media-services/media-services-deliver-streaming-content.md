@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/09/2017
 ms.author: juliako
-ms.openlocfilehash: 2bcb012eef84faa7c1e13ed22e88e45e4300ed54
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 979c88b72aba6e054bc507e22f48cae1441957cb
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="publish-azure-media-services-content-using-net"></a>Azure Media Services tartalmakat a .NET használatával közzététele
 > [!div class="op_single_selector"]
@@ -54,9 +54,10 @@ Az adatfolyam-továbbítási OnDemand-kereső létrehozása és URL-címek leké
 >[!NOTE]
 >A különböző AMS-szabályzatok (például a Locator vagy a ContentKeyAuthorizationPolicy) esetében a korlát 1 000 000 szabályzat. Az azonos házirend-azonosító akkor használja, ha mindig használja az ugyanazon nap / hozzáférési engedélyek. Például házirendek, amelyek célja, hogy továbbra is érvényben hosszú ideje (nem feltöltés házirendek) lokátorokat. További információ [ebben](media-services-dotnet-manage-entities.md#limit-access-policies) a témakörben érhető el.
 
-### <a name="use-media-services-net-sdk"></a>Használja a Media Services .NET SDK-val
+### <a name="use-media-services-net-sdk"></a>Use Media Services .NET SDK
 Adatfolyam-továbbítási URL-címek létrehozása 
 
+```csharp
     private static void BuildStreamingURLs(IAsset asset)
     {
 
@@ -93,6 +94,7 @@ Adatfolyam-továbbítási URL-címek létrehozása
         Console.WriteLine(urlForClientStreaming + "(format=mpd-time-csf)"); 
         Console.WriteLine();
     }
+```
 
 A kimenetek:
 
@@ -111,6 +113,7 @@ A kimenetek:
 
 Progresszív letöltési URL-címeket összeállítása 
 
+```csharp
     private static void BuildProgressiveDownloadURLs(IAsset asset)
     {
         // Create a 30-day readonly access policy. 
@@ -138,7 +141,7 @@ Progresszív letöltési URL-címeket összeállítása
         foreach (var pd in mp4AssetFiles)
             Console.WriteLine(originLocator.Path + pd.Name);
     }
-
+```
 A kimenetek:
 
     http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_650kbps_AAC_und_ch2_96kbps.mp4
@@ -150,7 +153,7 @@ A kimenetek:
 
 ### <a name="use-media-services-net-sdk-extensions"></a>Media Services .NET SDK-bővítmények használata
 Az alábbi kód olyan, egy kereső létrehozása, és amelyek adaptív streameléshez a Smooth Streaming, HLS, és MPEG-DASH URL-címek létrehozása .NET SDK bővítmények módszereket hív meg.
-
+```csharp
     // Create a loctor.
     _context.Locators.Create(
         LocatorType.OnDemandOrigin,
@@ -166,7 +169,7 @@ Az alábbi kód olyan, egy kereső létrehozása, és amelyek adaptív streamel�
     Console.WriteLine(smoothStreamingUri);
     Console.WriteLine(hlsUri);
     Console.WriteLine(mpegDashUri);
-
+```
 
 ## <a name="media-services-learning-paths"></a>Media Services képzési tervek
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]

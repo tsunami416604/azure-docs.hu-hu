@@ -3,7 +3,7 @@ title: "Az Azure Active Directory B2B együttműködés kód és a PowerShell-p�
 description: "Azure Active Directory B2B együttműködés kód és a PowerShell-példák"
 services: active-directory
 documentationcenter: 
-author: sasubram
+author: twooley
 manager: mtillman
 editor: 
 tags: 
@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 04/11/2017
 ms.author: twooley
 ms.reviewer: sasubram
-ms.openlocfilehash: 672eda222a0fa7d0e05dd2fc75ac743ec330463d
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 6006dde5ea34db9881a02550e7aff33e48c6498e
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="azure-active-directory-b2b-collaboration-code-and-powershell-samples"></a>Az Azure Active Directory B2B együttműködés kód és a PowerShell-példák
 
@@ -101,7 +101,7 @@ namespace SampleInviteApp
         /// <summary>
         /// Client secret of the application.
         /// </summary>
-        private static readonly string TestAppClientSecret = @"
+        private static readonly string TestAppClientSecret = @"";
  
         /// <summary>
         /// This is the email address of the user you want to invite.

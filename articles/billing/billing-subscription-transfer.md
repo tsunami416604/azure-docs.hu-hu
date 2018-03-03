@@ -17,11 +17,11 @@ ms.topic: troubleshooting
 ms.date: 12/13/2017
 ms.author: genli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7f061197cbe9fd52594d9fb000d8f3bcbd2d5285
-ms.sourcegitcommit: 6f33adc568931edf91bfa96abbccf3719aa32041
+ms.openlocfilehash: ff694ee7c2ecf7f8ee5ea89902fa77efad3f501c
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/22/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="transfer-ownership-of-an-azure-subscription-to-another-account"></a>Egy másik fiókot az Azure-előfizetés tulajdonjogának átruházása
 
@@ -29,7 +29,7 @@ Az előfizetés átvitele egy másik felhasználója a Account Center Fiókadmin
 
 > [!IMPORTANT]
 > 
-> Jelenleg nem támogatjuk előfizetés átadásáról ingyenes próbaverzióra vagy [Azure a nyitott Nyomtatókategóriák](https://azure.microsoft.com/offers/ms-azr-0111p/) előfizetések. Megkerülő megoldásért tekintse meg a [erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe](../azure-resource-manager/resource-group-move-resources.md).
+> Egy új Azure AD-előfizetés átvitele esetén a bérlői, a szerepkör-hozzárendelések [szerepköralapú hozzáférés-vezérlést (RBAC)](../active-directory/role-based-access-control-what-is.md) véglegesen törli a forrás-bérlőhöz, és nem települnek a célként megadott tenant módosításait.
 
 ## <a name="transfer-ownership-of-an-azure-subscription"></a>Azure-előfizetés tulajdonjogának átruházása
 
@@ -49,7 +49,12 @@ Az előfizetés átvitele egy másik felhasználója a Account Center Fiókadmin
    ![Azure-fiók előfizetések lap](./media/billing-subscription-transfer/image1.png)
 1. Adja meg a címzettet.
 
+   > [!IMPORTANT]
+   > 
+   > Egy új Azure AD-előfizetés átvitele esetén a bérlői, a szerepkör-hozzárendelések [szerepköralapú hozzáférés-vezérlést (RBAC)](../active-directory/role-based-access-control-what-is.md) véglegesen törli a forrás-bérlőhöz, és nem települnek a célként megadott tenant módosításait.
+
    ![Átviteli előfizetés párbeszédpanel](./media/billing-subscription-transfer/image2.PNG)
+
 1. A címzett automatikusan kapni fog egy elfogadási hivatkozást tartalmazó e-mailt.
 
    ![Előfizetés átviteli e-mail címzett](./media/billing-subscription-transfer/image3.png)
@@ -80,27 +85,27 @@ A vállalati rendszergazda vihetők át a beléptetési belül előfizetések tu
 
 ## <a name="whats-supported"></a>Támogatott források és műveletek:
 
-Önkiszolgáló előfizetés átadása az ajánlatok vagy a következő táblázatban felsorolt előfizetéstípusok érhető el. Más előfizetések például átvitelére [szponzorálás](https://azure.microsoft.com/offers/ms-azr-0036p/) támogatja a csomagokat, vagy [forduljon a támogatási szolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+Önkiszolgáló előfizetés átadása az ajánlatok vagy a következő táblázatban felsorolt előfizetéstípusok érhető el. Jelenleg nem tudja áthelyezni egy ingyenes próbaverzióra vagy [Azure a nyitott Nyomtatókategóriák](https://azure.microsoft.com/offers/ms-azr-0111p/) előfizetések. Megkerülő megoldásért tekintse meg a [erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe](../azure-resource-manager/resource-group-move-resources.md). Másik előfizetés átvitele, például az [szponzorálás](https://azure.microsoft.com/offers/ms-azr-0036p/) támogatja a csomagokat, vagy [forduljon a támogatási szolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
 | Csomag neve                                                                             | Csomag száma |
 |----------------------------------------------------------------------------------------|--------------|
-| [Nagyvállalati Szerződés (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)\*|MS-AZR - 0017P        |
-| [A Microsoft Partner Network](https://azure.microsoft.com/offers/ms-azr-0025p/)          | MS-AZR - 0025P        |
-| [MSDN platformok](https://azure.microsoft.com/offers/ms-azr-0062p/)                     | MS-AZR - 0062P        |
-| [Használatalapú fizetés](https://azure.microsoft.com/offers/ms-azr-0003p/)                      | MS-AZR - 0003P        |
-| [Fejlesztés/tesztelés – használatalapú fizetés](https://azure.microsoft.com/offers/ms-azr-0023p/)             | MS-AZR - 0023P        |
-| [A Visual Studio Enterprise](https://azure.microsoft.com/offers/ms-azr-0063p/)           | MS-AZR - 0063P        |
-| [A Visual Studio Enterprise: BizSpark](https://azure.microsoft.com/offers/ms-azr-0064p/) | MS-AZR - 0064P        |
-| [A Visual Studio Professional](https://azure.microsoft.com/offers/ms-azr-0059p/)         | MS-AZR - 0059P        |
-| [A Visual Studio Test Professional](https://azure.microsoft.com/offers/ms-azr-0060p/)    | MS-AZR - 0060P        |
+| [Nagyvállalati Szerződés (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)\*|MS-AZR-0017P        |
+| [A Microsoft Partner Network](https://azure.microsoft.com/offers/ms-azr-0025p/)          | MS-AZR-0025P        |
+| [MSDN platformok](https://azure.microsoft.com/offers/ms-azr-0062p/)                     | MS-AZR-0062P        |
+| [Pay-As-You-Go](https://azure.microsoft.com/offers/ms-azr-0003p/)                      | MS-AZR-0003P        |
+| [Pay-As-You-Go Dev/Test](https://azure.microsoft.com/offers/ms-azr-0023p/)             | MS-AZR-0023P        |
+| [Visual Studio Enterprise](https://azure.microsoft.com/offers/ms-azr-0063p/)           | MS-AZR-0063P        |
+| [Visual Studio Enterprise: BizSpark](https://azure.microsoft.com/offers/ms-azr-0064p/) | MS-AZR-0064P        |
+| [Visual Studio Professional](https://azure.microsoft.com/offers/ms-azr-0059p/)         | MS-AZR-0059P        |
+| [Visual Studio Test Professional](https://azure.microsoft.com/offers/ms-azr-0060p/)    | MS-AZR-0060P        |
 
-\*[Keresztül EA portál](#EA)
+\* [A EA portálon](#EA)
 
 <a id="faq"></a>
 
 ## <a name="frequently-asked-questions-faq"></a>Gyakori kérdések (GYIK)
 
-### <a name="whoisaa"></a>A Fiókadminisztrátor az előfizetés?
+### <a name="whoisaa"></a> A Fiókadminisztrátor az előfizetés?
 
 A Fiókadminisztrátor az a személy, aki regisztrált a vagy vásárolt Azure-előfizetést. Engedélyezett-e hozzáférni a [Account Center](https://account.azure.com/Subscriptions) és -előfizetések létrehozása, szakítsa meg a előfizetések, az előfizetés számlázási módosítása, vagy módosítsa a szolgáltatás-rendszergazda például különböző felügyeleti feladatok elvégzésére. Ha nem biztos, aki a fiókadminisztrátor az előfizetéshez, tegye a következőket megállapítása.
 
@@ -112,7 +117,7 @@ A Fiókadminisztrátor az a személy, aki regisztrált a vagy vásárolt Azure-e
 
 Az erőforrások, például virtuális gépek, a lemezek és a webhelyek átvitelét az új tulajdonos. Azonban bármely [rendszergazdai szerepkörök](billing-add-change-azure-subscription-administrator.md) és [szerepköralapú hozzáférés-vezérlés (RBAC)](../active-directory/role-based-access-control-configure.md) létrehozott házirendeket nem veszi át más címtárak között. Emellett [app regisztrációk](../active-directory//develop/active-directory-integrating-applications.md) és a többi bérlő szolgáltatásokat nem átvitele mentén.
 
-### <a id="no-button"></a>Miért nem látom, hogy az "Előfizetés átvitele" gombra?
+### <a id="no-button"></a> Miért nem látom, hogy az "Előfizetés átvitele" gombra?
 
 Sajnos a önkiszolgáló előfizetés átvitele nem érhető el az ajánlat vagy ország. Az előfizetés átvitele [forduljon a támogatási szolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 

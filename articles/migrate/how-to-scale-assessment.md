@@ -6,13 +6,13 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 01/08/2018
 ms.author: raynew
-ms.openlocfilehash: d1063d1f2777095c880896b49249f6de4cda6f3a
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: ab66bc9c90950070e69c2486bf09b7664b1c9ad2
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/02/2018
 ---
-# <a name="discover-and-assess-a-large-vmware-environment"></a>Fedezze fel és nagy VMware-környezet felmérése
+# <a name="discover-and-assess-a-large-vmware-environment"></a>Nagy méretű VMware-környezet felderítése és értékelése
 
 Ez a cikk ismerteti, hogyan használatával a helyszíni virtuális gépek (VM) nagy számú felmérésére [Azure áttelepítése](migrate-overview.md). Az Azure áttelepítése értékelésére gépek ellenőrizze, hogy fontosságúak alkalmas áttelepítése az Azure-bA. A szolgáltatás biztosítja a méretezési és költségű becsléseket futó a gépeket az Azure-ban.
 
@@ -30,15 +30,17 @@ Tervezze meg a felderítések és a vizsgálatok során a következő korlátoz�
 | **Entitás** | **Számítógépek korlátja** |
 | ---------- | ----------------- |
 | Project    | 1,500              | 
-| Detektálás  | 1,000              |
-| Értékelés | 400               |
+| Detektálás  | 1,500              |
+| Értékelés | 1,500               |
 
-- Ha kevesebb mint 400 gépek felderítése és értékeléséhez, egyetlen projekt és szükséges egy adott felderítési. A követelményeitől függően a egyetlen értékelése gépeire értékeléséhez, vagy ossza fel a gépek több értékeléseket. 
-- Ha 400-1 000 számítógépek felderítésére, az adott felderítési egyetlen projekt szüksége. Azonban szüksége lesz több vizsgálatot, ezek a gépek értékeléséhez, mert egyetlen assessment legfeljebb 400 gépek tárolására képes.
-- Ha 1,001 való 1500 gépekkel rendelkezik, két felderítések azt az egyetlen projekt kell.
-- Ha több mint 1500 gépekkel rendelkezik, akkor kell hozzon létre több projektet, és hajtsa végre több felderítések, a követelményeknek megfelelően. Példa:
-    - Ha 3000 olyan gépeken, állíthat be két felderítések-projektek két vagy három projektek egy adott felderítési.
-    - Ha 5000 gépekkel rendelkezik, akkor állíthatja négy projektek: három 1500 gépek felderítést, és a felderítés 500 gépek másikat. Másik lehetőségként állíthat be egy adott felderítési egyes öt projektek. 
+<!-- 
+- If you have fewer than 400 machines to discover and assess, you need a single project and a single discovery. Depending on your requirements, you can either assess all the machines in a single assessment or split the machines into multiple assessments. 
+- If you have 400 to 1,000 machines to discover, you need a single project with a single discovery. But you will need multiple assessments to assess these machines, because a single assessment can hold up to 400 machines.
+- If you have 1,001 to 1,500 machines, you need a single project with two discoveries in it.
+- If you have more than 1,500 machines, you need to create multiple projects, and perform multiple discoveries, according to your requirements. For example:
+    - If you have 3,000 machines, you can set up two projects with two discoveries, or three projects with a single discovery.
+    - If you have 5,000 machines, you can set up four projects: three with a discovery of 1,500 machines, and one with a discovery of 500 machines. Alternatively, you can set up five projects with a single discovery in each one. 
+-->
 
 ## <a name="plan-multiple-discoveries"></a>Több felderítések megtervezése
 

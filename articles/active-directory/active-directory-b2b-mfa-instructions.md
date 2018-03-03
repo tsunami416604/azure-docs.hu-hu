@@ -3,7 +3,7 @@ title: "Feltételes hozzáférés az Azure Active Directory B2B együttműködé
 description: "Az Azure Active Directory B2B együttműködés többtényezős hitelesítés (MFA) támogatja a szelektív hozzáférést biztosít a vállalati alkalmazásokhoz"
 services: active-directory
 documentationcenter: 
-author: sasubram
+author: twooley
 manager: mtillman
 editor: 
 tags: 
@@ -14,12 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
 ms.date: 09/11/2017
-ms.author: sasubram
-ms.openlocfilehash: 2f2cfc351d372d665aac054d52d6e1520e1ffe48
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: twooley
+ms.reviewer: sasubram
+ms.openlocfilehash: 4c8827bdf18d59fbe6ba92593513e25e493974b5
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="conditional-access-for-b2b-collaboration-users"></a>Feltételes hozzáférés a B2B együttműködés felhasználók
 
@@ -49,7 +50,7 @@ Tekintse meg az érvényesítési megtekintéséhez a következő animáció él
 ### <a name="mfa-reset-for-b2b-collaboration-users"></a>B2B együttműködés felhasználóknak az új MFA
 Jelenleg a rendszergazda megkövetelheti B2B együttműködés felhasználók igazolása be újra csak a következő PowerShell-parancsmagok használatával:
 
-1. Összekapcsolás az Azure AD-vel
+1. Csatlakozás az Azure AD szolgáltatáshoz
 
   ```
   $cred = Get-Credential
@@ -104,7 +105,7 @@ Helyalapú feltételes hozzáférési házirendek kényszerítheti a B2B felhasz
 
 Jelenleg kockázati-alapú bejelentkezési házirendek nem alkalmazható B2B felhasználók mivel a kockázat kiértékelésekor a B2B felhasználó otthoni szervezet hajtja végre.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerje meg az Azure AD B2B együttműködés további cikkeit:
 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/04/2018
 ms.author: kumud
-ms.openlocfilehash: cf7be370ab0d79be9068534f0c43b88f454bc024
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: ddbfb415f062396f022f0f58cb975f6e3a5f1807
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="azure-load-balancer-standard-overview-preview"></a>Az Azure Load Balancer szabványos áttekintése (előzetes verzió)
 
@@ -302,9 +302,11 @@ Termékváltozat nem változtatható. Kövesse az ebben a szakaszban található
 
 1. Hozzon létre egy új szabványos erőforrást (a terheléselosztó és a nyilvános IP-címek, szükség esetén). Hozza létre újra a szabályok és a mintavételi definíciókat.
 
-2. Az alapszintű Termékváltozat erőforrások (a terheléselosztó és a megfelelő, nyilvános IP) eltávolítása az összes Virtuálisgép-példányok. Győződjön meg arról, hogy távolítsa el az összes Virtuálisgép-példányok egy rendelkezésre állási készlet.
+2. Létrehozhat új, vagy frissítse a hálózati adapter vagy az alhálózat meglévő NSG engedélyezett terheléselosztott forgalom, mintavétel, valamint minden más forgalom engedélyezni kívánja.
 
-3. Az összes Virtuálisgép-példányok csatolni az új Standard Termékváltozat-erőforrások.
+3. Az alapszintű Termékváltozat erőforrások (a terheléselosztó és a megfelelő, nyilvános IP) eltávolítása az összes Virtuálisgép-példányok. Győződjön meg arról, hogy távolítsa el az összes Virtuálisgép-példányok egy rendelkezésre állási készlet.
+
+4. Az összes Virtuálisgép-példányok csatolni az új Standard Termékváltozat-erőforrások.
 
 ### <a name="migrate-from-standard-to-basic-sku"></a>Alapszintű Termékváltozat Standard áttelepítése
 
@@ -464,6 +466,7 @@ A következő korlátozások vonatkoznak az előzetes időpontjában alkalmazni,
 - A rendelkezésre állási zónák környezetében zonal nyilvános IP-címnek nem lehet áthelyezni egy zónából egy másikra.
 - [Riasztások figyelése Azure](../monitoring-and-diagnostics/monitoring-overview-alerts.md) jelenleg nem támogatottak.
 - Portál még nem támogatja a kibővített előzetes régiók.  Használjon például sablonokat, az Azure CLI 2.0-s vagy megoldás PowerShell ügyféleszközök elől.
+- Áthelyezési előfizetés műveletek nem támogatottak.
 
 
 ## <a name="next-steps"></a>További lépések

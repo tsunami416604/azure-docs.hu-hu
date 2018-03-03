@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: 
 ms.devlang: 
 ms.topic: article
-ms.date: 02/20/2018
+ms.date: 02/28/2018
 ms.author: curtand
 ms.reviewer: kairaz.contractor
 ms.custom: it-pro
-ms.openlocfilehash: dce848d75e2ce89e8e6003108f1cd5371cbb0f31
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: cc3ea7f81a924f3f4baa6fd2866c4e552b7c160e
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="enforce-a-naming-policy-for-office-365-groups-in-azure-active-directory-preview"></a>Az Office 365-csoportok az Azure Active Directoryban (előzetes verzió) elnevezési vonatkozó szabályzat alkalmazása
 
@@ -100,7 +100,9 @@ Ha egy nem megbízható tárház elérése kéri, írja be a **Y**. Új modul te
   Import-Module AzureADPreview
   Connect-AzureAD
   ````
-Az a **jelentkezzen be a fiókba** a megnyíló képernyőn írja be a rendszergazdai fiókot és jelszót kapcsolódik a szolgáltatáshoz, és válassza ki **bejelentkezés**.
+  Az a **jelentkezzen be a fiókba** a megnyíló képernyőn írja be a rendszergazdai fiókot és jelszót kapcsolódik a szolgáltatáshoz, és válassza ki **bejelentkezés**.
+
+3. Kövesse a [csoport beállításainak konfigurálása az Azure Active Directory parancsmagok](active-directory-accessmanagement-groups-settings-cmdlets.md) ehhez a bérlőhöz tartozó beállítások létrehozásához.
 
 ### <a name="view-the-current-settings"></a>A jelenlegi beállítások megtekintéséhez
 
@@ -140,9 +142,9 @@ Ennyi az egész. Hogy a elnevezési szabályzatot, és a blokkolt szavakat hozz�
 
 ## <a name="export-or-import-the-list-of-custom-blocked-words"></a>Exportál vagy importál egyéni letiltott szavak listája
 
-További információkért lásd: a cikk [Azure Active Directory-parancsmagok csoport beállításainak konfigurálása](active-directory-accessmanagement-groups-settings-cmdlets.md)
+További információkért lásd: a cikk [csoport beállításainak konfigurálása az Azure Active Directory parancsmagok](active-directory-accessmanagement-groups-settings-cmdlets.md).
 
-Íme egy példa a PowerShell-parancsprogram több tiltott szót exportálása:
+Íme egy példa egy PowerShell-parancsprogram több tiltott szót exportálása:
 
 ````
 $Words = (Get-AzureADDirectorySetting).Values | Where-Object -Property Name -Value CustomBlockedWordsList -EQ 

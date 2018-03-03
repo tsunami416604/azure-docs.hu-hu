@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/02/2018
+ms.date: 02/21/2018
 ms.author: ergreenl
-ms.openlocfilehash: c6c47d1f9776f9e45711d8139661255dcd44c2a1
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: f80de47f8e9ba326fc224a8bc09f8029b5afd1ca
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="azure-ad-domain-services---troubleshooting-secure-ldap-configuration"></a>Azure AD tartományi szolgáltatások - hibaelhárítás biztonságos LDAP-konfiguráció
 
@@ -51,6 +51,16 @@ Ha engedélyezve van a biztonságos LDAP, ajánlott bejövő LDAPS hozzáférés
 > [!TIP]
 > Port: 636 nincs szükség az Azure AD tartományi szolgáltatásokhoz való zökkenőmentes csak szabály. További információkért látogasson el a [hálózatkezelés irányelvek](active-directory-ds-networking.md) vagy [hibaelhárítása NSG konfigurációs](active-directory-ds-troubleshoot-nsg.md) cikkeket.
 >
+
+## <a name="aadds502-secure-ldap-certificate-expiring"></a>AADDS502: Biztonságos LDAP tanúsítvány lejárati ideje
+
+**Figyelmeztető üzenet:**
+
+*A felügyelt tartományra biztonságos LDAP tanúsítványának érvényessége XX.*
+
+**Szervizelés:**
+
+Hozzon létre egy új biztonságos LDAP-tanúsítványt című rész lépéseit követve a [biztonságos LDAP konfigurálása](active-directory-ds-admin-guide-configure-secure-ldap.md) cikk.
 
 ## <a name="contact-us"></a>Kapcsolat
 Lépjen kapcsolatba az Azure Active Directory tartományi szolgáltatások termékért felelős csoport a [visszajelzés fájlmegosztás vagy a támogatáshoz](active-directory-ds-contact-us.md).

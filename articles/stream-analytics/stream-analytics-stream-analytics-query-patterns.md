@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 08/08/2017
 ms.author: samacha
-ms.openlocfilehash: 6ac5d3ab2a4df63c429f8478e392d84ac0ea6fd7
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: cb0a948416983f33a4ca8d9211a3a114ba011685
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="query-examples-for-common-stream-analytics-usage-patterns"></a>Példa a gyakori Stream Analytics használati minták lekérdezése
 ## <a name="introduction"></a>Bevezetés
@@ -461,7 +461,7 @@ Tegyük fel például, hogy programhiba eredményezett (fent 20 000 font) egy he
         AND previousWeight > 20000
 ````
 
-**MAGYARÁZAT**: használata **LAG** 24 órán át a bemeneti adatfolyam tekintheti meg és keressen where példányok **StartFault** és **StopFault** a súlyozás < 20000 által felölelt vannak.
+**MAGYARÁZAT**: használata **LAG** 24 órán át a bemeneti adatfolyam tekintheti meg és keressen where példányok **StartFault** és **StopFault** vannak a súlyozással ölel < 20000.
 
 ## <a name="query-example-fill-missing-values"></a>Példa: Töltse ki a hiányzó értékek
 **Leírás**: az események streamjét a hiányzó, a előállít egy az események streamjét a rendszeres időközönként.
@@ -504,6 +504,81 @@ Például generál egy eseményt 5 másodpercentként, az utoljára látott adat
 
 
 **MAGYARÁZAT**: Ez a lekérdezés 5 másodpercentként eseményeket hoz létre, és kiírja a korábban fogadott utolsó esemény. A [Hopping ablak](https://msdn.microsoft.com/library/dn835041.aspx "Hopping ablak--Azure Stream Analytics") időtartamát határozza meg, milyen távolságban vissza a lekérdezés keres az utolsó esemény (ebben a példában 300 másodperc) található.
+
+
+## <a name="query-example-correlate-two-event-types-within-the-same-stream"></a>Példa: két eseménytípust belül az azonos adatfolyam összefüggéseket
+**Leírás**: néha igazolnia kell a riasztásokat a következő fordult elő egy adott időtartományt több eseménytípus alapján.
+Például otthoni sütők IoT esetben szeretnénk hoz létre riasztást, ha ventilátor hőmérséklet kisebb, mint a 40, és az utolsó 3 perc alatt teljesítményhez lett kisebb, mint 10.
+
+**Bemeneti**:
+
+| time | deviceId | sensorName | érték |
+| --- | --- | --- | --- |
+| "2018-01-01T16:01:00" | "Oven1" | "temp" |120 |
+| "2018-01-01T16:01:00" | "Oven1" | "power" |15 |
+| "2018-01-01T16:02:00" | "Oven1" | "temp" |100 |
+| "2018-01-01T16:02:00" | "Oven1" | "power" |15 |
+| "2018-01-01T16:03:00" | "Oven1" | "temp" |70 |
+| "2018-01-01T16:03:00" | "Oven1" | "power" |15 |
+| "2018-01-01T16:04:00" | "Oven1" | "temp" |50 |
+| "2018-01-01T16:04:00" | "Oven1" | "power" |15 |
+| "2018-01-01T16:05:00" | "Oven1" | "temp" |30 |
+| "2018-01-01T16:05:00" | "Oven1" | "power" |8 |
+| "2018-01-01T16:06:00" | "Oven1" | "temp" |20 |
+| "2018-01-01T16:06:00" | "Oven1" | "power" |8 |
+| "2018-01-01T16:07:00" | "Oven1" | "temp" |20 |
+| "2018-01-01T16:07:00" | "Oven1" | "power" |8 |
+| "2018-01-01T16:08:00" | "Oven1" | "temp" |20 |
+| "2018-01-01T16:08:00" | "Oven1" | "power" |8 |
+
+**Kimeneti**:
+
+| eventTime | deviceId | TEMP | alertMessage | maxPowerDuringLast3mins |
+| --- | --- | --- | --- | --- | 
+| "2018-01-01T16:05:00" | "Oven1" |30 | "Gyorskiértékelésű elemek melegítés" |15 |
+| "2018-01-01T16:06:00" | "Oven1" |20 | "Gyorskiértékelésű elemek melegítés" |15 |
+| "2018-01-01T16:07:00" | "Oven1" |20 | "Gyorskiértékelésű elemek melegítés" |15 |
+
+**Megoldás**:
+
+````
+WITH max_power_during_last_3_mins AS (
+    SELECT 
+        System.TimeStamp AS windowTime,
+        deviceId,
+        max(value) as maxPower
+    FROM
+        input TIMESTAMP BY t
+    WHERE 
+        sensorName = 'power' 
+    GROUP BY 
+        deviceId, 
+        SlidingWindow(minute, 3) 
+)
+
+SELECT 
+    t1.t AS eventTime,
+    t1.deviceId, 
+    t1.value AS temp,
+    'Short circuit heating elements' as alertMessage,
+    t2.maxPower AS maxPowerDuringLast3mins
+    
+INTO resultsr
+
+FROM input t1 TIMESTAMP BY t
+JOIN max_power_during_last_3_mins t2
+    ON t1.deviceId = t2.deviceId 
+    AND t1.t = t2.windowTime
+    AND DATEDIFF(minute,t1,t2) between 0 and 3
+    
+WHERE
+    t1.sensorName = 'temp'
+    AND t1.value <= 40
+    AND t2.maxPower > 10
+````
+
+**MAGYARÁZAT**: az első lekérdezés `max_power_during_last_3_mins`, használja a [csúszó ablak](https://msdn.microsoft.com/en-us/azure/stream-analytics/reference/sliding-window-azure-stream-analytics) az elmúlt 3 perc alatt a maximális érték az energiagazdálkodási érzékelő minden eszköz kereséséhez. A második lekérdezés az első lekérdezés az energiagazdálkodási értéket keresi a legújabb ablakban vonatkozó az aktuális esemény csatlakozik. És ezt követően megadott feltételek teljesülnek, riasztást küld az eszköz.
+
 
 ## <a name="get-help"></a>Segítségkérés
 Ha további segítségre van szüksége, próbálkozzon a [Azure Stream Analytics-fórumot](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).

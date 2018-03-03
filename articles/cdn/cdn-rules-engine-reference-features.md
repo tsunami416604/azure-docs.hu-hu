@@ -14,23 +14,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: rli
-ms.openlocfilehash: 858bc1dd2880583a3283522a01c9a48679b76296
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 949b957716af2d7dfd704b4fca48afb78d0fed1e
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="azure-cdn-rules-engine-features"></a>Az Azure CDN szabályok motor-funkciók
 Ez a cikk részletes leírását tartalmazza az elérhető szolgáltatások az Azure Content Delivery Network (CDN) [szabálymotor](cdn-rules-engine.md).
 
-A szabály harmadik része a szolgáltatást. A szolgáltatás feltételek egyeznek kérelem típusú alkalmazott művelet típusa határozza meg.
+A szabály harmadik része a szolgáltatást. A szolgáltatás feltételek egyeznek által azonosított kéréstípus alkalmazott művelet típusa határozza meg.
 
 ## <a name="access-features"></a>Hozzáférési funkciókat
 
 Ezek a szolgáltatások célja, hogy a tartalomhoz való hozzáférés szabályozása.
 
 
-Név | Cél
+Name (Név) | Cél
 -----|--------
 [Megtagadja a hozzáférést (403)](#deny-access-403) | Meghatározza, hogy minden kérésnél 403 Tiltott választ utasítja el.
 [Jogkivonat hitelesítési](#token-auth) | Azt határozza meg, hogy jogkivonat-alapú hitelesítés kérelemre vonatkozik.
@@ -43,37 +43,37 @@ Név | Cél
 
 Ezeket a szolgáltatásokat úgy tervezték, hogy mikor és hogyan a tartalom gyorsítótárazva van testreszabása.
 
-Név | Cél
+Name (Név) | Cél
 -----|--------
 [Sávszélesség-paraméterek](#bandwidth-parameters) | Meghatározza, hogy aktívak-e a sávszélesség szabályozási paraméterek (például ec_rate és ec_prebuf).
 [Sávszélesség-szabályozás](#bandwidth-throttling) | Azelőtt gyorsítja fel a sávszélességet, a peremhálózati kiszolgálóinak által biztosított válasz.
 [Gyorsítótár megkerülése](#bypass-cache) | Meghatározza, hogy a kérelem kell gyorsítótárazásának mellőzése.
 [A Cache-Control fejléc kezelése](#cache-control-header-treatment) | A következő generációja meghatározza `Cache-Control` fejlécek, a peremhálózati kiszolgáló aktív külső maximális-életkora szolgáltatás esetén.
-[Gyorsítótár-kulcs lekérdezési karakterlánc](#cache-key-query-string) | Meghatározza, hogy a a gyorsítótár-kulcsot tartalmaz, vagy zárja ki a lekérdezési karakterlánc paramétereinek a kérelemhez társított.
+[Cache-Key Query String](#cache-key-query-string) | Meghatározza, hogy a gyorsítótár-kulcsot tartalmaz, vagy nem tartalmazza a kéréshez társított lekérdezési karakterlánc-paraméterrel.
 [Gyorsítótár-kulcs átdolgozás](#cache-key-rewrite) | Felülírja a kérelemhez társított gyorsítótár-kulcs.
 [Fejezze be a gyorsítótár kitöltés](#complete-cache-fill) | Meghatározza, hogy mi történik, amikor egy kérelem egy részleges gyorsítótár-tévesztései eredményez az egy biztonsági kiszolgálót.
-[Fájltípusok tömörítése](#compress-file-types) | Meghatározza a fájlformátumokat, amelyek tömörítése a kiszolgálón.
+[Fájltípusok tömörítése](#compress-file-types) | Határozza meg a tömörített fájlok formátumú fájlokat a kiszolgálón.
 [Alapértelmezett belső maximális életkora](#default-internal-max-age) | Meghatározza, hogy az alapértelmezett maximális-életkora időközt biztonsági kiszolgálót az eredeti kiszolgáló gyorsítótár ismételt érvényesítése.
 [Fejléc kezelés lejár](#expires-header-treatment) | A következő generációja meghatározza `Expires` fejlécek alapján egy biztonsági kiszolgálót, ha a külső maximális-életkora szolgáltatás aktív.
 [Külső maximális-kor](#external-max-age) | Meghatározza, hogy a peremhálózati kiszolgáló a gyorsítótár ismételt érvényesítése böngészőben maximális-életkora intervallumát.
 [Kényszerített belső maximális életkora](#force-internal-max-age) | Határozza meg a biztonsági kiszolgáló az eredeti kiszolgáló gyorsítótár ismételt érvényesítése maximális-életkora intervallumát.
 [H.264 támogatási (HTTP a progresszív letöltés)](#h264-support-http-progressive-download) | Meghatározza, hogy a tartalom adatfolyamként történő küldéséhez használható H.264 fájlformátumok típusú.
-[No-Cache kérés elfogadása](#honor-no-cache-request) | Meghatározza, hogy a rendszer egy HTTP-ügyfél no-cache kérelmeket továbbítja az eredeti kiszolgálóra.
+[No-Cache kérés elfogadása](#honor-no-cache-request) | Meghatározza, hogy egy HTTP-ügyfél no-cache kérelmeket a rendszer az eredeti kiszolgálóra továbbítja.
 [Figyelmen kívül hagyja az eredeti No-Cache](#ignore-origin-no-cache) | Meghatározza, hogy a CDN figyelmen kívül hagyja az egyes irányelvek egy forráskiszolgálóról és kiszolgálása között.
 [Hagyja figyelmen kívül Unsatisfiable tartományok](#ignore-unsatisfiable-ranges) | Meghatározza a választ, az ügyfelek számára eredményül, amikor egy kérelem egy 416 kért tartomány nem teljesíthető állapotkódot állítja elő.
 [Belső maximális elavult](#internal-max-stale) | Vezérlők mennyi ideig későbbi, mint a normál lejárati időpont gyorsítótárazott eszköz előfordulhat, hogy szolgálható ki egy biztonsági kiszolgálót, ha a biztonsági kiszolgáló nem tudja kísérelje meg újra az eredeti kiszolgálóra a gyorsítótárazott objektum érvényesítését.
 [A részleges gyorsítótári megosztása](#partial-cache-sharing) | Azt határozza meg, hogy egy kérelem hozhat létre a részlegesen gyorsítótárazott tartalmat.
-[Gyorsítótárazott tartalom prevalidate](#prevalidate-cached-content) | Meghatározza, hogy a gyorsítótárazott tartalmat legyen abban az esetben jogosult a korai ismételt érvényesítése a TTL lejárata előtt.
+[Gyorsítótárazott tartalom prevalidate](#prevalidate-cached-content) | Meghatározza, hogy a gyorsítótárazott tartalom abban az esetben jogosult a korai ismételt érvényesítése a TTL lejárata előtt.
 [Nulla bájtos gyorsítótárban levő fájlok frissítése](#refresh-zero-byte-cache-files) | Meghatározza, hogy a 0 bájtos gyorsítótár eszköz egy HTTP-ügyfél kérelmet a rendszer hogyan kezelje a peremhálózati kiszolgáló.
 [Állítsa be a gyorsítótárazható állapotkódok](#set-cacheable-status-codes) | Meghatározza a gyorsítótárazott tartalom eredményező állapotkódok készletét.
-[Hiba történt a régi Tartalomkézbesítési](#stale-content-delivery-on-error) | Határozza meg hogy lejárt a gyorsítótárazott tartalmat kézbesíti a rendszer hiba esetén a gyorsítótár ismételt érvényesítése során vagy a felhasználói forráskiszolgálóról a kért tartalom lekérése közben.
+[Hiba történt a régi Tartalomkézbesítési](#stale-content-delivery-on-error) | Meghatározza, hogy lejárt a gyorsítótárazott tartalmat a rendszer hiba esetén a gyorsítótár ismételt érvényesítése során vagy a felhasználói forráskiszolgálóról a kért tartalom lekérése közben.
 [Elavult Revalidate közben](#stale-while-revalidate) | Így a peremhálózati kiszolgálók látják elavult ügyfél számára a kérelmező során kerül sor az ismételt érvényesítése javítja a teljesítményt.
 
 ## <a name="comment-feature"></a>Megjegyzés szolgáltatást
 
 Ez a funkció a szabályban további információkkal szolgál.
 
-Név | Cél
+Name (Név) | Cél
 -----|--------
 [Megjegyzés](#comment) | Lehetővé teszi, hogy a Megjegyzés a szabályban lehet hozzáadni.
  
@@ -81,9 +81,9 @@ Név | Cél
 
 Ezek a Funkciók hozzáadása, módosítása és a kérés vagy válasz fejlécek törlése tervezték.
 
-Név | Cél
+Name (Név) | Cél
 -----|--------
-[Kor válaszfejléc](#age-response-header) | Határozza meg, hogy egy kora válaszfejléc lesz a válaszként küldött a kérelmező.
+[Kor válaszfejléc](#age-response-header) | Meghatározza, hogy egy kora válasz fejléce szerepel-e a válaszként küldött a kérelmező.
 [Gyorsítótár válaszfejlécek hibakeresése](#debug-cache-response-headers) | Meghatározza, hogy választ magukban az X-EK-Debug válaszfejléc, amely információt nyújt a gyorsítótár-házirend a kért objektum.
 [Ügyfél fejléc módosítása](#modify-client-request-header) | Felülírja, hozzáfűzi vagy fejléc töröl egy kérelmet.
 [Módosítsa az ügyfél válaszfejléc](#modify-client-response-header) | Felülírja, hozzáfűzi vagy fejléc töröl egy választ.
@@ -94,10 +94,10 @@ Név | Cél
 
 Ezek a szolgáltatások úgy tervezték, hogy testre szabhatja a nyers naplófájlok tárolt adatokat.
 
-Név | Cél
+Name (Név) | Cél
 -----|--------
-[1. egyéni mező](#custom-log-field-1) | Meghatározza, hogy a formátum és a tartalom, amely a nyers naplófájl egyéni napló mezője lesz hozzárendelve.
-[Napló lekérdezési karakterlánc](#log-query-string) | Meghatározza, hogy egy lekérdezési karakterlánc belépési naplók URL-cím mellett kell tárolni.
+[1. egyéni mező](#custom-log-field-1) | Meghatározza, hogy a formátum és a tartalom, amely hozzá van rendelve a egyéni mező egy nyers naplófájlban.
+[Napló lekérdezési karakterlánc](#log-query-string) | Határozza meg, hogy e lekérdezési karakterláncként van együtt a belépési naplók URL-címet.
 
 
 <!---
@@ -148,17 +148,17 @@ If the desired site does not appear in the list, then you should edit its config
 
 Ezek a szolgáltatások úgy tervezték, hogy szabályozza, hogy a CDN hogyan kommunikál az eredeti kiszolgálóra.
 
-Név | Cél
+Name (Név) | Cél
 -----|--------
 [Életben tartási kérelmek maximális száma](#maximum-keep-alive-requests) | Keep-Alive kapcsolat kérelmek maximális számát határozza meg, mielőtt le van zárva.
-[Proxy különleges fejlécek](#proxy-special-headers) | Meghatározza, hogy a rendszer továbbítja a egy biztonsági kiszolgálót az eredeti kiszolgálóra CDN-specifikus kérelemfejléc készletét.
+[Proxy különleges fejlécek](#proxy-special-headers) | A CDN-specifikus kérelemfejléc egy biztonsági kiszolgálót az eredeti kiszolgálóra továbbított csoportját határozza meg.
 
 
 ## <a name="specialty-features"></a>Speciális funkciók
 
 Ezek a funkciók összetettebb funkciók haladó felhasználóknak adjon meg.
 
-Név | Cél
+Name (Név) | Cél
 -----|--------
 [Kérelmeznék HTTP-metódus](#cacheable-http-methods) | Határozza meg, hogy a hálózat gyorsítótárazható további HTTP-metódus.
 [Kérelmeznék kérelem törzse mérete](#cacheable-request-body-size) | Határozza meg a küszöbérték meghatározásához, hogy a FELADÁS egy vagy több válasz gyorsítótárazható.
@@ -169,10 +169,10 @@ Név | Cél
 
 Ezek a szolgáltatások lehetővé kérést átirányítja vagy egy másik URL-re írni.
 
-Név | Cél
+Name (Név) | Cél
 -----|--------
 [Átirányítások követése](#follow-redirects) | Azt határozza meg, hogy az a hely egy ügyfél eredeti kiszolgáló által visszaadott fejlécében megadott állomásnév kérelmek átirányíthatók.
-[Az átirányítási URL-címe](#url-redirect) | A hely fejléce kérelmek irányítja át.
+[URL Redirect](#url-redirect) | A hely fejléce kérelmek irányítja át.
 [URL-cím átdolgozás](#url-rewrite)  | Felülírja a kérelem URL-CÍMÉT.
 
 
@@ -195,14 +195,14 @@ Letiltva | A Korszűrő válaszfejléc a választ küldött a kérelmező nem ta
 
 ---
 ### <a name="bandwidth-parameters"></a>Sávszélesség-paraméterek
-**Cél:** meghatározza, hogy a sávszélesség-szabályozási paraméterek (például ec_rate és ec_prebuf) aktív legyen.
+**Cél:** határozza meg, hogy aktívak-e a sávszélesség szabályozási paraméterek (például ec_rate és ec_prebuf).
 
-Sávszélesség-szabályozási paraméter határozza meg, hogy az ügyfél által kért adatátviteli sebesség korlátozott a egyéni mértékben lesz-e.
+Sávszélesség-szabályozási paraméterek meghatározásához, hogy az ügyfél által kért adatátviteli sebesség a egyéni mértékben.
 
 Érték|Eredmény
 --|--
 Engedélyezve|Lehetővé teszi a sávszélesség-szabályozási kérések tiszteletben peremhálózati kiszolgálóinak.
-Letiltva|A peremhálózati kiszolgálóinak figyelmen kívül hagyja a sávszélesség-szabályozási paraméterek okoz. A kért tartalmat szolgáltató általában (Ez azt jelenti, hogy a sávszélesség szabályozása nélkül).
+Letiltva|A peremhálózati kiszolgálóinak figyelmen kívül hagyja a sávszélesség-szabályozási paraméterek okoz. A kért tartalom általában kiszolgált (Ez azt jelenti, hogy a sávszélesség szabályozása nélkül).
 
 **Alapértelmezés:** engedélyezve van.
  
@@ -269,7 +269,7 @@ Kapcsolatos információkat:
 ### <a name="cacheable-request-body-size"></a>Kérelmeznék kérelem törzse mérete
 **Cél:** határozza meg a küszöbérték meghatározásához, hogy a FELADÁS egy vagy több válasz gyorsítótárazható.
 
-Ez a küszöbérték megadása a kérelem maximális mérete határozza meg. Egy nagyobb kérelemtörzset tartalmazó kérelmek nem gyorsítótárazza.
+Ez a küszöbérték megadása a kérelem maximális mérete határozza meg. Egy nagyobb kérelemtörzset tartalmazó kérelmek nem lettek gyorsítótárazva.
 
 Kapcsolatos információkat:
 
@@ -296,7 +296,7 @@ Az ilyen típusú konfigurációs eléréséhez legkönnyebben helyezhető el a 
 Érték|Eredmény
 --|--
 Felülírás|Biztosítja, hogy a következő műveletek történnek:<br/> -Felülírja a `Cache-Control` fejléc az eredeti kiszolgálón állítja elő. <br/>-Hozzáadja a `Cache-Control` fejléc hozott létre a külső maximális-életkora szolgáltatást, hogy a válasz.
-Továbbítása|Biztosítja, hogy a `Cache-Control` a külső maximális-életkora szolgáltatás által előállított fejléc soha nem kerül a választ. <br/> Ha a forráskiszolgáló hoz létre egy `Cache-Control` fejléc, haladnak keresztül a végfelhasználók. <br/> Ha a forráskiszolgáló nem hoz egy `Cache-Control` fejlécben, akkor ez a beállítás okozhat a válasz fejléce nem tartalmazza a `Cache-Control` fejléc.
+Átengedéses|Biztosítja, hogy a `Cache-Control` a külső maximális-életkora szolgáltatás által előállított fejléc soha nem kerül a választ. <br/> Ha a forráskiszolgáló hoz létre egy `Cache-Control` fejléc, haladnak keresztül a végfelhasználók. <br/> Ha a forráskiszolgáló nem hoz egy `Cache-Control` fejlécben, akkor ez a beállítás okozhat a válasz fejléce nem tartalmazza a `Cache-Control` fejléc.
 Ha hiányoznak hozzáadása|Ha egy `Cache-Control` fejléc nem érkezett meg a forráskiszolgálóról, akkor ez a beállítás nagyobb a `Cache-Control` a külső maximális-életkora szolgáltatás által előállított fejléc. Ez a beállítás akkor hasznos ahhoz, hogy az összes eszköz hozzárendelve egy `Cache-Control` fejléc.
 Eltávolítás| Ez a beállítás biztosítja, hogy egy `Cache-Control` fejléc nem része a válasz fejrészét. Ha egy `Cache-Control` fejléc már hozzá van rendelve, akkor a rendszer eltávolítja a válasz fejrészét.
 
@@ -308,29 +308,29 @@ Eltávolítás| Ez a beállítás biztosítja, hogy egy `Cache-Control` fejléc 
 
 ---
 ### <a name="cache-key-query-string"></a>Gyorsítótár-kulcs lekérdezési karakterlánc
-**Cél:** beállítja, hogy a gyorsítótár-kulcs tartalmaznak, vagy zárja ki a lekérdezési karakterlánc paramétereinek a kérelemhez társított.
+**Cél:** meghatározza, hogy a gyorsítótár-kulcsot tartalmaz, vagy nem tartalmazza a kéréshez társított lekérdezési karakterlánc-paraméterrel.
 
 Kapcsolatos információkat:
 
-- Adjon meg egy vagy több lekérdezési karakterlánc paraméter neve. Minden egyes paraméternév kell tagolt, egy szóközzel.
-- Ez a szolgáltatás határozza meg, hogy lekérdezési karakterlánc paramétereket tartalmazza vagy kizárja a gyorsítótár-kulcsot. További információ az egyes lehetőségek közül.
+- Adjon meg egy vagy több lekérdezési karakterlánc paraméter neve. Deliminate minden paraméter egy szóköz nevével.
+- Ez a szolgáltatás határozza meg, hogy lekérdezési karakterlánc paraméterei vannak, illetve tiltani szeretné a gyorsítótár-kulcs. További információ az egyes lehetőségek az alábbi táblázatban.
 
 Típus|Leírás
 --|--
- Belefoglalás|  Azt jelzi, hogy minden egyes megadott paraméter szerepelnie kell a gyorsítótár-kulcsot. Egyedi gyorsítótár-kulcs jön létre minden olyan kérelmet, amely a lekérdezési karakterlánc paraméterként, ez a szolgáltatás definiált egyedi értéket tartalmaz. 
- Az összes  |Azt jelzi, hogy egyedi gyorsítótár-kulcsot hoz létre minden egyes kérelem egy eszköz, amely egy egyedi lekérdezési karakterláncot tartalmaz. Az ilyen típusú konfigurációs általában nem javasolt, mert csekély találatot eredményező gyorsítótárbeli kereséseinek vezethet. Ez megnöveli a terhelést a forrás kiszolgálón, mivel azt kell további kérelmek kiszolgálását. Ez a konfiguráció másolatot készít a gyorsítótár-viselkedést "egyedi-gyorsítótár" a lekérdezési karakterlánc-gyorsítótár oldalon néven ismert. 
- Kizárás | Azt jelzi, hogy csak a megadott paraméterek nem kerülnek bele a gyorsítótár-kulcsot. Minden más lekérdezési karakterlánc paraméter szerepelni fog a gyorsítótár-kulcsot. 
- Az összes kihagyása  |Azt jelzi, hogy az összes lekérdezési karakterlánc paraméterei nem kerülnek bele a gyorsítótár-kulcsot. Ez a konfiguráció másolatot készít az alapértelmezett gyorsítótárazásának "standard-gyorsítótár" a lekérdezési karakterlánc-gyorsítótár oldalon néven ismert. 
+ Belefoglalás|  Azt jelzi, hogy minden egyes megadott paraméter szerepelnie kell a gyorsítótár-kulcsot. Egy egyedi gyorsítótár-kulcs előállítási minden kérelemhez, amely a lekérdezési karakterlánc paraméterként, ez a szolgáltatás definiált egyedi értéket tartalmaz. 
+ Az összes  |Azt jelzi, hogy egyedi gyorsítótár-kulcs az egyes az eszköz egyedi lekérdezési karakterláncot tartalmazó kérelmek. Az ilyen típusú konfigurációs általában nem ajánlott, mert csekély találatot eredményező gyorsítótárbeli kereséseinek vezethet. Találatot eredményező gyorsítótárbeli kereséseinek száma kevés fokozott terhelést jelent a az eredeti kiszolgálóra, mert azt kell további-kérelmek kiszolgálását. Ez a konfiguráció másolatot készít a gyorsítótár-viselkedést "egyedi-gyorsítótár" a lekérdezési karakterlánc-gyorsítótár oldalon néven ismert. 
+ Kizárás | Azt jelzi, hogy a gyorsítótár-kulcs csak a megadott paraméterek nem. Minden más lekérdezési karakterlánc-paraméter szerepel a gyorsítótár-kulcsot. 
+ Az összes kihagyása  |Azt jelzi, hogy az összes lekérdezési karakterlánc paraméterei nem tartoznak a gyorsítótár-kulcsot. Ez a konfiguráció másolatot készít a "standard-gyorsítótár" alapértelmezett gyorsítótárazásának a lekérdezési karakterlánc-gyorsítótár oldalon.  
 
-HTTP szabálymotor hatványa testreszabása, amelyben lekérdezési karakterláncok gyorsítótárazása megvalósítása módon teszi lehetővé. Megadhatja például, hogy az egyes helyek vagy fájltípusok lekérdezési karakterláncok gyorsítótárazása csak végezhető.
+A szabályok motor testreszabása, amelyben lekérdezési karakterláncok gyorsítótárazása megvalósítása módon teszi lehetővé. Megadhatja például, hogy csak az egyes helyek vagy fájltípusok lekérdezési karakterláncok gyorsítótárazása történik.
 
-Ha azt szeretné, a lekérdezési karakterlánc a "no-cache" a lekérdezési karakterlánc-gyorsítótár oldalon néven gyorsítótárazásának másolása, majd szüksége lesz egy szabály létrehozására, amely egy URL-cím lekérdezés helyettesítő egyezés feltételt, valamint a Mellőzés gyorsítótár szolgáltatás tartalmaz. A lekérdezés helyettesítő URL-cím egyezik feltétel csillag (*) kell megadni.
+A "no-cache" lekérdezési karakterláncot a lekérdezés-karakterlánc-gyorsítótár oldalon gyorsítótárazásának duplikálásához hozzon létre egy szabályt, amely egy URL-cím lekérdezés helyettesítő egyezés feltételt, valamint a Mellőzés gyorsítótár szolgáltatás tartalmaz. Állítsa be az URL-cím lekérdezés helyettesítő egyezés feltétel csillagot (*).
 
 #### <a name="sample-scenarios"></a>Mintaforgatókönyvek
 
 A következő példa a szolgáltatáshoz tartozó biztosít egy kérelemmintát és az alapértelmezett gyorsítótár-kulcs:
 
-- **Mintakérelem:** http://wpc.0001.&lt; Tartomány&gt;/800001/Origin/folder/asset.htm?sessionid=1234 & nyelvi = EN & userid = 01
+- **Sample request:** http://wpc.0001.&lt;Domain&gt;/800001/Origin/folder/asset.htm?sessionid=1234&language=EN&userid=01
 - **Alapértelmezett gyorsítótár-kulcs:** /800001/Origin/folder/asset.htm
 
 ##### <a name="include"></a>Belefoglalás
@@ -383,13 +383,13 @@ Ez a fajta konfiguráció a következő lekérdezési karakterlánc paraméter g
 ### <a name="cache-key-rewrite"></a>Gyorsítótár-kulcs átdolgozás
 **Cél:** újraírja a kérelemhez társított gyorsítótár-kulcs.
 
-A gyorsítótár kulcsának pedig a relatív azonosító egy eszköz gyorsítótárazás céljára. Ez azt jelenti a kiszolgálók ellenőrzi, hogy egy eszköz elérési úttal megfelelően gyorsítótárazott verzió a gyorsítótár-kulcs által definiált konfigurációjának kialakításához.
+A gyorsítótár kulcsának pedig a relatív azonosító egy eszköz gyorsítótárazás céljára. Ez azt jelenti a kiszolgálók ellenőrizze az elérési úttal megfelelően eszköz gyorsítótárazott verzió a gyorsítótár-kulcs által definiált konfigurációjának kialakításához.
 
 Ez a szolgáltatás konfigurálása a következő beállításokat is meghatározhat:
 
 Beállítás|Leírás
 --|--
-Eredeti elérési útja| A relatív elérési út megadása, amelynek gyorsítótárkulcshoz felülíródik kérelmek típusú. Relatív elérési útnak egy alap forrás elérési útvonalának kiválasztásával, és egy Reguláriskifejezés-mintának majd meghatározása definiálhatók.
+Eredeti elérési útja| A relatív elérési út megadása, amelynek gyorsítótárkulcshoz rendszer újraírja kérelmek típusú. Relatív elérési útnak egy alap forrás elérési útvonalának kiválasztásával, és egy Reguláriskifejezés-mintának majd meghatározása definiálhatók.
 Új elérési útja|Adja meg az új gyorsítótár-kulcs relatív elérési útja. Relatív elérési útnak egy alap forrás elérési útvonalának kiválasztásával, és egy Reguláriskifejezés-mintának majd meghatározása definiálhatók. A relatív elérési út dinamikusan összeállított változók HTTP használatával
 **Alapértelmezés:** egy kérelem gyorsítótár-kulcs határozza meg a kérelem URI-azonosítója.
 
@@ -422,7 +422,7 @@ A részleges gyorsítótár-tévesztései a gyorsítótár állapota az eszköz,
 This feature is not available for the ADN platform. The typical traffic on this platform consists of relatively small assets. The size of the assets served through these platforms helps mitigate the effects of partial cache misses, since the next request will typically result in the asset being cached on that POP.
 
 --->
-A részleges gyorsítótár-tévesztései rendszerint azért fordul elő, miután a felhasználó megszakít egy letölthető vagy eszközök kizárólag kért tartomány HTTP-kérelmek használatával. Ez rendkívül nagy eszközök esetén a leghasznosabb ahol felhasználók nem általában letöltik azokat (például videók) szolgáltatásra. Ennek köszönhetően ez a funkció alapértelmezés szerint engedélyezve van a HTTP nagy platformon. Le van tiltva az összes többi platformon.
+A részleges gyorsítótár-tévesztései rendszerint azért fordul elő, miután a felhasználó megszakít egy letölthető vagy eszközök kizárólag kért tartomány HTTP-kérelmek használatával. Ez a funkció akkor a leghasznosabb nagy eszközök, amelyek általában nincsenek letöltve (például videók) szolgáltatásra. Ennek köszönhetően ez a funkció alapértelmezés szerint engedélyezve van a HTTP nagy platformon. Le van tiltva az összes többi platformon.
 
 Tartsa meg az alapértelmezett konfigurációt, a HTTP nagy platform, mivel csökkenti az ügyfél eredeti kiszolgálóra, és növeli a sebesség, amellyel az ügyfelek a tartalom letöltése.
 
@@ -431,7 +431,7 @@ Mely gyorsítótárában beállítások követi módon, mert ez a funkció nem r
 Érték|Eredmény
 --|--
 Engedélyezve|Visszaállítja az alapértelmezett viselkedés. Az alapértelmezett viselkedés kényszerítheti a peremhálózati kiszolgáló a forráskiszolgálóról az eszköz a háttérben történő elindítására. Mely után az eszköz a helyi gyorsítótárban a peremhálózati kiszolgáló lesz.
-Letiltva|Megakadályozza, hogy egy biztonsági kiszolgálót az az eszköz a háttérben történő végrehajtásához. Ez azt jelenti, hogy az adott régió eszköz a következő kérés hatására egy biztonsági kiszolgálót, hogy a kéréssel az ügyfél eredeti kiszolgálóra.
+Letiltva|Megakadályozza, hogy egy biztonsági kiszolgálót az az eszköz a háttérben történő végrehajtásához. Az eredménye, hogy az adott régió eszköz a következő kérés hatására egy biztonsági kiszolgálót, hogy a kéréssel az ügyfél eredeti kiszolgálóra.
 
 **Alapértelmezés:** engedélyezve van.
 
@@ -441,7 +441,7 @@ Letiltva|Megakadályozza, hogy egy biztonsági kiszolgálót az az eszköz a há
 
 ---
 ### <a name="compress-file-types"></a>Fájltípusok tömörítése
-**Cél:** határozza meg a fájlformátumokat, amelyek tömörítése a kiszolgálón.
+**Cél:** formátumú fájlokat a tömörített fájlok meghatározása a kiszolgálón.
 
 Egy fájl formátum használatával az Internet az adathordozó típusát (például Content-Type) adható meg. Internet médiatípus nincs platformfüggetlen metaadatok, amely lehetővé teszi a kiszolgálók egy adott eszköz a fájlformátum azonosításához. Közös Internet adathordozó-típusok listája lejjebb tekinthetők meg.
 
@@ -450,15 +450,15 @@ Internet adathordozó-típus|Leírás
 egyszerű szöveg|Egyszerű szöveges fájlokról
 text/html| HTML-fájlok
 Text/css|Egymásra épülő stíluslap (CSS)
-alkalmazás/x-javascript|Javascript
+application/x-javascript|Javascript
 alkalmazás/javascript|Javascript
 Kapcsolatos információkat:
 
 - Adjon meg egy szóköz egyenként a határoló többféle adathordozó-típust. 
-- Ez a funkció csak ügy módosul, amelynek mérete 1 MB-nál kevesebb eszközök. A kiszolgálók nagyobb eszközök nem lesznek tömörítve.
-- Bizonyos típusú tartalmakra, például a video-lemezképek és lejátszása eszközök (például JPG, MP3, MP4 stb.), már tömörített. Ilyen típusú eszközök további tömörítés nem jelentősen romolhat méretét. Ezért ajánlott, hogy nem engedélyezi az ilyen típusú eszközök tömörítést.
+- Ez a funkció csak tömöríti az eszközök, amelynek mérete legalább 1 MB. A kiszolgálók nem tömöríti nagyobb eszközök.
+- Bizonyos típusú tartalmakra, például a video-lemezképek és lejátszása eszközök (például JPG, MP3, MP4 stb.), már tömörített. Ilyen típusú eszközök további tömörítés nem jelentősen romolhat, fájlméret, mert javasoljuk, hogy nem engedélyezi a tömörítési rajtuk.
 - Helyettesítő karakterek, például a csillag, nem támogatottak.
-- Ez a funkció hozzáadása egy szabályhoz, előtt győződjön meg arról, hogy állítsa a tömörítési letiltott beállítás a tömörítési oldalon, a platform, amelyhez ez a szabály lesz alkalmazva.
+- Csak ez a szolgáltatás hozzáadni egy szabályt, győződjön meg arról, hogy állítsa a tömörítési letiltott beállítás a tömörítési oldalon, a platform, amelyekre ez a szabály vonatkozik.
 
 [Lap tetejére](#azure-cdn-rules-engine-features)
 
@@ -470,22 +470,22 @@ Kapcsolatos információkat:
 
 Az egyéni mező határozza meg, mely kérés- és a fejléc értékei tárolódnak a naplófájlok teszi lehetővé.
 
-Alapértelmezés szerint az egyéni mező neve "x-ec_custom-1." Ez a mező nevét azonban testre szabható a nyers naplófájl-beállítások lapon.
+Alapértelmezés szerint az egyéni mező neve "x-ec_custom-1." Ez a mező nevét testre szabható a nyers naplófájl-beállítások lapon.
 
-A formázás, hogy adja meg a kérés- és válaszfejlécekről használata javasolt van megadva.
+A kérés- és válaszfejlécekről megadásának formátumát az alábbiak szerint:
 
 Fejléc típusa|Formátum|Példák
 -|-|-
-Fejléc|%{[RequestHeader]()}[i]() | A(z) % {elfogadja-kódolás} i <br/> {Hivatkozó} i <br/> A(z) % {engedélyezési} i
-Válaszfejléc|%{[ResponseHeader]()}[o]()| A(z) % {kora} o <br/> A(z) % {content-Type} o <br/> A(z) % {cookie-k} o
+Fejléc|%{[RequestHeader]()}[i]() | %{Accept-Encoding}i <br/> {Hivatkozó} i <br/> %{Authorization}i
+Válaszfejléc|%{[ResponseHeader]()}[o]()| %{Age}o <br/> %{Content-Type}o <br/> %{Cookie}o
 
 Kapcsolatos információkat:
 
 - Egy egyéni napló mező fejlécmezők és egyszerű szöveg tetszőleges kombinációját tartalmazhatja.
 - Az ebben a mezőben érvényes karakterek a következők: alfanumerikus (0-9, a – z és A-Z), kötőjeleket, kettőspontokat, pontosvesszővel kell elválasztani, aposztrófot, vesszővel válassza el egymástól, időszakok, aláhúzásjeleket, egyenlőségjelet, kerek zárójeleket tartalmazhatnak, zárójelek és szóközöket. A százalékos szimbólum és a kapcsos zárójelek csak akkor vannak engedélyezve, ha egy fejlécmező meghatározására szolgál.
 - A megadott fejléc mezők helyesírás meg kell egyeznie a kívánt kérelem/válasz-fejléc nevét.
-- Ha azt szeretné, több fejléc adhatja meg, majd javasoljuk, hogy az elválasztó ezzel jelezheti minden fejléc. Használhat például rövidítése minden fejléc. Szintaxis lejjebb tekinthetők meg.
-    - AE: % {elfogadja-kódolás} i A: % {engedélyezési} i ki: % {Content-Type} o 
+- Ha meg szeretné határozni több fejlécek, a elválasztó ezzel jelezheti minden fejléc. Használhat például rövidítése minden fejléc:
+    - AE: %{Accept-Encoding}i A: %{Authorization}i CT: %{Content-Type}o 
 
 **Alapértelmezett érték:** -
 
@@ -495,7 +495,7 @@ Kapcsolatos információkat:
 
 ---
 ### <a name="debug-cache-response-headers"></a>Gyorsítótár válaszfejlécek hibakeresése
-**Cél:** határozza meg, hogy a válasz magukban az X-EK-Debug válaszfejléc, amely információt nyújt a gyorsítótár-házirend a kért objektum.
+**Cél:** határozza meg, hogy választ tartalmazhatnak az X-EK-Debug válaszfejléc, amely információt nyújt a gyorsítótár-házirend a kért objektum.
 
 Hibakeresési gyorsítótári választ fejlécek fog szerepelni a válasz a következő két teljesülése esetén:
 
@@ -537,7 +537,7 @@ Kapcsolatos információkat:
 
 - Egy alapértelmezett belső maximális-életkora 7 napos időszak a kéréseket, amely nincs hozzárendelve egy maximális-életkora arra utal, hogy a beállítást "Ki" időegységét rendeli a `Cache-Control` vagy `Expires` fejléc.
 - Mely gyorsítótárában beállítások követi módon, mert ez a funkció nem rendelhető hozzá a következő feltételek egyeznek: 
-    - Peremhálózati 
+    - Edge 
     - CNAME
     - Kérelem fejléc szövegkonstans
     - Kérelem fejléc helyettesítő
@@ -578,7 +578,7 @@ Az ilyen típusú konfigurációs eléréséhez legkönnyebben helyezhető el a 
 Érték|Eredmény
 --|--
 Felülírás|Biztosítja, hogy a következő műveletek akkor kerül sor:<br/>-Felülírja a `Expires` fejléc az eredeti kiszolgálón állítja elő.<br/>-Hozzáadja a `Expires` fejléc hozott létre a külső maximális-életkora szolgáltatást, hogy a válasz.
-Továbbítása|Biztosítja, hogy a `Expires` a külső maximális-életkora szolgáltatás által előállított fejléc soha nem kerül a választ. <br/> Ha a forráskiszolgáló hoz létre egy `Expires` fejléc, akkor továbbítja a felhasználó. <br/>Ha a forráskiszolgáló nem hoz egy `Expires` fejlécben, akkor ez a beállítás okozhat a válasz fejléce nem tartalmazza egy `Expires` fejléc.
+Átengedéses|Biztosítja, hogy a `Expires` a külső maximális-életkora szolgáltatás által előállított fejléc soha nem kerül a választ. <br/> Ha a forráskiszolgáló hoz létre egy `Expires` fejléc, akkor továbbítja a felhasználó. <br/>Ha a forráskiszolgáló nem hoz egy `Expires` fejlécben, akkor ez a beállítás okozhat a válasz fejléce nem tartalmazza egy `Expires` fejléc.
 Ha hiányoznak hozzáadása| Ha egy `Expires` fejléc nem érkezett meg a forráskiszolgálóról, akkor ez a beállítás nagyobb a `Expires` a külső maximális-életkora szolgáltatás által előállított fejléc. Ez a beállítás akkor hasznos ahhoz, hogy az összes eszköz kioszt egy `Expires` fejléc.
 Eltávolítás| Biztosítja, hogy egy `Expires` fejléc nem része a válasz fejrészét. Ha egy `Expires` fejléc már hozzá van rendelve, akkor a rendszer eltávolítja a válasz fejrészét.
 
@@ -641,7 +641,7 @@ Kapcsolatos információkat:
 
 - Az attribútum "off" időegységét letiltja ezt a szolgáltatást. Belső maximális-életkora időközönkénti nem rendeli hozzá a kért eszközök. Ha az eredeti fejléc nem tartalmaz a gyorsítótárazási információkat, majd az eszköz a gyorsítótárba fognak kerülni az alapértelmezett belső maximális-életkora funkció az aktív beállításnak megfelelően.
 - Mely gyorsítótárában beállítások követi módon, mert ez a funkció nem rendelhető hozzá a következő feltételek egyeznek: 
-    - Peremhálózati 
+    - Edge 
     - CNAME
     - Kérelem fejléc szövegkonstans
     - Kérelem fejléc helyettesítő
@@ -706,7 +706,7 @@ Kapcsolatos információkat:
 - Ez a szolgáltatás érvényes állapotkódjai készletét vannak: 200, 203, 300, 301, 302, 305, 307, 400, 401-es, 402, 403-as, 404, 405, 406, 407, 408, 409, 410, 411, 412, 413, 414, 415, 416, 417, 500, 501, 502-es, 503-as, 504, és 505.
 - Üres értékre állításával tiltsa le ezt a szolgáltatást.
 - Mely gyorsítótárában beállítások követi módon, mert ez a funkció nem rendelhető hozzá a következő feltételek egyeznek: 
-    - Peremhálózati 
+    - Edge 
     - CNAME
     - Kérelem fejléc szövegkonstans
     - Kérelem fejléc helyettesítő
@@ -757,7 +757,7 @@ Kapcsolatos információkat:
 
 - Az attribútum "off" időegységét letiltja ezt a szolgáltatást. A gyorsítótárazott eszköz nem tudja megjeleníteni a normál lejárati ideje túl.
 - Mely gyorsítótárában beállítások követi módon, mert ez a funkció nem rendelhető hozzá a következő feltételek egyeznek: 
-    - Peremhálózati 
+    - Edge 
     - CNAME
     - Kérelem fejléc szövegkonstans
     - Kérelem fejléc helyettesítő
@@ -826,12 +826,12 @@ Kapcsolatos információkat:
 - Eset nem veszi figyelembe fejléc azonosítása céljából. Például a következő lehetőségek bármelyikét a `Cache-Control` fejlécnév azonosításához használható:
     - a cache-control
     - A CACHE-CONTROL
-    - a cachE-Control
+    - cachE-Control
 - A fejléc neve megadásakor csak alfanumerikus karaktereket, kötőjelek és aláhúzásjelek használja.
 - A fejléc törlése megakadályozza azt a peremhálózati kiszolgáló az eredeti kiszolgálóra történő továbbítását.
 - A következő fejlécek fenntartva, ezért ezt a funkciót nem lehet módosítani:
     - továbbított
-    - állomás
+    - gazdagép
     - keresztül
     - Figyelmeztetés
     - x-továbbított-számára
@@ -864,7 +864,7 @@ Kapcsolatos információkat:
 - Eset nem veszi figyelembe fejléc azonosítása céljából. Például a következő lehetőségek bármelyikét a `Cache-Control` fejlécnév azonosításához használható:
     - a cache-control
     - A CACHE-CONTROL
-    - a cachE-Control
+    - cachE-Control
 - A fejléc törlése megakadályozza a kérelmező történő továbbítását.
 - A következő fejlécek fenntartva, ezért ezt a funkciót nem lehet módosítani:
     - fogadja el-kódolás
@@ -873,7 +873,7 @@ Kapcsolatos információkat:
     - tartalom kódolása
     - tartalom hosszúságú
     - tartalom tartományon.
-    - Dátum
+    - dátum
     - kiszolgáló
     - pótkocsi
     - Transfer-encoding
@@ -981,14 +981,14 @@ Kapcsolatos információkat:
 
 A fejléc neve beállítás határozza meg az ügyfél IP-cím tároló egyéni kérelemfejléc nevét.
 
-Ez a funkció lehetővé teszi, hogy az ügyfél eredeti kiszolgálóra megállapítása a ügyfél IP-címek egyéni fejléc keresztül. Ha a kérés van kiszolgálása a gyorsítótárból, majd az eredeti kiszolgálóra nem figyelmeztet az ügyfél IP-cím. Ezért ajánlott, hogy ez a szolgáltatás használható ADN vagy eszközök, amelyek nem kerülnek a gyorsítótárba.
+Ez a funkció lehetővé teszi, hogy az ügyfél eredeti kiszolgálóra megállapítása a ügyfél IP-címek egyéni fejléc keresztül. Ha a kérés van kiszolgálása a gyorsítótárból, majd az eredeti kiszolgálóra nem figyelmeztet az ügyfél IP-cím. Ezért ajánlott, hogy ez a szolgáltatás használható-e, amely nem gyorsítótárazott eszközökkel.
 
 Győződjön meg arról, hogy a megadott fejléc neve nem egyezik a következő bármelyike:
 
 - Standard kérelem nevével. Szokásos fejlécben neveinek listáját található [RFC 2616](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).
 - Fenntartott nevek:
     - továbbítja a
-    - állomás
+    - gazdagép
     - eltérő
     - keresztül
     - Figyelmeztetés
@@ -1060,10 +1060,10 @@ Válaszkód|Válasz neve|Leírás
 ----------------|-----------|--------
 301|Végleg áthelyezése|Ez az állapot kód jogosulatlan felhasználók hely fejlécben megadott URL-címre irányítja át.
 302|Sikeres keresés|Ez az állapot kód jogosulatlan felhasználók hely fejlécben megadott URL-címre irányítja át. Ezzel az állapotkóddal az iparági szabványos módjáról irányítja át a felhasználókat a rendszer.
-307|Ideiglenes átirányítás|Ez az állapot kód jogosulatlan felhasználók hely fejlécben megadott URL-címre irányítja át.
+307|Temporary Redirect|Ez az állapot kód jogosulatlan felhasználók hely fejlécben megadott URL-címre irányítja át.
 401|Nem engedélyezett|Ez az állapot kód kombinálás a WWW-Authenticate válaszfejléc lehetővé teszi egy felhasználót a hitelesítéshez.
 403|Tiltott|Ez az a szabványos 403-as tiltott állapot üzenet egy jogosulatlan felhasználó által látható, amikor megpróbál hozzáférni a védett tartalmakat.
-404|A fájl nem található|Ez az állapot kód azt jelzi, hogy a HTTP-ügyfél képes kommunikálni a kiszolgálóval volt, de a kért tartalomhoz nem található.
+404|Nem található a fájl|Ez az állapot kód azt jelzi, hogy a HTTP-ügyfél képes kommunikálni a kiszolgálóval volt, de a kért tartalomhoz nem található.
 
 #### <a name="url-redirection"></a>Átirányítási URL-címe
 
@@ -1079,7 +1079,7 @@ Ha az egy URL-címe nincs definiálva a következő 3xx állapotkódot, majd a s
 
 A választható állomásfejléc-érték a beállítás lehetővé teszi, alfanumerikus karaktereket, idézőjelek és szóközöket.
 
-#### <a name="authentication"></a>Authentication
+#### <a name="authentication"></a>Hitelesítés
 
 Ez a funkció támogatja a funkció a WWW-Authenticate fejléc szerepeljen válaszol a jogkivonat-alapú hitelesítés által védett tartalom jogosulatlan kérelmet. Ha a WWW-Authenticate fejléc már be lett állítva a "basic" a konfigurációt, majd a jogosulatlan felhasználók bekéri a fiók hitelesítő adatait.
 
@@ -1152,26 +1152,26 @@ Forrás & minta| Ezek a beállítások megadása a kérelem URI-minta, amely azo
 Cél| Határozza meg azt az URL-címet, amelyre a fenti kérelmek irányítja. <br/> Az URL-cím használatával dinamikusan össze: <br/> -A reguláris kifejezési minta <br/>-HTTP változók <br/> Helyettesítse be a cél minta $ használatával a forrás mintában rögzített értékek _n_  ahol  _n_  azonosítja a sorrendet, amelyben rögzítésének értéket. $1 például közben $2 második értékét jelöli az adatforrás a mintában rögzített első értékét jelöli. <br/> 
 Ajánlott egy abszolút URL-CÍMÉT használja. Egy relatív URL-cím használatát előfordulhat, hogy CDN URL-címének átirányítása elérési út érvénytelen.
 
-**Mintaforgatókönyv**
+**Sample Scenario**
 
 Ez a példa bemutatja, hogyan kell átirányítási CNAME URL-címet, amely a CDN alap URL-cím él: http://marketing.azureedge.net/brochures
 
 Kérelmek jogosult irányítja át a alap peremhálózati CNAME URL-cím: http://cdn.mydomain.com/resources
 
-Az URL-cím átirányítást a következő konfigurációs keresztül valósítható meg:![](./media/cdn-rules-engine-reference/cdn-rules-engine-redirect.png)
+Az URL-cím átirányítást a következő konfigurációs keresztül valósítható meg: ![](./media/cdn-rules-engine-reference/cdn-rules-engine-redirect.png)
 
 **Kulcs mutat:**
 
 - Az átirányítási URL-cím szolgáltatást határozza meg a kérelem URL-címek, amelyek irányítja. Ennek eredményeképpen további egyezés feltételek esetén nincs szükség. Bár a egyeznek az állapot "Always" van definiálva, csak az ügyfél "marketing" eredeti "brosúrák" mappájába pont kérelmek irányítja. 
 - Minden egyező kérések a szélén CNAME URL-címet a cél-beállítás irányítja. 
     - A minta #1. forgatókönyv: 
-        - Mintakérelem (CDN URL): http://marketing.azureedge.net/brochures/widgets.pdf 
-        - Kérelem URL-CÍMÉT (után átirányítási): http://cdn.mydomain.com/resources/widgets.pdf  
+        - Sample request (CDN URL): http://marketing.azureedge.net/brochures/widgets.pdf 
+        - Request URL (after redirect): http://cdn.mydomain.com/resources/widgets.pdf  
     - A minta #2. forgatókönyv: 
-        - Mintakérelem (peremhálózati CNAME URL): http://marketing.mydomain.com/brochures/widgets.pdf 
-        - Kérelem URL-CÍMÉT (után átirányítási): http://cdn.mydomain.com/resources/widgets.pdf mintaforgatókönyv
+        - Sample request (Edge CNAME URL): http://marketing.mydomain.com/brochures/widgets.pdf 
+        - Request URL (after redirect): http://cdn.mydomain.com/resources/widgets.pdf  Sample scenario
     - A minta #3. forgatókönyv: 
-        - Mintakérelem (peremhálózati CNAME URL): http://brochures.mydomain.com/campaignA/final/productC.ppt 
+        - Sample request (Edge CNAME URL): http://brochures.mydomain.com/campaignA/final/productC.ppt 
         - Kérelem URL-CÍMÉT (után átirányítási): http://cdn.mydomain.com/resources/campaignA/final/productC.ppt  
 - A kérelem rendszer (% {séma}) változó lett kihasználhatók a cél beállítás. Ez biztosítja, hogy a kérelem sémát az átirányítást követően változatlan marad.
 - A rögzítette a kérelem URL-szegmensek lesz hozzáfűzve az új URL-cím segítségével "$1."
@@ -1200,13 +1200,13 @@ Ez a példa bemutatja, hogyan CNAME URL-címet, amely a CDN alap URL-cím él á
 
 Kérelmek jogosult irányítja át a alap peremhálózati CNAME URL-cím: http://MyOrigin.azureedge.net/resources/
 
-Az URL-cím átirányítást a következő konfigurációs keresztül valósítható meg:![](./media/cdn-rules-engine-reference/cdn-rules-engine-rewrite.png)
+Az URL-cím átirányítást a következő konfigurációs keresztül valósítható meg: ![](./media/cdn-rules-engine-reference/cdn-rules-engine-rewrite.png)
 
 **Mintaforgatókönyv 2**
 
 A példa bemutatja, hogyan átirányítására él kisbetűssé reguláris kifejezésekkel nagybetűs CNAME URL-CÍMÉT.
 
-Az URL-cím átirányítást a következő konfigurációs keresztül valósítható meg:![](./media/cdn-rules-engine-reference/cdn-rules-engine-to-lowercase.png)
+Az URL-cím átirányítást a következő konfigurációs keresztül valósítható meg: ![](./media/cdn-rules-engine-reference/cdn-rules-engine-to-lowercase.png)
 
 
 **Kulcs mutat:**
@@ -1247,9 +1247,9 @@ Ez a funkció tartalmazza a megfelelő feltételek, amelyeknek teljesülniük ke
 
 </br>
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Szabályok motor referencia](cdn-rules-engine-reference.md)
 * [Szabályok motor feltételes kifejezések](cdn-rules-engine-reference-conditional-expressions.md)
 * [Szabályok motor egyezés feltételek](cdn-rules-engine-reference-match-conditions.md)
-* [A szabályok használata alapértelmezett HTTP működés felülbírálata](cdn-rules-engine.md)
+* [A szabályok használata HTTP működés felülbírálásához](cdn-rules-engine.md)
 * [Az Azure CDN áttekintése](cdn-overview.md)

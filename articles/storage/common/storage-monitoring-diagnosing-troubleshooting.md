@@ -14,22 +14,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2017
 ms.author: fhryo-msft
-ms.openlocfilehash: bf6cf780867f9ecf5c5be93dc28fe3e00a0c3f82
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: b89071048594e1e11efb321da3d0b48005824b46
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Microsoft Azure Storage felügyelete, diagnosztizálása és hibaelhárítása
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
 
 ## <a name="overview"></a>Áttekintés
-Diagnosztizálása és elhárítása egy üzemeltetett felhőalapú környezetek elosztott alkalmazásban lévő lehet bonyolultabb, mint a hagyományos környezetekben. Alkalmazások PaaS vagy infrastruktúra-szolgáltatási infrastruktúra, a helyszíni, egy mobileszközön, vagy ezek valamilyen kombinációjára is telepíthető. Általában az alkalmazás hálózati forgalmat is haladnak át a nyilvános és titkos és az alkalmazás használhat több tárolási technológiák, például a Microsoft Azure Storage-táblákat, BLOB, üzenetsorok vagy fájlok mellett egyéb adatokat tárolja, például a relációs- és dokumentumszolgáltatások adatbázisok.
+Diagnosztizálása és elhárítása egy üzemeltetett felhőalapú környezetek elosztott alkalmazásban lévő lehet bonyolultabb, mint a hagyományos környezetekben. Alkalmazások telepíthetők a PaaS vagy IaaS-infrastruktúrájában a helyszíni, egy mobileszközön, vagy az ezekben a környezetekben kombinációját. Általában az alkalmazás hálózati forgalmat is haladnak át a nyilvános és titkos és az alkalmazás használhat több tárolási technológiák, például a Microsoft Azure Storage-táblákat, BLOB, üzenetsorok vagy fájlok mellett egyéb adatokat tárolja, például a relációs- és dokumentumszolgáltatások adatbázisok.
 
 Az ilyen alkalmazásokat kezeléséhez sikeresen kell proaktív módon figyelheti azokat, és segít megérteni, hogyan diagnosztizálásához és hibaelhárításához őket, és a függő technológiák minden szempontját. Azure Storage szolgáltatás felhasználóit inkább folyamatosan figyelni a váratlan viselkedés (például a lassabb, mint a szokásos válaszidő) módosításai az alkalmazás által tárolási szolgáltatásokat, és használatát naplózási részletes adatok gyűjtéséhez és részletesen probléma elemzéséhez. A diagnosztika figyelés és naplózás beszerezte nyújt segítséget az alkalmazás észlelt a probléma okának megállapításához. Ezután hibaelhárítást, és határozza meg a megfelelő lépéseket, amelyekkel megoldásáról. Az Azure Storage alapszintű Azure-szolgáltatás, és az ügyfelek központi telepítése az Azure infrastruktúra-megoldások többsége fontos részét képezi. Az Azure Storage kínálja egyszerűbbé teheti a figyelése, diagnosztizálása és a felhőalapú alkalmazásokban tárolási problémák elhárításához.
 
 > [!NOTE]
-> Az Azure-fájlok nem támogatja a jelenleg naplózását.
+> Az Azure Files nem támogatja a jelenleg naplózását.
 > 
 
 Gyakorlati végpont Azure Storage-alkalmazások hibáinak elhárításához, váltásról [-végpontok hibaelhárítása az Azure Storage Metrics és a naplózás, az AzCopy és a Message Analyzer segítségével](../storage-e2e-troubleshooting.md).
@@ -66,10 +66,11 @@ Gyakorlati végpont Azure Storage-alkalmazások hibáinak elhárításához, vá
   * [Az ügyfél HTTP 409 (Ütközés) üzeneteket fogad]
   * [metrika alacsony PercentSuccess vagy analytics naplóbejegyzések rendelkezik ClientOtherErrors működésére állapotú tranzakció]
   * [Teljesítmény-mérőszámait váratlan növekedését megjelenítése a tárolási kapacitás-használat]
-  * [Váratlan vesznek el virtuális gépeken, amelyek csatlakoztatott virtuális merevlemezek nagy számú tapasztal]
   * [A probléma merül fel a fejlesztési vagy tesztelési a storage emulator használatával]
   * [.NET-keretrendszerhez készült Azure SDK telepítése problémák áll kapcsolatban.]
   * [Van egy másik probléma storage szolgáltatással]
+  * [A Windows virtuális gépek virtuális merevlemezek hibaelhárítása](../../virtual-machines/windows/troubleshoot-vhds.md)   
+  * [A Linux virtuális gépek virtuális merevlemezek hibaelhárítása](../../virtual-machines/linux/troubleshoot-vhds.md)
   * [A Windows Azure fájlok problémák elhárítása](../files/storage-troubleshoot-windows-file-connection-problems.md)   
   * [A Linux és Azure fájlok problémák elhárítása](../files/storage-troubleshoot-linux-file-connection-problems.md)
 * [mellékletek]
@@ -87,7 +88,7 @@ Ez az útmutató bemutatja, hogyan használja a szolgáltatások, például az A
 Ez az útmutató elsősorban az online szolgáltatások, Azure Storage szolgáltatásainak és az informatikai szakemberek felelős, ilyen online szolgáltatások kezelésére szolgáló használó fejlesztők által olvasandó készült. Ez az útmutató a céljai a következők:
 
 * Segíti a állapotának és teljesítményének az Azure Storage-fiókokat.
-* Biztosítja, hogy a szükséges eljárások és eszközök segítségével eldöntheti, hogy ha egy hiba vagy probléma merült fel a kérelmet az Azure Storage vonatkozik.
+* Biztosítja, hogy a szükséges eljárások és eszközök segítségével eldöntheti, hogy egy hiba vagy probléma merült fel a kérelmet az Azure Storage vonatkozik.
 * Biztosítja, hogy végrehajthatóként útmutatással Azure tárolással kapcsolatos problémák megoldása érdekében.
 
 ### <a name="how-this-guide-is-organized">Hogyan szerveződik, ez az útmutató</a>
@@ -102,7 +103,7 @@ A szakasz "[hibaelhárítási útmutatás]" nyújt hibaelhárítási útmutatót
 A "[mellékletek]" egyéb eszközzel, Wireshark vagy netmon eszközzel elemzése hálózati csomagadatok, a Fiddler a HTTP/HTTPS-üzenetek, elemzése és a Microsoft Message Analyzert használatával történik az adatok naplózása információkat tartalmaznak.
 
 ## <a name="monitoring-your-storage-service">A storage szolgáltatás figyelése</a>
-Ha ismeri a Windows Teljesítményfigyelő, tulajdonképpen Storage Metrics, hogy a Windows Teljesítményfigyelő-számlálókból egy Azure Storage megfelelője. Storage Metrics található széles választékát metrikák (számlálók a Windows Teljesítményfigyelő terminológia) például a szolgáltatás rendelkezésre állása, a szolgáltatási kérelmek teljes száma, vagy a szolgáltatáshoz tartozó sikeres kérelmek aránya. Az elérhető mérőszámok teljes listáját lásd: [Storage Analytics metrikák táblaséma](http://msdn.microsoft.com/library/azure/hh343264.aspx). Megadhatja, hogy kívánja-e a tárolás szolgáltatás begyűjtése és összesítése metrikák minden órában vagy percben. Engedélyezheti őket, és figyelheti a storage-fiókok kapcsolatos további információkért lásd: [storage mérőszámainak engedélyezése és megtekintése a metrikai adatok](http://go.microsoft.com/fwlink/?LinkId=510865).
+Ha ismeri a Windows Teljesítményfigyelő, tulajdonképpen Storage Metrics, hogy a Windows Teljesítményfigyelő-számlálókból egy Azure Storage megfelelője. Storage Metrics például a szolgáltatás rendelkezésre állása, a szolgáltatási kérelmek teljes száma, vagy a szolgáltatáshoz tartozó sikeres kérelmek aránya (a Windows Teljesítményfigyelő terminológia számlálók) mérőszámok széles választékát található. Az elérhető mérőszámok teljes listáját lásd: [Storage Analytics metrikák táblaséma](http://msdn.microsoft.com/library/azure/hh343264.aspx). Megadhatja, hogy kívánja-e a tárolás szolgáltatás begyűjtése és összesítése metrikák minden órában vagy percben. Engedélyezheti őket, és figyelheti a storage-fiókok kapcsolatos további információkért lásd: [storage mérőszámainak engedélyezése és megtekintése a metrikai adatok](http://go.microsoft.com/fwlink/?LinkId=510865).
 
 Választhat, hogy mely óránkénti meg szeretne jeleníteni a metrikák a [Azure-portálon](https://portal.azure.com) és értesíthetők a rendszergazdák e-mailben, amikor egy óránkénti mérőszám eléri az adott szabályok konfigurálása. További információkért lásd: [riasztási értesítéseket kapni](/azure/monitoring-and-diagnostics/monitoring-overview-alerts). 
 
@@ -124,12 +125,12 @@ Az alábbi ábrán a diagramok bemutatják, hogyan átlagolási óránkénti met
 Ez a szakasz többi ismerteti, milyen, célszerű figyelemmel kísérni metrikák és okát.
 
 ### <a name="monitoring-service-health">Figyelési szolgáltatásának állapota</a>
-Használhatja a [Azure-portálon](https://portal.azure.com) a tároló szolgáltatás (és más Azure-szolgáltatások) állapotának megtekintéséhez a világ minden Azure régióban. Ez lehetővé teszi, hogy azonnal láthatja, ha a vezérlőn kívül problémát érinti a társzolgáltatás használhatja az alkalmazás a régióban.
+Használhatja a [Azure-portálon](https://portal.azure.com) a tároló szolgáltatás (és más Azure-szolgáltatások) állapotának megtekintéséhez a világ minden Azure régióban. Figyelési lehetővé teszi, hogy azonnal láthatja, ha a probléma a vezérlőn kívül érinti a társzolgáltatás a régióban, az alkalmazás használja.
 
 A [Azure-portálon](https://portal.azure.com) is biztosít a különböző Azure-szolgáltatások érintő incidensek értesítések.
 Megjegyzés: Ez az információ korábban rendelkezésre állt, jelszavat és az előzmények, a a [Azure szolgáltatás irányítópultját](http://status.azure.com).
 
-Amíg a [Azure-portálon](https://portal.azure.com) egészségügyi adatokat gyűjt a (belső kibővített figyelés), az Azure adatközpontjaiban belül is érdemes lehet egy kívül a módszert, amelyet rendszeres időközönként érni az Azure által üzemeltetett webalkalmazás több helyről szintetikus tranzakciók létrehozására bevezetése. A szolgáltatás által kínált [Dynatrace](http://www.dynatrace.com/en/synthetic-monitoring) és az Application Insights for Visual Studio Team Services példák a külső hátránya. A Visual Studio Team Services Application insights szolgáltatással kapcsolatos további információkért lásd: a függelék: "[5 függelék: figyelés az Application Insights for Visual Studio Team Services](#appendix-5)."
+Amíg a [Azure-portálon](https://portal.azure.com) egészségügyi adatokat gyűjt a (belső kibővített figyelés), az Azure adatközpontjaiban belül is érdemes lehet egy kívül a módszert, amelyet rendszeres időközönként érni az Azure által üzemeltetett webalkalmazás több helyről szintetikus tranzakciók létrehozására bevezetése. A szolgáltatás által kínált [Dynatrace](http://www.dynatrace.com/en/synthetic-monitoring) és az Application Insights for Visual Studio Team Services példák ezt a módszert használja. A Visual Studio Team Services Application insights szolgáltatással kapcsolatos további információkért lásd: a függelék: "[5 függelék: figyelés az Application Insights for Visual Studio Team Services](#appendix-5)."
 
 ### <a name="monitoring-capacity">Kapacitásának figyelése</a>
 Storage mérőszámainak csak tárolja a teljesítmény-mérőszámait a blob szolgáltatás, mert a blobok általában fiók tárolt adatok legnagyobb részét (a írásának időpontjában, nincs lehetőség Storage Metrics a figyelheti a táblák és a várólisták). Ezeket az adatokat a megtalálhatja a **$MetricsCapacityBlob** tábla, ha engedélyezte a Blob szolgáltatás figyelését. Storage mérőszámainak rögzíti az adatokat naponta egyszer, és használhatja a értékének a **RowKey** annak meghatározásához, hogy a sor tartalmaz-e olyan entitás, amely kapcsolódik a felhasználói adatok (érték **adatok**) vagy analitikai adatok (érték **analytics**). Minden tárolt entitás tárolókapacitást használt információkat tartalmaz (**kapacitás** bájtban mért) és a tárolók száma (**ContainerCount**) és a blobok (**ObjectCount**) a tárfiókot használja. További információ a kapacitási mérőszámokat tárolja a **$MetricsCapacityBlob** táblázatban, lásd: [Storage Analytics metrikák táblaséma](http://msdn.microsoft.com/library/azure/hh343264.aspx).
@@ -164,7 +165,7 @@ Az a [Azure-portálon](https://portal.azure.com), amelyek értesítést küldene
 A "[hibaelhárítási útmutatás]" című szakaszában talál néhány gyakori tárolási szolgáltatás problémákat a teljesítménnyel kapcsolatos ismerteti.
 
 ## <a name="diagnosing-storage-issues">Tárolási problémák diagnosztizálása</a>
-Számos módon, hogy előfordulhat, hogy tudomást hiba vagy probléma a alkalmazás is van, ezek közé tartoznak:
+Számos módon, hogy előfordulhat, hogy tudomást hiba vagy probléma az alkalmazás többek között:
 
 * Súlyos hiba, amely az alkalmazás összeomlik vagy nem működik.
 * Az eredeti értékeket az előző szakaszban leírtak szerint figyeli a metrikák a jelentős változtatások "[a tárolás szolgáltatás figyelése]."
@@ -181,14 +182,14 @@ Számos módon, hogy előfordulhat, hogy tudomást hiba vagy probléma a alkalma
 Az alábbi szakaszok felsorolják a követendő lépések diagnosztizálásához és hibaelhárításához minden ilyen négy kapcsolatos hibákat. A szakasz "[hibaelhárítási útmutatás]" Ez az útmutató későbbi részletgazdagabb a gyakori problémákat tapasztalhat.
 
 ### <a name="service-health-issues">Szolgáltatás ügynökállapottal kapcsolatos hibákkal</a>
-Szolgáltatás állapotával kapcsolatos problémák jellemzően a vezérlőn kívül. A [Azure-portálon](https://portal.azure.com) Azure szolgáltatásokkal, beleértve a tárolási szolgáltatások folyamatos problémákkal kapcsolatos információkat biztosít. Választotta írásvédett Georedundáns tárolás a tárfiók létrehozása után, ha az elsődleges helyen nem érhető el az adatok esetén az alkalmazás sikerült váltson ideiglenesen az írásvédett másolatát a másodlagos helyen. Ehhez az szükséges, az alkalmazás kell váltani az elsődleges és másodlagos tárolóhelyek használata között, és lehet csak olvasható adatok a csökkentett módban való működésre. Az Azure Storage ügyfélkódtáraival engedélyezi annak meghatározását, amely is olvasható másodlagos tárterületre abban az esetben, ha egy elsődleges tárolási való olvasás sikertelen újrapróbálkozási házirendje. Az alkalmazás is ismernie kell, hogy idővel konzisztenssé a másodlagos hely adatai. További információkért lásd a következő blogbejegyzésben [Azure tárolási redundancia lehetőségek és az írásvédett Georedundáns redundáns tárolás](https://blogs.msdn.microsoft.com/windowsazurestorage/2013/12/11/windows-azure-storage-redundancy-options-and-read-access-geo-redundant-storage/).
+Szolgáltatás állapotával kapcsolatos problémák jellemzően a vezérlőn kívül. A [Azure-portálon](https://portal.azure.com) Azure szolgáltatásokkal, beleértve a tárolási szolgáltatások folyamatos problémákkal kapcsolatos információkat biztosít. Választotta írásvédett Georedundáns tárolás a tárfiók létrehozása után, ha majd az adatok nem érhető el az elsődleges helyen, ha az alkalmazás válthat ideiglenesen az írásvédett másolatát a másodlagos helyen. Olvassa el a másodlagos adatbázisból, az alkalmazás kell váltani az elsődleges és másodlagos tárolóhelyek használata között, és lehet csak olvasható adatok a csökkentett módban való működésre. Az Azure Storage ügyfélkódtáraival engedélyezi annak meghatározását, amely is olvasható másodlagos tárterületre abban az esetben, ha egy elsődleges tárolási való olvasás sikertelen újrapróbálkozási házirendje. Az alkalmazás is ismernie kell, hogy idővel konzisztenssé a másodlagos hely adatai. További információkért lásd a következő blogbejegyzésben [Azure tárolási redundancia lehetőségek és az írásvédett Georedundáns redundáns tárolás](https://blogs.msdn.microsoft.com/windowsazurestorage/2013/12/11/windows-azure-storage-redundancy-options-and-read-access-geo-redundant-storage/).
 
 ### <a name="performance-issues">teljesítménnyel kapcsolatos problémák</a>
 Egy alkalmazás teljesítményének megítélése szubjektív lehet, főképp a felhasználó szemszögéből. Ezért fontos, hogy rendelkezzen olyan alapmértékekkel, amelyek segíthetnek a teljesítménnyel kapcsolatos problémák azonosításában. Számos tényező befolyásolhatja egy Azure storage szolgáltatás alkalmazás ügyfelek szemszögéből teljesítményére. Ezek a tényezők a társzolgáltatás, az ügyfél vagy a hálózati infrastruktúra; előfordulhat, hogy működik. Ezért fontos egy olyan stratégia, azonosítsa a felhasználót a teljesítménycsökkenés oka forrása.
 
 Miután azonosította a teljesítménycsökkenés oka a metrikák a oka valószínűleg helyét, majd használhatja a naplófájlok diagnosztizálásához és a probléma további hibaelhárításához kapcsolatos részletes információk.
 
-A szakasz "[hibaelhárítási útmutatás]" kapcsolatos néhány általános teljesítmény kapcsolatban, hogy ez az útmutató későbbi biztosít találkozhat.
+A szakasz "[hibaelhárítási útmutatás]" Ez az útmutató későbbi olyan általános teljesítménnyel kapcsolatos problémák merülhetnek fel további információt nyújt.
 
 ### <a name="diagnosing-errors">Hibák diagnosztizálása</a>
 Az alkalmazás felhasználók is értesíti az ügyfélalkalmazás által jelentett hibákat. Storage mérőszámainak rögzíti számát a tárolási szolgáltatások különböző típusok is, mint **NetworkError**, **ClientTimeoutError**, vagy **AuthorizationError**. Storage Metrics csak számát is különböző típusok rögzíti, miközben szerezhet be további részletes információkat az egyes kérelmek kiszolgálóoldali, az ügyféloldali és hálózati naplók megvizsgálásával. A tároló szolgáltatás által visszaadott HTTP-állapotkód rendszerében általában arra utal, hogy a kérelem sikertelenségének okát.
@@ -214,7 +215,7 @@ A "[hibaelhárítási útmutatás]" című szakaszában talál néhány gyakori 
 ### <a name="storage-logging-tools">Tárolási naplózási eszközök</a>
 Tároló-naplózás biztosítja a kiszolgálóoldali naplózása tárolási kérelmeket az Azure-tárfiókot. Kiszolgálóoldali naplózás engedélyezése és az adatok elérését az napló kapcsolatos további információkért lásd: [tárolási naplózás engedélyezése és használata naplóadatok](http://go.microsoft.com/fwlink/?LinkId=510867).
 
-A Storage ügyféloldali kódtára a .NET ügyféloldali napló adatokat gyűjthet, amelyek az alkalmazás által végrehajtott tárolási műveletek vonatkozik teszi lehetővé. További információkért lásd: [ügyféloldali naplózás a .NET a Storage ügyféloldali kódtára](http://go.microsoft.com/fwlink/?LinkId=510868).
+A Storage ügyféloldali kódtára a .NET ügyféloldali napló adatokat gyűjthet, amelyek az alkalmazás által végrehajtott tárolási műveletek vonatkozik teszi lehetővé. További információt a [.NET-es Storage-ügyfélkódtárral történő ügyféloldali naplózást](http://go.microsoft.com/fwlink/?LinkId=510868) ismertető szakaszban találhat.
 
 > [!NOTE]
 > Bizonyos esetekben (például a SAS-hitelesítési hibák) a felhasználó, amelynek nincs kérelem adatai az található a kiszolgálóoldali tárolási naplófájljai hiba előfordulhat, hogy jelentést. A naplózási képességeket a Storage ügyféloldali kódtár segítségével vizsgálja meg, ha a probléma oka az, az ügyfélen, vagy vizsgálja meg a hálózati Hálózatfigyelő eszközök segítségével.
@@ -245,7 +246,7 @@ A Storage ügyféloldali kódtár automatikusan hoz létre minden egyes kérés 
 * A kiszolgálóoldali tárolási naplózás naplóban az ügyfélkérelem-azonosító az ügyfél kérelem azonosító oszlopban jelenik meg.
 
 > [!NOTE]
-> A többszörös kéréseket megoszthatók az azonos ügyfél-Azonosítót, mivel az ügyfelet hozzá lehet rendelni ezt az értéket (bár a Storage ügyféloldali kódtár automatikusan hozzárendeli az új érték) lehetőség. Esetén az ügyfél újrapróbálkozások bármilyen kísérlet megosztani az ügyfél kérelem megegyezik. Egy kötegben, az ügyfél által küldött, ha a kötegelt az egyetlen ügyfél kérelem azonosítóval rendelkezik.
+> A többszörös kéréseket megoszthatók az azonos ügyfél-Azonosítót, mivel az ügyfelet hozzá lehet rendelni ezt az értéket (bár a Storage ügyféloldali kódtár automatikusan hozzárendeli az új érték) lehetőség. Ha az ügyfél újrapróbálkozik, bármilyen kísérlet osztják meg az ügyfél kérelem megegyezik. Egy kötegben, az ügyfél által küldött, ha a kötegelt az egyetlen ügyfél kérelem azonosítóval rendelkezik.
 > 
 > 
 
@@ -298,7 +299,7 @@ catch (StorageException storageException)
 ```
 
 ### <a name="timestamps">Időbélyeg helyi időre</a>
-Időbélyeg helyi időre segítségével keresse meg a kapcsolódó naplóbejegyzések, de legyen óvatos, ha bármely óraeltérés között az ügyfél és a kiszolgálóra, lehetséges, hogy létezik. Plusz vagy mínusz 15 percenként megfelelő kiszolgálóoldali bejegyzések az ügyfélen időbélyeg alapján kell keresni. Ne feledje, hogy a blobok metrikák tartalmazó blob metaadatai az időtartományt a metrikáihoz tárolja a blob; Ez akkor hasznos, ha sok metrikák blobok ugyanazon perc vagy óra.
+Időbélyeg helyi időre segítségével keresse meg a kapcsolódó naplóbejegyzések, de legyen óvatos, ha bármely óraeltérés között az ügyfél és a kiszolgálóra, lehetséges, hogy létezik. Keresse meg a plusz vagy mínusz kiszolgálóoldali bejegyzések az ügyfélen időbélyeg alapján egyeztetéséhez 15 perc. Ne feledje, hogy a blobok metrikák tartalmazó blob metaadatai a metrikák a blob tárolt időintervallumát. Az időtartomány hasznos, ha sok metrikák blobok ugyanazon perc vagy óra.
 
 ## <a name="troubleshooting-guidance"></a>Hibaelhárítási útmutató
 Ez a szakasz segítséget az elemzés céljából, és az Azure storage szolgáltatásainak használata során felmerülő néhány gyakori problémák elhárítása az alkalmazás. Az alábbi lista segítségével keresse meg az adott problémára vonatkozó információt.
@@ -334,7 +335,7 @@ A probléma kapcsolódik a tárolási szolgáltatások közül az egyik rendelke
 [Teljesítmény-mérőszámait váratlan növekedését megjelenítése a tárolási kapacitás-használat]
 
 ---
-[Váratlan vesznek el virtuális gépeken, amelyek csatlakoztatott virtuális merevlemezek nagy számú tapasztal]
+[Váratlan vesznek el virtuális gépeken, amelyek csatlakoztatott virtuális merevlemezek nagy számú tapasztalt]
 
 ---
 [A probléma merül fel a fejlesztési vagy tesztelési a storage emulator használatával]
@@ -351,7 +352,7 @@ Az alábbi ábrán látható a [Azure-portálon](https://portal.azure.com) eszk�
 
 ![][4]
 
-Vegye figyelembe, hogy a társzolgáltatás csak kiszámítja a metrika **AverageE2ELatency** a sikeres kéréseket, és eltérően **AverageServerLatency**, az ügyfél az adatok küldésére és fogadására a nyugtázás a tárolószolgáltatásból idejét tartalmazza. Ezért közötti különbségek **AverageE2ELatency** és **AverageServerLatency** miatt lassú válaszolni az ügyfélalkalmazás vagy a hálózaton feltételek miatt.
+A társzolgáltatás csak kiszámítja a metrika **AverageE2ELatency** a sikeres kéréseket, és eltérően **AverageServerLatency**, magában foglalja a az ügyfél az adatok küldéséhez és fogadásához szükséges idő a storage szolgáltatásból nyugtázási. Ezért közötti különbségek **AverageE2ELatency** és **AverageServerLatency** miatt lassú válaszolni az ügyfélalkalmazás vagy a hálózaton feltételek miatt.
 
 > [!NOTE]
 > Megtekintheti továbbá **E2ELatency** és **ServerLatency** egyéni tárolószolgáltatások művelethez a tárolási naplózási adatok naplózása.
@@ -361,7 +362,7 @@ Vegye figyelembe, hogy a társzolgáltatás csak kiszámítja a metrika **Averag
 #### <a name="investigating-client-performance-issues"></a>Ügyfél teljesítménnyel kapcsolatos problémák vizsgálatában
 Az ügyfél lassan válaszol a lehetséges okok közé tartoznak, használjon korlátozott mennyiségű rendelkezésre álló kapcsolatok vagy -szál, vagy éppen kevés az erőforrás, például a Processzor, a memória vagy a hálózati sávszélesség. Előfordulhat, hogy a probléma megoldásához, hatékonyabb (például a használatával a társzolgáltatás aszinkron hívások) ügyfél kódjának a módosítása, vagy a nagyobb virtuális gépek (a több maggal és memória) használatával.
 
-A tábla- és várólista szolgáltatások esetén a Nagle algoritmus is eredményezheti, hogy magas **AverageE2ELatency** képest történő **AverageServerLatency**: további információk: a feladás egy vagy több [Nagle tartozó algoritmus nem rövid kis kérelmek felé](http://blogs.msdn.com/b/windowsazurestorage/archive/2010/06/25/nagle-s-algorithm-is-not-friendly-towards-small-requests.aspx). Letilthatja a kódban Nagle algoritmus használatával a **ServicePointManager** osztályt a **System.NET névtérbeli** névtér. Akkor tegye ezt meg semmilyen hívásokat a táblázathoz, vagy nyissa meg a várólista-szolgáltatás az alkalmazásban, mert ez nem befolyásolja a már kapcsolatok előtt. Az alábbi példa származik a **Application_Start** a feldolgozói szerepkör metódust.
+A tábla- és várólista szolgáltatások esetén a Nagle algoritmus is eredményezheti, hogy magas **AverageE2ELatency** képest történő **AverageServerLatency**: további információért tekintse meg a feladás egy vagy több [Nagle meg Algoritmus nem rövid kis kérelmek felé](http://blogs.msdn.com/b/windowsazurestorage/archive/2010/06/25/nagle-s-algorithm-is-not-friendly-towards-small-requests.aspx). Letilthatja a kódban Nagle algoritmus használatával a **ServicePointManager** osztályt a **System.NET névtérbeli** névtér. Akkor tegye ezt meg semmilyen hívásokat a táblázathoz, vagy nyissa meg a várólista-szolgáltatás az alkalmazásban, mert ez nem befolyásolja a már kapcsolatok előtt. Az alábbi példa származik a **Application_Start** a feldolgozói szerepkör metódust.
 
 ```csharp
 var storageAccount = CloudStorageAccount.Parse(connStr);
@@ -385,7 +386,7 @@ Ebben a forgatókönyvben az a legvalószínűbb ok az a tárolási kérelmeket 
 
 Késlelteti a kérelmek küldését az ügyfél egyik lehetséges oka az, hogy vannak-e rendelkezésre álló kapcsolatok vagy szálak korlátozott számú.
 
-Emellett ellenőrizze, hogy az ügyfél több újrapróbálkozások hajt végre, és vizsgálja meg az oka, hogy ez a helyzet. Annak megállapításához, hogy az ügyfél több újrapróbálkozások hajt végre, a következőket teheti:
+Is ellenőrizze, hogy az ügyfél több újrapróbálkozások hajt végre, és vizsgálja meg az oka, hogy van. Annak megállapításához, hogy az ügyfél több újrapróbálkozások hajt végre, a következőket teheti:
 
 * Ellenőrizze a tárolási analitika eseménynaplóit. Ha több próbálkozás van folyamatban, látni fogja a több műveletet a azonos ügyfélkérelem-azonosító, de különböző kiszolgálói kérelem azonosítók.
 * Tanulmányozza az ügyfél. A részletes naplózás tájékoztatja arról, hogy újbóli kísérlet történt.
@@ -398,11 +399,11 @@ Hálózati probléma elhárításához Wireshark használatával kapcsolatos tov
 Microsoft Message Analyzert hálózati probléma elhárításához használatával kapcsolatos további információkért lásd: "[függelék: 3: Microsoft Message Analyzert használó rögzítheti a hálózati forgalom]."
 
 ### <a name="metrics-show-high-AverageServerLatency"></a>Metrika magas AverageServerLatency
-Ha nagy **AverageServerLatency** blob letöltési kérelmek, érdemes használni a tárolási naplózási naplókat, ha van-e az azonos blob (vagy bináris objektumok) ismétlődő kérelmek. A blob vonatkozó kérések feltöltésére, ki kell vizsgálni, milyen blokk méretét az ügyfél által használt (például blokkolja a kisebb, mint 64 KB méretű eredményezhet terhek kivéve, ha az olvasási műveletek is a kisebb, mint 64K adattömbök), és ha több ügyfél blokkok feltölteni a párhuzamos azonos blobba. Azt is ellenőrizze igényeiben jelentkező kéréseket eredményező meghaladó számú perc metrikáját a egy második méretezhetőségi célok: is láthatja, hogy "[PercentTimeoutError metrika növelését]."
+Ha nagy **AverageServerLatency** blob letöltési kérelmek, érdemes használni a tárolási naplózási naplókat, ha van-e az azonos blob (vagy bináris objektumok) ismétlődő kérelmek. A blob feltöltési kérés kapcsolódik ki kell vizsgálni milyen blokk az ügyfél mérete (például a kisebb, mint 64 KB méretű eredményezhet terhek kivéve, ha az olvasási műveletek is szerepelnek kevesebb, mint 64 K adattömbök blokkok) használatával, és ha több ügyfél blokkok feltölteni a para azonos blobba párhuzamos. Azt is ellenőrizze igényeiben jelentkező kéréseket eredményező meghaladó számú perc metrikáját a egy második méretezhetőségi célok: is láthatja, hogy "[PercentTimeoutError metrika növelését]."
 
 Ha magas **AverageServerLatency** blob letölthető kérelmek ismételt hiba van a kérelmek az azonos blob vagy blobok, akkor érdemes gyorsítótárazása a blobok, Azure Cache vagy az Azure Content Delivery Network (CDN) használatával. A feltöltési kérés kapcsolódik növelheti az átviteli sebesség a nagyobb blokkméret használatával. A lekérdezéseket akkor is valósíthat meg ügyféloldali gyorsítótárazás az ügyfeleken, hogy a lekérdezés ugyanezen műveletek végrehajtásához, és ha az adatok nem módosulnak.
 
-Magas **AverageServerLatency** értékek rosszul megtervezett táblát vagy lekérdezést, hogy a Keresés eredménye, vagy hajtsa végre a víruskereső append/illesztenie mintát tünete is lehet. Lásd: "[PercentThrottlingError metrika növelését]" További információ.
+Magas **AverageServerLatency** értékek rosszul megtervezett táblát vagy lekérdezést, hogy a Keresés eredménye, vagy hajtsa végre a víruskereső append/illesztenie mintát tünete is lehet. További információkért lásd: "[PercentThrottlingError metrika növelését]".
 
 > [!NOTE]
 > Egy átfogó ellenőrzőlista teljesítmény ellenőrzőlistát itt találja: [Microsoft Azure tárolási teljesítmény és méretezhetőség ellenőrzőlista](storage-performance-checklist.md).
@@ -415,11 +416,11 @@ Ha a kérelmet ad hozzá egy üzenetet, amely egy várólista és az idő olvas�
 * Ellenőrizze, hogy az alkalmazás sikeresen hozzáadásával az üzenetek várólistára. Ellenőrizze, hogy az alkalmazás nem újra megpróbálja a **AddMessage** metódus többször előtt sikeresen lezajlottak. A Storage ügyféloldali kódtár naplók bármely, a tárolási műveletek miatti ismételt próbálkozás jeleníti meg.
 * Ellenőrizze, nincs óra eltérésére között a feldolgozói szerepkör, amely az üzenet a várólistában van, és a feldolgozói szerepkör, amely kiolvassa az üzenetet az üzenetsorból, amely megkönnyíti a jelenik meg, mintha késik a feldolgozása.
 * Ellenőrizze, hogy ha a feldolgozói szerepkör, amely olvassa be az üzenetek a várólista nem működik. Ha a várólista-ügyfél a **GetMessage** metódust, de nem tudja válaszolni nyugtázást, az üzenet nem látható, amíg a várólista marad a **invisibilityTimeout** időszakának lejártáig. Ezen a ponton az üzenet feldolgozásához újra elérhetővé válik.
-* Ellenőrizze, hogy ha a várólista hossza nő adott idő alatt. Ez akkor fordulhat elő, ha nem rendelkezik elegendő munkavállalók minden más munkavállalók helyez várakozási üzenetek feldolgozásához használható. Azt is ellenőrizze a mérni kívánt láthatja Ha törlési kéréseket sikertelen és a dequeue üzeneteken, ami azt jelezheti ismétlődő sikertelen kísérlet történt az üzenet törlése.
+* Ellenőrizze, hogy ha a várólista hossza nő adott idő alatt. Ez akkor fordulhat elő, ha nem rendelkezik elegendő munkavállalók minden más munkavállalók helyez várakozási üzenetek feldolgozásához használható. A metrikák megjelenítéséhez, ha a sikertelen lekérdezések törlése és a dequeue üzeneteket, amelyek jelezhetik, az üzenet törlése többször sikertelenül megpróbálják a count is ellenőrizheti.
 * Vizsgálja meg a tárolási naplózás keresse meg a várólista-műveleteket, amelyek rendelkeznek a vártnál nagyobb **E2ELatency** és **ServerLatency** értékek idő szokásosnál hosszabb időszakra.
 
 ### <a name="metrics-show-an-increase-in-PercentThrottlingError"></a>PercentThrottlingError metrika növelését
-Sávszélesség-szabályozási hiba történik, amikor a túllépi a méretezhetőségi célok tároló szolgáltatás. A tároló szolgáltatás ezt a végzi annak érdekében, hogy nincs egyetlen ügyfél vagy a bérlői csökkenti a többi szolgáltatás használhatja. További információkért lásd: [Azure Storage méretezhetőségi és teljesítménycéloknak](storage-scalability-targets.md) méretezhetőségi célok storage-fiókok és a storage-fiókok partíciókról teljesítménycéloknak.
+Sávszélesség-szabályozási hiba történik, amikor a túllépi a méretezhetőségi célok tároló szolgáltatás. A storage szolgáltatás szabályozások győződjön meg arról, hogy nincs egyetlen ügyfél vagy a bérlői is használhatja a szolgáltatást, mások rovására. További információkért lásd: [Azure Storage méretezhetőségi és teljesítménycéloknak](storage-scalability-targets.md) méretezhetőségi célok storage-fiókok és a storage-fiókok partíciókról teljesítménycéloknak.
 
 Ha a **PercentThrottlingError** metrika növelését megjeleníteni, amelyek sávszélesség-szabályozási hiba miatt nem kérelem azon százaléka, ki kell vizsgálni helyzetek egyikében:
 
@@ -429,7 +430,7 @@ Ha a **PercentThrottlingError** metrika növelését megjeleníteni, amelyek sá
 Megnövelheti a **PercentThrottlingError** gyakran kerül sor, megnövelheti a storage-kérelmek számát egy időben, vagy ha kezdetben betölteni az alkalmazás tesztelése. Ez lehet, hogy is manifest magát az ügyfél "503-as kiszolgáló foglalt" vagy "500 művelet időtúllépése" HTTP állapotüzenete tárolási műveletek.
 
 #### <a name="transient-increase-in-PercentThrottlingError">PercentThrottlingError átmeneti növekedése</a>
-Ha Ön értékének igényeiben jelentkező **PercentThrottlingError** , amely az alkalmazás a nagy aktivitású időszakok egybe, meg kell valósítania az ügyfél egy exponenciális (lineáris) vissza az újbóli próbálkozások stratégiával ki: Ezzel csökkenthető a partíció azonnali terhelése, és az alkalmazás számára a forgalom igényeiben jelentkező simítja segítségével. A Storage ügyféloldali kódtár segítségével újrapróbálkozási-házirendek implementálásához kapcsolatos további információkért lásd: [Microsoft.WindowsAzure.Storage.RetryPolicies Namespace](http://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.retrypolicies.aspx).
+Ha Ön értékének igényeiben jelentkező **PercentThrottlingError** , amely az alkalmazás a nagy aktivitású időszakok egybe, az ügyfél egy exponenciális (lineáris) vissza az indító stratégiája újrapróbálkozások megvalósítása. Vissza az indító újrapróbálkozások csökkentse a partíció azonnali terhelését, és az alkalmazás számára a forgalom igényeiben jelentkező simítja támogatása. A Storage ügyféloldali kódtár segítségével újrapróbálkozási-házirendek implementálásához kapcsolatos további információkért lásd: [Microsoft.WindowsAzure.Storage.RetryPolicies Namespace](http://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.retrypolicies.aspx).
 
 > [!NOTE]
 > Is találkozhat értékének igényeiben jelentkező **PercentThrottlingError** , amely nem esik egybe az alkalmazás a nagy aktivitású időszakokkal: Itt a legvalószínűbb ok az a partíciók terheléselosztás javítása áthelyezését tároló szolgáltatást.
@@ -437,7 +438,7 @@ Ha Ön értékének igényeiben jelentkező **PercentThrottlingError** , amely a
 > 
 
 #### <a name="permanent-increase-in-PercentThrottlingError">Állandó növekedése PercentThrottlingError hiba</a>
-Ha Ön folyamatosan magas értéket **PercentThrottlingError** a végleges növelését a tranzakció-köteteket, vagy amikor a kezdeti betöltés hajtja végre a következő teszteli, az alkalmazásra, majd fel kell mérnie, hogy az alkalmazás adattárolási partíciókat használja, és e közeledik egy tárfiók a méretezhetőségi célok. Például ha Ön szabályozás hibákat a várólista (amely számít egyetlen partícióra), majd érdemes további várólisták segítségével a tranzakciók elosztva több partíciót. Ha Ön szabályozás hibák táblán, fontolja meg egy másik particionálási sémát a tranzakciók elosztva több partíciót széles körének partíciókulcs-értékek használatával szeretné. Ennek a problémának egy közös ok: a prepend hozzáfűzése elleni mintát ahol dátumát jelöli ki a partíciós kulcs, és majd egy adott napon összes adatot ír egy partíciót: terhelés, ennek eredményeként a írási szűk keresztmetszetek. Fontolja meg egy másik particionálási tervezési vagy mérlegelje, hogy a blob storage használatával jobb megoldás lehet kell. Kell ellenőrizze, hogy a sávszélesség-szabályozás miatt a forgalom igényeiben jelentkező végbemegy, és vizsgálja meg a minta kérelem simítás módjait.
+Ha Ön folyamatosan magas értéket **PercentThrottlingError** a végleges növelését a tranzakció-köteteket, vagy amikor a kezdeti betöltés hajtja végre a következő teszteli, az alkalmazásra, majd fel kell mérnie, hogy az alkalmazás adattárolási partíciókat használja, és e közeledik egy tárfiók a méretezhetőségi célok. Például ha Ön szabályozás hibákat a várólista (amely számít egyetlen partícióra), majd érdemes további várólisták segítségével a tranzakciók elosztva több partíciót. Ha Ön szabályozás hibák táblán, fontolja meg egy másik particionálási sémát a tranzakciók elosztva több partíciót széles körének partíciókulcs-értékek használatával szeretné. Ennek a problémának egy közös ok: a prepend hozzáfűzése elleni mintát ahol dátumát jelöli ki a partíciós kulcs, és majd egy adott napon összes adatot ír egy partíciót: terhelés, ennek eredményeként a írási szűk keresztmetszetek. Fontolja meg egy másik particionálási tervezési, vagy mérlegelje, hogy a blob storage használatával jobb megoldás lehet. Is ellenőrizheti, hogy jelentkezik sávszélesség-szabályozás miatt a forgalmat a teljesítményt, és vizsgálja meg a minta kérelem simítás módjait.
 
 Ha a tranzakciók szét több partíciót, továbbra is kell a méretezhetőségének korlátai, a tárolási fiókjában tudomást. Például ha tíz várólisták a legfeljebb 2000 1KB üzenetek másodpercenkénti feldolgozási, akkor lesz teljes legfeljebb 20 000 üzenetek / másodperc, a tárfiók. Ha kell feldolgozni másodpercenként több mint 20 000 entitások, érdemes lehet több tárfiókot használni. Meg kell is figyelembe kell vennie, hogy méretét a kérelmek és entitások akkor van hatása, ha a társzolgáltatás az ügyfelek azelőtt gyorsítja fel a: Ha nagyobb kérelmek és entitások, akkor előfordulhat, hogy lehet halmozódni hamarabb.
 
@@ -465,17 +466,17 @@ Kiszolgáló időkorlátja a tároló szolgáltatás, amely további vizsgálato
 ### <a name="metrics-show-an-increase-in-PercentNetworkError"></a>PercentNetworkError metrika növelését
 A metrika növekedése **PercentNetworkError** a tárolási szolgáltatások egyike. A **PercentNetworkError** mérőszáma egyszerűsítése érdekében a következő metrikákat: **NetworkError**, **AnonymousNetworkError**, és **SASNetworkError**. Ezek akkor, ha a tároló szolgáltatás észleli a hálózati hiba, ha az ügyfél egy tárolási kérést.
 
-Ez a hiba leggyakoribb oka egy ügyfél leválasztása időtúllépés járjon le a storage szolgáltatásban. Az ügyfél tudni, miért és mikor az ügyfél bontja a kapcsolatot a társzolgáltatás ki kell vizsgálni a kódot. Vizsgálja meg az ügyfél hálózati problémák Wireshark, Microsoft Message Analyzert vagy Tcping is használja. Ezek az eszközök ismertetett a [mellékletek].
+Ez a hiba leggyakoribb oka egy ügyfél leválasztása időtúllépés járjon le a storage szolgáltatásban. Vizsgálja meg a kódot az ügyfél tudni, miért és mikor az ügyfél bontja a kapcsolatot a tároló szolgáltatást. Vizsgálja meg az ügyfél hálózati problémák Wireshark, Microsoft Message Analyzert vagy Tcping is használja. Ezek az eszközök ismertetett a [mellékletek].
 
 ### <a name="the-client-is-receiving-403-messages">Az ügyfél HTTP 403 (tiltott) üzeneteket fogad</a>
 Ha az ügyfélalkalmazást szűrész HTTP 403 (tiltott) hibák, a legvalószínűbb oka, hogy az ügyfél használ egy lejárt közös hozzáférésű Jogosultságkód (SAS) tárolási kérelmet küld a (bár egyéb lehetséges okok a következők: óra eltérésére, érvénytelen kulcsokat, és üres fejlécekkel együtt). Ha egy lejárt SAS-kulcsot az okot, nem látják azokat a bejegyzéseket a kiszolgálóoldali tárolási naplózás naplóadatokat. Az alábbi táblázat megmutatja, az ügyféloldali naplóból állítja elő a Storage ügyféloldali kódtár, amely bemutatja, hogy ez a probléma lépett fel:
 
-| Forrás | Részletesség | Részletesség | Ügyfélkérelem-azonosító | A művelet szöveg |
+| Forrás | Részletesség | Részletesség | Ügyfélkérelem azonosítója | A művelet szöveg |
 | --- | --- | --- | --- | --- |
 | Microsoft.WindowsAzure.Storage |Információ |3 |85d077ab-… |A hely elsődleges hely módban PrimaryOnly művelet elindítása. |
 | Microsoft.WindowsAzure.Storage |Információ |3 |85d077ab -… |Indítása szinkron kérelem https://domemaildist.blob.core.windows.netazureimblobcontainer/blobCreatedViaSAS.txt?sv=2014-02-14&amp;sr = c&amp;si = mypolicy&amp;sig OFnd4Rd7z01fIvh % 2BmcR6zbudIH2F5Ikm % 2FyhNYZEmJNQ % = 3D&amp;api-version = 2014-02-14. |
 | Microsoft.WindowsAzure.Storage |Információ |3 |85d077ab -… |Válaszra való várakozás közben. |
-| Microsoft.WindowsAzure.Storage |Figyelmeztetés |2 |85d077ab -… |Kivétel keletkezett a válaszra való várakozás közben: A távoli kiszolgáló hibát adott vissza: (403-as) tiltott... |
+| Microsoft.WindowsAzure.Storage |Figyelmeztetés |2 |85d077ab -… |Kivétel keletkezett a válaszra való várakozás közben: A távoli kiszolgáló hibát adott vissza: (403-as) tiltott. |
 | Microsoft.WindowsAzure.Storage |Információ |3 |85d077ab -… |A válasz érkezett. Állapotkód = 403-as, a kérelem azonosítója = 9d67c64a-64ed-4b0d-9515-3b14bbcdc63d, Content-MD5 = ETag =. |
 | Microsoft.WindowsAzure.Storage |Figyelmeztetés |2 |85d077ab -… |Kivétel történt a művelet során: A távoli kiszolgáló hibát adott vissza: (403-as) tiltott... |
 | Microsoft.WindowsAzure.Storage |Információ |3 |85d077ab -… |Annak ellenőrzése, ha a műveletet meg kell ismételni. Ismétlések száma = 0, HTTP-állapotkód = 403-as, kivétel = a távoli kiszolgáló hibát adott vissza: (403-as) tiltott... |
@@ -485,11 +486,11 @@ Ha az ügyfélalkalmazást szűrész HTTP 403 (tiltott) hibák, a legvalószín�
 Ebben az esetben kell vizsgálni, miért a SAS-jogkivonat lejár az ügyfélszámítógép elküldi a jogkivonatot a kiszolgálóra:
 
 * Általában a kezdő időpont, amikor létrehoz egy SAS-t egy ügyfélen szeretné azonnal nincs beállítva. Ha a gazdagép a SAS használatával az aktuális idő és a tárolás szolgáltatás létrehozásakor, akkor lehetséges, hogy a társzolgáltatás fogadására, amely még nem érvényes SAS közötti kis óra különbségek vannak.
-* SAS-kód nem egy nagyon rövid lejárati időt kell beállítani. Ebben az esetben kis óra különbségei az SA-kat és a tárolás szolgáltatás létrehozása a gazdagép látszólag lejár a vártnál korábban SAS vezethet.
+* Egy nagyon rövid lejárati időpont a SAS-kód nem állítható be. Ebben az esetben kis óra különbségei az SA-kat és a tárolás szolgáltatás létrehozása a gazdagép látszólag lejár a vártnál korábban SAS vezethet.
 * Az SAS-kulcsot a verzió paramétere does (például **sv = 2015-04-05**) felel meg a Storage ügyféloldali kódtár használata verziójának? Azt javasoljuk, hogy mindig a legújabb verzióját használja a [a Storage ügyféloldali kódtára](https://www.nuget.org/packages/WindowsAzure.Storage/).
-* A tárelérési kulcsok újragenerálása, ha ez bármely létező SAS-tokenje érvénytelenné tehetik. Erre akkor lehet problémát, ha az ügyfél gyorsítótár alkalmazások hosszú lejárati idővel rendelkező SAS-tokenje.
+* Ha a tárelérési kulcsok újragenerálása bármely létező SAS-tokenje érvénytelenítve lenne. A probléma akkor merülhet fel, ha az ügyfél gyorsítótár alkalmazások hosszú lejárati idővel rendelkező SAS-tokenje.
 
-A Storage ügyféloldali kódtár SAS-tokenje létrehozásához használ, majd esetén könnyen összeállíthat egy érvényes tokent. Azonban ha a Storage REST API-t használ, és kézzel jogkivonatokat hoz létre, a biztonsági Társítások figyelmesen olvassa el a témakör [egy közös hozzáférésű Jogosultságkód hozzáférést delegálása](http://msdn.microsoft.com/library/azure/ee395415.aspx).
+A Storage ügyféloldali kódtár SAS-tokenje létrehozásához használ, majd esetén könnyen összeállíthat egy érvényes tokent. Azonban ha hozhat létre kézzel a SAS-tokenje és a Storage REST API használatával, lásd: [egy közös hozzáférésű Jogosultságkód hozzáférést delegálása](http://msdn.microsoft.com/library/azure/ee395415.aspx).
 
 ### <a name="the-client-is-receiving-404-messages">Az ügyfél HTTP 404-es (nem található) üzeneteket fogad</a>
 Ha az ügyfélalkalmazás egy HTTP 404-es (nem található) üzenetet kap, a kiszolgálóról, ez azt jelenti, hogy az objektum az ügyfél próbált használni (például egy entitás, tábla, blob, tároló vagy várólista) nem létezik a tároló szolgáltatást. Számos, ennek lehetséges okai például:
@@ -500,7 +501,7 @@ Ha az ügyfélalkalmazás egy HTTP 404-es (nem található) üzenetet kap, a kis
 * [Hálózati hiba]
 
 #### <a name="client-previously-deleted-the-object">Az ügyfél vagy egy másik folyamat a korábban az objektum törölve</a>
-A forgatókönyvek, ahol az ügyfél megpróbálja olvasása, frissítése vagy törölni az adatokat egy társzolgáltatás esetében általában könnyen azonosítható a kiszolgálóoldali naplók egy korábbi művelet, amely a szóban forgó objektum törlése a tárolószolgáltatásból. Nagyon gyakran a naplózási adatokat jeleníti meg, hogy egy másik felhasználó vagy folyamat az objektum törölve. A kiszolgálóoldali tárolási naplózás naplóban művelet-típusa és a kért objektum-kulcs típusú oszlopok megjelenítése objektum törlésekor az ügyfelet.
+A forgatókönyvek, ahol az ügyfél megpróbálja olvasása, frissítése vagy törölni az adatokat egy társzolgáltatás esetében általában könnyen azonosítható a kiszolgálóoldali naplók egy korábbi művelet, amely a szóban forgó objektum törlése a tárolószolgáltatásból. Gyakran a naplózási adatokat jeleníti meg, hogy egy másik felhasználó vagy folyamat az objektum törölve. A kiszolgálóoldali tárolási naplózás naplóban művelet-típusa és a kért objektum-kulcs típusú oszlopok megjelenítése objektum törlésekor az ügyfelet.
 
 A forgatókönyvben, ha egy ügyfél próbál egy olyan objektum beszúrására akkor előfordulhat, hogy azonnal nem válik egyértelművé, ezért az eredmény (nem található) HTTP 404-es választ fényében, hogy az ügyfél egy új objektumot hoz létre. Azonban ha az ügyfél hoz létre egy blobot, képesnek kell lennie a blob-tároló, ha az ügyfél hoz létre a várólista található képesnek kell lennie egy üzenetet, és az ügyfél hozzáadásával egy sort kell lennie a táblázatban találja.
 
@@ -557,7 +558,7 @@ Naplóbejegyzéseket:
 | de8b1c3c-... |Újrapróbálkozási házirend nem engedélyezi az újrapróbálkozást. Sikertelen a távoli kiszolgálóval hibát adott vissza: (404) nem található. |
 | e2d06d78-... |Újrapróbálkozási házirend nem engedélyezi az újrapróbálkozást. Sikertelen a távoli kiszolgálóval hibát adott vissza: (409) ütközés... |
 
-Ebben a példában a napló jeleníti meg, hogy az ügyfél van kihagyásos érkező kéréseket a **CreateIfNotExists** érkező kéréseket (... kérelem azonosítója e2d06d78) metódust a **UploadFromStream** metódus (de8b1c3c-...); Ez akkor történik meg, mert az ügyfélalkalmazás aszinkron módon hívja a ezeket a módszereket. Az ügyfél számára, győződjön meg arról, hogy létrehozza a tároló előtt minden adatok feltöltése a blob a tárolóban lévő aszinkron kódot kell módosítani. Ideális esetben a tárolók előre kell létrehoznia.
+Ebben a példában a napló jeleníti meg, hogy az ügyfél van kihagyásos érkező kéréseket a **CreateIfNotExists** érkező kéréseket (... kérelem azonosítója e2d06d78) metódust a **UploadFromStream** metódus (de8b1c3c-...). Ez kihagyásos oka, hogy az ügyfélalkalmazás aszinkron módon hívja a ezeket a módszereket. Az ügyfél számára, győződjön meg arról, hogy a tároló bármely adatok feltöltése a blob a tárolóban megkísérlése előtt létrehozza az aszinkron programkód módosítása. Ideális esetben a tárolók előre kell létrehoznia.
 
 #### <a name="SAS-authorization-issue"></a>Egy közös hozzáférésű Jogosultságkód (SAS) hitelesítési hiba
 Ha az ügyfélalkalmazás megpróbálja, amely nem tartalmazza a szükséges engedélyekkel a művelet SAS-kulcsot használ, a tároló szolgáltatás (nem található) HTTP 404 üzenetben visszaadja az ügyfélnek. Egy időben, látni fogja emellett nullától eltérő értéket **SASAuthorizationError** a metrikák a.
@@ -569,7 +570,7 @@ Az alábbi táblázat a naplózás tárolási naplófájlból kiszolgálóoldali
 | Kérelem kezdési ideje | 2014-05-30T06:17:48.4473697Z |
 | Művelet típusa     | GetBlobProperties            |
 | Kérés állapota     | SASAuthorizationError        |
-| HTTP-állapotkód:   | 404                          |
+| HTTP-állapotkód   | 404                          |
 | Hitelesítés típusa| SAS                          |
 | Szolgáltatás típusa       | Blob                         |
 | Lekérdezés URL-címe        | https://domemaildist.blob.core.windows.net/azureimblobcontainer/blobCreatedViaSAS.txt |
@@ -578,7 +579,7 @@ Az alábbi táblázat a naplózás tárolási naplófájlból kiszolgálóoldali
 | Ügyfélkérelem azonosítója  | 2d064953-8436-4ee0-aa0c-65cb874f7929 |
 
 
-Ki kell vizsgálni, hogy miért az ügyfélalkalmazás megpróbálja végrehajtania egy műveletet nem kapta meg engedélyeket.
+Vizsgálja meg, miért az ügyfélalkalmazás megpróbálja végrehajtania egy műveletet, amelynek nem kapta meg engedélyeket.
 
 #### <a name="JavaScript-code-does-not-have-permission"></a>Ügyféloldali JavaScript-kód nincs engedélye az objektumhoz való hozzáférést
 Ha a JavaScript-ügyfelet kell használnia, és a társzolgáltatás HTTP 404-es üzeneteket ad eredményül, keressen a böngészőben a következő JavaScript-hibák:
@@ -618,7 +619,7 @@ client.SetServiceProperties(sp);
 #### <a name="network-failure"></a>Hálózati hiba
 Bizonyos körülmények között elveszett hálózati csomagokat a HTTP 404-es üzenetek vissza az ügyfélnek társzolgáltatás vezethet. Például, ha az ügyfélalkalmazást entitás törlése a table szolgáltatásból megjelenik az ügyfél egy tárolási kivétel jelentés throw egy "HTTP 404-es (nem található)" a table szolgáltatásból a hibaállapot-üzeneteket. Ha a tábla a table storage szolgáltatásban vizsgálja meg, megjelenik az, hogy a szolgáltatás minden volt törölni egy entitást, kért.
 
-A kivétel részletes adatai az ügyfél tartalmazza a kéréshez a table szolgáltatás által hozzárendelt kérelemazonosító (7e84f12d...): Ez az információ segítségével a keresőkifejezéssel kereshet a kiszolgálóoldali tárolási naplók a kérelem részletes adatait a **kérelemfejlécet-azonosító** oszlop a naplófájlban. A metrikák hibák például ez történik, és kereshet a naplófájlok a metrikák rögzített Ez a hiba ideje alapján azonosítására is használhatja. A naplóbejegyzés jeleníti meg, hogy a törlése nem sikerült egy "HTTP (404) ügyfél más hiba" állapotüzenetet. Az azonos naplóbejegyzés is tartalmaz az ügyfél által generált kérelemazonosító a **ügyfélkérelem-azonosító** oszlop (813ea74f...).
+A kivétel részletes adatai az ügyfél tartalmazza a kéréshez a table szolgáltatás által hozzárendelt Kérelemazonosító (7e84f12d...): Ez az információ segítségével a keresőkifejezéssel kereshet a kiszolgálóoldali tárolási naplók a kérelem részletes adatait a **kérelemfejléc-azonosító**  oszlop a naplófájlban. A metrikák hibák például ez történik, és kereshet a naplófájlok a metrikák rögzített Ez a hiba ideje alapján azonosítására is használhatja. A naplóbejegyzés jeleníti meg, hogy a törlése nem sikerült egy "HTTP (404) ügyfél más hiba" állapotüzenetet. Az azonos naplóbejegyzés is tartalmaz az ügyfél által generált Kérelemazonosító a **ügyfélkérelem-azonosító** oszlop (813ea74f...).
 
 A kiszolgálóoldali napló is azonos egy másik belépési **ügyfélkérelem-azonosító** értékét (813ea74f...) a sikeres művelet ugyanaz az entitás, valamint az ugyanazon ügyféltől törlése. A sikeres törlési művelete rövid idő került sor, a sikertelen kérelem törlése előtt.
 
@@ -627,9 +628,9 @@ Ebben a forgatókönyvben ennek legvalószínűbb oka az, hogy az ügyfél az en
 Ha a probléma gyakran előfordul, ki kell vizsgálni, miért az ügyfél nem képes a table szolgáltatásból nyugtázásának érkezésére. Ha a probléma időszakos, azt kell feldolgozzák-e a "HTTP (404) nem található" hiba és -e jelentkezni, az ügyfél, azonban az ügyfél továbbra is.
 
 ### <a name="the-client-is-receiving-409-messages"></a>Az ügyfél HTTP 409 (Ütközés) üzeneteket fogad
-Az alábbi táblázatban láthatók a kiszolgálóoldali keresse meg a két Ügyfélműveletek kivonatát: **DeleteIfExists** után azonnal az **CreateIfNotExists** blob-tároló azonos név használata. Vegye figyelembe, hogy minden ügyfél művelet eredménye két kérelmet a rendszer kiszolgálóra küldi, először egy **GetContainerProperties** kérelem ellenőrizze, hogy a tároló létezik-e, majd a **DeleteContainer** vagy **CreateContainer** kérelmet.
+Az alábbi táblázatban láthatók a kiszolgálóoldali keresse meg a két Ügyfélműveletek kivonatát: **DeleteIfExists** után azonnal az **CreateIfNotExists** blob-tároló azonos név használata. Minden ügyfél művelet két először a kiszolgálóra küldött kérelmek eredményezi egy **GetContainerProperties** kérelem ellenőrizze, hogy a tároló létezik-e, majd a **DeleteContainer** vagy  **CreateContainer** kérelmet.
 
-| Időbélyeg | Művelet | Eredmény | Tárolónév | Ügyfélkérelem-azonosító |
+| Időbélyeg | Művelet | Eredmény | Tárolónév | Ügyfélkérelem azonosítója |
 | --- | --- | --- | --- | --- |
 | 05:10:13.7167225 |GetContainerProperties |200 |mmcont |c9f52c89-… |
 | 05:10:13.8167325 |DeleteContainer |202 |mmcont |c9f52c89-… |
@@ -654,12 +655,6 @@ Közös REST API hiba megtekintéséhez, amely a tárolási szolgáltatások ad 
 ### <a name="capacity-metrics-show-an-unexpected-increase"></a>Teljesítmény-mérőszámait váratlan növekedését megjelenítése a tárolási kapacitás-használat
 Hirtelen jelenik meg, ha a tárfiókban lévő kapacitás használati váratlan változásai használatával megvizsgálhatja a okok miatt a rendelkezésre állási metrikák; első megtekintésével például sikertelen törlési kérelmek vezethet, előfordulhat, hogy rendelkezik várhatóan kell szabadítson fel helyet az alkalmazás-specifikus karbantartási műveleteket nem fog működni, (például a várt módon használt blob-tároló mennyiségének olyan növekedése számának növekedése mert lejárt a SAS-tokenje szabadítson fel helyet használja).
 
-### <a name="you-are-experiencing-unexpected-reboots"></a>Váratlan újraindítások Azure virtuális gépek, amelyek csatlakoztatott virtuális merevlemezek nagy számú tapasztal
-Ha egy Azure virtuális gép (VM) ugyanabban a tárfiókban lévő csatlakoztatott virtuális merevlemezek nagy mennyiségű, meghaladhatja a a méretezhetőségi célok, az egyes tárfiók a virtuális gép leállását okozza. Jelölje be a tárfiók percenkénti metrikákat (**TotalRequests**/**TotalIngress**/**TotalEgress**) a teljesítményt, amelyek mérete meghaladja a méretezhetőségi célok tárfiókok esetén. Című témakör "[PercentThrottlingError metrika növelését]" támogatásért, ha sávszélesség-szabályozás történt a tárfiók számára.
-
-Általában minden egyes bemeneti vagy kimeneti művelet a virtuális gép virtuális merevlemez az eszköz **első oldal** vagy **Put lap** az alapul szolgáló oldalakra vonatkozó blob műveleteket. Ezért a környezetnek a becsült IOPS segítségével is rendelkezik egyetlen tárfiókokban alapján az adott viselkedést az alkalmazás hány virtuális merevlemezek finomítsa. Legfeljebb 40 lemezek rendelkező egyetlen tárfiókokban nem ajánlott. Lásd: [Azure Storage méretezhetőségi és teljesítménycéloknak](storage-scalability-targets.md) az aktuális méretezhetőségi célok storage-fiókok részleteit, különösen tárfióknak a típusa tartozó összes kérelem sebesség és a teljes sávszélesség használata.
-Ha a tárfiók túllépte a vonatkozó méretezhetőségi célok, helyezze a virtuális merevlemezek több különböző tárfiókokban a tevékenység minden egyes számlára csökkentése érdekében.
-
 ### <a name="your-issue-arises-from-using-the-storage-emulator"></a>A probléma merül fel a fejlesztési vagy tesztelési a storage emulator használatával
 Általában a storage emulatorral a fejlesztés során, és ellenőrizze, hogy elkerülése érdekében szükség az Azure storage-fiók. A gyakori problémákat, amik akkor léphetnek fel, a storage emulator használata esetén a következők:
 
@@ -682,7 +677,7 @@ Ebben a forgatókönyvben rendszerint azért fordul elő, ha telepít, és a Sto
 #### <a name="storage-emulator-requires-administrative-privileges">A storage emulator futtatása rendszergazdai jogosultságokra van szüksége</a>
 Kéri a rendszergazdai hitelesítő adatok a storage emulator futtatásakor. Ez csak akkor történik, az első alkalommal a storage emulator vannak inicializálása közben. Miután a storage emulator inicializálta, nem kell újra futtatásához rendszergazdai jogosultságokkal.
 
-További információkért lásd: [Use the Azure Storage Emulator for Development and Testing](storage-use-emulator.md) (Fejlesztés és tesztelés az Azure Storage Emulatorral). Vegye figyelembe, hogy a Visual Studio, amely rendszergazdai jogosultságokkal is szüksége lesz a storage emulator is lehet inicializálni.
+További információkért lásd: [Use the Azure Storage Emulator for Development and Testing](storage-use-emulator.md) (Fejlesztés és tesztelés az Azure Storage Emulatorral). Inicializálják a Visual Studio, amely rendszergazdai jogosultságokkal is szüksége lesz a storage emulator is.
 
 ### <a name="you-are-encountering-problems-installing-the-Windows-Azure-SDK"></a>.NET-keretrendszerhez készült Azure SDK telepítése problémák áll kapcsolatban.
 A storage emulator telepítése a helyi számítógépen próbálja telepíteni az SDK-t, sikertelen. A telepítési naplófájl tartalmazza az alábbi üzenetek egyike:
@@ -755,7 +750,7 @@ WireShark ki olyan hibákat, amelyek szerepelnek a **packetlist** ablak. Is hasz
 
 ![][7]
 
-Másik lehetőségként a TCP-adatok megtekintéséhez, mivel az alkalmazási rétegre látja a TCP-adatok csomagot jobb gombbal, majd válassza **hajtsa végre a TCP-folyam**. Ez különösen fontos, ha a biztonsági másolat nélkül rögzítési szűrő rögzített. További információkért lásd: [következő TCP-adatfolyamok](http://www.wireshark.org/docs/wsug_html_chunked/ChAdvFollowTCPSection.html).
+Másik lehetőségként a TCP-adatok megtekintéséhez, mivel az alkalmazási rétegre látja a TCP-adatok csomagot jobb gombbal, majd válassza **hajtsa végre a TCP-folyam**. Ez akkor hasznos, ha a biztonsági másolat nélkül rögzítési szűrő rögzített. További információkért lásd: [következő TCP-adatfolyamok](http://www.wireshark.org/docs/wsug_html_chunked/ChAdvFollowTCPSection.html).
 
 ![][8]
 
@@ -813,7 +808,7 @@ Az 1. lépésében a **varázslóban**, jelölje be **pontosvessző** csak elvá
 Az Application Insights szolgáltatás Visual Studio Team Services, a teljesítmény és rendelkezésre állásának figyelésére szolgáló részeként is használja. Ez az eszköz a következőket teheti:
 
 * Ellenőrizze, hogy a webes szolgáltatás megfelelően üzemel és rugalmas. Hogy az alkalmazás egy webhely vagy egy eszköz-alkalmazást, amely egy webszolgáltatás-bővítmény használ, azt a világ különböző helyekről néhány percenként az URL-cím tesztelése, és jelzi, ha probléma van.
-* Gyorsan diagnosztizálhatja a webszolgáltatás kivételek, illetve bármely problémák. Annak megállapítása, ha Processzor- vagy egyéb erőforrások vannak nyújtja, a kivételek az híváslánc megjelenik le, és könnyen megkereshetjük a naplókivonatokat. Ha az alkalmazás teljesítmény elfogadható korlátok alá csökken, elküldhetjük egy e-mailt. .NET- és a Java webes szolgáltatásokat is figyelhet.
+* Gyorsan diagnosztizálhatja a webszolgáltatás kivételek, illetve bármely problémák. Annak megállapítása, ha Processzor- vagy egyéb erőforrások vannak nyújtja, a kivételek az híváslánc megjelenik le, és könnyen megkereshetjük a naplókivonatokat. Ha az alkalmazás teljesítmény elfogadható korlátok alá csökken, Microsoft küldheti el Önnek e-mailt. .NET- és a Java webes szolgáltatásokat is figyelhet.
 
 További információt a [Mi az Application Insights](../../application-insights/app-insights-overview.md).
 
@@ -863,7 +858,6 @@ További információt a [Mi az Application Insights](../../application-insights
 
 [metrika alacsony PercentSuccess vagy analytics naplóbejegyzések rendelkezik ClientOtherErrors működésére állapotú tranzakció]: #metrics-show-low-percent-success
 [Teljesítmény-mérőszámait váratlan növekedését megjelenítése a tárolási kapacitás-használat]: #capacity-metrics-show-an-unexpected-increase
-[Váratlan vesznek el virtuális gépeken, amelyek csatlakoztatott virtuális merevlemezek nagy számú tapasztal]: #you-are-experiencing-unexpected-reboots
 [A probléma merül fel a fejlesztési vagy tesztelési a storage emulator használatával]: #your-issue-arises-from-using-the-storage-emulator
 [A storage emulator az "X" a szolgáltatás nem működik]: #feature-X-is-not-working
 [Hiba történt "a HTTP-fejlécek egyikéhez értéke nem megfelelő formátumú" a storage emulator használata esetén]: #error-HTTP-header-not-correct-format

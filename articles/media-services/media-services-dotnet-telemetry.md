@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/09/2017
 ms.author: juliako
-ms.openlocfilehash: 1f8e22dc5e277407860b7ed31409caed15be59cb
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 362773bbefa754fc90aa4dbd471889245b4b6cf5
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="configuring-azure-media-services-telemetry-with-net"></a>A .NET Azure Media Services telemetriai konfigurálása
 
@@ -42,19 +42,23 @@ A következő lépésekre van szükség telemetriai engedélyezése:
 - A Media Services-fiókhoz csatolva a tárfiók hitelesítő adatainak lekérése. 
 - Az értesítési végpont létrehozásához **EndPointType** beállítása **AzureTable** és a tárolási tábla mutató endPointAddress.
 
+```csharp
         INotificationEndPoint notificationEndPoint = 
                       _context.NotificationEndPoints.Create("monitoring", 
                       NotificationEndPointType.AzureTable,
                       "https://" + _mediaServicesStorageAccountName + ".table.core.windows.net/");
+```
 
 - Hozzon létre egy figyelési konfiguráció beállítása a figyelni kívánt szolgáltatásokat. Legfeljebb egy figyelési konfigurációs beállítás engedélyezett. 
-  
+
+```csharp
         IMonitoringConfiguration monitoringConfiguration = _context.MonitoringConfigurations.Create(notificationEndPoint.Id,
             new List<ComponentMonitoringSetting>()
             {
                 new ComponentMonitoringSetting(MonitoringComponent.Channel, MonitoringLevel.Normal),
                 new ComponentMonitoringSetting(MonitoringComponent.StreamingEndpoint, MonitoringLevel.Normal)
             });
+```
 
 ## <a name="consuming-telemetry-information"></a>Telemetria információk felhasználása
 
@@ -66,13 +70,15 @@ További információ a fogyasztó telemetriai adatokat: [ez](media-services-tel
 
 2. Adja hozzá a következő elem **appSettings** az app.config fájlban meghatározott:
 
-    <add key="StorageAccountName" value="storage_name" />
+    ```xml
+        <add key="StorageAccountName" value="storage_name" />
+    ```
  
 ## <a name="example"></a>Példa  
     
 A következő példa bemutatja, telemetriai adatokat a megadott AMS-fiók engedélyezése és az Azure Media Services .NET SDK használatával metrikák lekérdezése.  
 
-```
+```csharp
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -219,7 +225,7 @@ namespace AMSMetrics
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 

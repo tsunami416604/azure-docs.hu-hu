@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: mbullwin
-ms.openlocfilehash: 1bd4cee783944b0c6e0efcb7ec63c5a72bd13cc8
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 37fbe7fa3160d39e85614c3481061d5ce458b29a
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="ip-addresses-used-by-application-insights-and-log-analytics"></a>Az Application Insights és Naplóelemzési által használt IP-címek
 A [Azure Application Insights](app-insights-overview.md) szolgáltatás által használt IP-címek száma. Szükség lehet tudja ezeket a címeket, ha a figyelt alkalmazás egy tűzfal mögött található.
@@ -48,7 +48,7 @@ Néhány kimenő portok megnyitása a kiszolgáló engedélyezéséhez az Applic
 | Konfiguráció |`secure.aadcdn.microsoftonline-p.com` | |`443` |
 | Konfiguráció |`auth.gfx.ms` | |`443` |
 | Konfiguráció |`login.live.com` | |`443` |
-| Telepítés |`packages.nuget.org` | |`443` |
+| Telepítés |`packages.nuget.org` , `nuget.org` | |`443` |
 
 ## <a name="hockeyapp"></a>HockeyApp
 | Cél | URL-cím | IP | Portok |

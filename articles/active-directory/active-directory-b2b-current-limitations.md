@@ -3,7 +3,7 @@ title: "Azure Active Directory B2B együttműködés korlátozásai |} Microsoft
 description: "Azure Active Directory B2B együttműködés aktuális korlátozásai"
 services: active-directory
 documentationcenter: 
-author: sasubram
+author: twooley
 manager: mtillman
 editor: 
 tags: 
@@ -14,12 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
 ms.date: 05/23/2017
-ms.author: sasubram
-ms.openlocfilehash: 2136015eeb3d8ccfc58bf7a94b423144b9aed52e
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: twooley
+ms.reviewer: sasubram
+ms.openlocfilehash: 7d455b587c013e7a03fe640406e751910456665d
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="limitations-of-azure-ad-b2b-collaboration"></a>Azure AD B2B együttműködés korlátozásai
 Az Azure Active Directory (Azure AD) B2B együttműködés jelenleg a jelen cikkben ismertetett korlátozások vonatkoznak.
@@ -30,7 +31,7 @@ Az Azure AD B2B kényszerítheti a többtényezős hitelesítést, az erőforrá
 ## <a name="instant-on"></a>Azonnali
 A B2B együttműködés adatfolyamok azt felhasználók hozzáadása a címtárhoz és dinamikusan frissítse azokat a meghívó érvényesítési és alkalmazás-hozzárendelés, stb. A frissítések és az írás szokásos fordul elő egy címtárpéldány, és minden példányára kell replikálni. Replikáció befejezése után minden példány frissítése. Egyes esetekben, amikor a objektumot írt vagy egy példány frissítése, és ez az objektum beolvasása a hívást, hogy egy másik példánya, a replikációs késések fordulnak elő akkor fordulhat elő. Ha ez előfordul, frissítse vagy segítségével próbálja meg újra. Ha az alkalmazást az API felületen, néhány biztonsági off újrapróbálkozások egy megfelelő, a védelem gyakorlat, hogy enyhítse a probléma.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerje meg az Azure AD B2B együttműködés további cikkeit:
 

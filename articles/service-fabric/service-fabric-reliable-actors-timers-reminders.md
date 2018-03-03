@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: f61743a7925c26767118dcb2d18799c26f880156
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: 09a979d05757adab363d9ab0c48cad9ff3b529dd
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="actor-timers-and-reminders"></a>Aktor időzítők és az emlékeztetők
 Szereplője időzítők vagy emlékeztetők regisztrálásával ütemezhet rendszeres munkát saját magukat. Ez a cikk bemutatja, hogyan használja a időzítők és az emlékeztetők, és a különbségeket ismerteti.
@@ -146,8 +146,8 @@ protected override async Task OnActivateAsync()
     IActorReminder reminderRegistration = await this.RegisterReminderAsync(
         reminderName,
         BitConverter.GetBytes(amountInDollars),
-        TimeSpan.FromDays(3),
-        TimeSpan.FromDays(1));
+        TimeSpan.FromDays(3),    //The amount of time to delay before firing the reminder
+        TimeSpan.FromDays(1));    //The time interval between firing of reminders
 }
 ```
 
@@ -226,7 +226,7 @@ CompletableFuture reminderUnregistration = unregisterReminderAsync(reminder);
 
 A fent látható módon a `UnregisterReminderAsync`(C#) vagy `unregisterReminderAsync`(Java) metódus fogad el egy `IActorReminder`(C#) vagy `ActorReminder`(Java) felületet. Az aktor alaposztály támogatja a `GetReminder`(C#) vagy `getReminder`beolvasásához használható metódus (Java) a `IActorReminder`(C#) vagy `ActorReminder`emlékeztető nevében történő (Java) felületet. Ez akkor hasznos, mivel a szereplő nem kell megőrizni a `IActorReminder`(C#) vagy `ActorReminder`által eredményül adott (Java) felületet a `RegisterReminder`(C#) vagy `registerReminder`(Java) metódus hívása.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További tudnivalók a megbízható szereplő események és rögzítve:
 * [Szereplő események](service-fabric-reliable-actors-events.md)
 * [Aktor rögzítve](service-fabric-reliable-actors-reentrancy.md)

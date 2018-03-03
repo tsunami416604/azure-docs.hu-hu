@@ -14,11 +14,11 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 12/07/2017
 ms.author: juliako;cenkdin
-ms.openlocfilehash: 8ffd310573d0800593bd9d93d74da4bcece61fa4
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: dd7e332eb1c935ee70a617124bd4d86e160366c7
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="creating-filters-with-azure-media-services-net-sdk"></a>Szűrők létrehozása az Azure Media Services .NET SDK-val
 > [!div class="op_single_selector"]
@@ -46,6 +46,7 @@ A következő típusok használhatók szűrők létrehozásakor:
 ## <a name="createupdatereaddelete-global-filters"></a>Létrehozás/frissítés/olvasás/törlés globális szűrők
 A következő kód bemutatja, hogyan .NET segítségével létrehozhatja, frissítheti, olvassa el, és törli az eszköz szűrők.
 
+```csharp
     string filterName = "GlobalFilter_" + Guid.NewGuid().ToString();
 
     List<FilterTrackSelectStatement> filterTrackSelectStatements = new List<FilterTrackSelectStatement>();
@@ -70,11 +71,12 @@ A következő kód bemutatja, hogyan .NET segítségével létrehozhatja, friss�
 
     // Delete
     filter.Delete();
-
+```
 
 ## <a name="createupdatereaddelete-asset-filters"></a>Létrehozás/frissítés/olvasás/törlés eszköz szűrők
 A következő kód bemutatja, hogyan .NET segítségével létrehozhatja, frissítheti, olvassa el, és törli az eszköz szűrők.
 
+```csharp
     string assetName = "AssetFilter_" + Guid.NewGuid().ToString();
     var asset = _context.Assets.Create(assetName, AssetCreationOptions.None);
 
@@ -100,7 +102,7 @@ A következő kód bemutatja, hogyan .NET segítségével létrehozhatja, friss�
     // Delete
     filterUpdated.Delete();
 
-
+```
 
 
 ## <a name="build-streaming-urls-that-use-filters"></a>Build a streaming URL-szűrők használata

@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 06/02/2017
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 9267a7d2b27930fbcd0aa70ec9e2ddc62b6b0b2a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: d05456912324c06a0895cd4cf049b60c9d126904
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="certificate-credentials-for-application-authentication"></a>Alkalmazás-hitelesítési tanúsítvány hitelesítő adatai
 
-Az Azure Active Directory lehetővé teszi, hogy az alkalmazás saját hitelesítő adatait a hitelesítéshez, például az OAuth 2.0 ügyfél hitelesítő adatok Grant flow és az On-meghatalmazásos folyamat.
+Az Azure Active Directory lehetővé teszi az saját hitelesítő adatait használja a hitelesítéshez, például az OAuth 2.0 ügyfél hitelesítő adatok megadása folyamatában ([v1](active-directory-protocols-oauth-service-to-service.md) [v2](active-directory-v2-protocols-oauth-client-creds.md)) és az On-meghatalmazásos folyamat ([v1](active-directory-protocols-oauth-on-behalf-of.md) [v2](active-directory-v2-protocols-oauth-on-behalf-of.md)).
 A hitelesítő adatok, használhat egy formátuma egy JSON webes Token(JWT) helyességi feltételt, amely az alkalmazás tulajdonosa a tanúsítvánnyal aláírt.
 
 ## <a name="format-of-the-assertion"></a>A helyességi feltétel formátuma
@@ -37,11 +37,11 @@ A helyességi feltétel kiszámításához, érdemes lehet a több valamelyikév
 | `typ` | Meg kell **jwt-t** |
 | `x5t` | Az X.509 tanúsítvány SHA-1 ujjlenyomat kell lennie. |
 
-#### <a name="claims-payload"></a>Jogcímek (tartalom)
+#### <a name="claims-payload"></a>Claims (Payload)
 
 | Paraméter |  Megjegyzés |
 | --- | --- | --- |
-| `aud` | A célközönség: Kell **https://login.microsoftonline.com/*tenant_Id*/oauth2/token** |
+| `aud` | A célközönség: Kell **https://login.microsoftonline.com/*tenant_Id*  /oauth2/token** |
 | `exp` | Lejárat dátuma: a dátum, amikor a jogkivonat érvényessége lejár. Az idő másodpercben 1970. január 1. a ki (1970-01-01T0:0:0Z) UTC, amíg a token érvényességi lejárati idejének.|
 | `iss` | Kibocsátó: a client_id (az ügyfélszolgáltatás alkalmazásazonosító) kell lennie. |
 | `jti` | GUID-ja: a JWT azonosító |

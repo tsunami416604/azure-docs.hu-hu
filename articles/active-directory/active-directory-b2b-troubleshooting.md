@@ -3,7 +3,7 @@ title: "Hibaelhárítás az Azure Active Directory B2B együttműködés |} Micr
 description: "Jogorvoslatok Azure Active Directory B2B együttműködés kapcsolatos általános problémák"
 services: active-directory
 documentationcenter: 
-author: sasubram
+author: twooley
 manager: mtillman
 editor: 
 tags: 
@@ -14,12 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
 ms.date: 05/25/2017
-ms.author: sasubram
-ms.openlocfilehash: 6773aeb6f8470bb8d35764d579681b4167e5175d
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: twooley
+ms.reviewer: sasubram
+ms.openlocfilehash: 588e154d35fda539ac6ee8803ed96e6cd9a3d1df
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="troubleshooting-azure-active-directory-b2b-collaboration"></a>Hibaelhárítás az Azure Active Directory B2B együttműködés
 
@@ -70,7 +71,7 @@ Külső felhasználók csak "hozzárendelt" vagy "Biztonság" csoportok és nem 
 
 ## <a name="my-external-user-did-not-receive-an-email-to-redeem"></a>A külső felhasználó nem kapta meg a beváltani e-mailt
 
-A meghívott érdemes egyeztetni az internetszolgáltató által biztosított és a levélszemét szűrő annak ellenőrzéséhez, hogy engedélyezett-e a következő címre:Invites@microsoft.com
+A meghívott érdemes egyeztetni az internetszolgáltató által biztosított és a levélszemét szűrő annak ellenőrzéséhez, hogy engedélyezett-e a következő címre: Invites@microsoft.com
 
 ## <a name="i-notice-that-the-custom-message-does-not-get-included-with-invitation-messages-at-times"></a>I figyelje meg, hogy az egyéni üzenet nem kérdezhető le a meghívó üzeneteket mellékelt néha
 
@@ -81,7 +82,7 @@ Adatvédelmi törvényekkel ahhoz, hogy az API-k nem tartalmaznak egyéni üzene
 
 Ebben a forgatókönyvben az Ön számára fontosak, ha az API-t meghívó e-mail mellőzése, és küldje el az e-mailek mechanizmus az Ön által választott. Tekintse meg a szervezet védőt való győződjön meg arról, hogy minden e-mailek küldésekor, így is adatvédelmi törvényekkel összhangban.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerje meg az Azure AD B2B együttműködés további cikkeit:
 

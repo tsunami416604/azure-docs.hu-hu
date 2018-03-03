@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/14/2017
+ms.date: 02/23/2018
 ms.author: genli
-ms.openlocfilehash: 83d96a2706e879f8817540e85369729289be9456
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 3884eec0e65f856be87505d45c25cad7d3742bab
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="troubleshooting-azure-point-to-site-connection-problems"></a>Hibáinak elhárítása: Az Azure pont – hely kapcsolat problémák
 
@@ -40,7 +40,9 @@ Ez a probléma akkor fordul elő, ha az ügyfél-tanúsítványa nem található
 
 A probléma megoldásához kövesse az alábbi lépéseket:
 
-1. Győződjön meg arról, hogy az alábbi tanúsítványok vannak-e a megfelelő helyen:
+1. Nyissa meg a tanúsítvány-kezelőben: **Start**, típus **számítógép-tanúsítványok kezelése**, és kattintson a **számítógép-tanúsítványok kezelése** a keresési eredmény.
+
+2. Győződjön meg arról, hogy az alábbi tanúsítványok vannak-e a megfelelő helyen:
 
     | Tanúsítvány | Hely |
     | ------------- | ------------- |
@@ -48,7 +50,7 @@ A probléma megoldásához kövesse az alábbi lépéseket:
     | Azuregateway-*GUID*.cloudapp.net  | Aktuális User\Trusted legfelső szintű hitelesítésszolgáltatók|
     | AzureGateway-*GUID*.cloudapp.net, AzureRoot.cer    | Helyi számítógép\Megbízható legfelső szintű hitelesítésszolgáltatók|
 
-2. Nyissa meg a felhasználók számára\<felhasználónév > \AppData\Roaming\Microsoft\Network\Connections\Cm\<GUID >, manuálisan telepítse a tanúsítványt (*.cer fájlt) a felhasználói és számítógép tárolójában.
+3. Nyissa meg a felhasználók számára\<felhasználónév > \AppData\Roaming\Microsoft\Network\Connections\Cm\<GUID >, manuálisan telepítse a tanúsítványt (*.cer fájlt) a felhasználói és számítógép tárolójában.
 
 Az ügyféltanúsítvány telepítésével kapcsolatos további információkért lásd: [tanúsítvány létrehozása és exportálása a pont – hely kapcsolatok](vpn-gateway-certificates-point-to-site.md).
 
@@ -335,7 +337,7 @@ A hálózati adapter illesztőprogramja elavult.
 A hálózati illesztőprogram frissítése:
 
 1. Kattintson a **Start**, típus **Eszközkezelő**, és válassza ki azt a listából, az eredmények. Ha a számítógép rendszergazdai jelszót vagy megerősítést kér, írja be a jelszót, vagy erősítse meg a műveletet.
-2. Az a ** a hálózati adapterek ** kategóriák, a frissíteni kívánt hálózati adapter található.  
+2. Az a **hálózati adapterek** kategóriák, a frissíteni kívánt hálózati adapter található.  
 3. Kattintson duplán az eszköz nevére, válassza ki **illesztőprogram frissítése**, jelölje be **automatikusan frissített illesztőprogram keresése**.
 4. Ha a Windows egy új illesztőprogram nem található, megpróbálhatja keres egy, az eszköz gyártójának webhelyén, és kövesse az utasításokat.
 5. Indítsa újra a számítógépet, és próbáljon meg újra.

@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/09/2017
 ms.author: juliako
-ms.openlocfilehash: ba17e7a89ebfeb3bd854bb906bdb887b0cd54064
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 73a2dc47a6502712ebd1879170be552c9459b741
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="manage-streaming-endpoints-with-net-sdk"></a>.NET SDK-val adatfolyam-továbbítási végpontok kezelése
 
@@ -55,7 +55,7 @@ A streamvégpont méretezése kapcsolatos információkért lásd: [ez](media-se
     
 Cserélje le a Program.cs lévő kódot az alábbi kódra:
 
-```
+```csharp
 using System;
 using System.Configuration;
 using System.Linq;
@@ -142,7 +142,7 @@ namespace AMSStreamingEndpoint
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Tekintse át a Media Services képzési terveket.
 
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
