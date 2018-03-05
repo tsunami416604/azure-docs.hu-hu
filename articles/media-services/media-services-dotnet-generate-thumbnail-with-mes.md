@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/09/2017
 ms.author: juliako
-ms.openlocfilehash: f7a8b60e26b42668e505b3d466bfc447d0cfb48b
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 02bbeafd9cd8ca93f22cf9e1a2c107e01c082ba3
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="how-to-generate-thumbnails-using-media-encoder-standard-with-net"></a>Miniatűrök létrehozása a .NET-es Media Encoder Standard használatával
 
@@ -34,6 +34,7 @@ A következő JSON és az XML-készlet egy egyetlen kimeneti PNG fájlt az első
 
 ### <a name="json-preset"></a>JSON-készlet
 
+```json
     {
       "Version": 1.0,
       "Codecs": [
@@ -58,9 +59,11 @@ A következő JSON és az XML-készlet egy egyetlen kimeneti PNG fájlt az első
         }
       ]
     }
+```
     
 ### <a name="xml-preset"></a>XML-készlet
 
+```xml
     <?xml version="1.0" encoding="utf-16"?>
     <Preset xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1.0" xmlns="http://www.windowsazure.com/media/encoding/Preset/2014/03">
       <Encoding>
@@ -79,6 +82,7 @@ A következő JSON és az XML-készlet egy egyetlen kimeneti PNG fájlt az első
         </Output>
       </Outputs>
     </Preset>
+```
 
 ## <a name="example-of-a-series-of-jpeg-images-preset"></a>Egy "sorozata, JPEG-képek" készletet – példa
 
@@ -86,6 +90,7 @@ A következő JSON és az XML-készlet segítségével létrehoznak egy 10 kép 
 
 ### <a name="json-preset"></a>JSON-készlet
 
+```json
     {
       "Version": 1.0,
       "Codecs": [
@@ -113,9 +118,11 @@ A következő JSON és az XML-készlet segítségével létrehoznak egy 10 kép 
         }
       ]
     }
+```
 
 ### <a name="xml-preset"></a>XML-készlet
     
+```xml
     <?xml version="1.0" encoding="utf-16"?>
     <Preset xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1.0" xmlns="http://www.windowsazure.com/media/encoding/Preset/2014/03">
       <Encoding>
@@ -135,6 +142,7 @@ A következő JSON és az XML-készlet segítségével létrehoznak egy 10 kép 
         </Output>
       </Outputs>
     </Preset>
+```
 
 ## <a name="example-of-a-one-image-at-a-specific-timestamp-preset"></a>Egy "egy adott időbélyeg képnek" készletet – példa
 
@@ -142,6 +150,7 @@ A következő JSON és az XML-készletet: a bemeneti videóhoz 30 másodperces v
 
 ### <a name="json-preset"></a>JSON-készlet
 
+```json
     {
       "Version": 1.0,
       "Codecs": [
@@ -169,9 +178,10 @@ A következő JSON és az XML-készletet: a bemeneti videóhoz 30 másodperces v
         }
       ]
     }
-    
+```
+
 ### <a name="xml-preset"></a>XML-készlet
-    
+```xml
     <?xml version="1.0" encoding="utf-16"?>
     <Preset xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1.0" xmlns="http://www.windowsazure.com/media/encoding/Preset/2014/03">
       <Encoding>
@@ -191,7 +201,8 @@ A következő JSON és az XML-készletet: a bemeneti videóhoz 30 másodperces v
         </Output>
       </Outputs>
     </Preset>
-    
+```
+
 ## <a name="example-of-a-thumbnails-at-different-resolutions-preset"></a>Egy "a miniatűrök eltérő a megoldásuk" készletet – példa
 
 A következő beállítások segítségével különböző felbontásban indexképének létrehozására használnak egy feladat. A példában pozíciók 5 %-os 15 %,..., a bemeneti ütemterv 95 %-át a kódoló hoz létre két lemezképet – egyenként 100 %-a bemeneti videó felbontása, a másik 50 %.
@@ -200,6 +211,7 @@ Megjegyzés: {feloldási} makró a; fájlnév használata azt jelzi, szélesség
 
 ### <a name="json-preset"></a>JSON-készlet
 
+```json
     {
       "Version": 1.0,
       "Codecs": [
@@ -234,9 +246,10 @@ Megjegyzés: {feloldási} makró a; fájlnév használata azt jelzi, szélesség
         }
       ]
     }
+```
 
 ### <a name="xml-preset"></a>XML-készlet
-
+```xml
     <?xml version="1.0" encoding="utf-8"?>
     <Preset xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1.0" xmlns="http://www.windowsazure.com/media/encoding/Preset/2014/03">
     <Encoding>
@@ -261,7 +274,8 @@ Megjegyzés: {feloldási} makró a; fájlnév használata azt jelzi, szélesség
       </Output>
     </Outputs>
     </Preset>
-    
+```
+
 ## <a name="example-of-generating-a-thumbnail-while-encoding"></a>A miniatűr létrehozása közben kódolás – példa
 
 A fenti példák mindegyikét kérdéseket hogyan küldhet egy kódolási feladat, amely csak létrehozza a lemezképeket, amíg kombinálhatja is videó/hang miniatűr generációs kódolást. A következő JSON és az XML-készlet közölje **Media Encoder Standard** során kódolás miniatűr létrehozásához.
@@ -269,6 +283,7 @@ A fenti példák mindegyikét kérdéseket hogyan küldhet egy kódolási felada
 ### <a id="json"></a>JSON-készlet
 Séma kapcsolatos információkért lásd: [ez](https://msdn.microsoft.com/library/mt269962.aspx) cikk.
 
+```json
     {
       "Version": 1.0,
       "Codecs": [
@@ -328,10 +343,12 @@ Séma kapcsolatos információkért lásd: [ez](https://msdn.microsoft.com/libra
         }
       ]
     }
+```
 
 ### <a id="xml"></a>XML-készlet
 Séma kapcsolatos információkért lásd: [ez](https://msdn.microsoft.com/library/mt269962.aspx) cikk.
-    
+
+```csharp
     <?xml version="1.0" encoding="utf-16"?>
     <Preset xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1.0" xmlns="http://www.windowsazure.com/media/encoding/Preset/2014/03">
       <Encoding>
@@ -381,6 +398,7 @@ Séma kapcsolatos információkért lásd: [ez](https://msdn.microsoft.com/libra
         </Output>
       </Outputs>
     </Preset>   
+```
 
 ## <a id="code_sample"></a>Videó kódolása és a .NET miniatűr készítése
 
@@ -400,7 +418,7 @@ Az alábbi példakód Media Services .NET SDK-t használja a következő feladat
 
 Tekintse meg a [Media Services-fejlesztés a .NET](media-services-dotnet-how-to-use.md) számú cikk ismerteti a fejlesztői környezet beállítása.
 
-```
+```csharp
 using System;
 using System.Configuration;
 using System.IO;
@@ -542,7 +560,7 @@ A következők érvényesek:
   * Alapértelmezett: Start: {legjobb}
 * Kimeneti formátumot kell explicit módon meg kell adni az egyes képformátum: Jpg vagy Png/BmpFormat. Ha létezik, MES felel meg a JpgFormat JpgVideo és így tovább. OutputFormat bevezet egy új lemezkép-kodek adott makró: {Index}, mely rendelkeznie kell megjeleníteni az (egyszer és csak egyszer) kimeneti képformátum.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ellenőrizheti a [folyamatban lévő feladat](media-services-check-job-progress.md) közben a kódolási feladat folyamatban.
 

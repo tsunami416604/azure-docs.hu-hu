@@ -2,23 +2,19 @@
 title: "VMware virtuális gépek vagy fizikai kiszolgálók egy másodlagos helyre, az Azure Site Recovery vész-helyreállítási beállítása |} Microsoft Docs"
 description: "Megtudhatja, hogyan állíthatja be a VMware virtuális gépeket, vagy a Windows és Linux fizikai kiszolgálókon, egy másodlagos helyre, az Azure Site Recovery vész-helyreállítási."
 services: site-recovery
-documentationcenter: 
 author: nsoneji
 manager: gauarvd
-editor: 
-ms.assetid: 68616d15-398c-4f40-8323-17b6ae1e65c0
 ms.service: site-recovery
 ms.workload: backup-recovery
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 12/12/2017
+ms.date: 02/27/2018
 ms.author: raynew
-ms.openlocfilehash: 9de0cb3d22a4e500b66640f70f936ae955bbadb8
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: c83f6142e70103ff4d99d9d2871c4ab747af8d99
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-vmware-virtual-machines-or-physical-servers-to-a-secondary-site"></a>Helyszíni VMware virtuális gépek vagy fizikai kiszolgálók egy másodlagos helyre vész-helyreállítási beállítása
 

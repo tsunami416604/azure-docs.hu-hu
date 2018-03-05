@@ -35,7 +35,7 @@ Az alábbiakban néhány, a prémium szintű Storage szolgáltatásait:
 
 * **Prémium szintű storage-lemezekhez**
 
-    Prémium szintű Storage támogatja a megadott méret sorozatú virtuális gépekhez csatolt virtuális gépek lemezei. Prémium szintű Storage támogatja a DS-méretek, DSv2-méretek, GS-méretek, Ls-sorozat és Fs sorozatú virtuális gépeket. Megválaszthatja, a hét lemezméret: P4 (32GB), P6 (64 GB-os), P10 (128GB), P20 (512GB), P30 (1024GB), P40 (2048GB), P50 (4095GB). P4 és P6 lemezméret csak még támogatottak felügyelt lemezek. Minden lemez mérete a saját teljesítmény specifikációi. Attól függően, hogy az alkalmazás követelményeinek csatolhat egy vagy több lemezt a virtuális Gépet. Azt ismerteti részletesen specifikációk [prémium szintű Storage méretezhetőségi és Teljesítménycélok](#scalability-and-performance-targets).
+    Prémium szintű Storage támogatja a megadott méret sorozatú virtuális gépekhez csatolt virtuális gépek lemezei. Prémium szintű Storage támogatja a DS-méretek, DSv2-méretek, GS-méretek, Ls-sorozat, Fs-sorozat és Esv3 sorozatú virtuális gépeket. Megválaszthatja, a hét lemezméret: P4 (32GB), P6 (64 GB-os), P10 (128GB), P20 (512GB), P30 (1024GB), P40 (2048GB), P50 (4095GB). P4 és P6 lemezméret csak még támogatottak felügyelt lemezek. Minden lemez mérete a saját teljesítmény specifikációi. Attól függően, hogy az alkalmazás követelményeinek csatolhat egy vagy több lemezt a virtuális Gépet. Azt ismerteti részletesen specifikációk [prémium szintű Storage méretezhetőségi és Teljesítménycélok](#scalability-and-performance-targets).
 
 * **Prémium szintű lapblobokat**
 
@@ -62,7 +62,7 @@ Az alábbiakban néhány, a prémium szintű Storage szolgáltatásait:
 ## <a name="supported-vms"></a>Támogatott virtuális gépek
 Prémium szintű Storage támogatja a DS-méretek, DSv2-méretek, GS-méretek, Ls-sorozat, Fs-sorozat és a B sorozatú virtuális gépeken. Az ilyen méretű standard és prémium szintű storage lemezek is használhatók. Nem használhat a prémium szintű storage lemezekhez Virtuálisgép-sorozat, amelyek nem prémium szintű Storage-kompatibilis.
 
-További információ a Virtuálisgép-típusokon és a Windows Azure-méretek: [Windows Virtuálisgép-méretek](../articles/virtual-machines/windows/sizes.md). Linux virtuális gép típusát és méretét, az Azure-ban kapcsolatos információkért lásd: [Linux Virtuálisgép-méretek](../articles/virtual-machines/linux/sizes.md).
+További információt az Azure windowsos virtuálisgép-típusairól és -méreteiről a [windowsos virtuális gépek méretét](../articles/virtual-machines/windows/sizes.md) ismertető szakaszban talál. További információt az Azure linuxos virtuálisgép-típusairól és -méreteiről a [linuxos virtuális gépek méretét](../articles/virtual-machines/linux/sizes.md) ismertető szakaszban talál.
 
 Íme néhány a DS-méretek, DSv2-méretek, GS-méretek, a szolgáltatásait Ls-sorozat és Fs sorozatú virtuális gépek:
 
@@ -236,10 +236,10 @@ A következő Linux terjesztésekről érvényesítése a prémium szintű Azure
 
 | Disztribúció | Verzió | Támogatott kernel | Részletek |
 | --- | --- | --- | --- |
-| Ubuntu | 12.04 | 3.2.0-75.110+ | Ubuntu-12_04_5-LTS-amd64-Server-20150119-en-us-30GB |
-| Ubuntu | 14.04 | 3.13.0-44.73+ | Ubuntu-14_04_1-LTS-amd64-Server-20150123-en-us-30GB |
+| Ubuntu | 12.04 | 3.2.0-75.110+ | Ubuntu-12_04_5-LTS-amd64-server-20150119-en-us-30GB |
+| Ubuntu | 14.04 | 3.13.0-44.73+ | Ubuntu-14_04_1-LTS-amd64-server-20150123-en-us-30GB |
 | Debian | 7.x, 8.x | 3.16.7-ckt4-1+ | &nbsp; |
-| SUSE | SLES 12| 3.12.36-38.1+| SUSE-sles-12-prioritás-v20150213 <br> SUSE-sles-12-v20150213 |
+| SUSE | SLES 12| 3.12.36-38.1+| suse-sles-12-priority-v20150213 <br> SUSE-sles-12-v20150213 |
 | SUSE | SLES 11 SP4 | 3.0.101-0.63.1+ | &nbsp; |
 | CoreOS | 584.0.0+| 3.18.4+ | CoreOS 584.0.0 |
 | CentOS | 6.5, 6.6, 6.7, 7.0 | &nbsp; | [Szükséges LIS4](http://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) <br> *Megjegyzés: a következő szakaszban talál* |
