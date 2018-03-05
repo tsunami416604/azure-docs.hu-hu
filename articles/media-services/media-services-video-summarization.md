@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 12/09/2017
 ms.author: milanga;juliako;
-ms.openlocfilehash: 92c730addb69bc4d12708ccd789edce0c2336c80
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 4f40c9364d02929fe5bb193b4e8eb0a0157d34d2
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="use-azure-media-video-thumbnails-to-create-a-video-summarization"></a>Az Azure Media videó miniatűrök segítségével egy videó összegzésének létrehozása
 ## <a name="overview"></a>Áttekintés
@@ -44,7 +44,11 @@ Néhány esetben, ha a videó különböző színfalak nem áll a kimeneti csak 
 ## <a name="task-configuration-preset"></a>A feladat konfigurációja (beállítás)
 A videó miniatűr feladat létrehozásakor **Azure Media videó miniatűrök**, meg kell adnia egy konfigurációs készletet. A fenti miniatűr minta a következő alapkonfiguráció JSON hozták létre:
 
-    {"version":"1.0"}
+```json
+    {
+        "version":"1.0"
+    }
+```
 
 Jelenleg módosíthatja a következő paraméterekkel:
 
@@ -58,11 +62,12 @@ A következő táblázat ismerteti az alapértelmezett időtartamot, amikor **ma
 
 |  |  |  |
 | --- | --- | --- | --- | --- |
-| Videó időtartama |d < 3 perc |3 perc < d < 15 perc |
+| Videó időtartama |d < 3 min |3 perc < d < 15 perc |
 | A miniatűr időtartama |15 másodperc (2-3 színfalak) |30 másodperc (3-5 színfalak) |
 
 A következő JSON azokat a rendelkezésre álló paramétereket állítja be.
 
+```json
     {
         "version": "1.0",
         "options": {
@@ -71,6 +76,7 @@ A következő JSON azokat a rendelkezésre álló paramétereket állítja be.
             "fadeInFadeOut": "true"
         }
     }
+```
 
 ## <a name="net-sample-code"></a>.NET mintakód
 
@@ -78,15 +84,18 @@ A következő program bemutatja hogyan:
 
 1. Hozzon létre egy eszközt, és adathordozó-fájl feltöltése az objektumba.
 2. Létrehoz egy feladatot a következő json-készletet tartalmazó konfigurációs fájl alapján videó miniatűr feladatokkal: 
-   
-        {                
-            "version": "1.0",
-            "options": {
-                "outputAudio": "true",
-                "maxMotionThumbnailDurationInSecs": "30",
-                "fadeInFadeOut": "false"
+    
+    ```json
+            {                
+                "version": "1.0",
+                "options": {
+                    "outputAudio": "true",
+                    "maxMotionThumbnailDurationInSecs": "30",
+                    "fadeInFadeOut": "false"
+                }
             }
-        }
+    ```
+
 3. A kimeneti fájlokat tölti le. 
 
 #### <a name="create-and-configure-a-visual-studio-project"></a>Egy Visual Studio-projekt létrehozása és konfigurálása
@@ -95,6 +104,7 @@ A következő program bemutatja hogyan:
 
 #### <a name="example"></a>Példa
 
+```csharp
     using System;
     using System.Configuration;
     using System.IO;
@@ -262,6 +272,7 @@ A következő program bemutatja hogyan:
 
         }
     }
+```
 
 ### <a name="video-thumbnail-output"></a>A miniatűr videokimenetéhez
 [A miniatűr videokimenetéhez](http://ampdemo.azureedge.net/azuremediaplayer.html?url=http%3A%2F%2Fnimbuscdn-nimbuspm.streaming.mediaservices.windows.net%2Fd06f24dc-bc81-488e-a8d0-348b7dc41b56%2FHololens%2520Demo_VideoThumbnails_MotionThumbnail.mp4)
