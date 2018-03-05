@@ -14,13 +14,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 12/05/2017
+ms.date: 02/27/2018
 ms.author: larryfr
-ms.openlocfilehash: 1ad6ba7126b210ddc671026244c4c614d7010000
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 8455a45f1c39c5cb04f742d57a16a81776f850e0
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="use-c-user-defined-functions-with-hive-and-pig-streaming-on-hadoop-in-hdinsight"></a>C# felhasználó által definiált függvények használata a Hive és a HDInsight hadoop streamelési Pig használatával
 
@@ -49,7 +49,7 @@ Mind a Hive és a Pig teljen el az adatok külső alkalmazások feldolgozásáho
 
 ## <a name="net-on-hdinsight"></a>A HDInsight .NET
 
-* __Linux-alapú HDInsight__ használó fürtök [monó (https://mono-project.com)](https://mono-project.com) .NET-alkalmazások futtatására. Monó verzió 4.2.1 megtalálható HDInsight 3.5-ös verziója.
+* __Linux-alapú HDInsight__ használó fürtök [monó (https://mono-project.com)](https://mono-project.com) .NET-alkalmazások futtatására. Monó verzió 4.2.1 3.6 verzió HDInsight része.
 
     A .NET-keretrendszer verzióival is kompatibilisek monó további információkért lásd: [monó kompatibilitási](http://www.mono-project.com/docs/about-mono/compatibility/).
 
@@ -260,7 +260,7 @@ A .NET-keretrendszer és a HDInsight-verziókról mellékelt monó verziójának
         (2012-02-03 20:11:56 SampleClass5 [TRACE] verbose detail for id 1737534798)
         (2012-02-03 20:11:56 SampleClass7 [DEBUG] detail for id 1475865947)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebből a dokumentumból megismerte rendelkezik a .NET-keretrendszer alkalmazás a Hive és a Pig használata a HDInsight. Ha szeretné a Hive és a Pig használata a Python, lásd: [Python használni a Hive és a hdinsight Pig](python-udf-hdinsight.md).
 

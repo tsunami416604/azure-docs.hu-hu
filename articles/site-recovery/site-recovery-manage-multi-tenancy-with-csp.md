@@ -12,13 +12,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/14/2017
+ms.date: 02/27/2018
 ms.author: manayar
-ms.openlocfilehash: a49da33c8038ad467389c66e59727c7e195baf82
-ms.sourcegitcommit: 3fca41d1c978d4b9165666bb2a9a1fe2a13aabb6
+ms.openlocfilehash: 6dc8b573e66eaae1b5cb923ae72333fb959d0969
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="manage-multi-tenancy-with-the-cloud-solution-provider-csp-program"></a>Több vállalat kiszolgálása a Cloud Solution Provider (CSP) programmal kezelése
 
@@ -76,14 +76,14 @@ Ez a cikk arról, hogy a partner hogyan hozhat létre és kezelhet egy több-bé
 
     Kattintson a **összes erőforrás** hozzáférést biztosít a bérlő Azure-előfizetések. Hozzáférés az Azure Active Directory tetején kattintva ellenőrizheti az Azure-portálon sarkában.
 
-    ![Az Azure Active Directory-hivatkozás](./media/site-recovery-manage-multi-tenancy-with-csp/aad-admin-display.png)
+    ![Azure Active Directory link](./media/site-recovery-manage-multi-tenancy-with-csp/aad-admin-display.png)
 
 Ezután hajtsa végre az összes webhely-helyreállítási művelet az Azure portálon keresztül a bérlői és vész-helyreállítási műveleteinek a felügyeletét. A bérlői előfizetéshez eléréséhez CSP keresztül felügyelt vész-helyreállítási kövesse a korábban ismertetett folyamatot.
 
 ## <a name="deploy-resources-to-the-tenant-subscription"></a>A bérlői előfizetéshez erőforrások telepítése
 1. Az Azure portálon hozzon létre egy erőforráscsoportot, és a Recovery Services-tárolónak a szokásos folyamatonként telepíteni.
 
-2. Töltse le a tárolóregisztrációs kulcsot.
+2. Töltse le a tároló regisztrációs kulcsát.
 
 3. A Tanúsítványszolgáltatások regisztrálja a bérlő a tárolóbeli regisztrációs kulcs használatával.
 
@@ -121,7 +121,7 @@ Partnerek is hozzáadhat egy új felhasználót a CSP-portálon keresztül a bé
 
   Az Azure Site Recovery is rendelkezik három [előre meghatározott felhasználói szerepkörök](site-recovery-role-based-linked-access-control.md) , amely tovább korlátozhatja a hozzáférési szintek szükség szerint használható.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
   [További](site-recovery-role-based-linked-access-control.md) vonatkozó szerepköralapú hozzáférés-vezérlést az Azure Site Recovery központi telepítések felügyeletéhez szükséges.
 
   [Több-bérlős VMware-környezetekben kezelése](site-recovery-multi-tenant-support-vmware-using-csp.md)

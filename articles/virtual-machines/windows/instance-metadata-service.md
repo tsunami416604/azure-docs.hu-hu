@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/10/2017
 ms.author: harijayms
-ms.openlocfilehash: 903177506c31ec96452cbbdbade4a3d91dbf7571
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: f0a706a5a7724788d62479d1570fffac07ce6d54
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="azure-instance-metadata-service"></a>Az Azure példány metaadat-szolgáltatás
 
@@ -63,7 +63,7 @@ Ha a példány metaadat-szolgáltatás, meg kell adnia a fejléc `Metadata: true
 Példány metaadatai nem érhető el a futó virtuális gépek létrehozása/segítségével kezelt [Azure Resource Manager](https://docs.microsoft.com/rest/api/resources/). Elérhető összes az adatkategóriákat a virtuális gép példány használatával a következő kérelmet:
 
 ```bash
-curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017-04-02"
+curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017-08-01"
 ```
 
 > [!NOTE] 
@@ -81,7 +81,7 @@ API | Alapértelmezett adatformátum | Eltérő formátumban
 Egy nem alapértelmezett válaszformátum szeretne használni, adja meg a kért formátumát a kérelem lekérdezési karakterlánc paraméterként. Példa:
 
 ```bash
-curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017-04-02&format=text"
+curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017-08-01&format=text"
 ```
 
 ### <a name="security"></a>Biztonság
@@ -149,7 +149,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/network?api-vers
 #### <a name="retrieving-public-ip-address"></a>Nyilvános IP-cím beolvasása
 
 ```bash
-curl -H Metadata:true "http://169.254.169.254/metadata/instance/network/interface/0/ipv4/ipAddress/0/publicIpAddress?api-version=2017-04-02&format=text"
+curl -H Metadata:true "http://169.254.169.254/metadata/instance/network/interface/0/ipv4/ipAddress/0/publicIpAddress?api-version=2017-08-01&format=text"
 ```
 
 #### <a name="retrieving-all-metadata-for-an-instance"></a>Egy példányát minden metaadatainak beolvasása
@@ -218,13 +218,13 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017
 Példány metaadatok lehet beolvasni a Windows a PowerShell segédprogram segítségével `curl`: 
 
 ```bash
-curl -H @{'Metadata'='true'} http://169.254.169.254/metadata/instance?api-version=2017-04-02 | select -ExpandProperty Content
+curl -H @{'Metadata'='true'} http://169.254.169.254/metadata/instance?api-version=2017-08-01 | select -ExpandProperty Content
 ```
 
 Vagy a `Invoke-RestMethod` parancsmagot:
     
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -URI http://169.254.169.254/metadata/instance?api-version=2017-04-02 -Method get 
+Invoke-RestMethod -Headers @{"Metadata"="true"} -URI http://169.254.169.254/metadata/instance?api-version=2017-08-01 -Method get 
 ```
 
 **Válasz**
@@ -313,7 +313,7 @@ Szolgáltató akkor szükség lehet a nyomon követheti a szoftvert futtató vir
 **Kérés**
 
 ```bash
-curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/vmId?api-version=2017-04-02&format=text"
+curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/vmId?api-version=2017-08-01&format=text"
 ```
 
 **Válasz**
@@ -330,7 +330,7 @@ Ezek az adatok közvetlenül a példány metaadatok szolgáltatásával lekérde
 **Kérés**
 
 ```bash
-curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/platformFaultDomain?api-version=2017-04-02&format=text" 
+curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/platformFaultDomain?api-version=2017-08-01&format=text" 
 ```
 
 **Válasz**
@@ -346,7 +346,7 @@ Szolgáltató akkor jelenhet meg a támogatási hívás hol szeretné tudni, hog
 **Kérés**
 
 ```bash
-curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute?api-version=2017-04-02"
+curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute?api-version=2017-08-01"
 ```
 
 **Válasz**

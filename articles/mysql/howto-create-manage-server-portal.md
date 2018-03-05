@@ -1,34 +1,34 @@
 ---
-title: "Létrehozása és kezelése az Azure-adatbázis MySQL-kiszolgáló Azure-portál használatával |} Microsoft Docs"
+title: "Létrehozása és kezelése az Azure-adatbázis MySQL-kiszolgáló Azure-portál használatával"
 description: "Ez a cikk ismerteti, hogyan gyorsan létrehozhat egy új Azure-adatbázist a MySQL-kiszolgáló és az Azure portál használatával kiszolgáló kezeléséhez."
 services: mysql
-author: v-chenyh
+author: ajlam
 ms.author: nolanwu
 editor: jasonwhowell
-manager: jhubbard
+manager: kfile
 ms.service: mysql-database
 ms.topic: article
-ms.date: 09/15/2017
-ms.openlocfilehash: b73fe2214a165d7c02c0a58551d8b84bee39f919
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.date: 02/28/2018
+ms.openlocfilehash: 0e274c0ada3de5e9000ae41516e5b9b67ef1490b
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="create-and-manage-azure-database-for-mysql-server-using-azure-portal"></a>Létrehozása és kezelése az Azure-adatbázis MySQL-kiszolgáló Azure-portál használatával
-Ez a témakör ismerteti, hogyan gyorsan létrehozhat egy új Azure-adatbázis MySQL-kiszolgáló. A kiszolgáló kezelése az Azure portál használatával kapcsolatos adatokat is tartalmaz. Kiszolgáló kezelése tartalmazza a kiszolgáló adatait, és az adatbázisok, a jelszó alaphelyzetbe állítása, és a kiszolgáló törlésével megtekintése.
+Ez a témakör ismerteti, hogyan gyorsan létrehozhat egy új Azure-adatbázis MySQL-kiszolgáló. A kiszolgáló kezelése az Azure portál használatával kapcsolatos adatokat is tartalmaz. Kiszolgáló kezelése tartalmazza a kiszolgáló adatait, és az adatbázisok, a jelszó alaphelyzetbe állításával erőforrások méretezés és a kiszolgáló törlésével megtekintése.
 
 ## <a name="log-in-to-the-azure-portal"></a>Bejelentkezés az Azure Portalra
 Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 
 ## <a name="create-an-azure-database-for-mysql-server"></a>Azure-adatbázis létrehozása MySQL-kiszolgálóhoz
-Kövesse az alábbi lépéseket az Azure-adatbázis "mysqlserver4demo." nevű MySQL-kiszolgáló létrehozásához
+Kövesse az alábbi lépéseket az Azure-adatbázis "mydemoserver." nevű MySQL-kiszolgáló létrehozásához
 
 1. Kattintson a **hozzon létre egy erőforrást** gomb az Azure portál bal felső sarkában található.
 
 2. Válassza ki az új oldalon **adatbázisok**, és az adatbázisok lapon válassza ki **MySQL az Azure-adatbázis**.
 
-    > Egy MySQL-kiszolgálóhoz tartozó Azure-adatbázis jön létre egy adott csoportján [számítási és tárolási](./concepts-compute-unit-and-storage.md) erőforrásokat. Az adatbázis egy Azure erőforráscsoporton belül, és a MySQL-kiszolgáló egy Azure-adatbázis létrehozása.
+    > Egy MySQL-kiszolgálóhoz tartozó Azure-adatbázis jön létre egy adott csoportján [számítási és tárolási](./concepts-pricing-tiers.md) erőforrásokat. Az adatbázis egy Azure erőforráscsoporton belül, és a MySQL-kiszolgáló egy Azure-adatbázis létrehozása.
 
    ![create-new-server](./media/howto-create-manage-server-portal/create-new-server.png)
 
@@ -36,58 +36,79 @@ Kövesse az alábbi lépéseket az Azure-adatbázis "mysqlserver4demo." nevű My
 
     | **Űrlapmező** | **Mező leírása** |
     |----------------|-----------------------|
-    | *Kiszolgálónév* | Azure-beli mysql (a kiszolgáló neve, globálisan egyedi) |
-    | *Előfizetés* | MySQLaaS (a legördülő menüből válassza ki) |
-    | *Erőforráscsoport* | erőforrás (hozzon létre egy új erőforráscsoportot, vagy használjon egy meglévőt) |
+    | *Kiszolgálónév* | mydemoserver (a kiszolgáló neve, globálisan egyedi) |
+    | *Előfizetés* | mysubscription (a legördülő menüből válassza ki) |
+    | *Erőforráscsoport* | myresourcegroup (hozzon létre egy új erőforráscsoportot, vagy használjon egy meglévőt) |
+    | *Forrás kiválasztása* | Üres (hozzon létre egy üres MySQL-kiszolgáló) |
     | *Kiszolgálói rendszergazdai bejelentkezés* | myadmin (állítsa be a rendszergazdafiók nevét) |
-    | *Jelszó* | a telepítő rendszergazda fiók jelszava |
+    | *Jelszó* | készlet rendszergazda fiók jelszava |
     | *Jelszó megerősítése* | erősítse meg a rendszergazdafiók jelszavát |
-    | *Hely* | Észak-Európa (válassza ki a Észak-Európában és USA nyugati régiója között) |
-    | *Verzió* | 5.6 (Azure-adatbázis kiválasztása a MySQL-kiszolgáló verziója) |
+    | *Hely* | Délkelet-Ázsia (válassza ki a Észak-Európában és USA nyugati régiója között) |
+    | *Verzió* | 5.7 (Azure-adatbázis kiválasztása a MySQL-kiszolgáló verziója) |
 
-4. Kattintson a **tarifacsomag** új kiszolgálóját a szolgáltatás és teljesítményszintet szintjének beállításához. Számítási egység konfigurálható közötti 50-100 alapszintű rétegben, 100 és a normál rétegben, 200 között, és adható tárterület a belefoglalt mennyisége alapján. Ez az útmutató útmutató most válassza 50 számítási egység és 50 GB. Kattintson a **OK** a mentéshez.
+4. Kattintson a **tarifacsomag** új kiszolgálóját a szolgáltatás és teljesítményszintet szintjének beállításához. Válassza ki a **általános célú** fülre. A **Számítási generáció**, **Virtuális mag**, **Tárolás** és **Biztonsági mentések megőrzési időszaka** beállítások alapértelmezett értékei a következők: *4. generációs*, *2 virtuális mag*, *5 GB* és *7 nap*. A csúszkákat nem szükséges módosítania. A kiszolgáló georedundáns tárhelyre való biztonsági mentésének engedélyezéséhez válassza a **Biztonsági másolat redundanciabeállításai** területen a **Georedundáns** lehetőséget.
 
    ![create-server-pricing-tier](./media/howto-create-manage-server-portal/create-server-pricing-tier.png)
 
 5. A kiszolgáló üzembe helyezéséhez kattintson a **Létrehozás** elemre. Az üzembe helyezés eltarthat néhány percig.
 
     > Válassza ki a **rögzítés az irányítópulton** a beállítást, a központi telepítések könnyű nyomon.
-    > [!NOTE]
-    > Legfeljebb 1000 alapszintű rétegben és 10 000 GB-os normál rétegben tárolási támogatják, de a nyilvános előzetes verziójához a maximális tároló mérete ideiglenesen legfeljebb 1000 GB.</Include>
 
 ## <a name="update-an-azure-database-for-mysql-server"></a>Egy MySQL-kiszolgálóhoz tartozó Azure-adatbázis frissítése
-Új kiszolgáló üzembe helyezése után a felhasználó rendelkezik-e egy meglévő kiszolgálóról szerkesztésre két lehetőség közül választhat: rendszergazdai jelszó visszaállítása vagy méretezni a kiszolgáló felfelé vagy lefelé a számítási egység módosításával.
+Után az új kiszolgáló van megadva, a felhasználó rendelkezik-e a meglévő kiszolgáló, beleértve a rendszergazdai jelszó alaphelyzetbe állítása és a méretezésről vCore vagy tárolási módosításával a kiszolgáló felfelé vagy lefelé konfigurálása számos lehetőség közül választhat.
 
 ### <a name="change-the-administrator-user-password"></a>A rendszergazda felhasználó jelszavának módosítása
-1. A kiszolgálón **áttekintése** panelen kattintson a **jelszó-átállítási** jelszó bemeneti és a megerősítő ablak feltöltéséhez.
+1. A kiszolgáló **áttekintése**, kattintson a **jelszó-átállítási** a jelszó-átállítási ablak megjelenítése.
 
-2. Adjon meg új jelszót, és az jelszót az ablakban látható módon:
+   ![Áttekintés](./media/howto-create-manage-server-portal/overview.png)
+
+2. Adjon meg egy új jelszót, és az jelszót az ablakban látható módon:
 
    ![reset-password](./media/howto-create-manage-server-portal/reset-password.png)
 
 3. Kattintson a **OK** mentse az új jelszót.
 
-### <a name="scale-updown-by-changing-compute-units"></a>Fel/le méretezhető számítási egység módosítása
+### <a name="scale-vcores-updown"></a>Skála vCores fel/le
 
-1. A kiszolgáló panelen alatt **beállítások**, kattintson a **tarifacsomag** MySQL-kiszolgálóhoz tartozó Azure-adatbázis az árazás réteg panel megnyitásához.
+1. Kattintson a **tarifacsomag**, amelynek alapján **beállítások**.
 
-2. Hajtsa végre a 4. lépés a **MySQL-kiszolgáló Azure-adatbázis létrehozása** számítási egység az ugyanazon a tarifacsomag módosítása.
+2. Módosítsa a **vCore** beállítását a csúszkát a kívánt értéket.
+
+    ![scale-compute](./media/howto-create-manage-server-portal/scale-compute.png)
+
+3. Kattintson az **OK** gombra a módosítások mentéséhez.
+
+### <a name="scale-storage-up"></a>Skála tárolási mentése
+
+1. Kattintson a **tarifacsomag**, amelynek alapján **beállítások**.
+
+2. Módosítsa a **tárolási** beállítását a csúszkát a kívánt értéket.
+
+    ![skála-tároló](./media/howto-create-manage-server-portal/scale-storage.png)
+
+3. Kattintson az **OK** gombra a módosítások mentéséhez.
 
 ## <a name="delete-an-azure-database-for-mysql-server"></a>Egy MySQL-kiszolgálóhoz tartozó Azure-adatbázis törlése
 
-1. A kiszolgálón **áttekintése** panelen kattintson a **törlése** parancsgomb törlése megerősítő panel megnyitásához.
+1. A kiszolgáló **áttekintése**, kattintson a **törlése** gombra kattintva nyissa meg a törlési megerősítés.
 
-2. Kettős megerősítést kér a panel a beviteli mezőbe írja be a helyes kiszolgálónevet.
+    ![törlés](./media/howto-create-manage-server-portal/delete.png)
 
-3. Kattintson a **törlése** megerősítésként az értesítési sáv megjelenő felugró a törlési művelet, és majd várnia kell a "törlése sikeres" gombra.
+2. Kettős megerősítést kér a beviteli mezőbe írja be annak a kiszolgálónak a nevét.
+
+    ![confirm-delete](./media/howto-create-manage-server-portal/confirm.png)
+
+3. Kattintson a **törlése** gombra annak megerősítéséhez, hogy a kiszolgáló törlése. Várjon, amíg a "törlése sikeresen megtörtént a MySQL-kiszolgáló" csatlakozási pont legfeljebb az értesítési sáv jelenik meg.
 
 ## <a name="list-the-azure-database-for-mysql-databases"></a>Az Azure-adatbázishoz a MySQL-adatbázisok felsorolása
-A kiszolgálón **áttekintése** panelen görgessen lefelé, amíg megjelenik a csempe alsó adatbázis. A táblázatban szereplő összes adatbázist. Kattintson a **törlése** parancsgomb törlése megerősítő panel megnyitásához.
+A kiszolgáló **áttekintése**, görgessen lefelé, amíg megjelenik a csempe alsó adatbázis. A táblázatban szereplő összes adatbázis a kiszolgálón.
 
    ![megjelenítése-adatbázisok](./media/howto-create-manage-server-portal/show-databases.png)
 
 ## <a name="show-details-of-an-azure-database-for-mysql-server"></a>Egy Azure-adatbázis MySQL-kiszolgáló részleteinek megjelenítése
-A kiszolgáló panelen alatt **beállítások**, kattintson a **tulajdonságok** megnyitásához a **tulajdonságok** panelt, és ezután tekintse meg az összes részletes információ a kiszolgálóról.
+Kattintson a **tulajdonságok**, amelynek alapján **beállítások** a kiszolgálókkal kapcsolatos részletes információk megtekintéséhez.
+
+![properties](./media/howto-create-manage-server-portal/properties.png)
 
 ## <a name="next-steps"></a>További lépések
 

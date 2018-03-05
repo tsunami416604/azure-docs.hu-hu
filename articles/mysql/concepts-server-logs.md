@@ -1,19 +1,19 @@
 ---
-title: "MySQL az Azure-adatbázis a kiszolgáló naplóiban |} Microsoft Docs"
+title: "A kiszolgáló naplóiban MySQL az Azure-adatbázis"
 description: "Ismerteti az Azure-adatbázisban elérhető naplók a MySQL és a különböző naplózási szintek engedélyezésének a rendelkezésre álló paramétereket."
 services: mysql
 author: rachel-msft
 ms.author: raagyema
-manager: jhubbard
+manager: kfile
 editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
-ms.date: 10/18/2017
-ms.openlocfilehash: 13b30df82c1a6c4c45a621a1f7a40148a55a7648
-ms.sourcegitcommit: b723436807176e17e54f226fe00e7e977aba36d5
+ms.date: 02/28/2018
+ms.openlocfilehash: ce6b6208b74063ea5d6e9868ca414f833b1a2045
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="server-logs-in-azure-database-for-mysql"></a>A MySQL-kiszolgáló naplóit, az Azure-adatbázis
 A MySQL adatbázis Azure, a lassú lekérdezés napló érhető el a felhasználók számára. A tranzakciós napló elérése nem támogatott. A lassú lekérdezés napló segítségével hibaelhárítási szűk keresztmetszetek azonosítása. 
@@ -45,5 +45,5 @@ Más paramétereket, módosíthatja a következők:
 
 Tekintse meg a MySQL [lassú a lekérdezési napló dokumentáció](https://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html) lassú lekérdezésparaméter napló részletes leírását.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - [Hogyan lehet konfigurálni, és hozzáférést kiszolgálónaplókban az Azure parancssori felület](howto-configure-server-logs-in-cli.md).

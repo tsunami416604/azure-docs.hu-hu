@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 12/05/2017
+ms.date: 02/27/2018
 ms.author: larryfr
-ms.openlocfilehash: 372e9465eec1a373ff2b59209673e65fa1f994b6
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 4449dfa1b189f51292d24af884ba9d2addf1fe24
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Információk a HDInsight Linuxon való használatáról
 
@@ -35,7 +35,7 @@ A jelen dokumentumban leírt lépések számos használja az alábbi segédprogr
 
 * [cURL](https://curl.haxx.se/) - web-alapú szolgáltatásokkal történő kommunikációhoz használt
 * [jq](https://stedolan.github.io/jq/) - használt elemzése JSON-dokumentumok
-* [Az Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-az-cli2) (előzetes verzió) – távoli kezelése az Azure-szolgáltatásokhoz használt
+* [Az Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-az-cli2) - használt távoli kezelése az Azure-szolgáltatások
 
 ## <a name="users"></a>Felhasználók
 
@@ -100,7 +100,7 @@ Hadoop kapcsolatos fájlok találhatók a fürtcsomópontokon, `/usr/hdp`. Ez a 
 * **2.2.4.9-1**: A könyvtár neve a Hortonworks Data Platform HDInsight által használt verziója telepítve. Lehet, hogy a fürt hány eltérnek a listán.
 * **aktuális**: Ez a könyvtár alatti alkönyvtárak mutató hivatkozásokat tartalmaz a **2.2.4.9-1** könyvtár. Ez a könyvtár létezik, így nem kell jegyezze meg a verziószámot.
 
-Példa adatok és a JAR-fájlok megtalálhatók a Hadoop elosztott fájlrendszer, `/example` és`/HdiSamples`
+Példa adatok és a JAR-fájlok megtalálhatók a Hadoop elosztott fájlrendszer, `/example` és `/HdiSamples`
 
 ## <a name="hdfs-azure-storage-and-data-lake-store"></a>HDFS, az Azure Storage és a Data Lake Store
 
@@ -151,11 +151,11 @@ Ambari segítségével a fürt alapértelmezett tároló konfigurációjának be
 
 Ez a parancs értéket ad vissza a következő URI-k hasonlít:
 
-* `wasb://<container-name>@<account-name>.blob.core.windows.net`Ha egy Azure Storage-fiók használatával.
+* `wasb://<container-name>@<account-name>.blob.core.windows.net` Ha egy Azure Storage-fiók használatával.
 
     A fiók neve az Azure Storage-fiók nevét. A tároló neve a blob-tároló, amely a fürttároló gyökere.
 
-* `adl://home`Ha az Azure Data Lake Store használatára. A Data Lake Store nevét, amelyet a következő REST-hívást:
+* `adl://home` Ha az Azure Data Lake Store használatára. A Data Lake Store nevét, amelyet a következő REST-hívást:
 
     ```curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" | jq '.items[].configurations[].properties["dfs.adls.home.hostname"] | select(. != null)'```
 
@@ -196,8 +196,8 @@ Ha használ __Azure Data Lake Store__, tekintse meg a következő hivatkozások 
 * [Webböngésző](../data-lake-store/data-lake-store-get-started-portal.md)
 * [PowerShell](../data-lake-store/data-lake-store-get-started-powershell.md)
 * [Azure CLI 2.0](../data-lake-store/data-lake-store-get-started-cli-2.0.md)
-* [WebHDFS REST API-n](../data-lake-store/data-lake-store-get-started-rest-api.md)
-* [A Data Lake Tools for Visual Studio](https://www.microsoft.com/download/details.aspx?id=49504)
+* [WebHDFS REST API](../data-lake-store/data-lake-store-get-started-rest-api.md)
+* [Data Lake Tools for Visual Studio](https://www.microsoft.com/download/details.aspx?id=49504)
 * [.NET](../data-lake-store/data-lake-store-get-started-net-sdk.md)
 * [Java](../data-lake-store/data-lake-store-get-started-java-sdk.md)
 * [Python](../data-lake-store/data-lake-store-get-started-python.md)
@@ -275,7 +275,7 @@ Egy összetevő egy másik verzióját használja, töltse fel a verziót kell, 
 >
 > Egyéni összetevők kapnak minden üzleti szempontból ésszerű támogatási segítséget nyújtanak a probléma további hibaelhárításához. A probléma megoldását, vagy kéri fel, a nyílt forráskódú technológiák, ahol a részletes segítséget, hogy a technológiát található elérhető csatorna végezhetnek eredményezhet. Például nincsenek sok közösségi webhelyek használható, például: [MSDN fórum hdinsight](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), [http://stackoverflow.com](http://stackoverflow.com). Is Apache projektek rendelkezik projekt helyek [http://apache.org](http://apache.org), például: [Hadoop](http://hadoop.apache.org/), [Spark](http://spark.apache.org/).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Linux-alapú Windows-alapú HDInsight át](hdinsight-migrate-from-windows-to-linux.md)
 * [A Hive használata a HDInsightban](hadoop/hdinsight-use-hive.md)

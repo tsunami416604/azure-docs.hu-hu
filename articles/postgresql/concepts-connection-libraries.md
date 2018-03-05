@@ -1,19 +1,19 @@
 ---
-title: "Azure-adatbázis a PostgreSQL adatkapcsolattárak |} Microsoft Docs"
+title: "Adatkapcsolattárak PostgreSQL Azure-adatbázis"
 description: "Ez a cikk ismerteti a több szalagtárak és illesztőprogramokat, hogy a fejlesztők használhatják mikor kódolási kapcsolódás és lekérdezés az Azure-adatbázis a PostgreSQL-alkalmazások."
 services: postgresql
-author: SaloniSonpal
-ms.author: salonis
-manager: jhubbard
+author: rachel-msft
+ms.author: raagyema
+manager: kfile
 editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
-ms.date: 09/26/2017
-ms.openlocfilehash: f371d5cd4e20096d5101fadf9066e3a135218d0b
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.date: 02/28/2018
+ms.openlocfilehash: 7f0dd217a124f530ba009c9a5588691f604827e5
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="connection-libraries-for-azure-database-for-postgresql"></a>Adatkapcsolattárak PostgreSQL Azure-adatbázis
 Ez a cikk felsorolja a szalagtárak és illesztőprogramokat, amelyek a fejlesztők a csatlakozhat, és az Azure-adatbázis lekérdezése a PostgreSQL-alkalmazások fejlesztéséhez.
@@ -34,7 +34,7 @@ A legtöbb nyelvi ügyfél függvénytárainak PostgreSQL-kiszolgálóhoz való 
 | C# | [libpq](https://www.postgresql.org/docs/9.6/static/libpq.html) | C nyelvi elsődleges felület | Tartalmazza |
 | C++ | [libpqxx](http://pqxx.org/) | Új stílusú C++ felület | [Letöltés](http://pqxx.org/download/software/) |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Olvassa el ezen quickstarts csatlakozni, és az Azure-adatbázis lekérdezése a PostgreSQL a választott nyelv használatával:
 
-[Python](./connect-python.md) | [Node.JS](./connect-nodejs.md) | [Java](./connect-java.md) | [Ruby](./connect-ruby.md) | [PHP](./connect-php.md)  |  [.NET (C#)](./connect-csharp.md) | [nyissa meg](./connect-go.md)
+[Python](./connect-python.md) | [Node.JS](./connect-nodejs.md) | [Java](./connect-java.md) | [Ruby](./connect-ruby.md) | [PHP](./connect-php.md) | [.NET (C#)](./connect-csharp.md) | [Go](./connect-go.md)

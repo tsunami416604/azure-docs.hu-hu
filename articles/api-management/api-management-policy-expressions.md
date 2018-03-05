@@ -14,34 +14,31 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: fb50ba3f292a390c45f1afe6259731d2b92cc335
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: a5bcd03e71a69928fa1e02a5286801c4933d17ef
+ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="api-management-policy-expressions"></a>API-felügyeleti házirend-kifejezések
-Házirend kifejezések szintaxisa a C# 6.0. Minden egyes kifejezés hozzáfér a implicit módon megadott [környezetben](api-management-policy-expressions.md#ContextVariables) változó és egy engedélyezett [részhalmaza](api-management-policy-expressions.md#CLRTypes) .NET-keretrendszer típusú.  
-  
-> [!TIP]
->  Házirend-kifejezések kapcsolatos további információkért tekintse meg a [házirend-kifejezések](https://azure.microsoft.com/documentation/videos/policy-expressions-in-azure-api-management/) videó.  
->   
->  Tekintse meg a házirend-kifejezések használatával házirendek konfigurálásához a bemutatók [felhő fedik le a epizód 177: több API a felügyeleti funkcióinak Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/). Ez a videó tartalmazza a következő házirend-kifejezés bemutatók:  
->   
->  -   10:30 - környezet további információt a háttérszolgáltatás témakörben talál. Használja a [állítsa be a lekérdezési karakterlánc paraméter](api-management-transformation-policies.md#SetQueryStringParameter) és [be HTTP-fejléc](api-management-transformation-policies.md#SetHTTPheader) szabályzatai segítségével automatikusan megadhatja ezt az információt. 12:10 nincs egy bemutatója művelet hívása a fejlesztői portálra, ahol ezek a házirendek munkahelyi láthatók.  
-> -   13:50 - használata című részben találja a [érvényesítése JWT](api-management-access-restriction-policies.md#ValidateJWT) házirend előre a műveletek hozzáférés hitelesítése a token jogcímei alapján. Gyors 15:00, hogy hogyan vannak konfigurálva a házirendek a Helyicsoportházirend-szerkesztő továbbítja. 18:50 tekintse meg a művelet hívása a developer portálról, és anélkül, a szükséges engedélyezési jogkivonat bemutatója.  
-> -   21:00 - használatát egy [API Inspector](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/) megtekintéséhez a házirendek kiértékelése hogyan nyomkövetés, ezért ezen eredmények.  
-> -   25:25 - kifejezést használata a [lekérni a gyorsítótár](api-management-caching-policies.md#GetFromCache) és [tároló, a gyorsítótár](api-management-caching-policies.md#StoreToCache) szabályzatainak használatával konfigurálhatja az API Management válasz gyorsítótár. Egy időtartamot, amely megfelel a háttérszolgáltatáshoz a biztonsági másolat szolgáltatás által megadott válaszok gyorsítótárazása `Cache-Control` direktívát.  
-> -   34:30 - lásd: hogyan hajthat végre a tartalom szűrést. Adatok eltávolítása a háttér-a kapott válasz a [folyamatot szabályozhatja](api-management-advanced-policies.md#choose) és [állítsa be a szervezet](api-management-transformation-policies.md#SetBody) házirendek. Megtekinthet egy áttekintést 31:50 kezdjék [a sötét égbolt előrejelzési API](https://developer.forecast.io/) ebben a bemutatóban használt.  
-> -   Ez a videó használt házirend-utasításoknál letöltéséhez lásd: a [api-felügyeleti-minták/házirendek](https://github.com/Azure/api-management-samples/tree/master/policies) github-tárház.  
+Ez a cikk ismerteti, amelyek házirend kifejezések szintaxisa a C# 6.0. Minden egyes kifejezés hozzáfér a implicit módon megadott [környezetben](api-management-policy-expressions.md#ContextVariables) változó és egy engedélyezett [részhalmaza](api-management-policy-expressions.md#CLRTypes) .NET-keretrendszer típusú.  
+
+További információk:
+
+- Adja meg a környezetben információkat által a háttérszolgáltatáshoz témakörben talál. Használja a [állítsa be a lekérdezési karakterlánc paraméter](api-management-transformation-policies.md#SetQueryStringParameter) és [be HTTP-fejléc](api-management-transformation-policies.md#SetHTTPheader) szabályzatai segítségével automatikusan megadhatja ezt az információt.
+- Használata a [érvényesítése JWT](api-management-access-restriction-policies.md#ValidateJWT) házirend előre a műveletek hozzáférés hitelesítése a token jogcímei alapján.   
+- Használata egy [API Inspector](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/) megtekintéséhez a házirendek kiértékelése hogyan nyomkövetés, ezért ezen eredmények.  
+- A kifejezések használata a [lekérni a gyorsítótár](api-management-caching-policies.md#GetFromCache) és [tároló, a gyorsítótár](api-management-caching-policies.md#StoreToCache) szabályzatainak használatával konfigurálhatja az API Management válasz gyorsítótárazását. Egy időtartamot, amely megfelel a háttérszolgáltatáshoz a biztonsági másolat szolgáltatás által megadott válaszok gyorsítótárazása `Cache-Control` direktívát.  
+- Lásd: hogyan hajthat végre a tartalom szűrést. Adatok eltávolítása a háttér-a kapott válasz a [folyamatot szabályozhatja](api-management-advanced-policies.md#choose) és [állítsa be a szervezet](api-management-transformation-policies.md#SetBody) házirendek. 
+- A házirend-utasításoknál letöltéséhez lásd: a [api-felügyeleti-minták/házirendek](https://github.com/Azure/api-management-samples/tree/master/policies) github-tárház.  
   
   
-##  <a name="Syntax"></a>Szintaxis  
+##  <a name="Syntax"></a> Szintaxis  
  Egyetlen utasításként kifejezések parancsfájlblokkjában találhatók `@(expression)`, ahol `expression` van egy megfelelően formázott C# kifejezés utasításaként.  
   
  Több utasításból álló kifejezések parancsfájlblokkjában találhatók `@{expression}`. Több utasításból álló kifejezések belül a programkód összes útvonalán végén szerepelnie kell egy `return` utasítást.  
   
-##  <a name="PolicyExpressionsExamples"></a>Példák  
+##  <a name="PolicyExpressionsExamples"></a> Példák  
   
 ```  
 @(true)  
@@ -67,13 +64,13 @@ Házirend kifejezések szintaxisa a C# 6.0. Minden egyes kifejezés hozzáfér a
 }  
 ```  
   
-##  <a name="PolicyExpressionsUsage"></a>Használat  
+##  <a name="PolicyExpressionsUsage"></a> Használat  
  Kifejezések használhatók attribútum vagy szöveges értékek bármely API Management [házirendek](api-management-policies.md) (kivéve, ha a házirend-hivatkozás határozza meg, ellenkező esetben).  
   
 > [!IMPORTANT]
 >  Házirend-kifejezések használata esetén nincs a házirend-kifejezések csak korlátozott vizsgálata során a házirend lett meghatározva. Az átjáró futásidőben, futásidejű hiba eredményez házirend kifejezések által létrehozott kivételek kifejezések végrehajtása.  
   
-##  <a name="CLRTypes"></a>.NET-keretrendszer típusok engedélyezett a házirend-kifejezések  
+##  <a name="CLRTypes"></a> .NET-keretrendszer típusok engedélyezett a házirend-kifejezések  
  A következő táblázat felsorolja a .NET-keretrendszer típusok és azok tagjait, házirend-kifejezések engedélyezett.  
   
 |CLR-típus|Támogatott módszerek|  
@@ -167,7 +164,7 @@ Házirend kifejezések szintaxisa a C# 6.0. Minden egyes kifejezés hozzáfér a
 |System.Xml.Linq.XText|Módszer közül mindegyik támogatott|  
 |System.Xml.XmlNodeType|Összes|  
   
-##  <a name="ContextVariables"></a>Környezeti változó  
+##  <a name="ContextVariables"></a> Környezeti változó  
  Nevű változó `context` implicit módon érhető el minden házirend [kifejezés](api-management-policy-expressions.md#Syntax). A tagok adja meg a megfelelő adatokat a `\request`. Összes a `context` tagjai csak olvasható.  
   
 |Környezeti változó|Engedélyezett metódusok, tulajdonságok és értékei|  
@@ -206,10 +203,7 @@ Házirend kifejezések szintaxisa a C# 6.0. Minden egyes kifejezés hozzáfér a
 |byte[] Decrypt(input: this byte[], alg: System.Security.Cryptography.SymmetricAlgorithm)|bemenet - rejtjelzésben szöveg vissza kell fejteni<br /><br />ALG - titkosítási algoritmus<br /><br />Egyszerű szövegként adja vissza.|
 |byte[] Decrypt(input: this byte[], alg: System.Security.Cryptography.SymmetricAlgorithm, key:byte[], iv:byte[])|visszafejtendő bemeneti - bemeneti - rejtjelzésben szöveg<br /><br />ALG - titkosítási algoritmus<br /><br />kulcs - titkosítási kulcs<br /><br />IV-inicializáló vektort.<br /><br />Egyszerű szövegként adja vissza.|
 
-## <a name="video"></a>Videó
 
-> [!VIDEO https://channel9.msdn.com/Blogs/AzureApiMgmt/Policy-Expressions-in-Azure-API-Management/player] 
->
 ## <a name="next-steps"></a>További lépések
 
 Házirendek használata további információkért lásd:

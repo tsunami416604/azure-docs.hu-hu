@@ -1,19 +1,19 @@
 ---
-title: "Meglévő Azure App Service csatlakozzon az Azure-adatbázis az MySQL |} Microsoft Docs"
+title: "Meglévő Azure App Service csatlakozzon az Azure-adatbázis az MySQL"
 description: "Utasításokat megfelelően kapcsolódás MySQL az Azure-adatbázishoz egy meglévő Azure App Service"
 services: mysql
-author: v-chenyh
-ms.author: v-chenyh
+author: ajlam
+ms.author: andrela
 editor: jasonwhowell
-manager: jhubbard
+manager: kfile
 ms.service: mysql-database
 ms.topic: article
-ms.date: 09/15/2017
-ms.openlocfilehash: 0028b0c918b573f6884e6f63fa82dbe23079882a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 02/28/2018
+ms.openlocfilehash: d8b130876e5fa0f2b2322dff82013a409ff7d30e
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="connect-an-existing-azure-app-service-to-azure-database-for-mysql-server"></a>Egy meglévő Azure App Service csatlakozzon az Azure Database MySQL-kiszolgáló
 Ez a témakör azt ismerteti, hogyan adatbázishoz való csatlakozáshoz egy meglévő Azure App Service szolgáltatásban az Azure MySQL-kiszolgáló.
@@ -57,8 +57,8 @@ A kimenő IP az Azure App Service explicit módon adhat hozzá.
 
 Bár az Azure App service megpróbálja adott idő alatt tartani az IP-címek állandó, vannak esetek, ahol az IP-címek megváltozhatnak. Például ez akkor fordulhat elő, amikor az alkalmazás újrahasznosítja azt vagy a méretezési művelet történik, vagy amikor új számítógépek hozzáadása a következő Azure regionális adatok adatközpontok növelhető a kapacitása. Ha az IP-címek módosítása, az alkalmazás sikerült leállásra abban az esetben, ha már nem tud kapcsolódni az a MySQL-kiszolgálóhoz. Az előző megoldásoknak a valamelyikét kiválasztásakor tartsa szem előtt a figyelmet.
 
-## <a name="ssl-configuration"></a>SSL-beállítása
+## <a name="ssl-configuration"></a>SSL configuration
 Azure MySQL-adatbázis SSL alapértelmezés szerint engedélyezve van. Ha az alkalmazás nem használ SSL az adatbázishoz való kapcsolódáshoz, majd szeretné az SSL letiltásához a MySQL-kiszolgálón. További SSL konfigurálásával kapcsolatos további információkért lásd: [SSL használatával MySQL az Azure-adatbázissal](howto-configure-ssl.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Kapcsolati karakterláncokkel kapcsolatos további információkért tekintse meg [kapcsolati karakterláncok](howto-connection-string.md).

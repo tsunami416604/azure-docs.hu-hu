@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/15/2016
 ms.author: apimpm
-ms.openlocfilehash: 7f3cc81327d1d247fb8e19e256eafb009a5bf162
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: d7c32e5ae02e294ee88c19f058e04249c7c9969e
+ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="using-external-services-from-the-azure-api-management-service"></a>Az Azure API Management szolgáltatás a külső services használatával
 Az Azure API Management szolgáltatásban elérhető házirendek alapján csak a bejövő kérelem, a kimenő válasz és alapvető konfigurációs adatai hasznos munkahelyi számos teheti meg. Azonban tudnak kommunikálni az API Management külső szolgáltatások számos további lehetőségek megnyílik házirendek.
@@ -282,11 +282,4 @@ A helyőrző művelet konfigurációjában konfigurálhatja az irányítópult e
 
 ## <a name="summary"></a>Összegzés
 Az Azure API Management szolgáltatás biztosítja, hogy a HTTP-forgalom szelektív módon alkalmazható rugalmas házirendek, és lehetővé teszi, hogy a háttér szolgáltatások összeállításban. Hogy meg szeretné javítása érdekében a Funkciók, ellenőrzési, érvényesítési képességek riasztási API átjárót, vagy hozzon létre új összetett erőforrások több háttér-szolgáltatásoknak a `send-request` és a lehetőségek tárházát nyissa meg a kapcsolódó házirendek.
-
-## <a name="watch-a-video-overview-of-these-policies"></a>A házirendek áttekintő videó megtekintése
-További információ a [küldési-egy-módon-kérelmek](https://msdn.microsoft.com/library/azure/dn894085.aspx#SendOneWayRequest), [küldési-kérelmek](https://msdn.microsoft.com/library/azure/dn894085.aspx#SendRequest), és [visszatérési-válasz](https://msdn.microsoft.com/library/azure/dn894085.aspx#ReturnResponse) a cikkben szereplő házirendek, tekintse meg a következő videót:
-
-> [!VIDEO https://channel9.msdn.com/Blogs/AzureApiMgmt/Send-Request-and-Return-Response-Policies/player]
-> 
-> 
 

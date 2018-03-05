@@ -1,25 +1,25 @@
 ---
-title: "Csatlakozás a MySQL az Azure Database-alkalmazások |} Microsoft Docs"
+title: "Csatlakozás a MySQL az Azure Database-alkalmazások"
 description: "Ez a dokumentum a jelenleg támogatott kapcsolati karakterláncok az alkalmazások az Azure Database-MySQL, beleértve az ADO.NET (C#), JDBC, Node.js, ODBC, PHP, Python vagy Ruby kapcsolati sorolja fel."
 services: mysql
 author: mswutao
 ms.author: wuta
 editor: jasonwhowell
-manager: jhubbard
+manager: kfile
 ms.service: mysql-database
 ms.topic: article
-ms.date: 09/15/2017
-ms.openlocfilehash: c9fe0a892bd5e81d2b33987b6ca55ec753550a01
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 02/28/2018
+ms.openlocfilehash: e7b200fd1de79f0bca680bdedc34fa376cf07d68
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="how-to-connect-applications-to-azure-database-for-mysql"></a>A MySQL az Azure Database-alkalmazások összekapcsolása
 Ez a témakör felsorolja a karakterláncot kapcsolattípusokat által támogatott Azure-adatbázis a MySQL, sablonok és példákkal együtt. Lehetséges, hogy különböző paraméterek és beállítások a kapcsolati karakterláncban.
 
 - A tanúsítvány beszerzéséről [SSL konfigurálása](./howto-configure-ssl.md).
-- {your_host} = <servername>. mysql.database.azure.com
+- {your_host} = <servername>.mysql.database.azure.com
 - {your_user}@{servername} megfelelően = userID formátum a hitelesítéshez.  Használata esetén a felhasználói azonosítóját, a hitelesítés sikertelen lesz.
 
 ## <a name="adonet"></a>ADO.NET
@@ -27,10 +27,10 @@ Ez a témakör felsorolja a karakterláncot kapcsolattípusokat által támogato
 Server={your_host};Port={your_port};Database={your_database};Uid={username@servername};Pwd={your_password};[SslMode=Required;]
 ```
 
-Ebben a példában a kiszolgáló neve, `myserver4demo`, az adatbázisnév `wpdb`, a felhasználónév `WPAdmin`, és a jelszó `mypassword!2`. Ennek eredményeképpen a kapcsolati karakterláncot kell lennie:
+Ebben a példában a kiszolgáló neve, `mydemoserver`, az adatbázisnév `wpdb`, a felhasználónév `WPAdmin`, és a jelszó `mypassword!2`. Ennek eredményeképpen a kapcsolati karakterláncot kell lennie:
 
 ```ado.net
-Server= "myserver4demo.mysql.database.azure.com"; Port=3306; Database= "wpdb"; Uid= "WPAdmin@myserver4demo"; Pwd="mypassword!2"; SslMode=Required;
+Server= "mydemoserver.mysql.database.azure.com"; Port=3306; Database= "wpdb"; Uid= "WPAdmin@mydemoserver"; Pwd="mypassword!2"; SslMode=Required;
 ```
 
 ## <a name="jdbc"></a>JDBC
@@ -68,5 +68,5 @@ Az a [Azure-portálon](https://portal.azure.com), nyissa meg a MySQL-kiszolgál�
 
 A karakterlánc részletesen bemutatja a például az illesztőprogram, a kiszolgáló és a más adatbázis kapcsolat paramétereit. Módosítsa a példákat a saját paraméterekkel, például az adatbázis nevét, jelszó és így tovább. Ez a karakterlánc segítségével majd csatlakozni a kiszolgálóhoz, a kódot és az alkalmazások.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - Kapcsolat szalagtárakkal kapcsolatos további információkért lásd: [fogalmak - adatkapcsolattárak](./concepts-connection-libraries.md).

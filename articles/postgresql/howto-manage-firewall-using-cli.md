@@ -1,20 +1,20 @@
 ---
-title: "Hozzon létre és kezelheti az Azure-adatbázis PostgreSQL-tűzfalszabályok Azure parancssori felület használatával |} Microsoft Docs"
+title: "Hozzon létre és kezelheti az Azure-adatbázis PostgreSQL-tűzfalszabályok Azure parancssori felület használatával"
 description: "Ez a cikk ismerteti, hogyan létrehozásához és kezeléséhez Azure Database az Azure CLI parancssorból PostgreSQL tűzfalszabályokat."
 services: postgresql
-author: jasonwhowell
-ms.author: jasonh
-manager: jhubbard
+author: rachel-msft
+ms.author: raagyema
+manager: kfile
 editor: jasonwhowell
 ms.service: postgresql
 ms.devlang: azure-cli
 ms.topic: article
-ms.date: 02/12/2018
-ms.openlocfilehash: 4fbb0adabac3cefa0b889279eed9dfd03fe1b1f5
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.date: 02/28/2018
+ms.openlocfilehash: 1d72761f3c80fbf3068492b6843349fc9d7accfd
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="create-and-manage-azure-database-for-postgresql-firewall-rules-using-azure-cli"></a>Hozzon létre és kezelheti az Azure-adatbázis PostgreSQL-tűzfalszabályok Azure parancssori felület használatával
 Kiszolgálószintű tűzfal-szabályok lehetővé teszik a rendszergazdák hozzáférésének kezelése az Azure-adatbázis PostgreSQL-kiszolgáló egy adott IP-cím vagy az IP-címek. Tetszés szerinti Azure parancssori felület parancsait használva hozhat létre, frissítése, törlése, a listában, és kezelheti a kiszolgálót a tűzfalszabályok megjelenítése. Az áttekintést az Azure-adatbázis PostgreSQL tűzfalszabályaira vonatkozó, lásd: [PostgreSQL-kiszolgáló tűzfalszabályainak az Azure-adatbázis](concepts-firewall-rules.md)
@@ -47,6 +47,15 @@ Engedélyezi a hozzáférést az egyes IP-címnek, adja meg ugyanazt a címet a 
 ```azurecli-interactive
 az postgres server firewall-rule create --resource-group myresourcegroup --server-name mydemoserver --name AllowSingleIpAddress --start-ip-address 13.83.152.1 --end-ip-address 13.83.152.1
 ```
+Lehetővé teszik az alkalmazások Azure IP-címekről PostgreSQL-kiszolgáló az Azure-adatbázishoz való kapcsolódáshoz, adja meg az IP-cím 0.0.0.0, mint a kezdő IP- és a záró IP-, ebben a példában látható módon.
+```azurecli-interactive
+az postgres server firewall-rule create --resource-group myresourcegroup --server-name mydemoserver--name AllowAllAzureIps --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0
+```
+
+> [!IMPORTANT]
+> Ez a beállítás konfigurálja a tűzfalat arra, hogy engedélyezzen minden, az Azure felől érkező kapcsolatot, beleértve a más ügyfelek előfizetéseiből érkező kapcsolatokat is. Ezen beállítás kiválasztásakor győződjön meg arról, hogy a bejelentkezési és felhasználói engedélyei a hozzáféréseket az arra jogosult felhasználókra korlátozzák.
+> 
+
 Sikeres, akkor a parancs kimenete létrehozott, alapértelmezés szerint a JSON formátum tűzfalszabály részleteit sorolja fel. Hiba történik, ha a kimeneti mezőben hibaüzenet jelenik meg helyette.
 
 ## <a name="update-firewall-rule"></a>Tűzfalszabály módosítása 

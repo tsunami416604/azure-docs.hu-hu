@@ -10,11 +10,11 @@ ms.author: dmpechyo
 manager: mwinkle
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.date: 09/20/2017
-ms.openlocfilehash: f0c466c433701c295bde00258d9ff7fd267b71f7
-ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
+ms.openlocfilehash: 467111978d43d35788276cf7a464496393e4599b
+ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="distributed-tuning-of-hyperparameters-using-azure-machine-learning-workbench"></a>Elosztott, az Azure Machine Learning-munkaterület használatával hiperparaméterek beállítása
 
@@ -39,19 +39,14 @@ Kereszt-ellenőrzési használatával rács keresési időigényes lehet. Ha egy
 * Egy telepített példánya [Azure Machine Learning-munkaterület](./overview-what-is-azure-ml.md) következő a [telepítése és gyors üzembe helyezés létrehozása](./quickstart-installation.md) telepíteni a munkaterületet üzemeltető és fiókokat létrehozni.
 * Ez a forgatókönyv azt feltételezi, hogy futtatja Azure ML munkaterület a Windows 10 vagy MacOS a helyileg telepített Docker-motorhoz. 
 * A forgatókönyv olyan távoli Docker-tároló futtatni, kiépítése Ubuntu adatok tudományos virtuális gép (DSVM) követve a [utasításokat](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-provision-vm). Legalább 8 maggal és 28 Gb memóriát a virtuális gép használatát javasoljuk. Virtuális gépek példányait D4 rendelkezik ilyen kapacitással. 
-* Ebben a forgatókönyvben egy Spark-fürt futtatja, Azure HDInsight-fürtök kiépítése követve ezek [utasításokat](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-provision-linux-clusters).   
-Azt javasoljuk, hogy rendelkezik legalább egy fürt:
-    - hat munkavégző csomópontokhoz
+* Ebben a forgatókönyvben egy Spark-fürt futtatja, a Spark HDInsight-fürt kiépítése követve ezek [utasításokat](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-provision-linux-clusters). Azt javasoljuk, hogy a fürt a következő beállításokkal rendelkező fejléc és a feldolgozó csomópontok:
+    - négy munkavégző csomópontokhoz
     - nyolc processzormaggal
-    - 28 Gb memóriát a fejléc és a feldolgozó csomópontok. Virtuális gépek példányait D4 rendelkezik ilyen kapacitással.       
-    - Azt javasoljuk, hogy a fürt teljesítmény maximalizálása a következő paraméterek módosítása:
-        - Spark.Executor.Instances
-        - Spark.Executor.cores
-        - Spark.Executor.Memory 
+    - 28 Gb memória  
+      
+  Virtuális gépek példányait D4 rendelkezik ilyen kapacitással. 
 
-Kövesse ezeket [utasításokat](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-resource-manager) és szerkesztése a definíciók "egyéni spark alapértelmezett értéke" szakaszában.
-
-     **Troubleshooting**: Your Azure subscription might have a quota on the number of cores that can be used. The Azure portal does not allow the creation of cluster with the total number of cores exceeding the quota. To find you quota, go in the Azure portal to the Subscriptions section, click on the subscription used to deploy a cluster and then click on **Usage+quotas**. Usually quotas are defined per Azure region and you can choose to deploy the Spark cluster in a region where you have enough free cores. 
+     **Hibaelhárítási**: az Azure-előfizetés előfordulhat, hogy rendelkezik a kvóta az használható magok száma. Az Azure-portál nem teszi lehetővé a fürt létrehozása a kvóta túllépését magok teljes száma. Kvóta található, nyissa meg az Azure-portálon az előfizetések szakaszhoz, kattintson a fürt telepítéséhez használt előfizetés, majd kattintson a **használati + kvóták**. Általában kvóták meghatározott / Azure-régiót, és egy régióban, ahol elegendő szabad mag van a Spark-fürt telepítése választható. 
 
 * Hozzon létre egy Azure storage-fiók, amely a dataset tárolására szolgál. Kövesse a [utasításokat](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account) tárfiók létrehozásához.
 
@@ -112,13 +107,13 @@ A következő két szakasz megmutatjuk, hogyan hajthatja végre a távoli docker
 
 az IP-cím, felhasználónevet és DSVM jelszót. IP-címe DSVM Azure-portálon az a DSVM lap-áttekintés szakaszban talál:
 
-![VIRTUÁLIS GÉP IP](media/scenario-distributed-tuning-of-hyperparameters/vm_ip.png)
+![VM IP](media/scenario-distributed-tuning-of-hyperparameters/vm_ip.png)
 
 #### <a name="configuration-of-spark-cluster"></a>Spark-fürt konfigurálása
 
 A parancssori felület futtatása Spark környezet beállítása
 
-    az ml computetarget attach cluster--name spark --address <cluster name>-ssh.azurehdinsight.net  --username <username> --password <password> 
+    az ml computetarget attach cluster --name spark --address <cluster name>-ssh.azurehdinsight.net  --username <username> --password <password> 
 
 a fürt, a fürt SSH-felhasználónév és jelszó nevével. Az alapértelmezett érték az SSH-felhasználónév `sshuser`, kivéve, ha megváltozott a fürt kiépítése során. A fürt neve az Azure portálon található a fürt lap Tulajdonságok részében:
 
@@ -126,14 +121,20 @@ a fürt, a fürt SSH-felhasználónév és jelszó nevével. Az alapértelmezett
 
 Spark-sklearn csomag használatával lehet a Spark on az hiperparamétereket elosztott hangolása végrehajtási környezetet. Azt a módosított spark_dependencies.yml fájlt kell telepítenie a csomagot, Spark végrehajtási környezet használata esetén:
 
-    configuration: {}
+    configuration: 
+      #"spark.driver.cores": "8"
+      #"spark.driver.memory": "5200m"
+      #"spark.executor.instances": "128"
+      #"spark.executor.memory": "5200m"  
+      #"spark.executor.cores": "2"
+  
     repositories:
       - "https://mmlspark.azureedge.net/maven"
       - "https://spark-packages.org/packages"
     packages:
       - group: "com.microsoft.ml.spark"
         artifact: "mmlspark_2.11"
-        version: "0.7"
+        version: "0.7.91"
       - group: "databricks"
         artifact: "spark-sklearn"
         version: "0.2.0"
@@ -199,9 +200,9 @@ a parancssori ablakban.
 Mivel a helyi környezet túl kicsi az összes szolgáltatáskészletek a számítástechnikai, azt, amely nagyobb memóriával rendelkezik távoli DSVM vált. A végrehajtás DSVM belül AML munkaterület által kezelt Docker-tároló belül történik. A DSVM használatával azt is összes funkciójának számítási és modellek betanítása és hangolására hiperparamétereket (lásd a következő szakaszt). singleVM.py fájl szolgáltatások teljes számítási és a kód modellezési rendelkezik. A következő szakaszban bemutatjuk a távoli DSVM singleVM.py futtatása. 
 
 ### <a name="tuning-hyperparameters-using-remote-dsvm"></a>Távoli DSVM használatával hiperparaméterek beállítása
-Használjuk [xgboost](https://anaconda.org/conda-forge/xgboost) végrehajtása [1] átmenetes fa kiemelése. Használjuk [scikit-további](http://scikit-learn.org/) csomag hangolására hiperparamétereket, xgboost. Bár xgboost nem scikit része-ismerje meg a csomag, végrehajtja az scikit-API ismerje meg, és ezért hyperparameter hangolása scikit feladatai együtt használható-ismerje meg. 
+Használjuk [xgboost](https://anaconda.org/conda-forge/xgboost) végrehajtása [1] átmenetes fa kiemelése. Is [scikit-további](http://scikit-learn.org/) csomag hangolására hiperparamétereket, xgboost. Bár xgboost nem scikit része-ismerje meg a csomag, végrehajtja az scikit-API ismerje meg, és ezért hyperparameter hangolása scikit feladatai együtt használható-ismerje meg. 
 
-Xgboost nyolc hiperparamétereket rendelkezik:
+Xgboost rendelkezik nyolc hiperparamétereket, leírt [Itt](https://github.com/dmlc/xgboost/blob/master/doc/parameter.md):
 * n_estimators
 * max_depth
 * reg_alpha
@@ -210,14 +211,13 @@ Xgboost nyolc hiperparamétereket rendelkezik:
 * learning_rate
 * colsample\_by_level
 * részminta
-* Ezek hiperparamétereket leírása található cél
-- http://xgboost.readthedocs.IO/en/Latest/Python/python_api.HTML#Module-xgboost.sklearn-https://github.com/dmlc/xgboost/blob/master/doc/parameter.md). 
-- 
+* cél  
+ 
 Kezdetben távoli DSVM felhasználása és hangolására jelölt értékek kis rácsban hiperparamétereket:
 
     tuned_parameters = [{'n_estimators': [300,400], 'max_depth': [3,4], 'objective': ['multi:softprob'], 'reg_alpha': [1], 'reg_lambda': [1], 'colsample_bytree': [1],'learning_rate': [0.1], 'colsample_bylevel': [0.1,], 'subsample': [0.5]}]  
 
-A rács hiperparamétereket értékei közül négy kombinációk rendelkezik. 5-fold keresztellenőrzési használjuk, 4 x 5 = 20 eredményül kapott a xgboost futtatja. A modellek teljesítményének méréséhez, negatív napló adatvesztés metrika használjuk. A következő kódot a rácsban hiperparamétereket, amely maximalizálja a negatív napló közötti érvényesített adatvesztés értékének megkeresése. A kódot is használja ezeket az értékeket a végső modell betanításához a teljes gyakorlókészlethez keresztül:
+A rács hiperparamétereket értékei közül négy kombinációk rendelkezik. 5-fold keresztellenőrzési használjuk a xgboost 4 x 5 = 20 eredményezve futtatja. A modellek teljesítményének méréséhez, negatív napló adatvesztés metrika használjuk. A következő kódot a rácsban hiperparamétereket, amely maximalizálja a negatív napló közötti érvényesített adatvesztés értékének megkeresése. A kódot is használja ezeket az értékeket a végső modell betanításához a teljes gyakorlókészlethez keresztül:
 
     clf = XGBClassifier(seed=0)
     metric = 'neg_log_loss'
@@ -285,7 +285,7 @@ Horizontális felskálázás hiperparaméterek beállítása, és nagyobb rács 
 
 A rács hiperparamétereket értékének 16 kombinációi rendelkezik. Mivel 5-fold keresztellenőrzési használjuk, xgboost 16 x 5 = 80 Futtatás alkalommal.
 
-scikit – ismerje meg a csomag nem rendelkezik egy natív támogatás a Spark-fürt használatával hiperparaméterek beállítása. Szerencsére [spark-sklearn](https://spark-packages.org/package/databricks/spark-sklearn) Databricks csomagot tölti ki a térközét. Ez a csomag biztosít, amely rendelkezik majdnem azonos GridSearchCV függvényében API scikit GridSearchCV függvény – ismerje meg. Használata spark-sklearn és hangolására használata Spark hiperparamétereket kell csatlakozni a Spark-környezet létrehozása
+scikit – ismerje meg a csomag nem rendelkezik egy natív támogatás a Spark-fürt használatával hiperparaméterek beállítása. Szerencsére [spark-sklearn](https://spark-packages.org/package/databricks/spark-sklearn) Databricks csomagot tölti ki a térközét. Ez a csomag biztosít, amely rendelkezik majdnem azonos GridSearchCV függvényében API scikit GridSearchCV függvény – ismerje meg. Spark-sklearn használja, és hangolja használata Spark hiperparamétereket kell a Spark-környezet létrehozása
 
     from pyspark import SparkContext
     sc = SparkContext.getOrCreate()

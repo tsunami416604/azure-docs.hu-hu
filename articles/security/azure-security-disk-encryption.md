@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
 ms.author: devtiw;ejarvi;mayank88mahajan;vermashi;sudhakarareddyevuri;aravindthoram
-ms.openlocfilehash: d6a19334b369c54ff6bad3404b4cf2ffe3b47c70
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: cc609d7c7b28fc4aef6eb1e25ee46fd77edd4102
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="azure-disk-encryption-for-windows-and-linux-iaas-vms"></a>Windows és Linux IaaS virtuális gépeket az Azure Disk Encryption
 A Microsoft Azure elkötelezett a kifejezetten a adatvédelem, az adatok közös joghatóság alá és a lehetővé teszi, hogy az Azure tárolt adatok végig a vezérlő speciális technológiák titkosításához, szabályozása és titkosítási kulcsok kezeléséhez az adatok vezérlő & naplózási hozzáférést. Ez rugalmasságot biztosít, Azure-ügyfél és válassza ki a saját üzleti igényeinek leginkább megfelelő megoldást. A dokumentum azt kódelemeit egy új technológia megoldás "Azure Disk Encryption for Windows és Linux infrastruktúra-szolgáltatási virtuális gép által" és az adatokat, hogy megfeleljen a szervezeti biztonsági és megfelelőségi kötelezettségvállalások megvédeni segítségével. A dokumentum biztosít részletes útmutatás a lemezt Azure titkosítási szolgáltatásai, beleértve a támogatott forgatókönyveket, és a felhasználói élmény.
@@ -141,34 +141,7 @@ Mielőtt engedélyezte a támogatott forgatókönyveket, a "Overview" szakaszban
 > [!NOTE]
 > Windows Server 2008 R2 rendelkeznie kell az Azure-titkosítás engedélyezése előtt telepített .NET-keretrendszer 4.5. Telepítheti a Windows Update szolgáltatással a Microsoft .NET-keretrendszer 4.5.2-es verzióját a Windows Server 2008 R2 x64-alapú rendszerek nem kötelező frissítés telepítésével ([KB2901983](https://support.microsoft.com/kb/2901983)).
 
-* A következő Azure Disk Encryption támogatott Azure-katalógus alapú Linux server disztribúciók és verziók:
-
-| A Linux-Disztribúció | Verzió | Támogatott titkosítási a kötet típusa|
-| --- | --- |--- |
-| Ubuntu | 16.04-DAILY-LTS | Operációs rendszer és az adatok lemezre |
-| Ubuntu | 14.04.5-DAILY-LTS | Operációs rendszer és az adatok lemezre |
-| Ubuntu | 12.10 | Adatlemez |
-| Ubuntu | 12.04 | Adatlemez |
-| RHEL | 7.4 | Operációs rendszer és az adatok lemezre |
-| RHEL | 7.3 | Operációs rendszer és az adatok lemezre |
-| RHEL | 7.3 LVM | Operációs rendszer és az adatok lemezre |
-| RHEL | 7.2 | Operációs rendszer és az adatok lemezre |
-| RHEL | 6.8 | Operációs rendszer és az adatok lemezre |
-| RHEL | 6.7 | Adatlemez |
-| CentOS | 7.3 | Operációs rendszer és az adatok lemezre |
-| CentOS | 7.2n | Operációs rendszer és az adatok lemezre |
-| CentOS | 6.8 | Operációs rendszer és az adatok lemezre |
-| CentOS | 7.1 | Adatlemez |
-| CentOS | 7.0 | Adatlemez |
-| CentOS | 6.7 | Adatlemez |
-| CentOS | 6.6 | Adatlemez |
-| CentOS | 6.5 | Adatlemez |
-| openSUSE | 13.2 | Adatlemez |
-| SLES | 12 SP1 | Adatlemez |
-| SLES | 12-SP1 (prémium) | Adatlemez |
-| SLES | HPC 12 | Adatlemez |
-| SLES | 11-SP4 (prémium) | Adatlemez |
-| SLES | 11 SP4 | Adatlemez |
+* Az Azure Disk Encryption csak a megadott Azure-katalógus alapú Linux server disztribúciók és verziók.  A jelenleg támogatott verziók listáját, olvassa el a [Azure lemez titkosítási GYIK](https://docs.microsoft.com/en-us/azure/security/azure-security-disk-encryption-faq).
 
 * Az Azure Disk Encryption megköveteli, hogy a kulcstartó és a virtuális gépek találhatók az azonos Azure-régió, és az előfizetés.
 
@@ -792,7 +765,7 @@ A Windows Server 2008 R2 a következő paranccsal:
 
     ServerManagerCmd -install BitLockers
 
-#### <a name="prepare-the-os-volume-for-bitlocker-by-using-bdehdcfg"></a>A BitLocker az operációs rendszer kötetén előkészítéséhez segítségével`bdehdcfg`
+#### <a name="prepare-the-os-volume-for-bitlocker-by-using-bdehdcfg"></a>A BitLocker az operációs rendszer kötetén előkészítéséhez segítségével `bdehdcfg`
 Az operációs rendszer partíció tömörítéséhez, és a gép előkészítése a BitLocker, hajtsa végre a következő parancsot:
 
     bdehdcfg -target c: shrink -quiet
@@ -1285,9 +1258,6 @@ Az operációsrendszer-lemez csatolása átadni `$KeyEncryptionKey` és `$secret
             -KeyEncryptionKeyVaultId $KeyVault.ResourceId `
             -KeyEncryptionKeyURL $KeyEncryptionKey.Id
 
-## <a name="download-this-guide"></a>Ez az útmutató letöltése
-Ez az útmutató a programot letöltheti a [TechNet Gallery](https://gallery.technet.microsoft.com/Azure-Disk-Encryption-for-a0018eb0).
-
-## <a name="for-more-information"></a>További információ
+## <a name="for-more-information"></a>További tudnivalók
 [Fedezze fel az Azure Disk Encryption Azure PowerShell - 1. rész](http://blogs.msdn.com/b/azuresecurity/archive/2015/11/16/explore-azure-disk-encryption-with-azure-powershell.aspx?wa=wsignin1.0)  
 [Fedezze fel az Azure Disk Encryption Azure PowerShell - 2. rész](http://blogs.msdn.com/b/azuresecurity/archive/2015/11/21/explore-azure-disk-encryption-with-azure-powershell-part-2.aspx)

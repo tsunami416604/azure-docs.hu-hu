@@ -1,20 +1,20 @@
 ---
-title: "Biztonsági mentése és visszaállítása egy kiszolgálóhoz az Azure-adatbázis MySQL |} Microsoft Docs"
+title: "Biztonsági mentése és visszaállítása egy kiszolgálóhoz az Azure-adatbázis MySQL"
 description: "Útmutató: biztonsági mentése és visszaállítása egy kiszolgálóhoz az Azure-adatbázis a MySQL az Azure parancssori felület használatával."
 services: mysql
 author: jasonwhowell
 ms.author: jasonh
-manager: jhubbard
+manager: kfile
 editor: jasonwhowell
 ms.service: mysql-database
 ms.devlang: azure-cli
 ms.topic: article
-ms.date: 11/28/2017
-ms.openlocfilehash: 44b3c68b8df4006d3fe087e5ad4118d7616d3d9a
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.date: 02/28/2018
+ms.openlocfilehash: b954e26c9ecb1767b971117fc9102e8573beaaac
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-mysql-by-using-the-azure-cli"></a>Biztonsági mentése és visszaállítása egy kiszolgálóhoz az Azure-adatbázis MySQL az Azure parancssori felület használatával
 
@@ -32,7 +32,7 @@ Ez az útmutató útmutató befejezéséhez lesz szüksége:
 ## <a name="backup-happens-automatically"></a>Automatikusan megtörténik a biztonsági mentés
 MySQL az Azure-adatbázis használata esetén az adatbázis-szolgáltatás automatikusan révén a szolgáltatás biztonsági másolatot, 5 percenként. 
 
-Az alapszintű csomag a biztonsági mentések érhetők el 7 napban. Standard csomagra a biztonsági mentések érhetők el 35 napon. További információkért lásd: [tarifacsomagok MySQL az Azure-adatbázis](concepts-service-tiers.md).
+Az alapszintű csomag a biztonsági mentések érhetők el 7 napban. Standard csomagra a biztonsági mentések érhetők el 35 napon. További információkért lásd: [tarifacsomagok MySQL az Azure-adatbázis](concepts-pricing-tiers.md).
 
 Az automatikus biztonsági mentési szolgáltatással a kiszolgáló és az adatbázisok visszaállítása korábbi dátumra, vagy mikor.
 
@@ -46,16 +46,16 @@ A kiszolgáló visszaállításához használja az Azure parancssori felület [a
 Állítsa vissza a kiszolgáló, az Azure CLI parancssorba írja be a következő parancsot:
 
 ```azurecli-interactive
-az mysql server restore --resource-group myResourceGroup --name myserver-restored --restore-point-in-time 2017-04-13T13:59:00Z --source-server myserver4demo
+az mysql server restore --resource-group myresourcegroup --name myserver-restored --restore-point-in-time 2017-04-13T13:59:00Z --source-server mydemoserver
 ```
 
 A `az mysql server restore` parancs paraméterei a következők:
 | Beállítás | Ajánlott érték | Leírás  |
 | --- | --- | --- |
-| Erőforráscsoport | myResourceGroup |  Az erőforráscsoport, ahol a forráskiszolgáló található.  |
-| név | myserver visszaállítása | A restore parancs által létrehozott új kiszolgáló neve. |
-| visszaállítás--időpontban | 2017-04-13T13:59:00Z | Válasszon ki egy pontot időben történő visszaállításához. A dátum és idő a forráskiszolgáló biztonsági mentés megőrzési időn belül kell lennie. Dátum és idő ISO8601 formátumot használja. Például használhatja a saját helyi időzóna, például a `2017-04-13T05:59:00-08:00`. Használhatja a UTC Zulu formátumban, például `2017-04-13T13:59:00Z`. |
-| forrás-kiszolgáló | myserver4demo | Név vagy azonosító a forráskiszolgáló visszaállítása. |
+| resource-group | myResourceGroup |  Az erőforráscsoport, ahol a forráskiszolgáló található.  |
+| név | myserver-restored | A restore parancs által létrehozott új kiszolgáló neve. |
+| restore-point-in-time | 2017-04-13T13:59:00Z | Válasszon ki egy pontot időben történő visszaállításához. A dátum és idő a forráskiszolgáló biztonsági mentés megőrzési időn belül kell lennie. Dátum és idő ISO8601 formátumot használja. Például használhatja a saját helyi időzóna, például a `2017-04-13T05:59:00-08:00`. Használhatja a UTC Zulu formátumban, például `2017-04-13T13:59:00Z`. |
+| source-server | mydemoserver | Név vagy azonosító a forráskiszolgáló visszaállítása. |
 
 Időben egy korábbi állapotba szeretné visszaállítani egy kiszolgálót, létrejön egy új kiszolgálót. Az eredeti kiszolgáló és az idő megadott pontjáról adatbázisainak az új kiszolgálóra történő átmásolása.
 
@@ -65,5 +65,5 @@ A `az mysql server restore` parancs szinkron. Miután visszaállította a kiszol
 
 A visszaállítási folyamat befejezése után keresse meg az új kiszolgálón, és győződjön meg arról, hogy az adatok visszaállítása, az elvártaknak megfelelően.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [Adatkapcsolattárak MySQL az Azure-adatbázis](concepts-connection-libraries.md)

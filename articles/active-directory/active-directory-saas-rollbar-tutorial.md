@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 1/04/2017
 ms.author: jeedes
-ms.openlocfilehash: bb8a81327163513ab721d2ad72da19173b59bc1f
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: 43dc50d0a5381ace8bcfeb3cae39e249ba743876
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rollbar"></a>Oktatóanyag: Azure Active Directoryval integrált BUKÓÍV
 
@@ -108,15 +108,15 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Az egyszeri bejelentkezés információk BUKÓÍV tartomány és az URL-címek](./media/active-directory-saas-rollbar-tutorial/tutorial_rollbar_url.png)
 
-    a. Az a **azonosító** szövegmező, írja be az URL-cím:`https://saml.rollbar.com`
+    a. Az a **azonosító** szövegmező, írja be az URL-cím: `https://saml.rollbar.com`
 
-    b. Az a **válasz URL-CÍMEN** szövegmező, adja meg a következő minta használatával URL-címe:`https://rollbar.com/<accountname>/saml/sso/azure/`
+    b. Az a **válasz URL-CÍMEN** szövegmező, adja meg a következő minta használatával URL-címe: `https://rollbar.com/<accountname>/saml/sso/azure/`
 
 4. Ellenőrizze **megjelenítése speciális URL-beállításainak** , és végezze el a következő lépés, ha szeretne beállítani az alkalmazás **SP** kezdeményezett mód:
 
     ![Az egyszeri bejelentkezés információk BUKÓÍV tartomány és az URL-címek](./media/active-directory-saas-rollbar-tutorial/tutorial_rollbar_url1.png)
 
-    Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe:`https://rollbar.com/<accountname>/saml/login/azure/`
+    Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe: `https://rollbar.com/<accountname>/saml/login/azure/`
      
     > [!NOTE] 
     > Ezek az értékek nincsenek valós. Frissítheti ezeket az értékeket a tényleges válasz URL-CÍMEN és bejelentkezési URL-cím. Ügyfél [BUKÓÍV ügyfél-támogatási csoport](mailto:support@rollbar.com) beolvasni ezeket az értékeket. 
@@ -149,11 +149,14 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     c. Kattintson a **Save** (Mentés) gombra.
 
-11. Miután rákattintott a Mentés gombra, a képernyő lesz ehhez hasonló. Ebben a szakaszban hajtsa végre az alábbi lépéseket:
+11. Miután rákattintott a Mentés gombra, a képernyő lesz ehhez hasonló:
     
     ![Konfiguráció](./media/active-directory-saas-rollbar-tutorial/configure3.png)
+    > [!NOTE] 
+    > Ahhoz, hogy a következő lépés elvégzése után, először hozzá kell saját kezűleg felhasználóként a BUKÓÍV alkalmazásba az Azure-ban.
+    a. Ha szeretné-e előírása minden felhasználónak hitelesíteni Azure keresztül, majd kattintson az **jelentkezzen be az identitásszolgáltató keresztül** keresztül Azure újra hitelesíteni.  
 
-    a. Válassza ki **szükséges bejelentkezési SAML-Identitásszolgáltatóként keresztül** jelölőnégyzetet.
+    b.  Után a rendszer irányítja át a képernyőt, válassza a **szükséges bejelentkezési SAML-Identitásszolgáltatóként keresztül** jelölőnégyzetet.
 
     b. Kattintson a **Save** (Mentés) gombra.
 

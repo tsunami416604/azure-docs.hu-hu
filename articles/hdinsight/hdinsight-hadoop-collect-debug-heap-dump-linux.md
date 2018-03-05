@@ -14,13 +14,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/05/2017
+ms.date: 02/27/2018
 ms.author: larryfr
-ms.openlocfilehash: dcc04e5bba28d0cb32e8633542ab8d3c125003ec
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 2bc7b35a87f3973c59fb36372d4edad86412ea0e
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="enable-heap-dumps-for-hadoop-services-on-linux-based-hdinsight"></a>Halommemória memóriaképek a Linux-alapú HDInsight Hadoop-szolgáltatások engedélyezése
 
@@ -31,7 +31,7 @@ Halommemória memóriaképek tartalmazza az alkalmazás memória, beleértve a v
 > [!IMPORTANT]
 > A jelen dokumentumban leírt lépések csak a HDInsight-fürtök Linux használó dolgozhat. A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
-## <a name="whichServices"></a>Szolgáltatások
+## <a name="whichServices"></a>Services
 
 A következő szolgáltatások halommemória memóriaképek engedélyezéséhez:
 
@@ -51,8 +51,8 @@ Minden parancsprogram esetén nincs az exportálás  **\* \_OPTS**, amely tartal
 
 Rendelve, és csökkentse folyamatok kissé eltérő, mert ezek a műveletek a MapReduce szolgáltatás egyik gyermekfolyamata. Minden egyes hozzárendelését, vagy csökkentse folyamat egy gyermek tárolóban fut, és a JVM beállításokat tartalmazó két bejegyzést is tartalmaz. Mindkét szereplő **mapred-site.xml**:
 
-* **mapreduce.Admin.Map.child.Java.opts**
-* **mapreduce.Admin.reduce.child.Java.opts**
+* **mapreduce.admin.map.child.java.opts**
+* **mapreduce.admin.reduce.child.java.opts**
 
 > [!NOTE]
 > Az Ambari leíró replikálni a módosításokat a fürt csomópontjai között, a parancsfájlok és a mapred-site.xml beállítások módosítása Ambari használatát javasoljuk. Tekintse meg a [Ambari használatával](#using-ambari) szakasz lépéseit.
@@ -63,7 +63,7 @@ A következő beállítás lehetővé teszi, hogy halommemória memóriaképek e
 
     -XX:+HeapDumpOnOutOfMemoryError
 
-A  **+**  azt jelzi, hogy ez a beállítás engedélyezve van-e. Alapértelmezés szerint le van tiltva.
+A  **+**  azt jelzi, hogy ez a beállítás engedélyezve van-e. Ez a beállítás alapértelmezés szerint le van tiltva.
 
 > [!WARNING]
 > Halommemória memóriaképek nem engedélyezettek a HDInsight Hadoop-szolgáltatás alapértelmezés szerint, lehet, hogy nagy a memóriakép fájlokhoz. Ha engedélyezi ezeket a hibaelhárításhoz, ne felejtse el őket tiltani, miután a probléma másolható és a memóriaképek összegyűjtött.
@@ -108,7 +108,7 @@ A szolgáltatás konfigurációjának módosítása, tegye a következőket:
 
 4. Keresés a  **\* \_OPTS** szolgáltatás bejegyzése szeretné a halommemória memóriaképek engedélyezése, majd adja meg az engedélyezni kívánt beállításokat. Az alábbi képen felvett `-XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp/` számára a **HADOOP\_NAMENODE\_OPTS** bejegyzést:
 
-    ![A - XX HADOOP_NAMENODE_OPTS: + HeapDumpOnOutOfMemoryError - XX: HeapDumpPath = / tmp /](./media/hdinsight-hadoop-heap-dump-linux/opts.png)
+    ![HADOOP_NAMENODE_OPTS with -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp/](./media/hdinsight-hadoop-heap-dump-linux/opts.png)
 
    > [!NOTE]
    > Ha halommemória engedélyezése a térkép listázása, vagy csökkentse gyermekfolyamat, keresse meg a mezők nevű **mapreduce.admin.map.child.java.opts** és **mapreduce.admin.reduce.child.java.opts**.

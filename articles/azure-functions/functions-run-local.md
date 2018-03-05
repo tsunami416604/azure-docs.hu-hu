@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 10/12/2017
 ms.author: glenga
-ms.openlocfilehash: 8b85457c5df9fb15c7eebe8b6fe8fb904f9e6009
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
-ms.translationtype: MT
+ms.openlocfilehash: f19fa1ac4dd970ca3df2c0fdbf8e0778e171c43d
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="code-and-test-azure-functions-locally"></a>Kód és az Azure Functions helyi tesztelése
 
@@ -105,6 +105,14 @@ Initialized empty Git repository in D:/Code/Playground/MyFunctionProj/.git/
 ```
 
 A projekt nélkül egy helyi Git-tárház létrehozásához használja a `--no-source-control [-n]` lehetőséget.
+
+## <a name="register-extensions"></a>Bővítmények regisztrálása
+
+Verziójában 2.x, az Azure Functions futtatókörnyezettel, explicit módon regisztrálnia kell a [bővítmények kötés](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/dev/README.md) , amelyekkel az függvény alkalmazásban. 
+
+[!INCLUDE [Full bindings table](../../includes/functions-core-tools-install-extension.md)]
+
+További információkért lásd: [Azure Functions eseményindítók és kötések fogalmak](functions-triggers-bindings.md#register-binding-extensions).
 
 ## <a name="local-settings-file"></a>Helyi fájl
 
@@ -311,6 +319,10 @@ Például egy HTTP-eseményindítóval aktivált függvény, és adja át a tart
 ```
 func run MyHttpTrigger -c '{\"name\": \"Azure\"}'
 ```
+
+### <a name="viewing-log-files-locally"></a>Helyileg naplófájlok megtekintése
+
+[!INCLUDE [functions-local-logs-location](../../includes/functions-local-logs-location.md)]
 
 ## <a name="publish"></a>Közzététel az Azure platformon
 

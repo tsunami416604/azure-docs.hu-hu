@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 07/23/2017
 ms.author: mahi
-ms.openlocfilehash: 65bf5928428b21e98c893a9de8ca596329329411
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: dd81e9d6c91387b3873593b84e952ca4f2546c57
+ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="manage-azure-data-lake-analytics-using-azure-powershell"></a>Az Azure Data Lake Analytics kezelése az Azure PowerShell-lel
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
@@ -99,13 +99,13 @@ Ezzel a fiókkal kapcsolatos adatokat.
 Get-AdlAnalyticsAccount -Name $adla
 ```
 
-Ellenőrizze, létezik-e egy adott Data Lake Analytics-fiókot. A parancsmag ad vissza, vagy `True` vagy `False`.
+Ellenőrizze, létezik-e egy adott Data Lake Analytics-fiókot. A parancsmag ad vissza, vagy `$true` vagy `$false`.
 
 ```powershell
 Test-AdlAnalyticsAccount -Name $adla
 ```
 
-Ellenőrizze, létezik-e egy adott Data Lake Store-fiókot. A parancsmag ad vissza, vagy `True` vagy `False`.
+Ellenőrizze, létezik-e egy adott Data Lake Store-fiókot. A parancsmag ad vissza, vagy `$true` vagy `$false`.
 
 ```powershell
 Test-AdlStoreAccount -Name $adls
@@ -154,8 +154,6 @@ Egy tűzfalszabály eltávolítása.
 ```powershell
 Remove-AdlAnalyticsFirewallRule -Account $adla -Name $ruleName
 ```
-
-
 
 Azure IP-címek engedélyezése.
 
@@ -239,7 +237,6 @@ $script | Out-File $scriptpath
 Submit-AdlJob -AccountName $adla -Script $script -Name "Demo"
 ```
 
-
 ### <a name="submit-a-file-as-a-u-sql-script"></a>Küldje el a fájlt egy U-SQL-parancsfájl
 
 ```powershell
@@ -258,15 +255,13 @@ A kimenet tartalmazza az aktuálisan futó és a nemrégiben befejezett feladato
 Get-AdlJob -Account $adla
 ```
 
+### <a name="list-the-top-n-jobs"></a>A legfontosabb N feladatok listázásához
 
-### <a name="list-a-specific-number-of-jobs"></a>Egy bizonyos számú feladatok listázása
-
-A feladatok van rendezve, az alapértelmezés szerint idő nyújt. Ezért a legutóbb elküldött feladatok elsőként jelennek meg. Alapértelmezés szerint a ADLA fiók feladatok emlékszik 180 napig tart, de a Ge-AdlJob parancsmag alapértelmezés szerint csak az első 500 adja vissza. Használja az - felső paraméter egy bizonyos számú feladatok listázásához.
+A feladatok van rendezve, az alapértelmezés szerint idő nyújt. Ezért a legutóbb elküldött feladatok elsőként jelennek meg. Alapértelmezés szerint a ADLA fiók feladatok emlékszik 180 napig tart, de a Get-AdlJob parancsmag alapértelmezés szerint csak az első 500 adja vissza. Használja az - felső paraméter egy bizonyos számú feladatok listázásához.
 
 ```powershell
 $jobs = Get-AdlJob -Account $adla -Top 10
 ```
-
 
 ### <a name="list-jobs-based-on-the-value-of-job-property"></a>Lista feladatok feladat tulajdonság értéke alapján
 
@@ -296,7 +291,7 @@ Get-AdlJob -Account $adla -State Accepted,Compiling,New,Paused,Scheduling,Start
 Használja a `-Result` paraméter észleli, hogy befejeződött a feladat sikeresen befejeződött-e. Ezekkel az értékekkel rendelkezik:
 
 * Megszakítva
-* Nem sikerült
+* Meghiúsult
 * None
 * Sikeres
 
@@ -307,7 +302,6 @@ Get-AdlJob -Account $adla -State Ended -Result Succeeded
 # List Failed jobs.
 Get-AdlJob -Account $adla -State Ended -Result Failed
 ```
-
 
 A `-Submitter` paraméter segít azonosítani, ki egy feladat elküldése megtörtént.
 
@@ -338,7 +332,6 @@ Használja a `Get-AdlJobPipeline` csővezeték-információt parancsmag korábba
 
 ```powershell
 $pipelines = Get-AdlJobPipeline -Account $adla
-
 $pipeline = Get-AdlJobPipeline -Account $adla -PipelineId "<pipeline ID>"
 ```
 
@@ -682,7 +675,7 @@ Mentse a következő szöveget a `.json` fájlt, és az előző PowerShell-paran
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [A Microsoft Azure Data Lake Analytics áttekintése](data-lake-analytics-overview.md)
 * A Data Lake Analytics használatának első lépései [Azure-portálon](data-lake-analytics-get-started-portal.md) | [Azure PowerShell](data-lake-analytics-get-started-powershell.md) | [CLI 2.0](data-lake-analytics-get-started-cli2.md)
 * Azure Data Lake Analytics használatának kezelése [Azure-portálon](data-lake-analytics-manage-use-portal.md) | [Azure PowerShell](data-lake-analytics-manage-use-powershell.md) | [parancssori felület](data-lake-analytics-manage-use-cli.md) 

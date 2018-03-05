@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 1/8/2017
 ms.author: jeedes
-ms.openlocfilehash: b465993882563420652ef1ac8c623a1b9b7295ec
-ms.sourcegitcommit: 6fb44d6fbce161b26328f863479ef09c5303090f
+ms.openlocfilehash: af43f4b2a11f217853a9160f473dea8c488ea852
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-box"></a>Oktatóanyag: Azure Active Directory-integráció segítségével
 
@@ -108,13 +108,12 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Az egyszeri bejelentkezési adatokat mezőben tartomány és az URL-címek](./media/active-directory-saas-box-tutorial/url3.png)
 
-    a. Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe:`https://<subdomain>.box.com`
+    a. Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe: `https://<subdomain>.box.com`
 
-    b. Az a **azonosító** szövegmező, írja be az URL-cím:`box.net`
+    b. Az a **azonosító** szövegmező, írja be az URL-cím: `box.net`
      
     > [!NOTE] 
     > Ez az érték nincs valós. Frissítse az értéket a tényleges bejelentkezési URL-címet. Ügyfél [mezőben ügyfél-támogatási csoport](https://community.box.com/t5/custom/page/page-id/submit_sso_questionaire) lekérni ezt az értéket. 
-
 4. Az a **SAML-aláíró tanúsítványa** területen kattintson **metaadatainak XML-kódja** és mentse a metaadat-fájlt a számítógépen.
 
     ![A tanúsítvány letöltési hivatkozását](./media/active-directory-saas-box-tutorial/tutorial_box_certificate.png) 
@@ -123,7 +122,10 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Egyszeri bejelentkezés Mentés gombra konfigurálása](./media/active-directory-saas-box-tutorial/tutorial_general_400.png)
     
-6. Ahhoz, hogy az alkalmazáshoz konfigurált SSO, lépjen kapcsolatba [mezőben ügyfél-támogatási csoport](https://community.box.com/t5/custom/page/page-id/submit_sso_questionaire) és adja meg a letöltött XML-fájl.
+6. Ahhoz, hogy az alkalmazáshoz konfigurált SSO, hajtsa végre a lépéseket [beállítás be egyszeri Bejelentkezést a a saját](https://community.box.com/t5/How-to-Guides-for-Admins/Setting-Up-Single-Sign-On-SSO-for-your-Enterprise/ta-p/1263#ssoonyourown)
+
+> [!NOTE] 
+> Ha nem lehet engedélyezni az egyszeri bejelentkezést a mezőbe fiók beállításainak, esetleg forduljon [mezőben ügyfél-támogatási csoport](https://community.box.com/t5/custom/page/page-id/submit_sso_questionaire) és adja meg a letöltött XML-fájl.
 
 > [!TIP]
 > Ezek az utasítások belül tömör verziója most el tudja olvasni a [Azure-portálon](https://portal.azure.com), míg az alkalmazás beállításakor!  Ez az alkalmazás a hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentációja keresztül a **konfigurációs** szakasz alján. További Itt a embedded dokumentációjából szolgáltatásról: [az Azure AD beágyazott dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)

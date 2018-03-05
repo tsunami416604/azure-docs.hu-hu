@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2017
 ms.author: apimpm
-ms.openlocfilehash: bd8b3d13754e981235cbce39e919f39228820426
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: 47011bf2cfde268bb6248e54e98930f3a0b522e4
+ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="how-to-authorize-developer-accounts-using-oauth-20-in-azure-api-management"></a>Hogyan szeretné engedélyekkel felruházni fejlesztői fiókok OAuth 2.0 használatával az Azure API Management
 Számos API támogatja [OAuth 2.0](http://oauth.net/2/) biztosításához az API-t, és győződjön meg arról, hogy csak akkor érvényes, ha a felhasználók rendelkezhetnek hozzáféréssel, és csak, amely jogosult most erőforrások eléréséhez. Ahhoz, hogy Azure API Management interaktív Developer Console ilyen API-khoz, a szolgáltatás lehetővé teszi a szolgáltatáspéldány dolgozni az OAuth 2.0-s engedélyezett API konfigurálása.
 
-## <a name="prerequisites"></a>Előfeltételek
+## <a name="prerequisites"> </a>Előfeltételek
 Ez az útmutató bemutatja, hogyan konfigurálhatja az API Management szolgáltatáspéldány OAuth 2.0 hitelesítési fejlesztői fiókok használatára, de még nem jeleníti meg az OAuth 2.0-s szolgáltató konfigurálásával. Minden OAuth 2.0-s szolgáltató konfigurációja eltér, bár a lépések hasonlóak, és a szükséges információkat az API Management szolgáltatáspéldány OAuth 2.0 konfigurálásához használt azonos. Ez a témakör bemutatja az Azure Active Directoryt használja az OAuth 2.0-s szolgáltató példák.
 
 > [!NOTE]
@@ -30,7 +30,7 @@ Ez az útmutató bemutatja, hogyan konfigurálhatja az API Management szolgálta
 > 
 > 
 
-## <a name="step1"></a>OAuth 2.0 hitelesítési kiszolgáló beállítása az API Management
+## <a name="step1"> </a>Az OAuth 2.0 hitelesítési kiszolgáló konfigurálása az API Management
 Első lépésként kattintson a **Közzétevő portál** elemre az API Management szolgáltatás Azure Portalján.
 
 ![Közzétevő portál][api-management-management-console]
@@ -89,7 +89,7 @@ Ha **engedélyezési kódot adjon típusok** értéke **erőforrás tulajdonosi 
 
 Ha az űrlap befejeződött, kattintson a **mentése** a API Management OAuth 2.0 hitelesítési kiszolgáló konfigurációjának mentéséhez. Után a kiszolgáló konfigurációjának mentése API-k használja ezt a konfigurációt a következő szakaszban ismertetett módon állíthatja be.
 
-## <a name="step2"></a>Konfigurálása egy API-t OAuth 2.0 felhasználói hitelesítés használatára
+## <a name="step2"> </a>Egy API-t OAuth 2.0 felhasználói engedélyezési használandó konfigurálása
 Kattintson a **API-k** a a **API Management** menüjében a bal oldali, kattintson a kívánt API neve kattintson **biztonsági**, és ezután jelölje be a **OAuth 2.0**.
 
 ![Felhasználó engedélyezése][api-management-user-authorization]
@@ -98,7 +98,7 @@ Válassza ki a kívánt **engedélyezési server** a legördülő listából, é
 
 ![Felhasználó engedélyezése][api-management-user-authorization-save]
 
-## <a name="step3"></a>Tesztelése az OAuth 2.0 felhasználói engedélyt a fejlesztői portálra
+## <a name="step3"> </a>A fejlesztői portálra az OAuth 2.0 felhasználói hitelesítés tesztelése
 Miután beállította az OAuth 2.0 hitelesítési kiszolgáló és az API-t, hogy a kiszolgáló használatára konfigurált, tesztelheti a fejlesztői portálhoz fog, és az API felület meghívásakor.  Kattintson a **Fejlesztői portál** lehetőségre a jobb felső menüben.
 
 ![Fejlesztői portál][api-management-developer-portal-menu]
@@ -131,12 +131,9 @@ Miután bejelentkezett, a **kérelem fejlécei** kerülnek egy `Authorization : 
 
 Ezen a ponton konfigurálja a kívánt értékeket, a többi paraméter, és küldje el a kérelmet. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 OAuth 2.0-s és API-kezelés használatával kapcsolatos további információkért tekintse meg a következő videó és kísérő [cikk](api-management-howto-protect-backend-with-aad.md).
 
-> [!VIDEO https://channel9.msdn.com/Blogs/AzureApiMgmt/Protecting-Web-API-Backend-with-Azure-Active-Directory-and-API-Management/player]
-> 
-> 
 
 [api-management-management-console]: ./media/api-management-howto-oauth2/api-management-management-console.png
 [api-management-oauth2]: ./media/api-management-howto-oauth2/api-management-oauth2.png

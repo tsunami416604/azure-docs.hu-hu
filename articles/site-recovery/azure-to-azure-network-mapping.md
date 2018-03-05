@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 12/15/2017
+ms.date: 02/27/2018
 ms.author: manayar
-ms.openlocfilehash: d7dd35a8382f4a99ababbe804c5c71b29148c44a
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 8f347827c640729112e2e8f4c11288b6bcb176ea
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="map-virtual-networks-in-different-azure-regions"></a>Virtuális hálózatok a különböző Azure-régiók leképezése
 
@@ -70,7 +70,7 @@ Ha hálózati leképezése már megtörtént, a cél virtuális hálózati repli
 
 
 ## <a name="subnet-selection"></a>Alhálózat kiválasztása
-A cél virtuális gép alhálózata a forrás virtuális gép az alhálózat neve alapján van kiválasztva. Olyan alhálózatot, amely ugyanaz a neve, mint a forrás virtuális gép a célhálózat érhető el, ha a cél virtuális gép alhálózaton van beállítva. Ha egy ilyen nevű alhálózat nem létezik a célhálózat, a betűrendben az első alhálózat értéke a cél alhálózathoz. 
+A cél virtuális gép alhálózata a forrás virtuális gép az alhálózat neve alapján van kiválasztva. Olyan alhálózatot, amely ugyanaz a neve, mint a forrás virtuális gép a célhálózat érhető el, ha a cél virtuális gép alhálózaton van beállítva. Ha egy ilyen nevű alhálózat nem létezik a célhálózat, a betűrendben az első alhálózat értéke a cél alhálózathoz.
 
 Az alhálózat módosításához keresse fel a **számítás és hálózat** a virtuális gép beállításait.
 

@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/29/2016
 ms.author: yuaxu
-ms.openlocfilehash: 18faa88641623e1248d6a33bc2d87099e1c9f624
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c3266698a6077e85806286fadf1f48b7194a4d88
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="routing-and-tag-expressions"></a>Az Útválasztás és címke kifejezések
 ## <a name="overview"></a>Áttekintés
@@ -95,10 +95,10 @@ Címke kifejezések például tartalmazhat összes logikai operátorok, és (& &
 
     // Windows 8.1 / Windows Phone 8.1
     var toast = @"<toast><visual><binding template=""ToastText01""><text id=""1"">" +
-    "You want info on the Red Socks</text></binding></visual></toast>";
+    "You want info on the Red Sox</text></binding></visual></toast>";
     outcome = await Notifications.Instance.Hub.SendWindowsNativeNotificationAsync(toast, userTag);
 
     // Windows 10
     toast = @"<toast><visual><binding template=""ToastGeneric""><text id=""1"">" +
-    "You want info on the Red Socks</text></binding></visual></toast>";
+    "You want info on the Red Sox</text></binding></visual></toast>";
     outcome = await Notifications.Instance.Hub.SendWindowsNativeNotificationAsync(toast, userTag);

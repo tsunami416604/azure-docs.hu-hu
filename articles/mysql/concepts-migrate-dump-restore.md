@@ -1,19 +1,19 @@
 ---
-title: "Telepítse át a MySQL-adatbázis biztonsági másolat használatával, és MySQL az Azure-adatbázis visszaállítása |} Microsoft Docs"
+title: "Telepítse át a MySQL-adatbázis biztonsági másolat használatával, és MySQL az Azure-adatbázis visszaállítása"
 description: "Ez a cikk ismerteti a biztonsági mentése és visszaállítása az Azure Database-adatbázisoknál a MySQL mysqldump, MySQL munkaterület és PHPMyAdmin két gyakori módjai."
 services: mysql
-author: v-chenyh
-ms.author: v-chenyh
-manager: jhubbard
+author: ajlam
+ms.author: andrela
+manager: kfile
 editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
-ms.date: 11/27/2017
-ms.openlocfilehash: e962fd65244ceebfc7544dc5a1d1956dad811fea
-ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
+ms.date: 02/28/2018
+ms.openlocfilehash: 0c5a6b6d971d434a52bf80da6b34d7f6949589bc
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="migrate-your-mysql-database-to-azure-database-for-mysql-using-dump-and-restore"></a>A MySQL-adatbázis áttelepítése az Azure Database a MySQL használata a biztonsági másolat és helyreállítás
 Ez a cikk ismerteti a biztonsági mentése és adatbázisokat az Azure-adatbázis visszaállítása a MySQL két gyakori módjai
@@ -91,7 +91,7 @@ A csatlakozás, található MySQL az Azure-adatbázis a kapcsolati adatok tulajd
 ![A kapcsolati adatok az Azure portálon található](./media/concepts-migrate-dump-restore/1_server-properties-name-login.png)
 
 Adja hozzá az azokat a MySQL munkaterület-kapcsolódási információt.
-![MySQL-munkaterület kapcsolati karakterlánc](./media/concepts-migrate-dump-restore/2_setup-new-connection.png)
+![MySQL Workbench Connection String](./media/concepts-migrate-dump-restore/2_setup-new-connection.png)
 
 
 ## <a name="restore-your-mysql-database-using-command-line-or-mysql-workbench"></a>Állítsa vissza a MySQL-adatbázis használatával parancssori vagy MySQL munkaterület
@@ -101,7 +101,7 @@ mysql -h [hostname] -u [uname] -p[pass] [db_to_restore] < [backupfile.sql]
 ```
 Ebben a példában az adatok helyreállítását a cél Azure-adatbázis MySQL-kiszolgáló az újonnan létrehozott adatbázisba.
 ```bash
-$ mysql -h myserver4demo.mysql.database.azure.com -u myadmin@myserver4demo -p testdb < testdb_backup.sql
+$ mysql -h mydemoserver.mysql.database.azure.com -u myadmin@mydemoserver -p testdb < testdb_backup.sql
 ```
 
 ## <a name="export-using-phpmyadmin"></a>Exportálás PHPMyAdmin használatával
@@ -122,5 +122,5 @@ Az adatbázis importálása hasonlít exportálása. A következő műveleteket 
 - Használja a **Tallózás** található az adatbázis gombra. 
 - Kattintson a **Ugrás** gombra a biztonsági mentés exportálása, az SQL-parancsok, és hozza létre újból az adatbázist.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [Csatlakozás a MySQL az Azure Database-alkalmazások](./howto-connection-string.md)

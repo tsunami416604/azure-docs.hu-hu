@@ -12,13 +12,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/14/2017
+ms.date: 02/27/2018
 ms.author: manayar
-ms.openlocfilehash: 273efe0bdef421d753ea51e01060d48351cbe6fc
-ms.sourcegitcommit: 3fca41d1c978d4b9165666bb2a9a1fe2a13aabb6
+ms.openlocfilehash: 532dd399d2d5fcbab616744dd02f4a95078cbb1b
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="multi-tenant-support-in-azure-site-recovery-for-replicating-vmware-virtual-machines-to-azure-through-csp"></a>Több-bérlős támogatás az Azure Site Recovery VMware virtuális gépek replikálása Azure-bA CSP keresztül
 
@@ -125,7 +125,7 @@ Ahogy a következő ábrán is látható, a architekturális felügyelt megoldá
 ![architektúra megosztott hsp](./media/site-recovery-multi-tenant-support-vmware-using-csp/managed-service-scenario.png)  
 **Felügyelt szolgáltatást a forgatókönyvet, és több Vcenter**
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [További](site-recovery-role-based-linked-access-control.md) vonatkozó szerepköralapú hozzáférés-vezérlést az Azure Site Recovery központi telepítések felügyeletéhez szükséges.
 
 [Több vállalat kiszolgálása a kriptográfiai Szolgáltató kezelése](site-recovery-manage-multi-tenancy-with-csp.md)

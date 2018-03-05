@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/15/2018
 ms.author: danoble
-ms.openlocfilehash: 4b18ad16338722cc9dbd314eded900fdd554ecec
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 1991157330f6607efcf42ad42694c6b4d19fe609
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="use-the-azure-cosmos-db-emulator-for-local-development-and-testing"></a>Az Azure Cosmos DB Emulator használja a helyi fejlesztéshez és teszteléshez
 
@@ -30,11 +30,11 @@ ms.lasthandoff: 02/24/2018
 </tr>
 <tr>
   <td><strong>Docker</strong></td>
-  <td>[Docker központ](https://hub.docker.com/r/microsoft/azure-documentdb-emulator/)</td>
+  <td>[Docker központ](https://hub.docker.com/r/microsoft/azure-cosmosdb-emulator/)</td>
 </tr>
 <tr>
   <td><strong>Docker-forrás</strong></td>
-  <td>[Github](https://github.com/azure/azure-documentdb-emulator-docker)</td>
+  <td>[Github](https://github.com/Azure/azure-cosmos-db-emulator-docker)</td>
 </tr>
 </table>
   
@@ -179,7 +179,7 @@ Beállítások listájának megtekintéséhez írja be a `CosmosDB.Emulator.exe 
 <tr>
   <td><strong>A beállítás</strong></td>
   <td><strong>Leírás</strong></td>
-  <td><strong>a parancs</strong></td>
+  <td><strong>Parancs</strong></td>
   <td><strong>Argumentumok</strong></td>
 </tr>
 <tr>

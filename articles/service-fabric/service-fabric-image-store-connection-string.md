@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 01/10/2018
+ms.date: 02/27/2018
 ms.author: alexwun
-ms.openlocfilehash: 4b64331a4f25ce0cc01b2ee9f32633ab035e3131
-ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
+ms.openlocfilehash: 3c34a3851dbb5c5258b3dc0cf35a510f62cbe14e
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="understand-the-imagestoreconnectionstring-setting"></a>A előtaggal beállítás ismertetése
 
@@ -34,15 +34,17 @@ Jelenleg nincsenek Image Store szolgáltatók három lehetséges típusú, és a
 
 2. Fájlrendszer: "file:[file rendszer path]"
 
-3. Az Azure Storage: "xstore:DefaultEndpointsProtocol = https; AccountName = [...]; AccountKey = [...]; Tároló = [...] "
+3. Azure Storage: "xstore:DefaultEndpointsProtocol=https;AccountName=[...];AccountKey=[...];Container=[...]"
 
 A szolgáltató éles környezetben használt a kép Store szolgáltatást, egy állapot-nyilvántartó megőrzött rendszerszolgáltatás is látható, a Service Fabric Explorerből. 
 
-![Image Store szolgáltatás][img_is]
+![Image Store Service][img_is]
 
 Az Image Store rendszerszolgáltatás egyrészt a fürt belül az üzemeltetési megszünteti a csomag tárház vonatkozó külső függőségeket, és a tárolási hely több ellenőrzést ad. Az Image Store körül jövőbeli fejlesztések valószínűleg úgy, hogy a lemezkép tárolási szolgáltató célozza, először, ha nem kizárólag. A kapcsolati karakterláncot, a lemezkép tárolási szolgáltató nem rendelkezik egyedi információt, mivel az ügyfél már csatlakoztatva van a célfürtön. Az ügyfélnek csak kell tudnia, hogy a rendszer szolgáltatás célzó protokollok kell használni.
 
-A fájlrendszer szolgáltató szolgál a lemezképet tároló szolgáltatás helyett egy beépített helyi fürtök a fejlesztés során bootstrap némileg gyorsabb a fürt. A különbség az általában kicsi, de a legtöbb segítsen a fejlesztés során hasznos optimalizálás. Egy helyi egy beépített fürt más tárolási szolgáltató típusai is telepíthető, de általában nincs szükség erre, mivel a fejlesztése és tesztelési célú munkafolyamat szolgáltató függetlenül ugyanaz marad. Eltérő használata a fájlrendszer és az Azure Storage-szolgáltatók csak léteznek örökölt támogatása.
+A fájlrendszer szolgáltató szolgál a lemezképet tároló szolgáltatás helyett egy beépített helyi fürtök a fejlesztés során bootstrap némileg gyorsabb a fürt. A különbség az általában kicsi, de a legtöbb segítsen a fejlesztés során hasznos optimalizálás. Egy helyi egy beépített fürt más tárolási szolgáltató típusai is telepíthető, de általában nincs szükség erre, mivel a fejlesztése és tesztelési célú munkafolyamat szolgáltató függetlenül ugyanaz marad. Az Azure Storage-szolgáltató csak örökölt támogatása a régi fürtök telepítve előtt a lemezkép tárolási szolgáltató létezik.
+
+Továbbá, sem a fájlrendszer szolgáltató és az Azure tárolási szolgáltatót, nem kell használni az Image Store több fürt közötti megosztása módszerként – ennek eredményeképpen a fürt konfigurációs adatok sérülése, mivel egyes fürtök ütköző adatokat írhat az Lemezképtárolóhoz. Kiépített alkalmazáscsomagok több fürt közötti megosztásához használni [sfpkg] [ 12] fájlok, amelyek is feltölthetők a letöltési URI Azonosítójának bármely külső tárolóba.
 
 Ezért konfigurálható a előtaggal pedig általában csak az alapértelmezett beállítást használja. Visual Studio használatával Azure közzétételekor a paraméter értéke automatikusan meg ennek megfelelően. Az Azure-ban üzemeltetett fürtökhöz a programozott telepítés, a kapcsolati karakterlánc: mindig "fabric: Lemezképtárolóba". Ha kétségei vannak, az értéke mindig ellenőrizhetők a fürtjegyzékben által lekérésével [PowerShell](https://docs.microsoft.com/powershell/servicefabric/vlatest/get-servicefabricclustermanifest), [.NET](https://msdn.microsoft.com/library/azure/mt161375.aspx), vagy [REST](https://docs.microsoft.com/rest/api/servicefabric/get-a-cluster-manifest). Mind a helyszíni tesztelése, és mindig éles fürtök úgy konfigurálni, hogy a lemezkép tárolási szolgáltató használata is.
 
@@ -55,4 +57,4 @@ Ezért konfigurálható a előtaggal pedig általában csak az alapértelmezett 
 
 [10]: service-fabric-deploy-remove-applications.md
 [11]: service-fabric-cluster-creation-via-portal.md
-
+[12]: service-fabric-package-apps.md#create-an-sfpkg

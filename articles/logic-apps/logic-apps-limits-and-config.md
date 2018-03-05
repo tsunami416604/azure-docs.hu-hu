@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 8de3cc6665fc3861aedcf4f36cdce4a4a776e80d
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
-ms.translationtype: MT
+ms.openlocfilehash: 5c4597ede16f01c36e147dc0d70acf4b4f5635e8
+ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="logic-apps-limits-and-configuration"></a>Logic Apps korlátozásai és konfigurációja
 
@@ -45,7 +45,7 @@ Ezek a korlátozások vonatkoznak az egyetlen HTTP-kérelem vagy az összekötő
 | Kifejezés kiértékelése korlátot | 131 072 karakter | `@concat()`, `@base64()`, `string` nem lehetnek hosszabbak ezt a határt. | 
 |||| 
 
-#### <a name="retry-policy"></a>Újrapróbálkozási házirend
+#### <a name="retry-policy"></a>Újrapróbálkozási szabályzat
 
 | Name (Név) | Korlát | Megjegyzések | 
 | ---- | ----- | ----- | 
@@ -58,15 +58,22 @@ Ezek a korlátozások vonatkoznak az egyetlen HTTP-kérelem vagy az összekötő
 
 Ezek a korlátozások vonatkoznak egyetlen logikai alkalmazás futtatásához.
 
-| Name (Név) | Korlát | 
-| ---- | ----- | 
-| Futtassa a időtartama | 90 nap | 
-| Tároló megőrzési | a Futtatás 90 napon kezdési időpontja | 
-| Min ismétlési időköz | 1 másodperc </br>A logic apps a egy App Service-csomag számára: 15 másodperc | 
-| Maximális ismétlési időköz | 500 (nap) | 
-||| 
+| Name (Név) | Alapértelmezett | Korlát |
+| ---- | ------- | ----- |
+| Futtassa a időtartama   | 90 nap | 7-90 nap |
+| Tároló megőrzési | a Futtatás 90 napon kezdési időpontja |  a Futtatás kezdési ideje 7 90 nap |
+||||
 
 Futtatási időtartama vagy a normál feldolgozása folyamatában tároló megőrzési hosszabb legyen, mint a korlátok [lépjen kapcsolatba a termékért felelős csoport](mailto://logicappsemail@microsoft.com) segítség az igényeinek.
+
+
+### <a name="recurrence-interval"></a>Ismétlődési időköz
+
+| Name (Név) | Korlát |
+| ---- | ------- |
+| Min ismétlési időköz | 1 másodperc </br>A logic apps a egy App Service-csomag számára: 15 másodperc |
+| Maximális ismétlési időköz | 500 (nap) |
+|||
 
 ### <a name="looping-and-debatching-limits"></a>Hurok- és debatching korlátok
 
@@ -75,7 +82,7 @@ Ezek a korlátozások vonatkoznak egyetlen logikai alkalmazás futtatásához.
 | Name (Név) | Korlát | Megjegyzések | 
 | ---- | ----- | ----- | 
 | ForEach-elemek | 100,000 | Használhatja a [lekérdezési művelet](../connectors/connectors-native-query.md) szűrése nagyobb tömbök igény szerint. | 
-| Amíg az ismétlés | 5,000 | | 
+| Amíg az ismétlés | 5000 | | 
 | SplitOn elemek | 100,000 | | 
 | ForEach párhuzamossági | 50 | Az alapértelmezett érték 20. <p>ForEach hurkot valamilyen konkrét szintje párhuzamossági beállításához adja meg a `runtimeConfiguration` tulajdonságot a `foreach` művelet. <p>ForEach hurkot egymás után futtatja, állítsa be a `operationOptions` "Sorostevékenység" tulajdonságot a `foreach` művelet. | 
 |||| 
@@ -109,10 +116,10 @@ Ezek a korlátozások vonatkoznak a egyetlen logic app-definíciót.
 | A változók / munkafolyamat száma | 250 | | 
 | Maximális karakterszám kifejezés | 8,192 | | 
 | Maximális `trackedProperties` méret karakter | 16,000 | 
-| `action`/`trigger`név korlátot | 80 | | 
-| `description`korlát | 256 | | 
-| `parameters`korlát | 50 | | 
-| `outputs`korlát | 10 | | 
+| `action`/`trigger` név korlátot | 80 | | 
+| `description` korlát | 256 | | 
+| `parameters` Korlát | 50 | | 
+| `outputs` Korlát | 10 | | 
 |||| 
 
 <a name="custom-connector-limits"></a>

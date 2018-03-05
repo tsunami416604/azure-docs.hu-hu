@@ -1,20 +1,20 @@
 ---
-title: "Állítsa be a SSL-kapcsolatot az Azure Database PostgreSQL |} Microsoft Docs"
+title: "SSL-kapcsolatot PostgreSQL Azure-adatbázis konfigurálása"
 description: "Utasításokat és az információkat PostgreSQL és a társított alkalmazások megfelelően az SSL-kapcsolat használata Azure-adatbázis konfigurálása."
 services: postgresql
 author: JasonMAnderson
 ms.author: janders
 editor: jasonwhowell
-manager: jhubbard
+manager: kfile
 ms.service: postgresql
 ms.custom: 
 ms.topic: article
-ms.date: 11/01/2017
-ms.openlocfilehash: d84a9fd45f2e6e44218ebd36d19c6a6c5f3438ce
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.date: 02/28/2018
+ms.openlocfilehash: 0a4a7041a905470f895921cfedf2bd94e8466966
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="configure-ssl-connectivity-in-azure-database-for-postgresql"></a>SSL-kapcsolatot PostgreSQL Azure-adatbázis konfigurálása
 Azure-adatbázis PostgreSQL inkább csatlakozás az ügyfél alkalmazásait, és a Secure Sockets Layer (SSL) használatával PostgreSQL-szolgáltatás. Az adatbázis-kiszolgáló és az ügyfélalkalmazások közötti SSL-kapcsolatok kikényszerítése elősegíti a „köztes” támadások elleni védelmet, mert titkosítja a kiszolgáló és az alkalmazás közötti streameket.
@@ -40,7 +40,7 @@ Megtekintésével ellenőrizheti a beállítás a **áttekintése** lapot, melye
 Engedélyezheti vagy letilthatja a **ssl-kényszerítési** paraméter használatával `Enabled` vagy `Disabled` értékeket az Azure parancssori felület.
 
 ```azurecli
-az postgres server update --resource-group myresourcegroup --name mypgserver-20170401 --ssl-enforcement Enabled
+az postgres server update --resource-group myresourcegroup --name mydemoserver --ssl-enforcement Enabled
 ```
 
 ## <a name="ensure-your-application-or-framework-supports-ssl-connections"></a>Ellenőrizze az alkalmazás vagy a keretrendszer támogatja SSL-kapcsolatok
@@ -116,11 +116,11 @@ A következő példa bemutatja, hogyan tud sikeresen csatlakozni a psql parancss
 
 A PostgreSQL parancssori felületén, hajtsa végre a következő parancsot:
 ```bash
-psql "sslmode=verify-ca sslrootcert=root.crt host=mypgserver-20170401.postgres.database.azure.com dbname=postgres user=mylogin@mypgserver-20170401"
+psql "sslmode=verify-ca sslrootcert=root.crt host=mydemoserver.postgres.database.azure.com dbname=postgres user=mylogin@mydemoserver"
 ```
 Ha sikeres, a következő eredmény jelenik meg:
 ```bash
-Password for user mylogin@mypgserver-20170401:
+Password for user mylogin@mydemoserver:
 psql (9.6.2)
 WARNING: Console code page (437) differs from Windows code page (1252)
      8-bit characters might not work correctly. See psql reference
@@ -136,5 +136,5 @@ Meg kell adnia pgAdmin biztonságos SSL Csatornán keresztül csatlakozni 4 konf
 
 ![Képernyőkép a pgAdmin - kapcsolat – SSL-mód megkövetelése](./media/concepts-ssl-connection-security/2-pgadmin-ssl.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Tekintse át a következő különböző alkalmazás kapcsolati lehetőségek [PostgreSQL az Azure-adatbázis adatkapcsolattárak](concepts-connection-libraries.md).

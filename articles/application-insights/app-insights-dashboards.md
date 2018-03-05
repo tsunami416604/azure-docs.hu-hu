@@ -13,11 +13,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: a6d3c89f0f99128e2bf754391c79c3d616f0730a
-ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
+ms.openlocfilehash: 5ec0412dc91a7e5c28ee9ee820df9584ffa80cd8
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="navigation-and-dashboards-in-the-application-insights-portal"></a>Navigációs és az Application Insights portálon irányítópultok
 Miután [Application Insights beállítása a projekten](app-insights-overview.md), az alkalmazás teljesítmény- és használati telemetriai adatokat fog megjelenni az Application Insights-erőforrás a projekt a [Azure-portálon](https://portal.azure.com).
@@ -115,9 +115,8 @@ Az Áttekintés panel az alkalmazással kapcsolatos további információkat az 
 * **Időtartománynak** -állítsa be a a panelen a diagramok szerint jelenik meg.
 * **Törlés** -törli az Application Insights-erőforrást az alkalmazáshoz. Meg kell is távolítsa el az Application Insights csomagokat az alkalmazás kódját, vagy szerkesztheti a [instrumentation kulcs](app-insights-create-new-resource.md#copy-the-instrumentation-key) át tudja irányítani a telemetria bekapcsolásával egy másik Application Insights-erőforrást az alkalmazásban.
 
-### <a name="essentials-tab"></a>Alapvető erőforrások lapon
+### <a name="essentials-tab"></a>Essentials tab
 * [Instrumentation kulcs](app-insights-create-new-resource.md#copy-the-instrumentation-key) -azonosítja az alkalmazás-erőforrást.
-* Tarifacsomag - teheti a rendelkezésre álló és beállított kötet caps szolgáltatásait.
 
 ### <a name="app-navigation-bar"></a>Alkalmazás navigációs sáv
 ![Bal oldali navigációs sáv](./media/app-insights-dashboards/app-left-nav-bar.png)
@@ -160,7 +159,7 @@ BEÁLLÍTÁSOK
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 |  |  |
 | --- | --- |

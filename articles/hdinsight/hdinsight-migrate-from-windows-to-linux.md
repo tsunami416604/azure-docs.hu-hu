@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 12/05/2017
+ms.date: 02/27/2018
 ms.author: larryfr
-ms.openlocfilehash: 764a41dc9e890de85c3bfab3d2f78d5a07b39dff
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: dff9eaad252a71942b07212b7cfa9d9ddf346a3f
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="migrate-from-a-windows-based-hdinsight-cluster-to-a-linux-based-cluster"></a>Linux-alapú fürtre Windows-alapú HDInsight-fürtök áttelepítése
 
@@ -152,7 +152,7 @@ A web UI használta a Windows-alapú hdinsight eszközzel, például a feladatel
 
 Ambari használatával kapcsolatos további információkért lásd a következő dokumentumokat:
 
-* [Ambari webes](hdinsight-hadoop-manage-ambari.md)
+* [Ambari Web](hdinsight-hadoop-manage-ambari.md)
 * [Ambari REST API-n](hdinsight-hadoop-manage-ambari-rest-api.md)
 
 ### <a name="ambari-alerts"></a>Ambari riasztások
@@ -201,10 +201,10 @@ Az alábbi ábra a Hive munkaterhelések áttelepítését nyújt útmutatást.
 | A Windows-alapú, használni... | A Linux-alapú... |
 | --- | --- |
 | **Hive szerkesztő** |[Az Ambari Hive nézete](hadoop/apache-hadoop-use-hive-ambari-view.md) |
-| `set hive.execution.engine=tez;`Tez engedélyezése |Tez érték az alapértelmezett végrehajtó motorja Linux-alapú fürtökhöz, ezért már nem szükséges a set utasítás. |
+| `set hive.execution.engine=tez;` Tez engedélyezése |Tez érték az alapértelmezett végrehajtó motorja Linux-alapú fürtökhöz, ezért már nem szükséges a set utasítás. |
 | C# felhasználó által definiált függvények | Információ a C#-összetevők Linux-alapú HDInsight érvényesítése: [át .NET Linux-alapú HDInsight-megoldások](hdinsight-hadoop-migrate-dotnet-to-linux.md) |
 | CMD-fájlokat vagy parancsprogramokat meghívni egy Hive-feladat részeként a kiszolgálón |Bash parancsfájlok használata |
-| `hive`a távoli asztal parancs |Használjon [Beeline](hadoop/apache-hadoop-use-hive-beeline.md) vagy [SSH-munkamenetet a Hive](hdinsight-hadoop-use-hive-ssh.md) |
+| `hive` a távoli asztal parancs |Használjon [Beeline](hadoop/apache-hadoop-use-hive-beeline.md) vagy [SSH-munkamenetet a Hive](hdinsight-hadoop-use-hive-ssh.md) |
 
 ### <a name="pig"></a>Pig
 
@@ -282,7 +282,7 @@ Ha a parancsfájlok nem tartalmaz beágyazott CR karakter karakterláncok, töme
     hdfs dfs -put -f script.py wasb:///path/to/script.py
     ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Ismerje meg a Linux-alapú HDInsight-fürtök létrehozása](hdinsight-hadoop-provision-linux-clusters.md)
 * [Az SSH használata a HDInsight való kapcsolódáshoz](hdinsight-hadoop-linux-use-ssh-unix.md)

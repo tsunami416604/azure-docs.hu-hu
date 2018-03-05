@@ -1,19 +1,19 @@
 ---
-title: "Metrikák vonatkozó riasztások konfigurálása az Azure Database PostgreSQL az Azure portálon |} Microsoft Docs"
+title: "Metrikák riasztások konfigurálása az Azure-adatbázis PostgreSQL az Azure-portálon"
 description: "A cikk konfigurálása és hozzáférési metrika riasztások az Azure Database PostgreSQL az Azure-portálról."
 services: postgresql
 author: rachel-msft
 ms.author: raagyema
-manager: jhubbard
+manager: kfile
 editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
-ms.date: 10/24/2017
-ms.openlocfilehash: 3a09be8131b57381eb470027a134109c116467ed
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.date: 02/28/2018
+ms.openlocfilehash: b4b15998276dd6c32e9c15622aa0251c6c066085
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-postgresql"></a>Riasztásokat állíthat be metrikák Azure-adatbázis a PostgreSQL az Azure-portál használatával 
 
@@ -47,14 +47,14 @@ Konfigurálhatja, és a riasztási szabályok használatával adatainak beolvas�
 
    | Beállítás | Leírás  |
    |---------|---------|
-   | Név | Adja meg a riasztási szabály nevét. Ez az érték a riasztás-értesítési e-mailek küldése. |
+   | Name (Név) | Adja meg a riasztási szabály nevét. Ez az érték a riasztás-értesítési e-mailek küldése. |
    | Leírás | A riasztási szabály rövid leírását adhatja meg. Ez az érték a riasztás-értesítési e-mailek küldése. |
-   | Riasztás | Válasszon **metrikák** az ilyen típusú riasztás. |
+   | Riasztás: | Válasszon **metrikák** az ilyen típusú riasztás. |
    | Előfizetés | Ebben a mezőben a rendszer az előfizetéshez, amely az Azure-adatbázis PostgreSQL előre feltöltve. |
    | Erőforráscsoport | Ez a mező a erőforráscsoporttal, az Azure-adatbázis a PostgreSQL előre feltöltve a van. |
    | Erőforrás | Ebben a mezőben az Azure-adatbázis nevű PostgreSQL az előre feltöltve a rendszer. |
    | Metrika | Válassza ki a cél, hogy szeretne kiadni egy riasztást. Például **tárolási százalékos**. |
-   | Az állapot | Válassza ki a metrika az összehasonlítandó feltételét. Például **nagyobb, mint**. |
+   | Feltétel | Válassza ki a metrika az összehasonlítandó feltételét. Például **nagyobb, mint**. |
    | Küszöbérték | Küszöbérték a metrika, például 85 (százalék). |
    | Időszak | Az időtartam alatt a metrika szabály a riasztási eseményindítók előtt teljesülniük kell. Például **az elmúlt 30 perc**. |
 
@@ -79,6 +79,6 @@ Miután létrehozta a riasztást, válassza ki azt, és a következő műveletek
 * **Szerkesztés** vagy **törlése** a riasztási szabályt.
 * **Tiltsa le a** vagy **engedélyezése** a riasztás, ha azt szeretné, ideiglenesen leállítani, vagy folytathatja a fogadott értesítések.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * További információ [konfigurálása webhookokkal a riasztások](../monitoring-and-diagnostics/insights-webhooks-alerts.md).
 * Első egy [metrikák gyűjtemény áttekintése](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md) ellenőrizze, hogy a szolgáltatás elérhető, és a gyors.

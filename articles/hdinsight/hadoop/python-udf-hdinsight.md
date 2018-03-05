@@ -13,14 +13,14 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: article
-ms.date: 12/05/2017
+ms.date: 02/27/2018
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 002072c8eac37ffb1548b44627ec08e941c96a1d
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: f98fe82a9637cfdddf7af1dcb6aaf979bffcad6f
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="use-python-user-defined-functions-udf-with-hive-and-pig-in-hdinsight"></a>Használjon Python felhasználói függvény (UDF), a Hive és a Pig a Hdinsightban
 
@@ -126,8 +126,8 @@ A Python-parancsfájl egy UDF a Pig keresztül használható a `GENERATE` utasí
 
 Adja meg a Python értelmező `register` való hivatkozáskor a Python-parancsfájl. Az alábbi példák mint a Pig parancsfájlok regisztrálása `myfuncs`:
 
-* **Jython használandó**:`register '/path/to/pigudf.py' using jython as myfuncs;`
-* **C Python használandó**:`register '/path/to/pigudf.py' using streaming_python as myfuncs;`
+* **Jython használandó**: `register '/path/to/pigudf.py' using jython as myfuncs;`
+* **C Python használandó**: `register '/path/to/pigudf.py' using streaming_python as myfuncs;`
 
 > [!IMPORTANT]
 > Jython használata esetén a fájl elérési útját pig_jython lehet-e, vagy helyi elérési utat, vagy a WASB: / / elérési út. C Python használata esetén egy fájlt a helyi fájlrendszerben, a csomópont, Ön által használt elküldeni a Pig feladatot kell hivatkoznia.
@@ -145,7 +145,7 @@ Ez a példa funkciója:
 
 1. Az első sor betölti a mintaadatfájlokat `sample.log` történő `LOGS`. Mint minden rekordot is meghatározza egy `chararray`.
 2. A következő sorban kiszűri a null értékeket, tárolja a művelet eredményét `LOG`.
-3. A következő megismétli a blobban található rekordok keresztül `LOG` , és `GENERATE` meghívni a `create_structure` tölti be a Python/Jython parancsfájlban szereplő `myfuncs`. `LINE`a függvény az aktuális rekord átadására szolgál.
+3. A következő megismétli a blobban található rekordok keresztül `LOG` , és `GENERATE` meghívni a `create_structure` tölti be a Python/Jython parancsfájlban szereplő `myfuncs`. `LINE` a függvény az aktuális rekord átadására szolgál.
 4. Végezetül a kimenetek vannak kiírt STDOUT való használata a `DUMP` parancsot. A parancs megjeleníti az eredményeket, a művelet befejeződése után.
 
 ### <a name="create-the-pigudfpy-file"></a>A pigudf.py fájl létrehozása
@@ -380,8 +380,8 @@ A hibával kapcsolatos információk (STDERR) és a feladat (STDOUT) eredménye 
 
 | A feladat... | Nézze meg ezeket a fájlokat a blob a tárolóban |
 | --- | --- |
-| Hive |/ HivePython/stderr<p>/ HivePython/stdout |
-| Pig |/ PigPython/stderr<p>/ PigPython/stdout |
+| Hive |/HivePython/stderr<p>/HivePython/stdout |
+| Pig |/PigPython/stderr<p>/PigPython/stdout |
 
 ## <a name="next"></a>Következő lépések
 

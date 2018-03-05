@@ -1,19 +1,19 @@
 ---
-title: "Azure-adatbázis a MySQL-kiszolgáló tűzfalszabályainak |} Microsoft Docs"
+title: "Kiszolgáló tűzfalszabályainak MySQL Azure-adatbázis"
 description: "A témakör ismerteti a tűzfalszabályok a MySQL-kiszolgálóhoz tartozó Azure-adatbázis."
 services: mysql
-author: v-chenyh
-ms.author: v-chenyh
-manager: jhubbard
+author: ajlam
+ms.author: andrela
+manager: kfile
 editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
-ms.date: 02/12/2018
-ms.openlocfilehash: 5afe3fc2d39c6ab0996b1ee68a4158ccacc7e86a
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.date: 02/28/2018
+ms.openlocfilehash: a1ebbc088b54112ed625412a347b054fd3361782
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="azure-database-for-mysql-server-firewall-rules"></a>Kiszolgáló tűzfalszabályainak MySQL Azure-adatbázis
 Tűzfalak tagadni a hozzáférést minden az adatbázis-kiszolgáló csak akkor adja meg, mely számítógépek rendelkeznek engedéllyel. A tűzfal engedélyezi a hozzáférést a kiszolgálóhoz, az egyes kérelmek az eredeti IP-címe alapján.

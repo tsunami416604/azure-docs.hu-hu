@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2017
 ms.author: iainfou
-ms.openlocfilehash: 33b9c36d4600646c36a519e647bd8cc8b6d68666
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 1aa75b87b01417b8864632b7a09539bd6be05d0b
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="install-and-configure-remote-desktop-to-connect-to-a-linux-vm-in-azure"></a>Telepítse és konfigurálja a távoli asztal egy Linux virtuális Gépet az Azure-ban való kapcsolódáshoz
 A parancssorból, a secure shell (SSH-) kapcsolaton keresztül általában felügyelt Linux virtuális gépek (VM) az Azure-ban. Új Linux vagy gyors hibaelhárítási helyzetekben, amikor a távoli asztal használata könnyebben lehet. Ez a cikk részletesen telepítése és konfigurálása az asztali környezetet ([xfce](https://www.xfce.org)) és a távoli asztal ([xrdp](http://www.xrdp.org)) a Linux virtuális gép használata a Resource Manager üzembe helyezési modellben.
 
 
 ## <a name="prerequisites"></a>Előfeltételek
-Ez a cikk az Azure-ban meglévő Linux virtuális gép szükséges. Ha a virtuális gép létrehozása az kell, használja a következő módszerek egyikét:
+Ez a cikk egy meglévő Ubuntu 16.04 LTS Azure-ban van szükség. Ha a virtuális gép létrehozása az kell, használja a következő módszerek egyikét:
 
 - A [Azure CLI 2.0](quick-create-cli.md)
 - A [Azure-portálon](quick-create-portal.md)
@@ -34,7 +34,7 @@ Ez a cikk az Azure-ban meglévő Linux virtuális gép szükséges. Ha a virtuá
 ## <a name="install-a-desktop-environment-on-your-linux-vm"></a>Egy asztali környezet telepítése a Linux virtuális gépen
 A legtöbb Linux virtuális gépet az Azure-ban nem rendelkeznek egy asztali környezetben alapértelmezés szerint telepítve. Linux virtuális gépek általában felügyelt asztali környezet helyett SSH-kapcsolatokhoz. Nincsenek a Linux, amelyek segítségével különböző asztali környezetekhez. Attól függően, hogy a munkakörnyezet választott akkor előfordulhat, hogy használnak egy – 2 GB szabad lemezterület, és telepítse és konfigurálja a szükséges csomagokat 5 – 10 percig tarthat.
 
-A következő példa telepíti az egyszerűsített [xfce4](https://www.xfce.org/) Ubuntu virtuális gép az asztali környezetet. Parancsok a némileg eltérő más terjesztési (használata `yum` Red Hat Enterprise Linux telepítését és konfigurálását a megfelelő `selinux` szabályokat, vagy használja `zypper` SUSE, például telepítése).
+A következő példa telepíti az egyszerűsített [xfce4](https://www.xfce.org/) asztali környezetben egy Ubuntu 16.04 LTS virtuális gépen. Parancsok a némileg eltérő más terjesztési (használata `yum` Red Hat Enterprise Linux telepítését és konfigurálását a megfelelő `selinux` szabályokat, vagy használja `zypper` SUSE, például telepítése).
 
 Első, az SSH-kapcsolatot a virtuális Gépet. Az alábbi példa nevű virtuális gép csatlakozik *myvm.westus.cloudapp.azure.com* a felhasználónevet használva a *azureuser*:
 

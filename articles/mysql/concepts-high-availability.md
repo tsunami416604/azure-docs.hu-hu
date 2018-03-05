@@ -1,19 +1,19 @@
 ---
-title: "A MySQL az Azure-adatbázis magas rendelkezésre állású fogalmak |} Microsoft Docs"
+title: "Magas rendelkezésre állású kapcsolatos fogalmak, MySQL az Azure-adatbázis"
 description: "Ez a témakör a magas rendelkezésre állás MySQL az Azure-adatbázis használata esetén"
 services: mysql
 author: jasonwhowell
 ms.author: jasonh
-manager: jhubbard
+manager: kfile
 editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
-ms.date: 10/31/2017
-ms.openlocfilehash: 5b63a1ac666a14354b5b93f22722b624244a7aa2
-ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
+ms.date: 02/28/2018
+ms.openlocfilehash: 58f10f0a0938da5887d44959f65b9016dfa88f2c
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="high-availability-concepts-in-azure-database-for-mysql"></a>Magas rendelkezésre állású kapcsolatos fogalmak, MySQL az Azure-adatbázis
 Az Azure-adatbázishoz a MySQL-szolgáltatás biztosít garantált magas szintű elérhetőség. A pénzügyi biztonsági szolgáltatásiszint-szerződéssel (SLA) alapján általánosan rendelkezésre álló 99,99 %. Nincs állásidő alkalmazás gyakorlatilag a szolgáltatás használatakor.
@@ -33,5 +33,5 @@ A magas rendelkezésre ÁLLÁSÚ modell, amikor egy MySQL az Azure-adatbázis m�
 
 A méretezési művelet megtörténik az adatbázis-kapcsolatok megszakadását. Az ügyfélalkalmazások számára le van választva, és nyissa meg a nem véglegesített tranzakciók pedig leállítottak. Az ügyfélalkalmazás újrapróbálja a kapcsolódást, vagy egy új kapcsolatot, ha az átjáró irányítja a kapcsolat az újonnan méretű példányához. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - A szolgáltatás áttekintését lásd: [Azure adatbázis MySQL – áttekintés](overview.md)

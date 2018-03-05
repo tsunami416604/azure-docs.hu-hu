@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 11/08/2017
 ms.author: jonbeck
-ms.openlocfilehash: ac0de4e4582e5071d96ded3c9f08c0c9b05ae3f3
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
-ms.translationtype: MT
+ms.openlocfilehash: 51fb2c2799b79151927fc3fbbb94cd37e48d0dd8
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="sizes-for-windows-virtual-machines-in-azure"></a>Az Azure-ban a Windows virtuális gépek méretei
 
@@ -32,7 +32,7 @@ Ez a cikk ismerteti az elérhető méretek és a beállítások a Windows-alkalm
 | [Számításra optimalizált](sizes-compute.md)        | Fsv2, Fs, F             | Magas processzor-memória arány. Alkalmas közepes adatforgalmú webkiszolgálók, hálózati berendezések, kötegfolyamatok és alkalmazáskiszolgálók számára.        |
 | [Memóriaoptimalizált](../virtual-machines-windows-sizes-memory.md)         | Esv3, Ev3, M, GS, G, DSv2, DS, Dv2, D   | Magas memória-CPU aránya. Ideális választás relációs adatbázis-kiszolgálókhoz, közepes és nagy gyorsítótárakhoz és memóriabeli elemzésekhez.                 |
 | [Tárolásra optimalizált](../virtual-machines-windows-sizes-storage.md)        | Ls                | Magas lemez-adatátviteli és I/O-műveleti jellemzők. Ideális Big Data-, SQL- és NoSQL-adatbázisok esetén.                                                         |
-| [GPU](sizes-gpu.md)            | Portok HV, NC, NCv2, ND            | Speciális virtuális gépekre nagy mennyiségű grafikus megjelenítési és videó szerkesztése szánt. Egy vagy több Feldolgozóegységekkel érhető el.       |
+| [GPU](sizes-gpu.md)            | NV, NC, NCv2, ND            | Speciális virtuális gépek nagy mennyiségű grafikus megjelenítési és videó szerkesztése szánt, valamint a modell betanítási és inferencing (NT) részletes Learning segítségével. Egy vagy több Feldolgozóegységekkel érhető el.       |
 | [Nagy teljesítményű számítás](sizes-hpc.md) | H, A8-11          | A leggyorsabb és leghatékonyabb processzorral rendelkező virtuális gépeink, választható nagy átviteli sebességű (távoli közvetlen memória-hozzáférést lehetővé tevő) hálózati adapterrel. 
 
 <br> 
@@ -57,7 +57,7 @@ https://docs.microsoft.com/rest/api/compute/virtualmachines/virtualmachines-list
 
 További tudnivalók [Azure számítási egység (ACU)](acu.md) segíthetnek a számítási teljesítmény összehasonlítása Azure termékváltozatok mentén.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a különböző Virtuálisgép-méretek érhetők el:
 - [Általános célú](sizes-general.md)

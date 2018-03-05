@@ -13,49 +13,52 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 10/12/2017
+ms.date: 02/27/2018
 ms.author: davidmu
 ms.custom: mvc
-ms.openlocfilehash: 21f2d586a4c468071bec55c65005b35baf323fe7
-ms.sourcegitcommit: 76a3cbac40337ce88f41f9c21a388e21bbd9c13f
+ms.openlocfilehash: 3a59d85ea19ba6670ffbb60aa9b764560a3567a0
+ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="manage-azure-virtual-networks-and-windows-virtual-machines-with-azure-powershell"></a>Egy Azure virtuális hálózatot és az Azure PowerShell használatával Windows virtuális gépek kezelése
 
-Az Azure virtuális gépek Azure hálózatkezelés belső és külső hálózati kommunikációhoz használni. Ez az oktatóanyag végigvezeti a két virtuális gép telepítése és konfigurálása ezen a virtuális gépek Azure hálózatkezelés. Ebben az oktatóanyagban szereplő példák feltételezik, hogy, hogy a virtuális gépeket üzemeltető egy adatbázis-háttér webalkalmazás azonban egy alkalmazás nincs telepítve az oktatóanyag. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az Azure-beli virtuális gépek Azure hálózatkezelést használnak a belső és külső hálózati kommunikációhoz. Ez az oktatóanyag végigvezeti két virtuális gép telepítésén és az Azure hálózatkezelés konfigurálásán ezen virtuális gépekhez. Az oktatóanyagban szereplő példák feltételezik, hogy a virtuális gépek üzemeltetnek egy webalkalmazást egy adatbázis-alapú háttérrendszerrel, de az oktatóanyag során nem telepítünk ilyen alkalmazást. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * Hozzon létre egy virtuális hálózat és alhálózat
+> * Virtuális hálózat és alhálózat létrehozása
 > * Hozzon létre egy nyilvános IP-címet
-> * Előtér-virtuális gép létrehozása
+> * Előtérbeli virtuális gép létrehozása
 > * Biztonságos hálózati adatforgalom
-> * Háttér-virtuális gép létrehozása
+> * Háttérbeli virtuális gép létrehozása
 
-Az oktatóanyag végrehajtása során létrehozott ezeket az erőforrásokat látható:
 
-![Két alhálózat virtuális hálózat](./media/tutorial-virtual-network/networktutorial.png)
 
-- *myVNet* – a virtuális hálózat, amely a virtuális gépek használatával kommunikálnak egymással, és az interneten.
-- *myFrontendSubnet* – az alhálózati *myVNet* az előtér-erőforrások használják.
-- *myPublicIPAddress* -használt nyilvános IP-cím elérésére *myFrontendVM* az internetről.
-- *myFrontentNic* -által használt hálózati illesztőt *myFrontendVM* kommunikálni *myBackendVM*.
-- *myFrontendVM* – az internet közötti kommunikációra használja a virtuális gép és *myBackendVM*.
-- *myBackendNSG* – a hálózati biztonsági csoportot, amely a közötti kommunikáció a *myFrontendVM* és *myBackendVM*.
-- *myBackendSubnet* -a társított alhálózati *myBackendNSG* és a háttér-erőforrások használják.
-- *myBackendNic* -által használt hálózati illesztőt *myBackendVM* kommunikálni *myFrontendVM*.
+Ez az oktatóanyag AzureRM.Compute 4.3.1 verziója szükséges, vagy később. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable AzureRM.Compute`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket.
+
+## <a name="vm-networking-overview"></a>Virtuális gépek hálózatkezelése – áttekintés
+
+Az Azure virtuális hálózatok biztonságos hálózati kapcsolatokat tesznek lehetővé virtuális gépek, az internet és más Azure-szolgáltatások (pl. az Azure SQL Database-adatbázis) között. A virtuális hálózatok alhálózatnak nevezett logikai szegmensekre oszthatók. Az alhálózatok segítségével szabályozható a hálózati forgalom, valamint biztonsági határként is használhatók. Egy virtuális géphez a telepítéskor általában egy virtuális hálózati adapter tartozik, amely egy alhálózathoz csatlakozik.
+
+Az oktatóanyag végrehajtása során a következő erőforrások jönnek létre:
+
+![Virtuális hálózat két alhálózattal](./media/tutorial-virtual-network/networktutorial.png)
+
+- *myVNet* – Az a virtuális hálózat, amely segítségével a virtuális gépek kommunikálnak egymással és az internettel.
+- *myFrontendSubnet* – A *myVNet* előtérbeli erőforrásai által használt alhálózat.
+- *myPublicIPAddress* – Az internet felől a *myFrontendVM* elérésére használt nyilvános IP-cím.
+- *myFrontentNic* – A *myFrontendVM* által a *myBackendVM* virtuális géppel való kommunikációra használt hálózati adapter.
+- *myFrontendVM* – Az internet és a *myBackendVM* közötti kommunikációra használt virtuális gép.
+- *myBackendNSG* – A *myFrontendVM* és a *myBackendVM* közti kommunikációt szabályozó hálózati biztonsági csoport.
+- *myBackendSubnet* – *myBackendNSG* csoporthoz társított, és a háttérbeli erőforrások által használt alhálózat.
+- *myBackendNic* – A *myBackendVM* által *myFrontendVM* virtuális géppel való kommunikációra használt hálózati adapter.
 - *myBackendVM* -1433-as port használatával kommunikálni a virtuális gépi *myFrontendVM*.
 
-Az oktatóanyaghoz az Azure PowerShell-modul 3.6-os vagy újabb verziójára lesz szükség. A verzió megkereséséhez futtassa a következőt: `Get-Module -ListAvailable AzureRM`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket.
 
-## <a name="vm-networking-overview"></a>VM-hálózat – áttekintés
+## <a name="create-a-virtual-network-and-subnet"></a>Virtuális hálózat és alhálózat létrehozása
 
-Egy Azure virtuális hálózatot a virtuális gépek, az internetes és más Azure-szolgáltatások például az Azure SQL-adatbázis között a biztonságos hálózati kapcsolatok engedélyezése. Virtuális hálózatok logikai szegmensekben – ún alhálózatok osztható. Alhálózatok folyamatábrán hálózati és biztonsági határaként szolgálnak. A virtuális gép telepítésekor általában tartalmazza a virtuális hálózati adaptert, alhálózat van csatolva.
-
-## <a name="create-a-virtual-network-and-subnet"></a>Hozzon létre egy virtuális hálózat és alhálózat
-
-Ebben az oktatóanyagban egy virtuális hálózaton, két alhálózattal jön létre. A webalkalmazás üzemeltetéséhez előtér-alhálózatot, és egy adatbázis-kiszolgálót futtató háttér-alhálózatot.
+Ebben az oktatóanyagban egy virtuális hálózatot hozunk létre két alhálózattal, egy előtérbeli alhálózatot egy webalkalmazás üzemeltetéséhez, és egy háttérbeli alhálózatot egy adatbázis-kiszolgáló üzemeltetéséhez.
 
 Virtuális hálózat létrehozása előtt hozzon létre egy erőforrás csoport használatával [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup). Az alábbi példa létrehoz egy erőforráscsoportot *myRGNetwork* a a *EastUS* helye:
 
@@ -94,13 +97,13 @@ $vnet = New-AzureRmVirtualNetwork `
   -Subnet $frontendSubnet, $backendSubnet
 ```
 
-Ezen a ponton a hálózati létrehozott és szegmentált két alhálózat, egy az előtér-szolgáltatásokat, és egy másikat a háttér-szolgáltatásaihoz. A következő szakaszban virtuális gépek létrehozása és ezek alhálózatok csatlakozik.
+Ekkorra létrehoztunk egy hálózatot, és két alhálózatra osztottuk, amelyek közül az egyik az előtérbeli szolgáltatásokhoz, a másik a háttérbeli szolgáltatásokhoz tartozik. A következő szakaszban a virtuális gépeket hozzuk létre, majd csatlakoztatjuk azokat az alhálózatokhoz.
 
 ## <a name="create-a-public-ip-address"></a>Hozzon létre egy nyilvános IP-címet
 
-A nyilvános IP-cím lehetővé teszi, hogy az Azure-erőforrások elérhetővé az interneten. A kiosztási módszer a nyilvános IP-címet, dinamikus vagy statikus konfigurálhatók. Alapértelmezés szerint egy nyilvános IP-cím dinamikusan történik. Dinamikus IP-címek van kiadva, ha egy virtuális gép felszabadítása. Ennek következtében az IP-cím módosítása bármely, amely tartalmazza a virtuális gép felszabadítás művelet során.
+A nyilvános IP-cím lehetővé teszi, hogy az Azure-erőforrások elérhetők legyenek az interneten. A nyilvános IP-cím kiosztási módszere konfigurálható dinamikusnak vagy statikusnak. Alapértelmezés szerint a rendszer dinamikusan osztja ki a nyilvános IP-címeket. A dinamikus IP-címek az egyes virtuális gépek felszabadításakor felszabadulnak. Ennek következtében az IP-cím minden, virtuálisgép-felszabadítást is tartalmazó művelet során módosul.
 
-A kiosztási módszer statikus, amely biztosítja, hogy az IP-cím egy megszüntetett állapot esetén egy virtuális géphez hozzárendelt maradnak állítható be. A statikusan lefoglalt IP-cím használata esetén nem adható meg az IP-címet saját magát. Ehelyett az történik a rendelkezésre álló címek készletét.
+A kiosztási módszer átállítható statikusra. Ez biztosítja, hogy a virtuális géphez hozzárendelve maradjon az IP-cím felszabadított állapotában is. A statikusan kiosztott IP-cím használata esetén nem adható meg az IP-cím. Ehelyett a rendszer osztja ki az IP-címet az elérhető címek készletéből.
 
 Hozzon létre egy nyilvános IP-cím nevű *myPublicIPAddress* használatával [New-AzureRmPublicIpAddress](/powershell/module/azurerm.network/new-azurermpublicipaddress):
 
@@ -114,7 +117,7 @@ $pip = New-AzureRmPublicIpAddress `
 
 A - AllocationMethod paramétert is módosíthatja `Static` egy statikus nyilvános IP-címet hozzárendelni.
 
-## <a name="create-a-front-end-vm"></a>Előtér-virtuális gép létrehozása
+## <a name="create-a-front-end-vm"></a>Előtérbeli virtuális gép létrehozása
 
 A virtuális gépek számára egy virtuális hálózatot virtuális hálózati kártya (NIC) szükséges. Hozzon létre egy hálózati adapter által használt [New-AzureRmNetworkInterface](/powershell/module/azurerm.network/new-azurermnetworkinterface):
 
@@ -122,7 +125,7 @@ A virtuális gépek számára egy virtuális hálózatot virtuális hálózati k
 $frontendNic = New-AzureRmNetworkInterface `
   -ResourceGroupName myRGNetwork `
   -Location EastUS `
-  -Name myFrontendNic `
+  -Name myFrontend `
   -SubnetId $vnet.Subnets[0].Id `
   -PublicIpAddressId $pip.Id
 ```
@@ -133,53 +136,33 @@ $frontendNic = New-AzureRmNetworkInterface `
 $cred = Get-Credential
 ```
 
-A virtuális gépek létrehozása [New-AzureRmVMConfig](/powershell/module/azurerm.compute/new-azurermvmconfig), [Set-AzureRmVMOperatingSystem](/powershell/module/azurerm.compute/set-azurermvmoperatingsystem), [Set-AzureRmVMSourceImage](/powershell/module/azurerm.compute/set-azurermvmsourceimage), [Set-AzureRmVMOSDisk](/powershell/module/azurerm.compute/set-azurermvmosdisk), [Hozzáadása AzureRmVMNetworkInterface](/powershell/module/azurerm.compute/add-azurermvmnetworkinterface), és [új AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm):
+A virtuális gépek létrehozása [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm).
 
 ```azurepowershell-interactive
-$frontendVM = New-AzureRmVMConfig `
-    -VMName myFrontendVM `
-    -VMSize Standard_D1
-$frontendVM = Set-AzureRmVMOperatingSystem `
-    -VM $frontendVM `
-    -Windows `
-    -ComputerName myFrontendVM `
-    -Credential $cred `
-    -ProvisionVMAgent `
-    -EnableAutoUpdate
-$frontendVM = Set-AzureRmVMSourceImage `
-    -VM $frontendVM `
-    -PublisherName MicrosoftWindowsServer `
-    -Offer WindowsServer `
-    -Skus 2016-Datacenter `
-    -Version latest
-$frontendVM = Set-AzureRmVMOSDisk `
-    -VM $frontendVM `
-    -Name myFrontendOSDisk `
-    -DiskSizeInGB 128 `
-    -CreateOption FromImage `
-    -Caching ReadWrite
-$frontendVM = Add-AzureRmVMNetworkInterface `
-    -VM $frontendVM `
-    -Id $frontendNic.Id
 New-AzureRmVM `
-    -ResourceGroupName myRGNetwork `
-    -Location EastUS `
-    -VM $frontendVM
+   -Credential $cred `
+   -Name myFrontend `
+   -PublicIpAddressName myPublicIPAddress `
+   -ResourceGroupName myRGNetwork `
+   -Location "EastUS" `
+   -Size Standard_D1 `
+   -SubnetName myFrontendSubnet `
+   -VirtualNetworkName myVNet
 ```
 
 ## <a name="secure-network-traffic"></a>Biztonságos hálózati adatforgalom
 
-A hálózati biztonsági csoport (NSG) egy biztonsági szabályokból álló listát tartalmaz, amelyek engedélyezik vagy megtagadják a hálózati forgalmat az Azure-alapú virtuális hálózatokhoz (VNet-ekhez) csatlakozó erőforrásoknak. Lehet, hogy az NSG-k társított alhálózat vagy az egyes hálózati adapterek. Amikor egy NSG-t egy adott hálózati csatoló kapcsolódik, csak a kapcsolódó virtuális gép vonatkozik. Ha az NSG-t hozzárendelik egy alhálózathoz, a szabályok érvényesek lesznek az alhálózathoz csatlakozó összes erőforrásra.
+A hálózati biztonsági csoport (NSG) egy biztonsági szabályokból álló listát tartalmaz, amelyek engedélyezik vagy megtagadják a hálózati forgalmat az Azure-alapú virtuális hálózatokhoz (VNet-ekhez) csatlakozó erőforrásoknak. Az NSG-k társíthatók alhálózatokhoz vagy egyedi hálózati adapterekhez. Amikor egy NSG-t egy hálózati adapterhez társít, az csak a társított virtuális gépre vonatkozik. Ha az NSG-t hozzárendelik egy alhálózathoz, a szabályok érvényesek lesznek az alhálózathoz csatlakozó összes erőforrásra.
 
-### <a name="network-security-group-rules"></a>Hálózati biztonsági csoportszabályok
+### <a name="network-security-group-rules"></a>Hálózat biztonsági csoportok szabályai
 
-NSG-szabályok határozza meg, amelyben forgalom engedélyezett vagy megtagadott hálózati portok. A szabályok lehetnek forrás és cél IP-címtartományok, hogy az egyes rendszerek vagy az alhálózatok közötti forgalmat szabályozott. NSG-szabályok terjednie a prioritással (1 – és 4096). Szabályok prioritási sorrendben értékeli ki a rendszer. A 100 prioritással kiértékeli előtt szabály 200 prioritással.
+Az NSG-szabályok határozzák meg azokat a hálózatkezelési portokat, amelyeken engedélyezett vagy tiltott a forgalom. A szabályok között szerepelhetnek forrás és cél IP-címtartományok, így szabályozható az adatforgalom adott rendszerek vagy alhálózatok között. Az NSG-szabályok között megadható a prioritás is (1–4096). A szabályokat a rendszer prioritás szerinti sorrendben értékeli. A 100-as prioritású szabályt a rendszer a 200-as prioritású szabály előtt ellenőrzi.
 
 Minden NSG tartalmaz egy alapértelmezett szabálykészletet. Az alapértelmezett szabályokat nem lehet törölni, de mivel a legalacsonyabb prioritást rendelték hozzájuk, a létrehozott szabályok felülbírálhatják azokat.
 
-- **Virtuális hálózati** - származó forgalmat, és a befejezési egy virtuális hálózat bejövő és kimenő irányban is.
-- **Internet** – a kimenő forgalom engedélyezve van, de a bejövő forgalmat blokkol.
-- **Terheléselosztó** -engedélyezése Azure terheléselosztó számára, hogy megvizsgálja a virtuális gépek és a szerepkörpéldányok állapotát. Ha nem használ elosztott terhelésű készlet, ez a szabály lehet felülbírálni.
+- **Virtuális hálózat** – A virtuális hálózatból kiinduló és oda érkező forgalom a bejövő és kimenő irányban is engedélyezve van.
+- **Internet** – A kimenő forgalom engedélyezett, de a bejövő forgalom le van tiltva.
+- **Terheléselosztó** – Engedélyezi az Azure terheléselosztója számára, hogy megvizsgálja a virtuális gépek és a szerepkörpéldányok állapotát. Ha nem terheléselosztásos készletet használ, ezt a szabályt felül lehet bírálni.
 
 ### <a name="create-network-security-groups"></a>Hálózati biztonsági csoportok létrehozása
 
@@ -254,7 +237,7 @@ $backendSubnetConfig = Set-AzureRmVirtualNetworkSubnetConfig `
 Set-AzureRmVirtualNetwork -VirtualNetwork $vnet
 ```
 
-## <a name="create-a-back-end-vm"></a>Háttér-virtuális gép létrehozása
+## <a name="create-a-back-end-vm"></a>Háttérbeli virtuális gép létrehozása
 
 A legegyszerűbb módja a háttér-virtuális gép létrehozása az ebben az oktatóanyagban az SQL-kiszolgálói lemezkép használatával. Ez az oktatóanyag csak az adatbázis-kiszolgáló a virtuális Gépet hoz létre, de nem ismertetik az adatbázis elérése közben.
 
@@ -264,7 +247,7 @@ Hozzon létre *myBackendNic*:
 $backendNic = New-AzureRmNetworkInterface `
   -ResourceGroupName myRGNetwork `
   -Location EastUS `
-  -Name myBackendNic `
+  -Name myBackend `
   -SubnetId $vnet.Subnets[1].Id
 ```
 
@@ -274,52 +257,31 @@ $backendNic = New-AzureRmNetworkInterface `
 $cred = Get-Credential
 ```
 
-Hozzon létre *myBackendVM*:
+Hozzon létre *myBackendVM*.
 
 ```azurepowershell-interactive
-$backendVM = New-AzureRmVMConfig `
-  -VMName myBackendVM `
-  -VMSize Standard_D1
-$backendVM = Set-AzureRmVMOperatingSystem `
-  -VM $backendVM `
-  -Windows `
-  -ComputerName myBackendVM `
-  -Credential $cred `
-  -ProvisionVMAgent `
-  -EnableAutoUpdate
-$backendVM = Set-AzureRmVMSourceImage `
-  -VM $backendVM `
-  -PublisherName MicrosoftSQLServer `
-  -Offer SQL2016SP1-WS2016 `
-  -Skus Enterprise `
-  -Version latest
-$backendVM = Set-AzureRmVMOSDisk `
-  -VM $backendVM `
-  -Name myBackendOSDisk `
-  -DiskSizeInGB 128 `
-  -CreateOption FromImage `
-  -Caching ReadWrite
-$backendVM = Add-AzureRmVMNetworkInterface `
-  -VM $backendVM `
-  -Id $backendNic.Id
 New-AzureRmVM `
-  -ResourceGroupName myRGNetwork `
-  -Location EastUS `
-  -VM $backendVM
+   -Credential $cred `
+   -Name myBackend `
+   -ImageName "MicrosoftSQLServer:SQL2016SP1-WS2016:Enterprise:latest" `
+   -ResourceGroupName myRGNetwork `
+   -Location "EastUS" `
+   -SubnetName myFrontendSubnet `
+   -VirtualNetworkName myVNet
 ```
 
 A használt kép SQL Server telepítve van, de nem szerepel ebben az oktatóanyagban. Azt mutatjuk be, hogyan konfigurálhatja a virtuális gépek webes forgalmat fog kezelni, hogy adatbázis kezelheti a virtuális gépek tartalmazza.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban létre és a védett virtuális gépek kapcsolatos Azure-hálózatok. 
+Ebben az oktatóanyagban virtuális gépekhez csatolva hozta létre és biztosította az Azure-hálózatokat. 
 
 > [!div class="checklist"]
-> * Hozzon létre egy virtuális hálózat és alhálózat
+> * Virtuális hálózat és alhálózat létrehozása
 > * Hozzon létre egy nyilvános IP-címet
-> * Előtér-virtuális gép létrehozása
+> * Előtérbeli virtuális gép létrehozása
 > * Biztonságos hálózati adatforgalom
-> * Háttér-virtuális gép létrehozása
+> * Háttérbeli virtuális gép létrehozása
 
 A következő oktatóanyag az Azure backup használatával virtuális gépek védelmének biztosítása adatok figyelésével kapcsolatos további továbblépés.
 

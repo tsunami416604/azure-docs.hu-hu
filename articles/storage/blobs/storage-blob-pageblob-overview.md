@@ -8,11 +8,11 @@ ms.service: storage
 ms.topic: article
 ms.date: 01/10/2018
 ms.author: wielriac
-ms.openlocfilehash: 3834fea5961a9c69243bb8e852631585c26a103f
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 56e8c4c9f7ab9b40a210f284960f959a437a4e20
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="unique-features-of-azure-page-blobs"></a>Az Azure Lapblobokat egyedi jellemzői
 
@@ -117,7 +117,7 @@ foreach (PageRange range in pageRanges)
 #### <a name="leasing-a-page-blob"></a>Oldalakra vonatkozó Blob lízing
 A bérleti Blob művelet megállapítja és blob zárolását kezeli az írási és törlési műveletek. Ez a művelet akkor hasznos, forgatókönyvekben, ahol oldalakra vonatkozó blob annak érdekében, hogy csak egy ügyfél egyszerre írhat a blob több ügyfél is hozzáférnek. Azure-lemezeket, például használja. Ez lízing mechanizmus annak érdekében, hogy a lemez csak egy virtuális kezeli. A Zárolás időtartama 15 – 60 másodperc is lehet, vagy lehet végtelen. A dokumentációban [Itt](/rest/api/storageservices/lease-blob) további részleteket.
 
-> A következő hivatkozás használatával beolvasása [Kódminták](/resources/samples/?service=storage&term=blob&sort=0) számos egyéb alkalmazás forgatókönyvek esetén. 
+> A következő hivatkozás használatával beolvasása [Kódminták](/resources/samples/?service=storage&term=blob&sort=0 ) számos egyéb alkalmazás forgatókönyvek esetén. 
 
 Mellett részletes REST API-k lapblobokat azt is megadhatja, megosztott elérési, a tartósság és a fokozott biztonságot. Bemutatjuk, hogy részletesebben a következő bekezdésekben ezek előnyeit. 
 

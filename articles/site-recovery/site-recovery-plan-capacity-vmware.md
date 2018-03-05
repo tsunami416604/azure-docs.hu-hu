@@ -6,13 +6,13 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 02/07/2018
+ms.date: 02/27/2018
 ms.author: rayne
-ms.openlocfilehash: 02f5a7270b5d8b7657a585fce99946cff8ed8d67
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: dbaf1e29fbf4be8ef9432842b7ea4d6511b21cbb
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="plan-capacity-and-scaling-for-vmware-replication-with-azure-site-recovery"></a>Kapacitás és a VMware-replikáció az Azure Site Recovery méretezés tervezése
 
@@ -20,7 +20,7 @@ Ez a cikk segítségével mérje fel, jelent a kapacitástervezés és a mérete
 
 ## <a name="how-do-i-start-capacity-planning"></a>Hogyan kezdhetem meg, hogy a kapacitástervezés?
 
-A replikálási környezetre vonatkozó információt parancsprogram futtatásával gyűjtsön a [Azure Site Recovery telepítési Planner](https://aka.ms/asr-deployment-planner-doc) a VMware-replikáció. [További](site-recovery-deployment-planner.md) erről az eszközről. Lesz gyűjtse össze a kompatibilis és nem kompatibilis virtuális gépekhez, virtuális gépenként lemezek kapcsolatos információkat, és lemezenként kavarog adatokat. Az eszköz is magában foglalja az sávszélességre van szükség, és az Azure-infrastruktúra szükséges sikeres replikáció és a teszt feladatátvételhez.
+A replikálási környezetre vonatkozó információt parancsprogram futtatásával gyűjtsön a [Azure Site Recovery telepítési Planner](https://aka.ms/asr-deployment-planner-doc) a VMware-replikáció. [További](site-recovery-deployment-planner.md) erről az eszközről. Lesz gyűjtse össze a kompatibilis és nem kompatibilis virtuális gépekhez, virtuális gépenként lemezek kapcsolatos információkat, és lemezenként kavarog adatokat. Emellett az eszköz teljesíti a hálózati sávszélességre vonatkozó követelményeket, és lefedi a sikeres replikációhoz és feladatátvételi teszthez szükséges Azure-infrastruktúrát.
 
 ## <a name="capacity-considerations"></a>A kapacitás kapcsolatos szempontok
 
@@ -85,7 +85,7 @@ Használata után a [a központi telepítés Planner eszköz](site-recovery-depl
 2. Kattintson a beépülő modul **Tulajdonságok módosítása** elemére.
 
     ![Képernyőfelvétel az Azure Backup szolgáltatás MMC beépülő modul lehetőséget tulajdonságainak módosítása](./media/site-recovery-vmware-to-azure/throttle1.png)
-3. Az a **sávszélesség-szabályozási** lapon jelölje be **engedélyezi az internetes sávszélesség szabályozásának a biztonsági mentési műveleteknél**. Állítsa be a munkaórákra és a munkaórákon kívüli időre. 512 kB/s és 102 MB/s közötti értéket adhat meg.
+3. Az a **sávszélesség-szabályozási** lapon jelölje be **engedélyezi az internetes sávszélesség szabályozásának a biztonsági mentési műveleteknél**. Állítsa be a munkaórákra és a munkaórákon kívüli időre. Érvényes tartományt és 1023 Mbit/s másodpercenként 512 kbit/s közötti használhatók.
 
     ![Képernyőfelvétel az Azure biztonsági mentés tulajdonságai párbeszédpanel](./media/site-recovery-vmware-to-azure/throttle2.png)
 
