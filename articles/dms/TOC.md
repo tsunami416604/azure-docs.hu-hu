@@ -18,4 +18,5 @@
 ## [Díjszabás](https://aka.ms/dms-pricing)
 ## [Előfeltételek áttekintése](pre-reqs.md)
 ## [GYIK](faq.md)
+## [Szolgáltatási hírek](https://azure.microsoft.com/en-us/updates/?product=database-migration)
 
