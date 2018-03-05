@@ -194,25 +194,15 @@
   items:
     - name: Gyakori kérdések
       href: frequently-asked-questions.md
-    - name: Ismert problémák és hibaelhárítás
+    - name: Problémák és hibaelhárítás
       href: known-issues-and-troubleshooting-guide.md
-    - name: Csoportos adatelemzési folyamat dokumentációja
-      href: ../team-data-science-process/overview.md
-    - name: Adatelemzési virtuális gép dokumentációja
-      href: ../data-science-virtual-machine/overview.md
+    - name: Támogatás és betanítás
+      href: support-for-aml-services.md
     - name: Azure-ütemterv
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Díjszabás
-      href: 'https://azure.microsoft.com/pricing/details/machine-learning-services/'
-    - name: MSDN-fórum
-      href: 'https://social.msdn.microsoft.com/Forums/windowsdesktop/home?forum=MachineLearning'
-    - name: Stack Overflow
-      href: 'https://stackoverflow.com/questions/tagged/azure-machine-learning'
-    - name: Videók
-      href: 'https://azure.microsoft.com/resources/videos/index/?services=machine-learning'
-    - name: Visszajelzési fórum
-      href: 'https://feedback.azure.com/forums/257792-machine-learning'
+      href: aml-services-pricing.md
     - name: Régiónkénti elérhetőség
       href: 'https://azure.microsoft.com/regions/services/'
-    - name: Támogatási lehetőségek
-      href: 'https://azure.microsoft.com/support/options/'
+    - name: Csoportos adatelemzési folyamat
+      href: ../team-data-science-process/overview.md

@@ -4,10 +4,9 @@
 ## [Bash – Rövid útmutató](quickstart.md)
 ## [PowerShell – Rövid útmutató](quickstart-powershell.md)
 
-# Alapelvek
+# Funkciók és eszközök
 ## [Bash – Funkciók és eszközök](features.md)
 ## [PowerShell – Funkciók és eszközök](features-powershell.md)
-## [Korlátozások](limitations.md)
 
 # Használati útmutató
 ## [Bash – Tároló megőrzése](persisting-shell-storage.md)
@@ -20,7 +19,7 @@
 
 # [Cloud Shell beágyazása](embed-cloud-shell.md)
 
-# [hibaelhárítással](troubleshooting.md)
+# [Hibaelhárítás és korlátozások](troubleshooting.md)
 
 # Referencia
 ## [Azure CLI](/cli/azure)

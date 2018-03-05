@@ -12,14 +12,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/06/2018
+ms.date: 03/02/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: f93fc95d6bed517cae3adb706f690941f97c366e
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 25ef6ba9ff105486f39cee8b6181a8c63e64ec13
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="datacenter-integration-considerations-for-azure-stack-integrated-systems"></a>Integrált Azure verem rendszerek Datacenter integrációs szempontjai
 Ha érdekli, egy integrált Azure verem rendszerben, tisztában kell lennie egy központi telepítés, és hogy a rendszer hogyan illeszkedik az Adatközpont a fő szempontokat. Ez a cikk a magas szintű áttekintést nyújt az ezeket a szempontokat segítséget nyújtanak az Azure-verem többcsomópontos rendszer fontos infrastruktúra döntéseket. Ezeket a szempontokat megértését megkönnyíti módon működik-e az OEM hardver gyártójánál azok telepítése Azure verem az Adatközpont.  
@@ -30,6 +30,15 @@ Ha érdekli, egy integrált Azure verem rendszerben, tisztában kell lennie egy 
 Azure verem központi telepítéséhez adja meg a tervezési információkat a megoldás szolgáltató telepítési nyissa meg gyorsan és problémamentesen lezajlott folyamat megkezdése előtt kell. Az információk tartományok szükséges hálózati, biztonsági és a legtöbb fontos döntés, amelyre szüksége lehet a Tudásbázis számos különböző területein és döntéshozók azonosító adatok között. Emiatt előfordulhat, hogy van bekérésére személyeket a szervezetében, több csapat, és győződjön meg arról, hogy minden szükséges információ készen áll a telepítés megkezdése előtt. Forduljon a hardver forgalmazójával ezen információk összegyűjtése közben tanácsot hasznos lehet a döntések meghozatala során előfordulhat, hogy rendelkeznek segítséget.
 
 Vizsgálja, és a szükséges információk gyűjtésére, miközben szükség lehet néhány központi telepítés előtti konfigurációs módosításokat végezni a hálózati környezetben. Ez magában foglalhatja foglalása az IP-címteret a útválasztók, kapcsolók és a kapcsolatot az új Azure verem megoldás kapcsolók előkészítése tűzfalak konfigurálása az Azure verem megoldásban. Ügyeljen arra, hogy a tulajdonos terület szakértő legfeljebb vonalas segítséget nyújtanak az tervezés rendelkezik.
+
+## <a name="capacity-planning-considerations"></a>Kapacitástervezésének szempontjai
+Egy Azure beszerzési verem megoldás kiértékelésekor hardver konfigurációs beállításokkal kell tenni amely közvetlen hatással vannak az Azure-verem megoldás teljes kapacitásának. Ezek közé tartozik a CPU, a memória sűrűség, a tárolási konfigurációt és a teljes megoldás méretezési (pl. kiszolgálók száma) klasszikus kiválasztása. Egy hagyományos virtualizálási megoldás eltérően ezeket az összetevőket szükséges használható kapacitás egyszerű számtani nem vonatkozik. Az első ilyen ok az, hogy Azure verem tervezett-e magát a megoldáson infrastruktúra vagy felügyeleti összetevőinek üzemeltetésére. A második oka, hogy a megoldás kapacitás némelyike van fenntartva elősegítésére rugalmassági; a szoftvert, hogy a lehető legkevesebb bérlői munkaterheléseket fennakadás frissítése. 
+
+A [Azure verem kapacitás planner számolótábla](https://gallery.technet.microsoft.com/Azure-Stack-Capacity-24ccd822) segít létrehozni küldjenek vonatkozó kétféleképpen kapacitásának tervezési döntések: vagy az egy hardver ajánlat kiválasztásával és az erőforrások vagy kombinációját megfelelően tett kísérlet megadásával a munkaterhelés Azure a verem célja, hogy a hardver SKU által támogatott megtekintéséhez futtassa. Végezetül a táblázat célja Azure verem tervezési és konfigurációs kapcsolódik egy útmutatót a döntések meghozatala érdekében. 
+
+A táblázat nem kívánják a saját vizsgálati és elemzési helyettesíti.  A Microsoft vállal felelősséget vagy rájuk kifejezett vagy vélelmezett felelősséget, a megadott belül a táblázat adatai.
+
+
 
 ## <a name="management-considerations"></a>Eszközkezeléssel kapcsolatos szempontok
 Azure verem rendszer lezárt, ahol az infrastruktúra zárolva van az egy engedélyek és a hálózati szempontjából. Hálózati hozzáférés-vezérlési listák (ACL) minden nem hitelesített bejövő forgalom és az összes szükségtelen kommunikációs infrastruktúra összetevői közötti blokkolása érvényesek. Így a jogosulatlan felhasználók is hozzáférhetnek a rendszerhez.
@@ -75,7 +84,7 @@ Tervezze meg az Azure-verem névtér, különösen a régió nevét és külső 
 
 A következő táblázat összefoglalja a tartományi névhasználati döntéseket.
 
-| Név | Leírás | 
+| Name (Név) | Leírás | 
 | -------- | ------------- | 
 |Régió neve | Az első Azure verem terület neve. Ez a név a nyilvános virtuális IP-címek (VIP), amely Azure verem intelligens módon kezeli az FQDN részeként használatos. A terület neve általában egy fizikai hely azonosítója, például egy adatközpont helye lesz. | 
 | Külső tartomány neve | A tartománynévrendszer (DNS) zóna neve kívülre irányuló virtuális IP-címmel rendelkező végpontokon. Az FQDN használatos a nyilvános virtuális IP-címmel. | 
@@ -121,7 +130,7 @@ A hibrid kapcsolat fontos figyelembe kell venni, hogy milyen típusú központi 
  
 A következő táblázat összefoglalja a hibrid kapcsolat forgatókönyveket, az informatikai szakemberek, hátrányait és használati eseteket.
 
-| Eset | Csatlakozási módszer | Informatikai szakemberek | Hátrányok | A jó |
+| Forgatókönyv | Csatlakozási módszer | Informatikai szakemberek | Hátrányok | A jó |
 | -- | -- | --| -- | --|
 | Az egyszeri bérlői Azure verem, intranet központi telepítés | Kimenő forgalmat kezelő NAT | Gyorsabb átvitelt jobb sávszélességet. Egyszerű megvalósítani; nem szükséges átjárók. | A forgalom nem titkosított; Nincs elkülönítés vagy a titkosítási túl a TOR. | Nagyvállalati környezetben, ahol egyetlen bérlő számára egyaránt megbízhatónak számítanak.<br><br>A vállalatok, amelyek az Azure-bA Azure ExpressRoute-kapcsolatcsoportot. |
 | Több-bérlős Azure verem intranetes központi telepítés | Telephelyek közötti VPN | A bérlői hálózatok érkező forgalom cél biztonságos. | Pont-pont VPN-alagúton korlátozza a sávszélesség.<br><br>A virtuális hálózat és a VPN-eszköz a cél hálózati átjáró szükséges. | Nagyvállalati környezetben, ahol az egyes bérlői forgalom védetté kell tennie a többi bérlőtől. |
@@ -184,7 +193,7 @@ A másodlagos helyre replikálja az adatokat, és az alkalmazás feladatátvéte
 > [!IMPORTANT]
 > Integrált rendszerek eredeti kiadásának az infrastruktúra-szolgáltatási virtuális gép vendég szintű védelmet technológiákat lesz támogatott. Az alapul szolgáló infrastruktúra-kiszolgálók nem telepíthet ügynököket.
 
-## <a name="learn-more"></a>További információ
+## <a name="learn-more"></a>Részletek
 
 - További információ a használati esetek, megvásárlásáról, partnerek és OEM hardverszállítók: a [Azure verem](https://azure.microsoft.com/overview/azure-stack/) termék oldalát.
 - A terv és a földrajzi rendelkezésre állása információt Azure verem integrált rendszerek, tekintse meg a: [Azure verem: Azure kiterjesztése](https://azure.microsoft.com/resources/azure-stack-an-extension-of-azure/). 
