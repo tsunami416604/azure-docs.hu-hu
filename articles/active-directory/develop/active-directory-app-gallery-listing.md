@@ -1,6 +1,6 @@
 ---
-title: "Az alkalmazást az Azure Active Directory alkalmazáskatalógusában listázása"
-description: "Hogyan listázhat egy alkalmazás, amely támogatja az egyszeri bejelentkezés az Azure Active Directory-katalógus |} A Microsoft Azure"
+title: "Az alkalmazást az Azure Active Directory alkalmazáskatalógusában felsoroló |} Microsoft Docs"
+description: "Hogyan lehet egy alkalmazás, amely támogatja az egyszeri bejelentkezés az Azure Active Directory-alkalmazásgyűjtemény listájára"
 services: active-directory
 documentationcenter: dev-center-name
 author: bryanla
@@ -15,63 +15,65 @@ ms.workload: identity
 ms.date: 01/09/2018
 ms.author: bryanla
 ms.custom: aaddev
-ms.openlocfilehash: feb09aa8f8e22ad6fbda6a490d251c500bedf3ee
-ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
+ms.openlocfilehash: 502fb555bd3b381c9be0ff04e210cc07f9bf6cd8
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 02/28/2018
 ---
-# <a name="listing-your-application-in-the-azure-active-directory-application-gallery"></a>Az alkalmazást az Azure Active Directory alkalmazáskatalógusában listázása
+# <a name="list-your-application-in-the-azure-active-directory-application-gallery"></a>Az alkalmazás szerepeltetése az Azure Active Directory alkalmazáskatalógusában
 
 
-##  <a name="what-is-azure-ad-app-gallery"></a>Mi az Azure AD-alkalmazásgyűjtemény?
+##  <a name="what-is-the-azure-ad-application-gallery"></a>Mi az az Azure AD application gallery?
 
-Az Azure AD egy olyan felhőalapú identitás-szolgáltatás. [Az Azure AD-alkalmazásgyűjtemény](https://azure.microsoft.com/marketplace/active-directory/all/) egy közös tároló, ahol egyszeri bejelentkezést és a felhasználók átadása közzétett összes alkalmazás-összekötő. A kölcsönös identitás-szolgáltatóként az Azure AD használó ügyfelek különböző SaaS alkalmazás összekötők, amelyek itt közzétett keresi. Rendszergazda összekötő hozzáadja az alkalmazás-galériából és konfigurálja, és az egyszeri bejelentkezés és üzembe helyezési használni. Az Azure AD összes fő összevonási protokollokkal SAML 2.0, a OpenID Connect, a OAuth és a WS-Fed az egyszeri bejelentkezést támogatja. 
+Azure Active Directory (Azure AD) egy olyan felhőalapú identitás-szolgáltatás. A [az Azure AD application gallery](https://azure.microsoft.com/marketplace/active-directory/all/) a Azure piactér app Store-ból, ahol egyszeri bejelentkezést és a felhasználók átadása közzétett összes alkalmazás-összekötő. Az ügyfelek, akik használhatja az Azure Active Directory identitás-szolgáltatóként a különböző SaaS alkalmazás összekötők közzétett itt találja. A rendszergazdák adja hozzá az alkalmazásgyűjtemény összekötők konfigurálása és az összekötők használata egyszeri bejelentkezést és üzembe helyezését. Az Azure AD az egyszeri bejelentkezést, beleértve a SAML 2.0, az OpenID Connect, a OAuth és a WS-Fed összes fő összevonási protokollt támogatja. 
 
-## <a name="what-are-the-benefits-of-listing-the-application-in-the-gallery"></a>Milyen előnyökkel listázása az alkalmazás a katalógusban?
+## <a name="what-are-the-benefits-of-listing-an-application-in-the-gallery"></a>Milyen előnyökkel listázása egy alkalmazás a katalógusban?
 
-*  Adja meg a legjobban lehetséges egyszeri bejelentkezéses felhasználói élmény biztosítása az ügyfeleknek.
+*  Ügyfelek keresése a legjobb lehetséges egyszeri bejelentkezést.
 
-*  Az alkalmazás egyszerű és minimális konfigurációját.
+*  Az alkalmazás konfigurációja egyszerű és minimális. 
 
-*  Ügyfelek keresése az alkalmazás és megtalálható a gyűjteményben. 
+*  A gyors kereséséhez az alkalmazás a gyűjteményben.
 
-*  Minden ügyfél használhat ez az integráció Azure AD-SKU ingyenes, a Basic vagy a prémium szintű.
+*  Ingyenes, Basic, és az Azure AD Premium-ügyfelek ezt az integrációt is használja. 
 
-*  Lépés lépés konfigurációs-oktatóanyagban a kölcsönös ügyfelek esetén.
+*  Kölcsönös ügyfelek részletes konfigurációs oktatóanyag beolvasása. 
 
-*  A felhasználó-kiépítés engedélyezése ugyanahhoz az alkalmazáshoz tartozó SCIM használata.
+*  SCIM használó ügyfelek használható ugyanaz az alkalmazás telepítése.
 
 
-##  <a name="what-are-the-pre-requisites"></a>Mik azok a szükséges előfeltételek?
+##  <a name="prerequisites-implement-federation-protocol"></a>Előfeltételek: Megvalósítása összevonási protokoll
 
-Egy alkalmazás az Azure AD-katalógus listázásához, az alkalmazás első kell megvalósítania az Azure AD által támogatott összevonási protokollok egyikét. Olvassa el a feltételeket és kikötéseket, az Azure AD application gallery itt. Ha használ: 
+Az alkalmazás az Azure AD-alkalmazásgyűjtemény listázásához, először kell megvalósítani a következő összevonási protokollok, az Azure AD által támogatott. Olvassa el a feltételeket és kikötéseket, az Azure AD application gallery itt. 
 
-*   **OpenID Connect** – a több-bérlős alkalmazás létrehozása az Azure ad-ben, és végrehajtása [az Azure AD hozzájárulási keretrendszer](active-directory-integrating-applications.md#overview-of-the-consent-framework) az alkalmazáshoz. Így minden ügyfél biztosítani tudja az alkalmazás hozzájárul a bejelentkezési kérelem elküldése közös végpontot. Azt is szabályozhatja a felhasználói hozzáférést a felhasználónak a bérlő azonosítója és a felhasználó egyszerű megkapta a jogkivonatot a alapján. Az alkalmazás integrálja az Azure AD-val, kövesse a [fejlesztői útmutatás](active-directory-authentication-scenarios.md).
+*   **OpenID Connect**: a több-bérlős alkalmazás létrehozása az Azure ad-ben és a megvalósítását az [az Azure AD hozzájárulási keretrendszer](active-directory-integrating-applications.md#overview-of-the-consent-framework) az alkalmazáshoz. Így minden ügyfél biztosítani tudja az alkalmazás hozzájárul a bejelentkezési kérelem elküldése egy közös végpontot. Szabályozhatja a felhasználó hozzáférést a bérlő azonosítója és a felhasználói UPN megkapta a jogkivonatot a alapján. Az alkalmazás integrálja az Azure AD-val, hajtsa végre a [fejlesztő utasításokat](active-directory-authentication-scenarios.md).
 
-*   **SAML 2.0-s vagy a WS-Fed** – az alkalmazás egy olyan képességet, ehhez az SAML/WS-Fed SSO integráció SP vagy a kiállító terjesztési hely módban kell rendelkeznie. Bármely alkalmazás, amely támogatja az SAML 2.0 integrálható közvetlenül az Azure AD-bérlő használata a [egyéni alkalmazás hozzáadása utasításokat](../active-directory-saas-custom-apps.md).
+*   **SAML 2.0** vagy **WS-Fed**: a funkció a teendő az SAML/WS-Fed SSO integráció SP vagy a kiállító terjesztési hely módban rendelkeznie kell az alkalmazást. Ha az alkalmazás támogatja az SAML 2.0, integrálva közvetlenül az Azure AD-bérlő segítségével a [egyéni alkalmazás hozzáadása utasításokat](../active-directory-saas-custom-apps.md).
 
-*   **Egyszeri jelszó** – hozzon létre egy webalkalmazást, amely rendelkezik egy lap HTML-bejelentkezés konfigurálása [jelszó-alapú egyszeri bejelentkezést](../active-directory-appssoaccess-whatis.md). Egyszeri jelszó alapú is hívják jelszó vaulting, lehetővé teszi a felhasználói hozzáférés és a webes alkalmazásokhoz, amelyek nem támogatják az identitás-összevonási jelszavak kezeléséhez. Akkor célszerű is forgatókönyvek, ahol több felhasználó meg szeretné osztani ugyanazt a fiókot, például a szervezet közösségi app fiókokhoz. 
+*   **Egyszeri jelszó**: hozzon létre egy webalkalmazást, amely rendelkezik egy lap HTML-bejelentkezés konfigurálása [jelszó-alapú egyszeri bejelentkezést](../active-directory-appssoaccess-whatis.md). Egyszeri jelszó alapú is hívják jelszó vaulting, lehetővé teszi a felhasználói hozzáférés és a webes alkalmazásokhoz, amelyek nem támogatják az identitás-összevonási jelszavak kezeléséhez. Akkor célszerű is forgatókönyvek, amelyben több felhasználó meg szeretné osztani ugyanazt a fiókot, például a szervezet közösségi app fiókokhoz. 
 
-## <a name="process-for-submitting-the-request-in-the-portal"></a>A portál a kérelem elküldésekor folyamata
+## <a name="submit-the-request-in-the-portal"></a>Küldje el a kérést a portálon
 
-Miután ellenőrizte, hogy működik-e az alkalmazások integrálása az Azure ad-vel, szeretné-e a hozzáférési kérelem elküldeni a [alkalmazás hálózati Portal](https://microsoft.sharepoint.com/teams/apponboarding/Apps). Ha rendelkezik Office 365-fiókkal, használhatja, amelyek a bejelentkezés a portálra ellenkező esetben használja a Microsoft ID (Live ID, az Outlook, Hotmail stb.) használatát a bejelentkezéshez. A hozzáférés kéréséhez lásd a következő lap. Adja meg a beviteli mezőben szereplő üzleti indoklásának, majd kattintson a **hozzáférés kérése**. A csapat fogja az adatokat, és hozzáférést, a ennek megfelelően. Ezt követően jelentkezzen be a portálra, és küldje el a részletes kérést az alkalmazáshoz.
+Miután tesztelte, hogy működik-e az alkalmazások integrálása az Azure ad-vel, küldje el a hozzáférési kérelem a a [alkalmazás hálózati Portal](https://microsoft.sharepoint.com/teams/apponboarding/Apps). Ha rendelkezik Office 365-fiókkal, használja a portálhoz való bejelentkezéshez. Ha nem, jelentkezzen be Microsoft-fiókját (például az Outlook vagy a Hotmail) segítségével.
 
-Ha szembesülhetnek a hozzáférés a probléma, forduljon a [Azure AD SSO integrációs csoport](<mailto:SaaSApplicationIntegrations@service.microsoft.com>).
+Miután bejelentkezik, a következő lap jelenik meg. Adjon meg egy üzleti indoklását anélkül, a szövegmezőbe, majd válassza ki **hozzáférés kérése**. A csapat ellenőrzi, hogy az adatokat, és hozzáférést tud biztosítani ennek megfelelően. Ezt követően jelentkezzen be a portálra, és küldje el a részletes kérést az alkalmazáshoz.
+
+Ha hozzáférés probléma merül fel, lépjen kapcsolatba a [Azure AD SSO integrációs csoport](<mailto:SaaSApplicationIntegrations@service.microsoft.com>).
 
 ![Hozzáférési kérelem SharePoint-portál](./media/active-directory-app-gallery-listing/accessrequest.png)
 
 ## <a name="timelines"></a>Ütemtervek
     
-*   Listaelem SAML 2.0 és a WS-Fed alkalmazást a galéria - **7 – 10 nap**
+A folyamat egy SAML 2.0-s vagy a WS-Fed alkalmazás a katalógusban listázása ütemtervét 7 – 10 nap.
 
    ![Ütemterv a gyűjtemény SAML-alapú alkalmazást listázása](./media/active-directory-app-gallery-listing/timeline.png)
 
-*   Folyamat listázása az OpenID Connect alkalmazás azokat a galéria - **2-5 munkanapon**
+A folyamat a katalógusban OpenID Connect alkalmazás listázása ütemtervét 2-5 munkanapon.
 
    ![Ütemterv a gyűjtemény SAML-alapú alkalmazást listázása](./media/active-directory-app-gallery-listing/timeline2.png)
 
 ## <a name="escalations"></a>Azok következményeinek
 
-Az összes olyan dobja el az e-mailek [Azure AD SSO integrációs csoport](<mailto:SaaSApplicationIntegrations@service.microsoft.com>) és azt visszaszerezheti korábban MIKO.
+Bármely olyan, az e-mail küldése a [Azure AD SSO integrációs csoport](<mailto:SaaSApplicationIntegrations@service.microsoft.com>) és a lehető leghamarabb lesz válaszolunk.
 

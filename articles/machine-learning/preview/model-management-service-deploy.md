@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 01/03/2018
-ms.openlocfilehash: c5942bed5e171c23864ef3ee10665273e04640a6
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 9fbdb190e7c745000b358451c1a6e3058cb861fd
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="deploying-a-machine-learning-model-as-a-web-service"></a>A gépi tanulási modellek webszolgáltatásként telepítése
 
@@ -144,7 +144,7 @@ Hozzáadhat egy korábban regisztrált modellhez a jegyzékfájl argumentum hasz
 A képfájl beállítással, a jegyzék előtt hozunk létre hozhat létre. 
 
 ```
-az ml image create -n [image name] -manifest-id [the manifest ID]
+az ml image create -n [image name] --manifest-id [the manifest ID]
 ```
 
 Vagy a jegyzékfájl létrehozása, és egyetlen paranccsal lemezképet. 

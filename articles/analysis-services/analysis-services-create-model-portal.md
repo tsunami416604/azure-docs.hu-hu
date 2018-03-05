@@ -15,11 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 02/14/2018
 ms.author: owend
-ms.openlocfilehash: 038cfb72cfc98fdddaca6751b321c11066527e56
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: ff2f1dd89796a30d4e0fee0810ff45ff57f5f8bf
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="create-a-model-in-azure-portal"></a>A modell létrehozása Azure-portálon
 
@@ -27,15 +27,19 @@ Az Azure Analysis Services-webalkalmazás designer (előzetes verzió) Azure-por
 
 Ne feledje, a webes Designer **előzetes**. Új funkciók hozzáadott folyamatosan, kép, amíg a funkciók korlátozva. A speciális modell fejlesztéshez és teszteléshez érdemes használni a Visual Studio (SSDT) és az SQL Server Management Studio (SSMS).
 
-## <a name="prerequisites"></a>Előfeltételek
+## <a name="before-you-begin"></a>Előkészületek
 
 - Egy, a Standard vagy fejlesztői réteg Azure Analysis Services-kiszolgálóhoz. A webalkalmazás-tervezővel létrehozott új modellek DirectQuery, csak ezek a rétegek támogatja.
 - Egy Azure SQL Database, Azure SQL Data warehouse-bA vagy egy adatforrást a Power BI Desktop (.pbix) fájlt. A Power BI Desktop fájlok támogatása az Azure SQL Database, Azure SQL Data Warehouse, Oracle és Teradata adatforrások létrehozott új modellek.
 - Egy SQL Server-fiókkal és jelszóval csatlakozás az Azure SQL Database vagy az Azure SQL Data Warehouse-adatforrásokhoz.
 
+## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
+
+Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+
 ## <a name="to-create-a-new-tabular-model"></a>Egy új táblázatos modell létrehozása
 
-1. A Server **áttekintése** panel > **webes Tervező**, kattintson a **nyitott**.
+1. A Server **áttekintése** > **webes Tervező**, kattintson a **nyitott**.
 
     ![A modell létrehozása Azure-portálon](./media/analysis-services-create-model-portal/aas-create-portal-overview-wd.png)
 

@@ -1,21 +1,21 @@
 ---
-title: "Azure adatbázisban a következő PostgreSQL Server fogalmak |} Microsoft Docs"
-description: "Ez a témakör a szempontok és konfigurálása és kezelése az Azure-adatbázis PostgreSQL-kiszolgálók iránymutatásokat tartalmaz."
+title: "Kiszolgáló fogalmak PostgreSQL Azure-adatbázisban"
+description: "Ez a cikk a szempontok és konfigurálása és kezelése az Azure-adatbázis PostgreSQL-kiszolgálók iránymutatásokat tartalmaz."
 services: postgresql
-author: SaloniSonpal
-ms.author: salonis
-manager: jhubbard
+author: rachel-msft
+ms.author: raagyema
+manager: kfile
 editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
-ms.date: 12/02/2017
-ms.openlocfilehash: d7eec2735e48f57500eb2ea822f0949d2ec2e585
-ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
+ms.date: 02/28/2018
+ms.openlocfilehash: 2db18b014606799bdf5707c4c19f363bbc323e5c
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 02/28/2018
 ---
-# <a name="azure-database-for-postgresql-servers"></a>Azure-adatbázis PostgreSQL-kiszolgálók
+# <a name="azure-database-for-postgresql-servers"></a>Azure-adatbázis PostgreSQL-kiszolgálókhoz
 Ez a cikk szempontjait és útmutatást biztosít PostgreSQL-kiszolgálók Azure-adatbázis használata.
 
 ## <a name="what-is-an-azure-database-for-postgresql-server"></a>Mi az az Azure-adatbázis PostgreSQL-kiszolgáló?
@@ -33,7 +33,7 @@ Egy PostgreSQL-kiszolgálóhoz tartozó Azure-adatbázis:
 - Több verzióban érhető el. További információkért lásd: [támogatott PostgreSQL-adatbázis verziója](concepts-supported-versions.md).
 - Az extensible felhasználók. További információkért lásd: [PostgreSQL-bővítmények](concepts-extensions.md).
 
-Azure adatbázisban PostgreSQL-kiszolgáló egy vagy több adatbázist is létrehozhat. Dönthet úgy, hogy az erőforrások teljes kihasználása érdekében kiszolgálónként egy adatbázist hoz létre, vagy úgy, hogy több adatbázis létrehozásával megosztja az erőforrásokat. Az árképzés strukturált kiszolgálónként, tarifacsomag, számítási egység, és tárhely (GB), a konfiguráció alapján. További információkért lásd: [Tarifacsomagok](./concepts-service-tiers.md).
+Azure adatbázisban PostgreSQL-kiszolgáló egy vagy több adatbázist is létrehozhat. Dönthet úgy, hogy az erőforrások teljes kihasználása érdekében kiszolgálónként egy adatbázist hoz létre, vagy úgy, hogy több adatbázis létrehozásával megosztja az erőforrásokat. Az árképzés strukturált kiszolgálónként, tarifacsomag, vCores, és tárhely (GB), a konfiguráció alapján. További információkért lásd: [Tarifacsomagok](./concepts-pricing-tiers.md).
 
 ## <a name="how-do-i-connect-and-authenticate-to-an-azure-database-for-postgresql-server"></a>Hogyan csatlakozzon és hitelesíti magát egy Azure-adatbázisban PostgreSQL-kiszolgáló?
 A következő elemek biztosítható, hogy az adatbázishoz való biztonságos hozzáférés:
@@ -56,6 +56,6 @@ A Postgres felügyelt szolgáltatásként konfigurálható PostgreSQL az Azure-a
 
 ## <a name="next-steps"></a>További lépések
 - A szolgáltatás áttekintését lásd: [Azure adatbázis PostgreSQL áttekintés](overview.md).
-- Adott erőforrásokra vonatkozó információkból tájékoódhat kvótái és korlátai alapján a **szolgáltatásréteg**, lásd: [szolgáltatásszintek](concepts-service-tiers.md).
+- Adott erőforrásokra vonatkozó információkból tájékoódhat kvótái és korlátai alapján a **szolgáltatásréteg**, lásd: [szolgáltatásszintek](concepts-pricing-tiers.md).
 - A szolgáltatáshoz való csatlakozáskor információkért lásd: [PostgreSQL az Azure-adatbázis adatkapcsolattárak](concepts-connection-libraries.md).
 - Megtekintése és szerkesztése a kiszolgáló paraméterek keresztül [Azure-portálon](howto-configure-server-parameters-using-portal.md) vagy [Azure CLI](howto-configure-server-parameters-using-cli.md).

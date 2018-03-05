@@ -7,13 +7,13 @@ author: mayanknayar
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 02/13/2018
+ms.date: 02/27/2018
 ms.author: manayar
-ms.openlocfilehash: 71e28d7c91526de07e64a294873d3f25fe5378f7
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: e07b868883b0154ad38ba2f7f51dd2db663525a0
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="use-azure-site-recovery-to-protect-active-directory-and-dns"></a>Azure Site Recovery használatával védi az Active Directory és a DNS-
 
@@ -80,7 +80,7 @@ A legtöbb alkalmazás egy tartományvezérlő és DNS-kiszolgáló szükséges.
     ![Azure test network](./media/site-recovery-active-directory/azure-test-network.png)
 
     > [!TIP]
-    > A Site Recovery megpróbálja létrehozni a teszt virtuális gépek azonos nevű és ugyanazon az IP-cím, a megadott alhálózat a **számítás és hálózat** a virtuális gép beállításai között. Ha azonos nevű alhálózat nem használható az Azure virtuális hálózatban, a feladatátvételi teszthez megadott, a teszt virtuális gépét a betűrendben az első alhálózat jön létre. 
+    > A Site Recovery megpróbálja létrehozni a teszt virtuális gépek azonos nevű és ugyanazon az IP-cím, a megadott alhálózat a **számítás és hálózat** a virtuális gép beállításai között. Ha azonos nevű alhálózat nem használható az Azure virtuális hálózatban, a feladatátvételi teszthez megadott, a teszt virtuális gépét a betűrendben az első alhálózat jön létre.
     >
     > Ha a cél IP-címet a kijelölt alhálózathoz tartozik, a Site Recovery megkísérli a feladatátvételi teszt virtuális gép létrehozása a figyelt IP cím használatával. Ha a figyelt IP cím nem része a kiválasztott alhálózatnak, a feladatátvételi teszt virtuális gép hozta létre a következő rendelkezésre álló IP használata a kiválasztott alhálózatnak.
     >
@@ -110,7 +110,7 @@ Windows Server 2012 rendszertől kezdődően [további védelmet az Active Direc
 
 Ha **virtuális gép Generációazonosítóját** alaphelyzetbe áll, a **InvocationID** érték az AD DS-adatbázis is alaphelyzetbe áll. Ezenkívül a program elveti a RID-verem, és a SYSVOL nem mérvadó van megjelölve. További információkért lásd: [Bevezetés az Active Directory tartományi szolgáltatások virtualizálása](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/introduction-to-active-directory-domain-services-ad-ds-virtualization-level-100) és [DFSR biztonságos virtualizálása](https://blogs.technet.microsoft.com/filecab/2013/04/05/safely-virtualizing-dfsr/).
 
-Előfordulhat, hogy az Azure-bA feladatátvételét **virtuális gép Generációazonosítóját** alaphelyzetbe állítása. Alaphelyzetbe állítása **virtuális gép Generációazonosítóját** váltja ki további védelmet, ha a tartomány a tartományvezérlő virtuális gép elindul az Azure-ban. Emiatt előfordulhat, hogy egy *jelentős késés* a tudnak majd bejelentkezni a tartomány a tartományvezérlő virtuális gépet. 
+Előfordulhat, hogy az Azure-bA feladatátvételét **virtuális gép Generációazonosítóját** alaphelyzetbe állítása. Alaphelyzetbe állítása **virtuális gép Generációazonosítóját** váltja ki további védelmet, ha a tartomány a tartományvezérlő virtuális gép elindul az Azure-ban. Emiatt előfordulhat, hogy egy *jelentős késés* a tudnak majd bejelentkezni a tartomány a tartományvezérlő virtuális gépet.
 
 Ezt használja a rendszer csak a feladatátvételi tesztet, mert a virtualizációvédelmi funkciók nem szükséges. Annak érdekében, hogy a **virtuális gép Generációazonosítóját** érték a tartomány a tartományvezérlő virtuális gépnek nem változik, módosíthatja a következő DWORD értékét **4** a helyi tartományvezérlő:
 
@@ -165,20 +165,20 @@ A virtualizációvédelmi funkciók lépnek működésbe. a feladatátvételi te
 Ha az előző feltételek teljesülnek, valószínű, hogy a tartományvezérlő megfelelően működik-e. Ha nem, kövesse az alábbi lépéseket:
 
 1. Hajtsa végre a tartományvezérlő mérvadó visszaállítást. Vegye figyelembe a következőket:
-    * Bár nem javasolt [fájlreplikációs](https://blogs.technet.microsoft.com/filecab/2014/06/25/the-end-is-nigh-for-frs/), ha fájlreplikációs, kövesse a lépéseket mérvadó visszaállítást. Az eljárást a [fájlreplikációs szolgáltatás újrainicializálása a BurFlags beállításkulcs használatával](https://support.microsoft.com/kb/290762). 
-    
+    * Bár nem javasolt [fájlreplikációs](https://blogs.technet.microsoft.com/filecab/2014/06/25/the-end-is-nigh-for-frs/), ha fájlreplikációs, kövesse a lépéseket mérvadó visszaállítást. Az eljárást a [fájlreplikációs szolgáltatás újrainicializálása a BurFlags beállításkulcs használatával](https://support.microsoft.com/kb/290762).
+
         BurFlags kapcsolatos további információkért lásd a következő blogbejegyzésben [D2 és D4: Mi az az?](https://blogs.technet.microsoft.com/janelewis/2006/09/18/d2-and-d4-what-is-it-for/).
-    * Elosztott fájlrendszer-replikációs replikáció használata, végezze el a lépéseket mérvadó visszaállítást. Az eljárást a [egy mérvadó és nem mérvadó szinkronizálásának kikényszerítéséhez a DFSR-rel replikált SYSVOL mappa ("D4/D2" beállításaihoz hasonlóan az FRS)](https://support.microsoft.com/kb/2218556). 
-    
+    * Elosztott fájlrendszer-replikációs replikáció használata, végezze el a lépéseket mérvadó visszaállítást. Az eljárást a [egy mérvadó és nem mérvadó szinkronizálásának kikényszerítéséhez a DFSR-rel replikált SYSVOL mappa ("D4/D2" beállításaihoz hasonlóan az FRS)](https://support.microsoft.com/kb/2218556).
+
         A PowerShell funkciókat is használhatja. További információkért lásd: [DFSR-SYSVOL mappa mérvadó/nem mérvadó visszaállítást PowerShell funkciók](https://blogs.technet.microsoft.com/thbouche/2013/08/28/dfsr-sysvol-authoritative-non-authoritative-restore-powershell-functions/).
 
-2. A kezdeti szinkronizálási követelményt kihagyása a következő beállításkulcsot értékre állításával **0** a helyi tartományvezérlőn. Ha a DWORD nem létezik, létrehozhatja a a **paraméterek** csomópont. 
+2. A kezdeti szinkronizálási követelményt kihagyása a következő beállításkulcsot értékre állításával **0** a helyi tartományvezérlőn. Ha a DWORD nem létezik, létrehozhatja a a **paraméterek** csomópont.
 
     `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NTDS\Parameters\Repl Perform Initial Synchronizations`
 
     További információkért lásd: [hibaelhárítása DNS Event ID 4013: A DNS-kiszolgáló nem tudta betölteni AD integrált DNS-zónák](https://support.microsoft.com/kb/2001093).
 
-3. Tiltsa le a követelmény, hogy elérhetők-e globáliskatalógus-kiszolgáló a felhasználói bejelentkezési érvényesítéséhez. Ehhez a helyi tartományvezérlő a következő beállításkulcs beállítása **1**. Ha a DWORD nem létezik, létrehozhatja a a **Lsa** csomópont. 
+3. Tiltsa le a követelmény, hogy elérhetők-e globáliskatalógus-kiszolgáló a felhasználói bejelentkezési érvényesítéséhez. Ehhez a helyi tartományvezérlő a következő beállításkulcs beállítása **1**. Ha a DWORD nem létezik, létrehozhatja a a **Lsa** csomópont.
 
     `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa\IgnoreGCFailures`
 

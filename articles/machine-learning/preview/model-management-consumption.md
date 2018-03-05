@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/06/2017
-ms.openlocfilehash: b8641cd2d4a34821b7cf0e644345f0904bad294a
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 4d388af3175bce5df6108ff0fd836707cca5040a
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="consuming-web-services"></a>Webszolgáltatások felhasználása
 Miután telepít egy modell valós idejű webszolgáltatásként, elküldi a adatok, és előrejelzéseket beolvasása számos különböző rendszerek és alkalmazások. A valós idejű webszolgáltatás közzétesz egy REST API előrejelzéseket kapcsolódnak. A webszolgáltatás egy vagy több előrejelzéseket egyszerre beolvasandó egyetlen vagy több sor formátumú adatokat küldhet.
@@ -35,7 +35,7 @@ A jelenleg telepített szolgáltatások és a Docker képek CLI paranccsal list�
 A webszolgáltatás sikeres telepítése után a következő paranccsal beolvasni a szolgáltatás URL-CÍMÉT és egyéb adatait a szolgáltatás-végpont meghívása. 
 
 ```
-az ml service usage realtime -i <service name>
+az ml service usage realtime -i <web service id>
 ```
 
 Ez a parancs megjeleníti a szolgáltatás URL-címe, szükséges kérelemfejléc, swagger URL-cím és a szolgáltatás hívása, ha a szolgáltatás API-séma a központi telepítéskor kapott a mintaadatok.
@@ -43,7 +43,7 @@ Ez a parancs megjeleníti a szolgáltatás URL-címe, szükséges kérelemfejlé
 A szolgáltatás a CLI-ről, a HTTP-lekérdezés létrehozása a bemeneti adatokat tartalmazó minta CLI parancs beírásával nélkül lehet tesztelni:
 
 ```
-az ml service run realtime -i <service name> -d "Your input data"
+az ml service run realtime -i <web service id> -d "Your input data"
 ```
 
 ## <a name="get-the-service-api-key"></a>Az API-kulcs beszerzése

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/23/2018
 ms.author: cherylmc
-ms.openlocfilehash: ff590ecb5091695d6105b510f563251fe43412fe
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 410fe05e0a545905024f223e6f7297066b326d14
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="generate-and-export-certificates-for-point-to-site-connections-using-powershell-on-windows-10-or-windows-server-2016"></a>Létrehozása és exportálása a tanúsítványok a PowerShell-lel Windows 10 vagy Windows Server 2016 pont – hely kapcsolatok
 
@@ -34,12 +34,11 @@ Pont – hely kapcsolatok tanúsítványok segítségével hitelesíti. Ez a cik
 > 
 > 
 
-
 Ez a cikk a Windows 10 vagy Windows Server 2016 rendszerű számítógépre kell hajtsa végre a lépéseket. A PowerShell-parancsmagok, amelyekkel lehet tanúsítványokat létrehozni az operációs rendszer része, és a Windows más verziói nem működnek. A Windows 10 vagy Windows Server 2016 számítógép csak akkor tanúsítványainak előállításához szükséges. Ha a tanúsítványok jönnek létre, feltöltheti ezeket, vagy telepítse őket a támogatott ügyfél operációs rendszereken. 
 
 Ha nincs hozzáférése a Windows 10 vagy Windows Server 2016 számítógép, [MakeCert](vpn-gateway-certificates-point-to-site-makecert.md) tanúsítványainak létrehozásához. A tanúsítványok, létrehozhat módszerek használatával is telepíthető [támogatott](vpn-gateway-howto-point-to-site-resource-manager-portal.md#faq) ügyfél operációs rendszerét.
 
-## <a name="rootcert"></a>Hozzon létre egy önaláírt legfelső szintű tanúsítványt
+## <a name="rootcert"></a>1. Hozzon létre egy önaláírt legfelső szintű tanúsítványt
 
 A New-SelfSignedCertificate parancsmag segítségével hozzon létre egy önaláírt legfelső szintű tanúsítványt. További információkért lásd: [New-SelfSignedCertificate](https://technet.microsoft.com/itpro/powershell/windows/pkiclient/new-selfsignedcertificate).
 
@@ -53,17 +52,7 @@ A New-SelfSignedCertificate parancsmag segítségével hozzon létre egy önalá
   -CertStoreLocation "Cert:\CurrentUser\My" -KeyUsageProperty Sign -KeyUsage CertSign
   ```
 
-### <a name="cer"></a>Exportálja a nyilvános kulcsot (.cer)
-
-[!INCLUDE [Export public key](../../includes/vpn-gateway-certificates-export-public-key-include.md)]
-
-A exported.cer fájlt fel kell tölteni, az Azure-bA. Útmutatásért lásd: [egy pont – hely kapcsolat beállítása](vpn-gateway-howto-point-to-site-rm-ps.md#upload). Egy további megbízható legfelső szintű tanúsítvány hozzáadása [ebben a szakaszban](vpn-gateway-howto-point-to-site-rm-ps.md#addremovecert) a cikk.
-
-### <a name="export-the-self-signed-root-certificate-and-public-key-to-store-it-optional"></a>Exportálhatja az önaláírt legfelső szintű tanúsítvány és nyilvános kulcs tárolja (nem kötelező)
-
-Érdemes lehet önaláírt legfelső szintű tanúsítványának exportálása és tárolja biztonságos helyen. Ha kell, később egy másik számítógépre telepítse, és további ügyféltanúsítványok előállításához vagy egy másik .cer-fájl exportálását. Az önaláírt legfelső szintű tanúsítvány exportálása a .pfx fájlhoz, válassza ki a legfelső szintű tanúsítványt, és használja ugyanazokat a lépéseket, a [ügyféltanúsítvány exportálása](#clientexport).
-
-## <a name="clientcert"></a>Ügyfél-tanúsítvány létrehozása
+## <a name="clientcert"></a>2. Ügyféltanúsítvány létrehozása
 
 Minden, a virtuális hálózathoz pont–hely kapcsolattal csatlakozó ügyfélszámítógépnek rendelkeznie kell telepített ügyféltanúsítvánnyal. Hozzon létre egy ügyféltanúsítványt a önaláírt legfelső szintű tanúsítvány és exportálni, és telepíti az ügyféltanúsítványt. Ha az ügyféltanúsítvány nincs telepítve, a hitelesítés meghiúsul. 
 
@@ -123,19 +112,30 @@ Ha további ügyféltanúsítványok létrehozni, vagy nem használja az ugyanaz
   -Signer $cert -TextExtension @("2.5.29.37={text}1.3.6.1.5.5.7.3.2")
   ```
 
-## <a name="clientexport"></a>Ügyfél-tanúsítvány exportálása   
+## <a name="cer"></a>3. A legfelső szintű tanúsítvány nyilvános kulcsát (.cer) exportálása
+
+[!INCLUDE [Export public key](../../includes/vpn-gateway-certificates-export-public-key-include.md)]
+
+
+### <a name="export-the-self-signed-root-certificate-and-private-key-to-store-it-optional"></a>Exportálhatja az önaláírt legfelső szintű tanúsítvány és titkos kulcs tárolható (nem kötelező)
+
+Érdemes lehet önaláírt legfelső szintű tanúsítványának exportálása és tárolja biztonságos biztonsági mentés. Ha kell, később egy másik számítógépre telepítse és több ügyfél certifiates készítése. Az önaláírt legfelső szintű tanúsítvány exportálása a .pfx fájlhoz, válassza ki a legfelső szintű tanúsítványt, és használja ugyanazokat a lépéseket, a [ügyféltanúsítvány exportálása](#clientexport).
+
+## <a name="clientexport"></a>4. Az ügyféltanúsítvány exportálása
 
 [!INCLUDE [Export client certificate](../../includes/vpn-gateway-certificates-export-client-cert-include.md)]
 
-## <a name="install"></a>Az exportált ügyféltanúsítvány telepítése
+
+## <a name="install"></a>5. Exportált ügyféltanúsítvány telepítése
+
+A virtuális hálózat egy P2S-kapcsolaton keresztül csatlakozó ügyfeleken rendszer helyben telepítendő ügyféltanúsítványt igényel.
 
 Ügyfél-tanúsítvány telepítéséhez tekintse át [telepítheti egy pont – hely kapcsolatok ügyféltanúsítványt](point-to-site-how-to-vpn-client-install-azure-cert.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="install"></a>6. További konfigurációs lépéseket P2S
 
 A pont-hely konfigurációs folytatásához.
 
 * A **erőforrás-kezelő** telepítési modell lépéseket lásd: [konfigurálása P2S natív Azure-alapú hitelesítést használó](vpn-gateway-howto-point-to-site-resource-manager-portal.md). 
 * A **klasszikus** telepítési modell lépéseket lásd: [egy virtuális hálózat (klasszikus) pont – hely típusú VPN-kapcsolat konfigurálva](vpn-gateway-howto-point-to-site-classic-azure-portal.md).
-
-P2S hibaelhárítási információkat lásd: [Azure hibaelhárítási pont – hely kapcsolatok](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md).
+* P2S hibaelhárítási információkat lásd: [Azure hibaelhárítási pont – hely kapcsolatok](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md).

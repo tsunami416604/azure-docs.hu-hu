@@ -1,19 +1,19 @@
 ---
-title: "Az Azure Database-áttelepítés minimális állásidővel PostgreSQL |} Microsoft Docs"
+title: "Az Azure Database-áttelepítés minimális állásidővel PostgreSQL"
 description: "Ez a cikk ismerteti a minimális állásidő áttelepítéshez PostgreSQL-adatbázisból csomagolja ki a biztonsági másolat fájlt, a PostgreSQL-adatbázis visszaállítása az Azure Database pg_dump hozta létre a PostgreSQL archív fájlból, és a kezdeti betöltés beállítását és a céladatbázis Attunity megfelel a Microsoft Migrations a forrásadatbázis szinkronizálási adatok folyamatos."
 services: postgresql
 author: HJToland3
 ms.author: jtoland
-manager: jhubbard
+manager: kfile
 editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
-ms.date: 01/04/2018
-ms.openlocfilehash: efbd4f227880875c11e2c43c84716dfc49c5717d
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.date: 02/28/2018
+ms.openlocfilehash: 48cf460405ae3985553f9bff29f4fd7abb008196
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="minimal-downtime-migration-to-azure-database-for-postgresql"></a>Az Azure Database-áttelepítés minimális állásidővel PostgreSQL
 Áttelepítheti a meglévő PostgreSQL-adatbázisban az Azure Database-PostgreSQL az Attunity megfelel a Microsoft Migrations. Attunity megfelel egy közös ajánlat Attunity és a Microsoft. Azure-adatbázis áttelepítése szolgáltatás megfelelően szerepel a Microsoft ügyfelei további költségek nélkül. 

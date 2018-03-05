@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/20/2017
+ms.date: 02/27/2018
 ms.author: sethm
-ms.openlocfilehash: 89042badbfefc69582e7979a8379260a7b08d7da
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 07cbdd24368d66104ecdeb263983e3aaf3f219fe
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="azure-relay-faqs"></a>Az Azure továbbító – gyakori kérdések
 
@@ -76,14 +76,13 @@ Egy üzenetet küld egy Service Bus-továbbító a rendszer kezeli a továbbít�
 A megnyitott továbbítók a **netTCPRelay** WCF kötés üzenetek kezelni, nem egyedi üzenetekként, de a rendszer keresztül áramló adatok adatfolyamként. A kötés használata esetén csak a küldő és a figyelő látnak bele az egyes üzenetek küldésének és fogadásának keretezési. A használó továbbítja a **netTCPRelay** kötés, minden adatot a rendszer egy adatfolyam számlázható üzenetek kiszámításához. Ebben az esetben a Service Bus küldött, vagy minden egyes továbbítási 5 perces időközönként keresztül fogadott adatok mekkora számítja ki. Ezt követően azt osztja a teljes adatmennyiség szerint 64 KB-os annak meghatározásához, hogy a továbbító számlázható üzenetek száma az adott időszak alatt.
 
 ## <a name="quotas"></a>Kvóták
-| Kvóta neve | Hatókör | Típus | Viselkedés túllépésekor | Érték |
-| --- | --- | --- | --- | --- |
-| A továbbító egyidejű figyelőinek |Entitás |Statikus |A további kapcsolatokhoz későbbi kérelmek azért lettek elutasítva, és kivételt megkapta a hívó kód. |25 |
-| Egyidejű továbbítóügynök-figyelői |Telepítenek |Statikus |A további kapcsolatokhoz későbbi kérelmek azért lettek elutasítva, és kivételt megkapta a hívó kód. |2,000 |
-| A névtér összes továbbítási végpontok egyidejű továbbító-kapcsolatok |Telepítenek |Statikus |- |5,000 |
-| Továbbítási végpontok száma a szolgáltatás névtere |Telepítenek |Statikus |- |10,000 |
-| Üzenet mérete [NetOnewayRelayBinding](https://msdn.microsoft.com/library/microsoft.servicebus.netonewayrelaybinding.aspx) és [NetEventRelayBinding](https://msdn.microsoft.com/library/microsoft.servicebus.neteventrelaybinding.aspx) továbbítja |Telepítenek |Statikus |Meghaladnia ezek mely százalékértékénél kéri, hogy a bejövő üzenetek utasítja el, és egy kivételt a hívó kód érkezik. |64 KB |
-| Üzenet mérete [HttpRelayTransportBindingElement](https://msdn.microsoft.com/library/microsoft.servicebus.httprelaytransportbindingelement.aspx) és [NetTcpRelayBinding](https://msdn.microsoft.com/library/microsoft.servicebus.nettcprelaybinding.aspx) továbbítja |Telepítenek |Statikus |- |Korlátlan |
+| Kvóta neve | Hatókör |  Megjegyzések | Érték |
+| --- | --- | --- | --- |
+| A továbbító egyidejű figyelőinek |Entitás |A további kapcsolatokhoz későbbi kérelmek azért lettek elutasítva, és kivételt megkapta a hívó kód. |25 |
+| A névtér összes továbbítási végpontok egyidejű továbbító-kapcsolatok |Névtér |- |5000 |
+| Továbbítási végpontok száma a szolgáltatás névtere |Névtér |- |10,000 |
+| Üzenet mérete [NetOnewayRelayBinding](https://msdn.microsoft.com/library/microsoft.servicebus.netonewayrelaybinding.aspx) és [NetEventRelayBinding](https://msdn.microsoft.com/library/microsoft.servicebus.neteventrelaybinding.aspx) továbbítja |Névtér |Meghaladnia ezek mely százalékértékénél kéri, hogy a bejövő üzenetek utasítja el, és egy kivételt a hívó kód érkezik. |64 KB |
+| Üzenet mérete [HttpRelayTransportBindingElement](https://msdn.microsoft.com/library/microsoft.servicebus.httprelaytransportbindingelement.aspx) és [NetTcpRelayBinding](https://msdn.microsoft.com/library/microsoft.servicebus.nettcprelaybinding.aspx) továbbítja |Névtér |Az üzenet mérete nincs korlátozva. |Korlátlan |
 
 ### <a name="does-relay-have-any-usage-quotas"></a>Rendelkezik a továbbítási bármely használati kvóták?
 Alapértelmezés szerint az összes felhőalapú szolgáltatás a Microsoft összes egy ügyfél-előfizetések számított egy összesített havi memóriahasználati kvóta állítja be. Tudjuk, hogy időnként igényeinek előfordulhat, hogy meghaladja ezt a korlátot. Felveheti a kapcsolatot az ügyfélszolgálat bármikor, így azt igényeinek megismeréséhez és annak megfelelően módosítsa a működés felső korlátjának. Service Bus a használati kvóták a következők:

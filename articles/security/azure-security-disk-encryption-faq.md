@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/11/2017
 ms.author: devtiw;ejarvi;mayank88mahajan;vermashi;sudhakarareddyevuri;aravindthoram
-ms.openlocfilehash: 1144533cd64e80ed2b15c70732c94e332ea06c3d
-ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
+ms.openlocfilehash: f3cb11bc13ad2561e62c096d840c0b8e4471d271
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="azure-disk-encryption-faq"></a>Az Azure Disk Encryption – gyakori kérdések
 
@@ -49,10 +49,11 @@ Ez a cikk kapcsolatos gyakori kérdések (GYIK) lemez titkosítás a Windows Azu
 | --- | --- |--- |
 | Ubuntu | 16.04-DAILY-LTS | Operációs rendszer és az adatok lemezre |
 | Ubuntu | 14.04.5-DAILY-LTS | Operációs rendszer és az adatok lemezre |
-| RHEL | 7.3 | Operációs rendszer és az adatok lemezre |
-| RHEL | 7.2 | Operációs rendszer és az adatok lemezre |
-| RHEL | 6.8 | Operációs rendszer és az adatok lemezre |
-| RHEL | 6.7 | Adatlemez |
+| RHEL | 7.4 | Adatok lemez * |
+| RHEL | 7.3 | Adatok lemez * |
+| RHEL | 7.2 | Adatok lemez * |
+| RHEL | 6.8 | Adatok lemez * |
+| RHEL | 6.7 | Adatok lemez * |
 | CentOS | 7.3 | Operációs rendszer és az adatok lemezre |
 | CentOS | 7.2n | Operációs rendszer és az adatok lemezre |
 | CentOS | 6.8 | Operációs rendszer és az adatok lemezre |
@@ -67,6 +68,8 @@ Ez a cikk kapcsolatos gyakori kérdések (GYIK) lemez titkosítás a Windows Azu
 | SLES | HPC 12 | Adatlemez |
 | SLES | Prioritás: 11-SP4 | Adatlemez |
 | SLES | 11 SP4 | Adatlemez |
+
+*__Adatlemez az RHEL ADE esetén támogatott. A jelenlegi ADE implementációja operációsrendszer-lemez esetében működik, de közösen jelenleg nem támogatott. A Microsoft és a Red Hat dolgozik közösen támogatott megoldás. Az idő alatt is hivatkozni lehessen a ADE tanulmány a Linux operációs rendszert futtató lemeztitkosítás [Itt](https://docs.microsoft.com/en-us/azure/security/azure-security-disk-encryption).__
 
 **K:** hogyan tudom kezdheti Azure Disk Encryption?
 

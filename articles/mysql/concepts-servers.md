@@ -1,19 +1,19 @@
 ---
-title: "Kiszolgáló kapcsolatos fogalmak, MySQL az Azure-adatbázis |} Microsoft Docs"
+title: "Kiszolgáló kapcsolatos fogalmak, MySQL az Azure-adatbázis"
 description: "Ez a témakör szempontjait és irányelveket MySQL-kiszolgálók Azure-adatbázishoz való munkához."
 services: mysql
-author: v-chenyh
-ms.author: v-chenyh
-manager: jhubbard
+author: ajlam
+ms.author: andrela
+manager: kfile
 editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
-ms.date: 11/27/2017
-ms.openlocfilehash: d3de3fdf28997b63321bf23443472db43ebb5c52
-ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
+ms.date: 02/28/2018
+ms.openlocfilehash: 0cf35efa7b8b4c6f78a8821c6d10e606813b7848
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="server-concepts-in-azure-database-for-mysql"></a>Kiszolgáló kapcsolatos fogalmak, MySQL az Azure-adatbázis
 Ez a cikk szempontjait és útmutatást biztosít a MySQL-kiszolgálók Azure-adatbázis használata.
@@ -33,7 +33,7 @@ Egy MySQL-kiszolgálóhoz tartozó Azure-adatbázis:
 - Felügyeleti házirendek vonatkoznak annak adatbázisok hatóköre biztosít: bejelentkezés, tűzfal, felhasználók, szerepkörök, konfiguráció stb.
 - Több verzióban érhető el. További információkért lásd: [támogatott Azure-adatbázis MySQL-adatbázis verziók](./concepts-supported-versions.md).
 
-A MySQL-kiszolgálóhoz létrehozott Azure-adatbázisban egy vagy több adatbázist is létrehozhat. Dönthet úgy is, egy kiszolgálón, az erőforrások használatára, vagy hozzon létre az erőforrások megosztása több adatbázis egyetlen adatbázist hozhat létre. Az árképzés strukturált kiszolgálónként, tarifacsomag, számítási egység, és tárhely (GB), a konfiguráció alapján. További információkért lásd: [Tarifacsomagok](./concepts-service-tiers.md).
+A MySQL-kiszolgálóhoz létrehozott Azure-adatbázisban egy vagy több adatbázist is létrehozhat. Dönthet úgy is, egy kiszolgálón, az erőforrások használatára, vagy hozzon létre az erőforrások megosztása több adatbázis egyetlen adatbázist hozhat létre. Az árképzés strukturált kiszolgálónként, tarifacsomag, vCores, és tárhely (GB), a konfiguráció alapján. További információkért lásd: [Tarifacsomagok](./concepts-service-tiers.md).
 
 ## <a name="how-do-i-connect-and-authenticate-to-an-azure-database-for-mysql-server"></a>Hogyan csatlakozzon és hitelesíti magát egy Azure-adatbázisban, MySQL-kiszolgáló?
 
@@ -49,7 +49,7 @@ A következő elemek biztosíthatja, hogy az adatbázishoz való hozzáférést.
 ## <a name="how-do-i-manage-a-server"></a>Hogyan kezelheti a kiszolgáló?
 Kezelheti az Azure Database MySQL-kiszolgálók az Azure-portálon vagy az Azure parancssori felület használatával.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - A szolgáltatás áttekintését lásd: [Azure adatbázis MySQL – áttekintés](./overview.md)
 - Adott erőforrásokra vonatkozó információkból tájékoódhat kvótái és korlátai alapján a **szolgáltatásréteg**, lásd: [Szolgáltatásszinteken](./concepts-service-tiers.md)
 - További információ a szolgáltatáshoz való csatlakozáskor: [MySQL az Azure-adatbázis adatkapcsolattárak](./concepts-connection-libraries.md).

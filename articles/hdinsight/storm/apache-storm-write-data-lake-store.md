@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 01/04/2018
+ms.date: 02/27/2018
 ms.author: larryfr
-ms.openlocfilehash: 5550dc2ffc53c6ccd30ecb4901ec98c4d38e366b
-ms.sourcegitcommit: d6984ef8cc057423ff81efb4645af9d0b902f843
+ms.openlocfilehash: 908a1130171cc091b4d95d4532cc3bb95edb44f9
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="write-to-hdfs-from-apache-storm-on-hdinsight"></a>Írni HDFS az Apache Storm példatopológiái
 
@@ -40,11 +40,11 @@ Ez a projekt fordítása, a következő konfigurációs a fejlesztési környeze
 
 Az alábbi környezeti változókat a fejlesztő munkaállomás Java és a JDK telepítésekor lehet beállítani. Azonban ellenőrizni kell, hogy léteznek, illetve a rendszer a megfelelő értékeket tartalmaz.
 
-* `JAVA_HOME`-a a JDK mappáját kell mutatnia.
-* `PATH`-a következő elérési utakat kell tartalmaznia:
+* `JAVA_HOME` -a a JDK mappáját kell mutatnia.
+* `PATH` -a következő elérési utakat kell tartalmaznia:
   
-    * `JAVA_HOME`(vagy ezzel egyenértékű elérési).
-    * `JAVA_HOME\bin`(vagy ezzel egyenértékű elérési).
+    * `JAVA_HOME` (vagy ezzel egyenértékű elérési).
+    * `JAVA_HOME\bin` (vagy ezzel egyenértékű elérési).
     * A mappát, ahová a Maven telepítve van.
 
 ## <a name="how-to-use-the-hdfsbolt-with-hdinsight"></a>A HdfsBolt használata a hdinsight eszközzel
@@ -140,7 +140,7 @@ A fluxus keretrendszerre további információkért lásd: [https://storm.apache
 
 Alapértelmezés szerint a HDInsight alatt futó Storm nem tartalmaz az összetevőket, amelyek HdfsBolt használ a Storm tartozó classpath Azure Storage vagy a Data Lake Store folytatott kommunikációhoz. A következő parancsfájlművelet ezek az összetevők hozzáadásához használja a `extlib` könyvtár alatt futó Storm a fürt:
 
-* A parancsfájl URI:`https://hdiconfigactions.blob.core.windows.net/linuxstormextlibv01/stormextlib.sh`
+* A parancsfájl URI: `https://hdiconfigactions.blob.core.windows.net/linuxstormextlibv01/stormextlib.sh`
 * Csomópontok alkalmazandó: Nimbus, a felügyelő
 * Paraméterek: nincs
 
@@ -160,7 +160,7 @@ Ezt a parancsfájlt a fürt használatáról információkért lásd: a [Parancs
 
 1. A következő paranccsal másolja át a topológia a HDInsight-fürthöz. Cserélje le **felhasználói** az a fürt létrehozásakor használt SSH-felhasználónév. Cserélje le a **CLUSTERNAME** elemet a fürt nevére.
    
-        scp target\StormToHdfs-1.0-SNAPSHOT.jar USER@CLUSTERNAME-ssh.azurehdinsight.net:StormToHdfs1.0-SNAPSHOT.jar
+        scp target\StormToHdfs-1.0-SNAPSHOT.jar USER@CLUSTERNAME-ssh.azurehdinsight.net:StormToHdfs-1.0-SNAPSHOT.jar
    
     Amikor a rendszer kéri, adja meg az SSH-felhasználó a fürt létrehozásakor használt jelszót. Jelszó helyett használt nyilvános kulcsot, ha szeretne használni a `-i` paraméterrel adhatja meg a megfelelő titkos kulcs elérési útját.
    

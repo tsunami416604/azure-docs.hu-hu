@@ -1,19 +1,19 @@
 ---
-title: "A MySQL az Azure-adatbázis exportálására és importálásra |} Microsoft Docs"
+title: "A MySQL az Azure-adatbázis exportálására és importálásra"
 description: "Ez a cikk ismerteti a leggyakoribb importálása és exportálása az Azure Database adatbázisok MySQL, az eszközöket, például a MySQL munkaterület használatával."
 services: mysql
-author: v-chenyh
-ms.author: v-chenyh
-manager: jhubbard
+author: ajlam
+ms.author: andrela
+manager: kfile
 editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
-ms.date: 11/02/2017
-ms.openlocfilehash: 36ffa7082ce60093cbd90d0c12187e28f517646d
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.date: 02/28/2018
+ms.openlocfilehash: f15811cd44e405ee33d9ba3d565c2982e71a80c0
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="migrate-your-mysql-database-by-using-import-and-export"></a>A MySQL-adatbázis áttelepítéséhez importálása és exportálása
 Ez a cikk azt ismerteti, két gyakori módszer az adatok importálása és exportálása a MySQL-kiszolgáló Azure adatbázisba MySQL munkaterület használatával. 
@@ -112,5 +112,5 @@ Használhatja a **adatimportálási** fülre, és importálja vagy állítsa vis
 1. Választhat a projektmappa vagy az önálló SQL-fájl, a séma importálása, vagy válasszon **új** új sémát meghatározásához. 
 2. Kattintson a **Start importálása** az importálási folyamat megkezdéséhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Egy másik áttelepítési módszert használja, mint olvasási [áttelepítése a MySQL adatbázis használatával dump és MySQL az Azure-adatbázis visszaállítása](concepts-migrate-dump-restore.md). 

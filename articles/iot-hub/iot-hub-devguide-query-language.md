@@ -12,13 +12,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/29/2018
+ms.date: 02/26/2018
 ms.author: elioda
-ms.openlocfilehash: 01951afa983e7a578281fda38bb4714df6b41891
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 624f706532645034f19af15d10352dbc6db0b6c1
+ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="iot-hub-query-language-for-device-twins-jobs-and-message-routing"></a>Az IoT-központ lekérdezési nyelv eszköz twins, a feladatok és az üzenet-útválasztás
 
@@ -298,27 +298,27 @@ Az IoT-központ azt feltételezi, hogy a következő JSON-ábrázolását üzene
 
 ```json
 {
-    "$messageId": "",
-    "$enqueuedTime": "",
-    "$to": "",
-    "$expiryTimeUtc": "",
-    "$correlationId": "",
-    "$userId": "",
-    "$ack": "",
-    "$connectionDeviceId": "",
-    "$connectionDeviceGenerationId": "",
-    "$connectionAuthMethod": "",
-    "$content-type": "",
-    "$content-encoding": "",
-
-    "userProperty1": "",
-    "userProperty2": ""
+  "message": {
+    "systemProperties": {
+      "contentType": "application/json",
+      "contentEncoding": "utf-8",
+      "iothub-message-source": "deviceMessages",
+      "iothub-enqueuedtime": "2017-05-08T18:55:31.8514657Z"
+    },
+    "appProperties": {
+      "processingPath": "<optional>",
+      "verbose": "<optional>",
+      "severity": "<optional>",
+      "testDevice": "<optional>"
+    },
+    "body": "{\"Weather\":{\"Temperature\":50}}"
+  }
 }
 ```
 
 Üzenet Rendszertulajdonságok fűzve előtagként a `'$'` szimbólum.
-Felhasználói tulajdonságok a nevükkel mindig érhetők el. Ha egy felhasználó tulajdonság neve egyezik a rendszer tulajdonsággal (például `$to`), a felhasználó tulajdonság a rendszer lekéri a `$to` kifejezés.
-A rendszer tulajdonság használatával zárójeleket mindig elérhető `{}`: például a kifejezés használható `{$to}` eléréséhez a rendszer tulajdonság `to`. Zárójeles tulajdonságnevek mindig a megfelelő rendszer tulajdonság beolvasása.
+Felhasználói tulajdonságok a nevükkel mindig érhetők el. Ha egy felhasználó tulajdonság neve egyezik a rendszer tulajdonsággal (például `$contentType`), a felhasználó tulajdonság a rendszer lekéri a `$contentType` kifejezés.
+A rendszer tulajdonság használatával zárójeleket mindig elérhető `{}`: például a kifejezés használható `{$contentType}` eléréséhez a rendszer tulajdonság `contentType`. Zárójeles tulajdonságnevek mindig a megfelelő rendszer tulajdonság beolvasása.
 
 Ne feledje, hogy tulajdonságnevek megkülönböztetik a kis-és nagybetűket.
 
@@ -350,12 +350,58 @@ Tekintse meg a [kifejezés és feltételek] [ lnk-query-expressions] támogatott
 
 Az IoT-központ csak irányíthatja a üzenettörzs alapján tartalmát, ha az üzenet törzse nem megfelelően formázott JSON-kódolású UTF-8, UTF-16 vagy UTF-32. Állítsa be a üzenet tartalomtípusa `application/json`. Állítsa be a tartalom kódolási az üzenetfejlécben a támogatott UTF-kódolások egyikét. Ha a fejlécek egyikét nincs megadva, IoT-központ nem kísérli meg a lekérdezési kifejezés használata esetén a szervezet az üzeneten való kiértékelése. Ha az üzenet nem egy JSON-üzenetet, vagy ha az üzenet nem adja meg a tartalom típusa és a tartalmának kódolását, továbbra is használhatja üzenet-útválasztás a fejlécek alapján üzenet.
 
+A következő példa bemutatja, hogyan hozzon létre egy üzenetet egy megfelelően formázott és kódolt JSON-törzsére:
+
+```csharp
+string messageBody = @"{ 
+                            ""Weather"":{ 
+                                ""Temperature"":50, 
+                                ""Time"":""2017-03-09T00:00:00.000Z"", 
+                                ""PrevTemperatures"":[ 
+                                    20, 
+                                    30, 
+                                    40 
+                                ], 
+                                ""IsEnabled"":true, 
+                                ""Location"":{ 
+                                    ""Street"":""One Microsoft Way"", 
+                                    ""City"":""Redmond"", 
+                                    ""State"":""WA"" 
+                                }, 
+                                ""HistoricalData"":[ 
+                                    { 
+                                    ""Month"":""Feb"", 
+                                    ""Temperature"":40 
+                                    }, 
+                                    { 
+                                    ""Month"":""Jan"", 
+                                    ""Temperature"":30 
+                                    } 
+                                ] 
+                            } 
+                        }"; 
+ 
+// Encode message body using UTF-8 
+byte[] messageBytes = Encoding.UTF8.GetBytes(messageBody); 
+ 
+using (var message = new Message(messageBytes)) 
+{ 
+    // Set message body type and content encoding. 
+    message.ContentEncoding = "utf-8"; 
+    message.ContentType = "application/json"; 
+ 
+    // Add other custom application properties.  
+    message.Properties["Status"] = "Active";    
+ 
+    await deviceClient.SendEventAsync(message); 
+}
+```
+
 Használhat `$body` az üzenet a lekérdezési kifejezésben. Használhatja egyszerű törzs hivatkozást, törzs tömb referencia vagy több szervezet hivatkozást a lekérdezési kifejezésben. A lekérdezési kifejezésben kombinálhatja üzenet fejlécének hivatkozással törzs hivatkozást is. Például a következők minden érvényes lekérdezési kifejezések:
 
 ```sql
-$body.message.Weather.Location.State = 'WA'
 $body.Weather.HistoricalData[0].Month = 'Feb'
-$body.Weather.Temperature = 50 AND $body.message.Weather.IsEnabled
+$body.Weather.Temperature = 50 AND $body.Weather.IsEnabled
 length($body.Weather.Location.State) = 2
 $body.Weather.Temperature = 50 AND Status = 'Active'
 ```
@@ -513,7 +559,7 @@ Twins és az egyetlen támogatott feladatok lekérdezésekor függvény van:
 
 | Függvény | Leírás |
 | -------- | ----------- |
-| AS_NUMBER | A bemeneti karakterlánc alakít egy számot. `noop`Ha a bemeneti érték egy szám; `Undefined` Ha karakterlánc nem felel meg egy számot.|
+| AS_NUMBER | A bemeneti karakterlánc alakít egy számot. `noop` Ha a bemeneti érték egy szám; `Undefined` Ha karakterlánc nem felel meg egy számot.|
 | IS_ARRAY | Azt jelzi, hogy ha a megadott kifejezés típusú tömb egy logikai értéket ad vissza. |
 | IS_BOOL | Azt jelzi, hogy ha a megadott kifejezés típusa olyan logikai érték logikai érték beolvasása. |
 | IS_DEFINED | Jelzi, ha a tulajdonság van rendelve egy érték logikai érték beolvasása. |

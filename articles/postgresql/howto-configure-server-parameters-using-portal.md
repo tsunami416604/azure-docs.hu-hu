@@ -1,19 +1,19 @@
 ---
-title: "Állítsa be a kiszolgáló adatait az Azure Database PostgreSQL Azure-portálon |} Microsoft Docs"
+title: "Állítsa be a kiszolgáló adatait az Azure Database PostgreSQL Azure-portálon"
 description: "Ez a cikk ismerteti, hogyan paramétereinek a konfigurálása a kiszolgáló Azure-adatbázisban a PostgreSQL az Azure portálon keresztül."
 services: postgresql
 author: rachel-msft
 ms.author: raagyema
-manager: jhubbard
+manager: kfile
 editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
-ms.date: 11/08/2017
-ms.openlocfilehash: 9e8262fbfcde2e69a656e356a7ab241f2d5043ad
-ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
+ms.date: 02/28/2018
+ms.openlocfilehash: 6d43cac79c19e117385549b1678a464dc5731bd7
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="configure-server-parameters-in-azure-portal"></a>Kiszolgáló paramétereinek a konfigurálása Azure-portálon
 Listáról, megjelenítése és konfigurációs paraméterek az Azure-adatbázis az Azure portálon keresztül PostgreSQL-kiszolgáló frissítése.
@@ -37,7 +37,7 @@ Ez az útmutató Útmutató lépéseit kell:
 ![információ gombjára kattintva](./media/howto-configure-server-parameters-in-portal/4-information-button.png)
 
 6. Szükség esetén használja a **keresőmezőbe** adott paraméter szűkítéséhez. A művelet nevének és a paraméterek leírását.
-![Keresési eredmények](./media/howto-configure-server-parameters-in-portal/5-search.png)
+![keresési eredmények](./media/howto-configure-server-parameters-in-portal/5-search.png)
 
 7. Módosítsa úgy, hogy milyen paraméterértékeket. A munkamenet összes módosítások vannak kiemelve lila szín jelöli. Miután megváltoztatta az értékeket, kijelölheti a **mentése**. Illetve **elvetése** a módosításokat.
 ![Mentés vagy a módosítások elvetése](./media/howto-configure-server-parameters-in-portal/6-save-and-discard-buttons.png)
@@ -45,7 +45,7 @@ Ez az útmutató Útmutató lépéseit kell:
 8. Ha mentette a paraméter új értékét, mindig visszaállíthatja az alapértelmezett értékekre mindent kiválasztásával **minden, az alapértelmezett visszaállítása**.
 ![Minden, az alapértelmezett visszaállítása](./media/howto-configure-server-parameters-in-portal/7-reset-to-default-button.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További tudnivalók:
 - [A kiszolgáló paraméterek PostgreSQL az Azure-adatbázis – áttekintés](concepts-servers.md)
 - [Az Azure parancssori felület használatával paraméterek konfigurálása](howto-configure-server-parameters-using-cli.md)

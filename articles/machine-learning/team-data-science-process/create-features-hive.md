@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/21/2017
 ms.author: hangzh;bradsev
-ms.openlocfilehash: 91ea23b732f520b02af7e9a9dd77ee62190a520c
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: d72e10332263fac0b0ca0f937d394d2832d88781
+ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="create-features-for-data-in-a-hadoop-cluster-using-hive-queries"></a>A Hive-lekérdezéseket a Hadoop fürtök adatok funkciók létrehozása
 Ez a dokumentum bemutatja, hogyan hozzon létre egy Azure HDInsight Hadoop-fürt Hive-lekérdezésekkel tárolt adatok funkciói. A Hive-lekérdezéseket beágyazott Hive User-Defined funkciókat (UDF), amelynek a parancsfájlokat használja.
@@ -93,14 +93,14 @@ Hive tartalmaz egy felhasználó által megadott függvények a datetime mezők 
         select day(<datetime field>), month(<datetime field>)
         from <databasename>.<tablename>;
 
-A Hive-lekérdezést feltételezi, hogy a *&#60; DateTime típusú mező >* az alapértelmezett dátum és idő formátumban.
+A Hive-lekérdezést feltételezi, hogy a  *<datetime field>*  az alapértelmezett dátum és idő formátumban.
 
 Egy DateTime típusú mező nem az alapértelmezett formátumban van, ha először a DateTime típusú mező átalakítása Unix időbélyegzőjét, és majd alakíthatja át a Unix időbélyeg dátum/idő karakterlánc, amely az alapértelmezett formátumban van szüksége. A dátum és idő formátuma alapértelmezett, ha felhasználók alkalmazhatja a beágyazott datetime felhasználó által megadott függvények szolgáltatások kibontásához.
 
         select from_unixtime(unix_timestamp(<datetime field>,'<pattern of the datetime field>'))
         from <databasename>.<tablename>;
 
-Ebben a lekérdezésben Ha a *&#60; DateTime típusú mező >* rendelkezik a minta like *2015-03/26 12:04:39*, a *"&#60; a mintában a DateTime típusú mező >"* kell `'MM/dd/yyyy HH:mm:ss'`. Tesztelheti, hogy a felhasználók futtathatják
+Ebben a lekérdezésben Ha a  *<datetime field>*  rendelkezik a minta like *2015-03/26 12:04:39*, a  *<pattern of the datetime field>"* kell `'MM/dd/yyyy HH:mm:ss'`. Tesztelheti, hogy a felhasználók futtathatják
 
         select from_unixtime(unix_timestamp('05/15/2015 09:32:10','MM/dd/yyyy HH:mm:ss'))
         from hivesampletable limit 1;
@@ -140,7 +140,7 @@ A két GPS-koordináták közötti távolság számító Matematikai egyenleteke
 
 A beágyazott felhasználó által megadott függvények található Hive teljes listáját a **beépített funkciók** a szakasz a <a href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-MathematicalFunctions" target="_blank">Apache Hive wiki</a>).  
 
-## <a name="tuning"></a>Speciális témakörök: hangolási Hive paraméterek lekérdezés sebességének javítása érdekében
+## <a name="tuning"></a> Speciális témakörök: hangolási Hive paraméterek lekérdezés sebességének javítása érdekében
 Előfordulhat, hogy az alapértelmezett paraméterbeállítások Hive fürt nem alkalmas a Hive-lekérdezéseket és az adatokat, amelyek a lekérdezések feldolgozás alatt. Ez a szakasz ismerteti, hogy a felhasználók észlelheti a Hive-lekérdezések teljesítményének javítása érdekében néhány paraméter. Felhasználók kell hozzáadnia a lekérdezések a lekérdezéseket az adatok feldolgozása előtt hangolása paraméter.
 
 1. **Java halommemória terület**: lekérdezések nagy adatkészletek csatlakozni, vagy hosszú rekordjának feldolgozásáért **elegendő szabad terület halommemória** egyik előforduló hibákat. Ez a hiba elkerülhető a paraméterek beállítása *mapreduce.map.java.opts* és *mapreduce.task.io.sort.mb* kívánt értékekre. Például:

@@ -1,19 +1,19 @@
 ---
-title: "-Kiszolgáló naplóit Azure-adatbázisban PostgreSQL |} Microsoft Docs"
-description: "PostgreSQL az Azure-adatbázis lekérdezés és a hiba naplókat hoz létre."
+title: "-Kiszolgáló naplóit Azure-adatbázisban PostgreSQL"
+description: "Ez a cikk ismerteti, hogyan Azure adatbázis PostgreSQL hoz létre a lekérdezés és a hiba naplókat, és hogyan jelentkezzen az adatmegőrzési van konfigurálva."
 services: postgresql
-author: SaloniSonpal
-ms.author: salonis
-manager: jhubbard
+author: rachel-msft
+ms.author: raagyema
+manager: kfile
 editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
-ms.date: 09/26/2017
-ms.openlocfilehash: 696af85cd5609171a719a7e77efbfcdeba0aaaaa
-ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
+ms.date: 02/28/2018
+ms.openlocfilehash: a8d560aa8906e3ba1f65758239b645cd1b1df032
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="server-logs-in-azure-database-for-postgresql"></a>-Kiszolgáló naplóit Azure-adatbázisban PostgreSQL 
 Azure PostgreSQL-adatbázishoz lekérdezés és a hiba generál naplókat. Tranzakciós naplók elérése azonban nem támogatott. Lekérdezés és a hiba naplók segítségével azonosíthatja, hibaelhárításához és konfigurációs hibák és optimálisnál teljesítményének javítása. További információkért lásd: [jelentéskészítési és naplózási hiba](https://www.postgresql.org/docs/9.6/static/runtime-config-logging.html).
@@ -38,6 +38,6 @@ A **napló\_min\_üzenetek** lehetővé teszi, hogy a kiszolgáló naplóját í
 
 A beállításokkal további információkért lásd: [jelentéskészítési és naplózási hiba](https://www.postgresql.org/docs/9.6/static/runtime-config-logging.html) dokumentációját. Azure-adatbázis különösen konfigurálása PostgreSQL-kiszolgáló adatait, tekintse meg [testre szabhatja a kiszolgáló konfigurációs paraméterek Azure parancssori felület használatával](howto-configure-server-parameters-using-cli.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - Hozzáférés az Azure CLI parancssori felület használatával a naplókat, lásd: [beállítása és hozzáférést kiszolgálónaplókban olvashatók Azure parancssori felület használatával](howto-configure-server-logs-using-cli.md).
 - A kiszolgáló paraméterek további információkért lásd: [testre szabhatja a kiszolgáló konfigurációs paraméterek Azure parancssori felület használatával](howto-configure-server-parameters-using-cli.md).

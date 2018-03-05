@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: bradsev
-ms.openlocfilehash: daf5168ba9a21a56d72fc14649c349b0fb63a167
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: 4671493c23bfed72517e436dd6922f4ef8a213b0
+ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="the-team-data-science-process-in-action-use-azure-hdinsight-hadoop-clusters"></a>A művelet az Team tudományos folyamat: használata Azure HDInsight Hadoop-fürtök
 Ebben a bemutatóban használjuk a [Team adatok tudományos folyamat (TDSP)](overview.md) egy végpont forgatókönyvben. Használjuk egy [Azure HDInsight Hadoop-fürt](https://azure.microsoft.com/services/hdinsight/) tárolását, vizsgálatát, és a szolgáltatás-visszafejtés adatok a nyilvánosan elérhető [NYC Taxi való adatváltások számát](http://www.andresmh.com/nyctaxitrips/) adatkészletet, és lefelé-minta az adatokat. A multiclass és bináris osztályozás és regressziós prediktív feladatok, azt az adatok az Azure Machine Learning modellek létrehozása. 
@@ -104,10 +104,10 @@ Itt azt ismerteti, hogyan adatokat tartalmazó fájlok átvitele az AzCopy segí
 
 A következő AzCopy parancsok, cserélje le a következő paraméterek a tényleges, a Hadoop-fürt létrehozásakor megadott értékeket, és az adatfájlokat kicsomagolás.
 
-* ***&#60; path_to_data_folder >*** a könyvtár (és az elérési utat) a számítógépen, amely a tömörítetlen adatfájlokat tartalmaz.  
-* ***&#60; Hadoop-fürt tárfióknév >*** a HDInsight-fürthöz társított storage-fiók.
-* ***&#60; alapértelmezett tároló Hadoop-fürt >*** az alapértelmezett tároló, a fürt által használt. Vegye figyelembe, hogy az alapértelmezett tároló neve általában a neve megegyezik a fürthöz. Például ha a fürt neve a "abc123.azurehdinsight.net", az alapértelmezett tároló abc123.
-* ***&#60; tárfiók kulcsa >*** a fürt által használt tárfiók kulcsa.
+* ***< Path_to_data_folder >*** a könyvtár (és az elérési utat) a számítógépen, amely a tömörítetlen adatfájlokat tartalmaz.  
+* ***<storage account name of Hadoop cluster>*** A tárfiók a HDInsight-fürthöz társított.
+* ***<default container of Hadoop cluster>*** Az alapértelmezett tároló, a fürt által használt. Vegye figyelembe, hogy az alapértelmezett tároló neve általában a neve megegyezik a fürthöz. Például ha a fürt neve a "abc123.azurehdinsight.net", az alapértelmezett tároló abc123.
+* ***<storage account key>*** A fürt által használt tárfiók kulcsa.
 
 A parancssorba vagy egy Windows PowerShell-ablakot futtassa a következő két AzCopy parancs.
 
@@ -561,7 +561,7 @@ Egy adott fájl tartalmának megtekintéséhez fel **000000\_0**, használja a H
     hdfs dfs -copyToLocal wasb:///queryoutputdir/000000_0 C:\temp\tempfile
 
 > [!WARNING]
-> `copyToLocal`nagyon nagy méretű fájlok esetén lassú lehet, és nem ajánlott azokat való használatra.  
+> `copyToLocal` nagyon nagy méretű fájlok esetén lassú lehet, és nem ajánlott azokat való használatra.  
 > 
 > 
 

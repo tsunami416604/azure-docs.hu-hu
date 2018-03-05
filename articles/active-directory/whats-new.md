@@ -14,14 +14,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/15/2018
+ms.date: 02/26/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 7cdeb0a996835f976e6c80e9831479a2ff917434
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
-ms.translationtype: HT
+ms.openlocfilehash: a30b5d08377594b8ad7e10b63a23e2a9d168af9c
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Újdonságok az Azure Active Directoryban?
 
@@ -41,6 +41,256 @@ Az Azure AD fogadja folyamatos fejlesztéseket. Maradjon naprakész a legújabb 
 Ezen a lapon a havi frissül, ezért le újra rendszeresen.
 
 
+
+## <a name="february-2018"></a>2018. február
+ 
+
+### <a name="improved-navigation-for-managing-users-and-groups"></a>Továbbfejlesztett navigációs a felhasználók és csoportok kezelése
+
+**Típus:** tervezett változtatás  
+**Szolgáltatás kategória:** Directory kezelése  
+**A termék képesség:** könyvtár
+ 
+
+A navigációs élmény, a felhasználók és csoportok kezelése úgy alakították ki. Most lépjen directory áttekintésében közvetlenül a lista az összes olyan felhasználó, egyszerűbb hozzáférést a törölt felhasználók listáját. Is léphet directory áttekintésében közvetlenül az összes listájának, egyszerűbb felügyeleti beállítások hozzáférést. És is a címtár – Áttekintés lapon kereshet egy felhasználó, csoport, a vállalati alkalmazás vagy alkalmazás regisztrációja.
+ 
+
+---
+
+
+### <a name="availability-of-sign-ins-and-audit-reports-in-microsoft-azure-operated-by-21vianet-azure-china-21vianet"></a>Rendelkezésre állási bejelentkezéseket és a naplózási jelentések 21Vianet által működtetett Microsoft Azure-ban (Azure Kína 21Vianet)
+
+**Típus:** új szolgáltatás  
+**Szolgáltatás kategória:** állami felhők  
+**A termék képesség:** figyelés és jelentéskészítés
+ 
+
+Az Azure Active Directory a jelentések is elérhető (Azure Kína 21Vianet) példányok 21Vianet által működtetett Microsoft Azure-ban. Jelennek meg a következő naplók kapcsolódnak:
+
+- **Bejelentkezések tevékenységi naplóit** -tartalmazza az összes bejelentkezések a tenanthoz társított naplókat.
+
+- **Önkiszolgáló jelszó-vizsgálati naplókban** -magában foglalja az SSPR naplók.
+
+- **Könyvtár felügyeleti naplózási naplózza** -tartalmaz minden a címtár-kezeléssel kapcsolatos felhasználói felügyeleti, felügyeleti és más hasonló a naplók.
+
+Ezek a naplók az akkor is kaphat a hogyan működik a környezetben. A megadott adatokkal a következőket teheti:
+
+- Határozza meg, hogyan az alkalmazások és szolgáltatások ki van használva a felhasználók által.
+
+- Meggátolja, hogy a felhasználók a munka elvégzése elhárítása.
+
+Ezek a jelentések használatával kapcsolatos további információkért lásd: [Azure Active Directory reporting](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-azure-portal).
+ 
+
+---
+
+
+### <a name="use-report-reader-role-non-admin-role-to-view-azure-ad-activity-reports"></a>Használja a "Jelentés olvasó" szerepkört (a nem rendszergazda szerepkör) az Azure AD-tevékenység jelentések megtekintéséhez
+
+**Típus:** új szolgáltatás  
+**Szolgáltatás kategória:** jelentéskészítés  
+**A termék képesség:** figyelés és jelentéskészítés
+ 
+
+Naplózza az ügyfelek visszajelzés nem rendszergazdai szerepkörök kell rendelkeznie az Azure Active Directory-hozzáférés engedélyezése a része, mivel azt engedélyezte a felhasználók számára a "Jelentés olvasó" szerepkörben bejelentkezések hozzáférési és naplózási tevékenység belül az Azure portál, valamint a Graph API-k használatával. 
+
+További információ jelentésekkel tudnivalókat [Azure Active Directory reporting](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-azure-portal). 
+
+---
+ 
+
+
+### <a name="employeeid-claim-available-as-user-attribute-and-user-identifier"></a>EmployeeID jogcím elérhető felhasználói attribútum és a felhasználói azonosító
+
+**Típus:** új szolgáltatás  
+**Szolgáltatás kategória:** vállalati alkalmazások  
+**A termék képesség:** egyszeri bejelentkezés
+ 
+
+Konfigurálható **EmployeeID** a felhasználói azonosítót és a felhasználói attribútum tag felhasználók és a B2B vendégek SAML-alapú bejelentkezés alkalmazásokban a vállalati alkalmazás felhasználói felületén.
+
+További információkért lásd: [a SAML-jogkivonat a vállalati alkalmazások az Azure Active Directoryban kiállított jogcímek testreszabása](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-claims-customization).
+ 
+
+---
+
+
+### <a name="simplified-application-management-using-wildcards-in-azure-ad-application-proxy"></a>Helyettesítő karakterek használata az Azure AD alkalmazásproxy egyszerűsített felügyelet
+
+**Típus:** új szolgáltatás  
+**Szolgáltatás kategória:** App Proxy  
+**A termék képesség:** felhasználói hitelesítés
+ 
+
+Alkalmazás központi telepítésének megkönnyítése, és csökkentheti a felügyelettel járó többletterhelést, mostantól támogatjuk a helyettesítő karaktereket használó alkalmazások közzétételére képes. Helyettesítő alkalmazás közzététele, hajtsa végre a szabványos alkalmazás közzétételi folyamata, de használja egy helyettesítő karaktert a belső és külső URL-címek.
+
+További információkért lásd: [helyettesítő alkalmazásokat az Azure Active Directory alkalmazásproxyt](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-application-proxy-wildcard)
+
+ 
+
+---
+ 
+### <a name="new-cmdlets-to-support-configuration-of-application-proxy"></a>Az alkalmazásproxy konfiguráció támogatásához új parancsmagok
+
+**Típus:** új szolgáltatás  
+**Szolgáltatás kategória:** App Proxy  
+**A termék képesség:** Platform
+ 
+
+A legújabb kiadás AzureAD PowerShell Preview modul, amely lehetővé teszi az ügyfelek konfigurálása az alkalmazás Proxy alkalmazások PowerShell használatával új parancsmagokat tartalmazza.
+
+Az új parancsmagok az alábbiak: 
+
+- Get-AzureADApplicationProxyApplication
+- Get-AzureADApplicationProxyApplicationConnectorGroup
+- Get-AzureADApplicationProxyConnector
+- Get-AzureADApplicationProxyConnectorGroup
+- Get-AzureADApplicationProxyConnectorGroupMembers
+- Get-AzureADApplicationProxyConnectorMemberOf
+- New-AzureADApplicationProxyApplication
+- New-AzureADApplicationProxyConnectorGroup
+- Remove-AzureADApplicationProxyApplication
+- Remove-AzureADApplicationProxyApplicationConnectorGroup
+- Remove-AzureADApplicationProxyConnectorGroup
+- Set-AzureADApplicationProxyApplication
+- Set-AzureADApplicationProxyApplicationConnectorGroup
+- Set-AzureADApplicationProxyApplicationCustomDomainCertificate
+- Set-AzureADApplicationProxyApplicationSingleSignOn
+- Set-AzureADApplicationProxyConnector
+- Set-AzureADApplicationProxyConnectorGroup
+
+
+ 
+
+---
+ 
+
+### <a name="new-cmdlets-to-support-configuration-of-groups"></a>A csoportok konfiguráció támogatásához új parancsmagok
+
+**Típus:** új szolgáltatás  
+**Szolgáltatás kategória:** App Proxy  
+**A termék képesség:** Platform
+ 
+
+A legújabb kiadás AzureAD PowerShell-moduljának csoportok kezelése az Azure AD-parancsmagokat tartalmaz. Ezeket a parancsmagokat a AzureADPreview modul korábban elérhető volt, és most hozzáadódnak a AzureAD modul
+
+A csoport parancsmagok, amelyek az általános elérhetőség most kiadás az alábbiak: 
+
+- Get-AzureADMSGroup
+- New-AzureADMSGroup
+- Remove-AzureADMSGroup
+- Set-AzureADMSGroup
+- Get-AzureADMSGroupLifecyclePolicy
+- New-AzureADMSGroupLifecyclePolicy
+- Remove-AzureADMSGroupLifecyclePolicy
+- Add-AzureADMSLifecyclePolicyGroup
+- Remove-AzureADMSLifecyclePolicyGroup
+- Reset-AzureADMSLifeCycleGroup   
+- Get-AzureADMSLifecyclePolicyGroup
+ 
+
+---
+ 
+### <a name="a-new-release-of-azure-ad-connect-is-available"></a>Az Azure AD Connect egy új kiadásában érhető el
+
+**Típus:** új szolgáltatás  
+**Szolgáltatás kategória:** AD szinkronizálása  
+**A termék képesség:** Platform
+ 
+
+Az Azure AD Connect egy az elsődleges eszköz, amely szinkronizálja az adatokat az Azure AD között, valamint a helyileg üzemeltetett adatforrásainak, beleértve a Windows Server Active Directory és az LDAP.
+
+**Fontos**
+ 
+A build vezet be a séma- és szinkronizálási szabályok módosításokat. Az Azure AD Connect szinkronizálási szolgáltatás teljes importálást és teljes szinkronizálást lépéseket elindítja a frissítés után. Ez a viselkedés módosításának módjával kapcsolatos információkért lásd: [hogyan késlelteti a frissítés után teljes szinkronizálást](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-upgrade-previous-version#how-to-defer-full-synchronization-after-upgrade).
+
+Ebben a kiadásban a következő frissítéseinek és változásainak rendelkezik:
+
+**Javított problémák**
+
+- Hárítsa el időzítési az háttérfeladatok Paritition szűrés lap a következő lapra váltáskor.
+- Rögzített egy hiba, a hozzáférési kísérlet során a configdb elemre egyéni művelet miatt.
+- Sql-kapcsolat időtúllépés helyreállítás programhiba rögzített.
+- Ha a tanúsítványok SAN helyettesítő karaktereket is tartalmazó előfeltétel-ellenőrzés nem rögzített hiba.
+- Egy hiba, aminek következtében miiserver.exe összeomlási AAD connector exportálás során rögzített.
+- Rögzített hiba, mely rossz jelszó kísérlet aad-ben futó naplózva a tartományvezérlőn connect varázsló beállításainak módosításához
+
+**Új szolgáltatásait és fejlesztéseit**
+
+- A GDPR azt kell jelzik, hogy milyen típusú (telemetria, rendszerállapot, stb.), a Microsofttal megosztott felhasználói adatok részletes online dokumentáció mutató hivatkozásokat, és teszik lehetővé, hogy a beállítások módosítása.  Beadás az alábbiakkal:
+    - Adatok megosztása és adatvédelmi értesítést a tiszta telepítése EULA lapjának.
+
+    - Adatok megosztása és adatvédelmi értesítés a frissítési oldalon.
+
+    - Egy új további feladatot **adatvédelmi beállítások** ahol a felhasználó módosíthatja a beállításokat.
+ 
+- Telemetriai - rendszergazdák megváltoztathatja az osztályba tartozó adatok be-és kikapcsolása.
+
+- Az Azure AD Health data - rendszergazdák kell látogasson el a health portálon az Eszközállapot-beállítások szabályozásához. Ha a szolgáltatás házirend módosítva lett, az ügynökök olvassa el, és betartatni a.
+
+- Eszközműveletek visszaírási konfigurációs és a lap inicializálási folyamatjelző segítségével hozzá.
+
+- A HTML-jelentést és a teljes adatgyűjtést egy ZIP-szöveg az általános diagnosztika továbbfejlesztett / HTML-jelentést.
+
+- Továbbfejlesztett megbízhatóságának automatikus frissítése, és hozzá további telemetriai annak érdekében, hogy a kiszolgáló állapotának lehet meghatározni.
+
+- Rendelkezésre álló jogosultságok korlátozása AD-összekötő fiókhoz fiókokhoz. A varázsló új telepítések esetén korlátozza a kiemelt jogosultságú fiókok engedélyekkel rendelkezik a MSOL fiók MSOL-fiók létrehozása után. A módosítások befolyásolják az Expressz telepítés és egyéni telepítések fiókkal automatikus létrehozása.
+
+- Módosította a telepítő futtatásával az AADConnect tiszta telepítése rendszergazdai jogosultság szükséges.
+
+- Új segédprogram egy adott objektum szinkronizálási problémák elhárításához. Jelenleg a segédprogram ellenőrzi a következő:
+
+    - Szinkronizált felhasználói objektum és a felhasználói fiók az Azure AD-bérlő UserPrincipalName nem egyezik.
+  
+    - Ha az objektum szűrve van a szinkronizálás tartomány szűrés miatt
+  
+    - Ha az objektum szűrve van a szervezeti egység (OU) szűrés miatt szinkronizálás
+
+- Új segédprogram szinkronizálni az aktuális Jelszókivonat az egy adott felhasználói fiók a helyszíni Active Directoryban tárolja. A segédprogram nem követeli meg a jelszó módosítása. 
+ 
+
+---
+ 
+
+### <a name="applications-supporting-intune-app-protection-policies-added-for-use-with-azure-ad-application-based-conditional-access"></a>A vett támogató Intune alkalmazás adatvédelmi szabályzatok használata az Azure AD alkalmazás-alapú feltételes hozzáférés
+
+**Típus:** módosulás a szolgáltatás  
+**Szolgáltatás kategória:** feltételes hozzáférés  
+**A termék képesség:** identitás biztonsági és védelmi
+ 
+
+További alkalmazások alkalmazás-alapú feltételes hozzáférést támogató jelentek meg. Most hogy ingyenesen juthatnak az Office 365 és más Azure AD-csatlakoztatott felhőalapú alkalmazások jóváhagyott alkalmazások.
+
+A következő alkalmazások kerülnek. február végéig 
+
+- Microsoft PowerBI
+
+- Microsoft Launcher
+
+- Microsoft számlázás
+
+További információkért lásd:
+
+- [Jóváhagyott app követelmény](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement)
+- [Azure AD, alkalmazás-alapú feltételes hozzáférés](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam)
+
+ 
+
+---
+ 
+
+### <a name="terms-of-use-update-to-mobile-experience"></a>Használati feltételek frissítése mobil élmény 
+
+**Típus:** módosulás a szolgáltatás  
+**Szolgáltatás kategória:** használati feltételek  
+**A termék képesség:** irányítás
+ 
+
+Amikor megjelennek a használati feltételeket, most kattintson **problémába rendelkező? Kattintson ide**. Ez a hivatkozás megnyitja a használati feltételeket natív módon az eszközön. A betűméret a dokumentumban és az eszköz képernyő méretétől függetlenül nagyítás, és elolvasni a dokumentumot, igény szerint. 
+ 
+
+---
+ 
 ## <a name="january-2018"></a>2018. január
  
 

@@ -1,19 +1,19 @@
 ---
-title: "Adatbázis alkalmazások fejlesztése MySQL az Azure-adatbázis – áttekintés |} Microsoft Docs"
+title: "Adatbázis alkalmazások fejlesztése MySQL az Azure-adatbázis – áttekintés"
 description: "Bemutatja, hogy a fejlesztő kell követnie, MySQL Azure adatbázishoz való kapcsolódáshoz alkalmazáskód írásakor kialakítási szempontok"
 services: mysql
-author: v-chenyh
-ms.author: v-chenyh
-manager: jhubbard
+author: ajlam
+ms.author: andrela
+manager: kfile
 editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
-ms.date: 09/29/2017
-ms.openlocfilehash: 6a9bd8f88383b5186e470163bc67f9233172fd49
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 02/28/2018
+ms.openlocfilehash: 1a3f517221c7e22d87dec5d0fc6f11c1bed16505
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="application-development-overview-for-azure-database-for-mysql"></a>Alkalmazások fejlesztése MySQL az Azure-adatbázis – áttekintés 
 A cikk ismerteti, hogy a fejlesztő kell követnie, MySQL Azure adatbázishoz való kapcsolódáshoz alkalmazáskód írásakor tervezési szempontokat. 
@@ -35,7 +35,7 @@ Azure MySQL-adatbázis két különböző mechanizmusok használatával kezeli a
 ## <a name="security"></a>Biztonság
 Azure MySQL-adatbázis korlátozó hozzáférési, védelmet nyújtó adatok, konfigurálás felhasználók és szerepkörök és MySQL-adatbázis a figyelési tevékenységek forrásokat biztosít.
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Hitelesítés
 Azure MySQL-adatbázis támogatja a kiszolgáló hitelesítése a felhasználók és bejelentkezések.
 
 ## <a name="resiliency"></a>Resiliency

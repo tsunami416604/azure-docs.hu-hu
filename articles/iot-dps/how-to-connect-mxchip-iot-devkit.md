@@ -12,11 +12,11 @@ documentationcenter:
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 697196f725f0cb8ad3054bd8336b588c17dddc3d
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
-ms.translationtype: HT
+ms.openlocfilehash: 77c8a6a5e384d27dca2582cc0fedc2bd23c0592e
+ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="connect-mxchip-iot-devkit-to-azure-iot-hub-device-provisioning-service"></a>MXChip IoT DevKit csatlakozni az Azure IoT Hub eszköz-üzembehelyezési szolgáltatás
 
@@ -26,6 +26,8 @@ Ez a cikk ismerteti, hogyan DevKit konfigurálása annak érdekében, hogy az Io
 * X.509 tanúsítvány létrehozásához használt egyedi eszköz titkos kulcs (UDS)
 * Egyes eszköz regisztrálása
 * Ellenőrizze, hogy az eszköz regisztrálva van
+
+A [MXChip IoT DevKit](https://aka.ms/iot-devkit) egy mindent egy Arduino kompatibilis board gazdag perifériák és érzékelők van. A használatával fejleszthet [Arduino Visual Studio Code kiterjesztése](https://aka.ms/arduino). Az érkezett egy növekvő [projektek katalógus](https://microsoft.github.io/azure-iot-developer-kit/docs/projects/) hogy végigvezesse prototípus az eszközök internetes hálózatát (IoT) megoldások, amelyek a Microsoft Azure-szolgáltatások előnyeit.
 
 ## <a name="before-you-begin"></a>Előkészületek
 

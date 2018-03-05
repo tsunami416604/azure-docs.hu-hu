@@ -13,21 +13,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2017
 ms.author: apimpm
-ms.openlocfilehash: 885315b9f610d5f1703acd0f292f7b3347462b34
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: afa5c6a07432456d703020c0b8c5c3606478b8fe
+ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="how-to-secure-back-end-services-using-client-certificate-authentication-in-azure-api-management"></a>Az Azure API Management tanúsítványhitelesítés biztonságossá tétele a háttér-szolgáltatásaihoz ügyfél használatával
 API-kezelés lehetővé teszi a biztonságos hozzáférés a háttér-szolgáltatásra, az API-k az ügyféltanúsítványok. Ez az útmutató bemutatja az API-közzétevő portálon tanúsítványok kezelése és konfigurálása egy API-t egy tanúsítványt a háttér-szolgáltatás elérésére használhat.
 
 Tanúsítványok, az API Management REST API használatával történő kezelésével kapcsolatos információkért lásd: [Azure API Management REST API tanúsítvány entitás][Azure API Management REST API Certificate entity].
 
-## <a name="prerequisites"></a>Előfeltételek
+## <a name="prerequisites"> </a>Előfeltételek
 Ez az útmutató bemutatja, hogyan konfigurálhatja az API Management szolgáltatáspéldány ügyféltanúsítvány-alapú hitelesítés használatát a háttér-szolgáltatás számára az API-k eléréséhez. Ez a témakör a lépések végrehajtása előtt rendelkeznie kell a háttér-szolgáltatás ügyféltanúsítvány-alapú hitelesítés beállítása ([konfigurálása az Azure Websitesra tanúsítványhitelesítés tekintse meg a cikk][to configure certificate authentication in Azure WebSites refer to this article]), és a tanúsítvány feltöltése az API Management publisher portálon a tanúsítvány és a jelszó hozzáféréssel rendelkeznek.
 
-## <a name="step1"></a>Egy ügyfél-tanúsítvány feltöltése
+## <a name="step1"> </a>Egy ügyfél-tanúsítvány feltöltése
 Első lépésként kattintson a **Közzétevő portál** elemre az API Management szolgáltatás Azure Portalján. Ezzel továbblép az API Management közzétevő portáljára.
 
 ![API-közzétevő portál][api-management-management-console]
@@ -58,7 +58,7 @@ Kattintson a **feltöltése** töltse fel a tanúsítványt.
 > 
 > 
 
-![A tanúsítvány feltöltése][api-management-certificate-uploaded]
+![Tanúsítvány feltöltve][api-management-certificate-uploaded]
 
 A tanúsítvány a feltöltést követően megjelenik az **ügyféltanúsítványok** fülre. Ha több tanúsítvány, akkor a tulajdonos jegyezze fel, vagy az ujjlenyomat az utolsó négy számjegyét, válassza ki a tanúsítványt egy API-t a tanúsítványok, konfigurálásakor, az alábbi szabályozott módon használt [konfigurálása egy API-t használja a ügyféltanúsítvány a átjáró hitelesítési] [ Configure an API to use a client certificate for gateway authentication] szakasz.
 
@@ -66,7 +66,7 @@ A tanúsítvány a feltöltést követően megjelenik az **ügyféltanúsítván
 > 
 > 
 
-## <a name="step1a"></a>Egy ügyfél-tanúsítvány törlése
+## <a name="step1a"> </a>Egy ügyfél-tanúsítvány törlése
 Törli a tanúsítványt, kattintson a **törlése** mellett a kívánt tanúsítványt.
 
 ![Tanúsítvány törlése][api-management-certificate-delete]
@@ -79,7 +79,7 @@ Ha a tanúsítvány egy API-t használja, majd egy figyelmeztetés képernyő je
 
 ![Törlés megerősítése][api-management-confirm-delete-policy]
 
-## <a name="step2"></a>Átjáró hitelesítéshez használandó ügyféltanúsítványt API konfigurálása
+## <a name="step2"> </a>Átjáró hitelesítéshez használandó ügyféltanúsítványt API konfigurálása
 Kattintson a **API-k** a a **API Management** a bal oldali menüben kattintson a kívánt API nevére, majd kattintson a **biztonsági** fülre.
 
 ![API-biztonsági][api-management-api-security]
@@ -114,13 +114,6 @@ Ha önaláírt tanúsítványokat használ, szüksége lesz ahhoz, hogy az API M
 $context = New-AzureRmApiManagementContext -resourcegroup 'ContosoResourceGroup' -servicename 'ContosoAPIMService'
 New-AzureRmApiManagementBackend -Context  $context -Url 'https://contoso.com/myapi' -Protocol http -SkipCertificateChainValidation $true
 ```
-
-## <a name="next-steps"></a>Következő lépések
-Biztonságossá tehető a háttérszolgáltatás, például HTTP alap vagy megosztott titkos hitelesítés, a további információk: a következő videó.
-
-> [!VIDEO https://channel9.msdn.com/Blogs/AzureApiMgmt/Last-mile-Security/player]
-> 
-> 
 
 [api-management-management-console]: ./media/api-management-howto-mutual-certificates/api-management-management-console.png
 [api-management-security-client-certificates]: ./media/api-management-howto-mutual-certificates/api-management-security-client-certificates.png

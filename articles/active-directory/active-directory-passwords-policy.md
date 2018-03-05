@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 01/11/2018
 ms.author: joflore
 ms.custom: it-pro;seohack1
-ms.openlocfilehash: ade7f1d3c868c2ce6ccedbbf11aaf7dc54706cff
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: 48ec84cd01126f431f22457a4ace451e4d9bce42
+ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Jelszóházirendek és -korlátozások az Azure Active Directoryban
 
@@ -86,8 +86,8 @@ Egy egy-kapu házirendhez a hitelesítési adatok, például az e-mail címet eg
 | Tulajdonság | UserPrincipalName követelmények |
 | --- | --- |
 | Karakterből állhat |<ul> <li>A – Z</li> <li>a - z</li><li>0 – 9</li> <li> . - \_ ! \# ^ \~</li></ul> |
-| Karakterek nem használhatók. |<ul> <li>A "@", amely a felhasználónév, a tartomány nem az elválasztó karaktert.</li> <li>A pont karakter nem tartalmazhat "." közvetlenül megelőző a "@" szimbólummal</li></ul> |
-| Hossz megkötések |<ul> <li>A teljes hossza nem haladhatja meg a 113 karakter</li><li>Mielőtt legfeljebb 64 karakter lehet a "@" szimbólummal</li><li>Után legfeljebb 48 karakterből állhat a "@" szimbólummal</li></ul> |
+| Karakterek nem használhatók. |<ul> <li>A "\@ \" a felhasználónév, a tartomány nem az elválasztó karaktert.</li> <li>A pont karakter nem tartalmazhat "." közvetlenül megelőző a "\@ \" szimbólum</li></ul> |
+| Hossz megkötések |<ul> <li>A teljes hossza nem haladhatja meg a 113 karakter</li><li>Mielőtt legfeljebb 64 karakter lehet a "\@ \" szimbólum</li><li>Után legfeljebb 48 karakterből állhat a "\@ \" szimbólum</li></ul> |
 
 ## <a name="password-policies-that-only-apply-to-cloud-user-accounts"></a>Jelszó-házirenddel, csak felhőalapú felhasználói fiókokhoz
 
@@ -96,7 +96,7 @@ A következő táblázat ismerteti a rendelkezésre álló jelszó házirend-be�
 | Tulajdonság | Követelmények |
 | --- | --- |
 | Karakterből állhat |<ul><li>A – Z</li><li>a - z</li><li>0 – 9</li> <li>@ # $ % ^ & * - _ ! + = [ ] { } &#124; \ : ‘ , . ? / ` ~ “ ( ) ;</li></ul> |
-| Karakterek nem használhatók. |<ul><li>Unicode-karaktereket.</li><li>Szóközöket.</li><li> Csak az erős jelszavak: egy karaktersor nem tartalmazhat "." közvetlenül megelőző a "@" szimbólummal.</li></ul> |
+| Karakterek nem használhatók. |<ul><li>Unicode-karaktereket.</li><li>Szóközöket.</li><li> Csak az erős jelszavak: egy karaktersor nem tartalmazhat "." közvetlenül megelőző a "\@ \" szimbólum.</li></ul> |
 | Jelszó-korlátozások |<ul><li>Legalább 8 karakter, és legfeljebb 16 karakter hosszúságú lehet.</li><li>Csak az erős jelszavak: a következő három kívüli négy igényel:<ul><li>Kisbetűk.</li><li>Nagybetűs karaktereket.</li><li>Számok (0-9).</li><li>A szimbólumok (lásd az előző Jelszó korlátozások).</li></ul></li></ul> |
 | Jelszavak érvényességi időtartamát |<ul><li>Alapértelmezett érték: **90** nap.</li><li>Érték konfigurálható használatával a `Set-MsolPasswordPolicy` az Active Directory modul Windows Powershellhez készült Azure parancsmagjával.</li></ul> |
 | Jelszó lejáratáról szóló értesítés |<ul><li>Alapértelmezett érték: **14** napig (lejárt jelszó).</li><li>Érték konfigurálható használatával a `Set-MsolPasswordPolicy` parancsmag.</li></ul> |
@@ -124,24 +124,24 @@ A kezdéshez kell [töltse le és telepítse az Azure AD PowerShell modult](http
 1. A Windows PowerShell csatlakozni a vállalati rendszergazda hitelesítő adataival.
 2. Hajtsa végre a következő parancsok egyikét:
 
-   * Ha egy felhasználó jelszó soha nem jár le van állítva megtekintéséhez futtassa a következő parancsmag által megadott egyszerű felhasználónév használatával (például  *aprilr@contoso.onmicrosoft.com* ) vagy a felhasználó azonosítója az ellenőrizni kívánt:`Get-MSOLUser -UserPrincipalName <user ID> | Select PasswordNeverExpires`
-   * Hogy a **jelszó sohasem jár le** beállítása az összes felhasználó számára, futtassa az alábbi parancsmagot:`Get-MSOLUser | Select UserPrincipalName, PasswordNeverExpires`
+   * Ha egy felhasználó jelszó soha nem jár le van állítva megtekintéséhez futtassa a következő parancsmag által megadott egyszerű felhasználónév használatával (például  *aprilr@contoso.onmicrosoft.com* ) vagy a felhasználó azonosítója az ellenőrizni kívánt: `Get-MSOLUser -UserPrincipalName <user ID> | Select PasswordNeverExpires`
+   * Hogy a **jelszó sohasem jár le** beállítása az összes felhasználó számára, futtassa az alábbi parancsmagot: `Get-MSOLUser | Select UserPrincipalName, PasswordNeverExpires`
 
 ### <a name="set-a-password-to-expire"></a>Állítsa be a jelszó lejárati dátuma
 
 1. A Windows PowerShell csatlakozni a vállalati rendszergazda hitelesítő adataival.
 2. Hajtsa végre a következő parancsok egyikét:
 
-   * Egy felhasználó jelszavának megadásához, hogy a jelszó lejárati az egyszerű felhasználónév vagy a felhasználó a felhasználói azonosító használatával futtassa a következő parancsmagot:`Set-MsolUser -UserPrincipalName <user ID> -PasswordNeverExpires $false`
-   * Az összes olyan felhasználó jelszavának beállítása a szervezeten belül, hogy a várósorban, használja a következő parancsmagot:`Get-MSOLUser | Set-MsolUser -PasswordNeverExpires $false`
+   * Egy felhasználó jelszavának megadásához, hogy a jelszó lejárati az egyszerű felhasználónév vagy a felhasználó a felhasználói azonosító használatával futtassa a következő parancsmagot: `Set-MsolUser -UserPrincipalName <user ID> -PasswordNeverExpires $false`
+   * Az összes olyan felhasználó jelszavának beállítása a szervezeten belül, hogy a várósorban, használja a következő parancsmagot: `Get-MSOLUser | Set-MsolUser -PasswordNeverExpires $false`
 
 ### <a name="set-a-password-to-never-expire"></a>Állítsa be a jelszó soha nem jár le
 
 1. A Windows PowerShell csatlakozni a vállalati rendszergazda hitelesítő adataival.
 2. Hajtsa végre a következő parancsok egyikét:
 
-   * A jelszó soha nem jár le egy felhasználó beállítását, az egyszerű felhasználónév vagy a felhasználó a felhasználói azonosító használatával futtassa az alábbi parancsmagot:`Set-MsolUser -UserPrincipalName <user ID> -PasswordNeverExpires $true`
-   * Az összes olyan felhasználó jelszavának beállítása nem jár le egy szervezet, futtassa a következő parancsmagot:`Get-MSOLUser | Set-MsolUser -PasswordNeverExpires $true`
+   * A jelszó soha nem jár le egy felhasználó beállítását, az egyszerű felhasználónév vagy a felhasználó a felhasználói azonosító használatával futtassa az alábbi parancsmagot: `Set-MsolUser -UserPrincipalName <user ID> -PasswordNeverExpires $true`
+   * Az összes olyan felhasználó jelszavának beállítása nem jár le egy szervezet, futtassa a következő parancsmagot: `Get-MSOLUser | Set-MsolUser -PasswordNeverExpires $true`
 
    > [!WARNING]
    > Jelszavak beállítása `-PasswordNeverExpires $true` életkor alapján még a `pwdLastSet` attribútum. Beállíthatja a felhasználói jelszavakat nem jár le, és 90 nap folytassa, ha a jelszavak lejárnak. Alapján a `pwdLastSet` attribútumot, ha módosítja a lejárati `-PasswordNeverExpires $false`, jelszavak, amelyek rendelkeznek egy `pwdLastSet` régebbi, mint 90 nappal a felhasználónak a módosításukra, a következő bejelentkezéskor. Ez a módosítás hatással lehet a felhasználók nagy számú. 

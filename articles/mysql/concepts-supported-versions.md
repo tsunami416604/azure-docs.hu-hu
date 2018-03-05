@@ -1,22 +1,22 @@
 ---
-title: "Támogatott verziók Azure adatbázis MySQL |} Microsoft Docs"
+title: "Támogatott verziók a MySQL az Azure-adatbázis"
 description: "A témakör ismerteti a támogatott verziók Azure adatbázis MySQL."
 services: mysql
-author: v-chenyh
-ms.author: v-chenyh
-manager: jhubbard
+author: ajlam
+ms.author: andrela
+manager: kfile
 editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
-ms.date: 11/02/2017
-ms.openlocfilehash: dc9f98218a95f1f24a45f208b0da7b945f4c9663
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.date: 02/28/2018
+ms.openlocfilehash: 1ee0326148be08d6bb151acad5f8e472b25a2a8b
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="supported-azure-database-for-mysql-server-versions"></a>Támogatott Azure-adatbázis a MySQL server-verziók
-Azure MySQL-adatbázis kidolgozott MySQL Community Edition [MySQL Community Edition](https://www.mysql.com/products/community/), a InnoDB használata.  Azure MySQL-adatbázis jelenleg az alábbi verzióit támogatja:
+A MySQL adatbázis Azure identitáskezelési [MySQL Community Edition](https://www.mysql.com/products/community/), a InnoDB használata.  Azure MySQL-adatbázis jelenleg az alábbi verzióit támogatja:
 
 ## <a name="mysql-version-5635"></a>MySQL-verzió 5.6.35
 Tekintse meg a MySQL 5.6.35 további fejlesztések és javításaival kapcsolatos MySQL [dokumentáció] (https://dev.mysql.com/doc/relnotes/mysql/5.6/en/news-5-6-35.html).
@@ -25,8 +25,8 @@ Tekintse meg a MySQL 5.6.35 további fejlesztések és javításaival kapcsolato
 Tekintse meg a MySQL [dokumentáció] (https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-18.html) fejlesztései és javításaival kapcsolatos további a MySQL 5.7.18.
 
 ## <a name="managing-updates-and-upgrades"></a>Kezelése frissítések és verziófrissítések
-Azure MySQL-adatbázis automatikusan kezeli a alverzió frissítések javítását. Jelenleg a nyilvános előzetes főverzió frissítés nem támogatott. Frissítés a MySQL 5.6 MySQL 5.7 például nem támogatott.
+Azure MySQL-adatbázis automatikusan kezeli a alverzió frissítések javítását. Főverzió frissítések, például MySQL 5.6 verzióra történő frissítése MySQL 5.7 nem támogatottak.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Adott erőforrásokra vonatkozó információkból tájékoódhat kvótái és korlátai alapján a **szolgáltatásréteg**, lásd: [Szolgáltatásszinteken](./concepts-service-tiers.md)
+Adott erőforrásokra vonatkozó információkból tájékoódhat kvótái és korlátai alapján a **szolgáltatásréteg**, lásd: [Szolgáltatásszinteken](./concepts-pricing-tiers.md)

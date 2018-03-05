@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 10/23/2017
 ms.author: byvinyal
-ms.openlocfilehash: 22e05af889b4e792dcc6f6fc438e8a58674b9f0e
-ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
+ms.openlocfilehash: 551f34436dfeac14bb6e8676dd7c9b10d30a3af3
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="azure-app-service-static-ip-restrictions"></a>Az Azure App Service statikus IP-korlátozások #
 
@@ -26,7 +26,7 @@ Az IP-korlátozásokat engedélyezi annak meghatározását, amelyek jogosultak 
 
 Amikor az alkalmazás kérelem ügyfélről történik, az IP-címet az engedélyezési listán képest értékeli ki. Ha az IP-cím nem szerepel a listában, az alkalmazás a válaszol-e egy [HTTP 403](https://en.wikipedia.org/wiki/HTTP_403) állapotkódot.
 
-Az IP-korlátozásokat a Web.config fájl, amely az alkalmazás akkor futási időben vannak definiálva. Bizonyos körülmények között néhány modul előfordulhat, hogy előtt kell végrehajtani a HTTP-feldolgozási folyamat IP-korlátozások logika. Ha ez történik, egy másik HTTP-hibakód: a kérés nem teljesíthető.
+Az IP-korlátozásokat a Web.config fájl, amely az alkalmazás akkor futási időben vannak definiálva (pontosabban, korlátozások engedélyezett IP-címek az applicationHost.config fájlban egy sor szúrja be, ha is engedélyezett IP-címek egy készletének a web.config fájlban, akkor lépnek a sorrend). Bizonyos körülmények között néhány modul előfordulhat, hogy előtt kell végrehajtani a HTTP-feldolgozási folyamat IP-korlátozások logika. Ha ez történik, egy másik HTTP-hibakód: a kérés nem teljesíthető.
 
 Az IP-korlátozásokat a rendszer a ugyanazon alkalmazás terv szolgáltatáspéldány be az alkalmazáshoz hozzárendelt alapján értékeli ki.
 

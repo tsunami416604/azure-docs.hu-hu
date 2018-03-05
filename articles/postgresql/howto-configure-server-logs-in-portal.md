@@ -1,19 +1,19 @@
 ---
-title: "Konfigurálja, és el a kiszolgáló naplóiban PostgreSQL az Azure portálon |} Microsoft Docs"
+title: "Konfigurálja, és hozzáférést kiszolgálónaplókban PostgreSQL Azure-portálon"
 description: "A cikkből megtudhatja, hogyan lehet konfigurálni és a kiszolgálói naplók az Azure-adatbázis hozzáférését az Azure portálról PostgreSQL."
 services: postgresql
 author: rachel-msft
 ms.author: raagyema
-manager: jhubbard
+manager: kfile
 editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
-ms.date: 10/19/2017
-ms.openlocfilehash: a2f67b21293a1a0456b27cad9043be01fdd5274a
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.date: 02/28/2018
+ms.openlocfilehash: aa9823c65b342f922ca78a51ecd3055dfac62869
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="configure-and-access-server-logs-in-the-azure-portal"></a>Konfigurálja, és hozzáférést kiszolgálónaplókban olvashatók az Azure-portálon
 
@@ -36,19 +36,13 @@ A lekérdezés naplók és a hibanaplókat való hozzáférés konfigurálása.
 
 4. Válassza ki a címsor **kattintson ide a naplók engedélyezése és konfigurálása a napló paraméterek** server paraméterek megtekintéséhez.
 
-5. Válassza ki a **megjelenítése további** bővítő felhasználható paraméterek egy kiterjesztett listájának megtekintéséhez. 
-
-   További információ a definíciók paraméterek dokumentációja a PostgreSQL [jelentéskészítési és naplózási hiba](https://www.postgresql.org/docs/current/static/runtime-config-logging.html).
-
-   ![Napló paraméterek rövid listája. Kattintson a több hosszú ideig megjelenítése](./media/howto-configure-server-logs-in-portal/2-show-more.png)
-
-6. Módosítsa a paramétereket, akkor módosítania kell. Ebben a munkamenetben összes módosítások vannak kiemelve lila szín jelöli.
+5. Módosítsa a paramétereket, akkor módosítania kell. Ebben a munkamenetben összes módosítások vannak kiemelve lila szín jelöli.
 
    Ha módosította a paramétereket, akkor kattinthat **mentése**. Illetve **elvetése** a módosításokat. 
 
    ![Paraméterek módosításainak mentése vagy elvetése listája túl hosszú](./media/howto-configure-server-logs-in-portal/3-save-discard.png)
 
-7. A naplók listája gombra kattintva térjen vissza a **Bezárás gomb** (X ikonra) a a **Server paraméterek** lap.
+6. A naplók listája gombra kattintva térjen vissza a **Bezárás gomb** (X ikonra) a a **Server paraméterek** lap.
 
 ## <a name="view-list-and-download-logs"></a>Lista megtekintése és a naplók letöltése
 Naplózás megkezdése után megtekintheti a naplók listáját, és töltse le a kiszolgáló naplóiban panelen külön naplófájlba. 

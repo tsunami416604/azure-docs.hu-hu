@@ -12,13 +12,13 @@ ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.topic: article
-ms.date: 07/12/2017
+ms.date: 02/27/2018
 ms.author: billmath
-ms.openlocfilehash: 9a4f85b88959fb90f156779d09d168e0ddbe3da5
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 8003951fb0c80bda56de4718cbe94526dc118b61
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="topologies-for-azure-ad-connect"></a>Azure AD Connect-topológiák
 Ez a cikk ismerteti a különböző helyszíni és az Azure AD Connect szinkronizálási szolgáltatás, a kulcs integrációs megoldást használó Azure Active Directory (Azure AD) topológiákat. Ez a cikk egyaránt támogatott, és nem támogatott konfigurációkat tartalmazza.
@@ -144,7 +144,9 @@ Ebben a topológiában egy Azure AD Connect szinkronizálási kiszolgáló csatl
 
 A DNS-tartomány regisztrálni lehet egyetlen Azure AD-bérlő. Az UPN-EK a felhasználók a helyszíni Active Directory-példányban is használnia kell a különálló névtereket. Például a fenti kép három különálló UPN-utótagot regisztrált a helyszíni Active Directory-példányban: contoso.com, fabrikam.com és wingtiptoys.com. Az egyes a helyszíni Active Directory tartományi felhasználók használja egy másik névtérből.
 
-Az Azure AD bérlő példányai között nincs GALSync van. A címjegyzék az Exchange Online és Skype üzleti látható csak felhasználók ugyanannak a bérlőnek.
+>[!NOTE]
+>Globális cím lista szinkronizálási (GalSync) nem automatikusan történik, ebben a topológiában, és további egyéni MIM végrehajtása minden egyes bérlő legyen egy teljes globális cím lista (GAL) az Exchange Online és Skype vállalati online teszi szükségessé.
+
 
 Ez a topológia rendelkezik-e a következő egyéb korlátozások a támogatott forgatókönyveket:
 

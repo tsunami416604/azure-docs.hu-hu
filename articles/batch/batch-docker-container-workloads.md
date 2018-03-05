@@ -8,13 +8,13 @@ ms.service: batch
 ms.devlang: multiple
 ms.topic: article
 ms.workload: na
-ms.date: 12/01/2017
+ms.date: 02/26/2018
 ms.author: danlep
-ms.openlocfilehash: 2fa5f9335a4d00f489f11c0db23322ab971a224f
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: a26d786ffcb74bb28fb9bd065e49398d52d2b662
+ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="run-container-applications-on-azure-batch"></a>Azure Batch tároló alkalmazások futtatásához
 
@@ -27,7 +27,7 @@ Ez a cikk Docker-tároló fogalmakat és a Batch-készlet és a .NET SDK haszná
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* SDK-verzió: A kötegelt SDK-k támogatása tároló képek a következő verziók:
+* SDK-verzió: A kötegelt SDK-k támogatása tároló képek től a következő verziók:
     * Batch REST API verziója 2017-09-01.6.0
     * Batch .NET SDK verzió 8.0.0
     * Batch Python SDK version 4.0
@@ -87,7 +87,7 @@ Az alkalmazás kódjában adjon meg egy hivatkozást a Virtuálisgép-lemezkép 
 
     A lemezkép-azonosító az Azure portálról beszerzéséhez nyissa meg a **összes erőforrás**, válassza ki az egyéni lemezképet, és a a **áttekintése** szakasz a kép panelről, másolja át az elérési utat **erőforrás-azonosító**.
 
-* Használata egy [Azure piactér](https://azuremarketplace.microsoft.com/marketplace/apps/category/compute?page=1&subcategories=windows-based) lemezképet, adja meg a lemezkép leíró paraméterek csoportja: a ajánlattípus, a közzétevő, az SKU és a képet, a [virtuálisgép-rendszerképek listája](batch-linux-nodes.md#list-of-virtual-machine-images):
+* Használata egy [Azure piactér](https://azuremarketplace.microsoft.com/marketplace/apps/category/compute?page=1&subcategories=windows-based) lemezképet, adja meg a lemezkép leíró paraméterek csoportja: a közzétevő ajánlattípus, SKU, és az képet, a [virtuálisgép-rendszerképek listája](batch-linux-nodes.md#list-of-virtual-machine-images):
 
   ```csharp
   // Provide a reference to an Azure Marketplace image for
@@ -239,7 +239,7 @@ CloudTask containerTask = new CloudTask (
 
 ## <a name="next-steps"></a>További lépések
 
-* Kötegelt, áttekintéséért lásd: [Develop nagyméretű párhuzamos számítási solutions a kötegelt](batch-api-basics.md).
+* Lásd még: a [kötegelt hajógyárnak](https://github.com/Azure/batch-shipyard) eszközkészletét tároló munkaterhelések Azure Batch keresztül egyszerű telepítés [hajógyárnak receptet](https://github.com/Azure/batch-shipyard/tree/master/recipes).
 
 * A telepítéssel és használattal Docker CE Linux további információkért lásd: a [Docker](https://docs.docker.com/engine/installation/) dokumentációját.
 

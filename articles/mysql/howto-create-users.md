@@ -1,19 +1,19 @@
 ---
-title: "Felhasználók Azure-adatbázis létrehozása a MySQL-kiszolgáló |} Microsoft Docs"
+title: "Felhasználók Azure-adatbázis létrehozása a MySQL-kiszolgáló"
 description: "Ez a cikk ismerteti, hogyan kommunikál a MySQL-kiszolgáló egy Azure-adatbázis új felhasználói fiókokat hozhat létre."
 services: mysql
 author: jasonwhowell
 ms.author: jasonh
 editor: jasonwhowell
-manager: jhubbard
+manager: kfile
 ms.service: mysql-database
 ms.topic: article
-ms.date: 11/27/2017
-ms.openlocfilehash: 8adb74e11570ac60ad3b898b737cff4699f2bbf1
-ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
+ms.date: 02/28/2018
+ms.openlocfilehash: 9fd592efe48adefc6aca7a6caea24f546da23fa5
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="create-users-in-azure-database-for-mysql-server"></a>Felhasználók Azure-adatbázis létrehozása a MySQL-kiszolgáló 
 Ez a cikk ismerteti, hogyan hozhat létre felhasználók MySQL-kiszolgáló egy Azure-adatbázis.
@@ -80,10 +80,10 @@ A MySQL-kiszolgálóhoz tartozó Azure-adatbázis létrehozása után az első k
 5. Jelentkezzen be a kiszolgálóra, adja meg a kijelölt adatbázis, az új felhasználónevet és jelszót használja. Ez a példa bemutatja a mysql parancssorban. Ezzel a paranccsal kéri a jelszót a felhasználónévvel. Cserélje le a saját kiszolgáló neve, az adatbázisnév és a felhasználó neve.
 
    ```azurecli-interactive
-   mysql --host myserver4demo.mysql.database.azure.com --database testdb --user db_user@myserver4demo -p
+   mysql --host mydemoserver.mysql.database.azure.com --database testdb --user db_user@mydemoserver -p
    ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Nyissa meg a tűzfalon a IP-címekhez, hogy azok tudjanak csatlakozni az új felhasználók gépek: [hozzon létre és kezelheti az Azure-adatbázis tűzfalszabályok MySQL az Azure portál használatával](howto-manage-firewall-using-portal.md) vagy [Azure CLI](howto-manage-firewall-using-cli.md).
 
 Felhasználóifiók-kezelés kapcsolatos további információkért tekintse meg a termékhez tartozó dokumentáció MySQL [felhasználóifiók-kezelés](https://dev.mysql.com/doc/refman/5.7/en/user-account-management.html), [ADJON szintaxis](https://dev.mysql.com/doc/refman/5.7/en/grant.html), és [jogosultságokkal](https://dev.mysql.com/doc/refman/5.7/en/privileges-provided.html).

@@ -1,19 +1,19 @@
 ---
-title: "Konfigurálja és Azure-adatbázis el a kiszolgáló naplóiban MySQL az Azure portálon |} Microsoft Docs"
+title: "Konfigurálja, és hozzáférést kiszolgálónaplókban az Azure Database MySQL az Azure portálon"
 description: "A cikkből megtudhatja, hogyan lehet konfigurálni és MySQL az Azure portálról a kiszolgálói naplók az Azure-adatbázis hozzáférését."
 services: mysql
 author: rachel-msft
 ms.author: raagyema
-manager: jhubbard
+manager: kfile
 editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
-ms.date: 10/19/2017
-ms.openlocfilehash: 89674c133b458c16fbdacd771be24830624dde7c
-ms.sourcegitcommit: 2d1153d625a7318d7b12a6493f5a2122a16052e0
+ms.date: 02/28/2018
+ms.openlocfilehash: b68d92688b18e69f74c0e0a9b2e572795a288579
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="configure-and-access-server-logs-in-the-azure-portal"></a>Konfigurálja, és hozzáférést kiszolgálónaplókban olvashatók az Azure-portálon
 
@@ -35,24 +35,18 @@ A MySQL lassú lekérdezési naplóba való hozzáférés konfigurálása.
 
 4. Válassza ki a címsor **kattintson ide a naplók engedélyezése és konfigurálása a napló paraméterek** server paraméterek megtekintéséhez.
 
-5. Válassza ki a **megjelenítése további** bővítő felhasználható paraméterek egy kiterjesztett listájának megtekintéséhez. 
-
-   További információ a definíciók paraméterek dokumentációja a MySQL [naplók](https://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html).
-
-   ![Kattintson a megjelenítés több hosszabb lista esetén](./media/howto-configure-server-logs-in-portal/2-show-more.png)
-
-6. Módosítsa a paramétereket, akkor módosítania kell. Ebben a munkamenetben összes módosítások vannak kiemelve lila szín jelöli. 
+5. Módosítsa a paramétereket, akkor módosítania kell. Ebben a munkamenetben összes módosítások vannak kiemelve lila szín jelöli. 
 
    Ha módosította a paramétereket, akkor kattinthat **mentése**. Illetve **elvetése** a módosításokat.
 
    ![Kattintson a Mentés gombra, vagy vesse el](./media/howto-configure-server-logs-in-portal/3-save-discard.png)
 
-7. A naplók listája gombra kattintva térjen vissza a **Bezárás gomb** (X ikonra) a a **Server paraméterek** lap.
+6. A naplók listája gombra kattintva térjen vissza a **Bezárás gomb** (X ikonra) a a **Server paraméterek** lap.
 
 ## <a name="view-list-and-download-logs"></a>Lista megtekintése és a naplók letöltése
 Naplózás megkezdése után megtekintheti a naplók listáját, és töltse le a kiszolgáló naplóiban panelen külön naplófájlba. 
 
-1. Nyissa meg az Azure-portálon.
+1. Nyissa meg az Azure Portalt.
 
 2. Válassza ki a MySQL-kiszolgálóhoz tartozó Azure-adatbázis.
 
@@ -70,7 +64,7 @@ Naplózás megkezdése után megtekintheti a naplók listáját, és töltse le 
    ![Kattintson a Letöltés ikon](./media/howto-configure-server-logs-in-portal/5-download.png)
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - Lásd: [hozzáférést kiszolgálónaplókban olvashatók a CLI](howto-configure-server-logs-in-cli.md) megtudhatja, hogyan programozott módon a naplók letöltéséhez.
 - További információ [kiszolgálónaplókban](concepts-server-logs.md) MySQL az Azure-adatbázisban. 
 - A paraméter meghatározásokat és MySQL naplózási kapcsolatos további információkért tekintse meg a MySQL-dokumentáció [naplók](https://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html).

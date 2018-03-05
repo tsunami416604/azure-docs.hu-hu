@@ -15,11 +15,11 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 07/21/2017
 ms.author: LADocs; jehollan
-ms.openlocfilehash: f0376070a8bec7d97f54e9a198d5d67a9751334c
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 0dc8bc81ca6125d40d1784ce39fd0facaf9e736a
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="monitor-status-set-up-diagnostics-logging-and-turn-on-alerts-for-azure-logic-apps"></a>Állapotának figyelésére, diagnosztikai naplózás beállítása és az Azure Logic Apps riasztás bekapcsolása
 
@@ -131,7 +131,7 @@ Található, és tekintse meg az eseményeket a Logic Apps alkalmazást, példá
 
 5. A keresési mezőbe, adjon meg egy mező található, és nyomja le az ENTER kívánt **Enter**. Amikor elkezdi beírni, OMS megjeleníti a lehetséges találatok és műveletek közül választhat. 
 
-   Például az első 10 eseményeket, amelyek történtek található, adja meg, és válassza a keresési lekérdezés: **kategória = WorkflowRuntime |} felső 10**
+   Például az első 10 eseményeket, amelyek történtek található, adja meg, és válassza a keresési lekérdezés: **kategóriában keresse == "WorkflowRuntime" |} 10 korlátozása**
 
    ![Adja meg a keresési karakterláncot](media/logic-apps-monitor-your-logic-apps/oms-start-query.png)
 

@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: performance
 ms.date: 10/23/2017
 ms.author: joeyong;barbkess;kavithaj
-ms.openlocfilehash: 122646f73b6e4e7c62eb0e6d4b6672b603d8acb2
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: c76fb73c9beda93c407d1af29e157682c7fe58c0
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="resource-classes-for-workload-management"></a>Erőforrás-osztályok a munkaterhelés-kezelés
 Útmutató az erőforrás-osztályok az egyidejű futtatását, és számítási erőforrásokat az Azure SQL Data Warehouse lekérdezések párhuzamos lekérdezések kezeli.
@@ -85,6 +85,11 @@ EXEC sp_droprolemember 'largerc', 'loaduser';
 
 A szolgáltatás-rendszergazda erőforrásosztály rögzített, és nem módosítható.  A szolgáltatás-rendszergazda az a felhasználó a telepítési folyamat során létrehozott.
 
+> [!NOTE]
+> Felhasználók vagy csoportok Active Directory-rendszergazda meghatározott egyaránt szolgáltatás-rendszergazdák.
+>
+>
+
 ### <a name="default-resource-class"></a>Alapértelmezett erőforrásosztály
 Alapértelmezés szerint minden felhasználó tagja a kis erőforrásosztály **smallrc**. 
 
@@ -126,7 +131,7 @@ Removed as these two are not confirmed / supported under SQLDW
 Javasoljuk, hogy egy adott típusú lekérdezés futtatására van kijelölve a felhasználó létrehozásának vagy betölteni az operations. Adja meg, hogy a felhasználó egy állandó erőforrásosztály gyakran erőforrásosztály módosítása helyett. Fényében, hogy a statikus erőforrás osztályok, melynek értéke a munkaterhelések általános szabályozáshoz is javasoljuk, hogy ezek az első használata előtt annak eldöntéséhez, hogy a dinamikus erőforrás-osztályok.
 
 ### <a name="resource-classes-for-load-users"></a>Erőforrás-osztályok a terhelés felhasználók
-`CREATE TABLE`használja a fürtözött oszlopcentrikus indexek alapértelmezés szerint. Az adatok tömörítése be egy oszlopcentrikus index a memóriaigényes művelet, és Memóriaterhelést csökkentheti az index minőségére. Ezért akkor valószínűleg egy magasabb erőforrásosztály megkövetelése adatainak betöltésekor. Annak érdekében, hogy nincs elég memória a terhelés, hozzon létre egy olyan felhasználó, terhelések futtatására van kijelölve, és a felhasználót egy magasabb erőforrásosztály kell rendelni.
+`CREATE TABLE` használja a fürtözött oszlopcentrikus indexek alapértelmezés szerint. Az adatok tömörítése be egy oszlopcentrikus index a memóriaigényes művelet, és Memóriaterhelést csökkentheti az index minőségére. Ezért akkor valószínűleg egy magasabb erőforrásosztály megkövetelése adatainak betöltésekor. Annak érdekében, hogy nincs elég memória a terhelés, hozzon létre egy olyan felhasználó, terhelések futtatására van kijelölve, és a felhasználót egy magasabb erőforrásosztály kell rendelni.
 
 Terhelések hatékonyan feldolgozásához szükséges memória betöltve a táblázat és az adatok mérete jellegétől függ. Memóriára vonatkozó követelményeknek további információkért lásd: [sorcsoport minőségi maximalizálva](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md).
 
@@ -165,12 +170,12 @@ A tárolt eljárás célja van:
 >  [!NOTE]  
 >  Ha kimeneti után tárolt eljárás végrehajtása a megadott paraméterek nem kap, majd lehet két esetben. <br />1. Vagy DW paraméter értéke érvénytelen SLO <br />2. Vagy a közösségi koordináló intézet művelet a táblán nincs egyező erőforrás osztály van. <br />Például DW100, a legmagasabb memóriabeli ideiglenes 400 MB és táblaséma kiterjedő megfelelő a kereszt-követelmény 400 MB.
       
-### <a name="usage-example"></a>Példa:
+### <a name="usage-example"></a>Példa a használatra:
 Szintaxis:  
 `EXEC dbo.prc_workload_management_by_DWU @DWU VARCHAR(7), @SCHEMA_NAME VARCHAR(128), @TABLE_NAME VARCHAR(128)`  
-1. @DWU:Adja meg az aktuális DWU kinyerése az Adatraktár-adatbázisban, vagy bármely támogatott DWU "DW100" formájában adja meg egy NULL értékű paramétert vagy
-2. @SCHEMA_NAME:Adja meg a tábla a séma neve
-3. @TABLE_NAME:Adjon meg egy tábla nevét, a fontos
+1. @DWU: Adja meg az aktuális DWU kinyerése az Adatraktár-adatbázisban, vagy bármely támogatott DWU "DW100" formájában adja meg egy NULL értékű paramétert vagy
+2. @SCHEMA_NAME: Adja meg a tábla a séma neve
+3. @TABLE_NAME: Adjon meg egy tábla nevét, a fontos
 
 A tárolt eljárás végrehajtása példák:  
 ```sql  
@@ -501,7 +506,7 @@ GO
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Adatbázis-felhasználók és biztonsági kezelésével kapcsolatos további információkért lásd: [az SQL Data Warehouse adatbázis védelme][Secure a database in SQL Data Warehouse]. További információ a hogyan nagyobb erőforrás osztályok javíthatja a fürtözött oszlopcentrikus index minőségének, lásd: [memória optimalizálás oszlopcentrikus tömörítési](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md).
 
 <!--Image references-->

@@ -1,19 +1,19 @@
 ---
-title: "Hozzon létre és tűzfalszabályok MySQL az Azure-adatbázisban kezelheti a MySQL |} Microsoft Docs"
+title: "Hozzon létre és tűzfalszabályok MySQL az Azure-adatbázisban kezelheti a MySQL"
 description: "Hozzon létre és kezelheti az Azure-adatbázis MySQL tűzfalszabályokat az Azure portál használatával"
 services: mysql
-author: v-chenyh
-ms.author: v-chenyh
-manager: jhubbard
+author: ajlam
+ms.author: andrela
+manager: kfile
 editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
-ms.date: 02/12/2018
-ms.openlocfilehash: d0852f59d6463a4e73bfb2ca75b285701a897864
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.date: 02/28/2018
+ms.openlocfilehash: 6475c5c3ecb43352a8ef8db8fe1c023a16cd8a3d
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="create-and-manage-azure-database-for-mysql-firewall-rules-by-using-the-azure-portal"></a>Létrehozása és kezelése az Azure-adatbázis a MySQL tűzfalszabályok az Azure portál használatával
 Kiszolgálószintű tűzfal-szabályok lehetővé teszik a rendszergazdák az Azure-adatbázisának eléréséhez MySQL-kiszolgáló a megadott IP-cím vagy egy adott IP-címeket. 
