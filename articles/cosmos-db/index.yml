@@ -14,11 +14,11 @@ metadata:
   ms.topic: landing-page
   ms.date: 02/14/2018
   ms.author: mimig
-  ms.openlocfilehash: c5a09b76eee27300a7814bba69c5b73f5b2e5aad
-  ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+  ms.openlocfilehash: 556b60d6489f51e23d09290906b3e0d24b72cbdc
+  ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 02/22/2018
+  ms.lasthandoff: 03/02/2018
 abstract:
   description: "Az Azure Cosmos DB egy globálisan elosztott, többmodelles adatbázis-szolgáltatás. Az itt elérhető rövid útmutatók, oktatóanyagok és minták segítségével dokumentum és kulcs-érték típusú, valamint széles oszlopú és gráfadatbázisokat fejleszthet népszerű API-kkal és programozási modellekkel. Emellett megismerheti, hogyan replikálhatja adatait tetszőleges számú Azure-régióban és skálázhatja az átviteli sebességet a tárolótól függetlenül, úgy, hogy közben kihasználja az átfogó SLA-k nyújtotta előnyöket."
   aside:
@@ -112,7 +112,7 @@ sections:
     className: cardsD
     items:
     - title: SQL API-k
-      html: "<p><a href=\"/rest/api/documentdb/\">REST</a></p><p><a href=\"https://aka.ms/acdbnetref\">.NET</a></p><p><a href=\"sql-api-sdk-dotnet-changefeed\">.NET – Csatorna módosítása</a></p><p><a href=\"https://aka.ms/acdbnetcoreref\">.NET Core</a></p><p><a href=\"https://aka.ms/acdbnoderef\">Node.js</a></p><p><a href=\"https://aka.ms/acdbjavaref\">Java</a></p><p><a href=\"https://aka.ms/acdbpythonref\">Python</a></p><p><a href=\"/rest/api/documentdbresourceprovider/\">REST erőforrás-szolgáltató</a></p><p><a href=\"sql-api-sql-query-reference\">SQL</a></p>"
+      html: "<p><a href=\"sql-api-sdk-dotnet\">.NET</a></p><p><a href=\"sql-api-sdk-dotnet-changefeed\">.NET – Csatorna módosítása</a></p><p><a href=\"sql-api-sdk-dotnet-core\">.NET Core</a></p><p><a href=\"sql-api-sdk-node\">Node.js</a></p><p><a href=\"sql-api-sdk-async-java\">Aszinkron Java</a></p><p><a href=\"sql-api-sdk-java\">Java</a></p><p><a href=\"sql-api-sdk-python\">Python</a></p><p><a href=\"/rest/api/documentdb/\">REST</a></p><p><a href=\"/rest/api/documentdbresourceprovider/\">REST erőforrás-szolgáltató</a></p><p><a href=\"sql-api-sql-query-reference\">SQL</a></p>"
     - title: MongoDB API-k
       html: <p><a href="https://docs.mongodb.com/manual/reference/mongodb-wire-protocol/">Wire Protocol</a></p><p><a href="https://mongodb.github.io/node-mongodb-native/ ">Node.js</a></p><p><a href="https://docs.mongodb.com/ecosystem/drivers/csharp/">C#</a></p><p><a href="https://docs.mongodb.com/ecosystem/drivers/java/">Java</a></p><p><a href="https://docs.mongodb.com/ecosystem/drivers/python/">Python</a></p><p><a href="https://docs.mongodb.com/ruby-driver/master/">Ruby</a></p>
     - title: "Tábla API-k"

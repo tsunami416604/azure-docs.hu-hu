@@ -52,7 +52,15 @@
           href: msi-qs-configure-template-windows-vm.md
         - name: Az Azure SDK használata
           href: msi-qs-configure-sdk-windows-vm.md
-    - name: Virtuális gép MSI hozzáférésének biztosítása a Resource Managerhez
+    - name: Az MSI konfigurálása az Azure VMSS-hez
+      items:
+        - name: Az Azure portál használata
+          href: msi-qs-configure-portal-windows-vmss.md
+        - name: Az Azure parancssori felület használata
+          href: msi-qs-configure-cli-windows-vmss.md
+        - name: Az Azure Resource Manager-sablonok használata
+          href: msi-qs-configure-template-windows-vmss.md
+    - name: Virtuális gép vagy VMSS MSI hozzáférésének biztosítása a Resource Managerhez
       items:
         - name: Az Azure Portal használata
           href: msi-howto-assign-access-portal.md

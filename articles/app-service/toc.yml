@@ -43,7 +43,7 @@
           href: app-service-web-tutorial-java-mysql.md
         - name: Python és PostgreSQL
           href: app-service-web-tutorial-python-postgresql.md
-    - name: 1 – RESTful API létrehozása
+    - name: 1 – RESTful API üzemeltetése
       href: app-service-web-tutorial-rest-api.md
     - name: 2 – Egyéni tartomány leképezése
       href: app-service-web-tutorial-custom-domain.md
@@ -230,7 +230,7 @@
     - name: Részletes útmutatók
       items:
         - name: Referenciaarchitektúrák
-          href: ../guidance/guidance-ra-app-service.md
+          href: /azure/architecture/reference-architectures/app-service-web-app/
         - name: Üzembehelyezési szkriptek
           href: 'https://azure.microsoft.com/documentation/scripts/'
     - name: Hibaelhárítás

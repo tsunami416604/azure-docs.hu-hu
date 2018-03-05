@@ -33,7 +33,7 @@
 ### [Kapcsolódás PowerBI-jal](analysis-services-connect-pbi.md)
 ### [.odc fájl létrehozása](analysis-services-odc.md)
 ## Oktatóanyagok
-### [1 – Mintamodell létrehozása](analysis-services-create-sample-model.md)
+### [1 – mintamodell hozzáadása](analysis-services-create-sample-model.md)
 ### [Adatmodellezés – Az Adventure Works oktatóanyaga](tutorials/aas-adventure-works-tutorial.md)
 #### [1 – Táblázatos modellprojekt létrehozása](tutorials/aas-lesson-1-create-a-new-tabular-model-project.md)
 #### [2 – Az adatok beszerzése](tutorials/aas-lesson-2-get-data.md)

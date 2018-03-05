@@ -12,20 +12,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 12/08/2017
+ms.date: 03/02/2018
 ms.author: jeffgilb
-ms.openlocfilehash: 2410b1a3c3c2856cceda87ced7e66f140ea0c323
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 03682e7f5867360cc3d854f0dff2bc5d1c1c9619
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="azure-stack-deployment-prerequisites"></a>Azure Stack üzembehelyezési előfeltételek
 
 *A következőkre vonatkozik: Azure szoftverfejlesztői készletet*
 
-Központi telepítése előtt [Azure verem szoftverfejlesztői készlet](azure-stack-poc.md), győződjön meg arról, hogy a számítógép megfelel-e a következő követelményeknek:
+Központi telepítése előtt a [Azure verem Development Kit (ASDK)](azure-stack-poc.md), győződjön meg arról, hogy a development kit fogadó számítógép megfelel-e ebben a cikkben leírt követelményeknek.
 
+> [!NOTE]
+> A ASDK telepítenie kell a fizikai állomáson. A ASDK telepítése egy Azure virtuális gépen nem támogatott.
 
 ## <a name="hardware"></a>Hardver
 | Összetevő | Minimális | Ajánlott |
@@ -122,7 +124,6 @@ Győződjön meg róla, hogy egy DHCP-kiszolgáló elérhető azon a hálózaton
 ### <a name="internet-access"></a>Internetelérés
 Azure verem internet-hozzáférésre van szüksége, közvetlenül vagy transzparens proxyra. Azure verem nem támogatja az Internet-hozzáférés engedélyezése a WebProxy beállításait. A gazdagép IP, mind az új IP-cím (amelyet a DHCP vagy statikus IP-cím) a MAS BGPNAT01 rendelt érhessék el az Internet kell lennie. A graph.windows.net és login.microsoftonline.com tartományok 80-as és 443-as portot használják.
 
-K: az ASDK futtassa egy Azure virtuális gépen? V: nem. A mai akkor hivatalosan nem támogatott.
 
 ## <a name="next-steps"></a>További lépések
 [Az Azure verem development kit központi telepítési csomag](https://azure.microsoft.com/overview/azure-stack/try/?v=try)

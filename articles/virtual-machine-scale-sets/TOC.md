@@ -14,6 +14,7 @@
 # Útmutató
 ## Tervezés és kialakítás
 ### [Kialakítási szempontok](virtual-machine-scale-sets-design-overview.md)
+### [A példányazonosítók ismertetése](virtual-machine-scale-sets-instance-ids.md)
 
 ## Sablon létrehozása
 ### [Információk a méretezési csoportok sablonjairól](virtual-machine-scale-sets-mvss-start.md)

@@ -100,6 +100,8 @@
           href: disk-scalability-targets.md
         - name: Lemezek biztonsági mentése és vészhelyreállítása
           href: backup-and-disaster-recovery-for-azure-iaas-disks.md
+        - name: Csatlakoztatott virtuális merevlemezek hibaelhárítása
+          href: troubleshoot-vhds.md
     - name: Hálózat
       href: network-overview.md
     - name: Automatikus méretezési alkalmazások
