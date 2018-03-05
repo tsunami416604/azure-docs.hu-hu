@@ -22,6 +22,7 @@
 ## [Felügyelt tartomány állapotának az ellenőrzése](active-directory-ds-check-health.md)
 ## [Az Azure AD Domain Services használata az Azure CSP-előfizetésekben](active-directory-ds-csp.md)
 ## [Az Azure AD Domain Services engedélyezése a PowerShell-lel](active-directory-ds-enable-using-powershell.md)
+## [A tartomány állapotának ellenőrzése](active-directory-ds-check-health.md)
 ## Csatlakozás egy felügyelt tartományhoz
 ### [Windows Server rendszerű virtuális gép](active-directory-ds-admin-guide-join-windows-vm-portal.md)
 ### [Windows Server rendszerű virtuális gép sablonból](active-directory-ds-join-windows-vm-template.md)
@@ -32,7 +33,6 @@
 ## Felügyelt tartomány kezelése
 ### [Felügyelt tartomány kezelése](active-directory-ds-admin-guide-administer-domain.md)
 ### [DNS-kezelés felügyelt tartományon](active-directory-ds-admin-guide-administer-dns.md)
-
 ### Biztonságos LDAP konfigurálása felügyelt tartományhoz
 #### [1. feladat: tanúsítvány beszerzése biztonságos LDAP-hoz](active-directory-ds-admin-guide-configure-secure-ldap.md)
 #### [2. feladat: a megbízható LDAP-tanúsítványának exportálása](active-directory-ds-admin-guide-configure-secure-ldap-export-pfx.md)
