@@ -1,124 +1,111 @@
 ---
-title: "Teszt meghajtó egy Azure AD B2C asztali alkalmazás |} Microsoft Docs"
-description: "Teszt meghajtó jelentkezzen be, regisztráció, profil szerkesztése, és alaphelyzetbe állítja a jelszót felhasználói útvonal be egy tesztkörnyezetben az Azure AD B2C használatával"
+title: "Egy Azure AD B2C-kompatibilis asztali alkalmazás kipróbálása"
+description: "Minta ASP.NET asztali alkalmazás kipróbálására szolgáló gyors útmutató, amely az Azure Active Directory B2C segítségével biztosít felhasználói bejelentkezést."
 services: active-directory-b2c
-documentationcenter: .net
-author: saraford
+author: PatAltimore
 manager: mtillman
-editor: PatAltimore
-ms.assetid: 86293627-26fb-4e96-a76b-f263f9a945bd
 ms.service: active-directory-b2c
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
-ms.topic: article
-ms.date: 10/31/2017
-ms.author: saraford
-ms.openlocfilehash: 51f5643f0bd975beb939c2d5a8853810fb609ec9
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
-ms.translationtype: MT
+ms.topic: quickstart
+ms.custom: mvc
+ms.date: 2/13/2018
+ms.author: patricka
+ms.openlocfilehash: 18c378f82255df3a999703bc319d551af4b2705c
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/28/2018
 ---
-# <a name="test-drive-a-desktop-application-configured-with-azure-ad-b2c"></a>Azure AD B2C konfigurált asztali alkalmazások tesztelése
+# <a name="quickstart-test-drive-an-azure-ad-b2c-enabled-desktop-app"></a>Gyors útmutató: Egy Azure AD B2C-kompatibilis asztali alkalmazás kipróbálása
 
-Az Azure Active Directory B2C az alkalmazás, az üzleti és a védett ügyfelek felhő Identitáskezelés biztosít.  A gyors üzembe helyezés használ egy minta Windows megjelenítési alaprendszer (WPF) egy asztali alkalmazás bemutatása:
+Az Azure Active Directory (Azure AD) B2C felhőalapú identitáskezelést nyújt az alkalmazás, az üzlet és az ügyfelek védelme érdekében. Az Azure AD B2C nyílt szabványú protokollokkal teszi lehetővé az alkalmazások hitelesítését közösségi hálózati és vállalati fiókokon.
 
-* Használja a **regisztráció vagy bejelentkezés** házirend létrehozásához vagy a közösségi identitásszolgáltató vagy e-mail cím használatával helyi fiókkal jelentkezzen be. 
-* **Az API felület meghívásakor** a megjelenített név lekérése az Azure AD B2C-vel védett erőforrás.
-
-## <a name="prerequisites"></a>Előfeltételek
-
-* Telepítse a [Visual Studio 2017](https://www.visualstudio.com/downloads/) szoftvert a következő számítási feladatokkal:
-    - **.NET asztali fejlesztési**
-
-* Egy közösségi fiók vagy Facebook, Google, vagy a Twitteren. Ha egy közösségi fiók nem rendelkezik, érvényes e-mail címet szükség.
+Ebben a gyors útmutatóban Azure AD B2C minta Windows Presentation Foundation (WPF) asztali alkalmazással jelentkezik be egy közösségi identitásszolgáltatóval, és az Azure AD B2C által védett webes API-t hív meg.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
+## <a name="prerequisites"></a>Előfeltételek
+
+* [Visual Studio 2017](https://www.visualstudio.com/downloads/) az **ASP.NET és webfejlesztési** számítási feladattal. 
+* Egy Facebook, Google, Microsoft vagy Twitter közösségi fiók.
+
 ## <a name="download-the-sample"></a>A minta letöltése
 
-[Töltse le, vagy klónozza a mintaalkalmazást](https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop) a Githubról.
+[Töltse le a zip-fájlt](https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop/archive/master.zip), vagy a klónozza a mintául szolgáló webalkalmazást a GitHubról.
 
-## <a name="run-the-app-in-visual-studio"></a>Futtassa az alkalmazást a Visual Studióban
+```
+git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop.git
+```
 
-A minta alkalmazás projekt mappában nyissa meg a `active-directory-b2c-wpf.sln` a Visual Studio megoldás. 
+## <a name="run-the-app-in-visual-studio"></a>Az alkalmazás futtatása a Visual Studióban
 
-Válassza ki **Debug > Start Debugging** össze és futtathatja az alkalmazást. 
+A mintaalkalmazás projektmappájában nyissa meg a `active-directory-b2c-wpf.sln` megoldást a Visual Studióban.
+
+Nyomja le az **F5** billentyűt az alkalmazás hibakereséséhez.
 
 ## <a name="create-an-account"></a>Fiók létrehozása
 
-Kattintson a **bejelentkezés** elindítani a **regisztráció vagy bejelentkezés** munkafolyamat. Egy fiók létrehozásakor egy meglévő közösségi identitás-szolgáltató fiókja vagy egy e-mail fiókot is használhatja.
+Kattintson a **Sign in** (Bejelentkezés) gombra a **Sign Up or Sign In** (Regisztráció vagy bejelentkezés) munkafolyamat elindításához Azure AD B2C szabályzat alapján.
 
 ![Mintaalkalmazás](media/active-directory-b2c-quickstarts-desktop-app/wpf-sample-application.png)
 
-### <a name="sign-up-using-a-social-identity-provider"></a>Jelentkezzen egy közösségi identitásszolgáltató
+A minta több regisztrációs beállítást is támogat, beleértve a közösségi identitásszolgáltató használatát vagy helyi fiók e-mail-címmel való létrehozását. Ehhez a gyors útmutatóhoz Facebook, Google vagy Twitter közösségi identitásszolgáltatótól származó fiókot használjon. 
 
-Közösségi identitásszolgáltató használatával, kattintson a használni kívánt identitásszolgáltató gombjára. Ha e-mail címmel szeretné végrehajtani, Ugrás a [jelentkezzen egy e-mail címet](#sign-up-using-an-email-address) szakasz.
+### <a name="sign-up-using-a-social-identity-provider"></a>Regisztráció közösségi identitásszolgáltatóval
 
-![Bejelentkezés vagy regisztráció szolgáltató](media/active-directory-b2c-quickstarts-desktop-app/sign-in-or-sign-up-wpf.png)
+Az Azure AD B2C a minta-webalkalmazáshoz egy Wingtip Toys nevű fiktív márka egyéni bejelentkezési lapját jeleníti meg. 
 
-Hitelesítés (bejelentkezés) a közösségi fiókja hitelesítő adatait, és az alkalmazás az adatok olvasása a közösségi fiók használatával kell. Hozzáférés biztosítása, amelyet az alkalmazás profiladatok kérhetnek le a közösségi fiókot, amilyen például a nevét, és a település. 
+1. Ha közösségi identitásszolgáltatóval szeretne regisztrálni, kattintson a használni kívánt identitásszolgáltató gombjára. 
 
-![Hitelesítését és engedélyezését, közösségi fiók használatával](media/active-directory-b2c-quickstarts-desktop-app/twitter-authenticate-authorize-wpf.png)
+    ![Bejelentkezési vagy regisztrációs szolgáltató](media/active-directory-b2c-quickstarts-desktop-app/sign-in-or-sign-up-wpf.png)
 
-Az új profil fiókadatok előre megadott, a közösségi fiók adataival. Kívánja, kattintson a részletek módosíthatja **Folytatás**.
+    Hitelesíti magát (bejelentkezik) a közösségi fiók hitelesítő adataival, és feljogosítja az alkalmazást, hogy beolvassa a közösségi fiók adatait. A hozzáférés biztosításával az alkalmazás profiladatokat kérhet le a közösségi fiókból, például a nevét és a települését. 
 
-![Új fiók regisztrációs profil részleteit](media/active-directory-b2c-quickstarts-desktop-app/new-account-sign-up-profile-details-wpf.png)
+2. Fejezze be az identitásszolgáltató bejelentkezési folyamatát. Ha például a Twittert választotta, írja be a Twitter-fiók hitelesítő adatait, majd kattintson **Sign in** (Bejelentkezés) gombra.
 
-Sikeresen létrehozott egy új Azure AD B2C által használt felhasználói fiók egy identitásszolgáltatóval. Bejelentkezés, miután a hozzáférési jogkivonat megjelenik-e a a *Token adatai* szövegmezőben. A hozzáférési jogkivonat a API erőforráshoz történő hozzáféréskor.
+    ![Hitelesítés és engedélyezés közösségi fiókkal](media/active-directory-b2c-quickstarts-desktop-app/twitter-authenticate-authorize-wpf.png)
 
-![Engedélyezési jogkivonat](media/active-directory-b2c-quickstarts-desktop-app/twitter-auth-token.png)
+    Az új fiókprofil részletei előre ki vannak töltve a közösségi fiókja adataival. 
 
-Következő lépés: [a profil szerkesztése Ugrás](#edit-your-profile) szakasz.
+3. Ha szeretné, módosítsa az adatokat, majd kattintson a **Folytatás** lehetőségre. A rendszer a beírt értékeket használja az Azure AD B2C felhasználói fiókprofilhoz.
 
-### <a name="sign-up-using-an-email-address"></a>Jelentkezzen egy e-mail címet
+    ![Új fiók regisztrációs profiljának adatai](media/active-directory-b2c-quickstarts-desktop-app/new-account-sign-up-profile-details-wpf.png)
 
-Ha a hitelesítés egy közösségi fiókot használja, egy érvényes e-mail címet használ az Azure AD B2C-felhasználói fiókot is létrehozhat. Egy Azure AD B2C helyi felhasználói fiókot az Azure Active Directory, az identitás-szolgáltatóként. Az e-mail cím használatához kattintson a **nincs fiókja? Feliratkozás most** hivatkozásra.
+    Sikeresen létrehozott egy új, identitásszolgáltatót használó Azure AD B2C felhasználói fiókot. A bejelentkezés után a *Token info* (Jogkivonat adatai) szövegmezőben megjelenik a hozzáférési jogkivonat. A hozzáférési jogkivonatot a rendszer az API-erőforráshoz való hozzáféréskor használja.
 
-![Bejelentkezés vagy regisztráció e-mail](media/active-directory-b2c-quickstarts-desktop-app/sign-in-or-sign-up-email-wpf.png)
+## <a name="edit-your-profile"></a>Saját profil szerkesztése
 
-Adjon meg egy érvényes e-mail címet, és kattintson a **ellenőrző kód küldése**. Érvényes e-mail címet kell az Azure AD B2C megkapta az ellenőrzőkódot.
+Az Azure Active Directory B2C-funkcióival a felhasználók frissíthetik a profiljukat.  A minta-webalkalmazás Azure AD B2C-profilszerkesztési szabályzatot használ a munkafolyamathoz. 
 
-Adja meg az e-mailben kap, és kattintson a **ellenőrizze a kódot**.
+1. Kattintson az **Edit profile** (Profil szerkesztése) gombra a létrehozott profil szerkesztéséhez.
 
-A profiladatok, és kattintson **létrehozása**.
+    ![Profil szerkesztése](media/active-directory-b2c-quickstarts-desktop-app/edit-profile-wpf.png)
 
-![Iratkozzon fel az új e-mail fiók](media/active-directory-b2c-quickstarts-desktop-app/sign-up-new-account-profile-email-wpf.png)
+2. Válassza ki a létrehozott fiókhoz rendelt identitásszolgáltatót. Ha például a Twittert használta identitásszolgáltatóként a fiók létrehozásakor, válassza a Twittert a hozzárendelt profil adatainak módosításához.
 
-Sikeresen létrehozott egy új Azure AD B2C helyi felhasználói fiókot. Bejelentkezés, miután a hozzáférési jogkivonat megjelenik-e a a *Token adatai* szövegmezőben. A hozzáférési jogkivonat a API erőforráshoz történő hozzáféréskor.
+3. Módosítsa a **Display name** (Megjelenített név) és a **City** (Város) mezőket, majd kattintson a **Continue** (Folytatás) gombra.
 
-![Engedélyezési jogkivonat](media/active-directory-b2c-quickstarts-desktop-app/twitter-auth-token.png)
+    Ekkor a *Token info* (Jogkivonat adatai) szövegmezőben megjelenik egy új hozzáférési jogkivonat. Ha szeretné ellenőrizni a profilján esett módosításokat, másolja és illessze be a hozzáférési jogkivonatot a jogkivonat-dekóderbe (https://jwt.ms).
 
-## <a name="edit-your-profile"></a>Szerkesztheti a profilját
+## <a name="access-a-protected-web-api-resource"></a>Védett webes API-erőforrás elérése
 
-Az Azure Active Directory B2C engedélyezése a felhasználók számára, frissítse a profilokat lehetőségeket kínál. Kattintson a **profilszerkesztés** a létrehozott profil szerkesztése.
+Kattintson a **Call API** (API meghívása) elemre, amellyel kérést küldhet az Azure AD B2C által védett https://fabrikamb2chello.azurewebsites.net/hello erőforrásnak. 
 
-![Profil szerkesztése](media/active-directory-b2c-quickstarts-desktop-app/edit-profile-wpf.png)
+![API meghívása](media/active-directory-b2c-quickstarts-desktop-app/call-api-wpf.png)
 
-Válassza ki a létrehozott fiókkal társított identitásszolgáltató. Ha Twitter az identitás-szolgáltatóként használ, a fiók létrehozásakor, például válassza az Twitter módosítani a hozzárendelt profil részleteit.
+Az alkalmazás a védett webes API-erőforrás felé küldött kérésbe belefoglalja az Azure AD hozzáférési jogkivonatot. A webes API a hozzáférési jogkivonatban található megjelenített nevet küldi vissza.
 
-![Válassza ki a profilhoz társított szolgáltató szerkesztése](media/active-directory-b2c-quickstarts-desktop-app/edit-account-choose-provider-wpf.png)
+Az Azure AD B2C felhasználói fiókkal sikeresen végzett hitelesített hívást egy Azure AD B2C által védett webes API-n.
 
-Módosítsa a **megjelenített név** vagy **Város**. 
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-![Profil frissítése](media/active-directory-b2c-quickstarts-desktop-app/update-profile-wpf.png)
+Az Azure AD B2C-bérlőt ahhoz is használhatja, ha más Azure AD B2C gyors útmutatókat vagy oktatóanyagokat is ki szeretne próbálni. Ha már nincs szüksége rá, akkor [törölheti az Azure AD B2C-bérlőt](active-directory-b2c-faqs.md#how-do-i-delete-my-azure-ad-b2c-tenant).
 
-Megjelenik egy új hozzáférési jogkivonat a *Token info* szövegmezőben. Ha szeretné ellenőrizni a profil módosításai, másolja és illessze be a hozzáférési jogkivonat a token dekóder https://jwt.ms.
+## <a name="next-steps"></a>További lépések
 
-![Engedélyezési jogkivonat](media/active-directory-b2c-quickstarts-desktop-app/twitter-auth-token.png)
-
-## <a name="access-a-resource"></a>Elért egy erőforrást
-
-Kattintson a **API hívása** indítson egy lekérdezést az Azure AD B2C biztonságos erőforrás https://fabrikamb2chello.azurewebsites.net/hello. 
-
-![API hívása](media/active-directory-b2c-quickstarts-desktop-app/call-api-wpf.png)
-
-Az alkalmazás tartalmazza a hozzáférési jogkivonat jelenik meg a *Token info* beviteli mező a kérelemben. Az API-t küld vissza a megjelenített névbe, a hozzáférési jogkivonat található.
-
-## <a name="next-steps"></a>Következő lépések
-
-A következő lépés, hogy a saját Azure AD B2C bérlő létrehozása és konfigurálása a minta futtatásához a bérlőnek a használatával. 
+A következő lépés egy saját Azure AD B2C-bérlő létrehozása és a minta konfigurálása a bérlővel való futtatáshoz. 
 
 > [!div class="nextstepaction"]
-> [Azure Active Directory B2C-bérlő létrehozása az Azure-portálon](active-directory-b2c-get-started.md)
+> [Azure Active Directory B2C-bérlő létrehozása az Azure Portalon](active-directory-b2c-get-started.md)

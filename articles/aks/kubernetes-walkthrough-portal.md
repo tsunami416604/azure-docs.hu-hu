@@ -6,14 +6,14 @@ author: neilpeterson
 manager: timlt
 ms.service: container-service
 ms.topic: quickstart
-ms.date: 11/28/2017
+ms.date: 02/24/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 734243a28dc59518dc30d9d86064235795e794ab
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 35886217328d35229a59b9713f5bb4bf0244569a
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="deploy-an-azure-container-service-aks-cluster"></a>Azure Container Service- (AKS-) fürt üzembe helyezése
 
@@ -51,7 +51,7 @@ Kattintson a **Mentés** parancsra, és jegyezze fel a jelszó értékét. Erre 
 
 ## <a name="create-aks-cluster"></a>AKS-fürt létrehozása
 
-Válassza ki az **Új** > **Tárolók** > **Azure Container Service – AKS (előzetes verzió)** lehetőséget.
+Válassza az **Erőforrás létrehozása** > **Tárolók** > **Azure Container Service – AKS (előzetes verzió)** lehetőséget.
 
 Adjon meg egy fürtnevet, egy DNS-előtagot, egy erőforráscsoport-nevet, egy helyet és egy Kubernetes-verziót a fürt számára. Jegyezze fel a fürt nevét és az erőforráscsoport nevét, mert ezekre szüksége lesz, amikor a fürthöz kapcsolódik.
 
@@ -236,7 +236,7 @@ Ebben a rövid útmutatóban egy Kubernetes-fürtöt és azon egy többtárolós
 Az AKS-sel kapcsolatos további információkért és a kódtól az üzembe helyezésig terjedő teljes útmutatóért folytassa a Kubernetes-fürtöket bemutató oktatóanyaggal.
 
 > [!div class="nextstepaction"]
-> [AKS-fürt kezelése][aks-tutorial]
+> [AKS-oktatóanyag][aks-tutorial]
 
 <!-- LINKS - external -->
 [azure-vote-app]: https://github.com/Azure-Samples/azure-voting-app-redis.git

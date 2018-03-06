@@ -1,6 +1,6 @@
 ---
-title: "Az Azure Service Fabric folyamatos integrációt (Team Services) alkalmazás központi telepítését |} Microsoft Docs"
-description: "Megtudhatja, hogyan állíthat be folyamatos integrációt és a Visual Studio Team Services használatával a Service Fabric-alkalmazás központi telepítését.  Alkalmazás üzembe helyezése az Azure Service Fabric-fürt."
+title: "Azure Service Fabric-alkalmazás üzembe helyezése folyamatos integrációval (Team Services) | Microsoft Docs"
+description: "Ez az oktatóanyag bemutatja, hogyan lehet folyamatos integrációt és üzembe helyezést beállítani egy Service Fabric-alkalmazáshoz a Visual Studio Team Services használatával.  Helyezzen üzembe egy alkalmazást az Azure Service Fabric-fürtjén."
 services: service-fabric
 documentationcenter: .net
 author: rwike77
@@ -15,161 +15,161 @@ ms.workload: NA
 ms.date: 12/13/2017
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 2fb7ab906208a58c0b5cd3af8b53188fbab94029
-ms.sourcegitcommit: 3fca41d1c978d4b9165666bb2a9a1fe2a13aabb6
-ms.translationtype: MT
+ms.openlocfilehash: 3f5ccd40e2b46cc68b4f7aeb67577fb66dbd5355
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 02/24/2018
 ---
-# <a name="deploy-an-application-with-cicd-to-a-service-fabric-cluster"></a>A Service Fabric-fürt CI/CD az alkalmazás központi telepítését
-Ez az oktatóanyag három sorozatából és azt ismerteti, hogyan állíthat be folyamatos integrációt és a Visual Studio Team Services használata az Azure Service Fabric-alkalmazások központi telepítését.  Egy meglévő Service Fabric-alkalmazás van szükség, az alkalmazás létre [létre olyan .NET alkalmazás](service-fabric-tutorial-create-dotnet-app.md) példaként szolgál.
+# <a name="tutorial-deploy-an-application-with-cicd-to-a-service-fabric-cluster"></a>Oktatóanyag: alkalmazás üzembe helyezése Service Fabric-fürtön CI/CD használatával
+Ez az oktatóanyag, amely egy sorozat harmadik része, azt ismerteti, hogyan lehet folyamatos integrációt és üzembe helyezést beállítani egy Azure Service Fabric-alkalmazáshoz a Visual Studio Team Services használatával.  Szükség van egy már meglévő Service Fabric-alkalmazásra, így példaként a [.NET alkalmazás létrehozása](service-fabric-tutorial-create-dotnet-app.md) szakaszban létrehozott alkalmazás szolgál.
 
-A sorozat három része a megismerheti, hogyan:
+A sorozat harmadik részében az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * A verziókövetési rendszerrel hozzáadása a projekthez
-> * Hozzon létre egy build definition Team Services
-> * Hozzon létre egy kiadási definition Team Services
-> * Automatikus központi telepítése és alkalmazás frissítése
+> * Forráskezelés hozzáadása a projekthez
+> * Builddefiníció létrehozása a Team Services használatával
+> * Kiadási definíció létrehozása a Team Services használatával
+> * Alkalmazás automatikus üzembe helyezése és frissítése
 
-Az oktatóanyag adatsorozat elsajátíthatja, hogyan:
+Ebben az oktatóanyag-sorozatban az alábbiakkal ismerkedhet meg:
 > [!div class="checklist"]
-> * [A .NET Service Fabric-alkalmazás létrehozása](service-fabric-tutorial-create-dotnet-app.md)
-> * [Telepítse központilag az alkalmazást egy távoli fürthöz](service-fabric-tutorial-deploy-app-to-party-cluster.md)
-> * Konfigurálja a CI/CD Visual Studio Team Services használatával
-> * [Figyelés és diagnosztika az alkalmazás beállítása](service-fabric-tutorial-monitoring-aspnet.md)
+> * [.NET Service Fabric-alkalmazás létrehozása](service-fabric-tutorial-create-dotnet-app.md)
+> * [Az alkalmazás üzembe helyezése egy távoli fürtön](service-fabric-tutorial-deploy-app-to-party-cluster.md)
+> * A CI/CD konfigurálása a Visual Studio Team Services használatával
+> * [Figyelés és diagnosztika beállítása az alkalmazáshoz](service-fabric-tutorial-monitoring-aspnet.md)
 
 ## <a name="prerequisites"></a>Előfeltételek
-Ez az oktatóanyag elkezdéséhez:
-- Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-- [Telepítse a Visual Studio 2017](https://www.visualstudio.com/) és telepítse a **Azure fejlesztési** és **ASP.NET és a webes fejlesztési** munkaterhelések.
+Az oktatóanyag elkezdése előtt:
+- Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- [Telepítse a Visual Studio 2017-et](https://www.visualstudio.com/) az **Azure-fejlesztési**, valamint az **ASP.NET- és webfejlesztési** számítási feladatokkal.
 - [A Service Fabric SDK telepítése](service-fabric-get-started.md)
-- Létrehozhat például egy Azure, a Windows Service Fabric-fürt által [oktatóanyag](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
-- Hozzon létre egy [Team Services-fiók](https://www.visualstudio.com/docs/setup-admin/team-services/sign-up-for-visual-studio-team-services).
+- Hozzon létre egy Service Fabric-fürtöt az Azure-ban, például [ennek az útmutatónak a segítségével](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
+- Hozzon létre egy [Team Services-fiókot](https://www.visualstudio.com/docs/setup-admin/team-services/sign-up-for-visual-studio-team-services).
 
-## <a name="download-the-voting-sample-application"></a>Töltse le a szavazási mintaalkalmazást
-Ha Ön nem összeállítása a szavazási mintaalkalmazást [rész az oktatóanyag adatsorozat](service-fabric-tutorial-create-dotnet-app.md), tölthető le. Egy parancssori ablakban futtassa a következő parancsot a mintaalkalmazás-adattár helyi számítógépre történő klónozásához.
+## <a name="download-the-voting-sample-application"></a>A mintául szolgáló szavazóalkalmazás letöltése
+Ha nem hozta létre a mintául szolgáló szavazóalkalmazást [az oktatóanyag-sorozat első részében](service-fabric-tutorial-create-dotnet-app.md), akkor le is töltheti. Egy parancssori ablakban futtassa a következő parancsot a mintaalkalmazás-adattár helyi számítógépre történő klónozásához.
 
 ```
 git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 ```
 
-## <a name="prepare-a-publish-profile"></a>Készítse elő a közzétételi profilt
-Most, hogy megismerte [az alkalmazások](service-fabric-tutorial-create-dotnet-app.md) és [telepítve az alkalmazás az Azure-bA](service-fabric-tutorial-deploy-app-to-party-cluster.md), készen áll a beállíthat folyamatos integrációt.  Először készítsen egy közzétételi profil számára az alkalmazáson belül a telepítési folyamat, amely végrehajtja a Team Services belül.  A közzétételi profil, amelyekre a fürtöt, hogy a korábban létrehozott kell konfigurálni.  Indítsa el a Visual Studiót, és nyissa meg a meglévő Service Fabric-alkalmazás projekt.  A **Megoldáskezelőben**, kattintson a jobb gombbal az alkalmazást, és válassza ki **közzététel...** .
+## <a name="prepare-a-publish-profile"></a>Közzétételi profil előkészítése
+Most, hogy [létrehozott egy alkalmazást](service-fabric-tutorial-create-dotnet-app.md) és [telepítette azt az Azure-ba](service-fabric-tutorial-deploy-app-to-party-cluster.md), minden készen áll a folyamatos integráció beállításához.  Először készítsen elő egy közzétételi profilt az alkalmazáson belül a Team Servicesben végrehajtott üzembe helyezési folyamat számára.  A közzétételi profilt úgy kell konfigurálni, hogy a korábban már létrehozott fürtöt célozza.  Indítsa el a Visual Studiót, és nyisson meg egy már meglévő Service Fabric-alkalmazásprojektet.  A **Megoldáskezelőben** kattintson a jobb gombbal az alkalmazásra, majd válassza a **Publish...** (Közzététel) lehetőséget.
 
-Válassza ki a cél-profil belül a projektek használja a folyamatos integrációt munkafolyamat, például a felhő.  Adja meg a fürt kapcsolati végpontot.  Ellenőrizze a **az alkalmazás frissítése** jelölőnégyzetet, hogy az alkalmazás minden központi telepítést, Team Services frissíti.  Kattintson a **mentése** hivatkozás mentse a beállításokat a közzétételi profilt, majd **Mégse** a párbeszédpanel bezárásához.  
+Az alkalmazásprojektben válasszon ki egy célprofilt a folyamatos integráció munkafolyamata számára. Ilyen lehet például a Cloud.  Adja meg a fürt csatlakozási végpontját.  Jelölje be az **Upgrade the Application** (Alkalmazás frissítése) jelölőnégyzetet, hogy az alkalmazás a Team Servicesben lévő összes üzemelő példány esetében frissüljön.  A **Save** (Mentés) hiperhivatkozásra kattintva mentse a beállításokat a közzétételi profilba, majd kattintson a **Cancel** (Mégse) gombra a párbeszédpanel bezárásához.  
 
 ![Leküldéses profil][publish-app-profile]
 
-## <a name="share-your-visual-studio-solution-to-a-new-team-services-git-repo"></a>A Visual Studio megoldás, hogy egy új Team Services Git-tárház megosztása
-Megoszthatja az alkalmazás forrásfájljait a Team Services team projektbe, így a buildek is létrehozhat.  
+## <a name="share-your-visual-studio-solution-to-a-new-team-services-git-repo"></a>A Visual Studio-megoldás megosztása egy új Team Services Git-adattárban
+Az alkalmazás forrásfájljait megoszthatja a Team Services egyik csoportprojektjében, és ezáltal buildeket hozhat létre.  
 
-Hozzon létre egy új helyi Git-tárház a projekthez kiválasztásával **adja hozzá a verziókövetési** -> **Git** az állapotsoron a Visual Studio jobb alsó sarkában. 
+Hozzon létre egy új helyi Git-adattárat a projekthez. Ehhez válassza ki a Visual Studio jobb alsó sarkában található állapotsoron a **Add to Source Control** -> **Git** (Hozzáadás a forráskezelőhöz > Git) elemet. 
 
-Az a **leküldéses** megtekintése **Team Explorer**, jelölje be a **Git-tárház közzététele** gombra kattint, a **leküldése a Visual Studio Team Services**.
+A **Team Explorer** **Push** (Leküldés) nézetében válassza ki a **Push to Visual Studio Team Services** (Leküldés a Visual Studio Team Services szolgáltatásba) alatt található **Publish Git Repo** (Git-adattár közzététele) gombot.
 
-![Leküldéses Git-tárház][push-git-repo]
+![Leküldéses Git-adattár][push-git-repo]
 
-Ellenőrizze az e-maileket, és válassza ki azt a fiókot a a **Team Services tartomány** legördülő listán. Adja meg a tárház nevét, és válassza ki **közzététel tárház**.
+Ellenőrizze az e-mail-címet, és válassza ki a saját fiókját a **Team Services Domain** (Team Services tartomány) legördülő listájából. Adja meg az adattár nevét, majd válassza ki a **Publish repository** (Adattár közzététele) lehetőséget.
 
-![Leküldéses Git-tárház][publish-code]
+![Leküldéses Git-adattár][publish-code]
 
-A tárház közzétételi hoz létre új neve megegyezik a helyi tárház fiókját. A tárház létrehozásához egy meglévő csapatprojektben, kattintson a **speciális** melletti **tárház** nevet, és válassza ki a csapatprojekt. Megtekintheti a kódot a weben kiválasztásával **látja, a weben**.
+Az adattár közzétételével egy új csoportprojekt jön létre a fiókjában a helyi adattáréval azonos néven. Ha egy már meglévő csapatprojektben kíván adattárat létrehozni, az **Adattár** neve mellett kattintson a **Advanced** (Speciális) elemre, és válassza ki a csoportprojektet. A kód megtekintéséhez a weben válassza a **See it on the web** (Megtekintés a weben) lehetőséget.
 
-## <a name="configure-continuous-delivery-with-vsts"></a>Folyamatos kézbesítési VSTS konfigurálása
-Team Services build definícióját egy munkafolyamatot, amelyik build ismertetett lépések egymás után végrehajtott áll ismerteti. A build definíció létrehozása, amely, amely létrehozza a Service Fabric-alkalmazáscsomagot, és más összetevők, a Service Fabric-fürt központi telepítése. További információ [Team Services build definíciók](https://www.visualstudio.com/docs/build/define/create). 
+## <a name="configure-continuous-delivery-with-vsts"></a>Folyamatos továbbítás konfigurálása a VSTS használatával
+A Team Services builddefiníciója egy olyan munkafolyamatot ír le, amely egymás után végrehajtott létrehozási lépések sorozatából áll. Hozzon létre egy builddefiníciót, amely létrehozza a Service Fabric-alkalmazáscsomagot és más összetevőket egy Service Fabric-fürtben való üzembe helyezéshez. További tudnivalók [a Team Services builddefinícióiról](https://www.visualstudio.com/docs/build/define/create). 
 
-Team Services kiadás definícióját egy munkafolyamatot, amely egy alkalmazáscsomagot telepít egy fürthöz ismerteti. Együttes használatuk esetén a build meghatározására és kiadás definition hajtható végre a forrásfájlok egy a fürtben futó alkalmazás végződő kezdve a teljes munkafolyamat. További tudnivalók Team Services [definíciók kiadási](https://www.visualstudio.com/docs/release/author-release-definition/more-release-definition).
+A Team Services kiadási definíciója olyan munkafolyamatot ír le, amely egy alkalmazáscsomagot telepít egy fürtre. Együttes használatuk esetén a builddefiníció és a kiadási definíció a teljes munkafolyamatot végrehajtja, a forrásfájloktól kezdve a fürtön futó alkalmazásig bezárólag. További tudnivalók a Team Services [kiadási definícióiról](https://www.visualstudio.com/docs/release/author-release-definition/more-release-definition).
 
-### <a name="create-a-build-definition"></a>A build definíció létrehozása
-Nyisson meg egy webböngészőt, és keresse meg a következő új csapatprojektbe: [https://&lt;myaccount&gt;.visualstudio.com/Voting/Voting%20Team/_git/Voting](https://myaccount.visualstudio.com/Voting/Voting%20Team/_git/Voting). 
+### <a name="create-a-build-definition"></a>Builddefiníció létrehozása
+Nyisson meg egy webböngészőt, és keresse meg az új csoportprojektet a következő helyen: [https://&lt;myaccount&gt;.visualstudio.com/Voting/Voting%20Team/_git/Voting](https://myaccount.visualstudio.com/Voting/Voting%20Team/_git/Voting). 
 
-Válassza ki a **Build & kiadási** lapra, majd **buildek**, majd **+ új definition**.  A **válasszon olyan sablont,**, jelölje be a **Azure Service Fabric-alkalmazás** sablont, és kattintson **alkalmaz**. 
+Válassza ki a **Build & Release** (Build és kiadás) lapot, majd a **Builds** (Buildek) és a **+ New definition** (+ Új definíció) lehetőséget.  A **Select a template** (Sablon kiválasztása) területen válassza az **Azure Service Fabric Application** (Azure Service Fabric-alkalmazás) sablont, majd kattintson az **Apply** (Alkalmaz) gombra. 
 
-![Build sablon kiválasztása][select-build-template] 
+![Buildsablon kiválasztása][select-build-template] 
 
-A **feladatok**, írja be a "Kihelyezett VS2017" a **ügynök várólista**. 
+A **Tasks** (Feladatok) között az **Agent queue** (Ügynöküzenetsor) megfelelőjeként adja meg a következőt: „Hosted VS2017”. 
 
-![Válassza ki a feladatok][save-and-queue]
+![Feladatok kiválasztása][save-and-queue]
 
-A **eseményindítók**, úgy, hogy engedélyezze a folyamatos integrációt **állapota indítás**.  Válassza ki **mentéséhez és a feldolgozási sor** build manuális elindítása.  
+A **Triggers** (Eseményindítók) lehetőségnél engedélyezze a folyamatos integrációt a **Trigger status** (Eseményindító állapota) beállításával.  Válassza ki a **Save and queue** (Mentés és üzenetsorba helyezés) elemet a build manuális elindításához.  
 
-![Válassza ki az eseményindítók][save-and-queue2]
+![Eseményindítók kiválasztása][save-and-queue2]
 
-Épít is eseményindító leküldéses vagy be. A létrehozási folyamat állapotának ellenőrzéséhez térjen át a **buildek** fülre.  Miután ellenőrizte, hogy a létrehozás sikeresen végrehajtja-e, adja meg egy kiadási-definíciót, amely telepíti az alkalmazást egy fürt. 
+A buildek leküldés vagy bejelentkezés hatására is aktiválódnak. A build folyamatának ellenőrzéséhez váltson át a **Builds** (Buildek) lapra.  Miután meggyőződött arról, hogy a build végrehajtása sikeresen megtörtént, hozza létre a kiadási definíciót, amely telepíti az alkalmazást egy fürtre. 
 
-### <a name="create-a-release-definition"></a>Egy kiadási definíció létrehozása  
+### <a name="create-a-release-definition"></a>Kiadási definíció létrehozása  
 
-Válassza ki a **Build & kiadási** lapra, majd **kiadásokban**, majd **+ új definition**.  A **válasszon olyan sablont,**, jelölje be a **Azure Service Fabric telepítési** sablont a listából, majd **alkalmaz**.  
+Válassza ki a **Build & Release** (Build és kiadás) lapot, majd a **Releases** (Kiadások) és a **+ New definition** (+ Új definíció) lehetőséget.  A **Select a template** (Sablon kiválasztása) területen válassza ki az **Azure Service Fabric Deployment** (Üzembe helyezés az Azure Service Fabric használatával) sablont a listából, majd kattintson az **Apply** (Alkalmaz) gombra.  
 
 ![Kiadási sablon kiválasztása][select-release-template]
 
-Válassza ki **feladatok**->**környezet 1** , majd **+ új** hozzáadni egy új fürt-kapcsolatot.
+Válassza ki a **Tasks**->**Environment 1** (Feladatok > 1. környezet), majd a **+New** (+Új) elemet az új fürtkapcsolat hozzáadásához.
 
-![Fürt-kapcsolat hozzáadása][add-cluster-connection]
+![Fürtkapcsolat hozzáadása][add-cluster-connection]
 
-Az a **új Service Fabric-kapcsolat hozzáadása** megtekintéséhez válassza ki **tanúsítványalapú** vagy **Azure Active Directory** hitelesítés.  Adja meg a kapcsolat neve "mysftestcluster" és "tcp://mysftestcluster.southcentralus.cloudapp.azure.com:19000" a fürt végpontja (vagy a fürt esetében helyez üzembe a végpont). 
+Az **Add new Service Fabric Connection** (Új Service Fabric-kapcsolat hozzáadása) nézetben válassza a **Certificate Based** (Tanúsítványalapú) vagy az **Azure Active Directory** hitelesítést.  A kapcsolat neve legyen „mysftestcluster”, a fürt végpontja pedig „tcp://mysftestcluster.southcentralus.cloudapp.azure.com:19000” (vagy az a fürtvégpont, ahová a telepítés történik). 
 
-A tanúsítványalapú hitelesítéshez, adja hozzá a **kiszolgálói tanúsítvány-ujjlenyomat** a a fürt létrehozásához használt tanúsítvány.  A **ügyféltanúsítvány**, vegye fel az ügyfél tanúsítványfájlját base 64 kódolás. A Súgó előugró ablak jelenik meg, hogy a mező alakjának adott base-64 kódolású tanúsítvány kapcsolatos információk. Is hozzáadhat a **jelszó** a tanúsítvány.  A fürt vagy a kiszolgáló tanúsítványát is használhatja, ha nincs külön ügyfél-tanúsítványt. 
+A tanúsítványalapú hitelesítéshez adja meg a fürt létrehozásához használt kiszolgáló tanúsítványának **kiszolgálói tanúsítvány-ujjlenyomatát**.  Az **ügyféltanúsítvány** esetében adja meg az ügyféltanúsítvány-fájl base-64 kódolását. A tanúsítvány base-64 kódolású megfelelőjének beszerzésével kapcsolatos információk a mező felugró súgóablakában találhatók. Adja meg a tanúsítványhoz tartozó **jelszót** is.  Ha nem rendelkezik külön ügyféltanúsítvánnyal, a fürt vagy a kiszolgáló tanúsítványát is használhatja. 
 
-Az Azure Active Directory hitelesítő adatokkal, adja hozzá a **kiszolgálói tanúsítvány-ujjlenyomat** kapcsolódik a fürthöz használni kívánt a fürt és a hitelesítő adatok létrehozásához használt kiszolgálói tanúsítvány a **felhasználónév** és **jelszó** mezőket. 
+Azure Active Directory hitelesítő adatok esetében adja meg a fürt létrehozásakor használt kiszolgálói tanúsítvány **kiszolgálói tanúsítvány-ujjlenyomatát**, illetve a fürthöz történő csatlakozáshoz használni kívánt hitelesítő adatokat a **felhasználónév** és a **jelszó** mezőkben. 
 
-Kattintson a **Hozzáadás** a fürt kapcsolat mentéséhez.
+Kattintson az **Add** (Hozzáadás) gombra a fürtkapcsolat mentéséhez.
 
-Ezután adja hozzá a build összetevő az adatcsatornához, a kiadás definition megtalálhatja a build kimenete. Válassza ki **csővezeték** és **összetevők**->**+ Hozzáadás**.  A **forrás (Build-definíció)**, válassza ki a korábban létrehozott build definíciót.  Kattintson a **Hozzáadás** build összetevő mentéséhez.
+Ezután adja hozzá a buildösszetevőt a folyamathoz, hogy a kiadási definíció megtalálhassa a build kimenetét. Válassza a **Pipeline** (Folyamat), majd az **Artifacts**->**+Add** (Összetevők > +Hozzáadás) lehetőséget.  A **Source (Build definíció)** (Forrás (builddefiníció)) területen válassza ki a korábban létrehozott builddefiníciót.  Kattintson az **Add** (Hozzáadás) gombra a buildösszetevő mentéséhez.
 
-![Összetevő felvétele][add-artifact]
+![Összetevő hozzáadása][add-artifact]
 
-Engedélyezze a folyamatos üzembe helyezés eseményindító, hogy a kiadás automatikusan létrejön a build befejeződésekor. Kattintson a lightning összetevő, engedélyezze az eseményindító, és kattintson a **mentése** menteni a kiadási definícióját.
+Engedélyezze a folyamatos üzembe helyezés eseményindítóját, hogy a kiadás automatikusan létrejöjjön a build elkészültekor. Az összetevőnél kattintson a villám ikonra, engedélyezze az eseményindítót, majd kattintson a **Save** (Mentés) elemre a kiadási definíció mentéséhez.
 
 ![Eseményindító engedélyezése][enable-trigger]
 
-Válassza ki **+ kiadási** -> **létrehozása kiadási** -> **létrehozása** kiadási manuális létrehozásához.  Győződjön meg arról, hogy a telepítés sikeres volt, és az alkalmazás fut a fürtön.  Nyisson meg egy webböngészőt, és keresse meg [http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/](http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/).  Vegye figyelembe a verziója, ebben a példában "1.0.0.20170616.3". 
+Válassza a **+Release** -> **Create Release** -> **Create** (+Kiadás > Kiadás létrehozása > Létrehozás) lehetőséget a kiadás manuális létrehozásához.  Győződjön meg arról, hogy az üzembe helyezés sikeres volt, és ellenőrizze, hogy az alkalmazás megfelelően fut-e a fürtön.  Nyisson meg egy webböngészőt, és lépjen a következő címre: [http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/](http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/).  Vegye figyelembe, hogy a példában szereplő alkalmazásverzió száma „1.0.0.20170616.3”. 
 
-## <a name="commit-and-push-changes-trigger-a-release"></a>Véglegesítse és módosításokat, kiadási indítás
-Ellenőrizheti, hogy működik-e a folyamatos integrációs folyamat néhány kódot megváltozik Team Services ellenőrzésével.    
+## <a name="commit-and-push-changes-trigger-a-release"></a>Módosítások véglegesítse és leküldése, kiadás indítása
+A folyamatos integrációs folyamat működésének ellenőrzéséhez adjon be néhány kódmódosítást a Team Servicesbe.    
 
-Amikor tartalmat ír a kódot, a automatikusan kötetblokkok változásait a Visual Studio. A függőben lévő módosítások ikonra (kiválasztásával a helyi Git-tárház módosításainak véglegesítése![Függőben][pending]) a lévő állapotjelző sáv jobb alsó.
+A kód írása közben eszközölt módosításokat a Visual Studio automatikusan követi. A helyi Git-adattár módosításainak véglegesítéséhez válassza ki a függőben lévő módosítások ikonját (![Függőben][pending]), amely a képernyő jobb oldalának alján lévő állapotsávon található.
 
-Az a **módosítások** Team Intézőben, vegye fel a frissítést leíró üzenet és a változtatások véglegesítése a határidő.
+A Team Explorer **Changes** (Módosítások) nézetében adjon meg egy üzenetet a frissítés leírásával, majd véglegesítse a módosításokat.
 
 ![Az összes véglegesítése][changes]
 
-Válassza ki a közzé nem tett változás állapotikon sávjának (![közzé nem tett módosítások][unpublished-changes]) vagy a csapat Explorer szinkronizálási nézetet. Válassza ki **leküldéses** frissítse a kódot a Team Services/TFS számára.
+Válassza ki a közzé nem tett változások ikonját az állapotsávon (![Unpublished changes][unpublished-changes]) vagy a Sync (Szinkronizálás) nézetet a Team Explorerben. A **Push** (Leküldés) elem kiválasztásával frissítheti a kódot a Team Services/TFS szolgáltatásban.
 
-![Küldje el a módosításokat][push]
+![Módosítások leküldése][push]
 
-Build kérdez le a módosításokat, hogy Team Services automatikusan váltja ki.  Ha a build definition sikeresen befejeződött, a kiadási automatikusan létrejön, és elindítja a frissíteni az alkalmazást a fürtön.
+A Team Services szolgáltatásba leküldött módosítások automatikusan aktiválnak egy buildet.  Ha a builddefiníció sikeresen befejeződött, a kiadás automatikusan létrejön, és elindítja a fürtön az alkalmazás frissítését.
 
-A létrehozási folyamat állapotának ellenőrzéséhez térjen át a **buildek** lapján **Team Explorer** a Visual Studio.  Miután ellenőrizte, hogy a létrehozás sikeresen végrehajtja-e, adja meg egy kiadási-definíciót, amely telepíti az alkalmazást egy fürt.
+A build folyamatának ellenőrzéséhez váltson át a Visual Studio **Team Explorer** területének **Builds** (Buildek) lapjára.  Miután meggyőződött arról, hogy a build végrehajtása sikeresen megtörtént, hozza létre a kiadási definíciót, amely telepíti az alkalmazást egy fürtre.
 
-Győződjön meg arról, hogy a telepítés sikeres volt, és az alkalmazás fut a fürtön.  Nyisson meg egy webböngészőt, és keresse meg [http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/](http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/).  Vegye figyelembe a verziója, ebben a példában "1.0.0.20170815.3".
+Győződjön meg arról, hogy az üzembe helyezés sikeres volt, és ellenőrizze, hogy az alkalmazás megfelelően fut-e a fürtön.  Nyisson meg egy webböngészőt, és lépjen a következő címre: [http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/](http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/).  Vegye figyelembe, hogy a példában szereplő alkalmazásverzió száma „1.0.0.20170815.3”.
 
 ![Service Fabric Explorer][sfx1]
 
 ## <a name="update-the-application"></a>Az alkalmazás frissítése
-Az alkalmazás kódja módosíthatók.  Mentse, és véglegesítse a módosításokat, az előző lépések.
+Módosítsa a kódokat az alkalmazásban.  Az előző lépések mentén mentse és véglegesítse a módosításokat.
 
-Az alkalmazás a frissítés megkezdése után a frissítési folyamat állapotát a Service Fabric Explorer nézheti meg:
+Az alkalmazás frissítésének megkezdése után a frissítési folyamat állapotát a Service Fabric Explorerben lehet megtekinteni:
 
 ![Service Fabric Explorer][sfx2]
 
-Az alkalmazásfrissítés több percig is eltarthat. Ha a frissítés befejeződött, az alkalmazást futtatja a következő verziójára.  Ebben a példában "1.0.0.20170815.4".
+Az alkalmazásfrissítés több percig is eltarthat. Ha a frissítés befejeződött, az alkalmazás a következő verziót futtatja majd.  Ebben a példában ez az „1.0.0.20170815.4”-es.
 
 ![Service Fabric Explorer][sfx3]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
-> * A verziókövetési rendszerrel hozzáadása a projekthez
-> * A build definíció létrehozása
-> * Egy kiadási definíció létrehozása
-> * Automatikus központi telepítése és alkalmazás frissítése
+> * Forráskezelés hozzáadása a projekthez
+> * Builddefiníció létrehozása
+> * Kiadási definíció létrehozása
+> * Alkalmazás automatikus üzembe helyezése és frissítése
 
-Előzetes következő oktatóanyagot:
+Folytassa a következő oktatóanyaggal:
 > [!div class="nextstepaction"]
-> [Figyelés és diagnosztika az alkalmazás beállítása](service-fabric-tutorial-monitoring-aspnet.md) 
+> [Figyelés és diagnosztika beállítása az alkalmazáshoz](service-fabric-tutorial-monitoring-aspnet.md) 
 
 
 <!-- Image References -->

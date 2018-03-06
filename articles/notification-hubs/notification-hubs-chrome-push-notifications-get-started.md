@@ -15,16 +15,16 @@ ms.devlang: JavaScript
 ms.topic: hero-article
 ms.date: 10/03/2016
 ms.author: yuaxu
-ms.openlocfilehash: 107c001f1b02874adfdc53856f18e6bfcbcb0cf4
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: 376348c3af0ff97162f1b2ed865a5edd47f52546
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="send-push-notifications-to-chrome-apps-with-azure-notification-hubs"></a>Leküldéses értesítések küldése Chrome-alkalmazásokba az Azure Notification Hubs használatával
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
-Ebből a témakörből megtudhatja, hogyan küldhet leküldéses értesítéseket Chrome-alkalmazásokba az Azure Notification Hubs használatával. Az alkalmazás a Google Chrome böngészőben jelenik meg. Ebben az oktatóanyagban létrehozunk egy olyan Chrome-alkalmazást, amely leküldéses értesítéseket fogad a [Google Cloud Messaging (GCM)](https://developers.google.com/cloud-messaging/) használatával. 
+Ebből a cikkből megtudhatja, hogyan küldhet leküldéses értesítéseket az Azure Notification Hubs használatával egy Chrome-alkalmazásba, amely a Google Chrome böngészőben jelenik meg. Ebben az oktatóanyagban egy olyan Chrome-alkalmazást hoz létre, amely leküldéses értesítéseket fogad a [Google Cloud Messaging (GCM)](https://developers.google.com/cloud-messaging/) használatával. 
 
 > [!NOTE]
 > Az oktatóanyag elvégzéséhez egy aktív Azure-fiókra lesz szüksége. Ha nincs fiókja, néhány perc alatt létrehozhat egy ingyenes próbafiókot. További információkért lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%notification-hubs-chrome-get-started%2F).
@@ -40,7 +40,7 @@ Az oktatóanyag bemutatja a leküldéses értesítések engedélyezéséhez szü
 * [További funkciók és képességek](#next-steps)
 
 > [!NOTE]
-> A Chrome-alkalmazások leküldéses értesítései nem általános böngészőn belüli értesítések, hanem a böngésző bővíthetőségi modelljére jellemzőek (a részletes információkat lásd: [Chrome-alkalmazások – áttekintés]). Az asztali böngészőn kívül a Chrome-alkalmazások (Android és iOS rendszerű) mobileszközökön is futnak az Apache Cordova segítségével. További információk: [Chrome-alkalmazások mobileszközökön].
+> A Chrome-alkalmazások leküldéses értesítései nem általános böngészőn belüli értesítések, hanem a böngésző bővíthetőségi modelljére jellemzőek (a részletes információkat lásd: [Chrome-alkalmazások – áttekintés]). Az asztali böngészőn kívül a Chrome-alkalmazások (Android és iOS rendszerű) mobileszközökön is futnak az Apache Cordova segítségével. További információ: [Chrome-alkalmazások mobileszközökön].
 > 
 > 
 
@@ -49,43 +49,41 @@ A GCM és az Azure Notification Hubs konfigurálása ugyanúgy történik, mint 
 ## <a id="register"></a>A Google Cloud Messaging engedélyezése
 1. Nyissa meg a [Google Cloud Console] webhelyét, jelentkezzen be Google-fiókja hitelesítő adataival, majd kattintson a **Create Project** (Projekt létrehozása) elemre. Adjon meg egy megfelelő **projektnevet**, majd kattintson a **Create** (Létrehozás) gombra.
    
-       ![Google Cloud Console - Create Project][1]
-2. Jegyezze fel a most létrehozott projekt **Projects** (Projektek) oldalán szereplő **Project Number** (Projektszám) értékét. Ezt a Chrome-alkalmazás GCM-regisztrációja során fogja használni a **GCM Sender ID** (GCM-küldőazonosító) értékeként.
+    ![Google Cloud Console – Projekt létrehozása][1]
+2. Jegyezze fel a létrehozott projekt **Projects** (Projektek) oldalán szereplő **Project Number** (Projektszám) értékét. Ezt a projektszámot a Chrome-alkalmazás GCM-regisztrációja során fogja használni a **GCM Sender ID** (GCM-küldőazonosító) értékeként.
    
-       ![Google Cloud Console - Project Number][2]
+    ![Google Cloud Console – Projektszám][2]
 3. A bal oldali ablaktáblán kattintson az **APIs & auth** (API-k és hitelesítés) elemre, majd görgessen lefelé, és kattintással engedélyezze a **Google Cloud Messaging for Android** beállítást. A **Google Cloud Messaging for Chrome** használatát nem kell külön engedélyeznie.
    
-       ![Google Cloud Console - Server Key][3]
+    ![Google Cloud Console – Kiszolgálókulcs][3]
 4. A bal oldali ablaktáblán kattintson a **Credentials** (Hitelesítő adatok)  > **Create New Key** (Új kulcs létrehozása)  > **Server Key** (Kiszogálókulcs)  > **Create** (Létrehozás) elemre.
    
-       ![Google Cloud Console - Credentials][4]
-5. Jegyezze fel a kiszolgálói **API KEY** (API-kulcs) értékét. Ezt az értesítési központban fogja konfigurálni, így engedélyezheti a leküldéses értesítések küldését a GCM-be.
+    ![Google Cloud Console – Hitelesítő adatok][4]
+5. Jegyezze fel a kiszolgálói **API KEY** (API-kulcs) értékét. Ezzel az értékkel fogja konfigurálni az értesítési központot a következő szakaszban, hogy engedélyezze a leküldéses értesítések küldését a GCM-be.
    
-       ![Google Cloud Console - API Key][5]
+    ![Google Cloud Console – API-kulcs][5]
 
 ## <a id="configure-hub"></a>A saját értesítési központ konfigurálása
 [!INCLUDE [notification-hubs-portal-create-new-hub](../../includes/notification-hubs-portal-create-new-hub.md)]
 
-&emsp;&emsp;6.   A **Beállítások** panelen válassza az **Értesítési szolgáltatások**, majd a **Google (GCM)** lehetőséget. Adja meg az API-kulcsot, majd mentsen.
+6.   A **Beállítások** oldalon válassza az **Értesítési szolgáltatások**, majd a **Google (GCM)** lehetőséget. Adja meg az API-kulcsot, majd mentsen.
 
-&emsp;&emsp;![Azure Notification Hubs – Google (GCM)](./media/notification-hubs-android-get-started/notification-hubs-gcm-api.png)
+        ![Azure Notification Hubs – Google (GCM)](./media/notification-hubs-android-get-started/notification-hubs-gcm-api.png)
 
 ## <a id="connect-app"></a>A Chrome-alkalmazás csatlakoztatása az értesítési központhoz
 Az értesítési központ konfigurálva lett a GCM-mel való együttműködésre, és rendelkezik a kapcsolati karakterláncokkal az alkalmazás regisztrálására értesítések fogadásához és leküldéses értesítések küldéséhez. LK
 
 ### <a name="create-a-new-chrome-app"></a>Új Chrome-alkalmazás létrehozása
-Az alábbi minta alapjául a [Chrome-alkalmazások GCM mintája] szolgál, és a Chrome-alkalmazás javasolt létrehozási módját alkalmazza. A kifejezetten az Azure Notification Hubsra vonatkozó lépések ki vannak emelve. 
+Az alábbi minta a [Chrome-alkalmazások GCM-mintáján] alapul, és a Chrome-alkalmazás javasolt létrehozási módját alkalmazza. Ez a szakasz kiemeli azon lépéseket, amelyek kifejezetten az Azure Notification Hubsra vonatkoznak. 
 
 > [!NOTE]
-> Javasoljuk, hogy töltse le a jelen Chrome-alkalmazás forrását a következő helyről: [Chrome-alkalmazás – Notification Hub-minta].
-> 
-> 
+> Javasoljuk, hogy töltse le a jelen Chrome-alkalmazás forrását a következő helyről: [Chrome-alkalmazás – Notification Hub-minta]. 
 
-A Chrome-alkalmazás JavaScripttel készült, és bármilyen szövegszerkesztővel létrehozható. A Chrome-alkalmazás a következőképpen fog kinézni.
+A Chrome-alkalmazás JavaScripttel készült, és bármilyen szövegszerkesztővel létrehozható. A következő kép bemutatja, hogy a Chrome-alkalmazás hogy néz ki:
 
 ![Google Chrome-alkalmazás][15]
 
-1. Hozzon létre egy `ChromePushApp` nevű mappát. A név természetesen szabadon választható – ha más nevet ad neki, akkor azt használja szükséges kódszakaszok elérési útjában is.
+1. Hozzon létre egy `ChromePushApp` nevű mappát. A név szabadon választható – ha más nevet ad neki, akkor azt használja szükséges kódszakaszok elérési útjában is.
 2. A második lépésben létrehozott mappába töltse le a [crypto-js kódtárat]. Ez a kódtármappa a következő két almappát tartalmazza: `components` és `rollups`.
 3. Hozzon létre egy `manifest.json` fájlt. Az összes Chrome-alkalmazás egy olyan jegyzékfájlt használ, amely tartalmazza az alkalmazás metaadatait, és –ami még fontosabb – a felhasználói telepítés során az alkalmazásnak megadott összes engedélyt.
    
@@ -104,7 +102,7 @@ A Chrome-alkalmazás JavaScripttel készült, és bármilyen szövegszerkesztőv
         }
    
     Figyelje meg a `permissions` elemet, amely megadja, hogy a Chrome-alkalmazás fogadhat-e leküldéses értesítéseket a GCM-től. Meg kell adnia az Azure Notification Hubs URI-ját is, ahol a Chrome-alkalmazás REST-hívást hajt végre a regisztrációhoz.
-    Mintaalkalmazásunk a `gcm_128.png` ikonfájlt is használja, amelyet az eredeti GCM-mintából újrahasznosított forrásban talál. Ezt bármilyen képpel helyettesítheti, amely megfelel az [ikonokra vonatkozó követelményeknek](https://developer.chrome.com/apps/manifest/icons).
+    A mintaalkalmazás a `gcm_128.png` ikonfájlt is használja, amely az eredeti GCM-mintából újrahasznosított forrásban található. Ezt bármilyen képpel helyettesítheti, amely megfelel az [ikonokra vonatkozó követelményeknek](https://developer.chrome.com/apps/manifest/icons).
 4. Hozzon létre egy `background.js` nevű fájlt a következő kóddal:
    
         // Returns a new notification ID used in the notification.
@@ -199,7 +197,7 @@ A Chrome-alkalmazás JavaScripttel készült, és bármilyen szövegszerkesztőv
         </body>
    
         </html>
-6. Hozzon létre egy `register.js` nevű fájlt az alábbi kóddal. Ez a fájl a `register.html` szkriptjét határozza meg. A Chrome-alkalmazások nem engedélyezik a beágyazott futtatás használatát, így a felhasználói felülethez külön háttérszkriptet kell létrehoznia.
+6. Hozzon létre egy `register.js` nevű fájlt a jelen lépésben található kóddal. Ez a fájl a `register.html` szkriptjét határozza meg. A Chrome-alkalmazások nem engedélyezik a beágyazott futtatás használatát, így a felhasználói felülethez külön háttérszkriptet kell létrehoznia.
    
         var registrationId = "";
         var hubName        = "", connectionString = "";
@@ -346,47 +344,47 @@ A Chrome-alkalmazás JavaScripttel készült, és bármilyen szövegszerkesztőv
           }
         }
    
-    A fenti szkript a következő fő paraméterekkel rendelkezik:
+    A szkript a következő fő paraméterekkel rendelkezik:
    
-   * A **window.onload** határozza meg két gomb kattintási eseményeit a felhasználói felületen. Az egyik a GCM-ben regisztrál, a másik pedig a másik a GCM-regisztráció után visszaadott regisztrációs azonosítót az Azure Notification Hubs-regisztrációra használja.
-   * Az **updateLog** egyszerű naplózási képességeket biztosító függvény.
+   * A **window.onload** határozza meg két gomb kattintási eseményeit a felhasználói felületen. Az egyik gombkattintási eseménykezelő a GCM-ben regisztrál, a másik pedig a másik a GCM-regisztráció után visszaadott regisztrációs azonosítót az Azure Notification Hubs-regisztrációra használja.
+   * Az **updateLog** a függvény, amely lehetővé teszi, hogy a kód adatokat naplózzon. 
    * A **registerWithGCM** az első kattintáskezelő, amely végrehajtja a `chrome.gcm.register` hívást a GCM felé az aktuális Chrome App-példány regisztrálásához.
    * A **registerCallback** visszahívási függvényt a rendszer a GCM-regisztrációs hívás visszatérésekor hívja meg.
    * A **registerWithNH** a második kattintáskezelő, amely a Notification Hubs-regisztrációt hajtja végre. Lekéri a `hubName` és (a felhasználó által megadott ) `connectionString` paramétereket, valamint létrehozza a Notification Hubs-regisztrációs REST API-hívást.
    * A **splitConnectionString** és a **generateSaSToken** olyan segítők, amelyek az SaS-jogkivonatok létrehozásának JavaScript-alapú megvalósítását képviselik. Ezeket az összes REST API-hívásban használni kell. További információk: [Általánosan használt fogalmak](http://msdn.microsoft.com/library/dn495627.aspx).
-   * A **sendNHRegistrationRequest** függvény HTTP REST-hívást haj végre az Azure Notification Hubs felé.
-   * A **registrationPayload** határozza meg a regisztrációs XML hasznos adatait. További információk: [Regisztrációs NH REST API létrehozása]. A benne található regisztrációs azonosítót a GCM-től kapott adatokkal frissítjük.
-   * A **client** az **XMLHttpRequest** azon példánya, amelyet a HTTP POST-kérés végrehajtására használunk. Figyelje meg, hogy az `Authorization` fejlécet a következővel frissítjük: `sasToken`. A hívás sikeres végrehajtása regisztrálja a Chrome-alkalmazás ezen példányát az Azure Notification Hubsban.
+   * A **sendNHRegistrationRequest** függvény HTTP REST-hívást hajt végre az Azure Notification Hubs felé.
+   * A **registrationPayload** határozza meg a regisztrációs XML hasznos adatait. További információk: [Regisztrációs NH REST API létrehozása]. Frissítenie kell a benne található regisztrációs azonosítót a GCM-től kapott értékkel.
+   * A **client** az **XMLHttpRequest** azon példánya, amelyet az alkalmazás a HTTP POST kérelem végrehajtására használ. Frissítse az `Authorization` fejlécet a következővel: `sasToken`. A hívás sikeres végrehajtása regisztrálja a Chrome-alkalmazás ezen példányát az Azure Notification Hubsban.
 
 A projekt teljes mappastruktúrája a következőhöz hasonlít: ![Google Chrome-alkalmazás – Mappastruktúra][21]
 
 ### <a name="set-up-and-test-your-chrome-app"></a>A Chrome-alkalmazás beállítása és tesztelése
 1. Nyissa meg a Chrome böngészőt. Nyissa meg a **Chrome-bővítményeket**, majd engedélyezze a **Fejlesztői módot**.
    
-       ![Google Chrome - Enable Developer Mode][16]
+    ![Google Chrome – Fejlesztői mód engedélyezése][16]
 2. Kattintson a **Kicsomagolt bővítmények betöltése** elemre, és keresse meg azt a mappát, amelyben a fájlokat létrehozta. Igény szerint a **Chrome-alkalmazások és bővítmények fejlesztői eszközét** is használhatja. Ez az eszköz maga is egy Chrome-alkalmazás, amely a Chrome webáruházból telepíthető, és speciális hibakeresési képességeket biztosít a Chrome-alkalmazások fejlesztéséhez.
    
-       ![Google Chrome - Load Unpacked Extension][17]
+    ![Google Chrome – Kicsomagolatlan bővítmény betöltése][17]
 3. Ha a Chrome-alkalmazás létrehozása hibaüzenet nélkül megtörtént, akkor megjelenik az alkalmazás.
    
-       ![Google Chrome - Chrome App Display][18]
+    ![Google Chrome – A Chrome-alkalmazás megjelenítése][18]
 4. Adja meg a **Google Cloud Console**-ból korábban beszerzett **Projektszámot** küldőazonosítóként, és kattintson a **Register with GCM** (Regisztráció a GCM-ben) elemre. A következő üzenetet kell látnia: **Registration with GCM succeeded** (Sikeres GCM-regisztráció).
    
-       ![Google Chrome - Chrome App Customization][19]
+    ![Google Chrome – A Chrome-alkalmazás testreszabása][19]
 5. Adja meg a **Notification Hub Name** (Notification Hub neve) és a **DefaultListenSharedAccessSignature** értéket, amelyeket korábban szerzett be a portálról, majd kattintson a **Register with Azure Notification Hub** (Regisztráció az Azure Notification Hub használatával) lehetőségre. A következő üzenetet kell látnia: **Notification Hub Registration successful!** (Sikeres Notification Hub-regisztráció), valamint a regisztrációs válasz részletes adatait, amely tartalmazza az Azure Notification Hubs-regisztráció azonosítóját.
    
-       ![Google Chrome - Specify Notification Hub Details][20]  
+    ![Google Chrome – A Notification Hub-adatok megadása][20]  
 
 ## <a name="send"></a>Értesítés küldése a Chrome-alkalmazásba
-Tesztelési célra a Chrome leküldéses értesítéseit egy .NET-konzolalkalmazás használatával küldjük el. 
+Tesztelési célból küldjön leküldéses Chrome-értesítéseket egy .NET-konzolalkalmazás használatával. 
 
 > [!NOTE]
-> A Notification Hubs használatával bármilyen háttérrendszerből küldhet leküldéses értesítést a nyilvános <a href="http://msdn.microsoft.com/library/windowsazure/dn223264.aspx">REST-felületen</a> keresztül. A platformok közötti átjárhatóságról további példákat a [dokumentációs portálon](https://azure.microsoft.com/documentation/services/notification-hubs/) talál.
+> A Notification Hubs használatával bármilyen háttérrendszerből küldhet leküldéses értesítéseket a nyilvános <a href="http://msdn.microsoft.com/library/windowsazure/dn223264.aspx">REST-felületen</a> keresztül. A platformok közötti átjárhatóságról a [dokumentációs portálon](https://azure.microsoft.com/documentation/services/notification-hubs/) talál további példákat.
 > 
 > 
 
-1. A Visual Studio **Fájl** menüjében válassza az **Új**, majd a **Projekt** elemet. A **Visual C#** területen kattintson a **Windows** és a **Konzolalkalmazás**, majd pedig az **OK** elemre.  Ekkor létrejön egy új konzolalkalmazás-projekt.
-2. Az **Eszközök** menüben kattintson a **Kódtárcsomag-kezelő** majd a **Csomagkezelő konzol** elemre. Megjelenik a Package Manager Console (Csomagkezelő konzol) ablak.
+1. A Visual Studio **Fájl** menüjében válassza az **Új**, majd a **Projekt** elemet. A **Visual C#** területen kattintson a **Windows** és a **Konzolalkalmazás**, majd pedig az **OK** elemre.  Ez a lépés létrehoz egy új konzolalkalmazás-projektet.
+2. Az **Eszközök** menüben kattintson a **NuGet-csomagkezelő**, majd a **Csomagkezelői konzol** elemre. Megjelenik a Csomagkezelői konzol az alsó ablakban.
 3. A konzolablakban hajtsa végre a következő parancsot:
    
         Install-Package Microsoft.Azure.NotificationHubs
@@ -415,12 +413,12 @@ Tesztelési célra a Chrome leküldéses értesítéseit egy .NET-konzolalkalmaz
          SendNotificationAsync();
          Console.ReadLine();
 7. Győződjön meg arról, hogy a Chrome böngésző fut, majd futtassa a konzolalkalmazást.
-8. Az alábbi felugró értesítésnek kell megjelennie az asztalon.
+8. Az alábbi felugró értesítés jelenik meg az asztalon.
    
-       ![Google Chrome - Notification][13]
+    ![Google Chrome – Értesítés][13]
 9. Ha a Chrome fut, a tálca Chrome-értesítések ablakában az összes értesítést láthatja (Windowson).
    
-       ![Google Chrome - Notifications List][14]
+    ![Google Chrome – Értesítések listája](./media/notification-hubs-chrome-get-started/ChromeNotificationWindow.png)
 
 > [!NOTE]
 > A Chrome-alkalmazást nem kell futtatnia vagy megnyitnia a böngészőben (de a Chrome böngészőnek futnia kell). A Chrome-értesítések ablakban az összes értesítés egyesített nézetét is megtekintheti.
@@ -462,7 +460,7 @@ Ha a felhasználókat érdeklődési körök alapján szeretné szegmentálni, o
 [Google Cloud Console]: http://cloud.google.com/console
 [Notification Hubs – áttekintés]: notification-hubs-push-notification-overview.md
 [Chrome-alkalmazások – áttekintés]: https://developer.chrome.com/apps/about_apps
-[Chrome-alkalmazások GCM mintája]: https://github.com/GoogleChrome/chrome-app-samples/tree/master/samples/gcm-notifications
+[Chrome-alkalmazások GCM-mintáján]: https://github.com/GoogleChrome/chrome-app-samples/tree/master/samples/gcm-notifications
 [Installable Web Apps]: https://developers.google.com/chrome/apps/docs/
 [Chrome-alkalmazások mobileszközökön]: https://developer.chrome.com/apps/chrome_apps_on_mobile
 [Regisztrációs NH REST API létrehozása]: http://msdn.microsoft.com/library/azure/dn223265.aspx

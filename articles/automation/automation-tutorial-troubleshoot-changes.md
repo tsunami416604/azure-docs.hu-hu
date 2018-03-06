@@ -5,15 +5,15 @@ services: automation
 keywords: "változás, követés, automatizálás"
 author: jennyhunter-msft
 ms.author: jehunte
-ms.date: 12/14/2017
+ms.date: 02/28/2018
 ms.topic: tutorial
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 0aefa175d676bd7e98841d3a1e9ff5a8c90b7deb
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
-ms.translationtype: MT
+ms.openlocfilehash: f0af493036740b854609cea07e01136aac808579
+ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="troubleshoot-changes-in-your-environment"></a>A környezet változásainak hibaelhárítása
 
@@ -47,37 +47,19 @@ Jelentkezzen be az Azure Portalra a http://portal.azure.com webhelyen.
 Az oktatóanyag első lépéseként engedélyeznie kell a Change Tracking és az Inventory megoldást a virtuális gépen. Ha előzőleg már engedélyezett egy másik automatizálási megoldást valamely virtuális gépen, ez a lépés kihagyható.
 
 1. A bal oldali menüben kattintson a **Virtuális gépek** elemre, majd válasszon ki egy virtuális gépet a listából.
-1. A bal oldali menüben, a **Műveletek** szakaszban kattintson az **Inventory** elemre. Ekkor megjelenik a **Change Tracking és Inventory** lap.
+1. A bal oldali menüben, a **MŰVELETEK** szakaszban kattintson a **Leltározás** elemre. Megnyílik a **változáskövetési** lap.
 
-A rendszer ellenőrzi, hogy a Change Tracking és az Inventory engedélyezve van-e a virtuális gépen.
-A rendszer eközben azt is ellenőrzi, hogy létezik-e Log Analytics-munkaterület és egy csatlakoztatott Automation-fiók, valamint hogy a megoldás már jelen van-e a munkaterületen.
+![Módosítás engedélyezése](./media/automation-tutorial-troubleshoot-changes/enableinventory.png) Megnyílik a **változáskövetési** képernyő. Konfigurálja a használni kívánt helyet, Log Analytics-munkaterületet és Automation-fiókot, majd kattintson az **Engedélyezés** gombra. Ha a mezők szürkén jelennek meg, az azt jelenti, hogy egy másik automatizálási megoldás már engedélyezve van a virtuális gépen, ezért az ahhoz tartozó munkaterületet és Automation-fiókot kell használnia.
 
 A [Log Analytics](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fautomation%2ftoc.json)-munkaterület az Inventory, valamint a hasonló funkciók és szolgáltatások által létrehozott adatok gyűjtésére szolgál.
 A munkaterület egyetlen központi helyet biztosít a több forrásból származó adatok áttekintéséhez és elemzéséhez.
 
-Az ellenőrzési folyamat arra is kiterjed, hogy a virtuális gépen működik-e a Microsoft Monitoring Agent (MMA) és egy hibrid feldolgozó.
+Az előkészítés során a virtuális gépre kerül egy Microsoft Monitoring Agent (MMA) és egy hibrid feldolgozó.
 Ez az ügynök kommunikál a virtuális géppel, továbbá begyűjti a telepített szoftverekkel kapcsolatos információikat.
-Az ellenőrzési folyamat arra is kiterjed, hogy a virtuális gépen működik-e a Microsoft Monitoring Agent (MMA) és az Automation hibrid runbook-feldolgozó.
-
-Ha az előfeltételek nem teljesülnek, egy szalagcím jelenik meg, amelyen engedélyezheti a megoldást.
-
-![A Change Tracking és az Inventory felvételének konfigurációs szalagcíme](./media/automation-tutorial-troubleshoot-changes/enableinventory.png)
-
-A megoldás engedélyezéséhez kattintson a szalagcímre.
-Ha az ellenőrzést követően az alábbi előfeltételek bármelyike hiányzik, a rendszer automatikusan hozzáadja azt:
-
-* [Log Analytics](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fautomation%2ftoc.json)-munkaterület
-* [Automatizálás](./automation-offering-get-started.md)
-* Engedélyezett [hibrid runbook-feldolgozó](./automation-hybrid-runbook-worker.md) a virtuális gépen
-
-Megnyílik a **Change Tracking és Inventory** képernyő. Konfigurálja a használni kívánt helyet, Log Analytics-munkaterületet és Automation-fiókot, majd kattintson az **Engedélyezés** gombra. Ha a mezők szürkén jelennek meg, az azt jelenti, hogy egy másik automatizálási megoldás már engedélyezve van a virtuális gépen, ezért az ahhoz tartozó munkaterületet és Automation-fiókot kell használnia.
-
-![Változáskövetési megoldás engedélyezési ablaka](./media/automation-tutorial-troubleshoot-changes/installed-software-enable.png)
 
 A megoldás engedélyezése akár 15 percet is igénybe vehet. Ez idő alatt ne zárja be a böngészőablakot.
 A megoldás engedélyezését követően a virtuális gépen telepített szoftverekkel és változásokkal kapcsolatos adatok elkezdenek beérkezni a Log Analytics szolgáltatásba.
 Az adatok legalább 30 perc és legfeljebb 6 óra múlva állnak készen az elemzésre.
-
 
 ## <a name="using-change-tracking-in-log-analytics"></a>A Change Tracking megoldás használata a Log Analyticsben
 
@@ -105,42 +87,49 @@ A **Munkaterület konfigurálása** ablakban adja hozzá a követni kívánt Win
 ### <a name="add-a-windows-registry-key"></a>Windows-beállításkulcs hozzáadása
 
 1. A **Windows-beállításjegyzék** lapon kattintson a **Hozzáadás** gombra.
-    Megnyílik a **Windows-beállításjegyzék felvétele a Change Tracking megoldásba** ablak.
+    Megnyílik **A Windows beállításjegyzékének hozzáadása a változáskövetéshez** ablak.
 
-   ![Change Tracking – beállításjegyzék hozzáadása](./media/automation-vm-change-tracking/change-add-registry.png)
+3. **A Windows beállításjegyzékének hozzáadása a változáskövetéshez** ablakban írja be a követni kívánt kulcs adatait, és kattintson a **Mentés** gombra.
 
-2. Az **Engedélyezve** elem alatt válassza az **Igaz** lehetőséget.
-3. Az **Elem neve** mezőben adjon meg egy rövid nevet.
-4. (Nem kötelező) A **Csoport** mezőben adjon meg egy csoportnevet.
-5. A **Windows-beállításkulcs** mezőbe írja be a követni kívánt beállításkulcs nevét.
-6. Kattintson a **Mentés** gombra.
+|Tulajdonság  |Leírás  |
+|---------|---------|
+|Engedélyezve     | Meghatározza, hogy a beállítás aktiválva van-e        |
+|Elem neve     | A nyomon követendő fájl felhasználóbarát neve        |
+|Csoport     | A fájlok logikai csoportosítására szolgáló csoportnév        |
+|Windows-beállításkulcs   | A fájl elérési útja, például: „HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders\Common Startup”      |
 
 ### <a name="add-a-windows-file"></a>Windows-fájl hozzáadása
 
 1. A **Windows-fájlok** lapon kattintson a **Hozzáadás** gombra. Megnyílik a **Windows-fájl felvétele a Change Tracking megoldásba** ablak.
 
-   ![Change Tracking – Windows-fájl hozzáadása](./media/automation-vm-change-tracking/change-add-win-file.png)
+1. **A Windows beállításjegyzékének hozzáadása a változáskövetéshez** ablakban írja be a követni kívánt fájl vagy címtár adatait, és kattintson a **Mentés** gombra.
 
-2. Az **Engedélyezve** elem alatt válassza az **Igaz** lehetőséget.
-3. Az **Elem neve** mezőben adjon meg egy rövid nevet.
-4. (Nem kötelező) A **Csoport** mezőben adjon meg egy csoportnevet.
-5. Az **Elérési út megadása** mezőbe írja be a követni kívánt fájl teljes elérési útját és fájlnevét.
-6. Kattintson a **Mentés** gombra.
+|Tulajdonság  |Leírás  |
+|---------|---------|
+|Engedélyezve     | Meghatározza, hogy a beállítás aktiválva van-e        |
+|Elem neve     | A nyomon követendő fájl felhasználóbarát neve        |
+|Csoport     | A fájlok logikai csoportosítására szolgáló csoportnév        |
+|Elérési út megadása     | A fájl elérési útja, például: „c:\temp\myfile.txt”       |
 
 ### <a name="add-a-linux-file"></a>Linux-fájl hozzáadása
 
-1. A **Linux-fájlok** lapon kattintson a **Hozzáadás** gombra. Megnyílik a **Linux-fájl felvétele a Change Tracking megoldásba** ablak.
+1. A **Linux-fájlok** lapon kattintson a **Hozzáadás** gombra. Megnyílik a **Linux-fájl hozzáadása a változáskövetéshez** ablak.
 
-   ![Change Tracking – Linux-fájl hozzáadása](./media/automation-vm-change-tracking/change-add-linux-file.png)
+1. A **Linux-fájl hozzáadása a változáskövetéshez** ablakban írja be a követni kívánt fájl vagy címtár adatait, és kattintson a **Mentés** gombra.
 
-2. Az **Engedélyezve** elem alatt válassza az **Igaz** lehetőséget.
-3. Az **Elem neve** mezőben adjon meg egy rövid nevet.
-4. (Nem kötelező) A **Csoport** mezőben adjon meg egy csoportnevet.
-5. Az **Elérési út megadása** mezőbe írja be a követni kívánt fájl teljes elérési útját és fájlnevét.
-6. Az **Elérési út típusa** mezőben válassza a **Fájl** vagy **Könyvtár** lehetőséget.
-7. A megadott elérési út és az alá tartozó összes fájl és elérési út követéséhez válassza a **Be** lehetőséget a **Rekurzió** területen. Ha csak a megadott elérési utat vagy fájlt szeretné követni, válassza a **Ki** lehetőséget.
-8. Az olyan fájlok követéséhez, amelyeknek az eléréséhez a `sudo` parancs szükséges, válassza a **Be** lehetőséget a **Sudo használata** területen. Máskülönben válassza a **Ki** lehetőséget.
-9. Kattintson a **Mentés** gombra.
+|Tulajdonság  |Leírás  |
+|---------|---------|
+|Engedélyezve     | Meghatározza, hogy a beállítás aktiválva van-e        |
+|Elem neve     | A nyomon követendő fájl felhasználóbarát neve        |
+|Csoport     | A fájlok logikai csoportosítására szolgáló csoportnév        |
+|Elérési út megadása     | A fájl elérési útja, például: „/etc/*.conf”       |
+|Elérési út típusa     | Írja be a követni kívánt elem típusát. A lehetséges értékek a Fájl és a Címtár        |
+|Rekurzió     | Meghatározza, hogy a rendszer rekurziót használjon-e a követni kívánt elem keresésekor.        |
+|Sudo használata     | Ez a beállítás határozza meg, hogy a rendszer sudót használjon-e az elem keresésekor.         |
+|Hivatkozások     | Ez a beállítás határozza meg a szimbolikus hivatkozások kezelésének módját, amikor áthaladnak a címtárakon.<br> **Mellőzés** – Mellőzi a szimbolikus hivatkozásokat, és nem szerepelteti a hivatkozott fájlokat/címtárakat<br>**Követés** – Követi a szimbolikus hivatkozásokat a rekurzió során, és szerepelteti a hivatkozott fájlokat/címtárakat<br>**Kezelés** – Követi a szimbolikus hivatkozásokat, és lehetővé teszi a visszaadott tartalom kezelésének módosítását      |
+
+   > [!NOTE]   
+   > A „Kezelés” használata nem ajánlott, mert a fájltartalom lekérése nem támogatott.
 
 ## <a name="enable-activity-log-connection"></a>Tevékenységnapló csatlakozásának engedélyezése
 
@@ -158,7 +147,7 @@ A Change Tracking és az Inventory megoldás engedélyezését követően az ere
 
 A virtuális gépen kattintson a **Change Tracking** elemre a **MŰVELETEK** területen.
 
-![Képernyőkép a azokat a változásokat a virtuális géphez](./media/automation-tutorial-troubleshoot-changes/change-tracking-list.png)
+![A virtuális gép módosításainak listáját bemutató képernyőkép](./media/automation-tutorial-troubleshoot-changes/change-tracking-list.png)
 
 A diagram az eltelt idő alatt bekövetkezett változásokat mutatja.
 A Tevékenységnapló-kapcsolat hozzáadása után a felül látható vonaldiagramon az Azure tevékenységnapló eseményei jelennek meg.
@@ -188,4 +177,4 @@ Ennek az oktatóanyagnak a segítségével megtanulta a következőket:
 Ha többet szeretne megtudni a Change Tracking és az Inventory megoldásról, folytassa az áttekintéssel.
 
 > [!div class="nextstepaction"]
-> [Változáskezelés és az Inventory megoldás](../log-analytics/log-analytics-change-tracking.md?toc=%2fazure%2fautomation%2ftoc.json)
+> [Változáskezelés és az Inventory megoldás](automation-change-tracking.md)

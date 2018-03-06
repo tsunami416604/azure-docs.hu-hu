@@ -1,27 +1,21 @@
 ---
-title: "Azure gyors üzembe helyezés – Objektumok továbbítása Azure Blob-tárolókra és -tárolókról a PowerShell-lel | Microsoft Docs"
-description: "Gyorsan megismerheti az objektumok az Azure Blob-tárolókra és -tárolókról a PowerShell-lel való továbbításának módját."
+title: "Azure rövid útmutató – Blobok feltöltése, letöltése és listázása az Azure Storage-ban az Azure PowerShell használatával | Microsoft Docs"
+description: "Ebben a rövid útmutatóban egy tárfiókot és egy tárolót hoz létre az Azure PowerShell használatával. Majd a PowerShell segítségével feltölt egy blobot az Azure Storage-ba, letölt egy blobot, és kilistázza a tárolóban lévő blobokat."
 services: storage
-documentationcenter: storage
 author: tamram
-manager: timlt
-editor: tysonn
-ms.assetid: 
+manager: jeconnoc
 ms.custom: mvc
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
-ms.date: 07/19/2017
+ms.date: 02/22/2018
 ms.author: tamram
-ms.openlocfilehash: bbc0de7b3a63e8b541a6425e0c7fef9a72dfdffc
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 1ffed1eea8d159ccd05331d741624d8bc9e84b50
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 02/24/2018
 ---
-# <a name="transfer-objects-tofrom-azure-blob-storage-using-azure-powershell"></a>Objektumok továbbítása Azure Blob-tárolókra és -tárolókról az Azure PowerShell-lel
+# <a name="quickstart-upload-download-and-list-blobs-using-azure-powershell"></a>Rövid útmutató: blobok feltöltése, letöltése és listázása az Azure PowerShell használatával
 
 Az Azure PowerShell-modul az Azure-erőforrások PowerShell-parancssorból vagy szkriptekkel történő létrehozására és kezelésére használható. Ez az útmutató a fájlok a helyi lemez és az Azure Blob Storage közötti, a PowerShell-lel történő átvitelét mutatja be részletesen.
 

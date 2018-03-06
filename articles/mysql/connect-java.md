@@ -1,21 +1,21 @@
 ---
-title: "Csatlakozás a MySQL-hez készült Azure Database-hez a Java használatával | Microsoft Docs"
+title: "Csatlakozás az Azure Database for MySQL-hez a Java használatával"
 description: "Az alábbi gyors útmutatóban egy olyan Java-kódminta található, amely a MySQL-hez készült Azure Database csatlakoztatására és adatlekérdezésre használható."
 services: mysql
 author: jasonwhowell
 ms.author: jasonh
-manager: jhubbard
+manager: kfile
 editor: jasonwhowell
 ms.service: mysql-database
 ms.custom: mvc, devcenter
 ms.topic: quickstart
 ms.devlang: java
-ms.date: 12/14/2017
-ms.openlocfilehash: 1f5fc33116bccea1c37596e2317d5e36124facd6
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.date: 02/28/2018
+ms.openlocfilehash: efc1fd07f09bd0bae3c21b9d63c04020abc7832e
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="azure-database-for-mysql-use-java-to-connect-and-query-data"></a>A MySQL-hez készült Azure Database: Csatlakozás és adatlekérdezés a Java használatával
 Ebben a gyors útmutatóban azt szemléltetjük, hogy miként lehet Java-alkalmazás és a [MySQL Connector/J](https://dev.mysql.com/downloads/connector/j/) JDBC-illesztő használatával csatlakozni egy Azure Database for MySQL-adatbázishoz. Azt is bemutatja, hogyan lehet SQL-utasítások használatával adatokat lekérdezni, beszúrni, frissíteni és törölni az adatbázisban. A cikk feltételezi, hogy Ön rendelkezik fejlesztési tapasztalatokkal a Java használatával kapcsolatban, az Azure Database for MySQL használatában pedig még járatlan.
@@ -37,11 +37,10 @@ A [MySQL Connector példáit tartalmazó oldalon](https://dev.mysql.com/doc/conn
 Kérje le a MySQL-hez készült Azure Database-hez való csatlakozáshoz szükséges kapcsolatadatokat. Ehhez szükség lesz a teljes kiszolgálónévre és bejelentkezési hitelesítő adatokra.
 
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
-2. A bal oldali ablaktáblán kattintson a **Minden erőforrás** lehetőségre, és keressen rá a létrehozott kiszolgálóra (például: **myserver4demo**).
+2. Az Azure Portal bal oldali menüjében kattintson a **Minden erőforrás** lehetőségre, és keressen rá a létrehozott kiszolgálóra (például **mydemoserver**).
 3. Kattintson a kiszolgálónévre.
-4. Válassza a kiszolgáló **Tulajdonságok** lapját, és jegyezze fel a **kiszolgálónevet** és a **kiszolgálói rendszergazdai bejelentkezési nevet**.
- ![A MySQL-hez készült Azure Database-kiszolgáló neve](./media/connect-java/1_server-properties-name-login.png)
-5. Amennyiben elfelejtette a kiszolgáló bejelentkezési adatait, lépjen az **Áttekintés** oldalra, ahol kikeresheti a kiszolgáló rendszergazdájának bejelentkezési nevét, valamint szükség esetén új jelszót kérhet.
+4. A kiszolgáló **Áttekintés** paneléről jegyezze fel a **Kiszolgálónevet** és a **Kiszolgáló-rendszergazdai bejelentkezési nevet**. Ha elfelejti a jelszavát, ezen a panelen új jelszót is tud kérni.
+ ![A MySQL-hez készült Azure Database-kiszolgáló neve](./media/connect-java/1_server-overview-name-login.png)
 
 ## <a name="connect-create-table-and-insert-data"></a>Csatlakozás, táblák létrehozása és adatok beszúrása
 Az alábbi kód használatával csatlakozhat és tölthet be adatokat az **INSERT SQL-utasítással** használt függvény segítségével. A [getConnection()](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-usagenotes-connect-drivermanager.html) metódus a MySQL-hez való kapcsolódásra szolgál. A [createStatement()](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-usagenotes-statements.html) és az execute() metódusok a tábla létrehozásához, illetve törléséhez használatosak. A prepareStatement objektummal hozhatja létre a beszúrási parancsokat, valamint a setString() és a setInt() metódusokkal végezheti el a paraméterértékek kötését. Az executeUpdate() metódussal futtathatja az egyes paraméterkészletekhez tartozó értékek beszúrására szolgáló parancsot. 
@@ -57,9 +56,9 @@ public class CreateTableInsertRows {
     public static void main (String[] args)  throws Exception
     {
         // Initialize connection variables. 
-        String host = "myserver4demo.mysql.database.azure.com";
+        String host = "mydemoserver.mysql.database.azure.com";
         String database = "quickstartdb";
-        String user = "myadmin@myserver4demo";
+        String user = "myadmin@mydemoserver";
         String password = "<server_admin_password>";
 
         // check that the driver is installed
@@ -159,9 +158,9 @@ public class ReadTable {
     public static void main (String[] args)  throws Exception
     {
         // Initialize connection variables.
-        String host = "myserver4demo.mysql.database.azure.com";
+        String host = "mydemoserver.mysql.database.azure.com";
         String database = "quickstartdb";
-        String user = "myadmin@myserver4demo";
+        String user = "myadmin@mydemoserver";
         String password = "<server_admin_password>";
 
         // check that the driver is installed
@@ -245,9 +244,9 @@ public class UpdateTable {
     public static void main (String[] args)  throws Exception
     {
         // Initialize connection variables. 
-        String host = "myserver4demo.mysql.database.azure.com";
+        String host = "mydemoserver.mysql.database.azure.com";
         String database = "quickstartdb";
-        String user = "myadmin@myserver4demo";
+        String user = "myadmin@mydemoserver";
         String password = "<server_admin_password>";
 
         // check that the driver is installed
@@ -326,9 +325,9 @@ public class DeleteTable {
     public static void main (String[] args)  throws Exception
     {
         // Initialize connection variables.
-        String host = "myserver4demo.mysql.database.azure.com";
+        String host = "mydemoserver.mysql.database.azure.com";
         String database = "quickstartdb";
-        String user = "myadmin@myserver4demo";
+        String user = "myadmin@mydemoserver";
         String password = "<server_admin_password>";
         
         // check that the driver is installed

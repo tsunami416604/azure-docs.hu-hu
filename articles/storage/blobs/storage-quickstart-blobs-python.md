@@ -1,22 +1,22 @@
 ---
-title: "Azure rövid útmutató – Objektumok továbbítása Azure Blob-tárolókra és -tárolókról a Pythonnal | Microsoft Docs"
-description: "Gyors áttekintést kaphat arról, hogyan továbbíthat objektumokat az Azure Blob-tárolókra és -tárolókról a Python használatával"
+title: "Azure rövid útmutató – Blobok feltöltése, letöltése és listázása az Azure Storage-ban a Python használatával | Microsoft Docs"
+description: "Ebben a rövid útmutatóban egy tárfiókot és egy tárolót hoz létre. Majd a Storage Pythonhoz készült ügyféloldali kódtára segítségével feltölt egy blobot az Azure Storage-ba, letölt egy blobot, és kilistázza a tárolóban lévő blobokat."
 services: storage
-author: ruthogunnnaike
+author: tamram
 manager: jeconnoc
+ms.custom: mvc
 ms.service: storage
-ms.tgt_pltfrm: na
-ms.devlang: python
 ms.topic: quickstart
-ms.date: 10/12/2017
-ms.author: v-ruogun
-ms.openlocfilehash: 50f43e6ef9ee60cbf489bb8d0c1c64ca61a393e1
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.date: 02/22/2018
+ms.author: tamram
+ms.openlocfilehash: a82ec92449730a784e7cd36d7f364a9a4516c15f
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 02/24/2018
 ---
-#  <a name="transfer-objects-tofrom-azure-blob-storage-using-python"></a>Objektumok továbbítása Azure Blob-tárolókra és -tárolókról a Pythonnal
+# <a name="quickstart-upload-download-and-list-blobs-using-python"></a>Rövid útmutató: blobok feltöltése, letöltése és listázása a Python használatával
+
 A rövid útmutató azt ismerteti, hogyan használható a Python blokkblobok feltöltésére, letöltésére és listázására egy, az Azure Blob Storage-ben található tárolóban. 
 
 ## <a name="prerequisites"></a>Előfeltételek

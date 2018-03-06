@@ -1,23 +1,23 @@
 ---
-title: "Modell létrehozása Azure Machine Learning-szolgáltatásokoz (előzetes verzió) | Microsoft Docs"
+title: "Modell-létrehozási útmutató az Azure Machine Learning-szolgáltatásokhoz (előzetes verzió) | Microsoft Docs"
 description: "Ez a részletes oktatóanyag bemutatja, hogyan használhatók ki teljeskörűen az (előzetes verziójú) Azure Machine Learning-szolgáltatások. Ez a 2. rész, amely a kísérletezést ismerteti."
 services: machine-learning
 author: hning86
-ms.author: haining
+ms.author: haining, j-martens
 manager: mwinkle
-ms.reviewer: garyericson, jasonwhowell, mldocs
+ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
-ms.custom: mvc, tutorial
+ms.custom: mvc
 ms.topic: tutorial
-ms.date: 11/06/2017
-ms.openlocfilehash: 3337ba9fa6845deb98813259821f77ff713f9eb1
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.date: 02/28/2018
+ms.openlocfilehash: f52d4268c3983b419a6393bbd651301022688029
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/27/2018
 ---
-# <a name="classify-iris-part-2-build-a-model"></a>Írisz osztályozása, 2. rész: Modell létrehozása
+# <a name="tutorial-classify-iris-part-2---build-a-model"></a>Oktatóanyag: Írisz osztályozása, 2. rész – Modell létrehozása
 Az Azure Machine Learning-szolgáltatások (előzetes verzió) az adatszakértők számára az adatok előkészítéséhez, a kísérletek kidolgozásához és a modellek felhőszinten való üzembe helyezéséhez létrehozott átfogó, integrált és fejlett adatelemzési megoldást kínálnak.
 
 Ez az oktatóanyag egy háromrészes sorozat második része. Az oktatóanyagnak ebben a részében az Azure Machine Learning-szolgáltatások (előzetes verzió) segítségével a következőket hajtja végre:
@@ -33,6 +33,8 @@ Ez az oktatóanyag egy háromrészes sorozat második része. Az oktatóanyagnak
 > * Szkriptek végrehajtása a felhőalapú Azure HDInsight-környezetben.
 
 Az oktatóanyag a jól ismert [Iris flower adatkészletet](https://en.wikipedia.org/wiki/Iris_flower_data_set) használja. A képernyőképek Windows-specifikusak, de a macOS rendszeren szinte azonos a felhasználói élmény.
+
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 Végezze el az oktatóanyag első részét. Mielőtt belekezdene az oktatóanyag végrehajtásába, kövesse az [Adatok előkészítése útmutató](tutorial-classifying-iris-part-1.md) lépéseit Azure Machine Learning-erőforrások létrehozásához és az Azure Machine Learning Workbench alkalmazás telepítéséhez.
@@ -374,6 +376,10 @@ Ezt a szkriptet futtathatja egy HDInsight Spark-fürtön is. Ismerje meg, [hogya
    >Ha egy távoli HDInsight-fürtön hajtja végre, a `https://<cluster_name>.azurehdinsight.net/yarnui` helyen az `admin` felhasználói fiókkal a Yet Another Resource Negotiator (YARN) feladat-végrehajtási részleteit is megtekintheti.
 
 
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+
+[!INCLUDE [aml-delete-resource-group](../../../includes/aml-delete-resource-group.md)]
+
 ## <a name="next-steps"></a>További lépések
 A háromrészes oktatóanyag-sorozat jelen, második részében megtanulhatta, hogyan használhatók az Azure Machine Learning szolgáltatások a következőkre:
 > [!div class="checklist"]
@@ -389,4 +395,4 @@ A háromrészes oktatóanyag-sorozat jelen, második részében megtanulhatta, h
 Tovább léphet a sorozat harmadik részére. Most, hogy létrehoztuk a logisztikai regressziós modellt, helyezzük üzembe valós idejű webszolgáltatásként.
 
 > [!div class="nextstepaction"]
-> [Modell üzembe helyezése](tutorial-classifying-iris-part-3.md)
+> [3. oktatóanyag – Írisz osztályozása: Modellek üzembe helyezése](tutorial-classifying-iris-part-3.md)

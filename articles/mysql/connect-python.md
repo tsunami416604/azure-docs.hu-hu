@@ -1,24 +1,24 @@
 ---
-title: "Csatlakozás a MySQL-hez készült Azure-adatbázishoz a Pythonnal | Microsoft Docs"
+title: "Csatlakozás az Azure Database for MySQL-hez a Pythonnal"
 description: "Ez a rövid útmutató számos Python-mintakódot biztosít, amelyekkel csatlakozhat a MySQL-hez készült Azure-adatbázishoz, illetve adatokat kérdezhet le róla."
 services: mysql
 author: jasonwhowell
 ms.author: jasonh
-manager: jhubbard
+manager: kfile
 editor: jasonwhowell
 ms.service: mysql-database
 ms.custom: mvc
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 09/22/2017
-ms.openlocfilehash: 057a3bdb9a70c09fdd95cc02cc664db29e6c2f69
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.date: 02/28/2018
+ms.openlocfilehash: 4003c1258fcc0a6d04c4ae8d234eba4d0224b8a0
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="azure-database-for-mysql-use-python-to-connect-and-query-data"></a>A MySQL-hez készült Azure-adatbázis: Csatlakozás és adatlekérdezés a Python használatával
-Ez a rövid útmutató ismerteti, hogyan használható a [Python](https://python.org) a MySQL-hez készült Azure-adatbázishoz való csatlakozáshoz. Az SQL-utasítások használatával kérdez le, szúr be, frissít és töröl adatokat az adatbázisban a Mac OS, Ubuntu Linux és a Windows platformról. Ez a témakör azt feltételezi, hogy a Python használata terén rendelkezik fejlesztési tapasztalatokkal, de az Azure Database for MySQL használatában még járatlan. Az SDK-val kapcsolatos további részletekért tekintse át a [Python SDK-hoz készült Azure MySQL-kódtárak referenciáinak](/python/api/overview/azure/mysql) dokumentációját és egy [mintául szolgáló MySQL-összekötőt](https://dev.mysql.com/doc/connector-python/en/connector-python-example-connecting.html).
+Ez a rövid útmutató ismerteti, hogyan használható a [Python](https://python.org) a MySQL-hez készült Azure-adatbázishoz való csatlakozáshoz. Az SQL-utasítások használatával kérdez le, szúr be, frissít és töröl adatokat az adatbázisban a Mac OS, Ubuntu Linux és a Windows platformról. Ez a témakör azt feltételezi, hogy a Python használata terén rendelkezik fejlesztési tapasztalatokkal, de az Azure Database for MySQL használatában még járatlan.
 
 ## <a name="prerequisites"></a>Előfeltételek
 Ebben a rövid útmutatóban a következő útmutatók valamelyikében létrehozott erőforrásokat használunk kiindulási pontként:
@@ -61,11 +61,10 @@ Telepítse a [Pythont](https://www.python.org/downloads/) és a [Python MySQL-ö
 Kérje le a MySQL-hez készült Azure Database-hez való csatlakozáshoz szükséges kapcsolatadatokat. Ehhez szükség lesz a teljes kiszolgálónévre és bejelentkezési hitelesítő adatokra.
 
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
-2. Az Azure Portal bal oldali menüjében kattintson az **Összes erőforrás** lehetőségre, és keressen rá a létrehozott kiszolgálóra (például: **myserver4demo**).
-3. Kattintson a **myserver4demo** kiszolgálónévre.
-4. Válassza a kiszolgáló **tulajdonságlapját**. Jegyezze fel a **Kiszolgálónevet** és a **Kiszolgáló-rendszergazdai bejelentkezési nevet**.
- ![MySQL-hez készült Azure-adatbázis – Kiszolgáló-rendszergazdai bejelentkezés](./media/connect-python/1_server-properties-name-login.png)
-5. Amennyiben elfelejtette a kiszolgáló bejelentkezési adatait, lépjen az **Overview** (Áttekintés) oldalra, és itt megtudhatja a kiszolgáló rendszergazdájának bejelentkezési nevét, valamint szükség esetén visszaállíthatja a jelszót.
+2. Az Azure Portal bal oldali menüjében kattintson a **Minden erőforrás** lehetőségre, és keressen rá a létrehozott kiszolgálóra (például **mydemoserver**).
+3. Kattintson a kiszolgálónévre.
+4. A kiszolgáló **Áttekintés** paneléről jegyezze fel a **Kiszolgálónevet** és a **Kiszolgáló-rendszergazdai bejelentkezési nevet**. Ha elfelejti a jelszavát, ezen a panelen új jelszót is tud kérni.
+ ![A MySQL-hez készült Azure Database-kiszolgáló neve](./media/connect-python/1_server-overview-name-login.png)
    
 
 ## <a name="run-python-code"></a>A Python-kód futtatása
@@ -85,8 +84,8 @@ from mysql.connector import errorcode
 
 # Obtain connection string information from the portal
 config = {
-  'host':'myserver4demo.mysql.database.azure.com',
-  'user':'myadmin@myserver4demo',
+  'host':'mydemoserver.mysql.database.azure.com',
+  'user':'myadmin@mydemoserver',
   'password':'yourpassword',
   'database':'quickstartdb'
 }
@@ -141,8 +140,8 @@ from mysql.connector import errorcode
 
 # Obtain connection string information from the portal
 config = {
-  'host':'myserver4demo.mysql.database.azure.com',
-  'user':'myadmin@myserver4demo',
+  'host':'mydemoserver.mysql.database.azure.com',
+  'user':'myadmin@mydemoserver',
   'password':'yourpassword',
   'database':'quickstartdb'
 }
@@ -190,8 +189,8 @@ from mysql.connector import errorcode
 
 # Obtain connection string information from the portal
 config = {
-  'host':'myserver4demo.mysql.database.azure.com',
-  'user':'myadmin@myserver4demo',
+  'host':'mydemoserver.mysql.database.azure.com',
+  'user':'myadmin@mydemoserver',
   'password':'yourpassword',
   'database':'quickstartdb'
 }
@@ -234,8 +233,8 @@ from mysql.connector import errorcode
 
 # Obtain connection string information from the portal
 config = {
-  'host':'myserver4demo.mysql.database.azure.com',
-  'user':'myadmin@myserver4demo',
+  'host':'mydemoserver.mysql.database.azure.com',
+  'user':'myadmin@mydemoserver',
   'password':'yourpassword',
   'database':'quickstartdb'
 }

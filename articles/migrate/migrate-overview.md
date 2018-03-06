@@ -4,14 +4,14 @@ description: "A cikk áttekintést nyújt az Azure Migrate szolgáltatásról."
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: overview
-ms.date: 01/08/2018
+ms.date: 02/26/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: a9e04c7fa2a32ab7be8844b962f4bccdf260af23
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 45eac1d1ecb173ba0a62ab13f47b7ee6e12f7af3
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="about-azure-migrate"></a>Az Azure Migrate bemutatása
 
@@ -48,7 +48,7 @@ Az értékelés segítségével azonosíthatja a helyszíni virtuális gépek Az
 
 **Tulajdonság** | **Részletek**
 --- | ---
-**Célhely** | Az Azure-beli hely, ahová a migrálást szeretné végezni. Az alapértelmezetten beállított hely az USA 2. nyugati régiója. 
+**Célhely** | Az Azure-beli hely, ahová a migrálást szeretné végezni.<br/><br/>Az Azure Migrate jelenleg 30 régiót támogat, beleértve a következőket: Kelet-Ausztrália, Délkelet-Ausztrália, Dél-Brazília, Közép-Kanada, Kelet-Kanada, Közép-India, USA középső régiója, Kelet-Kína, Észak-Kína, Kelet-Ázsia, USA keleti régiója, Közép-Németország, Északkelet-Németország, USA 2. keleti régiója, Kelet-Japán, Nyugat-Japán, Korea középső régiója, Korea déli régiója, USA északi középső régiója, Észak-Európa, USA déli középső régiója, Délkelet-Ázsia, Dél-India, Egyesült Királyság déli régiója, Egyesült Királyság nyugati régiója, USA nyugati középső régiója, Nyugat-Európa, Nyugat-India, USA nyugati régiója és USA 2. nyugati régiója. Az alapértelmezetten beállított hely az USA 2. nyugati régiója. 
 **Tárhely-redundancia** | A [tárhely-redundancia](https://docs.microsoft.com/azure/storage/common/storage-redundancy) azon típusa, amelyet az Azure-beli virtuális gépek a migrálás után használni fognak. Az alapértelmezett típus a helyileg redundáns tárolás (Locally Redundant Storage, LRS). Vegye figyelembe, hogy az Azure Migrate csak a felügyelt lemezeken alapuló értékeléseket támogatja, és a felügyelt lemezek csak az LRS-t támogatják, ezért a tulajdonság beállítása jelenleg csak LRS lehet. 
 **Méretezési feltétel** | Az Azure Migrate által használt feltétel a virtuális gépek Azure-nak megfelelő méretezéséhez. A méretezést a helyszíni virtuális gépek *teljesítményelőzményei* alapján végezheti el, vagy méretezheti a virtuális gépeket az Azure-hoz *helyszíniként* is, a teljesítményelőzmények figyelembe vétele nélkül. Az alapértelmezett érték a teljesítményalapú méretezés.
 **Díjszabások** | A költségszámításokhoz az értékelés figyelembe veszi, hogy rendelkezik-e szoftvergaranciával, és jogosult-e az [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-use-benefit/) juttatásra. Emellett azokat az [Azure-ajánlatokat](https://azure.microsoft.com/support/legal/offer-details/) is figyelembe veszi, amelyekre esetleg regisztrált, és lehetővé teszi, hogy előfizetés-specifikus kedvezményeket (%) adjon meg az ajánlaton felül. 

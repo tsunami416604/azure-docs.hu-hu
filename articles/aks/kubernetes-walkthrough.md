@@ -6,14 +6,14 @@ author: neilpeterson
 manager: timlt
 ms.service: container-service
 ms.topic: quickstart
-ms.date: 11/15/2017
+ms.date: 02/24/2018
 ms.author: nepeters
 ms.custom: H1Hack27Feb2017, mvc, devcenter
-ms.openlocfilehash: f0ed49c94dc83624b5f6f1ee0a4dcdff9284d5a5
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 8e64ab3214633ae2f34234514dca5e7bb7b1896e
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="deploy-an-azure-container-service-aks-cluster"></a>Azure Container Service- (AKS-) fürt üzembe helyezése
 
@@ -25,7 +25,7 @@ Ez a rövid útmutató feltételezi, hogy ismeri a Kubernetes alapvető fogalmai
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez a rövid útmutatóhoz az Azure CLI 2.0.21-es vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli-install].
+Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez a rövid útmutatóhoz az Azure CLI 2.0.27-es vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli-install].
 
 ## <a name="enabling-aks-preview-for-your-azure-subscription"></a>AKS előzetes verziójának engedélyezése az Azure-előfizetéshez
 Amíg az AKS előzetes verziójú, az új fürtök létrehozásához szolgáltatásjelzőre van szükség az előfizetésén. Ezt a szolgáltatást annyi előfizetésen kérheti, amennyin használni szeretné. Az `az provider register` paranccsal regisztrálja az AKS-szolgáltatót:
@@ -39,6 +39,7 @@ A regisztrálás után készen áll egy Kubernetes-fürt létrehozására az AKS
 ## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Hozzon létre egy erőforráscsoportot az [az group create][az-group-create] paranccsal. Az Azure-erőforráscsoport olyan logikai csoport, amelyben az Azure-erőforrások üzembe helyezése és kezelése zajlik.
+Az erőforráscsoportok létrehozásakor meg kell adnia egy helyet, ahol az erőforrások megtalálhatók lesznek az Azure-ban. Amíg az AKS előzetes verzióként érhető el, csak bizonyos helybeállítások érhetők el. Ezek a következők: `eastus, westeurope, centralus, canadacentral, canadaeast`.
 
 A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *eastus* helyen.
 
@@ -88,7 +89,7 @@ A kubectl Kubernetes-fürthöz való csatlakozásra konfigurálásához futtassa
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 
-A fürthöz való csatlakozás ellenőrzéséhez használja a [kubectl get][kubectl-get] parancsot a fürtcsomópontok listájának lekéréséhez.
+A fürthöz való csatlakozás ellenőrzéséhez használja a [kubectl get][kubectl-get] parancsot a fürtcsomópontok listájának lekéréséhez. Vegye figyelembe, hogy az adatok megjelenítése eltarthat néhány percig.
 
 ```azurecli-interactive
 kubectl get nodes
@@ -103,9 +104,9 @@ k8s-myAKSCluster-36346190-0   Ready     agent     2m        v1.7.7
 
 ## <a name="run-the-application"></a>Az alkalmazás futtatása
 
-A Kubernetes-jegyzékfájl meghatározza a fürt célállapotát, például azt, hogy milyen tárolórendszerképeknek kell futniuk. Ebben a példában egy jegyzékfájlt használunk az Azure Vote alkalmazás futtatásához szükséges összes objektum létrehozásához.
+A Kubernetes-jegyzékfájl meghatározza a fürt célállapotát, például azt, hogy milyen tárolórendszerképeknek kell futniuk. Ebben a példában egy jegyzékfájlt használunk az Azure Vote alkalmazás futtatásához szükséges összes objektum létrehozásához. A megadott rendszerkép egy mintaalkalmazás, de a [lemezkép létrehozásáról](https://docs.microsoft.com/en-us/azure/aks/tutorial-kubernetes-prepare-app) és [az Azure Container Registryben való üzembe helyezéséről szóló](https://docs.microsoft.com/en-us/azure/aks/tutorial-kubernetes-prepare-acr) útmutatók alapján saját rendszerképet is használhat.
 
-Hozzon létre egy `azure-vote.yaml` nevű fájlt, és másolja bele a következő YAML-kódot. Ha az Azure Cloud Shellben dolgozik, ez a fájl a vi vagy a Nano segítségével hozható létre, ugyanúgy, mint egy virtuális vagy fizikai rendszeren.
+Hozzon létre egy `azure-vote.yaml` nevű fájlt, és másolja bele a következő YAML-kódot. Ha az Azure Cloud Shellben dolgozik, ez a fájl a vi vagy a Nano segítségével hozható létre, ugyanúgy, mint egy virtuális vagy fizikai rendszeren. Ha helyileg dolgozik, létrehozhatja a fájlt a Visual Studio Code használatával. Ehhez futtassa a következőt: `code azure-vote.yaml`.
 
 ```yaml
 apiVersion: apps/v1beta1
@@ -210,18 +211,6 @@ Most a külső IP-címre léphet az Azure Vote alkalmazás megtekintéséhez.
 
 ![Az Azure Vote keresését ábrázoló kép](media/container-service-kubernetes-walkthrough/azure-vote.png)
 
-## <a name="open-kubernetes-dashboard"></a>A Kubernetes-irányítópult megnyitása
-
-A Kubernetes-irányítópulttal való kapcsolat az Azure CLI segítségével is beállítható. Ehhez használja az [az aks browse][az-aks-browse] parancsot.
-
-```azurecli-interactive
-az aks browse --resource-group myResourceGroup --name myAKSCluster
-```
-
-A parancs futtatása után a böngésző megnyitja a Kubernetes-irányítópultot.
-
-![A Kubernetes-irányítópult](media/container-service-kubernetes-walkthrough/k8s-dashboard.png)
-
 ## <a name="delete-cluster"></a>A fürt törlése
 
 Ha a fürtre már nincs szükség, az [az group delete][az-group-delete] paranccsal törölheti az erőforráscsoportot, a tárolószolgáltatást és az összes kapcsolódó erőforrást.
@@ -243,7 +232,7 @@ Ebben a rövid útmutatóban egy Kubernetes-fürtöt és azon egy többtárolós
 Az AKS-sel kapcsolatos további információkért és a kódtól az üzembe helyezésig terjedő teljes útmutatóért folytassa a Kubernetes-fürtöket bemutató oktatóanyaggal.
 
 > [!div class="nextstepaction"]
-> [AKS-fürt kezelése][aks-tutorial]:
+> [ASK-oktatóanyag][aks-tutorial]:
 
 <!-- LINKS - external -->
 [azure-vote-app]: https://github.com/Azure-Samples/azure-voting-app-redis.git

@@ -1,21 +1,21 @@
 ---
-title: "Csatlakozás PostgreSQL-hez készült Azure-adatbázishoz a PHP használatával | Microsoft Docs"
+title: "Csatlakozás az Azure Database for PostgreSQL-hez a PHP használatával"
 description: "Ez a rövid útmutató olyan PHP-mintakódot biztosít, amellyel csatlakozhat a PostgreSQL-hez készült Azure-adatbázishoz, illetve adatokat kérdezhet le róla."
 services: postgresql
-author: jasonwhowell
-ms.author: jasonh
-manager: jhubbard
+author: rachel-msft
+ms.author: raagyema
+manager: kfile
 editor: jasonwhowell
 ms.service: postgresql
 ms.custom: mvc
 ms.devlang: php
 ms.topic: quickstart
-ms.date: 11/03/2017
-ms.openlocfilehash: dec02baf0ae9df4860a3f67e67b0f62e356658ff
-ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
+ms.date: 02/28/2018
+ms.openlocfilehash: dfdfb9b7d275843312dcf955f79b978d411c197e
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="azure-database-for-postgresql-use-php-to-connect-and-query-data"></a>PostgreSQL-hez készült Azure-adatbázis: Csatlakozás és adatok lekérdezése a PHP-vel
 Ez a rövid útmutató azt ismerteti, hogyan lehet csatlakozni a PostgreSQL-hez készült Azure-adatbázishoz egy [PHP](http://php.net/manual/intro-whatis.php)-alkalmazással. Azt is bemutatja, hogyan lehet SQL-utasítások használatával adatokat lekérdezni, beszúrni, frissíteni és törölni az adatbázisban. A jelen cikkben ismertetett lépések feltételezik, hogy Ön rendelkezik fejlesztési tapasztalatokkal a PHP használatával kapcsolatban, a PostgreSQL-hez készült Azure Database használatában pedig még járatlan.
@@ -36,23 +36,22 @@ Telepítse a PHP-t a kiszolgálójára, vagy hozzon létre egy PHP-t tartalmazó
 
 ### <a name="linux-ubuntu"></a>Linux (Ubuntu)
 - Töltse le a [PHP 7.1.4 non-thread safe (NTS) x64-es verzióját](http://php.net/downloads.php) 
-- Telepítse a PHP-t, majd a további konfigurációs lehetőségekért tekintse meg a [PHP kézikönyvét](http://php.net/manual/install.unix.php)
+- Telepítse a PHP-t, majd tekintse át a [PHP kézikönyvét](http://php.net/manual/install.unix.php) a további konfiguráláshoz
 - A kód a **pgsql** osztályt használja (php_pgsql.so). Telepítse a `sudo apt-get install php-pgsql` futtatásával.
 - Engedélyezze a **pgsql** bővítményt az `/etc/php/7.0/mods-available/pgsql.ini` konfigurációs fájl szerkesztésével. A konfigurációs fájlnak tartalmaznia kell egy sort a következő szöveggel: `extension=php_pgsql.so`. Ha ez nem jelenik meg, adja hozzá a szöveget, és mentse a fájlt. Ha a szöveg megvan, de pontosvessző előtaggal van ellátva, távolítsa el a megjegyzést a pontosvessző törlésével.
 
 ### <a name="macos"></a>MacOS
 - Töltse le a [PHP 7.1.4-es verzióját](http://php.net/downloads.php)
-- Telepítse a PHP-t, majd a további konfigurációs lehetőségekért tekintse meg a [PHP kézikönyvét](http://php.net/manual/install.macosx.php)
+- Telepítse a PHP-t, majd tekintse át a [PHP kézikönyvét](http://php.net/manual/install.macosx.php) a további konfiguráláshoz
 
 ## <a name="get-connection-information"></a>Kapcsolatadatok lekérése
 Kérje le a PostgreSQL-hez készült Azure-adatbázishoz való csatlakozáshoz szükséges kapcsolatadatokat. Szüksége lesz a teljes kiszolgálónévre és a bejelentkezési hitelesítő adatokra.
 
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
-2. Az Azure Portal bal oldali menüjében kattintson az **Összes erőforrás** lehetőségre, és keressen rá a létrehozott kiszolgálóra (például **mypgserver-20170401**).
-3. Kattintson a **mypgserver-20170401** kiszolgálónévre.
-4. Válassza ki a kiszolgáló **Áttekintés** oldalát. Jegyezze fel a **Kiszolgálónevet** és a **Kiszolgáló-rendszergazdai bejelentkezési nevet**.
- ![PostgreSQL-hez készült Azure-adatbázis – Kiszolgáló-rendszergazdai bejelentkezés](./media/connect-php/1-connection-string.png)
-5. Amennyiben elfelejtette a kiszolgálója bejelentkezési adatait, lépjen az **Áttekintés** oldalra, ahol kikeresheti a kiszolgáló-rendszergazda bejelentkezési nevét, valamint szükség esetén új jelszót kérhet.
+2. Az Azure Portal bal oldali menüjében kattintson a **Minden erőforrás** lehetőségre, és keressen rá a létrehozott kiszolgálóra (például **mydemoserver**).
+3. Kattintson a kiszolgálónévre.
+4. A kiszolgáló **Áttekintés** paneléről jegyezze fel a **Kiszolgálónevet** és a **Kiszolgáló-rendszergazdai bejelentkezési nevet**. Ha elfelejti a jelszavát, ezen a panelen új jelszót is tud kérni.
+ ![Azure Database for PostgreSQL-kiszolgáló neve](./media/connect-php/1-connection-string.png)
 
 ## <a name="connect-and-create-a-table"></a>Csatlakozás és tábla létrehozása
 A következő kód használatával csatlakozhat, és létrehozhat egy táblát a **CREATE TABLE** SQL-utasítással, majd az **INSERT INTO** SQL-utasításokkal sorokat adhat hozzá a táblához.
@@ -64,9 +63,9 @@ Cserélje le a `$host`, `$database`, `$user` és `$password` paramétereket a sa
 ```php
 <?php
     // Initialize connection variables.
-    $host = "mypgserver-20170401.postgres.database.azure.com";
+    $host = "mydemoserver.postgres.database.azure.com";
     $database = "mypgsqldb";
-    $user = "mylogin@mypgserver-20170401";
+    $user = "mylogin@mydemoserver";
     $password = "<server_admin_password>";
 
     // Initialize connection object.
@@ -112,8 +111,8 @@ Cserélje le a `$host`, `$database`, `$user` és `$password` paramétereket a sa
 ?>
 ```
 
-## <a name="read-data"></a>Adatok beolvasása
-A következő kóddal csatlakozhat, és beolvashatja az adatokat a **SELECT** SQL-utasítással. 
+## <a name="read-data"></a>Adatok olvasása
+Az alábbi kód használatával csatlakozhat és végezheti el az adatok olvasását **SELECT** SQL-utasítás segítségével. 
 
  A kód meghívja a [pg_connect()](http://php.net/manual/en/function.pg-connect.php) metódust, hogy csatlakozni tudjon a PostgreSQL-hez készült Azure-adatbázishoz. Ezután meghívja a [pg_query()](http://php.net/manual/en/function.pg-query.php) metódust, hogy futtassa a SELECT parancsot, az eredményeket egy eredményhalmazban tárolja, majd meghívja a [pg_last_error()](http://php.net/manual/en/function.pg-last-error.php) metódust, hogy hiba esetén ellenőrizze a részleteket.  Az eredményhalmaz olvasásához a kód többször, soronként egyszer meghívja a [pg_fetch_row()](http://php.net/manual/en/function.pg-fetch-row.php) metódust. A soradatokat `$row` tömbben kéri le, minden egyes tömbpozícióban oszloponként egy adatértékkel.  Az eredményhalmaz felszabadításához a [pg_fetch_row()](http://php.net/manual/en/function.pg-free-result.php) metódust hívja meg. Végül meghívja a [pg_close()](http://php.net/manual/en/function.pg-close.php) metódust, hogy bontsa a kapcsolatot.
 
@@ -122,9 +121,9 @@ Cserélje le a `$host`, `$database`, `$user` és `$password` paramétereket a sa
 ```php
 <?php
     // Initialize connection variables.
-    $host = "mypgserver-20170401.postgres.database.azure.com";
+    $host = "mydemoserver.postgres.database.azure.com";
     $database = "mypgsqldb";
-    $user = "mylogin@mypgserver-20170401";
+    $user = "mylogin@mydemoserver";
     $password = "<server_admin_password>";
     
     // Initialize connection object.
@@ -160,9 +159,9 @@ Cserélje le a `$host`, `$database`, `$user` és `$password` paramétereket a sa
 ```php
 <?php
     // Initialize connection variables.
-    $host = "mypgserver-20170401.postgres.database.azure.com";
+    $host = "mydemoserver.postgres.database.azure.com";
     $database = "mypgsqldb";
-    $user = "mylogin@mypgserver-20170401";
+    $user = "mylogin@mydemoserver";
     $password = "<server_admin_password>";
 
     // Initialize connection object.
@@ -186,7 +185,7 @@ Cserélje le a `$host`, `$database`, `$user` és `$password` paramétereket a sa
 
 
 ## <a name="delete-data"></a>Adat törlése
-A következő kód használatával csatlakozhat, és beolvashatja az adatokat a **DELETE** SQL-utasítással. 
+Az alábbi kód használatával csatlakozhat és végezheti el az adatok olvasását **DELETE** SQL-utasítás segítségével. 
 
  A kód meghívja a [pg_connect()](http://php.net/manual/en/function.pg-connect.php) metódust, hogy csatlakozni tudjon a PostgreSQL-hez készült Azure Database-hez. Ezután meghívja a [pg_query()](http://php.net/manual/en/function.pg-query.php) metódust, hogy futtasson egy parancsot, majd a [pg_last_error()](http://php.net/manual/en/function.pg-last-error.php) metódust, hogy hiba esetén ellenőrizze a részleteket. Végül meghívja a [pg_close()](http://php.net/manual/en/function.pg-close.php) metódust, hogy bontsa a kapcsolatot.
 
@@ -195,9 +194,9 @@ Cserélje le a `$host`, `$database`, `$user` és `$password` paramétereket a sa
 ```php
 <?php
     // Initialize connection variables.
-    $host = "mypgserver-20170401.postgres.database.azure.com";
+    $host = "mydemoserver.postgres.database.azure.com";
     $database = "mypgsqldb";
-    $user = "mylogin@mypgserver-20170401";
+    $user = "mylogin@mydemoserver";
     $password = "<server_admin_password>";
 
     // Initialize connection object.
@@ -218,6 +217,6 @@ Cserélje le a `$host`, `$database`, `$user` és `$password` paramétereket a sa
 ?>
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 > [!div class="nextstepaction"]
 > [Adatbázis migrálása exportálással és importálással](./howto-migrate-using-export-and-import.md)

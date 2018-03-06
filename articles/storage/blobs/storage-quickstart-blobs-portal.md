@@ -1,23 +1,21 @@
 ---
-title: "Azure rövid útmutató – Objektumok továbbítása Azure Blob-tárolókra és -tárolókról az Azure Portal használatával | Microsoft Docs"
-description: "Itt megtudhatja, hogyan használható az Azure Portal blobok feltöltésére, letöltésére és listázására az Azure Blob Storage-ban."
+title: "Azure rövid útmutató – Blobok feltöltése, letöltése és listázása az Azure Storage-ban az Azure Portal használatával | Microsoft Docs"
+description: "Ebben a rövid útmutatóban egy tárfiókot és egy tárolót hoz létre az Azure Portal használatával. Majd az Azure Portal segítségével feltölt egy blobot az Azure Storage-ba, letölt egy blobot, és kilistázza a tárolóban lévő blobokat."
 services: storage
-documentationcenter: storage
 author: tamram
 manager: jeconnoc
 ms.custom: mvc
 ms.service: storage
-ms.workload: storage
 ms.topic: quickstart
-ms.date: 12/12/2017
+ms.date: 02/22/2018
 ms.author: tamram
-ms.openlocfilehash: f647a5b78ee2fa362c4dea6ee9003ac56e0f7f7d
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.openlocfilehash: b03c3a26a6218bea8317749f43b4f74f6b3b4101
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 02/24/2018
 ---
-# <a name="transfer-objects-tofrom-azure-blob-storage-using-the-azure-portal"></a>Objektumok továbbítása Azure Blob-tárolókra és -tárolókról az Azure Portal használatával
+# <a name="quickstart-upload-download-and-list-blobs-using-the-azure-portal"></a>Rövid útmutató: blobok feltöltése, letöltése és listázása az Azure Portal használatával
 
 Ez a rövid útmutató azt ismerteti, hogyan használható az [Azure Portal](https://portal.azure.com/) egy Azure Storage-tároló létrehozására, valamint blokkblobok fel- és letöltésére a tárolóban.
 

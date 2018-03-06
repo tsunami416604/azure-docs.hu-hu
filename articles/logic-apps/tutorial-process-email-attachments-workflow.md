@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/12/2018
 ms.author: LADocs; estfan
-ms.openlocfilehash: 16db5bc948b1eac0ef996b449d89211fb210a91e
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 8c327599585e67ccc6ebdf849d3e9cf9b95e7398
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="process-emails-and-attachments-with-a-logic-app"></a>E-mailek és mellékletek kezelése logikai alkalmazásokkal
 
@@ -64,7 +64,7 @@ A bejövő e-mailek és mellékletek blobként menthetőek egy [Azure Storage-t�
 
    | Beállítás | Érték | Leírás | 
    | ------- | ----- | ----------- | 
-   | **Név** | attachmentstorageacct | A tárfiók neve | 
+   | **Name (Név)** | attachmentstorageacct | A tárfiók neve | 
    | **Üzemi modell** | Resource Manager | Az [üzemi modell](../azure-resource-manager/resource-manager-deployment-model.md) az erőforrások üzembe helyezésének felügyeletéhez | 
    | **Fióktípus** | Általános célú | A [tárfiók típusa](../storage/common/storage-introduction.md#types-of-storage-accounts) | 
    | **Teljesítmény** | Standard | Ez a beállítás adja meg a támogatott adattípusokat és az adathordozót az adatok tárolásához. Lásd: [A tárfiókok típusai](../storage/common/storage-introduction.md#types-of-storage-accounts). | 
@@ -205,7 +205,7 @@ Miután ellenőrizte, hogy működik-e a függvény, készítse el a logikai alk
 
 ## <a name="create-your-logic-app"></a>A logikai alkalmazás létrehozása
 
-1. Az Azure fő menüjében válassza az **Új** > **Enterprise Integration** > **Logic App** elemet.
+1. Az Azure főmenüjében válassza az **Erőforrás létrehozása** > **Enterprise Integration** > **Logic App** elemet.
 
    ![Logikai alkalmazás létrehozása](./media/tutorial-process-email-attachments-workflow/create-logic-app.png)
 
@@ -215,7 +215,7 @@ Miután ellenőrizte, hogy működik-e a függvény, készítse el a logikai alk
 
    | Beállítás | Érték | Leírás | 
    | ------- | ----- | ----------- | 
-   | **Név** | LA-ProcessAttachment | A logikai alkalmazás neve | 
+   | **Name (Név)** | LA-ProcessAttachment | A logikai alkalmazás neve | 
    | **Előfizetés** | <*your-Azure-subscription-name*> | A korábban is használt Azure-előfizetés | 
    | **Erőforráscsoport** | LA-Tutorial-RG | A korábban is használt Azure-erőforráscsoport |
    | **Hely** | USA 2. keleti régiója | A korábban is használt régió | 

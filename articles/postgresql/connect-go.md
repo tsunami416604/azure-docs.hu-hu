@@ -1,24 +1,24 @@
 ---
-title: "Csatlakozás PostgreSQL-hez készült Azure-adatbázishoz a Go nyelv használatával | Microsoft Docs"
+title: "Csatlakozás Azure Database for PostgreSQL-hez a Go nyelv használatával"
 description: "Ez a rövid útmutató egy Go programozási nyelven írt mintát biztosít, amellyel csatlakozhat a PostgreSQL-hez készült Azure-adatbázishoz, és adatokat is lekérdezhet róla."
 services: postgresql
-author: jasonwhowell
-ms.author: jasonh
-manager: jhubbard
+author: rachel-msft
+ms.author: raagyema
+manager: kfile
 editor: jasonwhowell
 ms.service: postgresql
 ms.custom: mvc
 ms.devlang: go
 ms.topic: quickstart
-ms.date: 11/03/2017
-ms.openlocfilehash: 8b52aeaadf7ba94d6b79ef447600cd7b57e70dfa
-ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
+ms.date: 02/28/2018
+ms.openlocfilehash: 305a9ad066ad504b7564945d8ccce1be19a4135a
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="azure-database-for-postgresql-use-go-language-to-connect-and-query-data"></a>PostgreSQL-hez készült Azure-adatbázis: Csatlakozás és adatok lekérdezése a Go nyelv használatával
-Ez a rövid útmutató azt ismerteti, hogyan lehet csatlakozni a PostgreSQL-hez készült Azure-adatbázishoz [Go](https://golang.org/) nyelven írt kóddal (golang). Bemutatjuk, hogy az SQL-utasítások használatával hogyan kérdezhetők le, illeszthetők be, frissíthetők és törölhetők az adatok az adatbázisban. A cikk feltételezi, hogy Ön ismeri a Go-t használó fejlesztéseket, de még járatlan a PostgreSQL-hez készült Azure-adatbázis használatában.
+Ez a rövid útmutató azt ismerteti, hogyan lehet csatlakozni a PostgreSQL-hez készült Azure-adatbázishoz [Go](https://golang.org/) nyelven írt kóddal (golang). Azt is bemutatja, hogyan lehet SQL-utasítások használatával adatokat lekérdezni, beszúrni, frissíteni és törölni az adatbázisban. A cikk feltételezi, hogy Ön ismeri a Go-t használó fejlesztéseket, de még járatlan a PostgreSQL-hez készült Azure-adatbázis használatában.
 
 ## <a name="prerequisites"></a>Előfeltételek
 A rövid útmutató az alábbi útmutatók valamelyikében létrehozott erőforrásokat használja kiindulópontként:
@@ -81,11 +81,10 @@ Telepítse a [Go](https://golang.org/doc/install)-t és a [Pure Go Postgres ille
 Kérje le a PostgreSQL-hez készült Azure-adatbázishoz való csatlakozáshoz szükséges kapcsolatadatokat. Szüksége lesz a teljes kiszolgálónévre és a bejelentkezési hitelesítő adatokra.
 
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
-2. Az Azure Portal bal oldali menüjében kattintson az **Összes erőforrás** lehetőségre, és keressen rá a létrehozott kiszolgálóra (például **mypgserver-20170401**).
-3. Kattintson a **mypgserver-20170401** kiszolgálónévre.
-4. Válassza ki a kiszolgáló **Áttekintés** oldalát. Jegyezze fel a **Kiszolgálónevet** és a **Kiszolgáló-rendszergazdai bejelentkezési nevet**.
- ![PostgreSQL-hez készült Azure-adatbázis – Kiszolgáló-rendszergazdai bejelentkezés](./media/connect-go/1-connection-string.png)
-5. Amennyiben elfelejtette a kiszolgálója bejelentkezési adatait, lépjen az **Áttekintés** oldalra, és keresse ki a kiszolgáló-rendszergazda bejelentkezési nevét. Szükség esetén kérjen új jelszót.
+2. Az Azure Portal bal oldali menüjében kattintson a **Minden erőforrás** lehetőségre, és keressen rá a létrehozott kiszolgálóra (például **mydemoserver**).
+3. Kattintson a kiszolgálónévre.
+4. A kiszolgáló **Áttekintés** paneléről jegyezze fel a **Kiszolgálónevet** és a **Kiszolgáló-rendszergazdai bejelentkezési nevet**. Ha elfelejti a jelszavát, ezen a panelen új jelszót is tud kérni.
+ ![Azure Database for PostgreSQL-kiszolgáló neve](./media/connect-go/1-connection-string.png)
 
 ## <a name="build-and-run-go-code"></a>Go kód felépítése és futtatása 
 1. Golang-kód írásához használhat egy egyszerű szövegszerkesztőt, ilyen például Microsoft Windows rendszeren a Jegyzettömb, Ubuntu rendszeren a [vi](http://manpages.ubuntu.com/manpages/xenial/man1/nvi.1.html#contenttoc5) vagy a [Nano](https://www.nano-editor.org/), macOS rendszeren pedig a TextEdit. Ha a funkciógazdagabb interaktív fejlesztési környezeteket (IDE-ket) részesít előnyben, próbálja ki a Jetbrains [Gogland](https://www.jetbrains.com/go/) a Microsoft [Visual Studio Code](https://code.visualstudio.com/) vagy az [Atom](https://atom.io/) eszközt.
@@ -115,9 +114,9 @@ import (
 
 const (
     // Initialize connection constants.
-    HOST     = "mypgserver-20170401.postgres.database.azure.com"
+    HOST     = "mydemoserver.postgres.database.azure.com"
     DATABASE = "mypgsqldb"
-    USER     = "mylogin@mypgserver-20170401"
+    USER     = "mylogin@mydemoserver"
     PASSWORD = "<server_admin_password>"
 )
 
@@ -161,8 +160,8 @@ func main() {
 }
 ```
 
-## <a name="read-data"></a>Adatok beolvasása
-A következő kóddal csatlakozhat, és beolvashatja az adatokat a **SELECT** SQL-utasítással. 
+## <a name="read-data"></a>Adatok olvasása
+Az alábbi kód használatával csatlakozhat és végezheti el az adatok olvasását **SELECT** SQL-utasítás segítségével. 
 
 A kód három csomagot importál, az [sql package](https://golang.org/pkg/database/sql/) és a [pq package](http://godoc.org/github.com/lib/pq) csomagot illesztőprogramként a PostgreSQL-kiszolgálóval való kommunikációhoz, illetve az [fmt package](https://golang.org/pkg/fmt/) csomagot a nyomtatott bemenetekhez és kimenetekhez a parancssoron.
 
@@ -181,9 +180,9 @@ import (
 
 const (
     // Initialize connection constants.
-    HOST     = "mypgserver-20170401.postgres.database.azure.com"
+    HOST     = "mydemoserver.postgres.database.azure.com"
     DATABASE = "mypgsqldb"
-    USER     = "mylogin@mypgserver-20170401"
+    USER     = "mylogin@mydemoserver"
     PASSWORD = "<server_admin_password>"
 )
 
@@ -247,9 +246,9 @@ import (
 
 const (
     // Initialize connection constants.
-    HOST     = "mypgserver-20170401.postgres.database.azure.com"
+    HOST     = "mydemoserver.postgres.database.azure.com"
     DATABASE = "mypgsqldb"
-    USER     = "mylogin@mypgserver-20170401"
+    USER     = "mylogin@mydemoserver"
     PASSWORD = "<server_admin_password>"
 )
 
@@ -300,9 +299,9 @@ import (
 
 const (
     // Initialize connection constants.
-    HOST     = "mypgserver-20170401.postgres.database.azure.com"
+    HOST     = "mydemoserver.postgres.database.azure.com"
     DATABASE = "mypgsqldb"
-    USER     = "mylogin@mypgserver-20170401"
+    USER     = "mylogin@mydemoserver"
     PASSWORD = "<server_admin_password>"
 )
 
@@ -334,6 +333,6 @@ func main() {
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 > [!div class="nextstepaction"]
 > [Adatbázis migrálása exportálással és importálással](./howto-migrate-using-export-and-import.md)

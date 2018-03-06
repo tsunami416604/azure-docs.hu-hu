@@ -1,21 +1,21 @@
 ---
-title: "Azure rövid útmutató – Objektumok áthelyezése az Azure Blob-tárolókra és -tárolókról Node.js használatával| Microsoft Docs"
-description: "Gyors áttekintést kaphat arról, hogyan továbbíthat objektumokat az Azure Blob-tárolókra és -tárolókról a Node.js használatával"
+title: "Azure rövid útmutató – Blobok feltöltése, letöltése és listázása az Azure Storage-ban a Node.js használatával | Microsoft Docs"
+description: "Ebben a rövid útmutatóban egy tárfiókot és egy tárolót hoz létre. Majd a Storage Node.js-hez készült ügyféloldali kódtára segítségével feltölt egy blobot az Azure Storage-ba, letölt egy blobot, és kilistázza a tárolóban lévő blobokat."
 services: storage
-author: tamram
+author: craigshoemaker
 manager: jeconnoc
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
-ms.date: 02/06/2018
-ms.author: tamram
-ms.openlocfilehash: 07845d0e1917c00dbd6098ef2bfbd9dcbbf2f97b
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.date: 02/22/2018
+ms.author: cshoe
+ms.openlocfilehash: ad0d4a2242aef99e0307f732175e0c50010580ce
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/24/2018
 ---
-# <a name="transfer-objects-tofrom-azure-blob-storage-using-nodejs"></a>Objektumok áthelyezése az Azure Blob-tárolókra és -tárolókról a Node.js használatával
+# <a name="quickstart-upload-download-and-list-blobs-using-nodejs"></a>Rövid útmutató: blobok feltöltése, letöltése és listázása a Node.js használatával
 
 A rövid útmutató azt ismerteti, hogyan használható a Node.js blokkblobok feltöltésére, letöltésére és listázására egy, az Azure Blob Storage-ben található tárolóban.
 

@@ -1,6 +1,6 @@
 ---
 title: "Service Fabric-tárolóalkalmazás csomagolása és üzembe helyezése | Microsoft Docs"
-description: "A cikk azt ismerteti, hogyan hozhat létre egy Azure Service Fabric-alkalmazásdefiníciót a Yeoman használatával, és hogyan csomagolhatja be az alkalmazást."
+description: "Az oktatóanyag azt ismerteti, hogyan hozhat létre egy Azure Service Fabric-alkalmazásdefiníciót a Yeoman használatával, és hogyan csomagolhatja be az alkalmazást."
 services: service-fabric
 documentationcenter: 
 author: suhuruli
@@ -16,13 +16,13 @@ ms.workload: na
 ms.date: 09/12/2017
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: eb838903802de5a04084a60924fc52d988180c11
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 6e3200676807bbd9a15c5c7b19312a2e0c18d77a
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/24/2018
 ---
-# <a name="package-and-deploy-containers-as-a-service-fabric-application"></a>Tárolók csomagolása és üzembe helyezése Service Fabric-alkalmazásként
+# <a name="tutorial-package-and-deploy-containers-as-a-service-fabric-application"></a>Oktatóanyag: tárolók csomagolása és üzembe helyezése Service Fabric-alkalmazásként
 
 Ez az oktatóanyag egy sorozat második része. Az oktatóanyag azt ismerteti, hogyan lehet létrehozni Service Fabric-alkalmazásdefiníciót egy sablonkészítő eszközzel (Yeoman). Az alkalmazással ezután tárolókat helyezhet üzembe a Service Fabric rendszerében. Ezen oktatóanyag segítségével megtanulhatja a következőket: 
 
@@ -94,7 +94,7 @@ Ha egy másik tárolószolgáltatást szeretne hozzáadni a Yeoman használatáv
 3. Adja a szolgáltatásnak az „azurevoteback” nevet.
 4. Adja meg a Redis tárolórendszerkép-útvonalát: „alpine:redis”.
 5. Nyomja le az Enter billentyűt, hogy a Parancsok szakasz üres maradjon.
-6. A példányszám legyen „1”.
+6. Adja meg az „1” példányszámát.
 
 A használt szolgáltatás hozzáadásának bejegyzései:
 
@@ -140,7 +140,7 @@ Az **ApplicationManifest.xml** fájlban adja a kódrészletet a kezelőfelületi
   </ContainerHostPolicies>
 </Policies>
 ```
-## <a name="configure-communication-and-container-port-to-host-port-mapping"></a>A kommunikációs port és a tárolóport–gazdagépport hozzárendelés konfigurálása
+## <a name="configure-communication-and-container-port-to-host-port-mapping"></a>A kommunikáció és a tárolóport–gazdagépport hozzárendelés konfigurálása
 
 ### <a name="configure-communication-port"></a>Kommunikációs port konfigurálása
 

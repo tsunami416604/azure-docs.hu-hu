@@ -1,78 +1,78 @@
 ---
-title: "Az Azure útmutató – az alkalmazás előkészítése Kubernetes"
-description: "AKS útmutató – az alkalmazás előkészítése"
+title: "Az Azure-on futó Kubernetes oktatóanyaga – Az alkalmazás előkészítés"
+description: "AKS-oktatóanyag – Az alkalmazás előkészítése"
 services: container-service
 author: neilpeterson
 manager: timlt
 ms.service: container-service
 ms.topic: tutorial
-ms.date: 10/24/2017
+ms.date: 02/22/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 60e0feb1e45ac5d9f35eac9667eaf9004d77e86a
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
-ms.translationtype: MT
+ms.openlocfilehash: 0c4a1459a49fb60578f9f38ea65cd1400b538382
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 02/24/2018
 ---
-# <a name="prepare-application-for-azure-container-service-aks"></a>Felkészülés az alkalmazás Azure tároló szolgáltatás (AKS)
+# <a name="prepare-application-for-azure-container-service-aks"></a>Alkalmazás előkészítése az Azure Container Service (AKS) szolgáltatáshoz
 
-Ebben az oktatóanyagban első nyolc, a tárolót több alkalmazás Kubernetes használatra kész. Befejeződött a lépések az alábbiak:  
+Ebben az oktatóanyagban, amely egy nyolcrészes sorozat első része, egy többtárolós alkalmazást fog előkészíteni a Kubernetesben való használathoz. Ennek lépései az alábbiak:  
 
 > [!div class="checklist"]
 > * Alkalmazás forrásának klónozása a GitHubról  
-> * Az alkalmazás forrás tároló lemezkép létrehozása
-> * Az alkalmazás tesztelése a helyi Docker-környezetben
+> * Tárolórendszerkép létrehozása az alkalmazás forrásából
+> * Az alkalmazás tesztelése helyi Docker-környezetben
 
-Ezt követően a helyi fejlesztési környezetben a következő alkalmazás érhető el.
+Miután végeztünk ezzel, az alábbi alkalmazás elérhető lesz a helyi fejlesztői környezetben.
 
 ![Egy Azure-beli Kubernetes-fürt képe](./media/container-service-tutorial-kubernetes-prepare-app/azure-vote.png)
 
-A következő útmutatókból a tároló lemezkép van egy Azure-tároló beállításjegyzék feltöltött, és futtassa AKS fürtben.
+Az ezt követő oktatóanyagokban a tárolórendszerképet feltölti a rendszer egy Azure Container Registrybe, majd egy AKS-fürtön futtatja.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Az oktatóanyag feltételezi, hogy rendelkezik a Docker fő fogalmaira, például a tárolókra, tárolórendszerképekre és az alapszintű Docker-parancsokra vonatkozó alapvető ismeretekkel. Ha szükséges, lásd: [Ismerkedés a Docker] [ docker-get-started] a tároló alapjai a egy ismertetése. 
+Az oktatóanyag feltételezi, hogy rendelkezik a Docker fő fogalmaira, például a tárolókra, tárolórendszerképekre és az alapszintű Docker-parancsokra vonatkozó alapvető ismeretekkel. Amennyiben szükséges, tekintse meg a tárolók alapfogalmainak ismertetését a [Docker használatának első lépései között][docker-get-started]. 
 
-Az oktatóanyag elvégzéséhez szüksége lesz egy Docker-fejlesztési környezetre. Docker biztosít, amely egyszerű konfigurálását a Docker bármely csomagok [Mac][docker-for-mac], [Windows][docker-for-windows], vagy [Linux] [ docker-for-linux] rendszer.
+Az oktatóanyag elvégzéséhez szüksége lesz egy Docker-fejlesztési környezetre. A Docker csomagokat biztosít, amelyekkel a Docker egyszerűen konfigurálható bármely [Mac][docker-for-mac], [Windows][docker-for-windows] vagy [Linux][docker-for-linux] rendszeren.
 
-Azure Cloud rendszerhéj nem tartalmazza a Docker-összetevők minden egyes lépéseinek befejezéséhez szükséges az oktatóanyag. Ezért ajánlott egy teljes Docker fejlesztési környezet használatával.
+Az Azure Cloud Shell nem tartalmazza a jelen oktatóanyag lépéseinek elvégzéséhez szükséges Docker-összetevőket, Ezért ajánlott egy teljes Docker fejlesztési környezet használata.
 
 ## <a name="get-application-code"></a>Az alkalmazáskód letöltése
 
-Ebben az oktatóanyagban használt mintaalkalmazás egy alapszintű szavazó alkalmazást. Az alkalmazás egy előtér-webkiszolgáló és egy háttér-Redis-példányt tartalmaz. A webalkalmazás-összetevő egy egyéni tároló lemezképpel lesz csomagolva. A Redis-példány egy Docker Hub változatlan lemezképét használja.  
+A jelen oktatóanyagban használt mintaalkalmazás egy alapszintű szavazóalkalmazás. Az alkalmazás egy előtérbeli webes összetevőből és egy háttérbeli Redis-példányból áll. A webes összetevő egy egyéni tárolórendszerképbe van csomagolva. A Redis-példány a Docker Hubról származó, módosítatlan rendszerképet használ.  
 
-A git segítségével töltse le az alkalmazást a fejlesztési környezetet.
+A git használatával töltse le az alkalmazás egy másolatát a fejlesztői környezetbe.
 
 ```console
 git clone https://github.com/Azure-Samples/azure-voting-app-redis.git
 ```
 
-Módosítsa a könyvtárat, hogy a klónozott könyvtárból dolgozik.
+Módosítsa a könyvtárakat, hogy a klónozott könyvtárból dolgozzon.
 
 ```console
 cd azure-voting-app-redis
 ```
 
-A könyvtárán belül van az alkalmazás forráskódjához, egy előre létrehozott Docker compose fájlt, és Kubernetes jegyzékfájlt. Ezeket a fájlokat az oktatóanyag set egyaránt használatban. 
+A könyvtárán belül található meg az alkalmazás forráskódja, egy előre létrehozott Docker Compose-fájl és egy Kubernetes-jegyzékfájl. Ezeket a fájlokat használjuk az oktatóanyagokban. 
 
-## <a name="create-container-images"></a>Tároló képek létrehozása
+## <a name="create-container-images"></a>Tárolórendszerképek létrehozása
 
-[Docker Compose] [ docker-compose] segítségével automatizálhatja a build tároló lemezképeket és az alkalmazások több tároló telepítését.
+A [Docker Compose][docker-compose] segítségével automatizálhatja a tárolórendszerképekből való összeállítást és a többtárolós alkalmazások üzembe helyezését.
 
-Futtassa a `docker-compose.yaml` fájl tároló lemezkép létrehozásához, letölti a Redis-lemezképet, és indítsa el az alkalmazást.
+Futtassa a `docker-compose.yaml` fájlt a tárolórendszerkép létrehozásához, töltse le a Redis-rendszerképet, és indítsa el az alkalmazást.
 
 ```console
 docker-compose up -d
 ```
 
-Amikor elkészült, használja a [docker képek] [ docker-images] parancsot a létrehozott lemezképek.
+Amikor elkészült, a [docker images][docker-images] paranccsal tekintheti meg a létrehozott rendszerképeket.
 
 ```console
 docker images
 ```
 
-Figyelje meg, hogy három képek letöltése vagy létrehozni. A `azure-vote-front` lemezképet tartalmazza az alkalmazás, és használja a `nginx-flask` kép alapjaként. A `redis` lemezkép használatával indítsa el a Redis-példányt.
+Figyelje meg, hogy három rendszerkép lett letöltve vagy jött létre. Az `azure-vote-front` rendszerkép tartalmazza az alkalmazást, és a `nginx-flask` rendszerképet használja alapként. A `redis` rendszerkép használatával indítható el egy Redis-példány.
 
 ```
 REPOSITORY                   TAG        IMAGE ID            CREATED             SIZE
@@ -81,7 +81,7 @@ redis                        latest     a1b99da73d05        7 days ago          
 tiangolo/uwsgi-nginx-flask   flask      788ca94b2313        9 months ago        694MB
 ```
 
-Futtassa a [docker ps] [ docker-ps] parancsot a futó tárolók megtekintéséhez.
+Futtassa a [docker ps][docker-ps] parancsot a futó tárolók megtekintéséhez.
 
 ```console
 docker ps
@@ -95,43 +95,43 @@ CONTAINER ID        IMAGE             COMMAND                  CREATED          
 b68fed4b66b6        redis             "docker-entrypoint..."   57 seconds ago      Up 30 seconds       0.0.0.0:6379->6379/tcp          azure-vote-back
 ```
 
-## <a name="test-application-locally"></a>Alkalmazás helyi teszteléséhez
+## <a name="test-application-locally"></a>Az alkalmazás helyi tesztelése
 
-Tallózással keresse meg az futó alkalmazást 8080.
+A böngészőben nyissa meg a http://localhost:8080 címet a futó alkalmazás megtekintéséhez.
 
 ![Egy Azure-beli Kubernetes-fürt képe](./media/container-service-tutorial-kubernetes-prepare-app/azure-vote.png)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Most, hogy az alkalmazás működésének ellenőrzése megtörtént, a futó tárolók leállítása és eltávolítása. Ne törölje a tároló képek. A `azure-vote-front` képet tölt fel az Azure-tároló beállításjegyzék példánya a következő oktatóanyag.
+Most, hogy az alkalmazás működésének ellenőrzése megtörtént, a futó tárolók leállíthatók és eltávolíthatók. Ne törölje a tárolórendszerképeket. Az `azure-vote-front` rendszerképet a következő oktatóanyagban töltjük fel egy Azure Container Registry-példányba.
 
-Futtassa a következő leállítja a futó tárolók.
+Futtassa a következő parancsot a futó tárolók leállításához.
 
 ```console
 docker-compose stop
 ```
 
-Törölje a leállított tárolók és erőforrások a következő paranccsal.
+Törölje a leállított tárolókat és erőforrásokat az alábbi paranccsal.
 
 ```console
 docker-compose down
 ```
 
-A művelet befejezését, a tároló lemezkép az Azure szavazattal alkalmazást tartalmazó van.
+A művelet befejezésekor az Azure Vote alkalmazást tartalmazó tárolórendszerképet kap.
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban egy alkalmazás teszteltük, és az alkalmazáshoz létrehozott tároló képek. A következő lépéseket hajtotta végre:
+Ebben az oktatóanyagban egy alkalmazást teszteltünk, és tárolórendszerképeket hoztunk létre az alkalmazáshoz. A következő lépéseket hajtotta végre:
 
 > [!div class="checklist"]
 > * Az alkalmazás forrásának klónozása a GitHubról  
-> * A tároló lemezkép létrehozott alkalmazás adatforrás
-> * Az alkalmazás tesztelése a helyi Docker-környezetben
+> * Tárolórendszerkép létrehozása az alkalmazás forrásából
+> * Az alkalmazás tesztelése helyi Docker-környezetben
 
 Folytassa a következő oktatóanyaggal, amelyben a tárolórendszerképek az Azure Container Registry-ben való tárolásának módját ismerheti meg.
 
 > [!div class="nextstepaction"]
-> [Azure-tároló beállításjegyzék leküldéses lemezképek][aks-tutorial-prepare-acr]
+> [Rendszerképek leküldése az Azure Container Registrybe][aks-tutorial-prepare-acr]
 
 <!-- LINKS - external -->
 [docker-compose]: https://docs.docker.com/compose/

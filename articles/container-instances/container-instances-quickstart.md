@@ -6,17 +6,17 @@ author: seanmck
 manager: timlt
 ms.service: container-instances
 ms.topic: quickstart
-ms.date: 01/02/2018
+ms.date: 02/22/2018
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: 4c7f48c993d66dd79538fd73ccaed1355c2e8cdd
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: f8fe53f834e4fcf7f16174222cb51d89e40305ec
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="create-your-first-container-in-azure-container-instances"></a>Az első tároló létrehozása az Azure Container Instances szolgáltatásban
-Az Azure Container Instances segítségével egyszerűen hozhat létre és felügyelhet Docker-tárolókat az Azure-ban anélkül, hogy virtuális gépeket kellene kiépítenie, vagy egy magasabb szolgáltatási szintre kellene váltania. Ebben a rövid útmutatóban létrehozhat egy tárolót az Azure-ban, és közzéteheti az interneten egy nyilvános IP-címen keresztül. Ez a művelet egyetlen paranccsal hajtható végre. Néhány másodperc elteltével a következőt láthatja a böngészőben:
+Az Azure Container Instances segítségével egyszerűen hozhat létre és felügyelhet Docker-tárolókat az Azure-ban anélkül, hogy virtuális gépeket kellene kiépítenie, vagy egy magasabb szolgáltatási szintre kellene váltania. Ebben a rövid útmutatóban létrehozhat egy tárolót az Azure-ban, és közzéteheti az interneten egy teljes tartománynévvel (FQDN-nel). Ez a művelet egyetlen paranccsal hajtható végre. Néhány másodperc elteltével a következőt láthatja a böngészőben:
 
 ![Az Azure Container Instances használatával üzembe helyezett alkalmazás képe a böngészőben][aci-app-browser]
 
@@ -24,7 +24,7 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként létrehozhat egy [i
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-A rövid útmutató teljesítéséhez használhatja az Azure Cloud Shellt vagy az Azure CLI helyileg telepített példányát. Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez a rövid útmutatóhoz az Azure CLI 2.0.21-es vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése][azure-cli-install].
+A rövid útmutató teljesítéséhez használhatja az Azure Cloud Shellt vagy az Azure CLI helyileg telepített példányát. Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez a rövid útmutatóhoz az Azure CLI 2.0.27-es vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése][azure-cli-install].
 
 ## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
@@ -40,41 +40,32 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-a-container"></a>Tároló létrehozása
 
-A tároló létrehozásához meg kell adnia egy nevet, egy Docker-rendszerképet és egy Azure-erőforráscsoportot az [az container create][az-container-create] parancshoz. Ha szeretné, közzéteheti a tárolót az interneten egy nyilvános IP-cím használatával. Ebben az útmutatóban egy olyan tárolót fog üzembe helyezni, amely egy, a [Node.js][node-js] használatával létrehozott kisméretű webalkalmazást üzemeltet.
+A tároló létrehozásához meg kell adnia egy nevet, egy Docker-rendszerképet és egy Azure-erőforráscsoportot az [az container create][az-container-create] parancshoz. Ha szeretné, közzéteheti a tárolót az interneten egy DNS-név címke megadásával. Ebben az útmutatóban egy olyan tárolót fog üzembe helyezni, amely egy, a [Node.js][node-js] használatával létrehozott kisméretű webalkalmazást üzemeltet.
+
+A tárolópéldány indításához futtassa az alábbi parancsot. A `--dns-name-label` értéknek egyedinek kell lennie abban az Azure-régióban, ahol a példányt létrehozza, így az egyediség biztosításához módosítania kell ezt az értéket.
 
 ```azurecli-interactive
-az container create --resource-group myResourceGroup --name mycontainer --image microsoft/aci-helloworld --ip-address public --ports 80
+az container create --resource-group myResourceGroup --name mycontainer --image microsoft/aci-helloworld --dns-name-label aci-demo --ports 80
 ```
 
 Néhány másodperc elteltével válasz érkezik a kérésre. A tároló kezdetben **Létrehozás** állapotban van, de néhány másodpercen belül el kell indulnia. Az állapotot az [az container show][az-container-show] paranccsal ellenőrizheti:
 
 ```azurecli-interactive
-az container show --resource-group myResourceGroup --name mycontainer
+az container show --resource-group myResourceGroup --name mycontainer --query "{FQDN:ipAddress.fqdn,ProvisioningState:provisioningState}" --out table
 ```
 
-A kimenet alján látható a tároló kiépítési állapota és IP-címe:
+A parancs futtatásakor a tároló teljes tartományneve (FQDN) és annak kiépítési állapota jelenik meg:
 
-```json
-...
-"ipAddress": {
-      "ip": "13.88.176.27",
-      "ports": [
-        {
-          "port": 80,
-          "protocol": "TCP"
-        }
-      ]
-    },
-    "location:": "eastus",
-    "name": "mycontainer",
-    "osType": "Linux",
-    "provisioningState": "Succeeded"
-...
+```console
+$ az container show --resource-group myResourceGroup --name mycontainer --query "{FQDN:ipAddress.fqdn,ProvisioningState:provisioningState}" --out table
+FQDN                               ProvisioningState
+---------------------------------  -------------------
+aci-demo.eastus.azurecontainer.io  Succeeded
 ```
 
-Miután a tároló átvált a **Sikeres** állapotba, elérhetővé válik a böngészőben a megadott IP-címen.
+Miután a tároló átvált a **Sikeres** állapotba, elérhetővé válik a böngészőben a teljes tartománynév megkeresésével:
 
-![Az Azure Container Instances használatával üzembe helyezett alkalmazás képe a böngészőben][aci-app-browser]
+![Képernyőkép a böngészőről, ahol egy Azure-tárolópéldányban futó alkalmazás látható][aci-app-browser]
 
 ## <a name="pull-the-container-logs"></a>A tároló naplóinak lekérése
 

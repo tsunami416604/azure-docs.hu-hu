@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 12/19/2017
 ms.author: billmath
 ms.openlocfilehash: 66e3559c244a76101be7b7d944a48cd6dd99bd4c
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 03/06/2018
 ---
 # <a name="generic-sql-connector-technical-reference"></a>Általános SQL összekötő műszaki útmutatója
 Ez a cikk ismerteti az általános SQL-összekötőt. A cikk vonatkozik a következő termékek:
@@ -250,9 +250,9 @@ Tegye a következőket:
 
 * Ha sok adatot, a tárolt eljárások tördelési megvalósításához ajánlott.
 * A tárolt eljárás tördelési támogatásához meg kell adnia a Start Index és a záró Index. Lásd: [keresztül nagy mennyiségű adat hatékonyan lapozás](https://msdn.microsoft.com/library/bb445504.aspx).
-* @StartIndexés @EndIndex cserélése a végrehajtás során konfigurált megfelelő lapra méretértéket **konfigurálása lépés** lap. Például, ha az összekötő lekéri az első lap, és a lapméretnél értéke 500, ilyen esetben @StartIndex 1 lenne és @EndIndex 500. Ezek az értékek növelhető, ha az összekötő kéri le a következő lapjain, és módosítsa a @StartIndex & @EndIndex érték.
+* @StartIndex és @EndIndex cserélése a végrehajtás során konfigurált megfelelő lapra méretértéket **konfigurálása lépés** lap. Például, ha az összekötő lekéri az első lap, és a lapméretnél értéke 500, ilyen esetben @StartIndex 1 lenne és @EndIndex 500. Ezek az értékek növelhető, ha az összekötő kéri le a következő lapjain, és módosítsa a @StartIndex & @EndIndex érték.
 * A paraméteres tárolt eljárás végrehajtásához adja meg a paramétereket a `[Name]:[Direction]:[Value]` formátumban. Adja meg mindegyik paraméter (használata Ctrl + Enter új sor eléréséhez) külön sorban.
-* Általános SQL-összekötő csatolt kiszolgálók az importálási művelet is támogatja a Microsoft SQL Server kiszolgálón. Csatolt kiszolgáló táblából származó információkat kell olvasni, ha majd tábla kell megadni a formátumban:`[ServerName].[Database].[Schema].[TableName]`
+* Általános SQL-összekötő csatolt kiszolgálók az importálási művelet is támogatja a Microsoft SQL Server kiszolgálón. Csatolt kiszolgáló táblából származó információkat kell olvasni, ha majd tábla kell megadni a formátumban: `[ServerName].[Database].[Schema].[TableName]`
 * Általános SQL-összekötő csak azokat az objektumokat, amelyek hasonló szerkezete (az alias nevét és az adatokat egyaránt típus) között információkat és a séma észlelési lépések futtatásával támogatja. Ha a kijelölt objektum séma- és futtatási lépés: a megadott adatok különböző, SQL-összekötő nem tudja támogatják ilyen típusú forgatókönyvek.
 
 **SQL Query**  
@@ -269,7 +269,7 @@ Tegye a következőket:
 Különbözeti importálás konfigurálása azonban a teljes importálás képest további konfigurálást igényel.
 
 * Ha az eseményindító vagy pillanatképét módszerrel különbözeti változásainak követése, majd adja meg Előzménytábla vagy a pillanatkép-adatbázisban az **Előzménytábla vagy pillanatképét adatbázisnév** mezőben.
-* Adja meg például előzmények és szülő tábla, közötti illesztési feltétel kell`Employee.ID=History.EmployeeID`
+* Adja meg például előzmények és szülő tábla, közötti illesztési feltétel kell `Employee.ID=History.EmployeeID`
 * Nyomon követheti a tranzakció a szülőtábla az előzmények táblából, meg kell adnia az (Add/Update/Delete) műveletet információt tartalmazó oszlop nevét.
 * Ha vízjel különbözeti változásainak követése, majd adja meg az oszlop nevét, amely a művelet a **vízjel megjelölés oszlopnév**.
 * A **attribútum módosítása** a változástípushoz kötelező. Ez az oszlop, amely akkor fordul elő, az elsődleges vagy többértékű táblában a különbözeti nézetben módosítás típusra képezi le. Ez az oszlop tartalmazhat a Modify_Attribute változástípushoz attribútum szintű módosítása vagy egy hozzáadása, módosítása, vagy Delete objektumszintű változástípushoz típusának módosítása. Ha nem az alapértelmezett érték hozzáadása, módosítása, vagy törölje, majd ezeket az értékeket ezzel a beállítással adhatja meg.
@@ -306,7 +306,7 @@ Ha úgy dönt, hogy az SQL-lekérdezési lehetőség, akkor az exportáláshoz h
 * **Helyezze be a lekérdezés**: Ez a lekérdezés fut, ha minden objektum elérhető lesz az összekötő a megfelelő tábla beszúrásához.
 * **Lekérdezés frissítése**: Ez a lekérdezés fut, ha minden objektum elérhető lesz az összekötő a frissítés a megfelelő tábla.
 * **Törölje a lekérdezés**: Ez a lekérdezés fut, ha minden objektum elérhető lesz az összekötő a megfelelő tábla törlésre.
-* A séma, például egy paraméterérték a lekérdezéshez, használja a kijelölt attribútum`Insert into Employee (ID, Name) Values (@ID, @EmployeeName)`
+* A séma, például egy paraméterérték a lekérdezéshez, használja a kijelölt attribútum `Insert into Employee (ID, Name) Values (@ID, @EmployeeName)`
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 * Az összekötő hibaelhárítása naplózásának engedélyezése a további információkért lásd: a [hogyan ETW-nyomkövetés engedélyezése a csatlakozók](http://go.microsoft.com/fwlink/?LinkId=335731).

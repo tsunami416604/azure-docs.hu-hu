@@ -17,10 +17,10 @@ ms.author: curtand
 ms.reviewer: piotrci
 ms.custom: H1Hack27Feb2017;it-pro
 ms.openlocfilehash: 3ece2326a19e32666f46e8b737d15a48e335de6a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/06/2018
 ---
 # <a name="create-attribute-based-rules-for-dynamic-group-membership-in-azure-active-directory"></a>Dinamikus csoporttagság Attribútumalapú szabályok létrehozása az Azure Active Directoryban
 Az Azure Active Directory (Azure AD) összetett Attribútumalapú dinamikus csoporttagságok csoportok engedélyezése speciális szabályokat hozhat létre. Ez a cikk részletezi az attribútumokat és a felhasználók vagy eszközök dinamikus tagsági szabályok létrehozásához szintaxist.
@@ -85,7 +85,7 @@ Az alábbi táblázat a támogatott kifejezés szabályoperátorokat és szintax
 | Nem kezdődik |-notStartsWith |
 | Kezdődik |-startswith elemnek |
 | Nem tartalmazza |-notContains |
-| Tartalmazza |-tartalmaz |
+| Contains |-tartalmaz |
 | Nem egyeznek |-notMatch |
 | Egyezés |-felel meg |
 | A | -a |
@@ -124,9 +124,9 @@ A következő táblázat felsorolja a gyakran előforduló hiba és azok megold�
 
 | Lekérdezés-elemzési hiba | Hiba kihasználtsága | Javított kihasználtsága |
 | --- | --- | --- |
-| Hiba történt: Az attribútum nem támogatott. |(user.invalidProperty - eq "Érték") |(felhasználó.részleg - eq "érték")<br/><br/>Győződjön meg arról, hogy az attribútum szerepel a [tulajdonságainak listája támogatott](#supported-properties). |
+| Hiba történt: Az attribútum nem támogatott. |(user.invalidProperty -eq "Value") |(felhasználó.részleg - eq "érték")<br/><br/>Győződjön meg arról, hogy az attribútum szerepel a [tulajdonságainak listája támogatott](#supported-properties). |
 | Hiba: Operátor nem támogatott az attribútum. |(user.accountEnabled-igaz tartalmazza) |(user.accountEnabled - eq igaz)<br/><br/>Az operátor nem támogatott a tulajdonság típusa (ebben a példában-tartalmaz nem használható logikai érték típusú). Használja a megfelelő operátorok a tulajdonság típusa. |
-| Hiba: Lekérdezésfordítási hiba. |1. (felhasználó.részleg - eq "Értékesítési") (felhasználó.részleg - eq "Marketing")<br/><br/>2. (user.userPrincipalName-felel meg "*@domain.ext") |1. Nincs megadva operátor. Használja az - és vagy - vagy két predikátumok csatlakozás<br/><br/>(felhasználó.részleg - eq "Értékesítési") – vagy (felhasználó.részleg - eq "Marketing")<br/><br/>2 hiba az - használt reguláris kifejezés a megfelelő<br/><br/>(user.userPrincipalName-egyeznie ". *@domain.ext"), azt is megteheti: (user.userPrincipalName-egyeznie "@domain.ext$")|
+| Hiba: Lekérdezésfordítási hiba. |1. (felhasználó.részleg - eq "Értékesítési") (felhasználó.részleg - eq "Marketing")<br/><br/>2. (user.userPrincipalName -match "*@domain.ext") |1. Nincs megadva operátor. Használja az - és vagy - vagy két predikátumok csatlakozás<br/><br/>(felhasználó.részleg - eq "Értékesítési") – vagy (felhasználó.részleg - eq "Marketing")<br/><br/>2 hiba az - használt reguláris kifejezés a megfelelő<br/><br/>(user.userPrincipalName-egyeznie ". *@domain.ext"), azt is megteheti: (user.userPrincipalName-egyeznie "@domain.ext$")|
 
 ## <a name="supported-properties"></a>Támogatott tulajdonságok
 A speciális szabály használható felhasználói tulajdonságok a következők:
@@ -140,7 +140,7 @@ Engedélyezett operátorok
 | Tulajdonságok | Megengedett értékek | Használat |
 | --- | --- | --- |
 | AccountEnabled |IGAZ, hamis |user.accountEnabled - eq igaz |
-| DirSyncEnabled |IGAZ, hamis |user.dirSyncEnabled - eq igaz |
+| dirSyncEnabled |IGAZ, hamis |user.dirSyncEnabled - eq igaz |
 
 ### <a name="properties-of-type-string"></a>Karakterlánc típusú tulajdonságok
 Engedélyezett operátorok
@@ -163,27 +163,27 @@ Engedélyezett operátorok
 | Cégnév | A karakterlánc értéke vagy *null értékű* | (user.companyName - eq "érték") |
 | Szervezeti egység |A karakterlánc értéke vagy *null értékű* |(felhasználó.részleg - eq "érték") |
 | displayName |Bármilyen karakterlánc típusú értéket |(user.displayName - eq "érték") |
-| employeeId |Bármilyen karakterlánc típusú értéket |(user.employeeId - eq "érték")<br>(user.employeeId - ne *null*) |
+| employeeId |Bármilyen karakterlánc típusú értéket |(user.employeeId -eq "value")<br>(user.employeeId - ne *null*) |
 | facsimileTelephoneNumber |A karakterlánc értéke vagy *null értékű* |(user.facsimileTelephoneNumber - eq "érték") |
-| givenName |A karakterlánc értéke vagy *null értékű* |(user.givenName - eq "érték") |
-| Beosztás |A karakterlánc értéke vagy *null értékű* |(user.jobTitle - eq "érték") |
+| givenName |A karakterlánc értéke vagy *null értékű* |(user.givenName -eq "value") |
+| jobTitle |A karakterlánc értéke vagy *null értékű* |(user.jobTitle - eq "érték") |
 | mail |A karakterlánc értéke vagy *null* (SMTP-cím felhasználó) |(user.mail - eq "érték") |
 | mailNickName |Bármilyen karakterlánc típusú értéket (mail alias a felhasználó) |(user.mailNickName - eq "érték") |
 | Mobileszköz |A karakterlánc értéke vagy *null értékű* |(user.mobile - eq "érték") |
-| Objektumazonosító |A user objektum GUID-azonosítója |(user.objectId - eq "1111111-1111-1111-1111-111111111111") |
-| onPremisesSecurityIdentifier | A helyi biztonsági azonosítóját (SID) a felhasználók számára a felhőbe a helyszíni szinkronizálva. |(user.onPremisesSecurityIdentifier - eq "S-1-1-11-1111111111-1111111111-1111111111-1111111") |
-| passwordPolicies |Nincs DisableStrongPassword DisablePasswordExpiration DisablePasswordExpiration, DisableStrongPassword |(user.passwordPolicies - eq "DisableStrongPassword") |
-| physicalDeliveryOfficeName |A karakterlánc értéke vagy *null értékű* |(user.physicalDeliveryOfficeName - eq "érték") |
+| objectId |A user objektum GUID-azonosítója |(user.objectId - eq "1111111-1111-1111-1111-111111111111") |
+| onPremisesSecurityIdentifier | A helyi biztonsági azonosítóját (SID) a felhasználók számára a felhőbe a helyszíni szinkronizálva. |(user.onPremisesSecurityIdentifier -eq "S-1-1-11-1111111111-1111111111-1111111111-1111111") |
+| passwordPolicies |None DisableStrongPassword DisablePasswordExpiration DisablePasswordExpiration, DisableStrongPassword |(user.passwordPolicies -eq "DisableStrongPassword") |
+| physicalDeliveryOfficeName |A karakterlánc értéke vagy *null értékű* |(user.physicalDeliveryOfficeName -eq "value") |
 | Irányítószám |A karakterlánc értéke vagy *null értékű* |(user.postalCode - eq "érték") |
 | preferredLanguage |ISO 639-1 kódot |(user.preferredLanguage - eq "en-US") |
-| sipProxyAddress |A karakterlánc értéke vagy *null értékű* |(user.sipProxyAddress - eq "érték") |
+| sipProxyAddress |A karakterlánc értéke vagy *null értékű* |(user.sipProxyAddress -eq "value") |
 | state |A karakterlánc értéke vagy *null értékű* |(user.state - eq "érték") |
-| StreetAddress |A karakterlánc értéke vagy *null értékű* |(user.streetAddress - eq "érték") |
+| streetAddress |A karakterlánc értéke vagy *null értékű* |(user.streetAddress -eq "value") |
 | Vezetéknév |A karakterlánc értéke vagy *null értékű* |(user.surname - eq "érték") |
 | TelephoneNumber |A karakterlánc értéke vagy *null értékű* |(user.telephoneNumber - eq "érték") |
 | usageLocation |Két betűkkel országhívószám |(user.usageLocation - eq "US") |
 | userPrincipalName |Bármilyen karakterlánc típusú értéket |(user.userPrincipalName - eq "alias@domain") |
-| UserType |tag vendég *null értékű* |(user.userType - eq "Tag") |
+| userType |tag vendég *null értékű* |(user.userType - eq "Tag") |
 
 ### <a name="properties-of-type-string-collection"></a>Típusú karakterlánc gyűjtemény tulajdonságai
 Engedélyezett operátorok
@@ -193,8 +193,8 @@ Engedélyezett operátorok
 
 | Tulajdonságok | Megengedett értékek | Használat |
 | --- | --- | --- |
-| otherMails |Bármilyen karakterlánc típusú értéket |(user.otherMails-tartalmaz "alias@domain") |
-| proxyAddresses |SMTP: alias@domain smtp:alias@domain |(user.proxyAddresses-tartalmaz "SMTP: alias@domain") |
+| otherMails |Bármilyen karakterlánc típusú értéket |(user.otherMails -contains "alias@domain") |
+| proxyAddresses |SMTP: alias@domain smtp: alias@domain |(user.proxyAddresses -contains "SMTP: alias@domain") |
 
 ## <a name="multi-value-properties"></a>Többértékű tulajdonságai
 Engedélyezett operátorok
@@ -204,7 +204,7 @@ Engedélyezett operátorok
 
 | Tulajdonságok | Értékek | Használat |
 | --- | --- | --- |
-| assignedPlans |A gyűjtemény minden vezérlőnek a következő karakterlánc tulajdonságai: capabilityStatus, szolgáltatás, servicePlanId |user.assignedPlans-bármely (assignedPlan.servicePlanId - eq "efb87545-963c-4e0d-99df-69c6916d9eb0"- és assignedPlan.capabilityStatus - eq "Engedélyezett") |
+| assignedPlans |A gyűjtemény minden vezérlőnek a következő karakterlánc tulajdonságai: capabilityStatus, szolgáltatás, servicePlanId |user.assignedPlans -any (assignedPlan.servicePlanId -eq "efb87545-963c-4e0d-99df-69c6916d9eb0" -and assignedPlan.capabilityStatus -eq "Enabled") |
 
 A rendszer ugyanolyan típusú objektumok gyűjteményeit adják többértékű tulajdonságokat. Használhat - bármely és - minden üzemeltetői számára, illetve egy vagy az összes elem a gyűjteményben, alkalmaz rá egy feltételt. Példa:
 
@@ -274,19 +274,19 @@ Olyan szabály, amely kijelöli a tagság eszközobjektumok egy csoportot is lé
  ----- | ----- | ----------------
  AccountEnabled | IGAZ, hamis | (device.accountEnabled - eq igaz)
  displayName | Bármilyen karakterlánc típusú értéket |(device.displayName - eq "Rob Iphone")
- DeviceOSType | Bármilyen karakterlánc típusú értéket | (device.deviceOSType - eq "iPad") – vagy (device.deviceOSType - eq "iPhone")
- DeviceOSVersion | Bármilyen karakterlánc típusú értéket | (eszköz. OSVersion - eq "9.1")
+ deviceOSType | Bármilyen karakterlánc típusú értéket | (device.deviceOSType - eq "iPad") – vagy (device.deviceOSType - eq "iPhone")
+ deviceOSVersion | Bármilyen karakterlánc típusú értéket | (eszköz. OSVersion - eq "9.1")
  deviceCategory | egy érvényes eszköznévvel kategória | (device.deviceCategory - eq "BYOD")
  DeviceManufacturer | Bármilyen karakterlánc típusú értéket | (device.deviceManufacturer - eq "Samsung")
  DeviceModel | Bármilyen karakterlánc típusú értéket | (device.deviceModel - eq "iPad vezeték nélkül")
  deviceOwnership | Személyes, munkahelyi, ismeretlen | (device.deviceOwnership - eq "Vállalati")
- Tartománynév | Bármilyen karakterlánc típusú értéket | (device.domainName - eq "contoso.com")
+ domainName | Bármilyen karakterlánc típusú értéket | (device.domainName -eq "contoso.com")
  enrollmentProfileName | Az Apple Eszközregisztrációs profil neve | (device.enrollmentProfileName - eq "DEP iPhone-OK")
  isRooted | IGAZ, hamis | (device.isRooted - eq igaz)
  managementType | Mobileszköz-kezelési (csak mobil eszközökön)<br>PC (számára a számítógépes Intune-ügynök által felügyelt számítógépek) | (device.managementType - eq "MDM")
  OrganizationalUnit | bármilyen karakterlánc típusú értéket állítja be a helyszíni Active Directory szervezeti egység névnek megfelelő | (device.organizationalUnit - eq "USA számítógépek")
- deviceId | egy érvényes Azure AD-Eszközazonosító | (device.deviceId - eq "d4fe7726-5966-431c-b3b8-cddc8fdb717d")
- Objektumazonosító | egy érvényes Azure AD objektumazonosító: |  (76ad43c9-32c5-45e8-a272-7b58b58f596d device.objectId - eq")
+ deviceId | egy érvényes Azure AD-Eszközazonosító | (device.deviceId -eq "d4fe7726-5966-431c-b3b8-cddc8fdb717d")
+ objectId | egy érvényes Azure AD objektumazonosító: |  (device.objectId -eq 76ad43c9-32c5-45e8-a272-7b58b58f596d")
 
 
 
@@ -357,7 +357,7 @@ A csoport dinamikus tételéhez:
 ```
 ConvertStaticGroupToDynamic "a58913b2-eee4-44f9-beb2-e381c375058f" "user.displayName -startsWith ""Peter"""
 ```
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ezek a cikkek kiegészítő információt nyújt az Azure Active Directory csoportokat.
 
 * [Tekintse meg a meglévő csoportok](active-directory-groups-view-azure-portal.md)

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 08/14/2017
 ms.author: bradsev
-ms.openlocfilehash: e688068efb41cdccbeb23de3c8ad7a09021e5b3f
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: aa7f2e6f44036738756391ecaa265c57c093c42c
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="get-started-with-r-server-on-hdinsight"></a>A HDInsighton futó R Server használatának első lépései
 
@@ -61,7 +61,7 @@ Azure Resource Manager-sablonok, az SDK, és a PowerShell használatával automa
 4. Válassza ki a **Fürt típusát** a **Fürtkonfiguráció** ablaktábla megnyitásához. A **Fürtkonfiguráció** ablaktáblán válassza ki a következő beállításokat:
 
     * **Fürt típusa**: Válassza az **R Server** lehetőséget.
-    * **Verzió**: válassza ki az R Server fürtre telepítendő verzióját. A jelenleg elérhető verzió az **R Server 9.1 (HDI 3.6)**. Az R Server elérhető verzióinak kibocsátási megjegyzései az [MSDN](https://msdn.microsoft.com/microsoft-r/notes/r-server-notes) webhelyen érhetők el.
+    * **Verzió**: válassza ki az R Server fürtre telepítendő verzióját. A jelenleg elérhető verzió az **R Server 9.1 (HDI 3.6)**. Az R Server elérhető verzióinak kibocsátási megjegyzései a [docs.microsoft.com](https://docs.microsoft.com/machine-learning-server/whats-new-in-r-server#r-server-91) webhelyen érhetők el.
     * **R Studio community edition for R Server**: ez a böngésző alapú IDE alapértelmezés szerint telepítve van az élcsomópontra. Ha inkább nem szeretné, hogy telepítve legyen, törölje a jelölőnégyzet jelölését. Ha úgy dönt, hogy telepíti, a fürt portálalkalmazás ablaktábláján találja az RStudio kiszolgáló bejelentkezésének elérésére szolgáló URL-t, miután a fürt létrejött.
     * Hagyja a többi beállítást az alapértelmezett értéken, és a **Kiválasztás** gombbal mentse a fürttípust.
 
@@ -102,7 +102,7 @@ Azure Resource Manager-sablonok, az SDK, és a PowerShell használatával automa
 
         ssh –i <private-key-filename> remoteuser@<hostname public ip>
 
-      Vagy használja a titkos kulcsfájlt a Hadoop Spark számítási környezet definíciójának részeként az R Serverhez az ügyfélen. További információkért lásd: [Számítási környezet létrehozása a Sparkhoz](https://msdn.microsoft.com/microsoft-r/scaler-spark-getting-started).
+      Vagy használja a titkos kulcsfájlt a Hadoop Spark számítási környezet definíciójának részeként az R Serverhez az ügyfélen. További információkért lásd: [Számítási környezet létrehozása a Sparkhoz](https://docs.microsoft.com/machine-learning-server/r/how-to-revoscaler-spark).
 
 8. A gyors létrehozás átirányítja a **Tároló** ablaktáblára. Itt kiválaszthatja a fürt által használt HDFS-fájlrendszer elsődleges helyéhez használt tárfiók beállításait. Válasszon ki egy új vagy meglévő Azure Storage-fiókot vagy egy meglévő Azure Data Lake Store-fiókot.
 
@@ -379,7 +379,7 @@ Figyelje meg azt is, hogy az újonnan felvett felhasználók nem rendelkeznek gy
 
 ## <a name="use-r-server-on-hdi-from-a-remote-instance-of-microsoft-r-server-or-microsoft-r-client"></a>Az R Server használata HDI-n a Microsoft R Server vagy a Microsoft R ügyfél egy távoli példányáról
 
-A HDI Hadoop Spark számítási környezetet el lehet érni a Microsoft R Server vagy a Microsoft R-ügyfél számítógépen vagy laptopon futó távoli példányáról. További információkért lásd a [Számítási környezet létrehozása Sparkhoz](https://msdn.microsoft.com/microsoft-r/scaler-spark-getting-started.md) című cikk „Microsoft R Server használata Hadoop-ügyfélként” szakaszát. Ehhez adja meg a következő beállításokat, amikor meghatározza az RxSpark számítási környezetet a laptopon: hdfsShareDir, shareDir, sshUsername, sshHostname, sshSwitches és sshProfileScript. Például:
+A HDI Hadoop Spark számítási környezetet el lehet érni a Microsoft R Server vagy a Microsoft R-ügyfél számítógépen vagy laptopon futó távoli példányáról. További információkért lásd a [Számítási környezet létrehozása Sparkhoz](https://docs.microsoft.com/machine-learning-server/r/how-to-revoscaler-spark#more-spark-scenarios) című cikk „Microsoft R Server használata Hadoop-ügyfélként” szakaszát. Ehhez adja meg a következő beállításokat, amikor meghatározza az RxSpark számítási környezetet a laptopon: hdfsShareDir, shareDir, sshUsername, sshHostname, sshSwitches és sshProfileScript. Például:
 
 
     myNameNode <- "default"
@@ -705,7 +705,7 @@ Amikor elkészült az adatmodellezés, működőképessé teheti a modellt, hogy
     rxSparkConnect(reset = TRUE)
 
 
-Az operacionalizálás konfigurációja ezzel befejeződött. Most már használhatja az mrsdeploy csomagot R Clienten, hogy kapcsolódhasson az élcsomóponti operacionalizáláshoz. Ezután megkezdheti a szolgáltatások, például a [távoli futtatás](https://msdn.microsoft.com/microsoft-r/operationalize/remote-execution) és a [webszolgáltatások](https://msdn.microsoft.com/microsoft-r/mrsdeploy/mrsdeploy-websrv-vignette) használatát. Attól függően, hogy a fürt virtuális hálózaton van-e beállítva, szükség lehet porttovábbító bújtatás kialakítására az SSH-bejelentkezésen keresztül.
+Az operacionalizálás konfigurációja ezzel befejeződött. Most már használhatja az mrsdeploy csomagot R Clienten, hogy kapcsolódhasson az élcsomóponti operacionalizáláshoz. Ezután megkezdheti a szolgáltatások, például a [távoli futtatás](https://docs.microsoft.com/machine-learning-server/r/how-to-execute-code-remotely) és a [webszolgáltatások](https://docs.microsoft.com/machine-learning-server/operationalize/concept-what-are-web-services) használatát. Attól függően, hogy a fürt virtuális hálózaton van-e beállítva, szükség lehet porttovábbító bújtatás kialakítására az SSH-bejelentkezésen keresztül.
 
 ### <a name="r-server-cluster-on-a-virtual-network"></a>R Server-fürt egy virtuális hálózaton
 

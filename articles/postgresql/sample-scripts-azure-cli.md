@@ -1,36 +1,36 @@
 ---
-title: "Azure CLI-minták PostgreSQL Azure-adatbázis"
-description: "Ez a cikk felsorolja a több Azure CLI mintakódok érhető el az Azure Database PostgreSQL-kiszolgálók közötti kommunikáció során."
+title: "Azure CLI-minták az Azure Database for PostgreSQL szolgáltatáshoz"
+description: "Ez a cikk az Azure Database for PostgreSQL-kiszolgálókkal folytatott kommunikációhoz elérhető számos Azure CLI-példakódot sorolja fel."
 services: postgresql
-author: jasonwhowell
-ms.author: jasonh
-manager: jhubbard
+author: rachel-msft
+ms.author: raagyema
+manager: kfile
 editor: jasonwhowell
 ms.service: postgresql
 ms.devlang: azure-cli
 ms.topic: sample
 ms.custom: sample, mvc
-ms.date: 01/12/2018
-ms.openlocfilehash: d9b7b0cba46d16d0fae08c8f445044776cf75c10
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
-ms.translationtype: MT
+ms.date: 02/28/2018
+ms.openlocfilehash: b44f23adfb69c250757248a3462317eabaf5f111
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 02/28/2018
 ---
-# <a name="azure-cli-samples-for-azure-database-for-postgresql"></a>Azure CLI-minták PostgreSQL Azure-adatbázis 
-Az alábbi táblázat tartalmazza az Azure parancssori felület mintaparancsfájlok mutató hivatkozásokat tartalmaz az Azure Database PostgreSQL.
+# <a name="azure-cli-samples-for-azure-database-for-postgresql"></a>Azure CLI-minták az Azure Database for PostgreSQL szolgáltatáshoz 
+A következő táblázat hivatkozásokat tartalmaz az Azure Database for PostgreSQL-hez elérhető Azure CLI-példaszkriptekre.
 
 | |  |
 |---|---|
 |**Kiszolgáló létrehozása**||
-| [A kiszolgáló és a tűzfalon szabály létrehozása](scripts/sample-create-server-and-firewall-rule.md?toc=%2fcli%2fazure%2ftoc.json) | Az Azure CLI parancsfájlt, amely adatbázist hoz létre Azure PostgreSQL-kiszolgáló konfigurálása egy kiszolgálószintű tűzfalszabályt. |
-|**A kiszolgáló méretezési**||
-| [A kiszolgáló méretezési](scripts/sample-scale-server-up-or-down.md?toc=%2fcli%2fazure%2ftoc.json) | Az Azure CLI-parancsfájlt méretezi egy PostgreSQL-kiszolgálóhoz tartozó Azure-adatbázis felfelé vagy lefelé a teljesítményigény módosítása lehetővé. |
-|**Kiszolgáló konfigurációk módosítása**||
-| [Kiszolgáló konfigurációk módosítása](./scripts/sample-change-server-configuration.md?toc=%2fcli%2fazure%2ftoc.json) | Az Azure CLI-parancsfájlt konfigurációk beállításait az Azure-adatbázisának PostgreSQL-kiszolgáló. |
-|**A kiszolgáló helyreállítása**||
-| [A kiszolgáló helyreállítása](./scripts/sample-point-in-time-restore.md?toc=%2fcli%2fazure%2ftoc.json) | Az Azure CLI-parancsfájl egy PostgreSQL-kiszolgálóhoz tartozó Azure-adatbázis visszaállítása egy korábbi időpontra időben. |
-|**Töltse le a kiszolgálói naplók**||
-| [Engedélyezi, és töltse le a kiszolgálói naplók](./scripts/sample-server-logs.md?toc=%2fcli%2fazure%2ftoc.json) | Az Azure CLI parancsfájlt, amely lehetővé teszi, hogy letölti a kiszolgáló naplóiban egy Azure PostgreSQL-kiszolgáló adatbázisában. |
+| [Kiszolgáló és tűzfalszabály létrehozása](scripts/sample-create-server-and-firewall-rule.md?toc=%2fcli%2fazure%2ftoc.json) | Ez az Azure CLI-szkript létrehoz egy Azure Database for PostgreSQL-kiszolgálót, és konfigurál egy kiszolgálószintű tűzfalszabályt. |
+|**Kiszolgáló méretezése**||
+| [Kiszolgáló méretezése](scripts/sample-scale-server-up-or-down.md?toc=%2fcli%2fazure%2ftoc.json) | Ez az Azure CLI-szkript felfelé vagy lefelé skáláz egy Azure Database for PostgreSQL-kiszolgálót, ezzel lehetővé téve a változó teljesítményigények követését. |
+|**Kiszolgálókonfigurációk módosítása**||
+| [Kiszolgálókonfigurációk módosítása](./scripts/sample-change-server-configuration.md?toc=%2fcli%2fazure%2ftoc.json) | Ez az Azure CLI-szkript egy Azure Database for PostgreSQL-kiszolgáló konfigurációs beállításait módosítja. |
+|**Kiszolgáló visszaállítása**||
+| [Kiszolgáló visszaállítása](./scripts/sample-point-in-time-restore.md?toc=%2fcli%2fazure%2ftoc.json) | Ez az Azure CLI-szkript visszaállít egy Azure Database for PostgreSQL-kiszolgálót egy korábbi időpontra. |
+|**Kiszolgálónaplók letöltése**||
+| [Kiszolgálónaplók engedélyezése és letöltése](./scripts/sample-server-logs.md?toc=%2fcli%2fazure%2ftoc.json) | Ez az Azure CLI-szkript engedélyezi és letölti egy Azure Database for PostgreSQL-kiszolgáló naplóit. |
 |||
 

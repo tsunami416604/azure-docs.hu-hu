@@ -1,6 +1,6 @@
 ---
 title: "Windows-alapú Service Fabric-fürt létrehozása az Azure-ban | Microsoft Docs"
-description: "Megismerheti, hogyan helyezhet üzembe Windows-alapú Service Fabric-fürtöt meglévő Azure virtuális hálózatban a PowerShell használatával."
+description: "Ebből az oktatóanyagból megismerheti, hogyan helyezhet üzembe Windows-alapú Service Fabric-fürtöt meglévő Azure virtuális hálózatban a PowerShell használatával."
 services: service-fabric
 documentationcenter: .net
 author: rwike77
@@ -15,13 +15,13 @@ ms.workload: NA
 ms.date: 01/22/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 4aee1b0ded7a26df802ca2f05d6e93c153fa0476
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 7418e0420b14f044bac253046a8971d1263e45b3
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/24/2018
 ---
-# <a name="deploy-a-service-fabric-windows-cluster-into-an-azure-virtual-network"></a>Windows-alapú Service Fabric-fürt üzembe helyezése Azure virtuális hálózatban
+# <a name="tutorial-deploy-a-service-fabric-windows-cluster-into-an-azure-virtual-network"></a>Oktatóanyag: Windows-alapú Service Fabric-fürt üzembe helyezése Azure virtuális hálózatban
 Ez az oktatóanyag egy sorozat első része. Megismerheti, hogyan helyezhet üzembe Windows rendszert futtató Service Fabric-fürtöt [Azure virtuális hálózatban (VNET)](../virtual-network/virtual-networks-overview.md) és [hálózati biztonsági csoportban](../virtual-network/virtual-networks-nsg.md) a PowerShell és egy sablon használatával. Amikor végzett, a felhőben futó fürttel fog rendelkezni, amelyre alkalmazásokat telepíthet.  Linux-alapú fürt létrehozása Azure CLI használatával: [Biztonságos Linux-fürt létrehozása az Azure-ban](service-fabric-tutorial-create-vnet-and-linux-cluster.md).
 
 Ez az oktatóanyag egy éles forgatókönyvet ismertet.  Ha gyorsan szeretne egy kis méretű fürtöt létrehozni tesztelés céljából, tekintse meg a [háromcsomópont tesztfürt létrehozásáról](./scripts/service-fabric-powershell-create-test-cluster.md) szóló cikket.
@@ -39,7 +39,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 Ebben az oktatóanyag-sorozatban az alábbiakkal ismerkedhet meg:
 > [!div class="checklist"]
 > * Biztonságos fürt létrehozása az Azure-ban
-> * [Fürt horizontális fel- és leskálázása](/service-fabric-tutorial-scale-cluster.md)
+> * [Fürt horizontális fel- és leskálázása](service-fabric-tutorial-scale-cluster.md)
 > * [Fürt futtatókörnyezetének frissítése](service-fabric-tutorial-upgrade-cluster.md)
 > * [Az API Management üzembe helyezése a Service Fabrickel](service-fabric-tutorial-deploy-api-management.md)
 
@@ -66,7 +66,7 @@ A fürttanúsítványnak a következő feltételeknek kell megfelelnie:
 
 Az Azure Key Vault használatával kezelheti a Service Fabric-fürtök tanúsítványait az Azure-ban.  Amikor egy fürtöt üzembe helyez az Azure-ban, Azure Service Fabric-fürtök létrehozásáért felelős erőforrás-szolgáltatója lekéri a tanúsítványokat a Key Vaultból, és telepíti őket a fürt virtuális gépein.
 
-A jelen oktatóanyag olyan fürtöt helyez üzembe, amelyben öt csomópont van egyetlen csomóponttípusban. A [kapacitástervezés](service-fabric-cluster-capacity.md) azonban az éles fürttelepítések lényeges lépése. Az alábbiakban néhány dolog láthat, amelyet érdemes a folyamat részeként figyelembe vennie.
+A jelen oktatóanyag egy olyan fürtöt mutat be, amelyben öt csomópont van egyetlen csomóponttípusban. A [kapacitástervezés](service-fabric-cluster-capacity.md) azonban az éles fürttelepítések lényeges lépése. Az alábbiakban néhány dolog láthat, amelyet érdemes a folyamat részeként figyelembe vennie.
 
 - A fürt számára szükséges csomópontok és csomóponttípusok száma. 
 - Az egyes csomóponttípusok tulajdonságai (például a virtuális gépek mérete, elsődlegessége, internetkapcsolata és száma).

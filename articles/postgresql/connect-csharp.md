@@ -1,24 +1,24 @@
 ---
-title: "Csatlakozás a PostgreSQL-hez készült Azure Database-hez a C# segítségével | Microsoft Docs"
+title: "Csatlakozás az Azure Database for PostgreSQL-hez a C# segítségével"
 description: "Ez a rövid útmutató egy C# (.NET) mintakódot biztosít, amelyekkel csatlakozhat a PostgreSQL-hez készült Azure-adatbázishoz, illetve adatokat kérdezhet le róla."
 services: postgresql
-author: jasonwhowell
-ms.author: jasonh
-manager: jhubbard
+author: rachel-msft
+ms.author: raagyema
+manager: kfile
 editor: jasonwhowell
 ms.service: postgresql
 ms.custom: mvc, devcenter
 ms.devlang: csharp
 ms.topic: quickstart
-ms.date: 11/03/2017
-ms.openlocfilehash: 9dc187b17471abe67abc49674b70889c1aca840e
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.date: 02/28/2018
+ms.openlocfilehash: 7c5c549bf2402757e19928d4217954f778947d18
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="azure-database-for-postgresql-use-net-c-to-connect-and-query-data"></a>A PostgreSQL-hez készült Azure Database: csatlakozás és adatlekérdezés .NET (C#) használatával
-Ebben a gyors útmutatóban azt szemléltetjük, hogy miként lehet C# nyelven írt alkalmazás használatával csatlakozni a PostgreSQL-hez készült Azure Database-hez. Bemutatjuk, hogy az SQL-utasítások használatával hogyan kérdezhetők le, illeszthetők be, frissíthetők és törölhetők az adatok az adatbázisban. A cikkben ismertetett lépések feltételezik, hogy Ön rendelkezik fejlesztési tapasztalatokkal a C# használatával kapcsolatban, a PostgreSQL-hez készült Azure Database használatában pedig még járatlan.
+Ebben a gyors útmutatóban azt szemléltetjük, hogy miként lehet C# nyelven írt alkalmazás használatával csatlakozni a PostgreSQL-hez készült Azure Database-hez. Azt is bemutatja, hogyan lehet SQL-utasítások használatával adatokat lekérdezni, beszúrni, frissíteni és törölni az adatbázisban. A cikkben ismertetett lépések feltételezik, hogy Ön rendelkezik fejlesztési tapasztalatokkal a C# használatával kapcsolatban, a PostgreSQL-hez készült Azure Database használatában pedig még járatlan.
 
 ## <a name="prerequisites"></a>Előfeltételek
 A rövid útmutató az alábbi útmutatók valamelyikében létrehozott erőforrásokat használja kiindulópontként:
@@ -34,11 +34,10 @@ Emellett a következőket kell elvégezni:
 Kérje le a PostgreSQL-hez készült Azure-adatbázishoz való csatlakozáshoz szükséges kapcsolatadatokat. Szüksége lesz a teljes kiszolgálónévre és a bejelentkezési hitelesítő adatokra.
 
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
-2. Az Azure Portal bal oldali menüjében kattintson az **Összes erőforrás** lehetőségre, és keressen rá a létrehozott kiszolgálóra (például **mypgserver-20170401**).
-3. Kattintson a **mypgserver-20170401** kiszolgálónévre.
-4. Válassza ki a kiszolgáló **Áttekintés** oldalát. Jegyezze fel a **Kiszolgálónevet** és a **Kiszolgáló-rendszergazdai bejelentkezési nevet**.
- ![PostgreSQL-hez készült Azure-adatbázis – Kiszolgáló-rendszergazdai bejelentkezés](./media/connect-csharp/1-connection-string.png)
-5. Ha elfelejtette a kiszolgálója bejelentkezési adatait, lépjen az **Áttekintés** lapra, ahol kikeresheti a **kiszolgáló-rendszergazda bejelentkezési nevét**, valamint szükség esetén új jelszót kérhet.
+2. Az Azure Portal bal oldali menüjében kattintson a **Minden erőforrás** lehetőségre, és keressen rá a létrehozott kiszolgálóra (például **mydemoserver**).
+3. Kattintson a kiszolgálónévre.
+4. A kiszolgáló **Áttekintés** paneléről jegyezze fel a **Kiszolgálónevet** és a **Kiszolgáló-rendszergazdai bejelentkezési nevet**. Ha elfelejti a jelszavát, ezen a panelen új jelszót is tud kérni.
+ ![Azure Database for PostgreSQL-kiszolgáló neve](./media/connect-csharp/1-connection-string.png)
 
 ## <a name="connect-create-table-and-insert-data"></a>Csatlakozás, táblák létrehozása és adatok beszúrása
 Az alábbi kód használatával csatlakozhat és töltheti be az adatokat a **CREATE TABLE** és az **INSERT INTO** SQL-utasítások segítségével. A kód az NpgsqlCommand osztályt használja az [Open()](http://www.npgsql.org/api/Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_Open) metódussal, hogy kapcsolatot létesítsen a PostgreSQL-adatbázissal. A kód ezután a [CreateCommand()](http://www.npgsql.org/api/Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_CreateCommand) metódust használja, beállítja a CommandText tulajdonságot, és meghívja az [ExecuteNonQuery()](http://www.npgsql.org/api/Npgsql.NpgsqlCommand.html#Npgsql_NpgsqlCommand_ExecuteNonQuery) metódust az adatbázis-parancsok futtatásához. 
@@ -59,8 +58,8 @@ namespace Driver
     {
         // Obtain connection string information from the portal
         //
-        private static string Host = "mypgserver-20170401.postgres.database.azure.com";
-        private static string User = "mylogin@mypgserver-20170401";
+        private static string Host = "mydemoserver.postgres.database.azure.com";
+        private static string User = "mylogin@mydemoserver";
         private static string DBname = "mypgsqldb";
         private static string Password = "<server_admin_password>";
         private static string Port = "5432";
@@ -136,8 +135,8 @@ namespace Driver
     {
         // Obtain connection string information from the portal
         //
-        private static string Host = "mypgserver-20170401.postgres.database.azure.com";
-        private static string User = "mylogin@mypgserver-20170401";
+        private static string Host = "mydemoserver.postgres.database.azure.com";
+        private static string User = "mylogin@mydemoserver";
         private static string DBname = "mypgsqldb";
         private static string Password = "<server_admin_password>";
         private static string Port = "5432";
@@ -206,8 +205,8 @@ namespace Driver
     {
         // Obtain connection string information from the portal
         //
-        private static string Host = "mypgserver-20170401.postgres.database.azure.com";
-        private static string User = "mylogin@mypgserver-20170401";
+        private static string Host = "mydemoserver.postgres.database.azure.com";
+        private static string User = "mylogin@mydemoserver";
         private static string DBname = "mypgsqldb";
         private static string Password = "<server_admin_password>";
         private static string Port = "5432";
@@ -272,8 +271,8 @@ namespace Driver
     {
         // Obtain connection string information from the portal
         //
-        private static string Host = "mypgserver-20170401.postgres.database.azure.com";
-        private static string User = "mylogin@mypgserver-20170401";
+        private static string Host = "mydemoserver.postgres.database.azure.com";
+        private static string User = "mylogin@mydemoserver";
         private static string DBname = "mypgsqldb";
         private static string Password = "<server_admin_password>";
         private static string Port = "5432";
@@ -313,6 +312,6 @@ namespace Driver
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 > [!div class="nextstepaction"]
 > [Adatbázis migrálása exportálással és importálással](./howto-migrate-using-export-and-import.md)

@@ -1,21 +1,21 @@
 ---
-title: "Csatlakozás a PostgreSQL-hez készült Azure Database-hez a Ruby használatával | Microsoft Docs"
+title: "Csatlakozás az Azure Database for PostgreSQL-hez a Rubyval"
 description: "Az alábbi gyors útmutatóban egy olyan Ruby-kódminta található, amely a PostgreSQL-hez készült Azure Database csatlakoztatására és adatlekérdezésre használható."
 services: postgresql
-author: jasonwhowell
-ms.author: jasonh
-manager: jhubbard
+author: rachel-msft
+ms.author: raagyema
+manager: kfile
 editor: jasonwhowell
 ms.service: postgresql
 ms.custom: mvc
 ms.devlang: ruby
 ms.topic: quickstart
-ms.date: 11/03/2017
-ms.openlocfilehash: 0b8ee73ab86dde2b2c09c9fe2e73209d000b3f26
-ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
+ms.date: 02/28/2018
+ms.openlocfilehash: 911dcd49273edb202c64d046424418b7db048291
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="azure-database-for-postgresql-use-ruby-to-connect-and-query-data"></a>A PostgreSQL-hez készült Azure Database: csatlakozás és adatlekérdezés a Ruby használatával
 Ebben a gyors útmutatóban azt szemléltetjük, hogy miként lehet egy [Ruby](https://www.ruby-lang.org)-alkalmazás használatával csatlakozni a PostgreSQL-hez készült Azure Database-hez. Azt is bemutatja, hogyan lehet SQL-utasítások használatával adatokat lekérdezni, beszúrni, frissíteni és törölni az adatbázisban. A jelen cikkben ismertetett lépések feltételezik, hogy Ön rendelkezik fejlesztési tapasztalatokkal a Ruby használatával kapcsolatban, az Azure Database for PostgreSQL használatában pedig még járatlan.
@@ -60,11 +60,10 @@ Telepítse a Rubyt saját számítógépén.
 Kérje le a PostgreSQL-hez készült Azure-adatbázishoz való csatlakozáshoz szükséges kapcsolatadatokat. Szüksége lesz a teljes kiszolgálónévre és a bejelentkezési hitelesítő adatokra.
 
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
-2. Az Azure Portal bal oldali menüjében kattintson az **Összes erőforrás** lehetőségre, és keressen rá a létrehozott kiszolgálóra (például **mypgserver-20170401**).
-3. Kattintson a **mypgserver-20170401** kiszolgálónévre.
-4. Válassza ki a kiszolgáló **Áttekintés** oldalát. Jegyezze fel a **Kiszolgálónevet** és a **Kiszolgáló-rendszergazdai bejelentkezési nevet**.
- ![Azure-adatbázis PostgreSQL-hez - Kiszolgáló-rendszergazdai bejelentkezés](./media/connect-ruby/1-connection-string.png)
-5. Amennyiben elfelejtette a kiszolgáló bejelentkezési adatait, lépjen az **Overview** (Áttekintés) oldalra, és itt megtudhatja a kiszolgáló rendszergazdájának bejelentkezési nevét. Szükség esetén állítsa alaphelyzetbe a jelszót.
+2. Az Azure Portal bal oldali menüjében kattintson a **Minden erőforrás** lehetőségre, és keressen rá a létrehozott kiszolgálóra (például **mydemoserver**).
+3. Kattintson a kiszolgálónévre.
+4. A kiszolgáló **Áttekintés** paneléről jegyezze fel a **Kiszolgálónevet** és a **Kiszolgáló-rendszergazdai bejelentkezési nevet**. Ha elfelejti a jelszavát, ezen a panelen új jelszót is tud kérni.
+ ![Azure Database for PostgreSQL-kiszolgáló neve](./media/connect-ruby/1-connection-string.png)
 
 ## <a name="connect-and-create-a-table"></a>Csatlakozás és tábla létrehozása
 A következő kód segítségével csatlakozzon, és hozzon létre egy táblát a **CREATE TABLE** SQL-utasítással, majd az **INSERT INTO** SQL-utasítással adjon hozzá sorokat a táblához.
@@ -77,9 +76,9 @@ require 'pg'
 
 begin
     # Initialize connection variables.
-    host = String('mypgserver-20170401.postgres.database.azure.com')
+    host = String('mydemoserver.postgres.database.azure.com')
     database = String('postgres')
-    user = String('mylogin@mypgserver-20170401')
+    user = String('mylogin@mydemoserver')
     password = String('<server_admin_password>')
 
     # Initialize connection object.
@@ -109,7 +108,7 @@ end
 ```
 
 ## <a name="read-data"></a>Adatok olvasása
-Az alábbi kód használatával csatlakozhat és végezheti el az adatok olvasását az adott **SELECT** SQL-utasítás segítségével. 
+Az alábbi kód használatával csatlakozhat és végezheti el az adatok olvasását **SELECT** SQL-utasítás segítségével. 
 
 A kód egy [PG::Connection](http://www.rubydoc.info/gems/pg/PG/Connection) objektumot használ a [new()](http://www.rubydoc.info/gems/pg/PG%2FConnection:initialize) konstruktorral a PostgreSQL-hez készült Azure Database-hez való kapcsolódáshoz. Ezután meghívja az [exec()](http://www.rubydoc.info/gems/pg/PG/Connection#exec-instance_method) metódust a SELECT parancs futtatásához, az eredményeket az eredményhalmazban megőrizve. Az eredményhalmaz gyűjtése többször is végrehajtódik a `resultSet.each do` ciklus használatával, megőrizve az aktuális sor értékeit a `row` változóban. A kód a [PG::Error](http://www.rubydoc.info/gems/pg/PG/Error) osztály használatával ellenőrzi a hibákat. Végül pedig a [close()](http://www.rubydoc.info/gems/pg/PG/Connection#lo_close-instance_method) metódus meghívásával bontja a kapcsolatot, mielőtt kilép.
 
@@ -120,9 +119,9 @@ require 'pg'
 
 begin
     # Initialize connection variables.
-    host = String('mypgserver-20170401.postgres.database.azure.com')
+    host = String('mydemoserver.postgres.database.azure.com')
     database = String('postgres')
-    user = String('mylogin@mypgserver-20170401')
+    user = String('mylogin@mydemoserver')
     password = String('<server_admin_password>')
 
     # Initialize connection object.
@@ -154,9 +153,9 @@ require 'pg'
 
 begin
     # Initialize connection variables.
-    host = String('mypgserver-20170401.postgres.database.azure.com')
+    host = String('mydemoserver.postgres.database.azure.com')
     database = String('postgres')
-    user = String('mylogin@mypgserver-20170401')
+    user = String('mylogin@mydemoserver')
     password = String('<server_admin_password>')
 
     # Initialize connection object.
@@ -177,7 +176,7 @@ end
 
 
 ## <a name="delete-data"></a>Adat törlése
-Az alábbi kód használatával csatlakozhat és végezheti el az adatok olvasását egy **DELETE** SQL-utasítás segítségével. 
+Az alábbi kód használatával csatlakozhat és végezheti el az adatok olvasását **DELETE** SQL-utasítás segítségével. 
 
 A kód egy [PG::Connection](http://www.rubydoc.info/gems/pg/PG/Connection) objektumot használ a [new()](http://www.rubydoc.info/gems/pg/PG%2FConnection:initialize) konstruktorral a PostgreSQL-hez készült Azure Database-hez való kapcsolódáshoz. Ezután meghívja az [exec()](http://www.rubydoc.info/gems/pg/PG/Connection#exec-instance_method) metódust az UPDATE parancs futtatásához. A kód a [PG::Error](http://www.rubydoc.info/gems/pg/PG/Error) osztály használatával ellenőrzi a hibákat. Végül pedig a [close()](http://www.rubydoc.info/gems/pg/PG/Connection#lo_close-instance_method) metódus meghívásával bontja a kapcsolatot, mielőtt kilép.
 
@@ -188,9 +187,9 @@ require 'pg'
 
 begin
     # Initialize connection variables.
-    host = String('mypgserver-20170401.postgres.database.azure.com')
+    host = String('mydemoserver.postgres.database.azure.com')
     database = String('postgres')
-    user = String('mylogin@mypgserver-20170401')
+    user = String('mylogin@mydemoserver')
     password = String('<server_admin_password>')
 
     # Initialize connection object.
@@ -209,6 +208,6 @@ ensure
 end
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 > [!div class="nextstepaction"]
 > [Adatbázis migrálása exportálással és importálással](./howto-migrate-using-export-and-import.md)

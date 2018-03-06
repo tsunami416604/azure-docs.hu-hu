@@ -1,6 +1,6 @@
 ---
-title: "Azure Service Fabric-futtatókörnyezet frissítése |} Microsoft Docs"
-description: "Megtudhatja, hogyan lehet frissíteni az Azure által üzemeltetett Service Fabric-fürt a futásidejű a PowerShell használatával."
+title: "Az Azure Service Fabric-futtatókörnyezet frissítése | Microsoft Docs"
+description: "Ez az oktatóanyag bemutatja, hogyan frissíthető egy Azure-ban tárolt Service Fabric-fürt futtatókörnyezetének frissítése a PowerShell segítségével."
 services: service-fabric
 documentationcenter: .net
 author: Thraka
@@ -15,44 +15,44 @@ ms.workload: NA
 ms.date: 11/28/2017
 ms.author: adegeo
 ms.custom: mvc
-ms.openlocfilehash: faf134bc0952da913e90a93bc872a53f5f2369ff
-ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
-ms.translationtype: MT
+ms.openlocfilehash: 49211a88e004bbcbcc41b6674a34934db39513c7
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 02/24/2018
 ---
-# <a name="upgrade-the-runtime-of-a-service-fabric-cluster"></a>A Service Fabric-fürt futásidejű frissítése
+# <a name="tutorial-upgrade-the-runtime-of-a-service-fabric-cluster"></a>Oktatóanyag: Service Fabric-fürt futtatókörnyezetének frissítése
 
-Ez az oktatóanyag része egy sor és bemutatja, hogyan lehet frissíteni a Service Fabric-futtatókörnyezet egy Azure Service Fabric-fürt. Ez az oktatóanyag kijelző futó Azure Service Fabric-fürtök számára készült, és nem vonatkozik a különálló Service Fabric fürt.
+Ez az oktatóanyag a sorozat harmadik része, és egy Azure Service Fabric-fürtön található Service Fabric-futtatókörnyezet frissítését mutatja be. Az oktatóanyag ezen része az Azure-ban futó Service Fabric-fürtökhöz készült, és nem vonatkozik a különálló Service Fabric-fürtökre.
 
 > [!WARNING]
-> Ez az oktatóanyag részét PowerShell szükséges. A fürt futásidejű frissítésére vonatkozó támogatási még nem támogatott az Azure CLI-eszközök által. Másik lehetőségként a fürt frissítése a portálon. További információkért lásd: [egy Azure Service Fabric-fürt frissítése](service-fabric-cluster-upgrade.md).
+> Az oktatóanyag jelen részéhez PowerShell szükséges. Az Azure CLI-eszközök még nem támogatják a fürt-futtatókörnyezet frissítésének támogatását. Másik lehetőségként a fürt a portálon is frissíthető. További információkért lásd az [Azure Service Fabric-fürt frissítését](service-fabric-cluster-upgrade.md).
 
-Ha a fürt már fut a legújabb Service Fabric-futtatókörnyezet, nem szükséges ehhez a lépéshez. Azonban ez a cikk az Azure Service Fabric-fürt bármely támogatott futásidejű telepítendő használható.
+Ha a fürt már a Service Fabric-futtatókörnyezet legfrissebb verzióját futtatja, ezt a lépést nem kell elvégeznie. Azonban ez a cikk az Azure Service Fabric-fürtön található bármely támogatott futtatókörnyezet telepítéséhez használható.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * Olvassa el a fürt verziószáma
-> * A fürt verzió
+> * A fürt verziószámának beolvasása
+> * A fürt verziójának beállítása
 
-Az oktatóanyag adatsorozat elsajátíthatja, hogyan:
+Ebben az oktatóanyag-sorozatban az alábbiakkal ismerkedhet meg:
 > [!div class="checklist"]
-> * Hozzon létre egy biztonságos [Windows-fürt](service-fabric-tutorial-create-vnet-and-windows-cluster.md) vagy [Linux-fürt](service-fabric-tutorial-create-vnet-and-linux-cluster.md) Azure-sablon használatával
-> * [Bejövő vagy kimenő fürt méretezése](service-fabric-tutorial-scale-cluster.md)
-> * A futtatókörnyezet egy fürt frissítése
-> * [A Service Fabric az API Management központi telepítését](service-fabric-tutorial-deploy-api-management.md)
+> * Biztonságos [Windows-fürt](service-fabric-tutorial-create-vnet-and-windows-cluster.md) vagy [Linux-fürt](service-fabric-tutorial-create-vnet-and-linux-cluster.md) létrehozása az Azure-ban sablon használatával
+> * [Fürt horizontális fel- és leskálázása](service-fabric-tutorial-scale-cluster.md)
+> * Fürt futtatókörnyezetének frissítése
+> * [Az API Management üzembe helyezése a Service Fabrickel](service-fabric-tutorial-deploy-api-management.md)
 
 ## <a name="prerequisites"></a>Előfeltételek
-Ez az oktatóanyag elkezdéséhez:
-- Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-- Telepítse a [Azure Powershell 4.1-es vagy újabb verziója](https://docs.microsoft.com/powershell/azure/install-azurerm-ps) vagy [Azure CLI 2.0](/cli/azure/install-azure-cli).
-- Hozzon létre egy biztonságos [Windows-fürt](service-fabric-tutorial-create-vnet-and-windows-cluster.md) vagy [Linux-fürt](service-fabric-tutorial-create-vnet-and-linux-cluster.md) az Azure-on
-- Ha telepít egy Windows-fürt, a Windows környezet beállítása. Telepítés [Visual Studio 2017](http://www.visualstudio.com) és a **Azure fejlesztési**, **ASP.NET és a webes fejlesztési**, és **.NET Core platformfüggetlen fejlesztésekhez**munkaterhelések.  Hozzon létre egy [.NET fejlesztőkörnyezet](service-fabric-get-started.md).
-- Ha a Linux-fürt központi telepítése, állítsa be a Java-fejlesztőkörnyezet a [Linux](service-fabric-get-started-linux.md) vagy [MacOS](service-fabric-get-started-mac.md).  Telepítse a [háló CLI szolgáltatás](service-fabric-cli.md). 
+Az oktatóanyag elkezdése előtt:
+- Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- Telepítse az [Azure PowerShell-modul 4.1-es vagy újabb verzióját](https://docs.microsoft.com/powershell/azure/install-azurerm-ps), vagy az [Azure CLI 2.0-ás verzióját](/cli/azure/install-azure-cli).
+- Biztonságos [Windows-fürt](service-fabric-tutorial-create-vnet-and-windows-cluster.md) vagy [Linux-fürt](service-fabric-tutorial-create-vnet-and-linux-cluster.md) létrehozása az Azure-ban
+- Ha Windows-fürtöt telepít, állítson be egy Windows fejlesztési környezetet. Telepítse a [Visual Studio 2017](http://www.visualstudio.com) szoftvert, valamint az **Azure-fejlesztési**, **ASP.NET- és webes fejlesztési**, továbbá a **.NET Core platformfüggetlen fejlesztési** számítási feladatokat.  Ezután hozzon létre egy [.NET fejlesztési környezet](service-fabric-get-started.md).
+- Ha Linux-fürtöt telepít, állítson be Java fejlesztési környezetet [Linux](service-fabric-get-started-linux.md) vagy [MacOS](service-fabric-get-started-mac.md) operációs rendszeren.  Telepítse a [Service Fabric parancssori felületet](service-fabric-cli.md). 
 
 ### <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
-Az Azure-fiókjába történő bejelentkezéshez jelölje ki az előfizetését, Azure parancsok végrehajtása előtt.
+Azure-parancsok végrehajtása előtt jelentkezzen be az Azure-fiókjába, és válassza ki az előfizetését.
 
 ```powershell
 Login-AzureRmAccount
@@ -60,32 +60,32 @@ Get-AzureRmSubscription
 Set-AzureRmContext -SubscriptionId <guid>
 ```
 
-## <a name="get-the-runtime-version"></a>A futásidejű verzióra
+## <a name="get-the-runtime-version"></a>Futtatókörnyezet verziójának lekérése
 
-Miután csatlakozott az Azure-ba, jelölve az előfizetést, amely tartalmazza a Service Fabric-fürt, a fürt futásidejű verzióját kaphat.
+Miután csatlakozott az Azure-hoz, és kiválasztotta a Service Fabric-fürtöt tartalmazó előfizetést, lekérheti a fürt futtatókörnyezetének verzióját.
 
 ```powershell
 Get-AzureRmServiceFabricCluster -ResourceGroupName SFCLUSTERTUTORIALGROUP -Name aztestcluster `
     | Select-Object ClusterCodeVersion
 ```
 
-Vagy csak az összes fürt listájának lekérése az előfizetéshez a következő:
+Vagy egyszerűen lekérheti az előfizetésében lévő összes fürt listáját az alábbiak segítségével:
 
 ```powershell
 Get-AzureRmServiceFabricCluster | Select-Object Name, ClusterCodeVersion
 ```
 
-Megjegyzés: a **ClusterCodeVersion** érték. Ez az érték a következő szakaszban használható.
+Jegyezze fel a **ClusterCodeVersion** értéket. Ezt az értéket a következő szakaszban fogjuk használni.
 
 ## <a name="upgrade-the-runtime"></a>A futtatókörnyezet frissítése
 
-Az érték **ClusterCodeVersion** az előző szakaszából a `Get-ServiceFabricRuntimeUpgradeVersion` derítsen fel, melyik verziója érhetők el, és frissítse parancsmaggal. Ez a parancsmag csak a számítógép csatlakozik az internethez futtathatja. Például, ha szeretné, hogy milyen sikerült frissítenie verziójából származó futtatókörnyezet-verzió jelenik meg `5.7.198.9494`, használja a következő parancsot:
+Használja az előző szakaszban látható **ClusterCodeVersion** értéket a `Get-ServiceFabricRuntimeUpgradeVersion` parancsmaggal a frissítéshez elérhető verziók megtekintéséhez. Ez a parancsmag csak az internethez csatlakozó számítógépről futtatható. Például ha látni szeretné, hogy a futtatókörnyezet melyik verzióira frissíthet az `5.7.198.9494`-es verzióról, használja az alábbi parancsot:
 
 ```powershell
 Get-ServiceFabricRuntimeUpgradeVersion -BaseVersion "5.7.198.9494"
 ```
 
-Verziók listáját az Azure Service Fabric-fürt frissítése újabb futtatókörnyezettel állapítható meg. Például ha verzió `6.0.219.9494` frissítsen, az alábbi parancs segítségével frissítse a fürt rendelkezésére áll.
+A verziók listája alapján megadhatja az Azure Service Fabric-fürtnek, hogy egy újabb futtatókörnyezetre frissítsen. Például ha a `6.0.219.9494`-es verzióra frissíthet, az alábbi paranccsal frissítse a fürtöt.
 
 ```powershell
 Set-AzureRmServiceFabricUpgradeType -ResourceGroupName SFCLUSTERTUTORIALGROUP `
@@ -95,11 +95,11 @@ Set-AzureRmServiceFabricUpgradeType -ResourceGroupName SFCLUSTERTUTORIALGROUP `
 ```
 
 > [!IMPORTANT]
-> A fürt futásidejű frissítés egy hosszú ideig is eltarthat. PowerShell le van tiltva, amíg a frissítés van folyamatban. A frissítés állapotának ellenőrzéséhez használhatja egy másik PowerShell-munkamenetben.
+> A fürt futtatókörnyezetének frissítése hosszú időt vehet igénybe. A PowerShell le van tiltva, amíg a frissítés folyamatban van. A frissítés állapotát egy másik PowerShell-munkamenetből ellenőrizheti.
 
-A frissítés állapota figyelhető vagy PowerShell vagy a `sfctl` CLI-t.
+A frissítés állapota a PowerShell-lel vagy az `sfctl` CLI-vel monitorozható.
 
-Először csatlakozzon a fürthöz az oktatóanyag első részét létrehozott SSL-tanúsítvánnyal. Használja a `Connect-ServiceFabricCluster` parancsmag vagy `sfctl cluster upgrade-status`.
+Először csatlakozzon az oktatóanyag első részében létrehozott, SSL-tanúsítvánnyal rendelkező fürthöz. Használja a `Connect-ServiceFabricCluster` parancsmagot vagy az `sfctl cluster upgrade-status` parancsot.
 
 ```powershell
 $endpoint = "<mycluster>.southcentralus.cloudapp.azure.com:19000"
@@ -117,7 +117,7 @@ sfctl cluster select --endpoint https://aztestcluster.southcentralus.cloudapp.az
 --pem ./aztestcluster201709151446.pem --no-verify
 ```
 
-Következő lépésként az `Get-ServiceFabricClusterUpgrade` vagy `sfctl cluster upgrade-status` állapotának megjelenítése. Hasonló a következő eredmény jelenik meg.
+Következő lépésként a `Get-ServiceFabricClusterUpgrade` vagy az `sfctl cluster upgrade-status` paranccsal tekintse meg az állapotot. Az alábbihoz hasonló eredmény jelenik meg.
 
 ```powershell
 Get-ServiceFabricClusterUpgrade
@@ -195,10 +195,10 @@ sfctl cluster upgrade-status
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
-> * A fürt futásidejű verziójának
-> * A fürt futásidejű frissítése
+> * A fürt-futtatókörnyezet verziójának lekérése
+> * A fürt futtatókörnyezetének frissítése
 > * A frissítés figyelése
 
-A következő előzetes a következő oktatóanyag segítséget nyújt a Service Fabric-fürt API Management telepítése.
+Folytassa a következő oktatóanyaggal, amelyben megismerheti, hogyan helyezheti üzembe az API Managementet egy Service Fabric-fürttel.
 > [!div class="nextstepaction"]
-> [A Service Fabric az API Management központi telepítését](service-fabric-tutorial-deploy-api-management.md)
+> [Az API Management üzembe helyezése a Service Fabrickel](service-fabric-tutorial-deploy-api-management.md)

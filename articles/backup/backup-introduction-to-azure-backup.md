@@ -16,11 +16,11 @@ ms.topic: overview
 ms.date: 1/5/2018
 ms.author: markgal;trinadhk;anuragm
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: 59beaac1d8619c3f4afa1c75074546a849dfce6b
-ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
+ms.openlocfilehash: a16db0f23f93083e9a17d2b12f9215a964e07c9a
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="overview-of-the-features-in-azure-backup"></a>Az Azure Backup szolgáltatásainak áttekintése
 Az Azure Backup olyan Azure-alapú szolgáltatás, amellyel biztonsági másolatot készíthet adatairól (vagy megvédheti adatait), és visszaállíthatja őket a Microsoft-felhőből. Az Azure Backup megbízható, biztonságos és költséghatékony felhőalapú megoldással váltja fel a meglévő helyszíni vagy külső helyszínen lévő biztonsági mentési megoldást. Az Azure Backup több összetevőjét letöltheti és telepítheti a megfelelő számítógépre, kiszolgálóra vagy a felhőbe. A telepítendő összetevő vagy ügynök attól függ, hogy mit szeretne megvédeni. Minden Azure Backup-összetevővel (függetlenül attól, hogy helyszíni vagy a felhőben tárolt adatokat kíván védeni) készíthetők biztonsági másolatok az Azure Recovery Services-tárolójába. Az [Azure Backup-összetevők táblázatában](backup-introduction-to-azure-backup.md#which-azure-backup-components-should-i-use) (a cikk későbbi részében) azzal kapcsolatban talál információkat, hogy mely összetevőt kell használnia adott adatok, alkalmazások és számítási feladatok védelmére.
@@ -56,7 +56,7 @@ Ha nem tudja biztosan, hogy melyik Azure Backup-összetevő felel meg az igénye
 | Azure Backup (MARS) ügynöke |<li>Elkészíti a fizikai vagy virtuális Windows operációs rendszereken lévő fájlok és mappák biztonsági másolatát (a virtuális gépek lehetnek helyszíniek, vagy lehetnek az Azure-ban is)<li>Nincs szükség különálló biztonsági mentési kiszolgálóra. |<li>Biztonsági mentés naponta 3-szor. <li>Nem alkalmazásfüggő; csak fájl-/mappa-/kötetszintű visszaállítás. <li>  Nincs Linux-támogatás. |<li>Fájlok <li>Mappák <li>Rendszerállapot |Recovery Services-tároló |
 | System Center DPM |<li>Alkalmazásfüggő pillanatképek (VSS)<li>Teljes rugalmasság a biztonsági mentés időpontjának kiválasztásakor<li>Helyreállítás részletessége (összes)<li>Használható a Recovery Services-tároló<li>Linux-támogatás Hyper-V és VMware virtuális gépeken <li>VMware virtuális gépek biztonsági mentése és visszaállítása a DPM 2012 R2-es verziójával |Nem készíthető biztonsági mentés az Oracle számítási feladatról.|<li>Fájlok <li>Mappák<li> Kötetek <li>Virtuális gépek<li> Alkalmazások<li> Számítási feladatok |<li>Recovery Services-tároló,<li> Helyileg csatlakoztatott lemez,<li>  Szalag (csak helyszíni) |
 | Azure Backup Server |<li>Alkalmazásfüggő pillanatképek (VSS)<li>Teljes rugalmasság a biztonsági mentés időpontjának kiválasztásakor<li>Helyreállítás részletessége (összes)<li>Használható a Recovery Services-tároló<li>Linux-támogatás Hyper-V és VMware virtuális gépeken<li>VMware virtuális gépek biztonsági mentése és visszaállítása <li>Nincs szükség System Center-licencre |<li>Nem készíthető biztonsági mentés az Oracle számítási feladatról.<li>Mindig élő Azure-előfizetést igényel<li>A szalagos biztonsági mentés nem támogatott |<li>Fájlok <li>Mappák<li> Kötetek <li>Virtuális gépek<li> Alkalmazások<li> Számítási feladatok |<li>Recovery Services-tároló,<li> Helyileg csatlakoztatott lemez |
-| Azure IaaS virtuális gép biztonsági mentése |<li>Natív biztonsági mentések Windowshoz/Linuxhoz<li>Nincs szükség speciális ügynök telepítésére<li>Hálószintű biztonsági mentés, nincs szükség biztonsági mentési infrastruktúrára |<li>Virtuális gépek napi biztonsági mentése <li>Virtuális gépek visszaállítása csak lemezszinten<li>Nem készíthető biztonsági mentés a helyszínen |<li>Virtuális gépek <li>Minden lemez (PowerShell használatával) |<p>Recovery Services-tároló</p> |
+| Azure IaaS virtuális gép biztonsági mentése |<li>Alkalmazásfüggő pillanatképek (VSS)<li>Natív biztonsági mentések Windowshoz/Linuxhoz<li>Nincs szükség speciális ügynök telepítésére<li>Hálószintű biztonsági mentés, nincs szükség biztonsági mentési infrastruktúrára |<li>Virtuális gépek napi biztonsági mentése <li>Virtuális gépek visszaállítása csak lemezszinten<li>Nem készíthető biztonsági mentés a helyszínen |<li>Virtuális gépek <li>Minden lemez (PowerShell használatával) |<p>Recovery Services-tároló</p> |
 
 ## <a name="what-are-the-deployment-scenarios-for-each-component"></a>Mik az egyes összetevők üzembe helyezési lehetőségei?
 | Összetevő | Üzembe helyezhető az Azure-ban? | Üzembe helyezhető a helyszínen? | A céltároló támogatott |
@@ -104,7 +104,7 @@ Premium Storage virtuális gépek biztonsági mentésekor a Backup szolgáltatá
 >
 
 ### <a name="restore-premium-storage-vms"></a>A Premium Storage virtuális gépek visszaállítása
-A Premium Storage virtuális gépek Premium Storage tárolóba vagy normál tárolóba állíthatók vissza. A Premium Storage virtuális gép helyreállítási pontjának Premium Storage-ba való visszaállítása a visszaállítás tipikus folyamata. Azonban költséghatékony lehet a Premium Storage virtuális gépek helyreállítási pontjait Standard szintű tárolóba visszaállítani. Ez a visszaállítási típus használható, ha a fájlok egy részére van szüksége a virtuális gépről.
+A Premium Storage virtuális gépek Premium vagy Standard szintű tárolókba is visszaállíthatók. A Premium Storage virtuális gép helyreállítási pontjának Premium Storage-ba való visszaállítása a visszaállítás tipikus folyamata. Ha azonban költséghatékony megoldást keres, érdemes lehet a Premium Storage virtuális gépek helyreállítási pontjait Standard szintű tárolóba visszaállítani. Ez a visszaállítási típus használható, ha a fájlok egy részére van szüksége a virtuális gépről.
 
 ## <a name="using-managed-disk-vms-with-azure-backup"></a>Felügyelt lemezes virtuális gépek használata az Azure Backuppal
 Az Azure Backup védelmet biztosít a felügyelt lemezes virtuális gépek számára. A felügyelt lemezek használatával mentesül a virtuális gépek tárfiókjainak kezelése alól, és lényegesen leegyszerűsödik a virtuális gépek üzembe helyezése.

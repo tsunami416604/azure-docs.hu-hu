@@ -1,34 +1,34 @@
 ---
-title: "Az első Azure-adatbázis kialakítása a PostgreSQL Azure parancssori felületével |} Microsoft Docs"
-description: "Ez az oktatóanyag bemutatja, hogyan tervezhet az első Azure-adatbázis a PostgreSQL Azure parancssori felület használatával."
+title: "Oktatóanyag – Az első Azure Database for PostgreSQL megtervezése az Azure CLI-vel"
+description: "Ez az oktatóanyag azt mutatja be, hogyan hozhatja létre, konfigurálhatja és kérdezheti le az első Azure Database for PostgreSQL-kiszolgálót az Azure CLI-vel."
 services: postgresql
-author: SaloniSonpal
-ms.author: salonis
-manager: jhubbard
+author: rachel-msft
+ms.author: raagyema
+manager: kfile
 editor: jasonwhowell
 ms.service: postgresql
 ms.custom: mvc
 ms.devlang: azure-cli
 ms.topic: tutorial
-ms.date: 11/27/2017
-ms.openlocfilehash: 97299ae904115d08c5d03be38be263203552b84b
-ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
-ms.translationtype: MT
+ms.date: 02/28/2018
+ms.openlocfilehash: 7e5e33ee2a7b53f3ffbd27992f6b604358db49bb
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 02/28/2018
 ---
-# <a name="design-your-first-azure-database-for-postgresql-using-azure-cli"></a>Az első Azure-adatbázis kialakítása a PostgreSQL Azure parancssori felület használatával 
-Ebben az oktatóanyagban használhatja az Azure parancssori felület (parancssori felület) és egyéb segédprogramok megtudhatja, hogyan:
+# <a name="tutorial-design-your-first-azure-database-for-postgresql-using-azure-cli"></a>Oktatóanyag: Az első Azure Database for PostgreSQL megtervezése az Azure CLI-vel 
+Ebben az oktatóanyagban az Azure CLI (parancssori felület) és egyéb segédprogramok segítségével a következőket sajátíthatja el:
 > [!div class="checklist"]
 > * Azure-adatbázis létrehozása PostgreSQL-kiszolgálóhoz
-> * A kiszolgáló tűzfal konfigurálása
-> * Használjon [ **psql** ](https://www.postgresql.org/docs/9.6/static/app-psql.html) segédprogramot az adatbázis létrehozása
+> * A kiszolgáló tűzfalának konfigurálása
+> * Adatbázis létrehozása a [**psql**](https://www.postgresql.org/docs/9.6/static/app-psql.html) segédprogrammal
 > * Mintaadatok betöltése
 > * Adatok lekérdezése
 > * Adatok frissítése
 > * Adatok visszaállítása
 
-Az Azure-felhő rendszerhéj lehet használni a böngésző vagy [Azure CLI 2.0-s verzióját]( /cli/azure/install-azure-cli) saját számítógépen ebben az oktatóanyagban a parancsok futtatásához.
+Az oktatóanyag parancsainak futtatásához használja az Azure Cloud Shellt egy böngészőben, vagy [telepítse az Azure CLI 2.0-t]( /cli/azure/install-azure-cli) a számítógépen.
 
 [!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
 
@@ -45,12 +45,18 @@ Hozzon létre egy [Azure-erőforráscsoportot](../azure-resource-manager/resourc
 az group create --name myresourcegroup --location westus
 ```
 
+## <a name="add-the-extension"></a>A bővítmény hozzáadása
+A következő paranccsal adhatja hozzá a frissített Azure Database for PostgreSQL felügyeleti bővítményt:
+```azurecli-interactive
+az extension add --name rdbms
+``` 
+
 ## <a name="create-an-azure-database-for-postgresql-server"></a>Azure-adatbázis létrehozása PostgreSQL-kiszolgálóhoz
 Hozzon létre egy [Azure-adatbázist PostgreSQL- kiszolgálóhoz](overview.md) az [az postgres server create](/cli/azure/postgres/server#az_postgres_server_create) paranccsal. A kiszolgáló adatbázisok egy csoportját tartalmazza, amelyeket a rendszer egy csoportként kezel. 
 
-Az alábbi példakód létrehozza nevű kiszolgáló `mypgserver-20170401` az erőforráscsoportban `myresourcegroup` a kiszolgáló-rendszergazdai bejelentkezés `mylogin`. A kiszolgáló neve DNS-névbe van leképezve, ezért globálisan egyedinek kell lennie az Azure-ban. A `<server_admin_password>` helyére írja be saját értékét.
+A következő példában létrehozunk egy `mydemoserver` nevű kiszolgálót a `myresourcegroup` erőforráscsoportban `myadmin` kiszolgálói rendszergazdai bejelentkezéssel. A kiszolgáló neve DNS-névbe van leképezve, ezért globálisan egyedinek kell lennie az Azure-ban. A `<server_admin_password>` helyére írja be saját értékét. Ez egy általános célú 4. generációs kiszolgáló 2 virtuális maggal.
 ```azurecli-interactive
-az postgres server create --resource-group myresourcegroup --name mypgserver-20170401 --location westus --admin-user mylogin --admin-password <server_admin_password> --performance-tier Basic --compute-units 50 --version 9.6
+az postgres server create --resource-group myresourcegroup --name mydemoserver --location westus --admin-user myadmin --admin-password <server_admin_password> --sku-name GP_Gen4_2 --version 9.6
 ```
 
 > [!IMPORTANT]
@@ -63,12 +69,12 @@ Alapértelmezés szerint a **postgres** adatbázis a kiszolgáló alatt jön lé
 
 Hozzon létre egy Azure PostgreSQL kiszolgálószintű tűzfalszabályt az [az sql server firewall create](/cli/azure/postgres/server/firewall-rule#az_postgres_server_firewall_rule_create) paranccsal. Egy kiszolgálószintű tűzfalszabály lehetővé teszi olyan külső alkalmazások számára, mint a [psql](https://www.postgresql.org/docs/9.2/static/app-psql.html), vagy a [PgAdmin](https://www.pgadmin.org/), hogy kapcsolódjon a kiszolgálóhoz az PostgreSQL szolgáltatás tűzfalán keresztül. 
 
-Beállíthat egy olyan tűzfalszabályt, amely lefed egy IP-címtartományt, annak érdekében, hogy csatlakozni tudjon a saját hálózatából. Az alábbi példában [az postgres-tűzfalszabály létrehozása](/cli/azure/postgres/server/firewall-rule#az_postgres_server_firewall_rule_create) egy tűzfalszabály létrehozására `AllowAllIps` , amely lehetővé teszi, hogy bármilyen IP-címről kapcsolat. Az összes IP-cím megnyitásához használja a 0.0.0.0 címet kezdő IP-címként és a 255.255.255.255 címet zárócímként.
+Beállíthat egy olyan tűzfalszabályt, amely lefed egy IP-címtartományt, annak érdekében, hogy csatlakozni tudjon a saját hálózatából. A követező példában az [az postgres server firewall-rule create](/cli/azure/postgres/server/firewall-rule#az_postgres_server_firewall_rule_create) parancsot használjuk egy olyan `AllowAllIps` tűzfalszabály létrehozásához, amely minden IP-címről engedélyezi a kapcsolódást. Az összes IP-cím megnyitásához használja a 0.0.0.0 címet kezdő IP-címként és a 255.255.255.255 címet zárócímként.
 
-Az Azure PostgreSQL-kiszolgálót, hogy csak a hálózati hozzáférés korlátozása, beállíthatja a tűzfalszabály csak fedik le a vállalati hálózat IP-címtartományt.
+Ha az Azure PostgreSQL-kiszolgáló hozzáférését a hálózaton belülre szeretné korlátozni, beállíthatja úgy a tűzfalszabályt, hogy csak a vállalati hálózat IP-címtartományáról engedélyezze a hozzáférést.
 
 ```azurecli-interactive
-az postgres server firewall-rule create --resource-group myresourcegroup --server mypgserver-20170401 --name AllowAllIps --start-ip-address 0.0.0.0 --end-ip-address 255.255.255.255
+az postgres server firewall-rule create --resource-group myresourcegroup --server mydemoserver --name AllowAllIps --start-ip-address 0.0.0.0 --end-ip-address 255.255.255.255
 ```
 
 > [!NOTE]
@@ -79,49 +85,55 @@ az postgres server firewall-rule create --resource-group myresourcegroup --serve
 
 A kiszolgálóhoz való kapcsolódáshoz meg kell adnia a gazdagép adatait és a hozzáférési hitelesítő adatokat.
 ```azurecli-interactive
-az postgres server show --resource-group myresourcegroup --name mypgserver-20170401
+az postgres server show --resource-group myresourcegroup --name mydemoserver
 ```
 
 Az eredmény JSON formátumban van. Jegyezze fel a következőket: **administratorLogin** és **fullyQualifiedDomainName**.
 ```json
 {
-  "administratorLogin": "mylogin",
-  "fullyQualifiedDomainName": "mypgserver-20170401.postgres.database.azure.com",
-  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegroup/providers/Microsoft.DBforPostgreSQL/servers/mypgserver-20170401",
+  "administratorLogin": "myadmin",
+  "earliestRestoreDate": null,
+  "fullyQualifiedDomainName": "mydemoserver.postgres.database.azure.com",
+  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegroup/providers/Microsoft.DBforPostgreSQL/servers/mydemoserver",
   "location": "westus",
-  "name": "mypgserver-20170401",
+  "name": "mydemoserver",
   "resourceGroup": "myresourcegroup",
   "sku": {
-    "capacity": 50,
-    "family": null,
-    "name": "PGSQLS2M50",
+    "capacity": 2,
+    "family": "Gen4",
+    "name": "GP_Gen4_2",
     "size": null,
-    "tier": "Basic"
+    "tier": "GeneralPurpose"
   },
-  "sslEnforcement": null,
-  "storageMb": 51200,
+  "sslEnforcement": "Enabled",
+  "storageProfile": {
+    "backupRetentionDays": 7,
+    "geoRedundantBackup": "Disabled",
+    "storageMb": 5120
+  },
   "tags": null,
   "type": "Microsoft.DBforPostgreSQL/servers",
   "userVisibleState": "Ready",
   "version": "9.6"
+
 }
 ```
 
-## <a name="connect-to-azure-database-for-postgresql-database-using-psql"></a>Csatlakozzon az Azure Database psql használatával PostgreSQL-adatbázishoz
-Ha az ügyfélszámítógép PostgreSQL telepítve rendelkezik, egy helyi példányát használhatja [psql](https://www.postgresql.org/docs/9.6/static/app-psql.html), vagy az Azure Cloud Console egy Azure PostgreSQL-kiszolgálóhoz való csatlakozáshoz. Használjuk a psql parancssori segédprogramot az Azure-adatbázis PostgreSQL-kiszolgálóhoz való kapcsolódáshoz.
+## <a name="connect-to-azure-database-for-postgresql-database-using-psql"></a>Csatlakozás az Azure Database for PostgreSQL-hez psql használatával
+Ha az ügyfélszámítógépen telepítve van a PostgreSQL, akkor használhatja a [psql](https://www.postgresql.org/docs/9.6/static/app-psql.html) helyi példányát vagy az Azure Cloud Console-t az Azure PostgreSQL-kiszolgálóhoz való csatlakozáshoz. Használjuk a psql parancssori segédprogramot az Azure-adatbázis PostgreSQL-kiszolgálóhoz való kapcsolódáshoz.
 
-1. A következő parancsot psql PostgreSQL-adatbázishoz egy Azure-adatbázishoz való kapcsolódáshoz:
+1. Futtassa a következő psql-parancsot az Azure Database for PostgreSQL-adatbázishoz való kapcsolódáshoz:
 ```azurecli-interactive
 psql --host=<servername> --port=<port> --username=<user@servername> --dbname=<dbname>
 ```
 
-  Például a következő parancs a **postgres** nevű alapértelmezett adatbázishoz kapcsolódik a PostgreSQL-kiszolgálón **mypgserver-20170401.postgres.database.azure.com** a hozzáférési hitelesítő adatok használatával. Adja meg a `<server_admin_password>` kiszolgálói rendszergazdai jelszót, amelyet a jelszó megadásakor választott.
+  Például a következő parancs a **postgres** nevű alapértelmezett adatbázishoz kapcsolódik a **mydemoserver.postgres.database.azure.com** PostgreSQL-kiszolgálón a hozzáférési hitelesítő adatok használatával. Adja meg a `<server_admin_password>` kiszolgálói rendszergazdai jelszót, amelyet a jelszó megadásakor választott.
   
   ```azurecli-interactive
-psql --host=mypgserver-20170401.postgres.database.azure.com --port=5432 --username=mylogin@mypgserver-20170401 ---dbname=postgres
+psql --host=mydemoserver.postgres.database.azure.com --port=5432 --username=myadmin@mydemoserver ---dbname=postgres
 ```
 
-2.  Miután csatlakozott a kiszolgálóhoz, hozzon létre egy üres adatbázist a parancssorba:
+2.  Miután csatlakozott a kiszolgálóhoz, hozzon létre egy üres adatbázist, amikor a rendszer erre kéri:
 ```sql
 CREATE DATABASE mypgsqldb;
 ```
@@ -131,10 +143,10 @@ CREATE DATABASE mypgsqldb;
 \c mypgsqldb
 ```
 
-## <a name="create-tables-in-the-database"></a>Hozzon létre táblák az adatbázisban
-Most, hogy tudja, hogyan PostgreSQL az Azure-adatbázishoz való kapcsolódáshoz, azt is ismerteti, hogyan lehet néhány alapvető műveleteket elvégezni.
+## <a name="create-tables-in-the-database"></a>Táblák létrehozása az adatbázisban
+Most, hogy megtanulta, hogyan csatlakozhat az Azure Database for PostgreSQL-hez, tekintsük át, hogyan végezhet el néhány alapvető feladatot.
 
-Először hogy hozzon létre egy táblát, és töltse be adatokkal. Hozzon létre egy táblát, amely nyomon követi a Hardverleltár-információk:
+Először létrehozhat egy táblát, és feltöltheti adatokkal. Hozzon létre egy táblát a leltáradatok nyomon követéséhez:
 ```sql
 CREATE TABLE inventory (
     id serial PRIMARY KEY, 
@@ -143,66 +155,66 @@ CREATE TABLE inventory (
 );
 ```
 
-Írja be a most látható a táblák listáját az újonnan létrehozott táblázatra:
+Az újonnan létrehozott tábla a táblák listájában való megtekintéséhez írja be a következőt:
 ```sql
 \dt
 ```
 
-## <a name="load-data-into-the-table"></a>Adatok betöltése az a táblázat
-Most, hogy a tábla, azt beilleszthet néhány adat azt. A parancssor megnyitása ablakban futtassa a következő lekérdezés szúrható be néhány sornyi adat:
+## <a name="load-data-into-the-table"></a>Adatok betöltése a táblába
+Most, hogy rendelkezik egy táblával, beszúrhat néhány adatot. A megnyitott parancssori ablakban futtassa a következő lekérdezést néhány adatsor beszúrásához:
 ```sql
 INSERT INTO inventory (id, name, quantity) VALUES (1, 'banana', 150); 
 INSERT INTO inventory (id, name, quantity) VALUES (2, 'orange', 154);
 ```
 
-Ezzel hozzáadta két sorát mintaadatok a táblázatba a korábban létrehozott.
+Így két sornyi mintaadat került a korábban létrehozott táblába.
 
-## <a name="query-and-update-the-data-in-the-tables"></a>Lekérdezés, és frissítse a táblák adatait
-A következő lekérdezés futtatásával adatok lekérését a táblázatra hajtható végre: 
+## <a name="query-and-update-the-data-in-the-tables"></a>A táblákban lévő adatok lekérdezése és frissítése
+Hajtsa végre a következő lekérdezést a készlettáblában lévő információk lekéréséhez: 
 ```sql
 SELECT * FROM inventory;
 ```
 
-A készlet tábla is frissítheti:
+A készlettáblában található adatokat frissíteni is lehet:
 ```sql
 UPDATE inventory SET quantity = 200 WHERE name = 'banana';
 ```
 
-Az adatok látható a frissített értékekkel:
+A frissített értékeket az adatok lekérésekor tekintheti meg:
 ```sql
 SELECT * FROM inventory;
 ```
 
 ## <a name="restore-a-database-to-a-previous-point-in-time"></a>Adatbázis visszaállítása egy korábbi időpontra
-Tegyük fel, hogy véletlenül törölt egy tábla. Ez a valami nem egyszerűen állíthat helyre. Azure-adatbázis PostgreSQL lehetővé teszi bármely-időpontban (Basic legfeljebb 7 nap) és a Standard 35 napon lépjen vissza, és állítsa vissza a-időpontban egy új kiszolgálóra. Az új kiszolgáló segítségével helyreállíthatja a törölt adatokat. 
+Tegyük fel, hogy véletlenül törölt egy táblát. Ez nem olyasvalami, ami könnyen helyreállítható. Az Azure Database for PostgreSQL segítségével bármely olyan időpontra vissza lehet térni, amelyen a kiszolgálóról biztonsági mentés készült (ez a biztonsági mentések megőrzési idejéhez megadott beállításoktól függ), és az adott időpontra jellemző állapotot vissza lehet állítani egy új kiszolgálóra. Az új kiszolgáló segítségével helyreállíthatja a törölt adatokat. 
 
-A következő parancsot a minta kiszolgáló visszaállítása a pont előtti a tábla hozzá lett adva:
+Az alábbi parancs a mintakiszolgálót egy, a tábla hozzáadása előtti időpontra állítja vissza:
 ```azurecli-interactive
-az postgres server restore --resource-group myResourceGroup --name mypgserver-restored --restore-point-in-time 2017-04-13T13:59:00Z --source-server mypgserver-20170401
+az postgres server restore --resource-group myresourcegroup --name mydemoserver-restored --restore-point-in-time 2017-04-13T13:59:00Z --source-server mydemoserver
 ```
 
-A `az postgres server restore` parancsot kell a következő paraméterekkel:
+Az `az postgres server restore` parancshoz a következő paraméterekre van szükség:
 | Beállítás | Ajánlott érték | Leírás  |
 | --- | --- | --- |
-| --Erőforráscsoport |  myResourceGroup |  Az erőforráscsoport, amelyben a forráskiszolgálón található.  |
-| --neve | mypgserver visszaállítása | A restore parancs által létrehozott új kiszolgáló neve. |
-| visszaállítás--időpontban | 2017-04-13T13:59:00Z | Válassza ki a-időpontban való visszaállításához. A dátum és idő a forráskiszolgáló biztonsági mentés megőrzési időn belül kell lennie. Használjon ISO8601 dátum és idő formátumban. Például használhatja a saját helyi időzóna, például a `2017-04-13T05:59:00-08:00`, vagy használjon UTC Zulu formátum `2017-04-13T13:59:00Z`. |
-| --forrás-kiszolgáló | mypgserver-20170401 | Név vagy azonosító a forráskiszolgáló visszaállítása. |
+| resource-group |  myResourceGroup |  Az erőforráscsoport, amelyben a forráskiszolgáló található.  |
+| név | mydemoserver-restored | A visszaállítási paranccsal létrehozott új kiszolgáló neve. |
+| restore-point-in-time | 2017-04-13T13:59:00Z | Válassza ki az időpontot, amelynek az állapotát vissza szeretné állítani. Ennek a dátumnak és időnek a forráskiszolgáló biztonsági mentésének megőrzési időszakán belül kell lennie. ISO8601 dátum- és időformátumot használjon. Használhatja például a saját helyi időzónáját (például `2017-04-13T05:59:00-08:00`), de UTC Zulu formátumot is használhat (`2017-04-13T13:59:00Z`). |
+| source-server | mydemoserver | A forráskiszolgáló neve vagy azonosítója, amelyről a visszaállítást végzi. |
 
-Egy kiszolgáló visszaállítása a-időpontban hoz létre egy új kiszolgálót, az eredeti kiszolgálóként frissítésétől a pont átmásolja a megadott idő. A hely és a visszaállított kiszolgáló értékeinek árképzési szint ugyanazok, mint a forráskiszolgálón.
+Ha egy adott időpontra állít vissza egy kiszolgálót, azzal létrehoz egy újat, amely az eredeti kiszolgáló adott időpontra jellemző állapotának másolata. A visszaállított kiszolgáló hely- és tarifacsomag-értékei ugyanazok, mint a forráskiszolgálón.
 
-A parancs szinkron, és a kiszolgáló helyreállítása után fog visszaadni. Miután a visszaállítás befejezését, keresse meg a létrehozott új kiszolgálót. Ellenőrizze, hogy az adatok helyreállt a várt módon.
+Egy szinkron parancsról van szó, amelyet a rendszer a kiszolgáló visszaállítása után visszaad. Ha a visszaállítás kész, keresse meg a létrehozott új kiszolgálót. Ellenőrizze, hogy az adatok a várt módon álltak-e vissza.
 
 
-## <a name="next-steps"></a>Következő lépések
-Ebben az oktatóanyagban megtanulta, hogyan használható az Azure parancssori felület (parancssori felület) és egyéb segédprogramok:
+## <a name="next-steps"></a>További lépések
+Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket az Azure CLI (parancssori felület) és más segédprogramok használatával:
 > [!div class="checklist"]
 > * Azure-adatbázis létrehozása PostgreSQL-kiszolgálóhoz
-> * A kiszolgáló tűzfal konfigurálása
-> * Használjon [ **psql** ](https://www.postgresql.org/docs/9.6/static/app-psql.html) segédprogramot az adatbázis létrehozása
+> * A kiszolgáló tűzfalának konfigurálása
+> * Adatbázis létrehozása a [**psql**](https://www.postgresql.org/docs/9.6/static/app-psql.html) segédprogrammal
 > * Mintaadatok betöltése
 > * Adatok lekérdezése
 > * Adatok frissítése
 > * Adatok visszaállítása
 
-A következő megtudhatja, hogyan használhatja az Azure-portálon hasonló feladatokat hajthatnak végre, tekintse át az oktatóanyag: [az első Azure-adatbázis kialakítása a PostgreSQL az Azure portál használatával](tutorial-design-database-using-azure-portal.md)
+Ha azt is meg szeretné tudni, hogyan végezhet el hasonló feladatokat az Azure Portallal, tekintse át a következő oktatóanyagot: [Az első Azure Database for PostgreSQL megtervezése az Azure Portallal](tutorial-design-database-using-azure-portal.md)

@@ -1,6 +1,6 @@
 ---
 title: ".NET Service Fabric-alkalmazás létrehozása az Azure-ban | Microsoft Docs"
-description: "Az Azure platformon futó .NET-alkalmazás létrehozása a Service Fabric gyors üzembe helyezési mintájával."
+description: "Ez a rövid útmutató azt ismerteti, hogyan lehet .NET-alkalmazást létrehozni az Azure-ban a Service Fabric Reliable Services mintaalkalmazásának használatával."
 services: service-fabric
 documentationcenter: .net
 author: mikkelhegn
@@ -15,13 +15,13 @@ ms.workload: NA
 ms.date: 01/25/2018
 ms.author: mikhegn
 ms.custom: mvc, devcenter
-ms.openlocfilehash: ff9860ee2313c20b4a30e1b4410327e03e6dfcc6
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: ea0d32674aa770b5f25b0b62eb69007f3fd6bf5c
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 02/24/2018
 ---
-# <a name="create-a-net-service-fabric-application-in-azure"></a>.NET Service Fabric-alkalmazás létrehozása az Azure-ban
+# <a name="quickstart-create-a-net-service-fabric-application-in-azure"></a>Rövid útmutató: .NET Service Fabric-alkalmazás létrehozása az Azure-ban
 Az Azure Service Fabric egy elosztott rendszerplatform, amely skálázható és megbízható mikroszolgáltatások és tárolók üzembe helyezésére és kezelésére szolgál. 
 
 Ez a rövid útmutató bemutatja, hogyan helyezheti üzembe első .NET-alkalmazását a Service Fabricben. Az útmutató elvégzése után rendelkezni fog egy ASP.NET Core webes kezelőfelületes szavazóalkalmazással, amely egy, a fürtben található állapotalapú háttérszolgáltatásba menti a szavazati adatokat.

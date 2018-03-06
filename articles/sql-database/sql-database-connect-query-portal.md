@@ -17,11 +17,11 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 01/10/2018
 ms.author: ayolubek
-ms.openlocfilehash: 131a1f77fa9c8d8e7b9ac5b01dee655b1aa1c3df
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.openlocfilehash: aa4df1854b15198ede1ee143afeff47b24dc567f
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="azure-portal-use-the-sql-query-editor-to-connect-and-query-data"></a>Azure Portal: Csatlakozás és az adatok lekérdezése az SQL-lekérdezésszerkesztő használatával
 
@@ -33,18 +33,19 @@ Ez a rövid útmutató az alábbi rövid útmutatókban létrehozott erőforrás
 
 [!INCLUDE [prerequisites-create-db](../../includes/sql-database-connect-query-prerequisites-create-db-includes.md)]
 
+> [!NOTE]
+> Győződjön meg arról, hogy az SQL Server tűzfalbeállításaiban az „Azure-szolgáltatásokhoz való hozzáférés engedélyezése” beállítás „BE” értékre van állítva. Ez a beállítás hozzáférést biztosít az SQL-lekérdezésszerkesztőnek az adatbázisokhoz és az adattárházakhoz.
+
 ## <a name="log-in-to-the-azure-portal"></a>Bejelentkezés az Azure Portalra
 
 Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
 
 ## <a name="connect-using-sql-authentication"></a>Csatlakozás SQL-hitelesítés használatával
-> [!NOTE]
-> Győződjön meg arról, hogy az SQL Server tűzfalbeállításaiban az „Azure-szolgáltatásokhoz való hozzáférés engedélyezése” beállítás „BE” értékre van állítva. Ez a beállítás hozzáférést biztosít az SQL-lekérdezésszerkesztőnek az adatbázisokhoz és az adattárházakhoz.
 
 1. Kattintson az **SQL-adatbázisok** elemre a bal oldali menüben, majd kattintson a lekérdezni kívánt adatbázisra.
 
-2. Az adatbázishoz tartozó SQL Database oldalon keresse meg az **Adatkezelő (előzetes verzió)** elemet a bal oldali menüben, és kattintson rá.
+2. Az adatbázishoz tartozó SQL Database oldalon keresse meg a **Lekérdezésszerkesztő (előzetes verzió)** elemet a bal oldali menüben, és kattintson rá.
 
     ![lekérdezésszerkesztő keresése](./media/sql-database-connect-query-portal/find-query-editor.PNG)
 

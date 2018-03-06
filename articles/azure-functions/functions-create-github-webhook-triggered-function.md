@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 05/31/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: cdfb5db7b304a18d6945328abc0ca7ebf2f9ec6a
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 98632c3276e7d9cccf29d05b903c2fac62a7d68e
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="create-a-function-triggered-by-a-github-webhook"></a>GitHub-webhookok által meghívott függvények létrehozása
 
@@ -67,7 +67,7 @@ A következő lépésben egy webhookot hoz létre a GitHub-tárban.
 
 ## <a name="configure-the-webhook"></a>A webhook konfigurálása
 
-1. A GitHubban lépjen a tulajdonában álló adattárra. Használhat bármely elágaztatott adattárat is. Ha elágazásra van szüksége egy tárház esetében, tekintse át a következőt: <https://github.com/Azure-Samples/functions-quickstart>.
+1. A GitHubban lépjen a tulajdonában álló adattárra. Használhat bármely elágaztatott adattárat is. Ha egy tárház esetében elágazásra van szüksége, használja a következőt: <https://github.com/Azure-Samples/functions-quickstart>.
 
 1. Kattintson a **Settings** (Beállítások), majd a **Webhooks** (Webhookok) és végül az **Add webhook** (Webhook hozzáadása) elemre.
 
@@ -80,8 +80,8 @@ A következő lépésben egy webhookot hoz létre a GitHub-tárban.
 | Beállítás | Ajánlott érték | Leírás |
 |---|---|---|
 | **Hasznos adat URL-címe** | Másolt érték | Használja a **</> Függvény URL-címének lekérése** által visszaadott értéket. |
-| **Titkos kód**   | Másolt érték | Használja a **</> GitHub-titok lekérése** által visszaadott értéket. |
 | **Tartalom típusa** | application/json | A függvény JSON hasznos adatot vár. |
+| **Titkos kód**   | Másolt érték | Használja a **</> GitHub-titok lekérése** által visszaadott értéket. |
 | Eseményindítók | Én szeretném kiválasztani az egyes eseményeket | Csak a problémákra vonatkozó megjegyzésekhez szeretnénk eseményindítókat használni.  |
 | | Probléma megjegyzése |  |
 
@@ -105,9 +105,9 @@ Most a webhook arra van beállítva, hogy elindítsa a függvényt egy új, prob
 
 [!INCLUDE [Next steps note](../../includes/functions-quickstart-cleanup.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Létrehozott egy függvényt, amely akkor fut, amikor kérelem érkezik egy GitHub-webhookból.
+Létrehozott egy függvényt, amely akkor aktiválódik, amikor kérelem érkezik egy GitHub-webhookból.
 
 [!INCLUDE [Next steps note](../../includes/functions-quickstart-next-steps.md)]
 

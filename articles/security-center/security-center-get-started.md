@@ -1,6 +1,6 @@
 ---
-title: "Az Azure Security Center gyors üzembe helyezés – előkészítéséről a Security Center Standard Azure-előfizetése |} Microsoft Docs"
-description: "A gyors üzembe helyezés jeleníti meg a Security Center Standard tarifacsomag további biztonsági frissítése."
+title: "Azure Security Center rövid útmutató – Azure-előfizetés felvétele a Security Center Standard verziójába | Microsoft Docs"
+description: "Ez a rövid útmutató bemutatja, hogyan frissíthet a Security Center Standard tarifacsomagjára a biztonság további erősítése érdekében."
 services: security-center
 documentationcenter: na
 author: TerryLanfear
@@ -9,107 +9,108 @@ editor:
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e
 ms.service: security-center
 ms.devlang: na
-ms.topic: article
+ms.topic: quickstart
+ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/07/2018
+ms.date: 02/22/2018
 ms.author: terrylan
-ms.openlocfilehash: ac4e3b36b08223f7e3b54850ed53a8185e85f0d2
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
-ms.translationtype: MT
+ms.openlocfilehash: 0004db332ec13e23ed49f2c19e3454a516ca6a40
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 02/23/2018
 ---
-# <a name="quickstart-onboard-your-azure-subscription-to-security-center-standard"></a>Gyors üzembe helyezés: Bevezetni az Azure Security Center szokásos-előfizetéshez
-A hibrid felhő-munkaterhelések egységes felügyeleti és a fenyegetések védelmet lehetővé teszi az Azure Security Center. Az ingyenes csomagot az Azure-erőforrások csak korlátozott biztonságot nyújt, amíg a Standard csomagot ezeket a képességeket a helyszíni és a többi felhőből terjeszti ki. A Security Center Standard segítségével megkeresheti és javítsa ki a biztonsági rések, hozzáférési és alkalmazás-szabályozási blokkolja a rosszindulatú tevékenységhez, elemzés és az eszközintelligencia segítségével fenyegetések észlelése és, gyorsan képesek reagálni támadás alatt. Próbálja meg biztonsági központ szabványos ingyenesen az első 60 nap.
+# <a name="quickstart-onboard-your-azure-subscription-to-security-center-standard"></a>Rövid útmutató: Azure-előfizetés felvétele a Security Center Standard verziójába
+Az Azure Security Center egységes biztonsági felügyeletet és fenyegetésvédelmet biztosít a hibrid felhőalapú számítási feladatokhoz. Míg az Ingyenes szint korlátozott biztonságot nyújt, és azt is csak az Azure-erőforrások számára, a Standard szint kiterjeszti ezeket a képességeket a helyszíni és egyéb felhőkre. A Security Center segítségével megtalálhatja és kijavíthatja a biztonsági réseket, hozzáférés- és alkalmazásvezérlőket alkalmazhat a kártékony tevékenységek blokkolásához, észlelheti a fenyegetéseket az analitika és az intelligencia használatával, valamint gyorsan reagálhat, ha a rendszer támadás alatt áll. Az első 60 napban díjmentesen próbálhatja ki a Security Center Standard verzióját.
 
-Ebben a cikkben, váltson Standard csomagra a nagyobb biztonság, és a Microsoft Monitoring Agent telepítését a virtuális gépek biztonsági réseket és a fenyegetések figyelésére.
+Ebben a cikkben frissíteni fog a Standard szintre a további biztonság érdekében, és telepíteni fogja a Microsoft Monitoring Agentet a virtuális gépekre a biztonsági rések és fenyegetések monitorozásához.
 
 ## <a name="prerequisites"></a>Előfeltételek
 A Security Center használatához Microsoft Azure-előfizetéssel kell rendelkeznie. Ha nem rendelkezik előfizetéssel, regisztrálhat egy [ingyenes fiókkal](https://azure.microsoft.com/pricing/free-trial/).
 
-Az előfizetés váltson Standard csomagra, akkor hozzá kell rendelni a szerepkört az előfizetés tulajdonosa, előfizetés közreműködő vagy biztonsági rendszergazdával.
+A Standard szintre való frissítéshez Előfizetés tulajdonosa, Előfizetés közreműködője vagy Biztonsági rendszergazda hozzárendelt szerepkörrel kell rendelkeznie.
 
-## <a name="enable-your-azure-subscription"></a>Az Azure-előfizetés engedélyezése
+## <a name="enable-your-azure-subscription"></a>Azure-előfizetés engedélyezése
 
 1. Jelentkezzen be az [Azure Portalra](https://azure.microsoft.com/features/azure-portal/).
-2. A **Microsoft Azure** menüben válassza a **Security Center** elemet. **A Security Center – áttekintés** nyílik meg.
+2. A **Microsoft Azure** menüben válassza a **Security Center** elemet. Megnyílik a **Security Center – Áttekintés** képernyő.
 
- ![A Security Center áttekintése][2]
+ ![Security Center – Áttekintés][2]
 
-**A Security Center – áttekintés** azokat a biztonsági állapotát a hibrid felhő-munkaterhelések, amely lehetővé teszi felderítése és a munkaterhelések biztonsági értékeléséhez és azonosítása és a kockázatnak a mérséklése egyesített nézetét jeleníti meg. A Security Center automatikusan lehetővé teszi, hogy az Azure-előfizetések valamelyikét, vagy az ingyenes csomagot egy másik előfizetés felhasználó nem volt korábban előkészítve.
+A **Security Center – Áttekintés** egységes képet ad a hibrid felhőbeli számítási feladatok biztonsági rendszeréről, lehetővé téve a számítási feladatok biztonsági állapotának felderítését és felmérését, valamint a kockázatok észlelését és csökkentését. A Security Center automatikusan engedélyezi az Ingyenes szintet bármely olyan Azure-előfizetés számára, amelyet Ön vagy egy másik előfizetés-felhasználó korábban még nem vett fel.
 
-Megtekintheti és lehetőségre kattintva megjelenítheti az előfizetések listáját az **előfizetések** menüpont. A Security Center most elkezdi értékeli ezeket az előfizetéseket a biztonsági rések azonosítása biztonságát. Az értékelések típusú testreszabásához módosíthatja a biztonsági házirend. A biztonsági szabályzat határozza meg a számítási feladatokhoz tartozó kívánt konfigurációkat, és segít biztosítani a vállalati vagy hatósági követelményeknek való megfelelést.
+Az **Előfizetések** menüpontra kattintva megtekintheti és szűrheti az előfizetések listáját. A Security Center most fel fogja mérni az előfizetések biztonsági állapotát a biztonsági rések azonosításához. A felmérések típusainak testre szabásához módosíthatja a biztonsági szabályzatot. A biztonsági szabályzat határozza meg a számítási feladatokhoz tartozó kívánt konfigurációkat, és segít biztosítani a vállalati vagy hatósági követelményeknek való megfelelést.
 
-A Security Center elindításához először percen belül jelenhetnek meg:
+A Security Center első indítása után néhány percen belül a következők jelenhetnek meg:
 
-- **Javaslatok** biztonságosabbá teheti az Azure-előfizetések módjai a. Kattintson a **javaslatok** csempe elindítja a prioritási sorrend listájáról.
-- Leltár **számítási**, **hálózati**, **adatok & tárterület**, és **alkalmazások** által most értékelési erőforrások A Security Center mellett minden egyes biztonsági állapotát.
+- **Javaslatok** az Azure-előfizetések biztonságának javítására. Ha a **Javaslatok** csempére kattint, elindít egy rangsorolt listát.
+- A Security rendszer által éppen felmért **Számítás**, **Hálózat**, **Tárolás és adatok**, és **Alkalmazások** erőforrások leltára, valamint ezek biztonsági állapota.
 
-A Security Center teljes körű kihasználása érdekében szüksége, váltson Standard csomagra, és a Microsoft Monitoring Agent telepítése az alábbi lépések végrehajtásához.
+A Security Center képességeinek teljes körű kihasználása érdekében végre kell hajtania az alábbi lépéseket a Standard szintre való frissítéshez és a Microsoft Monitoring Agent telepítéséhez.
 
-## <a name="upgrade-to-the-standard-tier"></a>Váltson Standard csomagra
-A Security Center quickstarts és oktatóanyagok frissítenie kell a Standard csomagra. Az első hatvan szabad, és visszatérhet a ingyenes szint bármikor.
+## <a name="upgrade-to-the-standard-tier"></a>Frissítés a Standard szintre
+A Security Center rövid útmutatóinak és oktatóanyagainak elvégzéséhez frissítenie kell a Standard szintre. Az első 60 nap ingyenes, és bármikor visszatérhet az Ingyenes szintre.
 
-1. Az a Security Center fő menüben válassza a **speciális biztonsági bevezetési**.
+1. A Security Center főmenüjében válassza a **Speciális biztonsági megoldás előkészítése** elemet.
 
-2. A **speciális biztonsági bevezetési**, a Security Center előfizetések és a jogosult a bevezetési munkaterületek sorolja fel. Válassza ki az előfizetést a listából.
+2. A **Speciális biztonsági megoldás előkészítése** területen a Security Center kilistázza a felvételre jogosult előfizetéseket és munkaterületeket. Válasszon ki egy előfizetést a listából.
 
   ![Előfizetés kiválasztása][4]
 
-3. **Biztonsági házirend** információt nyújt az erőforráscsoportok az előfizetés szerepel. **Árképzési** is megnyílik.
-4. A **árazás**, jelölje be **szabványos** verzióra való frissítés szabad szabvány, majd kattintson **mentése**.
+3. A **Biztonsági szabályzat** információt nyújt az előfizetésben található erőforráscsoportokról. A **Díjszabás** is megnyílik.
+4. A **Díjszabás** területen válassza ki a **Standard** elemet az Ingyenesről a Standard szintre való frissítéshez, majd kattintson a **Mentés** gombra.
 
   ![Standard kiválasztása][5]
 
-Most már végzett korábban is Standard csomagra, hogy további Security Center szolgáltatások, beleértve a **adaptív alkalmazás vezérlők**, **csak a virtuális gép elérhető**, **biztonsági riasztások**, **eszközintelligencia fenyegetés**, **automation playbooks**, stb. Vegye figyelembe, hogy a biztonsági riasztások csak akkor jelenik meg, amikor a Security Center észleli a rosszindulatú tevékenységhez.
+Most, hogy frissített a Standard szintre, elérheti a Security Center további funkcióit, köztük az **adaptív alkalmazásvezérlőket**, az **igény szerinti virtuálisgép-hozzáférést**, a **biztonsági riasztásokat**, a **fenyegetésfelderítést**, az **automatizálási forgatókönyveket**, és egyéb funkciókat. Vegye figyelembe, hogy a biztonsági riasztások csak akkor jelennek meg, ha a Security Center kártékony tevékenységet észlel.
 
   ![Biztonsági riasztások][7]
 
-## <a name="automate-data-collection"></a>Adatgyűjtés automatizálásához
-A Security Center adatokat gyűjti össze az Azure virtuális gépek és -Azure számítógépek biztonsági réseket és a fenyegetések figyelésére. Adatgyűjtés használata a Microsoft Monitoring Agent, különböző biztonsági konfigurációkat és Eseménynapló beolvassa a számítógépről, és másolja az adatokat a munkaterületre elemzés céljából. Alapértelmezés szerint a Security Center új munkaterület hozza létre.
+## <a name="automate-data-collection"></a>Adatgyűjtés automatizálása
+A Security Center adatokat gyűjt az Azure-beli virtuális gépekről és a nem Azure-beli számítógépekről a biztonsági rések és fenyegetések megfigyeléséhez. Az adatgyűjtés a Microsoft Monitoring Agent segítségével történik, amely a biztonsághoz kapcsolódó különböző konfigurációkat és eseménynaplókat olvas be a gépről, és elemzés céljából átmásolja az adatokat az Ön munkaterületére. Alapértelmezés szerint a Security Center létre fog hozni egy új munkaterületet.
 
-Ha automatikus kiépítés engedélyezve van, a Security Center telepíti a Microsoft Monitoring Agent minden támogatott Azure virtuális gépek és a létrehozott újakat. Automatikus kiépítés erősen ajánlott.
+Ha az automatikus kiépítés engedélyezve van, a Security Center telepíti a Microsoft Monitoring Agentet az összes támogatott Azure-beli és újonnan létrehozott virtuális gépen. Az automatikus kiépítés használata erősen ajánlott.
 
-Az a Microsoft Monitoring Agent automatikus kiépítés engedélyezéséhez:
+A Microsoft Monitoring Agent automatikus kiépítésének engedélyezése:
 
-1. Az a Security Center fő menüben válassza a **biztonsági házirend**.
+1. A Security Center főmenüjében válassza a **Biztonsági szabályzat** elemet.
 2. Válassza ki az előfizetést.
-3. A **biztonsági házirend**, jelölje be **adatgyűjtés**.
-4. A **adatgyűjtés**, jelölje be **a** az Automatikus kiépítés engedélyezéséhez.
+3. A **Biztonsági szabályzat** területen válassza az **Adatgyűjtés** elemet.
+4. Az **Adatgyűjtés** területen válassza a **Be** lehetőséget az automatikus kiépítés engedélyezéséhez.
 5. Kattintson a **Mentés** gombra.
 
   ![Automatikus kiépítés engedélyezése][6]
 
-Az új betekintést nyerhet az Azure virtuális gépeken a Security Center biztosíthat rendszer kapcsolatos további javaslatok állapota, az operációs rendszer biztonsági beállításokkal, az endpoint protection frissítése, valamint további biztonsági riasztásokat.
+Az Azure-beli virtuális gépekbe való új betekintésnek köszönhetően a Security Center további javaslatokkal láthatja el Önt a rendszerfrissítés állapotával, az operációs rendszer biztonsági konfigurációival és a végpontvédelemmel kapcsolatban, illetve további biztonsági riasztásokat is létrehozhat.
 
   ![Javaslatok][8]
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-Más quickstarts és a gyűjtemény-kra vonatkozó a gyors üzembe helyezés épül. Ha azt tervezi, a későbbi quickstarts és oktatóanyagok munka folytatásához, továbbra is fut, a Standard csomagot, és tartsa be az Automatikus kiépítés engedélyezve van. Ha nem tervezi a folytatáshoz, vagy visszatérhet az ingyenes csomagot szeretne:
+A gyűjtemény részét képező többi rövid útmutató és oktatóanyag erre a rövid útmutatóra épül. Ha azt tervezi, hogy az ezt követő rövid útmutatókkal és oktatóanyagokkal dolgozik tovább, továbbra is a Standard szintet futtassa, és hagyja engedélyezve az automatikus kiépítést. Ha nem folytatja a munkát, vagy vissza szeretne térni az Ingyenes szintre:
 
-1. Térjen vissza a Security Center főmenübe, és válassza ki **biztonsági házirend**.
-2. Válassza ki az előfizetés vagy való visszatéréshez szabad beállítani kívánt szabályzatot. **Biztonsági házirend** nyílik meg.
-3. A **csoportházirend-összetevők**, jelölje be **tarifacsomag**.
-4. Válassza ki **szabad** módosítása a Standard szint az ingyenes csomagba.
+1. Térjen vissza a Security Center főmenüjébe, és válassza a **Biztonsági szabályzat** elemet.
+2. Válassza ki az előfizetést vagy a szabályzatot, amelyet vissza szeretne állítani Ingyenes állapotba. Megnyílik a **Biztonsági szabályzat** képernyő.
+3. A **SZABÁLYZAT ÖSSZETEVŐI** alatt válassza a **Tarifacsomag** lehetőséget.
+4. Válassza az **Ingyenes** lehetőséget az előfizetés Standard szintről Ingyenes szintre való módosításához.
 5. Kattintson a **Mentés** gombra.
 
-Ha szeretne automatikus kiépítés letiltása:
+Ha le szeretné tiltani az automatikus kiépítést:
 
-1. Térjen vissza a Security Center főmenübe, és válassza ki **biztonsági házirend**.
-2. Válassza ki az előfizetést, amelyet meg kíván automatikus kiépítés letiltása.
-3. A **biztonsági szabályzat – adatgyűjtés**, jelölje be **ki** alatt **bevezetési** automatikus kiépítés letiltása.
+1. Térjen vissza a Security Center főmenüjébe, és válassza a **Biztonsági szabályzat** elemet.
+2. Válassza ki azt az előfizetést, amelynél le szeretné tiltani az automatikus kiépítést.
+3. Az automatikus kiépítés letiltásához a **Biztonsági szabályzat – Adatgyűjtés** területen válassza a **Ki** lehetőséget az **Előkészítés** elemnél.
 4. Kattintson a **Mentés** gombra.
 
 >[!NOTE]
-> Automatikus kiépítés letiltása nem a Microsoft Monitoring Agent eltávolítása Azure virtuális gépeken, ha az ügynök van kiépítve. Az automatikus létesítési korlátok biztonsági megfigyelés letiltása az erőforrások.
+> Az automatikus kiépítés letiltása nem távolítja el a Microsoft Monitoring Agentet azon Azure-beli virtuális gépekről, ahol az ügynök üzembe lett helyezve. Az automatikus kiépítés letiltása korlátozza az erőforrások biztonsági monitorozását.
 >
 
 ## <a name="next-steps"></a>További lépések
-A gyors üzembe helyezés Standard csomagra frissíteni, és között a hibrid felhő-munkaterhelések egységes biztonsági kezelése és a veszélyforrások elleni védelem a Microsoft Monitoring Agent kiépítve. Ha többet szeretne megtudni a Security Center használata, továbbra is a gyors üzembe helyezés bevezetési Windows rendszerű számítógépek, amelyek a helyszíni és a többi felhőből.
+Ebben a rövid útmutatóban frissített a Standard szintre, és kiépítette a Microsoft Monitoring Agentet, hogy biztosítsa az egységes biztonsági felügyeletet és fenyegetésvédelmet a hibrid felhőalapú számítási feladatokon. Ha többet szeretne megtudni a Security Center használatáról, folytassa a helyszínen és egyéb felhőszolgáltatásokban található Windows rendszerű számítógépek felvételével foglalkozó oktatóanyaggal.
 
 > [!div class="nextstepaction"]
-> [Gyors üzembe helyezés: Beépített Windows-számítógépek számára az Azure Security Center](quick-onboard-windows-computer.md)
+> [Rövid útmutató: Windows rendszerű számítógépek felvétele az Azure Security Centerbe](quick-onboard-windows-computer.md)
 
 <!--Image references-->
 [2]: ./media/security-center-get-started/overview.png

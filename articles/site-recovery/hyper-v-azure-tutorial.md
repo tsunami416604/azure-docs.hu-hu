@@ -8,11 +8,11 @@ ms.topic: tutorial
 ms.date: 02/14/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: b946964c162f47a283c37c6eae7e7152e27b6033
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: e7ddb3046b0725b3afcea2ed6a533388a89cf306
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Vészhelyreállítás beállítása a helyszíni Hyper-V virtuális gépekhez az Azure-ba
 
@@ -36,7 +36,7 @@ Mielőtt elkezdené, érdemes [áttekinteni az architektúrát](concepts-hyper-v
 ## <a name="select-a-replication-goal"></a>Replikációs cél kiválasztása
 
 
-1. A **Minden szolgáltatás** > **Helyreállítási tárak** menüben kattintson az előző oktatóanyagban előkészített tár nevére (**ContosoVMVault**).
+1. A **Minden szolgáltatás** > **Recovery Services-tárolók** menüben válassza ki az előző oktatóanyagban előkészített tár nevét (**ContosoVMVault**).
 2. Az **Első lépések** területen kattintson a **Site Recovery** elemre. Ezt követően kattintson **Az infrastruktúra előkészítése** elemre.
 3. A **Védelmi cél** > **Hol találhatók a gépek?** területen válassza a **Helyszíni** lehetőséget.
 4. A **Hová szeretné replikálni a gépeket?** területen válassza **Az Azure-ba** lehetőséget.
@@ -46,13 +46,13 @@ Mielőtt elkezdené, érdemes [áttekinteni az architektúrát](concepts-hyper-v
 
 ## <a name="set-up-the-source-environment"></a>A forráskörnyezet beállítása
 
-A forráskörnyezet beállításához a Hyper-V gazdagépeket hozzá kell adnia egy Hyper-V helyhez. Ehhez töltse le és telepítse az Azure Site Recovery szolgáltatót és az Azure Recovery Services ügynököt, végül regisztrálja a Hyper-V helyet a tárolóban. 
+A forráskörnyezet beállításához adja hozzá a Hyper-V gazdagépeket egy Hyper-V helyhez, töltse le és telepítse az Azure Site Recovery szolgáltatót és az Azure Recovery Services ügynököt, végül regisztrálja a Hyper-V helyet a tárolóban. 
 
 1. **Az infrastruktúra előkészítése** területen kattintson a **Forrás** lehetőségre.
 2. Kattintson a **+Hyper-V hely** elemre, majd adja meg az előző oktatóanyagban létrehozott hely nevét (**ContosoHyperVSite**).
 3. Kattintson a **+Hyper-V Server** elemre.
 4. Töltse le a szolgáltató telepítőfájlját.
-5. Töltse le a tároló regisztrációs kulcsát. Erre szüksége lesz a szolgáltató telepítésének futtatásakor. A kulcs a generálásától számított öt napig érvényes.
+5. Töltse le a tároló regisztrációs kulcsát. Erre a kulcsra szüksége lesz a szolgáltató telepítésének futtatásakor. A kulcs a generálásától számított öt napig érvényes.
 
     ![Szolgáltató letöltése](./media/hyper-v-azure-tutorial/download.png)
     
@@ -68,7 +68,7 @@ Futtassa a szolgáltató telepítőfájlját (AzureSiteRecoveryProvider.exe) min
 5. A **Proxybeállítások** területen válassza a **Közvetlen csatlakozás az Azure Site Recoveryhez proxykiszolgáló nélkül** lehetőséget.
 6. A **Regisztráció** területen, miután regisztrálta a kiszolgálót a tárolóban, kattintson a **Befejezés** lehetőségre.
 
-Az Azure Site Recovery lekéri a metaadatokat a Hyper-V kiszolgálóról, és a kiszolgáló megjelenik a **Site Recovery-infrastruktúra** > **Hyper-V gazdagépek** listában. Ez akár 30 percet is igénybe vehet.
+Az Azure Site Recovery lekéri a metaadatokat a Hyper-V kiszolgálóról, és a kiszolgáló megjelenik a **Site Recovery-infrastruktúra** > **Hyper-V gazdagépek** listában. Ez a folyamat akár 30 percet is igénybe vehet.
 
 
 ## <a name="set-up-the-target-environment"></a>A célkörnyezet beállítása
@@ -83,6 +83,9 @@ A Site Recovery ellenőrzi, hogy rendelkezik-e legalább egy kompatibilis Azure-
 
 
 ## <a name="set-up-a-replication-policy"></a>Replikációs szabályzat beállítása
+
+> [!NOTE]
+> A Hyper-V és az Azure közötti replikációs szabályzat esetében a 15 perces másolási gyakorisági beállítás helyét az 5 perces és a 30 másodperces gyakorisági beállítás vette át. A 15 perces másolási gyakorisággal dolgozó replikációs szabályzatok automatikusan frissülni fognak az 5 perces másolási gyakorisági beállításra. Az 5 perces és 30 másodperces másolási gyakorisági beállítások a 15 perces másolási gyakorisághoz képest jobb replikációs teljesítményt és helyreállításipont-célkitűzéseket biztosítanak, miközben a sávszélesség használatára és az adatátvitel mennyiségére gyakorolt hatásuk elenyésző.
 
 1. Kattintson **Az infrastruktúra előkészítése** > **Replikációs beállítások** > **+Létrehozás és társítás** lehetőségre.
 2. A **Szabályzat létrehozása és társítása** területen adja meg a szabályzat nevét (**ContosoReplicationPolicy**).

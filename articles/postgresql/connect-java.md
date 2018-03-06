@@ -1,21 +1,21 @@
 ---
-title: "Csatlakozás a PostgreSQL-hez készült Azure Database-hez a Java használatával | Microsoft Docs"
+title: "Csatlakozás az Azure Database for PostgreSQL-hez a Java használatával"
 description: "Az alábbi rövid útmutatóban egy olyan Java-kódminta található, amely a PostgreSQL-hez készült Azure Database csatlakoztatására és adatlekérdezésre használható."
 services: postgresql
-author: jasonwhowell
-ms.author: jasonh
-manager: jhubbard
+author: rachel-msft
+ms.author: raagyema
+manager: kfile
 editor: jasonwhowell
 ms.service: postgresql
 ms.custom: mvc
 ms.devlang: java
 ms.topic: quickstart
-ms.date: 11/03/2017
-ms.openlocfilehash: 0d763d30633e9d808501620c7247ed73567d3f62
-ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
+ms.date: 02/28/2018
+ms.openlocfilehash: 5c55adec1471b28880f7a24a736cf25df2c8bd3f
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="azure-database-for-postgresql-use-java-to-connect-and-query-data"></a>A PostgreSQL-hez készült Azure Database: csatlakozás és adatlekérdezés a Java használatával
 Ebben a rövid útmutatóban azt szemléltetjük, hogy miként lehet Java-alkalmazás használatával csatlakozni a PostgreSQL-hez készült Azure Database-hez. Azt is bemutatja, hogyan lehet SQL-utasítások használatával adatokat lekérdezni, beszúrni, frissíteni és törölni az adatbázisban. A jelen cikkben ismertetett lépések feltételezik, hogy Ön rendelkezik fejlesztési tapasztalatokkal a Java használatával kapcsolatban, az Azure Database for PostgreSQL használatában pedig még járatlan.
@@ -33,11 +33,10 @@ Emellett a következőket kell elvégezni:
 Kérje le a PostgreSQL-hez készült Azure-adatbázishoz való csatlakozáshoz szükséges kapcsolatadatokat. Szüksége lesz a teljes kiszolgálónévre és a bejelentkezési hitelesítő adatokra.
 
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
-2. Az Azure Portal bal oldali menüjében kattintson az **Összes erőforrás** lehetőségre, és keressen rá a létrehozott kiszolgálóra (például **mypgserver-20170401**).
-3. Kattintson a **mypgserver-20170401** kiszolgálónévre.
-4. Válassza ki a kiszolgáló **Áttekintés** oldalát. Jegyezze fel a **Kiszolgálónevet** és a **Kiszolgáló-rendszergazdai bejelentkezési nevet**.
- ![PostgreSQL-hez készült Azure-adatbázis – Kiszolgáló-rendszergazdai bejelentkezés](./media/connect-java/1-connection-string.png)
-5. Amennyiben elfelejtette a kiszolgáló bejelentkezési adatait, lépjen az **Overview** (Áttekintés) oldalra, és itt megtudhatja a kiszolgáló rendszergazdájának bejelentkezési nevét, valamint szükség esetén visszaállíthatja a jelszót.
+2. Az Azure Portal bal oldali menüjében kattintson a **Minden erőforrás** lehetőségre, és keressen rá a létrehozott kiszolgálóra (például **mydemoserver**).
+3. Kattintson a kiszolgálónévre.
+4. A kiszolgáló **Áttekintés** paneléről jegyezze fel a **Kiszolgálónevet** és a **Kiszolgáló-rendszergazdai bejelentkezési nevet**. Ha elfelejti a jelszavát, ezen a panelen új jelszót is tud kérni.
+ ![Azure Database for PostgreSQL-kiszolgáló neve](./media/connect-java/1-connection-string.png)
 
 ## <a name="connect-create-table-and-insert-data"></a>Csatlakozás, táblák létrehozása és adatok beszúrása
 Az alábbi kóddal csatlakozhat és töltheti be adatokat az adatbázisba a függvény és egy **INSERT** SQL-utasítás segítségével. A [getConnection()](https://www.postgresql.org/docs/7.4/static/jdbc-use.html), a [createStatement()](https://jdbc.postgresql.org/documentation/head/query.html) és az [executeQuery()](https://jdbc.postgresql.org/documentation/head/query.html) metódus az adatbázishoz való csatlakozásra, illetve a tábla eltávolítására és létrehozására szolgál. A [prepareStatement](https://jdbc.postgresql.org/documentation/head/query.html) objektummal hozhatja létre a beszúrási parancsokat, valamint a setString() és a setInt() metódusokkal végezheti el a paraméterértékek kötését. Az [executeUpdate()](https://jdbc.postgresql.org/documentation/head/update.html) metódussal futtathatja az egyes paraméterkészletekhez tartozó parancsot. 
@@ -54,9 +53,9 @@ public class CreateTableInsertRows {
     {
 
         // Initialize connection variables.
-        String host = "mypgserver-20170401.postgres.database.azure.com";
+        String host = "mydemoserver.postgres.database.azure.com";
         String database = "mypgsqldb";
-        String user = "mylogin@mypgserver-20170401";
+        String user = "mylogin@mydemoserver";
         String password = "<server_admin_password>";
 
         // check that the driver is installed
@@ -154,9 +153,9 @@ public class ReadTable {
     {
 
         // Initialize connection variables.
-        String host = "mypgserver-20170401.postgres.database.azure.com";
+        String host = "mydemoserver.postgres.database.azure.com";
         String database = "mypgsqldb";
-        String user = "mylogin@mypgserver-20170401";
+        String user = "mylogin@mydemoserver";
         String password = "<server_admin_password>";
 
         // check that the driver is installed
@@ -240,9 +239,9 @@ public class UpdateTable {
     {
 
         // Initialize connection variables.
-        String host = "mypgserver-20170401.postgres.database.azure.com";
+        String host = "mydemoserver.postgres.database.azure.com";
         String database = "mypgsqldb";
-        String user = "mylogin@mypgserver-20170401";
+        String user = "mylogin@mydemoserver";
         String password = "<server_admin_password>";
 
         // check that the driver is installed
@@ -320,9 +319,9 @@ public class DeleteTable {
     {
 
         // Initialize connection variables.
-        String host = "mypgserver-20170401.postgres.database.azure.com";
+        String host = "mydemoserver.postgres.database.azure.com";
         String database = "mypgsqldb";
-        String user = "mylogin@mypgserver-20170401";
+        String user = "mylogin@mydemoserver";
         String password = "<server_admin_password>";
 
         // check that the driver is installed
@@ -386,6 +385,6 @@ public class DeleteTable {
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 > [!div class="nextstepaction"]
 > [Adatbázis migrálása exportálással és importálással](./howto-migrate-using-export-and-import.md)

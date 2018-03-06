@@ -1,6 +1,6 @@
 ---
-title: "Az Azure Security Center gyors üzembe helyezés – előkészítéséről a Windows rendszerű számítógépek a Security Center |} Microsoft Docs"
-description: "A gyors üzembe helyezés bemutatja, hogyan lehet kiépíteni a Windows rendszerű számítógépeken a Microsoft Monitoring Agent."
+title: "Azure Security Center rövid útmutató – Windows rendszerű számítógépek felvétele a Security Centerbe | Microsoft Docs"
+description: "Ez a rövid útmutató bemutatja, hogyan telepítheti a Microsoft Monitoring Agent szolgáltatást egy Windows rendszerű számítógépre."
 services: security-center
 documentationcenter: na
 author: TerryLanfear
@@ -9,96 +9,97 @@ editor:
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e
 ms.service: security-center
 ms.devlang: na
-ms.topic: article
+ms.topic: quickstart
+ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/07/2018
+ms.date: 02/22/2018
 ms.author: terrylan
-ms.openlocfilehash: 50cbbca9181d67bc41632a4650c76b9636a72356
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
-ms.translationtype: MT
+ms.openlocfilehash: 8d9b0fcc8b72f947cbc64c6ac9a428ac29f8dfd2
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 02/24/2018
 ---
-# <a name="quickstart-onboard-windows-computers-to-azure-security-center"></a>Gyors üzembe helyezés: Beépített Windows-számítógépek számára az Azure Security Center
-Miután bevezetésében Azure-előfizetését, engedélyezheti a Security Center vonatkozóan Azure,-on kívüli erőforrásaihoz, például a helyszíni vagy a többi felhőből, úgy a Microsoft Monitoring Agent.
+# <a name="quickstart-onboard-windows-computers-to-azure-security-center"></a>Rövid útmutató: Windows rendszerű számítógépek felvétele az Azure Security Centerbe
+Az Azure-előfizetései felvétele után a Microsoft Monitoring Agent kiépítésével engedélyezheti a Security Centert az Azure-on kívül, például a helyszínen vagy más felhőkben futó erőforrások számára.
 
-A gyors üzembe helyezés jeleníti meg a Microsoft Monitoring Agent telepítése Windows rendszerű számítógépeken.
+Ez a rövid útmutató bemutatja, hogyan telepítheti a Microsoft Monitoring Agent szolgáltatást egy Windows rendszerű számítógépre.
 
 ## <a name="prerequisites"></a>Előfeltételek
 A Security Center használatához Microsoft Azure-előfizetéssel kell rendelkeznie. Ha nem rendelkezik előfizetéssel, regisztrálhat egy [ingyenes fiókkal](https://azure.microsoft.com/pricing/free-trial/).
 
-A gyors üzembe helyezés megkezdése előtt kell a Security Center Standard tarifacsomagot. Lásd: [Onboard a Security Center Standard Azure-előfizetése](security-center-get-started.md) frissítésével kapcsolatos utasításokért. A Security Center Standard ingyenesen megpróbálhatja az első 60 nap.
+A rövid útmutató megkezdése előtt rendelkeznie kell a Security Center Standard tarifacsomagjával. A frissítési utasításokért lásd az [Azure-előfizetés a Security Center Standard verziójába történő felvételét](security-center-get-started.md) ismertető szakaszt. Az első 60 napban díjmentesen próbálhatja ki a Security Center Standard verzióját.
 
-## <a name="add-new-windows-computer"></a>Új Windows-számítógép hozzáadása
+## <a name="add-new-windows-computer"></a>Új, Windows rendszerű számítógép hozzáadása
 
 1. Jelentkezzen be az [Azure Portalra](https://azure.microsoft.com/features/azure-portal/).
-2. A **Microsoft Azure** menüben válassza a **Security Center** elemet. **A Security Center – áttekintés** nyílik meg.
+2. A **Microsoft Azure** menüben válassza a **Security Center** elemet. Megnyílik a **Security Center – Áttekintés** képernyő.
 
- ![A Security Center áttekintése][2]
+ ![Security Center – Áttekintés][2]
 
-3. Az a Security Center fő menüben válassza a **speciális biztonsági bevezetési**.
-4. Válassza ki **kívánt-Azure számítógépek hozzáadása**.
+3. A Security Center főmenüjében válassza a **Speciális biztonsági megoldás előkészítése** elemet.
+4. Válassza a **Nem Azure-beli számítógépek hozzáadása** lehetőséget.
 
-   ![Érheti el a speciális biztonsági][3]
+   ![Speciális biztonsági megoldás előkészítése][3]
 
-5. A **adja hozzá az új-Azure számítógépek**, a Naplóelemzési munkaterület listája látható. A listán, ha alkalmazható, alapértelmezett munkaterület létrehozásakor meg a Security Center által automatikus kiépítés engedélyezése. Válassza ki a munkaterület vagy egy másik munkaterület szeretné használni.
+5. Az **Új nem Azure-beli számítógépek hozzáadása** megjeleníti a Log Analytics-munkaterületek listáját. Ha van ilyen, a lista tartalmazza azt az alapértelmezett munkaterületet is, amelyet a Security Center hozott létre, amikor az automatikus kiépítés engedélyezve volt. Válassza ki ezt a munkaterületet, vagy egy másik használni kívánt munkaterületet.
 
-    ![-Azure számítógép hozzáadása][4]
+    ![Nem Azure-beli számítógép hozzáadása][4]
 
-  A **közvetlen ügynök** panel nyílik meg a Windows-ügynökök letöltési hivatkozása, és a kulcsok az használható az ügynök konfigurálásáról a munkaterület azonosítója.
+  A megnyíló **Direct Agent** panel egy hivatkozást tartalmaz az ügynök konfigurálásához szükséges munkaterület-azonosító Windows-ügynökének és kulcsának letöltéséhez.
 
-6.  Válassza ki a **Windows-ügynök letöltése** a számítógép processzor típusa a telepítőfájl letöltéséhez vonatkozó hivatkozás.
+6.  Válassza ki a számítógép processzortípusának megfelelő **Windows-ügynök letöltése** hivatkozást a telepítési fájl letöltéséhez.
 
-7.  Jobb oldalán **munkaterület azonosítója**, válassza a Másolás ikonra, és illessze be az azonosítója a Jegyzettömbbe.
+7.  Kattintson a **Munkaterület-azonosító** jobb oldalán található Másolás ikonra, és illessze be az azonosítót a Jegyzettömbbe.
 
-8.  Jobb oldalán **elsődleges kulcs**, válassza a Másolás ikonra, és illessze be a kulcsot a Jegyzettömbbe.
+8.  Kattintson az **Elsődleges kulcs** jobb oldalán található Másolás ikonra, és illessze be az azonosítót a Jegyzettömbbe.
 
 ## <a name="install-the-agent"></a>Az ügynök telepítése
-Most telepíteni kell a letöltött fájl a célszámítógépen.
+Most telepíteni kell a letöltött fájlt a célszámítógépre.
 
-1. Másolja a fájlt a cél számítógépen, és futtassa a telepítőt.
-2. Az a **üdvözlő** lapon jelölje be **következő**.
-3. Az a **licencfeltételeket** lapon olvassa el a licencfeltételeket, és válassza ki **elfogadom**.
-4. Az a **célmappa** lapon, módosítása vagy a megadott alapértelmezett telepítési mappát, és válassza **következő**.
-5. Az a **ügynök telepítésének beállításai** lapon, válassza ki a csatlakoztassa az ügynököt az Azure Naplóelemzés (OMS), majd válassza **következő**.
-6. Az a **Azure Naplóelemzés** lapon, és beillesztheti a **munkaterület azonosítója** és **Munkaterületkulcsot (elsődleges kulcs)** , amely az előző eljárásban másolja a Jegyzettömbbe.
-7. Ha a számítógép a Naplóelemzési munkaterület Azure Government felhőben kell jelentsenek, válassza ki a **Azure Amerikai Egyesült államokbeli kormányzati** űrlap a **Azure felhőbe** legördülő listából.  Ha a számítógép a Log Analytics szolgáltatás proxykiszolgálón keresztül kommunikálnak, akkor jelölje be **speciális** és URL-címét, és a proxykiszolgáló portszámát.
-8. Válassza ki **következő** biztosítása a konfigurációs beállításokat befejezése után.
+1. Másolja a fájlt a célszámítógépre, és futtassa a telepítőt.
+2. Az **Üdvözöljük** lapon kattintson a **Tovább** gombra.
+3. A **Licencfeltételek** oldalon olvassa el és fogadja el a licencet, majd kattintson az **Elfogadom** gombra.
+4. A **Célmappa** lapon fogadja el az alapértelmezett telepítési mappát, vagy adjon meg egy másikat, majd kattintson a **Tovább** gombra.
+5. **Az ügynök telepítésének beállításai** lapon csatlakoztassa az ügynököt az Azure Log Analyticshez (OMS), majd kattintson a **Tovább** gombra.
+6. Az **Azure Log Analytics** lapon illessze be az előző folyamat során a Jegyzettömbbe másolt **Munkaterület-azonosítót** és a **Munkaterületkulcsot (Elsődleges kulcs)**.
+7. Ha a gépnek egy Azure Government-felhőbeli Log Analytics-munkaterületnek kell jelentenie, válassza az **Azure US Government** lehetőséget az **Azure Cloud** legördülő listából.  Ha a számítógépnek egy proxykiszolgálón keresztül kell kommunikálnia a Log Analytics szolgáltatással, kattintson a **Speciális** gombra, majd adja meg a proxykiszolgáló URL-címét és portszámát.
+8. A szükséges konfigurációs beállítások megadása után kattintson a **Tovább** gombra.
 
   ![Az ügynök telepítése][5]
 
-9. Az a **telepítésre kész** lapon ellenőrizze a kiválasztott beállításokat, és válassza ki **telepítése**.
-10. Az a **konfigurálása sikeresen befejeződött** lapon jelölje be **Befejezés**
+9. A **Telepítésre kész** oldalon ellenőrizze a beállításokat, majd kattintson a **Telepítés** elemre.
+10. **A konfigurálás sikeresen befejeződött** lapon kattintson a **Befejezés** gombra.
 
-Ennek végeztével a **Microsoft Monitoring Agent** megjelenik a **Vezérlőpulton**. Tekintse át a hiba a konfiguráció, és ellenőrizze, hogy az ügynök csatlakozik.
+Ennek végeztével a **Microsoft Monitoring Agent** megjelenik a **Vezérlőpulton**. Áttekintheti a konfigurációt, és ellenőrizheti, hogy az ügynök megfelelően csatlakozik-e.
 
-A telepítése és konfigurálása az ügynök további információkért lásd: [csatlakozás Windows rendszerű számítógépek](../log-analytics/log-analytics-agent-windows.md#install-the-agent-using-setup).
+Az ügynök telepítésével és konfigurálásával kapcsolatos további információkat tekintse meg a [Windows rendszerű számítógépek csatlakoztatását](../log-analytics/log-analytics-agent-windows.md#install-the-agent-using-setup-wizard) ismertető részt.
 
-Most figyelheti a Azure virtuális gépek és az-Azure számítógépek egy helyen. A **számítási**, a virtuális gépek és a számítógépek, valamint javaslatokat áttekintését rendelkezik. Minden oszlop egy javaslatok jelöl. A szín jelöli a virtuális gép vagy a számítógép aktuális biztonsági állapotával kapcsolatos, amelyekre érvényes. A Security Center is Felfed, bármely észlelések ezeken a számítógépeken, a biztonsági riasztásokat.
+Mostantól egy helyről felügyelheti az Azure-beli virtuális gépeket és a nem Azure-beli számítógépeket. A **Számítás** területen áttekintheti az összes virtuális gépet, számítógépet és javaslatot. Minden oszlop egy javaslatcsoportot képvisel. A szín a virtuális gép vagy számítógép aktuális biztonsági állapotát jelöli az adott javaslatra vonatkozóan. A Security Center emellett a biztonsági riasztásokban megjeleníti a számítógépekhez tartozó észleléseket is.
 
-  ![Számítási panel][6]
+  ![Számítás panel][6]
 
-Ikonok képviselt két típusa van a **számítási** panel:
+A **Számítás** panelen kétféle ikon található:
 
-![icon1](./media/quick-onboard-windows-computer/security-center-monitoring-icon1.png) A nem Azure-számítógép
+![icon1](./media/quick-onboard-windows-computer/security-center-monitoring-icon1.png) Nem Azure-beli számítógép
 
 ![icon2](./media/quick-onboard-windows-computer/security-center-monitoring-icon2.png) Azure VM
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-Ha már nincs szükség, akkor eltávolíthatja az ügynök a Windows-számítógépen.
+Ha már nincs rá szükség, eltávolíthatja az ügynököt a Windows rendszerű számítógépről.
 
-Az ügynök eltávolításához:
+Az ügynök eltávolítása:
 
 1. Nyissa meg **Vezérlőpultot**.
 2. Nyissa meg a **Programok és szolgáltatások** részt.
 3. A **Programok és szolgáltatások** alatt válassza ki a **Microsoft Monitoring Agent** elemet, és kattintson az **Eltávolítás** parancsra.
 
 ## <a name="next-steps"></a>További lépések
-A gyors üzembe helyezés, a Windows rendszerű számítógépeken a Microsoft Monitoring Agent kiépítve. További információt a Security Center használata, továbbra is az oktatóanyag egy biztonsági házirend konfigurálása és az erőforrások biztonsági értékeléséhez.
+Ez a rövid útmutatóban kiépítette a Microsoft Monitoring Agent szolgáltatást egy Windows rendszerű számítógépen. Ha többet szeretne megtudni a Security Center használatáról, tekintse meg a biztonsági szabályzat konfigurálásával és az erőforrások biztonságának felmérésével foglalkozó oktatóanyagot is.
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: Határozza meg, és felmérheti a biztonsági házirendek](tutorial-security-policy.md)
+> [Oktatóanyag: Biztonsági szabályzatok meghatározása és értékelése](tutorial-security-policy.md)
 
 <!--Image references-->
 [2]: ./media/quick-onboard-windows-computer/overview.png

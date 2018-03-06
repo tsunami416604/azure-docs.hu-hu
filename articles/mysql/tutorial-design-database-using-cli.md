@@ -1,21 +1,21 @@
 ---
-title: "Az első Azure Database for MySQL-adatbázis megtervezése – Azure CLI | Microsoft Docs"
+title: "Az első Azure Database for MySQL-adatbázis megtervezése – Azure CLI"
 description: "Ez az oktatóanyag azt ismerteti, hogyan hozható létre és kezelhető az Azure Database for MySQL-kiszolgáló és -adatbázis az Azure CLI 2.0 a parancssorból történő használatával."
 services: mysql
-author: v-chenyh
-ms.author: v-chenyh
-manager: jhubbard
+author: ajlam
+ms.author: andrela
+manager: kfile
 editor: jasonwhowell
 ms.service: mysql-database
 ms.devlang: azure-cli
 ms.topic: tutorial
-ms.date: 11/28/2017
+ms.date: 02/28/2018
 ms.custom: mvc
-ms.openlocfilehash: 5f323086ce66a504188c1834d20873a52a990311
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 779e6b48a20dd49967a189293ed37b07bc5e1cda
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="design-your-first-azure-database-for-mysql-database"></a>Az első Azure Database for MySQL-adatbázis megtervezése
 
@@ -44,20 +44,27 @@ az account set --subscription 00000000-0000-0000-0000-000000000000
 ## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 Hozzon létre egy [Azure-erőforráscsoportot](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) az [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) paranccsal. Az erőforráscsoport olyan logikai tároló, amelyben a rendszer üzembe helyezi és csoportként kezeli az Azure-erőforrásokat.
 
-A következő példában létrehozunk egy `westus` nevű erőforráscsoportot a `mycliresource` helyen.
+A következő példában létrehozunk egy `westus` nevű erőforráscsoportot a `myresourcegroup` helyen.
 
 ```azurecli-interactive
-az group create --name mycliresource --location westus
+az group create --name myresourcegroup --location westus
 ```
-
+## <a name="add-the-extension"></a>A bővítmény hozzáadása
+A következő paranccsal adhatja hozzá a frissített Azure Database for MySQL felügyeleti bővítményt:
+```azurecli-interactive
+az extension add --name rdbms
+``` 
 ## <a name="create-an-azure-database-for-mysql-server"></a>Azure-adatbázis létrehozása MySQL-kiszolgálóhoz
 Hozzon létre egy Azure Database for MySQL-kiszolgálót az az mysql server create paranccsal. Egy kiszolgáló több adatbázist is tud kezelni. Általában külön adatbázissal rendelkezik minden projekt vagy felhasználó.
 
-A következő példában létrehozunk egy `mycliserver` nevű Azure-adatbázist MySQL-kiszolgálóhoz a `mycliresource` erőforráscsoportban a `westus`-ben. A kiszolgáló rendelkezik egy `myadmin` nevű rendszergazdai fiókkal, amelyhez a jelszó `Password01!`. A kiszolgáló **Alapszintű** teljesítményszinttel van létrehozva, valamint **50** számítási egység van megosztva a kiszolgálón lévő összes adatbázis között. Az alkalmazás szükségleteitől függően csökkentheti vagy növelheti a számítási egységeket és a tárterületet.
+A következő példában létrehozunk egy `mydemoserver` nevű Azure-adatbázist MySQL-kiszolgálóhoz a `myresourcegroup` erőforráscsoportban a `westus`-ben. A kiszolgáló egy `myadmin` nevű rendszergazdai bejelentkezéssel rendelkezik. Ez egy általános célú 4. generációs kiszolgáló 2 virtuális maggal. A `<server_admin_password>` helyére írja be saját értékét.
 
 ```azurecli-interactive
-az mysql server create --resource-group mycliresource --name mycliserver --location westus --admin-user myadmin --admin-password Password01! --performance-tier Basic --compute-units 50
+az mysql server create --resource-group myresourcegroup --name mydemoserver --location westus --admin-user myadmin --admin-password <server_admin_password> --sku-name GP_Gen4_2 --version 5.7
 ```
+> [!IMPORTANT]
+> A kiszolgáló itt megadott rendszergazdai bejelentkezési nevét és jelszavát kell majd használnia a rövid útmutató későbbi szakaszaiban a kiszolgálóra és az adatbázisaira való bejelentkezéshez. Jegyezze meg vagy jegyezze fel ezt az információt későbbi használatra.
+
 
 ## <a name="configure-firewall-rule"></a>Tűzfalszabály konfigurálása
 Hozzon létre egy Azure Database for MySQL-kiszolgálószintű tűzfalszabályt az az mysql server firewall-rule create paranccsal. A kiszolgálószintű tűzfalszabályok olyan külső alkalmazások használatát teszik lehetővé, mint a **mysql** parancssori eszköz vagy a MySQL Workbench, amelyekkel kapcsolódhat a kiszolgálóhoz az Azure-beli MySQL-szolgáltatás tűzfalán keresztül. 
@@ -65,14 +72,14 @@ Hozzon létre egy Azure Database for MySQL-kiszolgálószintű tűzfalszabályt 
 A következő példában létrehozunk egy tűzfalszabályt egy előre meghatározott címtartományhoz. Ebben a példában ez az IP-címek teljes lehetséges tartományát lefedi.
 
 ```azurecli-interactive
-az mysql server firewall-rule create --resource-group mycliresource --server mycliserver --name AllowYourIP --start-ip-address 0.0.0.0 --end-ip-address 255.255.255.255
+az mysql server firewall-rule create --resource-group myresourcegroup --server mydemoserver --name AllowAllIPs --start-ip-address 0.0.0.0 --end-ip-address 255.255.255.255
 ```
 
 ## <a name="get-the-connection-information"></a>Kapcsolatadatok lekérése
 
 A kiszolgálóhoz való kapcsolódáshoz meg kell adnia a gazdagép adatait és a hozzáférési hitelesítő adatokat.
 ```azurecli-interactive
-az mysql server show --resource-group mycliresource --name mycliserver
+az mysql server show --resource-group myresourcegroup --name mydemoserver
 ```
 
 Az eredmény JSON formátumban van. Jegyezze fel a következőket: **fullyQualifiedDomainName** és **administratorLogin**.
@@ -80,30 +87,35 @@ Az eredmény JSON formátumban van. Jegyezze fel a következőket: **fullyQualif
 {
   "administratorLogin": "myadmin",
   "administratorLoginPassword": null,
-  "fullyQualifiedDomainName": "mycliserver.database.windows.net",
-  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mycliresource/providers/Microsoft.DBforMySQL/servers/mycliserver",
+  "fullyQualifiedDomainName": "mydemoserver.mysql.database.azure.com",
+  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegroup/providers/Microsoft.DBforMySQL/servers/mydemoserver",
   "location": "westus",
-  "name": "mycliserver",
-  "resourceGroup": "mycliresource",
-  "sku": {
-    "capacity": 50,
-    "family": null,
-    "name": "MYSQLS2M50",
+  "name": "mydemoserver",
+  "resourceGroup": "myresourcegroup",
+ "sku": {
+    "capacity": 2,
+    "family": "Gen4",
+    "name": "GP_Gen4_2",
     "size": null,
-    "tier": "Basic"
+    "tier": "GeneralPurpose"
   },
-  "storageMb": 2048,
+  "sslEnforcement": "Enabled",
+  "storageProfile": {
+    "backupRetentionDays": 7,
+    "geoRedundantBackup": "Disabled",
+    "storageMb": 5120
+  },
   "tags": null,
   "type": "Microsoft.DBforMySQL/servers",
   "userVisibleState": "Ready",
-  "version": null
+  "version": "5.7"
 }
 ```
 
 ## <a name="connect-to-the-server-using-mysql"></a>Csatlakozás a kiszolgálóhoz a mysql használatával
 A [mysql parancssori eszköz](https://dev.mysql.com/doc/refman/5.6/en/mysql.html) használatával építsen ki egy kapcsolatot az Azure Database for MySQL-kiszolgálóhoz. Példánkban a parancs a következő:
 ```cmd
-mysql -h mycliserver.database.windows.net -u myadmin@mycliserver -p
+mysql -h mydemoserver.database.windows.net -u myadmin@mydemoserver -p
 ```
 
 ## <a name="create-a-blank-database"></a>Hozzon létre egy üres adatbázist
@@ -118,7 +130,7 @@ mysql> USE mysampledb;
 ```
 
 ## <a name="create-tables-in-the-database"></a>Táblák létrehozása az adatbázisban
-Most, hogy tudja, hogyan csatlakozhat az Azure Database for MySQL-adatbázishoz, végezzünk el néhány alapvető feladatot:
+Most, hogy megtanulta, hogyan csatlakozhat az Azure Database for MySQL-adatbázishoz, végezzünk el néhány alapvető feladatot.
 
 Először hozzunk létre egy táblát, és töltsük fel adatokkal. Hozzunk létre egy táblát leltáradatok tárolásához.
 ```sql
@@ -165,15 +177,25 @@ A visszaállításhoz a rendszer a következő információk megadását kéri:
 - Hely: Nem választhatja ki a régiót – alapértelmezés szerint ugyanaz lesz, mint a forráskiszolgálóé.
 
 ```azurecli-interactive
-az mysql server restore --resource-group mycliresource --name mycliserver-restored --restore-point-in-time "2017-05-4 03:10" --source-server-name mycliserver
+az mysql server restore --resource-group myresourcegroup --name mydemoserver-restored --restore-point-in-time "2017-05-4 03:10" --source-server-name mydemoserver
 ```
 
-A kiszolgáló visszaállítása és [visszaállítása egy, a tábla törlését megelőző időpontra](./howto-restore-server-portal.md). A kiszolgáló egy másik időpontra való visszaállítása létrehozza a kiszolgáló a megadott időpontra vonatkozó duplikált új másolatát, amennyiben az adott pont a [szolgáltatásszint](./concepts-service-tiers.md) adatmegőrzési időszakán belül esik.
+Az `az mysql server restore` parancshoz a következő paraméterekre van szükség:
+| Beállítás | Ajánlott érték | Leírás  |
+| --- | --- | --- |
+| resource-group |  myResourceGroup |  Az erőforráscsoport, amelyben a forráskiszolgáló található.  |
+| név | mydemoserver-restored | A visszaállítási paranccsal létrehozott új kiszolgáló neve. |
+| restore-point-in-time | 2017-04-13T13:59:00Z | Válassza ki az időpontot, amelynek az állapotát vissza szeretné állítani. Ennek a dátumnak és időnek a forráskiszolgáló biztonsági mentésének megőrzési időszakán belül kell lennie. ISO8601 dátum- és időformátumot használjon. Használhatja például a saját helyi időzónáját (például `2017-04-13T05:59:00-08:00`), de UTC Zulu formátumot is használhat (`2017-04-13T13:59:00Z`). |
+| source-server | mydemoserver | A forráskiszolgáló neve vagy azonosítója, amelyről a visszaállítást végzi. |
+
+Ha egy adott időpontra állít vissza egy kiszolgálót, azzal létrehoz egy újat, amely az eredeti kiszolgáló adott időpontra jellemző állapotának másolata. A visszaállított kiszolgáló hely- és tarifacsomag-értékei ugyanazok, mint a forráskiszolgálón.
+
+Egy szinkron parancsról van szó, amelyet a rendszer a kiszolgáló visszaállítása után visszaad. Ha a visszaállítás kész, keresse meg a létrehozott új kiszolgálót. Ellenőrizze, hogy az adatok a várt módon álltak-e vissza.
 
 ## <a name="next-steps"></a>További lépések
 Ez az oktatóanyag a következőket mutatta be:
 > [!div class="checklist"]
-> * Azure Database for MySQL létrehozása
+> * Azure-adatbázis létrehozása MySQL-kiszolgálóhoz
 > * A kiszolgáló tűzfalának konfigurálása
 > * Adatbázis létrehozása a [mysql parancssori eszközzel](https://dev.mysql.com/doc/refman/5.6/en/mysql.html)
 > * Mintaadatok betöltése

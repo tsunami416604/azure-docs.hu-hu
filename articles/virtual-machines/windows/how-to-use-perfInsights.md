@@ -15,10 +15,10 @@ ms.topic: troubleshooting
 ms.date: 11/03/2017
 ms.author: genli
 ms.openlocfilehash: f15875610e2035c6f4c10c36e19c02f3e045b3ea
-ms.sourcegitcommit: 3fca41d1c978d4b9165666bb2a9a1fe2a13aabb6
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 03/06/2018
 ---
 # <a name="how-to-use-perfinsights"></a>PerfInsights használata 
 
@@ -57,7 +57,7 @@ Ez a passzív gyűjteménye, amely nem befolyásolja a rendszer.
 >[!Note]
 >Ebben a forgatókönyvben az alábbi esetek mindegyikében automatikusan tartalmazza.
 
-### <a name="benchmarking"></a>Teljesítménymérésre
+### <a name="benchmarking"></a>Benchmarking
 
 Ez a forgatókönyv futtatása a [Diskspd](https://github.com/Microsoft/diskspd) teljesítményteszt (iops-érték és MB/s) a virtuális géphez csatolt összes merevlemezén. 
 
@@ -89,15 +89,15 @@ Ebben a forgatókönyvben egy különleges teljesítmény számláló rögzíté
 | Késés      | Kérelemfeldolgozás mp/adatok         |
 |              | Átlagos olvasási idő                 |
 |              | Átlagos mp/írás                |
-| IO-méret      | Átlagos Bájtok/kérelem       |
-|              | Átlagos Bájtos, Olvasás               |
-|              | Átlagos Bájt írása              |
+| IO-méret      | Avg. Bájtok/kérelem       |
+|              | Avg. Bájtos, Olvasás               |
+|              | Avg. Bájt írása              |
 | Teljesítmény   | Adatok bájtok/s                |
 |              | Olvasott bájt/mp                |
 |              | Írási bájtok/s               |
-| Várólista hossza | Átlagos Olvasási várólistájának hossza        |
-|              | Átlagos Írni a várólista hossza       |
-|              | Átlagos Várólista hossza        |
+| Várólista hossza | Avg. Olvasási várólistájának hossza        |
+|              | Avg. Írni a várólista hossza       |
+|              | Avg. Várólista hossza        |
 
 ### <a name="custom-slow-vm-analysis"></a>Egyéni lassú VM elemzés 
 
@@ -113,12 +113,12 @@ Windows virtuális gép, lemezt vagy tárolási készletek konfigurációt, telj
 
 |Összegyűjtött adatok                              |  |  | Teljesítmény-forgatókönyvek |  |  | |
 |----------------------------------|----------------------------|------------------------------------|--------------------------|--------------------------------|----------------------|----------------------|
-|                              | Alapszintű konfigurációs gyűjtése | Teljesítménymérésre | Lassú VM elemzés | Lassú VM elemzés és teljesítménymérésre | Az Azure fájlok elemzés | Egyéni lassú VM elemzés |
+|                              | Alapszintű konfigurációs gyűjtése | Benchmarking | Lassú VM elemzés | Lassú VM elemzés és teljesítménymérésre | Az Azure fájlok elemzés | Egyéni lassú VM elemzés |
 | Eseménynapló információk      | Igen                        | Igen                                | Igen                      | Igen                            | Igen                  | Igen                  |
 | Rendszerinformáció               | Igen                        | Igen                                | Igen                      | Igen                            | Igen                  | Igen                  |
 | Kötet térkép                       | Igen                        | Igen                                | Igen                      | Igen                            | Igen                  | Igen                  |
 | Lemez térkép                         | Igen                        | Igen                                | Igen                      | Igen                            | Igen                  | Igen                  |
-| Az éppen futó feladatok                    | Igen                        | Igen                                | Igen                      | Igen                            | Igen                  | Igen                  |
+| Futó tevékenységek                    | Igen                        | Igen                                | Igen                      | Igen                            | Igen                  | Igen                  |
 | Tárolási megbízhatóság számlálók     | Igen                        | Igen                                | Igen                      | Igen                            | Igen                  | Igen                  |
 | Szolgáltatás adatai              | Igen                        | Igen                                | Igen                      | Igen                            | Igen                  | Igen                  |
 | Fsutil kimeneti                    | Igen                        | Igen                                | Igen                      | Igen                            | Igen                  | Igen                  |
@@ -126,7 +126,7 @@ Windows virtuális gép, lemezt vagy tárolási készletek konfigurációt, telj
 | Netstat kimeneti                   | Igen                        | Igen                                | Igen                      | Igen                            | Igen                  | Igen                  |
 | Hálózati konfiguráció            | Igen                        | Igen                                | Igen                      | Igen                            | Igen                  | Igen                  |
 | Tűzfal-konfiguráció           | Igen                        | Igen                                | Igen                      | Igen                            | Igen                  | Igen                  |
-| SQL Server-konfigurációs         | Igen                        | Igen                                | Igen                      | Igen                            | Igen                  | Igen                  |
+| SQL Server configuration         | Igen                        | Igen                                | Igen                      | Igen                            | Igen                  | Igen                  |
 | Teljesítmény diagnosztikai nyomkövetési * | Igen                        | Igen                                | Igen                      |                                | Igen                  | Igen                  |
 | Teljesítmény-számláló nyomkövetési **     |                            |                                    |                          |                                |                      | Igen                  |
 | SMB-számláló nyomkövetési **             |                            |                                    |                          |                                | Igen                  |                      |
@@ -134,7 +134,7 @@ Windows virtuális gép, lemezt vagy tárolási készletek konfigurációt, telj
 | Nyomkövetési a következő helyen                      |                            |                                    |                          |                                |                      | Igen                  |
 | StorPort-nyomkövetési                   |                            |                                    |                          |                                |                      | Igen                  |
 | Hálózati nyomkövetés futtatása                    |                            |                                    |                          |                                | Igen                  | Igen                  |
-| A Diskspd teljesítményteszt nyomkövetési ***      |                            | Igen                                |                          | Igen                            |                      |                      |
+| A Diskspd teljesítményteszt nyomkövetési x      |                            | Igen                                |                          | Igen                            |                      |                      |
 |       |                            |                         |                                                   |                      |                      |
 
 ### <a name="performance-diagnostics-trace-"></a>Teljesítmény-diagnosztikai nyomkövetési (*)
@@ -160,7 +160,7 @@ Gyűjti a következő teljesítményszámlálókkal:
 #### <a name="for-sql-server-instances"></a>SQL Server-példányok
 - \SQL server: pufferkezelőnek, \SQLServer:Resource készlet statisztikák és \SQLServer:SQL Statistics\
 - \SQLServer:Locks, \SQLServer:General, statisztikák
-- \SQLServer:Access módszerek
+- \SQLServer:Access Methods
 
 #### <a name="for-azure-files"></a>Az Azure-fájlok
 \SMB Ügyfélmegosztások
@@ -222,7 +222,7 @@ A parancsfájl futtatásához a PerfInsights kövesse az alábbi lépéseket:
 
     ![Képernyőkép az értesítés és a hozzájárulásukat adják párbeszédpanel](media/how-to-use-perfInsights/disclaimer.png)
 
-5.  Küldje el a nagybetűk, amelyet, amennyiben az rendelkezésre áll, a parancsfájl futtatásakor. Válassza ki **OK**.
+5.  Küldje el a nagybetűk, amelyet, amennyiben az rendelkezésre áll, a parancsfájl futtatásakor. Ezután kattintson az **OK** gombra.
     
     ![Támogatási azonosító párbeszédpanel képernyőképe](media/how-to-use-perfInsights/enter-support-number.png)
 
@@ -307,7 +307,7 @@ A kötet perspektíva (kötet térkép) a táblázatok minden logikai mennyiség
 
 ![Képernyőkép a kötet lap](media/how-to-use-perfInsights/volumetab.png)
 
-### <a name="sql-tab"></a>SQL lap
+### <a name="sql-tab"></a>SQL tab
 
 Ha a cél virtuális gép bármely SQL Server-példányokat futtatja, megjelenik egy lap a nevű jelentésben **SQL**:
 
@@ -328,15 +328,15 @@ A **diagnosztikai** lapon információt tartalmaz felső CPU, a lemez és a mem�
 
 ## <a name="references-to-the-external-tools-used"></a>A külső eszközök használt mutató hivatkozások
 
-### <a name="diskspd"></a>A Diskspd
+### <a name="diskspd"></a>Diskspd
 
 A Diskspd egy olyan tárolási terhelés generator és teljesítmény vizsgálati eszköz a Microsoft. További információkért lásd: [Diskspd](https://github.com/Microsoft/diskspd).
 
-### <a name="xperf"></a>Következő helyen
+### <a name="xperf"></a>Xperf
 
 Következő helyen rögzíthesse a nyomkövetési adatokat a Windows Performance Toolkit a parancssori eszköz. További információkért lásd: [Windows Performance Toolkit – a következő helyen](https://blogs.msdn.microsoft.com/ntdebugging/2008/04/03/windows-performance-toolkit-xperf/).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Feltöltheti diagnosztikai naplók és jelentések a Microsoft Support további ellenőrzésre. Támogatási kérheti, hogy a kimenet a felderítését és elhárítását segítő PerfInsights által generált továbbítja.
 
