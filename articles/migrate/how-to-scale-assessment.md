@@ -6,11 +6,11 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 01/08/2018
 ms.author: raynew
-ms.openlocfilehash: ab66bc9c90950070e69c2486bf09b7664b1c9ad2
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 9d9ebef66be269c63a62d393eda76254946b13e7
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="discover-and-assess-a-large-vmware-environment"></a>Nagy méretű VMware-környezet felderítése és értékelése
 
@@ -47,7 +47,7 @@ Tervezze meg a felderítések és a vizsgálatok során a következő korlátoz�
 Az azonos Azure áttelepítése gyűjtő segítségével egy vagy több projektek több felderítések tegye. Ezeket a tervezési szempontokat vegye figyelembe:
  
 - A felderítés az Azure áttelepítése gyűjtő úgy teheti meg, amikor a felderítési hatókör is beállíthatja a vCenter Server mappa, a datacenter, a fürt vagy a gazdagép.
-- Ehhez az egynél több felderítési, ellenőrizze a vCenter-kiszolgáló által a virtuális gépek felderíteni kívánt mappák, az adatközpontok, a fürtök vagy a gazdagépekhez, amelyek támogatják a korlátozás 1000 gépek.
+- Ehhez az egynél több felderítési, ellenőrizze a vCenter-kiszolgáló által a virtuális gépek felderíteni kívánt mappák, az adatközpontok, a fürtök vagy a gazdagépekhez, amelyek támogatják a korlátozás 1500 gépek.
 - Azt javasoljuk, értékelési célokra, akkor ne gépek egymástól függő szolgáltatásainak ugyanabban a projektben és értékelési belül. A vCenter Server ellenőrizze, hogy a függő gépek ugyanazon a mappa, datacenter vagy fürt értékeléséhez.
 
 
@@ -85,6 +85,14 @@ Ellenőrizze, hogy a petesejtek fájlt biztonságos telepítése előtt:
 
    Gyakorlati példa: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
 3. Győződjön meg arról, hogy a létrehozott kivonatoló megegyezik-e a következő beállításokat.
+
+    1.0.9.5 petesejtek verziójához
+
+    **Algoritmus** | **Kivonat értéke**
+    --- | ---
+    MD5 | fb11ca234ed1f779a61fbb8439d82969
+    SHA1 | 5bee071a6334b6a46226ec417f0d2c494709a42e
+    SHA256 | b92ad637e7f522c1d7385b009e7d20904b7b9c28d6f1592e8a14d88fbdd3241c  
 
     1.0.9.2 petesejtek verziójához
 

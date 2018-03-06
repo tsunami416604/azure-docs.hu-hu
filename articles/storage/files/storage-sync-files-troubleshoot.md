@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2017
 ms.author: wgries
-ms.openlocfilehash: 506781ac83e75d558badbd3a8842533e314a8dfa
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 5558a69756075dd83f890d5e9e00c9944d841591
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="troubleshoot-azure-file-sync-preview"></a>Hibaelhárítás az Azure fájlszinkronizálás (előzetes verzió)
 Sync szolgáltatás használatával Azure fájl (előzetes verzió) központosítása fájlmegosztások a szervezet Azure fájlokban, ugyanakkor változatlanul megőrizze a rugalmasság, a teljesítmény és a kompatibilitási egy helyszíni fájlkiszolgáló. Azure fájlszinkronizálás átalakítja a Windows Server az Azure fájlmegosztás gyors gyorsítótárába. Minden protokoll, amely a Windows Server helyileg, az adatok eléréséhez használhatja, többek között a ftps-t, SMB és NFS. Akkor is annyi gyorsítótárak világszerte szükség szerint.
@@ -29,6 +29,9 @@ Ez a cikk célja, és esetleg előforduló Azure fájlszinkronizálás telepít�
 2. [Az Azure Storage fórum](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata).
 3. [Azure-fájlokat UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files). 
 4. Microsoft támogatási szolgálatához. Az Azure portálon, egy új támogatási kérelem létrehozásához a **súgó** lapon jelölje be a **súgó + támogatás** gombra, és válassza **új támogatja a kérelem**.
+
+## <a name="storage-sync-service-object-management"></a>Szinkronizálási szolgáltatás objektum Tároláskezelés
+Ha törli egy erőforrás-Áthelyezés egy előfizetés másik előfizetést, fájladatforrások sync (tároló szinkronizálási szolgáltatás) le lesz tiltva áthelyezését. 
 
 ## <a name="agent-installation-and-server-registration"></a>Az ügynök telepítése és a kiszolgáló regisztrálása
 <a id="agent-installation-failures"></a>**Ügynök telepítési hibáinak elhárítása**  

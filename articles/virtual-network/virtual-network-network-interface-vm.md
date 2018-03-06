@@ -4,7 +4,7 @@ description: "Útmutató a hálózati adapterek hozzáadása vagy eltávolítás
 services: virtual-network
 documentationcenter: na
 author: jimdial
-manager: timlt
+manager: jeconnoc
 editor: 
 tags: azure-resource-manager
 ms.assetid: 
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/15/2017
 ms.author: jdial
-ms.openlocfilehash: 30e6950a976307023bd5232fa1c1f1342c1d012b
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: bb21690865cd9384fe3d3c82e60f11e0fc64114c
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="add-network-interfaces-to-or-remove-network-interfaces-from-virtual-machines"></a>Adja hozzá a hálózati kapcsolatokat, vagy távolítsa el a hálózati adapterek a virtuális gépek
 
@@ -29,12 +29,12 @@ Ha kell hozzáadása, módosítása, vagy távolítsa el a hálózati illesztő 
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-A következő feladatok végezhetők, mielőtt ez a cikk bármely részén hajtsa végre a lépéseket:
+Ez a cikk bármely szakaszának lépéseit befejezése előtt hajtsa végre a következőket:
 
-- Jelentkezzen be a Azure [portal](https://portal.azure.com), az Azure parancssori felület, vagy az Azure PowerShell használata az Azure-fiók. Ha még nem rendelkezik Azure-fiókja, regisztráljon egy [ingyenes próbaverzió](https://azure.microsoft.com/free).
-- Ebben a cikkben a feladatokat PowerShell-parancsok használatakor [Azure PowerShell telepítése és konfigurálása](/powershell/azureps-cmdlets-docs?toc=%2fazure%2fvirtual-network%2ftoc.json). Győződjön meg arról, hogy rendelkezik-e a legújabb verziója található az Azure PowerShell-parancsmagjai telepítve vannak-e. Ha segítséget szeretne kérni a PowerShell-parancsaihoz, valamint példákkal, írja be a `get-help <command> -full`. 
-- Másik lehetőségként az Azure-felhő rendszerhéj is használhatja. Az Azure-felhő rendszerhéj egy szabad PowerShell futtatható közvetlenül az Azure-portálon belül. PowerShell előtelepített és konfigurált a fiókhoz rendelkezik. Ezt a lehetőséget, jelölje be a felhő rendszerhéj **> _** gomb tetején a [portal](https://portal.azure.com) és a PowerShell válassza a bal felső sarokban.
-- Ebben a cikkben feladatok végrehajtásához Azure parancssori felület parancsait használatakor [telepítése és konfigurálása az Azure parancssori felület](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json). Győződjön meg arról, hogy rendelkezik-e telepítve, az Azure parancssori felület legújabb verziója. Segítség kérése parancssori felület parancsait, írja be a következőt `az <command> --help`. 
+- Ha még nem rendelkezik Azure-fiókja, regisztráljon egy [ingyenes próbafiók](https://azure.microsoft.com/free).
+- Ha a portál használatával, nyissa meg a https://portal.azure.com, és jelentkezzen be az Azure-fiókjával.
+- Ha a PowerShell-parancsokkal ebben a cikkben a feladatokat, vagy futtassa a parancsokat a [Azure Cloud rendszerhéj](https://shell.azure.com/powershell), vagy a PowerShell futtatásával a számítógépről. Az Azure Cloud Shell egy olyan ingyenes interaktív kezelőfelület, amelyet a jelen cikkben található lépések futtatására használhat. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. Ebben az oktatóanyagban az Azure PowerShell modul verziója 5.2.0 szükséges vagy újabb. Futtatás `Get-Module -ListAvailable AzureRM` telepített verziója található. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Login-AzureRmAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
+- Azure parancssori felület (CLI) parancsok használata ebben a cikkben a feladatokat, vagy futtassa a parancsokat a [Azure Cloud rendszerhéj](https://shell.azure.com/bash), vagy a CLI-t a számítógépen való futtatásával. Ez az oktatóanyag az Azure parancssori felület 2.0.26 verziója szükséges, vagy később. Futtatás `az --version` telepített verziója található. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése](/cli/azure/install-azure-cli). Ha helyileg futtatja az Azure parancssori felület, is futtatásához szükséges `az login` az Azure VPN-kapcsolat létrehozásához.
 
 ## <a name="add-existing-network-interfaces-to-a-new-vm"></a>Meglévő hálózati adapterek hozzáadása egy új virtuális géphez
 

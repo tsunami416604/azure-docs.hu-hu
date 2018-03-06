@@ -5,17 +5,17 @@ services: machine-learning
 author: ranvijaykumar
 ms.author: ranku
 manager: mwinkle
-ms.reviewer: garyericson, jasonwhowell, mldocs
+ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.custom: mvc, reference
 ms.topic: article
 ms.date: 09/14/2017
-ms.openlocfilehash: 7ee5a720b12152c27a96ee18f1b11e5fc03a531a
-ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
+ms.openlocfilehash: 3eaf42f8d0bdad274ec92f5790fe79878500a1b2
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="derive-column-by-example-transformation"></a>Példa átalakítással oszlop származtatni
 
@@ -115,9 +115,9 @@ Példák, amelyek lemezre van szükség ebben az esetben száma: 3
 |BABÉRT AVE & OAKDALE AVE;  HORSHAM; Állomás 352; 2015 12-10-16:46:48; @|Horsham|
 |A távoli asztali COLLEGEVILLE & LYWISKI távoli asztali;  SKIPPACK; Állomás 336; 2015 12-10-16:17:05; @|Skippack|
 |FŐ & régi SUMNEYTOWN CSUKA;  ALACSONYABB SALFORD; Állomás 344; 2015 12-10-16:51:42; @|Alacsonyabb Salford|
-|BLUEROUTE & ELSAJÁTÍTJÁK I476 NB VALÓ KÉMIAI TÁVOLI ASZTALI; PLYMOUTH; 2015-12-10 @ 17:35:41;|Plymouth|
-|RT202 PKWY & KNAPP TÁVOLI ASZTALI; MONTGOMERY; 2015-12-10 @ 17:33:50.|Montgomery|
-|A TÁVOLI ASZTALI FOLYAMI & COLWELL LN; PLYMOUTH; 2015 12-10-16:32:10; @|Plymouth|
+|BLUEROUTE &AMP; ELSAJÁTÍTJÁK I476 NB VALÓ KÉMIAI TÁVOLI ASZTALI; PLYMOUTH; 2015-12-10 @ 17:35:41;|Plymouth|
+|RT202 PKWY &AMP; KNAPP TÁVOLI ASZTALI; MONTGOMERY; 2015-12-10 @ 17:33:50.|Montgomery|
+|A TÁVOLI ASZTALI FOLYAMI &AMP; COLWELL LN; PLYMOUTH; 2015 12-10-16:32:10; @|Plymouth|
 
 ### <a name="s3-date-format-manipulation-during-string-extraction"></a>S3. Dátumformátum manipuláció karakterlánc kibontási során
 
@@ -127,10 +127,10 @@ Példák, amelyek lemezre van szükség ebben az esetben száma: 1
 |:-----|:-----|
 |MONTGOMERY AVE & WOODSIDE távoli asztali;  ALACSONYABB MERION; Állomás 313; 2015-12-11 @ 04:11:35;|**12 november 2015 hajnali 4 Órakor**|
 |DREYCOTT LN & W LANCASTER AVE;  ALACSONYABB MERION; Állomás 313; 2015-12-11 @ 01:29:52;|12 november 2015 13: 00|
-|E LEVERING MILL TÁVOLI ASZTALI & CONSHOHOCKEN ÁLLAPOT TÁVOLI ASZTALI; ALACSONYABB MERION; 2015-12-11 @ 07:29:58;|12 november 2015 de.|
+|E LEVERING MILL TÁVOLI ASZTALI &AMP; CONSHOHOCKEN ÁLLAPOT TÁVOLI ASZTALI; ALACSONYABB MERION; 2015-12-11 @ 07:29:58;|12 november 2015 de.|
 |A távoli asztali PENN VALLEY & MANOR távoli asztali;  ALACSONYABB MERION; Állomás 313; 2015-12-10 @ 20:53:30.|12 Oct 2015 8 du|
-|JOVANOVICH AVE & OVERHILL TÁVOLI ASZTALI; ALACSONYABB MERION; 2015-12-10 @ 23:02:27;|12 Oct 2015 23 óra|
-|W MONTGOMERY AVE & PENNSWOOD TÁVOLI ASZTALI; ALACSONYABB MERION; 2015-12-10 @ 19:25:22.|12 Oct 2015 7 PM|
+|JOVANOVICH AVE &AMP; OVERHILL TÁVOLI ASZTALI; ALACSONYABB MERION; 2015-12-10 @ 23:02:27;|12 Oct 2015 23 óra|
+|W MONTGOMERY AVE &AMP; PENNSWOOD TÁVOLI ASZTALI; ALACSONYABB MERION; 2015-12-10 @ 19:25:22.|12 Oct 2015 7 PM|
 |ROSEMONT AVE & KÉZBESÍTETLEN END;  ALACSONYABB MERION; Állomás 313; 2015-12-10 @ 18:43:07;|12 Oct 2015 18: 00|
 |A vész-Helyreállítási AVIGNON & KÉZBESÍTETLEN END; ALACSONYABB MERION; 2015 12-10-20:01:29 @-állomás: STA24;|12 Oct 2015 8 du|
 
@@ -290,7 +290,7 @@ Példák, amelyek lemezre van szükség ebben az esetben száma: 1
 
 Ezek a részek különböző által-példa átalakítások használata adatok ugyanazokat a könyvtárban találhatók. A félkövér betűvel írott karakterláncok képviselnek a példák, amelyek a saját megfelelő átalakításában lett megadva.
 
-|DateTime|milyen napra esik|Dátum|Hónap|év|Óra|Perc|Második|
+|DateTime|milyen napra esik|Dátum|Hónap|év|Óra|Perc|Másodperc|
 |-----:|-----:|-----:|-----:|-----:|-----:|-----:|-----:|
 |05:54:18 31-Jan-2031|**Fri**|**31**|**Jan**|**2031**|**5**|**54**|**18**|
 |13:32:01 17-Jan-1990|Sze|17|jan.|1990|13|32|01|

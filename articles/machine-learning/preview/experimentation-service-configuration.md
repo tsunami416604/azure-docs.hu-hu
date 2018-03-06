@@ -5,21 +5,21 @@ services: machine-learning
 author: gokhanuluderya-msft
 ms.author: gokhanu
 manager: haining
-ms.reviewer: garyericson, jasonwhowell, mldocs
+ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/28/2017
-ms.openlocfilehash: bd152cc79c08124a1acab2aefc8652c7d162ea2c
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: f93c74d0c2f66e6a5001289efca07f074e3d3c5a
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="configuring-azure-machine-learning-experimentation-service"></a>Az Azure Machine Learning kísérletezhet szolgáltatás konfigurálása
 
 ## <a name="overview"></a>Áttekintés
-Az Azure Machine Learning kísérletezhet szolgáltatás lehetővé teszi, hogy az adatszakértőkön át a használatával az Azure Machine Learning végrehajtási kísérletek hajtható végre, és futtassa a felügyeleti képességek. A gyors ismétlési gyors kísérletezés keretet biztosít. Az Azure Machine Learning-munkaterület lehetővé teszi kezdődnie helyi fut a gépen, és egy egyszerű útvonalat biztosít be és ki más környezetekben, például a távoli adatok tudományos rendelkező virtuális gépek GPU vagy futtatása Spark on HDInsight-fürtök méretezhetők.
+Az Azure Machine Learning kísérletezhet szolgáltatás lehetővé teszi, hogy az adatszakértőkön át a használatával az Azure Machine Learning végrehajtási kísérletek hajtható végre, és futtassa a felügyeleti képességek. A gyors ismétlési gyors kísérletezés keretet biztosít. Az Azure Machine Learning-munkaterület lehetővé teszi kezdődnie helyi fut a gépen, és könnyen elérési útjának méretezéshez be és ki más környezetekben, például a távoli adatok tudományos rendelkező virtuális gépek GPU vagy futtatása Spark on HDInsight-fürtök.
 
 Kísérletezhet szolgáltatás biztosítása elkülönített, megismételhető és egységes futtatása a kísérletek lett tervezve. Segít a számítási célkitűzések, a végrehajtási környezet kezelése és konfigurációk futtatása. Az Azure Machine Learning-munkaterület végrehajtási és futtatási felügyeleti képességek segítségével egyszerűen áthelyezheti különböző környezetek között. 
 
@@ -27,9 +27,10 @@ Helyileg vagy a felhőben léptékű hajthat végre egy Python vagy PySpark para
 
 Futtathatja a parancsfájlokat: 
 
-* Python (3.5.2) környezetben munkaterület telepítve a helyi számítógépen.
+* A helyi számítógépen telepítve munkaterület Python (3.5.2) környezet
 * Egy Docker-tároló a helyi számítógépen belül Conda Python-környezet
-* Egy Docker-tároló egy távoli számítógépen Linux belül Conda Python-környezetben. Például egy [DSVM Ubuntu-alapú Azure](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.linux-data-science-vm-ubuntu)
+* A saját és a távoli gépen Linux kezelése Python-környezetben
+* Egy Docker-tároló egy távoli számítógépen Linux belül Conda Python-környezetben. Például egy [Ubuntu-alapú DSVM Azure] (https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.linux-data-science-vm-ubuntu)
 * [A Spark on HDInsight](https://azure.microsoft.com/services/hdinsight/apache-spark/) az Azure-on
 
 >[!IMPORTANT]
@@ -47,6 +48,7 @@ _Csatlakoztassa az ml computetarget_ parancsot a CLI teszi lehetővé, melyekkel
 Támogatott számítási célok a következők:
 * Helyi Python (3.5.2) környezetben munkaterület telepítve a számítógépen.
 * A számítógép helyi Docker
+* Felhasználó által felügyelt, Python környezet a távoli Linux-Ubuntu virtuális gépeken. Például egy [DSVM Ubuntu-alapú Azure](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.linux-data-science-vm-ubuntu)
 * Távoli Docker Linux-Ubuntu virtuális gépeken. Például egy [DSVM Ubuntu-alapú Azure](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.linux-data-science-vm-ubuntu)
 * [HDInsight Spark-fürt](https://azure.microsoft.com/services/hdinsight/apache-spark/) az Azure-on
 
@@ -69,14 +71,14 @@ Conda Docker helyi és távoli Docker-végrehajtások, valamint a HDInsight-alap
 ### <a name="run-configuration"></a>Futtassa a konfiguráció
 A számítási cél és a végrehajtási környezet, valamint Azure Machine Learning keretrendszerében definiálására, és módosítsa *konfigurációk futtatása*. A kísérlet különböző végrehajtások iteratív kísérletezhet részeként különböző konfigurálásra lehet szükség. Akkor lehet, hogy lehet abszolút eltérő tartományok, különböző forrásokból használatával, és spark paraméterek beállítása. Kísérletezhet szolgáltatás keretrendszert biztosít futtatási konfigurációk kezelése.
 
-Futó _az ml computetarget csatolása_ a két fájlt hoz létre a **aml_config** a projekt mappájára: egy .compute és a következő az egyezmény .runconfig: _< your_ computetarget_name > .compute_ és _< your_computetarget_name > .runconfig_. A .runconfig fájl automatikusan megtörténik az Ön kényelme számítási cél létrehozásához. Létrehozhat és egyéb futtatási konfiguráció használata _az ml runconfigurations_ CLI parancsot. Is létrehozhat és szerkessze azokat a fájlrendszerben.
+Futtató _az ml computetarget csatolása_ a két fájlt hoz létre a **aml_config** a projekt mappa: ".compute" és ".runconfig" a következő az egyezmény: _< your_ computetarget_name > .compute_ és _< your_computetarget_name > .runconfig_. A .runconfig fájl automatikusan megtörténik az Ön kényelme számítási cél létrehozásához. Létrehozhat és egyéb futtatási konfiguráció használata _az ml runconfigurations_ CLI parancsot. Is létrehozhat és szerkessze azokat a fájlrendszerben.
 
 Futtatási konfigurációs munkaterület lehetővé teszi a környezeti változók megadását is. Környezeti változók megadását, és adja hozzá az alábbi szakasz a .runconfig fájlban a kódban használhatja őket. 
 
 ```
 EnvironmentVariables:
-"EXAMPLE_ENV_VAR1": "Example Value1"
-"EXAMPLE_ENV_VAR2": "Example Value2"
+    "EXAMPLE_ENV_VAR1": "Example Value1"
+    "EXAMPLE_ENV_VAR2": "Example Value2"
 ```
 
 Ezek a környezeti változók a kód érhetők el. Például a phyton kódrészletet kiírja a "EXAMPLE_ENV_VAR1" nevű környezeti változó
@@ -101,7 +103,7 @@ Indítsa el a parancssori felület segítségével egyszerűen projekt megnyitá
 Ez a parancs elindítja a jelenlegi projekt mappában található parancsfájlok végrehajtandó, parancsokat adhat meg egy terminálablakot. A Python 3.5.2 környezetet, amelybe a munkaterületet üzemeltető van telepítve ez terminálablakot van konfigurálva.
 
 >[!NOTE]
-> Ha hajtható végre a _az ml_ parancsot a parancssorablakba Azure hitelesíteni kell. Parancssori felület egy független hitelesítési gyorsítótárat, majd az asztali alkalmazást használja, és így bejelentkezést a munkaterületet üzemeltető nem jelenti azt Ön hitelesítve a CLI-környezetben. Hitelesítést végezni, kövesse az alábbi lépéseket. Hitelesítési jogkivonat a helyi gyorsítótárba helyezi az adott időszakban, csak akkor kell ismételje ezeket a lépéseket, amikor a jogkivonat lejár. Amikor a jogkivonat lejár, vagy ha hitelesítési hibák, hajtsa végre a következő parancsokat:
+> Ha hajtható végre a _az ml_ parancsot a parancssorablakba Azure hitelesíteni kell. Parancssori felület egy független hitelesítési gyorsítótárat, majd az asztali alkalmazást használja, és így bejelentkezést a munkaterületet üzemeltető nem jelenti azt Ön hitelesítve a CLI-környezetben. A hitelesítéshez használja a következő lépéseket. Hitelesítési jogkivonat a helyi gyorsítótárba helyezi az adott időszakban, csak akkor kell ismételje ezeket a lépéseket, amikor a jogkivonat lejár. Amikor a jogkivonat lejár, vagy ha hitelesítési hibák, hajtsa végre a következő parancsokat:
 
 ```
 # to authenticate 
@@ -124,7 +126,7 @@ $ az account show
 ## <a name="running-scripts-and-experiments"></a>Kísérletek-parancsfájlok futtatásakor
 A munkaterület, Ön is végrehajthatja a Python és PySpark parancsfájlok különböző számítási tárolókra a a _az ml kísérlet nyújt_ parancsot. Ehhez a parancshoz egy futtatási konfiguráció definíciója. 
 
-Munkaterület fájlt hoz létre a megfelelő .runconfig számítási cél létrehozásához, de további futtatási konfigurációk használatával hozhat létre _az ml runconfiguration létrehozása_ parancsot. Manuálisan is szerkesztheti a futtatási konfigurációs fájlokat.
+Munkaterület fájlt hoz létre a megfelelő runconfig számítási cél létrehozásához, de további futtatási konfigurációk használatával hozhat létre _az ml runconfiguration létrehozása_ parancsot. Manuálisan is szerkesztheti a futtatási konfigurációs fájlokat.
 
 Futtassa a konfigurációk megjelenítése kísérlet futtatása élmény munkaterület részeként. 
 
@@ -213,16 +215,57 @@ A Docker konstrukció távoli virtuális gépek pontosan ugyanúgy történik, a
 >[!TIP]
 >Ha a Tiltás késése a Docker-lemezkép az első futtatáshoz bevezetett elkerülése érdekében inkább a következő paranccsal készítse elő a számítási célja a parancsfájl végrehajtása előtt. az ml kísérlet - c remotedocker előkészítése
 
-
 _**A Python-parancsfájl végrehajtása távoli vm áttekintése:**_
 ![](media/experimentation-service-configuration/remote-vm-run.png)
+
+## <a name="running-a-script-on-a-remote-vm-targeting-user-managed-environments"></a>A felhasználó által felügyelt környezetben célzó távoli virtuális gép parancsprogram futtatása
+Kísérletezhet szolgáltatás is támogatja a parancsprogram futtatása egy távoli Ubuntu virtuális gépen a felhasználó saját Python-környezetben. Ez lehetővé teszi a saját környezet végrehajtásra kezelése, és továbbra is használhatják az Azure Machine Learning képességeit. 
+
+A következő lépések segítségével futtassa a parancsfájlt a saját környezetben.
+* Készítse elő a Python-környezetet egy távoli Ubuntu virtuális gép vagy egy DSVM a függőségek telepítése.
+* Telepítse az Azure Machine Learning követelményeit az alábbi parancs segítségével.
+
+```
+pip install -I --index-url https://azuremldownloads.azureedge.net/python-repository/preview --extra-index-url https://pypi.python.org/simple azureml-requirements
+```
+
+>[!TIP]
+>Egyes esetekben szükség lehet a parancs futtatásához a sudo módban attól függően, hogy a jogosultságokat. 
+```
+sudo pip install -I --index-url https://azuremldownloads.azureedge.net/python-repository/preview --extra-index-url https://pypi.python.org/simple azureml-requirements
+```
+ 
+* A következő parancs segítségével hozza létre a számítási cél meghatározása és a távoli virtuális gép végrehajtások a felhasználó által felügyelt kísérletekhez futtatási konfiguráció.
+```
+az ml computetarget attach remote --name "remotevm" --address "remotevm_IP_address" --username "sshuser" --password "sshpassword" 
+```
+>[!NOTE]
+>"UserManagedEnvironment" paraméter a .compute konfigurációs fájlban true értékre állítja.
+
+* Állítsa helyre a Python-futtatókörnyezet végrehajtható a .compute fájlban. Olvassa el a python végrehajtható fájl elérési útját. 
+```
+pythonLocation: python3
+```
+
+Ha a számítási cél megfelelően konfigurált, a következő paranccsal futtassa a parancsfájlt.
+```
+$ az ml experiment submit -c remotevm myscript.py
+```
+
+>[!NOTE]
+> Ha egy DSVM használ, használja a következő parancsok
+
+Ha azt szeretné, közvetlenül DSVM meg globális python-környezetben futtatni, futtassa ezt a parancsot.
+```
+sudo /anaconda/envs/py35/bin/pip install <package>
+```
 
 
 ## <a name="running-a-script-on-an-hdinsight-cluster"></a>A HDInsight-fürtök parancsprogram futtatása
 HDInsight egy népszerű big data elemzésre szolgáló Apache Spark támogató platform. Munkaterület lehetővé teszi, hogy a big Data típusú adatok használata a HDInsight Spark-fürtjei kísérletezhet. 
 
 >[!NOTE]
->A HDInsight-fürt elsődleges tárolóként kell használnia az Azure Blob. Az Azure Data Lake-tároló használata jelenleg nem támogatott.
+>A HDInsight-fürtnek az Azure-blobot kell elsődleges tárolóként használnia. Az Azure Data Lake-tároló használata jelenleg nem támogatott.
 
 Számítási cél létrehozásához, és futtassa a konfiguráció a HDInsight Spark-fürtök az alábbi paranccsal:
 
@@ -279,6 +322,6 @@ az ml computetarget attach remotedocker --name "remotevm" --address "remotevm_IP
 az ml experiment prepare -c remotevm
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Hozzon létre és telepítse az Azure gépi tanulás](quickstart-installation.md)
 * [Modell kezelése](model-management-overview.md)

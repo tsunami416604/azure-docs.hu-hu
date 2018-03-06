@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: iainfou
 ms.openlocfilehash: 08f0af6ecdb45b263d39c3d2d6442f4ed555e3c3
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="how-to-open-ports-to-a-virtual-machine-with-the-azure-portal"></a>Egy virtuális géphez portok megnyitása és az Azure portál
 [!INCLUDE [virtual-machines-common-nsg-quickstart](../../../includes/virtual-machines-common-nsg-quickstart.md)]
@@ -62,7 +62,7 @@ A gyors parancsok lehetővé teszik, amelyekből megismerheti a forgalom halad a
 
 Magas rendelkezésre állású webes alkalmazásokhoz helyezze a virtuális gépek az Azure terheléselosztó mögött. A load balancer osztja el a forgalmat a virtuális gépekhez, a hálózati biztonsági csoport, amely biztosítja a forgalomszűrést végez. További információkért lásd: [betöltése Linux virtuális gépek magas rendelkezésre állású alkalmazás létrehozása az Azure-ban egyenleg](tutorial-load-balancer.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben a példában létrehozott egy egyszerű szabályt, amely engedélyezi a HTTP-forgalmat. További részletes környezetek létrehozásáról a következő cikkekben találhat:
 
 * [Az Azure Resource Manager áttekintése](../../azure-resource-manager/resource-group-overview.md)

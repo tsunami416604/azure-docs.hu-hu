@@ -15,11 +15,11 @@ ms.workload: storage-backup-recovery
 ms.date: 12/20/2017
 ms.author: markgal;trinadhk;pullabhk
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e2eda7cee90d307d646ff68e104750c3057dcb06
-ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
+ms.openlocfilehash: ab75c88409c6e20f9bc46ad3b4336da150abd52c
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="use-azurermrecoveryservicesbackup-cmdlets-to-back-up-virtual-machines"></a>Készítsen biztonsági másolatot a virtuális gépek AzureRM.RecoveryServices.Backup-parancsmagok használatával
 
@@ -45,88 +45,88 @@ A AzureRm.RecoveryServices.Backup PowerShell parancsmag-referencia megtekintés�
 Megkezdéséhez:
 
 1. [A PowerShell legújabb verziójának letöltése](https://docs.microsoft.com/powershell/azure/install-azurerm-ps) (a szükséges minimális verziója: 1.4.0)
+
 2. Keresse meg az Azure biztonsági mentés PowerShell-parancsmagok érhető el a következő parancs beírásával:
-
-```
-PS C:\> Get-Command *azurermrecoveryservices*
-
-CommandType     Name                                               Version    Source
------------     ----                                               -------    ------
-Cmdlet          Backup-AzureRmRecoveryServicesBackupItem           1.4.0      AzureRM.RecoveryServices.Backup
-Cmdlet          Disable-AzureRmRecoveryServicesBackupProtection    1.4.0      AzureRM.RecoveryServices.Backup
-Cmdlet          Enable-AzureRmRecoveryServicesBackupProtection     1.4.0      AzureRM.RecoveryServices.Backup
-Cmdlet          Get-AzureRmRecoveryServicesBackupContainer         1.4.0      AzureRM.RecoveryServices.Backup
-Cmdlet          Get-AzureRmRecoveryServicesBackupItem              1.4.0      AzureRM.RecoveryServices.Backup
-Cmdlet          Get-AzureRmRecoveryServicesBackupJob               1.4.0      AzureRM.RecoveryServices.Backup
-Cmdlet          Get-AzureRmRecoveryServicesBackupJobDetails        1.4.0      AzureRM.RecoveryServices.Backup
-Cmdlet          Get-AzureRmRecoveryServicesBackupManagementServer  1.4.0      AzureRM.RecoveryServices.Backup
-Cmdlet          Get-AzureRmRecoveryServicesBackupProperties        1.4.0      AzureRM.RecoveryServices
-Cmdlet          Get-AzureRmRecoveryServicesBackupProtectionPolicy  1.4.0      AzureRM.RecoveryServices.Backup
-Cmdlet          Get-AzureRMRecoveryServicesBackupRecoveryPoint     1.4.0      AzureRM.RecoveryServices.Backup
-Cmdlet          Get-AzureRmRecoveryServicesBackupRetentionPolic... 1.4.0      AzureRM.RecoveryServices.Backup
-Cmdlet          Get-AzureRmRecoveryServicesBackupSchedulePolicy... 1.4.0      AzureRM.RecoveryServices.Backup
-Cmdlet          Get-AzureRmRecoveryServicesVault                   1.4.0      AzureRM.RecoveryServices
-Cmdlet          Get-AzureRmRecoveryServicesVaultSettingsFile       1.4.0      AzureRM.RecoveryServices
-Cmdlet          New-AzureRmRecoveryServicesBackupProtectionPolicy  1.4.0      AzureRM.RecoveryServices.Backup
-Cmdlet          New-AzureRmRecoveryServicesVault                   1.4.0      AzureRM.RecoveryServices
-Cmdlet          Remove-AzureRmRecoveryServicesProtectionPolicy     1.4.0      AzureRM.RecoveryServices.Backup
-Cmdlet          Remove-AzureRmRecoveryServicesVault                1.4.0      AzureRM.RecoveryServices
-Cmdlet          Restore-AzureRMRecoveryServicesBackupItem          1.4.0      AzureRM.RecoveryServices.Backup
-Cmdlet          Set-AzureRmRecoveryServicesBackupProperties        1.4.0      AzureRM.RecoveryServices
-Cmdlet          Set-AzureRmRecoveryServicesBackupProtectionPolicy  1.4.0      AzureRM.RecoveryServices.Backup
-Cmdlet          Set-AzureRmRecoveryServicesVaultContext            1.4.0      AzureRM.RecoveryServices
-Cmdlet          Stop-AzureRmRecoveryServicesBackupJob              1.4.0      AzureRM.RecoveryServices.Backup
-Cmdlet          Unregister-AzureRmRecoveryServicesBackupContainer  1.4.0      AzureRM.RecoveryServices.Backup
-Cmdlet          Unregister-AzureRmRecoveryServicesBackupManagem... 1.4.0      AzureRM.RecoveryServices.Backup
-Cmdlet          Wait-AzureRmRecoveryServicesBackupJob              1.4.0      AzureRM.RecoveryServices.Backup
-```
+    ```PS
+    PS C:\> Get-Command *azurermrecoveryservices*
+    CommandType     Name                                               Version    Source
+    -----------     ----                                               -------    ------
+    Cmdlet          Backup-AzureRmRecoveryServicesBackupItem           1.4.0      AzureRM.RecoveryServices.Backup
+    Cmdlet          Disable-AzureRmRecoveryServicesBackupProtection    1.4.0      AzureRM.RecoveryServices.Backup
+    Cmdlet          Enable-AzureRmRecoveryServicesBackupProtection     1.4.0      AzureRM.RecoveryServices.Backup
+    Cmdlet          Get-AzureRmRecoveryServicesBackupContainer         1.4.0      AzureRM.RecoveryServices.Backup
+    Cmdlet          Get-AzureRmRecoveryServicesBackupItem              1.4.0      AzureRM.RecoveryServices.Backup
+    Cmdlet          Get-AzureRmRecoveryServicesBackupJob               1.4.0      AzureRM.RecoveryServices.Backup
+    Cmdlet          Get-AzureRmRecoveryServicesBackupJobDetails        1.4.0      AzureRM.RecoveryServices.Backup
+    Cmdlet          Get-AzureRmRecoveryServicesBackupManagementServer  1.4.0      AzureRM.RecoveryServices.Backup
+    Cmdlet          Get-AzureRmRecoveryServicesBackupProperties        1.4.0      AzureRM.RecoveryServices
+    Cmdlet          Get-AzureRmRecoveryServicesBackupProtectionPolicy  1.4.0      AzureRM.RecoveryServices.Backup
+    Cmdlet          Get-AzureRMRecoveryServicesBackupRecoveryPoint     1.4.0      AzureRM.RecoveryServices.Backup
+    Cmdlet          Get-AzureRmRecoveryServicesBackupRetentionPolic... 1.4.0      AzureRM.RecoveryServices.Backup
+    Cmdlet          Get-AzureRmRecoveryServicesBackupSchedulePolicy... 1.4.0      AzureRM.RecoveryServices.Backup
+    Cmdlet          Get-AzureRmRecoveryServicesVault                   1.4.0      AzureRM.RecoveryServices
+    Cmdlet          Get-AzureRmRecoveryServicesVaultSettingsFile       1.4.0      AzureRM.RecoveryServices
+    Cmdlet          New-AzureRmRecoveryServicesBackupProtectionPolicy  1.4.0      AzureRM.RecoveryServices.Backup
+    Cmdlet          New-AzureRmRecoveryServicesVault                   1.4.0      AzureRM.RecoveryServices
+    Cmdlet          Remove-AzureRmRecoveryServicesProtectionPolicy     1.4.0      AzureRM.RecoveryServices.Backup
+    Cmdlet          Remove-AzureRmRecoveryServicesVault                1.4.0      AzureRM.RecoveryServices
+    Cmdlet          Restore-AzureRMRecoveryServicesBackupItem          1.4.0      AzureRM.RecoveryServices.Backup
+    Cmdlet          Set-AzureRmRecoveryServicesBackupProperties        1.4.0      AzureRM.RecoveryServices
+    Cmdlet          Set-AzureRmRecoveryServicesBackupProtectionPolicy  1.4.0      AzureRM.RecoveryServices.Backup
+    Cmdlet          Set-AzureRmRecoveryServicesVaultContext            1.4.0      AzureRM.RecoveryServices
+    Cmdlet          Stop-AzureRmRecoveryServicesBackupJob              1.4.0      AzureRM.RecoveryServices.Backup
+    Cmdlet          Unregister-AzureRmRecoveryServicesBackupContainer  1.4.0      AzureRM.RecoveryServices.Backup
+    Cmdlet          Unregister-AzureRmRecoveryServicesBackupManagem... 1.4.0      AzureRM.RecoveryServices.Backup
+    Cmdlet          Wait-AzureRmRecoveryServicesBackupJob              1.4.0      AzureRM.RecoveryServices.Backup
+    ```
 3. Jelentkezzen be a Azure fiók használatával **Login-AzureRmAccount**. Ez a parancsmag megnyitása egy weblap bekéri a hitelesítő adatait: 
     - Alternatív megoldásként paraméterként megadhat a fiók hitelesítő adatait a **Login-AzureRmAccount** parancsmag használatával a **-hitelesítő adat** paraméter.
     - Ha működik a bérlő nevében CSP partner, adja meg az ügyfél a bérlők a tenantID vagy bérlői elsődleges tartománynév használatával. Például: **Login-AzureRmAccount-bérlői "fabrikam.com"**
-4. Társítsa az előfizetést szeretné használni a fiók, mert egy fiók több előfizetéssel is rendelkezik:
+4. Társítsa az előfizetést szeretné használni a fiókot, mert egy fiók több előfizetéssel is rendelkezik:
 
-    ```
+    ```PS
     PS C:\> Select-AzureRmSubscription -SubscriptionName $SubscriptionName
     ```
 
 5. Ha az Azure biztonsági mentés először használ, kell használnia a  **[Register-AzureRmResourceProvider](http://docs.microsoft.com/powershell/module/azurerm.resources/register-azurermresourceprovider)**  parancsmag futtatásával regisztrálja az Azure Recovery szolgáltató az előfizetéshez.
 
-    ```
+    ```PS
     PS C:\> Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
     PS C:\> Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.Backup"
     ```
 
 6. Ellenőrizheti, hogy a szolgáltatók regisztrálása sikeresen befejeződött, a következő parancsokkal:
-    ```
-    PS C:\> Get-AzureRmResourceProvider -ProviderNamespace  "Microsoft.RecoveryServices"
-    PS C:\> Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.Backup"
+    ```PS
+    PS C:\> Get-AzureRmResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
+    PS C:\> Get-AzureRmResourceProvider -ProviderNamespace "Microsoft.Backup"
     ``` 
 A parancs kimenetében a **RegistrationState** be kell állítania, **regisztrált**. Ha nem, most futtassa újra a  **[Register-AzureRmResourceProvider](http://docs.microsoft.com/powershell/module/azurerm.resources/register-azurermresourceprovider)**  parancsmag fent látható.
 
 A PowerShell segítségével automatizálhatók a következő feladatokat:
 
-* Recovery Services-tároló létrehozása
-* Azure-beli virtuális gépek biztonsági mentése
-* A biztonsági mentési feladatot indít
-* A figyelő egy biztonsági mentési feladat
-* Állítsa vissza az Azure virtuális gép
+* [Recovery Services-tároló létrehozása](backup-azure-vms-automation.md#create-a-recovery-services-vault)
+* [Azure-beli virtuális gépek biztonsági mentése](backup-azure-vms-automation.md#back-up-azure-vms)
+* [A biztonsági mentési feladatot indít](backup-azure-vms-automation.md#trigger-a-backup-job)
+* [A figyelő egy biztonsági mentési feladat](backup-azure-vms-automation.md#monitoring-a-backup-job)
+* [Állítsa vissza az Azure virtuális gép](backup-azure-vms-automation.md#restore-an-azure-vm)
 
 ## <a name="create-a-recovery-services-vault"></a>Recovery Services-tároló létrehozása
+
 A következő lépések alapján a Recovery Services-tároló létrehozása. Recovery Services-tároló nem egyezik egy biztonsági mentési tárolót.
 
 1. A Recovery Services-tároló egy Resource Manager szerinti erőforrás,, ezért el kell helyezni az erőforráscsoporton belül. Használjon egy meglévő erőforráscsoportot, vagy hozzon létre egy erőforráscsoportot a a  **[New-AzureRmResourceGroup](https://docs.microsoft.com/powershell/module/azurerm.resources/new-azurermresourcegroup)**  parancsmag. Erőforráscsoport létrehozásakor meg nevét és helyét, ahhoz az erőforráscsoporthoz.  
 
-    ```
+    ```PS
     PS C:\> New-AzureRmResourceGroup -Name "test-rg" -Location "West US"
     ```
 2. Használja a  **[New-AzureRmRecoveryServicesVault](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices/new-azurermrecoveryservicesvault)**  parancsmaggal hozhat létre a Recovery Services-tároló. Ne felejtse el ugyanazon a helyen, a tároló adja meg, mint az erőforráscsoport használt.
 
-    ```
-    PS C:\> New-AzureRmRecoveryServicesVault -Name "testvault" -ResourceGroupName " test-rg" -Location "West US"
+    ```PS
+    PS C:\> New-AzureRmRecoveryServicesVault -Name "testvault" -ResourceGroupName "test-rg" -Location "West US"
     ```
 3. Megadhatja a használandó; adattároló redundanciája, amely használhat [helyileg redundáns tárolás (LRS)](../storage/common/storage-redundancy.md#locally-redundant-storage) vagy [földrajzi redundáns tárolás (GRS)](../storage/common/storage-redundancy.md#geo-redundant-storage). A következő példa bemutatja a - BackupStorageRedundancy beállítás a testvault GeoRedundant értékre van állítva.
 
-    ```
+    ```PS
     PS C:\> $vault1 = Get-AzureRmRecoveryServicesVault -Name "testvault"
     PS C:\> Set-AzureRmRecoveryServicesBackupProperties  -Vault $vault1 -BackupStorageRedundancy GeoRedundant
     ```

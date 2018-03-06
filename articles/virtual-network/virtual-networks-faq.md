@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/01/2018
 ms.author: jdial
-ms.openlocfilehash: 1a05e2dd5596f5d2e0ba1d14b0fe05a2d517434d
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 8800dc59306c349daba8f4d9703e0c713eed06ec
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure-beli virtuális hálózat gyakori kérdések (GYIK)
 
@@ -78,7 +78,7 @@ Igen. Hozzon létre egy útválasztási táblázatot, és társítsa azt egy alh
 Nem. Csoportos küldés és a szórásos nem támogatottak.
 
 ### <a name="what-protocols-can-i-use-within-vnets"></a>Milyen protokollok Vnetek belül használható?
-TCP, UDP és ICMP TCP/IP protokollt Vnetek belül is használhatja. Egyedi küldéses támogatott Vnetek, kivételével dinamikus állomás konfigurációs Protocol (DHCP) keresztül egyedi küldéses (forrásport UDP/68-as / cél UDP/67-es port). Csoportos küldés, szórás, IP-be bújtatott IP encapsulated, és Generic Routing Encapsulation (GRE) csomagot a rendszer letiltotta Vnetek belül. 
+TCP, UDP és ICMP TCP/IP protokollt Vnetek belül is használhatja. Egyedi küldéses támogatott Vnetek, kivételével Dynamic Host Configuration Protocol (DHCP) keresztül egyedi küldéses (forrásport UDP/68-as / cél UDP/67-es port). Csoportos küldés, szórás, IP-be bújtatott IP encapsulated, és Generic Routing Encapsulation (GRE) csomagot a rendszer letiltotta Vnetek belül. 
 
 ### <a name="can-i-ping-my-default-routers-within-a-vnet"></a>Megpingelheti a saját alapértelmezett útválasztók egy Vneten belül?
 Nem.

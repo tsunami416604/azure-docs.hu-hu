@@ -15,11 +15,11 @@ ms.workload: storage-backup-recovery
 ms.date: 11/10/2017
 ms.author: pajosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1c6cc4ba95f440f09f11a93927fd67873f8813e8
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: f51d85da1bda0d9483883301b71c20e405724b9b
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="configure-azure-backup-reports"></a>Azure Backup-jelentések konfigurálása
 Ez a cikk beszél lépéseket jelentések konfigurálása az Azure Backup használatával Recovery Services-tároló, és ezek a jelentések használata a Power BI eléréséhez. A lépések elvégzése után közvetlenül nyissa meg a jelentéseket a Power bi-ba, testreszabása és jelentések létrehozása. 
@@ -123,7 +123,7 @@ Tárfiók konfigurálása jelent a recovery services-tároló használatával, m
 
 2. **Mi az az adatleküldés tárfiók és az Azure Backup a Power BI tartalomcsomag gyakoriságát?**
 
-   A 0 nap felhasználók kellene elküldik az adatokat a tárfiók körülbelül 24 óra. Ha a kezdeti leküldéses compelete, az adatok az alábbi ábrán látható, a következő gyakorisággal frissülnek. 
+   A 0 nap felhasználók kellene elküldik az adatokat a tárfiók körülbelül 24 óra. Ha a kezdeti leküldéses befejeződött, az adatok az alábbi ábrán látható, a következő gyakorisággal frissülnek. 
       * Kapcsolódó adatok **feladatok, a riasztások, a biztonsági mentés elemek, a tárolók, a védett kiszolgálók és a házirendek** a rendszer előkészítésre továbbít ügyfél tárfiókja, és amikor a rendszer naplózza.
       * Kapcsolódó adatok **tárolási** ügyfél tárfiókja 24 óránként kerül.
    

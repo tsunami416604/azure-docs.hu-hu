@@ -9,11 +9,11 @@ ms.author: kgremban
 ms.date: 11/15/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 803b0bbff12c8ce471c0bff5e22e24601b8ce07f
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 16d9431ec0a0425c8433557fe384864bb599bf1f
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-from-the-azure-portal-to-a-windows-device---preview"></a>Gyors üzembe helyezés: Az első IoT peremhálózati modul az Azure-portálon a Windows rendszerű eszközre központi telepítése – előzetes
 
@@ -122,6 +122,12 @@ docker logs -f tempSensor
 
 A telemetriai adatokat küld az eszköz segítségével is megtekintheti a [IoT-központ explorer eszköz][lnk-iothub-explorer]. 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+
+Ha el szeretné távolítani a szimulált eszköz létrehozott, és minden modulhoz indított Docker tárolók használja a következő parancsot: 
+
+```cmd
+iotedgectl uninstall
+```
 
 Ha már nincs szüksége az IoT Hub létrehozott, használhatja a [az iot hub delete] [ lnk-delete] parancs beírásával távolítsa el az erőforrás és a vele társított eszközök:
 

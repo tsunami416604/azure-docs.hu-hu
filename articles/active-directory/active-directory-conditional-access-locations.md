@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/11/2018
+ms.date: 03/01/2018
 ms.author: markvi
-ms.reviewer: nigu
-ms.openlocfilehash: 028a3f4411e6984b70e0f98c5cf3284e5be1c3b2
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.reviewer: calebb
+ms.openlocfilehash: c9712cf0cf20bbcfc089eb18896370f9e02eb571
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="location-conditions-in-azure-active-directory-conditional-access"></a>Azure Active Directory feltételes hozzáférési feltételek helye 
 
@@ -120,9 +120,12 @@ Ezt a lehetőséget válassza ki egy vagy több elnevezett helye. Ezt a beállí
 
 Feltételes hozzáférési házirendek kiértékelése során: 
 
-- Egy felhasználó először jelentkezik be 
+- A felhasználó először jelentkezik be egy webes alkalmazás, mobilalkalmazás vagy asztali alkalmazást. 
 
-- Az Azure AD kibocsát egy token a cloud app a feltételes hozzáférési házirend be van állítva. 
+- Modern hitelesítést használó mobil vagy asztali alkalmazást egy frissítési jogkivonat segítségével szerezzen be egy új jogkivonatot. Alapértelmezés szerint ez az egyszer egy óra. 
+
+Ez azt jelenti, hogy a mobile és a modern hitelesítést használó asztali alkalmazások esetében a hely módosítják észlelése történne módosítása a hálózati helyhez egy órán belül. Hordozható és asztali alkalmazások, amelyek nem használják a modern hitelesítés esetén a szabályzat érvényes jogkivonat kéréseknek. A kérelem gyakorisága az alkalmazás függően változhat. Hasonlóképpen webes alkalmazásokhoz, a házirend bejelentkezéskor kezdeti alkalmazza, és kiválóan alkalmas a munkamenet időtartama, a webes alkalmazás. A házirendek értékelésének közötti idő különböző alkalmazások munkamenet-élettartamok eltérései miatt is függ. Minden alkalommal, amikor az alkalmazás kéri egy új bejelentkezési jogkivonatot, a szabályzat érvényes.
+
 
 Alapértelmezés szerint az Azure AD kibocsát egy token óránként. Helyezze át a vállalati hálózatból, egy órán belül a házirend érvényesítve van a modern hitelesítést használó alkalmazások.
 

@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/17/2017
+ms.date: 03/02/2018
 ms.author: sethm
-ms.openlocfilehash: aa9fc3b03e24d0b4d1a7ecd9a945b67d8d182492
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: aaedb8ed2be85017b17a2015ff2fcaaf76c20058
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="event-hubs-features-overview"></a>Event Hubs szolgáltatások – áttekintés
 
@@ -52,7 +52,7 @@ Nem kell előre létrehoznia a közzétevők neveit, azoknak azonban egyezniük 
 
 ## <a name="capture"></a>Rögzítés
 
-[Event Hubs rögzítése](event-hubs-capture-overview.md) lehetővé teszi, hogy automatikusan rögzítheti az Event Hubs streamadatok, és mentse a Blob storage-fiók, vagy egy Azure Data Lake szolgáltatásfiók választott. Rögzítési engedélyezése az Azure-portálon, és adja meg a minimális és a rögzítés végrehajtásához időkerete. Használatával Event Hubs rögzítése Megadja, hogy a saját Azure Blob Storage-fiók és a tároló vagy az Azure Data Lake szolgáltatás fiók, amely a rögzített adatok tárolására szolgál. A rögzített adatok írása az Apache Avro formátumban.
+[Event Hubs rögzítése](event-hubs-capture-overview.md) lehetővé teszi, hogy automatikusan rögzítheti az Event Hubs streamadatok, és mentse a Blob storage-fiók, vagy egy Azure Data Lake szolgáltatásfiók választott. Rögzítési engedélyezése az Azure-portálon, és adja meg a minimális és a rögzítés végrehajtásához időkerete. Használatával Event Hubs rögzítése Megadja, hogy a saját Azure Blob Storage-fiók és a tároló vagy az Azure Data Lake szolgáltatás fiókja, amelyek egyike a rögzített adatok tárolására szolgál. A rögzített adatok írása az Apache Avro formátumban.
 
 ## <a name="partitions"></a>Partíciók
 
@@ -159,7 +159,7 @@ Azt javasoljuk, hogy optimális mértékben átviteli egységek és partíciók 
 
 Részletes információk az Event Hubs díjszabásáról: [Event Hubs-díjszabás](https://azure.microsoft.com/pricing/details/event-hubs/).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha további információkat szeretne az Event Hubsról, tekintse meg az alábbi hivatkozásokat:
 

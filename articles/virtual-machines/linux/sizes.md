@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 11/08/2017
+ms.date: 03/01/2018
 ms.author: jonbeck
-ms.openlocfilehash: 568048c6117d81ec351d5057505dafeec58d7b5a
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: 3f2c44a6402845ddfbc5c6453968817d6e49f64f
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2017
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="sizes-for-linux-virtual-machines-in-azure"></a>Az Azure Linux virtuális gépek méretei
 Ez a cikk ismerteti az elérhető méretek és a beállítások a Linux-alkalmazások és munkafolyamatok futtatásához használhatja az Azure virtuális gépekhez. Telepítési szempontok érdemes figyelembe vennie, amikor arra készül használni ezeket az erőforrásokat is biztosít. Ez a cikk érhető el is [Windows virtuális gépek](../windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
@@ -31,7 +31,7 @@ Ez a cikk ismerteti az elérhető méretek és a beállítások a Linux-alkalmaz
 | [Számításra optimalizált](sizes-compute.md)        | Fsv2, Fs, F             | Magas processzor-memória arány. Alkalmas közepes adatforgalmú webkiszolgálók, hálózati berendezések, kötegfolyamatok és alkalmazáskiszolgálók számára.        |
 | [Memóriaoptimalizált](sizes-memory.md)         | Esv3, Ev3, M, GS, G, DSv2, DS, Dv2, D   | Magas memória-CPU aránya. Ideális választás relációs adatbázis-kiszolgálókhoz, közepes és nagy gyorsítótárakhoz és memóriabeli elemzésekhez.                 |
 | [Tárolásra optimalizált](sizes-storage.md)        | Ls                | Magas lemez-adatátviteli és I/O-műveleti jellemzők. Ideális Big Data-, SQL- és NoSQL-adatbázisok esetén.                                                         |
-| [GPU](sizes-gpu.md)            | Portok HV, NC, NCv2, ND            | Speciális virtuális gépekre nagy mennyiségű grafikus megjelenítési és videó szerkesztése szánt. Egy vagy több Feldolgozóegységekkel érhető el.       |
+| [GPU](sizes-gpu.md)            | NV, NC, NCv2, NCv3, ND            | Speciális virtuális gépek nagy mennyiségű grafikus megjelenítési és videó szerkesztése szánt, valamint a modell betanítási és inferencing (NT) részletes Learning segítségével... Egy vagy több Feldolgozóegységekkel érhető el.       |
 | [Nagy teljesítményű számítás](sizes-hpc.md) | H, A8-11          | A leggyorsabb és leghatékonyabb processzorral rendelkező virtuális gépeink, választható nagy átviteli sebességű (távoli közvetlen memória-hozzáférést lehetővé tevő) hálózati adapterrel. 
 
 <br>
@@ -55,7 +55,7 @@ https://docs.microsoft.com/rest/api/compute/virtualmachines/virtualmachines-list
 
 További tudnivalók [Azure számítási egység (ACU)](acu.md) segíthetnek a számítási teljesítmény összehasonlítása Azure termékváltozatok mentén.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a különböző Virtuálisgép-méretek érhetők el:
 - [Általános célú](sizes-general.md)

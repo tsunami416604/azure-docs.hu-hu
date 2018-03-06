@@ -14,13 +14,16 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 05099e868e62f612be0a3354eb8b339507ac7e4a
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 46cdd8523117e1100e7ce2a29ade9eb2dc0afe75
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="stateful-singletons-in-durable-functions---counter-sample"></a>Állapot-nyilvántartó singletons tartós funkciókkal - számláló minta
+
+> [!NOTE]
+> Ez a minta azt vannak újraírását. A kódrészleteket el lettek távolítva, és az új mintát új cikkek váltják fel őket.
 
 Állapot-nyilvántartó singletons függvényeket a hosszan futó (vélhetően eternal) az orchestrator-állapot tárolása és meghívott és egyéb funkciók kellettek. Állapot-nyilvántartó singletons hasonlóak a [szereplő modell](https://en.wikipedia.org/wiki/Actor_model) elosztott számítástechnikai.
 
@@ -55,11 +58,11 @@ Az alábbi szakaszok ismertetik a kódot, amely a Visual Studio Code és az Azur
 
 A function.json fájlt:
 
-[!code-json[Main](~/samples-durable-functions/samples/csx/E3_Counter/function.json)]
+<!-- [!code-json[Main](~/samples-durable-functions/samples/csx/E3_Counter/function.json)] -->
 
 A run.csx fájlt:
 
-[!code-csharp[Main](~/samples-durable-functions/samples/csx/E3_Counter/run.csx)]
+<!-- [!code-csharp[Main](~/samples-durable-functions/samples/csx/E3_Counter/run.csx)] -->
 
 ### <a name="precompiled-c"></a>Lefordított C# 
 
@@ -67,7 +70,7 @@ Az alábbi szakaszok ismertetik a Visual Studio fejlesztői használt kódot.
 
 A kód, amely megvalósítja az orchestrator függvény itt látható:
 
-[!code-csharp[Main](~/samples-durable-functions/samples/precompiled/Counter.cs)]
+<!-- [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/Counter.cs)] -->
 
 ### <a name="explanation-of-the-code"></a>A kód ismertetése
 
@@ -85,7 +88,7 @@ Az orchestrator függvény egy egyedi jellemzője, gyakorlatilag az előzmények
 > [!NOTE]
 > A `ContinueAsNew` metódusnak más példái mellett eternal álló üzenettípusok összehangolását. További információkért lásd: [Eternal álló üzenettípusok összehangolását](durable-functions-eternal-orchestrations.md).
 
-## <a name="run-the-sample"></a>A minta futtatásához
+## <a name="run-the-sample"></a>Minta futtatása
 
 A vezénylési megkezdheti úgy, hogy a következő HTTP POST-kérelmet küld. Engedélyezi `counterState` nulla elindításához (az alapértelmezett érték `int`), a kérelemben nincs tartalom.
 
@@ -150,7 +153,7 @@ Folytatja a küldést új műveletek ehhez a példányhoz, és figyelje meg, hog
 > [!WARNING]
 > Írásának időpontjában vannak ismert versenyhelyzetek meghívásakor `ContinueAsNew` egyidejűleg az üzenetek, például a külső események vagy megszakítási kérelem feldolgozása közben. Ezek versenyhelyzetek a legfrissebb információkért lásd: a [GitHub probléma](https://github.com/Azure/azure-functions-durable-extension/issues/67).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez a minta bemutatta, hogyan legyen kezelve [külső események](durable-functions-external-events.md) és valósíthatnak meg [eternal álló üzenettípusok összehangolását](durable-functions-eternal-orchestrations.md) a [állapot-nyilvántartó singletons](durable-functions-singletons.md). A következő példa bemutatja, hogyan használja külső eseményeket és [tartós időzítők](durable-functions-timers.md) kezelésére emberi beavatkozást igényel.
 

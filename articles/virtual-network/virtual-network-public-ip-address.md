@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: jdial
-ms.openlocfilehash: e6eacdb437d28eb733da522280cb2c7d8c24d9ba
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 8efc0bff4764a7265a5f1bcdd995979af0b22234
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="create-change-or-delete-a-public-ip-address"></a>Létrehozása, módosítása vagy a nyilvános IP-cím törlése
 
@@ -29,21 +29,20 @@ Információ a nyilvános IP-cím és létrehozása, módosítása és törlése
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Esetlegesen szakasz ebben a cikkben szereplő lépésekkel befejezése előtt hajtsa végre a következő feladatokat:
+Ez a cikk bármely szakaszának lépéseit befejezése előtt hajtsa végre a következőket:
 
-- Tekintse át a [Azure korlátozza](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) cikkben tájékozódhat az korlátozhatja a nyilvános IP-címeket.
-- Jelentkezzen be a Azure [portal](https://portal.azure.com), az Azure parancssori felület (CLI), vagy az Azure PowerShell használata az Azure-fiók. Ha még nem rendelkezik Azure-fiókja, regisztráljon egy [ingyenes próbafiók](https://azure.microsoft.com/free).
-- Ha a feladat-ebben a cikkben a PowerShell-parancsokkal [Azure PowerShell telepítése és konfigurálása](/powershell/azureps-cmdlets-docs?toc=%2fazure%2fvirtual-network%2ftoc.json). Ellenőrizze, hogy a legfrissebb telepítve az Azure PowerShell-parancsmagjaival. Ha segítséget szeretne kérni a PowerShell-parancsaihoz, valamint példákkal, írja be a `get-help <command> -full`.
-- Ha ebben a cikkben a feladatokat az Azure parancssori felület (CLI) parancsokkal [telepítése és konfigurálása az Azure parancssori felület](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json). Ellenőrizze, hogy a telepített Azure CLI legújabb verziója. Segítség kérése parancssori felület parancsait, írja be a következőt `az <command> --help`. Ahelyett, hogy a parancssori felület és a szükséges előfeltételek telepítése, az Azure-felhő rendszerhéj is használhatja. Az Azure Cloud Shell olyan ingyenes Bash-felület, amelyet közvetlenül futtathat az Azure Portalon. A fiókjával való használat érdekében az Azure CLI már előre telepítve és konfigurálva van rajta. A felhő rendszerhéj használatához kattintson a felhő rendszerhéj **> _** gomb tetején a [portal](https://portal.azure.com).
+- Ha még nem rendelkezik Azure-fiókja, regisztráljon egy [ingyenes próbafiók](https://azure.microsoft.com/free).
+- Ha a portál használatával, nyissa meg a https://portal.azure.com, és jelentkezzen be az Azure-fiókjával.
+- Ha a PowerShell-parancsokkal ebben a cikkben a feladatokat, vagy futtassa a parancsokat a [Azure Cloud rendszerhéj](https://shell.azure.com/powershell), vagy a PowerShell futtatásával a számítógépről. Az Azure Cloud Shell egy olyan ingyenes interaktív kezelőfelület, amelyet a jelen cikkben található lépések futtatására használhat. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. Ebben az oktatóanyagban az Azure PowerShell modul verziója 5.2.0 szükséges vagy újabb. Futtatás `Get-Module -ListAvailable AzureRM` telepített verziója található. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Login-AzureRmAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
+- Azure parancssori felület (CLI) parancsok használata ebben a cikkben a feladatokat, vagy futtassa a parancsokat a [Azure Cloud rendszerhéj](https://shell.azure.com/bash), vagy a CLI-t a számítógépen való futtatásával. Ez az oktatóanyag az Azure parancssori felület 2.0.26 verziója szükséges, vagy később. Futtatás `az --version` telepített verziója található. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése](/cli/azure/install-azure-cli). Ha helyileg futtatja az Azure parancssori felület, is futtatásához szükséges `az login` az Azure VPN-kapcsolat létrehozásához.
 
 Nyilvános IP-címek rendelkezik egy névleges kell fizetni. Az árképzés megtekintéséhez olvassa el a [IP-cím árképzési](https://azure.microsoft.com/pricing/details/ip-addresses) lap. 
 
 ## <a name="create-a-public-ip-address"></a>Hozzon létre egy nyilvános IP-címet
 
-1. Jelentkezzen be a [Azure-portálon](https://portal.azure.com) egy olyan fiókkal, amely a hálózat közreműködő szerepkört az előfizetés (minimum) hozzárendelt engedélyeit. Olvassa el a [Azure szerepköralapú hozzáférés-vezérlés beépített szerepkörök](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) cikk tudhat meg többet a szerepköröket és engedélyeket hozzárendelése a fiókokhoz.
-2. A mezőbe a szöveget tartalmazó *keresési erőforrások* az Azure portál felső részén írja be a *nyilvános IP-cím*. Ha **nyilvános IP-címek** jelenik meg a keresési eredmények között kattintson rá.
-3. Kattintson a **+ Hozzáadás** a a **nyilvános IP-cím** panel, amely akkor jelenik meg.
-4. Adja meg vagy válassza ki a következő beállítások értékei a **nyilvános IP-cím létrehozása** panel, amely akkor jelenik meg, majd kattintson **létrehozása**:
+1. A mezőbe a szöveget tartalmazó *keresési erőforrások* az Azure portál felső részén írja be a *nyilvános IP-cím*. Ha **nyilvános IP-címek** jelenik meg a keresési eredmények között kattintson rá.
+2. Kattintson a **+ Hozzáadás** a a **nyilvános IP-cím** panel, amely akkor jelenik meg.
+3. Adja meg vagy válassza ki a következő beállítások értékei a **nyilvános IP-cím létrehozása** panel, amely akkor jelenik meg, majd kattintson **létrehozása**:
 
     |Beállítás|Kötelező?|Részletek|
     |---|---|---|
@@ -73,10 +72,9 @@ Bár a portálon hozzon létre két nyilvános IP-cím erőforrás (egy IPv4- é
 
 ## <a name="view-change-settings-for-or-delete-a-public-ip-address"></a>Megtekintése, módosítsa a beállításokat, vagy egy nyilvános IP-cím törlése
 
-1. Jelentkezzen be a [Azure-portálon](https://portal.azure.com) egy olyan fiókkal, amely a hálózat közreműködő szerepkört az előfizetés (minimum) hozzárendelt engedélyeit. Olvassa el a [Azure szerepköralapú hozzáférés-vezérlés beépített szerepkörök](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) cikk tudhat meg többet a szerepköröket és engedélyeket hozzárendelése a fiókokhoz.
-2. A mezőbe a szöveget tartalmazó *keresési erőforrások* az Azure portál felső részén írja be a *nyilvános IP-cím*. Ha **nyilvános IP-címek** jelenik meg a keresési eredmények között kattintson rá.
-3. Az a **nyilvános IP-címek** panel, amelyen megjelenik, kattintson a nevére, a nyilvános IP-cím szeretné megtekinteni, beállításainak módosítása vagy törlése.
-4. A panelen megjelenő a nyilvános IP-cím végezze el, attól függően, hogy megtekintéséhez, törölni vagy módosítani a nyilvános IP-cím a következő lehetőségek közül.
+1. A mezőbe a szöveget tartalmazó *keresési erőforrások* az Azure portál felső részén írja be a *nyilvános IP-cím*. Ha **nyilvános IP-címek** jelenik meg a keresési eredmények között kattintson rá.
+2. Az a **nyilvános IP-címek** panel, amelyen megjelenik, kattintson a nevére, a nyilvános IP-cím szeretné megtekinteni, beállításainak módosítása vagy törlése.
+3. A panelen megjelenő a nyilvános IP-cím végezze el, attól függően, hogy megtekintéséhez, törölni vagy módosítani a nyilvános IP-cím a következő lehetőségek közül.
     - **Nézet**: A **áttekintése** a panel részén látható beállításait a nyilvános IP-címet, például a hálózati illesztő azt hozzá van rendelve (Ha egy hálózati adapter társítva hozzá a cím). A portál nem jelenik meg a címet (IPv4 vagy IPv6) verziója. Szeretné megtekinteni a fájlverzió-információkat, a PowerShell vagy a CLI parancs segítségével megtekintheti a nyilvános IP-cím. Ha az IP-cím verziót IPv6, a hozzárendelt címet nem jelenik meg a portálon, PowerShell vagy a parancssori felület. 
     - **Törlés**: a nyilvános IP-cím törléséhez kattintson **törlése** a a **áttekintése** részében találhatja. Ha a cím jelenleg társított IP-konfigurációt, nem lehet törölni. Ha a cím jelenleg társítva van egy konfigurációhoz, kattintson a **szüntesse** leválasztja a címet az IP-konfigurációt.
     - **Változás**: kattintson a **konfigurációs**. Az információk alapján a 4. lépésben a beállítások módosításához a [hozzon létre egy nyilvános IP-cím](#create-a-public-ip-address) című szakaszát. Ha módosítani szeretné egy IPv4-cím hozzárendelés statikus dinamikus, meg kell szüntetnie a nyilvános IPv4-cím, amelyekhez társítva vannak az IP-konfigurációja a. Majd módosítsa a hozzárendelési módszert dinamikus, majd kattintson az **társítása** hozzárendelni az IP cím az ugyanazon IP-konfiguráció, egy másik konfigurációt, vagy is hagyhatja leválasztása. Leválasztja a nyilvános IP-cím, az a **áttekintése** kattintson **szüntesse**.
@@ -98,16 +96,12 @@ Bár a portálon hozzon létre két nyilvános IP-cím erőforrás (egy IPv4- é
 
 Mielőtt létrehozna egy Standard Termékváltozat nyilvános IP-címet, először regisztrálnia kell az előzetes verziójára. Végezze el az előzetes regisztrálásához a következő lépéseket:
 
-1. Telepítse és konfigurálja az Azure [PowerShell](/powershell/azure/install-azurerm-ps).
-2. Futtassa a `Get-Module -ListAvailable AzureRM` parancsot a AzureRM modul verziójának telepítését. 4.4.0 verziójával kell rendelkeznie, vagy újabb verziója. Ha nem így tesz, telepítheti a legújabb verziót a [PowerShell-galériában](https://www.powershellgallery.com/packages/AzureRM).
-3. Jelentkezzen be Azure-bA a `login-azurermaccount` parancsot.
-4. Adja meg az előzetes regisztrálásához a következő parancsot:
+1. A Powershellből adja meg az előzetes regisztrálásához a következő parancsot:
    
     ```powershell
     Register-AzureRmProviderFeature -FeatureName AllowLBPreview -ProviderNamespace Microsoft.Network
     ```
-
-5. Győződjön meg arról, hogy be vannak jegyezve a az előzetes a következő parancs beírásával:
+2. Győződjön meg arról, hogy be vannak jegyezve a az előzetes a következő parancs beírásával:
 
     ```powershell
     Get-AzureRmProviderFeature -FeatureName AllowLBPreview -ProviderNamespace Microsoft.Network

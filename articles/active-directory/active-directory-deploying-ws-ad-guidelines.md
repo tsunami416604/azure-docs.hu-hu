@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/26/2017
 ms.author: femila
-ms.openlocfilehash: 2a6ac8d9c2f3694cf08357d6ccec874f7e076514
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 61f84233b90cb3c82ed928d59ad2a090f7eb50b7
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="guidelines-for-deploying-windows-server-active-directory-on-azure-virtual-machines"></a>Windows Server Active Directory telepítése Azure virtuális gépekre vonatkozó irányelvek
 Ez a cikk ismerteti a központi telepítése Windows Server Active Directory tartományi szolgáltatások (AD DS) és az Active Directory összevonási szolgáltatások (AD FS) helyszíni és a Microsoft Azure virtuális gépeken történő üzembe fontos különbségei.
@@ -433,7 +433,7 @@ Ne használja a SYSPREP központi telepítése, illetve azok a tartományvezérl
 Válassza ki a megfelelő a Windows Server AD DS-adatbázis, a naplókat, és a SYSVOL mappa helyének. Ezek az Azure-adatlemez kell telepíteni.
 
 > [!NOTE]
-> Az Azure adatlemezek csak korlátozottan és 4 TB.
+> Az Azure data lemezek 4 TB-os korlátozódnak.
 > 
 > 
 

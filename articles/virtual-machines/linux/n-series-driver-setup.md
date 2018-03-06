@@ -13,32 +13,28 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 02/01/2018
+ms.date: 03/01/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 421e594f7bd4df1bc1c5faedc2c8bfab0540ca61
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 201734661873c7ac7f7a5dd710009eb324cedc86
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>N-sorozat linuxos virtuális gépek NVIDIA GPU illesztőprogramok telepítéséhez
 
 Linuxos Azure N sorozatú virtuális gépek GPU lehetőségeinek kihasználásához, támogatott NVIDIA video-illesztőprogramok telepítéséhez. Ez a cikk lépéseit illesztőprogram beállítása az N-sorozatú virtuális gép telepítése után. Telepítési információk illesztőprogram érhető el is [Windows virtuális gépek](../windows/n-series-driver-setup.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
-
 N sorozatú virtuális gép specifikációk, tárolási kapacitás, és a lemez adatai: [GPU Linux Virtuálisgép-méretek](sizes-gpu.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). 
-
-
 
 [!INCLUDE [virtual-machines-n-series-linux-support](../../../includes/virtual-machines-n-series-linux-support.md)]
 
-## <a name="install-cuda-drivers-for-nc-ncv2-and-nd-vms"></a>A hálózati vezérlő által, NCv2 és ND virtuális gépek CUDA illesztőprogramok telepítése
+## <a name="install-cuda-drivers-for-nc-ncv2-ncv3-and-nd-series-vms"></a>A hálózati vezérlő által, NCv2, NCv3 és ND sorozatú virtuális gépek CUDA illesztőprogramok telepítése
 
-Az alábbiakban a NVIDIA CUDA eszközkészlet a Linux NC gépeken NVIDIA illesztőprogramok telepítésének lépéseit. 
+Az alábbiakban a NVIDIA CUDA eszközkészlet N sorozatú virtuális gépeken a NVIDIA illesztőprogramok telepítésének lépéseit. 
 
 C és C++ fejlesztők is telepíthet a teljes eszközkészlet GPU-gyorsított alkalmazásokat hozhatnak létre. További információkért lásd: a [CUDA a telepítési útmutató](http://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html).
-
 
 > [!NOTE]
 > CUDA illesztőprogram letöltési hivatkozásokat itt megadott aktuális kiadvány időpontban. A legújabb CUDA illesztőprogramokat, látogasson el a [NVIDIA](https://developer.nvidia.com/cuda-zone) webhelyet.
@@ -113,9 +109,9 @@ sudo reboot
 2. Install the latest Linux Integration Services for Hyper-V.
 
   ```bash
-  wget http://download.microsoft.com/download/6/8/F/68FE11B8-FAA4-4F8D-8C7D-74DA7F2CFC8C/lis-rpms-4.2.3-5.tar.gz
+  wget http://download.microsoft.com/download/6/8/F/68FE11B8-FAA4-4F8D-8C7D-74DA7F2CFC8C/lis-rpms-4.2.4.tar.gz
  
-  tar xvzf lis-rpms-4.2.3-5.tar.gz
+  tar xvzf lis-rpms-4.2.4.tar.gz
  
   cd LISISO
  
@@ -152,16 +148,13 @@ sudo reboot
 
 5. A virtuális gép újraindul, és ellenőrizheti a telepítést.
 
-
 ### <a name="verify-driver-installation"></a>Illesztőprogram telepítésének ellenőrzése
-
 
 Lekérdezni a GPU eszközállapotba SSH a virtuális gép, és futtassa a [nvidia-smi](https://developer.nvidia.com/nvidia-system-management-interface) parancssori segédprogram illesztőprogrammal telepítve. 
 
 Ha az illesztőprogram telepítve van, látni fogja a következőhöz hasonló kimenetet. Vegye figyelembe, hogy **GPU-Util** 0 % mutatja, kivéve, ha meg van nyitva egy GPU munkaterhelés a virtuális Gépen. A illesztőprogramjának verziószámát és a GPU részletek látható eltérő lehet.
 
 ![NVIDIA eszköz állapota](./media/n-series-driver-setup/smi.png)
-
 
 ## <a name="rdma-network-connectivity"></a>RDMA hálózati kapcsolat
 
@@ -180,9 +173,9 @@ RDMA-kompatibilisek-e N sorozatú virtuális gépek, az Azure piactéren, amely 
 > 
 
 
-## <a name="install-grid-drivers-for-nv-vms"></a>Portok HV virtuális gépek rács illesztőprogramok telepítése
+## <a name="install-grid-drivers-for-nv-series-vms"></a>Portok HV-sorozatú virtuális gépek rács illesztőprogramok telepítése
 
-Portok HV virtuális gépeken NVIDIA rács illesztőprogramok telepítéséhez az SSH-kapcsolat ellenőrizze az egyes virtuális, és kövesse a lépéseket a Linux terjesztéshez. 
+Portok HV-sorozatú virtuális gépeken NVIDIA rács illesztőprogramok telepítéséhez az SSH-kapcsolat ellenőrizze az egyes virtuális, és kövesse a lépéseket a Linux terjesztéshez. 
 
 ### <a name="ubuntu-1604-lts"></a>Ubuntu 16.04 LTS
 
@@ -265,9 +258,9 @@ Portok HV virtuális gépeken NVIDIA rács illesztőprogramok telepítéséhez a
 3. Indítsa újra a virtuális gép, csatlakozzon újra, és telepítse a legújabb Linux integrációs szolgáltatásokat a Hyper-V:
  
   ```bash
-  wget http://download.microsoft.com/download/6/8/F/68FE11B8-FAA4-4F8D-8C7D-74DA7F2CFC8C/lis-rpms-4.2.3-5.tar.gz
+  wget http://download.microsoft.com/download/6/8/F/68FE11B8-FAA4-4F8D-8C7D-74DA7F2CFC8C/lis-rpms-4.2.4.tar.gz
 
-  tar xvzf lis-rpms-4.2.3-5.tar.gz
+  tar xvzf lis-rpms-4.2.4.tar.gz
 
   cd LISISO
 
@@ -348,7 +341,6 @@ Hozzon létre egy bejegyzést, az ezt a fájlt is elindítható a rendszerindít
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
 * Adatmegőrzési mód használatával állíthatja be `nvidia-smi` , a parancs kimenetében esetén gyorsabb lekérdezés kártyák kell. Adatmegőrzési üzemmód beállítása, hajtsa végre a `nvidia-smi -pm 1`. Vegye figyelembe, hogy a virtuális gép újraindul, ha a üzemmódját eltűnik. Lehet mindig parancsprogramot futtatni a üzemmódját indításkor végrehajtásához.
-
 
 ## <a name="next-steps"></a>További lépések
 

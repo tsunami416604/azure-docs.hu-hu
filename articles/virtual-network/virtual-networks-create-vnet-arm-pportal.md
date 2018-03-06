@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 03/01/2018
 ms.author: jdial
 ms.custom: 
-ms.openlocfilehash: 201da4e6ec86a6c2a79a9e948245c0d83708c3f9
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: c89b455212ad428dbe67d7f1d95517072c220d8e
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="create-a-virtual-network-with-multiple-subnets-using-the-azure-portal"></a>Hozzon létre egy virtuális hálózatot, az Azure portál használatával több alhálózattal
 
@@ -53,8 +53,8 @@ Jelentkezzen be az Azure Portalra a http://portal.azure.com webhelyen.
 2. Válassza ki **alhálózatok** majd **+ alhálózati**, az alábbi ábrán látható módon:
 
      ![Adjon hozzá egy alhálózatot](./media/virtual-networks-create-vnet-arm-pportal/add-subnet.png)
-
-3. Az a **alhálózat hozzáadása** megjelenő, a szövegmezőbe írja be *titkos* a **neve**, adja meg *10.0.1.0/24* a **-címtartományt**, majd válassza ki **OK**. 
+     
+3. Az a **alhálózat hozzáadása** megjelenő, a szövegmezőbe írja be *titkos* a **neve**, adja meg *10.0.1.0/24* a **-címtartományt**, majd válassza ki **OK**.  A alhálózati címtartományt a címtartományokat más alhálózatok virtuális hálózaton belülről nem lehet átfedésben. 
 
 Az Azure virtuális hálózatok és alhálózatok üzemi használatra való telepítése előtt javasoljuk, hogy alaposan megismerje a címterület [szempontok](virtual-network-manage-network.md#create-a-virtual-network) és [virtuális hálózati korlátok](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits). Amennyiben az erőforrások telepítése alhálózatokra, virtuális hálózati és alhálózati módosításokat, például megváltoztatni a címtartományt, alhálózatok belül rendszerbe meglévő Azure-erőforrások újratelepítés lehet szükség.
 
@@ -83,6 +83,8 @@ A virtuális hálózati lehetővé teszi, hogy számos különböző Azure-erőf
 7. Fejezze be újra 1-6. lépéseket, de meg *myVmMgmt* a a **neve** a virtuális gép, és válassza ki **titkos** a a **alhálózati**.
 
 A virtuális gépek létrehozása több percig is tarthat. Ne folytassa a hátralévő lépéseket addig mindkét virtuális gépek jönnek létre.
+
+Ez a cikk a létrehozott virtuális gépek rendelkezik ilyennel [hálózati illesztő](virtual-network-network-interface.md) dinamikusan hozzárendelt hálózati illesztő egy IP-címmel. A virtuális gép telepítése után is [több nyilvános és magánhálózati IP-címek hozzáadása vagy módosítása a IP-cím hozzárendelés metódus statikus](virtual-network-network-interface-addresses.md#add-ip-addresses). Is [hozzáadása a hálózati adapterek](virtual-network-network-interface-vm.md#vm-add-nic), akár által támogatott maximális a [Virtuálisgép-méretet](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) válassza, ha egy virtuális gépet hoz létre. Emellett [egygyökerű i/o-virtualizálás (SR-IOV) engedélyezése](create-vm-accelerated-networking-powershell.md) a virtuális gép, de csak akkor, ha egy virtuális gép létrehozásához, amely a funkció támogatja a Virtuálisgép-méretet.
 
 ### <a name="communicate-between-virtual-machines-and-with-the-internet"></a>A virtuális gépek között, és az internetes kommunikáció
 
@@ -127,7 +129,9 @@ A virtuális gépek létrehozása több percig is tarthat. Ne folytassa a hátra
         Minimum = 0ms, Maximum = 0ms, Average = 0ms
     ```
       
-    Láthatja, hogy a cím a *myVmMgmt* virtuális gép 10.0.1.4. 10.0.1.4 volt az első elérhető IP-címek tartománya, a *titkos* alhálózati központilag telepített a *myVmMgmt* az előző lépésben a virtuális gép.  Azt látja, hogy a virtuális gép teljesen minősített tartománynevét *myvmmgmt.dar5p44cif3ulfq00wxznl3i3f.bx.internal.cloudapp.net*. Bár a *dar5p44cif3ulfq00wxznl3i3f* a tartománynév része nem egyezik a virtuális gép, a tartomány nevét az többi részének azonosak. Alapértelmezés szerint az összes Azure virtuális gép használja az alapértelmezett Azure DNS szolgáltatást. Az összes virtuális gép a virtuális hálózaton belül az azonos virtuális hálózatban, Azure alapértelmezett DNS-szolgáltatás segítségével más virtuális gépek képes névfeloldásra. Azure alapértelmezett DNS-szolgáltatás helyett használhatja a saját DNS-kiszolgáló vagy a saját szolgáltatása az Azure DNS-szolgáltatás. További információkért lásd: [névfeloldáshoz a saját DNS-kiszolgáló](virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-using-your-own-dns-server) vagy [titkos tartományok Azure DNS használatával](../dns/private-dns-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+    Láthatja, hogy a cím a *myVmMgmt* virtuális gép 10.0.1.4. 10.0.1.4 volt az első elérhető IP-címek tartománya, a *titkos* alhálózati központilag telepített a *myVmMgmt* az előző lépésben a virtuális gép.  Azt látja, hogy a virtuális gép teljesen minősített tartománynevét *myvmmgmt.dar5p44cif3ulfq00wxznl3i3f.bx.internal.cloudapp.net*. Bár a *dar5p44cif3ulfq00wxznl3i3f* a tartománynév része nem egyezik a virtuális gép, a tartomány nevét az többi részének azonosak. 
+
+    Alapértelmezés szerint az összes Azure virtuális gép használja az alapértelmezett Azure DNS szolgáltatást. Az összes virtuális gép a virtuális hálózaton belül az azonos virtuális hálózatban, Azure alapértelmezett DNS-szolgáltatás segítségével más virtuális gépek képes névfeloldásra. Azure alapértelmezett DNS-szolgáltatás helyett használhatja a saját DNS-kiszolgáló vagy a saját szolgáltatása az Azure DNS-szolgáltatás. További információkért lásd: [névfeloldáshoz a saját DNS-kiszolgáló](virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-using-your-own-dns-server) vagy [titkos tartományok Azure DNS használatával](../dns/private-dns-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 9. Internet Information Services (IIS) telepítése a Windows Server a a *myVmWeb* virtuális gépet, adja meg a következő parancsot egy PowerShell-munkamenetben:
 
@@ -137,13 +141,12 @@ A virtuális gépek létrehozása több percig is tarthat. Ne folytassa a hátra
 
 10. A telepítés végeztével az IIS, válassza le a *myVmWeb* a távoli asztali munkamenetgazda, így a a *myVmMgmt* távoli asztali munkamenetet. Nyisson meg egy webböngészőt, és keresse meg a http://myvmweb. Az IIS üdvözlőlap láthatja.
 11. Válassza le a *myVmMgmt* távoli asztali munkamenetet.
-12. Kísérlet történt az IIS a saját számítógépéről üdvözli a lapnak a megtekintésére. Azure létrehozásakor a *myVmWeb* virtuális gép, egy nyilvános IP-cím erőforrás nevű *myVmWeb* is létrejött, de a virtuális géphez rendelt. Láthatja, hogy 52.170.5.92 be lett-e rendelve a *myVmMgmt* a képen látható, a 2. lépésben a virtuális gép. Rendelt nyilvános IP-cím kereséséhez a *myVmWeb* virtuális gépet, a Keresés *myVmWeb* a keresési mezőbe, majd jelölje ki a keresési eredmények megjelenésekor. 
+12. A nyilvános IP-címének a a *myVmWeb* virtuális gépet. Azure létrehozásakor a *myVmWeb* virtuális gép, egy nyilvános IP-cím erőforrás nevű *myVmWeb* is létrejött, de a virtuális géphez rendelt. Láthatja, hogy 52.170.5.92 hozzá lett rendelve **nyilvános IP-cím** számára a *myVmMgmt* a képen látható, a 2. lépésben a virtuális gép. Rendelt nyilvános IP-cím kereséséhez a *myVmWeb* virtuális gépet, a Keresés *myVmWeb* a portál keresési mezőbe, majd válassza ki azt a keresési eredmények megjelenésekor.
 
     Bár a virtuális gép nem kell egy nyilvános IP-címet kap, Azure rendel hozzá egy nyilvános IP-cím minden virtuális gépet hoz létre, alapértelmezés szerint. Útján kommunikálnak az interneten a virtuális gép, egy nyilvános IP-címet kell rendelni a virtuális géphez. Minden virtuális gépek kommunikálhatnak az internettel kimenő, függetlenül attól, egy nyilvános IP-címet a virtuális géphez van rendelve. Az Azure-ban kimenő internetes kapcsolatok kapcsolatos további információkért lásd: [az Azure-ban kimenő kapcsolatok](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+13. A saját számítógépen keresse meg a nyilvános IP-címét a *myVmWeb* virtuális gépet. A saját számítógépéről IIS-üdvözli a lapnak a megtekintésére irányuló kísérlet sikertelen lesz. A kísérlet meghiúsul, mert a virtuális gépek üzembe helyezése, amikor Azure alapértelmezés szerint minden egyes virtuális gép hálózati biztonsági csoport létrehozása. 
 
-    A saját számítógépen keresse meg a nyilvános IP-címét a *myVmWeb* virtuális gépet. A saját számítógépéről IIS-üdvözli a lapnak a megtekintésére irányuló kísérlet sikertelen lesz. A kísérlet meghiúsul, mert a virtuális gépek üzembe helyezése, amikor Azure alapértelmezés szerint minden egyes virtuális gép hálózati biztonsági csoport létrehozása. 
-
-    Hálózati biztonsági csoport biztonsági szabályokat, amelyek engedélyezik vagy megtagadják a bejövő és kimenő hálózati forgalom port és az IP-címet tartalmazza. Az alapértelmezett hálózati biztonsági csoport létrehozása Azure lehetővé teszi a kommunikációt az azonos virtuális hálózatban lévő erőforrások közötti összes portokon keresztül. Windows virtuális gépek esetén az alapértelmezett hálózati biztonsági csoport minden bejövő forgalom megtagadja az interneten összes portokon keresztül, fogadja el a TCP-port 3389-es (RDP). Ennek eredményeképpen alapértelmezés szerint is RDP közvetlenül a *myVmWeb* virtuális gép az internetről, annak ellenére, hogy nem érdemes port 3389 nyissa meg a webkiszolgálón. Webböngészés 80-as porton keresztül kommunikál, mivel kommunikációs az internetről sikertelen, mert nincs szabály az alapértelmezett hálózati biztonsági csoport átengedi a forgalmat a 80-as porton keresztül.
+     Hálózati biztonsági csoport biztonsági szabályokat, amelyek engedélyezik vagy megtagadják a bejövő és kimenő hálózati forgalom port és az IP-címet tartalmazza. Az alapértelmezett hálózati biztonsági csoport létrehozása Azure lehetővé teszi a kommunikációt az azonos virtuális hálózatban lévő erőforrások közötti összes portokon keresztül. Windows virtuális gépek esetén az alapértelmezett hálózati biztonsági csoport minden bejövő forgalom megtagadja az interneten összes portokon keresztül, fogadja el a TCP-port 3389-es (RDP). Ennek eredményeképpen alapértelmezés szerint is RDP közvetlenül a *myVmWeb* virtuális gép az internetről, annak ellenére, hogy nem érdemes port 3389 nyissa meg a webkiszolgálón. Webböngészés 80-as porton keresztül kommunikál, mivel kommunikációs az internetről sikertelen, mert nincs szabály az alapértelmezett hálózati biztonsági csoport átengedi a forgalmat a 80-as porton keresztül.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

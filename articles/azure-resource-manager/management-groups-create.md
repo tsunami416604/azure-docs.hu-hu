@@ -10,13 +10,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 2/22/2018
+ms.date: 3/1/2018
 ms.author: rithorn
-ms.openlocfilehash: 7c5aeca5afe8921ab39040e9afc2921b1711c447
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: ae91ad29b867ad4ab00831ee40102bcec2fc890c
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="create-management-groups-for-resource-organization-and-management"></a>Az erőforrás-szervezet és felügyeleti felügyeleti csoportok létrehozása
 Felügyeleti csoportok elősegítő tárolók hozzáférési házirend és megfelelőség kezeléséhez több előfizetéssel. Ezekben a tárolókban felépítését egy eredményesebbé és hatékonyabbá teszi a használható létrehozása [Azure házirend](../azure-policy/azure-policy-introduction.md) és [Azure szerepkör alapú hozzáférés-vezérlést](../active-directory/role-based-access-control-what-is.md). A felügyeleti csoportok további információkért lásd: [rendezheti az erőforrásokat az Azure felügyeleti csoportok ](management-groups-overview.md). 
@@ -47,14 +47,14 @@ A felügyeleti csoport is létrehozhat a portál, PowerShell vagy az Azure paran
 Belül PowerShell az Add-AzureRmManagementGroups parancsmagok használata.   
 
 ```azurepowershell-interactive
-C:\> Add-AzureRmManagementGroup -GroupName Contoso 
+C:\> New-AzureRmManagementGroup -GroupName Contoso 
 ```
 A **GroupName** egyedi azonosító létrehozása folyamatban. Az azonosító olyan más parancsok által hivatkozhasson rá az ehhez a csoporthoz, és azt később már nem módosítható.
 
 Ha a felügyeleti csoport egy másik nevet az Azure portálon megjelenítendő szeretett volna, kell felvenni a **DisplayName** paraméter karakterlánccal. Például ha egy felügyeleti csoport létrehozása a Contoso GroupName és megjelenített neve a "Contoso csoport", használhatja a következő parancsmagot: 
 
 ```azurepowershell-interactive
-C:\> Add-AzureRmManagementGroup -GroupName Contoso -DisplayName "Contoso Group" -ParentId ContosoTenant
+C:\> New-AzureRmManagementGroup -GroupName Contoso -DisplayName "Contoso Group" -ParentId ContosoTenant
 ``` 
 Használja a **ParentId** paramétert a felügyeleti csoportot létrehozni egy másik felügyeleti csoportban.  
 

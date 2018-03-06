@@ -4,18 +4,18 @@ description: "Az Azure Machine Learning modell adatok gyűjtemény API-hivatkoz�
 services: machine-learning
 author: aashishb
 ms.author: aashishb
-manager: neerajkh
-ms.reviewer: garyericson, jasonwhowell, mldocs
+manager: hjerez
+ms.reviewer: jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 09/12/2017
-ms.openlocfilehash: 7a0fda8a44d13bcaba84b4124d9b693c05874154
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2de5e8bc8880fea5e7f57c88590e32a9fbb60ac6
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="azure-machine-learning-model-data-collection-api-reference"></a>Az Azure Machine Learning modell adatok gyűjtemény API-referencia
 
@@ -48,27 +48,27 @@ Használatos operationalization pontozási fájlban az adatokat gyűjtő modulj�
 ## <a name="model-data-collector-instantiation"></a>Modell adatokat gyűjtő által okozott
 Egy új példányát egy ModelDataCollector hozható létre:
 
-DC = ModelDataCollector (modell_neve, azonosító = "alapértelmezett", feature_names = None, model_management_account_id = "Ismeretlen", az webservice_name = "Ismeretlen", az model_id = "Ismeretlen", az model_version = "Ismeretlen")
+dc = ModelDataCollector(model_name, identifier='default', feature_names=None, model_management_account_id='unknown', webservice_name='unknown', model_id='unknown', model_version='unknown')
 
 A Részletek területen osztály és a paraméter:
 
 ### <a name="class"></a>Osztály
-| Név | Leírás |
+| Name (Név) | Leírás |
 |--------------------|--------------------|
 | ModelDataCollector | Egy osztály azureml.datacollector névtérben. Ez az osztály példánya használandó modell adatok gyűjtéséért felelős ügyfélfeladatot. A pontozási egyetlen fájl tartalmazhat több ModelDataCollectors. Adatgyűjtés a pontozási fájlban egy különálló helyen, hogy az összegyűjtött adatokat a séma konzisztensek maradnak minden példányt kell használni (Ez azt jelenti, hogy a be- és előrejelzés)|
 
 
 ### <a name="parameters"></a>Paraméterek
 
-| Név | Típus | Leírás |
+| Name (Név) | Típus | Leírás |
 |-------------|------------|-------------------------|
-| modell_neve | Karakterlánc | a modell, mely adatokat gyűjtenek neve |
-| Azonosítója | Karakterlánc | a hely a kódot, amely ezeket az adatokat, azaz azonosítja "RawInput" vagy "Előrejelző" |
+| model_name | karakterlánc | a modell, mely adatokat gyűjtenek neve |
+| Azonosítója | karakterlánc | a hely a kódot, amely ezeket az adatokat, azaz azonosítja "RawInput" vagy "Előrejelző" |
 | feature_names | karakterlánc-listával | a csv-fejléc, amikor váló szolgáltatás nevek listája |
-| model_management_account_id | Karakterlánc | a modell-felügyeleti fiókja, ez a modell tároló azonosítója. Ez a telepítéskor automatikusan amikor modellek vannak operationalized AML keresztül |
-| webservice_name | Karakterlánc | a neve, amelyhez ez a modell jelenleg telepítve van a webszolgáltatás. Ez a telepítéskor automatikusan amikor modellek vannak operationalized AML keresztül |
-| model_id | Karakterlánc | A modellből az adott környezetben a modell felügyeleti fiók egyedi azonosítója. Ez a telepítéskor automatikusan amikor modellek vannak operationalized AML keresztül |
-| model_version | Karakterlánc | Ez a modell egy modell felügyeleti fiók a környezetében verziószámát. Ez a telepítéskor automatikusan amikor modellek vannak operationalized AML keresztül |
+| model_management_account_id | karakterlánc | a modell-felügyeleti fiókja, ez a modell tároló azonosítója. Ez a telepítéskor automatikusan amikor modellek vannak operationalized AML keresztül |
+| webservice_name | karakterlánc | a neve, amelyhez ez a modell jelenleg telepítve van a webszolgáltatás. Ez a telepítéskor automatikusan amikor modellek vannak operationalized AML keresztül |
+| model_id | karakterlánc | A modellből az adott környezetben a modell felügyeleti fiók egyedi azonosítója. Ez a telepítéskor automatikusan amikor modellek vannak operationalized AML keresztül |
+| model_version | karakterlánc | Ez a modell egy modell felügyeleti fiók a környezetében verziószámát. Ez a telepítéskor automatikusan amikor modellek vannak operationalized AML keresztül |
 
 
 
@@ -83,15 +83,15 @@ A modell adatai, a fentiekben létrehozott ModelDataCollector példányának has
 A Részletek területen metódus és a paraméter:
 
 ### <a name="method"></a>Módszer
-| Név | Leírás |
+| Name (Név) | Leírás |
 |--------------------|--------------------|
 | gyűjtése | A modell beviteli vagy előrejelzés adatok gyűjtéséért felelős ügyfélfeladatot|
 
 
 ### <a name="parameters"></a>Paraméterek
 
-| Név | Típus | Leírás |
+| Name (Név) | Típus | Leírás |
 |-------------|------------|-------------------------|
 | input_data | többféle | az adatok összegyűjtésére (a típusok listája, numpy.array, pandas jelenleg elfogad. DataFrame, pyspark.sql.DataFrame). A dataframe típusú fejléc létezik, amelynek a neve, ha ezt az információt szerepel az adatok cél (anélkül, hogy kifejezetten kéri a ModelDataCollector konstruktorban neve) |
-| user_correlation_id | Karakterlánc | egy nem kötelező korrelációs azonosítója, amely az előrejelzés összefüggéseket a felhasználó által megadható |
+| user_correlation_id | karakterlánc | egy nem kötelező korrelációs azonosítója, amely az előrejelzés összefüggéseket a felhasználó által megadható |
 

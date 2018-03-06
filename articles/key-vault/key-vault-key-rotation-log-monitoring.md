@@ -12,17 +12,20 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/07/2017
+ms.date: 03/01/2018
 ms.author: jodehavi;stgriffi
-ms.openlocfilehash: 793f35bfd2e5e6b22e0804f01a69c0c20990d211
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: edc9a870257536235c2bef139dc4d1ead7dd7a8f
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="set-up-azure-key-vault-with-end-to-end-key-rotation-and-auditing"></a>Az Azure Key Vault beállítása végpontok közötti kulcsforgatással és auditálással
 ## <a name="introduction"></a>Bevezetés
 Miután létrehozta a kulcstároló, lesz a kulcsok és titkos kulcsok tárolására, hogy a tároló használatának megkezdéséhez. Az alkalmazások többé nem kell megőrizni a kulcsok vagy titkos kulcsok, hanem fog kérni azokat a key vault a igény szerint. Ez lehetővé teszi a kulcsok és titkos kulcsok frissítése az alkalmazás, így akár a kulcs és a titkos felügyeleti lehetőségek széles választékát viselkedésének módosítása nélkül.
+
+>[!IMPORTANT]
+> Ebben a cikkben szereplő példák csak illusztrációs célokat szolgálnak. Ezek nem üzemi használatra lettek tervezve. 
 
 Ez a cikk végigvezeti az Azure Key Vault használatával használatával egy titkos kulcsot, ebben az esetben egy Azure Storage-fiók kulcsát, hogy egy alkalmazás egy példát. Is egy ütemezett elforgatási szögét a tárfiók kulcsa végrehajtását mutatja be. Végül azt végigvezeti bemutatjuk a kulcstartót naplók figyelésére, és riasztást, ha a nem várt kérelmeket.
 

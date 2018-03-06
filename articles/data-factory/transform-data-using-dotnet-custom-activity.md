@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2018
 ms.author: shengc
-ms.openlocfilehash: ad829fc771bf67953315f3f42abd66eaa2628c13
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 4b9714bc456ad28d9dd46742ca16f52e68c61399
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Egyéni tevékenységek használata Azure Data Factory-folyamatban
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -300,7 +300,7 @@ Ha szeretné, hogy az alsóbb rétegbeli tevékenységet stdout.txt tartalmakat,
 
 ## <a name="difference-between-custom-activity-in-azure-data-factory-version-2-and-custom-dotnet-activity-in-azure-data-factory-version-1"></a>Egyéni tevékenység az Azure Data Factory 2-es verzióját és az Azure Data Factory 1-es verziójú (egyéni) DotNet tevékenység közötti különbség
 
-  Az Azure Data Factoryben az 1-es, hozzon létre egy .net implementálná (egyéni) DotNet tevékenység kód Class Library projekt, amely megvalósítja az Execute metódus IDotNetActivity interfész osztállyal. Az összekapcsolt szolgáltatások, az adatkészleteket és az Extended Properties (egyéni) DotNet tevékenység JSON-adattartalmat a rendszer a végrehajtási metódusnak átadott erős típusos objektumként. További információkért tekintse meg [az 1-es verziójú (egyéni) DotNet](v1/data-factory-use-custom-activities.md). Miatt, hogy a saját kódjára ki kellene írni a .net keretrendszer 4.5.2-es verzióját, és a Windows-alapú Azure Batch-készlet csomópontok hajtható végre. 
+  Az Azure Data Factoryben az 1-es, hozzon létre egy .net implementálná (egyéni) DotNet tevékenység kód Class Library projekt, amely megvalósítja az Execute metódus IDotNetActivity interfész osztállyal. Az összekapcsolt szolgáltatások, az adatkészleteket és az Extended Properties (egyéni) DotNet tevékenység JSON-adattartalmat a rendszer a végrehajtási metódusnak átadott erős típusos objektumként. További információkért tekintse meg [az 1-es verziójú (egyéni) DotNet](v1/data-factory-use-custom-activities.md). Ez a megvalósítás miatt a saját kódjára ki kellene írni a .net keretrendszer 4.5.2-es verzióját, és a Windows-alapú Azure Batch-készlet csomópontok hajtható végre. 
 
   Az Azure Data Factory V2 egyéni tevékenység meg nem kell egy .net felületet valósítja meg. Most közvetlenül futtathat parancsok, parancsprogramok, és futtassa a saját egyéni kód tartani, végrehajtható. Érhetők el, a parancs tulajdonság, és a folderPath tulajdonság megadásával. Egyéni tevékenység feltölti a végrehajtható fájl és a függőségek a folderpath, és végrehajtja a parancsot meg. 
 
@@ -317,7 +317,7 @@ Ha szeretné, hogy az alsóbb rétegbeli tevékenységet stdout.txt tartalmakat,
 |Az egyéni logikai a végrehajtási környezet      |A Windows vagy Linux      |Windows (.Net-keretrendszer 4.5.2)      |
 |Parancsprogram végrehajtása      |Támogatja a parancsprogram végrehajtása közvetlenül (például "cmd /c echo hello world" a Windows virtuális gép)      |Szükséges a .net DLL-fájl végrehajtása      |
 |A DataSet szükséges      |Optional      |Tanúsítványlánc-tevékenységek információkezelési és -átadási szükséges      |
-|A tevékenységből át adatokat egyéni logika      |ReferenceObjects (LinkedServices és adatkészletek) és a ExtendedProperties (egyéni tulajdonságok) és      |Az ExtendedProperties (egyéni tulajdonságok), bemeneti és kimeneti adatkészletek      |
+|A tevékenységből át adatokat egyéni logika      |ReferenceObjects (LinkedServices és adatkészletek) és a ExtendedProperties (egyéni tulajdonságok)      |Az ExtendedProperties (egyéni tulajdonságok), bemeneti és kimeneti adatkészletek      |
 |Az egyéni logika adatbeolvasás      |Activity.json linkedServices.json és a végrehajtható fájl ugyanabban a mappában tárolt datasets.json elemzése      |A .net SDK (.Net keret 4.5.2.)      |
 |Naplózás      |Közvetlenül STDOUT ír      |A .net DLL végrehajtási naplózó      |
 
@@ -331,7 +331,7 @@ Ha szeretné, hogy az alsóbb rétegbeli tevékenységet stdout.txt tartalmakat,
    - Microsoft.Azure.Management.DataFactories NuGet-csomag már nincs szükség. 
    - A kód fordítása, végrehajtható fájlt, és a függőségek feltöltése az Azure Storage és a folderPath tulajdonság határozza meg az elérési út. 
 
-Egy teljes mintát, hogyan a végpontok közötti dll-fájl és a kimenetátirányítási minta ismertetett adat-előállító verzió 1 dokumentum [egyéni tevékenységeket használni egy Azure Data Factory-folyamathoz](https://docs.microsoft.com/azure/data-factory/v1/data-factory-use-custom-activities) lehet írja át a Data Factory 2-es egyéni tevékenység stílusát. Tekintse meg a [adat-előállító 2-es egyéni tevékenység minta](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/ADFv2CustomActivitySample). 
+Egy teljes mintát, hogyan a végpontok közötti dll-fájl és a kimenetátirányítási minta ismertetett adat-előállító verzió 1 dokumentum [egyéni tevékenységeket használni egy Azure Data Factory-folyamathoz](https://docs.microsoft.com/azure/data-factory/v1/data-factory-use-custom-activities) is kell írni a Data Factory 2-es egyéni tevékenység stílusát. Tekintse meg a [adat-előállító 2-es egyéni tevékenység minta](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/ADFv2CustomActivitySample). 
 
 ## <a name="auto-scaling-of-azure-batch"></a>Az Azure Batch automatikus skálázás
 Az Azure Batch-készlet is létrehozhat **automatikus skálázás** szolgáltatás. Például létrehozhatja az azure batch-készlet 0 dedikált virtuális gépek és az automatikus skálázás képlet függőben lévő feladatok száma alapján. 

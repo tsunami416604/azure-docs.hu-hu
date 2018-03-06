@@ -13,26 +13,24 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 1/21/2017
+ms.date: 3/1/2018
 ms.author: markgal;trinadhk;sogup;
-ms.openlocfilehash: 568509eba47facfc5966d06dff5a1b32dce1008f
-ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
+ms.openlocfilehash: 62e047d706bdc42abbe44340c87267e59eb84369
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="prepare-your-environment-to-back-up-resource-manager-deployed-virtual-machines"></a>A környezet előkészítése a Resource Managerrel üzembe helyezett virtuális gépek biztonsági mentéséhez
 
-Ez a cikk a biztonsági mentése az Azure Resource Manager telepített virtuális gép (VM) a környezet előkészítése a lépéseit ismerteti. A leírt eljárások lépés használja az Azure-portálon.  
-
-Az Azure Backup szolgáltatás a virtuális gépek védelmének tárolók két típusa van: mentési tárolók és a Recovery Services-tárolók. A mentési tároló a klasszikus üzembe helyezési modell használatával telepített virtuális gépek védelmét biztosítja. Recovery Services-tároló védi *klasszikus telepített, mind az erőforrás-kezelő telepített virtuális gépek*. A Recovery Services-tárolónak kell használnia, ha azt szeretné, hogy egy erőforrás-kezelő telepített virtuális gép védelmét.
+Ez a cikk a biztonsági mentése az Azure Resource Manager telepített virtuális gép (VM) a környezet előkészítése a lépéseit ismerteti. A leírt eljárások lépés használja az Azure-portálon. A virtuális gép biztonsági mentési adatok tárolása a Recovery Services-tároló. A tároló klasszikus és Resource Manager telepített virtuális gépek biztonsági mentési adatokat tartalmazza.
 
 > [!NOTE]
 > Azure az erőforrások létrehozására és kezelésére két üzembe helyezési modellel rendelkezik: [Resource Manager és klasszikus](../azure-resource-manager/resource-manager-deployment-model.md).
 
-Mielőtt védeni, vagy készítsen biztonsági másolatot a Resource Manager telepített virtuális gépek, ellenőrizze, az Előfeltételek létezik:
+Mielőtt védelme (vagy biztonsági mentése) erőforrás-kezelő telepített virtuális gép, győződjön meg arról, az Előfeltételek:
 
-* Recovery Services-tároló létrehozása (vagy egy meglévő Recovery Services-tároló azonosítása) *és a virtuális gép ugyanazon a helyen lévő*.
+* Recovery Services-tároló létrehozása (vagy egy meglévő Recovery Services-tároló azonosítása) *ugyanabban a régióban, mint a virtuális gép*.
 * Válassza ki a forgatókönyvet, a biztonsági mentési házirend meghatározása és védelmére határozzák meg.
 * A virtuális gépen a Virtuálisgép-ügynök telepítésének ellenőrzése.
 * Ellenőrizze a hálózati kapcsolatot.
@@ -44,7 +42,7 @@ Ha ezek a feltételek már szerepel a környezetben, lépjen a [készítsen bizt
  * **Linux**: támogatja az Azure Backup [azokat a terjesztéseket, amelyek Azure hozzá támogatást listája](../virtual-machines/linux/endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json), kivéve a CoreOS Linux. 
  
     > [!NOTE] 
-    > Más állapotba-a-saját-Linux terjesztésekről működnek, mindaddig, amíg a Virtuálisgép-ügynök érhető el a virtuális gépen és támogatja a Python létezik-e. Azonban azt hitelesíti ezeket terjesztéseket, a biztonsági mentéshez.
+    > Más állapotba-a-saját-Linux terjesztésekről működnek, mindaddig, amíg a Virtuálisgép-ügynök érhető el a virtuális gépen, és támogatja a Python létezik-e. Azokat a terjesztéseket, azonban nem támogatott.
  * **Windows Server**: A Windows Server 2008 R2-nél régebbi verziók nem támogatottak.
 
 ## <a name="limitations-when-backing-up-and-restoring-a-vm"></a>Ha a biztonsági mentése és visszaállítása egy virtuális gép korlátozásai
@@ -54,16 +52,17 @@ A környezet előkészítése előtt ügyeljen arra, hogy ezek a korlátozások 
 * Virtuális gépek biztonsági mentését adatokkal 1,023 GB-nál nagyobb mérete nem támogatott.
 
   > [!NOTE]
-  > Van egy, a biztonsági mentések támogatása a virtuális gépek > 1 TB-os lemezzel private Preview verziójára. További információkért tekintse meg [nagy virtuális gép biztonsági mentési támogatása a Private Preview verziójára](https://gallery.technet.microsoft.com/Instant-recovery-point-and-25fe398a).
+  > Van egy, a biztonsági mentések támogatása a virtuális gépek nagyobb, mint egy TB-os lemezeken a private Preview verziójára. További információkért tekintse meg [nagy virtuális gép biztonsági mentési támogatása a Private Preview verziójára](https://gallery.technet.microsoft.com/Instant-recovery-point-and-25fe398a).
   >
 
 * A fenntartott IP-cím és a nem definiált végpontot a virtuális gépek biztonsági mentését nem támogatott.
-* Csak a BitLocker titkosítási kulcs (BEK) keresztül titkosított virtuális gépek biztonsági mentéséről nem támogatott. Nem támogatott Linux egyesített kulcs beállítása (LUKS) titkosítással titkosított Linux virtuális gépek biztonsági mentéséről.
+* Nem támogatott Linux egyesített kulcs beállítása (LUKS) titkosítással titkosított Linux virtuális gépek biztonsági mentéséről.
 * Nem ajánlott, amelyek tartalmazzák a fürt megosztott kötetei (CSV) vagy kibővített fájlkiszolgáló virtuális gépek biztonsági mentéséről. A fürt konfigurálása során egy pillanatkép-feladat szereplő összes virtuális gépet is érintő van szükségük. Azure biztonsági mentés nem támogatja a virtuális Gépre kiterjedő konzisztencia. 
 * Csatlakoztatott hálózati meghajtók egy virtuális Géphez csatlakozik, nem tartalmazza a biztonsági mentési adatokat.
 * Egy meglévő virtuális gép cseréje a visszaállítás során nem támogatott. Ha úgy próbálja visszaállítani a virtuális gép, ha a virtuális gép létezik, a visszaállítási művelet sikertelen.
-* Kereszt-régió biztonsági mentése és visszaállítása nem támogatottak.
-* Biztonsági mentése és visszaállítása a virtuális gépek használata a nem felügyelt lemezek tárfiókokban hálózati szabálya jelenleg nem támogatott. Biztonsági mentés beállításakor győződjön meg arról, hogy a "Tűzfalak és virtuális hálózatokat" beállításokat a tárfiókhoz hozzáférést "Minden hálózati."
+* Kereszt-régió biztonsági mentését, és a visszaállítás nem támogatottak.
+* Biztonsági mentése és visszaállítása a virtuális gépek használata a nem felügyelt lemezek tárfiókokban hálózati szabálya, nem támogatott. 
+* Miközben vissza konfigurálásának lépésein, győződjön meg arról, hogy a **tűzfalak és a virtuális hálózatok** tárolási fiók beállításait minden hálózati hozzáférés engedélyezése.
 * Minden nyilvános régióiba Azure virtuális gépek biztonsági. (Lásd a [ellenőrzőlista](https://azure.microsoft.com/regions/#services) a támogatott régiók.) A régiót, amelyben keres jelenleg nem támogatott, ha már nem jelenik a legördülő listából válassza ki a tároló létrehozása során.
 * A tartományvezérlők visszaállítását (DC) virtuális Gépet, amely része egy multi-tartományvezérlő-konfiguráció támogatott csak a PowerShell segítségével. További tudnivalókért lásd: [multi-DC tartományvezérlő visszaállítása](backup-azure-arm-restore-vms.md#restore-domain-controller-vms).
 * Az alábbi speciális beállításokkal rendelkező virtuális gépek visszaállításakor csak a PowerShell használatával támogatott. A visszaállítási munkafolyamat a felhasználói felület segítségével létrehozott virtuális gépek nem fognak rendelkezni a hálózati konfigurációt, a visszaállítási művelet befejezése után. További tudnivalókért lásd: [visszaállítását virtuális gépek speciális hálózati konfigurációkkal](backup-azure-arm-restore-vms.md#restore-vms-with-special-network-configurations).
@@ -106,7 +105,7 @@ Egy Recovery Services-tároló létrehozásához:
 Most, hogy létrehozta a tárolóját, megismerkedhet a tárreplikáció beállításának módjával.
 
 ## <a name="set-storage-replication"></a>Tárolási replikációs
-A tárolási replikációs beállítás lehetővé teszi a georedundáns tárolás és a helyileg redundáns tárolás közül választhat. Alapértelmezés szerint a tárolója georedundáns tárolással rendelkezik. Ha ez az elsődleges biztonsági mentési tároló, hagyja a beállítást georedundáns tároláson. Ha egy olcsóbb, rövidebb élettartamú megoldást szeretne, válassza a helyileg redundáns tárolást.
+A tárolási replikációs beállítás lehetővé teszi a georedundáns tárolás és a helyileg redundáns tárolás közül választhat. Alapértelmezés szerint a tárolója georedundáns tárolással rendelkezik. Hagyja meg a beállítás, az elsődleges Backup georedundáns tárolást. Ha azt szeretné, hogy egy olcsóbb beállítása, amely nem a tartós, válassza ki azt a helyileg redundáns tárolás.
 
 A tárreplikációs beállítás szerkesztése:
 
@@ -126,9 +125,7 @@ A tárreplikációs beállítás szerkesztése:
 Miután a tárolási lehetőséget választja a tároló számára, készen áll a virtuális gép társítása a tárolóban. A hozzárendelés megkezdéséhez fel kell fedezni és regisztrálni kell az Azure virtuális gépeket.
 
 ## <a name="select-a-backup-goal-set-policy-and-define-items-to-protect"></a>Biztonsági mentési cél házirendjének beállítása és határozzák meg védelméhez
-Egy virtuális Gépet a tárolóhoz, futtassa a felderítési folyamat annak érdekében, hogy minden új virtuális gépek az előfizetéshez hozzáadott regisztrált előtt meg lehet határozni. A felhőszolgáltatás neve és a régió, például a folyamat lekérdezések Azure információk mellett az előfizetést, a virtuális gépek listáját. 
-
-Az Azure-portálon *forgatókönyv* hivatkozik a Recovery Services-tárolónak a fogja állítani. *Házirend* rendszer milyen gyakran és mikor készít-e a helyreállítási pontok ütemezését. A házirend emellett tartalmazza a helyreállítási pontok megőrzési tartományát.
+Mielőtt a Recovery Services-tároló, a felderítési folyamat bármely az előfizetéshez történő hozzáadása új virtuális gépek azonosításához futtassa a virtuális gépek regisztrálása. A felderítési folyamat Azure lekérdezi a listán szereplő virtuális gépek az előfizetéshez. Ha új virtuális gépek találhatók, a portál megjeleníti a felhőszolgáltatás neve és a kapcsolódó régióban. Az Azure portálon a *forgatókönyv* kell beírnia a Recovery Services-tárolóban. *Házirend* rendszer milyen gyakran és mikor készít-e a helyreállítási pontok ütemezését. A házirend emellett tartalmazza a helyreállítási pontok megőrzési tartományát.
 
 1. Ha már meg van nyitva egy Recovery Services-tároló, folytassa a 2. lépéssel. Ha még nem rendelkezik nyissa meg a Recovery Services-tároló, nyissa meg a [Azure-portálon](https://portal.azure.com/). Az a **Hub** menü **további szolgáltatások**.
 
@@ -151,7 +148,7 @@ Az Azure-portálon *forgatókönyv* hivatkozik a Recovery Services-tárolónak a
 
    A **biztonsági mentés** és **biztonsági mentési cél** ablaktábla megnyitása.
 
-3. Az a **biztonsági mentési cél** panelen állítsa **a számítási feladatok futtató?** való **Azure** és **miről szeretne biztonsági másolatot készíteni?** való  **Virtuális gép**. Válassza ki **OK**.
+3. Az a **biztonsági mentési cél** panelen állítsa **a számítási feladatok futtató?** , **Azure** és **miről szeretne biztonsági másolatot készíteni?** ,  **Virtuális gép**. Ezután kattintson az **OK** gombra.
 
    ![Biztonsági mentés és a biztonsági mentési cél ablaktábla](./media/backup-azure-arm-vms-prepare/select-backup-goal-1.png)
 
@@ -170,7 +167,7 @@ Az Azure-portálon *forgatókönyv* hivatkozik a Recovery Services-tárolónak a
 
    !["A virtuális gépek kiválasztása" ablak](./media/backup-azure-arm-vms-prepare/select-vms-to-backup.png)
 
-   Megtörténik a kiválasztott virtuális gép ellenőrzése. Ha nem látja a várt virtuális gépeket, ellenőrizze, hogy azok és a Recovery Services-tároló Azure ugyanazon a helyen szerepel, és nem védettek már egy másik tárolóban. A tároló irányítópult a Recovery Services-tároló helye látható.
+   Megtörténik a kiválasztott virtuális gép ellenőrzése. Ha nem látja a kívánt virtuális gépek, ellenőrizze, hogy a virtuális gépek és a Recovery Services-tárolónak ugyanabban a Azure régióban. Ha még nem látja a virtuális gépek, ellenőrizze, hogy nem már védve legyenek egy másik tárolóban. A tároló irányítópult jeleníti meg a régió, amelyen a Recovery Services-tároló létezik.
 
 6. Most, hogy meg van adva a tároló összes beállítás a **biztonsági mentési** ablaktáblán válassza előbb **biztonságimásolat-készítés engedélyezése**. Ez a lépés telepíti a szabályzatot a tároló és a virtuális gépeket. Ez a lépés nem hoz létre az első helyreállítási pont, a virtuális géphez.
 

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
 ms.openlocfilehash: e68b70ce87a6fedab1b85bf2800a50e512910dea
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="troubleshoot-an-object-that-is-not-synchronizing-to-azure-ad"></a>Olyan objektum, amely nem szinkronizál az Azure AD-hibáinak elhárítása
 
@@ -88,7 +88,7 @@ Cs-objektum megnyitásakor nincsenek lap tetején. A **importálása** lapon lá
 ![CS objektum](./media/active-directory-aadconnectsync-troubleshoot-object-not-syncing/csobject.png)    
 A **régi érték** jeleníti meg, mi jelenleg tárolódik a csatlakozás és a **új érték** mi érkezett a forrásrendszerben, és nem alkalmazták. Ha nem sikerül az objektumra, majd változtatások nincsenek feldolgozva.
 
-Hiba történt  
+**Hiba történt**  
 ![CS objektum](./media/active-directory-aadconnectsync-troubleshoot-object-not-syncing/cssyncerror.png)  
 A **szinkronizálási hiba** lap csak akkor látható, ha a probléma oka az objektum. További információkért lásd: [szinkronizálási hibák elhárítása](#troubleshoot-errors-in-operations-tab).
 

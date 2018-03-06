@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 02/15/2018
 ms.author: terrylan
 ms.openlocfilehash: 3b57cacec729bd2f2dd4acdbb9c15e69ab9f5c85
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="supported-platforms-in-azure-security-center"></a>Az Azure Security Centerben a támogatott platformok
 Virtuális gépek (VM), a klasszikus és Resource Manager üzembe helyezési modellel, és számítógépek használatával létrehozott biztonsági állapotának megfigyelése és javaslatok használhatók.

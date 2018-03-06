@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: performance
 ms.date: 10/23/2017
 ms.author: barbkess
-ms.openlocfilehash: 0476afb875616ed0758835aa52fb2334b63959a9
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: 6640ed8958f6b05c015fb6c61d07aeea95b18022
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="maximizing-rowgroup-quality-for-columnstore"></a>Az oszlopcentrikus maximalizálva sorcsoport minősége
 
@@ -139,7 +139,7 @@ OPTION (MAXDOP 1);
 
 DWU mérete és a felhasználó erőforrásosztály együtt határozza meg, mennyi memória érhető el a felhasználó lekérdezése. A memóriabeli ideiglenes terhelés lekérdezés növeléséhez dwu-k számának növelése, vagy növelje a erőforrásosztály.
 
-- A dwu-k növelése érdekében tekintse meg a [hogyan méretezhető teljesítmény?](sql-data-warehouse-manage-compute-overview.md#scale-compute)
+- A dwu-k növelése érdekében tekintse meg a [hogyan méretezhető teljesítmény?](quickstart-scale-compute-portal.md)
 - A lekérdezés erőforrásosztály módosításához lásd [módosíthatja a felhasználói erőforrás osztály példa](sql-data-warehouse-develop-concurrency.md#changing-user-resource-class-example).
 
 Például a DWU 100 smallrc erőforrásosztály felhasználójának használhatja 100 MB memóriát minden egyes terjesztési. A részletekért lásd: [az SQL Data Warehouse párhuzamossági](sql-data-warehouse-develop-concurrency.md).
@@ -150,7 +150,7 @@ Tegyük fel, hogy van-e 700 MB memória kiváló minőségű sorcsoport méretek
 - Használja a DWU 600 és largerc, a memóriabeli ideiglenes tárat, 800 MB.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az SQL Data Warehouse teljesítmény javítása érdekében további részleteket talál a [teljesítményének áttekintését](sql-data-warehouse-overview-manage-user-queries.md).
 

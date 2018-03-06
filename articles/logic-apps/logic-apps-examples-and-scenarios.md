@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: logic-apps
-ms.date: 09/13/2017
+ms.date: 01/31/18
 ms.author: LADocs; jehollan
-ms.openlocfilehash: b88d0c1ccb7a729c95299bcdc3cba5fd73fcdeac
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: b979096731caa7513c02a9fb398c14da4d4819ae
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="common-scenarios-examples-tutorials-and-walkthroughs-for-azure-logic-apps"></a>Gyakori forgatókönyvek, példák, oktatóanyagok és az Azure Logic Apps forgatókönyvek
 
@@ -63,14 +63,15 @@ Rendszerekhez és a szolgáltatások, előfordulhat, hogy nem közzétett össze
 * [Külső eseményeket és műveleteket a webhookok válaszolni](../logic-apps/logic-apps-create-api-app.md)
 * [Hívja, eseményindító, vagy a HTTP-kérelmek szinkron választ munkafolyamatok egymásba](../logic-apps/logic-apps-http-endpoint.md)
 * [Oktatóanyag: AI táplált közösségi irányítópult létrehozása a Logic Apps és a Power BI percben](http://aka.ms/logicappsdemo)
-* [Oktatóanyag: Twilio SMS webhookok válaszolni, és a szöveg visszajelzés küldése](https://channel9.msdn.com/Blogs/Windows-Azure/Azure-Logic-Apps-Walkthrough-Webhook-Functions-and-an-SMS-Bot)
+* [Videó: Twilio SMS webhookok válaszolni, és a szöveg visszajelzés küldése](https://channel9.msdn.com/Blogs/Windows-Azure/Azure-Logic-Apps-Walkthrough-Webhook-Functions-and-an-SMS-Bot)
 
 ## <a name="control-flow-error-handling-and-logging-capabilities"></a>Vezérlési folyamatában, hibakezelés és naplózási képességek
 
 A Logic apps speciális vezérlési folyamatában, például a feltételeket, kapcsolók, hurkokat és hatókörök gazdag képességeit tartalmazza. Ahhoz, hogy a refs megoldások, hiba és a munkafolyamatok kivételkezelés is alkalmazhat. Értesítés és a munkafolyamat futtatási állapot diagnosztikai naplók Azure Logic Apps is biztosít figyelése és a riasztásokat.
 
-* [A tömbök és gyűjteményeket, amelyek a hurok- és a logic apps kötegek folyamat elemek](../logic-apps/logic-apps-loops-and-scopes.md)
-* [E kapcsoló utasításokat különböző műveleteket](../logic-apps/logic-apps-switch-case.md)
+* Különböző műveleteket alapján [feltételes utasítások](../logic-apps/logic-apps-control-flow-conditional-statement.md) és [kapcsoló utasítások](../logic-apps/logic-apps-control-flow-switch-statement.md)
+* [Ismételje meg a lépéseket vagy tömbök és hurkok gyűjtemények elemeinek folyamat](../logic-apps/logic-apps-control-flow-loops.md)
+* [Hatókörök együtt műveleteit](../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md)
 * [Szerző hiba és a kivételkezelő munkafolyamat](../logic-apps/logic-apps-exception-handling.md)
 * [Használati eset: hogyan használja az egészségügyi vállalati a logic app kivételkezelő HL7 FHIR munkafolyamatokhoz](../logic-apps/logic-apps-scenario-error-and-exception-handling.md)
 * [A figyelés, a naplózás vagy a meglévő logic Apps alkalmazások riasztások bekapcsolása](../logic-apps/logic-apps-monitor-your-logic-apps.md)
@@ -89,7 +90,7 @@ Teljes körű fejlesztése és logikai alkalmazások telepítése a Visual Studi
 Elérheti, alakítsa át, és az Azure Logic Apps sok függvénnyel több tartalomtípus átalakítási [munkafolyamatdefiníciós nyelve](http://aka.ms/logicappsdocs). Alakíthatja, például egy karakterlánc, a JSON és az XML-re között a `@json()` és `@xml()` munkafolyamat-kifejezések. A Logic Apps motor őrzi meg a tartalom átvitele támogatja a szolgáltatások közötti veszteségmentes módon tartalomtípusokat.
 
 * [A logic apps a munkafolyamat-kifejezések működése](../logic-apps/logic-apps-author-definitions.md)
-* [Nem JSON tartalom kezelésére](../logic-apps/logic-apps-content-type.md), például `application/xml`, `application/octet-stream`, és`multipart/formdata`
+* [Nem JSON tartalom kezelésére](../logic-apps/logic-apps-content-type.md), például `application/xml`, `application/octet-stream`, és `multipart/formdata`
 * [Útmutató: Az Azure Logic Apps munkafolyamatdefiníciós nyelve](http://aka.ms/logicappsdocs)
 
 ## <a name="other-integrations-and-capabilities"></a>Más integrációja és képességek
@@ -98,15 +99,22 @@ A Logic apps is kínál számos szolgáltatás, például az Azure Functions, az
 
 * [Hozzon létre egy valós idejű közösségimédia irányítópultot Azure kiszolgáló nélküli](../logic-apps/logic-apps-scenario-social-serverless.md)
 * [Az Azure Functions hívható meg a logic Apps alkalmazásokból](../logic-apps/logic-apps-azure-functions.md)
-* [Forgatókönyv: Eseményindító logic Apps alkalmazások az Azure Functions](../logic-apps/logic-apps-scenario-function-sb-trigger.md)
+* [Oktatóanyag: Eseményindító logic Apps alkalmazások az Azure Functions](../logic-apps/logic-apps-scenario-function-sb-trigger.md)
+* [Oktatóanyag: Azure esemény rács és a Logic Apps virtuális gép módosításokat figyelése](../event-grid/monitor-virtual-machine-changes-event-grid-logic-app.md)
+* [Oktatóanyag: Hozzon létre egy függvényt, amely az Azure Logic Apps és a Microsoft kognitív szolgáltatások Twitter post véleményeket elemzése](../azure-functions/functions-twitter-email.md)
+* [Oktatóanyag: IoT távoli figyelés és az értesítések az Azure Logic Apps csatlakoztatása az IoT-központ és postaláda](../iot-hub/iot-hub-monitoring-notifications-with-azure-logic-apps.md)
 * [Blog: Hívja a logic Apps alkalmazásokból SOAP-végpontok](https://blogs.msdn.microsoft.com/logicapps/2016/04/07/using-soap-services-with-logic-apps/)
 
 ## <a name="end-to-end-scenarios"></a>Végpontok közötti forgatókönyvek
 
-* [Tanulmány: Vállalati integrációs végpont nagybetűk kezelése az Azure-szolgáltatásokkal, például a Logic Apps](https://aka.ms/enterprise-integration-e2e-case-management-utilities-logic-apps)
+* [Tanulmány: Azure-szolgáltatások, például a Logic Apps-végpont nagybetűk felügyelet integrálását](https://aka.ms/enterprise-integration-e2e-case-management-utilities-logic-apps)
+
+## <a name="customer-stories"></a>Ügyfelek történetei
+
+Ismerje meg, hogyan Azure Logic Apps, valamint más Azure-szolgáltatások és a Microsoft-termékek, segített [ezeknek a vállalatoknak](https://aka.ms/logic-apps-customer-stories) javítása az agilitást pedig a saját egyszerűsítése, rendezése, automatizálása és megvalósításában core vállalkozások is kiterjedő összetett folyamatokig.
 
 ## <a name="next-steps"></a>További lépések
 
-* [Szerző munkafolyamat definíciója a munkafolyamatdefiníciós nyelve](../logic-apps/logic-apps-author-definitions.md)
+* [A logikai alkalmazás definícióiról rendelkező JSON összeállítása](../logic-apps/logic-apps-author-definitions.md)
 * [Hibákat és kivételeket a logic Apps alkalmazásokat kezeléséhez](../logic-apps/logic-apps-exception-handling.md)
-* [Küldje el a megjegyzéseket, a kérdéseket, a visszajelzések és a javaslatok, milyen azt látna Azure Logic Apps alkalmazások számára](https://feedback.azure.com/forums/287593-logic-apps)
+* [A megjegyzések, kérdéseket, visszajelzést vagy az Azure Logic Apps javítására vonatkozó javaslatokat nyújt](https://feedback.azure.com/forums/287593-logic-apps)

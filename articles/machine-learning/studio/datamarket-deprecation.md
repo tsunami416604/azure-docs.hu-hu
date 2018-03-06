@@ -1,6 +1,6 @@
 ---
 title: "Datamarket érvénytelenítése |} Microsoft Docs"
-description: "Az Azure Data piaci érvénytelenítése."
+description: Azure Data Market Deprecation.
 services: machine-learning
 documentationcenter: 
 author: LuisCabrer
@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/31/2017
+ms.date: 03/01/2018
 ms.author: LuisCa
-ms.openlocfilehash: e40b69f97878a6072a64912f017f8e5621ba6e71
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cec301869b08f9f3811c0536c85366619738945a
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="datamarket-is-now-deprecated"></a>DataMarket most már elavult.
 
@@ -32,9 +32,3 @@ Előző DataMarket szöveg Analytics API ügyfelek kell indíthatja a [kognitív
 A kognitív szolgáltatások szöveg Analytics API támogatja az DataMarket régebbi volt, valamint további lehetőségeket nyelvi felderítését és a témakör észlelési forgatókönyvek.
 
 
-## <a name="recommendations-api"></a>Javaslatok API 
-
-Előző DataMarket javaslatok API ügyfelek kell indíthatja a [kognitív szolgáltatások javaslatok API](https://www.microsoft.com/cognitive-services/recommendations-api).
-A kognitív szolgáltatások javaslatok API támogatja, minden a szolgáltatásokat, amelyek a korábbi DataMarket volt, valamint további helyzeteket is, például kötegelt támogatási és modellek minőségének kiértékelése jobban offline metrikákat. 
-
-Indítsa el a kognitív szolgáltatások javaslatok API-val kapcsolatos további információkért lásd: [Azure kognitív szolgáltatások javaslatok API áttelepítés](http://aka.ms/recomigrate).

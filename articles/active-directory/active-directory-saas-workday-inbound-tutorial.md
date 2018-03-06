@@ -14,10 +14,10 @@ ms.workload: identity
 ms.date: 01/26/2018
 ms.author: asmalser
 ms.openlocfilehash: 2db9e60fe2807b1aa8ed7cab7eed6f7db8059a89
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Oktatóanyag: Konfigurálja automatikus felhasználói kialakítási munkanap
 
@@ -43,7 +43,7 @@ A Workday felhasználói létesítési munkafolyamatok az Azure AD-felhasználó
 
 * **Alkalmazott attribútum és profil frissítések** – amikor egy alkalmazott bejegyzés frissül a Workday (például a nevét, címét, vagy manager), a felhasználói fiók automatikusan frissül az Active Directory, Azure Active Directoryban, és opcionálisan Office 365 és [más SaaS-alkalmazásokhoz az Azure AD által támogatott](active-directory-saas-app-provisioning.md).
 
-* **Alkalmazott végződnek** – Ha egy alkalmazott a rendszer megszakítja a munkanapok, a felhasználói fiók automatikusan le van tiltva az Active Directory, Azure Active Directoryban, és opcionálisan Office 365 és [más SaaS-alkalmazásokhoz az Azure AD által támogatott](active-directory-saas-app-provisioning.md).
+* **Alkalmazott végződnek** – Ha egy alkalmazott a rendszer megszakítja a munkanapok, a felhasználói fiók automatikusan le van tiltva az Active Directory, Azure Active Directoryban, és opcionálisan Office 365 és [más használható az Azure-SaaS-alkalmazásokhoz AD](active-directory-saas-app-provisioning.md).
 
 * **Alkalmazott újra bízza** – Ha egy alkalmazott van rehired a munkanapok, a régi fiókot automatikusan újra aktiválni és újra létrehozni (attól függően, hogy igény szerint), hogy az Active Directory, Azure Active Directoryban, és opcionálisan Office 365 és [más SaaS-alkalmazásokhoz az Azure AD által támogatott](active-directory-saas-app-provisioning.md).
 
@@ -105,7 +105,7 @@ Lehetővé teszi a több munkafolyamat több forrás és cél rendszerre, az Azu
 
 * **Az Active Directory kiépítésére WORKDAY** – az alkalmazás lehetővé teszi a felhasználói fiók kiépítése a WORKDAY-ből egyetlen Active Directory-erdőre. Ha több erdővel rendelkezik, az alkalmazás egy példányát minden egyes Active Directory erdőhöz kell kiépíteni az Azure AD-alkalmazásgyűjtemény is hozzáadhat.
 
-* **A Azure AD-létesítési WORKDAY** – AAD Connect pedig az eszköz, amellyel szinkronizálja az Active Directory-felhasználók az Azure Active Directory, az alkalmazás lehetővé teszi egyetlen Azure Active Directory-bérlő a WORKDAY-ből csak felhőalapú felhasználók kiépítése használható.
+* **A Azure AD-létesítési WORKDAY** – az eszköz, amellyel szinkronizálja az Active Directory-felhasználók az Azure Active Directory, az alkalmazás lehetővé teszi egyetlen Azure-ba történő átadása csak felhőalapú felhasználók kiépítése használható pedig az AAD Connect Active Directory-bérlő.
 
 * **WORKDAY visszaírási** – az alkalmazás lehetővé teszi a felhasználó e-mail címet az Azure Active Directoryból a Workday visszaírása.
 
@@ -229,7 +229,7 @@ Kövesse ezeket az utasításokat a WORKDAY-ből minden Active Directory-erdőbe
 
 **Az Active Directory kiépítésére konfigurálása a Workday:**
 
-1.  Ugrás a <https://portal.azure.com>
+1.  Nyissa meg a következőt: <https://portal.azure.com>
 
 2.  Válassza ki a bal oldali navigációs sáv **Azure Active Directoryban**
 
@@ -245,7 +245,7 @@ Kövesse ezeket az utasításokat a WORKDAY-ből minden Active Directory-erdőbe
 
 8.  Fejezze be a **rendszergazdai hitelesítő adataival** szakasz az alábbiak szerint:
 
-   * **Rendszergazda felhasználóneve** – adja meg a Workday-integrációs rendszerfiók felhasználóneve fűzött bérlői tartománynévvel. **Hasonlóan kell kinéznie:username@contoso4**
+   * **Rendszergazda felhasználóneve** – adja meg a Workday-integrációs rendszerfiók felhasználóneve fűzött bérlői tartománynévvel. **Hasonlóan kell kinéznie: username@contoso4**
 
    * **Rendszergazdai jelszó –** adja meg a jelszót a Workday-integrációs rendszer fiók
 
@@ -352,8 +352,8 @@ Ebben a szakaszban konfigurál, hogy felhasználói adatáramlás a WORKDAY-ből
 | **AddressLineData**    |  streetAddress  |     |   Hozzon létre + frissítése |
 | **PrimaryWorkTelephone**  |  TelephoneNumber   |     | Hozzon létre + frissítése |
 | **BusinessTitle**   |  cím     |     |  Hozzon létre + frissítése |
-| **Join("@",Replace(Replace(Replace(Replace(Replace(Replace(Replace( Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace( Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Join(".", [FirstName], [LastName]), , "([Øø])", , "oe", , ), , "[Ææ]", , "ae", , ), , "([äãàâãåáąÄÃÀÂÃÅÁĄA])", , "a", , ), , "([B])", , "b", , ), , "([CçčćÇČĆ])", , "c", , ), , "([ďĎD])", , "d", , ), , "([ëèéêęěËÈÉÊĘĚE])", , "e", , ), , "([F])", , "f", , ), , "([G])", , "g", , ), , "([H])", , "h", , ), , "([ïîìíÏÎÌÍI])", , "i", , ), , "([J])", , "j", , ), , "([K])", , "k", , ), , "([ľłŁĽL])", , "l", , ), , "([M])" ,, "m",), "([ñńňÑŃŇN])", "n",), "([öòőõôóÖÒŐÕÔÓO])", "o",), "([P])", "p",), "([Q])", "q",), "([řŘR])", "r",), "([ßšśŠŚS])", "s",), "([TŤť])", "t",), "([üùûúůűÜÙÛÚŮŰU])", "u",), "([V])", "v",), "([w" karakter]), "w",), "([ýÿýŸÝY])", "y",), "([źžżŹŽŻZ])", "z",), "",,, "",), "contoso.com")**   | userPrincipalName     |     | Írt csak létrehozásakor                                                   
-| **Kapcsoló (\[település\], "OU általános jogú felhasználók, OU = felhasználók, OU = alapértelmezett, OU = helyek, DC = contoso, DC = = com", "Dallas", "OU általános jogú felhasználók, OU = felhasználók, OU = Dallas, OU = helyek, DC = contoso, DC = = com", "Austin", "OU általános jogú felhasználók, OU = felhasználók, OU = Austin, OU = helyek, DC = contoso, DC = = com", "Seattle", "OU általános jogú felhasználók, OU = felhasználók, OU = budapesti, OU = helyek, DC = contoso, DC = = com", "Londoni", "OU = általános jogú felhasználók Szervezeti egység felhasználók, OU = London, OU = helyek, DC = contoso, DC = = com ")**  | parentDistinguishedName     |     |  Hozzon létre + frissítése |
+| **Csatlakozás ("@", cserélje le (cserélje le (cseréje (cserélje le (cserélje le (cserélje le (cserélje le (cserélje le (cserélje (le (a név felülírandó (csere (csere (csere (csere (csere (csere (csere (csere (csere (csere (csere (csere (csere (csere (csere (a név felülírandó () Cserélje le (Csatlakozás (".", [Keresztnév], [Vezetéknév]), "([Øø])", "Outlook Express",), "[Ææ]", "ae",), "([äãàâãåáąÄÃÀÂÃÅÁĄA])", "a",), "[B]", "b",), "([CçčćÇČĆ])", "c",), "([ďĎD])", "d",), "([ëèéêęěËÈÉÊĘĚE])", "e",), "[F]", "f",), "([G])" ,, "g",), "[H]", "h",), "([ïîìíÏÎÌÍI])", "i",), "[J]", "j",), "([-K])", "-k",), "([ľłŁĽL])", "l",), "([M])", "m",), "([ñńňÑŃŇN])", "n",), "([öòőõôóÖÒŐÕÔÓO])", "o",), "([P])", "p",), "([Q])", "q",),  "([ŘŘR])", "r",), "([ßšśŠŚS])", "s",), "([TŤť])", "t",), "([üùûúůűÜÙÛÚŮŰU])", "u",), "([V])", "v",), "([w" karakter]), "w",), "([ýÿýŸÝY])", "y",), "([źžżŹŽŻZ])", "z",), "",,, "",), "contoso.com")**   | userPrincipalName     |     | Írt csak létrehozásakor                                                   
+| **Kapcsoló (\[település\], "OU általános jogú felhasználók, OU = felhasználók, OU = alapértelmezett, OU = helyek, DC = = contoso, DC = com", "Dallas", "OU általános jogú felhasználók, OU = felhasználók, OU = Dallas, OU = helyek, DC = = contoso, DC = com", "Austin", "OU általános jogú felhasználók, OU = Felhasználók, OU = Austin, OU = helyek, DC = = contoso, DC = com ","Seattle"," OU általános jogú felhasználók, OU = felhasználók, OU = budapesti, OU = helyek, DC = = contoso, DC = com ","Londoni"," OU általános jogú felhasználók, OU = felhasználók, OU = London, OU = helyek, DC = = contoso, DC = com ")**  | parentDistinguishedName     |     |  Hozzon létre + frissítése |
   
 ### <a name="part-3-configure-the-on-premises-synchronization-agent"></a>3. lépés: A helyszíni-szinkronizálási ügynök konfigurálása
 
@@ -484,7 +484,7 @@ A következő szakaszok ismertetik a beállítás csak felhőalapú felhasznál�
 
 **Munkanapok konfigurálása az Azure Active Directory kiépítésére, csak felhőalapú felhasználók számára:**
 
-1.  Ugrás a <https://portal.azure.com>.
+1.  Nyissa meg a következőt: <https://portal.azure.com>.
 
 2.  Válassza ki a bal oldali navigációs sáv **Azure Active Directoryban**
 
@@ -500,7 +500,7 @@ A következő szakaszok ismertetik a beállítás csak felhőalapú felhasznál�
 
 8.  Fejezze be a **rendszergazdai hitelesítő adataival** szakasz az alábbiak szerint:
 
-   * **Rendszergazda felhasználóneve** – adja meg a Workday-integrációs rendszerfiók felhasználóneve fűzött bérlői tartománynévvel. Hasonlóan kell kinéznie:username@contoso4
+   * **Rendszergazda felhasználóneve** – adja meg a Workday-integrációs rendszerfiók felhasználóneve fűzött bérlői tartománynévvel. Hasonlóan kell kinéznie: username@contoso4
 
    * **Rendszergazdai jelszó –** adja meg a jelszót a Workday-integrációs rendszer fiók
 
@@ -589,7 +589,7 @@ Kövesse az alábbi utasításokat a felhasználó e-mail címet az Azure Active
 
 **Az Active Directory kiépítésére konfigurálása a Workday:**
 
-1.  Ugrás a <https://portal.azure.com>
+1.  Nyissa meg a következőt: <https://portal.azure.com>
 
 2.  Válassza ki a bal oldali navigációs sáv **Azure Active Directoryban**
 
@@ -605,7 +605,7 @@ Kövesse az alábbi utasításokat a felhasználó e-mail címet az Azure Active
 
 8.  Fejezze be a **rendszergazdai hitelesítő adataival** szakasz az alábbiak szerint:
 
-   * **Rendszergazda felhasználóneve** – adja meg a Workday-integrációs rendszerfiók felhasználóneve fűzött bérlői tartománynévvel. Hasonlóan kell kinéznie:username@contoso4
+   * **Rendszergazda felhasználóneve** – adja meg a Workday-integrációs rendszerfiók felhasználóneve fűzött bérlői tartománynévvel. Hasonlóan kell kinéznie: username@contoso4
 
    * **Rendszergazdai jelszó –** adja meg a jelszót a Workday-integrációs rendszer fiók
 
@@ -743,7 +743,7 @@ Ehhez az szükséges, használjon [Workday Studio](https://community.workday.com
 
 8. A **típus**, válassza ki a megfelelő megfelelő az attribútum típusa (**karakterlánc** leggyakrabban).
 
-9. A **API kifejezés**, adja meg a Workday Studióból másolta az XPath-kifejezés. Példa:`wd:Worker/wd:Worker_Data/wd:Personal_Data/wd:Birth_Date/text()`
+9. A **API kifejezés**, adja meg a Workday Studióból másolta az XPath-kifejezés. Példa: `wd:Worker/wd:Worker_Data/wd:Personal_Data/wd:Birth_Date/text()`
 
 10. Válassza ki **attribútum hozzáadása**.
 

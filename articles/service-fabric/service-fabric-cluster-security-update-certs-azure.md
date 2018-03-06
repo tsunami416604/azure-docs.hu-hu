@@ -1,24 +1,8 @@
----
-title: "Azure Service Fabric-fürtben lévő tanúsítványok kezelése |} Microsoft Docs"
-description: "Hozzáadhat új tanúsítványokat, a helyettesítő tanúsítvány, és távolítsa el a tanúsítványt, vagy a Service Fabric-fürt ismerteti."
-services: service-fabric
-documentationcenter: .net
-author: ChackDan
-manager: timlt
-editor: 
-ms.assetid: 91adc3d3-a4ca-46cf-ac5f-368fb6458d74
-ms.service: service-fabric
-ms.devlang: dotnet
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 03/09/2017
-ms.author: chackdan
-ms.openlocfilehash: c433e8683755e454f9561f094269c3daccf78a62
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: MT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+--cím: Azure Service Fabric-fürtben lévő tanúsítványok kezelése |} Microsoft Docs leírása: hozzáadhat új tanúsítványokat, a helyettesítő tanúsítvány, és távolítsa el a tanúsítványt, vagy a Service Fabric-fürt ismerteti.
+szolgáltatások: szolgáltatás-háló documentationcenter: .net Szerző: ChackDan manager: timlt szerkesztőben: "
+
+ms.assetid: 91adc3d3-a4ca-46cf-ac5f-368fb6458d74 ms.service: service-fabric ms.devlang: dotnet ms.topic: article ms.tgt_pltfrm: na ms.workload: na ms.date: 02/23/2018 ms.author: chackdan
+
 ---
 # <a name="add-or-remove-certificates-for-a-service-fabric-cluster-in-azure"></a>Hozzáadhat és eltávolíthat tanúsítványokat a Service Fabric-fürtök az Azure-ban
 Javasoljuk, hogy megismerje a módját a Service Fabric X.509-tanúsítványokat használ, és ismernie kell a [fürtök biztonsági forgatókönyveinek](service-fabric-cluster-security.md). Ismernie kell fürt tanúsítvány és felhasználási területének, mielőtt végrehajtásának folytatásához.
@@ -49,6 +33,8 @@ Távolítsa el a másodlagos tanúsítvány használatát a fürt biztonsági ok
 Ha a szándéka az, eltávolítani a tanúsítványt, amely elsődleges van megjelölve, majd szüksége lesz a másodlagos felcserélése, és törölje a másodlagos, a frissítés befejeződése után.
 
 ## <a name="add-a-secondary-certificate-using-resource-manager-powershell"></a>Erőforrás-kezelő Powershell-lel másodlagos tanúsítvány hozzáadásához
+> [! FRISSÍTÉS] már tudunk hozzáadása egy másodlagos tanúsítvány használatával jobb és egyszerűbb úgy [Add-AzureRmServiceFabricClusterCertificate](https://docs.microsoft.com/powershell/module/azurerm.servicefabric/add-azurermservicefabricclustercertificate?view=azurermps-5.3.0). Hajtsa végre a többi ebben a szakaszban az Add-AzureRmServiceFabricClusterCertificate használatakor nem kell.
+
 
 Ezek a lépések feltételezik, hogy Ön ismeri a Resource Manager működésével és legalább egy Service Fabric-fürt Resource Manager-sablon használatával telepített, és a sablont, amely akkor lesz szüksége a fürt létrehozásakor használt. Az Ön számára elfogadható JSON használatával is feltételezzük.
 
@@ -119,7 +105,7 @@ Ha azt szeretné, hogy **helyettesítő a cert**, majd adja meg az új tanúsít
 ``` 
 
 
-**4. lépés:** módosítása **összes** a **Microsoft.Compute/virtualMachineScaleSets** erőforrás-definíciókban - keresse meg a Microsoft.Compute/virtualMachineScaleSets erőforrás definíciója. Görgessen az "publisher": "Microsoft.Azure.ServiceFabric", "virtualMachineProfile" alatt.
+**4. lépés:** módosítása **összes** a **Microsoft.Compute/virtualMachineScaleSets** erőforrás-definíciókban - keresse meg a Microsoft.Compute/virtualMachineScaleSets erőforrás-definícióban. Görgessen az "publisher": "Microsoft.Azure.ServiceFabric", "virtualMachineProfile" alatt.
 
 A service fabric publisher beállításaiban megtekintheti az alábbihoz hasonló.
 
@@ -160,7 +146,7 @@ A Tulajdonságok most példához hasonló
 ![Json_Pub_Setting3][Json_Pub_Setting3]
 
 
-**5. lépés:** módosítása **összes** a **Microsoft.Compute/virtualMachineScaleSets** erőforrás-definíciókban - keresse meg a Microsoft.Compute/virtualMachineScaleSets erőforrás definíciója. A "vaultCertificates" görgessen:, a "OSProfile". akkor kell kinéznie.
+**5. lépés:** módosítása **összes** a **Microsoft.Compute/virtualMachineScaleSets** erőforrás-definíciókban - keresse meg a Microsoft.Compute/virtualMachineScaleSets erőforrás-definícióban. A "vaultCertificates" görgessen:, a "OSProfile". akkor kell kinéznie.
 
 
 ![Json_Pub_Setting4][Json_Pub_Setting4]
@@ -297,7 +283,7 @@ Távolítsa el a másodlagos tanúsítvány használatát a fürt biztonsági ok
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ezek a cikkek további információt a kiszolgálófürt-felügyelet olvasható:
 
 * [Service Fabric-fürt verziófrissítés folyamatáról és az Ön elvárásainak](service-fabric-cluster-upgrade.md)

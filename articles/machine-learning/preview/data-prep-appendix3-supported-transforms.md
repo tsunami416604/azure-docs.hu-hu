@@ -5,18 +5,18 @@ services: machine-learning
 author: euangMS
 ms.author: euang
 manager: lanceo
-ms.reviewer: garyericson, jasonwhowell, mldocs
+ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.custom: 
 ms.devlang: 
 ms.topic: article
 ms.date: 02/01/2018
-ms.openlocfilehash: d91985849bd2483e8a28a01d63d253960190829d
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 9cd6e6cdf8d8dc2b1872d6f7b76821122fd427fa
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="use-data-transforms-for-data-preparation-in-azure-machine-learning"></a>Adatok előkészítése az Azure Machine Learning adatok átalakítások használata
 
@@ -48,7 +48,7 @@ Kiválaszthatja az oszlopokat az átalakítás meghívása előtt. Az átalakít
 Részletes leírását a **származtatott oszlop példa alapján** átalakító mellett további minták, lásd: [Célosztályából oszlop példa hivatkozással](data-prep-derive-column-by-example.md).  
 
 ## <a name="split-column-by-example"></a>Példa alapján osztott oszlop
-A transzformáció oszlop vesz igénybe, és a "Által példa" motor használata esetén megkísérli az adott oszlop felosztásához  *n*  más oszlopokat is. Az automatikus felosztása a későbbi létrehozott oszlopok futtathatja.
+A transzformáció oszlop vesz igénybe, és a "Által példa" motor használata esetén megkísérli az adott oszlop felosztásához *n* más oszlopokat is. Az automatikus felosztása a későbbi létrehozott oszlopok futtathatja.
 
 Részletes leírását a **osztott oszlop példa alapján** átalakító mellett további minták, lásd: [osztott oszlop példa hivatkozással](data-prep-split-column-by-example.md).
 

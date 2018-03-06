@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: wesmc
-ms.openlocfilehash: 02850243caaa66a354f06b650a5505a79d7aee54
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 82c01419d65e00ddf27dfeb8fd444d5d3d81803c
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="azure-redis-cache-faq"></a>Azure Redis Cache – Gyakori kérdések
 Azure Redis Cache a gyakori kérdéseket, a mintákat és ajánlott eljárások a válaszok megismerése.
@@ -135,7 +135,7 @@ Ebből a táblázatból a következő következtetéseket is azt:
 | Tarifacsomag | Méret | Processzormagok | Rendelkezésre álló sávszélesség | 1 KB-os méret | 1 KB-os méret |
 | --- | --- | --- | --- | --- | --- |
 | **Standard gyorsítótár mérete** | | |**Megabit / másodperc (Mb/s) vagy megabájt / másodperc (MB/s)** |**A kérelmek száma a második (RPS) nem SSL** |**A kérelmek száma a második (RPS) SSL** |
-| C0 |250 MB |Közös |100 / 12.5 |15,000 |7,500 |
+| C0 |250 MB |Közös |100 / 12.5 |15,000 |7500 |
 | C1 |1 GB |1 |500 / 62.5 |38,000 |20,720 |
 | C2 |2,5 GB |2 |500 / 62.5 |41,000 |37,000 |
 | C3 |6 GB |4 |1000 / 125 |100,000 |90,000 |
@@ -246,9 +246,7 @@ Akkor használhatja a parancsok megtalálható a [parancsok Redis](http://redis.
 * A Redis parancssori eszközöket használhatja. Is használhatja őket, hajtsa végre a következő lépéseket:
 * Töltse le a [parancssori eszközök Redis](https://github.com/MSOpenTech/redis/releases/).
 * Kapcsolódás a gyorsítótár `redis-cli.exe`. Adjon át a gyorsítótár-végpontot a a -h kapcsoló és a kulcs - a a következő példában látható módon:
-* `redis-cli -h <your cache="" name="">
-  .redis.cache.windows.net -a <key>
-  `
+* `redis-cli -h <redis cache name>.redis.cache.windows.net -a <key>`
 
 > [!NOTE]
 > A Redis parancssori eszközök sem működik együtt az SSL-port, de egy segédprogramot használhatja például a `stunnel` való biztonságos kapcsolódás az eszközök az SSL-port a riasztásban megjelenő utasításokat követve a [bejelentése ASP.NET munkamenetállapot-szolgáltatóját a Redis Preview Kiadás](http://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx) blogbejegyzést.
@@ -270,7 +268,7 @@ Igen, a PHP munkamenet-gyorsítótár Azure Redis Cache használatához adja meg
 >
 > `session.save_path = "tcp://mycache.redis.cache.windows.net:6379?auth=<url encoded primary or secondary key here>";`
 >
-> Ha a kulcs nem kódolt URL-cím, egy üzenet, például a kivétel jelenhet meg:`Failed to parse session.save_path`
+> Ha a kulcs nem kódolt URL-cím, egy üzenet, például a kivétel jelenhet meg: `Failed to parse session.save_path`
 >
 >
 

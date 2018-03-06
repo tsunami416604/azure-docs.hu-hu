@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 12/14/2017
+ms.date: 03/01/2018
 ms.author: jonbeck
-ms.openlocfilehash: d5eb75b1a010b0e1e3eddf5a1201a52543c649d2
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: fcfdf9fe9bda5428e369e081e95912f698c89e9f
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2017
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="gpu-optimized-virtual-machine-sizes"></a>GPU optimalizált virtuálisgép-méretek
 
@@ -40,6 +40,6 @@ Illesztőprogram telepítése és ellenőrzési lépések, tekintse meg [N-serie
 - [Memóriaoptimalizált](sizes-memory.md)
 - [Tárolásra optimalizált](sizes-storage.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További tudnivalók [Azure számítási egység (ACU)](acu.md) segíthetnek a számítási teljesítmény összehasonlítása Azure termékváltozatok mentén.
 

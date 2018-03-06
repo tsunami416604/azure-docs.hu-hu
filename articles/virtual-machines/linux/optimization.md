@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/06/2016
 ms.author: rclaus
-ms.openlocfilehash: 5484f0422e67c75320cc76ffcf08a2b8d6cc6108
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: e143ed1e6bcece7efac9126c8e46408e7a88a5c0
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="optimize-your-linux-vm-on-azure"></a>Linuxos virtuális gép optimalizálása az Azure-ban
 A Linux virtuális gép (VM) létrehozása áll a parancssorból vagy a portálról. Ez az oktatóanyag bemutatja, hogyan annak beállítása, a Microsoft Azure platformon a teljesítmény optimalizálása érdekében. Ez a témakör az Ubuntu Server virtuális gép használja, de is létrehozhat Linux virtuális gép használt [a saját lemezképek sablonként](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).  
@@ -58,7 +58,7 @@ Ubuntu felhő lemezképek, a felhő inicializálás konfigurálása a lapozófá
 
 A lemezképek felhő inicializálás támogatás nélkül az Azure piactérről telepített Virtuálisgép-rendszerképek van integrálva van az operációs rendszer virtuális gép Linux ügynök. Ez az ügynök lehetővé teszi, hogy a virtuális gép kommunikál a különböző Azure-szolgáltatásokhoz. Ha telepítette az Azure piactérről szabványos lemezkép, kellene megfelelően konfigurálja a Linux lapozófájl beállításait érdekében tegye a következőket:
 
-Keresse meg és módosíthatja a két bejegyzés a **/etc/waagent.conf** fájlt. Egy dedikált swap fájl és a lapozófájl méretének azok ellenőrzése. A paraméterek módosítása szeretne `ResourceDisk.EnableSwap=N` és`ResourceDisk.SwapSizeMB=0` 
+Keresse meg és módosíthatja a két bejegyzés a **/etc/waagent.conf** fájlt. Egy dedikált swap fájl és a lapozófájl méretének azok ellenőrzése. A paraméterek módosítása szeretne `ResourceDisk.EnableSwap=N` és `ResourceDisk.SwapSizeMB=0` 
 
 Módosítsa a paramétereket a következő beállításokat:
 
@@ -131,8 +131,7 @@ Ne feledje, hogy minden optimalizálási vitafórum tesztek végrehajtása előt
 
 Néhány hasznos további forrásanyagokra mutató hivatkozásokat: 
 
-* [Premium Storage: Nagy teljesítményű tárolási szolgáltatás Azure-beli virtuális gépek számítási feladataihoz](../windows/premium-storage.md)
-* [Azure Linux ügynök felhasználói útmutatója](../windows/agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [Az Azure Linux virtuális gépeken futó MySQL teljesítményének optimalizálása](classic/optimize-mysql.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
-* [Szoftveres RAID Linux konfigurálása](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-
+* [Premium Storage: Nagy teljesítményű tárolási szolgáltatás Azure-beli virtuális gépek számítási feladataihoz](premium-storage.md)
+* [Azure Linux ügynök felhasználói útmutatója](agent-user-guide.md)
+* [Az Azure Linux virtuális gépeken futó MySQL teljesítményének optimalizálása](classic/optimize-mysql.md)
+* [Szoftveres RAID Linux konfigurálása](configure-raid.md)

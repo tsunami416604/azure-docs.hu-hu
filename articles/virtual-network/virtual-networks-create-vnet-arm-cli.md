@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 03/01/2018
 ms.author: jdial
 ms.custom: 
-ms.openlocfilehash: a4cb309a9fd07e842193b0ce4b023fab8c08e035
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: feb8fb218b8bde88ba7fbdc3419e32c9313c7885
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="create-a-virtual-network-with-multiple-subnets-using-the-azure-cli"></a>Hozzon létre egy virtuális hálózatot, az Azure parancssori felület használatával több alhálózattal
 
@@ -126,6 +126,8 @@ A virtuális gép létrehozásához néhány percet vesz igénybe. A virtuális 
 A példa kimenetben megjelenik az **privateipaddress tulajdonságot** van *10.0.1.4*. Azure létrehozott egy [hálózati illesztő](virtual-network-network-interface.md), akkor a virtuális géphez csatolt, a hálózati adapter magánhálózati IP-címmel, és egy **macAddress**. Azure DHCP automatikusan rendelt 10.0.1.4 hálózati kapcsolat, mert az első elérhető IP-cím a *titkos* alhálózat. A privát IP-cím és MAC-címek maradnak hozzárendelve a hálózati adapter, amíg nem törli a hálózati illesztőt. 
 
 Vegye figyelembe a **publicIpAddress**. Ez a cím a virtuális gép egy későbbi lépésben az internetről való eléréséhez használt. Bár a virtuális gép nem kell egy nyilvános IP-címet kap, Azure rendel hozzá egy nyilvános IP-cím minden virtuális gépet hoz létre, alapértelmezés szerint. Útján kommunikálnak az interneten a virtuális gép, egy nyilvános IP-címet kell rendelni a virtuális géphez. Minden virtuális gépek kommunikálhatnak az internettel kimenő, függetlenül attól, egy nyilvános IP-címet a virtuális géphez van rendelve. Az Azure-ban kimenő internetes kapcsolatok kapcsolatos további információkért lásd: [az Azure-ban kimenő kapcsolatok](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+
+Ez a cikk a létrehozott virtuális gépek rendelkezik ilyennel [hálózati illesztő](virtual-network-network-interface.md) dinamikusan hozzárendelt hálózati illesztő egy IP-címmel. A virtuális gép telepítése után is [több nyilvános és magánhálózati IP-címek hozzáadása vagy módosítása a IP-cím hozzárendelés metódus statikus](virtual-network-network-interface-addresses.md#add-ip-addresses). Is [hozzáadása a hálózati adapterek](virtual-network-network-interface-vm.md#vm-add-nic), akár által támogatott maximális a [Virtuálisgép-méretet](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) válassza, ha egy virtuális gépet hoz létre. Emellett [egygyökerű i/o-virtualizálás (SR-IOV) engedélyezése](create-vm-accelerated-networking-cli.md) a virtuális gép, de csak akkor, ha egy virtuális gép létrehozásához, amely a funkció támogatja a Virtuálisgép-méretet.
 
 ### <a name="communicate-between-virtual-machines-and-with-the-internet"></a>A virtuális gépek között, és az internetes kommunikáció
 

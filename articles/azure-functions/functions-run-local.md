@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 10/12/2017
 ms.author: glenga
-ms.openlocfilehash: f19fa1ac4dd970ca3df2c0fdbf8e0778e171c43d
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
-ms.translationtype: HT
+ms.openlocfilehash: 59a15697641dd8e4bdfdb974436d46a34b47ffb5
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="code-and-test-azure-functions-locally"></a>Kód és az Azure Functions helyi tesztelése
 
@@ -35,14 +35,6 @@ A Visual Studio C# fejlesztő, az Azure Functions is [integrálható a Visual St
 
 >[!NOTE]  
 > Vagy a verzió telepítése előtt kell [NodeJS telepítése](https://docs.npmjs.com/getting-started/installing-node), mely tartalmazza az npm. A verzió 2.x az eszközök csak a Node.js 8.5 és újabb verziói támogatottak. 
-
-### <a name="version-1x-runtime"></a>Verzió 1.x futásidejű
-
-Az eszközök eredeti verzióját használja a funkciók 1.x futásidejű. Ebben a verzióban a .NET-keretrendszer használ, és csak a Windows rendszerű számítógépeken támogatott. Az alábbi parancs segítségével a verzió 1.x telepíti:
-
-```bash
-npm install -g azure-functions-core-tools
-```
 
 ### <a name="version-2x-runtime"></a>Verzió 2.x futásidejű
 
@@ -69,6 +61,14 @@ MacOS és Linux telepítése esetén szükség lehet felvenni a `unsafe-perm` je
 
 ```bash
 sudo npm install -g azure-functions-core-tools@core --unsafe-perm true
+```
+
+### <a name="version-1x-runtime"></a>Verzió 1.x futásidejű
+
+Az eszközök eredeti verzióját használja a funkciók 1.x futásidejű. Ebben a verzióban a .NET-keretrendszer használ, és csak a Windows rendszerű számítógépeken támogatott. Az alábbi parancs segítségével a verzió 1.x telepíti:
+
+```bash
+npm install -g azure-functions-core-tools
 ```
 
 ## <a name="run-azure-functions-core-tools"></a>Az Azure Functions Core eszközeinek futtatása

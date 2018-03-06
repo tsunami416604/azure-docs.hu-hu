@@ -15,13 +15,13 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/25/2017
 ms.author: LADocs; estfan
-ms.openlocfilehash: 9384752c7f12074aae6ff165241e954eb2a4a01e
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 0dead955f9eb723dfa232d3ce751498a09ce1b29
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 03/05/2018
 ---
-# <a name="schedule-tasks-and-workflows-that-run-regularly-with-logic-apps"></a>Feladatok ütemezése és a logic apps rendszeresen futtatott munkafolyamatok
+# <a name="create-and-schedule-regularly-running-tasks-with-azure-logic-apps"></a>Hozzon létre, és az Azure Logic Apps rendszeresen futó feladatok ütemezése
 
 Ütemezett feladatok, a műveletek, a munkaterhelés vagy a rendszeresen futtatott folyamatokat, kezdetű logic app munkafolyamat hozhat létre a **ütemezés - ismétlődési** [eseményindító](../logic-apps/logic-apps-overview.md#logic-app-concepts). Az ehhez az eseményindítóhoz állíthatja be egy dátumot és időpontot a ismétlődési és feladatokat, mint az ezekben a példákban ismétlődés ütemezésének indítása:
 
@@ -34,8 +34,8 @@ ms.lasthandoff: 01/19/2018
 
 Ehhez az eseményindítóhoz sok kombinációját, például támogatja:
 
-* Azonnal futtatni, és ismételje meg minden  *n*  másodperc, perc, óra, nap, hét vagy hónapok száma.
-* Indítsa el a megadott időpontban, majd futtassa, majd ismételje meg minden  *n*  másodperc, perc, óra, nap, hét, vagy hónapok száma.
+* Azonnal futtatni, és ismételje meg minden *n* másodperc, perc, óra, nap, hét vagy hónapok száma.
+* Indítsa el a megadott időpontban, majd futtassa, majd ismételje meg minden *n* másodperc, perc, óra, nap, hét, vagy hónapok száma.
 * Futtassa, és ismételje meg egy vagy több minden nap időpontban, például: 8:00-kor és Délután 5.
 * Futtassa, és ismételje meg minden héten, de csak az adott napokra, például a szombat és vasárnap.
 * Futtassa, és ismételje meg minden héten, de csak adott napját és idejét, például hétfőtől péntekig 8:00-kor és Délután 5.
@@ -99,17 +99,17 @@ Az ismétlődési eseményindító tulajdonságait konfigurálhatja.
 | Name (Név) | Szükséges | Tulajdonság neve | Típus | Leírás | 
 |----- | -------- | ------------- | ---- | ----------- | 
 | **Gyakoriság** | Igen | frequency | Karakterlánc | Az ismétlődés időegység: **második**, **perc**, **óra**, **nap**, **hét**, vagy  **Hónap** | 
-| **Időköz** | Igen | interval | Egész szám | Egy pozitív egész szám, amely leírja, milyen gyakran a munkafolyamat fut, a gyakoriság alapján. <p>Az alapértelmezett időköz: 1. Az alábbiakban a minimális és maximális intervallumok: <p>-Hónap: 1-16 hónap </br>-Nap: 1-500 nap </br>– Óra: 1-12 000 üzemideje (óra) </br>-Perc: 1-72,000 perc </br>-Második: 1-9,999,999 másodpercben<p>Például ha az intervallum értéke 6, és a gyakoriság "Honap", akkor az ismétlődés értéke minden hatodik hónapban. | 
+| **Intervallum** | Igen | interval | Egész szám | Egy pozitív egész szám, amely leírja, milyen gyakran a munkafolyamat fut, a gyakoriság alapján. <p>Az alapértelmezett időköz: 1. Az alábbiakban a minimális és maximális intervallumok: <p>-Hónap: 1-16 hónap </br>-Nap: 1-500 nap </br>– Óra: 1-12 000 üzemideje (óra) </br>-Perc: 1-72,000 perc </br>-Második: 1-9,999,999 másodpercben<p>Például ha az intervallum értéke 6, és a gyakoriság "Honap", akkor az ismétlődés értéke minden hatodik hónapban. | 
 | **Időzóna** | Nem | timeZone | Karakterlánc | Vonatkozik, csak ha a kezdési időpontot, mert az eseményindító nem fogadja el [UTC eltolás](https://en.wikipedia.org/wiki/UTC_offset). Válassza ki az alkalmazni kívánt időzónát. | 
 | **Kezdési idő** | Nem | startTime | Karakterlánc | Adja meg a kezdési idő, a következő formátumban: <p>ÉÉÉÉ-hh-nnTóó: pp: Ha egy időzóna <p>– vagy – <p>ÉÉÉÉ-hh-SSz, ha nem adja meg a időzóna <p>Így például, ha 2017. szeptember 18., 2:00 PM, majd adja meg "2017-09-18T14:00:00", és válassza ki például a csendes-óceáni idő időzóna. Másik lehetőségként adja meg "2017-09-18T14:00:00Z" időzóna nélkül. <p>**Megjegyzés:** hajtsa végre a kezdési ideje a [ISO 8601 dátuma a megadott időpont](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) a [UTC dátum időformátum](https://en.wikipedia.org/wiki/Coordinated_Universal_Time), de egy [UTC eltolás](https://en.wikipedia.org/wiki/UTC_offset). Ne válassza ki egy időzónát, ha hozzá kell adnia a levél "Z" szóközt nélkül végén. A "Z" hivatkozik a egyenértékű [navigációs idő](https://en.wikipedia.org/wiki/Nautical_time). <p>Egyszerű ütemezés, a kezdési idő nem az első olyan, az összetett ütemezéseket, az eseményindító a kezdési időpontnál bármilyen hamarabb nem érvényesítést. [*Milyen módon használható a kezdő dátum és idő is?*](#start-time) | 
-| **Napjainkban a** | Nem | weekDays | Karakterlánc vagy karakterlánctömb | Ha "Hetente", ha azt szeretné, a munkafolyamat futtatásához egy vagy több napot kiválaszthatja: **hétfő**, **kedd**, **szerda**, **csütörtök** , **Péntek**, **szombat**, és **vasárnap** | 
-| **Ezek az órák:** | Nem | hours | Egész szám vagy az egész tömb | Ha bejelöli a "Day" vagy "Hetente", választhat egy vagy több egész számok 0 – 23 a nap, ha azt szeretné, a munkafolyamat futtatási óra. <p>Például ha megadja a "10", "12" és "14", kapott 2 PM, az óra közötti, de 10, 12 PM. | 
-| **Ezek perccel** | Nem | minutes | Egész szám vagy az egész tömb | Ha bejelöli a "Day" vagy "Hetente", választhat egy vagy több egész számok 0 és 59 az óra, ha azt szeretné, a munkafolyamat futtatási perc. <p>Például megadhatja a perc megjelölés "30", és elérhetővé az előző példa óra, nap, 10:30 AM, 12:30 PM és 2:30 PM. | 
+| **Ezeken a napokon** | Nem | weekDays | Karakterlánc vagy karakterlánctömb | Ha "Hetente", ha azt szeretné, a munkafolyamat futtatásához egy vagy több napot kiválaszthatja: **hétfő**, **kedd**, **szerda**, **csütörtök** , **Péntek**, **szombat**, és **vasárnap** | 
+| **Ezekben az órákban** | Nem | hours | Egész szám vagy az egész tömb | Ha bejelöli a "Day" vagy "Hetente", választhat egy vagy több egész számok 0 – 23 a nap, ha azt szeretné, a munkafolyamat futtatási óra. <p>Például ha megadja a "10", "12" és "14", kapott 2 PM, az óra közötti, de 10, 12 PM. | 
+| **Ezekben a percekben** | Nem | minutes | Egész szám vagy az egész tömb | Ha bejelöli a "Day" vagy "Hetente", választhat egy vagy több egész számok 0 és 59 az óra, ha azt szeretné, a munkafolyamat futtatási perc. <p>Például megadhatja a perc megjelölés "30", és elérhetővé az előző példa óra, nap, 10:30 AM, 12:30 PM és 2:30 PM. | 
 ||||| 
 
 ## <a name="json-example"></a>JSON-példa
 
-Íme egy példa ismétlődési eseményindító definícióját:
+Példa [ismétlődési eseményindító definícióját](../logic-apps/logic-apps-workflow-actions-triggers.md#recurrence-trigger):
 
 ``` json
 {

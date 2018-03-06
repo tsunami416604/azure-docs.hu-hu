@@ -9,11 +9,11 @@ ms.author: kgremban
 ms.date: 01/11/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 440b70f4d04728973d77e54e7f6303e1ad7fcd89
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: 827fe91c14a44cbaf8a9bb5921e5c9962d984414
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-linux-or-mac-device---preview"></a>Gyors üzembe helyezés: Adott központi telepítéséhez az első IoT peremhálózati modul Linux- vagy Mac - megtekintése
 
@@ -70,22 +70,22 @@ Hozzon létre egy eszközidentitás a szimulált eszköz, így képes kommuniká
 Az IoT-Edge futásidejű minden IoT peremhálózati eszközön van telepítve. Ez magában foglalja a két modulok. Először az IoT-Edge ügynök elősegíti a központi telepítési és figyelési modulokat az IoT-peremhálózati eszközön. Második a peremhálózati IoT hub kezeli a kommunikációt az IoT-peremhálózati eszközön modulokat, valamint az eszköz és az IoT-központ között. 
 
 A számítógépen, ahol az IoT-peremhálózati eszköz fogja futtatni töltse le az IoT-Edge vezérlő parancsfájl:
-```cmd
+```bash
 sudo pip install -U azure-iot-edge-runtime-ctl
 ```
 
 A futtatókörnyezet származó az előző szakaszban az IoT peremhálózati eszköz kapcsolati karakterlánc konfigurálása:
-```cmd
+```bash
 sudo iotedgectl setup --connection-string "{device connection string}" --auto-cert-gen-force-no-passwords
 ```
 
 Indítsa el a futtatókörnyezet:
-```cmd
+```bash
 sudo iotedgectl start
 ```
 
 Ellenőrizze, hogy az IoT-Edge-ügynök fut-e modulként Docker:
-```cmd
+```bash
 sudo docker ps
 ```
 
@@ -101,7 +101,7 @@ A gyors üzembe helyezés létrehozott egy új IoT peremhálózati eszköz, és 
 
 Nyissa meg a parancssort a szimulált eszköz újra futtatni a számítógépen. Győződjön meg arról, hogy fut-e a modul telepítve a felhőben az IoT-peremhálózati eszközön:
 
-```cmd
+```bash
 sudo docker ps
 ```
 
@@ -109,7 +109,7 @@ sudo docker ps
 
 A tempSensor modulból a felhőbe küldött üzenetek megjelenítése:
 
-```cmd
+```bash
 sudo docker logs -f tempSensor
 ```
 
@@ -118,6 +118,12 @@ sudo docker logs -f tempSensor
 A telemetriai adatokat küld az eszköz segítségével is megtekintheti a [IoT-központ explorer eszköz][lnk-iothub-explorer]. 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+
+Ha el szeretné távolítani a szimulált eszköz létrehozott, és minden modulhoz indított Docker tárolók használja a következő parancsot: 
+
+```bash
+sudo iotedgectl uninstall
+```
 
 Ha már nincs szüksége az IoT Hub létrehozott, használhatja a [az iot hub delete] [ lnk-delete] parancs beírásával távolítsa el az erőforrás és a vele társított eszközök:
 
