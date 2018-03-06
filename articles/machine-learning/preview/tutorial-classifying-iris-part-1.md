@@ -3,57 +3,80 @@ title: "Adatok előkészítése az Írisz osztályozása oktatóanyaghoz az Azur
 description: "Ez a részletes oktatóanyag bemutatja, hogyan használhatók ki teljeskörűen az (előzetes verziójú) Azure Machine Learning-szolgáltatások. Ez az 1. rész, amely az adatok előkészítését ismerteti."
 services: machine-learning
 author: hning86
-ms.author: haining
+ms.author: haining, j-martens
 manager: mwinkle
-ms.reviewer: garyericson, jasonwhowell, mldocs
+ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
-ms.custom: mvc, tutorial
+ms.custom: mvc
 ms.topic: tutorial
-ms.date: 09/28/2017
-ms.openlocfilehash: 4e558518a5a1fb7b4cd0a58fe2453fd4c083b46a
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.date: 02/28/2018
+ms.openlocfilehash: 0bef557ee1394e3c786fd2c54e821b5dea28fabf
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/28/2018
 ---
-# <a name="classify-iris-part-1-prepare-the-data"></a>Írisz osztályozása, 1. rész: Az adatok előkészítése
+# <a name="tutorial-classify-iris-part-1---preparing-the-data"></a>Oktatóanyag: Írisz osztályozása, 1. rész – Az adatok előkészítése
+
 Az Azure Machine Learning-szolgáltatások (előzetes verzió) az adatszakértők számára az adatok előkészítéséhez, a kísérletek kidolgozásához és a modellek felhőszinten való üzembe helyezéséhez létrehozott átfogó, integrált és fejlett adatelemzési megoldást kínálnak.
 
 Ez az oktatóanyag egy háromrészes sorozat első része. Az oktatóanyag az Azure Machine Learning-szolgáltatások (előzetes verzió) alapjait mutatja be. Az alábbiak végrehajtásának módját ismerheti meg:
-> [!div class="checklist"]
-> * Projekt létrehozása az Azure Machine Learning Workbench alkalmazásban.
-> * Adat-előkészítési csomag létrehozása.
-> * Python-/PySpark-kód létrehozása az adat-előkészítési csomagok meghívásához.
 
-Az oktatóanyag a jól ismert [Iris flower adatkészletet](https://en.wikipedia.org/wiki/Iris_flower_data_set) használja. A képernyőképek Windows-specifikusak, de a macOS rendszeren szinte azonos a felhasználói élmény.
+> [!div class="checklist"]
+> * Projekt létrehozása az Azure Machine Learning Workbenchben
+> * Adat-előkészítési csomag létrehozása
+> * Python-/PySpark-kód létrehozása az adat-előkészítési csomagok meghívásához
+
+Az oktatóanyag a jól ismert [Iris flower adatkészletet](https://en.wikipedia.org/wiki/Iris_flower_data_set) használja. A képernyőképek Windows-specifikusak, de a macOS rendszeren tapasztalható felhasználói élmény közel azonos.
 
 ## <a name="prerequisites"></a>Előfeltételek
-- Azure Machine Learning-kísérletezési fiók létrehozása.
-- Az Azure Machine Learning Workbench telepítése.
 
-Az Azure Machine Learning Workbench alkalmazás telepítéséhez követheti a [telepítési és létrehozási rövid útmutató](quickstart-installation.md) cikk utasításait. Ez a telepítési csomag tartalmazza az Azure többplatformos parancssori eszközét (Azure CLI) is.
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
-## <a name="create-a-new-project-in-azure-machine-learning-workbench"></a>Új projekt létrehozása az Azure Machine Learning Workbenchben
-1. Nyissa meg az Azure Machine Learning Workbench alkalmazást, és szükség esetén jelentkezzen be. A **PROJEKTEK** panelen válassza a pluszjelet (**+**) egy **Új projekt** létrehozásához.
+Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
+- Egy Azure Machine Learning kísérletezési fiókra
+- Egy telepített Azure Machine Learning Workbenchre
+
+Ezek hiányában kövesse a [telepítés és indítás rövid útmutatójában](quickstart-installation.md) ismertetett lépéseket a fiók beállításához és az Azure Machine Learning Workbench alkalmazás telepítéséhez. 
+
+## <a name="create-a-new-project-in-workbench"></a>Új projekt létrehozása a Workbenchben
+
+Ha követte a [telepítés és indítás rövid útmutatójában](quickstart-installation.md) ismertetett lépéseket, már létrehozta ezt a projektet, és továbbléphet a következő szakaszra.
+
+1. Nyissa meg az Azure Machine Learning Workbench alkalmazást, és szükség esetén jelentkezzen be. 
+   
+   + Windowsban használja a **Machine Learning Workbench** asztali parancsikonját. 
+   + MacOS rendszeren válassza a Launchpaden az **Azure ML Workbench** elemet.
+
+1. Válassza a **PROJEKTEK** ablaktáblán a plusz jelet (+), majd az **Új projekt** lehetőséget.  
 
    ![Új munkaterület](media/tutorial-classifying-iris/new_ws.png)
 
-2. Töltse ki az **Új projekt létrehozása** űrlapot: 
+1. Töltse ki az űrlap mezőit, és válassza a **Létrehozás** gombot, hogy új projektet hozzon létre a Workbenchben.
+
+   Mező|Oktatóanyaghoz ajánlott érték|Leírás
+   ---|---|---
+   Projektnév | myIris |Adjon meg egy egyedi nevet a fiók azonosításához. Használhatja a saját nevét, vagy egy részleg vagy projekt nevét is. Olyasmit adjon meg, amivel a legjobban azonosítható a kísérlet. A név 2–32 karakter hosszúságú lehet. A név csak alfanumerikus és kötőjel (-) karaktert tartalmazhat. 
+   Projektkönyvtár | c:\Temp\ | Adja meg a könyvtárat, amelyben a projekt létrejött.
+   Projekt leírása | _hagyja üresen_ | A projekt leírására szolgáló mező, amelyet nem kötelező kitölteni.
+   Visualstudio.com |_hagyja üresen_ | Nem kötelező kitölteni. Dönthet úgy, hogy egy projektet Git-adattárhoz társít a Visual Studio Team Servicesben a forráskezelés és az együttműködés megkönnyítése érdekében. [További tudnivalókat erről a lehetőségről itt talál](https://docs.microsoft.com/en-us/azure/machine-learning/preview/using-git-ml-project#step-3-set-up-a-machine-learning-project-and-git-repo). 
+   Munkaterület | IrisGarden (ha van) | Válasszon egy olyan munkaterületet, amelyet a kísérletezési fiókhoz hozott létre az Azure Portalon. <br/>Ha követte a rövid útmutatót, rendelkeznie kell egy IrisGarden nevű munkaterülettel. Ha nincs ilyen munkaterülete, válassza azt, amelyet a kísérletezési fiók létrehozásakor hozott létre, vagy válasszon egy tetszőleges munkaterületet.
+   Projektsablon | Írisz osztályozása | A sablonok olyan szkripteket és adatokat tartalmaznak, amelyek elősegítik a termék különböző funkcióinak megismerését. Ez a sablon azokat a szkripteket és adatokat tartalmazza, amelyekre szüksége van ehhez a rövid bemutatóhoz, illetve a dokumentációs webhelyen található egyéb oktatóanyagokhoz. 
 
    ![Új projekt](media/tutorial-classifying-iris/new_project.png)
-
-   - A **Projekt neve** mezőben adja meg a projekt nevét. Használja például a **myIris** értéket.
-   - Válassza ki a **projektkönyvtárat**, amelyben a projekt létrejön. Használja például a `C:\Temp\` értéket. 
-   - Töltse ki a **Projekt leírása** mezőt. Ez nem kötelező. 
-   - A **Git-adattár** mezőt szintén nem kötelező kitölteni. Megadhat egy meglévő üres Git-adattárat (olyan adattárat, amelynek nincs „master” ága) a Visual Studio Team Servicesen. Ha már létező Git-adattárat használ, később engedélyezheti a barangolási és megosztási forgatókönyveket. További információkat a [Git-adattár használatát](using-git-ml-project.md) ismertető témakörben talál. 
-   - Válasszon ki egy **munkaterületet**, például ez az oktatóanyag az **IrisGarden** nevűt használja. 
-   - Válassza ki az **Írisz osztályozása** sablont a projektsablonlistából. 
-
-3. Válassza a **Létrehozás** gombot. Létrejön és megnyílik a projekt.
+ 
+ Létrejön egy új projekt, és megnyílik az irányítópultja. Ezen a ponton áttekintheti a projekt kezdőlapját, adatforrásait, jegyzetfüzeteit és forráskódfájljait. 
 
 ## <a name="create-a-data-preparation-package"></a>Adat-előkészítési csomag létrehozása
-1. Nyissa meg az **iris.csv** fájlt a **Fájlnézetben**. A fájl egy 5 oszlopból és 150 sorból álló táblázat. Négy oszlop számokat tartalmaz, a céloszlop pedig karakterláncokat. Oszlopfejlécek nem szerepelnek benne.
+
+Az oktatóanyag jelen része az adatok felfedezésével és az adatok előkészítési folyamatának elindításával foglalkozik. Amikor előkészíti az adatokat az Azure Machine Learning Workbenchben, akkor a rendszer a Workbenchben végrehajtott átalakítások JSON-ábrázolásait eltárolja a helyi adatelőkészítési csomagban (a *.dprep fájlban). Ez az adatelőkészítési csomag a Workbench adatelőkészítési munkáinak elsődleges tárolója.
+
+Az adatelőkészítési csomag átadható egy futtatókörnyezetnek a végrehajtáshoz, például a local-C#/CoreCLR-nek, a Scala/Sparknak vagy a Scala/HDI-nek. Itt jön létre a végrehajtandó kód a megfelelő futtatókörnyezethez. 
+
+1. Válassza ki a mappaikont a fájlnézet, majd az **iris.csv** fájlt a fájl megnyitásához.  
+
+   A fájl egy 5 oszlopból és 150 sorból álló táblázat. Négy oszlop számokat tartalmaz, a céloszlop pedig karakterláncokat. Oszlopfejlécek nem szerepelnek benne.
 
    ![iris.csv](media/tutorial-classifying-iris/show_iris_csv.png)
 
@@ -97,19 +120,19 @@ Az Azure Machine Learning Workbench alkalmazás telepítéséhez követheti a [t
 
    Létrejön egy új adat-előkészítési csomag **iris-1.dprep** néven, és megnyílik az adatelőkészítés-szerkesztőben.
 
-9. Most végezzünk el néhány alapszintű adatelőkészítési műveletet. Nevezze át az oszlopokat. Ehhez jelölje ki egyenként az oszlopfejléceket, és tegye szerkeszthetővé a fejlécszöveget. 
+9. Most végezzünk el néhány alapszintű adatelőkészítési műveletet. Jelölje ki egyenként az oszlopfejléceket, hogy szerkeszthetővé tegye a fejlécszöveget, és nevezze át az oszlopokat a következőképpen: 
 
-   Adja meg a **Csészelevél hossza**, **Csészelevél szélessége**, **Szirom hosszúsága**, **Szirom szélessége** és **Fajok** nevet a megfelelő oszlopoknak.
+   Adja meg sorrendben a **Csészelevél hossza**, **Csészelevél szélessége**, **Szirom hosszúsága**, **Szirom szélessége** és **Fajok** nevet a megfelelő oszlopoknak.
 
    ![Oszlopok átnevezése](media/tutorial-classifying-iris/rename_column.png)
 
 10. A külön értékek kiszámításához jelölje ki a **Fajok** oszlopot, majd kattintson rá a jobb gombbal a kiválasztáshoz. Válassza az **Értékek száma** elemet a legördülő menüből. 
 
+   Ez a művelet megnyitja a **Vizsgálók** panelt az adatok alatt. Megjelenik egy négysávos hisztogram. A céloszlop három különféle értékkel rendelkezik: **Iris_virginica**, **Iris_versicolor**, illetve **Iris-setosa**, és van még egy **(null)** érték.
+
    ![Az Értékek számának kiválasztása](media/tutorial-classifying-iris/value_count.png)
 
-   Ez a művelet megnyitja a **Vizsgálók** panelt, és megjelenít egy négysávos hisztogramot. A céloszlop három különféle értékkel rendelkezik: **Iris_virginica**, **Iris_versicolor**, illetve **Iris-setosa**, és van még egy **(null)** érték.
-
-11. A nullértékek kiszűréséhez válassza ki a nullértéket jelölő sávot a diagramon. Egy **(null)** értékű sor van. A sor eltávolításához válassza a mínuszjelet (**-**).
+11. A null értékek kiszűréséhez válassza a „Null” címkét, majd a mínuszjelet (**-**). Ezután a Null sor szürkévé válik, ami jelzi, hogy ki lett szűrve. 
 
    ![Értékek száma hisztogram](media/tutorial-classifying-iris/filter_out.png)
 
@@ -121,11 +144,15 @@ Az Azure Machine Learning Workbench alkalmazás telepítéséhez követheti a [t
 
 ## <a name="generate-pythonpyspark-code-to-invoke-a-data-preparation-package"></a>Python-/PySpark-kód létrehozása az adat-előkészítési csomagok meghívásához
 
-1. Kattintson a jobb gombbal az **iris-1.dprep** fájlra a helyi menü megjelenítéséhez, majd válassza az **Adathozzáférési kódfájl létrehozása** elemet. 
+<!-- The output/results of a Package can be explored in Python or via a Jupyter Notebook. A Package can be executed across multiple runtimes including local Python, Spark (including in Docker), and HDInsight. A Package contains one or more Dataflows that are the steps and transforms applied to the data. A Package may use another Package as a Data Source (referred to as a Reference Data Flow). -->
+
+1. Keresse meg az Adat-előkészítések fül alatt látható **iris-1.dprep** fájlt.
+
+1. Kattintson a jobb gombbal az **iris-1.dprep** fájlra, majd válassza az **Adathozzáférési kódfájl létrehozása** elemet a helyi menüből. 
 
    ![Kód létrehozása](media/tutorial-classifying-iris/generate_code.png)
 
-2. Megnyílik egy új, **iris-1.py** nevű fájl az alábbi kódsorokkal:
+   Megnyílik egy új, **iris-1.py** nevű fájl az alábbi kódsorokkal az adatelőkészítési csomagként létrehozott logika meghívásához:
 
    ```python
    # Use the Azure Machine Learning data preparation package
@@ -144,17 +171,22 @@ Az Azure Machine Learning Workbench alkalmazás telepítéséhez követheti a [t
    df.head(10)
    ```
 
-   Ez a kódrészlet meghívja az adat-előkészítési csomagként létrehozott logikát. Attól függően, hogy milyen környezetben fut ez a kód, a `df` különböző adatkerettípusokat jelölhet. A rendszer [pandas DataFrame](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html)-et használ, ha a kódot Python-futtatókörnyezetben, illetve [Spark DataFrame](https://spark.apache.org/docs/latest/sql-programming-guide.html)-et, ha Spark-környezetben hajtják végre. 
+   Attól függően, hogy milyen környezetben fut ez a kód, a `df` különböző adatkerettípusokat jelölhet. A rendszer [pandas DataFrame](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html)-et használ, ha a kódot Python-futtatókörnyezetben, illetve [Spark DataFrame](https://spark.apache.org/docs/latest/sql-programming-guide.html)-et, ha Spark-környezetben hajtják végre. 
+   
+   Az adatok Azure Machine Learning Workbenchben való előkészítésének részleteit [az adat-előkészítés első lépéseit](data-prep-getting-started.md) ismertető útmutatóban találja.
 
-   Az adatok Azure Machine Learning Workbenchben való előkészítésével kapcsolatos további információkért tekintse meg [az adat-előkészítés első lépéseit](data-prep-getting-started.md) ismertető útmutatót.
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+
+[!INCLUDE [aml-delete-resource-group](../../../includes/aml-delete-resource-group.md)]
 
 ## <a name="next-steps"></a>További lépések
-A háromrészes oktatóanyag-sorozat jelen, első részében a következőkre használta az Azure Machine Learning Workbenchet:
-> [!div class="checklist"]
-> * Új projekt létrehozása. 
-> * Adat-előkészítési csomag létrehozása.
-> * Python-/PySpark-kód létrehozása az adat-előkészítési csomagok meghívásához.
 
-Továbbléphet a sorozat következő részére, amely az Azure Machine Learning-modellek létrehozását ismerteti:
+Ebben az oktatóanyagban azt sajátította el, hogyan használhatja az Azure Machine Learning Workbenchet a következőkhöz:
+> [!div class="checklist"]
+> * Új projekt létrehozása
+> * Adatelőkészítési csomag létrehozása
+> * Python/PySpark-kód létrehozása az adatelőkészítési csomagok meghívásához
+
+Továbbléphet az oktatóanyag-sorozat következő részére, amely az Azure Machine Learning-modellek létrehozását ismerteti:
 > [!div class="nextstepaction"]
-> [Modell létrehozása](tutorial-classifying-iris-part-2.md)
+> [2. oktatóanyag – Modellek létrehozása](tutorial-classifying-iris-part-2.md)

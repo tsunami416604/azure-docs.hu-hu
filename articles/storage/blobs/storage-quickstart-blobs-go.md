@@ -1,22 +1,22 @@
 ---
-title: "Azure-os rövid útmutató – Objektumok áthelyezése az Azure Blob Storage-tárolókra és -tárolókról a Go használatával | Microsoft Docs"
-description: "Rövid áttekintést kaphat arról, hogyan továbbíthat objektumokat az Azure Blob Storage-tárolókra és -tárolókról a Go nyelv használatával"
+title: "Azure rövid útmutató – Blobok feltöltése, letöltése és listázása az Azure Storage-ban a Go használatával | Microsoft Docs"
+description: "Ebben a rövid útmutatóban egy tárfiókot és egy tárolót hoz létre. Majd a Storage Góhoz készült ügyféloldali kódtára segítségével feltölt egy blobot az Azure Storage-ba, letölt egy blobot, és kilistázza a tárolóban lévő blobokat."
 services: storage
 author: seguler
-manager: jahogg
+manager: jeconnoc
+ms.custom: mvc
 ms.service: storage
-ms.tgt_pltfrm: na
-ms.devlang: go
 ms.topic: quickstart
-ms.date: 01/29/2018
+ms.date: 02/22/2018
 ms.author: seguler
-ms.openlocfilehash: 4ba9721dc12bc50b20ad85019b1df51a56b52ebc
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: a30d012ea663b04028a4b0ebb2880532a596500b
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 02/24/2018
 ---
-#  <a name="transfer-objects-tofrom-azure-blob-storage-using-go"></a>Objektumok áthelyezése az Azure Blob Storage-tárolókra és -tárolókról a Go használatával
+# <a name="quickstart-upload-download-and-list-blobs-using-go"></a>Rövid útmutató: blobok feltöltése, letöltése és listázása a Go használatával
+
 A rövid útmutató azt ismerteti, hogyan használható a Go programnyelv blokkblobok feltöltésére, letöltésére és listázására az Azure Blob Storage-ban található tárolókban. 
 
 ## <a name="prerequisites"></a>Előfeltételek

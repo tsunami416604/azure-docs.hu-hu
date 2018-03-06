@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 05/09/2017
 ms.author: jasonzio
 ms.openlocfilehash: 1eae6d302827c977b9258174dec68fd8f3009a11
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 03/06/2018
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Linux diagnosztikai kiterjesztésének használatával figyelheti a metrikák és a naplókat
 
@@ -146,7 +146,7 @@ A szükséges SAS-jogkivonatot az Azure portálon keresztül egyszerűen állít
 1. Ellenőrizze a megfelelő szakaszait, mint korábban leírt
 1. A "Készítése SAS" gombra.
 
-![Kép](./media/diagnostic-extension/make_sas.png)
+![image](./media/diagnostic-extension/make_sas.png)
 
 A generált SAS másolja az storageAccountSasToken mezőjébe; Távolítsa el a bevezető kérdőjel ("?").
 
@@ -189,8 +189,8 @@ A Linux diagnosztikai bővítmény 3.0-s verziója két fogadó-típusokat támo
 
 A "sasURL" bejegyzés tartalmazza a teljes URL-címet, beleértve a SAS-jogkivonat, az Event Hubs, amelyhez adatokat közzé kell tenni. LAD van szükség, egy olyan házirendet, amely lehetővé teszi, hogy a küldési elnevezési SAS jogcímek. Példa:
 
-* Hozzon létre egy Event Hubs-névtér neve`contosohub`
-* Létrehoz egy Eseményközpontot, a névtér neve`syslogmsgs`
+* Hozzon létre egy Event Hubs-névtér neve `contosohub`
+* Létrehoz egy Eseményközpontot, a névtér neve `syslogmsgs`
 * Az Event Hubs nevű meg megosztott hozzáférési házirend létrehozása `writer` , amely lehetővé teszi, hogy a küldési jogcím
 
 Ha létrehozott egy SAS jó 2018. január 1. az UTC éjfél sasURL érték lehet:
@@ -323,9 +323,9 @@ displayName | A címke (a kapcsolódó területi beállításban megadott nyelve
 
 A counterSpecifier tetszőleges azonosító, amely. Metrikák fogyasztóinak, például az Azure portál diagramkészítési, és counterSpecifier riasztási szolgáltatás, használja a "key" azonosító a metrika példányának vagy egy mértéket. A `builtin` metrika, ajánlott counterSpecifier értékek kezdődő `/builtin/`. Gyűjti a metrika egy adott példányához, azt javasoljuk a példány azonosítója csatolása counterSpecifier értékét. Néhány példa:
 
-* `/builtin/Processor/PercentIdleTime`-Minden Vcpu között átlagosan üresjárati idő
-* `/builtin/Disk/FreeSpace(/mnt)`– Szabad terület a /mnt fájlrendszer
-* `/builtin/Disk/FreeSpace`– Az összes csatlakoztatott fájlrendszerek között átlagosan szabad terület
+* `/builtin/Processor/PercentIdleTime` -Minden Vcpu között átlagosan üresjárati idő
+* `/builtin/Disk/FreeSpace(/mnt)` – Szabad terület a /mnt fájlrendszer
+* `/builtin/Disk/FreeSpace` – Az összes csatlakoztatott fájlrendszerek között átlagosan szabad terület
 
 LAD és az Azure-portál nem vár a counterSpecifier értéket megfelel a mintának. Hogyan hozható létre counterSpecifier értékek a kell.
 
@@ -423,14 +423,14 @@ A beépített metrika szolgáltató a forrása a metrikák a legérdekesebb a fe
 * Processzor
 * Memory (Memória)
 * Network (Hálózat)
-* Fájlrendszer
+* Filesystem
 * Lemez
 
 ### <a name="builtin-metrics-for-the-processor-class"></a>a processzor osztály beépített metrikák
 
 A processzor osztály a mérőszámok tájékoztatást ad azokról a virtuális gép processzor kihasználtsága. Százalékos összesítésekor eredménye átlagos összes processzorok között. A két-vCPU virtuális gépen Ha egy vCPU 100 %-os elfoglalt volt, és a másik 100 %-os üresjárati, a jelentésben szereplő PercentIdleTime pedig 50. Ha minden vCPU 50 % azonos időszakára vonatkozó elfoglalt volt, a jelentésben szereplő eredmény is pedig 50. Négy-vCPU virtuális gép, egy vCPU 100 %-os foglalt, és a többi üresjárati, és a jelentett PercentIdleTime 75 lenne.
 
-A számláló | Jelentése
+A számláló | Jelentés
 ------- | -------
 PercentIdleTime | A összesítési időszakban, hogy a processzorok volt végrehajtása a kernel üresjárati hurok idő százalékos aránya
 PercentProcessorTime | Nem üresjárati szálat idő százalékos aránya
@@ -448,7 +448,7 @@ Az összes processzor gyűjtődnek egyetlen mérőszám beszerzéséhez beállí
 
 A memória az osztály a mérőszámok memóriafelhasználás a lapozást, és áttelepíteni a forráskörnyezetból információkat biztosít.
 
-A számláló | Jelentése
+A számláló | Jelentés
 ------- | -------
 AvailableMemory | Rendelkezésre álló fizikai memória MIB
 PercentAvailableMemory | A teljes memória százalékos rendelkezésre álló fizikai memória
@@ -468,7 +468,7 @@ Ez az osztály a mérőszámok csak egyetlen példány van. A "feltétel" attrib
 
 A hálózati osztály a mérőszámok tevékenységről szolgáltat információkat hálózati az egyes hálózati adaptereken indítása óta. LAD nem biztosít sávszélesség metrikákat, amelyek a gazdagép-metrikák kérhető.
 
-A számláló | Jelentése
+A számláló | Jelentés
 ------- | -------
 BytesTransmitted | Rendszerindítás óta küldött bájtok száma összesen
 BytesReceived | Rendszerindítás óta fogadott összes bájt
@@ -485,7 +485,7 @@ TotalCollisions | Rendszerindítás óta a hálózati portok által jelentett ü
 
 A fájlrendszer osztály a mérőszámok filesystem használati információkat biztosít. Abszolút és százalékos értéket jelentett, akkor szokásos felhasználóhoz (nem a legfelső szintű) megjelenik.
 
-A számláló | Jelentése
+A számláló | Jelentés
 ------- | -------
 FreeSpace | Szabad lemezterület (bájt)
 UsedSpace | A felhasznált lemezterület (bájt)
@@ -506,7 +506,7 @@ TransfersPerSecond | Olvasási vagy írási műveletek másodpercenkénti száma
 
 A lemez osztály a mérőszámok eszköz lemezhasználati információkat biztosít. A statisztikai információk a teljes meghajtót vonatkozik. Ha egy eszközön több fájlrendszereket, az eszköznek a számlálók vannak, gyakorlatilag az összes gyűjtődnek.
 
-A számláló | Jelentése
+A számláló | Jelentés
 ------- | -------
 ReadsPerSecond | Olvasási műveletek másodpercenkénti száma
 WritesPerSecond | Írási műveletek másodpercenkénti száma
@@ -686,7 +686,7 @@ A `resourceId` konfigurációjában egyeznie kell, hogy a virtuális gép vagy v
 
 Az Azure portál segítségével teljesítményadatainak megjelenítéséhez, vagy állítson be riasztásokat:
 
-![Kép](./media/diagnostic-extension/graph_metrics.png)
+![image](./media/diagnostic-extension/graph_metrics.png)
 
 A `performanceCounters` adatok mindig egy Azure Storage táblázatban vannak tárolva. Az Azure Storage API-k sok nyelvekhez és platformokhoz érhetők el.
 
@@ -694,12 +694,12 @@ JsonBlob mosdók küldött adatok blobot, amely a nevű tárfiók tárolja a [be
 
 Emellett a felhasználói felület eszközök segítségével érik el az adatokat az Azure Storage:
 
-* A Visual Studio Server Explorer.
+* Visual Studio Server Explorer.
 * [A Microsoft Azure Tártallózó](https://azurestorageexplorer.codeplex.com/ "Azure Tártallózó").
 
 A Microsoft Azure Tártallózó munkamenet pillanatképe jeleníti meg a létrehozott Azure Storage-táblákat és a tárolók egy megfelelően konfigurált LAD 3.0 bővítmény a teszteléshez használt virtuális Gépen. A kép nem felel meg pontosan a [LAD 3.0 mintakonfiguráció](#an-example-lad-30-configuration).
 
-![Kép](./media/diagnostic-extension/stg_explorer.png)
+![image](./media/diagnostic-extension/stg_explorer.png)
 
 Tekintse meg a megfelelő [EventHubs dokumentáció](../../event-hubs/event-hubs-what-is-event-hubs.md) megtudhatja, hogyan EventHubs végpont közzétett üzenetek felhasználását.
 

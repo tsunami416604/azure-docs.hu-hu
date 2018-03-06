@@ -1,22 +1,22 @@
 ---
-title: "Költségek kezelése az Azure Cost Managementtel | Microsoft Docs"
-description: "Költségek kezelése költséglefoglalási, költséghelyi visszacsatolási és költséghelyi elszámolási jelentésekkel."
+title: "Oktatóanyag – Költségek kezelése az Azure Cost Managementtel | Microsoft Docs"
+description: "Ebben az oktatóanyagban megtudhatja, hogyan kezelheti a költségeket költséglefoglalási, költséghelyi visszacsatolási és költséghelyi elszámolási jelentésekkel."
 services: cost-management
 keywords: 
 author: bandersmsft
 ms.author: banders
-ms.date: 01/30/2018
+ms.date: 02/27/2018
 ms.topic: tutorial
 ms.service: cost-management
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 804b50d6ba054bbb0eb60b659c98f161ea5272ee
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 7e9f11e702dbbe8864f8a0c307777c922e5f028d
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/28/2018
 ---
-# <a name="manage-costs-by-using-azure-cost-management"></a>Költségek kezelése az Azure Cost Managementtel
+# <a name="tutorial-manage-costs-by-using-azure-cost-management"></a>Oktatóanyag: Költségek kezelése az Azure Cost Managementtel
 
 Az Azure Cost Management by Cloudynben a költségeket címkék alapján foglalhatja le a költségek kezelése és a visszacsatolási jelentések előállítása érdekében. A költséglefoglalási folyamat során költségeket rendel hozzá a felhasznált felhőalapú erőforrásokhoz. A költségek teljes lefoglalása akkor történik meg, ha az összes erőforrást kategóriákba sorolta címkék segítségével. A költségek lefoglalását követően irányítópultokon és jelentéseken keresztül biztosíthat költséghelyi visszacsatolást és elszámolást a felhasználóknak. Azonban a Cost Management használatba vételekor előfordulhat, hogy számos erőforrás nem rendelkezik vagy nem látható el címkével.
 
@@ -27,6 +27,13 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
 > * Költségek lefoglalása egyéni címkék használatával.
 > * Költséghelyi visszacsatolási és költséghelyi elszámolási jelentések létrehozása.
+
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+
+## <a name="prerequisites"></a>Előfeltételek
+
+- Rendelkeznie kell egy Azure-fiókkal.
+- Rendelkeznie kell az Azure Cost Management próbaverziójával vagy fizetett előfizetésével.
 
 ## <a name="use-custom-tags-to-allocate-costs"></a>Költségek lefoglalása egyéni címkék használatával
 
@@ -122,7 +129,7 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
 
 
-A Cloudyn használatának első lépéseivel és a szolgáltatásaival kapcsolatos további információkért lépjen tovább a Cloudyn dokumentációjára.
+Folytassa a következő oktatóanyaggal, amely azt ismerteti, hogyan szabályozható az adatokhoz való hozzáférés.
 
 > [!div class="nextstepaction"]
-> [A Cloudyn dokumentációja](https://support.cloudyn.com/hc/)
+> [Az adatok hozzáférésének szabályozása](tutorial-user-access.md)

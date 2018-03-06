@@ -1,22 +1,22 @@
 ---
-title: "Hozzáférések hozzárendelése az Azure Cost Managementben | Microsoft Docs"
-description: "A költségkezelési adatokhoz olyan felhasználói fiókokkal rendelhet hozzáféréseket, amelyek meghatározzák az entitások hozzáférési szintjeit."
+title: "Oktatóanyag – Hozzáférések hozzárendelése az Azure Cost Managementben | Microsoft Docs"
+description: "Ebben az oktatóanyagban megtudhatja, hogyan rendelhet hozzáféréseket a költségkezelési adatokhoz olyan felhasználói fiókokkal, amelyek meghatározzák az entitások hozzáférési szintjeit."
 services: cost-management
 keywords: 
 author: bandersmsft
 ms.author: banders
-ms.date: 01/30/2018
+ms.date: 02/27/2018
 ms.topic: tutorial
 ms.service: cost-management
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 89639e6d9c06edf110dc8432fbefe1fbfd1298c9
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 0e2edc946c5d6ada1049fbd6a960ec138f7088f2
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/28/2018
 ---
-# <a name="assign-access-to-cost-management-data"></a>Hozzáférések hozzárendelése költségkezelési adatokhoz
+# <a name="tutorial-assign-access-to-cost-management-data"></a>Oktatóanyag: Hozzáférések hozzárendelése költségkezelési adatokhoz
 
 A költségkezelési adatokhoz való hozzáférés felhasználó- vagy entitáskezeléssel biztosítható. A Cloudyn felhasználói fiókok határozzák meg az *entitásokhoz* és az adminisztratív funkciókhoz való hozzáférést. Két típusú hozzáférés létezik: rendszergazdai és felhasználói. Hacsak az adott felhasználónál nincs máshogy beállítva, a rendszergazdai hozzáférés lehetővé teszi a Cloudyn portál összes funkciójának korlátlan használatát, beleértve a felhasználókezelést, a címzettlisták kezelését és a gyökérszintű entitás-hozzáférést az entitások összes adatához. A felhasználói hozzáférés a végfelhasználóknak van szánva, hogy jelentéseket tekinthessenek meg és állíthassanak össze az általuk elérhető entitásadatok alapján.
 
@@ -29,7 +29,12 @@ Az Azure-szerződés vagy -fiók regisztrálásakor a rendszer létrehozott egy 
 > * Felhasználói hozzáféréssel rendelkező felhasználó létrehozása
 > * Entitások létrehozása
 
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
+## <a name="prerequisites"></a>Előfeltételek
+
+- Rendelkeznie kell egy Azure-fiókkal.
+- Rendelkeznie kell az Azure Cost Management próbaverziójával vagy fizetett előfizetésével.
 
 ## <a name="create-a-user-with-admin-access"></a>Rendszergazdai hozzáféréssel rendelkező felhasználó létrehozása
 
@@ -83,7 +88,7 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 > * Felhasználói hozzáféréssel rendelkező felhasználó létrehozása
 > * Entitások létrehozása
 
-A következő oktatóanyag azt mutatja be, hogyan jelezheti előre a kiadásokat az előzményadatok alapján.
+Ha még nem engedélyezte az Azure Resource Manager API-hozzáférést a fiókokhoz, folytassa a következő cikkel.
 
 > [!div class="nextstepaction"]
-> [Jövőbeli kiadások előrejelzése](tutorial-forecast-spending.md)
+> [Azure-előfizetések és -fiókok aktiválása](activate-subs-accounts.md)

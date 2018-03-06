@@ -1,6 +1,6 @@
 ---
-title: "Azure tároló példányok útmutató – az alkalmazás előkészítése"
-description: "Azure tároló példányok útmutató 1. rész 3 – az alkalmazás Azure tároló példányokhoz üzembe helyezésének előkészítése"
+title: "Az Azure Container Instances oktatóanyaga – Az alkalmazás előkészítése"
+description: "Az Azure Container Instances oktatóanyaga, 1/3. rész – Alkalmazás előkészítése az Azure Container Instancesben való üzembe helyezéshez"
 services: container-instances
 author: seanmck
 manager: timlt
@@ -9,38 +9,38 @@ ms.topic: tutorial
 ms.date: 01/02/2018
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: fc16be80e776d1472be775fa32354ba157d16545
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
-ms.translationtype: MT
+ms.openlocfilehash: 5012412ec642a04102836274caea253635376efb
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="create-container-for-deployment-to-azure-container-instances"></a>Tároló létrehozása az Azure Container Instances szolgáltatásban való üzembe helyezéshez
 
-Az Azure Container Instances lehetővé teszi Docker-tárolók üzembe helyezését az Azure-infrastruktúrán anélkül, hogy ehhez virtuális gépeket kellene kiépítenie vagy magasabb szintű szolgáltatást kellene alkalmaznia. Ebben az oktatóanyagban kis node.js webalkalmazás létrehozása, és olyan tároló, amely Azure tároló példányok használatával futtathatja a csomag azt.
+Az Azure Container Instances lehetővé teszi Docker-tárolók üzembe helyezését az Azure-infrastruktúrán anélkül, hogy ehhez virtuális gépeket kellene kiépítenie vagy magasabb szintű szolgáltatást kellene alkalmaznia. Ebben az oktatóanyagban egy kis méretű webalkalmazást hozhat létre a Node.js-ben, majd becsomagolhatja egy, az Azure Container Instances használatával futtatható tárolóba.
 
-Ebben a cikkben az adatsorozat egyik része meg:
+A cikk, amely a sorozat első része, a következő lépésekből áll:
 
 > [!div class="checklist"]
-> * A Githubból az alkalmazás forráskódjához klónozása
-> * Az alkalmazás forrás tároló lemezkép létrehozása
-> * A lemezkép tesztelése egy helyi Docker-környezetben
+> * Alkalmazás forráskódjának klónozása a GitHubról
+> * Tárolórendszerkép létrehozása az alkalmazás forrásából
+> * A rendszerkép tesztelése helyi Docker-környezetben
 
-A következő útmutatókból a Rendszerkép feltöltése az Azure-tároló beállításjegyzék, és majd központilag telepítenie kell az Azure-tároló példányok.
+A következő oktatóanyagokban feltöltheti a rendszerképet egy Azure Container Registrybe, majd üzembe helyezheti Azure Container Instancesben.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Ez az oktatóanyag megköveteli, hogy futnak-e az Azure parancssori felület 2.0.23 verzió vagy újabb. A verzió azonosításához futtassa a következőt: `az --version`. Ha szeretné telepíteni vagy frissíteni, lásd: [Azure CLI 2.0 telepítése][azure-cli-install].
+Az oktatóanyaghoz az Azure CLI 2.0.23-as vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése][azure-cli-install].
 
-Ez az oktatóanyag feltételezi, hogy core alapvető ismeretekkel Docker fogalmakat, például a tárolók, a tároló lemezképeket és az alapszintű `docker` parancsok. Ha szükséges, lásd: [Ismerkedés a Docker] [ docker-get-started] a tároló alapjai a egy ismertetése.
+Az oktatóanyag feltételezi, hogy rendelkezik a Docker fő fogalmaira, például a tárolókra, tárolórendszerképekre és az alapszintű `docker`-parancsokra vonatkozó alapvető ismeretekkel. Amennyiben szükséges, tekintse meg a tárolók alapfogalmainak ismertetését a [Docker használatának első lépései között][docker-get-started].
 
-Az oktatóanyag elvégzéséhez egy Docker fejlesztőkörnyezet helyileg telepíteni kell. Docker biztosít, amely egyszerű konfigurálását a Docker bármely csomagok [Mac][docker-mac], [Windows][docker-windows], vagy [Linux] [ docker-linux] rendszer.
+Az oktatóanyag elvégzéséhez szüksége lesz egy helyileg telepített Docker-fejlesztési környezetre. A Docker csomagokat biztosít, amelyekkel a Docker egyszerűen konfigurálható bármely [Mac][docker-mac], [Windows][docker-windows] vagy [Linux][docker-linux] rendszeren.
 
-Azure Cloud rendszerhéj nem tartalmazza a Docker-összetevők minden egyes lépéseinek befejezéséhez szükséges az oktatóanyag. Az oktatóanyag teljesítéséhez a helyi számítógépen telepítenie kell az Azure CLI és a Docker fejlesztési környezet.
+Az Azure Cloud Shell nem tartalmazza a jelen oktatóanyag lépéseinek elvégzéséhez szükséges Docker-összetevőket, ezért az oktatóanyag teljesítéséhez telepítenie kell a számítógépén az Azure CLI-t és a Docker-fejlesztési környezetet.
 
 ## <a name="get-application-code"></a>Az alkalmazáskód letöltése
 
-A minta ebben az oktatóanyagban egy egyszerű webalkalmazást a beépített tartalmaz [Node.js][nodejs]. Az alkalmazás egy statikus HTML-oldalt szolgál ki, és így néz ki:
+Az oktatóanyagban foglalt példa egy, a [Node.js][nodejs] használatával létrehozott egyszerű webalkalmazást tartalmaz. Az alkalmazás egy statikus HTML-oldalt szolgál ki, és így néz ki:
 
 ![Az oktatóanyag alkalmazása böngészőben megjelenítve][aci-tutorial-app]
 
@@ -52,24 +52,24 @@ git clone https://github.com/Azure-Samples/aci-helloworld.git
 
 ## <a name="build-the-container-image"></a>Építse fel a tárolórendszerképet
 
-A mintatárházban elérhető Docker-fájl bemutatja a tároló felépítésének menetét. A elindul egy [hivatalos Node.js kép] [ docker-hub-nodeimage] alapján [Alpine Linux][alpine-linux], használandó kiválóan alkalmas kis terjesztési tárolók. Ezután bemásolja az alkalmazásfájlokat a tárolóba, telepíti a függőségeket a Node Package Manager használatával, és végül elindítja az alkalmazást.
+A mintatárházban elérhető Docker-fájl bemutatja a tároló felépítésének menetét. Egy [hivatalos Node.js-rendszerképpel][docker-hub-nodeimage] indul, amely az [Alpine Linux][alpine-linux] rendszeren alapul – ez egy kisebb kiadás, amely jól használható a tárolókkal. Ezután bemásolja az alkalmazásfájlokat a tárolóba, telepíti a függőségeket a Node Package Manager használatával, és végül elindítja az alkalmazást.
 
 ```Dockerfile
 FROM node:8.9.3-alpine
 RUN mkdir -p /usr/src/app
-COPY ./app/* /usr/src/app/
+COPY ./app/ /usr/src/app/
 WORKDIR /usr/src/app
 RUN npm install
 CMD node /usr/src/app/index.js
 ```
 
-Használja a [docker build] [ docker-build] parancs azt címkézés tároló lemezkép létrehozásához *aci-oktatóanyag – alkalmazás*:
+A [docker build][docker-build] paranccsal hozza létre a tárolórendszerképet, és lássa el az *aci-tutorial-app* címkével:
 
 ```bash
 docker build ./aci-helloworld -t aci-tutorial-app
 ```
 
-Kimenetét a [docker build] [ docker-build] parancs (csonkolt olvashatóság érdekében) a következőhöz hasonló:
+A [docker build][docker-build] parancs kimenete a következőhöz hasonló (az olvashatóság érdekében csonkolva):
 
 ```bash
 Sending build context to Docker daemon  119.3kB
@@ -90,7 +90,7 @@ Successfully built 6edad76d09e9
 Successfully tagged aci-tutorial-app:latest
 ```
 
-Használja a [docker képek] [ docker-images] parancs a beépített kép megtekintéséhez:
+A [docker images][docker-images] paranccsal megtekintheti az összeállított rendszerképet:
 
 ```bash
 docker images
@@ -120,8 +120,8 @@ Nyissa meg a böngészőben a http://localhost:8080 helyet, és ellenőrizze, ho
 Az oktatóanyagban egy, az Azure Container Instances szolgáltatásban üzembe helyezhető tárolórendszerképet hozott létre. A következő lépéseket hajtotta végre:
 
 > [!div class="checklist"]
-> * Az alkalmazás forráskódjának a Githubról klónozása
-> * Az alkalmazás forrás létrehozott tároló lemezképek
+> * Az alkalmazás forrásának klónozása a GitHubról
+> * Tárolórendszerképek létrehozása az alkalmazás forrásából
 > * A tároló helyi tesztelése
 
 Folytassa a következő oktatóanyaggal, amelyben a tárolórendszerképek az Azure Container Registry-ben való tárolásának módját ismerheti meg.

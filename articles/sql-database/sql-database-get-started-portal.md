@@ -14,13 +14,13 @@ ms.workload: Active
 ms.tgt_pltfrm: portal
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 02/12/2018
+ms.date: 02/16/2018
 ms.author: carlrab
-ms.openlocfilehash: 7a57593825f816a03b59f6c5228243670f1e9e9e
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: 56fb52cb2dbca1939aac2eb9dd4971a93bf8c0dc
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="create-an-azure-sql-database-in-the-azure-portal"></a>Azure SQL Database létrehozása az Azure Portalon
 
@@ -38,7 +38,7 @@ Az Azure SQL-adatbázis [számítási és tárolási erőforrások](sql-database
 
 Kövesse az alábbi lépéseket az Adventure Works LT mintaadatokat tartalmazó SQL-adatbázis létrehozásához.
 
-1. Kattintson az Azure Portal bal felső sarkában található **Új** gombra.
+1. Kattintson az Azure Portal bal felső sarkában található **Erőforrás létrehozása** gombra.
 
 2. Az **Új** oldalon válassza az **Adatbázisok** lehetőséget, majd az **Új** oldal **SQL Database** területén válassza a **Létrehozás** lehetőséget.
 
@@ -157,7 +157,7 @@ Most, miután létrehozott egy mintaadatbázist az Azure-ban, az Azure Portalon 
 
    ![lekérdezésszerkesztő: eredmények](./media/sql-database-get-started-portal/query-editor-results.png)
 
-5. Zárja be a **Adatkezelő** oldalt, és kattintson az **OK** gombra a nem mentett szerkesztések elvetéséhez.
+5. Zárja be a **Lekérdezésszerkesztő** lapot, majd kattintson az **OK** gombra a nem mentett szerkesztések elvetéséhez.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

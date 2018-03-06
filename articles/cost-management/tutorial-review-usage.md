@@ -1,22 +1,25 @@
 ---
-title: "A használat és a költségek áttekintése az Azure Cost Managementben | Microsoft Docs"
-description: "A használat és a költségek áttekintésével nyomon követheti a trendeket, észlelheti a hatékonysági hiányosságokat, és riasztásokat állíthat be."
+title: "Oktatóanyag - A használat és a költségek áttekintése az Azure Cost Managementben | Microsoft Docs"
+description: "Ebben az oktatóanyagban a használat és a költségek áttekintésével nyomon követheti a trendeket, észlelheti a hatékonysági hiányosságokat, és riasztásokat állíthat be."
 services: cost-management
 keywords: 
 author: bandersmsft
 ms.author: banders
-ms.date: 01/30/2018
+ms.date: 02/27/2018
 ms.topic: tutorial
 ms.service: cost-management
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 72c5c9ff13577e7b4008c42133742d8de4904ae0
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: e8f09a90ae9a4dd54d81335de2494f0dcbe09485
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/28/2018
 ---
-# <a name="review-usage-and-costs"></a>A használat és a költségek áttekintése
+<!-- Intent: As a cloud-consuming user, I need to view usage and costs for my cloud resources and services.
+-->
+
+# <a name="tutorial-review-usage-and-costs"></a>Oktatóanyag: A használat és a költségek áttekintése
 
 Az Azure Cost Management by Cloudynben megtekintheti a használati mutatókat és a költségeket, így nyomon követheti a trendeket, észlelheti a hatékonysági hiányosságokat, és riasztásokat állíthat be. Minden használati és költségadat megjelenik a Cloudyn irányítópultjain és jelentéseiben. Az oktatóanyagban szereplő példák bemutatják, hogyan tekintheti át a használatot és a költségeket az irányítópultok és jelentések segítségével. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -25,7 +28,12 @@ Az Azure Cost Management by Cloudynben megtekintheti a használati mutatókat é
 > * A használat hatékonysági hiányosságainak észlelése
 > * Szokatlan kiadásokra és túlköltekezésre figyelmeztető riasztások létrehozása
 
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
+## <a name="prerequisites"></a>Előfeltételek
+
+- Rendelkeznie kell egy Azure-fiókkal.
+- Rendelkeznie kell az Azure Cost Management próbaverziójával vagy fizetett előfizetésével.
 
 ## <a name="open-the-cloudyn-portal"></a>A Cloudyn portál megnyitása
 
@@ -98,7 +106,7 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 > * Szokatlan kiadásokra és túlköltekezésre figyelmeztető riasztások létrehozása
 
 
-Folytassa a következő oktatóanyaggal, amely azt ismerteti, hogyan szabályozható az adatokhoz való hozzáférés.
+A következő oktatóanyag azt mutatja be, hogyan jelezheti előre a kiadásokat az előzményadatok alapján.
 
 > [!div class="nextstepaction"]
-> [Az adatok hozzáférésének szabályozása](tutorial-user-access.md)
+> [Jövőbeli kiadások előrejelzése](tutorial-forecast-spending.md)

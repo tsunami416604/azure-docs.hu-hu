@@ -1,52 +1,49 @@
 ---
-title: "Teszt meghajtó az Azure AD B2C egyoldalas alkalmazás |} Microsoft Docs"
-description: "Teszt meghajtó jelentkezzen be, regisztráció, profil szerkesztése, és alaphelyzetbe állítja a jelszót felhasználói útvonal be egy tesztkörnyezetben az Azure AD B2C használatával"
+title: "Az Azure AD B2C-t használó egyoldalas alkalmazás kipróbálása"
+description: "Gyors útmutató a felhasználókat az Azure Active Directory B2C használatával hitelesítő és regisztráló egyoldalas mintaalkalmazás kipróbáláshoz."
 services: active-directory-b2c
 documentationcenter: 
-author: saraford
+author: PatAltimore
 manager: mtillman
-editor: PatAltimore
-ms.assetid: 5a8a46af-28bb-4b70-a7f0-01a5240d0255
+ms.reviewer: saraford
 ms.service: active-directory-b2c
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: javascript
-ms.topic: article
-ms.date: 10/31/2017
-ms.author: saraford
-ms.openlocfilehash: ba8ee4657309ab2a541f4c7b3fd4879542eee63c
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
-ms.translationtype: MT
+ms.topic: quickstart
+ms.date: 2/13/2018
+ms.author: patricka
+ms.openlocfilehash: e659fd228c2294313a62b331c8e530b7d34073ac
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/28/2018
 ---
-# <a name="test-drive-a-single-page-application-configured-with-azure-ad-b2c"></a>A konfigurált Azure AD B2C egyoldalas alkalmazások tesztelése
+# <a name="quickstart-test-drive-an-azure-ad-b2c-enabled-single-page-app"></a>Gyors útmutató: Az Azure AD B2C-t használó egyoldalas alkalmazás kipróbálása
 
-## <a name="about-this-sample"></a>A minta ismertetése
+Az Azure Active Directory (Azure AD) B2C felhőalapú identitáskezelést nyújt az alkalmazás, az üzlet és az ügyfelek védelme érdekében. Az Azure AD B2C nyílt szabványú protokollokkal teszi lehetővé az alkalmazások hitelesítését közösségi hálózati és vállalati fiókokon.
 
-Az Azure Active Directory B2C az alkalmazás, az üzleti és a védett ügyfelek felhő Identitáskezelés biztosít.  A gyors üzembe helyezés egylapos mintaalkalmazás bemutatásához használja:
-
-* Használja a **regisztráció vagy bejelentkezés** házirend létrehozásához vagy a közösségi identitásszolgáltató vagy e-mail cím használatával helyi fiókkal jelentkezzen be. 
-* **Az API felület meghívásakor** a megjelenített név lekérése az Azure AD B2C-vel védett erőforrás.
-
-## <a name="prerequisites"></a>Előfeltételek
-
-* Telepítse a [Visual Studio 2017](https://www.visualstudio.com/downloads/) szoftvert a következő számítási feladatokkal:
-    - **ASP.NET és webfejlesztés**
-
-* [Node.js](https://nodejs.org/en/download/) telepítése
-
-* Egy közösségi fiók vagy Facebook, Google, vagy a Twitteren. Ha egy közösségi fiók nem rendelkezik, érvényes e-mail címet szükség.
+Ebben a gyors útmutatóban az Azure AD B2C-t használó egyoldalas mintaalkalmazással jelentkezik be egy közösségi identitásszolgáltatót használva, és az Azure AD B2C által védett webes API-t hív meg.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
+## <a name="prerequisites"></a>Előfeltételek
+
+* [Visual Studio 2017](https://www.visualstudio.com/downloads/) az **ASP.NET és webfejlesztési** számítási feladattal.
+* [Node.js](https://nodejs.org/en/download/) telepítése
+* Egy Facebook, Google, Microsoft vagy Twitter közösségi fiók.
+
 ## <a name="download-the-sample"></a>A minta letöltése
 
-[Töltse le, vagy klónozza a mintaalkalmazást](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp) a Githubról.
+[Töltse le a zip-fájlt](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp/archive/master.zip), vagy a klónozza a mintául szolgáló webalkalmazást a GitHubról.
 
-## <a name="run-the-sample-application"></a>Futtassa a mintaalkalmazást
+```
+git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp.git
+```
 
-A minta futtatásához a Node.js parancssorból: 
+## <a name="run-the-sample-application"></a>A mintaalkalmazás futtatása
+
+A minta futtatása a Node.js parancssorból: 
 
 ```
 cd active-directory-b2c-javascript-msal-singlepageapp
@@ -54,66 +51,59 @@ npm install && npm update
 node server.js
 ```
 
-A konzolablakban a webalkalmazás fut a számítógépen a portnak a számát mutatja.
+A Node.js-alkalmazás megadja a helyi gazdagépen figyelt port számát.
 
 ```
 Listening on port 6420...
 ```
 
-Nyissa meg `http://localhost:6420` egy webböngészőben a webalkalmazáshoz való hozzáférés.
+Nyissa meg az alkalmazás `http://localhost:6420` URL-címét egy webböngészőben.
 
-
-![A böngészőben mintaalkalmazás](media/active-directory-b2c-quickstarts-spa/sample-app-spa.png)
+![Mintaalkalmazás a böngészőben](media/active-directory-b2c-quickstarts-spa/sample-app-spa.png)
 
 ## <a name="create-an-account"></a>Fiók létrehozása
 
-Kattintson a **bejelentkezési** gombra kattintva indítsa el az Azure AD B2C **regisztráció vagy bejelentkezés** munkafolyamat. Egy fiók létrehozásakor egy meglévő közösségi identitás-szolgáltató fiókja vagy egy e-mail fiókot is használhatja.
+Kattintson a **Login** (Bejelentkezés) gombra az Azure AD B2C **regisztrációs vagy bejelentkezési** munkafolyamatának elindításához egy Azure AD B2C-szabályzat alapján. 
 
-### <a name="sign-up-using-a-social-identity-provider"></a>Jelentkezzen egy közösségi identitásszolgáltató
+A minta több regisztrációs beállítást is támogat, beleértve a közösségi identitásszolgáltató használatát vagy helyi fiók e-mail-címmel való létrehozását. Ehhez a gyors útmutatóhoz Facebook, Google vagy Twitter közösségi identitásszolgáltatótól származó fiókot használjon. 
 
-Közösségi identitásszolgáltató használatával, kattintson a használni kívánt identitásszolgáltató gombjára. Ha e-mail címmel szeretné végrehajtani, Ugrás a [jelentkezzen egy e-mail címet](#sign-up-using-an-email-address) szakasz.
+### <a name="sign-up-using-a-social-identity-provider"></a>Regisztráció közösségi identitásszolgáltatóval
 
-![Bejelentkezés vagy regisztráció szolgáltató](media/active-directory-b2c-quickstarts-spa/sign-in-or-sign-up-spa.png)
+Az Azure AD B2C a minta-webalkalmazáshoz egy Wingtip Toys nevű fiktív márka egyéni bejelentkezési lapját jeleníti meg. 
 
-Hitelesítés (bejelentkezés) a közösségi fiókja hitelesítő adatait, és az alkalmazás az adatok olvasása a közösségi fiók használatával kell. Hozzáférés biztosítása, amelyet az alkalmazás profiladatok kérhetnek le a közösségi fiókot, amilyen például a nevét, és a település. 
+1. Ha közösségi identitásszolgáltatóval szeretne regisztrálni, kattintson a használni kívánt identitásszolgáltató gombjára.
 
-![Hitelesítését és engedélyezését, közösségi fiók használatával](media/active-directory-b2c-quickstarts-spa/twitter-authenticate-authorize-spa.png)
+    ![Bejelentkezési vagy regisztrációs szolgáltató](media/active-directory-b2c-quickstarts-spa/sign-in-or-sign-up-spa.png)
 
-Az új profil fiókadatok előre megadott, a közösségi fiók adataival. 
+    Hitelesíti magát (bejelentkezik) a közösségi fiók hitelesítő adataival, és feljogosítja az alkalmazást, hogy beolvassa a közösségi fiók adatait. A hozzáférés biztosításával az alkalmazás profiladatokat kérhet le a közösségi fiókból, például a nevét és a települését. 
 
-![Új fiók regisztrációs profil részleteit](media/active-directory-b2c-quickstarts-spa/new-account-sign-up-profile-details-spa.png)
+2. Fejezze be az identitásszolgáltató bejelentkezési folyamatát. Ha például a Twittert választotta, írja be a Twitter-fiók hitelesítő adatait, majd kattintson **Sign in** (Bejelentkezés) gombra.
 
-A megjelenített név, beosztás és város mezők frissítése, és kattintson a **Folytatás**.  Az értékek használják az Azure AD B2C-felhasználói fiók profilját.
+    ![Hitelesítés és engedélyezés közösségi fiókkal](media/active-directory-b2c-quickstarts-spa/twitter-authenticate-authorize-spa.png)
 
-Sikeresen létrehozott egy új Azure AD B2C által használt felhasználói fiók egy identitásszolgáltatóval. 
+    Az új fiókprofil részletei előre ki vannak töltve a közösségi fiókja adataival. 
 
-Következő lépés: [hívható meg egy erőforrás](#call-a-resource) szakasz.
+3. Frissítse a Display Name (Megjelenített név), a Job Title (Beosztás) és a City (Város) mezőt, majd kattintson a **Continue** (Folytatás) gombra.  A rendszer a beírt értékeket használja az Azure AD B2C felhasználói fiókprofilhoz.
 
-### <a name="sign-up-using-an-email-address"></a>Jelentkezzen egy e-mail címet
+    Sikeresen létrehozott egy új, identitásszolgáltatót használó Azure AD B2C felhasználói fiókot. 
 
-Ha a hitelesítés egy közösségi fiókot használja, egy érvényes e-mail címet használ az Azure AD B2C-felhasználói fiókot is létrehozhat. Egy Azure AD B2C helyi felhasználói fiókot az Azure Active Directory, az identitás-szolgáltatóként. Az e-mail cím használatához kattintson a **nincs fiókja? Feliratkozás most** hivatkozásra.
+## <a name="access-a-protected-web-api-resource"></a>Védett webes API-erőforrás elérése
 
-![Bejelentkezés vagy regisztráció e-mail](media/active-directory-b2c-quickstarts-spa/sign-in-or-sign-up-email-spa.png)
+Kattintson a **Call Web API** (Webes API hívása) gombra a megjelenítendő név JSON-objektumként való visszaadásához a webes API meghívásából. 
 
-Adjon meg egy érvényes e-mail címet, és kattintson a **ellenőrző kód küldése**. Érvényes e-mail címet kell az Azure AD B2C megkapta az ellenőrzőkódot. 
+![Webes API válasza](media/active-directory-b2c-quickstarts-spa/call-api-spa.png)
 
-Adja meg az e-mailben kap, és kattintson a **ellenőrizze a kódot**.
+Az egyoldalas mintaalkalmazás egy Azure AD hozzáférési jogkivonatot tartalmaz a védett webes API-erőforrás felé, a JSON-objektum visszaadására szolgáló művelet végrehajtására irányuló kérésben.
 
-A profiladatok, és kattintson **létrehozása**.
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-![Iratkozzon fel az új e-mail fiók](media/active-directory-b2c-quickstarts-spa/sign-up-new-account-profile-email-web.png)
+Az Azure AD B2C-bérlőt ahhoz is használhatja, ha más Azure AD B2C gyors útmutatókat vagy oktatóanyagokat is ki szeretne próbálni. Ha már nincs szüksége rá, akkor [törölheti az Azure AD B2C-bérlőt](active-directory-b2c-faqs.md#how-do-i-delete-my-azure-ad-b2c-tenant).
 
-Sikeresen létrehozott egy új Azure AD B2C helyi felhasználói fiókot.
+## <a name="next-steps"></a>További lépések
 
-## <a name="call-a-resource"></a>Egy erőforrás hívása
+Ebben a gyors útmutatóban az Azure AD B2C-t használó, mintául szolgáló ASP.NET-es alkalmazással bejelentkezett egy egyéni bejelentkezési oldalon, bejelentkezett egy közösségi identitásszolgáltatót használva, létrehozott egy Azure AD B2C-fiókot, és meghívott egy, az Azure AD B2C által védett webes API-t. 
 
-Miután bejelentkezett, kattintson a **Web API hívása** szeretné, hogy a megjelenített név a JSON-objektumként webes API-hívás által visszaadott gombra. 
-
-![Webes API-válasz](media/active-directory-b2c-quickstarts-spa/call-api-spa.png)
-
-## <a name="next-steps"></a>Következő lépések
-
-A következő lépés, hogy a saját Azure AD B2C bérlő létrehozása és konfigurálása a minta futtatásához a bérlőnek a használatával. 
+A következő lépés egy saját Azure AD B2C-bérlő létrehozása és a minta konfigurálása a bérlővel való futtatáshoz. 
 
 > [!div class="nextstepaction"]
-> [Azure Active Directory B2C-bérlő létrehozása az Azure-portálon](active-directory-b2c-get-started.md)
+> [Azure Active Directory B2C-bérlő létrehozása az Azure Portalon](active-directory-b2c-get-started.md)

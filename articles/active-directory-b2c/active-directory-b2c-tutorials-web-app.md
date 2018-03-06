@@ -1,6 +1,6 @@
 ---
 title: "Az Azure Active Directory B2C használata felhasználói hitelesítéshez egy ASP.NET-webalkalmazásban – oktatóanyag"
-description: "Arra vonatkozó útmutató, hogyan használhatja az Azure Active Directory B2C-t felhasználók bejelentkeztetéséhez és regisztrálásához egy ASP.NET-webalkalmazásban."
+description: "Arra vonatkozó útmutató, hogyan használhatja az Azure Active Directory B2C-t felhasználói bejelentkezés biztosításához egy ASP.NET-es webalkalmazás esetén."
 services: active-directory-b2c
 author: PatAltimore
 ms.author: patricka
@@ -9,11 +9,11 @@ ms.date: 1/23/2018
 ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory-b2c
-ms.openlocfilehash: ee006476f9e40e9d1a6e7213cb1881ca46ea75c2
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 1d1e0ce51d86ebcdbf0a2a423ff64b3814413d86
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="tutorial-authenticate-users-with-azure-active-directory-b2c-in-an-aspnet-web-app"></a>Oktatóanyag: Felhasználók hitelesítése az Azure Active Directory B2C-vel egy ASP.NET-webalkalmazásban
 
@@ -45,13 +45,13 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com/) az Azure AD B2C-b
 
 2. A B2C beállításaiban kattintson az **Alkalmazások**, majd a **Hozzáadás** lehetőségre.
 
-    A mintául szolgáló webalkalmazás bérlőben történő regisztrálásához használja a következő beállításokat.
+    A mintául szolgáló webalkalmazás bérlőben történő regisztrálásához használja a következő beállításokat:
 
     ![Új alkalmazás hozzáadása](media/active-directory-b2c-tutorials-web-app/web-app-registration.png)
 
     | Beállítás      | Ajánlott érték  | Leírás                                        |
     | ------------ | ------- | -------------------------------------------------- |
-    | **Név** | Mintául szolgáló saját webalkalmazás | Adjon meg egy olyan **nevet**, amely megfelelően körülírja az alkalmazást a felhasználók számára. | 
+    | **Name (Név)** | Mintául szolgáló saját webalkalmazás | Adjon meg egy olyan **nevet**, amely megfelelően körülírja az alkalmazást a felhasználók számára. | 
     | **Webalkalmazás vagy webes API szerepeltetése** | Igen | Webalkalmazásokhoz válassza az **Igen** lehetőséget. |
     | **Implicit folyamat engedélyezése** | Igen | Válassza az **Igen** lehetőséget, mivel az alkalmazás [OpenID Connect bejelentkezést](active-directory-b2c-reference-oidc.md) használ. |
     | **Válasz URL-cím** | `https://localhost:44316` | A válasz URL-címek olyan végpontok, amelyeken keresztül az Azure AD B2C visszaadja az alkalmazás által kért jogkivonatokat. Ebben az oktatóanyagban a minta helyileg fut (localhost), és a 44316-os porton figyel. |
@@ -93,7 +93,7 @@ A webalkalmazás eléréséhez szükséges felhasználói regisztrációhoz és 
 
     | Beállítás      | Ajánlott érték  | Leírás                                        |
     | ------------ | ------- | -------------------------------------------------- |
-    | **Név** | SiUpIn | Adja meg a szabályzat **nevét**. A szabályzat neve a következő előtaggal kezdődik: **b2c_1_**. A példakódban a szabályzat teljes **b2c_1_SiUpIn** nevét fogja használni. | 
+    | **Name (Név)** | SiUpIn | Adja meg a szabályzat **nevét**. A szabályzat neve a következő előtaggal kezdődik: **b2c_1_**. A példakódban a szabályzat teljes **b2c_1_SiUpIn** nevét fogja használni. | 
     | **Identitásszolgáltató** | Regisztráció e-mail-címmel | Az identitásszolgáltató alapján lehet kétséget kizáróan azonosítani a felhasználót. |
     | **Regisztrációs attribútumok** | Megjelenítendő név és postai irányítószám | Válassza ki a regisztráció során a felhasználótól összegyűjtendő attribútumokat. |
     | **Alkalmazásjogcímek** | Megjelenítendő név, postai irányítószám, új felhasználó, a felhasználó objektumazonosítója | Válassza ki a [hozzáférési jogkivonatban](../active-directory/develop/active-directory-dev-glossary.md#access-token) szerepeltetni kívánt [jogcímeket](../active-directory/develop/active-directory-dev-glossary.md#claim). |
@@ -110,7 +110,7 @@ Ahhoz, hogy a felhasználók saját maguk is alaphelyzetbe állíthassák felhas
 
     | Beállítás      | Ajánlott érték  | Leírás                                        |
     | ------------ | ------- | -------------------------------------------------- |
-    | **Név** | SiPe | Adja meg a szabályzat **nevét**. A szabályzat neve a következő előtaggal kezdődik: **b2c_1_**. A példakódban a szabályzat teljes **b2c_1_SiPe** nevét fogja használni. | 
+    | **Name (Név)** | SiPe | Adja meg a szabályzat **nevét**. A szabályzat neve a következő előtaggal kezdődik: **b2c_1_**. A példakódban a szabályzat teljes **b2c_1_SiPe** nevét fogja használni. | 
     | **Identitásszolgáltató** | Bejelentkezés helyi fiókba | Az identitásszolgáltató alapján lehet kétséget kizáróan azonosítani a felhasználót. |
     | **Profilattribútumok** | Megjelenítendő név és postai irányítószám | Válassza ki azokat az attribútumokat, amelyeket a felhasználók módosíthatnak a profilszerkesztés során. |
     | **Alkalmazásjogcímek** | Megjelenítendő név, postai irányítószám, új felhasználó, a felhasználó objektumazonosítója | Válassza ki azokat a [jogcímeket](../active-directory/develop/active-directory-dev-glossary.md#claim), amelyeket egy sikeres profilszerkesztés után szerepeltetni szeretne a [hozzáférési jogkivonatban](../active-directory/develop/active-directory-dev-glossary.md#access-token). |
@@ -127,7 +127,7 @@ Ha engedélyezni szeretné az új jelszavak kérését az alkalmazásban, létre
 
     | Beállítás      | Ajánlott érték  | Leírás                                        |
     | ------------ | ------- | -------------------------------------------------- |
-    | **Név** | SSPR | Adja meg a szabályzat **nevét**. A szabályzat neve a következő előtaggal kezdődik: **b2c_1_**. A példakódban a szabályzat teljes **b2c_1_SSPR** nevét fogja használni. | 
+    | **Name (Név)** | SSPR | Adja meg a szabályzat **nevét**. A szabályzat neve a következő előtaggal kezdődik: **b2c_1_**. A példakódban a szabályzat teljes **b2c_1_SSPR** nevét fogja használni. | 
     | **Identitásszolgáltató** | Új jelszó kérése e-mail-cím használatával | Az identitásszolgáltató alapján lehet kétséget kizáróan azonosítani a felhasználót. |
     | **Alkalmazásjogcímek** | A felhasználó objektumazonosítója | Válassza ki azokat a [jogcímeket](../active-directory/develop/active-directory-dev-glossary.md#claim), amelyeket egy új jelszó sikeres kérése után szerepeltetni kíván a [hozzáférési jogkivonatban](../active-directory/develop/active-directory-dev-glossary.md#access-token). |
 
@@ -147,7 +147,7 @@ A mintául szolgáló ASP.NET-webalkalmazás egy egyszerű feladatlista-alkalmaz
 
 Két projekt szerepel a mintául szolgáló megoldásban:
 
-**Mintául szolgáló webalkalmazás (TaskWebApp):** webalkalmazás feladatlista létrehozáshoz és szerkesztéséhez. A webalkalmazás a **regisztrálási vagy bejelentkezési** szabályzatot arra, hogy e-mail-címmel regisztráljon vagy jelentkeztessen be felhasználókat.
+**Mintául szolgáló webalkalmazás (TaskWebApp):** webalkalmazás feladatlista létrehozáshoz és szerkesztéséhez. A webalkalmazás a **regisztrálási vagy bejelentkezési** szabályzatot használja a felhasználók regisztrálásához és bejelentkeztetéséhez.
 
 **Mintául szolgáló webes API-alkalmazás (TaskService):** webes API, amely támogatja a feladatlista létrehozását, olvasását, frissítését és törlését. A webes API-nak az Azure AD B2C biztosít védelmet, és a webalkalmazással hívható meg.
 
@@ -178,7 +178,7 @@ A Megoldáskezelőben kattintson a jobb gombbal a **TaskWebApp** projektre, majd
 
 Nyomja le az **F5** gombot a webalkalmazás elindításához. Az alapértelmezett böngésző elindítja a helyi webhely címét: `https://localhost:44316/`. 
 
-A mintaalkalmazás támogatja a regisztrációt, a bejelentkezést, a profil szerkesztését és az új jelszó kérését. Az alábbiakban azt ismertetjük, hogyan regisztrál egy felhasználó az alkalmazás használatára az e-mail-címével. Ha szeretne, más forgatókönyveket is kipróbálhat önállóan.
+A mintaalkalmazás támogatja a regisztrációt, a bejelentkezést, a profil szerkesztését és az új jelszó kérését. Ez az oktatóanyag kiemeli, hogyan regisztrál egy felhasználó az alkalmazás használatára e-mail-címmel. Ha szeretne, más forgatókönyvekkel kísérletezhet önállóan.
 
 ### <a name="sign-up-using-an-email-address"></a>Regisztrálás e-mail-címmel
 
@@ -205,4 +205,4 @@ Az Azure AD B2C-bérlőt ahhoz is használhatja, ha más Azure AD B2C-oktatóany
 Ebben az oktatóanyagban megismerte az Azure AD B2C-bérlő és a szabályzatok létrehozásának folyamatát, valamint azt, hogyan frissítheti a mintául szolgáló webalkalmazást az Azure AD B2C-bérlő használatához. Folytassa a következő oktatóanyaggal, amelyből megtudhatja, hogyan kell regisztrálni, konfigurálni és meghívni az Azure AD B2C-bérlővel védett ASP.NET webes API-t.
 
 > [!div class="nextstepaction"]
-> [Az Azure Active Directory B2C használata az ASP.NET webes API védelméhez](active-directory-b2c-tutorials-web-api.md)
+> [Oktatóanyag: Az Azure Active Directory B2C használata az ASP.NET webes API védelméhez](active-directory-b2c-tutorials-web-api.md)

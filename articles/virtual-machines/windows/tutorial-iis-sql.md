@@ -1,59 +1,66 @@
 ---
-title: "Hozzon létre egy SQL &#92; IIS &#92; futó virtuális gépeket. Az Azure-ban a hálózati verem |} Microsoft Docs"
-description: "Útmutató – Windows virtuális gépek verem egy Azure SQL, az IIS, a .NET telepítése."
+title: "SQL&#92;IIS&#92;.NET vermet futtató virtuális gépek létrehozása az Azure-ban | Microsoft Docs"
+description: "Oktatóanyag – Azure SQL, IIS, .NET verem telepítése Windows rendszerű virtuális gépeken."
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: cynthn
-manager: timlt
+manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
-ms.assetid: 
 ms.service: virtual-machines-windows
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 10/24/2017
+ms.date: 02/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 6533ab205e07243e2f757ea0a66028e1d140c52b
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
-ms.translationtype: MT
+ms.openlocfilehash: ad84d6e8f74fa184ac2359ff7f08e6c8143d419a
+ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/28/2018
 ---
-# <a name="install-a-sql92iis92net-stack-in-azure"></a>SQL &#92; IIS &#92; telepítése. HÁLÓZATI verem az Azure-ban
+# <a name="install-a-sql92iis92net-stack-in-azure"></a>SQL&#92;IIS&#92;.NET verem telepítése az Azure-ban
 
-Ebben az oktatóanyagban az telepítjük SQL &#92; IIS &#92;. HÁLÓZATI verem Azure PowerShell használatával. A verem két futó virtuális gép Windows Server 2016, az IIS és a .NET és a másik SQL Server áll.
+Ebben az oktatóanyagban egy SQL&#92;IIS&#92;.NET vermet fogunk telepíteni az Azure PowerShell-lel. Ez a verem két, Windows Server 2016-alapú virtuális gépből áll, amelyek közül az egyiken az IIS és a .NET, a másikon pedig az SQL Server fut.
 
 > [!div class="checklist"]
-> * Új-AzVM virtuális gép létrehozása
+> * Virtuális gép létrehozása 
 > * Az IIS és a .NET Core SDK telepítése a virtuális gépen
-> * SQL Server rendszert futtató virtuális gép létrehozása
-> * Az SQL Server-bővítményének telepítése
+> * SQL Servert futtató virtuális gép létrehozása
+> * Az SQL Server-bővítmény telepítése
 
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 
-Ha a PowerShell helyi telepítése és használata mellett dönt, az oktatóanyaghoz az Azure PowerShell-modul 5.1.1-es vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: ` Get-Module -ListAvailable AzureRM`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Login-AzureRmAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
+Ehhez az oktatóanyaghoz az AzureRM.Compute modul 4.3.1-es vagy újabb verziója szükséges. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable AzureRM.Compute`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket.
 
-## <a name="create-a-iis-vm"></a>Az IIS virtuális gép létrehozása 
+## <a name="create-a-iis-vm"></a>IIS rendszerű virtuális gép létrehozása 
 
-A jelen példában használjuk a [New-AzVM](https://www.powershellgallery.com/packages/AzureRM.Compute.Experiments) parancsmag a PowerShell felhő rendszerhéj gyorsan a Windows Server 2016 virtuális gép létrehozása és telepítése az IIS és a .NET-keretrendszer. Az IIS és az SQL virtuális gépek megoszthatja egy erőforráscsoport és a virtuális hálózat, így ezeket a neveket változói létrehozhatunk.
+Ebben a példában a [New-AzureRMVM](/powershell/module/azurerm.compute/new-azurermvm) parancsmagot használjuk a PowerShell Cloud Shellben egy Windows Server 2016 rendszerű virtuális gép gyors létrehozásához, majd az IIS és a .NET-keretrendszer telepítéséhez. Az IIS-t és az SQL-t futtató virtuális gépek közös erőforráscsoportban és virtuális hálózaton találhatók, ezért a nevekhez változókat hozunk létre.
 
-Kattintson a **, próbálja** gombra a képernyő jobb felső sarkában a kódblokk elindíthatja a felhő rendszerhéj ebben az ablakban. Rendszer kéri, hogy a hitelesítő adatok megadása a virtuális gépet, a parancssort.
 
 ```azurepowershell-interactive
-$vmName = "IISVM$(Get-Random)"
+$vmName = "IISVM"
 $vNetName = "myIISSQLvNet"
 $resourceGroup = "myIISSQLGroup"
-New-AzureRMVm -Name $vmName -ResourceGroupName $resourceGroup -VirtualNetworkName $vNetName 
+New-AzureRmVm `
+    -ResourceGroupName $resourceGroup `
+    -Name $vmName `
+    -Location "East US" `
+    -VirtualNetworkName $vNetName `
+    -SubnetName "myIISSubnet" `
+    -SecurityGroupName "myNetworkSecurityGroup" `
+    -AddressPrefix 192.168.0.0/16 `
+    -PublicIpAddressName "myIISPublicIpAddress" `
+    -OpenPorts 80,3389 
 ```
 
-Telepítse az IIS és a .NET-keretrendszer használatával az egyéni parancsprogramok futtatására szolgáló bővítmény.
+Telepítse az IIS-t és a .NET-keretrendszert az egyéni szkriptbővítmény segítségével.
 
 ```azurepowershell-interactive
-
-Set-AzureRmVMExtension -ResourceGroupName $resourceGroup `
+Set-AzureRmVMExtension `
+    -ResourceGroupName $resourceGroup `
     -ExtensionName IIS `
     -VMName $vmName `
     -Publisher Microsoft.Compute `
@@ -63,67 +70,73 @@ Set-AzureRmVMExtension -ResourceGroupName $resourceGroup `
     -Location EastUS
 ```
 
-## <a name="azure-sql-vm"></a>Azure SQL VM
+## <a name="create-another-subnet"></a>Másik alhálózat létrehozása
 
-Egy SQL Server előre konfigurált Azure Piactéri rendszerkép használatával az SQL virtuális gép létrehozása. Azt először létre kell hoznia a virtuális Gépet, majd azt az SQL Server-bővítmény telepítése a virtuális Gépre. 
-
+Hozzon létre egy második alhálózatot az SQL virtuális gép számára. Kérje le a vNetet a következő parancsmaggal: [Get-AzureRmVirtualNetwork]{/powershell/module/azurerm.network/get-azurermvirtualnetwork}.
 
 ```azurepowershell-interactive
-# Create user object. You get a pop-up prompting you to enter the credentials for the VM.
-$cred = Get-Credential -Message "Enter a username and password for the virtual machine."
-
-# Create a subnet configuration
-$vNet = Get-AzureRmVirtualNetwork -Name $vNetName -ResourceGroupName $resourceGroup
-Add-AzureRmVirtualNetworkSubnetConfig -Name mySQLSubnet -VirtualNetwork $vNet -AddressPrefix "192.168.2.0/24"
-Set-AzureRmVirtualNetwork -VirtualNetwork $vNet
-
-
-# Create a public IP address and specify a DNS name
-$pip = New-AzureRmPublicIpAddress -ResourceGroupName $resourceGroup -Location eastus `
-  -Name "mypublicdns$(Get-Random)" -AllocationMethod Static -IdleTimeoutInMinutes 4
-
-# Create an inbound network security group rule for port 3389
-$nsgRuleRDP = New-AzureRmNetworkSecurityRuleConfig -Name myNetworkSecurityGroupRuleRDP  -Protocol Tcp `
-  -Direction Inbound -Priority 1000 -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix * `
-  -DestinationPortRange 3389 -Access Allow
-
-
-# Create a network security group
-$nsg = New-AzureRmNetworkSecurityGroup -ResourceGroupName $resourceGroup -Location eastus `
-  -Name myNetworkSecurityGroup -SecurityRules $nsgRuleRDP
-
-# Create a virtual network card and associate with public IP address and NSG
-$nic = New-AzureRmNetworkInterface -Name mySQLNic -ResourceGroupName $resourceGroup -Location eastus `
-  -SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $pip.Id -NetworkSecurityGroupId $nsg.Id
-
-# Create a virtual machine configuration
-$vmConfig = New-AzureRmVMConfig -VMName mySQLVM -VMSize Standard_D1 | `
-Set-AzureRmVMOperatingSystem -Windows -ComputerName mySQLVM -Credential $cred | `
-Set-AzureRmVMSourceImage -PublisherName MicrosoftSQLServer -Offer SQL2014SP2-WS2012R2 -Skus Enterprise -Version latest | `
-Add-AzureRmVMNetworkInterface -Id $nic.Id
-
-# Create the VM
-New-AzureRmVM -ResourceGroupName $resourceGroup -Location eastus -VM $vmConfig
+$vNet = Get-AzureRmVirtualNetwork `
+   -Name $vNetName `
+   -ResourceGroupName $resourceGroup
 ```
 
-Használjon [Set-AzureRmVMSqlServerExtension](/powershell/module/azurerm.compute/set-azurermvmsqlserverextension) hozzáadása a [SQL Server-bővítmény](/sql/virtual-machines-windows-sql-server-agent-extension.md) az SQL-virtuális géphez.
+Hozza létre az alhálózat konfigurációját az [Add-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/add-azurermvirtualnetworksubnetconfig) parancsmaggal.
+
 
 ```azurepowershell-interactive
-Set-AzureRmVMSqlServerExtension -ResourceGroupName $resourceGroup -VMName mySQLVM -name "SQLExtension"
+Add-AzureRmVirtualNetworkSubnetConfig `
+   -AddressPrefix 192.168.0.0/24 `
+   -Name mySQLSubnet `
+   -VirtualNetwork $vNet `
+   -ServiceEndpoint Microsoft.Sql
+```
+
+Frissítse a vNetet az új alhálózat adataival a [Set-AzureRmVirtualNetwork](/powershell/module/azurerm.network/set-azurermvirtualnetwork) parancsmag használatával.
+   
+```azurepowershell-interactive   
+$vNet | Set-AzureRmVirtualNetwork
+```
+
+## <a name="azure-sql-vm"></a>Azure SQL virtuális gép
+
+Az SQL virtuális gép létrehozásához használja egy SQL Server előzetesen konfigurált, Azure Marketplace-en elérhető rendszerképét. Először létrehozzuk a virtuális gépet, majd telepítjük az SQL Server-bővítményt a gépen. 
+
+
+```azurepowershell-interactive
+New-AzureRmVm `
+    -ResourceGroupName $resourceGroup `
+    -Name "mySQLVM" `
+    -ImageName "MicrosoftSQLServer:SQL2016SP1-WS2016:Enterprise:latest" `
+    -Location eastus `
+    -VirtualNetworkName $vNetName `
+    -SubnetName "mySQLSubnet" `
+    -SecurityGroupName "myNetworkSecurityGroup" `
+    -PublicIpAddressName "mySQLPublicIpAddress" `
+    -OpenPorts 3389,1401 
+```
+
+A [Set-AzureRmVMSqlServerExtension](/powershell/module/azurerm.compute/set-azurermvmsqlserverextension) parancsmag segítségével adja hozzá az [SQL Server-bővítményt](/sql/virtual-machines-windows-sql-server-agent-extension.md) az SQL virtuális géphez.
+
+```azurepowershell-interactive
+Set-AzureRmVMSqlServerExtension `
+   -ResourceGroupName $resourceGroup  `
+   -VMName mySQLVM `
+   -Name "SQLExtension" `
+   -Location "EastUS"
 ```
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban telepítette, egy SQL &#92; IIS &#92;. HÁLÓZATI verem Azure PowerShell használatával. Megismerte, hogyan végezheti el az alábbi műveleteket:
+Ebben az oktatóanyagban egy SQL&#92;IIS&#92;.NET vermet telepített az Azure PowerShell-lel. Megismerte, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
-> * Új-AzVM virtuális gép létrehozása
+> * Virtuális gép létrehozása 
 > * Az IIS és a .NET Core SDK telepítése a virtuális gépen
-> * SQL Server rendszert futtató virtuális gép létrehozása
-> * Az SQL Server-bővítményének telepítése
+> * SQL Servert futtató virtuális gép létrehozása
+> * Az SQL Server-bővítmény telepítése
 
-Előzetes tudnivalók megtekintéséhez SSL-tanúsítványokat az IIS-webkiszolgáló biztonságos következő oktatóanyagot.
+Folytassa a következő oktatóanyaggal, amelyből megismerheti, hogyan biztosítható az IIS-webkiszolgáló védelme SSL-tanúsítványok használatával.
 
 > [!div class="nextstepaction"]
-> [Biztonságos SSL-tanúsítványokat az IIS-webkiszolgáló](tutorial-secure-web-server.md)
+> [Az IIS-webkiszolgáló védelme SSL-tanúsítványokkal](tutorial-secure-web-server.md)
 

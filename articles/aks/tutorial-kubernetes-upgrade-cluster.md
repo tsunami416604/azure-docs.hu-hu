@@ -6,14 +6,14 @@ author: neilpeterson
 manager: timlt
 ms.service: container-service
 ms.topic: tutorial
-ms.date: 11/15/2017
+ms.date: 02/22/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: d82232d590bcc5c578ebe8ed7c85d25aebcfe097
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 16c8892743ac25c21b7004e10796c77c3ac9f900
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="upgrade-kubernetes-in-azure-container-service-aks"></a>A Kubernetes frissítése az Azure Container Service (AKS) szolgáltatásban
 
@@ -35,25 +35,25 @@ Ha ezeket a lépéseket még nem hajtotta végre, de szeretne velünk tartani, l
 
 ## <a name="get-cluster-versions"></a>A fürtverziók lekérése
 
-A fürtök frissítése előtt az `az aks get-versions` parancs használatával ellenőrizze, hogy mely Kubernetes-kiadások frissíthetők.
+A fürtök frissítése előtt az `az aks get-upgrades` parancs használatával ellenőrizze, hogy mely Kubernetes-kiadások frissíthetők.
 
-```azurecli-interactive
-az aks get-versions --name myAKSCluster --resource-group myResourceGroup --output table
+```azurecli
+az aks get-upgrades --name myAKSCluster --resource-group myResourceGroup --output table
 ```
 
-Itt láthatja, hogy a csomópont aktuális verziója `1.7.7`, és hogy az `1.7.9`-es, a `1.8.1`-es és a `1.8.2`-es verzió érhető el.
+Itt láthatja, hogy az aktuális csomópont verziója a következő: `1.7.9`. Az elérhető frissítési verziók a frissítések oszlopban láthatók.
 
 ```
-Name     ResourceGroup    MasterVersion    MasterUpgrades       NodePoolVersion     NodePoolUpgrades
--------  ---------------  ---------------  -------------------  ------------------  -------------------
-default  myAKSCluster     1.7.7            1.8.2, 1.7.9, 1.8.1  1.7.7               1.8.2, 1.7.9, 1.8.1
+Name     ResourceGroup    MasterVersion    NodePoolVersion    Upgrades
+-------  ---------------  ---------------  -----------------  ----------------------------------
+default  myResourceGroup  1.7.9            1.7.9              1.7.12, 1.8.1, 1.8.2, 1.8.6, 1.8.7
 ```
 
 ## <a name="upgrade-cluster"></a>A fürt frissítése
 
 A fürtcsomópontok az `az aks upgrade` paranccsal frissíthetőek. Az alábbi példákban az `1.8.2`-es verzióra frissítjük a fürtöt.
 
-```azurecli-interactive
+```azurecli
 az aks upgrade --name myAKSCluster --resource-group myResourceGroup --kubernetes-version 1.8.2
 ```
 
@@ -117,7 +117,7 @@ Kimenet:
 
 Most az `az aks show` paranccsal ellenőrizheti, hogy sikerült-e a frissítés.
 
-```azurecli-interactive
+```azurecli
 az aks show --name myAKSCluster --resource-group myResourceGroup --output table
 ```
 

@@ -1,26 +1,26 @@
 ---
-title: "Modell üzembe helyezése Azure Machine Learning-szolgáltatásokoz (előzetes verzió) | Microsoft Docs"
+title: "Modell-üzembehelyezési útmutató az Azure Machine Learning-szolgáltatásokhoz (előzetes verzió) | Microsoft Docs"
 description: "Ez a részletes oktatóanyag bemutatja, hogyan használhatók ki teljeskörűen az (előzetes verziójú) Azure Machine Learning-szolgáltatások. Ez a harmadik rész, amely a modell üzembe helyezését ismerteti."
 services: machine-learning
 author: raymondl
-ms.author: raymondl, aashishb
+ms.author: raymondl, j-martens, aashishb
 manager: mwinkle
-ms.reviewer: garyericson, jasonwhowell, mldocs
+ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
-ms.custom: mvc, tutorial
+ms.custom: mvc
 ms.topic: tutorial
-ms.date: 11/29/2017
-ms.openlocfilehash: ab0c10b2eeaa4388ef9b4dab90b99b37fa32df74
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.date: 02/28/2018
+ms.openlocfilehash: d7e07104153aed36a3e426e053847551d2b2093c
+ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 02/28/2018
 ---
-# <a name="classify-iris-part-3-deploy-a-model"></a>Írisz osztályozása, 3. rész: Modell üzembe helyezése
-Az Azure Machine Learning-szolgáltatások (előzetes verzió) az adatszakértők számára létrehozott átfogó, integrált és fejlett adatelemzési megoldás. Az adatszakértők a használatával az adatok előkészítését, a kísérletek kidolgozását és a modellek felhőszinten való üzembe helyezését hajthatják végre.
+# <a name="tutorial-classify-iris-part-3-deploy-a-model"></a>Oktatóanyag: Írisz osztályozása, 3. rész: Modell üzembe helyezése
+Az Azure Machine Learning (előzetes verzió) az adatszakértők számára létrehozott átfogó, integrált és fejlett adatelemzési megoldás. Az adatszakértők a használatával az adatok előkészítését, a kísérletek kidolgozását és a modellek felhőszinten való üzembe helyezését hajthatják végre.
 
-Ez az oktatóanyag egy háromrészes sorozat harmadik része. Az oktatóanyagnak ebben a részében az Azure Machine Learning-szolgáltatások (előzetes verzió) segítségével a következőket hajtja végre:
+Ez az oktatóanyag egy háromrészes sorozat harmadik része. Az oktatóanyagnak ebben a részében a Machine Learning (előzetes verzió) segítségével a következőket hajtja végre:
 
 > [!div class="checklist"]
 > * A modellfájl megkeresése
@@ -30,21 +30,22 @@ Ez az oktatóanyag egy háromrészes sorozat harmadik része. Az oktatóanyagnak
 > * A valós idejű webszolgáltatás futtatása.
 > * A kimeneti blobadatok vizsgálata. 
 
- Az oktatóanyag a jól ismert [Iris flower adatkészletet](https://en.wikipedia.org/wiki/iris_flower_data_set) használja. A képernyőképek Windows-specifikusak, de a macOS rendszeren szinte azonos a felhasználói élmény.
+Az oktatóanyag a jól ismert [Iris flower adatkészletet](https://en.wikipedia.org/wiki/iris_flower_data_set) használja. A képernyőképek Windows-specifikusak, de a macOS rendszeren szinte azonos a felhasználói élmény.
+
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 Végezze el az oktatóanyag első két részét:
 
    * Kövesse az [Adatok előkészítése útmutató](tutorial-classifying-iris-part-1.md) lépéseit a Machine Learning-erőforrások létrehozásához és az Azure Machine Learning Workbench alkalmazás telepítéséhez.
-
-   * Kövesse a [Modell-létrehozási útmutató](tutorial-classifying-iris-part-2.md) lépéseit egy logisztikai regressziós modell létrehozásához az Azure Machine Learningben.
+   * Kövesse a [Modell-létrehozási útmutató](tutorial-classifying-iris-part-2.md) lépéseit egy logisztikai regressziós modell létrehozásához a Machine Learningben.
 
 Rendelkeznie kell egy helyben telepített és futtatott Docker-motorral. Alternatív megoldásként az üzembe helyezést az Azure egy Azure Container Service-fürtjében is elvégezheti.
 
 ## <a name="download-the-model-pickle-file"></a>A modell pickle-fájljának letöltése
 Az oktatóanyag előző részében az **iris_sklearn.py** szkriptet helyileg, az Azure Machine Learning Workbenchben futtattuk. Ez a művelet szerializálta a logisztikai regressziós modellt a népszerű Python-alapú objektumszerializáló csomag, a [pickle](https://docs.python.org/2/library/pickle.html) használatával. 
 
-1. Nyissa meg a Machine Learning Workbench alkalmazást, majd az oktatóanyag előző részében létrehozott **myIris** projektet.
+1. Nyissa meg a Machine Learning Workbench alkalmazást. Nyissa meg az oktatóanyag-sorozat előző részében létrehozott **myIris** projektet.
 
 2. A projekt megnyitása után a bal oldali ablaktáblán kattintson a **Fájlok** gombra (mappa ikon) a projektmappa fájllistájának megnyitásához.
 
@@ -65,19 +66,22 @@ Az oktatóanyag előző részében az **iris_sklearn.py** szkriptet helyileg, az
    
    Az **iris_sklearn.py** szkript futtatásakor a szkript a modellfájlt az **outputs** mappába írta **model.pkl** néven. Ez a mappa abban a végrehajtási környezetben található, ahol a szkriptet futtatta, és nem a helyi projektmappában. 
    
-   - A fájl kereséséhez kattintson a **Futtatások** gombra (óra ikon) a bal oldali ablaktáblán a **Minden futtatás** lista megnyitásához.  
-   - Ekkor megnyílik a **Minden futtatás** lap. A futtatások tábláján válassza ki valamelyik közelmúltbeli futtatást, ahol a cél értéke **helyi**, a szkript neve pedig **iris_sklearn.py** volt. 
-   - Megnyílik a **Futtatás tulajdonságai** ablaktábla. Az ablaktábla jobb felső részén látható a **Kimenetek** terület. 
-   - A pickle-fájl letöltéséhez jelölje be a **model.pkl** fájl melletti jelölőnégyzetet, majd kattintson a **Letöltés** gombra. Mentse a fájlt a projektmappa gyökérkönyvtárába. A fájlra a későbbi lépések során szükség lesz.
+   a. A fájl kereséséhez kattintson a **Futtatások** gombra (óra ikon) a bal oldali ablaktáblán a **Minden futtatás** lista megnyitásához. 
+
+   b. Ekkor megnyílik a **Minden futtatás** lap. A futtatások tábláján válassza ki valamelyik közelmúltbeli futtatást, ahol a cél értéke **helyi**, a szkript neve pedig **iris_sklearn.py** volt. 
+
+   c. Megnyílik a **Futtatás tulajdonságai** ablaktábla. Az ablaktábla jobb felső részén látható a **Kimenetek** terület.
+
+   d. A pickle-fájl letöltéséhez jelölje be a **model.pkl** fájl melletti jelölőnégyzetet, majd kattintson a **Letöltés** gombra. Mentse a fájlt a projektmappa gyökérkönyvtárába. A fájlra a későbbi lépések során szükség lesz.
 
    ![A pickle-fájl letöltése](media/tutorial-classifying-iris/download_model.png)
 
    Az `outputs` mappával kapcsolatos további információkat a [nagyméretű adatfájlok írásával és olvasásával](how-to-read-write-files.md) kapcsolatos cikkben találhat.
 
 ## <a name="get-the-scoring-script-and-schema-files"></a>Pontozó szkript és sémafájlok beszerzése
-A webszolgáltatás üzembe helyezéséhez a modellfájl mellett szükség van egy pontozószkriptre és adott esetben egy, a webszolgáltatás bemeneti adataihoz tartozó sémára is. A pontozó szkript betölti a **model.pkl** fájlt az aktuális mappából, és a segítségével előállít egy újonnan előrejelzett Iris-osztályt.  
+A webszolgáltatás üzembe helyezéséhez a modellfájl mellett szükség van egy pontozószkriptre. Adott esetben a webszolgáltatás bemeneti adataihoz tartozó sémára is szükség lehet. A pontozó szkript betölti a **model.pkl** fájlt az aktuális mappából, és a segítségével előállít egy újonnan előrejelzett Iris-osztályt.
 
-1. Indítsa el az Azure Machine Learning Workbench alkalmazást, és nyissa meg az oktatóanyag előző részében létrehozott **myIris** projektet.
+1. Nyissa meg a Machine Learning Workbench alkalmazást. Nyissa meg az oktatóanyag-sorozat előző részében létrehozott **myIris** projektet.
 
 2. A projekt megnyitása után a bal oldali ablaktáblán kattintson a **Fájlok** gombra (mappa ikon) a projektmappa fájllistájának megnyitásához.
 
@@ -85,13 +89,13 @@ A webszolgáltatás üzembe helyezéséhez a modellfájl mellett szükség van e
 
    ![Pontozófájl](media/tutorial-classifying-iris/model_data_collection.png)
 
-4. A sémafájl lekéréséhez futtassa a szkriptet. Válassza ki a **helyi** környezetet és a **score_iris.py** szkriptet a parancssorban, majd válassza a **Futtatás** gombot. 
+4. A sémafájl lekéréséhez futtassa a szkriptet. Válassza ki a **helyi** környezetet és a **score_iris.py** szkriptet a parancssorban, majd válassza a **Futtatás** lehetőséget. 
 
 5. A szkript létrehoz az **Outputs** szakaszban egy JSON-fájlt, amely a modellhez szükséges bemenetiadat-sémát tartalmazza.
 
 6. Figyelje meg a **Projekt-irányítópult** panel jobb oldalán található **Feladatok** panelt. Várja meg, hogy a legfrissebb **score_iris.py** feladat mellett a zöld **Befejezve** állapot jelenjen meg. Ezután válassza a legfrissebb feladatfuttatáshoz tartozó **score_iris.py [1]** hiperhivatkozásra az **score_iris.py** futtatási részleteinek megtekintéséhez. 
 
-7. A **Futtatás tulajdonságai** lap **Kimenetek** részében válassza ki az újonnan létrehozott **service_schema.json** fájlt.  Jelölje be a fájl neve melletti jelölőnégyzetet, majd válassza a **Letöltés** gombot. Mentse a fájlt a projektmappa gyökérkönyvtárába.
+7. A **Futtatás tulajdonságai** lap **Kimenetek** részében válassza ki az újonnan létrehozott **service_schema.json** fájlt. Jelölje be a fájl neve melletti jelölőnégyzetet, majd válassza a **Letöltés** gombot. Mentse a fájlt a projektmappa gyökérkönyvtárába.
 
 8. Lépjen vissza az előző lapra, ahol megnyitotta a **score_iris.py** szkriptet. Az adatgyűjtés lehetővé teszi modellbemenetek és előrejelzések rögzítését a webszolgáltatásból. A következő lépések érdekesek az adatgyűjtés szempontjából:
 
@@ -103,19 +107,19 @@ A webszolgáltatás üzembe helyezéséhez a modellfájl mellett szükség van e
 
 10. Tekintse át a következő, a **ModelDataCollector** osztályt példányosító kódsorokat az **init()** függvényben:
 
-   ```python
-   global inputs_dc, prediction_dc
-   inputs_dc = ModelDataCollector('model.pkl',identifier="inputs")
-   prediction_dc = ModelDataCollector('model.pkl', identifier="prediction")`
-   ```
+      ```python
+      global inputs_dc, prediction_dc
+      inputs_dc = ModelDataCollector('model.pkl',identifier="inputs")
+      prediction_dc = ModelDataCollector('model.pkl', identifier="prediction")`
+      ```
 
 11. Tekintse át a következő, bemeneti és előrejelzési adatokat gyűjtő kódsorokat a **run(input_df)** függvényben.
 
-   ```python
-   global clf2, inputs_dc, prediction_dc
-   inputs_dc.collect(input_df)
-   prediction_dc.collect(pred)
-   ```
+      ```python
+      global clf2, inputs_dc, prediction_dc
+      inputs_dc.collect(input_df)
+      prediction_dc.collect(pred)
+      ```
 
 Most már készen áll arra, hogy előkészítse a környezetet a modell üzembe helyezéséhez.
 
@@ -130,39 +134,39 @@ A _helyi mód_ fejlesztési és tesztelési célokra használható. A modell üz
 >Ha nincs helyi Docker-motor, akkor másik megoldásként létrehozhat egy fürtöt az Azure-ban az üzembe helyezéshez. Ilyenkor ügyeljen arra, hogy az oktatóanyag elvégzését követően törölje a fürtöt, hogy az ne járjon további költségekkel.
 
 1. Nyissa meg a parancssori felületet (CLI)
-   Az Azure Machine Learning Workbench alkalmazás **Fájl** menüjében válassza a **Parancssor megnyitása** lehetőséget.
+   A Machine Learning Workbench alkalmazás **Fájl** menüjében válassza a **Parancssor megnyitása** lehetőséget.
 
    Ekkor megnyílik a parancssor az aktuális projektmappában (**c:\temp\myIris>**).
 
 2. Hozza létre a környezetet. Ezt a lépést környezetenként egyszer kell futtatnia. Például egyszer kell futtatni fejlesztési, és egyszer éles környezetben. Ehhez az első környezethez használja a _helyi módot_. A következő parancsban a `-c` vagy a `--cluster` kapcsolóval egy _fürtmódú_ környezetet is létrehozhat később.
 
-   Vegye figyelembe, hogy a következő telepítési parancs használatához Közreműködői hozzáférés szükséges az előfizetéshez. Ha ezzel nem rendelkezik, akkor ahhoz az erőforráscsoporthoz szükséges Közreműködői hozzáférés, ahová a telepítést végzi. Utóbbi esetben meg kell adnia az erőforráscsoport nevét a telepítési parancs részeként a `-g` jelző használatával. 
+   A következő setup parancs használatához közreműködői hozzáférés szükséges az előfizetéshez. Ha ezzel nem rendelkezik, akkor ahhoz az erőforráscsoporthoz szükséges Közreműködői hozzáférés, ahová a telepítést végzi. Utóbbi esetben meg kell adnia az erőforráscsoport nevét a setup parancs részeként a `-g` jelző használatával. 
 
    ```azurecli
    az ml env setup -n <new deployment environment name> --location <e.g. eastus2>
    ```
    
-   Kövesse a képernyőn megjelenő utasításokat, amelyekkel üzembe helyezhet egy tárfiókot Docker-rendszerképek tárolásához, egy Azure Container Registryt Docker-rendszerképek listázásához és egy AppInsight-fiókot telemetria gyűjtéséhez. Ha az `-c` kapcsolót használta, egy ACS- (Azure Container Service-) fürt is létrejön.
+   Kövesse a képernyőn megjelenő utasításokat, amelyekkel üzembe helyezhet egy tárfiókot Docker-rendszerképek tárolásához, egy Azure Container Registryt Docker-rendszerképek listázásához és egy Azure Application Insights-fiókot telemetria gyűjtéséhez. Ha a `-c` kapcsolót használta, egy Container Service-fürt is létrejön.
    
    A fürt nevével azonosítható a környezet. A hely legyen ugyanaz, mint az Azure Portalról létrehozott modellkezelési fiók helye.
 
-   Ha meg szeretne győződni arról, hogy a környezet telepítése sikeres volt, a következő paranccsal ellenőrizheti az állapotot:
+   Ha ellenőrizni szeretné, hogy a környezet telepítése sikeres volt-e, a következő paranccsal ellenőrizheti az állapotot:
 
    ```azurecli
    az ml env show -n <deployment environment name> -g <existing resource group name>
    ```
 
-   Mielőtt beállítaná a környezetet az 5. lépésben, győződjön meg arról, hogy a „Kiépítési állapot” értéke „Sikeres” (lásd alább).
+   Mielőtt beállítaná a környezetet az 5. lépésben, győződjön meg arról, hogy a „Provisioning State” értéke „Succeeded”:
 
    ![Kiépítési állapot](media/tutorial-classifying-iris/provisioning_state.png)
  
    
-3. Hozzon létre egy Modellkezelési fiókot. (Ez egy egyszeri beállítás.)  
+3. Hozzon létre egy Modellkezelési fiókot. Ez egy egyszeri beállítás.
    ```azurecli
    az ml account modelmanagement create --location <e.g. eastus2> -n <new model management account name> -g <existing resource group name> --sku-name S1
    ```
    
-4. Állítsa be a modellkezelési fiókot.  
+4. Állítsa be a modellkezelési fiókot.
    ```azurecli
    az ml account modelmanagement set -n <youracctname> -g <yourresourcegroupname>
    ```
@@ -195,11 +199,17 @@ Most már készen áll a valós idejű webszolgáltatás létrehozására.
    Ez a parancs létrehoz egy webszolgáltatás-azonosítót, amelyet később felhasználhat.
 
    Az **az ml service create realtime** parancsot az alábbi kapcsolókkal lehet használni:
+
    * `-n`: Az alkalmazás neve, csak kisbetűkből állhat.
+
    * `-f`: A pontozó szkript fájlneve
+
    * `--model-file`: A modellfájl. Ebben az esetben ez a model.pkl pickle-fájl.
+
    * `-r`: A modell futtatókörnyezete. Ebben az esetben ez a Python-modell. Az érvényes futtatókörnyezetek a `python` és a `spark-py`.
-   * `--collect-model-data true`: Ez engedélyezi az adatgyűjtést.
+
+   * `--collect-model-data true`: Ez a kapcsoló lehetővé teszi adatok gyűjtését.
+
    * `-c`: A további csomagokat tartalmazó Conda-függőségfájl elérési útja.
 
    >[!IMPORTANT]
@@ -212,6 +222,7 @@ Most már készen áll a valós idejű webszolgáltatás létrehozására.
    Az üzembe helyezés részeként a webszolgáltatáshoz létrejön egy HTTP REST-végpont a helyi számítógépen. A parancs futtatása néhány percen belül befejeződik egy sikert jelző üzenettel, és a webszolgáltatás készen áll a használatra.
 
 3. A futó Docker-tárolót a **docker ps** paranccsal tekintheti meg:
+
    ```azurecli
    docker ps
    ```
@@ -259,44 +270,38 @@ Most már készen áll a webszolgáltatás futtatására.
 
 ## <a name="run-the-real-time-web-service"></a>A valós idejű webszolgáltatás futtatása
 
-A futó **irisapp** webszolgáltatás teszteléséhez használjon egy JSON kódolású rekordot, amely egy négy véletlenszerű számból álló tömböt tartalmaz:
+A futó **irisapp** webszolgáltatás teszteléséhez használjon egy JSON kódolású rekordot, amely egy négy véletlenszerű számból álló tömböt tartalmaz.
 
-1. A webszolgáltatás mintaadatokat tartalmaz. Helyi módban való futtatáskor meghívhatja az **az ml service usage realtime** parancsot. Ez a meghívás lekér egy mintául szolgáló futtatási parancsot, amellyel tesztelheti a szolgáltatást. A hívás a pontozás URL-címét is lekéri, amellyel belefoglalhatja a szolgáltatást az egyéni alkalmazásába:
+1. A webszolgáltatás mintaadatokat tartalmaz. Helyi módban való futtatáskor meghívhatja az **az ml service usage realtime** parancsot. Ez a meghívás lekér egy mintául szolgáló futtatási parancsot, amellyel tesztelheti a szolgáltatást. A hívás a pontozás URL-címét is lekéri, amellyel belefoglalhatja a szolgáltatást az egyéni alkalmazásába.
 
    ```azurecli
    az ml service usage realtime -i <web service ID>
    ```
 
 2. A szolgáltatás teszteléséhez hajtsa végre a visszaadott szolgáltatásfuttatási parancsot:
-
     
    ```azurecli
    az ml service run realtime -i <web service ID> -d "{\"input_df\": [{\"petal width\": 0.25, \"sepal length\": 3.0, \"sepal width\": 3.6, \"petal length\": 1.3}]}"
    ```
+
    A kimenet **„2”**, amely az előrejelzett osztály. (Az Ön eredménye ettől eltérő lehet.) 
-
-3. A szolgáltatás parancssori felületen kívülről való futtatásához a szolgáltatást, le kell kérnie a kulcsokat a hitelesítéshez:
-
-   ```azurecli
-   az ml service keys realtime -i <web service ID>
-   ```
 
 ## <a name="view-the-collected-data-in-azure-blob-storage"></a>Az összegyűjtött adatok megtekintése az Azure Blob Storage-ban
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-2. Keresse meg a Storage-fiókjait. Ehhez válassza a **További szolgáltatások** lehetőséget.
+2. Keresse meg a Storage-fiókjait. Ehhez válassza a **Minden szolgáltatás** lehetőséget.
 
-3. A keresőmezőbe írja be a **Storage-fiókok** kifejezést, majd nyomja le az **Enter** billentyűt.
+3. A keresőmezőbe írja be a **Storage-fiókok** kifejezést, majd nyomja le az Enter billentyűt.
 
 4. A **Storage-fiókok** keresőoldalán válassza ki a környezetének megfelelő **Storage-fiók** erőforrást. 
 
    > [!TIP]
    > A használatban lévő Storage-fiók meghatározásához:
-   > 1. Nyissa meg az Azure Machine Learning Workbenchet.
+   > 1. Nyissa meg a Machine Learning Workbenchet.
    > 2. Válassza ki a projektet, amelyen dolgozik.
    > 3. Nyisson meg egy parancssort a **Fájl** menüben.
-   > 4. A parancssorban írja be az `az ml env show -v` parancsot, és ellenőrizze a *storage_account* értéket. Ez az Ön Storage-fiókjának neve
+   > 4. A parancssorba írja be az `az ml env show -v` parancsot, és ellenőrizze a *storage_account* értékét. Ez az Ön Storage-fiókjának neve
 
 5. A **Storage-fiók** panel megnyílása után válassza a bal oldali listán a **Tárolók** elemet. Keresse meg a **modeldata** nevű tárolót. 
  
@@ -308,21 +313,29 @@ A futó **irisapp** webszolgáltatás teszteléséhez használjon egy JSON kódo
    /modeldata/<subscription_id>/<resource_group_name>/<model_management_account_name>/<webservice_name>/<model_id>-<model_name>-<model_version>/<identifier>/<year>/<month>/<day>/data.csv
    ```
 
-6. Ezeket az adatokat felhasználhatja az Azure Blob Storage-ból. Számos különféle, Microsoft szoftvereket és nyílt forráskódú eszközöket használó eszköz van, például:
+6. Ezeket az adatokat felhasználhatja az Azure Blob Storage-ból. Számos különféle, Microsoft szoftvereket és nyílt forráskódú eszközöket használó eszköz érhető el, például:
 
-   - Azure Machine Learning: a CSV-fájlt adatforrásként való felvételével nyissa meg a CSV-fájlt. 
-   - Excel: nyissa meg táblázatként a napi CSV-fájlokat.
-   - [Power BI](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/): hozzon létre diagramokat a blobok CSV-adataiból.
-   - [Hive](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-tutorial-get-started): töltsön be CSV-adatokat egy Hive-táblába, és végezzen SQL-lekérdezéseket közvetlenül a blobokon.
-   - [Spark](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-overview): hozzon létre DataFrame-et nagy mennyiségű CSV-adatból.
+   * Machine Learning: a CSV-fájl adatforrásként való felvételével nyissa meg a CSV-fájlt.
+
+   * Excel: nyissa meg táblázatként a napi CSV-fájlokat.
+
+   * [Power BI](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/): hozzon létre diagramokat a blobok CSV-adataiból.
+
+   * [Hive](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-tutorial-get-started): töltsön be CSV-adatokat egy Hive-táblába, és végezzen SQL-lekérdezéseket közvetlenül a blobokon.
+
+   * [Spark](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-overview): hozzon létre DataFrame-et nagy mennyiségű CSV-adatból.
 
       ```python
       var df = spark.read.format("com.databricks.spark.csv").option("inferSchema","true").option("header","true").load("wasb://modeldata@<storageaccount>.blob.core.windows.net/<subscription_id>/<resource_group_name>/<model_management_account_name>/<webservice_name>/<model_id>-<model_name>-<model_version>/<identifier>/<year>/<month>/<date>/*")
       ```
 
 
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+
+[!INCLUDE [aml-delete-resource-group](../../../includes/aml-delete-resource-group.md)]
+
 ## <a name="next-steps"></a>További lépések
-A háromrészes oktatóanyag-sorozat jelen, harmadik részében megtanulhatta, hogyan használhatók az Azure Machine Learning-szolgáltatások a következőkre:
+A háromrészes oktatóanyag-sorozat jelen, harmadik részében megtanulhatta, hogyan használható a Machine Learning a következőkre:
 > [!div class="checklist"]
 > * A modellfájl megkeresése
 > * Pontozószkript és sémafájl létrehozása.
@@ -335,4 +348,4 @@ Sikeresen futtatott egy tanítási szkriptet különféle számítási környeze
 
 Most már készen áll a fejlett adat-előkészítés elvégzésére:
 > [!div class="nextstepaction"]
-> [Fejlett adatelőkészítés](tutorial-bikeshare-dataprep.md)
+> [4. oktatóanyag – Fejlett adat-előkészítés](tutorial-bikeshare-dataprep.md)

@@ -1,50 +1,50 @@
 ---
-title: "Azure Tárolószolgáltatás útmutató - figyelő Kubernetes"
-description: "Azure Tárolószolgáltatás útmutató - figyelő Kubernetes a Microsoft Operations Management Suite (OMS)"
+title: "Azure Container Service-oktatóanyag – A Kubernetes monitorozása"
+description: "Azure Container Service-oktatóanyag – A Kubernetes monitorozása a Microsoft Operations Management Suite (OMS) használatával"
 services: container-service
 author: dlepow
 manager: timlt
 ms.service: container-service
 ms.topic: tutorial
-ms.date: 07/25/2017
+ms.date: 02/26/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 948e3aeea34a0355c3d958f29008c26499e19ba4
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
-ms.translationtype: MT
+ms.openlocfilehash: 965ce4b7e154684fc1d171c90f17498afc828a66
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 02/27/2018
 ---
-# <a name="monitor-a-kubernetes-cluster-with-operations-management-suite"></a>A figyelő az Operations Management Suite Kubernetes fürt
+# <a name="monitor-a-kubernetes-cluster-with-operations-management-suite"></a>Kubernetes-fürt monitorozása az Operations Management Suite használatával
 
 [!INCLUDE [aks-preview-redirect.md](../../../includes/aks-preview-redirect.md)]
 
-A Kubernetes fürt és a tárolók figyelése fontos, különösen akkor, ha több alkalmazáshoz léptékű termelési fürt felügyeletére. 
+A Kubernetes-fürt és -tárolók monitorozása kritikus fontosságú, különösen, ha egy éles fürtöt kezel skálázható módon, több alkalmazással. 
 
-Kihasználhatja a több Kubernetes figyelési megoldás, a Microsoft vagy más szolgáltatók. Ebben az oktatóanyagban a tárolók megoldás használatával figyelheti a Kubernetes fürt [Operations Management Suite](../../operations-management-suite/operations-management-suite-overview.md), a Microsoft felhőalapú informatikai felügyeleti megoldás. (A képen van az OMS-tárolók megoldás.)
+Több Kubernetes-monitorozási megoldás közül választhat a Microsofttól vagy más szolgáltatóktól. Ebben az oktatóanyagban a Kubernetes-fürt monitorozásához az [Operations Management Suite](../../operations-management-suite/operations-management-suite-overview.md), a Microsoft felhőalapú informatikai felügyeleti megoldása tárolási megoldását használja. (Az OMS tárolási megoldása előzetes verzióként érhető el.)
 
-Ebben az oktatóanyagban hét részét hét, a következő feladatokat tartalmazza:
+Ez az oktatóanyag, amely egy hétrészes sorozat hetedik része, a következő feladatokon vezet végig:
 
 > [!div class="checklist"]
-> * OMS-munkaterület beállításainak beolvasása
-> * Állítsa be a Kubernetes csomópontok OMS-ügynökök
-> * Elérni a figyelési adatait az OMS-portálon vagy az Azure-portálon
+> * OMS-munkaterület beállításainak lekérése
+> * OMS-ügynökök beállítása a Kubernetes-csomópontokon
+> * Hozzáférés a monitorozási információkhoz az OMS-portálon vagy az Azure Portalon
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Az előző oktatóanyagok tároló lemezképek, a feltöltött Azure tároló beállításjegyzék ezeket a lemezképeket és a létrehozott Kubernetes fürt alkalmazás lett csomagolva. 
+Az előző oktatóanyagokban egy alkalmazást csomagoltunk tárolórendszerképekbe, a rendszerképeket feltöltöttük az Azure Container Registrybe, és létrehoztunk egy Kubernetes-fürtöt. 
 
-Ha nem volna ezeket a lépéseket, és szeretné követéséhez, vissza [oktatóanyag 1 – létrehozás tároló képek](./container-service-tutorial-kubernetes-prepare-app.md). 
+Ha ezeket a lépéseket még nem hajtotta végre, és szeretné követni az oktatóanyagot, lépjen vissza az [1. oktatóanyag – Tárolórendszerképek létrehozása](./container-service-tutorial-kubernetes-prepare-app.md) részhez. 
 
-## <a name="get-workspace-settings"></a>Munkaterület beállításainak beolvasása
+## <a name="get-workspace-settings"></a>Munkaterület beállításainak lekérése
 
-Amikor megnyitja a [OMS-portálon](https://mms.microsoft.com), keresse fel **beállítások** > **csatlakoztatott források** > **Linux kiszolgálók**. Itt megtalálhatja a *munkaterület azonosítója* és elsődleges vagy másodlagos *Munkaterületkulcsot*. Jegyezze fel ezeket az értékeket, amely OMS-ügynököt a fürt beállításához szükséges.
+Az [OMS-portál](https://mms.microsoft.com) megnyitásakor lépjen a **Beállítások** > **Csatlakoztatott források** > **Linuxos kiszolgálók** elemre. Itt megtalálhatja a *munkaterület-azonosítót* és egy elsődleges vagy másodlagos *munkaterületkulcsot*. Jegyezze fel ezeket az értékeket, mert szüksége lesz rájuk az OMS-ügynökök a fürtön történő beállításához.
 
-## <a name="set-up-oms-agents"></a>Állítsa be az OMS-ügynökök
+## <a name="set-up-oms-agents"></a>OMS-ügynökök beállítása
 
-Itt egy olyan YAM fájl OMS-ügynököt a Linux fürtcsomópontokon beállítása. Létrehoz egy Kubernetes [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/), amely egy egyetlen azonos pod fut a fürt minden csomópontján. A DaemonSet erőforrás figyelési ügynök telepítéséhez ideális. 
+Itt talál egy YAML-fájlt az OMS-ügynökök a Linux-fürtcsomópontokon történő beállításához. Létrehoz egy Kubernetes [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/) elemet, amely minden fürtcsomóponton egy azonos podot futtat. A DaemonSet erőforrás ideális figyelőügynökök üzembe helyezéséhez. 
 
-A következő szöveg nevű fájlba mentése `oms-daemonset.yaml`, és cserélje le a helyőrző értékeket az *myWorkspaceID* és *myWorkspaceKey* az OMS-munkaterület azonosítója és kulcsa. (A termelési, is kódol ezeket az értékeket, a titkos kulcsok.)
+Mentse az alábbi szöveget egy `oms-daemonset.yaml` nevű fájlban, és a *myWorkspaceID* és a *myWorkspaceKey* helyőrzőértékeket cserélje le az OMS-munkaterület azonosítójára és kulcsára. (Az éles környezetben titkos kódokként kódolhatja ezeket az értékeket.)
 
 ```YAML
 apiVersion: extensions/v1beta1
@@ -99,13 +99,13 @@ spec:
        path: /var/log
 ```
 
-A DaemonSet létrehozása a következő parancsot:
+A DaemonSet létrehozásához használja a következő parancsot:
 
 ```azurecli-interactive
 kubectl create -f oms-daemonset.yaml
 ```
 
-A DaemonSet létrehozott megtekintéséhez futtassa:
+A DaemonSet létrejöttének ellenőrzéséhez futtassa a következőt:
 
 ```azurecli-interactive
 kubectl get daemonset
@@ -118,33 +118,33 @@ NAME       DESIRED   CURRENT   READY     UP-TO-DATE   AVAILABLE   NODE-SELECTOR 
 omsagent   3         3         3         0            3           <none>          5m
 ```
 
-Miután az ügynökök futnak, OMS betöltési és feldolgozni az adatokat több percet vesz igénybe.
+Ha az ügynökök futnak, az OMS számára az adatok betöltése és feldolgozása több percet vesz igénybe.
 
-## <a name="access-monitoring-data"></a>Figyelési adatok hozzáférés
+## <a name="access-monitoring-data"></a>Monitorozási adatok elérése
 
-Megtekintése és elemzése a figyelési adatok az OMS-tároló a [tároló megoldás](../../log-analytics/log-analytics-containers.md) az OMS-portálon vagy az Azure-portálon. 
+Megtekintheti és elemezheti az OMS-tároló monitorozási adatait a [tárolómegoldással](../../log-analytics/log-analytics-containers.md) az OMS-portálon vagy az Azure Portalon. 
 
-A tároló megoldás használatával telepítéséhez a [OMS-portálon](https://mms.microsoft.com), keresse fel **megoldások gyűjteménye**. Majd adja hozzá **tároló megoldás**. Másik lehetőségként adja hozzá a tárolók megoldást a [Azure piactér](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft.containersoms?tab=Overview).
+Ha a tárolómegoldást az [OMS-portál](https://mms.microsoft.com) segítségével szeretné telepíteni, lépjen a **megoldástárba**. Ezután adja hozzá a **tárolómegoldást**. Másik megoldásként adja hozzá a tárolómegoldást az [Azure Marketplace-ről](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft.containersoms?tab=Overview).
 
-Az OMS-portálon keresse meg a **tárolók** összefoglalás csempéje az OMS-irányítópultot. Kattintson a csempére vonatkozó információt talál többek között: tároló események, a hibák, a állapota, a kép leltározás és a Processzor- és memóriahasználatról. Részletesebb információkért kattintson egy sorra a bármely csempére, vagy hajtsa végre a [naplófájl-keresési](../../log-analytics/log-analytics-log-searches.md).
+Az OMS-portálon keresse meg a **Tárolók** összefoglaló-csempét az OMS-irányítópulton. Kattintson a csempére többek között a következő részletekért: tárolóesemények, hibák, állapot, rendszerképek leltára, valamint processzor- és memóriahasználat. Részletesebb információkért kattintson egy sorra bármely csempén, vagy végezzen [naplókeresést](../../log-analytics/log-analytics-log-searches.md).
 
-![Az OMS-portálon tárolók irányítópult](./media/container-service-tutorial-kubernetes-monitor/oms-containers-dashboard.png)
+![Tárolók irányítópultja az OMS-portálon](./media/container-service-tutorial-kubernetes-monitor/oms-containers-dashboard.png)
 
-Ehhez hasonlóan az Azure-portálon lépjen **Naplóelemzési** , és válassza ki a munkaterület nevét. Hogy a **tárolók** összefoglalás csempére, kattintson a **megoldások** > **tárolók**. Részletek megtekintéséhez kattintson a csempére.
+Hasonlóképpen az Azure Portalon lépjen a **Log Analytics** területre, és válassza ki a munkaterület nevét. A **Tárolók** összefoglaló-csempe megtekintéséhez kattintson a **Megoldások** > **Tárolók** elemre. A részletek megtekintéséhez kattintson a csempére.
 
-Tekintse meg a [Azure Log Analytics-dokumentáció](../../log-analytics/index.yml) kérdez le, és a figyelési adatok elemzése részletes útmutatást.
+A monitorozási adatok lekérdezésére és elemzésére vonatkozó részletes útmutatásért tekintse meg az [Azure Log Analytics dokumentációját](../../log-analytics/index.yml).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban az OMS Kubernetes fürt figyeli. Feladatok kezelt tartalmazza:
+Ebben az oktatóanyagban az OMS használatával monitorozta a Kubernetes-fürtöt. A következők feladatokat hajtottuk végre:
 
 > [!div class="checklist"]
-> * OMS-munkaterület beállításainak beolvasása
-> * Állítsa be a Kubernetes csomópontok OMS-ügynökök
-> * Elérni a figyelési adatait az OMS-portálon vagy az Azure-portálon
+> * OMS-munkaterület beállításainak lekérése
+> * OMS-ügynökök beállítása a Kubernetes-csomópontokon
+> * Hozzáférés a monitorozási információkhoz az OMS-portálon vagy az Azure Portalon
 
 
-Kövesse a hivatkozásra kattintva megtekintheti az előre elkészített parancsfájl minták számára.
+Kövesse ezt a hivatkozást a Container Service-hez előre felépített szkriptminták megtekintéséhez.
 
 > [!div class="nextstepaction"]
-> [Azure Tárolószolgáltatás-parancsfájl minták](cli-samples.md)
+> [Az Azure Container Service szkriptmintái](cli-samples.md)

@@ -1,128 +1,129 @@
 ---
-title: "Teszt meghajtó engedélyezve van az Azure AD B2C webes alkalmazás |} Microsoft Docs"
-description: "Teszt meghajtó jelentkezzen be, regisztráció, profil szerkesztése, és alaphelyzetbe állítja a jelszót felhasználói útvonal be egy tesztkörnyezetben az Azure AD B2C használatával"
+title: "Az Azure AD B2C-t használó webalkalmazás kipróbálása"
+description: "Gyors útmutató a felhasználói bejelentkezést az Azure Active Directory B2C használatával biztosító, mintául szolgáló ASP.NET-es webalkalmazás kipróbáláshoz."
 services: active-directory-b2c
-documentationcenter: .net
-author: saraford
+author: PatAltimore
 manager: mtillman
-editor: PatAltimore
-ms.assetid: 2ffb780d-2c51-4c2e-b8d6-39c40a81a77e
+ms.reviewer: saraford
 ms.service: active-directory-b2c
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
-ms.topic: article
-ms.date: 10/31/2017
+ms.topic: quickstart
+ms.custom: mvc
+ms.date: 2/13/2018
 ms.author: patricka
-ms.openlocfilehash: bc56da695145f396a2899fb9dc7add3af9a549e8
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
-ms.translationtype: MT
+ms.openlocfilehash: 87c180445038b1205e2f6aab1ce721765ecb35c9
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/28/2018
 ---
-# <a name="test-drive-an-azure-ad-b2c-enabled-web-app"></a>Tesztelése egy Azure AD B2C engedélyezve van a webes alkalmazás
+# <a name="quickstart-test-drive-an-azure-ad-b2c-enabled-web-app"></a>Gyors útmutató: Az Azure AD B2C-t használó webalkalmazás kipróbálása
 
-Az Azure Active Directory B2C az alkalmazás, az üzleti és a védett ügyfelek felhő Identitáskezelés biztosít. A gyors üzembe helyezés használ egy minta tennivaló alkalmazás bemutatása:
+Az Azure Active Directory (Azure AD) B2C felhőalapú identitáskezelést nyújt az alkalmazás, az üzlet és az ügyfelek védelme érdekében. Az Azure AD B2C nyílt szabványú protokollokkal teszi lehetővé az alkalmazások hitelesítését közösségi hálózati és vállalati fiókokon.
 
-> [!div class="checklist"]
-> * Jelentkezzen be egy egyéni bejelentkezési oldalt.
-> * Jelentkezzen be egy közösségi identitásszolgáltató használatával.
-> * Létrehozása és kezelése az Azure AD B2C fiók és felhasználói profil.
-> * Hívja meg a webes API-k által az Azure AD B2C védett.
-
-## <a name="prerequisites"></a>Előfeltételek
-
-* [A Visual Studio 2017](https://www.visualstudio.com/downloads/) rendelkező a **ASP.NET és a webes fejlesztési** munkaterhelés. 
-* Egy közösségi fiók vagy Facebook, Google, vagy a Twitteren.
+Ebben a gyors útmutatóban az Azure AD B2C-t használó, mintául szolgáló ASP.NET-es alkalmazással jelentkezik be egy közösségi identitásszolgáltatót használva, és az Azure AD B2C által védett webes API-t hív meg.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
+## <a name="prerequisites"></a>Előfeltételek
+
+* [Visual Studio 2017](https://www.visualstudio.com/downloads/) az **ASP.NET és webfejlesztési** számítási feladattal. 
+* Egy Facebook, Google, Microsoft vagy Twitter közösségi fiók.
+
 ## <a name="download-the-sample"></a>A minta letöltése
 
-[Töltse le, vagy klónozza a mintaalkalmazást](https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi) a Githubról.
+[Töltse le a zip-fájlt](https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi/archive/master.zip), vagy a klónozza a mintául szolgáló webalkalmazást a GitHubról.
 
-## <a name="run-the-app-in-visual-studio"></a>Futtassa az alkalmazást a Visual Studióban
+```
+git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi.git
+```
 
-A minta alkalmazás projekt mappában nyissa meg a `B2C-WebAPI-DotNet.sln` a Visual Studio megoldás. 
+## <a name="run-the-app-in-visual-studio"></a>Az alkalmazás futtatása a Visual Studióban
 
-A megoldás egy Tennivaló lista mintaalkalmazás, amely két projektet:
+A mintaalkalmazás projektmappájában nyissa meg a `B2C-WebAPI-DotNet.sln` megoldást a Visual Studióban.
 
-* **TaskWebApp** – egy ASP.NET MVC webalkalmazás, ahol a felhasználók kezelhetik a Tennivaló lista.  
-* **TaskService** – egy ASP.NET Web API háttéralkalmazás, amely kezeli a műveletek végre egy felhasználó tennivaló listaelemek. A webalkalmazás meghívja a webes API-t, és megjeleníti az eredményeket.
+Két projekt szerepel a mintául szolgáló megoldásban:
 
-A gyors üzembe helyezés, a kell futtatnia mind a `TaskWebApp` és `TaskService` projektek egyszerre. 
+**Mintául szolgáló webalkalmazás (TaskWebApp):** webalkalmazás feladatlista létrehozáshoz és szerkesztéséhez. A webalkalmazás a **regisztrálási vagy bejelentkezési** szabályzatot használja a felhasználók regisztrálásához és bejelentkeztetéséhez.
 
-1. A Visual Studio menüjében válassza **projektek > indítási projektek beállítása...** . 
-2. Válassza ki **több kezdőprojekt** választógombot.
-3. Módosítsa a **művelet** mindkét projektek **Start**. Kattintson az **OK** gombra.
+**Mintául szolgáló webes API-alkalmazás (TaskService):** webes API, amely támogatja a feladatlista létrehozását, olvasását, frissítését és törlését. A webes API-nak az Azure AD B2C biztosít védelmet, és a webalkalmazással hívható meg.
 
-![A Visual Studio indítási lap](media/active-directory-b2c-quickstarts-web-app/setup-startup-projects.png)
+Ebben a gyors útmutatóban egyidőben futtatja a `TaskWebApp` és a `TaskService` projektet is. 
 
-Válassza ki **Debug > Start Debugging** össze és futtathatja mindkét alkalmazáshoz. Minden alkalmazás saját böngészőlapon nyílik:
+1. Válassza ki a `B2C-WebAPI-DotNet` megoldást a Megoldáskezelőben.
+2. A Visual Studio menüjében válassza a **Project > Set StartUp Projects…** (Projekt > Indítási projektek beállítása…) elemet. 
+3. Válassza ki a **Több kezdőprojekt** választógombot.
+4. Mindkét projektnél módosítsa a **Művelet** értékét **Indításra**. Kattintson az **OK** gombra.
 
-`https://localhost:44316/`– Ezen a lapon az ASP.NET-webalkalmazás. Ön a szolgáltatóosztályokkal közvetlenül az alkalmazás a gyorsindító.
-`https://localhost:44332/`– Ezen a lapon a webes API-k által az ASP.NET-webalkalmazás.
+Nyomja le az **F5** billentyűt mindkét alkalmazás hibakereséséhez. Mindegyik alkalmazás saját böngészőlapon nyílik meg:
+
+`https://localhost:44316/` – Ez a lap az ASP.NET-es webalkalmazás. A gyors útmutatóban közvetlenül kommunikál az alkalmazással.
+`https://localhost:44332/` – Ez a lap az ASP.NET-es webalkalmazás által meghívott webes API.
 
 ## <a name="create-an-account"></a>Fiók létrehozása
 
-Kattintson a **regisztráljon / bejelentkezés** indítsa el az ASP.NET-webalkalmazás hivatkozásra a **regisztráció vagy bejelentkezés** munkafolyamat. Egy fiók létrehozásakor egy meglévő közösségi identitás-szolgáltató fiókja vagy egy e-mail fiókot is használhatja. A gyors üzembe helyezés a vagy Facebook, Google, vagy a Twitteren közösségi identity provider fiókot használni.
+Kattintson a **Sign up / Sign in** (Regisztráció/Bejelentkezés) hivatkozásra az ASP.NET-es webalkalmazásban a **regisztrációs vagy bejelentkezési** munkafolyamat elindításához egy Azure AD B2C-szabályzat alapján.
 
-![ASP.NET webes mintaalkalmazás](media/active-directory-b2c-quickstarts-web-app/web-app-sign-in.png)
+![Mintául szolgáló ASP.NET-es webalkalmazás](media/active-directory-b2c-quickstarts-web-app/web-app-sign-in.png)
 
-### <a name="sign-up-using-a-social-identity-provider"></a>Jelentkezzen egy közösségi identitásszolgáltató
+A minta több regisztrációs beállítást is támogat, beleértve a közösségi identitásszolgáltató használatát vagy helyi fiók e-mail-címmel való létrehozását. Ehhez a gyors útmutatóhoz Facebook, Google vagy Twitter közösségi identitásszolgáltatótól származó fiókot használjon. 
 
-Közösségi identitásszolgáltató használatával, kattintson a használni kívánt identitásszolgáltató gombjára. 
+### <a name="sign-up-using-a-social-identity-provider"></a>Regisztráció közösségi identitásszolgáltatóval
 
-![Bejelentkezés vagy regisztráció szolgáltató](media/active-directory-b2c-quickstarts-web-app/sign-in-or-sign-up-web.png)
+Az Azure AD B2C a minta-webalkalmazáshoz egy Wingtip Toys nevű fiktív márka egyéni bejelentkezési lapját jeleníti meg. 
 
-Hitelesítés (bejelentkezés) a közösségi fiókja hitelesítő adatait, és az alkalmazás az adatok olvasása a közösségi fiók használatával kell. Hozzáférés biztosítása, amelyet az alkalmazás profiladatok kérhetnek le a közösségi fiókot, amilyen például a nevét, és a település. 
+1. Ha közösségi identitásszolgáltatóval szeretne regisztrálni, kattintson a használni kívánt identitásszolgáltató gombjára.
 
-Fejezze be a bejelentkezési folyamat az identitásszolgáltató számára. Például, ha úgy dönt, hogy a Twitter, a Twitter hitelesítő adatainak megadását, majd kattintson **bejelentkezés**.
+    ![Bejelentkezési vagy regisztrációs szolgáltató](media/active-directory-b2c-quickstarts-web-app/sign-in-or-sign-up-web.png)
 
-![Hitelesítését és engedélyezését, közösségi fiók használatával](media/active-directory-b2c-quickstarts-web-app/twitter-authenticate-authorize-web.png)
+    Hitelesíti magát (bejelentkezik) a közösségi fiók hitelesítő adataival, és feljogosítja az alkalmazást, hogy beolvassa a közösségi fiók adatait. A hozzáférés biztosításával az alkalmazás profiladatokat kérhet le a közösségi fiókból, például a nevét és a települését. 
 
-Az új Azure AD B2C profil fiókadatok előre megadott, a közösségi fiók adataival.
+2. Fejezze be az identitásszolgáltató bejelentkezési folyamatát. Ha például a Twittert választotta, írja be a Twitter-fiók hitelesítő adatait, majd kattintson **Sign in** (Bejelentkezés) gombra.
 
-A megjelenített név, beosztás és város mezők frissítése, és kattintson a **Folytatás**.  Az értékek használják az Azure AD B2C-felhasználói fiók profilját.
+    ![Hitelesítés és engedélyezés közösségi fiókkal](media/active-directory-b2c-quickstarts-web-app/twitter-authenticate-authorize-web.png)
 
-![Új fiók regisztrációs profil részleteit](media/active-directory-b2c-quickstarts-web-app/new-account-sign-up-profile-details-web.png)
+    A rendszer előre kitölti az új Azure AD B2C-fiókprofil adatait a közösségi hálózati fiók adataival.
 
-Sikeres rendelkeznek:
+3. Frissítse a Display Name (Megjelenített név), a Job Title (Beosztás) és a City (Város) mezőt, majd kattintson a **Continue** (Folytatás) gombra.  A rendszer a beírt értékeket használja az Azure AD B2C felhasználói fiókprofilhoz.
 
-> [!div class="checklist"]
-> * A hitelesítést az identitásszolgáltató használatával.
-> * Egy Azure AD B2C-felhasználói fiókot létrehozni. 
+    ![Új fiók regisztrációs profiljának adatai](media/active-directory-b2c-quickstarts-web-app/new-account-sign-up-profile-details-web.png)
 
-## <a name="edit-your-profile"></a>Szerkesztheti a profilját
+    Az Azure AD B2C-szabályzatot használó, mintául szolgáló webalkalmazással sikeresen hajtott végre hitelesítést egy identitásszolgáltató használatával, és létrehozott egy Azure AD B2C-beli felhasználói fiókot. 
 
-Az Azure Active Directory B2C engedélyezése a felhasználók számára, frissítse a profilokat lehetőségeket kínál. A webes alkalmazás menüsávon kattintson a profil nevére, és válassza ki **profilszerkesztés** a létrehozott profil szerkesztése.
+## <a name="edit-your-profile"></a>Saját profil szerkesztése
 
-![Profil szerkesztése](media/active-directory-b2c-quickstarts-web-app/edit-profile-web.png)
+Az Azure Active Directory B2C-funkcióival a felhasználók frissíthetik a profiljukat. A minta-webalkalmazás Azure AD B2C-profilszerkesztési szabályzatot használ a munkafolyamathoz. 
 
-Módosítsa a **megjelenített név** és **Város**.  Kattintson a **Folytatás** a profil frissítése.
+1. A webalkalmazás menüsávján kattintson a profil nevére, és válassza az **Edit profile** (Profil szerkesztése) parancsot a létrehozott profil szerkesztéséhez.
 
-![Profil frissítése](media/active-directory-b2c-quickstarts-web-app/update-profile-web.png)
+    ![Profil szerkesztése](media/active-directory-b2c-quickstarts-web-app/edit-profile-web.png)
 
-Figyelje meg, hogy a megjelenített név, az oldal jobb felső részén található a frissített nevét jeleníti meg. 
+2. Módosítsa a **Display name** (Megjelenített név) és a **City** (Város) mezőt.  
+3. Kattintson a **Continue** (Folytatás) gombra a profil frissítéséhez. Az új megjelenített név a webalkalmazás kezdőlapjának jobb felső részén jelenik meg.
 
-## <a name="access-a-secured-web-api-resource"></a>A biztonságos webes API-erőforrás eléréséhez
+## <a name="access-a-protected-web-api-resource"></a>Védett webes API-erőforrás elérése
 
-Kattintson a **feladatlista** adja meg, és a Teendők lista módosítására. Az ASP.NET webalkalmazásként való kezelése a webes API erőforrás kérelmező engedély a felhasználó tennivaló listaelemek a műveletek végrehajtásához a kérelem olyan hozzáférési jogkivonatot tartalmazza. 
+1. Kattintson a **To-Do List** (Feladatlista) elemre a feladatlista elemeinek megadásához és módosításához. 
 
-Adja meg a szöveget a **új elem** szövegmezőben. Kattintson a **Hozzáadás** hívható meg az Azure AD B2C biztonságos webes API, amely Tennivaló lista egyik eleme.
+2. Adjon meg szöveget a **New Item** (Új elem) szövegmezőben. Kattintson az **Add** (Hozzáadás) gombra az Azure AD B2C által védett, feladatlista-elemet hozzáadó webes API meghívásához.
 
-![Tennivalók Listaelem hozzáadása](media/active-directory-b2c-quickstarts-web-app/add-todo-item-web.png)
+    ![Feladatlista-elem hozzáadása](media/active-directory-b2c-quickstarts-web-app/add-todo-item-web.png)
 
-Az Azure AD B2C felhasználói fiók segítségével sikeresen hívást egy jogosult az Azure AD B2C biztonságos webes API-t.
+    Az ASP.NET-es webalkalmazás a védett webes API-erőforrás felé küldött, a felhasználó feladatlista-elemeire vonatkozó műveletek végrehajtására irányuló kérésbe belefoglalja az Azure AD hozzáférési jogkivonatot.
 
-## <a name="next-steps"></a>Következő lépések
+Az Azure AD B2C felhasználói fiókkal sikeresen végzett hitelesített hívást egy Azure AD B2C által védett webes API-n.
 
-A gyors üzembe helyezés használt minta segítségével próbálja más Azure AD B2C helyzeteket is beleértve:
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-* E-mail cím használatával új helyi fiók létrehozása.
-* Helyi fiók jelszavának alaphelyzetbe állítása.
+Az Azure AD B2C-bérlőt ahhoz is használhatja, ha más Azure AD B2C gyors útmutatókat vagy oktatóanyagokat is ki szeretne próbálni. Ha már nincs szüksége rá, akkor [törölheti az Azure AD B2C-bérlőt](active-directory-b2c-faqs.md#how-do-i-delete-my-azure-ad-b2c-tenant).
 
-Ha készen áll a saját Azure AD B2C bérlő létrehozása elmélyedhet, és konfigurálja a minta futtatásához a saját a bérlőnek a használatával, próbálja ki az alábbi oktatóanyag.
+## <a name="next-steps"></a>További lépések
+
+Ebben a gyors útmutatóban az Azure AD B2C-t használó, mintául szolgáló ASP.NET-es alkalmazással bejelentkezett egy egyéni bejelentkezési oldalon, bejelentkezett egy közösségi identitásszolgáltatót használva, létrehozott egy Azure AD B2C-fiókot, és meghívott egy, az Azure AD B2C által védett webes API-t. 
+
+Folytassa azzal az oktatóanyaggal, amely bemutatja, hogyan konfigurálhatja a mintául szolgáló ASP.NET-es alkalmazást a saját Azure AD B2C-bérlő használatára.
 
 > [!div class="nextstepaction"]
-> [Egy ASP.NET-webalkalmazás létrehozása az Azure Active Directory B2C regisztráció, bejelentkezés, profil szerkesztése és a jelszó alaphelyzetbe állítása](active-directory-b2c-devquickstarts-web-dotnet-susi.md)
+> [Oktatóanyag: Felhasználók hitelesítése az Azure Active Directory B2C-vel egy ASP.NET-es webalkalmazásban](active-directory-b2c-tutorials-web-app.md)

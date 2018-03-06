@@ -6,14 +6,14 @@ author: neilpeterson
 manager: timlt
 ms.service: container-service
 ms.topic: tutorial
-ms.date: 11/15/2017
+ms.date: 02/24/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: e0d5bd57a40fca837ead42e691e1fa0c802dc013
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: bb8ad6d9defcbaef255065b20a9a9b542e74d73d
+ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="deploy-an-azure-container-service-aks-cluster"></a>Azure Container Service- (AKS-) fürt üzembe helyezése
 
@@ -30,10 +30,11 @@ Az ezt követő oktatóanyagokban üzembe helyezzük majd az Azure Vote alkalmaz
 
 Az előző oktatóanyagokban létrehoztunk egy tárolórendszerképet, és feltöltöttük egy Azure Container Registry-példányra. Ha ezeket a lépéseket még nem hajtotta végre, és szeretné követni az oktatóanyagot, lépjen vissza az [1. oktatóanyag – Tárolórendszerképek létrehozása][aks-tutorial-prepare-app] részhez.
 
-## <a name="enabling-aks-preview-for-your-azure-subscription"></a>AKS előzetes verziójának engedélyezése az Azure-előfizetéshez
+## <a name="enable-aks-preview"></a>Az AKS előzetes verziójának engedélyezése
+
 Amíg az AKS előzetes verziójú, az új fürtök létrehozásához szolgáltatásjelzőre van szükség az előfizetésén. Ezt a szolgáltatást annyi előfizetésen kérheti, amennyin használni szeretné. Az `az provider register` paranccsal regisztrálja az AKS-szolgáltatót:
 
-```azurecli-interactive
+```azurecli
 az provider register -n Microsoft.ContainerService
 ```
 
@@ -48,6 +49,59 @@ az aks create --resource-group myResourceGroup --name myAKSCluster --node-count 
 ```
 
 Néhány perc múlva befejeződik az üzembe helyezés, és a rendszer visszaadja az AKS-beli üzembe helyezéssel kapcsolatos adatokat JSON formátumban.
+
+```azurecli
+{
+  "additionalProperties": {},
+  "agentPoolProfiles": [
+    {
+      "additionalProperties": {},
+      "count": 1,
+      "dnsPrefix": null,
+      "fqdn": null,
+      "name": "nodepool1",
+      "osDiskSizeGb": null,
+      "osType": "Linux",
+      "ports": null,
+      "storageProfile": "ManagedDisks",
+      "vmSize": "Standard_DS1_v2",
+      "vnetSubnetId": null
+    }
+    ...
+```
+
+## <a name="getting-information-about-your-cluster"></a>A fürttel kapcsolatos információk lekérése
+
+A fürt üzembe helyezése után a(z) `az aks show` eszközzel lekérdezheti a fürtről a fontos információkat. Ezek az adatok paraméterként használhatók, amikor összetettebb műveleteket végez a fürtön. Ha például a fürtön futó Linux-profilról szeretne információt beszerezni, a következő parancsot futtathatja.
+
+```azurecli
+az aks show --name myAKSCluster --resource-group myResourceGroup --query "linuxProfile"
+
+{
+  "additionalProperties": {},
+  "adminUsername": "azureuser",
+  "ssh": {
+    "additionalProperties": {},
+    "publicKeys": [
+      {
+        "additionalProperties": {},
+        "keyData": "ssh-rsa AAAAB3NzaC1yc2EAAAADA...
+      }
+    ]
+  }
+}
+```
+
+Ez megjeleníti a rendszergazdai felhasználóval kapcsolatos információkat és a nyilvános SSH-kulcsokat. Úgy is futtathat részletesebb lekérdezéseket, ha JSON-tulajdonságokat fűz a lekérdezési karakterlánchoz, ahogy az alábbi példában is látható.
+
+```azurecli
+az aks show -n myakscluster  -g my-group --query "{name:agentPoolProfiles[0].name, nodeCount:agentPoolProfiles[0].count}"
+{
+  "name": "nodepool1",
+  "nodeCount": 1
+}
+```
+Ez hasznos lehet az üzembe helyezett fürttel kapcsolatos adatok gyors eléréséhez. A JMESPath-lekérdezésekről további információkat [itt](http://jmespath.org/tutorial.html) talál.
 
 ## <a name="install-the-kubectl-cli"></a>A kubectl parancssori felület telepítése
 
@@ -77,10 +131,32 @@ Kimenet:
 
 ```
 NAME                          STATUS    AGE       VERSION
-k8s-myAKSCluster-36346190-0   Ready     49m       v1.7.7
+k8s-myAKSCluster-36346190-0   Ready     49m       v1.7.9
 ```
 
 Az oktatóanyag elvégzésével rendelkezésére áll majd egy számítási feladatok végrehajtására kész AKS-fürt. Az ezt követő oktatóanyagokban egy többtárolós alkalmazást helyezünk üzembe a fürtön, majd elvégezzük annak horizontális skálázását, frissítését és monitorozását.
+
+## <a name="configure-acr-authentication"></a>Az ACR-hitelesítés konfigurálása
+
+Hitelesítést kell konfigurálni az AKS-fürt és az ACR-beállításjegyzék között. Ennek részeként megfelelő jogosultságokat kell biztosítania az ACS-identitásnak, hogy rendszerképeket tudjon lekérni az ACR-beállításjegyzékből.
+
+Először szerezze be az AKS-hez konfigurált szolgáltatásnév azonosítóját. Frissítse az erőforráscsoport és az AKS-fürt nevét, hogy megfeleljenek az aktuális környezetnek.
+
+```azurecli
+$CLIENT_ID = $(az aks show --resource-group myResourceGroup --name myAKSCluster --query "servicePrincipalProfile.clientId" --output tsv)
+```
+
+Szerezze be az ACR-beállításjegyzék erőforrás-azonosítóját. Frissítse a beállításjegyzék nevét az ACR-beállításjegyzék nevére, és az erőforráscsoportot arra az erőforráscsoportra, ahol az ACR-beállításjegyzék található.
+
+```azurecli
+$ACR_ID = $(az acr show --name myACRRegistry --resource-group myResourceGroup --query "id" --output tsv)
+```
+
+Hozza létre a megfelelő hozzáférést biztosító szerepkör-hozzárendelést.
+
+```azurecli
+az role assignment create --assignee $CLIENT_ID --role Contributor --scope $ACR_ID
+```
 
 ## <a name="next-steps"></a>További lépések
 

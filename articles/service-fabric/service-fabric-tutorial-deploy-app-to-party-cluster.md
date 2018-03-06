@@ -1,6 +1,6 @@
 ---
-title: "Azure Service Fabric-alkalmazás üzembe helyezése nyilvános fürtön | Microsoft Docs"
-description: "Megismerkedhet az alkalmazások nyilvános fürtön történő üzembe helyezésének módjával."
+title: "Azure Service Fabric-alkalmazás üzembe helyezése egy fürtön | Microsoft Docs"
+description: "Ebből az oktatóanyagból megismerheti, hogyan helyezhet üzembe egy alkalmazást a Service Fabric-fürtön."
 services: service-fabric
 documentationcenter: .net
 author: mikkelhegn
@@ -15,14 +15,14 @@ ms.workload: NA
 ms.date: 08/09/2017
 ms.author: mikhegn
 ms.custom: mvc
-ms.openlocfilehash: 91d4398589707e8007c4b93639ddb568e39f51a7
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 35ddf77b1e9a9b355ed2cee4731e3c5d87c4a701
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/24/2018
 ---
-# <a name="deploy-an-application-to-a-party-cluster-in-azure"></a>Alkalmazás üzembe helyezése nyilvános fürtön az Azure-ban
-Ez az oktatóanyag a sorozat második része, amely az Azure Service Fabric-alkalmazások nyilvános fürtön történő üzembe helyezésének módját ismerteti az Azure-ban.
+# <a name="tutorial-deploy-an-application-to-a-service-fabric-cluster-in-azure"></a>Oktatóanyag: alkalmazás üzembe helyezése egy Service Fabric-fürtön az Azure-ban
+Ez az oktatóanyag a sorozat második része, amely az Azure Service Fabric-alkalmazások fürtön történő üzembe helyezésének módját ismerteti az Azure-ban.
 
 Az oktatóanyag-sorozat második részében az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]

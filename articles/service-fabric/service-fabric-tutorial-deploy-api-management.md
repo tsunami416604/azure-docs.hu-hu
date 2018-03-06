@@ -1,6 +1,6 @@
 ---
 title: "Az Azure Service Fabric integrálása az API Managementtel | Microsoft Docs"
-description: "Megtudhatja, hogyan kezdheti meg gyorsan az Azure API Management és a Service Fabric használatát."
+description: "Ebből az oktatóanyagból megtudhatja, hogyan kezdheti meg gyorsan az Azure API Management és a Service Fabric használatát."
 services: service-fabric
 documentationcenter: .net
 author: rwike77
@@ -15,13 +15,13 @@ ms.workload: NA
 ms.date: 01/26/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 7265af62adf8f380a3a5bd5d9950fb70e9ad6172
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 9277f2c8a4ff595e639f6332d61b936ce44aeb13
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/24/2018
 ---
-# <a name="deploy-api-management-with-service-fabric"></a>Az API Management üzembe helyezése a Service Fabrickel
+# <a name="tutorial-deploy-api-management-with-service-fabric"></a>Oktatóanyag: az API Management üzembe helyezése a Service Fabrickel
 Ez az oktatóanyag egy sorozat negyedik része.  Az Azure API Management üzembe helyezése a Service Fabrickel speciális forgatókönyv.  Az API Management akkor hasznos, ha a Service Fabric-háttérszolgáltatásokhoz tartozó útválasztási szabályok széles skálájával szeretne API-kat közzétenni. A felhőalapú alkalmazásokhoz általában előtér-átjáró szükséges, amely egyetlen belépési pontként szolgálhat a felhasználók, eszközök és egyéb alkalmazások számára. A Service Fabricben átjáró lehet bármely, bejövő forgalomra tervezett állapotmentes szolgáltatás, például egy ASP.NET Core-alkalmazás, az Event Hubs, az IoT Hub vagy az Azure API Management. 
 
 Ez az oktatóanyag bemutatja, hogyan állíthatja be az [Azure API Managementet](../api-management/api-management-key-concepts.md) a Service Fabrickel, a forgalom a Service Fabric háttérszolgáltatáshoz való irányítása céljából.  Az oktatóanyag végére rendelkezni fog egy virtuális hálózaton üzembe helyezett API Management szolgáltatással, valamint egy API-művelettel, amely a forgalom állapotmentes háttérszolgáltatásokhoz való irányítására lesz konfigurálva. A Service Fabrickel kapcsolatos Azure API Management-forgatókönyvekre vonatkozó további tudnivalókért tekintse meg az [áttekintő](service-fabric-api-management-overview.md) cikket.

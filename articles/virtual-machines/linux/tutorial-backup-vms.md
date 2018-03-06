@@ -1,6 +1,6 @@
 ---
-title: "Az Azure Linux virtuális gépek biztonsági mentése |} Microsoft Docs"
-description: "A Linux virtuális gépek védelme készítésével Azure Backup segítségével."
+title: "Azure-beli Linux rendszerű virtuális gépek biztonsági mentése | Microsoft Docs"
+description: "Linux rendszerű virtuális gépek védelme az Azure Backup használatával készített biztonsági mentésekkel."
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
@@ -16,30 +16,30 @@ ms.workload: infrastructure
 ms.date: 07/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 2eb0958169b175813b0dca775e9250da1cb364d4
-ms.sourcegitcommit: 7d4b3cf1fc9883c945a63270d3af1f86e3bfb22a
-ms.translationtype: MT
+ms.openlocfilehash: 1c07fa40964fdcbae6ec1cbbbf77094753956cf1
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 02/23/2018
 ---
-# <a name="back-up-linux--virtual-machines-in-azure"></a>Készítsen biztonsági másolatot a Linux virtuális gépek Azure-ban
+# <a name="back-up-linux--virtual-machines-in-azure"></a>Linux rendszerű virtuális gépek biztonsági mentése az Azure-ban
 
-Adatai védelme érdekében érdemes rendszeres időközönként biztonság mentést végeznie. Az Azure Backup georedundáns helyreállítás tárolók tárolt helyreállítási pontokat hoz létre. Helyreállításakor a helyreállítási pont, az egész virtuális gép vagy csak adott fájlokat is helyreállíthatja. Ez a cikk azt ismerteti, hogyan nginx futó Linux virtuális gép egyetlen fájl visszaállítása. Ha még nem rendelkezik a virtuális gépek használatához, hozhat létre egy a [Linux gyors üzembe helyezés](quick-create-cli.md). Ezen oktatóanyag segítségével megtanulhatja a következőket:
+Adatai védelme érdekében érdemes rendszeres időközönként biztonság mentést végeznie. Az Azure Backup georedundáns helyreállítási tárolókban tárolt helyreállítási pontokat hoz létre. Helyreállítási pontról történő visszaállításkor visszaállíthatja a teljes virtuális gépet, vagy csak bizonyos fájlokat. Ez a cikk azt ismerteti, hogyan állíthat vissza egy fájlt egy nginxet futtató Linux rendszerű virtuális gépre. Ha még nem rendelkezik virtuális géppel, a [linuxos rövid útmutatóval](quick-create-cli.md) létrehozhat egyet. Ezen oktatóanyag segítségével megtanulhatja a következőket:
 
 > [!div class="checklist"]
-> * Készítsen biztonsági másolatot a virtuális gépek
+> * Biztonsági másolat készítése egy virtuális gépről
 > * Napi biztonsági mentés ütemezése
-> * A fájl visszaállítása biztonsági másolatból
+> * Fájl visszaállítása biztonsági másolatból
 
 
 
 ## <a name="backup-overview"></a>A biztonsági mentés áttekintése
 
-Ha az Azure biztonsági mentési szolgáltatás biztonsági másolatot, a tartalék mellék időpontban pillanatképének elkészítéséhez váltja ki. Az Azure Backup szolgáltatás használ a _VMSnapshotLinux_ Linux bővítményt. Ha a virtuális gép fut, a virtuális gép első biztonsági mentés során telepítve a bővítmény. Ha a virtuális gép nem fut, a biztonsági mentési szolgáltatás pillanatképet készít a az alapul szolgáló tárolási (mert nem alkalmazás írások végrehajthatók, miközben a virtuális gép le van állítva).
+Amikor az Azure Backup szolgáltatás biztonsági mentést kezdeményez, elindítja a biztonsági mentési bővítményt, hogy készítsen egy időponthoz kötött pillanatképet. Az Azure Backup szolgáltatás a _VMSnapshotLinux_ Linux-bővítményt használja. A rendszer a virtuális gép első biztonsági mentésekor telepíti a bővítményt, ha a virtuális gép fut. Ha a virtuális gép nem fut, a Backup szolgáltatás az alapul szolgáló tárolóról készít pillanatképet (mivel nem történik alkalmazásírás, amikor a virtuális gép le van állítva).
 
-Alapértelmezés szerint Azure biztonsági mentési időt vesz igénybe a fájlrendszer konzisztens biztonsági mentése a Linux virtuális gép, de beállítható érvénybe [alkalmazás konzisztens biztonsági mentését parancsfájl előtti és utáni parancsfájl keretrendszerrel](https://docs.microsoft.com/azure/backup/backup-azure-linux-app-consistent). Miután az Azure Backup szolgáltatás a pillanatfelvételt, az adatátvitel a tárolóba. Hatékonyságának maximalizálása érdekében a szolgáltatás azonosítja, és csak az adatok a korábbi biztonsági mentés óta módosult blokkok átvitele.
+Alapértelmezés szerint az Azure Backup a fájlrendszerrel konzisztens biztonsági másolatot készít a Linux rendszerű virtuális gépről, de úgy is lehet konfigurálni, hogy [alkalmazáskonzisztens biztonsági mentést készítsem szkript előtti és utáni keretrendszerrel](https://docs.microsoft.com/azure/backup/backup-azure-linux-app-consistent). Amikor az Azure Backup szolgáltatás elkészítette a pillanatképet, az adatok átkerülnek a tárolóba. A maximális hatékonyság érdekében a szolgáltatás csak azokat az adatblokkokat azonosítja és továbbítja, amelyek az előző biztonsági mentés óta változtak.
 
-Ha az adatok átvitele befejeződött, a rendszer eltávolítja a pillanatkép, és egy helyreállítási pontot hoz létre.
+Ha az adatátvitel befejeződött, a rendszer eltávolítja a pillanatképet, és létrehoz egy helyreállítási pontot.
 
 
 ## <a name="create-a-backup"></a>Biztonsági mentés létrehozása
@@ -48,81 +48,81 @@ Hozzon létre egy egyszerű, ütemezett napi biztonsági mentést egy Recovery S
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 2. A bal oldali menüben válassza a **Virtuális gépek** elemet. 
 3. Válasszon egy virtuális gépet a listából, amelyről biztonsági mentést kíván készíteni.
-4. A virtuális gép panelen a a **beállítások** kattintson **biztonsági mentés**. A **biztonságimásolat-készítés engedélyezése** panel nyílik meg.
-5. A **Recovery Services-tároló**, kattintson a **hozzon létre új** , és adja meg az új tároló nevét. Egy új tárolót a azonos erőforráscsoport és a virtuális gép jön létre.
-6. Kattintson a **biztonsági mentési házirend**. Ehhez a példához hagyja az alapértelmezett beállításokat, és kattintson a **OK**.
-7. Az a **biztonságimásolat-készítés engedélyezése** panelen kattintson a **biztonsági mentés engedélyezése**. Ezzel létrehoz egy alapértelmezett ütemezés szerint a napi biztonsági mentéshez.
-10. Az első helyreállítási pont létrehozásához a **biztonsági mentés** panelen kattintson **biztonsági mentés most**.
-11. Az a **biztonsági mentés most** panelen kattintson a naptár ikonra, válassza ki az elmúlt nap során ez a helyreállítási pont őrzi meg, majd kattintson a havinaptár-vezérlő segítségével **biztonsági mentés**.
-12. Az a **biztonsági mentés** a virtuális gép paneljén láthatja, amelyek a teljes helyreállítási pontok száma.
+4. A virtuális gép paneljének **Beállítások** szakaszában kattintson a **Backup** elemre. Megnyílik a **Biztonsági mentés engedélyezése** panel.
+5. A **Recovery Services-tárolóban** kattintson az **Új létrehozása** elemre, és adja meg az új tároló nevét. Az új tároló ugyanabban az Erőforráscsoportban és ugyanazon a helyen jön létre, ahol a virtuális gép is van.
+6. Kattintson a **Biztonsági mentési szabályzat** lehetőségre. Ehhez a példához hagyja változatlanul az alapértelmezett beállításokat, és kattintson az **OK** gombra.
+7. A **Biztonsági mentés engedélyezése** panelen kattintson a **Biztonsági mentés engedélyezése** elemre. Ez létrehoz egy napi biztonsági mentést az alapértelmezett ütemezés alapján.
+10. Az első helyreállítási pont létrehozásához a **Biztonsági mentés** panelen kattintson a **Biztonsági mentés most** elemre.
+11. A **Biztonsági mentés most** panelen kattintson a naptár ikonra, használja a naptárvezérlőt annak kiválasztására, hogy meddig kívánja megőrizni a helyreállítási pontot, majd kattintson a **Biztonsági mentés** elemre.
+12. A virtuális géphez tartozó **Biztonsági mentés** panelen látni fogja a kész helyreállítási pontok számát.
 
     ![Helyreállítási pontok](./media/tutorial-backup-vms/backup-complete.png)
 
-Az első biztonsági mentés körülbelül 20 percet vesz igénybe. A biztonsági mentés befejezése után ez az oktatóanyag következő része folytassa a műveletet.
+Az első biztonsági mentés körülbelül 20 percet vesz igénybe. Amikor a biztonsági mentés befejeződik, lépjen tovább az oktatóanyag következő részére.
 
 ## <a name="restore-a-file"></a>Fájl visszaállítása
 
-Ha véletlenül törli vagy módosítja a fájlt, a fájlok helyreállítása használatával állítsa vissza a fájlt a biztonsági mentési tárolóból. A fájlok helyreállítása a helyreállítási pontot egy helyi meghajtó csatlakoztatása a virtuális gép futó parancsfájlt használ. Ezek a meghajtók marad csatlakoztatott 12 óra, hogy a fájlok másolását a helyreállítási pont, és állítsa vissza őket a virtuális Gépet.  
+Ha véletlenül törölt vagy módosított egy fájlt, a fájlhelyreállítási szolgáltatással visszaállíthatja a fájlt a biztonsági mentési tárolóból. A Fájlhelyreállítás egy, a virtuális gépen futó szkriptet használ a helyreállítási pont helyi meghajtóként való csatlakoztatásához. Ezek a meghajtók 12 órán át csatlakoztatva maradnak, hogy át tudja másolni a fájlokat a helyreállítási pontról, és vissza tudja állítani őket a virtuális gépre.  
 
-Ebben a példában megmutatjuk, az alapértelmezett nginx weblap /var/www/html/index.nginx-debian.html helyreállítása. A nyilvános IP-cím, az ebben a példában a virtuális gép *13.69.75.209*. Az IP-cím a virtuálisgép-használatával található:
+Ebben a példában bemutatjuk, hogyan állíthatja vissza az alapértelmezett /var/www/html/index.nginx-debian.html nginx-weblapot. A virtuális gép nyilvános IP-címe ebben a példában a következő: *13.69.75.209*. A virtuális gép IP-címét a következő paranccsal találhatja meg:
 
  ```bash 
  az vm show --resource-group myResourceGroup --name myVM -d --query [publicIps] --o tsv
  ```
 
  
-1. A helyi számítógépen nyissa meg egy böngészőt, és írja be a nyilvános IP-címet a virtuális gép alapértelmezett nginx weblap megtekintéséhez.
+1. A helyi számítógépen nyisson meg egy böngészőt, és írja be a virtuális gép nyilvános IP-címét az alapértelmezett nginx-weblap megtekintéséhez.
 
     ![Alapértelmezett nginx-weblap](./media/tutorial-backup-vms/nginx-working.png)
 
-1. SSH-ból a virtuális Gépet.
+1. Jelentkezzen be a virtuális gépre SSH-val.
 
     ```bash
     ssh 13.69.75.209
     ```
-2. /Var/www/html/index.nginx-debian.html törlése.
+2. Törölje a /var/www/html/index.nginx-debian.html fájlt.
 
     ```bash
     sudo rm /var/www/html/index.nginx-debian.html
     ```
     
-4. A helyi számítógépen frissítheti a böngésző szerezze meg a CTRL + F5 nem alapértelmezett nginx lap megjelenítéséhez.
+4. A helyi számítógépen frissítse a böngészőt a CTRL + F5 billentyűkombináció lenyomásával. Láthatja, hogy az alapértelmezett nginx-lap eltűnt.
 
     ![Alapértelmezett nginx-weblap](./media/tutorial-backup-vms/nginx-broken.png)
     
-1. A helyi számítógépen jelentkezzen be a [Azure-portálon](https://portal.azure.com/).
+1. A helyi számítógépen jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 6. A bal oldali menüben válassza a **Virtuális gépek** elemet. 
-7. A listában jelölje ki a virtuális Gépet.
-8. A virtuális gép panelen a a **beállítások** kattintson **biztonsági mentés**. A **biztonsági mentés** panel nyílik meg. 
-9. A panel tetején menüben válasszon ki **fájlhelyreállítás**. A **fájlhelyreállítás** panel nyílik meg.
-10. A **1. lépés: válassza ki a helyreállítási pont**, a legördülő listán válasszon egy helyreállítási pontot.
-11. A **2. lépés: Töltse le a parancsprogramot, keresse meg, majd a fájlok helyreállítása**, kattintson a **végrehajtható fájl letöltése** gombra. Mentse a letöltött fájlt a helyi számítógépen.
-7. Kattintson a **parancsprogram letöltése** helyileg a parancsfájl-fájl letöltésére.
-8. Nyisson meg egy Bash parancssort és írja be a következőt, hogy *Linux_myVM_05-05-2017.sh* a helyes elérési utat és a fájlnév letöltötte, a parancsfájl *azureuser* a felhasználónevet használva a virtuális gép és *13.69.75.209* a virtuális gép nyilvános IP-címmel.
+7. Válassza ki a virtuális gépet a listából.
+8. A virtuális gép paneljének **Beállítások** szakaszában kattintson a **Backup** elemre. Megnyílik a **Biztonsági mentés** panel. 
+9. A panel tetején található menüben válassza a **Fájlhelyreállítás** elemet. Megnyílik a **Fájlhelyreállítás** panel.
+10. Az **1. lépés: Válassza ki a helyreállítási pontot** lépésben válasszon ki egy helyreállítási pontot a legördülő menüből.
+11. A **2. lépés: Töltse le a szkriptet a fájlok megkereséséhez és helyreállításához** lépésben kattintson a **Végrehajtható fájl letöltése** gombra. Mentse a letöltött fájlt a helyi számítógépen.
+7. Kattintson a **Szkript letöltése** lehetőségre a szkript helyi letöltéséhez.
+8. Nyisson meg egy Bash-parancssort, és írja be a következő parancsot, a *Linux_myVM_05-05-2017.sh* helyén a letöltött szkript helyes elérési útjával és fájlnevével, az *azureuser* helyén a virtuális géphez tartozó felhasználónévvel, valamint a *13.69.75.209* helyén a virtuális gép nyilvános IP-címével.
     
     ```bash
     scp Linux_myVM_05-05-2017.sh azureuser@13.69.75.209:
     ```
     
-9. A helyi számítógépen nyissa meg az SSH-kapcsolatot a virtuális Gépet.
+9. A helyi számítógépen nyisson egy SSH-kapcsolatot a virtuális géphez.
 
     ```bash
     ssh 13.69.75.209
     ```
     
-10. A virtuális gépen, vegye fel a végrehajtási engedélyeket a parancsfájlt.
+10. A virtuális gépen adjon végrehajtási engedélyeket a szkripthez.
 
     ```bash
     chmod +x Linux_myVM_05-05-2017.sh
     ```
     
-11. A virtuális gépén futtassa a csatlakoztatási fájlrendszer a helyreállítási pontot.
+11. A virtuális gépen futtassa a szkriptet a helyreállítási pont fájlrendszerként való csatlakoztatásához.
 
     ```bash
     ./Linux_myVM_05-05-2017.sh
     ```
     
-12. A parancsfájl kimenetében lehetővé teszi az elérési út a csatlakoztatási pont. A kimeneti ehhez hasonlóan néz ki:
+12. A szkript kimenetében megtalálható a csatlakoztatási pont elérési útja. A kimeneti ehhez hasonlóan néz ki:
 
     ```bash
     Microsoft Azure VM Backup - File Recovery
@@ -147,17 +147,17 @@ Ebben a példában megmutatjuk, az alapértelmezett nginx weblap /var/www/html/i
     Please enter 'q/Q' to exit...
     ```
 
-12. A virtuális Gépet másolja a nginx alapértelmezett weblap a csatlakoztatási pont vissza, ha törli a fájl a.
+12. A virtuális gépen másolja vissza az alapértelmezett nginx-weblapot a csatlakoztatási pontról oda, ahonnan törölte a fájlt.
 
     ```bash
     sudo cp ~/myVM-20170505191055/Volume1/var/www/html/index.nginx-debian.html /var/www/html/
     ```
     
-17. A helyi számítógépen nyissa meg a böngészőlapon ahol csatlakozik a nginx alapértelmezett lap megjeleníti a virtuális IP-címét. Nyomja le a CTRL + F5 csak a böngésző lap frissítése. Most látnia kell, hogy az alapértelmezett lapon ismét működik-e.
+17. A helyi számítógépen nyissa meg azt a böngészőlapot, amelyen az alapértelmezett nginx-lapot megjelenítő virtuális gép IP-címéhez csatlakozott. Nyomja le a CTRL + F5 billentyűparancsot a böngészőlap frissítéséhez. Ezután ismét működnie kell az alapértelmezett lapnak.
 
     ![Alapértelmezett nginx-weblap](./media/tutorial-backup-vms/nginx-working.png)
 
-18. A helyi számítógépen, térjen vissza az Azure portál és a böngészőlapon **3. lépés: a lemez leválasztása a helyreállítás után** kattintson a **lemez leválasztása** gombra. Ha ezt a lépést, a kapcsolat a csatlakoztatási pont 12 óra elteltével automatikusan lezáródik. E 12 óra elteltével le kell töltenie egy új parancsfájl egy új csatlakoztatási pont létrehozásához.
+18. A helyi számítógépen térjen vissza az Azure Portal böngészőlapjára, és a **3. lépés: Válassza le a lemezeket a helyreállítás után** lépésben kattintson a **Lemezek leválasztása** gombra. Ha elfelejti elvégezni ezt a lépést, a csatlakoztatási ponttal létesített kapcsolat 12 óra elteltével automatikusan lezárul. Amikor letelik a 12 óra, le kell töltenie egy új szkriptet az új csatlakoztatási pont létrehozásához.
 
 
 ## <a name="next-steps"></a>További lépések
@@ -165,12 +165,12 @@ Ebben a példában megmutatjuk, az alapértelmezett nginx weblap /var/www/html/i
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
-> * Készítsen biztonsági másolatot a virtuális gépek
+> * Biztonsági másolat készítése egy virtuális gépről
 > * Napi biztonsági mentés ütemezése
-> * A fájl visszaállítása biztonsági másolatból
+> * Fájl visszaállítása biztonsági másolatból
 
-Előzetes további virtuális gépek figyelésével kapcsolatos következő oktatóanyagot.
+Folytassa a következő oktatóanyaggal, amely a virtuális gépek monitorozását ismerteti.
 
 > [!div class="nextstepaction"]
-> [Virtuális gépek figyelése](tutorial-monitoring.md)
+> [Virtuális gépek szabályozása](tutorial-govern-resources.md)
 

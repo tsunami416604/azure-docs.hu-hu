@@ -1,22 +1,22 @@
 ---
-title: "Azure rövid útmutató – Objektumok továbbítása Azure Blob-tárolókra és -tárolókról a Ruby használatával | Microsoft Docs"
-description: "Gyors áttekintést kaphat arról, hogyan továbbíthat objektumokat az Azure Blob-tárolókra és -tárolókról a Ruby használatával"
+title: "Azure rövid útmutató – Blobok feltöltése, letöltése és listázása az Azure Storage-ban a Ruby használatával | Microsoft Docs"
+description: "Ebben a rövid útmutatóban egy tárfiókot és egy tárolót hoz létre. Majd a Storage Rubyhoz készült ügyféloldali kódtára segítségével feltölt egy blobot az Azure Storage-ba, letölt egy blobot, és kilistázza a tárolóban lévő blobokat."
 services: storage
-author: ruthogunnnaike
+author: tamram
 manager: jeconnoc
+ms.custom: mvc
 ms.service: storage
-ms.tgt_pltfrm: na
-ms.devlang: ruby
 ms.topic: quickstart
-ms.date: 01/18/2018
+ms.date: 02/22/2018
 ms.author: seguler
-ms.openlocfilehash: 649099f045639c8c506fb4a4be65736626044fe6
-ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
+ms.openlocfilehash: df885849e879317be6379767a09dd30a93687902
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2018
+ms.lasthandoff: 02/24/2018
 ---
-#  <a name="transfer-objects-tofrom-azure-blob-storage-using-ruby"></a>Objektumok továbbítása Azure Blob-tárolókra és -tárolókról a Ruby használatával
+# <a name="quickstart-upload-download-and-list-blobs-using-ruby"></a>Rövid útmutató: blobok feltöltése, letöltése és listázása a Ruby használatával
+
 A rövid útmutató azt ismerteti, hogyan használható a Ruby blokkblobok feltöltésére, letöltésére és listázására egy, az Azure Blob Storage-ban található tárolóban. 
 
 ## <a name="prerequisites"></a>Előfeltételek

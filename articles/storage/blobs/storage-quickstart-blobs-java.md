@@ -1,21 +1,21 @@
 ---
-title: "Azure-os gyorsútmutató – Objektumok áthelyezése Azure Blob Storage-tárolókra és -tárolókról a Java használatával| Microsoft Docs"
-description: "Gyors áttekintést kaphat arról, hogyan továbbíthat objektumokat az Azure Blob Storage-tárolókra és -tárolókról a Java használatával"
+title: "Azure rövid útmutató – Blobok feltöltése, letöltése és listázása az Azure Storage-ban a Java használatával | Microsoft Docs"
+description: "Ebben a rövid útmutatóban egy tárfiókot és egy tárolót hoz létre. Majd a Storage Javához készült ügyféloldali kódtára segítségével feltölt egy blobot az Azure Storage-ba, letölt egy blobot, és kilistázza a tárolóban lévő blobokat."
+services: storage
 author: roygara
 manager: jeconnoc
-services: storage
+ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
-ms.date: 11/01/2017
+ms.date: 02/22/2018
 ms.author: rogarana
-ms.custom: mvc
-ms.openlocfilehash: 12e234b483ca7e3b030256bf1cedaed2bcc120d3
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: cde366e75e4111a911be67795a2ad4dfa73778ea
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/24/2018
 ---
-# <a name="transfer-objects-tofrom-azure-blob-storage-using-java"></a>Objektumok áthelyezése az Azure Blob Storage-tárolókra és -tárolókról a Java használatával
+# <a name="quickstart-upload-download-and-list-blobs-using-java"></a>Rövid útmutató: blobok feltöltése, letöltése és listázása a Java használatával
 
 A gyorsútmutató azt ismerteti, hogyan használható a Java blokkblobok feltöltésére, letöltésére és listázására egy, az Azure Blob Storage-ben található tárolóban.
 
