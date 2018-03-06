@@ -113,6 +113,7 @@
 #### [Nevesített helyek konfigurálása](active-directory-named-locations.md)
 #### [Tevékenységjelentések keresése](active-directory-reporting-migration.md)
 #### [Az Azure Active Directory Power BI-tartalomcsomag használata](active-directory-reporting-power-bi-content-pack-how-to.md)
+#### [Kockázatosként megjelölt felhasználók szervizelése](active-directory-report-security-user-at-risk-remediation.md)
 ### Referencia
 #### [Megőrzés](active-directory-reporting-retention.md)
 #### [Késések](active-directory-reporting-latencies-azure-portal.md)

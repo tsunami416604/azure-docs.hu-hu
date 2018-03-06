@@ -1,6 +1,6 @@
 ---
-title: "Application Insights Profilkészítő engedélyezése az alkalmazások Azure számítás |} Microsoft Docs"
-description: "Megtudhatja, hogyan állíthat be az Application Insights Profilkészítő Azure számítási alkalmazás."
+title: "Application Insights Profilkészítő engedélyezése az alkalmazások az Azure Felhőszolgáltatások erőforrások |} Microsoft Docs"
+description: "Megtudhatja, hogyan állíthat be az Application Insights Profilkészítő Azure Felhőszolgáltatások futó alkalmazást."
 services: application-insights
 documentationcenter: 
 author: ramach-msft
@@ -12,214 +12,222 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/16/2017
 ms.author: ramach
-ms.openlocfilehash: d4559007aece8850b4c2d707686effd706ec468c
-ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
+ms.openlocfilehash: 278d8241ddd67b6df64b7280d4a17c6d3152f223
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 03/05/2018
 ---
-# <a name="enable-application-insights-profiler-for-azure-vms-service-fabric-and-cloud-services"></a>Azure virtuális gépek, a Service Fabric Application Insights Profilkészítő engedélyezése és a felhőalapú szolgáltatások
+# <a name="enable-application-insights-profiler-for-azure-vms-service-fabric-and-azure-cloud-services"></a>Application Insights Profilkészítő engedélyezése az Azure virtuális gépek, a Service Fabric és az Azure Cloud Services csomag
 
-Ez a cikk bemutatja, hogyan Azure Application Insights Profilkészítő engedélyezése az Azure számítási erőforrás által üzemeltetett ASP.NET-alkalmazások.
+Ez a cikk bemutatja, hogyan Azure Application Insights Profilkészítő engedélyezése az Azure Felhőszolgáltatások erőforrás által üzemeltetett ASP.NET-alkalmazások.
 
 Ebben a cikkben szereplő példák magukban foglalják az Azure virtuális gépek, a virtuálisgép-méretezési csoportok, az Azure Service Fabric és a Azure Cloud Services támogatását. A példák alapulnak, amely támogatja a sablonok a [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) üzembe helyezési modellben.  
 
 
 ## <a name="overview"></a>Áttekintés
 
-A következő kép bemutatja, hogy az Application Insights Profilkészítő működése Azure számítási erőforrásokat. Az Azure számítási erőforrások közé tartoznak a virtuális gép, virtuálisgép-méretezési csoportok Cloud Services és a Service Fabric-fürtök. A kép Azure virtuális gép használ példaként.  
+A következő kép bemutatja, hogyan Application Insights Profilkészítő működik együtt tárolt alkalmazások Azure Felhőszolgáltatások erőforrástól függ. Azure Cloud Services erőforrások közé tartoznak a virtuális gépek, a méretezési csoportok, a felhőszolgáltatások és a Service Fabric-fürtök. A kép Azure virtuális gép használ példaként.  
 
-  ![Áttekintés](./media/enable-profiler-compute/overview.png)
+  ![Application Insights Profilkészítő működése Azure Felhőszolgáltatások erőforrások bemutató ábra](./media/enable-profiler-compute/overview.png)
 
-A Profilkészítő engedélyezni, módosítania kell a konfigurációt a három hely:
+Engedélyezni Profilkészítő, módosítania kell a konfigurációt a három hely:
 
-* Az Application Insights példány panel az Azure portálon.
+* Az Application Insights példány ablaktáblán az Azure portálon.
 * Az alkalmazás forráskódjához (például egy ASP.NET webalkalmazás).
-* A környezet központi telepítési definition forráskód (például az Azure Resource Manager sablon .JSON kiterjesztésű fájlt).
+* A környezet központi telepítési definition forráskód (például az Azure Resource Manager sablon .JSON kiterjesztésű fájl).
 
 
 ## <a name="set-up-the-application-insights-instance"></a>Az Application Insights-példány beállítása
 
-[Hozzon létre egy új Application Insights-erőforrást](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-create-new-resource) vagy válasszon egy meglévőt.
-Keresse meg az Application Insights-erőforrást, és másolja a rendszerállapot-kulcsot.
+1. [Hozzon létre egy új Application Insights-erőforrást](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-create-new-resource), vagy válasszon egy meglévőt. 
 
-  ![A kulcs instrumentation helye](./media/enable-profiler-compute/CopyAIKey.png)
+2. Nyissa meg az Application Insights-erőforrást, és másolja a instrumentation kulcsot.
 
-Végezze el a ismertetett [engedélyezése a Profilkészítő](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-profiler) a profilkészítőt a az Application Insights-példány beállításának befejezéséhez. Webalkalmazások csatolni, mert azok lépések az adott App Services erőforrás nem kell. Csak győződjön meg arról, hogy a Profilkészítő engedélyezve van a *konfigurálása* Profilkészítő panelen.
+   ![A rendszerállapot-kulcs helyét](./media/enable-profiler-compute/CopyAIKey.png)
+
+3. A Profilkészítő az Application Insights-példány beállításának befejezéséhez, hajtsa végre az eljárást, ismertetett [engedélyezni Profilkészítő](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-profiler).  
+    Nem kell a webes alkalmazást, mert a lépéseket csak az adott app services-erőforráshoz. Győződjön meg arról, hogy Profilkészítő engedélyezve van a **konfigurálása Profilkészítő** ablaktáblán.
 
 
 ## <a name="set-up-the-application-source-code"></a>Az alkalmazás forráskódjához beállítása
 
-### <a name="aspnet-web-applications-cloud-services-web-roles-or-service-fabric-aspnet-web-frontend"></a>ASP.NET webes alkalmazásokhoz, a felhőalapú szolgáltatások webes szerepkörök vagy a Service Fabric ASP.NET webes előtér
-Állítsa be az alkalmazás számára telemetrikus adatokat küldeni az Application Insights példányt minden egyes `Request` műveletet:  
+### <a name="aspnet-web-applications-azure-cloud-services-web-roles-or-the-service-fabric-aspnet-web-front-end"></a>ASP.NET webes alkalmazásokhoz, Azure Cloud Services webes szerepkörök vagy a Service Fabric ASP.NET webes kezelőfelületből
+Állítsa be az alkalmazás számára telemetrikus adatokat küldeni az Application Insights példányt minden egyes `Request` műveletet.  
 
 Adja hozzá a [Application Insights SDK](https://docs.microsoft.com/azure/application-insights/app-insights-overview#get-started) értékeként adja meg a projektet. Győződjön meg arról, hogy a NuGet csomag verziók a következők:  
   - Az ASP.NET-alkalmazások: [Microsoft.ApplicationInsights.Web](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/) 2.3.0 vagy újabb.
   - Az ASP.NET Core alkalmazások: [Microsoft.ApplicationInsights.AspNetCore](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/) 2.1.0 vagy újabb.
   - Az egyéb .NET és a .NET Core alkalmazások (például a Service Fabric állapotmentes szolgáltatások vagy Felhőszolgáltatások feldolgozói szerepkörök): [Microsoft.ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) vagy [Microsoft.ApplicationInsights.Web](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/) 2.3.0 vagy újabb.  
 
-### <a name="cloud-services-worker-roles-or-service-fabric-stateless-backend"></a>Cloud Services feldolgozói szerepkörök vagy a Service Fabric állapotmentes háttér
-Ha az alkalmazás *nem* egy ASP.NET- vagy ASP.NET Core alkalmazás (például, ha a Felhőszolgáltatások feldolgozói szerepkör vagy a Service Fabric állapotmentes API-k), a következő további instrumentation kell beállítani, melyik lépés mellett fent:  
+### <a name="azure-cloud-services-worker-roles-or-the-service-fabric-stateless-back-end"></a>Azure Cloud Services feldolgozói szerepkörök vagy a Service Fabric állapotmentes háttér
+Az előző lépést elvégezte, ha az alkalmazás mellett *nem* egy ASP.NET- vagy ASP.NET Core alkalmazás (például, ha az Azure Felhőszolgáltatások feldolgozói szerepkör vagy a Service Fabric állapotmentes API-k), tegye a következőket:  
 
-  1. Korai szakaszában az alkalmazás élettartamának adja hozzá a következő kódot:  
+  1. Az alkalmazás élettartamának korai szakaszában adja hozzá a következő kódot:  
 
-    ```csharp
-    using Microsoft.ApplicationInsights.Extensibility;
-    ...
-    // Replace with your own Application Insights instrumentation key.
-    TelemetryConfiguration.Active.InstrumentationKey = "00000000-0000-0000-0000-000000000000";
-    ```
-  A globális instrumentation kulcs konfigurálásával kapcsolatban további információkért lásd: [használja a Service Fabric az Application insights szolgáltatással](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/blob/dev/appinsights/ApplicationInsights.md).  
+        ```csharp
+        using Microsoft.ApplicationInsights.Extensibility;
+        ...
+        // Replace with your own Application Insights instrumentation key.
+        TelemetryConfiguration.Active.InstrumentationKey = "00000000-0000-0000-0000-000000000000";
+        ```
+      A globális instrumentation kulcs konfigurálásával kapcsolatban további információkért lásd: [használja a Service Fabric az Application insights szolgáltatással](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/blob/dev/appinsights/ApplicationInsights.md).  
 
-  2. A kód állíthatnak be, a hozzáadni kívánt minden olyan egy `StartOperation<RequestTelemetry>` **USING** utasítás köré, az alábbi példában látható módon:
+  2. A kód állíthatnak be, a hozzáadni kívánt minden olyan egy `StartOperation<RequestTelemetry>` **USING** utasítás köré, a következő példában látható módon:
 
-    ```csharp
-    using Microsoft.ApplicationInsights;
-    using Microsoft.ApplicationInsights.DataContracts;
-    ...
-    var client = new TelemetryClient();
-    ...
-    using (var operation = client.StartOperation<RequestTelemetry>("Insert_Your_Custom_Event_Unique_Name"))
-    {
-      // ... Code I want to profile.
-    }
-    ```
-
-  Hívása `StartOperation<RequestTelemetry>` belül egy másik `StartOperation<RequestTelemetry>` hatókör nem támogatott. Használhat `StartOperation<DependencyTelemetry>` a beágyazott a hatókör helyette. Példa:  
-
-    ```csharp
-    using (var getDetailsOperation = client.StartOperation<RequestTelemetry>("GetProductDetails"))
-    {
-      try
-      {
-        ProductDetail details = new ProductDetail() { Id = productId };
-        getDetailsOperation.Telemetry.Properties["ProductId"] = productId.ToString();
-
-        // By using DependencyTelemetry, 'GetProductPrice' is correctly linked as part of the 'GetProductDetails' request.
-        using (var getPriceOperation = client.StartOperation<DependencyTelemetry>("GetProductPrice"))
+        ```csharp
+        using Microsoft.ApplicationInsights;
+        using Microsoft.ApplicationInsights.DataContracts;
+        ...
+        var client = new TelemetryClient();
+        ...
+        using (var operation = client.StartOperation<RequestTelemetry>("Insert_Your_Custom_Event_Unique_Name"))
         {
-            double price = await _priceDataBase.GetAsync(productId);
-            if (IsTooCheap(price))
-            {
-                throw new PriceTooLowException(productId);
-            }
-            details.Price = price;
+          // ... Code I want to profile.
         }
+        ```
 
-        // Similarly, note how 'GetProductReviews' doesn't establish another RequestTelemetry.
-        using (var getReviewsOperation = client.StartOperation<DependencyTelemetry>("GetProductReviews"))
+        Hívása `StartOperation<RequestTelemetry>` belül egy másik `StartOperation<RequestTelemetry>` hatókör nem támogatott. Használhat `StartOperation<DependencyTelemetry>` a beágyazott a hatókör helyette. Példa:  
+        
+        ```csharp
+        using (var getDetailsOperation = client.StartOperation<RequestTelemetry>("GetProductDetails"))
         {
-            details.Reviews = await _reviewDataBase.GetAsync(productId);
+        try
+        {
+          ProductDetail details = new ProductDetail() { Id = productId };
+          getDetailsOperation.Telemetry.Properties["ProductId"] = productId.ToString();
+        
+          // By using DependencyTelemetry, 'GetProductPrice' is correctly linked as part of the 'GetProductDetails' request.
+          using (var getPriceOperation = client.StartOperation<DependencyTelemetry>("GetProductPrice"))
+          {
+              double price = await _priceDataBase.GetAsync(productId);
+              if (IsTooCheap(price))
+              {
+                  throw new PriceTooLowException(productId);
+              }
+              details.Price = price;
+          }
+        
+          // Similarly, note how 'GetProductReviews' doesn't establish another RequestTelemetry.
+          using (var getReviewsOperation = client.StartOperation<DependencyTelemetry>("GetProductReviews"))
+          {
+              details.Reviews = await _reviewDataBase.GetAsync(productId);
+          }
+        
+          getDetailsOperation.Telemetry.Success = true;
+          return details;
         }
-
-        getDetailsOperation.Telemetry.Success = true;
-        return details;
-      }
-      catch(Exception ex)
-      {
-        getDetailsOperation.Telemetry.Success = false;
-
-        // This exception gets linked to the 'GetProductDetails' request telemetry.
-        client.TrackException(ex);
-        throw;
-      }
-    }
-    ```
-
+        catch(Exception ex)
+        {
+          getDetailsOperation.Telemetry.Success = false;
+        
+          // This exception gets linked to the 'GetProductDetails' request telemetry.
+          client.TrackException(ex);
+          throw;
+        }
+        }
+        ```
 
 ## <a name="set-up-the-environment-deployment-definition"></a>A környezet telepítési definícióval beállítása
 
-A környezet, amelyben a Profilkészítő és az alkalmazás végrehajtási lehet egy virtuális gép, virtuálisgép-méretezési csoport, a Service Fabric-fürt vagy a Cloud Services példánya.  
+A Profilkészítő és az alkalmazás-végrehajtási lehet, a virtuális gép, virtuálisgép-méretezési csoport, a Service Fabric-fürt, és a felhőalapú szolgáltatások példány környezete.  
 
-### <a name="virtual-machines-virtual-machine-scale-sets-or-service-fabric"></a>Virtuális gépek, a virtuálisgép-méretezési csoportok vagy a Service Fabric
+### <a name="virtual-machines-scale-sets-or-service-fabric"></a>Virtuális gépek, a méretezési készlet vagy a Service Fabric
 
-Teljes példák:  
+Teljes példákért lásd:  
   * [Virtuális gép](https://github.com/Azure/azure-docs-json-samples/blob/master/application-insights/WindowsVirtualMachine.json)
   * [Virtuálisgép-méretezési csoport](https://github.com/Azure/azure-docs-json-samples/blob/master/application-insights/WindowsVirtualMachineScaleSet.json)
   * [Service Fabric-fürt](https://github.com/Azure/azure-docs-json-samples/blob/master/application-insights/ServiceFabricCluster.json)
 
-1. Annak érdekében, hogy [.NET-keretrendszer 4.6.1](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) vagy újabb használatban van, győződjön meg arról, hogy a telepített operációs rendszer elegendő `Windows Server 2012 R2` vagy újabb.
+Állítsa be a környezetet, tegye a következőket:
+1. Győződjön meg arról, hogy használja a [.NET-keretrendszer 4.6.1](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) vagy újabb, győződjön meg arról, hogy a telepített operációs rendszer elegendő `Windows Server 2012 R2` vagy újabb.
 
 2. Keresse meg a [Azure Diagnostics](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) bővítményt a központi telepítési sablont a fájlt, és adja meg a következő `SinksConfig` szakasz az alárendelt elem `WadCfg`. Cserélje le a `ApplicationInsightsProfiler` saját Application Insights instrumentation kulccsal tulajdonság értéke:  
-  ```json
-  "SinksConfig": {
-    "Sink": [
-      {
-        "name": "MyApplicationInsightsProfilerSink",
-        "ApplicationInsightsProfiler": "00000000-0000-0000-0000-000000000000"
+
+      ```json
+      "SinksConfig": {
+        "Sink": [
+          {
+            "name": "MyApplicationInsightsProfilerSink",
+            "ApplicationInsightsProfiler": "00000000-0000-0000-0000-000000000000"
+          }
+        ]
       }
-    ]
-  }
-  ```
+      ```
 
-  További információ a diagnosztika bővítmény felvétele a központi telepítési sablont: [használata figyelési és diagnosztika a Windows virtuális gép és az Azure Resource Manager-sablonok](https://docs.microsoft.com/azure/virtual-machines/windows/extensions-diagnostics-template?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+      További információ a diagnosztika bővítmény felvétele a központi telepítési sablont: [használata figyelési és diagnosztika a Windows virtuális gép és az Azure Resource Manager-sablonok](https://docs.microsoft.com/azure/virtual-machines/windows/extensions-diagnostics-template?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 
-### <a name="cloud-services"></a>Cloud Services
+### <a name="azure-cloud-services"></a>Azure Cloud Services
 
-1. Annak érdekében, hogy [.NET-keretrendszer 4.6.1](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) vagy újabb használja, az elegendő győződjön meg arról is, hogy ServiceConfiguration.\*. szolgáltatáskonfigurációs séma fájlok egy `osFamily` értékének **"5"** vagy újabb.
+1. Győződjön meg arról, hogy használja a [.NET-keretrendszer 4.6.1](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) vagy újabb, annak ellenőrzésére, hogy elegendő a *ServiceConfiguration.\*. szolgáltatáskonfigurációs séma* fájlok egy `osFamily` érték az "5" vagy újabb.
 
-2. Keresse meg a [Azure Diagnostics](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) diagnostics.wadcfgx fájlt az alkalmazás-szerepkör:  
-  ![A diagnosztika konfigurációs fájl helye](./media/enable-profiler-compute/cloudservice-solutionexplorer.png)  
-  A fájl nem található, ha engedélyezi a diagnosztika bővítményt a Felhőszolgáltatás-projekt, lásd: [diagnosztika beállítása az Azure Cloud Services és a virtuális gépek](https://docs.microsoft.com/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines#enable-diagnostics-in-cloud-service-projects-before-deploying-them).
+2. Keresse meg a [Azure Diagnostics](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) *diagnostics.wadcfgx* fájlt az alkalmazás-szerepkör, ahogy az itt látható:  
+
+   ![A diagnosztika konfigurációs fájl helye](./media/enable-profiler-compute/cloudservice-solutionexplorer.png)  
+
+   A fájl nem található, ha engedélyezi a diagnosztika bővítményt Azure Felhőszolgáltatások célverzióját, lásd: [diagnosztika beállítása az Azure Cloud Services és a virtuális gépek](https://docs.microsoft.com/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines#enable-diagnostics-in-cloud-service-projects-before-deploying-them).
 
 3. Adja hozzá a következő `SinksConfig` szakasz az alárendelt elem `WadCfg`:  
-  ```xml
-  <WadCfg>
-    <DiagnosticMonitorConfiguration>...</DiagnosticMonitorConfiguration>
-    <SinksConfig>
-      <Sink name="MyApplicationInsightsProfiler">
-        <!-- Replace with your own Application Insights instrumentation key. -->
-        <ApplicationInsightsProfiler>00000000-0000-0000-0000-000000000000</ApplicationInsightsProfiler>
-      </Sink>
-    </SinksConfig>
-  </WadCfg>
-  ```
+
+      ```xml
+      <WadCfg>
+        <DiagnosticMonitorConfiguration>...</DiagnosticMonitorConfiguration>
+        <SinksConfig>
+          <Sink name="MyApplicationInsightsProfiler">
+            <!-- Replace with your own Application Insights instrumentation key. -->
+            <ApplicationInsightsProfiler>00000000-0000-0000-0000-000000000000</ApplicationInsightsProfiler>
+          </Sink>
+        </SinksConfig>
+      </WadCfg>
+      ```
 
 > [!NOTE]  
-> Ha a `diagnostics.wadcfgx` fájl is tartalmaz egy másik fogadó típusú `ApplicationInsights`, ezek a kulcsok instrumentation három egyeznie kell:  
->  * Az alkalmazás által használt instrumentation kulcsot.  
->  * A instrumentation által használt kulcsot a `ApplicationInsights` fogadó.  
->  * A instrumentation által használt kulcsot a `ApplicationInsightsProfiler` fogadó.  
+> Ha a *diagnostics.wadcfgx* fájl is tartalmaz egy másik fogadó típusú `ApplicationInsights`, a következő instrumentation kulcsok három egyezniük kell:  
+>  * Az alkalmazás által használt kulcs.  
+>  * A által használt kulcsot a `ApplicationInsights` fogadó.  
+>  * A által használt kulcsot a `ApplicationInsightsProfiler` fogadó.  
 >
-> A tényleges instrumentation kulcsérték által használt található a `ApplicationInsights` gyűjtése a ServiceConfiguration.\*. szolgáltatáskonfigurációs séma fájlokat.  
-> A Visual Studio 15.5 Azure SDK megjelenése után az alkalmazás által használt csak a instrumentation kulcsok és `ApplicationInsightsProfiler` fogadó kell egymással.
+> A tényleges instrumentation kulcsérték által használt megtalálhatja a `ApplicationInsights` gyűjtése a *ServiceConfiguration.\*. szolgáltatáskonfigurációs séma* fájlokat.  
+> A Visual Studio 15.5 Azure SDK-verzió, csak az alkalmazás által használt instrumentation kulcsok után és a `ApplicationInsightsProfiler` fogadó kell egymással.
 
 
-## <a name="environment-deployment-and-runtime-configurations"></a>Környezet központi telepítési és futásidejű konfigurációk
+## <a name="configure-environment-deployment-and-runtime"></a>Környezet központi telepítési és a futtatókörnyezetek konfigurálása
 
 1. Telepítse a módosított környezet telepítési definícióval.  
 
-  A módosítások alkalmazásához általában egy teljes sablon-üzembehelyezés vagy a cloud services közzététele PowerShell-parancsmagokkal vagy a Visual Studio van szó.  
+   A módosítások alkalmazásához általában vonják be a teljes sablon-üzembehelyezés, vagy PowerShell-parancsmagokkal vagy a Visual Studio közzététele a felhőalapú szolgáltatások.  
 
-  A következő egy meglévő virtuális gépek egy másik módjáról, amely csak az Azure Diagnostics kiegészítő koppint:  
-  ```powershell
-  $ConfigFilePath = [IO.Path]::GetTempFileName()
-  # After you export the currently deployed Diagnostics config to a file, edit it to include the ApplicationInsightsProfiler sink.
-  (Get-AzureRmVMDiagnosticsExtension -ResourceGroupName "MyRG" -VMName "MyVM").PublicSettings | Out-File -Verbose $ConfigFilePath
-  # Set-AzureRmVMDiagnosticsExtension might require the -StorageAccountName argument
-  # if your original diagnostics configuration had the storageAccountName property in the protectedSettings section
-  # (which is not downloadable). Make sure to pass the same original value you had in this cmdlet call.
-  Set-AzureRmVMDiagnosticsExtension -ResourceGroupName "MyRG" -VMName "MyVM" -DiagnosticsConfigurationPath $ConfigFilePath
-  ```
+   A következő egy meglévő virtuális gépek egy másik módjáról, amely csak az Azure Diagnostics bővítmény koppint:  
 
-2. Ha a kívánt alkalmazás fut [IIS](https://www.microsoft.com/web/platform/server.aspx), engedélyezze a `IIS Http Tracing` Windows-szolgáltatás:  
+    ```powershell
+    $ConfigFilePath = [IO.Path]::GetTempFileName()
+    # After you export the currently deployed Diagnostics config to a file, edit it to include the ApplicationInsightsProfiler sink.
+    (Get-AzureRmVMDiagnosticsExtension -ResourceGroupName "MyRG" -VMName "MyVM").PublicSettings | Out-File -Verbose $ConfigFilePath
+    # Set-AzureRmVMDiagnosticsExtension might require the -StorageAccountName argument
+    # If your original diagnostics configuration had the storageAccountName property in the protectedSettings section (which is not downloadable), be sure to pass the same original value you had in this cmdlet call.
+    Set-AzureRmVMDiagnosticsExtension -ResourceGroupName "MyRG" -VMName "MyVM" -DiagnosticsConfigurationPath $ConfigFilePath
+    ```
 
-  1. A környezet a távoli hozzáférést létrehozásához, és használja a [Windows-szolgáltatások hozzáadása]( https://docs.microsoft.com/iis/configuration/system.webserver/tracing/) ablakban, vagy futtassa a következő parancsot a PowerShell (rendszergazdaként):  
+2. Ha a kívánt alkalmazás fut [IIS](https://www.microsoft.com/web/platform/server.aspx), engedélyezze a `IIS Http Tracing` Windows-szolgáltatás a következő tevékenységek végrehajtásával:  
+
+   a. A környezet a távoli hozzáférést létrehozásához, és használja a [hozzáadása Windows-szolgáltatások]( https://docs.microsoft.com/iis/configuration/system.webserver/tracing/) ablakban, vagy futtassa a következő parancsot a PowerShell (rendszergazdaként):  
+
     ```powershell
     Enable-WindowsOptionalFeature -FeatureName IIS-HttpTracing -Online -All
     ```  
-  2. Ha létrehozó távelérési probléma, akkor használhatja [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) a következő parancsot:  
+   b. Ha létrehozó távelérési probléma, akkor használhatja [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) a következő parancsot:  
+
     ```powershell
     az vm run-command invoke -g MyResourceGroupName -n MyVirtualMachineName --command-id RunPowerShellScript --scripts "Enable-WindowsOptionalFeature -FeatureName IIS-HttpTracing -Online -All"
     ```
 
 
-## <a name="enable-the-profiler-on-on-premises-servers"></a>A Profilkészítő a helyszíni kiszolgálók engedélyezése
+## <a name="enable-profiler-on-on-premises-servers"></a>Engedélyezze a Profilkészítő a helyszíni kiszolgálók
 
-A Profilkészítő egy helyszíni kiszolgálón engedélyezése is nevezik önálló (nem kötődik azonban Azure Diagnostics bővítmény módosításokat) módban futó Application Insights Profiler.
+Profilkészítő engedélyezése egy helyszíni kiszolgálón is nevezik önálló módban futó Application Insights Profiler. Nem kötődik azonban Azure Diagnostics bővítmény módosításokat.
 
-A Profilkészítő hivatalosan támogatása a helyszíni kiszolgálók terv van. Ha érdekli a jelen forgatókönyvben kísérletezés, akkor [támogatási kód letöltése](https://github.com/ramach-msft/AIProfiler-Standalone). Folyamatban van, *nem* megőrzéséhez a kódot, vagy válaszol a problémák és a kód kapcsolódó funkciókérések felelős.
+Hivatalos támogatást a helyszíni kiszolgálók Profilkészítő terv van. Ha érdekli a jelen forgatókönyvben kísérletezés, akkor [támogatási kód letöltése](https://github.com/ramach-msft/AIProfiler-Standalone). Folyamatban van, *nem* megőrzéséhez a kódot, vagy válaszol a problémák és a kód kapcsolódó funkciókérések felelős.
 
 ## <a name="next-steps"></a>További lépések
 

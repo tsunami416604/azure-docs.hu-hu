@@ -5,6 +5,7 @@
 ## [Az Azure Data Lake Store és az Azure Storage összehasonlítása](data-lake-store-comparison-with-blob-storage.md)
 ## [Azure Data Lake Store a big data-feldolgozáshoz](data-lake-store-data-scenarios.md)
 ## [Az Azure Data Lake Store-ral működő nyílt forráskódú alkalmazások](data-lake-store-compatible-oss-other-applications.md)
+## [Data Lake Store használatának ajánlott eljárásai](data-lake-store-best-practices.md)
 
 # Bevezetés
 ## [A Portal használata](data-lake-store-get-started-portal.md)
