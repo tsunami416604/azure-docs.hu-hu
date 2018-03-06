@@ -11,11 +11,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 10/17/2017
-ms.openlocfilehash: aab397e6e8006cd0a3464ed7b022327fd6f821ac
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 03fdd1265464355a2787eff897eb4f70faa095b0
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="image-classification-using-azure-machine-learning-workbench"></a>Kép besorolás használata az Azure Machine Learning-munkaterület
 
@@ -59,6 +59,7 @@ Ez a példa futtatásához az Előfeltételek a következők:
     - `pip install -U numpy`
     - `pip install bqplot`
     - `jupyter nbextension enable --py --sys-prefix bqplot`
+    - `jupyter nbextension enable --py widgetsnbextension`
 
 ### <a name="troubleshooting--known-bugs"></a>Hibaelhárítási / ismert hibák
 - 2. rész GPU szükséges, és ellenkező esetben a hiba "Kötegelt normalizálási képzési CPU még nincs megvalósítva" azért történik, pontosítsa a DNN tett kísérlet során.

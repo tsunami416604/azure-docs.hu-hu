@@ -4,19 +4,19 @@ description: "Ez a cikk a webes szolgáltatás Docker lemezkép létrehozása l�
 services: machine-learning
 author: chhavib
 ms.author: chhavib
-manager: neerajkh
+manager: hjerez
 editor: jasonwhowell
-ms.reviewer: garyericson, jasonwhowell, mldocs
+ms.reviewer: jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.devlang: na
 ms.topic: article
 ms.date: 09/20/2017
-ms.openlocfilehash: 134971e4a663baefa4e1051f087038d3debcb969
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: f7f9cbd34d84f89d6ce193daf79531617c97ddd3
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="azure-machine-learning-model-management-account-api-reference"></a>Az Azure Machine Learning modell felügyeleti fiók API-referencia
 
@@ -71,16 +71,16 @@ A modell regisztrációs lépésében létrehozott Azure modell felügyeleti fi�
 
 | Módszer | Kérés URI-ja |
 |------------|------------|
-| POST |  /API /Subscriptions/ {subscriptionId} /resourceGroups/ {resourceGroupName} /accounts/ {accountName} / modellek 
+| POST |  /api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/models 
  |
 ### <a name="description"></a>Leírás
 Regisztrálja a modell.
 
 ### <a name="parameters"></a>Paraméterek
-| Name (Név) | Hely | Leírás | Szükséges | Séma
+| Name (Név) | A található | Leírás | Szükséges | Séma
 |--------------------|--------------------|--------------------|--------------------|--------------------|
-| subscriptionId | elérési út | Az Azure előfizetés-azonosító. | Igen | karakterlánc |
-| erőforráscsoport-név | elérési út | Az erőforráscsoport, ahol a modell felügyeleti fiókjának neve. | Igen | karakterlánc |
+| subscriptionId | elérési út | Azure subscription ID. | Igen | karakterlánc |
+| resourceGroupName | elérési út | Az erőforráscsoport, ahol a modell felügyeleti fiókjának neve. | Igen | karakterlánc |
 | Fióknév | elérési út | A modell felügyeleti fiókjának neve. | Igen | karakterlánc |
 | API-verzió | lekérdezés | A Microsoft.Machine.Learning erőforrás-szolgáltató használatára API verziója. | Igen | karakterlánc |
 | Engedélyezés | header | Engedélyezési jogkivonat. "Tulajdonosi XXXXXX." hasonlót kell | Igen | karakterlánc |
@@ -90,28 +90,28 @@ Regisztrálja a modell.
 ### <a name="responses"></a>Válaszok
 | Kód | Leírás | Séma |
 |--------------------|--------------------|--------------------|
-| 200 | OKÉ. A modell regisztrálása sikeres volt. | [Modell](#model) |
-| alapérték | Az hibaüzenetet, amely leírja, hogy miért volt sikertelen a művelet. | [ErrorResponse](#errorresponse) |
+| 200 | OK. A modell regisztrálása sikeres volt. | [Modell](#model) |
+| alapértelmezett | Az hibaüzenetet, amely leírja, hogy miért volt sikertelen a művelet. | [ErrorResponse](#errorresponse) |
 
 ## <a name="query-the-list-of-models-in-an-account"></a>Lekérdezési fiók a modellek listája
 ### <a name="request"></a>Kérés
 | Módszer | Kérés URI-ja |
 |------------|------------|
-| GET |  /API /Subscriptions/ {subscriptionId} /resourceGroups/ {resourceGroupName} /accounts/ {accountName} / modellek 
+| GET |  /api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/models 
  |
 ### <a name="description"></a>Leírás
 Lekérdezi a fiók a modellek listája. Az eredménylista címke és név szerint szűrhetők. Ha nincs szűrő fogad el, a lekérdezés felsorolja a fiók összes modellt. A visszaadott lista paginated van, és minden oldalon szereplő elemek száma nem kötelező paraméter.
 
 ### <a name="parameters"></a>Paraméterek
-| Name (Név) | Hely | Leírás | Szükséges | Séma
+| Name (Név) | A található | Leírás | Szükséges | Séma
 |--------------------|--------------------|--------------------|--------------------|--------------------|
-| subscriptionId | elérési út | Az Azure előfizetés-azonosító. | Igen | karakterlánc |
-| erőforráscsoport-név | elérési út | Az erőforráscsoport, ahol a modell felügyeleti fiókjának neve. | Igen | karakterlánc |
+| subscriptionId | elérési út | Azure subscription ID. | Igen | karakterlánc |
+| resourceGroupName | elérési út | Az erőforráscsoport, ahol a modell felügyeleti fiókjának neve. | Igen | karakterlánc |
 | Fióknév | elérési út | A modell felügyeleti fiókjának neve. | Igen | karakterlánc |
 | API-verzió | lekérdezés | A Microsoft.Machine.Learning erőforrás-szolgáltató használatára API verziója. | Igen | karakterlánc |
 | Engedélyezés | header | Engedélyezési jogkivonat. "Tulajdonosi XXXXXX." hasonlót kell | Igen | karakterlánc |
 | név | lekérdezés | Objektum neve. | Nem | karakterlánc |
-| Címke | lekérdezés | Minta címke. | Nem | karakterlánc |
+| címke | lekérdezés | Minta címke. | Nem | karakterlánc |
 | darab | lekérdezés | Lapon beolvasása elemek száma. | Nem | karakterlánc |
 | $skipToken | lekérdezés | A folytatási beolvasása a következő oldalra. | Nem | karakterlánc |
 
@@ -119,23 +119,23 @@ Lekérdezi a fiók a modellek listája. Az eredménylista címke és név szerin
 | Kód | Leírás | Séma |
 |--------------------|--------------------|--------------------|
 | 200 | Siker. | [PaginatedModelList](#paginatedmodellist) |
-| alapérték | Az hibaüzenetet, amely leírja, hogy miért volt sikertelen a művelet. | [ErrorResponse](#errorresponse) |
+| alapértelmezett | Az hibaüzenetet, amely leírja, hogy miért volt sikertelen a művelet. | [ErrorResponse](#errorresponse) |
 
 ## <a name="get-model-details"></a>Részletek a modell
 ### <a name="request"></a>Kérés
 | Módszer | Kérés URI-ja |
 |------------|------------|
-| GET |  /API /Subscriptions/ {subscriptionId} /resourceGroups/ {resourceGroupName} {accountName} /accounts/ /models/ {azonosító}  
+| GET |  /api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/models/{id}  
  |
 
 ### <a name="description"></a>Leírás
 Lekérdezi a modell azonosítóját.
 
 ### <a name="parameters"></a>Paraméterek
-| Name (Név) | Hely | Leírás | Szükséges | Séma
+| Name (Név) | A található | Leírás | Szükséges | Séma
 |--------------------|--------------------|--------------------|--------------------|--------------------|
-| subscriptionId | elérési út | Az Azure előfizetés-azonosító. | Igen | karakterlánc |
-| erőforráscsoport-név | elérési út | Az erőforráscsoport, ahol a modell felügyeleti fiókjának neve. | Igen | karakterlánc |
+| subscriptionId | elérési út | Azure subscription ID. | Igen | karakterlánc |
+| resourceGroupName | elérési út | Az erőforráscsoport, ahol a modell felügyeleti fiókjának neve. | Igen | karakterlánc |
 | Fióknév | elérési út | A modell felügyeleti fiókjának neve. | Igen | karakterlánc |
 | id | elérési út | Objektum azonosítója. | Igen | karakterlánc |
 | API-verzió | lekérdezés | A Microsoft.Machine.Learning erőforrás-szolgáltató használatára API verziója. | Igen | karakterlánc |
@@ -145,23 +145,23 @@ Lekérdezi a modell azonosítóját.
 | Kód | Leírás | Séma |
 |--------------------|--------------------|--------------------|
 | 200 | Siker. | [Modell](#model) |
-| alapérték | Az hibaüzenetet, amely leírja, hogy miért volt sikertelen a művelet. | [ErrorResponse](#errorresponse) |
+| alapértelmezett | Az hibaüzenetet, amely leírja, hogy miért volt sikertelen a művelet. | [ErrorResponse](#errorresponse) |
 
 ## <a name="register-a-manifest-with-the-registered-model-and-all-dependencies"></a>A regisztrált modellhez és az összes függősége a jegyzékfájl regisztrálása
 
 ### <a name="request"></a>Kérés
 | Módszer | Kérés URI-ja |
 |------------|------------|
-| POST |  /API /Subscriptions/ {subscriptionId} /resourceGroups/ {resourceGroupName} /accounts/ {accountName} / jelentkezni | 
+| POST |  /api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/manifests | 
 
 ### <a name="description"></a>Leírás
 A jegyzék regisztrálja a regisztrált modellhez és annak függőségeit.
 
 ### <a name="parameters"></a>Paraméterek
-| Name (Név) | Hely | Leírás | Szükséges | Séma
+| Name (Név) | A található | Leírás | Szükséges | Séma
 |--------------------|--------------------|--------------------|--------------------|--------------------|
-| subscriptionId | elérési út | Az Azure előfizetés-azonosító. | Igen | karakterlánc |
-| erőforráscsoport-név | elérési út | Az erőforráscsoport, ahol a modell felügyeleti fiókjának neve. | Igen | karakterlánc |
+| subscriptionId | elérési út | Azure subscription ID. | Igen | karakterlánc |
+| resourceGroupName | elérési út | Az erőforráscsoport, ahol a modell felügyeleti fiókjának neve. | Igen | karakterlánc |
 | Fióknév | elérési út | A modell felügyeleti fiókjának neve. | Igen | karakterlánc |
 | API-verzió | lekérdezés | A Microsoft.Machine.Learning erőforrás-szolgáltató használatára API verziója. | Igen | karakterlánc |
 | Engedélyezés | header | Engedélyezési jogkivonat. "Tulajdonosi XXXXXX." hasonlót kell | Igen | karakterlánc |
@@ -171,23 +171,23 @@ A jegyzék regisztrálja a regisztrált modellhez és annak függőségeit.
 | Kód | Leírás | Séma |
 |--------------------|--------------------|--------------------|
 | 200 | Manifest a regisztráció sikeres volt. | [Manifest](#manifest) |
-| alapérték | Az hibaüzenetet, amely leírja, hogy miért volt sikertelen a művelet. | [ErrorResponse](#errorresponse) |
+| alapértelmezett | Az hibaüzenetet, amely leírja, hogy miért volt sikertelen a művelet. | [ErrorResponse](#errorresponse) |
 
 ## <a name="query-the-list-of-manifests-in-an-account"></a>A lekérdezés a jegyzékfájlokat az fiók listája
 
 ### <a name="request"></a>Kérés
 | Módszer | Kérés URI-ja |
 |------------|------------|
-| GET |  /API /Subscriptions/ {subscriptionId} /resourceGroups/ {resourceGroupName} /accounts/ {accountName} / jelentkezni | 
+| GET |  /api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/manifests | 
 
 ### <a name="description"></a>Leírás
 Lekérdezi a jegyzékfájlokat az fiók listáját. Az eredménylista modell-azonosító szerinti szűrése, és a jegyzékfájl neve. Ha nincs szűrő fogad el, a lekérdezés felsorolja az összes a jegyzékfájlokat az a fiók. A visszaadott lista paginated van, és minden oldalon szereplő elemek száma nem kötelező paraméter.
 
 ### <a name="parameters"></a>Paraméterek
-| Name (Név) | Hely | Leírás | Szükséges | Séma
+| Name (Név) | A található | Leírás | Szükséges | Séma
 |--------------------|--------------------|--------------------|--------------------|--------------------|
-| subscriptionId | elérési út | Az Azure előfizetés-azonosító. | Igen | karakterlánc |
-| erőforráscsoport-név | elérési út | Az erőforráscsoport, ahol a modell felügyeleti fiókjának neve. | Igen | karakterlánc |
+| subscriptionId | elérési út | Azure subscription ID. | Igen | karakterlánc |
+| resourceGroupName | elérési út | Az erőforráscsoport, ahol a modell felügyeleti fiókjának neve. | Igen | karakterlánc |
 | Fióknév | elérési út | A modell felügyeleti fiókjának neve. | Igen | karakterlánc |
 | API-verzió | lekérdezés | A Microsoft.Machine.Learning erőforrás-szolgáltató használatára API verziója. | Igen | karakterlánc |
 | Engedélyezés | header | Engedélyezési jogkivonat. "Tulajdonosi XXXXXX." hasonlót kell | Igen | karakterlánc |
@@ -200,23 +200,23 @@ Lekérdezi a jegyzékfájlokat az fiók listáját. Az eredménylista modell-azo
 | Kód | Leírás | Séma |
 |--------------------|--------------------|--------------------|
 | 200 | Siker. | [PaginatedManifestList](#paginatedmanifestlist) |
-| alapérték | Az hibaüzenetet, amely leírja, hogy miért volt sikertelen a művelet. | [ErrorResponse](#errorresponse) |
+| alapértelmezett | Az hibaüzenetet, amely leírja, hogy miért volt sikertelen a művelet. | [ErrorResponse](#errorresponse) |
 
 ## <a name="get-manifest-details"></a>Részletek a jegyzék
 
 ### <a name="request"></a>Kérés
 | Módszer | Kérés URI-ja |
 |------------|------------|
-| GET |  /API /Subscriptions/ {subscriptionId} /resourceGroups/ {resourceGroupName} {accountName} /accounts/ /manifests/ {azonosító} | 
+| GET |  /api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/manifests/{id} | 
 
 ### <a name="description"></a>Leírás
 Lekérdezi a jegyzékfájl által azonosítóját.
 
 ### <a name="parameters"></a>Paraméterek
-| Name (Név) | Hely | Leírás | Szükséges | Séma
+| Name (Név) | A található | Leírás | Szükséges | Séma
 |--------------------|--------------------|--------------------|--------------------|--------------------|
-| subscriptionId | elérési út | Az Azure előfizetés-azonosító. | Igen | karakterlánc |
-| erőforráscsoport-név | elérési út | Az erőforráscsoport, ahol a modell felügyeleti fiókjának neve. | Igen | karakterlánc |
+| subscriptionId | elérési út | Azure subscription ID. | Igen | karakterlánc |
+| resourceGroupName | elérési út | Az erőforráscsoport, ahol a modell felügyeleti fiókjának neve. | Igen | karakterlánc |
 | Fióknév | elérési út | A modell felügyeleti fiókjának neve. | Igen | karakterlánc |
 | id | elérési út | Objektum azonosítója. | Igen | karakterlánc |
 | API-verzió | lekérdezés | A Microsoft.Machine.Learning erőforrás-szolgáltató használatára API verziója. | Igen | karakterlánc |
@@ -226,23 +226,23 @@ Lekérdezi a jegyzékfájl által azonosítóját.
 | Kód | Leírás | Séma |
 |--------------------|--------------------|--------------------|
 | 200 | Siker. | [Manifest](#manifest) |
-| alapérték | Az hibaüzenetet, amely leírja, hogy miért volt sikertelen a művelet. | [ErrorResponse](#errorresponse) |
+| alapértelmezett | Az hibaüzenetet, amely leírja, hogy miért volt sikertelen a művelet. | [ErrorResponse](#errorresponse) |
 
 ## <a name="create-an-image"></a>Lemezkép létrehozása
 
 ### <a name="request"></a>Kérés
 | Módszer | Kérés URI-ja |
 |------------|------------|
-| POST |  /API /Subscriptions/ {subscriptionId} /resourceGroups/ {resourceGroupName} /accounts/ {accountName} / lemezképek | 
+| POST |  /api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/images | 
 
 ### <a name="description"></a>Leírás
 Lemezkép létrehozása az Azure-tároló beállításjegyzék Docker lemezképként.
 
 ### <a name="parameters"></a>Paraméterek
-| Name (Név) | Hely | Leírás | Szükséges | Séma
+| Name (Név) | A található | Leírás | Szükséges | Séma
 |--------------------|--------------------|--------------------|--------------------|--------------------|
-| subscriptionId | elérési út | Az Azure előfizetés-azonosító. | Igen | karakterlánc |
-| erőforráscsoport-név | elérési út | Az erőforráscsoport, ahol a modell felügyeleti fiókjának neve. | Igen | karakterlánc |
+| subscriptionId | elérési út | Azure subscription ID. | Igen | karakterlánc |
+| resourceGroupName | elérési út | Az erőforráscsoport, ahol a modell felügyeleti fiókjának neve. | Igen | karakterlánc |
 | Fióknév | elérési út | A modell felügyeleti fiókjának neve. | Igen | karakterlánc |
 | API-verzió | lekérdezés | A Microsoft.Machine.Learning erőforrás-szolgáltató használatára API verziója. | Igen | karakterlánc |
 | Engedélyezés | header | Engedélyezési jogkivonat. "Tulajdonosi XXXXXX." hasonlót kell | Igen | karakterlánc |
@@ -252,27 +252,27 @@ Lemezkép létrehozása az Azure-tároló beállításjegyzék Docker lemezképk
 | Kód | Leírás | Fejlécek | Séma |
 |--------------------|--------------------|--------------------|--------------------|
 | 202 | Az aszinkron művelet hely URL-címe. GET hívást megtudhatja, a lemezkép-készítési feladat állapotát. | A művelet-helye |
-| alapérték | Az hibaüzenetet, amely leírja, hogy miért volt sikertelen a művelet. | [ErrorResponse](#errorresponse) |
+| alapértelmezett | Az hibaüzenetet, amely leírja, hogy miért volt sikertelen a művelet. | [ErrorResponse](#errorresponse) |
 
 ## <a name="query-the-list-of-images-in-an-account"></a>Egy fiók képek listájának lekérdezése
 
 ### <a name="request"></a>Kérés
 | Módszer | Kérés URI-ja |
 |------------|------------|
-| GET |  /API /Subscriptions/ {subscriptionId} /resourceGroups/ {resourceGroupName} /accounts/ {accountName} / lemezképek | 
+| GET |  /api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/images | 
 
 ### <a name="description"></a>Leírás
 Egy fiók képek listájának lekérdezése. Az eredménylista jegyzék azonosító és név szerint szűrhetők. Ha nincs szűrő fogad el, a lekérdezés felsorolja az a fiók a lemezképeket. A visszaadott lista paginated van, és minden oldalon szereplő elemek száma nem kötelező paraméter.
 
 ### <a name="parameters"></a>Paraméterek
-| Name (Név) | Hely | Leírás | Szükséges | Séma
+| Name (Név) | A található | Leírás | Szükséges | Séma
 |--------------------|--------------------|--------------------|--------------------|--------------------|
-| subscriptionId | elérési út | Az Azure előfizetés-azonosító. | Igen | karakterlánc |
-| erőforráscsoport-név | elérési út | Az erőforráscsoport, ahol a modell felügyeleti fiókjának neve. | Igen | karakterlánc |
+| subscriptionId | elérési út | Azure subscription ID. | Igen | karakterlánc |
+| resourceGroupName | elérési út | Az erőforráscsoport, ahol a modell felügyeleti fiókjának neve. | Igen | karakterlánc |
 | Fióknév | elérési út | A modell felügyeleti fiókjának neve. | Igen | karakterlánc |
 | API-verzió | lekérdezés | A Microsoft.Machine.Learning erőforrás-szolgáltató használatára API verziója. | Igen | karakterlánc |
 | Engedélyezés | header | Engedélyezési jogkivonat. "Tulajdonosi XXXXXX." hasonlót kell | Igen | karakterlánc |
-| Jegyzékfájl azonosítója | lekérdezés | Manifest azonosítóját. | Nem | karakterlánc |
+| manifestId | lekérdezés | Manifest azonosítóját. | Nem | karakterlánc |
 | ManifestName | lekérdezés | A jegyzékfájl neve. | Nem | karakterlánc |
 | darab | lekérdezés | Lapon beolvasása elemek száma. | Nem | karakterlánc |
 | $skipToken | lekérdezés | A folytatási beolvasása a következő oldalra. | Nem | karakterlánc |
@@ -281,23 +281,23 @@ Egy fiók képek listájának lekérdezése. Az eredménylista jegyzék azonosí
 | Kód | Leírás | Séma |
 |--------------------|--------------------|--------------------|
 | 200 | Siker. | [PaginatedImageList](#paginatedimagelist) |
-| alapérték | Az hibaüzenetet, amely leírja, hogy miért volt sikertelen a művelet. | [ErrorResponse](#errorresponse) |
+| alapértelmezett | Az hibaüzenetet, amely leírja, hogy miért volt sikertelen a művelet. | [ErrorResponse](#errorresponse) |
 
 ## <a name="get-image-details"></a>Részletek a kép
 
 ### <a name="request"></a>Kérés
 | Módszer | Kérés URI-ja |
 |------------|------------|
-| GET |  /API /Subscriptions/ {subscriptionId} /resourceGroups/ {resourceGroupName} {accountName} /accounts/ /images/ {azonosító} | 
+| GET |  /api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/images/{id} | 
 
 ### <a name="description"></a>Leírás
 Lekérdezi a lemezkép azonosítóját.
 
 ### <a name="parameters"></a>Paraméterek
-| Name (Név) | Hely | Leírás | Szükséges | Séma
+| Name (Név) | A található | Leírás | Szükséges | Séma
 |--------------------|--------------------|--------------------|--------------------|--------------------|
-| subscriptionId | elérési út | Az Azure előfizetés-azonosító. | Igen | karakterlánc |
-| erőforráscsoport-név | elérési út | Az erőforráscsoport, ahol a modell felügyeleti fiókjának neve. | Igen | karakterlánc |
+| subscriptionId | elérési út | Azure subscription ID. | Igen | karakterlánc |
+| resourceGroupName | elérési út | Az erőforráscsoport, ahol a modell felügyeleti fiókjának neve. | Igen | karakterlánc |
 | Fióknév | elérési út | A modell felügyeleti fiókjának neve. | Igen | karakterlánc |
 | id | elérési út | Lemezkép-azonosítót. | Igen | karakterlánc |
 | API-verzió | lekérdezés | A Microsoft.Machine.Learning erőforrás-szolgáltató használatára API verziója. | Igen | karakterlánc |
@@ -306,8 +306,8 @@ Lekérdezi a lemezkép azonosítóját.
 ### <a name="responses"></a>Válaszok
 | Kód | Leírás | Séma |
 |--------------------|--------------------|--------------------|
-| 200 | Siker. | [Kép](#image) |
-| alapérték | Az hibaüzenetet, amely leírja, hogy miért volt sikertelen a művelet. | [ErrorResponse](#errorresponse) |
+| 200 | Siker. | [Image](#image) |
+| alapértelmezett | Az hibaüzenetet, amely leírja, hogy miért volt sikertelen a művelet. | [ErrorResponse](#errorresponse) |
 
 
 ## <a name="create-a-service"></a>Szolgáltatás létrehozása
@@ -315,50 +315,50 @@ Lekérdezi a lemezkép azonosítóját.
 ### <a name="request"></a>Kérés
 | Módszer | Kérés URI-ja |
 |------------|------------|
-| POST |  /API /Subscriptions/ {subscriptionId} /resourceGroups/ {resourceGroupName} /accounts/ {accountName} / szolgáltatások | 
+| POST |  /api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/services | 
 
 ### <a name="description"></a>Leírás
 Szolgáltatás létrehozása lemezkép.
 
 ### <a name="parameters"></a>Paraméterek
-| Name (Név) | Hely | Leírás | Szükséges | Séma
+| Name (Név) | A található | Leírás | Szükséges | Séma
 |--------------------|--------------------|--------------------|--------------------|--------------------|
-| subscriptionId | elérési út | Az Azure előfizetés-azonosító. | Igen | karakterlánc |
-| erőforráscsoport-név | elérési út | Az erőforráscsoport, ahol a modell felügyeleti fiókjának neve. | Igen | karakterlánc |
+| subscriptionId | elérési út | Azure subscription ID. | Igen | karakterlánc |
+| resourceGroupName | elérési út | Az erőforráscsoport, ahol a modell felügyeleti fiókjának neve. | Igen | karakterlánc |
 | Fióknév | elérési út | A modell felügyeleti fiókjának neve. | Igen | karakterlánc |
 | API-verzió | lekérdezés | A Microsoft.Machine.Learning erőforrás-szolgáltató használatára API verziója. | Igen | karakterlánc |
 | Engedélyezés | header | Engedélyezési jogkivonat. "Tulajdonosi XXXXXX." hasonlót kell | Igen | karakterlánc |
-| ServiceRequest elemen | törzs | A szolgáltatás létrehozásához használt tartalom. | Igen | [ServiceCreateRequest](#servicecreaterequest) |
+| serviceRequest | törzs | A szolgáltatás létrehozásához használt tartalom. | Igen | [ServiceCreateRequest](#servicecreaterequest) |
 
 ### <a name="responses"></a>Válaszok
 | Kód | Leírás | Fejlécek | Séma |
 |--------------------|--------------------|--------------------|--------------------|
 | 202 | Az aszinkron művelet hely URL-címe. GET hívást megtudhatja, a szolgáltatás-készítési feladat állapotát. | A művelet-helye |
 | 409 | Már létezik ilyen nevű szolgáltatás. |
-| alapérték | Az hibaüzenetet, amely leírja, hogy miért volt sikertelen a művelet. | [ErrorResponse](#errorresponse) |
+| alapértelmezett | Az hibaüzenetet, amely leírja, hogy miért volt sikertelen a művelet. | [ErrorResponse](#errorresponse) |
 
 ## <a name="query-the-list-of-services-in-an-account"></a>Lekérdezési fiók szolgáltatások listája
 
 ### <a name="request"></a>Kérés
 | Módszer | Kérés URI-ja |
 |------------|------------|
-| GET |  /API /Subscriptions/ {subscriptionId} /resourceGroups/ {resourceGroupName} /accounts/ {accountName} / szolgáltatások | 
+| GET |  /api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/services | 
 
 ### <a name="description"></a>Leírás
 Lekérdezi egy fiókot a szolgáltatások listájában. Szűrheti az eredménylista modell név és azonosító, név/Jegyzékfájl, lemezkép-Azonosítót, szolgáltatásnév vagy Machine Learning számítási erőforrás-azonosító. Nincs szűrő fogad el, ha a lekérdezés felsorolja az összes szolgáltatás a fiókban. A visszaadott lista paginated van, és minden oldalon szereplő elemek száma nem kötelező paraméter.
 
 ### <a name="parameters"></a>Paraméterek
-| Name (Név) | Hely | Leírás | Szükséges | Séma
+| Name (Név) | A található | Leírás | Szükséges | Séma
 |--------------------|--------------------|--------------------|--------------------|--------------------|
-| subscriptionId | elérési út | Az Azure előfizetés-azonosító. | Igen | karakterlánc |
-| erőforráscsoport-név | elérési út | Az erőforráscsoport, ahol a modell felügyeleti fiókjának neve. | Igen | karakterlánc |
+| subscriptionId | elérési út | Azure subscription ID. | Igen | karakterlánc |
+| resourceGroupName | elérési út | Az erőforráscsoport, ahol a modell felügyeleti fiókjának neve. | Igen | karakterlánc |
 | Fióknév | elérési út | A modell felügyeleti fiókjának neve. | Igen | karakterlánc |
 | API-verzió | lekérdezés | A Microsoft.Machine.Learning erőforrás-szolgáltató használatára API verziója. | Igen | karakterlánc |
 | Engedélyezés | header | Engedélyezési jogkivonat. "Tulajdonosi XXXXXX." hasonlót kell | Igen | karakterlánc |
-| Szolgáltatásnév | lekérdezés | Szolgáltatás neve. | Nem | karakterlánc |
+| serviceName | lekérdezés | Szolgáltatás neve. | Nem | karakterlánc |
 | modelId | lekérdezés | Modell neve. | Nem | karakterlánc |
 | modelName | lekérdezés | Forrásmodell azonosítóját. | Nem | karakterlánc |
-| Jegyzékfájl azonosítója | lekérdezés | Manifest azonosítóját. | Nem | karakterlánc |
+| manifestId | lekérdezés | Manifest azonosítóját. | Nem | karakterlánc |
 | ManifestName | lekérdezés | A jegyzékfájl neve. | Nem | karakterlánc |
 | imageId | lekérdezés | Lemezkép-azonosítót. | Nem | karakterlánc |
 | computeResourceId | lekérdezés | Machine Learning számítási erőforrás-azonosító. | Nem | karakterlánc |
@@ -369,23 +369,23 @@ Lekérdezi egy fiókot a szolgáltatások listájában. Szűrheti az eredményli
 | Kód | Leírás | Séma |
 |--------------------|--------------------|--------------------|
 | 200 | Siker. | [PaginatedServiceList](#paginatedservicelist) |
-| alapérték | Az hibaüzenetet, amely leírja, hogy miért volt sikertelen a művelet. | [ErrorResponse](#errorresponse) |
+| alapértelmezett | Az hibaüzenetet, amely leírja, hogy miért volt sikertelen a művelet. | [ErrorResponse](#errorresponse) |
 
 ## <a name="get-service-details"></a>Szolgáltatás-részletek
 
 ### <a name="request"></a>Kérés
 | Módszer | Kérés URI-ja |
 |------------|------------|
-| GET |  /API /Subscriptions/ {subscriptionId} /resourceGroups/ {resourceGroupName} {accountName} /accounts/ /services/ {azonosító} | 
+| GET |  /api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/services/{id} | 
 
 ### <a name="description"></a>Leírás
 Lekérdezi a szolgáltatás által azonosítóját.
 
 ### <a name="parameters"></a>Paraméterek
-| Name (Név) | Hely | Leírás | Szükséges | Séma
+| Name (Név) | A található | Leírás | Szükséges | Séma
 |--------------------|--------------------|--------------------|--------------------|--------------------|
-| subscriptionId | elérési út | Az Azure előfizetés-azonosító. | Igen | karakterlánc |
-| erőforráscsoport-név | elérési út | Az erőforráscsoport, ahol a modell felügyeleti fiókjának neve. | Igen | karakterlánc |
+| subscriptionId | elérési út | Azure subscription ID. | Igen | karakterlánc |
+| resourceGroupName | elérési út | Az erőforráscsoport, ahol a modell felügyeleti fiókjának neve. | Igen | karakterlánc |
 | Fióknév | elérési út | A modell felügyeleti fiókjának neve. | Igen | karakterlánc |
 | id | elérési út | Objektum azonosítója. | Igen | karakterlánc |
 | API-verzió | lekérdezés | A Microsoft.Machine.Learning erőforrás-szolgáltató használatára API verziója. | Igen | karakterlánc |
@@ -395,23 +395,23 @@ Lekérdezi a szolgáltatás által azonosítóját.
 | Kód | Leírás | Séma |
 |--------------------|--------------------|--------------------|
 | 200 | Siker. | [ServiceResponse](#serviceresponse) |
-| alapérték | Az hibaüzenetet, amely leírja, hogy miért volt sikertelen a művelet. | [ErrorResponse](#errorresponse)
+| alapértelmezett | Az hibaüzenetet, amely leírja, hogy miért volt sikertelen a művelet. | [ErrorResponse](#errorresponse)
 
 ## <a name="update-a-service"></a>Szolgáltatás frissítése
 
 ### <a name="request"></a>Kérés
 | Módszer | Kérés URI-ja |
 |------------|------------|
-| PUT |  /API /Subscriptions/ {subscriptionId} /resourceGroups/ {resourceGroupName} {accountName} /accounts/ /services/ {azonosító} | 
+| A PUT |  /api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/services/{id} | 
 
 ### <a name="description"></a>Leírás
 Frissíti a meglévő szolgáltatás.
 
 ### <a name="parameters"></a>Paraméterek
-| Name (Név) | Hely | Leírás | Szükséges | Séma
+| Name (Név) | A található | Leírás | Szükséges | Séma
 |--------------------|--------------------|--------------------|--------------------|--------------------|
-| subscriptionId | elérési út | Az Azure előfizetés-azonosító. | Igen | karakterlánc |
-| erőforráscsoport-név | elérési út | Az erőforráscsoport, ahol a modell felügyeleti fiókjának neve. | Igen | karakterlánc |
+| subscriptionId | elérési út | Azure subscription ID. | Igen | karakterlánc |
+| resourceGroupName | elérési út | Az erőforráscsoport, ahol a modell felügyeleti fiókjának neve. | Igen | karakterlánc |
 | Fióknév | elérési út | A modell felügyeleti fiókjának neve. | Igen | karakterlánc |
 | id | elérési út | Objektum azonosítója. | Igen | karakterlánc |
 | API-verzió | lekérdezés | A Microsoft.Machine.Learning erőforrás-szolgáltató használatára API verziója. | Igen | karakterlánc |
@@ -423,23 +423,23 @@ Frissíti a meglévő szolgáltatás.
 |--------------------|--------------------|--------------------|--------------------|
 | 202 | Az aszinkron művelet hely URL-címe. GET hívást megtudhatja, a frissítési feladat állapotát. | A művelet-helye |
 | 404 | A szolgáltatást, amely a megadott azonosító nem létezik. |
-| alapérték | Az hibaüzenetet, amely leírja, hogy miért volt sikertelen a művelet. | [ErrorResponse](#errorresponse)
+| alapértelmezett | Az hibaüzenetet, amely leírja, hogy miért volt sikertelen a művelet. | [ErrorResponse](#errorresponse)
 
 ## <a name="delete-a-service"></a>A szolgáltatás törlése
 
 ### <a name="request"></a>Kérés
 | Módszer | Kérés URI-ja |
 |------------|------------|
-| DELETE |  /API /Subscriptions/ {subscriptionId} /resourceGroups/ {resourceGroupName} {accountName} /accounts/ /services/ {azonosító} | 
+| DELETE |  /api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/services/{id} | 
 
 ### <a name="description"></a>Leírás
 Szolgáltatás törlése.
 
 ### <a name="parameters"></a>Paraméterek
-| Name (Név) | Hely | Leírás | Szükséges | Séma
+| Name (Név) | A található | Leírás | Szükséges | Séma
 |--------------------|--------------------|--------------------|--------------------|--------------------|
-| subscriptionId | elérési út | Az Azure előfizetés-azonosító. | Igen | karakterlánc |
-| erőforráscsoport-név | elérési út | Az erőforráscsoport, ahol a modell felügyeleti fiókjának neve. | Igen | karakterlánc |
+| subscriptionId | elérési út | Azure subscription ID. | Igen | karakterlánc |
+| resourceGroupName | elérési út | Az erőforráscsoport, ahol a modell felügyeleti fiókjának neve. | Igen | karakterlánc |
 | Fióknév | elérési út | A modell felügyeleti fiókjának neve. | Igen | karakterlánc |
 | id | elérési út | Objektum azonosítója. | Igen | karakterlánc |
 | API-verzió | lekérdezés | A Microsoft.Machine.Learning erőforrás-szolgáltató használatára API verziója. | Igen | karakterlánc |
@@ -450,25 +450,25 @@ Szolgáltatás törlése.
 |--------------------|--------------------|--------------------|
 | 200 | Siker. |  |
 | 204 | A szolgáltatást, amely a megadott azonosító nem létezik. |
-| alapérték | Az hibaüzenetet, amely leírja, hogy miért volt sikertelen a művelet. | [ErrorResponse](#errorresponse)
+| alapértelmezett | Az hibaüzenetet, amely leírja, hogy miért volt sikertelen a művelet. | [ErrorResponse](#errorresponse)
 
 ## <a name="get-service-keys"></a>Szolgáltatás-kulcsok beszerzése
 
 ### <a name="request"></a>Kérés
 | Módszer | Kérés URI-ja |
 |------------|------------|
-| GET |  /API /Subscriptions/ {subscriptionId} /resourceGroups/ {resourceGroupName} {accountName} /accounts/ /services/ {azonosítójú} / kulcsok | 
+| GET |  /api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/services/{id}/keys | 
 
 ### <a name="description"></a>Leírás
 Lekérdezi a kulcsai.
 
 ### <a name="parameters"></a>Paraméterek
-| Name (Név) | Hely | Leírás | Szükséges | Séma
+| Name (Név) | A található | Leírás | Szükséges | Séma
 |--------------------|--------------------|--------------------|--------------------|--------------------|
-| subscriptionId | elérési út | Az Azure előfizetés-azonosító. | Igen | karakterlánc |
-| erőforráscsoport-név | elérési út | Az erőforráscsoport, ahol a modell felügyeleti fiókjának neve. | Igen | karakterlánc |
+| subscriptionId | elérési út | Azure subscription ID. | Igen | karakterlánc |
+| resourceGroupName | elérési út | Az erőforráscsoport, ahol a modell felügyeleti fiókjának neve. | Igen | karakterlánc |
 | Fióknév | elérési út | A modell felügyeleti fiókjának neve. | Igen | karakterlánc |
-| id | elérési út | Szolgáltatás azonosítója. | Igen | karakterlánc |
+| id | elérési út | Service ID. | Igen | karakterlánc |
 | API-verzió | lekérdezés | A Microsoft.Machine.Learning erőforrás-szolgáltató használatára API verziója. | Igen | karakterlánc |
 | Engedélyezés | header | Engedélyezési jogkivonat. "Tulajdonosi XXXXXX." hasonlót kell | Igen | karakterlánc |
 
@@ -476,25 +476,25 @@ Lekérdezi a kulcsai.
 | Kód | Leírás | Séma |
 |--------------------|--------------------|--------------------|
 | 200 | Siker. | [AuthKeys](#authkeys)
-| alapérték | Az hibaüzenetet, amely leírja, hogy miért volt sikertelen a művelet. | [ErrorResponse](#errorresponse)
+| alapértelmezett | Az hibaüzenetet, amely leírja, hogy miért volt sikertelen a művelet. | [ErrorResponse](#errorresponse)
 
 ## <a name="regenerate-service-keys"></a>Szolgáltatás kulcsok újragenerálása
 
 ### <a name="request"></a>Kérés
 | Módszer | Kérés URI-ja |
 |------------|------------|
-| POST |  /API /Subscriptions/ {subscriptionId} /resourceGroups/ {resourceGroupName} {accountName} /accounts/ /services/ {azonosítójú} / kulcsok | 
+| POST |  /api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/services/{id}/keys | 
 
 ### <a name="description"></a>Leírás
 Szolgáltatás kulcsainak újragenerálása, és visszaadja azokat.
 
 ### <a name="parameters"></a>Paraméterek
-| Name (Név) | Hely | Leírás | Szükséges | Séma
+| Name (Név) | A található | Leírás | Szükséges | Séma
 |--------------------|--------------------|--------------------|--------------------|--------------------|
-| subscriptionId | elérési út | Az Azure előfizetés-azonosító. | Igen | karakterlánc |
-| erőforráscsoport-név | elérési út | Az erőforráscsoport, ahol a modell felügyeleti fiókjának neve. | Igen | karakterlánc |
+| subscriptionId | elérési út | Azure subscription ID. | Igen | karakterlánc |
+| resourceGroupName | elérési út | Az erőforráscsoport, ahol a modell felügyeleti fiókjának neve. | Igen | karakterlánc |
 | Fióknév | elérési út | A modell felügyeleti fiókjának neve. | Igen | karakterlánc |
-| id | elérési út | Szolgáltatás azonosítója. | Igen | karakterlánc |
+| id | elérési út | Service ID. | Igen | karakterlánc |
 | API-verzió | lekérdezés | A Microsoft.Machine.Learning erőforrás-szolgáltató használatára API verziója. | Igen | karakterlánc |
 | Engedélyezés | header | Engedélyezési jogkivonat. "Tulajdonosi XXXXXX." hasonlót kell | Igen | karakterlánc |
 | regenerateKeyRequest | törzs | Meglévő szolgáltatás frissítéséhez használt hasznos. | Igen | [ServiceRegenerateKeyRequest](#serviceregeneratekeyrequest) |
@@ -503,49 +503,49 @@ Szolgáltatás kulcsainak újragenerálása, és visszaadja azokat.
 | Kód | Leírás | Séma |
 |--------------------|--------------------|--------------------|
 | 200 | Siker. | [AuthKeys](#authkeys)
-| alapérték | Az hibaüzenetet, amely leírja, hogy miért volt sikertelen a művelet. | [ErrorResponse](#errorresponse)
+| alapértelmezett | Az hibaüzenetet, amely leírja, hogy miért volt sikertelen a művelet. | [ErrorResponse](#errorresponse)
 
 ## <a name="query-the-list-of-deployments-in-an-account"></a>A központi telepítések fiók listájának lekérdezése
 
 ### <a name="request"></a>Kérés
 | Módszer | Kérés URI-ja |
 |------------|------------|
-| GET |  /API /Subscriptions/ {subscriptionId} /resourceGroups/ {resourceGroupName} /accounts/ {accountName} / központi telepítések | 
+| GET |  /api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/deployments | 
 
 ### <a name="description"></a>Leírás
 Lekérdezi a fiók üzemelő példányok listáját. Felügyeletiszolgáltatás-azonosító csak az adott szolgáltatáshoz létrehozott telepítések visszaadható által az eredménylista végezhet. Ha nincs szűrő fogad el, a lekérdezés felsorolja a fiók összes központi telepítést.
 
 ### <a name="parameters"></a>Paraméterek
-| Name (Név) | Hely | Leírás | Szükséges | Séma
+| Name (Név) | A található | Leírás | Szükséges | Séma
 |--------------------|--------------------|--------------------|--------------------|--------------------|
-| subscriptionId | elérési út | Az Azure előfizetés-azonosító. | Igen | karakterlánc |
-| erőforráscsoport-név | elérési út | Az erőforráscsoport, ahol a modell felügyeleti fiókjának neve. | Igen | karakterlánc |
+| subscriptionId | elérési út | Azure subscription ID. | Igen | karakterlánc |
+| resourceGroupName | elérési út | Az erőforráscsoport, ahol a modell felügyeleti fiókjának neve. | Igen | karakterlánc |
 | Fióknév | elérési út | A modell felügyeleti fiókjának neve. | Igen | karakterlánc |
 | API-verzió | lekérdezés | A Microsoft.Machine.Learning erőforrás-szolgáltató használatára API verziója. | Igen | karakterlánc |
 | Engedélyezés | header | Engedélyezési jogkivonat. "Tulajdonosi XXXXXX." hasonlót kell | Igen | karakterlánc |
-| serviceId | lekérdezés | Szolgáltatás azonosítója. | Nem | karakterlánc |
+| serviceId | lekérdezés | Service ID. | Nem | karakterlánc |
 
 ### <a name="responses"></a>Válaszok
 | Kód | Leírás | Séma |
 |--------------------|--------------------|--------------------|
 | 200 | Siker. | [DeploymentList](#deploymentlist) |
-| alapérték | Az hibaüzenetet, amely leírja, hogy miért volt sikertelen a művelet. | [ErrorResponse](#errorresponse)
+| alapértelmezett | Az hibaüzenetet, amely leírja, hogy miért volt sikertelen a művelet. | [ErrorResponse](#errorresponse)
 
 ## <a name="get-deployment-details"></a>Központi telepítés részletes
 
 ### <a name="request"></a>Kérés
 | Módszer | Kérés URI-ja |
 |------------|------------|
-| GET |  /API /Subscriptions/ {subscriptionId} /resourceGroups/ {resourceGroupName} {accountName} /accounts/ /deployments/ {azonosító} | 
+| GET |  /api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/deployments/{id} | 
 
 ### <a name="description"></a>Leírás
 Lekérdezi a központi telepítéskor azonosítóját.
 
 ### <a name="parameters"></a>Paraméterek
-| Name (Név) | Hely | Leírás | Szükséges | Séma
+| Name (Név) | A található | Leírás | Szükséges | Séma
 |--------------------|--------------------|--------------------|--------------------|--------------------|
-| subscriptionId | elérési út | Az Azure előfizetés-azonosító. | Igen | karakterlánc |
-| erőforráscsoport-név | elérési út | Az erőforráscsoport, ahol a modell felügyeleti fiókjának neve. | Igen | karakterlánc |
+| subscriptionId | elérési út | Azure subscription ID. | Igen | karakterlánc |
+| resourceGroupName | elérési út | Az erőforráscsoport, ahol a modell felügyeleti fiókjának neve. | Igen | karakterlánc |
 | Fióknév | elérési út | A modell felügyeleti fiókjának neve. | Igen | karakterlánc |
 | id | elérési út | Központi telepítési azonosítója. | Igen | karakterlánc |
 | API-verzió | lekérdezés | A Microsoft.Machine.Learning erőforrás-szolgáltató használatára API verziója. | Igen | karakterlánc |
@@ -555,23 +555,23 @@ Lekérdezi a központi telepítéskor azonosítóját.
 | Kód | Leírás | Séma |
 |--------------------|--------------------|--------------------|
 | 200 | Siker. | [Üzembe helyezés](#deployment) |
-| alapérték | Az hibaüzenetet, amely leírja, hogy miért volt sikertelen a művelet. | [ErrorResponse](#errorresponse)
+| alapértelmezett | Az hibaüzenetet, amely leírja, hogy miért volt sikertelen a művelet. | [ErrorResponse](#errorresponse)
 
 ## <a name="get-operation-details"></a>A művelet részletes
 
 ### <a name="request"></a>Kérés
 | Módszer | Kérés URI-ja |
 |------------|------------|
-| GET |  /API /Subscriptions/ {subscriptionId} /resourceGroups/ {resourceGroupName} {accountName} /accounts/ /operations/ {azonosító} | 
+| GET |  /api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/operations/{id} | 
 
 ### <a name="description"></a>Leírás
 Művelet azonosító által aszinkron művelet állapotát olvassa be
 
 ### <a name="parameters"></a>Paraméterek
-| Name (Név) | Hely | Leírás | Szükséges | Séma
+| Name (Név) | A található | Leírás | Szükséges | Séma
 |--------------------|--------------------|--------------------|--------------------|--------------------|
-| subscriptionId | elérési út | Az Azure előfizetés-azonosító. | Igen | karakterlánc |
-| erőforráscsoport-név | elérési út | Az erőforráscsoport, ahol a modell felügyeleti fiókjának neve. | Igen | karakterlánc |
+| subscriptionId | elérési út | Azure subscription ID. | Igen | karakterlánc |
+| resourceGroupName | elérési út | Az erőforráscsoport, ahol a modell felügyeleti fiókjának neve. | Igen | karakterlánc |
 | Fióknév | elérési út | A modell felügyeleti fiókjának neve. | Igen | karakterlánc |
 | id | elérési út | A művelet azonosítója. | Igen | karakterlánc |
 | API-verzió | lekérdezés | A Microsoft.Machine.Learning erőforrás-szolgáltató használatára API verziója. | Igen | karakterlánc |
@@ -581,7 +581,7 @@ Művelet azonosító által aszinkron művelet állapotát olvassa be
 | Kód | Leírás | Séma |
 |--------------------|--------------------|--------------------|
 | 200 | Siker. | [OperationStatus](#asyncoperationstatus) |
-| alapérték | Az hibaüzenetet, amely leírja, hogy miért volt sikertelen a művelet. | [ErrorResponse](#errorresponse)
+| alapértelmezett | Az hibaüzenetet, amely leírja, hogy miért volt sikertelen a művelet. | [ErrorResponse](#errorresponse)
 
 
 
@@ -595,10 +595,10 @@ Az eszköz objektum Docker lemezkép létrehozása során szükséges.
 
 |Name (Név)|Leírás|Séma|
 |---|---|---|
-|**azonosítója**  <br>*nem kötelező*|Eszköz azonosítója.|karakterlánc|
-|**mimeType**  <br>*nem kötelező*|A modell tartalma MIME-típus. A MIME-típus kapcsolatos további információkért tekintse meg a [IANA adathordozó-típusok listája](https://www.iana.org/assignments/media-types/media-types.xhtml).|karakterlánc|
-|**Csomagolja ki**  <br>*nem kötelező*|Azt jelzi, ha igazolnia kell a csomagolja ki a tartalom Docker lemezkép létrehozása során.|logikai|
-|**URL-címe**  <br>*nem kötelező*|Eszköz hely URL-címe.|karakterlánc|
+|**id**  <br>*optional*|Eszköz azonosítója.|karakterlánc|
+|**mimeType**  <br>*optional*|A modell tartalma MIME-típus. A MIME-típus kapcsolatos további információkért tekintse meg a [IANA adathordozó-típusok listája](https://www.iana.org/assignments/media-types/media-types.xhtml).|karakterlánc|
+|**unpack**  <br>*optional*|Azt jelzi, ha igazolnia kell a csomagolja ki a tartalom Docker lemezkép létrehozása során.|logikai|
+|**url**  <br>*optional*|Eszköz hely URL-címe.|karakterlánc|
 
 
 <a name="asyncoperationstate"></a>
@@ -615,13 +615,13 @@ A művelet állapotát.
 
 |Name (Név)|Leírás|Séma|
 |---|---|---|
-|**createdTime**  <br>*nem kötelező*  <br>*csak olvasható*|Az aszinkron művelet létrehozásának időpontja (UTC).|karakterlánc (dátum, idő)|
-|**Befejezés időpontja**  <br>*nem kötelező*  <br>*csak olvasható*|Az aszinkron művelet befejezésének időpontja (UTC).|karakterlánc (dátum, idő)|
-|**Hiba történt**  <br>*nem kötelező*||[ErrorResponse](#errorresponse)|
-|**azonosítója**  <br>*nem kötelező*|Az aszinkron művelet azonosítója.|karakterlánc|
-|**Művelettípus**  <br>*nem kötelező*|Az aszinkron művelet típusa.|Enum (a képet, a szolgáltatás)|
-|**resourceLocation**  <br>*nem kötelező*|Erőforrás létrehozása, vagy frissíti az aszinkron művelet.|karakterlánc|
-|**állapot**  <br>*nem kötelező*||[AsyncOperationState](#asyncoperationstate)|
+|**createdTime**  <br>*optional*  <br>*read-only*|Az aszinkron művelet létrehozásának időpontja (UTC).|karakterlánc (dátum, idő)|
+|**endTime**  <br>*optional*  <br>*read-only*|Az aszinkron művelet befejezésének időpontja (UTC).|karakterlánc (dátum, idő)|
+|**Hiba történt**  <br>*optional*||[ErrorResponse](#errorresponse)|
+|**id**  <br>*optional*|Az aszinkron művelet azonosítója.|karakterlánc|
+|**operationType**  <br>*optional*|Az aszinkron művelet típusa.|Enum (a képet, a szolgáltatás)|
+|**resourceLocation**  <br>*optional*|Erőforrás létrehozása, vagy frissíti az aszinkron művelet.|karakterlánc|
+|**state**  <br>*optional*||[AsyncOperationState](#asyncoperationstate)|
 
 
 <a name="authkeys"></a>
@@ -631,8 +631,8 @@ A hitelesítési kulcsokat, a szolgáltatás számára.
 
 |Name (Név)|Leírás|Séma|
 |---|---|---|
-|**primaryKey**  <br>*nem kötelező*|Elsődleges kulcs.|karakterlánc|
-|**másodlagos kulcs**  <br>*nem kötelező*|Másodlagos kulcsát.|karakterlánc|
+|**primaryKey**  <br>*optional*|Elsődleges kulcs.|karakterlánc|
+|**secondaryKey**  <br>*optional*|Másodlagos kulcsát.|karakterlánc|
 
 
 <a name="autoscaler"></a>
@@ -642,11 +642,11 @@ A autoscaler beállításait.
 
 |Name (Név)|Leírás|Séma|
 |---|---|---|
-|**autoscaleEnabled**  <br>*nem kötelező*|Engedélyezi vagy letiltja a autoscaler.|logikai|
-|**maxReplicas**  <br>*nem kötelező*|Akár méretezési pod másodpéldányok maximális száma.  <br>**Minimális érték**:`1`|egész szám|
-|**minReplicas**  <br>*nem kötelező*|Pod replikák le a méretezési minimális száma.  <br>**Minimális érték**:`0`|egész szám|
-|**refreshPeriodInSeconds**  <br>*nem kötelező*|Frissítési időpont automatikus skálázás eseményindító.  <br>**Minimális érték**:`1`|egész szám|
-|**targetUtilization**  <br>*nem kötelező*|Kihasználtsági százaléka, amely elindítja az automatikus skálázást.  <br>**Minimális érték**:`0`  <br>**Maximális érték**:`100`|egész szám|
+|**autoscaleEnabled**  <br>*optional*|Engedélyezi vagy letiltja a autoscaler.|logikai|
+|**maxReplicas**  <br>*optional*|Akár méretezési pod másodpéldányok maximális száma.  <br>**Minimális érték**: `1`|integer|
+|**minReplicas**  <br>*optional*|Pod replikák le a méretezési minimális száma.  <br>**Minimális érték**: `0`|integer|
+|**refreshPeriodInSeconds**  <br>*optional*|Frissítési időpont automatikus skálázás eseményindító.  <br>**Minimális érték**: `1`|integer|
+|**targetUtilization**  <br>*optional*|Kihasználtsági százaléka, amely elindítja az automatikus skálázást.  <br>**Minimális érték**: `0`  <br>**Maximális érték**: `100`|integer|
 
 
 <a name="computeresource"></a>
@@ -656,8 +656,8 @@ A Machine Learning számítási erőforrással.
 
 |Name (Név)|Leírás|Séma|
 |---|---|---|
-|**azonosítója**  <br>*nem kötelező*|Erőforrás-azonosító.|karakterlánc|
-|**típusa**  <br>*nem kötelező*|Az erőforrás típusát.|Enum (fürt)|
+|**id**  <br>*optional*|Erőforrás-azonosító.|karakterlánc|
+|**Típusa**  <br>*optional*|Az erőforrás típusát.|Enum (fürt)|
 
 
 <a name="containerresourcereservation"></a>
@@ -667,8 +667,8 @@ A fürt egy tároló erőforrásokat beállításait.
 
 |Name (Név)|Leírás|Séma|
 |---|---|---|
-|**processzor**  <br>*nem kötelező*|Megadja a CPU-foglalást. Kubernetes formátuma: lásd: [jelentése a CPU](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu).|karakterlánc|
-|**memória**  <br>*nem kötelező*|Megadja a memória-foglalás. Kubernetes formátuma: lásd: [memória szerinti](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory).|karakterlánc|
+|**cpu**  <br>*optional*|Megadja a CPU-foglalást. Kubernetes formátuma: lásd: [jelentése a CPU](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu).|karakterlánc|
+|**Memória**  <br>*optional*|Megadja a memória-foglalás. Kubernetes formátuma: lásd: [memória szerinti](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory).|karakterlánc|
 
 
 <a name="deployment"></a>
@@ -678,12 +678,12 @@ Az Azure Machine Learning központi telepítése egy példányát.
 
 |Name (Név)|Leírás|Séma|
 |---|---|---|
-|**createdAt**  <br>*nem kötelező*  <br>*csak olvasható*|Központi telepítés létrehozásának időpontja (UTC).|karakterlánc (dátum, idő)|
-|**expiredAt**  <br>*nem kötelező*  <br>*csak olvasható*|Központi telepítés a lejárt időpontja (UTC).|karakterlánc (dátum, idő)|
-|**azonosítója**  <br>*nem kötelező*|Központi telepítési azonosítója.|karakterlánc|
-|**imageId**  <br>*nem kötelező*|A központi telepítéshez tartozó kép azonosítója.|karakterlánc|
-|**Szolgáltatásnév**  <br>*nem kötelező*|Szolgáltatás neve.|karakterlánc|
-|**állapot**  <br>*nem kötelező*|Aktuális központi telepítési állapot.|karakterlánc|
+|**createdAt**  <br>*optional*  <br>*read-only*|Központi telepítés létrehozásának időpontja (UTC).|karakterlánc (dátum, idő)|
+|**expiredAt**  <br>*optional*  <br>*read-only*|Központi telepítés a lejárt időpontja (UTC).|karakterlánc (dátum, idő)|
+|**id**  <br>*optional*|Központi telepítési azonosítója.|karakterlánc|
+|**imageId**  <br>*optional*|A központi telepítéshez tartozó kép azonosítója.|karakterlánc|
+|**serviceName**  <br>*optional*|Szolgáltatás neve.|karakterlánc|
+|**status**  <br>*optional*|Aktuális központi telepítési állapot.|karakterlánc|
 
 
 <a name="deploymentlist"></a>
@@ -700,8 +700,8 @@ Modellhez tartozó felügyeleti szolgáltatás hiba részletei.
 
 |Name (Név)|Leírás|Séma|
 |---|---|---|
-|**kód**  <br>*szükséges*|Hibakód.|karakterlánc|
-|**üzenet**  <br>*szükséges*|Hibaüzenet jelenik meg.|karakterlánc|
+|**Kód**  <br>*required*|Hibakód.|karakterlánc|
+|**Üzenet**  <br>*required*|Hibaüzenet jelenik meg.|karakterlánc|
 
 
 <a name="errorresponse"></a>
@@ -711,10 +711,10 @@ A modell felügyeleti szolgáltatás hiba objektum.
 
 |Name (Név)|Leírás|Séma|
 |---|---|---|
-|**kód**  <br>*szükséges*|Hibakód.|karakterlánc|
-|**Részletek**  <br>*nem kötelező*|Hiba részletei objektumokból álló tömb.|<[ErrorDetail](#errordetail)> tömb|
-|**üzenet**  <br>*szükséges*|Hibaüzenet jelenik meg.|karakterlánc|
-|**statusCode**  <br>*nem kötelező*|HTTP-állapotkódot.|egész szám|
+|**Kód**  <br>*required*|Hibakód.|karakterlánc|
+|**Részletek**  <br>*optional*|Hiba részletei objektumokból álló tömb.|<[ErrorDetail](#errordetail)> tömb|
+|**Üzenet**  <br>*required*|Hibaüzenet jelenik meg.|karakterlánc|
+|**statusCode**  <br>*optional*|HTTP-állapotkódot.|integer|
 
 
 <a name="image"></a>
@@ -724,18 +724,18 @@ Az Azure Machine Learning kép.
 
 |Name (Név)|Leírás|Séma|
 |---|---|---|
-|**computeResourceId**  <br>*nem kötelező*|A környezet létre a Machine Learning számítási erőforrás-azonosítója.|karakterlánc|
-|**createdTime**  <br>*nem kötelező*|Lemezkép létrehozásának időpontja (UTC).|karakterlánc (dátum, idő)|
-|**creationState**  <br>*nem kötelező*||[AsyncOperationState](#asyncoperationstate)|
-|**Leírás**  <br>*nem kötelező*|Kép leíró szöveg.|karakterlánc|
-|**Hiba történt**  <br>*nem kötelező*||[ErrorResponse](#errorresponse)|
-|**azonosítója**  <br>*nem kötelező*|Lemezkép-azonosítót.|karakterlánc|
-|**imageBuildLogUri**  <br>*nem kötelező*|A kép összeállítása a feltöltött naplók URI Azonosítóját.|karakterlánc|
-|**imageLocation**  <br>*nem kötelező*|A létrehozott lemezképet Azure tároló beállításjegyzék helye karakterláncot.|karakterlánc|
-|**imageType**  <br>*nem kötelező*||[ImageType](#imagetype)|
-|**manifest**  <br>*nem kötelező*||[Manifest](#manifest)|
-|**név**  <br>*nem kötelező*|Kép neve.|karakterlánc|
-|**verzió**  <br>*nem kötelező*|A modell szolgáltatás beállítása lemezkép verziója.|egész szám|
+|**computeResourceId**  <br>*optional*|A környezet létre a Machine Learning számítási erőforrás-azonosítója.|karakterlánc|
+|**createdTime**  <br>*optional*|Lemezkép létrehozásának időpontja (UTC).|karakterlánc (dátum, idő)|
+|**creationState**  <br>*optional*||[AsyncOperationState](#asyncoperationstate)|
+|**description**  <br>*optional*|Kép leíró szöveg.|karakterlánc|
+|**Hiba történt**  <br>*optional*||[ErrorResponse](#errorresponse)|
+|**id**  <br>*optional*|Lemezkép-azonosítót.|karakterlánc|
+|**imageBuildLogUri**  <br>*optional*|A kép összeállítása a feltöltött naplók URI Azonosítóját.|karakterlánc|
+|**imageLocation**  <br>*optional*|A létrehozott lemezképet Azure tároló beállításjegyzék helye karakterláncot.|karakterlánc|
+|**imageType**  <br>*optional*||[ImageType](#imagetype)|
+|**Manifest**  <br>*optional*||[Manifest](#manifest)|
+|**name**  <br>*optional*|Kép neve.|karakterlánc|
+|**version**  <br>*optional*|A modell szolgáltatás beállítása lemezkép verziója.|integer|
 
 
 <a name="imagerequest"></a>
@@ -745,11 +745,11 @@ Azure Machine Learning lemezképeket készíthet a kérést.
 
 |Name (Név)|Leírás|Séma|
 |---|---|---|
-|**computeResourceId**  <br>*szükséges*|A környezet létre a Machine Learning számítási erőforrás-azonosítója.|karakterlánc|
-|**Leírás**  <br>*nem kötelező*|Kép leíró szöveg.|karakterlánc|
-|**imageType**  <br>*szükséges*||[ImageType](#imagetype)|
-|**Jegyzékfájl azonosítója**  <br>*szükséges*|A jegyzékfájl, amelyből létrehozza a kép azonosítója.|karakterlánc|
-|**név**  <br>*szükséges*|Kép neve.|karakterlánc|
+|**computeResourceId**  <br>*required*|A környezet létre a Machine Learning számítási erőforrás-azonosítója.|karakterlánc|
+|**description**  <br>*optional*|Kép leíró szöveg.|karakterlánc|
+|**imageType**  <br>*required*||[ImageType](#imagetype)|
+|**manifestId**  <br>*required*|A jegyzékfájl, amelyből létrehozza a kép azonosítója.|karakterlánc|
+|**name**  <br>*required*|Kép neve.|karakterlánc|
 
 
 <a name="imagetype"></a>
@@ -766,17 +766,17 @@ Az Azure Machine Learning jegyzék.
 
 |Name (Név)|Leírás|Séma|
 |---|---|---|
-|**eszközök**  <br>*szükséges*|Eszközök listája.|<[Eszköz](#asset)> tömb|
-|**createdTime**  <br>*nem kötelező*  <br>*csak olvasható*|Manifest létrehozásának időpontja (UTC).|karakterlánc (dátum, idő)|
-|**Leírás**  <br>*nem kötelező*|A leíró szöveg manifest.|karakterlánc|
-|**driverProgram**  <br>*szükséges*|A jegyzékfájl illesztőprogramra.|karakterlánc|
-|**azonosítója**  <br>*nem kötelező*|Manifest azonosítóját.|karakterlánc|
-|**modelIds**  <br>*nem kötelező*|A regisztrált modellek modell azonosítók listáját. A kérelem sikertelen lesz, ha az összes belefoglalt modell nincs regisztrálva.|<string>a tömb|
-|**modelType**  <br>*nem kötelező*|Meghatározza, hogy a modell már regisztrálva van a modell felügyeleti szolgáltatással.|Enum (regisztrált)|
-|**név**  <br>*szükséges*|A jegyzékfájl neve.|karakterlánc|
-|**targetRuntime**  <br>*szükséges*||[TargetRuntime](#targetruntime)|
-|**verzió**  <br>*nem kötelező*  <br>*csak olvasható*|A modell felügyeleti szolgáltatása által hozzárendelt jegyzékfájljának verziószámát.|egész szám|
-|**webserviceType**  <br>*nem kötelező*|Adja meg a kívánt webes szolgáltatás, amely a jegyzékfájlból jön létre.|Enum (valós idejű)|
+|**Eszközök**  <br>*required*|Eszközök listája.|<[Eszköz](#asset)> tömb|
+|**createdTime**  <br>*optional*  <br>*read-only*|Manifest létrehozásának időpontja (UTC).|karakterlánc (dátum, idő)|
+|**description**  <br>*optional*|A leíró szöveg manifest.|karakterlánc|
+|**driverProgram**  <br>*required*|A jegyzékfájl illesztőprogramra.|karakterlánc|
+|**id**  <br>*optional*|Manifest azonosítóját.|karakterlánc|
+|**modelIds**  <br>*optional*|A regisztrált modellek modell azonosítók listáját. A kérelem sikertelen lesz, ha az összes belefoglalt modell nincs regisztrálva.|<string> A tömb|
+|**modelType**  <br>*optional*|Meghatározza, hogy a modell már regisztrálva van a modell felügyeleti szolgáltatással.|Enum (regisztrált)|
+|**name**  <br>*required*|A jegyzékfájl neve.|karakterlánc|
+|**targetRuntime**  <br>*required*||[TargetRuntime](#targetruntime)|
+|**version**  <br>*optional*  <br>*read-only*|A modell felügyeleti szolgáltatása által hozzárendelt jegyzékfájljának verziószámát.|integer|
+|**webserviceType**  <br>*optional*|Adja meg a kívánt webes szolgáltatás, amely a jegyzékfájlból jön létre.|Enum (valós idejű)|
 
 
 <a name="model"></a>
@@ -786,15 +786,15 @@ Az Azure Machine Learning modell példánya.
 
 |Name (Név)|Leírás|Séma|
 |---|---|---|
-|**createdAt**  <br>*nem kötelező*  <br>*csak olvasható*|Modell létrehozásának időpontja (UTC).|karakterlánc (dátum, idő)|
-|**Leírás**  <br>*nem kötelező*|Modell leíró szöveg.|karakterlánc|
-|**azonosítója**  <br>*nem kötelező*  <br>*csak olvasható*|Forrásmodell azonosítóját.|karakterlánc|
-|**mimeType**  <br>*szükséges*|A modell tartalma MIME-típusát. A MIME-típus kapcsolatos további információkért tekintse meg a [IANA adathordozó-típusok listája](https://www.iana.org/assignments/media-types/media-types.xhtml).|karakterlánc|
-|**név**  <br>*szükséges*|Modell neve.|karakterlánc|
-|**címkét**  <br>*nem kötelező*|Címkelista modell.|<string>a tömb|
-|**Csomagolja ki**  <br>*nem kötelező*|Azt jelzi, hogy igazolnia kell a csomagolja ki a modell Docker lemezkép létrehozása során.|logikai|
-|**URL-címe**  <br>*szükséges*|A modell URL-CÍMÉT. Általában azt egy megosztott hozzáférési aláírást URL-cím ide kerül.|karakterlánc|
-|**verzió**  <br>*nem kötelező*  <br>*csak olvasható*|A modell felügyeleti szolgáltatása által hozzárendelt modellverziója.|egész szám|
+|**createdAt**  <br>*optional*  <br>*read-only*|Modell létrehozásának időpontja (UTC).|karakterlánc (dátum, idő)|
+|**description**  <br>*optional*|Modell leíró szöveg.|karakterlánc|
+|**id**  <br>*optional*  <br>*read-only*|Forrásmodell azonosítóját.|karakterlánc|
+|**mimeType**  <br>*required*|A modell tartalma MIME-típusát. A MIME-típus kapcsolatos további információkért tekintse meg a [IANA adathordozó-típusok listája](https://www.iana.org/assignments/media-types/media-types.xhtml).|karakterlánc|
+|**name**  <br>*required*|Modell neve.|karakterlánc|
+|**címkét**  <br>*optional*|Címkelista modell.|<string> A tömb|
+|**unpack**  <br>*optional*|Azt jelzi, hogy igazolnia kell a csomagolja ki a modell Docker lemezkép létrehozása során.|logikai|
+|**url**  <br>*required*|A modell URL-CÍMÉT. Általában azt egy megosztott hozzáférési aláírást URL-cím ide kerül.|karakterlánc|
+|**version**  <br>*optional*  <br>*read-only*|A modell felügyeleti szolgáltatása által hozzárendelt modellverziója.|integer|
 
 
 <a name="modeldatacollection"></a>
@@ -804,8 +804,8 @@ Az adatok gyűjtése információt.
 
 |Name (Név)|Leírás|Séma|
 |---|---|---|
-|**eventHubEnabled**  <br>*nem kötelező*|Az event hubs szolgáltatás engedélyezése.|logikai|
-|**storageEnabled**  <br>*nem kötelező*|Engedélyezi egy szolgáltatás-tároló.|logikai|
+|**eventHubEnabled**  <br>*optional*|Az event hubs szolgáltatás engedélyezése.|logikai|
+|**storageEnabled**  <br>*optional*|Engedélyezi egy szolgáltatás-tároló.|logikai|
 
 
 <a name="paginatedimagelist"></a>
@@ -815,8 +815,8 @@ Lemezképek többoldalas listáját.
 
 |Name (Név)|Leírás|Séma|
 |---|---|---|
-|**nextLink**  <br>*nem kötelező*|Folytatási (abszolút URI-azonosító) a következő lapra mutató hivatkozás az eredmények listájában.|karakterlánc|
-|**érték**  <br>*nem kötelező*|Modell objektumokból álló tömb.|<[Kép](#image)> tömb|
+|**nextLink**  <br>*optional*|Folytatási (abszolút URI-azonosító) a következő lapra mutató hivatkozás az eredmények listájában.|karakterlánc|
+|**value**  <br>*optional*|Modell objektumokból álló tömb.|<[Kép](#image)> tömb|
 
 
 <a name="paginatedmanifestlist"></a>
@@ -826,8 +826,8 @@ Jegyzékfájlokban többoldalas listáját.
 
 |Name (Név)|Leírás|Séma|
 |---|---|---|
-|**nextLink**  <br>*nem kötelező*|Folytatási (abszolút URI-azonosító) a következő lapra mutató hivatkozás az eredmények listájában.|karakterlánc|
-|**érték**  <br>*nem kötelező*|Manifest objektumokból álló tömb.|<[Manifest](#manifest)> tömb|
+|**nextLink**  <br>*optional*|Folytatási (abszolút URI-azonosító) a következő lapra mutató hivatkozás az eredmények listájában.|karakterlánc|
+|**value**  <br>*optional*|Manifest objektumokból álló tömb.|<[Manifest](#manifest)> tömb|
 
 
 <a name="paginatedmodellist"></a>
@@ -837,8 +837,8 @@ Modellek többoldalas listáját.
 
 |Name (Név)|Leírás|Séma|
 |---|---|---|
-|**nextLink**  <br>*nem kötelező*|Folytatási (abszolút URI-azonosító) a következő lapra mutató hivatkozás az eredmények listájában.|karakterlánc|
-|**érték**  <br>*nem kötelező*|Modell objektumokból álló tömb.|<[Modell](#model)> tömb|
+|**nextLink**  <br>*optional*|Folytatási (abszolút URI-azonosító) a következő lapra mutató hivatkozás az eredmények listájában.|karakterlánc|
+|**value**  <br>*optional*|Modell objektumokból álló tömb.|<[Modell](#model)> tömb|
 
 
 <a name="paginatedservicelist"></a>
@@ -848,8 +848,8 @@ Szolgáltatások többoldalas listáját.
 
 |Name (Név)|Leírás|Séma|
 |---|---|---|
-|**nextLink**  <br>*nem kötelező*|Folytatási (abszolút URI-azonosító) a következő lapra mutató hivatkozás az eredmények listájában.|karakterlánc|
-|**érték**  <br>*nem kötelező*|Szolgáltatás objektumokból álló tömb.|<[ServiceResponse](#serviceresponse)> tömb|
+|**nextLink**  <br>*optional*|Folytatási (abszolút URI-azonosító) a következő lapra mutató hivatkozás az eredmények listájában.|karakterlánc|
+|**value**  <br>*optional*|Szolgáltatás objektumokból álló tömb.|<[ServiceResponse](#serviceresponse)> tömb|
 
 
 <a name="servicecreaterequest"></a>
@@ -859,15 +859,15 @@ Hozzon létre egy szolgáltatási kérelem.
 
 |Name (Név)|Leírás|Séma|
 |---|---|---|
-|**appInsightsEnabled**  <br>*nem kötelező*|Engedélyezze az application insights szolgáltatáshoz.|logikai|
-|**autoScaler**  <br>*nem kötelező*||[AutoScaler](#autoscaler)|
-|**computeResource**  <br>*szükséges*||[ComputeResource](#computeresource)|
-|**containerResourceReservation**  <br>*nem kötelező*||[ContainerResourceReservation](#containerresourcereservation)|
-|**datacollection objektumot**  <br>*nem kötelező*||[ModelDataCollection](#modeldatacollection)|
-|**imageId**  <br>*szükséges*|A szolgáltatás létrehozása lemezkép.|karakterlánc|
-|**maxConcurrentRequestsPerContainer**  <br>*nem kötelező*|Egyidejű kérelmek maximális számát.  <br>**Minimális érték**:`1`|egész szám|
-|**név**  <br>*szükséges*|Szolgáltatás neve.|karakterlánc|
-|**numReplicas**  <br>*nem kötelező*|Bármikor futtató pod replikák száma. Nem adható, ha engedélyezve van-e a Autoscaler.  <br>**Minimális érték**:`0`|egész szám|
+|**appInsightsEnabled**  <br>*optional*|Engedélyezze az application insights szolgáltatáshoz.|logikai|
+|**autoScaler**  <br>*optional*||[AutoScaler](#autoscaler)|
+|**computeResource**  <br>*required*||[ComputeResource](#computeresource)|
+|**containerResourceReservation**  <br>*optional*||[ContainerResourceReservation](#containerresourcereservation)|
+|**dataCollection**  <br>*optional*||[ModelDataCollection](#modeldatacollection)|
+|**imageId**  <br>*required*|A szolgáltatás létrehozása lemezkép.|karakterlánc|
+|**maxConcurrentRequestsPerContainer**  <br>*optional*|Egyidejű kérelmek maximális számát.  <br>**Minimális érték**: `1`|integer|
+|**name**  <br>*required*|Szolgáltatás neve.|karakterlánc|
+|**numReplicas**  <br>*optional*|Bármikor futtató pod replikák száma. Nem adható, ha engedélyezve van-e a Autoscaler.  <br>**Minimális érték**: `0`|integer|
 
 
 <a name="serviceregeneratekeyrequest"></a>
@@ -877,7 +877,7 @@ A kérelem újragenerálni a kulcsot a szolgáltatás számára.
 
 |Name (Név)|Leírás|Séma|
 |---|---|---|
-|**keyType**  <br>*nem kötelező*|Itt adhatja meg, melyik újragenerálni a kulcsot.|Enum (elsődleges, másodlagos)|
+|**keyType**  <br>*optional*|Itt adhatja meg, melyik újragenerálni a kulcsot.|Enum (elsődleges, másodlagos)|
 
 
 <a name="serviceresponse"></a>
@@ -887,39 +887,39 @@ A szolgáltatás részletes állapotát.
 
 |Name (Név)|Leírás|Séma|
 |---|---|---|
-|**createdAt**  <br>*nem kötelező*|A szolgáltatás létrehozásának időpontja (UTC).|karakterlánc (dátum, idő)|
-|**Azonosító**  <br>*nem kötelező*|Szolgáltatás azonosítója.|karakterlánc|
-|**kép**  <br>*nem kötelező*||[Kép](#image)|
-|**manifest**  <br>*nem kötelező*||[Manifest](#manifest)|
-|**modellek**  <br>*nem kötelező*|Modellek listája.|<[Modell](#model)> tömb|
-|**név**  <br>*nem kötelező*|Szolgáltatás neve.|karakterlánc|
-|**scoringUri**  <br>*nem kötelező*|A szolgáltatás pontozó URI.|karakterlánc|
-|**állapot**  <br>*nem kötelező*||[AsyncOperationState](#asyncoperationstate)|
-|**updatedAt**  <br>*nem kötelező*|Legutóbbi frissítése (UTC).|karakterlánc (dátum, idő)|
-|**appInsightsEnabled**  <br>*nem kötelező*|Engedélyezze az application insights szolgáltatáshoz.|logikai|
-|**autoScaler**  <br>*nem kötelező*||[AutoScaler](#autoscaler)|
-|**computeResource**  <br>*szükséges*||[ComputeResource](#computeresource)|
-|**containerResourceReservation**  <br>*nem kötelező*||[ContainerResourceReservation](#containerresourcereservation)|
-|**datacollection objektumot**  <br>*nem kötelező*||[ModelDataCollection](#modeldatacollection)|
-|**maxConcurrentRequestsPerContainer**  <br>*nem kötelező*|Egyidejű kérelmek maximális számát.  <br>**Minimális érték**:`1`|egész szám|
-|**numReplicas**  <br>*nem kötelező*|Bármikor futtató pod replikák száma. Nem adható, ha engedélyezve van-e a Autoscaler.  <br>**Minimális érték**:`0`|egész szám|
-|**Hiba történt**  <br>*nem kötelező*||[ErrorResponse](#errorresponse)|
+|**createdAt**  <br>*optional*|A szolgáltatás létrehozásának időpontja (UTC).|karakterlánc (dátum, idő)|
+|**Azonosító**  <br>*optional*|Service ID.|karakterlánc|
+|**image**  <br>*optional*||[Image](#image)|
+|**Manifest**  <br>*optional*||[Manifest](#manifest)|
+|**modellek**  <br>*optional*|Modellek listája.|<[Modell](#model)> tömb|
+|**name**  <br>*optional*|Szolgáltatás neve.|karakterlánc|
+|**scoringUri**  <br>*optional*|A szolgáltatás pontozó URI.|karakterlánc|
+|**state**  <br>*optional*||[AsyncOperationState](#asyncoperationstate)|
+|**updatedAt**  <br>*optional*|Legutóbbi frissítése (UTC).|karakterlánc (dátum, idő)|
+|**appInsightsEnabled**  <br>*optional*|Engedélyezze az application insights szolgáltatáshoz.|logikai|
+|**autoScaler**  <br>*optional*||[AutoScaler](#autoscaler)|
+|**computeResource**  <br>*required*||[ComputeResource](#computeresource)|
+|**containerResourceReservation**  <br>*optional*||[ContainerResourceReservation](#containerresourcereservation)|
+|**dataCollection**  <br>*optional*||[ModelDataCollection](#modeldatacollection)|
+|**maxConcurrentRequestsPerContainer**  <br>*optional*|Egyidejű kérelmek maximális számát.  <br>**Minimális érték**: `1`|integer|
+|**numReplicas**  <br>*optional*|Bármikor futtató pod replikák száma. Nem adható, ha engedélyezve van-e a Autoscaler.  <br>**Minimális érték**: `0`|integer|
+|**Hiba történt**  <br>*optional*||[ErrorResponse](#errorresponse)|
 
 
 <a name="serviceupdaterequest"></a>
-### <a name="serviceupdaterequest"></a>serviceUpdateRequest
+### <a name="serviceupdaterequest"></a>ServiceUpdateRequest
 A kérelem egy szolgáltatásnak a frissítésére.
 
 
 |Name (Név)|Leírás|Séma|
 |---|---|---|
-|**appInsightsEnabled**  <br>*nem kötelező*|Engedélyezze az application insights szolgáltatáshoz.|logikai|
-|**autoScaler**  <br>*nem kötelező*||[AutoScaler](#autoscaler)|
-|**containerResourceReservation**  <br>*nem kötelező*||[ContainerResourceReservation](#containerresourcereservation)|
-|**datacollection objektumot**  <br>*nem kötelező*||[ModelDataCollection](#modeldatacollection)|
-|**imageId**  <br>*nem kötelező*|A szolgáltatás létrehozása lemezkép.|karakterlánc|
-|**maxConcurrentRequestsPerContainer**  <br>*nem kötelező*|Egyidejű kérelmek maximális számát.  <br>**Minimális érték**:`1`|egész szám|
-|**numReplicas**  <br>*nem kötelező*|Bármikor futtató pod replikák száma. Nem adható, ha engedélyezve van-e a Autoscaler.  <br>**Minimális érték**:`0`|egész szám|
+|**appInsightsEnabled**  <br>*optional*|Engedélyezze az application insights szolgáltatáshoz.|logikai|
+|**autoScaler**  <br>*optional*||[AutoScaler](#autoscaler)|
+|**containerResourceReservation**  <br>*optional*||[ContainerResourceReservation](#containerresourcereservation)|
+|**dataCollection**  <br>*optional*||[ModelDataCollection](#modeldatacollection)|
+|**imageId**  <br>*optional*|A szolgáltatás létrehozása lemezkép.|karakterlánc|
+|**maxConcurrentRequestsPerContainer**  <br>*optional*|Egyidejű kérelmek maximális számát.  <br>**Minimális érték**: `1`|integer|
+|**numReplicas**  <br>*optional*|Bármikor futtató pod replikák száma. Nem adható, ha engedélyezve van-e a Autoscaler.  <br>**Minimális érték**: `0`|integer|
 
 
 <a name="targetruntime"></a>
@@ -929,6 +929,6 @@ A tervezett futásidőt típusa.
 
 |Name (Név)|Leírás|Séma|
 |---|---|---|
-|**Tulajdonságok**  <br>*szükséges*||< karakterlánc, karakterlánc > térkép|
-|**runtimeType**  <br>*szükséges*|Megadja a futtatókörnyezetben.|Enum (SparkPython, Python)|
+|**properties**  <br>*required*||< karakterlánc, karakterlánc > térkép|
+|**runtimeType**  <br>*required*|Megadja a futtatókörnyezetben.|Enum (SparkPython, Python)|
 

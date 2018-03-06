@@ -1,10 +1,27 @@
+---
+title: "fájl belefoglalása"
+description: "fájl belefoglalása"
+services: biztalk-services
+author: MandiOhlinger
+ms.service: biztalk-services
+ms.topic: include
+ms.date: 11/09/2017
+ms.author: mandia
+ms.custom: include file
+ms.openlocfilehash: 81e053c8258d24177d5c7ea499595c4dd4a3b0f0
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 03/05/2018
+---
 > [!IMPORTANT]
-> A Microsoft Azure BizTalk Services (MABS) használatból való kivonása folyamatban van, azt az Azure Logic Apps váltja fel. Ha Ön jelenleg a MABS felhasználója, a [Move from BizTalk Services to Logic Apps](../articles/logic-apps/logic-apps-move-from-mabs.md) (Áttérés a BizTalk Services használatáról a Logic Apps használatára) című cikk nyújt útmutatást az integrációs megoldások Logic Apps-be való áthelyezéséhez. 
+> Folyamatban van a Microsoft Azure BizTalk szolgáltatások (MABS) elavult, és az Azure Logic Apps helyett.
+> Ha MABS jelenleg használ, tekintse át a integrációs megoldásokat Logic Apps történő áttelepítéssel kapcsolatos útmutatót a jelen cikk: [áthelyezése Logic Apps BizTalk szolgáltatások](../articles/logic-apps/logic-apps-move-from-mabs.md) 
 > 
-> Ha még csak ismerkedik a Logic Apps használatával, javasoljuk, hogy az alábbi cikkekkel tegye meg az első lépéseket: 
+> Ha most ismerkedik a Logic Apps, próbálja meg itt: 
 > 
-> - [Mi az a Logic Apps?](../articles/logic-apps/logic-apps-what-are-logic-apps.md)  
+> * [Mi az Azure Logic Apps?](../articles/logic-apps/logic-apps-overview.md)  
 > 
-> - [Az első logikai alkalmazás létrehozása](../articles/logic-apps/logic-apps-create-a-logic-app.md), vagy a használat gyors megkezdése [előre elkészített sablonokkal](../articles/logic-apps/logic-apps-use-logic-app-templates.md)  
+> * [Az első logikai alkalmazás létrehozása](../articles/logic-apps/quickstart-create-first-logic-app-workflow.md), vagy gyorsan megismerkedhet a [előre elkészített sablon](../articles/logic-apps/logic-apps-use-logic-app-templates.md).
 > 
-> - A logikai alkalmazásban használható [összes rendelkezésre álló összekötő](../articles/connectors/apis-list.md) megtekintése
+> * [Tekintse át az összekötők](../articles/connectors/apis-list.md) , amely egy logikai alkalmazást is használhatja.

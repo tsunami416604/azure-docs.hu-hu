@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 5eb53d13ed85093616f43b79b58d43ba62ffbd67
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: 203e36b198186db63b7e902db296adeaa9ffb4ee
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="how-to-configure-hybrid-azure-active-directory-joined-devices"></a>Hibrid Azure Active Directoryhoz csatlakoztatott eszközök konfigurálása
 
@@ -33,6 +33,8 @@ Ha szeretné a tartományhoz csatlakozó eszközök csatlakoztatása az Azure AD
 Mielőtt elkezdené a hibrid az Azure AD csatlakoztatott eszközök konfigurálása a környezetben, tanulmányozza át a támogatott forgatókönyveket és a korlátozásokkal.  
 
 Ha a a [rendszer-előkészítő eszköz (Sysprep)](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-vista/cc721940(v=ws.10)), ellenőrizze, hogy forrását, amely nem lett még regisztrálva az Azure ad-val a Windows telepítési lemezképeket.
+
+Az összes futó Windows 10 évforduló Update és Windows Server 2016 automatikusan az eszköz újraindítása vagy a felhasználó Azure AD-val regisztrálja a tartományhoz csatlakoztatott eszközök jelentkezzen be az alábbiakban leírt konfigurációs lépéseket befejezése után. Ha ezt a viselkedést automatikus regisztrálása nem előnyben részesített, vagy ha ellenőrzött bevezetés van szükség, kérjük, kövesse az alábbi vezérlő telepítése és a bevezetés szakasz utasításait először szelektív letiltása és engedélyezése automatikus bevezetése előtt a következő egyéb konfigurációs lépéseket.  
 
 A leírások olvashatóságának, ez a témakör a következő kifejezést használja: 
 
@@ -204,7 +206,7 @@ A definíció segítségével győződjön meg arról, hogy találhatók-e az é
 
 ### <a name="issue-account-type-claim"></a>A probléma fiók típusa jogcím
 
-**`http://schemas.microsoft.com/ws/2012/01/accounttype`**– Ezt az igényt az értéket kell tartalmaznia, **DJ**, amely azonosítja, hogy az eszközt egy tartományhoz csatlakozó számítógép. Az AD FS-ben adhat meg egy kiadási átalakítási szabálykészlet, amely a következőképpen néz ki:
+**`http://schemas.microsoft.com/ws/2012/01/accounttype`** – Ezt az igényt az értéket kell tartalmaznia, **DJ**, amely azonosítja, hogy az eszközt egy tartományhoz csatlakozó számítógép. Az AD FS-ben adhat meg egy kiadási átalakítási szabálykészlet, amely a következőképpen néz ki:
 
     @RuleName = "Issue account type for domain-joined computers"
     c:[
@@ -219,7 +221,7 @@ A definíció segítségével győződjön meg arról, hogy találhatók-e az é
 
 ### <a name="issue-objectguid-of-the-computer-account-on-premises"></a>A számítógép fiók helyszínen probléma objectGUID
 
-**`http://schemas.microsoft.com/identity/claims/onpremobjectguid`**-A jogcím tartalmaznia kell a **objectGUID** értéket a helyi fiók. Az AD FS-ben adhat meg egy kiadási átalakítási szabálykészlet, amely a következőképpen néz ki:
+**`http://schemas.microsoft.com/identity/claims/onpremobjectguid`** -A jogcím tartalmaznia kell a **objectGUID** értéket a helyi fiók. Az AD FS-ben adhat meg egy kiadási átalakítási szabálykészlet, amely a következőképpen néz ki:
 
     @RuleName = "Issue object GUID for domain-joined computers"
     c1:[
@@ -241,7 +243,7 @@ A definíció segítségével győződjön meg arról, hogy találhatók-e az é
  
 ### <a name="issue-objectsid-of-the-computer-account-on-premises"></a>A számítógép fiók helyszínen probléma objectSID
 
-**`http://schemas.microsoft.com/ws/2008/06/identity/claims/primarysid`**-A jogcím tartalmaznia kell a a **objectSid** értéket a helyi fiók. Az AD FS-ben adhat meg egy kiadási átalakítási szabálykészlet, amely a következőképpen néz ki:
+**`http://schemas.microsoft.com/ws/2008/06/identity/claims/primarysid`** -A jogcím tartalmaznia kell a a **objectSid** értéket a helyi fiók. Az AD FS-ben adhat meg egy kiadási átalakítási szabálykészlet, amely a következőképpen néz ki:
 
     @RuleName = "Issue objectSID for domain-joined computers"
     c1:[
@@ -258,7 +260,7 @@ A definíció segítségével győződjön meg arról, hogy találhatók-e az é
 
 ### <a name="issue-issuerid-for-computer-when-multiple-verified-domain-names-in-azure-ad"></a>Számítógép issuerID kibocsátani, ha több tartománynév ellenőrzése az Azure ad-ben
 
-**`http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid`**– A jogcím az ellenőrzött tartomány nevét, amelyek kapcsolódnak a helyszíni összevonási szolgáltatással (AD FS vagy 3. fél) bármelyikének egységes erőforrás azonosítója (URI) kell tartalmaznia a jogkivonatot kibocsátó. Az AD FS-ben a kiadás átalakítási szabályai, hasonló meghatározott sorrendben alatt megfelelően fenti megfelelően után is hozzáadhat. Ne feledje, hogy egy szabály kifejezetten ki a szabály a felhasználók számára a szükséges. Az alábbi szabályokkal szemben, a felhasználók és számítógépek hitelesítését azonosító első szabály jelenik meg.
+**`http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid`** – A jogcím az ellenőrzött tartomány nevét, amelyek kapcsolódnak a helyszíni összevonási szolgáltatással (AD FS vagy 3. fél) bármelyikének egységes erőforrás azonosítója (URI) kell tartalmaznia a jogkivonatot kibocsátó. Az AD FS-ben a kiadás átalakítási szabályai, hasonló meghatározott sorrendben alatt megfelelően fenti megfelelően után is hozzáadhat. Ne feledje, hogy egy szabály kifejezetten ki a szabály a felhasználók számára a szükséges. Az alábbi szabályokkal szemben, a felhasználók és számítógépek hitelesítését azonosító első szabály jelenik meg.
 
     @RuleName = "Issue account type with the value User when its not a computer"
     NOT EXISTS(
@@ -304,7 +306,7 @@ A definíció segítségével győződjön meg arról, hogy találhatók-e az é
 
 A fenti, jogcímek
 
-- `<verified-domain-name>`pedig ki kell cserélni az egyik az ellenőrzött tartomány nevét az Azure ad-ben. Például, Value = "http://contoso.com/adfs/services/trust/"
+- `<verified-domain-name>` pedig ki kell cserélni az egyik az ellenőrzött tartomány nevét az Azure ad-ben. Például, Value = "http://contoso.com/adfs/services/trust/"
 
 
 
@@ -315,7 +317,7 @@ A vállalat ellenőrzött tartományok listájának lekéréséhez használja a 
 
 ### <a name="issue-immutableid-for-computer-when-one-for-users-exist-eg-alternate-login-id-is-set"></a>Számítógép ImmutableID ki, ha egy, a felhasználók létező (pl. másodlagos bejelentkezési azonosító beállítása)
 
-**`http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID`**-A jogcím számítógépek érvényes értéket kell tartalmaznia. Az AD FS-ben is létrehozhat egy kiadási átalakítási szabálykészlet bocsát az alábbiak szerint:
+**`http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID`** -A jogcím számítógépek érvényes értéket kell tartalmaznia. Az AD FS-ben is létrehozhat egy kiadási átalakítási szabálykészlet bocsát az alábbiak szerint:
 
     @RuleName = "Issue ImmutableID for computers"
     c1:[
@@ -512,7 +514,7 @@ Az AD FS-ben hozzá kell adnia egy kiadási átalakítási szabálykészlet, ame
 2. Kattintson a jobb gombbal a Microsoft Office 365 Identitásplatformmal függő entitás megbízhatósági objektum, majd válassza ki **Jogcímszabályok szerkesztése**.
 3. Az a **kiadás átalakítási szabályai** lapon jelölje be **szabály hozzáadása**.
 4. Az a **jogcímszabály** sablon listáról válassza ki **jogcímek küldése egyéni szabály segítségével**.
-5. Válassza ki **következő**.
+5. Kattintson a **Tovább** gombra.
 6. Az a **Jogcímszabály nevének** mezőbe írja be **hitelesítési módszer Jogcímszabály**.
 7. Az a **jogcímszabály** mezőbe írja be a következő szabályt:
 
@@ -566,7 +568,8 @@ A szabályozáshoz a jelenlegi Windows-számítógépek, telepítenie kell a **e
    > [!NOTE]
    > Ez a csoportházirend-sablon át lett nevezve a Csoportházirend kezelése konzol korábbi verzióihoz képest. Egy korábbi verzióját a konzol használatakor Ugrás `Computer Configuration > Policies > Administrative Templates > Windows Components > Workplace Join > Automatically workplace join client computers`. 
 
-7. Válassza ki **engedélyezve**, és kattintson a **alkalmaz**.
+7. Válassza ki **engedélyezve**, és kattintson a **alkalmaz**. Ki kell választania **letiltott** Ha azt szeretné, hogy a házirendet, az eszközök automatikusan regisztrálja az Azure ad-vel a csoportházirend szabályoz.
+
 8. Kattintson az **OK** gombra.
 9. A csoportházirend-objektum csatolása a megfelelő helyre. Például társíthatja azt egy adott szervezeti egység. Is sikerült csatolható egy adott biztonsági számítógépek csoportja, amelyek automatikusan csatlakoznak az Azure ad-val. Az ezzel a házirend-beállítását minden tartományhoz csatlakoztatott Windows 10 és Windows Server 2016 a szervezet számítógépeire, kapcsolja a csoportházirend-objektumot a tartományhoz.
 

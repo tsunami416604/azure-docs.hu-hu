@@ -5,16 +5,16 @@ services: machine-learning
 author: gokhanuluderya-msft
 ms.author: gokhanu
 manager: haining
-ms.reviewer: garyericson, jasonwhowell, mldocs
+ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/28/2017
-ms.openlocfilehash: aaa9705aed59b5cf78100eda9997bb1ca74845b9
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 00e98ff07d144db791fcf074699614f1e664634b
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="azure-machine-learning-experimentation-service-configuration-files"></a>Az Azure Machine Learning kísérletezhet szolgáltatás konfigurációs fájlok
 
@@ -29,12 +29,12 @@ Az alábbiakban a megfelelő fájlokat ebben a mappában:
     - \<Futtassa a konfiguráció neve > .runconfig
 
 >[!NOTE]
->Általában egy számítási célfájl rendelkezik, és futtassa a konfigurációs fájl minden számítási cél hoz létre. Azonban egymástól függetlenül az ilyen fájlok létrehozásának, és mutasson a számítási egyazon célobjektum több futtatási konfigurációs fájlt.
+>Általában egy számítási célfájl rendelkezik, és futtassa a konfigurációs fájl minden számítási cél hoz létre. Azonban létrehozhat egymástól függetlenül ezeket a fájlokat és számítási egyazon célobjektum mutató több futtatási konfigurációs fájlt.
 
 ## <a name="condadependenciesyml"></a>conda_dependencies.yml
 Ez a fájl egy [conda környezet fájl](https://conda.io/docs/using/envs.html#create-environment-file-by-hand) , amely megadja, hogy a Python-futtatókörnyezet verziója és a csomagok, amelyek elengedhetetlenek a kódot. Azure ML munkaterület parancsfájl egy Docker-tároló vagy a HDInsight-fürt hajt végre, amikor létrehoz egy [conda környezet](https://conda.io/docs/using/envs.html) a parancsfájl futtatásához. 
 
-Ebben a fájlban adja meg, amelyet a parancsfájl végrehajtása a Python-csomagokat. Az Azure ML kísérletezhet szolgáltatás a conda környezet a Docker-lemezképben szerint függőségeinek listájának hoz létre. A csomagok listáját itt a-végrehajtó motor elérhetőnek kell lennie. Éppen ezért csomagok kell szerepel csatornák, mint:
+Ebben a fájlban adja meg, amelyet a parancsfájl végrehajtása a Python-csomagokat. Az Azure ML kísérletezhet szolgáltatás függőségek a listájának megfelelően conda környezete hoz létre. Az itt felsorolt csomagok elérhetőnek kell lennie a végrehajtó motorja csatornákon keresztül, mint:
 
 * [continuum.io](https://anaconda.org/conda-forge/repo)
 * [PyPI](https://pypi.python.org/pypi)
@@ -43,7 +43,7 @@ Ebben a fájlban adja meg, amelyet a parancsfájl végrehajtása a Python-csomag
 * mások számára elérhető-e a végrehajtási motor
 
 >[!NOTE]
->A HDInsight-fürtök futtatásakor Azure ML munkaterület környezetet hoz létre conda csak a a futtató. Ez lehetővé teszi a különböző felhasználók különböző python-környezetek ugyanazon a fürtön futtatni.  
+>A HDInsight-fürtök futtatásakor Azure ML munkaterület környezetet hoz létre conda az adott futtatáshoz. Ez lehetővé teszi a különböző felhasználók különböző python-környezetek ugyanazon a fürtön futtatni.  
 
 Íme egy példa egy tipikus **conda_dependencies.yml** fájlt.
 ```yaml
@@ -68,13 +68,13 @@ dependencies:
      - C:\temp\my_private_python_pkg.whl
 ```
 
-Azure ML munkaterület újbóli létrehozása nélkül használja a conda ugyanabban a környezetben, amíg a **conda_dependencies.yml** érintetlen marad. Azonban ha bármilyen változás, ebben a fájlban, eredményezi a Docker kép Újraépítés.
+Az Azure ML munkaterület a azonos conda környezetet használ újból összeállítani a lehető leghosszabbak nélkül a **conda_dependencies.yml** változatlan marad. Ha módosítja a függőségek azt fogja újraépítése a környezetben.
 
 >[!NOTE]
 >Ha célozhat meg végrehajtásának _helyi_ számítási környezet **conda_dependencies.yml** fájl **nem** használt. A helyi Azure ML munkaterület Python környezetnek csomagfüggőségek kell manuálisan kell telepíteni.
 
 ## <a name="sparkdependenciesyml"></a>spark_dependencies.yml
-Ez a fájl neve a Spark alkalmazás PySpark parancsfájlt és a külső csomagok, amelyek telepítve kell lennie. Bármely nyilvános Maven-tárház, valamint ezek Maven tárházak találhatók Spark csomagot is megadható.
+Ez a fájl neve a Spark alkalmazás PySpark parancsfájlt és a külső csomagok, amelyek telepítve kell lennie. Egy nyilvános Maven-tárházat, valamint az adott Maven tárházak találhatók Spark csomagokat is megadható.
 
 Például:
 
@@ -103,13 +103,13 @@ packages:
 ```
 
 >[!NOTE]
->Fürt hangolási paraméterek, például munkavégző, magok kell nyissa meg a spark_dependecies.yml fájlban a "konfiguráció" szakaszba 
+>Fürt paraméterek például munkavégző méret és -magok hangolása kell kísérhet "konfiguráció" című szakaszában a spark_dependecies.yml fájl 
 
 >[!NOTE]
->Ha a parancsfájl Python-környezetben, amelyek végrehajtása *spark_dependencies.yml* fájlt a rendszer figyelmen kívül hagyja. Ez csak akkor van hatása, ha elleni Spark (vagy egy Docker vagy HDInsight-fürtök) futtatja.
+>Ha a parancsfájl Python-környezetben, amelyek végrehajtása *spark_dependencies.yml* fájlt a rendszer figyelmen kívül hagyja. Csak akkor, ha futtatja elleni Spark (vagy a Docker vagy HDInsight-fürtök) használható.
 
 ## <a name="run-configuration"></a>Futtassa a konfiguráció
-Egy adott futtatási konfiguráció megadásához a fájlokat két van szükség. Általában akkor jönnek létre CLI parancs használatával. De is klónozza a Kilépés azokat, nevezze át őket, és szerkesztését.
+Adja meg az adott futtatási konfigurációját, a .compute fájlt és egy .runconfig kell. Ezek általában jönnek létre CLI parancs használatával. Klónozza a Kilépés azokat, nevezze át őket, és szerkeszthetők.
 
 ```azurecli
 # create a compute target pointing to a VM via SSH
@@ -125,10 +125,11 @@ Ezzel a paranccsal létrejön egy meghatározott számítási cél alapuló pár
 > _helyi_ vagy _docker_ a futtatási konfigurációs fájlokat a következők tetszőleges nevet. Az Azure ML munkaterület ad hozzá, ez a két konfigurációk futtatását, amikor a felhasználók kényelme érdekében hozzon létre egy üres projektet. Átnevezheti "<run configuration name>.runconfig" projektsablon rendelkeznek, vagy hozzon létre újakat tetszőleges nevet a fájlok.
 
 ### <a name="compute-target-namecompute"></a>\<számítási cél neve > .compute
-_\<számítási cél neve > .compute_ fájl határozza meg a számítási cél a kapcsolat és konfigurációs információt. A név-érték párok listáját is. Következő a támogatott beállítások láthatók.
+_\<számítási cél neve > .compute_ fájl határozza meg a számítási cél a kapcsolat és konfigurációs információt. A név-érték párok listáját is. Az alábbiakban a támogatott beállítások:
 
 **típus**: a számítási környezet típusú. Támogatott értékek a következők:
   - helyi
+  - Távoli
   - Docker
   - remotedocker
   - fürt
@@ -147,8 +148,10 @@ _\<számítási cél neve > .compute_ fájl határozza meg a számítási cél a
 
 **nativeSharedDirectory**: Ez a tulajdonság meghatározza a alapkönyvtárának (például: _~/.azureml/share/_) számítási egyazon célobjektum futó fájlok is menteni ahhoz, hogy oszthatók meg. Ha ezt a beállítást használják egy Docker-tároló használatakor _sharedVolumes_ , meg kell igaz értékre. Ellenkező esetben végrehajtása meghiúsul.
 
+**userManagedEnvironment**: Ez a tulajdonság meghatározza, hogy a számítási cél közvetlenül kezeli a felhasználó vagy kísérleti szolgáltatáson keresztül felügyelt.  
+
 ### <a name="run-configuration-namerunconfig"></a>\<Futtassa a konfiguráció neve > .runconfig
-_\<Futtassa a konfiguráció neve > .runconfig_ határozza meg, az Azure ML végrehajtási viselkedésének kipróbálásához. Beállíthatja a végrehajtási viselkedések például követési futtatási előzményei, vagy mi számítási cél-és sok más használhatja. A végrehajtási környezet legördülő lista az Azure ML munkaterület asztali alkalmazás feltöltésére használatos olyan futtatási konfigurációs fájl nevét.
+_\<Futtassa a konfiguráció neve > .runconfig_ határozza meg, az Azure ML végrehajtási viselkedésének kipróbálásához. Konfigurálhatja a végrehajtási működését, például a nyomon követési futtatási előzményei, vagy mi számítási cél-és sok más használhatja. A végrehajtási környezet legördülő lista az Azure ML munkaterület asztali alkalmazás feltöltésére használatos olyan futtatási konfigurációs fájl nevét.
 
 **ArgumentVector**: Ebben a szakaszban adja meg a parancsfájl futtatásához a végrehajtása és a parancsfájl paramétereit részeként. Például, ha vannak a következő példában a "<run configuration name>.runconfig" fájl 
 
@@ -170,7 +173,7 @@ EnvironmentVariables:
   "EXAMPLE_ENV_VAR2": "Example Value2"
 ```
 
-Ezek a környezeti változók felhasználói kód érhetők el. Például a phyton kódot kiírja a "EXAMPLE_ENV_VAR" nevű környezeti változó
+Ezek a környezeti változók felhasználói kód érhetők el. Például a Python kódját kiírja a "EXAMPLE_ENV_VAR" nevű környezeti változó
 ```
 print(os.environ.get("EXAMPLE_ENV_VAR1"))
 ```

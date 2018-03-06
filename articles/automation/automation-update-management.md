@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/28/2018
 ms.author: gwallace
-ms.openlocfilehash: bb20137cc3ac8daf82ee21300be6981e09ce3fe0
-ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
-ms.translationtype: HT
+ms.openlocfilehash: 9280925cdd5cccf8d1d2f2b33a7de8523a07cd14
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="update-management-solution-in-azure"></a>Frissítse a felügyeleti megoldás az Azure-ban
 
@@ -56,8 +56,8 @@ A következő táblázat a támogatott operációs rendszerek listáját jelení
 
 |Operációs rendszer  |Megjegyzések  |
 |---------|---------|
-|Windows Server 2008 vagy újabb     | Csak értékelés frissítése         |
-|Windows Server 2008 R2 SP1 és újabb rendszer     |.NET-keretrendszer 4.5 és WMF 5.0-s vagy újabb szükséges a Windows Server 2008 R2 SP1<br>Nano Server nem támogatott.         |
+|Windows Server 2008, Windows Server 2008 R2 RTM    | Csak értékelés frissítése         |
+|Windows Server 2008 R2 SP1 és újabb rendszer     |.NET-keretrendszer 4.5 és WMF 5.0-s vagy újabb szükséges a Windows Server 2008 R2 SP1        |
 |CentOS 6 (x86/x64) és 7 (x64)      | A Linux-ügynököknek hozzáféréssel kell rendelkezniük valamely frissítési tárházhoz.        |
 |Red Hat Enterprise 6 (x86/x64) és 7 (x64)     | A Linux-ügynököknek hozzáféréssel kell rendelkezniük valamely frissítési tárházhoz.        |
 |SUSE Linux Enterprise Server 11 (x86/x64) és 12 (x64)     | A Linux-ügynököknek hozzáféréssel kell rendelkezniük valamely frissítési tárházhoz.        |
@@ -70,7 +70,7 @@ A következő táblázat az operációs rendszereket, amelyek nem támogatottak.
 |Operációs rendszer  |Megjegyzések  |
 |---------|---------|
 |Windows-ügyfél     | Ügyféloldali operációs rendszerek (a Windows 7, Windows 10 stb.) nem támogatottak.        |
-|Nano Server     | Nano server Windows 2016 részét képezi.        |
+|Windows Server 2016 Nano Server     | Nem támogatott       |
 
 ### <a name="client-requirements"></a>Ügyfélkövetelmények
 

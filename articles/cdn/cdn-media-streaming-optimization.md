@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2017
 ms.author: v-semcev
-ms.openlocfilehash: 3c42f54a99a85377ebe4df6959237f906d37591b
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: c953baad9ca5def916800e6abe7032b4572def5a
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="media-streaming-optimization-via-azure-cdn"></a>Médiaadatfolyam-továbbítást keresztül Azure CDN optimalizálása 
  
@@ -28,13 +28,13 @@ A nagy felbontású video egyre gyakoribbá válik az interneten, és a nagy fá
 
 A kérelem mintákat keressen az adatfolyam-is nyújt néhány új kihívásokat. Amikor népszerű élő adatfolyam vagy új több megjelenik az igény szerinti videót, több ezer megjelenítők több millió kérhetnek az adatfolyam egy időben. Ebben az esetben intelligens kérelem összevonása nélkülözhetetlen annak nem ne terhelje tovább a származási kiszolgálók Ha az eszközök még nincsenek gyorsítótárazva.
  
-Az Azure Content Delivery Network Akamai egy szolgáltatás, amely továbbítja a folyamatos átviteli adathordozó eszközök hatékony felhasználók léptékű világszerte kínál. A szolgáltatással csökken késések fordulnak elő, mivel csökkenti a terhelést a forrás-kiszolgálókon. A szolgáltatás az IP-címek Akamai Standard érhető el. 
+**Akamai Azure CDN** egy szolgáltatás, amely továbbítja a folyamatos átviteli adathordozó eszközök hatékony felhasználók léptékű világszerte kínál. A szolgáltatással csökken késések fordulnak elő, mivel csökkenti a terhelést a forrás-kiszolgálókon. A szolgáltatás az IP-címek Akamai standard érhető el. 
 
-Az Azure Content Delivery Network verizon médiafolyamot nyújt, közvetlenül az általános webes optimalizálási típusú.
+**Verizon Azure CDN** médiaadatfolyam közvetlenül általános webes optimalizálási típusú kézbesíti.
  
-## <a name="configure-an-endpoint-to-optimize-media-streaming-in-the-azure-content-delivery-network-from-akamai"></a>Optimalizálja a médiaadatfolyam-továbbítást az Azure Content Delivery Network Akamai végpont konfigurálása
+## <a name="configure-an-endpoint-to-optimize-media-streaming"></a>Optimalizálja a médiaadatfolyam végpont konfigurálása
  
-Konfigurálhatja a tartalomkézbesítési hálózat (CDN) végpont nagy fájlok az Azure-portálon kézbesítési optimalizálása érdekében. Ehhez a REST API-k vagy az ügyfél SDK-k bármelyikét is használja. Az alábbi műveletek ismertetik a folyamatot az Azure-portálon:
+Konfigurálhatja a tartalomkézbesítési hálózat (CDN) végpont nagy fájlok az Azure-portálon kézbesítési optimalizálása érdekében. Ehhez a REST API-k vagy az ügyfél SDK-k bármelyikét is használja. A következő lépések bemutatják az Azure-portálon a folyamat egy **Akamai Azure CDN** profil:
 
 1. Egy új végpont hozzáadásához a **CDN-profil** lapon jelölje be **végpont**.
   
@@ -46,16 +46,15 @@ Konfigurálhatja a tartalomkézbesítési hálózat (CDN) végpont nagy fájlok 
  
 Miután létrehozta a végpontot, a feltételeknek megfelelő összes fájl optimalizálása vonatkozik. Az alábbi szakasz ismerteti a folyamatot. 
  
-## <a name="media-streaming-optimizations-for-the-azure-content-delivery-network-from-akamai"></a>Médiaadatfolyam-továbbítást az Azure Content Delivery Network Akamai optimalizálás.
+## <a name="media-streaming-optimizations-for-azure-cdn-from-akamai"></a>Médiaadatfolyam-továbbítást Akamai Azure CDN optimalizálás.
  
-Adatfolyam-továbbítási optimalizálási Akamai érvényben működés közbeni adathordozóról vagy adathordozót használó médiafolyamot videotartalom töredékei kézbesítését. Ez a folyamat nem azonos a progresszív letöltésen keresztül vagy a bájttartomány kérelmek használatával át egyetlen nagy eszköz. Információ a adott stílus media szállítási: [nagy méretű fájlok optimalizálási](cdn-large-file-optimization.md).
-
+Médiaadatfolyam-továbbítást optimalizálást **Akamai Azure CDN** érvényben működés közbeni vagy videotartalom kézbesítésre adathordozót töredék használó média. Ez a folyamat nem azonos a progresszív letöltésen keresztül vagy a bájttartomány kérelmek használatával át egyetlen nagy eszköz. Információ a adott stílus media szállítási: [nagy méretű fájlok optimalizálási](cdn-large-file-optimization.md).
 
 Az általános media kézbesítési és videotartalom media kézbesítési optimalizálási típusú CDN használata gyorsabb képes biztosítani a media eszközök a háttér-optimalizálást. Megtudta, időbeli ajánlott eljárásai alapján adathordozó eszközök használata konfigurációk is.
 
 ### <a name="caching"></a>Gyorsítótárazás
 
-Ha az Azure Content Delivery Network Akamai azt észleli, hogy az eszköz egy adatfolyam-továbbítási jegyzékfájl vagy töredék, általános webes kézbesítési eltérő gyorsítótár lejárati időpontban használ. (Lásd az alábbi táblázatban a teljes listát.) Ennek mindig a cache-control vagy Expires fejléc a forrásnak küldött is figyelembe véve. Ha az eszköz nem egy adathordozó eszköz, a lejárati időpontjait használatával általános webes kézbesítésre gyorsítótárazza.
+Ha **Akamai Azure CDN** észleli, hogy az eszköz egy adatfolyam-továbbítási jegyzékfájl vagy töredék, a különböző gyorsítótár lejárati időpontjait a általános webes kézbesítési használ. (Lásd az alábbi táblázatban a teljes listát.) Ennek mindig a cache-control vagy Expires fejléc a forrásnak küldött is figyelembe véve. Ha az eszköz nem egy adathordozó eszköz, a lejárati időpontjait használatával általános webes kézbesítésre gyorsítótárazza.
 
 A rövid negatív gyorsítótárazási idő az eredeti kiszervezési hasznos, sok felhasználó kérése egy kódrészletet, amely még nem létezik. Példa: Ha a csomagok nem érhetők el a forrásból, hogy a második élő adatfolyam. A gyorsítótárazási már intervallum segít kiszervezése a forrás érkező kéréseket, mert videotartalom általában nem módosította.
  
@@ -67,7 +66,7 @@ Gyorsítótárazás: negatív. <br> HTTP 204, 305, 404, <br> és 405 | Nincs | 1
  
 ### <a name="deal-with-origin-failure"></a>Az eredeti hiba kezelésére  
 
-Általános media kézbesítési és videotartalom media kézbesítési is származási időtúllépési és ajánlott eljárások a tipikus kérelem minták alapján újrapróbálkozási naplót. Például mert általános media kézbesítési a működés közbeni és videotartalom media kézbesítési, használ egy rövidebb kapcsolat időkorlátja időérzékeny jellemzői miatt live streaming.
+Általános media kézbesítési és videotartalom media kézbesítési is származási időtúllépések és szokásos kérelem minták ajánlott eljárásai alapján újrapróbálkozási naplót. Például mert általános media kézbesítési a működés közbeni és időérzékeny jellemzői miatt rövidebb kapcsolódási időtúllépés videotartalom media kézbesítési, használja az élő adatfolyam.
 
 Ha a kapcsolat időtúllépés miatt megszakadt, a CDN újrapróbálja többször az ügyfél egy "504 - átjáró időtúllépése" hibaüzenet küldése előtt. 
 
@@ -82,13 +81,13 @@ Támogatott adatfolyam-továbbítási típusok | Fájlkiterjesztések
 Apple HLS | m3u8, m3u, m3ub, kulcsot ts, aac
 Az Adobe HDS | f4m, f4x, drmmeta, a rendszerindítás, f4f,<br>Seg-illetheti URL-cím szerkezete <br> (reguláris kifejezéssel egyező: ^(/.*)Seq(\d+)-Frag(\d+)
 DASH | mpd, kötőjelet, divx, ismv, m4s, m4v, mp4, mp4v, <br> sidx, webm, mp4a, m4a, isma
-Smooth streaming | / jegyzékfájl /, töredék/QualityLevels / /
+Smooth streaming | / jegyzékfájl//QualityLevels/töredék /
   
 
  
-## <a name="media-streaming-optimizations-for-the-azure-content-delivery-network-from-verizon"></a>Médiaadatfolyam-továbbítást az Azure Content Delivery Network verizon optimalizálás.
+## <a name="media-streaming-optimizations-for-azure-cdn-from-verizon"></a>Médiaadatfolyam-továbbítást Azure CDN Verizon optimalizálás.
 
-Az Azure Content Delivery Network verizon adatfolyam adathordozó eszközök általános webes optimalizálási típusú segítségével közvetlenül továbbítja. A CDN néhány funkcióinak közvetlenül segítse a postai adathordozó eszközök alapértelmezés szerint.
+A **Azure CDN Verizon** adatfolyam-adathordozó eszközök közvetlenül az általános webes optimalizálási típusú használatával kézbesíti. A CDN néhány funkcióinak közvetlenül segítse a postai adathordozó eszközök alapértelmezés szerint.
 
 ### <a name="partial-cache-sharing"></a>A részleges gyorsítótári megosztása
 

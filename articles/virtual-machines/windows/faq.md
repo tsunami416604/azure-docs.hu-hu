@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/20/2017
 ms.author: cynthn
-ms.openlocfilehash: d8f457569ef1e9dfe400266982596ab53ec4f10d
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: 9aa316e59fb78373cc044f8e18f5d24ea9c5258f
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="frequently-asked-question-about-windows-virtual-machines"></a>Windows virtuális gépek kapcsolatos gyakran ismételt kérdések
 Ez a cikk foglalkozik Windows virtuális gépek létrehozása az Azure-ban a Resource Manager üzembe helyezési modellel kapcsolatos gyakori kérdésekre. Ez a témakör Linux verziója: [gyakran feltett kérdés kapcsolatos Linux virtuális gépek](../linux/faq.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
@@ -78,7 +78,7 @@ Igen, ez a lehetőség most. A virtuális gép először meg kell állítani a f
 Igen. A számítógépnév legfeljebb 15 karakter hosszúságú lehet. Lásd: [elnevezési konvenciókat szabályokat és korlátozásokat](/architecture/best-practices/naming-conventions#naming-rules-and-restrictions?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) további információt az erőforrások elnevezési körül.
 
 ## <a name="are-there-any-resource-group-name-requirements"></a>Vannak-e valamely erőforrás csoport vonatkozó követelményeknek?
-Igen. Az erőforráscsoport neve legfeljebb 90 karakter hosszúságú lehet. Lásd: [elnevezési konvenciókat szabályokat és korlátozásokat](/architecture/best-practices/naming-conventions#naming-rules-and-restrictions?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) erőforráscsoportok további információt.
+Igen. Az erőforráscsoport neve legfeljebb 90 karakter hosszúságú lehet. Lásd: [elnevezési konvenciókat szabályokat és korlátozásokat](/azure/architecture/best-practices/naming-conventions#naming-rules-and-restrictions) erőforráscsoportok további információt.
 
 ## <a name="what-are-the-username-requirements-when-creating-a-vm"></a>Virtuális gép létrehozásakor Mik a username követelmények?
 
@@ -88,27 +88,27 @@ Felhasználónevek legfeljebb 20 karakter hosszúságú lehet, és nem végződh
 A következő felhasználónevek nem engedélyezettek:
 <table>
     <tr>
-        <td style="text-align:center">Rendszergazda </td><td style="text-align:center"> Rendszergazda </td><td style="text-align:center"> Felhasználó </td><td style="text-align:center"> Felhasználó1</td>
+        <td style="text-align:center">Rendszergazda </td><td style="text-align:center"> adminisztrátor </td><td style="text-align:center"> felhasználótól </td><td style="text-align:center"> Felhasználó1</td>
     </tr>
     <tr>
-        <td style="text-align:center">Teszt </td><td style="text-align:center"> Felhasználó2 </td><td style="text-align:center"> Test1 </td><td style="text-align:center"> Felhasználó3</td>
+        <td style="text-align:center">teszt </td><td style="text-align:center"> Felhasználó2 </td><td style="text-align:center"> Test1 </td><td style="text-align:center"> user3</td>
     </tr>    <tr>
-        <td style="text-align:center">rendszergazda1 </td><td style="text-align:center"> 1 </td><td style="text-align:center"> 123 </td><td style="text-align:center"> egy</td>
+        <td style="text-align:center">rendszergazda1 </td><td style="text-align:center"> 1 </td><td style="text-align:center"> 123 </td><td style="text-align:center"> a</td>
     </tr>
     <tr>
-        <td style="text-align:center">actuser  </td><td style="text-align:center"> ADM </td><td style="text-align:center"> admin2 </td><td style="text-align:center"> ASPNET</td>
+        <td style="text-align:center">actuser  </td><td style="text-align:center"> ADM </td><td style="text-align:center"> admin2 </td><td style="text-align:center"> aspnet</td>
     </tr>
     <tr>
         <td style="text-align:center">biztonsági mentés </td><td style="text-align:center"> Konzol </td><td style="text-align:center"> David </td><td style="text-align:center"> Vendég</td>
     </tr>
     <tr>
-        <td style="text-align:center">John </td><td style="text-align:center"> Tulajdonos </td><td style="text-align:center"> legfelső szintű </td><td style="text-align:center"> kiszolgáló</td>
+        <td style="text-align:center">John </td><td style="text-align:center"> tulajdonos </td><td style="text-align:center"> legfelső szintű </td><td style="text-align:center"> kiszolgáló</td>
     </tr>
     <tr>
-        <td style="text-align:center">SQL </td><td style="text-align:center"> Támogatás </td><td style="text-align:center"> support_388945a0 </td><td style="text-align:center"> sys</td>
+        <td style="text-align:center">sql </td><td style="text-align:center"> támogatás </td><td style="text-align:center"> support_388945a0 </td><td style="text-align:center"> sys</td>
     </tr>
     <tr>
-        <td style="text-align:center">Teszt2 </td><td style="text-align:center"> Teszt3 </td><td style="text-align:center"> Felhasználó4 </td><td style="text-align:center"> user5</td>
+        <td style="text-align:center">Teszt2 </td><td style="text-align:center"> Teszt3 </td><td style="text-align:center"> user4 </td><td style="text-align:center"> user5</td>
     </tr>
 </table>
 

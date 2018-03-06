@@ -1,6 +1,6 @@
 ---
 title: "Alkalmazások áthelyezése az Azure Logic Apps BizTalk szolgáltatások |} Microsoft Docs"
-description: "Helyezze át vagy Azure BizTalk szolgáltatások MABS Logic Apps alkalmazások áttelepítése"
+description: "Helyezze át vagy Azure BizTalk szolgáltatások (MABS) Azure Logic Apps alkalmazások áttelepítése"
 services: logic-apps
 documentationcenter: 
 author: jonfancey
@@ -13,55 +13,58 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
-ms.author: ladocs; jonfan; mandia
-ms.openlocfilehash: 01c5376ac5ba9125eede9deb5ee0a7a006a91bb4
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.author: jonfan; LADocs
+ms.openlocfilehash: 6e00e62e60c059a16731a77e529b4b93f50802e9
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 03/05/2018
 ---
-# <a name="move-from-biztalk-services-to-logic-apps"></a>A Logic Apps BizTalk szolgáltatások áthelyezése
+# <a name="move-from-biztalk-services-to-azure-logic-apps"></a>Az Azure Logic Apps BizTalk szolgáltatások áthelyezése
 
-A Microsoft Azure BizTalk szolgáltatások (MABS) kivonás alatt áll. Ez a témakör segítségével helyezze át a MABS integrációs megoldásokat Azure Logic Apps. 
+A Microsoft Azure BizTalk szolgáltatások (MABS) kivonás alatt áll. MABS integrációs megoldásokat áthelyezése [Azure Logic Apps](../logic-apps/logic-apps-overview.md), kövesse az ebben a cikkben szereplő útmutatást. 
 
-## <a name="overview"></a>Áttekintés
+## <a name="introduction"></a>Bevezetés
 
-BizTalk szolgáltatások két alárendelt szolgáltatásokból állnak:
+BizTalk szolgáltatások két subservices áll:
 
-1.  Microsoft BizTalk szolgáltatások hibrid kapcsolatok
-2.  EAI- és EDI híd-alapú integrációs
+* Microsoft BizTalk szolgáltatások hibrid kapcsolatok
+* EAI- és EDI híd-alapú integrációs
 
-Ha van szüksége a hibrid kapcsolatok, majd helyezze [Azure App Service hibrid kapcsolatok](../app-service/app-service-hybrid-connections.md) módosítások és a szolgáltatás funkcióinak működését mutatja be. Az Azure hibrid kapcsolatok BizTalk szolgáltatások hibrid kapcsolatok váltja fel. Azure hibrid kapcsolatok érhető el az Azure App Service, és az Azure portálon tartományregisztráció. Az Azure hibrid kapcsolatok emellett egy új Hybrid Connection Manager meglévő BizTalk szolgáltatások hibrid kapcsolatok és a portálon létrehozott új hibrid kapcsolatok kezeléséhez. Az Azure App Service hibrid kapcsolatok általánosan elérhető (GA).
+[Az Azure App Service hibrid kapcsolatok](../app-service/app-service-hybrid-connections.md) BizTalk szolgáltatások hibrid kapcsolatok váltja fel. Az Azure hibrid kapcsolatok érhető el az Azure App Service az Azure portálon keresztül. Ez a szolgáltatás a Hybrid Connection Manager biztosítja, így a meglévő BizTalk szolgáltatások hibrid kapcsolatok, valamint az új hibrid kapcsolatok létrehozása a portálon kezelheti. 
 
-EAI- és EDI híd-alapú integráció a Logic Apps az váltja fel. A Logic Apps a BizTalk szolgáltatásként képességeit, és több ugyanazokat biztosít. A Logic Apps felhőméretű fogyasztás alapján munkafolyamat és a vezénylési funkciókat, amelyek lehetővé teszik, hogy gyorsan és egyszerűen épület összetett integrációs megoldásokat böngésző használatával, vagy a Visual Studio eszközök segítségével biztosít.
+[A Logic Apps](../logic-apps/logic-apps-overview.md) EAI- és EDI híd-alapú integrációs lecseréli az összes ugyanazokat a képességeket a BizTalk szolgáltatások és egyéb. Ez a szolgáltatás a felhőméretű fogyasztás alapján munkafolyamat és a vezénylési szolgáltatásokat biztosítja, hogy gyorsan és könnyen készítsen böngészőn keresztül vagy a Visual Studio összetett integrációs megoldásokat.
 
-A következő táblázat a Logic Apps BizTalk szolgáltatások képességek leképezéseket biztosít.
+Ez a táblázat leképezve Logic Apps BizTalk szolgáltatások képességeit.
 
-| BizTalk Services   | Logic Apps            | Cél                  |
+| BizTalk Services   | Logic Apps            | Cél                      |
 | ------------------ | --------------------- | ---------------------------- |
-| Összekötő          | Összekötő             | Adatok küldésére és fogadására   |
+| Összekötő          | Összekötő             | Adatokat küldeni és fogadni   |
 | Híd             | Logikai alkalmazás             | Feldolgozási sor processzor           |
-| Szakasz ellenőrzése     | XML-érvényesítés művelet      | Az XML-dokumentum, a séma érvényesítése             |
-| Szakasz kiegészítése       | Adatok jogkivonatok      | Tulajdonságok előléptetni üzenetbe vagy a útválasztási döntések             |
-| Átalakítás szakasz    | Átalakítási művelet      | Átalakítása XML-üzenetek egy adott formátumból más             |
-| Dekódolás szakasz       | Egybesimított fájl dekódolási művelet      | Egybesimított fájlból átalakítása XML             |
-| Szakasz kódolása       |  Egybesimított fájl kódolása művelet      | Az XML-átalakítása egybesimított fájl             |
-| Üzenet Inspector       |  Az Azure Functions vagy API-alkalmazások      | Futtassa a egyéni kódot a integrációja             |
-| Útvonal-művelet      |  Az állapot vagy a kapcsoló      | A megadott összekötők egyikéhez üzenetek             |
+| Szakasz ellenőrzése     | XML-érvényesítés művelet | Az XML-dokumentum, a séma érvényesítése | 
+| Szakasz kiegészítése       | Adatok jogkivonatok           | Tulajdonságok előléptetni üzenetbe vagy a útválasztási döntések |
+| Átalakítás szakasz    | Átalakítási művelet      | Átalakítása XML-üzenetek egy adott formátumból más |
+| Dekódolás szakasz       | Egybesimított fájl dekódolási művelet | Egybesimított fájlból átalakítása XML |
+| Szakasz kódolása       | Egybesimított fájl kódolása művelet | Az XML-átalakítása egybesimított fájl |
+| Üzenet Inspector  | Az Azure Functions vagy API-alkalmazások | Futtassa a egyéni kódot a integrációja |
+| Útvonal-művelet       | Az állapot vagy a kapcsoló | A megadott összekötők egyikéhez üzenetek |
+|||| 
 
-Számos különböző típusú BizTalk Services összetevő.
+## <a name="biztalk-services-artifacts"></a>BizTalk szolgáltatások összetevők
+
+BizTalk szolgáltatások van több különböző összetevők. 
 
 ## <a name="connectors"></a>Összekötők
-BizTalk szolgáltatások összekötők küldeni és fogadni az adatokat, beleértve, hogy engedélyezve van a HTTP-alapú kérelem/válasz kapcsolati kétirányú hidak hidak engedélyezése. A Logic Apps ugyanazokat a kifejezéseket használjuk. Összekötők logic apps ugyanazt a célt szolgálják, és is tartalmaz a több mint 140, amely csatlakozni tudna a széles körű tömbje technológiákat és szolgáltatásokat, mind a helyszíni használatával a helyszíni Data Gateway (cseréje a BizTalk szolgáltatás BizTalk szolgáltatás által használt), és a Szolgáltatottszoftver- és PaaS felhőszolgáltatásokhoz, mint például a onedrive-on, Office365, Dynamics CRM és sok más.
 
-BizTalk szolgáltatások források FTP, SFTP, és a Service Bus-üzenetsorba vagy témakör előfizetés korlátozódnak.
+BizTalk szolgáltatások összekötők hidak adatokat, többek között, amelyek lehetővé teszik a HTTP-alapú kérelem/válasz kapcsolati kétirányú hidak küldeni és fogadni segítik. A Logic Apps ugyanazokat a kifejezéseket, és 180 + összekötők csatlakozva azokat a technológiákat és a szolgáltatások ugyanazt a célt szolgálják. Például összekötők érhetők el a cloud SaaS és PaaS szolgáltatások, például a onedrive-on, Office365, Dynamics CRM és egyéb, és a helyszíni az On-Premises adatok átjárón, amely a felváltja a BizTalk szolgáltatás BizTalk szolgáltatások-rendszerekhez. BizTalk szolgáltatások források FTP, SFTP, és a Service Bus-üzenetsorba vagy témakör előfizetés korlátozódnak.
 
 ![](media/logic-apps-move-from-mabs/sources.png)
 
-Minden egyes híd HTTP-végponttal rendelkezik alapértelmezés szerint a futásidejű cím és a híd relatív cím tulajdonságait kell konfigurálni. Ugyanez a Logic Apps eléréséhez használja a [kérelem-válasz](../connectors/connectors-native-reqres.md) műveletek.
+Alapértelmezés szerint minden híd HTTP-végponttal, amely van konfigurálva, a futtatókörnyezet címmel és relatív cím tulajdonságait, amely a híd rendelkezik. A Logic Apps ugyanaz az eredmény elérése érdekében használja a [kérelem-válasz](../connectors/connectors-native-reqres.md) műveletek.
 
 ## <a name="xml-processing-and-bridges"></a>XML-feldolgozás és a hidak
-BizTalk szolgáltatások hidat egy feldolgozási folyamat hasonló. Hidat is igénybe vehet egy összekötő érkező adatokat, és néhány az adatokat, és küldje el a rendszer egy másik. A Logic Apps nem azonos a azonos csővezeték-alapú kommunikáció minták BizTalk szolgáltatásként támogatásával, és is számos más integrációs kombinációját. A [XML-kérelem-válasz híd](https://msdn.microsoft.com/library/azure/hh689781.aspx) a BizTalk szolgáltatások nevezik, amelyek szakaszból álló VETER folyamat:
+
+BizTalk szolgáltatások a híd olyan hasonló egy feldolgozási folyamat. Hidat is igénybe vehet egy összekötő érkező adatokat, az egyes az adatokat, és az eredményt elküldik egy másik rendszer. A Logic Apps BizTalk szolgáltatásként azonos csővezeték-alapú kommunikáció mintázatokat támogatásával, és más integrációs minták biztosítanak szerepe ugyanaz. A [XML-kérelem-válasz híd](https://msdn.microsoft.com/library/azure/hh689781.aspx) BizTalk szolgáltatásokban is ismert, egy VETER folyamat, amely ezen feladatok végrehajtásával szakaszból áll:
 
 * (V) érvényesítése
 * (E) Enrich
@@ -69,44 +72,52 @@ BizTalk szolgáltatások hidat egy feldolgozási folyamat hasonló. Hidat is ig�
 * (E) Enrich
 * (R) útvonal
 
-Az alábbi képen látható, a feldolgozási kérés és válasz elosztva, és lehetővé teszi, hogy a kérelem és a válasz elérési utak külön-külön (például az egyes különböző megtekintését):
+Ez a kép bemutatja, hogyan feldolgozási helykérelemmel és válasszal, amelyek segítségével szabályozhatja, a kérelem elosztva, és a válasz elérési utak külön-külön, például a különböző leképezéseinek mindegyik elérési út:
 
 ![](media/logic-apps-move-from-mabs/xml-request-reply.png)
 
-Emellett egyirányú híd XML dekódolási és Encode szakaszában hozzáadja a elején és végén feldolgozási, majd a csatlakoztatott híd tartalmaz egyetlen Enrich szintre.
+Egyirányú híd XML is, a kezdő és a feldolgozási végén hozzáadja az dekódolási és Encode szakaszában. A csatlakoztatott híd tartalmaz egyetlen Enrich szintre.
 
-### <a name="message-processing-and-decodingencoding"></a>Üzenet feldolgozásához, és dekódolási/kódolás
-BizTalk szolgáltatások a különböző XML-üzeneteket fogadni, és határozza meg a beérkezett üzenet megfelelő sémáját. Ez történik, a **üzenettípusok** a fogadási folyamat szakasza. Ezt követően a dekódolási szakasz észlelt üzenettípus dekódolni a megadott séma használatával használja. Ha a séma flatfile a séma, átalakítja a bejövő flatfile XML. 
+### <a name="message-processing-decoding-and-encoding"></a>Üzenet feldolgozása dekódolás és kódolás
 
-A Logic Apps hasonló funkciókat biztosít. Egy flatfile különböző protokollok, a másik összekötő eseményindítókat (File System, FTP, HTTP és így tovább) segítségével számos protokollal fogadjanak, és használja a [Egybesimított fájl dekódolása](../logic-apps/logic-apps-enterprise-integration-flatfile.md) műveletet úgy, hogy a bejövő adatok átalakítása XML. Helyezze át a létező fájlszintű sémák közvetlenül a logic apps módosítása nélkül, és beállíthatja, majd töltse fel a sémák integrációs fiókjába.
+BizTalk szolgáltatások, a különböző típusú XML-üzenetek fogadására, és határozza meg a beérkezett üzenet megfelelő sémáját. Ez a munkahelyi történik a *üzenettípusok* a fogadási folyamat szakasza. A dekódolási szakasz észlelt üzenettípus használja fel az üzenetet, a megadott séma használata dekódolására. Ha a séma egybesimított fájl séma, ebben a szakaszban a bejövő egybesimított fájl XML-alakítja át. 
+
+A Logic Apps hasonló funkciókat biztosít. Egyszerű fogadni a különböző összekötő eseményindítókat (File System, FTP, HTTP és így tovább) segítségével különböző protokollokon keresztül, és használja a [Egybesimított fájl dekódolása](../logic-apps/logic-apps-enterprise-integration-flatfile.md) műveletet úgy, hogy a bejövő adatok átalakítása XML. Helyezze át a létező fájlszintű sémák közvetlenül a Logic Apps módosítások nélkül, és majd töltse fel a sémák integrációs fiókjába.
 
 ### <a name="validation"></a>Ellenőrzés
-A bejövő adatok átalakítása után XML (vagy ha XML-kódja a üzenetformátum érkezett), érvényesítési futtatása, és határozza meg, ha az üzenet megfelelő az XSD-sémával. Ehhez a Logic Apps, használja a [XML-érvényesítés](../logic-apps/logic-apps-enterprise-integration-xml-validation.md) művelet. Ebben az esetben az azonos sémák BizTalk szolgáltatások-módosítás nélkül is használhatja.
+
+A bejövő adatok átalakítása után XML (vagy ha XML-kódja a üzenetformátum érkezett), érvényesítési futtatása, és határozza meg, ha az üzenet megfelelő az XSD-sémával. Ez a feladat végrehajtásához a Logic Apps, használja a [XML-érvényesítés](../logic-apps/logic-apps-enterprise-integration-xml-validation.md) művelet. Ugyanannak a sémának a BizTalk szolgáltatások módosítások nélkül használható.
 
 ### <a name="transform-messages"></a>Átalakítás üzenetek
-A BizTalk szolgáltatások az átalakítási szakasz alakít egy XML-alapú üzenetformátum a másikra. Ez a TRFM-alapú hozzárendelő használatával térképre alkalmazásával történik. A Logic Apps a folyamat hasonlít. Az átalakítási műveletet hajtja végre a térkép integrációs fiókjából. A fő különbség, hogy a Logic Apps maps XSLT-formátumban vannak-e. XSLT lehetővé teszi a meglévő XSLT már, beleértve a maps létre BizTalk Server functoids tartalmazó újból. 
+
+A BizTalk szolgáltatások az átalakítási szakasz alakít egy XML-alapú üzenetformátum a másikra. A munkát a TRFM-alapú hozzárendelő használatával térképre alkalmazásával. A Logic Apps a folyamat hasonlít. Az átalakítási műveletet hajtja végre a térkép integrációs fiókjából. A fő különbség, hogy a Logic Apps maps XSLT-formátumban vannak-e. XSLT lehetővé teszi a meglévő XSLT már, beleértve a maps létre BizTalk Server functoids tartalmazó újból. 
 
 ### <a name="routing-rules"></a>Útválasztási szabályokat
-BizTalk szolgáltatások lehetővé teszi, hogy mely végpont/összekötőn adatküldés bejövő üzenetek/döntés. Válasszon ki egy olyan előre konfigurált végpontok száma nem lehetséges a útválasztási szűrő beállítás használatával:
+
+BizTalk szolgáltatások lehetővé teszi, hogy mely endpoint vagy az összekötő döntés bejövő üzenetek vagy az adatok küldése. Válassza ki az előre beállított végpontjaikra nem lehetséges az útválasztási szűrő beállításával:
 
 ![](media/logic-apps-move-from-mabs/route-filter.png)
 
-A Logic Apps bonyolultabb logikát képességeket biztosít a [feltétel](../logic-apps/logic-apps-use-logic-app-features.md) és [kapcsoló](../logic-apps/logic-apps-switch-case.md), speciális folyamatábrán engedélyezése és útválasztást. BizTalk szolgáltatások útválasztási szűrők konvertálása a legkönnyebben használatával egy **feltétel** *Ha* csak két lehetőség. Ha több mint két, majd használja a **kapcsoló**.
+BizTalk szolgáltatások, ha csak két lehetőség közül választhat, használja a *feltétel* a legjobb módszer a BizTalk szolgáltatások útválasztási szűrők alakításának. Ha több mint két, majd használja a **kapcsoló**.
+
+A Logic Apps biztosít, segítségükkel kifinomult logika képességek, valamint speciális folyamatábrán és az Útválasztás [feltételes utasítások](../logic-apps/logic-apps-control-flow-conditional-statement.md) és [utasítások kapcsoló](../logic-apps/logic-apps-control-flow-switch-statement.md).
 
 ### <a name="enrich"></a>Kiegészítése
-BizTalk szolgáltatások feldolgozása a Enrich szakasza további tulajdonságokkal bővít, a fogadott adatok társított üzenet környezetbe. Például támogatása (alább) az adatbázis-lekérdezés vagy XPath kifejezés segítségével érték beolvasásával útválasztási használandó tulajdonság. A Logic Apps hozzáférést biztosít a mindegyikhez környezetfüggő adatok a fenti műveletek, így egyszerű replikálásához a kívánt viselkedést eredményező beállítást. Használata esetén például a `Get Row` SQL-kapcsolat művelet, térjen vissza az adatokat egy SQL Server-adatbázisból, és az adatok felhasználásával döntési művelettel irányításához. Hasonlóképpen, a bejövő Service Buson tulajdonságok várólistára helyezett üzenetek egy eseményindító által megcímezhető, valamint a xpath munkafolyamat definition language eredményező kifejezés XPath.
 
-### <a name="use-custom-code"></a>Egyéni kód használata
-BizTalk szolgáltatások lehetővé teszi a [egyéni kódra](https://msdn.microsoft.com/library/azure/dn232389.aspx) saját szerelvényekben feltöltve. Ez megvalósítja a [IMessageInspector](https://msdn.microsoft.com/library/microsoft.biztalk.services.imessageinspector.aspx) felületet. Minden szakaszhoz a Bridge magában foglalja a két tulajdonságok (adja meg Inspector a és a kilépési Inspector) adja meg a létrehozott .net típusát, amely megvalósítja ezt a felületet. Egyéni kód lehetővé teszi összetett feldolgozási végezze el az adatokat, valamint a gyakori üzleti logika végző szerelvényeket a meglévő kódot ismét felhasználni. 
+A BizTalk szolgáltatások feldolgozása, az a Enrich szakasz tulajdonságok bővíti a fogadott adatok társított üzenet környezetet. Például előléptetni a az adatbázis-lekérdezés vagy XPath kifejezés segítségével érték beolvasásával továbbításához használni kívánt tulajdonságot. A Logic Apps hozzáférést biztosít a mindegyikhez környezetfüggő adatok a fenti műveletek, így egyszerű replikálásához a kívánt viselkedést eredményező beállítást. Használata esetén például a `Get Row` SQL-kapcsolat művelet, térjen vissza az adatokat egy SQL Server-adatbázisból, és az adatok felhasználásával döntési művelettel irányításához. Hasonlóképpen, a bejövő Service Buson tulajdonságok várólistára helyezett üzenetek egy eseményindító által megcímezhető, valamint a xpath munkafolyamat definition language eredményező kifejezés XPath.
+
+### <a name="run-custom-code"></a>Egyéni kód futtatása
+
+BizTalk szolgáltatások lehetővé teszi, hogy [egyéni kódra](https://msdn.microsoft.com/library/azure/dn232389.aspx) , amelyek a saját szerelvényekben feltöltődött. Ez a funkció megvalósítja a [IMessageInspector](https://msdn.microsoft.com/library/microsoft.biztalk.services.imessageinspector) felületet. Minden szakaszhoz a Bridge magában foglalja a két tulajdonságok (adja meg Inspector a és a kilépési Inspector) adja meg a létrehozott .NET típusát, amely megvalósítja ezt a felületet. Egyéni kód lehetővé teszi, hogy végezze el bonyolultabb feldolgozási adatok, és lehetővé teszi az általános üzleti logika végző szerelvényeket a meglévő kódot ismét felhasználni. 
 
 A Logic Apps egyéni kódot két elsődleges lehetőséget biztosít: az Azure Functions és API-alkalmazások. Az Azure Functions hozható létre, és a logic Apps alkalmazásokból nevezik. Lásd: [hozzáadása és az Azure Functions használatával logic Apps-alkalmazások futtatása egyéni kód](../logic-apps/logic-apps-azure-functions.md). API Apps, az Azure App Service-ben részét segítségével létrehozhat saját eseményindítók és műveletek. További információ [létrehozni egy egyéni API használata a Logic Apps](../logic-apps/logic-apps-create-api-app.md). 
 
-Ha egyéni kód, amely meghívja a BizTalk szolgáltatásokból assmeblies tartalmaz, helyezze át a kódot az Azure Functions, vagy hozzon létre egyéni API-kat API-alkalmazások; attól függően, hogy mi meg megvalósításához. Például ha egy másik szolgáltatást, hogy a Logic Apps nem rendelkezik egy összekötő nagyságúra kódot, majd API-alkalmazás létrehozása, és a műveletek az API-alkalmazás biztosít a logikai alkalmazásban használni. Ha súgófunkciókat vagy álljon, majd az Azure Functions oka a legjobb térkihasználás érdekében.
+Ha egyéni kód a szerelvényt, amely meghívja a BizTalk szolgáltatásokból, helyezze át a kódot az Azure Functions, vagy hozzon létre egyéni API-k az API Apps, attól függően, hogy mi meg megvalósításához. Például ha egy másik szolgáltatás, amelynek a Logic Apps nincs összekötő nagyságúra kódot, majd API-alkalmazás létrehozása, és a műveletek az API-alkalmazás biztosít a logikai alkalmazásban használni. Ha súgófunkciókat vagy álljon, majd az Azure Functions oka a legjobb térkihasználás érdekében.
 
 ### <a name="edi-processing-and-trading-partner-management"></a>EDI dolgoz fel, és kereskedelmipartner-kezelés
-BizTalk szolgáltatások részét képező EDI és B2B feldolgozási AS2-támogatással rendelkező (alkalmazhatósági utasítás 2), X12 és EDIFACT. Ezáltal a Logic Apps. BizTalk szolgáltatások a EDI hidak létrehozása és létrehozása vagy kezelése kereskedelmi partnereknek és szerződések a dedikált nyomon követését és a felügyeleti portálon.
 
-A Logic Apps, ez a funkció megtalálható a [vállalati integrációs csomag](../logic-apps/logic-apps-enterprise-integration-overview.md). Ez az integráció fiók és a B2B műveletek EDI és B2B feldolgozásra áll. A [integrációs fiók](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) létrehozásához és kezeléséhez használt [kereskedelmi partnerek](../logic-apps/logic-apps-enterprise-integration-partners.md) és [megállapodások](../logic-apps/logic-apps-enterprise-integration-agreements.md). Miután létrehozott egy integrációs fiókkal, egy vagy több logic Apps alkalmazásokat a fiók lehet társítani. Járó, használhatja a B2B műveletek a logikai alkalmazásban kereskedelmi partneradatok eléréséhez. Itt találhatók a következő műveleteket:
+BizTalk szolgáltatások és a Logic Apps tartalmazza az AS2-támogatással rendelkező EDI és B2B feldolgozási (alkalmazhatósági utasítás 2), X12 és EDIFACT. BizTalk szolgáltatások a EDI hidak létrehozása, és hozzon létre vagy kereskedelmi partnerek és a dedikált nyomon követését és a felügyeleti portálon megállapodások kezelése.
+A Logic Apps elérhetővé ezt a funkciót a [vállalati Integration Pack (EIP-t a)](../logic-apps/logic-apps-enterprise-integration-overview.md). Az EIP-t biztosít [integrációs fiók](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) és EDI és B2B feldolgozásra B2B műveletek. Integráció fiókot létrehozására és kezelésére is használjon [kereskedelmi partnerek](../logic-apps/logic-apps-enterprise-integration-partners.md) és [megállapodások](../logic-apps/logic-apps-enterprise-integration-agreements.md). Integráció fiók létrehozása után egy vagy több logikai alkalmazások társíthatja a fiókot. Használhatja a B2B műveletek kereskedelmi partneradatok elérje a Logic Apps alkalmazást. Itt találhatók a következő műveleteket:
 
 * AS2-kódolása
 * AS2 dekódolása
@@ -115,17 +126,20 @@ A Logic Apps, ez a funkció megtalálható a [vállalati integrációs csomag](.
 * EDIFACT kódolása
 * EDIFACT dekódolása
 
-BizTalk szolgáltatások ellentétben ezek a műveletek az átviteli protokollokat vannak leválasztja. Ezért a logic apps létrehozásakor több beleszólása van mely összekötő segítségével adatokat küldeni és fogadni. Például az lehetséges X12 fogadásához fájlok mellékletként az e-mailek, és ezután folyamat ezeket a fájlokat egy logikai alkalmazást. 
+BizTalk szolgáltatások ellentétben ezek a műveletek az átviteli protokollokat vannak leválasztja. Így a logic Apps alkalmazások létrehozásakor a mely összekötőket kell nagyobb rugalmasságot használt adatokat küldeni és fogadni. Például fogadhat mellékletként az e-mailek, és ezután folyamat fájlok X12 ezeket a fájlokat egy logikai alkalmazást. 
 
 ## <a name="manage-and-monitor"></a>Kezelése és figyelése
-Kereskedelmipartner-kezelés, valamint a dedikált portál BizTalk szolgáltatás a megadott nyomkövetési lehetőségeket biztosítanak, és problémák hibaelhárítása. 
 
-A Logic Apps nyújt részletesebb nyomon követése és figyelési képességek a a [Azure-portálon](../logic-apps/logic-apps-monitor-your-logic-apps.md), és a [Operations Management Suite B2B megoldás](../logic-apps/logic-apps-monitor-b2b-message.md); beleértve egy mobilalkalmazást tartása követheti a művelet az áthelyezés közben.
+A BizTalk szolgáltatások egy dedikált portálon megadott nyomkövetési lehetőségeket biztosítanak a figyelheti és elhárítását. A Logic Apps gazdagabb nyomon követése és figyelési képességek keresztül biztosítja a [Azure-portálon](../logic-apps/logic-apps-monitor-your-logic-apps.md), és a [Operations Management Suite B2B megoldás](../logic-apps/logic-apps-monitor-b2b-message.md), magában foglalja a mobilalkalmazások való tartásának követheti a művelet Ha Ön úton.
 
 ## <a name="high-availability"></a>Magas rendelkezésre állás
-BizTalk szolgáltatások magas rendelkezésre ÁLLÁS eléréséhez több példányt használ egy adott régióban a feldolgozási terhelés. A logic apps-régió magas rendelkezésre ÁLLÁSÚ beépített, tesztelhet, és minden további költség nélkül. Ki a régiót vész-helyreállítási BizTalk szolgáltatások B2B feldolgozásához a biztonsági mentési és visszaállítási folyamat szükség. A Logic Apps, a kereszt-régió aktív/passzív [vész-Helyreállítási képességet](../logic-apps/logic-apps-enterprise-integration-b2b-business-continuity.md) biztosított; a szinkronizálás B2B adatok lehetővé teszi az üzletmenet folytonossága érdekében különböző régiókban integrációs fiókok között.
 
-## <a name="next"></a>Következő lépés
-* [Mi az a Logic Apps?](logic-apps-overview.md)
-* [Az első logikai alkalmazás létrehozása](quickstart-create-first-logic-app-workflow.md), vagy a használat gyors megkezdése [előre elkészített sablonokkal](logic-apps-create-logic-apps-from-templates.md)  
-* A logikai alkalmazásban használható [összes rendelkezésre álló összekötő](../connectors/apis-list.md) megtekintése
+A magas rendelkezésre állás érdekében (HA) BizTalk szolgáltatások a feldolgozási terhelés megoszthatja, ha egy adott régióban egynél több példány használatával. A Logic Apps biztosít a régió magas rendelkezésre ÁLLÁSÚ, minden további költség nélkül. 
+
+BizTalk szolgáltatások ki a régiót katasztrófa utáni helyreállítás B2B feldolgozás céljából egy biztonsági mentési és visszaállítási folyamat használatához szükséges. Az üzletmenet folytonossága érdekében a Logic Apps biztosít a kereszt-régió aktív/passzív [vész-Helyreállítási képességet](../logic-apps/logic-apps-enterprise-integration-b2b-business-continuity.md), amely lehetővé teszi a B2B adatok szinkronizálása különböző régiókban integrációs fiókok között.
+
+## <a name="next-steps"></a>További lépések
+
+* [Mi az a Logic Apps?](../logic-apps/logic-apps-overview.md)
+* [Az első logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md), vagy a használat gyors megkezdése [előre elkészített sablonokkal](../logic-apps/logic-apps-create-logic-apps-from-templates.md)  
+* [Megtekintheti a rendelkezésre álló összekötők](../connectors/apis-list.md) használható a logic Apps alkalmazások

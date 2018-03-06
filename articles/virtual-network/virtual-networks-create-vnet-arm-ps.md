@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 03/01/2018
 ms.author: jdial
 ms.custom: 
-ms.openlocfilehash: f550af298b37afa388b6fd860578863738510a5e
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 1453dca453aa045752ea2300b9d7039c1bdd6542
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="create-a-virtual-network-with-multiple-subnets-using-powershell"></a>Virtuális hálózat létrehozása a PowerShell használatával több alhálózattal
 
@@ -119,6 +119,8 @@ New-AzureRmVm `
 A virtuális gép létrehozásához néhány percet vesz igénybe. Bár a nem a visszaadott kimenetben Azure 10.0.1.4 beléptetésiprofil-oszlopként hozzárendelve a magánhálózati IP-cím a virtuális gép, mert 10.0.1.4 az első elérhető IP-cím a *titkos* alhálózata *myVirtualNetwork*. 
 
 Ne folytassa további lépéseket addig, amíg létrejön a virtuális gép és a PowerShell-kimenet visszaadása.
+
+Ez a cikk a létrehozott virtuális gépek rendelkezik ilyennel [hálózati illesztő](virtual-network-network-interface.md) dinamikusan hozzárendelt hálózati illesztő egy IP-címmel. A virtuális gép telepítése után is [több nyilvános és magánhálózati IP-címek hozzáadása vagy módosítása a IP-cím hozzárendelés metódus statikus](virtual-network-network-interface-addresses.md#add-ip-addresses). Is [hozzáadása a hálózati adapterek](virtual-network-network-interface-vm.md#vm-add-nic), akár által támogatott maximális a [Virtuálisgép-méretet](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) válassza, ha egy virtuális gépet hoz létre. Emellett [egygyökerű i/o-virtualizálás (SR-IOV) engedélyezése](create-vm-accelerated-networking-powershell.md) a virtuális gép, de csak akkor, ha egy virtuális gép létrehozásához, amely a funkció támogatja a Virtuálisgép-méretet.
 
 ### <a name="communicate-between-virtual-machines-and-with-the-internet"></a>A virtuális gépek között, és az internetes kommunikáció
 

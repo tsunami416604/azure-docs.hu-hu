@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: bd93b3473143f425b47f141efb3af3007614794f
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 312980ded8fad84f2ea4a41078597dd3a6cb8ca7
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Azure AD Connect Health – gyakori kérdések
 Ez a cikk kapcsolatos gyakori kérdések (GYIK) Azure Active Directory (Azure AD) Connect Health rájuk adott válaszokat tartalmazza. Ezeket a gyakori kérdések a szolgáltatás, amely tartalmazza a számlázási modell, képességek, korlátozások és támogatás használatával kapcsolatos kérdésekre foglalkozik.
@@ -128,12 +128,7 @@ A rendszerállapot-ügynöke meghiúsulhat, ha regisztrálja a következő lehet
 
 **K: I vagyok első arra figyelmezteti, hogy "Állapotfigyelő szolgáltatás adatai nem naprakészek legyenek." Hogyan segítséget nyújthatnak a hiba kijavításához?**
 
-Az Azure AD Connect Health riasztást küld, ha azt nem az adatpontok a kiszolgálóról fogadott az elmúlt két órában. Ez a riasztás több oka is lehet.
-
-* Az ügynök nem tud kommunikálni a szükséges végpontok, mert egy tűzfal blokkolja a forgalmat. Ez a különösen közös a webalkalmazás-proxy kiszolgálók. Győződjön meg arról, hogy engedélyezte a kimenő kommunikációt a működéséhez szükséges végpontok és portok. Tekintse meg a [követelményeket ismertető részben](active-directory-aadconnect-health-agent-install.md#requirements) részleteiről.
-* Kimenő kommunikáció SSL-ellenőrzést a hálózati réteg van kitéve. Ennek hatására a tanúsítványt, amely az ügynök által a hálózatfelügyeleti kiszolgáló/entitás helyébe, és a folyamat nem tudja feltölteni az adatokat az Azure AD Connect Health szolgáltatással.
-* Paranccsal a kapcsolat az ügynök beépített. [További információk](active-directory-aadconnect-health-agent-install.md#test-connectivity-to-azure-ad-connect-health-service).
-* Az ügynökök is támogatja a kimenő kapcsolat egy nem hitelesített HTTP-proxyn keresztül. [További információk](active-directory-aadconnect-health-agent-install.md##configure-azure-ad-connect-health-agents-to-use-http-proxy).
+Az Azure AD Connect Health riasztást küld, ha azt nem az adatpontok a kiszolgálóról fogadott az elmúlt két órában. [További információk](active-directory-aadconnect-health-data-freshness.md).
 
 ## <a name="operations-questions"></a>Műveletek kérdések
 **K: kell engedélyeznie a naplózást a webalkalmazás-proxy kiszolgálók?**

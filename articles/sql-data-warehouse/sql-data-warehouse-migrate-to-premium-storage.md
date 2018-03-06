@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: migrate
 ms.date: 11/29/2016
 ms.author: elbutter;barbkess
-ms.openlocfilehash: 1e3cdb4aa3af3067b27b6a85212e2a3d27542cc3
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 751f553c277cec579327771beb2f3256664452b1
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="migrate-your-data-warehouse-to-premium-storage"></a>Prémium szintű Storage az adatraktár áttelepítése
 Új Azure SQL Data Warehouse [prémium szintű storage, a nagyobb teljesítmény kiszámíthatóságot][premium storage for greater performance predictability]. Standard szintű tárolót a jelenleg létező adatraktárak prémium szintű Storage most telepíthető át. Kihasználhatja az automatikus áttelepítése, vagy ha jobban szeret szabályozhatja, mikor kell áttelepíteni (amely does tartalmaz, amely bizonyos időre leállítást), teheti az áttelepítés saját maga.
@@ -116,7 +116,7 @@ Prémium szintű Storage módosítását akkor is növekvő számának a blob-ad
 **Előfeltételek:**
 
 - Az adatraktár futtasson-e 1000 adattárházegységek vagy annál újabb (lásd: [méretezési számítási teljesítményt][scale compute power]).
-- A parancsfájl végrehajtása felhasználó kell lennie a [mediumrc szerepkör] [ mediumrc role] vagy újabb verzióját. Felhasználó hozzáadása ehhez a szerepkörhöz, hajtsa végre a következő:````EXEC sp_addrolemember 'xlargerc', 'MyUser'````
+- A parancsfájl végrehajtása felhasználó kell lennie a [mediumrc szerepkör] [ mediumrc role] vagy újabb verzióját. Felhasználó hozzáadása ehhez a szerepkörhöz, hajtsa végre a következő: ````EXEC sp_addrolemember 'xlargerc', 'MyUser'````
 
 ````sql
 -------------------------------------------------------------------------------
@@ -173,7 +173,7 @@ Ha problémába ütközik az adatraktárban [hozzon létre egy támogatási jegy
 [Pause]: sql-data-warehouse-manage-compute-portal.md
 [Restore]: sql-data-warehouse-restore-database-portal.md
 [steps to rename during migration]: #optional-steps-to-rename-during-migration
-[scale compute power]: sql-data-warehouse-manage-compute-portal.md#scale-compute-power
+[scale compute power]: quickstart-scale-compute-portal.md
 [mediumrc role]: sql-data-warehouse-develop-concurrency.md
 
 <!--MSDN references-->

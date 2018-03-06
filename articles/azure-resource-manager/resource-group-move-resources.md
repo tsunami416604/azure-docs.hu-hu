@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: 3f8b5e8b8af4be85e830bde8eb0587c632a9dd1f
-ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
+ms.openlocfilehash: 6a1d56a270ae0c44db18f26091cc3c550a37e420
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe
 
@@ -178,7 +178,7 @@ Felügyelt lemezek nem támogatják az áthelyezés. Ez a korlátozás, az azt j
 * Felügyelt lemezek készült pillanatképek
 * A felügyelt lemezzel rendelkező virtuális gépek rendelkezésre állási készletek
 
-Piactér-erőforrások alapján létrehozott virtuális gépeken nem helyezhető át, előfizetések között. A virtuális gép az aktuális előfizetésben kiosztásának megszüntetése, majd telepítse újra az új előfizetés.
+A csatolt tervek piactér erőforrások alapján létrehozott virtuális gépeken nem helyezhető át, erőforráscsoport-sablonok vagy előfizetések között. A virtuális gép az aktuális előfizetésben kiosztásának megszüntetése, majd telepítse újra az új előfizetés.
 
 A virtuális gépek a Key Vault tárolt tanúsítvány helyezheti át egy új erőforráscsoportot ugyanazt az előfizetést, de nem előfizetések között.
 

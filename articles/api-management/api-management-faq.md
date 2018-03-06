@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: 1903655a262583f1ba78b728bf404a81278e2275
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 091cfaaf8fa1cccf2f8b819732946bbbd08fd426
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="azure-api-management-faqs"></a>Az Azure API Management – gyakori kérdések
 Válaszok a gyakori kérdéseket, a mintákat és ajánlott eljárások az Azure API Management.
@@ -122,7 +122,7 @@ Az IP-cím (vagy címek, a központi telepítés több területi) az Azure-port�
 Az OAuth 2.0 hitelesítési kiszolgáló konfigurálása az Active Directory összevonási szolgáltatások (AD FS) biztonsági további tudnivalókért lásd: [AD FS segítségével az API Management](https://phvbaars.wordpress.com/2016/02/06/using-adfs-in-api-management/).
 
 ### <a name="what-routing-method-does-api-management-use-in-deployments-to-multiple-geographic-locations"></a>Milyen útválasztási módszert használni a API-kezelés a több földrajzi helyen történő telepítését?
-API-kezelési funkciója a [teljesítmény forgalom-útválasztási módszer](../traffic-manager/traffic-manager-routing-methods.md#priority) telepítések több földrajzi helyekre. Bejövő továbbítódik a legközelebbi API-átjáró. Ha egy régió tartozik offline állapotba kerül, bejövő automatikusan továbbítódik a következő legközelebbi átjáró. További tudnivalók az útválasztási metódusait [Traffic Manager útválasztási módjai](../traffic-manager/traffic-manager-routing-methods.md).
+API-kezelési funkciója a [teljesítmény forgalom-útválasztási módszer](../traffic-manager/traffic-manager-routing-methods.md#performance) telepítések több földrajzi helyekre. Bejövő továbbítódik a legközelebbi API-átjáró. Ha egy régió tartozik offline állapotba kerül, bejövő automatikusan továbbítódik a következő legközelebbi átjáró. További tudnivalók az útválasztási metódusait [Traffic Manager útválasztási módjai](../traffic-manager/traffic-manager-routing-methods.md).
 
 ### <a name="can-i-use-an-azure-resource-manager-template-to-create-an-api-management-service-instance"></a>Az Azure Resource Manager-sablon használatával hozzon létre egy API-kezelés szolgáltatás példányt?
 Igen. Tekintse meg a [Azure API Management Service](http://aka.ms/apimtemplate) gyorsindítási sablonok.

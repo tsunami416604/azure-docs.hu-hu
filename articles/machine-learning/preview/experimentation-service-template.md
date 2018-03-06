@@ -5,16 +5,16 @@ services: machine-learning
 author: ahgyger
 ms.author: ahgyger
 manager: haining
-ms.reviewer: garyericson, jasonwhowell, mldocs
+ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 11/14/2017
-ms.openlocfilehash: c7f4bf0fed35ffb2c03e8b983260c6093032fe79
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 585666a521ba8e1fae274687cbd709baba871590
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="configure-the-azure-machine-learning-experimentation-service"></a>Az Azure Machine Learning kísérletezhet szolgáltatás konfigurálása
 
@@ -157,5 +157,5 @@ Három értékeket módosíthatja.
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Hozzon létre és telepítse az Azure gépi tanulás](quickstart-installation.md)

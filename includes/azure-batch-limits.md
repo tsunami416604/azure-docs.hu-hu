@@ -7,7 +7,7 @@
 | Készletek száma Batch-fiókonként | 20 - 100 | 2500 |
 
 > [!NOTE]
-> Alapértelmezett korlátokat előfizetés Batch-fiók létrehozásához használt típusától függően eltérnek. Batch-fiókok kötegelt módban megjelenő mag kvóták vonatkoznak.
+> Alapértelmezett korlátokat előfizetés Batch-fiók létrehozásához használt típusától függően eltérnek. Batch-fiókok kötegelt módban megjelenő mag kvóták vonatkoznak. [Tekintse meg a Batch-fiók a kvóták](../articles/batch/batch-quota-limit.md#view-batch-quotas). 
 
 <sup>1</sup> Batch-fiók dedikált magok száma növelhető, de nincs megadva a maximális számát. Lépjen kapcsolatba az Azure támogatási növekedése lehetőségeket tárgyalja.
 

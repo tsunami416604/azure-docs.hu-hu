@@ -2,7 +2,7 @@
 title: "Korlátozásai és a konfiguráció – Azure Logic Apps |} Microsoft Docs"
 description: "Szolgáltatás korlátozásai és a konfigurációs értékeket az Azure Logic Apps"
 services: logic-apps
-documentationcenter: .net,nodejs,java
+documentationcenter: 
 author: jeffhollan
 manager: anneta
 editor: 
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 5c4597ede16f01c36e147dc0d70acf4b4f5635e8
-ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
-ms.translationtype: HT
+ms.openlocfilehash: 54a35607e107a09188373cc5f71bb3068b4c6bab
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="logic-apps-limits-and-configuration"></a>Logic Apps korlátozásai és konfigurációja
 
@@ -28,13 +28,13 @@ Ez a cikk ismerteti a jelenlegi korlátozások és a konfigurációs adatait az 
 
 ### <a name="http-request-limits"></a>HTTP-kérelmekre vonatkozó korlátok
 
-Ezek a korlátozások vonatkoznak az egyetlen HTTP-kérelem vagy az összekötő hívásakor.
+Az alábbiakban egy HTTP-kérelem vagy összekötő hívás korlátairól:
 
 #### <a name="timeout"></a>Időtúllépés
 
 | Name (Név) | Korlát | Megjegyzések | 
 | ---- | ----- | ----- | 
-| Kérés időtúllépése | 120 másodperc | Egy [aszinkron mintát](../logic-apps/logic-apps-create-api-app.md) vagy [amíg hurok](logic-apps-loops-and-scopes.md) pótolhatja igény szerint |
+| Kérés időtúllépése | 120 másodperc | Egy [aszinkron mintát](../logic-apps/logic-apps-create-api-app.md) vagy [amíg hurok](logic-apps-control-flow-loops.md) pótolhatja igény szerint | 
 |||| 
 
 #### <a name="message-size"></a>Üzenet mérete
@@ -56,28 +56,21 @@ Ezek a korlátozások vonatkoznak az egyetlen HTTP-kérelem vagy az összekötő
 
 ### <a name="run-duration-and-retention"></a>Futtatási tartamára és fenntartására
 
-Ezek a korlátozások vonatkoznak egyetlen logikai alkalmazás futtatásához.
+Az alábbiakban a futtatásához egy logikai alkalmazások korlátai:
 
-| Name (Név) | Alapértelmezett | Korlát |
-| ---- | ------- | ----- |
-| Futtassa a időtartama   | 90 nap | 7-90 nap |
-| Tároló megőrzési | a Futtatás 90 napon kezdési időpontja |  a Futtatás kezdési ideje 7 90 nap |
-||||
+| Name (Név) | Korlát | 
+| ---- | ----- | 
+| Futtassa a időtartama | 90 nap | 
+| Tároló megőrzési | a Futtatás 90 napon kezdési időpontja | 
+| Min ismétlési időköz | 1 másodperc </br>A logic apps a egy App Service-csomag számára: 15 másodperc | 
+| Maximális ismétlési időköz | 500 (nap) | 
+||| 
 
-Futtatási időtartama vagy a normál feldolgozása folyamatában tároló megőrzési hosszabb legyen, mint a korlátok [lépjen kapcsolatba a termékért felelős csoport](mailto://logicappsemail@microsoft.com) segítség az igényeinek.
-
-
-### <a name="recurrence-interval"></a>Ismétlődési időköz
-
-| Name (Név) | Korlát |
-| ---- | ------- |
-| Min ismétlési időköz | 1 másodperc </br>A logic apps a egy App Service-csomag számára: 15 másodperc |
-| Maximális ismétlési időköz | 500 (nap) |
-|||
+Futtatási időtartama vagy a normál feldolgozása folyamatában tároló megőrzési hosszabb legyen, mint a korlátok [a Logic Apps csapattól](mailto://logicappsemail@microsoft.com) segítség az igényeinek.
 
 ### <a name="looping-and-debatching-limits"></a>Hurok- és debatching korlátok
 
-Ezek a korlátozások vonatkoznak egyetlen logikai alkalmazás futtatásához.
+Az alábbiakban a futtatásához egy logikai alkalmazások korlátai:
 
 | Name (Név) | Korlát | Megjegyzések | 
 | ---- | ----- | ----- | 
@@ -89,22 +82,22 @@ Ezek a korlátozások vonatkoznak egyetlen logikai alkalmazás futtatásához.
 
 ### <a name="throughput-limits"></a>Átviteli sebességének korlátai
 
-Ezek a korlátozások vonatkoznak egy logikai alkalmazás-erőforrást.
+Az alábbiakban egy egyetlen logic app-példány határértékei:
 
 | Name (Név) | Korlát | Megjegyzések | 
 | ----- | ----- | ----- | 
-| Műveletek végrehajtások / 5 perc | 100,000 |<p>A korlát növelhető 300,000 logikai alkalmazás futtatásával `High Througput` mód. Nagy átviteli mód konfigurálható úgy, hogy a `operationOptions` tulajdonság alapján`runtimeConfiguration` a munkafolyamat-erőforrás a `OptimizedForHighThroughput`. <p>Vegye figyelembe, hogy a magas teljesítmény üzemmód jelenleg előzetes verzióban érhető. Emellett a munkaterhelés terjeszthető több alkalmazás között szükség szerint. | 
+| Műveletek végrehajtások / 5 perc | 100,000 | A 300,000 korlát növelése érdekében futtathat logikai alkalmazás `High Througput` mód. Állíthatja be a magas teljesítmény módot, a `runtimeConfiguration` a munkafolyamat erőforrás állítsa be a `operationOptions` tulajdonságot `OptimizedForHighThroughput`. <p>**Megjegyzés:**: nagy átviteli mód jelenleg előzetes verzióban érhető. A munkaterhelés terjesztheti is, szükség szerint több alkalmazás között. | 
 | Műveletek párhuzamos kimenő hívások | ~2,500 | Csökkentse az egyidejű kérelmek száma, vagy igény szerint időtartamának csökkentése érdekében. | 
 | Futásidejű végpont: párhuzamos bejövő hívások |~1,000 | Csökkentse az egyidejű kérelmek száma, vagy igény szerint időtartamának csökkentése érdekében. | 
 | Futásidejű végpont: 5 perc hívásszám olvasása  | 60,000 | Szükség szerint több alkalmazást is munkaterhelés szét. | 
 | Futásidejű végpont: 5 perc hívásszám meghívása| 45,000 |Szükség szerint több alkalmazást is munkaterhelés szét. | 
 |||| 
 
-A meghaladja ezt a korlátot, a normál feldolgozása vagy futtatási terhelés tesztelése, amelyek túllépik a működés felső korlátjának, [lépjen kapcsolatba a termékért felelős csoport](mailto://logicappsemail@microsoft.com) segítség az igényeinek.
+A meghaladja ezt a korlátot, a normál feldolgozása vagy futtatási terhelés tesztelése, amelyek túllépik a működés felső korlátjának, [a Logic Apps csapattól](mailto://logicappsemail@microsoft.com) segítség az igényeinek.
 
 ### <a name="logic-app-definition-limits"></a>Logic app definition korlátok
 
-Ezek a korlátozások vonatkoznak a egyetlen logic app-definíciót.
+Az alábbiakban egy logikai alkalmazás definícióját határértékei:
 
 | Name (Név) | Korlát | Megjegyzések | 
 | ---- | ----- | ----- | 
@@ -136,7 +129,7 @@ Ezek a korlátozások webes API-k hozhat létre egyéni összekötőkre vonatkoz
 
 ### <a name="integration-account-limits"></a>Integráció korlátairól
 
-Ezek a korlátozások vonatkoznak az összetevők, amelyek egy integrációs fiókot is hozzáadhat.
+Az alábbiakban az összetevőket, amelyek egy integrációs fiókot is hozzáadhat a határértékeket.
 
 | Name (Név) | Korlát | Megjegyzések | 
 | ---- | ----- | ----- | 
@@ -155,7 +148,7 @@ Ezek a korlátozások vonatkoznak, amelyek egy integrációs fiókot is hozzáad
 | Name (Név) | Korlát | Megjegyzések | 
 | ---- | ----- | ----- | 
 | Egyezmények | 10 | | 
-| Más összetevő típusa | 25 |Összetevő-típusok a partnerek, sémákat, tanúsítványok és a maps tartalmaznak. Egyes összetevők maximális száma legfeljebb tartalmazhat. | 
+| Más összetevő típusa | 25 | Összetevő-típusok a partnerek, sémákat, tanúsítványok és a maps tartalmaznak. Egyes összetevők maximális száma legfeljebb tartalmazhat. | 
 |||| 
 
 #### <a name="standard-pricing-tier"></a>Standard szintű tarifacsomagban használható
@@ -167,7 +160,7 @@ Ezek a korlátozások vonatkoznak, amelyek egy integrációs fiókot is hozzáad
 
 ### <a name="b2b-protocols-as2-x12-edifact-message-size"></a>B2B protokollok (AS2, X12, EDIFACT) üzenet mérete
 
-Ezek a korlátozások vonatkoznak a B2B protokollokat.
+Az alábbiakban a B2B protokollok vonatkozó korlátozások:
 
 | Name (Név) | Korlát | Megjegyzések | 
 | ---- | ----- | ----- | 

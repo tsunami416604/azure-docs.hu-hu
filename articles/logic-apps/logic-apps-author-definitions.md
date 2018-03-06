@@ -1,7 +1,7 @@
 ---
-title: Adja meg a JSON - Azure Logic Apps munkafolyamatok |} Microsoft Docs
-description: "Munkafolyamat-definícióhoz írásával a JSON-ban a logic Apps alkalmazások"
-author: jeffhollan
+title: "A JSON - Azure Logic Apps logikai alkalmazás definícióiról létrehozása |} Microsoft Docs"
+description: "Paraméterek hozzáadása, karakterláncok feldolgozni, hozzon létre paraméter maps és dátum függvényekkel adatok beolvasása"
+author: ecfan
 manager: anneta
 editor: 
 services: logic-apps
@@ -13,197 +13,202 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.custom: H1Hack27Feb2017
-ms.date: 03/29/2017
-ms.author: LADocs; jehollan
-ms.openlocfilehash: 7dde5bc4733af1aba34199f332379d2faf566725
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.date: 01/31/2018
+ms.author: LADocs; estfan
+ms.openlocfilehash: d05f7e34cbe670db6733c199e3420c810c304a84
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 03/05/2018
 ---
-# <a name="create-workflow-definitions-for-logic-apps-using-json"></a>A logic apps segítségével JSON munkafolyamat-meghatározások létrehozása
+# <a name="build-on-your-logic-app-definition-with-json"></a>A logic app-definíciót a JSON létrehozása
 
-A munkafolyamat-definícióhoz hozhat létre [Azure Logic Apps](logic-apps-overview.md) egyszerű, deklaratív JSON nyelv. Ha még nem tette meg, olvassa el [az első logikai alkalmazás létrehozása a Logic App tervezővel](quickstart-create-first-logic-app-workflow.md). További tájékoztatás a [hivatkozás a Munkafolyamatdefiníciós nyelve a teljes](http://aka.ms/logicappsdocs).
+Több végrehajtásához advanced feladatok [Azure Logic Apps](../logic-apps/logic-apps-overview.md), használhatja a kód nézetre szerkesztése a logic app-definíciót, egyszerű, deklaratív JSON nyelvét használja. Ha még nem tette meg, olvassa el [az első logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md). További tájékoztatás a [hivatkozás a Munkafolyamatdefiníciós nyelve a teljes](http://aka.ms/logicappsdocs).
 
-## <a name="repeat-steps-over-a-list"></a>Ismételje meg a során
+> [!NOTE]
+> Bizonyos Azure Logic Apps funkciók – paraméterek, például csak a logic app-definíciót kódnézetben munka esetén érhetők el. Paraméterek lehetővé teszik, hogy a Logic Apps alkalmazást értékét használja fel. Meghatározhatja például, ha azt szeretné, hogy ugyanazt az e-mail címet használja több műveletet, amellyel paraméterként.
 
-Olyan tömb, amely legfeljebb 10 000 elem iterációt, és minden elem egy műveletet, használja a [foreach típus](logic-apps-loops-and-scopes.md).
+## <a name="view-and-edit-your-logic-app-definitions-in-json"></a>Megtekintése és szerkesztése a logic app-definíció a JSON-ban
 
-## <a name="handle-failures-if-something-goes-wrong"></a>Kijavíthassa a hibákat, ha valamilyen hiba
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com "Azure Portal")
 
-Általában olyan szeretne hozzáadni egy *szervizelési lépés* – néhány logika, amely végrehajtja a *csak, ha* egy vagy több, a hívás sikertelen. Ebben a példában adatok lekérése a különböző helyek, de a hívás sikertelen lesz, ha azt szeretné-e valahol utáni egy üzenetet, így azt követheti nyomon, hogy hiba le később:  
+2. A bal oldali menüből **további szolgáltatások**. A **Vállalati integráció** résznél válassza a **Logikai alkalmazások** elemet. Válassza ki a logikai alkalmazást.
 
+3. A logic app menüből alatt **Fejlesztőeszközök**, válassza a **Logic App kódnézetben**.
+
+   A kód nézet ablak nyílik meg, és jeleníti meg a logic app-definíciót.
+
+## <a name="parameters"></a>Paraméterek
+
+Paraméterek is felhasználhatja a Logic Apps alkalmazást értékét, és jó helyettesítésére értékeket, amelyeket gyakran érdemes lehet módosítani. Például ha egy e-mail címet, amelyet több helyen is használja, meg kell határozni, hogy e-mail cím paraméterként. 
+
+Paraméterek is akkor hasznosak, ha különböző környezetekben paraméterének, további információ kell [telepítési paramétereinek](#deployment-parameters) és a [REST API-t az Azure Logic Apps dokumentációs](https://docs.microsoft.com/rest/api/logic).
+
+> [!NOTE]
+> Paraméterek kód nézetben csak érhetők el.
+
+Az a [első példa logikai alkalmazás](../logic-apps/quickstart-create-first-logic-app-workflow.md), a munkafolyamat által küldött e-mailek amikor új bejegyzések megjelennek a webhely RSS-hírcsatorna a létrehozott. A hírcsatorna URL-cím szoftveresen kötött, így ez a példa bemutatja, hogyan cserélje le a lekérdezés értékét egy paraméterrel, így könnyebben hírcsatorna URL-címet módosíthatja.
+
+1. A kód nézetre, keresse a `parameters : {}` objektumot, és adjon hozzá egy `currentFeedUrl` objektum:
+
+   ``` json
+     "currentFeedUrl" : {
+      "type" : "string",
+            "defaultValue" : "http://rss.cnn.com/rss/cnn_topstories.rss"
+   }
+   ```
+
+2. Az a `When_a_feed-item_is_published` művelet található a `queries` szakaszt, és cserélje le a lekérdezés értékét `"feedUrl": "#@{parameters('currentFeedUrl')}"`. 
+
+   **Before**
+   ``` json
+   }
+      "queries": {
+          "feedUrl": "https://s.ch9.ms/Feeds/RSS"
+       }
+   },   
+   ```
+
+   **Után**
+   ``` json
+   }
+      "queries": {
+          "feedUrl": "#@{parameters('currentFeedUrl')}"
+       }
+   },   
+   ```
+
+   Két vagy több karakterlánc csatlakozni is használhatja a `concat` függvény. 
+   Például `"@concat('#',parameters('currentFeedUrl'))"` ugyanúgy működik, mint az előző példát.
+
+3.  Ha elkészült, kattintson a **Mentés** gombra. 
+
+Most a webhely RSS-hírcsatorna úgy, hogy egy másik URL-címet keresztül bármikor módosíthatja a `currentFeedURL` objektum.
+
+<a name="deployment-parameters"></a>
+
+## <a name="deployment-parameters-for-different-environments"></a>A különböző környezetek üzembe helyezéshez megadott paraméterek
+
+Központi telepítés életciklusának általában, fejlesztési, átmeneti és üzemi környezetekben rendelkezik. Például előfordulhat, hogy ezekben a környezetekben az azonos logic app-definíciót használatára, de különböző adatbázist használja. Hasonlóképpen érdemes ugyanazon definíció különböző régiókban használja a magas rendelkezésre állású, de szeretné, hogy minden egyes logic app-példány adott régióban adatbázis használatára. 
+
+> [!NOTE] 
+> Ebben a forgatókönyvben eltér paraméterek véve *futásidejű* hol kell használnia a `trigger()` helyette működik.
+
+Íme egy alapszintű definíciója:
+
+``` json
+{
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "uri": {
+            "type": "string"
+        }
+    },
+    "triggers": {
+        "request": {
+          "type": "request",
+          "kind": "http"
+        }
+    },
+    "actions": {
+        "readData": {
+            "type": "Http",
+            "inputs": {
+                "method": "GET",
+                "uri": "@parameters('uri')"
+            }
+        }
+    },
+    "outputs": {}
+}
 ```
+A tényleges `PUT` kérhetnek a logic apps, megadhatja, hogy a paraméter `uri`. Minden környezetben, adjon meg más értéket a a `connection` paraméter. Mivel az alapértelmezett értéke már nem létezik, a logic app forgalma kell ezt a paramétert:
+
+``` json
+{
+    "properties": {},
+        "definition": {
+          /// Use the definition from above here
+        },
+        "parameters": {
+            "connection": {
+                "value": "https://my.connection.that.is.per.enviornment"
+            }
+        }
+    },
+    "location": "westus"
+}
+``` 
+
+További tudnivalókért tekintse meg a [REST API-t az Azure Logic Apps dokumentációs](https://docs.microsoft.com/rest/api/logic/).
+
+## <a name="process-strings-with-functions"></a>Folyamat karakterláncok funkciók
+
+A Logic Apps rendelkezik a különböző funkciók karakterláncok használata. Tegyük fel például, sorrendben vállalatnevet átadása egy másik rendszer szeretné. Azonban nem biztos megfelelő kezelését a karakteres kódolási kapcsolatban. Ez a karakterlánc az alkalmazás base64 kódolást elvégezni, de Kilépés az URL-címben elkerüléséhez lecserélheti több karaktert helyette. Is csak kell egy substring a vállalat neve, mert az első öt karakterek nem használhatók. 
+
+``` json
 {
   "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
   "contentVersion": "1.0.0.0",
-  "parameters": {},
+  "parameters": {
+    "order": {
+      "defaultValue": {
+        "quantity": 10,
+        "id": "myorder1",
+        "companyName": "NAME=Contoso"
+      },
+      "type": "Object"
+    }
+  },
   "triggers": {
-    "Request": {
-      "type": "request",
-      "kind": "http"
-    }
-  },
-  "actions": {
-    "readData": {
-      "type": "Http",
-      "inputs": {
-        "method": "GET",
-        "uri": "http://myurl"
-      }
-    },
-    "postToErrorMessageQueue": {
-      "type": "ApiConnection",
-      "inputs": "...",
-      "runAfter": {
-        "readData": [
-          "Failed"
-        ]
-      }
-    }
-  },
-  "outputs": {}
-}
-```
-
-Annak meghatározása, hogy `postToErrorMessageQueue` csak futtat `readData` rendelkezik `Failed`, használja a `runAfter` tulajdonságot, például a lehetséges értékek listáját adja meg, hogy `runAfter` lehet `["Succeeded", "Failed"]`.
-
-Végül, ez a példa most kezeli a hiba, mert azt már nem jelölje meg a Futtatás mint `Failed`. Mivel azt adja meg a lépés kezelése ebben a példában ez a hiba, rendelkezik-e a Futtatás `Succeeded` bár egy lépésben `Failed`.
-
-## <a name="execute-two-or-more-steps-in-parallel"></a>Két vagy több lépést végre párhuzamosan
-
-Ezzel párhuzamosan több műveletek futtatására a `runAfter` tulajdonságot meg kell futásidőben. 
-
-```
-{
-  "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {},
-  "triggers": {
-    "Request": {
-      "kind": "http",
-      "type": "Request"
-    }
-  },
-  "actions": {
-    "readData": {
-      "type": "Http",
-      "inputs": {
-        "method": "GET",
-        "uri": "http://myurl"
-      }
-    },
-    "branch1": {
-      "type": "Http",
-      "inputs": {
-        "method": "GET",
-        "uri": "http://myurl"
-      },
-      "runAfter": {
-        "readData": [
-          "Succeeded"
-        ]
-      }
-    },
-    "branch2": {
-      "type": "Http",
-      "inputs": {
-        "method": "GET",
-        "uri": "http://myurl"
-      },
-      "runAfter": {
-        "readData": [
-          "Succeeded"
-        ]
-      }
-    }
-  },
-  "outputs": {}
-}
-```
-
-Ebben a példában is `branch1` és `branch2` futtatása után értékre van beállítva `readData`. Ennek eredményeképpen a mindkét ágak párhuzamosan futnak. Mindkét ágak időbélyegzője megegyezik.
-
-![Párhuzamos](media/logic-apps-author-definitions/parallel.png)
-
-## <a name="join-two-parallel-branches"></a>Csatlakozás két párhuzamos ág
-
-Két műveletek elemek hozzáadásával párhuzamosan futó beállított csatlakozhat a `runAfter` tulajdonság az előző példában látható módon.
-
-```
-{
-  "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-04-01-preview/workflowdefinition.json#",
-  "actions": {
-    "readData": {
-      "type": "Http",
-      "inputs": {
-        "method": "GET",
-        "uri": "http://myurl"
-      },
-      "runAfter": {}
-    },
-    "branch1": {
-      "type": "Http",
-      "inputs": {
-        "method": "GET",
-        "uri": "http://myurl"
-      },
-      "runAfter": {
-        "readData": [
-          "Succeeded"
-        ]
-      }
-    },
-    "branch2": {
-      "type": "Http",
-      "inputs": {
-        "method": "GET",
-        "uri": "http://myurl"
-      },
-      "runAfter": {
-        "readData": [
-          "Succeeded"
-        ]
-      }
-    },
-    "join": {
-      "type": "Http",
-      "inputs": {
-        "method": "GET",
-        "uri": "http://myurl"
-      },
-      "runAfter": {
-        "branch1": [
-          "Succeeded"
-        ],
-        "branch2": [
-          "Succeeded"
-        ]
-      }
-    }
-  },
-  "parameters": {},
-  "triggers": {
-    "Request": {
+    "request": {
       "type": "Request",
-      "kind": "Http",
+      "kind": "Http"
+    }
+  },
+  "actions": {
+    "order": {
+      "type": "Http",
       "inputs": {
-        "schema": {}
+        "method": "GET",
+        "uri": "http://www.example.com/?id=@{replace(replace(base64(substring(parameters('order').companyName,5,sub(length(parameters('order').companyName), 5) )),'+','-') ,'/' ,'_' )}"
       }
     }
   },
-  "contentVersion": "1.0.0.0",
   "outputs": {}
 }
 ```
 
-![Párhuzamos](media/logic-apps-author-definitions/join.png)
+Ezeket a lépéseket ismerteti, hogyan dolgozza fel a ebben a példában ez a karakterlánc, belső kívülre dolgozik:
 
-## <a name="map-list-items-to-a-different-configuration"></a>Egy másik konfigurációs listaelemek leképezése
-
-Ezt követően tegyük fel, hogy azt szeretné, hogy a tulajdonság értékének alapján különböző tartalom. Paraméterként létrehozhatunk olyan értékek célhelyekre térképet:  
-
+``` 
+"uri": "http://www.example.com/?id=@{replace(replace(base64(substring(parameters('order').companyName,5,sub(length(parameters('order').companyName), 5) )),'+','-') ,'/' ,'_' )}"
 ```
+
+1. Beolvasása a [ `length()` ](../logic-apps/logic-apps-workflow-definition-language.md) a vállalat nevét, az így kapott karakterek száma.
+
+2. Ahhoz, hogy rövidebb karakterláncnak, kivonás `5`.
+
+3. Most már egy [ `substring()` ](../logic-apps/logic-apps-workflow-definition-language.md). Indítsa el a következő indexnél `5`, és nyissa meg a karakterlánc hátralévő részére.
+
+4. A keresendő karakterláncrészletet átalakítani egy [ `base64()` ](../logic-apps/logic-apps-workflow-definition-language.md) karakterlánc.
+
+5. Most [ `replace()` ](../logic-apps/logic-apps-workflow-definition-language.md) minden a `+` karakterből álló `-` karaktereket.
+
+6. Végezetül [ `replace()` ](../logic-apps/logic-apps-workflow-definition-language.md) minden a `/` karakterből álló `_` karaktereket.
+
+## <a name="map-list-items-to-property-values-then-use-maps-as-parameters"></a>Listaelemek megfeleltetése tulajdonságok értékeit, majd használja a maps paraméter
+
+Más eredményt ad-alapú egy tulajdonság értéke, a megfelelő tulajdonságértékekhez eredményeként a térkép létrehozásához, majd a térkép használata paramétereként. 
+
+Ez a munkafolyamat például néhány kategóriák meghatározása szerint a paraméterek és, hogy az ezekben a kategóriákban egy adott URL-cím megegyezik. Először a munkafolyamat lekérdezi a cikkek listáját. Ezt követően a munkafolyamat a térkép az egyes cikkekhez tartozó kategória megfelelő URL-címét használja.
+
+*   A [ `intersection()` ](../logic-apps/logic-apps-workflow-definition-language.md) függvény ellenőrzi, hogy a kategória sem felel meg egy ismert meghatározott kategóriát.
+
+*   Után a megfelelő kategóriát kap, a választ az elem a térkép szögletes zárójelbe használatával: `parameters[...]`
+
+``` json
 {
   "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
   "contentVersion": "1.0.0.0",
@@ -271,21 +276,29 @@ Ezt követően tegyük fel, hogy azt szeretné, hogy a tulajdonság értékének
 }
 ```
 
-Ebben az esetben azt először kapnak a cikkek listáját. A paraméterként megadott kategória alapján, a második lépésben használja a térkép kereséséhez a tartalom első URL-CÍMÉT.
+## <a name="get-data-with-date-functions"></a>A dátum funkciók adatok beolvasása
 
-Néhány eset Itt figyelembe venni: 
+Nem natív módon támogató adatforrásból származó adatok eléréséhez *eseményindítók*, használhat dátum alkalommal való munkához működik, és ehelyett dátumok. Például ebben a kifejezésben megkeresi, mennyi ideig a munkafolyamat lépéseket végzése, kívülre belülről működik:
 
-*   A [ `intersection()` ](https://msdn.microsoft.com/library/azure/mt643789.aspx#intersection) függvény ellenőrzi, hogy a kategória megegyezik-e ismert meghatározott kategóriák közül.
-
-*   Miután azt lekérése a kategóriát, azt is lekéréses szögletes zárójelbe használatával leképezés elem:`parameters[...]`
-
-## <a name="process-strings"></a>Folyamat karakterláncok
-
-Különböző funkciókat karakterláncok módosítására használhatja. Tegyük fel például, a karakterlánc, amely azt szeretnénk, hogy egy system van, de jelenleg nem megfelelő kezelését a karakteres kódolási kapcsolatos benne. Egy elem Base64 kódolással. Ez a karakterlánc kódolása. Azonban egy URL-címben escape-karaktersorozat elkerüléséhez fogjuk néhány karakterek. 
-
-Szeretnénk továbbá rendelés nevének egy részét, mert az első öt karakterek nem használhatók.
-
+``` json
+"expression": "@less(actions('order').startTime,addseconds(utcNow(),-1))",
 ```
+
+1. Az a `order` kivonat, a művelet a `startTime`. 
+2. Az aktuális idő az beszerzése `utcNow()`.
+3. Egy második kivonása:
+
+   [`addseconds(..., -1)`](../logic-apps/logic-apps-workflow-definition-language.md) 
+
+   Például használhatja más időegységekkel `minutes` vagy `hours`. 
+
+3. Most amelyeket összehasonlíthat e két érték. 
+
+   Ha az első érték kisebb, mint a második érték, akkor több mint egy második megbízást először óta eltelt.
+
+A dátumok formázásához karakterlánc is használhatja. Például a RFC1123, amelyet [ `utcnow('r')` ](../logic-apps/logic-apps-workflow-definition-language.md). További információ [formázás dátum](../logic-apps/logic-apps-workflow-definition-language.md).
+
+``` json
 {
   "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
   "contentVersion": "1.0.0.0",
@@ -293,58 +306,7 @@ Szeretnénk továbbá rendelés nevének egy részét, mert az első öt karakte
     "order": {
       "defaultValue": {
         "quantity": 10,
-        "id": "myorder1",
-        "orderer": "NAME=Contoso"
-      },
-      "type": "Object"
-    }
-  },
-  "triggers": {
-    "request": {
-      "type": "request",
-      "kind": "http"
-    }
-  },
-  "actions": {
-    "order": {
-      "type": "Http",
-      "inputs": {
-        "method": "GET",
-        "uri": "http://www.example.com/?id=@{replace(replace(base64(substring(parameters('order').orderer,5,sub(length(parameters('order').orderer), 5) )),'+','-') ,'/' ,'_' )}"
-      }
-    }
-  },
-  "outputs": {}
-}
-```
-
-Munka a belül a kívül:
-
-1. Beolvasása a [ `length()` ](https://msdn.microsoft.com/library/azure/mt643789.aspx#length) a megrendelő megadásához, így azt vissza karakterek száma.
-
-2. Kivonás 5, mert azt szeretnénk, ha egy rövidebb karakterláncot.
-
-3. Ténylegesen, igénybe vehet a [ `substring()` ](https://msdn.microsoft.com/library/azure/mt643789.aspx#substring). Először indexnél `5` és nyissa meg a fennmaradó karakterlánc.
-
-4. A keresendő karakterláncrészletet átalakítani egy [ `base64()` ](https://msdn.microsoft.com/library/azure/mt643789.aspx#base64) karakterlánc.
-
-5. [`replace()`](https://msdn.microsoft.com/library/azure/mt643789.aspx#replace)minden a `+` karakterből álló `-` karaktereket.
-
-6. [`replace()`](https://msdn.microsoft.com/library/azure/mt643789.aspx#replace)minden a `/` karakterből álló `_` karaktereket.
-
-## <a name="work-with-date-times"></a>Időpontok használata
-
-Időpontok hasznos lehet, különösen olyan adatforrást, amelynek a természetes nem támogatja olvasnak be adatokat próbál *eseményindítók*. Használhatja a időpontok mennyi ideig számos lépés végzése kereséséhez.
-
-```
-{
-  "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "order": {
-      "defaultValue": {
-        "quantity": 10,
-        "id": "myorder1"
+        "id": "myorder-id"
       },
       "type": "Object"
     }
@@ -386,67 +348,13 @@ Időpontok hasznos lehet, különösen olyan adatforrást, amelynek a természet
 }
 ```
 
-Ez a példa azt bontsa ki a `startTime` az előző lépésben. Ezután azt beolvasni az aktuális idejét, és egy második kivonása:
 
-[`addseconds(..., -1)`](https://msdn.microsoft.com/library/azure/mt643789.aspx#addseconds) 
+## <a name="next-steps"></a>További lépések
 
-Például használhatja más időegységekkel `minutes` vagy `hours`. E két érték végül azt is összehasonlíthatja. Ha az első érték kisebb, mint a második érték, akkor több mint egy második megbízást először óta eltelt.
-
-Dátumok formázásához karakterlánc is használhatja azt. Például a RFC1123 beszerzéséhez használjuk [ `utcnow('r')` ](https://msdn.microsoft.com/library/azure/mt643789.aspx#utcnow). Dátum formázás, lásd: [Munkafolyamatdefiníciós nyelve](https://msdn.microsoft.com/library/azure/mt643789.aspx#utcnow).
-
-## <a name="deployment-parameters-for-different-environments"></a>A különböző környezetek üzembe helyezéshez megadott paraméterek
-
-Gyakran központi telepítési életciklusának rendelkezik, a környezet, egy átmeneti és éles környezetben. Például előfordulhat, hogy ugyanazon definíció ezekben a környezetekben használható, de különböző adatbázist használja. Hasonlóképpen érdemes ugyanazon definíció különböző régiókban használja a magas rendelkezésre állású, de szeretné, hogy felvegye a adott régióban adatbázis minden logic app-példány.
-Ebben a forgatókönyvben eltér paraméterek véve *futásidejű* ahol Ehelyett használjon a `trigger()` az előző példában szemléltetett működéséhez.
-
-Kezdésként használhatja az ebben a példában például egy alapszintű definíciója:
-
-```
-{
-    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "uri": {
-            "type": "string"
-        }
-    },
-    "triggers": {
-        "request": {
-          "type": "request",
-          "kind": "http"
-        }
-    },
-    "actions": {
-        "readData": {
-            "type": "Http",
-            "inputs": {
-                "method": "GET",
-                "uri": "@parameters('uri')"
-            }
-        }
-    },
-    "outputs": {}
-}
-```
-
-A tényleges `PUT` kérhetnek a logic apps, megadhatja, hogy a paraméter `uri`. Mivel az alapértelmezett értéke már nem létezik, a logic app forgalma kell ezt a paramétert:
-
-```
-{
-    "properties": {},
-        "definition": {
-          // Use the definition from above here
-        },
-        "parameters": {
-            "connection": {
-                "value": "https://my.connection.that.is.per.enviornment"
-            }
-        }
-    },
-    "location": "westus"
-}
-``` 
-
-Minden környezetben, adjon meg más értéket a a `connection` paraméter. 
-
-Az összes lehetséges, hogy rendelkezik, és logic Apps alkalmazásokat kezeléséhez, tekintse meg a [REST API-dokumentáció](https://msdn.microsoft.com/library/azure/mt643787.aspx). 
+* [A lépéseket (feltételes utasítások) feltétel alapján](../logic-apps/logic-apps-control-flow-conditional-statement.md)
+* [Futtatás (kapcsoló utasítások) eltérő értékek alapján](../logic-apps/logic-apps-control-flow-switch-statement.md)
+* [Futtassa, és ismételje meg a (hurkok)](../logic-apps/logic-apps-control-flow-loops.md)
+* [Futtatás vagy egyesítési párhuzamos lépéseket (ágak)](../logic-apps/logic-apps-control-flow-branches.md)
+* [Futtassa a csoportosított (hatókör) állapota alapján](../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md)
+* További információ a [Azure Logic Apps Munkafolyamatdefiníciós nyelve sémája](../logic-apps/logic-apps-workflow-definition-language.md)
+* További információ [munkafolyamat-műveleteket, és az Azure Logic Apps eseményindítók](../logic-apps/logic-apps-workflow-actions-triggers.md)
