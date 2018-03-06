@@ -174,7 +174,7 @@ Az adatok helyes exportálását az új fájl megnyitásával ellenőrizheti. A 
 > 
 
 ## <a name="next-steps"></a>További lépések
-A betöltési folyamat megtervezéséhez lásd: [A betöltés áttekintése](sql-data-warehouse-design-elt-data-loading].  
+A betöltési folyamat megtervezéséhez lásd: [A betöltés áttekintése](sql-data-warehouse-design-elt-data-loading.md).  
 
 
 
