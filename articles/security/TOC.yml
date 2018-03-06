@@ -1,0 +1,280 @@
+- name: Az Azure Security dokumentációja
+  href: index.md
+- name: Architektúra és kialakítás
+  href: azure-security.md
+  expanded: true
+  items:
+    - name: Fejlett fenyegetésészlelés
+      href: azure-threat-detection.md
+    - name: Azure-naplózás
+      href: azure-log-audit.md
+    - name: Azure hálózati biztonság
+      href: azure-network-security.md
+    - name: Működési biztonság engedélyezése
+      href: azure-operational-security.md
+    - name: Irányítás az Azure-ban
+      href: governance-in-azure.md
+    - name: Elkülönítés az Azure-felhőben
+      href: azure-isolation.md
+    - name: Biztonságos hibrid hálózati architektúra
+      href: 'https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid?toc=%2Fazure%2Fsecurity%2Ftoc.json'
+    - name: Biztonságtechnikai képességek
+      href: azure-security-technical-capabilities.md
+- name: Adatbiztonság és titkosítás
+  href: security-azure-encryption-overview.md
+  items:
+    - name: Adatbázis-biztonság
+      href: azure-database-security-overview.md
+      items:
+        - name: Ajánlott eljárások
+          href: azure-database-security-best-practices.md
+        - name: Biztonsági ellenőrzőlista
+          href: azure-database-security-checklist.md
+    - name: Disk encryption (Lemeztitkosítás)
+      items:
+        - name: Ajánlott eljárások
+          href: azure-security-data-encryption-best-practices.md
+        - name: Inaktív adatok titkosítása
+          href: azure-security-encryption-atrest.md
+        - name: Lemeztitkosítás IaaS virtuális gépekhez
+          href: azure-security-disk-encryption.md
+          items:
+            - name: Lemeztitkosítás – gyakori kérdések
+              href: azure-security-disk-encryption-faq.md
+            - name: Hibaelhárítás
+              href: azure-security-disk-encryption-tsg.md
+        - name: Azure-beli virtuális gép titkosítása
+          href: ../security-center/security-center-disk-encryption.md?toc=%2fazure%2fsecurity%2ftoc.json
+    - name: Az Azure Storage biztonsága
+      href: security-storage-overview.md
+    - name: Biztonsági útmutató a tároláshoz
+      href: ../storage/common/storage-security-guide.md?toc=%2fazure%2fsecurity%2ftoc.json
+- name: Platform és infrastruktúra
+  items:
+    - name: Microsoft Antimalware
+      href: azure-security-antimalware.md
+    - name: IaaS-biztonság
+      href: security-virtual-machines-overview.md
+      items:
+        - name: Ajánlott eljárások Azure-beli virtuális gépekhez
+          href: azure-security-best-practices-vms.md
+        - name: Ajánlott eljárások IaaS-beli számítási feladatokhoz
+          href: azure-security-iaas.md
+        - name: Azure Marketplace-rendszerképek
+          href: security-recommendations-azure-marketplace-images.md
+    - name: Identitáskezelés
+      href: security-identity-management-overview.md
+      items:
+        - name: Ajánlott eljárások
+          href: azure-security-identity-management-best-practices.md
+    - name: Hálózati biztonság
+      href: security-network-overview.md
+      items:
+        - name: Ajánlott eljárások
+          href: azure-security-network-security-best-practices.md
+        - name: Határbiztonság
+          href: ../best-practices-network-security.md?toc=%2fazure%2fsecurity%2ftoc.json
+- name: Alkalmazás
+  items:
+    - name: PaaS
+      href: security-paas-deployments.md
+      items:
+        - name: Azure App Service a PaaS-hez
+          href: security-paas-applications-using-app-services.md
+        - name: Azure Storage a PaaS-hez
+          href: security-paas-applications-using-storage.md
+        - name: Ajánlott DB-eljárások a PaaS-hez
+          href: security-paas-applications-using-sql.md
+        - name: IoT
+          href: security-internet-of-things-overview.md
+          items:
+            - name: Ajánlott biztonsági eljárások az IoT-hez
+              href: ../iot-suite/iot-security-best-practices.md
+            - name: IoT-biztonság
+              href: '../iot-suite/iot-security-architecture.md#security-in-iot'
+            - name: Az IoT üzemelő példányának védelme
+              href: ../iot-suite/iot-suite-security-deployment.md
+    - name: Az Azure Service Fabric biztonsága
+      href: azure-service-fabric-security-overview.md
+      items:
+        - name: Ajánlott eljárások
+          href: azure-service-fabric-security-best-practices.md
+        - name: Biztonsági ellenőrzőlista
+          href: azure-service-fabric-security-checklist.md
+- name: 'Monitorozás, naplózás és műveletek'
+  href: security-management-and-monitoring-overview.md
+  items:
+    - name: Naplózás
+      items:
+        - name: Biztonság kezelése
+          href: ../security-center/security-center-intro.md?toc=%2fazure%2fsecurity%2ftoc.json
+        - name: Távfelügyeleti biztonság
+          href: azure-security-management.md
+        - name: Azure-naplók integrációja
+          items:
+            - name: Bevezetés
+              href: security-azure-log-integration-overview.md
+            - name: Bevezetés
+              href: security-azure-log-integration-get-started.md
+            - name: Az Azure AD auditnaplóinak integrálása
+              href: security-azure-log-integration-ad.md
+            - name: A Security Center riasztásainak integrálása
+              href: security-azure-log-integration-security-center.md
+            - name: A Key Vault naplóinak integrálása
+              href: security-azure-log-integration-keyvault-eventhub.md
+            - name: GYIK
+              href: security-azure-log-integration-faq.md
+    - name: Működési biztonság
+      href: azure-operational-security-overview.md
+      items:
+        - name: Ajánlott eljárások
+          href: azure-operational-security-best-practices.md
+        - name: Biztonsági ellenőrzőlista
+          href: azure-operational-security-checklist.md
+- name: Cégirányítás és megfelelőség
+  items:
+    - name: Pénzügyi szolgáltatások szabályozott számítási feladatokhoz
+      href: ./blueprints/financial-services-regulated-workloads.md
+    - name: GDPR
+      items:
+        - name: Személyes adatok kezelése
+          href: manage-personal-data-azure.md
+        - name: 'Személyes adatok felderítése, azonosítása és osztályozása'
+          href: how-to-discover-classify-personal-data-azure.md
+        - name: Személyes adatok védelme az Azure-ban
+          href: protect-personal-data-azure.md
+        - name: Személyes adatok védelme a Security Center segítségével
+          href: protect-personal-data-azure-security-center.md
+        - name: Személyes adatok védelme az Application Gateway segítségével
+          href: protect-personal-data-network-security.md
+        - name: Személyes adatok védelme az identitás- és hozzáférés-vezérlés használatával
+          href: protect-personal-data-identity-access-controls.md
+        - name: Inaktív személyes adatok védelme titkosítás segítségével
+          href: protect-personal-data-at-rest.md
+        - name: Személyes adatok védelme az átvitel során titkosítás segítségével
+          href: protect-personal-data-in-transit-encryption.md
+        - name: Személyes adatok védelme az Azure jelentéskészítő eszközeinek használatával
+          href: protection-personal-data-azure-reporting-tools.md
+    - name: FEDRAMP
+      href: ./blueprints/fedramp.md
+      items:
+        - name: Biztonsági vezérlők áttekintése
+          href: ./blueprints/fedramp-controls-overview.md
+        - name: Hozzáférés-vezérlés
+          href: ./blueprints/fedramp-access-controls.md
+        - name: Naplózás és felelősségre vonhatóság
+          href: ./blueprints/fedramp-audit-accountability-controls.md
+        - name: Tájékoztatás és képzés
+          href: ./blueprints/fedramp-awareness-training-controls.md
+        - name: Konfigurációkezelés
+          href: ./blueprints/fedramp-configuration-manager-controls.md
+        - name: Válságterv készítése
+          href: ./blueprints/fedramp-contingency-planning-controls.md
+        - name: Azonosítás és hitelesítés
+          href: ./blueprints/fedramp-identification-authentication-controls.md
+        - name: Incidensmegoldás
+          href: ./blueprints/fedramp-incident-response-controls.md
+        - name: Karbantartás
+          href: ./blueprints/fedramp-maintenance-controls.md
+        - name: Adathordozók védelme
+          href: ./blueprints/fedramp-media-protection-controls.md
+        - name: Személyzet biztonsága
+          href: ./blueprints/fedramp-personnel-security-controls.md
+        - name: Fizikai és környezeti védelem
+          href: ./blueprints/fedramp-physical-environmental-protection-controls.md
+        - name: Tervezés
+          href: ./blueprints/fedramp-planning-controls.md
+        - name: Kockázatfelmérés
+          href: ./blueprints/fedramp-risk-assessment-controls.md
+        - name: Biztonság felmérése és engedélyezése
+          href: ./blueprints/fedramp-security-assessment-authorization-controls.md
+        - name: Rendszer- és kommunikációvédelem
+          href: ./blueprints/fedramp-system-communications-protection-controls.md
+        - name: Rendszerek és információk integritása
+          href: ./blueprints/fedramp-system-information-integrity-controls.md
+        - name: Rendszerek és szolgáltatások beszerzése
+          href: ./blueprints/fedramp-system-services-acquisition-controls.md
+    - name: PCI DSS
+      href: ./blueprints/payment-processing-blueprint.md
+      items:
+        - name: Követelmények áttekintése
+          href: ./blueprints/pci-dss-requirements-overview.md
+        - name: 1. követelmény – tűzfalak
+          href: ./blueprints/pci-dss-requirement-1-firewall.md
+        - name: 2. követelmény – jelszavak
+          href: ./blueprints/pci-dss-requirement-2-password.md
+        - name: 3. követelmény – CHD
+          href: ./blueprints/pci-dss-requirement-3-chd.md
+        - name: 4. követelmény – titkosítás
+          href: ./blueprints/pci-dss-requirement-4-encryption.md
+        - name: 5. követelmény – kártevők
+          href: ./blueprints/pci-dss-requirement-5-malware.md
+        - name: 6. követelmény – biztonságos rendszerek
+          href: ./blueprints/pci-dss-requirement-6-secure-system.md
+        - name: 7. követelmény – hozzáférés
+          href: ./blueprints/pci-dss-requirement-7-access.md
+        - name: 8. követelmény – identitás
+          href: ./blueprints/pci-dss-requirement-8-identity.md
+        - name: 9. követelmény – fizikai hozzáférés
+          href: ./blueprints/pci-dss-requirement-9-physical-access.md
+        - name: 10. követelmény – monitorozás
+          href: ./blueprints/pci-dss-requirement-10-monitoring.md
+        - name: 11. követelmény – tesztelés
+          href: ./blueprints/pci-dss-requirement-11-testing.md
+        - name: 12. követelmény – szabályzat
+          href: ./blueprints/pci-dss-requirement-12-policy.md
+    - name: UK-OFFICIAL
+      href: ./blueprints/uk-official-three-tier-applications-overview.md
+      items:
+        - name: Alapelvek áttekintése
+          href: ./blueprints/uk-official-three-tier-applications-principles-overview.md
+    - name: HIPAA/HITRUST-állapotadatok és mesterséges intelligencia
+      href: ./blueprints/azure-health.md
+- name: Tanulmányok
+  href: security-white-papers.md
+- name: Műszaki áttekintések
+  href: security-overviews.md
+- name: Ajánlott eljárások
+  href: security-best-practices-and-patterns.md
+- name: További források
+  items:
+    - name: Azure biztonsági MVP program
+      href: azure-security-mvp.md
+    - name: Kiberbiztonsági tanácsadás
+      href: azure-security-cyber-services.md
+    - name: Biztonsági eseményekről szóló támogatási jegyek rögzítése
+      href: azure-security-event-support-ticket.md
+    - name: Toll tesztelése
+      href: azure-security-pen-testing.md
+    - name: Microsoft Threat Modeling Tool
+      href: azure-security-threat-modeling-tool.md
+      items:
+        - name: Első lépések
+          href: azure-security-threat-modeling-tool-getting-started.md
+        - name: A funkciók áttekintése
+          href: azure-security-threat-modeling-tool-feature-overview.md
+        - name: Fenyegetések
+          href: azure-security-threat-modeling-tool-threats.md
+        - name: Kezelési lehetőségek
+          href: azure-security-threat-modeling-tool-mitigations.md
+          items:
+            - name: Naplózás
+              href: azure-security-threat-modeling-tool-auditing-and-logging.md
+            - name: Hitelesítés
+              href: azure-security-threat-modeling-tool-authentication.md
+            - name: Engedélyezés
+              href: azure-security-threat-modeling-tool-authorization.md
+            - name: Kommunikációs biztonság
+              href: azure-security-threat-modeling-tool-communication-security.md
+            - name: Konfigurációkezelés
+              href: azure-security-threat-modeling-tool-configuration-management.md
+            - name: Titkosítás
+              href: azure-security-threat-modeling-tool-cryptography.md
+            - name: Kivételek kezelése
+              href: azure-security-threat-modeling-tool-exception-management.md
+            - name: Bemenet-ellenőrzés
+              href: azure-security-threat-modeling-tool-input-validation.md
+            - name: Bizalmas adatok
+              href: azure-security-threat-modeling-tool-sensitive-data.md
+            - name: Munkamenet-kezelés
+              href: azure-security-threat-modeling-tool-session-management.md

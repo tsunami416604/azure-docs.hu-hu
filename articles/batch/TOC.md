@@ -42,12 +42,13 @@
 
 ## Készletek létrehozása és kezelése
 ### [Számítási csomópontok automatikus méretezése](batch-automatic-scaling.md)
-### [Nagy számítási igényű virtuális gépek](batch-pool-compute-intensive-sizes.md)
+### [Számítási csomópontok virtuálisgép-méretének kiválasztása](batch-pool-vm-sizes.md)
 ### [Számítási csomópontokhoz való hozzáférés konfigurálása](pool-endpoint-configuration.md)
 ### [Készlet létrehozása egyéni rendszerképpel](batch-custom-images.md)
 ### [Készlet létrehozása egy virtuális hálózaton belül](batch-virtual-network.md)
-### [Linuxos számítási csomópontok](batch-linux-nodes.md)
-### [Alacsony prioritású virtuális gépek](batch-low-pri-vms.md)
+### [Nagy számítási igényű virtuális gépek használata](batch-pool-compute-intensive-sizes.md)
+### [Linuxos számítási csomópontok használata](batch-linux-nodes.md)
+### [Alacsony prioritású virtuális gépek használata](batch-low-pri-vms.md)
 
 ## Munkák és feladatok kezelése
 ### [Feladatok előkészítési és befejezési műveletei](batch-job-prep-release.md)
