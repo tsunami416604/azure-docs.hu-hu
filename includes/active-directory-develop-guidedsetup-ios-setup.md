@@ -12,7 +12,7 @@ Carthage Csomagkezelő MSAL előzetes verzió időtartama során használt – a
 
 ## <a name="creating-your-application"></a>Az alkalmazás létrehozása
 
-1.  Nyissa meg az xcode-ban, és válassza ki`Create a new Xcode project`
+1.  Nyissa meg az xcode-ban, és válassza ki `Create a new Xcode project`
 2.  Válassza ki `iOS`  >  `Single view Application` kattintson *tovább*
 3.  Nevezze el a termék, és kattintson a *következő*
 4.  Adja meg az alkalmazás létrehozása, és kattintson a *létrehozása*
@@ -42,10 +42,10 @@ carthage update
 
 ## <a name="add-the-msal-framework-to-your-application"></a>A MSAL keretrendszer hozzá az alkalmazáshoz
 1.  Az Xcode-ban nyissa meg a `General` lap
-2.  Lépjen a `Linked Frameworks and Libraries` szakaszt, és kattintson`+`
+2.  Lépjen a `Linked Frameworks and Libraries` szakaszt, és kattintson `+`
 3.  A következők szerint válasszon: `Add other…`
 4.  Válassza a következőt: `Carthage`  >  `Build`  >  `iOS`  >  `MSAL.framework` kattintson *nyitott*. Megtekintheti az `MSAL.framework` felvenni a listára.
-5.  Ugrás a `Build Phases` fülre, majd `+` ikonra, válassza a`New Run Script Phase`
+5.  Ugrás a `Build Phases` fülre, majd `+` ikonra, válassza a `New Run Script Phase`
 6.  Adja hozzá a következő tartalmat a *parancsfájl-terület*:
 
 ```text
@@ -66,7 +66,7 @@ $(SRCROOT)/Carthage/Build/iOS/MSAL.framework
 ## <a name="creating-your-applications-ui"></a>Az alkalmazás felhasználói felület létrehozása
 Egy Main.storyboard fájl automatikusan a projekt sablon részeként hozható létre. Kövesse az alábbi utasításokat az alkalmazás felhasználói felületének létrehozásához:
 
-1.  CTRL + kattintson `Main.storyboard` elindítani a helyi menü, majd:`Open As` > `Source Code`
+1.  CTRL + kattintson `Main.storyboard` elindítani a helyi menü, majd: `Open As` > `Source Code`
 2.  Cserélje le a `<scenes>` csomópont, amelynek az alábbi kódot:
 
 ```xml

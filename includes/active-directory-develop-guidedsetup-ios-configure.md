@@ -11,7 +11,7 @@ Most kell regisztrálnia az alkalmazást a *Microsoft alkalmazásregisztrációs
 1.  Ugrás a [Microsoft alkalmazásregisztrációs portálra](https://apps.dev.microsoft.com/portal/register-app)
 2.  Adjon meg egy nevet az alkalmazás és az e-maileket
 3.  Győződjön meg arról, hogy az interaktív telepítés beállítás nincs bejelölve
-4.  Kattintson a `Add Platform`, majd jelölje be `Native Application` kattintson`Save`
+4.  Kattintson a `Add Platform`, majd jelölje be `Native Application` kattintson `Save`
 5.  Térjen vissza az xcode-ban. A `ViewController.swift`, cserélje le a kezdetű sort "`let kClientID`" az imént regisztrált alkalmazás azonosítójával:
 
 ```swift
@@ -21,7 +21,7 @@ let kClientID = "Your_Application_Id_Here"
 <!-- Workaround for Docs conversion bug -->
 <ol start="6">
 <li>
-CTRL + kattintson <code>Info.plist</code> a helyi menü, és kattintson a: <code>Open As</code>> <code>Source Code</code>
+CTRL + kattintson <code>Info.plist</code> elindítani a helyi menü, majd: <code>Open As</code> > <code>Source Code</code>
 </li>
 <li>
 Az a <code>dict</code> gyökércsomópont, adja hozzá a következő:

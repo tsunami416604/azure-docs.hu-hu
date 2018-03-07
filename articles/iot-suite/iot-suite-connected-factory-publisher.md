@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/14/2017
 ms.author: dobett
 ms.openlocfilehash: 934f4deb3139c136c871ab0125ba45267e1d1b05
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 03/06/2018
 ---
 # <a name="opc-publisher-for-azure-iot-edge"></a>Az Azure IoT peremhálózati OPC közzétevője
 
@@ -131,9 +131,9 @@ Az alkalmazás teljes használat megjelenítéséhez használja a `--help` paran
 OpcPublisher.exe <applicationname> [<IoT Hubconnectionstring>] [<options>]
 ```
 
-`applicationname`a használandó OPC EE-alkalmazás neve van. Ez a paraméter megadása kötelező. Az alkalmazás nevét a közzétevő regisztrálja az IoT-központ eszközbeállításjegyzékben is szolgál.
+`applicationname` a használandó OPC EE-alkalmazás neve van. Ez a paraméter megadása kötelező. Az alkalmazás nevét a közzétevő regisztrálja az IoT-központ eszközbeállításjegyzékben is szolgál.
 
-`IoT Hubconnectionstring`az IoT-központ tulajdonos kapcsolati karakterlánc. Ez a paraméter nem kötelező megadni.
+`IoT Hubconnectionstring` az IoT-központ tulajdonos kapcsolati karakterlánc. Ez a paraméter nem kötelező megadni.
 
 A következő beállításokat támogatja:
 
@@ -468,6 +468,6 @@ Most elindíthatja hibakeresés a Visual Studio parancssori ablakban az alábbi 
 DebugAdapterHost.Launch /LaunchJson:"<path-to-the-launch.json-file-you-saved>"
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A javasolt következő lépésre megtudhatja, hogyan [egy átjáró a Windows vagy Linux az előre konfigurált csatlakoztatott gyári megoldás üzembe helyezéséhez](iot-suite-connected-factory-gateway-deployment.md).
