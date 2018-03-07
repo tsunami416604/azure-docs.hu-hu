@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 10/16/2017
 ms.author: jdial
 ms.openlocfilehash: 0319029277091611673f15c94604604850cbfcbe
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 03/06/2018
 ---
 # <a name="create-a-user-defined-route---azure-portal"></a>Hozzon létre egy felhasználó által megadott útvonal - Azure-portálon
 
@@ -32,7 +32,7 @@ Ebben az oktatóanyagban létrehozhat egy virtuális hálózati nyilvános, mag�
 
 ![Felhasználó által megadott útvonalak](./media/create-user-defined-route/user-defined-routes.png)
 
-A cikkben a Resource Manager telepítési modell, amely a felhasználó által definiált útvonalak létrehozásakor használata javasolt üzembe helyezési modellel egy felhasználó által megadott útvonal létrehozásának lépéseit. Ha egy felhasználó által megadott útvonal (klasszikus) létrehozásához szüksége, tekintse meg [hozzon létre egy felhasználó által megadott útvonal (klasszikus)](virtual-network-create-udr-classic-ps.md). Ha nem ismeri az Azure üzembe helyezési modellel, lásd: [megértéséhez Azure üzembe helyezési modellel](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Felhasználó által definiált útvonalak kapcsolatos további információkért lásd: [felhasználó által definiált útvonalak áttekintése](virtual-networks-udr-overview.md#user-defined).
+A cikkben a Resource Manager telepítési modell, amely a felhasználó által definiált útvonalak létrehozásakor használata javasolt üzembe helyezési modellel egy felhasználó által megadott útvonal létrehozásának lépéseit. Ha egy felhasználó által megadott útvonal (klasszikus) létrehozásához szüksége, tekintse meg [hozzon létre egy felhasználó által megadott útvonal (klasszikus)](virtual-network-create-udr-classic-ps.md). Ha nem ismeri az Azure üzembe helyezési modellel, lásd: [megértéséhez Azure üzembe helyezési modellel](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json). A felhasználó által megadott útvonalakkal kapcsolatos további információkért lásd a [felhasználó által megadott útvonalak áttekintését](virtual-networks-udr-overview.md#user-defined).
 
 ## <a name="create-routes-and-network-virtual-appliance"></a>Útvonalak és hálózati virtuális készülék létrehozása
 
@@ -53,7 +53,7 @@ A cikkben a Resource Manager telepítési modell, amely a felhasználó által d
 
         |Beállítás|Érték|
         |-----|-----|
-        |Név|DMZ|
+        |Name (Név)|DMZ|
         |Címtartomány (CIDR-blokkja)|10.0.2.0/24|
 
 6. Virtuális gép hálózati virtuális készülék létrehozása:
@@ -63,7 +63,7 @@ A cikkben a Resource Manager telepítési modell, amely a felhasználó által d
 
         |Beállítás|Érték|
         |---|---|
-        |Név|myVm-Nva|
+        |Name (Név)|myVm-Nva|
         |Felhasználónév|azureuser|
         |Jelszó és a jelszó megerősítése|A jelszó|
         |Előfizetés|Jelölje ki az előfizetését|
@@ -82,7 +82,7 @@ A cikkben a Resource Manager telepítési modell, amely a felhasználó által d
     - Az a **keresési erőforrások** a lap tetején mezőbe írja be *myVm-Nva*.
     - Kattintson a **myVm-Nva** amikor megjelenik a keresési eredmények között.
     - Kattintson a **hálózati** alatt **beállítások** bal oldalán.
-    - Kattintson a nevére, a hálózati illesztő **myVm-Nva - hálózati adapterek**. A név **myvm-nva***X*, ahol *X* a portál által hozzárendelt szám.
+    - Kattintson a nevére, a hálózati illesztő **myVm-Nva - hálózati adapterek**. A név **myvm-nva x X*, ahol *X* a portál által hozzárendelt szám.
     - Kattintson a **IP-konfigurációk** alatt **beállítások** a hálózati adapter, az alábbi ábrán látható módon:
 
         ![Hálózati illesztő beállításai](./media/create-user-defined-route/network-interface-settings.png)
@@ -102,7 +102,7 @@ A cikkben a Resource Manager telepítési modell, amely a felhasználó által d
 
         |Beállítás|Érték|
         |---|---|
-        |Név|Nyilvános myRouteTable|
+        |Name (Név)|myRouteTable-Public|
         |Előfizetés|Jelölje ki az előfizetését|
         |Erőforráscsoport|Válassza ki **meglévő**, majd jelölje be **myResourceGroup**|
         |Hely|USA keleti régiója|
@@ -327,7 +327,7 @@ Ez az oktatóanyag befejezése után előfordulhat, hogy törölni kívánja az 
 2. Az a **myResourceGroup** panelen kattintson a **törlése** ikonra.
 3. A törlés megerősítéséhez a a **típus az ERŐFORRÁSCSOPORT neve** adja meg a **myResourceGroup**, és kattintson a **törlése**.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Hozzon létre egy [magas rendelkezésre állású hálózati virtuális készülék](/azure/architecture/reference-architectures/dmz/nva-ha?toc=%2fazure%2fvirtual-network%2ftoc.json).
 - Virtuális hálózati berendezések gyakran rendelkezik, több hálózati adapterrel és IP-címek hozzárendelve. Megtudhatja, hogyan [hálózati adapterek hozzáadása egy meglévő virtuális gép](virtual-network-network-interface-vm.md#vm-add-nic) és [IP-címek hozzáadása a meglévő hálózati illesztő](virtual-network-network-interface-addresses.md#add-ip-addresses). Bár az összes virtuálisgép-méretek lehet kapcsolódik legalább két hálózati adapterrel, minden virtuális gép méretét támogatja a hálózati adapterek maximális száma. Hány hálózati adapterek minden egyes virtuális gép mérete által támogatott, lásd: [Windows](../virtual-machines/windows/sizes.md?toc=%2Fazure%2Fvirtual-network%2Ftoc.json) és [Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) virtuális gépek méretét. 
