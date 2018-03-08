@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/09/2017
 ms.author: juliako
-ms.openlocfilehash: 54b9c38d1122d898dd584a189b9ea2e3405dc6f5
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: 91461af20cdb189ab23671fee0f3dea182ec0bb1
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="use-playready-andor-widevine-dynamic-common-encryption"></a>PlayReady és/vagy Widevine Dynamic Common Encryption használata
 
@@ -70,7 +70,7 @@ Hajtsa végre az alábbi általános lépéseket, amikor PlayReady-védelemmel l
 
 3. Hozzon létre egy tartalomkulcsot, és társítsa a kódolt objektumhoz. A Media Services szolgáltatásban a tartalomkulcs tartalmazza az objektum titkosítási kulcsát.
 
-4. Konfigurálja a tartalomkulcs hitelesítési szabályzatát. Konfigurálnia kell a tartalomkulcs hitelesítési szabályzatát. Az ügyfélnek meg kell felelnie a szabályzatnak, mielőtt megkapná a tartalomkulcsot.
+4. Konfigurálja a tartalomkulcs engedélyezési házirendjét. Konfigurálnia kell a tartalomkulcs hitelesítési szabályzatát. Az ügyfélnek meg kell felelnie a szabályzatnak, mielőtt megkapná a tartalomkulcsot.
 
     A tartalomkulcs hitelesítési szabályzatának létrehozásához be kell állítania a továbbítási módszert (PlayReady vagy Widevine) és a korlátozásokat (nyitott vagy jogkivonat). Meg kell adnia azokat az információkat is, amelyek azt határozzák meg, hogy a rendszer hogyan továbbítja a kulcsot az ügyfélnek ([PlayReady-](media-services-playready-license-template-overview.md) vagy [Widevine-](media-services-widevine-license-template-overview.md)licencsablon).
 
@@ -135,6 +135,7 @@ További információk az objektumok közzétételéről és a streamelési URL-
 ## <a name="get-a-test-token"></a>Tesztjogkivonat lekérése
 Kérje le a kulcshitelesítési szabályzatban használt jogkivonat-korlátozásoknak megfelelő tesztjogkivonatot.
 
+```csharp
     // Deserializes a string containing an XML representation of a TokenRestrictionTemplate
     // back into a TokenRestrictionTemplate class instance.
     TokenRestrictionTemplate tokenTemplate =
@@ -145,7 +146,7 @@ Kérje le a kulcshitelesítési szabályzatban használt jogkivonat-korlátozás
     //so you have to add it in front of the token string.
     string testToken = TokenRestrictionTemplateSerializer.GenerateTestToken(tokenTemplate);
     Console.WriteLine("The authorization token is:\nBearer {0}", testToken);
-
+```
 
 A stream kipróbálásához használja az [Azure Media Services-lejátszót](http://amsplayer.azurewebsites.net/azuremediaplayer.html).
 
@@ -155,8 +156,10 @@ A stream kipróbálásához használja az [Azure Media Services-lejátszót](htt
 
 2. Adja hozzá a következő elemeket az app.config fájlban megadott **appSettings** szakaszhoz:
 
+```xml
         <add key="Issuer" value="http://testacs.com"/>
         <add key="Audience" value="urn:test"/>
+```
 
 ## <a name="example"></a>Példa
 
@@ -171,7 +174,7 @@ További információ: [Objektumok és kapcsolódó entitások felügyelete a Me
 
 Módosítsa úgy a változókat, hogy a bemeneti fájlok tárolásához Ön által használt mappákra mutassanak.
 
-```
+```csharp
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -617,4 +620,4 @@ namespace DynamicEncryptionWithDRM
 ## <a name="see-also"></a>Lásd még
 * [CENC használata többszörös DRM-mel és hozzáférés-vezérléssel](media-services-cenc-with-multidrm-access-control.md)
 * [Widevine-csomagolás konfigurálása a Media Services segítségével](http://mingfeiy.com/how-to-configure-widevine-packaging-with-azure-media-services)
-* [A Google Widevine-licenctovábbítási szolgáltatás megjelenése az Azure Media Services-ben](https://azure.microsoft.com/blog/announcing-general-availability-of-google-widevine-license-services/)
+* [Announcing Google Widevine license delivery services in Azure Media Services](https://azure.microsoft.com/blog/announcing-general-availability-of-google-widevine-license-services/) (A Google Widevine-licenctovábbítási szolgáltatás megjelenése az Azure Media Services-ben)
