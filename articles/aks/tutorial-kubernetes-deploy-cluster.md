@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.date: 02/24/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: bb8ad6d9defcbaef255065b20a9a9b542e74d73d
-ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.openlocfilehash: 975069dbe9283c98482d7d0d5741a595ef323b35
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="deploy-an-azure-container-service-aks-cluster"></a>Azure Container Service- (AKS-) fürt üzembe helyezése
 
@@ -49,59 +49,6 @@ az aks create --resource-group myResourceGroup --name myAKSCluster --node-count 
 ```
 
 Néhány perc múlva befejeződik az üzembe helyezés, és a rendszer visszaadja az AKS-beli üzembe helyezéssel kapcsolatos adatokat JSON formátumban.
-
-```azurecli
-{
-  "additionalProperties": {},
-  "agentPoolProfiles": [
-    {
-      "additionalProperties": {},
-      "count": 1,
-      "dnsPrefix": null,
-      "fqdn": null,
-      "name": "nodepool1",
-      "osDiskSizeGb": null,
-      "osType": "Linux",
-      "ports": null,
-      "storageProfile": "ManagedDisks",
-      "vmSize": "Standard_DS1_v2",
-      "vnetSubnetId": null
-    }
-    ...
-```
-
-## <a name="getting-information-about-your-cluster"></a>A fürttel kapcsolatos információk lekérése
-
-A fürt üzembe helyezése után a(z) `az aks show` eszközzel lekérdezheti a fürtről a fontos információkat. Ezek az adatok paraméterként használhatók, amikor összetettebb műveleteket végez a fürtön. Ha például a fürtön futó Linux-profilról szeretne információt beszerezni, a következő parancsot futtathatja.
-
-```azurecli
-az aks show --name myAKSCluster --resource-group myResourceGroup --query "linuxProfile"
-
-{
-  "additionalProperties": {},
-  "adminUsername": "azureuser",
-  "ssh": {
-    "additionalProperties": {},
-    "publicKeys": [
-      {
-        "additionalProperties": {},
-        "keyData": "ssh-rsa AAAAB3NzaC1yc2EAAAADA...
-      }
-    ]
-  }
-}
-```
-
-Ez megjeleníti a rendszergazdai felhasználóval kapcsolatos információkat és a nyilvános SSH-kulcsokat. Úgy is futtathat részletesebb lekérdezéseket, ha JSON-tulajdonságokat fűz a lekérdezési karakterlánchoz, ahogy az alábbi példában is látható.
-
-```azurecli
-az aks show -n myakscluster  -g my-group --query "{name:agentPoolProfiles[0].name, nodeCount:agentPoolProfiles[0].count}"
-{
-  "name": "nodepool1",
-  "nodeCount": 1
-}
-```
-Ez hasznos lehet az üzembe helyezett fürttel kapcsolatos adatok gyors eléréséhez. A JMESPath-lekérdezésekről további információkat [itt](http://jmespath.org/tutorial.html) talál.
 
 ## <a name="install-the-kubectl-cli"></a>A kubectl parancssori felület telepítése
 
@@ -143,19 +90,19 @@ Hitelesítést kell konfigurálni az AKS-fürt és az ACR-beállításjegyzék k
 Először szerezze be az AKS-hez konfigurált szolgáltatásnév azonosítóját. Frissítse az erőforráscsoport és az AKS-fürt nevét, hogy megfeleljenek az aktuális környezetnek.
 
 ```azurecli
-$CLIENT_ID = $(az aks show --resource-group myResourceGroup --name myAKSCluster --query "servicePrincipalProfile.clientId" --output tsv)
+CLIENT_ID=$(az aks show --resource-group myResourceGroup --name myAKSCluster --query "servicePrincipalProfile.clientId" --output tsv)
 ```
 
 Szerezze be az ACR-beállításjegyzék erőforrás-azonosítóját. Frissítse a beállításjegyzék nevét az ACR-beállításjegyzék nevére, és az erőforráscsoportot arra az erőforráscsoportra, ahol az ACR-beállításjegyzék található.
 
 ```azurecli
-$ACR_ID = $(az acr show --name myACRRegistry --resource-group myResourceGroup --query "id" --output tsv)
+ACR_ID=$(az acr show --name myACRRegistry --resource-group myResourceGroup --query "id" --output tsv)
 ```
 
 Hozza létre a megfelelő hozzáférést biztosító szerepkör-hozzárendelést.
 
 ```azurecli
-az role assignment create --assignee $CLIENT_ID --role Contributor --scope $ACR_ID
+az role assignment create --assignee $CLIENT_ID --role Reader --scope $ACR_ID
 ```
 
 ## <a name="next-steps"></a>További lépések

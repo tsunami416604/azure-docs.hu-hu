@@ -14,11 +14,11 @@ ms.devlang: java
 ms.topic: get-started-article
 ms.date: 10/26/2017
 ms.author: juliako
-ms.openlocfilehash: bbfe7fedb1d5216b8a159faa9543ade74176181f
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: cba1e58478f4bbdffb61566e53aa0b86138b7fc6
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="get-started-with-the-java-client-sdk-for-azure-media-services"></a>Az Azure Media Services Java ügyfél-SDK használatának megkezdése
 [!INCLUDE [media-services-selector-get-started](../../includes/media-services-selector-get-started.md)]
@@ -37,12 +37,12 @@ Ezen oktatóanyag elvégzésének a következők a feltételei:
 
 A Java Media Services SDK használatának megkezdéséhez adja hozzá az `azure-media` csomag aktuális verziójának (0.9.8) hivatkozását az [Azure Media Services Java SDK-ból](https://mvnrepository.com/artifact/com.microsoft.azure/azure-media/latest)
 
-Ha például az összeállítási eszköze a `gradle`, adja a következő függőséget a `build.gradle` fájlhoz:
+Ha például a buildelőeszköze a `gradle`, adja a következő függőséget a `build.gradle` fájlhoz:
 
     compile group: 'com.microsoft.azure', name: 'azure-media', version: '0.9.8'
 
 >[!IMPORTANT]
->Az `azure-media` csomag `0.9.8`-as verziójától kezdődően az SDK támogatást nyújt az Azure Active Directory (AAD) hitelesítéshez, és nem támogatja az Azure Access Control Service (ACS) hitelesítést. Az ACS-szolgáltatások 2018. június 1-én elavulnak. Javasoljuk, hogy mielőbb térjen át az Azure AD-hitelesítési modellre. Az áttelepítéssel kapcsolatos részletekért olvassa el [az Azure Media Services API Azure AD-hitelesítéssel történő elérését](media-services-use-aad-auth-to-access-ams-api.md) ismertető cikket.
+>Az `azure-media` csomag `0.9.8`-as verziójától kezdődően az SDK támogatást nyújt az Azure Active Directory (AAD) hitelesítéshez, és nem támogatja az Azure Access Control Service (ACS) hitelesítést. Az ACS-szolgáltatások 2018. június 1-én elavulnak. Javasoljuk, hogy mielőbb térjen át az Azure AD-hitelesítési modellre. A migrálással kapcsolatos részletekért olvassa el [az Azure Media Services API Azure AD-hitelesítéssel történő elérését](media-services-use-aad-auth-to-access-ams-api.md) ismertető cikket.
 
 >[!NOTE]
 >Az Azure Media Services Java SDK forráskódját a [GitHub-adattárban találja](https://github.com/Azure/azure-sdk-for-java/tree/0.9/services/azure-media). Győződjön meg arról, hogy a „0.9”, és nem a „master” ágra váltott. 
@@ -62,10 +62,11 @@ A kód csatlakozik az Azure Media Services API-hoz az Azure AD egyszerű szolgá
 * `clientKey`: Az Azure AD-alkalmazás ügyfélkulcsa
 * `restApiEndpoint`: Az Azure Media Services-fiók REST API-végpontja
 
-Létrehozhat egy Azure AD-alkalmazást, és lekérheti a megelőző konfigurációs értékeket az Azure Portalról. További információt az **Ismerkedés az Azure AD-alapú hitelesítéssel az Azure Portalon** című cikk [Egyszerű szolgáltatásnév hitelesítése](https://docs.microsoft.com/azure/media-services/media-services-portal-get-started-with-aad) szakaszában találhat.
+Létrehozhat egy Azure AD-alkalmazást, és lekérheti a megelőző konfigurációs értékeket az Azure Portalról. További információt az **Azure Portalon keresztül történő Azure AD-alapú hitelesítést** ismertető cikkben, az [egyszerű szolgáltatásnév hitelesítését](https://docs.microsoft.com/azure/media-services/media-services-portal-get-started-with-aad) bemutató szakaszban talál.
 
 A kód egy helyileg tárolt videofájlt is használ. Szerkesztenie kell a kódot, hogy megadhassa a saját feltölteni kívánt helyi fájlját.
 
+```java
     import java.io.*;
     import java.net.URI;
     import java.security.NoSuchAlgorithmException;
@@ -298,7 +299,7 @@ A kód egy helyileg tárolt videofájlt is használ. Szerkesztenie kell a kódot
             }
         }
     }
-
+```
 
 ## <a name="media-services-learning-paths"></a>Media Services képzési tervek
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]

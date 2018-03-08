@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 12/10/2017
 ms.author: juliako
-ms.openlocfilehash: 98517b546fe5a00ad17d8478e94bc78a012c2de8
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: f88a9a732099f2bd63f46d3f45e5ff96f7441f03
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-net-sdk"></a>Tartalmak továbbítása igény szerint a .NET SDK használatával
 [!INCLUDE [media-services-selector-get-started](../../includes/media-services-selector-get-started.md)]
@@ -95,6 +95,7 @@ A **Fő** függvény olyan módszereket hív meg, amelyek jelen szakasz során k
 > [!NOTE]
 > Amíg nem veszi fel a jelen cikk későbbi szakaszaiban meghatározott összes függvénydefiníciót, a rendszer fordítási hibát jelez.
 
+```csharp
     class Program
     {
         // Read values from the App.config file.
@@ -145,7 +146,7 @@ A **Fő** függvény olyan módszereket hív meg, amelyek jelen szakasz során k
             Console.ReadLine();
         }
         }
-    
+```
 
 ## <a name="create-a-new-asset-and-upload-a-video-file"></a>Új adategység létrehozása és videofájl feltöltése
 
@@ -167,6 +168,7 @@ A következő példában az adategység lehetőségei közt a **Nincs** választ
 
 Adja hozzá a Program osztályhoz a következő módszert.
 
+```csharp
     static public IAsset UploadFile(string fileName, AssetCreationOptions options)
     {
         IAsset inputAsset = _context.Assets.CreateFromFile(
@@ -181,7 +183,7 @@ Adja hozzá a Program osztályhoz a következő módszert.
 
         return inputAsset;
     }
-
+```
 
 ## <a name="encode-the-source-file-into-a-set-of-adaptive-bitrate-mp4-files"></a>Forrásfájl kódolása adaptív sávszélességű MP4-fájlsorozattá
 Miután az adategységek bevitele a Media Services szolgáltatásba megtörtént, a médiatartalmak többek között kódolhatók, transzmultiplexálás végezhető rajtuk vagy vízjelezhetők, mielőtt továbbítva lennének az ügyfelek felé. Ezen tevékenységek több háttérbeli szerepkörpéldányhoz képest vannak ütemezve és futtatva a magas teljesítmény és rendelkezésre állás biztosítása érdekében. Ezeket a tevékenységeket feladatoknak nevezzük. Minden egyes feladat több részműveletből áll, ezek végzik el a valódi munkát az adategységfájlon.
@@ -196,6 +198,7 @@ Ha a feladat befejeződött, lehetővé válik az adategység továbbítása vag
 
 Adja hozzá a Program osztályhoz a következő módszert.
 
+```csharp
     static public IAsset EncodeToAdaptiveBitrateMP4s(IAsset asset, AssetCreationOptions options)
     {
 
@@ -229,6 +232,7 @@ Adja hozzá a Program osztályhoz a következő módszert.
 
         return outputAsset;
     }
+```
 
 ## <a name="publish-the-asset-and-get-urls-for-streaming-and-progressive-download"></a>Adatkészlet közzététele és az adatfolyam-továbbításhoz és progresszív letöltéshez szükséges URL-címek lekérése
 
@@ -261,6 +265,7 @@ A következő kód .NET SDK-bővítmények használatával hoz létre keresőket
 
 Adja hozzá a Program osztályhoz a következő módszert.
 
+```csharp
     static public void PublishAssetGetURLs(IAsset asset)
     {
         // Publish the output asset by creating an Origin locator for adaptive streaming,
@@ -325,6 +330,7 @@ Adja hozzá a Program osztályhoz a következő módszert.
 
         Console.WriteLine("Output asset files available at '{0}'.", Path.GetFullPath(outputFolder));
     }
+```
 
 ## <a name="test-by-playing-your-content"></a>A tartalom lejátszhatóságának tesztelése
 
