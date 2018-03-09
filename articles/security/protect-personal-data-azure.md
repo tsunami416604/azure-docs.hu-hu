@@ -1,6 +1,6 @@
 ---
 title: "A Microsoft Azure-ban a személyes adatok védelme |} Microsoft Docs"
-description: "Első cikk a cikkek segítséget a személyes adatok védelme az Azure használatával"
+description: "Ez a cikk segítséget nyújtanak a személyes adatok védelme, és felel meg az általános adatok védelmi szabályozás (GDPR) Azure használatával"
 services: security
 documentationcenter: na
 author: Barclayn
@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/22/2017
+ms.date: 03/06/2018
 ms.author: barclayn
 ms.custom: 
-ms.openlocfilehash: 4dbdb2dc11bdc515fb3856dd45203868122c7726
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 741fb17be315faacef6483cbaaa565136622cb45
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="protect-personal-data-in-microsoft-azure"></a>A Microsoft Azure-ban a személyes adatok védelme
 
-Ez a cikk be, amelyek segítenek cikkek személyes adatok védelme az Azure biztonsági technológiák és szolgáltatások segítségével. Ez az a kulcsfontosságú követelmény az számos vállalati és iparági megfelelési és irányítási kezdeményezések. A forgatókönyv probléma utasítás és a vállalati célok ide tartoznak.
+Ez a cikk be, amelyek segítenek cikkek személyes adatok védelme az Azure biztonsági technológiák és szolgáltatások segítségével. Ez az a kulcsfontosságú követelmény az számos vállalati és iparági megfelelési és irányítási kezdeményezések. Az adatsorozat cikkek található információk segítségével például felel meg az általános adatok védelmi szabályozás (GDPR). A forgatókönyv probléma utasítás és a vállalati célok ide tartoznak.
 
 ## <a name="scenario-and-problem-statement"></a>Forgatókönyv és probléma fényében
 
@@ -66,7 +66,7 @@ A következő cikkek műszaki útmutató útmutatást, amelyek segítségével a
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Az Azure biztonsági információk hely](https://aka.ms/AzureSecInfo)
 

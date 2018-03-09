@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 02/14/2018
+ms.date: 03/05/2018
 ms.author: owend
-ms.openlocfilehash: 1f31c05554db16d604a9825ef9b1317a0f281456
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 4c317736af30b4181fa975713258a41b42ed0da3
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="asynchronous-refresh-with-the-rest-api"></a>A REST API aszinkron frissítés
 Bármely programozási nyelv, amely támogatja a REST-hívások segítségével az Azure Analysis Services rendszerbeli táblázatos modellek aszinkron adatfrissítési műveleteket végezheti el. Ez magában foglalja a lekérdezés kibővített írásvédett replikák szinkronizálását. 
@@ -67,8 +67,11 @@ https://westus.asazure.windows.net/servers/myserver/models/AdventureWorks/refres
 Az összes hívás hitelesítési fejlécéhez érvényes Azure Active Directoryban (OAuth 2) token hitelesíteni kell, és az alábbi követelményeknek kell megfelelniük:
 
 - A token kell lennie, vagy egy felhasználói jogkivonat, vagy egy alkalmazás egyszerű.
-- A felhasználó vagy alkalmazás a kért híváshoz azon a kiszolgálón vagy a modell megfelelő engedélyekkel kell rendelkeznie. A modell vagy a kiszolgálón a felügyeleti csoport szerepkörét a jogosultsági szint határozza meg.
 - A token rendelkeznie kell a megfelelő célközönség beállítása `https://*.asazure.windows.net`.
+- A felhasználó vagy alkalmazás a kért híváshoz azon a kiszolgálón vagy a modell megfelelő engedélyekkel kell rendelkeznie. A modell vagy a kiszolgálón a felügyeleti csoport szerepkörét a jogosultsági szint határozza meg.
+
+    > [!IMPORTANT]
+    > Jelenleg **kiszolgálói rendszergazda** szerepköri jogosultságok szükségesek.
 
 ## <a name="post-refreshes"></a>POST /refreshes
 

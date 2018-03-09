@@ -2,23 +2,17 @@
 title: "A Site Recovery feladatátvételi |} Microsoft Docs"
 description: "Az Azure Site Recovery koordinálja a replikálása, feladatátvétele és helyreállítási virtuális gépek és fizikai kiszolgálók. További információk a feladatátvétel az Azure vagy egy másodlagos adatközpontba."
 services: site-recovery
-documentationcenter: 
-author: prateek9us
-manager: gauravd
-editor: 
-ms.assetid: 44813a48-c680-4581-a92e-cecc57cc3b1e
+author: rayne-wiselman
+manager: carmonm
 ms.service: site-recovery
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
-ms.date: 09/25/2017
+ms.date: 03/05/2018
 ms.author: pratshar
-ms.openlocfilehash: afdab6e5ee5ae3bb8bc553afd93ff8f1ee18147f
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: 9b662099a75bf2eaebda388a6e675e70cf0b9cdc
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="failover-in-site-recovery"></a>Feladatátvétel a Site Recoveryben
 Ez a cikk ismerteti, hogyan feladatátvételi virtuális gépek és fizikai kiszolgálók Site Recovery által védett.
@@ -65,9 +59,9 @@ Ez az eljárás ismerteti a feladatátvétel futtatása egy [helyreállítási t
     >
     >
 
-1. A feladatátvételi folyamat előrehaladásának követheti a **feladatok** lap. Akkor is, ha hiba történik, nem tervezett feladatátvétel során, a helyreállítási terv fut, amíg nem fejeződik be.
+1. A feladatátvételi folyamatot a **Feladatok** lapon követheti nyomon. Akkor is, ha hiba történik, nem tervezett feladatátvétel során, a helyreállítási terv fut, amíg nem fejeződik be.
 1. A feladatátvétel után ellenőrizze a virtuális gép naplózási-e az azt. Ha szeretne a virtuális gép egy másik helyreállítási pontra váltani, akkor is használhatja **helyreállítási pont módosítása** lehetőséget.
-1. Ha elégedett a feladatokat átadó virtuális gép is **véglegesítése a határidő** a feladatátvételt. **Véglegesítési törli az összes elérhető helyreállítási pontok megtekintéséhez a szolgáltatással** és **helyreállítási pont módosítása** beállítás már nem érhető el.
+1. Ha elégedett a feladatátviteli virtuális géppel, **véglegesítheti** a feladatátvételt. **Véglegesítési törli az összes elérhető helyreállítási pontok megtekintéséhez a szolgáltatással** és **helyreállítási pont módosítása** beállítás már nem érhető el.
 
 ## <a name="planned-failover"></a>Tervezett feladatátvétel
 Virtuális gépek/fizikai kiszolgálók is támogatja a Site Recovery használatával védett **tervezett feladatátvétel**. Tervezett feladatátvétel beállítás nulla adatok elvesztését feladatátvételi. Egy tervezett feladatátvételt akkor váltódik ki, ha először a forrás virtuális gépek leállítási, a legújabb adatok szinkronizálódnak és a feladatátvétel aktiválódik, majd.
@@ -126,8 +120,8 @@ A meghajtóbetűjelet, a virtuális gépek a feladatátvételt követően megőr
 ## <a name="next-steps"></a>További lépések
 
 > [!WARNING]
-> Miután a virtuális gépek átvette, és a helyszíni adatközpont érhető el, akkor [ **lássa el újból védelemmel** ](site-recovery-how-to-reprotect.md) VMware virtuális gépek biztonsági a helyszíni adatközpont.
+> Miután a virtuális gépek átvette, és a helyszíni adatközpont érhető el, akkor [ **lássa el újból védelemmel** ](vmware-azure-reprotect.md) VMware virtuális gépek biztonsági a helyszíni adatközpont.
 
-Használjon [ **tervezett feladatátvétel** ](site-recovery-failback-from-azure-to-hyper-v.md) kapcsoló használatával **feladat-visszavétel** Hyper-v virtuális gépek vissza a helyszíni az Azure-ból.
+Használjon [ **tervezett feladatátvétel** ](hyper-v-azure-failback.md) kapcsoló használatával **feladat-visszavétel** Hyper-v virtuális gépek vissza a helyszíni az Azure-ból.
 
 Ha nem sikerült keresztül a Hyper-v virtuális gép másik helyszíni VMM-kiszolgáló által kezelt adatközpont és az elsődleges adatközpont érhető el, majd **a visszirányú replikálás** beállítással indítsa el a replikációt az elsődleges adatközpont.

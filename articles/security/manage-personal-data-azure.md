@@ -1,6 +1,6 @@
 ---
 title: "Kezelheti a személyes adatok Microsoft Azure-ban |} Microsoft Docs"
-description: "útmutatás kijavításához frissítése, törlése és az Azure Active Directory és az Azure SQL Database személyes adatok exportálása"
+description: "Javítsa ki, frissítése, törlése, és segítséget nyújt az általános adatok védelmi szabályozás (GDPR) az Azure Active Directory és az Azure SQL Database felel meg a személyes adatok exportálása"
 services: security
 documentationcenter: na
 author: barclayn
@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2017
+ms.date: 03/06/2018
 ms.author: barclayn
-ms.openlocfilehash: 51dca8955745b40a9126b142ea15e707fe58bc72
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 41c0cc4eb3697aa79abeabddc98a84598ce4ea50
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="manage-personal-data-in-microsoft-azure"></a>A Microsoft Azure-ban személyes adatok kezelése
 
-Ez a cikk nyújt útmutatást, frissítése, törlése, és az Azure Active Directory és az Azure SQL Database személyes adatok exportálása.
+Ez a cikk nyújt útmutatást, frissítése, törlése, és, hogy megfeleljenek az általános adatok védelmi szabályozás (GDPR) Azure Active Directory és az Azure SQL Database a személyes adatok exportálása.
 
 ## <a name="scenario"></a>Forgatókönyv
 

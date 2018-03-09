@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: On Demand
 ms.date: 06/19/2017
 ms.author: ronmat
-ms.openlocfilehash: 889f65a796aee20d7902964b8c47af46dd9149cb
-ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
+ms.openlocfilehash: a01721b10305ac45082943fbe4fb7fb199a0e49f
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="sql-database-threat-detection"></a>SQL adatbázis fenyegetések észlelése
 
@@ -30,7 +30,7 @@ A Fenyegetésészlelés SQL biztonsági, amelyek segítségével a felhasználó
 
 Például SQL-injektálás az egyik a közös webes alkalmazás biztonsági problémák elleni támadásra adatvezérelt alkalmazások, az interneten. A támadók előnyeit alkalmazás biztonsági rések rosszindulatú SQL-utasítások alkalmazás mezőkbe szúrjon megsértése vagy módosítása az adatbázis adatai.
 
-SQL Fenyegetésészlelés integrálja riasztások [az Azure Security Center](https://azure.microsoft.com/en-us/services/security-center/), és minden védett SQL adatbázis-kiszolgáló lesz számlázva, Azure Security Center szabványos rétegként $15/csomópont/hónappal, ahol minden védett SQL-adatbázis ugyanazon az áron kiszolgáló egy csomópont számítanak.  
+SQL Fenyegetésészlelés integrálja riasztások [az Azure Security Center](https://azure.microsoft.com/services/security-center/), és minden védett SQL adatbázis-kiszolgáló lesz számlázva, Azure Security Center szabványos rétegként $15/csomópont/hónappal, ahol minden védett SQL-adatbázis ugyanazon az áron kiszolgáló egy csomópont számítanak.  
 
 ## <a name="set-up-threat-detection-for-your-database-in-the-azure-portal"></a>A fenyegetésészlelés az adatbázis az Azure portálon beállítása
 1. Indítsa el az Azure portálon, a [https://portal.azure.com](https://portal.azure.com).
@@ -54,13 +54,13 @@ Tekintse meg a parancsfájl például [konfigurálhatja a naplózás és a fenye
    Az e-mailt a gyanús biztonsági esemény, például a rendellenes tevékenységek, adatbázisnév, kiszolgálónév, az alkalmazásnév és az esemény időpontja jellege tájékoztatást nyújt. Emellett az e-mailt lehetséges okok és a javasolt műveletek vizsgálatához és az adatbázis következő potenciális fenyegetések csökkentésében.<br/>
      
     ![Navigációs ablaktábla][4]
-2. Az e-mail riasztások az SQL-napló mutató közvetlen hivatkozást tartalmaz. Erre a hivatkozásra kattintva elindítja az Azure-portálon, és megnyílik az SQL rekordjait a gyanús esemény környékén. Kattintson a további részletek megtekintéséhez a adatbázis gyanús tevékenységekről, így könnyebben végrehajtódtak SQL-utasítások található egy naplórekordot (ki fért, tevékenységük és mikor) és döntse el, ha az esemény jogos vagy rosszindulatú volt-e (pl. alkalmazások biztonsági rés az SQL-injektálás kihasználni, valaki megszegése bizalmas adatokat, stb.).<br/>
+2. Az e-mail riasztások az SQL-napló mutató közvetlen hivatkozást tartalmaz. Erre a hivatkozásra kattintva elindítja az Azure-portálon, és megnyílik az SQL rekordjait a gyanús esemény környékén. Kattintson a további információk megjelenítéséhez a adatbázis gyanús tevékenységekről, így könnyebben végrehajtódtak SQL-utasítások található egy naplórekordot (ki fért, tevékenységük és mikor) és döntse el, ha az esemény jogos vagy rosszindulatú volt-e (pl. alkalmazás a biztonsági rést SQL-injektálás kihasználni, valaki megszegése bizalmas adatokat, stb.).<br/>
    ![Navigációs ablaktábla][5]
 
 
 ## <a name="explore-threat-detection-alerts-for-your-database-in-the-azure-portal"></a>Megismerheti a figyelmeztetések az adatbázis az Azure-portálon
 
-SQL-adatbázis Fenyegetésészlelés integrálja a riasztások [az Azure Security Center](https://azure.microsoft.com/en-us/services/security-center/). Egy élő SQL biztonság csempe az Azure-portálon az adatbázis Page aktív fenyegetések állapotát követi nyomon. 
+SQL-adatbázis Fenyegetésészlelés integrálja a riasztások [az Azure Security Center](https://azure.microsoft.com/services/security-center/). Egy élő SQL biztonság csempe az Azure-portálon az adatbázis Page aktív fenyegetések állapotát követi nyomon. 
 
    ![Navigációs ablaktábla][6]
    
@@ -75,10 +75,10 @@ SQL-adatbázis Fenyegetésészlelés integrálja a riasztások [az Azure Securit
 
 ## <a name="next-steps"></a>További lépések
 
-* További információ a Fenyegetésészlelés, látogasson el a [Azure blog](https://azure.microsoft.com/en-us/blog/azure-sql-database-threat-detection-general-availability-in-spring-2017/) 
+* További információ a Fenyegetésészlelés, látogasson el a [Azure blog](https://azure.microsoft.com/blog/azure-sql-database-threat-detection-general-availability-in-spring-2017/) 
 * További információ [Azure SQL Database Auditing](sql-database-auditing.md)
 * További információ [Azure Security Centerben](https://docs.microsoft.com/azure/security-center/security-center-intro)
-* Az árakkal kapcsolatos további részletekért lásd: a [lap SQL Database – díjszabás](https://azure.microsoft.com/en-us/pricing/details/sql-database/)  
+* Az árakkal kapcsolatos további információkért lásd: a [lap SQL Database – díjszabás](https://azure.microsoft.com/pricing/details/sql-database/)  
 * Tekintse meg a PowerShell-mintaparancsfájl [konfigurálhatja a naplózás és a fenyegetések észlelésére, a PowerShell használatával](scripts/sql-database-auditing-and-threat-detection-powershell.md)
 
 

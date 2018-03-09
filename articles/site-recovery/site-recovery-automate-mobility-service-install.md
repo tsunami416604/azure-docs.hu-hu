@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 02/22/2018
 ms.author: krnese
 ms.openlocfilehash: eb837858fe81fa1f2d4966051bd4b7b068defe8b
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/07/2018
 ---
 # <a name="deploy-the-mobility-service-with-azure-automation-dsc-for-replication-of-vm"></a>Telepíteni a mobilitási szolgáltatást a replikáció a virtuális gépet az Azure Automation DSC Szolgáltatásban
 Az Operations Management Suite azt biztosít egy átfogó biztonsági mentési és vész-helyreállítási megoldást, amely az üzletmenet folytonosságát biztosító terve részeként is használhatja.

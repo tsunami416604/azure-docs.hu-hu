@@ -12,19 +12,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/09/2018
+ms.date: 03/07/2018
 ms.author: billmath
-ms.openlocfilehash: fc46fe1d68538757ba5a8c5aa1acb4b51f8a171b
-ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
+ms.openlocfilehash: 9477d47824213d7ea15bcf6c6b615a220bae2e48
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="azure-active-directory-pass-through-authentication-smart-lockout"></a>Az Azure Active Directory áteresztő hitelesítés: Az intelligens zárolás
 
 ## <a name="overview"></a>Áttekintés
 
-Azure Active Directory (Azure AD) jelszó találgatásos támadások ellen, és megakadályozza, hogy a valódi felhasználók az Office 365 és az SaaS-alkalmazások kívül zárás alatt. Ez a funkció hívása *intelligens zárolás*, akkor támogatott, ha átmenő hitelesítést, a bejelentkezési módszer használatát. Intelligens zárolás alapértelmezés szerint engedélyezve van az összes bérlőre vonatkozó, és folyamatosan védelmet nyújt a felhasználói fiókokat.
+Azure Active Directory (Azure AD) jelszó találgatásos támadások ellen, és megakadályozza, hogy a valódi felhasználók az Office 365 és az SaaS-alkalmazások kívül zárás alatt. Ez a funkció hívása *intelligens zárolás*, akkor támogatott, ha átmenő hitelesítést, a bejelentkezési módszer használatát. Intelligens zárolás alapértelmezés szerint engedélyezve van az összes bérlőre, nem pedig csak bérlők áteresztő hitelesítés használatát, és folyamatosan védelmet nyújt a felhasználói fiókokat.
 
 Intelligens zárolás nyomon követi a sikertelen bejelentkezési kísérletek. Egy bizonyos után *bejelentkezési próbálkozásra van lehetőségük*, elindul a *kizárás időtartama*. Intelligens zárolás elutasítja tett bármilyen kísérlet a támadó jelentkezzen be a kizárás időtartama alatt. Ha a támadás továbbra is fennáll, további sikertelen bejelentkezési kísérletek leteltével a kizárás időtartama eredménye a fiókzárolás hosszabb időtartamok.
 

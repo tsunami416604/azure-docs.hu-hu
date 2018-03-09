@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/04/2018
+ms.date: 03/07/2018
 ms.author: billmath
-ms.openlocfilehash: bbaed9ee5db895810fac476ea5bf560800b0bdec
-ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
+ms.openlocfilehash: 15155ecaf17ae309a218bb1f51a4757e5338f64c
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Az Azure Active Directory zökkenőmentes egyszeri bejelentkezés: gyakran ismételt kérdések
 
@@ -38,7 +38,16 @@ Nem. Zökkenőmentes SSO csak érhető el a világméretű az Azure AD-példány
 
 ## <a name="what-applications-take-advantage-of-domainhint-or-loginhint-parameter-capability-of-seamless-sso"></a>Milyen alkalmazások előnyeit `domain_hint` vagy `login_hint` zökkenőmentes SSO-paraméter képességét?
 
-A lista az alkalmazások, amelyek ezeket a paramétereket, és a meglévők közül, amelyek nem küldenek fordítása végezzük. Ha olyan alkalmazásokkal rendelkezik érdekli, ossza meg velünk megjegyzéseit szakaszában.
+Ezek a paraméterek küldése az Azure AD, és ezért felhasználók csendes bejelentkezési élményt nyújt zökkenőmentes egyszeri Bejelentkezést használó alkalmazások nem teljes listája alább felsorolt van:
+
+| Alkalmazásnév | Használandó URL-címe |
+| -- | -- |
+| Hozzáférési panel | myapps.microsoft.com/contoso.com |
+| Az Outlook Web | outlook.office365.com/contoso.com |
+
+A fenti táblázatban cserélje le a "contoso.com" a bérlő a megfelelő alkalmazás URL-címek lekérése a tartomány nevét.
+
+Ha más alkalmazásokat, amelyek érdekli, ossza meg velünk megjegyzéseit szakaszában.
 
 ## <a name="does-seamless-sso-support-alternate-id-as-the-username-instead-of-userprincipalname"></a>Zökkenőmentes egyszeri Bejelentkezést támogatja `Alternate ID` , a felhasználónév helyett `userPrincipalName`?
 

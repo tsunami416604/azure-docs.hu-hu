@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2017
 ms.author: wgries
-ms.openlocfilehash: 5558a69756075dd83f890d5e9e00c9944d841591
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 4f022bf227c8d460d014ea9bbc5dc426f0ada511
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="troubleshoot-azure-file-sync-preview"></a>Hibaelhárítás az Azure fájlszinkronizálás (előzetes verzió)
 Sync szolgáltatás használatával Azure fájl (előzetes verzió) központosítása fájlmegosztások a szervezet Azure fájlokban, ugyanakkor változatlanul megőrizze a rugalmasság, a teljesítmény és a kompatibilitási egy helyszíni fájlkiszolgáló. Azure fájlszinkronizálás átalakítja a Windows Server az Azure fájlmegosztás gyors gyorsítótárába. Minden protokoll, amely a Windows Server helyileg, az adatok eléréséhez használhatja, többek között a ftps-t, SMB és NFS. Akkor is annyi gyorsítótárak világszerte szükség szerint.
@@ -51,7 +51,7 @@ Tekintse át a telepítési hiba okának megállapításához installer.log.
 Oldja meg, az elsődleges tartományvezérlő szerepkör átvitele egy másik tartomány a tartományvezérlő futó Windows Server 2012 R2 rendszerben vagy újabb, majd szinkronizáló telepítése.
 
 <a id="agent-installation-websitename-failure"></a>**Az ügynök telepítése sikertelen, és ez a hiba: "Tároló szinkronizálási ügynök varázsló megszakadt"**  
-A probléma akkor fordulhat elő, ha az IIS-webhely alapértelmezett neve megváltozott. A probléma megoldásához nevezze át az IIS alapértelmezett webhelye mint a "Default Web Site", majd próbálja megismételni a telepítést. A problémát egy jövőbeli frissítéssel, az ügynök javítja. 
+Ez a probléma akkor fordulhat elő, a verzió 1.x ügynökkel, és hogy az IIS-webhely alapértelmezett neve módosult. A probléma megoldása érdekében használja a 2.0.11+ ügynök.
 
 <a id="server-registration-missing"></a>**Kiszolgáló nem szerepel a regisztrált kiszolgálókat, az Azure-portálon**  
 Ha a kiszolgáló nem szerepel a **regisztrálva kiszolgálók** egy tárolási szinkronizálási szolgáltatás:

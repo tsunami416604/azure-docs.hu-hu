@@ -14,11 +14,11 @@ ms.workload: identity
 ms.date: 02/08/2018
 ms.author: markvi
 ms.reviewer: spunukol
-ms.openlocfilehash: fd82d77e79f05a67f8e818095753b8dc22ccf314
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 66e3207898d6ad8ca9af2b969942e38321c191a5
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Az Azure Active Directory feltételes hozzáférési beállításainak ismertetése
 
@@ -137,8 +137,11 @@ Ez a beállítás minden böngészőben működik. Azonban kielégítéséhez eg
 
 
 > [!NOTE]
-> A Chrome támogatáshoz használnia kell a Windows 10 Creators frissítés (verzió: 1703) vagy újabb.<br>
-> Telepítése [ehhez a kiterjesztéshez](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji).
+> A Chrome támogatásához a Windows 10 Creators Update (verzió: 1703) vagy újabb verzió telepítése [ehhez a kiterjesztéshez](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji).<br>
+> A Chrome támogatásához a Windows 8.1 és a 7 létrehozása a következő beállításkulcsot a **HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls** <br>
+> Name: 1<br>
+> Típus: REG_SZ (karakterlánc)<br>
+> Data: {"pattern":"https://device.login.microsoftonline.com","filter":{"ISSUER":{"CN":"MS-Organization-Access"}}}
 
 A böngészők támogatja az eszközhitelesítés, lehetővé teszi az eszköz azonosítását és ellenőrizni a házirend alapján. Az eszköz ellenőrzése sikertelen lesz, ha a böngésző fut privát üzemmódban. 
 

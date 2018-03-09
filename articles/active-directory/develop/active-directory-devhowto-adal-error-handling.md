@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/11/2017
+ms.date: 02/27/2017
 ms.custom: 
-ms.openlocfilehash: 275ab65569a1861f046c8ee77914e0859d41d5f7
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 082953eb860197d2188851f6c8be260797d6ce6d
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="error-handling-best-practices-for-azure-active-directory-authentication-library-adal-clients"></a>Hiba történt az ajánlott eljárások az Azure Active Directory Authentication Library (ADAL) ügyfelek kezelése
 
@@ -479,6 +479,9 @@ A Microsoft létrehozott egy [teljes mintát](https://github.com/Azure-Samples/a
 
 ## <a name="error-and-logging-reference"></a>Hiba és a naplózás
 
+### <a name="logging-personal-identifiable-information-pii--organizational-identifiable-information-oii"></a>Naplózás a személyes azonosításra alkalmas adatokat (PII) & szervezeti azonosításra alkalmas adatok (OII)
+Alapértelmezés szerint a ADAL naplózási rögzítése vagy nem bármely személyhez köthető adatokat és OII naplózása. A könyvtár lehetővé teszi, hogy az alkalmazásfejlesztők keresztül a tranzakciónaplókat tartalmazó osztály setter a bekapcsolás. Ha bekapcsolja a személyhez köthető adatokat és OII, az alkalmazás felelősséget biztonságosan nagyon érzékeny adatok kezelésére, és a szabályozási követelményeknek megfelelő.
+
 ### <a name="net"></a>.NET
 
 #### <a name="adal-library-errors"></a>ADAL-könyvtár hibák
@@ -487,7 +490,7 @@ Felfedezése, mely bizonyos ADAL hibákat, a kódot a [azure-Active Directoryban
 
 #### <a name="guidance-for-error-logging-code"></a>Útmutató a naplózás hibakód
 
-ADAL .NET naplózási módosításokat végzett platformtól függően. Tekintse meg a [naplózási dokumentáció](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet#diagnostics) naplózásának engedélyezéséről a kódot.
+ADAL .NET naplózási módosításokat végzett platformtól függően. Tekintse meg a [naplózási wiki](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Logging-in-ADAL.Net) naplózásának engedélyezéséről a kódot.
 
 ### <a name="android"></a>Android
 
@@ -497,14 +500,9 @@ Felfedezése, mely bizonyos ADAL hibákat, a kódot a [azure activedirectory-kö
 
 #### <a name="operating-system-errors"></a>Operációs rendszer hibái
 
-Android operációs rendszer hibák az adal-t AuthenticationException keresztül közzétett, "SERVER_INVALID_REQUEST" azonosíthatóak, és további lehet részletes a hibák leírásának keresztül. A két jól láthatóan elhelyezett üzenet egy alkalmazás dönthetnek úgy, hogy a felhasználói felület megjelenítése a következők:
+Android operációs rendszer hibák az adal-t AuthenticationException keresztül közzétett, "SERVER_INVALID_REQUEST" azonosíthatóak, és további lehet részletes a hibák leírásának keresztül. 
 
-- SSL-hibák 
-  - [Felhasználó által használt Chrome 53](https://github.com/AzureAD/azure-activedirectory-library-for-android/wiki/SSL-Certificate-Validation-Issue)
-  - [Tanúsítványlánc letöltése (felhasználónak rendelkeznie kell lépjen kapcsolatba az informatikai rendszergazda) megjelölve az extra cert rendelkezik](https://vkbexternal.partners.extranet.microsoft.com/VKBWebService/ViewContent.aspx?scid=KB;EN-US;3203929)
-  - Az eszköz nem megbízható legfelső szintű hitelesítésszolgáltató. Forduljon a RENDSZERGAZDÁHOZ. 
-- Hálózati kapcsolódó hibák 
-  - [SSL-tanúsítvány érvényesítése potenciálisan kapcsolatos problémát a hálózati](https://github.com/AzureAD/azure-activedirectory-library-for-android/wiki/SSL-Certificate-Validation-Issue), egyetlen újrapróbálkozási kísérletek
+Gyakori hibák, és Mit hajtson végre az alkalmazás vagy a végfelhasználók előforduló azokat teljes listájáért tekintse meg a [ADAL Android Wiki](https://github.com/AzureAD/azure-activedirectory-library-for-android/wiki). 
 
 #### <a name="guidance-for-error-logging-code"></a>Útmutató a naplózás hibakód
 
@@ -522,6 +520,15 @@ Logger.getInstance().setExternalLogger(new ILogger() {
 // 2. Set the log level
 Logger.getInstance().setLogLevel(Logger.LogLevel.Verbose);
 
+// By default, the `Logger` does not capture any PII or OII
+
+// PII or OII will be logged
+Logger.getInstance().setEnablePII(true);
+
+// PII or OII will NOT be logged
+Logger.getInstance().setEnablePII(false);
+
+
 // 3. Send logs to logcat.
 adb logcat > "C:\logmsg\logfile.txt";
 ```
@@ -536,7 +543,7 @@ Felfedezése, mely bizonyos ADAL hibákat, a kódot a [azure-Active Directoryban
 
 iOS hibák esetleg felmerülő bejelentkezés során, amikor a felhasználók a webes nézetek és hitelesítés jellege használják. Ezt okozhatja például az SSL hibák, időtúllépések és hálózati hibák feltételek:
 
-- A jogosultság megosztásához bejelentkezések nincsenek állandó, és a gyorsítótár üres megjelenik. A következő kódsort felvételével a kulcslánc oldhatja meg:`[[ADAuthenticationSettings sharedInstance] setSharedCacheKeychainGroup:nil];`
+- A jogosultság megosztásához bejelentkezések nincsenek állandó, és a gyorsítótár üres megjelenik. A következő kódsort felvételével a kulcslánc oldhatja meg: `[[ADAuthenticationSettings sharedInstance] setSharedCacheKeychainGroup:nil];`
 - A hibák, a művelet attól függően változik, az alkalmazás logikai NsUrlDomain halmaza. Tekintse meg a [NSURLErrorDomain referenciadokumentációt](https://developer.apple.com/documentation/foundation/nsurlerrordomain#declarations) konkrét példányok tudnak kezelni.
 - Lásd: [ADAL Obj-C kapcsolatos gyakori hibák](https://github.com/AzureAD/azure-activedirectory-library-for-objc#adauthenticationerror) az ADAL Objective-C csoport által karbantartott gyakori hibák listája.
 

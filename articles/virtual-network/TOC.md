@@ -27,7 +27,8 @@
 ### [Hálózati biztonsági csoportok](virtual-networks-nsg.md)
 
 ## Üzembe helyezés
-### [Virtuális hálózatok](virtual-networks-create-vnet-arm-pportal.md)
+### Virtuális hálózatok
+#### [Azure Portal](virtual-networks-create-vnet-arm-pportal.md)
 #### [Azure PowerShell](virtual-networks-create-vnet-arm-ps.md)
 #### [Azure CLI](virtual-networks-create-vnet-arm-cli.md)
 #### [Sablon](virtual-networks-create-vnet-arm-template-click.md)
@@ -42,17 +43,20 @@
 ##### [Azure PowerShell](virtual-networks-create-nsg-classic-ps.md)
 ##### [Azure CLI 1.0](virtual-networks-create-nsg-classic-cli.md)
 
-### Felhasználó által megadott útvonalak
-#### [Azure Portal](create-user-defined-route-portal.md)
-#### [Azure PowerShell](virtual-network-create-udr-arm-ps.md)
-#### [Azure CLI](virtual-network-create-udr-arm-cli.md)
+### Útvonaltáblák
+#### [Azure Portal](tutorial-create-route-table-portal.md)
+#### [Azure PowerShell](tutorial-create-route-table-powershell.md)
+#### [Azure CLI](tutorial-create-route-table-cli.md)
 #### [Sablon](virtual-network-create-udr-arm-template.md)
 #### Klasszikus
 ##### [Azure PowerShell](virtual-network-create-udr-classic-ps.md)
 ##### [Azure CLI](virtual-network-create-udr-classic-cli.md)
 
 ### Társviszony létesítése virtuális hálózatok között
-#### [Egyazon üzemi modell – egyazon előfizetés](virtual-network-create-peering.md)
+#### Egyazon üzemi modell – egyazon előfizetés
+##### [Azure Portal](tutorial-connect-virtual-networks-portal.md)
+##### [Azure PowerShell](tutorial-connect-virtual-networks-powershell.md)
+##### [Azure CLI](tutorial-connect-virtual-networks-cli.md)
 #### [Egyazon üzemi modell – különböző előfizetések](create-peering-different-subscriptions.md)
 #### [Különböző üzemi modellek – egyazon előfizetés](create-peering-different-deployment-models.md)
 #### [Különböző üzemi modellek – különböző előfizetések](create-peering-different-deployment-models-subscriptions.md)

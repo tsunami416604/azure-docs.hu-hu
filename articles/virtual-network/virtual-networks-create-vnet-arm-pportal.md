@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 03/01/2018
 ms.author: jdial
 ms.custom: 
-ms.openlocfilehash: c89b455212ad428dbe67d7f1d95517072c220d8e
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: d317d35e2b4e1a0cebb354e3b2b2e75fd9ca6976
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="create-a-virtual-network-with-multiple-subnets-using-the-azure-portal"></a>Hozzon létre egy virtuális hálózatot, az Azure portál használatával több alhálózattal
 
@@ -41,7 +41,7 @@ Jelentkezzen be az Azure Portalra a http://portal.azure.com webhelyen.
 
 1. Válassza ki **+ hozzon létre egy erőforrást** a felső, bal oldali sarkában az Azure-portálon.
 2. Válassza ki **hálózati**, majd válassza ki **virtuális hálózati**.
-3. Ahogy az alábbi képen is látható, adja meg a *myVirtualNetwork* a **neve**, **myResourceGroup** a **erőforráscsoport**, *Nyilvános* alhálózat **neve**, a 10.0.0.0/24 alhálózat **-címtartományt**, jelölje be a **hely** és a  **Előfizetés**, fogadja el a többi alapértelmezett beállításokat, majd válassza ki **létrehozása**:
+3. Ahogy az alábbi képen is látható, adja meg a *myVirtualNetwork* a **neve**, *10.0.0.0/16* a **Címtéren**,  **myResourceGroup** a **erőforráscsoport**, *nyilvános* alhálózat **neve**, a 10.0.0.0/24 alhálózat **-címtartományt**, jelölje be a **hely** és a **előfizetés**, fogadja el a többi alapértelmezett beállításokat, majd válassza ki **létrehozása**:
 
     ![Virtuális hálózat létrehozása](./media/virtual-networks-create-vnet-arm-pportal/create-virtual-network.png)
 
@@ -146,7 +146,7 @@ Ez a cikk a létrehozott virtuális gépek rendelkezik ilyennel [hálózati ille
     Bár a virtuális gép nem kell egy nyilvános IP-címet kap, Azure rendel hozzá egy nyilvános IP-cím minden virtuális gépet hoz létre, alapértelmezés szerint. Útján kommunikálnak az interneten a virtuális gép, egy nyilvános IP-címet kell rendelni a virtuális géphez. Minden virtuális gépek kommunikálhatnak az internettel kimenő, függetlenül attól, egy nyilvános IP-címet a virtuális géphez van rendelve. Az Azure-ban kimenő internetes kapcsolatok kapcsolatos további információkért lásd: [az Azure-ban kimenő kapcsolatok](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 13. A saját számítógépen keresse meg a nyilvános IP-címét a *myVmWeb* virtuális gépet. A saját számítógépéről IIS-üdvözli a lapnak a megtekintésére irányuló kísérlet sikertelen lesz. A kísérlet meghiúsul, mert a virtuális gépek üzembe helyezése, amikor Azure alapértelmezés szerint minden egyes virtuális gép hálózati biztonsági csoport létrehozása. 
 
-     Hálózati biztonsági csoport biztonsági szabályokat, amelyek engedélyezik vagy megtagadják a bejövő és kimenő hálózati forgalom port és az IP-címet tartalmazza. Az alapértelmezett hálózati biztonsági csoport létrehozása Azure lehetővé teszi a kommunikációt az azonos virtuális hálózatban lévő erőforrások közötti összes portokon keresztül. Windows virtuális gépek esetén az alapértelmezett hálózati biztonsági csoport minden bejövő forgalom megtagadja az interneten összes portokon keresztül, fogadja el a TCP-port 3389-es (RDP). Ennek eredményeképpen alapértelmezés szerint is RDP közvetlenül a *myVmWeb* virtuális gép az internetről, annak ellenére, hogy nem érdemes port 3389 nyissa meg a webkiszolgálón. Webböngészés 80-as porton keresztül kommunikál, mivel kommunikációs az internetről sikertelen, mert nincs szabály az alapértelmezett hálózati biztonsági csoport átengedi a forgalmat a 80-as porton keresztül.
+     Hálózati biztonsági csoport biztonsági szabályokat, amelyek engedélyezik vagy megtagadják a bejövő és kimenő hálózati forgalom port és az IP-címet tartalmazza. Az alapértelmezett hálózati biztonsági csoport létrehozása Azure lehetővé teszi a kommunikációt az azonos virtuális hálózatban lévő erőforrások közötti összes portokon keresztül. Windows virtuális gépek esetében az alapértelmezett hálózati biztonsági csoport megtagadja minden bejövő forgalom az internetről érkező összes portokon, kivéve a TCP-port 3389-es (RDP) keresztül. Ennek eredményeképpen alapértelmezés szerint is RDP közvetlenül a *myVmWeb* virtuális gép az internetről, annak ellenére, hogy nem érdemes port 3389 nyissa meg a webkiszolgálón. Webböngészés 80-as porton keresztül kommunikál, mivel kommunikációs az internetről sikertelen, mert nincs szabály az alapértelmezett hálózati biztonsági csoport átengedi a forgalmat a 80-as porton keresztül.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

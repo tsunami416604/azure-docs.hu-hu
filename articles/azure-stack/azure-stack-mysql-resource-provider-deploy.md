@@ -4,20 +4,21 @@ description: "Ismerje meg, hogyan telepítheti a MySQL erőforrás-szolgáltató
 services: azure-stack
 documentationCenter: 
 author: mattbriggs
-manager: bradleyb
+manager: femila
 editor: 
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/10/2018
+ms.date: 03/06/2018
 ms.author: mabrigg
-ms.openlocfilehash: 3273f435cb65411c85e3a22369682d51e7a12baf
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.reviewer: jeffgo
+ms.openlocfilehash: 067e478548ba840ece14737cdf3e6d5d4da28be0
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="use-mysql-databases-on-microsoft-azure-stack"></a>A Microsoft Azure verem használható MySQL-adatbázisok
 
@@ -45,7 +46,7 @@ Ebben a kiadásban már nem készít a MySQL-példányokat. Ez azt jelenti, hogy
 - Töltse le és telepít egy MySQL-kiszolgálót az Azure piactérről.
 
 > [!NOTE]
-> Egy több csomópontos Azure verem megvalósítási telepített kiszolgálókat üzemeltető egy bérlői előfizetéshez kell létrehozni. Az alapértelmezett szolgáltató előfizetésből nem hozhatók létre. A bérlői portálon vagy egy PowerShell munkamenetből rendelkező megfelelő bejelentkezési objektumokat létre kell hozni. Minden üzemeltetési kiszolgáló terhelhető virtuális gép, és megfelelő licenccel kell rendelkeznie. A szolgáltatás-rendszergazdát a bérlő előfizetés tulajdonosának lehet.
+> Üzemeltető kiszolgálók Azure verem telepített integrált rendszerek bérlői előfizetéssel kell létrehozni. Az alapértelmezett szolgáltató előfizetésből nem hozhatók létre. A bérlői portálon vagy egy PowerShell munkamenetből rendelkező megfelelő bejelentkezési objektumokat létre kell hozni. Minden üzemeltetési kiszolgáló terhelhető virtuális gép, és megfelelő licenccel kell rendelkeznie. A szolgáltatás-rendszergazdát a bérlő előfizetés tulajdonosának lehet.
 
 ### <a name="required-privileges"></a>Szükséges jogosultságok
 A system fiók következő jogosultságokkal kell rendelkeznie:
@@ -55,7 +56,7 @@ A system fiók következő jogosultságokkal kell rendelkeznie:
 
 ## <a name="deploy-the-resource-provider"></a>Az erőforrás-szolgáltató telepítése
 
-1. Ha még nem tette meg, regisztrálja a szoftverfejlesztői készlet, és töltse le a Windows Server 2016 Datacenter Core kép letölthető piactér felügyelet használatával. A Windows Server 2016 Core lemezképet kell használnia. Parancsfájl használata létrehozásához egy [Windows Server 2016 kép](https://docs.microsoft.com/azure/azure-stack/azure-stack-add-default-image). (Ügyeljen arra, hogy válassza ki a Core.) A .NET 3.5 futásidejű már nincs szükség.
+1. Ha még nem tette meg, regisztrálja a szoftverfejlesztői készlet, és töltse le a Windows Server 2016 Datacenter Core kép letölthető piactér felügyelet használatával. A Windows Server 2016 Core lemezképet kell használnia. Parancsfájl használata létrehozásához egy [Windows Server 2016 kép](https://docs.microsoft.com/azure/azure-stack/azure-stack-add-default-image). (Ügyeljen arra, hogy válassza ki a Core.)
 
 
 2. Jelentkezzen be egy olyan gazdagépre, férhetnek hozzá a kiemelt végpont virtuális gép.
@@ -64,19 +65,20 @@ A system fiók következő jogosultságokkal kell rendelkeznie:
     - Több csomópontos rendszerek esetében a gazdagép egy rendszer, amely hozzáférhet a kiemelt végpont kell lennie.
     
     >[!NOTE]
-    > A rendszer, amelyre a parancsfájl futtatása *kell* egy Windows 10 vagy Windows Server 2016 rendszert a legújabb verzióra a .NET-futtatókörnyezet telepítve lesz. Ellenkező esetben nem telepíthető. Az Azure SDK állomás megfelel a feltételeknek.
+    > A rendszer, amelyre a parancsfájl futtatása *kell* egy Windows 10 vagy Windows Server 2016 rendszert a legújabb verzióra a .NET-futtatókörnyezet telepítve lesz. Ellenkező esetben nem telepíthető. Az Azure verem SDK állomás megfelel-e ezt a feltételt.
     
 
 3. Töltse le a MySQL erőforrás-szolgáltató bináris. Futtassa a önkibontó kicsomagolása egy ideiglenes könyvtárhoz.
 
     >[!NOTE] 
-    > Az erőforrás-szolgáltató összeállítása az Azure-verem buildek felel meg. Győződjön meg arról, a megfelelő bináris futtató Azure verem verziójának letöltéséhez.
+    > Az erőforrás-szolgáltató build minimális megfelelő Azure verem rendelkezik. Győződjön meg arról, a megfelelő bináris futtató Azure verem verziójának letöltéséhez.
 
     | Az Azure verem build | MySQL RP-telepítő |
     | --- | --- |
-    | 1.0.180102.3 vagy 1.0.180106.1 (több csomópontos) | [MySQL RP 1.1.14.0 verziója](https://aka.ms/azurestackmysqlrp1712) |
-    | 1.0.171122.1 | [MySQL RP 1.1.12.0 verziója](https://aka.ms/azurestackmysqlrp1711) |
-    | 1.0.171028.1 | [MySQL RP 1.1.8.0 verziója](https://aka.ms/azurestackmysqlrp1710) |
+    | 1802: 1.0.180302.1 | [MySQL RP 1.1.18.0 verziója](https://aka.ms/azurestackmysqlrp1802) |
+    | 1712: 1.0.180102.3 vagy 1.0.180106.1 (több csomópontos) | [MySQL RP 1.1.14.0 verziója](https://aka.ms/azurestackmysqlrp1712) |
+    | 1711: 1.0.171122.1 | [MySQL RP 1.1.12.0 verziója](https://aka.ms/azurestackmysqlrp1711) |
+    | 1710: 1.0.171028.1 | [MySQL RP 1.1.8.0 verziója](https://aka.ms/azurestackmysqlrp1710) |
 
 4.  Az Azure-verem legfelső szintű tanúsítvány veszi át a kiemelt végpont. Az Azure SDK-ban önaláírt tanúsítvány jön létre a folyamat során. Több csomópontos meg kell adnia egy megfelelő tanúsítványt.
 
@@ -121,11 +123,11 @@ Install-Module -Name AzureRm.BootStrapper -Force
 Use-AzureRmProfile -Profile 2017-03-09-profile
 Install-Module -Name AzureStack -RequiredVersion 1.2.11 -Force
 
-# Use the NetBIOS name for the Azure Stack domain. On the Azure SDK, the default is AzureStack, and the default prefix is AzS.
-# For integrated systems, the domain and the prefix are the same.
+# Use the NetBIOS name for the Azure Stack domain. On the Azure Stack SDK, the default is AzureStack but could have been changed at install time.
 $domain = "AzureStack"
-$prefix = "AzS"
-$privilegedEndpoint = "$prefix-ERCS01"
+
+# For integrated systems, use the IP address of one of the ERCS virtual machines
+$privilegedEndpoint = "AzS-ERCS01"
 
 # Point to the directory where the resource provider installation files were extracted.
 $tempDir = 'C:\TEMP\MYSQLRP'
@@ -135,7 +137,7 @@ $serviceAdmin = "admin@mydomain.onmicrosoft.com"
 $AdminPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
 $AdminCreds = New-Object System.Management.Automation.PSCredential ($serviceAdmin, $AdminPass)
 
-# Set the credentials for the new resource provider VM.
+# Set the credentials for the new resource provider VM local administrator account
 $vmLocalAdminPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
 $vmLocalAdminCreds = New-Object System.Management.Automation.PSCredential ("mysqlrpadmin", $vmLocalAdminPass)
 
@@ -174,16 +176,8 @@ Ezeket a paramétereket is megadhat a parancssorban. Ha nem, vagy bármely param
 | **MaxRetryCount** | Ennyiszer azt szeretné, majd ismételje meg minden egyes művelet, ha hiba történik.| 2 |
 | **RetryDuration** | Az időkorlát másodpercben az újrapróbálkozások között. | 120 |
 | **Eltávolítás** | Eltávolítja az erőforrás-szolgáltató és minden kapcsolódó erőforrások (lásd az alábbi megjegyzések). | Nem |
-| DebugMode | Megakadályozza az automatikus tisztítás hiba esetén. | Nem |
+| **DebugMode** | Megakadályozza az automatikus tisztítás hiba esetén. | Nem |
 | **AcceptLicense** | Fogadja el a GPL licenc adatait kérő felület kihagyja.  (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html) | |
-
-
-
-Attól függően, hogy a rendszer teljesítményét és a letöltési sebessége telepítési órára is szükség lehet akár 20 percig vagy hosszú több. Ha a **MySQLAdapter** panel nem érhető el, frissítse a felügyeleti portálon.
-
-> [!NOTE]
-> Ha a telepítés több mint 90 percig tart, előfordulhat, hogy. Ha igen, egy hibaüzenet láthatja a képernyőn, majd a naplófájlban. A rendszer a központi telepítés a hibás lépés ismét megkísérli. Előfordulhat, hogy a memória és az alapvető ajánlott paramétereknek meg nem felelő rendszereket nem telepítheti a MySQL RP.
-
 
 
 ## <a name="verify-the-deployment-by-using-the-azure-stack-portal"></a>A telepítés ellenőrzése a verem Azure portál használatával
@@ -272,14 +266,14 @@ A jelszó módosításához első módosítás MySQL server-példányon. Válass
 ![Frissítés a rendszergazdai jelszó](./media/azure-stack-mysql-rp-deploy/mysql-update-password.png)
 
 ## <a name="update-the-mysql-resource-provider-adapter-multi-node-only-builds-1710-and-later"></a>A MySQL erőforrás-szolgáltató adapter (több csomópontos csak, buildek 1710 és újabb verziók) frissítése
-Az Azure-verem build frissül, amikor új MySQL erőforrás-szolgáltató adapter megjelenik. A meglévő adapter esetleg tovább használhatók. Azt javasoljuk azonban frissítése a legújabb buildjével minél hamarabb Azure verem frissítése után. 
+Új SQL-erőforrás szolgáltató adapter szabaddá tehető Azure verem buildek frissítésekor. A meglévő adapter továbbra is működik, de javasolt frissítésére a legújabb buildjével a lehető leghamarabb. 
 
 A frissítési folyamat hasonlít a telepítési folyamat ismertetett. A legújabb erőforrás-szolgáltató kódot hoz létre egy új virtuális Gépet. Ezt követően telepít át a beállításokat ezen új példányának, beleértve az adatbázis és a helyet adó kiszolgáló adatait. A szükséges DNS-rekordot is telepíti át.
 
 A UpdateMySQLProvider.ps1 parancsfájl használata a korábban leírt ugyanazokkal az argumentumokkal. Adja meg itt tanúsítványt is.
 
 > [!NOTE]
-> Frissítés csak többcsomópontos rendszereken támogatott.
+> A frissítési folyamat csak az integrált rendszerekre vonatkozik.
 
 ```
 # Install the AzureRM.Bootstrapper module, set the profile, and install AzureRM and AzureStack modules.
@@ -287,14 +281,14 @@ Install-Module -Name AzureRm.BootStrapper -Force
 Use-AzureRmProfile -Profile 2017-03-09-profile
 Install-Module -Name AzureStack -RequiredVersion 1.2.11 -Force
 
-# Use the NetBIOS name for the Azure Stack domain. On the Azure SDK, the default is AzureStack and the default prefix is AzS.
-# For integrated systems, the domain and the prefix are the same.
+# Use the NetBIOS name for the Azure Stack domain. On the Azure Stack SDK, the default is AzureStack but could have been changed at install time.
 $domain = "AzureStack"
-$prefix = "AzS"
-$privilegedEndpoint = "$prefix-ERCS01"
+
+# For integrated systems, use the IP address of one of the ERCS virtual machines
+$privilegedEndpoint = "AzS-ERCS01"
 
 # Point to the directory where the resource provider installation files were extracted.
-$tempDir = 'C:\TEMP\SQLRP'
+$tempDir = 'C:\TEMP\MYSQLRP'
 
 # The service admin account (can be Azure Active Directory or Active Directory Federation Services).
 $serviceAdmin = "admin@mydomain.onmicrosoft.com"
@@ -337,8 +331,109 @@ Ezeket a paramétereket is megadhat a parancssorban. Ha ezt elmulasztja, vagy b�
 | **MaxRetryCount** | Ennyiszer azt szeretné, majd ismételje meg minden egyes művelet, ha hiba történik.| 2 |
 | **RetryDuration** | Az időkorlát másodpercben az újrapróbálkozások között. | 120 |
 | **Eltávolítás** | Távolítsa el az erőforrás-szolgáltatót és minden kapcsolódó erőforrások (lásd az alábbi megjegyzések). | Nem |
-| DebugMode | Megakadályozza az automatikus tisztítás hiba esetén. | Nem |
+| **DebugMode** | Megakadályozza az automatikus tisztítás hiba esetén. | Nem |
 | **AcceptLicense** | Fogadja el a GPL licenc adatait kérő felület kihagyja.  (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html) | |
+
+
+## <a name="collect-diagnostic-logs"></a>Diagnosztikai naplók gyűjtésére
+A MySQL erőforrás-szolgáltató nem egy zárolt a virtuális gép működik. Ha szükségessé válik a virtuális gép, egy PowerShell csak elég adminisztrációs (JEA) végpont gyűjteni _DBAdapterDiagnostics_ valósul meg erre a célra. Nincsenek elérhető ezen a végponton keresztül két parancsot:
+
+* Get-AzsDBAdapterLog - előkészíti a függő Entitás diagnosztikai naplók tartalmazó zip-csomagját, és hozzáadja a munkamenet felhasználói meghajtón. A parancs paraméter nélküli hívható, és összegyűjti a naplók utolsó négy óra.
+* Remove-AzsDBAdapterLog - megtisztítja a meglévő napló-csomagokat a VM erőforrás-szolgáltató
+
+Egy felhasználói fiókot _dbadapterdiag_ RP központi telepítés vagy frissítés a diagnosztika végpont RP naplók kibontott való csatlakozás során jön létre. A fiókhoz tartozó jelszó megegyezik a telepítés/frissítés közben a helyi rendszergazdai fiókhoz megadott jelszóval.
+
+Ezek a parancsok használatához szüksége az erőforrás-szolgáltató virtuális géphez a távoli PowerShell-munkamenetet létrehozni, és meghívja a parancsot. FromDate és ToDate paraméterekkel is megadhat. Egyik vagy mindkét esetben nem adja meg, ha a FromDate lesz az aktuális időpont előtt négy óra, és a ToDate lesz az aktuális idővel.
+
+Ez a parancsfájlpélda bemutatja, hogy ezek a parancsok:
+
+```
+# Create a new diagnostics endpoint session.
+$databaseRPMachineIP = '<RP VM IP>'
+$diagnosticsUserName = 'dbadapterdiag'
+$diagnosticsUserPassword = '<see above>'
+
+$diagCreds = New-Object System.Management.Automation.PSCredential `
+        ($diagnosticsUserName, $diagnosticsUserPassword)
+$session = New-PSSession -ComputerName $databaseRPMachineIP -Credential $diagCreds `
+        -ConfigurationName DBAdapterDiagnostics
+
+# Sample captures logs from the previous one hour
+$fromDate = (Get-Date).AddHours(-1)
+$dateNow = Get-Date
+$sb = {param($d1,$d2) Get-AzSDBAdapterLog -FromDate $d1 -ToDate $d2}
+$logs = Invoke-Command -Session $session -ScriptBlock $sb -ArgumentList $fromDate,$dateNow
+
+# Copy the logs
+$sourcePath = "User:\{0}" -f $logs
+$destinationPackage = Join-Path -Path (Convert-Path '.') -ChildPath $logs
+Copy-Item -FromSession $session -Path $sourcePath -Destination $destinationPackage
+
+# Cleanup logs
+$cleanup = Invoke-Command -Session $session -ScriptBlock {Remove- AzsDBAdapterLog }
+# Close the session
+$session | Remove-PSSession
+```
+
+## <a name="maintenance-operations-integrated-systems"></a>A karbantartási műveleteket (integrált rendszerek)
+A MySQL erőforrás-szolgáltató nem egy zárolt a virtuális gép működik. Az erőforrás szolgáltató virtuális gép biztonsági frissítése végezhető el a PowerShell csak elég adminisztrációs (JEA) végpont _DBAdapterMaintenance_.
+
+A parancsfájl az e műveletek megkönnyítése érdekében a RP-telepítési csomaggal valósul meg.
+
+
+### <a name="update-the-virtual-machine-operating-system"></a>A virtuális gép operációs rendszerének frissítése
+Többféleképpen is lehet frissíteni a Windows Server virtuális Gépet:
+* Telepítse a legújabb szolgáltató erőforráscsomag jelenleg javított Windows Server 2016 Core lemezkép használatával
+* A telepítés vagy a függő Entitás frissítése során a Windows Update csomag telepítése
+
+
+### <a name="update-the-virtual-machine-windows-defender-definitions"></a>A virtuális gép Windows Defender-definíciók frissítése
+
+Kövesse az alábbi lépéseket a Defender definícióinak frissítéséhez:
+
+1. A Windows Defender-definíciók frissítéséhez letöltési [Windows Defender definíciós](https://www.microsoft.com/en-us/wdsi/definitions)
+
+    Ez az oldal "Manuálisan töltse le és telepítse a definíciók" le "Windows Defender víruskereső Windows 10 és Windows 8.1" 64 bites fájlrendszer. 
+    
+    A közvetlen hivatkozás: https://go.microsoft.com/fwlink/?LinkID=121721&arch=x64
+
+2. Hozzon létre egy PowerShell-munkamenetet a MySQL RP adapter virtuális gép karbantartási végponthoz
+3. A definíciók frissítési fájlok másolása a DB adapter a gépet, a karbantartási végpont munkamenet használatával
+4. A karbantartási PowerShell a munkamenet meghívása a _frissítés-DBAdapterWindowsDefenderDefinitions_ parancs
+5. Telepítése után ajánlott eltávolítani a használt definíciókat fájl. A karbantartási munkamenet használatával el kell távolítani a _Remove-ItemOnUserDrive)_ parancsot.
+
+
+Íme egy minta parancsfájlt Defender definíciófrissítését a (helyettesítse be a címet, vagy a tényleges értékkel a virtuális gép neve):
+
+```
+# Set credentials for the diagnostic user
+$diagPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
+$diagCreds = New-Object System.Management.Automation.PSCredential `
+    ("dbadapterdiag", $vmLocalAdminPass)$diagCreds = Get-Credential
+
+# Public IP Address of the DB adapter machine
+$databaseRPMachine  = "XX.XX.XX.XX"
+$localPathToDefenderUpdate = "C:\DefenderUpdates\mpam-fe.exe"
+ 
+# Download Windows Defender update definitions file from https://www.microsoft.com/en-us/wdsi/definitions. 
+Invoke-WebRequest -Uri https://go.microsoft.com/fwlink/?LinkID=121721&arch=x64 `
+    -Outfile $localPathToDefenderUpdate 
+
+# Create session to the maintenance endpoint
+$session = New-PSSession -ComputerName $databaseRPMachine `
+    -Credential $diagCreds -ConfigurationName DBAdapterMaintenance
+# Copy defender update file to the db adapter machine
+Copy-Item -ToSession $session -Path $localPathToDefenderUpdate `
+     -Destination "User:\mpam-fe.exe"
+# Install the update file
+Invoke-Command -Session $session -ScriptBlock `
+    {Update-AzSDBAdapterWindowsDefenderDefinitions -DefinitionsUpdatePackageFile "User:\mpam-fe.exe"}
+# Cleanup the definitions package file and session
+Invoke-Command -Session $session -ScriptBlock `
+    {Remove-AzSItemOnUserDrive -ItemPath "User:\mpam-fe.exe"}
+$session | Remove-PSSession
+```
+
 
 ## <a name="remove-the-mysql-resource-provider-adapter"></a>A MySQL erőforrás-szolgáltató adapter eltávolítása
 

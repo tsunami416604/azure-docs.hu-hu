@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: magoedte
-ms.openlocfilehash: bf3259909a84e1e1f5325ff4e39d5c10f1abc831
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 1556e91710990351d6723325789201afa99b1943
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="application-insights-connector-management-solution-preview"></a>Application Insights-összekötő felügyeleti megoldás (előzetes verzió)
 
@@ -64,7 +64,7 @@ Körülbelül 30 percet, az adatok elérhetővé válik, és az Application Insi
 Ne feledje egyéb szempontok:
 
 - Csak az Application Insights alkalmazások hozzákapcsolhatja egy Naplóelemzési munkaterület.
-- Csak társíthatja [Standard vagy prémium Application Insights-erőforrások](https://azure.microsoft.com/pricing/details/application-insights) szolgáltatáshoz. A Naplóelemzési ingyenes szint is használhatja.
+- Csak társíthatja [Basic vagy vállalati Application Insights-erőforrások](https://azure.microsoft.com/pricing/details/application-insights) szolgáltatáshoz. A Naplóelemzési ingyenes szint is használhatja.
 
 ## <a name="management-packs"></a>Felügyeleti csomagok
 
@@ -117,7 +117,7 @@ Ha kattint bárhol a **kivételek** panelen láthatja kivételek igényeinek meg
 
 ![Application Insights kivételek panel](./media/log-analytics-app-insights-connector/exceptions-blade-drill-search.png)
 
-Függetlenül attól, hogy valami valamelyik gombra a **Application Insights-összekötő** irányítópult, melyhez a **keresési** lapon, az Application Insights az adat tartalmazza az alkalmazás visszaadó lekérdezés Elemzések szempontjából. Ha az Application Insights adatokat, például egy **&#42;** lekérdezés is a perspektíva fülre, például az alábbi képen látható:
+Függetlenül attól, hogy valami valamelyik gombra a **Application Insights-összekötő** irányítópult, melyhez a **keresési** lapon, az Application Insights az adat tartalmazza az alkalmazás visszaadó lekérdezés Elemzések szempontjából. Ha az Application Insights adatokat, például egy  **&#42;**  lekérdezés is a perspektíva fülre, például az alábbi képen látható:
 
 ![Application Insights ](./media/log-analytics-app-insights-connector/app-insights-search.png)
 
@@ -182,7 +182,7 @@ Egy rekordot egy *típus* a *ApplicationInsights* jön létre az egyes bemeneti 
 | ScreenResolution |   |
 | Kontinens | A kérelem származási helyének kontinensen |
 | Ország | A kérelem származási helyének ország |
-| Megye | Tartomány, állapot vagy a kérelem származási helyének területi beállítás |
+| Tartomány | Tartomány, állapot vagy a kérelem származási helyének területi beállítás |
 | Város | Település a kérelem származási helyének |
 | isSynthetic | Azt jelzi, hogy a felhasználó által vagy automatikus módon a kérelmet létrehozták. = Igaz a felhasználók által létrehozott vagy false = automatikus módszer |
 | Érvénytelen a SamplingRate | A portál küldött SDK által generált telemetriai százalékát. Tartomány 0,0-100.0. |

@@ -2,23 +2,18 @@
 title: "A Site Recovery-tároló törlése"
 description: "Megtudhatja, hogyan törölhető egy Azure Site Recovery-tárolóban, a Site Recovery forgatókönyv alapján."
 service: site-recovery
-documentationcenter: 
 author: rajani-janaki-ram
 manager: rochakm
-editor: 
-ms.assetid: 
 ms.service: site-recovery
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
-ms.date: 02/22/2018
+ms.date: 03/05/2018
 ms.author: rajani-janaki-ram
-ms.openlocfilehash: 4cb5c387319b9659b16f0c98dc38cb79d72987e2
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 89ab1e7c8b2fa0f4014ecfa0e677b398e601e6fa
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="delete-a-site-recovery-vault"></a>A Site Recovery-tároló törlése
 Függőségek megakadályozzák az az Azure Site Recovery-tároló törlése. A Site Recovery forgatókönyvön függően változnak, milyen lépéseket kell tennie: az Azure-ba, a Hyper-V (a és a System Center Virtual Machine Manager nélkül) Azure és az Azure Backup VMware. Törli a tárolót, az Azure Backup szolgáltatáshoz használt, lásd: [az Azure biztonsági mentési tároló törlése](../backup/backup-azure-delete-vault.md).
@@ -32,11 +27,11 @@ Törli a tárolót, hajtsa végre a javasolt lépéseket a forgatókönyvéhez.
 
 1. Töröljön minden védett virtuális gépek a megfelelő lépéseket követve [tiltsa le a védelmet a VMware](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-vmware-vm-or-physical-server-vmware-to-azure).
 
-2. Minden replikációs házirendek törlése lépéseit követve [törölheti a replikációs házirendet](site-recovery-setup-replication-settings-vmware.md##delete-a-replication-policy).
+2. Minden replikációs házirendek törlése lépéseit követve [törölheti a replikációs házirendet](vmware-azure-set-up-replication.md#disassociate-or-delete-a-replication-policy).
 
-3. Törli a vCenter mutató hivatkozások lépéseit követve [törli a vCenter](site-recovery-vmware-to-azure-manage-vCenter.md##delete-a-vcenter-in-azure-site-recovery).
+3. Törli a vCenter mutató hivatkozások lépéseit követve [törli a vCenter-kiszolgáló](vmware-azure-manage-vcenter.md#delete-a-vcenter-server).
 
-4. A konfigurációs kiszolgáló törlése a lépések [konfigurációs kiszolgáló leszerelése](site-recovery-vmware-to-azure-manage-configuration-server.md##delete-or-unregister-a-configuration-server).
+4. A konfigurációs kiszolgáló törlése a lépések [konfigurációs kiszolgáló leszerelése](vmware-azure-manage-configuration-server.md#delete-or-unregister-a-configuration-server).
 
 5. Törli a tárolót.
 

@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 203e36b198186db63b7e902db296adeaa9ffb4ee
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 188f02aa69d7b39bc5bc4873b437825107a7ae4e
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="how-to-configure-hybrid-azure-active-directory-joined-devices"></a>Hibrid Azure Active Directoryhoz csatlakoztatott eszközök konfigurálása
 
@@ -34,7 +34,7 @@ Mielőtt elkezdené a hibrid az Azure AD csatlakoztatott eszközök konfigurál�
 
 Ha a a [rendszer-előkészítő eszköz (Sysprep)](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-vista/cc721940(v=ws.10)), ellenőrizze, hogy forrását, amely nem lett még regisztrálva az Azure ad-val a Windows telepítési lemezképeket.
 
-Az összes futó Windows 10 évforduló Update és Windows Server 2016 automatikusan az eszköz újraindítása vagy a felhasználó Azure AD-val regisztrálja a tartományhoz csatlakoztatott eszközök jelentkezzen be az alábbiakban leírt konfigurációs lépéseket befejezése után. Ha ezt a viselkedést automatikus regisztrálása nem előnyben részesített, vagy ha ellenőrzött bevezetés van szükség, kérjük, kövesse az alábbi vezérlő telepítése és a bevezetés szakasz utasításait először szelektív letiltása és engedélyezése automatikus bevezetése előtt a következő egyéb konfigurációs lépéseket.  
+Az összes futó Windows 10 évforduló Update és Windows Server 2016 automatikusan az eszköz újraindítása vagy a felhasználó Azure AD-val regisztrálja a tartományhoz csatlakoztatott eszközök jelentkezzen be az alábbiakban leírt konfigurációs lépéseket befejezése után. **Ha ezt a viselkedést automatikus regisztrálása használata nem ajánlott, vagy amennyiben ellenőrzött bevezetés szükséges**, hajtsa végre a "Lépés 4: vezérlő központi telepítés és a Bevezetés" először szelektív letiltása és engedélyezése automatikus bevezetése előtt az alábbi részben található útmutatást a további konfigurációs lépések után.  
 
 A leírások olvashatóságának, ez a témakör a következő kifejezést használja: 
 
@@ -542,7 +542,7 @@ Amikor befejezte a szükséges lépéseket, tartományhoz csatlakozó eszközök
 
 ### <a name="remarks"></a>Megjegyzések
 
-- Csoportházirend-objektum segítségével szabályozhatja a Windows 10 és Windows Server 2016 tartományhoz csatlakoztatott számítógépekre az automatikus regisztráció bevezetésének.
+- Csoportházirend-objektum segítségével szabályozhatja a Windows 10 és Windows Server 2016 tartományhoz csatlakoztatott számítógépekre az automatikus regisztráció bevezetésének. **Ha nem szeretné, hogy ezek az eszközök automatikusan regisztrálja az Azure ad-val vagy a regisztráció szabályozni szeretné**, majd a csoportházirend az automatikus regisztrációt, hogy ezek az eszközök először letiltása konfigurációval megkezdése előtt kell megkezdik lépéseket. Miután befejezte az állítja be, amikor készen áll a tesztelése, kizárólag megkezdik a csak a vizsgálati eszközök automatikus regisztráció engedélyezése csoportházirend és majd, ha Ön minden egyéb eszköz válassza.
 
 - Windows 10 2015. November frissítés automatikusan csatlakozik az Azure ad-val **csak** Ha a bevezetés csoportházirend-objektum be van állítva.
 

@@ -15,10 +15,10 @@ ms.workload: storage-backup-recovery
 ms.date: 02/22/2018
 ms.author: asgang
 ms.openlocfilehash: 1b63515970f81b1cab679287d84707d531fd102a
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/07/2018
 ---
 # <a name="replicate-applications-running-on-vmware-virtual-machines-to-azure"></a>Az Azure-bA VMware virtuális gépeken futó alkalmazások replikálása
 
@@ -67,7 +67,7 @@ VMware virtuális gépek replikálásához:
 8. Válassza ki azt az Azure-hálózatot, valamint alhálózatot, amelyhez a feladatátvételt követően felálló Azure virtuális gépek csatlakozni fognak. A hálózatnak és a Recovery Services-tárolónak ugyanabban a régióban kell elhelyezkednie. Ha a megadott hálózati beállításokat az összes védelemre kijelölt gépre szeretné alkalmazni, válassza a **Beállítás most a kijelölt gépekhez** lehetőséget. Ha az egyes gépeknél külön-külön szeretné beállítani az Azure-hálózatot, kattintson a **Beállítás később** elemre. Ha a hálózat nem rendelkezik, akkor [hozzon létre egyet](#set-up-an-azure-network). A hálózati erőforrás-kezelő használatával létrehozásához kattintson a **hozzon létre új**. Ha a hálózat létrehozása a klasszikus modellt használó teheti meg, amely [az Azure portálon](../virtual-network/virtual-networks-create-vnet-classic-pportal.md). Válassza ki egy alhálózatot, ha van ilyen, és kattintson a **OK**.
 
     ![Replikációs cél beállítás engedélyezése](./media/site-recovery-vmware-to-azure/enable-rep3.png)
-9. A **virtuális gépek** > **válassza ki a virtuális gépek**, válasszon ki minden replikálni kívánt gépet. Csak olyan gépeket választhat, amelyeken használható a replikáció funkció. Ezután kattintson az **OK** gombra.
+9. A **Virtuális gépek** > **Virtuális gépek kijelölése** menüben válassza ki a replikálni kívánt virtuális gépeket. Csak olyan gépeket választhat, amelyeken használható a replikáció funkció. Ezután kattintson az **OK** gombra.
 
     ![Replikációs válassza virtuális gépek engedélyezése](./media/site-recovery-vmware-to-azure/enable-replication5.png)
 10. A **tulajdonságok** > **tulajdonságainak konfigurálása**, válassza ki a fiókot használják a folyamatkiszolgáló automatikusan telepítse a mobilitási szolgáltatás a számítógépen.  
@@ -75,7 +75,7 @@ VMware virtuális gépek replikálásához:
 
     ![Engedélyezése replikációs tulajdonságainak konfigurálása](./media/site-recovery-vmware-to-azure/enable-replication6.png)
 
-12. A **replikációs beállítások** > **replikáció beállításainak konfigurálása**, győződjön meg arról, hogy a megfelelő replikációs házirend van-e kiválasztva. Módosíthatja a replikációs házirend beállításait a **beállítások** > **replikációs házirendek** > (házirend neve) > **beállításainak szerkesztése**. Egy házirend végzett módosítások is alkalmazhat replikációs és új gépek.
+12. A **Replikációs beállítások** > **Replikációs beállítások konfigurálása** területen ellenőrizze, hogy a megfelelő replikációs szabályzat van-e kiválasztva. Módosíthatja a replikációs házirend beállításait a **beállítások** > **replikációs házirendek** > (házirend neve) > **beállításainak szerkesztése**. Egy házirend végzett módosítások is alkalmazhat replikációs és új gépek.
 13. Engedélyezése **virtuális Gépre kiterjedő konzisztencia** Ha gyűjtse össze a gépet egy replikációs csoporthoz. Adjon meg egy nevet a csoportnak, és kattintson **OK**. 
 
     > [!NOTE]

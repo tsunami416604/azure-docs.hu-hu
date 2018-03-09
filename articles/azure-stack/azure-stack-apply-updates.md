@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/20/2017
 ms.author: mabrigg
-ms.openlocfilehash: 10e82c13dc2bb8461fb628435484a3a6e1877aa8
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 0f23216c6aced60dc651a0f10179281bc9a29c2c
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="apply-updates-in-azure-stack"></a>Azure-készletben frissítések alkalmazása
 
@@ -67,14 +67,14 @@ Az alábbi eljárás bemutatja, hogyan importálását és frissítési csomagok
  
     ![Azt minden fájl feltöltése](media/azure-stack-apply-updates/ApplyUpdates6.png)
 
-8. Ismételje meg a 6 és 7 a *csomagnév*.bin és Metadata.xml fájlt. 
+8. Ismételje meg a 6 és 7 a *csomagnév*.bin és Metadata.xml fájlt. A kiegészítő Notice.txt fájl nem importálható, ha tartalmazza.
 9. Ha befejezte, az értesítések (a portál jobb felső sarkában található harang ikonra) tekintheti meg. Az értesítések kell jeleznie, hogy befejeződött a feltöltés. 
 10. Lépjen vissza a frissítés csempe az irányítópulton. A csempe kell jeleznie, hogy egy frissítés érhető el. Kattintson a csempére kattintva tekintse át az újonnan hozzáadott frissítési csomag.
 11. A frissítés telepítéséhez válassza ki a csomagot, amely van megjelölve, **készen** és, vagy kattintson a jobb gombbal a csomagot, és válassza ki **frissítés most**, vagy kattintson a **frissítés most** művelet felső részén .
 12. Frissítési csomag telepítése gombra kattintva megtekintheti az állapotát a **frissítési menetnek részletek** területen. Itt is kattinthat **teljes naplók letöltéséhez** letölteni a rendszernapló fájljaiban.
 13. A frissítés befejezése után a frissítés csempe a frissített Azure verem verzióját jeleníti meg.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Kezelheti a frissítéseket a Azure verem – áttekintés](azure-stack-updates.md)
 - [Az Azure verem karbantartása házirend](azure-stack-servicing-policy.md)

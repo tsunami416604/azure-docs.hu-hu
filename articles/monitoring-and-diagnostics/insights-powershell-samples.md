@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 2/14/2018
 ms.author: robb
-ms.openlocfilehash: 3479b9c5bc1c8c77d2c6012b40dc9cd8f8e1708b
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 5a08fd7d20dc78512315ab5d154ba95bd8e8494b
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="azure-monitor-powershell-quick-start-samples"></a>A figyelő PowerShell Azure gyors üzembe helyezési-minták
 Ez a cikk jeleníti meg, akkor minták segítséget nyújtanak a figyelő az Azure-szolgáltatások elérésének PowerShell-parancsokat.
 
 > [!NOTE]
-> Az Azure figyelő csak 2016. Szeptembertől 25. az "Azure Insights" nevezett új neve. Azonban a névterek, és így a következő parancsokat tartalmaz a a word "insights."
+> Az Azure figyelő csak 2016. Szeptembertől 25. az "Azure Insights" nevezett új neve. Azonban a névterek, és így a következő parancsokat tartalmaz a word "insights."
 > 
 > 
 

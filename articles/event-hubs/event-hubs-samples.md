@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/19/2017
+ms.date: 03/05/2018
 ms.author: sethm
-ms.openlocfilehash: e037d0e291384849739825ae7ad59064a135db95
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: a581b7039a3631b7f1dc35816175242f892bd7dd
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="event-hubs-samples"></a>Event Hubs – minták 
 
@@ -61,10 +61,6 @@ A [Event Hubs használatának első lépéseit](https://code.msdn.microsoft.com/
 
 A [esemény feldolgozása kibővítési](https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3) minta bemutatja, hogyan használható a [Event Processor Host](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost/) Event Hubs adatfolyam fogyasztás okozott terhelés elosztásához. Azt illusztrálja, hogyan megvalósításához a **EventProcessor** és **EventProcessorFactory** az eseménystream kezelendő objektumokat. 
 
-### <a name="pull-web-data-into-an-event-hub"></a>Lekéréses webhely adatok eseményközpontba 
-
-A [adatokat importálhat a webes](https://github.com/Azure-Samples/event-hubs-dotnet-importfromweb) minta bemutatja, hogyan olvasnak be adatokat (például a szállítására részleg forgalom információk hírcsatorna) nyilvános hírcsatornák a, és hogy egy eseményközpontba.
-
 ## <a name="next-steps"></a>További lépések
 
 További tudnivalók a .NET-keretrendszer-verziók érhetők el a következőket:
@@ -75,5 +71,5 @@ További tudnivalók a .NET-keretrendszer-verziók érhetők el a következőket
 Ön többet is megtudhat az Event Hubs a következő cikkekben:
 
 - [Event Hubs – áttekintés](event-hubs-what-is-event-hubs.md)
-- [Eseményközpont létrehozása](event-hubs-create.md)
+- [Event Hubs-szolgáltatások](event-hubs-features.md)
 - [Event Hubs – gyakori kérdések](event-hubs-faq.md)

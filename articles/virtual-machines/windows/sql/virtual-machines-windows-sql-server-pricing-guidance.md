@@ -13,17 +13,24 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 10/17/2017
+ms.date: 02/20/2018
 ms.author: jroth
-ms.openlocfilehash: fe04aa382a3e829b201dbe92442f841fb29fff15
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 3103ca2c659e40fd945b597ed4671fe96daf1905
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="pricing-guidance-for-sql-server-azure-vms"></a>Útmutató a SQL Server Azure virtuális gépek díjszabása
 
-Ez a cikk árképzési útmutatást az SQL Server Azure virtuális gép. Több lehetőség, amelyek hatással vannak a költség, és fontos, hogy válassza ki a megfelelő lemezképet, hogy az üzleti követelményeinek költségek.
+Ez a cikk árképzési útmutatást nyújt [SQL Server virtuális gépek](virtual-machines-windows-sql-server-iaas-overview.md) az Azure-ban. Több lehetőség, amelyek hatással vannak a költség, és fontos, hogy válassza ki a megfelelő lemezképet, hogy az üzleti követelményeinek költségek.
+
+> [!TIP]
+> Ha csak szeretné tudni, a költség becsült az SQL Server edition és a virtuálisgép-méret egyedi kombinációja, tekintse meg a [árképzést ismertető oldalra](https://azure.microsoft.com/pricing/details/virtual-machines/windows). Válassza ki az operációs rendszer és az SQL Server jelen kiadása a **operációsrendszer-szoftver** listája.
+>
+> ![A virtuális gépek díjszabása lapon felhasználói felület](./media/virtual-machines-windows-sql-server-pricing-guidance/virtual-machines-pricing-ui.png)
+>
+> Vagy használja a [árképzési Számológép](https://azure.microsoft.com/pricing/#explore-cost) hozzáadása és konfigurálása a virtuális gép. 
 
 ## <a name="free-licensed-sql-server-editions"></a>Ingyenes licenccel rendelkező SQL Server kiadásai
 
@@ -56,7 +63,7 @@ Az SQL Server licencelési ezeknek a kiadásoknak díj ellenében két lehetős�
 
 ### <a name="pay-per-usage"></a>Használati / kell fizetnie
 
-**Az SQL Server licence / használati fizető** azt jelenti, hogy az Azure virtuális Gépen futó perc költsége tartalmaz-e az SQL Server licence költségét. Látható az az SQL Server különböző kiadásai (Web, Standard, Enterprise) díjszabása a [Azure virtuális gép árképzést ismertető oldalra](https://azure.microsoft.com/pricing/details/virtual-machines/sql-server-standard). A költség megegyezik az SQL Server (2012 SP3 2017) bármely verziója. Csakúgy, mint az SQL Server általában licencelés, a percalapú licencelési költségeit VM magok száma függ.
+**Az SQL Server licence / használati fizető** azt jelenti, hogy az Azure virtuális Gépen futó perc költsége tartalmaz-e az SQL Server licence költségét. Látható az az SQL Server különböző kiadásai (Web, Standard, Enterprise) díjszabása a [Azure virtuális gép árképzést ismertető oldalra](https://azure.microsoft.com/pricing/details/virtual-machines/windows/). A költség megegyezik az SQL Server (2012 SP3 2017) bármely verziója. Csakúgy, mint az SQL Server általában licencelés, a percalapú licencelési költségeit VM magok száma függ.
 
 Az SQL Server fizető / használati licencelési ajánlott:
 
@@ -147,6 +154,6 @@ Az egyéb munkafolyamatok, fontolja meg automatikusan leállítani, és Azure vi
 
 Általános Azure díjszabása útmutatásért lásd: [Azure számlázás és költség felügyeleti váratlan költségek megakadályozása](../../../billing/billing-getting-started.md).
 
-A legújabb virtuális gépek díjszabása, beleértve az SQL Server, lásd: a [Azure virtuális gép árképzést ismertető oldalra](https://azure.microsoft.com/pricing/details/virtual-machines/sql-server-standard).
+A legújabb virtuális gépek díjszabása, beleértve az SQL Server, lásd: a [Azure virtuális gép árképzést ismertető oldalra](https://azure.microsoft.com/pricing/details/virtual-machines/windows/).
 
 További információ az SQL Server virtuális gépek mindkét [SQL Server Windows virtuális gépek](virtual-machines-windows-sql-server-iaas-overview.md) és [SQL Server Linux virtuális gépek](../../linux/sql/sql-server-linux-virtual-machines-overview.md).

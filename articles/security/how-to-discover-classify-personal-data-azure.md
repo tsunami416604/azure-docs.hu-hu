@@ -1,6 +1,6 @@
 ---
 title: "Ismerje meg, azonosítása és besorolni a személyes adatok Microsoft Azure-ban |} Microsoft Docs"
-description: "További tudnivalók a keresési, zárolásának, felderítéséhez és azonosító adatait"
+description: "keresési, zárolásának, felderítéséhez és azonosító adatait az Azure-ban segítenek felel meg az általános adatok védelmi szabályozás (GDPR)"
 services: security
 documentationcenter: na
 author: barclayn
@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2017
+ms.date: 03/06/2018
 ms.author: barclayn
 ms.custom: 
-ms.openlocfilehash: 011fe26c297ff991af1282c1ff3914031a99f1e4
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 21308faf5d3efd3908eccab4f37acb0cfccdcb8e
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="discover-identify-and-classify-personal-data-in-microsoft-azure"></a>Ismerje meg, azonosítása és besorolni a személyes adatok Microsoft Azure-ban
 
-Ez a cikk felderítése, azonosítása és a több Azure eszközeivel és szolgáltatásaival, beleértve az Azure Data Catalog, Azure Active Directory, az SQL-adatbázis, a Power Query használatával a Hadoop-fürtök az Azure HDInsight, az Azure Information Protection, az Azure Search és az SQL-lekérdezések Azure Cosmos DB a személyes adatok osztályozására nyújt útmutatást.
+Ez a cikk felderítése, azonosítása és a több Azure eszközeivel és szolgáltatásaival, beleértve az Azure Data Catalog, Azure Active Directory, az SQL-adatbázis, a Power Query használatával a Hadoop-fürtök az Azure HDInsight, az Azure Information Protection, az Azure Search és az SQL-lekérdezések Azure Cosmos DB a személyes adatok osztályozására nyújt útmutatást. Ezekkel az eszközökkel és eljárások segítségével felel meg az általános adatok védelmi szabályozás (GDPR)
 
 ## <a name="scenario-problem-statement-and-goal"></a>Forgatókönyv, problémamegállapítás és célja
 
@@ -114,7 +114,7 @@ Az adatbázis létrehozása ezzel a módszerrel megismeréséhez látogasson el 
 >[!Note]
 A Windows rendszergazdák általában a PowerShell segítségével, de némelyikük inkább az Azure parancssori felület.
 
-### <a name="how-do-i-search-for-personal-data-in-sql-database-in-the-azure-portal"></a>Hogyan keresse meg az SQL-adatbázis az Azure-portálon a személyes adatok? **
+### <a name="how-do-i-search-for-personal-data-in-sql-database-in-the-azure-portal"></a>Hogyan keresse az SQL-adatbázis az Azure-portálon a személyes adatok?
 
 A beépített lekérdezést szerkesztőt az Azure-portálon belül segítségével keresse meg a személyes adatok. Jelentkezzen be az eszközt, az SQL server rendszergazdai bejelentkezés és jelszavával fog, és majd adjon meg egy lekérdezést.
 
@@ -136,7 +136,7 @@ Az Azure portálon SQL-adatbázis lekérdezése a további tudnivalókért keres
 
 A rugalmas SQL-lekérdezés (előzetes verzió) segítségével egyetlen eredményt és az adatbázisok közötti és több adatbázis-lekérdezéseinek végrehajtására. A [oktatóanyag – áttekintés](../sql-database/sql-database-elastic-query-overview.md) forgatókönyvek részletes leírását tartalmazza, és ismerteti a függőleges és vízszintes adatbázis particionálási közötti különbség. Vízszintes particionálás neve "horizontális."
 
-  ![A vertikális particionálás](media/how-to-discover-classify-personal-data-azure/vertical-partition.png)
+  ![Vertikális particionálás](media/how-to-discover-classify-personal-data-azure/vertical-partition.png)
 
   ![vízszintes particionálás](media/how-to-discover-classify-personal-data-azure/horizontal.png)
 

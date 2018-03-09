@@ -14,11 +14,11 @@ ms.topic: article
 ms.devlang: na
 ms.date: 08/04/2017
 ms.author: joroja
-ms.openlocfilehash: 0d4ee064c15c914eea7353900c6bb5a77b3e3b3b
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 33c9e4322444895a3affc16e11af5443f2db6b6d
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="azure-active-directory-b2c-creating-and-using-custom-attributes-in-a-custom-profile-edit-policy"></a>Az Azure Active Directory B2C: Létrehozása és az egyéni attribútumok használata egy egyéni profilt a házirend szerkesztése
 
@@ -57,7 +57,7 @@ Bővítmény tulajdonságai csak a bérlő regisztrált alkalmazás környezeté
 1. Adja meg az alábbi ajánlott bejegyzéseket:
   * Adjon meg egy nevet a webalkalmazás: **WebApp-GraphAPI-DirectoryExtensions**
   * Alkalmazás típusa: webes alkalmazás/API-t
-  * Bejelentkezés URL:https://{tenantName}.onmicrosoft.com/WebApp-GraphAPI-DirectoryExtensions
+  * Sign-on URL:https://{tenantName}.onmicrosoft.com/WebApp-GraphAPI-DirectoryExtensions
 1. Válassza ki ** létrehozása. Sikeres létrehozása után megjelenik a **értesítések**
 1. Válassza ki az újonnan létrehozott webalkalmazás: **WebApp-GraphAPI-DirectoryExtensions**
 1. Válassza a beállítások: **szükséges engedélyek**
@@ -65,8 +65,8 @@ Bővítmény tulajdonságai csak a bérlő regisztrált alkalmazás környezeté
 1. Jelölje be az Alkalmazásengedélyek: **címtáradatok olvasása és írása**, és **mentése**
 1. Válasszon **engedélyeket** , majd erősítse meg **Igen**.
 1. A vágólapra másolja ki és mentse a következő azonosítók a webalkalmazás-GraphAPI-DirectoryExtensions > Beállítások > Tulajdonságok >
-*  **Alkalmazásazonosító** . Példa:`103ee0e6-f92d-4183-b576-8c3739027780`
-* **Objektumazonosító:**. Példa:`80d8296a-da0a-49ee-b6ab-fd232aa45201`
+*  **Alkalmazásazonosító** . Példa: `103ee0e6-f92d-4183-b576-8c3739027780`
+* **Objektumazonosító:**. Példa: `80d8296a-da0a-49ee-b6ab-fd232aa45201`
 
 
 
@@ -96,7 +96,7 @@ Bővítmény tulajdonságai csak a bérlő regisztrált alkalmazás környezeté
 ```
 
 >[!NOTE]
->A <TechnicalProfile Id="AAD-Common"> nevezzük "általános", mert az elemei szerepel, és használja fel újra az összes az Azure Active Directory TechnicalProfiles az elem használatával:`<IncludeTechnicalProfile ReferenceId="AAD-Common" />`
+>A <TechnicalProfile Id="AAD-Common"> nevezzük "általános", mert az elemei szerepel, és használja fel újra az összes az Azure Active Directory TechnicalProfiles az elem használatával: `<IncludeTechnicalProfile ReferenceId="AAD-Common" />`
 
 >[!NOTE]
 >A TechnicalProfile először írja az újonnan létrehozott bővített tulajdonság, egy egyszeri hibát tapasztalhatnak.  A bővített tulajdonság jön létre a rendszer először.  
@@ -152,7 +152,7 @@ Bővítmény tulajdonságai csak a bérlő regisztrált alkalmazás környezeté
             <InputClaim ClaimTypeReferenceId="userPrincipalName" />
 
             <!-- Optional claims. These claims are collected from the user and can be modified. Any claim added here should be updated in the
-                 ValidationTechnicalProfile referenced below so it can be written to directory after being updateed by the user, i.e. AAD-UserWriteProfileUsingObjectId. -->
+                 ValidationTechnicalProfile referenced below so it can be written to directory after being updated by the user, i.e. AAD-UserWriteProfileUsingObjectId. -->
             <InputClaim ClaimTypeReferenceId="givenName" />
             <InputClaim ClaimTypeReferenceId="surname" />
             <InputClaim ClaimTypeReferenceId="extension_loyaltyId"/>
@@ -162,7 +162,7 @@ Bővítmény tulajdonságai csak a bérlő regisztrált alkalmazás környezeté
             <OutputClaim ClaimTypeReferenceId="executed-SelfAsserted-Input" DefaultValue="true" />
 
             <!-- Optional claims. These claims are collected from the user and can be modified. Any claim added here should be updated in the
-                 ValidationTechnicalProfile referenced below so it can be written to directory after being updateed by the user, i.e. AAD-UserWriteProfileUsingObjectId. -->
+                 ValidationTechnicalProfile referenced below so it can be written to directory after being updated by the user, i.e. AAD-UserWriteProfileUsingObjectId. -->
             <OutputClaim ClaimTypeReferenceId="givenName" />
             <OutputClaim ClaimTypeReferenceId="surname" />
             <OutputClaim ClaimTypeReferenceId="extension_loyaltyId"/>
@@ -251,7 +251,7 @@ Az azonosító tokent küldött vissza az alkalmazásba az új bővített tulajd
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 ### <a name="add-the-new-claim-to-the-flows-for-social-account-logins-by-changing-the-technicalprofiles-listed-below-these-two-technicalprofiles-are-used-by-socialfederated-account-logins-to-write-and-read-the-user-data-using-the-alternativesecurityid-as-the-locator-of-the-user-object"></a>Adja hozzá a közösségi fiók bejelentkezések során a viszonylatában új jogcímet a lenti TechnicalProfiles módosításával. E két TechnicalProfiles írható és olvasható a felhasználói adatokat a alternativeSecurityId használja, mint a lokátor felhasználói objektum társadalombiztosítási/összevont fiók bejelentkezések használják.
 ```xml
@@ -289,7 +289,7 @@ extension_<app-guid>_ActivationStatus via the Graph API.
 ```
 
 
-## <a name="reference"></a>Referencia
+## <a name="reference"></a>Leírások
 
 * A **műszaki profil (TP)** egy elem típus, amely-re, egy *függvény* , amely definiál egy végpont nevét, a metaadatait, a protokollal, és a cseréjének részletezi, amelyek az identitás Felhasználói élmény keretrendszer végre kell hajtania.  Ha ez *függvény* az orchestration lépésben neve, vagy egy másik TechnicalProfile, a InputClaims és OutputClaims vannak megadva, a paraméterek a hívó által.
 

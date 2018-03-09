@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/05/2017
+ms.date: 03/05/2018
 ms.author: cherylmc
-ms.openlocfilehash: a6363fa380d0bab05d7500141cc6019d1d3f68b8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0517caed3a7d6632c1a5650147f4db240dbe0a17
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="about-virtual-network-gateways-for-expressroute"></a>Az ExpressRoute virtuális hálózati átjáróinak ismertetése
 A virtuális hálózati átjáró küldhető Azure virtuális hálózatok közötti hálózati forgalom és a helyszíni helyek. Amikor konfigurál egy ExpressRoute-kapcsolatot, hozzon létre és konfigurálnia kell a virtuális hálózati átjáró és a virtuális hálózati átjáró kapcsolat.
@@ -41,7 +41,7 @@ Az alábbi táblázatban az átjárótípusok és azok becsült összesített á
 [!INCLUDE [expressroute-table-aggthroughput](../../includes/expressroute-table-aggtput-include.md)]
 
 > [!IMPORTANT]
-> Alkalmazás átviteli sebességére több tényezőtől függ, többek között a végpontok közötti késés, és megnyílik az alkalmazás forgalom számát. A táblázatban szereplő számok jelölik a felső korlátja, amely az alkalmazás is theorectically elérése ideális környezetben. 
+> Alkalmazás átviteli sebességére több tényezőtől függ, többek között a végpontok közötti késés, és megnyílik az alkalmazás forgalom számát. A táblázatban szereplő számok jelölik a felső korlátja, amely az alkalmazás a ideális környezet elméletileg érhető el. 
 > 
 >
 
@@ -53,6 +53,7 @@ További technikai erőforrások és konkrét szintaxis használatával kapcsola
 | [PowerShell](https://msdn.microsoft.com/library/mt270335.aspx) |[PowerShell](https://msdn.microsoft.com/library/mt163510.aspx) |
 | [REST API](https://msdn.microsoft.com/library/jj154113.aspx) |[REST API](https://msdn.microsoft.com/library/mt163859.aspx) |
 
-## <a name="next-steps"></a>Következő lépések
-Lásd: [ExpressRoute – áttekintés](expressroute-introduction.md) használható kapcsolat konfigurációival kapcsolatos további információkért. 
+## <a name="next-steps"></a>További lépések
+Lásd: [ExpressRoute – áttekintés](expressroute-introduction.md) használható kapcsolat konfigurációival kapcsolatos további információkért.
 
+Lásd: [hozzon létre egy virtuális hálózati átjáró ExpressRoute](expressroute-howto-add-gateway-resource-manager.md) ExpressRoute-átjáró létrehozásával kapcsolatos további információt.

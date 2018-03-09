@@ -1,0 +1,73 @@
+- name: Felügyeltszolgáltatás-identitás
+  href: overview.md
+  items:
+    - name: Az MSI konfigurálása Azure-beli virtuális géphez
+      items:
+        - name: Az Azure Portal használata
+          href: qs-configure-portal-windows-vm.md
+        - name: A PowerShell használata
+          href: qs-configure-powershell-windows-vm.md
+        - name: Az Azure parancssori felület használata
+          href: qs-configure-cli-windows-vm.md
+        - name: Az Azure Resource Manager-sablonok használata
+          href: qs-configure-template-windows-vm.md
+        - name: Az Azure SDK használata
+          href: qs-configure-sdk-windows-vm.md
+    - name: Az MSI konfigurálása az Azure VMSS-hez
+      items:
+        - name: Az Azure portál használata
+          href: qs-configure-portal-windows-vmss.md
+        - name: Az Azure parancssori felület használata
+          href: qs-configure-cli-windows-vmss.md
+        - name: Az Azure Resource Manager-sablonok használata
+          href: qs-configure-template-windows-vmss.md
+    - name: Virtuális gép vagy VMSS MSI hozzáférésének biztosítása a Resource Managerhez
+      items:
+        - name: Az Azure Portal használata
+          href: howto-assign-access-portal.md
+        - name: A PowerShell használata
+          href: howto-assign-access-powershell.md
+        - name: Az Azure parancssori felület használata
+          href: howto-assign-access-cli.md
+    - name: Virtuális gép MSI használata
+      items:
+        - name: Hozzáférési jogkivonat beszerzése
+          href: how-to-use-vm-token.md
+        - name: Bejelentkezés a PowerShellbe és az Azure CLI-be
+          href: how-to-use-vm-sign-in.md
+        - name: Használat Azure SDK-kal
+          href: how-to-use-vm-sdk.md
+    - name: Virtuális gép MSI használata az Azure Data Lake Store eléréséhez
+      items:
+        - name: Windows rendszerű virtuális gépről
+          href: tutorial-windows-vm-access-datalake.md
+        - name: Linux rendszerű virtuális gépről
+          href: tutorial-linux-vm-access-datalake.md
+    - name: Virtuális gép MSI használata az Azure Resource Manager eléréséhez
+      items:
+        - name: Windows rendszerű virtuális gépről
+          href: tutorial-windows-vm-access-arm.md
+        - name: Linux rendszerű virtuális gépről
+          href: tutorial-linux-vm-access-arm.md
+    - name: Virtuális gép MSI használata az Azure SQL eléréséhez
+      items:
+        - name: Windows rendszerű virtuális gépről
+          href: tutorial-windows-vm-access-sql.md
+    - name: Virtuális gép MSI használata egy Azure-tároló eléréséhez
+      items:
+        - name: Windows rendszerű virtuális gépről hozzáférési kulccsal
+          href: tutorial-windows-vm-access-storage.md
+        - name: Windows rendszerű virtuális gépről SAS-szel
+          href: tutorial-windows-vm-access-storage-sas.md
+        - name: Linux rendszerű virtuális gépről hozzáférési kulccsal
+          href: tutorial-linux-vm-access-storage.md
+        - name: Linux rendszerű virtuális gépről SAS-szel
+          href: tutorial-linux-vm-access-storage-sas.md
+    - name: Virtuális gép MSI használata az Azure Key Vault eléréséhez
+      items:
+        - name: Windows rendszerű virtuális gépről
+          href: tutorial-windows-vm-access-nonaad.md
+        - name: Linux rendszerű virtuális gépről
+          href: tutorial-linux-vm-access-nonaad.md
+    - name: Gyakori kérdések és ismert problémák
+      href: known-issues.md

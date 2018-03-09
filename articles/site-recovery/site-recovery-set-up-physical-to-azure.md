@@ -15,10 +15,10 @@ ms.workload: storage-backup-recovery
 ms.date: 02/22/2018
 ms.author: anoopkv
 ms.openlocfilehash: 6c29ac32cb868cfdd72479add551cece266a5f9d
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/07/2018
 ---
 # <a name="set-up-the-source-environment-physical-server-to-azure"></a>Állítsa be a forrás-környezetet (az Azure-bA a fizikai kiszolgáló)
 > [!div class="op_single_selector"]
@@ -57,7 +57,7 @@ A következő táblázat felsorolja a minimális hardver-, szoftver, és hálóz
   ![A forrás beállítása](./media/site-recovery-set-up-physical-to-azure/plus-config-srv.png)
 2. Az a **kiszolgáló hozzáadása** panelen ellenőrizze, hogy **konfigurációs kiszolgáló** megjelenik **kiszolgálótípus**.
 4. Töltse le a Site Recovery az egységes telepítő telepítőfájlját.
-5. Töltse le a tárolóregisztrációs kulcsot. Az egységes telepítő futtatásakor a regisztrációs kulcsot kell. A kulcs a generálásától számított öt napig érvényes.
+5. Töltse le a tároló regisztrációs kulcsát. Az egységes telepítő futtatásakor a regisztrációs kulcsot kell. A kulcs a generálásától számított öt napig érvényes.
 
     ![A forrás beállítása](./media/site-recovery-set-up-physical-to-azure/set-source2.png)
 6. A számítógépen, mint a konfigurációs kiszolgálót használ, futtassa **Azure Site Recovery az egységes telepítő** a konfigurációs kiszolgáló, a folyamatkiszolgáló és a fő célkiszolgáló telepítése.

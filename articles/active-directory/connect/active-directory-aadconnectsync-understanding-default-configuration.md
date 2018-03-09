@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
-ms.openlocfilehash: 87f513ffd2e8854085d9dfcd399148082de37698
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: dba7a6fcf936e9610a5f1f04e367d32e9aae6643
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="azure-ad-connect-sync-understanding-the-default-configuration"></a>Az Azure AD Connect szinkronizálása: az alapértelmezett konfiguráció ismertetése
 Ez a cikk ismerteti a out-of-box konfigurációs szabályok. Az dokumentumokat, és ezek a szabályok milyen hatással van a konfigurációs szabályok. Azt is bemutatja, hogyan kell az Azure AD Connect szinkronizálási szolgáltatás az alapértelmezett konfigurációját. Az célja, hogy az olvasó együttműködik a deklaratív kiépítés nevű konfigurációs modell egy valós példában alakulását. Ez a cikk feltételezi, hogy már telepített, és állítsa be a telepítési varázsló segítségével az Azure AD Connect sync.
@@ -50,7 +50,7 @@ Az alábbi felhasználói objektumok **nem** szinkronizálva az Azure AD:
 * Csatlakoztatás nem működik az Exchange Online-objektumok nem szinkronizálja.
   `CBool(IIF(IsPresent([msExchRecipientTypeDetails]),BitAnd([msExchRecipientTypeDetails],&H21C07000) > 0,NULL))`  
   A bitmaszk (& H21C07000) a következő objektumok ki fog szűrni:
-  * Levelezési nyilvános mappa
+  * Levelezési nyilvános mappában (az előzetes verzió frissítésétől 1.1.524.0 verzió)
   * Rendszer kísérő postaláda
   * Postaláda-adatbázis postaláda (rendszer postaláda)
   * Az univerzális biztonsági csoport (egy felhasználó nem tudnák alkalmazni, de nincs örökölt összetevők miatt)

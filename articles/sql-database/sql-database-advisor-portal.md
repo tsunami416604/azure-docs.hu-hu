@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: On Demand
 ms.date: 07/05/2017
 ms.author: sstein
-ms.openlocfilehash: fe76be59d6ee09049ed8c1343d1a91e42646c262
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 32071522bbe069e68bdaed181f64b814eb70b84c
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="find-and-apply-performance-recommendations"></a>Keresse meg és teljesítmény javaslatok alkalmazása
 
@@ -52,7 +52,7 @@ Javaslatok a potenciális gyakorolt hatása az alábbi kategóriákba vannak ren
 > Az Azure SQL-adatbázist vissza kell tevékenységek figyelését, legalább egy napig néhány megismerése érdekében. Az Azure SQL Database könnyebben optimalizálható lekérdezés konzisztens mintára, mint a véletlenszerű spotty felszakadásáig tevékenység használhatja. Javaslatok még nem állnak rendelkezésre, ha a **teljesítmény ajánlás** lap egy üzenet, amely ismerteti, hogy miért biztosít.
 > 
 
-A múltbeli működési állapotát is megtekintheti. További részletek megtekintéséhez javaslat vagy állapot kiválasztása.
+A múltbeli működési állapotát is megtekintheti. További részletek a javaslat vagy állapot kiválasztása.
 
 Íme egy példa a ajánlás "Create index" az Azure portálon.
 
@@ -130,7 +130,7 @@ A javaslat alkalmazása nem fordulhat elő, azonnal. A portál részletesen ajá
 | Visszaállítás |A javaslat alkalmazta, de nem performant megállapítása, és automatikusan vissza. |
 | Visszaállítva |A javaslat vissza lett állítva. |
 
-Kattintson egy folyamaton belüli ajánlott megoldás a listából a további részletek:
+Kattintson a folyamaton belüli ajánlás a lista további részletek:
 
 ![Ajánlott indexek](./media/sql-database-advisor-portal/operations.png)
 

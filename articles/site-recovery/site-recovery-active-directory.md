@@ -7,13 +7,13 @@ author: mayanknayar
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 02/27/2018
+ms.date: 03/05/2018
 ms.author: manayar
-ms.openlocfilehash: e07b868883b0154ad38ba2f7f51dd2db663525a0
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: df5f40a49aa7359c082b0feb9e047818a642a871
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="use-azure-site-recovery-to-protect-active-directory-and-dns"></a>Azure Site Recovery használatával védi az Active Directory és a DNS-
 
@@ -73,7 +73,7 @@ A feladatátvételi teszt termelési számítási feladatokhoz gyakorolt hatás 
 
 A legtöbb alkalmazás egy tartományvezérlő és DNS-kiszolgáló szükséges. Ezért az alkalmazás nem keresztül, mielőtt, a tartományvezérlő feladatátvételi teszt végrehajtásához használja a elkülönített hálózatot kell létrehoznia. Ennek legegyszerűbb módja a Site Recovery segítségével a virtuális gép, amelyen egy tartományvezérlő vagy a DNS-replikáció. Ezután futtassa az alkalmazás a helyreállítási terv feladatátvételi teszt futtatása előtt tartomány a tartományvezérlő virtuális gép feladatátvételi tesztet. Itt látható, hogyan teheti, hogy:
 
-1. A Site Recovery használata [replikálása](site-recovery-replicate-vmware-to-azure.md) a virtuális gépet, amely a tartományvezérlő vagy a DNS.
+1. A Site Recovery használata [replikálása](vmware-azure-tutorial.md) a virtuális gépet, amely a tartományvezérlő vagy a DNS.
 2. Hozzon létre egy elkülönített hálózatot. Az Azure-ban létrehozott virtuális hálózatnak el különítve a többi hálózat alapértelmezés szerint. Azt javasoljuk, hogy használja-e az azonos IP-címtartomány ehhez a hálózathoz, amely a termelési hálózat használata. Hely-hely kapcsolatot, a hálózat nem engedélyezi.
 3. Adjon meg egy DNS-IP-címet, az elkülönített hálózatban. Használja az IP-cím, a DNS-virtuális gép beolvasandó várt. Ha az Azure-bA replikál, adja meg az IP-címet a virtuális gép feladatátvételi használt. Adja meg az IP-cím, a replikált virtuális gépen, hogy a **számítás és hálózat** beállításaiban, válassza a **cél IP-címet** beállításait.
 

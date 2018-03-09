@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: bcf80fe8f10ae8c81b5eea94137bd62558a6447a
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: b00c594f87a3126bd3f1548cd904adffcb214031
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="copy-data-from-and-to-dynamics-365-or-dynamics-crm-by-using-azure-data-factory"></a>Adatok másolása Dynamics 365 vagy a Dynamics CRM és Azure Data Factory használatával
 
@@ -32,7 +32,7 @@ Adatokat másolhat a Dynamics 365 vagy a Dynamics CRM bármely támogatott fogad
 
 A Dynamics összekötő támogatja a következő Dynamics verziói és a hitelesítési típus. (Internetes Elérésű a rövid a internetre irányuló központi telepítési.)
 
-| Dynamics verziók | Hitelesítéstípusok | A kapcsolódószolgáltatás-minták |
+| Dynamics verziók | Hitelesítési típusok | A kapcsolódószolgáltatás-minták |
 |:--- |:--- |:--- |
 | Dynamics 365 online <br> Dynamics CRM Online | Office365 | [Dynamics online + Office365 hitelesítés](#dynamics-365-and-dynamics-crm-online) |
 | Dynamics 365 helyszíni ELÉRÉS <br> Dynamics CRM 2016 helyszíni ELÉRÉS <br> Dynamics CRM 2015 a helyszíni az ELÉRÉS | IFD | [Dynamics a helyszíni az internetes Elérésű + ELÉRÉS hitelesítés](#dynamics-365-and-dynamics-crm-on-premises-with-ifd) |
@@ -319,7 +319,6 @@ A Data Factory megfelelő adattípus konfigurálása egy adatkészlet-szerkezete
 |:--- |:--- |:--- |:--- |
 | AttributeTypeCode.BigInt | Hosszú | ✓ | ✓ |
 | AttributeTypeCode.Boolean | Logikai | ✓ | ✓ |
-| AttributeType.Customer | GUID | ✓ | |
 | AttributeType.DateTime | Dátum és idő | ✓ | ✓ |
 | AttributeType.Decimal | Decimális | ✓ | ✓ |
 | AttributeType.Double | Dupla | ✓ | ✓ |

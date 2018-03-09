@@ -13,19 +13,22 @@ ms.custom: business continuity
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
-ms.date: 12/13/2017
 ms.workload: On Demand
+ms.date: 03/07/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 3d6ad95c1ca316b2e7c3f722315d2ddec03a3716
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: aa6a032a9d42038502cf074ef8aeff8e2e8b0b31
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="designing-highly-available-services-using-azure-sql-database"></a>Azure SQL Database használata magas rendelkezésre állású szolgáltatások tervezése
 
 Összeállításakor, és az Azure SQL Database-magas rendelkezésre állású szolgáltatások telepítése, használata [feladatátvételi csoportok és aktív georeplikáció](sql-database-geo-replication-overview.md) regionális kimaradások és a végzetes hibák rugalmasság biztosításához. Azt is lehetővé teszi, hogy a másodlagos adatbázisok gyors helyreállítás. Ez a cikk általános alkalmazás-minták összpontosít, és az előnyöket és az egyes lehetőségek kompromisszumot ismerteti. Aktív georeplikáció a rugalmas készletek kapcsolatos információkért lásd: [rugalmas készlet vész-helyreállítási stratégiák](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md).
+
+> [!NOTE]
+> Premium adatbázisokat és a készletek használatakor tehet őket rugalmas regionális kimaradások alakítja át őket zóna redundáns központi telepítés konfigurálása (jelenleg az előzetes verzió). Lásd: [zónaredundáns adatbázisok](sql-database-high-availability.md).  
 
 ## <a name="scenario-1-using-two-azure-regions-for-business-continuity-with-minimal-downtime"></a>1. példa: A két Azure-régiók az üzletmenet folytonosságának minimális állásidővel használata
 Ebben a forgatókönyvben az alkalmazásokat az alábbi tulajdonságokkal rendelkeznek: 
@@ -47,8 +50,7 @@ Az alábbi ábrán látható az ebben a konfigurációban, nem tervezett kimarad
 Az elsődleges régióban kimaradás után a az SQL Database szolgáltatás észleli, hogy az elsődleges adatbázis nem érhető el, és elindítja a feladatátvételt a másodlagos régióban, az Automatikus feladatátvétel házirend (1) a paraméterek alapján. Attól függően, hogy az alkalmazás SLA-t a türelmi időszak, amely a szolgáltatáskimaradás észlelését és magát a feladatátvétel között eltelő idő is konfigurálhat. Akkor lehet, hogy a traffic manager kezdeményezi a végpont a feladatátvételi csoport elindítja az adatbázis a feladatátvétel előtt. Ebben az esetben a webalkalmazás nem azonnal újra az adatbázishoz. De az ezt a lehetőséget akkor sikeres automatikusan, amint az adatbázis feladatátvétel befejezését. Amikor a sikertelen régió visszaállítása, és ismét online állapotban, a régi elsődleges automatikusan újracsatlakozik-e egy új másodlagosként. Az alábbi ábra szemlélteti a feladatátvételt követően a konfigurációt.
  
 > [!NOTE]
-> A feladatátvétel után végrehajtott összes tranzakciók során az újracsatlakozás elvesznek. A feladatátvétel befejezése után az alkalmazás B régióban csatlakozzon újra, és indítsa újra a felhasználói kérelmek feldolgozásához. A webes alkalmazás, mind az elsődleges adatbázis régióban B, illetve ugyanott maradnak. 
-n>
+> A feladatátvétel után végrehajtott összes tranzakciók során az újracsatlakozás elvesznek. A feladatátvétel befejezése után az alkalmazás B régióban csatlakozzon újra, és indítsa újra a felhasználói kérelmek feldolgozásához. A webes alkalmazás, mind az elsődleges adatbázis régióban B, illetve ugyanott maradnak. n>
 
 ![1. forgatókönyv. Feladatátvétel konfigurálása](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario1-b.png)
 
@@ -152,7 +154,7 @@ Van azonban néhány, de **mellékhatásokkal**:
 ## <a name="business-continuity-planning-choose-an-application-design-for-cloud-disaster-recovery"></a>Üzleti folytonosság tervezési: Válasszon egy alkalmazás tervét felhő katasztrófa utáni helyreállítás
 Egyes adott felhőalapú vész-helyreállítási stratégiát kombinálhatja, vagy az alkalmazás igényeinek leginkább megfelelő ezek a kialakítási minták kiterjesztése.  A korábban említett stratégia az SLA-t szeretne ajánlani az ügyfelek és az alkalmazás üzembe helyezési topológia alapul. A következő részekben talál a döntést, hogy az alábbi táblázat összehasonlítja a választási lehetőségek a helyreállítási időkorlát (RPO) és a becsült helyreállítási idő (Beszúrása) alapján.
 
-| Mintázat | A HELYREÁLLÍTÁSI IDŐKORLÁT | BESZÚRÁSA |
+| Mintázat | A HELYREÁLLÍTÁSI IDŐKORLÁT | ERT |
 |:--- |:--- |:--- |
 | Aktív-passzív telepítési közös elhelyezésű adatbázis-hozzáférést katasztrófa utáni helyreállítás |Olvasási és írási hozzáférése < 5 másodperc |Hiba észlelése időpontja + a DNS-élettartam |
 | Aktív-aktív központi telepítés alkalmazás terheléselosztás |Olvasási és írási hozzáférése < 5 másodperc |Hiba észlelése időpontja + a DNS-élettartam |
@@ -160,7 +162,7 @@ Egyes adott felhőalapú vész-helyreállítási stratégiát kombinálhatja, va
 ||Olvasási és írási hozzáférése = nulla | Olvasási és írási hozzáférése = hiba észlelés ideje + adatvesztéssel türelmi időszak |
 |||
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Egy üzleti folytonosság – áttekintés és forgatókönyvek: [üzleti folytonosság – áttekintés](sql-database-business-continuity.md)
 * A georeplikáció és feladatátvételi csoportokkal kapcsolatos további tudnivalókért lásd: [aktív georeplikáció](sql-database-geo-replication-overview.md)  
 * Aktív georeplikáció a rugalmas készletek kapcsolatos információkért lásd: [rugalmas készlet vész-helyreállítási stratégiák](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md).

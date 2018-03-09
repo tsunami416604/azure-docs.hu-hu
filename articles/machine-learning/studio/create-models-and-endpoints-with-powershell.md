@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/04/2017
-ms.author: garye;haining
-ms.openlocfilehash: 44551908c31151e7d8945a3c7c03303b17d8f059
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.author: haining
+ms.openlocfilehash: 4a4c1c417dabf32aa3a23fef22078ada0d01d9fa
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="create-many-machine-learning-models-and-web-service-endpoints-from-one-experiment-using-powershell"></a>Több Machine Learning-modellek és webszolgáltatás-végpont létrehozása egy kísérletből a PowerShell használatával
 Ez gyakori probléma machine learning: szeretne létrehozni, amelyek ugyanabban a munkafolyamatban képzési és azonos algoritmus sok modellek. De azt szeretné, hogy a különböző képzési adatkészletek bemeneti adatként. Ez a cikk bemutatja, hogyan ehhez az Azure Machine Learning Studióban léptékű csak egyetlen kísérlet használatával.
@@ -46,7 +46,7 @@ A példa [tanítási kísérletet](https://gallery.cortanaintelligence.com/Exper
 
 A kísérlet használ egy **adatok importálása** modul importálása a képzés dataset *customer001.csv* az Azure storage-fiók. Tegyük fel a tanítási adathalmazt gyűjtött összes kerékpárt bérleti helyét, és közötti fájlnévvel blob storage ugyanazon a helyen tárolja őket *rentalloc001.csv* való *rentalloc10.csv*.
 
-![Kép](./media/create-models-and-endpoints-with-powershell/reader-module.png)
+![image](./media/create-models-and-endpoints-with-powershell/reader-module.png)
 
 Vegye figyelembe, hogy egy **webes szolgáltatás kimeneti** modul hozzá lett adva a **tanítási modell** modul.
 Ha ehhez a kísérlethez webszolgáltatásként lett telepítve, a végpont társított kimeneti egy .ilearner fájl formátumát a betanított modell adja vissza.
@@ -54,7 +54,7 @@ Ha ehhez a kísérlethez webszolgáltatásként lett telepítve, a végpont tár
 Vegye figyelembe azt is, hogy egy webes szolgáltatás paraméter, amely meghatározza a URL-cím beállítása, amely a **és adatokat importálhat** modul használja. Ez lehetővé teszi, hogy a paraméter segítségével adjon meg egyedi képzési adatkészletek mindegyik helyen a modell betanításához.
 Más módon sikerült ezt. A webes szolgáltatás paraméterrel egy SQL-lekérdezés segítségével adatokat lekérni az SQL Azure-adatbázis. Vagy használhat egy **webszolgáltatás bemenetét** DataSet adatkészletben átadása a webszolgáltatás modul.
 
-![Kép](./media/create-models-and-endpoints-with-powershell/web-service-output.png)
+![image](./media/create-models-and-endpoints-with-powershell/web-service-output.png)
 
 Most most futtatni a tanítási kísérletet az alapértelmezett érték használatával *rental001.csv* , a képzési adatkészlet. Ha megtekinti a kimenetét a **Evaluate** modul (kattintson a kimeneti, jelölje be **Visualize**), láthatja, beállíthatja a decent teljesítményének *AUC* = 0.91. Ekkor készen áll a tanítási kísérletet kívül webes szolgáltatás telepítése.
 
@@ -91,7 +91,7 @@ Ezután futtassa a következő PowerShell-parancsot:
 
 Most létrehozott 10 végpontok és az összes tartalmazzák azonos betanítása modell betanítása a *customer001.csv*. Azokat az Azure-portálon tekintheti meg.
 
-![Kép](./media/create-models-and-endpoints-with-powershell/created-endpoints.png)
+![image](./media/create-models-and-endpoints-with-powershell/created-endpoints.png)
 
 ## <a name="update-the-endpoints-to-use-separate-training-datasets-using-powershell"></a>A PowerShell használatával külön tanítási adathalmazt használandó végpontok frissítése
 A következő lépéssel frissítése érdekében szükség a végpontok minden ügyfélnél egyedi adatokat a egyedileg betanítása modellekkel. Ehhez azonban először kell ezek a modellek létrehozásához a **kerékpárt bérleti képzési** webes szolgáltatás. Lépjen vissza a **kerékpárt bérleti képzési** webes szolgáltatás. meg kell hívnia a BES végpont 10-szer adatkészletekkel 10 különböző képzési 10 különböző modell előállításához. Használja a **InovkeAmlWebServiceBESEndpoint** ehhez PowerShell-parancsmagot.

@@ -5,20 +5,15 @@ services: site-recovery
 documentationcenter: 
 author: mayanknayar
 manager: rochakm
-editor: 
-ms.assetid: 
 ms.service: site-recovery
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 02/27/2018
+ms.date: 03/05/2018
 ms.author: manayar
-ms.openlocfilehash: 3192c67938fe118e79aa68ee6194e76f21d65d98
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 8305a354588875926cab52a55d99d3a29bcfb509
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="azure-traffic-manager-with-azure-site-recovery"></a>Azure Traffic Manager az Azure Site Recovery-vel
 
@@ -49,11 +44,11 @@ A vész-események esetén a vállalat elindítható egy [feladatátvevő](site-
 
 Attól függően, hogy az üzleti követelmények **a vállalat** eldönthetik, hogy egy magasabb vagy alacsonyabb [gyakoriság probing](../traffic-manager/traffic-manager-monitoring.md) helyszíni Azure egy katasztrófa eseményben közötti váltás, és minimális állásidő érdekében a felhasználók számára.
 
-Amikor a katasztrófa tartalmazza, **a vállalat** visszaadhatja a feladatokat az Azure-ból a helyszíni környezetbe ([VMware](site-recovery-how-to-failback-azure-to-vmware.md) vagy [Hyper-V](site-recovery-failback-from-azure-to-hyper-v.md)) Azure Site Recovery segítségével. Most, amikor a Traffic Manager észleli, hogy a **elsődleges** végpont újra állapota kifogástalan, automatikusan használja a **elsődleges** végpont a saját DNS-válaszok.
+Amikor a katasztrófa tartalmazza, **a vállalat** visszaadhatja a feladatokat az Azure-ból a helyszíni környezetbe ([VMware](vmware-azure-failback.md) vagy [Hyper-V](hyper-v-azure-failback.md)) Azure Site Recovery segítségével. Most, amikor a Traffic Manager észleli, hogy a **elsődleges** végpont újra állapota kifogástalan, automatikusan használja a **elsődleges** végpont a saját DNS-válaszok.
 
 ## <a name="on-premises-to-azure-migration"></a>A helyszíni Azure áttelepítése
 
-Vész-helyreállítási mellett is engedélyezi az Azure Site Recovery [áttelepítése az Azure-bA](site-recovery-migrate-to-azure.md). Azure Site Recovery hatékony teszt feladatátvételi lehetőségeket használja, az ügyfelek kiértékelhetik, Azure alkalmazásteljesítmény anélkül, hogy befolyásolná a helyszíni környezetben. Vagy ha az ügyfelek áttelepítését, akkor telepítse át a teljes munkaterhelés együtt, vagy válassza ki az áttelepíteni, a méretezés fokozatosan.
+Vész-helyreállítási mellett is engedélyezi az Azure Site Recovery [áttelepítése az Azure-bA](migrate-overview.md). Azure Site Recovery hatékony teszt feladatátvételi lehetőségeket használja, az ügyfelek kiértékelhetik, Azure alkalmazásteljesítmény anélkül, hogy befolyásolná a helyszíni környezetben. Vagy ha az ügyfelek áttelepítését, akkor telepítse át a teljes munkaterhelés együtt, vagy válassza ki az áttelepíteni, a méretezés fokozatosan.
 
 Az Azure Traffic Manager [Weighted](../traffic-manager/traffic-manager-configure-weighted-routing-method.md) útválasztási módszer használható az Azure-bA bejövő forgalom egy része közvetlen közben arra utasíthatja a legtöbb, a helyszíni környezetben. Ezt a módszert segítségével folytathatja a növekvő, több és több, a munkaterhelések áttelepítése az Azure-bA az Azure-bA hozzárendelt súlyozásoknak méretezési teljesítmény megállapításához.
 

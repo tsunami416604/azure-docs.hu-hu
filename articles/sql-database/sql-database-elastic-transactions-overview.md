@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: On Demand
 ms.date: 05/27/2016
 ms.author: torsteng
-ms.openlocfilehash: 012fc38075285b898599517f3e6ed5a3c9eb854d
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: 4441cdef3bc97aab35451720753e437e24702fd9
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="distributed-transactions-across-cloud-databases"></a>Elosztott tranzakciók több felhőalapú adatbázisban
 Az Azure SQL Database (SQL-adatbázis a) rugalmas adatbázis-tranzakciók teszik tranzakciók, amelyek több adatbázisok az SQL-adatbázis futtatását. Az SQL-adatbázis a rugalmas adatbázis-tranzakciók érhetők el a .NET-alkalmazásokban ADO .NET használatával, és a megszokott programozási élmény segítségével integrálja a [System.Transaction](https://msdn.microsoft.com/library/system.transactions.aspx) osztályok. Ahhoz, hogy a könyvtárban, lásd: [.NET-keretrendszer 4.6.1 (webes telepítő)](https://www.microsoft.com/download/details.aspx?id=49981).
@@ -133,9 +133,9 @@ Az SQL-adatbázis a dinamikus felügyeleti nézetek (dinamikus felügyeleti néz
 
 A dinamikus felügyeleti nézetek különösen hasznosak:
 
-* **sys.DM\_tran\_aktív\_tranzakciók**: a jelenleg aktív tranzakciók és azok állapotát tartalmazza. A UOW-Értékkel (munkaegység) oszlop azonosíthatja a különböző alárendelt tranzakciók, amelyek azonos elosztott tranzakció. Ugyanazon elosztott tranzakción belül minden tranzakciók lebonyolítására UOW ugyanazt az értéket. Tekintse meg a [DMV dokumentáció](https://msdn.microsoft.com/library/ms174302.aspx) további részleteket.
-* **sys.DM\_tran\_adatbázis\_tranzakciók**: tranzakciók, például a naplóban a tranzakció elhelyezésének további információkkal szolgál. Tekintse meg a [DMV dokumentáció](https://msdn.microsoft.com/library/ms186957.aspx) további részleteket.
-* **sys.DM\_tran\_zárolások**: információkat nyújt azokról a zárolásokat, amelyek jelenleg folyamatban lévő tranzakció tartja fenn. Tekintse meg a [DMV dokumentáció](https://msdn.microsoft.com/library/ms190345.aspx) további részleteket.
+* **sys.DM\_tran\_aktív\_tranzakciók**: a jelenleg aktív tranzakciók és azok állapotát tartalmazza. A UOW-Értékkel (munkaegység) oszlop azonosíthatja a különböző alárendelt tranzakciók, amelyek azonos elosztott tranzakció. Ugyanazon elosztott tranzakción belül minden tranzakciók lebonyolítására UOW ugyanazt az értéket. Tekintse meg a [DMV dokumentáció](https://msdn.microsoft.com/library/ms174302.aspx) további információt.
+* **sys.DM\_tran\_adatbázis\_tranzakciók**: tranzakciók, például a naplóban a tranzakció elhelyezésének további információkkal szolgál. Tekintse meg a [DMV dokumentáció](https://msdn.microsoft.com/library/ms186957.aspx) további információt.
+* **sys.DM\_tran\_zárolások**: információkat nyújt azokról a zárolásokat, amelyek jelenleg folyamatban lévő tranzakció tartja fenn. Tekintse meg a [DMV dokumentáció](https://msdn.microsoft.com/library/ms190345.aspx) további információt.
 
 ## <a name="limitations"></a>Korlátozások
 SQL Database rugalmas adatbázis-tranzakciók jelenleg alkalmazása a következő korlátozások vonatkoznak:
@@ -144,7 +144,7 @@ SQL Database rugalmas adatbázis-tranzakciók jelenleg alkalmazása a következ�
 * Csak ügyfél egyeztetett .NET-alkalmazás tranzakciók használata támogatott. T-SQL, például a BEGIN TRANSACTION ELOSZTOTT kiszolgálóoldali támogatása, tervezett, de még nem érhető el. 
 * WCF-szolgáltatások között nem támogatottak. Például hogy egy WCF-szolgáltatás metódus, amely végrehajtja a tranzakciót. A hívás a tranzakció hatókörén belül befoglaló meghiúsul, mint egy [System.ServiceModel.ProtocolException](https://msdn.microsoft.com/library/system.servicemodel.protocolexception).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A kérdésekhez, lépjen kapcsolatba velünk a a [SQL-adatbázis fórum](http://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted) és a szolgáltatás kéréseket, adja hozzá őket a [SQL adatbázis-visszajelzési fórumon](https://feedback.azure.com/forums/217321-sql-database/).
 
 <!--Image references-->

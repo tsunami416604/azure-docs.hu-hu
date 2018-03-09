@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2017
 ms.author: wgries
-ms.openlocfilehash: 8f20e8d4329d815351147f90b598180839ce917a
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 341ace1d9792aba3d6d525a2cde0d9b74367d214
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="planning-for-an-azure-file-sync-preview-deployment"></a>Egy Azure fájlszinkronizálás (előzetes verzió) telepítésének tervezése
 Sync szolgáltatás használatával Azure fájl (előzetes verzió) központosítása fájlmegosztások a szervezet Azure fájlokban, ugyanakkor változatlanul megőrizze a rugalmasság, a teljesítmény és a kompatibilitási egy helyszíni fájlkiszolgáló. Azure fájlszinkronizálás átalakítja a Windows Server az Azure fájlmegosztás gyors gyorsítótárába. Minden protokoll, amely a Windows Server helyileg, az adatok eléréséhez használhatja, többek között a ftps-t, SMB és NFS. Akkor is annyi gyorsítótárak világszerte szükség szerint.
@@ -92,7 +92,7 @@ Vannak a Windows Server későbbi verzióiban lesz hozzáadva. A Windows korább
 | Újraelemzési pontok | Kihagyva | |
 | NTFS-tömörítése | Teljes mértékben támogatott. | |
 | Ritka fájlok | Teljes mértékben támogatott. | Ritka fájlok szinkronizálási (nem zárolt), de a szinkronizálás a felhőbe egy teljes fájlként. Ha a fájl tartalmának módosítása a felhőben (vagy egy másik kiszolgálón), a fájl már nem ritka, amikor a módosítás. |
-| Alternatív adatfolyamok (ADS) | Megmarad, de nem szinkronizált | |
+| Alternatív adatfolyamok (ADS) | Megmarad, de nem szinkronizált | Például hozta létre a fájlbesorolási infrastruktúra besorolási címkék nem lett szinkronizálva. Az egyes server végpontjainak a meglévő besorolási címkék balra hagyása. |
 
 > [!Note]  
 > Csak az NTFS-köteteket támogatottak. A refs fájlrendszer, FAT, FAT32 és más fájlrendszerek nem támogatottak.
@@ -142,7 +142,7 @@ Víruskereső megoldások, például a biztonsági mentési megoldás a rétegze
 Titkosítási megoldások támogatása attól függ, hogyan használják azokat. Az Azure fájlszinkronizálás ismert használható:
 
 - A BitLocker titkosítást
-- Az Azure Rights Management Services (Azure RMS) (és az örökölt Active Directory RMS)
+- Azure Information Protection, Azure Rights Management Services (az Azure RMS), és az Active Directory RMS
 
 Azure fájl szinkronizálása nem működik az ismert:
 

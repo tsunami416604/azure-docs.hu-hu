@@ -6,30 +6,30 @@ author: rajani-janaki-ram
 manager: gauravd
 ms.service: site-recovery
 ms.topic: article
-ms.date: 02/12/2018
+ms.date: 03/05/2018
 ms.author: rajanaki
-ms.openlocfilehash: d24376c57c468a562fc6d6dd52b4e9b01b53c3da
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 47056c85c6cb66a7fa28d623a4472b827d970dab
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="reprotect-failed-over-azure-vms-to-the-primary-region"></a>Védelem-újrabeállítási átadja Azure virtuális gépeket az elsődleges régióban
 
 
 >[!NOTE]
 >
-> Azure virtuális gépek helyreállítási helyreplikálásának jelenleg előzetes verzió.
+> Az Azure-beli virtuális gépek Site Recovery-replikációja jelenleg előzetes verzióban érhető el.
 
 
 
 Ha Ön [feladatátvételt](site-recovery-failover.md) Azure virtuális gépek egy régióban egy másik használatával [Azure Site Recovery](site-recovery-overview.md), a virtuális gépek rendszerindítás másodlagos régióban, nem védett állapotban. Ha sikertelen a virtuális gépek biztonsági az elsődleges régióban, meg kell tegye a következőket:
 
-- Állítsa a virtuális gépeket, a másodlagos régióban, hogy az elsődleges régióban replikálást indítani azokat. 
+- Állítsa a virtuális gépeket, a másodlagos régióban, hogy elindítja az elsődleges régióban replikálni. 
 - Miután ismételt védelem befejeződik, és a virtuális gépeket replikál, átveheti azokat a másodlagos kiszolgálóról elsődleges régióban.
 
 > [!WARNING]
-> Ha megismerte [át](site-recovery-migrate-to-azure.md#what-do-we-mean-by-migration) a másodlagos régióban, az elsődleges gépek a virtuális gép áthelyezése a másik erőforráscsoportba, vagy törölték az Azure virtuális Gépen, hogy nem adja meg újra a virtuális gép védelmét, vagy feladat-visszavételt azt.
+> Ha megismerte [át](migrate-overview.md#what-do-we-mean-by-migration) a másodlagos régióban, az elsődleges gépek a virtuális gép áthelyezése a másik erőforráscsoportba, vagy törölték az Azure virtuális Gépen, hogy nem adja meg újra a virtuális gép védelmét, vagy feladat-visszavételt azt.
 
 
 ## <a name="prerequisites"></a>Előfeltételek

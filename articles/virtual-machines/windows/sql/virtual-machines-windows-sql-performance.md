@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/29/2018
 ms.author: jroth
-ms.openlocfilehash: d0668a5fff3e5a69162c1893c07d5f4c2a015a28
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 3458e2f1a09b597c50c01d59eb6522b3fa521310
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="performance-best-practices-for-sql-server-in-azure-virtual-machines"></a>Ajánlott eljárások az SQL Server teljesítményének Azure Virtual Machines szolgáltatásbeli növeléséhez
 
@@ -171,4 +171,4 @@ Egyes központi telepítések további teljesítménybeli előnyökben speciáli
 
 Ajánlott biztonsági eljárások, lásd: [biztonsági szempontok az SQL Server Azure virtuális gépek](virtual-machines-windows-sql-security.md).
 
-Olvassa el a más SQL Server virtuális gép cikkeket [SQL Server Azure virtuális gépek – áttekintés](virtual-machines-windows-sql-server-iaas-overview.md).
+Olvassa el a más SQL Server virtuális gép cikkeket [SQL Server Azure virtuális gépek – áttekintés](virtual-machines-windows-sql-server-iaas-overview.md). Ha az SQL Server virtuális gépek kérdése van, tekintse meg a [gyakran ismételt kérdések](virtual-machines-windows-sql-server-iaas-faq.md).

@@ -260,6 +260,8 @@
               href: mongodb-mongoose.md
             - name: Olvasási beállítás használata
               href: mongodb-readpreference.md
+            - name: Indexelés
+              href: mongodb-indexing.md
             - name: A MongoDB-funkciók támogatása
               href: mongodb-feature-support.md
             - name: Angular oktatóanyag-sorozat

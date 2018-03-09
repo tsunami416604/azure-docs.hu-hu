@@ -1,6 +1,6 @@
 ---
 title: "A naplófájl-keresési portál használata az Azure Naplóelemzés |} Microsoft Docs"
-description: "A cikk azt ismerteti, hogyan napló keresések létrehozása és a keresési napló portálon Naplóelemzési munkaterületet tárolt adatok elemzése webalkalmazással tartalmaz.  Az oktatóanyag magában foglalja a különböző típusú adatok és elemzésekor eredmények vissza egyszerű lekérdezések futtatásának."
+description: "A cikk azt ismerteti, hogyan napló keresések létrehozása és a keresési napló portálon Naplóelemzési munkaterületet tárolt adatok elemzése webalkalmazással tartalmaz.  Az oktatóanyag részeként néhány mintalekérdezést is futtatni fog különböző adattípusok visszaadásához és az eredmények elemzéséhez."
 services: log-analytics
 documentationcenter: 
 author: bwren
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/19/2018
 ms.author: bwren
-ms.openlocfilehash: 3a2e8803d51d81ab0eda3dc814d01822e17bc14e
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: 37213012e817f0fae21a47a4334a519bbbca206b
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="create-log-searches-in-azure-log-analytics-using-the-log-search-portal"></a>Napló keresések létrehozása az Azure Naplóelemzés a naplófájl-keresési portál használatával
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 01/22/2018
 >
 > Ha a munkaterületet még nem lett frissítve az új lekérdezési nyelv, tekintse át [található adatokat, és napló kereséseket a Naplóelemzési](log-analytics-log-searches.md) információt a naplófájl-keresési portál jelenlegi verziója.
 
-A cikk azt ismerteti, hogyan napló keresések létrehozása és a keresési napló portálon Naplóelemzési munkaterületet tárolt adatok elemzése webalkalmazással tartalmaz.  Az oktatóanyag magában foglalja a különböző típusú adatok és elemzésekor eredmények vissza egyszerű lekérdezések futtatásának.  A naplófájl-keresési portálon módosítani a lekérdezést, nem pedig közvetlenül módosítsák a szolgáltatásokra összpontosít.  A lekérdezés közvetlenül szerkesztési részletekért lásd: a [lekérdezés nyelvi referencia](https://go.microsoft.com/fwlink/?linkid=856079).
+A cikk azt ismerteti, hogyan napló keresések létrehozása és a keresési napló portálon Naplóelemzési munkaterületet tárolt adatok elemzése webalkalmazással tartalmaz.  Az oktatóanyag részeként néhány mintalekérdezést is futtatni fog különböző adattípusok visszaadásához és az eredmények elemzéséhez.  A naplófájl-keresési portálon módosítani a lekérdezést, nem pedig közvetlenül módosítsák a szolgáltatásokra összpontosít.  A lekérdezés közvetlenül szerkesztési részletekért lásd: a [lekérdezés nyelvi referencia](https://go.microsoft.com/fwlink/?linkid=856079).
 
 A keresések a Advanced Analytics portál helyett a naplófájl-keresési portál létrehozásához lásd: [az Analytics portál első lépések](https://go.microsoft.com/fwlink/?linkid=856587).  Mindkét portálok ugyanabban a lekérdezési nyelv használatával a Naplóelemzési munkaterület ugyanazon adatokat érik el.
 
@@ -36,8 +36,8 @@ Ez az oktatóanyag feltételezi, hogy már rendelkezik a Naplóelemzési munkate
 - Ha a munkaterületet nincs, létrehozhat egy ingyenes egy, a következő eljárás segítségével [Ismerkedjen meg a Naplóelemzési munkaterület](log-analytics-get-started.md).
 - Csatlakozás legalább egy [Windows-ügynök](log-analytics-windows-agent.md) vagy egy [Linux-ügynök](log-analytics-linux-agents.md) a munkaterületre.  
 
-## <a name="open-the-log-search-portal"></a>Nyissa meg a keresési napló portált
-Indítsa el a napló keresési portál megnyitásával. 
+## <a name="open-the-log-search-portal"></a>A naplókeresési portál megnyitása
+Először nyissa meg a naplókeresési portált. 
 
 1. Nyissa meg az Azure Portalt.
 2. A Naplóelemzési váltson, és jelölje ki a munkaterületen.
@@ -45,10 +45,10 @@ Indítsa el a napló keresési portál megnyitásával.
 
 ![Napló Keresés gomb](media/log-analytics-log-search-log-search-portal/log-search-button.png)
 
-## <a name="create-a-simple-search"></a>Hozzon létre egy egyszerű keresés
-A leggyorsabban beolvasása néhány adatokra egy egyszerű lekérdezést, amely visszaadja az összes rekord tábla.  Ha olyan Windows vagy Linux rendszerű ügyfelek csatlakoztatva a munkaterület, majd konfigurálnia kell az esemény (Windows) vagy a Syslog (Linux) tábla adatait.
+## <a name="create-a-simple-search"></a>Egyszerű keresés létrehozása
+A feldolgozható adatok lekérdezésének leggyorsabb módja az egyszerű lekérdezés, amely egy tábla összes rekordját visszaadja.  Ha Windows vagy Linux rendszerű ügyfelek vannak csatlakoztatva a munkaterülethez, akkor az adatok az Event (Esemény, Windows) vagy a Syslog (Linux) táblában találhatók.
 
-Írjon be egyet az alábbi lekérdezéseket a keresési mezőbe, és kattintson a Keresés gombra.  
+Írja be a következő lekérdezések egyikét a keresőmezőbe, és kattintson a keresés gombra.  
 
 ```
 Event
@@ -57,11 +57,11 @@ Event
 Syslog
 ```
 
-Az alapértelmezett listanézetben adat, és láthatja, hogy hány teljes rekord lett visszaadva.
+A rendszer az alapértelmezett listanézetben adja vissza az adatokat, és megjeleníti, hogy összesen hány rekord lett visszaadva.
 
 ![Egyszerű lekérdezés](media/log-analytics-log-search-log-search-portal/log-search-portal-01.png)
 
-Csak az első néhány tulajdonságok mindegyik rekorddal jelennek meg.  Kattintson a **megjelenítése további** egy adott bejegyzés minden tulajdonságok megjelenítése.
+Az egyes rekordoknak csak az első néhány tulajdonsága jelenik meg.  Kattintson a **részletek megjelenítése** gombra egy adott rekord összes tulajdonságának megjelenítéséhez.
 
 ![Rekord részletei](media/log-analytics-log-search-log-search-portal/log-search-portal-02.png)
 
@@ -74,10 +74,10 @@ Az alapértelmezett időt hatókör **1 nap**.  Módosítsa az értéket **7 nap
 
 ![Dátum idő hatókör](media/log-analytics-log-search-log-search-portal/log-search-portal-03.png)
 
-## <a name="filter-results-of-the-query"></a>A lekérdezés eredményeit szűrni
-A képernyő bal oldalán van a keresőablak, amely lehetővé teszi a lekérdezésbe felvenni kívánt szűrése a közvetlenül a módosítása nélkül.  A visszaadott rekordok számos tulajdonság az a rekordok száma az első tíz értékükön jelennek meg.
+## <a name="filter-results-of-the-query"></a>A lekérdezés eredményeinek szűrése
+A képernyő bal oldalán található a szűrő ablaktábla, amellyel szűrőt adhat a lekérdezéshez anélkül, hogy közvetlenül módosítaná azt.  A visszaadott rekordok számos tulajdonság az a rekordok száma az első tíz értékükön jelennek meg.
 
-Ha dolgozunk **esemény**, jelölje be a jelölőnégyzetet a **hiba** alatt **EVENTLEVELNAME**.   Ha dolgozunk **Syslog**, jelölje be a jelölőnégyzetet a **err** alatt **súlyossági szint**.  A lekérdezés egy, a következő szeretné szűkíteni a hibaesemények értékre változik.
+Ha az **Event** táblával dolgozik, jelölje be az **EVENTLEVELNAME** területen lévő **Error** (Hiba) elem melletti jelölőnégyzetet.   Ha a **Syslog** táblával dolgozik, jelölje be a **SEVERITYLEVEL** területen lévő **err** elem melletti jelölőnégyzetet.  Így a lekérdezés a következőképpen módosul, és csak a hibaeseményeket jeleníti meg.
 
 ```
 Event | where (EventLevelName == "Error")
@@ -88,47 +88,47 @@ Syslog | where (SeverityLevel == "err")
 
 ![Szűrés](media/log-analytics-log-search-log-search-portal/log-search-portal-04.png)
 
-A keresőablak kiválasztásával tulajdonságok hozzáadása **szűrők hozzáadása** egyik rekord tulajdonság menüjéből.
+Ha tulajdonságokat szeretne adni a szűrő ablaktáblához, akkor az egyik rekord tulajdonságmenüjében válassza a **Hozzáadás a szűrőkhöz** elemet.
 
-![Szűrő menü hozzáadása](media/log-analytics-log-search-log-search-portal/log-search-portal-02a.png)
+![Hozzáadás a szűrőhöz menü](media/log-analytics-log-search-log-search-portal/log-search-portal-02a.png)
 
-Az azonos szűrő kiválasztásával állíthatja be **szűrő** egy rekord, a szűrni kívánt érték tulajdonság menüjéből.  
+Ugyanazon szűrő beállításához válassza ki egy olyan rekord tulajdonságmenüjéből a **Szűrő** elemet, amely rendelkezik a szűrendő értékkel.  
 
-Csak a **szűrő** kék a nevükkel tulajdonságok beállítása.  Ezek a *kereshető* mezők, amely az indexelt keresési feltételeket.  A szürke színnel mezők *szabad kereshető szöveg* mezők, amelyek csak a **hivatkozások megjelenítése** lehetőséget.  Ez a beállítás azt jelzi, hogy az egyik tulajdonságnak sem lehet ezt az értéket adja vissza.
+Csak a **szűrő** kék a nevükkel tulajdonságok beállítása.  Ezek a *kereshető* mezők, amelyek keresési feltételekhez vannak indexelve.  A szürke mezők *kereshető szabad szöveges* mezők, amelyeknél csak a **Hivatkozások megjelenítése** beállítás aktív.  Ez a beállítás azokat a rekordokat adja vissza, amelyeknek bármely tulajdonságában megtalálható a keresett érték.
 
 ![Szűrő menü](media/log-analytics-log-search-log-search-portal/log-search-portal-01a.png)
 
-Az eredmények egyetlen tulajdonság alapján csoportosíthatja kiválasztásával a **szerint kell csoportosítani a** beállítást a rekord menüből.  Ez hozzáadja egy [összefoglalója](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/summarize-operator) operátor a lekérdezéshez, amely megjeleníti az eredményeket a diagramon.  Egynél több tulajdonság a csoportosíthatja, de a lekérdezés szerkesztéséhez közvetlenül kell.  Ezután válassza ki a rekord menüt a a **számítógép** tulajdonság, és válassza **"Számítógép" csoport**.  
+Egyetlen tulajdonság alapján csoportosíthatja az eredményeket, ha kiválasztja a rekord menüjének **Csoportosítási szempont** elemét.  Ez egy [summarize](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/summarize-operator) (összegző) operátort ad a lekérdezéshez, amely egy diagramban jeleníti meg az eredményeket.  Több tulajdonság alapján is csoportosíthat, de ehhez közvetlenül kell szerkesztenie a lekérdezést.  Ezután válassza ki a rekord menüt a **számítógép** tulajdonság, és válassza **"Számítógép" csoport**.  
 
-![Számítógép szerint kell csoportosítani](media/log-analytics-log-search-log-search-portal/log-search-portal-10.png)
+![Csoportosítás számítógép alapján](media/log-analytics-log-search-log-search-portal/log-search-portal-10.png)
 
-## <a name="work-with-results"></a>Eredmények használata
-A naplófájl-keresési portál számos a lekérdezés eredményeinek való munkához funkcióval rendelkezik.  Rendezheti, szűrő és az eredmények az adatok elemzése a tényleges lekérdezés módosítása nélkül.  A lekérdezés nem alapértelmezés szerint vannak rendezve.
+## <a name="work-with-results"></a>Munka az eredményül kapott adatokkal
+A naplókeresési portál számos funkcióval rendelkezik a lekérdezések eredményeinek feldolgozásához.  Rendezheti, szűrheti és csoportosíthatja az eredményeket az adatok elemzése érdekében a tényleges lekérdezés módosítása nélkül.  A lekérdezések eredményei alapértelmezés szerint nincsenek rendezve.
 
-Az adatok táblázatos formában, amely további lehetőségeket nyújt a szűrési és rendezési megtekintéséhez kattintson **tábla**.  
+Ha táblázatos formában szeretné megtekinteni az adatokat, ami további lehetőségeket nyújt a szűréshez és a rendezéshez, kattintson a **Tábla** gombra.  
 
-![Tábla megtekintése](media/log-analytics-log-search-log-search-portal/log-search-portal-05.png)
+![Tábla nézet](media/log-analytics-log-search-log-search-portal/log-search-portal-05.png)
 
-Kattintson a nyílra által egy rekordot a rekord a részletek megtekintéséhez.
+Kattintson az egyik rekordnál található nyílra a rekord részleteinek megtekintéséhez.
 
-![Rendezés eredmények](media/log-analytics-log-search-log-search-portal/log-search-portal-06.png)
+![Az eredmények rendezése](media/log-analytics-log-search-log-search-portal/log-search-portal-06.png)
 
-Az oszlop fejlécére kattintva a mező rendezése.
+Bármely mező alapján rendezhet, ha az oszlopfejlécére kattint.
 
-![Rendezés eredmények](media/log-analytics-log-search-log-search-portal/log-search-portal-07.png)
+![Az eredmények rendezése](media/log-analytics-log-search-log-search-portal/log-search-portal-07.png)
 
-A szűrő gombra kattint, és egy szűrési feltételt megadásával az oszlopot a megadott értéket az eredmények szűréséhez.
+Az oszlopban található valamelyik érték alapján szűrni is tudja az eredményeket, ha a szűrő gombra kattint, és megadja a szűrőfeltételt.
 
-![Szűrés eredménye](media/log-analytics-log-search-log-search-portal/log-search-portal-08.png)
+![Szűrés eredményei](media/log-analytics-log-search-log-search-portal/log-search-portal-08.png)
 
-Egy oszlop csoportosítás oszlop fejlécére húzva az eredmények tetején.  Több oszlop húzva felső csoportosíthatja több mező.
+Egy oszlop alapján úgy csoportosíthat, ha az oszlopfejlécet az eredmények tetejére húzza.  Több mező alapján úgy csoportosíthat, ha több oszlopot húz felülre.
 
-![Az eredmények csoportosításához](media/log-analytics-log-search-log-search-portal/log-search-portal-09.png)
+![Az eredmények csoportosítása](media/log-analytics-log-search-log-search-portal/log-search-portal-09.png)
 
 
 
-## <a name="work-with-performance-data"></a>Teljesítményadatok használata
-Windows- és Linux-ügynökök teljesítményadatait tárolva van a Naplóelemzési munkaterület a **telj** tábla.  Teljesítmény rekordok csakúgy, mint bármilyen más rekordéval. Keresse meg, és azt írhat, amely visszaadja az összes teljesítmény rekord ugyanúgy, mint az események egyszerű lekérdezést.
+## <a name="work-with-performance-data"></a>Munka a teljesítményadatokkal
+A rendszer a Windows- és a Linux-ügynökök teljesítményadatait is a Log Analytics-munkaterületen tárolja, a **Perf** táblában.  Teljesítmény rekordok csakúgy, mint bármilyen más rekordéval. Keresse meg, és azt írhat, amely visszaadja az összes teljesítmény rekord ugyanúgy, mint az események egyszerű lekérdezést.
 
 ```
 Perf
@@ -136,7 +136,7 @@ Perf
 
 ![Teljesítményadatok](media/log-analytics-log-search-log-search-portal/log-search-portal-11.png)
 
-Ad vissza, ha több millió rekordot a teljesítményobjektumok és a teljesítményszámlálók nem nagyon hasznosak.  A használt fent szűrje az adatokat, vagy csak írjon be a következő lekérdezés közvetlenül a napló keresőmezőbe ugyanazokat a módszereket is használhatja.  Ez adja vissza csak a processzor kihasználtsága rögzíti a Windows és Linux számítógépek.
+Nem szerencsés azonban, ha a rendszer az összes teljesítményobjektum és számláló több millió rekordját visszaadja.  A fent használt módszerekkel szűrheti a kapott adatokat, vagy azt is megteheti, hogy a következő lekérdezést közvetlenül beírja a napló keresőmezőjébe.  Ez csak a Windows és Linux rendszerű számítógépek processzorhasználati rekordjait adja vissza.
 
 ```
 Perf | where (ObjectName == "Processor")  | where (CounterName == "% Processor Time")
@@ -144,15 +144,15 @@ Perf | where (ObjectName == "Processor")  | where (CounterName == "% Processor T
 
 ![Processzorhasználat](media/log-analytics-log-search-log-search-portal/log-search-portal-12.png)
 
-Ez korlátozza, hogy a számláló az adatokat, de az még nem elhelyezi egy űrlapon, amelyek különösen hasznosak.  Az adatok megjelenítése egy vonaldiagramot, de először kell csoportosítás számítógép és a TimeGenerated.  Csoport több mező, kell közvetlenül módosítsa a lekérdezést, így módosíthatja a lekérdezés a következő.  Használja a [avg](https://docs.loganalytics.io/docs/Language-Reference/Aggregation-functions/avg()) működnek a **ellenértéknek** tulajdonság keresztül minden órában az átlagos érték kiszámításához.
+Ezzel egy adott számlálóra korlátozza az adatokat, de nem rendezi őket olyan formátumba, amely megkönnyítené a használatukat.  Megjelenítheti az adatokat egy vonaldiagramban, de először csoportosítania kell őket a Computer (Számítógép) és a TimeGenerated (Létrehozás időpontja) érték alapján.  Ha több mező alapján szeretne csoportosítani, közvetlenül kell módosítania a lekérdezést a következők szerint.  Ez a **CounterValue** tulajdonság [avg](https://docs.loganalytics.io/docs/Language-Reference/Aggregation-functions/avg()) függvényével számítja ki órás lebontásban az átlagértéket.
 
 ```
 Perf  | where (ObjectName == "Processor")  | where (CounterName == "% Processor Time") | summarize avg(CounterValue) by Computer, TimeGenerated
 ```
 
-![Adatok teljesítménydiagramban](media/log-analytics-log-search-log-search-portal/log-search-portal-13.png)
+![Teljesítményadatok diagram](media/log-analytics-log-search-log-search-portal/log-search-portal-13.png)
 
-Most, hogy az adatok megfelelően vannak csoportosítva, meg lehet jeleníteni visual diagram hozzáadásával a [leképezési](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/render-operator) operátor.  
+Most, hogy az adatok megfelelően vannak csoportosítva, megjelenítheti őket egy vizuális diagramban a [render](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/render-operator) operátor hozzáadásával.  
 
 ```
 Perf  | where (ObjectName == "Processor")  | where (CounterName == "% Processor Time") | summarize avg(CounterValue) by Computer, TimeGenerated | render timechart

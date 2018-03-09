@@ -16,11 +16,11 @@ ms.date: 07/20/2017
 ms.author: billmath
 ms.custom: aaddev
 ms.reviewer: anchitn
-ms.openlocfilehash: eaf9e7088c8c88140ea690c13ff7e0c7026b8f86
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 568bf5f0a4cf3eb77b528af2550d9729dcc59878
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-public-preview"></a>Konfigurálható jogkivonat élettartamát az Azure Active Directoryban (nyilvános előzetes verzió)
 Megadhat egy Azure Active Directory (Azure AD) által kiállított jogkivonat élettartamát. A szervezet jogkivonat élettartamát a szervezet összes alkalmazást, egy több-bérlős (több szervezet) alkalmazáshoz, vagy egy adott szolgáltatás egyszerű állíthatja be.
@@ -34,6 +34,11 @@ Az Azure AD egy csoportházirend-objektum csomagok olyan szabályokat, amelyek a
 
 Kijelölhet egy házirendet az alapértelmezett házirendet a szervezet számára. A szabályzatot a szervezet bármely alkalmazás mindaddig, amíg nem bírálják felül a magasabb prioritású házirend. Is rendelhet egy házirend bizonyos alkalmazásokat. A prioritásuk szerinti sorrendben függ a házirend típusát.
 
+> [!NOTE]
+> Konfigurálható a jogkivonatok élettartama házirend nem támogatott a SharePoint online-hoz.  Annak ellenére, hogy a számítógép a PowerShell házirend létrehozásához, a SharePoint Online nem visszaigazolja ezt a házirendet. Tekintse meg a [SharePoint Online blog](https://techcommunity.microsoft.com/t5/SharePoint-Blog/Introducing-Idle-Session-Timeout-in-SharePoint-and-OneDrive/ba-p/119208) üresjárati időtúllépés konfigurálásával kapcsolatos további.
+>* Az alapértelmezett élettartama a SharePoint Online hozzáférési jogkivonat 1 óra. 
+>* Az alapértelmezett maximális inaktív a SharePoint Online frissítési jogkivonat ideje 90 nap.
+>
 
 ## <a name="token-types"></a>Tokentípusokat
 

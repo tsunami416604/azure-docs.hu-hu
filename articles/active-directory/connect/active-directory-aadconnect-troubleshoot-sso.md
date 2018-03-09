@@ -12,36 +12,41 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/05/2018
+ms.date: 03/07/2018
 ms.author: billmath
-ms.openlocfilehash: aa28431c5926656ae97ded3f23b83f2a91c60487
-ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
+ms.openlocfilehash: 6e81ea9f98733b1b7e0c9bf7466ac844a37b6046
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="troubleshoot-azure-active-directory-seamless-single-sign-on"></a>Hibaelhárítás az Azure Active Directory zökkenőmentes egyszeri bejelentkezést.
 
 Ez a cikk segít hibaelhárítási kapcsolatos Azure Active Directory (Azure AD) zökkenőmentes egyszeri bejelentkezést (zökkenőmentes SSO) kapcsolatos gyakori problémákra vonatkozó információkat.
 
-## <a name="known-problems"></a>Ismert problémák
+## <a name="known-issues"></a>Ismert problémák
 
 - Néhány esetben zökkenőmentes SSO engedélyezése is 30 percig tarthat.
 - Tiltsa le, majd engedélyezze újra a zökkenőmentes egyszeri Bejelentkezést a tenant, ha felhasználók nem kapnak az egyszeri bejelentkezést keretein belül a gyorsítótárazott Kerberos jegyek általában érvényes 10 óra lejárt.
 - Edge böngésző támogatása nem érhető el.
-- Office-ügyfelekhez, különösen a megosztott számítógép esetben indítása hatására a felhasználók bejelentkezés extra kér. Gyakran a felhasználónevek, de nem a jelszavát kell megadni.
 - Zökkenőmentes SSO sikeres, ha a felhasználó nem rendelkezik kijelölni **bejelentkezve szeretnék maradni**. Ezt a viselkedést, mert a SharePoint és a onedrive vállalati verzió leképezési forgatókönyvek nem működnek.
+- Verzió 16.0.8730.xxxx alábbi Office-ügyfelek nem támogatják a nem interaktív bejelentkezés az zökkenőmentes egyszeri Bejelentkezést. Ezek az ügyfelek felhasználók adja meg a felhasználónevek, de nem jelszóval jelentkezik be.
 - Zökkenőmentes SSO privát böngészés módban a Firefox nem működik.
 - Zökkenőmentes SSO nem működik az Internet Explorerben, amikor a fokozott védett mód engedélyezve van.
 - Zökkenőmentes SSO nem működik a mobilböngészők iOS és Android rendszeren.
 - Ha 30 vagy több Active Directory-erdőre van szinkronizálást, zökkenőmentes SSO keresztül az Azure AD Connect nem engedélyezhető. Megoldás is [manuális módszerrel engedélyezze az](#manual-reset-of-azure-ad-seamless-sso) a bérlő a funkciót.
-- Az Azure AD szolgáltatás URL-címek (https://autologon.microsoftazuread-sso.com, https://aadg.windows.net.nsatc.net) hozzáadása a megbízható helyek zónában helyett a helyi intranet zónához *megakadályozza a felhasználókat ebben*.
+- Az Azure AD szolgáltatás URL-címe (https://autologon.microsoftazuread-sso.com) hozzáadása a megbízható helyek zónában helyett a helyi intranet zónához *megakadályozza a felhasználókat ebben*.
+- Használatának letiltása a **RC4_HMAC_MD5** titkosítási típus a Kerberos, az Active Directory beállításaiban zökkenőmentes SSO megszakad. A Csoportházirendkezelés-szerkesztő eszközben ellenőrizze, hogy a házirend értéke **RC4_HMAC_MD5** alatt **számítógép konfigurációja -> Windows-beállítások -> biztonsági beállítások -> helyi házirendek -> biztonsági beállítások - > "Hálózati biztonság: konfigurálja a Kerberos engedélyezett titkosítási típusok"** "Engedélyezett".
 
-## <a name="check-the-status-of-the-feature"></a>A szolgáltatás állapotának ellenőrzése
+## <a name="check-status-of-feature"></a>A szolgáltatás állapotának ellenőrzése
 
 Győződjön meg arról, hogy a zökkenőmentes SSO-funkció még **engedélyezve** a tenant. Állapotát megnyitásával ellenőrizheti a **az Azure AD Connect** ablaktábláján a [Azure Active Directory felügyeleti központ](https://aad.portal.azure.com/).
 
 ![Az Azure Active Directory felügyeleti központ: az Azure AD Connect ablaktábla](./media/active-directory-aadconnect-sso/sso10.png)
+
+Keresztül kattintva megtekintheti az összes az AD-erdőkkel, amelyeken engedélyezve van a zökkenőmentes SSO-e.
+
+![Az Azure Active Directory felügyeleti központ: zökkenőmentes SSO ablaktábla](./media/active-directory-aadconnect-sso/sso13.png)
 
 ## <a name="sign-in-failure-reasons-in-the-azure-active-directory-admin-center-needs-a-premium-license"></a>Bejelentkezési hiba okai az Azure Active Directory felügyeleti központban (prémium szintű licencre van szüksége)
 
@@ -70,7 +75,7 @@ A következő ellenőrzőlista segítségével zökkenőmentes egyszeri Bejelent
 
 - Győződjön meg arról, hogy a zökkenőmentes SSO szolgáltatás engedélyezve van-e az Azure AD Connectben. Ha nem engedélyezi a szolgáltatást (például mert a blokkolt port), győződjön meg arról, hogy minden a [Előfeltételek](active-directory-aadconnect-sso-quick-start.md#step-1-check-the-prerequisites) helyen.
 - Ha úgy állította be mind [az Azure AD Join](../active-directory-azureadjoin-overview.md) és zökkenőmentes egyszeri Bejelentkezést a tenant, gondoskodjon arról, hogy a problémát nem az Azure AD Join. Egyszeri bejelentkezés az Azure AD Join szándéka elsőbbséget élvez zökkenőmentes SSO, ha az eszköz az Azure AD-ben regisztrált és a tartományhoz. Az Azure AD Join egyszeri bejelentkezési modellel a felhasználó egy bejelentkezési csempe, amely szerint a "Csatlakoztatott Windows" láthatja.
-- Győződjön meg arról, hogy mindkét az Azure AD URL-címhez (https://autologon.microsoftazuread-sso.com és https://aadg.windows.net.nsatc.net) a felhasználó Intranet zóna beállítások részeként.
+- Győződjön meg arról, hogy az Azure AD URL-CÍMÉT (https://autologon.microsoftazuread-sso.com) része a felhasználó intranetes zónájának beállításai közül.
 - Győződjön meg arról, hogy a vállalati eszköz csatlakozik-e az Active Directory-tartományhoz.
 - Győződjön meg arról, hogy a felhasználó bejelentkezik a az eszközt egy Active Directory tartományi fiók keresztül.
 - Győződjön meg arról, hogy a felhasználó fiókjának van egy Active Directory erdőből, ahol zökkenőmentes SSO lett beállítva.

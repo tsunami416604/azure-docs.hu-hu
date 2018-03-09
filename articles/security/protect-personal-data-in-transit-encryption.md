@@ -1,6 +1,6 @@
 ---
 title: "Személyes adatok védelmére átvitel a titkosítás az Azure-ban |} Microsoft Docs"
-description: "Azure titkosítással személyes adatok védelme"
+description: "a személyes adatok védelme az Azure titkosítási adatokat azon törekvéseit, hogy az általános adatok védelmi szabályozás (GDPR) felel meg a hasznos lehet."
 services: security
 documentationcenter: na
 author: Barclayn
@@ -12,20 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/22/2017
+ms.date: 03/06/2018
 ms.author: barclayn
 ms.custom: 
-ms.openlocfilehash: 461ddfda796bfe6639e27f6c4cd53e82b4e397d1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6975358d40206a497a53de16731d16ef374db905
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="azure-encryption-technologies-protect-personal-data-in-transit-with-encryption"></a>Az Azure titkosítási technológiák: személyes adatok védelmére átvitel titkosítással
 
-Ez a cikk segít megértéséhez, valamint a védett adatok Azure titkosítási technológiák használata az átvitel során. 
-
-Fontos része a többrétegű védelemmel az olyan jellegű biztonsági stratégia védelme a személyes adatokat a hálózaton keresztül. Titkosítási átvitel célja egy támadó elfogja az átvitelt nem tudja megtekinteni, illetve az adatok felhasználásával megelőzése érdekében.
+Ez a cikk segít megértéséhez, valamint a védett adatok Azure titkosítási technológiák használata az átvitel során. Fontos része a többrétegű védelemmel az olyan jellegű biztonsági stratégia védelme a személyes adatokat a hálózaton keresztül. Titkosítási átvitel célja egy támadó elfogja az átvitelt nem tudja megtekinteni, illetve az adatok felhasználásával megelőzése érdekében. Az ebben a cikkben szereplő információ egy szervezet azon törekvéseit, hogy megfeleljen az általános adatok védelmi szabályozás (GDPR) hasznos lehet.
 
 ## <a name="scenario"></a>Forgatókönyv
 
@@ -103,7 +101,7 @@ Részletesebb leírását, beleértve a programozott módon engedélyezze a bizt
 
 Az átvitt adatokat titkosítani [Azure File Storage](https://docs.microsoft.com/azure/storage/storage-file-how-to-use-files-portal), használhatja az SMB Windows 8, 8.1 és 10 és Windows Server 2012 R2 és Windows Server 2016 3.x. Az Azure Fileshoz szolgáltatást használja, bármilyen titkosítás nélküli kapcsolatot sikertelen lesz, ha engedélyezve van a "Biztonságos szükséges átviteli". Ez magában foglalja az SMB 2.1, az SMB 3.0-titkosítás nélkül és az egyes változatban is elkészíti a Linux SMB-ügyfél a forgatókönyveket.
 
-#### <a name="azure-client-side-encryption"></a>Az Azure ügyféloldali titkosítás
+#### <a name="azure-client-side-encryption"></a>Azure Client-Side Encryption
 
 Másik lehetőségként a személyes adatok védelme alatt álló ügyfélalkalmazást és az Azure Storage közötti átvitel közben [ügyféloldali titkosítás](https://docs.microsoft.com/azure/storage/storage-client-side-encryption). Az Azure Storage átvitele előtt titkosítja az adatokat, és amikor az adatok Azure Storage-ból, az adatok visszafejtése ügyféloldali fogadását követően.
 
@@ -181,11 +179,11 @@ Microsoft-titkosítást használ az adatok védelmére átvitel ügyfelek és az
 
 Adatok az átvitel során mindig titkosítja az [Data Lake Store] (https://docs.microsoft.com/azure/data-lake-store/data-lake-store-security-overview). Amellett, hogy az adatok titkosítása az állandó adathordozón való tárolás előtt történik meg, az átvitt adatok is mindig titkosítva vannak HTTPS segítségével. A HTTPS az egyetlen olyan protokoll, amely támogatott a Data Lake Store REST-felületeihez.
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
 A vállalat személyes adatok és az ilyen adatok védelmének azáltal, Azure Storage HTTPS-kapcsolatok, megosztott hozzáférési aláírásokkal használatával biztonságos átviteléhez szükséges engedélyezését a storage-fiókok a cél megvalósításához. Személyes adatok védelme az SMB 3.0-kapcsolatot is használ, és ügyféloldali titkosítás végrehajtásával is. Pont-pont VPN-kapcsolatok az Azure virtuális hálózat számára a vállalati hálózatról és a pont-pont VPN-kapcsolatok az egyes felhasználók létrehoz egy biztonságos csatornán keresztül, amelyek személyes adatokat is biztonságosan változatlan marad. A Microsoft alapértelmezett titkosítási eljárásokat további megvédi az személyes adatok védelme.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Az Azure Data biztonsági és a titkosítás gyakorlati tanácsok](https://docs.microsoft.com/azure/security/azure-security-data-encryption-best-practices)
 

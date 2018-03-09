@@ -1,6 +1,6 @@
 ---
 title: "Az Azure személyes adatok védelme a titkosítás aktívan |} Microsoft Docs"
-description: "Ez a cikk segít a személyes adatok védelme az Azure használatával több része"
+description: "Ez a cikk iparági és kormányzati követelmények például általános Data Protection szabályozás (GDPR) ahhoz, hogy effforts is használható."
 services: security
 documentationcenter: na
 author: Barclayn
@@ -12,21 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/31/2017
+ms.date: 03/06/2018
 ms.author: barclayn
 ms.custom: 
-ms.openlocfilehash: 31e41f9befd9319115e5d147b473756486100c6e
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 37da3d91df4be871d6647b6290768ea4999a5010
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="azure-encryption-technologies-protect-personal-data-at-rest-with-encryption"></a>Az Azure titkosítási technológiák: a titkosítás aktívan személyes adatok védelme
 
 Ez a cikk segít megértéséhez, valamint Azure titkosítási technológiák segítségével inaktív adatok védelmét.
 
-Az inaktív adatok titkosítása elengedhetetlen az ajánlott eljárás bizalmas vagy személyes adatok védelme és a megfelelőség és az adatok adatvédelmi követelményeinek megfelelően.
-Titkosítását az célja, hogy megakadályozható, hogy a támadó a titkosítatlan hozzáférjenek az adatok biztosításával adattitkosítás a lemezen.
+Az inaktív adatok titkosítása elengedhetetlen az ajánlott eljárás bizalmas vagy személyes adatok védelme és a megfelelőség és az adatok adatvédelmi követelményeinek megfelelően. Titkosítását az célja, hogy megakadályozható, hogy a támadó a titkosítatlan hozzáférjenek az adatok biztosításával adattitkosítás a lemezen. Ebben a cikkben szereplő információk használhatók, hogy megfeleljenek az általános adatok védelmi szabályozás (GDPR).
 
 ## <a name="scenario"></a>Forgatókönyv 
 
@@ -161,13 +160,13 @@ TDE konfigurálhatja az Azure portálon keresztül, a REST API használatával, 
 
 A cikk található útmutatást ahhoz, hogy TDE és visszafejtése TDE védett adatbázisok és egyéb információkat [átlátható adattitkosítást az Azure SQL Database.](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-with-azure-sql-database)
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
 A vállalat az Azure felhőben tárolt személyes adatok célját érhető el. Ehhez teljes kötetek védelméhez az Azure Disk Encryption használatával. Ebbe beletartozik az operációs rendszer fájljait és az adatfájlokat, amely személyes azonosításra alkalmas adatokat és más bizalmas adatokat. Az Azure Storage szolgáltatás titkosítási blobokat és fájlok tárolt személyes adatok védelmére használható. Az Azure SQL-adatbázisban tárolt adatokat az átlátható adattitkosítási védelmet nyújt az illetéktelen elérhetővé tegyék személyes információkat.
 
 A az Azure-adatok titkosítására használt kulcs védelme érdekében a vállalat az Azure Key Vault használja. Ez leegyszerűsíti a kulcskezelési folyamatot, és lehetővé teszi, hogy a vállalat kulcsok feletti személyes adatok titkosítása az irányítást tarthat fenn.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Azure Disk Encryption hibaelhárítási útmutatója](https://docs.microsoft.com/azure/security/azure-security-disk-encryption-tsg)
 

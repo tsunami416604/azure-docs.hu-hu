@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/15/2017
 ms.author: xshi
-ms.openlocfilehash: 6a450579c848fe6030a328ddf410f139baae2324
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e8f0397797d8f4c3349afcdfb02de071a6593c72
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="connect-adafruit-feather-huzzah-esp8266-to-azure-iot-hub-in-the-cloud"></a>Csatlakozás Adafruit lágyított HUZZAH ESP8266 Azure IoT Hub a felhőben
 
@@ -60,7 +60,10 @@ A fejlesztési környezetet is kell a következőket:
 * Mac vagy Windows vagy az Ubuntu rendszert futtató számítógép.
 * Vezeték nélküli hálózat lágyított HUZZAH ESP8266 való csatlakozáshoz.
 * A kiszolgálókonfigurációs eszköz letöltéséhez internetkapcsolat.
-* [Arduino IDE](https://www.arduino.cc/en/main/software) 1.6.8 verzió vagy újabb. Korábbi verzióiban a AzureIoT szalagtár nem működik.
+* [A Visual Studio Code kiterjesztése Arduino](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.vscode-arduino).
+
+> [!Note]
+> Visual Studio Code-kiterjesztés által használt Arduino rendelkezik verzió 1.6.8 kell Arduino IDE verzió vagy újabb. Korábbi verzióiban a AzureIoT szalagtár nem működik.
 
 A következő elemek nem kötelező, abban az esetben, ha nincs érzékelő. Akkor is a szimulált érzékelőadatait használatának lehetőségét.
 
@@ -77,7 +80,7 @@ Ebben a szakaszban csatlakozhat az érzékelők a tábla. Majd a eszközt csatla
 
 Használják a breadboard és átkötés az alábbiak szerint a kapcsolathoz. Ha még nem rendelkezik érzékelő, ez a szakasz kihagyása, mert a szimulált érzékelő adatokat helyette használhatja.
 
-![Kapcsolatok referencia](media/iot-hub-arduino-huzzah-esp8266-get-started/15_connections_on_breadboard.png)
+![Kapcsolatok referencia](media/iot-hub-arduino-huzzah-esp8266-get-started/17_connections_on_breadboard.png)
 
 
 PIN-kód érzékelő használja a következő vezetékezést:
@@ -86,7 +89,7 @@ PIN-kód érzékelő használja a következő vezetékezést:
 | Indítsa el a (érzékelő)           | Záró (tábla)           | Kábel szín   |
 | -----------------------  | ---------------------- | ------------: |
 | VDD (PIN-kód 31F)            | 3V (PIN-kód 58H)           | Piros kábel     |
-| ADATOK (PIN-kód 32F)           | GPIO 2 (PIN-kód 46A)       | Kék kábel    |
+| ADATOK (PIN-kód 32F)           | GPIO 2 (Pin 46A)       | Kék kábel    |
 | GND (PIN-kód 34F)            | GND (PIN-kód 56I)          | Fekete kábel   |
 
 További információkért lásd: [Adafruit DHT22 érzékelő telepítő](https://learn.adafruit.com/dht/connecting-to-a-dhtxx-sensor) és [Adafruit lágyított HUZZAH Esp8266 érintkezőkiosztása szerepel](https://learn.adafruit.com/adafruit-feather-huzzah-esp8266/using-arduino-ide?view=all#pinouts).
@@ -129,7 +132,7 @@ Ha Ubuntu használ, győződjön meg arról a engedélye ahhoz, hogy a lágyíto
    sudo usermod -a -G <group-owner-name> <username>
    ```
 
-   `<group-owner-name>`az az előző lépésben beolvasott tulajdonos neve van. `<username>`Ubuntu felhasználónevének van.
+   `<group-owner-name>` az az előző lépésben beolvasott tulajdonos neve van. `<username>` Ubuntu felhasználónevének van.
 
 1. Ubuntu kijelentkezni, és jelentkezzen be újból a módosítás jelennek meg.
 
@@ -149,33 +152,41 @@ A mintaalkalmazás tárolja a Githubon. Klónozza a minta-tárház, amely tartal
    git clone https://github.com/Azure-Samples/iot-hub-feather-huzzah-client-app.git
    ```
 
-A csomag telepítése lágyított HUZZAH ESP8266 a Arduino ide:
+A csomag telepítése a Visual Studio Code a lágyított HUZZAH ESP8266:
 
 1. Nyissa meg a mappát, ahol a mintaalkalmazás tárolja.
-1. Nyissa meg a app.ino fájlt a Arduino ide app mappában.
+1. Nyissa meg a app.ino fájlt a Visual Studio Code alkalmazás mappájában.
 
-   ![Nyissa meg a mintaalkalmazás Arduino IDE](media/iot-hub-arduino-huzzah-esp8266-get-started/10_arduino-ide-open-sample-app.png)
+   ![Nyissa meg a mintaalkalmazást a Visual Studio Code](media/iot-hub-arduino-huzzah-esp8266-get-started/10_vscode-open-sample-app.png)
 
-1. Kattintson a Arduino ide **fájl** > **beállítások**.
-1. Az a **beállítások** párbeszédpanel mellett kattintson a ikonra a **további modulok Manager URL-címet** mezőbe.
-1. Az előugró ablakban írja be a következő URL-címet, és kattintson **OK**.
+1. Adja meg a Visual Studio Code `F1`.
+1. Típus **Arduino** válassza **Arduino: Board Manager**.
+1. Az a **Arduino Board Manager** lapra, majd **további URL-címet**.
 
-   `http://arduino.esp8266.com/stable/package_esp8266com_index.json`
+   ![Visual STUDIO Code Arduino Board Manager](media/iot-hub-arduino-huzzah-esp8266-get-started/11_vscode-arduino-board-manager.png)
 
-   ![Mutasson a Arduino IDE egy alkalmazáscsomag URL-címe](media/iot-hub-arduino-huzzah-esp8266-get-started/11_arduino-ide-package-url.png)
+1. Az a **felhasználói beállítások** ablakban másolja és illessze be a következő, a fájl végén
 
-1. Az a **preferencia** párbeszédpanel, kattintson a **OK**.
-1. Kattintson a **eszközök** > **Board** > **modulok Manager**, majd keresse meg a esp8266.
+   `"arduino.additionalUrls": "http://arduino.esp8266.com/stable/package_esp8266com_index.json"`
+
+   ![Visual STUDIO Code Arduino csomag URL-cím konfigurálása](media/iot-hub-arduino-huzzah-esp8266-get-started/12_vscode-package-url.png)
+
+1. Mentse a fájlt, és zárja be a **felhasználói beállítások** fülre.
+1. Kattintson a **frissítési csomag indexek**. A frissítés befejezése után keressen **esp8266**.
+1. Kattintson a **telepítése** esp8266 gombra.
 
    Modulok Manager, az azt jelenti, hogy telepítve van-e a ESP8266 2.2.0 vagy újabb verziójával.
 
-   ![A esp8266 csomag telepítve van](media/iot-hub-arduino-huzzah-esp8266-get-started/12_arduino-ide-esp8266-installed.png)
+   ![A esp8266 csomag telepítve van](media/iot-hub-arduino-huzzah-esp8266-get-started/13_vscode-esp8266-installed.png)
 
-1. Kattintson a **eszközök** > **Board** > **Adafruit HUZZAH ESP8266**.
+1. Adja meg `F1`, majd írja be **Arduino** válassza ki **Arduino: Board Config**.
+1. Jelölje be a **kijelölt Board:** és típus **esp8266**, majd jelölje be **Adafruit HUZZAH ESP8266 (esp8266)**.
+
+   ![Esp8266 tábla kiválasztása](media/iot-hub-arduino-huzzah-esp8266-get-started/14_vscode-select-esp8266.png)
 
 ### <a name="install-necessary-libraries"></a>Szükséges kódtárak telepítése
 
-1. Kattintson a Arduino ide **vázlat** > **közé tartozik könyvtár** > **szalagtárak kezelése**.
+1. Adja meg a Visual Studio Code `F1`, majd írja be a **Arduino** válassza **Arduino: könyvtárkezelő**.
 1. Keresse meg a következő könyvtár nevek egyenként. Az egyes tárak talált, kattintson a **telepítése**.
    * `AzureIoTHub`
    * `AzureIoTUtility`
@@ -193,20 +204,20 @@ A mintaalkalmazás szimulálhatja a hőmérséklet és a páratartalom adatok, a
    ```c
    define SIMULATED_DATA true
    ```
-   ![Konfigurálja a mintaalkalmazás szimulált adatok használata](media/iot-hub-arduino-huzzah-esp8266-get-started/13_arduino-ide-configure-app-use-simulated-data.png)
+   ![Konfigurálja a mintaalkalmazás szimulált adatok használata](media/iot-hub-arduino-huzzah-esp8266-get-started/15_vscode-configure-app-use-simulated-data.png)
 
-1. Mentse a fájlt a `Control-s`.
+1. Mentse a fájlt.
 
 ### <a name="deploy-the-sample-application-to-feather-huzzah-esp8266"></a>A mintaalkalmazás lágyított HUZZAH ESP8266 történő telepítése
 
-1. Kattintson a Arduino ide **eszköz** > **Port**, majd kattintson a soros port a lágyított HUZZAH ESP8266.
-1. Kattintson a **vázlat** > **feltöltése** felépítéséhez és az lágyított HUZZAH ESP8266 minta alkalmazást telepíti.
+1. Kattintson a Visual Studio Code  **<Select Serial Port>**  állapotát sáv megnyitásához, és kattintson a soros port a lágyított HUZZAH ESP8266.
+1. Adja meg `F1`, írja be **Arduino** válassza **Arduino: feltöltése** felépítéséhez és az lágyított HUZZAH ESP8266 minta alkalmazást telepíti.
 
 ### <a name="enter-your-credentials"></a>Adja meg hitelesítő adatait
 
 Ha sikeresen befejeződött a feltöltés, kövesse az alábbi lépéseket a hitelesítő adatok megadását:
 
-1. Kattintson a Arduino ide **eszközök** > **soros figyelő**.
+1. Nyissa meg a Arduino IDE, kattintson **eszközök** > **soros figyelő**.
 1. A soros figyelő ablakban figyelje meg, a két legördülő lista jobb alsó sarkában.
 1. Válassza ki **nincs sor befejezési** a bal oldali legördülő listát.
 1. Válassza ki **115200 átviteli** jobb legördülő listája.
@@ -222,9 +233,9 @@ Ha sikeresen befejeződött a feltöltés, kövesse az alábbi lépéseket a hit
 
 A következő kimeneti a soros figyelő ablakból és a villogó LED lágyított HUZZAH ESP8266 látható, ha sikeresen fut a mintaalkalmazáshoz.
 
-![Végső kimenetet a Arduino IDE](media/iot-hub-arduino-huzzah-esp8266-get-started/14_arduino-ide-final-output.png)
+![Végső kimenetet a Arduino IDE](media/iot-hub-arduino-huzzah-esp8266-get-started/16_arduino-ide-final-output.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Sikeresen egy lágyított HUZZAH ESP8266 csatlakozik az IoT hub, és a rögzített érzékelő adatokat küldött az IoT hub. 
 

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/15/2017
 ms.author: jdial;anavin
-ms.openlocfilehash: 901bacd450561ee5eb4811320626d6ecbcc8c916
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: a65e49c465e83d2e76f33019984eec16331ed6ea
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="create-a-virtual-network-peering---different-deployment-models-and-subscriptions"></a>Hozzon létre egy virtuális hálózati társviszony - különböző üzembe helyezési modellek és előfizetések
 
@@ -29,7 +29,7 @@ Virtuális hálózati társviszony-létesítés létrehozásának lépései elt�
 
 |Azure üzembehelyezési modell  | Azure-előfizetés  |
 |--------- |---------|
-|[Mindkét erőforrás-kezelő](virtual-network-create-peering.md) |Azonos|
+|[Mindkét erőforrás-kezelő](tutorial-connect-virtual-networks-portal.md) |Azonos|
 |[Mindkét erőforrás-kezelő](create-peering-different-subscriptions.md) |Eltérő|
 |[Egy erőforrás-kezelő egy klasszikus](create-peering-different-deployment-models.md) |Azonos|
 

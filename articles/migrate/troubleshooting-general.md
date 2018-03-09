@@ -6,11 +6,11 @@ ms.service: azure-migrate
 ms.topic: troubleshooting
 ms.date: 02/21/2018
 ms.author: raynew
-ms.openlocfilehash: 249de45dbd9bedf1b3c2d2a5957acf31d6c0d243
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: e1e7a1a57f780ef477379dfb1ceaead0c8654970
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="troubleshoot-azure-migrate"></a>Az Azure Migrate hibaelhárítása
 
@@ -126,5 +126,23 @@ A Windows esemény-nyomkövetése gyűjtése, tegye a következőket:
 7. Zárja be a fejlesztői eszközök.
  
 
+## <a name="vcenter-errors"></a>vCenter hibák
 
+### <a name="error-unhandledexception-internal-error-occured-systemiofilenotfoundexception"></a>Error UnhandledException Internal error occured: System.IO.FileNotFoundException
+
+Ez a gyűjtő verzióin kisebb 1.0.9.5 látott probléma. Ha a gyűjtő verzió 1.0.9.2 vagy előtti-GA verziók 1.0.8.59 hasonlóan, a probléma fognak adódni. Kövesse a [itt részletes válaszhoz fórumokban a megadott hivatkozás](https://social.msdn.microsoft.com/Forums/azure/en-US/c1f59456-7ba1-45e7-9d96-bae18112fb52/azure-migrate-connect-to-vcenter-server-error?forum=AzureMigrate).
+
+[A gyűjtő a probléma megoldásához frissítse](https://aka.ms/migrate/col/checkforupdates).
+
+### <a name="error-unabletoconnecttoserver"></a>Error UnableToConnectToServer
+
+Nem sikerült kapcsolódni a vCenter-kiszolgáló "Servername.com:9443" hiba miatt: nem tudta volna fogadni az üzenetet https://Servername.com:9443/sdk figyel végpont történt.
+
+Ez akkor fordul elő, amikor a gyűjtő számítógép nem tudja feloldani a megadott vCenter-kiszolgáló neve vagy a port speficified nem megfelelő. Alapértelmezés szerint a port nincs megadva, ha adatgyűjtő megpróbál csatlakozni a 443-as port számát.
+
+1. Próbálja a gyűjtő gépről Servername.com pingelését.
+2. Ha az 1. lépés sikertelen, próbálja meg IP-cím keresztül csatlakozik a vCenter-kiszolgálóhoz.
+3. Azonosítsa a megfelelő port számát a vCenter eléréséhez.
+4. Végül ellenőrizze, hogy a vCenter-kiszolgáló működik, és van-e.
+ 
 

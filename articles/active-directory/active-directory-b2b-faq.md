@@ -13,14 +13,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
-ms.date: 01/08/2018
+ms.date: 03/06/2018
 ms.author: twooley
 ms.reviewer: sasubram
-ms.openlocfilehash: 21511b37eba2cd2e87d8720f3e9cfe453b50d88c
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 409bb14635afbfc6d31efd853837677c74851b41
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Az Azure Active Directory B2B együttműködés – gyakori kérdések
 
@@ -84,8 +84,8 @@ Igen. Az alábbiakban az önkiszolgáló jelszó-visszaállítási (SSPR) B2B fe
 ### <a name="is-password-reset-available-for-guest-users-in-a-just-in-time-jit-or-viral-tenant-who-accepted-invitations-with-a-work-or-school-email-address-but-who-didnt-have-a-pre-existing-azure-ad-account"></a>Jelszó alaphelyzetbe áll rendelkezésre a vendégfelhasználók a közvetlenül az igény (szerinti JIT) a, vagy "ugrásszerű" bérlői elfogadó meghívókat munkahelyi vagy iskolai e-mail címet, de nem volt, akik egy már meglévő Azure AD-fiókot?
 Igen. A jelszó alaphelyzetbe állítása e-mail küldhető, amely lehetővé teszi a felhasználó az igény szerinti bérleti jelszavuk.
 
-### <a name="does-microsoft-dynamics-crm-provide-online-support-for-azure-ad-b2b-collaboration"></a>Nem Microsoft Dynamics CRM online támogatást nyújthat olyan Azure AD B2B együttműködés?
-Jelenleg Microsoft Dynamics CRM nem online támogatást nyújt az Azure AD B2B együttműködés. Azonban tervezzük támogatja ezt a jövőben.
+### <a name="does-microsoft-dynamics-365-provide-online-support-for-azure-ad-b2b-collaboration"></a>Nem Microsoft Dynamics 365 támogatást nyújt a online Azure AD B2B együttműködés?
+Igen, Dynamics 365 (online) támogatja az Azure AD B2B együttműködés. További információkért olvassa el a Dynamics 365 [meghívott felhasználóknak az Azure AD B2B együttműködés](https://docs.microsoft.com/en-us/dynamics365/customer-engagement/admin/invite-users-azure-active-directory-b2b-collaboration).
 
 ### <a name="what-is-the-lifetime-of-an-initial-password-for-a-newly-created-b2b-collaboration-user"></a>Mi az, hogy egy újonnan létrehozott B2B együttműködés felhasználó egy kezdeti jelszó élettartama?
 Meghatározott karakter, a jelszó erősségét és a fiók zárolása vonatkozó követelmények egyaránt minden Azure ad cloud felhasználói fiókok Azure AD is rendelkezik. Felhő felhasználói fiókok azok a fiókok, a rendszer nem összevont egy másik identitásszolgáltatóval, például a 

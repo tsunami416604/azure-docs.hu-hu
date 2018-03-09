@@ -1,6 +1,6 @@
 ---
 title: "Azure hálózati funkciókat a személyes adatok védelme |} Microsoft Docs"
-description: "Az Azure hálózati biztonsági funkciókat használ, a személyes adatok védelme"
+description: "Az Azure hálózati biztonsági funkciókat használ, a személyes adatok védelme. Ez használható, hogy megfeleljenek az általános adatok védelmi szabályozás (GDPR)"
 services: security
 documentationcenter: na
 author: Barclayn
@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/22/2017
+ms.date: 03/06/2018
 ms.author: barclayn
 ms.custom: 
-ms.openlocfilehash: 2510a4aed34b6a156cc9a9da6215de5956aac023
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 54aeb22a501e248105931df341d23e524448155a
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="protect-personal-data-with-network-security-features-azure-application-gateway-and-network-security-groups"></a>Hálózati biztonsági funkciók személyes adatok védelme: Azure Application Gateway és a hálózati biztonsági csoportok
 
-Ez a cikk információkat tartalmazza, és eljárások, amelyek segítséget Azure Application Gateway és a hálózati biztonsági csoportok használata a személyes adatok védelmét.
+Ez a cikk információkat tartalmazza, és eljárások, amelyek segítséget Azure Application Gateway és a hálózati biztonsági csoportok használata a személyes adatok védelmét. Ezt az információt a azon törekvéseit, hogy az általános adatok védelmi szabályozás (GDPR) felel meg a hasznos lehet.
 
 Egy többrétegű biztonsági stratégia személyes adatok védelme fontos eleme a például az SQL-injektálás vagy többhelyes scripting közös biztonsági rések elleni védelmet. Nem kívánt hálózati forgalom kívül az Azure virtuális hálózat segíti a bizalmas adatok esetleges biztonsági sérülésekkel szembeni védelmére, és a Microsoft Azure lehetővé teszi az eszközök ellen, az adatok védelme érdekében.
 

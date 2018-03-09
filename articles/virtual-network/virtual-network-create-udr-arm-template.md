@@ -15,17 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/23/2016
 ms.author: jdial
-ms.openlocfilehash: b2c962d5449d18b51cfd84b0e1992695b54d1c48
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: a00b908f9811822f262d2c6113e3ff5fc364b1b4
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="create-user-defined-routes-udr-using-a-template"></a>Hozzon létre felhasználói útvonalakat (UDR) sablon használatával
 
 > [!div class="op_single_selector"]
-> * [PowerShell](virtual-network-create-udr-arm-ps.md)
-> * [Azure CLI](virtual-network-create-udr-arm-cli.md)
+> * [PowerShell](tutorial-create-route-table-powershell.md)
+> * [Azure CLI](tutorial-create-route-table-cli.md)
 > * [Sablon](virtual-network-create-udr-arm-template.md)
 > * [PowerShell (klasszikus)](virtual-network-create-udr-classic-ps.md)
 > * [Parancssori felület (klasszikus)](virtual-network-create-udr-classic-cli.md)
@@ -75,7 +75,7 @@ Rendelje hozzá a az előtér-alhálózathoz UDR, akkor módosítsa az alhálóz
 
 Figyelje meg, ugyanazt a háttér-NSG-t és a sablon a háttér-alhálózat számára történik.
 
-Is gondoskodnia kell arról, hogy a **FW1** a virtuális gép rendelkezik az IP-továbbítás tulajdonság engedélyezve van a hálózati adapter által használandó kapnak, és továbbítsa a csomagokat. Az alábbi szakasz FW1 a hálózati adapter definícióját a azuredeploy-nsg-udr.json fájlban, a fenti forgatókönyv alapján jeleníti meg.
+Is gondoskodnia kell arról, hogy a **FW1** a virtuális gép rendelkezik az IP-továbbítás tulajdonság engedélyezve van a hálózati adapter által használandó kapnak, és továbbítsa a csomagokat. A következő szakasz FW1 a hálózati adapter definícióját a azuredeploy-nsg-udr.json fájlban, a forgatókönyv alapján jeleníti meg.
 
     "apiVersion": "2015-06-15",
     "type": "Microsoft.Network/networkInterfaces",
@@ -112,7 +112,7 @@ Is gondoskodnia kell arról, hogy a **FW1** a virtuális gép rendelkezik az IP-
     }
 
 ## <a name="deploy-the-template-by-using-click-to-deploy"></a>A sablon üzembe helyezése kattintással végrehajtható üzembe helyezéssel
-A nyilvános tárházban elérhető mintasablon a fent leírt forgatókönyv létrehozásához használt alapértelmezett értékeket tartalmazó paraméterfájlt használja. Ha a sablon üzembe helyezését kattintással végrehajtható üzembe helyezéssel szeretné elvégezni, kövesse [ezt a hivatkozást](https://github.com/telmosampaio/azure-templates/tree/master/IaaS-NSG-UDR), kattintson az **Üzembe helyezés az Azure-on** lehetőségre, cserélje ki az alapértelmezett paraméterértékeket, ha szükséges, majd kövesse a portálon megjelenő utasításokat.
+A minta-sablon érhető el a nyilvános tárház az alapértelmezett értékek a korábban leírt forgatókönyv létrehozásához használt tartalmazó paraméter fájlt használ. Ha a sablon üzembe helyezését kattintással végrehajtható üzembe helyezéssel szeretné elvégezni, kövesse [ezt a hivatkozást](https://github.com/telmosampaio/azure-templates/tree/master/IaaS-NSG-UDR), kattintson az **Üzembe helyezés az Azure-on** lehetőségre, cserélje ki az alapértelmezett paraméterértékeket, ha szükséges, majd kövesse a portálon megjelenő utasításokat.
 
 1. Ha még nem használta az Azure PowerShellt, tekintse meg [How to Install and Configure Azure PowerShell](/powershell/azure/overview) (Az Azure PowerShell telepítése és konfigurálása) című részt, majd kövesse az utasításokat egészen az utolsó lépésig az Azure-ba való bejelentkezéshez és az előfizetése kiválasztásához.
 2. Futtassa az alábbi parancsot egy erőforráscsoport létrehozásához:
@@ -173,7 +173,7 @@ A nyilvános tárházban elérhető mintasablon a fent leírt forgatókönyv lé
 
 ## <a name="deploy-the-template-by-using-the-azure-cli"></a>A sablon üzembe helyezése az Azure parancssori felület használatával
 
-Az ARM-sablon az Azure parancssori felület használatával történő telepítéséhez kövesse az alábbi lépéseket:
+Az Azure Resource Manager-sablon az Azure parancssori felület használatával történő telepítéséhez kövesse az alábbi lépéseket:
 
 1. Ha még sosem használta az Azure CLI-t, akkor tekintse meg [Install and Configure the Azure CLI](../cli-install-nodejs.md) (Az Azure CLI telepítése és konfigurálása) részt, és kövesse az utasításokat addig a pontig, ahol ki kell választania az Azure-fiókot és -előfizetést.
 2. Futtassa a következő parancs futtatásával váltson Resource Manager módra:
@@ -182,11 +182,11 @@ Az ARM-sablon az Azure parancssori felület használatával történő telepít�
     azure config mode arm
     ```
 
-    A fenti parancs várható kimenete:
+    Az előző parancs várható kimenete a következő:
 
         info:    New mode is arm
 
-3. A böngészőben navigáljon **https://raw.githubusercontent.com/telmosampaio/azure-templates/master/IaaS-NSG-UDR/azuredeploy.parameters.json**, másolja a json-fájl tartalmát, és illessze be egy új fájlt a számítógép. Ebben a forgatókönyvben azt kellene másolni, alatt az értékeket nevű fájlba **c:\udr\azuredeploy.parameters.json**.
+3. A böngészőben navigáljon **https://raw.githubusercontent.com/telmosampaio/azure-templates/master/IaaS-NSG-UDR/azuredeploy.parameters.json**, másolja a json-fájl tartalmát, és illessze be egy új fájlt a számítógép. Ebben az esetben másolja át a következő értékek nevű fájlba **c:\udr\azuredeploy.parameters.json**.
 
     ```json
         {
@@ -206,7 +206,7 @@ Az ARM-sablon az Azure parancssori felület használatával történő telepít�
         }
     ```
 
-4. Futtassa a következő parancsot az új VNet telepíteni, fent letöltött és módosított sablonnal és paraméterfájlokkal fájlok:
+4. A következő parancsot az új VNet telepíteni a letöltött és módosított korábban sablonnal és paraméterfájlokkal fájlok:
 
     ```azurecli
     azure group create -n TestRG -l westus --template-uri 'https://raw.githubusercontent.com/telmosampaio/azure-templates/master/IaaS-NSG-UDR/azuredeploy.json' -e 'c:\udr\azuredeploy.parameters.json'
@@ -404,5 +404,5 @@ Az ARM-sablon az Azure parancssori felület használatával történő telepít�
             info:    group show command OK
 
 > [!TIP]
-> Ha nem látja az erőforrásokat, futtassa a `azure group deployment show` parancs a központi telepítés a kiépítési állapot biztosításához *Succeded*.
+> Ha nem látja az erőforrásokat, futtassa a `azure group deployment show` parancs a központi telepítés a kiépítési állapot biztosításához *sikeres*.
 > 

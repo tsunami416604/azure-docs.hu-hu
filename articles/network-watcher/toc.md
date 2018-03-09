@@ -73,6 +73,7 @@
 ### [Hálózati forgalmi minták megjelenítése nyílt forráskódú eszközök használatával](network-watcher-using-open-source-tools.md)
 ## NSG-forgalom naplóinak elemzése
 ### [NSG-forgalom naplóinak olvasása](network-watcher-read-nsg-flow-logs.md)
+### [Forgalmi elemzések használata](traffic-analytics.md)
 ### [A Power BI használata](network-watcher-visualize-nsg-flow-logs-power-bi.md)
 ### [Rugalmas verem használata](network-watcher-visualize-nsg-flow-logs-open-source-tools.md)
 ### [Grafana használata](network-watcher-nsg-grafana.md)

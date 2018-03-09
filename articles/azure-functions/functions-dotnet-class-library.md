@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 12/12/2017
 ms.author: glenga
-ms.openlocfilehash: 9e9aa8a36d363ce28d61c5ba3cfe758520a626cf
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 70c4d6276970a781517fe49ec47e9b2ddb884c78
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="azure-functions-c-developer-reference"></a>Az Azure Functions C# fejlesztői leírás
 
@@ -134,7 +134,50 @@ A létrehozott *function.json* fájl tartalmaz egy `configurationSource` tulajdo
 }
 ```
 
-A *function.json* fájl létrehozása végzi el a NuGet-csomag [Microsoft\.NET\.Sdk\.funkciók](http://www.nuget.org/packages/Microsoft.NET.Sdk.Functions). A forráskód érhető el a GitHub-tárház [azure\-funkciók\-vs\-build\-sdk](https://github.com/Azure/azure-functions-vs-build-sdk).
+### <a name="microsoftnetsdkfunctions-nuget-package"></a>Microsoft.NET.Sdk.Functions NuGet-csomag
+
+A *function.json* fájl létrehozása végzi el a NuGet-csomag [Microsoft\.NET\.Sdk\.funkciók](http://www.nuget.org/packages/Microsoft.NET.Sdk.Functions). 
+
+Ugyanaz a csomag mindkét verziójának használt 1.x és a 2.x funkciók futásidejű. A megcélzott keretrendszer verziószáma, egy 1.x projekt kódjába 2.x projektből. Az alábbiakban vonatkozó részeinek *.csproj* fájlok megjelenítő különböző keretrendszerek és azonos cél `Sdk` csomag:
+
+**1.x működik**
+
+```xml
+<PropertyGroup>
+  <TargetFramework>net461</TargetFramework>
+</PropertyGroup>
+<ItemGroup>
+  <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="1.0.8" />
+</ItemGroup>
+```
+
+**2.x működik**
+
+```xml
+<PropertyGroup>
+  <TargetFramework>netstandard2.0</TargetFramework>
+  <AzureFunctionsVersion>v2</AzureFunctionsVersion>
+</PropertyGroup>
+<ItemGroup>
+  <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="1.0.8" />
+</ItemGroup>
+```
+
+Között a `Sdk` csomagfüggőségek eseményindítók és kötések. Egy 1.x projekt hivatkozik 1.x eseményindítók és kötések mert azok a .NET-keretrendszer céloz, amíg 2.x eseményindítók és kötések .NET Core célként.
+
+A `Sdk` csomag is függ [Newtonsoft.Json](http://www.nuget.org/packages/Newtonsoft.Json), majd a közvetve [windowsazure.Storage kifejezésre](http://www.nuget.org/packages/WindowsAzure.Storage). Ezeket a függőségeket győződjön meg arról, hogy a projekt használja azokat a csomagokat, amelyek működnek együtt a funkciók futásidejű verzióját azon verzióit, amelyek a projekt célokat. Például `Newtonsoft.Json` 11-es verzió a .NET-keretrendszer 4.6.1-es verzióját, de a Functions futtatókörnyezete, amelynek célpontja a .NET-keretrendszer 4.6.1 csak kompatibilis `Newtonsoft.Json` 9.0.1. Így a projekt függvény kód is használata `Newtonsoft.Json` 9.0.1.
+
+Forráskódja `Microsoft.NET.Sdk.Functions` érhető el a GitHub-tárház [azure\-funkciók\-vs\-build\-sdk](https://github.com/Azure/azure-functions-vs-build-sdk).
+
+### <a name="runtime-version"></a>Futtatókörnyezet verziója
+
+A Visual Studio használja a [Azure Functions Core eszközök](functions-run-local.md#install-the-azure-functions-core-tools) funkciók projektek futtatásához. A Core-eszközök a Functions futtatókörnyezete parancssori felület.
+
+A Core telepíti npm segítségével, ha a Visual Studio által használt Core eszközök verziója, amely nincs hatással. A funkciók futásidejű verzióját a 1.x, Visual Studio verziója a Core eszközök tárolja *%USERPROFILE%\AppData\Local\Azure.Functions.Cli* és nincs tárolt legújabb verzióját használja. A 2.x működik, az alapvető eszközök szerepelnek a **Azure Functions és webes feladatok eszközök** bővítmény. 1.x és a 2.x megtekintheti, milyen verzióját használja a konzol kimeneti funkciók projekt futtatásakor:
+
+```terminal
+[3/1/2018 9:59:53 AM] Starting Host (HostId=contoso2-1518597420, Version=2.0.11353.0, ProcessId=22020, Debug=False, Attempt=0, FunctionsExtensionVersion=)
+```
 
 ## <a name="supported-types-for-bindings"></a>A kötések támogatott típusok
 

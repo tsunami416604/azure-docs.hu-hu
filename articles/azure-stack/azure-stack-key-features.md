@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/21/2018
+ms.date: 02/27/2018
 ms.author: jeffgilb
-ms.reviewer: unknown
-ms.openlocfilehash: 6c02ec42874e4e3221c53e6d6e85378bbe2e414a
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.reviewer: 
+ms.openlocfilehash: b773ddc5da12f92960ef3378decac8569dac9ab9
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="key-features-and-concepts-in-azure-stack"></a>A legfontosabb jellemzők és Azure verem fogalmak
 
@@ -91,6 +91,7 @@ Előfizetések súgó szolgáltatók rendszerezése és felhőalapú erőforrás
 
 A rendszergazda alapértelmezett szolgáltató előfizetés telepítés során jön létre. Ez az előfizetés kezelése az Azure-vermet, további erőforrás-szolgáltatók telepítéséhez és tervek és ajánlatok létrehozása a bérlők számára használható. Nem használandó felhasználói munkaterhelések és alkalmazások futtatásához. 
 
+
 ## <a name="azure-resource-manager"></a>Azure Resource Manager
 Azure Resource Manager segítségével egy sablonalapú, deklaratív modell a infrastruktúra erőforrásainak dolgozhat.   Segítségével központi telepítése és kezelése a megoldás-összetevő egyetlen felületet biztosít. Teljes körű információkat és útmutatást, tekintse meg a [Azure Resource Manager áttekintése](../azure-resource-manager/resource-group-overview.md).
 
@@ -127,6 +128,25 @@ Az Azure Queue Storage felhőbeli üzenetkezelést biztosít az alkalmazások ö
 
 ### <a name="keyvault"></a>KeyVault
 A KeyVault RP biztosít a felügyeleti és titkos kulcsokat, például a jelszavak és a tanúsítványok naplózását. Tegyük fel a bérlő segítségével a KeyVault RP rendszergazdai jelszóval vagy kulcsok adja meg a virtuális gép üzembe helyezése során.
+
+## <a name="high-availability-for-azure-stack"></a>Magas rendelkezésre állású Azure verem
+*A következőkre vonatkozik: Azure verem 1802 vagy újabb verzió*
+
+Egy virtuális Gépre kiterjedő éles rendszerek esetén az Azure-ban a magas rendelkezésre állásának eléréséhez, virtuális gépek rendelkezésre állási csoportok, amelyek között osztja el őket több tartalék tartományok és frissítési tartományok kerülnek. Ezzel a módszerrel [a rendelkezésre állási csoportokban telepített virtuális gépek](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets) fizikailag elkülönített, egymástól a különálló kiszolgáló például rackszekrények, a hiba rugalmasságot engedélyezéséhez az alábbi ábrán látható módon lesz:
+
+  ![Az Azure verem magas rendelkezésre állás](media/azure-stack-key-features/high-availability.png)
+
+### <a name="availablity-sets-in-azure-stack"></a>Azure-készletben beállítja elérhetőségét
+Amíg Azure verem infrastruktúrája már rugalmas sikertelen, az alapul szolgáló technológiát (feladatátvételi fürtszolgáltatás) továbbra is bizonyos időre leállítást kapcsolatban felmerült virtuális gépek érintett fizikai kiszolgálón hardver meghibásodása. Azure verem támogatja, hogy a rendelkezésre állási készlet legfeljebb három tartalék tartományok, hogy azok konzisztensek legyenek az Azure.
+
+- **Tartományok fault**. Virtuális gépek rendelkezésre állási csoportba helyez elosztásával őket lehetőség szerint egyenletes több tartalék tartományok (Azure verem csomópontok) keresztül lesz fizikailag különítve egymástól. A hardver meghibásodása esetén a sikertelen tartalék tartomány a virtuális gépek fog más tartalék tartományok újraindul, de, ha lehetséges, őrizni, külön tartalék tartományok az azonos rendelkezésre állási készlet más virtuális gépek. A hardver ismét online elérhető lesz, ha a rebalanced fenntartásához magas rendelkezésre állású virtuális gépek kell. 
+ 
+- **Tartományok frissítése**. Frissítési tartományok egy másik Azure fogalom, amely a rendelkezésre állási csoportokban magas rendelkezésre állást biztosít. Egy frissítési tartomány az a logikai csoport az alapul szolgáló hardverben, amely egy időben karbantartási is változni. Az azonos frissítési tartományban található virtuális gépek együtt újraindul tervezett karbantartás során. Bérlők virtuális gépek rendelkezésre állási csoportok belül hozzon létre, az Azure platformon automatikusan osztja el a virtuális gépek között ezek tartományok frissítése. Azure-készletben virtuális gépek élő a fürt többi online gazdagép keresztül telepítik át, a mögöttes állomás frissítése előtt. Mivel a gazdagép frissítése közben. bérlő állásidő nélkül, a frissítési szolgáltatás Azure veremben csak az Azure-ral tanúsítványsablon kompatibilitása létezik. 
+
+### <a name="upgrade-scenarios"></a>Frissítési forgatókönyvek 
+Virtuális gépek a rendelkezésre állási csoportokban létrehozni, mielőtt Azure verem verzió 1802 kap egy alapértelmezett hiba és a frissítési tartományok száma (1 és 1 rendre). A virtuális gépek magas elérhetőségét elérni a már meglévő rendelkezésre állási csoportok, meg kell először törölje a meglévő virtuális gépek, majd telepítse újra őket az új a rendelkezésre állási csoportban és a megfelelő hiba és a frissítési tartomány darabszámukból, lásd: [módosítása a a Windows virtuális gépek rendelkezésre állási készlet](https://docs.microsoft.com/azure/virtual-machines/windows/change-availability-set). 
+
+Virtuálisgép-méretezési készlet, a rendelkezésre állási csoport jön létre belsőleg egy alapértelmezett tartalék tartomány és a frissítési tartományok számának (3. és 5 rendre). A virtuális gép skálázása előbb 1802 frissítés helyez egy rendelkezésre állási csoportban, az alapértelmezett hiba és a frissítési tartomány számát a készlet (1 és 1 rendre). A Virtuálisgép-méretezési készlet újabb terjedésének eléréséhez példány frissítéséhez terjessze ki a Virtuálisgép-méretezési készlet 1802 frissítés előtt voltak, és törölje a Virtuálisgép-méretezési készlet régebbi példányai-példányok száma szerint. 
 
 ## <a name="role-based-access-control-rbac"></a>Szerepköralapú hozzáférés-vezérlést (RBAC)
 Az RBAC segítségével rendszer hozzáférési jogot engedéllyel rendelkező felhasználók, csoportok és a szolgáltatások egy előfizetés, erőforráscsoporthoz vagy egyéni erőforrás szintjén szerepkörök hozzárendelésével. Egyes szerepkörök egy felhasználó, csoport vagy a szolgáltatás rendelkezik-e a Microsoft Azure verem erőforrások keresztül hozzáférési szintjét adja meg.

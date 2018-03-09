@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: giladm
-ms.openlocfilehash: 1ff7f3509ccdaa6911cee0487d5a6d90b11eb79f
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: da4f72e61607dcad7314a2fe65324da4635752c5
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="azure-sql-database-data-discovery-and-classification"></a>Az Azure SQL-adatbázis adatainak felderítése és besorolása
 Az Azure SQL Database beépített speciális képességeket biztosít a felderítési adatok & besorolás (jelenleg előzetes verzió) **felderítéséhez**, **zárolásának**, **címkézés**  &  **védelme** az adatbázisokat a bizalmas adatokat.
@@ -95,12 +95,12 @@ A besorolási két metaadat-attribútumok tartalmazza:
 
 Az információk védelme paradigma fontos eleme azt a képességet figyelje a bizalmas adatokhoz való hozzáférést.
 
-[Az Azure SQL Database Auditing](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-auditing) új mező szerepeljen a biztonsági naplóba nevű továbbfejlesztett *data_sensitivity_information*, amely naplózza a tényleges által visszaadott adatok érzékenysége osztályozását (címke) a lekérdezés.
+[Az Azure SQL Database Auditing](https://docs.microsoft.com/azure/sql-database/sql-database-auditing) új mező szerepeljen a biztonsági naplóba nevű továbbfejlesztett *data_sensitivity_information*, amely naplózza a tényleges által visszaadott adatok érzékenysége osztályozását (címke) a lekérdezés.
 
 ![Navigációs ablaktábla][11]
 
 ## <a id="subheading-4"></a>Következő lépések
-Érdemes úgy konfigurálni [Azure SQL Database Auditing](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-auditing) a figyelés és naplózás a minősített bizalmas adatokhoz való hozzáférést.
+Érdemes úgy konfigurálni [Azure SQL Database Auditing](https://docs.microsoft.com/azure/sql-database/sql-database-auditing) a figyelés és naplózás a minősített bizalmas adatokhoz való hozzáférést.
 
 <!--Anchors-->
 [SQL Data Discovery & Classification overview]: #subheading-1

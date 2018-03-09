@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/09/2018
+ms.date: 03/07/2018
 ms.author: billmath
-ms.openlocfilehash: aee90f278476a899e0d47fc572c4f375bf926de2
-ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
+ms.openlocfilehash: ac085bf972885819f7c79996b0f6638fc01fc00d
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="azure-active-directory-pass-through-authentication-current-limitations"></a>Az Azure Active Directory átmenő hitelesítést: Aktuális korlátozások
 
@@ -31,18 +31,18 @@ A következő forgatókönyvek teljes mértékben támogatottak:
 
 - Felhasználói bejelentkezések minden webes webböngésző-alapú alkalmazásokhoz
 - Felhasználói bejelentkezések támogató Office-alkalmazások [modern hitelesítést](https://aka.ms/modernauthga): Office 2016 és Office 2013 _rendelkező_ modern hitelesítést
+- Felhasználói bejelentkezések Outlook-ügyfelek, például az Exchange ActiveSync-, SMTP-, POP és IMAP örökölt protokollok használatával.
 - Felhasználói bejelentkezések a Skype vállalati adott modern hitelesítés támogatása, beleértve az Online és a hibrid topológiák. További információ a támogatott topológiák [Itt](https://technet.microsoft.com/library/mt803262.aspx).
 - Az Azure AD tartományi csatlakozik a Windows 10 rendszerű eszközökhöz
-- Exchange ActiveSync-támogatását.
+- A multi-factor Authentication alkalmazásjelszókat.
 
 ## <a name="unsupported-scenarios"></a>Nem támogatott forgatókönyvek
 
 A következő forgatókönyvek _nem_ támogatja:
 
-- Felhasználói bejelentkezések Office-ügyfél régebbi alkalmazásokhoz: Office 2010 és Office 2013 _nélkül_ modern hitelesítést. A szervezetek javasolt, hogy váltani a modern hitelesítést, ha lehetséges. A modern hitelesítés lehetővé teszi, hogy átmenő hitelesítés támogatásához. Emellett segítséget nyújt a felhasználói fiókok használatával biztonságos [feltételes hozzáférés](../active-directory-conditional-access-azure-portal.md) szolgáltatásait, például az Azure multi-factor Authentication.
+- Felhasználói bejelentkezések régebbi Office ügyfél alkalmazásokhoz, az Outlook kivételével: Office 2010 és Office 2013 _nélkül_ modern hitelesítést. A szervezetek javasolt, hogy váltani a modern hitelesítést, ha lehetséges. A modern hitelesítés lehetővé teszi, hogy átmenő hitelesítés támogatásához. Emellett segítséget nyújt a felhasználói fiókok használatával biztonságos [feltételes hozzáférés](../active-directory-conditional-access-azure-portal.md) szolgáltatásait, például az Azure multi-factor Authentication.
 - Felhasználói bejelentkezések a Skype vállalati ügyfélalkalmazások esetében _nélkül_ modern hitelesítést.
 - Felhasználói bejelentkezések a PowerShell 1.0-s verziója. Azt javasoljuk, hogy a PowerShell 2.0-s verzióját használja.
-- A multi-factor Authentication alkalmazásjelszókat.
 - A felhasználók észlelési [hitelesítő adatok szivárgását](../active-directory-reporting-risk-events.md#leaked-credentials).
 - Azure AD tartományi szolgáltatások Jelszókivonat-szinkronizálást a bérlő engedélyezni kell. Ezért az átmenő hitelesítést használó bérlők _csak_ nem működik az Azure AD tartományi szolgáltatásokat igénylő forgatókönyvek.
 - Áteresztő hitelesítés nincs integrálva a [az Azure AD Connect Health](../connect-health/active-directory-aadconnect-health.md).
@@ -63,4 +63,3 @@ Jelszókivonat-szinkronizálást engedélyezése lehetővé teszi az feladatátv
 - [Biztonsági mélyreható](active-directory-aadconnect-pass-through-authentication-security-deep-dive.md): részletes műszaki információért az áteresztő hitelesítés szolgáltatást.
 - [Az Azure AD zökkenőmentes SSO](active-directory-aadconnect-sso.md): további információk a kiegészítő funkció.
 - [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect): az Azure Active Directory fórumán használja a következő fájl új frissítéseiről.
-

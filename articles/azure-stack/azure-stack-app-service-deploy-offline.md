@@ -1,10 +1,10 @@
 ---
-title: "App Service telepítése kapcsolat nélküli környezetben: Azure verem |} Microsoft Docs"
+title: "App Service telepítése Azure verem kapcsolat nélküli környezetben |} Microsoft Docs"
 description: "App Service Azure verem AD FS által védett leválasztott környezetben történő központi telepítéséről részletes útmutatást."
 services: azure-stack
 documentationcenter: 
-author: brenduns
-manager: femila
+author: apwestgarth
+manager: stefsch
 editor: 
 ms.assetid: 
 ms.service: azure-stack
@@ -12,19 +12,20 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/28/2018
-ms.author: brenduns
-ms.reviewer: anwestg
-ms.openlocfilehash: c42aaabd27afeb9e7fdd0b9add3de62a2d00eeaf
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.date: 03/07/2018
+ms.author: anwestg
+ms.openlocfilehash: 042ebb0acc82a0cecabac7f2bc7c3b68e3ed362f
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="add-an-app-service-resource-provider-to-a-disconnected-azure-stack-environment-secured-by-ad-fs"></a>Az App Service erőforrás-szolgáltató felvétele AD FS által védett leválasztott Azure verem környezet
+
 *A következőkre vonatkozik: Azure verem integrált rendszerek és az Azure verem szoftverfejlesztői készlet*
 
 Ez a cikk utasításait követve telepítheti a [App Service erőforrás-szolgáltató](azure-stack-app-service-overview.md) Azure verem környezetbe, amely:
+
 - nem csatlakozik az internethez
 - Active Directory összevonási szolgáltatások (AD FS) által védett.
 
@@ -43,60 +44,72 @@ App Service-t leválasztott környezetben telepíti, akkor először létre kell
 
 2. Kattintson a **speciális** > **offline telepítési csomag létrehozása**.
 
-    ![Az App Service-telepítő](media/azure-stack-app-service-deploy-offline/image01.png)   
+    ![Az App Service-telepítő][1]
 
 3. Az App Service-telepítő létrehoz egy kapcsolat nélküli telepítési csomagot, és elérési útja. Kattinthat **mappa megnyitása** sikerült megnyitni a mappát a a Fájlkezelőben.
 
-    ![Az App Service-telepítő](media/azure-stack-app-service-deploy-offline/image02.png)   
+    ![Az App Service-telepítő](media/azure-stack-app-service-deploy-offline/image02.png)
 
 4. A telepítő (AppService.exe) és a kapcsolat nélküli telepítési csomag másolása Azure verem a számítógép.
 
 ## <a name="complete-the-offline-installation-of-app-service-on-azure-stack"></a>A kapcsolat nélküli telepítést veremben Azure App Service
 
-1. A leválasztott Azure verem gazdaszámítógépen azurestack\clouadmin appservice.exe futtató.
+1. Appservice.exe futtassa rendszergazdaként egy olyan számítógépről, az Azure verem Admin Azure Resource Manager-végpont érhető el.
 
 2. Kattintson a **speciális** > **offline telepítést**.
 
-    ![Az App Service-telepítő](media/azure-stack-app-service-deploy-offline/image03.png)   
+    ![Az App Service-telepítő][2]
 
-3. Keresse meg a helyet, a korábban létrehozott kapcsolat nélküli telepítési csomagot, és kattintson a **következő**.
+3. Keresse meg a helyet, a korábban létrehozott kapcsolat nélküli telepítési csomagot, és kattintson **következő**.
 
-    ![Az App Service-telepítő](media/azure-stack-app-service-deploy-offline/image04.png)   
+    ![Az App Service-telepítő](media/azure-stack-app-service-deploy-offline/image04.png)
 
-4. Tekintse át és fogadja el a Microsoft szoftverlicenc-szerződést, és kattintson **következő**.
+4. Tekintse át és fogadja el a Microsoft szoftverlicenc-szerződést, majd **következő**.
 
-5. Tekintse át és fogadja el a külső licencfeltételeket majd **következő**.
+5. Tekintse át és fogadja el a külső licencfeltételeket, majd **következő**.
 
-6. Győződjön meg arról, hogy helyesek-e a App Service felhővédelmi konfigurációs információkat. Azure verem szoftverfejlesztői készlet üzembe helyezése során az alapértelmezett beállításokat használja, ha elfogadhatja az alapértelmezett értékeket itt. Azonban Ha testreszabta a beállítások Azure verem üzembe helyezésekor, szerkesztenie kell a ebben az ablakban megfelelően, hogy az értékek is. Például ha a tartományi utótag mycloud.com használja, a végpontot kell módosítsa management.mycloud.com. Miután meggyőződött róla, hogy az adatait, kattintson a **következő**.
+6. Győződjön meg arról, hogy helyesek-e a App Service felhővédelmi konfigurációs információkat. Azure verem szoftverfejlesztői készlet üzembe helyezése során az alapértelmezett beállításokat használja, ha elfogadhatja az alapértelmezett értékeket itt. Azonban Ha testreszabta a beállítások, amikor Azure-verem telepítve, vagy az integrált rendszeren telepíti, szerkesztenie kell a ebben az ablakban megfelelően, hogy az értékek is. Például ha a tartományi utótag mycloud.com használja, a Azure verem bérlői Azure Resource Manager-végpontot módosítania kell a felügyeleti. <region>. mycloud.com. Miután meggyőződött róla, hogy az adatait, kattintson a **következő**.
 
-    ![Az App Service-telepítő](media/azure-stack-app-service-deploy/image02.png)
+    ![Az App Service-telepítő][3]
 
 7. A következő lapon:
     1. Kattintson a **Connect** megjelenítő gombra a **Azure verem előfizetések** mezőbe.
-        - Azure Active Directory (Azure AD) használata, adja meg az Azure AD rendszergazdai fiókot és az Azure verem telepítésekor megadott jelszót. Kattintson a **bejelentkezés**.
-        - Ha Active Directory összevonási szolgáltatások (AD FS) használ, adja meg a rendszergazdai fiókjával. Például: cloudadmin@azurestack.local. Írja be a jelszót, és kattintson a **bejelentkezés**.
+        - Adja meg a rendszergazdai fiókjával. Például: cloudadmin@azurestack.local. Írja be a jelszót, és kattintson a **bejelentkezés**.
     2. Az a **Azure verem előfizetések** jelölje ki az előfizetését.
     3. Az a **Azure verem helyek** válassza ki a helyet, amely megfelel a régióban való telepítése esetén. Válassza például **helyi** Ha a központi telepítése az Azure verem szoftverfejlesztői készlet.
-    4. Adjon meg egy **erőforráscsoport-név** az App Service üzembe helyezéshez. Alapértelmezés szerint érték **App Service-helyi**.
-    5. Adja meg a **Tárfióknév** , amelyet az App Service-nek a telepítés részeként hozza létre. Alapértelmezés szerint érték **appsvclocalstor**.
-    6. Kattintson a **Tovább** gombra.
+    4. Kattintson a **Tovább** gombra.
 
-    ![Az App Service-telepítő](media/azure-stack-app-service-deploy/image03.png)
+    ![Az App Service-telepítő][4]
 
-8. Adja meg a fájlmegosztás adatait, és kattintson a **következő**. A fájlmegosztás címét vagy teljesen minősített tartományneve a fájlkiszolgáló, vagy az IP-címet kell használnia. Például \\\appservicefileserver.local.cloudapp.azurestack.external\websites, vagy \\\10.0.0.1\websites.
+8. Most már rendelkezik konfigurált végig a lépéseken létrehozni meglévő virtuális hálózatban telepíteni [Itt](azure-stack-app-service-before-you-get-started.md#virtual-network), vagy engedélyezheti az App Service telepítő virtuális hálózat és a társított alhálózatok létrehozásához.
+    1. Válassza ki **VNet létrehozása az alapértelmezett beállításokkal**, fogadja el az alapértelmezett beállításokat, és kattintson a **következő**, vagy;
+    2. Válassza ki **használja a meglévő hálózatok és alhálózatok**.
+        1. Válassza ki a **erőforráscsoport** , amely tartalmazza a virtuális hálózat;
+        2. Válassza ki a megfelelő **virtuális hálózati** kívánja üzembe helyezés; neve
+        3. Válassza ki a megfelelő **alhálózati** az egyes a szükséges szerepkör-alhálózatok;
+        4. Kattintson a **Tovább** gombra
 
-    ![Az App Service-telepítő](media/azure-stack-app-service-deploy/image04.png)
+    ![Az App Service-telepítő][5]
 
-9. A következő lapon:
-    1. Az a **identitás Alkalmazásazonosító** mezőbe írja be a GUID-identitás az alkalmazástól.
+9. Adja meg a fájlmegosztás adatait, és kattintson a **következő**. A fájlmegosztás címét a teljesen minősített tartománynév vagy IP-címet a fájlkiszolgáló kell használnia. Például \\\appservicefileserver.local.cloudapp.azurestack.external\websites, vagy \\\10.0.0.1\websites.
+
+> [!NOTE]
+> A telepítő megpróbálja használt kapcsolatok tesztelése a fájlmegosztáshoz való továbblépéshez.  Azonban ha úgy dönt, hogy a meglévő virtuális hálózat üzembe, a telepítő nem lehet csatlakozni a fájlmegosztási és megkérdezi, hogy folytatja, figyelmeztetést jelenít meg.  Ellenőrizze a fájlmegosztási adatokat, és továbbra is, ha azok helyességét.
+>
+>
+
+   ![Az App Service-telepítő][8]
+
+10. A következő lapon:
+    1. Az a **identitás Alkalmazásazonosító** adja meg a globálisan egyedi Azonosítót (az Azure AD) identitás használata az alkalmazás.
     2. Az a **identitás alkalmazás tanúsítványfájl** mezőben adja meg (vagy keresse meg a) a tanúsítvány-fájl helyét.
     3. Az a **identitás alkalmazás tanúsítványjelszavas** mezőbe írja be a jelszót a tanúsítványhoz. Ez a jelszó nem azt, amelyik végrehajtott jegyezze fel, ha a parancsfájl a tanúsítványok létrehozásához használt.
     4. Az a **Azure Resource Manager főtanúsítványfájlt** mezőben adja meg (vagy keresse meg a) a tanúsítvány-fájl helyét.
     5. Kattintson a **Tovább** gombra.
 
-    ![Az App Service-telepítő](media/azure-stack-app-service-deploy/image05.png)
+    ![Az App Service-telepítő][10]
 
-10. Az egyes a három tanúsítvány fájl jelölőnégyzetéből, kattintson a **Tallózás** , és keresse meg a megfelelő tanúsítványt fájlt, és adjon meg egy jelszót. Ezek a tanúsítványok azok létrehozott a [hozza létre a szükséges tanúsítványokat lépés](azure-stack-app-service-deploy.md). Kattintson a **következő** után írja be az adatokat.
+11. Az egyes a három tanúsítvány fájl jelölőnégyzetéből, kattintson a **Tallózás** , majd lépjen a megfelelő tanúsítványfájlt. Minden tanúsítványt meg kell adnia a jelszót. Ezek a tanúsítványok azok létrehozott a [hozza létre a szükséges tanúsítványokat lépés](azure-stack-app-service-before-you-get-started.md#get-certificates). Kattintson a **következő** után írja be az adatokat.
 
     | Box | Tanúsítvány fájl neve – példa |
     | --- | --- |
@@ -106,16 +119,21 @@ App Service-t leválasztott környezetben telepíti, akkor először létre kell
 
     Ha a tanúsítványok létrehozásakor használt egy másik tartományutótagot, a tanúsítvány fájlnevek ne használjon *helyi. AzureStack.external*. Ehelyett használja az egyéni tartomány adatait.
 
-    ![Az App Service-telepítő](media/azure-stack-app-service-deploy/image06.png)    
+    ![Az App Service-telepítő][11]
 
-11. Adja meg az App Service erőforrás-szolgáltató adatbázisainak üzemeltetésére, és kattintson a server-példány az SQL Server részleteit **következő**. A telepítő ellenőrzi az SQL-kapcsolat tulajdonságai.
+12. Adja meg az App Service erőforrás-szolgáltató adatbázisainak üzemeltetésére, és kattintson a server-példány az SQL Server részleteit **következő**. A telepítő ellenőrzi az SQL-kapcsolat tulajdonságai.
 
-    ![Az App Service-telepítő](media/azure-stack-app-service-deploy/image07.png)    
+> [!NOTE]
+> A telepítő megpróbálja tesztelése az SQl Server, a folytatás előtt.  Ha úgy dönt, hogy a meglévő virtuális hálózat üzembe, a telepítő nem lehet csatlakozni az SQL Server és megkérdezi, hogy folytatja figyelmeztetést jelenít meg.  Ellenőrizze az SQL Server-adatokat, és továbbra is, ha azok helyességét.
+>
+>
+   
+   ![Az App Service-telepítő][12]
 
-12. Tekintse át a szerepkör példánya és a Termékváltozat-beállítások. Az alapértelmezett beállításokat a rendszer feltölti a példány és az egyes szerepkörökhöz ASDK-telepítés minimális Termékváltozat minimális számát. VCPU és memória követelmények összefoglalása tervezze meg a központi telepítés segítségével valósul meg. Miután elvégezte a beállításokat, kattintson a **következő**.
+13. Tekintse át a szerepkör példánya és a Termékváltozat-beállítások. Az alapértelmezett beállításokat a rendszer feltölti a példány és az egyes szerepkörökhöz ASDK-telepítés minimális Termékváltozat minimális számát. VCPU és memória követelmények összefoglalása tervezze meg a központi telepítés segítségével valósul meg. Miután elvégezte a beállításokat, kattintson a **következő**.
 
      > [!NOTE]
-     > Az üzemi környezetek útmutatása [Azure App Service kiszolgálói szerepkörök Azure verem Kapacitástervezését](azure-stack-app-service-capacity-planning.md).
+     > Az üzemi környezetek kövessék [Azure App Service kiszolgálói szerepkörök Azure verem Kapacitástervezését](azure-stack-app-service-capacity-planning.md).
      >
      >
 
@@ -127,33 +145,32 @@ App Service-t leválasztott környezetben telepíti, akkor először létre kell
     | Előtér | 1 | Standard_A1 - (1 vCPU, 1792 MB) | App Service-alkalmazásokra irányuló kérelmek útvonalak. |
     | Megosztott Worker | 1 | Standard_A1 - (1 vCPU, 1792 MB) | Gazdagépek webes API alkalmazásokat és az Azure Functions alkalmazásokat. Érdemes ismételt felvételéhez. Kezelőként határozza meg az ajánlat, és válassza ki bármelyik SKU rétegben. A rétegek rendelkeznie kell legalább egy vCPU. |
 
-    ![Az App Service-telepítő](media/azure-stack-app-service-deploy/image08.png)    
+    ![Az App Service-telepítő][14]
 
     > [!NOTE]
-    > **Windows Server 2016 Core rendszer nem egy támogatott platform lemezképet használja az Azure App Service Azure veremben**.
+    > **Windows Server 2016 Core nincs támogatott platformlemezkép való használathoz az Azure App Service Azure veremben.  Ne használja az üzemi környezetek értékelési képek.**
 
-13. Az a **Platformlemezképet válasszon** válassza ki a központi telepítés a Windows Server 2016 virtuálisgép-lemezkép azoktól, amelyeket a számítási erőforrás-szolgáltató az App Service-felhő érhető el. Kattintson a **Tovább** gombra.
+14. Az a **Platformlemezképet válasszon** válassza ki a központi telepítés a Windows Server 2016 virtuálisgép-lemezkép azoktól, amelyeket a számítási erőforrás-szolgáltató az App Service-felhő érhető el. Kattintson a **Tovább** gombra.
 
-14. A következő lapon:
+15. A következő lapon:
      1. Adja meg a feldolgozói szerepkör virtuális gép rendszergazdai felhasználónév és jelszó.
      2. Adja meg a más szerepkörök virtuális gép rendszergazdai felhasználónév és jelszó.
      3. Kattintson a **Tovább** gombra.
 
-    ![Az App Service-telepítő](media/azure-stack-app-service-deploy/image09.png)    
+    ![Az App Service-telepítő][16]
 
-15. Az összefoglalás lapon:
+16. Az összefoglalás lapon:
     1. Ellenőrizze a kiválasztott beállítások. Módosításához használja a **előző** gombokra kattintva látogasson el az előző lapokra.
     2. Ha a konfiguráció helyes, jelölje be a jelölőnégyzetet.
     3. A telepítés elindításához kattintson **következő**.
 
-    ![Az App Service-telepítő](media/azure-stack-app-service-deploy/image10.png)    
+    ![Az App Service-telepítő][17]
 
-16. A következő lapon:
+17. A következő lapon:
     1. A telepítési folyamat előrehaladását. App Service Azure veremben körülbelül percet vesz igénybe 60 központi telepítése az alapértelmezett beállításokat alapján.
     2. Miután a telepítő sikeresen befejeződött, kattintson a **kilépési**.
 
-    ![Az App Service-telepítő](media/azure-stack-app-service-deploy/image11.png)    
-
+    ![Az App Service-telepítő][18]
 
 ## <a name="validate-the-app-service-on-azure-stack-installation"></a>Az App Service, Azure verem telepítés ellenőrzése
 
@@ -161,8 +178,7 @@ App Service-t leválasztott környezetben telepíti, akkor először létre kell
 
 2. Az áttekintésben állapota, ellenőrizze, hogy, hogy a **állapot** látható **készen áll az összes szerepkör**.
 
-    ![Az alkalmazásszolgáltatási Management](media/azure-stack-app-service-deploy/image12.png)    
-
+    ![Az alkalmazásszolgáltatási Management](media/azure-stack-app-service-deploy/image12.png)
 
 ## <a name="test-drive-app-service-on-azure-stack"></a>App Service-meghajtó a Azure verem tesztelése
 
@@ -210,3 +226,23 @@ Is kipróbálhatja más [platformok (PaaS) szolgáltatás](azure-stack-tools-paa
 [Azure_Stack_App_Service_preview_installer]: http://go.microsoft.com/fwlink/?LinkID=717531
 [App_Service_Deployment]: http://go.microsoft.com/fwlink/?LinkId=723982
 [AppServiceHelperScripts]: http://go.microsoft.com/fwlink/?LinkId=733525
+
+<!--Image references-->
+[1]: ./media/azure-stack-app-service-deploy-offline/app-service-exe-advanced-create-package.png
+[2]: ./media/azure-stack-app-service-deploy-offline/app-service-exe-advanced-complete-offline.png
+[3]: ./media/azure-stack-app-service-deploy-offline/app-service-azure-stack-arm-endpoints.png
+[4]: ./media/azure-stack-app-service-deploy-offline/app-service-azure-stack-subscription-information.png
+[5]: ./media/azure-stack-app-service-deploy-offline/app-service-default-VNET-config.png
+[6]: ./media/azure-stack-app-service-deploy-offline/app-service-custom-VNET-config.png
+[7]: ./media/azure-stack-app-service-deploy-offline/app-service-custom-VNET-config-with-values.png
+[8]: ./media/azure-stack-app-service-deploy-offline/app-service-fileshare-configuration.png
+[9]: ./media/azure-stack-app-service-deploy-offline/app-service-fileshare-configuration-error.png
+[10]: ./media/azure-stack-app-service-deploy-offline/app-service-identity-app.png
+[11]: ./media/azure-stack-app-service-deploy-offline/app-service-certificates.png
+[12]: ./media/azure-stack-app-service-deploy-offline/app-service-sql-configuration.png
+[13]: ./media/azure-stack-app-service-deploy-offline/app-service-sql-configuration-error.png
+[14]: ./media/azure-stack-app-service-deploy-offline/app-service-cloud-quantities.png
+[15]: ./media/azure-stack-app-service-deploy-offline/app-service-windows-image-selection.png
+[16]: ./media/azure-stack-app-service-deploy-offline/app-service-role-credentials.png
+[17]: ./media/azure-stack-app-service-deploy-offline/app-service-azure-stack-deployment-summary.png
+[18]: ./media/azure-stack-app-service-deploy-offline/app-service-deployment-progress.png

@@ -3,28 +3,28 @@ title: "Eszközök Azure verem tárolás"
 description: "Tudnivalók a verem Azure storage-adatokkal átviteli eszközök"
 services: azure-stack
 documentationcenter: 
-author: xiaofmao
-manager: 
-editor: 
+author: mattbriggs
+manager: femila
 ms.assetid: 
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 9/25/2017
-ms.author: xiaofmao
-ms.openlocfilehash: 9799498a11449a9ed496d0fdb40312603eda064e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 02/21/2018
+ms.author: mabrigg
+ms.reviewer: xiaofmao
+ms.openlocfilehash: 9318b7af3c3dd545207f1896c9008207f562b735
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="tools-for-azure-stack-storage"></a>Eszközök Azure verem tárolás
 
 *A következőkre vonatkozik: Azure verem integrált rendszerek és az Azure verem szoftverfejlesztői készlet*
 
-A Microsoft Azure verem biztosít a tárolási szolgáltatások lemezek, blobok, táblák, üzenetsorok és funkciók. Azure Storage-eszközöket is használhatja, ha azt szeretné, kezeléséhez, vagy helyezze át az adatokat, vagy az Azure-verem tárolóból. Ez a cikk gyors áttekintést nyújt az elérhető eszközöket.
+A Microsoft Azure verem a tárolási szolgáltatások lemezek, blobok, táblák, üzenetsorok és fiók felügyeleti funkciókat biztosít. Azure Storage-eszközöket is használhatja, ha azt szeretné, kezeléséhez, vagy helyezze át az adatokat, vagy az Azure-verem tárolóból. Ez a cikk gyors áttekintést nyújt az elérhető eszközöket.
 
 Az eszközt, amely a legjobb az Ön igényeinek függ:
 * [AzCopy](#azcopy)
@@ -41,7 +41,7 @@ Az eszközt, amely a legjobb az Ön igényeinek függ:
 
 * [A Microsoft a Tártallózó (előzetes verzió)](#microsoft-azure-storage-explorer)
 
-    Egy könnyen használható önálló alkalmazás, egy felhasználói felületen.
+    A felhasználói felület könnyen használható önálló alkalmazás.
 
 A tárolási szolgáltatások az Azure és az Azure-verem közötti különbségeket, miatt előfordulhat, egyes konkrét követelmények az egyes eszközök a következő szakaszok ismertetik. Azure verem tárolási és az Azure storage között, lásd: [Azure verem Storage: szempontok és a különbségeket](azure-stack-acs-differences.md).
 
@@ -50,7 +50,11 @@ A tárolási szolgáltatások az Azure és az Azure-verem közötti különbség
 AzCopy parancssori segédprogram úgy tervezték, hogy másolja az adatokat a Microsoft Azure-Blob és Table storage használatának egyszerű parancsok optimális teljesítménnyel érkező vagy oda irányuló. Másolhatja adatok egy objektum a másikra a tárfiókon belül vagy tárfiókok között. Az AzCopy két verziója van: a Windows és Linux AzCopy AzCopy. Az Azure verem csak a Windows-verzió támogatja. 
  
 ### <a name="download-and-install-azcopy"></a>Töltse le és telepítse az AzCopy 
-[Töltse le](https://aka.ms/azcopyforazurestack) AzCopy Azure verem támogatott Windows-verzión. Telepítése, és AzCopy használata Azure veremben Azure azonos módon. További tudnivalókért lásd: [adatátvitel az AzCopy parancssori segédprogram a](../../storage/common/storage-use-azcopy.md). 
+
+[Töltse le](https://aka.ms/azcopyforazurestack) Azure verem AzCopy támogatott Windows-verzión. Telepítése, és AzCopy használata Azure veremben Azure azonos módon. További tudnivalókért lásd: [adatátvitel az AzCopy parancssori segédprogram a](../../storage/common/storage-use-azcopy.md). 
+
+ - A 1802 a frissítés vagy újabb verziók, [töltse le az AzCopy 7.1.0](https://aka.ms/azcopyforazurestack20170417).
+ - Az előző verzió [töltse le az AzCopy 5.0.0](https://aka.ms/azcopyforazurestack20150405).
 
 ### <a name="azcopy-command-examples-for-data-transfer"></a>Adatátvitel az AzCopy parancspéldákban
 Az alábbi példák bemutatják, néhány adat másolása az Azure-verem blobok érkező vagy oda irányuló jellemző forgatókönyvek. További tudnivalókért lásd: [adatátvitel az AzCopy parancssori segédprogram a](../../storage/storage-use-azcopy.md). 
@@ -63,14 +67,14 @@ AzCopy.exe /source:https://myaccount.blob.local.azurestack.external/mycontainer 
 AzCopy /Source:C:\myfolder /Dest:https://myaccount.blob.local.azurestack.external/mycontainer/vd /DestKey:key /Pattern:abc.txt
 ```
 #### <a name="move-data-between-azure-and-azure-stack-storage"></a>Adatok áthelyezése az Azure és az Azure Storage-verem között 
-Azure Storage és Azure verem közötti aszinkron adatforgalom nem támogatott. meg kell adnia az átvitelt a `/SyncCopy` lehetőséget. 
+Azure Storage és Azure verem közötti aszinkron adatforgalom nem támogatott. meg kell adnia az átvitelt a **/SyncCopy** lehetőséget. 
 ```azcopy 
 Azcopy /Source:https://myaccount.blob.local.azurestack.external/mycontainer /Dest:https://myaccount2.blob.core.windows.net/mycontainer2 /SourceKey:AzSKey /DestKey:Azurekey /S /SyncCopy
 ```
 
 ### <a name="azcopy-known-issues"></a>Azcopy ismert problémái
 * A megadott AzCopy műveletet a File storage nem érhető el, mert a File Storage még nem érhető el, Azure-készletben.
-* Azure Storage és Azure verem közötti aszinkron adatforgalom nem támogatott. Megadhatja az átvitelt a `/SyncCopy` másolja az adatokat.
+* Azure Storage és Azure verem közötti aszinkron adatforgalom nem támogatott. Megadhatja az átvitelt a **/SyncCopy** másolja az adatokat.
 * A Linux Azcopy verziója nem támogatott az Azure Storage-verem. 
 
 ## <a name="azure-powershell"></a>Azure PowerShell
@@ -80,7 +84,7 @@ Az Azure PowerShell modul, amely-parancsmagokat kínál az Azure és az Azure-ve
 Azure verem kompatibilis Azure PowerShell-modulok az Azure veremnek megfelelő működéséhez szükségesek. További információkért lásd: [verem Azure PowerShell telepítése](azure-stack-powershell-install.md) és [konfigurálása az Azure-verem felhasználói PowerShell környezet](azure-stack-powershell-configure-user.md) további.
 
 ### <a name="powershell-sample-script-for-azure-stack"></a>PowerShell-parancsfájlpélda Azure verem 
-Ez a minta során feltételezzük, hogy sikeresen [verem Azure PowerShell telepítése](azure-stack-powershell-install.md). Ezt a parancsfájlt a rendszer Súgó a konfigurációs conplete és kérje meg az Azure-verem bérlő hitelesítő adatokat a fiók hozzáadása a helyi PowerShell environemnt. Majd a parancsfájl fog beállítják az alapértelmezett Azure-előfizetéssel, hozzon létre egy új tárfiókot az Azure-ban, hozzon létre egy új tárolót az új tárfiók, töltse fel meglévő képfájl (blob) adott tárolóhoz. Miután a parancsfájl megjeleníti az adott tároló összes BLOB, a helyi számítógépen egy új célkönyvtáron létrehozza, és töltse le a lemezképet.
+Ez a minta során feltételezzük, hogy sikeresen [verem Azure PowerShell telepítése](azure-stack-powershell-install.md). Ez a parancsfájl segítségével végezze el a konfigurálását, és kérje meg az Azure-verem bérlő hitelesítő adatokat a fiók hozzáadása a helyi PowerShell környezetben. Majd a parancsfájl fog beállítják az alapértelmezett Azure-előfizetéssel, hozzon létre egy új tárfiókot az Azure-ban, hozzon létre egy új tárolót az új tárfiók, töltse fel meglévő képfájl (blob) adott tárolóhoz. Miután a parancsfájl megjeleníti az adott tároló összes BLOB, a helyi számítógépen egy új célkönyvtáron létrehozza, és töltse le a lemezképet.
 
 1. Telepítés [Azure verem-kompatibilis Azure PowerShell-modulok](azure-stack-powershell-install.md).  
 2. Töltse le a [az Azure veremnek megfelelő működéséhez szükséges eszközök](azure-stack-powershell-download.md).  
@@ -154,7 +158,7 @@ $blobs | Get-AzureStorageBlobContent –Destination $DestinationFolder
 # end
 ```
 
-### <a name="powershell-known-issues"></a>PowerShell ismert problémái 
+### <a name="powershell-known-issues"></a>PowerShell ismert problémák 
 Kompatibilis Azure PowerShell modul Azure verem nem 1.2.10. Eltér az Azure PowerShell legújabb verzióját. Ezt a különbséget a tárolási szolgáltatások művelet hatással van:
 
 * A visszatérési érték formátuma `Get-AzureRmStorageAccountKey` verziójában 1.2.10 két tulajdonságokkal rendelkezik: `Key1` és `Key2`, amíg a jelenlegi Azure-verzió a fiók kulcsok tartalmazó tömböt ad vissza.
@@ -184,8 +188,8 @@ Ha befejezte a parancssori felület telepítése és konfigurálása, megpróbá
 1. Nyissa meg a kedvenc szövegszerkesztőjével, majd másolja, és az előző parancsfájl illessze be a szerkesztőt.
 2. Frissítse a parancsfájl-változókat megfelelően a konfigurációs beállításokat. 
 3. Miután frissítette a szükséges változók, mentse a parancsfájlt, és zárja be a szerkesztőt. A következő lépések azt feltételezik, hogy a parancsfájl my_storage_sample.sh nevű.
-4. Szükség esetén jelölje meg a parancsfájl végrehajtható, mint:`chmod +x my_storage_sample.sh`
-5. Hajtsa végre a parancsfájlt. Például a Bash:`./my_storage_sample.sh`
+4. Szükség esetén jelölje meg a parancsfájl végrehajtható, mint: `chmod +x my_storage_sample.sh`
+5. Hajtsa végre a parancsfájlt. Például a Bash: `./my_storage_sample.sh`
 
 ```bash
 #!/bin/bash
@@ -224,11 +228,10 @@ echo "Done"
 
 A Microsoft Azure Tártallózó egy különálló alkalmazás, a Microsoft. Ez lehetővé teszi, hogy egyszerűen dolgozhat Azure Storage mind Azure verem Storage-adatokkal Windows, a macOS és a Linux. Ha azt szeretné, hogy egyszerűen az Azure Storage-verem adatok kezelésére, fontolja meg a Microsoft Azure Tártallózó használatával.
 
-Azure verem használható Azure Tártallózó konfigurálásával kapcsolatos további információkért lásd: [Tártallózó csatlakozni a veremben Azure-előfizetéshez](azure-stack-storage-connect-se.md).
+ - Azure verem használható Azure Tártallózó konfigurálásával kapcsolatos további tudnivalókért lásd: [Tártallózó csatlakozni a veremben Azure-előfizetéshez](azure-stack-storage-connect-se.md).
+ - A Microsoft Azure Tártallózó kapcsolatos további információkért lásd: [Ismerkedés a Tártallózó (előzetes verzió)](../../vs-azure-tools-storage-manage-with-storage-explorer.md)
 
-További információ a Microsoft Azure Tártallózó: [Ismerkedés a Tártallózó (előzetes verzió)](../../vs-azure-tools-storage-manage-with-storage-explorer.md)
-
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Csatlakozás a Tártallózó verem Azure-előfizetéshez](azure-stack-storage-connect-se.md)
 * [Ismerkedés a Tártallózó (előzetes verzió)](../../vs-azure-tools-storage-manage-with-storage-explorer.md)
 * [Azure-konzisztens tárolási: különbségek és szempontok](azure-stack-acs-differences.md)

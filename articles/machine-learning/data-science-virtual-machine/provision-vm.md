@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/10/2017
 ms.author: bradsev
-ms.openlocfilehash: 6f933c75d4829e3b2c5198aeee324f15490d8a93
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: 9f01ba69f6511a3f9a7f99e379522be3c00554f5
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="provision-the-windows-data-science-virtual-machine-on-azure"></a>A Windows Data tudományos virtuális gépet az Azure telepítéséhez
 A Microsoft adatokat tudományos virtuális gép, a Windows Azure virtuális gép (VM) előtelepített és konfigurált számos népszerű eszköz adatelemzés és a gépi tanulás általánosan használt lemezkép. A rendszer részét képező eszközök:
@@ -39,8 +39,7 @@ A Microsoft adatokat tudományos virtuális gép, a Windows Azure virtuális gé
   * [Weka](http://www.cs.waikato.ac.nz/ml/weka/) : A látványelemek adatainak adatbányászati és gépi tanulási szoftver Java nyelven.
   * [Apache részletezési](https://drill.apache.org/): sémamentes SQL lekérdezési motorja Hadoop, a nosql-alapú és a felhőalapú tárolást.  ODBC és JDBC felületek engedélyezése lekérdező nosql-alapú és a szabványos Üzletiintelligencia-eszközök, például a Power BI, az Excel, a Tableau fájlokat támogatja.
 * Az R és Python a szalagtárak használja az Azure Machine Learning és más Azure-szolgáltatásokkal
-* Többek között beleértve a github webhelyen, a Visual Studio Team Services forráskódú adattárakban dolgozni a Git Bash Git
-* Számos népszerű Linux parancssori segédprogram (beleértve a awk, csökkentésének, perl, grep, keresés, wget, curl, stb.) Windows-port parancssor keresztül érhető el. 
+* Többek között beleértve a github webhelyen, a Visual Studio Team Services forráskódú adattárakban dolgozni a Git Bash Git számos népszerű Linux parancssori segédprogram (beleértve a awk, csökkentésének, perl, grep, keresés, wget, curl, stb.), és elérhető, mind a git bash-eszközt, illetve figyelmeztetés. 
 
 Adattudomány Ez magában foglalja a feladatok sorozata léptetés:
 
@@ -73,7 +72,7 @@ A Microsoft Data tudományos virtuális gép példány létrehozásához kövess
    1. **Alapvető beállítások**
       
       1. **Név**: az adatok tudományos kiszolgáló létrehozásakor nevét.
-      2. **Virtuális gép lemeztípus**: SSD és HDD választhat. A grafikus Processzor (NC-sorozat), válassza **HDD** , a lemez típusát. 
+      2. **Virtuális gép lemeztípus**: SSD és HDD választhat. NC_v1 GPU példány (NVidia Tesla K80 alapján), válassza a **HDD** , a lemez típusát. 
       3. **Felhasználónév**: rendszergazdai fiók bejelentkezési azonosító.
       4. **Jelszó**: rendszergazdai fiók jelszavát.
       5. **Előfizetés**: Ha több előfizetéssel rendelkezik, válassza ki a amelyiken a gép létrehozását és számlázva van.
@@ -99,35 +98,28 @@ Miután a virtuális gép létrehozása és üzembe helyezve, készen áll indí
 
 ## <a name="tools-installed-on-the-microsoft-data-science-virtual-machine"></a>Eszközök vannak telepítve a Microsoft Data tudományos virtuális gép
 
-### <a name="azure-machine-learning-workbench"></a>Azure Machine Learning Workbench
 
-Az Azure Machine Learning-munkaterület egy asztali alkalmazás és a parancssori felület. A munkaterület rendelkezik beépített adatok előkészítése, amely az adatok előkészítő lépések megtanulja őket hajt végre. Project management, futtassa az előzményeket és a termelékenység fokozni notebook integrációs is tartalmazza. Kihasználhatja a legjobb nyílt forráskódú keretrendszerekre, beleértve a TensorFlow, kognitív eszközkészlet, Spark ML és scikit – ismerje meg, a modellek fejlesztéséhez. A DSVM nyújtunk asztali ikon (InstallAMLFromLocal) helyileg bontsa ki az Azure Machine Learning-munkaterület minden felhasználó % LOCALAPPDATA % könyvtárba. Minden olyan felhasználóhoz, használja a munkaterületet üzemeltető kell egy művelettel azok a munkaterület-példány telepítését asztali InstallAMLFromLocal ikonra duplán kattintva idő. Az Azure Machine Learning is hoz létre, és használja ki kell olvasni a % LOCALAPPDATA%\amlworkbench\python felhasználói Python-környezetben.
 
 ### <a name="microsoft-ml-server-developer-edition"></a>Microsoft ML Server Developer Edition
 Ha szeretné használni a Microsoft vállalati szalagtárak méretezhető R vagy Python az elemzésekhez, a virtuális Gépnek legyen telepítve (korábbi nevén Microsoft R Server) Microsoft ML Server Developer kiadásában. Microsoft ML Server egy körben telepíthető vállalati szintű analytics platform R és Python is elérhető, és méretezhető, minden üzleti szempontból támogatott és biztonságos. Big Data típusú adatok statisztikák, a prediktív modellezési és a gépi tanulási képességek számos támogató, ML-kiszolgáló összes analytics – feltárása, elemzés, adatmegjelenítési és modellezési támogatja. Használatával, és nyílt forráskódú R és Python, Microsoft ML Server rendszer teljesen kompatibilis, az R vagy Python parancsfájlok, funkciók és CRAN / pip / Conda csomagokat, a vállalati adatok elemzésére méretezése. Adja hozzá az adatok párhuzamos és darabolt feldolgozása nyitott forrás R memórián belüli vonatkozó korlátozások is javítja. Ez lehetővé teszi, hogy futhat az analytics adatok nagyobb, mint mi elfér a fizikai memóriát.  A Visual Studio Community Edition szerepel-e a virtuális gép tartalmazza a Visual Studio és a Python eszközök Visual Studio-bővítmény, amely egy teljes IDE biztosít R vagy Python R eszközöket. Is biztosítunk más IDEs is, mint [Rstudióból](http://www.rstudio.com) és [PyCharm Community edition](https://www.jetbrains.com/pycharm/) a virtuális Gépen. 
 
 ### <a name="python"></a>Python
-A fejlesztési pythonos környezetekben Anaconda Python elosztási 2.7 és 3.5-ös telepítve van. Ehhez a terjesztéshez együtt a legnépszerűbb matematikai, tervezés és adatok analytics csomagok körülbelül 300 alap Python tartalmazza. Python Tools használhatja a Visual Studio (PTVS) belül a Visual Studio 2015 Community edition vagy kötegelt IDEs Anaconda ÜRESJÁRATBAN vagy Spyder például az egyik telepített. Indítja el az egyik meg a keresési sávon rákeresve (**Win** + **S** kulcs).
+A fejlesztési pythonos környezetekben Anaconda Python elosztási 2.7 és 3.6 telepítve van. Ehhez a terjesztéshez együtt a legnépszerűbb matematikai, tervezés és adatok analytics csomagok körülbelül 300 alap Python tartalmazza. Python Tools használhatja a Visual Studio (PTVS) belül a Visual Studio 2017 Community edition vagy kötegelt IDEs Anaconda ÜRESJÁRATBAN vagy Spyder például az egyik telepített. Indítja el az egyik meg a keresési sávon rákeresve (**Win** + **S** kulcs).
 
 > [!NOTE]
-> A Python Tools for Visual Studio Anaconda Python 2.7-es és 3.5-ös mutasson létrehozásához szükséges egyéni környezetek egyes verzióihoz. A Visual Studio 2015 Community Edition környezet elérési utak beállításához navigáljon **eszközök** -> **Python Tools** -> **Python-környezetek**majd **+ egyéni**. 
+> A Python Tools for Visual Studio Anaconda Python 2.7, mutasson létrehozásához szükséges egyéni környezetek egyes verzióihoz. A Visual Studio 2017 Community Edition környezet elérési utak beállításához navigáljon **eszközök** -> **Python Tools** -> **Python-környezetek**majd **+ egyéni**. 
 > 
 > 
 
-Anaconda Python 2.7 telepítőmappájában található C:\Anaconda és Anaconda Python 3.5 c:\Anaconda\envs\py35 telepítőmappájában található. Lásd: [PVTS dokumentációban](/visualstudio/python/python-environments.md#selecting-and-installing-python-interpreters) a részletes lépéseket. 
+Anaconda Python 3.6 telepítőmappájában található C:\Anaconda és Anaconda Python 2.7 c:\Anaconda\envs\python2 telepítőmappájában található. Lásd: [PVTS dokumentációban](/visualstudio/python/python-environments.md#selecting-and-installing-python-interpreters) a részletes lépéseket. 
 
 ### <a name="jupyter-notebook"></a>Jupyter notebook
-Jupyter notebook, egy környezet kóddal és elemzési anaconda terjesztési is tartalmaz. A Jupyter notebook kiszolgáló előre konfigurált, a Python 2.7, Python 3.5, PySpark, Ágnes és R kernelek lett. Nincs a Jupyter kiszolgáló indítása, és indítsa el a böngészőt a Notebook kiszolgáló eléréséhez "Jupyter Notebook" nevű asztali ikon. 
-
-> [!NOTE]
-> Folytassa, ha kapott tanúsítványt figyelmeztetéseket. 
-> 
-> 
+Jupyter notebook, egy környezet kóddal és elemzési anaconda terjesztési is tartalmaz. A Jupyter notebook kiszolgáló már előre konfigurált, a Python 2.7, Python 3.x, PySpark, Ágnes és R kernelek. Nincs a Jupyter kiszolgáló indítása, és indítsa el a böngészőt a Notebook kiszolgáló eléréséhez "Jupyter Notebook" nevű asztali ikon. 
 
 A Microsoft több minta jegyzetfüzetet r és Python csomagolását A Jupyter notebookok megjelenítése után hozzáférhet a Jupyter Microsoft ML Server, SQL Server ML Services (adatbázis-analytics), Python, Microsoft kognitív eszközkészlet, Tensorflow és más Azure technológiák használata. A notebook kezdőlapján a hivatkozásra kattintva a minták után a hitelesítést a Jupyter notebook a korábbi lépésben létrehozott jelszó használatával tekintheti meg. 
 
 ### <a name="visual-studio-2017-community-edition"></a>A Visual Studio 2017 Community edition
-A Visual Studio Community edition telepítve a virtuális Gépen. A népszerű IDE kis csoportjai és tesztelési célokra használható Microsoft ingyenes verzióját is. A licencfeltételek megtekintheti [Itt](https://www.visualstudio.com/support/legal/mt171547).  Az asztali ikonra duplán kattintva nyissa meg a Visual Studio vagy a **Start** menü. Programokat is kereshet **Win** + **S** , majd gépelje be a "Visual Studio". Ha van például a C#, Python, R, node.js nyelvű projektek is létrehozhat. Beépülő modulok települnek, amely együttműködik az Azure-szolgáltatásokat, mint az Azure Data Catalog, az Azure HDInsight (Hadoop, Spark) és az Azure Data Lake kényelmes. 
+A Visual Studio Community edition telepítve a virtuális Gépen. A népszerű IDE kis csoportjai és tesztelési célokra használható Microsoft ingyenes verzióját is. A licencfeltételek megtekintheti [Itt](https://www.visualstudio.com/support/legal/mt171547).  Az asztali ikonra duplán kattintva nyissa meg a Visual Studio vagy a **Start** menü. Programokat is kereshet **Win** + **S** , majd gépelje be a "Visual Studio". Ha van például a C#, Python, R, node.js nyelvű projektek is létrehozhat. Beépülő modulok települnek, amely együttműködik az Azure-szolgáltatásokat, mint az Azure Data Catalog, az Azure HDInsight (Hadoop, Spark) és az Azure Data Lake kényelmes. Most nincs is nevezett beépülő modul ```Visual Studio Tools for AI``` , amely zökkenőmentesen integrálható az Azure Machine Learning és a segítségével gyorsan build AI alkalmazások. 
 
 > [!NOTE]
 > Üzenet jelenik meg, hogy a próbaidőszak lejárt kaphat. Microsoft-fiók hitelesítő adatait, vagy hozzon létre egy új ingyenes fiókot, a Visual Studio Community Edition elérésének. 
@@ -170,6 +162,10 @@ Irányítópultok és a kiváló megjelenítések létrehozásához a **Power BI
 > 
 > 
 
+### <a name="azure-machine-learning-workbench"></a>Azure Machine Learning Workbench
+
+Az Azure Machine Learning-munkaterület egy asztali alkalmazás és a parancssori felület. A munkaterület rendelkezik beépített adatok előkészítése, amely az adatok előkészítő lépések megtanulja őket hajt végre. Project management, futtassa az előzményeket és a termelékenység fokozni notebook integrációs is tartalmazza. Kihasználhatja a legjobb nyílt forráskódú keretrendszerekre, beleértve a TensorFlow, kognitív eszközkészlet, Spark ML és scikit – ismerje meg, a modellek fejlesztéséhez. A DSVM nyújtunk telepítése az Azure Machine Learning-munkaterület könyvtárba, amely a felhasználó % LOCALAPPDATA % asztali ikon. Minden olyan felhasználóhoz, használja a munkaterületet üzemeltető kell egy time művelet dupla kattintás a ```AzureML Workbench Setup``` azok a munkaterület-példány telepítését asztali ikonra. Az Azure Machine Learning is hoz létre, és használja ki kell olvasni a % LOCALAPPDATA%\amlworkbench\python felhasználói Python-környezetben.
+
 ## <a name="additional-microsoft-development-tools"></a>További Microsoft fejlesztőeszközök
 A [ **Microsoft Webplatform-telepítő** ](https://www.microsoft.com/web/downloads/platform.aspx) felderítése és más Microsoft fejlesztői eszközök is használható. Az eszköz a Microsoft Data tudományos virtuális gép asztalán mutató hivatkozás is van.  
 
@@ -177,10 +173,10 @@ A [ **Microsoft Webplatform-telepítő** ](https://www.microsoft.com/web/downloa
 | Elem | Címtár |
 | --- | --- |
 | Jupyter notebook kiszolgáló konfigurációk |C:\ProgramData\jupyter |
-| Jupyter Notebook minták kezdőkönyvtár |c:\dsvm\notebooks |
+| Jupyter Notebook minták kezdőkönyvtár |c:\dsvm\notebooks és c:\users\<felhasználónév > \notebooks|
 | Más minták |c:\dsvm\samples |
-| Anaconda (alapértelmezett: Python 2.7) |c:\Anaconda |
-| Anaconda Python 3.5 környezet |c:\Anaconda\envs\py35 |
+| Anaconda (alapértelmezett: Python 3.6) |c:\Anaconda |
+| Anaconda Python 2.7 environment |c:\Anaconda\envs\python2 |
 | Microsoft ML Server Standalone Python  | C:\Program Files\Microsoft\ML Server\PYTHON_SERVER |
 | Alapértelmezett R-példány (ML-kiszolgáló önálló) |C:\Program Files\Microsoft\ML Server\R_SERVER |
 | SQL ML szolgáltatások adatbázis-példány könyvtára |C:\Program Files\Microsoft SQL Server\MSSQL14.MSSQLSERVER |
@@ -188,7 +184,7 @@ A [ **Microsoft Webplatform-telepítő** ](https://www.microsoft.com/web/downloa
 | Egyéb eszközök |c:\dsvm\tools |
 
 > [!NOTE]
-> Példányok, a Microsoft Data tudományos létrehozott virtuális gépek előtt 1.5.0 (előtt 2016 szeptemberétől 3.) egy némileg eltérő könyvtárstruktúrát használja, mint az előző táblázatban megadott. 
+> A Windows Server 2012 edition DSVM és a Windows Server 2016. március 2018 előtt kiadás az alapértelmezett Anaconda környezete Python 2.7. A másodlagos környezete Python 3.5 c:\Anaconda\envs\py35 helyen. 
 > 
 > 
 

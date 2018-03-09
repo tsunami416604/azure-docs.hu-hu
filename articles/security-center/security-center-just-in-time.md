@@ -12,20 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/26/2018
+ms.date: 03/06/2018
 ms.author: terrylan
-ms.openlocfilehash: a15857f0df5c967031aed00d89e71b3199eed0c4
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: f1ea31d1081bc263cf85cf4dcc3d73d4cc0b842d
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 03/08/2018
 ---
-# <a name="manage-virtual-machine-access-using-just-in-time-preview"></a>JIT (előzetes verzió) a virtuálisgép-hozzáférés kezelése
+# <a name="manage-virtual-machine-access-using-just-in-time"></a>JIT-virtuális gép hozzáférés kezelése
 
 Csak az idő a virtuális gép (VM) hozzáférés segítségével az Azure virtuális gépeken, támadásoknak való kitettség csökkentése során könnyen hozzá lehet férni a virtuális gépekhez, szükség esetén csatlakoztassa a bejövő forgalom zárolását.
 
 > [!NOTE]
-> A szolgáltatás egyelőre időben csak és érhető el a Security Center Standard csomagra.  Lásd: [árazás](security-center-pricing.md) további bővebben a Security Center által tarifacsomag szükséges.
+> A csak időbeli funkció érhető el a Security Center Standard csomagra.  Lásd: [árazás](security-center-pricing.md) további bővebben a Security Center által tarifacsomag szükséges.
 >
 >
 
@@ -33,7 +33,7 @@ Csak az idő a virtuális gép (VM) hozzáférés segítségével az Azure virtu
 
 Találgatásos támadások gyakran felügyeleti célportjainak jelentkezhessenek be a virtuális gépek eléréséhez. Ha sikeres, a támadó ellenőrzése alatt tartja a virtuális gép igénybe, és egy foothold létesíteni a környezetbe.
 
-Egy találgatásos támadással való kitettség csökkentése érdekében módja az, hogy mennyi ideig legyen egy nyitott port korlátozza. Szolgáltatásfelügyelet portjai nem kell mindig kapcsolódniuk kell megnyitni. Csak szükségük lehet megnyitva, amikor csatlakoznak a virtuális Gépet, például felügyeleti vagy karbantartási feladatok elvégzésére. Amikor a JIT engedélyezve van, a Security Center az [hálózati biztonsági csoport](../virtual-network/virtual-networks-nsg.md) (NSG) szabályok, amelyek felügyelet portjai való hozzáférés korlátozása, így nem tudja megcélozni a támadók.
+Egy találgatásos támadással való kitettség csökkentése érdekében módja az, hogy mennyi ideig legyen egy nyitott port korlátozza. A felügyeleti portoknak nem kell mindig nyitva lenniük. Csak addig kell nyitva lenniük, amíg Ön csatlakozik a virtuális géphez, például azért, hogy felügyeleti vagy karbantartási feladatokat végezzen. Amikor a JIT engedélyezve van, a Security Center az [hálózati biztonsági csoport](../virtual-network/virtual-networks-nsg.md) (NSG) szabályok, amelyek felügyelet portjai való hozzáférés korlátozása, így nem tudja megcélozni a támadók.
 
 ![Csak az idő forgatókönyv][1]
 
@@ -60,14 +60,14 @@ A **közvetlenül a virtuális gép elérhető** ablak nyílik meg.
 
 ![Virtuális gép hozzáférés JIT csempéje][10]
 
-**Csak a virtuális gép elérhető** információt nyújt a virtuális gépek állapotát:
+A **Just in time VM access** (Igény szerinti hozzáférés a virtuális gépekhez) információt nyújt a virtuális gépek állapotáról:
 
-- **Konfigurált** -virtuális gépek, amelyek csak a virtuális gép elérhető támogatására vannak konfigurálva. Közölt adatok az elmúlt héten, és az egyes virtuális gépek magában foglalja a jóváhagyott kéréseket, legutóbbi hozzáférés dátuma és időpontja és utolsó felhasználó számát.
-- **Ajánlott** -csak a virtuális gép elérhető támogatható, de nincs beállítva a virtuális gépeket. Javasoljuk, hogy engedélyezze a csak az idő VM hozzáférés-vezérlés a virtuális gépeken. Lásd: [konfigurálása csak hozzáférési házirendben idő](#configuring-a-just-in-time-access-policy).
-- **Nincs javaslat** – ennek oka, hogy egy virtuális Gépet nem lehet ajánlott okozhatják:
-  - Hiányzik az NSG - a csak időbeli megoldáshoz szükségesek egy NSG-t kell.
-  - Klasszikus VM - VM elérhető csak a Security Center jelenleg csak virtuális gépek Azure Resource Manager használatával telepített. A klasszikus üzembe helyezési nem támogatja a csak az idő megoldás.
-  - Ebbe a kategóriába tartozó egyéb - egy virtuális gép van Ha pedig csak a megoldás ki van kapcsolva a biztonsági szabályzatban az előfizetés vagy az erőforráscsoportot, vagy időpontban a virtuális gép hiányzik egy nyilvános IP-cím, és nem rendelkezik egy NSG.
+- **Configured** (Konfigurált) – Olyan virtuális gépek, amelyeket úgy vannak konfigurálva, hogy támogassák a virtuális gépek igény szerinti elérését. Közölt adatok az elmúlt héten, és az egyes virtuális gépek magában foglalja a jóváhagyott kéréseket, legutóbbi hozzáférés dátuma és időpontja és utolsó felhasználó számát.
+- **Recommended** (Ajánlott) – Olyan virtuális gépek, amelyek támogatni tudják a virtuális gépek igény szerinti elérését, de nem lettek erre konfigurálva. Javasoljuk, hogy engedélyezze a csak az idő VM hozzáférés-vezérlés a virtuális gépeken. Lásd: [konfigurálása csak hozzáférési házirendben idő](#configuring-a-just-in-time-access-policy).
+- **No recommendation** (Nincs javaslat) – A virtuális gépek a következő okokból kerülhetnek ebbe a kategóriába:
+  - Missing NSG (Hiányzó NSG) – Az igény szerinti megoldáshoz szükség van egy NSG-re.
+  - Classic VM (Klasszikus virtuális gép) – A Security Centerben a virtuális gépek igény szerinti elérése jelenleg csak az Azure Resource Manageren keresztül üzembe helyezett virtuális gépek esetén támogatott. A klasszikus üzembe helyezési nem támogatja a csak az idő megoldás.
+  - Other (Egyéb) – A virtuális gép akkor kerül ebbe a kategóriába, ha az előfizetés biztonsági szabályzatában vagy az erőforráscsoportban ki van kapcsolva az igény szerinti megoldás, vagy ha a virtuális gépnek hiányzik a nyilvános IP-címe, és nem rendelkezik NSG-vel.
 
 ## <a name="configuring-a-just-in-time-access-policy"></a>Beállítása csak hozzáférési házirendben idő
 

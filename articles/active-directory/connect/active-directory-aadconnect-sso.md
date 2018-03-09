@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/18/2017
+ms.date: 03/07/2018
 ms.author: billmath
-ms.openlocfilehash: b71a2f19fee370ab1d732becd1c3b644505e2233
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: 14018db3cbe34c9eca9048ceaf376ff3a06a4353
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Az Azure Active Directory zökkenőmentes egyszeri bejelentkezést.
 
@@ -51,6 +51,8 @@ Zökkenőmentes SSO kombinálva, vagy a [Jelszókivonat-szinkronizálást](activ
 - Bejelentkezési felhasználónév vagy a helyszíni alapértelmezett felhasználónév lehet (`userPrincipalName`) vagy az Azure AD Connect konfigurált egy másik attribútum (`Alternate ID`). Mindkét esetben a munkahelyi használható, mert a zökkenőmentes egyszeri Bejelentkezést használ a `securityIdentifier` ellenőrizzék a megfelelő felhasználói objektum, az Azure ad-ben a Kerberos jegyet a jogcímek.
 - Zökkenőmentes SSO az alkalmi szolgáltatása. Ha bármilyen okból nem sikerül, a felhasználói bejelentkezési élmény visszatér a rendszeres viselkedését - Egytényezős, a felhasználó adja meg a jelszót a bejelentkezési oldalon kell.
 - Ha egy alkalmazás továbbítja a `domain_hint` (OpenID Connect) vagy `whr` (SAML) paraméter - azonosító a bérlő vagy `login_hint` paraméter - azonosító a felhasználó a Azure AD-bejelentkezés kérelemre, a felhasználók automatikusan bejelentkeztetjük nélkül őket Írja be a felhasználónevet és jelszót.
+- Kijelentkezési esetén támogatott. Ez lehetővé teszi a felhasználók kiválaszthatják a bejelentkezéshez, zökkenőmentes SSO használatával automatikusan automatikusan aláírás alatt álló helyett egy másik Azure AD-fiókot.
+- Office 365-ügyfelek (16.0.8730.xxxx és újabb) használata támogatott a nem interaktív folyamat használatával.
 - Az Azure AD Connect használatával engedélyezhető.
 - Egy szabad szolgáltatást, és nem kell használni az Azure AD bármely fizetős verziója.
 - A webes webböngésző-alapú ügyfelek és a támogató Office-ügyfelek támogatott [modern hitelesítést](https://aka.ms/modernauthga) platformok és böngészők képes a Kerberos-hitelesítés:

@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/28/2018
+ms.date: 03/07/2018
 ms.author: jingwang
-ms.openlocfilehash: c924640feffea4cbe0372cabc937656d2ec41c7d
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: b12477b855dad28976989e694888667fd0cb6b20
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="copy-data-from-mongodb-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatával MongoDB
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -41,7 +41,7 @@ Pontosabban a MongoDB összekötő támogatja:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Adatok másolása a MongoDB-adatbázist, amely nincs nyilvánosan elérhető, akkor be kell állítania egy Self-hosted integrációs futásidejű. Lásd: [Self-hosted integrációs futásidejű](create-self-hosted-integration-runtime.md) cikk további részleteket. Integrációs futásidejű biztosít egy beépített MongoDB-illesztőprogramot, ezért nem, manuálisan kell telepítenie minden olyan illesztőprogram MongoDB a/az adatok másolásakor kell.
+Adatok másolása a MongoDB-adatbázist, amely nincs nyilvánosan elérhető, akkor be kell állítania egy Self-hosted integrációs futásidejű. Lásd: [Self-hosted integrációs futásidejű](create-self-hosted-integration-runtime.md) cikk további részleteket. Integrációs futásidejű biztosít egy beépített MongoDB-illesztőprogramot, ezért nem, manuálisan kell telepítenie minden olyan illesztőprogram MongoDB-adatok másolásakor kell.
 
 ## <a name="getting-started"></a>Első lépések
 

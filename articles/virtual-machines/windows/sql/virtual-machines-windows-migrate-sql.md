@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/13/2018
 ms.author: jroth
-ms.openlocfilehash: 23538e933c8d1c2165cec1bdf1e9db28e0065801
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 64245a968eca94518d2e4238b4bc5c93c952563a
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="migrate-a-sql-server-database-to-sql-server-in-an-azure-vm"></a>SQL Server-adatbázis áttelepítése Azure-beli virtuális gépen futó SQL Serverre
 
@@ -96,6 +96,9 @@ Használja a [Windows Import/Export szolgáltatás metódus](../../../storage/co
 
 ## <a name="next-steps"></a>További lépések
 További információ az SQL Servert futtató Azure virtuális gépeken: [SQL Server Azure virtuális gépek – áttekintés](virtual-machines-windows-sql-server-iaas-overview.md).
+
+> [!TIP]
+> Ha az SQL Server virtuális gépek kérdése van, tekintse meg a [gyakran ismételt kérdések](virtual-machines-windows-sql-server-iaas-faq.md).
 
 Egy Azure SQL Server virtuális gép létrehozása egy rögzített lemezképből, lásd: [tippek & a "klónozást" Azure SQL-virtuális gépek a rögzített lemezképeket trükkök](https://blogs.msdn.microsoft.com/psssql/2016/07/06/tips-tricks-on-cloning-azure-sql-virtual-machines-from-captured-images/) a CSS SQL Server mérnökök blogjában.
 

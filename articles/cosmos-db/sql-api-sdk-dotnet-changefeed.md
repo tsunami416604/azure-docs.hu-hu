@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 12/05/2017
+ms.date: 03/07/2018
 ms.author: maquaran
-ms.openlocfilehash: 962ad3aca82e34fa22da925a274a1e82e2086e03
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 7e53cf67bc6e03a5f45de5ad4e23ff91624874f4
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET módosítás adatcsatorna processzor SDK: Töltse le és a kibocsátási megjegyzések
 > [!div class="op_single_selector"]
@@ -43,6 +43,11 @@ ms.lasthandoff: 03/02/2018
 |**Aktuális támogatott keretrendszer**| [Microsoft .NET-keretrendszer 4.5](https://www.microsoft.com/download/details.aspx?id=30653)</br> [A Microsoft .NET Core](https://www.microsoft.com/net/download/core) |
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
+
+### <a name="a-name130130"></a><a name="1.3.0"/>1.3.0
+* Jobb stabilitás.
+* Manuális ellenőrzőpontok támogatása.
+* Kompatibilis [SQL .NET SDK](sql-api-sdk-dotnet.md) 1.21 verzió vagy újabb verzió.
 
 ### <a name="a-name120120"></a><a name="1.2.0"/>1.2.0
 * Támogatást nyújt a .NET-szabvány 2.0. A csomag most már támogatja a `netstandard2.0` és `net451` keretrendszer monikerek.
@@ -72,6 +77,7 @@ A Cosmos DB kivont SDK használatával fog kell elutasította a szolgáltatás.
 
 | Verzió | Kiadás dátuma | Kivezetési dátum |
 | --- | --- | --- |
+| [1.3.0](#1.3.0) |2018. március 07. |--- |
 | [1.2.0](#1.2.0) |2017. október 31. |--- |
 | [1.1.1](#1.1.1) |2017. augusztus 29. |--- |
 | [1.1.0](#1.1.0) |2017. augusztus 13. |--- |

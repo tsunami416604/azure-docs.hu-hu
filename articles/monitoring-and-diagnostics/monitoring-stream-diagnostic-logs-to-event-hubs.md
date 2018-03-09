@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/22/2017
+ms.date: 03/06/2018
 ms.author: johnkem
-ms.openlocfilehash: bcb9fcb2371217e7082d96ddbba4a095e6d9a00f
-ms.sourcegitcommit: a648f9d7a502bfbab4cd89c9e25aa03d1a0c412b
+ms.openlocfilehash: 72876e38f77aa7a13c0dd9a8cdf9479e058f4a0d
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/22/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="stream-azure-diagnostic-logs-to-an-event-hub"></a>Az adatfolyam Azure diagnosztikai naplók az eseményközpontba
 **[Az Azure diagnosztikai naplók](monitoring-overview-of-diagnostic-logs.md)**  továbbítható közel valós idejű bármely alkalmazás a beépített "Exportálás az Event Hubs" beállítás használatával, a portálon, vagy a központi engedélyezési szabály eseményazonosító keresztül az Azure diagnosztikai beállítás engedélyezésével PowerShell-parancsmagok vagy Azure CLI-t.
@@ -83,19 +83,19 @@ Néhány másodpercen belül az új beállítás jelenik meg az ehhez az erőfor
 Adatfolyamként keresztül a [Azure PowerShell-parancsmagok](insights-powershell-samples.md), használhatja a `Set-AzureRmDiagnosticSetting` parancsmag ezekkel a paraméterekkel:
 
 ```powershell
-Set-AzureRmDiagnosticSetting -ResourceId [your resource ID] -ServiceBusRuleId [your Service Bus rule ID] -Enabled $true
+Set-AzureRmDiagnosticSetting -ResourceId [your resource ID] -EventHubAuthorizationRuleId [your Event Hub namespace auth rule ID] -Enabled $true
 ```
 
-A Service Bus Szabályazonosító: karakterlánc a következő formátumban: `{Service Bus resource ID}/authorizationrules/{key name}`, például `/subscriptions/{subscription ID}/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.ServiceBus/namespaces/{Service Bus namespace}/authorizationrules/RootManageSharedAccessKey`. Jelenleg nem választhat egy adott eseményközpont neveként a PowerShell használatával.
+A központi engedélyezési szabály Eseményazonosító: a formátumú karakterlánc: `{Event Hub namespace resource ID}/authorizationrules/{key name}`, például `/subscriptions/{subscription ID}/resourceGroups/{resource group}/providers/Microsoft.EventHub/namespaces/{Event Hub namespace}/authorizationrules/RootManageSharedAccessKey`. Jelenleg nem választhat egy adott eseményközpont neveként a PowerShell használatával.
 
-### <a name="via-azure-cli"></a>Az Azure parancssori felület használatával
+### <a name="via-azure-cli"></a>Via Azure CLI
 Adatfolyamként keresztül a [Azure CLI](insights-cli-samples.md), használhatja a `insights diagnostic set` ehhez hasonló parancsot:
 
 ```azurecli
 azure insights diagnostic set --resourceId <resourceID> --serviceBusRuleId <serviceBusRuleID> --enabled true
 ```
 
-A Service Bus Szabályazonosító ugyanazt a formátumot használja, a PowerShell-parancsmag leírtak szerint. Jelenleg nem választhat egy adott eseményközpont neveként az Azure parancssori felület segítségével.
+Az Event Hub engedélyezési szabály azonosítója ugyanazt a formátumot használja, a PowerShell-parancsmag leírtak szerint. Jelenleg nem választhat egy adott eseményközpont neveként az Azure parancssori felület segítségével.
 
 ## <a name="how-do-i-consume-the-log-data-from-event-hubs"></a>Hogyan Eseményközpontokból származó napló adatokat felhasználó?
 Minta kimenet Eseményközpontokból származó adatokat a következő:

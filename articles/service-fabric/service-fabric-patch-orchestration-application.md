@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 1/16/2018
+ms.date: 3/07/2018
 ms.author: nachandr
-ms.openlocfilehash: bb3afdd3afa81664589f738945a63d20013d5291
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 43a0675b1613e7bcf338537c1203de7df9a02fc4
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>A Windows operációs rendszer a Service Fabric-fürt javítás
 
@@ -136,7 +136,9 @@ A Windows automatikus frissítések rendelkezésre állást vezethet, mivel egys
 
 ## <a name="download-the-app-package"></a>A csomag letöltése
 
-Töltse le az alkalmazást a [letöltése hivatkozásra](https://go.microsoft.com/fwlink/P/?linkid=849590).
+Telepítési parancsfájlok mellett alkalmazást is letölthető [archív hivatkozás](https://go.microsoft.com/fwlink/?linkid=869566).
+
+Alkalmazás sfpkg formátumban letölthető a [sfpkg hivatkozás](https://go.microsoft.com/fwlink/?linkid=869567). Ez hasznos előre [Azure Resource Manager-alapú alkalmazás központi telepítésének](service-fabric-application-arm-resource.md).
 
 ## <a name="configure-the-app"></a>Az alkalmazás konfigurálása
 
@@ -361,8 +363,12 @@ A rendszergazda kell beavatkozhat, és határozza meg, miért az alkalmazás vag
 ### <a name="version-111"></a>1.1.1 verziója
 - Programhiba rögzített SetupEntryPoint a NodeAgentService, amely megakadályozta a NodeAgentNTService telepítését.
 
-### <a name="version-120-latest"></a>1.2.0 verzió (legújabb)
+### <a name="version-120"></a>1.2.0 verzió
 
 - Hibajavítások körül rendszer indítsa újra a munkafolyamatot.
 - Hiba a javítás mely állapota miatt ellenőrzése során a helyreállítási feladatok előkészítése nem történik, várt módon RM feladatok létrehozásához.
 - Megváltozott az indítási mód windows POANodeSvc Service automatikus késleltetett automatikusra.
+
+### <a name="version-121-latest"></a>1.2.1-es (legújabb)
+
+- Hiba a javítás fürt lefelé méretezéshez munkafolyamatban. Szemétgyűjtési gyűjtemény logika POA javítási tevékenységek nem létező csomóponthoz tartozó vezette be.

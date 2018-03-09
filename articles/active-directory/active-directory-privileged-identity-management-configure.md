@@ -3,7 +3,7 @@ title: "Konfigurálja az Azure AD Privileged Identity Management |} Microsoft Do
 description: "Ez a témakör azt ismerteti, mi az Azure AD Privileged Identity Management és a PIM használatát a felhő biztonság növelése érdekében."
 services: active-directory
 documentationcenter: 
-author: barclayn
+author: billmath
 manager: mtillman
 editor: 
 ms.assetid: c548ed2e-06e3-4eaf-a63d-0f02ee72da25
@@ -12,21 +12,29 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/18/2017
-ms.author: barclayn
+ms.date: 03/07/2018
+ms.author: billmath
 ms.custom: pim
-ms.openlocfilehash: 94855cf102764532fa0a6718541beffe93230fd1
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 827e3521be8918f4de00113fd9eaf4e01679cac5
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>Mi az Azure AD Privileged Identity Management?
 
 Az Azure Active Directory (AD) Privileged Identity Management segítségével kezelheti, irányíthatja és felügyelheti a szervezeten belüli hozzáféréseket. Ez magában foglalja erőforrásokhoz való hozzáférést, az Azure AD-Azure-erőforrások (előzetes verzió), és más Microsoft Online szolgáltatások, például Office 365-öt vagy a Microsoft Intune.
 
 > [!NOTE]
-> A privileged Identity Management a rendszergazdák az Azure Active Directory Premium P2 kiadásával licenceli esetén érhető el a teljes szervezet számára. További információk: [Azure Active Directory editions](active-directory-editions.md) (Azure Active Directory-kiadások).
+> Ha engedélyezi a Privileged Identity Management a bérlő számára, egy érvényes Azure AD Premium P2 vagy vállalati mobilitási + biztonsági E5 fizetős, vagy próba licencre szükség minden olyan felhasználóhoz, a szolgáltatással együttműködő vagy előnye kap a szolgáltatástól. Ilyen például a felhasználók, felhasználók > a csoport, amelyek:
+>
+>- A kiemelt szerepkör rendszergazdai szerepkörhöz hozzárendelt 
+>- A jogosult más directory PIM keresztül kezelhető szerepkörök hozzárendelése 
+>- Képes a PIM kérelmek jóváhagyása vagy elutasítása 
+>- Egy Azure erőforráscsoport-szerepkörrel csak az idő vagy közvetlen (időpontokat) hozzárendelésekben  
+>- Rendelt egy áttekintése
+>
+>További információk: [Azure Active Directory editions](active-directory-editions.md) (Azure Active Directory-kiadások).
 
 A szervezetek szeretne személyek, akiknek információ vagy az erőforrások biztonságos elérését, mert, amely csökkenti az esélyét, hogy a hozzáférést egy rosszindulatú felhasználó, vagy véletlenül a bizalmas erőforrások érintő hitelesített felhasználó számának minimalizálása érdekében.  Azonban felhasználók továbbra is el kell végezniük a jogosultságokhoz kötött műveletek az Azure AD-Azure, az Office 365 vagy az SaaS-alkalmazásokhoz. A szervezetek felhasználók privilegizált hozzáférést biztosíthat Azure erőforrásokat, például az előfizetések és az Azure AD számára. Nincs szükség a felhasználók tevékenységeit a rendszergazda jogosultságokkal a felügyeletet. Az Azure AD Privileged Identity Management túlzott, szükségtelen a kockázatok csökkentése érdekében segítségével, vagy helytelen a hozzáférési jogosultságokat.
 
@@ -54,7 +62,7 @@ Az Azure AD Privileged Identity Management indíthatja a [Azure-portálon](https
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/) a címtára globális rendszergazdájaként.
 2. Ha a szervezet több címtárral rendelkezik, akkor kattintson a felhasználónevére az Azure Portal jobb felső sarkában. Válassza ki a könyvtárat, ahol az Azure AD Privileged Identity Management fogja használni.
-3. Válassza ki **minden szolgáltatás** , és keresse meg a Szűrő mezőbe segítségével **Azure AD Privileged Identity Management**.
+3. Válassza a **Minden szolgáltatás** lehetőséget, és a Szűrő szövegmezővel keresse meg az **Azure AD Privileged Identity Management** elemet.
 4. Jelölje be a **Rögzítés az irányítópulton** jelölőnégyzetet, majd kattintson a **Létrehozás** gombra. Megnyílik a Privileged Identity Management alkalmazás.
 
 Ha Ön az első, aki a címtárban az Azure AD Privileged Identity Management használata, akkor navigáljon az Azure Active directory szerepkörök és az Azure Active directory szerepkörök, keresse meg a [biztonsági varázsló](active-directory-privileged-identity-management-security-wizard.md) végigvezeti a kezdeti hozzárendelés felületet. Ezt követően automatikusan vált az első **biztonsági rendszergazda** és **kiemelt szerepkörű rendszergazda** a könyvtár.

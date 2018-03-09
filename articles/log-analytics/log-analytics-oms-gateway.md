@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/14/2018
 ms.author: magoedte
-ms.openlocfilehash: daf3cc236ef04ae27731e023d35cfe2aa82fc70a
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 10422af5a57fc4da77958f15af5b2db61c023e40
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="connect-computers-without-internet-access-using-the-oms-gateway"></a>Csatlakoztassa a számítógépet az OMS-átjáró internetkapcsolat nélkül
 Ez a dokumentum ismerteti a kommunikáció konfigurálása az Azure Automation szolgáltatásban, és az OMS-átjáró, ha közvetlen Naplóelemzési csatlakoztatva, vagy az Operations Manager figyelt számítógépek nem rendelkeznek Internet-hozzáféréssel.  Az OMS-átjáró, amely, amely támogatja a HTTP-bújtatás a HTTP-csatlakozás parancs használatával továbbítsa HTTP-proxyt, adatokat gyűjteni, és elküldi a Azure Automation és Naplóelemzési részére azok nevében.  
@@ -82,7 +82,7 @@ Az OMS-átjáró a következő nyelveken érhető el:
 Az OMS-átjáró csak a Transport Layer Security (TLS) 1.0-s, 1.1-es és 1.2-es támogatja.  Nem támogatja a Secure Sockets Layer (SSL).
 
 ### <a name="supported-number-of-agent-connections"></a>Támogatott ügynök-kapcsolatok száma
-A következő táblázat emeli ki az ügynökök egy átjáró kiszolgálóval való kommunikáció során támogatott számát.  Ez a támogatás feltöltése ~ 200KB adatot 6 másodpercenként ügynökök alapul. Tesztelt ügynök / adatmennyiség naponta körülbelül 2.7 GB-TAL.
+A következő táblázat ismerteti az egy átjáró kiszolgálóval való kommunikáció ügynökök támogatott száma.  Ez a támogatás feltöltése ~ 200KB adatot 6 másodpercenként ügynökök alapul. Tesztelt ügynök / adatmennyiség naponta körülbelül 2.7 GB-TAL.
 
 |Átjáró |Támogatott ügynökök száma KB.|  
 |--------|----------------------------------|  
@@ -289,7 +289,7 @@ Az alábbi táblázat a eseményazonosítók és az OMS-átjáró naplóesemény
 | 103 |HTTP-Csatlakozás parancsot kapott az ügyféltől |
 | 104 |Nem egy HTTP-csatlakozás parancs |
 | 105 |Célkiszolgáló nem engedélyezett listában vagy a célport nem biztonságos portja (443) <br> <br> Győződjön meg arról, hogy az átjárókiszolgálón az MMA ügynök és az ügynökök kommunikál az átjáró csatlakozik a ugyanazt a Naplóelemzési munkaterület. |
-| 105 |Hiba TcpConnection – érvénytelen ügyféltanúsítvány: CN = átjáró <br><br> Győződjön meg arról, hogy: <br>    <br> &#149; Átjáró verziószámú 1.0.395.0 használ, vagy nagyobb. <br> &#149; Az átjárókiszolgálón az MMA ügynök és az ügynökök kommunikál az átjáró csatlakozik a ugyanazt a Naplóelemzési munkaterület. |
+| 105 |Hiba TcpConnection – érvénytelen ügyféltanúsítvány: CN = átjáró <br><br> Győződjön meg arról, hogy: <br>    <br> &#149;Átjáró verziószámú 1.0.395.0 használ, vagy nagyobb. <br> &#149;Az átjárókiszolgálón az MMA ügynök és az ügynökök kommunikál az átjáró csatlakozik a ugyanazt a Naplóelemzési munkaterület. |
 | 106 |Az OMS-átjáró csak akkor támogatja, a TLS 1.0, TLS 1.1-es és 1.2-es.  Nem támogatja az SSL. Nem támogatott a TLS/SSL protokoll bármilyen, az OMS-átjáró event ID 106 állít elő.|
 | 107 |A TLS-munkamenet ellenőrzése megtörtént |
 

@@ -6,7 +6,7 @@ MS.AssetId: 2a23e4ca-ea93-4990-855a-1f9f05548202 ms.service: sql-adatbázis ms.c
 ---
 # <a name="sql-error-codes-for-sql-database-client-applications-database-connection-errors-and-other-issues"></a>Az SQL Database-ügyfélalkalmazások SQL hibakódjai: adatbázis-csatlakozási hibáinak és egyéb problémák
 
-Ez a cikk az SQL-adatbázis ügyfélalkalmazások, például adatbázis-kapcsolati hibák, átmeneti hibák (más néven átmeneti), erőforrás irányítás hibák, adatbázis-másolat problémák, rugalmas készlet és egyéb hibák SQL hibakódok sorolja fel. A legtöbb kategóriák adott, az Azure SQL Database, és nem vonatkoznak a Microsoft SQL Server. Lásd még: [rendszer hibaüzenetek](https://technet.microsoft.com/en-us/library/cc645603(v=sql.105).aspx).
+Ez a cikk az SQL-adatbázis ügyfélalkalmazások, például adatbázis-kapcsolati hibák, átmeneti hibák (más néven átmeneti), erőforrás irányítás hibák, adatbázis-másolat problémák, rugalmas készlet és egyéb hibák SQL hibakódok sorolja fel. A legtöbb kategóriák adott, az Azure SQL Database, és nem vonatkoznak a Microsoft SQL Server. Lásd még: [rendszer hibaüzenetek](https://technet.microsoft.com/library/cc645603(v=sql.105).aspx).
 
 ## <a name="database-connection-errors-transient-errors-and-other-temporary-errors"></a>Adatbázis-kapcsolati hibák átmeneti hibák és egyéb átmeneti hibák
 A következő táblázat ismerteti az adatveszteség-csatlakozási hibáinak és egyéb átmeneti hibák az alkalmazás megpróbál hozzáférni az SQL-adatbázis előforduló SQL hibakódok. Első lépések – oktatóanyagok az Azure SQL adatbázis csatlakoztatása, lásd: [csatlakozás az Azure SQL Database](sql-database-libraries.md).

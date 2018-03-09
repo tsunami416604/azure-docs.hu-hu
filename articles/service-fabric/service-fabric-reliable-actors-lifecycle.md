@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/06/2017
 ms.author: amanbha
-ms.openlocfilehash: d49afd9e5cfe80ddc2d919c76eaa0cb168280c15
-ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
+ms.openlocfilehash: dd45acd75e1cf263029c869d88c87b28f56d50cc
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="actor-lifecycle-automatic-garbage-collection-and-manual-delete"></a>Aktor életciklusát, automatikus szemétgyűjtés és manuális törlése
 Egy szereplő először egy kezdeményezték bármelyik metódusa aktiválva. Egy szereplő az inaktív (szemétgyűjtési a szereplője futtatókörnyezet által összegyűjtött), ha a konfigurált időtartamon nem használható. Egy szereplő és annak állapotát is törölhetők manuálisan bármikor.
@@ -48,7 +48,7 @@ Amikor egy szereplő az Inaktiválás kiadott szereplő objektum hivatkozik, és
 Mi számít "használatban" inaktiválási és szemétgyűjtés?
 
 * Hívás fogadása
-* `IRemindable.ReceiveReminderAsync`(csak akkor, ha a szereplő használ emlékeztetők alkalmazható) meghívott metódus
+* `IRemindable.ReceiveReminderAsync` (csak akkor, ha a szereplő használ emlékeztetők alkalmazható) meghívott metódus
 
 > [!NOTE]
 > az aktor időzítők használ, és időzítő visszahívási meghívták, ha az nem **nem** mint "használják" száma.
@@ -144,13 +144,13 @@ A következő hatásai vannak, attól függően, hogy-e a szereplő jelenleg akt
 
 Vegye figyelembe, hogy nem hívható meg egy szereplő törli a magát az aktor módszerek egyikét a szereplő, amelyben a futtatókörnyezet kapott a zárolási körül szereplő hívása egyszálas hozzáférés kényszerítésére az aktor hívás környezeten belül végrehajtása során nem törölhető, mert.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Aktor időzítők és az emlékeztetők](service-fabric-reliable-actors-timers-reminders.md)
 * [Szereplő események](service-fabric-reliable-actors-events.md)
 * [Aktor rögzítve](service-fabric-reliable-actors-reentrancy.md)
 * [Aktor diagnosztika és teljesítményfigyelés](service-fabric-reliable-actors-diagnostics.md)
 * [Aktor API referenciadokumentációt](https://msdn.microsoft.com/library/azure/dn971626.aspx)
-* [C# mintakód](https://github.com/Azure/servicefabric-samples)
+* [C# mintakód](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
 * [Java mintakód](http://github.com/Azure-Samples/service-fabric-java-getting-started)
 
 <!--Image references-->

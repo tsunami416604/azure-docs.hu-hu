@@ -1,5 +1,5 @@
 ---
-title: "Az Azure CDN szabálymotor vonatkozó feltételek egyeznek |} Microsoft Docs"
+title: "Az Azure CDN szabályok motor egyezés feltételek |} Microsoft Docs"
 description: "Az Azure Content Delivery Network referenciadokumentációt szabályok motor egyeztetési feltételeknek."
 services: cdn
 documentationcenter: 
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/21/2017
 ms.author: rli
-ms.openlocfilehash: 08845355be0bfb7e7dde52d19949fee4a68ed54b
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: e4b7113f27e5e15d69dfdd1efd13e255ef4a8ab7
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 03/08/2018
 ---
-# <a name="match-conditions-for-the-azure-cdn-rules-engine"></a>Az Azure CDN szabálymotor vonatkozó feltételek egyeznek
+# <a name="azure-cdn-rules-engine-match-conditions"></a>Az Azure CDN szabálymotor feltételek egyeznek 
 Ez a cikk a rendelkezésre álló egyezés feltételek esetében az Azure Content Delivery Network (CDN) részletes leírását tartalmazza [szabálymotor](cdn-rules-engine.md).
 
 A szabály második része a egyezés feltétel. Egy egyezés feltétel azonosítja az adott típusú kérelmet, amely funkciókat érvényesül.
@@ -44,7 +44,7 @@ Az eszköz egyezés feltétel kérelmek egy mobileszközről tulajdonságai alap
 
 Name (Név) | Cél
 -----|--------
-[Eszköz](#device) | Kérelmek egy mobileszközről tulajdonságai alapján azonosítja.
+[Device](#device) | Kérelmek egy mobileszközről tulajdonságai alapján azonosítja.
 
 ## <a name="location-match-conditions"></a>Hely egyezés feltételek
 
@@ -308,7 +308,7 @@ Egy WURFL képesség általában tetszőleges számok, betűk és szimbólumok k
 Típus     | Leírás
 ---------|------------
 Literális  | Ezzel a beállítással megakadályozhatja, hogy a legtöbb karakternél a használatával a speciális jelentéssel véve a [literálérték](cdn-rules-engine-reference.md#literal-values).
-Helyettesítő karakter | Válassza ezt a beállítást, minden [helyettesítő karakterek] kihasználását ([helyettesítő értékek](cdn-rules-engine-reference.md#wildcard-values).
+Wildcard | Válassza ezt a beállítást, minden [helyettesítő karakterek] kihasználását ([helyettesítő értékek](cdn-rules-engine-reference.md#wildcard-values).
 Regex    | Ezt a beállítást használja [reguláris kifejezések](cdn-rules-engine-reference.md#regular-expressions). A reguláris kifejezések hasznosak mintázat létrehozása karaktereket.
 
 #### <a name="wurfl-capabilities"></a>WURFL képességek
@@ -321,26 +321,26 @@ A következő táblázat WURFL képességek és ezek változói a szabályok mot
 
 Képesség | Változó | Leírás | Példaértékek
 -----------|----------|-------------|----------------
-Márka neve | a(z) % {wurfl_cap_brand_name} | Egy karakterlánc, amely az eszköz márka nevét jelöli. | Samsung
-Az eszköz operációs rendszere | a(z) % {wurfl_cap_device_os} | Egy karakterlánc, amely azt jelzi, az operációs rendszer telepítve az eszközön. | IOS
-Eszköz operációs rendszerének verziója | a(z) % {wurfl_cap_device_os_version} | Egy karakterlánc, amely azt jelzi, az eszköz a telepített operációs rendszer verziószámát. | 1.0.1-es
-Kettős tájolását | a(z) % {wurfl_cap_dual_orientation} | Egy logikai érték, amely jelzi, hogy az eszköz támogatja-e kettős tájolását. | igaz
-HTML előnyben részesített DTD | a(z) % {wurfl_cap_html_preferred_dtd} | Egy olyan karakterlánc, amely jelzi a mobil eszköz előnyben részesített dokumentumtípusdefiníció (DTD) a HTML-tartalmakat. | nincs<br/>xhtml_basic<br/>HTML5
-A kép Inlining | a(z) % {wurfl_cap_image_inlining} | Olyan logikai érték, amely jelzi, hogy az eszköz támogatja-e a Base64 kódolású képek. | hamis
-Az Android | a(z) % {wurfl_vcap_is_android} | Egy logikai érték, amely azt jelzi, hogy az eszköz az Android operációs rendszer használja-e. | igaz
-IOS | a(z) % {wurfl_vcap_is_ios} | Egy logikai érték, amely azt jelzi, hogy az eszköz iOS használja-e. | hamis
-Az intelligens TV | a(z) % {wurfl_cap_is_smarttv} | Egy logikai érték, amely azt jelzi, hogy az eszköz egy intelligens TV. | hamis
-Smartphone van | a(z) % {wurfl_vcap_is_smartphone} | Egy logikai érték, amely azt jelzi, hogy az eszköz okostelefont. | igaz
-Tábla van | a(z) % {wurfl_cap_is_tablet} | Egy logikai érték, amely azt jelzi, hogy az eszköz egy tábla. A leírás megadása az operációs rendszer független. | igaz
-Vezeték nélküli eszköz | a(z) % {wurfl_cap_is_wireless_device} | Egy logikai érték, amely azt jelzi, hogy az eszköz vezeték nélküli eszköz nem megfelelőnek. | igaz
-Marketing neve | a(z) % {wurfl_cap_marketing_name} | Egy karakterlánc, amely megadja, hogy az eszköz marketing néven. | BlackBerry 8100 Pearl
-Mobil böngésző | a(z) % {wurfl_cap_mobile_browser} | Egy karakterlánc, amely azt jelzi, a böngésző, amelynek használatával a tartalmat igénylő az eszközről. | Chrome
-Mobil böngészőverzió | a(z) % {wurfl_cap_mobile_browser_version} | A böngészőben tartalom kérhet az eszköz használt verzióját jelző karakterlánc. | 31
-Modell neve | a(z) % {wurfl_cap_model_name} | Egy karakterlánc, amely azt jelzi, az eszköz modell neve. | S3
-Progresszív letöltés | a(z) % {wurfl_cap_progressive_download} | Egy logikai érték, amely jelzi, hogy az eszköz támogatja-e a audió és videó lejátszását, miközben továbbra is letöltése. | igaz
-Kiadás dátuma | a(z) % {wurfl_cap_release_date} | Egy olyan karakterlánc, amely jelzi a kiválasztott évhez és hónaphoz, amelyen az eszköz WURFL adatbázisba lett hozzáadva.<br/><br/>Formátum:`yyyy_mm` | 2013_december
-Megoldási magassága | a(z) % {wurfl_cap_resolution_height} | Az eszköz magassága képpontban jelző egész számot. | 768
-Megoldási szélessége | a(z) % {wurfl_cap_resolution_width} | Az eszköz szélességét képpontban jelző egész számot. | 1024
+Márka neve | %{wurfl_cap_brand_name} | Egy karakterlánc, amely az eszköz márka nevét jelöli. | Samsung
+Az eszköz operációs rendszere | %{wurfl_cap_device_os} | Egy karakterlánc, amely azt jelzi, az operációs rendszer telepítve az eszközön. | IOS
+Eszköz operációs rendszerének verziója | %{wurfl_cap_device_os_version} | Egy karakterlánc, amely azt jelzi, az eszköz a telepített operációs rendszer verziószámát. | 1.0.1
+Kettős tájolását | %{wurfl_cap_dual_orientation} | Egy logikai érték, amely jelzi, hogy az eszköz támogatja-e kettős tájolását. | true
+HTML előnyben részesített DTD | %{wurfl_cap_html_preferred_dtd} | Egy olyan karakterlánc, amely jelzi a mobil eszköz előnyben részesített dokumentumtípusdefiníció (DTD) a HTML-tartalmakat. | nincs<br/>xhtml_basic<br/>HTML5
+A kép Inlining | %{wurfl_cap_image_inlining} | Olyan logikai érték, amely jelzi, hogy az eszköz támogatja-e a Base64 kódolású képek. | false
+Is Android | %{wurfl_vcap_is_android} | Egy logikai érték, amely azt jelzi, hogy az eszköz az Android operációs rendszer használja-e. | true
+IOS | %{wurfl_vcap_is_ios} | Egy logikai érték, amely azt jelzi, hogy az eszköz iOS használja-e. | false
+Az intelligens TV | %{wurfl_cap_is_smarttv} | Egy logikai érték, amely azt jelzi, hogy az eszköz egy intelligens TV. | false
+Smartphone van | %{wurfl_vcap_is_smartphone} | Egy logikai érték, amely azt jelzi, hogy az eszköz okostelefont. | true
+Tábla van | %{wurfl_cap_is_tablet} | Egy logikai érték, amely azt jelzi, hogy az eszköz egy tábla. A leírás megadása az operációs rendszer független. | true
+Vezeték nélküli eszköz | %{wurfl_cap_is_wireless_device} | Egy logikai érték, amely azt jelzi, hogy az eszköz vezeték nélküli eszköz nem megfelelőnek. | true
+Marketing neve | %{wurfl_cap_marketing_name} | Egy karakterlánc, amely megadja, hogy az eszköz marketing néven. | BlackBerry 8100 Pearl
+Mobil böngésző | %{wurfl_cap_mobile_browser} | Egy karakterlánc, amely azt jelzi, a böngésző, amelynek használatával a tartalmat igénylő az eszközről. | Chrome
+Mobil böngészőverzió | %{wurfl_cap_mobile_browser_version} | A böngészőben tartalom kérhet az eszköz használt verzióját jelző karakterlánc. | 31
+Modell neve | %{wurfl_cap_model_name} | Egy karakterlánc, amely azt jelzi, az eszköz modell neve. | s3
+Progresszív letöltés | %{wurfl_cap_progressive_download} | Egy logikai érték, amely jelzi, hogy az eszköz támogatja-e a audió és videó lejátszását, miközben továbbra is letöltése. | true
+Kiadás dátuma | %{wurfl_cap_release_date} | Egy olyan karakterlánc, amely jelzi a kiválasztott évhez és hónaphoz, amelyen az eszköz WURFL adatbázisba lett hozzáadva.<br/><br/>Formátum: `yyyy_mm` | 2013_december
+Megoldási magassága | %{wurfl_cap_resolution_height} | Az eszköz magassága képpontban jelző egész számot. | 768
+Megoldási szélessége | %{wurfl_cap_resolution_width} | Az eszköz szélességét képpontban jelző egész számot. | 1024
 
 [Lap tetejére](#match-conditions-for-the-azure-cdn-rules-engine)
 
@@ -470,7 +470,7 @@ A metódus egyezés feltétel nem teljesül, csak akkor, ha a kijelölt kérelem
 - HEAD 
 - POST 
 - BEÁLLÍTÁSOK 
-- PUT 
+- A PUT 
 - DELETE 
 - NYOMKÖVETÉSI 
 - CSATLAKOZÁS 
@@ -533,7 +533,7 @@ Kapcsolatos információkat:
     Például mind a következő URL-címeket az azonos eszköz mutasson, így rendelkezik azonos URL-címet.
     - CDN URL-címe: http:\//wpc.0001.&lt; Tartomány&gt;/800001/CustomerOrigin/path/asset.htm
     
-    - Peremhálózati CNAME URL-címe: http:\//&lt;végpont&gt;.azureedge.net/path/asset.htm
+    - Edge CNAME URL: http:\//&lt;endpoint&gt;.azureedge.net/path/asset.htm
 
     További információ:
     - Az egyéni tartomány: https:\//my.domain.com/path/asset.htm
@@ -593,7 +593,7 @@ Ha úgy találja, hogy a következő kiterjesztések URL-címeket a egyezés fel
 - .asp
 - .aspx
 - .php
-- .HTML
+- .html
 
 [Lap tetejére](#match-conditions-for-the-azure-cdn-rules-engine)
 
@@ -652,7 +652,7 @@ Kapcsolatos információkat:
 
    Például egyaránt a következő URL-címeket az azonos eszköz mutasson, és így az azonos URL-címet rendelkezik:
     - CDN URL-címe: http:\//wpc.0001.&lt; Tartomány&gt;/800001/CustomerOrigin/path/asset.htm
-    - Peremhálózati CNAME URL-címe: http:\//&lt;végpont&gt;.azureedge.net/path/asset.htm
+    - Edge CNAME URL: http:\//&lt;endpoint&gt;.azureedge.net/path/asset.htm
 
    További információ:
     
@@ -685,7 +685,7 @@ Kapcsolatos információkat:
 
      - CDN URL-címe: http:\//wpc.0001.&lt; Tartomány&gt;/800001/CustomerOrigin/path/asset.htm
 
-     - Peremhálózati CNAME URL-címe: http:\//my.domain.com/path/asset.htm
+     - Edge CNAME URL: http:\//my.domain.com/path/asset.htm
 
    További információ:
     
@@ -727,7 +727,7 @@ Kapcsolatos információkat:
 
    Például egyaránt a következő URL-címeket az azonos eszköz mutasson, és így az azonos URL-címet rendelkezik:
      - CDN URL-cím: http://wpc.0001. &lt;Tartomány&gt;/800001/CustomerOrigin/path/asset.htm
-     - Peremhálózati CNAME URL-címe: http:\//&lt;végpont&gt;.azureedge.net/path/asset.htm
+     - Edge CNAME URL: http:\//&lt;endpoint&gt;.azureedge.net/path/asset.htm
 
    További információ:
     
@@ -753,11 +753,11 @@ A minta-konfigurációja az alábbi táblázat azt feltételezik, hogy ez egyez�
 
 Érték                   | A viszonyítva    | Eredmény 
 ------------------------|----------------|-------
-*/Test.HTML */test.php  | A legfelső szintű vagy forrása | Ez a minta egyezik a kérelem "test.html" vagy "test.php" bármely mappában nevű eszközök.
-/ 80ABCD/forrás/szöveg / *   | Gyökér           | Ez a minta egyezik, amikor a kért eszköz megfelel-e a következő feltételeknek: <br />-Kell lennie egy ügyfél forrás neve "origin." <br />– A relatív elérési út egy "szöveg" nevű mappát kell kezdődnie. Ez azt jelenti, hogy a kért eszköz elhelyezkedhet a "text" mappában vagy egy rekurzív almappája.
+*/test.html */test.php  | A legfelső szintű vagy forrása | Ez a minta egyezik a kérelem "test.html" vagy "test.php" bármely mappában nevű eszközök.
+/80ABCD/origin/text/*   | Gyökér           | Ez a minta egyezik, amikor a kért eszköz megfelel-e a következő feltételeknek: <br />-Kell lennie egy ügyfél forrás neve "origin." <br />– A relatív elérési út egy "szöveg" nevű mappát kell kezdődnie. Ez azt jelenti, hogy a kért eszköz elhelyezkedhet a "text" mappában vagy egy rekurzív almappája.
 */CSS/* */js/*          | A legfelső szintű vagy forrása | Ebben a mintában a rendszer megkeres minden CDN vagy peremhálózati egy css vagy js mappát tartalmazó CNAME URL-címeket.
 *.jpg *.gif *.png       | A legfelső szintű vagy forrása | Ebben a mintában a rendszer megkeres minden CDN vagy peremhálózati CNAME URL-címek .jpg, .gif vagy .png végződő által. Adja meg ezt a mintát egy alternatív módja van a [URL-cím elérési út bővítmény felel meg a feltétel](#url-path-extension).
-/ képek / * / media / *      | Forrás         | Ez a minta egyezik CDN vagy peremhálózati relatív elérési úton kezdődik-e egy "képek" vagy "media" mappa CNAME URL-címeket. <br />-CDN URL-cím: http:\//wpc.0001.&lt; Tartomány&gt;/800001/myorigin/images/sales/event1.png<br />-Mintát peremhálózati CNAME URL-cím: http:\//cdn.mydomain.com/images/sales/event1.png
+/ képek / * / media / *      | Forrás         | Ez a minta egyezik CDN vagy peremhálózati relatív elérési úton kezdődik-e egy "képek" vagy "media" mappa CNAME URL-címeket. <br />-CDN URL-cím: http:\//wpc.0001.&lt; Tartomány&gt;/800001/myorigin/images/sales/event1.png<br />- Sample edge CNAME URL: http:\//cdn.mydomain.com/images/sales/event1.png
 
 [Lap tetejére](#match-conditions-for-the-azure-cdn-rules-engine)
 
@@ -783,8 +783,8 @@ Kapcsolatos információkat:
 
    Karakter | URL-kódolás
    ----------|---------
-   Szóköz     | % 20
-   &         | % 25
+   Szóköz     | %20
+   &         | %25
 
 - Mely gyorsítótárában beállítások követi módon, mert ez egyeznek az állapot nem kompatibilis a következő szolgáltatásokat:
    - Fejezze be a gyorsítótár kitöltés
@@ -819,8 +819,8 @@ Kapcsolatos információkat:
 
        Karakter | URL-kódolás
        ----------|---------
-       Szóköz     | % 20
-       &         | % 25
+       Szóköz     | %20
+       &         | %25
 
 - Adja meg a lekérdezési karakterlánc paraméter több értéket határoló mindegyiken akár egy szóköz. Az egyeztetés feltétel teljesül, amikor egy kérelem tartalmazza a megadott név-érték kombinációk egyikét.
 
@@ -832,9 +832,9 @@ Kapcsolatos információkat:
 
      - Ez a konfiguráció megfelel a következő lekérdezési karakterlánc paramétereket:
 
-       1 = ValueA
+       Parameter1=ValueA
     
-       1 = ValueB
+       Parameter1=ValueB
 
    - 2. példa
 
@@ -844,9 +844,9 @@ Kapcsolatos információkat:
 
      - Ez a konfiguráció megfelel a következő lekérdezési karakterlánc paramétereket:
 
-       1 = érték % 20A
+       Parameter1=Value%20A
 
-       1 = érték % 20B
+       Parameter1=Value%20B
 
 - Csak akkor van legalább egy, a megadott lekérdezési karakterlánc név-érték kombinációk pontos egyezést e egyezés feltétel teljesül.
 
@@ -896,8 +896,8 @@ Kapcsolatos információkat:
 
    Karakter | URL-kódolás | Érték
    ----------|--------------|------
-   Szóköz     | % 20          | \%20
-   &         | % 25          | \%25
+   Szóköz     | %20          | \%20
+   &         | %25          | \%25
 
    Vegye figyelembe, hogy százalékos szimbólumokat kell megjelölni.
 
@@ -938,8 +938,8 @@ Kapcsolatos információkat:
 
      Karakter | URL-kódolás
      ----------|---------
-     Szóköz     | % 20
-     &         | % 25
+     Szóköz     | %20
+     &         | %25
 
 - Adjon meg több érték határoló mindegyiken akár egy szóköz.
 
@@ -961,8 +961,8 @@ A következő példa bemutatja, hogyan működik ez a beállítás adott helyzet
 
  Name (Név)                 | Leírás
  ---------------------|------------
-felhasználói = joe              | Ez a minta egyezik a kért URL-címhez tartozó lekérdezési karakterlánc esetén "? felhasználó = joe."
-\*felhasználó =\* \*optout =\* | Ez a minta egyezik, amikor a CDN URL-lekérdezés tartalmazza a felhasználó vagy a optout paraméter.
+user=joe              | Ez a minta egyezik a kért URL-címhez tartozó lekérdezési karakterlánc esetén "? felhasználó = joe."
+\*user=\* \*optout=\* | Ez a minta egyezik, amikor a CDN URL-lekérdezés tartalmazza a felhasználó vagy a optout paraméter.
 
 [Lap tetejére](#match-conditions-for-the-azure-cdn-rules-engine)
 

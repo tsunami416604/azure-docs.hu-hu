@@ -18,11 +18,11 @@ ms.author: Joe.Sack
 ms.suite: sql
 ms.prod_service: sql-database
 ms.component: migration
-ms.openlocfilehash: b65236fb2d11473d626ee2602237ed4a49380702
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: ee1d847e04e1f1fa0472d8702c7022d622b9fe0f
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="new-dba-in-the-cloud--managing-your-database-in-azure-sql-database"></a>A felhőben – az Azure SQL Database adatbázis új DBA
 
@@ -44,9 +44,9 @@ A cikk ismerteti az egyes Azure SQL Database alapvető jellemzői, amelyek könn
 ### <a name="how-do-i-create-and-manage-backups-on-sql-database"></a>Hogyan létrehozása és kezelése az SQL-adatbázis a biztonsági mentések?
 Az Azure SQL-adatbázis biztonsági másolatok ne hozzon létre és, mert nem kell. SQL-adatbázis automatikusan-adatbázisok biztonsági mentését, így Ön már nem kell foglalkoznia az ütemezés, véve, és a biztonsági mentések kezelése. A platform teljes biztonsági mentés hetente, különbözeti biztonsági mentési óránként és a napló biztonsági mentését 5 percenként annak biztosítása érdekében, a vész-helyreállítási hatékony, és az adatvesztés minimális vesz igénybe. Az első teljes biztonsági mentés, amint az adatbázis létrehozása történik. A biztonsági mentése "Megőrzési időtartam" nevű egy bizonyos ideig rendelkezésére álljanak, és úgy dönt, teljesítményszint függően változik.  SQL-adatbázis visszaállítása bármely belül a megőrzési időszak használata lehetőséget nyújt, [idő-helyreállítás (PITR) pont](sql-database-recovery-using-backups.md#point-in-time-restore).
 
-|Teljesítményszinttel|Megőrzési időszak napban|
+|Teljesítményszint|Megőrzési időszak napban|
 |---|:---:|
-|Basic|7|
+|Alapszintű|7|
 |Standard|35|
 |Prémium|35|
 |||
@@ -76,7 +76,7 @@ SQL-adatbázis nagyon súlyos készít biztonsági és adatvédelmi. SQL-adatbá
 
 ### <a name="what-user-authentication-methods-are-offered-in-sql-database"></a>SQL adatbázis felhasználói hitelesítési módszerek érhető el?
 Nincsenek [két hitelesítési módszerek](sql-database-control-access.md#authentication) érhető el az SQL-adatbázis: 
-- [Az Azure Active Directory-hitelesítés](sql-database-aad-authentication.md)
+- [Azure Active Directory Authentication](sql-database-aad-authentication.md)
 - SQL-hitelesítést. 
 
 A hagyományos windows-hitelesítés nem támogatott. Az Azure Active Directory (AD) egy olyan központi identitások és hozzáférések felügyeleti szolgáltatás. Ez nagyon kényelmesen tartalmaz egy egyszeri bejelentkezés Access (SSO) az összes személyek a szervezetében. Mi ez azt jelenti, hogy a hitelesítő adatok közösen használhatóak az összes Azure-szolgáltatások egyszerűbb hitelesítéshez. Támogatja az aad-ben [többtényezős hitelesítés (többtényezős hitelesítést)](sql-database-ssms-mfa-authentication.md) és egy, a [mindössze néhány kattintással](../active-directory/connect/active-directory-aadconnect-get-started-express.md) AAD integrálható a Windows Server Active Directory. SQL-hitelesítés már használta azt a múltban ugyanúgy működik. Megadja a felhasználónév/jelszó, és akkor is hitelesítheti a felhasználókat a bármely adatbázis a megadott logikai kiszolgálón. Ez is lehetővé teszi, hogy SQL-adatbázis és az SQL Data Warehouse a többtényezős hitelesítést és a Vendég felhasználói fiókok Azure AD-tartományban. Ha már rendelkezik egy Active Directory helyszíni, akkor is vonható össze, az Azure Active Directory segítségével terjed ki a címtár az Azure directory.
@@ -130,12 +130,12 @@ Titkosítási védelemmel való ellátásához, és megvédi a bizalmas adatokat
 
 Az SQL-adatbázis, alapértelmezés szerint az adatokat az alrendszer adatainak és naplókönyvtárainak fájlok aktívan teljesen és mindig titkosított keresztül [átlátható adattitkosítási [TDE]](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql). A biztonsági másolatok is titkosítva vannak. A TDE esetén nem fér hozzá ezeket az adatokat az alkalmazás oldalon igényelt módosításokat. A titkosítási és visszafejtési fordulhat elő, transzparens módon; ezért a neve. Az üzenetsoroktól a bizalmas adatok védelmének és aktívan SQL-adatbázis nevű funkcióval rendelkezik [mindig titkosítja (AE)](/sql/relational-databases/security/encryption/always-encrypted-database-engine). AE olyan ügyféloldali titkosítás, mely az adatbázis-és nagybetűket oszlopok titkosítja (úgy, hogy azok az adatbázis-rendszergazdák és a jogosulatlan felhasználók számára a titkosított szöveg) típusú. A kiszolgáló először kap a titkosított adatokat. Mindig titkosítja a kulcsot is tárolja az ügyféloldalon, így csak az arra jogosult ügyfelek vissza tudja fejteni a bizalmas oszlopok. A kiszolgáló és az adatok a rendszergazdák nem tekintse meg a bizalmas adatokat, mivel a titkosítási kulcsok tárolási helye az ügyfél. AE titkosítja a bizalmas oszlopok a tábla teljes körű, illetéktelen ügyfelekről a fizikai lemezhez. AE napjainkban támogatja egyenlőségi összehasonlítást, így a DBAs továbbra is a titkosított oszlopokban lekérdezni az SQL-parancsok részeként. Mindig titkosított használható számos tárolt kulcs lehetőséggel, például a [Azure Key Vault](sql-database-always-encrypted-azure-key-vault.md), Windows tanúsítványtárolójába, és helyi hardveres biztonsági modulok.
 
-|**Jellemzői**|**Mindig titkosítja.**|**Átlátható adattitkosítás**|
+|**Jellemzői**|**Always Encrypted**|**Átlátható adattitkosítás**|
 |---|---|---|
 |**Titkosítási span**|Végpontok közötti|Nyugalmi adatok|
 |**Adatbázis-kiszolgáló hozzáférhet bizalmas adatokhoz**|Nem|Igen, mert a titkosítás az adatok aktívan|
 |**Engedélyezett T-SQL-műveletek**|Egyenlőségi összehasonlítás|Minden T-SQL-felületének érhető el|
-|**A szolgáltatás használatához szükséges alkalmazások változásairól**|minimális|Nagyon minimális|
+|**A szolgáltatás használatához szükséges alkalmazások változásairól**|Minimális|Nagyon minimális|
 |**Titkosítási granularitási**|Oszlop szint|Adatbázis szintje|
 ||||
 
@@ -167,8 +167,8 @@ Az alábbi ábrán látható a kulcstároló-beállításait az oszlop főkulcso
 ### <a name="how-can-i-optimize-and-secure-the-traffic-between-my-organization-and-sql-database"></a>Hogyan optimalizálása és védik a forgalmat a szervezet és az SQL-adatbázis között?
 A szervezet és az SQL-adatbázis közötti hálózati forgalom általában a nyilvános hálózaton keresztül kellene beolvasása irányítja. Azonban ha optimalizálása ezt az elérési utat, és lehetővé teszi a nagyobb biztonságot nyújt, megtekintheti az Express Route. Expressroute lényegében lehetővé teszi a vállalati hálózat kiterjeszti az Azure platformon titkos kapcsolaton keresztül. Ezzel a módszerrel nem lépjen a nyilvános interneten keresztül. Is kap magasabb szintű biztonságra, megbízhatóságra és útválasztási optimalizálás, amely alacsonyabb hálózati késések fordulnak elő, és sokkal gyorsabb sebességű, mint amennyit általában akkor tapasztalnak, a nyilvános interneten keresztül is. Ha azt tervezi, a jelentős adattömb az adatok átvitele a szervezet és az Azure között, használja az Express Route partíciónként akár költségelőnyökhöz juthat. Választhat a három különböző modellek a kapcsolat a szervezet az Azure-bA: 
 - [Felhőalapú Exchange közös elhelyezése](../expressroute/expressroute-connectivity-models.md#CloudExchange)
-- [Bármely elem közöttiként](../expressroute/expressroute-connectivity-models.md#IPVPN)
-- [Pont-pont](../expressroute/expressroute-connectivity-models.md#Ethernet)
+- [Any-to-any](../expressroute/expressroute-connectivity-models.md#IPVPN)
+- [Point-to-Point](../expressroute/expressroute-connectivity-models.md#Ethernet)
 
 Expressroute is lehetővé teszi kapacitásnövelés legfeljebb 2 x a sávszélesség-korlátozás megvásárlása esetén nem kell külön fizetni. Akkor is közötti régió kapcsolat expressroute segítségével konfigurálhatja. ER kapcsolat szolgáltatók listájának megtekintéséhez lásd: [Express Route-partnerek és társviszony-létesítés helyek](../expressroute/expressroute-locations.md). Az alábbi cikkek Express Route részletesebben ismertetik:
 - [Az Expressroute bemutatása](../expressroute/expressroute-introduction.md)
@@ -210,7 +210,7 @@ Az SQL-adatbázis kihasználhatja az intelligens insights figyelemmel kísérni 
 
 Ez a diagram az erőforrás riasztásokat is konfigurálhatja. Ezek a riasztások teszik lehetővé az e-mailt erőforrás feltételek válaszolni, HTTPS vagy HTTP-végponttal való írás vagy egy műveletet. Tekintse meg a [adatbázis SQL-adatbázis teljesítményének figyelése](sql-database-single-database-monitor.md) részletes információkra van szüksége.
 
-- **Dinamikus felügyeleti nézetek**: lekérheti a [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) erőforrás-fogyasztás statisztika előzmények visszaadására az elmúlt egy órában dinamikus kezelési nézetet és a [sys.resource_stats ](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) rendszer katalógusnézet használatával derítheti ki előzmények vissza az elmúlt 14 napban.
+- **Dinamikus felügyeleti nézetek**: lekérheti a [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) erőforrás-fogyasztás statisztika előzmények visszaadására az elmúlt egy órában dinamikus kezelési nézetet és a [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) rendszer katalógusnézet használatával derítheti ki előzmények vissza az elmúlt 14 napban.
 - **Lekérdezési Terheléselemzőhöz**: [lekérdezési Terheléselemző](sql-database-query-performance.md) lehetővé teszi az erőforrás-igényes leggyakoribb lekérdezések és a hosszan futó lekérdezések egy adott adatbázis egy előzményei között találja. Gyorsan azonosíthatja a LEGGYAKORIBB lekérdezések erőforrás-használat, időtartama és végrehajtási gyakorisága. Nyomon követheti a lekérdezéseket, és regressziós észleléséhez. A szolgáltatás használatához [Lekérdezéstár](/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store) engedélyezve van, és az adatbázis aktív.
 
    ![Lekérdezési terheléselemző](./media/sql-database-manage-after-migration/query-performance-insight.png)
@@ -260,8 +260,8 @@ SQL-adatbázis bizonyos intelligens módszereket, amelyek lehetővé teszik, hog
 ### <a name="how-do-i-synchronize-data-between-sql-database-and-sql-server"></a>Hogyan szinkronizálni a SQL Database és SQL Server közötti?
 Ennek eléréséhez többféleképpen közül választhat: 
 - **[Adatszinkronizálás](sql-database-sync-data.md)**  – Ez a szolgáltatás segít a két irányban több helyszíni SQL Server-adatbázisok és SQL-adatbázis közötti adatszinkronizáláshoz. A helyszíni SQL Server-adatbázisok szinkronizálni, szüksége telepítése és konfigurálása a sync-ügynök a helyi számítógépen, és nyissa meg a kimenő TCP 1433-as port.
-- **[Tranzakciós replikáció](https://azure.microsoft.com/en-us/blog/transactional-replication-to-azure-sql-database-is-now-generally-available/)**  – tranzakciós replikáció szinkronizálhatja a helyszíni adatait az Azure SQL Adatbázishoz a helyi a közzétevő és az Azure SQL Database az előfizető alatt. Egyelőre csak a telepítés esetén támogatott. Hogyan telepíthetők át az adatokat a helyszíni Azure SQL minimális állásidővel további információkért lásd: [használata tranzakciós replikáció](sql-database-cloud-migrate.md#method-2-use-transactional-replication)
+- **[Tranzakciós replikáció](https://azure.microsoft.com/blog/transactional-replication-to-azure-sql-database-is-now-generally-available/)**  – tranzakciós replikáció szinkronizálhatja a helyszíni adatait az Azure SQL Adatbázishoz a helyi a közzétevő és az Azure SQL Database az előfizető alatt. Egyelőre csak a telepítés esetén támogatott. Hogyan telepíthetők át az adatokat a helyszíni Azure SQL minimális állásidővel további információkért lásd: [használata tranzakciós replikáció](sql-database-cloud-migrate.md#method-2-use-transactional-replication)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További tudnivalók [SQL-adatbázis](sql-database-technical-overview.md).
 

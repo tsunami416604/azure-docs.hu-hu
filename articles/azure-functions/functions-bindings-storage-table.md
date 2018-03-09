@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/08/2017
 ms.author: tdykstra
-ms.openlocfilehash: c132baad4d26fe481fa022329da32815b6994ad7
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 7f82083cd18f762d1037da2ccf43e9d0c220fe09
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="azure-table-storage-bindings-for-azure-functions"></a>Azure Table storage kötései Azure Functions
 
@@ -89,7 +89,7 @@ public class TableStorage
     {
         foreach (MyPoco poco in pocos)
         {
-            log.Info($"PK={poco.PartitionKey}, RK={poco.RowKey}, Text={poco.Text}";
+            log.Info($"PK={poco.PartitionKey}, RK={poco.RowKey}, Text={poco.Text}");
         }
     }
 }
@@ -348,13 +348,13 @@ Az alábbi táblázat ismerteti a beállított kötés konfigurációs tulajdons
 
 |Function.JSON tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-|**típusa** | n/a | meg kell `table`. Ez a tulajdonság értéke automatikusan kötésének létrehozásakor az Azure portálon.|
+|**Típusa** | n/a | meg kell `table`. Ez a tulajdonság értéke automatikusan kötésének létrehozásakor az Azure portálon.|
 |**direction** | n/a | meg kell `in`. Ez a tulajdonság értéke automatikusan kötésének létrehozásakor az Azure portálon. |
 |**name** | n/a | A tábla vagy a funkciókódot entitás jelölő neve. | 
 |**Táblanév** | **TableName** | A tábla neve.| 
 |**partitionKey** | **PartitionKey** |Választható. A partíciókulcs a tábla entitás olvasni. Tekintse meg a [használati](#input---usage) a szakaszban a tulajdonság használatával.| 
 |**rowKey** |**RowKey** | Választható. Olvassa el a tábla entitás sorkulcsa. Tekintse meg a [használati](#input---usage) a szakaszban a tulajdonság használatával.| 
-|**hajtsa végre a megfelelő** |**Hajtsa végre a megfelelő** | Választható. A JavaScript olvasni entitások maximális száma. Tekintse meg a [használati](#input---usage) a szakaszban a tulajdonság használatával.| 
+|**hajtsa végre a megfelelő** |**hajtsa végre a megfelelő** | Választható. A JavaScript olvasni entitások maximális száma. Tekintse meg a [használati](#input---usage) a szakaszban a tulajdonság használatával.| 
 |**filter** |**Filter** | Választható. Egy OData szűrőkifejezés JavaScript a bemeneti tábla. Tekintse meg a [használati](#input---usage) a szakaszban a tulajdonság használatával.| 
 |**connection** |**Kapcsolat** | A tárolási kapcsolati karakterlánc az ehhez a kötéshez használandó tartalmazó alkalmazásbeállítás neve. Ha az alkalmazás neve "AzureWebJobs" kezdődik, megadhatja a nevét itt csak a maradékot. Ha például `connection` "MyStorage", hogy a Functions futtatókörnyezete keresi, hogy az alkalmazás neve "AzureWebJobsMyStorage." Ha nem adja meg `connection` üres, a Functions futtatókörnyezete használja az alapértelmezett tárolási kapcsolati karakterlánc az nevű Alkalmazásbeállítás `AzureWebJobsStorage`.|
 
@@ -366,16 +366,14 @@ A Table storage bemeneti kötése a következő szituációkat ismerteti:
 
 * **C# vagy C# a parancsfájlt egy sor olvasása**
 
-  Állítsa be `partitionKey` és `rowKey`. A tábla adatai hozzáférhet a metódusparaméter `T <paramName>`. A C# parancsfájl `paramName` érték szerepel a `name` tulajdonsága *function.json*. `T`általában olyan típusú, amely megvalósítja az `ITableEntity` vagy abból származó `TableEntity`. A `filter` és `take` tulajdonságok nem szerepel ebben a forgatókönyvben. 
+  Állítsa be `partitionKey` és `rowKey`. A tábla adatai hozzáférhet a metódusparaméter `T <paramName>`. A C# parancsfájl `paramName` érték szerepel a `name` tulajdonsága *function.json*. `T` általában olyan típusú, amely megvalósítja az `ITableEntity` vagy abból származó `TableEntity`. A `filter` és `take` tulajdonságok nem szerepel ebben a forgatókönyvben. 
 
 * **C# vagy C# parancsfájl egy vagy több sor olvasása**
 
-  A tábla adatai hozzáférhet a metódusparaméter `IQueryable<T> <paramName>`. A C# parancsfájl `paramName` érték szerepel a `name` tulajdonsága *function.json*. `T`lehet, amely típus `ITableEntity` vagy abból származó `TableEntity`. Használhat `IQueryable` módszereket a szűrés szükséges. A `partitionKey`, `rowKey`, `filter`, és `take` tulajdonságok nem szerepel ebben a forgatókönyvben.  
+  A tábla adatai hozzáférhet a metódusparaméter `IQueryable<T> <paramName>`. A C# parancsfájl `paramName` érték szerepel a `name` tulajdonsága *function.json*. `T` lehet, amely típus `ITableEntity` vagy abból származó `TableEntity`. Használhat `IQueryable` módszereket a szűrés szükséges. A `partitionKey`, `rowKey`, `filter`, és `take` tulajdonságok nem szerepel ebben a forgatókönyvben.  
 
 > [!NOTE]
-> `IQueryable`nem működik a .NET Core, ezért nem használható a [funkciók v2 futásidejű](functions-versions.md).
-
-  Helyett használja a `CloudTable paramName` metódus paraméterének olvasni a táblát az Azure Storage szolgáltatás SDK használatával.
+> `IQueryable` nem állítható be a [funkciók v2 futásidejű](functions-versions.md). Alternatív [CloudTable paramName metódusparaméter használja](https://stackoverflow.com/questions/48922485/binding-to-table-storage-in-v2-azure-functions-using-cloudtable) olvasni a táblát az Azure Storage szolgáltatás SDK használatával.
 
 * **A JavaScript egy vagy több sor olvasása**
 
@@ -607,7 +605,7 @@ Az alábbi táblázat ismerteti a beállított kötés konfigurációs tulajdons
 
 |Function.JSON tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-|**típusa** | n/a | meg kell `table`. Ez a tulajdonság értéke automatikusan kötésének létrehozásakor az Azure portálon.|
+|**Típusa** | n/a | meg kell `table`. Ez a tulajdonság értéke automatikusan kötésének létrehozásakor az Azure portálon.|
 |**direction** | n/a | meg kell `out`. Ez a tulajdonság értéke automatikusan kötésének létrehozásakor az Azure portálon. |
 |**name** | n/a | A változó nevét, amely a tábla vagy entitás függvény kódban használt. Beállítása `$return` hivatkozni, a függvény visszatérési értéke.| 
 |**Táblanév** |**TableName** | A tábla neve.| 
@@ -623,11 +621,11 @@ A Table storage kimeneti kötése támogatja a következő esetekben:
 
 * **Egy sor írása bármilyen nyelven**
 
-  C# és C# a parancsfájlt, nyissa meg a kimeneti táblaentitássá metódusparaméter használatával `out T paramName` vagy a függvény visszatérési értéke. A C# parancsfájl `paramName` érték szerepel a `name` tulajdonsága *function.json*. `T`bármilyen szerializálható típus lehet, ha a partíciós kulcs és a sorkulcs által biztosított a *function.json* fájl vagy a `Table` attribútum. Ellenkező esetben `T` tartalmazó típusnak kell lennie `PartitionKey` és `RowKey` tulajdonságok. Ebben a forgatókönyvben `T` általában megvalósítja `ITableEntity` vagy abból származó `TableEntity`, de nem kell.
+  C# és C# a parancsfájlt, nyissa meg a kimeneti táblaentitássá metódusparaméter használatával `out T paramName` vagy a függvény visszatérési értéke. A C# parancsfájl `paramName` érték szerepel a `name` tulajdonsága *function.json*. `T` bármilyen szerializálható típus lehet, ha a partíciós kulcs és a sorkulcs által biztosított a *function.json* fájl vagy a `Table` attribútum. Ellenkező esetben `T` tartalmazó típusnak kell lennie `PartitionKey` és `RowKey` tulajdonságok. Ebben a forgatókönyvben `T` általában megvalósítja `ITableEntity` vagy abból származó `TableEntity`, de nem kell.
 
 * **Egy vagy több sor írása C# vagy C#**
 
-  A C# és C# a parancsfájlt, hozzáférhet a kimeneti táblaentitássá a metódusparaméter `ICollector<T> paramName` vagy `ICollectorAsync<T> paramName`. A C# parancsfájl `paramName` érték szerepel a `name` tulajdonsága *function.json*. `T`Adja meg a hozzáadni kívánt entitásokat sémája. Általában `T` származik `TableEntity` vagy megvalósítja `ITableEntity`, de nem kell. A partíciós kulcs és a sor kulcsértékek a *function.json* vagy a `Table` attribútum konstruktora nem szerepel ebben a forgatókönyvben.
+  A C# és C# a parancsfájlt, hozzáférhet a kimeneti táblaentitássá a metódusparaméter `ICollector<T> paramName` vagy `ICollectorAsync<T> paramName`. A C# parancsfájl `paramName` érték szerepel a `name` tulajdonsága *function.json*. `T` Adja meg a hozzáadni kívánt entitásokat sémája. Általában `T` származik `TableEntity` vagy megvalósítja `ITableEntity`, de nem kell. A partíciós kulcs és a sor kulcsértékek a *function.json* vagy a `Table` attribútum konstruktora nem szerepel ebben a forgatókönyvben.
 
   Helyett használja a `CloudTable paramName` metódus paraméterének írni, hogy a tábla az Azure Storage szolgáltatás SDK használatával.
 

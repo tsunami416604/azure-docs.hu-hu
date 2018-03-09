@@ -14,17 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 12/20/2017
 ms.author: pullabhk;markgal
-ms.openlocfilehash: d1ebda145b7e355bd9763025dece742d2a23239b
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: 0fce38db010a77ac61145ef63f616e0e466c95e2
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Fájlok helyreállítása Azure virtuális gép biztonsági mentése
 
 Azure biztonsági mentés lehetővé teszi a visszaállítás [Azure virtuális gépek (VM) és a lemezek](./backup-azure-arm-restore-vms.md) Azure virtuális gép biztonsági másolatból, más néven visszaállítási pontok. Ez a cikk azt ismerteti, fájlok és mappák helyreállítása Azure virtuális gép biztonsági másolaton. Fájlok és mappák visszaállítása csak a Azure virtuális gépeken telepített, a Resource Manager modellt használja, és a Recovery services-tároló védelme alatt álló érhető el.
 
 > [!Note]
+> Ez a szolgáltatás Azure virtuális gépeken telepített, a Resource Manager modellt használja, és a Recovery Services-tároló protected érhető el.
 > A fájlok helyreállítása titkosított virtuális gép biztonsági másolaton nem támogatott.
 >
 
@@ -154,7 +155,7 @@ A következő parancsot az összes raid-lemez adatainak megjelenítése.
 ```
 $ mdadm –detail –scan
 ```
- A megfelelő RAID-lemez jelenik meg`/dev/mdm/<RAID array name in the protected VM>`
+ A megfelelő RAID-lemez jelenik meg `/dev/mdm/<RAID array name in the protected VM>`
 
 Akkor használja a csatlakoztatási parancs, ha a RAID-lemez van fizikai kötetekre.
 ```

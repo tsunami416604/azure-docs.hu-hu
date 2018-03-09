@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 02/27/2018
 ms.author: anhoh
 ms.custom: mvc
-ms.openlocfilehash: 036683698c49b8acb8a83117ac823c90fef0b2b3
-ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.openlocfilehash: cf8b0e6a06f787c5b38622e9343e893d5d7daa12
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="azure-cosmos-db-data-migration-tool"></a>Azure Cosmos DB: Az adatáttelepítési eszköz
 
@@ -477,7 +477,7 @@ A speciális beállítás indexelési házirendet használja, akkor is indexelé
 A sablonok az eszközt biztosít a következők:
 
 * Alapértelmezés szerint. Ez a házirend akkor ajánlott, ha Ön karakterláncok egyenlőséglekérdezéséhez végrehajtása és a számok ORDER BY, tartomány és egyenlőség lekérdezések használatával. Ez a házirend rendelkezik egy alacsonyabb indextárolási terheléssel jár mint tartomány.
-* Tartomány. Ezzel a házirend-érdemes használata ORDER BY, tartomány és egyenlőség lekérdezések a számok és karakterláncok. Ez a házirend egy magasabb indextárolási terheléssel jár, mint az alapértelmezett vagy az ujjlenyomat-rendelkezik.
+* Tartomány. Ez a házirend használata ORDER BY, tartomány és egyenlőség lekérdezések a számok és karakterláncok esetén ajánlott. Ez a házirend egy magasabb indextárolási terheléssel jár, mint az alapértelmezett vagy az ujjlenyomat-rendelkezik.
 
 ![Képernyőfelvétel az Azure Cosmos DB indexelő házirend Speciális beállítások](./media/import-data/indexingpolicy2.png)
 

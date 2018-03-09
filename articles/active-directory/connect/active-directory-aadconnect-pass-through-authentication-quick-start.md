@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/19/2017
+ms.date: 03/07/2018
 ms.author: billmath
-ms.openlocfilehash: 1da7c064030501b5c6547b65c091b1a50da93899
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: b592eb8ca43e5bf3eebe2b0c47d8f17dbec7b238
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="azure-active-directory-pass-through-authentication-quick-start"></a>Az Azure Active Directory átmenő hitelesítést: Gyors üzembe helyezési
 
@@ -116,22 +116,40 @@ Ebben a szakaszban az Ön bérelt szolgáltatásának minden felügyelt tartomá
 
 ## <a name="step-5-ensure-high-availability"></a>5. lépés: Magas rendelkezésre állásának biztosításához.
 
-Ha azt tervezi, áteresztő hitelesítés telepítése éles környezetben, telepítenie kell a hitelesítési ügynök önálló. A második hitelesítési ügynök telepítése a kiszolgálón _más_ a egy fut az Azure AD Connect és az első hitelesítési ügynök. A telepítő kérelmek jelentkezzen be a magas rendelkezésre állást biztosít. Kövesse ezeket az utasításokat egy önálló hitelesítési ügynök központi telepítése:
+Ha azt tervezi, áteresztő hitelesítés telepítése éles környezetben, telepítenie kell legalább egy további önálló hitelesítési ügynök. A hitelesítés az ügynököket telepíti a kiszolgálókra _más_ a egy fut az Azure AD Connect-nál. A telepítő felhasználó bejelentkezési kérelmek magas rendelkezésre állást biztosít.
 
-1. A hitelesítési ügynök a legújabb verzió letöltéséhez (1.5.193.0 verzió vagy újabb). Jelentkezzen be a [Azure Active Directory felügyeleti központ](https://aad.portal.azure.com) a bérlő globális rendszergazdai hitelesítő adataival.
+Kövesse az alábbi utasításokat a hitelesítési ügynök szoftver letöltése:
+
+1. A hitelesítési ügynök a legújabb verziójának letöltéséhez (1.5.193.0 verzió vagy újabb), jelentkezzen be a [Azure Active Directory felügyeleti központ](https://aad.portal.azure.com) a bérlő globális rendszergazdai hitelesítő adataival.
 2. Válassza ki **Azure Active Directory** a bal oldali ablaktáblán.
 3. Válassza ki **az Azure AD Connect**, jelölje be **áteresztő hitelesítés**, majd válassza ki **ügynök letöltése**.
 4. Válassza ki a **feltételek elfogadásának & Letöltés** gombra.
-5. A hitelesítési ügynök a legújabb verziójának telepítéséhez futtassa a letöltött végrehajtható fájl az előző lépésben. Adja meg a bérlő globális rendszergazda hitelesítő adatait, amikor a rendszer kéri.
 
 ![Az Azure Active Directory felügyeleti központ: hitelesítési ügynök letöltése gomb](./media/active-directory-aadconnect-pass-through-authentication/pta9.png)
 
 ![Az Azure Active Directory felügyeleti központ: ügynök letöltése ablaktábla](./media/active-directory-aadconnect-pass-through-authentication/pta10.png)
 
 >[!NOTE]
->Emellett letöltheti a [Azure Active Directory hitelesítési ügynök](https://aka.ms/getauthagent). Győződjön meg arról, hogy tekintse át és fogadja el a hitelesítési ügynök [szolgáltatási szerződését](https://aka.ms/authagenteula) _előtt_ telepíti azt.
+>Közvetlenül is letöltheti a hitelesítési ügynökszoftver [Itt](https://aka.ms/getauthagent). Tekintse át és fogadja el a hitelesítési ügynök [szolgáltatási szerződését](https://aka.ms/authagenteula) _előtt_ telepíti azt.
 
-## <a name="next-steps"></a>Következő lépések
+Önálló hitelesítési ügynök telepítése két módja van:
+
+Először is elvégezheti interaktív módon csak a letöltött végrehajtható hitelesítési-ügynök fut, és a bérlő globális rendszergazda hitelesítő adatait, amikor a rendszer kéri megadásával.
+
+Ezután hozzon létre, és egy felügyelet nélküli telepítési parancsfájl futtatása. Ez akkor hasznos, ha szeretné telepíteni egyszerre több hitelesítési ügynök, vagy hitelesítési ügynökök telepítése Windows-kiszolgálók, amely nem rendelkezik a felhasználói felület engedélyezve van, vagy a távoli asztal nem érhetők el. Az alábbiakban ezt a módszert használja a útmutatást:
+
+1. Hitelesítési ügynök telepítéséhez a következő parancsot: `AADConnectAuthAgentSetup.exe REGISTERCONNECTOR="false" /q`.
+2. A hitelesítési ügynök regisztrálhatja az szolgáltatás Windows PowerShell használatával. Hozzon létre egy PowerShell hitelesítő objektumot `$cred` egy globális rendszergazdai jogosultságú felhasználónevet és jelszót, amely tartalmazza a bérlő számára. A következő parancsot, cseréje  *\<felhasználónév\>*  és  *\<jelszó\>*:
+   
+        $User = "<username>"
+        $PlainPassword = '<password>'
+        $SecurePassword = $PlainPassword | ConvertTo-SecureString -AsPlainText -Force
+        $cred = New-Object –TypeName System.Management.Automation.PSCredential –ArgumentList $User, $SecurePassword
+3. Ugrás a **C:\Program Files\Microsoft Azure AD Connect hitelesítési ügynök** , és futtassa a következő parancsfájl a `$cred` létrehozott objektum:
+   
+        RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft Azure AD Connect Authentication Agent\Modules\" -moduleName "AppProxyPSModule" -Authenticationmode Credentials -Usercredentials $cred -Feature PassthroughAuthentication
+
+## <a name="next-steps"></a>További lépések
 - [Intelligens zárolás](active-directory-aadconnect-pass-through-authentication-smart-lockout.md): megtudhatja, hogyan konfigurálja az intelligens zárolás funkció a bérlő felhasználói fiókok védelme.
 - [Aktuális korlátozások](active-directory-aadconnect-pass-through-authentication-current-limitations.md): megtudhatja, mely forgatókönyvek támogatottak az áteresztő hitelesítés, és melyek nem.
 - [Műszaki mélyreható](active-directory-aadconnect-pass-through-authentication-how-it-works.md): a csatlakoztatott hitelesítési szolgáltatás működésének megismerése.

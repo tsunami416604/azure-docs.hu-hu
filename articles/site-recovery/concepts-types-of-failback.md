@@ -2,25 +2,20 @@
 title: "Az Azure Site Recovery feladatátvételi |} Microsoft Docs"
 description: "Ez a cikk feladat-visszavétel és figyelmeztetések vissza a helyszíni az Azure Site Recovery szolgáltatásban a megfelelő működése során figyelembe kell venni a különböző típusainak áttekintése."
 services: site-recovery
-documentationcenter: 
 author: rajani-janaki-ram
 manager: guaravd
-editor: 
-ms.assetid: 
 ms.service: site-recovery
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 12/18/2017
+ms.date: 03/05/2018
 ms.author: rajanki
-ms.openlocfilehash: 07dc05c0bd89e69b6bfcff7577919494647efed0
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 372a7867b47960338d7a1bf7e646fb9fffbe72e1
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="overview-of-failback"></a>Feladat-visszavétel áttekintése
+
 Miután az Azure-bA rendelkezik nem sikerült keresztül, sikertelen lehet a helyszíni webhelyre. Nincsenek két különböző típusú feladat-visszavétel lehetséges az Azure Site Recovery szolgáltatással: 
 
 - Az eredeti helyén sikertelen 
@@ -55,5 +50,5 @@ Ha a helyszíni virtuális gép nem létezik a virtuális gép újbóli védelm�
 
 ## <a name="next-steps"></a>További lépések
 
-Kövesse a lépéseket hajtsa végre a [feladat-visszavételi művelet](site-recovery-how-to-failback-azure-to-vmware.md).
+Kövesse a lépéseket hajtsa végre a [feladat-visszavételi művelet](vmware-azure-failback.md).
 
