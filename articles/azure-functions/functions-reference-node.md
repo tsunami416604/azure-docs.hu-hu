@@ -14,13 +14,13 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 05/25/2017
+ms.date: 03/04/2018
 ms.author: tdykstra
-ms.openlocfilehash: f613e480f6699b323c18402f01873e565768f10f
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.openlocfilehash: 0a436a929696f759cdbe9807faa2a15902b7ce6d
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Az Azure Functions JavaScript fejlesztői útmutató
 [!INCLUDE [functions-selector-languages](../../includes/functions-selector-languages.md)]
@@ -120,8 +120,8 @@ Lehetővé teszi a adatfolyam, a nyomkövetési szint konzolnaplófájlokban ír
 | ---------------------- | ------------------------------------------ |
 | **Hiba (_üzenet_)**   | Naplózás vagy alacsonyabb hibaszintet ír.   |
 | **Figyelmeztetés (_üzenet_)**    | Figyelmeztetési szintű naplózás vagy alacsonyabb ír. |
-| **Info (_üzenet_)**    | Információ szintet naplózás vagy alacsonyabb ír.    |
-| **részletes (_üzenet_)** | A részletes szint naplózás ír.           |
+| **info(_message_)**    | Információ szintet naplózás vagy alacsonyabb ír.    |
+| **verbose(_message_)** | A részletes szint naplózás ír.           |
 
 A következő példa ír a figyelmeztetési nyomkövetési szint a konzolhoz:
 
@@ -208,11 +208,11 @@ A `request` objektum tulajdonságai a következők:
 
 | Tulajdonság      | Leírás                                                    |
 | ------------- | -------------------------------------------------------------- |
-| _törzs_        | A kérelem törzsét tartalmazó objektum.               |
-| _fejlécek_     | A kérelem fejlécében tartalmazó objektum.                   |
-| _módszer_      | A kérelem HTTP-metódust.                                |
+| _Törzs_        | A kérelem törzsét tartalmazó objektum.               |
+| _Fejlécek_     | A kérelem fejlécében tartalmazó objektum.                   |
+| _Módszer_      | A kérelem HTTP-metódust.                                |
 | _originalUrl_ | A kérelem URL-CÍMÉT.                                        |
-| _paraméterei_      | A kérés útválasztási paramétereit tartalmazó objektum. |
+| _params_      | A kérés útválasztási paramétereit tartalmazó objektum. |
 | _lekérdezés_       | Egy objektum, amely tartalmazza a lekérdezési paramétereket.                  |
 | _rawBody_     | A karakterlánc az üzenet törzsét.                           |
 
@@ -223,10 +223,10 @@ A `response` objektum tulajdonságai a következők:
 
 | Tulajdonság  | Leírás                                               |
 | --------- | --------------------------------------------------------- |
-| _törzs_    | A választörzs tartalmazó objektum.         |
-| _fejlécek_ | Egy objektum, amely tartalmazza a response fejlécekkel együtt.             |
+| _Törzs_    | A választörzs tartalmazó objektum.         |
+| _Fejlécek_ | Egy objektum, amely tartalmazza a response fejlécekkel együtt.             |
 | _isRaw_   | Azt jelzi, hogy formázás ki van kapcsolva a választ.    |
-| _állapot_  | A HTTP-állapotkód: a válasz.                     |
+| _status_  | A HTTP-állapotkód: a válasz.                     |
 
 ### <a name="accessing-the-request-and-response"></a>A kérelem és válasz elérése 
 
@@ -265,7 +265,15 @@ HTTP-eseményindítók használata során is elérheti HTTP kérelem-válasz obj
     ```  
 
 ## <a name="node-version-and-package-management"></a>Csomópont-verziót és a csomag felügyelet
-A csomópont verziója jelenleg zárolva van `6.5.0`. Jelenleg vizsgálja a további verziók támogatása, és így konfigurálható.
+
+Az alábbi táblázat a Node.js-verzió a Functions futtatókörnyezete minden főverzióját használja:
+
+| Funkciók verziója | Node.js verziója | 
+|---|---|
+| 1.x | 6.11.2 (zárolta-e a runtime) |
+| 2.x  |> = 8.4.0 az aktuális LTS 8.9.4 ajánlott. A verzió-beállításokat a WEBSITE_DEFAULT_NODE_VERSION [Alkalmazásbeállítás](functions-how-to-use-azure-function-app-settings.md#settings).|
+
+Láthatja, hogy az aktuális verzió a futtatókörnyezet által használt nyomtatva `process.version` bármely függvényből.
 
 Az alábbi lépéseket lehetővé teszik, hogy a csomagok tartalmazzák a függvény alkalmazásban: 
 
@@ -324,7 +332,7 @@ Egy függvény alkalmazást, amely használja az App Service-csomag létrehozás
 ### <a name="typescript-and-coffeescript-support"></a>Géppel és CoffeeScript támogatása
 Közvetlen támogatási még nem létezik automatikus fordítása géppel vagy CoffeeScript a futtatókörnyezet keresztül, mert az ilyen támogatás kezelendő kívül a futtatókörnyezetet, a központi telepítéskor. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információkért lásd a következőket:
 
 * [Azure Functions – ajánlott eljárások](functions-best-practices.md)

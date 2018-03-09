@@ -12,14 +12,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/19/2018
+ms.date: 03/05/2018
 ms.author: elioda
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a22c20a26ee4750c79c23fbba69de72a0084dfe7
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 9acda980583319414cc9e8668424907947a257db
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>Az IoT hub a MQTT protokoll segítségével kommunikálnak.
 
@@ -100,6 +100,8 @@ Ha egy eszköz nem tudja használni az eszköz SDK-k, hogy továbbra is kapcsol�
 
 MQTT csatlakozni, és válassza le a csomagok, IoT-központot egy eseményt állít ki a a **Operations figyelés** csatorna. Ez az esemény rendelkezik, amelyek segítségével csatlakozási problémák további információt.
 
+Az eszköz alkalmazás megadhat egy **fog** üzenet a **CONNECT** csomagot. Az eszköz alkalmazást kell használnia `devices/{device_id}/messages/events/{property_bag}` vagy `devices/{device_id}/messages/events/{property_bag}` , a **fog** témakör nevének meghatározásához **fog** üzeneteket, telemetriai üzenetet továbbítani. Ebben az esetben ha a hálózati kapcsolat megszakad, de a **DISCONNECT** csomag korábban nem érkezett az eszközről, majd elküldi az IoT-központ a **fog** megadott üzenetet a **CONNECT** csomagot, hogy a telemetria-csatornát. A telemetriai adatok csatorna lehet vagy alapértelmezett **események** végpont vagy egy útválasztási IoT-központ által definiált egyéni végpontot. Az üzenet a **IOT hubbal-MessageType** tulajdonság értéke az **fog** rendelve.
+
 ### <a name="tlsssl-configuration"></a>TLS/SSL configuration
 
 Használatához a MQTT protokoll közvetlenül, az ügyfél *kell* TLS/SSL Csatornán keresztül csatlakozni. Kihagyhatja ezt a lépést megpróbálja sikertelen, és a csatlakozási hibák.
@@ -165,7 +167,7 @@ RFC 2396-encoded(<PropertyName1>)=RFC 2396-encoded(<PropertyValue1>)&RFC 2396-en
 > [!NOTE]
 > Ez `{property_bag}` elem használja, mint a lekérdezési karakterláncok a HTTPS protokoll azonos kódolást.
 
-Az eszköz alkalmazást is használhatja `devices/{device_id}/messages/events/{property_bag}` , a **lesz a témakör neve** meghatározásához *üzenetek fog* telemetriai üzenetként továbbítását.
+A következő egy IoT-központ függő viselkedések listáját:
 
 * Az IoT-központ nem támogatja a QoS 2 üzeneteket. Ha egy eszköz alkalmazás tesz közzé egy üzenetet, amelyben **QoS 2**, IoT-központ bezárása után a hálózati kapcsolat.
 * Az IoT-központ nem maradnak megőrzése üzeneteket. Ha egy eszköz küld egy üzenetet, amelyben a **megőrzése** jelző értéke 1, az IoT-központ hozzáadja a **x-opt-megőrzése** az üzenetek alkalmazás tulajdonság. Ebben az esetben helyett a megőrzése üzenet megőrzése, IoT-központ számára továbbítja azokat a háttér-alkalmazást.

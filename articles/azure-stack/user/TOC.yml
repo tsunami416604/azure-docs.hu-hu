@@ -47,6 +47,8 @@
               href: azure-stack-vm-sizes.md
             - name: Virtuálisgép-lemezek kezelése
               href: azure-stack-manage-vm-disks.md
+            - name: A virtuális gépek védelme
+              href: azure-stack-manage-vm-backup.md
         - name: Tárolás
           items:
             - name: Áttekintés

@@ -5,16 +5,16 @@ services: machine-learning
 author: totekp
 ms.author: kefzhou
 manager: akannava
-ms.reviewer: akannava, haining, mldocs, garyericson, jasonwhowell
+ms.reviewer: akannava, haining, mldocs, jmartens, jasonwhowell
 ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/29/2017
-ms.openlocfilehash: 40e066fe602e8c4680043158f1d401a884e07c19
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: bd8888d911730831435b87d3a60b48a7797eea98
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="find-runs-with-the-best-accuracy-and-lowest-duration"></a>Keresés fut, a legjobb pontosság és a legalacsonyabb időtartama
 Megadott több fut, a egy használati eset futtatása a legjobb pontossággal kereséséhez. A parancssori felület (CLI) használatával egyik módszer egy [JMESPath](http://jmespath.org/) lekérdezés. Az Azure parancssori felületen JMESPath használatával további információkért lásd: [JMESPath használjon lekérdezések az Azure CLI 2.0](https://docs.microsoft.com/cli/azure/query-azure-cli?view=azure-cli-latest). A következő példában négy futtatása 0, 0,98., 1 és 1 pontossága értékekkel jönnek létre. Futtatja a rendszer a tartományon lévő `[MaxAccuracy-Threshold, MaxAccuracy]` ahol `Threshold = .03`.
@@ -58,7 +58,7 @@ A maximális pontossága értékének felhasználásával `1` és egy küszöbé
 az ml history list --query '@[?Accuracy >= sum(`[1, -0.03]`)] | sort_by(@, &duration)'
 ```
 > [!NOTE]
-> Ha azt szeretné, hogy egy szigorú felsőé ellenőrzést, a lekérdezés formátuma``@[?Accuracy >= sum(`[$max_accuracy_value, -$threshold]`) && Accuracy <= `$max_accuracy_value`]``
+> Ha azt szeretné, hogy egy szigorú felsőé ellenőrzést, a lekérdezés formátuma ``@[?Accuracy >= sum(`[$max_accuracy_value, -$threshold]`) && Accuracy <= `$max_accuracy_value`]``
 
 PowerShell használatakor a következő kódot helyi változók segítségével tárolja a küszöbérték és a maximális pontosság:
 ```powershell

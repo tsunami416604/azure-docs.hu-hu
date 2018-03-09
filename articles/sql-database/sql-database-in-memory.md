@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/16/2017
 ms.author: jodebrui
-ms.openlocfilehash: 23b313a473b93ba0eab7fc4cf97a5d26bfa31505
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: 98b4a0b4bcb271a68880359b1bb04655cae8d003
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="optimize-performance-by-using-in-memory-technologies-in-sql-database"></a>A memórián belüli technológiái az SQL-adatbázis teljesítményének optimalizálása
 
@@ -30,7 +30,7 @@ Az alábbiakban a két példa hogyan segített a memórián belüli online Tranz
 - A memórián belüli online Tranzakciófeldolgozási, [kvórum üzleti megoldások tudta 70 %-kal dtu-k fokozása mellett az alkalmazások és szolgáltatások duplán](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database).
     - DTU azt jelenti, hogy *adatbázis-átviteli egység*, és egy az erőforrás-felhasználás mesurement tartalmazza.
 - A következő videó bemutatja az erőforrás-felhasználást egy példa munkaterhelés jelentős fejlesztéseket: [memórián belüli online Tranzakciófeldolgozási az Azure SQL adatbázis Video](https://channel9.msdn.com/Shows/Data-Exposed/In-Memory-OTLP-in-Azure-SQL-DB).
-    - További részletekért lásd a következő blogbejegyzésben: [memórián belüli online Tranzakciófeldolgozási az Azure SQL adatbázis Blog utáni](https://azure.microsoft.com/blog/in-memory-oltp-in-azure-sql-database/)
+    - További információkért lásd a következő blogbejegyzésben: [memórián belüli online Tranzakciófeldolgozási az Azure SQL adatbázis Blog utáni](https://azure.microsoft.com/blog/in-memory-oltp-in-azure-sql-database/)
 
 A memóriában technológiák minden adatbázisa prémium tarifacsomagra, beleértve az adatbázisok prémium rugalmas készletek érhetők el.
 
@@ -175,7 +175,7 @@ CREATE TABLE [SalesLT].[SalesOrderHeader_inmem](
 ```
 
 
-#### <a name="error-40536"></a>Hiba 40536
+#### <a name="error-40536"></a>Error 40536
 
 
 Ha hiba 40536 a T-SQL parancsfájl futtatásakor, futtassa a következő T-SQL parancsfájlt, és győződjön meg arról, hogy az adatbázis támogatja-e a memóriában lévő:
@@ -229,8 +229,8 @@ SELECT uses_native_compilation, OBJECT_NAME(object_id), definition
 
 Az egyetlen különbség a következő két *tárolt eljárások* , hogy az első eljárás használja verziók memóriaoptimalizált táblák esetén a második eljárás a lemezen tábláit használja:
 
-- SalesLT**.** usp_InsertSalesOrder**_inmem**
-- SalesLT**.** usp_InsertSalesOrder**_ondisk**
+- SalesLT**.**usp_InsertSalesOrder**_inmem**
+- SalesLT**.**usp_InsertSalesOrder**_ondisk**
 
 
 Ez a szakasz használata a hasznos látható **ostress.exe** segédprogram stressful szinten két tárolt eljárások végrehajtása. Összehasonlíthatja mennyi ideig tart a két magas terhelés kísérletekhez befejezéséhez.
@@ -493,7 +493,7 @@ A P2 tarifacsomag adatbázisban körülbelül kilenc alkalommal a jobb teljesít
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Gyors üzembe helyezési 1: A memórián belüli online Tranzakciófeldolgozási technológiák a T-SQL jobb teljesítmény](http://msdn.microsoft.com/library/mt694156.aspx)
 

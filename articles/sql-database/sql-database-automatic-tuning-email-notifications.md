@@ -16,17 +16,17 @@ ms.tgt_pltfrm: na
 ms.workload: Active
 ms.date: 02/05/2018
 ms.author: v-daljep
-ms.openlocfilehash: a1b10c1a12d9a9215022cc77615901a0e4d144f8
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 611c30639b5fb36bb08ebd3e73c90f8aa2bd09d4
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="email-notifications-for-automatic-tuning"></a>E-mail értesítések automatikus hangolása
 
 SQL-adatbázis hangolási javaslatok az Azure SQL Database által előállított [automatikus hangolása](sql-database-automatic-tuning.md). Ez a megoldás folyamatosan figyeli, és elemzi az SQL-adatbázisok biztosító munkaterhelések testreszabott hangolása minden egyes adatbázis indexlétrehozást, index törlésre és optimalizálási lekérdezés végrehajtási tervek kapcsolatos javaslatok.
 
-SQL adatbázis automatikus hangolása javaslatok tekintheti meg a [Azure-portálon](sql-database-advisor-portal.md), a beolvasott [REST API](https://docs.microsoft.com/en-us/rest/api/sql/databaserecommendedactions/listbydatabaseadvisor) hívja, vagy használatával [T-SQL](https://azure.microsoft.com/en-us/blog/automatic-tuning-introduces-automatic-plan-correction-and-t-sql-management/) és [ PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql/get-azurermsqldatabaserecommendedaction) parancsok. Ez a cikk alapján automatikus hangolási javaslatok beolvasása egy PowerShell-parancsfájl használatával.
+SQL adatbázis automatikus hangolása javaslatok tekintheti meg a [Azure-portálon](sql-database-advisor-portal.md), a beolvasott [REST API](https://docs.microsoft.com/rest/api/sql/databaserecommendedactions/listbydatabaseadvisor) hívja, vagy használatával [T-SQL](https://azure.microsoft.com/blog/automatic-tuning-introduces-automatic-plan-correction-and-t-sql-management/) és [ PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql/get-azurermsqldatabaserecommendedaction) parancsok. Ez a cikk alapján automatikus hangolási javaslatok beolvasása egy PowerShell-parancsfájl használatával.
 
 ## <a name="automate-email-notifications-for-automatic-tuning-recommendations"></a>Értesítő e-mailek automatikus hangolási ajánlások automatizálásához
 
@@ -34,7 +34,7 @@ A következő megoldás automatizálja az automatikus hangolási javaslatokat ta
 
 ## <a name="create-azure-automation-account"></a>Azure Automation-fiók létrehozása
 
-Azure Automation használatához az első lépés egy automation-fiók létrehozása és konfigurálása az Azure-erőforrások használatához a PowerShell-parancsfájl végrehajtásának. Azure Automation és platformképességei kapcsolatos további információkért lásd: [Ismerkedés az Azure Automation szolgáltatásbeli](https://docs.microsoft.com/en-us/azure/automation/automation-offering-get-started).
+Azure Automation használatához az első lépés egy automation-fiók létrehozása és konfigurálása az Azure-erőforrások használatához a PowerShell-parancsfájl végrehajtásának. Azure Automation és platformképességei kapcsolatos további információkért lásd: [Ismerkedés az Azure Automation szolgáltatásbeli](https://docs.microsoft.com/azure/automation/automation-offering-get-started).
 
 Kövesse az alábbi lépéseket a a módszerrel kiválasztása és konfigurálása a piactérről Automation app Azure Automation-fiók létrehozásához:
 
@@ -47,7 +47,7 @@ Kövesse az alábbi lépéseket a a módszerrel kiválasztása és konfigurálá
 
 - Egyszer "Hozzon létre egy Automation-fiók" ablaktáblájában kattintson "**létrehozása**"
 - A szükséges adatokat feltölteni: Adja meg az automation-fiók nevét, válassza ki az Azure-előfizetés-azonosító és az Azure a PowerShell-parancsprogram végrehajtása során használandó erőforrások
-- Az a "**létrehozása Azure-beli futtató fiók**" lehetőséget, jelölje be **Igen** alapján mely PowerShell parancsfájl segítségével. Azure Automation futtató fiók típusú beállításához. Fióktípus kapcsolatos további információkért lásd: [futtató fiók](https://docs.microsoft.com/en-us/azure/automation/automation-create-runas-account)
+- Az a "**létrehozása Azure-beli futtató fiók**" lehetőséget, jelölje be **Igen** alapján mely PowerShell parancsfájl segítségével. Azure Automation futtató fiók típusú beállításához. Fióktípus kapcsolatos további információkért lásd: [futtató fiók](https://docs.microsoft.com/azure/automation/automation-create-runas-account)
 - Az automation-fiók létrehozása kössön kattintva **létrehozása**
 
 > [!TIP]
@@ -58,7 +58,7 @@ Ha több Azure-előfizetések, amelynek szeretné build azonos automatizálásá
 
 ## <a name="update-azure-automation-modules"></a>Azure Automation-modul frissítéséhez
 
-A PowerShell parancsfájl automatikus hangolása javaslat beolvasása [Get-AzureRmResource](https://docs.microsoft.com/en-us/powershell/module/AzureRM.Resources/Get-AzureRmResource) és [Get-AzureRmSqlDatabaseRecommendedAction](https://docs.microsoft.com/en-us/powershell/module/AzureRM.Sql/Get-AzureRmSqlDatabaseRecommendedAction) parancsok mely Azure-modulok frissítése a 4-es vagy újabb verzió szükséges.
+A PowerShell parancsfájl automatikus hangolása javaslat beolvasása [Get-AzureRmResource](https://docs.microsoft.com/powershell/module/AzureRM.Resources/Get-AzureRmResource) és [Get-AzureRmSqlDatabaseRecommendedAction](https://docs.microsoft.com/powershell/module/AzureRM.Sql/Get-AzureRmSqlDatabaseRecommendedAction) parancsok mely Azure-modulok frissítése a 4-es vagy újabb verzió szükséges.
 
 Kövesse az alábbi lépéseket Azure PowerShell-modulok frissítése:
 
@@ -195,7 +195,7 @@ A megoldás, mint az utolsó lépést, befejezéséhez hozzon létre egy automat
 2. "**Azure Automation - feladat kimeneti Get**" – használatos kimeneti lekérése a végrehajtott PowerShell-parancsfájl
 3. "**Office 365 Outlook – az e-mailek küldése**" – kimenő e-mailek küldéséhez használatos. E-mailek küldése ki az Office 365-fiókkal az egyéni, a folyamat létrehozása.
 
-Microsoft Flow képességeivel kapcsolatos további tudnivalókért lásd: [Ismerkedés a Microsoft Flow](https://docs.microsoft.com/en-us/flow/getting-started).
+Microsoft Flow képességeivel kapcsolatos további tudnivalókért lásd: [Ismerkedés a Microsoft Flow](https://docs.microsoft.com/flow/getting-started).
 
 Ez a lépés előfeltétele, hogy regisztráljon [Microsoft Flow](https://flow.microsoft.com) fiók és a bejelentkezéshez. Egyszer belül a megoldás lépések végrehajtásával állítson be egy **új folyamat**:
 

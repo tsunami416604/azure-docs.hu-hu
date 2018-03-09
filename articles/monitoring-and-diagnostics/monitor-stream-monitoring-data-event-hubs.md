@@ -11,13 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 2/13/2018
+ms.date: 3/05/2018
 ms.author: johnkem
-ms.openlocfilehash: d449be98cd59756e2bafc584e0501b8c83c594eb
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: 1b1c50f106be8848fb1f32deefa6cb9acb7a298a
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub-for-consumption-by-an-external-tool"></a>A figyelés egy eseményközpontba felhasználásra adatok külső eszköz adatfolyam Azure
 
@@ -36,7 +36,18 @@ Az Azure környezetben több "réteg" figyelési adatok, és az adatok elérése
 
 Bármely rétegtől adatküldés eseményközpontnak, ahol azt is kell húzni a partner eszközt. A következő szakaszok ismertetik, hogyan konfigurálhatja az egyes rétegek az eseményközpontba közzétett adatokat. A lépések azt feltételezik, hogy már rendelkezik a eszközök a figyelni kívánt adott réteg sablonbeállításait.
 
-Kezdés előtt kell [létrehoz egy Event Hubs-névteret és esemény-központot](../event-hubs/event-hubs-create.md). A névtér és az event hub az a hely összes figyelési adatait.
+## <a name="set-up-an-event-hubs-namespace"></a>Az Event Hubs névtér beállítása
+
+Kezdés előtt kell [létrehoz egy Event Hubs-névteret és esemény-központot](../event-hubs/event-hubs-create.md). A névtér és az event hub az a hely összes figyelési adatait. Az Event Hubs névtere a logikai csoportosításhoz, amelyek ugyanabban a hozzáférési házirendben az event hubs, sokkal tárolási például VMM-szolgáltatásfióknak egyes blobok a tárfiókon belül. Vegye figyelembe az event hubs névtér és az event hubs az Ön által létrehozott néhány részleteit:
+* A szabványos Event Hubs-névtér használatát javasoljuk.
+* Csak egy átviteli egységgel rendelkezhet általában szükséges. Ha vertikális felskálázás a a napló használati növekedése van szüksége, mindig manuálisan később a névtér átviteli egységek számának növelése vagy automatikus infláció engedélyezése.
+* Átviteli egységek száma lehetővé teszi az event hubs átviteli méret növelése érdekében. A partíciók számának fogyasztás parallelize sok fogyasztók keresztül teszi lehetővé. Egy olyan partíciót teheti legfeljebb 20MBps vagy körülbelül 20 000 üzenetek száma másodpercenként. Attól függően, hogy az eszközt, az adatok felhasználásához lehetséges, hogy vagy nem támogatja a több partícióról származó fel. Ha nem biztos kapcsolatos beállítása a partíciók száma, javasoljuk négy partíciót.
+* Azt javasoljuk, hogy be kell állítani üzenet megőrzési az eseményközpont 7 nap. Ha a felhasználó-eszköz nem működik több mint egy nappal, ez biztosítja, hogy az eszköz is onnan folytathatja az adatgyűjtést, ahol abbahagyta (események legfeljebb 7 napos).
+* Az alapértelmezett felhasználói csoport az eseményközpont használatát javasoljuk. Nincs szükség más fogyasztói csoportok létrehozására, vagy használjon egy külön felhasználói csoport, kivéve, ha azt tervezi, szeretné, hogy az azonos adatokat az azonos eseményközpontból két különböző eszközök.
+* Az Azure tevékenységnapló az Event Hubs névtér választja, és Azure figyelő létrehoz egy eseményközpontot, az adott névtérben, úgynevezett "insights-logs-operationallogs." A többi napló típusú választhat egy meglévő eseményközpont (hogy lehetővé teszi az ugyanazon insights-logs-operationallogs event hubs újból), vagy létrehoz egy eseményközpontot napló kategóriánként Azure figyelő.
+* Általában 5671 és 5672 portot kell megnyitni a számítógépen az eseményközpontból adatok felhasználásához.
+
+Is lásd: a [Azure Event Hubs gyakran ismételt kérdések](../event-hubs/event-hubs-faq.md).
 
 ## <a name="how-do-i-set-up-azure-platform-monitoring-data-to-be-streamed-to-an-event-hub"></a>Hogyan állíthatom be Azure platformon figyelési adatok adatfolyamként eseményközpontokba való továbbítását?
 

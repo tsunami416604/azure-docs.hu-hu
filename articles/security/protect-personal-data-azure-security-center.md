@@ -1,6 +1,6 @@
 ---
 title: "Az Azure Security Center személyes adatok védelme |} Microsoft Docs"
-description: "az Azure security Centerben személyes adatok védelme"
+description: "a security center segítségével személyes adatok védelme. Ez használható azon törekvéseit, hogy megfeleljenek az általános adatok védelmi szabályozás (GDPR)"
 services: security
 documentationcenter: na
 author: Barclayn
@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/24/2017
+ms.date: 03/06/2018
 ms.author: barclayn
 ms.custom: 
-ms.openlocfilehash: 3a941389713a4d3dbffbbfe8a717409927d85c6d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 118752a030a1c300306aa3e05571bb9b624a2c20
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="protect-personal-data-from-breaches-and-attacks-azure-security-center"></a>Személyes adatok védelmét a problémák és támadások: az Azure Security Center
 
-Ez a cikk segít megvédeni a személyes adatokat a problémák és támadások az Azure Security Center használatának megismerése.
+Ez a cikk segít megvédeni a személyes adatokat a problémák és támadások az Azure Security Center használatának megismerése. Az itt szereplő információk segíthetik a próbálkozások, hogy megfeleljenek az általános adatok védelmi szabályozás (GDPR).
 
 ## <a name="scenario"></a>Forgatókönyv 
 
@@ -197,11 +197,11 @@ Ha egy virtuális gép nem rendelkezik az integrált biztonsági rés értékel�
 
 A biztonsági rés értékelési megoldás megvalósításához további utasításokért lásd: [biztonsági réseinek értékelése az Azure Security Centerben.](https://docs.microsoft.com/azure/security-center/security-center-vulnerability-assessment-recommendations)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Az Azure Security Center bemutatása](https://docs.microsoft.com/azure/security-center/security-center-get-started)
 
-- [Azure Security Center bemutatása](https://docs.microsoft.com/azure/security-center/security-center-intro)
+- [Az Azure Security Center bemutatása](https://docs.microsoft.com/azure/security-center/security-center-intro)
 
 - [Azure Security Center riasztásait integrálása az Azure naplóelemzés integráció](https://docs.microsoft.com/azure/security-center/security-center-integrating-alerts-with-log-integration)
 

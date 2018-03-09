@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/20/2017
 ms.author: genemi
-ms.openlocfilehash: ebf1c4948816746fa02b867d1ea66afc64b882b0
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 13ac12377887684143d32d08e4bd5de107183105
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="general-guidance-for-working-with-wingtip-tickets-sample-saas-apps"></a>Wingtip jegyek való munkához általános útmutatás mintavételhez SaaS-alkalmazásokhoz
 
@@ -86,8 +86,8 @@ A központi telepítés kezdetben van a bérlők és a katalógus SQL adatbázis
 Ahhoz, hogy a sikeres bemutató kapcsolatot, az összes kiszolgáló rendelkezik egy [tűzfalszabály](sql-database-firewall-configure.md) így minden IP-címen keresztül.
 
 
-1. Nyissa meg *SSMS* , és kapcsolódjon a a bérlők számára. A kiszolgáló nevét az adatbázis bérleti mintát (lásd lent rögzítésen) kijelölt függ:
-    - **Önálló alkalmazás:** kiszolgálók az egyes bérlők számára (például) *contosoconcerthall -&lt;felhasználói&gt;. database.windows.net*) 
+1. Nyissa meg *SSMS* és a bérlők kapcsolódni. A kiszolgáló nevét az adatbázis bérleti mintát (lásd lent rögzítésen) kijelölt függ:
+    - **Önálló alkalmazás:** kiszolgálók az egyes bérlők számára (például) *contosoconcerthall-&lt;User&gt;.database.windows.net*) 
     - **Adatbázis bérlőnként:** *tenants1-dpt -&lt;felhasználói&gt;. database.windows.net*
     - **Több-bérlős adatbázis:** *tenants1-mt -&lt;felhasználói&gt;. database.windows.net* 
 2. Kattintson a **Kapcsolódás** > **Adatbázismotor...** :
@@ -97,7 +97,7 @@ Ahhoz, hogy a sikeres bemutató kapcsolatot, az összes kiszolgáló rendelkezik
 3. Bemutató hitelesítő adatai: bejelentkezés = *fejlesztő*, jelszó =*P@ssword1*
 
     Az alábbi képen azt mutatja be, a bejelentkezési adatait a következő a *bérlőnként adatbázis* mintát. 
-    ![kapcsolat](media/saas-tenancy-wingtip-app-guidance-tips/tenants1-connect.png)
+    ![connection](media/saas-tenancy-wingtip-app-guidance-tips/tenants1-connect.png)
     
    
 
@@ -115,7 +115,7 @@ Az alábbi képen azt mutatja be, a bejelentkezés a *bérlőnként adatbázis* 
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - [A Wingtip jegyek SaaS önálló alkalmazás központi telepítése](saas-standaloneapp-get-started-deploy.md)
 - [Bérlői alkalmazásonként Wingtip jegyek SaaS adatbázis központi telepítése](saas-dbpertenant-get-started-deploy.md)
 - [A Wingtip jegyek SaaS több-bérlős adatbázis-alkalmazás központi telepítése](saas-multitenantdb-get-started-deploy.md)

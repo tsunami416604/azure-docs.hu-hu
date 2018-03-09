@@ -20,6 +20,10 @@
 ## [Biztonsági mentés és visszaállítás](analysis-services-backup.md)
 ## [Frissítés a REST API-val](analysis-services-async-refresh.md)
 ## [Horizontális felskálázás konfigurálása](analysis-services-scale-out.md)
+## Adminisztratív feladatok automatizálása
+### [Egyszerű szolgáltatásnév létrehozása – Azure Portal](../azure-resource-manager/resource-group-create-service-principal-portal.md)
+### [Egyszerű szolgáltatásnév létrehozása – PowerShell](../azure-resource-manager/resource-group-authenticate-service-principal.md)
+### [Egyszerű szolgáltatásnév hozzáadása kiszolgálói rendszergazdai szerepkörhöz](analysis-services-addservprinc-admins.md)
 ## Kiszolgálófelügyelet
 ### [Kiszolgálónév aliasának konfigurálása](analysis-services-server-alias.md)
 ### [Kiszolgáló kezelése](analysis-services-manage.md)

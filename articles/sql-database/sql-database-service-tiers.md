@@ -14,17 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: Active
-ms.date: 02/26/2018
+ms.date: 02/28/2018
 ms.author: carlrab
-ms.openlocfilehash: b36af32d900f9426424dd08c43946e7dcb5b39b9
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: ebfd44098a81b4a9d8863623458460ceb25f0d5d
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="what-are-azure-sql-database-service-tiers"></a>Mik az Azure SQL Database szolgáltatási szinteket?
 
-[Az Azure SQL Database](sql-database-technical-overview.md) kínál **alapvető**, **szabványos**, és **prémium** szolgáltatásszintek mindkét [adatbázisok egyszeri](sql-database-single-database-resources.md) és [rugalmas készletek](sql-database-elastic-pool.md). Szolgáltatásszintek elsősorban számos teljesítményszint szükséges és a tároló mérete lehetőségek és az ár szerint megkülönböztetett forgalomosztályból meg.  Az összes szolgáltatási szinteket teljesítmény szintjét és a tároló méretének módosítása rugalmasságot biztosítanak.  Önálló adatbázisok és rugalmas készletek számlázása óránként szolgáltatási rétegben, a teljesítményszintet és a tárméret alapján.   
+[Az Azure SQL Database](sql-database-technical-overview.md) kínál **alapvető**, **szabványos**, és **prémium** szolgáltatásszintek mindkét [adatbázisok egyszeri](sql-database-single-database-resources.md) és [rugalmas készletek](sql-database-elastic-pool.md). SQL-adatbázis nyújt az általános célú szolgáltatásréteg [Azure SQL adatbázis felügyelt példány](sql-database-managed-instance.md#managed-instance-service-tier). Szolgáltatásszintek elsősorban számos teljesítményszint szükséges és a tároló mérete lehetőségek és az ár szerint megkülönböztetett forgalomosztályból meg.  Az összes szolgáltatási szinteket teljesítmény szintjét és a tároló méretének módosítása rugalmasságot biztosítanak.  Önálló adatbázisok és rugalmas készletek számlázása óránként szolgáltatási rétegben, a teljesítményszintet és a tárméret alapján.   
+
+> [!IMPORTANT]
+> SQL adatbázis-felügyelt példány jelenleg a nyilvános előzetes egy általános célú szolgáltatásréteg nyújt. További információkért lásd: [Azure SQL adatbázis felügyelt példány](sql-database-managed-instance.md). Ez a cikk fennmaradó kezelt példány nem vonatkozik.
 
 ## <a name="choosing-a-service-tier"></a>Szolgáltatásszint kiválasztása
 
@@ -42,7 +45,7 @@ Elsősorban az üzletmenet folytonosságát, a tároló és a teljesítményre v
 
 ## <a name="performance-level-and-storage-size-limits"></a>Teljesítmény-szintjét és a tárolási méretkorlátai
 
-Az önálló adatbázisok adatbázis-tranzakciós egységek (dtu-k) és a rugalmas adatbázis-tranzakciós egységek (edtu-k) a rugalmas teljesítményszintet vannak kifejezve. Dtu és edtu-k kapcsolatban bővebben lásd: [Dtu és edtu-k?](sql-database-what-is-a-dtu.md)
+A teljesítményszintek különálló adatbázisok esetében DTU-k (adatbázis-tranzakciós egységek), rugalmas készletek esetében pedig rugalmas DTU-k formájában vannak meghatározva. Dtu és edtu-k kapcsolatban bővebben lásd: [Dtu és edtu-k?](sql-database-what-is-a-dtu.md)
 
 ### <a name="single-databases"></a>Önálló adatbázisok
 

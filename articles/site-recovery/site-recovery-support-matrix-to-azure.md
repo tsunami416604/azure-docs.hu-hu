@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 02/06/2018
+ms.date: 03/07/2018
 ms.author: rajanaki
-ms.openlocfilehash: a17d0918ea5938daf81c469fd6402a7dc9764831
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 9c52ef47992474465111f106fc15779cadd825be
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="azure-site-recovery-support-matrix-for-replicating-from-on-premises-to-azure"></a>Az Azure Site Recovery mátrix a helyszíni replikálása Azure-bA
 
@@ -82,7 +82,7 @@ A következő táblázat összefoglalja a replikált operációs rendszer támog
 
 ### <a name="supported-ubuntu-kernel-versions-for-vmwarephysical-servers"></a>Ubuntu kernel támogatott verziók, VMware vagy fizikai kiszolgálók
 
-**Release** | **Mobilitási szolgáltatás verziója** | Kernel-verzió |
+**Release** | **Mobilitási szolgáltatás verziója** | **Kernel-verzió** |
 --- | --- | --- |
 14.04 LTS | 9.10 | a 3.13.0-121-generic, 3.13.0-24-Generic<br/>a 3.16.0-77-generic, 3.16.0-25-Generic<br/>a 3.19.0-80-generic, 3.19.0-18-Generic<br/>a 4.2.0-42-generic, 4.2.0-18-Generic<br/>a 4.4.0-81-generic 4.4.0-21-Generic |
 14.04 LTS | 9.11 | a 3.13.0-128-generic, 3.13.0-24-Generic<br/>a 3.16.0-77-generic, 3.16.0-25-Generic<br/>a 3.19.0-80-generic, 3.19.0-18-Generic<br/>a 4.2.0-42-generic, 4.2.0-18-Generic<br/>a 4.4.0-91-generic 4.4.0-21-Generic |
@@ -96,9 +96,8 @@ A következő táblázat összefoglalja a replikált operációs rendszer támog
 ## <a name="supported-file-systems-and-guest-storage-configurations-on-linux-vmwarephysical-servers"></a>Támogatott fájlrendszerek és a Vendég tárolási konfigurációk alakíthatók ki Linux (VMware vagy fizikai kiszolgálók)
 
 A következő fájl rendszerek, valamint a tárolási konfiguráció szoftver támogatottak, VMware vagy fizikai kiszolgálókon futó Linux-kiszolgálókon:
-* Fájlrendszer: ext3, ext4, ReiserFS (Suse Linux Enterprise Server csak), XFS
+* Fájlrendszer: ext3, ext40, XFS
 * Kötetkezelő: LVM2
-* A többutas szoftver: eszköz leképezője
 
 Paravirtualized tárolási eszközök (az exportált paravirtualized-illesztőprogramok) nem támogatottak.<br/>
 Több sor blokk IO eszközökön nem támogatottak.<br/>
@@ -134,7 +133,7 @@ Multi-NIC | Igen | Igen
 
 ### <a name="failed-over-azure-vm-network-configuration"></a>Átvevő Azure Virtuálisgép-hálózati konfiguráció
 
-Az Azure hálózatkezelés | **VMware vagy fizikai kiszolgáló** | **A Hyper-V (a/nélkül a Virtual Machine Manager)**
+**Az Azure hálózatkezelés** | **VMware vagy fizikai kiszolgáló** | **A Hyper-V (a/nélkül a Virtual Machine Manager)**
 --- | --- | ---
 Express Route | Igen | Igen
 ILB | Igen | Igen
@@ -215,9 +214,9 @@ Felügyelt lemezek | Igen | Igen<br/><br/>Feladat-visszavétel a helyszínen fel
 
 A Site Recovery szolgáltatást az Azure által támogatott bármely operációs rendszert futtató virtuális gép és fizikai kiszolgáló replikálásához üzembe helyezheti. Ez a Windows és a Linux legtöbb verzióját magában foglalja. A helyszíni replikálni kívánt virtuális gépeknek meg kell felelnie a következő Azure követelményekkel az Azure-bA replikálása során.
 
-**Entitás** | Követelmények | **Részletek**
+**Entitás** | **Követelmények** | **Részletek**
 --- | --- | ---
-Vendég operációs rendszer | Hyper-V Azure replikáció: a Site Recovery minden operációs rendszereket támogatja [használható az Azure-](https://technet.microsoft.com/library/cc794868%28v=ws.10%29.aspx). <br/><br/> VMware és fizikai kiszolgáló replikációs: Ellenőrizze a Windows és Linux [Előfeltételek](site-recovery-vmware-to-azure-classic.md) | Előfeltételek ellenőrzése sikertelen lesz, ha nem támogatott.
+**Vendég operációs rendszer** | Hyper-V Azure replikáció: a Site Recovery minden operációs rendszereket támogatja [használható az Azure-](https://technet.microsoft.com/library/cc794868%28v=ws.10%29.aspx). <br/><br/> VMware és fizikai kiszolgáló replikációs: Ellenőrizze a Windows és Linux [Előfeltételek](site-recovery-vmware-to-azure-classic.md) | Előfeltételek ellenőrzése sikertelen lesz, ha nem támogatott.
 **Vendég operációs rendszer architektúrája** | 64 bites | Előfeltételek ellenőrzése sikertelen lesz, ha nem támogatott
 **Operációsrendszer-lemez mérete** | Ha replikál és 2048 GB **VMware virtuális gépek vagy fizikai kiszolgálók Azure-bA**.<br/><br/>Legfeljebb 2048 GB-ot **Hyper-V 1. generációs** virtuális gépeket.<br/><br/>Legfeljebb 300 GB-ot **Hyper-V 2. generációs virtuális gépek**.  | Előfeltételek ellenőrzése sikertelen lesz, ha nem támogatott
 **Operációsrendszer-lemezek száma** | 1 | Előfeltételek ellenőrzése sikertelen lesz, ha nem támogatott.

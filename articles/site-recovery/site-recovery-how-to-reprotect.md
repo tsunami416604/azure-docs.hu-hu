@@ -15,10 +15,10 @@ ms.workload: storage-backup-recovery
 ms.date: 02/06/2018
 ms.author: rajanaki
 ms.openlocfilehash: c336966f9a785707e76bc6a10c4a9283d797d064
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/07/2018
 ---
 # <a name="reprotect-from-azure-to-an-on-premises-site"></a>Lássa el újból védelemmel az Azure-ból a helyszíni helyhez
 
@@ -203,8 +203,8 @@ To replicate back to on-premises, you will need a failback policy. This policy g
 3. A **fő célkiszolgáló** és **Folyamatkiszolgáló**, válassza ki a helyszíni fő célkiszolgáló és a folyamatkiszolgáló.
 4. A **Datastore**, válassza ki, amelyhez végre kívánja hajtani a lemezek helyi az adattárral. Ez a beállítás használható, ha a helyszíni virtuális gép törlődik, és új lemezek létrehozásához szükség. A rendszer figyelmen kívül hagyja ezt a beállítást, ha a lemez már létezik, de továbbra is meg kell adnia egy értéket.
 5. Válassza ki az adatmegőrzési meghajtó.
-6. A feladat-visszavétel házirend automatikusan ki van jelölve.
-7. Kattintson a **OK** ismételt védelem megkezdéséhez. Egy feladat elkezdi replikálni a virtuális gépet az Azure-ból a helyszíni hely. A előrehaladásának a a **feladatok** fülre.
+6. A feladat-visszavételi szabályzat automatikusan ki van jelölve.
+7. Kattintson az **OK** gombra az ismételt védelem megkezdéséhez. Egy feladat elkezdi replikálni a virtuális gépet az Azure-ból a helyszíni helyre. A **Feladatok** lapon követheti nyomon a folyamat állapotát.
 
 Ha azt szeretné, helyreállítása másik helyre (a helyszíni virtuális gép törlésekor), válassza az adatmegőrzési meghajtó és a fő célkiszolgáló konfigurált adattároló. Nem vissza a helyszíni hely, a VMware virtuális gépeket a feladat-visszavétel védelmi tervet a fő célkiszolgáló ugyanazon adattár használják. Új virtuális gép vCenter létrejön.
 
@@ -214,10 +214,10 @@ Ha szeretné helyreállítani a virtuális gépet az Azure-on egy meglévő hely
 A helyreállítási terv szintjén is állítsa. Replikációs csoport is látható el újra védelemmel csak a helyreállítási tervet. Amikor Ön lássa el újból védelemmel a helyreállítási terv használatával, meg kell adnia az értékek minden védett gép.
 
 > [!NOTE]
-> Az azonos fő célkiszolgáló használatával lássa el újból védelemmel egy replikációs csoportot. Ha egy másik fő célkiszolgáló lássa el újból védelemmel egy replikációs csoportot, a kiszolgáló nem adhatók meg a közös pontja időben.
+> Ugyanazt a fő célkiszolgálót használja a replikációs csoportok ismételt védelméhez. Ha másik fő célkiszolgálóval védi meg ismét a replikációs csoportokat, a kiszolgáló nem tud megállapítani közös időpontot.
 
 > [!NOTE]
-> A helyszíni virtuális gép ismételt védelem ki van kapcsolva. Ez segít a replikáció során az adatok konzisztenciájának biztosítására. Ne kapcsolja be a virtuális gép ismételt védelem befejeződése után.
+> A helyszíni virtuális gép ismételt védelem ki van kapcsolva. Ez elősegíti az adatok konzisztenciáját a replikáció során. Ne kapcsolja be a virtuális gép ismételt védelem befejeződése után.
 
 Miután az ismételt védelem sikeres, a virtuális gép módba lép, egy védett állapotban.
 

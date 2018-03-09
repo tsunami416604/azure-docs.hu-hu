@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 01/25/2018
 ms.author: jdial
 ms.custom: 
-ms.openlocfilehash: dd8203763eb6abd19e2b3483636dc4d80f7effdf
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 22fcdbda85f3ea336c3926e04d408935ed069c25
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="create-a-virtual-network-using-powershell"></a>Hozzon létre egy virtuális hálózatot PowerShell használatával
 
@@ -169,4 +169,4 @@ Remove-AzureRmResourceGroup -Name myResourceGroup -Force
 Ebben a cikkben üzembe egy alapértelmezett virtuális hálózatot egyetlen alhálózattal. Annak megismerése, hogyan hozhat létre egyéni virtuális hálózatot, több alhálózattal, továbbra is az oktatóanyag egy egyéni virtuális hálózat létrehozásához.
 
 > [!div class="nextstepaction"]
-> [Egyéni virtuális hálózat létrehozása](virtual-networks-create-vnet-arm-pportal.md#powershell)
+> [Egyéni virtuális hálózat létrehozása](virtual-networks-create-vnet-arm-ps.md)

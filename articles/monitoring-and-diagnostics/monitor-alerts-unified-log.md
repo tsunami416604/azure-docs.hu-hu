@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2018
 ms.author: vinagara
-ms.openlocfilehash: 438776e7f0885dbdb0d66ccdd18d854e14beb299
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 0cee8bf77e0facc12159b823152b8859ce5cedd8
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="log-alerts-in-azure-monitor---alerts-preview"></a>Napló riasztások figyelése Azure - riasztások (előzetes verzió)
-Ez a cikk részletesen ismerteti, hogyan riasztási szabályok elemzési lekérdezések használata az Azure-riasztások (előzetes verzió), és különböző típusú riasztási szabályok napló közötti különbségeket ismerteti.
+Ez a cikk részletesen ismerteti, hogyan riasztási szabályok elemzési lekérdezések használata az Azure-riasztások (előzetes verzió), és különböző típusú riasztási szabályok napló közötti különbségeket ismerteti. A naplók segítségével metrika riasztások leírását, [közel valós idejű metrika riasztások](monitoring-near-real-time-metric-alerts.md)
 
 Jelenleg Azure riasztások (előzetes verzió), támogatja jelentkezzen ki riasztást a lekérdezések [Azure Naplóelemzés](../log-analytics/log-analytics-tutorial-viewdata.md) és [Application Insights](../application-insights/app-insights-cloudservices.md#view-azure-diagnostic-events).
 
@@ -40,12 +40,12 @@ Amikor [egy napló riasztás létrehozása a riasztások (előzetes verzió)](mo
 
 ## <a name="log-alert-rules"></a>Napló riasztási szabályok
 
-Riasztások napló lekérdezések automatikusan futtatása rendszeres időközönként (előzetes verzió) Azure riasztások jönnek létre.  Ha a napló lekérdezés eredményeit az adott feltételeknek megfelelő, egy riasztás rekord jön létre. A szabály automatikusan követően futtathatja egy vagy több műveletek proaktív értesítést küldenek, a figyelmeztetés vagy meg kíván hívni egy másik folyamat, például a külső alkalmazás használatával történő adatküldés [json-alapú webhook](monitor-alerts-unified-log-webhook.md)használatával [művelet csoportok](monitoring-action-groups.md). Különböző típusú riasztási szabályok az elemzés végrehajtásához használja a másik programot.
+Riasztások (előzetes verzió) az automatikus futtatásra napló lekérdezések rendszeres időközönként Azure riasztások jönnek létre.  Ha a napló lekérdezés eredményeit az adott feltételeknek megfelelő, egy riasztás rekord jön létre. A szabály automatikusan követően futtathatja egy vagy több műveletek proaktív értesítést küldenek, a figyelmeztetés vagy meg kíván hívni egy másik folyamat, például a külső alkalmazás használatával történő adatküldés [json-alapú webhook](monitor-alerts-unified-log-webhook.md)használatával [művelet csoportok](monitoring-action-groups.md). Különböző típusú riasztási szabályok az elemzés végrehajtásához használja a másik programot.
 
 A riasztási szabályok határozzák meg a következő adatokat:
 
 - **Lekérdezés jelentkezzen**.  A lekérdezés, amely futtatja a minden alkalommal, amikor a riasztási szabály következik be.  Ez a lekérdezés által visszaadott rekordok segítségével meghatározhatja, hogy riasztás jöjjön létre.
-- **Időablak**.  Adja meg a lekérdezés időintervallumát.  A lekérdezés visszaadja csak azt jelzi, hogy az aktuális időponthoz képest ebben a tartományban jöttek létre.  Időablak tetszőleges érték 5 perc és 1440 perc és 24 óra közötti lehet. Például ha a időszak 60 percre van beállítva, és a lekérdezés futtatása, 1:15 előtti, csak a 12:15 előtti és 1:15 előtti között létrejövő rekordok ad vissza.
+- **Időablak**.  Adja meg a lekérdezés időintervallumát.  A lekérdezés csak azokat a rekordokat adja vissza, amelyek az aktuális idő ezen tartományában jöttek létre.  Időablak tetszőleges érték 5 perc és 1440 perc és 24 óra közötti lehet. Például ha a időszak 60 percre van beállítva, és a lekérdezés futtatása, 1:15 előtti, csak a 12:15 előtti és 1:15 előtti között létrejövő rekordok ad vissza.
 - **Gyakoriság**.  Meghatározza, hogy milyen gyakran kell futtatni a lekérdezést. Bármely érték 5 perc és 24 óra közötti lehet. A időszak kisebbnek vagy azzal egyenlőnek kell lennie.  Ha az érték nagyobb, mint az időszak, majd azzal kockáztatja alatt nem talált rekordokat.<br>Vegye figyelembe például egy olyan időkeretet, 30 perc és 60 perc gyakorisága.  Ha a lekérdezés futtatása, 1:00, 12:30 és 1:00 PM rekordok adja vissza.  A következő szeretné futtatni a lekérdezést ideje 2:00 amikor meghaladná a 1:30 és 2:00 között rögzíti.  1:00 és 1:30 között létrejövő rekordok volna soha nem értékelhető ki.
 - **Küszöbérték**.  A naplófájl-keresési eredmények kiértékelése annak meghatározásához, hogy riasztást kell létrehozni.  A küszöbérték nem azonos a különböző típusú riasztási szabályok.
 
@@ -75,7 +75,7 @@ Egy olyan esetet, ahol szeretné megnézni, ha a webes alkalmazás biztosítja a
 **Riasztási gyakoriságot:** öt perc<br>
 **Küszöbérték:** kiváló 0-nál<br>
 
-Majd riasztást fog futni a lekérdezés 5 percenként, az adatok - rekordot keres, ahol eredménykódja volt 500 30 perc. Ha található ilyen is egy rekord, akkor a riasztás és az eseményindító beállított műveletet következik be.
+Majd riasztást fog futni a lekérdezés 5 percenként, az adatok - rekordot keres, ahol eredménykódja volt 500 30 perc. Ha található ilyen is egy rekord, akkor következik be, a riasztást, és elindítja a műveleteket.
 
 ## <a name="metric-measurement-alert-rules"></a>Metrika mérési riasztási szabályok
 
@@ -96,7 +96,7 @@ Majd riasztást fog futni a lekérdezés 5 percenként, az adatok - rekordot ker
 
 **Időköz**: az időtartam alatt, amelyben az adatokat összesített értéket határoz meg.  Például, ha a megadott **öt perc**, létrehozott egy rekordot az a csoportmező, 5 perces időközönként a riasztás megadott időszak alatt összesített értéket minden egyes példányánál.
 > [!NOTE]
-> Bin függvény kell használható lekérdezésben. Is egyenlőtlen időközök előállítása esetén az időszak Bin függvény - készlettel riasztás helyette használandó bin_at funkció ehelyett gondoskodjon arról, hogy egy rögzített pont
+> Bin függvény kell használható lekérdezésben. Bin() egyenlőtlen időközök - eredményezhet, riasztás fog helyette bin_at függvény használata megfelelő idő futásidőben, és rögzített pont eredmények biztosítása
 
 **Küszöbérték**: küszöbértéke figyelmeztetési metrika mérési szabályok határozzák meg az összesített érték és a behatolások.  A naplófájl-keresési bármely adatpont meghaladja ezt az értéket, ha a jövőben éri figyelembe.  Ha megszegése az összes objektum az eredmények száma meghaladja a megadott értéket, majd riasztást hoz létre, hogy az objektum.
 

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: Inactive
 ms.date: 09/25/2017
 ms.author: v-daljep
-ms.openlocfilehash: cce112929ff2f4fb48c2c6e2ddc2d4eee743b790
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 0efb8b80bc98931f33991dc67f8f4aa1953bb491
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="troubleshoot-azure-sql-database-performance-issues-with-intelligent-insights"></a>Intelligens, amelyen az Azure SQL Database teljesítménnyel kapcsolatos problémák elhárítása
 
@@ -129,7 +129,7 @@ A diagnosztikai naplófájl kimenete, használhatja a hibaelhárítási alapját
 
 A probléma elhárítása érdekében a legegyszerűbb és legbiztonságosabb módja tartsa rövid tranzakciók és a zárolási kezdjen a legköltségesebb lekérdezések csökkentése érdekében. Kisebb műveletek műveletek nagy kötegelt bonthatja. Jó gyakorlat az, hogy csökkentse a lekérdezés zárolási erőforrásigényét azáltal, hogy a lekérdezés felhasználását. Csökkenti a nagy vizsgálatokat, mert növeli a megtalálásuk esélyét holtpont, és kedvezőtlen hatással az általános adatbázis teljesítménye. Azonosított lekérdezések, amelyek zárolását hozzon létre új indexeket, vagy oszlopok hozzáadása a meglévő index a táblázatbeolvasás elkerülése érdekében. 
 
-További javaslatokat, lásd: [blokkoló zárolási eszkalációs az SQL Server által okozott problémák megoldásához](https://support.microsoft.com/en-us/help/323630/how-to-resolve-blocking-problems-that-are-caused-by-lock-escalation-in).
+További javaslatokat, lásd: [blokkoló zárolási eszkalációs az SQL Server által okozott problémák megoldásához](https://support.microsoft.com/help/323630/how-to-resolve-blocking-problems-that-are-caused-by-lock-escalation-in).
 
 ## <a name="increased-maxdop"></a>Nagyobb MAXDOP
 
@@ -289,7 +289,7 @@ Minden egyes adatbázis adatbázishoz kötődő konfigurációs módosítások �
 
 A diagnosztikai naplófájlok kimenetek adatbázishoz kötődő konfigurációs elvégzett módosítások nemrég, ami miatt az előző hét nap-munkaterhelések viselkedésére képest teljesítménycsökkenést. Visszaállíthatja a konfigurációs módosítások az előző értéket. Is hangolhassa értékkel a kívánt teljesítményszintet eléréséig. Adatbázis-hatóköri konfiguráció értékek átmásolhatja egy hasonló adatbázis megfelelő teljesítményt biztosít. Ha nem sikerül, a teljesítmény hibaelhárításához, alapértelmezett SQL-adatbázis alapértelmezett értékekre, és próbálja meg ehhez az alaptervhez-től kezdődő finomhangolásához.
 
-Az adatbázishoz kötődő konfigurációs és a konfiguráció módosítása a T-SQL-szintaxis optimalizálásához további információkért lásd: [Alter adatbázishoz kötődő konfigurációs (Transact-SQL)](https://msdn.microsoft.com/en-us/library/mt629158.aspx).
+Az adatbázishoz kötődő konfigurációs és a konfiguráció módosítása a T-SQL-szintaxis optimalizálásához további információkért lásd: [Alter adatbázishoz kötődő konfigurációs (Transact-SQL)](https://msdn.microsoft.com/library/mt629158.aspx).
 
 ## <a name="slow-client"></a>Lassú ügyfél
 
@@ -330,7 +330,7 @@ Hozzáférés intelligens Insights Azure SQL elemzés címen az Azure portálon 
 
 Intelligens Insights általában kell végrehajtani a kiváltó okának elemzése a teljesítménycsökkenés oka egy órája. Ha a probléma nem találja az intelligens Insights és alapvető fontosságú, használja a Lekérdezéstár kell azonosítania a teljesítmény a probléma okának. (Ezek a problémák általában kevesebb, mint egy órával korábbiak.) További információkért lásd: [figyelemmel kísérni a teljesítményét a Lekérdezéstár használatával](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - Ismerje meg, [intelligens Insights](sql-database-intelligent-insights.md) fogalmakat.
 - Használja a [intelligens Insights Azure SQL Database teljesítményét diagnosztikai naplófájl](sql-database-intelligent-insights-use-diagnostics-log.md).
 - A figyelő [Azure SQL adatbázis Azure SQL elemzés használatával](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql).

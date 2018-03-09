@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 01/23/2017
 ms.author: ruturajd
 services: azure-migrate
-ms.openlocfilehash: fcf6d2bf13af785eae26ff60035a4754f6ec702e
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 49f3d5ba55a9c1abfcd6dcb50058ed7a001a2eec
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="collector-appliance"></a>Adatgyűjtő-készülék
 
@@ -23,9 +23,23 @@ ms.lasthandoff: 03/02/2018
 
 Az Azure-áttelepítése gyűjtő egy lighweight készülék felderítéséhez a helyszíni vCenter környezetben használható. A készülék deríti fel a helyszíni VMware rendszerű gépek, és a rájuk vonatkozó metaadatok küld az Azure áttelepítése szolgáltatás.
 
-A gyűjtő készülék valójában egy OVF, amely az Azure áttelepítése projekt letölthető. 4 mag, 8 GB RAM és 80 GB egy lemeznek VMware virtuális gépek elindítja. A készülék operációs rendszer Windows Server 2012 R2 (64 bites)
+A gyűjtő készülék valójában egy OVF, amely az Azure áttelepítése projekt letölthető. 4 mag, 8 GB RAM és 80 GB egy lemeznek VMware virtuális gépek elindítja. A készülék operációs rendszer Windows Server 2012 R2 (64 bites).
 
 A lépéseket követve hozhat létre a gyűjtő ide - [a gyűjtő virtuális gép létrehozása](tutorial-assessment-vmware.md#create-the-collector-vm).
+
+## <a name="collector-communication-diagram"></a>Adatgyűjtő kommunikációs diagramja
+
+![Adatgyűjtő kommunikációs diagramja](./media/tutorial-assessment-vmware/portdiagram.PNG)
+
+
+| Összetevő      | Kommunikációs cél   | Szükséges port                            | Ok                                   |
+| -------------- | --------------------- | ---------------------------------------- | ---------------------------------------- |
+| Gyűjtő      | Azure Migrate szolgáltatás | 443-as TCP                                  | Gyűjtő képes kommunikálni a szolgáltatás, az SSL-port 443-as porton keresztül kell lennie. |
+| Gyűjtő      | vCenter Server        | Alapértelmezett: 443                             | Kell, hogy a gyűjtő képes kommunikálni a vCenter-kiszolgáló. Alapértelmezés szerint csatlakozik a 443-as vCenter. Ha egy másik porton figyel a vCenter, ezt a portot, a gyűjtő kimenő port elérhetőnek kell lennie |
+| Gyűjtő      | RDP|   | TCP 3389 | Ahhoz, hogy a gyűjtő géppé RDP tudja |
+
+
+
 
 
 ## <a name="collector-pre-requisites"></a>Adatgyűjtő-Előfeltételek
@@ -158,6 +172,32 @@ A következő táblázat a teljesítményszámlálók gyűjtése, valamint is fe
 A gyűjtő csak felderítésére szolgál az adatokról, és elküldi a projektet. A projekt a felderített adatokat jelenik meg a portálon, és értékelés készítése előtt további időt vehet igénybe.
 
 A kijelölt hatókörben lévő virtuális gépek száma alapján, az legfeljebb 15 percet vesz igénybe a statikus metaadatok küldésére a projektet. A statikus metaadatok a portálon elérhetővé válik, lásd a gépet a portálon, és csoportok létrehozása. Egy értékelési nem hozható létre, amíg a feladat befejeződött, és a projekt feldolgozta-e az adatokat. Egyszer a feladatot a gyűjtő befejeződött, is igénybe vehet, legfeljebb egy órával a teljesítményadatokat a portálon elérhető legyen a kijelölt hatókörben lévő virtuális gépek száma alapján.
+
+## <a name="how-to-upgrade-collector"></a>Gyűjtő frissítése
+
+A gyűjtő a petesejtek ismét letöltése nélkül frissítheti a legújabb verzióra.
+
+1. Töltse le a legújabb [frissítési csomag](https://aka.ms/migrate/col/latestupgrade).
+2. Győződjön meg arról, hogy a letöltött gyorsjavítás biztonságos, nyissa meg a rendszergazdai parancsablakot, és a ZIP-fájl a kivonat létrehozásához a következő parancsot. A generált kivonatoló meg kell felelnie a kettős kereszttel említett szemben az adott verzió:
+
+    ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
+    
+    (például használati C:\>CertUtil - HashFile C:\AzureMigrate\CollectorUpdate_release_1.0.9.5.zip SHA256)
+3. A zip-fájl másolása az Azure adatgyűjtő virtuális gép áttelepítése (adatgyűjtő készülék).
+4. Kattintson a jobb gombbal a zip-fájl, és válassza ki az összes kibontása.
+5. Kattintson a jobb gombbal a Setup.ps1, és válassza a Futtatás a PowerShell segítségével, és kövesse a képernyőn a frissítés telepítéséhez.
+
+### <a name="list-of-updates"></a>Frissítések listája
+
+#### <a name="upgrade-to-version-1095"></a>Frissítés 1.0.9.5 verzióról
+
+Frissítés verzió 1.0.9.5 letöltési [csomag](https://aka.ms/migrate/col/upgrade_9_5)
+
+**Algoritmus** | **Kivonat értéke**
+--- | ---
+MD5 | d969ebf3bdacc3952df0310d8891ffdf
+SHA1 | f96cc428eaa49d597eb77e51721dec600af19d53
+SHA256 | 07c03abaac686faca1e82aef8b80e8ad8eca39067f1f80b4038967be1dc86fa1
 
 ## <a name="next-steps"></a>További lépések
 

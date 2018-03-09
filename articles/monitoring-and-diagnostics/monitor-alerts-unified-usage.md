@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/05/2018
 ms.author: vinagara
-ms.openlocfilehash: b537bb42d43c4232c100061322e09bf492f2a20f
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 60f6c45b7dacd26e0dea7b8b69c52534dcb5fec9
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="create-view-and-manage-alerts-using-azure-monitor---alerts-preview"></a>Hozzon létre, megtekintheti és kezelheti a riasztásokat figyelővel Azure - riasztások (előzetes verzió)
 
@@ -71,7 +71,7 @@ Részletes tovább részletes útmutató a Azure figyelmeztetések (előzetes ve
 
     > [!NOTE]
 
-    > Csak gyors riasztások bevezetett új metrika képességekkel szereplő jel, metrikák platform szolgáltatásból
+    >  Minden [majdnem valós idejű riasztások](monitoring-near-real-time-metric-alerts.md) figyelő szolgáltatással kompatibilis erőforrások találhatók **Platform** és jelezze típusú **metrika**
 
 6. *Metrika riasztások*: a kijelölt jel riasztások logikát is meg kell adni. Referenciaként jel régebbi adatok végeznünk a az ablak használatával beállítás mellett látható **előzmények megjelenítése**, az elmúlt hat órán át az előző hét különböző. A helyen, a képi megjelenítés **riasztási logika** a megjelenített beállítások feltétel, a összesítési és végül küszöbérték lehet kiválasztani. A megadott logikai előnézete, mint a feltétel látható jel előzmények, valamint a képi megjelenítés lejátszásához, ha a figyelmeztetés akkor rendelkezik. Végül adja meg, milyen időtartamig, a riasztás kell keresnie a megadott feltétel kiválasztásával a **időszak** együtt, hogy a riasztás milyen gyakran fusson kiválasztásával beállítás **gyakoriság**.
 

@@ -1,128 +1,164 @@
 ---
-title: "Az Azure Storage szolgáltatás titkosítási ügyfél használatával felügyelt kulcsok Azure Key Vault |} Microsoft Docs"
-description: "Az Azure Blob Storage szolgáltatás oldalán titkosítani, ha az adatok tárolása az Azure Storage szolgáltatás titkosítási szolgáltatás segítségével, és visszafejteni, ha a felhasználói adatok beolvasása kulcsok kezelése."
+title: "Az Azure Storage szolgáltatás titkosítási kulcsok ügyfél által felügyelt Azure Key Vault használatával |} Microsoft Docs"
+description: "Az Azure Blob Storage szolgáltatás oldalán titkosítani, ha az adatok tárolása az Azure Storage szolgáltatás titkosítási szolgáltatás segítségével, és visszafejteni az ügyfél által felügyelt kulcsokkal adatok beolvasása közben."
 services: storage
-documentationcenter: .net
 author: lakasa
-manager: jahogg
-editor: tysonn
-ms.assetid: 
+manager: jeconnoc
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 06/07/2017
+ms.date: 03/07/2018
 ms.author: lakasa
-ms.openlocfilehash: 0a05a0d28899cc3db11f8fda8aec5bd6ed9bd5f8
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: b40858640d10e5661be420976520774bd50837cb
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/08/2018
 ---
-# <a name="storage-service-encryption-using-customer-managed-keys-in-azure-key-vault"></a>Felügyelt felhasználói kulcsok használata az Azure Key Vault Storage szolgáltatás titkosítási
+# <a name="storage-service-encryption-using-customer-managed-keys-in-azure-key-vault"></a>Storage szolgáltatás titkosítási kulcsok ügyfél által felügyelt Azure Key Vault használatával
 
-Microsoft Azure a elkötelezett az Ön és az adatokat, hogy megfeleljen a szervezeti biztonsági és megfelelőségi kötelezettségvállalások megvédeni.  Az inaktív adatok védelméhez egyik módja Storage szolgáltatás titkosítási (SSE), amely titkosítja az adatokat, történő írásakor, tárolási és automatikusan visszafejti az adatok beolvasása közben azt használja. A titkosítási és visszafejtési automatikus, teljes mértékben transzparens, és használja 256 bites [AES titkosítási](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard), a legerősebb blokk egyik Rejtjelek érhető el.
+Microsoft Azure a elkötelezett az Ön és az adatokat, hogy megfeleljen a szervezeti biztonsági és megfelelőségi kötelezettségvállalások megvédeni. Egyik módja az, hogy az Azure Storage védi az adatokat az keresztül Storage szolgáltatás titkosítási (SSE), amely titkosítja a történő írásakor, tárolási és visszafejti az adatok beolvasása közben azt. A titkosítási és visszafejtési automatikus, átlátható, és használja 256 bites [AES titkosítási](https://wikipedia.org/wiki/Advanced_Encryption_Standard), a legerősebb blokk egyik Rejtjelek érhető el.
 
-A Microsoft által felügyelt titkosítási kulcsok használatával SSE, vagy használhatja a saját titkosítási kulccsal. A cikk ismerteti az utóbbi. További információ a Microsoft által felügyelt kulcsokkal, vagy SSE általában: [Storage szolgáltatás titkosítási az inaktív adatok](../storage-service-encryption.md).
+A Microsoft által felügyelt titkosítási kulcsok használatával SSE, vagy használhatja a saját titkosítási kulccsal. A cikkből megtudhatja, hogyan használhatja a saját titkosítási kulccsal. További információ a Microsoft által felügyelt kulcsokkal, vagy SSE általában: [Storage szolgáltatás titkosítási az inaktív adatok](storage-service-encryption.md).
 
-Adja meg a nem tudják használni a saját titkosítási kulccsal, a Blob Storage SSE integrálva van Azure Key Vault (AKV). Létrehozhat saját titkosítási kulccsal, és tárolja őket a AKV, vagy AKV tartozó API-k segítségével készítése a titkosítási kulcsokat. Nem csak AKV lehetővé teszi a kezelhetik és szabályozhatják a kulcsokat, emellett lehetővé teszi a kulcs használatának naplózása. 
+A Blob és a fájl tárolásához SSE integrálva van az Azure Key Vaulthoz, hogy a titkosítási kulcsok kezeléséhez használhatja a kulcstároló. Létrehozhat saját titkosítási kulccsal, és tárolja őket a kulcstároló, vagy az Azure Key Vault API-k segítségével készítése a titkosítási kulcsokat. Az Azure Key Vault kezelése és szabályozhatja a kulcsok és a kulcs használatának is naplózása.
 
-Miért érdemes a saját kulcsokat hoz létre? Ez további rugalmasságot biztosít, lehetővé téve a létrehozása, elforgatása, tiltsa le, és adja meg a hozzáférés-vezérlést. Lehetővé teszi az adatok védelme érdekében használt titkosítási kulcsok naplózása.
+Miért létrehozása a saját kulcsok? Egyéni kulcsok rugalmasabban, így létrehozása, elforgatása, tiltsa le, és adja meg a hozzáférés-vezérlést. Egyéni kulcsok lehetővé teszik az adatok védelme érdekében használt titkosítási kulcsok naplózása.
 
-## <a name="sse-with-customer-managed-keys-preview"></a>Az ügyfél felügyelt kulcsoknál előzetes verziójú SSE
+## <a name="get-started-with-customer-managed-keys"></a>Az ügyfél által felügyelt kulcsok első lépései
 
-Ez a szolgáltatás jelenleg előzetes kiadásban elérhető. Ez a funkció használatához hozzon létre egy új tárfiókot kell. Hozhat létre egy új kulcstartó és a kulcs vagy egy meglévő kulcstároló és a kulcs használhatja. A tárfiók és a key vault ugyanabban a régióban kell lennie, de különböző előfizetésekhez el.
+Ügyfél által felügyelt kulcsok használata SSE, hozhat létre egy új kulcstartó és kulcsa, vagy használhat egy meglévő kulcstároló és a kulcs. A tárfiók és a key vault ugyanabban a régióban kell lennie, de különböző előfizetésekhez el. 
 
-Az előzetes részt, lépjen kapcsolatba a [ ssediscussions@microsoft.com ](mailto:ssediscussions@microsoft.com). Egy hivatkozásra részt venni az előzetes kiadásban lesz elérhető.
+### <a name="step-1-create-a-storage-account"></a>1. lépés: Tárfiók létrehozása
 
-További tudnivalókért tekintse meg a [gyakran ismételt kérdések](#frequently-asked-questions-about-storage-service-encryption-for-data-at-rest).
+Először hozzon létre egy tárfiókot, ha Ön nem rendelkezik ilyennel. További információkért lásd: [hozzon létre egy új tárfiókot](storage-quickstart-create-account.md).
 
-> [!IMPORTANT]
-> Regisztrálnia kell az előzetes ebben a cikkben ismertetett lépések előtt. Előzetes verzióhoz való hozzáférés nélkül nem lesz a portálon a funkció engedélyezése érdekében.
+### <a name="step-2-enable-sse-for-blob-and-file-storage"></a>2. lépés: SSE engedélyezése a Blob és a fájl tárolásához
 
-## <a name="getting-started"></a>Első lépések
-## <a name="step-1-create-a-new-storage-accountstorage-create-storage-accountmd"></a>1. lépés: [hozzon létre egy új tárfiókot](../storage-create-storage-account.md)
+Ahhoz, hogy az ügyfél által felügyelt kulcsokkal SSE, két fő szolgáltatásainak, véglegesen törli és nem törölhetők, is engedélyezni kell. Ezek a beállítások győződjön meg arról, a kulcsok nem lehet akár véletlenül vagy szándékosan törölt. A kulcsok maximális megőrzési időszak 90 nap, a felhasználók rosszindulatú szereplője vagy nevű támadások elleni védelme van beállítva.
 
-## <a name="step-2-enable-encryption"></a>2. lépés: Engedélyezze titkosítás
-A tárolási fiók az SSE engedélyezheti a [Azure-portálon](https://portal.azure.com). A beállítások panelen a tárfiók a Blob szolgáltatás szakaszban keresse meg a következő ábrán látható, és kattintson a titkosítás.
+Ha programozottan az SSE az ügyfél által felügyelt kulcsok engedélyezni szeretné, használhatja a [Azure Storage erőforrás szolgáltató REST API felülete](https://docs.microsoft.com/rest/api/storagerp), a [Storage erőforrás szolgáltató ügyféloldali kódtára a .NET](https://docs.microsoft.com/dotnet/api), [ Az Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview), vagy a [Azure CLI](https://docs.microsoft.com/azure/storage/storage-azure-cli).
+
+Ügyfél által felügyelt kulcsok használata SSE, a tárolási fiók identitását kell rendelnie a tárfiók. Az identitás állította futtassa a következő PowerShell-parancsot:
+
+```powershell
+Set-AzureRmStorageAccount -ResourceGroupName \$resourceGroup -Name \$accountName -AssignIdentity
+```
+
+Véglegesen törli, és tegye kiürítése is engedélyezheti a következő PowerShell-parancsok végrehajtásával:
+
+```powershell
+($resource = Get-AzureRmResource -ResourceId (Get-AzureRmKeyVault -VaultName
+$vaultName).ResourceId).Properties | Add-Member -MemberType NoteProperty -Name
+enableSoftDelete -Value 'True'
+
+Set-AzureRmResource -resourceid $resource.ResourceId -Properties
+$resource.Properties
+
+($resource = Get-AzureRmResource -ResourceId (Get-AzureRmKeyVault -VaultName
+$vaultName).ResourceId).Properties | Add-Member -MemberType NoteProperty -Name
+enablePurgeProtection -Value 'True'
+
+Set-AzureRmResource -resourceid $resource.ResourceId -Properties
+$resource.Properties
+```
+
+### <a name="step-3-enable-encryption-with-customer-managed-keys"></a>3. lépés: A titkosítás engedélyezése az ügyfél által felügyelt kulcsok
+
+Alapértelmezés szerint az SSE Microsoft által felügyelt kulcsokat használ. Az ügyfél által felügyelt használható billentyűparancsok a tárolási fiók SSE engedélyezheti a [Azure-portálon](https://portal.azure.com/). Az a **beállítások** a storage-fiók paneljén kattintson **titkosítási**. Válassza ki a **a saját kulcs használata** beállítás, az alábbi ábrán látható módon.
 
 ![A titkosítási beállítással portál ábrázoló képernyőfelvétel](./media/storage-service-encryption-customer-managed-keys/ssecmk1.png)
-<br/>*Blob szolgáltatás SSE engedélyezése*
 
-Ha azt szeretné, hogy programozott módon engedélyezze vagy tiltsa le a tárolás titkosítását egy tárfiókon, használja a [Azure Storage erőforrás szolgáltató REST API felülete](https://docs.microsoft.com/rest/api/storagerp/?redirectedfrom=MSDN), a [Storage erőforrás szolgáltató ügyféloldali kódtára a .NET](https://docs.microsoft.com/dotnet/api/?redirectedfrom=MSDN), [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-4.0.0), vagy a [Azure CLI](https://docs.microsoft.com/azure/storage/storage-azure-cli).
+### <a name="step-4-select-your-key"></a>4. lépés: Válassza ki a kulcs
 
-Ezen a képernyőn Ha nem látja a "saját kulcs használata" jelölőnégyzet azt nem jóváhagyott az előzetes verziójára. Az e-mail küldése [ ssediscussions@microsoft.com ](mailto:ssediscussions@microsoft.com) és jóváhagyás-igénylést.
+Megadhatja a kulcs URI, vagy a kulcs kijelölésével kulcstároló.
 
-![Titkosítási betekintő portál képernyőfelvétel](./media/storage-service-encryption-customer-managed-keys/ssecmk1.png)
+#### <a name="specify-a-key-as-a-uri"></a>Adja meg a kulcsot egy URI-t
 
-Alapértelmezés szerint az SSE Microsoft által felügyelt kulcsokat használ. A saját kulcsok használatához jelölje be a jelölőnégyzetet. Majd adja meg a kulcs URI, vagy válassza ki a kulcs és a Key Vault a választó.
+Adja meg a kulcsot az URI, kövesse az alábbi lépéseket:
 
-## <a name="step-3-select-your-key"></a>3. lépés: Válassza ki a kulcs
+1. Válassza ki a **Enter billentyű URI** lehetőséget.  
+2. Az a **kulcs URI** mezőben adja meg az URI azonosító.
 
-![Portál ábrázoló képernyőfelvétel titkosítás használata a saját kulcs lehetőséggel](./media/storage-service-encryption-customer-managed-keys/ssecmk2.png)
+    ![Portál képernyőfelvétel: a titkosítási kulcs uri-beállítás megadása](./media/storage-service-encryption-customer-managed-keys/ssecmk2.png)
 
-![Portál képernyőfelvétel: a titkosítási kulcs uri-beállítás megadása](./media/storage-service-encryption-customer-managed-keys/ssecmk3.png)
+#### <a name="specify-a-key-from-a-key-vault"></a>Adja meg a kulcstároló kulcsot 
 
-Ha a tárfiók nincs hozzáférése a Key Vault, futtathatja az Azure Powershell hozzáférést biztosít a szükséges kulcstartóhoz storage-fiókok a következő parancsot.
+Adja meg a kulcstároló-kulcsot, kövesse az alábbi lépéseket:
+
+1. Válassza ki a **válassza ki a Key Vault** lehetőséget.  
+2. Válassza ki a használni kívánt kulcsot tartalmazó kulcstároló.
+3. A key vault lehetőségek közül választhat a kulcsot.
+
+    ![Portál ábrázoló képernyőfelvétel titkosítás használata a saját kulcs lehetőséggel](./media/storage-service-encryption-customer-managed-keys/ssecmk3.png)
+
+Ha a tárfiók nincs hozzáférése a kulcstároló, futtathatja az Azure PowerShell-paranccsal hozzáférést a következő ábrán látható.
 
 ![A hozzáférés megtagadva a kulcstartót portál képernyőfelvétel](./media/storage-service-encryption-customer-managed-keys/ssecmk4.png)
 
-Ugrás az Azure Key Vault az Azure portálon, és a tárfiók való hozzáférés biztosítása szerint is engedélyezheti a hozzáférést az Azure-portálon.
+Navigáljon az Azure Key Vault az Azure portálon, és a tárfiók való hozzáférés biztosítása szerint is engedélyezheti a hozzáférést az Azure-portálon.
 
-## <a name="step-4-copy-data-to-storage-account"></a>4. lépés: Adatok másolása storage-fiók
-Ha szeretné, hogy a titkosított adatok át az új tárfiók, tekintse meg a [lépés 3 az első lépések a Storage szolgáltatás titkosítási az inaktív adatok](https://docs.microsoft.com/azure/storage/storage-service-encryption#step-3-copy-data-to-storage-account).
+### <a name="step-5-copy-data-to-storage-account"></a>5. lépés: Adatok másolása storage-fiók
 
-## <a name="step-5-query-the-status-of-the-encrypted-data"></a>5. lépés: A titkosított adatok állapotának lekérdezése
-A titkosított adatok állapotának lekérdezése, tekintse meg [lépés 4 az első lépések a Storage szolgáltatás titkosítási az inaktív adatok](https://docs.microsoft.com/azure/storage/storage-service-encryption#step-4-query-the-status-of-the-encrypted-data).
+Adatok átviteléhez az új tárolási figyelembe, hogy titkosítva van, tekintse meg a 3. lépés [Bevezetés a tárolás titkosítását az inaktív adatok](storage-service-encryption.md#step-3-copy-data-to-storage-account).
 
-## <a name="frequently-asked-questions-about-storage-service-encryption-for-data-at-rest"></a>Gyakori kérdések Storage szolgáltatás titkosítási az inaktív adatok
-**K: használom a prémium szintű storage; Használhatok SSE felügyelt ügyfél kulcsokkal?**
+### <a name="step-6-query-the-status-of-the-encrypted-data"></a>6. lépés: A titkosított adatok állapotának lekérdezése
 
-V: Igen, a Microsoft által felügyelt SSE és az ügyfelek felügyelt kulcsok szabványos tárolás és a prémium szintű storage egyaránt támogatott. 
+A titkosított adatok állapotának lekérdezése, tekintse meg a 4. lépést a [Bevezetés a tárolás titkosítását az inaktív adatok](storage-service-encryption.md#step-4-query-the-status-of-the-encrypted-data).
 
-**K: hozható létre új tárfiókok az SSE engedélyezve van az Azure PowerShell és az Azure parancssori felület használatával felügyelt ügyfél kulcsokkal?**
+## <a name="faq-for-sse-with-customer-managed-keys"></a>Az ügyfél által felügyelt kulccsal rendelkező SSE – gyakori kérdések
+
+**K: használom a prémium szintű storage; Használhatok ügyfél által felügyelt kulcsok SSE?**
+
+A: a Microsoft által felügyelt és az ügyfél által felügyelt kulccsal rendelkező SSE Igen, Standard szintű tárolást és a prémium szintű storage esetén támogatott.
+
+**K: hozható létre új tárfiókok SSE az ügyfél által felügyelt kulcsokkal engedélyezve van az Azure PowerShell és az Azure parancssori felület használatával?**
 
 V: Igen.
 
-**K: hogyan sokkal több does Azure tárolási költségű SSE ügyféllel felügyelt kulcsok Ha engedélyezve van?**
+**K: hogyan sokkal költségeket a Azure Storage a SSE az ügyfél által felügyelt kulcsok használata esetén?**
 
-V: nincs az Azure Key Vault használatával költsége. További részletekért látogasson el [Key Vault díjszabása](https://azure.microsoft.com/en-us/pricing/details/key-vault/). Nincs SSE használatára vonatkozó további költség nélkül.
+V: nincs az Azure Key Vault használatával költsége. További részletekért látogasson el a [Key Vault díjszabása](https://azure.microsoft.com/pricing/details/key-vault/). Nincs SSE, amelyen engedélyezve van az összes tárfiók további költség nélkül.
 
 **K: visszavonja a titkosítási kulcsokat a hozzáférést?**
 
-A: visszavonhatja a hozzáférést Igen, tetszőleges időpontban. Többféleképpen is lehet visszavonni a hozzáférést a kulcsokat. Tekintse meg [Azure Key Vault PowerShell](https://docs.microsoft.com/powershell/module/azurerm.keyvault/?view=azurermps-4.0.0) és [Azure Key Vault CLI](https://docs.microsoft.com/cli/azure/keyvault) további részleteket. Visszavonni a hozzáférési gyakorlatilag letiltja való hozzáférést a tárfiókban lévő összes BLOB, a fiók titkosítási kulcs Azure Storage nem érhetők el.
+A: visszavonhatja a hozzáférést Igen, tetszőleges időpontban. Többféleképpen is lehet visszavonni a hozzáférést a kulcsokat. Tekintse meg [Azure Key Vault PowerShell](https://docs.microsoft.com/powershell/module/azurerm.keyvault/) és [Azure Key Vault CLI](https://docs.microsoft.com/cli/azure/keyvault) további részleteket. Visszavonni a hozzáférési gyakorlatilag letiltja való hozzáférést a tárfiókban lévő összes BLOB, a fiók titkosítási kulcs Azure Storage nem érhetők el.
 
 **K: hozható létre a tárfiók és a kulcs másik régióban?**
 
-V: nem, a tárfiók és a kulcs tárolóbeli/kulccsal kell ugyanabban a régióban kell. 
+V: nem, a tárfiók és az Azure Key Vault és a kulcs kell ugyanabban a régióban kell.
 
-**K: engedélyezhető az SSE felügyelt ügyfél kulccsal rendelkező a storage-fiók létrehozása közben?**
+**K: engedélyezhető az ügyfél által felügyelt kulcsok SSE a storage-fiók létrehozása közben?**
 
-V: nem. A storage-fiók létrehozása közben engedélyezésekor SSE Microsoft által felügyelt kulcsok csak használhatja. Ha azt szeretné, az ügyfél által felügyelt kulcsokat kíván használni, frissítenie kell a tárfiók tulajdonságai. Programozott frissítése a tárfiók REST- vagy a storage ügyfélkódtáraival egyikét használja, vagy frissíteni a tárfiók tulajdonságai-fiók létrehozása után az Azure portál használatával.
+V: nem. A tárfiók létrehozásakor az SSE csak a Microsoft által felügyelt kulcsok érhetők el. Ügyfél által felügyelt kulcsok használatához frissítenie kell a tárfiók tulajdonságai. Programozott frissítése a tárfiók REST- vagy a storage ügyfélkódtáraival egyikét használja, vagy frissíteni a tárfiók tulajdonságai-fiók létrehozása után az Azure portál használatával.
 
-**K: letiltani titkosítás közben SSE ügyféllel felügyelt kulcsok?**
+**K: titkosítási kulcsok ügyfél által felügyelt használatakor az SSE letiltása?**
 
-V: nem, akkor titkosítás nem tiltható le közben SSE ügyféllel felügyelt kulcsok. Tiltsa le a titkosítást, át kell váltania a Microsoft által felügyelt kulcsokkal. Ehhez az Azure-portálon vagy a PowerShell használatával.
+A: nem titkosítás nem tiltható le. Az összes services – Blob, fájl, Table és Queue storage alapértelmezés szerint engedélyezve van a titkosítás. Igény szerint válthat az ügyfél által felügyelt kulcsok használata a Microsoft által felügyelt kulcsokkal, és ez fordítva is igaz.
 
 **K: SSE alapértelmezés szerint engedélyezve van, egy új tárfiók létrehozásakor?**
 
-V: SSE; alapértelmezés szerint nincs engedélyezve az Azure portál segítségével engedélyezheti azt. Ez a funkció a tárolási erőforrás-szolgáltató REST API használatával programozott módon is engedélyezhető. 
+V: SSE összes storage-fiókok és az összes services – Blob, fájl, Table és Queue storage alapértelmezés szerint engedélyezve van.
 
-**K: nem engedélyezhető a titkosítás a storage-fiókom.**
+**K: nem engedélyezhető a felhasználó által felügyelt kulcsok használata a storage-fiókom SSE.**
 
-V: az azt egy erőforrás-kezelő tárfiókot? Klasszikus tárfiókok nem támogatottak. Az ügyfél által felügyelt kulcsok SSE csak az újonnan létrehozott erőforrás-kezelő storage-fiókok is engedélyezhető.
+V: van, az Azure Resource Manager-tárfiókot? Klasszikus tárfiókokba ügyfél által felügyelt kulcsok használata nem támogatott. Ügyfél által felügyelt kulccsal rendelkező SSE csak erőforrás-kezelő tárfiókok engedélyezhető.
 
-**K: van SSE ügyféllel felügyelt csak meghatározott régióiba engedélyezett kulcsok?**
+**K: Mi az az enyhe törölje, majd tegye kiürítése? Engedélyezi ezt a beállítást, az ügyfél által felügyelt kulcsok SSE használandó kell?**
 
-V: SSE csak bizonyos régiókban a Blob-tároló ebben az előzetes verzióban érhető el. E-mailek [ ssediscussions@microsoft.com ](mailto:ssediscussions@microsoft.com) kereséséhez a rendelkezésre állás és a részletek a Preview-ban. 
+V: világos törlése, és tegye nem kiürítése engedélyezni kell az ügyfél által felügyelt kulcsok SSE használandó. Ezek a beállítások győződjön meg arról, hogy a kulcs nem véletlenül vagy szándékosan törölt. A kulcsok maximális megőrzési időszak 90 nap, a felhasználók rosszindulatú szereplője és nevű támadások elleni védelme van beállítva. Ez a beállítás nem lehet letiltani.
+
+**K: az SSE csak meghatározott régióiba engedélyezett felhasználó által felügyelt kulcsokkal?**
+
+V: SSE ügyfél által felügyelt kulccsal rendelkező Blob és a fájl tárolási minden területen érhető el.
 
 **K: hogyan do I kapcsolatfelvételre Ha I problémák merülnek fel, vagy visszajelzést szeretne biztosítani?**
 
-V: kapcsolattartási [ ssediscussions@microsoft.com ](mailto:ssediscussions@microsoft.com) a Storage szolgáltatás titkosítási okozó problémákat. 
+V: kapcsolattartási [ ssediscussions@microsoft.com ](mailto:ssediscussions@microsoft.com) a Storage szolgáltatás titkosítási okozó problémákat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-*   További információk az átfogó készletét biztonsági funkciókat nyújtanak, amelyek segítségével a fejlesztők olyan biztonságos alkalmazásokat hozhat létre, lásd: a [tárolási biztonsági útmutatója](https://docs.microsoft.com/azure/storage/storage-security-guide).
-*   Áttekintés az Azure Key Vault kapcsolatos információkért lásd: [Mi az Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis)?
-*   Ismerkedés az Azure Key Vault, lásd: [Ismerkedés az Azure Key Vault](../../key-vault/key-vault-get-started.md).
+-   További információk az átfogó készletét biztonsági funkciókat nyújtanak, amelyek segítségével a fejlesztők olyan biztonságos alkalmazásokat hozhat létre, lásd: a [tárolási biztonsági útmutatója](storage-security-guide.md).
+
+-   Áttekintés az Azure Key Vault kapcsolatos információkért lásd: [Mi az Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis)?
+
+-   Ismerkedés az Azure Key Vault, lásd: [Ismerkedés az Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-get-started).

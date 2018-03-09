@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2018
 ms.author: abnarain
-ms.openlocfilehash: 92f773d3bbabe763d342366f0d56a77621829487
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: e9c6b85a439ba880c15ae16ab1cac093020430ba
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="how-to-create-and-configure-self-hosted-integration-runtime"></a>Hozzon létre, és Self-hosted integrációs futásidejű konfigurálása
 Az integrációs futásidejű (IR) a számítási infrastruktúrától által használt Azure Data Factory adatok integrációs funkciók különböző hálózati környezetek között. Infravörös kapcsolatos részletekért lásd: [integrációs futásidejű áttekintése](concepts-integration-runtime.md).
@@ -65,6 +65,7 @@ Amikor az adatok a helyszínen és a felhő között, a tevékenység egy önál
 - Önálló üzemeltetett integrációs futásidejű-t támogató Adatintegráció Azure virtuális hálózaton belül kell használni.
 - Az adatforrás tekinti egy helyszíni adatforrás (tűzfal mögött van) is használatos **ExpressRoute**. Az önálló üzemeltetett integrációs futásidejű használja a szolgáltatás és az adatforrás közötti kapcsolat létrehozásához.
 - Az önálló üzemeltetett integrációs futásidejű kell használnia, akkor is, ha az adattár a felhőben lévő egy **Azure IaaS virtuális gépként**.
+- Feladatok sikertelenek lehetnek a Self-hosted integrációs futásidejű engedélyezve van a mely FIPS előírásainak megfelelő Windows-kiszolgálóra telepíthető. A probléma megoldása érdekében tiltsa le a FIPS előírásainak megfelelő titkosítási a kiszolgálón.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -182,7 +183,7 @@ A frissített proxy beállítások mentését követően automatikusan újraindu
 Miután önálló üzemeltetett integrációs futásidejű sikeresen regisztrálva van, ha azt szeretné, megtekintéséhez, vagy frissíteni a proxykiszolgáló beállításait, használja az integrációs futásidejű Configuration Manager.
 
 1.  Indítsa el **Microsoft integrációs futásidejű a Configuration Manager**.
-2.  Váltás a **beállítások** fülre.
+2.  Váltson a **Settings** (Beállítások) lapra.
 3.  Kattintson a **módosítás** hivatkozásra **HTTP-Proxy** elindíthatja a szakasz a **HTTP-Proxy beállítása** párbeszédpanel.
 4.  Miután rákattintott a **következő** gomb, megjelenik egy figyelmeztető párbeszédpanel, mentse a proxybeállítást, és indítsa újra az integrációs futásidejű Gazdaszolgáltatást az engedélyt kér.
 

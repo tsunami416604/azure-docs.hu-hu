@@ -7,13 +7,13 @@ editor: spelluru
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: article
-ms.date: 11/21/2017
+ms.date: 03/07/2018
 ms.author: jingwang
-ms.openlocfilehash: e583c6952e02c4a93f56594f6392f1d9a260dce0
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 26f29355f53a586ea21551831f48ddf8898d3c9f
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory"></a>Támogatott fájlformátumok és az Azure Data Factory tömörítési kodek
 
@@ -90,7 +90,7 @@ A **importálási/exportálási egy JSON-fájl,-be/Azure Cosmos DB van**, import
 
 Ha szeretne elemezni a JSON-fájlokat, vagy az adatok írása JSON formátumban, állítsa be a `type` tulajdonságot a `format` szakaszban **JsonFormat**. Emellett megadhatja a következő **választható** tulajdonságokat a `format` szakaszban. A konfigurálással kapcsolatban lásd [A JsonFormat használatát bemutató példa](#jsonformat-example) című szakaszt.
 
-| Tulajdonság | Leírás | Kötelező |
+| Tulajdonság | Leírás | Szükséges |
 | --- | --- | --- |
 | filePattern |Az egyes JSON-fájlokban tárolt adatok mintáját jelzi. Az engedélyezett értékek a következők: **setOfObjects** és **arrayOfObjects**. Az **alapértelmezett** érték a **setOfObjects**. A mintákkal kapcsolatban lásd a [JSON-fájlminták](#json-file-patterns) című szakaszt. |Nem |
 | jsonNodeReference | Ha egy azonos mintával rendelkező tömbmezőben található objektumokat szeretne iterálni, vagy azokból adatokat kinyerni, adja meg a tömb JSON-útvonalát. Ez a tulajdonság csak akkor támogatott, ha JSON-fájlokból másol adatokat. | Nem |
@@ -307,7 +307,7 @@ Ebben a példában egy JSON-gyökérobjektumot alakít át több rekorddá tábl
 A **JsonFormat** típusú bemeneti adatkészlet a következőképpen van meghatározva (részleges meghatározás, csak a fontos részekkel). Pontosabban:
 
 - A `structure` szakasz határozza meg a testre szabott oszlopneveket és a megfelelő adattípusokat, miközben átalakítja őket táblázatos adatokká. Ez a szakasz **nem kötelező**, kivéve, ha oszlopleképezést kell végeznie. További információkért lásd: [dataset Forrásoszlopok leképezése cél adatkészlet oszlopok](copy-activity-schema-and-type-mapping.md).
-- `jsonNodeReference`határozza meg, hogy a következőnek és az adatok kinyerése a ugyanilyen mintájú objektumok **tömb** `orderlines`.
+- `jsonNodeReference` határozza meg, hogy a következőnek és az adatok kinyerése a ugyanilyen mintájú objektumok **tömb** `orderlines`.
 - A `jsonPathDefinition` határozza meg az egyes oszlopok JSON-útvonalát, amely jelzi, hogy honnan történjen az adatok kinyerése. Ebben a példában `ordernumber`, `orderdate`, és `city` alatt gyökérszintű objektum, amelynek JSON elérési út a `$.`, amíg `order_pd` és `order_price` a tömbelem nélkül származó elérési úttal rendelkező meghatározott `$.` .
 
 ```json
@@ -436,7 +436,7 @@ Ha elemezni szeretné a ORC-fájlokat, vagy ORC formátumban szeretne adatokat �
 ```
 
 > [!IMPORTANT]
-> Ha nem **adott állapotban** másol ORC-fájlokat a helyszíni és a felhőbeli adattárolók között, telepítenie kell a JRE (Java-futtatókörnyezet) 8-as verzióját az átjáró számítógépre. A 64 bites átjáróhoz 64 bites JRE, a 32 bites átjáróhoz 32 bites JRE szükséges. Mindkét verziót megtalálja [itt](http://go.microsoft.com/fwlink/?LinkId=808605). Válassza ki a megfelelő verziót.
+> A másolási által felhatalmazott Self-hosted integrációs futásidejű pl. a helyszíni és a felhő között adatokat tárolja, ha nem másol ORC fájlokat **,-van**, telepítenie kell a JRE 8 (Java Runtime Environment) a IR-számítógépre. Egy 64 bites IR 64 bites JRE igényel. Mindkét verziót megtalálja [itt](http://go.microsoft.com/fwlink/?LinkId=808605).
 >
 
 Vegye figyelembe a következő szempontokat:
@@ -456,7 +456,7 @@ Ha elemezni szeretné a Parquet-fájlokat, vagy Parquet formátumban szeretne ad
 ```
 
 > [!IMPORTANT]
-> Ha nem **adott állapotban** másol Parquet-fájlokat a helyszíni és a felhőbeli adattárolók között, telepítenie kell a JRE (Java-futtatókörnyezet) 8-as verzióját az átjáró számítógépre. A 64 bites átjáróhoz 64 bites JRE, a 32 bites átjáróhoz 32 bites JRE szükséges. Mindkét verziót megtalálja [itt](http://go.microsoft.com/fwlink/?LinkId=808605). Válassza ki a megfelelő verziót.
+> A másolási által felhatalmazott Self-hosted integrációs futásidejű pl. a helyszíni és a felhő között adatokat tárolja, ha nem másol Parquet fájlok **,-van**, telepítenie kell a JRE 8 (Java Runtime Environment) a IR-számítógépre. Egy 64 bites IR 64 bites JRE igényel. Mindkét verziót megtalálja [itt](http://go.microsoft.com/fwlink/?LinkId=808605).
 >
 
 Vegye figyelembe a következő szempontokat:
@@ -512,7 +512,7 @@ A **tömörítés** szakasz két tulajdonságokkal rendelkezik:
 > [!NOTE]
 > Tömörítési beállítások nem támogatottak az adatok a **AvroFormat**, **OrcFormat**, vagy **ParquetFormat**. Az alábbi formátumokban fájlok olvasásakor a Data Factory észlel, és a tömörítési kodek használ a metaadatokban. Ezek a formátumok a fájlokat írásakor adat-előállító úgy dönt, az alapértelmezett tömörítési kodek azt a formátumot. Például ZLIB OrcFormat és a ParquetFormat SNAPPY.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tekintse meg a fájlalapú adatok tárolóinak Azure Data Factory támogatja a következő cikkeket:
 

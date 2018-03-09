@@ -33,6 +33,9 @@
 #### [Nyilvános IP-cím létrehozása rendelkezésre állási zónában a PowerShell-lel](../virtual-network/create-public-ip-availability-zone-powershell.md)
 #### [Nyilvános IP-cím létrehozása rendelkezésre állási zónában a parancssori felület használatával](../virtual-network/create-public-ip-availability-zone-cli.md)
 
+### SQL Database
+#### [Rendelkezésre állási zónák és SQL Database](../sql-database/sql-database-high-availability.md#availability-zones)
+
 ### Tárolás
 #### [Zónaredundáns tárolás](../storage/common/storage-redundancy.md#zone-redundant-storage)
 

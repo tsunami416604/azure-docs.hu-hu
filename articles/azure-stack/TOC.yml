@@ -10,6 +10,8 @@
           href: azure-stack-asdk-release-notes.md
         - name: Integrált rendszerek kibocsátási megjegyzései
           items:
+            - name: 1802 frissítés
+              href: azure-stack-update-1802.md
             - name: 1712 frissítés
               href: azure-stack-update-1712.md
             - name: 1711 frissítés
@@ -133,14 +135,18 @@
           href: azure-stack-monitor-health.md
         - name: Hálózati erőforrások kezelése
           href: azure-stack-viewing-public-ip-address-consumption.md
-        - name: Tárolási erőforrások kezelése
-          href: azure-stack-manage-storage-accounts.md
-        - name: Tárolási kapacitás kezelése
-          href: azure-stack-manage-storage-shares.md
         - name: A Microsoft Azure Pack virtuális gépeinek kezelése
           href: azure-stack-manage-windows-azure-pack.md
         - name: Elindítása és leállítása Azure verem
           href: azure-stack-start-and-stop.md
+        - name: Kapacitás kezelése
+          items:
+            - name: Tárolási erőforrások kezelése
+              href: azure-stack-manage-storage-accounts.md
+            - name: Tárolási kapacitás kezelése
+              href: azure-stack-manage-storage-shares.md
+            - name: Azure verem fizikai tárolási kapacitás kezelése
+              href: azure-stack-manage-storage-physical-capacity.md
         - name: A hardver cseréje
           items:
             - name: Csomópont műveletek
@@ -230,6 +236,10 @@
               href: azure-stack-app-service-deploy.md
             - name: App Service-szolgáltatások offline üzembe helyezése
               href: azure-stack-app-service-deploy-offline.md
+            - name: Frissítés az App Service erőforrás-szolgáltató
+              href: azure-stack-app-service-update.md
+            - name: App Service erőforrás-szolgáltató offline frissítése
+              href: azure-stack-app-service-update-offline.md
             - name: További webes feldolgozói szerepkörök hozzáadása
               href: azure-stack-app-service-add-worker-roles.md
             - name: Központi telepítés forrásának konfigurálása

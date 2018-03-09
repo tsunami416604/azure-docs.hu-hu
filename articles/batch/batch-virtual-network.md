@@ -8,11 +8,11 @@ ms.service: batch
 ms.topic: article
 ms.date: 02/05/2018
 ms.author: danlep
-ms.openlocfilehash: 626319a458575d255af4c4f8de93fca542b48890
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 9748ae5cc58c64412ab6e51e6cd502abc3505c51
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="create-an-azure-batch-pool-in-a-virtual-network"></a>Azure Batch-készlet létrehozása a virtuális hálózat
 
@@ -70,4 +70,4 @@ Amikor egy felhasználó által megadott útvonal, mindegyik kapcsolódó köteg
 ## <a name="next-steps"></a>További lépések
 
 - Kötegelt, áttekintéséért lásd: [Develop nagyméretű párhuzamos számítási solutions a kötegelt](batch-api-basics.md).
-- Felhasználó által megadott útvonal létrehozása kapcsolatban bővebben lásd: [hozzon létre egy felhasználó által megadott útvonal - Azure-portálon](../virtual-network/create-user-defined-route-portal.md).
+- Felhasználó által megadott útvonal létrehozása kapcsolatban bővebben lásd: [hozzon létre egy felhasználó által megadott útvonal - Azure-portálon](../virtual-network/tutorial-create-route-table-portal.md).

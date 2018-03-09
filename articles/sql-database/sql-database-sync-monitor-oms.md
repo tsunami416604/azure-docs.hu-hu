@@ -8,11 +8,11 @@ ms.service: sql-database
 author: douglaslMS
 ms.author: douglasl
 manager: craigg
-ms.openlocfilehash: 8683b3aec569f210529c1188cbbf514f7956b340
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: be1423026af633ab024980dc6b12b0977639ba3a
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="monitor-sql-data-sync-preview-with-oms-log-analytics"></a>A figyelő SQL adatszinkronizálás (előzetes verzió) az OMS szolgáltatáshoz 
 
@@ -92,7 +92,7 @@ Egy runbook létrehozásával kapcsolatos további információkért lásd: [az 
 
     2.  Szinkronizálási adatait.
 
-    3.  OMS-adatokat. Ezek az információk megtalálhatók a OMS-portálon |} Beállítások |} Csatlakoztatott adatforrások. Adatok küldése a Naplóelemzési kapcsolatos további információért lásd: [adatokat küldeni a HTTP adatait gyűjtője API-t (nyilvános előzetes verzió) Naplóelemzési](../log-analytics/log-analytics-data-collector-api.md).
+    3.  OMS-adatokat. Ezek az információk megtalálhatók a OMS-portálon |} Beállítások |} Csatlakoztatott adatforrások. Adatok küldése a Naplóelemzési kapcsolatos további információért lásd: [adatokat küldeni a HTTP adatait gyűjtője API-t (előzetes verzió) Naplóelemzési](../log-analytics/log-analytics-data-collector-api.md).
 
 11. A runbook futtatása a ablaktáblán. Ellenőrizze, hogy sikeres volt-e.
 

@@ -12,15 +12,15 @@ ms.custom: business continuity
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
-ms.date: 12/13/2017
+ms.workload: Inactive
+ms.date: 03/05/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.workload: Inactive
-ms.openlocfilehash: 9d12fb8a7dbd3bb763e42fd0981d7ef18b57248b
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: b2a8f897130c2bf21321366a727ce2e2ae9d1d99
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="disaster-recovery-strategies-for-applications-using-sql-database-elastic-pools"></a>Vész helyreállítási stratégiát az SQL Database rugalmas készleteket használó alkalmazások
 Az évek azt megtanulhatta, győződjön meg arról, hogy felhőszolgáltatások nem biztos és katasztrofális incidensek olyan esetben fordulhat elő. SQL-adatbázis ezeket az incidensek előfordulásakor az üzletmenet folytonosságát, az alkalmazás így különböző képességeket biztosít. [Rugalmas készletek](sql-database-elastic-pool.md) és az önálló adatbázisok támogatja a vész-helyreállítási funkciók azonos típusú. Ez a cikk ismerteti a több vész-Helyreállítási stratégiát, a rugalmas készletbe, amely kihasználja ezeket az SQL-adatbázis üzleti folytonosságot biztosító szolgáltatásokat.
@@ -30,6 +30,9 @@ Ez a cikk a következő kanonikus SaaS ISV-alkalmazás mintát használ:
 <i>A modern felhőalapú webalkalmazás minden végfelhasználó látja el egy SQL-adatbázis. Az ISV sok ügyfél rendelkezik, és ezért a sok más néven a bérlői adatbázisok használja. Mivel a bérlői adatbázisok általában előre nem látható tevékenység mintázatok, az ISV költségeket, az adatbázis nagyon kiszámíthatóbbá teszi hosszú időn keresztül rugalmas készlethez használ. A rugalmas készlet is leegyszerűsíti teljesítmény kezelését, ha a felhasználói tevékenység napra. A bérlői adatbázisok mellett az alkalmazás is használó adatbázisok a kezelheti a felhasználói profilokat, biztonsági gyűjtése a használati minták stb. Az egyes bérlők rendelkezésre állását ne befolyásolja az alkalmazás rendelkezésre állásának teljes. Azonban a rendelkezésre állás és a felügyeleti adatbázisok teljesítménye fontos a az alkalmazás függvény, és ha a felügyeleti adatbázisok offline offline állapotban-e a teljes alkalmazás.</i>  
 
 A cikk ismerteti a lehetőségeket rendelkező szigorú rendelkezésre állási követelmények bizalmas indítási alkalmazások költség számos vész-Helyreállítási stratégiát.
+
+> [!NOTE]
+> Premium adatbázisokat és a készletek használatakor tehet őket rugalmas regionális kimaradások alakítja át őket zóna redundáns központi telepítés konfigurálása (jelenleg az előzetes verzió). Lásd: [zónaredundáns adatbázisok](sql-database-high-availability.md).
 
 ## <a name="scenario-1-cost-sensitive-startup"></a>1. forgatókönyv. Költség-és nagybetűket indítása
 <i>I indítási üzleti vagyok, és rendkívül vagyok költség-és nagybetűket.  Egyszerűbb telepítés és az alkalmazás felügyelete szempontjából szeretnék, és egy korlátozott SLA-t az egyes ügyfelek is van. Azonban mivel a teljes soha nem offline állapotban, győződjön meg arról, hogy az alkalmazás kívánt.</i>
@@ -109,7 +112,7 @@ Ha az elsődleges régióban Azure hasznosítják *után* visszaállította az a
 A kulcs **előnyeit** ezt a stratégiát arra, hogy a fizető vevők biztosít a legmagasabb szolgáltatásiszint-szerződést. Emellett biztosítja azt, hogy az új kísérletek feloldja-e, amint a vész-Helyreállítási próbakészletben jön létre. A **kompromisszum** ügyfelek fizetős, hogy a telepítő növeli a teljes költség, a bérlő adatbázisok által a másodlagos DR-készletben költségét. Ezenkívül-e a másodlagos készlet különböző méretű, a fizető vevők alacsonyabb teljesítmény tapasztalható feladatátvételt követően a készlet frissítése a vész-Helyreállítási régióban befejeződéséig. 
 
 ## <a name="scenario-3-geographically-distributed-application-with-tiered-service"></a>3. forgatókönyv. Földrajzilag elosztott alkalmazás rétegzett szolgáltatással
-<i>A rétegzett szolgáltatási ajánlatok érett SaaS-alkalmazás van. Szeretnék rendkívül agresszív SLA nyújtsanak a fizetős ügyfeleknek, és minimálisra csökkenthetők a járulékos hatással lehet az, ha valamilyen okból kimaradás fordul elő, mert még rövid megszakítás ügyfél kapcsolatos okozhat. Nagyon fontos, hogy a fizető vevők mindig is hozzáférjenek az adataikhoz. A próbaverzió szabad és a próbaidőszak alatt nem ajánlott a szolgáltatásiszint-szerződésben garantált.</i> 
+<i>A rétegzett szolgáltatási ajánlatok érett SaaS-alkalmazás van. Szeretnék rendkívül agresszív SLA nyújtsanak a fizetős ügyfeleknek, és minimálisra csökkenthetők a járulékos hatással lehet az, ha valamilyen okból kimaradás fordul elő, mert még rövid megszakítás ügyfél kapcsolatos okozhat. Nagyon fontos, hogy a fizető vevők mindig is hozzáférjenek az adataikhoz. A próbaverzió szabad és a próbaidőszak alatt nem ajánlott a szolgáltatásiszint-szerződésben garantált. </i> 
 
 A forgatókönyv támogatása érdekében használjon három különálló rugalmas készletek. A magas edtu-k adatbázisonkénti magában foglalja a fizetős ügyfelek bérlői adatbázisok két különböző régiókban két egyenlő méretű rendelkezik kiépítéséhez. A próbabérlőket tartalmazó harmadik készlet lehet alacsonyabb edtu-k adatbázisonkénti és építhető ki a két régiók egyikéhez sem.
 
@@ -163,10 +166,10 @@ A fő **kompromisszumot** vannak:
 * A felügyeleti adatbázisban összetettebb kialakítása igényel. Például minden bérlő rekord tartalmazza-e a location kódcímke, módosítani kell a feladatátvételi és a feladat-visszavétel során.  
 * A fizető vevők szokásosnál alacsonyabb teljesítményt tapasztalhat, a készlet frissítés régióban B befejeződéséig. 
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 Ez a cikk foglalkozik a több-bérlős Szolgáltatottszoftver-ISV alkalmazás által használt adatbázis-rétegből vész-helyreállítási stratégiái. Stratégia van annak megfelelően kell elvégezni az alkalmazás, például az üzleti modell, az SLA-t szeretne nyújtsanak az ügyfeleknek, a költségvetési megkötés stb. Minden ismertetett stratégia előnyei és kompromisszum összegzi, így sikerült tájékozott döntést. Valószínűleg az adott alkalmazás emellett egyéb Azure összetevőket tartalmazza. Ezért tekintse át az üzleti folytonossági útmutatást és levezényelni a visszaállítást az adatbázis-rétegből velük. Helyreállítás az adatbázis-alkalmazások az Azure-ban kezelésével kapcsolatos további tudnivalókért tekintse meg [Designing vész-helyreállítási megoldások](sql-database-designing-cloud-solutions-for-disaster-recovery.md).  
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * További tudnivalók az Azure SQL adatbázis automatikus biztonsági mentés című [SQL-adatbázis biztonsági mentések automatikus](sql-database-automated-backups.md).
 * Egy üzleti folytonosság – áttekintés és forgatókönyvek: [üzleti folytonosság – áttekintés](sql-database-business-continuity.md).
 * A helyreállítás automatikus biztonsági mentés használatával kapcsolatos további tudnivalókért lásd: [adatbázis visszaállítása a szolgáltatás által kezdeményezett biztonsági másolatból](sql-database-recovery-using-backups.md).

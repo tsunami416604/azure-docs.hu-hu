@@ -14,17 +14,20 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: infrastructure-services
 ms.date: 02/15/2018
 ms.author: jroth
-ms.openlocfilehash: 23a1f008e2c51325b7e9c7676847d55d7ccb7d44
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 7e55227773820af26435100b11dfefce058e7e78
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="how-to-provision-a-windows-sql-server-virtual-machine-in-the-azure-portal"></a>Útmutató a Windows az SQL Server rendszerű virtuális gép az Azure-portálon
 
 Ez az útmutató részletesen az elérhető beállításokról Windows SQL Server virtuális gép létrehozásakor az Azure portálon. Ez a cikk ismerteti a további konfigurációs beállítások, mint a [SQL Server virtuális gép gyors üzembe helyezés](quickstart-sql-vm-create-portal.md), amely további osztályig egy lehetséges létesítési feladat kerül. 
 
 Ez az útmutató segítségével a saját SQL Server virtuális gép létrehozása. Másik lehetőségként használja referenciának az Azure portálon elérhető beállítások.
+
+> [!TIP]
+> Ha az SQL Server virtuális gépek kérdése van, tekintse meg a [gyakran ismételt kérdések](virtual-machines-windows-sql-server-iaas-faq.md).
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
@@ -34,7 +37,7 @@ Egy SQL Server virtuális gép létrehozásakor válassza ki egy számos előre 
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) a saját fiókjával.
 
-1. Az Azure portálon kattintson **hozzon létre egy erőforrást**. A portál megnyitja az **Új** ablakot.
+1. Az Azure Portalon kattintson az **Erőforrás létrehozása** gombra. A portál megnyitja az **Új** ablakot.
 
 1. Az **Új** ablakban kattintson a **Számítás**, majd az **Összes megjelenítése** elemre.
 

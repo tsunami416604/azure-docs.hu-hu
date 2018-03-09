@@ -14,14 +14,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 01/02/2018
+ms.date: 03/05/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6a0dcb941db5038b7c904c9eaa8599c5a1dc6e83
-ms.sourcegitcommit: 2e540e6acb953b1294d364f70aee73deaf047441
+ms.openlocfilehash: ffa77e95387f3595d8ff69e89d29b7af5cf9c69d
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="using-azure-for-hosting-and-running-sap-workload-scenarios"></a>Az Azure üzemeltetési és SAP munkaterhelés forgatókönyvek fut
 [767598]:https://launchpad.support.sap.com/#/notes/767598
@@ -227,7 +227,7 @@ ms.lasthandoff: 01/03/2018
 [resource-group-authoring-templates]:../../../resource-group-authoring-templates.md
 [resource-group-overview]:../../../azure-resource-manager/resource-group-overview.md
 [resource-groups-networking]:../../../virtual-network/resource-groups-networking.md
-[sap-pam]:https://support.sap.com/pam (SAP Product Availability Matrix)
+[sap-pam]:https://support.sap.com/pam (SAP termék rendelkezésre állási mátrix)
 [sap-templates-2-tier-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-marketplace-image%2Fazuredeploy.json
 [sap-templates-2-tier-os-disk]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-user-disk%2Fazuredeploy.json
 [sap-templates-2-tier-user-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-user-image%2Fazuredeploy.json
@@ -298,7 +298,7 @@ A Microsoft Azure-bA az SAP készen áll a cloud partner kiválasztásával is m
 
 SAP NetWeaver forgatókönyvet az Azure különböző DBMS üzemeltet, mellett tárolhatja, különböző SAP munkaterhelés egyéb forgatókönyvek, például SAP-bA az Azure-on. SAP NetWeaver telepítések Azure natív virtuális gépekre vonatkozó dokumentáció itt található a következő szakaszban: "SAP NetWeaver Azure virtuális gépeken futó."
 
-Azure rendelkezik natív Azure virtuális gép ajánlatokat, amelyek legalább egyszer nőnek a CPU és memória-erőforrások fedik le a SAP munkaterhelés, amely kihasználja a SAP HANA-méretet. A témakörrel kapcsolatos további információkért keresse meg a dokumentumok SAP HANA Azure virtuális gépeken szakaszban."
+Azure rendelkezik natív Azure virtuális gép ajánlatokat, amelyek legalább egyszer nőnek a CPU és memória-erőforrások fedik le a SAP munkaterhelés, amely kihasználja a SAP HANA-méretet. Ez a terület olvashat keresse meg a dokumentumok SAP HANA Azure virtuális gépeken szakaszban."
 
 SAP Hana Azure egyediségét olyan egyedi ajánlat, amely beállítja a Azure verseny mellett. Ahhoz, hogy további memória és CPU-erőforrást üzemeltetési SAP HANA érintő forgatókönyvek, az Azure kínál az ügyfél használati kibővített SAP dedikált céljából, legfeljebb 20 TB (60 TB kibővített) memória szükséges az S/4HANA vagy más SAP HANA-munkaterhelés SAP HANA-telepítést futtató operációs rendszer nélküli hardver. A egyedi Azure megoldás az Azure (nagy példányok) SAP HANA SAP HANA futtatnak az SAP alkalmazásréteg vagy munkaterhelés közel-vő réteg natív Azure virtuális gépeken futó operációs rendszer nélküli hardveres teszi lehetővé. Ez a megoldás több dokumentumok "SAP HANA Azure (nagy példány)." szakaszban ismertetett   
 
@@ -310,7 +310,7 @@ SAP munkaterhelés szolgáltatókörnyezetekben az Azure-ban is hozhat létre é
 ### <a name="overview-and-architecture-of-sap-hana-on-azure-large-instances"></a>Áttekintés és az SAP HANA Azure (nagy példányok) architektúrája
 Cím: Áttekintése és az SAP HANA Azure (nagy példányok) architektúrája
 
-Összegzése: A architektúra és a műszaki üzembe helyezési útmutatójában információkat nyújt segítséget az új SAP HANA Azure (nagy példány) az Azure-ban az SAP telepítéséhez. Nem kell egy beállításai között az SAP-megoldások, de a kezdeti üzembe helyezése és folyamatban lévő műveletek ahelyett, hogy hasznos információkhoz kiterjedő átfogó útmutató célja. Nem váltja le a SAP HANA (vagy a sok SAP támogatási megállapítja, hogy lefedje a témakör) telepítésével kapcsolatos SAP dokumentációját. Áttekintést nyújt, és a további részletesen ismerteti a SAP HANA telepítése az Azure (nagy példány).
+Összegzése: A architektúra és a műszaki üzembe helyezési útmutatójában információkat nyújt segítséget az új SAP HANA Azure (nagy példány) az Azure-ban az SAP telepítéséhez. Nem kell egy beállításai között az SAP-megoldások, de a kezdeti üzembe helyezése és folyamatban lévő műveletek ahelyett, hogy hasznos információkhoz kiterjedő átfogó útmutató célja. Nem váltja le a SAP HANA (vagy a sok SAP támogatási megállapítja, hogy területre) telepítésével kapcsolatos SAP dokumentációját. Áttekintést nyújt, és a további részletesen ismerteti a SAP HANA telepítése az Azure (nagy példány).
 
 Frissített: 2017. október.
 
@@ -337,7 +337,7 @@ Frissített: 2017. július.
 ### <a name="high-availability-and-disaster-recovery-of-sap-hana-on-azure-large-instances"></a>Magas rendelkezésre állási és vészhelyreállítási helyreállítási SAP HANA Azure (nagy példány)
 Cím: Magas rendelkezésre állású és vész-helyreállítási az SAP HANA Azure (nagy példány)
 
-Összefoglalás: Magas rendelkezésre állású (HA) és a vész-helyreállítási (DR) szempontot nagyon fontos a kritikus fontosságú SAP HANA futó Azure (nagy példányok) kiszolgáló (k). Azt a következőre importálása SAP, a rendszer integráló, és/vagy a Microsoft megfelelően tervezővel, és a jogosultság elérhető HA/DR stratégia megvalósítását meg együttműködni. Fontos tudnivalók találhatók, például a helyreállítási-célkitűzés (RPO) és a helyreállítási idő célkitűzés (RTO), a környezetben, figyelembe kell venni.  Ez a dokumentum ismerteti a beállítások a magas rendelkezésre ÁLLÁSÚ és vész-Helyreállítási előnyben részesített szintjének engedélyezéséhez.
+Összefoglalás: Magas rendelkezésre állású (HA) és a vész-helyreállítási (DR) is fontos szempontja a a kritikus fontosságú SAP HANA futó Azure (nagy példányok) kiszolgáló (k). Azt a következőre importálása SAP, a rendszer integráló, és/vagy a Microsoft megfelelően tervezővel, és a jogosultság elérhető HA/DR stratégia megvalósítását meg együttműködni. Fontos tudnivalók találhatók, például a helyreállítási-célkitűzés (RPO) és a helyreállítási idő célkitűzés (RTO), a környezetben, figyelembe kell venni.  Ez a dokumentum ismerteti a beállítások a magas rendelkezésre ÁLLÁSÚ és vész-Helyreállítási előnyben részesített szintjének engedélyezéséhez.
 
 Frissített: 2017. október.
 
@@ -434,7 +434,7 @@ Frissített: 2016 szeptemberétől
 ### <a name="3da0389e-708b-4e82-b2a2-e92f132df89c"></a>Tervezési és megvalósítási
 Cím: Azure virtuális gépek tervezési és megvalósítási az SAP NetWeaver
 
-Összefoglalás: Ez a dokumentum esetén az útmutató kezdődnie vannak gondolat SAP NetWeaver futtató Azure virtuális gépeken. A tervezési és megvalósítási útmutató segítségével kiértékelheti, hogy egy meglévő vagy tervezett SAP NetWeaver rendszerbe Azure virtuális gépek környezetbe is telepíthető-e. Több SAP NetWeaver üzembe helyezési forgatókönyvet fed le, Azure-specifikus SAP-konfigurációkat is tartalmaz. A dokumentum, és ismerteti az összes szükséges konfigurációs adatok szüksége lesz egy hibrid SAP fekvő futtatásához SAP vagy az Azure oldalán. Ugyancsak tartalmazza azokat az intézkedéseket, amelyeket az IaaS SAP NetWeaver-alapú rendszer magas rendelkezésre állásának biztosításához meg kell tenni.
+Összefoglalás: Ez a dokumentum esetén az útmutató kezdődnie vannak gondolat SAP NetWeaver futtató Azure virtuális gépeken. A tervezési és megvalósítási útmutató segítségével kiértékelheti, hogy egy meglévő vagy tervezett SAP NetWeaver rendszerbe Azure virtuális gépek környezetbe is telepíthető-e. Több SAP NetWeaver üzembe helyezési forgatókönyvet fed le, Azure-specifikus SAP-konfigurációkat is tartalmaz. A dokumentum, és ismerteti az összes szükséges konfigurációs adatok kell futtatni a hibrid SAP fekvő SAP vagy az Azure oldalán. Ugyancsak tartalmazza azokat az intézkedéseket, amelyeket az IaaS SAP NetWeaver-alapú rendszer magas rendelkezésre állásának biztosításához meg kell tenni.
 
 Frissített: 2017. június.
 

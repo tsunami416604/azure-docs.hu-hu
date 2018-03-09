@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/14/2017
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 1e0d40b996e181a606d16d26633f890b9169ecbb
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 85447809cbc803c13ad731b5328e94a1b03abba8
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="managing-devices-using-the-azure-portal"></a>Az Azure portál használatával eszközök kezelése
 
@@ -112,6 +112,7 @@ Mindkét lehetőség érhet nézetet, amely:
 
 ![Minden eszköz](./media/device-management-azure-portal/51.png)
 
+Egyes iOS-eszközök esetén a eszközt tartalmazó aposztrófot is potenciálisan használnak különböző karakterek, például az aposztrófot. Ezért az ilyen eszközök keresése kissé legbonyolultabb – Ha nem Ön keresési eredmények megfelelően, győződjön meg arról, hogy a keresési karakterláncot tartalmaz egyező aposztróf karaktert.
 
 ## <a name="device-management-tasks"></a>Eszközfelügyeleti feladatokat
 
@@ -230,13 +231,13 @@ A jelentésben lévő adatok megfelelő szintű szűkítéséhez az alábbi mez�
 - Tevékenység
 - Dátumtartomány
 - Cél
-- (Aktor) által kezdeményezett
+- Kezdeményező (Szereplő)
 
 A szűrők mellett kereshet adott bejegyzéseket.
 
 ![Naplók](./media/device-management-azure-portal/65.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Kezelés az Azure Active Directoryban bemutatása](device-management-introduction.md)
 

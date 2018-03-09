@@ -1,6 +1,6 @@
 ---
 title: "Az Azure identitások és hozzáférések vezérlőkkel személyes adatok védelme |} Microsoft Docs"
-description: "Azure-identitás és hozzáférés olyan intézkedéseket, amelyek segítséget nyújtanak a személyes adatok védelme"
+description: "Azure-identitás és hozzáférés intézkedések segítenek személyes adatok védelmét, és segíthetnek megfelelő az általános adatok védelmi szabályozás (GDPR)"
 services: security
 documentationcenter: na
 author: Barclayn
@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/13/2017
+ms.date: 03/06/2018
 ms.author: barclayn
 ms.custom: 
-ms.openlocfilehash: e6de9526a1a72cfc81caca51207e000f8b3673cc
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: fd3beb57cda4993f922fb935263b0e962b38da6a
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="azure-active-directory-and-multi-factor-authentication-protect-personal-data-with-identity-and-access-controls"></a>Az Azure Active Directory és a multi-factor Authentication: identitások és hozzáférések vezérlőkkel személyes adatok védelme
 
-Ez a cikk ismerteti, használhatja az Azure Active Directory és a többtényezős hitelesítési biztonsági szolgáltatások és szolgáltatások használatával személyes adatok védelmét.
+Ez a cikk ismerteti, használhatja az Azure Active Directory és a többtényezős hitelesítési biztonsági szolgáltatások és szolgáltatások használatával személyes adatok védelmét. Az ebben a cikkben szereplő információ azon törekvéseit, hogy az általános adatok védelmi szabályozás (GDPR) felel meg a hasznos lehet.
 
 ## <a name="scenario"></a>Forgatókönyv
 
@@ -176,9 +176,9 @@ Az Azure MFA engedélyezi a feltételes hozzáférési házirenddel, tegye a kö
 6.  A **hozzáférés-szabályozási**, jelölje be **Grant**. Válasszon **többtényezős hitelesítést**.
 7.  Kapcsolja be **házirend engedélyezése** való **a** majd **mentése**.
 
-Visszaélési riasztás beállítása az Azure MFA-beállítások konfigurálásával kapcsolatos további információkért az egyszeri Mellőzés létrehozása, használjon egyedi hangüzenetek, gyorsítótár konfigurálása, adja meg a megbízható IP-címek, alkalmazásjelszavak létrehozásának, engedélyezése eszközökhöz MFA megjegyzése felhasználók megbízható, és válassza hitelesítési módszerek, lásd: [Azure multi-factor Authentication beállításainak konfigurálása.](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-whats-next)
+Visszaélési riasztás beállítása, az egyszeri Mellőzés létrehozása, egyedi hangüzenetek, gyorsítótár konfigurálása, adja meg a megbízható IP-címek használatához hozzon létre az Azure MFA-beállítások konfigurálásával kapcsolatos információkért engedélyezi az MFA Használatát jelszóelőzmények eszközök, felhasználók megbízik, és válassza a az ellenőrzési módszereket, tekintse meg [Azure multi-factor Authentication beállításainak konfigurálása.](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-whats-next)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Az Azure Active Directory biztonságossá tétele a privilegizált hozzáférési jogosultsága.](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/active-directory-securing-privileged-access)
 
@@ -186,4 +186,4 @@ Visszaélési riasztás beállítása az Azure MFA-beállítások konfigurálás
 
 - [Szerepköralapú hozzáférés-vezérlés hibaelhárítása](https://docs.microsoft.com/azure/active-directory/role-based-access-control-troubleshooting)
 
-- [Az Azure Active Directory azonosító adatok védelmét](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection)
+- [Azure Active Directory Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection)

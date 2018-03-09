@@ -8,14 +8,14 @@ manager: routlaw
 ms.author: tarcher
 ms.date: 01/14/2018
 ms.topic: article
-ms.openlocfilehash: 8753d039582abdf22f105bf7f139a35c224e7c59
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 799be6d2bb521de38af952376bf8ee14a18846de
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="use-ansible-to-manage-your-azure-dynamic-inventories"></a>Az Azure a dinamikus készletek kezelését Ansible használatával
-Ansible használható lekéréses Hardverleltár-információk (beleértve a felhő adatforrások, például az Azure) különböző forrásokból történő egy *dinamikus készlet*. A cikkben, használja a [Azure Cloud rendszerhéj](./ansible-run-playbook-in-cloudshell.md) Ansible Azure dinamikus készlet két olyan virtuális gépet hoz létre konfigurálásához címkét egy ezeket a virtuális gépeket, és Nginx telepítse a virtuális gép címkézett.
+Ansible használható lekéréses Hardverleltár-információk (beleértve a felhő adatforrások, például az Azure) különböző forrásokból történő egy *dinamikus készlet*. A cikkben, használja a [Azure Cloud rendszerhéj](./ansible-run-playbook-in-cloudshell.md) Ansible Azure dinamikus készlet két olyan virtuális gépet hoz létre konfigurálásához azon virtuális gépek egyik címkét, és Nginx telepítse a virtuális gép címkézett.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -59,11 +59,11 @@ Is [címkék használata az Azure-erőforrások rendszerezéséhez](https://docs
 Írja be a következő [az erőforrás címke](/cli/azure/resource?view=azure-cli-latest.md#az_resource_tag) parancs használatával címkézhesse a virtuális gép `ansible-inventory-test-vm1` kulccsal `nginx`:
 
 ```azurecli-interactive
-az resource tag --tags nginx --id /subscriptions/&lt;YourAzureSubscriptionID>/resourceGroups/ansible-inventory-test-rg/providers/Microsoft.Compute/virtualMachines/ansible-inventory-test-vm1
+az resource tag --tags nginx --id /subscriptions/<YourAzureSubscriptionID>/resourceGroups/ansible-inventory-test-rg/providers/Microsoft.Compute/virtualMachines/ansible-inventory-test-vm1
 ```
 
 ## <a name="generate-a-dynamic-inventory"></a>A dinamikus készlet létrehozása
-Miután a virtuális gépek meghatározott (és címkézett), a dinamikus készlet létrehozásához idő. Ansible biztosít nevű Python-parancsfájl [azure_rm.py](https://github.com/ansible/ansible/blob/devel/contrib/inventory/azure_rm.py) azáltal, hogy az API-kérelmek az Azure erőforrás-kezelő létrehozó Azure-erőforrások dinamikus készlet. A következő lépések végigvezetik használatával a `azure_rm.py` parancsfájl csatlakozni a két teszt Azure virtuális gép:
+Miután a virtuális gépek meghatározott (és címkézett), a dinamikus készlet létrehozásához idő. Ansible biztosít nevű Python-parancsfájl [azure_rm.py](https://github.com/ansible/ansible/blob/devel/contrib/inventory/azure_rm.py) azáltal, hogy az API-kérelmek az Azure erőforrás-kezelő létrehozó Azure-erőforrások dinamikus készlet. A következő lépések végigvezetik használatával a `azure_rm.py` csatlakozni a kétlépéses parancsfájl tesztelése az Azure virtuális gépek:
 
 1. Használja a GNU `wget` parancs beolvasása a `azure_rm.py` parancsfájlt:
 

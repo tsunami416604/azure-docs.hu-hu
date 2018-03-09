@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2018
 ms.author: jdial
-ms.openlocfilehash: 6daf69574d45eeb1c91508d082bd7294b6e40f70
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: 6829ca9ad5ef76b6a96eed1f2cc461d32c0e51cf
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="create-change-or-delete-a-virtual-network"></a>Létrehozása, módosítása vagy a virtuális hálózat törlése
 
@@ -41,7 +41,7 @@ Ez a cikk bármely szakaszának lépéseit befejezése előtt hajtsa végre a k�
 
 ## <a name="create-a-virtual-network"></a>Virtuális hálózat létrehozása
 
-1. Válassza ki **+ új** > **hálózati** > **virtuális hálózati**.
+1. Válassza ki **+ hozzon létre egy erőforrást** > **hálózati** > **virtuális hálózati**.
 2. Adja meg vagy válassza ki a következő beállítások értékeit, majd válassza **létrehozása**:
     - **Név**: A névnek egyedinek kell lennie a [erőforráscsoport](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group) válassza ki a virtuális hálózat létrehozásához. A név nem módosítható, a virtuális hálózat létrejötte után. Több virtuális hálózat adott idő alatt is létrehozhat. A elnevezésére vonatkozó javaslatokat, lásd: [elnevezési konvenciói](/azure/architecture/best-practices/naming-conventions.md?toc=%2fazure%2fvirtual-network%2ftoc.json#naming-rules-and-restrictions). Következő elnevezési segítségével könnyebben több virtuális hálózat kezeléséhez.
     - **Címtér**: A címtartomány a virtuális hálózat egy vagy több egymást nem átfedő címtartomány CIDR-formátumban megadott áll. A címtartományt, megadhatja a public vagy private (az RFC 1918) lehet. A címtartomány nyilvános vagy titkos határozza meg, hogy a címtartomány elérhető csak a virtuális hálózathoz csatlakozó virtuális hálózatot, és a helyszíni hálózatokhoz a virtuális hálózathoz csatlakozó belül. Nem adható hozzá a következő címtartományokat:
@@ -179,5 +179,5 @@ Virtuális hálózatok feladatok elvégzésekor, a fiókot hozzá kell rendelni 
 
 - Hozzon létre egy virtuális Gépet, és csatlakoztassa a virtuális hálózat, [hozzon létre egy virtuális hálózatot, és csatlakozzon a virtuális gépek](quick-create-portal.md#create-virtual-machines).
 - A virtuális hálózaton belül alhálózatok közötti hálózati forgalom szűrésére, lásd: [hálózati biztonsági csoportok létrehozása a](virtual-networks-create-nsg-arm-pportal.md).
-- Egyenrangú egy virtuális hálózat egy másik virtuális hálózathoz, lásd: [hozzon létre egy virtuális hálózati társviszony-létesítés](virtual-network-create-peering.md#portal).
+- Egyenrangú egy virtuális hálózat egy másik virtuális hálózathoz, lásd: [hozzon létre egy virtuális hálózati társviszony-létesítés](tutorial-connect-virtual-networks-portal.md).
 - Egy a helyszíni hálózathoz való csatlakozás a virtuális hálózati beállításokkal kapcsolatos további tudnivalókért lásd: [VPN-átjáró](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#diagrams).

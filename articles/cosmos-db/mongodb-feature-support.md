@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: alekseys
-ms.openlocfilehash: e955aa1c3985e540246d964b4dce88d15fb85949
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: 9f1b6359d9fb58ad66b4d314f2bb14da34b98613
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="mongodb-api-support-for-mongodb-features-and-syntax"></a>MongoDB-szolgáltatások és szintaxis MongoDB API támogatása
 
@@ -235,7 +235,7 @@ $regex | ``` { "Volcano Name": { $regex: "^Rain"} } ```|  | -
 
 $Regex lekérdezésekben balra rögzített kifejezések index keresés engedélyezése. Azonban használja az "i" módosító (kis) és vagyok "módosító (többsoros) a gyűjtemény vizsgálat hatására az összes kifejezésében.
 Ha egy szükséges belefoglalni a "$" vagy "|}", legjobb, ha két (vagy több) regex lekérdezések létrehozása. Ha például adott a következő eredeti lekérdezés: ```find({x:{$regex: /^abc$/})```, kell módosítani az alábbiak szerint: ```find({x:{$regex: /^abc/, x:{$regex:/^abc$/}})```.
-Az első részt az index használatával korlátozza a keresési verziótól kezdve a dokumentumok ^ abc, a második rész fog egyezni a pontos bejegyzéseket. A sáv operátor "|} ' úgy működik, mint egy"vagy"függvény – a lekérdezés ```find({x:{$regex: /^abc|^def/})``` megegyezik a dokumentumok whin melyik mezőt"x"értékkel rendelkezik, amely a"abc"vagy"def"szóval kezdődik. Az index használatára, javasoljuk a lekérdezés felosztása két különböző lekérdezéseket a $vagy üzemeltető tartományhoz való: ```find( {$or : [{x: $regex: /^abc/}, {$regex: /^def/}] })```.
+Az első részt az index használatával korlátozza a keresési verziótól kezdve a dokumentumok ^ abc, a második rész fog egyezni a pontos bejegyzéseket. A sáv operátor "|}" úgy működik, mint egy "vagy" függvény – a lekérdezés ```find({x:{$regex: /^abc|^def/})``` megegyezik a dokumentumok, mely mezőben "x" értéket tartalmaz a "abc" vagy "def" karakterlánccal kezdődik. Az index használatára, javasoljuk a lekérdezés felosztása két különböző lekérdezéseket a $vagy üzemeltető tartományhoz való: ```find( {$or : [{x: $regex: /^abc/}, {$regex: /^def/}] })```.
 
 ### <a name="update-operators"></a>Frissítés operátorok
 

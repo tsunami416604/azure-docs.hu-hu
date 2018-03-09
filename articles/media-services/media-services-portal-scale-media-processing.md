@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/04/2017
 ms.author: juliako
-ms.openlocfilehash: d2312803a4471e207d3696ca8350a86e3c4761e6
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: f65ba489d70a3844169780c4680fcc43b3064b54
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="change-the-reserved-unit-type"></a>A fenntartott egység típusának módosítása
 > [!div class="op_single_selector"]
@@ -54,11 +54,10 @@ A fenntartott egységnek típusát és fenntartott egységek számának megvált
 1. Az [Azure-portálon](https://portal.azure.com/) válassza ki Azure Media Services-fiókját.
 2. Az a **beállítások** ablakban válassza ki **Media szolgáltatás számára fenntartott egység**.
    
-    A kijelölt fenntartott egységnek típus fenntartott egységek számának módosításához használja a **Media kiszolgált egységek** csúszkát.
+    A kijelölt fenntartott egységnek típus fenntartott egységek számának módosításához használja a **Media kiszolgált egységek** csúszkát a képernyő tetején.
    
-    Módosíthatja a **FENNTARTOTT EGYSÉGTÍPUS**, nyomja le az S1, S2 vagy S3.
+    Módosíthatja a **FENNTARTOTT EGYSÉGTÍPUS**, kattintson a a **fenntartott feldolgozóegység sebessége** sáv. Ezután válassza ki az árképzési szint van szüksége: S1, S2 vagy S3.
    
-    ![Feldolgozók lap](./media/media-services-portal-scale-media-processing/media-services-scale-media-processing.png)
 3. A módosítások mentéséhez kattintson a SAVE (Mentés) gombra.
    
     Az új fenntartott egységek MENTÉS megnyomásakor foglal le.

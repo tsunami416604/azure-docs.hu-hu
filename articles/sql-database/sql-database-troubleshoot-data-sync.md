@@ -8,11 +8,11 @@ ms.service: sql-database
 author: douglaslMS
 ms.author: douglasl
 manager: craigg
-ms.openlocfilehash: 50cabbaa584671e52c1ea7efbd2ad990b8438272
-ms.sourcegitcommit: 1d8612a3c08dc633664ed4fb7c65807608a9ee20
+ms.openlocfilehash: c174f5120ba2e5bf8018cce0f0e34c1fc3f8eb3f
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="troubleshoot-issues-with-sql-data-sync-preview"></a>Problémák az SQL adatszinkronizálás (előzetes verzió)
 
@@ -124,8 +124,8 @@ Számos forgatókönyv ezt a hibát okozhatja. Ez a hiba az adott hiba okának m
 
 Található a meghatározott a hiba okát, létrehozni, és tekintse meg a Windows Installer-naplókat. Ha bekapcsolja a naplózást, a parancssorba. Például LocalAgentHost.msi AgentServiceSetup.msi letöltött fájl esetén létrehozni, és vizsgálja meg a naplófájlokat a következő parancssor használatával:
 
--   Telepítések:`msiexec.exe /i SQLDataSyncAgent-Preview-ENU.msi /l\*v LocalAgentSetup.InstallLog`
--   Az eltávolítása:`msiexec.exe /x SQLDataSyncAgent-se-ENU.msi /l\*v LocalAgentSetup.InstallLog`
+-   Telepítések: `msiexec.exe /i SQLDataSyncAgent-Preview-ENU.msi /l\*v LocalAgentSetup.InstallLog`
+-   Az eltávolítása: `msiexec.exe /x SQLDataSyncAgent-se-ENU.msi /l\*v LocalAgentSetup.InstallLog`
 
 A Windows Installer által elvégzett összes telepítések naplózást is kapcsolhatja. A Microsoft Tudásbázis [Windows Installer naplózásának engedélyezéséről](https://support.microsoft.com/help/223300/how-to-enable-windows-installer-logging) bekapcsolja a naplózást, a Windows Installer egy kattintással megoldást biztosít. A naplók helye is tartalmazza.
 
@@ -135,7 +135,7 @@ A Windows Installer által elvégzett összes telepítések naplózást is kapcs
 
 Az alábbi üzenetek kap az ügyfélügynök használatára tett kísérlet során:
 
-"A szinkronizálási hiba történt a paraméter www.microsoft.com/.../05:GetBatchInfoResult deszerializálása során kivétel miatt sikertelen. Belső kivétel leírásában olvasható további információt talál."
+"A szinkronizálási hiba történt a paraméter www.microsoft.com/.../05:GetBatchInfoResult deszerializálása során kivétel miatt sikertelen. Lásd a belső kivétel leírásában olvasható további információ."
 
 "Belső kivételre vonatkozó üzenet:"Microsoft.Synchronization.ChangeBatch"típus érvénytelen gyűjteménytípus, mert nincs alapértelmezett konstruktora."
 
@@ -240,8 +240,8 @@ Mielőtt folytatná, ellenőrizze az alábbi feltételek:
 -   Az SQL adatszinkronizálás (előzetes verzió) Windows-szolgáltatás fut.  
 -   A szolgáltatási fiók SQL adatszinkronizálás (előzetes verzió) Preview Windows-szolgáltatás hálózati hozzáfér.    
 -   Az ügyfélügynök is képes kapcsolódni a lokátor szolgáltatást. Ellenőrizze, hogy rendelkezik-e a érték https://locator.sync.azure.com/LocatorServiceApi.svc a következő beállításkulcsot:  
-    -   Egy x86 a számítógép:`HKEY\_LOCAL\_MACHINE\\SOFTWARE\\Microsoft\\SQL Azure Data Sync\\LOCATORSVCURI`  
-    -   Egy x64 a számítógép:`HKEY\_LOCAL\_MACHINE\\SOFTWARE\\Wow6432Node\\Microsoft\\SQL Azure Data Sync\\LOCATORSVCURI`
+    -   Egy x86 a számítógép: `HKEY\_LOCAL\_MACHINE\\SOFTWARE\\Microsoft\\SQL Azure Data Sync\\LOCATORSVCURI`  
+    -   Egy x64 a számítógép: `HKEY\_LOCAL\_MACHINE\\SOFTWARE\\Wow6432Node\\Microsoft\\SQL Azure Data Sync\\LOCATORSVCURI`
 
 #### <a name="cause"></a>Ok
 
@@ -435,7 +435,7 @@ A szinkronizálás csoport eltávolítása vagy leállítja a társított SQL ad
 
 Ha elveszett vagy sérült adatbázis visszaállítása egy biztonsági másolatból, valószínűleg egy nonconvergence az adatok a szinkronizálási csoportok, amelyhez az adott adatbázis is tartozik.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 SQL adatszinkronizálás (előzetes verzió) kapcsolatos további információkért lásd:
 
 -   [Szinkronizálja az adatokat több felhőalapú és helyszíni adatbázisokat az Azure SQL adatszinkronizálás (előzetes verzió)](sql-database-sync-data.md)  

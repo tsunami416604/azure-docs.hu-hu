@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: juluk
-ms.openlocfilehash: 69431979769a03b62a7f9fd7760e6eb614e37cd6
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 3f605645e7a53f285cb7e508034ebab0daa0d335
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="quickstart-for-bash-in-azure-cloud-shell"></a>Az Azure-felhőbe rendszerhéj Bash gyors üzembe helyezés
 
@@ -37,7 +37,7 @@ Ez a dokumentum részletesen Bash használata az Azure felhőalapú Shell a [Azu
 > Akkor automatikusan megtörténik az Azure CLI 2.0 minden munkamenetet a.
 
 ### <a name="select-the-bash-environment"></a>Válassza ki a Bash
-1. Válassza ki a legördülő környezet a rendszerhéj ablak bal oldalán <br>
+1. Válassza ki a környezet legördülő rendszerhéj ablak bal oldalán <br>
 ![](media/quickstart/env-selector.png)
 2. Válassza ki a Bash
 
@@ -65,7 +65,7 @@ A felhasználónév, a virtuális gép lesz a felhő rendszerhéj használt felh
 
 ### <a name="ssh-into-your-linux-vm"></a>SSH a Linux virtuális gép be
 1. Keresse meg a virtuális gép nevét, az Azure portál keresési sávon
-2. Kattintson a "Csatlakozás" gombra, és futtassa:`ssh username@ipaddress`
+2. Kattintson a "Csatlakozás" gombra, és futtassa: `ssh username@ipaddress`
 
 ![](media/quickstart/sshcmd-copy.png)
 

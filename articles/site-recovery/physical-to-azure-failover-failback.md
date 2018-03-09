@@ -5,13 +5,13 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: article
-ms.date: 02/22/2018
+ms.date: 03/05/2018
 ms.author: raynew
-ms.openlocfilehash: bbad2a0ea1a58834eaf32e0d3286f6e8a794d364
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 8a3328e8aa42876f48960f7ccd32a5c819435019
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="fail-over-and-fail-back-physical-servers-replicated-to-azure"></a>A feladatátvétel, és vissza fizikai kiszolgálók Azure-felhőbe replikált sikertelen
 
@@ -41,7 +41,7 @@ Ellenőrizze a kiszolgáló tulajdonságait, és győződjön meg arról, hogy m
 
 ## <a name="run-a-failover-to-azure"></a>Feladatátvétel futtatása az Azure-ban
 
-1. A **beállítások** > **replikált elemek** kattintson a gépre > **feladatátvételi**.
+1. A **Beállítások** > **Replikált elemek** területen kattintson a gépre > **Feladatátvétel** ikonra.
 2. A **Feladatátvétel** területen válassza ki a **Helyreállítási pontot** a feladatok átvételéhez. Az alábbi lehetőségek egyikét használhatja:
    - **Legújabb** (alapértelmezett): Ez a lehetőség először feldolgozza a Site Recovery számára küldött összes adatot. A legalacsonyabb helyreállítási időkorlátot (RPO) nyújtja, mert a feladatátvétel után létrehozott Azure-beli virtuális gép rendelkezik a feladatátvétel elindításakor a Site Recoverybe replikált összes adattal.
    - **Legújabb feldolgozott**: Ez a beállítás átadja a feladatokat a gép a legutóbbi helyreállítási pontot, a Site Recovery által feldolgozott. Ez a lehetőség alacsony helyreállítási időre vonatkozó célkitűzést (RTO) nyújt, mert a rendszer nem tölt időt a feldolgozatlan adatok feldolgozásával.
@@ -62,7 +62,7 @@ A folyamatkiszolgáló adatokat fogad az Azure-beli virtuális gépről, és elk
 
 - Ha Azure ExpressRoute-kapcsolata van, tesztelési célból használhatja a konfigurációs kiszolgálóra automatikusan telepített helyszíni folyamatkiszolgálót.
 - Ha VPN-kapcsolata van, vagy ha éles környezetben futtat feladat-visszavételt, a feladat-visszavételhez be kell állítania egy Azure-beli virtuális gépet Azure alapú folyamatkiszolgálóként.
-- Kövesse az utasításokat a [Ez a cikk](site-recovery-vmware-setup-azure-ps-resource-manager.md) állíthatja be a folyamatkiszolgáló az Azure-ban.
+- Kövesse az utasításokat a [Ez a cikk](vmware-azure-set-up-process-server-azure.md) állíthatja be a folyamatkiszolgáló az Azure-ban.
 
 ## <a name="configure-the-master-target-server"></a>A fő célkiszolgáló konfigurálása
 

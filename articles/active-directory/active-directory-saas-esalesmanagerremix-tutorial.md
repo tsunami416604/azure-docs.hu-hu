@@ -1,5 +1,5 @@
 ---
-title: "Oktatóanyag: Azure Active Directoryval integrált E értékesítés Manager Remix |} Microsoft Docs"
+title: "Oktatóanyag: Azure Active Directory integrálása E értékesítési vezető Remix |} Microsoft Docs"
 description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és az E értékesítés Manager Remix között."
 services: active-directory
 documentationCenter: na
@@ -14,188 +14,186 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/21/2018
 ms.author: jeedes
-ms.openlocfilehash: 56c2860b6aeac9fdc66f2b1fdd1ed9126bf77d3f
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 200d87b950ac76c85513bc11da2798562e48bec3
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/08/2018
 ---
-# <a name="tutorial-azure-active-directory-integration-with-e-sales-manager-remix"></a>Oktatóanyag: Azure Active Directoryval integrált E értékesítés Manager Remix
+# <a name="integrate-azure-active-directory-with-e-sales-manager-remix"></a>Az Azure Active Directory integrálása E értékesítési vezető Remix
 
-Ebben az oktatóanyagban elsajátíthatja E értékesítés Manager Remix integrálása Azure Active Directory (Azure AD).
+Ebben az oktatóanyagban elsajátíthatja Azure Active Directory (Azure AD) integrálása E értékesítés Manager Remix.
 
-E értékesítés Manager Remix integrálása az Azure AD lehetővé teszi a következő előnyöket biztosítja:
+Által az Azure AD integrálása E értékesítés Manager Remix, töltse le a következő előnyöket biztosítja:
 
 - Az Azure AD, aki hozzáfér E értékesítés Manager Remix szabályozhatja.
-- Az Azure AD-fiókok a engedélyezheti a felhasználóknak, hogy automatikusan lekérni bejelentkezett az E értékesítés Manager Remix (egyszeri bejelentkezés).
-- A fiók egyetlen központi helyen – az Azure-portálon kezelheti.
+- Engedélyezheti a felhasználóknak, hogy az első bejelentkezett automatikusan E értékesítés Manager Remix (egyszeri bejelentkezés, vagy az SSO) és az Azure AD-fiókok.
+- A fiók egyetlen központi helyen, az Azure-portálon kezelheti.
 
-Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](active-directory-appssoaccess-whatis.md).
+Az Azure AD SaaS alkalmazásintegráció kapcsolatos további információkért lásd: [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 E értékesítés Manager Remix konfigurálása az Azure AD-integrációs, a következőkre van szükség:
 
 - Az Azure AD szolgáltatásra
-- Az E értékesítés Manager Remix egyszeri bejelentkezés engedélyezve van az előfizetés
+- Az E értékesítés Manager Remix SSO-kompatibilis előfizetéssel
 
 > [!NOTE]
-> Ez az oktatóanyag lépéseit teszteléséhez nem ajánlott használata termelési környezetben.
+> Ebben az oktatóanyagban tesztelésekor a lépéseket, azt javasoljuk, hogy végezzen *nem* használja az éles környezetben.
 
-Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javaslatokat:
+Ez az oktatóanyag lépéseit teszteléséhez hajtsa végre az ezek az ajánlások:
 
 - Ne használja az éles környezetben, nem szükséges.
 - Ha még nem rendelkezik az Azure AD próbaverziójának környezetben, akkor [egy hónapos próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
-Ebben az oktatóanyagban tesztelése az Azure AD egyszeri bejelentkezéshez egy tesztkörnyezetben. Ebben az oktatóanyagban leírt forgatókönyv két fő építőelemeket áll:
+Ebben az oktatóanyagban tesztelése az Azure AD egyszeri bejelentkezéshez egy tesztkörnyezetben. 
 
-1. E értékesítés Manager Remix hozzáadása a gyűjteményből
-2. És tesztelés az Azure AD konfigurálása egyszeri bejelentkezés
+Ebben az oktatóanyagban leírt forgatókönyv két fő építőelemeket áll:
 
-## <a name="adding-e-sales-manager-remix-from-the-gallery"></a>E értékesítés Manager Remix hozzáadása a gyűjteményből
-Az Azure AD integrálása a E értékesítés Manager Remix konfigurálásához kell hozzáadnia E értékesítés Manager Remix a gyűjteményből a felügyelt SaaS-alkalmazások listájára.
+* E értékesítés Manager Remix hozzáadása a gyűjteményből
+* És tesztelés az Azure AD konfigurálása egyszeri bejelentkezés
 
-**Adja hozzá az E értékesítés Manager Remix a gyűjteményből, hajtsa végre az alábbi lépéseket:**
+## <a name="add-e-sales-manager-remix-from-the-gallery"></a>Adja hozzá az E értékesítés Manager Remix a gyűjteményből
+A rendszerrel történő integráció konfigurálása az Azure AD E értékesítés Manager Remix, vegye fel E értékesítés Manager Remix a gyűjteményből a felügyelt SaaS-alkalmazásokhoz a következő módon:
 
-1. Az a  **[Azure-portálon](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen **Azure Active Directory** ikonra. 
+1. Az a [Azure-portálon](https://portal.azure.com), a bal oldali panelen válassza ki a **Azure Active Directory**. 
 
     ![Az Azure Active Directory gomb][1]
 
-2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen **összes alkalmazás**.
+2. Válassza ki **vállalati alkalmazások** > **összes alkalmazás**.
 
-    ![A vállalati alkalmazások panel][2]
+    ![A "Vállalati alkalmazások" ablak][2]
     
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** párbeszédpanel tetején gombra.
+3. Új alkalmazás hozzáadásához válassza **új alkalmazás** az ablak tetején.
 
     ![Az új alkalmazás gomb][3]
 
-4. Írja be a keresőmezőbe, **E értékesítés Manager Remix**, jelölje be **E értékesítés Manager Remix** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+4. Írja be a keresőmezőbe, **E értékesítés Manager Remix**, jelölje be **E értékesítés Manager Remix** az eredmények listájában, és válassza a **Hozzáadás**.
 
     ![E értékesítés Manager Remix az eredménylistában](./media/active-directory-saas-esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_addfromgallery.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés tesztelése és konfigurálása
 
-Ebben a szakaszban, konfigurálás és tesztelés az Azure AD egyszeri bejelentkezést E értékesítés Manager Remix "Britta Simon" nevű tesztfelhasználó alapján.
+Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezést az E értékesítés Manager Remix, "Britta Simon." nevű tesztfelhasználó alapján
 
-Az egyszeri bejelentkezés működéséhez az Azure AD meg kell tudja, hogy mi a partner felhasználót E értékesítés Manager Remix a felhasználó Azure AD-ben. Ez azt jelenti egy Azure AD-felhasználó és a kapcsolódó felhasználó a E értékesítés Manager Remix közötti kapcsolat kapcsolatot kell létrehozni.
+Az egyszeri bejelentkezés működéséhez az Azure AD az Azure AD-E értékesítés Manager Remix felhasználó és a megfelelő azonosítania kell. Más szóval E értékesítés Manager Remix azonos felhasználói, valamint az Azure AD-felhasználó közötti kapcsolat kapcsolatot kell létrehozni.
 
-Az Azure AD egyszeri bejelentkezést az E értékesítés Manager Remix tesztelése és konfigurálása, hogy végezze el a következő építőelemeket kell:
-
-1. **[Az Azure AD az egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – lehetővé teszi a felhasználók a szolgáltatás használatához.
-2. **[Hozzon létre egy Azure AD-teszt felhasználó](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezést a Britta Simon teszteléséhez.
-3. **[Hozzon létre egy E értékesítés Manager Remix tesztfelhasználó](#create-an-e-sales-manager-remix-test-user)**  - való egy megfelelője a Britta Simon E értékesítés Manager Remix, amely csatolva van a felhasználó az Azure AD-ábrázolását.
-4. **[Rendelje hozzá az Azure AD-teszt felhasználó](#assign-the-azure-ad-test-user)**  - Britta Simon használata az Azure AD az egyszeri bejelentkezés engedélyezése.
-5. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+Az Azure AD egyszeri bejelentkezést az E értékesítés Manager Remix tesztelése és konfigurálása, végezze el az építőelemeket, a következő öt szakaszokban:
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure portálon, és az E értékesítés Manager Remix alkalmazásban egyszeri bejelentkezés konfigurálása.
+Az Azure AD egyszeri bejelentkezés engedélyezése az Azure portálon, és az egyszeri bejelentkezés konfigurálása az E értékesítés Manager Remix alkalmazásban a következő módon:
 
-**E értékesítés Manager Remix konfigurálása az Azure AD egyszeri bejelentkezést, hajtsa végre az alábbi lépéseket:**
+1. Az Azure portálon a a **E értékesítés Manager Remix** alkalmazás integrációs lapon jelölje be **egyszeri bejelentkezés**.
 
-1. Az Azure portálon a a **E értékesítés Manager Remix** alkalmazás integráció lapján, kattintson a **egyszeri bejelentkezés**.
+    ![Az "Egyszeri bejelentkezés" hivatkozásra][4]
 
-    ![Egyszeri bejelentkezés kapcsolat konfigurálása][4]
-
-2. Az a **egyszeri bejelentkezés** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezése.
+2. Az a **egyszeri bejelentkezés** ablakban, a a **egyszeri bejelentkezés mód** mezőben válassza **SAML-alapú bejelentkezés**.
  
-    ![Egyszeri bejelentkezés párbeszédpanel](./media/active-directory-saas-esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_samlbase.png)
+    ![Az "Egyszeri bejelentkezés" ablak](./media/active-directory-saas-esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_samlbase.png)
 
-3. Az a **E értékesítés Manager Remix tartomány és az URL-címek** területen tegye a következőket:
+3. A **E értékesítés Manager Remix tartomány és az URL-címek**, tegye a következőket:
 
     ![Az egyszeri bejelentkezés információkat E értékesítés Manager Remix tartomány és az URL-címek](./media/active-directory-saas-esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_url.png)
 
-    a. Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe: `https://<Server-Based-URL>/<sub-domain>/esales-pc`
+    a. Az a **bejelentkezési URL-cím** mezőbe, írja be egy URL-címet a következő formátumban: *https://\<Server-alapú-URL-cím > /\<altartomány > / esales-pc*.
 
-    b. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe: `https://<Server-Based-URL>/<sub-domain>/`
+    b. Az a **azonosító** mezőbe, írja be egy URL-címet a következő formátumban: *https://\<Server-alapú-URL-cím > /\<altartomány > /*.
 
-    c. Másolás a **azonosító** érték a Jegyzettömbben. Az oktatóanyag későbbi részében azonosító értéket fogja használni.
+    c. Megjegyzés: a **azonosító** értéket az oktatóanyag későbbi használatra.
     
     > [!NOTE] 
-    > Ezek az értékek nincsenek valós. Frissítheti ezeket az értékeket a tényleges bejelentkezési URL-cím és azonosítója. Ügyfél [E értékesítés Manager Remix ügyfél-támogatási csoport](mailto:esupport@softbrain.co.jp) beolvasni ezeket az értékeket.
+    > Az előző értékei nem valódi. Frissítse azokat a tényleges bejelentkezési URL-cím és azonosítója. Az értékek beszerzéséhez forduljon [E értékesítés Manager Remix ügyfél-támogatási csoport](mailto:esupport@softbrain.co.jp).
 
-4. Az a **SAML-aláíró tanúsítványa** kattintson **Certificate(Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
+4. A **SAML-aláíró tanúsítványa**, jelölje be **tanúsítvány (Base64)**, és mentse a tanúsítványfájlt, a számítógépen.
 
-    ![A tanúsítvány letöltési hivatkozását](./media/active-directory-saas-esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_certificate.png) 
+    ![A tanúsítvány (Base64) letöltési hivatkozását](./media/active-directory-saas-esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_certificate.png) 
 
-5. Válassza ki **nézet és egyéb felhasználói attribútumok szerkesztése** , majd kattintson a **emailaddress** attribútum.
+5. Válassza ki a **nézet és egyéb felhasználói attribútumok szerkesztése** jelölje be a jelölőnégyzetet, majd válassza ki a **emailaddress** attribútum.
     
-    ![E értékesítési vezető Remix konfiguráció](./media/active-directory-saas-esalesmanagerremix-tutorial/configure1.png)
+    ![A felhasználói attribútumok ablak](./media/active-directory-saas-esalesmanagerremix-tutorial/configure1.png)
 
-6. Másolás a **Namespace** és **neve** a jogcím a beviteli mező értékét. Az érték létrehozása a következő mintában - `<Namespace>/<Name>`. Ezt az értéket az oktatóanyag későbbi részében fogja használni.
+    A **attribútum szerkesztése** ablak nyílik meg.
 
-    ![E értékesítési vezető Remix konfiguráció](./media/active-directory-saas-esalesmanagerremix-tutorial/configure2.png)
+6. Másolás a **Namespace** és **neve** értékeket. Az érték létrehozása a mintában * \<Namespace > /\<neve >*, és mentse az oktatóanyag későbbi használatra.
 
-7. A a **E értékesítés Manager Remix konfigurációs** kattintson **konfigurálása E értékesítés Manager Remix** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **Sign-Out és SAML-alapú egyszeri bejelentkezés szolgáltatás URL-címe** a a **rövid összefoglaló szakasz.**
+    ![Az attribútum szerkesztése ablak](./media/active-directory-saas-esalesmanagerremix-tutorial/configure2.png)
+
+7. A **E értékesítés Manager Remix konfigurációs**, jelölje be **konfigurálása E értékesítés Manager Remix**.
 
     ![E értékesítési vezető Remix konfiguráció](./media/active-directory-saas-esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_configure.png) 
 
-8. Kattintson a **mentése** gombra.
+    A **bejelentkezés konfigurálása** ablak nyílik meg.
 
-    ![Egyszeri bejelentkezés Mentés gombra konfigurálása](./media/active-directory-saas-esalesmanagerremix-tutorial/tutorial_general_400.png)
+8. Az a **rövid összefoglaló** szakaszban, másolja a kijelentkezési URL-cím és az SAML-alapú egyszeri bejelentkezési szolgáltatás URL-címet.
 
-9. Jelentkezzen be rendszergazdaként az E értékesítés Manager Remix alkalmazás.
+9. Kattintson a **Mentés** gombra.
 
-10. Válassza ki **Rendszergazda menü** jobb felső sarokban a menüből.
+    ![A Mentés gombra](./media/active-directory-saas-esalesmanagerremix-tutorial/tutorial_general_400.png)
 
-    ![E értékesítési vezető Remix konfiguráció](./media/active-directory-saas-esalesmanagerremix-tutorial/configure4.png)
+10. Jelentkezzen be rendszergazdaként az E értékesítés Manager Remix alkalmazás.
 
-11. Válassza ki **rendszerbeállítások**>**külső rendszerekből való együttműködés**
+11. Jobb felső sarokban, válassza ki a **Rendszergazda menü**.
 
-    ![E értékesítési vezető Remix konfiguráció](./media/active-directory-saas-esalesmanagerremix-tutorial/configure5.png)
+    ![A "Rendszergazda menü" parancs](./media/active-directory-saas-esalesmanagerremix-tutorial/configure4.png)
+
+12. A bal oldali panelen válassza ki a **rendszerbeállítások** > **külső rendszer együttműködve**.
+
+    ![A "Rendszer beállítások" és "Külső rendszer együttműködve" hivatkozások](./media/active-directory-saas-esalesmanagerremix-tutorial/configure5.png)
     
-12. Válassza ki **SAML**
+13. Az a **külső rendszer együttműködve** ablakban válassza ki **SAML**.
 
-    ![E értékesítési vezető Remix konfiguráció](./media/active-directory-saas-esalesmanagerremix-tutorial/configure6.png)
+    ![A "Külső rendszer együttműködve" ablak](./media/active-directory-saas-esalesmanagerremix-tutorial/configure6.png)
 
-13. Az a **SAML-hitelesítési beállítás** területen tegye a következőket:
+14. A **SAML-hitelesítési beállítás**, tegye a következőket:
 
-    ![E értékesítési vezető Remix konfiguráció](./media/active-directory-saas-esalesmanagerremix-tutorial/configure3.png)
+    ![A "SAML-alapú hitelesítés" szakasz](./media/active-directory-saas-esalesmanagerremix-tutorial/configure3.png)
     
-    a. Válassza ki **PC-verzió**
+    a. Válassza ki a **PC verzió** jelölőnégyzetet.
     
-    b. Válassza ki **e-mail** a együttműködve a legördülő menüből konfigurációelem-szakasz.
+    b. Az a **együttműködés elem** csoportban, a legördülő listában jelölje be **e-mail**.
 
-    c. Az együttműködés elem szövegmezőjének illessze be a **jogcím értéke** az Azure portál Egytényezős a másolt `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`
+    c. Az a **együttműködés elem** mezőbe illessze be a korábban kimásolt Azure-portálról jogcím értékét (Ez azt jelenti, hogy **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress**).
 
-    d. Az a **kibocsátó (entitás azonosítója)** szövegmező, illessze be a **azonosító** érték, amely az Azure-portálról másolta **E értékesítés Manager Remix tartomány és az URL-címek** szakasz.
+    d. Az a **kibocsátó (entitás azonosítója)** mezőbe illessze be a korábban kimásolt az azonosító értéket a **E értékesítés Manager Remix tartomány és az URL-címek** szakasza az Azure-portálon.
 
-    e. Töltse fel a letöltött **tanúsítvány** válassza ki az Azure-portálon **kijelölés fájl**.
+    e. Azure-portálról letöltött tanúsítvány feltöltésének, válassza ki a **kijelölés fájl**.
 
-    f. A **azonosító szolgáltató bejelentkezési URL-cím** szövegmezőhöz Beillesztés **SAML-alapú egyszeri bejelentkezési URL-címe** másolt Azure-portálon.
+    f. Az a **azonosító szolgáltató bejelentkezési URL-cím** mezőbe illessze be a SAML-alapú egyszeri bejelentkezési szolgáltatás URL-címet, amelyet korábban az Azure-portálon vágólapra másolt.
 
-    g. A **Identity Provider kijelentkezési URL-cím** szövegmezőhöz Beillesztés **Sign-Out URL-cím** érték, amely az Azure-portálon másolta.
+    g. A **Identity Provider kijelentkezési URL-cím** mezőbe illessze be a kijelentkezési URL-címével, amely az Azure-portálon korábban kimásolt.
 
-    h. Kattintson a **beállítása kész**
+    h. Válassza ki **beállítás teljes**.
 
 > [!TIP]
-> Ezek az utasítások belül tömör verziója most el tudja olvasni a [Azure-portálon](https://portal.azure.com), míg az alkalmazás beállításakor!  Ez az alkalmazás a hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentációja keresztül a **konfigurációs** szakasz alján. További Itt a embedded dokumentációjából szolgáltatásról: [az Azure AD beágyazott dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Hoz létre az alkalmazást, mert egy előző utasításait tömör verziója elolvashatja a [Azure-portálon](https://portal.azure.com). Az alkalmazás hozzáadása után a **Active Directory** > **vállalati alkalmazások** szakaszban jelölje be a **egyszeri bejelentkezés** lapot, és hozzáférhet a a beágyazott dokumentációjában találhatók a **konfigurációs** szakasz alján. A beágyazott dokumentáció szolgáltatással kapcsolatos további információkért lásd: [az Azure AD dokumentációjában beágyazott]( https://go.microsoft.com/fwlink/?linkid=845985).
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure AD-teszt felhasználó
 
-Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta Simon nevezik.
+Ez a szakasz az alábbi lépésekkel hoz létre tesztfelhasználó Britta Simon az Azure-portálon:
 
-   ![Hozzon létre egy Azure AD-teszt felhasználó][100]
+![Hozzon létre egy Azure AD-teszt felhasználó][100]
 
-**Tesztfelhasználó létrehozása az Azure AD-ban, hajtsa végre az alábbi lépéseket:**
+1. Az Azure portálon a bal oldali panelen válassza ki a **Azure Active Directory**.
 
-1. Az Azure portálon a bal oldali ablaktáblán kattintson a **Azure Active Directory** gombra.
+    ![Az Azure Active Directory-hivatkozás](./media/active-directory-saas-paloaltoadmin-tutorial/create_aaduser_01.png)
 
-    ![Az Azure Active Directory gomb](./media/active-directory-saas-esalesmanagerremix-tutorial/create_aaduser_01.png)
+2. Az aktuális felhasználó listáját jeleníti meg, jelölje be **felhasználók és csoportok** > **minden felhasználó**.
 
-2. Azon felhasználók listájának megtekintéséhez keresse fel **felhasználók és csoportok**, és kattintson a **minden felhasználó**.
+    ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](./media/active-directory-saas-paloaltoadmin-tutorial/create_aaduser_02.png)
 
-    ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](./media/active-directory-saas-esalesmanagerremix-tutorial/create_aaduser_02.png)
+3. Felső részén a **minden felhasználó** ablakban válassza ki **Hozzáadás**.
 
-3. Megnyitásához a **felhasználói** párbeszédpanel, kattintson a **Hozzáadás** tetején a **minden felhasználó** párbeszédpanel megnyitásához.
+    ![A Hozzáadás gombra.](./media/active-directory-saas-paloaltoadmin-tutorial/create_aaduser_03.png)
+    
+    A **felhasználói** ablak nyílik meg.
 
-    ![A Hozzáadás gombra.](./media/active-directory-saas-esalesmanagerremix-tutorial/create_aaduser_03.png)
+4. Az a **felhasználói** ablakban tegye a következőket:
 
-4. Az a **felhasználói** párbeszédpanelen hajtsa végre az alábbi lépéseket:
-
-    ![A felhasználó párbeszédpanel](./media/active-directory-saas-esalesmanagerremix-tutorial/create_aaduser_04.png)
+    ![A felhasználó ablak](./media/active-directory-saas-paloaltoadmin-tutorial/create_aaduser_04.png)
 
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
 
@@ -203,7 +201,7 @@ Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta
 
     c. Válassza ki a **megjelenítése jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson a **Létrehozás** gombra.
  
 ### <a name="create-an-e-sales-manager-remix-test-user"></a>Az E értékesítés Manager Remix tesztfelhasználó létrehozása
 
@@ -213,66 +211,65 @@ Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta
 
     ![E értékesítési vezető Remix konfiguráció](./media/active-directory-saas-esalesmanagerremix-tutorial/configure4.png)
 
-3. Válassza ki **a vállalati beállítások**>**karbantartás a részleg és az alkalmazottak** válassza **regisztrált alkalmazottak**.
+3. Válassza ki **a vállalati beállítások** > **karbantartás a részleg és az alkalmazottak**, majd válassza ki **regisztrált alkalmazottak**.
 
-    ![A felhasználó](./media/active-directory-saas-esalesmanagerremix-tutorial/user1.png)
+    ![A "Alkalmazottak regisztrált" lap](./media/active-directory-saas-esalesmanagerremix-tutorial/user1.png)
 
 4. Az a **új alkalmazott regisztrációs** területen tegye a következőket:
     
-    ![A felhasználó](./media/active-directory-saas-esalesmanagerremix-tutorial/user2.png)
+    ![Az "új alkalmazott regisztrációs" szakasz](./media/active-directory-saas-esalesmanagerremix-tutorial/user2.png)
 
-    a. Az a **alkalmazott neve** szövegmező, írja be például a Britta felhasználói nevét.
+    a. Az a **alkalmazott neve** mezőbe írja be annak a felhasználónak a nevét (például **Britta**).
 
-    b. Az összes megfelelő kötelező mezők kitöltése a felhasználói adatokat.
+    b. Töltse ki a többi kötelező mezőket.
     
-    c. SAML engedélyezése, ha a rendszergazda nem fogja tudni jelentkezni a bejelentkezési képernyőt, így ad rendszergazdai bejelentkezési jogosultságokat a felhasználó kiválasztásával a **rendszergazdai bejelentkezés**
+    c. SAML engedélyezése, ha a rendszergazda nem tud bejelentkezni, a bejelentkezési oldalról. Támogatás rendszergazdai bejelentkezési jogosultságokat a felhasználó kiválasztásával a **rendszergazdai bejelentkezés** jelölőnégyzetet.
 
-    d. Kattintson a **regisztrációs**
+    d. Válassza ki **regisztrációs**.
 
-5. A későbbiekben, ha azt szeretné, hogy jelentkezzen be rendszergazdaként, jelentkezzen be a felhasználó a rendszergazda engedélyt kapott, és kattintson a **Rendszergazda menü** jobb felső sarokban a menüből.
+5. A jövőben, jelentkezzen be rendszergazdaként, hogy jelentkezzen be a rendszergazdai engedélyekkel rendelkezik, és ezután jobb felső sarokban, válassza ki a felhasználó **Rendszergazda menü**.
 
-    ![A felhasználó](./media/active-directory-saas-esalesmanagerremix-tutorial/configure4.png)
+    ![A "Rendszergazda menü" parancs](./media/active-directory-saas-esalesmanagerremix-tutorial/configure4.png)
 
 ### <a name="assign-the-azure-ad-test-user"></a>Rendelje hozzá az Azure AD-teszt felhasználó
 
-Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés E értékesítés Manager Remix Azure egyszeri bejelentkezéshez használandó.
+Ebben a szakaszban a felhasználó által biztosított hozzáférés E értékesítés Manager Remix Azure egyszeri bejelentkezéshez használandó Britta Simon engedélyezi. Ehhez tegye a következőket: 
 
 ![A felhasználói szerepkör hozzárendelése][200] 
 
-**Britta Simon hozzárendelése E értékesítés Manager Remix, hajtsa végre az alábbi lépéseket:**
+1. Az Azure portálon, nyissa meg a **alkalmazások** nézet, keresse fel a **Directory** megtekintéséhez, majd válassza ki **vállalati alkalmazások** > **összes alkalmazások**.
 
-1. Az Azure-portálon, nyissa meg az alkalmazások nézet, majd nyissa meg a könyvtár nézetet, és navigáljon **vállalati alkalmazások** kattintson **összes alkalmazás**.
+    ![A "Vállalati alkalmazások" és "Összes alkalmazás" hivatkozások][201] 
 
-    ![Felhasználó hozzárendelése][201] 
+2. Az a **alkalmazások** listáról válassza ki **E értékesítés Manager Remix**.
 
-2. Az alkalmazások listában válassza ki a **E értékesítés Manager Remix**.
+    ![Az E értékesítés Manager Remix hivatkozás](./media/active-directory-saas-esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_app.png)  
 
-    ![Az alkalmazások listáját a E értékesítés Manager Remix hivatkozás](./media/active-directory-saas-esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_app.png)  
-
-3. A bal oldali menüben kattintson a **felhasználók és csoportok**.
+3. A bal oldali panelen válassza ki a **felhasználók és csoportok**.
 
     ![A "Felhasználók és csoportok" hivatkozásra][202]
 
-4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzáadása hozzárendelés** párbeszédpanel.
+4. Válassza ki **Hozzáadás** , majd a a **hozzáadása hozzárendelés** ablaktáblán válassza előbb **felhasználók és csoportok**.
 
     ![A hozzárendelés hozzáadása panelen][203]
 
-5. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
+5. Az a **felhasználók és csoportok** ablakban, a a **felhasználók** listáról válassza ki **Britta Simon**.
 
-6. Kattintson a **válasszon** gombra **felhasználók és csoportok** párbeszédpanel.
+6. Válassza ki a **válasszon** gombra.
 
-7. Kattintson a **hozzárendelése** gombra **hozzáadása hozzárendelés** párbeszédpanel.
+7. Az a **hozzáadása hozzárendelés** ablakban válassza ki **hozzárendelése**.
     
 ### <a name="test-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen tesztelése.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési Panel segítségével tesztelheti.
 
-Ha a hozzáférési panelen E értékesítés Manager Remix csempére kattint, akkor kell beolvasása automatikusan bejelentkezett az E értékesítés Manager Remix alkalmazására.
+Az E értékesítés Manager Remix csempe a hozzáférési panelen válassza ki, ha be kell jelentkeznie automatikusan az E értékesítés Manager Remix alkalmazására.
+
 A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáférési Panel bemutatása](active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>További források
 
-* [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](active-directory-saas-tutorial-list.md)
+* [SaaS-alkalmazások integrálása az Azure Active Directoryval kapcsolatos bemutatók felsorolása](active-directory-saas-tutorial-list.md)
 * [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](active-directory-appssoaccess-whatis.md)
 
 <!--Image references-->

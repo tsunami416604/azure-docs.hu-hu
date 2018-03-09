@@ -13,43 +13,32 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: On Demand
-ms.date: 10/11/2017
+ms.date: 02/28/2018
 ms.author: carlrab
-ms.openlocfilehash: 469db4f3faf12cbd778f18b7bc74ec6b86b412c7
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: 973f713028217efa667ec111fdfcac750c243f11
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="create-and-manage-azure-sql-database-servers-and-databases"></a>Azure SQL Database-kiszolgálók és adatbázisok létrehozása és kezelése
 
-Azure SQL-adatbázis egy olyan felügyelt adatbázis a Microsoft Azure rendszerben, a rendszer létrehoz egy [Azure erőforráscsoport](../azure-resource-manager/resource-group-overview.md) meghatározott számú [számítási és tárolási erőforrásokat a különböző munkaterhelések](sql-database-service-tiers.md). Azure SQL-adatbázis nem tartozik egy Azure SQL Database logikai kiszolgáló, ami a rendszer létrehoz egy adott Azure-régiót. 
+SQL-adatbázis három típusú adatbázisokból kínálja:
 
-## <a name="an-azure-sql-database-can-be-a-single-pooled-or-partitioned-database"></a>Azure SQL-adatbázis egyetlen, a készletezett vagy a particionált adatbázis is lehet.
+- Belül létrehozott egy adatbázist egy [Azure erőforráscsoport](../azure-resource-manager/resource-group-overview.md) meghatározott számú [számítási és tárolási erőforrásokat a különböző munkaterhelések](sql-database-service-tiers.md). Azure SQL-adatbázis nem tartozik egy Azure SQL Database logikai kiszolgáló, ami a rendszer létrehoz egy adott Azure-régiót.
+- Részeként létrehozott adatbázis egy [adatbázisok készlete](sql-database-elastic-pool.md) belül egy [Azure erőforráscsoport](../azure-resource-manager/resource-group-overview.md) meghatározott számú [számítási és tárolási erőforrásokat a különböző munkaterhelések](sql-database-service-tiers.md) , amelyek megosztott összes a készletben lévő adatbázisok között. Azure SQL-adatbázis nem tartozik egy Azure SQL Database logikai kiszolgáló, ami a rendszer létrehoz egy adott Azure-régiót.
+- Egy [egy SQL server-példányt](sql-database-managed-instance.md) belül létrehozott egy [Azure erőforráscsoport](../azure-resource-manager/resource-group-overview.md) a számítási és tárolási erőforrásokat, az összes olyan server-példányon adatbázis egy adott csoportján. A felügyelt példánya rendszer és a felhasználó adatbázist tartalmaz. Felügyelt példány lehetővé teszi, hogy adatbázis növekedési-és-shift egy teljes körűen felügyelt PaaS, hogy az alkalmazás újratervezése nélkül. Felügyelt példány magas kompatibilitási a helyszíni SQL Server programozási modellt biztosít, és támogatja az SQL Server szolgáltatásai és a hozzá tartozó eszközök és szolgáltatások nagy részét.  
 
-Egy Azure SQL adatbázis lehet:
+Microsoft Azure SQL Database 7.3 vagy újabb tabulált adatfolyam (TDS) protokoll ügyfél verziója támogatja, és lehetővé teszi, hogy csak a titkosított TCP/IP-kapcsolatokat.
 
-- A [egyetlen adatbázis](sql-database-single-database-resources.md) saját erőforrások rendelkező
-- Része egy [rugalmas készlet](sql-database-elastic-pool.md) , közösen használja az erőforráscsoport
-- részét képezhetik [horizontálisan skálázott adatbázisok kibővíthető készletének](sql-database-elastic-scale-introduction.md#horizontal-and-vertical-scaling), amely önálló vagy készletezett adatbázisokból állhat;
-- részét képezhetik egy [több-bérlős SaaS kialakítási mintában](sql-database-design-patterns-multi-tenancy-saas-applications.md) szereplő adatbáziskészletnek, mely adatbázisok lehetnek önálló, készletezett vagy mindkétféle adatbázisok. 
-
-> [!TIP]
-> Az érvényes adatbázisnevekkel kapcsolatban lásd az [adatbázis-azonosítókat](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers) ismertető cikket. 
->
- 
-- A Microsoft Azure SQL Database által alapértelmezés szerint használt adatbázisrendezés az **SQL_LATIN1_GENERAL_CP1_CI_AS**, amelyben a **LATIN1_GENERAL** az angol (Egyesült Államok), a **CP1** az 1252-es kódlap, a **CI** a kis- és nagybetűk meg nem különböztetése, az **AS** pedig az ékezetérzékenység. További információk a rendezés beállításáról: [COLLATE (Transact-SQL)](https://msdn.microsoft.com/library/ms184391.aspx).
-- A Microsoft Azure SQL Database 7.3 vagy újabb tabulált adatfolyam (TDS) protokoll ügyfél verziója támogatja.
-- Csak a TCP/IP-kapcsolatok engedélyezve vannak.
+> [!IMPORTANT]
+> SQL adatbázis-felügyelt példány jelenleg a nyilvános előzetes nyújt egy általános célú szolgáltatási rétegben. További információkért lásd: [SQL felügyelt adatbázispéldány](sql-database-managed-instance.md). Ez a cikk fennmaradó kezelt példány nem vonatkozik.
 
 ## <a name="what-is-an-azure-sql-logical-server"></a>Mi az az Azure SQL logikai kiszolgálóra?
 
-Több adatbázis, beleértve a központi felügyeleti pontként működik a logikai kiszolgáló [rugalmas készletek](sql-database-elastic-pool.md) [bejelentkezések](sql-database-manage-logins.md), [tűzfal-szabályok](sql-database-firewall-configure.md), [naplózása szabályok](sql-database-auditing.md), [szabályzatok fenyegetés](sql-database-threat-detection.md), és [feladatátvételi csoportok](sql-database-geo-replication-overview.md). Egy logikai kiszolgáló lehet egy másik régióban, mint az erőforráscsoportot. A logikai kiszolgáló léteznie kell az Azure SQL-adatbázis létrehozása előtt. A kiszolgálón lévő összes adatbázis belül és a logikai kiszolgáló ugyanabban a régióban jönnek létre. 
+Egy logikai kiszolgáló több egyetlen központi felügyeleti pontként működik vagy [készletezett](sql-database-elastic-pool.md) adatbázisok, [bejelentkezések](sql-database-manage-logins.md), [tűzfal-szabályok](sql-database-firewall-configure.md), [szabályoknaplózása](sql-database-auditing.md), [szabályzatok fenyegetés](sql-database-threat-detection.md), és [feladatátvételi csoportok](sql-database-geo-replication-overview.md). Egy logikai kiszolgáló lehet egy másik régióban, mint az erőforráscsoportot. A logikai kiszolgáló léteznie kell az Azure SQL-adatbázis létrehozása előtt. A kiszolgálón lévő összes adatbázis belül és a logikai kiszolgáló ugyanabban a régióban jönnek létre.
 
-
-> [!IMPORTANT]
-> Az SQL Database-ben a kiszolgáló egy logikai szerkezet, amely nem azonos a helyszíni SQL Server-példánnyal. Az SQL Database szolgáltatás nem garantálja az adatbázisok helyét a logikai kiszolgálójukhoz képest, valamint nem kínál példányszintű hozzáférést és funkciókat.
-> 
+Egy logikai kiszolgálóra egy logikai szerkezet, amely nem egyezik, akkor előfordulhat, hogy ismernie kell a helyszíni világ SQL Server-példányt. Az SQL Database szolgáltatás nem garantálja az adatbázisok helyét a logikai kiszolgálójukhoz képest, valamint nem kínál példányszintű hozzáférést és funkciókat. Ezzel szemben egy kiszolgálót SQL adatbázis felügyelt példányt a SQL Server-példányt, akkor előfordulhat, hogy ismernie kell a helyszíni világ hasonlít.
 
 Logikai kiszolgáló létrehozása, ha a kiszolgáló megadta bejelentkezési fiókot és jelszót, amely rendszergazdai jogosultságokkal ezen a kiszolgálón a master adatbázis és az összes adatbázis létrehozása ezen a kiszolgálón. A kezdeti egy egy SQL-bejelentkezési fiók. Az Azure SQL Database hitelesítéshez támogatja az SQL-hitelesítést és az Azure Active Directory-hitelesítéssel. További információ a bejelentkezési és hitelesítési: [kezelése adatbázisok és bejelentkezések az Azure SQL Database](sql-database-manage-logins.md). A Windows-hitelesítés nem támogatott. 
 
@@ -74,6 +63,7 @@ Az Azure Database logikai kiszolgáló:
 - Engedélyezve van az abban található erőforrás képességeinek versioning hatóköre 
 - Kiszolgálószintű rendszerbiztonsági tagként bejelentkezve a kiszolgáló minden adatbázisa felügyelhető.
 - Képes az olyan helyszíni SQL Server-példányokhoz hasonló bejelentkezések kezelésére, amelyek a kiszolgáló egy vagy több adatbázisához hozzáféréssel rendelkeznek, és korlátozott rendszergazdai jogosultságokkal ruházhatók fel. További információk: [Bejelentkezések](sql-database-manage-logins.md).
+- A létrehozott logikai kiszolgálón tárolt összes felhasználói adatbázis alapértelmezett rendezése `SQL_LATIN1_GENERAL_CP1_CI_AS`, ahol `LATIN1_GENERAL` angol (Egyesült Államok), `CP1` kód lap 1252, `CI` nagybetűk között, és `AS` ékezet-érzékeny.
 
 ## <a name="azure-sql-databases-protected-by-sql-database-firewall"></a>Az Azure SQL Database-tűzfal által védett SQL-adatbázisok
 
@@ -97,6 +87,8 @@ Egy Azure SQL adatbázis használatával létrehozásához a [Azure-portálon](h
 > Az adatbázis árképzési szint kiválasztásával további információkért lásd: [szolgáltatásszintek](sql-database-service-tiers.md).
 >
 
+Egy felügyelt példány létrehozásához lásd: [egy felügyelt példányának létrehozása](sql-database-managed-instance-tutorial-portal.md)
+
 ### <a name="manage-an-existing-sql-server"></a>Meglévő SQL server kezelése
 
 Egy meglévő kiszolgáló kezeléséhez, keresse fel a kiszolgálót, számos módszer – például adott SQL-adatbázis oldal, használja a **SQL Server-kiszolgálók** lap, vagy a **összes erőforrás** lap. 
@@ -110,7 +102,7 @@ Kezelheti egy meglévő adatbázist, navigáljon a **SQL-adatbázisok** lapon, m
 >
 
 > [!TIP]
-> Tekintse meg az Azure portál – gyors üzembe helyezési oktatóanyag [Azure SQL-adatbázis létrehozása az Azure portálon](sql-database-get-started-portal.md).
+> Tekintse meg az Azure portál gyors üzembe helyezési útmutató [Azure SQL-adatbázis létrehozása az Azure portálon](sql-database-get-started-portal.md).
 >
 
 ## <a name="manage-azure-sql-servers-databases-and-firewalls-using-powershell"></a>Azure SQL-kiszolgálók, a adatbázisok és a PowerShell-lel tűzfalak kezelése
@@ -123,8 +115,8 @@ Létrehozása és kezelése az Azure SQL server, adatbázisok és tűzfalak az A
 |[Get-AzureRmSqlDatabase](/powershell/module/azurerm.sql/get-azurermsqldatabase)|Egy vagy több adatbázis beolvasása|
 |[Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase)|Az adatbázis tulajdonságainak megadása, vagy a meglévő adatbázis áthelyezése rugalmas készletbe|
 |[Remove-AzureRmSqlDatabase](/powershell/module/azurerm.sql/remove-azurermsqldatabase)|Egy adatbázis eltávolítása|
-|[Új-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup)|Létrehoz egy erőforráscsoport]
-|[Új AzureRmSqlServer](/powershell/module/azurerm.sql/new-azurermsqlserver)|A kiszolgáló létrehozása|
+|[New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup)|Létrehoz egy erőforráscsoport]
+|[New-AzureRmSqlServer](/powershell/module/azurerm.sql/new-azurermsqlserver)|A kiszolgáló létrehozása|
 |[Get-AzureRmSqlServer](/powershell/module/azurerm.sql/get-azurermsqlserver)|Kiszolgálók adatait adja vissza|
 |[Set-AzureRmSqlServer](https://docs.microsoft.com/powershell/module/azurerm.sql/set-azurermsqlserver)|Kiszolgáló tulajdonságainak módosítása|
 |[Remove-AzureRmSqlServer](/powershell/module/azurerm.sql/remove-azurermsqlserver)|Eltávolít egy kiszolgálót|
@@ -132,7 +124,7 @@ Létrehozása és kezelése az Azure SQL server, adatbázisok és tűzfalak az A
 |[Get-AzureRmSqlServerFirewallRule](/powershell/module/azurerm.sql/get-azurermsqlserverfirewallrule)|Kiszolgáló tűzfalszabályainak beolvasása|
 |[Set-AzureRmSqlServerFirewallRule](/powershell/module/azurerm.sql/set-azurermsqlserverfirewallrule)|Egy tűzfalszabály módosítása|
 |[Remove-AzureRmSqlServerFirewallRule](/powershell/module/azurerm.sql/remove-azurermsqlserverfirewallrule)|Egy tűzfalszabály törlése a kiszolgálóról.|
-| Új AzureRmSqlServerVirtualNetworkRule | Létrehoz egy [ *virtuális hálózati szabály*](sql-database-vnet-service-endpoint-rule-overview.md), amely a virtuális hálózati szolgáltatási végpont alhálózat alapján. |
+| New-AzureRmSqlServerVirtualNetworkRule | Létrehoz egy [ *virtuális hálózati szabály*](sql-database-vnet-service-endpoint-rule-overview.md), amely a virtuális hálózati szolgáltatási végpont alhálózat alapján. |
 
 > [!TIP]
 > Tekintse meg a PowerShell gyors üzembe helyezési útmutató [PowerShell használatával egyetlen Azure SQL-adatbázis létrehozása](sql-database-get-started-portal.md). PowerShell-példa parancsfájlok, lásd: [a PowerShell szolgáltatás használatával hozzon létre egy Azure SQL-adatbázis és a tűzfalszabályok konfigurálása](scripts/sql-database-create-and-configure-database-powershell.md) és [figyelő és a skála egyetlen SQL adatbázis-PowerShell-lel](scripts/sql-database-monitor-and-scale-database-powershell.md).
@@ -144,15 +136,15 @@ Létrehozásához és kezeléséhez az Azure SQL server, adatbázisok és a tűz
 
 | Parancsmag | Leírás |
 | --- | --- |
-|[az sql-adatbázis létrehozása](/cli/azure/sql/db#az_sql_db_create) |Létrehoz egy adatbázis|
+|[az sql db create](/cli/azure/sql/db#az_sql_db_create) |Létrehoz egy adatbázis|
 |[az sql db listája](/cli/azure/sql/db#az_sql_db_list)|Felsorolja az összes adatbázist és az adatraktárak egy kiszolgálón, vagy minden adatbázisok rugalmas készlethez|
 |[az sql db lista-verziók](/cli/azure/sql/db#az_sql_db_list_editions)|Listák elérhető szolgáltatási célkitűzések és tárolási korlátai|
 |[az sql db lista-módjait](/cli/azure/sql/db#az_sql_db_list_usages)|Adatbázis-módjait beolvasása|
 |[az sql db megjelenítése](/cli/azure/sql/db#az_sql_db_show)|Egy adatbázis vagy adatraktár beolvasása|
 |[az sql-adatbázis frissítése](/cli/azure/sql/db#az_sql_db_update)|Frissíti az adatbázist|
 |[az sql-adatbázis törlése](/cli/azure/sql/db#az_sql_db_delete)|Egy adatbázis eltávolítása|
-|[az csoport létrehozása](/cli/azure/group#az_group_create)|Létrehoz egy erőforráscsoportot|
-|[az sql-kiszolgáló létrehozása](/cli/azure/sql/server#az_sql_server_create)|A kiszolgáló létrehozása|
+|[az group create](/cli/azure/group#az_group_create)|Létrehoz egy erőforráscsoportot|
+|[az sql server create](/cli/azure/sql/server#az_sql_server_create)|A kiszolgáló létrehozása|
 |[az sql server listája](/cli/azure/sql/server#az_sql_server_list)|Kiszolgálók listája|
 |[az sql server lista-módjait](/cli/azure/sql/server#az_sql_server_list-usages)|Kiszolgáló módjait adja vissza|
 |[az sql server megjelenítése](/cli/azure/sql/server#az_sql_server_show)|A kiszolgáló beolvasása|
@@ -181,18 +173,18 @@ Létrehozása és kezelése az Azure SQL kiszolgáló, adatbázisok és tűzfala
 |[ADATBÁZIS (az Azure SQL Database) létrehozása](/sql/t-sql/statements/create-database-azure-sql-database)|Egy új adatbázist hoz létre. Kell csatlakoznia a főadatbázison való futtatásával hozzon létre egy új adatbázist.|
 | [Az ALTER DATABASE (Azure SQL Database)](/sql/t-sql/statements/alter-database-azure-sql-database) |Azure SQL-adatbázis módosítása. |
 |[Az ALTER DATABASE (Azure SQL Data Warehouse)](/sql/t-sql/statements/alter-database-azure-sql-data-warehouse)|Egy Azure SQL Data Warehouse módosítja.|
-|[ADATBÁZIS (Transact-SQL)](/sql/t-sql/statements/drop-database-transact-sql)|Adatbázis törlése.|
-|[sys.database_service_objectives (az Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database)|Egy Azure SQL database vagy az Azure SQL Data Warehouse esetében adja vissza a edition (szolgáltatási réteg), a szolgáltatási cél (IP-címek) és a rugalmas készlet nevét. Ha be van jelentkezve a főadatbázishoz egy Azure SQL adatbázis-kiszolgáló, az összes adatbázis ad vissza adatokat. Az Azure SQL Data Warehouse kell csatlakoznia a fő adatbázist.|
+|[DROP DATABASE (Transact-SQL)](/sql/t-sql/statements/drop-database-transact-sql)|Adatbázis törlése.|
+|[sys.database_service_objectives (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database)|Egy Azure SQL database vagy az Azure SQL Data Warehouse esetében adja vissza a edition (szolgáltatási réteg), a szolgáltatási cél (IP-címek) és a rugalmas készlet nevét. Ha be van jelentkezve a főadatbázishoz egy Azure SQL adatbázis-kiszolgáló, az összes adatbázis ad vissza adatokat. Az Azure SQL Data Warehouse kell csatlakoznia a fő adatbázist.|
 |[sys.dm_db_resource_stats (az Azure SQL Database)](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)| Az Azure SQL Database adatbázishoz CPU, a i/o és a memória-felhasználás adja vissza. Egy sor létezik 15 másodpercenként akkor is, ha nincs az adatbázisban nem tevékenység.|
 |[sys.resource_stats (az Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)|CPU használatát és a tároló adatait jeleníti meg az Azure SQL-adatbázis. Az adatok gyűjtése és 5 perces időközönként belül.|
 |[sys.database_connection_stats (az Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-connection-stats-azure-sql-database)|SQL-adatbázis adatbázis csatlakozási eseményeket, és adatbázis-kapcsolat sikeres és sikertelen áttekintést nyújt a statisztikákat tartalmaz. |
 |[sys.event_log (az Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-event-log-azure-sql-database)|Sikeres Azure SQL Database adatbázis-kapcsolatok, a csatlakozási hibák és a holtpontok adja vissza. Ezek az információk segítségével nyomon követése, vagy az adatbázis-tevékenység az SQL Database hibaelhárítása.|
-|[sp_set_firewall_rule (az Azure SQL Database)](/sql/relational-databases/system-stored-procedures/sp-set-firewall-rule-azure-sql-database)|Létrehozza vagy frissíti az SQL Database-kiszolgálóhoz kiszolgálószintű tűzfal beállításait. Ez a tárolt eljárás csak érhető el a főadatbázison való futtatásával a kiszolgálószintű fő bejelentkezéssel. Egy kiszolgálószintű tűzfalszabályt csak segítségével hozhatók létre Transact-SQL Azure-szintű engedélyekkel rendelkező felhasználó az első kiszolgálószintű tűzfalszabály létrehozása után|
+|[sp_set_firewall_rule (Azure SQL Database)](/sql/relational-databases/system-stored-procedures/sp-set-firewall-rule-azure-sql-database)|Létrehozza vagy frissíti az SQL Database-kiszolgálóhoz kiszolgálószintű tűzfal beállításait. Ez a tárolt eljárás csak érhető el a főadatbázison való futtatásával a kiszolgálószintű fő bejelentkezéssel. Egy kiszolgálószintű tűzfalszabályt csak segítségével hozhatók létre Transact-SQL Azure-szintű engedélyekkel rendelkező felhasználó az első kiszolgálószintű tűzfalszabály létrehozása után|
 |[sys.firewall_rules (az Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-firewall-rules-azure-sql-database)|A kiszolgálószintű tűzfal beállításai a Microsoft Azure SQL Database társított információt ad vissza.|
-|[sp_delete_firewall_rule (az Azure SQL Database)](/sql/relational-databases/system-stored-procedures/sp-delete-firewall-rule-azure-sql-database)|Az SQL Database-kiszolgálóhoz kiszolgálószintű tűzfal beállításainak eltávolítása. Ez a tárolt eljárás csak érhető el a főadatbázison való futtatásával a kiszolgálószintű fő bejelentkezéssel.|
-|[sp_set_database_firewall_rule (az Azure SQL Database)](/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database)|Létrehozza vagy frissíti az adatbázis-szintű tűzfalszabályok az Azure SQL Database vagy az SQL Data Warehouse. Adatbázis tűzfalszabályainak konfigurálható a master adatbázis, valamint az SQL Database felhasználói adatbázisokat. Adatbázis tűzfalszabályainak használatával tartalmazott adatbázis-felhasználók esetén hasznos. |
-|[sys.database_firewall_rules (az Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-firewall-rules-azure-sql-database)|Az adatbázis-szintű tűzfal beállításait a Microsoft Azure SQL Database társított információt ad vissza. |
-|[sp_delete_database_firewall_rule (az Azure SQL Database)](/sql/relational-databases/system-stored-procedures/sp-delete-database-firewall-rule-azure-sql-database)|Az Azure SQL Database vagy az SQL Data Warehouse adatbázis szintű tűzfal beállítást eltávolítja. |
+|[sp_delete_firewall_rule (Azure SQL Database)](/sql/relational-databases/system-stored-procedures/sp-delete-firewall-rule-azure-sql-database)|Az SQL Database-kiszolgálóhoz kiszolgálószintű tűzfal beállításainak eltávolítása. Ez a tárolt eljárás csak érhető el a főadatbázison való futtatásával a kiszolgálószintű fő bejelentkezéssel.|
+|[sp_set_database_firewall_rule (Azure SQL Database)](/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database)|Létrehozza vagy frissíti az adatbázis-szintű tűzfalszabályok az Azure SQL Database vagy az SQL Data Warehouse. Adatbázis tűzfalszabályainak konfigurálható a master adatbázis, valamint az SQL Database felhasználói adatbázisokat. Adatbázis tűzfalszabályainak használatával tartalmazott adatbázis-felhasználók esetén hasznos. |
+|[sys.database_firewall_rules (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-firewall-rules-azure-sql-database)|Az adatbázis-szintű tűzfal beállításait a Microsoft Azure SQL Database társított információt ad vissza. |
+|[sp_delete_database_firewall_rule (Azure SQL Database)](/sql/relational-databases/system-stored-procedures/sp-delete-database-firewall-rule-azure-sql-database)|Az Azure SQL Database vagy az SQL Data Warehouse adatbázis szintű tűzfal beállítást eltávolítja. |
 
 
 > [!TIP]
@@ -200,12 +192,12 @@ Létrehozása és kezelése az Azure SQL kiszolgáló, adatbázisok és tűzfala
 
 ## <a name="manage-azure-sql-servers-databases-and-firewalls-using-the-rest-api"></a>Azure SQL kiszolgáló, adatbázisok és a REST API használatával tűzfalak kezelése
 
-Létrehozása és kezelése az Azure SQL server, adatbázisok és a tűzfalon a REST API-kérés használja.
+Létrehozásához, és kezelheti az Azure SQL server, adatbázisok és a tűzfal, használja a REST API-kérés.
 
 | Parancs | Leírás |
 | --- | --- |
 |[Kiszolgálók – létrehozása vagy frissítése](/rest/api/sql/servers/createorupdate)|Létrehozza vagy frissíti az új kiszolgáló.|
-|[Kiszolgálók – törlése](/rest/api/sql/servers/delete)|SQL-kiszolgáló törlése.|
+|[Kiszolgálók – törlése](/rest/api/sql/servers/delete)|Deletes a SQL server.|
 |[Kiszolgálók - Get](/rest/api/sql/servers/get)|Lekérdezi a kiszolgálót.|
 |[Kiszolgálók – lista](/rest/api/sql/servers/list)|Kiszolgálók listáját adja vissza.|
 |[Kiszolgálók - erőforráscsoport listája](/rest/api/sql/servers/listbyresourcegroup)|Egy erőforráscsoportban található kiszolgálók listáját adja vissza.|
@@ -224,9 +216,7 @@ Létrehozása és kezelése az Azure SQL server, adatbázisok és a tűzfalon a 
 |[Tűzfalszabályok - Get](/rest/api/sql/firewallrules/get)|Egy tűzfalszabály beolvasása.|
 |[Tűzfalszabályok - kiszolgáló listája](/rest/api/sql/firewallrules/listbyserver)|Tűzfalszabályok listáját adja vissza.|
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- Adatbázisok rugalmas készleteket használó készletezését kapcsolatos további tudnivalókért lásd: [rugalmas készletek](sql-database-elastic-pool.md).
-- Az Azure SQL Database szolgáltatással kapcsolatos további információkért lásd: [Mi az SQL Database?](sql-database-technical-overview.md).
 - SQL Server-adatbázis migrálása az Azure-ba, lásd: [áttelepítése az Azure SQL Database](sql-database-cloud-migrate.md).
 - A támogatott funkciókkal kapcsolatos tudnivalókat lásd: [Funkciók](sql-database-features.md).

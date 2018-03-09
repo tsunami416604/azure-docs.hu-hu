@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 02/18/2018
+ms.date: 03/05/2018
 ms.author: raynew
-ms.openlocfilehash: 1a7d57c1f1f84e7ce3b931c2911ae7394b066f8d
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 8c6f577560442f28204b633d5f45f6d4c46ea4b8
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/08/2018
 ---
-# <a name="azure-site-recovery-frequently-asked-questions-faq"></a>Azure Site Recovery: gyakori kérdések (GYIK)
+# <a name="azure-site-recovery-frequently-asked-questions-faq"></a>Az Azure Site Recovery: gyakori kérdések (GYIK)
 A cikk az Azure Site Recovery kapcsolatos gyakran ismételt kérdések tartalmaz. Ha kérdése van a cikk elolvasása után, az fel őket a [Azure Recovery Services fórumon](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr).
 
 ## <a name="general"></a>Általános kérdések
@@ -106,8 +106,9 @@ A szokásos replikáció esetén adatokat georedundáns Azure Storage replikál�
 ### <a name="can-i-automate-site-recovery-scenarios-with-an-sdk"></a>Automatizálható a Site Recovery forgatókönyvek az SDK-val?
 Igen. A Site Recovery munkafolyamatainak automatizálásához a Rest API-t, a PowerShellt vagy az Azure SDK-t használhatja. A PowerShell használatával a Site Recovery üzembe helyezésekor jelenleg támogatott esetek:
 
-* [VMMs-felhőkben Hyper-V virtuális gépek replikálása az Azure PowerShell Resource Manager](site-recovery-vmm-to-azure-powershell-resource-manager.md)
-* [VMM nélkül a Hyper-V virtuális gépek replikálása az Azure PowerShell erőforrás-kezelő](site-recovery-deploy-with-powershell-resource-manager.md)
+* [VMMs-felhőkben Hyper-V virtuális gépek replikálása az Azure PowerShell Resource Manager](hyper-v-vmm-powershell-resource-manager.md)
+* [VMM nélkül a Hyper-V virtuális gépek replikálása az Azure PowerShell erőforrás-kezelő](hyper-v-azure-powershell-resource-manager.md)
+* [VMware replikálása Azure-bA PowerShell erőforrás-kezelő](vmware-azure-disaster-recovery-powershell.md)
 
 ### <a name="if-i-replicate-to-azure-what-kind-of-storage-account-do-i-need"></a>Milyen típusú tárfiókra van szükségem ahhoz, hogy az Azure-ba replikálhassak?
 Az LRS- vagy GRS-tárfiók van szüksége. Mi a GRS használatát javasoljuk, mivel ez akár regionális kimaradás során, illetve az elsődleges régió helyreállíthatatlansága esetében gondoskodik az adatok hibatűréséről. A fióknak és a Recovery Services-tárolónak ugyanabban a régióban kell elhelyezkednie. Prémium szintű storage esetén támogatott VMware virtuális gép, a Hyper-V virtuális gép és a fizikai kiszolgáló replikációs, amikor telepíti a Site Recovery az Azure portálon.
@@ -123,7 +124,7 @@ A kiterjesztett vagy láncolt replikáció nem támogatott. Ez a szolgáltatás 
 Ez a funkció nem támogatott. Ez a szolgáltatás kérése a [visszajelzési fórumon](http://feedback.azure.com/forums/256299-site-recovery/suggestions/6227386-support-for-offline-replication-data-transfer-from).
 
 ### <a name="can-i-exclude-specific-disks-from-replication"></a>Kizárhatok a replikációból bizonyos lemezeket?
-Ez akkor támogatott, ha Ön [VMware virtuális gépek és a Hyper-V virtuális gépek replikálása](site-recovery-exclude-disk.md) az Azure-ba, az Azure portál használatával.
+Ez támogatott amikor replikál VMware virtuális gépek és a Hyper-V virtuális gépek Azure-ba, az Azure portál használatával.
 
 ### <a name="can-i-replicate-virtual-machines-with-dynamic-disks"></a>Replikálhatok dinamikus lemezzel rendelkező virtuális gépek?
 A dinamikus lemezek Hyper-V virtuális gépek replikálása esetén támogatottak. Ezek is támogatottak, ha VMware virtuális gépek és fizikai gépek replikálása Azure-bA. Az operációsrendszer-lemez alaplemeznek kell lennie.

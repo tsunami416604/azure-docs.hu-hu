@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 12/15/2017
 ms.author: iainfou
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9c3f47739f28e0b0b2a24fcea61b055071cba7d5
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: c532657951d6d0241a5d8d25a56bb237ad481567
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="example-azure-infrastructure-walkthrough-for-windows-vms"></a>Windows virtuális gépek Azure-infrastruktúra bemutató példa
 Ez a cikk végigvezeti egy példa infrastruktúrát létrehozására. A Microsoft részletességi összegyűjti az összes irányelvek és elnevezési konvenciókat, a rendelkezésre állási csoportok, a virtuális hálózatok és terheléselosztók döntések egyszerű online tároló-infrastruktúrák tervezése, és ténylegesen telepítése az a virtuális gépek (VM).
@@ -60,8 +60,8 @@ Minden a fenti kövesse az alábbi elnevezési konvenciókat:
 ## <a name="azure-subscriptions-and-accounts"></a>Azure-előfizetések és fiókok
 Az Adventure Works Cycles vállalati előfizetésének, az Adventure Works nagyvállalati előfizetéssel nevű segítségével adja meg a számlázás informatikai munkaterhelés.
 
-## <a name="storage"></a>Storage
-Az Adventure Works Cycles határozza meg, hogy azok Azure felügyelt lemezeket kell használnia. Virtuális gépek létrehozásakor rendelkezésre álló tár mindkét tárolórétegek használhatók:
+## <a name="storage"></a>Tárolás
+Az Adventure Works Cycles határozza meg, hogy azok Azure felügyelt lemezeket kell használnia. Virtuális gépek létrehozásakor használt mindkét érhető el a tárolási rétegek:
 
 * **Standard szintű tárolást** a webkiszolgálók, alkalmazás-kiszolgálókat, és a tartományvezérlők és az adatlemezek.
 * **Prémium szintű storage** az SQL Server virtuális gépek és az adatlemezek.
@@ -71,11 +71,11 @@ Mivel a virtuális hálózat nem kell a folyamatban lévő Adventure munkahelyi 
 
 Hozza létre őket egy kizárólag felhőalapú virtuális hálózatot az Azure portál használatával a következő beállításokkal:
 
-* Neve: AZOS-használat-VN01
+* Name: AZOS-USE-VN01
 * Helye: USA keleti régiója 2. régiója
 * Virtuális hálózat címtere: 10.0.0.0/8
 * Első alhálózati:
-  * Name: előtér
+  * Name: FrontEnd
   * Címtér: 10.0.1.0/24
 * Második alhálózati:
   * Name: háttér

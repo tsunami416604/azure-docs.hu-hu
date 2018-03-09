@@ -1,25 +1,21 @@
 ---
 title: "Azure Active Directory-hitelesítés - SQL konfigurálása |} Microsoft Docs"
-description: "Ismerje meg az SQL-adatbázis és az SQL Data Warehouse az Azure AD konfigurálása után az Azure Active Directory Authentication - használatával."
+description: "Megtudhatja, hogyan kapcsolódhat SQL-adatbázis, a felügyelt példány és az SQL Data Warehouse Azure Active Directory-hitelesítés – az Azure AD konfigurálása után."
 services: sql-database
 author: GithubMirek
 manager: johammer
-ms.assetid: 7e2508a1-347e-4f15-b060-d46602c5ce7e
 ms.service: sql-database
 ms.custom: security
-ms.devlang: 
 ms.topic: article
-ms.tgt_pltfrm: 
-ms.workload: Active
-ms.date: 01/09/2018
+ms.date: 03/07/2018
 ms.author: mireks
-ms.openlocfilehash: 93fb39770a0b0c63011c05505be411c7470fea0a
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: 00b5be9863e2bff9e5b82845f99d6829e1bcdf13
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 03/08/2018
 ---
-# <a name="configure-and-manage-azure-active-directory-authentication-with-sql-database-or-sql-data-warehouse"></a>Konfigurálhatja és kezelheti az Azure Active Directory-hitelesítés az SQL Database vagy az SQL Data Warehouse
+# <a name="configure-and-manage-azure-active-directory-authentication-with-sql-database-managed-instance-or-sql-data-warehouse"></a>Konfigurálhatja és kezelheti az Azure Active Directory-hitelesítés az SQL-adatbázis, a példány kezelt vagy az SQL Data Warehouse
 
 Ez a cikk bemutatja, létrehozása és feltöltése az Azure AD és az Azure AD az Azure SQL Database és az SQL Data Warehouse majd használni. Megtudhatja, [Azure Active Directory-hitelesítéssel](sql-database-aad-authentication.md).
 
@@ -47,22 +43,74 @@ Az Azure Active Directoryval a georeplikációt, amikor az Azure Active Director
 > A felhasználók, amelyek nem az Azure AD-fiókot (beleértve az Azure SQL server rendszergazdai fiók) alapuló, az Azure AD-alapú felhasználók nem hozható létre, mert nem rendelkeznek engedéllyel az Azure AD-val javasolt adatbázis felhasználóinak.
 > 
 
-## <a name="provision-an-azure-active-directory-administrator-for-your-azure-sql-server"></a>Az Azure SQL server Azure Active Directory-rendszergazda kiépítése
+## <a name="provision-an-azure-active-directory-administrator-for-your-managed-instance"></a>Egy Azure Active Directory-rendszergazda a felügyelt példányhoz kiépítése
+
+> [!IMPORTANT]
+> Csak kövesse az alábbi lépéseket, ha egy felügyelt példány kiépíteni. Ez a művelet csak globális vagy vállalati rendszergazda hajtható végre, az Azure ad-ben. Következő lépések azt mutatják be, a folyamat a címtárban különböző jogokkal rendelkező felhasználók engedélyeket ad.
+
+A felügyelt példányát kell az Azure AD-be sikeresen végrehajtani a feladatokat, például a felhasználók, biztonsági csoporttagság hitelesítést és az új felhasználók létrehozását a jogosultságok. Ennek működéséhez felügyelt-példány, olvassa el az Azure AD hozzáférési jogot kell. Kétféleképpen teheti meg: a portál és a PowerShell. A következő lépések mindkét módszer.
+
+1. Az Azure portálon, a jobb felső sarokban kattintson a legördülő listán lehetséges aktív könyvtárainak listáját a kapcsolatot. 
+2. Válassza ki a megfelelő Active Directory az Azure AD alapértelmezés szerint. 
+
+   Ez a lépés hivatkozásokat tartalmaz az Active Directory meggyőződött arról, hogy, hogy ugyanahhoz az előfizetéshez nem használja mindkét felügyelt példánnyal társított előfizetés az Azure AD és a felügyelt példány.
+3. Navigáljon a felügyelt példányt, és adja meg, hogy az Azure AD-integrációhoz használni kívánt.
+
+   ![aad-ben](./media/sql-database-aad-authentication/aad.png)
+
+4.  Kattintson az Active Directory-rendszergazda lap fejléc. Ha van bejelentkezve globális vagy vállalati rendszergazdaként az Azure ad-ben, az Azure-portálon vagy a PowerShell használatával is elvégezhető.
+
+    ![Adja meg engedélyeket-portál](./media/sql-database-aad-authentication/grant-permissions.png)
+
+    ![engedélyek – powershell engedélyezése](./media/sql-database-aad-authentication/grant-permissions-powershell.png)
+    
+    Amellyel Ön bejelentkezett globális vagy vállalati rendszergazdaként az Azure AD, ha erre az Azure-portálon, vagy egy PowerShell-parancsfájlt.
+
+5. A művelet sikeres befejezése után következő értesítés fog megjelenni jobb felső sarokban található:
+
+    ![sikeres](./media/sql-database-aad-authentication/success.png)
+
+6.  Most választhatja ki a felügyelt példányát az Azure AD-rendszergazda. Az adott, az Active Directory rendszergazdai lapján kattintson a **-rendszergazda beállítása** parancsot.
+
+    ![set-admin](./media/sql-database-aad-authentication/set-admin.png)
+
+7. A Hozzáadás rendszergazda lapján keresse meg a felhasználót, válassza a rendszergazda felhasználót vagy csoportot, és kattintson **válasszon**. 
+
+   Az Active Directory-rendszergazda lap minden tagok és Active Directory-csoport jeleníti meg. Felhasználók vagy csoportok használhatók, nem állítható be, mert nem támogatják az Azure AD rendszergazdai szerepkörrel. A támogatott rendszergazdák listájának [az Azure AD-funkciókat és korlátozások](sql-database-aad-authentication.md#azure-ad-features-and-limitations). Szerepköralapú hozzáférés-vezérlést (RBAC) csak azokra az Azure-portálon, és az SQL Server nem propagálja.
+
+    ![-rendszergazda](./media/sql-database-aad-authentication/add-admin.png)
+
+8. Az Active Directory-rendszergazda lap tetején kattintson **mentése**.
+
+    ![mentés](./media/sql-database-aad-authentication/save.png)
+
+    A rendszergazda folyamatát több percig is eltarthat. Az új rendszergazda ezután az Active Directory felügyeleti mezőjében jelenik meg.
+
+> [!IMPORTANT]
+> Az Azure AD admin beállításakor az új felügyeleti neve (felhasználó vagy csoport) nem már megtalálható a virtuális master adatbázis SQL Server hitelesítési felhasználóként. Ha van ilyen, az Azure AD rendszergazdai telepítés sikertelen lesz, és visszaállítása a létrehozása, amely jelzi, hogy az ilyen rendszergazda (név) már létezik. Mivel az ilyen egy SQL Server-hitelesítés felhasználó nem része az Azure AD, bármely annak érdekében, hogy csatlakozzon a kiszolgálóhoz, az Azure AD-hitelesítéssel sikertelen lesz.
+
+> [!TIP]
+> Később rendszergazdája, az Active Directory-rendszergazda lap tetején kattintson **távolítsa el a felügyeleti**, és kattintson a **mentése**.
+ 
+## <a name="provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server"></a>Az Azure SQL Database-kiszolgálóhoz Azure Active Directory-rendszergazda kiépítése
+
+> [!IMPORTANT]
+> Csak kövesse az alábbi lépéseket, ha az Azure SQL Database-kiszolgálóhoz vagy a Data Warehouse kiépíteni.
 
 Az alábbi két módszer megjelenítése kiépítése az Azure portálon, és a PowerShell használatával az Azure SQL server Azure Active Directory-rendszergazda.
 
 ### <a name="azure-portal"></a>Azure Portal
 1. Az a [Azure-portálon](https://portal.azure.com/), jobb felső sarokban, kattintson a legördülő listán lehetséges aktív könyvtárainak listáját a kapcsolatot. Válassza ki a megfelelő Active Directory az Azure AD alapértelmezés szerint. Ez a lépés az előfizetés társítását, és az Active Directory kapcsolatokhoz meggyőződött arról, hogy, hogy ugyanahhoz az előfizetéshez nem használja mindkét Azure SQL server az Azure AD és az SQL Server. (Az Azure SQL-kiszolgáló is szolgáltató vagy az Azure SQL Database vagy az Azure SQL Data Warehouse.)   
-    ![Válasszon ad][8]   
+    ![choose-ad][8]   
     
-2. Válassza ki a bal oldali szalagcím **SQL Server-kiszolgálók**, jelölje be a **SQL server**, majd a a **SQL Server** panelen kattintson **Active Directory-rendszergazda**.   
-3. Az a **Active Directory-rendszergazda** panelen kattintson a **-rendszergazda beállítása**.   
+2. Válassza ki a bal oldali szalagcím **SQL Server-kiszolgálók**, jelölje be a **SQL server**, majd a a **SQL Server** lapján kattintson **Active Directory-rendszergazda**.   
+3. Az a **Active Directory-rendszergazda** kattintson **-rendszergazda beállítása**.   
     ![az active directory kiválasztása](./media/sql-database-aad-authentication/select-active-directory.png)  
     
-4. Az a **adja hozzá a rendszergazda** panelen keresse meg a felhasználót, válassza ki a felhasználó vagy csoport rendszergazdának lennie, és kattintson a **válasszon**. (Az Active Directory felügyeleti panelt jeleníti meg minden tagok és Active Directory-csoport. Felhasználók vagy csoportok használhatók, nem állítható be, mert nem támogatják az Azure AD rendszergazdai szerepkörrel. (Lásd a támogatott rendszergazdái a **az Azure AD-funkciókat és korlátozások** szakasza [Azure Active Directory hitelesítés használata a hitelesítés és az SQL Database vagy az SQL Data Warehouse](sql-database-aad-authentication.md).) Szerepköralapú hozzáférés-vezérlést (RBAC) csak a portál vonatkozik, és az SQL Server nem propagálja.   
+4. Az a **adja hozzá a rendszergazda** lapon, keresse meg a felhasználó, válassza ki a felhasználó vagy csoport minden rendszergazda, és kattintson **válasszon**. (Az Active Directory felügyeleti lapon látható minden tagok és Active Directory-csoport. Felhasználók vagy csoportok használhatók, nem állítható be, mert nem támogatják az Azure AD rendszergazdai szerepkörrel. (Lásd a támogatott rendszergazdái a **az Azure AD-funkciókat és korlátozások** szakasza [Azure Active Directory hitelesítés használata a hitelesítés és az SQL Database vagy az SQL Data Warehouse](sql-database-aad-authentication.md).) Szerepköralapú hozzáférés-vezérlést (RBAC) csak a portál vonatkozik, és az SQL Server nem propagálja.   
     ![Válassza ki a rendszergazda](./media/sql-database-aad-authentication/select-admin.png)  
     
-5. Felső részén a **Active Directory-rendszergazda** panelen kattintson a **mentése**.   
+5. Felső részén a **Active Directory-rendszergazda** kattintson **mentése**.   
     ![Mentse admin](./media/sql-database-aad-authentication/save-admin.png)   
 
 A rendszergazda folyamatát több percig is eltarthat. Ezt követően megjelenik az új rendszergazda a **Active Directory-rendszergazda** mezőbe.
@@ -72,7 +120,7 @@ A rendszergazda folyamatát több percig is eltarthat. Ezt követően megjelenik
    > 
 
 
-Később eltávolítja a rendszergazda tetején a **Active Directory-rendszergazda** panelen kattintson a **távolítsa el a felügyeleti**, és kattintson a **mentése**.
+Később eltávolítja a rendszergazda tetején a **Active Directory-rendszergazda** kattintson **távolítsa el a felügyeleti**, és kattintson a **mentése**.
 
 ### <a name="powershell"></a>PowerShell
 PowerShell-parancsmagok futtatásához szükség van telepítve és fut az Azure PowerShell. Részletes információk: [Az Azure PowerShell telepítése és konfigurálása](/powershell/azure/overview).
@@ -80,7 +128,7 @@ PowerShell-parancsmagok futtatásához szükség van telepítve és fut az Azure
 Az Azure AD rendszergazdai kiépíthetők, hajtsa végre a következő Azure PowerShell-parancsokat:
 
 * Add-AzureRmAccount
-* SELECT-AzureRmSubscription
+* Select-AzureRmSubscription
 
 Parancsmagok segítségével telepíteni és kezelni a Azure AD rendszergazdai:
 
@@ -90,7 +138,7 @@ Parancsmagok segítségével telepíteni és kezelni a Azure AD rendszergazdai:
 | [Remove-AzureRmSqlServerActiveDirectoryAdministrator](/powershell/module/azurerm.sql/remove-azurermsqlserveractivedirectoryadministrator) |Eltávolítja az Azure Active Directory-rendszergazda Azure SQL server vagy az Azure SQL Data warehouse-bA. |
 | [Get-AzureRmSqlServerActiveDirectoryAdministrator](/powershell/module/azurerm.sql/get-azurermsqlserveractivedirectoryadministrator) |Egy Azure Active Directory-rendszergazda az Azure SQL server vagy az Azure SQL Data Warehouse jelenleg konfigurált információt ad vissza. |
 
-További részleteket az egyes parancsok, például a get-help PowerShell parancs segítségével ``get-help Set-AzureRmSqlServerActiveDirectoryAdministrator``.
+További információ az egyes parancsok, például a get-help PowerShell parancs segítségével ``get-help Set-AzureRmSqlServerActiveDirectoryAdministrator``.
 
 Az alábbi parancsfájl egy Azure AD felügyeleti csoport neve rendelkezések **DBA_Group** (objektumazonosító: `40b79501-b343-44ed-9ce7-da4c8cc7353f`) számára a **demo_server** server nevű erőforráscsoportban **csoport – 23**:
 

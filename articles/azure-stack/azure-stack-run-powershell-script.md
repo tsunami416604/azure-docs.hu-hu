@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 12/15/2017
+ms.date: 02/27/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: 470a45aea253e1e238983527427b600117e413fe
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: 6a5912117a475c7af028f01ea47a7042677992ca
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="deploy-the-azure-stack-development-kit"></a>Az Azure verem szoftverfejlesztői készlet telepítése
 
@@ -70,6 +70,7 @@ A ASDK az állomáson telepítése előtt elő kell készíteni a ASDK környeze
 3. Futtassa a következő parancsfájlt a development kit telepítőfájl (asdk-installer.ps1) töltheti le a [Azure verem GitHub-eszközök adattár](https://github.com/Azure/AzureStack-Tools) számára a **C:\AzureStack_Installer** mappájában található a fejlesztői csomag gazdaszámítógépen:
 
   ```powershell
+  [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12 
   # Variables
   $Uri = 'https://raw.githubusercontent.com/Azure/AzureStack-Tools/master/Deployment/asdk-installer.ps1'
   $LocalPath = 'C:\AzureStack_Installer'
@@ -227,7 +228,7 @@ Ha a környezet **nem** van DHCP engedélyezve van, akkor meg kell adni a követ
 |NatIPv4Address|A DHCP hálózati Címfordítás támogatása szükséges|Egy statikus IP-cím beállítása MAS-BGPNAT01. Csak akkor használja ezt a paramétert, ha a DHCP nem tud érvényes IP-címet rendelni az internet eléréséhez.|
 |NatIPv4Subnet|A DHCP hálózati Címfordítás támogatása szükséges|NAT-támogatás a DHCP használt IP-alhálózat előtag. Csak akkor használja ezt a paramétert, ha a DHCP nem tud érvényes IP-címet rendelni az internet eléréséhez.|
 |PublicVlanId|Optional|Beállítja a VLAN-azonosítót. Csak akkor használja ezt a paramétert, ha a gazdagép és a MAS-BGPNAT01 konfigurálnia kell a VLAN-Azonosítót a fizikai hálózaton (és az Internet) elérésére. Például.\InstallAzureStackPOC.ps1-Verbose - PublicVLan 305|
-|Futtassa újra a műveletet|Optional|Ez a jelző használatával futtassa újra a központi telepítés. Minden korábbi bevitel szolgál. Korábban megadott újbóli belépés adatokat nem támogatott, mert több egyedi értékek jön létre, és használni a központi telepítéshez.|
+|Újrafuttatás|Optional|Ez a jelző használatával futtassa újra a központi telepítés. Minden korábbi bevitel szolgál. Korábban megadott újbóli belépés adatokat nem támogatott, mert több egyedi értékek jön létre, és használni a központi telepítéshez.|
 
 ## <a name="activate-the-administrator-and-tenant-portals"></a>A rendszergazda és bérlői portálon aktiválása
 Után használó központi telepítések az Azure AD aktiválnia kell mindkét az Azure verem rendszergazda és bérlői portálon. Az aktiválás hozzájárul a verem Azure portál és az Azure Resource Manager a megfelelő engedélyeket ad (a hozzájárulási oldalon felsorolt) az összes felhasználó számára a könyvtár.
@@ -257,7 +258,7 @@ Set-ADDefaultDomainPasswordPolicy -MaxPasswordAge 180.00:00:00 -Identity azurest
 5. Az a **jelszó maximális élettartama tulajdonságok** párbeszédpanelen módosítsa a **a jelszó lejár** 180 értékét, majd kattintson az **OK**.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Csatlakozás az Azure Stackhez](azure-stack-connect-azure-stack.md)
 

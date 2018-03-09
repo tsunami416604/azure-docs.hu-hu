@@ -7,13 +7,13 @@ author: rajani-janaki-ram
 manager: gauravd
 ms.service: site-recovery
 ms.topic: article
-ms.date: 02/27/2017
+ms.date: 03/05/2017
 ms.author: rajanaki
-ms.openlocfilehash: 9b1156884a78eb7d68dc9680765b3c1436c0606a
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 1c54ae96273880caede1f50f3a0705c41f15f26e
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="troubleshoot-failback-from-azure-to-vmware"></a>A feladat-visszavétel az Azure-ból VMware hibaelhárítása
 
@@ -61,8 +61,8 @@ A állítsa át a virtuális gép egy sikertelen, az Azure virtuális gép futni
 ### <a name="error-code-8061"></a>8061. Hibakód:
 
 **Az adattároló nem érhető el az ESXi-állomáson.**
-
-Ellenőrizze a [fő cél Előfeltételek](site-recovery-how-to-reprotect.md#common-things-to-check-after-completing-installation-of-the-master-target-server) és a [datastores támogatott](site-recovery-how-to-reprotect.md#what-datastore-types-are-supported-on-the-on-premises-esxi-host-during-failback) feladat-visszavételre.
+ 
+Ellenőrizze a [fő cél Előfeltételek és a támogatott adattárolókhoz](vmware-azure-reprotect.md#deploy-a-separate-master-target-server) feladat-visszavételre.
 
 
 ## <a name="troubleshoot-failback-errors"></a>Feladat-visszavétel hibák elhárítása

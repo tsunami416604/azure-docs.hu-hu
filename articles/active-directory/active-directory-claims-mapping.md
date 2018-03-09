@@ -11,11 +11,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/14/2017
 ms.author: billmath
-ms.openlocfilehash: 1bc669dfa5a41e38b35751af62560ff650575a08
-ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
+ms.openlocfilehash: b0dae074734b13046fb0d90e178e05f81399b5c6
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="claims-mapping-in-azure-active-directory-public-preview"></a>A jogcímek hozzárendelése az Azure Active Directoryban (nyilvános előzetes verzió)
 
@@ -30,7 +30,7 @@ Ez a szolgáltatás-k segítségével Bérlői rendszergazda testre szabhatja a 
 - Válassza ki, vagy módosítsa az adott jogcímek kibocsátott adatainak forrását.
 
 >[!NOTE]
->Ez a funkció jelenleg nyilvános előzetes verziójához. Készüljön visszaállítja, vagy távolítsa el a módosításokat. A szolgáltatás bármely Azure Active Directory (Azure AD) előfizetés nyilvános előzetes érhető el. Amikor a szolgáltatás általánosan elérhetővé válik, azonban a funkció az egyes funkcióit szükség lehet az Azure Active Directory premium előfizetéssel.
+>Ez a funkció jelenleg nyilvános előzetes verziójához. Készüljön visszaállítja, vagy távolítsa el a módosításokat. A szolgáltatás bármely Azure Active Directory (Azure AD) előfizetés nyilvános előzetes érhető el. Amikor a szolgáltatás általánosan elérhetővé válik, azonban a funkció az egyes funkcióit szükség lehet az Azure Active Directory premium előfizetéssel. Ez a szolgáltatás konfigurálása jogcímek leképezési házirendek WS-Fed, a SAML-alapú, az OAuth és a OpenID Connect protokollt támogatja.
 
 ## <a name="claims-mapping-policy-type"></a>A jogcímek leképezési házirend típusa
 Az Azure AD egy **házirend** objektum által jelképezett szabályok lépnek érvénybe, az egyes alkalmazások vagy a szervezeten belüli összes alkalmazást. Mindegyik házirendtípusnál struktúrája egy egyedi, majd alkalmazott, amelyhez hozzá vannak rendelve objektumok tulajdonságainak vannak beállítva.
@@ -61,15 +61,15 @@ Korlátozott jogcímek házirend használatával nem módosítható. Az adatforr
 |actortoken|
 |aio|
 |altsecid|
-|AMR|
+|amr|
 |app_chain|
 |app_displayname|
 |app_res|
 |appctx|
 |appctxsender|
-|alkalmazásazonosító|
+|appid|
 |appidacr|
-|helyességi feltétel|
+|assertion|
 |at_hash|
 |és|
 |auth_data|
@@ -79,12 +79,12 @@ Korlátozott jogcímek házirend használatával nem módosítható. Az adatforr
 |azpacr|
 |c_hash|
 |ca_enf|
-|Másolatot kap|
+|cc|
 |cert_token_use|
 |client_id|
 |cloud_graph_host_name|
 |cloud_instance_name|
-|használható cnf paraméterrel|
+|cnf|
 |Kód|
 |vezérlők|
 |credential_keys|
@@ -107,13 +107,13 @@ Korlátozott jogcímek házirend használatával nem módosítható. Az adatforr
 |hasgroups|
 |hash_alg|
 |home_oid|
-|http://schemas.microsoft.com/ws/2008/06/Identity/Claims/AuthenticationInstant|
-|http://schemas.microsoft.com/ws/2008/06/Identity/Claims/AuthenticationMethod|
-|http://schemas.microsoft.com/ws/2008/06/Identity/Claims/Expiration|
-|http://schemas.microsoft.com/ws/2008/06/Identity/Claims/Expired|
-|http://schemas.xmlsoap.org/ws/2005/05/Identity/Claims/emailaddress|
-|http://schemas.xmlsoap.org/ws/2005/05/Identity/Claims/Name|
-|http://schemas.xmlsoap.org/ws/2005/05/Identity/Claims/NameIdentifier|
+|http://schemas.microsoft.com/ws/2008/06/identity/claims/authenticationinstant|
+|http://schemas.microsoft.com/ws/2008/06/identity/claims/authenticationmethod|
+|http://schemas.microsoft.com/ws/2008/06/identity/claims/expiration|
+|http://schemas.microsoft.com/ws/2008/06/identity/claims/expired|
+|http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress|
+|http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name|
+|http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier|
 |IAT|
 |identityprovider|
 |IDP|
@@ -132,10 +132,10 @@ Korlátozott jogcímek házirend használatával nem módosítható. Az adatforr
 |mdm_enrollment_url|
 |mdm_terms_of_use_url|
 |nameid|
-|NBF|
+|nbf|
 |netbios_name|
 |Nonce|
-|OID|
+|oid|
 |on_prem_id|
 |onprem_sam_account_name|
 |onprem_sid|
@@ -158,7 +158,7 @@ Korlátozott jogcímek házirend használatával nem módosítható. Az adatforr
 |szerepkör|
 |roles|
 |Hatókör|
-|Szolgáltatáskapcsolódási pont|
+|scp|
 |biztonsági azonosító|
 |Aláírás|
 |signin_state|
@@ -186,52 +186,52 @@ Korlátozott jogcímek házirend használatával nem módosítható. Az adatforr
 #### <a name="table-2-security-assertion-markup-language-saml-restricted-claim-set"></a>2. táblázat: Security Assertion Markup Language (SAML) korlátozott jogcímek készletéhez
 |Jogcím típusa (URI)|
 | ----- |
-|http://schemas.microsoft.com/ws/2008/06/Identity/Claims/Expiration|
-|http://schemas.microsoft.com/ws/2008/06/Identity/Claims/Expired|
-|http://schemas.microsoft.com/Identity/Claims/accesstoken|
-|http://schemas.microsoft.com/Identity/Claims/openid2_id|
-|http://schemas.microsoft.com/Identity/Claims/identityprovider|
-|http://schemas.microsoft.com/Identity/Claims/objectidentifier|
-|http://schemas.microsoft.com/Identity/Claims/PUID|
-|http://schemas.xmlsoap.org/ws/2005/05/Identity/Claims/NameIdentifier [MR1] |
-|http://schemas.microsoft.com/Identity/Claims/tenantid|
-|http://schemas.microsoft.com/ws/2008/06/Identity/Claims/AuthenticationInstant|
-|http://schemas.microsoft.com/ws/2008/06/Identity/Claims/AuthenticationMethod|
-|http://schemas.microsoft.com/accesscontrolservice/2010/07/Claims/identityprovider|
-|http://schemas.microsoft.com/ws/2008/06/Identity/Claims/groups|
-|http://schemas.microsoft.com/Claims/groups.Link|
-|http://schemas.microsoft.com/ws/2008/06/Identity/Claims/Role|
-|http://schemas.microsoft.com/ws/2008/06/Identity/Claims/wids|
-|http://schemas.microsoft.com/2014/09/devicecontext/Claims/iscompliant|
-|http://schemas.microsoft.com/2014/02/devicecontext/Claims/isknown|
-|http://schemas.microsoft.com/2012/01/devicecontext/Claims/ismanaged|
+|http://schemas.microsoft.com/ws/2008/06/identity/claims/expiration|
+|http://schemas.microsoft.com/ws/2008/06/identity/claims/expired|
+|http://schemas.microsoft.com/identity/claims/accesstoken|
+|http://schemas.microsoft.com/identity/claims/openid2_id|
+|http://schemas.microsoft.com/identity/claims/identityprovider|
+|http://schemas.microsoft.com/identity/claims/objectidentifier|
+|http://schemas.microsoft.com/identity/claims/puid|
+|http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier[MR1] |
+|http://schemas.microsoft.com/identity/claims/tenantid|
+|http://schemas.microsoft.com/ws/2008/06/identity/claims/authenticationinstant|
+|http://schemas.microsoft.com/ws/2008/06/identity/claims/authenticationmethod|
+|http://schemas.microsoft.com/accesscontrolservice/2010/07/claims/identityprovider|
+|http://schemas.microsoft.com/ws/2008/06/identity/claims/groups|
+|http://schemas.microsoft.com/claims/groups.link|
+|http://schemas.microsoft.com/ws/2008/06/identity/claims/role|
+|http://schemas.microsoft.com/ws/2008/06/identity/claims/wids|
+|http://schemas.microsoft.com/2014/09/devicecontext/claims/iscompliant|
+|http://schemas.microsoft.com/2014/02/devicecontext/claims/isknown|
+|http://schemas.microsoft.com/2012/01/devicecontext/claims/ismanaged|
 |http://schemas.microsoft.com/2014/03/psso|
-|http://schemas.microsoft.com/Claims/authnmethodsreferences|
-|http://schemas.xmlsoap.org/ws/2009/09/Identity/Claims/Actor|
-|http://schemas.microsoft.com/ws/2008/06/Identity/Claims/samlissuername|
-|http://schemas.microsoft.com/ws/2008/06/Identity/Claims/confirmationkey|
-|http://schemas.microsoft.com/ws/2008/06/Identity/Claims/windowsaccountname|
-|http://schemas.microsoft.com/ws/2008/06/Identity/Claims/primarygroupsid|
-|http://schemas.microsoft.com/ws/2008/06/Identity/Claims/primarysid|
-|http://schemas.xmlsoap.org/ws/2005/05/Identity/Claims/authorizationdecision|
-|http://schemas.xmlsoap.org/ws/2005/05/Identity/Claims/Authentication|
-|http://schemas.xmlsoap.org/ws/2005/05/Identity/Claims/SID|
-|http://schemas.microsoft.com/ws/2008/06/Identity/Claims/denyonlyprimarygroupsid|
-|http://schemas.microsoft.com/ws/2008/06/Identity/Claims/denyonlyprimarysid|
-|http://schemas.xmlsoap.org/ws/2005/05/Identity/Claims/denyonlysid|
-|http://schemas.microsoft.com/ws/2008/06/Identity/Claims/denyonlywindowsdevicegroup|
-|http://schemas.microsoft.com/ws/2008/06/Identity/Claims/windowsdeviceclaim|
-|http://schemas.microsoft.com/ws/2008/06/Identity/Claims/windowsdevicegroup|
-|http://schemas.microsoft.com/ws/2008/06/Identity/Claims/windowsfqbnversion|
-|http://schemas.microsoft.com/ws/2008/06/Identity/Claims/windowssubauthority|
-|http://schemas.microsoft.com/ws/2008/06/Identity/Claims/windowsuserclaim|
-|http://schemas.xmlsoap.org/ws/2005/05/Identity/Claims/x500distinguishedname|
-|http://schemas.xmlsoap.org/ws/2005/05/Identity/Claims/UPN|
-|http://schemas.microsoft.com/ws/2008/06/Identity/Claims/GroupSID|
-|http://schemas.xmlsoap.org/ws/2005/05/Identity/Claims/SPN|
-|http://schemas.microsoft.com/ws/2008/06/Identity/Claims/ispersistent|
-|http://schemas.xmlsoap.org/ws/2005/05/Identity/Claims/privatepersonalidentifier|
-|http://schemas.microsoft.com/Identity/Claims/scope|
+|http://schemas.microsoft.com/claims/authnmethodsreferences|
+|http://schemas.xmlsoap.org/ws/2009/09/identity/claims/actor|
+|http://schemas.microsoft.com/ws/2008/06/identity/claims/samlissuername|
+|http://schemas.microsoft.com/ws/2008/06/identity/claims/confirmationkey|
+|http://schemas.microsoft.com/ws/2008/06/identity/claims/windowsaccountname|
+|http://schemas.microsoft.com/ws/2008/06/identity/claims/primarygroupsid|
+|http://schemas.microsoft.com/ws/2008/06/identity/claims/primarysid|
+|http://schemas.xmlsoap.org/ws/2005/05/identity/claims/authorizationdecision|
+|http://schemas.xmlsoap.org/ws/2005/05/identity/claims/authentication|
+|http://schemas.xmlsoap.org/ws/2005/05/identity/claims/sid|
+|http://schemas.microsoft.com/ws/2008/06/identity/claims/denyonlyprimarygroupsid|
+|http://schemas.microsoft.com/ws/2008/06/identity/claims/denyonlyprimarysid|
+|http://schemas.xmlsoap.org/ws/2005/05/identity/claims/denyonlysid|
+|http://schemas.microsoft.com/ws/2008/06/identity/claims/denyonlywindowsdevicegroup|
+|http://schemas.microsoft.com/ws/2008/06/identity/claims/windowsdeviceclaim|
+|http://schemas.microsoft.com/ws/2008/06/identity/claims/windowsdevicegroup|
+|http://schemas.microsoft.com/ws/2008/06/identity/claims/windowsfqbnversion|
+|http://schemas.microsoft.com/ws/2008/06/identity/claims/windowssubauthority|
+|http://schemas.microsoft.com/ws/2008/06/identity/claims/windowsuserclaim|
+|http://schemas.xmlsoap.org/ws/2005/05/identity/claims/x500distinguishedname|
+|http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn|
+|http://schemas.microsoft.com/ws/2008/06/identity/claims/groupsid|
+|http://schemas.xmlsoap.org/ws/2005/05/identity/claims/spn|
+|http://schemas.microsoft.com/ws/2008/06/identity/claims/ispersistent|
+|http://schemas.xmlsoap.org/ws/2005/05/identity/claims/privatepersonalidentifier|
+|http://schemas.microsoft.com/identity/claims/scope|
 
 ## <a name="claims-mapping-policy-properties"></a>A jogcímek leképezési házirend tulajdonságai
 Egy házirend hozzárendelése a vezérlő melyik kibocsátott jogcímeket tulajdonságait, és ha az adatok származik. Ha nincs házirend van beállítva, a rendszer a core jogcímek készletében, az egyszerű jogcímek készletében és az alkalmazást úgy döntött, hogy fogadni választható jogcímeket tartalmazó jogkivonatokat állít ki.
@@ -283,7 +283,7 @@ Az "ID" elem. azonosítja, hogy melyik tulajdonság a forrás az értéket ad me
 |Forrás|ID (Azonosító)|Leírás|
 |-----|-----|-----|
 |Felhasználó|Vezetéknév|Család neve|
-|Felhasználó|givenName|Utónév|
+|Felhasználó|givenname|utónév;|
 |Felhasználó|DisplayName|Megjelenítendő név|
 |Felhasználó|objektumazonosító|ObjectID|
 |Felhasználó|mail|E-mail cím|
@@ -291,12 +291,12 @@ Az "ID" elem. azonosítja, hogy melyik tulajdonság a forrás az értéket ad me
 |Felhasználó|Szervezeti egység|Részleg|
 |Felhasználó|onpremisessamaccountname|A helyi Sam-fiók neve|
 |Felhasználó|netbiosname|NetBIOS-név|
-|Felhasználó|tartománynév|DNS-tartománynév|
+|Felhasználó|dnsdomainname|Dns Domain Name|
 |Felhasználó|onpremisesecurityidentifier|a helyi biztonsági azonosítója|
 |Felhasználó|Cégnév|Szervezet neve|
 |Felhasználó|streetAddress|Utca, házszám|
 |Felhasználó|Irányítószám|Postai irányítószám|
-|Felhasználó|preferredlanguange|Elsődleges nyelv|
+|Felhasználó|preferredlanguange|Választott nyelv|
 |Felhasználó|onpremisesuserprincipalname|a helyszíni egyszerű Felhasználónévvel|
 |Felhasználó|mailnickname|Mail becenév|
 |Felhasználó|extensionAttribute1|Mellék attribútum 1|
@@ -318,13 +318,13 @@ Az "ID" elem. azonosítja, hogy melyik tulajdonság a forrás az értéket ad me
 |Felhasználó|Ország|Ország|
 |Felhasználó|city|Város|
 |Felhasználó|state|Állapot|
-|Felhasználó|Beosztás|Beosztás|
+|Felhasználó|jobtitle|Beosztás|
 |Felhasználó|EmployeeID|Alkalmazott azonosítója|
 |Felhasználó|facsimiletelephonenumber|Fax Telefonszám|
 |alkalmazás, erőforrás, a célközönség|DisplayName|Megjelenítendő név|
 |alkalmazás, erőforrás, a célközönség|kifogásolt|ObjectID|
 |alkalmazás, erőforrás, a célközönség|tags|Szolgáltatás egyszerű címke|
-|Cég|tenantcountry|Bérlő ország|
+|Vállalat|tenantcountry|Bérlő ország|
 
 **TransformationID:** TransformationID elemhez meg kell adni, csak akkor, ha a forráselem "átalakítása" értékre van állítva.
 
@@ -338,7 +338,7 @@ Az "ID" elem. azonosítja, hogy melyik tulajdonság a forrás az értéket ad me
 >[!NOTE]
 >A jogcím típusa elemek nevét és a korlátozott jogcímek készletében lévő jogcímek URI-azonosítók nem használható. További információkért lásd: a "Kivételek és korlátozások" című szakaszban található ebben a cikkben.
 
-### <a name="claims-transformation"></a>Jogcím átalakítása
+### <a name="claims-transformation"></a>Claims transformation
 
 **Karakterlánc:** ClaimsTransformation
 

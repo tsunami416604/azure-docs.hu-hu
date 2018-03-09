@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/09/2017
 ms.author: glenga;david.ebbo;suwatch;pbatum;naren.soni
-ms.openlocfilehash: 91839d8f547340d55f6badb3350a393a48a13c7d
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 661bfadfe1094271ad2ab672ad3f755c0fd24f02
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="run-background-tasks-with-webjobs-in-azure-app-service"></a>Háttérfeladatok futtatása a webjobs-feladatok az Azure App Service-ben
 
@@ -36,7 +36,7 @@ Az Azure Functions egy másik megoldást programok és parancsfájlok futtatás�
 A következő táblázat ismerteti a közötti különbségeket *folyamatos* és *indított* webjobs-feladatok.
 
 
-|Folyamatos  |Elindítva  |
+|Folyamatos  |Triggerrel indított  |
 |---------|---------|
 | A webjobs-feladat létrehozása után azonnal elindul. Tartani a feladat befejezési, hogy a program vagy parancsfájl általában e ki végtelen ciklus belül teendőit. Ha a feladat befejezéséhez, újraindíthatja azt. | Csak akkor, amikor elindul a manuálisan vagy ütemezés szerint kezdődik. |
 | A webes alkalmazást futtató összes példánya fut. Opcionálisan korlátozhatja a webjobs-feladat egyetlen példányra. |Által a kijelölt Azure egyetlen példányán fut terheléselosztás.|
@@ -57,7 +57,7 @@ A következő fájltípusokat támogatja:
 * .js (Node.js segítségével)
 * a .JAR fájlt (a Java)
 
-## <a name="CreateContinuous"></a>Egy folyamatos webjobs-feladat létrehozása
+## <a name="CreateContinuous"></a> Egy folyamatos webjobs-feladat létrehozása
 
 <!-- 
 Several steps in the three "Create..." sections are identical; 
@@ -68,7 +68,7 @@ when making changes in one don't forget the other two.
 
 2. Válassza ki **WebJobs**.
 
-   ![Válassza ki a webjobs-feladatok](./media/web-sites-create-web-jobs/select-webjobs.png)
+   ![Select WebJobs](./media/web-sites-create-web-jobs/select-webjobs.png)
 
 2. Az a **WebJobs** lapon jelölje be **Hozzáadás**.
 
@@ -95,7 +95,7 @@ when making changes in one don't forget the other two.
 
     ![Egy folyamatos webjobs-feladat leállítása](./media/web-sites-create-web-jobs/continuousstop.png)
 
-## <a name="CreateOnDemand"></a>Manuálisan indított webjobs-feladat létrehozása
+## <a name="CreateOnDemand"></a> Manuálisan indított webjobs-feladat létrehozása
 
 <!-- 
 Several steps in the three "Create..." sections are identical; 
@@ -106,7 +106,7 @@ when making changes in one don't forget the other two.
 
 2. Válassza ki **WebJobs**.
 
-   ![Válassza ki a webjobs-feladatok](./media/web-sites-create-web-jobs/select-webjobs.png)
+   ![Select WebJobs](./media/web-sites-create-web-jobs/select-webjobs.png)
 
 2. Az a **WebJobs** lapon jelölje be **Hozzáadás**.
 
@@ -120,7 +120,7 @@ when making changes in one don't forget the other two.
    | ------------ | ----------------- | ------------ |
    | **Name (Név)** | myTriggeredWebJob | Egy App Service-alkalmazást belül egyedi neve. Betűvel vagy számmal kell kezdődnie, és nem tartalmazhat különleges karaktereket eltérő "-" és "_".|
    | **Fájl feltöltése** | ConsoleApp.zip | A *.zip* fájlt, amely a végrehajtható fájlt vagy parancsfájlt, valamint a program vagy parancsfájl futtatásához szükséges támogató fájlokat tartalmazza. A támogatott végrehajtható fájl vagy parancsfájl fájltípusokat jelennek meg a [támogatott fájltípusok](#acceptablefiles) szakasz. |
-   | **Típus** | Elindítva | A [webjobs-feladat típusok](#webjob-types) az ebben a cikkben leírt. |
+   | **Típus** | Triggerrel indított | A [webjobs-feladat típusok](#webjob-types) az ebben a cikkben leírt. |
    | **Eseményindítók** | Manuális | |
 
 4. Kattintson az **OK** gombra.
@@ -131,9 +131,9 @@ when making changes in one don't forget the other two.
 
 7. A webjobs-feladat futtatásához kattintson a jobb gombbal a nevét a listában, és kattintson a **futtatása**.
    
-    ![Webjobs-feladat futtatása](./media/web-sites-create-web-jobs/runondemand.png)
+    ![WebJobs-feladat futtatása](./media/web-sites-create-web-jobs/runondemand.png)
 
-## <a name="CreateScheduledCRON"></a>Ütemezett webjobs-feladat létrehozása
+## <a name="CreateScheduledCRON"></a> Ütemezett webjobs-feladat létrehozása
 
 <!-- 
 Several steps in the three "Create..." sections are identical; 
@@ -144,7 +144,7 @@ when making changes in one don't forget the other two.
 
 2. Válassza ki **WebJobs**.
 
-   ![Válassza ki a webjobs-feladatok](./media/web-sites-create-web-jobs/select-webjobs.png)
+   ![Select WebJobs](./media/web-sites-create-web-jobs/select-webjobs.png)
 
 2. Az a **WebJobs** lapon jelölje be **Hozzáadás**.
 
@@ -158,7 +158,7 @@ when making changes in one don't forget the other two.
    | ------------ | ----------------- | ------------ |
    | **Name (Név)** | myScheduledWebJob | Egy App Service-alkalmazást belül egyedi neve. Betűvel vagy számmal kell kezdődnie, és nem tartalmazhat különleges karaktereket eltérő "-" és "_". |
    | **Fájl feltöltése** | ConsoleApp.zip | A *.zip* fájlt, amely a végrehajtható fájlt vagy parancsfájlt, valamint a program vagy parancsfájl futtatásához szükséges támogató fájlokat tartalmazza. A támogatott végrehajtható fájl vagy parancsfájl fájltípusokat jelennek meg a [támogatott fájltípusok](#acceptablefiles) szakasz. |
-   | **Típus** | Elindítva | A [webjobs-feladat típusok](#webjob-types) az ebben a cikkben leírt. |
+   | **Típus** | Triggerrel indított | A [webjobs-feladat típusok](#webjob-types) az ebben a cikkben leírt. |
    | **Eseményindítók** | Ütemezett | Az ütemezést működik megbízhatóan, engedélyezze az Always On funkciót. Always On érhető kizárólag a Basic, Standard és prémium tarifacsomag szükséges.|
    | **CRON-kifejezés** | 0 0/20 * * * * | [CRON-kifejezés](#cron-expressions) a következő szakaszban ismertetjük. |
 
@@ -172,11 +172,11 @@ when making changes in one don't forget the other two.
 
 A [CRON-kifejezés](https://en.wikipedia.org/wiki/Cron) hat mezők tevődik össze: `{second} {minute} {hour} {day} {month} {day of the week}`.  Néhány példa:
 
-* 15 percenként:`0 */15 * * * *`
-* Minden órában (Ez azt jelenti, hogy mindig, amikor a perc száma 0):`0 0 * * * *` 
-* Minden órában a Reggel 9 a délután 5 óra:`0 0 9-17 * * *` 
-* A 9:30 AM minden nap:`0 30 9 * * *`
-* A 9:30 AM minden hétköznap:`0 30 9 * * 1-5`
+* 15 percenként: `0 */15 * * * *`
+* Minden órában (Ez azt jelenti, hogy mindig, amikor a perc száma 0): `0 0 * * * *` 
+* Minden órában a Reggel 9 a délután 5 óra: `0 0 9-17 * * *` 
+* A 9:30 AM minden nap: `0 30 9 * * *`
+* A 9:30 AM minden hétköznap: `0 30 9 * * 1-5`
 
 A CRON-kifejezés adja meg a portálon, vagy tartalmaznak egy `settings.job` fájl a webjobs-feladat gyökerében *.zip* fájlt, az alábbi példában látható módon:
 
@@ -189,7 +189,7 @@ A CRON-kifejezés adja meg a portálon, vagy tartalmaznak egy `settings.job` fá
 > [!NOTE]
 > A webjobs-feladat, a Visual Studio eszközből üzembe helyezésekor megjelölni a `settings.job` tulajdonságokat a fájl **másolhatja, ha újabb**.
 
-## <a name="ViewJobHistory"></a>A feladat előzményeinek megtekintése
+## <a name="ViewJobHistory"></a> A feladat előzményeinek megtekintése
 
 1. Válassza ki a webjobs-feladat előzményeinek megtekintéséhez, és válassza ki a kívánt a **naplók** gombra.
    
@@ -197,7 +197,7 @@ A CRON-kifejezés adja meg a portálon, vagy tartalmaznak egy `settings.job` fá
 
 2. Az a **webjobs-feladat részletei** lapon, válassza ki az egyik futtassa a részletes egyszerre.
    
-   ![Webjobs-feladat részletei](./media/web-sites-create-web-jobs/webjobdetails.png)
+   ![WebJob Details](./media/web-sites-create-web-jobs/webjobdetails.png)
 
 3. Az a **webjobs-feladat futtatása részletek** lapon jelölje be **váltása kimeneti** a naplók tartalmáról szöveg.
    
@@ -207,10 +207,10 @@ A CRON-kifejezés adja meg a portálon, vagy tartalmaznak egy `settings.job` fá
    
 5. Válassza ki a **WebJobs** navigációs hivatkozásra kattintva webjobs-feladatok listája a lap tetején.
 
-    ![Webjobs-feladat navigációs](./media/web-sites-create-web-jobs/breadcrumb.png)
+    ![WebJob breadcrumb](./media/web-sites-create-web-jobs/breadcrumb.png)
    
     ![Webjobs-feladatok előzményeinek irányítópulton listája](./media/web-sites-create-web-jobs/webjobslist.png)
    
 ## <a name="NextSteps"></a> Következő lépések
 
-Az Azure WebJobs SDK számos programozási feladatok egyszerűbbé teheti a webjobs-feladatok is használható. További információkért lásd: [Mi az a WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki).
+Az Azure WebJobs SDK számos programozási feladatok egyszerűbbé teheti a webjobs-feladatok is használható. További információkért lásd: [Mi az a WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki) és a [WebJobs SDK rövid összefoglaló](./media/web-sites-create-web-jobs/webjobs-sdk-quick-reference.png).

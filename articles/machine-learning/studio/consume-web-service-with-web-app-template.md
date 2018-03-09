@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.author: garye;raymondl
-ms.openlocfilehash: 93e75a2864d9aef266b16f8dd7dcc3411b24864b
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.author: raymondl
+ms.openlocfilehash: f7efa647fa6afc247509cd4a52066c0459f75ca3
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="consume-an-azure-machine-learning-web-service-by-using-a-web-app-template"></a>Használhat fel az Azure Machine Learning webszolgáltatás web app sablon segítségével
 
@@ -119,7 +119,7 @@ A bemeneti értékek egy kötegelt végrehajtási webszolgáltatáshoz Azure Sto
 
 A web app egy lapon feladat állapotát jeleníti meg. A feladat befejeződött, az eredményeket az Azure Blob storage helyének nyílik meg. Lehetősége is van, az eredményeket egy helyi fájl letöltése.
 
-## <a name="for-more-information"></a>További információ
+## <a name="for-more-information"></a>További tudnivalók
 További részletek:
 
 * Tekintse meg a Machine Learning Studio, a gépi tanulási kísérlet létrehozása [az első kísérlet létrehozása az Azure Machine Learning Studióban](create-experiment.md).

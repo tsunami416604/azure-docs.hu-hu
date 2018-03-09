@@ -15,17 +15,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/13/2017
 ms.author: iainfou
-ms.openlocfilehash: a37bfa01343527a60193d893c7913e4e9c50d210
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: ecd3a01ee5591cb09140edb1b1290ff2d4510200
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="how-to-create-and-use-an-ssh-public-and-private-key-pair-for-linux-vms-in-azure"></a>Nyilvános és titkos SSH-kulcspár létrehozása és használata az Azure-ban Linux rendszerű virtuális gépekhez
 Egy SSH-kulcspárral létrehozhat olyan virtuális gépeket az Azure-ban, amelyek SSH-kulcsokat használnak a hitelesítéshez, így nincs szükség jelszavakra a bejelentkezéshez. Ez a cikk bemutatja, hogyan hozhat létre gyorsan és hogyan használhat az SSH-protokoll 2. verziójára épülő nyilvános és titkosított RSA-kulcspárt a Linux rendszerű virtuális gépekhez. Ezeket a lépéseket Azure Cloud Shell használatával, macOS- vagy Linux-gazdagépen, illetve a Linux Windows alrendszerén is végrehajthatja. Részletes lépéseket és a további példákat az [SSH-kulcspárok és -tanúsítványok létrehozásának lépései](create-ssh-keys-detailed.md) között talál.
 
 ## <a name="create-an-ssh-key-pair"></a>SSH-kulcs létrehozása
-Használja az `ssh-keygen` parancsot nyilvános és titkos SSH-kulcs fájljainak létrehozására. Ezek a fájlok alapértelmezés szerint a `~/.ssh` könyvtárban jönnek létre, de megadhat más helyet és egy további hozzáférési kódot (a titkosított kulcsfájl eléréséhez), amikor a parancssori felület erre kéri. Futtassa a következő parancsot egy Bash-rendszerhéjból, és a kéréseket válaszolja meg saját adatainak megfelelően.
+Használja a `ssh-keygen` parancs SSH nyilvános és titkos kulcs-fájlok létrehozása, amelyek létrehozott alapértelmezés szerint a `~/.ssh` könyvtár. Megadhat egy másik helyet és további jelszót (a titkos kulcsfájl eléréséhez szükséges jelszót) Ha kéri. Egy SSH-kulcspár megtalálható az aktuális helyen, akkor a rendszer felülírja.
 
 ```bash
 ssh-keygen -t rsa -b 2048

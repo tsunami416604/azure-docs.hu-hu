@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: billgib; sstein
-ms.openlocfilehash: 90510520e5f6bbfa8aea4026d7437a4a4881984f
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 7747092d5613a40fa0aff09cfbdfb9b786b37954
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="set-up-and-use-log-analytics-oms-with-a-multi-tenant-azure-sql-database-saas-app"></a>Állítson be és Naplóelemzés (OMS) használja egy több-bérlős Azure SQL adatbázis SaaS-alkalmazáshoz
 
@@ -132,7 +132,7 @@ Az OMS-portálon ismerje meg a napló és a metrika adatok további a munkaterü
 
 A figyelés és riasztás Naplóelemzés és az OMS lekérdezéseken alapul az adatokat a munkaterületen eltérően a riasztási definiált az egyes erőforrások az Azure portálon keresztül. Riasztások sablon a lekérdezések, egy riasztást, amely felett az összes adatbázisra, nem pedig adatbázisonként definiáló egy definiálhat. A lekérdezéseket csak a munkaterületen elérhető adatok korlátozzák.
 
-További információ az OMS használatával lekérdezése, és állítson be riasztásokat, a megtekintéséhez [Naplóelemzési a riasztási szabályok használata](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-alerts-creating).
+További információ az OMS használatával lekérdezése, és állítson be riasztásokat, a megtekintéséhez [Naplóelemzési a riasztási szabályok használata](https://docs.microsoft.com/azure/log-analytics/log-analytics-alerts-creating).
 
 Az SQL Database-ben a Log Analytics díjszabása a munkaterületen található adatmennyiségtől függ. Ebben az oktatóanyagban létrehozott egy szabad munkaterület, amely korlátozódik 500 MB / nap. Felső határ elérésekor adatok nem kerülnek a munkaterületen.
 

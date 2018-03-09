@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/06/2017
 ms.author: glenga
-ms.openlocfilehash: ec9258a123774607ffee8705a1bc5391525567f5
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 26df11bb010414ba979077c45d01e66f17f6b12e
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="azure-functions-tools-for-visual-studio"></a>Az Azure Functions Tools for Visual Studio  
 
@@ -46,20 +46,21 @@ Hozzon létre, és funkciók telepítése, akkor is szüksége lesz:
 
 * Aktív Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, [fiókok szabad](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) érhetők el.
 
-* Egy Azure Storage-fiókot. A storage-fiók létrehozásához lásd: [hozzon létre egy tárfiókot](../storage/common/storage-create-storage-account.md#create-a-storage-account).
+* Egy Azure Storage-fiók. A storage-fiók létrehozásához lásd: [hozzon létre egy tárfiókot](../storage/common/storage-create-storage-account.md#create-a-storage-account).
 
 ## <a name="create-an-azure-functions-project"></a>Az Azure Functions projekt létrehozása 
 
 [!INCLUDE [Create a project using the Azure Functions](../../includes/functions-vstools-create.md)]
 
-
-## <a name="configure-the-project-for-local-development"></a>A helyi fejlesztési projekt konfigurálása
-
-Amikor létrehoz egy új projektet az Azure Functions sablonnal, kap egy üres C# projekt, amely a következő fájlokat tartalmazza:
+A projekt sablont hoz létre egy C#-projektet, telepíti a `Microsoft.NET.Sdk.Functions` NuGet-csomagot, és beállítja a megcélzott keretrendszer. 1.x célokat a .NET-keretrendszer működik, és a 2.x célok .NET-szabvány funkciókkal. Az új projektbe futnak a következő fájlokat tartalmazza:
 
 * **Host.JSON**: lehetővé teszi a funkciók gazdagép konfigurálását. Ezeket a beállításokat is alkalmazza, ha fut a helyi és az Azure-ban is. További információkért lásd: [host.json hivatkozás](functions-host-json.md).
     
 * **Local.Settings.JSON**: funkciók a helyi futtatás során használt beállításokat tárolja. Ezek a beállítások nem használhatók az Azure-ban, azokat a [Azure Functions Core eszközök](functions-run-local.md). Ez a fájl használatával adja meg a beállításokat, például más Azure-szolgáltatásokhoz való kapcsolódási karakterláncokat. Adja hozzá egy új kulccsal, hogy a **értékek** tömb minden egyes funkciók a projekt által igényelt kapcsolathoz. További információkért lásd: [helyi beállításfájl](functions-run-local.md#local-settings-file) az Azure Functions Core eszközök a témakörben.
+
+További információkért lásd: [Functions hordozhatóosztálytár-projektjének](functions-dotnet-class-library.md#functions-class-library-project).
+
+## <a name="configure-the-project-for-local-development"></a>A helyi fejlesztési projekt konfigurálása
 
 A Functions futtatókörnyezete belső egy Azure Storage-fiókot használja. Összes indítás típusú HTTP- és webhookokkal, be kell állítani a **Values.AzureWebJobsStorage** kulcs egy érvényes Azure Storage-fiók kapcsolati karakterláncot. 
 
@@ -147,5 +148,6 @@ Alkalmazásbeállítások ezeket más módon is kezelheti:
 
 További információ az Azure Functions eszközök című rész a gyakori kérdéseket a [Azure Functions Visual Studio 2017 eszközök](https://blogs.msdn.microsoft.com/webdev/2017/05/10/azure-function-tools-for-visual-studio-2017/) blogbejegyzést.
 
-Az Azure Functions alapvető eszközökkel kapcsolatos további tudnivalókért lásd: [kódot és az Azure functions helyi tesztelése](functions-run-local.md).  
+Az Azure Functions alapvető eszközökkel kapcsolatos további tudnivalókért lásd: [kódot és az Azure functions helyi tesztelése](functions-run-local.md).
+
 Alkalmazás feladatok fejlesztésével kapcsolatos további tudnivalókért lásd: [Azure Functions C# fejlesztői leírás](functions-dotnet-class-library.md). A témakör hivatkozásokat is tartalmaz példákat attribútumok használata a különféle az Azure Functions által támogatott kötések deklarálnia.    

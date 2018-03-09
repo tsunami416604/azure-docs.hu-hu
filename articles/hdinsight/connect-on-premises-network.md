@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 02/23/2018
 ms.author: larryfr
-ms.openlocfilehash: 03214f25858ae340908a1d1b7f3ff7f62d545dc9
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 9470e052b4f57e52fa140b53fa7c32d199c58e1e
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="connect-hdinsight-to-your-on-premise-network"></a>HDInsight csatlakozni a helyi hálózatra
 
@@ -273,13 +273,13 @@ Hálózati biztonsági csoportokkal (NSG) vagy a felhasználó által definiált
 
 > [!WARNING]
 > HDInsight Azure felhőben adott IP-címekről érkező bejövő hozzáférést, és korlátlan kimenő hozzáférést igényel. Ha az NSG-k vagy udr-EK segítségével szabályozza a forgalmat, a következő lépésekkel kell meg:
->
-> 1. Az IP-címek keresése, amely tartalmazza a virtuális hálózat helyét. Hely szerint szükséges IP-címek listáját lásd: [szükséges IP-címek](./hdinsight-extend-hadoop-virtual-network.md#hdinsight-ip).
->
-> 2. Az IP-címekről érkező bejövő forgalom engedélyezése.
->
->    * __NSG__: engedélyezése __bejövő__ porton forgalom __443-as__ a a __Internet__.
->    * __UDR__: állítsa be a __következő ugrásaként__ az útvonal típusú __Internet__.
+
+1. Az IP-címek keresése, amely tartalmazza a virtuális hálózat helyét. Hely szerint szükséges IP-címek listáját lásd: [szükséges IP-címek](./hdinsight-extend-hadoop-virtual-network.md#hdinsight-ip).
+
+2. Az 1. lépésben azonosított IP-címek, a bejövő forgalom engedélyezése, hogy az IP-címről címek.
+
+   * Ha használ __NSG__: engedélyezése __bejövő__ porton forgalom __443-as__ az IP-címek.
+   * Használata __UDR__: állítsa be a __következő ugrásaként__ az útvonal típusú __Internet__ az IP-címek.
 
 Az NSG-k létrehozásához Azure PowerShell vagy az Azure parancssori felület használatának példája, tekintse meg a [kiterjesztése HDInsight az Azure virtuális hálózatokkal](./hdinsight-extend-hadoop-virtual-network.md#hdinsight-nsg) dokumentum.
 

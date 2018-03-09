@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2018
 ms.author: billgib
-ms.openlocfilehash: a13eeb79320360da078ee19a61cc32a2e1f35354
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: dd43ede94d6f219f3b551091fc6e4b59f56386d1
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="provision-and-catalog-new-tenants-using-the--application-per-tenant-saas-pattern"></a>A Szolgáltatottszoftver-mintát bérlőnként alkalmazással biztosítása és a katalógus új bérlők
 
@@ -31,7 +31,7 @@ Ez a cikk két fő részből áll:
     * Az oktatóprogram a Wingtip jegyek minta SaaS-alkalmazáshoz, az önálló app típusú bérlői mintában igazodó.
 
 ## <a name="standalone-application-per-tenant-pattern"></a>Bérlői minta egy önálló alkalmazás
-Az önálló app típusú bérlői mintában a több-bérlős SaaS-alkalmazásokhoz több mintái egyike.  Ebben a mintában egy különálló alkalmazás ki van építve, az egyes bérlők számára. Az alkalmazás alkalmazás-szintű összetevők és az SQL-adatbázis foglalja magában.  Minden bérlő alkalmazás gyártója által biztosított előfizetés is telepíthető.  Másik lehetőségként az Azure kínál a [kezelt alkalmazások program](https://docs.microsoft.com/en-us/azure/managed-applications/overview) alkalmazás is lehet üzembe helyezett egy bérlői előfizetéshez és a bérlői nevében a szállító által felügyelt. 
+Az önálló app típusú bérlői mintában a több-bérlős SaaS-alkalmazásokhoz több mintái egyike.  Ebben a mintában egy különálló alkalmazás ki van építve, az egyes bérlők számára. Az alkalmazás alkalmazás-szintű összetevők és az SQL-adatbázis foglalja magában.  Minden bérlő alkalmazás gyártója által biztosított előfizetés is telepíthető.  Másik lehetőségként az Azure kínál a [kezelt alkalmazások program](https://docs.microsoft.com/azure/managed-applications/overview) alkalmazás is lehet üzembe helyezett egy bérlői előfizetéshez és a bérlői nevében a szállító által felügyelt. 
 
    ![alkalmazás / bérlői minta](media/saas-standaloneapp-provision-and-catalog/standalone-app-pattern.png)
 
@@ -45,7 +45,7 @@ Míg a bérlő az alkalmazás- és teljesen elkülönített, különböző felü
 A bérlői katalógus tárolja a bérlő azonosítója és a bérlői adatbázist, így lesz hozzárendelve a kiszolgáló és az adatbázis nevét azonosítót közötti leképezést.  A Wingtip SaaS-alkalmazás a bérlő azonosítója számítja ki, hogy egy kivonatot bérlőjének a nevével, bár egyéb rendszerek is használható.  Önálló alkalmazások nincs szüksége a katalógus használatával kezelheti a kapcsolatokat, amíg a katalógus más műveletek bérlői adatbázisok készleteit hatókörének használható. Például rugalmas lekérdezés segítségével a katalógus-adatbázisok között, amelyek lekérdezéseket küld a jelentési kereszt-bérlő meg.
 
 ## <a name="elastic-database-client-library"></a>Elastic Database-kezelési klienskódtár
-A Wingtip mintaalkalmazást a katalógus megvalósítja a shard kezelési funkciókat a [Elastic Database ügyféloldali kódtár](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-elastic-database-client-library) (EDCL).  A könyvtár lehetővé teszi az alkalmazás létrehozására, kezelésére és használja a-adatbázisban tárolt shard leképezését. A Wingtip jegyek mintában a katalógus tárolja a *bérlői katalógus* adatbázis.  A szilánkok a bérlőkulcsát, hogy a shard (adatbázis) szolgáltatástérképek adott bérlői adatokat tárolja.  EDCL funkciók kezelése egy *globális shard térkép* a táblákban tárolt a *bérlői katalógus* adatbázis és a *helyi shard térkép* minden shard tárolja.
+A Wingtip mintaalkalmazást a katalógus megvalósítja a shard kezelési funkciókat a [Elastic Database ügyféloldali kódtár](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-database-client-library) (EDCL).  A könyvtár lehetővé teszi az alkalmazás létrehozására, kezelésére és használja a-adatbázisban tárolt shard leképezését. A Wingtip jegyek mintában a katalógus tárolja a *bérlői katalógus* adatbázis.  A szilánkok a bérlőkulcsát, hogy a shard (adatbázis) szolgáltatástérképek adott bérlői adatokat tárolja.  EDCL funkciók kezelése egy *globális shard térkép* a táblákban tárolt a *bérlői katalógus* adatbázis és a *helyi shard térkép* minden shard tárolja.
 
 EDCL függvények hívhatók alkalmazások vagy a PowerShell-parancsfájlok létrehozását és kezelését a shard térkép bejegyzései. Más EDCL funkciók segítségével kéri le a szilánkok készletét, vagy a megfelelő adatbázishoz csatlakozni, a megadott bérlőkulcs. 
     
@@ -69,7 +69,7 @@ Ez az oktatóanyag végén önálló bérlői alkalmazások, amelynek az egyes a
 ## <a name="prerequisites"></a>Előfeltételek
 Az oktatóanyag teljesítéséhez meg kell felelnie az alábbi előfeltételeknek: 
 * Az Azure PowerShell telepítve van. A részletekért lásd: [Ismerkedés az Azure PowerShell-lel](https://docs.microsoft.com/powershell/azure/get-started-azureps)
-* A három minta bérlői alkalmazások vannak telepítve. Ezen alkalmazások telepítését a öt percen belül, lásd: [központi telepítése és vizsgálja meg a Wingtip jegyek SaaS önálló alkalmazásminta](https://docs.microsoft.com/en-us/azure/sql-database/saas-standaloneapp-get-started-deploy).
+* A három minta bérlői alkalmazások vannak telepítve. Ezen alkalmazások telepítését a öt percen belül, lásd: [központi telepítése és vizsgálja meg a Wingtip jegyek SaaS önálló alkalmazásminta](https://docs.microsoft.com/azure/sql-database/saas-standaloneapp-get-started-deploy).
 
 ## <a name="provision-the-catalog"></a>Az alkalmazáskatalógus létesítése
 Ebben a feladatban megismerheti, hogyan regisztrálhatók a bérlő adatbázisok katalógus kiépítéséhez. Az alábbiakat fogja elvégezni: 
@@ -149,4 +149,4 @@ Ez az oktatóanyag bemutatta az alábbiakat:
 > * A kiszolgálók és adatbázisok, amelyek az alkalmazás alkotják.
 > * Hogyan mintaerőforrásokat leállításához kapcsolódó számlázási törlése.
 
-Ismerje meg az adatbázis-/-bérlő verziójával különböző több-bérlős forgatókönyvek támogatása céljából a katalógus használatáról az [Wingtip jegyek SaaS-alkalmazás](https://docs.microsoft.com/en-us/azure/sql-database/saas-dbpertenant-wingtip-app-overview).  
+Ismerje meg az adatbázis-/-bérlő verziójával különböző több-bérlős forgatókönyvek támogatása céljából a katalógus használatáról az [Wingtip jegyek SaaS-alkalmazás](https://docs.microsoft.com/azure/sql-database/saas-dbpertenant-wingtip-app-overview).  

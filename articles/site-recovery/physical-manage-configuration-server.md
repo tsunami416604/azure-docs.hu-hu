@@ -5,13 +5,13 @@ services: site-recovery
 author: AnoopVasudavan
 ms.service: site-recovery
 ms.topic: article
-ms.date: 02/18/2018
+ms.date: 03/05/2018
 ms.author: anoopkv
-ms.openlocfilehash: 7fe68f072ef438e21f3e6d3d52aee9e86e537687
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 2fdccade577788d3fc5bc076604547b2ab6690d9
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="manage-the-configuration-server-for-physical-server-disaster-recovery"></a>A fizikai kiszolgáló vész-helyreállítási kiszolgáló kezelése
 
@@ -36,7 +36,7 @@ A táblázat összefoglalja a prerequistes üzembe helyezéséhez a konfiguráci
 | IIS | -Nincs már meglévő alapértelmezett webhely <br> -Engedélyezése [névtelen hitelesítés](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) <br> -Engedélyezése [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) beállítás  <br> -Egyetlen már meglévő webhely vagy alkalmazás figyeli a 443-as port<br>|
 | A hálózati adapter típusa | VMXNET3 (ha VMware virtuális gépként telepített) |
 | IP-cím típusa | Statikus |
-| Internetelérés | A kiszolgáló URL-hozzáférésre van szüksége: <br> - \*.accesscontrol.windows.net<br> - \*.backup.windowsazure.com <br>- \*.store.core.windows.net<br> - \*.blob.core.windows.net<br> - \*.hypervrecoverymanager.windowsazure.com <br> - https://cdn.mysql.com/archives/mysql-5.5/mysql-5.5.37-win32.msi (nem szükséges kibővíthető folyamatkiszolgálókhoz) <br> - time.nist.gov <br> - time.windows.com |
+| Internetelérés | A kiszolgáló URL-hozzáférésre van szüksége: <br> - \*.accesscontrol.windows.net<br> - \*.backup.windowsazure.com <br>- \*.store.core.windows.net<br> - \*.blob.core.windows.net<br> - \*.hypervrecoverymanager.windowsazure.com <br> - dc.services.visualstudio.com <br> - https://cdn.mysql.com/archives/mysql-5.5/mysql-5.5.37-win32.msi (nem szükséges kibővíthető folyamatkiszolgálókhoz) <br> - time.nist.gov <br> - time.windows.com |
 | Portok | 443 (vezérlőcsatorna-vezénylés)<br>9443 (Adatátvitel)|
 
 ## <a name="download-the-latest-installation-file"></a>A legfrissebb telepítőfájljának letöltése
@@ -164,7 +164,7 @@ A konfigurációs kiszolgáló gép proxy beállításait az alábbiak szerint m
   ```
 
   >[!WARNING]
-  Ha a konfigurációs kiszolgálóhoz kapcsolódó további folyamat kiszolgálóval rendelkezik, akkor [hárítsa el a proxykiszolgáló beállításait a kibővített folyamat összes kiszolgálójára](site-recovery-vmware-to-azure-manage-scaleout-process-server.md#modifying-proxy-settings-for-scale-out-process-server) a környezetben.
+  Ha a konfigurációs kiszolgálóhoz kapcsolódó további folyamat kiszolgálóval rendelkezik, akkor [hárítsa el a proxykiszolgáló beállításait a kibővített folyamat összes kiszolgálójára](vmware-azure-manage-process-server.md#modify-proxy-settings-for-an-on-premises-process-server) a környezetben.
 
 ## <a name="reregister-a-configuration-server-with-the-same-vault"></a>Regisztrálja újra a konfigurációs kiszolgáló ugyanabban a tárolóban
   1. Jelentkezzen be a konfigurációs kiszolgáló.
@@ -184,7 +184,7 @@ A konfigurációs kiszolgáló gép proxy beállításait az alábbiak szerint m
       ```
 
   >[!WARNING]
-  Ha több folyamat kiszolgálóval rendelkezik, akkor [regisztrálja azokat](site-recovery-vmware-to-azure-manage-scaleout-process-server.md#re-registering-a-scale-out-process-server).
+  Ha több folyamat kiszolgálóval rendelkezik, akkor [regisztrálja azokat](vmware-azure-manage-process-server.md#reregister-a-process-server).
 
 ## <a name="register-a-configuration-server-with-a-different-vault"></a>A konfigurációs kiszolgáló regisztrálása egy másik tárolóban.
 
@@ -233,8 +233,8 @@ A kiszolgáló frissítése az alábbiak szerint:
 > [!WARNING]
 > Ellenőrizze a konfigurációs kiszolgáló leszerelése megkezdése előtt.
 > 1. [Tiltsa le a védelmet](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-vmware-vm-or-physical-server-vmware-to-azure) az összes virtuális gép ezen a konfigurációs kiszolgálón.
-> 2. [Szüntesse meg](site-recovery-setup-replication-settings-vmware.md#dissociate-a-configuration-server-from-a-replication-policy) és [törlése](site-recovery-setup-replication-settings-vmware.md#delete-a-replication-policy) összes replikációs házirendet a konfigurációs kiszolgálóról.
-> 3. [Törlés](site-recovery-vmware-to-azure-manage-vCenter.md#delete-a-vcenter-in-azure-site-recovery) Vcenter kiszolgáló vagy vSphere minden gazdagép tartozó és a konfigurációs kiszolgáló.
+> 2. [Szüntesse meg](vmware-azure-set-up-replication.md#disassociate-or-delete-a-replication-policy) és [törlése](vmware-azure-set-up-replication.md#disassociate-or-delete-a-replication-policy) összes replikációs házirendet a konfigurációs kiszolgálóról.
+> 3. [Törlés](vmware-azure-manage-vcenter.md#delete-a-vcenter-server) Vcenter kiszolgáló vagy vSphere minden gazdagép tartozó és a konfigurációs kiszolgáló.
 
 
 ### <a name="delete-the-configuration-server-from-azure-portal"></a>Törölje a konfigurációs kiszolgáló Azure-portálon

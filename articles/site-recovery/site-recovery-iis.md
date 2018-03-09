@@ -2,25 +2,19 @@
 title: "Egy többszintes Azure Site Recovery segítségével az IIS-alapú webes alkalmazás replikálása |} Microsoft Docs"
 description: "Útmutató: az IIS webkiszolgáló farm virtuális gépek Azure Site Recovery segítségével replikálni."
 services: site-recovery
-documentationcenter: 
 author: nsoneji
 manager: gauravd
-editor: 
-ms.assetid: 
 ms.service: site-recovery
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2018
+ms.date: 03/05/2018
 ms.author: nisoneji
-ms.openlocfilehash: a4a8ea14fecac73b187c9c7d3f9ca318bb2671c5
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 1ed0184ac76b5fb3e607458559327da5e8fe90c5
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/08/2018
 ---
-# <a name="replicate-a-multi-tier-iis-based-web-application-by-using-site-recovery"></a>Többrétegű, az IIS-alapú webalkalmazás replikálásához a Site Recovery segítségével
+# <a name="replicate-a-multi-tier-iis-based-web-application"></a>Egy többszintes IIS-alapú webes alkalmazás replikálása
 
 Alkalmazás Ez a motor a szervezet az üzleti hatékonyságot. Különböző webalkalmazások más célt szolgálhat egy szervezet. Előfordulhat, hogy egyes alkalmazások, például a kérelmek feldolgozását, pénzügyi alkalmazásokat és ügyfélkapcsolati webhelyek, a szervezetek számára fontos. A termelékenység csökkenését megelőzése érdekében fontos a szervezet szeretné, hogy ezek az alkalmazások folyamatosan naprakész, és fut. Ennél is fontosabb hogy a folyamatosan elérhető alkalmazásokat megóvja a márka vagy a szervezet képe.
 
@@ -36,7 +30,7 @@ Ez a cikk ismerteti, hogyan védi meg a webes alkalmazás, amely az Internet Inf
 
 Mielőtt elkezdené, győződjön meg arról, hogy tudja, hogyan hajtsa végre a következő feladatokat:
 
-* [A virtuális gépek replikálása Azure-bA](site-recovery-vmware-to-azure.md)
+* [A virtuális gépek replikálása Azure-bA](vmware-azure-tutorial.md)
 * [Egy helyreállítási hálózathoz. terv](site-recovery-network-design.md)
 * [Végezzen feladatátvételi tesztet az Azure-bA](site-recovery-test-failover-to-azure.md)
 * [Hajtsa végre a feladatátvételt az Azure-bA](site-recovery-failover.md)
@@ -75,7 +69,7 @@ Azure|NA|Igen
 
 Indítsa el az összes az IIS webkiszolgáló farm virtuális gépek replikálása Azure-ba, kövesse az ismertetés [az Azure Site Recovery a feladatátvételi teszt](site-recovery-test-failover-to-azure.md).
 
-Egy statikus IP-címet használ, ha azt szeretné, hogy a virtuális gépen ahhoz, hogy IP-cím is megadhat. Az IP-cím megadásához keresse fel **számítási és hálózati beállításai** > [**cél IP-címet**](./site-recovery-replicate-vmware-to-azure.md#view-and-manage-vm-properties).
+Egy statikus IP-címet használ, ha azt szeretné, hogy a virtuális gépen ahhoz, hogy IP-cím is megadhat. Az IP-cím megadásához keresse fel **számítási és hálózati beállításai** > **cél IP-címet**.
 
 ![A cél IP-címet beállítani a Site Recovery számítási és hálózati ablaktáblán képernyőkép](./media/site-recovery-active-directory/dns-target-ip.png)
 

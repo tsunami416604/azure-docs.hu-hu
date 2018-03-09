@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/13/2017
+ms.date: 03/05/2018
 ms.author: yurid
-ms.openlocfilehash: e1b9e598af3b55c1d9591e5c1e529a80ae3319ca
-ms.sourcegitcommit: ccb84f6b1d445d88b9870041c84cebd64fbdbc72
+ms.openlocfilehash: 02e14315018f6586644eb560894785e6b6eb022e
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="connecting-microsoft-advanced-threat-analytics-to-azure-security-center"></a>Csatlakozás a Microsoft Advanced Threat Analytics az Azure Security Centerben
 Ez a dokumentum segítséget nyújt a Microsoft Advanced Threat Analytics és az Azure Security Center közötti integráció konfigurálásához.
@@ -44,15 +44,15 @@ Feltételezve, hogy már rendelkezik az ATA telepítve, és megfelelően működ
 7. A bal oldali ablaktábláján kattintson **biztonsági megoldások**.
 8. A **Advanced Threat Analytics**, kattintson a **hozzáadása**.
 
-    ![AZ ATA](./media/security-center-ata-integration/security-center-ata-integration-fig3.png)
+    ![ATA](./media/security-center-ata-integration/security-center-ata-integration-fig3.png)
     
 9. Ugrás az utolsó lépés, és kattintson a **letöltési ügynök**.
 
-    ![AZ ATA](./media/security-center-ata-integration/security-center-ata-integration-fig4.png)
+    ![ATA](./media/security-center-ata-integration/security-center-ata-integration-fig4.png)
 
 10. Az a **új-Azure számítógép hozzáadása** lapon, válassza ki a munkaterületen.
 
-    ![-Azure](./media/security-center-ata-integration/security-center-ata-integration-fig5.png)
+    ![Nem Azure](./media/security-center-ata-integration/security-center-ata-integration-fig5.png)
 
 11. Az a **közvetlen ügynök** lapon a megfelelő Windows-ügynök letöltése, és készítsen feljegyzéseket az **munkaterület azonosítója** és **elsődleges kulcs**.
 
@@ -61,9 +61,9 @@ Feltételezve, hogy már rendelkezik az ATA telepítve, és megfelelően működ
 12. Telepítse az ügynököt az ATA-központ. A telepítés során ügyeljen arra, hogy a beállításnak a **csatlakoztassa az ügynököt az Azure Naplóelemzés (OMS)**, és adja meg a *munkaterület azonosítója*, és *elsődleges kulcs* kérésekor .
 
 
-Fejezze be a telepítést, az integráció befejeződött, és új riasztásokat a Security Center az ATA által küldött látni fogja **biztonsági riasztások** és **keresési**. A megoldás megjelenik a **biztonsági megoldások** lap **kapcsolódó megoldások**. 
+Fejezze be a telepítést, az integráció befejeződött, és új riasztásokat a Security Center az ATA által küldött látni fogja a **keresési** eredménye. A megoldás megjelenik a **biztonsági megoldások** lap **kapcsolódó megoldások**. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben a dokumentumban megismerte a Security Center a Microsoft ATA csatlakozni. A Security Centerrel kapcsolatos további információkért olvassa el a következő cikkeket:
 
 * [Az Azure Active Directory Identity Protection csatlakoztatása az Azure Security Centerhez](security-center-aadip-integration.md)

@@ -62,6 +62,7 @@
 ### [Azure PowerShell](application-gateway-create-probe-ps.md)
 ## [Azure Security Center – integráció](application-gateway-integration-security-center.md)
 ## [Többféle terheléselosztási szolgáltatás használata](../traffic-manager/traffic-manager-load-balancing-azure.md?toc=%2fazure%2fapplication-gateway%2ftoc.json)
+## [Teljes körű SSL konfigurálása](application-gateway-end-to-end-ssl-powershell.md)
 ## Hibaelhárítás
 ### [Az Application Gatewayben észlelt hibák elhárítása](application-gateway-troubleshooting-502.md)
 ### [Diagnosztikai naplózás és mérőszámok](application-gateway-diagnostics.md)

@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/03/2018
 ms.author: cynthn
-ms.openlocfilehash: dd9ebaf9a1c8b3112623af4228efa0d9063c1e52
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: 92168ba5605e119d42ba40ee694cebb3ad116041
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="convert-a-windows-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>Alakítsa át a Windows rendszerű virtuális gép nem felügyelt lemezekből felügyelt
 
@@ -50,17 +50,12 @@ Ez a szakasz bemutatja, hogyan adhat alakítsa át a egypéldányos Azure virtu�
   Stop-AzureRmVM -ResourceGroupName $rgName -Name $vmName -Force
   ```
 
-2. A virtuális gép átalakítása felügyelt lemezek használatával a [ConvertTo-AzureRmVMManagedDisk](/powershell/module/azurerm.compute/convertto-azurermvmmanageddisk) parancsmag. A következő folyamat alakítja át az előző VM, beleértve az operációs rendszer lemezének és adatlemezeket:
+2. A virtuális gép átalakítása felügyelt lemezek használatával a [ConvertTo-AzureRmVMManagedDisk](/powershell/module/azurerm.compute/convertto-azurermvmmanageddisk) parancsmag. A következő folyamat alakítja át a korábbi VM, beleértve az operációsrendszer-lemezképet és az adatok lemezzel, és elindítja a virtuális gépet:
 
   ```azurepowershell-interactive
   ConvertTo-AzureRmVMManagedDisk -ResourceGroupName $rgName -VMName $vmName
   ```
 
-3. Indítsa el a virtuális Gépet felügyelt lemezekre átalakítás után [Start-AzureRmVM](/powershell/module/azurerm.compute/start-azurermvm). A következő példa az előző virtuális gép újraindul:
-
-  ```azurepowershell-interactive
-  Start-AzureRmVM -ResourceGroupName $rgName -Name $vmName
-  ```
 
 
 ## <a name="convert-vms-in-an-availability-set"></a>Alakítsa át a virtuális gépek rendelkezésre állási csoportba
@@ -84,7 +79,7 @@ Ha az átalakítani kívánt virtuális gépek lemezek rendelkezésre állási c
   Update-AzureRmAvailabilitySet -AvailabilitySet $avSet -Sku Aligned
   ```
 
-2. Felszabadítani, és alakítsa át a virtuális gépek a rendelkezésre állási csoportot. Az alábbi parancsfájlt minden virtuális gép felszabadítja a használatával a [Stop-AzureRmVM](/powershell/module/azurerm.compute/stop-azurermvm) -parancsmag használatával konvertálja [ConvertTo-AzureRmVMManagedDisk](/powershell/module/azurerm.compute/convertto-azurermvmmanageddisk), és újraindítja a [Start-AzureRmVM](/powershell/module/azurerm.compute/start-azurermvm):
+2. Felszabadítani, és alakítsa át a virtuális gépek a rendelkezésre állási csoportot. Az alábbi parancsfájlt minden virtuális gép felszabadítja a használatával a [Stop-AzureRmVM](/powershell/module/azurerm.compute/stop-azurermvm) -parancsmag használatával konvertálja [ConvertTo-AzureRmVMManagedDisk](/powershell/module/azurerm.compute/convertto-azurermvmmanageddisk), és automatikusan, egymástól, az átalakítási folyamat újraindul :
 
   ```azurepowershell-interactive
   $avSet = Get-AzureRmAvailabilitySet -ResourceGroupName $rgName -Name $avSetName
@@ -94,7 +89,6 @@ Ha az átalakítani kívánt virtuális gépek lemezek rendelkezésre állási c
      $vm = Get-AzureRmVM -ResourceGroupName $rgName | Where-Object {$_.Id -eq $vmInfo.id}
      Stop-AzureRmVM -ResourceGroupName $rgName -Name $vm.Name -Force
      ConvertTo-AzureRmVMManagedDisk -ResourceGroupName $rgName -VMName $vm.Name
-     Start-AzureRmVM -ResourceGroupName $rgName -Name $vm.Name
   }
   ```
 

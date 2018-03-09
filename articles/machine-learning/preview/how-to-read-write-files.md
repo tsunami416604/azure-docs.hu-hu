@@ -5,16 +5,16 @@ services: machine-learning
 author: hning86
 ms.author: haining
 manager: mwinkle
-ms.reviewer: garyericson, jasonwhowell, mldocs
+ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/10/2017
-ms.openlocfilehash: f5c75b95d9019c15bb402313ce7407fa9abb81d4
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: 099ff69b396c35730471d684b59115f03ccf67d9
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="persisting-changes-and-working-with-large-files"></a>Módosítások megőrzése, és a nagy fájlok használata
 Az Azure Machine Learning kísérletezhet szolgáltatással végrehajtási célok számos konfigurálhatja. Néhány célpontjai helyi, például a helyi számítógépen vagy egy Docker-tároló a helyi számítógépen. A távoli, például egy távoli gépen vagy a HDInsight-fürtöt a Docker-tároló. További információkért lásd: [áttekintés az Azure Machine Learning kísérletezhet végrehajtási szolgáltatás](experimentation-service-configuration.md). 
@@ -24,7 +24,7 @@ Ahhoz a célként megadott hajthat végre, a számítási célra a projektmappa 
 ## <a name="execution-isolation-portability-and-reproducibility"></a>Végrehajtási elkülönítési adatok hordozhatóságára és reprodukálhatósági
 Ez a kialakítás célja a elkülönítési, reprodukálhatósági és hordozhatóság végrehajtásának biztosítása érdekében. Ugyanazt a parancsfájlt kétszer hajtható végre, ha az ugyanazon vagy másik számítási célként, ugyanazt az eredményt kapja. Az első végrehajtása során végrehajtott módosításokat a második végrehajtása nem érinti. Ezzel a kialakítással állapotmentes számítási erőforrások, miután befejezi a végrehajtott feladatok affinitás nélküli rendelkező számítási célokat is tekinti.
 
-## <a name="challenges"></a>Kihívásai
+## <a name="challenges"></a>Problémák
 Annak ellenére, hogy ez a kialakítás előnyökkel adatok hordozhatóságára és ismételhetőség, néhány speciális kihívást is jelent.
 
 ### <a name="persisting-state-changes"></a>Persisting állapotváltozások
@@ -194,6 +194,6 @@ attach_storage_container(spark, "<storage account name>", "<storage key>”)
 ## <a name="conclusion"></a>Összegzés
 Azure Machine Learning parancsfájlok úgy, hogy a cél számítási környezet teljes projektmappában hajt végre, mert nagy bemeneti, kimeneti és köztes fájlok különös gonddal. Nagy méretű fájlok tranzakciók, használhatja a speciális kimenetek mappa, a megosztott mappa, amely elérhető a `AZUREML_NATIVE_SHARE_DIRECTORY` környezeti változót vagy a külső tartós tárolást. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - Tekintse át a [Azure Machine Learning-munkaterület végrehajtási konfigurációs fájlok](experimentation-service-configuration-reference.md) cikk.
 - Lásd: hogyan a [zárolásának Iris](tutorial-classifying-iris-part-1.md) oktatóanyag projekt megőrizni a modell betanítását kimenetek mappát használja.

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/31/2017
+ms.date: 03/04/2018
 ms.author: billmath
 ms.custom: pim ; H1Hack27Feb2017;oldportal;it-pro;
-ms.openlocfilehash: bba26a947607a3679d191a2cd8164d27f61e2ba1
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 500fb11627fa0ce7ac838c650a582dd9d49b598c
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="different-administrative-role-in-azure-active-directory-pim"></a>Az Azure Active Directory PIM különböző rendszergazdai szerepkör
 <!-- **PLACEHOLDER: Need description of how this works. Azure PIM uses roles from MSODS objects.**-->
@@ -50,7 +50,7 @@ A privileged Identity Management lehetővé teszi a felhasználók hozzárendel�
   > 
 * **Felhasználókezelő rendszergazda** átállítja a jelszavakat, figyeli a szolgáltatás állapotát, és kezeli a felhasználói fiókok, a felhasználói csoportok és a szolgáltatáskéréseket. A felhasználó felügyeleti admin nem lehet törölni egy globális rendszergazdai, egyéb rendszergazdai szerepköröket hozhat létre, vagy állítsa vissza a globális, számlázási és a szolgáltatás-rendszergazdák jelszavát.
 * **Exchange-rendszergazda** Exchange Online rendszergazdai hozzáféréssel rendelkezik az Exchange felügyeleti központot (min) keresztül, és szinte bármilyen feladatot végrehajthat Exchange Online-ban.
-* **SharePoint-rendszergazda** SharePoint Online rendszergazdai hozzáféréssel rendelkezik a SharePoint Online felügyeleti központon keresztül történik, és szinte bármilyen feladatot végrehajthat a SharePoint online rendszerben.
+* **SharePoint-rendszergazda (előzetes verzió)** SharePoint Online rendszergazdai hozzáféréssel rendelkezik a SharePoint Online felügyeleti központon keresztül történik, és szinte bármilyen feladatot végrehajthat a SharePoint online rendszerben. Ez a szerepkör jelenleg előzetes verzió. Jogosult felhasználók problémákat tapasztalhat a késlelteti a PIM aktiválása után a SharePoint belül szerepkör használatával.
 * **Skype vállalati rendszergazda** Skype keresztül üzleti felügyeleti központban a Skype vállalati rendszergazdai hozzáféréssel rendelkezik, és szinte bármilyen feladatot végrehajthat a a Skype vállalati online.
 
 Ezek a cikkek további részletekért olvassa el [rendszergazdai szerepkörök hozzárendelése az Azure AD](active-directory-assign-admin-roles-azure-portal.md) és [rendszergazdai szerepkörök hozzárendelése az Office 365](https://support.office.com/article/Assigning-admin-roles-in-Office-365-eac4d046-1afd-4f1a-85fc-8219c79e1504).
@@ -89,6 +89,6 @@ Microsoft Online Services eléréséhez szükség lehet a felhasználó is hozz�
 8. Kattintson a **hozzárendelése** gombra.  A felhasználók most is jelentkezhetnek be az Azure-bA.
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [!INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
 

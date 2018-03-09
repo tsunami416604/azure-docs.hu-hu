@@ -6,13 +6,13 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 01/11/2018
+ms.date: 03/07/2018
 ms.author: raynew
-ms.openlocfilehash: 31754cd765c90b9e36d16dc766b0a3546e6fd93e
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 10d7db60ef584632a45fd7cdc5877461fa45af03
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="support-matrix-for-vmware-and-physical-server-replication-to-azure"></a>VMware és fizikai kiszolgálók replikálást az Azure-támogatási mátrix
 
@@ -29,7 +29,7 @@ Ez a cikk összefoglalja támogatott összetevők és az Azure-bA VMware virtuá
 
 ## <a name="on-premises-virtualization-servers"></a>A helyszíni virtualizálási kiszolgálók
 
-**Kiszolgáló** | Követelmények | **Részletek**
+**Kiszolgáló** | **Követelmények** | **Részletek**
 --- | --- | ---
 **VMware** | vCenter Server 6.5 6.0, vagy 5.5 vagy vSphere 6.5, 6.0 vagy 5.5 | Azt javasoljuk, hogy használja-e a vCenter-kiszolgálót.
 **Fizikai kiszolgálók** | –
@@ -70,13 +70,13 @@ Gép operációs rendszerének (Linux) | Red Hat Enterprise Linux: 5.2 való 5.1
 
 **Összetevő** | **Támogatott**
 --- | ---
-fájlrendszer | ext3, ext4, ReiserFS (csak Suse Linux Enterprise Server), XFS
+fájlrendszer | ext3, ext4, XFS
 Kötetkezelő | LVM2
-A többutas szoftver | Eszköz leképezője
-Paravirtualized tárolóeszközök | Paravirtualized illesztőprogramok által exportált eszközökön nem támogatottak.
+Paravirtualized tárolóeszközök | A paravirtualizált illesztőprogramok által exportált eszközök nem támogatottak.
 Több sor blokk IO eszközök | Nem támogatott.
 A HP CCISS tárolóvezérlő fizikai kiszolgálók | Nem támogatott.
 Könyvtárak | Ezeket a könyvtárakat (Ha külön partíciók /-fájlrendszerek beállított) kell lennie az azonos operációsrendszer-lemezképet a forráskiszolgálón lévő: / (gyökér), / Boot, / usr, /usr/local, /var, ETC. </br></br> Ha / (gyökérkötet) egy LVM kötet, akkor/Boot kell azon a lemezen, külön partíción találhatók, és nem lehet egy LVM kötet.<br/><br/>
+|Szabad lemezterület| A/root partíción 2 GB <br/>A telepítési mappa 250 MB
 XFSv5 | XFSv5 szolgáltatások XFS fájlrendszeren, például a metaadatok ellenőrzőösszeg 9.10 mobilitási szolgáltatás és újabb verziók támogatottak. A xfs_info segédprogram használatával ellenőrizze a XFS superblock a partíció. Ha ftype értéke 1, XFSv5 szolgáltatások használatát is.
 
 
@@ -169,9 +169,9 @@ Felügyelt lemezek | Igen
 
 A helyszíni virtuális gépek replikálása Azure-ba, meg kell felelnie Azure virtuális Gépen az alábbi táblázatban foglaltak.
 
-**Összetevő** | Követelmények | **Részletek**
+**Összetevő** | **Követelmények** | **Részletek**
 --- | --- | ---
-Vendég operációs rendszer | Győződjön meg arról [támogatott operációs rendszerek](#replicated machines). | Előfeltételek ellenőrzése sikertelen, ha nem támogatott.
+**Vendég operációs rendszer** | Győződjön meg arról [támogatott operációs rendszerek](#replicated machines). | Előfeltételek ellenőrzése sikertelen, ha nem támogatott.
 **Vendég operációs rendszer architektúrája** | 64 bites | Előfeltételek ellenőrzése sikertelen, ha nem támogatott.
 **Operációsrendszer-lemez mérete** | Legfeljebb 2048 GB | Előfeltételek ellenőrzése sikertelen, ha nem támogatott.
 **Operációsrendszer-lemezek száma** | 1 | Előfeltételek ellenőrzése sikertelen, ha nem támogatott.
@@ -198,7 +198,7 @@ Tárolási, hálózati, Azure virtuális gépek között erőforráscsoportok á
 **Name (Név)** | **Leírás** | **legújabb verzió** | **Részletek**
 --- | --- | --- | --- | ---
 **Azure Site Recovery egyesített telepítő** | Koordinálja a helyszíni VMware-kiszolgálók és az Azure közötti kommunikáció <br/><br/> Helyszíni VMware-kiszolgálókon telepítve | 9.12.4653.1 (elérhető a portál) | [Legújabb funkcióit és javításokat](https://aka.ms/latest_asr_updates)
-Mobilitási szolgáltatás | Koordinálja a helyszíni VMware-kiszolgáló/fizikai kiszolgálók és az Azure és a másodlagos hely közötti replikálás<br/><br/> VMware virtuális gép vagy fizikai kiszolgálók replikálni kívánt telepítve | 9.12.4653.1 (elérhető a portál) | [Legújabb funkcióit és javításokat](https://aka.ms/latest_asr_updates)
+**Mobilitási szolgáltatás** | Koordinálja a helyszíni VMware-kiszolgáló/fizikai kiszolgálók és az Azure és a másodlagos hely közötti replikálás<br/><br/> VMware virtuális gép vagy fizikai kiszolgálók replikálni kívánt telepítve | 9.12.4653.1 (elérhető a portál) | [Legújabb funkcióit és javításokat](https://aka.ms/latest_asr_updates)
 
 
 ## <a name="next-steps"></a>További lépések

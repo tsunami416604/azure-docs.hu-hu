@@ -13,15 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: Active
-ms.date: 02/27/2018
+ms.date: 02/28/2018
 ms.author: carlrab
-ms.openlocfilehash: 839705b902b8e1343c1e0bda97a2ec1dc6b47042
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: eea4362e33ff2587758601758db463ffa82382b3
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="azure-sql-database-resource-limits"></a>Az Azure SQL Database erőforrás korlátok
+
+> [!IMPORTANT]
+> Erőforrás-korlátok, Azure SQL adatbázis felügyelt példánya, lásd: [SQL felügyelt adatbázispéldány](sql-database-managed-instance.md#managed-instance-service-tier).
 
 ## <a name="single-database-storage-sizes-and-performance-levels"></a>Önálló adatbázist: tárterületet és teljesítményszintek
 
@@ -79,7 +82,6 @@ SQL rugalmas adatbáziskészletek az alábbi táblázatok bemutatják a minden e
 
 > [!NOTE]
 > Az egyes adatbázisokat rugalmas készletek erőforrás korlátai által megszabott megegyeznek a általában a dtu-inak száma és a szolgáltatási réteg alapján készletek kívül önálló adatbázisok. A maximális párhuzamos munkavállalók S2 adatbázis például 120 munkavállalók. Igen a maximális párhuzamos munkavállalók-adatbázis egy Standard adatbáziskészletben is 120 munkavállalók esetén pedig a készletben lévő adatbázisonként maximális DTU 50 dtu-i (amely egyenértékű S2).
->
 
 [!INCLUDE [SQL DB service tiers table for elastic pools](../../includes/sql-database-service-tiers-table-elastic-pools.md)]
 

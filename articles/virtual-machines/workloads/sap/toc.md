@@ -14,7 +14,11 @@
 ## [Egyetlen példánnyal rendelkező SAP HANA telepítése](hana-get-started.md)
 ## [S/4 HANA vagy BW/4 HANA SAP CAL üzembehelyezési útmutatója](cal-s4h.md)
 ## [SAP HANA az Azure-műveletek útmutatójában](hana-vm-operations.md)
-## [SAP HANA magas rendelkezésre állás az Azure-beli virtuális gépeken](sap-hana-high-availability.md)
+## Az SAP HANA rendelkezésre állása az Azure-beli virtuális gépeken
+### [Azure rendelkezésre állási csoportokon futó SAP HANA – Áttekintés](sap-hana-availability-overview.md)
+### [Egy Azure-régión belüli Azure rendelkezésre állási csoportokon futó SAP HANA](sap-hana-availability-one-region.md)
+### [Több Azure-régión belüli Azure rendelkezésre állási csoportokon futó SAP HANA](sap-hana-availability-across-regions.md)
+## [Az SAP HANA Azure-beli virtuális gépeken végzett rendszerreplikálásának beállítása](sap-hana-high-availability.md)
 ## [SAP HANA biztonsági mentés áttekintése](sap-hana-backup-guide.md)
 ## [SAP HANA fájlszintű biztonsági mentés](sap-hana-backup-file-level.md)
 ## [SAP HANA-tárhely pillanatképes biztonsági mentései](sap-hana-backup-storage-snapshots.md)
@@ -52,5 +56,5 @@
 ## [AAD-integráció az SAP Business ByDesignnal](../../../active-directory/active-directory-saas-sapbusinessbydesign-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
 ## [AAD-integráció az SAP HANA DBMS-sel](../../../active-directory/active-directory-saas-saphana-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
 ##[SAML egyszeri bejelentkezés az SAP Fiori-kezdőpanelen az Azure AD-val](https://blogs.sap.com/2017/02/20/your-s4hana-environment-part-7-fiori-launchpad-saml-single-sing-on-with-azure-ad)
-# Erőforrások
+# További források
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)

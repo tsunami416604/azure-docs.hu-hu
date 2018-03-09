@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/10/2017
 ms.author: harijayms
-ms.openlocfilehash: f0a706a5a7724788d62479d1570fffac07ce6d54
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 8b9e79a2be26cf279abe0d29db1738b695622e9f
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="azure-instance-metadata-service"></a>Az Azure példány metaadat-szolgáltatás
 
@@ -32,14 +32,14 @@ Azure-példány metaadat-szolgáltatás segítségével létrehozott összes inf
 > Ez a szolgáltatás **általánosan elérhető** minden Azure-régióban.  Rendszeresen teszi közzé a virtuálisgép-példányok új információ a frissítések kap. Ezen a lapon tükrözi a legfrissebb [az adatkategóriákat](#instance-metadata-data-categories) érhető el.
 
 ## <a name="service-availability"></a>Elérhető szolgáltatások
-A szolgáltatás érhető el az összes általánosan elérhető az összes Azure-régiók. Nem minden API-verzió érhetők el minden Azure-régióban.
+A szolgáltatás általánosan elérhető Azure-régiók érhető el. Nem minden API-verzió érhetők el minden Azure-régióban.
 
 Régiók                                        | Rendelkezésre állási?                                 | Támogatott verziók
 -----------------------------------------------|-----------------------------------------------|-----------------
-[Minden általánosan elérhető globális Azure-régió](https://azure.microsoft.com/regions/)     | Általánosan elérhető   | 2017-04-02, 2017-08-01
-[Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | Általánosan elérhető | 2017-04-02
-[Azure China](https://www.azure.cn/)                                                           | Általánosan elérhető | 2017-04-02
-[Azure Germany](https://azure.microsoft.com/overview/clouds/germany/)                    | Általánosan elérhető | 2017-04-02
+[Minden általánosan elérhető globális Azure-régió](https://azure.microsoft.com/regions/)     | Általánosan elérhető   | 2017-04-02, 2017-08-01, 2017-12-01(This version is not available in UK regions)
+[Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | Általánosan elérhető | 2017-04-02,2017-08-01
+[Azure China](https://www.azure.cn/)                                                           | Általánosan elérhető | 2017-04-02,2017-08-01
+[Azure Germany](https://azure.microsoft.com/overview/clouds/germany/)                    | Általánosan elérhető | 2017-04-02,2017-08-01
 
 Ez a táblázat frissülni fog, amikor a szolgáltatás frissítések érhetők el, és vagy új verziók érhetők el
 
@@ -48,7 +48,7 @@ A példány metaadat-szolgáltatás kipróbálására, a virtuális gép létreh
 ## <a name="usage"></a>Használat
 
 ### <a name="versioning"></a>Verziókezelés
-A példány metaadat-szolgáltatás nem rendszerverzióval ellátott. Verziók kötelező, és az aktuális verzió globális Azure `2017-08-01`. Aktuális verziók a következők (2017-04-02, 2017-08-01)
+A példány metaadat-szolgáltatás nem rendszerverzióval ellátott. Verziók kötelező, és az aktuális verzió globális Azure `2017-12-01`. Aktuális verziók a következők (2017-04-02, 2017-08-01,2017-12-01)
 
 > [!NOTE] 
 > Előző előzetes kiadásaiban ütemezett események {legújabb} támogatott api-verzióval. Ez a formátum már nem támogatott, és a jövőben elavulttá válik.
@@ -157,7 +157,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/network/interfac
 **Kérés**
 
 ```bash
-curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017-08-01"
+curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017-12-01"
 ```
 
 **Válasz**
@@ -182,7 +182,9 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017
     "tags": "",
     "version": "16.04.201708030",
     "vmId": "13f56399-bd52-4150-9748-7190aae1ff21",
-    "vmSize": "Standard_D1"
+    "vmScaleSetName": "",
+    "vmSize": "Standard_D1",
+    "zone": "1"
   },
   "network": {
     "interface": [
@@ -296,13 +298,15 @@ subscriptionId | A virtuális gép Azure-előfizetés | 2017-08-01
 tags | [Címkék](../../azure-resource-manager/resource-group-using-tags.md) a virtuális gép  | 2017-08-01
 resourceGroupName | [Erőforráscsoport](../../azure-resource-manager/resource-group-overview.md) a virtuális gép | 2017-08-01
 placementGroupId | [Elhelyezési csoport](../../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) a virtuálisgép-méretezési állítva | 2017-08-01
+vmScaleSetName | [A virtuális gép ScaleSet neve] (.. /.. / virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) a virtuálisgép-méretezési állítva | 2017-12-01
+zóna | [Rendelkezésre állási zóna](../../availability-zones/az-overview.md) a virtuális gép | 2017-12-01 
 ipv4/privateIpAddress | A virtuális gép helyi IPv4-címe | 2017-04-02
 ipv4/publicIpAddress | A virtuális gép nyilvános IPv4-cím | 2017-04-02
 subnet/address | A virtuális gép alhálózati cím | 2017-04-02 
 subnet/prefix | Példa 24 alhálózati előtag | 2017-04-02 
 ipv6/ipAddress | A virtuális gép helyi IPv6-cím | 2017-04-02 
 MacAddress | Virtuális gép mac-cím | 2017-04-02 
-scheduledevents | Lásd: [ütemezett események](scheduled-events.md) | 2017-03-01
+scheduledevents | Lásd: [ütemezett események](scheduled-events.md) | 2017-08-01
 
 ## <a name="example-scenarios-for-usage"></a>Példa használati forgatókönyvek  
 
@@ -325,6 +329,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/vmId?api
 ### <a name="placement-of-containers-data-partitions-based-faultupdate-domain"></a>Tárolók elhelyezését, adat-partíciók alapú tartalék/frissítési tartomány 
 
 Az egyes forgatókönyvek, más adatok replikák elhelyezését van elsődleges fontosságú. Például [HDFS replika elhelyezésének](https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html#Replica_Placement:_The_First_Baby_Steps) vagy tároló elhelyezési keresztül egy [orchestrator](https://kubernetes.io/docs/user-guide/node-selection/) , szükség lehet tudni, hogy a `platformFaultDomain` és `platformUpdateDomain` fut a virtuális Gépet.
+Kihasználhatja [rendelkezésre állási zónák](../../availability-zones/az-overview.md) a példányok ezeket a döntéseket.
 Ezek az adatok közvetlenül a példány metaadatok szolgáltatásával lekérdezheti.
 
 **Kérés**

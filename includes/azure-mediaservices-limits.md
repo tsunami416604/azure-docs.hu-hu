@@ -4,7 +4,7 @@
 | Erőforrás | Alapértelmezett korlát | 
 | --- | --- | 
 | Egy előfizetéshez tartozó Azure Media Services- (AMS-) fiókok | 25 (rögzített) |
-| Media szolgáltatás számára fenntartott egységek AMS-fiókonként |25 (S1, S2)<br/>10 (S3) <sup>(1)</sup> | 
+| Media szolgáltatás számára fenntartott egységek AMS-fiókonként |25 (S1)<br/>10 (S2, S3) <sup>(1)</sup> | 
 | Feladatok AMS-fiókonként | 50,000<sup>(2)</sup> |
 | Kapcsolt műveletek feladatonként | 30 (rögzített) |
 | Objektumok AMS-fiókonként | 1,000,000|
@@ -20,7 +20,7 @@
 | Házirendek | 1,000,000<sup>(6)</sup> |
 | Fájlméret| Bizonyos esetekben korlátozva van a Media Services feldolgozás támogatott maximális fájlméretet. <sup>7</sup> |
   
-<sup>1</sup> Az S3 fenntartott egységek Nyugat-Indiában nem érhetők el. Ha módosítja a típusának (például a S1 S2), a maximális RU korlátok állnak vissza.
+<sup>1</sup> Ha módosítja a típusának (például a S1 S2), a maximális RU korlátok állnak vissza.
 
 <sup>2</sup> Ez a szám a várólistás, a befejeződött, az aktív, illetve a megszakított feladatokat is magában foglalja. A törölt feladatokat nem tartalmazza. A régi feladatokat az **IJob.Delete** vagy a **DELETE** HTTP-kérés segítségével lehet törölni.
 

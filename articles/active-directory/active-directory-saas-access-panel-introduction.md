@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/15/2018
+ms.date: 03/06/2018
 ms.author: markvi
 ms.reviewer: asteen
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c9069cb0b46ddc1155c64bd63a7fcd8a685abbad
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: c9b647e8f731995537a8797ab28248a1c42b6460
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="what-is-the-access-panel"></a>Mi az a hozzáférési panel?
 
@@ -67,6 +67,9 @@ Amikor megtörténik, kezelheti az alkalmazásokat, amelyek a rendszergazda a k�
 ## <a name="web-browser-requirements"></a>Webböngészőkre vonatkozó követelmények
 
 Legalább a hozzáférési panel igényel, amely támogatja a JavaScript egy böngészőt, és CSS engedélyezte. Aláírt alkalmazások jelszó-alapú egyszeri bejelentkezést (SSO) keresztül, a böngésző telepítve hozzáférési panel kiterjesztéssel kell rendelkeznie. A bővítmény le automatikusan, amikor kiválaszt egy alkalmazást, amely jelszóalapú SSO van konfigurálva.
+
+A telepítő architektúra-specifikus. Ha a letöltés hivatkozásra kattint, csak kap a telepítő a jelenleg futó operációs rendszer architektúrájának. Ha egy alkalmazás központi telepítési rendszergazda, győződjön meg arról, hogy egy 64 bites és 32 bites eszközről mindkét telepítők beolvasandó látogasson el a letöltési hivatkozás.
+
 
 A hozzáférési panel bővítmény érhető el jelenleg:
 - **Peremhálózati**: a Windows 10 évforduló Edition vagy újabb. 

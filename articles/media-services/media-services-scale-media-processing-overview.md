@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/04/2017
 ms.author: juliako
-ms.openlocfilehash: a82481c4995bfb078e88d7096dff37b52312a296
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: c80bddfe1896b0b99319ef007c25718b5a754005
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="scaling-media-processing-overview"></a>Méretezési Media feldolgozása – áttekintés
 Ezen a lapon lehetőséget nyújt az áttekintése és media feldolgozási méretezési ennek okát. 
@@ -34,7 +34,7 @@ Az alábbi táblázat segítséget nyújt a különböző kódolási sebességű
 | Forgatókönyvek | **S1** | **S2** | **S3** |
 | --- | --- | --- | --- |
 | Tervezett használati eset |Egyszeres sávszélességű kódolását. <br/>Fájlok SD vagy az alatti megoldások, nem idő-és nagybetűket, az alacsony költségű. |Egyszeres sávszélességű, és több sávszélességű kódolását.<br/>Normál használati SD és a HD kódolására. |Egyszeres sávszélességű, és több sávszélességű kódolását.<br/>Teljes HD és 4K feloldási videók. Idő-és nagybetűket, gyorsabb esetenként kódolást. |
-| Teljesítményteszt |[A bemeneti fájl: 5 perc hosszú 640x360p: 29,97 keretek/másodperc](https://wamspartners.blob.core.windows.net/for-long-term-share/Whistler_5min_360p30.mp4?sr=c&si=AzureDotComReadOnly&sig=OY0TZ%2BP2jLK7vmcQsCTAWl33GIVCu67I02pgarkCTNw%3D).<br/><br/>Egy egyszeres sávszélességű MP4-fájlokat, az ugyanaz felbontásban kódolást körülbelül 11 percet vesz igénybe. |[A bemeneti fájl: 5 perc hosszú 1280x720p: 29,97 keretek/másodperc](https://wamspartners.blob.core.windows.net/for-long-term-share/Whistler_5min_720p30.mp4?sr=c&si=AzureDotComReadOnly&sig=OY0TZ%2BP2jLK7vmcQsCTAWl33GIVCu67I02pgarkCTNw%3D)<br/><br/>"H264 egyféle sávszélességű 720p" kódolás előre beállított vesz körülbelül 5 percet.<br/><br/>Kódolás "H264 Multiple Bitrate 720p" beállításkészletet körülbelül 11,5 percet vesz igénybe. |[A bemeneti fájl: 5 perc hosszú 1920x1080p: 29,97 keretek/másodperc](https://wamspartners.blob.core.windows.net/for-long-term-share/Whistler_5min_1080p30.mp4?sr=c&si=AzureDotComReadOnly&sig=OY0TZ%2BP2jLK7vmcQsCTAWl33GIVCu67I02pgarkCTNw%3D). <br/><br/>"H264 egyetlen Bitrate 1080p" kódolás előre beállított vesz körülbelül 2.7 percet.<br/><br/>Kódolás "H264 Multiple Bitrate 1080p" beállításkészletet körülbelül 5.7 percet vesz igénybe. |
+| Benchmark |[A bemeneti fájl: 5 perc hosszú 640x360p: 29,97 keretek/másodperc](https://wamspartners.blob.core.windows.net/for-long-term-share/Whistler_5min_360p30.mp4?sr=c&si=AzureDotComReadOnly&sig=OY0TZ%2BP2jLK7vmcQsCTAWl33GIVCu67I02pgarkCTNw%3D).<br/><br/>Egy egyszeres sávszélességű MP4-fájlokat, az ugyanaz felbontásban kódolást körülbelül 11 percet vesz igénybe. |[A bemeneti fájl: 5 perc hosszú 1280x720p: 29,97 keretek/másodperc](https://wamspartners.blob.core.windows.net/for-long-term-share/Whistler_5min_720p30.mp4?sr=c&si=AzureDotComReadOnly&sig=OY0TZ%2BP2jLK7vmcQsCTAWl33GIVCu67I02pgarkCTNw%3D)<br/><br/>"H264 egyféle sávszélességű 720p" kódolás előre beállított vesz körülbelül 5 percet.<br/><br/>Kódolás "H264 Multiple Bitrate 720p" beállításkészletet körülbelül 11,5 percet vesz igénybe. |[A bemeneti fájl: 5 perc hosszú 1920x1080p: 29,97 keretek/másodperc](https://wamspartners.blob.core.windows.net/for-long-term-share/Whistler_5min_1080p30.mp4?sr=c&si=AzureDotComReadOnly&sig=OY0TZ%2BP2jLK7vmcQsCTAWl33GIVCu67I02pgarkCTNw%3D). <br/><br/>"H264 egyetlen Bitrate 1080p" kódolás előre beállított vesz körülbelül 2.7 percet.<br/><br/>Kódolás "H264 Multiple Bitrate 1080p" beállításkészletet körülbelül 5.7 percet vesz igénybe. |
 
 ## <a name="considerations"></a>Megfontolandó szempontok
 > [!IMPORTANT]
@@ -44,8 +44,6 @@ Az alábbi táblázat segítséget nyújt a különböző kódolási sebességű
 
 * Fenntartott egységek működnek az összes adathordozó feldolgozási, beleértve az Azure Media Indexer használó feladatok indexelő parallelizing.  De a kódolással ellentétben az indexelési feladatok feldolgozása nem lesz gyorsabb a gyorsabb Fenntartott egységekkel.
 * Ha megosztott készletét használja, ez azt jelenti, hogy nélkül bármely fenntartott egységek, majd a encode feladat rendelkezik ugyanaz a teljesítmény, mint a S1 RUs. Azonban nem felső határa az idő, a feladatok képes költeni várakozó állapotban van, és egy adott időpontban legfeljebb csak egy feladat fog futni.
-* A következő adatközpontokban nem képes a **S2** szolgáltatás számára fenntartott egység típusát: és a Dél-Brazília, Nyugat-India.
-* A következő adatközpont nem biztosít a **S3** szolgáltatás számára fenntartott egység típusát: Nyugat-India.
 
 ## <a name="billing"></a>Számlázás
 

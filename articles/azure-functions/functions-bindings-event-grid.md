@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 01/26/2018
 ms.author: tdykstra
-ms.openlocfilehash: 2a6fe85c2c3d6d4f44dc197db6c28ebbc2b1d431
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: a1ffd9311f6ff171502efe64557463abc49ad636
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="event-grid-trigger-for-azure-functions"></a>Az Azure Functions rács eseményindító
 
@@ -33,6 +33,16 @@ Tetszés szerint, egy HTTP-eseményindítóval használatával kezeli a rács es
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
+## <a name="packages"></a>Csomagok
+
+Az esemény rács eseményindító megtalálható a [Microsoft.Azure.WebJobs.Extensions.EventGrid](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventGrid) NuGet-csomagot. A csomag forráskódja van a [azure-funkciók-eventgrid-bővítmény](https://github.com/Azure/azure-functions-eventgrid-extension) GitHub-tárházban.
+
+A csomagban használt [C# class library fejlesztési](functions-triggers-bindings.md#local-c-development-using-visual-studio-or-vs-code) és [v2 kötés bővítményregisztráció működik](functions-triggers-bindings.md#local-development-azure-functions-core-tools).
+
+<!--
+If you want to bind to the `Microsoft.Azure.EventGrid.Models.EventGridEvent` type instead of `JObject`, install the [Microsoft.Azure.EventGrid](https://www.nuget.org/packages/Microsoft.Azure.EventGrid) package.
+-->
+
 ## <a name="example"></a>Példa
 
 Tekintse meg a nyelvspecifikus például egy esemény rács eseményindító:
@@ -45,24 +55,58 @@ HTTP-eseményindító példáért lásd: [használata a HTTP-eseményindítóval
 
 ### <a name="c-example"></a>C# – példa
 
-Az alábbi példa mutatja egy [C# függvény](functions-dotnet-class-library.md) naplózza, hogy egyes mezőit, amelyek közösek az összes esemény és az esemény-specifikus adatok.
+Az alábbi példa mutatja egy [C# függvény](functions-dotnet-class-library.md) , amely összekapcsolja `JObject`:
 
 ```cs
-[FunctionName("EventGridTest")]
-public static void EventGridTest([EventGridTrigger] EventGridEvent eventGridEvent, TraceWriter log)
+using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs.Host;
+using Microsoft.Azure.WebJobs.Extensions.EventGrid;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+
+namespace Company.Function
 {
-    log.Info("C# Event Grid function processed a request.");
-    log.Info($"Subject: {eventGridEvent.Subject}");
-    log.Info($"Time: {eventGridEvent.EventTime}");
-    log.Info($"Data: {eventGridEvent.Data.ToString()}");
+    public static class EventGridTriggerCSharp
+    {
+        [FunctionName("EventGridTriggerCSharp")]
+        public static void Run([EventGridTrigger]JObject eventGridEvent, TraceWriter log)
+        {
+            log.Info(eventGridEvent.ToString(Formatting.Indented));
+        }
+    }
 }
 ```
 
-A `EventGridTrigger` attribútum van megadva NuGet-csomag [Microsoft.Azure.WebJobs.Extensions.EventGrid](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventGrid).
+<!--
+The following example shows a [C# function](functions-dotnet-class-library.md) that binds to `EventGridEvent`:
+
+```cs
+using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs.Host;
+using Microsoft.Azure.WebJobs.Extensions.EventGrid;
+
+namespace Company.Function
+{
+    public static class EventGridTriggerCSharp
+    {
+        [FunctionName("EventGridTest")]
+            public static void EventGridTest([EventGridTrigger] Microsoft.Azure.EventGrid.Models.EventGridEvent eventGridEvent, TraceWriter log)
+        {
+            log.Info("C# Event Grid function processed a request.");
+            log.Info($"Subject: {eventGridEvent.Subject}");
+            log.Info($"Time: {eventGridEvent.EventTime}");
+            log.Info($"Data: {eventGridEvent.Data.ToString()}");
+        }
+    }
+}
+```
+-->
+
+További információkért lásd: [csomagok](#packages), [attribútumok](#attributes), [konfigurációs](#configuration), és [használati](#usage).
 
 ### <a name="c-script-example"></a>C# parancsfájl – példa
 
-A következő példa bemutatja az eseményindító kötés egy *function.json* fájlt és egy [C# parancsfájl függvény](functions-reference-csharp.md) , amely a kötés használja. A függvény naplózza a mezőket, amelyek közösek az összes esemény és az esemény-specifikus adatok némelyike.
+A következő példa bemutatja az eseményindító kötés egy *function.json* fájlt és egy [C# parancsfájl függvény](functions-reference-csharp.md) , amely a kötés használja.
 
 Itt az kötés adatai a *function.json* fájlt:
 
@@ -79,12 +123,30 @@ Itt az kötés adatai a *function.json* fájlt:
 }
 ```
 
-A C# parancsfájl kód itt látható:
+Ez a C# parancsfájlkód, amelyhez van kötve `JObject`:
+
+```cs
+#r "Newtonsoft.Json"
+
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+
+public static void Run(JObject eventGridEvent, TraceWriter log)
+{
+    log.Info(eventGridEvent.ToString(Formatting.Indented));
+}
+```
+
+<!--
+Here's C# script code that binds to `EventGridEvent`:
 
 ```csharp
 #r "Newtonsoft.Json"
 #r "Microsoft.Azure.WebJobs.Extensions.EventGrid"
+#r "Microsoft.Azure.EventGrid"
+
 using Microsoft.Azure.WebJobs.Extensions.EventGrid;
+Using Microsoft.Azure.EventGrid.Models;
 
 public static void Run(EventGridEvent eventGridEvent, TraceWriter log)
 {
@@ -94,10 +156,13 @@ public static void Run(EventGridEvent eventGridEvent, TraceWriter log)
     log.Info($"Data: {eventGridEvent.Data.ToString()}");
 }
 ```
+-->
+
+További információkért lásd: [csomagok](#packages), [attribútumok](#attributes), [konfigurációs](#configuration), és [használati](#usage).
 
 ### <a name="javascript-example"></a>JavaScript – példa
 
-A következő példa bemutatja az eseményindító kötés egy *function.json* fájlt és egy [JavaScript függvény](functions-reference-node.md) , amely a kötés használja. A függvény naplózza a mezőket, amelyek közösek az összes esemény és az esemény-specifikus adatok némelyike.
+A következő példa bemutatja az eseményindító kötés egy *function.json* fájlt és egy [JavaScript függvény](functions-reference-node.md) , amely a kötés használja.
 
 Itt az kötés adatai a *function.json* fájlt:
 
@@ -128,13 +193,13 @@ module.exports = function (context, eventGridEvent) {
      
 ## <a name="attributes"></a>Attribútumok
 
-A [C# osztálykönyvtárakhoz](functions-dotnet-class-library.md), használja a [EventGridTrigger](https://github.com/Azure/azure-functions-eventgrid-extension/blob/master/src/EventGridExtension/EventGridTriggerAttribute.cs) attribútummal, a NuGet-csomag [Microsoft.Azure.WebJobs.Extensions.EventGrid](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventGrid).
+A [C# osztálykönyvtárakhoz](functions-dotnet-class-library.md), használja a [EventGridTrigger](https://github.com/Azure/azure-functions-eventgrid-extension/blob/master/src/EventGridExtension/EventGridTriggerAttribute.cs) attribútum.
 
 Íme egy `EventGridTrigger` metódus-aláírás attribútum:
 
 ```csharp
 [FunctionName("EventGridTest")]
-public static void EventGridTest([EventGridTrigger] EventGridEvent eventGridEvent, TraceWriter log)
+public static void EventGridTest([EventGridTrigger] JObject eventGridEvent, TraceWriter log)
 {
     ...
 }
@@ -154,7 +219,11 @@ Az alábbi táblázat ismerteti a beállított kötés konfigurációs tulajdons
 
 ## <a name="usage"></a>Használat
 
-A C# és F # funkciók deklarálja a bevitel indítófeltétel típusát `EventGridEvent` vagy olyan egyéni típusra. Olyan egyéni típusra a Functions futtatókörnyezete megkísérli az esemény az objektum tulajdonságait JSON elemzése.
+A C# és F # funkciók a következő paraméter típusok használhatók az esemény rács eseményindító:
+
+* `JObject`
+* `string`
+* `Microsoft.Azure.WebJobs.Extensions.EventGrid.EventGridEvent`-Határozza meg a közös mezők való összes eseménytípust. **Ez a típus elavult**, de azok helyettesítéseivel nem közzétett NuGet még.
 
 A JavaScript-funkcióként, a paraméter neve szerint a *function.json* `name` tulajdonságnak egy esemény objektum hivatkozását.
 
@@ -315,7 +384,7 @@ Használjon például egy eszköz [Postman](https://www.getpostman.com/) vagy [c
 * Küldje el az URL-CÍMÉT az esemény rács funkció, a következő minta használatával:
 
 ```
-http://localhost:7071/admin/extensions/EventGridExtensionConfig?functionName={methodname}
+http://localhost:7071/admin/extensions/EventGridExtensionConfig?functionName={functionname}
 ``` 
 
 A `functionName` paraméternek kell lennie a megadott név a `FunctionName` attribútum.
@@ -376,7 +445,7 @@ Ngrok URL-CÍMÉT nem olvasható be a különleges kezelést esemény rács ált
 A vizsgálni kívánt típusú esemény rács előfizetéssel, hozzon létre, és adjon neki a ngrok végpont a következő mintát:
 
 ```
-https://{subdomain}.ngrok.io/admin/extensions/EventGridExtensionConfig?functionName={methodname}
+https://{subdomain}.ngrok.io/admin/extensions/EventGridExtensionConfig?functionName={functionname}
 ``` 
 
 A `functionName` paraméternek kell lennie a megadott név a `FunctionName` attribútum.

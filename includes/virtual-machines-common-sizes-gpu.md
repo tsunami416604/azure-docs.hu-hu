@@ -5,14 +5,14 @@ services: virtual-machines-windows, virtual-machines-linux
 author: dlepow
 ms.service: multiple
 ms.topic: include
-ms.date: 03/01/2018
+ms.date: 03/05/2018
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 34b38ff02d401e87be10f1f72cb2025b66317c9e
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 8614fa7a52c91419c66782f7434692228e6b18d2
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/08/2018
 ---
 GPU optimalizált VM értékek speciális virtuális gépek egy vagy több NVIDIA Feldolgozóegységekkel érhető el. Ezek méretek számítási igényű grafikai igényű és a képi megjelenítés munkaterhelések készültek. Ez a cikk tájékoztatást ad azokról a számát és típusát Feldolgozóegységekkel, Vcpu, adatlemezek, és a hálózati adapterek, valamint tárolási átviteli sebesség és a hálózati sávszélesség megadása ennél a csoportosításnál minden méretét. 
 
@@ -95,14 +95,16 @@ NT-sorozatú virtuális gépek a GPU termékcsalád AI és részletes tanulási 
 
 ## <a name="nv-series"></a>NV sorozat
 
-A portok HV-sorozat szerint vannak kapcsolva [NVIDIA Tesla M60 ](http://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf) Feldolgozóegységekkel és NVIDIA rács technológia asztali az elérését gyorsítja fel, alkalmazások és virtuális asztalok ahol az ügyfelek képesek jelenítheti meg az adatok vagy szimulációja. Felhasználók is megjelenítheti a grafikus intenzív munkafolyamatok a felső szintű grafikus képességet, és emellett a kódolás és megjelenítési például az egyszeres pontosságú feladatokat futtató portok HV-példányokon. 
+A portok HV-sorozatú virtuális gépek szerint vannak kapcsolva [NVIDIA Tesla M60](http://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf) Feldolgozóegységekkel és NVIDIA rács technológia asztali az elérését gyorsítja fel, alkalmazások és virtuális asztalok ahol az ügyfelek képesek jelenítheti meg az adatok vagy szimulációja. Felhasználók is megjelenítheti a grafikus intenzív munkafolyamatok a felső szintű grafikus képességet, és emellett a kódolás és megjelenítési például az egyszeres pontosságú feladatokat futtató portok HV-példányokon. 
 
-| Méret | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | GPU | Adatlemezek max. száma | Hálózati adapterek maximális száma |
-| --- | --- | --- | --- | --- | --- | --- |
-| Standard_NV6 |6 |56 |380 | 1 | 24 | 1 |
-| Standard_NV12 |12 |112 |680 | 2 | 48 | 2 |
-| Standard_NV24 |24 |224 |1440 | 4 | 64 | 4 |
+Minden GPU portok HV példányát rács licenccel rendelkezik. Ez a licenc szerződés keretein belül a portok HV-példány használata virtuális munkaállomásként egy-egy felhasználóhoz vagy 25 egyidejű felhasználók csatlakozhatnak egy virtuális alkalmazás forgatókönyv esetén a virtuális Gépet.
+
+| Méret | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | GPU | Adatlemezek max. száma | Hálózati adapterek maximális száma | Virtuális munkaállomások | A virtuális alkalmazások | 
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Standard_NV6 |6 |56 |380 | 1 | 24 | 1 | 1 | 25 |
+| Standard_NV12 |12 |112 |680 | 2 | 48 | 2 | 2 | 50 |
+| Standard_NV24 |24 |224 |1440 | 4 | 64 | 4 | 4 | 100 |
 
 1 GPU = fél M60 kártya.
 
-
+ 

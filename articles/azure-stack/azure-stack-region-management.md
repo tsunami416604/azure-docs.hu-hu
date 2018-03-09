@@ -3,8 +3,8 @@ title: "Azure-készletben régió felügyeleti |} Microsoft Docs"
 description: "Azure verem régió management áttekintése."
 services: azure-stack
 documentationcenter: 
-author: efemmano
-manager: dsavage
+author: brenduns
+manager: femila
 editor: 
 ms.assetid: e94775d5-d473-4c03-9f4e-ae2eada67c6c
 ms.service: azure-stack
@@ -12,13 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2017
-ms.author: efemmano
-ms.openlocfilehash: d1310f0cb9a820366ab8712a782785e955a24134
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 02/27/2018
+ms.author: brenduns
+ms.reviewer: efemmano
+ms.openlocfilehash: 0a19490ce276eec9a46bc0ea4343e3449a9dc93c
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="region-management-in-azure-stack"></a>Azure-készletben régió kezelése
 
@@ -41,19 +42,13 @@ Az Azure verem tartozik egy régiót az elérhető Eszközkezelési lehetősége
 
 2. **Riasztások**. Ez a csempe rendszerszintű riasztásokat sorolja fel, és egyes vonatkozó riasztási részleteit.
 
-3. **Frissítések**. Ez a csempe megtekintheti a verem Azure infrastruktúra aktuális verzióját.
+3. **Frissítések**. Ez a csempe megtekintheti a verem Azure infrastruktúra, rendelkezésre álló frissítéseket és a frissítési előzményeket aktuális verzióját. Az integrált rendszert is frissítheti.
 
-4. **Erőforrás-szolgáltató**. Erőforrás-szolgáltató az a hely kezeléséhez a bérlő által kínált funkciót közzétevő Azure verem futtatásához szükséges összetevőket. Mindegyik erőforrás-szolgáltató egy felügyeleti élményt nyújtson tartalmaz. Ez a felület riasztások például az adott szolgáltató, metrikákat és más felügyeleti képességek jellemző az erőforrás-szolgáltató.
- 
-5. **Infrastruktúra-szerepkörök**. Infrastruktúra-szerepkörök olyan Azure verem futtatásához szükséges összetevőket. Csak az infrastruktúra-szerepkörök riasztásokat hoznak vannak felsorolva. Egy szerepkör kattintva tekintheti meg a megfelelő szerepkört és a szerepkörpéldányok, ezt a szerepkört futtató tartozó riasztásokat. Bár a funkció elindításához, indítsa újra, vagy állítsa le az infrastruktúra-szerepkör példánya, tegye **nem** ehhez development kit környezetben. Ezek a beállítások készültek, csak egy több csomópontos környezetben, ahol van egy infrastruktúra-szerepkör egynél több szerepkörpéldányt. A szerepkör példánya (különösen AzS-Xrp01) a csomagban újraindít rendszer instabil.
+4. **Erőforrás-szolgáltató**. Erőforrás-szolgáltató az a hely kezeléséhez, a felhasználó által kínált funkciót közzétevő Azure verem futtatásához szükséges összetevőket. Mindegyik erőforrás-szolgáltató egy felügyeleti élményt nyújtson tartalmaz. Ez a felület riasztások például az adott szolgáltató, metrikákat és más felügyeleti képességek jellemző az erőforrás-szolgáltató.
 
-## <a name="next-steps"></a>Következő lépések
+5. **Infrastruktúra-szerepkörök**. Infrastruktúra-szerepkörök olyan Azure verem futtatásához szükséges összetevőket. Csak az infrastruktúra-szerepkörök riasztásokat hoznak vannak felsorolva. Egy szerepkör kattintva tekintheti meg a megfelelő szerepkört és a szerepkörpéldányok, ezt a szerepkört futtató tartozó riasztásokat.
+
+## <a name="next-steps"></a>További lépések
 [A figyelő állapotát és az Azure-készletben riasztások](azure-stack-monitor-health.md)
 
 [Azure-készletben frissítések kezelése](azure-stack-updates.md)
-
-
-
-
-
-

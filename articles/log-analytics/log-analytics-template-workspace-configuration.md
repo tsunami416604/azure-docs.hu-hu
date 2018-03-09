@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: json
 ms.topic: article
-ms.date: 12/06/2017
+ms.date: 03/05/2018
 ms.author: richrund
-ms.openlocfilehash: cea25429dc6e5f9f12f472d17e8743d272135257
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: db9b941e84c018a3a56dd683c118e47ee808259d
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="manage-log-analytics-using-azure-resource-manager-templates"></a>Log Analytics használata Azure Resource Manager-sablonok kezelése
 Használhat [Azure Resource Manager-sablonok](../azure-resource-manager/resource-group-authoring-templates.md) létrehozása és konfigurálása a Naplóelemzési munkaterület. A sablonok végrehajtható műveletek közé tartoznak:
@@ -31,7 +31,6 @@ Használhat [Azure Resource Manager-sablonok](../azure-resource-manager/resource
 * A Linux és Windows számítógépekről a teljesítményszámlálók adatainak összegyűjtése
 * A Linux rendszerű számítógépeken syslog események gyűjtése 
 * A Windows Eseménynapló eseményeinek gyűjtése
-* Egyéni eseménynaplók gyűjtése
 * A log analytics agent hozzáadása egy Azure virtuális gépen
 * Naplóelemzési Azure diagnostics használatával gyűjt index adatok konfigurálása
 
@@ -40,7 +39,7 @@ Ez a cikk ismerteti a sablon minták, amelyek bemutatják az egyes készítése 
 ## <a name="api-versions"></a>API-verziók
 Ebben a cikkben a példa egy [Naplóelemzési munkaterület frissítése](log-analytics-log-search-upgrade.md).  Egy örökölt munkaterület használatához kellene a lekérdezés szintaxisa a következő örökölt nyelvének módosítása, és módosíthatja az egyes erőforrások API-verzió.  A következő táblázat az ebben a példában használt erőforrások API-verzió.
 
-| Erőforrás | Erőforrástípus | Az örökölt API-verzió | Frissített API-verzió |
+| Erőforrás | Erőforrás típusa | Az örökölt API-verzió | Frissített API-verzió |
 |:---|:---|:---|:---|
 | Munkaterület   | A munkaterületek között    | 2015 11-01. dátumú előnézeti | 2017-03-15 – előzetes |
 | Keresés      | savedSearches | 2015 11-01. dátumú előnézeti | 2017-03-15 – előzetes |
@@ -60,7 +59,6 @@ A következő sablon minta bemutatja, hogyan:
 7. Syslog-események gyűjtése Linux számítógépekről
 8. Hiba és figyelmeztetési események gyűjtése az alkalmazások eseménynaplójában a Windows rendszerű számítógépek
 9. A Windows rendszerű számítógépek memória rendelkezésre álló memória (MB) teljesítményszámláló gyűjtése.
-10. Egy egyéni napló gyűjtése 
 11. IIS-napló és a Windows eseménynaplóiban keresse meg a storage-fiókok Azure diagnostics által írt gyűjtése
 
 ```json
@@ -295,61 +293,6 @@ A következő sablon minta bemutatja, hogyan:
         },
         {
           "apiVersion": "2015-11-01-preview",
-          "type": "datasources",
-          "name": "sampleCustomLog1",
-          "dependsOn": [
-            "[concat('Microsoft.OperationalInsights/workspaces/', parameters('workspaceName'))]"
-          ],
-          "kind": "CustomLog",
-          "properties": {
-            "customLogName": "sampleCustomLog1",
-            "description": "test custom log datasources",
-            "inputs": [
-              {
-                "location": {
-                  "fileSystemLocations": {
-                    "windowsFileTypeLogPaths": [ "e:\\iis5\\*.log" ],
-                    "linuxFileTypeLogPaths": [ "/var/logs" ]
-                  }
-                },
-                "recordDelimiter": {
-                  "regexDelimiter": {
-                    "pattern": "\\n",
-                    "matchIndex": 0,
-                    "matchIndexSpecified": true,
-                    "numberedGroup": null
-                  }
-                }
-              }
-            ],
-            "extractions": [
-              {
-                "extractionName": "TimeGenerated",
-                "extractionType": "DateTime",
-                "extractionProperties": {
-                  "dateTimeExtraction": {
-                    "regex": null,
-                    "joinStringRegex": null
-                  }
-                }
-              }
-            ]
-          }
-        },
-        {
-          "apiVersion": "2015-11-01-preview",
-          "type": "datasources",
-          "name": "sampleCustomLogCollection1",
-          "dependsOn": [
-            "[concat('Microsoft.OperationalInsights/workspaces/', parameters('workspaceName'))]"
-          ],
-          "kind": "CustomLogCollection",
-          "properties": {
-            "state": "LinuxLogsEnabled"
-          }
-        },
-        {
-          "apiVersion": "2015-11-01-preview",
           "name": "[concat(parameters('applicationDiagnosticsStorageAccountName'),parameters('workspaceName'))]",
           "type": "storageinsightconfigs",
           "dependsOn": [
@@ -464,7 +407,7 @@ A következő sablon minta bemutatja, hogyan:
 ### <a name="deploying-the-sample-template"></a>A minta sablon telepítése
 A minta sablon telepítéséhez:
 
-1. A csatolt minta például egy fájl mentése`azuredeploy.json` 
+1. A csatolt minta például egy fájl mentése `azuredeploy.json` 
 2. Szerkesztheti a sablont a kívánt konfigurációval rendelkezik
 3. A sablon telepítéséhez PowerShell vagy parancssor használatával
 

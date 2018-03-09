@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/11/2017
 ms.author: gokuma;bradsev
-ms.openlocfilehash: 6aef0fbe44e19b515c2bc10c0e7c38fabac10dae
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 0d7ee9a54c2c11f814ce041c5c7e5bd9f2e605e5
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="development-tools-on-the-data-science-virtual-machine"></a>Az adatok tudományos virtuális gép Fejlesztőeszközök
 
@@ -31,7 +31,7 @@ A tudományos virtuális gép (DSVM) által számos népszerű eszközök és ID
 | Mi ez?   | Általános célú IDE      |
 | Támogatott DSVM verziók      | Windows      |
 | A gyakori felhasználási      | Szoftverfejlesztői    |
-| Hogyan van azt konfigurált / a DSVM telepítve?      | Adatok tudományos munkaterhelés (Python és R eszközök), Azure számítási (Hadoop, Data Lake), Node.js, SQL Server-eszközök    |
+| Hogyan van azt konfigurált / a DSVM telepítve?      | Adatok tudományos munkaterhelés (Python és R eszközök), Azure számítási (Hadoop, Data Lake), Node.js, SQL Server-eszközök [AI Visual Studio eszközök](https://github.com/Microsoft/vs-tools-for-ai)    |
 | Hogyan használja az / futtatni?      | Asztali parancsikonra (`C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\devenv.exe`)    |
 | A DSVM a kapcsolódó eszközök      |     A Visual Studio Code, Rstudióból, Juno  |
 

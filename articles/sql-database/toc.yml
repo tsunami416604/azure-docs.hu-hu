@@ -45,12 +45,14 @@
       href: sql-database-design-first-database.md
     - name: 1 – Adatbázis tervezése a .NET használatával
       href: sql-database-design-first-database-csharp.md
-    - name: 2 – SQL Server-adatbázis migrálása
+    - name: 2 – SQL Server-adatbázisba irányuló migrálás
       href: sql-database-migrate-your-sql-server-database.md
     - name: 3 – Az SQL DB biztonságossá tétele
       href: sql-database-security-tutorial.md
     - name: 4 – Földrajzilag elosztott adatbázis implementálása
       href: sql-database-implement-geo-distributed-database.md
+    - name: 5 – Felügyelt példány létrehozása
+      href: sql-database-managed-instance-tutorial-portal.md
 - name: Példák
   items:
     - name: Kódminták
@@ -61,26 +63,26 @@
       href: sql-database-powershell-samples.md
 - name: Alapelvek
   items:
-    - name: Adatbázis-szolgáltatás
-      items:
-        - name: Kiszolgálók és adatbázisok
-          href: sql-database-servers-databases.md
-        - name: Szolgáltatásszintek
-          href: sql-database-service-tiers.md
-        - name: Erőforráskorlátok
-          href: sql-database-resource-limits.md
-        - name: Önálló adatbázisok
-          href: sql-database-single-database-resources.md
-        - name: Rugalmas készletek
-          href: sql-database-elastic-pool.md
-        - name: Kapcsolati architektúra
-          href: sql-database-connectivity-architecture.md
-        - name: DTU-k és eDTU-k
-          href: sql-database-what-is-a-dtu.md
-        - name: DTU-teljesítményteszt
-          href: sql-database-benchmark-overview.md
-        - name: Az SQL Server általános funkciói
-          href: sql-database-features.md
+    - name: Kiszolgálók és adatbázisok
+      href: sql-database-servers-databases.md
+    - name: Felügyelt példány
+      href: sql-database-managed-instance.md
+    - name: Szolgáltatásszintek
+      href: sql-database-service-tiers.md
+    - name: Erőforráskorlátok
+      href: sql-database-resource-limits.md
+    - name: Önálló adatbázisok
+      href: sql-database-single-database-resources.md
+    - name: Rugalmas készletek
+      href: sql-database-elastic-pool.md
+    - name: Kapcsolati architektúra
+      href: sql-database-connectivity-architecture.md
+    - name: DTU-k és eDTU-k
+      href: sql-database-what-is-a-dtu.md
+    - name: DTU-teljesítményteszt
+      href: sql-database-benchmark-overview.md
+    - name: Az SQL Server általános funkciói
+      href: sql-database-features.md
     - name: Magas rendelkezésre állás
       href: sql-database-high-availability.md
     - name: Biztonság
@@ -101,8 +103,10 @@
           href: sql-database-ssms-mfa-authentication.md
         - name: Naplózás
           href: sql-database-auditing.md
-        - name: Fenyegetések észlelése
+        - name: Fenyegetések észlelése – SQL Database
           href: sql-database-threat-detection.md
+        - name: Fenyegetések észlelése – Felügyelt példány
+          href: sql-database-managed-instance-threat-detection.md
         - name: Táblanaplózás és TDS
           href: sql-database-auditing-and-dynamic-data-masking-downlevel-clients.md
         - name: Dinamikus adatmaszkolás
@@ -137,11 +141,15 @@
           href: sql-database-disaster-recovery-drills.md
     - name: Migrálás az SQL Database-be
       items:
-        - name: Áttekintés
+        - name: Migrálás az SQL Database-be
           href: sql-database-cloud-migrate.md
-        - name: A T-SQL változtatásai
+        - name: Migrálás felügyelt példányra
+          href: sql-database-managed-instance-migrate.md
+        - name: SQL Database – T-SQL-részletek
           href: sql-database-transact-sql-information.md
-        - name: Adatbázis kezelése a migrálás után
+        - name: Felügyelt példány – T-SQL-részletek
+          href: sql-database-managed-instance-transact-sql-information.md
+        - name: SQL Database kezelése a migrálás után
           href: sql-database-manage-after-migration.md
     - name: Adatok betöltése és áthelyezése
       items:
@@ -265,6 +273,16 @@
           href: sql-database-elastic-query-horizontal-partitioning.md
         - name: Különböző sémákkal rendelkező táblákat lefedő lekérdezés
           href: sql-database-elastic-query-vertical-partitioning.md
+    - name: Felügyelt példány
+      items:
+        - name: Vnet-konfiguráció
+          href: sql-database-managed-instance-vnet-configuration.md
+        - name: Egyéni DNS
+          href: sql-database-managed-instance-custom-dns.md
+        - name: Alkalmazások csatlakoztatása
+          href: sql-database-managed-instance-connect-app.md
+        - name: Hálózati konfigurációja szinkronizálása
+          href: sql-database-managed-instance-sync-network-configuration.md
     - name: Biztonság
       items:
         - name: Azure AD-hitelesítés konfigurálása
@@ -472,4 +490,4 @@
     - name: Architektúra-központ
       href: /azure/architecture/
     - name: Ügyfelek történetei
-      href: 'https://customers.microsoft.com/en-us/search?sq=%22Azure%20SQL%20Database%22&ff=&p=0&so=story_publish_date%20desc'
+      href: 'https://customers.microsoft.com/search?sq=%22Azure%20SQL%20Database%22&ff=&p=0&so=story_publish_date%20desc'

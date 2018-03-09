@@ -15,11 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: Inactive
 ms.date: 03/03/2017
 ms.author: carlrab
-ms.openlocfilehash: b22307ee0cade40370b096ee49bb15dcfd2f0071
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 3da41adfa0865c0741c61b5d15c3ef1741eb6118
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="azure-sql-database-customer-implementation-technical-studies"></a>Az Azure SQL Database felhasználói megvalósítási műszaki tanulmányok
 
@@ -33,7 +33,7 @@ ms.lasthandoff: 10/31/2017
 
 - [Kvórum](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database): kvórum kulcsának adatbázis munkaterhelés megduplázódik, miközben az SQL Database 70 %-kal DTU csökkenti.
 
-- [Kérelem kitöltése](https://customers.microsoft.com/en-US/story/quest): hívása nyújt az SQL Server Enterprise-bA egy cél szem előtt a Spotlight: adatok védelme, körül adatok áthelyezése és adatbázis-műveletek figyelését az elérhető legjobb eszközöket adhat adatbázis szakemberek számára. A Spotlight, Microsoft Azure és az Azure SQL Database SQL Server adatbázis-rendszergazdák is figyelése, észleli, diagnosztizálása és teszik lehetővé az SQL Server, a teljesítménnyel kapcsolatos problémák megoldásához, az asztalok ülne, vagy otthonról dolgozik.
+- [Kérelem kitöltése](https://customers.microsoft.com/story/quest): hívása nyújt az SQL Server Enterprise-bA egy cél szem előtt a Spotlight: adatok védelme, körül adatok áthelyezése és adatbázis-műveletek figyelését az elérhető legjobb eszközöket adhat adatbázis szakemberek számára. A Spotlight, Microsoft Azure és az Azure SQL Database SQL Server adatbázis-rendszergazdák is figyelése, észleli, diagnosztizálása és teszik lehetővé az SQL Server, a teljesítménnyel kapcsolatos problémák megoldásához, az asztalok ülne, vagy otthonról dolgozik.
 
 - [A Microsoft Dynamics](https://customers.microsoft.com/story/dynamics365operationsproductteam): A rövid esettanulmány kiemeli az ajánlott eljárásokról és a Dynamics 365 műveletek termékcsapatának élmény ahhoz, hogy egy teljes körűen felügyelt szoftver biztosít az ügyfeleknek az Azure SQL Database áttelepítésének tanulságait a Szolgáltatásajánlat (SaaS). Azure SQL-adatbázist használja, a műveleti csapata Dynamics 365 felügyelete, és jelentősen kevesebb személyzettel a szolgáltatás működtetésére, és könnyedén méretezhető az out-of-az-box kezelhetőségi szolgáltatásokkal, például az adatbázis automatikus biztonsági mentés, adatbázis biztonsági másolatok megőrzésének , magas rendelkezésre állási és vészhelyreállítási helyreállítási funkciók. Az Azure SQL Database az alatt a felügyeleti teendők központjaként szolgáltatások folyamatos kiváló platform kölcsönbe ez kiépíteni az adatbázisokat trivial automatizálással képes együtt.
 

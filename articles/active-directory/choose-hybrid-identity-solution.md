@@ -6,18 +6,18 @@ author: jeffgilb
 manager: mtillman
 ms.reviewer: jsnow
 ms.author: billmath
-ms.date: 01/03/2018
+ms.date: 03/02/2018
 ms.topic: article
 ms.prod: 
 ms.service: azure
 ms.technology: 
 ms.assetid: 
 ms.custom: it-pro
-ms.openlocfilehash: 78813cfbfc9d28e9578f1970083e17d423e071b5
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: 9f9099c0ebd65ba84e171314e6f04d858648a805
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="microsoft-hybrid-identity-solutions"></a>Microsoft hibrid identitáskezelési megoldások
 [A Microsoft Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/active-directory-whatis) hibrid identitáskezelési megoldások lehetővé teszik a helyszíni címtár objektumainak szinkronizálása az Azure ad szolgáltatással, miközben továbbra is a felhasználók a helyszínen. Az első azt kell eldöntenie, ha a helyszíni Windows Server Active Directory szinkronizálása és az Azure AD tervezési szeretné használni identitás szinkronizált vagy összevont identitás. Szinkronizált identitások, és szükség esetén jelszókivonatait, lehetővé teszi a felhasználók, mind a helyszíni és felhőalapú szervezeti erőforrások eléréséhez használható ugyanazt a jelszót. A speciális forgatókönyv-követelményeinek, például egyszeri bejelentkezéses (SSO) vagy a helyi multi-factor Authentication szolgáltatás használatakor is telepíteni kell az Active Directory összevonási szolgáltatások (AD FS) összevont identitások. 
@@ -51,9 +51,6 @@ A legtöbb szervezet számára, akik csak a felhasználók jelentkezhetnek be az
 - Windows Server 2012 R2 vagy újabb
 - Az erdő, amelyen keresztül a felhasználók érvényesítése tartományhoz
 
-Áteresztő hitelesítés jelenleg nem támogatott Ha Windows 10-eszközök használata az Azure AD-tartományhoz. Azonban egy automatikus visszatérés támogatása Windows 10 a Jelszókivonat-szinkronizálást is használhatja, és azt korábban említettük a régi ügyfelek. Az előzetes Jelszókivonat-szinkronizálást alapértelmezés szerint engedélyezve van a bejelentkezési lehetőséget az Azure AD Connectben átmenő hitelesítés választásakor.
-
-
 ## <a name="federated-identity-ad-fs"></a>Összevont identitás (AD FS)
 Jobban kézben tartani, hogy a felhasználók miként férhetnek hozzá a Office 365 és más felhőalapú szolgáltatásokat, állíthatja be a címtár-szinkronizálás egyszeri bejelentkezés (SSO) használatával [Active Directory összevonási szolgáltatások (AD FS)](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/whats-new-active-directory-federation-services-windows-server-2016). A felhasználói bejelentkezéseket a az AD FS összevonását biztosít hitelesítést, amely ellenőrzi az felhasználói hitelesítő adatok a helyi kiszolgálóhoz. Ebben a modellben a helyszíni Active Directory hitelesítő adatok soha nem továbbítódnak az Azure AD.
 
@@ -68,7 +65,7 @@ Más néven identitás-összevonást, a bejelentkezési módszer biztosítja, ho
 ## <a name="common-scenarios-and-recommendations"></a>Gyakori forgatókönyvek és javaslatok
 Az alábbiakban néhány használt hibrid identitás- és hozzáférés-kezelési forgatókönyveket, mely hibrid identitás beállítás (vagy beállítások) megfelelő lehet az egyes ajánlásokkal.
 
-|Kell:|PWS és az egyszeri bejelentkezés<sup>1</sup>| ESP és az egyszeri bejelentkezés<sup>2</sup> | AZ AD FS<sup>3</sup>|
+|Kell:|PWS és az egyszeri bejelentkezés<sup>1</sup>| ESP és az egyszeri bejelentkezés<sup>2</sup> | AD FS<sup>3</sup>|
 |-----|-----|-----|-----|
 |Új felhasználói, lépjen kapcsolatba, és a helyszíni Active Directoryban a felhőbe automatikusan létrehozott szinkronizálása.|![Ajánlott](./media/choose-hybrid-identity-solution/ic195031.png)| ![Ajánlott](./media/choose-hybrid-identity-solution/ic195031.png) |![Ajánlott](./media/choose-hybrid-identity-solution/ic195031.png)|
 |Állítsa be a bérlő Office 365 hibrid forgatókönyvek esetén|![Ajánlott](./media/choose-hybrid-identity-solution/ic195031.png)| ![Ajánlott](./media/choose-hybrid-identity-solution/ic195031.png) |![Ajánlott](./media/choose-hybrid-identity-solution/ic195031.png)|

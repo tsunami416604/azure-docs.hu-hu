@@ -3,155 +3,166 @@ title: "Helyi üzembe helyezés Git használatával az Azure App Service szolgá
 description: "Útmutató az Azure App Service helyi Git-telepítésének engedélyezése."
 services: app-service
 documentationcenter: 
-author: dariagrigoriu
+author: cephalin
 manager: cfowler
-editor: mollybos
 ms.assetid: ac50a623-c4b8-4dfd-96b2-a09420770063
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/14/2016
-ms.author: dariagrigoriu
-ms.openlocfilehash: 948c54a2e9be2260d0a7d2cce31b67ffbbd23d03
-ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
+ms.date: 03/05/2018
+ms.author: dariagrigoriu;cephalin
+ms.openlocfilehash: 4cbe26055bdbf906223a327ab8cf94bebe9e7998
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="local-git-deployment-to-azure-app-service"></a>Helyi üzembe helyezés Git használatával az Azure App Service szolgáltatásban
 
-Ez az oktatóanyag bemutatja, hogyan üzembe az alkalmazást, amely [Azure Web Apps](app-service-web-overview.md) a Git-tárházat a helyi számítógépen. App Service támogatja ezt a módszert a a **helyi Git** a központi telepítési lehetőség a [Azure-portálon].
+Ez az útmutató útmutató bemutatja, hogyan telepítheti a kódot a [Azure App Service](app-service-web-overview.md) a Git-tárházat a helyi számítógépen.
+
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
+Kövesse a jelen útmutató Útmutató lépéseit:
 
-* Git. Letöltheti a bináris telepítési [Itt](http://www.git-scm.com/downloads).
-* Git alapszintű ismeretét.
-* Egy Microsoft Azure-fiók. Ha nincs fiókja, [regisztráljon egy ingyenes próbaverzióra](https://azure.microsoft.com/pricing/free-trial), vagy [aktiválhatja a Visual Studio előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details).
+* [Telepítse a Git szoftvert](http://www.git-scm.com/downloads).
+* Egy helyi Git-tárház számára telepíteni kívánja kóddal karbantartása.
+
+Egy minta-tárházat követéséhez használatához futtassa a következő parancsot a helyi terminálablakot:
+
+```bash
+git clone https://github.com/Azure-Samples/nodejs-docs-hello-world.git
+```
+
+## <a name="prepare-your-repository"></a>A tárház előkészítése
+
+Győződjön meg arról, hogy rendelkezik-e a megfelelő fájlokat a projektben az adattár gyökérkönyvtárában.
+
+| Futtatókörnyezet | Legfelső szintű directory fájlok |
+|-|-|
+| ASP.NET (csak Windows) | _*.sln_, _*.csproj_, or _default.aspx_ |
+| ASP.NET-mag | _*.sln_ vagy _*.csproj_ |
+| PHP | _index.php_ |
+| Ruby (csak Linux) | _Gemfile_ |
+| Node.js | _Server.js_, _app.js_, vagy _package.json_ egy indítási parancsfájl |
+| Python (csak Windows) | _\*.PY_, _requirements.txt_, vagy _runtime.txt_ |
+| HTML | _default.htm_, _default.html_, _default.asp_, _index.HTML_, _index.html_, vagy  _Iisstart.htm_ |
+| WebJobs | _\<job_name > / futtatásához. \<bővítmény >_ alatt _App\_adatok/feladatok/folyamatos_ (a folyamatos webjobs-feladatok) vagy _App\_adatok/feladatok/indított_ (az akkor kiváltott Webjobs-feladatok). További információkért lásd: [Kudu WebJobs-dokumentáció](https://github.com/projectkudu/kudu/wiki/WebJobs) |
+| Functions | Lásd: [folyamatos üzembe helyezés az Azure Functions](../azure-functions/functions-continuous-deployment.md#continuous-deployment-requirements). |
+
+A telepítés testreszabásához megadhat egy _.deployment_ fájlt az adattár gyökérkönyvtárában. További információkért lásd: [telepítéseinek testreszabásához](https://github.com/projectkudu/kudu/wiki/Customizing-deployments) és [egyéni telepítési parancsfájl](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script).
 
 > [!NOTE]
-> Ha az Azure App Service első lépései az Azure-fiók regisztrálása előtt szeretné, folytassa a [App Service kipróbálása](https://azure.microsoft.com/try/app-service/), ahol azonnal létrehozhat egy rövid élettartamú alapszintű alkalmazást az App Service-ben. Ehhez nincs szükség bankkártyára, és nem jár kötelezettségekkel.
+> Ügyeljen arra, hogy `git commit` számára telepíteni kívánja végrehajtott módosításokat.
+>
 >
 
-## <a name="Step1"></a>1. lépés: A helyi tárház létrehozása
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-A következő feladatokat hozzon létre egy új Git-tárházat.
+[!INCLUDE [Configure a deployment user](../../includes/configure-deployment-user.md)]
 
-1. Indítsa el a parancssori eszköz, például a **Git bash eszközt** (Windows) vagy **Bash** (Unix rendszerhéj). OS X rendszeren a parancssor keresztül hozzáférhet a **Terminálszolgáltatások** alkalmazás.
-1. Keresse meg azt a könyvtárat, amelyben a tartalom központi telepítéséhez volna található.
-1. A következő paranccsal egy új Git-tárház inicializálása:
+## <a name="enable-git-for-your-app"></a>Az alkalmazás Git engedélyezése
 
-  ```bash
-  git init
-  ```
+Egy meglévő App Service-alkalmazás Git-telepítésének engedélyezéséhez futtassa [ `az webapp deployment source config-local-git` ](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az_webapp_deployment_source_config_local_git) a felhő rendszerhéj.
 
-## <a name="Step2"></a>2. lépés: A tartalom véglegesítése
+```azurecli-interactive
+az webapp deployment source config-local-git --name <app_name> --resource-group <group_name>
+```
 
-App Service számos programozási nyelven készült alkalmazások támogatja.
+Ehelyett egy Git-kompatibilis alkalmazások létrehozásához futtassa az [ `az webapp create` ](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create) és a felhő rendszerhéj a `--deployment-local-git` paraméter.
 
-1. Ha a tárház már nem tartalmazza a tartalmat, statikus .html fájl hozzáadásához az alábbiak szerint; vagy hagyja ki ezt a lépést:
-   * Egy szövegszerkesztő használatával hozzon létre egy új fájlt **index.html** a Git-tárház gyökérkönyvtárában
-   * Adja hozzá a következő szöveget a index.html tartalmát fájlt, és mentse: *Hello Git!*
-1. A parancssorból ellenőrizze, hogy a Git-tárház gyökerében. A következő parancs használatával adja hozzá a fájlok a tárházhoz:
+```azurecli-interactive
+az webapp create --name <app_name> --resource-group <group_name> --plan <plan_name> --deployment-local-git
+```
 
-        git add -A 
-1. Ezt követően véglegesítse a módosításokat a tárházba a következő paranccsal:
+A `az webapp create` parancs biztosítani fogja az alábbi kimenet hasonló:
 
-        git commit -m "Hello Azure App Service"
+```json
+Local git is configured with url of 'https://<username>@<app_name>.scm.azurewebsites.net/<app_name>.git'
+{
+  "availabilityState": "Normal",
+  "clientAffinityEnabled": true,
+  "clientCertEnabled": false,
+  "cloningInfo": null,
+  "containerSize": 0,
+  "dailyMemoryTimeQuota": 0,
+  "defaultHostName": "<app_name>.azurewebsites.net",
+  "deploymentLocalGitUrl": "https://<username>@<app_name>.scm.azurewebsites.net/<app_name>.git",
+  "enabled": true,
+  < JSON data removed for brevity. >
+}
+```
 
-## <a name="Step3"></a>3. lépés: Az App Service alkalmazás tárház engedélyezése
+## <a name="deploy-your-project"></a>A projekt telepítése
 
-A következő lépésekkel ahhoz, hogy egy App Service-alkalmazás Git-tárházat.
+A _helyi terminálablakba_ visszatérve adjon hozzá egy távoli Azure-mappát a helyi Git-adattárhoz. Cserélje le  _\<URL-címe >_ URL-címét a Git távoli során kapott azonosítóértékeket [Git engedélyezése az alkalmazás](#enable-git-for-you-app).
 
-1. Jelentkezzen be az [Azure-portálon].
-1. Az App Service alkalmazás nézetben kattintson **beállítások > központi telepítés forrásának**. Kattintson a **forrás választása**, majd kattintson a **helyi Git-tárház**, és kattintson a **OK**.
+```bash
+git remote add azure <url>
+```
 
-    ![Helyi git-tárház](./media/app-service-deploy-local-git/local_git_selection.png)
+A távoli Azure-mappához történő küldéssel helyezze üzembe az alkalmazást a következő paranccsal. Amikor a rendszer jelszót kér, ügyeljen arra, hogy az [Üzembe helyező felhasználó konfigurálása](#configure-a-deployment-user) szakaszban létrehozott jelszót adja meg, ne azt, amelyet az Azure Portalra való bejelentkezéshez használ.
 
-1. Ha ez az első idő beállítása a tárházat az Azure-ban, a bejelentkezési hitelesítő adatok létrehozása az szeretné. Használhatja őket jelentkezzen be a Azure tárház és leküldéses módosítása a helyi Git-tárház a. A webalkalmazás nézetből kattintson **beállítások > üzembe helyezési hitelesítő adatok**, majd konfigurálja a központi telepítés felhasználónevét és jelszavát. Amikor elkészült, kattintson a **mentése**.
+```bash
+git push azure master
+```
 
-    ![](./media/app-service-deploy-local-git/deployment_credentials.png)
+Futásidejű-specifikus automatizálási a kimeneten, például az ASP.NET, az MSBuild fog látni `npm install` a Node.js, és `pip install` a Python. 
 
-## <a name="Step4"></a>4. lépés: A projekt telepítése
+Központi telepítés befejeződése után az alkalmazás az Azure portálon mostantól a rekorddal kell rendelkeznie a `git push` a a **központi telepítési beállítások** lap.
 
-Az alábbi lépések segítségével közzététele az alkalmazás az App Service helyi Git használatával.
+![](./media/app-service-deploy-local-git/deployment_history.png)
 
-1. A webalkalmazás nézetben az Azure portálon kattintson **beállítások > Tulajdonságok** a a **Git URL-cím**.
+Keresse meg azt az alkalmazásnak, hogy ellenőrizze, hogy a tartalom központi telepítése.
 
-    ![](./media/app-service-deploy-local-git/git_url.png)
+## <a name="troubleshooting"></a>Hibaelhárítás
 
-    **Git URL-cím** a helyi tárházból telepítendő Távoli hivatkozás. Az URL-cím a következő lépések segítségével.
-1. A parancssor használatával ellenőrizze, hogy a helyi Git-tárház gyökérkönyvtárában található.
-1. Használjon `git remote` hozzáadása a távoli leírásában felsorolt **Git URL-cím** az 1. lépés. A parancs a következőhöz hasonlít:
-
-    ```bash
-    git remote add azure https://<username>@localgitdeployment.scm.azurewebsites.net:443/localgitdeployment.git
-    ```
-
-   > [!NOTE]
-   > A **távoli** parancs hozzáad egy elnevezett hivatkozást egy távoli tárházba. Ebben a példában a webalkalmazás-tárház "azure" nevű hivatkozást hoz létre.
-   >
-
-1. Küldje le a tartalmat az új App Service **azure** távoli létrehozott.
-
-    ```bash
-    git push azure master
-    ```
-
-    A korábban létrehozott Azure-portálon az üzembe helyezési hitelesítő adatok alaphelyzetbe jelszó megadását kéri. Adja meg a jelszót (vegye figyelembe, hogy Gitbash nem jeleníti meg a konzol csillag, írja be a jelszót). 
-1. Térjen vissza az alkalmazást az Azure portálon. A legutóbbi leküldéses a naplóbejegyzést kell megjelennie a **központi telepítések** nézet.
-
-    ![](./media/app-service-deploy-local-git/deployment_history.png)
-
-1. Kattintson a **Tallózás** a weblap alkalmazás a tartalom központi telepítésének ellenőrzése gombra.
-
-## <a name="Step5"></a>Hibaelhárítás
-
-Hibák vagy problémák gyakran fordul elő, ha a Git használatával az Azure App Service alkalmazás közzététele a következők:
+Az alábbiakban gyakori hibák vagy problémák Git használatával az Azure App Service alkalmazás közzététele:
 
 ---
-**Jelenség**:`Unable to access '[siteURL]': Failed to connect to [scmAddress]`
+**Jelenség**: `Unable to access '[siteURL]': Failed to connect to [scmAddress]`
 
 **OK**: Ez a hiba akkor fordulhat elő, ha az alkalmazás nem válik működőképessé.
 
 **Megoldási**: Indítsa el az alkalmazást az Azure-portálon. Git-telepítés nem érhető el, ha a webalkalmazás le van állítva.
 
 ---
-**Jelenség**:`Couldn't resolve host 'hostname'`
+**Jelenség**: `Couldn't resolve host 'hostname'`
 
 **OK**: Ez a hiba akkor fordulhat elő, ha a megadott létrehozásakor az "azure" távoli címadatokat helytelen volt.
 
 **Megoldási**: használja a `git remote -v` paranccsal listát készíthet az összes távvezérlő, és a kapcsolódó URL-címe. Ellenőrizze, hogy helyes-e az "azure" távoli URL-CÍMÉT. Ha szükséges, távolítsa el és hozza létre újból a távoli, a helyes URL-cím használatával.
 
 ---
-**Jelenség**:`No refs in common and none specified; doing nothing. Perhaps you should specify a branch such as 'master'.`
+**Jelenség**: `No refs in common and none specified; doing nothing. Perhaps you should specify a branch such as 'master'.`
 
-**OK**: Ez a hiba akkor fordulhat elő, ha nem ad meg egy ágat során `git push`, vagy ha nem állított a `push.default` értéket `.gitconfig`.
+**OK**: Ez a hiba akkor fordulhat elő, ha nem adja meg egy ágat során `git push`, vagy ha még nem állította be a `push.default` értéket `.gitconfig`.
 
-**Megoldási**: végrehajtani a leküldéses műveletet, adja meg a főágba. Példa:
-
-```bash
-git push azure master
-```
-
----
-**Jelenség**:`src refspec [branchname] does not match any.`
-
-**OK**: Ez a hiba akkor fordulhat elő, ha megkísérli leküldése egy ágat a főadatbázison kívül az "Azure" távoli.
-
-**Megoldási**: végrehajtani a leküldéses műveletet, adja meg a főágba. Példa:
+**Megoldási**: futtatása `git push` ebben az esetben adja meg a főágba. Példa:
 
 ```bash
 git push azure master
 ```
 
 ---
-**Jelenség**:`RPC failed; result=22, HTTP code = 5xx.`
+**Jelenség**: `src refspec [branchname] does not match any.`
 
-**OK**: Ez a hiba akkor fordulhat elő, ha megkísérli a nagy git-tárház leküldéses HTTPS-KAPCSOLATON keresztül.
+**OK**: Ez a hiba akkor fordulhat elő, ha megpróbálja leküldése egy ágat a főadatbázison kívül az "Azure" távoli.
+
+**Megoldási**: futtatása `git push` ebben az esetben adja meg a főágba. Példa:
+
+```bash
+git push azure master
+```
+
+---
+**Jelenség**: `RPC failed; result=22, HTTP code = 5xx.`
+
+**OK**: Ez a hiba akkor fordulhat elő, ha egy nagy git-tárház leküldéses HTTPS-KAPCSOLATON keresztül.
 
 **Megoldási**: a helyi gépen a postBuffer nagyobb git konfigurációjának módosítása
 
@@ -160,11 +171,11 @@ git config --global http.postBuffer 524288000
 ```
 
 ---
-**Jelenség**:`Error - Changes committed to remote repository but your web app not updated.`
+**Jelenség**: `Error - Changes committed to remote repository but your web app not updated.`
 
-**OK**: Ez a hiba akkor fordulhat elő, ha telepít egy Node.js-alkalmazás, amely meghatározza a további szükséges modulokat package.json fájlt tartalmazó.
+**OK**: Ez a hiba akkor fordulhat elő, ha a Node.js alkalmazást telepít egy _package.json_ fájl, amely meghatározza a további szükséges modulokat.
 
-**Megoldási**: további üzeneteket tartalmazó "npm hiba!" Ez a hiba a naplózott előtt legyen, és a hiba esetén további környezetet biztosíthat. A következő ismert oka ezt a hibát, és a megfelelő "npm hiba!" üzenet:
+**Megoldási**: "npm hiba!" további üzenetek Ez a hiba előtt legyenek naplózva, és a hiba esetén további környezetet biztosíthat. A következő ismert oka ezt a hibát, és a megfelelő "npm hiba!" üzenet:
 
 * **Nem megfelelően formázott package.json fájl**: npm hiba! Nem lehetett olvasni a függőségek.
 * **Natív modul, amely nem rendelkezik Windows bináris terjesztési**:
@@ -176,17 +187,5 @@ git config --global http.postBuffer 524288000
 
 ## <a name="additional-resources"></a>További források
 
-* [A Git dokumentációja](http://git-scm.com/documentation)
 * [Project Kudu dokumentációja](https://github.com/projectkudu/kudu/wiki)
 * [Folyamatos üzembe helyezés az Azure App Service](app-service-continuous-deployment.md)
-* [A PowerShell használata az Azure-ban](/powershell/azure/overview)
-* [Az Azure parancssori felület használatával](../cli-install-nodejs.md)
-
-[Azure Developer Center]: http://www.windowsazure.com/en-us/develop/overview/
-[Azure-portálon]: https://portal.azure.com
-[Git website]: http://git-scm.com
-[Installing Git]: http://git-scm.com/book/en/Getting-Started-Installing-Git
-[Azure Command-Line Interface]: https://azure.microsoft.com/en-us/documentation/articles/xplat-cli-azure-resource-manager/
-
-[Using Git with CodePlex]: http://codeplex.codeplex.com/wikipage?title=Using%20Git%20with%20CodePlex&referringTitle=Source%20control%20clients&ProjectName=codeplex
-[Quick Start - Mercurial]: http://mercurial.selenic.com/wiki/QuickStart

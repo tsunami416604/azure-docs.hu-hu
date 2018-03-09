@@ -13,19 +13,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 03/28/2017
+ms.date: 03/05/2018
 ms.author: sujie
-ms.openlocfilehash: b06eae6b85f2ca41390955cde2499af2531e2e12
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 71e7247226f9432b3f9590ca87ac33883ea576ce
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="use-azure-stream-analytics-tools-for-visual-studio"></a>A Visual Studio Azure Stream Analytics-eszközök használata
 A Visual Studio Azure Stream Analytics-eszközökkel is általánosan elérhető. Ezek az eszközök a Stream Analytics-felhasználók a hibaelhárítás, valamint összetett lekérdezéseket írhat gazdagabb élmény engedélyezése, és akár a helyi lekérdezéseket írhat. A Stream Analytics-feladat a Visual Studio-projekt is exportálhatja.
 
 ## <a name="introduction"></a>Bevezetés
-Ebben az oktatóanyagban elsajátíthatja létrehozására, szerzői, helyi tesztelése, kezelésére és a Stream Analytics-feladatok debug Stream Analytics tools for Visual Studio használatával. 
+Ebben az oktatóanyagban elsajátíthatja létrehozására, szerzői, helyi tesztelése, kezelésére és a Stream Analytics-feladatok debug Stream Analytics tools for Visual Studio használatával. A feladat létrehozása után állíthatja be a folyamatos integrációt és a telepítési folyamatot, az Azure-bA a CI/CD Nuget-csomagot a tudnivalókat a további több [Stream Analytics Visual STUDIO eszközök beállításához CI/CD adatcsatorna](stream-analytics-tools-for-visual-studio-cicd.md) cikk.
 
 Ez az oktatóanyag befejezése után fogja tudni:
 
@@ -141,9 +141,9 @@ Most, hogy az első Stream Analytics lekérdezési írt, tesztelje a TollApp map
 
 Ez a mappa a következő fájlokat tartalmazza:
 
-* Entry.JSON
-* Exit.JSON
-* Registration.JSON
+* Entry.json
+* Exit.json
+* Registration.json
 
 ## <a name="question-number-of-vehicles-entering-a-toll-booth"></a>Kérdés: Sűrítéses egy téren kiállítási száma
 A projektben kattintson duplán a **Script.asaql** megnyitni a parancsprogramot a szerkesztőben. A parancsfájl az előző szakaszban beillesztése a szerkesztőbe. A lekérdezés-szerkesztő támogatja az IntelliSense zintaxisszínek és egy hibát jelző.
@@ -264,7 +264,7 @@ A projekt exportálhatja egy meglévő feladat két módja van.
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Az Azure Stream Analytics bemutatása](stream-analytics-introduction.md)
 * [Ismerkedés az Azure Stream Analytics segítségével](stream-analytics-get-started.md)
 * [Scale Azure Stream Analytics jobs](stream-analytics-scale-jobs.md) (Azure Stream Analytics-feladatok méretezése)

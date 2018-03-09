@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/17/2017
+ms.date: 03/05/2018
 ms.author: billmath
-ms.openlocfilehash: 1d935b73e1087d5ad858bdbee9af68dd1cf5cd1e
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: d3c1c080c1198fd75916a119d4bb08c8db50a05d
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="azure-ad-connect-sync-attributes-synchronized-to-azure-active-directory"></a>Azure AD Connect szinkronizálása: az Azure Active Directoryval szinkronizált attribútumok
 Ez a témakör az Azure AD Connect szinkronizálási szolgáltatás által szinkronizált attribútumok listája.  
@@ -83,11 +83,11 @@ Ebben az esetben indítsa el az ebben a témakörben attribútumlistát, és azo
 | givenName |X |X | | |
 | HomePhone |X |X | | |
 | információ |X |X |X |Ez az attribútum a csoportok jelenleg nem felhasznált. |
-| Monogram |X |X | | |
+| monogramja |X |X | | |
 | l |X |X | | |
 | legacyExchangeDN |X |X |X | |
 | mailNickname |X |X |X | |
-| Felügyeli | | |X | |
+| managedBy | | |X | |
 | Manager |X |X | | |
 | Tag | | |X | |
 | Mobileszköz |X |X | | |
@@ -211,7 +211,7 @@ Ebben az esetben indítsa el az ebben a témakörben attribútumlistát, és azo
 | l |X |X | | |
 | mail |X |X |X | |
 | mailnickname |X |X |X | |
-| Felügyeli | | |X | |
+| managedBy | | |X | |
 | Manager |X |X | | |
 | Tag | | |X | |
 | middleName |X |X | | |
@@ -271,7 +271,7 @@ Ebben az esetben indítsa el az ebben a témakörben attribútumlistát, és azo
 | l |X |X | | |
 | mail |X |X |X | |
 | mailNickname |X |X |X | |
-| Felügyeli | | |X | |
+| managedBy | | |X | |
 | Manager |X |X | | |
 | Tag | | |X | |
 | Mobileszköz |X |X | | |
@@ -351,7 +351,7 @@ Ebben az esetben indítsa el az ebben a témakörben attribútumlistát, és azo
 | facsimiletelephonenumber |X |X | | |
 | givenName |X |X | | |
 | l |X |X | | |
-| Felügyeli | | |X | |
+| managedBy | | |X | |
 | Manager |X |X | | |
 | Tag | | |X | |
 | Mobileszköz |X |X | | |
@@ -385,7 +385,7 @@ Ez a csoport olyan attribútumok használható, ha az Azure AD-címtár nem tám
 | displayName |X |X |X | |
 | givenName |X |X | | |
 | mail |X | |X | |
-| Felügyeli | | |X | |
+| managedBy | | |X | |
 | mailNickName |X |X |X | |
 | Tag | | |X | |
 | objectSID |X | | |gépi tulajdonság. AD-felhasználói azonosító karbantarthatja az Azure közötti szinkronizálás AD és az AD. |
@@ -421,17 +421,17 @@ Ezeknek az attribútumoknak **felhasználói** mellett kiválasztott az egyéb a
 ## <a name="exchange-hybrid-writeback"></a>Exchange hibrid visszaírásához.
 Ezek az attribútumok kerüljenek vissza az Azure AD a helyi Active Directory engedélyezése kiválasztásakor **Exchange hibrid**. Az Exchange verziójától függően kevesebb attribútumok szinkronizálása.
 
-| Attribútum neve | Felhasználó | Kapcsolatfelvétel | Csoport | Megjegyzés |
-| --- |:---:|:---:|:---:| --- |
-| msDS-ExternalDirectoryObjectID |X | | |Az Azure AD származó cloudAnchor. Ez az attribútum az új Exchange 2016 és a Windows Server 2016 AD. |
-| msExchArchiveStatus |X | | |Online archiválás: Lehetővé teszi az ügyfelek archiválására mail. |
-| msExchBlockedSendersHash |X | | |Szűrés: Írja vissza helyszíni szűrés és online biztonságos és a blokkolt küldő adatokat az ügyfelektől. |
-| msExchSafeRecipientsHash |X | | |Szűrés: Írja vissza helyszíni szűrés és online biztonságos és a blokkolt küldő adatokat az ügyfelektől. |
-| msExchSafeSendersHash |X | | |Szűrés: Írja vissza helyszíni szűrés és online biztonságos és a blokkolt küldő adatokat az ügyfelektől. |
-| msExchUCVoiceMailSettings |X | | |Egyesített üzenetküldési (egyesített ÜZENETKÜLDÉSI) – Online hangposta engedélyezése: Microsoft Lync Server által használt megjelenítésével jelzi a Lync Server integráció a helyszíni, hogy a felhasználó rendelkezik-e az online szolgáltatások hangposta. |
-| msExchUserHoldPolicies |X | | |Bírósági eljárások fenntartási: Felhőszolgáltatások lehetővé teszi, hogy mely felhasználók meghatározásához bírósági eljárások tartsa alatt állnak. |
-| proxyAddresses |X |X |X |Csak az Exchange Online-tól cím kerül beillesztésre x500. |
-| publicDelegates |X | | |Lehetővé teszi, hogy az Exchange Online-postaláda jogosultságokat SendOnBehalfTo a helyszíni Exchange-postaládájába rendelkező felhasználók részére. Az Azure AD Connect build 1.1.552.0 igényel vagy után. |
+| Attribútum név (Csatlakozás a felhasználói felület) |Attribútum-nevet (a helyszíni AD) | Felhasználó | Kapcsolatfelvétel | Csoport | Megjegyzés |
+| --- |:---:|:---:|:---:| --- |---|
+| msDS-ExternalDirectoryObjectID| ms-DS-External-Directory-Object-Id |X | | |Az Azure AD származó cloudAnchor. Ez az attribútum az új Exchange 2016 és a Windows Server 2016 AD. |
+| msExchArchiveStatus| ms-Exch-ArchiveStatus |X | | |Online archiválás: Lehetővé teszi az ügyfelek archiválására mail. |
+| msExchBlockedSendersHash| ms-Exch-BlockedSendersHash |X | | |Szűrés: Írja vissza helyszíni szűrés és online biztonságos és a blokkolt küldő adatokat az ügyfelektől. |
+| msExchSafeRecipientsHash| ms-Exch-SafeRecipientsHash  |X | | |Szűrés: Írja vissza helyszíni szűrés és online biztonságos és a blokkolt küldő adatokat az ügyfelektől. |
+| msExchSafeSendersHash| ms-Exch-SafeSendersHash  |X | | |Szűrés: Írja vissza helyszíni szűrés és online biztonságos és a blokkolt küldő adatokat az ügyfelektől. |
+| msExchUCVoiceMailSettings| ms-Exch-UCVoiceMailSettings |X | | |Egyesített üzenetküldési (egyesített ÜZENETKÜLDÉSI) – Online hangposta engedélyezése: Microsoft Lync Server által használt megjelenítésével jelzi a Lync Server integráció a helyszíni, hogy a felhasználó rendelkezik-e az online szolgáltatások hangposta. |
+| msExchUserHoldPolicies| ms-Exc-hUserHoldPolicies |X | | |Bírósági eljárások fenntartási: Felhőszolgáltatások lehetővé teszi, hogy mely felhasználók meghatározásához bírósági eljárások tartsa alatt állnak. |
+| proxyAddresses| proxyAddresses |X |X |X |Csak az Exchange Online-tól cím kerül beillesztésre x500. |
+| publicDelegates| ms-Exch-Public-Delegates  |X | | |Lehetővé teszi, hogy az Exchange Online-postaláda jogosultságokat SendOnBehalfTo a helyszíni Exchange-postaládájába rendelkező felhasználók részére. Az Azure AD Connect build 1.1.552.0 igényel vagy után. |
 
 ## <a name="exchange-mail-public-folder"></a>Exchange E-mail nyilvános mappa
 Ezek az attribútumok a helyszíni Active Directoryból szinkronizálva az Azure AD, ha bejelöli a engedélyezése **Exchange E-mail nyilvános mappa**.

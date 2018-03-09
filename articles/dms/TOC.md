@@ -6,6 +6,7 @@
 
 # Oktatóanyagok
 ## [SQL Server migrálása az Azure SQL DB-be](tutorial-sql-server-to-azure-sql.md)
+## [SQL Server migrálása az Azure SQL DB felügyelt példányába](tutorial-sql-server-to-managed-instance.md)
 
 # Útmutatók
 ## [SQL Server migrálása a PowerShell használatával](howto-sql-server-to-azure-sql-powershell.md)
@@ -19,4 +20,4 @@
 ## [Előfeltételek áttekintése](pre-reqs.md)
 ## [GYIK](faq.md)
 ## [Szolgáltatási hírek](https://azure.microsoft.com/en-us/updates/?product=database-migration)
-
+## [Hálózati topológiák az Azure SQL DB felügyelt példányainak migrálásához](resource-network-topologies.md)

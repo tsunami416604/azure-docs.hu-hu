@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/31/2017
 ms.author: magoedte
-ms.openlocfilehash: 0319a7b9248dec9d7cdabba9c18a25463d94284b
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: 47cca0c3b6b7010323dd816cdb863c652516bfe5
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="forward-job-status-and-job-streams-from-automation-to-log-analytics-oms"></a>Továbbítsa feladat állapotát és a feladat adatfolyamok Automation való Naplóelemzés (OMS)
 Automatizálási küldhet runbook feladat állapotát és a feladat adatfolyamokat a Microsoft Operations Management Suite (OMS) Naplóelemzési munkaterületet. Feladat naplózza, és a feladat adatfolyamok láthatók az Azure portálon, vagy a PowerShell használatával, az egyes feladatokat, és ez lehetővé teszi egyszerű vizsgálatok végrehajtását. Most Log Analytics segítségével:
@@ -69,7 +69,7 @@ Ha meg szeretné tudni a *neve* az Automation-fiók, az Azure portálon válassz
 
 A parancsfájl futtatása után új JobLogs vagy írása JobStreams 10 percen belül megjelennek a Log Analytics-rekordok.
 
-A naplók megtekintéséhez futtassa a következő lekérdezés Naplóelemzési napló keresése:`AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION""`
+A naplók megtekintéséhez futtassa a következő lekérdezés Naplóelemzési napló keresése: `AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION"`
 
 ### <a name="verify-configuration"></a>Konfiguráció ellenőrzése
 Annak ellenőrzéséhez, hogy az Automation-fiók naplókat küld a Naplóelemzési munkaterületet, ellenőrizze, hogy diagnosztika helyesen van konfigurálva az Automation-fiók a következő PowerShell használatával:
@@ -104,11 +104,11 @@ Azure Automation diagnosztika kétféle típusú rekordok Naplóelemzési hoz l�
 | ResourceId |A runbook Azure Automation szolgáltatásbeli fiók erőforrás azonosítóját adja meg. |
 | SubscriptionId | Az Azure-előfizetés azonosítója (GUID) az Automation-fiókhoz. |
 | ResourceGroup | Az erőforráscsoport neve az Automation-fiók. |
-| ResourceProvider | MICROSOFT. AUTOMATIZÁLÁS |
+| ResourceProvider | MICROSOFT.AUTOMATION |
 | ResourceType | AUTOMATIONACCOUNTS |
 
 
-### <a name="job-streams"></a>Feladat adatfolyamok
+### <a name="job-streams"></a>Job Streams
 | Tulajdonság | Leírás |
 | --- | --- |
 | TimeGenerated |A runbook-feladat végrehajtásának dátuma és időpontja. |
@@ -127,13 +127,13 @@ Azure Automation diagnosztika kétféle típusú rekordok Naplóelemzési hoz l�
 | ResourceId |A runbook Azure Automation szolgáltatásbeli fiók erőforrás azonosítóját adja meg. |
 | SubscriptionId | Az Azure-előfizetés azonosítója (GUID) az Automation-fiókhoz. |
 | ResourceGroup | Az erőforráscsoport neve az Automation-fiók. |
-| ResourceProvider | MICROSOFT. AUTOMATIZÁLÁS |
+| ResourceProvider | MICROSOFT.AUTOMATION |
 | ResourceType | AUTOMATIONACCOUNTS |
 
 ## <a name="viewing-automation-logs-in-log-analytics"></a>A Naplóelemzési bejelentkezik Automation megtekintése
 Most, hogy az Automation-feladat naplók küldése Naplóelemzési használatához nézzük meg, mi mindent, ezek a naplók Naplóelemzési belül.
 
-A naplók megtekintéséhez futtassa a következő lekérdezést:`AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION"`
+A naplók megtekintéséhez futtassa a következő lekérdezést: `AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION"`
 
 ### <a name="send-an-email-when-a-runbook-job-fails-or-suspends"></a>E-mailt küld, ha egy runbook-feladat sikertelen lesz, vagy felfüggesztése
 Az első ügyfél egyik kéri van arra, hogy a szöveg vagy egy e-mailt küldeni, ha probléma merül fel a runbook-feladatok.   
@@ -141,7 +141,7 @@ Az első ügyfél egyik kéri van arra, hogy a szöveg vagy egy e-mailt küldeni
 A riasztási szabályt létrehozni, akkor először hozzon létre egy napló keressen rá a runbook feladat azt jelzi, hogy a riasztás kell meghívnia. Kattintson a **riasztás** gombra kattintva hozza létre és konfigurálja a riasztási szabályt.
 
 1. A napló elemzés áttekintése lapon kattintson **naplófájl-keresési**.
-2. A riasztás napló keresési lekérdezés létrehozásához írja be a következő keresést a lekérdezés mezőbe: `AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobLogs" and (ResultType == "Failed" or ResultType == "Suspended")` szerint is csoportosíthatók a RunbookName által használatával:`AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobLogs" and (ResultType == "Failed" or ResultType == "Suspended") | summarize AggregatedValue = count() by RunbookName_s`
+2. A riasztás napló keresési lekérdezés létrehozásához írja be a következő keresést a lekérdezés mezőbe: `AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobLogs" and (ResultType == "Failed" or ResultType == "Suspended")` szerint is csoportosíthatók a RunbookName által használatával: `AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobLogs" and (ResultType == "Failed" or ResultType == "Suspended") | summarize AggregatedValue = count() by RunbookName_s`
 
    Ha korábban beállított naplók egynél több Automation-fiók vagy előfizetés a munkaterületet, csoportosíthatók a a riasztások előfizetés és az Automation-fiók. Automation-fiók neve JobLogs keresése mezőjében erőforrás található.
 1. Lehetőségre a **riasztási szabály hozzáadása** kattintson **riasztási** az oldal tetején. A riasztás konfigurálása lehetőségekről további információkért lásd: [Naplóelemzési riasztások](../log-analytics/log-analytics-alerts.md#alert-rules).
@@ -163,14 +163,14 @@ Végül érdemes lehet a feladatelőzményekben megjelenítheti az adott idő al
 `AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobLogs" and ResultType != "started" | summarize AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h)`  
 <br> ![OMS korábbi feladat állapota diagram](media/automation-manage-send-joblogs-log-analytics/historical-job-status-chart.png)<br>
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 Az Automation feladat állapotát és az adatfolyam adatokat küld a Naplóelemzési, által az automatizálási feladatok állapotának jobb betekintést kaphat:
 + Riasztások beállítása értesítést küldenek, ha probléma van.
 + Egyéni nézetei és a keresési lekérdezések segítségével a runbook eredményeinek képi megjelenítése, runbook-feladat állapotát, és egyéb kapcsolódó fő mutatók vagy metrikákat.  
 
 A Naplóelemzési az Automation-feladat működési áttekinthetősége biztosít, és segít a cím incidensek gyorsabb.  
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Különböző keresési lekérdezések összeállításához, és tekintse át az Automation-feladat naplók és a Naplóelemzési kapcsolatos további tudnivalókért lásd: [Log Analytics-e jelentkezni a keresések](../log-analytics/log-analytics-log-searches.md).
 * Szeretné megtudni, hogyan hozhat létre és runbook-kimenet és a hiba üzeneteket beolvasni, lásd: [Runbook kimenet és üzenetek](automation-runbook-output-and-messages.md).
 * A runbook végrehajtásával, a runbook-feladatok figyelésével, illetve az egyéb technikai részletekkel kapcsolatos további tudnivalókat a [Runbook-feladatok nyomon követése](automation-runbook-execution.md) című rész tartalmazza.

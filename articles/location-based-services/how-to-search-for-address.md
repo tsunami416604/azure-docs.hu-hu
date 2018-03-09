@@ -2,17 +2,17 @@
 title: "Az Azure-alapú helyszolgáltatás (előzetes verzió) keresési szolgáltatással cím keresése |} Microsoft Docs"
 description: "Megtudhatja, hogyan keresse meg az Azure-alapú helyszolgáltatás (előzetes verzió) – keresés szolgáltatást segítségével"
 services: location-based-services
-keywords: "Nem adjon hozzá vagy kulcsszavak szerkesztése nélkül tanácsadás a Keresőmotor-optimalizálást végző szakemberrel."
-author: philmea
-ms.author: philmea
+keywords: "Ne adjon hozzá kulcsszavakat és ne szerkessze azokat a keresőoptimalizálást végző szakemberrel való egyeztetés nélkül."
+author: kgremban
+ms.author: kgremban
 ms.date: 11/29/2017
 ms.topic: article
 ms.service: location-based-services
-ms.openlocfilehash: cacaaab869d3a7752b5a750f01bbfbdaf79814f7
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: dd8026c55d71f6e421b976d8e7ae12f1cfd679a1
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="how-to-find-an-address-using-the-azure-location-based-services-preview-search-service"></a>Hol találhatók az Azure-alapú helyszolgáltatás (előzetes verzió) keresési szolgáltatás segítségével
 A keresési szolgáltatás egy egy RESTful API-k, címek, a helyek, a pontokat iránt érdeklődik, üzleti listák és egyéb földrajzi információk keresése fejlesztők számára készült. A keresési szolgáltatás a szélesség/hosszúsági egy adott cím, alhálózatok közötti utca, földrajzi funkció vagy információs jel (POI) rendeli. A keresési szolgáltatás API-k által visszaadott szélességi és hosszúsági értékeket más Azure-alapú helyszolgáltatás például az útvonal és a forgalom áramlását API-k paramétereiben használható.
@@ -119,7 +119,7 @@ Egy teljes vagy részleges utca, házszám átadása a keresési cím API-t, és
 
     | Kulcs | Érték |
     |-----|------------|
-    | typeahead | igaz |
+    | typeahead | true |
 
     A **typeahead** jelző utasítja a cím keresési API-JÁNAK, ha a lekérdezés egy részleges bemenetként és prediktív értékek tömbjét adja vissza.
 
@@ -154,7 +154,7 @@ Egy teljes vagy részleges utca, házszám átadása a keresési cím API-t, és
 
     | Kulcs | Érték |
     |-----|------------|
-    | szám | igaz |
+    | szám | true |
 
     Ha a [szám](https://docs.microsoft.com/rest/api/location-based-services/search/getsearchaddressreverse#search_getsearchaddressreverse_uri_parameters) lekérdezésparaméter a kérelem nem jut, a válasz előfordulhat, hogy tartalmazza a utca (balra vagy jobbra), és az eltolás pozíciója, hogy a kívánt oldalán.
     
@@ -162,7 +162,7 @@ Egy teljes vagy részleges utca, házszám átadása a keresési cím API-t, és
 
     | Kulcs | Érték |
     |-----|------------|
-    | spatialKeys | igaz |
+    | spatialKeys | true |
 
     Ha a [spatialKeys](https://docs.microsoft.com/rest/api/location-based-services/search/getsearchaddressreverse#search_getsearchaddressreverse_uri_parameters) lekérdezési paraméter értéke, a válasz egy adott hely védett földrajzi térbeli kulcsfontosságú adatokat tartalmaz.
 
@@ -170,7 +170,7 @@ Egy teljes vagy részleges utca, házszám átadása a keresési cím API-t, és
 
     | Kulcs | Érték |
     |-----|------------|
-    | returnSpeedLimit | igaz |
+    | returnSpeedLimit | true |
     
     Ha a [returnSpeedLimit](https://docs.microsoft.com/rest/api/location-based-services/search/getsearchaddressreverse#search_getsearchaddressreverse_uri_parameters) lekérdezési paraméter értéke, a válasz visszaadása, a közzétett Sebességkorlát.
 
@@ -178,7 +178,7 @@ Egy teljes vagy részleges utca, házszám átadása a keresési cím API-t, és
 
     | Kulcs | Érték |
     |-----|------------|
-    | returnRoadUse | igaz |
+    | returnRoadUse | true |
 
     Ha a [returnRoadUse](https://docs.microsoft.com/rest/api/location-based-services/search/getsearchaddressreverse#search_getsearchaddressreverse_uri_parameters) lekérdezési paraméter értéke, a választ ad vissza, a közúti használható tömb reversegeocodes utca szinten.
 
@@ -186,7 +186,7 @@ Egy teljes vagy részleges utca, házszám átadása a keresési cím API-t, és
 
     | Kulcs | Érték |
     |-----|------------|
-    | roadUse | igaz |
+    | roadUse | true |
 
     A fordított geocode lekérdezés egy adott típusú közúti használata használatával korlátozhatja a [roadUse](https://docs.microsoft.com/rest/api/location-based-services/search/getsearchaddressreverse#search_getsearchaddressreverse_uri_parameters) lekérdezési paraméter.
     

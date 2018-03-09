@@ -63,6 +63,10 @@
 ### [Fájltömörítés](cdn-troubleshoot-compression.md)
 
 # Referencia
+##  [Szabálymotor-referencia](cdn-rules-engine-reference.md)
+### [Szabálymotor feltételes kifejezései](cdn-rules-engine-reference-conditional-expressions.md)
+### [Szabálymotor egyezési feltételei](cdn-rules-engine-reference-match-conditions.md)
+### [Szabálymotor funkciói](cdn-rules-engine-reference-features.md)
 ## [Kódminták](https://azure.microsoft.com/en-us/resources/samples/?service=cdn)
 ## [Azure PowerShell](/powershell/module/azurerm.cdn)
 ## [.NET](/dotnet/api/microsoft.azure.management.cdn)
@@ -70,10 +74,6 @@
 ## [REST](/rest/api/cdn/)
 
 # További források
-##  [Szabálymotor referencia](cdn-rules-engine-reference.md)
-### [Szabálymotor feltételes kifejezései](cdn-rules-engine-reference-conditional-expressions.md)
-### [Szabálymotor funkciói](cdn-rules-engine-reference-features.md)
-### [Szabálymotor egyezési feltételei](cdn-rules-engine-reference-match-conditions.md)
 ## [Azure CDN POP-helyek](cdn-pop-locations.md)
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
 ## [MSDN-fórum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurecdn)

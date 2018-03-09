@@ -14,25 +14,25 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/04/2018
 ms.author: chackdan
-ms.openlocfilehash: 8e2fceaf7e8a0d6c177d3122bd07de5b8c11f295
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: ad5f396cd71eb0136fe683bbccb9360291be2d59
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>A Service Fabric fürt kapacitástervezésének szempontjai
 Minden éles telepítésében kapacitásának megtervezése fontos lépés. Az alábbiakban néhány kell figyelembe venni, hogy a folyamat részeként elemek.
 
 * A fürt kell kezdődnie csomóponttípusok száma
 * Az egyes (méret, elsődleges, internetre irányuló, virtuális gépek száma stb.) típusú csomópont tulajdonságait
-* A fürt megbízhatóság és a tartós jellemzői
+* A fürt megbízhatóságra és tartósságra vonatkozó jellemzői.
 
 Ossza meg velünk rövid időre tekintse át az összes ezeket az elemeket.
 
 ## <a name="the-number-of-node-types-your-cluster-needs-to-start-out-with"></a>A fürt kell kezdődnie csomóponttípusok száma
 Először akkor ki kell deríteni a fürt létrehozásakor folyamatainak szolgál, és milyen típusú alkalmazások kíván üzembe helyezés ehhez a fürthöz. Ha nem egyértelmű, a szándékosan a fürt, akkor valószínűleg még nem adja meg a kapacitást tervezési folyamat kész.
 
-A fürt kell kezdődnie csomóponttípusok számának meghatározásához.  Az egyes csomóponttípusok van rendelve egy virtuálisgép-méretezési csoportban. Az egyes csomóponttípusok akár majd is méretezhető vagy rendelkezik egymástól függetlenül, a portok megnyitása más-más részhalmazához le, és különböző teljesítmény-mérőszámait lehet. Ezt a döntést a csomóponttípusok számának lényegében elérhető lesz az a következőket kell figyelembe venni:
+A fürt kell kezdődnie csomóponttípusok számának meghatározásához.  Az egyes csomóponttípusok van rendelve egy virtuálisgép-méretezési csoportban. Ezután mindegyik csomóponttípus egymástól függetlenül skálázható vertikálisan le vagy fel, eltérő nyitott portokkal rendelkezhet, és eltérő kapacitásmetrikái lehetnek. Ezt a döntést a csomóponttípusok számának lényegében elérhető lesz az a következőket kell figyelembe venni:
 
 * Az alkalmazás nem rendelkezik több szolgáltatásra, és bármelyiket kell lennie a public vagy az internetre? Tipikus alkalmazások tartalmazzák egy előtér-átjáró szolgáltatás, amely a bemeneti kap egy ügyfél és egy vagy több háttérszolgáltatások kommunikáló az előtér-szolgáltatások. Így ebben az esetben befejezi a legalább két csomópont típus rendelkezik.
 * A szolgáltatások (az alkalmazást alkotó) rendelkeznek a különböző infrastruktúrához például nagyobb RAM vagy nagyobb CPU-ciklusok? Például tételezzük fel, hogy az alkalmazást, amely számára telepíteni kívánja az előtér-szolgáltatás és a háttér-szolgáltatás tartalmazza-e. Az előtér-szolgáltatás is futtathatók kisebb virtuális gépek (VM-méretek D2 beállításaihoz hasonlóan), amely a portokat nyissa meg az internethez.  A háttér-szolgáltatás azonban számítási intenzív és futtatni a nagyobb virtuális gépek (VM-méretek D4, D6, D15 hasonlóan), amelyek nincsenek internet felé néző.
@@ -88,10 +88,11 @@ Az egyes a csomóponttípusok tartóssági szint kiválasztásához kap. Egy cso
  
 1. Központi telepítések a virtuálisgép-méretezési készlet és egyéb kapcsolódó Azure-erőforrások) késleltethető, is időtúllépéssel fejeződött be, vagy teljesen problémák, a fürt vagy az infrastruktúra szintjén blokkolhatja. 
 2. Száma [replika életciklus-események](service-fabric-reliable-services-advanced-usage.md#stateful-service-replica-lifecycle ) (például elsődleges swap) miatt automatikus csomópont deactivations Azure-infrastruktúra műveletek során.
+3. Csomópontok nem működik az Azure platformon és szoftverfrissítéseket hardver karbantartás tevékenységek során ideig tart. Ezek a tevékenységek során letiltása vagy letiltott állapotú csomópontokat jelenhet meg. A kapacitás, a fürt ideiglenesen csökkenti, de kell befolyásolja a fürt vagy az alkalmazások rendelkezésre állását.
 
 ### <a name="recommendations-on-when-to-use-silver-or-gold-durability-levels"></a>Ezüst vagy arany tartóssági szint használatával kapcsolatos javaslatok
 
-Ezüst vagy arany tartóssági minden csomópont típusú használ, amelynek a skála a várt állapot-nyilvántartó szolgáltatásokat (csökkentheti a Virtuálisgép-példányok száma) gyakran, és a telepítési műveletek elhalasztja a skálázási műveletek egyszerűsítése helyett inkább. A kibővített forgatókönyvek (hozzáadása a virtuális gépek példányok) tölt be a választott a tartóssági szint, csak méretezési a does.
+Ezüst vagy arany tartóssági minden csomópont típusú használ, amelynek a skála a várt állapot-nyilvántartó szolgáltatásokat (csökkentheti a Virtuálisgép-példányok száma) gyakran, és szeretné, hogy a telepítési műveleteket kell késleltetett és kapacitása csökkenthető a skála a egyszerűsítése helyett műveletek. A kibővített forgatókönyvek (hozzáadása a virtuális gépek példányok) tölt be a választott a tartóssági szint, csak méretezési a does.
 
 ### <a name="changing-durability-levels"></a>Tartóssági szint módosítása
 - Ezüst vagy arany szintű tartósságot csomóponttípusok a bronz nem léptethető vissza.
@@ -102,7 +103,7 @@ Ezüst vagy arany tartóssági minden csomópont típusú használ, amelynek a s
 
 1. Tartsa a fürt és az alkalmazások megfelelő időben a tulajdonos, és győződjön meg arról, hogy válaszol-e alkalmazások az összes [replika életciklus-események szolgáltatás](service-fabric-reliable-services-advanced-usage.md#stateful-service-replica-lifecycle) (ilyen például a build replika Beragadt) időben.
 2. Elfogadja a biztonságosabb módszer tesz virtuális gép Termékváltozat (méretezési fel/le): a virtuális gép egy virtuálisgép-méretezési csoportban Termékváltozata módosítása során eredendően nem biztonságos, és ezért el kell kerülni Ha lehetséges. Itt az a folyamat követésével gyakori problémák elkerülése érdekében.
-    - **A nem elsődleges NodeType tulajdonságok értéke:** tartalmaz az új virtuálisgép-méretezési készlet/csomópont-típust, és csökkentse 0 (Ez a győződjön meg arról, hogy a csomópont eltávolítása nincs hatással a fürt megbízhatóságát) egyszerre csak egy csomópontot a régi virtuálisgép-méretezési csoport példányok száma a szolgáltatás elhelyezési korlátozás módosítása, hogy hozzon létre új virtuálisgép-méretezési készlet ajánlott.
+    - **A nem elsődleges NodeType tulajdonságok értéke:** javasoljuk, hogy hozzon létre új virtuálisgép-méretezési készlet, a szolgáltatás elhelyezési korlátozás tartalmaz az új virtuálisgép-méretezési készlet/csomópont-típust, és csökkentse a régi virtuálisgép-méretezési csoport példány módosítása száma 0-ra, (Ez a győződjön meg arról, hogy a csomópont eltávolítása nincs hatással a fürt megbízhatóságát) egyszerre csak egy csomópont.
     - **Az elsődleges nodetype:** azt javasoljuk, nem módosíthatja, hogy az elsődleges csomóponttípusok VM Termékváltozata. Az elsődleges csomóponttípusok SKU nem támogatott módosítása. Ha az új SKU oka kapacitás, ajánlott több példány hozzáadása. Ha a nem lehetséges, hozzon létre egy új fürtöt és [alkalmazásállapot visszaállítása](service-fabric-reliable-services-backup-restore.md) (ha van ilyen) a régi fürtről. Nem kell minden rendszer szolgáltatás állapotának visszaállítására, akkor jönnek létre újból az új fürt számára az alkalmazások központi telepítésekor. Ha csak állapot nélküli alkalmazásokban a fürtben futó, akkor kell a alkalmazásokat az új fürtre, a rendszer nincs semmi visszaállítása. Ha úgy dönt, nyissa meg a nem támogatott útvonal és a virtuális gép SKU módosítani kívánja, majd hajtsa végre a virtuális gép méretezési beállítása Model definition tükrözzék az új SKU módosításokat. Ha a fürt csak egy nodetype, majd győződjön meg arról, hogy válaszol-e az állapotalapú alkalmazások az összes [replika életciklus-események szolgáltatás](service-fabric-reliable-services-advanced-usage.md#stateful-service-replica-lifecycle) (ilyen például a build replika Beragadt) egy időben, valamint a szolgáltatás replika Újraépítés időtartama legalább öt percet (ezüst tartóssági szint). 
 
 
