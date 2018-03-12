@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/11/2016
 ms.author: jdial
-ms.openlocfilehash: 726799e5d885f144d6e24ab88aaa022f95f0bdd8
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: 5eca18ca2f34097d98ce947c61c635abc6ab27b8
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="filter-network-traffic-with-network-security-groups"></a>Hálózati forgalom szűrése hálózati biztonsági csoportokkal
 
@@ -32,7 +32,7 @@ Az NSG-k az alábbi tulajdonságokat tartalmazzák:
 
 | Tulajdonság | Leírás | Korlátozások | Megfontolandó szempontok |
 | --- | --- | --- | --- |
-| Név |Az NSG neve |Egyedinek kell lennie a régión belül.<br/>Betűket, számokat, aláhúzásjeleket, pontokat és kötőjeleket tartalmazhat.<br/>Betűvel vagy számmal kell kezdődnie.<br/>Betűvel, számmal vagy aláhúzásjellel kell végződnie.<br/>Nem lehet hosszabb 80 karakternél. |Mivel előfordulhat, hogy több NSG-t kell létrehoznia, győződjön meg arról, hogy van egy elnevezési konvenciója, amellyel könnyedén azonosíthatja az NSG-k funkcióját. |
+| Name (Név) |Az NSG neve |Egyedinek kell lennie a régión belül.<br/>Betűket, számokat, aláhúzásjeleket, pontokat és kötőjeleket tartalmazhat.<br/>Betűvel vagy számmal kell kezdődnie.<br/>Betűvel, számmal vagy aláhúzásjellel kell végződnie.<br/>Nem lehet hosszabb 80 karakternél. |Mivel előfordulhat, hogy több NSG-t kell létrehoznia, győződjön meg arról, hogy van egy elnevezési konvenciója, amellyel könnyedén azonosíthatja az NSG-k funkcióját. |
 | Régió |Az Azure-[régió](https://azure.microsoft.com/regions), ahol az NSG létrejön. |Az NSG-ket csak az NSG-kkel megegyező régióban található erőforrásokra lehet alkalmazni. |A régiónként elérhető NSG-k számáról az [Azure korlátairól](../azure-subscription-service-limits.md#virtual-networking-limits-classic) szóló cikkben olvashat.|
 | Erőforráscsoport |Az [erőforráscsoport](../azure-resource-manager/resource-group-overview.md#resource-groups), amelyben az NSG található. |Az NSG-k egy adott erőforráscsoportban találhatók, azonban bármely erőforráscsoport erőforrásaihoz társíthatók, feltéve, hogy az erőforrás ugyanahhoz az Azure-régióhoz tartozik, mint az NSG. |Az erőforráscsoportokkal több erőforrást kezelnek egyszerre, egy üzembe helyezési egységként.<br/>Érdemes az NSG-ket egy csoportba tenni azokkal az erőforrásokkal, amelyekhez társítva vannak. |
 | Szabályok |Az engedélyezett vagy tiltott forgalmat meghatározó bejövő vagy kimenő szabályok. | |Lásd az [NSG-szabályokkal](#Nsg-rules) kapcsolatos részt ebben a cikkben. |
@@ -44,7 +44,7 @@ Az NSG-k az alábbi tulajdonságokat tartalmazzák:
 ### <a name="nsg-rules"></a>NSG-szabályok
 Az NSG-szabályok az alábbi tulajdonságokat tartalmazzák:
 
-| Tulajdonság | Leírás | Korlátozások | Megfontolások |
+| Tulajdonság | Leírás | Korlátozások | Megfontolandó szempontok |
 | --- | --- | --- | --- |
 | **Name (Név)** |A szabály neve. |Egyedinek kell lennie a régión belül.<br/>Betűket, számokat, aláhúzásjeleket, pontokat és kötőjeleket tartalmazhat.<br/>Betűvel vagy számmal kell kezdődnie.<br/>Betűvel, számmal vagy aláhúzásjellel kell végződnie.<br/>Nem lehet hosszabb 80 karakternél. |Egy NSG-n belül több szabály is lehet, ezért győződjön meg arról, hogy van egy elnevezési konvenciója, amellyel azonosíthatja a szabályok funkcióját. |
 | **Protocol (Protokoll)** |A szabálynak megfelelő protokoll. |TCP, UDP vagy * |A * protokollként történő használata tartalmazza az ICMP-t (csak a kiszolgálók közötti forgalom), valamint az UDP-t és a TCP-t, és csökkentheti a szükséges szabályok számát.<br/>A * használata azonban túl széles körű lehet, ezért ügyeljen arra, hogy csak szükség esetén használja. |
@@ -66,7 +66,7 @@ Az előző ábrán az NSG-szabályok feldolgozásának folyamata látható.
 Az alapértelmezett címkék olyan rendszer által biztosított azonosítók, amelyek az IP-címek egy kategóriáját célozzák meg. Az alapértelmezett címkéket a szabályok tulajdonságainak **forráscím-előtagjában** és **célcím-előtagjában** lehet használni. Háromféle alapértelmezett címkét lehet használni:
 
 * **VirtualNetwork** (Resource Manager) (**VIRTUAL_NETWORK** klasszikus telepítéshez): Ez a címke tartalmazza a virtuális hálózat címterét (az Azure-ban meghatározott CIDR-tartományok), valamint az összes csatlakoztatott helyszíni címteret és a csatlakoztatott Azure virtuális hálózatokat (helyi hálózatokat).
-* **AzureLoadBalancer** (Resource Manager) (**AZURE_LOADBALANCER** klasszikus telepítéshez): Ez a címke az Azure infrastruktúra terheléselosztóját jelöli. A címkét a rendszer lefordítja arra az Azure-adatközponti IP-címre, ahonnan az Azure állapot-mintavételei származnak.
+* **AzureLoadBalancer** (Resource Manager) (**AZURE_LOADBALANCER** klasszikus telepítéshez): Ez a címke az Azure infrastruktúra terheléselosztóját jelöli. A címkét a rendszer lefordítja arra az Azure-adatközponti IP-címre, ahonnan az Azure Load Balancer állapot-mintavételei származnak.
 * **Internet** (Resource Manager) (**INTERNET** klasszikus telepítéshez): Ez a címke azt az IP-címteret jelöli, amely a virtuális hálózaton kívül esik, és a nyilvános interneten érhető el. A tartományba beletartozik az [Azure tulajdonában lévő nyilvános IP-címtér](https://www.microsoft.com/download/details.aspx?id=41653) is.
 
 ### <a name="default-rules"></a>Alapértelmezett szabályok
@@ -75,11 +75,11 @@ Minden NSG tartalmaz egy alapértelmezett szabálykészletet. Az alapértelmezet
 Az alapértelmezett szabályok az alábbiak szerint engedélyezik és tiltják le a forgalmat:
 - **Virtuális hálózat:** A virtuális hálózatból kiinduló és oda érkező forgalom a bejövő és kimenő irányban is engedélyezve van.
 - **Internet:** A kimenő forgalom engedélyezett, de a bejövő forgalom le van tiltva.
-- **Terheléselosztó:** Engedélyezi az Azure terheléselosztója számára, hogy megvizsgálja a virtuális gépek és a szerepkörpéldányok állapotát. Ha nem terheléselosztásos készletet használ, ezt a szabályt felül lehet bírálni.
+- **Terheléselosztó:** Engedélyezi az Azure Load Balancer számára, hogy megvizsgálja a virtuális gépek és a szerepkörpéldányok állapotát. Ha felülbírálja ezt a szabályt, az Azure Load Balancer állapot-mintavételei meghiúsulnak, és ez hatással lehet a szolgáltatásra.
 
 **Bejövő alapértelmezett szabályok**
 
-| Név | Prioritás | Forrás IP-címe | Forrásport | Cél IP-címe | Célport | Protokoll | Hozzáférés |
+| Name (Név) | Prioritás | Forrás IP-címe | Forrásport | Cél IP-címe | Célport | Protokoll | Hozzáférés |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | AllowVNetInBound |65000 | VirtualNetwork | * | VirtualNetwork | * | * | Engedélyezés |
 | AllowAzureLoadBalancerInBound | 65001 | AzureLoadBalancer | * | * | * | * | Engedélyezés |
@@ -87,7 +87,7 @@ Az alapértelmezett szabályok az alábbiak szerint engedélyezik és tiltják l
 
 **Kimenő alapértelmezett szabályok**
 
-| Név | Prioritás | Forrás IP-címe | Forrásport | Cél IP-címe | Célport | Protokoll | Hozzáférés |
+| Name (Név) | Prioritás | Forrás IP-címe | Forrásport | Cél IP-címe | Célport | Protokoll | Hozzáférés |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | AllowVnetOutBound | 65000 | VirtualNetwork | * | VirtualNetwork | * | * | Engedélyezés |
 | AllowInternetOutBound | 65001 | * | * | Internet | * | * | Engedélyezés |
@@ -163,7 +163,8 @@ A jelenlegi NSG-szabályok csak a *TCP* és az *UDP* protokollokat engedélyezik
 ### <a name="load-balancers"></a>Terheléselosztók
 * Vegyük példaként a terheléselosztási és a hálózati címfordítási (NAT-) szabályokat a számítási feladatok által használt terheléselosztóknál. A NAT-szabályok egy háttérkészlethez vannak kötve, amely hálózati adaptereket (Resource Manager-alapú modell) vagy virtuális gépeket/felhőszolgáltatásiszerepkör-példányokat (klasszikus modell) tartalmaz. Érdemes létrehozni egy NSG-t minden egyes háttérkészlethez, így a terheléselosztókban csak a megvalósított szabályok által leképezett forgalom lesz engedélyezve. Ha létrehoz egy-egy NSG-t minden háttérkészlet számára, azzal biztosítja, hogy a háttérkészletbe közvetlenül (nem a terheléselosztón keresztül) érkező forgalom is szűrve lesz.
 * A klasszikus üzembe helyezés során végpontokat hoz létre, amelyek leképezik a terheléselosztón található portokat a virtuális gépekre vagy szerepkörpéldányokra. Emellett a Resource Managerrel létrehozhatja saját önálló, nyilvános terheléselosztóját. A bejövő forgalom célportja egyben a virtuális gép vagy szerepkörpéldány tényleges portja, nem a terheléselosztó által elérhetővé tett port. A forrásport és a virtuális géppel való kapcsolat címe az interneten található távoli számítógép portjával és címével egyezik, nem a terheléselosztó által elérhetővé tett port és cím.
-* Amikor azért hoz létre NSG-ket, hogy azok a belső terheléselosztón (ILB) keresztüli forgalmat szűrjék, az alkalmazott forrásport és címtartomány a forrásszámítógépről származik, nem a terheléselosztóról. A célport és a címtartomány nem a terheléselosztóhoz, hanem a célszámítógéphez tartozik.
+* Amikor azért hoz létre NSG-ket, hogy azok az Azure Load Balancer forgalmát szűrjék, az alkalmazott forrásport és címtartomány a forrásszámítógépről származik, nem a terheléselosztó előteréből. A célport és a címtartomány nem a terheléselosztó előteréhez, hanem a célszámítógéphez tartozik.
+* Ha letiltja az AzureLoadBalancer címkét, az Azure Load Balancer állapot-mintavételei meghiúsulnak, és ez hatással lehet a szolgáltatásra.
 
 ### <a name="other"></a>Egyéb
 * Végpontalapú hozzáférés-vezérlési listák (ACL-ek) és NSG-k használata nem támogatott ugyanazon a virtuálisgép-példányon. Ha használni szeretne egy NSG-t, és már be van állítva egy végponti ACL, először el kell távolítani a végponti ACL-t. Végponti ACL-ek eltávolításával kapcsolatos információkért tekintse meg a [végponti ACL-ek kezelésével](virtual-networks-acl-powershell.md) kapcsolatos cikket.
@@ -229,7 +230,7 @@ Az alábbi NSG-k jönnek létre, és a rendszer hálózati adapterekhez társít
 | Allow-Inbound-HTTP-Internet | Engedélyezés | 200 | Internet | * | * | 80 | TCP |
 
 > [!NOTE]
-> Az előbbi szabályok forráscímtartománya **Internet**, nem a terheléselosztó virtuális IP-címe. A forrásport *, nem 500001. A terheléselosztókra vonatkozó NAT-szabályok nem egyeznek meg az NSG biztonsági szabályaival. Az NSG biztonsági szabályai mindig a forgalom eredeti forrásához és végső célhelyéhez kapcsolódnak, **nem** a kettő között lévő terheléselosztóhoz. 
+> Az előbbi szabályok forráscímtartománya **Internet**, nem a terheléselosztó virtuális IP-címe. A forrásport *, nem 500001. A terheléselosztókra vonatkozó NAT-szabályok nem egyeznek meg az NSG biztonsági szabályaival. Az NSG biztonsági szabályai mindig a forgalom eredeti forrásához és végső célhelyéhez kapcsolódnak, **nem** a kettő között lévő terheléselosztóhoz. Az Azure Load Balancer mindig megőrzi a forrás IP-címét és portját.
 > 
 > 
 
@@ -257,7 +258,7 @@ Az alábbi NSG-k jönnek létre, és a rendszer hálózati adapterekhez társít
 
 Mivel néhány NSG önálló hálózati adapterhez van hozzárendelve, a szabályok a Resource Managerrel üzembe helyezett erőforrásokra érvényesek. A szabályokat egyesíti a rendszer az alhálózat és a hálózati adapterek vonatkozásában, attól függően, hogyan vannak társítva. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [NSG-k üzembe helyezése a Resource Managerrel](virtual-networks-create-nsg-arm-pportal.md).
 * [NSG-k telepítése a klasszikus modellel](virtual-networks-create-nsg-classic-ps.md).
 * [Manage NSG logs](virtual-network-nsg-manage-log.md) (NSG-naplók kezelése).

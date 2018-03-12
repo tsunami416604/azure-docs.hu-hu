@@ -1,305 +1,210 @@
 ---
-title: "Node.js API-alkalmazás az Azure App Service platformon | Microsoft Docs"
-description: "Megtudhatja, hogyan hozhat létre Node.js RESTful API-t, és hogyan telepítheti egy Azure App Service platformon futó API-alkalmazásba."
+title: "CORS-támogatással rendelkező RESTful API az Azure App Service-ben | Microsoft Docs"
+description: "Ismerje meg, hogyan üzemeltethet CORS-támogatással rendelkező RESTful API-kat az Azure App Service-ben."
 services: app-service\api
-documentationcenter: node
-author: bradygaster
-manager: erikre
+documentationcenter: dotnet
+author: cephalin
+manager: cfowler
 editor: 
 ms.assetid: a820e400-06af-4852-8627-12b3db4a8e70
-ms.service: app-service-api
+ms.service: app-service
 ms.workload: web
 ms.tgt_pltfrm: na
-ms.devlang: nodejs
+ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 06/13/2017
-ms.author: rachelap
+ms.date: 02/28/2018
+ms.author: cephalin
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 81d08e047a3689d110195f2325b52c6c0457e644
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
-ms.translationtype: MT
+ms.openlocfilehash: 7420e92bc929808f074e9be00dfbcb7d8476654a
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 03/05/2018
 ---
-# <a name="build-a-nodejs-restful-api-and-deploy-it-to-an-api-app-in-azure"></a>Node.js RESTful API buildjének elkészítése és telepítése Azure-ban futó API-alkalmazásba
+# <a name="host-a-restful-api-with-cors-in-azure-app-service"></a>CORS-támogatással rendelkező RESTful API üzemeltetése az Azure App Service-ben
 
-Ez a rövid útmutató bemutatja, hogyan hozhat létre az Azure-ban üzembe helyezett REST API-t a Node.js [Express](http://expressjs.com/) verzióval és a [Swagger](http://swagger.io/) definícióval. Az alkalmazást parancssori eszközökkel hozza létre, az erőforrásokat az [Azure parancssori felülettel](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) konfigurálja, majd az alkalmazást a Git használatával helyezi üzembe.  Amikor végzett, Azure-on futó, működő minta REST API áll rendelkezésére majd.
+Az [Azure App Service](app-service-web-overview.md) egy hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatás. Továbbá az App Service beépített támogatást nyújt az [Eltérő eredetű erőforrások megosztásához (CORS)](https://wikipedia.org/wiki/Cross-Origin_Resource_Sharing) a RESTful API-k esetében. Ez az oktatóanyag bemutatja, hogyan telepíthető ASP.NET Core API-alkalmazás az App Service-ben CORS-támogatással. Az alkalmazást parancssori eszközökkel állíthatja be, és a Git használatával helyezheti üzembe. 
 
-## <a name="prerequisites"></a>Előfeltételek
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
-* [Git](https://git-scm.com/)
-* [ Node.js és NPM](https://nodejs.org/)
+> [!div class="checklist"]
+> * App Service-erőforrások létrehozása az Azure CLI-vel
+> * RESTful API üzembe helyezése az Azure-ban a Git használatával
+> * Az App Service CORS-támogatásának engedélyezése
+
+Az oktatóanyag lépései macOS, Linux és Windows rendszerre is vonatkoznak.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+## <a name="prerequisites"></a>Előfeltételek
 
-Ha a parancssori felület helyi telepítése és használata mellett dönt, a témakör az Azure CLI 2.0-s vagy annál újabb verziójának futtatását követeli meg. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli). 
+Az oktatóanyag elvégzéséhez:
 
-## <a name="prepare-your-environment"></a>A környezet előkészítése
+* [Telepítse a Git szoftvert](https://git-scm.com/).
+* [Telepítse a .NET Core-t](https://www.microsoft.com/net/core/).
 
-1. A következő parancsot terminálablakban futtatva klónozhatja a mintát a helyi gépen.
+## <a name="create-local-aspnet-core-app"></a>Hozzon létre egy helyi ASP.NET Core-alkalmazást.
 
-    ```bash
-    git clone https://github.com/Azure-Samples/app-service-api-node-contact-list
-    ```
+Ebben a lépésben a helyi ASP.NET Core-projektet állíthatja be. Az App Service támogatja az API-k más nyelven írt azonos munkafolyamatait.
 
-2. Váltson arra a könyvtárra, amelyben a mintakód megtalálható.
+### <a name="clone-the-sample-application"></a>A mintaalkalmazás klónozása
 
-    ```bash
-    cd app-service-api-node-contact-list
-    ```
+A terminálablakban a `cd` paranccsal lépjen egy munkakönyvtárra.  
 
-3. Telepítse a helyi gépen a [Swaggerize](https://www.npmjs.com/package/swaggerize-express) eszközt. A Swaggerize olyan eszköz, amely Swagger-definícióból generál Node.js-kódot a REST API-hoz.
-
-    ```bash
-    npm install -g yo
-    npm install -g generator-swaggerize
-    ```
-
-## <a name="generate-nodejs-code"></a>Node.js-kód generálása 
-
-Az oktatóanyagnak ez a fejezete az API-fejlesztésnek azt a folyamatát modellezi, amelynek során először létrehozzuk a Swagger-metaadatokat, majd ezek segítségével automatikusan generáljuk az API kiszolgálói kódját. 
-
-Lépjen a *start*mappa könyvtárába, majd futtassa a `yo swaggerize` parancsot. A Swaggerize az *api.json* fájlban lévő Swagger-definícióból hoz létre Node.js-projektet az API-hoz.
+Futtassa a következő parancsot a minta tárház klónozásához. 
 
 ```bash
-cd start
-yo swaggerize --apiPath api.json --framework express
+git clone https://github.com/Azure-Samples/dotnet-core-api
 ```
 
-Amikor a Swaggerize egy projekt nevének megadását kéri, használja a *ContactList* nevet.
-   
-   ```bash
-   Swaggerize Generator
-   Tell us a bit about your application
-   ? What would you like to call this project: ContactList
-   ? Your name: Francis Totten
-   ? Your github user name: fabfrank
-   ? Your email: frank@fabrikam.net
-   ```
-   
-## <a name="customize-the-project-code"></a>Projektkód testreszabása
+Ez az adattár a következő oktatóanyag alapján létrehozott alkalmazást tartalmaz: [Swaggert használó ASP.NET Core webes API-k súgóoldalai](/aspnet/core/tutorials/web-api-help-pages-using-swagger?tabs=visual-studio). Ez egy Swagger-generátort használ a [Swagger felhasználói felület](https://swagger.io/swagger-ui/) és a Swagger JSON-végpont kiszolgálásához.
 
-1. Másolja a *lib* mappát a `yo swaggerize` által létrehozott *ContactList* mappába, majd lépjen a *ContactList* könyvtárába.
+### <a name="run-the-application"></a>Az alkalmazás futtatása
 
-    ```bash
-    cp -r lib ContactList/
-    cd ContactList
-    ```
+Futtassa az alábbi parancsokat a szükséges csomagok telepítéséhez, adatbázisok migrálásához és az alkalmazás elindításához.
 
-2. Telepítse a `jsonpath` és a `swaggerize-ui` NPM-modulokat. 
+```bash
+cd dotnet-core-api
+dotnet restore
+dotnet run
+```
 
-    ```bash
-    npm install --save jsonpath swaggerize-ui
-    ```
+Egy böngészőben nyissa meg a `http://localhost:5000/swagger` címet a Swagger felhasználói felületének kipróbálásához.
 
-3. Cserélje a *handlers/contacts.js* fájlban lévő kódot az alábbira: 
-    ```javascript
-    'use strict';
+![Helyileg futó ASP.NET Core API](./media/app-service-web-tutorial-rest-api/local-run.png)
 
-    var repository = require('../lib/contactRepository');
+Nyissa meg a `http://localhost:5000/api/todo` oldalt, és tekintse meg a teendő JSON-elemek listáját.
 
-    module.exports = {
-        get: function contacts_get(req, res) {
-            res.json(repository.all())
-        }
-    };
-    ```
-    A kód a *lib/contactRepository.js* által kiszolgált *lib/contacts.json* fájlban lévő JSON-adatokat használja. Az új *contacts.js* kód az adattárban található valamennyi névjegyet JSON-adattartalomként adja vissza. 
+Nyissa meg a `http://localhost:5000` címet, és próbálja ki a böngészőalkalmazást. Később a böngészőalkalmazást egy távoli API-ra irányítja az App Service-ben a CORS-funkciók teszteléséhez. A böngészőalkalmazás kódja az adattár _wwwroot_ könyvtárában található.
 
-4. Cserélje a **handlers/contacts/{id}.js** fájlban lévő kódot az alábbira:
+Ha bármikor le szeretné állítani az ASP.NET Core-t, nyomja le a `Ctrl+C` billentyűkombinációt a terminálon.
 
-    ```javascript
-    'use strict';
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-    var repository = require('../../lib/contactRepository');
+## <a name="deploy-app-to-azure"></a>Alkalmazás üzembe helyezése az Azure-ban
 
-    module.exports = {
-        get: function contacts_get(req, res) {
-            res.json(repository.get(req.params['id']));
-        }    
-    };
-    ```
+Ebben a lépésben az SQL Database-hez csatlakoztatott .NET Core-alkalmazást helyezi üzembe az App Service-ben.
 
-    Ez a kód elérésiút-változó használatát teszi lehetővé annak érdekében, hogy csak az adott azonosítóval rendelkező névjegyet adja vissza.
+### <a name="configure-local-git-deployment"></a>A Git helyi üzemelő példányának konfigurálása
 
-5. Cserélje a **server.js** fájlban lévő kódot az alábbira:
+[!INCLUDE [Configure a deployment user](../../includes/configure-deployment-user-no-h.md)]
 
-    ```javascript
-    'use strict';
+### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
-    var port = process.env.PORT || 8000; 
+[!INCLUDE [Create resource group](../../includes/app-service-web-create-resource-group-no-h.md)]
 
-    var http = require('http');
-    var express = require('express');
-    var bodyParser = require('body-parser');
-    var swaggerize = require('swaggerize-express');
-    var swaggerUi = require('swaggerize-ui'); 
-    var path = require('path');
-    var fs = require("fs");
-    
-    fs.existsSync = fs.existsSync || require('path').existsSync;
+### <a name="create-an-app-service-plan"></a>App Service-csomag létrehozása
 
-    var app = express();
+[!INCLUDE [Create app service plan](../../includes/app-service-web-create-app-service-plan-no-h.md)]
 
-    var server = http.createServer(app);
+### <a name="create-a-web-app"></a>Webalkalmazás létrehozása
 
-    app.use(bodyParser.json());
+[!INCLUDE [Create web app](../../includes/app-service-web-create-web-app-dotnetcore-win-no-h.md)] 
 
-    app.use(swaggerize({
-        api: path.resolve('./config/swagger.json'),
-        handlers: path.resolve('./handlers'),
-        docspath: '/swagger' 
-    }));
+### <a name="push-to-azure-from-git"></a>Leküldéses üzenet küldése a Gitből az Azure-ra
 
-    // change four
-    app.use('/docs', swaggerUi({
-        docs: '/swagger'  
-    }));
+[!INCLUDE [app-service-plan-no-h](../../includes/app-service-web-git-push-to-azure-no-h.md)]
 
-    server.listen(port, function () { 
-    });
-    ```   
+```bash
+Counting objects: 98, done.
+Delta compression using up to 8 threads.
+Compressing objects: 100% (92/92), done.
+Writing objects: 100% (98/98), 524.98 KiB | 5.58 MiB/s, done.
+Total 98 (delta 8), reused 0 (delta 0)
+remote: Updating branch 'master'.
+remote: .
+remote: Updating submodules.
+remote: Preparing deployment for commit id '0c497633b8'.
+remote: Generating deployment script.
+remote: Project file path: ./DotNetCoreSqlDb.csproj
+remote: Generated deployment script files
+remote: Running deployment command...
+remote: Handling ASP.NET Core Web Application deployment.
+remote: .
+remote: .
+remote: .
+remote: Finished successfully.
+remote: Running post deployment command(s)...
+remote: Deployment successful.
+remote: App container will begin restart within 10 seconds.
+To https://<app_name>.scm.azurewebsites.net/<app_name>.git
+ * [new branch]      master -> master
+```
 
-    Ez a kód kis módosításokat hajt végre az Azure App Service platformmal való használat lehetővé tétele érdekében, és interaktív webes felületet tesz közzé az API-hoz.
+### <a name="browse-to-the-azure-web-app"></a>Az Azure webalkalmazás megkeresése
 
-### <a name="test-the-api-locally"></a>API tesztelése helyileg
+Egy böngészőben nyissa meg a `http://<app_name>.azurewebsites.net/swagger` címet a Swagger felhasználói felületének kipróbálásához.
 
-1. A Node.js-alkalmazás indítása
-    ```bash
-    npm start
-    ```
-    
-2. A http://localhost:8000/contacts címet megnyitva megtekintheti a teljes névjegylistához tartozó JSON-kimenetet.
-   
-   ```json
-    {
-        "id": 1,
-        "name": "Barney Poland",
-        "email": "barney@contoso.com"
-    },
-    {
-        "id": 2,
-        "name": "Lacy Barrera",
-        "email": "lacy@contoso.com"
-    },
-    {
-        "id": 3,
-        "name": "Lora Riggs",
-        "email": "lora@contoso.com"
-    }
-   ```
+![Az Azure App Service-ben futó ASP.NET Core API](./media/app-service-web-tutorial-rest-api/azure-run.png)
 
-3. A http://localhost:8000/contacts/2 címet megnyitva megtekintheti a kettes számú `id`hoz tartozó névjegyet.
-   
-    ```json
-    { 
-        "id": 2,
-        "name": "Lacy Barrera",
-        "email": "lacy@contoso.com"
-    }
-    ```
+Lépjen a `http://<app_name>.azurewebsites.net/swagger/v1/swagger.json` címre az üzembe helyezett API-hoz tartozó _swagger.json_ megtekintéséhez.
 
-4. Tesztelje az API-t a http://localhost:8000/docs címen lévő Swagger webes felületen keresztül.
-   
-    ![Swagger webes felület](media/app-service-web-tutorial-rest-api/swagger-ui.png)
+A `http://<app_name>.azurewebsites.net/api/todo` címen megtekintheti az üzembe helyezett API-t működés közben.
 
-## <a id="createapiapp"></a> API-alkalmazás létrehozása
+## <a name="add-cors-functionality"></a>CORS-funkció hozzáadása
 
-Ebben a szakaszban az Azure CLI 2.0 használatával hozhatja létre az API Azure App Service szolgáltatásban való üzemeltetéséhez szükséges erőforrásokat. 
+A következő lépésben engedélyezi az App Service beépített CORS-támogatását az API-hoz.
 
-1.  Jelentkezzen be az Azure-előfizetésbe az [az login](/cli/azure/?view=azure-cli-latest#az_login) paranccsal, és kövesse a képernyőn látható utasításokat.
+### <a name="test-cors-in-sample-app"></a>A CORS tesztelése egy mintaalkalmazásban
 
-    ```azurecli-interactive
-    az login
-    ```
+A helyi adattárban nyissa meg a _wwwroot/index.html_ fájlt.
 
-2. Ha több Azure-előfizetéssel is rendelkezik, módosítsa az alapértelmezett előfizetést a kívántra.
+Az 51. sorban állítsa be az `apiEndpoint` változót az üzembe helyezett API URL-címére (`http://<app_name>.azurewebsites.net`). Az _\<appname>_ helyett adja meg az App Service-ben lévő alkalmazás nevét.
 
-    ````azurecli-interactive
-    az account set --subscription <name or id>
-    ````
+A helyi terminálablakban futtassa ismét a mintaalkalmazást.
 
-3. [!INCLUDE [Create resource group](../../includes/app-service-api-create-resource-group.md)] 
+```bash
+dotnet run
+```
 
-4. [!INCLUDE [Create app service plan](../../includes/app-service-api-create-app-service-plan.md)]
+Lépjen a `http://localhost:5000` helyen lévő böngészőalkalmazáshoz. A böngészőben nyissa meg a fejlesztői eszközök ablakát (Windowson `Ctrl`+`Shift`+`i` billentyűkombináció a Chrome böngészőben), és vizsgálja meg a **Konzol** lapot. Ezután a következő hibaüzenet jelenik meg: `No 'Access-Control-Allow-Origin' header is present on the requested resource`.
 
-5. [!INCLUDE [Create API app](../../includes/app-service-api-create-api-app.md)] 
+![CORS-hiba a böngészőügyfélben](./media/app-service-web-tutorial-rest-api/cors-error.png)
 
+A böngészőalkalmazás (`http://localhost:5000`) és a távoli erőforrás (`http://<app_name>.azurewebsites.net`) közötti tartományi eltérések miatt, és mivel az App Service-ben lévő API nem küldi el az `Access-Control-Allow-Origin` fejlécet, a böngésző megakadályozta a különböző tartományokból származó tartalom betöltését a böngészőalkalmazásban.
 
-## <a name="deploy-the-api-with-git"></a>API üzembe helyezése GIT segítségével
+Éles környezetben a böngészőalkalmazás egy nyilvános URL-címmel rendelkezne a localhost URL-cím helyett, de a CORS ugyanúgy engedélyezhető a localhost URL-címeken, mint a nyilvános URL-címeken.
 
-Úgy tudja telepíteni a kódot az API-alkalmazásba, hogy az Azure App Service-ben található helyi Git-tárházból beküldi a véglegesítéseket.
+### <a name="enable-cors"></a>CORS engedélyezése 
 
-1. [!INCLUDE [Configure your deployment credentials](../../includes/configure-deployment-user-no-h.md)] 
-
-2. Inicializáljon új tárházat a *ContactList* könyvtárban. 
-
-    ```bash
-    git init .
-    ```
-
-3. Zárja ki az npm által, az oktatóanyag korábbi lépésében létrehozott *node_modules* könyvtárat a Gitből. Hozzon létre új `.gitignore`-fájlt a jelenlegi könyvtárban, majd a fájl valamelyik új sorában adja hozzá a következő szöveget.
-
-    ```
-    node_modules/
-    ```
-    Ellenőrizze, hogy a rendszer figyelmen kívül hagyja-e a `node_modules`-mappát a `git status` állapottal.
-    
-4. Adja hozzá a következő sorokat `package.json`. A Swaggerize által generált kódot nem adja meg a Node.js motor egy verziót. A verzió megadása nélkül Azure verzióját használja, az alapértelmezett `0.10.18`, amely nem felel meg a generált kódot.
-
-    ```javascript
-    "engines": {
-        "node": "~0.10.22"
-    },
-    ```
-
-5. Véglegesítse a tárházon végzett módosításokat.
-    ```bash
-    git add .
-    git commit -m "initial version"
-    ```
-
-6. [!INCLUDE [Push to Azure](../../includes/app-service-api-git-push-to-azure.md)]  
- 
-## <a name="test-the-api--in-azure"></a>Az API tesztelése az Azure-ban
-
-1. Nyissa meg valamilyen böngészőben a http://app_name.azurewebsites.net/contacts webhelyet. Ugyanazt a visszaadott JSON-t láthatja, mint amikor az oktatóanyag egyik korábbi szakaszában helyileg leadta a kérelmet.
-
-   ```json
-   {
-       "id": 1,
-       "name": "Barney Poland",
-       "email": "barney@contoso.com"
-   },
-   {
-       "id": 2,
-       "name": "Lacy Barrera",
-       "email": "lacy@contoso.com"
-   },
-   {
-       "id": 3,
-       "name": "Lora Riggs",
-       "email": "lora@contoso.com"
-   }
-   ```
-
-2. Nyissa meg valamelyik böngészőben a `http://app_name.azurewebsites.net/docs` végpontot, és próbálja ki az Azure-ban futó Swagger felhasználói felületet.
-
-    ![Swagger Ii](media/app-service-web-tutorial-rest-api/swagger-azure-ui.png)
-
-    Úgy helyezheti üzembe mostantól a minta API frissítéseit az Azure-ban, hogy a véglegesítéseket egyszerűen beküldi az Azure Git-tárházba.
-
-## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
-
-Az ebben az oktatóanyagban létrehozott erőforrások törléséhez futtassa a következő Azure CLI parancsot:
+A Cloud Shellben engedélyezze a CORS-t az ügyfél URL-címéhez az [`az resource update`](/cli/azure/resource#az_resource_update) paranccsal. Cserélje le az _&lt;appname>_ helyőrzőt.
 
 ```azurecli-interactive
-az group delete --name myResourceGroup
+az resource update --name web --resource-group myResourceGroup --namespace Microsoft.Web --resource-type config --parent sites/<app_name> --set properties.cors.allowedOrigins="['http://localhost:5000']" --api-version 2015-06-01
 ```
 
-## <a name="next-step"></a>Következő lépés 
+Több ügyfél URL-címét is beállíthatja a `properties.cors.allowedOrigins` (`"['URL1','URL2',...]"`) tulajdonságban. Az összes URL-címet is engedélyezheti a `"['*']"` érték megadásával.
+
+### <a name="test-cors-again"></a>A CORS újbóli tesztelése
+
+Frissítse a böngészőalkalmazást a `http://localhost:5000` címen. A **Konzol** ablak hibaüzenete eltűnt, és megjelentek az üzembe helyezett API adatai, amelyeket használhat. A távoli API már támogatja a CORS-t a helyileg futtatott böngészőalkalmazásban. 
+
+![Sikeres CORS a böngészőügyfélben](./media/app-service-web-tutorial-rest-api/cors-success.png)
+
+Gratulálunk, sikeresen beállította az API CORS-támogatással való futtatását az Azure App Service-ben.
+
+## <a name="app-service-cors-vs-your-cors"></a>Az App Service-beli és a saját CORS összehasonlítása
+
+A nagyobb rugalmasság érdekében saját CORS-segédprogramjait is használhatja az App Service CORS helyett. Előfordulhat például, hogy másik engedélyezett származási helyet szeretne megadni különböző elérési utakhoz és metódusokhoz. Mivel az App Service CORS lehetővé teszi, hogy minden API elérési úthoz és metódushoz az elfogadott származási helyek egyetlen készletét állítsa be, a saját CORS-kódját érdemes használnia. Az [eltérő eredetű kérelmek (CORS) engedélyezését](/aspnet/core/security/cors) ismertető részben tekintheti meg, hogy működik ez az ASP.NET Core-ban.
+
+> [!NOTE]
+> Ne próbálja együtt használni az App Service CORS-t és a saját CORS-kódját. Együttes használat esetén az App Service CORS az elsődleges, így a saját CORS-kód nem lép érvénybe.
+>
+>
+
+[!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
+
+<a name="next"></a>
+## <a name="next-steps"></a>További lépések
+
+Az alábbiak elvégzését ismerte meg:
+
+> [!div class="checklist"]
+> * App Service-erőforrások létrehozása az Azure CLI-vel
+> * RESTful API üzembe helyezése az Azure-ban a Git használatával
+> * Az App Service CORS-támogatásának engedélyezése
+
+Lépjen a következő oktatóanyaghoz, amelyből megtudhatja, hogyan képezhet le egyedi DNS-nevet a webalkalmazáshoz.
+
 > [!div class="nextstepaction"]
 > [Meglévő egyéni DNS-név hozzákapcsolása az Azure-webalkalmazásokhoz](app-service-web-tutorial-custom-domain.md)
-

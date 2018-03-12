@@ -119,6 +119,8 @@
               href: azure-stack-deploy-template-powershell.md
             - name: Üzembe helyezés a Visual Studióval
               href: azure-stack-deploy-template-visual-studio.md
+    - name: A Felhőbeli szolgáltatás szolgáltatója engedélyezése
+      href: azure-stack-csp-enable-billing-usage-tracking.md
 - name: Leírások
   items:
     - name: Azure Stack PowerShell

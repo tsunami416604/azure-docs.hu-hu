@@ -15,11 +15,11 @@ ms.topic: get-started-article
 ms.date: 07/18/2017
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 834dbbd0be30181de1a71df05d2867be0e1c59b4
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 4928364ffd732f587e41a788c4d834e91339a7fc
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="monitor-ad-fs-using-azure-ad-connect-health"></a>Az AD FS monitorozása az Azure AD Connect Health használatával
 Az alábbi dokumentáció az AD FS infrastruktúra Azure AD Connect Health használatával végzett figyelésére vonatkozik. Az Azure AD Connect (szinkronizálási szolgáltatás) az Azure AD Connect Health használatával történő megfigyelésével kapcsolatos információkat [Az Azure AD Connect Health szinkronizálási szolgáltatás használata](active-directory-aadconnect-health-sync.md) című témakörben tekintheti meg. Az Active Directory tartományi szolgáltatások az Azure AD Connect Health használatával történő megfigyelésével kapcsolatos információkat pedig a [Using Azure AD Connect Health with AD DS](active-directory-aadconnect-health-adds.md) (Az Azure AD Connect Health használata az AD DS szolgáltatással) című témakörben találja.
@@ -86,7 +86,7 @@ A sikertelen hitelesítési kérelmek leggyakoribb oka az AD FS-kiszolgálókon,
 
 Azonban más okok miatt is előfordulhat, hogy az AD FS-kiszolgálóknak váratlan számú kérelmet kell kezelniük, például a következő esetekben: egy alkalmazás gyorsítótárazza a felhasználói hitelesítő adatokat, és a hitelesítő adatok lejárnak, vagy pedig egy rosszindulatú felhasználó jól ismert jelszavak sorozatával megpróbál bejelentkezni egy fiókba. Ez a két példa érvényes oka lehet annak, hogy a kérelmek száma hirtelen megnő.
 
-Az AD FS szolgáltatáshoz elérhető Azure AD Connect Health jelentést készít a rossz felhasználónév/jelszó megadásával leggyakrabban sikertelenül bejelentkezni próbáló 50 felhasználóról. Ez a jelentés a farmokon lévő összes AD FS-kiszolgáló által létrehozott összes naplózási esemény feldolgozásával készíthető el
+Az AD FS szolgáltatáshoz elérhető Azure AD Connect Health jelentést készít a rossz felhasználónév/jelszó megadásával leggyakrabban sikertelenül bejelentkezni próbáló 50 felhasználóról. Ez a jelentés a farmokon lévő összes AD FS-kiszolgáló által létrehozott összes naplózási esemény feldolgozásával készíthető el.
 
 ![Az Azure AD Connect Health portál](./media/active-directory-aadconnect-health-adfs/report1a.png)
 
@@ -95,7 +95,7 @@ A jelentésen belül könnyen elérhetőek az alábbi információk:
 * A rossz felhasználónévvel/jelszóval rendelkező meghiúsult kérelmek teljes száma az elmúlt 30 napban
 * A rossz felhasználónévvel/jelszóval sikertelenül bejelentkezni próbáló felhasználók átlagos száma naponta.
 
-Erre a részre kattintva megjelenik a fő jelentéspanel, amelyen további részletek láthatóak. Ezen a panelen többek között egy trendekkel kapcsolatos információkat tartalmazó diagram is látható, amellyel meghatározható a rossz felhasználónévvel vagy jelszóval leadott kérelmek alapmetrikája. Megjeleníti továbbá a sikertelen bejelentkezéssel leggyakrabban próbálkozó 50 felhasználó listáját.
+Erre a részre kattintva megjelenik a fő jelentéspanel, amelyen további részletek láthatóak. Ezen a panelen többek között egy trendekkel kapcsolatos információkat tartalmazó diagram is látható, amellyel meghatározható a rossz felhasználónévvel vagy jelszóval leadott kérelmek alapmetrikája. Megjeleníti továbbá az elmúlt héten sikertelen bejelentkezéssel leggyakrabban próbálkozó 50 felhasználó listáját.
 
 A diagramon az alábbi információk találhatóak meg:
 
@@ -115,7 +115,7 @@ A jelentésben az alábbi információk találhatók:
 | Legutóbbi sikertelen kísérlet IP-címe |A legutóbbi sikertelen kérelemhez tartozó IP-címet jeleníti meg. |
 
 > [!NOTE]
-> A jelentés kétóránként automatikusan frissül az ez idő alatt gyűjtött új információkkal. Ezért az utolsó két órában gyűjtött bejelentkezési kísérletek esetleg még nem szerepelnek a jelentésben.
+> A jelentés 12 óránként automatikusan frissül az ez idő alatt gyűjtött új információkkal. Ezért az utolsó két órában gyűjtött bejelentkezési kísérletek esetleg még nem szerepelnek a jelentésben.
 >
 >
 

@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: Active
 ms.date: 03/07/2018
 ms.author: bonova
-ms.openlocfilehash: 721e94f2848a219c999c6bc6e5bba1fc49afa799
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
-ms.translationtype: HT
+ms.openlocfilehash: dc3c93a1a13f3e10f9159d26411d6337c0269722
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="what-is-a-managed-instance-preview"></a>Mi az a felügyelt példánya (előzetes verzió)?
 
@@ -200,4 +200,4 @@ A felügyelt példány lehetővé teszik a rendszergazdának a legtöbb vállala
 
 - A szolgáltatások és összehasonlító listáját lásd: [általános SQL-szolgáltatások](sql-database-features.md).
 - Az oktatóanyag, amely létrehoz egy kezelt példányt, és visszaállítja egy adatbázis biztonsági másolatból, lásd: [hozzon létre egy felügyelt példányt](sql-database-managed-instance-tutorial-portal.md).
-- Egy oktatóanyag az Azure adatbázis áttelepítési szolgáltatás (DMS) áttelepítés használatával lásd: [DMS használatával felügyelt példány áttelepítési](../dms/tutorial-sql-server-to-managed-instance.md).
+- Egy oktatóanyag az Azure adatbázis áttelepítési szolgáltatás (DMS) áttelepítés használatával, lásd: [DMS használatával felügyelt példány áttelepítési](../dms/tutorial-sql-server-to-managed-instance.md).

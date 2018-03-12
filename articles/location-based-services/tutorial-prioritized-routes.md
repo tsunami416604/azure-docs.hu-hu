@@ -12,11 +12,11 @@ documentationcenter:
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: ac57996e7dced5ef0f0a993889bfc13b1d064167
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 9501f3c8fa1abb6bcbfee086c542139596ab5504
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="find-routes-for-different-modes-of-travel-using-azure-location-based-services"></a>Útvonalak keresése különböző utazási módokhoz az Azure Location Based Services használatával
 
@@ -209,9 +209,10 @@ Ez a szakasz bemutatja, hogyan kereshet egy indulási és célpont között töb
     ```
     Ez a kódrészlet létrehoz egy [XMLHttpRequest](https://xhr.spec.whatwg.org/) kérést, és hozzáad egy eseménykezelőt a bejövő válasz elemzéséhez. A sikeres válasz érdekében létrehozza a visszaadott útvonal koordinátáinak gyűjteményét, és hozzáadja a térkép `truckRouteLayerName` rétegéhez. 
     
-    Ez a kódrészlet a Route Service-nek is elküldi a lekérdezést, hogy a fiókkulcshoz kapcsolva lekérje a megadott kiindulási és célpont útvonalát. A következő választható paraméterekkel jelezhető egy nehéz teherautó útvonala: – A `travelMode=truck` paraméter *teherautóként* határozza meg az utazás módját. A többi támogatott utazási mód a *taxi*, *busz*, *kisteherautó*, *motorkerékpár* és az alapértelmezett *autó*.
-        – A `vehicleWidth`, `vehicleHeight` és `vehicleLength` paraméterek határozzák meg a jármű méretét méterben, és a rendszer csak akkor veszi figyelembe ezeket, ha az utazási mód a *teherautó*.
-        – A `vehicleLoadType` veszélyesként sorolja be a rakományt, és egyes utakon korlátozott. Jelenleg ez is csak a *teherautó* módban érvényes.
+    Ez a kódrészlet a Route Service-nek is elküldi a lekérdezést, hogy a fiókkulcshoz kapcsolva lekérje a megadott kiindulási és célpont útvonalát. A következő választható paraméterekkel jelezhető egy nehéz teherautó útvonala:
+   - A `travelMode=truck` paraméter *teherautóként* határozza meg az utazás módját. A többi támogatott utazási mód a *taxi*, *busz*, *kisteherautó*, *motorkerékpár* és az alapértelmezett *autó*.
+   - A `vehicleWidth`, `vehicleHeight` és `vehicleLength` paraméterek határozzák meg a jármű méretét méterben, és a rendszer csak akkor veszi ezeket figyelembe, ha az utazási mód a *teherautó*.
+   - A `vehicleLoadType` veszélyesként sorolja be a rakományt, amelyre egyes utakon korlátozások vonatkoznak. Jelenleg ez is csak a *teherautó* módban érvényes.
 
 2. Adja hozzá a következő JavaScript-kódot egy autós útvonal Route Service-szel való lekéréséhez:
 
