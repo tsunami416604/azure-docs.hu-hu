@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/01/2016
 ms.author: cephalin
 ms.openlocfilehash: 6b5939341ad05fb8f80415c5335c24d216fc2555
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="operating-system-functionality-on-azure-app-service"></a>Operációs rendszer működőképességét Azure App Service
 Ez a cikk összes futó alkalmazások számára elérhető közös eredeti operációs rendszer funkcióit mutatja be [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714). Ez a funkció tartalmazza a fájl, hálózati, és a beállításjegyzék elérése és diagnosztikai naplók és események. 
@@ -79,7 +79,7 @@ A kezdőkönyvtár az alkalmazás forráskódjának tartalom található, és al
 <a id="NetworkAccess"></a>
 
 ## <a name="network-access"></a>Hálózati hozzáférés
-Alkalmazáskód használhatja a TCP/IP, és hogy kimenő UDP-alapú protokollok hálózati Internet elérhető végpontok külső szolgáltatások elérhetővé tevő kapcsolat. Alkalmazások használhatják ezeket a protokollokat services, Azure &#151;belül, például az SQL Database HTTPS-kapcsolatok létrehozásával elérésére.
+Alkalmazáskód használhatja a TCP/IP, és hogy kimenő UDP-alapú protokollok hálózati Internet elérhető végpontok külső szolgáltatások elérhetővé tevő kapcsolat. Alkalmazások az Azure-szolgáltatásokhoz való használhatják ezeket a protokollokat&#151;például úgy, hogy az SQL Database HTTPS-kapcsolatok létrehozása.
 
 Egy korlátozott képesség alkalmazások között egy helyi visszacsatolási-kapcsolat létrehozásához, és figyelni, hogy helyi visszacsatolási szoftvercsatornán egy alkalmazás is van. Ez a funkció lehetővé teszi az alkalmazások, amelyek a helyi visszacsatolási sockets működés részeként figyelik a elsősorban létezik. Vegye figyelembe, hogy egyes alkalmazások látja-e a "privát" visszacsatolási kapcsolat; "A" App "B" alkalmazás által létrehozott helyi visszacsatolási szoftvercsatornához nem lehet figyelni.
 
