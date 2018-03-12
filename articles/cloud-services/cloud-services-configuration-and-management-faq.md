@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 12/11/2017
 ms.author: genli
 ms.openlocfilehash: 916fbb436806c64ded9ebf9fdd9c57c42d0809f0
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Konfigurációs és kezelésének számos Azure-szolgáltatásokhoz: gyakran ismételt kérdések (GYIK)
 
@@ -57,7 +57,7 @@ Ez a cikk tartalmazza a konfigurációs és kezelésének számos kapcsolatos gy
 - [I nem felüli X példányok](#i-cannot-scale-beyond-x-instances)
 - [Hogyan konfigurálható a memória mérőszámok alapján automatikus méretezése?](#how-can-i-configure-auto-scale-based-on-memory-metrics)
 
-**Általános**
+**Generic**
 
 - [Hogyan "nosniff" hozzáadása a webhely?](#how-do-i-add-nosniff-to-my-website)
 - [Hogyan testre az IIS egy webes szerepkör?](#how-do-i-customize-iis-for-a-web-role)
@@ -173,7 +173,7 @@ Microsoft folyamatosan figyeli a kiszolgálók, hálózatok és alkalmazások é
 
 Windows 10 és Windows Server 2016 kapható HTTP/2 támogatása az ügyfél és a kiszolgáló oldalán. Ha az ügyfél (böngésző) kapcsolódik a TLS feletti IIS-kiszolgálóra, amely egyezteti a HTTP/2 TLS-bővítményeket keresztül, akkor a kiszolgálóoldali semmilyen módosítást nem kell. Ennek az oka TLS, feletti a HTTP/2 használatát megadó h2-14 fejléc alapértelmezés szerint küldi. Ha viszont az ügyfél küld egy frissítési fejlécben frissítése a HTTP/2, akkor szüksége a változtatások alább a kiszolgáló oldalán, annak érdekében, hogy a frissítési működik, és végül egy HTTP/2-kapcsolatot. 
 
-1. Futtassa a regedit.exe.
+1. Run regedit.exe.
 2. Keresse meg a beállításkulcs: HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HTTP\Parameters.
 3. Hozzon létre egy új DWORD értéket **DuoEnabled**.
 4. Állítsa be az értékét 1-re.
@@ -295,7 +295,7 @@ Az SNI kötés a PowerShell-parancsmag segítségével konfigurálható **New-We
     
 Leírtak [Itt](https://technet.microsoft.com/library/ee790567.aspx), a $sslFlags, a következő értékek egyike lehet:
 
-|Érték|Jelentése|
+|Érték|Jelentés|
 ------|------
 |0|Nincs SNI|
 |1|Az SNI engedélyezve |
