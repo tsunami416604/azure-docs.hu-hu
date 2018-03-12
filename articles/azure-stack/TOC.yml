@@ -236,10 +236,6 @@
               href: azure-stack-app-service-deploy.md
             - name: App Service-szolgáltatások offline üzembe helyezése
               href: azure-stack-app-service-deploy-offline.md
-            - name: Frissítés az App Service erőforrás-szolgáltató
-              href: azure-stack-app-service-update.md
-            - name: App Service erőforrás-szolgáltató offline frissítése
-              href: azure-stack-app-service-update-offline.md
             - name: További webes feldolgozói szerepkörök hozzáadása
               href: azure-stack-app-service-add-worker-roles.md
             - name: Központi telepítés forrásának konfigurálása

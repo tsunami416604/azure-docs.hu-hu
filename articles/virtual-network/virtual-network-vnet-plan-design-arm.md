@@ -4,7 +4,7 @@ description: "Megtudhatja, hogyan tervezése és kialakítása elkülönítési,
 services: virtual-network
 documentationcenter: na
 author: jimdial
-manager: carmonm
+manager: jeconnoc
 editor: tysonn
 ms.assetid: 3a4a9aea-7608-4d2e-bb3c-40de2e537200
 ms.service: virtual-network
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/08/2016
 ms.author: jdial
-ms.openlocfilehash: 9a0126235c9ff3fec05d7709bdee95ab4832a33b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ecdc3a847821fd83718f9cfc42308667460feabc
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="plan-and-design-azure-virtual-networks"></a>Azure virtuális hálózatok megtervezése
-Létre virtuális hálózatok kísérletezhet elég egyszerűen, de valószínűleg több Vnetek adott idő alatt a szervezet a termelési igényeinek támogatásához telepíteni fogja. Az egyes tervezési és kialakítási lesz Vnetek telepítéséhez, és csatlakozzon a hatékonyabb szükséges erőforrások. Ha nem ismeri a Vneteket, javasoljuk, hogy Ön [Vnetek megismerése](virtual-networks-overview.md) és [telepítése](virtual-networks-create-vnet-arm-pportal.md) egy, a folytatás előtt.
+Létre virtuális hálózatok kísérletezhet elég egyszerűen, de valószínűleg több Vnetek adott idő alatt a szervezet a termelési igényeinek támogatásához telepíteni fogja. Az egyes tervezési és kialakítási lesz Vnetek telepítéséhez, és csatlakozzon a hatékonyabb szükséges erőforrások. Ha nem ismeri a Vneteket, javasoljuk, hogy Ön [Vnetek megismerése](virtual-networks-overview.md) és [telepítése](quick-create-portal.md) egy, a folytatás előtt.
 
 ## <a name="plan"></a>Felkészülés
 Azure-előfizetések, régiók és hálózati erőforrásokat alapos ismerete fontos a sikeres. Alább szempontok listáját használhatja kiindulási pontként. E szempontok elsajátítása után hálózatterv adhat meg a követelményeknek.
@@ -60,10 +60,10 @@ Vnetek az alábbi tulajdonságokat tartalmazzák.
 
 | Tulajdonság | Leírás | Korlátozások |
 | --- | --- | --- |
-| **név** |VNet neve |Legfeljebb 80 karakterből álló karakterlánc. Betűk, számok, aláhúzásjelet, pontokat és kötőjeleket tartalmazhat. Betűvel vagy számmal kell kezdődnie. Betűvel, számmal vagy aláhúzásjellel kell végződnie. Felső vagy kisbetűket is tartalmaz. |
+| **name** |VNet neve |Legfeljebb 80 karakterből álló karakterlánc. Betűk, számok, aláhúzásjelet, pontokat és kötőjeleket tartalmazhat. Betűvel vagy számmal kell kezdődnie. Betűvel, számmal vagy aláhúzásjellel kell végződnie. Felső vagy kisbetűket is tartalmaz. |
 | **hely** |Azure-beli hely (más néven régió). |Az érvényes Azure helyek valamelyikén kell lennie. |
-| **Címtartományt** |A virtuális hálózat CIDR-jelöléssel alkotó címelőtagokat gyűjteménye. |Érvényes CIDR címblokkokat, beleértve a nyilvános IP-címtartományok tömbje kell lennie. |
-| **alhálózatok** |A virtuális hálózatot alkotó alhálózatok gyűjteménye |az alhálózati tulajdonságok az alábbi táblázatban találja. |
+| **addressSpace** |A virtuális hálózat CIDR-jelöléssel alkotó címelőtagokat gyűjteménye. |Érvényes CIDR címblokkokat, beleértve a nyilvános IP-címtartományok tömbje kell lennie. |
+| **subnets** |A virtuális hálózatot alkotó alhálózatok gyűjteménye |az alhálózati tulajdonságok az alábbi táblázatban találja. |
 | **dhcpOptions** |Egy kötelező tulajdonság nevű tartalmazó objektum **dnsServers**. | |
 | **dnsServers** |A virtuális hálózat által használt DNS-kiszolgálók tömbje. Ha nincs megadva kiszolgáló, az Azure belső névfeloldást szolgál. |Legfeljebb 10 DNS-kiszolgálók, IP-cím szerint tömbnek kell lennie. |
 
@@ -73,12 +73,12 @@ Alhálózatok az alábbi tulajdonságokat tartalmazzák.
 
 | Tulajdonság | Leírás | Korlátozások |
 | --- | --- | --- |
-| **név** |Alhálózat neve |Legfeljebb 80 karakterből álló karakterlánc. Betűk, számok, aláhúzásjelet, pontokat és kötőjeleket tartalmazhat. Betűvel vagy számmal kell kezdődnie. Betűvel, számmal vagy aláhúzásjellel kell végződnie. Felső vagy kisbetűket is tartalmaz. |
+| **name** |Alhálózat neve |Legfeljebb 80 karakterből álló karakterlánc. Betűk, számok, aláhúzásjelet, pontokat és kötőjeleket tartalmazhat. Betűvel vagy számmal kell kezdődnie. Betűvel, számmal vagy aláhúzásjellel kell végződnie. Felső vagy kisbetűket is tartalmaz. |
 | **hely** |Azure-beli hely (más néven régió). |Az érvényes Azure helyek valamelyikén kell lennie. |
 | **addressPrefix** |Az alhálózat CIDR-jelöléssel alkotó egyetlen címelőtag |Egy egyetlen CIDR-blokkja címterületeket a virtuális hálózat egyik részét képező kell lennie. |
-| **hálózati biztonsági csoporthoz tartozik** |Az alhálózat alkalmazott NSG | |
+| **networkSecurityGroup** |Az alhálózat alkalmazott NSG | |
 | **Migrálták** |Az útvonaltábla alkalmazva | |
-| **IP-konfigurációk** |Az alhálózathoz csatlakoztatott hálózati adapter által használt IP-konfigurációs objektumok gyűjteménye | |
+| **ipConfigurations** |Az alhálózathoz csatlakoztatott hálózati adapter által használt IP-konfigurációs objektumok gyűjteménye | |
 
 ### <a name="name-resolution"></a>Névfeloldás
 Alapértelmezés szerint a virtuális hálózat használja [Azure által biztosított névfeloldás](virtual-networks-name-resolution-for-vms-and-role-instances.md) feloldani a virtuális hálózaton belül, és a nyilvános interneten. Azonban ha a Vnetek csatlakozhat a helyszíni adatközpont, meg kell adni [a saját DNS-kiszolgáló](virtual-networks-name-resolution-for-vms-and-role-instances.md) feloldani a hálózatok között.  
@@ -112,10 +112,10 @@ Az alábbi táblázat néhány gyakori tervminták előfizetéssel és Vnetek je
 
 | Forgatókönyv | Ábra | Informatikai szakemberek | Hátrányok |
 | --- | --- | --- | --- |
-| Egyetlen előfizetés, két Vnetek alkalmazásonkénti |![Egyetlen előfizetés](./media/virtual-network-vnet-plan-design-arm/figure1.png) |Csak egy előfizetése kezeléséhez. |Maximális száma Vnetek Azure-régiót. Legalább egy előfizetésre van szüksége, amely után. Tekintse át a [Azure korlátozza](../azure-subscription-service-limits.md#networking-limits) cikkben alább. |
-| Alkalmazásonkénti alkalmazásonkénti két Vnetek egy előfizetés |![Egyetlen előfizetés](./media/virtual-network-vnet-plan-design-arm/figure2.png) |Előfizetésenként csak két Vnetek használja. |Nehezebben, ha túl sok alkalmazásokat kezeléséhez. |
-| Egy előfizetés üzleti egység, két Vnetek alkalmazásonkénti. |![Egyetlen előfizetés](./media/virtual-network-vnet-plan-design-arm/figure3.png) |Előfizetések számának és a Vnetek közötti egyensúly. |Maximális száma Vnetek részleg (előfizetés). Tekintse át a [Azure korlátozza](../azure-subscription-service-limits.md#networking-limits) cikkben alább. |
-| Egy előfizetés üzleti egység, az egyes alkalmazások két Vnetek. |![Egyetlen előfizetés](./media/virtual-network-vnet-plan-design-arm/figure4.png) |Előfizetések számának és a Vnetek közötti egyensúly. |Alkalmazások kell lehet különíteni alhálózatokat és az NSG-ket. |
+| Egyetlen előfizetés, két Vnetek alkalmazásonkénti |![Egy előfizetés](./media/virtual-network-vnet-plan-design-arm/figure1.png) |Csak egy előfizetése kezeléséhez. |Maximális száma Vnetek Azure-régiót. Legalább egy előfizetésre van szüksége, amely után. Tekintse át a [Azure korlátozza](../azure-subscription-service-limits.md#networking-limits) cikkben alább. |
+| Alkalmazásonkénti alkalmazásonkénti két Vnetek egy előfizetés |![Egy előfizetés](./media/virtual-network-vnet-plan-design-arm/figure2.png) |Előfizetésenként csak két Vnetek használja. |Nehezebben, ha túl sok alkalmazásokat kezeléséhez. |
+| Egy előfizetés üzleti egység, két Vnetek alkalmazásonkénti. |![Egy előfizetés](./media/virtual-network-vnet-plan-design-arm/figure3.png) |Előfizetések számának és a Vnetek közötti egyensúly. |Maximális száma Vnetek részleg (előfizetés). Tekintse át a [Azure korlátozza](../azure-subscription-service-limits.md#networking-limits) cikkben alább. |
+| Egy előfizetés üzleti egység, az egyes alkalmazások két Vnetek. |![Egy előfizetés](./media/virtual-network-vnet-plan-design-arm/figure4.png) |Előfizetések számának és a Vnetek közötti egyensúly. |Alkalmazások kell lehet különíteni alhálózatokat és az NSG-ket. |
 
 ### <a name="number-of-subnets"></a>Alhálózatok száma
 A következő esetekben a Vneten belül több alhálózaton kell figyelembe vennie:
@@ -202,11 +202,11 @@ Az alábbi követelmények előfizetések és Vnetek kapcsolódnak:
 
 Ezek a követelmények, meg kell egy előfizetési részlegek számára. Így az üzleti egységek az erőforrások fogyasztásának is nem beleszámít korlátok egyéb üzleti egységek számára. És mivel Vnetek számának minimalizálása érdekében szeretné, érdemes lehet használni a **üzleti egység, az egyes alkalmazások két Vnetek egy előfizetés** mintát, az alább látható módon.
 
-![Egyetlen előfizetés](./media/virtual-network-vnet-plan-design-arm/figure9.png)
+![Egy előfizetés](./media/virtual-network-vnet-plan-design-arm/figure9.png)
 
 Meg kell adnia a a címterület minden vnet is. Mivel kell a helyszíni adatok közötti kapcsolat adatközpontok Azure-régiókban, a használt Azure Vnet-terület nem ütközhetnek a helyszíni hálózat és minden egyes virtuális hálózat által használt címterület nem kell más meglévő Vnetek ütközhetnek. A címterek, az alábbi táblázat segítségével ezeknek a követelményeknek.  
 
-| **Előfizetés** | **Virtuális hálózat** | **Az Azure-régió** | **Címtér** |
+| **Előfizetés** | **VNet** | **Az Azure-régió** | **Címtér** |
 | --- | --- | --- | --- |
 | BU1 |ProdBU1US1 |USA nyugati régiója |172.16.0.0/16 |
 | BU1 |ProdBU1US2 |USA keleti régiója |172.17.0.0/16 |
@@ -247,7 +247,7 @@ Az alábbi követelmények kapcsolódó hozzáférés-vezérlés:
 
 Ezek a követelmények alapján sikerült felhasználókat adja hozzá a hálózati csapat a beépített **hálózat közreműködő** minden előfizetésben; szerepkör, és hozzon létre egy egyéni biztonsági szerepkört minden előfizetésben jogok jogosultságot ad az alkalmazásfejlesztők virtuális gépek hozzáadása meglévő alhálózatokat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Telepíthet egy virtuális hálózatot](virtual-networks-create-vnet-arm-template-click.md) eset alapján.
 * Megértéséhez hogyan [terheléselosztásához](../load-balancer/load-balancer-overview.md) IaaS virtuális gépeket és [kezelése az útválasztást a több Azure-régiók](../traffic-manager/traffic-manager-overview.md).
 * További információ [NSG-ket és a tervezés és kialakítás](virtual-networks-nsg.md) egy NSG-megoldáshoz.

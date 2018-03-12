@@ -6,13 +6,13 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 02/27/2018
+ms.date: 03/08/2018
 ms.author: raynew
-ms.openlocfilehash: d4c8dc8083fbffc46e94673230241075b763b444
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: d460da197c6e9f0bface402d83d4788f8164cc9c
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-physical-servers"></a>A helyszíni fizikai kiszolgálók Azure-bA vész-helyreállítási beállítása
 
@@ -32,8 +32,8 @@ Az oktatóanyag bemutatja, hogyan állíthat be a helyszíni fizikai Windows és
 Az oktatóanyag elvégzéséhez:
 
 - Ismernie kell a [forgatókönyv-architektúrát és az összetevőket](physical-azure-architecture.md).
-- Minden összetevőre vonatkozóan tekintse át a [támogatási követelményeket](site-recovery-support-matrix-to-azure.md).
-- Győződjön meg arról, hogy a replikálni kívánt kiszolgálók megfelelnek [Azure virtuális gép](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements).
+- Minden összetevőre vonatkozóan tekintse át a [támogatási követelményeket](vmware-physical-secondary-support-matrix.md).
+- Győződjön meg arról, hogy a replikálni kívánt kiszolgálók megfelelnek [Azure virtuális gép](vmware-physical-secondary-support-matrix.md#replicated-vm-support).
 - Azure előkészítése. Azure-előfizetéssel, Azure virtuális hálózat és a storage-fiók szükséges.
 - Egy fiók előkészítése automatikus telepíteni a mobilitási szolgáltatást minden replikálni kívánt kiszolgálón.
 
@@ -171,7 +171,7 @@ Az egyes kiszolgálók replikáció engedélyezése.
 8. Ha a megadott hálózati beállításokat az összes védelemre kijelölt gépre szeretné alkalmazni, válassza a **Beállítás most a kijelölt gépekhez** lehetőséget. Ha az egyes gépeknél külön-külön szeretné beállítani az Azure-hálózatot, kattintson a **Beállítás később** elemre. 
 9. A **fizikai gépek**, és kattintson a **+ a fizikai gép**. Adja meg a nevét és IP-címet. Válassza ki a replikálni kívánt gépek operációs rendszerének. A kiszolgálók felderítése és felsorolt néhány percet vesz igénybe. 
 10. A **tulajdonságok** > **tulajdonságainak konfigurálása**, válassza ki a fiókot, amelyek használják a folyamatkiszolgáló automatikusan telepíteni a mobilitási szolgáltatás a számítógépen.
-11. A **replikációs beállítások** > **replikáció beállításainak konfigurálása**, győződjön meg arról, hogy a megfelelő replikációs házirend van-e kiválasztva. 
+11. A **Replikációs beállítások** > **Replikációs beállítások konfigurálása** területen ellenőrizze, hogy a megfelelő replikációs szabályzat van-e kiválasztva. 
 12. Kattintson a **Replikáció engedélyezése** elemre. A **Védelem engedélyezése** feladat előrehaladását a **Beállítások** > **Feladatok** > **Site Recovery-feladatok** menüpontban követheti nyomon. A **Védelem véglegesítése** feladat befejeződését követően a gép készen áll a feladatátvételre.
 
 

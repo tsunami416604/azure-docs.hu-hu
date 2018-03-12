@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: c791f335bfa9ec6073eb83149068571ceb253f82
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: b54aba19ecb92867bc817cbbb921f4e6537ef70c
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="copy-data-to-or-from-azure-cosmos-db-using-azure-data-factory"></a>Másolja az adatokat, vagy az Azure Data Factory használatához Azure Cosmos-Adatbázisból
 
@@ -125,7 +125,7 @@ Adatok másolása az Azure Cosmos DB, állítsa be a forrás típusa a másolás
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A type tulajdonságot a másolási tevékenység forrás értékre kell állítani: **DocumentDbCollectionSource** |Igen |
-| lekérdezés |Adja meg a Cosmos adatbázis-lekérdezés adatokat olvasni.<br/><br/>Példa:`SELECT c.BusinessEntityID, c.Name.First AS FirstName, c.Name.Middle AS MiddleName, c.Name.Last AS LastName, c.Suffix, c.EmailPromotion FROM c WHERE c.ModifiedDate > \"2009-01-01T00:00:00\"` |Nem <br/><br/>Ha nincs megadva, az SQL-utasítást, amely végrehajtja a rendszer:`select <columns defined in structure> from mycollection` |
+| lekérdezés |Adja meg a Cosmos adatbázis-lekérdezés adatokat olvasni.<br/><br/>Példa: `SELECT c.BusinessEntityID, c.Name.First AS FirstName, c.Name.Middle AS MiddleName, c.Name.Last AS LastName, c.Suffix, c.EmailPromotion FROM c WHERE c.ModifiedDate > \"2009-01-01T00:00:00\"` |Nem <br/><br/>Ha nincs megadva, az SQL-utasítást, amely végrehajtja a rendszer: `select <columns defined in structure> from mycollection` |
 | nestingSeparator |Jelzi, hogy a dokumentum van beágyazva speciális karaktert, és hogyan flattern az eredményt állítsa be.<br/><br/>Ha egy Cosmos-adatbázis-lekérdezés egy beágyazott eredményt adja vissza, például `"Name": {"First": "John"}`, másolási tevékenység során azonosítja oszlopnév "Name.First", "John" értékkel a nestedSeparator pont esetén. |Nem (alapértelmezett érték a pont `.`) |
 
 **Példa**
@@ -162,7 +162,7 @@ Adatok másolása az Azure Cosmos DB, állítsa be a forrás típusa a másolás
 
 ### <a name="azure-cosmos-db-as-sink"></a>Mint fogadó Azure Cosmos-adatbázis
 
-Adatok másolása az Azure Cosmos DB, állítsa a fogadó típusa a másolási tevékenység **DocumentDbCollectionSink**. A következő tulajdonságok támogatottak a másolási tevékenység **forrás** szakasz:
+Adatok másolása Azure Cosmos DB, állítsa be a fogadó típusa a másolási tevékenység **DocumentDbCollectionSink**. A következő tulajdonságok támogatottak a másolási tevékenység **forrás** szakasz:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |

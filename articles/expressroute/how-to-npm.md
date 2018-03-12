@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: agummadi
-ms.openlocfilehash: 4f3edb6879ff256b1b50a1437fe349084fe7de41
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 36cd2f106c39f1a6bdcb6ee33b96209974a06336
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="configure-network-performance-monitor-for-expressroute"></a>Az ExpressRoute hálózati Teljesítményfigyelő konfigurálása
 
@@ -102,10 +102,7 @@ Munkaterület létrehozása, amely rendelkezik az ExpressRoute circuit(s) Vnetek
 
 1. Lépjen a **általános beállítások** lapján a **hálózati teljesítmény figyelési konfiguráció** lap az erőforrás. Kattintson az ügynök, amely megfelel a kiszolgáló processzor a a **OMS-ügynökök telepítése** szakaszt, és töltse le a telepítő fájlját.
 
-  >[!NOTE]
-  >Az ügynököt telepíteni kell a Windows Server (2008 SP1 vagy újabb). Windows asztali operációs rendszer és a Linux operációs rendszert futtató ExpressRoute-Kapcsolatcsoportok megfigyelése nincs támogatva. 
-  >
-  >
+ 
 2. Ezután másolja a **munkaterület azonosítója** és **elsődleges kulcs** a Jegyzettömbbe.
 3. Az a **OMS-ügynökök konfigurálása figyelés a TCP protokollt használó** szakaszban, töltse le a Powershell-parancsfájlt. A PowerShell-parancsfájl segítségével nyissa meg a megfelelő tűzfal port a TCP-tranzakciók.
 
@@ -114,6 +111,16 @@ Munkaterület létrehozása, amely rendelkezik az ExpressRoute circuit(s) Vnetek
 ### <a name="installagent"></a>2.2: a figyelési ügynök telepítése minden felügyeleti kiszolgálón (az egyes virtuális Hálózatot, amely segítségével nyomon követni kívánt)
 
 Azt javasoljuk, hogy telepítse a redundancia érdekében legalább két ügynököket (vagyis a helyszíni Azure Vnetekhez) ExpressRoute-kapcsolat mindkét oldalán. Az ügynökök telepítéséhez tegye a következőket:
+  
+  >[!NOTE]
+  >Az ügynököt telepíteni kell a Windows Server (2008 SP1 vagy újabb). Windows asztali operációs rendszer és a Linux operációs rendszert futtató ExpressRoute-Kapcsolatcsoportok megfigyelése nincs támogatva. 
+  >
+  >
+  
+  >[!NOTE]
+  >SCOM-ügynökök nem lehet következetesen észleli, ha az Azure üzemeltetése.  Azt javasoljuk, hogy nem használja SCOM-ügynököt az Azure Vnetekhez ExpressRoute figyelésére.
+  >
+  >
 
 1. Futtatás **telepítő** ExpressRoute figyelemmel kísérésére használni kívánt összes kiszolgálón az ügynök telepítéséhez. A figyeléshez használt kiszolgáló lehet egy virtuális Gépet, vagy a helyszíni és internetkapcsolattal kell rendelkeznie. Azure a figyelni kívánt hálózati szegmenshez legalább egy ügynök-hez, és egy ügynököt telepíteni szeretné.
 2. Az **Üdvözöljük** lapon kattintson a **Tovább** gombra.

@@ -15,11 +15,11 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: cynthn
-ms.openlocfilehash: b279ec2358a860a71da25f0ffaea7462a80f8339
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 258c2a5bbce1f15c78690cb01dc9b66fef4bb8f5
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="upload-and-create-a-linux-vm-from-custom-disk-with-the-azure-cli-20"></a>Töltse fel, és a Linux virtuális gép létrehozása az Azure CLI 2.0 egyéni lemezről
 Ez a cikk bemutatja, hogyan egy virtuális merevlemez (VHD) feltöltése az Azure CLI 2.0 Azure storage-fiók és a Linux virtuális gépek létrehozása a egyéni lemezt. Az [Azure CLI 1.0-s](upload-vhd-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) verziójával is elvégezheti ezeket a lépéseket. Ez a funkció lehetővé teszi telepítése és konfigurálása a Linux distro az igényeinek megfelelően, valamint, hogy a virtuális merevlemez használatával gyorsan hozzon létre az Azure virtuális gépek (VM).
@@ -29,11 +29,11 @@ Ez a témakör a végső virtuális merevlemezeket használ a storage-fiókok, d
 ## <a name="quick-commands"></a>Gyors parancsok
 Ha szeretné gyorsan a feladatnak a, a következő szakasz részleteit a következő parancsokat a virtuális merevlemez feltöltéséhez az Azure-bA. Részletes információkat és a környezetben az egyes lépések a dokumentum többi részén található [itt indítása](#requirements).
 
-Győződjön meg arról, hogy rendelkezik-e a legújabb [Azure CLI 2.0](/cli/azure/install-az-cli2) telepítve, és bejelentkezett az Azure-fiók használatával [az bejelentkezési](/cli/azure/#az_login).
+Győződjön meg arról, hogy rendelkezik-e a legújabb [Azure CLI 2.0](/cli/azure/install-az-cli2) telepítve, és bejelentkezett az Azure-fiók használatával [az bejelentkezési](/cli/azure/reference-index#az_login).
 
 A következő példákban cserélje le a saját értékeit példa paraméterek nevei. Példa paraméter nevekre `myResourceGroup`, `mystorageaccount`, és `mydisks`.
 
-Először hozzon létre egy erőforráscsoportot a [az csoport létrehozása](/cli/azure/group#az_group_create). Az alábbi példa létrehoz egy erőforráscsoportot `myResourceGroup` a a `WestUs` helye:
+Először hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#az_group_create) paranccsal. Az alábbi példa létrehoz egy erőforráscsoportot `myResourceGroup` a a `WestUs` helye:
 
 ```azurecli
 az group create --name myResourceGroup --location westus
@@ -82,7 +82,7 @@ A cél tárfiókkal nem lehet ugyanaz, mint ahol a virtuális lemez feltöltött
 ## <a name="requirements"></a>Követelmények
 A következő lépések elvégzéséhez szüksége:
 
-* **Linux operációs rendszer van telepítve, a .vhd-fájllá** -telepíteni egy [Azure által támogatott Linux-disztribúció](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (vagy lásd: [nem támogatott disztribúciókkal kapcsolatos információi](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)) a virtuális merevlemez virtuális lemezre formátumban. Több különféle eszköz létezik a virtuális gép és a virtuális merevlemez létrehozásához:
+* **Linux operációs rendszer van telepítve, a .vhd-fájllá** -telepíteni egy [Azure által támogatott Linux-disztribúció](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (vagy lásd: [nem támogatott disztribúciókkal kapcsolatos információi](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)) a VHD formátumú virtuális lemezre . Több különféle eszköz létezik a virtuális gép és a virtuális merevlemez létrehozásához:
   * Telepítse és konfigurálja [QEMU](https://en.wikibooks.org/wiki/QEMU/Installing_QEMU) vagy [KVM](http://www.linux-kvm.org/page/RunningKVM), ügyelve arra, hogy a virtuális merevlemez használata a képformátum. Ha szükséges, akkor [lemezkép konvertálása](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats) használatával `qemu-img convert`.
   * Is használhatja a Hyper-V [Windows 10](https://msdn.microsoft.com/virtualization/hyperv_on_windows/quick_start/walkthrough_install) vagy [Windows Server 2012 vagy 2012 R2](https://technet.microsoft.com/library/hh846766.aspx).
 
@@ -95,7 +95,7 @@ A következő lépések elvégzéséhez szüksége:
   * Hozzon létre egy tárfiók és tároló az egyéni lemez és a létrehozott virtuális gépek tárolására
   * Miután létrehozta a virtuális gépek, nyugodtan törölheti a lemezen
 
-Győződjön meg arról, hogy rendelkezik-e a legújabb [Azure CLI 2.0](/cli/azure/install-az-cli2) telepítve, és bejelentkezett az Azure-fiók használatával [az bejelentkezési](/cli/azure/#az_login).
+Győződjön meg arról, hogy rendelkezik-e a legújabb [Azure CLI 2.0](/cli/azure/install-az-cli2) telepítve, és bejelentkezett az Azure-fiók használatával [az bejelentkezési](/cli/azure/reference-index#az_login).
 
 A következő példákban cserélje le a saját értékeit példa paraméterek nevei. Példa paraméter nevekre `myResourceGroup`, `mystorageaccount`, és `mydisks`.
 

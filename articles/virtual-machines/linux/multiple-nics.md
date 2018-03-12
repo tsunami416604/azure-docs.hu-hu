@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/26/2017
 ms.author: iainfou
-ms.openlocfilehash: e377459d205426b34c52336d9104400cf9d8030b
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 635d1373a51f2f2e4d4f7ab5053e520f5b9363a6
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="how-to-create-a-linux-virtual-machine-in-azure-with-multiple-network-interface-cards"></a>Hogyan Linux virtuális gép létrehozása az Azure-ban a több hálózati kártyák
 Létrehozhat egy virtuális gép (VM), amelyen több virtuális hálózati adapterek (NIC) nem csatlakoztatható az Azure-ban. Egy gyakori forgatókönyv, hogy az előtér- és kapcsolat, vagy a hálózaton, figyelési vagy biztonsági mentési megoldásra dedikált különböző alhálózatokon. Ez a cikk részletesen több hálózati adapter nem csatlakoztatható a virtuális gép létrehozása és hozzáadása vagy eltávolítása a hálózati adapter egy meglévő virtuális gépről. Különböző [Virtuálisgép-méretek](sizes.md) több hálózati adapter támogatja, így méretezés ennek megfelelően a virtuális Gépet.
@@ -27,11 +27,11 @@ Ez a cikk részletezi az Azure CLI 2.0 több hálózati adapterrel rendelkező v
 
 
 ## <a name="create-supporting-resources"></a>Kapcsolódó erőforrások létrehozása
-Telepítse a legújabb [Azure CLI 2.0](/cli/azure/install-az-cli2) és való bejelentkezéshez az Azure fiók használatával [az bejelentkezési](/cli/azure/#az_login).
+Telepítse a legújabb [Azure CLI 2.0](/cli/azure/install-az-cli2) és való bejelentkezéshez az Azure fiók használatával [az bejelentkezési](/cli/azure/reference-index#az_login).
 
 A következő példákban cserélje le a saját értékeit példa paraméterek nevei. Példa paraméter nevekre *myResourceGroup*, *mystorageaccount*, és *myVM*.
 
-Először hozzon létre egy erőforráscsoportot a [az csoport létrehozása](/cli/azure/group#az_group_create). A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *EastUS* helyen:
+Először hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#az_group_create) paranccsal. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *EastUS* helyen:
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
@@ -58,7 +58,7 @@ az network vnet subnet create \
     --address-prefix 192.168.2.0/24
 ```
 
-Hozzon létre egy hálózati biztonsági csoport [az hálózati nsg létrehozása](/cli/azure/network/nsg#az_network_nsg_create). Az alábbi példakód létrehozza a hálózati biztonsági csoport nevű *myNetworkSecurityGroup*:
+Hozzon létre egy hálózati biztonsági csoport [az hálózati nsg létrehozása](/cli/azure/network/nsg#az_network_nsg_create). A következő példa a *myNetworkSecurityGroup* nevű hálózati biztonsági csoportot hozza létre:
 
 ```azurecli
 az network nsg create \
@@ -87,7 +87,7 @@ az network nic create \
 ## <a name="create-a-vm-and-attach-the-nics"></a>Hozzon létre egy virtuális Gépet, és csatlakoztassa a hálózati adapterek
 A virtuális gép létrehozásakor adja meg a hálózati adapter segítségével létrehozott `--nics`. Is kell vigyázni, ha a Virtuálisgép-méretet választja. Nincsenek korlátai, adhat hozzá egy virtuális hálózati adapterrel teljes száma. Tudjon meg többet az [Linux Virtuálisgép-méretek](sizes.md). 
 
-Hozzon létre egy virtuális gépet az [az vm create](/cli/azure/vm#az_vm_create) paranccsal. Az alábbi példakód létrehozza a virtuális gépek nevű *myVM*:
+Hozzon létre egy virtuális gépet az [az vm create](/cli/azure/vm#az_vm_create) paranccsal. Az alábbi példában egy *myVM* nevű virtuális gépet hozunk létre:
 
 ```azurecli
 az vm create \

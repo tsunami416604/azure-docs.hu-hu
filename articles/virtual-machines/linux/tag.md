@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/28/2017
 ms.author: memccror
-ms.openlocfilehash: 06d264ce9a058cc791d5f6258bcc0b07eab915d8
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: e68b97461e8630750462f2c640901511aa2f8676
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="how-to-tag-a-linux-virtual-machine-in-azure"></a>Hogyan Linux virtuális gépek címke az Azure-ban
 Ez a cikk ismerteti a különböző módjai a Linux virtuális gépek címke az Azure-ban a Resource Manager üzembe helyezési modellel keresztül. Címke található a felhasználó által definiált kulcs/érték párok, amely lehet tenni közvetlenül egy erőforrás vagy egy erőforráscsoportot. Azure jelenleg legfeljebb 15 címkék erőforrás pedig erőforráscsoportban. Címkék erőforrás létrehozása idején helyezni vagy hozzáadni egy meglévő erőforrást. Vegye figyelembe, csak a Resource Manager üzembe helyezési modellel létrehozott erőforrások címkék használhatók.
@@ -27,7 +27,7 @@ Ez a cikk ismerteti a különböző módjai a Linux virtuális gépek címke az 
 [!INCLUDE [virtual-machines-common-tag](../../../includes/virtual-machines-common-tag.md)]
 
 ## <a name="tagging-with-azure-cli"></a>Az Azure CLI-címkézés
-Első lépésként a legújabb kell [Azure CLI 2.0 (előzetes verzió)](/cli/azure/install-az-cli2) telepítve, és bejelentkezett az Azure-fiók használatával [az bejelentkezési](/cli/azure/#az_login).
+Első lépésként a legújabb kell [Azure CLI 2.0 (előzetes verzió)](/cli/azure/install-az-cli2) telepítve, és bejelentkezett az Azure-fiók használatával [az bejelentkezési](/cli/azure/reference-index#az_login).
 
 Az [Azure CLI 1.0-s](tag-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) verziójával is elvégezheti ezeket a lépéseket.
 

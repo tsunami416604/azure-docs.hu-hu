@@ -10,11 +10,11 @@ ms.topic: article
 ms.service: cost-management
 manager: carmonm
 ms.custom: 
-ms.openlocfilehash: a82d803b51859f809ca5a39ce177697a1f66a008
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 4a0280420132aad9f1e0b17d5998ec225bb0eaa1
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="connect-an-amazon-web-services-account"></a>Csatlakozás az Amazon Web Services-fiók
 
@@ -73,7 +73,7 @@ A következő szakaszok végigvezetik Önt a felügyeleti költségek való hozz
 2. Kattintson a **felhasználó hozzáadása**.
 3. Az a **felhasználónév** mezőbe írjon be egy felhasználónevet.
 4. A **hozzáférési típus**, jelölje be **programozott hozzáférés** kattintson **tovább: engedélyek**.  
-    ![Felhasználó hozzáadása](./media/connect-aws-account/add-user01.png)
+    ![felhasználó hozzáadása](./media/connect-aws-account/add-user01.png)
 5. Engedélyek, válassza a **közvetlenül csatolni a meglévő házirendek**.
 6. A **engedélyek házirendek csatolása**, a a **házirendtípus** keresési a Szűrő mezőbe, írja be `ReadOnlyAccess`, jelölje be **ReadOnlyAccess**, és kattintson a **következő : Tekintse át**.  
     ![A felhasználói engedélyek beállítása](./media/connect-aws-account/set-permission-for-user.png)
@@ -100,4 +100,4 @@ Költség felügyeleti elindul az adatgyűjtés, valamint a jelentések való fe
 
 ## <a name="next-steps"></a>További lépések
 
-- További információt az Azure költség Management Cloudyn, továbbra is a [tekintse át a használati és költségek](tutorial-review-usage.md) oktatóanyag költség-kezelésre.
+- További információ az Azure költség Management, továbbra is a [tekintse át a használati és költségek](tutorial-review-usage.md) oktatóanyag költség-kezelésre.

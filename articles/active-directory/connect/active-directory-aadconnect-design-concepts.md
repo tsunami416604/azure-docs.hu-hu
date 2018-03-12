@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: Identity
 ms.date: 07/13/2017
 ms.author: billmath
-ms.openlocfilehash: 510efc4ae6674a3987c2bb5d7cd155ea8c710c83
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 179a669e4c9567950d22ed76a693ec6ab7a2db8d
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="azure-ad-connect-design-concepts"></a>Az Azure AD Connect: Tervezési alapelvek
 Ez a témakör célja, hogy az Azure AD Connect megvalósítási tervezése során kell re területek leírásához. Ez a témakör egy részletes bemutatója a bizonyos területeken, és ezekről a fogalmakról rövid leírását, valamint további témakörökre mutatnak.
@@ -42,10 +42,10 @@ Az attribútum értékét meg kell felelnie a következő:
 
 * Kisebb, mint 60 karakter hosszú lehet
   * Nem, a – z, A-Z karaktereket vagy 0-9 kódolású és számít 3 karakternél
-* Egy speciális karaktert tartalmaz: &#92;! # $ % & * + / = ? ^ &#96; { } | ~ < > ( ) ' ; : , [ ] " @ _
+* Egy speciális karaktert tartalmaz: &#92; ! # $ % & * + / = ? ^ &#96; { } | ~ < > ( ) ' ; : , [ ] " @ _
 * Egyedinek kell lenniük
 * Karakterlánc, egész, vagy bináris kell lennie
-* Felhasználó nevét, a módosítások nem alapján
+* Felhasználó nevét, a módosítás nem alapján
 * Nem kell a kis-és nagybetűket és értékek, amelyek esetének eltérhetnek elkerülése érdekében
 * Hozzá kell rendelni a objektum létrehozásakor
 
@@ -178,7 +178,7 @@ A helyszíni címtár az Azure ad-vel integrálni fontos tudni, hogyan a szinkro
 ### <a name="choosing-the-attribute-for-userprincipalname"></a>A userPrincipalName attribútum kiválasztása
 Amikor kiválasztja a biztosítani azt az attribútumot Azure egy használt UPN értékének győződjön meg arról
 
-* Az attribútumértékek felelnek meg a UPN szintaxis (RFC 822), az azt formátumban kell lennieusername@domain
+* Az attribútumértékek felelnek meg a UPN szintaxis (RFC 822), az azt formátumban kell lennie username@domain
 * Az értékek utótag megegyezik egy egyéni ellenőrzött tartományokat Azure AD-ben
 
 A gyorsbeállítások az attribútum feltételezett választott a userPrincipalName nem. Ha a userPrincipalName attribútum nem tartalmaz az érték azt szeretné, hogy a felhasználókat, hogy jelentkezzen be az Azure-ba, majd ki kell választania **egyéni telepítési**.
@@ -195,5 +195,5 @@ Olvasási [az egyéni tartománynév hozzáadása az Azure Active Directory](../
 
 Az Azure AD Connect azt észleli, ha nem átirányítható tartományi környezetben futtatja, és akkor megfelelően figyelmezteti a folytassa a gyorsbeállítások. Ha nem átirányítható tartományban, akkor valószínű, hogy a felhasználók egyszerű túl van-e nem átirányítható utótagok. Például contoso.local le, ha az Azure AD Connect azt javasolja, hogy használja a gyorsbeállítások használata helyett egyéni beállításokat. Egyéni beállítások használatával is, amely kell használható egyszerű felhasználónév jelentkezzen be Azure után a felhasználók attribútumok szinkronizálva lesznek az Azure AD meg.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információ: [Helyszíni identitások integrálása az Azure Active Directoryval](active-directory-aadconnect.md).

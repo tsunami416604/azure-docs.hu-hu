@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/10/2018
+ms.date: 03/08/2018
 ms.author: maheshu
-ms.openlocfilehash: 1963931f30808e861445c9555a04f933514239c3
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.openlocfilehash: 1cfd0570315d5a1c6587ade164edf0a837453406
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="azure-active-directory-domain-services-frequently-asked-questions-faqs"></a>Az Azure Active Directory tartományi szolgáltatások: Gyakran ismételt kérdések (GYIK)
 Ezen a lapon az Azure Active Directory tartományi szolgáltatások kapcsolatos gyakori kérdésekre. Tartsa biztonsági frissítések keresése.
@@ -39,7 +39,7 @@ Jelenleg nem. A Microsoft egy mechanizmus, amellyel áttelepítheti a meglévő 
 ### <a name="can-i-enable-azure-ad-domain-services-in-an-azure-csp-cloud-solution-provider-subscription"></a>Az Azure kriptográfiai Szolgáltató (Cloud Solution Provider) előfizetéssel az Azure AD tartományi szolgáltatások engedélyezése
 Igen. Tekintse meg, hogyan engedélyezheti [Azure CSP-előfizetések az Azure AD tartományi szolgáltatások](active-directory-ds-csp.md).
 
-### <a name="can-i-enable-azure-ad-domain-services-in-a-federated-azure-ad-directory-i-use-adfs-to-authenticate-users-for-access-to-office-365-and-do-not-synchronize-password-hashes-to-azure-ad-can-i-enable-azure-ad-domain-services-for-this-directory"></a>Engedélyezhető az Azure AD tartományi szolgáltatások egy összevont Azure AD-címtár? I az AD FS segítségével hitelesíti a felhasználókat az Office 365 eléréséhez, és ne szinkronizáljon az Azure AD azok kivonatai. Ez a könyvtár az Azure AD tartományi szolgáltatások engedélyezése
+### <a name="can-i-enable-azure-ad-domain-services-in-a-federated-azure-ad-directory-i-do-not-synchronize-password-hashes-to-azure-ad-can-i-enable-azure-ad-domain-services-for-this-directory"></a>Engedélyezhető az Azure AD tartományi szolgáltatások egy összevont Azure AD-címtár? Az Azure AD-jelszó-kivonatok nem szinkronizálni. Ez a könyvtár az Azure AD tartományi szolgáltatások engedélyezése
 Nem. Azure AD tartományi szolgáltatások hozzá kell férnie a jelszókivonatait a felhasználói fiókok, NTLM vagy Kerberos használatával a felhasználók hitelesítéséhez. Egy összevont könyvtárban a jelszó-kivonatok nem szerepelnek az Azure AD-címtár. Azure AD tartományi szolgáltatásokat, ezért az ilyen Azure AD-címtártól nem működik.
 
 ### <a name="can-i-make-azure-ad-domain-services-available-in-multiple-virtual-networks-within-my-subscription"></a>Tehetek Azure AD tartományi szolgáltatások több virtuális hálózat érhető el az előfizetésen belül?
@@ -53,6 +53,9 @@ Igen. Lásd: [engedélyezése az Azure AD tartományi szolgáltatások a PowerSh
 
 ### <a name="can-i-add-domain-controllers-to-an-azure-ad-domain-services-managed-domain"></a>Hozzáadható-e tartományvezérlők az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz?
 Nem. Az Azure AD tartományi szolgáltatások által biztosított tartománya felügyelt tartományhoz. Nem kell kiépíteni, konfigurálása, vagy egyéb módon kezelje a tartományvezérlők a tartomány - e felügyeleti tevékenységek szolgáltatásként Microsoft által biztosított. További tartományvezérlők (olvasási és írási vagy olvasási) a felügyelt tartomány számára, ezért nem adható hozzá.
+
+### <a name="can-guest-users-invited-to-my-directory-use-azure-ad-domain-services"></a>Használhatja a vendégfelhasználók meghívót, hogy a címtár Azure AD tartományi szolgáltatásokat?
+Nem. A vendégfelhasználók meghívót, hogy az Azure Active directory használatával a [Azure AD B2B](../active-directory/active-directory-b2b-what-is-azure-ad-b2b.md) a meghívás folyamat sycned be az Azure AD tartományi szolgáltatások által kezelt tartomány. Ezek a felhasználók jelszavainak azonban nem tárolódnak az Azure AD-címtár. Ezért az Azure AD tartományi szolgáltatások rendelkezik semmilyen módon nem lehet szinkronizálni az NTLM, és a Kerberos csak ezek a felhasználók a felügyelt tartományba. Ennek eredményeképpen ezek a felhasználók nem bejelentkezni a felügyelt tartományra vagy illesztési számítógépek a felügyelt tartományra.
 
 ## <a name="administration-and-operations"></a>Felügyelet és műveletek
 ### <a name="can-i-connect-to-the-domain-controller-for-my-managed-domain-using-remote-desktop"></a>Képes kapcsolódni a tartományvezérlő a távoli asztal használata felügyelt tartomány?
@@ -75,6 +78,9 @@ Nem. A séma a Microsoft felügyeli a felügyelt tartomány számára. Sémakite
 
 ### <a name="can-i-modify-or-add-dns-records-in-my-managed-domain"></a>Módosítsa vagy a felügyelt tartomány DNS-rekordok hozzáadásához?
 Igen. A "AAD DC rendszergazdák" csoportba kapnak "DNS-rendszergazda" jogosultsággal, a felügyelt tartomány DNS-rekordjainak módosítására. Ezek segítségével a DNS-kezelő konzolt egy tartományhoz a felügyelt, Windows Server rendszert futtató számítógép DNS kezelése. A DNS-kezelő konzol használatával telepítse "DNS-kiszolgálói eszközök", amely része a "Távoli kiszolgáló felügyeleti eszközei" választható szolgáltatás a kiszolgálón. További információ a [segédprogramok felügyelete, figyelés és hibaelhárítás DNS](https://technet.microsoft.com/library/cc753579.aspx) a TechNet webhelyen érhető el.
+
+### <a name="what-is-the-password-lifetime-policy-on-a-managed-domain"></a>Mi az a jelszóházirend élettartama egy felügyelt tartomány része?
+Az Azure AD-tartomány az alapértelmezett jelszó élettartamának szolgáltatások által kezelt tartomány 90 nap. A jelszó élettartama nincs szinkronizálva az Azure ad-ben beállított jelszót élettartamát. Emiatt előfordulhat, hogy olyan helyzet, amikor a felhasználói jelszavak jár le, a felügyelt tartományok, de továbbra is érvényesek az Azure ad-ben. Ilyen esetekben a felhasználóknak kell módosítani a jelszavát, az Azure ad-ben, és az új jelszót fogja szinkronizálni a felügyelt tartományra. Emellett a "jelszó-biztosítja – nem-jár le" és "user-must-change-password-at-next-logon" attribútumok a felhasználói fiókok nincsenek szinkronizálva a felügyelt tartományra.
 
 ## <a name="billing-and-availability"></a>Számlázási és rendelkezésre állás
 ### <a name="is-azure-ad-domain-services-a-paid-service"></a>Az Azure AD tartományi szolgáltatások egy fizetős szolgáltatás?

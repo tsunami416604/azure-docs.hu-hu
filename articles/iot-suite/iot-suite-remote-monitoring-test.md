@@ -12,11 +12,11 @@ ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: 9f51c35be09af6f3a8dde7061dcf57a9c4cc9fdb
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 563a5a1c177b1f18be18d9b3cc9f3f9a7ee8ae4a
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="create-a-new-simulated-device"></a>Hozzon létre egy új szimulált eszköz
 
@@ -104,7 +104,7 @@ Fejezze be a fejlesztési környezetet az új szimulált eszköz hozzáadása a 
 
 A távoli figyelési megoldást a következő létrehozásakor [www.azureiotsuite.com](https://www.azureiotsuite.com), úgy döntött, hogy a megoldás neve. A megoldás neve, amely a különböző telepített olyan erőforrásokat tartalmaz, a megoldás az Azure erőforráscsoport neve lesz. Az alábbi parancsokat használja nevű erőforráscsoport **Contoso-01**, le kell cserélni **Contoso-01** az erőforráscsoport nevét.
 
-Az alábbi parancsokat használja a `az` parancsot [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/overview?view=azure-cli-latest). Az Azure CLI 2.0 telepítése a fejlesztői számítógépén, vagy használja a [felhő rendszerhéj](https://docs.microsoft.com/azure/cloud-shell/overview) a a [Azure-portálon](http://portal.azure.com). Az Azure CLI 2.0 előre telepített, a felhő rendszerhéj.
+Az alábbi parancsokat használja a `az` parancsot [Azure CLI 2.0](https://docs.microsoft.com/cli/azure?view=azure-cli-latest). Az Azure CLI 2.0 telepítése a fejlesztői számítógépén, vagy használja a [felhő rendszerhéj](https://docs.microsoft.com/azure/cloud-shell/overview) a a [Azure-portálon](http://portal.azure.com). Az Azure CLI 2.0 előre telepített, a felhő rendszerhéj.
 
 1. Ha ellenőrizni szeretné a távoli felügyeleti erőforrásokat tartalmazó erőforráscsoport nevét, a következő parancsot:
 

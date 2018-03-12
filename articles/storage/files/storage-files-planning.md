@@ -2,23 +2,17 @@
 title: "Az Azure-fájlok központi telepítésének megtervezése |} Microsoft Docs"
 description: "További tudnivalók az Azure-fájlok központi telepítésének tervezése során megfontolandó tényezőkről."
 services: storage
-documentationcenter: 
 author: wmgries
-manager: klaasl
-editor: jgerend
-ms.assetid: 297f3a14-6b3a-48b0-9da4-db5907827fb5
+manager: jeconnoc
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 12/04/2017
+ms.date: 03/06/2018
 ms.author: wgries
-ms.openlocfilehash: 590bc459a71b8691741f7f33d2d70b0ba4474591
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 017dd79e2d15fdd98ea020c686857d282bad244e
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Az Azure Files üzembe helyezésének megtervezése
 [Az Azure Files](storage-files-introduction.md) teljes körűen felügyelt fájlmegosztást kínáló a felhőben, amelyek elérhetők az iparági szabványos SMB protokollon keresztül. Azure fájlok teljes körűen felügyelt, mert sokkal egyszerűbb, mint a központi telepítésére és felügyeletére a fájlkiszolgáló vagy NAS-eszköz telepítés éles helyzetekben. Ez a cikk foglalkozik a témakörök figyelembe kell venni egy Azure fájlmegosztás üzemi használatra a szervezeten belüli központi telepítésekor.
@@ -45,7 +39,7 @@ ms.lasthandoff: 01/29/2018
 ## <a name="data-access-method"></a>Adatok hozzáférési módszer
 Az Azure fájlok ajánlatok két, beépített és kényelmes adat-hozzáférési módszer használható önállóan, vagy egymással, együtt az adatok eléréséhez:
 
-1. **Közvetlen hozzáférés felhő**: bármely Azure fájlmegosztás által lehet csatlakoztatni [Windows](storage-how-to-use-files-windows.md), [macOS](storage-how-to-use-files-mac.md), és/vagy [Linux](storage-how-to-use-files-linux.md) az iparági szabványos Server Message Block (a SMB) protokollt vagy a fájl REST API-n keresztül. Az SMB olvasási és írási műveleteket ad ki a megosztáson tárolt fájlok készülnek el közvetlenül a fájlmegosztás az Azure-ban. Csak akkor csatlakoztassa egy Azure-ban, az SMB-ügyfél operációs rendszerben támogatja a legalább SMB 2.1-es verzióját. Csatlakoztassa a helyszínen, például egy felhasználó munkaállomáson, a munkaállomás által támogatott SMB-ügyfél támogatnia kell a legalább SMB 3.0 (a titkosítás). Mellett SMB új alkalmazásokat vagy szolgáltatásokat lehet, hogy közvetlenül hozzáférhet a fájlmegosztáshoz fájl REST, amely egy egyszerű és méretezhető alkalmazásprogramozási felületet nyújt szoftverfejlesztői-en keresztül.
+1. **Közvetlen hozzáférés felhő**: bármely Azure fájlmegosztás által lehet csatlakoztatni [Windows](storage-how-to-use-files-windows.md), [macOS](storage-how-to-use-files-mac.md), és/vagy [Linux](storage-how-to-use-files-linux.md) rendelkező az iparági szabványos Server Message Block (SMB) protokoll vagy a fájl REST API-n keresztül. Az SMB olvasási és írási műveleteket ad ki a megosztáson tárolt fájlok készülnek el közvetlenül a fájlmegosztás az Azure-ban. Csak akkor csatlakoztassa egy Azure-ban, az SMB-ügyfél operációs rendszerben támogatja a legalább SMB 2.1-es verzióját. Csatlakoztassa a helyszínen, például egy felhasználó munkaállomáson, a munkaállomás által támogatott SMB-ügyfél támogatnia kell a legalább SMB 3.0 (a titkosítás). Mellett SMB új alkalmazásokat vagy szolgáltatásokat lehet, hogy közvetlenül hozzáférhet a fájlmegosztáshoz fájl REST, amely egy egyszerű és méretezhető alkalmazásprogramozási felületet nyújt szoftverfejlesztői-en keresztül.
 2. **Az Azure fájlszinkronizálás** (előzetes verzió): Azure fájl szinkronizálási megosztások replikálható helyszíni Windows Server-kiszolgálók vagy az Azure-ban. A felhasználók elérésére a fájlmegosztás keresztül a Windows Server többek között az SMB vagy NFS-megosztások keresztül. Ez akkor hasznos, forgatókönyvek, amelyben az adatok elért és módosítva távolságra a egy Azure-adatközpontban, többek között a fiókirodák esetében. Előfordulhat, hogy replikálja adatok több Windows Server végpontok közötti például több fiókirodák között. Végezetül adatokat is helyezhető el a az Azure Fileshoz, úgy, hogy minden adatot a kiszolgáló továbbra is elérhetők, de a kiszolgáló nem rendelkezik az adatok teljes másolata. Ehelyett adatok van zökkenőmentesen előtt tartani, amikor a felhasználó megnyitja.
 
 A következő táblázat bemutatja, hogyan az alkalmazások és használhatják a Azure fájlmegosztás:
@@ -63,7 +57,7 @@ Az Azure Files program számos beépített biztosítva az adatok biztonsága:
     * Ügyfelek, amelyek támogatják az SMB 3.0-titkosítás adatokat küldeni és fogadni egy titkosított csatornán keresztül.
     * Ügyfelek, amelyek nem támogatják az SMB 3.0-s verziójával is intra-datacenter protokollt használó kommunikációra SMB 2.1 vagy SMB 3.0 titkosítás nélkül. Ne feledje, hogy az ügyfelek nem többek datacenter kommunikálhassanak SMB 2.1 vagy SMB 3.0 titkosítás nélkül.
     * Az ügyfelek a is fájl REST HTTP vagy HTTPS protokollt használó kommunikációra.
-* Titkosítási nyugalmi ([Azure Storage szolgáltatás titkosítási](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)): Storage Service Encryption (SSE) engedélyezését az Azure Storage alapul szolgáló platform végezzük. Ez azt jelenti, hogy a titkosítás alapértelmezés szerint az összes tárfiók engedélyezve lesz. A titkosítási nyugalmi alapértelmezett régióban létrehozásakor egy új tárfiókot, nincs teendője engedélyezéséhez. Kulcsok teljes körűen felügyelt adatok nyugalmi van titkosítva. Titkosítási nyugalmi nem tárolási költségek növelheti vagy csökkentheti a teljesítményt. 
+* Titkosítási nyugalmi ([Azure Storage szolgáltatás titkosítási](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)): az összes storage-fiók alapértelmezés szerint engedélyezve van a Storage szolgáltatás titkosítási (SSE). Kulcsok teljes körűen felügyelt adatok nyugalmi van titkosítva. Titkosítási nyugalmi nem tárolási költségek növelheti vagy csökkentheti a teljesítményt. 
 * A titkosított adatok az átvitel közbeni választható rendszerkövetelményt: kiválasztásakor Azure fájlok elutasítja a hozzáférést az adatokat nem titkosított csatornákon keresztül. Pontosabban csak HTTPS és SMB 3.0 titkosítást kapcsolatokkal engedélyezettek. 
 
     > [!Important]  

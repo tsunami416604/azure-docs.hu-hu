@@ -8,11 +8,11 @@ ms.service: batch
 ms.topic: article
 ms.date: 02/05/2018
 ms.author: danlep
-ms.openlocfilehash: 9748ae5cc58c64412ab6e51e6cd502abc3505c51
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 5a06ad5086a42bb00147e085227f3c71c357544e
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="create-an-azure-batch-pool-in-a-virtual-network"></a>Azure Batch-készlet létrehozása a virtuális hálózat
 
@@ -32,7 +32,7 @@ Azure Batch-készlet van a beállítások lehetővé teszik a számítási csom�
 
 * **Hitelesítés**. Egy Azure-beli virtuális hálózat használatához a Batch-ügyfél API-jának Azure Active Directory- (AD-) hitelesítést kell használnia. Az Azure AD Azure Batch-támogatásának dokumentációjáért lásd a [Batch szolgáltatás Active Directoryval történő hitelesítésével](batch-aad-auth.md) foglalkozó témakört. 
 
-* **Egy Azure virtuális hálózatot**. Készítse elő a virtuális hálózat egy vagy több alhálózattal rendelkező előre, használhatja az Azure portál, Azure PowerShell, az Azure parancssori felület (CLI) vagy más módszerrel. Az Azure Resource Manager-alapú virtuális hálózat létrehozásához lásd: [hozzon létre egy virtuális hálózatot, több alhálózattal](../virtual-network/virtual-networks-create-vnet-arm-pportal.md). A klasszikus virtuális hálózat létrehozásához lásd: [hozzon létre egy virtuális hálózat (klasszikus), több alhálózattal](../virtual-network/create-virtual-network-classic.md).
+* **Egy Azure virtuális hálózatot**. Készítse elő a virtuális hálózat egy vagy több alhálózattal rendelkező előre, használhatja az Azure portál, Azure PowerShell, az Azure parancssori felület (CLI) vagy más módszerrel. Az Azure Resource Manager-alapú virtuális hálózat létrehozásához lásd: [hozzon létre egy virtuális hálózatot](../virtual-network/manage-virtual-network.md#create-a-virtual-network). A klasszikus virtuális hálózat létrehozásához lásd: [hozzon létre egy virtuális hálózat (klasszikus), több alhálózattal](../virtual-network/create-virtual-network-classic.md).
 
 ### <a name="vnet-requirements"></a>A virtuális hálózat követelményei
 [!INCLUDE [batch-virtual-network-ports](../../includes/batch-virtual-network-ports.md)]

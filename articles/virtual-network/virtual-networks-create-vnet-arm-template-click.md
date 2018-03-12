@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a59ea7c9e111f8ae5b0d9bd620faa5495c3924b7
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: bb096f64a6bc41ad2e75c058c7a9f00bbe480207
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="create-a-virtual-network-using-an-azure-resource-manager-template"></a>Azure Resource Manager-sablonnal virtuális hálózat létrehozása
 
@@ -31,9 +31,9 @@ Az Azure két üzemi modellel rendelkezik, az Azure Resource Managerrel és a kl
 Ez a cikk azt ismerteti, hogyan hozhat létre egy Vnetet az Azure Resource Manager-sablonnal Resource Manager deployment használatával. Resource Manager-alapú VNetet létrehozhat egyéb eszközökkel is, illetve létrehozhat VNetet a klasszikus üzemi modellben is, ha az alábbi listából egy másik lehetőséget választ:
 
 > [!div class="op_single_selector"]
-- [Portál](virtual-networks-create-vnet-arm-pportal.md)
-- [PowerShell](virtual-networks-create-vnet-arm-ps.md)
-- [Parancssori felület](virtual-networks-create-vnet-arm-cli.md)
+- [Portal](quick-create-portal.md)
+- [PowerShell](quick-create-powershell.md)
+- [Parancssori felület](quick-create-cli.md)
 - [Sablon](virtual-networks-create-vnet-arm-template-click.md)
 - [Portál (klasszikus)](virtual-networks-create-vnet-classic-pportal.md)
 - [PowerShell (klasszikus)](virtual-networks-create-vnet-classic-netcfg-ps.md)
@@ -56,7 +56,6 @@ Töltse le a meglévő sablon létrehozhat egy Vnetet két alhálózattal a Gith
    
    | Paraméter | Leírás |
    | --- | --- |
-   | **hely** |Azure-régió, ahol a VNet létrejön. |
    | **vnetName** |Az új VNet neve |
    | **addressPrefix** |A VNet címtere CIDR-formátumban |
    | **subnet1Name** |Az első VNet neve |
@@ -80,9 +79,6 @@ Töltse le a meglévő sablon létrehozhat egy Vnetet két alhálózattal a Gith
 
     ```json
         {
-          "location": {
-            "value": "Central US"
-          },
           "vnetName": {
               "value": "TestVNet"
           },

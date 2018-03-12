@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: migrate
 ms.date: 11/29/2016
 ms.author: elbutter;barbkess
-ms.openlocfilehash: 751f553c277cec579327771beb2f3256664452b1
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 1e216da55a4c425fe112215464cdedb59c8db585
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="migrate-your-data-warehouse-to-premium-storage"></a>Prémium szintű Storage az adatraktár áttelepítése
 Új Azure SQL Data Warehouse [prémium szintű storage, a nagyobb teljesítmény kiszámíthatóságot][premium storage for greater performance predictability]. Standard szintű tárolót a jelenleg létező adatraktárak prémium szintű Storage most telepíthető át. Kihasználhatja az automatikus áttelepítése, vagy ha jobban szeret szabályozhatja, mikor kell áttelepíteni (amely does tartalmaz, amely bizonyos időre leállítást), teheti az áttelepítés saját maga.
@@ -31,13 +31,13 @@ Ha egy adatraktár hozott létre a következő dátum előtt, Standard szintű s
 
 | **Régió** | **Ez a dátum előtt létrehozott adatraktár** |
 |:--- |:--- |
-| Kelet-Ausztrália |Prémium szintű storage még nem érhető el |
+| Kelet-Ausztrália |2018. január 1. |
 | Kelet-Kína |2016. november 1. |
 | Észak-Kína |2016. november 1. |
 | Közép-Németország |2016. november 1. |
 | Északkelet-Németország |2016. november 1. |
-| Nyugat-India |Prémium szintű storage még nem érhető el |
-| Nyugat-Japán |Prémium szintű storage még nem érhető el |
+| Nyugat-India |2018. február 1. |
+| Nyugat-Japán |2018. február 1. |
 | USA északi középső régiója |2016. november 10. |
 
 ## <a name="automatic-migration-details"></a>Automatikus áttelepítése részletei
@@ -69,14 +69,14 @@ Automatikus áttelepítések 18:00:00 és 6:00-kor (helyi idő régiónként) a 
 
 | **Régió** | **Becsült kezdő dátuma** | **Becsült befejezési dátum** |
 |:--- |:--- |:--- |
-| Kelet-Ausztrália |Még nem határozza meg |Még nem határozza meg |
-| Kelet-Kína |2017. január 9. |2017. január 13. |
-| Észak-Kína |2017. január 9. |2017. január 13. |
-| Közép-Németország |2017. január 9. |2017. január 13. |
-| Északkelet-Németország |2017. január 9. |2017. január 13. |
-| Nyugat-India |Még nem határozza meg |Még nem határozza meg |
-| Nyugat-Japán |Még nem határozza meg |Még nem határozza meg |
-| USA északi középső régiója |2017. január 9. |2017. január 13. |
+| Kelet-Ausztrália |2018. március 19. |2018. március 20. |
+| Kelet-Kína |Már áttelepített |Már áttelepített |
+| Észak-Kína |Már áttelepített |Már áttelepített |
+| Közép-Németország |Már áttelepített |Már áttelepített |
+| Északkelet-Németország |Már áttelepített |Már áttelepített |
+| Nyugat-India |2018. március 19. |2018. március 20. |
+| Nyugat-Japán |2018. március 19. |2018. március 20. |
+| USA északi középső régiója |Már áttelepített |Már áttelepített |
 
 ## <a name="self-migration-to-premium-storage"></a>Prémium szintű Storage önálló áttelepítés
 Ha szabályozni szeretné a leállás esetén a rendszer, az alábbi lépések segítségével egy meglévő adatraktár szabványos tároló áttelepítése a prémium szintű Storage. Ha ezt a lehetőséget választja, akkor előtt végezze el az önálló áttelepítés automatikus áttelepítésének megkezdése az adott régióban. Ez biztosítja, hogy az automatikus áttelepítés ütközést okoz veszélyének elkerülése érdekében (tekintse meg a [automatikus áttelepítése ütemezés][automatic migration schedule]).
@@ -84,11 +84,14 @@ Ha szabályozni szeretné a leállás esetén a rendszer, az alábbi lépések s
 ### <a name="self-migration-instructions"></a>Önálló áttelepítési utasítások
 Az adatraktár áttelepíteni, saját magának, a biztonsági másolat, és állítsa vissza a szolgáltatások. A helyreállítási rész az áttelepítés várható / terabájt tárhelyet körülbelül egy óra érvénybe / data warehouse-bA. Ha meg szeretné tartani a néven után az áttelepítés akkor fejeződött be, kövesse a [áttelepítéskor átnevezésére szolgáló lépéseket][steps to rename during migration].
 
-1. [Felfüggesztés] [ Pause] az adatraktár. Ehhez szükséges, az automatikus biztonsági mentés.
+1. [Felfüggesztés] [ Pause] az adatraktár. 
 2. [Visszaállítás] [ Restore] a legutóbbi pillanatképből.
 3. Törölje a meglévő adatraktár szabványos tárolón. **Ha ezt a lépést nem sikerül, akkor mindkét adatraktárak fogjuk számlázni.**
 
 > [!NOTE]
+>
+> Az adatraktár a visszaállításakor győződjön meg arról, hogy a legutóbbi visszaállítási pont akkor fordul elő, az adatraktár felfüggesztése után.
+>
 > A következő beállítások nem jelenik meg az áttelepítés részeként:
 >
 > * Az adatbázis szintjén naplózás kell ismét engedélyezni kell.
@@ -105,60 +108,13 @@ Ebben a példában képzelhető el, hogy a meglévő adatraktár szabványos tá
    ```
    ALTER DATABASE CurrentDatabasename MODIFY NAME = NewDatabaseName;
    ```
-2. [Felfüggesztés] [ Pause] "MyDW_BeforeMigration." Ehhez szükséges, az automatikus biztonsági mentés.
+2. [Felfüggesztés] [ Pause] "MyDW_BeforeMigration." 
 3. [Visszaállítás] [ Restore] a legutóbbi a pillanatkép készítése a szokásosnál (például "MyDW") nevű új adatbázis.
 4. Törölje a "MyDW_BeforeMigration." **Ha ezt a lépést nem sikerül, akkor mindkét adatraktárak fogjuk számlázni.**
 
 
 ## <a name="next-steps"></a>További lépések
 Prémium szintű Storage módosítását akkor is növekvő számának a blob-adatbázisfájlok a mögöttes architektúráját, valamint az adatraktár. Ez a változás teljesítménybeli előnyökben maximalizálása érdekében a fürtözött oszlopcentrikus indexek újraépítése az alábbi parancsfájl használatával. A parancsfájl használatára, a további tárolókban kényszeríti a meglévő adatok egy részét. Ha nem tesz semmit, az adatok fog természetes terjesztenie adott idő alatt, több adatot tölt be a táblába.
-
-**Előfeltételek:**
-
-- Az adatraktár futtasson-e 1000 adattárházegységek vagy annál újabb (lásd: [méretezési számítási teljesítményt][scale compute power]).
-- A parancsfájl végrehajtása felhasználó kell lennie a [mediumrc szerepkör] [ mediumrc role] vagy újabb verzióját. Felhasználó hozzáadása ehhez a szerepkörhöz, hajtsa végre a következő: ````EXEC sp_addrolemember 'xlargerc', 'MyUser'````
-
-````sql
--------------------------------------------------------------------------------
--- Step 1: Create table to control index rebuild
--- Run as user in mediumrc or higher
---------------------------------------------------------------------------------
-create table sql_statements
-WITH (distribution = round_robin)
-as select
-    'alter index all on ' + s.name + '.' + t.NAME + ' rebuild;' as statement,
-    row_number() over (order by s.name, t.name) as sequence
-from
-    sys.schemas s
-    inner join sys.tables t
-        on s.schema_id = t.schema_id
-where
-    is_external = 0
-;
-go
-
---------------------------------------------------------------------------------
--- Step 2: Execute index rebuilds. If script fails, the below can be re-run to restart where last left off.
--- Run as user in mediumrc or higher
---------------------------------------------------------------------------------
-
-declare @nbr_statements int = (select count(*) from sql_statements)
-declare @i int = 1
-while(@i <= @nbr_statements)
-begin
-      declare @statement nvarchar(1000)= (select statement from sql_statements where sequence = @i)
-      print cast(getdate() as nvarchar(1000)) + ' Executing... ' + @statement
-      exec (@statement)
-      delete from sql_statements where sequence = @i
-      set @i += 1
-end;
-go
--------------------------------------------------------------------------------
--- Step 3: Clean up table created in Step 1
---------------------------------------------------------------------------------
-drop table sql_statements;
-go
-````
 
 Ha problémába ütközik az adatraktárban [hozzon létre egy támogatási jegy] [ create a support ticket] és a hivatkozás "áttelepítés prémium szintű Storage" lehetséges okozta.
 

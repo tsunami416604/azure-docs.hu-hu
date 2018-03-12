@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/01/2018
 ms.author: jdial
-ms.openlocfilehash: 8800dc59306c349daba8f4d9703e0c713eed06ec
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: a5b4bac9e0d8bc10defaff251557129a70d8a022
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure-beli virtuális hálózat gyakori kérdések (GYIK)
 
@@ -57,7 +57,7 @@ A következő eszközök segítségével hozzon létre vagy egy virtuális hál�
 Meghatározott összes IP-címtartomány [RFC 1918](http://tools.ietf.org/html/rfc1918). Például 10.0.0.0/16.
 
 ### <a name="can-i-have-public-ip-addresses-in-my-vnets"></a>Is nyilvános IP-címeket is rendelkeznek a saját Vnetekhez?
-Igen. További információ a nyilvános IP-címtartományok: [hozzon létre egy virtuális hálózatot](virtual-network-manage-network.md#create-a-virtual-network). Nyilvános IP-címei nem érhető el közvetlenül az internetről.
+Igen. További információ a nyilvános IP-címtartományok: [hozzon létre egy virtuális hálózatot](manage-virtual-network.md#create-a-virtual-network). Nyilvános IP-címei nem érhető el közvetlenül az internetről.
 
 ### <a name="is-there-a-limit-to-the-number-of-subnets-in-my-vnet"></a>A VNet alhálózatainak száma korlátozva van?
 Igen. Lásd: [Azure korlátozza](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits) részleteiről. Alhálózati címterek nem átfedik egymást.
@@ -151,7 +151,7 @@ Igen. A Resource Manager üzembe helyezési modellben telepített virtuális gé
 Nem. You cannot reserve a private IP address. Ha a magánhálózati IP-cím áll rendelkezésre, ezt a jogosultságot egy virtuális gép vagy szerepkör-példányt a DHCP-kiszolgáló. Előfordulhat, hogy a virtuális gép, vagy nem lehet a magánhálózati IP-címet hozzárendelni kívánt. Azonban módosíthatja a magánhálózati IP-címét egy már létrehozott virtuális Gépre, bármely elérhető privát IP-címre.
 
 ### <a name="do-private-ip-addresses-change-for-vms-in-a-vnet"></a>Hajtsa végre a magánhálózati IP-címek módosítása virtuális gépekhez a Vneten belül?
-Ez a konkrét licenctől függ. Ha a VM erőforrás-kezelő használatával lett telepítve nem, hogy az IP-címet a statikus vagy dinamikus kiosztási módszerrel kapott függetlenül. Ha a virtuális Gépet a klasszikus üzembe helyezési modell használatával lett telepítve, a dinamikus IP-címek egy virtuális gép leállított (felszabadított) állapotában elvégzése után indításakor módosíthatja. A cím megjelenik a virtuális gép törlésekor vagy üzembe helyezési modellben telepített virtuális gép alapján.
+Ez a konkrét licenctől függ. A virtuális Gépet telepítették Resource Manageren keresztül, ha nem, hogy az IP-címet a statikus vagy dinamikus kiosztási módszerrel kapott függetlenül. Ha a virtuális Gépet a klasszikus üzembe helyezési modell használatával lett telepítve, a dinamikus IP-címek egy virtuális gép leállított (felszabadított) állapotában elvégzése után indításakor módosíthatja. A cím megjelenik a virtuális gép törlésekor vagy üzembe helyezési modellben telepített virtuális gép alapján.
 
 ### <a name="can-i-manually-assign-ip-addresses-to-nics-within-the-vm-operating-system"></a>I manuálisan rendelhet IP-címek hálózati adaptert a virtuális gép operációs rendszerben?
 Igen, de nem ajánlott, ha szükséges, például ha több IP-címek hozzárendelése a virtuális géphez. További információkért lásd: [hozzáadásával több IP-címek hozzárendelését a virtuális gépek](virtual-network-multiple-ip-addresses-portal.md#os-config). Ha egy olyan Azure hálózati adapter IP-cím egy virtuális géphez módosításokat, és az IP-címet a virtuális gép operációs rendszeren belül különböző, megszakad a kapcsolat a virtuális géphez.
@@ -218,6 +218,6 @@ Igen. A Vnetek REST API-kat is használhatja a [Azure Resource Manager](/rest/ap
 
 ### <a name="is-there-tooling-support-for-vnets"></a>Van tooling támogatása Vnetekhez?
 Igen. További információ:
-- Az Azure-portálon keresztül Vnetek telepítéséhez a [Azure Resource Manager](virtual-networks-create-vnet-arm-pportal.md) és [klasszikus](virtual-networks-create-vnet-classic-pportal.md) üzembe helyezési modellek.
+- Az Azure-portálon keresztül Vnetek telepítéséhez a [Azure Resource Manager](manage-virtual-network.md#create-a-virtual-network) és [klasszikus](virtual-networks-create-vnet-classic-pportal.md) üzembe helyezési modellek.
 - PowerShell ügyfélgépekre Vnetek kezelheti a [erőforrás-kezelő](/powershell/module/azurerm.network) és [klasszikus](/powershell/module/azure/?view=azuresmps-3.7.0) üzembe helyezési modellek.
 - Az Azure parancssori felület (CLI) telepítése és kezelése az ügyfélgépekre Vnetek a [erőforrás-kezelő](/cli/azure/network/vnet) és [klasszikus](../virtual-machines/azure-cli-arm-commands.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-network-commands-to-manage-network-resources) üzembe helyezési modellek.  

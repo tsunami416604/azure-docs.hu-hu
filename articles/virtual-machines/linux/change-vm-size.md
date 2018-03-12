@@ -16,18 +16,18 @@ ms.workload: infrastructure-services
 ms.date: 02/10/2017
 ms.author: mwasson
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: aa9861162e63714fc17d829816b25aa36e7df73b
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 0fa8ca130fdcbe408d75e7315ad5ebdb8caae94e
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="resize-a-linux-virtual-machine-using-cli-20"></a>A Linux virtuális gépek CLI 2.0 átméretezése
 
 (VM) virtuális gép kiépítése után méretezheti a virtuális gép felfelé vagy lefelé módosításával a [Virtuálisgép-méretet][vm-sizes]. Néhány esetben először a virtuális gép kell felszabadítani. Szeretné felszabadítani a virtuális gép, ha a kívánt méretet a hardver fürtön, amelyen a virtuális gép nem érhető el. Ez a cikk a Linux virtuális gép és az Azure CLI 2.0 átméretezése részletezi. Az [Azure CLI 1.0-s](change-vm-size-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) verziójával is elvégezheti ezeket a lépéseket.
 
 ## <a name="resize-a-vm"></a>Virtuális gép átméretezése
-A legújabb kell átméretezni egy virtuális Gépet, [Azure CLI 2.0](/cli/azure/install-az-cli2) telepítve, és bejelentkezett az Azure-fiók használatával [az bejelentkezési](/cli/azure/#az_login).
+A legújabb kell átméretezni egy virtuális Gépet, [Azure CLI 2.0](/cli/azure/install-az-cli2) telepítve, és bejelentkezett az Azure-fiók használatával [az bejelentkezési](/cli/azure/reference-index#az_login).
 
 1. A rendelkezésre álló Virtuálisgép-méretek listáját megtekintheti a hardver fürt, ahol a virtuális gép tárolása a [az vm-vm-átméretezési-beállításai](/cli/azure/vm#az_vm_list_vm_resize_options). Az alábbi példa felsorolja a Virtuálisgép-méretek a virtuális gép nevű `myVM` erőforráscsoportban `myResourceGroup` régió:
    

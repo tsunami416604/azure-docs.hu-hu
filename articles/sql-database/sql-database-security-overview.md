@@ -16,11 +16,11 @@ ms.tgt_pltfrm: NA
 ms.workload: On Demand
 ms.date: 01/29/2018
 ms.author: giladm
-ms.openlocfilehash: cf105dbc366b96dbb49484bffce9b81960cf41f4
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 41051944af863c4c50595ea843e2adf3513b3a12
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="securing-your-sql-database"></a>Az SQL Database-adatbázis védelme
 
@@ -31,7 +31,7 @@ Az SQL minden fajtájában elérhető biztonsági funkciók teljes körű áttek
 ## <a name="protect-data"></a>Adatok védelme
 
 ### <a name="encryption"></a>Titkosítás
-SQL-adatbázis biztosítja meg adatokat, adja meg a mozgásérzékelő – az adatok titkosítása [Transport Layer Security](https://support.microsoft.com/kb/3135244), az inaktív adatok [átlátható adattitkosítási](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql), és az adatok használatban van a [ Mindig titkosítja](https://msdn.microsoft.com/library/mt163865.aspx). 
+SQL-adatbázis, adja meg a mozgásérzékelő – az adatok titkosítása az adatok biztonságossá tételére [Transport Layer Security](https://support.microsoft.com/kb/3135244), az inaktív adatok [átlátható adattitkosítási](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql), és az adatok használatban van a [ Mindig titkosítja](https://msdn.microsoft.com/library/mt163865.aspx). 
 
 > [!IMPORTANT]
 >Az Azure SQL Database-hez való kapcsolódáshoz minden esetben titkosítás (SSL/TLS) szükséges, amikor az adatok átvitele folyamatban van az adatbázisból vagy az adatbázisba. Az alkalmazás a kapcsolati karakterláncot, meg kell adnia a kapcsolat titkosítására paraméterek és *nem* kell bíznia a kiszolgáló (ebben az esetben, ha a kapcsolati karakterláncot az Azure-portálon kívül), ellenkező esetben a kapcsolat nem ellenőrzi a kiszolgáló identitásának, és ki vannak téve a "man közel" támadásokkal szemben. Az ADO.NET-illesztő számára például a következők a kapcsolati karakterlánc paraméterei: **Encrypt=True** és **TrustServerCertificate=False**. 

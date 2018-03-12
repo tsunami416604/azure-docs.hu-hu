@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/06/2018
+ms.date: 03/07/2018
 ms.author: maheshu
-ms.openlocfilehash: cd730d2224babe0c44d4c1d90106d44994536d29
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 6ed797ca25161919ccf5e69be0073a67bfcef6d6
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="configure-kerberos-constrained-delegation-kcd-on-a-managed-domain"></a>Kerberos által korlátozott delegálás (KCD) konfigurálása a felügyelt tartományhoz
 Számos alkalmazás a felhasználó környezetében erőforrások eléréséhez szükséges. Az Active Directory támogatja-e a Kerberos-delegálás, amely lehetővé teszi a használati eset nevű. Delegálás további, korlátozhatja, hogy csak adott erőforrások elérhetők legyenek a felhasználó környezetében. Az Azure AD tartományi szolgáltatások felügyelt tartományok különböznek a hagyományos Active Directory-tartományok, mivel biztonságosabban zárolva miatt.
@@ -28,7 +28,7 @@ Ez a cikk bemutatja, hogyan Kerberos által korlátozott delegálás konfigurál
 ## <a name="kerberos-constrained-delegation-kcd"></a>Kerberos által korlátozott delegálás (KCD)
 Kerberos-delegálás lehetővé teszi, hogy a fiók megszemélyesíthet-e egy másik rendszerbiztonsági tag (például egy felhasználó) férhetnek hozzá az erőforrásokhoz. Fontolja meg egy webalkalmazást, aki hozzáfér a háttér-webes API-k a felhasználó környezetében. Ebben a példában a webes alkalmazás (szolgáltatásfiók vagy egy számítógép-vagy számítógépfiók környezetében fut) a felhasználót megszemélyesítő, amikor eléri az erőforrást (webes API). Kerberos-delegálás nem biztonságos, mivel nem korlátozza, hogy az erőforrások a megszemélyesítő fiók hozzáférhessen a felhasználó környezetében.
 
-sKerberos által korlátozott delegálás (KCD) korlátozza a szolgáltatások/erőforrásokat, amelyhez a megadott kiszolgáló működhet-e a felhasználó nevében. Hagyományos Kerberos által korlátozott Delegálás szükséges egy tartományi fiók egy szolgáltatás konfigurálásához tartományi rendszergazdai jogosultságokkal, és korlátozza az a fiók egyetlen tartományra.
+Kerberos által korlátozott delegálás (KCD) korlátozza a szolgáltatások/erőforrásokat, amelyhez a megadott kiszolgáló működhet-e a felhasználó nevében. Hagyományos Kerberos által korlátozott Delegálás szükséges egy tartományi fiók egy szolgáltatás konfigurálásához tartományi rendszergazdai jogosultságokkal, és korlátozza az a fiók egyetlen tartományra.
 
 Hagyományos Kerberos által korlátozott Delegálás is van néhány olyan probléma, társítva. Korábbi operációs rendszerekben Ha a tartományi rendszergazda fiók-alapú szolgáltatás esetén Kerberos által korlátozott Delegálás konfigurálva a szolgáltatás-rendszergazda kellett nem tudta megállapítani, hogy melyik előtér-szolgáltatás tulajdonosa volt erőforrás-szolgáltatáshoz delegálva. És bármely előtér-szolgáltatás, amely az erőforrás-szolgáltatásnak delegálni sikerült potenciális támadási felület. Ha egy kiszolgálót, amely előtér-szolgáltatás tárolt biztonsági szempontból sérült, és erőforrás-szolgáltatáshoz delegálásának konfigurálása, az erőforrás-szolgáltatások is utaló jeleket.
 

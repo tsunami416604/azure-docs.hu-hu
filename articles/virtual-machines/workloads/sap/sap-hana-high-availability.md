@@ -1,5 +1,5 @@
 ---
-title: "Az Azure virtuális gépek (VM) SAP HANA magas rendelkezésre állású |} Microsoft Docs"
+title: "SAP HANA replikációs az Azure virtuális gépek (VM) beállítása |} Microsoft Docs"
 description: "Magas rendelkezésre állású SAP HANA az Azure virtuális gépek (VM) létrehozásához."
 services: virtual-machines-linux
 documentationcenter: 
@@ -11,13 +11,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 04/25/2017
+ms.date: 12/12/2017
 ms.author: sedusch
-ms.openlocfilehash: 5f6ef18e93b8f77162b3524f31cb632e1db38f80
-ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
+ms.openlocfilehash: 2bf9ed176f37c315aa4496894315f2318370ce7f
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="high-availability-of-sap-hana-on-azure-virtual-machines-vms"></a>Magas rendelkezésre állású SAP HANA az Azure virtuális gépek (VM)
 
@@ -44,9 +44,9 @@ ms.lasthandoff: 12/08/2017
 [template-converged]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-converged%2Fazuredeploy.json
 
 A helyszíni vagy HANA replikációs használhatja, vagy használja a megosztott tárolót SAP HANA a magas rendelkezésre állás érdekében.
-Sajnos jelenleg csak a támogatott HANA replikációs beállítása az Azure-on. SAP HANA-replikáció egy főcsomópont és legalább egy alárendelt csomópont áll. A fő csomóponton levő adatok módosításait replikálva vannak a alárendelt csomópontok szinkron vagy aszinkron módon.
+Az egyetlen támogatott magas rendelkezésre állású függvény, amennyiben az Azure virtuális gépek HANA replikációs az Azure-on. SAP HANA-replikáció egy elsődleges csomópontot és legalább egy másodlagos csomópont áll. Az elsődleges csomóponton lévő adatok módosításait replikálva vannak a másodlagos csomópont szinkron vagy aszinkron módon.
 
-A cikkből megtudhatja, hogyan telepítse a virtuális gépeket, a virtuális gépet állíthat be, a fürt-keretrendszer telepítése, telepítése és konfigurálása a SAP HANA replikációs.
+Ez a cikk ismerteti, hogyan telepítse a virtuális gépeket, a virtuális gépet állíthat be, a fürtön telepíteni, telepíteni és beállítani az SAP HANA replikációs.
 A példa konfigurációkban telepítési parancsok 03 stb. száma, és HANA rendszer azonosító HDB használatos.
 
 Olvassa el a következő SAP megjegyzések és által írt cikkeket először
@@ -83,21 +83,21 @@ Az Azure piactéren SUSE Linux Enterprise Server SAP alkalmazások 12 a saját (
 1. Egy rendelkezésre állási csoport létrehozása  
    Készlet maximális frissítési tartomány
 1. Hozzon létre egy terhelés-kiegyenlítő (belső)  
-   Válassza ki a fenti lépést a virtuális hálózat
-1. 1 virtuális gép létrehozása  
-   Legalább SLES4SAP 12 SP1, ebben a példában használjuk a SLES4SAP 12 SP1 saját kép https://portal.azure.com/#create/suse-byos.sles-for-sap-byos12-sp1  
-   SLES SAP alkalmazások 12 SP1 (saját)  
-   Válassza ki a Tárfiók 1  
+   Válassza ki a második lépésben létrehozott virtuális hálózat
+1. 1 virtuális gép létrehozása   
+   Legalább SLES4SAP 12 SP1, ebben a példában a SLES4SAP 12 SP1 saját kép https://portal.azure.com/#create/suse-byos.sles-for-sap-byos12-sp1  
+   SLES az SAP alkalmazások 12 SP1 (saját) használatos.  
+   Válassza ki a Tárfiók 1   
    A rendelkezésre állási csoport kiválasztása  
-1. 2. virtuális gép létrehozása  
-   Legalább SLES4SAP 12 SP1, ebben a példában használjuk a SLES4SAP 12 SP1 saját kép https://portal.azure.com/#create/suse-byos.sles-for-sap-byos12-sp1  
-   SLES SAP alkalmazások 12 SP1 (saját)  
-   Válassza ki a Tárfiók 2   
+1. 2. virtuális gép létrehozása   
+   Legalább SLES4SAP 12 SP1, ebben a példában a SLES4SAP 12 SP1 saját kép https://portal.azure.com/#create/suse-byos.sles-for-sap-byos12-sp1  
+   SLES az SAP alkalmazások 12 SP1 (saját) használatos.  
+   Válassza ki a Tárfiók 2    
    A rendelkezésre állási csoport kiválasztása  
 1. Adatlemez hozzáadása
 1. A load balancer konfigurálása
     1. Előtérbeli IP-készlet létrehozása
-        1. Nyissa meg a terheléselosztó előtérbeli IP-készlet között, kattintson a Hozzáadás gombra
+        1. Nyissa meg a terheléselosztó előtérbeli IP-készlet kiválasztása és kattintson a Hozzáadás gombra
         1. Adja meg a nevét, az új előtérbeli IP-címtartomány (például hana-előtér)
         1. Kattintson az OK gombra
         1. Az új előtérbeli IP-címkészlet létrehozása után jegyezze fel az IP-címe
@@ -108,7 +108,7 @@ Az Azure piactéren SUSE Linux Enterprise Server SAP alkalmazások 12 a saját (
         1. Válassza ki a korábban létrehozott rendelkezésre állási csoport
         1. Válassza ki a virtuális gépeket, a SAP HANA-fürt
         1. Kattintson az OK gombra
-    1. Hozzon létre egy állapotmintáihoz
+    1. Állapotminta létrehozása
         1. Nyissa meg a terheléselosztóhoz, válassza ki a állapotteljesítmény, kattintson a Hozzáadás gombra
         1. Adja meg az új állapotmintáihoz (például hana-hp)
         1. Válassza ki a TCP protokoll, port 625**03**, időköz 5 és sérült küszöbérték 2
@@ -116,7 +116,7 @@ Az Azure piactéren SUSE Linux Enterprise Server SAP alkalmazások 12 a saját (
     1. Terheléselosztási szabályok létrehozása
         1. Nyissa meg a terheléselosztóhoz, válassza ki a terheléselosztási szabályok, kattintson a Hozzáadás gombra
         1. Adja meg az új terheléselosztási szabály nevét (például hana-lb-3**03**15)
-        1. Válassza ki az előtérbeli IP-cím, a háttérkészlet és állapotfigyelő mintavételi, korábban létrehozott (például hana-előtér)
+        1. Válassza ki a front-end IP-címet, a háttérkészlet és a állapotmintáihoz létrehozott korábbi (a példa hana-előtér)
         1. Tartsa a TCP protokoll, adja meg azt a portot 3**03**15
         1. Növelje a 30 perc üresjárati időtúllépés
         1. **Ügyeljen arra, hogy a fix IP-Címek engedélyezése**
@@ -124,20 +124,21 @@ Az Azure piactéren SUSE Linux Enterprise Server SAP alkalmazások 12 a saját (
         1. Ismételje meg a fenti port 3**03**17
 
 ### <a name="deploy-with-template"></a>Üzembe helyezés sablon használatával
-Segítségével a gyorsindítási sablonok egyikét a githubon központi telepítése az összes szükséges erőforrásokat. A sablon telepíti, a virtuális gépek, a terheléselosztó hasonló adataival, a rendelkezésre állási csoport stb. Kövesse az alábbi lépéseket a sablon telepítéséhez:
+Segítségével a gyorsindítási sablonok egyikét a githubon központi telepítése az összes szükséges erőforrásokat. A sablon telepíti, a virtuális gépek, a terheléselosztó hasonló adataival, a rendelkezésre állási csoport stb. A sablon telepítéséhez kövesse az alábbi lépéseket:
 
-1. Nyissa meg a [adatbázis sablon] [ template-multisid-db] vagy a [sablon összevont] [ template-converged] az Azure portál, az adatbázis-sablon csak hoz létre a terheléselosztási szabályok-adatbázis, mivel átszervezett is létrejön a terheléselosztási szabályok ASC/SCS és SSZON (csak Linux) példány. Ha azt tervezi, hogy az SAP NetWeaver alapú rendszert telepíti, és szeretné telepíteni az ASC/SCS-példányt az azonos gépeken, használja a [sablon összevont][template-converged].
+1. Nyissa meg a [adatbázis sablon] [ template-multisid-db] vagy a [sablon összevont] [ template-converged] az Azure portálon. 
+   Az adatbázis-sablon csak a terheléselosztási szabályok adatbázis hoz létre, mivel az összevont sablont is létrehoz a terheléselosztási szabályok ASC/SCS és SSZON (csak Linux) példány. Ha azt tervezi, hogy az SAP NetWeaver alapú rendszert telepíti, és szeretné telepíteni az ASC/SCS-példányt az azonos gépeken, használja a [sablon összevont][template-converged].
 1. Adja meg a következő paraméterek
     1. SAP azonosító  
-       Adja meg a telepíteni kívánt SAP rendszer SAP rendszer Azonosítóját. Az azonosító az üzembe helyezett erőforrások előtagjaként lesz használható.
-    1. A készlet típusa (csak akkor érvényes, az összevont sablon)  
+       Adja meg a telepíteni kívánt SAP rendszer SAP rendszer Azonosítóját. Az azonosító az üzembe helyezett erőforrások előtagjaként használható lesz.
+    1. A készlet típusa (csak akkor érvényes, az összevont sablon)   
        Az SAP NetWeaver verem típusának kiválasztása
     1. Operációs rendszer típusa  
        Válasszon egyet a Linux terjesztéseket. Ehhez a példához válassza ki a SLES 12 saját
     1. DB típusa  
        Válassza ki a HANA
     1. SAP mérete  
-       Az új rendszer nyújtják SAP mennyisége. Ha nem tudja, a rendszer hány SAP, kérje meg a SAP technológia Partner vagy a rendszer integráló
+       Adja meg az új rendszer érintetlen SAP mennyisége. Ha nem tudja, hogy hány SAP, a rendszer szükséges, kérje meg, a SAP technológia Partner vagy a rendszer integráló
     1. Rendszer rendelkezésre állás  
        Válassza ki a magas rendelkezésre ÁLLÁSÚ
     1. Rendszergazda felhasználónevét és a rendszergazdai jelszó  
@@ -145,7 +146,7 @@ Segítségével a gyorsindítási sablonok egyikét a githubon központi telepí
     1. Új vagy meglévő alhálózati  
        Meghatározza, hogy egy új virtuális hálózat és alhálózat kell létrehozni, vagy használjon egy létező alhálózatot. Ha már van egy virtuális hálózatot, amely a helyszíni hálózathoz csatlakozik, válasszon a meglévő.
     1. Alhálózati azonosító  
-    Az alhálózat, amelyhez a virtuális gépek csatlakoznia kell az azonosítója. Jelölje ki az alhálózatot, a VPN- vagy Express Route virtuális hálózat a virtuális gép és a helyszíni hálózathoz csatlakozni. Az azonosító általában a következőképpen néz következő`<subscription ID`> /resourceGroups/`<resource group name`> /providers/Microsoft.Network/virtualNetworks/`<virtual network name`> /subnets/`<subnet name`>
+    Az alhálózat, amelyhez a virtuális gépek csatlakoznia kell az azonosítója. A virtuális gép a helyszíni hálózathoz csatlakozni, válassza ki a VPN- vagy Express Route virtuális hálózat alhálózatában. Az azonosító általában a következőképpen néz következő`<subscription ID`> /resourceGroups/`<resource group name`> /providers/Microsoft.Network/virtualNetworks/`<virtual network name`> /subnets/`<subnet name`>
 
 ## <a name="setting-up-linux-ha"></a>Beállítása Linux magas rendelkezésre ÁLLÁSÚ
 
@@ -201,7 +202,7 @@ A következő elemek fűzve előtagként vagy [A] - alkalmazható az összes cso
 
 1. [A] telepítő lemez elrendezése
     1. LVM  
-    Általában javasoljuk LVM kötetek, amelyek adatokat tárolhatnak, és a naplófájlok. Az alábbi példa azt feltételezi, hogy, hogy a virtuális gépek rendelkeznek négy adatlemezt csatolni, amelynek használatával hozzon létre két köteteket.
+    Általában javasoljuk LVM kötetek, amelyek adatokat tárolhatnak, és a naplófájlok. Az alábbi példák azt feltételezi, hogy, hogy a virtuális gépek rendelkeznek négy adatlemezt csatolni, amelynek használatával hozzon létre két köteteket.
         * A használni kívánt összes lemez fizikai köteteket hozhat létre.
     <pre><code>
     sudo pvcreate /dev/sdc
@@ -310,7 +311,7 @@ A következő elemek fűzve előtagként vagy [A] - alkalmazható az összes cso
     
     ```
 
-1. [A] egyéb átvitelt használ, és adja hozzá a csomópontlista corosync konfigurálása. Fürt egyébként nem működik.
+1. [A] egyéb átvitelt használ, és adja hozzá a csomópontlista corosync konfigurálása. Ellenkező esetben a fürt nem lesz működik. 
     ```bash
     sudo vi /etc/corosync/corosync.conf    
     
@@ -352,7 +353,7 @@ A következő elemek fűzve előtagként vagy [A] - alkalmazható az összes cso
 
 ## <a name="installing-sap-hana"></a>SAP HANA telepítése
 
-4 fejezete kövesse a [SAP HANA SR teljesítmény optimalizált forgatókönyv útmutató] [ suse-hana-ha-guide] SAP HANA rendszer replikáció telepítését.
+SAP HANA replikációs telepítéséhez kövesse a fejezete 4 a [SAP HANA SR teljesítmény optimalizált forgatókönyv útmutató][suse-hana-ha-guide].
 
 1. [A] hdblcm futtassa a HANA DVD-ről
     * Válassza ki a telepítés-1 >
@@ -360,15 +361,15 @@ A következő elemek fűzve előtagként vagy [A] - alkalmazható az összes cso
     * Adja meg a telepítési útvonalat [/ hana/megosztott]: -> adjon meg
     * Adja meg a helyi állomás nevét [.]: -> adjon meg
     * Végrehajtja a rendszer további gazdagépeket vehet fel? (i/n) [n]: -> adjon meg
-    * Adja meg az SAP HANA-azonosító:<SID of HANA e.g. HDB>
+    * Adja meg az SAP HANA-azonosító: <SID of HANA e.g. HDB>
     * Adja meg a [00] száma:   
-  HANA példányszámának. 03 használja, ha követte a fenti példa vagy használja az Azure-sablon
+  HANA példányszámának. 03 használja, ha használja az Azure-sablon vagy követni a manuális központi telepítése
     * Válassza ki az adatbázis-mód / Index [1] adja meg: -> adjon meg
     * Válassza ki a rendszer használati / adja meg az Index [4]:  
   A rendszer használati kiválasztása
     * Adja meg a helyet, az adatkötetek [/ hana/data/HDB]: -> adjon meg
     * Adja meg a naplózási kötetek [/ hana/napló/HDB] helyet: ENTER ->
-    * Maximális memória kiosztása korlátozása? [n]: -> adjon meg
+    * Maximális memória kiosztása korlátozása? [n]: -> ENTER
     * Adja meg a tanúsítvány gazdagép neve a gazdagép "..." []: -> Adjon meg
     * Adja meg a SAP ügynök felhasználói (sapadm) jelszavát:
     * SAP ügynök felhasználói (sapadm) jelszó megerősítése:
@@ -380,8 +381,8 @@ A következő elemek fűzve előtagként vagy [A] - alkalmazható az összes cso
     * Adjon meg azonosító a felhasználói csoport (sapsys) [79]: -> adjon meg
     * Adja meg az adatbázis jelszó (rendszer):
     * Adatbázis (rendszer) felhasználói jelszó megerősítése:
-    * Számítógép újraindítása után indítsa újra a rendszert? [n]: -> adjon meg
-    * Folytatja? (i/n):  
+    * Számítógép újraindítása után indítsa újra a rendszert? [n]: -> ENTER
+    * Folytatja? (y/n):   
   Az összegzés, és írja be az y gombbal folytathatja
 1. [A] frissítési SAP Gazdagépügynöke  
   Töltse le a legfrissebb SAP a gazdagép ügynöke archív a a [SAP Softwarecenter] [ sap-swcenter] és az ügynökök frissítése a következő parancsot. Cserélje le az archívum mutasson a letöltött fájl elérési útja.
@@ -446,11 +447,11 @@ sudo crm terhelés frissítés crm-defaults.txt konfigurálása
 
 ### <a name="create-stonith-device"></a>STONITH eszköz létrehozása
 
-A STONITH eszköz egy egyszerű szolgáltatást használ, szemben a Microsoft Azure engedélyezése. Kérjük, kövesse ezeket a lépéseket egy egyszerű szolgáltatásnév létrehozásához.
+A STONITH eszköz egy egyszerű szolgáltatást használ, szemben a Microsoft Azure engedélyezése. Egy egyszerű szolgáltatásnév létrehozásához kövesse az alábbi lépéseket.
 
-1. Ugrás a <https://portal.azure.com>
+1. Nyissa meg a következőt: <https://portal.azure.com>
 1. Nyissa meg az Azure Active Directory panelt  
-   Nyissa meg tulajdonságait, és jegyezze fel a könyvtár-azonosító. Ez a **bérlői azonosító**.
+   Nyissa meg tulajdonságait, és jegyezze fel a könyvtár-azonosító. Az azonosítója a **bérlői azonosító**.
 1. Kattintson az alkalmazás-regisztráció
 1. Kattintson az Add (Hozzáadás) parancsra
 1. Adjon meg egy nevet, válassza ki a "Web app/API" alkalmazástípus, adja meg a bejelentkezési URL-címet (például http://localhost) és kattintson a Létrehozás gombra
@@ -458,17 +459,17 @@ A STONITH eszköz egy egyszerű szolgáltatást használ, szemben a Microsoft Az
 1. Válassza ki az új alkalmazást, és a beállítások lapon kattintson a kulcsok
 1. Adja meg egy új kulcs leírását, válassza a "Soha nem jár le", és kattintson a Mentés gombra
 1. Jegyezze fel az értéket. Használják a **jelszó** a szolgáltatás egyszerű
-1. Jegyezze fel az alkalmazás azonosítóját. A felhasználónév használják (**bejelentkezési azonosító** az alábbi lépéseket a) a szolgáltatás egyszerű
+1. Jegyezze fel az alkalmazás azonosítóját. A felhasználónév használják (**bejelentkezési azonosító** az alábbi lépéseket) a szolgáltatás egyszerű
 
-A szolgáltatás egyszerű nincs engedélye a alapértelmezés szerint az Azure-erőforrások eléréséhez. Hozzá kell rendelnie a szolgáltatás egyszerű engedélyek indítása és leállítása (felszabadítása) a fürt összes virtuális gépet.
+A szolgáltatás egyszerű nincs engedélye a alapértelmezés szerint az Azure-erőforrások eléréséhez. A szolgáltatás egyszerű engedélyt indítása és leállítása (felszabadítása) a fürt összes virtuális gépet.
 
-1. Ugrás a https://portal.azure.com
+1. Go to https://portal.azure.com
 1. Nyissa meg az összes erőforrás panel
 1. Válassza ki a virtuális gépet
 1. Kattintson a hozzáférés-vezérlés (IAM)
 1. Kattintson az Add (Hozzáadás) parancsra
 1. Válassza ki a szerepkör tulajdonosa
-1. Adja meg az előbb létrehozott alkalmazás nevét
+1. Adja meg az előző lépésben létrehozott alkalmazás nevét
 1. Kattintson az OK gombra
 
 Után szerkeszteni a virtuális gépek engedélyeit, beállíthatja a STONITH eszközök a fürtben.
@@ -553,7 +554,7 @@ sudo crm terhelés frissítés crm-saphana.txt konfigurálása
 </pre>
 
 ### <a name="test-cluster-setup"></a>Teszt fürt beállítása
-A következő fejezet ismerteti, hogyan tesztelheti a telepítőt. Minden teszt feltételezi, hogy a legfelső szintű áll, és az SAP HANA-főkiszolgáló fut a virtuális gép saphanavm1.
+Ez a fejezet ismerteti, hogyan tesztelheti a telepítőt. Minden teszt feltételezi, hogy a legfelső szintű áll, és az SAP HANA-főkiszolgáló fut a virtuális gép saphanavm1.
 
 #### <a name="fencing-test"></a>Teszt kerítésépítés
 
@@ -564,9 +565,9 @@ sudo ifdown eth0
 </code></pre>
 
 A virtuális gép kell most beolvasása újraindult, vagy attól függően, hogy a fürt konfigurációját, leállt.
-Ha a stonith-művelet kikapcsolva, a virtuális gép leáll, és az erőforrások települnek a futó virtuális gépre.
+Ha a stonith-művelet kikapcsolva, le kell állítani a virtuális gép lesz, és az erőforrások települnek a futó virtuális gépre.
 
-Után újra elindítani a virtuális gépet, a SAP HANA-erőforrás indulnak-e a másodlagos el Ha AUTOMATED_REGISTER = "false". Ebben az esetben kell HANA-példány beállítása a másodlagos, futtassa a következő parancsot:
+Után újra elindítani a virtuális gépet, a SAP HANA-erőforrás nem sikerül elindítani a másodlagos Ha AUTOMATED_REGISTER = "false". Ebben az esetben HANA-példány beállítása másodlagos, ez a parancs végrehajtásával:
 
 <pre><code>
 su - <b>hdb</b>adm
@@ -587,7 +588,7 @@ Manuális feladatátvétel tesztelheti a csomópont saphanavm1 a támasztja szol
 service pacemaker stop
 </code></pre>
 
-A feladatátvétel után újra elindíthatja a szolgáltatást. Az SAP HANA-erőforrás a saphanavm1 nem fog elindulni, mint a másodlagos Ha AUTOMATED_REGISTER = "false". Ebben az esetben kell HANA-példány beállítása a másodlagos, futtassa a következő parancsot:
+A feladatátvétel után újra elindíthatja a szolgáltatást. Ha AUTOMATED_REGISTER = "false", az az SAP HANA-erőforrás saphanavm1 sikertelen lesz, mint a másodlagos elindításához. Ebben az esetben HANA-példány beállítása másodlagos, ez a parancs végrehajtásával:
 
 <pre><code>
 service pacemaker start
@@ -598,7 +599,7 @@ sapcontrol -nr <b>03</b> -function StopWait 600 10
 hdbnsutil -sr_register --remoteHost=<b>saphanavm2</b> --remoteInstance=<b>03</b> --replicationMode=sync --name=<b>SITE1</b> 
 
 
-# switch back to root and cleanup the failed state
+# Switch back to root and cleanup the failed state
 exit
 crm resource cleanup msl_SAPHana_<b>HDB</b>_HDB<b>03</b> <b>saphanavm1</b>
 </code></pre>
@@ -611,8 +612,8 @@ crm resource migrate msl_SAPHana_<b>HDB</b>_HDB<b>03</b> <b>saphanavm2</b>
 crm resource migrate g_ip_<b>HDB</b>_HDB<b>03</b> <b>saphanavm2</b>
 </code></pre>
 
-Ez át kell telepíteni a fő SAP HANA-csomópont és a virtuális IP-címet saphanavm2 tartalmazó csoport.
-Az SAP HANA-erőforrás a saphanavm1 nem fog elindulni, mint a másodlagos Ha AUTOMATED_REGISTER = "false". Ebben az esetben kell HANA-példány beállítása a másodlagos, futtassa a következő parancsot:
+Ha AUTOMATED_REGISTER = "false", ez a parancssorozat át kell telepíteni, a SAP HANA-főcsomópont és saphanavm2 a virtuális IP-címet tartalmazó csoport.
+Az SAP HANA-erőforrás a saphanavm1 nem, mint a másodlagos indul el. Ebben az esetben HANA-példány beállítása másodlagos, ez a parancs végrehajtásával:
 
 <pre><code>
 su - <b>hdb</b>adm
@@ -627,19 +628,19 @@ Az áttelepítés hoz létre a helyre vonatkozó megszorítások, hogy újra kel
 <pre><code>
 crm configure edited
 
-# delete location constraints that are named like the following contraint. You should have two constraints, one for the SAP HANA resource and one for the IP address group.
+# Delete location constraints that are named like the following contraint. You should have two constraints, one for the SAP HANA resource and one for the IP address group.
 location cli-prefer-g_ip_<b>HDB</b>_HDB<b>03</b> g_ip_<b>HDB</b>_HDB<b>03</b> role=Started inf: <b>saphanavm2</b>
 </code></pre>
 
 Is kell a másodlagos csomópont erőforrás állapotának karbantartása
 
 <pre><code>
-# switch back to root and cleanup the failed state
+# Switch back to root and cleanup the failed state
 exit
 crm resource cleanup msl_SAPHana_<b>HDB</b>_HDB<b>03</b> <b>saphanavm1</b>
 </code></pre>
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Az Azure virtuális gépek tervezési és megvalósítási az SAP][planning-guide]
 * [Az SAP Azure virtuális gépek telepítése][deployment-guide]
 * [Az SAP Azure virtuális gépek adatbázis-kezelő telepítése][dbms-guide]

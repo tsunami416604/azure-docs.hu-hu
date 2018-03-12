@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/05/2018
 ms.author: maheshu
-ms.openlocfilehash: 7c84ac3318bbd63129b04711c62dc441b9d35285
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 858adf2b0a0431078561a6f0edf80860927f8233
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="enable-azure-active-directory-domain-services-using-the-azure-portal"></a>Engedélyezze az Azure Active Directory tartományi szolgáltatások az Azure portál használatával
 
@@ -49,7 +49,7 @@ A következő konfigurációs feladat, ha egy Azure virtuális hálózatra és e
   > [!WARNING]
   > Ügyeljen arra, hogy válasszon, amely a magánhálózati IP-címtér belül címteret. Amely nem rendelkezik, amelyek a nyilvános címterületen belüli IP-címek az Azure AD tartományi szolgáltatások belül hibákat okozhatnak.
 
-5. **Meglévő virtuális hálózat:** Ha azt tervezi, hogy egy meglévő virtuális hálózatot válasszon [hozzon létre egy külön alhálózatot a virtuális hálózatok kiterjesztéssel](../virtual-network/virtual-networks-create-vnet-arm-pportal.md), majd válassza ki az adott alhálózat és. Kattintson a **virtuális hálózati** a meglévő virtuális hálózat kiválasztásához. Kattintson a **alhálózati** a dedikált alhálózati válasszon a meglévő virtuális hálózaton belül, amely lehetővé teszi az új felügyelt tartomány számára. Kattintson a **OK** befejezése.
+5. **Meglévő virtuális hálózat:** Ha azt tervezi, hogy egy meglévő virtuális hálózatot válasszon [hozzon létre egy külön alhálózatot a virtuális hálózatok kiterjesztéssel](../virtual-network/virtual-network-manage-subnet.md#add-a-subnet), majd válassza ki az adott alhálózat és. Kattintson a **virtuális hálózati** a meglévő virtuális hálózat kiválasztásához. Kattintson a **alhálózati** a dedikált alhálózati válasszon a meglévő virtuális hálózaton belül, amely lehetővé teszi az új felügyelt tartomány számára. Kattintson a **OK** befejezése.
 
     ![Válassza ki az alhálózatot a virtuális hálózaton belül](./media/getting-started/domain-services-blade-network-pick-subnet.png)
 

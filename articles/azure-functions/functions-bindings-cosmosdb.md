@@ -15,15 +15,18 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: glenga
-ms.openlocfilehash: 0723f2c7c09029e99335f3a459c0ac86d84f9487
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 5d90b2cd977522eab267c8c86a35e47bc61248a8
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions"></a>Az Azure Functions Azure Cosmos DB kötései
 
 Ez a cikk azt ismerteti, hogyan használható [Azure Cosmos DB](..\cosmos-db\serverless-computing-database.md) Azure Functions kötések. Az Azure Functions támogatja indítás, bemeneti és kimeneti Azure Cosmos DB kötései.
+
+> [!NOTE]
+> A kötés a DocumentDB eredetileg nevet kapta. Funkciók verziójában 1.x, csak az eseményindító lett átnevezett Cosmos DB; a bemeneti kötése kimeneti kötése és NuGet-csomag továbbra is a DocumentDB-nevét. A [funkciók verzió 2.x](functions-versions.md), a kötéseket és a csomag volt is átnevezett Cosmos DB. Ez a cikk 1.x használja.
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
@@ -127,7 +130,7 @@ A JavaScript-kód itt látható:
 
 ## <a name="trigger---attributes"></a>Eseményindító - attribútumok
 
-A [C# osztálykönyvtárakhoz](functions-dotnet-class-library.md), használja a [CosmosDBTrigger](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.CosmosDB/Trigger/CosmosDBTriggerAttribute.cs) attribútumot, amelyet a NuGet-csomag [Microsoft.Azure.WebJobs.Extensions.CosmosDB](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.CosmosDB).
+A [C# osztálykönyvtárakhoz](functions-dotnet-class-library.md), használja a [CosmosDBTrigger](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.DocumentDB/Trigger/CosmosDBTriggerAttribute.cs) attribútumot, amelyet a NuGet-csomag [Microsoft.Azure.WebJobs.Extensions.DocumentDB](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DocumentDB).
 
 Az attribútum konstruktora időt vesz igénybe, az adatbázis és gyűjtemény nevét. Ezeket a beállításokat és egyéb tulajdonságok konfigurálható kapcsolatos információkért lásd: [eseményindító - konfigurációs](#trigger---configuration). Íme egy `CosmosDBTrigger` metódus-aláírás attribútum példát:
 
@@ -207,7 +210,7 @@ Első, `Id` és `Maker` értékei egy `CarReview` példány annak a várólistá
             [FunctionName("SingleEntry")]
             public static void Run(
                 [QueueTrigger("car-reviews", Connection = "StorageConnectionString")] CarReview carReview,
-                [CosmosDB("cars", "car-reviews", PartitionKey = "{maker}", Id= "{id}", ConnectionStringSetting = "CarReviewsConnectionString")] CarReview document,
+                [DocumentDB("cars", "car-reviews", PartitionKey = "{maker}", Id= "{id}", ConnectionStringSetting = "CarReviewsConnectionString")] CarReview document,
                 TraceWriter log)
             {
                 log.Info( $"Selected Review - {document?.Review}"); 
@@ -373,7 +376,7 @@ Az alábbi példa mutatja egy [C# függvény](functions-dotnet-class-library.md)
     [FunctionName("CosmosDBSample")]
     public static HttpResponseMessage Run(
         [HttpTrigger(AuthorizationLevel.Anonymous, "get")] HttpRequestMessage req,
-        [CosmosDB("test", "test", ConnectionStringSetting = "CosmosDB", SqlQuery = "SELECT top 2 * FROM c order by c._ts desc")] IEnumerable<object> documents)
+        [DocumentDB("test", "test", ConnectionStringSetting = "CosmosDB", SqlQuery = "SELECT top 2 * FROM c order by c._ts desc")] IEnumerable<object> documents)
     {
         return req.CreateResponse(HttpStatusCode.OK, documents);
     }
@@ -455,13 +458,13 @@ A JavaScript-kód itt látható:
 
 ## <a name="input---attributes"></a>Bemenet – attribútumok
 
-A [C# osztálykönyvtárakhoz](functions-dotnet-class-library.md), használja a [CosmosDB](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.CosmosDB/CosmosDBAttribute.cs) attribútumot, amelyet a NuGet-csomag [Microsoft.Azure.WebJobs.Extensions.CosmosDB](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.CosmosDB).
+A [C# osztálykönyvtárakhoz](functions-dotnet-class-library.md), használja a [DocumentDB](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.DocumentDB/DocumentDBAttribute.cs) attribútumot, amelyet a NuGet-csomag [Microsoft.Azure.WebJobs.Extensions.DocumentDB](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DocumentDB).
 
 Az attribútum konstruktora időt vesz igénybe, az adatbázis és gyűjtemény nevét. Ezeket a beállításokat és egyéb tulajdonságok konfigurálható kapcsolatos információkért lásd: [a következő konfigurációs szakasz](#input---configuration). 
 
 ## <a name="input---configuration"></a>Adjon meg - konfiguráció
 
-Az alábbi táblázat ismerteti a beállított kötés konfigurációs tulajdonságok a *function.json* fájl és a `CosmosDB` attribútum.
+Az alábbi táblázat ismerteti a beállított kötés konfigurációs tulajdonságok a *function.json* fájl és a `DocumentDB` attribútum.
 
 |Function.JSON tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
@@ -470,7 +473,7 @@ Az alábbi táblázat ismerteti a beállított kötés konfigurációs tulajdons
 |**name**     || A kötési paraméter, a függvény a dokumentum jelölő neve.  |
 |**databaseName** |**DatabaseName** |A a dokumentum tartalmazó adatbázis.        |
 |**CollectionName** |**CollectionName** | A gyűjtemény, amely tartalmazza a dokumentum nevét. |
-|**id**    | **Azonosító** | A dokumentum beolvasása azonosítója. Ez a tulajdonság támogatja a kötések paraméterek. További tudnivalókért lásd: [egy kötési kifejezése egyéni bemeneti tulajdonságok kötése](functions-triggers-bindings.md#bind-to-custom-input-properties). Ne állítsa be mind a **azonosító** és **sqlQuery** tulajdonságait. Ha nem állít egy, a rendszer lekéri a teljes gyűjteményt. |
+|**id**    | **Azonosító** | A dokumentum beolvasása azonosítója. Ez a tulajdonság támogatja [kötési kifejezésként](functions-triggers-bindings.md#binding-expressions-and-patterns). Ne állítsa be mind a **azonosító** és **sqlQuery** tulajdonságait. Ha nem állít egy, a rendszer lekéri a teljes gyűjteményt. |
 |**sqlQuery**  |**SqlQuery**  | Egy Azure Cosmos adatbázis SQL-lekérdezésben használt több dokumentumot. A tulajdonság támogatja a futásidejű kötések, például: `SELECT * FROM c where c.departmentId = {departmentId}`. Ne állítsa be mind a **azonosító** és **sqlQuery** tulajdonságait. Ha nem állít egy, a rendszer lekéri a teljes gyűjteményt.|
 |**connection**     |**ConnectionStringSetting**|Az Alkalmazásbeállítás, amely tartalmazza az Azure Cosmos DB kapcsolati karakterlánc nevét.        |
 |**partitionKey**|**PartitionKey**|Meghatározza a partíció a keresési kulcs értékét. Előfordulhat, hogy tartalmazzák a kötési paraméterek esetében.|
@@ -510,7 +513,7 @@ Az alábbi példa mutatja egy [C# függvény](functions-dotnet-class-library.md)
     [FunctionName("QueueToDocDB")]        
     public static void Run(
         [QueueTrigger("myqueue-items", Connection = "AzureWebJobsStorage")] string myQueueItem,
-        [CosmosDB("ToDoList", "Items", Id = "id", ConnectionStringSetting = "myCosmosDB")] out dynamic document)
+        [DocumentDB("ToDoList", "Items", Id = "id", ConnectionStringSetting = "myCosmosDB")] out dynamic document)
     {
         document = new { Text = myQueueItem, id = Guid.NewGuid() };
     }
@@ -715,7 +718,7 @@ A JavaScript-kód itt látható:
 
 ## <a name="output---attributes"></a>Kimeneti - attribútumok
 
-A [C# osztálykönyvtárakhoz](functions-dotnet-class-library.md), használja a [CosmosDB](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.CosmosDB/CosmosDBAttribute.cs) attribútumot, amelyet a NuGet-csomag [Microsoft.Azure.WebJobs.Extensions.CosmosDB](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.CosmosDB).
+A [C# osztálykönyvtárakhoz](functions-dotnet-class-library.md), használja a [DocumentDB](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.DocumentDB/DocumentDBAttribute.cs) attribútumot, amelyet a NuGet-csomag [Microsoft.Azure.WebJobs.Extensions.DocumentDB](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DocumentDB).
 
 Az attribútum konstruktora időt vesz igénybe, az adatbázis és gyűjtemény nevét. Ezeket a beállításokat és egyéb tulajdonságok konfigurálható kapcsolatos információkért lásd: [kimeneti - konfigurációs](#output---configuration). Íme egy `CosmosDB` metódus-aláírás attribútum példát:
 
@@ -723,7 +726,7 @@ Az attribútum konstruktora időt vesz igénybe, az adatbázis és gyűjtemény 
     [FunctionName("QueueToDocDB")]        
     public static void Run(
         [QueueTrigger("myqueue-items", Connection = "AzureWebJobsStorage")] string myQueueItem,
-        [CosmosDB("ToDoList", "Items", Id = "id", ConnectionStringSetting = "myCosmosDB")] out dynamic document)
+        [DocumentDB("ToDoList", "Items", Id = "id", ConnectionStringSetting = "myCosmosDB")] out dynamic document)
     {
         ...
     }

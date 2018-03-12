@@ -14,11 +14,11 @@ ms.workload: identity
 ms.date: 12/22/2017
 ms.author: daveba
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 495ed6daf0d73d89a4bc572f6bccf294cee7decb
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: e8d21aad23782f22b93baf12ce58d1aed4dd5dee
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="configure-a-user-assigned-managed-service-identity-msi-for-a-vm-using-azure-cli"></a>A felhasználó által hozzárendelt felügyelt szolgáltatás Identity (MSI) konfigurálja a virtuális gépek Azure parancssori felület használatával
 
@@ -35,7 +35,7 @@ Ebből a cikkből megtudhatja engedélyezése, és távolítsa el a felhasznál�
 Ebben az oktatóanyagban a CLI-parancsfájlt példák futtatásához két lehetőség közül választhat:
 
 - Használjon [Azure Cloud rendszerhéj](~/articles/cloud-shell/overview.md) vagy Azure-portálról, vagy a "próbálja" gombra, keresztül minden kódblokk jobb felső sarkában található.
-- [Telepítse a legújabb verziót a CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) (2.0.23 vagy újabb verzió) Ha a helyi CLI-konzollal szeretné. Majd jelentkezzen be az Azure használatával [az bejelentkezési](/cli/azure/#az_login). Használjon olyan fiókot, amelybe szeretne telepíteni, a felhasználó által hozzárendelt MSI és a virtuális gép Azure-előfizetéssel társított:
+- [Telepítse a legújabb verziót a CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) (2.0.23 vagy újabb verzió) Ha a helyi CLI-konzollal szeretné. Majd jelentkezzen be az Azure használatával [az bejelentkezési](/cli/azure/reference-index#az_login). Használjon olyan fiókot, amelybe szeretne telepíteni, a felhasználó által hozzárendelt MSI és a virtuális gép Azure-előfizetéssel társított:
 
    ```azurecli
    az login

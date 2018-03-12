@@ -16,20 +16,20 @@ ms.workload: infrastructure-services
 ms.date: 07/31/2017
 ms.author: jdial
 ms.custom: 
-ms.openlocfilehash: f4a1562983ffa68dbd6586a2ae3a569f766387b5
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 1ec6d8d5327ec6d5ebb92e125cb4c52a7a929c0e
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="create-a-virtual-network-classic-with-multiple-subnets"></a>Hozzon létre egy virtuális hálózat (klasszikus), több alhálózattal
 
 > [!IMPORTANT]
-> Két Azure tartozik [különböző üzembe helyezési modellel](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json) az erőforrások létrehozására és kezelésére vonatkozó: Resource Manager és klasszikus. Ez a cikk a klasszikus üzembehelyezési modellt ismerteti. A Microsoft azt javasolja, hogy a legtöbb új virtuális hálózat létrehozása a [erőforrás-kezelő](virtual-networks-create-vnet-arm-pportal.md) üzembe helyezési modellben.
+> Két Azure tartozik [különböző üzembe helyezési modellel](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json) az erőforrások létrehozására és kezelésére vonatkozó: Resource Manager és klasszikus. Ez a cikk a klasszikus üzembehelyezési modellt ismerteti. A Microsoft azt javasolja, hogy a legtöbb új virtuális hálózat létrehozása a [erőforrás-kezelő](quick-create-portal.md) üzembe helyezési modellben.
 
 Ebben az oktatóanyagban útmutató alapszintű Azure virtuális hálózat létrehozása (klasszikus), amely rendelkezik a nyilvános és titkos különálló alhálózatokat. Azure-erőforrások, például a virtuális gépek és felhőszolgáltatások az alhálózat hozhat létre. Létrehozott virtuális hálózatok (klasszikus) erőforrásokhoz kommunikálhatnak egymással, és más hálózatok, virtuális hálózathoz csatlakozó erőforrásokkal.
 
-További információk [virtuális hálózati](virtual-network-manage-network.md) és [alhálózati](virtual-network-manage-subnet.md) beállításait.
+További információk [virtuális hálózati](manage-virtual-network.md) és [alhálózati](virtual-network-manage-subnet.md) beállításait.
 
 > [!WARNING]
 > Virtuális hálózatok (klasszikus) Azure azonnal törli amikor egy [előfizetés le van tiltva](../billing/billing-subscription-become-disable.md?toc=%2fazure%2fvirtual-network%2ftoc.json#you-reached-your-spending-limit). Virtuális hálózatok (klasszikus) törlődnek, függetlenül attól, hogy erőforrásokat szerepel-e a virtuális hálózat. Ha később újra engedélyezi az előfizetés, a virtuális hálózat már létező erőforrásokat kell újból létre kell hozni.
@@ -161,7 +161,7 @@ Létrehozhat egy virtuális hálózat (klasszikus) használatával a [Azure-port
 
 ## <a name="next-steps"></a>További lépések
 
-- Minden virtuális hálózati és alhálózati beállításaival kapcsolatos további tudnivalókért lásd: [virtuális hálózatok kezeléséhez](virtual-network-manage-network.md) és [kezelheti a virtuális hálózati alhálózat](virtual-network-manage-subnet.md). Számos közül a virtuális hálózatok és alhálózatok éles környezetben különbözőek a követelmények teljesítéséhez.
+- Minden virtuális hálózati és alhálózati beállításaival kapcsolatos további tudnivalókért lásd: [virtuális hálózatok kezeléséhez](manage-virtual-network.md) és [kezelheti a virtuális hálózati alhálózat](virtual-network-manage-subnet.md). Számos közül a virtuális hálózatok és alhálózatok éles környezetben különbözőek a követelmények teljesítéséhez.
 - Bejövő és kimenő forgalmat szűréséhez, létrehozása és alkalmazása [hálózati biztonsági csoportok](virtual-networks-nsg.md) alhálózatokra.
 - Hozzon létre egy [Windows](../virtual-machines/windows/classic/createportal-classic.md?toc=%2fazure%2fvirtual-network%2ftoc.json) vagy egy [Linux](../virtual-machines/linux/classic/createportal-classic.md?toc=%2fazure%2fvirtual-network%2ftoc.json) virtuális gépet, majd csatlakozzon egy létező virtuális hálózatot.
 - Csatlakozás Azure ugyanazon a helyen lévő két virtuális hálózatok, hozzon létre egy [virtuális hálózati társviszony-létesítés](create-peering-different-deployment-models.md) a virtuális hálózatok között. A virtuális hálózat (klasszikus) is egyenrangú a egy virtuális hálózat (Resource Manager), de nem hozható létre társviszony-létesítés (klasszikus) virtuális hálózatok között.

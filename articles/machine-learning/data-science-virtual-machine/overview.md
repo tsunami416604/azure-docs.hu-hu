@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/27/2017
 ms.author: gokuma;bradsev
-ms.openlocfilehash: 3cedc16e3a420fd846b7860b69f4b19591ad1777
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: b50e98fa7bfff75efe8c9b926838ea847f640651
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="introduction-to-azure-data-science-virtual-machine-for-linux-and-windows"></a>A Linux és a Windows Azure adatok tudományos virtuális gép bemutatása
 
@@ -89,7 +89,7 @@ Az adatok tudományos virtuális gépnek számos népszerű adattudomány és m�
 | SDK-k Azure és a szolgáltatások Cortana Intelligence Suite eléréséhez | I | I |
 | **Adatmozgatást és a felügyeleti eszközök** | | |
 | &nbsp;&nbsp;&nbsp;&nbsp;* Az azure Storage Explorer | I | I |
-| &nbsp;&nbsp;&nbsp;&nbsp;* [Azure CLI](https://docs.microsoft.com/cli/azure/overview) | I | I |
+| &nbsp;&nbsp;&nbsp;&nbsp;* [Azure CLI](https://docs.microsoft.com/cli/azure) | I | I |
 | &nbsp;&nbsp;&nbsp;&nbsp;* Az azure Powershell | I | N |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [Azcopy](https://docs.microsoft.com/azure/storage/storage-use-azcopy) | I | N |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [A BLOB biztosító illesztőprogram](https://github.com/Azure/azure-storage-fuse) | N | I |

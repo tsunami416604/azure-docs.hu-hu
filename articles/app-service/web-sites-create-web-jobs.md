@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/09/2017
 ms.author: glenga;david.ebbo;suwatch;pbatum;naren.soni
-ms.openlocfilehash: 661bfadfe1094271ad2ab672ad3f755c0fd24f02
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 91839d8f547340d55f6badb3350a393a48a13c7d
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="run-background-tasks-with-webjobs-in-azure-app-service"></a>Háttérfeladatok futtatása a webjobs-feladatok az Azure App Service-ben
 
@@ -213,4 +213,4 @@ A CRON-kifejezés adja meg a portálon, vagy tartalmaznak egy `settings.job` fá
    
 ## <a name="NextSteps"></a> Következő lépések
 
-Az Azure WebJobs SDK számos programozási feladatok egyszerűbbé teheti a webjobs-feladatok is használható. További információkért lásd: [Mi az a WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki) és a [WebJobs SDK rövid összefoglaló](./media/web-sites-create-web-jobs/webjobs-sdk-quick-reference.png).
+Az Azure WebJobs SDK számos programozási feladatok egyszerűbbé teheti a webjobs-feladatok is használható. További információkért lásd: [Mi az a WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki).

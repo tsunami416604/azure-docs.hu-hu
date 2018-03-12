@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 12/18/2017
 ms.author: iainfou
-ms.openlocfilehash: 9f8c9a32be9b889ced4fdc7065acd09e6700afd5
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 387f3095e8eebce3fa6c2f47ffc87995e65bfe2b
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="get-started-with-docker-and-compose-to-define-and-run-a-multi-container-application-in-azure"></a>Ismerkedés a Docker és a Compose határozza meg, és futtassa a több tároló alkalmazást az Azure-ban
 A [Compose](http://github.com/docker/compose), egy egyszerű szöveges fájl használatával definiálja az alkalmazást, amely több Docker-tároló. Majd lépett fel az alkalmazást egy parancs, amelyet az adott környezet telepítéséhez. Tegyük fel ez a cikk bemutatja, hogyan gyorsan be lehessen állítani egy WordPress-bloghoz az Ubuntu virtuális gép MariaDB SQL database-fájlok. Használhatja a Compose összetettebb alkalmazásokat beállítása.
@@ -32,7 +32,7 @@ A Docker Virtuálisgép-bővítmény használata esetén a virtuális gép autom
 
 
 ### <a name="create-docker-host-with-azure-cli-20"></a>Az Azure CLI 2.0 Docker állomás létrehozása
-Telepítse a legújabb [Azure CLI 2.0](/cli/azure/install-az-cli2) és való bejelentkezéshez az Azure fiók használatával [az bejelentkezési](/cli/azure/#az_login).
+Telepítse a legújabb [Azure CLI 2.0](/cli/azure/install-az-cli2) és való bejelentkezéshez az Azure fiók használatával [az bejelentkezési](/cli/azure/reference-index#az_login).
 
 Először hozzon létre egy erőforráscsoportot a Docker környezetében [az csoport létrehozása](/cli/azure/group#az_group_create). A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *EastUS* helyen:
 

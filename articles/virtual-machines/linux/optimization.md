@@ -16,17 +16,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/06/2016
 ms.author: rclaus
-ms.openlocfilehash: e143ed1e6bcece7efac9126c8e46408e7a88a5c0
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: d3ee98253a69580e5ecafb4e117ef93f7c981416
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="optimize-your-linux-vm-on-azure"></a>Linuxos virtuális gép optimalizálása az Azure-ban
 A Linux virtuális gép (VM) létrehozása áll a parancssorból vagy a portálról. Ez az oktatóanyag bemutatja, hogyan annak beállítása, a Microsoft Azure platformon a teljesítmény optimalizálása érdekében. Ez a témakör az Ubuntu Server virtuális gép használja, de is létrehozhat Linux virtuális gép használt [a saját lemezképek sablonként](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).  
 
 ## <a name="prerequisites"></a>Előfeltételek
-Ez a témakör azt feltételezi, hogy már rendelkezik Azure-előfizetés ([ingyenes próbaidőszakra](https://azure.microsoft.com/pricing/free-trial/)) és a virtuális gép már létrehozta az Azure-előfizetése. Győződjön meg arról, hogy rendelkezik-e a legújabb [Azure CLI 2.0](/cli/azure/install-az-cli2) telepítve, és az Azure-előfizetése bejelentkezett [az bejelentkezési](/cli/azure/#az_login) előtt [hozzon létre egy virtuális Gépet](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Ez a témakör azt feltételezi, hogy már rendelkezik Azure-előfizetés ([ingyenes próbaidőszakra](https://azure.microsoft.com/pricing/free-trial/)) és a virtuális gép már létrehozta az Azure-előfizetése. Győződjön meg arról, hogy rendelkezik-e a legújabb [Azure CLI 2.0](/cli/azure/install-az-cli2) telepítve, és az Azure-előfizetése bejelentkezett [az bejelentkezési](/cli/azure/reference-index#az_login) előtt [hozzon létre egy virtuális Gépet](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 ## <a name="azure-os-disk"></a>Azure OS Disk
 Miután létrehozott egy Linux virtuális Gépet az Azure-ban, két lemez társítva van. **/ dev/sda** az operációsrendszer-lemez van **/dev/sdb** az ideiglenes lemez.  Ne használja a fő operációsrendszer-lemez (**/dev/sda**) számára, mert az operációs rendszer kivételével bármely más virtuális gép gyors rendszerindítás van optimalizálva, és nem biztosítja a megfelelő teljesítmény a munkaterhelések. Egy vagy több lemezt csatolni a beolvasandó állandó VM és az adatok tárolási optimalizált. 

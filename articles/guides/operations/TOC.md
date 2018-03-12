@@ -88,15 +88,15 @@
 
 
 ## [Virtuális hálózatok](azure-operations-guide.md#azure-virtual-network)
-### [Virtuális hálózat létrehozása az Azure Portallal](../../virtual-network/virtual-networks-create-vnet-arm-pportal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
-### [Virtuális hálózat létrehozása az Azure PowerShell használatával](../../virtual-network/virtual-networks-create-vnet-arm-ps.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
-### [Virtuális hálózat létrehozása az Azure CLI-vel](../../virtual-network/virtual-networks-create-vnet-arm-cli.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+### [Virtuális hálózat létrehozása az Azure Portallal](../../virtual-network/quick-create-portal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+### [Virtuális hálózat létrehozása az Azure PowerShell használatával](../../virtual-network/quick-create-powershell.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+### [Virtuális hálózat létrehozása az Azure CLI-vel](../../virtual-network/quick-create-cli.md#create-a-virtual-network?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 ### [Hálózati forgalom szűrése hálózati biztonsági csoportokkal](../../virtual-network/virtual-networks-nsg.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 ### Virtuális hálózatkezeléssel kapcsolatos oktatóanyagok
 #### [Virtuális gépek terheléselosztása](../../virtual-machines/linux/tutorial-load-balance-nodejs.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 #### [Számítógép csatlakoztatása egy virtuális hálózathoz](../../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 
 ## [Következő lépések](azure-operations-guide.md#next-steps)
-# Erőforrások
+# További források
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
 ## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)

@@ -1,26 +1,20 @@
 ---
-title: "Hálózati illesztők az Azure Site Recovery a helyszíni Azure forgatókönyvekre kezelése |} Microsoft Docs"
-description: "Hálózati illesztők Azure forgatókönyvek az Azure Site Recovery szolgáltatással történő helyszíni kezelése"
+title: "Hálózati illesztők az Azure Site Recovery a helyszíni Azure replikáció kezelése |} Microsoft Docs"
+description: "Hálózati illesztők Azure replikálás az Azure Site Recovery szolgáltatással történő helyszíni kezelése"
 services: site-recovery
-documentationcenter: 
 author: mayanknayar
 manager: rochakm
-editor: 
-ms.assetid: 
 ms.service: site-recovery
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 02/27/2018
+ms.date: 03/05/2018
 ms.author: manayar
-ms.openlocfilehash: ab8582d9c32cf13bd7b21a59031af8fde58effbf
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: a0d42608dc689e5f084f4ec91858531feeac8033
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/09/2018
 ---
-# <a name="manage-virtual-machine-network-interfaces-for-on-premises-to-azure-scenarios"></a>Virtuális gépek hálózati illesztői a helyszíni Azure forgatókönyvekre kezelése
+# <a name="manage-virtual-machine-network-interfaces-for-on-premises-to-azure-replication"></a>Virtuális gépek hálózati illesztői a helyszíni Azure replikáció kezelése
 
 Az Azure virtuális gép (VM) rendelkeznie kell legalább egy hálózati adapter nem csatlakoztatható. Számos hálózati kapcsolat kapcsolódik, a virtuális gép mérete által támogatott rendelkezhet.
 

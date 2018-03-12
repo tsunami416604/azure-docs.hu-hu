@@ -5,13 +5,13 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: article
-ms.date: 02/14/2018
+ms.date: 03/8/2018
 ms.author: raynew
-ms.openlocfilehash: 7d2d99c2429a461307cbb9a276eb3b62d13718d2
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 7863feb29fbb04f643aa3b7e1984209f44cdbe9a
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="fail-over-and-fail-back-hyper-v-vms-replicated-to-azure"></a>A feladatátvétel és a sikertelen biztonsági Hyper-V virtuális gépek Azure-felhőbe replikált
 
@@ -44,7 +44,7 @@ A feladatátvétel és a feladat-visszavétel négy fázisból áll:
 
 ## <a name="verify-vm-properties"></a>A virtuális gép tulajdonságainak ellenőrzése
 
-Ellenőrizze a virtuális gép tulajdonságait, és győződjön meg arról, hogy a virtuális gép megfelel az [Azure-követelményeknek](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements).
+Ellenőrizze a virtuális gép tulajdonságait, és győződjön meg arról, hogy a virtuális gép megfelel az [Azure-követelményeknek](hyper-v-azure-support-matrix.md#replicated-vms).
 
 1. A **védett elemek**, kattintson a **replikált elemek** >< virtuális gép neve >.
 

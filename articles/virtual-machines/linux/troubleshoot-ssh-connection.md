@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: iainfou
-ms.openlocfilehash: edf21d59bf3916a014706c2a298536262906fbf7
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 176477105e1f660b0bd22d95142b744ef17044ee
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="troubleshoot-ssh-connections-to-an-azure-linux-vm-that-fails-errors-out-or-is-refused"></a>Az Azure Linux virtuális gép, amely nem sikerül, hibák, vagy elutasítják SSH-kapcsolatok hibáinak elhárítása
 Oka lehet különböző, hogy Secure Shell (SSH) hibák, az SSH-kapcsolódási hibák, vagy az SSH a rendszer elutasította a rendszer, amikor egy Linux virtuális gép (VM) csatlakozni próbál. Ez a cikk segít keresse meg és javítsa ki a problémákat. Az Azure-portálon az Azure parancssori felület vagy a Linux virtuális gép hozzáférési bővítményével hibakeresésre és problémák megoldásához használható.
@@ -70,7 +70,7 @@ Válassza a hitelesítő adatokat egy meglévő felhasználó alaphelyzetbe áll
 A felhasználó sudo jogosultsági szintű ebben a menüben a virtuális gép is létrehozhat. Adjon meg egy új felhasználónevet és a kapcsolódó jelszó vagy SSH-kulcs, és kattintson a **alaphelyzetbe** gombra.
 
 ## <a name="use-the-azure-cli-20"></a>Az Azure parancssori felület használatával 2.0
-Ha még nem tette meg, telepítse a legújabb [Azure CLI 2.0](/cli/azure/install-az-cli2) és való bejelentkezéshez az Azure fiók használatával [az bejelentkezési](/cli/azure/#az_login).
+Ha még nem tette meg, telepítse a legújabb [Azure CLI 2.0](/cli/azure/install-az-cli2) és való bejelentkezéshez az Azure fiók használatával [az bejelentkezési](/cli/azure/reference-index#az_login).
 
 Ha létrehozott és Linux egyéni lemezképet feltöltve, ellenőrizze, hogy a [Microsoft Azure Linux ügynök](../windows/agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 2.0.5 verzió vagy újabb verziója. A gyűjtemény lemezképei használatával létrehozott virtuális gép esetében a hozzáférés bővítmény már telepített és konfigurálást.
 

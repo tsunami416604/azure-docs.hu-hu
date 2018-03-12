@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/02/2018
 ms.author: nitinme
-ms.openlocfilehash: 212789e8189abf362bb8eaf12e4c551b113b7adb
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 8e4213813ff23586ac683556d4a3c0c587edea58
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/09/2018
 ---
-# <a name="use-databricks-cli-from-azure-cloud-shell"></a>Azure-felhőbe rendszerhéjból Databricks CLI használata
+# <a name="use-databricks-cli-from-azure-cloud-shell"></a>A Databricks parancssori felület használata az Azure Cloud Shellből
 
 Útmutató a Databricks CLI Azure Cloud rendszerhéjból Databricks a műveletek végrehajtásához.
 
@@ -84,7 +84,7 @@ A parancsok teljes referenciáért lásd: [Databricks CLI](https://docs.azuredat
 ## <a name="next-steps"></a>További lépések
 
 * Azure parancssori Felülettel kapcsolatos további információkért lásd: [Azure CLI áttekintése](../cloud-shell/overview.md)
-* Az Azure parancssori felület parancsok listájának megtekintéséhez lásd: [Azure CLI-hivatkozás](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)
+* Az Azure parancssori felület parancsok listájának megtekintéséhez lásd: [Azure CLI-hivatkozás](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest)
 * Databricks CLI parancsok listájának megtekintéséhez lásd: [Databricks parancssori felület](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html)
 
 

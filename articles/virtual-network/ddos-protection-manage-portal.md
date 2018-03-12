@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/13/2017
 ms.author: jdial
-ms.openlocfilehash: ee418537fb52dbfb3eacca6e99d8572152a60910
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 6a5ab1ba44197c0103e1e7d353a116dc01dfc163
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="manage-azure-ddos-protection-standard-using-the-azure-portal"></a>Kezelése Azure DDoS védelem szabványos az Azure portál használatával
 
@@ -31,9 +31,9 @@ Megtudhatja, hogyan engedélyezése és elosztott szolgáltatásmegtagadásos (D
 ## <a name="enable-ddos-protection-standard---new-virtual-network"></a>DDoS védelem szabványos – új virtuális hálózat engedélyezése
 
 1. Jelentkezzen be az Azure Portalra a http://portal.azure.com webhelyen. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
-2. Kattintson a **hozzon létre egy erőforrást** az Azure portál bal felső sarokban.
+2. Kattintson az Azure Portal bal felső sarkában található **Erőforrás létrehozása** gombra.
 3. Válassza ki **hálózati**, majd válassza ki **virtuális hálózati**.
-4. Virtuális hálózat létrehozása a kiválasztott beállításokkal. Virtuális hálózatok létrehozásával kapcsolatos további információkért lásd: [hozzon létre egy virtuális hálózatot](virtual-networks-create-vnet-arm-pportal.md). A **DDoS-védelem**, kattintson a **engedélyezve**, és kattintson a **létrehozása**. Ha nem lát **DDoS-védelem**, ennek valószínű oka az, hogy az előfizetés nincs regisztrálva a szolgáltatást. Meg kell adnia a [regisztrációs](http://aka.ms/ddosprotection), és értesítést kap, hogy az előfizetés engedélyezve van a szolgáltatás számára, mielőtt **DDoS-védelem** jelenik meg.
+4. Virtuális hálózat létrehozása a kiválasztott beállításokkal. Virtuális hálózatok létrehozásával kapcsolatos további információkért lásd: [hozzon létre egy virtuális hálózatot](manage-virtual-network.md#create-a-virtual-network). A **DDoS-védelem**, kattintson a **engedélyezve**, és kattintson a **létrehozása**. Ha nem lát **DDoS-védelem**, ennek valószínű oka az, hogy az előfizetés nincs regisztrálva a szolgáltatást. Meg kell adnia a [regisztrációs](http://aka.ms/ddosprotection), és értesítést kap, hogy az előfizetés engedélyezve van a szolgáltatás számára, mielőtt **DDoS-védelem** jelenik meg.
 
     ![Virtuális hálózat létrehozása](./media/ddos-protection-manage-portal/ddos-create-vnet.png)   
 
@@ -66,7 +66,7 @@ Riasztást küld, ha egy aktív megoldás az Azure-figyelő riasztási konfigur�
 3. Az e-mail riasztások olyan metrikajelentés konfigurálásához kattintson **metrika riasztás hozzáadása**. Az e-mail riasztások bármely metrika hozható létre, de a legnyilvánvalóbb mérték **alatt DDoS támadás, vagy nem**. Ez az egy logikai érték 1 vagy 0. A **1** azt jelenti, hogy támadás alatt áll. A **0** azt jelenti, hogy nem támadás alatt áll.
 4. E-mailben támadás alatt, állítsa a metrikát **alatt DDoS támadás, vagy nem** és **nagyobb, mint nulla (0) az elmúlt 5 percben feltételt**. Az egyéb hasonló riasztások is beállítható.
 
-    ![Metrikáinak megadása](./media/ddos-protection-manage-portal/ddos-metrics.png)
+    ![Mérőszámok konfigurálása](./media/ddos-protection-manage-portal/ddos-metrics.png)
 
     Észlelt támadás, néhány percen belül értesítést kap Azure figyelő metrikák használatával.
 

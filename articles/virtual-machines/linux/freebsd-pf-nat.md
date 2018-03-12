@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/20/2017
 ms.author: kyliel
-ms.openlocfilehash: 5e6927b0bfa4591089657e36caddb442156457e5
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 0bed776526e3e2f3ee4cdce596c591d0b8419030
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="how-to-use-freebsds-packet-filter-to-create-a-secure-firewall-in-azure"></a>Freebsd rendszerű számítógépén csomag szűrő használata biztonságos tűzfal létrehozása az Azure-ban
 Ez a cikk központi telepítése a NAT-tűzfalon freebsd rendszerű a csomagoló szűrő Azure Resource Manager sablon segítségével használatával általános web server helyzetre be.
@@ -34,7 +34,7 @@ Az Azure Resource Manager-sablon beállítása, amely végrehajtja a PF és két
 ![pf_topology](./media/freebsd-pf-nat/pf_topology.jpg)
     
 ### <a name="deploy-through-azure-cli"></a>Az Azure CLI segítségével végzi a telepítést
-A legújabb kell [Azure CLI 2.0](/cli/azure/install-az-cli2) telepítve, és bejelentkezett az Azure-fiók használatával [az bejelentkezési](/cli/azure/#az_login). Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#az_group_create) paranccsal. Az alábbi példa létrehoz egy erőforráscsoport neve `myResourceGroup` a a `West US` helyét.
+A legújabb kell [Azure CLI 2.0](/cli/azure/install-az-cli2) telepítve, és bejelentkezett az Azure-fiók használatával [az bejelentkezési](/cli/azure/reference-index#az_login). Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#az_group_create) paranccsal. Az alábbi példa létrehoz egy erőforráscsoport neve `myResourceGroup` a a `West US` helyét.
 
 ```azurecli
 az group create --name myResourceGroup --location westus

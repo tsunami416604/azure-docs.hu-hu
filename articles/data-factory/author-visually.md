@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/9/2018
 ms.author: shlo
-ms.openlocfilehash: 81b97bb6b6abb5431bedd4efec5f807fa577c4e4
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 209afba99ac2b43c252d93c32930908ec1f957f9
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Az Azure Data Factory Visual készítése
 Az Azure Data Factory felhasználói felület élmény (UX) lehetővé teszi vizuálisan hozhatnak létre és telepítését erőforrások az a data factory kód írása nélkül. Húzzon tevékenységeket a feldolgozási sor vásznon, hajtsa végre a teszt futtatása, debug ismételt, és telepítheti és figyelheti a folyamat futtatása. Kétféleképpen használatához a UX visual szerzői műveletek végrehajtásához:
@@ -39,6 +39,9 @@ A UX használatakor **vászonra szerzői** ahhoz, hogy közvetlenül a Data Fact
 
 ## <a name="author-with-vsts-git-integration"></a>Szerző az VSTS Git integráció
 Visual szerkesztése VSTS Git integráció a támogatja a verziókövetési rendszerrel és együttműködés a data factory folyamatok munka. Egy adat-előállító társíthatja egy VSTS Git-fiók tárházat verziókezelő, együttműködés, versioning, és így tovább. Egyetlen VSTS Git fiók rendelkezhet több tárházak találhatók, de lehet, hogy a VSTS Git-tárház csak egy adat-előállító tartozik. Ha nem rendelkezik a VSTS-fiókok vagy tárház, hajtsa végre a [ezeket az utasításokat](https://docs.microsoft.com/vsts/accounts/create-account-msa-or-work-student) az erőforrások létrehozásához.
+
+> [!NOTE]
+> A Data Factory-folyamat nem fér hozzá a VSTS Git-tárház tárolt fájlok. Ennek eredményeképpen adat-előállító adatcsatorna tevékenységek – például használt fájlokat, az adatfájlok és - parancsfájlok nem tárolható a VSTS Git-tárházban.
 
 ### <a name="configure-a-vsts-git-repository-with-azure-data-factory"></a>A VSTS Git-tárház konfigurálása az Azure Data Factoryvel
 A data Factory két módszerrel konfigurálhatja egy VSTS GIT-tárházat.

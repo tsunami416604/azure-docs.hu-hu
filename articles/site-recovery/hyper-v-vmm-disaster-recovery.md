@@ -6,13 +6,13 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 02/12/2018
+ms.date: 03/08/2018
 ms.author: raynew
-ms.openlocfilehash: bf6d7c8b831e670db9fff28218c8f36391a73c9b
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 13dcc0794c1d89bd27c79cbe6636397da4f008f9
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="set-up-disaster-recovery-for-hyper-v-vms-to-a-secondary-on-premises-site"></a>Beállítása a vész-helyreállítási Hyper-V virtuális gépek egy másodlagos helyszíni helyre
 
@@ -33,9 +33,8 @@ Ez a cikk bemutatja, hogyan állíthat be katasztrófa utáni helyreállítás e
 A forgatókönyv végrehajtásához:
 
 - Tekintse át a [forgatókönyv architektúrája és összetevői](hyper-v-vmm-architecture.md).
-- Minden összetevőre vonatkozóan tekintse át a [támogatási követelményeket](site-recovery-support-matrix-to-sec-site.md).
-- Győződjön meg arról, hogy a VMM-kiszolgálók és a Hyper-V-gazdagépek megfelelnek [igényeinek támogatására](site-recovery-support-matrix-to-sec-site.md).
-- Ellenőrizze, hogy a replikálni kívánt virtuális gépeket ahhoz [replikált gép támogatási](site-recovery-support-matrix-to-sec-site.md#support-for-replicated-machine-os-versions).
+- Győződjön meg arról, hogy a VMM-kiszolgálók és a Hyper-V-gazdagépek megfelelnek [igényeinek támogatására](hyper-v-vmm-secondary-support-matrix.md).
+- Ellenőrizze, hogy a replikálni kívánt virtuális gépeket ahhoz [replikált gép támogatási](hyper-v-vmm-secondary-support-matrix.md#replicated-vm-support).
 - Készüljön elő a hálózatleképezésre VMM-kiszolgálókon.
 
 ### <a name="prepare-for-network-mapping"></a>A hálózatleképezés előkészítése
@@ -118,7 +117,7 @@ Válassza ki a cél VMM-kiszolgáló és a felhő:
    ![Cél](./media/hyper-v-vmm-disaster-recovery/target-vmm.png)
 
 
-## <a name="set-up-a-replication-policy"></a>A replikációs házirend beállítása
+## <a name="set-up-a-replication-policy"></a>Replikációs szabályzat beállítása
 
 Mielőtt elkezdené, győződjön meg arról, hogy minden gazdagép a házirend ugyanazt az operációs rendszert. Ha a gazdagép Windows Server különböző verzióit futtatják, szüksége több replikációs házirend.
 
@@ -151,7 +150,7 @@ Mielőtt elkezdené, győződjön meg arról, hogy minden gazdagép a házirend 
 4. A **virtuális gépek**, válassza ki a listából védeni kívánt virtuális gépeket.
 
 
-Előrehaladásának nyomon követheti a **Védelemengedélyezési** műveletét **feladatok** > **Site Recovery-feladatok**. Miután a **Védelemvéglegesítési** feladat befejeződik, a kezdeti replikálás befejeződik, és a virtuális gép készen áll a feladatátvételre.
+A **Védelem engedélyezése** művelet előrehaladását a **Feladatok** > **Site Recovery-feladatok** menüpontban követheti nyomon. Miután a **Védelemvéglegesítési** feladat befejeződik, a kezdeti replikálás befejeződik, és a virtuális gép készen áll a feladatátvételre.
 
 ## <a name="next-steps"></a>További lépések
 

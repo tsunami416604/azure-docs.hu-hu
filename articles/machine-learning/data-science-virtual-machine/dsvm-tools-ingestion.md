@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/11/2017
 ms.author: gokuma;bradsev
-ms.openlocfilehash: a2422d8a79d102accb72476f6934bae38603973a
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 8526e949aee2935824a03a0972d9e45c71d6601b
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="data-science-virtual-machine-data-ingestion-tools"></a>Adatok tudományos virtuális gép adatok adatfeldolgozást eszközök
 
@@ -35,7 +35,7 @@ Az alábbiakban néhány adtunk meg a DSVM adatok mozgása eszközök.
 | Támogatott DSVM verziók      | Windows      |
 | A gyakori felhasználási      | Több BLOB az Azure storage importálása az Azure Data Lake Store.      |
 |  Hogyan használja az / futtatni?    |   Nyisson meg egy parancssort, majd írja be a `adlcopy` Ha segítséget szeretne kérni.    |
-| Minták mutató hivatkozások      | [Használatával AdlCopy] https://docs.microsoft.com/azure/data-lake-store/data-lake-store-copy-data-azure-storage-blob)      |
+| Minták mutató hivatkozások      | [Az AdlCopy használata](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-copy-data-azure-storage-blob)      |
 | A DSVM a kapcsolódó eszközök      | AzCopy, az Azure parancssori     |
 
 ## <a name="azure-command-line"></a>Az Azure parancssori
@@ -46,7 +46,7 @@ Az alábbiakban néhány adtunk meg a DSVM adatok mozgása eszközök.
 | Támogatott DSVM verziók      | Windows, Linux     |
 | A gyakori felhasználási      | Importál, és az Azure storage, Azure Data Lake Store az adatok exportálása      |
 |  Hogyan használja az / futtatni?    |   Nyisson meg egy parancssort, majd írja be a `az` Ha segítséget szeretne kérni.    |
-| Minták mutató hivatkozások      | [Az Azure parancssori felület használata](https://docs.microsoft.com/cli/azure/?viee-cli-latest)     |
+| Minták mutató hivatkozások      | [Az Azure parancssori felület használata](https://docs.microsoft.com/cli/azure)     |
 | A DSVM a kapcsolódó eszközök      | AzCopy, AdlCopy      |
 
 
@@ -93,7 +93,7 @@ Az alábbiakban néhány adtunk meg a DSVM adatok mozgása eszközök.
 | Támogatott DSVM verziók      | Linux      |
 | A gyakori felhasználási      | Olvasását és írását a tárolóban lévő blobok      |
 |  Hogyan használja az / futtatni?    |   Futtatás _blobfuse_ a terminálon.    |
-| Minták mutató hivatkozások      | [a Githubon blobfuse) [https://github.com/Azure/azure-storage-fuse]      |
+| Minták mutató hivatkozások      | [a Githubon blobfuse](https://github.com/Azure/azure-storage-fuse)      |
 | A DSVM a kapcsolódó eszközök      | Az Azure parancssori      |
 
 

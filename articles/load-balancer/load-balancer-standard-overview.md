@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/04/2018
 ms.author: kumud
-ms.openlocfilehash: ddbfb415f062396f022f0f58cb975f6e3a5f1807
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 7e4fa38145ac21aaca8efa37250cc32ef1b1655c
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="azure-load-balancer-standard-overview-preview"></a>Az Azure Load Balancer szabványos áttekintése (előzetes verzió)
 
@@ -327,7 +327,7 @@ Termékváltozat nem változtatható. Kövesse az ebben a szakaszban található
 
 ## <a name="region-availability"></a>Régiónkénti elérhetőség
 
-Load Balancer szabványos már érhető el nyilvános felhő minden régióban.
+Load Balancer szabványos érhető el jelenleg USA nyugati régiója kivételével minden nyilvános felhő területen.
 
 >[!IMPORTANT]
 > Rövid idő alatt, hozzáférni a kezdeti indítási kívül régiók régiók (USA keleti régiója 2. régiója, USA középső RÉGIÓJA, Észak-Európa, Nyugat középső Régiójában, Nyugat-Európában, Délkelet-Ázsiában) előírja, hogy további előfizetési funkciók regisztrációjának (AllowLBPreviewWave2 és AllowLBPreviewWave3).  [Kövesse az alábbi lépéseket](#additionalpreviewregions). Hajtsa végre az összes akkor is, ha korábban már feliratkozott a AllowLBPreview már.
@@ -467,6 +467,7 @@ A következő korlátozások vonatkoznak az előzetes időpontjában alkalmazni,
 - [Riasztások figyelése Azure](../monitoring-and-diagnostics/monitoring-overview-alerts.md) jelenleg nem támogatottak.
 - Portál még nem támogatja a kibővített előzetes régiók.  Használjon például sablonokat, az Azure CLI 2.0-s vagy megoldás PowerShell ügyféleszközök elől.
 - Áthelyezési előfizetés műveletek nem támogatottak.
+- USA nyugati régiója nem elérhető.
 
 
 ## <a name="next-steps"></a>További lépések

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/27/2017
+ms.date: 03/08/2018
 ms.author: bryanla
 ms.custom: aaddev
-ms.openlocfilehash: d3b22927017e445ee3b6cea3e92edc0fb786cd8c
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: ccad1f12e4f99074763f116596b4467e822d9f35
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="articles-in-the-azure-ad-developer-guide"></a>Az Azure Active Directory fejlesztői útmutatójában cikkek
 Az Azure Active Directory fejlesztői útmutatójában ismertetett összes témakörök listáját a következő:
@@ -43,7 +43,7 @@ Ezek a cikkek ismertetik vonatkozó koncepciók és az Azure Active Directory sz
 | [Office 365-értékesítői információközpont](https://msdn.microsoft.com/office/office365/howto/submit-web-apps-seller-dashboard)               | Az Office 365 értékesítő irányítópult alkalmazás közzététele |
 | [A Visual Studio kapcsolódó szolgáltatások](vs-active-directory-dotnet-getting-started.md)                                               | A Visual Studio MVC-projektek az Azure AD-integrációs használata |
 | [Windows Server ADFS](https://technet.microsoft.com/windows-server-docs/identity/ad-fs/overview/ad-fs-scenarios-for-developers) | Az AD FS használatával a helyszíni Active Directory integrálása |
-| [Ajánlott hibakezelési eljárások az ADAL-hoz](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-devhowto-adal-error-handling) | Az AD FS használatával a helyszíni Active Directory integrálása |
+| [Ajánlott hibakezelési eljárások az ADAL-hoz](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-devhowto-adal-error-handling) | Rugalmas hibakezelés build és a naplózás engedélyezése |
 
 ## <a name="reference"></a>Leírások
 Ezek a cikkek a REST és hitelesítési kódtár API-k, protokollok, hibák, Kódminták és végpontok alapot nyújt.

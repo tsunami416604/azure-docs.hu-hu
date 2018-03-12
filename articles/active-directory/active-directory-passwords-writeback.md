@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 01/11/2018
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: b4a14d3c79f93988eeac1525da09cf70dc2de634
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.openlocfilehash: bcb7074a6d590a08ad683c8746156245bc60c5e8
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="password-writeback-overview"></a>Jelszó visszaírási áttekintése
 
@@ -31,6 +31,7 @@ A jelszóvisszaírás a következő szolgáltatásokat biztosítja:
 * **Nulla késleltetésre visszajelzést biztosítanak a**: a jelszóvisszaírás egy aszinkron művelet. A felhasználók arról azonnal a jelszavát nem felelt meg a házirend vagy nem alaphelyzetbe állítása vagy bármilyen okból megváltozott.
 * **Támogatja a jelszó alaphelyzetbe állítása a felhasználók számára, amelyek használják az Active Directory összevonási szolgáltatások (AD FS) vagy más összevonási technológiák**: A jelszóvisszaírás, mindaddig, amíg az összevont felhasználói fiókok szinkronizálása az Azure AD-bérlőn, képesek a helyszíni Active Directory-jelszavaikat felügyelete a felhőből.
 * **Támogatja a jelszó alaphelyzetbe állítása használó felhasználók** [Jelszókivonat-szinkronizálás](./connect/active-directory-aadconnectsync-implement-password-synchronization.md): Ha a jelszó alaphelyzetbe állítása szolgáltatás észleli, hogy a szinkronizált felhasználói fiók engedélyezve van-e a Jelszókivonat-szinkronizálás, a rendszer visszaállítja-e mind a fiók a helyi és a felhő jelszó egyidejűleg.
+* **Támogatja a jelszó alaphelyzetbe állítása a felhasználók számára, hogy átmenő hitelesítést használó**: a jelszóvisszaírás, mindaddig, amíg az áteresztő hitelesítés fiókok szinkronizálása az Azure AD-bérlő be tudja kezelni a helyszíni Active Directory-jelszavakkal a felhőből.
 * **Támogatja a jelszó is módosul a hozzáférési panel és az Office 365**: Ha összevont vagy a jelszó szinkronizálva felhasználók jelszavukat lejárt vagy nem lejárt, azt e jelszavakat írhasson vissza a helyi Active Directory-környezet származnak.
 * **Jelszavak visszaírása támogatja, amikor egy rendszergazda visszaállítja azokat az Azure portálról**: amikor egy rendszergazda a felhasználó jelszavának alaphelyzetbe állítása a [Azure-portálon](https://portal.azure.com), ha a felhasználónak össze van vonva, vagy a jelszó szinkronizálva lesznek állítva a jelszót a rendszergazda úgy dönt, valamint a helyi Active Directoryban. Ez a funkció jelenleg nem támogatott az Office felügyeleti portálon.
 * **A helyszíni Active Directory-jelszó házirendek érvénybe lépteti**: amikor a felhasználó visszaállítja a jelszavát, hogy győződjön meg arról, hogy megfelel-e a helyszíni Active Directory házirendet ahhoz, hogy véglegesítheti a könyvtárhoz. A felülvizsgálati tartalmazza, az előzmények, összetettségét, kor, jelszószűrők és egyéb jelszó korlátozásokat a helyi Active Directory megadott ellenőrzését.
@@ -98,8 +99,8 @@ A fiók megadva, az Azure AD Connect segédprogramot. a következő elemek be ke
 
 * **Új jelszó létrehozása** 
 * **Jelszó módosítása** 
-* **Írási engedélyek** a`lockoutTime`  
-* **Írási engedélyek** a`pwdLastSet`
+* **Írási engedélyek** a `lockoutTime`  
+* **Írási engedélyek** a `pwdLastSet`
 * **Bővített jogosultságokkal** akár:
    * A legfelső szintű objektumának *tartományonként* az adott erdőben
    * A felhasználó szervezeti egységben (OU) szeretné sspr hatókörében
@@ -137,7 +138,7 @@ Licenceléssel kapcsolatos információkért lásd: [jelszóvisszaírás szüks�
 
 * [Az Azure Active Directory-hely díjszabása](https://azure.microsoft.com/pricing/details/active-directory/)
 * [Enterprise Mobility + Security](https://www.microsoft.com/cloud-platform/enterprise-mobility-security)
-* [A Microsoft 365 Enterprise](https://www.microsoft.com/secure-productive-enterprise/default.aspx)
+* [Microsoft 365 Enterprise](https://www.microsoft.com/secure-productive-enterprise/default.aspx)
 
 ### <a name="on-premises-authentication-modes-that-are-supported-for-password-writeback"></a>A jelszóvisszaírás támogató helyszíni hitelesítési módot
 

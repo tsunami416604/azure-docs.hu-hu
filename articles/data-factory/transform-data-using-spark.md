@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2018
 ms.author: shengc
-ms.openlocfilehash: 4aed91696b5853b56ab17d69753d20081c79cdf7
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: e4cc412f9c6e37d6e6c3b030a934d572a7319011
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="transform-data-using-spark-activity-in-azure-data-factory"></a>A Spark-tevékenység használata az Azure Data Factory adatok átalakítása
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -71,7 +71,7 @@ A következő táblázat a JSON-definícióból használt JSON-tulajdonságok:
 | leírás           | A tevékenység mit leíró szöveg.  | Nem       |
 | type                  | Spark tevékenység tevékenység típus HDInsightSpark. | Igen      |
 | linkedServiceName     | A HDInsight Spark csatolt szolgáltatás a Spark program fut. neve. A csatolt szolgáltatással kapcsolatos további tudnivalókért lásd: [összekapcsolt szolgáltatások számítási](compute-linked-services.md) cikk. | Igen      |
-| SparkJobLinkedService | Az Azure Storage társított szolgáltatás, amely tárolja a Spark feladat fájl, a függőségeket és a naplókat.  Ha nem ad meg egy értéket ehhez a tulajdonsághoz, a HDInsight-fürthöz társított tárolót használja a rendszer. | Nem       |
+| SparkJobLinkedService | Az Azure Storage társított szolgáltatás, amely tárolja a Spark feladat fájl, a függőségeket és a naplókat.  Ha nem ad meg egy értéket ehhez a tulajdonsághoz, a HDInsight-fürthöz társított tárolót használja a rendszer. Ez a tulajdonság csak lehet az Azure tárolás társított szolgáltatása. | Nem       |
 | rootPath              | Az Azure Blob-tároló és a Spark-fájlt tartalmazó mappát. A fájlnév pedig kis-és nagybetűket. Tekintse meg a gyökérmappa-szerkezetében (a következő szakaszban) szakasz ebben a mappában szerkezete vonatkozó további információért. | Igen      |
 | entryFilePath         | A gyökérmappában található azon a Spark kódcsomag relatív elérési útja. | Igen      |
 | Osztálynév             | Az alkalmazás Java/Spark fő osztály      | Nem       |
@@ -87,8 +87,8 @@ A következő mappaszerkezet létrehozása az Azure Blob Storage HDInsight kapcs
 
 | Útvonal                  | Leírás                              | Szükséges | Típus   |
 | --------------------- | ---------------------------------------- | -------- | ------ |
-| `.`(root)            | A Spark feladatot a tárolás társított szolgáltatásának elérési útjának gyökeréhez | Igen      | Mappa |
-| &lt;felhasználó által definiált&gt; | Az elérési út a Spark feladat bejegyzés fájlra hivatkozik | Igen      | Fájl   |
+| `.` (root)            | A Spark feladatot a tárolás társított szolgáltatásának elérési útjának gyökeréhez | Igen      | Mappa |
+| &lt;Felhasználó által definiált &gt; | Az elérési út a Spark feladat bejegyzés fájlra hivatkozik | Igen      | Fájl   |
 | . / jars                | Ebben a mappában található összes fájl feltöltése, és a fürt a java classpath helyezve | Nem       | Mappa |
 | ./pyFiles             | Ebben a mappában található összes fájl feltöltése, és a fürt PYTHONPATH helyezve | Nem       | Mappa |
 | ./files               | Ebben a mappában található összes fájl feltöltése és végrehajtó munkakönyvtár helyezve | Nem       | Mappa |

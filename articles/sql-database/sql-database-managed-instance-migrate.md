@@ -11,11 +11,11 @@ ms.custom: managed instance
 ms.topic: article
 ms.date: 03/07/2018
 ms.author: bonova
-ms.openlocfilehash: 44a02ac20a9e9e5fb7171d28e4852ab1a6e63881
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 87efa41ce74a0d571c8fd5f7a0ebfbd7bc6b626e
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-database-managed-instance"></a>Azure SQL adatbázis felügyelt példány SQL Server példány áttelepítés
 
@@ -75,7 +75,7 @@ Helyezze át az SQL Server-példányok, tervezze meg gondosan kell:
 
 Felügyelt példány egy teljes körűen felügyelt szolgáltatás, amely lehetővé teszi, és delegálja a platform rendszeres DBA tevékenységekről, azok be vannak építve. Ezért néhány szintű példányadatokat nem kell áttelepíteni, például a karbantartási feladatok rendszeres biztonsági mentést vagy mindig a konfigurációhoz, mint [magas rendelkezésre állású](sql-database-high-availability.md) részét.
 
-Felügyelt példányát támogatja a következő több adatbázis-áttelepítési lehetőségek:
+Felügyelt példányát támogatja a következő adatbázis áttelepítési lehetőségek (ezek jelenleg az egyetlen támogatott áttelepítési módszereinek):
 
 ### <a name="azure-database-migration-service"></a>Azure Database Migration Service
 

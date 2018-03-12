@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 01/09/2018
 ms.author: genli;markgal;sogup;
-ms.openlocfilehash: c205023b025a477ee05ddcbfc536573f31426167
-ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
+ms.openlocfilehash: a18718aba3ef7f70caa541c6eb56311082d02bed
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure biztonsági mentési hiba elhárítása: az ügynök vagy a bővítmény problémái
 
@@ -30,9 +30,6 @@ Ez a cikk ismerteti a hibaelhárítási lépéseket, amelyek segítségével jav
 ## <a name="vm-agent-unable-to-communicate-with-azure-backup"></a>Virtuálisgép-ügynök nem tud kommunikálni az Azure Backup szolgáltatással
 
 Hibaüzenet: "Virtuálisgép-ügynök nem lehet kommunikálni az Azure Backup"
-
-> [!NOTE]
-> Ha az Azure Linux virtuális gép biztonsági mentések sikertelenek lehetnek verziótól 2018. január 4. hiba a következő parancsot a virtuális gép, és ismételje meg a biztonsági mentések:`sudo rm -f /var/lib/waagent/*.[0-9]*.xml`
 
 Miután regisztrálja, és ütemezze a biztonsági mentési szolgáltatás virtuális gép, a biztonsági mentés a feladat kezdeményezi úgy, hogy pont időponthoz kötött pillanatképet készít a virtuális gép ügynökkel folytatott kommunikáció. A következő esetekben előfordulhat, hogy a pillanatkép indított folyamatban. Pillanatkép kiváltásakor a nem a biztonsági mentés sikertelen lehet. Fejezze be a következő hibaelhárítási lépéseket a megadott sorrendben, majd próbálja megismételni a műveletet:
 
@@ -58,9 +55,8 @@ Hibaüzenet: "VMSnapshot művelet sikertelen volt"
 Miután regisztrálja, és egy virtuális Gépet az Azure Backup szolgáltatás ütemezése, biztonsági mentés indít el a feladat által a biztonsági mentés Virtuálisgép-bővítmény időpontban pillanatképének elkészítéséhez kommunikál. A következő esetekben előfordulhat, hogy a pillanatkép indított folyamatban. Ha a pillanatkép nem elindul, a biztonsági mentési hiba léphet fel. Fejezze be a következő hibaelhárítási lépéseket a megadott sorrendben, majd próbálja megismételni a műveletet:  
 **1. ok: [pillanatkép állapota nem olvasható, vagy a pillanatkép nem végezhető](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**  
 **2. ok: [frissítése vagy nem tölthető be nem sikerül a tartalék mellék](#the-backup-extension-fails-to-update-or-load)**  
-**3. ok: [a virtuális gép nem rendelkezik internet-hozzáférés](#the-vm-has-no-internet-access)**  
-**4. ok: [az ügynök telepítve legyen a virtuális Géphez, de azok nem válaszoló (a Windows-alapú virtuális gépek)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**  
-**5. ok: [a virtuális gépen telepített ügynök elavult (a Linux virtuális gépek)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**
+**3. ok: [az ügynök telepítve legyen a virtuális Géphez, de azok nem válaszoló (a Windows-alapú virtuális gépek)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**  
+**4. ok: [a virtuális gépen telepített ügynök elavult (a Linux virtuális gépek)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**
 
 ## <a name="backup-fails-because-the-vm-agent-is-unresponsive"></a>Biztonsági mentés sikertelen lesz, mivel a Virtuálisgép-ügynök nem válaszol
 
@@ -151,12 +147,12 @@ Legtöbb ügynök vagy bővítmény kapcsolódó hibák Linux virtuális gépek 
  > [!NOTE]
  > A Microsoft *erősen ajánlott* frissíteni az ügynököt csak egy terjesztési-tárházat. Nem ajánlott közvetlenül a Githubból a kód letöltése és frissítése. Ha a legújabb ügynököt, hogy a terjesztési nem érhető el, forduljon terjesztési támogatása a telepítésre vonatkozó útmutatást. A legújabb ügynököt ellenőrzéséhez nyissa meg a [Windows Azure Linux ügynök](https://github.com/Azure/WALinuxAgent/releases) a GitHub-tárházban lapján.
 
-2. Győződjön meg arról, hogy az Azure-ügynök fut a virtuális Gépet a következő parancs futtatásával:`ps -e`
+2. Győződjön meg arról, hogy az Azure-ügynök fut a virtuális Gépet a következő parancs futtatásával: `ps -e`
 
  Ha a folyamat nem fut, indítsa újra a következő parancsokkal:
 
- * Az Ubuntu:`service walinuxagent start`
- * Az egyéb terjesztéseket:`service waagent start`
+ * Az Ubuntu: `service walinuxagent start`
+ * Az egyéb terjesztéseket: `service waagent start`
 
 3. [Konfigurálja az automatikus újraindítás ügynököt](https://github.com/Azure/WALinuxAgent/wiki/Known-Issues#mitigate_agent_crash).
 4. Egy új teszt biztonsági mentés futtatására. Ha a hiba továbbra is fennáll, gyűjtése a virtuális Gépet a következő naplók kapcsolódnak:
@@ -168,7 +164,7 @@ Legtöbb ügynök vagy bővítmény kapcsolódó hibák Linux virtuális gépek 
 Ha a részletes naplózást az waagent kérjük, kövesse az alábbi lépéseket:
 
 1. A /etc/waagent.conf fájlban keresse meg a következő sort: **részletes naplózás engedélyezése (y |} n)**
-2. Módosítsa a **Logs.Verbose** értéket  *n*  való *y*.
+2. Módosítsa a **Logs.Verbose** értéket *n* való *y*.
 3. A módosítás mentéséhez, és indítsa újra az ebben a szakaszban bemutatott lépések végrehajtásával waagent.
 
 ###  <a name="the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken"></a>A pillanatkép állapota nem lehet beolvasni, vagy a pillanatkép nem végezhető
@@ -179,7 +175,6 @@ A következő feltételek előfordulhat, hogy a pillanatkép-feladat meghiúsul:
 
 | Ok | Megoldás |
 | --- | --- |
-| A virtuális Gépnek legyen beállítva SQL Server biztonsági másolat. | Alapértelmezés szerint a virtuális gép biztonsági mentése fut a kötet árnyékmásolata szolgáltatás (VSS) teljes biztonsági mentés Windows virtuális gépeken. A virtuális gépeken futó SQL Server-alapú kiszolgálók és az SQL Servert mentés konfigurálva van, pillanatkép végrehajtási késések fordulhatnak elő.<br><br>Ha egy pillanatkép probléma miatt sikertelen biztonsági mentéshez, állítsa be a következő beállításkulcsot:<br><br>**[HKEY_LOCAL_MACHINE\SOFTWARE\MICROSOFT\BCDRAGENT] "USEVSSCOPYBACKUP"="TRUE"** |
 | A virtuális gép állapotát jelentett nem megfelelő, mert a virtuális gép le van állítva a távoli asztal protokoll (RDP). | Ha a virtuális gép RDP a leállítása, ellenőrizze annak meghatározásához, hogy helyesek-e a virtuális gép állapotát a portál. Ha nem megfelelő, használatával állítsa le a virtuális Gépet a portálon a **leállítási** a virtuális gép irányítópulton lehetőséget. |
 | A virtuális gép nem tud a gazdagép vagy a háló címet a DHCP-Kiszolgálótól. | A Vendég típusú infrastruktúra-szolgáltatási virtuális gép biztonsági mentésre működéséhez engedélyezni kell a DHCP. Ha a virtuális gép nem olvasható be a gazdagép vagy a háló címét a DHCP-válasz 245, ez nem töltse le, vagy kiterjesztések futtatása. Ha statikus magánhálózati IP-címe van szüksége, konfigurálja úgy a platformon keresztül. A DHCP-beállítást a virtuális Gépen belül balra engedélyezni kell. További információkért lásd: [egy statikus belső privát IP-cím beállítása](../virtual-network/virtual-networks-reserved-private-ip.md). |
 
@@ -188,12 +183,7 @@ Bővítmények nem tölthető be, ha a biztonsági mentés meghiúsul, mert a pi
 
 #### <a name="solution"></a>Megoldás
 
-**A Windows-vendégek:** győződjön meg arról, hogy a iaasvmprovider szolgáltatás engedélyezve van, és indítási típust *automatikus*. Ha a szolgáltatás ezzel a módszerrel nincs konfigurálva, engedélyezze a szolgáltatást annak meghatározásához, hogy a következő biztonsági mentés sikeres.
-
-**A Linux-vendégek:** győződjön meg arról, hogy a legújabb VMSnapshot Linux (a biztonsági mentés által használt kiterjesztés) 1.0.91.0.<br>
-
-
-Ha a tartalék mellék még mindig nem tudja frissíteni vagy nem tölthető be, távolítsa el a bővítmény kényszerítése a VMSnapshot bővítmény töltse be újra. A következő biztonsági mentési kísérlet betölti a bővítményt.
+Távolítsa el a bővítmény kényszerítése a VMSnapshot bővítmény töltse be újra. A következő biztonsági mentési kísérlet betölti a bővítményt.
 
 A bővítmény eltávolítása:
 
@@ -220,7 +210,7 @@ A probléma megoldása érdekében végezze el a visszaállítási pont gyűjtem
 4. A visszaállítási pont gyűjteményben, amely megfelel a virtuális gép beolvasása: <br>
     `.\armclient.exe get https://management.azure.com/subscriptions/<SubscriptionId>/resourceGroups/<ResourceGroupName>/providers/Microsoft.Compute/restorepointcollections/AzureBackup_<VM-Name>?api-version=2017-03-30`
 
-    Példa:`.\armclient.exe get https://management.azure.com/subscriptions/f2edfd5d-5496-4683-b94f-b3588c579006/resourceGroups/winvaultrg/providers/Microsoft.Compute/restorepointcollections/AzureBackup_winmanagedvm?api-version=2017-03-30`
+    Példa: `.\armclient.exe get https://management.azure.com/subscriptions/f2edfd5d-5496-4683-b94f-b3588c579006/resourceGroups/winvaultrg/providers/Microsoft.Compute/restorepointcollections/AzureBackup_winmanagedvm?api-version=2017-03-30`
 5. A visszaállítási pont gyűjtemény törlése: <br>
     `.\armclient.exe delete https://management.azure.com/subscriptions/<SubscriptionId>/resourceGroups/<ResourceGroupName>/providers/Microsoft.Compute/restorepointcollections/AzureBackup_<VM-Name>?api-version=2017-03-30` 
 6. A következő ütemezett biztonsági mentés automatikusan létrehoz egy helyreállítási pont gyűjtemény és az új visszaállítási pontok.

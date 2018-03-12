@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 07/05/2017
+ms.date: 03/07/2018
 ms.author: jroth
-ms.openlocfilehash: 42be8c814a7b4c0bb1bd2f88d2e610d20442048e
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 1da89bbf88e9f1f2105e7afab5c3fdabcecdbc64
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="automated-patching-for-sql-server-in-azure-virtual-machines-classic"></a>Automatikus javítás az SQL Server Azure virtuális gépekben (klasszikus)
 > [!div class="op_single_selector"]
@@ -28,7 +28,12 @@ ms.lasthandoff: 02/21/2018
 > 
 > 
 
-Automatikus javítás karbantartási időszak az az Azure virtuális gép fut az SQL Server hoz létre. Az automatikus frissítések csak a karbantartási időszak alatt lesznek telepítve. Az SQL Server Ez biztosítja, hogy a rendszerfrissítések és minden kapcsolódó újraindítások halasztja az adatbázis lehető legjobb idő. Automatikus javítás függ a [SQL Server infrastruktúra-szolgáltatási ügynök bővítmény](../classic/sql-server-agent-extension.md).
+Automatikus javítás karbantartási időszak az az Azure virtuális gép fut az SQL Server hoz létre. Az automatikus frissítések csak a karbantartási időszak alatt lesznek telepítve. Az SQL Server Ez biztosítja, hogy a rendszerfrissítések és minden kapcsolódó újraindítások halasztja az adatbázis lehető legjobb idő. 
+
+> [!IMPORTANT]
+> Csak a megjelölt frissítéseket Windows **fontos** vannak telepítve. Más SQL Server-frissítések, például az összegző frissítések, manuálisan kell telepíteni. 
+
+Automatikus javítás függ a [SQL Server infrastruktúra-szolgáltatási ügynök bővítmény](../classic/sql-server-agent-extension.md).
 
 > [!IMPORTANT] 
 > Azure az erőforrások létrehozására és kezelésére két különböző üzembe helyezési modellel rendelkezik: [Resource Manager és klasszikus](../../../azure-resource-manager/resource-manager-deployment-model.md). Ez a cikk a klasszikus telepítési modell használatát bemutatja. A Microsoft azt javasolja, hogy az új telepítések esetén a Resource Manager modellt használja. Ez a cikk erőforrás-kezelő verziójának megtekintése: [automatikus javítás az SQL Server az Azure virtuális gépek erőforrás-kezelő](../sql/virtual-machines-windows-sql-automated-patching.md).

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2017
 ms.author: wesmc
-ms.openlocfilehash: 5ed5af627fa8ec8007f095face2cbf115ead4b27
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: ba3a7ccc059dd5036753f471b762e27f22a179af
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-redis-cache"></a>Virtuális hálózati támogatásának konfigurálása prémium szintű Azure Redis Cache
 Azure Redis Cache rendelkezik másik gyorsítótármappa ajánlatokat, amelyek gyorsítótár mérete és a funkciót, beleértve a prémium réteg szolgáltatások, például a fürtszolgáltatás, az adatmegőrzésre és a virtuális hálózat támogatásának rugalmasságot biztosítanak. A virtuális hálózat egy magánhálózaton a felhőben. Azure Redis Cache példány konfigurálásakor a virtuális hálózaton nincs nyilvánosan megcímezhető, és csak érhetők el a virtuális gépek és az alkalmazások a Vneten belül. Ez a cikk ismerteti a premium Azure Redis Cache példányt virtuális hálózat támogatásának konfigurálása.
@@ -38,7 +38,7 @@ Virtual Network (VNet) támogatása konfigurálva van a **új Redis Cache** pane
 
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-premium-create.md)]
 
-Miután kiválasztotta a prémium tarifacsomag, beállíthatja a Redis virtuális integráció egy Vnetet, amely ugyanazt az előfizetést és a gyorsítótár helyének kiválasztásával. Egy új virtuális hálózat használatához először hozza létre azt a lépések [hozzon létre egy virtuális hálózatot az Azure portál használatával](../virtual-network/virtual-networks-create-vnet-arm-pportal.md) vagy [(klasszikus) virtuális hálózat létrehozása az Azure portál használatával](../virtual-network/virtual-networks-create-vnet-classic-pportal.md) és térjen vissza a **Új Redis Cache** létrehozása és beállítása a prémium szintű gyorsítótára panel.
+Miután kiválasztotta a prémium tarifacsomag, beállíthatja a Redis virtuális integráció egy Vnetet, amely ugyanazt az előfizetést és a gyorsítótár helyének kiválasztásával. Egy új virtuális hálózat használatához először hozza létre azt a lépések [hozzon létre egy virtuális hálózatot az Azure portál használatával](../virtual-network/manage-virtual-network.md#create-a-virtual-network) vagy [(klasszikus) virtuális hálózat létrehozása az Azure portál használatával](../virtual-network/virtual-networks-create-vnet-classic-pportal.md) és térjen vissza a **Új Redis Cache** létrehozása és beállítása a prémium szintű gyorsítótára panel.
 
 Az új gyorsítótár hálózatok konfigurálásához kattintson **virtuális hálózati** a a **új Redis Cache** panelt, és válassza ki a kívánt VNet a legördülő listából.
 

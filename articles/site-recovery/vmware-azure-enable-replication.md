@@ -8,11 +8,11 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 03/05/2018
 ms.author: asgang
-ms.openlocfilehash: 472e44342fb1d5a0c432453bfcc2699c4d8b4cad
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 17cd6a931563c7d33576749453d742aca253526b
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="enable-replication-to-azure-for-vmware-vms"></a>VMware virtuális gépek Azure-bA replikáció engedélyezése
 
@@ -86,7 +86,7 @@ VMware virtuális gépek replikálásához:
 
 ## <a name="view-and-manage-vm-properties"></a>A virtuális gépek tulajdonságainak megtekintése és kezelése
 
-Ezután ellenőrizheti a forrásgép tulajdonságait. Ne feledje, hogy az Azure virtuális gép nevét kell adott a specifikációknak való [Azure virtuális gép követelményeinek](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements).
+Ezután ellenőrizheti a forrásgép tulajdonságait. Ne feledje, hogy az Azure virtuális gép nevét kell adott a specifikációknak való [Azure virtuális gép követelményeinek](vmware-physical-azure-support-matrix.md#replicated-machines).
 
 1. Kattintson a **beállítások** > **replikált elemek** >, majd válassza ki a gépet. A **Essentials** lapon látható a gép beállításainak és állapotával kapcsolatos adatokat.
 2. A **Tulajdonságok** résznél tekintheti meg a virtuális gép replikációs és feladatátvételi adatait.

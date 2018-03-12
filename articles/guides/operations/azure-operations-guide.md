@@ -1,6 +1,6 @@
 ---
 title: "Első lépések útmutató az Azure informatikai operátorok |} Microsoft Docs"
-description: "Első lépésekről szóló útmutatót az Azure informatikai operátorok"
+description: "Az első lépéseket ismertető útmutató Azure-operátorok számára"
 services: 
 documentationcenter: 
 author: neilpeterson
@@ -15,11 +15,11 @@ ms.tgt_pltfrm:
 ms.workload: infrastructure
 ms.date: 06/12/2017
 ms.author: nepeters
-ms.openlocfilehash: 4a913e188dd40b0306be375b016b9e8a3739ed72
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 8d7cbe27e5acfe741aeb5ed85756bf3c7ce2160b
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="introduction-to-cloud-computing-and-microsoft-azure"></a>Bevezetés a felhőalapú informatika és a Microsoft Azure
 
@@ -118,7 +118,7 @@ Szolgáltatások létrehozása és alkalmazások működő:
 
 -   Azure Schedulerrel
 
--   Az Azure Media Services
+-   Azure Media Services
 
 ### <a name="network-services"></a>A hálózati szolgáltatások
 
@@ -128,7 +128,7 @@ Azure-ban, és az Azure és a helyszíni adatközpont között hálózati szolg�
 
 -   Azure ExpressRoute
 
--   Azure által biztosított DNS-
+-   Azure-provided DNS
 
 -   Azure Traffic Manager
 
@@ -150,7 +150,7 @@ Az Azure használatával beneﬁts egyike, hogy az alkalmazások különböző a
 
 Az Azure portál egy webes alkalmazás, amely segítségével létrehozására, kezelésére, és távolítsa el az Azure-erőforrások és szolgáltatások. Az Azure-portál itt található: https://portal.azure.com. Egy testre szabható irányítópult és az Azure-erőforrások kezelése tooling tartalmaz. Számlázás és előfizetés információkat is biztosít. További információkért lásd: [Microsoft Azure portál áttekintése](https://azure.microsoft.com/documentation/articles/azure-portal-overview/) és [kezelése Azure-erőforrások portálon keresztül](https://docs.microsoft.com/azure/azure-portal/resource-group-portal).
 
-### <a name="resources"></a>Erőforrások
+### <a name="resources"></a>További források
 
 Azure-erőforrások az egyes számítási, hálózati, adatok vagy az Azure-előfizetés telepített szolgáltatásokat üzemeltető alkalmazás. Néhány közös erőforrások virtuális gépek, a storage-fiókok vagy az SQL-adatbázisok. Az Azure szolgáltatások gyakran több kapcsolódó Azure-erőforrások állnak. Például egy Azure virtuális gép közé tartozik a virtuális gép, a tárfiókot, a hálózati adapter és a nyilvános IP-cím. Ezek resourcres hozható létre, felügyelt, és egyesével vagy csoportosan törölt. Azure-erőforrások tartoznak, az útmutató későbbi részében részletesebben.
 
@@ -341,7 +341,7 @@ Mivel az Azure virtuális gépek teljes felügyeletet gyakorolhat konfiguráció
 
 Azure virtuális gépeken telepítheti az Azure portál használatával, az Azure PowerShell modulra automatizálás segítségével vagy automation a platformfüggetlen parancssori felület használatával.
 
-**Portál**
+**Portal**
 
 Csak egy aktív Azure-előfizetéssel, és egy webes böngésző hozzáférést egy virtuális gépet az Azure portál segítségével történő telepítéséhez szükséges. Számos különböző operációsrendszer-lemezképek különböző konfigurációjú választhatja ki. A telepítés során az összes tárolási és hálózati követelménnyel vannak konfigurálva. További információkért lásd "A virtuális gép létrehozása az Azure portálon" [Windows](../../virtual-machines/windows/quick-create-portal.md) és [Linux](../../virtual-machines/linux/quick-create-portal.md).
 
@@ -424,7 +424,7 @@ További információkért lásd: [Ismerkedés az Azure Queue storage](../../sto
 
 A storage-fiók üzembe helyezésének több lehetőség áll rendelkezésre.
 
-**Portál**
+**Portal**
 
 Csak egy aktív Azure-előfizetéssel, és egy webes böngésző hozzáférést az Azure portál segítségével történő telepítéséhez a storage-fiók szükséges. Új tárfiók be egy új vagy meglévő erőforráscsoportot is telepíthet. Miután létrehozta a tárfiókot, a portál használatával is létrehozhat egy blob tároló vagy a fájlmegosztásnak. Tábla létrehozása, és a tárolási entitások programozott módon várólistára. További információkért lásd: [hozzon létre egy tárfiókot](../../storage/common/storage-create-storage-account.md#create-a-storage-account).
 
@@ -489,21 +489,21 @@ Mivel az Azure virtuális hálózat a helyszíni hálózathoz csatlakozik, léte
 
 A virtuális hálózat üzembe helyezésekor számos lehetőség áll rendelkezésre.
 
-**Portál**
+**Portal**
 
-Egy Azure virtuális hálózatot az Azure portál segítségével történő telepítéséhez szükséges csak egy aktív Azure-előfizetéssel, és egy webes böngésző hozzáférést. Telepíthet új virtuális hálózat be egy új vagy meglévő erőforráscsoportot. Új virtuális gép létrehozásakor a portálról válasszon egy meglévő virtuális hálózatot, vagy hozzon létre egy újat. További információkért lásd: [hozzon létre egy virtuális hálózatot az Azure portál használatával](../../virtual-network/virtual-networks-create-vnet-arm-pportal.md).
+Egy Azure virtuális hálózatot az Azure portál segítségével történő telepítéséhez szükséges csak egy aktív Azure-előfizetéssel, és egy webes böngésző hozzáférést. Telepíthet új virtuális hálózat be egy új vagy meglévő erőforráscsoportot. Új virtuális gép létrehozásakor a portálról válasszon egy meglévő virtuális hálózatot, vagy hozzon létre egy újat. További információkért lásd: [hozzon létre egy virtuális hálózatot az Azure portál használatával](../../virtual-network/quick-create-portal.md).
 
 Azure-portálról egy Azure virtuális hálózatra való telepítése mellett telepítheti egy Azure Resource Manager-sablon a portálon. Ez fogja telepíteni, és minden erőforrások konfigurálása az a sablon, beleértve a virtuális hálózati erőforrásokhoz. További információkért lásd: [erőforrások a Resource Manager-sablonok és az Azure-portál telepítése](../../azure-resource-manager/resource-group-template-deploy-portal.md).
 
 **PowerShell**
 
-Egy Azure virtuális hálózat üzembe helyezése a PowerShell használatával lehetővé teszi, hogy a teljes telepítési automatizálásához a tárfiók. További információkért lásd: [virtuális hálózat létrehozása a PowerShell használatával](../../virtual-network/virtual-networks-create-vnet-arm-ps.md).
+Egy Azure virtuális hálózat üzembe helyezése a PowerShell használatával lehetővé teszi, hogy a teljes telepítési automatizálásához a tárfiók. További információkért lásd: [virtuális hálózat létrehozása a PowerShell használatával](../../virtual-network/quick-create-powershell.md).
 
 Amellett, külön-külön telepítésére használható Azure-erőforrások, az Azure PowerShell modul segítségével az Azure Resource Manager-sablon üzembe helyezése. További információkért lásd: [erőforrások a Resource Manager-sablonok és Azure PowerShell telepítése](../../azure-resource-manager/resource-group-template-deploy.md).
 
 **Parancssori felület (CLI)**
 
-Csakúgy, mint a PowerShell-modult, az Azure parancssori felület telepítési automation biztosít, és a Windows, OS X vagy Linux rendszereken is használható. Használhatja az Azure parancssori felület **hálózati vnet létrehozása** parancs futtatásával hozzon létre egy virtuális hálózatot. További információkért lásd: [virtuális hálózat létrehozása az Azure parancssori felület használatával](../../virtual-network/virtual-networks-create-vnet-arm-cli.md).
+Csakúgy, mint a PowerShell-modult, az Azure parancssori felület telepítési automation biztosít, és a Windows, OS X vagy Linux rendszereken is használható. Használhatja az Azure parancssori felület **hálózati vnet létrehozása** parancs futtatásával hozzon létre egy virtuális hálózatot. További információkért lásd: [virtuális hálózat létrehozása az Azure parancssori felület használatával](../../virtual-network/quick-create-cli.md).
 
 Hasonlóképpen az Azure parancssori felület használatával az Azure Resource Manager-sablon üzembe helyezése. További információkért lásd: [erőforrások a Resource Manager-sablonok és az Azure parancssori felület telepítése](../../azure-resource-manager/resource-group-template-deploy-cli.md).
 
@@ -511,7 +511,7 @@ Hasonlóképpen az Azure parancssori felület használatával az Azure Resource 
 
 Biztonságos egy Azure virtuális hálózatot a hálózati biztonsági csoportok használatával segíthet. Az NSG-k hozzáférés-vezérlési lista (ACL) szabályok, amelyek engedélyezik vagy megtagadják a Virtuálisgép-példány egy virtuális hálózat hálózati forgalmának listáját tartalmazzák. NSG-ket társíthat ket alhálózatokhoz vagy az alhálózaton belüli Virtuálisgép-példányokhoz. Amikor társít egy NSG alhálózattal, az ACL szabályok érvényessé alhálózat összes Virtuálisgép-példány. Emellett tovább korlátozhatja forgalmat egy adott virtuális gépre NGS társítása közvetlenül az adott virtuális gép által. További információkért lásd: [hálózati forgalmat hálózati biztonsági csoportokkal](../../virtual-network/virtual-networks-nsg.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Windows virtuális gép létrehozása](/virtual-machines/windows/quick-create-portal.md)
 - [Linux virtuális gép létrehozása](../../virtual-machines/linux/quick-create-portal.md)

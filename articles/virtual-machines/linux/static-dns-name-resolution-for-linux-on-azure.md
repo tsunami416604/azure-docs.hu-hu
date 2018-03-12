@@ -15,11 +15,11 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 02/16/2017
 ms.author: v-livech
-ms.openlocfilehash: fd85ab12a552f83a407dfeeca7ee455dcf731989
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: bb7234b6b046963a6b3a649cc521655b88cd9875
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="create-virtual-network-interface-cards-and-use-internal-dns-for-vm-name-resolution-on-azure"></a>Virtuális hálózati adapterek létrehozása és használata a belső DNS Azure VM-névfeloldás
 Ez a cikk bemutatja, hogyan állítsa be a statikus belső DNS-nevek Linux virtuális gépek virtuális hálózati kártyák (vNics) és a DNS-címke nevek használata az Azure CLI 2.0. Az [Azure CLI 1.0-s](static-dns-name-resolution-for-linux-on-azure-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) verziójával is elvégezheti ezeket a lépéseket. Statikus DNS-nevek használhatók állandó infrastruktúra-szolgáltatásokat, mint egy Jenkins build, ez a dokumentum használt, vagy egy Git kiszolgálóhoz.
@@ -30,7 +30,7 @@ Követelmények:
 * [SSH nyilvános- és titkoskulcs-fájlok](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 ## <a name="quick-commands"></a>Gyors parancsok
-Ha gyorsan feladatnak van szüksége, az alábbi szakasz részletesen a szükséges parancsokat. Részletes információkat és a környezetben az egyes lépések a dokumentum többi részén található [itt indítása](#detailed-walkthrough). A következő lépésekkel lesz szüksége a legújabb [Azure CLI 2.0](/cli/azure/install-az-cli2) telepítve, és bejelentkezett az Azure-fiók használatával [az bejelentkezési](/cli/azure/#az_login).
+Ha gyorsan feladatnak van szüksége, az alábbi szakasz részletesen a szükséges parancsokat. Részletes információkat és a környezetben az egyes lépések a dokumentum többi részén található [itt indítása](#detailed-walkthrough). A következő lépésekkel lesz szüksége a legújabb [Azure CLI 2.0](/cli/azure/install-az-cli2) telepítve, és bejelentkezett az Azure-fiók használatával [az bejelentkezési](/cli/azure/reference-index#az_login).
 
 Előfeltételek: Erőforráscsoport, virtuális hálózati és alhálózati, hálózati biztonsági csoport SSH bejövő.
 
@@ -76,7 +76,7 @@ az group create --name myResourceGroup --location westus
 
 ## <a name="create-the-virtual-network"></a>A virtuális hálózat létrehozása
 
-A következő lépésre elindíthatja a virtuális gépeket a virtuális hálózat létrehozásához. A virtuális hálózat külön alhálózatokon üzemeltetni az Ez az útmutató tartalmazza. Egy Azure virtuális hálózatot további információkért lásd: [virtuális hálózat létrehozása az Azure parancssori felület használatával](../../virtual-network/virtual-networks-create-vnet-arm-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). 
+A következő lépésre elindíthatja a virtuális gépeket a virtuális hálózat létrehozásához. A virtuális hálózat külön alhálózatokon üzemeltetni az Ez az útmutató tartalmazza. Egy Azure virtuális hálózatot további információkért lásd: [hozzon létre egy virtuális hálózatot](../../virtual-network/manage-virtual-network.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#create-a-virtual-network). 
 
 A virtuális hálózat létrehozása [az hálózati vnet létrehozása](/cli/azure/network/vnet#az_network_vnet_create). Az alábbi példa létrehoz egy virtuális hálózatot nevű `myVnet` és nevű alhálózat `mySubnet`:
 

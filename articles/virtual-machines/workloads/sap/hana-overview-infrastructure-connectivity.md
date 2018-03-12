@@ -14,11 +14,11 @@ ms.workload: infrastructure
 ms.date: 10/31/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7a44fdbfb973d75c21aa87e9b9d0eea8fb2b3392
-ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
+ms.openlocfilehash: d94e491d12ac43a4d85a638c79bcd3b24a4bc0ef
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="sap-hana-large-instances-infrastructure-and-connectivity-on-azure"></a>SAP HANA (nagy példányok) infrastruktúra és az Azure-kapcsolat 
 
@@ -75,7 +75,7 @@ Igen most megismerhetők kicsit szorosabb HANA nagy példányok Azure virtuális
 >[!Note]
 >Az Azure VNet HANA nagy példány az Azure Resource Manager telepítési modell segítségével kell létrehozni. A régebbi Azure telepítési modell, a klasszikus üzembe helyezési modellel, gyakran nevezik HANA nagy példány megoldás nem támogatott.
 
-A virtuális hálózat az Azure-portálon, a PowerShell, a Azure-sablon alapján vagy az Azure CLI segítségével hozhatók létre (lásd: [hozzon létre egy virtuális hálózatot az Azure portál használatával](../../../virtual-network/virtual-networks-create-vnet-arm-pportal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)). A következő példában azt megismerhetők a VNet létrehozása az Azure portálon keresztül.
+A virtuális hálózat az Azure-portálon, a PowerShell, a Azure-sablon alapján vagy az Azure CLI segítségével hozhatók létre (lásd: [hozzon létre egy virtuális hálózatot az Azure portál használatával](../../../virtual-network/manage-virtual-network.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#create-a-virtual-network)). A következő példában azt megismerhetők a VNet létrehozása az Azure portálon keresztül.
 
 Ha megnézzük be egy Azure virtuális hálózatot az Azure portálon keresztül meghatározását, nézzük egyes definíciókat, és hogyan azok kapcsolódnak-e azt a listából a különböző IP-címtartományok. Azt is van szó, a **Címterület**, azt jelenti, hogy a címtér, hogy az Azure virtuális hálózatot használja. Ez a címtartomány egyben a tartománya, a virtuális hálózatot használ a BGP útválasztási propagálása. Ez **Címterület** itt találja:
 
@@ -250,7 +250,7 @@ Használja az Azure-portálon, PowerShell, vagy amikor hozzáadása több IP-cí
 
 Ebben az esetben az új IP-címtartományt, az új tartomány hozzáadása egy új összevont tartományt generálása helyett a VNet-terület a javaslat. Mindkét esetben meg kell küldenie ez a változás, amely engedélyezi a csatlakozást kívül, hogy új IP-címtartomány a HANA nagy példány egységek az ügyfél a Microsoft. Az új VNet címtartományt hozzáadott beolvasni az Azure támogatási kérelmet nyithatja meg. Megerősítés megjelenése után hajtsa végre a következő lépéseket.
 
-Azure-portálról egy további alhálózati létrehozásához lásd: a cikk [hozzon létre egy virtuális hálózatot az Azure portál használatával](../../../virtual-network/virtual-networks-create-vnet-arm-pportal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json), és a PowerShell létrehozásához lásd: [PowerShell virtuális hálózat létrehozása](../../../virtual-network/virtual-networks-create-vnet-arm-ps.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Azure-portálról egy további alhálózati létrehozásához lásd: a cikk [hozzon létre egy virtuális hálózatot az Azure portál használatával](../../../virtual-network/manage-virtual-network.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#create-a-virtual-network), és a PowerShell létrehozásához lásd: [PowerShell virtuális hálózat létrehozása](../../../virtual-network/manage-virtual-network.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#create-a-virtual-network).
 
 ## <a name="adding-vnets"></a>Vnetek hozzáadása
 
@@ -277,15 +277,13 @@ Miután az új kapcsolat jön létre, és az SAP HANA Azure szolgáltatásfelüg
 
 Távolítsa el a virtuális hálózat alhálózatot, az Azure portálon, a PowerShell vagy a CLI használható. Abban az esetben, ha az Azure VNet IP cím tartomány vagy az Azure VNet címterület volt egy összevont tartományt, nincs nem a Microsoft az Ön szolgáltatáshoz hajtsa végre. Azzal a különbséggel, hogy a virtuális hálózat továbbra is propagálása a BGP-útvonal címterület, amely tartalmazza a törölt alhálózat. Ha több IP-címtartományokat, amelyek a törölt alhálózat egy lett hozzárendelve a Azure VNet IP cím tartomány vagy az Azure VNet címterület meghatározott, törölje, amely a VNet cím elfogyott, és ezt követően tájékoztatja az Azure Service Management azokat a tartományokat, hogy az Azure (nagy példányok) SAP HANA kommunikálni eltávolítani az SAP HANA.
 
-Amíg nem létezik, de egyedi, dedikált Azure.com webhelyre útmutatást alhálózatok eltávolítása, alhálózatok eltávolításával hozzáadásukkal folyamatának fordítva. A cikkben [hozzon létre egy virtuális hálózatot az Azure portál használatával](../../../virtual-network/virtual-networks-create-vnet-arm-pportal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) alhálózatok létrehozásáról további információt.
+Egy alhálózat törléséhez, lásd: [alhálózat törlése](../../../virtual-network/virtual-network-manage-subnet.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#delete-a-subnet) alhálózatok létrehozásáról további információt.
 
 ## <a name="deleting-a-vnet"></a>A virtuális hálózat törlése
 
-Használja az Azure portálon, a PowerShell vagy a CLI-t, ha egy virtuális hálózat törlése. Az Azure szolgáltatásfelügyelet SAP HANA eltávolítja a meglévő engedélyek meg az SAP HANA (nagy példány) az Azure ExpressRoute körön, és távolítsa el az Azure VNet IP cím tartomány vagy az Azure VNet címterület a kommunikáció HANA nagy osztályt.
+A virtuális hálózat törlése, lásd: [egy virtuális hálózat törlése](../../../virtual-network/manage-virtual-network.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#delete-a-virtual-network). Az Azure szolgáltatásfelügyelet SAP HANA eltávolítja a meglévő engedélyek meg az SAP HANA (nagy példány) az Azure ExpressRoute körön, és távolítsa el az Azure VNet IP cím tartomány vagy az Azure VNet címterület a kommunikáció HANA nagy osztályt.
 
 A virtuális hálózat az Eltávolítás után, nyissa meg az Azure támogatási kérelmet arra, hogy az IP cím terület tranzakciónaplók távolíthatók el.
-
-Nincs még nem adott, amíg dedikált Azure.com webhelyre útmutatás eltávolítása a Vneteket, a Vnetek eltávolításával a való hozzáadásukkal, amely a fent ismertetett folyamatának fordítva. Tekintse meg a cikkek [hozzon létre egy virtuális hálózatot az Azure portál használatával](../../../virtual-network/virtual-networks-create-vnet-arm-pportal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) és [PowerShell virtuális hálózat létrehozása](../../../virtual-network/virtual-networks-create-vnet-arm-ps.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) Vnetek létrehozásáról további információt.
 
 Annak érdekében, hogy minden eltávolítják, törli a következő elemeket:
 

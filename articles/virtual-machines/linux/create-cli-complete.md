@@ -15,16 +15,16 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/14/2017
 ms.author: iainfou
-ms.openlocfilehash: 2fceb97e836db1c1f7a15d375a534a9187d3f2d2
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: f41bfec3c9f950893b69c90a86c2e4a254b72a8b
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="create-a-complete-linux-virtual-machine-with-the-azure-cli"></a>Teljes Linux virtuális gép létrehozása az Azure parancssori felülettel
 Gyorsan létrehozhat egy virtuális gép (VM) az Azure-ban, egy Azure CLI parancs, amely az alapértelmezett értékeket használja, minden szükséges támogató erőforrások létrehozására használhatja. Erőforrások, például a virtuális hálózat, a nyilvános IP-cím és a hálózati biztonsági csoportszabályok automatikusan jönnek létre. Nagyobb mértékben vezérelheti a az éles környezetben használja, előfordulhat, hogy ezeket az erőforrásokat előre létrehozni, majd a virtuális gépek hozzá őket. Ez a cikk végigvezeti egy virtuális Gépet, és mindegyik egyenként támogató erőforrás létrehozása.
 
-Győződjön meg arról, hogy telepítette-e a legújabb [Azure CLI 2.0](/cli/azure/install-az-cli2) jelentkezett be az Azure-fiókot és [az bejelentkezési](/cli/azure/#az_login).
+Győződjön meg arról, hogy telepítette-e a legújabb [Azure CLI 2.0](/cli/azure/install-az-cli2) jelentkezett be az Azure-fiókot és [az bejelentkezési](/cli/azure/reference-index#az_login).
 
 A következő példákban cserélje le a saját értékeit példa paraméterek nevei. Példa paraméter nevek a következők *myResourceGroup*, *myVnet*, és *myVM*.
 
@@ -35,7 +35,7 @@ Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe h
 az group create --name myResourceGroup --location eastus
 ```
 
-Alapértelmezés szerint az Azure parancssori felület parancsait eredménye a JSON-ban (JavaScript Object Notation). Ha módosítani szeretné az alapértelmezett való küldéséhez lista vagy táblázat, például használja [konfigurálása az – output](/cli/azure/#az_configure). Azt is megteheti `--output` kimeneti formátumban módosítsa valamelyik parancsának egy ideig. A következő példa bemutatja a JSON-kimenetét a `az group create` parancs:
+Alapértelmezés szerint az Azure parancssori felület parancsait eredménye a JSON-ban (JavaScript Object Notation). Ha módosítani szeretné az alapértelmezett való küldéséhez lista vagy táblázat, például használja [konfigurálása az – output](/cli/azure/reference-index#az_configure). Azt is megteheti `--output` kimeneti formátumban módosítsa valamelyik parancsának egy ideig. A következő példa bemutatja a JSON-kimenetét a `az group create` parancs:
 
 ```json                       
 {
@@ -49,7 +49,7 @@ Alapértelmezés szerint az Azure parancssori felület parancsait eredménye a J
 }
 ```
 
-## <a name="create-a-virtual-network-and-subnet"></a>Hozzon létre egy virtuális hálózat és alhálózat
+## <a name="create-a-virtual-network-and-subnet"></a>Virtuális hálózat és alhálózat létrehozása
 Tovább létre virtuális hálózatot az Azure és az alhálózatot, amelyhez a virtuális gépeket hozhat létre. Használjon [az hálózati vnet létrehozása](/cli/azure/network/vnet#az_network_vnet_create) nevű virtuális hálózat létrehozása *myVnet* rendelkező a *192.168.0.0/16* címelőtagot. Nevű alhálózat is hozzáadhat *mySubnet* a címelőtagot rendelkező *192.168.1.0/24*:
 
 ```azurecli
@@ -444,7 +444,7 @@ Frissítési tartományok adja meg a virtuális gépek és a mögöttes fizikai 
 
 Amikor a rendelkezésre állási csoportba helyezi őket Azure automatikusan elosztása virtuális gépek a hiba, és a frissítési tartományok. További információkért lásd: [virtuális gépek rendelkezésre állásának kezelése](manage-availability.md).
 
-Hozzon létre egy rendelkezésre állási készletét, a virtuális Gépet a [az virtuális gép rendelkezésre állási-csoport létrehozása](/cli/azure/vm/availability-set#az_vm_availability_set_create). Az alábbi példakód létrehozza a rendelkezésre állási készlet elnevezett *myAvailabilitySet*:
+Hozzon létre egy rendelkezésre állási készletét, a virtuális Gépet a [az virtuális gép rendelkezésre állási-csoport létrehozása](/cli/azure/vm/availability-set#az_vm_availability_set_create). Az alábbi példa egy *myAvailabilitySet* nevű rendelkezésre állási csoportot hoz létre:
 
 ```azurecli
 az vm availability-set create \
@@ -481,7 +481,7 @@ A hálózati erőforrásokhoz az internetről elérhető virtuális gépek támo
 
 Adjon meg egy SSH-kulcsot a hitelesítéshez használandó. Ha még nem rendelkezik az SSH nyilvános kulcsból álló kulcspárt, akkor [hozza létre a címzetteket](mac-create-ssh-keys.md) , vagy használja a `--generate-ssh-keys` paraméter kell létrehoznia őket. Ha már rendelkezik egy kulcspár, ezt a paramétert a meglévő kulcsokat használ-e `~/.ssh`.
 
-A virtuális gép létrehozása az erőforrások és információk együtt hozásával a [az virtuális gép létrehozása](/cli/azure/vm#az_vm_create) parancsot. Az alábbi példakód létrehozza a virtuális gépek nevű *myVM*:
+A virtuális gép létrehozása az erőforrások és információk együtt hozásával a [az virtuális gép létrehozása](/cli/azure/vm#az_vm_create) parancsot. Az alábbi példában egy *myVM* nevű virtuális gépet hozunk létre:
 
 ```azurecli
 az vm create \

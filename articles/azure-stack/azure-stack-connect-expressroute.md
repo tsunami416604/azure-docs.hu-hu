@@ -15,11 +15,11 @@ ms.topic: get-started-article
 ms.date: 9/25/2017
 ms.author: brenduns
 ms.reviewer: 
-ms.openlocfilehash: 8ec733c01b19f01951d0b53265daaef32c3afe73
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 544fc1bcc9212fd38938d58447f5050df2a08796
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="connect-azure-stack-to-azure-using-expressroute"></a>Csatlakozás Azure verem Azure ExpressRoute segítségével
 
@@ -273,7 +273,7 @@ A példa Azure hálózati infrastruktúra úgy van beállítva, az alábbi módo
 3. Hozzon létre a küllős VNet és alhálózat használatával a 10.100.0.0/16-címtartományt.
 
 
-Az Azure-ban virtuális hálózatok létrehozásával kapcsolatos további információkért lásd: [hozzon létre egy virtuális hálózatot, több alhálózattal](../virtual-network/virtual-networks-create-vnet-arm-pportal.md).
+Az Azure-ban virtuális hálózatok létrehozásával kapcsolatos további információkért lásd: [hozzon létre egy virtuális hálózatot](../virtual-network/manage-virtual-network.md#create-a-virtual-network).
 
 ### <a name="configure-an-expressroute-circuit"></a>Egy ExpressRoute-kapcsolatcsoportot konfigurálása
 

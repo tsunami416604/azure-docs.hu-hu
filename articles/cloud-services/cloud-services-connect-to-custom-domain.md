@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: adegeo
-ms.openlocfilehash: e2aadf6a103e92a4fbb11223a449280a36dea6b4
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: 4a50ae5e19ff9bf79b7f5361e5a274a2aba350f5
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="connecting-azure-cloud-services-roles-to-a-custom-ad-domain-controller-hosted-in-azure"></a>Azure Cloud Services szerepkörök csatlakozik egy egyéni Azure-ban üzemeltetett AD tartományvezérlő
 Első üzembe helyezünk egy virtuális hálózatot (VNet) az Azure-ban. Majd felveszi azt a virtuális hálózat egy Active Directory-tartományvezérlőhöz (az Azure virtuális gép üzemeltetett). Ezután azt fogja meglévő felhőszolgáltatás szerepköreit hozzá a korábban létrehozott virtuális hálózatot, majd csatlakoztassa őket a tartományvezérlő.
@@ -33,7 +33,7 @@ Kövesse a cikk részletesen ismerteti, és ha esetleges problémákat tapasztal
 A hálózat, a felhőalapú szolgáltatás által hivatkozott kell egy **klasszikus virtuális hálózatot**.
 
 ## <a name="create-a-virtual-network"></a>Virtuális hálózat létrehozása
-Létrehozhat egy virtuális hálózatot az Azure-ban az Azure portálon vagy a PowerShell. Ebben az oktatóanyagban a PowerShell használjuk. Hozzon létre egy virtuális hálózatot az Azure portál használatával, lásd: [virtuális hálózat létrehozása](../virtual-network/virtual-networks-create-vnet-arm-pportal.md).
+Létrehozhat egy virtuális hálózatot az Azure-ban az Azure portálon vagy a PowerShell. Ebben az oktatóanyagban a PowerShell szolgál. Hozzon létre egy virtuális hálózatot az Azure portál használatával, lásd: [hozzon létre egy virtuális hálózatot](../virtual-network/quick-create-portal.md). A cikk ismerteti a virtuális hálózat (erőforrás-kezelő) létrehozása, de létre kell hoznia egy virtuális hálózat (klasszikus) felhőszolgáltatásai számára. Ehhez a portálon, válassza ki a **hozzon létre egy erőforrást**, típus *virtuális hálózati* a a **keresési** mezőbe, majd nyomja le az **Enter**. A keresési eredmények között a **mindent**, jelölje be **virtuális hálózati**. A **telepítési modell kiválasztása**, jelölje be **klasszikus**, majd jelölje be **létrehozása**. Kövesse a cikkben található lépéseket.
 
 ```powershell
 #Create Virtual Network

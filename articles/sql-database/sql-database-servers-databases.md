@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: On Demand
 ms.date: 02/28/2018
 ms.author: carlrab
-ms.openlocfilehash: 973f713028217efa667ec111fdfcac750c243f11
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 0e2dabc5cc0b816f2623fce5f8fb09a7004039c7
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="create-and-manage-azure-sql-database-servers-and-databases"></a>Azure SQL Database-kiszolgálók és adatbázisok létrehozása és kezelése
 
@@ -132,7 +132,7 @@ Létrehozása és kezelése az Azure SQL server, adatbázisok és tűzfalak az A
 
 ## <a name="manage-azure-sql-servers-databases-and-firewalls-using-the-azure-cli"></a>Kezelheti az Azure SQL kiszolgáló, adatbázisok, és tűzfal az Azure parancssori felület használatával
 
-Létrehozásához és kezeléséhez az Azure SQL server, adatbázisok és a tűzfalon a [Azure CLI](/cli/azure/overview), használja a következő [Azure CLI SQL Database](/cli/azure/sql/db) parancsok. A [Cloud Shell-lel](/azure/cloud-shell/overview) futtassa a parancssori felületet a böngészőben, vagy [telepítse](/cli/azure/install-azure-cli) macOS, Linux, illetve Windows rendszeren. Létrehozása és a rugalmas készletek kezelése [rugalmas készletek](sql-database-elastic-pool.md).
+Létrehozásához és kezeléséhez az Azure SQL server, adatbázisok és a tűzfalon a [Azure CLI](/cli/azure), használja a következő [Azure CLI SQL Database](/cli/azure/sql/db) parancsok. A [Cloud Shell-lel](/azure/cloud-shell/overview) futtassa a parancssori felületet a böngészőben, vagy [telepítse](/cli/azure/install-azure-cli) macOS, Linux, illetve Windows rendszeren. Létrehozása és a rugalmas készletek kezelése [rugalmas készletek](sql-database-elastic-pool.md).
 
 | Parancsmag | Leírás |
 | --- | --- |

@@ -16,16 +16,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2017
 ms.author: jgao
-ms.openlocfilehash: 491dbd157255dc4fa7f77178f9486959ba4847a1
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: a6103c85747b2e76db7253de59b20f8b5d5a9433
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="manage-hadoop-clusters-in-hdinsight-using-the-azure-cli"></a>Az Azure parancssori felület használatával hdinsight Hadoop-fürtök kezelése
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
 
-Ismerje meg, hogyan használható a [Azure parancssori felület](../cli-install-nodejs.md) Azure hdinsight Hadoop-fürtök kezeléséhez. Az Azure parancssori felület implementálva van a Node.js-ben. Használható bármilyen platformon, amely támogatja a Node.js-t, beleértve a Windows, Mac és Linux platformokat. Jelenleg nem támogatja a HDInsight [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/overview).
+Ismerje meg, hogyan használható a [Azure parancssori felület](../cli-install-nodejs.md) Azure hdinsight Hadoop-fürtök kezeléséhez. Az Azure parancssori felület implementálva van a Node.js-ben. Használható bármilyen platformon, amely támogatja a Node.js-t, beleértve a Windows, Mac és Linux platformokat. Jelenleg nem támogatja a HDInsight [Azure CLI 2.0](https://docs.microsoft.com/cli/azure).
 
 Ez a cikk ismerteti, hogy csak az Azure parancssori felület használata a HDInsight. Általános útmutató az Azure parancssori felület használatával, lásd: [telepítése és konfigurálása az Azure parancssori felület][azure-command-line-tools].
 

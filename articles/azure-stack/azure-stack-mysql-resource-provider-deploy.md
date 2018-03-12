@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/06/2018
+ms.date: 03/07/2018
 ms.author: mabrigg
 ms.reviewer: jeffgo
-ms.openlocfilehash: 067e478548ba840ece14737cdf3e6d5d4da28be0
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 15a1648193555ecc5847170ab65f48dfa4f6417b
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="use-mysql-databases-on-microsoft-azure-stack"></a>A Microsoft Azure verem használható MySQL-adatbázisok
 
@@ -162,7 +162,7 @@ $PfxPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
  ```
 
 
-### <a name="deploysqlproviderps1-parameters"></a>DeploySqlProvider.ps1 parameters
+### <a name="deploymysqlproviderps1-parameters"></a>DeployMySqlProvider.ps1 paraméterek
 Ezeket a paramétereket is megadhat a parancssorban. Ha nem, vagy bármely paraméter érvényesítése sikertelen, a szükséges paraméterek megadását kéri.
 
 | Paraméter neve | Leírás | Megjegyzés vagy az alapértelmezett érték |
@@ -266,11 +266,15 @@ A jelszó módosításához első módosítás MySQL server-példányon. Válass
 ![Frissítés a rendszergazdai jelszó](./media/azure-stack-mysql-rp-deploy/mysql-update-password.png)
 
 ## <a name="update-the-mysql-resource-provider-adapter-multi-node-only-builds-1710-and-later"></a>A MySQL erőforrás-szolgáltató adapter (több csomópontos csak, buildek 1710 és újabb verziók) frissítése
-Új SQL-erőforrás szolgáltató adapter szabaddá tehető Azure verem buildek frissítésekor. A meglévő adapter továbbra is működik, de javasolt frissítésére a legújabb buildjével a lehető leghamarabb. 
+Új SQL-erőforrás szolgáltató adapter előfordulhat, hogy mikorra várható, Azure verem buildek frissítésekor. A meglévő adapter továbbra is működik, de javasolt frissítésére a legújabb buildjével a lehető leghamarabb. 
 
-A frissítési folyamat hasonlít a telepítési folyamat ismertetett. A legújabb erőforrás-szolgáltató kódot hoz létre egy új virtuális Gépet. Ezt követően telepít át a beállításokat ezen új példányának, beleértve az adatbázis és a helyet adó kiszolgáló adatait. A szükséges DNS-rekordot is telepíti át.
+Az erőforrás-szolgáltató használata frissíteni a *UpdateMySQLProvider.ps1* parancsfájl. A folyamat hasonlít a folyamat egy erőforrás-szolgáltató telepítéséhez használt leírtak szerint a [telepíteni az erőforrás-szolgáltató](#deploy-the-resource-provider) című szakaszát. A parancsfájl az erőforrás-szolgáltató a letöltés részét képezi.
 
-A UpdateMySQLProvider.ps1 parancsfájl használata a korábban leírt ugyanazokkal az argumentumokkal. Adja meg itt tanúsítványt is.
+A *UpdateMySQLProvider.ps1* parancsfájlt hoz létre egy új virtuális Gépet a legújabb erőforrás-szolgáltató kódot, és a beállítások áttelepítése a régi virtuális gépről az új virtuális Gépet. Telepítse át a beállításokat adatbázis és a helyet adó kiszolgáló adatait, és a szükséges DNS-rekordja.
+
+A parancsfájl a DeployMySqlProvider.ps1 parancsfájl ugyanazokkal az argumentumokkal ismertetett használatát igényli. Adja meg itt tanúsítványt is. 
+
+Az alábbiakban látható egy példa a *UpdateMySQLProvider.ps1* parancsfájlt, amely a PowerShell-parancssorból futtatható. Győződjön meg arról, a fiók- és igény szerint módosíthatja: 
 
 > [!NOTE]
 > A frissítési folyamat csak az integrált rendszerekre vonatkozik.

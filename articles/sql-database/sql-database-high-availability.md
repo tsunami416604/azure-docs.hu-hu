@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.date: 03/07/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: db7af48b4aaefefbea704cb87c2b7f3808fc5330
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: a7771eebc8359a5de1c79328014f5ecc06c9673b
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="high-availability-and-azure-sql-database"></a>Magas rendelkezésre állású és az Azure SQL-adatbázis
 Az Azure SQL adatbázis Platformszolgáltatási ajánlat kezdete óta a Microsoft tett a felhőalkalmazások nyújtotta az ügyfelek, amelyek a szolgáltatás részét magas rendelkezésre állású (HA), és az ügyfelek nem szükséges üzemeltetéséhez, különleges logika hozzáadása, és magas rendelkezésre ÁLLÁSÚ körül döntéseket. A Microsoft fenntartja a magas rendelkezésre ÁLLÁSÚ rendszerkonfiguráció és a művelet, teljes hozzáféréssel, szolgáltatásiszint-szerződésben garantált kínál az ügyfeleknek. A magas rendelkezésre ÁLLÁSÚ SLA régióban SQL-adatbázis vonatkozik, és nem nyújt védelmet a teljes tartomány hibák, amely kívül a Microsoft irányítása alá tartozó tényezők miatt esetekben (például természeti katasztrófa, war, tevékenységéért terrorakció is történhet, lázadások, kormányzati műveletet, vagy egy hálózati vagy az eszköz hiba a Microsoft adatközpontokban, beleértve az ügyfél helyeken vagy a felhasználói helyek és a Microsoft-adatközpont közti külső).
@@ -50,7 +50,7 @@ Főbb előnyei:
 
 ## <a name="data-redundancy"></a>Adatredundancia
 
-A magas rendelkezésre állású megoldás az SQL-adatbázis alapuló [AlwaysON](/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server) technológia az SQL-kiszolgálóról, és működnek az LS és RS adatbázis is minimális eltérésekkel lehetővé teszi. Az LS, mindig ON szolgál az RS adatmegőrzési beállítás (alacsony RTO) rendelkezésre állási használja azt. 
+A magas rendelkezésre állású megoldás az SQL-adatbázis alapul [Alwayson](/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server) technológia az SQL-kiszolgálóról, és működnek az LS és RS adatbázis is minimális eltérésekkel lehetővé teszi. Az LS, mindig ON szolgál az RS adatmegőrzési beállítás (alacsony RTO) rendelkezésre állási használja azt. 
 
 ## <a name="local-storage-configuration"></a>Helyi tárolás beállítása
 

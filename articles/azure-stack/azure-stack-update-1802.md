@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/05/2018
+ms.date: 03/08/2018
 ms.author: brenduns
 ms.reviewer: justini
-ms.openlocfilehash: b5e52e30b99e1d59c2f8bde17b31b0f1cb3d6d70
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 247f13717971d3660b3ec0ee94821bd593c5fed0
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="azure-stack-1802-update"></a>Az Azure verem 1802 frissítés
 
@@ -37,10 +37,6 @@ Az Azure verem 1802 frissítés buildszáma **20180302.1**.
 ## <a name="before-you-begin"></a>Előkészületek    
 > [!IMPORTANT]    
 > Ne próbálja meg a frissítés telepítése során a virtuális gépek létrehozásához. További információ a frissítések kezelése: [kezelheti a frissítéseket az Azure-verem áttekintés](/azure-stack-updates#plan-for-updates).
-
-> [!IMPORTANT]    
-> Amikor [SQL](/azure-stack-sql-resource-provider-deploy) vagy [MySQL](/azure-stack-mysql-resource-provider-deploy) erőforrás-szolgáltató, akkor verzióját kell futtatnia 1712 1802 Azure verem verzió telepítése előtt. A szolgáltatók a következők 1711 vagy korábbi verzióját, és telepítette 1802 Azure verem verzióját, ha már nem frissítheti ezeket erőforrás-szolgáltató egy újabb kiadásra.
-
 
 
 ### <a name="prerequisites"></a>Előfeltételek

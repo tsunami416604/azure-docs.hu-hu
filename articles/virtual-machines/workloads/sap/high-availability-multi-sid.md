@@ -17,11 +17,11 @@ ms.workload: infrastructure-services
 ms.date: 12/09/2016
 ms.author: goraco
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1b28870938667076280d6e4b08ee84870296d133
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: a8c49f06719b68c2b3ca6aee4dfb0b90bdbf0afc
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="create-an-sap-netweaver-multi-sid-configuration"></a>Egy SAP NetWeaver multi-SID-konfiguráció létrehozása
 
@@ -425,7 +425,7 @@ ms.lasthandoff: 11/02/2017
 [virtual-network-deploy-multinic-arm-ps]:../windows/multiple-nics.md
 [virtual-network-deploy-multinic-arm-template]:../../../virtual-network/virtual-network-deploy-multinic-arm-template.md
 [virtual-networks-configure-vnet-to-vnet-connection]:../../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md
-[virtual-networks-create-vnet-arm-pportal]:../../../virtual-network/virtual-networks-create-vnet-arm-pportal.md
+[virtual-networks-create-vnet-arm-pportal]:../../../virtual-network/manage-virtual-network.md#create-a-virtual-network
 [virtual-networks-manage-dns-in-vnet]:../../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md
 [virtual-networks-multiple-nics]:../../../virtual-network/virtual-network-deploy-multinic-classic-ps.md
 [virtual-networks-nsg]:../../../virtual-network/virtual-networks-nsg.md
@@ -488,7 +488,7 @@ Készítse elő az infrastruktúrát, egy további SAP ASC/SCS példányát tele
 
 | Paraméter neve | Érték |
 | --- | --- |
-| SAP ASC/SCS SID |PR1-lb-ASC |
+| SAP ASC/SCS SID |pr1-lb-ascs |
 | SAP DBMS belső terheléselosztó | PR5 |
 | SAP virtuális állomás neve | pr5-sap-cl |
 | SAP ASC/SCS virtuális gazdagép IP-címe (további Azure load balancer IP-címe) | 10.0.0.50 |
@@ -504,8 +504,8 @@ SAP ASC/SCS további példányokat is telepíthet a létező WSFC-fürtön két 
 
 | Virtuálisgép-szerepkör | Virtuális gép állomásneve | Statikus IP-cím |
 | --- | --- | --- |
-| 1. fürtcsomópont ASC/SCS-példány |PR1-ASC-0 |10.0.0.10 |
-| 2. fürtcsomópont ASC/SCS-példány |PR1-ASC-1 |10.0.0.9 |
+| 1. fürtcsomópont ASC/SCS-példány |pr1-ascs-0 |10.0.0.10 |
+| 2. fürtcsomópont ASC/SCS-példány |pr1-ascs-1 |10.0.0.9 |
 
 ### <a name="create-a-virtual-host-name-for-the-clustered-sap-ascsscs-instance-on-the-dns-server"></a>Hozzon létre egy virtuális nevet az SAP ASC/SCS fürtözött példány a DNS-kiszolgálón
 
@@ -665,7 +665,7 @@ A magas szintű eljárás a következőképpen történik:
 
 10. [Az SAP ASC/SCS-példány feladatátvevő és SIOS replikációs teszteléséhez][sap-ha-guide-10].
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Hálózatkezelés korlátok: az Azure Resource Manager][networking-limits-azure-resource-manager]
 - [Több virtuális IP-címek az Azure terheléselosztó][load-balancer-multivip-overview]

@@ -15,31 +15,31 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/16/2016
 ms.author: cephalin
-ms.openlocfilehash: 55c023e8f6b41c17e85ba441f862a7682b2f2599
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 18f6ef3997ba60f588040f641ebe9e9aca8d091a
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Átmeneti környezet az Azure App Service beállítása
 <a name="Overview"></a>
 
-A webalkalmazás, webes alkalmazás a Linux, mobil háttér és API-alkalmazás telepítésekor [App Service](http://go.microsoft.com/fwlink/?LinkId=529714), telepíthet egy külön üzembe helyezési pont helyett az alapértelmezett éles tárolóhelyre futtatáskor a **szabványos** vagy **prémium** App Service-csomag mód. Üzembe helyezési saját állomásnevek ténylegesen élő alkalmazások. Alkalmazás tartalmát és konfigurációk elemek lecserélhető között két üzembe helyezési, beleértve az éles webalkalmazásra. A telepített környezet tárolóhelye az alkalmazás telepítése az alábbi előnyökkel jár:
+A webalkalmazás, webes alkalmazás a Linux, mobil háttér és API-alkalmazás telepítésekor [App Service](http://go.microsoft.com/fwlink/?LinkId=529714), telepíthet egy külön üzembe helyezési pont helyett az alapértelmezett éles tárolóhelyre futtatáskor a **szabványos** vagy **prémium** kiválasztása az App Service-csomaghoz. Üzembe helyezési saját állomásnevek ténylegesen élő alkalmazások. Alkalmazás tartalmát és konfigurációk elemek lecserélhető között két üzembe helyezési, beleértve az éles webalkalmazásra. A telepített környezet tárolóhelye az alkalmazás telepítése az alábbi előnyökkel jár:
 
 * Mielőtt az éles webalkalmazásra a csere, ellenőrizheti egy átmeneti üzembe helyezési tárhelyet az alkalmazások változásairól.
 * Központilag telepíthetők az alkalmazások a tárhely először és csere az éles környezetben biztosítja, hogy a összes példányát a tárolóhely Mielőtt éles környezetben felcserélés folyamatban vannak tárolóhelyspecifikus. Ez megszünteti állásidő, az alkalmazás központi telepítésekor. A forgalom átirányítása zökkenőmentes-kérelmek nem dobja swap műveletek miatt. A teljes munkafolyamat konfigurálásával automatizálható [automatikus felcserélés](#Auto-Swap) , ha nincs szükség a előtti swap érvényesítése.
 * Egy felcserélés után a tárolóhely korábban előkészített alkalmazással most már rendelkezik az előző éles alkalmazások. Ha a módosításokat, azokat az éles tárolóhelyre felcserélve nem a várt módon, közvetlenül a "utolsó ismert helyes"nevű hely eléréséhez a azonos virtuális végezhet vissza.
 
-Minden App Service-csomag mód támogatja az üzembe helyezési pontok különböző számú. Tárolóhely száma megállapítása: az alkalmazás mód támogatja, lásd: [App Service szolgáltatás díjszabása](https://azure.microsoft.com/pricing/details/app-service/).
+Minden kiválasztása az App Service-csomaghoz támogatja az üzembe helyezési oszlopaik száma különböző. Tárolóhely száma megállapítása: az alkalmazás támogatja, lásd: [App Service szolgáltatás díjszabása](https://azure.microsoft.com/pricing/details/app-service/).
 
-* Ha az alkalmazás több tárolóhelye van, a mód nem módosítható.
+* Ha az alkalmazás több tárolóhelye van, a réteg nem módosítható.
 * Skálázás nem érhető el a nem végleges pont felcserélése.
-* Csatolt erőforrás-kezelés nem végleges pont felcserélése nem támogatott. Az a [Azure Portal](http://go.microsoft.com/fwlink/?LinkId=529715) csak, úgy kerülheti el a lehetséges hatásairól az éles tárhely ideiglenesen a nem éles tárolóhelyre áthelyezése egy másik App Service csomag módot. Vegye figyelembe, hogy az nem éles tárhely kell ismét közös azonos módot az éles tárolóhelyre ahhoz, hogy a két felcserélése is.
+* Csatolt erőforrás-kezelés nem végleges pont felcserélése nem támogatott. Az a [Azure Portal](http://go.microsoft.com/fwlink/?LinkId=529715) csak, úgy kerülheti el a lehetséges hatásairól az éles tárhely ideiglenesen áthelyezése másik App Service-csomag réteghez a nem éles tárolóhelyre. Vegye figyelembe, hogy az nem éles tárhely kell ismét közös ugyanabban a rétegben az éles tárolóhelyre ahhoz, hogy a két felcserélése is.
 
 <a name="Add"></a>
 
 ## <a name="add-a-deployment-slot"></a>Adja hozzá egy üzembe helyezési tárhelyet
-Futnia kell az alkalmazást a **szabványos** vagy **prémium** ahhoz, hogy engedélyezheti a több üzembe helyezési mód.
+Futnia kell az alkalmazást a **szabványos** vagy **prémium** réteg ahhoz, hogy több üzembe helyezési engedélyezheti.
 
 1. Az a [Azure Portal](https://portal.azure.com/), nyissa meg az alkalmazás [erőforráspanelen](../azure-resource-manager/resource-group-portal.md#manage-resources).
 2. Válassza ki a **üzembe helyezési** lehetőséget, majd kattintson az **tárhely felvétele**.
@@ -47,7 +47,7 @@ Futnia kell az alkalmazást a **szabványos** vagy **prémium** ahhoz, hogy enge
     ![Adja hozzá egy új üzembe helyezési tárhelyet][QGAddNewDeploymentSlot]
    
    > [!NOTE]
-   > Ha az alkalmazás már nem része a **szabványos** vagy **prémium** mód, kapni fog egy üzenetet, a támogatott módok előkészített közzététel engedélyezéséhez. Ezen a ponton rendelkezik választhatja **frissítése** , és keresse meg a **méretezési** fülre az alkalmazás a folytatás előtt.
+   > Ha az alkalmazás már nem része a **szabványos** vagy **prémium** réteg, kapni fog egy üzenetet, a támogatott rétegek előkészített közzététel engedélyezéséhez. Ezen a ponton rendelkezik választhatja **frissítése** , és keresse meg a **méretezési** fülre az alkalmazás a folytatás előtt.
    > 
    > 
 3. Az a **tárhely hozzáadása** panelen nevezze el a tárhely, és válassza ki, hogy egy másik meglévő üzembe helyezési pont az alkalmazáskonfiguráció klónozását. Kattintson a pipa jelre a folytatáshoz.

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: jdial
-ms.openlocfilehash: e8a6722c74f044b5310ce0fcb937002f5a1e8fa2
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 6c3fb08a43bce6193aa0094992616a290129bac8
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="create-change-or-delete-a-network-interface"></a>Létrehozása, módosítása vagy a hálózati illesztő törlése
 
@@ -39,7 +39,7 @@ Ez a cikk bármely szakaszának lépéseit befejezése előtt hajtsa végre a k�
 
 ## <a name="create-a-network-interface"></a>A hálózati illesztő létrehozása
 
-Az Azure portál használatával virtuális gép létrehozásakor a portált egy adott hálózati csatoló alapértelmezett beállításokat hoz létre. A hálózati kapcsolati beállítások ahelyett, hogy meg kellene megadnia, ha egyéni beállításokkal hozza létre a hálózati adaptert, és a hálózati adapter csatlakoztatása egy virtuális géphez, a virtuális gép (a PowerShell vagy az Azure parancssori felület használatával) létrehozásakor. Hozzon létre egy adott hálózati csatoló is, és adja hozzá egy meglévő virtuális gép (a PowerShell vagy az Azure parancssori felület használatával). További információt a meglévő hálózati illesztő a virtuális gép létrehozásához, vagy adja hozzá, vagy távolítsa el a hálózati adapterek a meglévő virtuális gépek, olvassa el a [hozzáadása vagy eltávolítása a hálózati adapterek](virtual-network-network-interface-vm.md) cikk. Mielőtt létrehozna egy adott hálózati csatoló, rendelkeznie kell egy meglévő [virtuális hálózati](virtual-networks-create-vnet-arm-pportal.md) azonos helyen és előfizetést hoz létre a hálózati illesztő.
+Az Azure portál használatával virtuális gép létrehozásakor a portált egy adott hálózati csatoló alapértelmezett beállításokat hoz létre. A hálózati kapcsolati beállítások ahelyett, hogy meg kellene megadnia, ha egyéni beállításokkal hozza létre a hálózati adaptert, és a hálózati adapter csatlakoztatása egy virtuális géphez, a virtuális gép (a PowerShell vagy az Azure parancssori felület használatával) létrehozásakor. Hozzon létre egy adott hálózati csatoló is, és adja hozzá egy meglévő virtuális gép (a PowerShell vagy az Azure parancssori felület használatával). További információt a meglévő hálózati illesztő a virtuális gép létrehozásához, vagy adja hozzá, vagy távolítsa el a hálózati adapterek a meglévő virtuális gépek, olvassa el a [hozzáadása vagy eltávolítása a hálózati adapterek](virtual-network-network-interface-vm.md) cikk. Mielőtt létrehozna egy adott hálózati csatoló, rendelkeznie kell egy meglévő [virtuális hálózati](manage-virtual-network.md#create-a-virtual-network) azonos helyen és előfizetést hoz létre a hálózati illesztő.
 
 1. Jelentkezzen be a [Azure-portálon](https://portal.azure.com) egy olyan fiókkal, amely a hálózat közreműködő szerepkört az előfizetés (minimum) hozzárendelt engedélyeit. Olvassa el a [Azure szerepköralapú hozzáférés-vezérlés beépített szerepkörök](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) cikk tudhat meg többet a szerepköröket és engedélyeket hozzárendelése a fiókokhoz.
 2. A mezőbe a szöveget tartalmazó *keresési erőforrások* az Azure portál felső részén írja be a *hálózati illesztőt*. Ha **hálózati illesztőt** jelenik meg a keresési eredmények között kattintson rá.
