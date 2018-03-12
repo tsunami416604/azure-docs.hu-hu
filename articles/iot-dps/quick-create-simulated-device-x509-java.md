@@ -12,11 +12,11 @@ documentationcenter:
 manager: timlt
 ms.devlang: java
 ms.custom: mvc
-ms.openlocfilehash: d966a1ce5f30531668c05e68bfe709057c6dee35
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 7e4ad361df8a37d4a82c1bc50c6fb134a1ad5159
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="create-and-provision-a-simulated-x509-device-using-java-device-sdk-for-iot-hub-device-provisioning-service"></a>Szimulált X.509-eszköz létrehozása és kiépítése az IoT Hub Device Provisioning Service-hez készült Java eszközoldali SDK-val
 [!INCLUDE [iot-dps-selector-quick-create-simulated-device-x509](../../includes/iot-dps-selector-quick-create-simulated-device-x509.md)]
@@ -76,6 +76,9 @@ A folytatás előtt végezze el az [IoT Hub Device Provisioning Service beállí
 
         1. A **Do you want to input Verification Code** (Szeretne megadni ellenőrző kódot?) kérdésnél adja meg az _Y_ értéket, és hagyja megnyitva a programot, hogy a rövid útmutató későbbi szakaszában is használhassa. Jegyezze fel az _Ügyféltanúsítvány_, az _Ügyféltanúsítvány titkos kulcsa_, az _Aláíró tanúsítványa_ és a _Főtanúsítvány_ értékét.
 
+        > [!NOTE]
+        > A fenti `Root Cert` csak olyan tanúsítványokra vonatkozik, amelyek a konzol kimeneteként jöttek létre, és nem használható további ügyféltanúsítványok aláírására. Ha nagyobb teszttanúsítvány-készletre van szüksége, tekintse meg a [hitelesítésszolgáltatói tanúsítványok kezelésére szolgáló mintát](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md).
+        >
 
 ## <a name="create-a-device-enrollment-entry"></a>Eszközregisztrációs bejegyzés létrehozása
 
@@ -189,7 +192,7 @@ A folytatás előtt végezze el az [IoT Hub Device Provisioning Service beállí
             String rootPem = "<Your Root Certificate here>";
                 
             signerCertificates.add(intermediatePem);
-            signerCertificates.add(root);
+            signerCertificates.add(rootPem);
             ```
     
             - A tanúsítványok belefoglalásához használja a következő formátumot:

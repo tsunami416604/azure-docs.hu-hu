@@ -6,25 +6,25 @@ documentationcenter:
 author: mattbriggs
 manager: femila
 editor: 
-ms.assetid: 2A397C83-1A6C-4290-B0EF-FDC34EE290CD
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/28/2017
-ms.author: mabrigg;AlfredoPizzirani
-ms.openlocfilehash: 451e8c604e48d9cfc42284f2413fa5ed4fea03bc
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.date: 02/22/2018
+ms.author: mabrigg
+ms.reviewer: alfredop
+ms.openlocfilehash: 29d53f63bf3d551823ca27df04f0e385a92cdec7
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="report-azure-stack-usage-data-to-azure"></a>Jelentés Azure verem használati adatait az Azure-bA 
 
 Használati adatokat, más néven az adatokkal, adja meg annak a használt erőforrások. 
 
-Használati adatok a fogyasztás alapján számlázási modellt használó Azure verem többcsomópontos rendszerekhez az Azure-bA jelentse a céllal számlázási.  Azure verem operátorok kell konfigurálja az Azure-verem jelentés használati adatokat az Azure-bA.
+Fogyasztás alapján számlázási modellt használó Azure verem többcsomópontos rendszerekhez jelenteniük kell használati adatokat az Azure-bA számlázási célra.  Azure verem operátorok kell konfigurálja az Azure-verem jelentés használati adatokat az Azure-bA.
 
 > [!NOTE]
 > Használati adatok jelentése az Azure-verem többcsomópontos-felhasználók számára a fizetési,-akkor-használható modellben licenc szükséges. Nem kötelező számára, akik a kapacitás modellben licenc (lásd a [lap megvásárlása](https://azure.microsoft.com/overview/azure-stack/how-to-buy/ to learn more about pricing in Azure Stack)). A felhasználók Azure verem szoftverfejlesztői készlet Azure verem operátorok használati adatait, és a szolgáltatás tesztelése. Felhasználók nem megterheljük keletkeznek bármely használatra. 
@@ -103,8 +103,9 @@ Felhasználók a használat részleteiről fájlban Azure verem használati adat
 
 Mindig legyen egy delaybetween a használati adatokat az Azure-verem használati API-k és a használati adatokat az Azure Account Center által jelentett által jelentett... Ez a késés az használati adatokat az Azure kereskedelmi Azure veremből feltöltéséhez szükséges idő. Ez a késés miatt, amely hamarosan előtt éjfél használati előfordulhat, hogy jelenik meg az Azure-ban a következő napon. Ha használja a [Azure verem használati API-k](azure-stack-provider-resource-api.md), és hasonlítsa össze a használathoz az Azure számlázási portálon jelentett eredményt úgy is, hogy eltérés.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Szolgáltatói használati API](azure-stack-provider-resource-api.md)  
 * [Bérlői használati API](azure-stack-tenant-resource-usage-api.md)
 * [Használat – gyakori kérdések](azure-stack-usage-related-faq.md)
+* [Felhasználás kezelésére és a Felhőbeli szolgáltató számlázási](azure-stack-add-manage-billing-as-a-csp.md)

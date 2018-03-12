@@ -6,13 +6,13 @@ author: mmacy
 manager: timlt
 ms.service: container-instances
 ms.topic: overview
-ms.date: 01/11/2018
+ms.date: 02/27/2018
 ms.author: marsma
-ms.openlocfilehash: baf93d4a2a4ba1e05bbf558d0c056fa3aa833fef
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.openlocfilehash: 008b07402cb0b937174488982cac64811baa5d5d
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="quotas-and-region-availability-for-azure-container-instances"></a>Azure Container Instances-kvóták és -régiók rendelkezésre állása
 
@@ -28,10 +28,14 @@ Az Azure Container Instances a következő régiókban érhető el a megadott pr
 
 | Hely | Operációs rendszer | CPU | Memória (GB) |
 | -------- | -- | :---: | :-----------: |
-| Nyugat-Európa, USA nyugati régiója, USA keleti régiója, Délkelet-Ázsia | Linux | 4 | 14 |
-| Nyugat-Európa, USA nyugati régiója, USA keleti régiója, Délkelet-Ázsia  | Windows | 4 | 14 |
+| Nyugat-Európa, USA nyugati régiója, USA keleti régiója | Linux | 4 | 14 |
+| Délkelet-Ázsia  | Linux | 1 | 1.5 |
+| Nyugat-Európa, USA nyugati régiója, USA keleti régiója | Windows | 4 | 14 |
+| Délkelet-Ázsia  | Windows | 2 | 3.5 |
 
 Az ezen erőforráskorlátokon belül létrehozott tárolópéldányok az üzembe helyezés régiójában állnak rendelkezésre. Amikor egy régió nagy terhelés alatt áll, hibát észlelhet a példányok üzembe helyezésekor. Az ilyen üzembe helyezési hibák csillapítása érdekében próbálja meg alacsonyabb processzor- és memóriabeállításokkal üzembe helyezni a példányokat, vagy próbálja meg később az üzembe helyezést.
+
+A további szükséges régiókról vagy processzorra vagy memóriára vonatkozó magasabb korlátozásokról az [aka.ms/aci/feedback](https://aka.ms/aci/feedback) oldalon tájékoztathatja az érintett csapatot.
 
 A tárolópéldány üzembe helyezésének hibaelhárításáról további információt [az Azure Container Instances üzembe helyezési problémáinak elhárítását](container-instances-troubleshooting.md) ismertető cikkben talál.
 

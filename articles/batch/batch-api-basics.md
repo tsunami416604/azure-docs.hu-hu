@@ -12,14 +12,14 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-compute
-ms.date: 11/16/2017
+ms.date: 02/28/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3c8bbb06fd511321a67e01772caeaa316ddb6e2a
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: c53007530fe80f03cefbf138193cfad4b0e8292a
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>Nagy léptékű párhuzamos számítási megoldások fejlesztése a Batch segítségével
 
@@ -171,13 +171,9 @@ Az alacsony prioritású és dedikált számítási csomópontok díjszabását 
 
 ### <a name="size-of-the-compute-nodes"></a>A számítási csomópontok mérete
 
-A **Cloud Services-konfigurációt** használó számítási csomópontok méretét a [Sizes for Cloud Services](../cloud-services/cloud-services-sizes-specs.md) (A Cloud Servicesben érvényes méretek) című cikk tartalmazza. A Batch az `ExtraSmall`, `STANDARD_A1_V2` és `STANDARD_A2_V2` kivételével az összes Cloud Services-méretet támogatja.
+Azure Batch-készlet létrehozásakor az Azure-ban elérhető szinte összes virtuálisgép-család és -méret közül választhat. Az Azure számos különböző virtuálisgép-méretet nyújt a különböző számítási feladatokhoz, beleértve a speciális [HPC-](../virtual-machines/linux/sizes-hpc.md) vagy [GPU-kompatibilis](../virtual-machines/linux/sizes-gpu.md) virtuálisgép-méreteket. 
 
-A **virtuálisgép-konfigurációt** használó számítási csomópontok méretét a [Sizes for virtual machines in Azure](../virtual-machines/linux/sizes.md) (Virtuális gépek mérete az Azure-ban, Linux) és a [Sizes for virtual machines in Azure](../virtual-machines/windows/sizes.md) (Virtuális gépek mérete az Azure-ban, Windows) című cikk tartalmazza. A Batch a `STANDARD_A0`, illetve a Premium Storage típusú méretek (`STANDARD_GS`, `STANDARD_DS` és `STANDARD_DSV2` sorozat) kivételével az összes Azure virtuálisgép-méretet támogatja.
-
-A számítási csomópont méretének kiválasztásakor vegye figyelembe a csomóponton futtatni kívánt alkalmazások jellemzőit és követelményeit. Az olyan szempontok, mint hogy az alkalmazás többszálú-e vagy mennyi memóriát fogyaszt, segíthetnek meghatározni a legmegfelelőbb és legköltséghatékonyabb csomópontméretet. A csomópont méretének kiválasztásakor általában az feltételezhető, hogy egyszerre egy tevékenység fog futni a csomóponton. Azonban lehetséges egyszerre több tevékenységet (és így több alkalmazáspéldányt) [párhuzamosan is futtatni](batch-parallel-node-tasks.md) egy számítási csomóponton a feladat végrehajtása során. Ebben az esetben a párhuzamos tevékenység-végrehajtás megnövekedett igényének kielégítése érdekében általában nagyobb csomópontméretet választanak. A további információkat a [Tevékenységütemezési szabályzat](#task-scheduling-policy) tartalmazza.
-
-A készlethez csak azonos méretű csomópontok tartozhatnak. Ha eltérő rendszerigényű és/vagy terhelési szintű alkalmazásokat szándékozik futtatni, javasoljuk, hogy használjon különálló készleteket.
+További információ: [Számítási csomópontok virtuálisgép-méretének kiválasztása Azure Batch-készletben](batch-pool-vm-sizes.md).
 
 ### <a name="scaling-policy"></a>Skálázási szabályzat
 

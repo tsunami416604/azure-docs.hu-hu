@@ -10,11 +10,11 @@ ms.topic: tutorial
 ms.date: 02/20/2018
 ms.author: tamram
 ms.custom: mvc
-ms.openlocfilehash: 7b7625b3250d7e5b4cdb4090f34072eb58dda07c
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 5b1c443cae8481d98c32a3f4d9e3899621d1dd89
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="make-your-application-data-highly-available-with-azure-storage"></a>Az alkalmazásadatok magas rendelkezésre állásának biztosítása az Azure Storage használatával
 
@@ -69,7 +69,7 @@ Kövesse az alábbi lépéseket egy írásvédett georedundáns tárfiók létre
    | ------------ | ------------------ | ------------------------------------------------- |
    | **Name (Név)** | mystorageaccount | A tárfiók egyedi neve |
    | **Üzemi modell** | Resource Manager  | A Resource Manager a legújabb funkciókat kínálja.|
-   | **Fióktípus** | Általános célú | A fiókok típusaival kapcsolatos információkért lásd [a tárfiókok típusait](../common/storage-introduction.md#types-of-storage-accounts) |
+   | **Fióktípus** | StorageV2 | A fiókok típusaival kapcsolatos információkért lásd [a tárfiókok típusait](../common/storage-introduction.md#types-of-storage-accounts) |
    | **Teljesítmény** | Standard | A példaforgatókönyvhöz a standard teljesítmény elegendő. |
    | **Replikáció**| Írásvédett georedundáns tárolás (RA-GRS) | Ez szükséges a minta működéséhez. |
    |**Biztonságos átvitelre van szükség** | Letiltva| A biztonságos átvitel nem szükséges ehhez a forgatókönyvhöz. |
@@ -77,7 +77,7 @@ Kövesse az alábbi lépéseket egy írásvédett georedundáns tárfiók létre
    |**ResourceGroup** | myResourceGroup |Az érvényes erőforráscsoport-nevekkel kapcsolatban lásd az [elnevezési szabályokat és korlátozásokat](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) ismertető cikket. |
    |**Hely** | USA keleti régiója | Válassza ki a helyet. |
 
-![tárfiók létrehozása](media/storage-create-geo-redundant-storage/figure1.png)
+![tárfiók létrehozása](media/storage-create-geo-redundant-storage/createragrsstracct.png)
 
 ## <a name="download-the-sample"></a>A minta letöltése
 

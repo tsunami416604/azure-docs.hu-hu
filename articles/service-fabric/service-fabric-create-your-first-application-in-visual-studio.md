@@ -14,119 +14,115 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/19/2018
 ms.author: ryanwi
-ms.openlocfilehash: 2ecb8f8068043936d00f2c9752666490137414e3
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 43f77a1a2e1bbe28bb646aa23c28c253c20e8dda
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/02/2018
 ---
-# <a name="create-your-first-c-service-fabric-stateful-reliable-services-application"></a>Az első Service Fabric Stateful Reliable Services-alkalmazás létrehozása C#-környezettel
+# <a name="create-your-first-c-service-fabric-stateful-reliable-services-application"></a>Az első Service Fabric állapotalapú Reliable Services-alkalmazás létrehozása C#-környezettel
 
-Megtudhatja, hogyan helyezheti üzembe mindössze néhány perc alatt első .NET-es Service Fabric-alkalmazását Windows rendszeren. Ha elkészült, rendelkezni fog egy Reliable Services-alkalmazással futó helyi fürttel.
+Megtudhatja, hogyan helyezheti üzembe mindössze néhány perc alatt első .NET-es Azure Service Fabric-alkalmazását Windows rendszeren. Ha elkészült, rendelkezni fog egy Reliable Services-alkalmazással futó helyi fürttel.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Mielőtt elkezdené, győződjön meg arról, hogy [beállította a fejlesztőkörnyezetet](service-fabric-get-started.md). Ebbe beletartozik a Service Fabric SDK és a Visual Studio 2017 vagy 2015 telepítése is.
+Mielőtt elkezdené, győződjön meg arról, hogy [beállította a fejlesztőkörnyezetet](service-fabric-get-started.md). Ebbe a folyamatba beletartozik a Service Fabric SDK és a Visual Studio 2017 vagy 2015 telepítése is.
 
 ## <a name="create-the-application"></a>Az alkalmazás létrehozása
 
-Indítsa el a Visual Studiót **rendszergazdaként**.
+1. Indítsa el a Visual Studiót rendszergazdaként.
 
-Projekt létrehozása `CTRL`+`SHIFT`+`N` használatával
+2. Hozzon létre egy projektet a Ctrl+Shift+N billentyűkombinációval.
 
-Az **Új projekt** párbeszédpanelen válassza a **Felhő > Service Fabric-alkalmazás** elemet.
+3. Az **Új projekt** párbeszédpanelen válassza a **Felhő** > **Service Fabric-alkalmazás** elemet.
 
-Adja a **MyApplication** nevet az alkalmazásnak, majd kattintson az **OK** gombra.
+4. Adja a **MyApplication** nevet az alkalmazásnak. Ezután kattintson az **OK** gombra.
 
-   
-![A Visual Studio Új projekt párbeszédpanelje][1]
+   ![A Visual Studio Új projekt párbeszédpanelje][1]
 
-A következő párbeszédpanelen bármilyen típusú Service Fabric-alkalmazást létrehozhat. Ebben a rövid útmutatóban válassza az **Állapotalapú szolgáltatás** lehetőséget.
+5. A következő párbeszédpanelen bármilyen típusú Service Fabric-alkalmazást létrehozhat. Ebben a rövid útmutatóban válassza az **Állapotalapú szolgáltatás** lehetőséget.
 
-Adja a **MyStatefulService** nevet a szolgáltatásnak, majd kattintson az **OK** gombra.
+6. Adja a szolgáltatásnak a **MyStatefulService** nevet. Ezután kattintson az **OK** gombra.
 
-![A Visual Studio Új szolgáltatás párbeszédpanelje][2]
+    ![A Visual Studio Új szolgáltatás párbeszédpanelje][2]
 
+    A Visual Studio létrehozza az alkalmazás és az állapotalapú szolgáltatás projektjét, amelyeket megjelenít a Megoldáskezelőben.
 
-A Visual Studio létrehozza az alkalmazási projektet és az állapotalapú szolgáltatási projektet, és megjeleníti őket a Megoldáskezelőben.
+    ![A Megoldáskezelő az alkalmazás és az állapotalapú szolgáltatás létrehozását követően][3]
 
-![A Megoldáskezelő folytatja az alkalmazás létrehozását állapotalapú szolgáltatással][3]
+    Az alkalmazásprojekt (**MyApplication**) nem tartalmaz semmilyen kódot. Helyette számos szolgáltatási projektre hivatkozik. Ezenfelül három más típusú tartalom is megtalálható benne:
 
-Az alkalmazásprojekt (**MyApplication**) nem tartalmaz közvetlenül semmilyen kódot. Helyette számos szolgáltatási projektre hivatkozik. Ezenfelül három egyéb típusú tartalmat is tartalmaz:
+    * **Profilok közzététele**  
+    Más környezetekben való üzembe helyezésre szolgáló profilok.
 
-* **Profilok közzététele**  
-Más környezetekben való üzembe helyezésre szolgáló profilok.
+    * **Szkriptek**  
+    Az alkalmazás üzembe helyezéséhez vagy frissítéséhez szükséges PowerShell-szkriptek.
 
-* **Szkriptek**  
-Az alkalmazás üzembe helyezéséhez/frissítéséhez szükséges PowerShell-szkript.
-
-* **Alkalmazásdefiníció**  
-Tartalmazza az *ApplicationPackageRoot* területen található ApplicationManifest.xml fájlt, amely leírja az alkalmazás összeállítását. A társított alkalmazásparaméter-fájlok az *ApplicationParameters* területen találhatók, és a környezetspecifikus paraméterek megadására használhatók. A Visual Studio kiválaszt alkalmazásparaméter-fájlt, amelyet egy adott környezetben való üzembe helyezéskor adott meg a kapcsolódó közzétételi profilban.
+    * **Alkalmazásdefiníció**  
+Tartalmazza az *ApplicationPackageRoot* területen található ApplicationManifest.xml fájlt, amely az alkalmazás összeállítását ismerteti. A társított alkalmazásparaméter-fájlok az *ApplicationParameters* területen találhatók, és a környezetspecifikus paraméterek megadására használhatók. A Visual Studio kiválasztja azt az alkalmazásparaméter-fájlt, amelyet a kapcsolódó közzétételi profilban adott meg.
     
 A szolgáltatási projekt tartalmának áttekintéséhez lásd: [Bevezetés a Reliable Services használatába](service-fabric-reliable-services-quick-start.md).
 
 ## <a name="deploy-and-debug-the-application"></a>Az alkalmazás üzembe helyezése és hibakeresése
 
-Most, hogy már van egy alkalmazása, futtassa.
+Most, hogy már van egy alkalmazása, az alábbi lépésekkel helyezheti üzembe, futtathatja, és végezhet rajta hibakeresést.
 
-Nyomja le az `F5` billentyűt a Visual Studióban, hogy üzembe helyezze az alkalmazást a hibakereséshez.
+1. Nyomja le az F5 billentyűt a Visual Studióban, hogy üzembe helyezze az alkalmazást a hibakereséshez.
 
->[!NOTE]
->Az alkalmazás első helyi történő üzembe helyezésekor a Visual Studio létrehoz egy helyi hibakeresési fürtöt. Ez eltarthat egy ideig. A fürt létrehozási állapota a Visual Studio kimeneti ablakában jelenik meg.
+    >[!NOTE]
+    >Az alkalmazás első helyi történő üzembe helyezésekor a Visual Studio létrehoz egy helyi hibakeresési fürtöt. Ez eltarthat egy ideig. A fürt létrehozási állapota a Visual Studio kimeneti ablakában jelenik meg.
 
-Amikor a fürt létrejött, értesítést kap a helyi fürt SDK-hoz tartozó rendszertálca-kezelő alkalmazásától.
+    Amikor a fürt létrejött, értesítést kap a helyi fürt SDK-hoz tartozó rendszertálca-kezelő alkalmazásától.
+    
+    ![A helyifürt-rendszertálca értesítése][4]
+
+    Az alkalmazás elindítása után a Visual Studio automatikusan megjeleníti a Diagnosztikai eseménynaplót, ahol az Ön szolgáltatásainak nyomkövetési kimenetei tekinthetők meg.
+    
+    ![Diagnosztikai eseménynapló][5]
+
+    >[!NOTE]
+    >Az eseményeknek automatikusan el kell kezdeniük a nyomkövetést a Diagnosztikai eseménynaplóban. Ha azonban manuálisan kell konfigurálnia a nyomkövetést, először nyissa meg a **MyStatefulService** projektben található `ServiceEventSource.cs` fájlt. Másolja a `ServiceEventSource` osztály tetején található `EventSource` attribútum értékét. Az alábbi példában az eseményforrás neve `"MyCompany-MyApplication-MyStatefulService"`, ami az Ön esetében eltérő lehet.
+>
+    >![A szolgáltatáshoz tartozó eseményforrás nevének helye][service-event-source-name]
+
+
+2. Ezután nyissa meg az **ETW-szolgáltatók** párbeszédpanelét. Kattintson a **diagnosztikai események** lapján található fogaskerék ikonra. Illessze be a kimásolt eseményforrásnevet az **ETW-szolgáltatók** párbeszédpaneljének beviteli mezőjébe. Ezután válassza az **Alkalmaz** gombot. Ezzel automatikusan elindítja az események követését.
+
+    ![A diagnosztikai eseményforrás nevének beállítása][setting-event-source-name]
+
+    A diagnosztikai események ablakában meg kell jelennie az eseményeknek.
+
+    Az állapotalapú szolgáltatás sablonjánál a **MyStatefulService.cs** `RunAsync` metódusához tartozó számláló növekvő értékei jelennek meg.
+
+3. Bontsa ki az egyik eseményt, hogy további részleteket tekinthessen meg, beleértve azt a csomópontot is, amelyben a kód fut. Ebben az esetben ez a **\_Node\_0,** de az Ön számítógépén ez eltérő lehet.
    
-![A helyifürt-rendszertálca értesítése][4]
+    ![A diagnosztikai eseménynapló részletei][6]
 
-Az alkalmazás elindításakor a Visual Studio automatikusan megjeleníti a **Diagnosztikai eseménynaplót**, ahol az Ön szolgáltatásainak nyomkövetési kimenetei tekinthetők meg.
-   
-![Diagnosztikai eseménynapló][5]
+4. A helyi fürt egyetlen számítógépen lévő öt csomópontot tartalmaz. Éles környezetben minden egyes csomópont más fizikai vagy virtuális gépen üzemel. Állítsa le a helyi fürt egyik csomópontját, hogy szimulálja egy gép elvesztését, és kipróbálhassa a Visual Studio hibakereső funkcióját.
 
->[!NOTE]
->Az eseményeknek automatikusan el kell kezdeniük a nyomkövetést a Diagnosztikai eseménynaplóban, ha azonban manuálisan kell azt konfigurálnia, először nyissa meg a **MyStatefulService** projektben található `ServiceEventSource.cs` fájlt. Másolja a `ServiceEventSource` osztály tetején található `EventSource` attribútum értékét. Az alábbi példában az eseményforrás neve `"MyCompany-MyApplication-MyStatefulService"`, ami az Ön esetében eltérő lehet.
->
->![A szolgáltatáshoz tartozó eseményforrás nevének helye][service-event-source-name]
->
->Ezután kattintson a Diagnosztikai eseménynapló lapon található fogaskerék ikonra az **ETW Providers** (ETW-szolgáltatók) párbeszédpanel megnyitásához. Illessze be az imént másolt eseményforrásnevet az **ETW Providers** (ETW-szolgáltatók) beviteli mezőjébe. Ezután kattintson az **Apply** (Alkalmaz) gombra. Ezzel automatikusan elindítja az események követését.
->
->![A diagnosztikai eseményforrás nevének beállítása][setting-event-source-name]
->
->A Diagnostics Events (Diagnosztikai események) ablakban látnia kell a megjelenő eseményeket.
+5. A **Megoldáskezelő** ablakában nyissa meg a **MyStatefulService.cs** fájlt. 
 
-A használt állapotalapúszolgáltatás-sablon esetében a **MyStatefulService.cs** `RunAsync` metódusához tartozó számláló növekvő értékei jelennek meg.
+6. Keresse meg a `RunAsync` metódust, és az első sorában állítson be egy töréspontot.
 
-Bontsa ki az egyik eseményt, hogy további részleteket tekinthessen meg, beleértve azt a csomópontot is, amelyben a kód fut. Ebben az esetben ez a \_Node\_0, de az Ön számítógépén ez eltérő lehet.
-   
-![A diagnosztikai eseménynapló részletei][6]
+    ![Töréspont az állapotalapú szolgáltatás RunAsync metódusában][7]
 
-A helyi fürt egyetlen gépen üzemeltetett öt csomópontot tartalmaz. Éles környezetben minden egyes csomópont más fizikai vagy virtuális gépen üzemel. Állítsuk le a helyi fürt egyik csomópontját, hogy szimuláljuk egy gép elvesztését, és kipróbáljuk a Visual Studio hibakereső funkcióját.
+7. A Service Fabric Explorer eszköz elindításához kattintson a jobb gombbal a **Local Cluster Manager** rendszertálca-alkalmazásra, és válassza a **Helyi fürt kezelése** lehetőséget.
 
-A **Megoldáskezelő** ablakában nyissa meg a **MyStatefulService.cs** fájlt. 
+    ![A Fabric Explorer elindítása a Local Cluster Managerből][systray-launch-sfx]
 
-Keresse meg a(z) `RunAsync` metódust, és az első sorában állítson be egy töréspontot.
+    A [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) vizuálisan is megjeleníti a fürtöket, beleértve a rajtuk üzembe helyezett alkalmazáskészletet és az őket felépítő fizikai csomópontokat.
 
-![Töréspont az állapotalapú szolgáltatás RunAsync metódusában][7]
+8. A bal oldali panelen bontsa ki a **Cluster** > **Nodes** (Fürt > Csomópontok) elemet, és keresse meg azt csomópont, amelyikben a kódja fut. Ezt követően kattintson az **Actions** > **Deactivate (Restart)** (Műveletek > Inaktiválás (Újraindítás)) elemre a számítógép újraindításának szimulálásához.
 
-A **Service Fabric Explorer** eszköz elindításához kattintson a jobb gombbal a **Local Cluster Manager** rendszertálca-alkalmazásra, és válassza a **Helyi fürt kezelése** lehetőséget.
+    ![Csomópont leállítása a Service Fabric Explorerben][sfx-stop-node]
 
-![A Manage Local Cluster alkalmazásból indítsa el a Service Fabric Explorert.][systray-launch-sfx]
+    Pillanatnyilag a töréspont megjelenését tekintheti meg a Visual Studióban, mivel az egyik csomóponton korábban végzett számítása zökkenőmentesen átadja a feladatokat egy másiknak.
 
-A [**Service Fabric Explorer**](service-fabric-visualizing-your-cluster.md) vizuálisan is megjeleníti a fürtöket, beleértve a rajtuk üzembe helyezett alkalmazáskészletet és az őket felépítő fizikai csomópontokat is.
+9. Ezután térjen vissza a Diagnosztikai eseménynaplóhoz, és vizsgálja meg az üzeneteket. A számláló értéke továbbra is növekszik, annak ellenére, hogy az események valójában egy másik csomópontról érkeznek.
 
-A bal oldali panelen bontsa ki a **Cluster > Nodes** (Fürt > Csomópontok) elemet, és keresse meg azt csomópont, amelyikben a kódja fut.
+    ![A diagnosztikai eseménynapló a feladatátvétel után][diagnostic-events-viewer-detail-post-failover]
 
-Kattintson az **Actions > Deactivate (Restart)** (Műveletek > Inaktiválás (Újraindítás)) elemre a számítógép-újraindítás szimulálásához.
-
-![Csomópont leállítása a Service Fabric Explorerben][sfx-stop-node]
-
-Pillanatnyilag a töréspont megjelenését tekintheti meg a Visual Studióban, mivel az egyik csomóponton korábban végzett számítása zökkenőmentesen átadja a feladatokat egy másiknak.
-
-
-Ezután térjen vissza a Diagnosztikai eseménynaplóhoz, és vizsgálja meg az üzeneteket. A számláló értéke továbbra is növekszik, annak ellenére, hogy az események valójában egy másik csomópontról érkeznek.
-
-![A diagnosztikai eseménynapló a feladatátvétel után][diagnostic-events-viewer-detail-post-failover]
-
-## <a name="cleaning-up-the-local-cluster-optional"></a>A helyi fürt törlése (nem kötelező)
+## <a name="clean-up-the-local-cluster-optional"></a>A helyi fürt törlése (nem kötelező)
 
 Ne feledje, hogy ez a helyi fürt valós. A hibakereső leállításával eltávolítja az adott alkalmazáspéldányt, és törli az alkalmazástípus regisztrációját. A fürt futtatása azonban tovább folytatódik a háttérben. Ha felkészült a helyi fürt leállítására, erre többféle lehetőség is rendelkezésre áll.
 
@@ -138,7 +134,7 @@ A fürt leállításához kattintson a jobb gombbal a **Local Cluster Manager** 
 
 A fürt eltávolításához kattintson a jobb gombbal a **Local Cluster Manager** rendszertálca-alkalmazásra, és válassza a **Helyi fürt eltávolítása** lehetőséget. 
 
-Ha ezt a lehetőséget választja, a Visual Studio az alkalmazás legközelebbi futtatásakor ismét üzembe helyezi a fürtöt. Akkor válassza ezt a beállítást, ha egy ideig nem kívánja használni a helyi fürtöt, vagy ha erőforrásokat kíván felszabadítani.
+Ha ezt a lehetőséget választja, a Visual Studio az alkalmazás legközelebbi futtatásakor ismét üzembe helyezi a fürtöt. Akkor válassza ezt a beállítást, ha egy ideig nem kívánja használni a helyi fürtöt, vagy ha erőforrásokat szeretne felszabadítani.
 
 ## <a name="next-steps"></a>További lépések
 További információk a [Reliable Services](service-fabric-reliable-services-introduction.md)-szolgáltatásokról.
@@ -155,6 +151,10 @@ További információk a [Reliable Services](service-fabric-reliable-services-in
 [systray-launch-sfx]: ./media/service-fabric-create-your-first-application-in-visual-studio/launch-sfx.png
 [diagnostic-events-viewer-detail-post-failover]: ./media/service-fabric-create-your-first-application-in-visual-studio/diagnostic-events-viewer-detail-post-failover.png
 [sfe-delete-application]: ./media/service-fabric-create-your-first-application-in-visual-studio/sfe-delete-application.png
+[switch-cluster-mode]: ./media/service-fabric-create-your-first-application-in-visual-studio/switch-cluster-mode.png
+[cluster-setup-success-1-node]: ./media/service-fabric-get-started-with-a-local-cluster/cluster-setup-success-1-node.png
+[service-event-source-name]: ./media/service-fabric-create-your-first-application-in-visual-studio/event-source-attribute-value.png
+[setting-event-source-name]: ./media/service-fabric-create-your-first-application-in-visual-studio/setting-event-source-name.png
 [switch-cluster-mode]: ./media/service-fabric-create-your-first-application-in-visual-studio/switch-cluster-mode.png
 [cluster-setup-success-1-node]: ./media/service-fabric-get-started-with-a-local-cluster/cluster-setup-success-1-node.png
 [service-event-source-name]: ./media/service-fabric-create-your-first-application-in-visual-studio/event-source-attribute-value.png

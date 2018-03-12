@@ -12,17 +12,22 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/07/2018
+ms.date: 03/09/2018
 ms.author: anwestg
-ms.openlocfilehash: b053d515949e71fcb5f1e520f6d3d5375cc27dcb
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 2d26aedf37727a4e3d687cdc6c748268d546f60f
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="add-an-app-service-resource-provider-to-azure-stack"></a>Az App Service erőforrás-szolgáltató hozzáadása Azure verem
 
 *A következőkre vonatkozik: Azure verem integrált rendszerek és az Azure verem szoftverfejlesztői készlet*
+
+> [!IMPORTANT]
+> A 1802 frissítés alkalmazásához a integrált Azure verem rendszerre, vagy telepítheti a legújabb Azure verem szoftverfejlesztői készlet Azure App Service üzembe helyezése előtt.
+>
+>
 
 Kezelőként Azure verem felhő biztosíthat a felhasználók a web- és API-alkalmazások létrehozásának képességét. Ehhez fel kell vennie a [App Service erőforrás-szolgáltató](azure-stack-app-service-overview.md) a Azure verem telepítéséhez ebben a cikkben leírtak szerint. Az App Service erőforrás-szolgáltató telepítése után a ajánlatok és tervek megadhat. Felhasználók majd kérhet le a szolgáltatást, és indítsa el az alkalmazások létrehozása.
 

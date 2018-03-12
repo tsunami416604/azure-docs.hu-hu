@@ -264,14 +264,24 @@
           items:
             - name: Áttekintés
               href: azure-stack-billing-and-chargeback.md
-            - name: Jelentéskészítés a használati adatokról
-              href: azure-stack-usage-reporting.md
-            - name: Szolgáltatói használati API
-              href: azure-stack-provider-resource-api.md
-            - name: Bérlői használati API
-              href: azure-stack-tenant-resource-usage-api.md
-            - name: Használat – gyakori kérdések
-              href: azure-stack-usage-related-faq.md
+            - name: 'Felhasználás kezelésére és a számlázási, egy CSP-hez'
+              href: azure-stack-add-manage-billing-as-a-csp.md
+            - name: A használati és elszámolási bérlők hozzáadása
+              href: azure-stack-csp-howto-register-tenants.md
+            - name: Bérlői regisztrációs kezelése
+              href: azure-stack-csp-ref-operations.md
+            - name: Használati és számlázási referencia
+              items:
+                - name: Jelentéskészítés a használati adatokról
+                  href: azure-stack-usage-reporting.md
+                - name: Jelentéskészítési infrastruktúra felhőszolgáltatóknál kihasználtsága
+                  href: azure-stack-csp-ref-infrastructure.md
+                - name: Szolgáltatói használati API
+                  href: azure-stack-provider-resource-api.md
+                - name: Bérlői használati API
+                  href: azure-stack-tenant-resource-usage-api.md
+                - name: Használat – gyakori kérdések
+                  href: azure-stack-usage-related-faq.md
         - name: Csatlakozás az Azure szolgáltatáshoz
           items:
             - name: Csatlakozás VPN használatával

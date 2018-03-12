@@ -12,17 +12,22 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/02/2018
+ms.date: 03/09/2018
 ms.author: anwestg
-ms.openlocfilehash: f400180bc71efc6766b73b098c1f82542eec86f7
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 3261a312cde9ebdf41f6dadb82c14d108715f8f7
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="before-you-get-started-with-app-service-on-azure-stack"></a>Az App Service Azure veremben megkezdése előtt
 
 *A következőkre vonatkozik: Azure verem integrált rendszerek és az Azure verem szoftverfejlesztői készlet*
+
+> [!IMPORTANT]
+> A 1802 frissítés alkalmazásához a integrált Azure verem rendszerre, vagy telepítheti a legújabb Azure verem szoftverfejlesztői készlet Azure App Service üzembe helyezése előtt.
+>
+>
 
 Azure App Service Azure veremben telepítése előtt el kell végeznie az ebben a cikkben szereplő előfeltételek.
 
@@ -40,11 +45,11 @@ Azure App Service Azure veremben telepítése előtt el kell végeznie az ebben 
    - Modulok
      - GraphAPI.psm1
 
-## <a name="prepare-for-high-availability"></a>Készítse elő a magas rendelkezésre állás
+## <a name="high-availability"></a>Magas rendelkezésre állás
 
-Az Azure App Service Azure veremben jelenleg nem magas rendelkezésre állású kínálnak, mert Azure verem munkaterheléseinek csak egy tartalék tartomány történő központi telepítését.
+A 1802 kiadás Azure-készlet már támogatja a tartalék tartományok, mert az Azure App Service Azure veremben új telepítések tartalék tartományokban sor kerül, és biztosítja a hibatűrést.  Az Azure App Service Azure veremben meglévő telepítéséhez, amelyek telepítve vannak-e a 1802 kiadása előtt frissíteni, a dokumentáció (azure-stack-app-service-fault-domain-update.md) egyensúlyba a központi telepítési módját.
 
-Azure App Service Azure veremben előkészítése magas rendelkezésre állású, telepítse a szükséges fájl server és SQL Server-példány egy magas rendelkezésre állású konfigurációban. Ha Azure verem támogatja több tartalék tartományok, útmutatást engedélyezése az Azure App Service Azure veremben magas rendelkezésre állású konfigurációban fog adni.
+Ezen kívül az Azure App Service Azure veremben a magas rendelkezésre állás érdekében telepíteni a szükséges fájl server és SQL Server-példány egy magas rendelkezésre állású konfigurációban. 
 
 ## <a name="get-certificates"></a>Tanúsítványok beszerzése
 
@@ -127,13 +132,17 @@ Az identitás tanúsítványának tartalmaznia kell a tulajdonosa megegyezik a k
 
 ## <a name="virtual-network"></a>Virtual Network
 
-Az Azure App Service Azure veremben lehetővé teszi az erőforrás-szolgáltató telepítését létrehozni meglévő virtuális hálózatban.  Ez lehetővé teszi, hogy a fájl vagy az SQL server Azure veremben Azure App Service által igényelt csatlakozni belső IP-címek használatát.  A virtuális hálózati Azure veremben Azure App Service telepítése előtt a következő címtartományt és alhálózatokat kell konfigurálni:
+Az Azure App Service Azure veremben lehetővé teszi az erőforrás-szolgáltató üzembe helyezés vagy meglévő virtuális hálózat vagy az App Service létrehoz egy, a telepítés részeként.  Meglévő virtuális hálózat használatával lehetővé teszi, hogy a fájl vagy az SQL server Azure veremben Azure App Service által igényelt csatlakozni belső IP-címek használatát.  A virtuális hálózati Azure veremben Azure App Service telepítése előtt a következő címtartományt és alhálózatokat kell konfigurálni:
 
 Virtuális hálózati - /16
 
 Alhálózatok
 
-ControllersSubnet /24 ManagementServersSubnet /24 FrontEndsSubnet /24 PublishersSubnet /24 WorkersSubnet /21
+* ControllersSubnet /24
+* ManagementServersSubnet /24
+* FrontEndsSubnet /24
+* PublishersSubnet /24
+* WorkersSubnet /21
 
 ## <a name="prepare-the-file-server"></a>A fájlkiszolgáló előkészítése
 
