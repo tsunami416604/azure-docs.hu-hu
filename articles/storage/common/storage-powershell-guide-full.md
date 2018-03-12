@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/02/2017
 ms.author: robinsh
-ms.openlocfilehash: f94febfa1610795cd46b4315bbbbe56aa2bca861
-ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
+ms.openlocfilehash: 7bd8d17d5a2c918f2bef770c224398e7332785f9
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="using-azure-powershell-with-azure-storage"></a>Using Azure PowerShell with Azure Storage (Az Azure PowerShell és az Azure Storage együttes használata)
 
@@ -136,8 +136,6 @@ A storage-fiók beállításainak módosításához használja [Set-AzureRmStora
 * A **SKU** a replikációs beállítás a tárfiók, például az LRS helyileg redundáns tárolás. Például előfordulhat, hogy módosítja a Standard\_LRS, Standard\_GRS vagy Standard\_RAGRS. Vegye figyelembe, hogy nem módosíthatja a Standard\_zrs-t vagy a prémium szintű\_LRS az egyéb termékváltozatok vagy más termékváltozatok módosítsa ezeket.
 
 * A **hozzáférési szint** Blob storage-fiókok. A hozzáférési réteg értéke **működés közbeni** vagy **lassú**, és lehetővé teszi, hogy a storage-fiók használatának igazodik a hozzáférési szint kiválasztásával a költségek minimalizálása érdekében. További információkért lásd: [közbeni, hűtsük le, és archiválja a tárolási rétegek](../blobs/storage-blob-storage-tiers.md).
-
-* A storage szolgáltatás oszloptitkosítási beállítás a blob storage és/vagy a file storage. Az SSE kapcsolatos további információkért lásd: [Storage szolgáltatás titkosítási](storage-service-encryption.md).
 
 * Engedélyezése csak a HTTPS-forgalmat. 
 

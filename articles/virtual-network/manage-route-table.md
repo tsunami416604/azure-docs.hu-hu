@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2018
 ms.author: jdial
-ms.openlocfilehash: f976832a857a35e9e0cea7a0eb731cb00492023f
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 7630fd82cf62f1fcb0df80cec5b5e0030da81a85
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="create-change-or-delete-a-route-table"></a>Létrehozása, módosítása vagy törlése egy útválasztási táblázatot
 
@@ -38,7 +38,7 @@ Ez a cikk bármely szakaszának lépéseit befejezése előtt hajtsa végre a k�
 
 Hány útvonal táblákat hozhat létre egy Azure-beli hely és az előfizetés korlátozva van. További részletek: [Az Azure korlátai](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
 
-1. Válassza ki a portál bal felső sarkában **+ új**.
+1. Válassza ki a portál bal felső sarkában **+ hozzon létre egy erőforrást**.
 2. Válassza ki **hálózati**, majd jelölje be **útvonaltábla**.
 3. Adja meg egy **neve** útvonaltábla, válassza ki a **előfizetés**, hozzon létre egy új **erőforráscsoport**, vagy válasszon ki egy meglévő erőforráscsoportot, válassza ki a **helye** , majd jelölje be **létrehozása**. A **tiltsa le a BGP útválasztási propagálás** beállítás megakadályozza, hogy a helyi útvonalak BGP keresztül egy Azure virtuális hálózatra. Ha a virtuális hálózat nincs csatlakoztatva egy Azure-hálózatot átjáró (VPN- vagy ExpressRoute), hagyja a beállítást *letiltott*. 
 

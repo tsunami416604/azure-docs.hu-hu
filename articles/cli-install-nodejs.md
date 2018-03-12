@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
 ms.author: rasquill
-ms.openlocfilehash: 67aa5bb122b277e998119506bb2a574d6b4fde5e
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: a1ca71a81f4fa6dd36b9ed3a2b16fcca0e29601c
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="install-the-azure-cli-10"></a>Az Azure parancssori felület 1.0-s telepítése
 > [!div class="op_single_selector"]
@@ -29,9 +29,9 @@ ms.lasthandoff: 12/21/2017
 
 > [!IMPORTANT]
 > Ez a témakör ismerteti, hogyan telepítheti az Azure CLI 1.0. A parancssori felület elavult, és csak a "klasszikus" erőforrások Azure Service Management (ASM) modell által támogatott használható.
-> Az Azure Resource Managerrel (ARM) történő telepítések esetén használjon [Azure CLI 2.0](/cli/azure/overview).
+> Az Azure Resource Manager üzembe helyezések, használja [Azure CLI 2.0](/cli/azure).
 
-Gyorsan telepíti az Azure parancssori felület (Azure CLI 1.0-s)-alapú parancsokat nyílt forráskódú használandó létrehozása és kezelése a Microsoft Azure erőforrásait. Az platformfüggetlen-eszközök telepítése a számítógépre több lehetőség közül választhat:
+Pillanatok alatt telepítheti az Azure parancssori felületét (Azure CLI 1.0), és így nyílt forráskódú, felületalapú parancsokkal hozhat létre és kezelhet erőforrásokat a Microsoft Azure-ban. Az platformfüggetlen-eszközök telepítése a számítógépre több lehetőség közül választhat:
 
 * **npm csomag** -npm (a Csomagkezelőt a JavaScript) futtassa a Linux-disztribúció vagy az operációs rendszer a legújabb Azure CLI 1.0 csomag telepítéséhez. Szükséges, node.js és npm a számítógépen.
 * **Telepítő** -könnyen Mac vagy Windows-telepítést telepítőjének letöltése.

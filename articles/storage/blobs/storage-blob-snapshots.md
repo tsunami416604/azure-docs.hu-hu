@@ -6,13 +6,13 @@ author: tamram
 manager: jeconnoc
 ms.service: storage
 ms.topic: article
-ms.date: 04/11/2017
+ms.date: 03/06/2018
 ms.author: tamram
-ms.openlocfilehash: cba28ada79ea806ead4ae9165abba2dc4e04f001
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 1a27dfd61850d9dfa1f232eacf7f09d66202cafe
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="create-a-blob-snapshot"></a>Blob-pillanatkép létrehozása
 
@@ -31,8 +31,6 @@ Amikor létrehoz egy blob pillanatképet, a blob tulajdonságai ugyanazokat az �
 Az alap blob társított bármely címbérleteket nem befolyásolják a pillanatkép. Nem olvasható be a pillanatkép bérleti idejét.
 
 A VHD-fájl az aktuális adatait és a Virtuálisgép-lemez állapota tárolására szolgál. Válassza le a lemezt a virtuális Gépen belül, vagy állítsa le a virtuális gép, és majd pillanatkép készítése a VHD-fájlt. A pillanatkép-fájlt később használhatja kérhető le a VHD-fájl ezen a ponton az időben, és hozza létre újra a virtuális Gépet.
-
-Storage Service Encryption (SSE) engedélyezve van a tárfiók a blob helyezkedik el, ha majd venni, hogy a blob meglévő pillanatképeket lesz titkosítva, aktívan.
 
 ## <a name="create-a-snapshot"></a>Pillanatkép létrehozása
 Az alábbi példakód bemutatja, hogyan hozzon létre egy pillanatképet a [Azure Storage ügyféloldali kódtára a .NET](https://www.nuget.org/packages/WindowsAzure.Storage/). Ebben a példában adja meg a pillanatkép metaadatokat létrehozásakor.

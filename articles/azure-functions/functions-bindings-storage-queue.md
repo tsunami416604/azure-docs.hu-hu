@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 10/23/2017
 ms.author: glenga
-ms.openlocfilehash: e2f9c75ba6e43f93aeb742b9eceebf846ec85cbf
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: b139fbadb03ae2893331e763bc49b249c0dd05d7
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="azure-queue-storage-bindings-for-azure-functions"></a>Az Azure Functions az Azure várólista tárolási kötések
 
@@ -58,7 +58,7 @@ public static class QueueFunctions
 
 ### <a name="trigger---c-script-example"></a>Eseményindító - C# parancsfájl – példa
 
-A következő példa bemutatja egy blob eseményindító kötelező egy *function.json* fájl és [C# parancsfájl (.csx)](functions-reference-csharp.md) kódot, amely a kötés használja. A függvény szavazások a `myqueue-items` várólistára, és írja a napló minden alkalommal, amikor egy elem dolgoz fel.
+A következő példa bemutatja a kötés várólista eseményindító egy *function.json* fájl és [C# parancsfájl (.csx)](functions-reference-csharp.md) kódot, amely a kötés használja. A függvény szavazások a `myqueue-items` várólistára, és írja a napló minden alkalommal, amikor egy elem dolgoz fel.
 
 Itt a *function.json* fájlt:
 
@@ -112,7 +112,7 @@ A [használati](#trigger---usage) a szakasz ismerteti, `myQueueItem`, amelyek ne
 
 ### <a name="trigger---javascript-example"></a>Eseményindító - JavaScript – példa
 
-A következő példa bemutatja egy blob eseményindító kötelező egy *function.json* fájlt és egy [JavaScript függvény](functions-reference-node.md) , amely a kötés használja. A függvény szavazások a `myqueue-items` várólistára, és írja a napló minden alkalommal, amikor egy elem dolgoz fel.
+A következő példa bemutatja a kötés várólista eseményindító egy *function.json* fájlt és egy [JavaScript függvény](functions-reference-node.md) , amely a kötés használja. A függvény szavazások a `myqueue-items` várólistára, és írja a napló minden alkalommal, amikor egy elem dolgoz fel.
 
 Itt a *function.json* fájlt:
 
@@ -223,9 +223,9 @@ Az alábbi táblázat ismerteti a beállított kötés konfigurációs tulajdons
 
 ## <a name="trigger---usage"></a>Eseményindító - használat
  
-C# és C# a parancsfájlt, nyissa meg a blobadatokat metódusparaméter használatával `Stream paramName`. A C# parancsfájl `paramName` érték szerepel a `name` tulajdonsága *function.json*. Köthető a következő típusok:
+C# és C# a parancsfájlt, nyissa meg az üzenet adataihoz, mint egy metódus paraméterének használatával `string paramName`. A C# parancsfájl `paramName` érték szerepel a `name` tulajdonsága *function.json*. Köthető a következő típusok:
 
-* POCO objektum – a Functions futtatókörnyezete deserializes egy JSON-adattartalmat POCO objektumba. 
+* Objektum – a Functions futtatókörnyezete deserializes egy JSON-adattartalmat be egy tetszőleges a kódban definiált osztály egy példányát. 
 * `string`
 * `byte[]`
 * [CloudQueueMessage]
@@ -302,7 +302,7 @@ public static class QueueFunctions
 
 ### <a name="output---c-script-example"></a>Kimeneti - C# parancsfájl – példa
 
-A következő példa bemutatja egy blob eseményindító kötelező egy *function.json* fájl és [C# parancsfájl (.csx)](functions-reference-csharp.md) kódot, amely a kötés használja. A függvény egy elem egy POCO hasznos a minden fogadott HTTP-kérelmek hoz létre.
+A következő példa bemutatja egy kötelező HTTP-eseményindítóval egy *function.json* fájl és [C# parancsfájl (.csx)](functions-reference-csharp.md) kódot, amely a kötés használja. A funkció egy várólista rendelkező elemet hoz létre egy **CustomQueueMessage** objektum hasznos minden HTTP-kérelem érkezett.
 
 Itt a *function.json* fájlt:
 
@@ -353,17 +353,17 @@ Azonnal elküldheti a több üzenet a használatával egy `ICollector` vagy `IAs
 ```cs
 public static void Run(
     CustomQueueMessage input, 
-    ICollector<CustomQueueMessage> myQueueItem, 
+    ICollector<CustomQueueMessage> myQueueItems, 
     TraceWriter log)
 {
-    myQueueItem.Add(input);
-    myQueueItem.Add(new CustomQueueMessage { PersonName = "You", Title = "None" });
+    myQueueItems.Add(input);
+    myQueueItems.Add(new CustomQueueMessage { PersonName = "You", Title = "None" });
 }
 ```
 
 ### <a name="output---javascript-example"></a>Kimeneti - JavaScript – példa
 
-A következő példa bemutatja egy blob eseményindító kötelező egy *function.json* fájlt és egy [JavaScript függvény](functions-reference-node.md) , amely a kötés használja. A függvény minden egyes HTTP-kérelem érkezett a várólista elem hoz létre.
+A következő példa bemutatja egy kötelező HTTP-eseményindítóval egy *function.json* fájlt és egy [JavaScript függvény](functions-reference-node.md) , amely a kötés használja. A függvény minden egyes HTTP-kérelem érkezett a várólista elem hoz létre.
 
 Itt a *function.json* fájlt:
 
@@ -459,7 +459,7 @@ Az alábbi táblázat ismerteti a beállított kötés konfigurációs tulajdons
  
 A C# és C# a parancsfájlt, írja be egyetlen üzenetsor metódusparaméter használatával `out T paramName`. A C# parancsfájl `paramName` érték szerepel a `name` tulajdonsága *function.json*. A metódus visszatérési típusának helyett használhat egy `out` paramétert, és `T` a következő típusok egyike lehet:
 
-* Egy POCO szerializálható JSON-fájlként
+* Egy objektum szerializálható JSON-fájlként
 * `string`
 * `byte[]`
 * [CloudQueueMessage] 

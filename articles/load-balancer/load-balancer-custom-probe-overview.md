@@ -13,21 +13,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/25/2017
+ms.date: 03/8/2018
 ms.author: kumud
-ms.openlocfilehash: 266132d8cbb6f9922ce7b49759981132c2c17f47
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: be0359889f48f2fe16104f2bee5d1c85ab883b34
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="understand-load-balancer-probes"></a>Terheléselosztó mintavételt ismertetése
 
 [!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
 
-Az Azure Load Balancer lehetőséget nyújt a figyelheti a kiszolgálópéldányok állapotát mintavételt használatával. Egy mintavételt nem válaszol, a terheléselosztó leállítja, új kapcsolatok küld a nem megfelelő állapotú példány. Nem érinti a meglévő kapcsolatokat, és új kapcsolatok küldött megfelelő példányok.
+Az Azure Load Balancer állapotteljesítmény alapján határozza meg, melyik háttér címkészletet példány új adatfolyamok kell kapniuk. Ha nem sikerül egy állapotmintáihoz, terheléselosztó leállítja az új forgalom küldése a megfelelő nem megfelelő állapotú példány, és meglévő forgalom azon a példányon nem érinti.  Háttér címkészletet példányainak mintavételi le, ha az összes meglévő forgalom lesz háttérkészlethez összes példánya túllépi az időkorlátot.
 
-Felhőszolgáltatás szerepköreit (feldolgozói szerepköröket és webes szerepkörök) használja a vendégügynök mintavételi figyelésre. TCP- vagy HTTP egyéni mintavételt terheléselosztó mögötti virtuális gépek használatakor be kell állítani.
+Felhőszolgáltatás szerepköreit (feldolgozói szerepköröket és webes szerepkörök) használja a vendégügynök mintavételi figyelésre. TCP- vagy HTTP egyéni állapotfigyelő mintavételt terheléselosztó mögötti virtuális gépek használatakor be kell állítani.
 
 ## <a name="understand-probe-count-and-timeout"></a>Mintavételi száma és időtúllépés
 

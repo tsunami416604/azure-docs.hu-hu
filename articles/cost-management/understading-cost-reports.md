@@ -5,16 +5,16 @@ services: cost-management
 keywords: 
 author: bandersmsft
 ms.author: banders
-ms.date: 03/01/2018
+ms.date: 03/07/2018
 ms.topic: article
 ms.service: cost-management
 manager: carmonm
 ms.custom: 
-ms.openlocfilehash: 4effd63fbd9cb972a0d130826a7347dd34561792
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: bc2c696dceb3ed4741c10a5c611bd2d438b71bd5
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="understanding-cost-management-reports"></a>Költség jelentések ismertetése
 
@@ -76,6 +76,49 @@ Az előző ábrán minden számozott területen a következő információ rész
      - Alkalmazás
      - Környezet
      - Költség kódot
+
+    Ez egy lista beépített csoportok jelentésekben:
+
+    - **Költségtípus**
+      - Válasszon ki egy költségtípus vagy többféle költség, vagy válassza ki az összes. Költség típusok a következők:
+        - Egyszeri díj
+        - Támogatás
+        - Felhasználás költsége
+    - **Ügyfél**
+        - Válassza ki az adott ügyfélhez, több ügyfélhez, vagy válassza ki az összes ügyfél számára.
+    - **Fióknév**
+        - A fiók vagy előfizetés nevét. Az Azure az Azure-előfizetés nevét is.
+    - **Fiók nem**
+        - Jelöljön ki egy fiókot, a több fiók vagy a fiókokhoz. Az Azure az Azure-előfizetés GUID is.
+    - **Szülő**
+        - Válassza ki a szülő, több fiók, vagy válassza ki az összes.
+    - **Szolgáltatás**
+        - Jelöljön ki egy szolgáltatást, több szolgáltatás vagy az összes szolgáltatás.
+    - **Szolgáltató**
+        - A felhő szolgáltató, ahol eszközök és a is társítva.
+    - **Régió**
+        - Az régió, ahol az erőforrás tárolása.
+    - **Rendelkezésre állási zóna**
+        - Elkülönített AWS helyek régión belül.
+    - **Erőforrás típusa**
+        - A használatban lévő erőforrás típusát.
+    - **Sub-Type**
+        - Válassza ki a altípusa.
+    - **Művelet**
+        - Válassza ki a műveletet, vagy **az összes megjelenítése**.
+    - **Árlista modell**
+        - Minden előzetes megfizetése esetén
+        - Előzetes megfizetése esetén nem.
+        - Részleges előzetes megfizetése esetén
+        - Igény szerinti
+        - Foglalás
+        - Helyszíni
+    - **Ingyenesen elérhető típusa**
+        - Válassza ki a negatív vagy pozitív kell fizetni típus vagy mindkettő.
+    - **Bérlős működés támogatása**
+        - Hogy a számítógép egy dedikált gépként fut.
+    -   **Használat típusa**
+          - Használat típusa lehet díjak egyszeri vagy ismétlődő díjakat.
 
 5. **szűrők**
 

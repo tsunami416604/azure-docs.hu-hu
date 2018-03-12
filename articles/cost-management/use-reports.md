@@ -10,11 +10,11 @@ ms.topic: article
 ms.service: cost-management
 manager: carmonm
 ms.custom: 
-ms.openlocfilehash: 0a4f6a5940ccffe897a5609b837ddaeea98d87aa
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 8078591b1e2ad120190a23dd29800bd0f1ae33ea
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="use-cost-management-reports"></a>A Cost Management jelentéseinek használata
 
@@ -103,7 +103,7 @@ A fenti kép időbeli változását ábrázolja az APN fenntartás költsége am
 
 Költség foglalási elemzési jelentések érhetők el egy költség-modellben költség foglalási 360 létrehozása után. Cloudyn költség/számlázási adatokat dolgozza fel, és megfelel az adatok a felhőben fiókok használati és címke adatokhoz. Az adatok kereséséhez Cloudyn a használati adatok hozzáférésre van szüksége. Fiókok, amelyekből hiányoznak a hitelesítő adatokat, amelyek címkézve Kategorizálatlan erőforrások.
 
-### <a name="cost-analysis-report"></a>Költség Teljesítményelemzésének jelentése.
+### <a name="cost-analysis-report"></a>Költségelemzési jelentés
 
 A költségek elemző jelentés a felhőben felhasználási és a kijelölt időtartományban költségeik betekintést nyújt. A házirendek beállítása az költség hozzárendelés-kezelő a költség elemző jelentés is használja.
 
@@ -152,7 +152,7 @@ Használja a költség keresztül idő jelentést:
 3. Adja hozzá a csoportokat.
 4. Válassza ki a korábban létrehozott költség modelljét.
 5. Válassza ki a tényleges költségek és amortized költségeket.
-6. Nyers adatok nézet számlázási nézetre felosztási szabályok vonatkoznak-e, vagy költség számolni Cloudyn nézetben.
+6. Nyers adatok nézet számlázási nézetre felosztási szabályok vonatkoznak-e, vagy a számolni költség nézet.
 
 Ez a jelentés egy példát.
 

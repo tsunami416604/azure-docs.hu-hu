@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 06/23/2017
 ms.author: jdial
 ms.custom: 
-ms.openlocfilehash: f1e3ae26b6525f2235a6b0d53546b334dc027b94
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1bb75b8bd1d525f3104fb517cb4a09b2e33caaca
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="configure-a-virtual-network-classic-using-a-network-configuration-file"></a>A hálózati konfigurációs fájl segítségével virtuális hálózat (klasszikus) konfigurálása
 > [!IMPORTANT]
@@ -56,7 +56,7 @@ PowerShell vagy az Azure parancssori felület használatával exportálja a konf
 
 ## <a name="create-or-modify-a-network-configuration-file"></a>Hozzon létre vagy módosítsa a hálózati konfigurációs fájlt.
 
-A hálózati konfigurációs fájl esetén egy XML-fájl (amikor a PowerShell használatával) vagy egy json-fájl (az Azure parancssori felület használatával). Szerkesztheti a fájlt a szöveg vagy XML/json-szerkesztő. A [hálózati konfigurációs fájl séma beállításai](https://msdn.microsoft.com/library/azure/jj157100.aspx) cikk tartalmazza az összes beállítást. A beállítások további ismertetése [virtuális hálózatok és beállítások megtekintéséhez](virtual-network-manage-network.md#view-vnet). A módosítások a fájlt:
+A hálózati konfigurációs fájl esetén egy XML-fájl (amikor a PowerShell használatával) vagy egy json-fájl (az Azure parancssori felület használatával). Szerkesztheti a fájlt a szöveg vagy XML/json-szerkesztő. A [hálózati konfigurációs fájl séma beállításai](https://msdn.microsoft.com/library/azure/jj157100.aspx) cikk tartalmazza az összes beállítást. A beállítások további ismertetése [virtuális hálózatok és beállítások megtekintéséhez](manage-virtual-network.md#view-virtual-networks-and-settings). A módosítások a fájlt:
 
 - Meg kell felelnie a séma vagy importálása sikertelen lesz, a hálózati konfigurációs fájlt.
 - Felülírja a meglévő hálózati beállításait az előfizetés, ezért rendkívül körültekintően járjon el módosításakor. A példa hálózati konfigurációs fájlokat, az alábbi például hivatkozhat. Tegyük fel például, az eredeti fájl tartalmazta két **VirtualNetworkSite** példányok, és megváltozott, a példákban látható módon. Amikor importálja a fájlt, Azure törli a virtuális hálózatot a **VirtualNetworkSite** példány eltávolította a fájlban. Egyszerűsített ebben a forgatókönyvben azt feltételezi, hogy nincsenek erőforrások volt a virtuális hálózatban, ha vannak, a virtuális hálózat nem törölhető, és az importálás sikertelen lesz.

@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/20/2018
+ms.date: 03/07/2018
 ms.author: mimig
-ms.openlocfilehash: 0d76e3bea8b3d24c4232c699354320f6b873722e
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: f647387b4e80c36339a456b8e9a2cfade7ac8102
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="azure-cosmos-db-diagnostic-logging"></a>Az Azure Cosmos DB diagnosztikai naplózás
 
@@ -31,6 +31,13 @@ Mielőtt azt bejutni figyelése Azure Cosmos DB fiókját, lehetővé teszi, hog
 A következő kép bemutatja a különböző Azure elérhető naplók.
 
 ![Különböző Azure naplói](./media/logging/azurelogging.png)
+
+A fenti ábrán **számítási erőforrásokat** határoz meg az Azure-erőforrások, amelynek érheti el a vendég operációs rendszer. Például Azure virtuális gépek, a virtuálisgép-skálázási készletekben, Azure-tároló szolgáltatás stb tekinthető számítási erőforrásokat. A számítási erőforrások tevékenységi naplóit, a diagnosztikai naplók és a alkalmazásnaplók létrehozása. További tudnivalókért tekintse meg a [Azure figyelés – számítási erőforrásokat](../monitoring-and-diagnostics/monitoring-overview-azure-monitor.md#azure-monitor-sources---compute-subset) cikk.
+
+**Nem-számítási erőforrásokat** erőforrás, ahol érheti el az alapul szolgáló operációs rendszer és erőforrás közvetlenül együttműködni. Például hálózati biztonsági csoportok, Logic Apps stb. **A cosmos DB** nem számítási erőforrás. A műveletnapló, vagy a diagnosztikai naplók engedélyezése a portálon nem számítási erőforrásokat a naplófájlokban tekintheti meg. További tudnivalókért tekintse meg a [Azure figyelés – nem-számítási erőforrásokat](../monitoring-and-diagnostics/monitoring-overview-azure-monitor.md#azure-monitor-sources---everything-else) cikk.
+
+A műveletnapló rögzíti a műveleteket, egy előfizetés szintjén Cosmos DB, műveletek, például ListKeys stb írási DatabaseAccounts naplózza. Diagnosztikai naplók nyújtanak részletesebb naplózás, és lehetővé teszi DataPlaneRequests (létrehozási, olvasási, lekérdezés... ) és MongoRequests.
+
 
 A vitafórum lehetővé teszi, hogy Azure tevékenység Azure Diagnotic és metrikákat helyezi a hangsúlyt. Így Mi az a különbség a három naplók? 
 

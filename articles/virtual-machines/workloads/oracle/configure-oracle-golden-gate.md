@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/19/2017
 ms.author: rclaus
-ms.openlocfilehash: 463cb6f320db1a3fab675a35211334c87e411f0f
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: c99023d794dfb3b78b26ef721d89302e126f5cb1
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="implement-oracle-golden-gate-on-an-azure-linux-vm"></a>Oracle Golden kapu valósítja meg az Azure Linux virtuális gép 
 
@@ -50,7 +50,7 @@ Az alábbiakban áttekintjük a környezet konfigurációjának összefoglalása
 
 ### <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba 
 
-Jelentkezzen be Azure előfizetés a [az bejelentkezési](/cli/azure/#az_login) parancsot. Ezután kövesse a képernyőn megjelenő utasításokat.
+Jelentkezzen be Azure előfizetés a [az bejelentkezési](/cli/azure/reference-index#az_login) parancsot. Ezután kövesse a képernyőn megjelenő utasításokat.
 
 ```azurecli
 az login

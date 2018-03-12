@@ -75,7 +75,7 @@ Az árak a választott tárolótípus és rendelkezésre állás függvényében
 A különböző tártípusokhoz és rendelkezésre állási lehetőségekhez tartozó díjszabásról lásd: [Az Azure Storage szolgáltatás díjszabása](https://azure.microsoft.com/pricing/details/storage/).
 
 ## <a name="availability-sets"></a>Rendelkezésre állási csoportok
-Egy rendelkezésre állási csoportok pedig egy adatközpontban, amely lehetővé teszi a megértése, hogyan épül fel az alkalmazás redundancia és rendelkezésre állás biztosításához az Azure virtuális gépek logikai csoportosítása. Azt javasoljuk, hogy két vagy több virtuális gépek rendelkezésre állási készlet megfelelő és adjon meg egy magas rendelkezésre állású alkalmazáshoz belül jöttek létre a [99,95 % Azure garantált szolgáltatási szintje](https://azure.microsoft.com/support/legal/sla/virtual-machines/). Ha az önálló virtuális gép [Azure Premium Storage](../articles/virtual-machines/windows/premium-storage.md) csomagot használ, az Azure SLA a nem tervezett karbantartási események során is érvényben van. 
+Egy rendelkezésre állási csoportok pedig egy adatközpontban, amely lehetővé teszi a megértése, hogyan épül fel az alkalmazás redundancia és rendelkezésre állás biztosításához az Azure virtuális gépek logikai csoportosítása. Azt javasoljuk, hogy két vagy több virtuális gépek rendelkezésre állási készlet megfelelő és adjon meg egy magas rendelkezésre állású alkalmazáshoz belül jöttek létre a [99,95 % Azure garantált szolgáltatási szintje](https://azure.microsoft.com/support/legal/sla/virtual-machines/). A rendelkezésre állási csoport költség nélkül magát, a csak kell fizetnie az Ön által létrehozott minden egyes Virtuálisgép-példány. Ha az önálló virtuális gép [Azure Premium Storage](../articles/virtual-machines/windows/premium-storage.md) csomagot használ, az Azure SLA a nem tervezett karbantartási események során is érvényben van. 
 
 Egy rendelkezésre állási csoportot, amely a hardver meghibásodása elleni védelem érdekében, és beállítható a frissítések biztonságosan alkalmazható - tartományok (FDs) és a frissítési tartományok (UDs) fault két további csoporthoz tevődik össze. Tudjon meg többet a [Linux-alapú virtuális gépek](../articles/virtual-machines/linux/manage-availability.md), illetve a [Windows-alapú virtuális gépek](../articles/virtual-machines/windows/manage-availability.md) rendelkezésre állásának kezeléséről.
 
@@ -90,7 +90,7 @@ Az [Azure Managed Disks](../articles/virtual-machines/windows/faq-for-disks.md) 
 
 ## <a name="availability-zones"></a>Rendelkezésre állási zónák
 
-[Rendelkezésre állási zónák](../articles/availability-zones/az-overview.md) (előzetes verzió), ahelyett, hogy a rendelkezésre állási állítja be, bontsa ki a felügyeleti, hogy az alkalmazások és a virtuális gépeken adatok rendelkezésre állását fenntartásához. Egy rendelkezésre állási zóna a fizikailag különálló zónát az Azure-régiót belül. Három rendelkezésre állási zónák / támogatott Azure-régióban van. Egyes rendelkezésre állási zóna rendelkezik különálló kapcsolja a forrás-, hálózati és hűtési, és logikailag elkülönül a többi rendelkezésre állási zóna belül az Azure-régió. Újratervezni a megoldások replikált virtuális gépek használata a zónák, megvédheti az alkalmazások és adatok származó az adatközpontban. Ha egy zóna biztonsága sérül, majd replikált alkalmazások és adatok érhetők el azonnal egy másik zónában. 
+[Rendelkezésre állási zónák](../articles/availability-zones/az-overview.md) (előzetes verzió), ahelyett, hogy a rendelkezésre állási állítja be, bontsa ki a felügyeleti, hogy az alkalmazások és a virtuális gépeken adatok rendelkezésre állását fenntartásához. A rendelkezésre állási zónák egy Azure-régió fizikailag elkülönített zónáit jelentik. Három rendelkezésre állási zónák / támogatott Azure-régióban van. Egyes rendelkezésre állási zóna rendelkezik különálló kapcsolja a forrás-, hálózati és hűtési, és logikailag elkülönül a többi rendelkezésre állási zóna belül az Azure-régió. Újratervezni a megoldások replikált virtuális gépek használata a zónák, megvédheti az alkalmazások és adatok származó az adatközpontban. Ha egy zóna biztonsága sérül, majd replikált alkalmazások és adatok érhetők el azonnal egy másik zónában. 
 
 ![Rendelkezésre állási zónák](./media/virtual-machines-common-regions-and-availability/three-zones-per-region.png)
 
@@ -98,6 +98,6 @@ Az [Azure Managed Disks](../articles/virtual-machines/windows/faq-for-disks.md) 
 
 Telepítésével kapcsolatban a [Windows](../articles/virtual-machines/windows/create-powershell-availability-zone.md) vagy [Linux](../articles/virtual-machines/linux/create-cli-availability-zone.md) VM egy rendelkezésre állási zónában.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Mostantól a saját Azure-környezetében is használhatja ezeket a rendelkezésre állási és redundanciával kapcsolatos szolgáltatásokat. Javasoljuk, hogy tájékozódjon [az Azure rendelkezésre állásával kapcsolatos ajánlott eljárásokról](../articles/best-practices-availability-checklist.md).
 

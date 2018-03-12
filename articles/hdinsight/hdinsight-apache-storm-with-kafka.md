@@ -13,13 +13,13 @@ ms.devlang: java
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 02/26/2018
+ms.date: 03/08/2018
 ms.author: larryfr
-ms.openlocfilehash: eca3f95b672a7334d77ac027b4774addf4efed2c
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 0c74e46f37319a9d1eb0ea1587087e24312de451
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="use-apache-kafka-with-storm-on-hdinsight"></a>Apache Kafka használata a HDInsight alatt futó Storm
 
@@ -66,9 +66,9 @@ Létrehozhat egy Azure virtuális hálózatra, Kafka, és a Storm-fürtök manu�
 
 1. A következő gomb segítségével jelentkezzen be az Azure-ba, és nyissa meg a sablon az Azure portálon.
    
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-kafka-storm-cluster-in-vnet-v2.json" target="_blank"><img src="./media/hdinsight-apache-storm-with-kafka/deploy-to-azure.png" alt="Deploy to Azure"></a>
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fhdinsight-storm-java-kafka%2Fmaster%2Fcreate-kafka-storm-clusters-in-vnet.json" target="_blank"><img src="./media/hdinsight-apache-storm-with-kafka/deploy-to-azure.png" alt="Deploy to Azure"></a>
    
-    Az Azure Resource Manager sablon itt található: **https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-storm-cluster-in-vnet-v2.json**. Létrehozza a következőket:
+    Az Azure Resource Manager sablon itt található: **https://github.com/Azure-Samples/hdinsight-storm-java-kafka/blob/master/create-kafka-storm-clusters-in-vnet.json**. Létrehozza a következőket:
     
     * Azure-erőforráscsoport
     * Azure Virtual Network
@@ -155,7 +155,7 @@ Fluxus topológiák további információkért lásd: [https://storm.apache.org/
 
 ## <a name="configure-the-topology"></a>A topológia konfigurálása
 
-1. Az alábbi módszerek valamelyikével felderítése a Kafka broker gazdagépek:
+1. Használja a következő módszerek egyikét a Kafka broker állomásokat a felderíteni a **Kafka** HDInsight-fürt:
 
     ```powershell
     $creds = Get-Credential -UserName "admin" -Message "Enter the HDInsight login"
@@ -167,12 +167,12 @@ Fluxus topológiák további információkért lásd: [https://storm.apache.org/
     ($brokerHosts -join ":9092,") + ":9092"
     ```
 
+    > [!IMPORTANT]
+    > A következő Bash példa feltételezi, hogy `$CLUSTERNAME` nevét tartalmazza, a __Kafka__ fürt nevét. Azt is feltételezi, hogy [jq](https://stedolan.github.io/jq/) 1.5-ös vagy újabb verziója telepítve van. Amikor a rendszer kéri, adja meg a fürt bejelentkezési fiókjának jelszavát.
+
     ```bash
     curl -su admin -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/KAFKA/components/KAFKA_BROKER" | jq -r '["\(.host_components[].HostRoles.host_name):9092"] | join(",")' | cut -d',' -f1,2
     ```
-
-    > [!IMPORTANT]
-    > A Bash példa feltételezi, hogy `$CLUSTERNAME` a HDInsight-fürt nevét tartalmazza. Azt is feltételezi, hogy [jq](https://stedolan.github.io/jq/) 1.5-ös vagy újabb verziója telepítve van. Amikor a rendszer kéri, adja meg a fürt bejelentkezési fiókjának jelszavát.
 
     A visszaadott érték az alábbihoz hasonló:
 
@@ -181,7 +181,7 @@ Fluxus topológiák további információkért lásd: [https://storm.apache.org/
     > [!IMPORTANT]
     > Előfordulhat, hogy a fürt legalább két broker gazdagépek, amíg nem kell minden gazdagép ügyfelek teljes listáját tartalmazzák. Egy vagy két is elegendő.
 
-2. Az alábbi módszerek valamelyikével felderítése a Kafka Zookeeper gazdagépek:
+2. A Zookeeper felderítéséhez a következő módszerek egyikét a gazdagépek használata a __Kafka__ HDInsight-fürt:
 
     ```powershell
     $creds = Get-Credential -UserName "admin" -Message "Enter the HDInsight login"
@@ -193,12 +193,12 @@ Fluxus topológiák további információkért lásd: [https://storm.apache.org/
     ($zookeeperHosts -join ":2181,") + ":2181"
     ```
 
+    > [!IMPORTANT]
+    > A következő Bash példa feltételezi, hogy `$CLUSTERNAME` nevét tartalmazza, a __Kafka__ fürt. Azt is feltételezi, hogy [jq](https://stedolan.github.io/jq/) telepítve van. Amikor a rendszer kéri, adja meg a fürt bejelentkezési fiókjának jelszavát.
+
     ```bash
     curl -su admin -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/ZOOKEEPER/components/ZOOKEEPER_SERVER" | jq -r '["\(.host_components[].HostRoles.host_name):2181"] | join(",")' | cut -d',' -f1,2
     ```
-
-    > [!IMPORTANT]
-    > A Bash példa feltételezi, hogy `$CLUSTERNAME` a HDInsight-fürt nevét tartalmazza. Azt is feltételezi, hogy [jq](https://stedolan.github.io/jq/) telepítve van. Amikor a rendszer kéri, adja meg a fürt bejelentkezési fiókjának jelszavát.
 
     A visszaadott érték az alábbihoz hasonló:
 
@@ -209,13 +209,13 @@ Fluxus topológiák további információkért lásd: [https://storm.apache.org/
 
     Mentse ezt az értéket, a rendszer később.
 
-3. Szerkessze a `dev.properties` fájlt a projekt gyökérkönyvtárában található. A Zookeeper és a gazdagép-adatokat hozzáadni a fájlban található egyező sor. A következő példa a minta értékeit az előző lépések segítségével konfigurálható:
+3. Szerkessze a `dev.properties` fájlt a projekt gyökérkönyvtárában található. A Zookeeper és a gazdagépek adatainak megadása a __Kafka__ fürt a fájlban található egyező sor. A következő példa a minta értékeit az előző lépések segítségével konfigurálható:
 
         kafka.zookeeper.hosts: zk0-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:2181,zk2-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:2181
         kafka.broker.hosts: wn0-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:9092,wn1-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:9092
         kafka.topic: stormtopic
 
-4. Mentse a `dev.properties` fájlt, és a következő parancs használatával töltse fel azt a Storm-fürt:
+4. Mentse a `dev.properties` fájlt, és a következő parancs használatával töltse fel azt a **Storm** fürt:
 
      ```bash
     scp dev.properties USERNAME@storm-BASENAME-ssh.azurehdinsight.net:dev.properties
@@ -225,7 +225,12 @@ Fluxus topológiák további információkért lásd: [https://storm.apache.org/
 
 ## <a name="start-the-writer"></a>Az író indítása
 
-1. A következő segítségével csatlakozzon a Storm fürthöz SSH használatával. Cserélje le **felhasználónév** az a fürt létrehozásakor használt SSH-felhasználónév. Cserélje le **BASENAME** a fürt létrehozásakor használt alap névvel.
+> [!IMPORTANT]
+> Ebben a szakaszban a lépések azt feltételezik, amellyel az Azure Resource Manager sablon hivatkozásra a jelen dokumentum a Storm és Kafka fürtöket létrehozni. Ez a sablon lehetővé teszi, hogy a témaköröket a Kafka fürt létrehozásához.
+>
+> Alapértelmezés szerint a HDInsight Kafka nem teszi lehetővé a témakörök, automatikus létrehozása, ha egy másik módszer a Kafka fürt létrehozásához használt, manuálisan kell létrehoznia a témakörben. Manuálisan létrehozásáról a témakör további információkért lásd: a [indítsa el a HDInsight Kafka](./kafka/apache-kafka-get-started.md) dokumentum.
+
+1. A következő használatával csatlakozhat a **Storm** fürtön SSH használatával. Cserélje le **felhasználónév** az a fürt létrehozásakor használt SSH-felhasználónév. Cserélje le **BASENAME** a fürt létrehozásakor használt alap névvel.
 
   ```bash
   ssh USERNAME@storm-BASENAME-ssh.azurehdinsight.net
@@ -234,14 +239,6 @@ Fluxus topológiák további információkért lásd: [https://storm.apache.org/
     Amikor a rendszer kéri, írja be a jelszót, a fürt létrehozásakor használt.
    
     További információk: [Az SSH használata HDInsighttal](hdinsight-hadoop-linux-use-ssh-unix.md).
-
-2. Az SSH-kapcsolat létrehozásához használja a topológia Kafka témakör alkalmazás a következő parancsot:
-
-    ```bash
-    /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --create --replication-factor 3 --partitions 8 --topic stormtopic --zookeeper $KAFKAZKHOSTS
-    ```
-
-    Cserélje le `$KAFKAZKHOSTS` a Zookeeper a gazdagép az előző szakaszban lekért információt.
 
 2. Az a Storm fürthöz SSH-kapcsolat alkalmazás az író topológia indítsa el a következő parancsot:
 
@@ -261,11 +258,12 @@ Fluxus topológiák további információkért lásd: [https://storm.apache.org/
 
 5. Ha a topológia elindult, a következő paranccsal ellenőrizheti, hogy azt az írás a Kafka témakör:
 
+    > [!IMPORTANT]
+    > Cserélje le `$KAFKAZKHOSTS` a Zookeeper az állomás adatai a __Kafka__ fürt.
+
   ```bash
   /usr/hdp/current/kafka-broker/bin/kafka-console-consumer.sh --zookeeper $KAFKAZKHOSTS --from-beginning --topic stormtopic
   ```
-
-    Cserélje le `$KAFKAZKHOSTS` a Zookeeper a gazdagép az előző szakaszban lekért információt.
 
     Ez a parancs Kafka rendszerrel szállított parancsfájlt használ a figyelheti a témakör. Néhány percet, miután kell kezdenie véletlen a témakörbe írt mondatokat visszaadó. A kimenet a következő példához hasonló:
 

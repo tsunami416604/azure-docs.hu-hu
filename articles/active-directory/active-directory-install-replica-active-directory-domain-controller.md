@@ -16,11 +16,11 @@ ms.date: 11/12/2017
 ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: oldportal;it-pro;
-ms.openlocfilehash: 3f7624d588e958985a73c5b40e8010e18e8879cb
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: f4e64fbc6c2fda026297b69bd54471d49b6785a1
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="install-a-replica-active-directory-domain-controller-in-an-azure-virtual-network"></a>Az Active Directory replika tartományvezérlő telepítése egy Azure virtuális hálózatban
 A cikk ismerteti a további tartományvezérlők (DC) használandó tartományvezérlők replikaként Azure virtuális gépek (VM) a helyszíni Active Directory-tartomány telepítése egy Azure virtuális hálózatban. Emellett [Windows Server Active Directory-erdő telepítése Azure virtuális hálózatra](active-directory-new-forest-virtual-machine.md). Az Active Directory tartományi szolgáltatások (AD DS) telepítése egy Azure virtuális hálózat tudnivalókat [telepítése Windows Server Active Directory telepítése Azure virtuális gépekre vonatkozó irányelvek](https://msdn.microsoft.com/library/azure/jj156090.aspx).
@@ -62,7 +62,7 @@ Jelentkezzen be egy virtuális Gépet, és ellenőrizze, hogy van kapcsolat a we
 
 ## <a name="reconfigure-dns-server-for-the-virtual-network"></a>A virtuális hálózat DNS-kiszolgáló
 1. Beolvasni a virtuális hálózati nevek listája a [Azure-portálon](https://portal.azure.com), keresse meg *virtuális hálózatok*, majd jelölje be **virtuális hálózatok** megjelenítéséhez. 
-2. Nyissa meg a virtuális hálózatot szeretne kezelni, majd [a virtuális hálózat DNS-kiszolgáló IP-címének újrakonfigurálása](../virtual-network/virtual-network-manage-network.md#dns-servers) a statikus IP-címek, a replika tartományvezérlők helyett a helyi DNS-kiszolgálók az IP-címet hozzárendelni.
+2. Nyissa meg a virtuális hálózatot szeretne kezelni, majd [a virtuális hálózat DNS-kiszolgáló IP-címének újrakonfigurálása](../virtual-network/manage-virtual-network.md#change-dns-servers) a statikus IP-címek, a replika tartományvezérlők helyett a helyi DNS-kiszolgálók az IP-címet hozzárendelni.
 3. Annak érdekében, hogy az összes replika tartományvezérlő virtuális gépeket a virtuális hálózat használatára van konfigurálva a DNS-kiszolgálók a virtuális hálózaton:
   1. Válassza ki **virtuális gépek**.
   2. A virtuális gépeket, majd válassza ki és **indítsa újra a**. 
@@ -83,7 +83,7 @@ Minden virtuális gép üzembe helyezése után jelentkezzen be, és csatlakozta
 1. A **Kiszolgálókezelő** &gt; **helyi kiszolgáló** &gt; **munkacsoport** &gt; **módosítása...** , jelölje be **tartomány**.
 2. Adja meg a helyi tartomány nevét. 
 3. Adjon meg egy tartományi felhasználó hitelesítő adataival.
-4. Indítsa újra a virtuális Gépet.
+4. Indítsa újra a virtuális gépet.
 
 ## <a name="additional-resources"></a>További források
 

@@ -11,11 +11,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 09/13/2017
 ms.author: mahender
-ms.openlocfilehash: 45fcbc3af02dd8afbd9581e8bc38ad10369a2747
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 736a82d282e5769fb403c66ffd5d44107c6d3218
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="how-to-use-azure-managed-service-identity-public-preview-in-app-service-and-azure-functions"></a>Azure által felügyelt Szolgáltatásidentitás (nyilvános előzetes verzió) App Service és az Azure Functions használatával
 
@@ -56,7 +56,7 @@ Az Azure parancssori felület használatával felügyelt szolgáltatásidentitá
 
 Az alábbi lépéseket végigvezeti hoz létre egy webalkalmazást, és azt a parancssori felület használatával identitás:
 
-1. Az Azure parancssori felület a helyi konzol használata, először jelentkezzen be az Azure használatával [az bejelentkezési](/cli/azure/#az_login). Egy fiók, amelybe szeretne telepíteni az alkalmazást az Azure-előfizetéshez társított használata:
+1. Az Azure parancssori felület a helyi konzol használata, először jelentkezzen be az Azure használatával [az bejelentkezési](/cli/azure/reference-index#az_login). Egy fiók, amelybe szeretne telepíteni az alkalmazást az Azure-előfizetéshez társított használata:
 
     ```azurecli-interactive
     az login
@@ -126,13 +126,13 @@ Ha `<TENANTID>` és `<PRINCIPALID>` váltják fel GUID. A tenantId tulajdonság 
 Egy alkalmazás felhasználhat az identitása más erőforrásainak védelméhez azzal, például az Azure Key Vault az AAD-jogkivonat. Ezeket a jogkivonatokat generáló az erőforrás, és nem adott felhasználó az alkalmazás eléréséhez. 
 
 > [!IMPORTANT]
-> Szükség lehet a célerőforrás számára engedélyezzék az alkalmazás konfigurálásához. Például egy tokent a Key Vault kér le, ha szeretné ellenőrizze, hogy hozzáadta a hozzáférési házirend, amely tartalmazza az alkalmazás azonosítóját. Ellenkező esetben a Key Vault hívásainak elutasításra kerül, még akkor is, ha a jogkivonat tartalmaznak. További erőforrások kapcsolatos Szolgáltatásidentitás felügyelt jogkivonatok támogatási kapcsolatban lásd: [Azure-szolgáltatások, hogy támogatja az Azure AD hitelesítési](../active-directory/msi-overview.md#which-azure-services-support-managed-service-identity).
+> Szükség lehet a célerőforrás számára engedélyezzék az alkalmazás konfigurálásához. Például egy tokent a Key Vault kér le, ha szeretné ellenőrizze, hogy hozzáadta a hozzáférési házirend, amely tartalmazza az alkalmazás azonosítóját. Ellenkező esetben a Key Vault hívásainak elutasításra kerül, még akkor is, ha a jogkivonat tartalmaznak. További erőforrások kapcsolatos Szolgáltatásidentitás felügyelt jogkivonatok támogatási kapcsolatban lásd: [Azure-szolgáltatások, hogy támogatja az Azure AD hitelesítési](../active-directory/pp/msi-overview.md#which-azure-services-support-managed-service-identity).
 
 Nincs az App Service és az Azure Functions jogkivonat beszerzése az egyszerű REST protokoll. .NET-alkalmazások a Microsoft.Azure.Services.AppAuthentication könyvtár absztrakciós biztosít a protokollon keresztül, és egy helyi fejlesztési felület támogatja.
 
 ### <a name="asal"></a>A Microsoft.Azure.Services.AppAuthentication könyvtár használata a .NET-hez
 
-A .NET-alkalmazások és a funkciók felügyelt szolgáltatásidentitás együttműködve legegyszerűbb módja a Microsoft.Azure.Services.AppAuthentication csomag keresztül van. Ebben a könyvtárban is lehetővé teszi a tesztelheti a kódját helyileg a fejlesztői gépen, a felhasználói fiókkal a Visual Studio eszközből a [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/overview?view=azure-cli-latest), vagy az Active Directory integrált hitelesítést. Ezt a szalagtárat a helyi fejlesztési lehetőségek bővebben lásd: a [Microsoft.Azure.Services.AppAuthentication hivatkozás]. Ez a szakasz bemutatja, hogyan lásson a könyvtárban, a kódban.
+A .NET-alkalmazások és a funkciók felügyelt szolgáltatásidentitás együttműködve legegyszerűbb módja a Microsoft.Azure.Services.AppAuthentication csomag keresztül van. Ebben a könyvtárban is lehetővé teszi a tesztelheti a kódját helyileg a fejlesztői gépen, a felhasználói fiókkal a Visual Studio eszközből a [Azure CLI 2.0](https://docs.microsoft.com/cli/azure?view=azure-cli-latest), vagy az Active Directory integrált hitelesítést. Ezt a szalagtárat a helyi fejlesztési lehetőségek bővebben lásd: a [Microsoft.Azure.Services.AppAuthentication hivatkozás]. Ez a szakasz bemutatja, hogyan lásson a könyvtárban, a kódban.
 
 1. Hivatkozásokat adni a [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) és [Microsoft.Azure.KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault) NuGet-csomagok, hogy az alkalmazást.
 

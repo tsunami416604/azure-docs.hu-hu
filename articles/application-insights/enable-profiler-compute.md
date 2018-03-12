@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/16/2017
 ms.author: ramach
-ms.openlocfilehash: 278d8241ddd67b6df64b7280d4a17c6d3152f223
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: a24695f7bbb5fb0546e27c934319a60a3418b9e1
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="enable-application-insights-profiler-for-azure-vms-service-fabric-and-azure-cloud-services"></a>Application Insights Profilkészítő engedélyezése az Azure virtuális gépek, a Service Fabric és az Azure Cloud Services csomag
 
@@ -46,8 +46,7 @@ Engedélyezni Profilkészítő, módosítania kell a konfigurációt a három he
 
    ![A rendszerállapot-kulcs helyét](./media/enable-profiler-compute/CopyAIKey.png)
 
-3. A Profilkészítő az Application Insights-példány beállításának befejezéséhez, hajtsa végre az eljárást, ismertetett [engedélyezni Profilkészítő](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-profiler).  
-    Nem kell a webes alkalmazást, mert a lépéseket csak az adott app services-erőforráshoz. Győződjön meg arról, hogy Profilkészítő engedélyezve van a **konfigurálása Profilkészítő** ablaktáblán.
+3. A Profilkészítő az Application Insights-példány beállításának befejezéséhez, hajtsa végre az eljárást, ismertetett [engedélyezni Profilkészítő. Nem kell a webes alkalmazást, mert a lépéseket csak az adott app services-erőforráshoz. Győződjön meg arról, hogy Profilkészítő engedélyezve van a **konfigurálása Profilkészítő** ablaktáblán.
 
 
 ## <a name="set-up-the-application-source-code"></a>Az alkalmazás forráskódjához beállítása
@@ -157,6 +156,8 @@ Teljes példákért lásd:
 
       További információ a diagnosztika bővítmény felvétele a központi telepítési sablont: [használata figyelési és diagnosztika a Windows virtuális gép és az Azure Resource Manager-sablonok](https://docs.microsoft.com/azure/virtual-machines/windows/extensions-diagnostics-template?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
+> [!TIP]
+> Virtuális gépek a fenti lépéseket a json-alapú helyett, hogy az Azure-portálon lépjen **virtuális gépek** > **diagnosztikai beállítások**  >  ** Fogadók esetében** > Set diagnosztikai adatok küldése az Application Insights- **engedélyezve** , és válassza az Application Insights-fiókkal vagy egy adott ikey.
 
 ### <a name="azure-cloud-services"></a>Azure Cloud Services
 
@@ -196,7 +197,7 @@ Teljes példákért lásd:
 
 1. Telepítse a módosított környezet telepítési definícióval.  
 
-   A módosítások alkalmazásához általában vonják be a teljes sablon-üzembehelyezés, vagy PowerShell-parancsmagokkal vagy a Visual Studio közzététele a felhőalapú szolgáltatások.  
+   A módosítások alkalmazásához általában magában foglalja a teljes sablon üzembe helyezése vagy CA felhő alapú szolgáltatások közzététele PowerShell-parancsmagokkal vagy a Visual Studio használatával.  
 
    A következő egy meglévő virtuális gépek egy másik módjáról, amely csak az Azure Diagnostics bővítmény koppint:  
 

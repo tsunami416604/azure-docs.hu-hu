@@ -28,10 +28,7 @@
 #### [Zónaredundáns Load Balancer Standard létrehozása a PowerShell-lel](../load-balancer/load-balancer-get-started-internet-az-powershell.md)
 #### [Zónaredundáns nyilvános Load Balancer Standard létrehozása a parancssori felület használatával](../load-balancer/load-balancer-get-started-internet-az-cli.md)
 
-### Nyilvános IP-cím
-#### [Nyilvános IP-cím létrehozása rendelkezésre állási zónában az Azure Portalon](../virtual-network/create-public-ip-availability-zone-portal.md)
-#### [Nyilvános IP-cím létrehozása rendelkezésre állási zónában a PowerShell-lel](../virtual-network/create-public-ip-availability-zone-powershell.md)
-#### [Nyilvános IP-cím létrehozása rendelkezésre állási zónában a parancssori felület használatával](../virtual-network/create-public-ip-availability-zone-cli.md)
+### [Nyilvános IP-cím](../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address)
 
 ### SQL Database
 #### [Rendelkezésre állási zónák és SQL Database](../sql-database/sql-database-high-availability.md#availability-zones)

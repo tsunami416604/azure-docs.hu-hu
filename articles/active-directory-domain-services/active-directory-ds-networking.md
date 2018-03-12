@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/01/2017
+ms.date: 03/08/2018
 ms.author: maheshu
-ms.openlocfilehash: a6f0089f13de10ba8bc1f9a656a2d21f9c559047
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: eee7905db4faedef3217118e8d491e2cb019fa30
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="networking-considerations-for-azure-ad-domain-services"></a>Azure AD tartományi szolgáltatások hálózati szempontjai
 ## <a name="how-to-select-an-azure-virtual-network"></a>Egy Azure virtuális hálózat kiválasztása
@@ -53,6 +53,7 @@ A következő irányelvek segítségével válassza ki a virtuális hálózatot 
 * Az NSG-k nem vonatkoznak a dedikált IP-alhálózatot a felügyelt tartományok. Ha a dedikált alhálózati NSG-ket kell alkalmaznia, győződjön meg arról, **nem blokkolja a szolgáltatás szükséges portokat, és a tartomány kezelése**.
 * Nem túlságosan korlátozhatja a felügyelt tartományok dedikált alhálózaton belül elérhető IP-címek számát. Ez a korlátozás miatt a szolgáltatás elérhetővé teszi két tartományvezérlő a felügyelt tartományok.
 * **Ne engedélyezze az átjáró alhálózatának az Azure AD tartományi szolgáltatások** a virtuális hálózat.
+* Ne tiltsák le az alhálózat, amelyben engedélyezve van a felügyelt tartományok kimenő hozzáférést.
 
 > [!WARNING]
 > Amikor társít egy NSG-t egy alhálózattal, amelyben az Azure AD tartományi szolgáltatások engedélyezve van, a szolgáltatást, és a tartomány kezelése a Microsoft képes zavart okozhat. Emellett az Azure AD-bérlő és a felügyelt tartományok közötti szinkronizálás megszakad. **Az SLA nem vonatkozik a központi telepítések, ahol az NSG telepítve van, amely blokkolja az Azure AD tartományi szolgáltatások frissítése és a tartomány kezelése.**
@@ -89,6 +90,8 @@ A következő portokat Azure AD tartományi szolgáltatások szolgáltatáshoz s
 * Biztonságos LDAP hozzáférés engedélyezése a felügyelt tartományra az interneten keresztül szolgál.
 * Ezen keresztül a NSG port megnyitása nem kötelező megadni. Nyissa meg a portot, csak ha hozzáfér biztonságos LDAP engedélyezve az interneten keresztül.
 * Ezt a portot a forrás IP-címek biztonságos LDAP keresztül csatlakozó várhatóan befelé korlátozhatja.
+
+**Kimenő hozzáférést** AAD tartományi szolgáltatásokra különböző más Azure-szolgáltatásokhoz való ahhoz, hogy a kezelése, biztonsági mentését, és figyelheti a felügyelt tartományok kimenő engedéllyel kell rendelkeznie. Ne blokkolják a dedikált alhálózatból, ahol a felügyelt tartományok engedélyezett kimenő hozzáférést.
 
 
 ## <a name="network-security-groups"></a>Network Security Groups (Hálózati biztonsági csoportok)

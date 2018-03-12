@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 02/05/2018
 ms.author: v-jysur
 ms.custom: 
-ms.openlocfilehash: afdd82617c47f0dee22c229feba87bdf79b90a69
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 44e1a7fe17515e23fcfd32c37c1ef4837ea8140c
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="create-activity-log-alerts-using-the-new-alerts-preview-experience"></a>Az új figyelmeztetések (előzetes verzió) használatával riasztások élmény tevékenységnapló létrehozása
 
@@ -79,7 +79,7 @@ Kövesse az alábbi eljárást:
 
 3. **Riasztási meghatározása feltétel alapján** adja meg a következő adatokat, és kattintson a **végzett**.
 
-    - **Riasztási cél:** megtekintéséhez, és jelölje ki a cél az új riasztás, használja **előfizetés szűrés** / **erőforrástípus szűrés** , és válassza ki az erőforrás vagy erőforráscsoport a lista jelenik meg.
+    - **Riasztási cél:** megtekintéséhez, és jelölje ki a cél az új riasztás, használja **előfizetés szűrés** / **erőforrástípus szűrés** , és válassza ki az erőforrás vagy erőforráscsoportban, mint a a lista jelenik meg.
 
     > [!NOTE]
 
@@ -89,7 +89,7 @@ Kövesse az alábbi eljárást:
 
      ![Válassza ki a cél](./media/monitoring-activity-log-alerts-new-experience/select-target.png)
 
-    - A ** cél feltételeket, kattintson a **adja meg a feltételeket** válassza ki a jel típusú **tevékenységnapló**.
+    - A **cél feltételek**, kattintson a **adja meg a feltételeket** válassza ki a jel típusú **tevékenységnapló**.
 
     - Válassza ki a jel jelenik meg a listából.
 

@@ -15,11 +15,11 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: cynthn
-ms.openlocfilehash: 3cbc25099b99499a6186e57c155d195e75bd61bf
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 15ad240ea9b635cd7995bfae403a93e0b392850a
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="how-to-create-an-image-of-a-virtual-machine-or-vhd"></a>Egy képet egy virtuális géphez vagy virtuális merevlemez létrehozása
 
@@ -37,7 +37,7 @@ Győződjön meg arról, hogy teljesülnek-e a következő előfeltételek telje
 
 * Egy Azure virtuális gép létrehozása a Resource Manager üzembe helyezési modellel felügyelt lemezekkel van szüksége. Ha még nem hozott létre egy Linux virtuális Gépet, használhatja a [portal](quick-create-portal.md), a [Azure CLI](quick-create-cli.md), vagy [Resource Manager-sablonok](create-ssh-secured-vm-from-template.md). Igény szerint konfigurálhatja a virtuális Gépet. Például [adatok lemezek hozzáadása a](add-disk.md), frissítések és alkalmazások telepítéséhez. 
 
-* Szükség van a legújabb [Azure CLI 2.0](/cli/azure/install-az-cli2) telepítve, és az Azure-fiók használatával kell bejelentkezett [az bejelentkezési](/cli/azure/#az_login).
+* Szükség van a legújabb [Azure CLI 2.0](/cli/azure/install-az-cli2) telepítve, és az Azure-fiók használatával kell bejelentkezett [az bejelentkezési](/cli/azure/reference-index#az_login).
 
 ## <a name="quick-commands"></a>Gyors parancsok
 
@@ -45,7 +45,7 @@ Egy egyszerűsített verziója, tesztelési, ez a témakör értékelése és me
 
 
 ## <a name="step-1-deprovision-the-vm"></a>1. lépés: A virtuális gép kiosztásának megszüntetése
-Ön kiosztásának megszüntetése a virtuális gépet az Azure Virtuálisgép-ügynök, a gép adott fájlokat és adatokat törli. Használja a `waagent` parancsot a *-deprovision + felhasználói* paraméter a Linux virtuális gép – forrásként. További információkért lásd: a [Azure Linux ügynök felhasználói útmutató](../windows/agent-user-guide.md).
+Ön kiosztásának megszüntetése a virtuális gépet az Azure Virtuálisgép-ügynök, a gép adott fájlokat és adatokat törli. Használja a `waagent` parancsot a *-deprovision + felhasználói* paraméter a Linux virtuális gép – forrásként. További információk: [Azure Linux-ügynök – felhasználói útmutató](../windows/agent-user-guide.md).
 
 1. Csatlakoztassa a Linux virtuális gép SSH-ügyfél.
 2. Az SSH-ablakban írja be a következő parancsot:
@@ -143,4 +143,4 @@ A forrás Virtuálisgép-lemezkép létrehozhat több virtuális géphez. Ha mó
 - Kövesse a lépéseket újra kiosztásának megszüntetése, felszabadítani, generalize és lemezkép létrehozása.
 - Az új kép használata a jövőben a központi telepítésekre. Ha szükséges, az eredeti lemezkép törlése.
 
-A parancssori felület a virtuális gépek kezelésével kapcsolatban további információkért lásd: [Azure CLI 2.0](/cli/azure/overview).
+A parancssori felület a virtuális gépek kezelésével kapcsolatban további információkért lásd: [Azure CLI 2.0](/cli/azure).

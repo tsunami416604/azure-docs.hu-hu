@@ -13,11 +13,11 @@ ms.devlang: powershell
 ms.topic: article
 ms.date: 01/25/2018
 ms.author: douglasl
-ms.openlocfilehash: 522e9b6831c31a90337126380ccc9f2cb6d8713b
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 69eae46dc554911e0caadcf0aafbaec9e39f727d
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="how-to-schedule-starting-and-stopping-of-an-azure-ssis-integration-runtime"></a>Indítása és leállítása egy Azure SSIS-integráció futtatókörnyezetet ütemezése 
 Egy Azure SSIS (SQL Server Integration Services) integrációs futásidejű fut (IR) van társítva járnak. Ezért futtatni kívánt az infravörös csak akkor, ha SSIS-csomagok futtathatja az Azure-ban, és állítsa le, ha már nincs szükség van szüksége. A Data Factory felhasználói felületén vagy az Azure PowerShell [manuálisan indítsa el, vagy állítsa le az Azure SSIS-IR](manage-azure-ssis-integration-runtime.md)). Ez a cikk ismerteti, hogyan ütemezése indítása és leállítása egy Azure SSIS-integráció futtatókörnyezetet (IR) Azure Automation és az Azure Data Factory használatával. Ebben a cikkben leírt magas szintű lépései a következők:
@@ -279,11 +279,6 @@ Létrehozott, és tesztelje a folyamatot, egy ütemezést létrehozni, és rende
     3. A **törzs**, adja meg `{"message":"hello world"}`. 
    
         ![Első webes tevékenység - beállítások lap](./media/how-to-schedule-azure-ssis-integration-runtime/first-web-activity-settnigs-tab.png)
-4. Az a **tevékenységek** eszközkészlet, bontsa ki a **iterációs & Conditionals**, és az egérrel a **Várjon, amíg** tevékenység csővezeték Tervező felületére. Az a **általános** lapra, változtassa meg a tevékenység nevét **WaitFor30Minutes**. 
-5. Váltás a **beállítások** lapra a **tulajdonságok** ablak. A **várakozási idő másodpercben**, adja meg **1800**. 
-6. Csatlakozás a **webes** tevékenység és a **Várjon, amíg** tevékenység. Csatlakoztassa őket, indítsa el a Várakozás tevékenység webes tevékenységre csatolva zöld négyzet, húzza. 
-
-    ![Csatlakozás a webes és várja meg,](./media/how-to-schedule-azure-ssis-integration-runtime/connect-web-wait.png)
 5. A tárolt eljárási tevékenység az egérrel a **általános** szakasza a **tevékenységek** eszközkészlet. A tevékenység nevének beállítása **RunSSISPackage**. 
 6. Váltás a **SQL fiók** lapra a **tulajdonságok** ablak. 
 7. A **társított szolgáltatás**, kattintson a **+ új**.
@@ -296,7 +291,7 @@ Létrehozott, és tesztelje a folyamatot, egy ütemezést létrehozni, és rende
     5. A **jelszó**, adja meg a felhasználó jelszavát. 
     6. Tesztelje a kapcsolatot az adatbázis kattintva **tesztkapcsolat** gombra.
     7. A társított szolgáltatás gombra kattintva mentse a **mentése** gombra.
-1. Az a **tulajdonságok** ablakban váltson a **tárolt eljárás** a lap a **SQL fiók** lapot, és hajtsa végre a következő lépéseket: 
+9. Az a **tulajdonságok** ablakban váltson a **tárolt eljárás** a lap a **SQL fiók** lapot, és hajtsa végre a következő lépéseket: 
 
     1. A **tárolt eljárás neve**, jelölje be **szerkesztése** lehetőséget, és adja meg **sp_executesql**. 
     2. Válassza ki **+ új** a a **tárolt eljárás paramétereit** szakasz. 
@@ -307,12 +302,37 @@ Létrehozott, és tesztelje a folyamatot, egy ütemezést létrehozni, és rende
         Az SQL-lekérdezést, adja meg a megfelelő értékeket a **mappa_neve**, **projektnév**, és **csomag_neve** paraméterek. 
 
         ```sql
-        DECLARE @return_value INT, @exe_id BIGINT, @err_msg NVARCHAR(150)    EXEC @return_value=[SSISDB].[catalog].[create_execution] @folder_name=N'<FOLDER name in SSIS Catalog>', @project_name=N'<PROJECT name in SSIS Catalog>', @package_name=N'<PACKAGE name>.dtsx', @use32bitruntime=0, @runinscaleout=1, @useanyworker=1, @execution_id=@exe_id OUTPUT    EXEC [SSISDB].[catalog].[set_execution_parameter_value] @exe_id, @object_type=50, @parameter_name=N'SYNCHRONIZED', @parameter_value=1    EXEC [SSISDB].[catalog].[start_execution] @execution_id=@exe_id, @retry_count=0    IF(SELECT [status] FROM [SSISDB].[catalog].[executions] WHERE execution_id=@exe_id)<>7 BEGIN SET @err_msg=N'Your package execution did not succeed for execution ID: ' + CAST(@exe_id AS NVARCHAR(20)) RAISERROR(@err_msg,15,1) END   
-        ```
-10. Csatlakozás a **Várjon, amíg** tevékenység és a **tárolt eljárás** tevékenység. 
+        DECLARE       @return_value int, @exe_id bigint, @err_msg nvarchar(150)
 
-    ![Várja meg, és a tárolt eljárás tevékenység csatlakozás](./media/how-to-schedule-azure-ssis-integration-runtime/connect-wait-sproc.png)
-11. Egérrel a **webes** tevékenység jobb oldalán a **tárolt eljárás** tevékenység. A tevékenység nevének beállítása **StopIR**. 
+        -- Wait until Azure-SSIS IR is started
+        WHILE NOT EXISTS (SELECT * FROM [SSISDB].[catalog].[worker_agents] WHERE IsEnabled = 1 AND LastOnlineTime > DATEADD(MINUTE, -10, SYSDATETIMEOFFSET()))
+        BEGIN
+            WAITFOR DELAY '00:00:01';
+        END
+
+        EXEC @return_value = [SSISDB].[catalog].[create_execution] @folder_name=N'YourFolder',
+            @project_name=N'YourProject', @package_name=N'YourPackage',
+            @use32bitruntime=0, @runincluster=1, @useanyworker=1,
+            @execution_id=@exe_id OUTPUT 
+
+        EXEC [SSISDB].[catalog].[set_execution_parameter_value] @exe_id, @object_type=50, @parameter_name=N'SYNCHRONIZED', @parameter_value=1
+
+        EXEC [SSISDB].[catalog].[start_execution] @execution_id = @exe_id, @retry_count = 0
+
+        -- Raise an error for unsuccessful package execution, check package execution status = created (1)/running (2)/canceled (3)/failed (4)/
+        -- pending (5)/ended unexpectedly (6)/succeeded (7)/stopping (8)/completed (9) 
+        IF (SELECT [status] FROM [SSISDB].[catalog].[executions] WHERE execution_id = @exe_id) <> 7 
+        BEGIN
+            SET @err_msg=N'Your package execution did not succeed for execution ID: '+ CAST(@execution_id as nvarchar(20))
+            RAISERROR(@err_msg, 15, 1)
+        END
+
+        ```
+10. Csatlakozás a **webes** tevékenység és a **tárolt eljárás** tevékenység. 
+
+    ![Csatlakozás a webes és a tárolt eljárás tevékenység](./media/how-to-schedule-azure-ssis-integration-runtime/connect-web-sproc.png)
+
+11. A húzással egy másik **webes** tevékenység jobb oldalán a **tárolt eljárás** tevékenység. A tevékenység nevének beállítása **StopIR**. 
 12. Váltás a **beállítások** lapra a **tulajdonságok** ablakot, és a következő műveleteket hajthatja végre: 
 
     1. A **URL-cím**, illessze be, amely az Azure SSIS infravörös leállítja a webhook URL-címe 

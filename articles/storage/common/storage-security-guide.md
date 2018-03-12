@@ -2,35 +2,37 @@
 title: "Az Azure Storage biztonsági útmutatója |} Microsoft Docs"
 description: "A sok védelmének biztosítása az Azure Storage, beleértve többek között a Szerepalapú, Storage szolgáltatás titkosítási, ügyféloldali titkosítás, az SMB 3.0-s és Azure Disk Encryption adatokat."
 services: storage
-documentationcenter: .net
 author: tamram
-manager: timlt
-editor: tysonn
-ms.assetid: 6f931d94-ef5a-44c6-b1d9-8a3c9c327fb2
+manager: jeconnoc
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: dotnet
 ms.topic: article
-ms.date: 12/08/2016
+ms.date: 03/06/2018
 ms.author: tamram
-ms.openlocfilehash: 9cb109dd9ce5a14bb80be61577c10d7191ec5ce6
-ms.sourcegitcommit: 3fca41d1c978d4b9165666bb2a9a1fe2a13aabb6
+ms.openlocfilehash: e365c1c8abb3799805e715945e8b74292995c5ec
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="azure-storage-security-guide"></a>Az Azure Storage biztonsági útmutató
-## <a name="overview"></a>Áttekintés
-Az Azure Storage biztonsági képességeket, amelyek együtt lehetővé teszik a fejlesztők számára a biztonságos alkalmazások széles választékát nyújtja. A tárfiók magát a szerepköralapú hozzáférés-vezérlés és az Azure Active Directory használatával kell biztonságossá. Adatok védve legyenek az alkalmazás és az Azure közötti átvitel során használatával [ügyféloldali titkosítás](../storage-client-side-encryption.md), HTTPS és SMB 3.0-s. Adatok automatikusan titkosítja a írni az Azure Storage használatával állítható be [Storage Service Encryption (SSE)](storage-service-encryption.md). Virtuális gépek által használt operációsrendszer- és adatlemezek titkosítja megadható [Azure Disk Encryption](../../security/azure-security-disk-encryption.md). Meghatalmazott hozzáférést biztosít az adatok objektumok az Azure Storage használatával engedélyezhetők [megosztott hozzáférési aláírásokkal](../storage-dotnet-shared-access-signature-part-1.md).
 
-Ez a cikk nyújt áttekintést. az egyes szolgáltatások az Azure Storage használható. A hivatkozások akkor megadott cikket, amely az egyes szolgáltatások részleteit, egyszerűen tegye további vizsgálatra minden témakör.
+## <a name="overview"></a>Áttekintés
+
+Az Azure Storage biztonsági képességeket, amelyek együtt lehetővé teszik a fejlesztők számára a biztonságos alkalmazások széles választékát nyújtja:
+
+- Azure Storage írt összes adat automatikusan titkosítva van, használatával [Storage Service Encryption (SSE)](storage-service-encryption.md). További információkért lásd: [bejelentése alapértelmezett titkosítás Azure BLOB, fájlok, Table és Queue Storage](https://azure.microsoft.com/blog/announcing-default-encryption-for-azure-blobs-files-table-and-queue-storage/).
+- A tárfiók magát a szerepköralapú hozzáférés-vezérlés és az Azure Active Directory használatával kell biztonságossá. 
+- Adatok védve legyenek az alkalmazás és az Azure közötti átvitel során használatával [ügyféloldali titkosítás](../storage-client-side-encryption.md), HTTPS és SMB 3.0-s.  
+- Az Azure virtuális gépek által használt operációsrendszer- és adatlemezek segítségével titkosíthatók [Azure Disk Encryption](../../security/azure-security-disk-encryption.md). 
+- Meghatalmazott hozzáférést biztosít az adatok objektumok az Azure Storage használatával engedélyezhetők [megosztott hozzáférési aláírásokkal](../storage-dotnet-shared-access-signature-part-1.md).
+
+Ez a cikk áttekintést nyújt az egyes szolgáltatások az Azure Storage használható. A hivatkozások akkor megadott cikket, amely az egyes szolgáltatások részleteit, egyszerűen tegye további vizsgálatra minden témakör.
 
 Az alábbiakban a témakörök Ez a cikk tárgyalja:
 
 * [Felügyeleti Vezérlősík biztonsági](#management-plane-security) – a Tárfiók védelmének biztosítása
 
-  A felügyeleti vezérlősík a tárfiók kezelésére szolgáló erőforrások áll. Ebben a szakaszban lesz döntésről bővebben az Azure Resource Manager telepítési modell és a szerepköralapú hozzáférés-vezérlést (RBAC) használata a storage-fiókok való hozzáférés vezérlése érdekében. A tárfiókok kulcsait, és hogyan generálja újra őket kezelése is előadás.
+  A felügyeleti vezérlősík a tárfiók kezelésére szolgáló erőforrások áll. Ez a fejezet az Azure Resource Manager telepítési modell és a szerepköralapú hozzáférés-vezérlést (RBAC) használata a storage-fiókok való hozzáférés vezérlése érdekében. Is javítja a tárfiókok kulcsait, és hogyan generálja újra őket kezelése.
 * [Adatok biztonsági sík](#data-plane-security) – az adatok hozzáférésének biztonságossá tétele
 
   Ebben a szakaszban megnézzük, amely hozzáférést biztosít a tényleges adatok objektumok tárfiókba blobok, fájlok, üzenetsorokat és táblákat, például megosztott hozzáférési aláírásokkal és hozzáférési házirendek tárolja. Bemutatjuk a szolgáltatásiszint-SAS és a fiók szintű SAS. Azt is megtudhatja, hogyan korlátozhatja az egy adott IP-cím (vagy az IP-címek), hogyan legyen korlátozva a HTTPS protokoll és egy közös hozzáférésű Jogosultságkód visszavonása lejár való várakozás nélkül.
@@ -39,7 +41,7 @@ Az alábbiakban a témakörök Ez a cikk tárgyalja:
   Ez a szakasz tárgyalja biztosítani az adatokat, ha azt át virtuális gépbe vagy onnan Azure Storage. Ajánlott a HTTPS és a titkosítás, az Azure fájlmegosztások SMB 3.0 által használt használatáról lesz döntésről. Most elindítjuk ügyféloldali titkosítás, mely lehetővé teszi az adatok titkosítását az ügyfélalkalmazás továbbított a tárolóba és az adatok visszafejtéséhez után tárolási kivitt egy pillantást is.
 * [Titkosítás inaktív állapotban](#encryption-at-rest)
 
-  Az előadás Storage Service Encryption (SSE), és hogyan engedélyezi azt egy tárfiókot, ami azt eredményezi, a blokkblobokat, lapblobokat, és hozzáfűző blobok Azure tárhelyen, ha az automatikusan titkosított. Hogyan használja az Azure Disk Encryption, és megismerkedhet az alapvető különbséget és az adatok titkosítása és SSE ügyféloldali titkosítás és esetek is fog keresni. Röviden: a FIPS előírásainak való megfelelést az USA fog keresni Kormánya számítógépek.
+  Az előadás kapcsolatos Storage szolgáltatás titkosítási (SSE), amely automatikusan engedélyezve van az új és meglévő tárfiókokat. Hogyan használja az Azure Disk Encryption, és megismerkedhet az alapvető különbséget és az adatok titkosítása és SSE ügyféloldali titkosítás és esetek is fog keresni. Röviden: a FIPS előírásainak való megfelelést az USA fog keresni Kormánya számítógépek.
 * Használatával [tárolási analitika](#storage-analytics) az Azure Storage-hozzáférés naplózása
 
   Ez a szakasz ismerteti a storage analytics naplók megkeresése a kérelmek. Azt bemutatjuk vessen egy pillantást valós tárolási analitika naplóadatokat, lásd: how to megfejteni a behatolók, hogy a kérelem a Tárfiók hívóbetűjét, megosztott hozzáférési aláírással rendelkező vagy névtelenül, illetve hogy az sikeres vagy sikertelen volt.
@@ -55,7 +57,7 @@ Amikor létrehoz egy új tárfiókot, akkor klasszikus és Resource Manager tele
 Ez az útmutató a Resource Manager modellt, amely az ajánlott módszert storage-fiókok létrehozására összpontosít. Az erőforrás-kezelő storage-fiókok, nem pedig az egész előfizetésre amely elérésére, és szabályozhatja a hozzáférést a szerepköralapú hozzáférés-vezérlést (RBAC) használata felügyeleti és több véges szinten.
 
 ### <a name="how-to-secure-your-storage-account-with-role-based-access-control-rbac"></a>A storage-fiókkal, és a szerepköralapú hozzáférés-vezérlést (RBAC) biztonságossá tétele
-Most szolgáltatással kapcsolatban RBAC van, és hogyan használhatja azt. Minden Azure-előfizetés Azure Active Directoryval rendelkezik. Felhasználók, csoportok és alkalmazások tartalmazza a hozzáférési engedélyt kapnak az Azure-előfizetés a Resource Manager üzembe helyezési modellel használó erőforrások kezelésére. A szerepköralapú hozzáférés-vezérlést (RBAC) nevezzük. A hozzáférés kezeléséhez használja a [Azure-portálon](https://portal.azure.com/), a [Azure CLI-eszközei](../../cli-install-nodejs.md), [PowerShell](/powershell/azureps-cmdlets-docs), vagy a [Azure Storage erőforrás szolgáltató REST API-k](https://msdn.microsoft.com/library/azure/mt163683.aspx).
+Most szolgáltatással kapcsolatban RBAC van, és hogyan használhatja azt. Minden Azure-előfizetés Azure Active Directoryval rendelkezik. Felhasználók, csoportok és alkalmazások tartalmazza a hozzáférési engedélyt kapnak az Azure-előfizetés a Resource Manager üzembe helyezési modellel használó erőforrások kezelésére. Az ilyen típusú biztonsági szerepköralapú hozzáférés-vezérlést (RBAC) hivatkozunk. A hozzáférés kezeléséhez használja a [Azure-portálon](https://portal.azure.com/), a [Azure CLI-eszközei](../../cli-install-nodejs.md), [PowerShell](/powershell/azureps-cmdlets-docs), vagy a [Azure Storage erőforrás szolgáltató REST API-k](https://msdn.microsoft.com/library/azure/mt163683.aspx).
 
 A Resource Manager modellt helyezett a tárfiók egy erőforrás-csoport és a vezérlés hozzáférés és azon az Azure Active Directoryval bizonyos tárolási fiók kezelése. Például biztosíthat bizonyos felhasználók a tárfiókok kulcsait, elérését, amíg más felhasználók megtekinthetik a tárfiók adatait, de nem tud hozzáférni a tárfiók kulcsait.
 
@@ -68,7 +70,7 @@ Az alábbiakban a fő pontokat, meg kell ismernie az RBAC használata a kezelés
 * Mások számára, hogy rendelkezik hozzáféréssel a data objects a tárfiókban lévő őket engedélyt adhat a tárfiókkulcsokat olvasni, és, hogy a felhasználó használhatja ezeknek a kulcsoknak a BLOB, a várólisták, a táblák és a fájlok eléréséhez.
 * Szerepkörök rendelhetők hozzá egy adott felhasználói fiók, a felhasználók egy csoportját, vagy egy adott alkalmazáshoz.
 * Minden szerepkörhöz műveletek és a nem műveletek listáját. Például a virtuális gép közreműködő szerepkörrel rendelkezik "listKeys" művelet, amely lehetővé teszi, hogy a tárfiók kulcsait kell olvasni. A közreműködői "Nem műveletek" rendelkezik, ilyen például az Active Directory felhasználók hozzáférésének frissítés.
-* Tárolási szerepkörei tartalmazzák (azonban nem csak) a következő:
+* Tárolási szerepkörei tartalmazzák (azonban nem csak) a következő szerepkörök:
 
   * Tulajdonos – azok mindent felügyelhetnek, beleértve a hozzáférést.
   * Közreműködő – azok is végrehajthat a tulajdonos is kivéve hozzáférés hozzárendelése. Ezzel a szerepkörrel rendelkező bármely személy megtekintheti, és a tárfiókkulcsok újragenerálása. A tárfiókok kulcsait, az adatok objektumok eléréséhez.
@@ -79,10 +81,10 @@ Az alábbiakban a fő pontokat, meg kell ismernie az RBAC használata a kezelés
 
     Ahhoz, hogy a felhasználót, hogy a virtuális gép létrehozása rendelkeznek a megfelelő VHD-fájlt létrehozni a tárfiók. Ehhez kell tudni lekérni a tárfiók hívóbetűjét, és adja át az API-t a virtuális gép létrehozása. Ezért ezek is listázhatja a tárfiókkulcsokat, ezzel az engedéllyel kell rendelkezniük.
 * Egyéni szerepkörök definiálása nem olyan funkció, amely lehetővé teszi a különböző műveleteket listájából elérhető Azure-erőforrások a végrehajtható műveletek összeállításához.
-* A felhasználó rendelkezik-e beállítása az Azure Active Directoryban előtt szerepkör rendelhet hozzájuk.
+* A felhasználó kell előtt be kell állítania az Azure Active Directoryban egy szerepkör rendelhet hozzájuk.
 * Ki megadott vagy visszavont milyen típusú hozzáférést és a akinek, és milyen hatókörben, a PowerShell vagy az Azure parancssori felület jelentést hozhat létre.
 
-#### <a name="resources"></a>Erőforrások
+#### <a name="resources"></a>További források
 * [Azure Active Directory szerepköralapú hozzáférés-vezérlése](../../active-directory/role-based-access-control-configure.md)
 
   Ez a cikk az Azure Active Directory szerepkörön alapuló hozzáférés-vezérlését és annak működési módját ismerteti.
@@ -97,7 +99,7 @@ Az alábbiakban a fő pontokat, meg kell ismernie az RBAC használata a kezelés
   Ez a cikk leírja, hogyan használható a REST API az RBAC kezeléséhez.
 * [Az Azure Storage erőforrás szolgáltató REST API-referencia](https://msdn.microsoft.com/library/azure/mt163683.aspx)
 
-  Ez egy, az API-k segítségével a tárfiók kezelése programozott módon mutató hivatkozás.
+  Az API-referencia az API-k segítségével a tárfiók kezelése programozott módon ismerteti.
 * [A hitelesítés az Azure Resource Manager API-JÁVAL fejlesztői útmutató](http://www.dushyantgill.com/blog/2015/05/23/developers-guide-to-auth-with-azure-resource-manager-api/)
 
   Ez a cikk bemutatja, hogyan hitelesítheti a Resource Manager API-k használatával.
@@ -106,7 +108,7 @@ Az alábbiakban a fő pontokat, meg kell ismernie az RBAC használata a kezelés
   Ez a hivatkozás a Channel 9 2015-ös MS Ignite-konferencia videójára mutat. Ebben a részben arról beszélnek, milyen hozzáférés-kezelési és jelentési képességeket nyújt az Azure, és bemutatják az Azure-előfizetés hozzáférés-biztosításának legjobb gyakorlatait az Azure Active Directory használatával.
 
 ### <a name="managing-your-storage-account-keys"></a>A Tárfiók kulcsait kezelése
-Tárfiókkulcsok olyan hozta létre, amely a tárfiók nevét, valamint a tárfiókban tárolt adatok objektumok eléréséhez használható, például blobok, egy táblát, üzenetsor-üzeneteket és Azure File megosztáson belüli Azure 512 bites karakterláncok. A tárolási fiók kulcsok szabályozza a hozzáférést az adatok vezérlősík tárolási fiók hozzáférés szabályozása.
+Tárfiókkulcsok olyan Azure használható, a tárfiók nevét, valamint az adatok objektumokhoz, például a tárfiókban tárolt, blobok, egy táblát, üzenetsor-üzeneteket és Azure File megosztáson belüli által létrehozott 512 bites karakterláncok. A tárolási fiók kulcsok szabályozza a hozzáférést az adatok vezérlősík tárolási fiók hozzáférés szabályozása.
 
 Minden tárfiók néven "1. kulcs" és "Kulcs 2" a két kulcs van a [Azure-portálon](http://portal.azure.com/) és a PowerShell-parancsmagokkal. Ezek helyreállíthatja segítségével többféle módszer, beleértve, de nem kizárólagosan használatával manuálisan a [Azure-portálon](https://portal.azure.com/), PowerShell, az Azure CLI vagy programozott módon, a .NET a Storage ügyféloldali kódtára vagy az Azure Storage szolgáltatások REST API felülete.
 
@@ -119,9 +121,9 @@ Tetszőleges számú újragenerálni a tárfiókkulcsokat okok miatt van.
 #### <a name="key-regeneration-plan"></a>Kulcs újragenerálása terv
 Nem kívánja most újragenerálja a kulcsot, néhány tervezés nélkül használ. Ha így tesz, akkor a tárolási fiók, amely súlyos problémákat okozhat levágási sikerült minden hozzáférés. Ezért két kulcs van. Egyszerre csak egy kulcs kell generálni.
 
-Mielőtt újragenerálja a kulcsokat, mindenképpen az alkalmazásokat, amelyek a tárfiók függenek, valamint használ az Azure-szolgáltatások listáját. Például ha a tárfiók függő Azure Media Services használ, újra kell szinkronizálnia a tárelérési kulcsokat a médiaszolgáltatással után újragenerálja a kulcsot. Az alkalmazásokat, például a Tártallózó alkalmazással használ, ha szüksége lesz arra, hogy ezeket az alkalmazásokat, valamint az új kulccsal. Vegye figyelembe, hogy ha virtuális gépeket, amelyek VHD-fájlokat a tárfiók vannak tárolva, nem vonatkoznak rá a tárfiókkulcsok újragenerálása által.
+Mielőtt újragenerálja a kulcsokat, mindenképpen az alkalmazásokat, amelyek a tárfiók függenek, valamint használ az Azure-szolgáltatások listáját. Például a tárfiók függő Azure Media Services használ, ha meg kell újraszinkronizálásra a tárelérési kulcsokat a médiaszolgáltatással után újragenerálja a kulcsot. Az alkalmazásokat, például a Tártallózó alkalmazással használ, ha szüksége lesz arra, hogy ezeket az alkalmazásokat, valamint az új kulccsal. Ha virtuális gépeket, amelyek VHD-fájlokat a tárfiók vannak tárolva, nem vonatkoznak rá a tárfiókkulcsok újragenerálása által.
 
-A kulcsok az Azure-portálon állíthatja helyre. Miután kulcsok újragenerálása van azok tárolási szolgáltatások közötti szinkronizálását. legfeljebb 10 percig is tarthat.
+A kulcsok az Azure-portálon állíthatja helyre. Miután a rendszer hozza újra létre a kulcsok vannak, azok tárolási szolgáltatások közötti szinkronizálását. legfeljebb 10 percig is tarthat.
 
 Ha elkészült, ez az általános folyamat, és részletesen leírja, hogyan kell módosítani a kulcsot. Ebben az esetben a feltételezi, hogy jelenleg használt kulcs 1, és mindent kulcs 2 inkább módosítani kívánja.
 
@@ -141,7 +143,7 @@ Egy másik Azure Key Vault előnye is szabályozhatja a hozzáférést a kulcsok
 
 Megjegyzés: ajánlott használni a kulcsok közül csak az alkalmazásokat egy időben. Az egyes helyek kulcs 1 és más kulcs 2 használatakor csak akkor tudja forgassa el a kulcsok egy alkalmazás-hozzáférés elvesztése nélkül.
 
-#### <a name="resources"></a>Erőforrások
+#### <a name="resources"></a>További források
 * [Az Azure Storage-fiókokról](storage-create-storage-account.md#regenerate-storage-access-keys)
 
   A cikk áttekintést nyújt a tárfiókok, valamint ismerteti a megtekintése, másolása és tárelérési kulcsok újragenerálása.
@@ -213,28 +215,28 @@ Például a fenti URL-cím, a Ha az URL-cím helyett egy blobot egy fájlba lett
 * Egy fiók szintű SAS használatával lehet hozzáférni, amelyeket a szolgáltatásiszint-SAS-kód nem használható. Emellett biztosíthat a beállítások nem használhatók együtt egy szolgáltatási szint SAS-tárolók, táblák, üzenetsorok és fájlmegosztások létrehozásához például erőforrásokhoz. Több szolgáltatásokhoz való hozzáférés egyszerre is megadható. Például előfordulhat, hogy adjon valaki blobok és a tárfiókban lévő fájlok elérését.
 
 #### <a name="creating-an-sas-uri"></a>Egy SAS URI-azonosító létrehozása
-1. Létrehozhat egy ad hoc URI az igény szerinti meghatározása a lekérdezési paraméterek mindegyikét minden alkalommal, amikor.
+1. Létrehozhat egy URI-t az igény szerinti meghatározása a lekérdezési paraméterek mindegyikét minden alkalommal, amikor.
 
-   Ez valóban rugalmas, de ha egy olyan logikai készlete, amelyek hasonló minden alkalommal, amikor paraméterek, a tárolt házirend használata segítenek meghatározni.
-2. A tárolt hozzáférési házirend egy teljes tárolóhoz, a fájlmegosztásokhoz, a tábla vagy a várólista hozhat létre. Majd ezzel a alapjául a SAS URI azonosítók hoz létre. Engedélyek tárolt hozzáférési házirendek alapján könnyen visszavonhatók. Minden egyes tároló, a várólista, a tábla vagy a fájlmegosztás definiált legfeljebb 5 házirendek lehet.
+   Ez a megközelítés rugalmas, de ha egy olyan logikai készlete, amelyek hasonló minden alkalommal, amikor paraméterek, a tárolt házirend használatával segítenek meghatározni.
+2. A tárolt hozzáférési házirend egy teljes tárolóhoz, a fájlmegosztásokhoz, a tábla vagy a várólista hozhat létre. Majd ezzel a alapjául a SAS URI azonosítók hoz létre. Engedélyek tárolt hozzáférési házirendek alapján könnyen visszavonhatók. Minden egyes tároló, a várólista, a tábla vagy a fájlmegosztás definiált legfeljebb öt házirendek lehet.
 
    Például ha szeretné, hogy egy adott tárolóban lévő blobok olvasási sokan volt is, létrehozhat egy tárolt hozzáférési házirend, amely szerint a "olvasási hozzáférést" és a ugyanaz lesz minden alkalommal, amikor egyéb beállításait. Ezután egy SAS URI azonosítója a tárolt házirend beállításainak használatával, és a lejárati dátum és idő megadása is létrehozhat. Ennek előnye, hogy ne kelljen adja meg az összes lekérdezési paraméterekhez minden alkalommal.
 
 #### <a name="revocation"></a>Visszavonási
 Tegyük fel, hogy a biztonsági Társítások biztonsága sérült, vagy módosítja azt a vállalati biztonsági vagy az előírásoknak való megfelelés követelmények miatt. Hogyan, visszavonhatja a hozzáférést egy erőforráshoz, hogy a SAS használatával? Függ, hogyan hozza létre a SAS URI-t.
 
-Ha ad hoc URI használata esetén lehetősége van három. SAS-tokenje rövid lejárati házirendek adja ki, és egyszerűen Várjon, amíg a SAS lejár. Nevezze át vagy törölje az erőforrást (feltéve, hogy a jogkivonat egy adott objektum lett hatóköre) is. Módosíthatja a tárfiók kulcsait. Az utolsó lehetőség nagy hatással lehet, attól függően, hogy hány szolgáltatásokat használ, hogy a tárfiók, és valószínűleg nem valami néhány tervezés nélkül szeretné.
+Ha ad hoc URI-azonosítók használata esetén lehetősége van három. SAS-tokenje rövid lejárati házirendek adja ki, és várja meg, a biztonsági Társítások lejár. Nevezze át vagy törölje az erőforrást (feltéve, hogy a jogkivonat egy adott objektum lett hatóköre) is. Módosíthatja a tárfiók kulcsait. Az utolsó lehetőség jelentős hatással lehet, attól függően, hogy hány szolgáltatásokat használ, hogy a tárfiók, és valószínűleg nem valami néhány tervezés nélkül szeretné.
 
 A tárolt házirend származó SAS használatakor is eltávolíthat, hozzáférés visszavonása a tárolt házirend – ugyanúgy módosíthatja, már lejárt, vagy távolítsa el az egész. Ez azonnal érvénybe lép, és minden SAS létre adott tárolt házirend érvényteleníti. Frissítése, vagy a tárolt házirend eltávolítása is hatás férnek hozzá a meghatározott tárolóban, megosztott fájl tábla, vagy várólista keresztül SAS, ha az ügyfelek készültek, így egy új SAS kérnek, ha a régit válik érvénytelen, de ez működnek jól.
 
 A tárolt házirend származó SAS használatával lehetővé teszi az adott SAS azonnal visszavonni, mert az ajánlott mindig használjon tárolt hozzáférési házirendek lehetőség.
 
-#### <a name="resources"></a>Erőforrások
-További részletes információt a megosztott hozzáférési aláírásokkal és tárolt hozzáférési házirendeket, kész, de példák olvassa el a következő cikkeket:
+#### <a name="resources"></a>További források
+További részletes információt a megosztott hozzáférési aláírásokkal és tárolt hozzáférési házirendeket, kész, de példák tekintse meg a következő cikkeket:
 
 * Ezek azok a útmutatót.
 
-  * [Szolgáltatásalapú SAS](https://msdn.microsoft.com/library/dn140256.aspx)
+  * [Service SAS](https://msdn.microsoft.com/library/dn140256.aspx)
 
     Ez a cikk egy szolgáltatási szint SAS használatával blobokat, az üzenetsor-üzeneteket, a tábla tartományokkal és a fájlok példákat.
   * [A szolgáltatásalapú SAS létrehozása](https://msdn.microsoft.com/library/dn140255.aspx)
@@ -246,7 +248,7 @@ További részletes információt a megosztott hozzáférési aláírásokkal é
 
     Ez a cikk tartalmazza a SAS-modell, megosztott hozzáférési aláírásokkal, például annak magyarázatát, és az ajánlott eljárás javaslatok SAS használja. Azt is ismertetjük, a megadott engedélyeket visszavonását.
 
-* Authentication
+* Hitelesítés
 
   * [Az Azure Storage szolgáltatásainak hitelesítése](https://msdn.microsoft.com/library/azure/dd179428.aspx)
 * Közös hozzáférésű Jogosultságkód első lépések útmutató
@@ -262,13 +264,13 @@ Ahhoz, hogy egy biztonságos kommunikációs csatornát, mindig használandó HT
 Amikor tárfiókok engedélyezésével történt a REST API-k elérésére objektumokat a HTTPS használata kényszerítheti [szükséges átviteli biztonságos](../storage-require-secure-transfer.md) a tárfiók. Ha ez engedélyezve van a kapcsolatok HTTP-n keresztül program elutasítja.
 
 ### <a name="using-encryption-during-transit-with-azure-file-shares"></a>Az Azure fájlmegosztások titkosítással továbbítás során
-Az Azure Files támogatja a HTTPS PROTOKOLLT, ha a REST API használatával, de több általánosan használt SMB-fájlmegosztás a virtuális Géphez van csatolva. SMB 2.1 nem támogatja a titkosítást, tehát kapcsolatokat csak az Azure-ban ugyanabban a régióban belül engedélyezett. Azonban az SMB 3.0 támogatja a titkosítást, és elérhető a Windows Server 2012 R2, Windows 8, Windows 8.1 és Windows 10, lehetővé téve a kereszt-régió eléréséhez, és akkor is igaz, az asztalon hozzáférést.
+Az Azure Files támogatja a HTTPS PROTOKOLLT, ha a REST API használatával, de több általánosan használt SMB-fájlmegosztás a virtuális Géphez van csatolva. SMB 2.1 nem támogatja a titkosítást, tehát kapcsolatokat csak az Azure-ban ugyanabban a régióban belül engedélyezett. Azonban az SMB 3.0 támogatja a titkosítást, és a Windows Server 2012 R2, Windows 8, Windows 8.1 és Windows 10, lehetővé téve a kereszt-régió hozzáférés és a hozzáférés az asztalon érhető el.
 
-Vegye figyelembe, hogy az Azure fájlmegosztások Unix használható, amíg a Linux SMB-ügyfél még támogatja a titkosítást, így csak elérését az Azure-régiót belül. Linux titkosítás támogatása van Linux fejlesztők SMB funkció felelős a programba. Titkosítási adnak hozzá, amikor Ön fog rendelkezésre áll a Linux Azure fájlmegosztás eléréséhez a Windows.
+Az Azure fájlmegosztások Unix használható, amíg a Linux SMB-ügyfél még támogatja a titkosítást, így csak elérését az Azure-régiót belül. Linux titkosítás támogatása van Linux fejlesztők SMB funkció felelős a programba. Titkosítási adnak hozzá, amikor Ön fog rendelkezésre áll a Linux Azure fájlmegosztás eléréséhez a Windows.
 
 A rendszer az Azure-fájlok szolgáltatással titkosítás kényszerítheti a engedélyezésével [szükséges átviteli biztonságos](../storage-require-secure-transfer.md) a tárfiók. A REST API-k használata, ha HTTPs megadása kötelező. Az SMB-csak SMB-kapcsolatok, amely támogatja a titkosítást az sikeresen fog csatlakozni.
 
-#### <a name="resources"></a>Erőforrások
+#### <a name="resources"></a>További források
 * [Az Azure Files bemutatása](../files/storage-files-introduction.md)
 * [A Windows Azure-fájlok az első lépései](../files/storage-how-to-use-files-windows.md)
 
@@ -284,35 +286,30 @@ Egy másik lehetőség, amelynek segítségével győződjön meg arról, hogy a
 Ügyféloldali titkosítás egyben inaktív, az adatok titkosítására, a titkosított formában tárolja az adatokat. Lesz döntésről bővebben Ez a szakasz részletesen a [titkosítását](#encryption-at-rest).
 
 ## <a name="encryption-at-rest"></a>Aktívan titkosítása
-Nincsenek három Azure szolgáltatást biztosító titkosítását. Az Azure Disk Encryption az operációsrendszer- és adatlemezek IaaS virtuális gépek titkosítására szolgál. A másik két – ügyféloldali titkosítás és SSE – amelyek mind az Azure Storage-adatok titkosítására használt. Most ezen, tekintse meg a összehasonlítása és tekintse meg, ha azok már nem használható.
+Nincsenek három Azure szolgáltatást biztosító titkosítását. Az Azure Disk Encryption az operációsrendszer- és adatlemezek IaaS virtuális gépek titkosítására szolgál. Ügyféloldali titkosítás és SSE is használják az Azure Storage-adatok titkosítására. 
 
-Ügyféloldali titkosítás használhatja az adattitkosítást átvitel közben (amely a tárolási titkosítás nélkül is tárol), célszerű lehet egyszerűen az átvitel közben HTTPS PROTOKOLLT használja, és az adatok titkosításához automatikusan tárolt néhány lehetőség. Két módon ehhez--Azure Disk Encryption és SSE. Közvetlenül a virtuális gépek által használt operációsrendszer- és adatlemezek az adatok titkosításához használt egyik, és az egyéb Azure Blob Storage írt adatok titkosítására szolgál.
+Ügyféloldali titkosítás használhatja az adattitkosítást átvitel közben (amely a tárolási titkosítás nélkül is tárol), célszerű lehet az átvitel közben HTTPS használja, és az adatok titkosításához automatikusan tárolt bármilyen módon. Két módon ehhez--Azure Disk Encryption és SSE. Közvetlenül a virtuális gépek által használt operációsrendszer- és adatlemezek az adatok titkosításához használt egyik, és az egyéb Azure Blob Storage írt adatok titkosítására szolgál.
 
-### <a name="storage-service-encryption-sse"></a>Storage szolgáltatás titkosítási (SSE)
-SSE lehetővé teszi, hogy a társzolgáltatás automatikusan titkosítja az adatokat, az Azure Storage írásakor. Olvasásakor az adatok Azure Storage-ból, azt a rendszer visszafejti a tároló szolgáltatás által visszaadott előtt. Ez lehetővé teszi, hogy az adatok védelme anélkül, hogy a kód módosítására, vagy adja hozzá a kódot az alkalmazásokat.
+### <a name="storage-service-encryption-sse"></a>Storage Service Encryption (SSE)
 
-Ez az a beállítást, amely a teljes tárfiókot vonatkozik. Engedélyezi, és a beállítás értékének módosításával letilthatja ezt a funkciót. Ehhez használhatja az Azure-portálon, PowerShell, az Azure parancssori felület, a tárolási erőforrás-szolgáltató REST API vagy a .NET a Storage ügyféloldali kódtára. Alapértelmezés szerint az SSE ki van kapcsolva.
+SSE engedélyezve van az összes tárfiók, és nem tiltható le. SSE automatikusan titkosítja az adatokat, az Azure Storage írásakor. Azure Storage adatokat olvasni, amikor az visszafejti Azure Storage előtt ad vissza. SSE lehetővé teszi az adatok anélkül, hogy a kód módosítására, vagy adja hozzá a kódot az alkalmazásokat.
 
-Ilyenkor a titkosításához használt kulcsok a Microsoft által felügyelt. Azt a kulcsok létrehozásához eredetileg, és tárolja biztonságos kulcsok, valamint rendszeres elforgatási belső Microsoft házirend által definiált konfigurációjának kialakításához. A jövőben meg fog képes kezelni a saját titkosítási kulcsok lekérése, és adja meg a Microsoft által felügyelt kulcsok áttelepítési elérési kulcsok ügyfél által felügyelt.
+A Microsoft által felügyelt SSE használt kulcsokkal. Microsoft eredetileg állít elő, a kulcsok és a biztonságos tárolására, valamint a rendszeres Elforgatás belső Microsoft házirend által meghatározott kezeli. Ügyfél által felügyelt kulcsok végül lesz elérhető, a Microsoft által felügyelt kulcsok áttelepítési elérési kulcsok ügyfél által felügyelt együtt.
 
-Ez a funkció a Resource Manager telepítési modellel készült Standard és prémium szintű Storage-fiókok érhető el. Adatok bármilyen érvényes SSE: blokkblobokat, lapblobokat, hozzáfűző blobokat, táblák, üzenetsorok és fájlokat.
+SSE automatikusan titkosítja az összes teljesítmény rétegek (Standard és prémium), minden üzembe helyezési modellel (Azure Resource Manager és klasszikus) és az összes Azure Storage szolgáltatás (Blob, várólista, a táblának és fájl). 
 
-Adatok titkosítása csak egy, ha SSE engedélyezve van, és az adatok kerülnek a Blob Storage. Engedélyezés vagy letiltás SSE nem befolyásolja a meglévő adatokat. Ez azt jelenti Ha engedélyezi ezt a titkosítást, nem lépjen vissza, és már létező; adatok titkosítása sem fog visszafejteni az adatokat, már létező SSE letiltásakor.
-
-Ha szeretne egy klasszikus tárfiókot használja ezt a szolgáltatást, hozzon létre egy új erőforrás-kezelő tárfiókot, és másolja az adatokat az új fiók az AzCopy segítségével.
-
-### <a name="client-side-encryption"></a>Ügyféloldali titkosítás
+### <a name="client-side-encryption"></a>Client-side Encryption
 Ügyféloldali titkosítás azt említett, az adatok átvitele történik a titkosítás ismertetésekor. Ez a funkció lehetővé teszi a programozott módon az ügyfélalkalmazás mielőtt elküldené a hálózaton keresztül Azure Storage kellene írni, és szoftveres visszafejteni az adatok beolvasása az Azure Storage-ból után az adatok titkosítását.
 
-Így a titkosítás az átvitel során, de aktívan titkosítás funkciót is biztosít. Vegye figyelembe, hogy bár az adatok titkosítása az átvitel során, ajánlott előnyeit, amelyek segítenek az adatok integritásának érintő hálózati hibák beépített adatok integritás-ellenőrzést a HTTPS protokoll használatával.
+Így a titkosítás az átvitel során, de aktívan titkosítás funkciót is biztosít. Bár az adatok titkosítása az átvitel során, ajánlott a beépített adatok integritás-ellenőrzést, amelyekkel csökkenthető annak az adatok integritásának érintő hálózati hibák előnyeinek kihasználása érdekében a HTTPS protokoll használatával.
 
 Amennyiben ezzel például ha egy webes alkalmazás, amely BLOB tárolja, és lekéri a blobok, de azt szeretné, hogy az alkalmazás és az adatok a biztonságos lehető. Ebben az esetben használja az ügyféloldali titkosítás. A forgalom között az ügyfél és az Azure Blob szolgáltatás a titkosított erőforrást tartalmaz, és senki sem értelmezheti az adatokat átvitel közben, és a titkos blobok pótlására azt.
 
-Ügyféloldali titkosítás a Java és a .NET storage ügyfélkódtáraival, amelyek viszont a Azure kulcs tároló API-k, így ahhoz, hogy implementálja igen egyszerű van beépítve. Az adatok titkosítása és visszafejtése folyamatán a boríték módszerrel, és a titkosítás, az egyes tárolási objektum által használt metaadatokat tárol. Például a blobok, tárol, a blob metaadatai között, a várólisták, azt hozzáadja azt minden sor üzenetet.
+Ügyféloldali titkosítás a Java és a .NET storage ügyfélkódtáraival, amelyek viszont a Azure kulcs tároló API-k, így könnyen megvalósítása van beépítve. Az adatok titkosítása és visszafejtése folyamatán a boríték módszerrel, és a titkosítás, az egyes tárolási objektum által használt metaadatokat tárol. Például a blobok, tárol, a blob metaadatai között, a várólisták, azt hozzáadja azt minden sor üzenetet.
 
 A titkosítási magát Ön hozza létre és a saját titkosítási kulcsok kezeléséhez. Használhatja az Azure Storage ügyféloldali kódtár által létrehozott kulcsok, vagy beállíthatja, hogy az Azure Key Vault a kulcsok létrehozásához. A titkosítási kulcsok tárolása a helyszíni kulcstároló, vagy tárolhatja őket az Azure Key Vault. Az Azure Key Vault lehetővé teszi a titkos kulcsok Azure Key Vault a hozzáférést az adott felhasználóknak, az Azure Active Directoryval. Ez azt jelenti, hogy birtokában bárki nem csak az Azure Key Vault olvasni, valamint használata ügyféloldali titkosítási kulcsok.
 
-#### <a name="resources"></a>Erőforrások
+#### <a name="resources"></a>További források
 * [Titkosításához és visszafejtéséhez az Azure Key Vault használatával a Microsoft Azure Storage blobs](../blobs/storage-encrypt-decrypt-blobs-key-vault.md)
 
   Ez a cikk bemutatja, hogyan ügyféloldali titkosítás használata az Azure Key Vault, többek között a KEK létrehozása és a PowerShell használatával tárolóban tárolja.
@@ -353,38 +350,39 @@ A megoldás nem támogatja a következő forgatókönyvek, szolgáltatások és 
 
 Ez a szolgáltatás biztosítja, hogy a virtuális gépek lemezeit a összes adata titkosításra kerül-e az Azure Storage aktívan.
 
-#### <a name="resources"></a>Erőforrások
+#### <a name="resources"></a>További források
 * [Windows és Linux IaaS virtuális gépeket az Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption)
 
 ### <a name="comparison-of-azure-disk-encryption-sse-and-client-side-encryption"></a>Az Azure Disk Encryption, az SSE és az ügyféloldali titkosítás összehasonlítása
-#### <a name="iaas-vms-and-their-vhd-files"></a>Infrastruktúra-szolgáltatási virtuális gépek és a VHD-fájlok
-Infrastruktúra-szolgáltatási virtuális gépek által használt lemezek azt javasoljuk, Azure Disk Encryption. Az Azure Storage lemezek biztonsági használt VHD-fájlok titkosítására SSE bekapcsolása, de csak titkosítja a újonnan írt adatok. Ez azt jelenti, hogy hozzon létre egy virtuális Gépet, és engedélyez SSE a tárfiók, amely a VHD-fájl tárolja, ha csak a módosítása titkosítja, nem az eredeti VHD-fájlt.
 
-Ha Ön egy virtuális gép létrehozása lemezkép az Azure piactérről, az Azure-ban egy [másolási sekély](https://en.wikipedia.org/wiki/Object_copying) a kép a tárolási fiók az Azure Storage, és nem titkosított akkor is, ha az SSE engedélyezve van. Miután a virtuális Gépet hoz létre, és elindítja a lemezkép frissítése, SSE indul el az adatok titkosításához. Emiatt érdemes használni az Azure Disk Encryption szeretné teljesen titkosítottak, a lemezképek az Azure piactéren alapján létrehozott virtuális gépeken.
+#### <a name="iaas-vms-and-their-vhd-files"></a>Infrastruktúra-szolgáltatási virtuális gépek és a VHD-fájlok
+
+Az adatlemezek IaaS virtuális gépek által használt az Azure Disk Encryption ajánlott. Ha Ön egy virtuális gép létrehozása lemezkép az Azure piactérről, az Azure-ban egy [másolási sekély](https://en.wikipedia.org/wiki/Object_copying) a kép a tárolási fiók az Azure Storage, és nem titkosított akkor is, ha az SSE engedélyezve van. Miután a virtuális Gépet hoz létre, és elindítja a lemezkép frissítése, SSE indul el az adatok titkosításához. Emiatt érdemes használni az Azure Disk Encryption szeretné teljesen titkosítottak, a lemezképek az Azure piactéren alapján létrehozott virtuális gépeken.
 
 Ha később egy előre titkosított virtuális Gépet az Azure a helyszíni, lesz, a titkosítási kulcsok feltöltése az Azure Key Vaultba, és továbbra is a titkosítást használni ezt a virtuális gépet, hogy a helyszínen használt. Az Azure Disk Encryption engedélyezve van ez a forgatókönyv kezelésére.
 
 Ha virtuális merevlemez nem titkosított a helyszíni, töltse fel az egyéni lemezképként gyűjteménye, és a virtuális gép kiépítéséhez. Ehhez a Resource Manager-sablonok használatával, kérje meg, hogy a virtuális gép elinduló Azure Disk Encryption bekapcsolás.
 
-Ha hozzá adatlemezt, és csatlakoztassa azt a virtuális Gépet, a lemezen levő adatok bekapcsolhatja Azure Disk Encryption. Először titkosítja az adott adatok lemezek helyi, és hogy a szolgáltatás felügyeleti réteg válasszon lehetőségek elleni tárolási Lusta írási, a tárolási tartalom titkosított.
+Ha hozzá adatlemezt, és csatlakoztassa azt a virtuális Gépet, a lemezen levő adatok bekapcsolhatja Azure Disk Encryption. Először titkosítja az adott adatok lemezek helyi, és a klasszikus üzembe helyezési modell rétege fogja tegye elleni tárolási Lusta írási, a tárolási tartalom titkosított.
 
 #### <a name="client-side-encryption"></a>Ügyféloldali titkosítás
-Ügyféloldali titkosítás a legbiztonságosabb lehetőség titkosítja az adatokat, mert átvitel előtt titkosítja azokat, és titkosítja az adatokat aktívan. Azonban ez nem igényel kód hozzáadása az alkalmazások, a tároló, amely előfordulhat, hogy nem szeretné. Ezekben az esetekben HTTPs használhatja az adatok az átvitel során, és SSE az inaktív adatok titkosítása.
+Ügyféloldali titkosítás nem az adatok titkosítása a legbiztonságosabb módszer, mert azt titkosítja az adatokat átvitel közben előtt.  Azonban ez nem igényel kód hozzáadása az alkalmazások, a tároló, amely előfordulhat, hogy nem szeretné. Ezekben az esetekben a HTTPS használatával az átvitel során az adatok védelme. Amennyiben az adatok Azure Storage ér el, a SSE titkosítás.
 
-Az ügyféloldali titkosítással táblaentitásokat, az üzenetsor-üzeneteket és a blobok titkosíthatók. Az SSE blobok csak titkosíthatja. Ha módosítania kell, hogy a tábla- és várólista adatok titkosításához, ügyféloldali titkosítás kell használnia.
+Az ügyféloldali titkosítással táblaentitásokat, az üzenetsor-üzeneteket és a blobok titkosíthatók. 
 
 Ügyféloldali titkosítás teljes mértékben az alkalmazás kezeli. Ez a legbiztonságosabb módszer, de kell programozott módosítja az alkalmazás és kulcskezelés folyamatok vezetnek be. Használja ezt a további biztonsági átvitel során, és azt szeretné, hogy a tárolt adatok titkosításához.
 
 Ügyféloldali titkosítás nagyobb terhelést az ügyfélen, és különösen akkor, ha titkosított és nagy mennyiségű adat átvitele a méretezhetőség tervek a fiókot, hogy.
 
-#### <a name="storage-service-encryption-sse"></a>Storage szolgáltatás titkosítási (SSE)
-Azure Storage SSE kezeli. SSE használatával nem biztosítja a biztonsági adatok az átvitel során, de az adatok titkosítása, Azure Storage változatlan formában. Nincs hatással a teljesítményre gyakorolt a szolgáltatás használata során.
+#### <a name="storage-service-encryption-sse"></a>Storage Service Encryption (SSE)
+
+Azure Storage SSE kezeli. SSE nem biztosítja a biztonsági adatok az átvitel során, de az adatok titkosítása, Azure Storage változatlan formában. Nincs hatással az SSE teljesítményét.
 
 Titkosíthatja az adatokat a tárfiók SSE használatával bármilyen típusú (blokkblobokat, hozzáfűző blobokat, a lapblobokat, a tábla adatai, a várólista adatok és a fájlok).
 
-Ha egy archív vagy a könyvtár a VHD-fájlokat az új virtuális gépek létrehozásának alapjaként használja, hozzon létre egy új tárfiókot, SSE engedélyezése és majd töltse fel a VHD-fájlok ezekhez a fiókokhoz. Ezeket a VHD-fájlok Azure Storage titkosítva legyen.
+Ha egy archív vagy a könyvtár a VHD-fájlokat az új virtuális gépek létrehozásának alapjaként használja, hozzon létre egy új tárfiókot, és majd töltse fel a VHD-fájlok ezekhez a fiókokhoz. Ezeket a VHD-fájlok Azure Storage titkosítva legyen.
 
-Ha az Azure Disk Encryption a lemezt egy virtuális gép, és engedélyezve van a tárfiók a VHD-fájlokat tároló SSE engedélyezve van, akkor fog működni részletes; kétszer titkosított újonnan írt adatok okoz.
+Ha Azure Disk Encryption engedélyezve a virtuális gép lemezét, majd minden újonnan írt adatok titkosítása SSE és Azure Disk Encryption.
 
 ## <a name="storage-analytics"></a>Storage Analytics
 ### <a name="using-storage-analytics-to-monitor-authorization-type"></a>Storage Analytics segítségével engedélyezési figyelőtípus
@@ -392,14 +390,14 @@ Minden tárfiók engedélyezheti az Azure Storage Analytics naplózási elvégz�
 
 A storage analytics naplók látható egy másik adat tároló elérésekor valaki által használt hitelesítési módszert. Például a Blob-tároló, megtekintheti azokat használni egy közös hozzáférésű Jogosultságkód vagy a tárfiókok kulcsait, vagy ha a blob elérhető nyilvános volt.
 
-Ez valóban akkor hasznos, ha szorosan esetlegesen korán tároló elérésére lehet. Például a Blob Storage tárolóban után állítsa be a tároló összes magán is valósítja meg az SAS-szolgáltatás használata az alkalmazások teljes. Ellenőrizze rendszeresen a naplókat blobok a tárfiókok kulcsait, ami azt jelezheti a biztonság megsértése, érhető el, vagy ha a blobok olyan nyilvános, de nem lehetnek.
+Ez akkor lehet hasznos, ha szorosan esetlegesen korán tároló elérésére. Például a Blob Storage tárolóban után állítsa be a tároló összes magán is valósítja meg az SAS-szolgáltatás használata az alkalmazások teljes. Ellenőrizze rendszeresen a naplókat blobok a tárfiókok kulcsait, ami azt jelezheti a biztonság megsértése, érhető el, vagy ha a blobok olyan nyilvános, de nem lehetnek.
 
 #### <a name="what-do-the-logs-look-like"></a>Hogyan hajtsa végre a naplók meg?
 Engedélyezi a tárolási fiók metrikák és naplózás az Azure portálon keresztül, analitikai adatok megkezdik gyorsan felhalmozhat után. A naplózás és a metrikák minden szolgáltatás külön; a naplózás csak akkor ír, amikor a forgalom storage-fiókhoz tartozó közben minden percben, óránként vagy naponta, attól függően, hogy hogyan konfigurálja a metrikák lesz naplózva.
 
 A naplók blokkblobokat a tárfiókban $logs nevű tárolóban vannak tárolva. Ebben a tárolóban automatikusan jön létre, ha engedélyezve van a tárolási analitika. A tároló jön létre, nem törölhetők, de törölheti annak tartalmát.
 
-A $logs tárolóban a mappa minden egyes szolgáltatás, és majd nincsenek almappái az év/hónap/nap/óra. Az óra a naplók egyszerűen számozása. Ez az mit fog kinézni a mappastruktúrát:
+A $logs tárolóban a mappa minden egyes szolgáltatás, és majd nincsenek almappái az év/hónap/nap/óra. Óránként a naplók számozása. Ez az mit fog kinézni a mappastruktúrát:
 
 ![Naplófájlok megtekintése](./media/storage-security-guide/image1.png)
 
@@ -414,7 +412,7 @@ Van egy cikket, amely a erőforrásait, szerepel a naplókat, valamint a haszná
 
 ![Pillanatkép a mezők a naplófájlban](./media/storage-security-guide/image3.png)
 
-Azt is érdekli GetBlob vonatkozó bejegyzéseket, és hogyan hitelesítik, így kell a művelet-type "Get-Blob" bejegyzések, a kérelem-állapotának (4<sup>th</sup> oszlop) és a hitelesítési típus (8<sup>th</sup> oszlop).
+Azt is érdekli GetBlob vonatkozó bejegyzéseket, és hogyan hitelesítik, így kell a művelet-type "Get-Blob" bejegyzések, a kérelem-állapotának (negyedik</sup> oszlop) és a hitelesítési típus (nyolcadik</sup> oszlop).
 
 Például a fenti listaelem első néhány sor a szolgáltatáskérés állapota "Sikeres" és a hitelesítési típus "hitelesített". Ez azt jelenti, hogy a kérelem a tárfiók kulcsa segítségével lett érvényesítve.
 
@@ -423,17 +421,17 @@ Három olyan esetekben, amely azt is van.
 
 1. A blob nem nyilvános, és hozzáférés nélkül egy közös hozzáférésű Jogosultságkód egy URL-cím használatával. Ebben az esetben a kérelem-állapota "AnonymousSuccess" és az engedélyezési-típus: "névtelen".
 
-   1.0; 2015-11-17T02:01:29.0488963Z; GetBlob; **AnonymousSuccess**; 200; 124; 37; **Névtelen**; mystorage...
+   1.0;2015-11-17T02:01:29.0488963Z;GetBlob;**AnonymousSuccess**;200;124;37;**anonymous**;;mystorage…
 2. A blob magánjellegű és egy közös hozzáférésű Jogosultságkód volt használva. Ebben az esetben a kérelem-állapota "SASSuccess" és az engedélyezési-típus: "sas".
 
-   1.0; 2015-11-16T18:30:05.6556115Z; GetBlob; **SASSuccess**; 200; 416; 64; **SAS**; mystorage...
+   1.0;2015-11-16T18:30:05.6556115Z;GetBlob;**SASSuccess**;200;416;64;**sas**;;mystorage…
 3. A blob személyes, és a kulcs lett megadva az eléréséhez. Ebben az esetben a kérelem-állapota "**sikeres**"és a hitelesítési típus:"**hitelesített**".
 
-   1.0; 2015-11-16T18:32:24.3174537Z; GetBlob; **Sikeres**; 206-os; 59; 22; **hitelesített**; mystorage...
+   1.0;2015-11-16T18:32:24.3174537Z;GetBlob;**Success**;206;59;22;**authenticated**;mystorage…
 
-A Microsoft Message Analyzer segítségével megtekintheti, és ezek a naplók elemzése. Ez magában foglalja a keresési és szűrési lehetőségeket. Például előfordulhat, hogy a keresni kívánt GetBlob meg, ha a használati mi várható, azaz ellenőrizze, hogy valaki nem fér hozzá a tárfiók nem megfelelően példányai.
+A Microsoft Message Analyzer segítségével megtekintheti, és ezek a naplók elemzése. Ez magában foglalja a keresési és szűrési lehetőségeket. Például előfordulhat, hogy a keresni kívánt várt, ez azt jelenti, hogy a használata esetén győződjön meg arról, hogy valaki nem fér hozzá a tárfiók nem megfelelően megjelenítéséhez GetBlob példányai.
 
-#### <a name="resources"></a>Erőforrások
+#### <a name="resources"></a>További források
 * [Storage Analytics](../storage-analytics.md)
 
   Ez a cikk a tárolási analitika és ahhoz, hogyan nyújt áttekintést.
@@ -448,7 +446,7 @@ A Microsoft Message Analyzer segítségével megtekintheti, és ezek a naplók e
   Ez a cikk beszél hibaelhárítás a Storage Analytics segítségével, és a Microsoft Message Analyzert használatát ismerteti.
 * [Microsoft Message Analyzer üzemeltetési útmutató](https://technet.microsoft.com/library/jj649776.aspx)
 
-  Ez a cikk a Microsoft Message Analyzert mutató hivatkozás, és egy oktatóanyag, a gyors üzembe helyezési és a szolgáltatás összefoglaló mutató hivatkozásokat tartalmaz.
+  Ez a cikk a Microsoft Message Analyzert mutató hivatkozás, és egy oktatóanyag, a gyors üzembe helyezés és a szolgáltatás összefoglaló mutató hivatkozásokat tartalmaz.
 
 ## <a name="cross-origin-resource-sharing-cors"></a>Eltérő eredetű erőforrások megosztása (CORS)
 ### <a name="cross-domain-access-of-resources"></a>Tartományok közötti elérést erőforrások
@@ -457,7 +455,7 @@ Ha egy tartományban futó webböngésző hajt végre egy HTTP-kérelem erőforr
 Mi nem ezt kell elvégezni az Azure Storage? Is, ha statikus erőforrásokat, például a JSON- vagy XML-adatfájlok tárolja a Blob Storage a Fabrikam tárfiókot használ neve, a tartomány eszközök lesz fabrikam.blob.core.windows.net, és a contoso.com webalkalmazás nem lesz képes azok eléréséhez JavaScript használatával, mert a tartományok eltérőek. Ez akkor is igaz, ha egy Azure Storage szolgáltatások – például a Table Storage – hívni kívánt, térjen vissza a JSON a JavaScript-ügyfél által feldolgozandó adatokat.
 
 #### <a name="possible-solutions"></a>Lehetséges megoldások
-Egy a probléma megoldásához módja rendelje hozzá az egyéni tartománynév például a "storage.contoso.com" fabrikam.blob.core.windows.net. A probléma oka, hogy csak rendelhet, hogy egyéni tartomány egy tárfiókot. Mi történik, ha az eszközök vannak tárolva több tárfiókot?
+One way to resolve this is to assign a custom domain like "storage.contoso.com" to fabrikam.blob.core.windows.net. A probléma oka, hogy csak rendelhet, hogy egyéni tartomány egy tárfiókot. Mi történik, ha az eszközök vannak tárolva több tárfiókot?
 
 A probléma megoldásához úgy, hogy a webes alkalmazás a tároló hívások proxyként működjön. Ez azt jelenti, ha a fájl feltöltése a Blob Storage, a webes alkalmazás ehhez vagy helyileg írják és másolásához Blob-tároló, az ehhez a memóriába az összes és írni a Blob Storage. Alternatív megoldásként egy dedikált webes alkalmazás (például egy webes API), amely feltölti a fájlokat helyileg, és írja őket a Blob Storage lehet írni. Mindkét módszer esetén kell fiók adott funkcióval, ha igények meghatározása a méretezhetőséget.
 
@@ -488,8 +486,8 @@ Ez minden egyes sorára jelenti:
 * **ExposedHeaders** ez alapján mely válaszfejlécek elérhetővé tehető a böngésző számára a kérelmet kibocsátó. Ebben a példában minden kezdve fejléc "x-ms - meta-" megjelenik.
 * **MaxAgeInSeconds** Ez az a maximális időt, hogy a böngésző gyorsítótárazza-e a ellenőrzési beállítások kérelmet. (Az előzetes kérelmekre vonatkozó további információkért ellenőrizze a első cikkben.)
 
-#### <a name="resources"></a>Erőforrások
-További információ a CORS és az engedélyezéshez vegye ki ezeket az erőforrásokat.
+#### <a name="resources"></a>További források
+CORS és az engedélyezéshez kapcsolatos további információkért tekintse meg ezeket az erőforrásokat.
 
 * [Eltérő eredetű erőforrások megosztása (CORS) támogatása az Azure Storage szolgáltatásainak az Azure.com-on](../storage-cors-support.md)
 

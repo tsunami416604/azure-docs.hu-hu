@@ -8,11 +8,11 @@ ms.service: event-grid
 ms.topic: article
 ms.date: 01/30/2018
 ms.author: babanisa
-ms.openlocfilehash: 1025fd10b00bc07872e23cb10da2682fa8cca394
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 9d2b32df6e4b931539eac34d09135ea33069b936
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="event-grid-security-and-authentication"></a>Esemény rács biztonsági és hitelesítési 
 
@@ -63,7 +63,7 @@ Ahhoz, hogy a végpont igazolva echo vissza a Ellenőrzőkód validationResponse
 
 Egy esemény előfizetés létrehozásakor lekérdezési paraméterek hozzáadásával a webhook URL-cím biztonságossá teheti a webhook-végpontot. Állítsa be a következő lekérdezési paraméterek kell lennie, mint a titkos kulcs egy [hozzáférési jogkivonat](https://en.wikipedia.org/wiki/Access_token) használó a webhook is ismeri fel az esemény érkezik esemény rács érvényes engedélyekkel. Esemény rács minden esemény kézbesítése a következő webhook vegye fel a lekérdezési paramétereket.
 
-Ha az esemény-előfizetést szerkesztésével, a lekérdezési paraméterek nem fog jelenik meg vagy visszaadott, kivéve, ha a [---teljes-végpont-URL-címek](https://docs.microsoft.com/en-us/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az_eventgrid_event_subscription_show) paraméter használata az Azure-ban [CLI](https://docs.microsoft.com/en-us/cli/azure/overview?view=azure-cli-latest).
+Ha az esemény-előfizetést szerkesztésével, a lekérdezési paraméterek nem fog jelenik meg vagy visszaadott, kivéve, ha a [---teljes-végpont-URL-címek](https://docs.microsoft.com/en-us/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az_eventgrid_event_subscription_show) paraméter használata az Azure-ban [CLI](https://docs.microsoft.com/en-us/cli/azure?view=azure-cli-latest).
 
 Végezetül fontos ügyeljen arra, hogy csak Azure esemény rács támogatja a HTTPS-végpontnak webhook.
 

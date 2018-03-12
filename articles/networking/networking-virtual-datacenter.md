@@ -1,23 +1,10 @@
 ---
-title: "A Microsoft Azure virtuális adatközpont |} Microsoft Docs"
-description: "Ismerje meg, hogyan hozhat létre a virtuális adatközpont az Azure-ban"
-services: networking
-author: tracsman
-manager: rossort
-tags: azure-resource-manager
-ms.service: virtual-network
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 05/26/2017
-ms.author: jonor
-ms.openlocfilehash: 7dcc6b77bde8b8a7b485525105c1a07c53301f8e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: MT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+cím: "Microsoft Azure virtuális Datacenter: A hálózati szempontból" |} Microsoft Docs leírása: megtudhatja, hogyan hozhat létre az Azure-szolgáltatások a virtuális adatközpont: hálózati Szerző: tracsman manager: rossort címkék: azure-erőforrás-kezelő
+
+ms.service: virtual-network ms.tgt_pltfrm: na ms.devlang: na ms.topic: article ms.date: 05/26/2017 ms.author: jonor
 ---
-# <a name="microsoft-azure-virtual-data-center"></a>A Microsoft Azure virtuális adatközpont
+
+# <a name="microsoft-azure-virtual-datacenter-a-network-perspective"></a>A Microsoft Azure virtuális Datacenter: Egy hálózati terv
 **A Microsoft Azure**: gyorsabb, költségtakarékosabb munkavégzésben, integrálása a helyszíni alkalmazások és adatok
 
 ## <a name="overview"></a>Áttekintés
@@ -193,7 +180,7 @@ Infrastruktúra-összetevőihez a következő funkciókat tartalmazza:
 -   [**NSG**][NSG]. Hálózati biztonsági csoport, amely a szűrést az IP-adatforrások, IP-cél, protokollok, IP-forrás portok és IP-cél portok forgalom összekötőként biztonsági szabályok listáját. Az NSG alhálózathoz, egy Azure virtuális Gépen, vagy mindkettőt társított virtuális hálózati kártya alkalmazhatók. Az NSG-k nélkülözhetetlenek a központban és a küllők megfelelő forgalomszabályozás végrehajtásához. Az NSG által biztosított biztonsági szintje, nyisson meg portokat, és milyen célból. További-a virtuális Gépenkénti szűrők például IPtables állomásalapú tűzfalaknak vagy a Windows tűzfal célszerű telepíteni.
 -   **DNS**. A névfeloldás az erőforrásoknak a Vnetek egy virtualizált tartományvezérlő, DNS-en keresztül valósul meg. A virtuális hálózat névfeloldását a DNS alapértelmezett körének korlátozódik. Általában központban közös szolgáltatások részeként telepíteni kell egy egyéni DNS-szolgáltatás, de a DNS-szolgáltatások fő fogyasztóinak a küllős találhatók. Ha szükséges, az ügyfelek DNS hierarchikus tudja létrehozni a DNS-zónák a küllők delegálását.
 -   [** Előfizetés] [ SubMgmt] és [erőforráscsoport felügyeleti][RGMgmt]**. Előfizetés az erőforrások több csoport létrehozása az Azure-ban a természetes határ határozza meg. Előfizetés az erőforrások erőforráscsoportok nevű logikai tárolókban lévő együtt tartanak. Az erőforráscsoport egy virtualizált tartományvezérlő erőforrások rendszerezéséhez logikai csoport jelöli.
--   [**AZ RBAC**][RBAC]. Szerepalapú, keresztül térkép szervezeti szerepkörhöz adott Azure-erőforrások, hogy lehetővé teszi a felhasználók korlátozása csak egy bizonyos részét műveletek hozzáférjenek együtt. Az RBAC a megfelelő szerepkör hozzárendelése a felhasználók, csoportok és alkalmazások megfelelő hatókörén belül szerint engedélyezheti a hozzáférést. Szerepkör-hozzárendelés hatóköre lehet az Azure-előfizetéssel, egy erőforráscsoport vagy egy erőforrást. Az RBAC lehetővé teszi, hogy az engedélyek öröklődése. A szülő hatókörben szerepkörrel is benne a gyermekek számára engedélyezi a hozzáférést. Az RBAC használata, elkülönítse a feladatokat, és csak olyan mértékű hozzáférést biztosítania a felhasználóknak a feladataik elvégzéséhez szükséges. Például, hogy egy előfizetésben található virtuális gépek kezeléséhez, miközben egy másik SQL-adatbázisok kezelhető egyazon előfizetésen belül egy alkalmazott RBAC használatát.
+-   [**RBAC**][RBAC]. Szerepalapú, keresztül térkép szervezeti szerepkörhöz adott Azure-erőforrások, hogy lehetővé teszi a felhasználók korlátozása csak egy bizonyos részét műveletek hozzáférjenek együtt. Az RBAC a megfelelő szerepkör hozzárendelése a felhasználók, csoportok és alkalmazások megfelelő hatókörén belül szerint engedélyezheti a hozzáférést. Szerepkör-hozzárendelés hatóköre lehet az Azure-előfizetéssel, egy erőforráscsoport vagy egy erőforrást. Az RBAC lehetővé teszi, hogy az engedélyek öröklődése. A szülő hatókörben szerepkörrel is benne a gyermekek számára engedélyezi a hozzáférést. Az RBAC használata, elkülönítse a feladatokat, és csak olyan mértékű hozzáférést biztosítania a felhasználóknak a feladataik elvégzéséhez szükséges. Például, hogy egy előfizetésben található virtuális gépek kezeléséhez, miközben egy másik SQL-adatbázisok kezelhető egyazon előfizetésen belül egy alkalmazott RBAC használatát.
 -   [**VNet-társviszony létesítése –**][VNetPeering]. Az alapvető egy virtualizált tartományvezérlő infrastruktúrája létrehozásához használt szolgáltatása Vnetben társviszony-létesítés, egy olyan mechanizmus, amely összeköti a két virtuális hálózatokról (Vnetekről) ugyanabban a régióban Azure adatközpont a hálózaton keresztül.
 
 #### <a name="component-type-perimeter-networks"></a>Összetevő típusa: Szegélyhálózat
@@ -206,7 +193,7 @@ Külső hálózati összetevők az alábbi szolgáltatásokat biztosítja:
 -   [Virtuális hálózatok][VNet], [UDR][UDR], [NSG][NSG]
 -   [Virtuális hálózati készülékek][NVA]
 -   [Terheléselosztó][ALB]
--   [Alkalmazásátjáró][AppGW] / [WAF][WAF]
+-   [Application Gateway][AppGW] / [WAF][WAF]
 -   [Nyilvános IP-címek][PIP]
 
 Általában a központi IT és biztonsági csoportok követelmény definíciója és a szegélyhálózat működésére.
@@ -229,7 +216,7 @@ A tűzfal farmhoz csoport tűzfalak alatt található a küllők a munkaterhelé
 
 Javasoljuk, hogy az internetes forgalmat egy elosztott NVAs használja, és egy másik származó forgalmat a helyszíni. Biztonsági kockázatot jelent, csak egy NVAs használatával is, lehetővé teszi a hálózati forgalom két készlet között nincs biztonsági szegélyhálózati. Külön NVAs használata csökkenti a biztonsági szabályok keresése összetettségét, és törölje, mely szabályokat mely bejövő hálózati kérelem felelnek meg teszi.
 
-A nagyobb vállalatok több tartományok kezelése. Az Azure DNS az egyes tartományokhoz tartozó DNS-rekordjait üzemeltetéséhez használható. Példa a Virtual IP Address (VIP) az Azure külső terheléselosztó (vagy a WAFs) regisztrálni lehet az Azure DNS-rekord az A rekordot.
+Most large enterprises manage multiple domains. Azure DNS can be used to host the DNS records for a particular domain. Példa a Virtual IP Address (VIP) az Azure külső terheléselosztó (vagy a WAFs) regisztrálni lehet az Azure DNS-rekord az A rekordot.
 
 [**Az Azure terheléselosztó** ] [ ALB] Azure terheléselosztó kínál a magas rendelkezésre állású réteg 4 (TCP, UDP) szolgáltatást, amely egy elosztott terhelésű készlet definiált szolgáltatáspéldányok között bejövő forgalom elosztását. A terheléselosztó előtér-végpontok (nyilvános IP-végpontok vagy privát IP-végpontok) a küldött forgalmat szabadon terjeszthető, vagy anélkül címfordítás, hogy egy háttér-IP-címkészlet (példák folyamatban; Virtuális hálózati berendezések vagy virtuális gépeken).
 
@@ -330,15 +317,15 @@ A következő funkciókat a dokumentumban ismertetett volt. További hivatkozás
 | | | |
 |-|-|-|
 |Hálózati szolgáltatások|Terheléselosztás|Kapcsolatok|
-|[Egy Azure virtuális hálózatot][VNet]</br>[Hálózati biztonsági csoportok][NSG]</br>[NSG-naplók][NSGLog]</br>[Felhasználó által definiált Útválasztás][UDR]</br>[Virtuális hálózati készülékek][NVA]</br>[Nyilvános IP-címek][PIP]|[Azure Load Balancer (3.)][ALB]</br>[Az Alkalmazásátjáró (7.)][AppGW]</br>[Webalkalmazási tűzfal][WAF]</br>[Az Azure Traffic Manager][TM] |[VNet-társviszony létesítése –][VNetPeering]</br>[Virtuális magánhálózat][VPN]</br>[ExpressRoute][ExR]
+|[Egy Azure virtuális hálózatot][VNet]</br>[Hálózati biztonsági csoportok][NSG]</br>[NSG-naplók][NSGLog]</br>[Felhasználó által definiált Útválasztás][UDR]</br>[Virtuális hálózati készülékek][NVA]</br>[Nyilvános IP-címek][PIP]|[Azure Load Balancer (3.) ][ALB]</br>[Az Alkalmazásátjáró (7.) ][AppGW]</br>[Webalkalmazási tűzfal][WAF]</br>[Az Azure Traffic Manager][TM] |[VNet-társviszony létesítése –][VNetPeering]</br>[Virtuális magánhálózat][VPN]</br>[ExpressRoute][ExR]
 |Identitás</br>|Figyelés</br>|Ajánlott eljárások</br>|
-|[Az Azure Active Directory][AAD]</br>[Többtényezős hitelesítés][MFA]</br>[Szerepkör alap hozzáférés-vezérlést][RBAC]</br>[Alapértelmezett AAD-szerepkörök][Roles] |[Tevékenység-naplók][ActLog]</br>[Diagnosztikai naplók][DiagLog]</br>[A Microsoft Operations Management Suite szolgáltatásban][OMS]</br> |[Külső hálózatok gyakorlati tanácsok][DMZ]</br>[Előfizetés-kezelés][SubMgmt]</br>[Erőforrás-csoportok kezelése][RGMgmt]</br>[Azure-előfizetésre vonatkozó korlátok][Limits] |
+|[Azure Active Directory][AAD]</br>[Többtényezős hitelesítés][MFA]</br>[Szerepkör alap hozzáférés-vezérlést][RBAC]</br>[Alapértelmezett AAD-szerepkörök][Roles] |[Tevékenység-naplók][ActLog]</br>[Diagnosztikai naplók][DiagLog]</br>[A Microsoft Operations Management Suite szolgáltatásban][OMS]</br> |[Külső hálózatok gyakorlati tanácsok][DMZ]</br>[Előfizetés-kezelés][SubMgmt]</br>[Erőforrás-csoportok kezelése][RGMgmt]</br>[Azure-előfizetésre vonatkozó korlátok][Limits] |
 |Más Azure-szolgáltatásokkal|
-|[Azure-webalkalmazásokban][WebApps]</br>[HDInsights (Hadoop)][HDI]</br>[Event Hubs][EventHubs]</br>[Szolgáltatásbusz][ServiceBus]|
+|[Azure Web Apps][WebApps]</br>[HDInsights (Hadoop) ][HDI]</br>[Event Hubs][EventHubs]</br>[Szolgáltatásbusz][ServiceBus]|
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
  - Fedezze fel [Vnetben társviszony-létesítés][VNetPeering], a megerősítő technológiák a virtualizált tartományvezérlő küllős tervek
  - Alkalmazzon [AAD] [ AAD] használatába [RBAC] [ RBAC] feltárása
  - A előfizetésbe és erőforráscsoportba felügyeleti modellezése, és Szerepalapú teljesítéséhez a struktúra, a követelmények, a modell, és a szervezet házirendeket. A legfontosabb tevékenység tervezi. Minél nagyobb gyakorlati tervezze meg a átszervezések, Összevonások, új sorokban, stb.
@@ -347,7 +334,7 @@ A következő funkciókat a dokumentumban ismertetett volt. További hivatkozás
 [0]: ./media/networking-virtual-datacenter/redundant-equipment.png "összetevő átfedés példák" 
 [1]: ./media/networking-virtual-datacenter/vdc-high-level.png "magas szintű küllős vDC – példa"
 [2]: ./media/networking-virtual-datacenter/hub-spokes-cluster.png "hubok és küllők fürt"
-[3]: ./media/networking-virtual-datacenter/spoke-to-spoke.png "küllős-küllős"
+[3]: ./media/networking-virtual-datacenter/spoke-to-spoke.png "Spoke-to-spoke"
 [4]: ./media/networking-virtual-datacenter/vdc-block-level-diagram.png "blokk szint a virtualizált tartományvezérlő ábrája"
 [5]: ./media/networking-virtual-datacenter/users-groups-subsciptions.png "felhasználók, csoportok, előfizetések és projektek"
 [6]: ./media/networking-virtual-datacenter/infrastructure-high-level.png "magas szintű infrastruktúra diagramja"

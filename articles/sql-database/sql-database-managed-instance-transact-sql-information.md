@@ -10,11 +10,11 @@ ms.topic: article
 ms.date: 03/07/2018
 ms.author: jovanpop
 manager: cguyer
-ms.openlocfilehash: 6ecb6600e5e1462cce9d49ecd9a4ed2e43e2c455
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 699ac303c553e1f3b78f13fc12163f47a1e77941
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Az SQL Serverről az Azure SQL adatbázis felügyelt példány T-SQL különbségek 
 
@@ -57,7 +57,7 @@ További információkért lásd:
 ### <a name="backup"></a>Biztonsági mentés 
 
 Felügyelt példány automatikus biztonsági mentésekhez van, és lehetővé teszi a felhasználóknak teljes adatbázis létrehozásához `COPY_ONLY` biztonsági mentéseket. Eltérés, a napló és a fájl pillanatképes biztonsági nem támogatottak.  
-- Felügyelt példány is adatbázisának biztonsági mentése csak az Azure Blob Storage-fiók: 
+- Felügyelt példány is adatbázisának biztonsági mentése csak az Azure Blob Storage-fiókhoz: 
  - Csak `BACKUP TO URL` támogatott 
  - `FILE`, `TAPE`, és a biztonsági mentési eszközök nem támogatottak.  
 - A legtöbb általános `WITH` beállítások támogatottak. 
@@ -67,11 +67,11 @@ Felügyelt példány automatikus biztonsági mentésekhez van, és lehetővé te
  - Naplózási beállítások: `NORECOVERY`, `STANDBY`, és `NO_TRUNCATE` nem támogatottak 
  
 Korlátozások vonatkoznak:  
-- Felügyelt példányt készíthet biztonsági másolatot egy adatbázist egy biztonsági másolatának legfeljebb 32 szétterítése, amely elegendő az adatbázisokra vonatkozó akár 4 TB.
-- Maximális biztonsági mentési paritásos mérete 195 GB (oldal blob mérete). A biztonsági mentési parancsban paritásos méretek terjeszteni szétterítése az számának növeléséhez. 
+- Felügyelt példányt készíthet biztonsági másolatot egy adatbázist egy biztonsági másolatának legfeljebb 32 szétterítése, amely elegendő az adatbázisok biztonsági másolatok tömörítését használata akár 4 TB.
+- Maximális biztonsági mentési paritásos mérete 195 GB (a blob maximális mérete). Az egyes paritásos méret csökkentéséhez és a határidőn belül maradnak a biztonsági mentési parancsban szétterítése számának növeléséhez. 
 
 > [!TIP]
-> Ez a korlátozás a helyszíni történő biztonsági mentés kerülő `DISK` történő biztonsági mentés helyett `URL`, a blob-, majd állítsa vissza biztonságimásolat-fájl feltöltése. Visszaállítani a nagyobb támogatófájljait, mert egy másik blob típus használatos.  
+> Ez a korlátozás a helyszíni történő biztonsági mentés kerülő `DISK` történő biztonsági mentés helyett `URL`, a blob-, majd állítsa vissza biztonságimásolat-fájl feltöltése. Visszaállítás nagyobb fájlokat támogatja, mert egy másik blob típust használja.  
 
 ### <a name="buffer-pool-extension"></a>A pufferkészlet-kiterjesztés 
  
@@ -136,14 +136,14 @@ Kiszolgálói rendezés megkülönbözteti `SQL_Latin1_General_CP1_CI_AS` és ne
  
 - Több naplófájl nem támogatottak. 
 - Az általános célú szolgáltatási rétegben a memórián belüli objektumok nem támogatottak.  
-- A maximális 280 fájlt adatbázisonként úgy példányonként 280 fájlok korlátozva van. Adatok és a naplófájlok számítják ki ezt a határt ellen.  
-- Adatbázis fájl adatfolyam-adatokat tartalmazó fájlcsoportok nem tartalmazhat.  Visszaállítás sikertelen lesz, ha a .bak tartalmaz `FILESTREAM` adatokat.  
-- Minden fájl külön prémium szintű lemez helyezkedik el. IO és átviteli sebességet minden egyes fájl méretétől függ. Lásd: [prémium szintű lemez teljesítménye](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes)  
+- A maximális 280 fájlt adatbázisonként úgy példányonként 280 fájlok korlátozva van. Adatok és a naplófájlok felé ezt a határt bájtjai számítanak.  
+- Adatbázis nem tartalmazhatnak filestream-adatokat tartalmazó fájlcsoportokat.  Visszaállítás sikertelen lesz, ha a .bak tartalmaz `FILESTREAM` adatokat.  
+- Prémium szintű Azure storage minden fájl kerül. IO és átviteli fájlonként függ minden egyes fájl méretét ugyanúgy, mint a prémium szintű Azure Storage-lemezeket. Lásd: [prémium szintű lemez teljesítménye](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes)  
  
 #### <a name="create-database-statement"></a>CREATE DATABASE utasítás
 
 A következő `CREATE DATABASE` korlátozások vonatkoznak: 
-- Fájlok és fájlcsoportok nem definiálható.  
+- Fájlok és a fájlcsoport nem definiálható.  
 - `CONTAINMENT` a beállítás nem támogatott.  
 - `WITH`beállítások nem támogatottak.  
    > [!TIP]
@@ -217,7 +217,7 @@ Az adatbázis-R és Python külső szalagtárak még nem támogatott. Lásd: [SQ
 
 ### <a name="filestream-and-filetable"></a>A FileStream és Filetable
 
-- Fájladatok adatfolyam nem támogatja. 
+- nem támogatott a FileStream-adatokat. 
 - Adatbázis fájlcsoportok nem tartalmazhat `FILESTREAM` adatok
 - `FILETABLE` nem támogatott
 - Táblák nem tartalmazhatnak `FILESTREAM` típusok
@@ -237,7 +237,7 @@ További információkért lásd: [FILESTREAM](https://docs.microsoft.com/sql/re
 ### <a name="linked-servers"></a>Társított kiszolgálók
  
 Csatolt kiszolgálók felügyelt példányban célok korlátozott számú támogatja: 
-- Támogatott célok: SQL Server, SQL-adatbázis felügyelt példány és az SQL Server virtuális gépen.
+- Támogatott célok: SQL Server, az SQL-adatbázis, a példány által felügyelt és a SQL Server virtuális gépen.
 - Nem támogatott a célok: fájlok, az Analysis Services és az egyéb RDBMS.
 
 Műveletek
@@ -277,23 +277,23 @@ Replikáció jelenleg nem támogatott. A replikációval kapcsolatos informáci�
  - `FROM URL` (Az azure blob-tároló) beállítás csak támogatott.
  - `FROM DISK`/`TAPE`/ biztonsági mentési eszköz nem támogatott.
  - Biztonsági mentés nem támogatottak. 
-- `WITH` beállítások nem támogatottak (nem különbségi `STATS`stb.)     
+- `WITH` beállítások nem támogatottak (nem `DIFFERENTIAL`, `STATS`stb.)     
 - `ASYNC RESTORE` -Visszaállítási továbbra is fennáll, akkor is, ha az ügyfél kapcsolata megszakad. Ha a kapcsolat megszakad, ellenőrizheti a `sys.dm_operation_status` nézet a visszaállítási művelet állapotának (valamint a létrehozása és az vetett adatbázis). Lásd: [sys.dm_operation_status](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database).  
  
-A következő adatbázis-beállítások, amelyek a készlet/felül, és később már nem módosítható:  
+A következő adatbázis-beállítások set/felül, és később már nem módosítható:  
 - `NEW_BROKER` (ha broker nem engedélyezett a .bak-fájl)  
 - `ENABLE_BROKER` (ha broker nem engedélyezett a .bak-fájl)  
 - `AUTO_CLOSE=OFF` (Ha a .bak-fájl egy adatbázis `AUTO_CLOSE=ON`)  
 - `RECOVERY FULL` (Ha a .bak-fájl egy adatbázis `SIMPLE` vagy `BULK_LOGGED` helyreállítási módban)
 - Memóriaoptimalizált fájlcsoport felvett és XTP meghívni, ha a forrás .bak-fájl nem volt  
-- A memóriaoptimalizált meglévő fájlcsoportot XTP új neve  
+- Bármely létező memóriaoptimalizált Fájlcsoport neve módosult az XTP  
 - `SINGLE_USER` és `RESTRICTED_USER` beállítások alakulnak `MULTI_USER`   
 Korlátozások vonatkoznak:  
 - `.BAK` több biztonsági mentés tartalmazó fájlok nem állíthatók vissza. 
 - `.BAK` több naplófájlokat tartalmazó fájlok nem állíthatók vissza. 
 - Visszaállítás sikertelen lesz, ha a .bak tartalmaz `FILESTREAM` adatokat.
-- Jelenleg biztonsági másolatokat tartalmazó adatbázisok esetén, amelyek aktív memórián belüli online Tranzakciófeldolgozási objektumok nem állítható vissza.  
-- Amennyiben valamely pontján már létezett a memóriában lévő objektumok adatbázisokat tartalmazó biztonsági mentések jelenleg nem állítható vissza.   
+- Jelenleg biztonsági mentés tartalmazó adatbázisok esetén, amelyek aktív memórián belüli objektumok nem állítható vissza.  
+- Jelenleg tartalmazó adatbázisok, ahol egy bizonyos ponton memórián belüli objektumok már létezett a biztonsági mentés nem állítható vissza.   
 - Jelenleg csak olvasható módú adatbázisok tartalmazó biztonsági mentés nem állítható vissza. Ez a korlátozás hamarosan törlődni fognak.   
  
 További információ a Restore utasítás: [RESTORE utasítás](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql).
@@ -381,21 +381,21 @@ A következő változók, funkciók és a nézetek különböző eredményeket:
 - `@@SERVICENAME` NULL, értéket ad vissza, mert nincs értelme példány felügyelt környezetben. Lásd: [@@SERVICENAME](https://docs.microsoft.com/sql/t-sql/functions/servicename-transact-sql).   
 - `SUSER_ID` támogatott. NULL értéket ad vissza, ha AAD bejelentkezési sys.syslogins kívül esik. Lásd: [SUSER_ID](https://docs.microsoft.com/sql/t-sql/functions/suser-id-transact-sql).  
 - `SUSER_SID` nem támogatott. Beolvasása helytelen adatokat (ideiglenes ismert probléma). Lásd: [SUSER_SID](https://docs.microsoft.com/sql/t-sql/functions/suser-sid-transact-sql). 
-- `GETDATE()` mindig az UTC időzóna-dátumot adja vissza. Lásd: [GETDATE](https://docs.microsoft.com/sql/t-sql/functions/getdate-transact-sql).
+- `GETDATE()` és más beépített dátum/idő funkciók mindig adja vissza időpontja UTC időzóna. Lásd: [GETDATE](https://docs.microsoft.com/sql/t-sql/functions/getdate-transact-sql).
 
 ## <a name="Issues"></a> Ismert problémák és korlátozások
 
 ### <a name="tempdb-size"></a>A TEMPDB mérete
 
-`tempdb` 12 oszlik minden rendelkező fájlok maximális mérete 14 GB fájlonként. A maximális méretet a fájl nem módosítható, és új fájlok nem vehető fel `tempdb`. Ez a korlátozás hamarosan törlődni fognak. Néhány lekérdezést hibát előfordulhat, hogy vissza, ha `tempdb` 168 GB-nál több kell.
+`tempdb` 12 oszlik minden rendelkező fájlok maximális mérete 14 GB fájlonként. A maximális méretet a fájl nem módosítható, és új fájlok nem vehető fel `tempdb`. Ez a korlátozás hamarosan törlődni fognak. Néhány lekérdezést hibát előfordulhat, hogy vissza, ha szükségük van a 168 GB-nál több `tempdb`.
 
 ### <a name="exceeding-storage-space-with-small-database-files"></a>Kis adatbázisfájlok meghaladó tárhelyen
 
-Minden felügyelt példány mentése 35 TB lefoglalt tárhely, és minden adatbázisfájlt 128 GB-os foglalási tárolóegység helyezkedik el. A sok kisméretű fájlok adatbázisok túllépő összesen 35 TB 128 GB-os egységekben lévő előfordulhat, hogy elhelyezni. Ebben az esetben új adatbázisok nem hozható létre vagy visszaállításra, még akkor is, ha az összes adatbázis teljes mérete nem éri el a példány méretkorlátot. Előfordulhat, hogy a visszaküldött hiba nem egyértelmű.
+Minden felügyelt példány mentése 35 TB lefoglalt tárhely, és minden adatbázisfájlt kezdetben el van helyezve 128 GB tárhely foglalási egység. A sok kisméretű fájlok adatbázisok túllépő összesen 35 TB 128 GB-os egységekben lévő előfordulhat, hogy elhelyezni. Ebben az esetben új adatbázisok nem hozható létre vagy visszaállításra, még akkor is, ha az összes adatbázis teljes mérete nem éri el a példány méretkorlátot. A visszaadott hiba ebben az esetben nem feltétlenül törölje a jelet.
 
 ### <a name="incorrect-configuration-of-sas-key-during-database-restore"></a>SAS-kulcs helytelen konfigurációja során adatbázis visszaállítása
 
-`RESTORE DATABASE` hogy a .bak-fájl folyamatosan lehet olvasási ismételje meg a olvasni .bak-fájl- és visszatérési hiba hosszú idő után ha a közös hozzáférésű Jogosultságkód `CREDENTIAL` helytelen. RESTORE HEADERONLY végrehajtása előtt győződjön meg arról, hogy helyesek-e a SAS-kulcs egy adatbázis visszaállításához.
+`RESTORE DATABASE` amely beolvassa a .bak-fájl előfordulhat, hogy lehet folyamatosan újra megpróbálja majd beolvasni .bak-fájl- és visszatérési hiba hosszú idő után ha a közös hozzáférésű Jogosultságkód `CREDENTIAL` helytelen. RESTORE HEADERONLY végrehajtása előtt győződjön meg arról, hogy helyesek-e a SAS-kulcs egy adatbázis visszaállításához.
 Győződjön meg arról, hogy távolítsa el a bevezető `?` az Azure-portálon létrehozott SAS-kulcsot.
 
 ### <a name="tooling"></a>Tooling eszköz

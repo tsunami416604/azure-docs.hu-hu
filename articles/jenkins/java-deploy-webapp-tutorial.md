@@ -11,11 +11,11 @@ ms.workload: web
 ms.date: 08/02/2017
 ms.author: routlaw
 ms.custom: Jenkins, devcenter
-ms.openlocfilehash: 40d7e822b586e6f6b4addcd7d4e107eda9f4ab11
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: b2606acba341d4cfbc16314048e134fa30ff8606
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="set-up-continuous-integration-and-deployment-to-azure-app-service-with-jenkins"></a>Folyamatos integrációt és az Azure App Service Jenkins az üzembe helyezés beállítása
 
@@ -36,8 +36,8 @@ Ebben az oktatóanyagban a következő feladatokat kell elvégezni:
 Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
 * [Jenkins](https://jenkins.io/) konfigurált JDK és Maven eszközökkel. Ha egy Jenkins rendszer nincs, hozzon létre egyet most az Azure-ban a [Jenkins megoldássablonban](/azure/jenkins/install-jenkins-solution-template).
-* A [GitHub](https://github.com) fiók.
-* [Az Azure CLI 2.0](/cli/azure/overview), a helyi parancssorból vagy a a [Azure Cloud rendszerhéj](/azure/cloud-shell/overview)
+* Egy [GitHub](https://github.com)-fiók.
+* [Az Azure CLI 2.0](/cli/azure), a helyi parancssorból vagy a a [Azure Cloud rendszerhéj](/azure/cloud-shell/overview)
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -47,8 +47,8 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 2. Válassza ki a **elérhető** fülre.
 3. Keresse meg, és jelölje be a következő beépülő modulok mellett:   
 
-    - [Az Azure App Service beépülő modul](https://plugins.jenkins.io/azure-app-service)
-    - [GitHub fiókirodai forrás beépülő modul](https://plugins.jenkins.io/github-branch-source)
+    - [Azure App Service Plug-in](https://plugins.jenkins.io/azure-app-service)
+    - [GitHub Branch Source Plug-in](https://plugins.jenkins.io/github-branch-source)
 
     Ha a beépülő modulok nem jelennek meg, győződjön meg arról, még ellenőrzésével nincsenek telepítve a **telepített** fülre.
 
@@ -75,7 +75,7 @@ Jenkins beállítása fogadására [GitHub webhook](https://developer.github.com
     ![Új Jenkins Freestyle projekt](media/jenkins-java-quickstart/jenkins_freestyle.png)
 2. Az a **általános** szakaszban jelölje be **GitHub** projektre, és írja be a villás tárház URL-CÍMÉT, például a https://github.com/raisa/gs-spring-boot-docker
 3. A a **kód felügyeleti forrás** szakaszban jelölje be **Git**, adja meg a villás tárház `.git` https://github.com/raisa/gs-spring-boot-docker.git például URL-címe
-4. Az a **Build eseményindítók** szakaszban jelölje be **GitHub hook eseményindítója a következőnek: GITscm lekérdezési**.
+4. A **Build Triggers** (Eseményindítók létrehozása) szakaszban válassza a **GitHub hook trigger for GITScm polling** (GitHub beavatkozási pont eseményindító GITScm lekérdezés esetén) lehetőséget.
 5. Alatt a **Build** szakaszban jelölje be **Hozzáadás összeállítása lépés** válassza **meghívása a legfelső szintű Maven célok**. Adja meg `package` a a **célok** mező.
 6. Kattintson a **Mentés** gombra. Tesztelheti a feladat választásával **Build most** a projekt lapról.
 
@@ -180,7 +180,7 @@ Jenkins beállítása fogadására [GitHub webhook](https://developer.github.com
 3. Egy új build Jenkins, az új véglegesítési által indított indítja el a `master` a tárház főágába. Miután befejeződött, töltse be újra az alkalmazást az Azure-on.     
       ![A telepített alkalmazás megtekintése az Azure-on](media/jenkins-java-quickstart/hello_docker_world.png)
   
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Használja az Azure virtuális gépeken, ügynökök létrehozása](/azure/jenkins/jenkins-azure-vm-agents)
 - [A feladatok és az adatcsatorna esetén, amelyben az Azure CLI-erőforrások kezelése](/azure/jenkins/execute-cli-jenkins-pipeline)

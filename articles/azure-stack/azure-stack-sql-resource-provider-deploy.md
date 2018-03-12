@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/06/2018
+ms.date: 03/07/2018
 ms.author: mabrigg
 ms.reviewer: jeffgo
-ms.openlocfilehash: 805e39dfdee3a23d4ddc196085be59788cee912a
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 4d2a00f04e5b07aeb3585fb3ab6c8966e0de7e19
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="use-sql-databases-on-microsoft-azure-stack"></a>SQL-adatbázis használata a Microsoft Azure veremben
 
@@ -175,14 +175,17 @@ Ezeket a paramétereket is megadhat a parancssorban. Ha nem, vagy bármely param
 
 
 ## <a name="update-the-sql-resource-provider-adapter-multi-node-only-builds-1710-and-later"></a>Az SQL erőforrás-szolgáltató adapter (több csomópontos csak, buildek 1710 és újabb verziók) frissítése
-Új SQL-erőforrás szolgáltató adapter szabaddá tehető Azure verem buildek frissítésekor. A meglévő adapter továbbra is működni fog, de javasolt frissítésére a legújabb buildjével a lehető leghamarabb. Ahhoz, telepíteni kell a frissítéseket: verziók nem hagyható ki (lásd a fenti táblázatban).
+Új SQL-erőforrás szolgáltató adapter előfordulhat, hogy mikorra várható, Azure verem buildek frissítésekor. A meglévő adapter továbbra is működik, de javasolt frissítésére a legújabb buildjével a lehető leghamarabb. Ahhoz telepíteni kell a frissítéseket: verziók nem hagyható ki (lásd a 3. lépésében táblát [telepíteni az erőforrás-szolgáltató](#deploy-the-resource-provider)).
 
-A frissítési folyamat hasonlít a korábban ismertetett telepítési folyamat. A legújabb erőforrás-szolgáltató kódot hoz létre egy új virtuális Gépet. Ezenkívül telepít át beállítások ezen új példányának, beleértve az adatbázis és a helyet adó kiszolgáló adatait. A szükséges DNS-rekordot is telepíti át.
+Az erőforrás-szolgáltató használata frissíteni a *UpdateSQLProvider.ps1* parancsfájl. A folyamat hasonlít a folyamat egy erőforrás-szolgáltató telepítéséhez használt leírtak szerint a [telepíteni az erőforrás-szolgáltató](#deploy-the-resource-provider) című szakaszát. A parancsfájl az erőforrás-szolgáltató a letöltés részét képezi.
 
-A UpdateSQLProvider.ps1 parancsfájl használata, amely azt a korábban ismertetett ugyanazokkal az argumentumokkal. A tanúsítvány itt is meg kell adnia.
+A *UpdateSQLProvider.ps1* parancsfájlt hoz létre egy új virtuális Gépet a legújabb erőforrás-szolgáltató kódot, és a beállítások áttelepítése a régi virtuális gépről az új virtuális Gépet. Telepítse át a beállításokat adatbázis és a helyet adó kiszolgáló adatait, és a szükséges DNS-rekordja.
+
+A parancsfájl a DeploySqlProvider.ps1 parancsfájl ugyanazokkal az argumentumokkal ismertetett használatát igényli. Adja meg itt tanúsítványt is. 
 
 Azt javasoljuk, hogy töltse le a legújabb Windows Server 2016 Core kép a piactér felügyelet alól. Ha egy frissítés telepítésére van szüksége, elhelyezhet egy. A helyi függőségi elérési MSU-csomagot. Ha egynél több. MSU fájl található, a parancsfájl futtatása sikertelen lesz.
 
+Az alábbiakban látható egy példa a *UpdateSQLProvider.ps1* parancsfájlt, amely a PowerShell-parancssorból futtatható. Győződjön meg arról, a fiók- és igény szerint módosíthatja: 
 
 > [!NOTE]
 > A frissítési folyamat csak az integrált rendszerekre vonatkozik.

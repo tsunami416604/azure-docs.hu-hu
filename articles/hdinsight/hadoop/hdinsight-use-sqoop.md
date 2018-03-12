@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/03/2018
 ms.author: jgao
-ms.openlocfilehash: e2f4601daf9aa3537f9170c3516d62ab1bd602e5
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: e96003de4a0dd4a5d8b060bb5883e51291827316
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="use-sqoop-with-hadoop-in-hdinsight"></a>Sqoop használata a hadooppal a Hdinsightban
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
@@ -49,13 +49,13 @@ HDInsight-fürtök néhány adatot tartalmaz. A következő két mintát haszná
   | --- | --- |
   | ClientID |karakterlánc |
   | querytime |karakterlánc |
-  | piaci |karakterlánc |
+  | market |karakterlánc |
   | deviceplatform |karakterlánc |
   | devicemake |karakterlánc |
   | devicemodel |karakterlánc |
   | state |karakterlánc |
   | Ország |karakterlánc |
-  | querydwelltime |duplaszó |
+  | querydwelltime |Dupla |
   | munkamenet-azonosító |bigint |
   | sessionpagevieworder |bigint |
 
@@ -97,7 +97,7 @@ Ha inkább az Azure PowerShell használatával a fürt és az SQL-adatbázis lé
         |Name (Név)|Érték|
         |----|-----|
         | Alapértelmezett tárfiók neve | &lt;CluterName > tárolásához |
-        | Az Azure SQL adatbázis-kiszolgáló neve | &lt;ClusterName > dbserver |
+        | Az Azure SQL adatbázis-kiszolgáló neve | &lt;ClusterName>dbserver |
         | Az Azure SQL-adatbázis neve | &lt;ClusterName > db |
      
 3. Válassza ki **elfogadom a feltételeket és a fenti feltételek**.
@@ -118,7 +118,7 @@ Ha úgy dönt, hogy a meglévő Azure SQL adatbázis vagy a Microsoft SQL Server
   > 
   > 
   
-  * Hozzon létre, és egy virtuális hálózat konfigurálására, [hozzon létre egy virtuális hálózatot az Azure portál használatával](../../virtual-network/virtual-networks-create-vnet-arm-pportal.md).
+  * Hozzon létre, és egy virtuális hálózat konfigurálására, [hozzon létre egy virtuális hálózatot az Azure portál használatával](../../virtual-network/quick-create-portal.md).
     
     * SQL Server használatakor az adatközpontban található konfigurálnia kell a virtuális hálózaton: *pont-pont* vagy *pont-pont*.
       
@@ -145,7 +145,7 @@ Ha úgy dönt, hogy a meglévő Azure SQL adatbázis vagy a Microsoft SQL Server
 
 2. Nyissa meg az adatbázis a Microsoft SQL Server Management Studio.  Ekkor megjelenik a két adatbázis telepítve:
 
-    ![Az Azure HDInsight Sqoop SQL Management Studio](./media/hdinsight-use-sqoop/hdinsight-sqoop-sql-management-studio.png)
+    ![Azure HDInsight Sqoop SQL Management Studio](./media/hdinsight-use-sqoop/hdinsight-sqoop-sql-management-studio.png)
 
 
 ## <a name="run-sqoop-jobs"></a>Sqoop feladatok futtatása

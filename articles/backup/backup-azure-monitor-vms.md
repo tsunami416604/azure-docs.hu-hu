@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/23/2018
 ms.author: markgal;trinadhk;giridham;
-ms.openlocfilehash: 0f92d63d6eabe48bfac444b79bc10e090df239ca
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: fbdce5c244d733a2978d473f01c8d875cbeaa65e
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="monitor-alerts-for-azure-virtual-machine-backups"></a>Azure-beli virtuális gépek biztonsági mentésével kapcsolatos riasztások figyelése
 A riasztások jelezhetik a szolgáltatásból, hogy az esemény küszöbét teljesül vagy túllépése válaszokat. Annak ismerete, ha problémák start alacsonyan tartják a költségeket üzleti kritikus fontosságú lehet. Riasztást általában nem történik meg, ütemezés szerint, és ezért fontos tudni, hogy minél hamarabb után a riasztás akkor jön létre. Például ha egy biztonsági mentési vagy helyreállítási feladat sikertelen lesz, egy riasztás a hiba öt percen belül. A tároló irányítópultjának a biztonsági riasztások csempe kritikus és a figyelmeztetési szintű eseményeket jeleníti meg. A biztonsági riasztások beállításainak megtekintheti az összes esemény. De mi a teendő, ha egy riasztás, ha egy külön probléma dolgozik? Ha nem tudja, ha a riasztás történik, akkor lehet, hogy egy kisebb kellemetlenségért, vagy az adatok biztonságát veszélyeztető. Győződjön meg arról, hogy a megfelelő személyek ismerjék riasztás - következik be, amikor konfigurálja a szolgáltatást riasztási értesítéseket e-mailben küldendő. E-mail értesítések beállításával kapcsolatos részletekért lásd: [értesítések konfigurálása](backup-azure-monitor-vms.md#configure-notifications).
 
 ## <a name="how-do-i-find-information-about-the-alerts"></a>Hogyan találhatom meg a riasztások adatai?
-Tekintse meg az eseményt, amely kivételt váltott ki riasztást, meg kell nyitnia a biztonsági riasztások panel. Nyissa meg a biztonsági riasztások panel két módja van: vagy a biztonsági mentési riasztások a csempén, a tároló irányítópultjának, vagy a riasztások és események paneljéről.
+Tekintse meg az eseményt, amely kivételt váltott ki riasztást, meg kell nyitnia a biztonsági mentési riasztások szakaszban. Nyissa meg a biztonsági mentési riasztások szakaszban két módja van: vagy a biztonsági mentési riasztások a csempén, a tároló irányítópultjának, vagy a riasztások és események szakaszából.
 
 A biztonsági riasztások panel megnyitása biztonsági riasztások csempén:
 
@@ -32,16 +32,16 @@ A biztonsági riasztások panel megnyitása biztonsági riasztások csempén:
 
     ![Biztonsági riasztások csempe](./media/backup-azure-monitor-vms/backup-alerts-tile.png)
 
-A biztonsági riasztások panel megnyitása a riasztások és események panel:
+A biztonsági riasztások panel megnyitása a riasztások és események szakaszban:
 
 1. A tároló irányítópulton kattintson **összes beállítás**. ![Minden beállítások gomb](./media/backup-azure-monitor-vms/all-settings-button.png)
 2. Az a **beállítások** panelen kattintson a **riasztások és események**. ![Riasztások és események gomb](./media/backup-azure-monitor-vms/alerts-and-events-button.png)
 3. Az a **riasztások és események** panelen kattintson a **biztonsági mentési riasztások**. ![Biztonsági riasztások gomb](./media/backup-azure-monitor-vms/backup-alerts.png)
 
-    A **biztonsági mentési riasztások** panel nyílik meg, és a szűrt riasztásokat jeleníti meg.
+    A **biztonsági mentési riasztások** szakasz megnyílik, és a szűrt riasztásokat jeleníti meg.
 
     ![Biztonsági riasztások csempe](./media/backup-azure-monitor-vms/backup-alerts-critical.png)
-4. Egy adott riasztás események, a részletes adatainak megtekintéséhez kattintson a megnyitni a **részletek** panelen.
+4. Egy adott riasztás események, a részletes adatainak megtekintéséhez kattintson a megnyitni a **részletek** szakasz.
 
     ![Eseményadat](./media/backup-azure-monitor-vms/audit-logs-event-detail.png)
 
@@ -56,10 +56,10 @@ A riasztások értesítő e-mailek beállítása
 
     ![Biztonsági riasztások menü](./media/backup-azure-monitor-vms/backup-alerts-menu.png)
 
-    Ekkor megnyílik a konfigurálása értesítések panel.
+    Megnyitja a konfigurálási értesítések csoportban.
 
     ![Értesítések panel konfigurálása](./media/backup-azure-monitor-vms/configure-notifications.png)
-2. Az értesítő e-mailek, a konfigurálás értesítések paneljén kattintson **a**.
+2. Az értesítő e-mailek, a konfigurálás értesítések szakaszban kattintson **a**.
 
     A címzettek és súlyosság párbeszédpanelek mellett csillag van, mert az adatszolgáltatás. Adjon meg legalább egy e-mail címet, és legalább egy súlyosságának kiválasztása.
 3. Az a **címzettek (E-mail)** párbeszédpanelen írja be az e-mail címet az értesítéseket kapnak. A formátumot használja: username@domainname.com. Az e-mail címeket pontosvesszővel (;) kell elválasztani.
@@ -71,7 +71,7 @@ A riasztások értesítő e-mailek beállítása
    | Riasztási szint | Értesítések küldése |
    | --- | --- |
    | Kritikus | a biztonsági mentési hiba, helyreállítási hiba |
-   | Figyelmeztetés | a biztonsági mentési feladatok figyelmeztetésekkel fejeződött be sikeresen (pl.: néhány író nem tudta létrehozni a pillanatképet) |
+   | Figyelmeztetés | a biztonsági mentési feladatok figyelmeztetésekkel fejeződött be sikeresen (például: néhány író nem tudta létrehozni a pillanatképet) |
    | Tájékoztató | jelenleg nincs információs riasztások léptek fel érhetők el az Azure virtuális gép biztonsági mentése |
 
 ### <a name="are-there-situations-where-email-isnt-sent-even-if-notifications-are-configured"></a>Olyankor is előfordul, hogy nem érkezik meg az e-mail, ha az értesítések be vannak állítva?
@@ -82,135 +82,53 @@ Nincsenek olyan helyzetekben, ahol a rendszer nem küld figyelmeztetést, annak 
 * A biztonsági mentési feladat elindul, és akkor sikertelen lesz, és folyamatban van egy másik biztonsági mentési feladat.
 * A Resource Manager-kompatibilis virtuális gépek ütemezett biztonsági mentési feladat indítja el, de a virtuális gép már nem létezik.
 
-## <a name="customize-your-view-of-events"></a>A nézet események testreszabása
-A **naplók** beállítást tartalmaz egy előre definiált szűrők és oszlopok működési események adatait. Testre szabható a nézetet, hogy ha a **események** panel nyílik meg, ez azt mutatja, meg a kívánt adatokat.
+## <a name="using-activity-logs-to-get-notifications-for-successful-backups"></a>A sikeres biztonsági mentések értesítések tevékenységi naplóit segítségével
 
-1. Az a [tároló irányítópult](backup-azure-manage-vms.md#open-a-recovery-services-vault-in-the-dashboard), keresse meg, és kattintson a **naplók** megnyitásához a **események** panelen.
+Ha szeretne értesítést kapni a biztonsági mentések sikeres követően, riasztások épülő használhatja a [tevékenységi naplóit](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit) tároló.
 
-    ![Naplók](./media/backup-azure-monitor-vms/audit-logs-1606-1.png)
+### <a name="login-into-azure-portal"></a>Bejelentkezés az Azure-portálon
+Bejelentkezés az Azure-portálon a, folytassa a megfelelő Azure Recovery Services-tároló, majd kattintson a "Tevékenységnapló" szakasz tulajdonságai.
 
-    A **események** panelen nyitja meg a működési események csak az aktuális tárolóban vannak leszűrve.
+### <a name="identify-appropriate-log"></a>Azonosítsa a megfelelő naplót
 
-    ![Naplózási szűrő naplók](./media/backup-azure-monitor-vms/audit-logs-filter.png)
+Az alábbi képen látható ellenőrzése, hogy tevékenységi naplóit sikeres biztonsági mentések fordulnak elő a szűrni. A timespan ennek megfelelően módosítsa rekordok megtekintéséhez.
 
-    A panel kritikus, hiba, figyelmeztetés és információs események a múlt hét, listáját jeleníti meg. Az időtartam az állítsa be alapértelmezett érték a **szűrő**. A **események** panel is bemutatja a dokumentumkövetést, miközben az események sávdiagram. Ha nem szeretné látni a sávdiagram az a **események** menüben kattintson a **elrejtése diagram** ki a diagram váltáshoz. Az alapértelmezett nézet események művelet, állapotáról, erőforrás, és időt információit tartalmazza. Információ az ilyen esemény további attribútumok című [eseményadatok bővülő](backup-azure-monitor-vms.md#view-additional-event-attributes).
-2. Található további információ a működési események a a **művelet** oszlop, kattintson az operatív esemény a panel megnyitásához. A panel az eseményeket részletes információkat tartalmaz. Események a korrelációs azonosító és az események időtartamának történt szerint vannak csoportosítva.
+![Tevékenységnaplók](./media/backup-azure-monitor-vms/activity-logs-identify.png)
 
-    ![Művelet részletei](./media/backup-azure-monitor-vms/audit-logs-details-window.png)
-3. Egy adott esemény, események, részletes adatainak megtekintéséhez kattintson a megnyitni az esemény a **részletek** panelen.
+Kattintson a "JSON" szegmens további részletek és a másolás-beillesztés azt egy szövegszerkesztőbe, tekinti meg. A tároló adatait és a cikk a műveletnapló, azaz a biztonsági mentési elem kiváltó jeleníti.
 
-    ![Eseményadat](./media/backup-azure-monitor-vms/audit-logs-details-window-deep.png)
+Kattintson a "Napló figyelmeztetés hozzáadása" az összes ilyen naplók riasztásokat.
 
-    Az esemény-szintre vonatkozó részletes információk beolvasása. Ha inkább a jelent meg minden esemény ennyi adatait, és szeretne adni ennyi adat a **események** panelen című [eseményadatok bővülő](backup-azure-monitor-vms.md#view-additional-event-attributes).
+### <a name="add-activity-log-alert"></a>Tevékenység napló riasztások hozzáadása
 
-## <a name="customize-the-event-filter"></a>A szűrő testreszabása
-Használja a **szűrő** módosítható, és válassza a megjelenő információk egy adott panelen. Az eseményadatok szűrése:
+"Add napló figyelmeztetés" gombra kattintva megjelenik egy olyan képernyőt alább látható módon
 
-1. Az a [tároló irányítópult](backup-azure-manage-vms.md#open-a-recovery-services-vault-in-the-dashboard), keresse meg, és kattintson a **naplók** megnyitásához a **események** panelen.
+![Tevékenységnapló-riasztás](./media/backup-azure-monitor-vms/activity-logs-alerts-successful.png)
+    
+Az előfizetés és az erőforráscsoport a riasztás tárolására szolgálnak. A feltételek előre kitöltött lesz. Ellenőrizze, hogy az értékek kapcsolódik a követelmény a.
 
-    ![Naplók](./media/backup-azure-monitor-vms/audit-logs-1606-1.png)
+A sikeres biztonsági mentésekhez "Tájékoztató" és "Succeeded" állapotaként a "szint" van megjelölve.
 
-    A **események** panelen nyitja meg a működési események csak az aktuális tárolóban vannak leszűrve.
+Ha "erőforrás" fenti választja, a riasztás akkor jöjjön létre, amikor tevékenységi naplóit tárolja, az adott erőforrás vagy a tárolóban. Ha azt szeretné, hogy a szabály minden tárolók alkalmazandó, hagyja meg az "erőforrás" lehet üres.
 
-    ![Naplózási szűrő naplók](./media/backup-azure-monitor-vms/audit-logs-filter.png)
-2. Az a **események** menüben kattintson a **szűrő** , hogy a panel megnyitásához.
+### <a name="define-action-on-alert-firing"></a>Adja meg a riasztás indítási az művelet
 
-    ![Nyissa meg a szűrő panelre](./media/backup-azure-monitor-vms/audit-logs-filter-button.png)
-3. Az a **szűrő** panelen állítsa be a **szint**, **időtartamának**, és **hívó** szűrők. A többi szűrőt óta voltak beállítva a Recovery Services-tároló az aktuális információk nem érhetők el.
+A "művelet" csoport meghatározásához a művelet a riasztás generálása után. Rákattinthat a "Művelet típusa" tudni, hogy további információk az elérhető műveletek ilyen e-mailek/SMS/integráció a ITSM stb.
 
-    ![Naplózási naplók-lekérdezés részletei](./media/backup-azure-monitor-vms/filter-blade.png)
+![Tevékenységcsoport napló művelet](./media/backup-azure-monitor-vms/activity-logs-alerts-action-group.png)
 
-    Megadhatja a **szint** esemény: kritikus, hiba, figyelmeztető vagy tájékoztató. Eseményszinttel bármilyen kombinációját kiválaszthatja, de rendelkeznie kell legalább egy kijelölt szint. Váltás a szint a be- és kikapcsolása. A **időtartamának** szűrő segítségével adja meg, mennyi ideig az események rögzítésére. Ha az egyéni időtartama használja, beállíthatja a kezdő és befejező időpontja.
-4. Ha készen áll a műveleti naplókat, a szűrő használatával lekérdezéséhez kattintson **frissítés**. Az eredmények megjelenítése a **események** panelen.
 
-    ![Művelet részletei](./media/backup-azure-monitor-vms/edited-list-of-events.png)
-
-### <a name="view-additional-event-attributes"></a>Az esemény attribútumok megtekintése
-Használatával a **oszlopok** gombra, a listában megjelenő további esemény attribútumok engedélyezheti a **események** panelen. Az események alapértelmezett listáját művelet, állapotáról, erőforrás, és időt információit jeleníti meg. Ahhoz, hogy a további attribútumok:
-
-1. Az a **események** panelen kattintson a **oszlopok**.
-
-    ![Nyissa meg oszlopok](./media/backup-azure-monitor-vms/audi-logs-column-button.png)
-
-    A **oszlopok kiválasztása** panel nyílik meg.
-
-    ![Oszlopok panel](./media/backup-azure-monitor-vms/columns-blade.png)
-2. Az attribútum kiválasztásához kattintson a jelölőnégyzet jelölését. Az attribútum jelölőnégyzet váltja be- és kikapcsolható.
-3. Kattintson a **alaphelyzetbe** alaphelyzetbe állítja az attribútumok listáját a **események** panelen. Hozzáadása, vagy az attribútumok eltávolítása a listából, után használni **alaphelyzetbe** esemény attribútumok új listájának megtekintéséhez.
-4. Kattintson a **frissítése** az adatokon az attribútumok. A következő táblázat az egyes attribútum kapcsolatos információkat.
-
-| Oszlop neve | Leírás |
-| --- | --- |
-| Művelet |A művelet neve |
-| Szint |A művelet szintjét, az értékek lehetnek: információs, figyelmeztetési, hiba vagy kritikus |
-| status |A művelet állapotának leíró |
-| Erőforrás |URL-címet, amely azonosítja az erőforrás; más néven az erőforrás-azonosítója |
-| Time |Az az aktuális időponthoz képest, ha az esemény történt mért idő |
-| Hívó |Ki vagy mi nevezik, és az esemény; aktivált a rendszer, vagy a felhasználó |
-| Időbélyeg |Az idő, amikor az esemény lett elindítva |
-| Erőforráscsoport |A kapcsolódó erőforráscsoport |
-| Erőforrás típusa |A Resource Manager által használt belső erőforrástípus |
-| Előfizetés azonosítója |A társított előfizetés-azonosító |
-| Kategória |Az esemény kategória |
-| Korrelációs azonosító |Az ezzel kapcsolatos eseményeket közös azonosítója |
-
-## <a name="use-powershell-to-customize-alerts"></a>PowerShell segítségével testre szabhatja a riasztások
-A feladatok egyéni riasztási értesítéseket kaphat a portálon. Ahhoz, hogy ezeket a feladatokat, határozza meg a műveleti naplókat események riasztási szabályok PowerShell-alapú. Használjon *PowerShell 1.3.0 verzió vagy újabb*.
-
-Egyéni biztonsági mentési hibák riasztási értesítést megadásához használja a következő parancsfájl hasonló parancsot:
-
-```
-PS C:\> $actionEmail = New-AzureRmAlertRuleEmail -CustomEmail contoso@microsoft.com
-PS C:\> Add-AzureRmLogAlertRule -Name backupFailedAlert -Location "East US" -ResourceGroup RecoveryServices-DP2RCXUGWS3MLJF4LKPI3A3OMJ2DI4SRJK6HIJH22HFIHZVVELRQ-East-US -OperationName Microsoft.RecoveryServices/recoveryServicesVault/Backup -Status Failed -TargetResourceId /subscriptions/86eeac34-eth9a-4de3-84db-7a27d121967e/resourceGroups/RecoveryServices-DP2RCXUGWS3MLJF4LKPI3A3OMJ2DI4SRJK6HIJH22HFIHZVVELRQ-East-US/providers/Microsoft.RecoveryServices/vaults/trinadhVault -Actions $actionEmail
-```
-
-**ResourceId** : ResourceId lekérheti a naplókat. Az erőforrás-azonosítója a műveletnaplók erőforrás oszlopában megadott URL-cím.
-
-**OperationName** : OperationName nem formátumú "Microsoft.RecoveryServices/recoveryServicesVault/*EventName*" ahol *EventName* lehet:<br/>
-
-* Regisztráljon <br/>
-* Regisztrálás törlése <br/>
-* ConfigureProtection <br/>
-* Biztonsági mentés <br/>
-* Visszaállítás <br/>
-* StopProtection <br/>
-* DeleteBackupData <br/>
-* CreateProtectionPolicy <br/>
-* DeleteProtectionPolicy <br/>
-* UpdateProtectionPolicy <br/>
-
-**Állapot** : támogatott értékek a következők elindítva, sikeres vagy sikertelen.
-
-**Erőforráscsoport** : Ez az az erőforráscsoporthoz, amelyhez az erőforrás tartozik. Az erőforráscsoport oszlop adhat hozzá a létrehozott naplók. Erőforráscsoport egyike az elérhető naplófájltípusokat események adatait.
-
-**Név** : a riasztási szabály nevét.
-
-**CustomEmail** : Adja meg a kívánt riasztási szóló értesítés elküldése egyéni e-mail cím
-
-**SendToServiceOwners** : Ez a beállítás a rendszergazdák és társrendszergazdák az előfizetés riasztási értesítéseket küldő. A használat **New-AzureRmAlertRuleEmail** parancsmag
+Miután az OK gombra kattint, egy tevékenység napló riasztás akkor jöjjön létre, és a sikeres biztonsági mentések rögzítve későbbi tevékenységi naplóit fog érvényesítést a művelet, a művelet csoportban meghatározott.
 
 ### <a name="limitations-on-alerts"></a>Riasztások korlátozásai
 Eseményalapú riasztások a következő korlátozások vonatkoznak:
 
 1. A figyelmeztetéseket a Recovery Services-tároló összes virtuális gépeken. Nem szabhatja testre a riasztás a Recovery Services-tároló virtuális gépek egy részét.
-2. A funkció jelenleg előzetes verzió. [További információ](../monitoring-and-diagnostics/insights-powershell-samples.md#create-metric-alerts)
-3. Küldi a riasztásokat "alerts-noreply@mail.windowsazure.com". Az e-mailt olyasvalaki jelenleg nem módosíthatók.
+2. Küldi a riasztásokat "alerts-noreply@mail.windowsazure.com". Az e-mailt olyasvalaki jelenleg nem módosíthatók.
 
 ## <a name="next-steps"></a>További lépések
-Eseménynaplók kiváló levágást engedélyezése, és a biztonsági mentési műveletek támogatása naplózására. A rendszer naplózza a következő műveletet:
+Hozza létre újra a virtuális gép helyreállítási pontból információkért tekintse meg [visszaállítása az Azure virtuális gépek](backup-azure-arm-restore-vms.md).
 
-* Regisztráljon
-* Regisztrálás törlése
-* A védelem konfigurálása
-* Biztonsági mentés (mindkettő ütemezett és igény szerinti biztonsági mentést)
-* Visszaállítás
-* Állítsa le a védelmet
-* biztonsági mentési adatok törlése
-* Házirend hozzáadása
-* Szabályzat törlése
-* Szabályzat frissítése
-* Feladat megszakítása
+Ha a virtuális gépek védelméről tájékoztatásra van szüksége, tekintse meg [először: készítsen biztonsági mentést a Recovery Services-tároló virtuális gépek](backup-azure-vms-first-look-arm.md). 
 
-Események széles körű leírását, műveletek és a vizsgálati naplók az Azure szolgáltatásban, lásd: a cikk [események megtekintése és a naplók](../monitoring-and-diagnostics/insights-debugging-with-events.md).
-
-Hozza létre újra a virtuális gép helyreállítási pontból információkért tekintse meg [visszaállítása az Azure virtuális gépek](backup-azure-arm-restore-vms.md). Ha a virtuális gépek védelméről tájékoztatásra van szüksége, tekintse meg [először: készítsen biztonsági mentést a Recovery Services-tároló virtuális gépek](backup-azure-vms-first-look-arm.md). További tudnivalók a felügyeleti feladatokat a virtuális gép biztonsági mentésekhez, a cikkben [kezelése Azure virtuális gépek biztonsági mentéseinek](backup-azure-manage-vms.md).
+További tudnivalók a felügyeleti feladatokat a virtuális gép biztonsági mentésekhez, a cikkben [kezelése Azure virtuális gépek biztonsági mentéseinek](backup-azure-manage-vms.md).

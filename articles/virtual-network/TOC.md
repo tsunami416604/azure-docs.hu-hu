@@ -63,11 +63,6 @@
 
 ### [Virtuális hálózati szolgáltatásvégpontok](virtual-network-service-endpoints-configure.md)
 
-### Nyilvános IP-cím – rendelkezésre állási zóna
-#### [Azure Portal](create-public-ip-availability-zone-portal.md)
-#### [Azure CLI](create-public-ip-availability-zone-cli.md)
-#### [PowerShell](create-public-ip-availability-zone-powershell.md)
-
 ### Virtual machines (Virtuális gépek)
 #### [Virtuális gépek hálózati átviteli sebessége](virtual-machine-network-throughput.md)
 #### Statikus nyilvános IP-címmel rendelkező virtuális gép létrehozása
@@ -151,7 +146,7 @@
 ##### [Azure PowerShell](virtual-networks-acl-powershell.md)
 
 ## Kezelés
-### [Virtuális hálózatok](virtual-network-manage-network.md)
+### [Virtuális hálózatok](manage-virtual-network.md)
 #### [Alhálózatok](virtual-network-manage-subnet.md)
 #### [Társviszonyok](virtual-network-manage-peering.md)
 #### Klasszikus

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/26/2017
 ms.author: femila
-ms.openlocfilehash: 61f84233b90cb3c82ed928d59ad2a090f7eb50b7
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 7a56876dfa545d273807444b105de3645dd79d34
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="guidelines-for-deploying-windows-server-active-directory-on-azure-virtual-machines"></a>Windows Server Active Directory telepítése Azure virtuális gépekre vonatkozó irányelvek
 Ez a cikk ismerteti a központi telepítése Windows Server Active Directory tartományi szolgáltatások (AD DS) és az Active Directory összevonási szolgáltatások (AD FS) helyszíni és a Microsoft Azure virtuális gépeken történő üzembe fontos különbségei.
@@ -51,7 +51,7 @@ Előfordulhat, hogy töltse le és futtassa a [Azure virtuális gép Readiness A
 
 Javasoljuk, hogy először is tekintse át az oktatóprogramok útmutatók és videók, amely a következő témákkal:
 
-* [Csak felhőalapú virtuális hálózat konfigurálása az Azure-portálon](../virtual-network/virtual-networks-create-vnet-arm-pportal.md)
+* [Csak felhőalapú virtuális hálózat konfigurálása az Azure-portálon](../virtual-network/quick-create-portal.md)
 * [A telephelyek közötti VPN konfigurálása az Azure-portálon](../vpn-gateway/vpn-gateway-site-to-site-create.md)
 * [Egy új Active Directory-erdő telepítése Azure virtuális hálózaton](active-directory-new-forest-virtual-machine.md)
 * [Az Active Directory replika tartományvezérlő telepítése az Azure-on](active-directory-install-replica-active-directory-domain-controller.md)

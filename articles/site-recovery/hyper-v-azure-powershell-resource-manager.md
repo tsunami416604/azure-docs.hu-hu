@@ -6,13 +6,13 @@ author: bsiva
 manager: abhiag
 ms.service: site-recovery
 ms.topic: article
-ms.date: 02/14/2018
+ms.date: 03/08/2018
 ms.author: bsiva
-ms.openlocfilehash: 5269fa528b6c32576b9cf1fb945ebf85b41ce819
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 4304cad9dc6aab7eb95885815a3ceb636ca6ff52
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-hyper-v-vms-using-powershell-and-azure-resource-manager"></a>Állítsa be az Azure-bA vész-helyreállítási Hyper-V virtuális gépek PowerShell és az Azure Resource Manager használatával
 
@@ -41,7 +41,7 @@ Győződjön meg arról, hogy az előfeltételek teljesülnek:
 Emellett az adott példa cikkben leírt előfeltételei a következők:
 
 * Windows Server 2012 R2 vagy Microsoft Hyper-V Server 2012 R2 egy vagy több virtuális gépeket tartalmazó rendszeren futó Hyper-V gazdagéphez. Közvetlen vagy proxyn keresztüli Hyper-V kiszolgálók kell csatlakoztatni az internethez.
-* A replikálni kívánt virtuális gépeket meg kell felelnie az [ezekről az előfeltételekről](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements).
+* A replikálni kívánt virtuális gépeket meg kell felelnie az [ezekről az előfeltételekről](hyper-v-azure-support-matrix.md#replicated-vms).
 
 ## <a name="step-1-sign-in-to-your-azure-account"></a>1. lépés: Bejelentkezés az Azure-fiókjával
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/30/2018
 ms.author: damaerte
-ms.openlocfilehash: 9f089b5c5d573bf469d6920f9144b7cc5c97c03a
-ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
+ms.openlocfilehash: 03706914db2b6b09ff31d5ed4b25871e7a53298a
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="features--tools-for-powershell-in-azure-cloud-shell-preview"></a>Szolgáltatások és eszközök PowerShell Azure Cloud rendszerhéj (előzetes verzió)
 
@@ -57,7 +57,7 @@ Az Azure-erőforrások, vagy közvetlenül az Azure portálon vagy az Azure Powe
 
     ![](media/features-powershell/resource-group-autocomplete.png)
 
-- **Get-AzureRmCommand**: Ez a parancsmag listáját adja vissza a parancsok a környezetében az Azure meghajtó helyére vonatkozó (`Azure:`). Például azt illusztrálja, csak a tárolással kapcsolatos parancsok a felhasználó esetén`Azure:\<subscription name>\StorageAccounts`
+- **Get-AzureRmCommand**: Ez a parancsmag listáját adja vissza a parancsok a környezetében az Azure meghajtó helyére vonatkozó (`Azure:`). Például azt illusztrálja, csak a tárolással kapcsolatos parancsok a felhasználó esetén `Azure:\<subscription name>\StorageAccounts`
 
     ![](media/features-powershell/get-azurermcommand.png)
 
@@ -90,7 +90,7 @@ Ezek a parancsok PowerShell távoli eljáráshívás épülnek, és az Azure vir
 
 |**Kategória**    |**Name (Név)**                                 |
 |----------------|-----------------------------------------|
-|Azure-eszközök     |[Az Azure PowerShell (5.2.0)](https://docs.microsoft.com/powershell/azure/overview)<br> [Azure CLI (2.0.26)](https://docs.microsoft.com/cli/azure/overview)|
+|Azure-eszközök     |[Az Azure PowerShell (5.2.0)](https://docs.microsoft.com/powershell/azure/overview)<br> [Azure CLI (2.0.26)](https://docs.microsoft.com/cli/azure)|
 |A szerkesztő szövege    |VIM<br> nano                             |
 |A Package Manager |PowerShellGet<br> PackageManagement<br> npm<br> a pip |
 |A verziókövetési rendszerrel  |git                                      |

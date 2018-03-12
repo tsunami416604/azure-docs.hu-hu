@@ -10,11 +10,11 @@ ms.topic: article
 ms.service: cost-management
 manager: carmonm
 ms.custom: 
-ms.openlocfilehash: 66b2ef53e613a9c61eea17746a25357119cf6900
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: a0dc2ee201c1729b10cd363553cdf5d61ec87748
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="activate-azure-subscriptions-and-accounts-with-azure-cost-management"></a>Azure-előfizetések és a fiókok az Azure költség Management aktiválása
 
@@ -76,7 +76,7 @@ Fiók frissítés előfizetés hozzáadásakor Azure költség felügyeleti hozz
 
     Ha egy vagy több előfizetés nem egy zöld pipa szimbólumot lát, azt jelenti, hogy Önnek nincs engedélye az előfizetés (CloudynCollector) reader alkalmazás létrehozásához. Az előfizetés magasabb szintű engedélyekkel rendelkező felhasználó kell ismételje meg a folyamatot.
 
-Tekintse meg a [csatlakozás az Azure Resource Manager és az Azure költség Management Cloudyn](https://youtu.be/oCIwvfBB6kk) videót, amely végigvezeti a folyamatot.
+Tekintse meg a [csatlakozás az Azure Resource Manager Azure költség felügyeleti](https://youtu.be/oCIwvfBB6kk) videót, amely végigvezeti a folyamatot.
 
 >[!VIDEO https://www.youtube.com/embed/oCIwvfBB6kk?ecver=1]
 

@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/08/2018
+ms.date: 03/07/2018
 ms.author: markvi
 ms.reviewer: spunukol
-ms.openlocfilehash: 66e3207898d6ad8ca9af2b969942e38321c191a5
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: ba93e1b597bb6bdb752563f2873b8e0c5f7a8181
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Az Azure Active Directory feltételes hozzáférési beállításainak ismertetése
 
@@ -136,12 +136,19 @@ Ez a beállítás minden böngészőben működik. Azonban kielégítéséhez eg
 | macOS                  | Chrome, Safari                      | ![Jelölőnégyzet][1] |
 
 
-> [!NOTE]
-> A Chrome támogatásához a Windows 10 Creators Update (verzió: 1703) vagy újabb verzió telepítése [ehhez a kiterjesztéshez](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji).<br>
-> A Chrome támogatásához a Windows 8.1 és a 7 létrehozása a következő beállításkulcsot a **HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls** <br>
-> Name: 1<br>
-> Típus: REG_SZ (karakterlánc)<br>
-> Data: {"pattern":"https://device.login.microsoftonline.com","filter":{"ISSUER":{"CN":"MS-Organization-Access"}}}
+
+#### <a name="chrome-support"></a>Chrome-támogatás
+
+A Chrome támogatási **Windows 10 Creators frissítés (verzió: 1703)** vagy újabb, telepítse a [ehhez a kiterjesztéshez](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji).
+
+A Chrome támogatási **7 és Windows 8.1**, hozza létre a következő beállításkulcsot:
+
+|    |    |
+|--- | ---|
+|Útvonal | HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls |
+|Name (Név) | 1 |
+|Típus | REG_SZ (String) |
+|Adatok | {"pattern":"https://device.login.microsoftonline.com","filter":{"ISSUER":{"CN":"MS-Organization-Access"}}}|
 
 A böngészők támogatja az eszközhitelesítés, lehetővé teszi az eszköz azonosítását és ellenőrizni a házirend alapján. Az eszköz ellenőrzése sikertelen lesz, ha a böngésző fut privát üzemmódban. 
 
@@ -186,6 +193,10 @@ A feltételes hozzáférési házirendben megkövetelheti, hogy hozzáférjen me
 Ez a beállítás a következő ügyfél alkalmazásokra vonatkoznak:
 
 
+- A Microsoft Intune Managed Browser
+- Microsoft PowerBI
+- Microsoft számlázás
+- Microsoft Launcher
 - Microsoft Azure Information Protection
 - Microsoft Excel
 - Microsoft Kaizala 

@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/15/2018
 ms.author: daveba
-ms.openlocfilehash: a64733b1969e2deae665f7a5f24a6653b216d94d
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: d7a7b0c8b3f9bf0279282dbf1fed4fc8163d9170
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="configure-a-virtual-machine-scale-set-managed-service-identity-msi-using-azure-cli"></a>Konfigurálja a virtuálisgép-méretezési készlet által felügyelt szolgáltatás Identity (MSI) Azure parancssori felület használatával
 
@@ -43,7 +43,7 @@ A parancssori felület parancsfájl példák futtatásához három lehetőség k
 
 Az MSI-kompatibilis virtuálisgép-méretezési készlet létrehozása:
 
-1. Az Azure parancssori felület a helyi konzol használata, először jelentkezzen be az Azure használatával [az bejelentkezési](/cli/azure/#az_login). Használjon olyan fiókot, amelybe szeretne telepíteni a virtuálisgép-méretezési csoport Azure-előfizetéssel társított:
+1. Az Azure parancssori felület a helyi konzol használata, először jelentkezzen be az Azure használatával [az bejelentkezési](/cli/azure/reference-index#az_login). Használjon olyan fiókot, amelybe szeretne telepíteni a virtuálisgép-méretezési csoport Azure-előfizetéssel társított:
 
    ```azurecli-interactive
    az login
@@ -65,7 +65,7 @@ Az MSI-kompatibilis virtuálisgép-méretezési készlet létrehozása:
 
 Ha egy meglévő Azure virtuálisgép-méretezési csoport MSI engedélyezni kell:
 
-1. Az Azure parancssori felület a helyi konzol használata, először jelentkezzen be az Azure használatával [az bejelentkezési](/cli/azure/#az_login). Az Azure-előfizetés, amely tartalmazza a virtuálisgép-méretezési csoport társított olyan fiókot használjon.
+1. Az Azure parancssori felület a helyi konzol használata, először jelentkezzen be az Azure használatával [az bejelentkezési](/cli/azure/reference-index#az_login). Az Azure-előfizetés, amely tartalmazza a virtuálisgép-méretezési csoport társított olyan fiókot használjon.
 
    ```azurecli-interactive
    az login
@@ -81,7 +81,7 @@ Ha egy meglévő Azure virtuálisgép-méretezési csoport MSI engedélyezni kel
 
 Ha egy virtuálisgép-méretezési csoport, amely már nem kell egy olyan MSI Csomaghoz:
 
-1. Az Azure parancssori felület a helyi konzol használata, először jelentkezzen be az Azure használatával [az bejelentkezési](/cli/azure/#az_login). Az Azure-előfizetés, amely tartalmazza a virtuálisgép-méretezési csoport társított olyan fiókot használjon.
+1. Az Azure parancssori felület a helyi konzol használata, először jelentkezzen be az Azure használatával [az bejelentkezési](/cli/azure/reference-index#az_login). Az Azure-előfizetés, amely tartalmazza a virtuálisgép-méretezési csoport társított olyan fiókot használjon.
 
    ```azurecli-interactive
    az login

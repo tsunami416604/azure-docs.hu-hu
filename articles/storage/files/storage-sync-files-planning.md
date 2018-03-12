@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2017
 ms.author: wgries
-ms.openlocfilehash: 341ace1d9792aba3d6d525a2cde0d9b74367d214
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 5f42bee31e3bc1a23c9b0c6de9d6748e23c94713
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="planning-for-an-azure-file-sync-preview-deployment"></a>Egy Azure fájlszinkronizálás (előzetes verzió) telepítésének tervezése
 Sync szolgáltatás használatával Azure fájl (előzetes verzió) központosítása fájlmegosztások a szervezet Azure fájlokban, ugyanakkor változatlanul megőrizze a rugalmasság, a teljesítmény és a kompatibilitási egy helyszíni fájlkiszolgáló. Azure fájlszinkronizálás átalakítja a Windows Server az Azure fájlmegosztás gyors gyorsítótárába. Minden protokoll, amely a Windows Server helyileg, az adatok eléréséhez használhatja, többek között a ftps-t, SMB és NFS. Akkor is annyi gyorsítótárak világszerte szükség szerint.
@@ -49,7 +49,7 @@ Az Azure fájlszinkronizálás ügynök csomag egy letölthető, amely lehetőv�
 Egy kiszolgáló végpont képviseli regisztrált kiszolgálón, például egy mappát egy olyan kiszolgáló köteten egy konkrét helyre. Több kiszolgáló végpont ugyanazon a köteten található is, ha a névterek nem lehetnek átfedésben (például `F:\sync1` és `F:\sync2`). Beállíthatja felhő rétegezési egyenként az egyes kiszolgáló-végpont esetében. Jelenleg nincs lehetőség egy kötet gyökerének kiszolgáló-végpont létrehozása (például `F:\` vagy `C:\myvolume`, ha egy kötet csatlakoztatva van a csatlakoztatási pontok).
 
 > [!Note]  
-> A kiszolgáló végpont helyezkedhet el a Windows rendszer kötetén. Felhő rétegezéséhez nem támogatott a rendszerköteten.
+> Csak nem cserélhető kötetek támogatottak.  Távoli megosztásból csatlakoztatott meghajtók nem támogatottak a kiszolgáló végpont elérési útvonalat.  A kiszolgáló végpont elhelyezhető továbbá a rendszerkötet, ha felhőalapú Windows rétegezéséhez nem támogatott a rendszerköteten.
 
 Ha egy kiszolgálón, amelyen egy meglévő fájlokat egy server végpontként szinkronizálási csoporthoz ad hozzá, azokat a fájlokat egyesítve lesznek az egyéb fájlokat, amelyek már megtalálhatók a szinkronizálási csoport végpontja.
 

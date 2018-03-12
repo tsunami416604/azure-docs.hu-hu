@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/26/2017
 ms.author: magoedte
-ms.openlocfilehash: 624c861db9bb318c368cef04965da0a73dd028d8
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 5fb7fd0be8b131ee098689b06c34c4e7c333801e
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview-in-log-analytics"></a>Azure SQL adatbázis Azure SQL elemzés (előzetes verzió) Naplóelemzési figyelése
 
@@ -103,7 +103,7 @@ Kattintson a **Azure SQL elemzés** csempére kattintva nyissa meg az Azure SQL-
 
 Az adott perspektíva kiválasztásával a csempéket, részletes jelentés megnyitása. A perspektíva kijelölése után a részletes jelentés meg van nyitva.
 
-![Az Azure SQL elemzés időtúllépések](./media/log-analytics-azure-sql/azure-sql-sol-timeouts.png)
+![Az Azure SQL elemzés időtúllépések](./media/log-analytics-azure-sql/azure-sql-sol-metrics.png)
 
 Minden szempontból ezekkel az előfizetés, a kiszolgáló, a rugalmas készlet és az adatbázis szintje biztosít. Emellett minden perspektíva látható perspektívát a jelentés az adott jobb. A részletezés előfizetés, a kiszolgáló, a készlet vagy az adatbázis listáról továbbra is.
 
@@ -148,13 +148,19 @@ Az Azure SQL Database-forrásokból származó adatokat tartalmazó könnyen ria
 *Az Azure SQL Database magas DTU*
 
 ```
-AzureMetrics | where ResourceProvider=="MICROSOFT.SQL" and ResourceId contains "/DATABASES/" and MetricName=="dtu_consumption_percent" | summarize avg(Maximum) by ResourceId
+AzureMetrics 
+| where ResourceProvider=="MICROSOFT.SQL" and ResourceId contains "/DATABASES/" and MetricName=="dtu_consumption_percent" 
+| summarize AggregatedValue = max(Maximum) by bin(TimeGenerated, 5m)
+| render timechart
 ```
 
 *Magas, az Azure SQL Database rugalmas készlet DTU*
 
 ```
-AzureMetrics | where ResourceProvider=="MICROSOFT.SQL" and ResourceId contains "/ELASTICPOOLS/" and MetricName=="dtu_consumption_percent" | summarize avg(Maximum) by ResourceId
+AzureMetrics 
+| where ResourceProvider=="MICROSOFT.SQL" and ResourceId contains "/ELASTICPOOLS/" and MetricName=="dtu_consumption_percent" 
+| summarize AggregatedValue = max(Maximum) by bin(TimeGenerated, 5m)
+| render timechart
 ```
 
 A riasztás-alapú lekérdezések segítségével az Azure SQL Database és a rugalmas készletek megadott küszöbértékek riasztás. A Naplóelemzési munkaterület riasztás konfigurálása:
@@ -167,7 +173,7 @@ A riasztás-alapú lekérdezések segítségével az Azure SQL Database és a ru
 4. A példa lekérdezések egyikét futtatja.
 5. Kattintson a napló keresési **riasztási**.  
 ![riasztás létrehozása, a keresés](./media/log-analytics-azure-sql/create-alert01.png)
-6. Az a **riasztási szabály hozzáadása** lapján konfigurálja a megfelelő tulajdonságokat és a meghatározott küszöbértékeket, majd kattintson **mentése**.  
+6. Az a **riasztási szabály hozzáadása** lapján konfigurálja a megfelelő tulajdonságokat és a meghatározott küszöbértékeket, majd kattintson **mentése**. 
 ![Riasztási szabály hozzáadása](./media/log-analytics-azure-sql/create-alert02.png)
 
 ## <a name="next-steps"></a>További lépések

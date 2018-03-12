@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 02/04/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c2679c7cb75c438402f3ab64c3e14c964cb8a85d
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: d551758277373995a6f92e1a25a59d170464fe5e
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-portal"></a>Az Azure portál használatával virtuális gépek magánhálózati IP-címek konfigurálása
 
@@ -41,7 +41,7 @@ Ez a cikk a Resource Manager-alapú üzemi modellt ismerteti. Emellett [statikus
 
 [!INCLUDE [virtual-networks-static-ip-scenario-include](../../includes/virtual-networks-static-ip-scenario-include.md)]
 
-Az alábbi minta lépések várhatóan a már létrehozott egy egyszerű környezetben. Ha azt szeretné, ebben a dokumentumban megjelenített futtatásához a lépéseket, először leírt tesztkörnyezet felépítéséhez [hozhat létre egy vnetet](virtual-networks-create-vnet-arm-pportal.md).
+Az alábbi minta lépések várhatóan a már létrehozott egy egyszerű környezetben. Ha azt szeretné, ebben a dokumentumban megjelenített futtatásához a lépéseket, először leírt tesztkörnyezet felépítéséhez [hozzon létre egy virtuális hálózatot](quick-create-portal.md).
 
 ## <a name="how-to-create-a-vm-for-testing-static-private-ip-addresses"></a>Tesztelési statikus magánhálózati IP-címek egy virtuális gép létrehozása
 Nem be hozzá statikus magánhálózati IP-cím a Resource Manager telepítési módban a virtuális gépek létrehozásakor az Azure portál használatával. Először hozza létre a virtuális Gépet, majd állítsa be a magánhálózati statikus IP-címe.

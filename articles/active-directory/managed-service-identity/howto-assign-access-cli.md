@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/25/2017
 ms.author: daveba
-ms.openlocfilehash: 9e5a10531ac919fd54785666e9a66fb4b4431f42
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: ca228a99eec1d376e456f5730aaaf8c569620f43
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="assign-a-managed-service-identity-msi-access-to-a-resource-using-azure-cli"></a>A kezelt Service Identity (MSI) hozzáférés hozzárendelése egy erőforrás Azure parancssori felület használatával
 
@@ -41,7 +41,7 @@ A parancssori felület parancsfájl példák futtatásához három lehetőség k
 
 Engedélyezését MSI a egy Azure-erőforrás, például egy [Azure virtuális gép](qs-configure-cli-windows-vm.md) vagy [Azure virtuálisgép-méretezési csoport](qs-configure-cli-windows-vmss.md): 
 
-1. Az Azure parancssori felület a helyi konzol használata, először jelentkezzen be az Azure használatával [az bejelentkezési](/cli/azure/#az_login). Használjon olyan fiókot, amelybe szeretne telepíteni a virtuális gép vagy virtuálisgép-méretezési csoport Azure-előfizetéssel társított:
+1. Az Azure parancssori felület a helyi konzol használata, először jelentkezzen be az Azure használatával [az bejelentkezési](/cli/azure/reference-index#az_login). Használjon olyan fiókot, amelybe szeretne telepíteni a virtuális gép vagy virtuálisgép-méretezési csoport Azure-előfizetéssel társított:
 
    ```azurecli-interactive
    az login

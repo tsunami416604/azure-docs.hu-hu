@@ -3,15 +3,16 @@ title: "A Hyper-V replikáció Azure támogatási mátrix |} Microsoft Docs"
 description: "A támogatott összetevők és a Hyper-V replikálás az Azure-bA az Azure Site Recovery követelményei"
 services: site-recovery
 author: rayne-wiselman
+manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 02/14/2018
+ms.date: 03/06/2018
 ms.author: raynew
-ms.openlocfilehash: 58d54c1e0e6aa88878b45400b9211396f5d1b9d5
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 81983b9287a6b8073724f0cd973929f4b4677d4a
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="support-matrix-for-hyper-v-replication-to-azure"></a>A Hyper-V replikáció az Azure támogatási mátrix
 
@@ -29,7 +30,7 @@ Ez a cikk bemutatja a támogatott összetevők és az Azure-ba, a helyszíni Hyp
 
 ## <a name="on-premises-servers"></a>Helyszíni kiszolgálók
 
-**Kiszolgáló** | Követelmények | **Részletek**
+**Kiszolgáló** | **Követelmények** | **Részletek**
 --- | --- | ---
 **Hyper-V-(VMM nélkül fut)** | Windows Server 2016-ot, a Windows Server 2012 R2 legújabb frissítéseit. | Ha Hyper-V hely konfigurálása a Site Recovery szolgáltatásban, 2012 R2 és Windows Server 2016 rendszert futtató gazdagépeken keverése nem támogatott.<br/><br/> Windows Server 2016 rendszerű gazdagépen található virtuális gép esetében egy másik helyre történő helyreállítás nem támogatott.
 **A Hyper-V (fut a VMM-mel)** | A VMM 2016 VMM 2012 R2-BEN. | A VMM használata esetén a Windows Server 2016 állomások VMM 2016 kell kezelni.<br/><br/> Windows Server 2016 és 2012 R2 rendszeren futó Hyper-V gazdagépek keveri VMM-felhő jelenleg nem támogatott.<br/><br/> Egy létező VMM 2012 R2-kiszolgálót a 2016 frissítését tartalmazó környezetek esetében nem támogatottak.
@@ -139,9 +140,9 @@ Felügyelt lemezek | Igen, a feladatátvétel<br/><br/> Feladat-visszavétel fel
 
 A helyszíni virtuális gépek replikálása Azure-ba, meg kell felelnie Azure virtuális Gépen az alábbi táblázatban foglaltak.
 
-**Összetevő** | Követelmények | **Részletek**
+**Összetevő** | **Követelmények** | **Részletek**
 --- | --- | ---
-Vendég operációs rendszer | A Site Recovery minden operációs rendszereket támogatja [használható az Azure-](https://technet.microsoft.com/library/cc794868%28v=ws.10%29.aspx).  | Előfeltételek ellenőrzése sikertelen lesz, ha nem támogatott.
+**Vendég operációs rendszer** | A Site Recovery minden operációs rendszereket támogatja [használható az Azure-](https://technet.microsoft.com/library/cc794868%28v=ws.10%29.aspx).  | Előfeltételek ellenőrzése sikertelen lesz, ha nem támogatott.
 **Vendég operációs rendszer architektúrája** | 64 bites | Előfeltételek ellenőrzése sikertelen lesz, ha nem támogatott.
 **Operációsrendszer-lemez mérete** | 1. generációs virtuális gépek legfeljebb 2048 GB-ot.<br/><br/> 2. generációs virtuális gépek és 300 GB.  | Előfeltételek ellenőrzése sikertelen lesz, ha nem támogatott.
 **Operációsrendszer-lemezek száma** | 1 | Előfeltételek ellenőrzése sikertelen lesz, ha nem támogatott.

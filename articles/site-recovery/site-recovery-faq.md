@@ -6,13 +6,13 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/05/2018
+ms.date: 03/08/2018
 ms.author: raynew
-ms.openlocfilehash: 8c6f577560442f28204b633d5f45f6d4c46ea4b8
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 5d1010a65a112b97124a8d7d46caceb3d61e2cac
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="azure-site-recovery-frequently-asked-questions-faq"></a>Az Azure Site Recovery: gyakori kérdések (GYIK)
 A cikk az Azure Site Recovery kapcsolatos gyakran ismételt kérdések tartalmaz. Ha kérdése van a cikk elolvasása után, az fel őket a [Azure Recovery Services fórumon](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr).
@@ -55,14 +55,14 @@ Ha replikálása másodlagos adatközpontba, akkor a Hyper-V virtuális gépek k
 Igen. Replikálhat virtuális gépeket a Hyper-V kiszolgálók, a VMM-felhőben az Azure-ba, vagy ugyanazon a kiszolgálón található VMM-felhők között. A helyszíni replikáció javasoljuk, hogy rendelkezik-e a VMM-kiszolgáló az elsődleges és másodlagos helyeken.  
 
 ### <a name="what-physical-servers-can-i-protect"></a>Milyen fizikai kiszolgálókat lehet védeni?
-Fizikai kiszolgálók Azure-bA vagy másodlagos helyhez fut a Windows és Linux replikálhatja. [További tudnivalók](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements) operációs rendszerre vonatkozó követelményeket.  Ugyanazok a követelmények érvényesek, hogy a fizikai kiszolgálók Azure-bA vagy másodlagos helyre replikál.
+Fizikai kiszolgálók Azure-bA vagy másodlagos helyhez fut a Windows és Linux replikálhatja. A vonatkozó [replikálást az Azure-](vmware-physical-azure-support-matrix.md#replicated-machines), és [egy másodlagos helyre replikációt](vmware-physical-secondary-support-matrix.md#replicated-vm-support).
 
 
 Vegye figyelembe, hogy fizikai kiszolgálók virtuális gépként fognak futni az Azure-ban, ha a helyszíni kiszolgáló leáll. A feladat-visszavétel egy helyszíni fizikai kiszolgáló jelenleg nem támogatott. Védett, fizikai gépek esetén csak a feladat-visszavétel a VMware virtuális gépeket is.
 
 ### <a name="what-vmware-vms-can-i-protect"></a>Milyen VMware virtuális gépek védhetők?
 
-VMware virtuális gépek védelméhez vSphere hipervizorra van szükség, a virtuális gépeknek pedig VMware-eszközökkel kell rendelkezniük. A hipervizorok kezeléséhez a VMware vCenter használatát javasoljuk. [További](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements) replikálásához a VMware-kiszolgálók és virtuális gépek Azure-bA vagy másodlagos helyhez részletes követelményeiről.
+VMware virtuális gépek védelméhez vSphere hipervizorra van szükség, a virtuális gépeknek pedig VMware-eszközökkel kell rendelkezniük. A hipervizorok kezeléséhez a VMware vCenter használatát javasoljuk. Követelményeivel kapcsolatos további [replikálást az Azure-](vmware-physical-azure-support-matrix.md#replicated-machines), vagy [egy másodlagos helyre replikációt](vmware-physical-secondary-support-matrix.md#replicated-vm-support).
 
 
 ### <a name="can-i-manage-disaster-recovery-for-my-branch-offices-with-site-recovery"></a>Elérhető a vészhelyreállítás a fiókirodák számára a Site Recoveryvel?
@@ -93,7 +93,7 @@ Az Azure Site Recovery replikálja az adatokat egy Azure storage-fiókot, egy ny
 Igen, ExpressRoute segítségével virtuális gépek replikálása Azure-bA. Az Azure Site Recovery replikálja az adatokat egy Azure Storage-fiók egy nyilvános végpontot keresztül. Állítson be kell [nyilvános társviszony](../expressroute/expressroute-circuit-peerings.md#azure-public-peering) Site Recovery replikációs ExpressRoute használandó. Miután a virtuális gép keresztül lett hibába ütközött egy Azure virtuális hálózatra elérheti őket használatával a [magánhálózati társviszony-létesítés](../expressroute/expressroute-circuit-peerings.md#azure-private-peering) beállítása az Azure virtuális hálózathoz.
 
 ### <a name="are-there-any-prerequisites-for-replicating-virtual-machines-to-azure"></a>Van valamilyen előfeltétele a virtuális gépek Azure-ba való replikációjának?
-Az Azure-bA replikálni kívánt virtuális gépek meg kell felelnie [Azure-követelményeknek](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements).
+[VMware virtuális gépek](vmware-physical-azure-support-matrix.md#replicated-machines) és [Hyper-V virtuális gépek](hyper-v-azure-support-matrix.md#replicated-vms) a replikálni kívánt Azure meg kell felelnie az Azure-követelményeknek.
 
 Egyes rendelkeznie kell Azure felhasználói fiókja [engedélyek](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines) engedélyezni szeretné egy új virtuális gép az Azure-bA replikálását.
 

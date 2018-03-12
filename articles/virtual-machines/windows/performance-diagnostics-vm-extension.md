@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 09/29/2017
 ms.author: genli
-ms.openlocfilehash: 5a7dc313f1d6453562e4d5a11ceca03e4459b043
-ms.sourcegitcommit: 3fca41d1c978d4b9165666bb2a9a1fe2a13aabb6
+ms.openlocfilehash: 8f6f3fc8325fb2587dc09b982efa52fbe663e2a9
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="azure-performance-diagnostics-vm-extension-for-windows"></a>Windows Azure teljesítmény Diagnostics Virtuálisgép-bővítménnyel
 
@@ -29,7 +29,7 @@ Az Azure teljesítménye Diagnostics Virtuálisgép-bővítmény segít a teljes
 Ezt a bővítményt a Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2 és Windows Server 2016 is telepíthető. Is telepíthető a Windows 8.1 és Windows 10-es.
 
 ## <a name="extension-schema"></a>A séma kiterjesztése
-A következő JSON Azure teljesítmény Diagnostics Virtuálisgép-bővítmény jelennek meg. a séma. Ezt a bővítményt a nevet és a kulcsot a tárfiók a diagnosztikai kimenetet és a jelentés tárolásához szükséges. Ezek az értékek kis-és nagybetűket, és egy védett beállítások konfigurálása belül kell tárolni. Az Azure virtuális gép beállítás bővítmény védett adatok titkosítva legyenek, és csak visszafejtése a cél virtuális gépen. Vegye figyelembe, hogy **storageAccountName** és **storageAccountKey** -és nagybetűk. Más kötelező paraméter a következő szakaszban találhatók.
+A következő JSON Azure teljesítmény Diagnostics Virtuálisgép-bővítmény jelennek meg. a séma. Ezt a bővítményt a nevet és a kulcsot a tárfiók a diagnosztikai kimenetet és a jelentés tárolásához szükséges. Ezek az értékek érzékenyek. Tárfiók kulcsának egy védett beállítások konfigurálása belül kell tárolni. Az Azure virtuális gép beállítás bővítmény védett adatok titkosítva legyenek, és csak visszafejtése a cél virtuális gépen. Vegye figyelembe, hogy **storageAccountName** és **storageAccountKey** -és nagybetűk. Más kötelező paraméter a következő szakaszban találhatók.
 
 ```JSON
     {
@@ -43,19 +43,19 @@ A következő JSON Azure teljesítmény Diagnostics Virtuálisgép-bővítmény 
         "typeHandlerVersion": "1.0",
         "autoUpgradeMinorVersion": true,
         "settings": {
+            "storageAccountName": "[parameters('storageAccountName')]",
             "performanceScenario": "[parameters('performanceScenario')]",
-                  "traceDurationInSeconds": "[parameters('traceDurationInSeconds')]",
-                  "perfCounterTrace": "[parameters('perfCounterTrace')]",
-                  "networkTrace": "[parameters('networkTrace')]",
-                  "xperfTrace": "[parameters('xperfTrace')]",
-                  "storPortTrace": "[parameters('storPortTrace')]",
+            "traceDurationInSeconds": "[parameters('traceDurationInSeconds')]",
+            "perfCounterTrace": "[parameters('perfCounterTrace')]",
+            "networkTrace": "[parameters('networkTrace')]",
+            "xperfTrace": "[parameters('xperfTrace')]",
+            "storPortTrace": "[parameters('storPortTrace')]",
             "srNumber": "[parameters('srNumber')]",
             "requestTimeUtc":  "[parameters('requestTimeUtc')]"
         },
-          "protectedSettings": {
-            "storageAccountName": "[parameters('storageAccountName')]",
+        "protectedSettings": {
             "storageAccountKey": "[parameters('storageAccountKey')]"        
-            }
+        }
       }
     }
 ```
@@ -65,22 +65,23 @@ A következő JSON Azure teljesítmény Diagnostics Virtuálisgép-bővítmény 
 |   **Name (Név)**   |**Érték / – példa**|       **Leírás**      |
 |--------------|-------------------|----------------------------|
 |apiVersion|2015-06-15|Az API verziója.
-|Közzétevő|Microsoft.Azure.Performance.Diagnostics|A bővítmény publisher névterét.
+|publisher|Microsoft.Azure.Performance.Diagnostics|A bővítmény publisher névterét.
 |type|AzurePerformanceDiagnostics|A Virtuálisgép-bővítmény típusú.
 |typeHandlerVersion|1.0|A bővítmény kezelő verzióját.
 |performanceScenario|alapszintű|A teljesítmény-forgatókönyvet az adatok rögzítéséhez. Érvényes értékek a következők: **alapvető**, **vmslow**, **azurefiles**, és **egyéni**.
 |traceDurationInSeconds|300|A nyomkövetési adatokat, ha a nyomkövetési beállítások vannak kiválasztva időtartama.
-|perfCounterTrace|P|Teljesítmény-számláló nyomkövetési lehetővé teszi. Érvényes értékek a következők **p** vagy üres értékkel. Ha nem szeretné rögzíteni a, hagyja meg az értéket, mert üres.
-|networkTrace|n|Hálózati nyomkövetés engedélyezése lehetőséget. Érvényes értékek a következők  **n**  vagy üres értékkel. Ha nem szeretné rögzíteni a, hagyja meg az értéket, mert üres.
+|perfCounterTrace|p|Teljesítmény-számláló nyomkövetési lehetővé teszi. Érvényes értékek a következők **p** vagy üres értékkel. Ha nem szeretné rögzíteni a, hagyja meg az értéket, mert üres.
+|networkTrace|n|Hálózati nyomkövetés engedélyezése lehetőséget. Érvényes értékek a következők **n** vagy üres értékkel. Ha nem szeretné rögzíteni a, hagyja meg az értéket, mert üres.
 |xperfTrace|x|Engedélyezze a következő helyen nyomkövetési beállítás. Érvényes értékek a következők **x** vagy üres értékkel. Ha nem szeretné rögzíteni a, hagyja meg az értéket, mert üres.
 |storPortTrace|s|StorPort-nyomkövetés engedélyezése beállítás. Érvényes értékek a következők **s** vagy üres értékkel. Ha nem szeretné rögzíteni a, hagyja meg az értéket, mert üres.
 |srNumber|123452016365929|A támogatási jegy száma, ha elérhető. Hagyja meg az értéket, mert üres, ha még nem rendelkezik.
+|requestTimeUtc|2017-09-28T22:08:53.736Z|Aktuális ideje UTC formátumban. Ha a portál segítségével telepítse ezt a bővítményt, nem kell ezt az értéket adja meg.
 |storageAccountName|mystorageaccount|A diagnosztikai naplók és az eredmények tárolásához a tárfiók neve.
-|storageAccountKey|lDuVvxuZB28NNP... hAiRF3voADxLBTcc ==|A tárfiók kulcsa.
+|storageAccountKey|lDuVvxuZB28NNP…hAiRF3voADxLBTcc==|A tárfiók kulcsa.
 
 ## <a name="install-the-extension"></a>A bővítmény telepítése
 
-Kövesse az alábbi lépéseket a Windows virtuális gépek a bővítmény telepítéséhez:
+Kövesse az alábbi utasításokat a Windows virtuális gépek a bővítmény telepítéséhez:
 
 1. Jelentkezzen be az [Azure Portalra](http://portal.azure.com).
 2. Válassza ki a virtuális gépet, ahol ezt a bővítményt telepíteni szeretné.
@@ -182,19 +183,19 @@ Az Azure virtuálisgép-bővítmények az Azure Resource Manager-sablonok is tel
         "typeHandlerVersion": "1.0",
         "autoUpgradeMinorVersion": true,
         "settings": {
+            "storageAccountName": "[parameters('storageAccountName')]",
             "performanceScenario": "[parameters('performanceScenario')]",
-                  "traceDurationInSeconds": "[parameters('traceDurationInSeconds')]",
-                  "perfCounterTrace": "[parameters('perfCounterTrace')]",
-                  "networkTrace": "[parameters('networkTrace')]",
-                  "xperfTrace": "[parameters('xperfTrace')]",
-                  "storPortTrace": "[parameters('storPortTrace')]",
+            "traceDurationInSeconds": "[parameters('traceDurationInSeconds')]",
+            "perfCounterTrace": "[parameters('perfCounterTrace')]",
+            "networkTrace": "[parameters('networkTrace')]",
+            "xperfTrace": "[parameters('xperfTrace')]",
+            "storPortTrace": "[parameters('storPortTrace')]",
             "srNumber": "[parameters('srNumber')]",
             "requestTimeUtc":  "[parameters('requestTimeUtc')]"
         },
-          "protectedSettings": {
-            "storageAccountName": "[parameters('storageAccountName')]",
+        "protectedSettings": {            
             "storageAccountKey": "[parameters('storageAccountKey')]"        
-            }
+        }
       }
     }
   ]
@@ -202,13 +203,13 @@ Az Azure virtuálisgép-bővítmények az Azure Resource Manager-sablonok is tel
 ````
 
 ## <a name="powershell-deployment"></a>PowerShell telepítése
-A `Set-AzureRmVMExtension` parancs segítségével Azure teljesítmény Diagnostics Virtuálisgép-bővítmény telepítése egy meglévő virtuális gépre. A parancs futtatása előtt a nyilvános és titkos konfigurációk tárolása egy kivonattáblát a PowerShell.
+A `Set-AzureRmVMExtension` parancs segítségével Azure teljesítmény Diagnostics Virtuálisgép-bővítmény telepítése egy meglévő virtuális gépre.
 
 PowerShell
 
 ````
-$PublicSettings = @{ "performanceScenario":"basic","traceDurationInSeconds":300,"perfCounterTrace":"p","networkTrace":"","xperfTrace":"","storPortTrace":"","srNumber":"","requestTimeUtc":"2017-09-28T22:08:53.736Z" }
-$ProtectedSettings = @{"storageAccountName":"mystorageaccount","storageAccountKey":"mystoragekey"}
+$PublicSettings = @{ "storageAccountName"="mystorageaccount";"performanceScenario"="basic";"traceDurationInSeconds"=300;"perfCounterTrace"="p";"networkTrace"="";"xperfTrace"="";"storPortTrace"="";"srNumber"="";"requestTimeUtc"="2017-09-28T22:08:53.736Z" }
+$ProtectedSettings = @{"storageAccountKey"="mystoragekey" }
 
 Set-AzureRmVMExtension -ExtensionName "AzurePerformanceDiagnostics" `
     -ResourceGroupName "myResourceGroup" `
@@ -218,7 +219,7 @@ Set-AzureRmVMExtension -ExtensionName "AzurePerformanceDiagnostics" `
     -TypeHandlerVersion 1.0 `
     -Settings $PublicSettings `
     -ProtectedSettings $ProtectedSettings `
-    -Location WestUS `
+    -Location WestUS
 ````
 
 ## <a name="information-on-the-data-captured"></a>A rögzített adatok információk
@@ -234,7 +235,7 @@ Segít a támogatási szakember, a támogatási jegy dolgozik, a Microsoft a eze
 
 A jelentés megtekintéséhez bontsa ki a zip-fájl, és nyissa meg a **PerfInsights diagram jelentés.HTML** fájlt.
 
-Előfordulhat, hogy is lehet a portálról közvetlenül a zip-fájl letöltésére jelölje ki a bővítményt.
+Is kell tudni a portálról közvetlenül a zip-fájl letöltésére jelölje ki a bővítményt.
 
 ![Képernyőfelvétel a teljesítmény diagnosztika részletes állapota](media/performance-diagnostics-vm-extension/view-detailed-status.png)
 
