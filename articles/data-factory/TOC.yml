@@ -290,6 +290,8 @@
           href: transform-data-using-stored-procedure.md
         - name: Data Lake U-SQL-tevékenység
           href: transform-data-using-data-lake-analytics.md
+        - name: Databricks-jegyzetfüzetek tevékenységei
+          href: transform-data-using-databricks-notebook.md
         - name: Egyéni tevékenység
           href: transform-data-using-dotnet-custom-activity.md
         - name: Társított szolgáltatások számítása

@@ -121,6 +121,10 @@
               href: app-insights-configuration-with-applicationinsights-config.md
             - name: Pillanatkép-hibakereső
               href: app-insights-snapshot-debugger.md
+        - name: ASP.NET-mag
+          items:
+            - name: Profilkészítő a Linux App Serviceshez
+              href: app-insights-profiler-aspnetcore-linux.md
         - name: J2EE
           items:
             - name: Nyomkövetési naplók
