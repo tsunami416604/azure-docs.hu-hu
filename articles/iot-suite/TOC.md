@@ -66,6 +66,7 @@
 ### [Új szimulált eszköz létrehozása](iot-suite-remote-monitoring-test.md)
 ### [A megoldás testreszabása](iot-suite-remote-monitoring-customize.md)
 ### [Üzembe helyezés parancssori felületről](iot-suite-remote-monitoring-deploy-cli.md)
+### [Helyi üzembe helyezés](iot-suite-remote-monitoring-deploy-local.md)
 ### Fizikai eszköz csatlakoztatása
 #### [C Windowson](iot-suite-connecting-devices.md)
 #### [C Linuxon](iot-suite-connecting-devices-linux.md)

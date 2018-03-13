@@ -38,7 +38,7 @@ A következő szolgáltatásokat a magas szintű szempontjából, a jelenlegi ki
 
 | Szolgáltatás | Támogatás |
 | --- | --- |
-| Csatlakoztatott adatforrás |Az összekötő minden 64 bites ODBC-illesztőprogramok használata támogatott. A következő tesztelték: <li>Microsoft SQL Server és SQL Azure</li><li>IBM DB2 10.x</li><li>IBM DB2 9.x</li><li>Oracle 10 &11;g</li><li>MySQL 5.x</li> |
+| Csatlakoztatott adatforrás |Az összekötő minden 64 bites ODBC-illesztőprogramok használata támogatott. A következő tesztelték: <li>Microsoft SQL Server és SQL Azure</li><li>IBM DB2 10.x</li><li>IBM DB2 9.x</li><li>Oracle 10 & 11g</li><li>MySQL 5.x</li> |
 | Forgatókönyvek |<li>Objektum életciklusának kezelésére</li><li>Jelszókezelés</li> |
 | Műveletek |<li>Teljes importálás és a különbözeti importálás, exportálás</li><li>Az exportált: Hozzáadása, törlése, frissítés, és cserélje le</li><li>Jelszó beállítása, a jelszó módosítása</li> |
 | Séma |<li>Az objektumok és attribútumok dinamikus felderítése</li> |

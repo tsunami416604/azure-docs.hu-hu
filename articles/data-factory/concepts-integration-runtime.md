@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/22/2018
 ms.author: shlo
-ms.openlocfilehash: 7308c8754198ea3e7533b8a9c378cfaac1b5bbd2
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 18792d8dc8b232ad048db2440c5b52428c50f92e
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Integrációs modul az Azure Data Factoryban
 Az integrációs modul (Integration Runtime, IR), az Azure Data Factory által használt számítási infrastruktúra a következő adatintegrációs képességeket biztosítja különböző hálózati környezetekben:
@@ -123,7 +123,7 @@ Az alábbi ábrán két példa látható másolási tevékenységre:
 ![A használandó integrációs modul](media/concepts-integration-runtime/which-integration-runtime-to-use.png)
 
 ## <a name="integration-runtime-location"></a>Az integrációs modul helye
-A Data Factory ott található, ahol az adat-előállító metaadatait tárolja a rendszer, és ahonnan a folyamat aktiválása indul. A jelenleg támogatott Data Factory helyek: USA keleti régiója, USA 2. keleti régiója és a nyugat-európai régió. A data factory azonban más Azure-régiókban lévő adattárakhoz és számítási szolgáltatásokhoz is hozzáférhet az adatok adattárak közötti mozgatása vagy az adatok számítási szolgáltatásokkal történő feldolgozása érdekében. Ez a viselkedés az adatmegfelelőség, a hatékonyság és a csökkentett hálózati adatkimeneti költségek biztosítása érdekében a globálisan több régióban rendelkezésre álló integrációs modulon keresztül valósul meg.
+A Data Factory ott található, ahol az adat-előállító metaadatait tárolja a rendszer, és ahonnan a folyamat aktiválása indul. A jelenleg támogatott Data Factory-helyek: USA keleti régiója, USA 2. keleti régiója, Délkelet-Ázsia és Nyugat-Európa. A data factory azonban más Azure-régiókban lévő adattárakhoz és számítási szolgáltatásokhoz is hozzáférhet az adatok adattárak közötti mozgatása vagy az adatok számítási szolgáltatásokkal történő feldolgozása érdekében. Ez a viselkedés az adatmegfelelőség, a hatékonyság és a csökkentett hálózati adatkimeneti költségek biztosítása érdekében a globálisan több régióban rendelkezésre álló integrációs modulon keresztül valósul meg.
 
 Az integrációs modul helye meghatározza a háttérszámítások helyét, és lényegében a helyet, ahol az adatmozgás, a tevékenységküldés és az SSIS-csomag végrehajtása történik. Az integrációs modul helye eltérhet annak az adat-előállítónak a helyétől, amelyhez tartozik. Az alábbi ábrán a Data Factory és a hozzá tartozó integrációs modul beállításai találhatók:
 
@@ -176,7 +176,7 @@ A saját üzemeltetésű integrációs modul logikailag van regisztrálva a Data
 Ha adatmozgás végrehajtásához használja, a saját üzemeltetésű integrációs modul kinyeri az adatokat a forrásból, és a célra írja.
 
 ### <a name="azure-ssis-ir"></a>Azure-SSIS integrációs modul
-Az Azure-SSIS integrációs modul számára a megfelelő helyet kiválasztása az ETL folyamatokban létfontosságú a magas teljesítmény eléréséhez.  Az előzetes verzióban kezdetben két hely érhető el (az USA keleti régiója és Észak-Európa).
+Az Azure-SSIS integrációs modul számára a megfelelő helyet kiválasztása az ETL folyamatokban létfontosságú a magas teljesítmény eléréséhez.  Az előzetes verzióban kezdetben hat hely érhető el (az USA keleti régiója, az USA 2. keleti régiója, az USA középső régiója, Kelet-Ausztrália, Észak-Európa és Nyugat-Európa).
 
 - Az Azure-SSIS integrációs modul helyének nem kell megegyeznie az adat-előállítója helyével, de meg kell egyeznie a saját, az SSISDB üzemeltetési helyéül szolgáló Azure SQL Database/Managed Instance-kiszolgálójának (privát előzetes verzió) helyével. Ily módon az Azure-SSIS integrációs modul könnyen hozzáfér az SSISDB-hez anélkül, hogy jelentős adatforgalom zajlana különböző helyek között.
 - Ha nem rendelkezik meglévő Azure SQL Database/Managed Instance (privát előzetes verzió) kiszolgálóval az SSISDB üzemeltetésére, de rendelkezik helyszíni adatforrásokkal/célokkal, érdemes létrehoznia egy új Azure SQL Database/Managed Instance (privát előzetes verzió) kiszolgálót egy, a helyszíni hálózatához csatlakoztatott virtuális hálózat helyével megegyező helyen.  Ily módon létrehozhatja az Azure-SSIS integrációs modulját az új Azure SQL Database/Managed Instance (privát előzetes verzió) kiszolgálóval, és a virtuális hálózathoz csatlakozva hatékonyan minimalizálhatja a különböző helyek közötti adatmozgást, hiszen minden egy helyen található.

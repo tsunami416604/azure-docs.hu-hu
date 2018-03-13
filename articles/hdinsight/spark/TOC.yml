@@ -91,8 +91,10 @@
           maintainContext: true
     - name: Spark-streamelés
       items:
-        - name: Áttekintés
+        - name: Streamelés – áttekintés
           href: apache-spark-streaming-overview.md
+        - name: Strukturált streamelés – áttekintés
+          href: apache-spark-structured-streaming-overview.md
         - name: Magas rendelkezésre állású Spark streamelési feladatok létrehozása a YARN-ban
           href: apache-spark-streaming-high-availability.md
         - name: Strukturált streamelés az Event Hubs használatával

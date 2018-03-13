@@ -290,9 +290,10 @@
 ### [Rendszergazdai szerepkörök](active-directory-assign-admin-roles-azure-portal.md)
 #### [Rendszergazdai szerepkör hozzárendelése felhasználóhoz](active-directory-users-assign-role-azure-portal.md)
 #### [A tagok és vendégfelhasználók engedélyeinek összehasonlítása](users-default-permissions.md)
+### [Emelt szintű hozzáférés biztonsága](admin-roles-best-practices.md) 
+### [Vészhelyzeti hozzáférésére szolgáló rendszergazdai fiókok létrehozása](active-directory-admin-manage-emergency-access-accounts.md)
 ### [Felügyeleti egységek](active-directory-administrative-units-management.md)
 ### [A jogkivonatok élettartamának beállítása](active-directory-configurable-token-lifetimes.md)
-### [A rendszergazdai fiókok vészhelyzeti hozzáférésének kezelése](active-directory-admin-manage-emergency-access-accounts.md)
 
 ## Hozzáférési felülvizsgálatok
 ### [Hozzáférési felülvizsgálatok áttekintése](active-directory-azure-ad-controls-access-reviews-overview.md)

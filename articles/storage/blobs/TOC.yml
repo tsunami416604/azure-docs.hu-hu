@@ -12,6 +12,8 @@
       href: ../common/storage-quickstart-create-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - name: Blobok használata – Azure Portal
       href: storage-quickstart-blobs-portal.md
+    - name: Blobok használata – Storage Explorer
+      href: storage-quickstart-blobs-storage-explorer.md
     - name: Blobok használata – PowerShell
       href: storage-quickstart-blobs-powershell.md
     - name: Blobok használata – Parancssori felület
@@ -28,8 +30,8 @@
       href: storage-quickstart-blobs-ruby.md
     - name: Blobok használata – Node.js
       href: storage-quickstart-blobs-nodejs.md
-    - name: Blobok használata – Storage Explorer
-      href: storage-quickstart-blobs-storage-explorer.md
+    - name: Blobok használata – PHP
+      href: storage-quickstart-blobs-php.md
 - name: Oktatóanyagok
   items:
     - name: Rendszerképek feltöltése és feldolgozása
