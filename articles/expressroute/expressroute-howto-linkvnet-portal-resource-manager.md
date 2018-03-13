@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/27/2018
+ms.date: 03/08/2018
 ms.author: cherylmc
-ms.openlocfilehash: 95b732229f151b8f27dce1dcc3825d9aa2e1d1ed
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: c2bef1d79d3133ea6306928a8c917e1bc3000a58
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-the-portal"></a>Egy virtuális hálózathoz csatlakozni a portál használatával ExpressRoute-kapcsolatcsoportot
 > [!div class="op_single_selector"]
@@ -35,15 +35,19 @@ Ez a cikk segít kapcsolatot létesíthet egy virtuális hálózathoz kapcsolód
 ## <a name="before-you-begin"></a>Előkészületek
 
 * Tekintse át a [Előfeltételek](expressroute-prerequisites.md), [útválasztási követelmények](expressroute-routing.md), és [munkafolyamatok](expressroute-workflows.md) konfigurálás elkezdése előtt.
-* Egy aktív ExpressRoute-kapcsolatcsoportra lesz szüksége.
 
+* Egy aktív ExpressRoute-kapcsolatcsoportra lesz szüksége.
   * Kövesse az utasításokat [ExpressRoute-kapcsolatcsoportot létrehozni](expressroute-howto-circuit-portal-resource-manager.md) és a kapcsolatcsoport szerint a kapcsolat szolgáltatójánál engedélyezve van.
   * Győződjön meg arról, hogy rendelkezik az Azure magánhálózati társviszony-létesítés a kapcsolatcsoport konfigurálva. Tekintse meg a [útválasztás konfigurálása](expressroute-howto-routing-portal-resource-manager.md) útválasztási miként.
   * Győződjön meg arról, hogy az Azure magánhálózati társviszony-létesítés konfigurálva legyen, és a BGP társviszony-létesítés a hálózat és a Microsoft között működik-e, hogy engedélyezheti a végpontok közötti kapcsolat.
   * Győződjön meg arról, hogy a virtuális hálózat és a virtuális hálózati átjáró létrehozása, és teljesen kiépítve. Kövesse az utasításokat [hozzon létre egy virtuális hálózati átjáró ExpressRoute](expressroute-howto-add-gateway-resource-manager.md). A virtuális hálózati átjáró ExpressRoute az "ExpressRoute", nem VPN GatewayType használja.
 
-* Legfeljebb 10 virtuális hálózatok hozzákapcsolhatja egy szabványos ExpressRoute-kapcsolatcsoportot. Az összes virtuális hálózatot geopolitikai ugyanabban a régióban kell lennie, egy szabványos ExpressRoute-kapcsolatcsoportot használatakor. 
+* Legfeljebb 10 virtuális hálózatok hozzákapcsolhatja egy szabványos ExpressRoute-kapcsolatcsoportot. Az összes virtuális hálózatot geopolitikai ugyanabban a régióban kell lennie, egy szabványos ExpressRoute-kapcsolatcsoportot használatakor.
+
+* Egy egyetlen virtuális hálózat legfeljebb négy ExpressRoute-Kapcsolatcsoportok lehet társítani. Az alábbi eljárás segítségével új objektumot az egyes csatlakozik ExpressRoute-kapcsolatcsoportot létrehozni. Az ExpressRoute-Kapcsolatcsoportok ugyanahhoz az előfizetéshez, különböző előfizetésekhez vagy vegyesen is lehet.
+
 * Egy virtuális hálózaton kívül az ExpressRoute-kapcsolatcsoport geopolitikai régiója hivatkozásra, vagy virtuális hálózatok nagyobb számú csatlakozni az ExpressRoute-kapcsolatcsoportot, ha engedélyezte a prémium szintű ExpressRoute-bővítmény. Ellenőrizze a [gyakran ismételt kérdések](expressroute-faqs.md) a prémium szintű bővítmény olvashat.
+
 * Is [videó](http://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit) jobb megértése érdekében a lépések megkezdése előtt.
 
 ## <a name="connect-a-vnet-to-a-circuit---same-subscription"></a>Csatlakozás egy Vnetet egy expressroute - ugyanahhoz az előfizetéshez

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: adegeo
-ms.openlocfilehash: b7210c944e2f99aacdc2f554409552007286c5da
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: 0589f2efeaaafc35bcb9d869c391a0533fe6e502
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="what-is-the-cloud-service-model-and-how-do-i-package-it"></a>Mi a felhőalapú szolgáltatás modell, és hogyan tegye csomag azt?
 Egy felhőalapú szolgáltatás létrehozása az három összetevővel, a szolgáltatás definíciós *(.csdef)*, a szolgáltatás konfigurációs *(.cscfg)*, és a szolgáltatáscsomagot *(.cspkg)*. Mindkét a **ServiceDefinition.csdef** és **ServiceConfig.cscfg** fájlok XML-alapú, és ismerteti a felhőalapú szolgáltatás, és hogyan van konfigurálva; szerkezete együttesen: a modell. A **ServicePackage.cspkg** egy zip-fájl, amely jönnek létre a **ServiceDefinition.csdef** , és többek között tartalmazza az összes szükséges bináris alapú függőség. Az Azure létrehoz egy felhőalapú szolgáltatás is a **ServicePackage.cspkg** és a **ServiceConfig.cscfg**.
@@ -91,7 +91,7 @@ A **ServiceDefinition.csdef** fájl határozza meg a beállításokat, amelyek s
 
 Olvassa el a [szolgáltatás definíciós séma](https://msdn.microsoft.com/library/azure/ee758711.aspx) kra az itt használt XML-séma, azonban itt van néhány elem gyors magyarázata:
 
-**Webhelyek**  
+**webhelyek**  
 A webhelyekhez vagy webes alkalmazásokhoz, amelyek az IIS7 definícióját tartalmazza.
 
 **InputEndpoints**  
@@ -269,14 +269,14 @@ Ha a változóit az alábbiak szerint:
 | --- | --- |
 | \[Könyvtárnév\] |A gyökérkönyvtárban a projekt, amely tartalmazza a .csdef fájl az Azure-projekthez tartozó alkönyvtárat. |
 | \[ServiceDefinition\] |A szolgáltatásdefiníciós fájl neve. Alapértelmezés szerint a fájl neve ServiceDefinition.csdef. |
-| \[Kimenetifajlneve\] |A létrehozott fájl nevét. Általában ez értéke az alkalmazás nevét. Ha nincs fájl neve meg van adva, az alkalmazáscsomag elemként jön létre \[ApplicationName\].cspkg. |
+| \[OutputFileName\] |A létrehozott fájl nevét. Általában ez értéke az alkalmazás nevét. Ha nincs fájl neve meg van adva, az alkalmazáscsomag elemként jön létre \[ApplicationName\].cspkg. |
 | \[RoleName\] |A szerepkör a szolgáltatásdefiníciós fájlban meghatározott neve. |
 | \[RoleBinariesDirectory] |A szerepkör bináris fájljainak helyét. |
 | \[VirtualPath\] |A szolgáltatásdefiníció helyek szakaszában meghatározott minden egyes virtuális elérési fizikai könyvtárak. |
 | \[PhysicalPath\] |A szolgáltatásdefiníció hely csomópontjában definiált minden egyes virtuális elérési tartalma fizikai könyvtárak. |
 | \[RoleAssemblyName\] |A szerepkör bináris fájl nevét. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 I vagyok létrehozni egy cloud service-csomag, és szeretnék...
 
 * [Távoli asztal beállítása a felhő példánya.][remotedesktop]
@@ -291,7 +291,7 @@ Visual Studio használok, és szeretnék...
 
 [deploy]: cloud-services-how-to-create-deploy-portal.md
 [remotedesktop]: cloud-services-role-enable-remote-desktop-new-portal.md
-[vs_remote]: ../vs-azure-tools-remote-desktop-roles.md
+[vs_remote]: cloud-services-role-enable-remote-desktop-visual-studio.md
 [vs_deploy]: ../vs-azure-tools-cloud-service-publish-set-up-required-services-in-visual-studio.md
 [vs_reconfigure]: ../vs-azure-tools-configure-roles-for-cloud-service.md
 [vs_create]: ../vs-azure-tools-azure-project-create.md

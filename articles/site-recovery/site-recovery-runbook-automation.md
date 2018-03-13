@@ -12,13 +12,13 @@ ms.devlang: powershell
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.workload: storage-backup-recovery
-ms.date: 11/28/2017
+ms.date: 03/09/2018
 ms.author: ruturajd@microsoft.com
-ms.openlocfilehash: 986c3b62426949f1e4c2009aabbfec2f1130f821
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 4802215f903eb196afbf05637ad5e38dbbbc09a3
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="add-azure-automation-runbooks-to-recovery-plans"></a>Azure Automation-runbook hozzáadása a helyreállítási terv
 Ez a cikk azt ismerteti hogyan integrálható az Azure Site Recovery Azure Automation segítséget a helyreállítási terv. A helyreállítási terv lehet levezényelni a Site Recovery védett virtuális gépek helyreállítása. A helyreállítási terv a replikációs másodlagos felhőhöz, és a replikálást az Azure-működik. A helyreállítási terv is segít a helyreállítási **következetesen pontos**, **ismételhető**, és **automatizált**. A rendszer átadja a virtuális gépek Azure-ba, ha az integráció az Azure Automation szolgáltatásban, a helyreállítási terv terjeszti ki. A runbookok, amelyek hatékony automatizálási feladatok végrehajtásához használható.
@@ -193,7 +193,7 @@ Minden helyreállítási terv létrehozása független változók, hogy a paranc
 
 ### <a name="use-a-complex-variable-to-store-more-information"></a>További információk tárolására komplex változók használata
 
-Vegye figyelembe a nyilvános IP-cím, az adott virtuális gépeken futó bekapcsolása egyetlen parancsfájllal használni kívánt forgatókönyvhöz. Más esetben érdemes alkalmazni a különböző NSG-k (nem az összes virtuális gépeken futó) különböző virtuális gépek. Egy parancsfájl, amely a helyreállítási terv újrafelhasználható végezheti el. Minden helyreállítási terv olyan virtuális gépek száma lehet. Például egy SharePoint helyreállítási két elülső végpontja van. Egy alapszintű az üzletági (LOB) alkalmazás csak egy előtér rendelkezik. Külön változók minden helyreállítási terv nem hozható létre. 
+Vegye figyelembe a nyilvános IP-cím, az adott virtuális gépeken futó bekapcsolása egyetlen parancsfájllal használni kívánt forgatókönyvhöz. Más esetben érdemes alkalmazni a különböző NSG-k (nem az összes virtuális gépeken futó) különböző virtuális gépek. Egy parancsfájl, amely a helyreállítási terv újrafelhasználható végezheti el. Minden helyreállítási terv olyan virtuális gépek száma lehet. Például egy SharePoint helyreállítási két elülső végpontja van. Egy alapszintű az üzletági (LOB) alkalmazás csak egy előtér rendelkezik. Külön változók minden helyreállítási terv nem hozható létre.
 
 A következő példában azt egy új módszerrel, és hozzon létre egy [komplex változó](https://msdn.microsoft.com/library/dn913767.aspx?f=255&MSPPError=-2147217396) az Azure Automation-fiók eszközök. Ehhez több érték megadásával. Azure PowerShell használatával kell végeznie az alábbi lépéseket:
 

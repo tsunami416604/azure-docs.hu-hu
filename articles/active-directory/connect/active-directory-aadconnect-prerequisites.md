@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2017
+ms.date: 03/09/2018
 ms.author: billmath
-ms.openlocfilehash: d82a91aa51b6684e6bf88de142d00705a0ceddba
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: d6d6eadf0ae8996b019a0564715f843913101944
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Előfeltételek az Azure AD Connect
 Ez a témakör ismerteti a szükséges előfeltételek és az Azure AD Connect hardverkövetelményeinek.
@@ -31,6 +31,7 @@ Az Azure AD Connect telepítése előtt van néhány dolog, amelyekre szüksége
   * Használhatja a [Azure-portálon](https://portal.azure.com). Ezen a portálon nem követeli meg az Azure AD-licencre.
 * [A tartományok hozzáadásának és hitelesítésének](../active-directory-domains-add-azure-portal.md) alkalmazással tervezi használni az Azure ad-ben. Például ha azt tervezi, hogy a contoso.com használjon a felhasználók számára, majd győződjön meg arról, hogy a tartomány ellenőrzése után, és nem csak a contoso.onmicrosoft.com alapértelmezett tartomány használata.
 * Az Azure AD-bérlő lehetővé teszi az alapértelmezett 50k objektumok. Ellenőrizze a tartomány, a korlátját 300 k objektumok. Ha még több objektumot az Azure ad-ben, akkor szüksége kell rendelkeznie a korlát még tovább növelése támogatási esetet megnyitásához. Ha több mint 500 KB-os objektumokat, majd licenccel kell rendelkeznie, mint például az Office 365, Azure AD alapvető, Azure AD Premium számára, vagy a nagyvállalati mobilitási és biztonsági.
+* ADSyncPrep egy PowerShell-parancsfájl modul, amely az Active Directory környezet előkészítése az Azure AD Connect használt funkciókat biztosít.  ADSyncPrep igényel a [v1.1-Azure AD a Microsoft Online PowerShell-modul](https://docs.microsoft.com/powershell/azure/active-directory/install-msonlinev1?view=azureadps-1.0).  2-es verzió nem fog működni.  Is telepíteni fogja a modul használatával a `Install-Module` parancsmag.  További információ: a megadott hivatkozás.
 
 ### <a name="prepare-your-on-premises-data"></a>A helyszíni adatok előkészítése
 * Használjon [IdFix](https://support.office.com/article/Install-and-run-the-Office-365-IdFix-tool-f4bd2439-3e41-4169-99f6-3fabdfa326ac) hibák például az ismétlődések és a címtár-formázási problémák azonosításához az Azure AD szinkronizálása előtt és az Office 365.

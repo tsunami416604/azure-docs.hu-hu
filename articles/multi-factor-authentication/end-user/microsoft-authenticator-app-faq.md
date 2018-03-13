@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/17/2017
-ms.author: barlan
+ms.date: 03/08/2018
+ms.author: lizross
 ms.reviewer: librown
 ms.custom: end-user
-ms.openlocfilehash: 2c109a53866f9fff8c61a157cf1194fe4dd6e1ac
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: aa3c6bb9196a17ae41c05458533f73f3ec315bd8
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="microsoft-authenticator-app-faq"></a>A Microsoft hitelesítő alkalmazást – gyakori kérdések
 
@@ -28,6 +28,14 @@ Ebben a cikkben megválaszolunk, amelyet a Microsoft Authenticator alkalmazássa
 A Microsoft Authenticator alkalmazása helyett az Azure Authenticator alkalmazást, és Azure multi-factor Authentication használata ajánlott alkalmazás esetén. A Microsoft Authenticator alkalmazás érhető el [Android](https://go.microsoft.com/fwlink/?linkid=866594), [iOS](https://go.microsoft.com/fwlink/?linkid=866594), és [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071).
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
+
+### <a name="what-data-does-the-authenticator-store-on-my-behalf-and-how-can-i-delete-it"></a>Milyen adatokat a hitelesítő tárol a nevében, és hogyan törölné?
+
+A Microsoft Authenticator tárolja fiókot hoz létre, ha a fiók beállítása. Hitelesítő használata esetén a diagnosztikai naplófájl hibakeresési célra létrejön, és segíti a Microsoftot előre nem látott probléma merül fel a hasznos adatot tárol. A naplóadatok férhetnek megnyitása **súgó** > **naplók küldése** > **naplók megtekintése**.
+
+A fiók csempéjére törlésével törölni lehet az adatokat. Ezzel a lépéssel törli a naplófájlokkal együtt az alkalmazás által használt fiók adatait. 
+
+Hogyan Microsoft használja az adatok a további információkért olvassa el: https://servicetrust.microsoft.com/ViewPage/PrivacyGettingStarted
 
 ### <a name="what-are-the-codes-in-the-app-for-why-does-the-number-keep-counting-down"></a>Mik a kódot az alkalmazásban? Miért nem számbavételi szám legyen?
 

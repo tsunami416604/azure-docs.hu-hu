@@ -8,20 +8,20 @@ ms.author: dastanfo
 ms.date: 01/30/2018
 ms.topic: article
 ms.service: storage
-ms.openlocfilehash: 329a79511b810159244b5530a49a5916440d2046
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 374a24448eb1bf366e26bb55fdf09e470b030c89
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="route-blob-storage-events-to-a-custom-web-endpoint-with-powershell"></a>Útvonal Blob storage-események egy egyéni webkiszolgáló-végponthoz, a PowerShell használatával
 
 Az Azure Event Grid egy felhőalapú eseménykezelési szolgáltatás. Ebben a cikkben előfizetni a Blob storage-események, eseményindító egy eseményt, az Azure PowerShell használatával, és az eredmény. 
 
-Általában olyan végpontoknak szoktunk eseményeket küldeni, amelyek reagálnak az eseményre, például egy webhooknak vagy egy Azure-függvénynek. Ebben a cikkben bemutatott példában leegyszerűsítése események küldése egy URL-címet, az üzenetek csupán gyűjti. Az URL-cím vagy a külső eszközök használatával hoz létre [RequestBin](https://requestb.in/) vagy [Hookbin](https://hookbin.com/).
+Általában olyan végpontoknak szoktunk eseményeket küldeni, amelyek reagálnak az eseményre, például egy webhooknak vagy egy Azure-függvénynek. Ebben a cikkben bemutatott példában leegyszerűsítése események küldése egy URL-címet, az üzenetek csupán gyűjti. Az URL-címet a [RequestBin](https://requestb.in/) vagy a [Hookbin](https://hookbin.com/) külső fejlesztésű eszközeivel fogjuk létrehozni.
 
 > [!NOTE]
-> **RequestBin** és **Hookbin** magas teljesítmény használati nem használhatók. Ezek az eszközök használata tisztán demonstrative. Ha egyszerre több eseményt továbbít, lehetséges, hogy az eszközben nem fog megjelenni az összes esemény.
+> A **RequestBin** és a **Hookbin** a nagy teljesítményt megkövetelő használati területekhez nem alkalmas. Az eszközök jelen használata kizárólag bemutató célt szolgál. Ha egyszerre több eseményt továbbít, lehetséges, hogy az eszközben nem fog megjelenni az összes esemény.
 
 A cikkben leírt lépések elvégzése után látni fogja, hogy az eseményadatokat egy végpontnak küldte el a rendszer.
 
@@ -65,7 +65,7 @@ New-AzureRmResourceGroup -Name $resourceGroup -Location $location
 
 A Blob storage-események használatához szüksége vagy egy [Blob storage-fiók](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-storage-accounts) vagy egy [általános célú v2 tárfiókkal](../common/storage-account-options.md#general-purpose-v2). **Általános célú v2 (GPv2)** minden funkció támogatása az összes tárolószolgáltatásokra, köztük a blobokat, fájlok, üzenetsorok és táblák storage-fiókok vannak. A **Blob storage-fiók** egy speciális tárfiók a strukturálatlan adatok blobként (objektumokként) az Azure Storage való tárolására. BLOB storage-fiókok hasonló általános célú tárfiókok, és minden nagy tartósságot, rendelkezésre állási, méretezhetőség és teljesítmény szolgáltatás használata ma beleértve a 100 %-os API-konzisztenciát a blokkblobokhoz, és a hozzáfűző blobokhoz. A csak blokkok és hozzáfűző blobok tárolását igénylő alkalmazásokhoz javasoljuk a Blob Storage-fiókok használatát.  
 
-A Blob storage-fiók létrehozása az LRS-replikáció használatával [New-AzureRmStorageAccount](/powershell/module/azurerm.storage/New-AzureRmStorageAccount), majd lekérheti a tárfiók környezetét, amely definiálja a tárfiókot használni. A tárfiók eljárva hivatkozik a környezet helyett ismételten adja meg a hitelesítő adatokat. Ez a példa nevű tárfiók létrehozása **gridstorage** titkosítással helyileg redundáns storage(LRS) és blob (alapértelmezés szerint engedélyezve van). 
+A Blob storage-fiók létrehozása az LRS-replikáció használatával [New-AzureRmStorageAccount](/powershell/module/azurerm.storage/New-AzureRmStorageAccount), majd lekérheti a tárfiók környezetét, amely definiálja a tárfiókot használni. A tárfiók eljárva hivatkozik a környezet helyett ismételten adja meg a hitelesítő adatokat. Ez a példa nevű tárfiók létrehozása **gridstorage** a helyileg redundáns tárolás (LRS). 
 
 > [!NOTE]
 > Tárfiókneveket globális névteret szerepelnek, ezért meg kell néhány véletlenszerű karakter hozzáfűzése a parancsfájl a megadott névvel.
@@ -84,7 +84,7 @@ $ctx = $storageAccount.Context
 
 ## <a name="create-a-message-endpoint"></a>Üzenetvégpont létrehozása
 
-A témakörre való feliratkozás előtt hozzuk létre az eseményüzenet végpontját. Az eseményre reagáló kód írása helyett egy olyan végpontot hozzunk létre, amely gyűjti az üzeneteket, hogy meg tudja őket tekinteni. RequestBin és Hookbin külső eszközök, amelyek lehetővé teszik a hozzon létre egy végpontot, és a hozzá küldött kérelmekben megtekintése. Lépjen [RequestBin](https://requestb.in/), és kattintson **hozzon létre egy RequestBin**, vagy keresse fel [Hookbin](https://hookbin.com/) kattintson **új végpont létrehozásához**. Másolja a bin URL-címet, és cserélje le `<bin URL>` a következő parancsfájlban.
+A témakörre való feliratkozás előtt hozzuk létre az eseményüzenet végpontját. Az eseményre reagáló kód írása helyett egy olyan végpontot hozzunk létre, amely gyűjti az üzeneteket, hogy meg tudja őket tekinteni. A RequestBin és a Hookbin külső gyártótól származó eszközök, amelyek végpontok létrehozását és az azokra küldött kérések megtekintését teszik lehetővé. Nyissa meg a [RequestBin](https://requestb.in/) eszközt, és kattintson a **Create a RequestBin** (Kéréstár létrehozása) elemre, vagy nyissa meg a [Hookbin](https://hookbin.com/) eszközt, és kattintson a **Create New Endpoint** (Új végpont létrehozása) elemre. Másolja a bin URL-címet, és cserélje le `<bin URL>` a következő parancsfájlban.
 
 ```powershell
 $binEndPoint = "<bin URL>"
@@ -115,7 +115,7 @@ echo $null >> gridTestFile.txt
 Set-AzureStorageBlobContent -File gridTestFile.txt -Container $containerName -Context $ctx -Blob gridTestFile.txt
 ```
 
-Ön kiváltotta az eseményt, az Event Grid pedig elküldte az üzenetet a feliratkozáskor konfigurált végpontnak. Tallózással keresse meg a végpont URL-címet, amelyet korábban hozott létre. Vagy kattintson a frissítés a nyissa meg böngészőben. Megjelenik az imént elküldött esemény. 
+Ön kiváltotta az eseményt, az Event Grid pedig elküldte az üzenetet a feliratkozáskor konfigurált végpontnak. Lépjen a végpont korábban létrehozott URL-címére, vagy kattintson a megnyitott böngésző frissítés gombjára. Megjelenik az imént elküldött esemény. 
 
 ```json
 [{

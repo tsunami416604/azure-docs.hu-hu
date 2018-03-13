@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/05/2018
+ms.date: 03/08/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 24873c685ee16520e6a8b8af9abeab84639613d7
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 825b2657cc6aa7b4e116f44020767beff911b1fc
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="azure-cosmos-db-net-sdk-for-sql-api-download-and-release-notes"></a>Az Azure Cosmos DB .NET SDK API-SQL: Töltse le és a kibocsátási megjegyzések
 > [!div class="op_single_selector"]
@@ -54,12 +54,6 @@ ms.lasthandoff: 03/08/2018
 </table></br>
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
-### <a name="a-name12101210"></a><a name="1.21.0"/>1.21.0
-
-* Egyetlen a NuGet csomag .NET Framework és a .NET-szabvány. [Microsoft.Azure.DocumentDB.Core](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.Core/) csomag elavult. 
-* A KeyNotFoundException közötti partíció rendelés javította esetekben lévő lekérdezések.
-* Rögzített hiba, ha a select záradékban a LINQ-lekérdezések JsonPropery attribútum lett nem alatt figyelembe véve.
-
 ### <a name="a-name12021202"></a><a name="1.20.2"/>1.20.2
 
 * Rögzített, hibát talált az egyes versenyhelyzetek, amely időszakos eredményez "Microsoft.Azure.Documents.NotFoundException: az olvasási munkamenet nem érhető el a bemeneti munkameneti jogkivonat" hibák munkamenet konzisztenciaszint használatakor.
@@ -296,7 +290,6 @@ A szolgáltatás bármely Azure Cosmos DB kivont SDK használatával kérelmeket
 
 | Verzió | Kiadás dátuma | Kivezetési dátum |
 | --- | --- | --- |
-| [1.21.0](#1.21.0) |2018. március 05. |--- |
 | [1.20.1](#1.20.1) |2018. február 05. |--- |
 | [1.19.1](#1.19.1) |2017. november 16. |--- |
 | [1.19.0](#1.19.0) |2017. november 10. |--- |

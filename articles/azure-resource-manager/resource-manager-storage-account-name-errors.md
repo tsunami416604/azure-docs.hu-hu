@@ -11,13 +11,13 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: support-article
-ms.date: 09/13/2017
+ms.date: 03/09/2018
 ms.author: tomfitz
-ms.openlocfilehash: dc045827fbd38054a334ff22eb30e0db6a31bac8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c266e1073722733ec8b7353c6fdddc3ae341ab20
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="resolve-errors-for-storage-account-names"></a>Javítsa a hibákat a tárfiókok neve
 
@@ -44,11 +44,9 @@ Ha központi telepítése a tárfiók neve megegyezik egy meglévő tárfiók az
 
 ## <a name="cause"></a>Ok
 
-Tárfiókok neve 3 – 24 karakter hosszúságúnak kell és számokat és kisbetűket tartalmazhatnak csak. A nevének egyedinek kell lennie.
+Tárfiókok neve 3 – 24 karakter hosszúságúnak kell és számokat és kisbetűket tartalmazhatnak csak. A névnek egyedinek kell lennie.
 
 ## <a name="solution"></a>Megoldás
-
-### <a name="solution-1"></a>1 megoldás
 
 Győződjön meg arról, hogy a tárfiók neve egyedi. Az elnevezési eredményével összefűzésével létrehozhat egy egyedi nevet a [uniqueString](resource-group-template-functions-string.md#uniquestring) függvény.
 
@@ -56,8 +54,6 @@ Győződjön meg arról, hogy a tárfiók neve egyedi. Az elnevezési eredmény�
 "name": "[concat('storage', uniqueString(resourceGroup().id))]",
 "type": "Microsoft.Storage/storageAccounts",
 ```
-
-### <a name="solution-2"></a>Megoldás 2
 
 Győződjön meg arról, hogy a tárfiók neve legfeljebb 24 karakter hosszúságú. A [uniqueString](resource-group-template-functions-string.md#uniquestring) függvény 13 karaktert adja vissza. Ha előtag összefűzésére vagy utólagos javítás, hogy a **uniqueString** vezethet, adjon meg egy értéket a 11 karakter vagy kevesebb.
 
@@ -73,7 +69,5 @@ Győződjön meg arról, hogy a tárfiók neve legfeljebb 24 karakter hosszúsá
     }
 }
 ```
-
-### <a name="solution-3"></a>Megoldás 3
 
 Győződjön meg arról, hogy a tárfiók neve nem tartalmaz minden nagybetűk- vagy speciális karaktereket.

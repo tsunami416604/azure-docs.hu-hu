@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/05/2018
 ms.author: vinagara
-ms.openlocfilehash: 60f6c45b7dacd26e0dea7b8b69c52534dcb5fec9
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: b6b6bfee5b9e9036a6d7ff17ff1a8d4de542bbd3
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="create-view-and-manage-alerts-using-azure-monitor---alerts-preview"></a>Hozzon létre, megtekintheti és kezelheti a riasztásokat figyelővel Azure - riasztások (előzetes verzió)
 
@@ -65,7 +65,7 @@ Részletes tovább részletes útmutató a Azure figyelmeztetések (előzetes ve
 
     > Egyesített riasztások (előzetes verzió) támogatja a tevékenységnapló riasztásokat is. [További információk](monitoring-activity-log-alerts-new-experience.md).
 
-5. *Metrika riasztások*: Győződjön meg arról **erőforrástípus** kiválasztott platform vagy monitor szolgáltatás (eltérő *Naplóelemzési*), majd egyszer megfelelő **erőforrás** van Kattintson a kiválasztott *végzett* gombra kattintva visszatérhet a riasztás létrehozása. Ezután használja a **adja meg a feltételeket** jel beállítások, az állapotfigyelő szolgáltatás és a felsorolt - típus közül az adott jel kiválasztása gomb, ami a korábban kiválasztott erőforrás érhetők el.
+5. *Metrika riasztások*: Győződjön meg arról **erőforrástípus** jel típusú, mint a kiválasztott **metrika**, majd egyszer megfelelő **erőforrás** van kiválasztva, kattintson  *Kész* gombra kattintva visszatérhet a riasztás létrehozása. Ezután használja a **adja meg a feltételeket** jel beállítások, az állapotfigyelő szolgáltatás és a felsorolt - típus közül az adott jel kiválasztása gomb, ami a korábban kiválasztott erőforrás érhetők el.
 
     ![Erőforrás kiválasztása](./media/monitor-alerts-unified/AlertsPreviewResourceSelection.png)
 
@@ -81,7 +81,7 @@ Részletes tovább részletes útmutató a Azure figyelmeztetések (előzetes ve
 
     ![Többdimenziós metrika jel logikát konfigurálása](./media/monitor-alerts-unified/AlertsPreviewCriteriaMultiDim.png)
 
-8. *Riasztások jelentkezzen*: Győződjön meg arról **erőforrástípus** egy elemzés forrása, például a *Naplóelemzési* vagy *Application Insights*, majd egyszer megfelelő  **erőforrás** van kiválasztva, kattintson a *végzett*. Következő az a **adja meg a feltételeket** elérhető, az erőforrás- és a jel listából jel beállítások listájának megtekintése gombra **egyéni napló keresés** beállítást a kiválasztott jelentkezzen figyelőszolgáltatás például *napló Elemzés* vagy *az Application Insights*.
+8. *Riasztások jelentkezzen*: Győződjön meg arról **erőforrástípus** egy elemzés forrása, például a *Naplóelemzési* vagy *Application Insights* és jelezze típusú **napló** , majd egyszer megfelelő **erőforrás** van kiválasztva, kattintson a *végzett*. Következő az a **adja meg a feltételeket** elérhető, az erőforrás- és a jel listából jel beállítások listájának megtekintése gombra **egyéni napló keresés** beállítást a kiválasztott jelentkezzen figyelőszolgáltatás például *napló Elemzés* vagy *az Application Insights*.
 
    ![Válasszon ki egy erőforrástípust - egyéni napló keresése](./media/monitor-alerts-unified/AlertsPreviewResourceSelectionLog.png)
 
@@ -121,8 +121,8 @@ A **napló riasztások** riasztások alapulhat:
 
     A **napló riasztások** további funkciókkal felülbírálhatja az alapértelmezett műveletek érhető el:
 
-    - **E-mailes értesítés**: az e-mailben művelet csoport keresztül küldött felülbírálások tulajdonos. Az üzenet törzse nem módosítható.
-    - **Egyéni Json-adattartalmat tartalmaznak**: felülírja a webhook Json művelet csoportok által használt, és helyette az alapértelmezett adattartalom cserélje le a egyéni hasznos adatok között. A webhook formátumok további információkért lásd: [webhook műveleti napló riasztások](monitor-alerts-unified-log-webhook.md)
+    - **E-mailes értesítés**: felülbírálások *e-mail tárgya* az e-mailben küldött művelet csoport; keresztül, ha egy vagy több e-mail műveletet a kérdéses művelet csoportban. Az üzenet törzse nem módosítható, és ez a mező **nem** az e-mail cím.
+    - **Egyéni Json-adattartalmat tartalmaznak**: felülbírálja a webhook JSON művelet csoportok; használják, ha egy vagy több webhook műveletet a kérdéses művelet csoportban. Felhasználói is JSON társított művelet csoport; konfigurált összes webhookok használandó adja meg formátuma a webhook formátumok további információkért lásd: [webhook műveleti napló riasztások](monitor-alerts-unified-log-webhook.md). Teszt Webhook beállítás formátum és a cél JSON mintát használja feldolgozásra rendszernek, és ez a beállítás címkével csak azt jelentette, hogy **tesztelés** céljából.
 
         ![A művelet felülbírálásokat napló riasztások](./media/monitor-alerts-unified/AlertsPreviewOverrideLog.png)
 

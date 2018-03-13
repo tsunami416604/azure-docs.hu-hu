@@ -12,17 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 11/28/2017
+ms.date: 03/09/2018
 ms.author: nisoneji
-ms.openlocfilehash: bfeefde53aa2b3645934f068d580c0714714dd69
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: d9c2645be73c4b6e34d194d6b2444a700e3900d2
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="plan-capacity-for-protecting-hyper-v-vms-with-site-recovery"></a>A Site Recovery szolgáltatással a Hyper-V virtuális gépek védelméhez kapacitásának megtervezése
 
-A továbbfejlesztett verziójának [Azure hely helyreállítási telepítési Planner for Hyper-V számára az Azure-telepítés](site-recovery-hyper-v-deployment-planner.md) érhető el. Lecseréli a régi eszköz. Az új eszköz használata a központi telepítésének megtervezése. Az eszközt biztosít a következő irányelveket:
+A továbbfejlesztett verziójának [Azure hely helyreállítási telepítési Planner for Hyper-V számára az Azure-telepítés](site-recovery-hyper-v-deployment-planner.md) érhető el. Lecseréli a régi eszköz. Az új eszköz használata a központi telepítésének megtervezése.
+Az eszközt biztosít a következő irányelveket:
 
 * Virtuális gép jogosultsági assessment, a lemezek számát, lemez méretét, IOPS, forgalmának kezeléséhez, és néhány virtuális gép jellemzők alapján
 * Hálózati sávszélesség és a helyreállítási Időkorlát assessment kell
@@ -45,7 +46,7 @@ Az eszköz két módban is futtathatja:
 
 * A környezetben, beleértve a virtuális gépek, virtuális gép, lemezenkénti lemezeket információt gyűjteni.
 * Azonosítsa a replikált adatok napi adatváltozás (forgalom) sebessége. Töltse le a [Hyper-V kapacitástervezési eszköz](https://www.microsoft.com/download/details.aspx?id=39057) lekérni a változási sebessége. [További](site-recovery-capacity-planning-for-hyper-v-replication.md) erről az eszközről. Azt javasoljuk, hogy az eszköz rögzíteni átlagok hetente keresztül.
-   
+
 
 ## <a name="run-the-quick-planner"></a>A gyors Planner
 1. Töltse le és nyissa meg a [Site Recovery Capacity Planner](http://aka.ms/asr-capacity-planner-excel). Makrók futtatásához szükséges. Amikor a rendszer kéri, adja meg a Szerkesztés engedélyezése és a tartalom beállításokat.
@@ -58,7 +59,7 @@ Az eszköz két módban is futtathatja:
 
    a. A **válassza ki a forgatókönyv**, válassza a **Hyper-V Azure** vagy **VMware vagy fizikai Azure**.
 
-   b. A **átlagos napi módosulása aránya (%)**, adja meg az adatokat, akkor gyűjtse össze a [Hyper-V kapacitástervezési eszköz](site-recovery-capacity-planning-for-hyper-v-replication.md) vagy [Site Recovery telepítési Planner](./site-recovery-deployment-planner.md). 
+   b. A **átlagos napi módosulása aránya (%)**, adja meg az adatokat, akkor gyűjtse össze a [Hyper-V kapacitástervezési eszköz](site-recovery-capacity-planning-for-hyper-v-replication.md) vagy [Site Recovery telepítési Planner](./site-recovery-deployment-planner.md).
 
    c. A **tömörítés** nem használja a beállítást, ha a Hyper-V virtuális gépek replikálása az Azure-bA. Tömörítési használjon egy külső készülék például Riverbed.
 
@@ -147,7 +148,7 @@ Után az összes információt is meg kell adni, válasszon **a planner eszköz 
 ### <a name="submit-data-in-capacity-planner"></a>A Capacity Planner adatok küldése
 1. Amikor megnyitja a **Capacity Planner** munkalap, a telepítéskor megadott beállítások alapján. A word "Munkaterhelési" jelenik meg a **Infra bemeneti forrás** mutatja be, hogy a bemeneti cella a **munkaterhelés minősítési** munkalap.
 
-2. Ha szeretné módosítani, módosítania kell a **munkaterhelés minősítési** munkalapon. Válassza ki **a planner eszköz adatok küldése** újra. 
+2. Ha szeretné módosítani, módosítania kell a **munkaterhelés minősítési** munkalapon. Válassza ki **a planner eszköz adatok küldése** újra.
 
    ![Capacity Planner](./media/site-recovery-capacity-planner/capacity-planner.png)
 

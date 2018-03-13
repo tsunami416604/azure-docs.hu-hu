@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 11/03/2017
 ms.author: v-six
-ms.openlocfilehash: d24a55fd3b93760035f852a24537c1cec9e4bab2
-ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
+ms.openlocfilehash: 36966151b616a14e429807feb63df93503e7b249
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="troubleshoot-cloud-service-roles-that-fail-to-start"></a>A felhőalapú szolgáltatás nem indult el szerepkörtől hibaelhárítása
 Az alábbiakban néhány gyakori problémát és Azure felhőszolgáltatások kapcsolatos megoldások szerepköröket, amelyek nem indulnak el.
@@ -62,13 +62,13 @@ Miután a szolgáltatást újra kell telepíteni, megjelenik egy hibaüzenet jel
 Használhatja a távoli asztal eléréséhez a szerepkör, és távolról tekintheti meg bővebb hibainformáció. Az alábbi lépések segítségével meg a hibákat a távoli asztal használatával:
 
 1. Győződjön meg arról, hogy telepítve van-e az Azure SDK 1.3-as vagy újabb.
-2. A megoldás üzembe helyezése közben a Visual Studio használatával válassza a "Konfigurálása távoli asztali kapcsolatokhoz". A távoli asztali kapcsolat konfigurálásával kapcsolatos további információkért lásd: [a távoli asztal Azure szerepkörök](../vs-azure-tools-remote-desktop-roles.md).
+2. A megoldás üzembe helyezése közben a Visual Studio használatával a távoli asztal engedélyezése. További információkért lásd: [engedélyezése a távoli asztali kapcsolat egy szerepkör esetén az Azure Felhőszolgáltatások Visual Studio használatával](cloud-services-role-enable-remote-desktop-visual-studio.md).
 3. A Microsoft Azure portálon, amennyiben az a példány állapota **készen**a példány be távolról. A távoli asztal használatával a Felhőszolgáltatásokkal. További információkért lásd: [szerepkörpéldányokat be távolról](cloud-services-role-enable-remote-desktop-new-portal.md#remote-into-role-instances).
 5. Jelentkezzen be a virtuális géphez a távoli asztal konfigurálása során megadott hitelesítő adataival.
 6. Nyisson meg egy parancsablakot.
 7. Gépelje be: `IPconfig`.
 8. Jegyezze fel az IPV4-cím értékét.
-9. Nyissa meg az Internet Explorert.
+9. Open Internet Explorer.
 10. Írja be a címet és a webes alkalmazás neve. Például: `http://<IPV4 Address>/default.aspx`.
 
 Lépjen a webhely most visszaadható egyértelműbben hibaüzenetek:
@@ -121,7 +121,7 @@ Hiányzó DLL és szerelvény hibák elhárítása, kövesse az alábbi lépése
 
 Miután ellenőrizte, hogy az összes hiba javítva lett, a szolgáltatás ellenőrzése nélkül telepítheti a **.NET 4-szerepkörök engedélyezése IntelliTrace** jelölőnégyzetet.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További [cikkek hibaelhárítási](https://azure.microsoft.com/documentation/articles/?tag=top-support-issue&product=cloud-services) felhőszolgáltatásai számára.
 
 Felhőalapú szolgáltatás szerepkör kapcsolatos problémák elhárítása az Azure PaaS diagnosztikai adatainak használatával kapcsolatban lásd: [Kevin Williamson blog adatsorozat](http://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx).

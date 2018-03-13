@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/20/2017
+ms.date: 3/9/2018
 ms.author: vturecek
-ms.openlocfilehash: 43b3f758fe7017c0ec949ba6e28b76438cf1bc13
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ee248cb656eeb54e259ff1adf45080a207b5a866
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="how-reliable-actors-use-the-service-fabric-platform"></a>Így használja a Reliable Actors a Service Fabric platformot
 Ez a cikk bemutatja, hogy Reliable Actors működik-e az Azure Service Fabric-platformon. Futtassa a keretrendszer, amely a egy állapotalapú szolgáltatás megvalósítását a Reliable Actors hívása a *szereplő szolgáltatás*. Az aktor szolgáltatás összes életciklusa és a a szereplőket terjesztéséhez üzenet kezeléséhez szükséges összetevőket tartalmazza:
@@ -41,9 +41,6 @@ A Reliable Services, a szolgáltatás örökli a `StatefulService` osztály. Ez 
 * Szolgáltatás biztonsági mentése és visszaállítása.
 * Összes szereplő, például egy áramköri megszakító megosztás funkciót.
 * Távoli eljáráshívások a szereplő maga és a minden egyes szereplő.
-
-> [!NOTE]
-> Állapotalapú szolgáltatások jelenleg nem támogatottak a Java/Linux.
 
 ### <a name="using-the-actor-service"></a>Az aktor szolgáltatással
 Aktor célpéldánynál a szereplő szolgáltatás, amelyben futnak. Az aktor szolgáltatáson keresztül szereplő példányok programozott módon szerezheti be a service-környezetben. A service-környezet magában hordozza a Partícióazonosító, szolgáltatás neve, az alkalmazásnév és más Service Fabric platform-specifikus adatait.:
@@ -322,7 +319,7 @@ MyActorService myActorServiceProxy = ActorServiceProxy.create(MyActorService.cla
 myActorServiceProxy.backupActorsAsync();
 ```
 
-## <a name="application-model"></a>Alkalmazásmodellt.
+## <a name="application-model"></a>Alkalmazásmodell
 Aktorszolgáltatások Reliable Services, így az alkalmazásmodell megegyezik. Azonban a szereplő keretrendszer build tools készítése alkalmazás modell fájlok meg.
 
 ### <a name="service-manifest"></a>Szolgáltatás jegyzék
@@ -347,7 +344,7 @@ Aktorszolgáltatások a particionált állapotalapú szolgáltatások. Mindegyik
 Megbízható szolgáltatások különböző partíciós séma és a partíció kulcstartományokkal hozhatja létre. Az aktor szolgáltatás Int64 particionálási sémát a teljes Int64-címtartománnyal rendelkező szereplője van leképezve partíciók használja.
 
 ### <a name="actor-id"></a>Aktor azonosítója
-Minden, amely jön létre a szolgáltatásban szereplő van társítva, által képviselt egyedi azonosítója a `ActorId` osztály. `ActorId`érték nem átlátszó azonosítója, amely alkalmas szereplője egyenletes elosztása a partíciók közötti véletlenszerű azonosítók létrehozásával:
+Minden, amely jön létre a szolgáltatásban szereplő van társítva, által képviselt egyedi azonosítója a `ActorId` osztály. `ActorId` érték nem átlátszó azonosítója, amely alkalmas szereplője egyenletes elosztása a partíciók közötti véletlenszerű azonosítók létrehozásával:
 
 ```csharp
 ActorProxy.Create<IMyActor>(ActorId.CreateRandom());
@@ -395,13 +392,13 @@ Ez a módosítás felül lesz a 2. lépés frissítés. Kövesse a lépéseket, 
 2. A fenti frissítés befejezése után ActorClients frissítése
 Ez a lépés biztosítja, hogy szereplő Proxy távoli eljáráshívási V2 verem használ.
 
-3. Ez a lépés nem kötelező megadni. A fenti attribútumát V1 figyelő eltávolítása.
+3. Ez a lépés nem kötelező. A fenti attribútumát V1 figyelő eltávolítása.
 
     ```csharp
     [assembly:FabricTransportActorRemotingProvider(RemotingListener = RemotingListener.V2Listener,RemotingClient = RemotingClient.V2Client)]
     ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Aktor állapotkezelés](service-fabric-reliable-actors-state-management.md)
 * [Aktor életciklusának és szemétgyűjtési gyűjtése](service-fabric-reliable-actors-lifecycle.md)
 * [Actors API referenciadokumentációt tartalmaz](https://msdn.microsoft.com/library/azure/dn971626.aspx)

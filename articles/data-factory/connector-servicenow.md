@@ -1,5 +1,5 @@
 ---
-title: "Adatok másolása az Azure Data Factory (béta) használata a ServiceNow |} Microsoft Docs"
+title: "Adatok másolása az Azure Data Factory használatával ServiceNow |} Microsoft Docs"
 description: "Útmutató: adatok másolása a ServiceNow támogatott fogadó adattárolókhoz egy Azure Data Factory-folyamat a másolási tevékenység használatával."
 services: data-factory
 documentationcenter: 
@@ -13,21 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 64b0982ab1d0b212120d962d4c47a1b8db8ca025
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 4d05d816b43e04c2c2e88cab33b8e4c623ab9185
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 03/12/2018
 ---
-# <a name="copy-data-from-servicenow-using-azure-data-factory-beta"></a>Adatok másolása az Azure Data Factory (béta) használata a ServiceNow
+# <a name="copy-data-from-servicenow-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatával ServiceNow
 
 Ez a cikk ismerteti, hogyan használható a másolási tevékenység az Azure Data Factory adatokat másolni a ServiceNow. Buildekről nyújtanak a [másolása tevékenység áttekintése](copy-activity-overview.md) cikket, amely megadja a másolási tevékenység általános áttekintést.
 
 > [!NOTE]
 > Ez a cikk a Data Factory 2. verziójára vonatkozik, amely jelenleg előzetes verzióban érhető el. A Data Factory szolgáltatásnak, amely általánosan elérhető (GA), 1 verziójának használatakor lásd [másolási tevékenység során a V1](v1/data-factory-data-movement-activities.md).
-
-> [!IMPORTANT]
-> Ez az összekötő jelenleg bétaverziójú. Próbálja ki, és küldjön visszajelzést. Ne használja éles környezetben.
 
 ## <a name="supported-capabilities"></a>Támogatott képességei
 

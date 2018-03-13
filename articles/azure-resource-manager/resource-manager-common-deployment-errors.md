@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: support-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/20/2017
+ms.date: 03/08/2018
 ms.author: tomfitz
-ms.openlocfilehash: ca7e3cb541948e6cc0b8d077616f3611e3ab2477
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.openlocfilehash: 2cf31b32e02923aa573d5586b8ca24bf30b7d97b
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Hibaelhárítás általános az Azure-telepítés az Azure Resource Manager eszközzel
 
@@ -34,17 +34,18 @@ Ez a cikk ismerteti a gyakori az Azure-telepítés hibák észlelhetnek, és jav
 | AllocationFailed | A fürt vagy a régió nincs forrásanyag is elérhető, vagy nem támogatja a kért Virtuálisgép-méretet. Próbálja megismételni a kérést később, vagy kérje meg egy másik Virtuálisgép-méretet. | [Kiépítés és lefoglalás problémái Linux](../virtual-machines/linux/troubleshoot-deployment-new-vm.md) és [Windows kiépítés és lefoglalás problémái](../virtual-machines/windows/troubleshoot-deployment-new-vm.md) |
 | AnotherOperationInProgress | Várjon, amíg egyidejű művelet elvégzéséhez. | |
 | AuthorizationFailed | A fióknév vagy egyszerű szolgáltatásnév nincs engedélye a központi telepítés befejezéséhez. Ellenőrizze a szerepkör a fiókja tagja, és a hozzáférése a központi telepítés hatókör. | [Azure szerepköralapú hozzáférés-vezérlés](../active-directory/role-based-access-control-configure.md) |
-| Hibás kérés | Központi telepítés értékek, amelyek nem egyeznek, mi várható erőforrás-kezelő által küldött. Ellenőrizze a belső hibaállapot-üzeneteket a hibaelhárítás támogatásához. | [Sablonra való hivatkozást](/azure/templates/) és [támogatott helyek](resource-manager-templates-resources.md#location) |
+| BadRequest | Központi telepítés értékek, amelyek nem egyeznek, mi várható erőforrás-kezelő által küldött. Ellenőrizze a belső hibaállapot-üzeneteket a hibaelhárítás támogatásához. | [Sablonra való hivatkozást](/azure/templates/) és [támogatott helyek](resource-manager-templates-resources.md#location) |
 | Ütközés | A kért műveletet az erőforrás a jelenlegi állapotban nem engedélyezett. Például a lemezek átméretezése engedélyezett csak akkor, ha a virtuális gép létrehozása, vagy ha a virtuális gép felszabadítása. | |
 | DeploymentActive | Várjon, amíg párhuzamos központi telepítést, hogy ez az erőforráscsoport befejezéséhez. | |
+| Sikertelen | A "deploymentfailed" hiba: Általános hiba, amely nem adja meg a hiba megoldásához szükséges adatokat. Keresse meg a hiba részletei hibakódot nyújt részletesebb információt. | [Hibakód keresése](#find-error-code) |
 | DnsRecordInUse | A DNS-rekord nevének egyedinek kell lennie. Adjon meg egy másik nevet, vagy módosítsa a meglévő bejegyzést. | |
 | ImageNotFound | Ellenőrizze a virtuális gép kép beállításait. |  |
 | InUseSubnetCannotBeDeleted | Ez a hiba jelentkezhetnek, ha megpróbált frissíteni egy erőforrást, de törlésével és az erőforrás létrehozása dolgozza fel a kérelmet. Ügyeljen arra, hogy az összes változatlan értékeket megadni. | [Erőforrás frissítése](/azure/architecture/building-blocks/extending-templates/update-resource) |
 | InvalidAuthenticationTokenTenant | Szerezze be a hozzáférési tokent a megfelelő bérlő számára. Csak a jogkivonat lekérheti a bérlő, a fiókja tagja. | |
-| InvalidContentLink | Valószínűleg próbált összekapcsolása egy beágyazott sablont, amely nem érhető el. Ellenőrizze a beágyazott sablon megadott URI. Ha a sablon egy tárfiókot, ellenőrizze, hogy az URI elérhető. Szükség lehet egy SAS-jogkivonat átadni. | [Csatolt sablonok](resource-group-linked-templates.md) |
+| InvalidContentLink | Valószínűleg próbált összekapcsolása egy beágyazott sablont, amely nem érhető el. Ellenőrizze a beágyazott sablon megadott URI. Ha a sablon egy tárfiókot, ellenőrizze, hogy az URI elérhető. Szükség lehet egy SAS-jogkivonat átadni. | [csatolt sablonok](resource-group-linked-templates.md) |
 | InvalidParameter | Az erőforrás megadott értékek egyike nem egyezik a várt értékkel. Ez a hiba oka lehet számos különböző feltételeket. Például lehet, hogy a jelszó megfelelő, vagy lehet, hogy a blob neve helytelen. Tekintse meg a hibaüzenetet, annak eldöntéséhez, amelynek ki kell javítani szükséges. | |
 | InvalidRequestContent | A központi telepítés értékek nem várt vagy a hiányzó értékeket tartalmaznak szükséges értékeket. Ellenőrizze az erőforrás típusára vonatkozó értékeket. | [Hivatkozása](/azure/templates/) |
-| InvalidRequestFormat | A hibakeresési naplózást engedélyező, a központi telepítés végrehajtása közben, és ellenőrizze a kérelem tartalma. | [Hibakeresési naplózás](resource-manager-troubleshoot-tips.md#enable-debug-logging) |
+| InvalidRequestFormat | A hibakeresési naplózást engedélyező, a központi telepítés végrehajtása közben, és ellenőrizze a kérelem tartalma. | [Hibakeresési naplózás](#enable-debug-logging) |
 | InvalidResourceNamespace | A megadott erőforrás-névtér ellenőrzése a **típus** tulajdonság. | [Hivatkozása](/azure/templates/) |
 | InvalidResourceReference | Az erőforrás még nem létezik, vagy helytelenül hivatkozott. Ellenőrizze, hogy hozzáadjon egy függőséget szükséges. Ellenőrizze, hogy Ön miként használja a a **hivatkozás** függvény a forgatókönyvhöz szükséges paramétereket tartalmazza. | [-Függőségek feloldása](resource-manager-not-found-errors.md) |
 | InvalidResourceType | Ellenőrizze az erőforrás írja be az a **típus** tulajdonság. | [Hivatkozása](/azure/templates/) |
@@ -75,7 +76,124 @@ Ez a cikk ismerteti a gyakori az Azure-telepítés hibák észlelhetnek, és jav
 
 ## <a name="find-error-code"></a>Hibakód keresése
 
-Ha a telepítés során hibát észlel, erőforrás-kezelő hiba kódot ad vissza. A portál, a PowerShell vagy az Azure parancssori felület a hibaüzenet látható. Lehet, hogy a külső hibaüzenet túl általános hibaelhárítási. Keresse meg a belső állapotüzenetet, amely a hibával kapcsolatos részletes információkat tartalmaz. További információkért lásd: [határozza meg a hiba kódja](resource-manager-troubleshoot-tips.md#determine-error-code).
+A hibák fogadhat két típusa van:
+
+* Érvényesítési hiba
+* Telepítési hibák
+
+Érvényesítési hibák merülnek fel a szolgáltatásokat, amelyek a központi telepítés előtt meg lehet határozni. Szintaktikai hibákat a sablont, vagy szeretné telepíteni az erőforrásokat, amelyek túllépné az előfizetés kvóták tartoznak. Telepítési hibák feltételek, a telepítési folyamat során előforduló merülhetnek fel. Tartalmaznak egy párhuzamos telepített erőforrás elérésére tett kísérlet.
+
+Mindkét típusú hibák hibakódot, amelyekkel a telepítés hibáinak. Mindkét típusú hibák jelennek meg a [tevékenységnapló](resource-group-audit.md). Azonban érvényesítési hiba jelenik meg a központi telepítés előzményei mert soha nem indult el a központi telepítés.
+
+### <a name="validation-errors"></a>Érvényesség-ellenőrzési hibák
+
+A portálon keresztül telepítésekor érvényesítési hiba láthatja az értékek elküldése után.
+
+![portál érvényesítési hibaüzenet megjelenítése](./media/resource-manager-common-deployment-errors/validation-error.png)
+
+Válassza ki a további részleteket az üzenetet. Az alábbi képen látható egy **InvalidTemplateDeployment** hiba, és egy házirend jelző üzenet blokkolva központi telepítés.
+
+![érvényesítési részletek megjelenítése](./media/resource-manager-common-deployment-errors/validation-details.png)
+
+### <a name="deployment-errors"></a>Telepítési hibák
+
+A művelet a teljesíti az ellenőrző, de nem sikerül a telepítés során, tekintse meg az értesítéseket a hibát. Válassza ki az értesítést.
+
+![értesítési hiba](./media/resource-manager-common-deployment-errors/notification.png)
+
+Megjelenik a telepítéssel kapcsolatos további részletekért. A beállítás a hibával kapcsolatban további információt.
+
+![központi telepítése nem sikerült](./media/resource-manager-common-deployment-errors/deployment-failed.png)
+
+Megjelenik a hibaüzenet és hibakódok. Figyelje meg, hogy van két hibakódok. Az első hibakód (**"deploymentfailed"**) egy általános hiba, amely nem biztosítja a hiba megoldásához szükséges adatokat. A második hibakód (**StorageAccountNotFound**) kell részleteit. 
+
+![a hiba részletei](./media/resource-manager-common-deployment-errors/error-details.png)
+
+## <a name="enable-debug-logging"></a>A hibakeresési naplózást engedélyező
+
+Néha kell a kérelem és válasz megtudhatja, mi a probléma további információt. PowerShell vagy Azure CLI segítségével kérheti, hogy további információkat kerül a központi telepítés során.
+
+- PowerShell
+
+   A PowerShellben, állítsa be a **DeploymentDebugLogLevel** az összes paramétert, ResponseContent vagy RequestContent.
+
+  ```powershell
+  New-AzureRmResourceGroupDeployment -ResourceGroupName examplegroup -TemplateFile c:\Azure\Templates\storage.json -DeploymentDebugLogLevel All
+  ```
+
+   Vizsgálja meg a tartalom a következő parancsmaggal kérelem:
+
+  ```powershell
+  (Get-AzureRmResourceGroupDeploymentOperation -DeploymentName storageonly -ResourceGroupName startgroup).Properties.request | ConvertTo-Json
+  ```
+
+   Vagy a tartalom a válasz:
+
+  ```powershell
+  (Get-AzureRmResourceGroupDeploymentOperation -DeploymentName storageonly -ResourceGroupName startgroup).Properties.response | ConvertTo-Json
+  ```
+
+   Ezen információk segítségével eldöntheti, hogy a sablonban lévő érték helytelen beállítása.
+
+- Azure CLI
+
+   Vizsgálja meg a telepítési műveleteket az alábbi paranccsal:
+
+  ```azurecli
+  az group deployment operation list --resource-group ExampleGroup --name vmlinux
+  ```
+
+- Beágyazott sablon
+
+   Beágyazott sablon hibakeresési adatok naplózására, használja a **debugSetting** elemet.
+
+  ```json
+  {
+      "apiVersion": "2016-09-01",
+      "name": "nestedTemplate",
+      "type": "Microsoft.Resources/deployments",
+      "properties": {
+          "mode": "Incremental",
+          "templateLink": {
+              "uri": "{template-uri}",
+              "contentVersion": "1.0.0.0"
+          },
+          "debugSetting": {
+             "detailLevel": "requestContent, responseContent"
+          }
+      }
+  }
+  ```
+
+## <a name="create-a-troubleshooting-template"></a>Hibaelhárítási-sablon létrehozása
+
+Bizonyos esetekben a hibaelhárítás a sablon legkönnyebben teszteléséhez része. Létrehozhat egy egyszerűsített sablont, amely lehetővé teszi, hogy jobban összpontosíthat az a része, amely úgy véli okozza a hibát. Tegyük fel, hogy hiba azért kapta, való hivatkozáskor erőforrás. Ahelyett, hogy egy teljes sablon foglalkozik, a része, a problémát okozó visszaadó sablont létrehozni. Ez segít meghatározni, hogy átadott a megfelelő paraméterek sablon függvénnyel megfelelően, és az erőforrás lekérése várt.
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "storageName": {
+        "type": "string"
+    },
+    "storageResourceGroup": {
+        "type": "string"
+    }
+  },
+  "variables": {},
+  "resources": [],
+  "outputs": {
+    "exampleOutput": {
+        "value": "[reference(resourceId(parameters('storageResourceGroup'), 'Microsoft.Storage/storageAccounts', parameters('storageName')), '2016-05-01')]",
+        "type" : "object"
+    }
+  }
+}
+```
+
+Vagy tegyük fel, amely azt feltételezi, helytelenül állította be a függőségek kapcsolódó központi telepítési hibái áll kapcsolatban. Tesztelje a sablon ossza egyszerűsített sablonok. Először hozzon létre egy sablont, amely csak egyetlen erőforrás (például egy SQL Server) telepít. Ha meggyőződött arról, hogy helyesen definiálva erőforrást is tartalmaz, amelyektől függ (például egy SQL-adatbázis) erőforrás hozzáadása. Ha két erőforrások helyesen definiálva van, adja hozzá a más függő erőforrások (például naplózási házirendek). Minden egyes próbatelepítés Between törölje a csoportot, hogy biztosan megfelelően tesztelése a függőségeket.
+
 
 ## <a name="next-steps"></a>További lépések
 * Műveletek naplózásával kapcsolatos további tudnivalókért lásd: [naplózási műveletek a Resource Manager](resource-group-audit.md).

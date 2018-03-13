@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 11/01/2017
 ms.author: vturecek
-ms.openlocfilehash: 209e657678b7f300f13fc16181a14d8ef422466d
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 204280c8b81e5f751f3f0b609e04aba0a1cec381
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="how-to-use-the-reliable-services-communication-apis"></a>A Reliable Services kommunikációs API-k használata
 Az Azure Service Fabric platformként rendszer teljesen független kapcsolatos szolgáltatások közötti kommunikáció. Protokollok és a verem elfogadhatók, az UDP HTTP. A szolgáltatás fejlesztők kiválaszthatja, hogyan lépjen kapcsolatba a szolgáltatások van. A Reliable Services alkalmazás-keretrendszer biztosít, beépített kommunikációs verem, valamint az API-t is használhatja a kommunikációhoz egyéni összetevők létrehozása.
@@ -76,10 +76,13 @@ public class MyStatelessService extends StatelessService {
 
 Az állapotalapú szolgáltatások:
 
-> [!NOTE]
-> Állapot-nyilvántartó megbízható szolgáltatások nem támogatottak a Java még.
->
->
+```java
+    @Override
+    protected List<ServiceReplicaListener> createServiceReplicaListeners() {
+        ...
+    }
+    ...
+```
 
 ```csharp
 class MyStatefulService : StatefulService
@@ -236,7 +239,7 @@ public interface CreateFabricClient {
 }
 ```
 
-`FabricClient`egy olyan objektum, a Service Fabric-fürt a fürt a különböző felügyeleti műveleteihez folytatott kommunikációhoz használt. Ez akkor hasznos, ha azt szeretné, hogy egy szolgáltatás partíció feloldó hogyan működjön együtt a fürt teljesebb körű vezérlése. `FabricClient`elvégzi a belső gyorsítótár, és általában költséges szeretne létrehozni, ezért fontos újból `FabricClient` példányok szerint lehetséges.
+`FabricClient` egy olyan objektum, a Service Fabric-fürt a fürt a különböző felügyeleti műveleteihez folytatott kommunikációhoz használt. Ez akkor hasznos, ha azt szeretné, hogy egy szolgáltatás partíció feloldó hogyan működjön együtt a fürt teljesebb körű vezérlése. `FabricClient` elvégzi a belső gyorsítótár, és általában költséges szeretne létrehozni, ezért fontos újból `FabricClient` példányok szerint lehetséges.
 
 ```csharp
 ServicePartitionResolver resolver = new  ServicePartitionResolver(() => CreateMyFabricClient());
@@ -267,7 +270,7 @@ A szolgáltatás címe egyszerűen a egy ServicePartitionResolver segítségéve
 ### <a name="communication-clients-and-factories"></a>Kommunikáció az ügyfelek és előállítók
 A kommunikációs gyári könyvtár egy tipikus hiba-kezelési újrapróbálkozási mintát, amely megkönnyíti a feloldott Szolgáltatásvégpontok újrapróbálása kapcsolatok valósítja meg. A gyári könyvtár biztosít az újrapróbálkozási mechanizmussal, míg a hibakezelők megadnia.
 
-`ICommunicationClientFactory(C#) / CommunicationClientFactory(Java)`Meghatározza a kommunikációs ügyfélgyára, amely létrehozza az ügyfelek számára, amely képes kommunikálni a Service Fabric-szolgáltatás által megvalósított alapszintű felületet. A CommunicationClientFactory végrehajtásának attól függ, hogy a kommunikációs verem a Service Fabric-szolgáltatás által használt, ahol az ügyfél kommunikálni kíván. A megbízható szolgáltatások API biztosít egy `CommunicationClientFactoryBase<TCommunicationClient>`. Egy alapszintű megvalósítás CommunicationClientFactory interfész biztosít, és a vonatkozó összes kommunikációs verem feladatokat hajtja végre. (Ezek a feladatok közé tartozik egy ServicePartitionResolver segítségével határozza meg a szolgáltatási végpont). Ügyfelek általában valósítja meg az absztrakt CommunicationClientFactoryBase osztály logika, amely jellemző a kommunikációs verem kezelésére.
+`ICommunicationClientFactory(C#) / CommunicationClientFactory(Java)` Meghatározza a kommunikációs ügyfélgyára, amely létrehozza az ügyfelek számára, amely képes kommunikálni a Service Fabric-szolgáltatás által megvalósított alapszintű felületet. A CommunicationClientFactory végrehajtásának attól függ, hogy a kommunikációs verem a Service Fabric-szolgáltatás által használt, ahol az ügyfél kommunikálni kíván. A megbízható szolgáltatások API biztosít egy `CommunicationClientFactoryBase<TCommunicationClient>`. Egy alapszintű megvalósítás CommunicationClientFactory interfész biztosít, és a vonatkozó összes kommunikációs verem feladatokat hajtja végre. (Ezek a feladatok közé tartozik egy ServicePartitionResolver segítségével határozza meg a szolgáltatási végpont). Ügyfelek általában valósítja meg az absztrakt CommunicationClientFactoryBase osztály logika, amely jellemző a kommunikációs verem kezelésére.
 
 A kommunikációs ügyfél csak egy címet kap, és használja a szolgáltatáshoz való kapcsolódáshoz. Az ügyfél bármilyen szeretnének protokoll használható.
 
@@ -426,7 +429,7 @@ CompletableFuture<?> result = myServicePartitionClient.invokeWithRetryAsync(clie
 
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Az ASP.NET Core megbízható szolgáltatásokkal](service-fabric-reliable-services-communication-aspnetcore.md)
 * [Távoli eljáráshívások a Reliable Services távoli eljáráshívás](service-fabric-reliable-services-communication-remoting.md)
 * [WCF-kommunikáció Reliable Services használatával](service-fabric-reliable-services-communication-wcf.md)

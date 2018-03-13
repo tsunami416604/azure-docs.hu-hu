@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: 6a1d56a270ae0c44db18f26091cc3c550a37e420
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: c4bf3871b4636ce769dd8d84a637b88d4a00db97
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe
 
@@ -99,7 +99,7 @@ Néhány fontos lépést végre kell hajtani az erőforrások áthelyezése elő
 * Az erőforrások áthelyezése egy új Azure-fiók (és az Azure Active Directory-bérlő), és segítségre van az előző szakaszban leírt utasításokat.
 * Hagyományos erőforrások áthelyezéséhez, de problémát tapasztal a korlátozásokkal.
 
-## <a name="services-that-enable-move"></a>Szolgáltatások, amelyek lehetővé teszik a áthelyezése
+## <a name="services-that-can-be-moved"></a>Áthelyezhető szolgáltatások
 
 A szolgáltatások, amelyek lehetővé teszik egy új erőforráscsoportot és az előfizetés áthelyezését a következők:
 
@@ -149,7 +149,7 @@ A szolgáltatások, amelyek lehetővé teszik egy új erőforráscsoportot és a
 * Tekintse meg a virtuális hálózatok - [virtuális hálózatok korlátozásai](#virtual-networks-limitations)
 * VPN Gateway
 
-## <a name="services-that-do-not-enable-move"></a>Ne engedélyezze a move szolgáltatások
+## <a name="services-that-cannot-be-moved"></a>Nem lehet áthelyezni szolgáltatások
 
 A szolgáltatások, amelyek jelenleg nem engedélyezi az erőforrás áthelyezése a következők:
 
@@ -307,7 +307,7 @@ Tegyük fel például, hogy állította be a tárfiók (Storage1) helyszíni gé
 A regisztrált virtuális gép áthelyezése **Azure biztonsági mentés** erőforráscsoportba:
  1. Ideiglenesen állítsa le a biztonsági mentés és a biztonsági mentési adatok megőrzése mellett
  2. A virtuális gép áthelyezése a célként megadott erőforráscsoportja
- 3. Védelmének újbóli beállításához, a felhasználók állíthatja vissza az áthelyezés előtt létrehozott rendelkezésre visszaállítási pontok azonos/új tárolóban.
+ 3. Szüntetnie az azonos/új tárolóban. az áthelyezés előtt létrehozott rendelkezésre visszaállítási pontok felhasználók állíthatja vissza.
 Ha a felhasználó a biztonsági másolat virtuális Gépet egy előfizetések között, 1 és 2. lépést változatlanok maradnak. 3. lépésben a felhasználónak kell egy új tárolóban található / a célként megadott előfizetés-ben jött létre a virtuális gép védelme. Recovery Services-tároló nem támogatja az alhálózatok közötti előfizetés biztonsági másolatok.
 
 ## <a name="hdinsight-limitations"></a>A HDInsight-korlátozások
