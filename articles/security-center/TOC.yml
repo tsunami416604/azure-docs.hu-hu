@@ -114,6 +114,12 @@
       items:
         - name: Csatlakoztatott megoldások
           href: security-center-partner-solutions.md
+        - name: Felderített megoldások
+          href: 'security-center-partner-integration.md#discovered-solutions'
+        - name: Külső megoldások csatlakoztatása
+          href: quick-security-solutions.md
+        - name: Application Gateway csatlakoztatása
+          href: security-center-connect-application-gateway.md
         - name: A Microsoft ATA csatlakoztatása
           href: security-center-ata-integration.md
         - name: Az Azure AD Identity Protection csatlakoztatása

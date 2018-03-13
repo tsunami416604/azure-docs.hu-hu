@@ -87,6 +87,8 @@
       items:
         - name: SSH-csomópont elérése
           href: aks-ssh.md
+        - name: Kubelet-naplók beszerzése
+          href: kubelet-logs.md
 - name: Referencia
   items:
     - name: Azure CLI
