@@ -97,7 +97,7 @@
       items:
         - name: Az alkalmazás üzembe helyezése
           items:
-            - name: ZIP-fájl telepítése
+            - name: ZIP- vagy WAR-fájl telepítése
               href: app-service-deploy-zip.md
             - name: Üzembe helyezés FTP használatával
               href: app-service-deploy-ftp.md

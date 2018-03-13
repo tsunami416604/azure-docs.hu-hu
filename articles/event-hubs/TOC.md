@@ -27,6 +27,7 @@
 ### [A hitelesítési és biztonsági modell áttekintése](event-hubs-authentication-and-security-model-overview.md)
 ### [Rendelkezésre állás és konzisztencia](event-hubs-availability-and-consistency.md)
 ### [Átviteli egységek automatikus skálázása](event-hubs-auto-inflate.md)
+### [Apache Spark – Event Hubs-integráció](event-hubs-spark-connector.md)
 ## Fejlesztés
 ### [Események küldése a .NET-keretrendszer használatával](event-hubs-dotnet-framework-getstarted-send.md)
 ### [Események fogadása a .NET-keretrendszer használatával](event-hubs-dotnet-framework-getstarted-receive-eph.md)

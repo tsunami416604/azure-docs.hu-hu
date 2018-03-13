@@ -233,7 +233,10 @@
 ## [Azure PowerShell (Resource Manager)](/powershell/module/azurerm.media)
 ## [Azure PowerShell (Szolgáltatásfelügyelet)](/powershell/module/azure/?view=azuresmps-3.7.0)
 ## [.NET](/dotnet/api/microsoft.windowsazure.mediaservices.client)
-## [REST](/rest/api/media/mediaservice)  
+## [REST](/rest/api/media/mediaservice)
+## Specifikációk
+### [Élő betöltés – Specifikáció: darabolt MP4 élő betöltése](media-services-fmp4-live-ingest-overview.md)
+### [Smooth Streaming HEVC](media-services-specifications-ms-sstr-ammendment-hevc.md)
 
 # További források
 ## [Azure Media Services-közösség](media-services-community.md)
