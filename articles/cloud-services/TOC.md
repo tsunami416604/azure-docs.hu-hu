@@ -35,6 +35,7 @@
 ### A Távoli asztal konfigurálása
 #### [Portal](cloud-services-role-enable-remote-desktop-new-portal.md)
 #### [PowerShell](cloud-services-role-enable-remote-desktop-powershell.md)
+#### [Visual Studio](cloud-services-role-enable-remote-desktop-visual-studio.md)
 
 ## Üzembe helyezés
 ### [Felhőszolgáltatás létrehozása és üzembe helyezése a portálon](cloud-services-how-to-create-deploy-portal.md)
