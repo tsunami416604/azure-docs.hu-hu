@@ -154,7 +154,7 @@ A Media Services szolgáltatásban a digitális fájlok feltöltése vagy kimene
 
 Az alábbiakban meghatározott **UploadFile** módszer a **CreateFromFile** módszert hívja meg (amely a .NET SDK-bővítmények között van meghatározva). A **CreateFromFile** létrehoz egy új adategységet, amelybe a megadott forrásfájl fel lesz töltve.
 
-A **CreateFromFile** módszer számára az **AssetCreationOptions alapján határozhatja meg, hogy az alábbi adategység-létrehozási lehetőségek közül melyiket használja:
+A **CreateFromFile** módszer számára az \*\*AssetCreationOptions alapján határozhatja meg, hogy az alábbi adategység-létrehozási lehetőségek közül melyiket használja:
 
 * **Nincs** – Nincs titkosítás. Ez az alapértelmezett érték. Ügyeljen arra, hogy ezen lehetőség használatakor a tartalom sem átvitel, sem tárolás közben nincs védve.
   Ha egy MP4-fájlt progresszív letöltés útján tervez továbbítani, használja ezt a lehetőséget.
