@@ -7,14 +7,14 @@ ms.reviewer: carlrab, bonova
 ms.service: sql-database
 ms.custom: managed instance
 ms.topic: article
-ms.date: 03/07/2018
+ms.date: 03/09/2018
 ms.author: jovanpop
 manager: cguyer
-ms.openlocfilehash: 699ac303c553e1f3b78f13fc12163f47a1e77941
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 27be2b9a5f2b9aaf2d4464a6c927ec2a1694131a
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Az SQL Serverről az Azure SQL adatbázis felügyelt példány T-SQL különbségek 
 
@@ -34,7 +34,7 @@ Ez a szakasz a kulcs T-SQL-szintaxis és a viselkedés közötti különbségek 
  - [RENDELKEZÉSRE ÁLLÁSI CSOPORT LÉTREHOZÁSA](https://docs.microsoft.com/sql/t-sql/statements/create-availability-group-transact-sql.md)
  - [ALTER RENDELKEZÉSRE ÁLLÁSI CSOPORT](https://docs.microsoft.com/sql/t-sql/statements/alter-availability-group-transact-sql.md)
  - [KÖZVETLEN RENDELKEZÉSRE ÁLLÁSI CSOPORT](https://docs.microsoft.com/sql/t-sql/statements/drop-availability-group-transact-sql.md)
- - [SET HADR](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-hadr.md) az ALTER DATABASE utasítás záradékában
+ - [SET HADR](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-hadr.md) záradékában a [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql) utasítás
 
 ### <a name="auditing"></a>Naplózás 
  
@@ -72,6 +72,8 @@ Korlátozások vonatkoznak:
 
 > [!TIP]
 > Ez a korlátozás a helyszíni történő biztonsági mentés kerülő `DISK` történő biztonsági mentés helyett `URL`, a blob-, majd állítsa vissza biztonságimásolat-fájl feltöltése. Visszaállítás nagyobb fájlokat támogatja, mert egy másik blob típust használja.  
+
+Biztonsági mentések T-SQL használatával kapcsolatos információkért lásd: [biztonsági MENTÉS](https://docs.microsoft.com/sql/t-sql/statements/backup-transact-sql).
 
 ### <a name="buffer-pool-extension"></a>A pufferkészlet-kiterjesztés 
  
@@ -367,7 +369,7 @@ A következők nem támogatottak:
 - `EXTERNAL TABLE` 
 - `MEMORY_OPTIMIZED`  
 
-Táblák létrehozásával kapcsolatos további információkért lásd: [CREATE TABLE utasítás](https://docs.microsoft.com/sql/t-sql/statements/create-table-transact-sql).
+További információ a létrehozásának és módosításának táblák: [CREATE TABLE](https://docs.microsoft.com/sql/t-sql/statements/create-table-transact-sql) és [az ALTER TABLE](https://docs.microsoft.com/sql/t-sql/statements/alter-table-transact-sql).
  
 ## <a name="Changes"></a> Viselkedésváltozások 
  

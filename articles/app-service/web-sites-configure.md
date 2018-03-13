@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: cephalin
-ms.openlocfilehash: 3f735b8742f22110b4de264bfb5661651a899afb
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: 58c27c0872978c3a6a4c47be37e6fa6078309286
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="configure-web-apps-in-azure-app-service"></a>Webalkalmazások konfigurálása az Azure App Service-ben
 
@@ -76,8 +76,8 @@ A PHP, Python, Java és csomópont alkalmazások ezek a beállítások használh
 
 * SQL Server: `SQLCONNSTR_`
 * MySQL: `MYSQLCONNSTR_`
-* SQL-adatbázis:`SQLAZURECONNSTR_`
-* Egyéni:`CUSTOMCONNSTR_`
+* SQL-adatbázis: `SQLAZURECONNSTR_`
+* Egyéni: `CUSTOMCONNSTR_`
 
 Például, ha a MySql-kapcsolati karakterlánc lett nevű `connectionstring1`, akkor elérhetőek a környezeti változó `MYSQLCONNSTR_connectionString1`.
 
@@ -129,12 +129,12 @@ A teljes FTP-felhasználó neve "app\username" hol *app* a webes alkalmazás nev
 
 ## <a name="other-configuration-tasks"></a>Egyéb konfigurációs feladatok
 ### <a name="ssl"></a>SSL
-Basic vagy Standard módban SSL-tanúsítványokat az egyéni tartományt is feltölthet. További információ: [HTTPS engedélyezése az webalkalmazáshoz]. 
+Basic vagy Standard módban SSL-tanúsítványokat az egyéni tartományt is feltölthet. További információkért lásd: [HTTPS engedélyezése az webalkalmazáshoz](app-service-web-tutorial-custom-ssl.md). 
 
 A feltöltött tanúsítványok megtekintéséhez kattintson **összes beállítás** > **egyéni tartományok és SSL**.
 
 ### <a name="domain-names"></a>Tartománynevek
-A webalkalmazás egyéni tartományneveket adhat hozzá. További információ: [egy webalkalmazást az Azure App Service szolgáltatásban az egyéni tartománynév konfigurálása].
+A webalkalmazás egyéni tartományneveket adhat hozzá. További információkért lásd: [egy webalkalmazást az egyéni tartománynév beállítása az Azure App Service](app-service-web-tutorial-custom-domain.md).
 
 A tartománynevek megtekintéséhez kattintson **összes beállítás** > **egyéni tartományok és SSL**.
 
@@ -165,13 +165,13 @@ További információkért lásd: [Útmutató: webes végpont állapotának figy
 [ASP.NET SignalR]: http://www.asp.net/signalr
 [Azure Portal]: https://portal.azure.com/
 [Egyéni tartománynév konfigurálása az Azure App Service-ben]: ./app-service-web-tutorial-custom-domain.md
-[Az Azure App Service Web Apps előkészítési környezetek telepítése]: ./web-sites-staged-publishing.md
+[előkészítési környezetek telepítése az Azure App Service Web Apps]: ./web-sites-staged-publishing.md
 [HTTPS engedélyezése az alkalmazásoknak az Azure App Service-ben]: ./app-service-web-tutorial-custom-ssl.md
 [Útmutató: webes végpont állapotának figyelése]: http://go.microsoft.com/fwLink/?LinkID=279906
 [Az Azure App Service Web Apps figyelési alapjai]: ./web-sites-monitor.md
-[feldolgozási sor üzemmódban]: http://www.iis.net/learn/get-started/introduction-to-iis/introduction-to-iis-architecture#Application
+[folyamatkezelési mód]: http://www.iis.net/learn/get-started/introduction-to-iis/introduction-to-iis-architecture#Application
 [A webalkalmazás skálázása az Azure App Service-ben]: ./web-sites-scale.md
-[Az App Service kipróbálása]: https://azure.microsoft.com/try/app-service/
+[Az Azure App Service kipróbálása]: https://azure.microsoft.com/try/app-service/
 
 <!-- IMG List -->
 

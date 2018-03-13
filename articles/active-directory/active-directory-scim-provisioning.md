@@ -16,11 +16,11 @@ ms.date: 12/12/2017
 ms.author: asmalser
 ms.reviewer: asmalser
 ms.custom: aaddev;it-pro;seohack1
-ms.openlocfilehash: 17732ae616339020f11bc8973dc57b6d0fff4884
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: 3b7f2f104046313e7d60cea4ef296f265d204aec
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="using-system-for-cross-domain-identity-management-to-automatically-provision-users-and-groups-from-azure-active-directory-to-applications"></a>A tartományok közötti Identity Management rendszert használ automatikusan a felhasználók és csoportok az Azure Active Directory alkalmazások telepítéséhez
 
@@ -35,7 +35,7 @@ Ez a funkció használható együtt a "állapotba hozása a saját alkalmazás" 
 Számos két alkalmazási helyzetei SCIM használata az Azure Active Directoryban.
 
 * **Felhasználók és csoportok SCIM támogató alkalmazások kiépítés** alkalmazásokat, amelyek támogatják az SCIM 2.0 és OAuth tulajdonosi jogkivonatok használnak, a hitelesítés az Azure AD konfigurálása nélkül működik.
-* **Saját kiépítési megoldás az alkalmazások, amelyek támogatják a többi API-alapú üzembe helyezés** nem SCIM alkalmazások, létrehozhat egy SCIM végpont lefordítani az Azure AD SCIM végpont és az alkalmazás támogatja-e a felhasználók átadása az API-k között. Is segítséget a SCIM végpont, nyújtunk a közös nyelvi infrastruktúra (CLI) tárak, amelyek bemutatják a adjon meg egy SCIM végpont és SCIM üzenetek fordítása mintakódok együtt.  
+* **Saját kiépítési megoldás az alkalmazások, amelyek támogatják a többi API-alapú üzembe helyezés** nem SCIM alkalmazások, létrehozhat egy SCIM végpont lefordítani az Azure AD SCIM végpont és az alkalmazás támogatja a felhasználó API-k között kiépítés. Is segítséget a SCIM végpont, nyújtunk a közös nyelvi infrastruktúra (CLI) tárak, amelyek bemutatják a adjon meg egy SCIM végpont és SCIM üzenetek fordítása mintakódok együtt.  
 
 ## <a name="provisioning-users-and-groups-to-applications-that-support-scim"></a>Felhasználók és csoportok SCIM támogató alkalmazások kiépítése
 Az Azure AD beállítható úgy, hogy automatikusan a hozzárendelt rendelkezés felhasználókat és csoportokat, amelyek megvalósítják az alkalmazások egy [tartományok közötti identitáskezeléshez 2 (SCIM) rendszer](https://tools.ietf.org/html/draft-ietf-scim-api-19) webes szolgáltatás, és fogadja el az OAuth tulajdonosi jogkivonatokat a hitelesítéshez. Belül a SCIM 2.0-s specifikációnak alkalmazások követelménynek kell megfelelnie:
@@ -685,7 +685,7 @@ A következő ábra azt mutatja, hogy Azure Active Directory küld SCIM szolgál
 ## <a name="group-provisioning-and-de-provisioning"></a>Csoport üzembe helyezést és megszüntetést
 A következő ábra azt mutatja, hogy Azure AcD küld a SCIM szolgáltatásnak csoportnak egy másik identitás tárolására az életciklus kezeléséhez az üzeneteket.  Az üzenetek a felhasználók háromféleképpen vonatkozó üzeneteket különböznek: 
 
-* Egy csoport erőforrás sémája http://schemas.microsoft.com/2006/11/ResourceManagement/ADSCIM/Group azonosítja.  
+* Egy csoport erőforrás sémája ki van jelölve `http://schemas.microsoft.com/2006/11/ResourceManagement/ADSCIM/Group`.  
 * Csoportok beolvasására irányuló kérelmek határozzák meg, hogy a tagok attribútum ki lesznek zárva a bármilyen olyan erőforrás található kérelemre adott válasz.  
 * Annak meghatározásához, hogy rendelkezik-e a hivatkozási attribútum egy adott értékre kérelmek azok a tagok attribútum kapcsolatban.  
 

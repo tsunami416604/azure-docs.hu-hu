@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.date: 03/07/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: a7771eebc8359a5de1c79328014f5ecc06c9673b
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 86a839102e98a1b8e7cd9927c697cacf1f41a1a6
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="high-availability-and-azure-sql-database"></a>Magas rendelkezésre állású és az Azure SQL-adatbázis
 Az Azure SQL adatbázis Platformszolgáltatási ajánlat kezdete óta a Microsoft tett a felhőalkalmazások nyújtotta az ügyfelek, amelyek a szolgáltatás részét magas rendelkezésre állású (HA), és az ügyfelek nem szükséges üzemeltetéséhez, különleges logika hozzáadása, és magas rendelkezésre ÁLLÁSÚ körül döntéseket. A Microsoft fenntartja a magas rendelkezésre ÁLLÁSÚ rendszerkonfiguráció és a művelet, teljes hozzáféréssel, szolgáltatásiszint-szerződésben garantált kínál az ügyfeleknek. A magas rendelkezésre ÁLLÁSÚ SLA régióban SQL-adatbázis vonatkozik, és nem nyújt védelmet a teljes tartomány hibák, amely kívül a Microsoft irányítása alá tartozó tényezők miatt esetekben (például természeti katasztrófa, war, tevékenységéért terrorakció is történhet, lázadások, kormányzati műveletet, vagy egy hálózati vagy az eszköz hiba a Microsoft adatközpontokban, beleértve az ügyfél helyeken vagy a felhasználói helyek és a Microsoft-adatközpont közti külső).
@@ -56,7 +56,7 @@ A magas rendelkezésre állású megoldás az SQL-adatbázis alapul [Alwayson](/
 
 Ebben a konfigurációban az egyes adatbázisok online állapotba a szolgáltatás (MS) belül a vezérlő gyűrű. Egy elsődleges és legalább két másodlagos replika (kvórum-készlet) nem található, a bérlő ring kiterjedő három független fizikai alrendszerek ugyanabban az adatközpontban. Az átjáró (GW) az elsődleges másodpéldány által küldött összes olvasási és írási, és az írási műveletek aszinkron módon replikálva vannak a másodlagos replikákon. SQL-adatbázis egy kvórum-alapú véglegesítési sémát használja, ha az adatok írása az elsődleges és a tranzakciók véglegesítése előtt legalább egy másodlagos másodpéldány.
 
-A [Service Fabric](/azure/service-fabric/service-fabric-overview.md) feladatátvételi rendszer automatikusan újraépíti a replikákat, a csomópont meghibásodik, és kvórum-készlet tagsági karbantartott csomópontok egymástól, és csatlakoztassa a rendszer. Tervezett karbantartás gondosan koordinált, hogy megakadályozza a kvórum-set állapotra vált a replikakészlet minimális száma (általában 2) alatt. Premium adatbázisok esetén ez a modell működik, de van szükség a redundancia számítási és a tárolási összetevők, és egy magasabb költsége eredményez.
+A [Service Fabric](/service-fabric/service-fabric-overview.md) feladatátvételi rendszer automatikusan újraépíti a replikákat, a csomópont meghibásodik, és kvórum-készlet tagsági karbantartott csomópontok egymástól, és csatlakoztassa a rendszer. Tervezett karbantartás gondosan koordinált, hogy megakadályozza a kvórum-set állapotra vált a replikakészlet minimális száma (általában 2) alatt. Premium adatbázisok esetén ez a modell működik, de van szükség a redundancia számítási és a tárolási összetevők, és egy magasabb költsége eredményez.
 
 ## <a name="remote-storage-configuration"></a>Távoli tárolás beállítása
 
@@ -77,7 +77,7 @@ A távoli tárolókonfigurációkkal SQL-adatbázis funkcióit használja az Alw
 
 ## <a name="zone-redundant-configuration-preview"></a>Redundáns zónakonfigurációk (előzetes verzió)
 
-Alapértelmezés szerint a helyi tárolókonfigurációkkal kvórum-set replikáit ugyanabban az adatközpontban jönnek létre. Bevezetésével [Azure rendelkezésre állási zónák](/azure/availability-zones/az-overview.md), arra, hogy a különböző replikák a kvórum beállítása másik rendelkezésre állási zónákhoz ugyanabban a régióban van. Elkerülése érdekében a hibaérzékeny pontok kialakulását, a vezérlő gyűrű is duplikált több zóna között, három átjáró körök (GW). Egy adott átjáró ring útválasztást vezérli [Azure Traffic Manager](/traffic-manager/traffic-manager-overview.md) (ATM). A redundáns zónakonfigurációk további adatbázis-redundancia nem hoz létre, mert a rendelkezésre állási zónák a prémium szintű szolgáltatási rétegben használata nincs további elérhető költség. A zóna redundáns adatbázis kiválasztásával tehet a Premium adatbázisokat rugalmas sokkal nagyobb mennyiségű hibák, beleértve a katasztrofális datacenter kimaradások, az alkalmazás logikája módosítás nélkül. Bármely létező Premium adatbázis vagy a készlet átválthat a zóna redundáns konfigurációra.
+Alapértelmezés szerint a helyi tárolókonfigurációkkal kvórum-set replikáit ugyanabban az adatközpontban jönnek létre. Bevezetésével [Azure rendelkezésre állási zónák](../availability-zones/az-overview.md), arra, hogy a különböző replikák a kvórum beállítása másik rendelkezésre állási zónákhoz ugyanabban a régióban van. Elkerülése érdekében a hibaérzékeny pontok kialakulását, a vezérlő gyűrű is duplikált több zóna között, három átjáró körök (GW). Egy adott átjáró ring útválasztást vezérli [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) (ATM). A redundáns zónakonfigurációk további adatbázis-redundancia nem hoz létre, mert a rendelkezésre állási zónák a prémium szintű szolgáltatási rétegben használata nincs további elérhető költség. A zóna redundáns adatbázis kiválasztásával tehet a Premium adatbázisokat rugalmas sokkal nagyobb mennyiségű hibák, beleértve a katasztrofális datacenter kimaradások, az alkalmazás logikája módosítás nélkül. Bármely létező Premium adatbázis vagy a készlet átválthat a zóna redundáns konfigurációra.
 
 Mivel a redundáns kvórum-zónakészlet replikák néhány távolsága a különböző adatközpontokban van, a hálózati késés növelheti a véglegesítés ideje, és így csökkenti a teljesítményt az egyes OLTP-munkaterhelések. Mindig visszatérhet a egyetlen zónakonfigurációk által a zóna redundancia beállításnak a letiltása. Ez a folyamat egy Adatműveletek mérete, és a rendszeres szolgáltatásiszint-célkitűzés (SLO) frissítési hasonló. A folyamat végén az adatbázis vagy a készletbe telepítenek át egy zóna redundáns gyűrű egy zóna gyűrű vagy fordítva.
 
@@ -93,6 +93,6 @@ Az Azure SQL Database az Azure platformon mélyen integrált, és nagymértékbe
 
 ## <a name="next-steps"></a>További lépések
 
-- További tudnivalók [Azure rendelkezésre állási zónák](/azure/availability-zones/az-overview.md)
-- További tudnivalók [Fabric szolgáltatás](/azure/service-fabric/service-fabric-overview.md)
-- További tudnivalók [az Azure Traffic Manager](/traffic-manager/traffic-manager-overview.md) 
+- További tudnivalók [Azure rendelkezésre állási zónák](../availability-zones/az-overview.md)
+- További tudnivalók [Fabric szolgáltatás](../service-fabric/service-fabric-overview.md)
+- További tudnivalók [az Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) 

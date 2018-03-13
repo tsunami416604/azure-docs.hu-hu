@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/19/2017
 ms.author: sethm
-ms.openlocfilehash: 6965e80cf10b732d4d0a8fb78447f188c133979d
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.openlocfilehash: 7b9901ee3478cb193c808b65d2dbbcf8b596a3c1
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="managed-service-identity-preview"></a>Felügyelt Szolgáltatásidentitás (előzetes verzió)
 
@@ -62,17 +62,17 @@ A webalkalmazás felügyelt szolgáltatásidentitás most már hozzáférhet a S
 
 ### <a name="run-the-app"></a>Az alkalmazás futtatása
 
-Most már módosíthatja az ASP.NET-alkalmazás létrehozott alapértelmezett oldalán. Használhatja a webes alkalmazás kód [a GitHub-tárházban](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/ManagedServiceIdentity). 
+Most már módosíthatja az ASP.NET-alkalmazás létrehozott alapértelmezett oldalán. Használhatja a webes alkalmazás kód [a GitHub-tárházban](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/ManagedServiceIdentity).
 
 A Default.aspx lap a kezdőlapja. A kód a Default.aspx.cs fájlban találhatók. Néhány számbeviteli mezők, valamint a minimális webalkalmazás eredménye **küldése** és **kap** gombok, amelyhez csatlakozni a Service Bus számára, vagy üzenetek küldése / fogadása.
 
-Megjegyzés: az [MessagingFactory](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) objektum inicializálása. A megosztott hozzáférési jogkivonat (SAS) jogkivonat-szolgáltató helyett a kód hoz létre a felügyelt szolgáltatás identitásának a jogkivonat-szolgáltatót a `TokenProvider.CreateManagedServiceIdentityTokenProvider(ServiceAudience.EventHubAudience)` hívható meg. Nincsenek, nincs megőrizheti és felhasználhatja a titkos kulcsok. A felügyelt szolgáltatás identitásának környezet Service Bus és a hitelesítési kézfogás folyamata automatikusan kezeli a jogkivonat-szolgáltató, ami egy egyszerűbb modell, mint a SAS használatával.
+Megjegyzés: az [MessagingFactory](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) objektum inicializálása. A megosztott hozzáférési jogkivonat (SAS) jogkivonat-szolgáltató helyett a kód hoz létre a felügyelt szolgáltatás identitásának a jogkivonat-szolgáltatót a `TokenProvider.CreateManagedServiceIdentityTokenProvider(ServiceAudience.ServiceBusAudience)` hívható meg. Nincsenek, nincs megőrizheti és felhasználhatja a titkos kulcsok. A felügyelt szolgáltatás identitásának környezet Service Bus és a hitelesítési kézfogás folyamata automatikusan kezeli a jogkivonat-szolgáltató, ami egy egyszerűbb modell, mint a SAS használatával.
 
 Miután végrehajtotta ezeket a módosításokat, közzététele, és futtassa az alkalmazást. Egyszerű módot nyújt a helyes közzétételi adatokat, hogy töltse le és majd a Visual Studio-közzétételi profil importálása:
 
 ![](./media/service-bus-managed-service-identity/msi3.png)
  
-Üzenetek küldése / fogadása, adja meg a névtér nevét és a létrehozott entitás nevét, majd jelölje be az **küldése** vagy **kap**. 
+Üzenetek küldése / fogadása, adja meg a névtér nevét és a létrehozott entitás nevét, majd jelölje be az **küldése** vagy **kap**.
  
 Figyelje meg, hogy a felügyelt szolgáltatásidentitás csak akkor működik, az Azure-környezeten belül, és csak a az App Service telepítésében, amelyben konfigurált ilyet. Ne feledje, hogy felügyelt szolgáltatás-identitások nem működik együtt az App Service üzembe helyezési most.
 

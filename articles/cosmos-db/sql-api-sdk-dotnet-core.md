@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/05/2018
+ms.date: 03/08/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 888740b434292c2ccc36fc90e0a9baaec96e2033
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 55946915573f53bb7e1917d4705e6d8e74abf448
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="azure-cosmos-db-net-core-sdk-for-sql-api-release-notes-and-resources"></a>Az Azure Cosmos DB .NET Core SDK API-SQL: kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
@@ -37,8 +37,6 @@ ms.lasthandoff: 03/08/2018
 > 
 
 [!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
-
-Ez a csomag elavult és Microsoft.Azure.DocumentDB https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/ helyébe
 
 <table>
 
@@ -61,12 +59,6 @@ Az Azure Cosmos DB .NET Core SDK legújabb verziójával szolgáltatásparitást
 
 > [!NOTE] 
 > Az Azure Cosmos DB .NET Core SDK még nem kompatibilis az univerzális Windows Platform (UWP-) alkalmazásokat. Ha érdekli a .NET Core-SDK-t támogató UWP-alkalmazások, e-mailek küldése [ askcosmosdb@microsoft.com ](mailto:askcosmosdb@microsoft.com).
-
-### <a name="a-name190190"></a><a name="1.9.0"/>1.9.0
-
-* Ez a csomag elavult és Microsoft.Azure.DocumentDB https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/ helyébe
-* A KeyNotFoundException közötti partíció rendelés javította esetekben lévő lekérdezések.
-* Rögzített hiba, ha a select záradékban a LINQ-lekérdezések JsonPropery attribútum lett nem alatt figyelembe véve.
 
 ### <a name="a-name182182"></a><a name="1.8.2"/>1.8.2
 
@@ -178,7 +170,6 @@ Ha az SDK-val kapcsolatos kérdése van, továbbá hogy [StackOverflow](http://s
 
 | Verzió | Kiadás dátuma | Kivezetési dátum |
 | --- | --- | --- |
-| [1.9.0](#1.9.0) |2018. március 05. |--- |
 | [1.8.2](#1.8.2) |2018. február 21. |--- |
 | [1.8.1](#1.8.1) |2018. február 05. |--- |
 | [1.7.1](#1.7.1) |2017. november 16. |--- |

@@ -6,13 +6,13 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/05/2018
-ms.author: pratshar
-ms.openlocfilehash: 9b662099a75bf2eaebda388a6e675e70cf0b9cdc
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.date: 03/09/2018
+ms.author: ponatara
+ms.openlocfilehash: f7a60cd82508629ad3cf46882564aa68995ba3e6
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="failover-in-site-recovery"></a>Feladatátvétel a Site Recoveryben
 Ez a cikk ismerteti, hogyan feladatátvételi virtuális gépek és fizikai kiszolgálók Site Recovery által védett.
@@ -90,18 +90,18 @@ Amikor elindul a feladatátvétel, magában foglalja a következő lépéseket:
 Bizonyos esetekben virtuális gépeinek feladatátvételi egy extra köztes lépés, amely általában körülbelül 8 – 10 perc befejezéséhez szükséges. A következő esetekben feladatátvételi szükséges idő nagyobb, mint a szokásos lesz:
 
 * VMware virtuális gépek használata a mobilitási szolgáltatás régebbi, mint 9.8 verzió
-* Fizikai kiszolgálók 
+* Fizikai kiszolgálók
 * VMware Linux virtuális gépek
 * Fizikai kiszolgálóként védett Hyper-V virtuális gépek
-* VMware virtuális gépek nincsenek jelen, ahol következő illesztőprogramok rendszerindító illesztőprogramok 
-    * storvsc 
-    * VMBus 
-    * storflt 
-    * Intelide 
+* VMware virtuális gépek nincsenek jelen, ahol következő illesztőprogramok rendszerindító illesztőprogramok
+    * storvsc
+    * VMBus
+    * storflt
+    * Intelide
     * ATAPI
 * VMware virtuális gépek, amelyek nem rendelkeznek a DHCP-szolgáltatás engedélyezve van, függetlenül attól, hogy használják DHCP vagy statikus IP-címek
 
-Minden egyéb esetben a köztes lépés nem szükséges, a feladatátvételi idő azonban alacsonyabb. 
+Minden egyéb esetben a köztes lépés nem szükséges, a feladatátvételi idő azonban alacsonyabb.
 
 
 
@@ -112,7 +112,7 @@ Előfordulhat, hogy automatizálni kívánt bizonyos műveleteket a feladatátv�
 
 ## <a name="post-failover-considerations"></a>POST feladatátvételi szempontokat részletező cikket
 Vegye figyelembe a következőket érdemes feladatátvétel utáni:
-### <a name="retaining-drive-letter-after-failover"></a>Feladatátvétel után meghajtóbetűjelet megőrzése 
+### <a name="retaining-drive-letter-after-failover"></a>Feladatátvétel után meghajtóbetűjelet megőrzése
 A meghajtóbetűjelet, a virtuális gépek a feladatátvételt követően megőrzéséhez beállíthatja a **TÁROLÓHÁLÓZATI szabályzatát** a virtuális gép **OnlineAll**. [További információk](https://support.microsoft.com/en-us/help/3031135/how-to-preserve-the-drive-letter-for-protected-virtual-machines-that-are-failed-over-or-migrated-to-azure).
 
 

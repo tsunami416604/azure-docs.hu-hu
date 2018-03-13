@@ -8,11 +8,11 @@ ms.service: storage
 ms.topic: article
 ms.date: 03/06/2018
 ms.author: tamram
-ms.openlocfilehash: e365c1c8abb3799805e715945e8b74292995c5ec
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: d1a81a9029f2e9b8a36ecebdcc4be44984e82515
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="azure-storage-security-guide"></a>Az Azure Storage biztonsági útmutató
 
@@ -214,7 +214,7 @@ Például a fenti URL-cím, a Ha az URL-cím helyett egy blobot egy fájlba lett
 * Egy szolgáltatási szint SAS segítségével tárfiókokban adott erőforrásokhoz férnek hozzá. Ez néhány példát keres a BLOB tároló, blob letöltése, egy tábla egy entitás frissítése, üzeneteket ad hozzá egy üzenetsort vagy fájlt feltölteni a fájlmegosztásba listáját.
 * Egy fiók szintű SAS használatával lehet hozzáférni, amelyeket a szolgáltatásiszint-SAS-kód nem használható. Emellett biztosíthat a beállítások nem használhatók együtt egy szolgáltatási szint SAS-tárolók, táblák, üzenetsorok és fájlmegosztások létrehozásához például erőforrásokhoz. Több szolgáltatásokhoz való hozzáférés egyszerre is megadható. Például előfordulhat, hogy adjon valaki blobok és a tárfiókban lévő fájlok elérését.
 
-#### <a name="creating-an-sas-uri"></a>Egy SAS URI-azonosító létrehozása
+#### <a name="creating-a-sas-uri"></a>A SAS URI-t létrehozni
 1. Létrehozhat egy URI-t az igény szerinti meghatározása a lekérdezési paraméterek mindegyikét minden alkalommal, amikor.
 
    Ez a megközelítés rugalmas, de ha egy olyan logikai készlete, amelyek hasonló minden alkalommal, amikor paraméterek, a tárolt házirend használatával segítenek meghatározni.
@@ -376,7 +376,7 @@ Az ügyféloldali titkosítással táblaentitásokat, az üzenetsor-üzeneteket 
 
 #### <a name="storage-service-encryption-sse"></a>Storage Service Encryption (SSE)
 
-Azure Storage SSE kezeli. SSE nem biztosítja a biztonsági adatok az átvitel során, de az adatok titkosítása, Azure Storage változatlan formában. Nincs hatással az SSE teljesítményét.
+Azure Storage SSE kezeli. SSE nem biztosítja a biztonsági adatok az átvitel során, de az adatok titkosítása, Azure Storage változatlan formában. SSE Azure tárolási teljesítménye nincs hatással.
 
 Titkosíthatja az adatokat a tárfiók SSE használatával bármilyen típusú (blokkblobokat, hozzáfűző blobokat, a lapblobokat, a tábla adatai, a várólista adatok és a fájlok).
 

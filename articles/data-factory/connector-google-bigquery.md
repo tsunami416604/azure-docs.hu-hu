@@ -1,5 +1,5 @@
 ---
-title: "Adatok másolása az Google BigQuery Azure Data Factory (béta) használatával |} Microsoft Docs"
+title: "Adatok másolása az Google BigQuery Azure Data Factory használatával |} Microsoft Docs"
 description: "Útmutató: adatok másolása Google BigQuery támogatott fogadó adattárolókhoz a másolási tevékenység használatával a data factory-folyamathoz."
 services: data-factory
 documentationcenter: 
@@ -13,21 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/12/2018
 ms.author: jingwang
-ms.openlocfilehash: 35f61f6bd38b59a2df0613ba2506d047c1daeaaa
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 955de6cf4b17f1df1e545ccc196856c7c898edfe
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/12/2018
 ---
-# <a name="copy-data-from-google-bigquery-by-using-azure-data-factory-beta"></a>Adatok másolása az Google BigQuery Azure Data Factory (béta) használatával
+# <a name="copy-data-from-google-bigquery-by-using-azure-data-factory"></a>Adatok másolása az Google BigQuery Azure Data Factory használatával
 
 Ez a cikk a másolási tevékenység használható az Azure Data Factory adatokat másolni Google BigQuery módját ismerteti. Buildekről nyújtanak a [másolási tevékenység áttekintése](copy-activity-overview.md) cikket, amely megadja a másolási tevékenység általános áttekintést.
 
 > [!NOTE]
 > Ez a cikk a Data Factory 2. verziójára vonatkozik, amely jelenleg előzetes verzióban érhető el. Ha a Data Factory szolgáltatásnak, amely általában a rendelkezésre álló, 1 verziót [másolási tevékenység az 1-es verziójú](v1/data-factory-data-movement-activities.md).
-
-> [!IMPORTANT]
-> Ez az összekötő jelenleg bétaverziójú. Próbálja ki, és küldjön visszajelzést. Ne használja éles környezetben.
 
 ## <a name="supported-capabilities"></a>Támogatott képességei
 

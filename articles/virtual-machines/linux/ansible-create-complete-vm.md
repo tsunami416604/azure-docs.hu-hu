@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/18/2017
 ms.author: iainfou
-ms.openlocfilehash: d5e3f3db4726bfb16cbb389cf99b9bf7c511da97
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 5efb666652bf124160df836b5d12305903d907ba
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="create-a-complete-linux-virtual-machine-environment-in-azure-with-ansible"></a>Hozzon létre egy teljes Linux virtuális gép környezetet az Azure-ban Ansible
 Ansible lehetővé teszi, hogy automatizálja a központi telepítési és konfigurációs az erőforrásoknak a környezetben. Ansible segítségével kezelheti a virtuális gépek (VM), ugyanaz, mint bármely egyéb erőforrásokat az Azure-ban. Ez a cikk bemutatja, hogyan hozzon létre egy teljes körű Linux környezetet és az azt támogató Ansible erőforrásokhoz. Azt is megtudhatja hogyan [hozzon létre egy egyszerű virtuális gép Ansible](ansible-create-vm.md).
@@ -44,7 +44,7 @@ Egy Ansible forgatókönyv a következő szakasz létrehoz egy virtuális háló
   azure_rm_virtualnetwork:
     resource_group: myResourceGroup
     name: myVnet
-    address_prefixes: "10.10.0.0/16"
+    address_prefixes: "10.0.0.0/16"
 ```
 
 Adjon hozzá egy alhálózatot, az alábbi szakasz hoz nevű alhálózat *mySubnet* a a *myVnet* virtuális hálózat:
@@ -81,7 +81,7 @@ Hálózati biztonsági csoportok szabályozhatja a hálózati forgalmat a virtu�
     name: myNetworkSecurityGroup
     rules:
       - name: SSH
-        protocol: TCP
+        protocol: Tcp
         destination_port_range: 22
         access: Allow
         priority: 1001

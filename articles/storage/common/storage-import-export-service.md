@@ -8,11 +8,11 @@ ms.service: storage
 ms.topic: article
 ms.date: 02/28/2018
 ms.author: muralikk
-ms.openlocfilehash: e9fce2530bc4e654304b946cea1715ac8e2ce6fa
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 7eaf4c3c9b390e87dd8494cd6bfb2ea155451608
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="use-the-microsoft-azure-importexport-service-to-transfer-data-to-azure-storage"></a>Az adatok átviteléhez az Azure Storage a Microsoft Azure Import/Export szolgáltatás használata
 Ebben a cikkben azt részletes útmutatást nyújtanak az Azure Import/Export szolgáltatás használatával biztonságos átvitelére a nagy mennyiségű adatok Azure Blob storage és Azure fájlok által az Azure adatközpontba szállítási lemezmeghajtókat. Ez a szolgáltatás adatok átviteléhez az Azure storage merevlemez-meghajtók és a helyszíni helyek szállítás is használható. A SATA egyetlen lemezmeghajtó adatait vagy Azure Blob storage-vagy Azure fájlok importálhatók. 
@@ -294,7 +294,7 @@ A következő táblázat ismerteti a meghajtó hiba állapotok és az egyes áll
 | – | A meghajtó, amely nem része semmilyen feladatot megérkezik az Adatközpont egy másik feladat részeként. | A meghajtó egy extra meghajtóként lesz megjelölve, és visszatér az ügyfél az eredeti csomagot kapcsolódó feladat végrehajtását. |
 
 ### <a name="time-to-process-job"></a>Feldolgozási feladatot az idő
-Mennyi ideig tart a folyamat, például a szállítási idő különböző tényezőktől függően változik importálási/exportálási feladatok feladat típusa, típusa és másolásának adatok méretétől és a megadott lemez méretét. Az Import/Export szolgáltatás nem rendelkezik egy SLA-t, de a lemezek fogadása után a szolgáltatás nagy hangsúlyt fektet fejezze be a másolási 7 – 10 nap múlva. A REST API használatával hatékonyabban nyomon követheti a feladat előrehaladását. A lista feladatok művelet, amely arra utal, a másolási folyamat százalékban kifejezett teljes paramétere van. Érheti el, ha egy ideje kritikus importálási/exportálási feladatok befejezéséhez becsült van szüksége.
+Az importálási/exportálási feladatok feldolgozásához szükséges idő függ egy számos tényező befolyásolja, például a szállítási idő, a terhelést a DataCenter, a feladattípust és egy másolásának adatok méretétől és a feladatok száma alapján. Import/Export szolgáltatás nem rendelkezik egy SLA-t, de a szolgáltatás nagy hangsúlyt fektet, a Másolás befejezése 7 – 10 nap, a lemezek fogadása után. Az Azure portálon közzé állapota REST API-k segítségével nyomon követheti a feladat előrehaladását. A lista feladatok műveletben API-hívás százalékban kifejezett teljes paraméter biztosít a másolási előrehaladás százalékosan kifejezve.
 
 ### <a name="pricing"></a>Díjszabás
 **Meghajtó díj kezelése**

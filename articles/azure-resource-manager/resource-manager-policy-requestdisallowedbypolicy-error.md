@@ -11,13 +11,13 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: support-article
-ms.date: 11/03/2017
+ms.date: 03/09/2018
 ms.author: genli
-ms.openlocfilehash: 2e821c0369c6f01a7f09361c1093259429a79fa6
-ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
+ms.openlocfilehash: 5a9efa6b807e933726104e7af315589ede5d9b74
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="requestdisallowedbypolicy-error-with-azure-resource-policy"></a>Az Azure erőforrás-házirenddel RequestDisallowedByPolicy hiba
 
@@ -25,7 +25,7 @@ Ez a cikk ismerteti a RequestDisallowedByPolicy hiba okát, is megoldást nyújt
 
 ## <a name="symptom"></a>Jelenség
 
-Próbál végezni egy műveletet üzembe helyezése során, akkor fordulhat elő, egy **RequestDisallowedByPolicy** hibával, ami megakadályozza a művelet befejezését. A következő példa bemutatja a hiba:
+Központi telepítése során léphet egy **RequestDisallowedByPolicy** hibával, ami megakadályozza, hogy az erőforrások létrehozásához. A következő példa bemutatja a hiba:
 
 ```json
 {
@@ -40,7 +40,7 @@ Próbál végezni egy műveletet üzembe helyezése során, akkor fordulhat elő
 
 A házirendet, amely blokkolja a központi telepítés részleteit lekéréséhez használja a következő módszerek egyikét:
 
-### <a name="method-1"></a>1. módszer
+### <a name="powershell"></a>PowerShell
 
 A PowerShellben adja meg, hogy a házirend az azonosítója, mint a `Id` paraméter a házirendet, amely blokkolja a központi telepítés részleteinek beolvasása.
 
@@ -48,9 +48,9 @@ A PowerShellben adja meg, hogy a házirend az azonosítója, mint a `Id` paramé
 (Get-AzureRmPolicyDefinition -Id "/subscriptions/{guid}/providers/Microsoft.Authorization/policyDefinitions/regionPolicyDefinition").Properties.policyRule | ConvertTo-Json
 ```
 
-### <a name="method-2"></a>2. módszer 
+### <a name="azure-cli"></a>Azure CLI
 
-Az Azure CLI 2.0 adja meg a házirend-definíció nevét: 
+Az Azure CLI 2.0 adja meg a házirend-definíció nevét:
 
 ```azurecli
 az policy definition show --name regionPolicyAssignment
@@ -58,10 +58,10 @@ az policy definition show --name regionPolicyAssignment
 
 ## <a name="solution"></a>Megoldás
 
-A biztonsági és megfelelőségi esetében az informatikai részleg egy erőforrás-házirend tiltja a nyilvános IP-cím címek, hálózati biztonsági csoportokat, felhasználói útvonalak vagy útvonaltáblák létrehozása előfordulhat, hogy kényszerítése. A hibaüzenet jelenik meg a a **jelenségek** szakasz bemutatja egy nevű házirendet **regionPolicyDefinition**. A házirend lehet egy másik nevet.
-A probléma megoldásához, az informatikai részleg tekintse át az erőforrás-házirendekkel való együttműködésre, és határozza meg, hogyan felelnek meg ezek a házirendek a kért művelet végrehajtásához.
+Biztonsági és megfelelőségi az előfizetés rendszergazdáihoz házirendek hogyan vannak telepítve az erőforrások korlátozó lehet rendelni. Például az előfizetés lehet, hogy egy házirendet, amely megakadályozza, hogy a nyilvános IP-címek, hálózati biztonsági csoportokat, felhasználói útvonalak létrehozásával, vagy útvonaltáblát. A hibaüzenet jelenik meg a a **jelenségek** szakasz jeleníti meg a házirend nevét.
+A probléma megoldásához tekintse át az erőforrás-házirendekkel, és határozza meg az erőforrásokat, amelyek megfelelnek a ezek a házirendek központi telepítéséről.
 
 További információkért tekintse át a következő cikkeket:
 
-- [Erőforrás-házirendek – áttekintés](resource-manager-policy.md)
-- [Házirend-hozzárendelések megtekintése portálon keresztül](resource-manager-policy-portal.md)
+- [Mi az Azure-házirendet?](../azure-policy/azure-policy-introduction.md)
+- [Kényszeríteni a megfelelőségi szabályzatok létrehozása és kezelése](../azure-policy/create-manage-policy.md)

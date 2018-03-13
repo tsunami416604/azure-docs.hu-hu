@@ -11,13 +11,13 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: support-article
-ms.date: 11/27/2017
+ms.date: 03/09/2018
 ms.author: tomfitz
-ms.openlocfilehash: 3ed3da2d9730d8c30d8170ddf40fe4895dfa5dec
-ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
+ms.openlocfilehash: d2cc760bf516e8ee96629886120a1bb092932a82
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="resolve-errors-for-resource-quotas"></a>Javítsa a hibákat a erőforráskvótákkal
 
@@ -47,9 +47,9 @@ please delete some resources of this type before creating a new one.
 Kvóták egy erőforráscsoport, előfizetések, fiókok és egyéb hatókörök érvényesek. Például az előfizetés beállítható az a régió magok száma korlátozza. Ha megkísérli az engedélyezett értéknél több maggal rendelkező virtuális gép telepítése, hibaüzenet kap, a kvóta túl lett lépve.
 Teljes kvóta információkért lásd: [Azure-előfizetés és szolgáltatási korlátok, kvóták és megkötések](../azure-subscription-service-limits.md).
 
-## <a name="solution"></a>Megoldás
+## <a name="troubleshooting"></a>Hibaelhárítás
 
-### <a name="solution-1"></a>1 megoldás
+### <a name="azure-cli"></a>Azure CLI
 
 Az Azure parancssori felület, használja a `az vm list-usage` található virtuális gép kvóták parancsot.
 
@@ -73,7 +73,7 @@ Amely adja vissza:
 ]
 ```
 
-### <a name="solution-2"></a>Megoldás 2
+### <a name="powershell"></a>PowerShell
 
 A PowerShell környezethez, használja a **Get-AzureRmVMUsage** található virtuális gép kvóták parancsot.
 
@@ -91,7 +91,7 @@ Total Regional Cores                         0   100 Count
 Virtual Machines                             0 10000 Count
 ```
 
-### <a name="solution-3"></a>Megoldás 3
+## <a name="solution"></a>Megoldás
 
 Kérje meg a kvótájának növelését, nyissa meg a portál és a a problémának a megoldásához. A támogatási probléma kér a régió, ahol számára telepíteni kívánja a kvótájának növelését.
 

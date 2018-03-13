@@ -4,7 +4,7 @@ description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Az
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: femila
 ms.reviewer: joflore
 ms.assetid: 5ef34f58-863a-4b37-875c-e8efa3e18bb3
 ms.service: active-directory
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/27/2017
+ms.date: 03/06/2017
 ms.author: jeedes
-ms.openlocfilehash: 10798152d5ab31b845499f69be61ac2916cde640
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: d228ebff245cf5e94bb17c8fb3a506824ff7f4c0
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-fuse"></a>Oktatóanyag: Azure Active Directoryval integrált biztosító
 
@@ -108,7 +108,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Biztosító tartomány és az URL-címek egyetlen bejelentkezés információk](./media/active-directory-saas-fuse-tutorial/tutorial_fuse_url.png)
     
-    Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe:`https://<tenant name>.fusion-universal.com/`
+    Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe: `https://<tenant name>.fusionuniversal.com/`
 
     > [!NOTE] 
     > Ez az érték nincs valós. Frissítse ezt az értéket a tényleges bejelentkezési URL-címet. Ügyfél [biztosítéka ügyfél-támogatási csoport](mailto:support@fusion-universal.com) lekérni ezt az értéket. 

@@ -11,13 +11,13 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: support-article
-ms.date: 09/13/2017
+ms.date: 03/09/2018
 ms.author: tomfitz
-ms.openlocfilehash: d6a99917e732a3439a31cafa5608348694014054
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 303b3ae0ee7b4baeda974d2b3c62fefa0a68796f
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="resolve-errors-for-resource-provider-registration"></a>Hárítsa el a hibákat, az erőforrás-szolgáltató regisztrálása
 
@@ -40,6 +40,8 @@ Code: MissingSubscriptionRegistration
 Message: The subscription is not registered to use namespace {resource-provider-namespace}
 ```
 
+A hibaüzenet a következő támogatott helyek és API-verziók javaslatokat adjon meg. A sablon módosíthatja a javasolt értékek egyikére. A legtöbb szolgáltatók a következők: automatikusan által az Azure-portálon vagy a parancssori felületet használ, de nem minden. Ha még nem használta az egy adott erőforrás-szolgáltató előtt, szükség lehet regisztrálni ezt a szolgáltatót.
+
 ## <a name="cause"></a>Ok
 
 Ezek a hibák három okok egyike jelenhet meg:
@@ -48,11 +50,7 @@ Ezek a hibák három okok egyike jelenhet meg:
 1. Az erőforrástípus nem támogatott API-verzió
 1. Az erőforrástípus nem támogatott helyre
 
-## <a name="solution"></a>Megoldás
-
-A hibaüzenet a következő támogatott helyek és API-verziók javaslatokat adjon meg. A sablon módosíthatja a javasolt értékek egyikére. A legtöbb szolgáltatók a következők: automatikusan által az Azure-portálon vagy a parancssori felületet használ, de nem minden. Ha még nem használta az egy adott erőforrás-szolgáltató előtt, szükség lehet regisztrálni ezt a szolgáltatót. További információ a PowerShell vagy Azure parancssori felületen keresztül erőforrás-szolgáltatók felderíthetők.
-
-### <a name="solution-1"></a>1 megoldás
+## <a name="solution-1---powershell"></a>1 - PowerShell megoldás
 
 A PowerShell, használjon **Get-AzureRmResourceProvider** a regisztrációs állapotát tekintheti meg.
 
@@ -78,9 +76,7 @@ A támogatott API-verziók egy adott típusú erőforrás, amelyet:
 ((Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Web).ResourceTypes | Where-Object ResourceTypeName -eq sites).ApiVersions
 ```
 
-### <a name="solution-2"></a>Megoldás 2
-
-**Azure CLI**
+## <a name="solution-2---azure-cli"></a>2 – az Azure CLI megoldás
 
 Regisztrálva van-e a szolgáltató megjelenítéséhez használja a `az provider list` parancsot.
 
@@ -100,7 +96,7 @@ A támogatott helyek és API-verziók erőforrástípus megjelenítéséhez hasz
 az provider show -n Microsoft.Web --query "resourceTypes[?resourceType=='sites'].locations"
 ```
 
-### <a name="solution-3"></a>Megoldás 3
+## <a name="solution-3---azure-portal"></a>Megoldás 3 - Azure-portálon
 
 Tekintse meg a regisztrációs állapotát, és regisztrálja egy erőforrás-szolgáltató névtere a portálon keresztül.
 

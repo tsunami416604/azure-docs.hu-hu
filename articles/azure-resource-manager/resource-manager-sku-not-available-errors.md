@@ -11,13 +11,13 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: support-article
-ms.date: 09/13/2017
+ms.date: 03/09/2018
 ms.author: tomfitz
-ms.openlocfilehash: a6cccfa5097847429d3e402e3d522addc14b8c31
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: b0cbd3c232e5df831031cc8e436f8dbb24b0e72c
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="resolve-errors-for-sku-not-available"></a>Javítsa ki a hibákat a termékváltozat nem érhető el
 
@@ -37,13 +37,9 @@ for subscription '<subscriptionID>'. Please try another tier or deploy to a diff
 
 Ha az erőforrás (például a Virtuálisgép-méretet) kiválasztott Termékváltozat nem érhető el a kiválasztott helyen a hibaüzenetet kap.
 
-## <a name="solution"></a>Megoldás
+## <a name="solution-1---powershell"></a>1 - PowerShell megoldás
 
-A probléma megoldásához, meg kell határoznia termékváltozatok rendelkezésre álló régióban. PowerShell, a portál vagy a REST-művelet használatával elérhető termékváltozatok található.
-
-### <a name="solution-1"></a>1 megoldás
-
-Használja a [Get-AzureRmComputeResourceSku](/powershell/module/azurerm.compute/get-azurermcomputeresourcesku) PowerShell parancsot. Hely szerint eredmények szűrésére. A parancs PowerShell legújabb verzióját kell rendelkeznie.
+Meghatározza, melyik termékváltozatok érhetők el olyan régióhoz, használja a [Get-AzureRmComputeResourceSku](/powershell/module/azurerm.compute/get-azurermcomputeresourcesku) parancsot. Hely szerint eredmények szűrésére. A parancs PowerShell legújabb verzióját kell rendelkeznie.
 
 ```powershell
 Get-AzureRmComputeResourceSku | where {$_.Locations -icontains "southcentralus"}
@@ -61,9 +57,9 @@ virtualMachines      Standard_A1 southcentralus
 virtualMachines      Standard_A2 southcentralus
 ```
 
-### <a name="solution-2"></a>Megoldás 2
+## <a name="solution-2---azure-cli"></a>2 – az Azure CLI megoldás
 
-Az Azure CLI használata a `az vm list-skus` parancsot. Ezután `grep` vagy egy hasonló segédprogram kimenete szűréséhez.
+Meghatározza, melyik termékváltozatok érhetők el olyan régióhoz, használja a `az vm list-skus` parancsot. Ezután `grep` vagy egy hasonló segédprogram kimenete szűréséhez.
 
 ```bash
 $ az vm list-skus --output table
@@ -79,15 +75,15 @@ availabilitySets  centralus           Classic                 MaximumPlatformFau
 availabilitySets  centralus           Aligned                 MaximumPlatformFaultDomainCount=3
 ```
 
-### <a name="solution-3"></a>Megoldás 3
+## <a name="solution-3---azure-portal"></a>Megoldás 3 - Azure-portálon
 
-Használja a [portal](https://portal.azure.com). Jelentkezzen be a portálra, és vegyen fel egy erőforrást a felületen. Az értékeket állíthat be, megjelenik az adott erőforrás elérhető termékváltozatok. Nem kell a központi telepítés befejezéséhez.
+Meghatározza, melyik termékváltozatok érhetők el olyan régióhoz, használja a [portal](https://portal.azure.com). Jelentkezzen be a portálra, és vegyen fel egy erőforrást a felületen. Az értékeket állíthat be, megjelenik az adott erőforrás elérhető termékváltozatok. Nem kell a központi telepítés befejezéséhez.
 
 ![elérhető termékváltozatok](./media/resource-manager-sku-not-available-errors/view-sku.png)
 
-### <a name="solution-4"></a>Megoldás 4
+## <a name="solution-4---rest"></a>4 - REST megoldás
 
-A REST API-t használnia a virtuális gépekhez. A következő kérelem küldése:
+Meghatározza, melyik termékváltozatok érhetők el olyan régióhoz, használja a REST API-t a virtuális gépek. A következő kérelem küldése:
 
 ```HTTP 
 GET

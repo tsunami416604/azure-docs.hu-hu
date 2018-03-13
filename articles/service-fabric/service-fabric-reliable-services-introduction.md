@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 2/23/2018
+ms.date: 3/9/2018
 ms.author: masnider;
-ms.openlocfilehash: 3c583d99a63c13a0a2ab351f82a4f5ff6840788a
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: cf647c078728c9fbe357fea5bef4aa6dfb86c975
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="reliable-services-overview"></a>A Reliable Services áttekintése
 Az Azure Service Fabric leegyszerűsíti az írást, és az állapotmentes és állapotalapú Reliable Services kezelése. Ez a témakör ismerteti:
@@ -87,10 +87,6 @@ Ilyenek például a hogyan állapotmentes szolgáltatásokhoz használt Service 
 Az állapotalapú szolgáltatás egyike, hogy az állapot következetes és ahhoz, hogy a szolgáltatás jelenlegi tartani a függvény egy részét. Érdemes lehet olyan szolgáltatás, amely folyamatosan kiszámítja az egyes frissítések kap alapján érték mozgóátlaga. Ehhez az szükséges, azt kell rendelkeznie az aktuális folyamat és a jelenlegi átlagos kell bejövő kérelmek. Bármely szolgáltatás beolvassa, feldolgozza és információkat tárol egy külső tároló (például egy Azure blob vagy tábla tároló még ma) egy állapotfüggő. Az a külső tárolóban állapotában csak tartja.
 
 Legtöbb szolgáltatás ma állapotukra kívülről, tárolásához, mert a külső áruházban megbízhatóság, rendelkezésre állását, méretezhetőségét és konzisztencia tartalma az adott állapotban. A Service Fabric nem szükséges szolgáltatásokat kívülről az állapot tárolásához. A Service Fabric ezeket a követelményeket mind a szolgáltatáskód hibáit, és a szolgáltatás állapotának gondoskodik.
-
-> [!NOTE]
-> Állapotalapú Reliable Services támogatása Linux még (a C# vagy Java) nem érhető el.
->
 
 Tegyük fel, azt szeretnénk, hogy egy szolgáltatás, amely feldolgozza a képek írni. Ehhez az szükséges, a szolgáltatás vesz igénybe a lemezkép és átalakítás sorozatát hajtsa végre ezt a lemezképet. Ez a szolgáltatás adja vissza egy kommunikációs figyelő (Most tegyük fel, hogy egy WebAPI), hogy az API-k tesz elérhetővé, például `ConvertImage(Image i, IList<Conversion> conversions)`. Ha kap, a szolgáltatás tárolja el azt a egy `IReliableQueue`, és néhány-azonosítót adja vissza az ügyfélnek, akkor is a kérelmek nyomon követésére.
 

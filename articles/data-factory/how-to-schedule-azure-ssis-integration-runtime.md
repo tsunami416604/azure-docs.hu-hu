@@ -13,11 +13,11 @@ ms.devlang: powershell
 ms.topic: article
 ms.date: 01/25/2018
 ms.author: douglasl
-ms.openlocfilehash: 69eae46dc554911e0caadcf0aafbaec9e39f727d
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 5a9d1ba4d72bc6d4b297695c478438079d34c6e7
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="how-to-schedule-starting-and-stopping-of-an-azure-ssis-integration-runtime"></a>Indítása és leállítása egy Azure SSIS-integráció futtatókörnyezetet ütemezése 
 Egy Azure SSIS (SQL Server Integration Services) integrációs futásidejű fut (IR) van társítva járnak. Ezért futtatni kívánt az infravörös csak akkor, ha SSIS-csomagok futtathatja az Azure-ban, és állítsa le, ha már nincs szükség van szüksége. A Data Factory felhasználói felületén vagy az Azure PowerShell [manuálisan indítsa el, vagy állítsa le az Azure SSIS-IR](manage-azure-ssis-integration-runtime.md)). Ez a cikk ismerteti, hogyan ütemezése indítása és leállítása egy Azure SSIS-integráció futtatókörnyezetet (IR) Azure Automation és az Azure Data Factory használatával. Ebben a cikkben leírt magas szintű lépései a következők:
@@ -25,7 +25,7 @@ Egy Azure SSIS (SQL Server Integration Services) integrációs futásidejű fut 
 1. **Hozzon létre, és egy Azure Automation-runbook tesztelése.** Ebben a lépésben a parancsfájl, amely elindítja vagy leállítja egy Azure SSIS infravörös létrehozhat egy PowerShell-forgatókönyv Ezt követően tesztelje a forgatókönyvet a KEZDŐ- és a LEÁLLÍTÁSI forgatókönyvek, és győződjön meg arról, hogy IR elindul vagy leáll. 
 2. **Hozzon létre két ütemezések a runbookhoz.** Az első ütemezés konfigurálnia a runbook indítása a művelet. A második ütemezés beállítása a runbook le a műveletet. Mindkét ütemezéseket akkor adja meg a ütemben történik, amelyen a runbook futtatása. Érdemes lehet például az első sablon kiválasztásával 8 órakor futtatása naponta, és a második futtatását, hogy a mindennapi 23 óra ütemezni. Amikor az első runbook fut, az Azure SSIS infravörös megkezdése A második runbook futtatása, leállítja az Azure SSIS infravörös 
 3. **A forgatókönyv két webhook létrehozása**, egyet a START műveletet, a másik pedig a STOP műveletet. A Data Factory-folyamathoz webes tevékenységek konfigurálásakor használhatja a webhook URL-címei. 
-4. **Hozzon létre a Data Factory-folyamathoz**. A folyamat létrehozása négy tevékenységek áll. Az első **webes** tevékenység hív meg elindítani a Azure SSIS infravörös első webhook A **Várjon, amíg** tevékenység arra vár, az Azure SSIS-IR elindításához 30 percig (1800 másodperc). A **tárolt eljárás** tevékenység fut egy SQL-parancsfájl, amely futtatja a SSIS-csomagot. A második **webes** tevékenység leállítja az Azure SSIS infravörös Egy SSIS-csomagot a Data Factory-folyamathoz meghívása a tárolt eljárási tevékenység használatával kapcsolatos további információkért lásd: [meghívni egy SSIS-csomag](how-to-invoke-ssis-package-stored-procedure-activity.md). Ezután a létrehozott ütemezés futtatásához megadott ütemben folyamat ütemezéséhez.
+4. **Hozzon létre a Data Factory-folyamathoz**. A folyamat létrehozása három tevékenységek áll. Az első **webes** tevékenység hív meg elindítani a Azure SSIS infravörös első webhook A **tárolt eljárás** tevékenység fut egy SQL-parancsfájl, amely futtatja a SSIS-csomagot. A második **webes** tevékenység leállítja az Azure SSIS infravörös Egy SSIS-csomagot a Data Factory-folyamathoz meghívása a tárolt eljárási tevékenység használatával kapcsolatos további információkért lásd: [meghívni egy SSIS-csomag](how-to-invoke-ssis-package-stored-procedure-activity.md). Ezután a létrehozott ütemezés futtatásához megadott ütemben folyamat ütemezéséhez.
 
 > [!NOTE]
 > Ez a cikk a Data Factory 2. verziójára vonatkozik, amely jelenleg előzetes verzióban érhető el. A Data Factory szolgáltatásnak, amely általánosan elérhető (GA), 1 verziójának használatakor lásd [meghívása SSIS-csomagok használata tárolt eljárási tevékenység az 1-es](v1/how-to-invoke-ssis-package-stored-procedure-activity.md).
@@ -223,12 +223,11 @@ Rendelkeznie kell két URL-címet, egyet a **StartAzureSsisIR** webhook, a mási
 ## <a name="create-and-schedule-a-data-factory-pipeline-that-startsstops-the-ir"></a>Hozzon létre, és a Data Factory-feldolgozási folyamat elindul vagy leáll az infravörös ütemezése
 Ez a szakasz bemutatja, hogyan lehet meghívni a webhookok az előző szakaszban létrehozott egy webes tevékenység használata.
 
-A folyamat létrehozása négy tevékenységek áll. 
+A folyamat létrehozása három tevékenységek áll. 
 
 1. Az első **webes** tevékenység hív meg elindítani a Azure SSIS infravörös első webhook 
-2. A **Várjon, amíg** tevékenység arra vár, az Azure SSIS-IR elindításához 30 percig (1800 másodperc). 
-3. A **tárolt eljárás** tevékenység fut egy SQL-parancsfájl, amely futtatja a SSIS-csomagot. A második **webes** tevékenység leállítja az Azure SSIS infravörös Egy SSIS-csomagot a Data Factory-folyamathoz meghívása a tárolt eljárási tevékenység használatával kapcsolatos további információkért lásd: [meghívni egy SSIS-csomag](how-to-invoke-ssis-package-stored-procedure-activity.md). 
-4. A második **webes** tevékenység meghívja a webhook az Azure SSIS infravörös leállítása 
+2. A **tárolt eljárás** tevékenység fut egy SQL-parancsfájl, amely futtatja a SSIS-csomagot. A második **webes** tevékenység leállítja az Azure SSIS infravörös Egy SSIS-csomagot a Data Factory-folyamathoz meghívása a tárolt eljárási tevékenység használatával kapcsolatos további információkért lásd: [meghívni egy SSIS-csomag](how-to-invoke-ssis-package-stored-procedure-activity.md). 
+3. A második **webes** tevékenység meghívja a webhook az Azure SSIS infravörös leállítása 
 
 Létrehozott, és tesztelje a folyamatot, egy ütemezést létrehozni, és rendelje hozzá a feldolgozási sor. Az ütemezés eseményindító meghatározza annak ütemezését, hogy a folyamat. Tegyük fel, amelyek van ütemezve napi 23 óra eseményindítót hoz létre. Az eseményindító a feldolgozási sor lefuttat minden nap 23 óra. A folyamat elindítja az Azure SSIS infravörös, végrehajtja a SSIS-csomag leáll, és majd a Azure SSIS infravörös 
 
@@ -392,7 +391,7 @@ Most, hogy az adatcsatorna működik, ha Ön várt, létrehozhat egy eseményind
 6. Figyelése eseményindító fut, és -feldolgozási folyamat fut, használja a **figyelő** a bal oldali lapon. Részletes útmutató: [a folyamat figyelése](quickstart-create-data-factory-portal.md#monitor-the-pipeline).
 
     ![Folyamatfuttatások](./media/how-to-schedule-azure-ssis-integration-runtime/pipeline-runs.png)
-7. Válassza ki, ha a tevékenység fut társított futtatni egy folyamatot, az első hivatkozás (**nézet tevékenység fut**) található a **műveletek** oszlop. Megjelenik a négy tevékenység fut, a folyamat minden egyes tevékenységhez társított (először webalkalmazás, Várakozás tevékenységet, tárolt eljárási tevékenység, és a második webes tevékenység). Váltson vissza a megtekintheti a folyamat fut, válassza ki **folyamatok** tetején.
+7. Válassza ki, ha a tevékenység fut társított futtatni egy folyamatot, az első hivatkozás (**nézet tevékenység fut**) található a **műveletek** oszlop. Megjelenik a három tevékenység fut, a folyamat minden egyes tevékenységhez társított (először webalkalmazás, tárolt eljárási tevékenység, és a második webes tevékenység). Váltson vissza a megtekintheti a folyamat fut, válassza ki **folyamatok** tetején.
 
     ![Tevékenységfuttatások](./media/how-to-schedule-azure-ssis-integration-runtime/activity-runs.png)
 8. Is megtekintheti az eseményindító futtatása kiválasztásával **indítás futtatása** melletti legördülő listából a **folyamat fut** tetején. 

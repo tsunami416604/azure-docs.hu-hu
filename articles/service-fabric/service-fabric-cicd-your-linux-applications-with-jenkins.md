@@ -12,13 +12,13 @@ ms.devlang: java
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/27/2017
+ms.date: 3/9/2018
 ms.author: saysa
-ms.openlocfilehash: 80c52cfeab007030203b6af4bb220f1a847e9426
-ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
+ms.openlocfilehash: 00a6d04e7ec1da48ea17af4f17d3aba3cf4407d6
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="use-jenkins-to-build-and-deploy-your-linux-applications"></a>Jenkins segítségével hozza létre, és a Linux-alkalmazások központi telepítése
 A Jenkins egy népszerű eszköz az alkalmazások folyamatos integrációjához és üzembe helyezéséhez. Ebből a témakörből megtudhatja, hogyan helyezheti üzembe Azure Service Fabric-alkalmazásait a Jenkins használatával.
@@ -44,8 +44,8 @@ A Jenkinst egy Service Fabric-fürtben vagy azon kívül is beállíthatja. A k�
 
 2. Az alkalmazás klónozása a következő lépések segítségével:
   ```sh
-  git clone https://github.com/Azure-Samples/service-fabric-java-getting-started.git
-  cd service-fabric-java-getting-started/Services/JenkinsDocker/
+  git clone https://github.com/suhuruli/jenkins-container-application.git
+  cd jenkins-container-application
   ```
 
 3. A fájlmegosztás-tároló Jenkins állapot megőrzése:

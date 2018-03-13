@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/28/2017
+ms.date: 03/08/2018
 ms.author: ganesr
-ms.openlocfilehash: 8df8a4c6ff0897c821e13248e0494b17e1a4992d
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 2f0fed77a676bc46e8daa9c41efd533dffe72d8b
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-powershell-classic"></a>Egy virtuális hálózathoz csatlakozni powershellel (klasszikus) ExpressRoute-kapcsolatcsoportot
 > [!div class="op_single_selector"]
@@ -48,6 +48,8 @@ Ez a cikk segítséget nyújt a virtuális hálózatokon (Vnetek) csatolása az 
    * Rendelkeznie kell egy virtuális hálózat és a virtuális hálózati átjáró létrehozása, és teljesen kiépítve. Kövesse az utasításokat [virtuális hálózat konfigurálása ExpressRoute](expressroute-howto-vnet-portal-classic.md).
 
 Legfeljebb 10 virtuális hálózatok ExpressRoute-kapcsolatcsoportot társíthatja. Az összes virtuális hálózatot geopolitikai ugyanabban a régióban kell lennie. Az ExpressRoute-kapcsolatcsoportot virtuális hálózatok, vagy hivatkozás virtuális hálózatok, amelyek más geopolitikai régiókban, ha engedélyezte a prémium szintű ExpressRoute-bővítmény nagyobb számú társíthatja. Ellenőrizze a [gyakran ismételt kérdések](expressroute-faqs.md) a prémium szintű bővítmény olvashat.
+
+Egy egyetlen virtuális hálózat legfeljebb négy ExpressRoute-Kapcsolatcsoportok lehet társítani. Az alábbi eljárás segítségével minden egyes ExpressRoute-kapcsolatcsoportot csatlakozik egy új hivatkozás létrehozásához. Az ExpressRoute-Kapcsolatcsoportok ugyanahhoz az előfizetéshez, különböző előfizetésekhez vagy vegyesen is lehet.
 
 ## <a name="connect-a-virtual-network-in-the-same-subscription-to-a-circuit"></a>A virtuális hálózati ugyanahhoz az előfizetéshez csatlakozni expressroute-kapcsolatcsoporthoz
 A következő parancsmag használatával egy virtuális hálózatot is kapcsolhat ExpressRoute-kapcsolatcsoportot. Győződjön meg arról, hogy a virtuális hálózati átjáró jön létre, és készen áll a csatolás a parancsmag futtatása előtt.

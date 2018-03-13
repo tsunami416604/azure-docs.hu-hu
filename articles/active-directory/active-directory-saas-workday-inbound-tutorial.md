@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 01/26/2018
 ms.author: asmalser
-ms.openlocfilehash: 2db9e60fe2807b1aa8ed7cab7eed6f7db8059a89
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 825bf3f6a3ea07cb229f00c81ad699d792ac53f9
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Oktatóanyag: Konfigurálja automatikus felhasználói kialakítási munkanap
 
@@ -768,12 +768,27 @@ Ehhez az szükséges, használjon [Workday Studio](https://community.workday.com
 
 * Egy vizsgálati naplóit Azure AD-bérlő található, az Európai Unió nem jelenik meg az előző problémát sikerült megoldani. Azonban további ügynök konfigurálni kell a Azure AD-bérlőt az EU-ban. További információkért lásd: [3. rész: a helyszíni-szinkronizálási ügynök konfigurálása](#Part 3: Configure the on-premises synchronization agent)
 
+## <a name="gdpr-compliance"></a>GDPR megfelelőségi
 
-## <a name="additional-resources"></a>További források
-* [Oktatóanyag: Az egyszeri bejelentkezés közötti Workday és az Azure Active Directory konfigurálása](active-directory-saas-workday-tutorial.md)
-* [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](active-directory-saas-tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](active-directory-appssoaccess-whatis.md)
+[Általános Data Protection szabályozás (GDPR)](http://ec.europa.eu/justice/data-protection/reform/index_en.htm) Európai Unió adatok védelmét és adatvédelmi törvény van. A GDPR támaszt a vállalatok szabályok, állami intézményekhez, nem nyereség és más szervezetek, termékek és szolgáltatások biztosítson munkatársai az EU, vagy ha az adatgyűjtés és -elemzés EU lakosai kötve. 
+
+Az Azure AD-létesítési szolgáltatás GDPR megfelelő, a többi Microsoft-szolgáltatások és funkciók együtt. A Microsoft GDPR szövegegység kapcsolatos további tudnivalókért tekintse meg a [szolgáltatási feltételek](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31).
+
+A Workday kiépítési megoldás az Active Directory van szüksége a egy szinkronizálás ügynököt egy tartományhoz csatlakozó kiszolgálón kell telepíteni, mert van azonban néhány esemény is marad a megfelelő GDPR figyelni kell.
+ 
+Az ügynök hoz létre a naplókat a **Windows-Eseménynapló**, amely személyes azonosításra alkalmas információkat is tartalmazhat.
+
+A megfelelő GDPR időtartamú két módja van:
+
+1. Kérésre adatok kinyerése a személy, és távolítsa el adatait az adott személy a Windows Eseménynapló. 
+2. A Windows Eseménynapló forrása a AADSyncAgent folyamat alatt 48 órát megőrzési megtartása
+
+A Windows-eseménynaplók az adatmegőrzés konfigurálásával kapcsolatos további információkért lásd: a [Eseménynaplók beállításai](https://technet.microsoft.com/en-us/library/cc952132.aspx). A Windows-Eseménynapló általános információkért lásd: [Ez a cikk](https://msdn.microsoft.com/en-us/library/windows/desktop/aa385772.aspx).
+
 
 ## <a name="next-steps"></a>További lépések
 
 * [Ismerje meg, tekintse át a naplók és jelentések készítése a kiépítés tevékenység](https://docs.microsoft.com/azure/active-directory/active-directory-saas-provisioning-reporting)
+* [Egyszeri bejelentkezés közötti Workday és az Azure Active Directory konfigurálása](active-directory-saas-workday-tutorial.md)
+* [Megtudhatja, hogyan integrálhatja más SaaS-alkalmazásokhoz az Azure Active Directoryval](active-directory-saas-tutorial-list.md)
+
