@@ -17,10 +17,10 @@ ms.workload: On Demand
 ms.date: 08/25/2017
 ms.author: sashan
 ms.openlocfilehash: c2c5f18b736c83c281d56e0bdda977a9f8c48101
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/13/2018
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Az Azure SQL Database üzletmenet-folytonossági funkcióinak áttekintése
 
@@ -155,5 +155,5 @@ A helyreállítási mechanizmusok végrehajtása után a következő további fe
 ## <a name="upgrade-an-application-with-minimal-downtime"></a>Alkalmazások frissítése minimális állásidővel
 Egyes esetekben az alkalmazás offline állapotba kell helyezni az alkalmazásfrissítés például tervezett karbantartás miatt. [Alkalmazásfrissítések kezelése](sql-database-manage-application-rolling-upgrade.md) aktív georeplikáció ahhoz, hogy a felhő alkalmazás frissítéskor minimalizálják az állásidőt, és adja meg a helyreállítási elérési úton található, ha valamilyen hiba közbeni használata. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az alkalmazások tervezési szempontjait önálló adatbázisok és rugalmas készletek esetén lásd: [Alkalmazások tervezése felhőalapú vészhelyreállítással](sql-database-designing-cloud-solutions-for-disaster-recovery.md) és [Rugalmas készletek vészhelyreállítási stratégiái](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md).

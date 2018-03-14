@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 12/14/2017
 ms.author: bwren
 ms.openlocfilehash: 401fbb39194a24721274f55f0fc2a4cdc235a32b
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 03/13/2018
 ---
 # <a name="custom-logs-in-log-analytics"></a>A Naplóelemzési egyéni naplókat
 Az egyéni naplókat adatforrásra Naplóelemzési eseményeinek gyűjtése a Windows és Linux számítógépeken egyaránt szövegfájlból teszi lehetővé. Számos alkalmazás adatainak naplózása szöveges fájlok, például a Windows Eseménynapló vagy a Syslog szabványos naplózási szolgáltatások helyett.  Összegyűjtését követően elemezni a rekordokban a bejelentkezés használatával az egyes mezők a [egyéni mezők](log-analytics-custom-fields.md) Naplóelemzési szolgáltatása.
@@ -133,7 +133,7 @@ Az alábbi táblázat példákat különböző napló kereséseket rekordok lek�
 | Lekérdezés | Leírás |
 |:--- |:--- |
 | MyApp_CL |Az egyéni összes eseménynaplózás elnevezett MyApp_CL. |
-| MyApp_CL &#124; Ha Severity_CF == "error" |Minden egyéni az eseménynaplózás elnevezett MyApp_CL értékkel rendelkező *hiba* nevű egyéni mező *Severity_CF*. |
+| MyApp_CL &#124; ahol Severity_CF == "error" |Minden egyéni az eseménynaplózás elnevezett MyApp_CL értékkel rendelkező *hiba* nevű egyéni mező *Severity_CF*. |
 
 
 ## <a name="sample-walkthrough-of-adding-a-custom-log"></a>Egy egyéni napló hozzáadásának minta forgatókönyv
