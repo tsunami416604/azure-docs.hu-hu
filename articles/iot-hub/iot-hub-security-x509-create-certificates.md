@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 12/10/2017
 ms.author: dkshir
 ms.openlocfilehash: b2f78e8debd367f86ee9bb06bf7de50590c61ad7
-ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 03/13/2018
 ---
 # <a name="powershell-scripts-to-manage-ca-signed-x509-certificates"></a>PowerShell-parancsfájlokkal kezelheti a hitelesítésszolgáltató által aláírt X.509-tanúsítványokat
 
@@ -279,7 +279,7 @@ Ezután futtassa `New-CADevice "<yourTestDevice>"` a PowerShell-ablakban, a röv
 
 ## <a name="clean-up-certificates"></a>Tanúsítványok tisztítása
 
-A start címsorában vagy **beállítások** app keresse meg és válassza ki **számítógép-tanúsítványok kezelése**. Távolítsa el a által kiállított összes tanúsítványban **Azure IoT hitelesítésszolgáltató TestOnly***. Ezek a tanúsítványok léteznie kell a következő három helyen: 
+A start címsorában vagy **beállítások** app keresse meg és válassza ki **számítógép-tanúsítványok kezelése**. Távolítsa el a által kiállított összes tanúsítványban ** Azure IoT hitelesítésszolgáltató TestOnly x. Ezek a tanúsítványok léteznie kell a következő három helyen: 
 
 * Tanúsítványok – helyi számítógép > személyes > tanúsítványok
 * Tanúsítványok – helyi számítógép > megbízható legfelső szintű hitelesítésszolgáltatók > tanúsítványok

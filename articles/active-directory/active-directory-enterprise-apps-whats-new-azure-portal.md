@@ -16,10 +16,10 @@ ms.date: 07/13/2017
 ms.author: asteen
 ms.reviewer: asteen
 ms.openlocfilehash: 949eae51c469205489153c271a7c20fcc843ad46
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/13/2018
 ---
 # <a name="whats-new-in-enterprise-application-management-in-azure-active-directory"></a>Vállalati alkalmazások kezelése az Azure Active Directory újdonságai 
 
@@ -151,7 +151,7 @@ Nagy mennyiségű új alkalmazások hozzáadása után lehet, hogy engedélyezni
 
 Reméljük, például a továbbfejlesztett használata az Azure AD felhasználói élmény. Ne hamarosan visszajelzését! Visszajelzését és ötleteket javítására szolgáló utáni a **felügyeleti portál** szakasza a [visszajelzési fórumon](https://feedback.azure.com/forums/169401-azure-active-directory/category/162510-admin-portal).  Ritkán használt adatok új dolgai minden nap kiépítésével foglalkozó még érdeklődőbbek és az útmutató a shape felhasználása és határozza meg, mi készíteni.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További részletekért lásd: [alkalmazások kezelése az Azure Active Directoryval](active-directory-enable-sso-scenario.md).
 

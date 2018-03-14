@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/25/2016
 ms.author: v-craic
 ms.openlocfilehash: f92ad5e991bdb066bb9680b4865501076d43f450
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 03/13/2018
 ---
 # <a name="grant-user-permissions-to-specific-lab-policies"></a>A konkrét labor házirendek felhasználói engedélyek
 ## <a name="overview"></a>Áttekintés
@@ -34,7 +34,7 @@ Például ahhoz, hogy a felhasználók olvasási/írási engedélyeket a **enged
 Egyéni szerepkörök az RBAC kapcsolatos további tudnivalókért tekintse meg a [egyéni szerepkörök hozzáférés-vezérlés](../active-directory/role-based-access-control-custom-roles.md).
 
 ## <a name="creating-a-lab-custom-role-using-powershell"></a>PowerShell-lel labor egyéni szerepkör létrehozása
-Ahhoz, hogy az első lépések, olvassa el az alábbi cikket, amely fogja azt ismertetik, hogyan telepítse és konfigurálja az Azure PowerShell-parancsmagok szüksége: [https://azure.microsoft.com/blog/azps-1-0-pre](https://azure.microsoft.com/blog/azps-1-0-pre).
+Ahhoz, hogy az első lépések, olvassa el az alábbi cikket, amely fogja azt ismertetik, hogyan telepítse és konfigurálja az Azure PowerShell-parancsmagok szüksége: [ https://azure.microsoft.com/blog/azps-1-0-pre ](https://azure.microsoft.com/blog/azps-1-0-pre).
 
 Miután beállította az Azure PowerShell-parancsmagok, a következő feladatokat végezheti el:
 

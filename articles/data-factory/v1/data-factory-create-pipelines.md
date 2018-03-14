@@ -16,10 +16,10 @@ ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
 ms.openlocfilehash: c8ddd2b49ca48f3bf232a8650d870a8b7159f66a
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/13/2018
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Adatcsatornák és az Azure Data Factory tevékenységek
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -102,7 +102,7 @@ Nézzük meg közelebbről, hogyan történik egy folyamat JSON-formátumban val
 | vége | Befejező dátum-idő az adatcsatorna. Ha a megadott ISO-formátumban kell lennie. Például:`2016-10-14T17:32:41Z` <br/><br/>Akkor adja meg a helyi időt, például egy keleti TÉLI idő lehet. Példa: `2016-02-27T06:00:00-05:00`, vagyis 6 AM becsült<br/><br/>A folyamat határozatlan idejű futásra, adja meg a 9999-09-09 end tulajdonság értékét. <br/><br/> Egy folyamat aktív csak a kezdési és befejezési időpontja között. Nem hajtotta végre, a kezdő időpont elé vagy a befejező időpont után. Ha a feldolgozási sor fel van függesztve, akkor nem hajtódnak függetlenül a kezdő és záró idő. A futtatásához egy folyamatot azt kell nem lehet szüneteltetni. Lásd: [ütemezés és a végrehajtás](data-factory-scheduling-and-execution.md) az Azure Data Factory ütemezés és a végrehajtási működésének megismerése. |Nem <br/><br/>Ha a start tulajdonság értékét adja meg, meg kell adnia end tulajdonság értéke.<br/><br/>Tekintse meg a megjegyzéseket az **start** tulajdonság. |
 | isPaused | Ha true értéke esetén a folyamat nem futtatható. A felfüggesztett állapotban van. Alapértelmezett érték = false. Ez a tulajdonság segítségével engedélyezheti vagy tilthatja le a folyamat. |Nem |
 | pipelineMode | Az ütemezési módszer a következő feldolgozási sor fut. Két érték engedélyezett: (alapértelmezett), ütemezett alkalommal.<br/><br/>"Ütemezett" azt jelzi, hogy a folyamat az aktív időszak (kezdő és záró idő) alapján meghatározott időközönként. "Alkalommal" jelzi, hogy a folyamat csak egyszer fut-e. Létrehozását követően alkalommal adatcsatornák nem lehet módosítani/frissített jelenleg. Lásd: [Onetime csővezeték](#onetime-pipeline) alkalommal beállítás vonatkozó további információért. |Nem |
-| expirationTime | Időtartam, amelynek létrehozása után a [egyszeri folyamat](#onetime-pipeline) érvényes és kiépített kell maradnia. Ha nem rendelkezik minden aktív sikertelen volt, vagy függőben lévő fut, a folyamat a rendszer automatikusan törlése után lehet spórolni a lejárati idő. Az alapértelmezett érték:`"expirationTime": "3.00:00:00"`|Nem |
+| expirationTime | Időtartam, amelynek létrehozása után a [egyszeri folyamat](#onetime-pipeline) érvényes és kiépített kell maradnia. Ha nem rendelkezik minden aktív sikertelen volt, vagy függőben lévő fut, a folyamat a rendszer automatikusan törlése után lehet spórolni a lejárati idő. Az alapértelmezett érték: `"expirationTime": "3.00:00:00"`|Nem |
 | Adatkészletek |Folyamatban meghatározott tevékenységek használják az adatkészletek listáját. Ez a tulajdonság segítségével határozza meg, hogy ez az adatcsatorna és az adat-előállítóban nem meghatározott adatkészletek. Ez az adatcsatorna meghatározott adatkészleteket csak ez az adatcsatorna használható, és nem osztható meg. Lásd: [adathalmaz hatóköre](data-factory-create-datasets.md#scoped-datasets) részleteiről. |Nem |
 
 ## <a name="activity-json"></a>Tevékenység JSON-fájlja
