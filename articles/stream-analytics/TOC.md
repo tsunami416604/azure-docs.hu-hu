@@ -77,7 +77,7 @@
 
 ## Integráció a Machine Learninggel
 ### [Hangulatelemzés Machine Learning-modellekkel](stream-analytics-machine-learning-integration-tutorial.md)
-### [Anomáliák észlelése](stream-analytics-machine-learning-anomaly-detection.md)
+### [Anomáliadetektálás](stream-analytics-machine-learning-anomaly-detection.md)
 ### [REST API-k használata](stream-analytics-how-to-configure-azure-machine-learning-endpoints-in-stream-analytics.md)
 
 
