@@ -16,10 +16,10 @@ ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
 ms.openlocfilehash: 1733e953d9dd65a3d2b801e6c5ba5cfbb5f82920
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/13/2018
 ---
 # <a name="datasets-in-azure-data-factory"></a>Az Azure Data Factory adathalmazok
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -86,7 +86,7 @@ A következő táblázat ismerteti a fenti JSON-tulajdonságokat:
 | type |A dataset típusa. Adja meg a Data Factory által támogatott típusú (például: AzureBlob, AzureSqlTable). <br/><br/>További információkért lásd: [adathalmaztípushoz](#Type). |Igen |NA |
 | struktúra |Az adatkészlet sémája.<br/><br/>További információkért lásd: [adatkészlet-szerkezetekben](#Structure). |Nem |NA |
 | typeProperties | A típus tulajdonságokat eltérőek az egyes (például: Azure Blob, Azure SQL-tábla). A támogatott típusok és tulajdonságaikat a részletekért lásd: [adathalmaztípushoz](#Type). |Igen |NA |
-| external | Logikai jelző, amely adja meg, hogy a data factory-folyamathoz explicit módon létrehozott adatkészlet vagy nem. Ha az aktuális folyamat nem hozzák a tevékenység bemeneti adatkészletet, ez a jelző értéke igaz. Ez a jelző értéke igaz, a folyamat az első tevékenység bemeneti adatkészlet.  |Nem |hamis |
+| external | Logikai jelző, amely adja meg, hogy a data factory-folyamathoz explicit módon létrehozott adatkészlet vagy nem. Ha az aktuális folyamat nem hozzák a tevékenység bemeneti adatkészletet, ez a jelző értéke igaz. Ez a jelző értéke igaz, a folyamat az első tevékenység bemeneti adatkészlet.  |Nem |false |
 | rendelkezésre állás | A feldolgozási időszakában (például óránként vagy naponta) vagy az adatkészlet üzemi slicing modell határoz meg. Felhasznált és egy tevékenység futott által előállított adatok tárolóegységekhez egy adatszelet nevezik. Ha egy kimeneti adatkészlet rendelkezésre állását napi (gyakoriság -, időköz - 1 nap) be van állítva, a szelet naponta elő. <br/><br/>További információkért lásd: [adatkészlet rendelkezésre állási](#Availability). <br/><br/>Az adatkészlet modell felosztás a részletekért lásd: a [ütemezés és a végrehajtás](data-factory-scheduling-and-execution.md) cikk. |Igen |NA |
 | szabályzat |Meghatározza a feltételek vagy a feltétellel, hogy a dataset szeletek teljesítenie kell. <br/><br/>További információkért lásd: a [Dataset házirend](#Policy) szakasz. |Nem |NA |
 
@@ -145,7 +145,7 @@ Ahogy látja, a társított szolgáltatás SQL-adatbázis csatlakoztatása hatá
 > Ha dataset a folyamat alatt keletkezik, azt kell megjelölni **külső**. Bemenet az adatcsatorna első tevékenység általában alkalmazza a beállítást.   
 
 
-## <a name="Type"></a>A DataSet típusa
+## <a name="Type"></a> A DataSet típusa
 A dataset típusa attól függ, hogy a tárolót használja. Lásd az alábbi táblázatban a Data Factory által támogatott adattárolókhoz listáját. Kattintson a tárolóban annak megismerése, hogyan összekapcsolt szolgáltatás és az adott tároló adatkészlet létrehozásához.
 
 [!INCLUDE [data-factory-supported-data-stores](../../../includes/data-factory-supported-data-stores.md)]

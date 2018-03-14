@@ -13,10 +13,10 @@ ms.devlang:
 ms.topic: article
 ms.date: 02/01/2018
 ms.openlocfilehash: bdd1c51c915787d9e9522f6691ae0ff06d546484
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/13/2018
 ---
 # <a name="supported-matrix-for-this-release"></a>Ebben a kiadásban támogatott mátrix 
 Ha a kód adatokat tölt az Azure Machine Learning adatforrások vagy az Azure Machine Learning adatok előkészített, vagy egy Pandas első használatával, vagy a Spark dataframe, kísérlet a következő kombinációk számítási és az adatok helyek támogatottak:

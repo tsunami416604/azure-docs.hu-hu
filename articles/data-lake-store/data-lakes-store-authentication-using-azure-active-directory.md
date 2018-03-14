@@ -14,10 +14,10 @@ ms.workload: big-data
 ms.date: 01/09/2018
 ms.author: nitinme
 ms.openlocfilehash: 7e6e37c0f5c8447b0e6d147a297b460d323b8894
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 03/13/2018
 ---
 # <a name="authentication-with-data-lake-store-using-azure-active-directory"></a>Hitelesítés a Data Lake Store az Azure Active Directoryval
 
@@ -38,7 +38,7 @@ A következő táblázat bemutatja, hogyan végfelhasználói és a szolgáltat�
 
 |Használja ezt a hitelesítési lehetőséget...                   |.NET         |Java     |PowerShell |CLI 2.0 | Python   |REST     |
 |:---------------------------------------------|:------------|:--------|:----------|:-------------|:---------|:--------|
-|Végfelhasználói (nélkül MFA **)                        |   ✔ |    ✔    |    ✔      |       ✔      |    **[✔ *](data-lake-store-end-user-authenticate-python.md#end-user-authentication-without-multi-factor-authentication)**(elavult)     |    **[✔*](data-lake-store-end-user-authenticate-rest-api.md)**    |
+|Végfelhasználói (nélkül MFA **)                        |   ✔ |    ✔    |    ✔      |       ✔      |    **[✔*](data-lake-store-end-user-authenticate-python.md#end-user-authentication-without-multi-factor-authentication)**(deprecated)     |    **[✔*](data-lake-store-end-user-authenticate-rest-api.md)**    |
 |Végfelhasználói (a multi-factor Authentication szolgáltatás)                           |    **[✔*](data-lake-store-end-user-authenticate-net-sdk.md)**        |    **[✔*](data-lake-store-end-user-authenticate-java-sdk.md)**     |    ✔      |       **[✔*](data-lake-store-get-started-cli-2.0.md)**      |    **[✔*](data-lake-store-end-user-authenticate-python.md#end-user-authentication-with-multi-factor-authentication)**     |    ✔    |
 |Szolgáltatások (ügyfél-kulcs használatával)         |    **[✔*](data-lake-store-service-to-service-authenticate-net-sdk.md#service-to-service-authentication-with-client-secret)** |    **[✔*](data-lake-store-service-to-service-authenticate-java.md)**    |    ✔      |       ✔      |    **[✔*](data-lake-store-service-to-service-authenticate-python.md#service-to-service-authentication-with-client-secret-for-account-management)**     |    **[✔*](data-lake-store-service-to-service-authenticate-rest-api.md)**    |
 |Szolgáltatások (ügyfél-tanúsítvány használatával) |    **[✔*](data-lake-store-service-to-service-authenticate-net-sdk.md#service-to-service-authentication-with-certificate)**        |    ✔    |    ✔      |       ✔      |    ✔     |    ✔    |

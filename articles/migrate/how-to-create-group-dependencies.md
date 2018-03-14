@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 12/22/2017
 ms.author: raynew
 ms.openlocfilehash: 3b10765894501791004e3a9221363f196cc0c91d
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 03/13/2018
 ---
 # <a name="refine-a-group-using-group-dependency-mapping"></a>Pontosítsa a csoportot a függőségi leképezése
 
@@ -86,4 +86,4 @@ Ha egy adott gépen futó, a csoport függőségi térkép függőségeit ellen�
 
 ## <a name="next-steps"></a>További lépések
 
-[További](concepts-assessment-calculation.md) kapcsolatos értékelések kiszámítási módját.
+[További információk](concepts-assessment-calculation.md) az értékelések számításával kapcsolatban.
