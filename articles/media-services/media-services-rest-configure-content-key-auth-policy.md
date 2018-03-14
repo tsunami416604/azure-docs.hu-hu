@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 12/07/2017
 ms.author: juliako
 ms.openlocfilehash: 3f3972232a4342bfb7d8579d747d0cc4250963bc
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 03/13/2018
 ---
 # <a name="dynamic-encryption-configure-a-content-key-authorization-policy"></a>A dinamikus titkosítás: a tartalomkulcs-hitelesítési házirend konfigurálása
 [!INCLUDE [media-services-selector-content-key-auth-policy](../../includes/media-services-selector-content-key-auth-policy.md)]
@@ -30,7 +30,7 @@ Ha azt szeretné, hogy a Media Services az objektum titkosítására, hozzá kel
 
 Ha olyan adatfolyamot kell megadni a Windows Media Player van szükség, a Media Services megadott kulcsot használja az dinamikusan titkosítani az AES vagy a PlayReady-titkosítás használatával. Az adatfolyam visszafejtése, a Windows Media player kér a kulcsot a fő kézbesítési szolgáltatás. Annak megállapításához, hogy a felhasználó jogosult-e a kulcs eléréséhez, a szolgáltatás értékeli az engedélyezési házirendeket, amelyek a kulcshoz megadott.
 
-A Media Services szolgáltatásban több különböző módot is beállíthat, amelynek segítségével a rendszer hitelesítheti a kulcskérelmet küldő felhasználókat. A tartalomkulcs-hitelesítési házirend rendelkezhet egy vagy több engedélyezési korlátozások használatával vagy a nyitott vagy token korlátozás. A token által korlátozott házirend biztonságijogkivonat-szolgáltatás (STS) által kiadott tokennek kell csatolni. Media Services jogkivonatokat támogatja az egyszerű webes jogkivonat ([SWT](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_2)) és az JSON webes jogkivonat (JWT) formátumú.
+A Media Services szolgáltatásban több különböző módot is beállíthat, amelynek segítségével a rendszer hitelesítheti a kulcskérelmet küldő felhasználókat. A tartalomkulcs-hitelesítési házirend rendelkezhet egy vagy több engedélyezési korlátozások használatával vagy a nyitott vagy token korlátozás. A jogkivonattal korlátozott szabályzatokat a biztonsági jogkivonatokkal kapcsolatos szolgáltatás (STS) által kiadott jogkivonatnak kell kísérnie. Media Services jogkivonatokat támogatja az egyszerű webes jogkivonat ([SWT](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_2)) és az JSON webes jogkivonat (JWT) formátumú.
 
 A Media Services STS nem biztosít. Hozzon létre egy egyéni STS, vagy Azure Active Directory (Azure AD) segítségével probléma jogkivonatokat. Az STS be kell állítani a megadott kulcs és a probléma jogcímek a lexikális elem korlátozás konfigurációs (ebben a cikkben leírtak) megadott aláírt jogkivonat létrehozásához. Ha a jogkivonat érvényes, és a jogkivonatában lévő jogcímeket megegyezzenek a tartalomkulcsot, a Media Services kulcs kézbesítési szolgáltatás visszaadja az ügyfélnek a titkosítási kulcs.
 
@@ -44,7 +44,7 @@ További információkért tekintse át a következő cikkeket:
 * Töltse fel, és a kódolása a AssetCreationOptions.StorageEncrypted beállítás használatával.
 * Ha azt tervezi, szeretné, hogy több tartalomkulcs, amelyek ugyanazt a házirend-konfigurációt igényelnek, azt javasoljuk, hogy egyetlen engedélyezési házirend létrehozása, és újra felhasználhatja több tartalomkulcs.
 * A kulcs kézbesítési szolgáltatás 15 percig gyorsítótárazza a ContentKeyAuthorizationPolicy és a kapcsolódó objektumok (házirend-beállítások és korlátozásai). Hozzon létre ContentKeyAuthorizationPolicy, és adja meg, hogy a token korlátozás, tesztelheti, és módosítsa a házirendet a nyitott korlátozás. Ezt a folyamatot a házirend nyitott verziójának a házirend kapcsolók nagyjából 15 percet vesz igénybe.
-* Ha hozzáadásakor vagy módosításakor az adategység továbbítási házirendjét, akkor törölje a meglévő lokátort, és hozzon létre egy új lokátort.
+* Az objektumhoz tartozó továbbítási szabályzat hozzáadásakor vagy módosításakor törölnie kell minden meglévő lokátort, majd létre kell hoznia egy újat.
 * Jelenleg nem titkosítható progresszív letöltés.
 * Adatfolyam-továbbítási végpontra Media Services beállítja a CORS hozzáférés-vezérlési-engedélyezése-forrás-fejléc értékének elővizsgálati választ, mint a helyettesítő karakter "\*." Ez az érték jól működik a legtöbb szereplő, köztük az Azure Media Player Roku és JWPlayer és mások számára. Azonban nem működnek néhány lejátszó dash.js használó, mert a hitelesítő adatok módban "tartalmaz", a saját dash.js XMLHttpRequest nem engedélyezi a helyettesítő karakter "\*" a hozzáférés-vezérlési-engedélyezése-forrás értékeként. Ezt a korlátozást a dash.js a megoldás Ha az ügyfél egy egyetlen tartományból Media Services adhat meg, hogy a tartomány a elővizsgálati válaszfejlécet. Ha segítségre van szüksége az Azure portálon keresztül támogatási jegy megnyitása.
 

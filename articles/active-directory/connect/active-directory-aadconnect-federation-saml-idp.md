@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
 ms.openlocfilehash: 46c65e0efdc91b70c5d0d2afdf83d7205efc8057
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2018
+ms.lasthandoff: 03/13/2018
 ---
 #  <a name="use-a-saml-20-identity-provider-idp-for-single-sign-on"></a>Egyszeri bejelentkezéshez a SAML 2.0-Identitásszolgáltatóként (IdP) használata
 
@@ -45,8 +45,8 @@ Ez a témakör részletes követelményeket a protokoll és, hogy a SAML 2.0 ide
 
 Javasoljuk, hogy ellenőrizze-e a SAML 2.0 identitásszolgáltató kimeneti üzenetek legyen olyan hasonló, a megadott minta nyomkövetések lehető. A megadott egyedi attribútum értékeinek is, használja az Azure AD-metaadatok ahol csak lehetséges. Ha elégedett a kimeneti üzenetek, tesztelheti a Microsoft kapcsolat elemző eszközt az alább ismertetett.
 
-Az Azure AD-metaadatok tölthető le: az URL-cím: [https://nexus.microsoftonline-p.com/federationmetadata/saml20/federationmetadata.xml](http://https://nexus.microsoftonline-p.com/federationmetadata/saml20/federationmetadata.xml).
-A kínai ügyfelek számára az Office 365 Kína-specifikus példányát használja, a következő összevonási végpontot kell használni: [https://nexus.partner.microsoftonline-p.cn/federationmetadata/saml20/federationmetadata.xml](https://nexus.partner.microsoftonline-p.cn/federationmetadata/saml20/federationmetadata.xml).
+Az Azure AD-metaadatok tölthető le: az URL-cím: [ https://nexus.microsoftonline-p.com/federationmetadata/saml20/federationmetadata.xml ](http://https://nexus.microsoftonline-p.com/federationmetadata/saml20/federationmetadata.xml).
+A kínai ügyfelek számára az Office 365 Kína-specifikus példányát használja, a következő összevonási végpontot kell használni: [ https://nexus.partner.microsoftonline-p.cn/federationmetadata/saml20/federationmetadata.xml ](https://nexus.partner.microsoftonline-p.cn/federationmetadata/saml20/federationmetadata.xml).
 
 ## <a name="saml-protocol-requirements"></a>SAML protokoll követelmények
 Ez a szakasz hogyan a kérelem-válasz üzenet párok alkotják részletek rendezése érdekében, hogy az üzenetek megfelelő formátumú.
@@ -149,7 +149,7 @@ Ez a minta SAML 2.0-s megfelelő identitásszolgáltató az Azure AD által kül
 Ez a témakör a SAML 2.0 Identitásszolgáltatóként az Azure AD-egyszeri bejelentkezés hozzáférésének engedélyezése egy vagy több Microsoft felhőszolgáltatás (például az Office 365) a SAML 2.0 protokoll segítségével összevonni kívánt konfigurálásával kapcsolatos útmutatást tartalmaz. A függő entitás egy Microsoft felhőszolgáltatásra, ebben a forgatókönyvben használt SAML 2.0 az Azure AD.
 
 ## <a name="add-azure-ad-metadata"></a>Az Azure AD-metaadatok hozzáadása
-A SAML 2.0 identitásszolgáltató kell igazodnia kell az Azure AD függő entitás kapcsolatos információkat. Az Azure AD https://nexus.microsoftonline-p.com/federationmetadata/saml20/federationmetadata.xml a metaadatok közzététele.
+A SAML 2.0 identitásszolgáltató kell igazodnia kell az Azure AD függő entitás kapcsolatos információkat. Az Azure AD közzéteszi a metaadatok https://nexus.microsoftonline-p.com/federationmetadata/saml20/federationmetadata.xml.
 
 Ajánlott mindig importálni a legújabb Azure AD-metaadatok a SAML 2.0 identitásszolgáltató konfigurálásakor. Vegye figyelembe, hogy az Azure AD nem képes metaadatokat az identitásszolgáltató által.
 
@@ -182,12 +182,12 @@ Az alábbi eljárás bemutatja, hogyan használja a SAML 2.0 SP-Lite összevont 
 
     `<IDPSSODescriptor protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol"> <KeyDescriptor use="signing"> <KeyInfo xmlns="http://www.w3.org/2000/09/xmldsig#"> <X509Data> <X509Certificate>MIIC5jCCAc6gAwIBAgIQLnaxUPzay6ZJsC8HVv/QfTANBgkqhkiG9w0BAQsFADAvMS0wKwYDVQQDEyRBREZTIFNpZ25pbmcgLSBmcy50ZWNobGFiY2VudHJhbC5vcmcwHhcNMTMxMTA0MTgxMzMyWhcNMTQxMTA0MTgxMzMyWjAvMS0wKwYDVQQDEyRBREZTIFNpZ25pbmcgLSBmcy50ZWNobGFiY2VudHJhbC5vcmcwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCwMdVLTr5YTSRp+ccbSpuuFeXMfABD9mVCi2wtkRwC30TIyPdORz642MkurdxdPCWjwgJ0HW6TvXwcO9afH3OC5V//wEGDoNcI8PV4enCzTYFe/h//w51uqyv48Fbb3lEXs+aVl8155OAj2sO9IX64OJWKey82GQWK3g7LfhWWpp17j5bKpSd9DBH5pvrV+Q1ESU3mx71TEOvikHGCZYitEPywNeVMLRKrevdWI3FAhFjcCSO6nWDiMqCqiTDYOURXIcHVYTSof1YotkJ4tG6mP5Kpjzd4VQvnR7Pjb47nhIYG6iZ3mR1F85Ns9+hBWukQWNN2hcD/uGdPXhpdMVpBAgMBAAEwDQYJKoZIhvcNAQELBQADggEBAK7h7jF7wPzhZ1dPl4e+XMAr8I7TNbhgEU3+oxKyW/IioQbvZVw1mYVCbGq9Rsw4KE06eSMybqHln3w5EeBbLS0MEkApqHY+p68iRpguqa+W7UHKXXQVgPMCpqxMFKonX6VlSQOR64FgpBme2uG+LJ8reTgypEKspQIN0WvtPWmiq4zAwBp08hAacgv868c0MM4WbOYU0rzMIR6Q+ceGVRImlCwZ5b7XKp4mJZ9hlaRjeuyVrDuzBkzROSurX1OXoci08yJvhbtiBJLf3uPOJHrhjKRwIt2TnzS9ElgFZlJiDIA26Athe73n43CT0af2IG6yC7e6sK4L3NEXJrwwUZk=</X509Certificate> </X509Data> </KeyInfo> </KeyDescriptor>` 
 
-További információ a "Set-MsolDomainAuthentication":: [http://technet.microsoft.com/library/dn194112.aspx](http://technet.microsoft.com/library/dn194112.aspx).
+További információ a "Set-MsolDomainAuthentication":: [ http://technet.microsoft.com/library/dn194112.aspx ](http://technet.microsoft.com/library/dn194112.aspx).
 
 >[!NOTE]
->Futtatnia kell a használata "$ecpUrl"https://WS2012R2-0.contoso.com/PAOS"=" csak akkor, ha az identitásszolgáltató beállított ECP kiterjesztéssel. Exchange Online ügyfelek, az Outlook Web Application (OWA), kivéve a FELADÁS egy vagy több alapú aktív végpontot. Ha a SAML 2.0 STS megvalósítja egy aktív végpontot egy aktív végpontot ECP végrehajtásának Shibboleth meg hasonló lehet a a funkciógazdag ügyfeleket, az Exchange Online szolgáltatással folytatott interakciót.
+>Futtatnia kell a használata "$ecpUrl ="https://WS2012R2-0.contoso.com/PAOS"" csak akkor, ha az identitásszolgáltató beállított ECP kiterjesztéssel. Exchange Online ügyfelek, az Outlook Web Application (OWA), kivéve a FELADÁS egy vagy több alapú aktív végpontot. Ha a SAML 2.0 STS megvalósítja egy aktív végpontot egy aktív végpontot ECP végrehajtásának Shibboleth meg hasonló lehet a a funkciógazdag ügyfeleket, az Exchange Online szolgáltatással folytatott interakciót.
 
-Összevonási konfigurálása után átválthatja vissza a "nem összevont" (vagy "kezelt"), azonban ez a módosítás befejezéséhez akár két órát vesz igénybe, és új véletlenszerű jelszót a felhőalapú bejelentkezéshez hozzárendelése minden felhasználóhoz van szükség. Váltás vissza a "kezelt" lehet kell bizonyos esetekben hibát jelez a beállítások visszaállítására. További információ a tartomány átalakítás:: [http://msdn.microsoft.com/library/windowsazure/dn194122.aspx](http://msdn.microsoft.com/library/windowsazure/dn194122.aspx).
+Összevonási konfigurálása után átválthatja vissza a "nem összevont" (vagy "kezelt"), azonban ez a módosítás befejezéséhez akár két órát vesz igénybe, és új véletlenszerű jelszót a felhőalapú bejelentkezéshez hozzárendelése minden felhasználóhoz van szükség. Váltás vissza a "kezelt" lehet kell bizonyos esetekben hibát jelez a beállítások visszaállítására. További információ a tartomány átalakítás:: [ http://msdn.microsoft.com/library/windowsazure/dn194122.aspx ](http://msdn.microsoft.com/library/windowsazure/dn194122.aspx).
 
 ## <a name="provision-user-principals-to-azure-ad--office-365"></a>Az Azure AD-felhasználó rendszerbiztonsági kiépítése vagy Office 365
 Mielőtt a felhasználók az Office 365 felhasználói rendszerbiztonsági tagok, amelyek megfelelnek a helyességi feltétel a SAML 2.0 jogcímek kell ellátása az Azure AD képes hitelesíteni. Ha a felhasználó rendszerbiztonsági tagok nem ismert előre az Azure ad majd azok nem használható az összevont bejelentkezés. Az Azure AD Connect vagy a Windows PowerShell felhasználói rendszerbiztonsági tagok kiépítéséhez használható.
@@ -210,7 +210,7 @@ Ez az eljárás bemutatja, hogyan egyetlen felhasználó hozzáadása az Azure a
         -LicenseAssignment "samlp2test:ENTERPRISEPACK" 
         -UsageLocation "US" ` 
 
-További információ a "New-MsolUser" kivételt [http://technet.microsoft.com/library/dn194096.aspx](http://technet.microsoft.com/library/dn194096.aspx)
+További információ a "New-MsolUser" kivétel, [http://technet.microsoft.com/library/dn194096.aspx](http://technet.microsoft.com/library/dn194096.aspx)
 
 >[!NOTE]
 >A "UserPrinciplName" értéket meg kell egyeznie az értéket, amelyet el szeretne küldeni az "IDPEmail" a SAML 2.0 jogcímek, és a "ImmutableID" értéket meg kell egyeznie a "NameID" helyességi feltétel az elküldött értékkel.
@@ -242,7 +242,7 @@ A Microsoft közzétett egy eszközt, amely segítségével a SAML 2.0 alapján 
 
 
 
-1. Töltse le a kapcsolat Analyzer programban, [https://testconnectivity.microsoft.com/?tabid=Client](https://testconnectivity.microsoft.com/?tabid=Client).
+1. Töltse le a kapcsolat Analyzer programban, [ https://testconnectivity.microsoft.com/?tabid=Client ](https://testconnectivity.microsoft.com/?tabid=Client).
 2.  Kattintson a telepítés gombra a kezdéshez letöltése és telepítése az eszközt.
 3.  Válassza ki a "I nem állítható be az Office 365, Azure vagy az Azure Active Directory használó más szolgáltatásokba összevonásának".
 4.  Ha az eszköz letöltése és futtatása, a kapcsolat Diagnostics ablakban jelenik meg. Az eszköz rendszer végigvezeti a összevonási kapcsolat tesztelése.

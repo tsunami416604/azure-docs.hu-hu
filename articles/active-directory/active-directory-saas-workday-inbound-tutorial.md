@@ -17,7 +17,7 @@ ms.openlocfilehash: 825bf3f6a3ea07cb229f00c81ad699d792ac53f9
 ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/13/2018
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Oktatóanyag: Konfigurálja automatikus felhasználói kialakítási munkanap
 
@@ -426,8 +426,8 @@ Ha az Azure Active Directory-bérlő az EU adatközpontok egyik található, maj
 1. Nyissa meg **Services.msc** , és állítsa le a **Microsoft Azure AD Connect kiépítési ügynök** szolgáltatás.
 2. Nyissa meg az ügynök telepítési mappájába (Példa: C:\Program Files\Microsoft Azure AD Connect kiépítési ügynök).
 3. Nyissa meg **SyncAgnt.exe.config** egy szövegszerkesztőben.
-4. Cserélje le a https://manage.hub.syncfabric.windowsazure.com/Management **https://eu.manage.hub.syncfabric.windowsazure.com/Management**
-5. Cserélje le a https://provision.hub.syncfabric.windowsazure.com/Provisioning **https://eu.provision.hub.syncfabric.windowsazure.com/Provisioning**
+4. Cserélje le https://manage.hub.syncfabric.windowsazure.com/Management a **https://eu.manage.hub.syncfabric.windowsazure.com/Management**
+5. Cserélje le https://provision.hub.syncfabric.windowsazure.com/Provisioning a **https://eu.provision.hub.syncfabric.windowsazure.com/Provisioning**
 6. Mentse a **SyncAgnt.exe.config** fájlt.
 7. Nyissa meg **Services.msc**, és indítsa el a **Microsoft Azure AD Connect kiépítési ügynök** szolgáltatás.
 
