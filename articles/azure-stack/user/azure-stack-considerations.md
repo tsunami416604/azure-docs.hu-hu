@@ -15,10 +15,10 @@ ms.topic: overview
 ms.date: 09/25/2017
 ms.author: mabrigg
 ms.openlocfilehash: 695824ef2537a97ea0530f2c33ad24d5cd9e20f8
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/13/2018
 ---
 # <a name="key-considerations-using-services-or-building-apps-for-azure-stack"></a>Kulcs szempontok: szolgáltatásokkal vagy az alkalmazások Azure verem
 
@@ -43,13 +43,13 @@ Az Azure műszaki tartalom feltételezi, hogy alkalmazásokat az Azure-verem hel
 
 A következő táblázat ismerteti az Azure-vermet, és az Azure közötti magas szintű eltéréseket. Tartsa szem előtt ezeket, fejleszthet Azure verem vagy Azure verem szolgáltatásokat használja.
 
-| Terület | Azure (globális) | Azure Stack |
+| Terület | Azure (global) | Azure Stack |
 | -------- | ------------- | ----------|
 | Akik működik? | Microsoft | A szervezet vagy szolgáltatás szolgáltatónál.|
 | Aki lépjen kapcsolatba a támogatási? | Microsoft | Integrált rendszer lépjen kapcsolatba az Azure-verem operátor (ennek a szervezet vagy a service provider) támogatásához.<br><br>Azure verem szoftverfejlesztői készlet támogatásért látogasson el a [Microsoft fórumok](https://social.msdn.microsoft.com/Forums/home?forum=azurestack). A csomag egy kiértékelési környezete, mert nincs érhető el a Microsoft támogatja a szolgáltatások Ügyféltámogatási hivatalos támogatás.
 | Az elérhető szolgáltatások | A lista [Azure termékek](https://azure.microsoft.com/services/?b=17.04b). Választható szolgáltatások az Azure-régió lehet. | Azure verem támogatja az Azure-szolgáltatások egy részét. Tényleges szolgáltatások választja a szervezet vagy a service provider kínálnak alapján változhatnak.
-| Az Azure Resource Manager végpont * | https://management.azure.com | Egy integrált Azure verem rendszer esetén használja a végpontot, az Azure-verem operátor biztosított.<br><br>A csomagban található, használja: https://management.local.azurestack.external
-| Portál URL-cím * | [https://Portal.Azure.com](https://portal.azure.com) | Integrált Azure verem rendszert nyissa meg az Azure-verem operátor megadott URL-címre.<br><br>A csomagban található, használja: https://portal.local.azurestack.external
+| Az Azure Resource Manager végpont * | https://management.azure.com | Egy integrált Azure verem rendszer esetén használja a végpontot, az Azure-verem operátor biztosított.<br><br>A csomagban található használja: https://management.local.azurestack.external
+| Portál URL-cím * | [https://portal.azure.com](https://portal.azure.com) | Integrált Azure verem rendszert nyissa meg az Azure-verem operátor megadott URL-címre.<br><br>A csomagban található használja: https://portal.local.azurestack.external
 | Régió | Kiválaszthatja, hogy melyik régióban telepíteni szeretné. | Egy integrált Azure verem rendszer a rendszeren elérhető régiót kell használnia.<br><br>A csomag, a régiót mindig lesz **helyi**.
 | Erőforráscsoportok | Erőforráscsoport régiókban is kiterjedhetnek. | Integrált rendszerek és a csomag nincs csak egy régió tartozik.
 |Támogatott névterek erőforrástípusok és API-verziók | A legújabb (vagy korábbi verziójú, amely még nem elavultak). | Az Azure verem adott verzióit támogatja. Az "Verzióra vonatkozó követelmények" című cikkben.
@@ -61,7 +61,7 @@ Ha a rendszer Azure verem operátor, lásd: [felügyeleti portálján](../azure-
  
  A Microsoft biztosít több eszközöket és útmutatást tartalmaz, amelyek megkönnyítik az Azure-verem fejlesztése.
 
-| Javaslat | Referencia | 
+| Ajánlás | Referencia | 
 | -------- | ------------- | 
 | A megfelelő telepíti a fejlesztői munkaállomáson. | - [Telepítse a PowerShell](azure-stack-powershell-install.md)<br>- [Eszközök](azure-stack-powershell-download.md)<br>- [PowerShell konfigurálása](azure-stack-powershell-configure-user.md)<br>- [A Visual Studio telepítése](azure-stack-install-visual-studio.md) 
 | A következő információkat tekintheti át:<br>-Az azure Resource Manager sablon kapcsolatos szempontok<br>-Hogyan találhatók gyorsindítási sablonok<br>-Segítségével házirendmodul használata Azure Azure verem fejlesztéséhez | [Fejlesztés az Azure Stackhez](azure-stack-developer.md) | 
@@ -84,9 +84,9 @@ Get-AzureRmResourceProvider | Select ProviderNamespace -Expand ResourceTypes | S
 Select ProviderNamespace, ResourceTypeName, @{Name="ApiVersion"; Expression={$_}} 
 ```
 
-Példa a kimenetre (csonkolt): ![Get-AzureRmResourceProvider parancs egy példa a kimenetre](media/azure-stack-considerations/image1.png)
+Example output (truncated): ![Example output of Get-AzureRmResourceProvider command](media/azure-stack-considerations/image1.png)
  
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Szolgáltatás szintű különbségekről további részletes információkért lásd:
 
