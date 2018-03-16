@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 11/08/2017
+ms.date: 03/15/2018
 ms.author: jonbeck
-ms.openlocfilehash: cdfd09d90be9696dacc151e138920944c8bbd2c9
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 5f867140981649b73bf6d0bc13eca539c7dc2209
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="high-performance-compute-virtual-machine-sizes"></a>Nagy teljesítményű számítási virtuálisgép-méretek
 
@@ -29,12 +29,11 @@ ms.lasthandoff: 02/09/2018
 
 [!INCLUDE [virtual-machines-common-a8-a9-a10-a11-specs](../../../includes/virtual-machines-common-a8-a9-a10-a11-specs.md)]
 
-## <a name="rdma-capable-instances"></a>Az RDMA-kompatibilis példányok
-A számítási igényű példányok (H16r, H16mr, NC24r, A8 és A9) egy részét a beállítást, a távoli közvetlen memória-hozzáférés (RDMA) hálózati kapcsolatot a hálózati adaptert. Ez az interfész mellett más Virtuálisgép-méretek elérhető szabványos Azure hálózati kapcsolat van. 
-  
-Ez az interfész lehetővé teszi az RDMA-kompatibilisek-e példányok egy InfiniBand hálózaton, működő FDR díjszabás H16r H16mr és NC24r virtuális gépekhez, és QDR díjszabás A8 és A9 virtuális gépekhez való kommunikációhoz. E RDMA-képességeinek képes javítani, a méretezhetőség és teljesítmény Intel MPI alatt futó Message Passing Interface (MPI) alkalmazások 5.x csak. Újabb verzió (2017, 2018), az Intel MPI futásidejű kódtár nem kompatibilisek az Azure RDMA-illesztőprogramokat.
 
-Telepítse az azonos rendelkezésre állási csoport (Ha használja az Azure Resource Manager telepítési modell) vagy felhő ugyanezt a RDMA-kompatibilisek-e virtuális gépek (Ha használja a klasszikus üzembe helyezési modellel). Hajtsa végre az RDMA-kompatibilis Linux virtuális gépet az Azure RDMA hálózati elérésére vonatkozó további követelményeket.
+### <a name="mpi"></a>MPI 
+
+Csak Intel MPI 5.x verziókat támogatja. Újabb verzió (2017, 2018), az Intel MPI futásidejű kódtár nem kompatibilisek az Azure Linux RDMA-illesztőprogramokat.
+
 
 ### <a name="distributions"></a>Felosztások
  
@@ -50,7 +49,7 @@ A számítási igényű a virtuális gép telepíthető az Azure piactéren, ame
   sudo rpm -v -i --nodeps /opt/intelMPI/intel_mpi_packages/*.rpm
   ```
     
-* **CentOS-alapú HPC** -7.3 HPC CentOS-alapú, 7.1-es HPC CentOS-alapú, 6,8 HPC CentOS-alapú vagy 6.5 HPC CentOS-alapú (H-adatsorozathoz, 7.1-es vagy újabb verzió javasolt). RDMA-illesztőprogramok és Intel MPI 5.1 telepítve vannak a virtuális Gépet.  
+* **CentOS-alapú HPC** -6.5 HPC CentOS-alapú vagy újabb verzió (H-adatsorozathoz, 7.1-es vagy újabb verzió javasolt). RDMA-illesztőprogramok és Intel MPI 5.1 telepítve vannak a virtuális Gépet.  
  
   > [!NOTE]
   > A CentOS-alapú HPC-lemezképek, a kernel frissítések le vannak tiltva a **yum** konfigurációs fájlt. Ennek az az oka egy RPM-csomag terjesztése a Linux RDMA-illesztőprogramok és illesztőprogram-frissítést nem lehet, hogy működik, ha a kernel frissül.
@@ -63,7 +62,8 @@ További rendszerkonfiguráció MPI-feladatok futtatása a fürtözött virtuál
 ### <a name="network-topology-considerations"></a>Hálózati topológia szempontjai
 * Az RDMA-kompatibilis Linux virtuális gépeken futó Azure-ban Eth1 RDMA hálózati forgalom számára van fenntartva. Ne módosítsa a Eth1 beállításokat vagy a konfigurációs fájl hivatkozó ezen a hálózaton található bármely információ. Eth0 rendszeres Azure hálózati forgalom számára van fenntartva.
 
-* Az Azure IP keresztül InfiniBand (IB) nem támogatott. Csak IB feletti RDMA esetén támogatott.
+* Az Azure-ban az RDMA hálózati fenntartja a cím terület 172.16.0.0/16. 
+
 
 ## <a name="using-hpc-pack"></a>HPC Pack használatával
 [HPC Pack](https://technet.microsoft.com/library/jj899572.aspx), a Microsoft szabad HPC fürt és a feladat felügyeleti megoldás, egy a számítási igényű példányok használata a Linux és a lehetőség. HPC Pack támogatási legújabb kiadásaiban futtathatnak több Linux terjesztésekről számítási csomópontok telepítve az Azure virtuális gépeken, a Windows Server átjárócsomópont kezeli. Az RDMA-kompatibilis Linux számítási csomópontok Intel MPI fut, a HPC Pack is ütemezése és futtatása Linux MPI az RDMA hálózati elérhető alkalmazásokat. Lásd: [Ismerkedés az Azure-ban HPC Pack-fürtben lévő Linux számítási csomópontok](classic/hpcpack-cluster.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json).

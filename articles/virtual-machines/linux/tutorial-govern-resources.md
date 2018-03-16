@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/21/2018
 ms.author: tomfitz
-ms.openlocfilehash: 86ac3ec390c7aa9bc24a90ef2ee582f97f8b5407
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: ac6f7b0d32479e9e7e9945f83dc63a5847cba6a4
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="virtual-machine-governance-with-azure-cli"></a>Virtuális gép irányítás Azure parancssori felülettel
 
-[!include[Resource Manager governance introduction](../../../includes/resource-manager-governance-intro.md)]
+[!INCLUDE [Resource Manager governance introduction](../../../includes/resource-manager-governance-intro.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -29,7 +29,7 @@ Telepítéséhez, és a parancssori felület helyileg használatához, tekintse 
 
 ## <a name="understand-scope"></a>Hatókör ismertetése
 
-[!include[Resource Manager governance scope](../../../includes/resource-manager-governance-scope.md)]
+[!INCLUDE [Resource Manager governance scope](../../../includes/resource-manager-governance-scope.md)]
 
 Ebben az oktatóanyagban alkalmaz minden beállításokat az erőforráscsoporthoz, egyszerűen távolítsa el ezeket a beállításokat, amikor hajtja végre.
 
@@ -71,7 +71,7 @@ az role assignment create --assignee-object-id $adgroupId --role "Virtual Machin
 
 ## <a name="azure-policies"></a>Az Azure házirendek
 
-[!include[Resource Manager governance policy](../../../includes/resource-manager-governance-policy.md)]
+[!INCLUDE [Resource Manager governance policy](../../../includes/resource-manager-governance-policy.md)]
 
 ### <a name="apply-policies"></a>Házirendek alkalmazása
 
@@ -179,7 +179,7 @@ Arról, hogy a törlési művelet nem hajtható végre egy zárolás miatt hiba�
 
 Alkalmazott [címkék](../../azure-resource-manager/resource-group-using-tags.md) számára az Azure-erőforrások logikailag kategóriák szerint rendezheti. Minden címke egy névből és egy értékből áll. Alkalmazhatja például a „Környezet” nevet és az „Éles” értéket az összes éles üzemben használt erőforrásra.
 
-[!include[Resource Manager governance tags CLI](../../../includes/resource-manager-governance-tags-cli.md)]
+[!INCLUDE [Resource Manager governance tags CLI](../../../includes/resource-manager-governance-tags-cli.md)]
 
 Címkék azokra a virtuális gép, használja a [az erőforrás címke](/cli/azure/resource#az_resource_tag) parancsot. Az erőforrás-meglévő címkék nem lesznek megőrizve.
 
@@ -206,7 +206,7 @@ az vm stop --ids $(az resource list --tag Environment=Test --query "[?type=='Mic
 
 ### <a name="view-costs-by-tag-values"></a>Nézet költségek címkeértékeket.
 
-[!include[Resource Manager governance tags billing](../../../includes/resource-manager-governance-tags-billing.md)]
+[!INCLUDE [Resource Manager governance tags billing](../../../includes/resource-manager-governance-tags-billing.md)]
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

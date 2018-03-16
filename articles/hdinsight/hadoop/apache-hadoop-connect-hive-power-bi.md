@@ -14,21 +14,28 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/03/2018
+ms.date: 03/14/2018
 ms.author: jgao
-ms.openlocfilehash: 8b4347fde274d0d7520ef3acbd081fdb83d7dc7d
-ms.sourcegitcommit: 4bd369fc472dced985239aef736fece42fecfb3b
+ms.openlocfilehash: e543fba4c382501024bd33bed3853e7806d081ae
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="visualize-hive-data-with-microsoft-power-bi-using-odbc-in-azure-hdinsight"></a>A Microsoft Power BI ODBC használatával az Azure HDInsight Hive adatok megjelenítése
 
-Útmutató: Azure HDInsight ODBC a Microsoft Power BI csatlakozni, és a Hive-adatok ábrázolása. Ebben az oktatóanyagban betölteni az adatokat egy hivesampletable Hive tábla a Power bi-bA. A Hive tábla néhány mobiltelefon használati adatokat tartalmaz. Ezután a használati adatok egy globális térképen rajzolása:
+Útmutató: Azure HDInsight ODBC a Microsoft Power BI csatlakozni, és a Hive-adatok ábrázolása. 
+
+>[!IMPORTANT]
+> Kihasználhatja a Hive ODBC-illesztőprogram importálása a Power BI Desktop az általános ODBC-összekötőn keresztül. Azonban nem ajánlott a Hive lekérdezési motor nem interaktív jellegéből BI munkaterhelésekhez. [HDInsight interaktív lekérdezés összekötő](../interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md) és [HDInsight Spark összekötő](https://docs.microsoft.com/power-bi/spark-on-hdinsight-with-direct-connect) a teljesítményük jobb döntéseket.
+
+Ebben az oktatóanyagban betölteni az adatokat egy hivesampletable Hive tábla a Power bi-bA. A Hive tábla néhány mobiltelefon használati adatokat tartalmaz. Ezután a használati adatok egy globális térképen rajzolása:
 
 ![HDInsight a Power BI a térkép jelentés](./media/apache-hadoop-connect-hive-power-bi/hdinsight-power-bi-visualization.png)
 
 Az információk az új [interaktív lekérdezés](../interactive-query/apache-interactive-query-get-started.md) fürt típusa. Szeretne csatlakozni a HDInsight interaktív lekérdezés közvetlen lekérdezéssel, olvassa el a [adatok interaktív Hive lekérdezés jelenítheti meg a Microsoft Power BI közvetlen lekérdezéssel Azure hdinsight](../interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md).
+
+
 
 ## <a name="prerequisites"></a>Előfeltételek
 Ez a cikk keresztül haladó, mielőtt a következő elemeket kell rendelkeznie:

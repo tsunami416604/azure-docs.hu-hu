@@ -5,14 +5,14 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: article
-ms.date: 02/14/2018
+ms.date: 03/15/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 9524ffde4a588d3ac029bc8a3df91726082e157d
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 1290a186ca8e83b09f53b286e80c5ce75f08d88c
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="prepare-on-premises-hyper-v-servers-for-disaster-recovery-to-azure"></a>Helyszíni Hyper-V kiszolgálók előkészítése az Azure-bA katasztrófa utáni helyreállítás
 
@@ -28,25 +28,16 @@ Ez a sorozat második oktatóanyaga. Győződjön meg arról, hogy [beállított
 
 
 
-## <a name="review-server-requirements"></a>Tekintse át a kiszolgáló követelményei
+## <a name="review-requirements-and-prerequisites"></a>Felülvizsgálati követelmények és Előfeltételek
 
-Győződjön meg arról, hogy a Hyper-V-gazdagépeken az alábbi követelményeknek. Ha az Ön által felügyelt gazdagépek a System Center Virtual Machine Manager (VMM) felhők, ellenőrizze a VMM vonatkozó követelményeket.
+Győződjön meg arról, hogy a Hyper-V-gazdagépek és virtuális gépek megfelelnek a követelményeinek.
 
+1. [Győződjön meg arról](hyper-v-azure-support-matrix.md#on-premises-servers) helyszíni kiszolgáló követelményei.
+2. [A követelmények ellenőrzéséhez](hyper-v-azure-support-matrix.md#replicated-vms) Hyper-V virtuális gépek replikálása Azure-bA szeretne.
+3. Ellenőrizze a Hyper-V gazdagép [hálózati](hyper-v-azure-support-matrix.md#hyper-v-network-configuration); és a gazdagép és vendég [tárolási](hyper-v-azure-support-matrix.md#hyper-v-host-storage) támogatja a helyszíni Hyper-V gazdagépek.
+4. Ellenőrizze, hogy mi támogatott [Azure hálózatkezelés](hyper-v-azure-support-matrix.md#azure-vm-network-configuration-after-failover), [tárolási](hyper-v-azure-support-matrix.md#azure-storage), és [számítási](hyper-v-azure-support-matrix.md#azure-compute-features), a feladatátvételt követően.
+5. Meg kell felelnie a helyszíni virtuális gépek replikálása Azure-ba, [Azure virtuális gép](hyper-v-azure-support-matrix.md#azure-vm-requirements).
 
-**Összetevő** | **A VMM által felügyelt Hyper-V** | **A Hyper-V VMM nélkül**
---- | --- | ---
-**Hyper-V gazdagép operációs rendszere** | Windows Server 2016, 2012 R2 | NA
-**VMM** | A VMM 2012, A VMM 2012 R2 | NA
-
-
-## <a name="review-hyper-v-vm-requirements"></a>Hyper-V virtuális gép követelményeinek áttekintése
-
-Győződjön meg arról, hogy a virtuális gép megfelel a táblázat tartalmazza.
-
-**Virtuális gép követelmény** | **Részletek**
---- | ---
-**Vendég operációs rendszer** | A vendég operációs rendszer [használható az Azure-](https://technet.microsoft.com/library/cc794868.aspx).
-**Azure-követelmények** | A helyszíni Hyper-V virtuális gépek Azure virtuális gép requirements(site-recovery-support-matrix-to-azure.md) kell megfelelnie.
 
 ## <a name="prepare-vmm-optional"></a>Készítse elő a VMM (nem kötelező)
 
@@ -82,13 +73,14 @@ Készítse elő a VMM a hálózatleképezés az alábbiak szerint:
 
 Egy feladatátvevő forgatókönyv során érdemes lehet a replikált a helyszíni hálózathoz való kapcsolódáshoz.
 
-Ha a feladatátvételt követően RDP segítségével szeretne kapcsolódni a Windows virtuális gépekhez, tegye a következőket:
+Windows virtuális gépek a feladatátvételt követően RDP segítségével csatlakozhat, elérésének engedélyezése az alábbiak szerint:
 
 1. Ha internetes hozzáférést kíván használni, engedélyezze az RDP-t a helyszíni virtuális gépen a feladatátvétel előtt. Ellenőrizze, hogy a **Nyilvános** résznél felvette-e a listára a TCP- és UDP-szabályokat, valamint hogy a **Windows tűzfal** > **Engedélyezett alkalmazások** területén az összes profil számára engedélyezve van-e az RDP.
 2. Ha helyek közötti VPN-kapcsolatot kíván használni, engedélyezze az RDP-t a helyszíni gépen. Engedélyezze az RDP-t a **Windows tűzfal** -> **Engedélyezett alkalmazások és szolgáltatások** területén a **Tartomány és Privát** hálózatok számára.
    Ellenőrizze, hogy az operációs rendszer tárolóhálózati szabályzata **OnlineAll** értékre van-e állítva. [További információk](https://support.microsoft.com/kb/3031135). A virtuális gépen nem lehetnek függőben lévő Windows-frissítések a feladatátvétel elindításakor. Ha vannak, a frissítés befejeződéséig nem fog tudni bejelentkezni a virtuális gépre.
 3. A feladatátvételt követően ellenőrizze a **Rendszerindítási diagnosztika** részt a Windows Azure virtuális gépen a virtuális gép képernyőképének megtekintéséhez. Ha nem sikerül, ellenőrizze, hogy fut-e a virtuális gép, majd tekintse át a [hibaelhárítási tippeket](http://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx).
 
+A feladatátvétel után a azonos IP-címet használ a replikált helyszíni virtuális gép vagy egy másik IP-cím Azure virtuális gépek végezheti el. [További](concepts-on-premises-to-azure-networking.md) beállítása a feladatátvételi IP-címzést.
 
 ## <a name="next-steps"></a>További lépések
 

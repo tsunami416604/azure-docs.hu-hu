@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/28/2017
-ms.openlocfilehash: 00e98ff07d144db791fcf074699614f1e664634b
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 75b55b45c355f585fd73bdc1d97bc6adbbc4e9a0
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-machine-learning-experimentation-service-configuration-files"></a>Az Azure Machine Learning kísérletezhet szolgáltatás konfigurációs fájlok
 
@@ -206,7 +206,7 @@ Az alábbi példában a "mylocal.datasource" hivatkozást, az Azure ML adatforr�
  
 ```
 DataSourceSubstitutions:
-    myocal.dsource: myremote.dsource
+    mylocal.dsource: myremote.dsource
 ```
 
 A fenti helyettesítés alapján, a következő példakód most olvassa be az "myremote.dsource" helyett "mylocal.dsource" a felhasználók a programkód módosítása nélkül.

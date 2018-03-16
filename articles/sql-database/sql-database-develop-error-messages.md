@@ -1,8 +1,20 @@
- ---
-cím: SQL - adatbázis kapcsolati hiba hibakódok |} Microsoft Docs Leírás: "SQL-adatbázis ügyfélalkalmazások, például a közös adatbázis-kapcsolati hibák, az adatbázis másolása problémák és a általános hibák hibakódok SQL megismerése. "kulcsszavak: sql-hibakód, hozzáférési sql adatbázis-kapcsolati hiba sql-hibakódjai szolgáltatások: sql-adatbázis documentationcenter:" Szerző: stevestein manager: jhubbard szerkesztőben: "
-
-MS.AssetId: 2a23e4ca-ea93-4990-855a-1f9f05548202 ms.service: sql-adatbázis ms.custom: alkalmazások ms.workload fejlesztése: "Aktív" ms.tgt_pltfrm: na ms.devlang: na ms.topic: a következő cikket: ms.date: 09/28/2017 ms.author: sstein
-
+---
+title: "SQL - adatbázis kapcsolati hiba hibakódok |} Microsoft Docs"
+description: "SQL-adatbázis ügyfélalkalmazások, például a közös adatbázis-kapcsolati hibák, az adatbázis másolása problémák és a általános hibák hibakódok SQL megismerése. "
+keywords: "SQL-hibakód, hozzáférési sql, adatbázis-kapcsolati hiba, sql-hibakódjai"
+services: sql-database
+author: stevestein
+manager: craigg
+ms.service: sql-database
+ms.custom: develop apps
+ms.topic: article
+ms.date: 09/28/2017
+ms.author: sstein
+ms.openlocfilehash: 5031ab1ec8c7b42c65fb35e47c32d10ff2898501
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="sql-error-codes-for-sql-database-client-applications-database-connection-errors-and-other-issues"></a>Az SQL Database-ügyfélalkalmazások SQL hibakódjai: adatbázis-csatlakozási hibáinak és egyéb problémák
 
@@ -36,10 +48,10 @@ Hibák a következők átmeneti jellegűek, és meg kell ismételni a úgy az al
 
 | Hibakód | Súlyosság | Leírás |
 | ---:| ---:|:--- |
-| 4060 |16 |Nem nyitható meg az adatbázis "%.&#x2a;ls" a bejelentkezés által kért. A bejelentkezés sikertelen volt. |
+| 4060 |16 |Nem nyitható meg az adatbázis "%. & #x2a; ls" a bejelentkezés által kért. A bejelentkezés sikertelen volt. |
 | 40197 |17 |A szolgáltatás a kérelem feldolgozása hibát észlelt. Kérjük, próbálkozzon újból. Hibakód: %d.<br/><br/>Ha a szolgáltatás szoftver vagy a hardverfrissítés, a hardver meghibásodása vagy a más feladatátvételi problémák miatt nem működik a hibaüzenetet kap. Az üzenet hiba 40197 ágyazott hibakód: (%d) milyen típusú hiba vagy a feladatátvétel történt további információkkal szolgál. Néhány példa a kódok vannak ágyazva az üzenet hiba 40197 hiba 40020, 40143, 40166 és 40540.<br/><br/>Az SQL Database-kiszolgálóhoz csatlakozni automatikusan csatlakoztatja az adatbázis megfelelő példányához. Az alkalmazás kell catch 40197, hibanapló hibaelhárítási üzeneten belüli beágyazott hibakód: (%d), és próbáljon újra csatlakozni az SQL-adatbázis, az erőforrások elérhetők, amíg újból létrejött a kapcsolat. |
 | 40501 |20 |A szolgáltatás jelenleg túlterhelt. Próbálja megismételni a kérelmet 10 másodperc után. Incidens azonosítója: %ls. Kód: %d.<br/><br/>További információkért lásd:<br/>• [Erőforrás-korlátozások az azure SQL Database](sql-database-service-tiers.md). |
-| 40613 |17 |Adatbázis "%.&#x2a;ls" kiszolgáló "%.&#x2a;ls" már nem érhető el. Próbálkozzon újra később. Ha a probléma továbbra is fennáll, forduljon az ügyfélszolgálathoz, és adja meg azokat a munkamenet nyomkövetési Azonosítóját: "%.&#x2a;ls". |
+| 40613 |17 |Adatbázis "%. & #x2a; ls" kiszolgáló "%. & #x2a; ls" már nem érhető el. Próbálkozzon újra később. Ha a probléma továbbra is fennáll, forduljon az ügyfélszolgálathoz, és adja meg azokat a munkamenet nyomkövetési Azonosítóját: "%. & #x2a; ls". |
 | 49918 |16 |Nem tudja feldolgozni a kérelmet. Nincs elég erőforrás a kérelem feldolgozásához.<br/><br/>A szolgáltatás jelenleg túlterhelt. Próbálkozzon újra később a kérelmet. |
 | 49919 |16 |Nem lehet folyamatot létrehozni vagy frissítési kérelem. Túl sok létrehozási és frissítési művelet előfizetéshez tartozó "% ld".<br/><br/>A szolgáltatás túlterhelt feldolgozása több létrehozása vagy kérelmek az előfizetés vagy a kiszolgáló frissítése. Kérelmek jelenleg nincs hozzáférésük erőforrás-optimalizálás. Lekérdezés [sys.dm_operation_status](https://msdn.microsoft.com/library/dn270022.aspx) a függőben lévő műveletek. Várjon, amíg a létrehozás vagy frissítés függőben lévő kérelmek befejeződött vagy törölje az egyik a függőben lévő kérelmek, és próbálkozzon újra később. |
 | 49920 |16 |Nem tudja feldolgozni a kérelmet. Túl sok művelet fut. a előfizetéshez tartozó "% ld".<br/><br/>A szolgáltatás jelenleg elfoglalt ehhez az előfizetéshez több kérelmek feldolgozásához. Kérelmek jelenleg nincs hozzáférésük erőforrás-optimalizálás. Lekérdezés [sys.dm_operation_status](https://msdn.microsoft.com/library/dn270022.aspx) művelet állapot. Várjon, amíg a függőben lévő kérelmek befejeződött vagy törölje az egyik a függőben lévő kérések, és próbálkozzon újra később. |
@@ -50,7 +62,7 @@ A következő hiba is történt a adatbázis másolása az Azure SQL-adatbázis.
 
 | Hibakód | Súlyosság | Leírás |
 | ---:| ---:|:--- |
-| 40635 |16 |Ügyfél IP-címmel (%.&#x2a;ls) ideiglenesen le van tiltva. |
+| 40635 |16 |Ügyfél IP-címmel (%. & #x2a; ls) ideiglenesen le van tiltva. |
 | 40637 |16 |Hozzon létre adatbázis-másolás jelenleg le van tiltva. |
 | 40561 |16 |Adatbázis másolása sikertelen volt. A forrás vagy a céladatbázis nem létezik. |
 | 40562 |16 |Adatbázis másolása sikertelen volt. A forrásadatbázis el lett dobva. |
@@ -78,8 +90,8 @@ Kapcsolódó témakörök:
 
 | Hibakód | Súlyosság | Leírás |
 | ---:| ---:|:--- |
-| 10928 |20 |Erőforrás-azonosító: %d. Az adatbázis %s korlátozást %d, és el lett érve. További információkért lásd: [http://go.microsoft.com/fwlink/?LinkId=267637](http://go.microsoft.com/fwlink/?LinkId=267637).<br/><br/>Az erőforrás-azonosító azt jelzi, hogy az erőforrást, amely elérte a határértéket. A munkaszálak, az erőforrás-azonosító = 1. A munkamenetekben, az erőforrás-azonosító = 2.<br/><br/>Ez a hiba, és a megoldásának módjával kapcsolatos további információkért lásd:<br/>• [Erőforrás-korlátozások az azure SQL Database](sql-database-service-tiers.md). |
-| 10929 |20 |Erőforrás-azonosító: %d. A %s minimális biztonsági: %d, maximális száma: %d, és az adatbázis aktuális kihasználását: %d. Azonban az a kiszolgáló jelenleg túlzottan elfoglalt, a nagyobb, mint %d kérelmek támogatásához ehhez az adatbázishoz. További információkért lásd: [http://go.microsoft.com/fwlink/?LinkId=267637](http://go.microsoft.com/fwlink/?LinkId=267637). Ellenkező esetben próbálkozzon újra később.<br/><br/>Az erőforrás-azonosító azt jelzi, hogy az erőforrást, amely elérte a határértéket. A munkaszálak, az erőforrás-azonosító = 1. A munkamenetekben, az erőforrás-azonosító = 2.<br/><br/>Ez a hiba, és a megoldásának módjával kapcsolatos további információkért lásd:<br/>• [Erőforrás-korlátozások az azure SQL Database](sql-database-service-tiers.md). |
+| 10928 |20 |Erőforrás-azonosító: %d. Az adatbázis %s korlátozást %d, és el lett érve. Tovább információ: [http://go.microsoft.com/fwlink/?LinkId=267637](http://go.microsoft.com/fwlink/?LinkId=267637).<br/><br/>Az erőforrás-azonosító azt jelzi, hogy az erőforrást, amely elérte a határértéket. A munkaszálak, az erőforrás-azonosító = 1. A munkamenetekben, az erőforrás-azonosító = 2.<br/><br/>Ez a hiba, és a megoldásának módjával kapcsolatos további információkért lásd:<br/>• [Erőforrás-korlátozások az azure SQL Database](sql-database-service-tiers.md). |
+| 10929 |20 |Erőforrás-azonosító: %d. A %s minimális biztonsági: %d, maximális száma: %d, és az adatbázis aktuális kihasználását: %d. Azonban az a kiszolgáló jelenleg túlzottan elfoglalt, a nagyobb, mint %d kérelmek támogatásához ehhez az adatbázishoz. Tovább információ: [http://go.microsoft.com/fwlink/?LinkId=267637](http://go.microsoft.com/fwlink/?LinkId=267637). Ellenkező esetben próbálkozzon újra később.<br/><br/>Az erőforrás-azonosító azt jelzi, hogy az erőforrást, amely elérte a határértéket. A munkaszálak, az erőforrás-azonosító = 1. A munkamenetekben, az erőforrás-azonosító = 2.<br/><br/>Ez a hiba, és a megoldásának módjával kapcsolatos további információkért lásd:<br/>• [Erőforrás-korlátozások az azure SQL Database](sql-database-service-tiers.md). |
 | 40544 |20 |Az adatbázis elérte a üzenetméret-kvótája. Particionálhat vagy törölhet adatokat, dobjon el indexeket, vagy a dokumentációt a lehetséges megoldások megismeréséhez. |
 | 40549 |16 |Munkamenet meg lett szakítva, mert egy hosszú ideig futó tranzakció van. Próbálja lerövidíteni a tranzakciót. |
 | 40550 |16 |A munkamenet megszakadt, mert túl sok zárolások szerzett. Próbálja meg olvasása vagy egy tranzakción belül kevesebb sort módosítani. |
@@ -93,7 +105,7 @@ Hibák a következők létrehozása és a rugalmas készleteket használó kapcs
 | ErrorNumber | ErrorSeverity | ErrorFormat | ErrorInserts | ErrorCause | ErrorCorrectiveAction |
 |:--- |:--- |:--- |:--- |:--- |:--- |
 | 1132 |EX_RESOURCE |A rugalmas készlet elérte a tárolási korlátját. A rugalmas készlet tárolási felhasználásának mértéke nem lehet hosszabb (%d) MB. |A rugalmas készlet lemezterület-korlát MB-ban. |Próbál adatokat írni egy adatbázist, a rugalmas készlet tárolási kapacitása elérésekor. |Érdemes megfontolni a dtu-inak száma lehetőleg a rugalmas készlet ahhoz, hogy a tárolási korlátját növelje, csökkentse a rugalmas készlet belüli egyes adatbázisok által használt tároló, vagy távolítsa el az adatbázisokat a rugalmas készletből. |
-| 10929 |EX_USER |A %s minimális biztonsági: %d, maximális száma: %d, és az adatbázis aktuális kihasználását: %d. Azonban az a kiszolgáló jelenleg túlzottan elfoglalt, a nagyobb, mint %d kérelmek támogatásához ehhez az adatbázishoz. Lásd: [http://go.microsoft.com/fwlink/?LinkId=267637](http://go.microsoft.com/fwlink/?LinkId=267637) segítségért. Ellenkező esetben próbálkozzon újra később. |DTU-k minimális száma az adatbázisban. DTU k adatbázisonkénti maximális értékét |Egyidejű munkavállalók (kérelmek) között a rugalmas készlet az összes adatbázis teljes száma túllépi a készlet kapacitása történt kísérlet. |Ha lehetséges a rugalmas készlet dtu-i növelje a munkavégző korlátjának növelésére, vagy távolítsa el az adatbázisokat a rugalmas készletből. |
+| 10929 |EX_USER |A %s minimális biztonsági: %d, maximális száma: %d, és az adatbázis aktuális kihasználását: %d. Azonban az a kiszolgáló jelenleg túlzottan elfoglalt, a nagyobb, mint %d kérelmek támogatásához ehhez az adatbázishoz. Lásd: [ http://go.microsoft.com/fwlink/?LinkId=267637 ](http://go.microsoft.com/fwlink/?LinkId=267637) segítségért. Ellenkező esetben próbálkozzon újra később. |DTU-k minimális száma az adatbázisban. DTU k adatbázisonkénti maximális értékét |Egyidejű munkavállalók (kérelmek) között a rugalmas készlet az összes adatbázis teljes száma túllépi a készlet kapacitása történt kísérlet. |Ha lehetséges a rugalmas készlet dtu-i növelje a munkavégző korlátjának növelésére, vagy távolítsa el az adatbázisokat a rugalmas készletből. |
 | 40844 |EX_USER |Adatbázis: "%ls" kiszolgáló "%ls" egy "%ls" kiadású adatbázis, amely egy rugalmas készlet, és nem rendelkezhet a folyamatos másolás kapcsolatot. |adatbázis neve, az adatbázis-kiadás, a kiszolgáló neve |A nem prémium szintű db rugalmas készlethez tartozó StartDatabaseCopy parancs jelenik meg. |Hamarosan elérhető |
 | 40857 |EX_USER |A rugalmas készlet nem található a következő kiszolgálón: "%ls", a rugalmas készlet nevét: "%ls". |kiszolgáló; neve a rugalmas készlet nevét |Megadott rugalmas készlet nem létezik a megadott kiszolgálón. |Adja meg egy érvényes rugalmas készlet nevét. |
 | 40858 |EX_USER |A rugalmas készlet "%ls" már létezik a kiszolgálón: "%ls" |a rugalmas készlet neve, a kiszolgáló neve |Megadott rugalmas készlet már létezik a megadott logikai kiszolgálón. |Új rugalmas készlet nevét adja meg. |
@@ -126,35 +138,35 @@ Hibák a következők nem minden korábbi kategóriába tartoznak.
 | Hibakód | Súlyosság | Leírás |
 | ---:| ---:|:--- |
 | 15006 |16 |(AdministratorLogin) alhálózatnév nem érvényes, mert érvénytelen karaktereket tartalmaz. |
-| 18452 |14 |A bejelentkezés nem sikerült. A bejelentkezés nem megbízható tartományból van, ezért nem használható a Windows authentication.%.&#x2a;ls (a Windows-bejelentkezések nem támogatottak az SQL Server jelen verziójában.) |
-| 18456 |14 |Felhasználó bejelentkezése sikertelen volt a(z) %.&#x2a;ls'.%.&#x2a;ls %.&#x2a;ls (a felhasználó bejelentkezése sikertelen volt: "%.&#x2a;ls". A jelszó módosítása sikertelen volt. Bejelentkezéskori jelszómódosítás nem támogatott az SQL Server jelen verziójában.) |
-| 18470 |14 |A felhasználó bejelentkezése sikertelen volt: "%.&#x2a;ls". OK: A fiók nem disabled.%.&#x2a;ls |
+| 18452 |14 |A bejelentkezés nem sikerült. A bejelentkezés nem megbízható tartományból van, ezért nem használható a Windows authentication.%. & #x2a; ls (a Windows-bejelentkezések nem támogatottak az SQL Server jelen verziójában.) |
+| 18456 |14 |Felhasználó bejelentkezése sikertelen volt a(z) %. & #x2a;ls'.%. & #x2a; ls %. & #x2a; ls (a felhasználó bejelentkezése sikertelen volt: "%. & #x2a; ls". A jelszó módosítása sikertelen volt. Bejelentkezéskori jelszómódosítás nem támogatott az SQL Server jelen verziójában.) |
+| 18470 |14 |A felhasználó bejelentkezése sikertelen volt: "%. & #x2a; ls". OK: A fiók nem disabled.%. & #x2a; ls |
 | 40014 |16 |Több adatbázis ugyanabban a tranzakcióban nem használható. |
 | 40054 |16 |Egy fürtözött index nélküli táblákat nem támogatottak az SQL Server jelen verziójában. Hozzon létre egy fürtözött indexet, és próbálkozzon újra. |
 | 40133 |15 |Ez a művelet nem támogatott az SQL Server jelen verziójában. |
 | 40506 |16 |Megadott SID érvénytelen az SQL Server jelen verziójában. |
-| 40507 |16 |a(z) %.&#x2a;ls' nem hívható meg paraméterekkel az SQL Server jelen verziójában. |
+| 40507 |16 |a(z) %. & #x2a; ls' nem hívható meg paraméterekkel az SQL Server jelen verziójában. |
 | 40508 |16 |A USE utasítás nem támogatott adatbázisok közötti váltáshoz. Egy másik adatbázishoz való kapcsolódáshoz használjon új kapcsolatot. |
-| 40510 |16 |Utasítás (%.&#x2a;ls) az SQL Server jelen verziójában nem támogatott |
-| 40511 |16 |Beépített függvény "%.&#x2a;ls" az SQL Server jelen verziójában nem támogatott. |
+| 40510 |16 |Utasítás (%. & #x2a; ls) az SQL Server jelen verziójában nem támogatott |
+| 40511 |16 |Beépített függvény "%. & #x2a; ls" az SQL Server jelen verziójában nem támogatott. |
 | 40512 |16 |"%Ls" elavult funkció nem támogatott az SQL Server jelen verziójában. |
-| 40513 |16 |Kiszolgálói változó (%.&#x2a;ls) az SQL Server jelen verziójában nem támogatott. |
+| 40513 |16 |Kiszolgálói változó (%. & #x2a; ls) az SQL Server jelen verziójában nem támogatott. |
 | 40514 |16 |az SQL Server jelen verziójában nem támogatott: "%ls". |
-| 40515 |16 |Hivatkozás adatbázisra és/vagy a kiszolgáló neve a "%.&#x2a;ls" az SQL Server jelen verziójában nem támogatott. |
+| 40515 |16 |Hivatkozás adatbázisra és/vagy a kiszolgáló neve a "%. & #x2a; ls" az SQL Server jelen verziójában nem támogatott. |
 | 40516 |16 |A globális ideiglenes objektumok nem támogatottak az SQL Server jelen verziójában. |
-| 40517 |16 |Kulcsszó vagy utasításkapcsoló (%.&#x2a;ls) az SQL Server jelen verziójában nem támogatott. |
-| 40518 |16 |DBCC parancs "%.&#x2a;ls" az SQL Server jelen verziójában nem támogatott. |
+| 40517 |16 |Kulcsszó vagy utasításkapcsoló (%. & #x2a; ls) az SQL Server jelen verziójában nem támogatott. |
+| 40518 |16 |DBCC parancs "%. & #x2a; ls" az SQL Server jelen verziójában nem támogatott. |
 | 40520 |16 |Az SQL Server jelen verziójában nem támogatott a következő biztonságos osztály (% S_MSG). |
 | 40521 |16 |A kiszolgálói hatókörben az SQL Server jelen verziójában nem támogatott S_MSG a következő biztonságos osztály (%). |
-| 40522 |16 |Adatbázis egyszerű "%.&#x2a;ls" típus nem támogatott az SQL Server jelen verziójában. |
-| 40523 |16 |Az implicit felhasználói "%.&#x2a;ls" létrehozása az SQL Server jelen verziójában nem támogatott. Explicit módon létrehozni a felhasználót annak használata előtt. |
-| 40524 |16 |Adattípus (%.&#x2a;ls) az SQL Server jelen verziójában nem támogatott. |
+| 40522 |16 |Adatbázis egyszerű "%. & #x2a; ls" típus nem támogatott az SQL Server jelen verziójában. |
+| 40523 |16 |Az implicit felhasználói "%. & #x2a; ls" létrehozása az SQL Server jelen verziójában nem támogatott. Explicit módon létrehozni a felhasználót annak használata előtt. |
+| 40524 |16 |Adattípus (%. & #x2a; ls) az SQL Server jelen verziójában nem támogatott. |
 | 40525 |16 |"%.Ls" nem támogatja az SQL Server jelen verziójában. |
-| 40526 |16 |a(z) %.&#x2a;ls' sorkészlet-szolgáltató az SQL Server jelen verziójában nem támogatott. |
+| 40526 |16 |a(z) %. & #x2a; ls' sorkészlet-szolgáltató az SQL Server jelen verziójában nem támogatott. |
 | 40527 |16 |Csatolt kiszolgálók nem támogatottak az SQL Server jelen verziójában. |
 | 40528 |16 |Felhasználói tanúsítványok, aszimmetrikus kulcsokra vagy Windows rendszerbeli bejelentkezési adatokra az SQL Server jelen verziójában nem rendelhető hozzá. |
-| 40529 |16 |Beépített függvény "%.&#x2a;ls" megszemélyesítési környezetben nem támogatott az SQL Server jelen verziójában. |
-| 40532 |11 |Nem nyitható meg a kiszolgáló "%.&#x2a;ls" a bejelentkezés által kért. A bejelentkezés sikertelen volt. |
+| 40529 |16 |Beépített függvény "%. & #x2a; ls" megszemélyesítési környezetben nem támogatott az SQL Server jelen verziójában. |
+| 40532 |11 |Nem nyitható meg a kiszolgáló "%. & #x2a; ls" a bejelentkezés által kért. A bejelentkezés sikertelen volt. |
 | 40553 |16 |A munkamenet túl sok memória használata miatt meg lett szakítva. Próbálja meg módosítani a lekérdezést kevesebb sort dolgozzon fel.<br/><br/> Számának csökkentése `ORDER BY` és `GROUP BY` műveletek során a Transact-SQL csökkentheti a lekérdezés memóriára vonatkozó követelményeknek. |
 | 40604 |16 |Nem a CREATE/ALTER DATABASE sikerült, mert ezzel meghaladná a kiszolgáló kvótáját. |
 | 40606 |16 |Adatbázisok csatlakoztatása nem támogatott az SQL Server jelen verziójában. |
@@ -164,12 +176,12 @@ Hibák a következők nem minden korábbi kategóriába tartoznak.
 | 40615 |16 |Nem nyitható meg a kiszolgáló a bejelentkezés által kért "{0}". Ügyfél IP-cím "{1}" nem engedélyezett a kiszolgálóhoz való hozzáféréshez.<br /><br />Engedélyezi a hozzáférést, az SQL-adatbázis portálon, vagy futtassa a sp\_beállítása\_tűzfal\_a főadatbázison való futtatásával hozzon létre egy tűzfalszabályt ehhez IP-cím vagy a címtartomány-szabályok. A módosítás érvénybe lépéséhez akár öt percet is igénybe vehet. |
 | 40617 |16 |A tűzfalszabály-név, amely elindítja a (szabály neve) értéke túl hosszú. Maximális hossza 128. |
 | 40618 |16 |A tűzfalszabály-név nem lehet üres. |
-| 40620 |16 |A felhasználó bejelentkezése sikertelen volt: "%.&#x2a;ls". A jelszó módosítása sikertelen volt. Bejelentkezéskori jelszómódosítás nem támogatott az SQL Server jelen verziójában. |
+| 40620 |16 |A felhasználó bejelentkezése sikertelen volt: "%. & #x2a; ls". A jelszó módosítása sikertelen volt. Bejelentkezéskori jelszómódosítás nem támogatott az SQL Server jelen verziójában. |
 | 40627 |20 |A kiszolgáló "{0}" és az adatbázis "{1}" művelet van folyamatban. Várjon néhány percet, majd próbálja újra. |
 | 40630 |16 |Jelszó érvényesítése sikertelen volt. A jelszó nem felel meg házirend követelményeinek, mert túl rövid. |
 | 40631 |16 |A megadott jelszó nem túl hosszú. A jelszót kell legfeljebb 128 karakterből állhat. |
 | 40632 |16 |Jelszó érvényesítése sikertelen volt. Mivel az nem elég bonyolult a jelszó nem felel meg házirend követelményeinek. |
-| 40636 |16 |Egy fenntartott adatbázisnév nem használható "%.&#x2a;ls" Ebben a műveletben. |
+| 40636 |16 |Egy fenntartott adatbázisnév nem használható "%. & #x2a; ls" Ebben a műveletben. |
 | 40638 |16 |Érvénytelen előfizetés-azonosító (előfizetés-azonosító). Előfizetés nem létezik. |
 | 40639 |16 |Igénylés nem felel meg a sémának: (séma hiba). |
 | 40640 |20 |A kiszolgáló váratlan kivételt észlelt. |

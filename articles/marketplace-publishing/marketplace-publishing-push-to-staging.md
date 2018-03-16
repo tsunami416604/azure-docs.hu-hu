@@ -3,8 +3,8 @@ title: "Készítse elő, az ajánlatot az Azure piactérről való központi tel
 description: "Részletes útmutatást nyújtó tartalom marketing, árképzési tervek konfigurálása és tesztelt az ajánlatot, mielőtt telepítené az Azure piactérről."
 services: marketplace-publishing
 documentationcenter: 
-author: HannibalSII
-manager: hascipio
+author: msmbaldwin
+manager: mbaldwin
 editor: 
 ms.assetid: 3ccd2448-895b-477e-adf6-ab655a21d2fa
 ms.service: marketplace
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 08/17/2016
-ms.author: hascipio
-ms.openlocfilehash: 7db86716cdf8f9eb921c3c1813970acae7a3016b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: mbaldwin
+ms.openlocfilehash: 5bec9ac89487a824b9de9209547f0b96fa5fe678
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="complete-the-offer-creation-with-marketing-content"></a>Marketing tartalmú ajánlat létrehozásának befejezéséhez
 Ebben a lépésben a közzétételi folyamat meg kell adnia bizonyos marketing tartalom és a ajánlat és/vagy az Azure piactéren termékváltozatok részleteit. Például fog adja meg a termékhez, vállalati emblémát, ár tervek, tervek részleteit és más szükséges az ajánlat és/vagy SKU leküldése átmeneti adatok leírását. Ezt az információt használja az Azure portálon marketing tartalmat. Ez a folyamat kezdve látni fogja a [közzétételi portáljára][link-pubportal].
@@ -26,7 +26,7 @@ Ebben a lépésben a közzétételi folyamat meg kell adnia bizonyos marketing t
 ## <a name="step-1-provide-marketplace-marketing-content"></a>1. lépés: Adja meg a tartalom marketing piactér
 **Angol az alapértelmezett, és csak a támogatott nyelven.** Győződjön meg arról, hogy a mezők található összes információk angol nyelven. Az átmeneti üzem megkezdéséig az adatokat bármikor módosíthatja.
 
-1. Nyissa meg a közzétételi portálra [https://publish.windowsazure.com](https://publish.windowsazure.com).
+1. Nyissa meg a közzétételi portálra [ https://publish.windowsazure.com ](https://publish.windowsazure.com).
 2. A bal oldali menüben kattintson a **Marketing** fülre.
 3. A fő panelen kattintson a **angol (amerikai)** gombra.
    
@@ -228,7 +228,7 @@ Tervek talál + fogyasztás, ahol alapja a havi díjakon és keretét a fizetés
 | Bronz |$10/ hónap |Alapvető funkciókat és a következő szolgáltatás X 1000 tartozó kvóta. |Telepítheti át a bronz Plus ezüst és arany tervek |
 | Bronz plusz |Ingyenes próbaverzió lejárta: 0/ hónap + $0/meter01 |Alapvető funkciókat és 10 000-re a következő szolgáltatás X tartozó kvóta.  Szolgáltatás X kvóta szolgál, ha az ügyfél használati meter01 keresztül is nagy. |Telepítheti át a ezüst Plus és az arany tervek |
 | Bronz plusz |Fizetett időszak (más néven ingyenes próbaverzió lejárt): $10/hónap + $ 0,05/meter01 |Alapvető funkciókat és 10 000-re a következő szolgáltatás X tartozó kvóta.  Szolgáltatás X kvóta szolgál, ha az ügyfél használati meter01 keresztül is nagy. |Telepítheti át a ezüst Plus és az arany tervek |
-| Ezüst |$ 0,15/meter01 |Az ügyfél használati meter01, amely szolgáltatás X keresztül is nagy. |Telepítheti át a bronz és arany tervek |
+| Silver |$ 0,15/meter01 |Az ügyfél használati meter01, amely szolgáltatás X keresztül is nagy. |Telepítheti át a bronz és arany tervek |
 | Ezüst plusz |$20/ hónap + $ 0,15/meter01 + $ 0,01/meter02 |Alapvető funkciókat és 10 000-re a következő szolgáltatás X és Y funkció 100 tartozó kvóta.  Miután a szolgáltatás X kvóta használata esetén az ügyfél használati meter01 keresztül is fizet.  Miután a szolgáltatás Y kvóta használata esetén az ügyfél használati meter02 keresztül is fizet. |Telepítheti át a bronz Plus és az arany tervek |
 | Arany |1000/hónap |A következő szolgáltatás X, Y, funkció 1000 10 000-re vonatkozó kvótáját és korlátlan funkció z-ig. |Telepítheti át a szabad karakterek kivételével minden tervek |
 
@@ -270,13 +270,13 @@ Alábbiakban található információkat marketing ajánlatot felhasznált rész
 
 *Az ajánlat részleteinek az Azure-portálon*
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Most, hogy a piactér tartalom be van töltve, most előre együtt mozognak átmeneti ajánlatát tesztelése. Azonban ki kell választani a megfelelő ajánlat típusát az alábbi listán, mivel szükséges lépések eltérhetnek az ajánlattípus által.
 
 * [A tesztelési virtuális gép ajánlatát tesztelése](marketplace-publishing-vm-image-test-in-staging.md)
 * [A megoldás sablon ajánlat tesztelése az átmeneti](marketplace-publishing-solution-template-test-in-staging.md)
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 * [Első lépések: az ajánlat közzététele az Azure piactéren](marketplace-publishing-getting-started.md)
 
 [img-map-acom]:media/marketplace-publishing-push-to-staging/pubportal-mapping-acom.jpg

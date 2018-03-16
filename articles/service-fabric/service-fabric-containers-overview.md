@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 9/20/2017
 ms.author: msfussell
-ms.openlocfilehash: 412107db2dc446eb5a6a433bfb7fc3bc5e760c27
-ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
+ms.openlocfilehash: f12dc08953372b2dfae773df11cf1f47b42a1b89
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/13/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="service-fabric-and-containers"></a>A Service Fabric és a tárolók
 > [!NOTE]
@@ -26,11 +26,11 @@ ms.lasthandoff: 01/13/2018
 >   
 
 > [!NOTE]
-> A Service Fabric 6.1-es verziójú Windows Server verzió 1709 előzetes támogatása rendelkezik. Nyissa meg a hálózat és a Service Fabric DNS-szolgáltatás nem működnek a Windows Server verzió 1709. 
+> A Service Fabric 6.1-es verziója előzetes verzióban támogatja a Windows Server 1709-es verzióját. A nyílt hálózatkezelés és a Service Fabric DNS-szolgáltatás nem működik a Windows Server 1709-es verziójával. 
 > 
 
 ## <a name="introduction"></a>Bevezetés
-Az Azure Service fabric egy [orchestrator](service-fabric-cluster-resource-manager-introduction.md) szolgáltatások gépet fürtön belül, használatát és az optimalizálást a jelentős mértékű évnyi szolgáltatásokat, amely Microsoft. Szolgáltatások használatával számos módon fejleszthetők a [programozási modellek Service Fabric](service-fabric-choose-framework.md) telepítésével [Vendég végrehajtható fájlok](service-fabric-deploy-existing-app.md). Alapértelmezés szerint a Service Fabric telepíti, és ezek a szolgáltatások, folyamatok aktiválja. Folyamatok adja meg a leggyorsabb aktiválás és a legmagasabb sűrűség használatát egy fürtön. A Service Fabric szolgáltatások tároló képek is telepítheti. Fontos kombinálhatja a folyamatokat a szolgáltatások és szolgáltatások tárolókban ugyanabban az alkalmazásban.   
+Az Azure Service fabric egy [orchestrator](service-fabric-cluster-resource-manager-introduction.md) szolgáltatások gépet fürtön belül, használatát és az optimalizálást a jelentős mértékű évnyi szolgáltatásokat, amely Microsoft. Szolgáltatások használatával számos módon fejleszthetők a [programozási modellek Service Fabric](service-fabric-choose-framework.md) telepítésével [Vendég végrehajtható fájlok](service-fabric-guest-executables-introduction.md). Alapértelmezés szerint a Service Fabric telepíti, és ezek a szolgáltatások, folyamatok aktiválja. Folyamatok adja meg a leggyorsabb aktiválás és a legmagasabb sűrűség használatát egy fürtön. A Service Fabric szolgáltatások tároló képek is telepítheti. Fontos kombinálhatja a folyamatokat a szolgáltatások és szolgáltatások tárolókban ugyanabban az alkalmazásban.   
 
 ## <a name="what-are-containers"></a>Mik azok a tárolók?
 Tárolók összetevői beágyazott, külön-külön telepíthető, amely a azonos kernel előnyeit, amely az operációs rendszer biztosít a virtualizálási elszigetelt példányai futtassa. Így minden alkalmazás és a futtatókörnyezet, a függőségeket és a rendszer tárak futhat egy tároló teljes, privát hozzáférést az operációs rendszer megoldások tároló saját elkülönített nézethez. Hordozhatósága, valamint biztonsági és erőforrás-elkülönítést az ilyen mértékű tárolók használata a Service Fabric, amelyek egyébként szolgáltatást futtat folyamatokat a fő juttatása.
@@ -72,7 +72,7 @@ Az alábbi ábrán látható a különböző típusú virtualizálás és az elk
 ## <a name="service-fabric-support-for-containers"></a>A Service Fabric tárolók támogatása
 A Service Fabric a Docker-tároló központi telepítését támogatja a Linux és Windows Server-tárolókra vonatkozóan a Windows Server 2016 működési feltételeit, támogatja a Hyper-V elkülönítési üzemmódját. 
 
-A Service Fabric a [alkalmazásmodell](service-fabric-application-model.md), a tároló jelöli egy alkalmazásgazda, mely több szolgáltatásban replikák kerülnek. A Service Fabric tárolókkal futtathatja, és a forgatókönyv hasonlít a [Vendég végrehajtható forgatókönyv](service-fabric-deploy-existing-app.md), ahol a becsomagolt belül egy tárolót egy meglévő alkalmazást. Ebben a forgatókönyvben a gyakori használati eset az tárolókat, és példák bármilyen nyelvet vagy keretrendszert használja, de nem használ a beépített Service Fabric programozási modellek írása egy alkalmazást futtat.
+A Service Fabric a [alkalmazásmodell](service-fabric-application-model.md), a tároló jelöli egy alkalmazásgazda, mely több szolgáltatásban replikák kerülnek. A Service Fabric tárolókkal futtathatja, és a forgatókönyv hasonlít a [Vendég végrehajtható forgatókönyv](service-fabric-guest-executables-introduction.md), ahol a becsomagolt belül egy tárolót egy meglévő alkalmazást. Ebben a forgatókönyvben a gyakori használati eset az tárolókat, és példák bármilyen nyelvet vagy keretrendszert használja, de nem használ a beépített Service Fabric programozási modellek írása egy alkalmazást futtat.
 
 Ezenkívül futtatása [Service Fabric szolgáltatások tárolókba](service-fabric-services-inside-containers.md) is. Tárolók belül futó Service Fabric-szolgáltatások támogatása jelenleg korlátozott, és a jövőbeli kiadásokban javítani kell.
 

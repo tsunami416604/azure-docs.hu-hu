@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/02/2018
+ms.date: 03/14/2018
 ms.author: magoedte
-ms.openlocfilehash: 85fde471f0d99b976e319d552c6a031d63854cf4
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 9346e9a9ad310a21c6d6ce388b76ce491041289c
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="collect-data-from-computers-in-your-environment-with-log-analytics"></a>Adatgyűjtés a Naplóelemzési a környezetében lévő számítógépek
 
@@ -77,14 +77,14 @@ A következő Linux terjesztésekről hivatalosan támogatottak.  A Linux-ügyn�
 * SUSE Linux Enterprise Server 11 és 12 (x86/x64)
 
 #### <a name="network-configuration"></a>Hálózati konfiguráció
-Az alábbi lista a proxy és tűzfal konfigurációs adatokat, a Linux-ügynök Naplóelemzési folytatott kommunikációhoz szükséges információt. Akkor kimenő forgalomról beszélünk a hálózatról a Log Analytics szolgáltatásba. 
+Az alábbi lista a proxy és tűzfal konfigurációs adatokat, a Linux-ügynök Naplóelemzési folytatott kommunikációhoz szükséges információt.  
 
-|Ügynök erőforrása| Portok |  
-|------|---------|  
-|*.ods.opinsights.azure.com | 443-as port|   
-|*.oms.opinsights.azure.com | 443-as port|   
-|*.blob.core.windows.net | 443-as port|   
-|*.azure-automation.net | 443-as port|  
+|Ügynök erőforrása| Portok | Irány |  
+|------|---------|--------|  
+|*.ods.opinsights.azure.com | 443-as port | Bejövő és kimenő|  
+|*.oms.opinsights.azure.com | 443-as port | Bejövő és kimenő|  
+|*.blob.core.windows.net | 443-as port | Bejövő és kimenő|  
+|*.azure-automation.net | 443-as port | Bejövő és kimenő|  
 
 A Linux-ügynök támogatja a proxykiszolgáló vagy a HTTPS protokollon keresztül Naplóelemzés szolgáltatás OMS-átjáró keresztül kommunikál.  A névtelen és alapszintű hitelesítés (felhasználónév/jelszó) támogatottak.  A proxy kiszolgáló telepítése során vagy a telepítés után a proxy.conf konfigurációs fájl módosításával adható meg.  
 

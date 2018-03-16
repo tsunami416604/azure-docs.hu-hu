@@ -2,25 +2,19 @@
 title: "Az Azure SQL Database biztonsági áttekintése | Microsoft Docs"
 description: "További tudnivalók az Azure SQL Database és SQL Server biztonsági, beleértve a felhőben és helyszíni SQL Server közötti különbségeket."
 services: sql-database
-documentationcenter: 
 author: giladm
-manager: shaik
+manager: craigg
 ms.reviewer: carlrab
-editor: 
-ms.assetid: a012bb85-7fb4-4fde-a2fc-cf426c0a56bb
 ms.service: sql-database
 ms.custom: security
-ms.devlang: NA
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: On Demand
-ms.date: 01/29/2018
+ms.date: 03/12/2018
 ms.author: giladm
-ms.openlocfilehash: 41051944af863c4c50595ea843e2adf3513b3a12
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 1dc34f021fa6482c65cce0e922951ae329987c43
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="securing-your-sql-database"></a>Az SQL Database-adatbázis védelme
 
@@ -62,7 +56,6 @@ Az adatok védelme érdekében a tűzfalak mindaddig megakadályozzák az adatb�
 
 ### <a name="authentication"></a>Hitelesítés
 Az SQL Database-hitelesítés azt jelenti, hogy hogyan igazolja az identitását az adatbázishoz való csatlakozáskor. Az SQL Database két hitelesítési típust támogat:
-
 * A felhasználónévvel és jelszóval végzett **SQL-hitelesítést**. Az adatbázis logikai kiszolgálójának létrehozásakor megadta a „kiszolgálói rendszergazda” bejelentkezés felhasználónevét és jelszavát. Ezen hitelesítő adatokkal hitelesítheti magát a kiszolgáló minden adatbázisában az adatbázis tulajdonosaként („dbo”). 
 * Az **Azure Active Directory-alapú hitelesítést**, amely az Azure Active Directory által felügyelt identitásokat használ, és a felügyelt és integrált tartományok is támogatják. [Amikor csak lehet](https://msdn.microsoft.com/library/ms144284.aspx), használja az Active Directory-hitelesítést (beépített biztonság). Ha Azure Active Directory-alapú hitelesítést kíván használni, létre kell hoznia egy másik kiszolgálói rendszergazdát „Azure AD admin” névvel, amely engedélyekkel rendelkezik az Azure AD-felhasználók és -csoportok felügyeletéhez. Ez a rendszergazda a normál kiszolgálói rendszergazdák által elvégezhető összes műveletet is végrehajthatja. A [Csatlakozás az SQL Database-hez Azure Active Directory-alapú hitelesítéssel](sql-database-aad-authentication.md) című cikk bemutatja, hogyan hozhat létre Azure AD-rendszergazdát az Azure Active Directory-alapú hitelesítés engedélyezéséhez.
 
@@ -86,6 +79,21 @@ A Fenyegetésészlelés kiegészíti a naplózás esetén az Azure SQL Database 
  
 ## <a name="compliance"></a>Megfelelőség
 Rendszeres ellenőrzéseket részt vesz a fenti szolgáltatásait és funkcióit, amelyekkel az alkalmazás különböző biztonsági követelmények, az Azure SQL Database is teljesítéséhez mellett, és megfelelőségi követelményeket számos elleni hitelesített. További információkat az [Azure biztonsági és adatkezelési központban](https://azure.microsoft.com/support/trust-center/) talál, az [SQL Database megfelelőségi tanúsítványainak](https://azure.microsoft.com/support/trust-center/services/) aktuális listájával együtt.
+
+
+## <a name="security-management"></a>Biztonság kezelése
+
+SQL-adatbázis segítségével az adatok biztonsági azáltal, hogy az adatbázis-vizsgálatok és központosított biztonsági Irányítópult segítségével felügyelheti [SQL biztonsági réseinek értékelése](sql-vulnerability-assessment.md).
+
+**Biztonsági réseinek értékelése**: [SQL biztonsági réseinek értékelése](sql-vulnerability-assessment.md) (jelenleg előzetes verzió) egy könnyen konfigurálható felderítésére, nyomon követheti és szervizelheti azokat a lehetséges adatbázis segítséget az Azure SQL Database beépített eszköz biztonsági rések. A értékelése végrehajtja a biztonsági vizsgálatok az adatbázishoz, és hoz létre olyan jelentést, amely betekintést nyújt a biztonsági állapotát, beleértve, a biztonsági problémák megoldásához és az adatbázis biztonsági végrehajtandó lépések. A vizsgálati jelentés környezetre úgy, hogy egy elfogadható alapterv engedély konfigurációk, konfigurációk és adatbázis-beállításainak testre szabható. Ennek segítségével:
+
+- A megfelelőségi követelményeknek adatbázis vizsgálat jelentések igénylő. 
+
+- Adatok adatvédelmi szabványoknak megfelelő. 
+
+- Egy dinamikus adatbázis környezetében, ahol módosításokat nehéz nyomon követéséhez figyelje.
+
+További információkért lásd: [SQL biztonsági réseinek értékelése](sql-vulnerability-assessment.md).
 
 ## <a name="next-steps"></a>További lépések
 

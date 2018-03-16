@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 01/12/2018
-ms.openlocfilehash: d1e3a4fd4415afb995f614ac687096f6fb8ece95
-ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
+ms.openlocfilehash: 62207fa20c4660d1e828053ee73953cb68af1b9d
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/13/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-machine-learning-workbench---known-issues-and-troubleshooting-guide"></a>Az Azure Machine Learning munkaterület - ismert problémák és hibaelhárítási útmutatója 
 Ez a cikk segít keresés és javítsa ki a hibákat, vagy sikertelen műveletek használata az Azure Machine Learning-munkaterület alkalmazás részeként. 
@@ -23,7 +23,7 @@ Ez a cikk segít keresés és javítsa ki a hibákat, vagy sikertelen műveletek
 Ha a támogatási csoport kommunikál, fontos közé tartozik a munkaterületet üzemeltető app build száma. A Windows rendszeren talál a buildszám kattintva a **súgó** menü válassza **kapcsolatos Azure ML munkaterület**. A macOS, kattintson a **Azure ML munkaterület** menü válassza **kapcsolatos Azure ML munkaterület**.
 
 ## <a name="machine-learning-msdn-forum"></a>Machine Learning MSDN fórum
-Az MSDN fórumon, hogy kérdéseit felteheti is van. A termékért felelős csoport a Fórum aktívan figyeli. Az URL-cím fórumra [https://aka.ms/azureml-forum](https://aka.ms/azureml-forum). 
+Az MSDN fórumon, hogy kérdéseit felteheti is van. A termékért felelős csoport a Fórum aktívan figyeli. Az URL-cím fórumra [ https://aka.ms/azureml-forum ](https://aka.ms/azureml-forum). 
 
 ## <a name="gather-diagnostics-information"></a>Diagnosztikai adatainak összegyűjtése
 Egyes esetekben hasznos lehet ha diagnosztikai adatokat is biztosít, ha a segítségkérés. Ez a naplófájlok lakhelyétől:
@@ -99,10 +99,10 @@ Előfordulhat, hogy már telepítette a frissítést. De a rögzített helyi tov
 
 ### <a name="you-installed-workbench-using-the-install-azure-ml-workbench-link-on-a-windows-dsvm"></a>"Az Azure ML munkaterület telepítés" hivatkozás segítségével a Windows-DSVM munkaterület telepítése
 Sajnos van nem egyszerű ezen a projekten. Akkor kell távolítania a telepített bits, és töltse le a legfrissebb telepítő friss-telepítésre a munkaterület a következő lépésekkel: 
-   - a következő mappa eltávolítása`C:\Users\<Username>\AppData\Local\amlworkbench`
-   - Távolítsa el a parancsfájl`C:\dsvm\tools\setup\InstallAMLFromLocal.ps1`
+   - a következő mappa eltávolítása `C:\Users\<Username>\AppData\Local\amlworkbench`
+   - Távolítsa el a parancsfájl `C:\dsvm\tools\setup\InstallAMLFromLocal.ps1`
    - a fenti szkript indító parancsikon eltávolítása
-   - a telepítő https://aka.ms/azureml-wb-msi töltse le és telepítse újra.
+   - a telepítő letöltési https://aka.ms/azureml-wb-msi , majd telepítse újra.
 
 ## <a name="stuck-at-checking-experimentation-account-screen-after-logging-in"></a>A bejelentkezés után "Kísérletezhet fiók ellenőrzése" képernyő Beragadt
 A bejelentkezés után a munkaterületet üzemeltető alkalmazás előfordulhat, hogy elakadnak a üres képernyőt ábrázoló "Ellenőrzése kísérletezhet fiók" egy forgó rájuk üzenetet. A probléma megoldásához tegye a következőket:
@@ -203,11 +203,14 @@ Is hozzá adatlemezt, majd konfigurálja a adatlemez lemezképek tárolásához 
 Vagy, bővítheti az operációsrendszer-lemezképet, és nem kell touch Docker motor konfigurációját. Itt [hogyan bővítheti az operációsrendszer-lemezképet](https://docs.microsoft.com/azure/virtual-machines/linux/expand-disks).
 
 ```azure-cli
-#Deallocate VM (stopping will not work)
+# Deallocate VM (stopping will not work)
 $ az vm deallocate --resource-group myResourceGroup  --name myVM
 
-# Update Disc Size
-$ az disk update --resource-group myResourceGroup --name myVM --size-gb 250
+# Get VM's Disc Name
+az disk list --resource-group myResourceGroup --query '[*].{Name:name,Gb:diskSizeGb,Tier:accountType}' --output table
+
+# Update Disc Size using above name
+$ az disk update --resource-group myResourceGroup --name myVMdisc --size-gb 250
     
 # Start VM    
 $ az vm start --resource-group myResourceGroup  --name myVM
@@ -228,7 +231,7 @@ A megosztási problémát, a kis teljesítményt, úgy, hogy a is elkerülheti `
 ## <a name="wipe-clean-workbench-installation"></a>Tisztán munkaterület törlése
 Általában nem kell ehhez. De ha Ön kitakarítása tiszta telepítés, a lépések a következők:
 
-- A Windows esetén:
+- On Windows:
   - Először ellenőrizze, hogy használja _programok telepítése és törlése_ kisalkalmazást a _Vezérlőpult_ eltávolítása a _Azure Machine Learning-munkaterület_ alkalmazás bejegyzést.  
   - Ezután töltse le és futtassa az alábbi parancsfájlok egyikét:
     - [Windows parancssori parancsfájl](https://github.com/Azure/MachineLearning-Scripts/blob/master/cleanup/cleanup_win.cmd).

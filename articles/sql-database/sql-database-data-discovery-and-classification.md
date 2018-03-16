@@ -2,24 +2,19 @@
 title: "Az Azure SQL-adatbázis adatainak felderítése és besorolása |} Microsoft Docs"
 description: "Az Azure SQL-adatbázis adatainak felderítése és besorolása"
 services: sql-database
-documentationcenter: 
 author: giladm
-manager: shaik
+manager: craigg
 ms.reviewer: carlrab
-ms.assetid: 89c2a155-c2fb-4b67-bc19-9b4e03c6d3bc
 ms.service: sql-database
 ms.custom: security
-ms.workload: data-management
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: giladm
-ms.openlocfilehash: da4f72e61607dcad7314a2fe65324da4635752c5
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 18afebefaee9117244767e0a00e293a297bbf9af
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-sql-database-data-discovery-and-classification"></a>Az Azure SQL-adatbázis adatainak felderítése és besorolása
 Az Azure SQL Database beépített speciális képességeket biztosít a felderítési adatok & besorolás (jelenleg előzetes verzió) **felderítéséhez**, **zárolásának**, **címkézés**  &  **védelme** az adatbázisokat a bizalmas adatokat.

@@ -2,24 +2,18 @@
 title: "A rugalmas adatbázis ügyféloldali kódtár használata Entity Framework |} Microsoft Docs"
 description: "Elastic Database ügyféloldali kódtár és Entity Framework használja az adatbázisok kódolása"
 services: sql-database
-documentationcenter: 
-manager: jhubbard
-author: torsteng
-editor: 
-ms.assetid: b9c3065b-cb92-41be-aa7f-deba23e7e159
+manager: craigg
+author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: Inactive
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 03/06/2017
-ms.author: torsteng
-ms.openlocfilehash: 1fc61657419f1f4581c5c67639d7bc2e4b0d509f
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.author: sstein
+ms.openlocfilehash: 5f215c6c6f65804785e35ae1b3ec9cce24e2a976
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="elastic-database-client-library-with-entity-framework"></a>Az Entity Framework rugalmas adatbázis ügyféloldali kódtár
 Ez a dokumentum láthatók, amelyek szükségesek ahhoz, hogy integrálható az Entity Framework alkalmazásban a [skálázáshoz rugalmas adatbáziseszközöket](sql-database-elastic-scale-introduction.md). A elsősorban összeállítása [shard térkép felügyeleti](sql-database-elastic-scale-shard-map-management.md) és [adatok függő útválasztási](sql-database-elastic-scale-data-dependent-routing.md) az Entity Framework rendelkező **Code First** megközelítést. A [Code először - új adatbázis](http://msdn.microsoft.com/data/jj193542.aspx) EF útmutató Ez a dokumentum futó példaként szolgál. Ez a dokumentum kísérő mintakód beállítása a Visual Studio-Kódminták található minták rugalmas adatbázis eszközök részét képezi.
@@ -173,20 +167,20 @@ A következő példakód azt szemlélteti, hogyan SQL újrapróbálkozási házi
 
 **SqlDatabaseUtils.SqlRetryPolicy** a kódban van definiálva, egy **SqlDatabaseTransientErrorDetectionStrategy** újrapróbálkozás-szám 10-es és 5 másodperc várjon az újrapróbálkozások között eltelt idő. Ez a megközelítés hasonlít az útmutató EF és a felhasználó által kezdeményezett tranzakció (lásd: [korlátozásai a végrehajtási stratégiák újrapróbálkozás (EF6 és újabb verziók esetében)](http://msdn.microsoft.com/data/dn307226). Mindkét esetben szükséges, hogy az alkalmazás szabályozza a hatókör, amelyhez a átmeneti kivételt adja vissza: Nyissa meg újra a tranzakciót, vagy (ahogy) hozza létre újra a megfelelő konstruktor a környezetben, amely a rugalmas adatbázis ügyféloldali kódtár használ.
 
-Történő ellenőrzése, ahol átmeneti kivételek a hálózatról, biztonsági hatókör is kizárja a beépített használatát **SqlAzureExecutionStrategy** az EF elérhető lesz. **SqlAzureExecutionStrategy** volna nyissa meg újra a kapcsolatot, de nem használható **OpenConnectionForKey** , és ezért az érvényesítési részeként végrehajtott műveletek a **OpenConnectionForKey** hívja. Ehelyett a kódminta használja a beépített **DefaultExecutionStrategy** az EF is elérhető lesz. Helyett **SqlAzureExecutionStrategy**, megfelelően működik az újrapróbálkozási házirendet kezeljen átmeneti hiba együtt. A végrehajtási házirend beállítása a **ElasticScaleDbConfiguration** osztály. Vegye figyelembe, hogy nem használandó döntöttünk **DefaultSqlExecutionStrategy** óta használatával javasol **SqlAzureExecutionStrategy** átmeneti kivételek esetén – amely vezetne nem megfelelő viselkedésének című szakaszban leírtaknak megfelelően. A házirendek a különböző újrapróbálkozásos és EF további információkért lásd: [kapcsolati rugalmasságot az EF](http://msdn.microsoft.com/data/dn456835.aspx).     
+Történő ellenőrzése, ahol átmeneti kivételek a hálózatról, biztonsági hatókör is kizárja a beépített használatát **SqlAzureExecutionStrategy** az EF elérhető lesz. **SqlAzureExecutionStrategy** volna nyissa meg újra a kapcsolatot, de nem használható **OpenConnectionForKey** , és ezért az érvényesítési részeként végrehajtott műveletek a **OpenConnectionForKey**hívható meg. Ehelyett a kódminta használja a beépített **DefaultExecutionStrategy** az EF is elérhető lesz. Helyett **SqlAzureExecutionStrategy**, megfelelően működik az újrapróbálkozási házirendet kezeljen átmeneti hiba együtt. A végrehajtási házirend beállítása a **ElasticScaleDbConfiguration** osztály. Vegye figyelembe, hogy nem használandó döntöttünk **DefaultSqlExecutionStrategy** óta használatával javasol **SqlAzureExecutionStrategy** átmeneti kivételek esetén – amely vezetne nem megfelelő viselkedésének című szakaszban leírtaknak megfelelően. A házirendek a különböző újrapróbálkozásos és EF további információkért lásd: [kapcsolati rugalmasságot az EF](http://msdn.microsoft.com/data/dn456835.aspx).     
 
 #### <a name="constructor-rewrites"></a>Konstruktor újraírások
 A fenti példák bemutatják, hogy az alapértelmezett konstruktor átírja ahhoz, hogy az Entity Framework az útválasztási adatok függő alkalmazás szükséges. A következő táblázat a más konstruktorok megközelítése használatúvá. 
 
 | Aktuális konstruktor | Az adatok egy átírt konstruktor | Alap konstruktor | Megjegyzések |
 | --- | --- | --- | --- |
-| MyContext() |ElasticScaleContext (ShardMap, TKey) |DbContext (DbConnection, bool) |A kapcsolat kell lennie a shard leképezés és az adatok függő útválasztási kulcsot. Kihagyva automatikus kapcsolat létrehozásának EF kell, és helyette a shard térkép segítségével replikaszervező a kapcsolatot. |
-| MyContext(string) |ElasticScaleContext (ShardMap, TKey) |DbContext (DbConnection, bool) |A szilánkok leképezés és az adatok függő útválasztási kulcs létrejön a kapcsolat. A rögzített adatbázis neve vagy a kapcsolati karakterlánc nem működik, akkor a shard térkép által kihagyva érvényesítési. |
-| MyContext(DbCompiledModel) |ElasticScaleContext (ShardMap, TKey, DbCompiledModel) |DbContext (DbConnection, DbCompiledModel, logikai) |A kapcsolat az adott shard térkép és horizontális kulcs jön létre a megadott mintának. A lefordított modell átadódik az alap c'tor. |
-| MyContext (DbConnection, bool) |ElasticScaleContext (ShardMap, TKey, logikai) |DbContext (DbConnection, bool) |A kapcsolat kell következtethető ki a shard térkép és a kulcsot. Azt nem adható meg bemenetként (kivéve, ha a bemenetet a shard térkép és a kulcs már használja). A logikai érték lett átadva. |
-| MyContext (karakterlánc, DbCompiledModel) |ElasticScaleContext (ShardMap, TKey, DbCompiledModel) |DbContext (DbConnection, DbCompiledModel, logikai) |A kapcsolat kell következtethető ki a shard térkép és a kulcsot. Azt nem adható meg bemenetként (kivéve, ha a bemenetet a shard térkép és a kulcs lett használatával). A lefordított modell lett átadva. |
-| MyContext (ObjectContext, bool) |ElasticScaleContext (ShardMap, TKey, ObjectContext, bool) |DbContext (ObjectContext, bool) |Gondoskodjon arról, hogy a kapcsolat a adatként az ObjectContext objektumban található átirányítását kezeli a rugalmas bővítést kapcsolatra kell az új konstruktor. Részletes leírását az ObjectContexts nem a jelen dokumentum terjed. |
-| MyContext (DbConnection, DbCompiledModel, logikai) |ElasticScaleContext (ShardMap, TKey, DbCompiledModel, bool) |DbContext (DbConnection, DbCompiledModel, logikai); |A kapcsolat kell következtethető ki a shard térkép és a kulcsot. A kapcsolat nem adható meg bemenetként (kivéve, ha a bemenetet a shard térkép és a kulcs már használja). Modell és a logikai átadott a alaposztály konstruktor. |
+| MyContext() |ElasticScaleContext(ShardMap, TKey) |DbContext (DbConnection, bool) |A kapcsolat kell lennie a shard leképezés és az adatok függő útválasztási kulcsot. Kihagyva automatikus kapcsolat létrehozásának EF kell, és helyette a shard térkép segítségével replikaszervező a kapcsolatot. |
+| MyContext(string) |ElasticScaleContext(ShardMap, TKey) |DbContext (DbConnection, bool) |A szilánkok leképezés és az adatok függő útválasztási kulcs létrejön a kapcsolat. A rögzített adatbázis neve vagy a kapcsolati karakterlánc nem működik, akkor a shard térkép által kihagyva érvényesítési. |
+| MyContext(DbCompiledModel) |ElasticScaleContext(ShardMap, TKey, DbCompiledModel) |DbContext(DbConnection, DbCompiledModel, bool) |A kapcsolat az adott shard térkép és horizontális kulcs jön létre a megadott mintának. A lefordított modell átadódik az alap c'tor. |
+| MyContext (DbConnection, bool) |ElasticScaleContext(ShardMap, TKey, bool) |DbContext (DbConnection, bool) |A kapcsolat kell következtethető ki a shard térkép és a kulcsot. Azt nem adható meg bemenetként (kivéve, ha a bemenetet a shard térkép és a kulcs már használja). A logikai érték lett átadva. |
+| MyContext(string, DbCompiledModel) |ElasticScaleContext(ShardMap, TKey, DbCompiledModel) |DbContext(DbConnection, DbCompiledModel, bool) |A kapcsolat kell következtethető ki a shard térkép és a kulcsot. Azt nem adható meg bemenetként (kivéve, ha a bemenetet a shard térkép és a kulcs lett használatával). A lefordított modell lett átadva. |
+| MyContext (ObjectContext, bool) |ElasticScaleContext(ShardMap, TKey, ObjectContext, bool) |DbContext (ObjectContext, bool) |Gondoskodjon arról, hogy a kapcsolat a adatként az ObjectContext objektumban található átirányítását kezeli a rugalmas bővítést kapcsolatra kell az új konstruktor. Részletes leírását az ObjectContexts nem a jelen dokumentum terjed. |
+| MyContext(DbConnection, DbCompiledModel, bool) |ElasticScaleContext(ShardMap, TKey, DbCompiledModel, bool) |DbContext(DbConnection, DbCompiledModel, bool); |A kapcsolat kell következtethető ki a shard térkép és a kulcsot. A kapcsolat nem adható meg bemenetként (kivéve, ha a bemenetet a shard térkép és a kulcs már használja). Modell és a logikai átadott a alaposztály konstruktor. |
 
 ## <a name="shard-schema-deployment-through-ef-migrations"></a>A shard séma telepítési keresztül EF-áttelepítések
 Automatikus séma kezelésére szolgál az Entity Framework által biztosított, a könnyebb elérhetőség érdekében. A rugalmas adatbázis-eszközt használó alkalmazások környezetében szeretné megőrizni ezt a képességet, hogy automatikusan kiépítést biztosítson a sémát, hogy az újonnan létrehozott szilánkok adatbázisok a szilánkos alkalmazás hozzáadásakor. Az elsődleges használati eset az adatréteg szilánkos alkalmazásokhoz EF-kapacitás növelése érdekében. Séma felügyeleti képességeket EF-EK hagyatkoznia csökkenti az adatbázis-felügyeleti elérhető EF épülő szilánkos alkalmazással. 

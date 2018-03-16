@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2016
 ms.author: cephalin
-ms.openlocfilehash: a5ac6c02e28c19346abae9e5ea3dba9af4022dde
-ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
+ms.openlocfilehash: e82bbff908ea5499765edc71e52caa573c816a62
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="enable-diagnostics-logging-for-web-apps-in-azure-app-service"></a>Az Azure App Service web Apps diagnosztikai naplózás engedélyezése
 ## <a name="overview"></a>Áttekintés
@@ -88,7 +88,7 @@ Minden három tárolóhelyek naplózott események az ugyanazon alapvető adatok
 >
 >
 
-## <a name="download"></a>Hogyan: naplók letöltése
+## <a name="download"></a> Hogyan: naplók letöltése
 Diagnosztikai adatok tárolása a webes alkalmazás fájlrendszerben elérhető közvetlenül az FTP használatával. Az Azure PowerShell vagy az Azure parancssori felület használatával Zip-archívum létrehozása, is letölthetők.
 
 A könyvtárstruktúra, a naplók vannak tárolva a következőképpen történik:
@@ -97,7 +97,7 @@ A könyvtárstruktúra, a naplók vannak tárolva a következőképpen történi
 * **Sikertelen kérelmek nyomkövetési** -/ naplófájlok/W3SVC ### /. Ez a mappa tartalmaz egy XSL-fájlt és egy vagy több XML-fájlokat. Győződjön meg arról, hogy töltse le az XSL-fájl a azonos könyvtárba, az XML fájl, mert az XSL-fájl a formázás és a szűrést az Internet Explorer a XML-fájl tartalmának funkciókat biztosítja.
 * **Részletes hibanaplókat** -/LogFiles/DetailedErrors /. Ez a mappa tartalmaz egy vagy több HTTP-hibaüzenetek történt széleskörű információkat biztosító .htm fájlt.
 * **Webalkalmazás-naplói** -/LogFiles/http/RawLogs. Ez a mappa tartalmaz egy vagy több szövegfájlok formázva a [W3C bővített naplófájlformátum](http://msdn.microsoft.com/library/windows/desktop/aa814385.aspx).
-* **Telepítési naplói** -/ naplófájlok/Git. Ez a mappa tartalmazza az Azure web Apps alkalmazások által használt belső telepítési folyamatok által létrehozott naplók, valamint a Git-telepítésekhez naplózza.
+* **Telepítési naplói** -/ naplófájlok/Git. Ez a mappa tartalmazza az Azure web Apps alkalmazások által használt belső telepítési folyamatok által létrehozott naplók, valamint a Git-telepítésekhez naplózza. Telepítési naplók a D:\home\site\deployments is tájékozódhat.
 
 ### <a name="ftp"></a>FTP
 
@@ -141,7 +141,7 @@ A Visual Studio Application Insights szűrési és keresési naplókat, valamint
 
 [További információ a teljesítmény nyomon követése az Application insights szolgáltatással](../application-insights/app-insights-azure-web-apps.md)
 
-## <a name="streamlogs"></a>Hogyan: adatfolyam-naplók
+## <a name="streamlogs"></a> Hogyan: adatfolyam-naplók
 Az alkalmazások fejlesztése során gyakran célszerű közel valós idejű naplóinformációk megjelenítéséhez. A fejlesztési környezetet az Azure PowerShell vagy az Azure parancssori felület használatával történő naplózási információkat is adatfolyam.
 
 > [!NOTE]
@@ -194,7 +194,7 @@ Szűrés adott napló típusok, például HTTP, használja a **--elérési** par
 >
 >
 
-## <a name="understandlogs"></a>Hogyan: diagnosztikai naplók megértése
+## <a name="understandlogs"></a> Hogyan: diagnosztikai naplók megértése
 ### <a name="application-diagnostics-logs"></a>Application diagnostics naplók
 Application diagnostics információkat tárol egy meghatározott formátumnak a .NET-alkalmazásokban, attól függően, hogy tárolja a fájlrendszer, a table storage vagy a blob storage-naplókat. A tárolt adatok alapkészlete megegyezik összes három tárolási típusa – dátum és idő az esemény történt, az esemény, az esemény típusa (információ, figyelmeztetés, hiba) és az eseményüzenet előállított Folyamatazonosítója.
 
@@ -222,7 +222,7 @@ A table storage bejelentkezéskor további tulajdonságok használatával segít
 | EventTickCount |A dátum és időpont, amikor az esemény történt osztásjelek formátumban (nagyobb pontosságú) |
 | ApplicationName |A webes alkalmazás neve |
 | Szint |Eseményszint (például hiba, figyelmeztetés, információ) |
-| Eseményazonosító |Ez az esemény esemény azonosítója<p><p>Az alapértelmezett érték 0, ha nincs megadva |
+| EventId |Ez az esemény esemény azonosítója<p><p>Az alapértelmezett érték 0, ha nincs megadva |
 | Példány azonosítója |A webes alkalmazás, amely a még akkor is történt példányainak |
 | Azonosítója (PID) |Folyamat azonosítója |
 | TID |A szál az esemény előállított a Szálazonosító |
@@ -239,7 +239,7 @@ A blob-tároló bejelentkezéskor adatok vesszővel tagolt (CSV) formátum táro
 | ApplicationName |A webes alkalmazás neve |
 | Példány azonosítója |A webes alkalmazás, amely az esemény példányainak |
 | EventTickCount |A dátum és időpont, amikor az esemény történt osztásjelek formátumban (nagyobb pontosságú) |
-| Eseményazonosító |Ez az esemény esemény azonosítója<p><p>Az alapértelmezett érték 0, ha nincs megadva |
+| EventId |Ez az esemény esemény azonosítója<p><p>Az alapértelmezett érték 0, ha nincs megadva |
 | Azonosítója (PID) |Folyamat azonosítója |
 | TID |A szál az esemény előállított a Szálazonosító |
 | Üzenet |Üzenet esemény részletei |

@@ -15,18 +15,18 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 12/29/2016
 ms.author: danlep
-ms.openlocfilehash: 85b125ab19671b61d2541af6378c95feb88bf952
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 82aa2942a6a4fe6a3ac1c3ec2c0710e39f4282b1
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="create-a-windows-high-performance-computing-hpc-cluster-with-the-hpc-pack-iaas-deployment-script"></a>Hozzon létre egy Windows-fürt nagy teljesítményű számítástechnikai rendszerek (HPC) a HPC Pack IaaS telepítési parancsfájl
-A HPC Pack IaaS központi telepítés központi telepítése az Azure virtuális gépeken a Windows-munkaterhelések teljes HPC Pack 2012 R2 fürt PowerShell-parancsfájl futtatása. A fürt tartalmaz egy Active Directory-tartományhoz átjárócsomópont Windows Server és a Microsoft HPC Pack fut, és további Windows számítási erőforrásokat, akkor adja meg. Ha szeretné HPC Pack-fürt üzembe helyezése az Azure Linux munkaterhelésekhez, lásd: [hozzon létre egy Linux HPC-fürtöt a HPC Pack IaaS telepítési parancsfájl](../../linux/classic/hpcpack-cluster-powershell-script.md). Az Azure Resource Manager-sablon segítségével is HPC Pack-fürt üzembe helyezése. Tekintse meg a [HPC-fürt létrehozása](https://azure.microsoft.com/documentation/templates/create-hpc-cluster/) és [HPC-fürt létrehozása egyéni számítási csomópont képének](https://azure.microsoft.com/documentation/templates/create-hpc-cluster-custom-image/).
+A HPC Pack IaaS központi telepítés központi telepítése az Azure virtuális gépeken a Windows-munkaterhelések teljes HPC Pack 2012 R2 fürt PowerShell-parancsfájl futtatása. A fürt tartalmaz egy Active Directory-tartományhoz átjárócsomópont Windows Server és a Microsoft HPC Pack fut, és további Windows számítási erőforrásokat, akkor adja meg. Ha szeretné HPC Pack-fürt üzembe helyezése az Azure Linux munkaterhelésekhez, lásd: [hozzon létre egy Linux HPC-fürtöt a HPC Pack IaaS telepítési parancsfájl](../../linux/classic/hpcpack-cluster-powershell-script.md). 
 
 > [!IMPORTANT] 
 > A jelen cikkben ismertetett PowerShell-parancsfájl az Azure-ban a klasszikus üzembe helyezési modellel hoz létre a Microsoft HPC Pack 2012 R2-fürt. A Microsoft azt javasolja, hogy az új telepítések esetén a Resource Manager modellt használja.
-> A jelen cikkben ismertetett parancsfájl emellett nem támogatja a HPC Pack 2016.
+> A jelen cikkben ismertetett parancsfájl emellett nem támogatja a HPC Pack 2016. Információ HPC Pack 2012 R2 és a HPC Pack 2016 Resource Manager-sablonok, tekintse meg a [HPC Pack fürt telepítési lehetőségek az Azure-ban](../hpcpack-cluster-options.md).
 
 [!INCLUDE [virtual-machines-common-classic-hpcpack-cluster-powershell-script](../../../../includes/virtual-machines-common-classic-hpcpack-cluster-powershell-script.md)]
 
@@ -257,9 +257,9 @@ A következő konfigurációs fájl telepíti egy meglévő tartomány erdőben 
 ```
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
-* **"A virtuális hálózat nem létezik" hiba** -a parancsfájl futtatása az Azure-ban egy előfizetéshez tartozó egyidejűleg több fürtök üzembe helyezésekor, ha egy vagy több üzemelő példány a hiba miatt sikertelen lehet "VNet *VNet\_neve* nem létezik".
+* **"A virtuális hálózat nem létezik" hiba** -a parancsfájl futtatása az Azure-ban egy előfizetéshez tartozó egyidejűleg több fürtök üzembe helyezésekor, ha egy vagy több üzemelő példány a hiba miatt sikertelen lehet "VNet *VNet\_neve* nem létezik ".
   Ha ez a hiba akkor fordul elő, futtassa a parancsfájlt újra a sikertelen központi telepítésnél.
-* **Az Internet elérése az Azure virtuális hálózat a probléma** –, ha akkor hozzon létre egy fürtöt egy új tartományvezérlő a telepítési parancsfájl használatával manuálisan főkiszolgálóvá előléptetni egy átjárócsomópont VM tartományvezérlőre, vagy a virtuális gépek csatlakozik az internetre problémák. Ez a probléma akkor fordulhat elő, ha továbbító DNS-kiszolgáló automatikusan konfigurálja a tartományvezérlőn, és a továbbító DNS-kiszolgáló nem oldja meg megfelelően.
+* **Az Internet elérése az Azure virtuális hálózat a probléma** – Ha hoz létre fürtöt az új tartományvezérlő a telepítési parancsfájl használatával vagy manuálisan főkiszolgálóvá előléptetni egy átjárócsomópont VM tartományvezérlőre, csatlakozás problémákat tapasztalhat a Virtuális gépek az internethez. Ez a probléma akkor fordulhat elő, ha továbbító DNS-kiszolgáló automatikusan konfigurálja a tartományvezérlőn, és a továbbító DNS-kiszolgáló nem oldja meg megfelelően.
   
     Ez a probléma, jelentkezzen be a tartományvezérlő, és vagy távolítsa el a továbbító konfigurációs beállítás, vagy egy érvényes továbbító DNS-kiszolgáló konfigurálása. Ez a beállítás konfigurálása a Kiszolgálókezelőben kattintson **eszközök** >
     **DNS** nyissa meg a DNS-kezelőben, és kattintson duplán a **továbbítók**.
@@ -267,7 +267,7 @@ A következő konfigurációs fájl telepíti egy meglévő tartomány erdőben 
   
     Ez a probléma megoldása érdekében először ellenőrizze a bővítményt a virtuális gépek állapotát. Ha a kiterjesztés nem megfelelően van telepítve, távolítsa el a csomópontok a HPC-fürtből, és majd újból vegye fel a csomópontok. Például az Add-HpcIaaSNode.ps1 parancsfájl futtatásával az átjárócsomópont számítási csomópont virtuális gépek is hozzáadhat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Próbálja meg futtatni egy teszt munkaterhelés a fürtön. Egy vonatkozó példáért lásd: a HPC Pack [– első lépések útmutató](https://technet.microsoft.com/library/jj884144).
 * Az oktatóanyagnak, amellyel a parancsfájl a fürtöt tartalmazó környezetben, és futtassa a HPC-munkaterhelés, lásd: [Ismerkedés az Azure-, Excel és SOA alkalmazásokat és szolgáltatásokat futtathatnak HPC Pack fürtöt a](../../virtual-machines-windows-excel-cluster-hpcpack.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 * Próbálja meg a HPC Pack eszközök elindítása, leállítása, adja hozzá, és a számítási csomópontok eltávolítása egy fürtről hoz létre. Lásd: [kezelése számítási csomópontok HPC csomagban fürtön, az Azure-ban](hpcpack-cluster-node-manage.md).

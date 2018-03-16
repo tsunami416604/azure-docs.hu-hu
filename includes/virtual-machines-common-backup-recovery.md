@@ -1,7 +1,22 @@
-
+---
+title: "fájl belefoglalása"
+description: "fájl belefoglalása"
+services: virtual-machines
+author: cynthn
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 03/09/2018
+ms.author: cynthn
+ms.custom: include file
+ms.openlocfilehash: 3dfc72ff0347a93c6c6dce0e7ec763dd8241c55b
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 03/16/2018
+---
 ## <a name="azure-backup"></a>Azure Backup
 
-Termelési számítási feladatokhoz futtató Azure virtuális gépek biztonsági mentéséről, használja az Azure Backup szolgáltatásnál. Azure biztonsági mentés a Windows és a Linux virtuális gépek alkalmazáskonzisztens biztonsági mentést támogatja. Az Azure Backup georedundáns helyreállítás tárolók tárolt helyreállítási pontokat hoz létre. Helyreállításakor a helyreállítási pont, az egész virtuális gép vagy csak adott fájlokat is helyreállíthatja. 
+Termelési számítási feladatokhoz futtató Azure virtuális gépek biztonsági mentéséről, használja az Azure Backup szolgáltatásnál. Azure biztonsági mentés a Windows és a Linux virtuális gépek alkalmazáskonzisztens biztonsági mentést támogatja. Az Azure Backup georedundáns helyreállítási tárolókban tárolt helyreállítási pontokat hoz létre. Helyreállítási pontról történő visszaállításkor visszaállíthatja a teljes virtuális gépet, vagy csak bizonyos fájlokat. 
 
 Az egyszerű, gyakorlati megismerkedhet az Azure Backup Azure virtuális gépekhez, tekintse meg az "Azure virtuális gépek biztonsági mentése" a [Linux](../articles/virtual-machines/linux/tutorial-backup-vms.md) vagy [Windows](../articles/virtual-machines/windows/tutorial-backup-vms.md).
 
@@ -18,7 +33,7 @@ Elkezdheti által [a virtuális gépek replikálásához](https://aka.ms/a2a-get
 
 ## <a name="managed-snapshots"></a>Felügyelt pillanatképek 
 
-Fejlesztési és tesztelési környezetben pillanatképek adjon meg egy gyors és egyszerű beállítása, a felügyelt lemezeket használó virtuális gépek biztonsági mentéséről. Felügyelt pillanatképet egy csak olvasható, teljes másolata egy felügyelt lemezes. A pillanatképek független a forrás lemez létezik, és új kezelt lemezek újbóli létrehozása a virtuális gépek létrehozásához használható. Azok a lemez használt része alapján számlázzuk. Például ha 64 GB-os kiosztott kapacitását és tényleges használt adatok mérete 10 GB-os felügyelt lemezes pillanatképet hoz létre, pillanatkép alapján számlázzuk csak a 10 GB-os használt adatok méretét.  
+Fejlesztési és tesztelési környezetben pillanatképek adjon meg egy gyors és egyszerű beállítása, a felügyelt lemezeket használó virtuális gépek biztonsági mentéséről. Felügyelt pillanatképet egy csak olvasható, teljes másolata egy felügyelt lemezes. A pillanatképek független a forrás lemez létezik, és új kezelt lemezek újbóli létrehozása a virtuális gépek létrehozásához használható. Azok a lemez használt része alapján számlázzuk. Ha például létrehoz egy pillanatképet egy felügyelt lemezről 64 GB kiosztott kapacitással és 10 GB tényleges felhasznált adatmérettel, a pillanatképért csak a felhasznált 10 GB adatméret alapján számolunk fel díjat.  
 
 Pillanatképeinek további információkért lásd:
 

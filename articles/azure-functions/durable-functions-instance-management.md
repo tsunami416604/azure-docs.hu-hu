@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: a938e5949896ad3bfa91903106d56ccdf827c725
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 9cea9b18cd7434a34138d5cecad8a8fd7f10d2e5
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="manage-instances-in-durable-functions-azure-functions"></a>Példányok a tartós függvények (az Azure Functions) kezelése
 
@@ -26,7 +26,9 @@ ms.lasthandoff: 02/21/2018
 
 ## <a name="starting-instances"></a>Példányok indítása
 
-A [StartNewAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_StartNewAsync_) metódust a [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) elindítja az orchestrator funkcióinak egy új példányát. Ez az osztály példányai használatával lehet lekérni a `orchestrationClient` kötés. Belső, a módszer enqueues vezérlő várakozási, majd elindítja egy függvény a megadott nevű használó start üzenetet a `orchestrationTrigger` indítás kötés.
+A [StartNewAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_StartNewAsync_) metódust a [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) elindítja az orchestrator funkcióinak egy új példányát. Ez az osztály példányai használatával lehet lekérni a `orchestrationClient` kötés. Belső, a módszer enqueues vezérlő várakozási, majd elindítja egy függvény a megadott nevű használó start üzenetet a `orchestrationTrigger` indítás kötés. 
+
+A feladat befejezése a vezénylési folyamat indításakor. A vezénylési folyamat 30 másodperce kell kezdődnie. Ez hosszabb időt vesz igénybe, ha egy `TimeoutException` vált ki. 
 
 A paraméterek [StartNewAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_StartNewAsync_) a következők:
 
@@ -48,7 +50,7 @@ public static async Task Run(
 }
 ```
 
-A .NET nyelv, a függvény kimeneti kötése elindítani az új példányokat is használható. Ebben az esetben bármely JSON-szerializálható objektumhoz, melyhez a fenti három paraméterek van mezői használható. Vegyük példaként a következő Node.js-függvény:
+A .NET nyelv, a függvény kimeneti kötése elindítani az új példányokat is használható. Ebben az esetben bármilyen szerializálható JSON objektum, amely rendelkezik a fenti három paraméterek mezők használható. Vegyük példaként a következő Node.js-függvény:
 
 ```js
 module.exports = function (context, input) {
@@ -68,7 +70,7 @@ module.exports = function (context, input) {
 
 ## <a name="querying-instances"></a>Példányok lekérdezése
 
-A [GetStatusAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_GetStatusAsync_) metódust a [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) osztály vezénylési példány állapotának lekérdezése. Tart egy `instanceId` paraméterként és egy objektumot a következő tulajdonságokkal:
+A [GetStatusAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_GetStatusAsync_) metódust a [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) osztály vezénylési példány állapotának lekérdezése. Tart egy `instanceId` (kötelező), `showHistory` (nem kötelező), és `showHistoryOutput` paraméterekként (nem kötelező). Ha `showHistory` értéke `true`, a válasz tartalmazza a futtatási előzményei. Ha `showHistoryOutput` értéke `true` , valamint a futtatási előzményei tevékenység kimeneteiből fogja tartalmazni. A metódus visszaadja egy objektum a következő tulajdonságokkal:
 
 * **Név**: az orchestrator függvény neve.
 * **InstanceId**: a vezénylési Példányazonosítója (meg kell egyeznie a `instanceId` bemeneti).
@@ -82,6 +84,7 @@ A [GetStatusAsync](https://azure.github.io/azure-functions-durable-extension/api
     * **ContinuedAsNew**: A példány újraindítása magát az új előzményeit. Ez egy átmeneti állapotban.
     * **Nem sikerült**: A példány egy hiba miatt sikertelen volt.
     * **Megszakadt**: A példány váratlanul leállt.
+* **Előzmények**: a vezénylési végrehajtási előzményei. Ez a mező csak megadni, ha `showHistory` értéke `true`.
     
 Ez a metódus visszaadja `null` , ha a példány nem létezik, vagy még nem kezdődött el futtatása.
 
@@ -145,6 +148,60 @@ public static Task Run(
 
 > [!WARNING]
 > Ha nincs vezénylési példány a megadott *-példány azonosítója* , vagy ha a példány nem vár a megadott *eseménynév*, a rendszer törli az eseményüzenet. Ez a viselkedés kapcsolatos további információkért tekintse meg a [GitHub probléma](https://github.com/Azure/azure-functions-durable-extension/issues/29).
+
+## <a name="wait-for-orchestration-completion"></a>Várakozás a befejezésre vezénylési
+
+A [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) osztály tesz elérhetővé a [WaitForCompletionOrCreateCheckStatusResponseAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_WaitForCompletionOrCreateCheckStatusResponseAsync_) API, amely az beszerzése szinkron módon történik a tényleges kimeneti vezénylési példány is használható. Az alapértelmezett érték 10 másodperc, a metódusnak `timeout` és az 1 másodperc `retryInterval` ha azok nincsenek beállítva.  
+
+Íme egy példa a HTTP-funkció, amely bemutatja, hogyan használható az API:
+
+[!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HttpSyncStart.cs)]
+
+A függvény hívása a következő sorral 2-másodperces időtúllépési és 0,5 másodperces újrapróbálkozási időköz:
+
+```bash
+    http POST http://localhost:7071/orchestrators/E1_HelloSequence/wait?timeout=2&retryInterval=0.5
+```
+
+A válasz lekérése a vezénylési példány időigényétől függően két olyan eset létezik:
+
+1. A vezénylési példányok be a meghatározott idő (ebben az esetben 2 másodperc), a rendszer a választ, a tényleges vezénylési példány kimeneti kézbesíteni szinkron módon:
+
+    ```http
+        HTTP/1.1 200 OK
+        Content-Type: application/json; charset=utf-8
+        Date: Thu, 14 Dec 2017 06:14:29 GMT
+        Server: Microsoft-HTTPAPI/2.0
+        Transfer-Encoding: chunked
+
+        [
+            "Hello Tokyo!",
+            "Hello Seattle!",
+            "Hello London!"
+        ]
+    ```
+
+2. A vezénylési példányok nem tudja végrehajtani a megadott időkorláton (ebben az esetben 2 másodperc) belül, a rendszer a választ, az egyik ismertetett alapértelmezett **HTTP API URL-cím felderítési**:
+
+    ```http
+        HTTP/1.1 202 Accepted
+        Content-Type: application/json; charset=utf-8
+        Date: Thu, 14 Dec 2017 06:13:51 GMT
+        Location: http://localhost:7071/admin/extensions/DurableTaskExtension/instances/d3b72dddefce4e758d92f4d411567177?taskHub={taskHub}&connection={connection}&code={systemKey}
+        Retry-After: 10
+        Server: Microsoft-HTTPAPI/2.0
+        Transfer-Encoding: chunked
+
+        {
+            "id": "d3b72dddefce4e758d92f4d411567177",
+            "sendEventPostUri": "http://localhost:7071/admin/extensions/DurableTaskExtension/instances/d3b72dddefce4e758d92f4d411567177/raiseEvent/{eventName}?taskHub={taskHub}&connection={connection}&code={systemKey}",
+            "statusQueryGetUri": "http://localhost:7071/admin/extensions/DurableTaskExtension/instances/d3b72dddefce4e758d92f4d411567177?taskHub={taskHub}&connection={connection}&code={systemKey}",
+            "terminatePostUri": "http://localhost:7071/admin/extensions/DurableTaskExtension/instances/d3b72dddefce4e758d92f4d411567177/terminate?reason={text}&taskHub={taskHub}&connection={connection}&code={systemKey}"
+        }
+    ```
+
+> [!NOTE]
+> A webhook URL-címének formátuma eltérőek lehetnek attól függően, hogy az Azure Functions állomás verziójának. A fenti példában az Azure Functions 2.0 állomás van.
 
 ## <a name="next-steps"></a>További lépések
 

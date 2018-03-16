@@ -15,15 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/10/2017
 ms.author: bradsev
-ms.openlocfilehash: 7de3a30e477fcec66ce703b6c3fec7d17d79d3ab
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 4e8450cc20718185a3cea02bf8fbb6b97dd91ddb
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="biomedical-entity-recognition-using-team-data-science-process-tdsp-template"></a>Team adatok tudományos folyamat (TDSP) sablonnal orvosbiológiai entitás felismerés
 
-Entitás kiolvasásához egy részfeladatnál annak regisztrálása az információk kinyerése (más néven [nevesített-entitás felismerési (NER)](https://en.wikipedia.org/wiki/Named-entity_recognition), entitás adattömbökbe rendezi és az entitás azonosítója). A valós forgatókönyv az a célja, hogy jelöljön ki egy bonyolult természetes nyelvű feldolgozása (NLP) feladatot például entitás kibontási strukturálatlan szövegből megoldására Azure Machine Learning-munkaterület használata:
+Entitás kiolvasásához egy részfeladatnál annak regisztrálása az információk kinyerése (más néven [nevesített-entitás felismerési (NER)](https://en.wikipedia.org/wiki/Named-entity_recognition), adattömbösítő entitáshoz, és az entitás azonosítója). A valós forgatókönyv az a célja, hogy jelöljön ki egy bonyolult természetes nyelvű feldolgozása (NLP) feladatot például entitás kibontási strukturálatlan szövegből megoldására Azure Machine Learning-munkaterület használata:
 
 1. Hogyan kell még betanítani Neurális word beágyazásokat egy szöveges corpus készül 18 millió PubMed kivonatok használatával, a modell [Spark Word2Vec megvalósítási](https://spark.apache.org/docs/latest/mllib-feature-extraction.html#word2vec).
 2. Hogyan hozhat létre a entitás kinyerés az a GPU-t Azure Data tudományos virtuális gép (GPU DS VM) részletes hosszú rövid távú memória (LSTM) ismétlődő Neurális hálózat modellt az Azure-on.
@@ -32,19 +32,19 @@ Entitás kiolvasásához egy részfeladatnál annak regisztrálása az informác
 
 4. Azt mutatják be az Azure Machine Learning-munkaterületen a következő lehetőségeket:
 
-    * A probléma [Team adatok tudományos folyamat (TDSP) struktúra és sablonok](how-to-use-tdsp-in-azure-ml.md).
+    * A probléma [Team adatok tudományos folyamat (TDSP) struktúra és sablonok](how-to-use-tdsp-in-azure-ml.md)
     * A projekt függőségek, beleértve a letöltésének és telepítésének automatizált felügyelete
-    * Differetn a Python-parancsfájl végrehajtásának számítási környezeteket.
-    * Előzményeinek nyomon követését Python-parancsfájl futtatása.
-    * A távoli Spark feladatok végrehajtásának számítási környezet HDInsight Spark 2.1 fürtök használata.
-    * Távoli GPU-alapú virtuális gépek Azure-feladatok végrehajtása.
-    * Egyszerű operationalization mély tanulási modellek webszolgáltatásként Azure tároló szolgáltatás (ACS).
+    * A különböző számítási környezeteket Python parancsfájlok végrehajtása
+    * Előzményeinek nyomon követését Python-parancsfájl futtatása
+    * A távoli Spark feladatok végrehajtásának számítási környezetekben, HDInsight Spark 2.1 fürtök használata
+    * Távoli GPU-alapú virtuális gépek Azure-feladatok végrehajtása
+    * Egyszerű operationalization mély tanulási modellek webszolgáltatásként Azure tároló szolgáltatás (ACS)
 
 ## <a name="use-case-overview"></a>Használja az eset áttekintése
 Orvosbiológiai névvel rendelkező entitás egy kritikus fontosságú lépésről összetett orvosbiológiai NLP feladatokhoz, mint: 
-* Az elnevezett entitások megjegyzések ilyen betegségek, kábítószerek, chemicals és kibontása a jelenség elektronikus orvosi vagy állapotfigyelő rekordból.
+* Kibontása a Megjegyzések az elnevezett entitások ilyen betegségek, kábítószerek, chemicals és jelenségek elektronikus orvosi vagy állapotát rögzíti.
 * Kábítószerrel felderítése
-* Például két gyógyszer interakció, kábítószer-elleni kapcsolat és gén fehérjét kapcsolat típusok különböző entitás közötti interakciókat ismertetése.
+* Például két gyógyszer interakció kábítószerrel-elleni kapcsolat vagy gén fehérjét kapcsolat típusok különböző entitás közötti interakciókat ismertetése.
 
 A felhasználási forgatókönyve összpontosít hogyan nagy mennyiségű strukturálatlan adatok corpus Medline PubMed kivonatok például elemzése egy word-beágyazás modell betanításához. Majd a kimeneti beágyazásokat számít automatikusan generált funkciók a Neurális entitás kivonatoló képzése érdekében.
 
@@ -79,7 +79,7 @@ Először verzióját letöltöttük a nyers MEDLINE absztrakt adatait [MEDLINE]
 
 ### <a name="2-lstm-model-training-data"></a>2. LSTM modell betanítási adatok
 
-A Neurális entitás kibontási modell betanítása, és a publiclly elérhető adatkészletek alapján értékeli ki. Ezek az adatkészletek kapcsolatos részletes leírását beszerzéséhez a következő források is hivatkozhat:
+A Neurális entitás kibontási modell betanítása, és a nyilvánosan elérhető adatkészletek alapján értékeli ki. Ezek az adatkészletek kapcsolatos részletes leírását beszerzéséhez a következő források is hivatkozhat:
  * [Életrajza-entitás felismerés feladata a következő BioNLP/NLPBA 2004.](http://www.nactem.ac.uk/tsujii/GENIA/ERtask/report.html)
  * [BioCreative V CDR feladat corpus](http://www.biocreative.org/tasks/biocreative-v/track-3-cdr/)
  * [Semeval 2013 - feladat 9.1 kábítószerrel használata)](https://www.cs.york.ac.uk/semeval-2013/task9/)
@@ -106,7 +106,7 @@ Az alábbiakban látható a nyilvános GitHub-tárházban, amely tartalmazza a k
 
 ### <a name="python-packages"></a>Python-csomagokat
 
-A szükséges függőségek a forgatókönyv projekt mappában aml_config/conda_dependencies.yml fájlban vannak definiálva. Az ebben a fájlban definiált függőségek automatikusan megkapják kísérletekhez docker, a virtuális gép és a HDI elleni fürt célokat. A Conda környezet fájlformátumot kapcsolatos részletekért tekintse meg a [Itt](https://conda.io/docs/using/envs.html#create-environment-file-by-hand).
+A szükséges függőségek a forgatókönyv projekt mappában aml_config/conda_dependencies.yml fájlban vannak definiálva. Az ebben a fájlban definiált függőségek automatikusan létrehozza a kísérletekhez docker, a virtuális gép és a HDI elleni fürt célokat. A Conda környezet fájlformátumot kapcsolatos részletekért tekintse meg a [Itt](https://conda.io/docs/using/envs.html#create-environment-file-by-hand).
 
 * [TensorFlow](https://www.tensorflow.org/install/)
 * [CNTK 2.0](https://docs.microsoft.com/cognitive-toolkit/using-cntk-with-keras)
@@ -136,17 +136,17 @@ Lásd: [adatok megszerzését és ismertetése](https://github.com/Azure/Machine
 
 A nyers MEDLINE corpus 27 millió kivonatok összesen rendelkezik, ahol a körülbelül 10 millió cikkek üres absztrakt mezővel rendelkezik. Az Azure HDInsight Spark segítségével dolgozza fel big Data típusú adatok, amelyek nem tölthető be a memóriába, mint egyetlen számítógépen egy [Pandas DataFrame](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html). Először az adatok letölti azokat a Spark-fürt. Az alábbi lépéseket hajtja végre, akkor a [Spark DataFrame](https://spark.apache.org/docs/latest/sql-programming-guide.html): 
 * elemezni az XML-fájlok használatával Medline XML-elemző
-* Az absztrakt szöveg, többek között a mondatok felosztása, a lexikális elemekké alakításának és a nagybetűk normalizálási előfeldolgozása.
+* Az absztrakt szöveg mondat felosztásával, a lexikális elemekké alakításának és a nagybetűk normalizálási előfeldolgozása.
 * Zárja ki a cikkeket, ahol absztrakt mező üres, vagy rendelkezik rövid szöveges 
 * a word Szójegyzék a képzés kivonatok létrehozása
-* a word-beágyazás Neurális modell betanításához. További részletekért tekintse meg a [GitHub kód hivatkozás](https://github.com/Azure/MachineLearningSamples-BiomedicalEntityExtraction/blob/master/code/01_data_acquisition_and_understanding/ReadMe.md) a kezdéshez.
+* a word-beágyazás Neurális modell betanításához. További információkért lásd: [GitHub kód hivatkozás](https://github.com/Azure/MachineLearningSamples-BiomedicalEntityExtraction/blob/master/code/01_data_acquisition_and_understanding/ReadMe.md) a kezdéshez.
 
 
 XML-fájlok elemzés után adatok formátuma a következő: 
 
 ![Minta](./media/scenario-tdsp-biomedical-recognition/datasample.png)
 
-A Neurális entitás kibontási modell betanítása, és a publiclly elérhető adatkészletek alapján értékeli ki. Ezek az adatkészletek kapcsolatos részletes leírását beszerzéséhez a következő források is hivatkozhat:
+A Neurális entitás kibontási modell betanítása, és a nyilvánosan elérhető adatkészletek alapján értékeli ki. Ezek az adatkészletek kapcsolatos részletes leírását beszerzéséhez a következő források is hivatkozhat:
  * [Életrajza-entitás felismerés feladata a következő BioNLP/NLPBA 2004.](http://www.nactem.ac.uk/tsujii/GENIA/ERtask/report.html)
  * [BioCreative V CDR feladat corpus](http://www.biocreative.org/tasks/biocreative-v/track-3-cdr/)
  * [Semeval 2013 - feladat 9.1 kábítószerrel használata)](https://www.cs.york.ac.uk/semeval-2013/task9/)
@@ -167,7 +167,7 @@ Word2Vec felügyeletlen tanulási algoritmus, amely a Neurális hálózat modell
 
 ![Kihagyás Gramot modell](./media/scenario-tdsp-biomedical-recognition/skip-gram.png)
 
-A modell hierarchikus Softmax és negatív mintavételi használ a teljesítmény optimalizálása érdekében. Hierarchikus SoftMax (H-SoftMax) bináris fák inspirálta közelítés. H-SoftMax lényegében lecseréli a strukturálatlan SoftMax réteg hierarchikus réteg, amely a szavakat, amikor elhagyja rendelkezik. Ez lehetővé teszi felbontani valószínűségértékének inverzét számítja egy word sorozatát valószínűségi számításoknál használhatja, amely menti, nem kell a költséges normalizálási kiszámításához az összes szó keresztül történő kiszámítása. Mivel egy elosztott terhelésű bináris fa log2 mélységig (|} V |}) (V a szóhasználatának), csak azt kell kiértékelni legfeljebb log2 (|} V |}) Szerezzen be egy szót végső valószínűségét csomópontok. A környezet c megadott word w valószínűségét majd egyszerűen a során a megfelelő valószínűség termék és bal kerül, illetve, hogy a Levélcsomópont vezethet. Azt a Huffman-fa adatkészlet szó a gyakoriság alapján annak érdekében, hogy gyakrabban szó első rövidebb felelősséget hozhat létre. További információkért tekintse meg [Ez a hivatkozás](http://sebastianruder.com/word-embeddings-softmax/).
+A modell hierarchikus Softmax és negatív mintavételi használ a teljesítmény optimalizálása érdekében. Hierarchikus SoftMax (H-SoftMax) bináris fák inspirálta közelítés. H-SoftMax lényegében lecseréli a strukturálatlan SoftMax réteg hierarchikus réteg, amely a szavakat, amikor elhagyja rendelkezik. Ez lehetővé teszi felbontani valószínűségértékének inverzét számítja egy word sorozatát valószínűségi számításoknál használhatja, amely menti, nem kell a költséges normalizálási kiszámításához az összes szó keresztül történő kiszámítása. Mivel egy elosztott terhelésű bináris fa log2 mélységig (|} V |}) (V a szóhasználatának), csak azt kell kiértékelni legfeljebb log2 (|} V |}) Szerezzen be egy szót végső valószínűségét csomópontok. A környezet c megadott word w valószínűségét majd egyszerűen a során a megfelelő valószínűség termék és bal kerül, illetve, hogy a Levélcsomópont vezethet. Azt a Huffman-fa adatkészlet szó a gyakoriság alapján annak érdekében, hogy gyakrabban szó első rövidebb felelősséget hozhat létre. További információkért lásd: [Ez a hivatkozás](http://sebastianruder.com/word-embeddings-softmax/).
 A kép forrása [Itt](https://ahmedhanibrahim.wordpress.com/2017/04/25/thesis-tutorials-i-understanding-word2vec-for-word-embedding-i/).
 
 ##### <a name="visualization"></a>Megjelenítés
@@ -188,7 +188,7 @@ A következő ábrán látható, a a t-nemzeti Szakértő képi megjelenítés b
 
 * A t-nemzeti-Szakértő a képi megjelenítés
 
-![t-nemzeti Szakértő](./media/scenario-tdsp-biomedical-recognition/tsne.png)
+![t-SNE](./media/scenario-tdsp-biomedical-recognition/tsne.png)
 
 * "Kapcsolatos" legközelebbi pontok (azok kapcsolatos összes altípusainak)
 
@@ -198,13 +198,13 @@ A következő ábrán látható, a a t-nemzeti Szakértő képi megjelenítés b
 
 Lásd: [betanítása a Neurális entitás kivonatoló](https://github.com/Azure/MachineLearningSamples-BiomedicalEntityExtraction/tree/master/code/02_modeling/02_model_creation/ReadMe.md).
 
-Az adatcsatorna-továbbító Neurális hálózat architektúra érinti a probléma, hogy azok kezelni az egyes bemeneti és kimeneti, függetlenül a más bemenetekhez és kimenetekhez. Ez az architektúra feladatütemezési-sorozat szalagcímkézési feladatokat, mint a gépi fordítás és entitás kibontási nem modell. Ismétlődő Neurális hálózat modellek kapcsolatos probléma, mivel azok továbbítani az információkat a következő csomópont a most számított. Ez a tulajdonság neve rendelkező memória a hálózaton, mivel korábban számított olvassa el az alábbi ábrán látható módon képes:
+Az adatcsatorna-továbbító Neurális hálózat architektúra szenved, hogy azok kezelni az egyes bemeneti és kimeneti, függetlenül a más bemenetekhez és kimenetekhez probléma. Ez az architektúra feladatütemezési-sorozat szalagcímkézési feladatokat, mint a gépi fordítás és entitás kibontási nem modell. Ismétlődő Neurális hálózat modellek kapcsolatos probléma, mivel azok továbbítani az információkat a következő csomópont a most számított. Ez a tulajdonság neve rendelkező memória a hálózaton, mivel korábban számított olvassa el az alábbi ábrán látható módon képes:
 
 ![RNN](./media/scenario-tdsp-biomedical-recognition/rnn-expanded.png)
 
 Eredeti RNNs ténylegesen érinti a a [átmenetes probléma Távlatpont](https://en.wikipedia.org/wiki/Vanishing_gradient_problem) miatt, amelyek nincsenek ki a korábban látott összes információt. A probléma lesz nyilvánvaló, csak akkor, ha a környezet nagy mennyiségű szükséges előrejelzéshez alakításához. De például LSTM modellek nem érinti a ilyen probléma, valójában a célja, hogy ne feledje a hosszú távú függőségek. Ellentétben, amelyek egyetlen Neurális hálózat RNNs vanília a LSTMs rendelkezik minden cella négy Neurális hálózat közötti kapcsolat. Részletesen ismerteti, hogyan LSTM, tekintse meg a [a feladás egy vagy több](http://colah.github.io/posts/2015-08-Understanding-LSTMs/).
 
-![LSTM cella](./media/scenario-tdsp-biomedical-recognition/lstm-cell.png)
+![LSTM Cell](./media/scenario-tdsp-biomedical-recognition/lstm-cell.png)
 
 Most hozzáfoghat saját LSTM-alapú ismétlődő Neurális hálózat próbálja, majd próbálja meg bontsa ki például a kábítószerrel entitástípusok, a mentes és jelenség PubMed adatokból említi. Az első lépés az beszerzése címkézett adatok nagy mennyiségű, és meg kellene rendelkeznie kitalál, mert a rendszer egyszerű! Egészségügyi adatok nagy mennyiségű személy bizalmas információkat tartalmaz, és ezért nincsenek nyilvánosan elérhető. Jelenleg két különböző datasets adatkészletekben nyilvánosan elérhető kombinációja támaszkodnak. Az első adatkészletet Semeval 2013 - feladat 9.1 (kábítószerrel felismerés) származó, a másik BioCreative V CDR feladatból. A Microsoft kombinálásával vannak, és ezek az adatkészletek két címkézését, hogy azt kábítószerek mind orvosi szövegek a betegségek észleli, és értékelje ki a word beágyazásokat automatikus. Megvalósítási leírását, [GitHub kód hivatkozás](https://github.com/Azure/MachineLearningSamples-BiomedicalEntityExtraction/tree/master/code/02_modeling/02_model_creation).
 
@@ -244,7 +244,7 @@ A Microsoft más adatkészletek a hasonló módon végezze el a word beágyazás
 ![5 modellek összehasonlítása](./media/scenario-tdsp-biomedical-recognition/mc5.png)
 
 #### <a name="tensorflow-versus-cntk"></a>TensorFlow és CNTK
-A jelentésben szereplő modell képzett Keras használata TensorFlow néven foghatók össze. CNTK háttérrendszerrel Keras nem támogatja a "visszirányú" végezhető el a munkahelyi időpontjában. Ezért az összehasonlítást, azt a CNTK háttér egyirányú LSTM modell betanítása és azt egy egyirányú LSTM modell TensorFlow háttérrendszerrel képest. A Keras a CNTK 2.0 telepítése [Itt](https://docs.microsoft.com/cognitive-toolkit/using-cntk-with-keras). 
+A jelentésben szereplő modellek képzett Keras használata TensorFlow néven foghatók össze. CNTK háttérrendszerrel Keras nem támogatja a "visszirányú" végezhető el a munkahelyi időpontjában. Ezért az összehasonlítást, azt a CNTK háttér egyirányú LSTM modell betanítása és azt egy egyirányú LSTM modell TensorFlow háttérrendszerrel képest. A Keras a CNTK 2.0 telepítése [Itt](https://docs.microsoft.com/cognitive-toolkit/using-cntk-with-keras). 
 
 ![6 modellek összehasonlítása](./media/scenario-tdsp-biomedical-recognition/mc6.png)
 
@@ -266,7 +266,7 @@ Hogyan sikerült egy Spark Word2Vec algoritmussal word beágyazási modell betan
 
 * Tomas Mikolov, Kai Chen, Greg Corrado és Jeffrey Dean. 2013a. Word felelősséget a vektoros hatékony becslése. ICLR eljárásban.
 * Tomas Mikolov, Ilya Sutskever, Kai Chen, Greg S Corrado és Jeff Dean. 2013b. Szavak és kifejezések és azok compositionality elosztott ábrázolásai. Az eljárás NIPS lapok: 3111 – 3119.
-* Billy Chiu, Gamal Crichton, Anna Korhonen és Sampo Pyysalo. 2016. [Hogyan vonat jó Word beágyazásokat orvosbiológiai NLP](http://aclweb.org/anthology/W/W16/W16-2922.pdf), a 15. Workshop orvosbiológiai természetes nyelvű feldolgozási, az eljárás lapok 166 – 174.
+* Billy Chiu, Gamal Crichton, Anna Korhonen és Sampo Pyysalo. 2016. [Hogyan vonat jó Word beágyazásokat orvosbiológiai NLP](http://aclweb.org/anthology/W/W16/W16-2922.pdf), az eljárás annak a tizenötödik Workshop orvosbiológiai természetes nyelvű feldolgozás, a lapok 166 – 174.
 * [Vektoros ábrázolásai szavakat](https://www.tensorflow.org/tutorials/word2vec)
 * [Ismétlődő Neurális hálózatokat](https://www.tensorflow.org/tutorials/recurrent)
 * [Spark ml Word2Vec észlelt problémákat](https://intothedepthsofdataengineering.wordpress.com/2017/06/26/problems-encountered-with-spark-ml-word2vec/)

@@ -4,7 +4,7 @@ description: "Naplóelemzési adatforrásnézet-tervezőből használatával egy
 services: log-analytics
 documentationcenter: 
 author: bwren
-manager: jwhit
+manager: carmonm
 editor: 
 ms.assetid: 5718d620-b96e-4d33-8616-e127ee9379c4
 ms.service: log-analytics
@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/17/2018
+ms.date: 03/12/2018
 ms.author: bwren
-ms.openlocfilehash: 6fd19cce955e1f06c9b6f5a9ef5d85d9fd63c1c1
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: a2573eef3c90c1840c0d53b2f8aa2cfe2d3a7242
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="reference-guide-to-view-designer-visualization-parts-in-log-analytics"></a>A Naplóelemzési adatforrásnézet-tervezőből képi megjelenítés különböző részeinek használati útmutató
 Azure Naplóelemzés adatforrásnézet-tervezőből használatával egyéni nézeteket hozhat létre az Azure portálon, hogy az adatmegjelenítéseket a Naplóelemzési munkaterület különböző. Ez a cikk egy referencia-útmutató az egyéni nézetek elérhető képi megjelenítés összetevőkre vonatkozó beállításokat.
@@ -28,21 +28,19 @@ Az adatforrásnézet-tervezőből kapcsolatos további információkért lásd:
 * [Megtekintheti a tervező](log-analytics-view-designer.md): egy áttekintést nyújt az adatforrásnézet-tervezőből és eljárások létrehozásának és szerkesztésének egyéni nézetek.
 * [Hivatkozás csempe](log-analytics-view-designer-tiles.md): biztosítja a beállítások az egyes elérhető csempe az egyéni nézetekben mutató hivatkozás.
 
->[!NOTE]
-> Ha a munkaterületet lett frissítve a [új Log Analytics lekérdezési nyelv](log-analytics-log-search-upgrade.md), a lekérdezések minden nézetben úgy kell megírni, a [új lekérdezési nyelv](https://go.microsoft.com/fwlink/?linkid=856078). A munkaterület frissítés előtt létrehozott nézetekkel automatikusan lesznek átalakítva.
 
 Az adatforrásnézet-tervezőből csempe elérhető típusok az alábbi táblázat ismerteti:
 
 | A nézettípus | Leírás |
 |:--- |:--- |
 | [A lekérdezések listája](#list-of-queries-part) |A naplófájl-keresési lekérdezések listáját jeleníti meg. Kiválaszthatja, hogy minden egyes lekérdezés az eredmények megtekintése céljából. |
-| [Száma és a lista](#number-amp-list-part) |A fejléc megjelenítése egyetlen számát jeleníti meg a napló keresési lekérdezés bejegyzések száma. A lista megjeleníti a felső tíz egy lekérdezés eredményeként előálló, a diagramját, amelyek egy numerikus oszlopot vagy adott idő alatt a módosítás relatív értékét jelzi. |
-| [Két szám és listája](#two-numbers-amp-list-part) |A fejléc megjelenítése számát is rögzíti a különálló naplófájl-keresési lekérdezések két szám jeleníti meg. A lista megjeleníti a felső tíz egy lekérdezés eredményeként előálló, a diagramját, amelyek egy numerikus oszlopot vagy adott idő alatt a módosítás relatív értékét jelzi. |
-| [Fánk és listája](#donut-amp-list-part) |A fejléc összegzi a napló lekérdezésben érték oszlop egyetlen számot jeleníti meg. A fánk grafikusan felső három rekord eredményeit jeleníti meg. |
-| [Két ütemtervek és listája](#two-timelines-amp-list-part) |A fejléc két naplófájl-lekérdezések eredményének oszlopdiagramok, a kihívás, amely egy számot, amely összefoglalja a napló lekérdezésben érték oszlop jeleníti meg az idővel jeleníti meg. A lista megjeleníti a felső tíz egy lekérdezés eredményeként előálló, a diagramját, amelyek egy numerikus oszlopot vagy adott idő alatt a módosítás relatív értékét jelzi. |
+| [Száma és a lista](#number-and-list-part) |A fejléc megjelenítése egyetlen számát jeleníti meg a napló keresési lekérdezés bejegyzések száma. A lista megjeleníti a felső tíz egy lekérdezés eredményeként előálló, a diagramját, amelyek egy numerikus oszlopot vagy adott idő alatt a módosítás relatív értékét jelzi. |
+| [Két szám és listája](#two-numbers-and-list-part) |A fejléc megjelenítése számát is rögzíti a különálló naplófájl-keresési lekérdezések két szám jeleníti meg. A lista megjeleníti a felső tíz egy lekérdezés eredményeként előálló, a diagramját, amelyek egy numerikus oszlopot vagy adott idő alatt a módosítás relatív értékét jelzi. |
+| [Fánk és listája](#donut-and-list-part) |A fejléc összegzi a napló lekérdezésben érték oszlop egyetlen számot jeleníti meg. A fánk grafikusan felső három rekord eredményeit jeleníti meg. |
+| [Két ütemtervek és listája](#two-timelines-and-list-part) |A fejléc két naplófájl-lekérdezések eredményének oszlopdiagramok, a kihívás, amely egy számot, amely összefoglalja a napló lekérdezésben érték oszlop jeleníti meg az idővel jeleníti meg. A lista megjeleníti a felső tíz egy lekérdezés eredményeként előálló, a diagramját, amelyek egy numerikus oszlopot vagy adott idő alatt a módosítás relatív értékét jelzi. |
 | [Információ](#information-part) |A fejléc statikus szöveget és egy nem kötelező hivatkozást jeleníti meg. A lista megjeleníti elemek legalább egy olyan statikus cím és a szöveg. |
-| [Vonaldiagram, a kihívás, és a listája](#line-chart-callout-amp-list-part) |A fejléc egy grafikonon, több adatsorozattal idő és az összesített érték egy kihívás napló lekérdezésből. A lista megjeleníti a felső tíz egy lekérdezés eredményeként előálló, a diagramját, amelyek egy numerikus oszlopot vagy adott idő alatt a módosítás relatív értékét jelzi. |
-| [Vonaldiagram és listája](#line-chart-amp-list-part) |A fejléc egy grafikonon, több adatsorozattal időbeli napló lekérdezésből. A lista megjeleníti a felső tíz egy lekérdezés eredményeként előálló, a diagramját, amelyek egy numerikus oszlopot vagy adott idő alatt a módosítás relatív értékét jelzi. |
+| [Vonaldiagram, a kihívás, és a listája](#line-chart-callout-and-list-part) |A fejléc egy grafikonon, több adatsorozattal idő és az összesített érték egy kihívás napló lekérdezésből. A lista megjeleníti a felső tíz egy lekérdezés eredményeként előálló, a diagramját, amelyek egy numerikus oszlopot vagy adott idő alatt a módosítás relatív értékét jelzi. |
+| [Vonaldiagram és listája](#line-chart-and-list-part) |A fejléc egy grafikonon, több adatsorozattal időbeli napló lekérdezésből. A lista megjeleníti a felső tíz egy lekérdezés eredményeként előálló, a diagramját, amelyek egy numerikus oszlopot vagy adott idő alatt a módosítás relatív értékét jelzi. |
 | [Sor diagramok rész verem](#stack-of-line-charts-part) |Megjeleníti a három különálló vonaldiagramok esetében, több sorozat időbeli napló lekérdezésből. |
 
 A következő szakaszok ismertetik a mozaik típusát és azok tulajdonságait részletesen.
@@ -78,13 +76,14 @@ A fejléc megjelenítése egyetlen számát jeleníti meg a napló keresési lek
 | **Cím** | |
 | Jelmagyarázat |A fejléc tetején megjelenő szöveg. |
 | Lekérdezés |A lekérdezés futtatásához be az igazítását. A lekérdezés által visszaadott rekordok száma jelenik meg. |
+| Kattintson a navigációs | A fejléc kattintva végrehajtott műveletet.  További információkért lásd: [általános beállítások](#click-through-navigation). |
 | **List** | |
 | Lekérdezés |A lekérdezés futtatásához a listát. Az eredmények első tíz rekordját első két tulajdonságai jelennek meg. Az első tulajdonság egy szöveges értéket, és a második tulajdonsága egy numerikus érték. Sávok automatikusan létrejönnek a numerikus oszlopot relatív értékének alapuló.<br><br>Használja a `Sort` parancsot a a listában szereplő bejegyzések rendezése a lekérdezésben. A lekérdezés futtatásához és az összes rekordot ad vissza, jelölje ki **láthatja az összes**. |
 | Graph elrejtése |Kattintson erre a hivatkozásra letiltja a diagram jobb oldalán a numerikus oszlopot. |
 | Értékgörbéket engedélyezése |Válassza ki a hivatkozás értékgörbe vízszintes vonal helyett. További információkért lásd: [általános beállítások](#sparklines). |
 | Szín |A klasszikus vagy értékgörbéket színét. |
 | Név-érték elválasztó |A határolójel a text tulajdonságához értelmezhető több érték is. További információkért lásd: [általános beállítások](#sparklines). |
-| Navigációs lekérdezés |A lekérdezés futtatásához, amikor kiválaszt egy elemet a listában. További információkért lásd: [általános beállítások](#navigation-query). |
+| Kattintson a navigációs | A lista egy elemére kattintva végrehajtott műveletet.  További információkért lásd: [általános beállítások](#click-through-navigation). |
 | **List** |**> Oszlopfejlécek** |
 | Name (Név) |Az első oszlop tetején megjelenő szöveg. |
 | Érték |A második oszlop tetején megjelenő szöveg. |
@@ -103,6 +102,8 @@ A fejléc van két szám, amely megjeleníti a különálló naplófájl-keresé
 | Új csoport |Jelölje ki erre a hivatkozásra kattintva hozzon létre egy új csoportot a nézetben, az aktuális nézet kezdve. |
 | Ikon |A bináris fájl, amely mellett a fejlécben eredménye megjelenik. |
 | Ikon használata |Kattintson erre a hivatkozásra a ikon megjelenítéséhez. |
+| **Cím navigációs** | |
+| Kattintson a navigációs | A fejléc kattintva végrehajtott műveletet.  További információkért lásd: [általános beállítások](#click-through-navigation). |
 | **Cím** | |
 | Jelmagyarázat |A fejléc tetején megjelenő szöveg. |
 | Lekérdezés |A lekérdezés futtatásához be az igazítását. A lekérdezés által visszaadott rekordok száma jelenik meg. |
@@ -113,7 +114,7 @@ A fejléc van két szám, amely megjeleníti a különálló naplófájl-keresé
 | Szín |A klasszikus vagy értékgörbéket színét. |
 | Művelet |Az értékgörbe végrehajtani a műveletet. További információkért lásd: [általános beállítások](#sparklines). |
 | Név-érték elválasztó |A határolójel a text tulajdonságához értelmezhető több érték is. További információkért lásd: [általános beállítások](#sparklines). |
-| Navigációs lekérdezés |A lekérdezés futtatásához, amikor kiválaszt egy elemet a listában. További információkért lásd: [általános beállítások](#navigation-query). |
+| Kattintson a navigációs | A lista egy elemére kattintva végrehajtott műveletet.  További információkért lásd: [általános beállítások](#click-through-navigation). |
 | **List** |**> Oszlopfejlécek** |
 | Name (Név) |Az első oszlop tetején megjelenő szöveg. |
 | Érték |A második oszlop tetején megjelenő szöveg. |
@@ -137,6 +138,7 @@ A fejléc összegzi a napló lekérdezésben érték oszlop egyetlen számot jel
 | Alcím |A fejléc tetején címe alatt megjelenő szöveg. |
 | **Fánk** | |
 | Lekérdezés |A lekérdezés a fánk fussanak. Az első tulajdonság egy szöveges értéket, és a második tulajdonsága egy numerikus érték. |
+| Kattintson a navigációs | A fejléc kattintva végrehajtott műveletet.  További információkért lásd: [általános beállítások](#click-through-navigation). |
 | **Fánk** |**> Center** |
 | Szöveg |A szöveg, amely alatt a fánk értéket jelenik meg. |
 | Művelet |A value tulajdonság egy értékként legyen megadva összefoglalásképpen végre a műveletet.<ul><li>Sum: Hozzáadja az értékeket az összes rekord.</li><li>Százalékos: Levő értékek alapján visszaadott rekordok aránya **center művelet során használt értékek eredménye** a teljes rekordok a lekérdezésben.</li></ul> |
@@ -153,7 +155,7 @@ A fejléc összegzi a napló lekérdezésben érték oszlop egyetlen számot jel
 | Szín |A klasszikus vagy értékgörbéket színét. |
 | Művelet |Az értékgörbe végrehajtani a műveletet. További információkért lásd: [általános beállítások](#sparklines). |
 | Név-érték elválasztó |A határolójel a text tulajdonságához értelmezhető több érték is. További információkért lásd: [általános beállítások](#sparklines). |
-| Navigációs lekérdezés |A lekérdezés futtatásához, amikor kiválaszt egy elemet a listában. További információkért lásd: [általános beállítások](#navigation-query). |
+| Kattintson a navigációs | A lista egy elemére kattintva végrehajtott műveletet.  További információkért lásd: [általános beállítások](#click-through-navigation). |
 | **List** |**> Oszlopfejlécek** |
 | Name (Név) |Az első oszlop tetején megjelenő szöveg. |
 | Érték |A második oszlop tetején megjelenő szöveg. |
@@ -172,6 +174,8 @@ A fejléc két naplófájl-lekérdezések eredményének oszlopdiagramok, a kih�
 | Új csoport |Jelölje ki erre a hivatkozásra kattintva hozzon létre egy új csoportot a nézetben, az aktuális nézet kezdve. |
 | Ikon |A bináris fájl, amely mellett a fejlécben eredménye megjelenik. |
 | Ikon használata |Kattintson erre a hivatkozásra a ikon megjelenítéséhez. |
+| **Cím navigációs** | |
+| Kattintson a navigációs | A fejléc kattintva végrehajtott műveletet.  További információkért lásd: [általános beállítások](#click-through-navigation). |
 | **Először diagram<br>második diagram** | |
 | Jelmagyarázat |A szöveg, a kihívás az első adatsorozathoz jelenik meg. |
 | Szín |Az adatsorozatban szereplő oszlopok használandó szín. |
@@ -183,7 +187,7 @@ A fejléc két naplófájl-lekérdezések eredményének oszlopdiagramok, a kih�
 | Értékgörbéket engedélyezése |Válassza ki a hivatkozás értékgörbe vízszintes vonal helyett. További információkért lásd: [általános beállítások](#sparklines). |
 | Szín |A klasszikus vagy értékgörbéket színét. |
 | Művelet |Az értékgörbe végrehajtani a műveletet. További információkért lásd: [általános beállítások](#sparklines). |
-| Navigációs lekérdezés |A lekérdezés futtatásához, amikor kiválaszt egy elemet a listában. További információkért lásd: [általános beállítások](#navigation-query). |
+| Kattintson a navigációs | A lista egy elemére kattintva végrehajtott műveletet.  További információkért lásd: [általános beállítások](#click-through-navigation). |
 | **List** |**> Oszlopfejlécek** |
 | Name (Név) |Az első oszlop tetején megjelenő szöveg. |
 | Érték |A második oszlop tetején megjelenő szöveg. |
@@ -228,6 +232,7 @@ A fejléc egy grafikonon napló lekérdezésből több adatsorozattal időt és 
 | Alcím |A fejléc tetején címe alatt megjelenő szöveg. |
 | **Vonaldiagram** | |
 | Lekérdezés |A lekérdezés a vonaldiagram fussanak. Az első tulajdonság egy szöveges értéket, és a második tulajdonsága egy numerikus érték. Ez a lekérdezés szokásos használja a *mérték* , hogy összesítse a eredmények kulcsszó. Ha a lekérdezés használ a *időköz* kulcsszóval, a diagram x tengelyéhez használja az adott időszakban. Ha a lekérdezés nem tartalmazza a *időköz* kulcsszót, az x tengely használ óránként történik. |
+| Kattintson a navigációs | A fejléc kattintva végrehajtott műveletet.  További információkért lásd: [általános beállítások](#click-through-navigation). |
 | **Vonaldiagram** |**> Kihívás** |
 | Kihívás cím |A képfelirat érték felett megjelenő szöveg. |
 | Az adatsorozat neve |A képfelirat érték használandó adatsorozat tulajdonság értéke. Adatsorozatok valósul meg, ha a lekérdezés összes rekordot szolgálnak. |
@@ -243,7 +248,7 @@ A fejléc egy grafikonon napló lekérdezésből több adatsorozattal időt és 
 | Szín |A klasszikus vagy értékgörbéket színét. |
 | Művelet |Az értékgörbe végrehajtani a műveletet. További információkért lásd: [általános beállítások](#sparklines). |
 | Név-érték elválasztó |A határolójel a text tulajdonságához értelmezhető több érték is. További információkért lásd: [általános beállítások](#sparklines). |
-| Navigációs lekérdezés |A lekérdezés futtatásához, amikor kiválaszt egy elemet a listában. További információkért lásd: [általános beállítások](#navigation-query). |
+| Kattintson a navigációs | A lista egy elemére kattintva végrehajtott műveletet.  További információkért lásd: [általános beállítások](#click-through-navigation). |
 | **List** |**> Oszlopfejlécek** |
 | Name (Név) |Az első oszlop tetején megjelenő szöveg. |
 | Érték |A második oszlop tetején megjelenő szöveg. |
@@ -267,6 +272,7 @@ A fejléc egy grafikonon napló lekérdezésből több adatsorozattal adott idő
 | Alcím |A fejléc tetején címe alatt megjelenő szöveg. |
 | **Vonaldiagram** | |
 | Lekérdezés |A lekérdezés a vonaldiagram fussanak. Az első tulajdonság egy szöveges értéket, és a második tulajdonsága egy numerikus érték. Ez a lekérdezés szokásos használja a *mérték* , hogy összesítse a eredmények kulcsszó. Ha a lekérdezés használ a *időköz* kulcsszóval, a diagram x tengelyéhez használja az adott időszakban. Ha a lekérdezés nem tartalmazza a *időköz* kulcsszót, az x tengely használ óránként történik. |
+| Kattintson a navigációs | A fejléc kattintva végrehajtott műveletet.  További információkért lásd: [általános beállítások](#click-through-navigation). |
 | **Vonaldiagram** |**> Y-axis** |
 | A Logaritmikus skála használata |Válassza ki a tengely logaritmikus skála használata ezen a hivatkozáson. |
 | egység |A lekérdezés által visszaadott értékek a egységeket adjon meg. Az adatok megjelenítési adatfelirat, amelyek jelzik az értéktípusokat és opcionálisan az az értékeket átalakítani. A *egység* típusa határozza meg az egység a kategóriát, és határozza meg a rendelkezésre álló *aktuális egység* írja be az értékeket. Ha válasszon ki egy értéket *átalakítása*, számértékek konvertálja a *aktuális egység* típus a *átalakítása* típusa. |
@@ -278,7 +284,7 @@ A fejléc egy grafikonon napló lekérdezésből több adatsorozattal adott idő
 | Szín |A klasszikus vagy értékgörbéket színét. |
 | Művelet |Az értékgörbe végrehajtani a műveletet. További információkért lásd: [általános beállítások](#sparklines). |
 | Név-érték elválasztó |A határolójel a text tulajdonságához értelmezhető több érték is. További információkért lásd: [általános beállítások](#sparklines). |
-| Navigációs lekérdezés |A lekérdezés futtatásához, amikor kiválaszt egy elemet a listában. További információkért lásd: [általános beállítások](#navigation-query). |
+| Kattintson a navigációs | A lista egy elemére kattintva végrehajtott műveletet.  További információkért lásd: [általános beállítások](#click-through-navigation). |
 | **List** |**> Oszlopfejlécek** |
 | Name (Név) |Az első oszlop tetején megjelenő szöveg. |
 | Érték |A második oszlop tetején megjelenő szöveg. |
@@ -301,6 +307,7 @@ A vonaldiagram navigációs veremben három különálló vonaldiagramok esetéb
 | Alcím |A diagram tetején a cím alatt megjelenő szöveg. |
 | **Diagram – 1<br>2 diagram<br>3 diagram** |**Vonaldiagram** |
 | Lekérdezés |A lekérdezés a vonaldiagram fussanak. Az első tulajdonság egy szöveges értéket, és a második tulajdonsága egy numerikus érték. Ez a lekérdezés szokásos használja a *mérték* , hogy összesítse a eredmények kulcsszó. Ha a lekérdezés használ a *időköz* kulcsszóval, a diagram x tengelyéhez használja az adott időszakban. Ha a lekérdezés nem tartalmazza a *időköz* kulcsszót, az x tengely használ óránként történik. |
+| Kattintson a navigációs | A fejléc kattintva végrehajtott műveletet.  További információkért lásd: [általános beállítások](#click-through-navigation). |
 | **A diagram** |**> Y-axis** |
 | A Logaritmikus skála használata |Válassza ki a tengely logaritmikus skála használata ezen a hivatkozáson. |
 | egység |A lekérdezés által visszaadott értékek a egységeket adjon meg. Az adatok megjelenítési adatfelirat, amelyek jelzik az értéktípusokat és opcionálisan az az értékeket átalakítani. A *egység* típusa határozza meg az egység a kategóriát, és határozza meg a rendelkezésre álló *aktuális egység* írja be az értékeket. Ha válasszon ki egy értéket *átalakítása*, számértékek konvertálja a *aktuális egység* típus a *átalakítása* típusa. |
@@ -314,10 +321,18 @@ A név-érték elválasztó a határolójel a lista lekérdezésből text tulajd
 
 Vegyük példaként a tulajdonságot, *hely* például része, amely értékek *Redmond-összeállító 41* és *Bellevue-összeállító 12*. A név-érték elválasztó kötőjellel (-) is megadhat, és *város-összeállító* nevét. Ezt a módszert használja az egyes értékek elemez nevű két tulajdonság be *Város* és *épület*.
 
-### <a name="navigation-query"></a>Navigációs lekérdezés
-A navigációs Ez a lekérdezés futtatásához, amikor kiválaszt egy elemet a listában. Használjon *{kijelölt elem}* a cikk a felhasználó által kiválasztott szintaxisát tartalmazza.
+### <a name="click-through-navigation"></a>Kattintson a navigációs
+Kattintson a navigációs határozza meg, mit kell tenni, a fejléc vagy listaelem nézetben gombjára kattintva.  Megnyílik a lekérdezés vagy a [naplófájl-keresési portál](log-analytics-log-search-portals.md#log-search) vagy egy másik nézetre indítsa el.
 
-Például, ha a lekérdezés tartalmaz egy nevű oszlopot *számítógép* , és a navigációs lekérdezés *{kijelölt elem}*, többek között a lekérdezés *számítógép = "Sajátgép"* fut, amikor kiválaszt egy számítógép. Ha a navigációs lekérdezés *típus = {kijelölt elem} esemény*, a lekérdezés *típus = esemény számítógép = "Sajátgép"* futtatása.
+Az alábbi táblázat bemutatja a kattintások navigációs beállításait.
+
+| Beállítás           | Leírás |
+|:--|:--|
+| Naplófájl-keresési (automatikus) | Amikor kiválaszt egy Fejlécelem futtatásához keresési napló.  Ez az elem alapuló ugyanazon napló keresés.
+| Naplók keresése        | Napló keresési fut, amikor kiválaszt egy elemet a listában.  Írja be a lekérdezést a **navigációs lekérdezés** mezőbe.   Használjon *{kijelölt elem}* a cikk a felhasználó által kiválasztott szintaxisát tartalmazza.  Például, ha a lekérdezés tartalmaz egy nevű oszlopot *számítógép* , és a navigációs lekérdezés *{kijelölt elem}*, többek között a lekérdezés *számítógép = "Sajátgép"* fut, amikor kiválaszt egy számítógép. Ha a navigációs lekérdezés *típus = {kijelölt elem} esemény*, a lekérdezés *típus = esemény számítógép = "Sajátgép"* futtatása. |
+| Nézet              | Nézet megnyitásához, amikor kiválaszt egy Fejlécelem vagy elem listáját.  Válassza ki a nézet nevét a munkaterületén a **nézetnév** mezőbe. |
+
+
 
 ### <a name="sparklines"></a>Értékgörbéket
 Értékgörbe kis vonaldiagramról, amely bemutatja a lista bejegyzés adott idő alatt. A képi megjelenítés részei a listájával kiválaszthatja, amely megadja, hogy a relatív értéket egy numerikus oszlopot, vagy egy értékgörbe, amely megadja, hogy annak értéke időbeli vízszintes vonal megjelenjen-e.

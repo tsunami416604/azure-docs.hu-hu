@@ -11,13 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: dotnet
 ms.devlang: na
 ms.topic: article
-ms.date: 09/06/2017
+ms.date: 03/13/2018
 ms.author: glenga
-ms.openlocfilehash: 26df11bb010414ba979077c45d01e66f17f6b12e
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: dddb35ea2ba1c02f78234fe33cdb832e9aacbff5
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-functions-tools-for-visual-studio"></a>Az Azure Functions Tools for Visual Studio  
 
@@ -38,9 +38,13 @@ Ez a témakör bemutatja, hogyan a Azure Functions Tools for Visual Studio 2017 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure Functions eszközök tartalmazza az Azure fejlesztési munkaterhelését [Visual Studio 2017 verzió 15.4](https://www.visualstudio.com/vs/), vagy újabb verziója. Győződjön meg arról, a **Azure fejlesztési** a Visual Studio 2017 telepítési munkaterhelés:
+Az Azure Functions eszközök tartalmazza az Azure fejlesztési munkaterhelését [Visual Studio 2017 verzió 15.5](https://www.visualstudio.com/vs/), vagy újabb verziója. Győződjön meg arról, a **Azure fejlesztési** a Visual Studio 2017 telepítési munkaterhelés:
 
 ![Az Azure-fejlesztési számítási feladatot is tartalmazó Visual Studio 2017 telepítése](./media/functions-create-your-first-function-visual-studio/functions-vs-workloads.png)
+
+Győződjön meg arról, hogy a Visual Studio naprakész, és hogy használja a [legújabb verziója](#check-your-tools-version) az Azure Functions eszközök.
+
+### <a name="other-requirements"></a>Egyéb követelmények
 
 Hozzon létre, és funkciók telepítése, akkor is szüksége lesz:
 
@@ -48,11 +52,33 @@ Hozzon létre, és funkciók telepítése, akkor is szüksége lesz:
 
 * Egy Azure Storage-fiók. A storage-fiók létrehozásához lásd: [hozzon létre egy tárfiókot](../storage/common/storage-create-storage-account.md#create-a-storage-account).
 
+### <a name="check-your-tools-version"></a>Az eszközök verziójának ellenőrzése
+
+1. Az a **eszközök** menüben válasszon **bővítmények és frissítések**. Bontsa ki a **telepített** > **eszközök** válassza **Azure Functions és webes feladatok eszközök**.
+
+    ![A funkciók eszközök verziójának ellenőrzése](./media/functions-develop-vs/functions-vstools-check-functions-tools.png)
+
+2. Vegye figyelembe a telepített **verzió**. Összehasonlíthatja a felsorolt a legújabb verziót [a kibocsátási megjegyzésekben](https://github.com/Azure/Azure-Functions/blob/master/VS-AzureTools-ReleaseNotes.md). 
+
+3. A verzió telepítve, ha frissíteni a Visual Studio eszközök a következő szakaszban látható.
+
+### <a name="update-your-tools"></a>Az eszköz frissítése
+
+1. Az a **bővítmények és frissítések** párbeszédpanelen bontsa ki a **frissítések** > **Visual Studio piactér**, válassza a **Azure Functions és webes feladatok eszközök**  válassza **frissítés**.
+
+    ![A funkciók eszközök verziója](./media/functions-develop-vs/functions-vstools-update-functions-tools.png)   
+
+2. Után az eszközök a frissítés letöltését követően zárja be a Visual Studio elindítani az eszközök frissítése a VSIX installer használatával.
+
+3. A telepítő válassza **OK** elindításához, majd **módosítás** frissítése az eszközöket. 
+
+4. A frissítés befejezése után válassza ki a **Bezárás** , és indítsa újra a Visual Studio.
+
 ## <a name="create-an-azure-functions-project"></a>Az Azure Functions projekt létrehozása 
 
 [!INCLUDE [Create a project using the Azure Functions](../../includes/functions-vstools-create.md)]
 
-A projekt sablont hoz létre egy C#-projektet, telepíti a `Microsoft.NET.Sdk.Functions` NuGet-csomagot, és beállítja a megcélzott keretrendszer. 1.x célokat a .NET-keretrendszer működik, és a 2.x célok .NET-szabvány funkciókkal. Az új projektbe futnak a következő fájlokat tartalmazza:
+A projekt sablont hoz létre egy C#-projektet, telepíti a `Microsoft.NET.Sdk.Functions` NuGet-csomagot, és beállítja a megcélzott keretrendszer. 1.x célokat a .NET-keretrendszer működik, és a 2.x célok .NET-szabvány funkciókkal. Az új projekt rendelkezik a következő fájlokat:
 
 * **Host.JSON**: lehetővé teszi a funkciók gazdagép konfigurálását. Ezeket a beállításokat is alkalmazza, ha fut a helyi és az Azure-ban is. További információkért lásd: [host.json hivatkozás](functions-host-json.md).
     

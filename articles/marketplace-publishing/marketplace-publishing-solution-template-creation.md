@@ -3,8 +3,8 @@ title: "A megoldássablon az a piactér létrehozását bemutató útmutatónak 
 description: "Hozzon létre, hitelesíthet és központi telepítése virtuális Gépre kiterjedő kép megoldás sablonját részletes utasításokat vásárolja meg az Azure piactéren."
 services: marketplace-publishing
 documentationcenter: 
-author: HannibalSII
-manager: hascipio
+author: msmbaldwin
+manager: mbaldwin
 editor: 
 ms.assetid: e14e05f2-2385-4ce0-b351-0747cb74ba19
 ms.service: marketplace
@@ -13,18 +13,18 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/27/2016
-ms.author: hascipio; v-divte
-ms.openlocfilehash: 675316b97e821a81ca4946d57a76d7bce978361b
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.author: mbaldwin
+ms.openlocfilehash: 83e69701aa5e8c11354e7551d66f3fdd18289000
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="guide-to-create-a-solution-template-for-azure-marketplace"></a>Az útmutató megoldást sablon létrehozása az Azure piactéren
 1. lépésben befejezése után [fióklétrehozás és a regisztrációs][link-acct-creation], azt interaktív, egy Azure-kompatibilis megoldás sablon létrehozásakor [műszaki Előfeltételek létrehozásához egy megoldás sablon](marketplace-publishing-solution-template-creation-prerequisites.md). Most végigvezetjük, a megoldás sablonok létrehozásának több virtuális gépek a lépéseket a [közzétételi Portáljára] [ link-pubportal] az Azure piactérről.
 
 ## <a name="create-your-solution-template-offer-in-the-publishing-portal"></a>A megoldás sablon ajánlat létrehozása a közzétételi portálon
-Ugrás a [https://publish.windowsazure.com](http://publish.windowsazure.com). Amikor első alkalommal való bejelentkezés a [közzétételi Portáljára](https://publish.windowsazure.com/), használja a fiókot használja a vállalata értékesítő profil regisztrálták. Később a vállalat bármely alkalmazott is hozzáadhat a közzétételi portálon co-rendszergazdaként.
+Ugrás a [ https://publish.windowsazure.com ](http://publish.windowsazure.com). Amikor első alkalommal való bejelentkezés a [közzétételi Portáljára](https://publish.windowsazure.com/), használja a fiókot használja a vállalata értékesítő profil regisztrálták. Később a vállalat bármely alkalmazott is hozzáadhat a közzétételi portálon co-rendszergazdaként.
 
 ### <a name="1-select-solution-templates"></a>1. Válassza ki a "Solution templates"
   ![rajz][img-pubportal-menu-sol-templ]
@@ -37,9 +37,9 @@ A megoldássablon az összes hozzá tartozó topológia „szülőeleme”. Egy 
 
 * Az olyan topológiák létrehozását: "Topológia azonosítója" az általában a topológia a megoldás sablon neve. A topológia azonosítója az URL-címet használja a lent látható módon:
 
-  Az Azure piactér: http://azure.microsoft.com/marketplace/partners/ {PublisherNamespace} / {OfferIdentifier} {TopologyIdentifier}
+  Az Azure piactéren: http://azure.microsoft.com/marketplace/partners/{PublisherNamespace}/{OfferIdentifier}{TopologyIdentifier}
 
-  Azure-portálon: https://portal.azure.com/#gallery/ {PublisherNamespace}. {OfferIdentifier} {TopologyIdentifier}
+  Azure-portálon: https://portal.azure.com/#gallery/{PublisherNamespace}.{OfferIdentifier}{TopologyIdentifier}
 * Adjon hozzá egy új verziót.
 
 ### <a name="4-get-your-topology-versions-certified"></a>4. A hitelesített topológia verziók beolvasása
@@ -53,7 +53,7 @@ A topológia, hogy adott verziójának telepítéséhez az összes szükséges f
   >
   >
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Most, hogy a megoldás sablon létrehozása és a zip-fájl feltöltése, kérjük, kövesse az utasításokat a [piactér marketing content útmutató](marketplace-publishing-push-to-staging.md) átmeneti ajánlatot előtt. Piactér cikkek közzététele a teljes készletének megtekintéséhez keresse fel [első lépések: az ajánlat közzététele az Azure piactéren](marketplace-publishing-getting-started.md).
 
 Is érdekelheti a kapcsolódó cikkekben:

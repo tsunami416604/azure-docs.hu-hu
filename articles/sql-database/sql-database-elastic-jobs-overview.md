@@ -3,23 +3,18 @@ title: "Kiterjesztett felhő adatbázisok kezelése |} Microsoft Docs"
 description: "A rugalmas adatbázis feladat szolgáltatás segítségével hajtható végre a parancsfájl adatbázisok csoportja között."
 metakeywords: azure sql database elastic databases
 services: sql-database
-documentationcenter: 
-manager: jhubbard
-author: ddove
-ms.assetid: 6fa47cf2-1162-4534-a206-6e2d95b78580
+manager: craigg
+author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: On Demand
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2016
-ms.author: ddove
-ms.openlocfilehash: f709cd38a690ba666ca290cc029caa2ce4f9dff0
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.author: sstein
+ms.openlocfilehash: 1f0e022eb98619b22f7e62e0602d36ba821def22
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="managing-scaled-out-cloud-databases"></a>Kiterjesztett felhő adatbázisok kezelése
 Kiterjesztett szilánkos adatbázisok, kezelheti a **rugalmas adatbázis-feladatok** (előzetes verzió) funkciója lehetővé teszi megbízhatóan között egy csoportot az adatbázisok, beleértve a Transact-SQL (T-SQL) parancsprogram végrehajtása:
@@ -134,7 +129,7 @@ Több feladat feladatokat hajthat végre feladatok végrehajtásának típusa va
 4. Feladataival feladat befejezése után a vezérlő frissíti a feladat kész állapotba. 
    Feladat végrehajtása során bármikor a PowerShell API segítségével megtekintheti a feladat végrehajtása aktuális állapotát. Az összes idő a PowerShell API-k által visszaadott UTC formátumban vannak megadva. Ha szükséges, a lemondási kérelmet leállíthat feladatot is kezdeményezhető. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [Az összetevők telepítéséhez](sql-database-elastic-jobs-service-installation.md), majd [létrehozása és hozzáadása a napló az egyes adatbázis-adatbázisok csoport](sql-database-manage-logins.md). Feladat létrehozása és kezelése további ismertetése: [rugalmas adatbázis-feladatok létrehozását és kezelését](sql-database-elastic-jobs-create-and-manage.md). Lásd még: [Ismerkedés a rugalmas feladatok](sql-database-elastic-jobs-getting-started.md).
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]

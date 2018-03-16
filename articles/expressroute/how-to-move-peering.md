@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/09/2017
+ms.date: 03/12/2018
 ms.author: cherylmc
-ms.openlocfilehash: 4fd0f1cbba36957ae5ecc1b7436d1f1734a3ef79
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.openlocfilehash: 02d7c3f587a4cbfb11fc3b6863f75ca30b4d6c51
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="move-a-public-peering-to-microsoft-peering"></a>Helyezze át a nyilvános társviszony-létesítést úgy Microsoft társviszony-létesítés
 
@@ -73,7 +73,11 @@ Miután meggyőződött arról, hogy a Microsoft társviszony-létesítés van k
   * [Törölje az Azure nyilvános társviszony-létesítés Azure-portál használatával](expressroute-howto-routing-portal-resource-manager.md#deletepublic)
   * [Törölje az Azure nyilvános társviszony-létesítés Azure PowerShell használatával](expressroute-howto-routing-arm.md#deletepublic)
   * [Törölje az Azure nyilvános társviszony-létesítés parancssori felület használatával](howto-routing-cli.md#deletepublic)
+  
+## <a name="view"></a>5. Nézet esetében
+  
+Egy ExpressRoute-Kapcsolatcsoportok és az Azure portálon társviszony listája látható. További információkért lásd: [megtekintése a Microsoft társviszony-létesítési részletek](expressroute-howto-routing-portal-resource-manager.md#getmsft).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ az ExpressRoute-tal kapcsolatban: [ExpressRoute – Gyakori kérdések](expressroute-faqs.md).

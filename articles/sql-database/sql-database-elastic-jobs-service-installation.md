@@ -2,24 +2,18 @@
 title: "A rugalmas adatbázis-feladatok telepítése |} Microsoft Docs"
 description: "Végezze el a rugalmas feladat összetevő telepítése."
 services: sql-database
-documentationcenter: 
-manager: jhubbard
+manager: craigg
 author: ddove
-editor: 
-ms.assetid: cbe0aa2b-17e3-4b6f-a16f-6ebc1f5a66af
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: Inactive
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2016
-ms.author: ddove
-ms.openlocfilehash: ef5a8931eeda0f7ddc485632acaf2d76b71dccde
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.author: sstein
+ms.openlocfilehash: 7e5258e0ccb88c8e2f3fe3277f69444ae5424cd0
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="installing-elastic-database-jobs-overview"></a>Telepítése rugalmas feladatok – áttekintés
 [**Rugalmas adatbázis-feladatok** ](sql-database-elastic-jobs-overview.md) PowerShell vagy az Azure portálon keresztül is telepíthető. Akkor is hozzáférhetnek a PowerShell API használata csak akkor, ha a PowerShell telepítéséhez feladatok létrehozásához és kezeléséhez. Emellett a PowerShell API-k jóval több funkciót kínál a portál mint ezen a ponton a időben.
@@ -68,7 +62,7 @@ A minta betöltéshez a megadott paraméterek módosíthatók a kívánt beáll�
   </tr>
 
 <tr>
-    <td>erőforráscsoport-név</td>
+    <td>ResourceGroupName</td>
     <td>Itt az Azure erőforráscsoport neve az újonnan létrehozott Azure összetevőket tartalmazza. Ez a paraméter alapértelmezett értéke: "__ElasticDatabaseJob". Ez az érték módosítása nem ajánlott.</td>
     </tr>
 
@@ -129,7 +123,7 @@ A Virtuálisgép-méretet, a telepítés frissítéséhez futtassa a következő
 </tr>
 
   <tr>
-    <td>erőforráscsoport-név</td>
+    <td>ResourceGroupName</td>
     <td>A használható, ha a rugalmas adatbázis-feladat összetevőket kezdetben telepített Azure erőforráscsoport-név azonosítja. Ez a paraméter alapértelmezett értéke: "__ElasticDatabaseJob". Ez az érték módosítása nem ajánlott, mivel nem rendelkezik a paraméter megadásával.</td>
     </tr>
 </tr>
@@ -173,7 +167,7 @@ Ha elvégezte [egy rugalmas készlet létrehozása](sql-database-elastic-pool-ma
 
 Ha az Eltávolítás szükség, törölje a csoportot. Lásd: [eltávolítása a rugalmas adatbázis-feladat összetevőket](sql-database-elastic-jobs-uninstall.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A parancsfájl végrehajtása az összes adatbázisra, további információ: a csoport jön létre, győződjön meg arról, hogy a megfelelő jogosultsággal rendelkező hitelesítő adatot [SQL-adatbázisok védelme](sql-database-manage-logins.md).
 Lásd: [létrehozása és egy rugalmas adatbázis-feladatok kezelése](sql-database-elastic-jobs-create-and-manage.md) a kezdéshez.
 

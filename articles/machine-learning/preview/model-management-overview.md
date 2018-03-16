@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/20/2017
-ms.openlocfilehash: 931dfae740996325cc62071a861e81ef5f67548b
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 89f95753248f74c7f6cb9ca1f680a01b07dd43d1
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-machine-learning-model-management"></a>Azure Machine Learning Modellkezelés
 
@@ -99,27 +99,27 @@ Az alábbi ábrán a teljes munkafolyamat ezekről a fogalmakról leíró rögz�
 ![](media/model-management-overview/modelmanagementworkflow.png)
 
 ## <a name="frequently-asked-questions-faq"></a>Gyakori kérdések (GYIK) 
-- Milyen adatok típusok támogatottak? Is NumPy tömbök is át közvetlenül webszolgáltatás bemeneteként?
+- **Milyen adatok típusok támogatottak? Is NumPy tömbök is át közvetlenül webszolgáltatás bemeneteként?**
 
    Ha meg van adva a következő sémafájl generate_schema SDK használatával létrehozott, majd átadhatók NumPy és/vagy Pandas DF. Bármilyen szerializálható JSON-bemenet is átadhatja. Kép átadhatók, valamint a bináris kódolású karakterlánc.
 
-- A webszolgáltatás támogatja a több bemeneti adatokat vagy más bemeneti adatok elemzése? 
+- **A webszolgáltatás támogatja a több bemeneti adatokat vagy más bemeneti adatok elemzése?**
 
    Igen, több bemeneti szótár, egy JSON-kérelmi csomagolt is igénybe vehet. Minden egyes bemeneti egyedi szótárkulcs volna meg.
 
-- A hívás a webes kérelem által aktivált szolgáltatás blokkoló hívás vagy egy aszinkron hívás?
+- **A hívás a webes kérelem által aktivált szolgáltatás blokkoló hívás vagy egy aszinkron hívás?**
 
    Ha a valós idejű funkcióval a CLI-t vagy API-t részeként szolgáltatás lett létrehozva, akkor célszerű blokkolja/aszinkron hívás. Azt kellene lennie a valós idejű gyors. Bár az ügyféloldalon hívása aszinkron HTTP-könyvtár használatával elkerülése érdekében az ügyféloldali szál blokkolja.
 
-- Hány kérésnek a webszolgáltatás egyidejűleg kezelheti?
+- **Hány kérésnek a webszolgáltatás egyidejűleg kezelheti?**
 
    A fürt és a webes szolgáltatás skála függ. Ki lehet terjeszteni a replikák 100 x szolgáltatást, és ezután is képes kezelni hány kérésnek egyidejűleg. Beállíthatja az egyidejű kérések maximális száma replika szolgáltatás átviteli sebesség növelése.
 
-- Hány kérésnek a webszolgáltatás várólistán tárolható?
+- **Hány kérésnek a webszolgáltatás várólistán tárolható?**
 
    Is konfigurálható. Alapértelmezés szerint 10 ~ / replikához értékűre van állítva, de akkor is növelése vagy csökkentése, az alkalmazás igényeinek megfelelően. Általában azt növelése sorba állított kérelmek száma növeli a szolgáltatás átviteli sebességét, de lehetővé teszi a késések ami még rosszabb sebességnél nagyobb százalékos érték. És konzisztens a késések fordulnak elő, ha szeretné állítani a queuing alacsony értékre (1-5), az átviteli sebesség kezelésére replikák számának növeléséhez. Engedélyezheti az automatikus skálázás értékének replikákat száma alapján automatikusan legyen a terhelés. 
 
-- Számítógép vagy a fürt használható több webszolgáltatás-végpontok?
+- **Számítógép vagy a fürt használható több webszolgáltatás-végpontok?**
 
    Abszolút. A szolgáltatások vagy végpontok 100 x futtathatja ugyanazon a fürtön. 
 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/15/2017
 ms.author: tomfitz
-ms.openlocfilehash: e19833cb58f37f5f8b83d5558d74255583137684
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: 8dfb664c7041d70f3ece812edb76df38a35e41f1
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="deploy-multiple-instances-of-a-resource-or-property-in-azure-resource-manager-templates"></a>Egy erőforrás vagy egy tulajdonság az Azure Resource Manager sablonokban több példányának telepítése
 Ez a cikk bemutatja, hogyan feltételesen központi telepítése egy erőforrást, és több példánya erőforrás létrehozása az Azure Resource Manager sablonban felépítésének módját.
@@ -72,7 +72,7 @@ Az erőforrás létrehozása több alkalommal hajtja végre a következő formá
 }
 ```
 
-Figyelje meg, hogy mindegyik erőforrás nevét tartalmazza a `copyIndex()` függvénynek, amely az aktuális iteráció adja meg a hurok. `copyIndex()`értéke nulla. Így, az alábbi példa:
+Figyelje meg, hogy mindegyik erőforrás nevét tartalmazza a `copyIndex()` függvénynek, amely az aktuális iteráció adja meg a hurok. `copyIndex()` értéke nulla. Így, az alábbi példa:
 
 ```json
 "name": "[concat('storage', copyIndex())]",
@@ -345,6 +345,8 @@ Megadja, hogy egy erőforrás által központilag telepített után egy másik e
 }
 ```
 
+<a id="looping-on-a-nested-resource" />
+
 ## <a name="iteration-for-a-child-resource"></a>A gyermek-erőforrások esetében iterációs
 A másolási ciklust a gyermek-erőforrások esetében nem használható. Hozzon létre egy erőforrást, amely általában határozza meg, mint a beágyazott belül egy másik erőforrás több példánya, ehelyett hozzon létre, hogy erőforrást egy legfelső szintű erőforrás. Megadhatja a kapcsolat a szülő erőforrás típusa és neve tulajdonságai.
 
@@ -409,7 +411,7 @@ A következő példák azt szemléltetik, erőforrások és a Tulajdonságok gya
 |[Másolja a változók](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) |A különböző módokat a változók léptetés mutatja be. |
 |[Több biztonsági szabály](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.json) |Hálózati biztonsági csoport több biztonsági szabály telepíti. Akkor hoz létre a biztonsági szabályok paraméter. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Ha azt szeretné, további információt a szakaszok egy sablon, lásd: [Azure Resource Manager sablonok készítése](resource-group-authoring-templates.md).
 * A sablon telepítéséhez, lásd: [Azure Resource Manager-sablon az alkalmazás központi telepítését](resource-group-template-deploy.md).
 

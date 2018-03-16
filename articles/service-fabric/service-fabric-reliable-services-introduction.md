@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 3/9/2018
 ms.author: masnider;
-ms.openlocfilehash: cf647c078728c9fbe357fea5bef4aa6dfb86c975
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 1cbc116a8d595cfea0e87cd17b556e005f276774
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="reliable-services-overview"></a>A Reliable Services áttekintése
 Az Azure Service Fabric leegyszerűsíti az írást, és az állapotmentes és állapotalapú Reliable Services kezelése. Ez a témakör ismerteti:
@@ -34,7 +34,7 @@ Service Fabric kezeli a szolgáltatások, az üzembe helyezési és frissítés�
 ## <a name="what-are-reliable-services"></a>Mik azok a Reliable Services?
 Megbízható szolgáltatások lehetővé teszi egy egyszerű, hatékony, legfelső szintű programozási modell segítségével express a lényeg az alkalmazáshoz. A Reliable Services programozási modell beolvasása:
 
-* A többi a Service Fabric programozási API-k eléréséhez. Service Fabric szolgáltatások modellezve eltérően [Vendég végrehajtható fájlok](service-fabric-deploy-existing-app.md), Reliable Services eléréséhez a Service Fabric API-k többi közvetlenül használható. Ez lehetővé teszi, hogy a szolgáltatások:
+* A többi a Service Fabric programozási API-k eléréséhez. Service Fabric szolgáltatások modellezve eltérően [Vendég végrehajtható fájlok](service-fabric-guest-executables-introduction.md), Reliable Services eléréséhez a Service Fabric API-k többi közvetlenül használható. Ez lehetővé teszi, hogy a szolgáltatások:
   * a rendszer lekérdezése
   * a fürt entitások vonatkozó jelentés állapotát
   * konfigurációs és a kód módosítása értesítések fogadása

@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/08/2017
-ms.author: yurid
-ms.openlocfilehash: dd5c874406ec184a2526a9eb0843cd6f3b6b3aa1
-ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
+ms.date: 03/13/2018
+ms.author: barclayn
+ms.openlocfilehash: 5f2a72d133218e72d1db86b787c998cc50269d3a
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="pen-testing"></a>Toll tesztelése
 Az Azure alkalmazás tesztelése és üzembe helyezés előnyei egyik is gyorsan ki, hogy létre környezetekben.  Nem kell aggódnia requisitioning, beszerzése, és "lefejtési és halmozott" a saját helyszíni hardverre.
@@ -31,7 +31,7 @@ Jelenleg nem toll meg az alkalmazás teszteléséhez, de azt szeretné, hogy és
 
 Mi a teendő ilyenkor?
 
-2017. június 15. frissítésétől Microsoft többé nem kell a behatolást vagy a biztonság elvégzésére előtti jóváhagyási tesztek Azure-erőforrások ellen. Az ügyfelek, akik hivatalosan dokumentum jövőbeli behatolást vagy a biztonság tesztelése a Microsoft Azure elleni kapcsolattartás során szeretné hosszúan töltse ki a [Azure szolgáltatás behatolást vagy a biztonság tesztelés értesítési űrlap](https://portal.msrc.microsoft.com/engage/pentest). Ez a folyamat csak kapcsolódik a Microsoft Azure és a nem alkalmazható egyéb felhőalapú Microsoft-szolgáltatást. 
+2017. június 15. frissítésétől Microsoft többé nem kell a behatolást vagy a biztonság elvégzésére előtti jóváhagyási tesztek Azure-erőforrások ellen. Az ügyfelek, akik hivatalosan dokumentum jövőbeli behatolást vagy a biztonság tesztelése a Microsoft Azure elleni kapcsolattartás során szeretné hosszúan töltse ki a [Azure szolgáltatás behatolást vagy a biztonság tesztelés értesítési űrlap](https://portal.msrc.microsoft.com/en-us/engage/pentest). Ez a folyamat csak kapcsolódik a Microsoft Azure és a nem alkalmazható egyéb felhőalapú Microsoft-szolgáltatást. 
 
 >[!IMPORTANT] 
 >Amíg értesítésére toll tevékenységek tesztelése a Microsoft már nem szükséges az ügyfelek továbbra is megfeleljen a [Microsoft felhő egyesített behatolást vagy a biztonság tesztelés szabályok az Engagement](https://technet.microsoft.com/en-us/mt784683). 
@@ -44,6 +44,6 @@ Szabványos teszteket hajthat végre a következők:
 
 Teszt nem végezhető el több típus ilyen típusú [szolgáltatásmegtagadásos (DoS)](https://en.wikipedia.org/wiki/Denial-of-service_attack) támadás. Ez magában foglalja a kezdeményezésének egy szolgáltatásmegtagadási támadás önmagában, vagy előfordulhat, hogy határozza meg, bemutatása vagy szolgáltatásmegtagadási támadás bármilyen típusú szimulálása kapcsolódó tesztek végrehajtása.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Készen áll arra, ismerkedjen meg toll tesztelése a Microsoft Azure szolgáltatásban üzemeltetett alkalmazásokat? Ha igen, akkor a központi a keresztül történő a [behatolást vagy a biztonság teszt áttekintése](https://technet.microsoft.com/library/mt784683.aspx) lapon (és kattintson az létrehozása egy tesztelési kérelem gombra az oldal alján. 

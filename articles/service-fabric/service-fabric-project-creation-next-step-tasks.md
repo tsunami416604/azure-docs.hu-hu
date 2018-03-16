@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/07/2017
 ms.author: rwike77
-ms.openlocfilehash: 17eb1e7c2184fe9cae19685a47ea80716292b754
-ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
+ms.openlocfilehash: 1e5b8523422aae00655b003bf15103d5467b4177
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="your-service-fabric-application-and-next-steps"></a>A Service Fabric-alkalmazás és a következő lépések
 Az Azure Service Fabric-alkalmazás létrehozása. Ez a cikk ismerteti a próbálhatja ki az oktatóprogramok találhatók, a projekt, néhány további információt a érdekelheti és esetleges további lépések makeup.
@@ -32,7 +32,7 @@ Vagy, próbálja ki a következő útmutatók egyikét, és az első létrehozá
 - [C# megbízható szolgáltatások Windows rendszeren](service-fabric-reliable-services-quick-start.md) 
 - [C# Reliable Actors szolgáltatás Windows rendszeren](service-fabric-reliable-actors-get-started.md) 
 - [Vendég végrehajtható szolgáltatás Windows rendszeren](quickstart-guest-app.md) 
-- [Windows-tároló alkalmazás](service-fabric-get-started-containers.md) 
+- [Windows-alapú tárolóalkalmazás](service-fabric-get-started-containers.md) 
 
 Bizonyos is érdeklődik próbálhatja ki a [mintaalkalmazást](http://aka.ms/servicefabricsamples).
 
@@ -55,7 +55,7 @@ Az alkalmazási projektet tartalmaz:
 
 
 ## <a name="learn-more-about-the-programming-models"></a>További tudnivalók a programozási modellekről
-A Service Fabric és a szolgáltatások kezeléséhez több lehetőséget is kínál.  Áttekintés és kapcsolatos információkat itt van [állapotmentes és állapotalapú Reliable Services](service-fabric-reliable-services-introduction.md), [Reliable Actors](service-fabric-reliable-actors-introduction.md), [tárolók](service-fabric-containers-overview.md), [Vendég végrehajtható fájlok ](service-fabric-deploy-existing-app.md), és [állapotmentes és állapotalapú ASP.NET Core services](service-fabric-reliable-services-communication-aspnetcore.md).
+A Service Fabric és a szolgáltatások kezeléséhez több lehetőséget is kínál.  Áttekintés és kapcsolatos információkat itt van [állapotmentes és állapotalapú Reliable Services](service-fabric-reliable-services-introduction.md), [Reliable Actors](service-fabric-reliable-actors-introduction.md), [tárolók](service-fabric-containers-overview.md), [Vendég végrehajtható fájlok ](service-fabric-guest-executables-introduction.md), és [állapotmentes és állapotalapú ASP.NET Core services](service-fabric-reliable-services-communication-aspnetcore.md).
 
 ## <a name="learn-about-service-communication"></a>További információk a szolgáltatások közötti kommunikáció
 A Service Fabric-alkalmazás különböző szolgáltatások, ahol minden szolgáltatás hajt végre egy speciális feladat jön létre. Ezek a szolgáltatások is kommunikálhatnak egymással, és előfordulhat, hogy a fürtön kívüli használó ügyfélalkalmazások csatlakozhat, és szolgáltatásokkal kommunikálni. Megtudhatja, hogyan [állítsa be a és a szolgáltatások közötti kommunikációs](service-fabric-connect-and-communicate-with-services.md) a Service Fabric. 
@@ -68,7 +68,7 @@ Az alkalmazás tartalmazhatnak bizalmas adatokat, például a tárolási kapcsol
 ## <a name="learn-about-the-application-lifecycle"></a>Az alkalmazás-életciklus megismerése
 És egyéb platformok, a Service Fabric-alkalmazás általában végig kell vinnie a következő fázisok: tervezési, fejlesztési, tesztelési, telepítési, frissítésére, karbantartási és eltávolítása. [Ez a cikk](service-fabric-application-lifecycle.md) az API-k és azok használata során a Service Fabric-alkalmazás életciklusa fázisai a különböző szerepkörök áttekintése.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - [Windows-fürt létrehozása az Azure-ban](service-fabric-tutorial-create-vnet-and-windows-cluster.md).
 - A fürt megjelenítése, beleértve a telepített alkalmazások és a fizikai elrendezését [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md).
 - [Verziója és a szolgáltatások frissítésére](service-fabric-application-upgrade-tutorial.md)

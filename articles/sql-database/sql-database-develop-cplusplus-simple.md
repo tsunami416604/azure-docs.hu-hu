@@ -2,24 +2,19 @@
 title: "Csatlakozás SQL Database adatbázishoz C és C++ |} Microsoft Docs"
 description: "A gyors üzembe helyezési példakód használatával a modern alkalmazás C++ és egy hatékony relációs adatbázis a felhőben az Azure SQL Database biztonsági mentés létrehozása."
 services: sql-database
-documentationcenter: 
 author: edmacauley
-manager: jhubbard
-editor: 
-ms.assetid: 07d9e0b1-3234-4f17-a252-a7559160a9db
+manager: craigg
 ms.service: sql-database
 ms.custom: develop apps
-ms.workload: On Demand
-ms.tgt_pltfrm: na
 ms.devlang: cpp
 ms.topic: article
 ms.date: 03/06/2017
 ms.author: edmacauley
-ms.openlocfilehash: 7c78f90c14c1915c760720948d6d7ae99ceb6f1d
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 659b413b2686a50a0681e7307b51188e6e6d0859
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="connect-to-sql-database-using-c-and-c"></a>Csatlakozás SQL Database adatbázishoz C és C++ használatával
 A feladás egy vagy több fejlesztésére C és C++ fejlesztők számára az Azure SQL Adatbázishoz csatlakozni próbál. Az bontani szakaszok, akkor a, amely a legjobban rögzíti az érdeklődését szakaszra is ugorhat. 
@@ -127,7 +122,7 @@ Ez a cikk a github webhelyen szereplő összes mintát tartalmazó GetStarted-me
 * [ODBC C++ Windows minta](https://github.com/Microsoft/VCSamples/tree/master/VC2015Samples/ODBC%20database%20sample%20%28windows%29), töltse le a Windows C++ ODBC minta kapcsolódni az Azure SQL
 * [ODBC C++ Linux minta](https://github.com/Microsoft/VCSamples/tree/master/VC2015Samples/ODBC%20database%20sample%20%28linux%29), töltse le a Linux C++ ODBC minta Azure SQL való kapcsolódáshoz
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Tekintse át a [SQL adatbázis-fejlesztői áttekintés](sql-database-develop-overview.md)
 * További információ a [ODBC API-referencia](https://docs.microsoft.com/sql/odbc/reference/syntax/odbc-api-reference/)
 

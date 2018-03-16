@@ -11,18 +11,18 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 09/13/2017
 ms.author: mahender
-ms.openlocfilehash: 736a82d282e5769fb403c66ffd5d44107c6d3218
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 09e848abaf09811ff3f2b8ad009cd23dedb6645d
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="how-to-use-azure-managed-service-identity-public-preview-in-app-service-and-azure-functions"></a>Azure által felügyelt Szolgáltatásidentitás (nyilvános előzetes verzió) App Service és az Azure Functions használatával
 
 > [!NOTE] 
 > Az App Service és az Azure Functions felügyelt Szolgáltatásidentitás jelenleg előzetes verzió.
 
-Ez a témakör bemutatja, hogyan hoz létre egy felügyelt alkalmazást az App Service és az Azure Functions alkalmazásokhoz és egyéb erőforrásainak elérésére használatával. Az Azure Active Directory felügyelt szolgáltatásidentitás lehetővé teszi az alkalmazás egyszerűen hozzáférhessenek más AAD által védett erőforrások, például az Azure Key Vault. Az azonosító az Azure platform kezeli, és nem kell kiosztania vagy a titkos kulcsok elforgatása. Felügyelt Szolgáltatásidentitás kapcsolatban bővebben lásd: a [Szolgáltatásidentitás felügyelete – áttekintés](../active-directory/msi-overview.md).
+Ez a témakör bemutatja, hogyan hoz létre egy felügyelt alkalmazást az App Service és az Azure Functions alkalmazásokhoz és egyéb erőforrásainak elérésére használatával. Az Azure Active Directory felügyelt szolgáltatásidentitás lehetővé teszi az alkalmazás egyszerűen hozzáférhessenek más AAD által védett erőforrások, például az Azure Key Vault. Az azonosító az Azure platform kezeli, és nem kell kiosztania vagy a titkos kulcsok elforgatása. Felügyelt Szolgáltatásidentitás kapcsolatban bővebben lásd: a [Szolgáltatásidentitás felügyelete – áttekintés](../active-directory/managed-service-identity/overview.md).
 
 ## <a name="creating-an-app-with-an-identity"></a>Azonosító adatok az alkalmazások létrehozása
 
@@ -126,7 +126,7 @@ Ha `<TENANTID>` és `<PRINCIPALID>` váltják fel GUID. A tenantId tulajdonság 
 Egy alkalmazás felhasználhat az identitása más erőforrásainak védelméhez azzal, például az Azure Key Vault az AAD-jogkivonat. Ezeket a jogkivonatokat generáló az erőforrás, és nem adott felhasználó az alkalmazás eléréséhez. 
 
 > [!IMPORTANT]
-> Szükség lehet a célerőforrás számára engedélyezzék az alkalmazás konfigurálásához. Például egy tokent a Key Vault kér le, ha szeretné ellenőrizze, hogy hozzáadta a hozzáférési házirend, amely tartalmazza az alkalmazás azonosítóját. Ellenkező esetben a Key Vault hívásainak elutasításra kerül, még akkor is, ha a jogkivonat tartalmaznak. További erőforrások kapcsolatos Szolgáltatásidentitás felügyelt jogkivonatok támogatási kapcsolatban lásd: [Azure-szolgáltatások, hogy támogatja az Azure AD hitelesítési](../active-directory/pp/msi-overview.md#which-azure-services-support-managed-service-identity).
+> Szükség lehet a célerőforrás számára engedélyezzék az alkalmazás konfigurálásához. Például egy tokent a Key Vault kér le, ha szeretné ellenőrizze, hogy hozzáadta a hozzáférési házirend, amely tartalmazza az alkalmazás azonosítóját. Ellenkező esetben a Key Vault hívásainak elutasításra kerül, még akkor is, ha a jogkivonat tartalmaznak. További erőforrások kapcsolatos Szolgáltatásidentitás felügyelt jogkivonatok támogatási kapcsolatban lásd: [Azure-szolgáltatások, hogy támogatja az Azure AD hitelesítési](../active-directory/managed-service-identity/overview.md#which-azure-services-support-managed-service-identity).
 
 Nincs az App Service és az Azure Functions jogkivonat beszerzése az egyszerű REST protokoll. .NET-alkalmazások a Microsoft.Azure.Services.AppAuthentication könyvtár absztrakciós biztosít a protokollon keresztül, és egy helyi fejlesztési felület támogatja.
 

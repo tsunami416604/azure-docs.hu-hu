@@ -56,9 +56,9 @@ Get-AzureStorageTableRowAll -table $storageTable | ft
 
 Ez a parancs a következő táblázat hasonló eredményeket eredményez:
 
-| felhasználói azonosítóját | felhasználónév | Partíció | rowkey |
+| felhasználói azonosítóját | felhasználónév | partíció | rowkey |
 |----|---------|---------------|----|
-| 1 | Chris | partition1 | HITELESÍTÉSSZOLGÁLTATÓ |
+| 1 | Chris | partition1 | CA |
 | 3 | Christine | partition1 | WA |
 | 2 | Jessie | partition2 | NM |
 | 4 | Steven | partition2 | TX |
@@ -72,9 +72,9 @@ Get-AzureStorageTableRowByPartitionKey -table $storageTable -partitionKey $parti
 ```
 A következő táblázat az eredmények hasonlítania:
 
-| felhasználói azonosítóját | felhasználónév | Partíció | rowkey |
+| felhasználói azonosítóját | felhasználónév | partíció | rowkey |
 |----|---------|---------------|----|
-| 1 | Chris | partition1 | HITELESÍTÉSSZOLGÁLTATÓ |
+| 1 | Chris | partition1 | CA |
 | 3 | Christine | partition1 | WA |
 
 #### <a name="retrieve-entities-for-a-specific-value-in-a-specific-column"></a>Kérje le az entitásokat egy megadott értéket egy adott oszlopban
@@ -95,7 +95,7 @@ Ez a lekérdezés egy rekordot be.
 | felhasználói azonosítóját | 1 |
 | felhasználónév | Chris |
 | PartitionKey | partition1 |
-| RowKey      | HITELESÍTÉSSZOLGÁLTATÓ |
+| RowKey      | CA |
 
 #### <a name="retrieve-entities-using-a-custom-filter"></a>Kérje le az entitásokat, egy egyéni szűrő használatával 
 
@@ -104,7 +104,7 @@ Egy egyéni szűrő segítségével entitások lekéréséhez használja **Get-A
 ```powershell
 Get-AzureStorageTableRowByCustomFilter `
     -table $storageTable `
-    -customFilter "(userid eq '1')"
+    -customFilter "(userid eq 1)"
 ```
 
 Ez a lekérdezés egy rekordot be.
@@ -114,11 +114,11 @@ Ez a lekérdezés egy rekordot be.
 | felhasználói azonosítóját | 1 |
 | felhasználónév | Chris |
 | PartitionKey | partition1 |
-| RowKey      | HITELESÍTÉSSZOLGÁLTATÓ |
+| RowKey      | CA |
 
 ### <a name="updating-entities"></a>Entitások frissítése 
 
-Entitások frissítésére három lépésben történik. Első lépésként beolvasása az entitás módosítására. Második a módosítás. Harmadik, véglegesítse a módosítás használatával **frissítés-AzureStorageTableRow**.
+Entitások frissítésére három lépésben történik. Az entitás módosításához először beolvasása. Második a módosítás. Harmadik, véglegesítse a módosítás használatával **frissítés-AzureStorageTableRow**.
 
 Az entitás módosítására a username = "Jessie", hogy a felhasználónév = "Jessie2". Ebben a példában is látható másik módja, hogy hozzon létre egy egyéni szűrő .NET-típus használatával. 
 
@@ -177,10 +177,10 @@ Get-AzureStorageTableRowAll -table $storageTable | ft
 
 #### <a name="delete-all-entities-in-the-table"></a>A tábla összes entitás törlése 
 
-A tábla összes entitás törlése, visszaállíthatja őket az eredmények pipe azokat a remove-parancsmag. 
+A tábla összes entitás törlése, kérheti le azokat, és az eredmények pipe azokat a remove-parancsmag. 
 
 ```powershell
-# Get all rows and pipe it into the remove cmdlet.
+# Get all rows and pipe the result into the remove cmdlet.
 Get-AzureStorageTableRowAll `
     -table $storageTable | Remove-AzureStorageTableRow -table $storageTable 
 

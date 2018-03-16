@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2018
+ms.date: 03/14/2018
 ms.author: magoedte
-ms.openlocfilehash: 895a77a66f50b4c5217ec7d672f6441b85bf1856
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 80d7e39b284554ebfa8cac4488e1663b3e3648e8
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="how-to-troubleshoot-issues-with-the-linux-agent-for-log-analytics"></a>A Naplóelemzési Linux-ügynökkel rendelkező kapcsolatos problémák elhárítása
 
@@ -37,12 +37,12 @@ Ez a cikk ismerteti a Naplóelemzési Linux-ügynökkel rendelkező tapasztalhat
 2. Tekintse át a szakasz [proxy beállításainak frissítése](log-analytics-agent-manage.md#update-proxy-settings) megfelelően konfigurált proxykiszolgálón keresztül kommunikálnak az ügynököt ellenőrzéséhez.    
 * Ellenőrizze, hogy a következő Naplóelemzés szolgáltatás végpontjait szerepel az engedélyezési listán:
 
-    |Ügynök erőforrása| Portok |  
-    |------|---------|  
-    |*.ods.opinsights.azure.com | 443-as port|   
-    |*.oms.opinsights.azure.com | 443-as port|   
-    |ods.systemcenteradvisor.com | 443-as port|   
-    |*.blob.core.windows.net/ | 443-as port|   
+    |Ügynök erőforrása| Portok | Irány |
+    |------|---------|----------|  
+    |*.ods.opinsights.azure.com | 443-as port| Bejövő és kimenő |  
+    |*.oms.opinsights.azure.com | 443-as port| Bejövő és kimenő |  
+    |*.blob.core.windows.net | 443-as port| Bejövő és kimenő |  
+    |*.azure-automation.net | 443-as port| Bejövő és kimenő | 
 
 ## <a name="issue-you-receive-a-403-error-when-trying-to-onboard"></a>Probléma: 403-as hibaüzenetet kap közben előkészítésére
 
@@ -68,7 +68,7 @@ Ez az egy ismert hiba jelentkezik be a Naplóelemzési munkaterület Linux adato
 - OMS-ügynököt a Linux-adatok biztonsági mentése
 
 ### <a name="resolutions"></a>Megoldások
-1. Ellenőrizze, hogy ha bevezetése a Naplóelemzés szolgáltatás sikeres volt a következő fájl létezésének ellenőrzésével:`/etc/opt/microsoft/omsagent/<workspace id>/conf/omsadmin.conf`
+1. Ellenőrizze, hogy ha bevezetése a Naplóelemzés szolgáltatás sikeres volt a következő fájl létezésének ellenőrzésével: `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsadmin.conf`
 2. Reonboard használatával a `omsadmin.sh` parancssori utasításokat
 3. Ha proxyt használ, tekintse meg a korábban megadott proxy megoldási lépések.
 4. Egyes esetekben amikor Linux az OMS-ügynök nem tud kommunikálni a szolgáltatás adatai az ügynökön várólistára van állítva 50 MB teljes puffer mérete. A Linux OMS-ügynököt újra kell indítani a következő parancs futtatásával: `/opt/microsoft/omsagent/bin/service_control restart [<workspace id>]`. 

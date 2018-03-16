@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: mahender
-ms.openlocfilehash: 01f845e0cb987eb4e4e9baa62478d3ff6991fb7e
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: a46177183035a53128c5341a3ce4c63dbc3a7497
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-functions-http-and-webhook-bindings"></a>Az Azure Functions HTTP és a webhook kötések
 
@@ -30,6 +30,12 @@ Egy HTTP-eseményindítóval testre szabható válaszolni [webhookok](https://en
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
 [!INCLUDE [HTTP client best practices](../../includes/functions-http-client-best-practices.md)]
+
+## <a name="packages"></a>Csomagok
+
+A HTTP-kötések szerepelnek a [Microsoft.Azure.WebJobs.Extensions.Http](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Http) NuGet-csomagot. A csomag forráskódja van a [azure-webjobs-sdk-bővítmények](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Http/) GitHub-tárházban.
+
+[!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
 ## <a name="trigger"></a>Eseményindító
 
@@ -361,7 +367,7 @@ module.exports = function (context, data) {
 
 ## <a name="trigger---attributes"></a>Eseményindító - attribútumok
 
-A [C# osztálykönyvtárakhoz](functions-dotnet-class-library.md), használja a [HttpTrigger](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/dev/src/WebJobs.Extensions.Http/HttpTriggerAttribute.cs) attribútummal, a NuGet-csomag [Microsoft.Azure.WebJobs.Extensions.Http](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Http).
+A [C# osztálykönyvtárakhoz](functions-dotnet-class-library.md), használja a [HttpTrigger](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/dev/src/WebJobs.Extensions.Http/HttpTriggerAttribute.cs) attribútum.
 
 Állíthatja be a hitelesítési szint és engedélyezett HTTP-metódus attribútum konstruktorparaméterek, és nincsenek a webhook típusát és útvonal-sablon tulajdonságait. A beállításokkal kapcsolatban további információkért lásd: [eseményindító - konfigurációs](#trigger---configuration). Íme egy `HttpTrigger` metódus-aláírás attribútum:
 
@@ -388,7 +394,7 @@ Az alábbi táblázat ismerteti a beállított kötés konfigurációs tulajdons
 | **name** | n/a| Kötelező – a kérelem vagy kérelemtörzset függvény a kódban használt változó neve. |
 | <a name="http-auth"></a>**authLevel** |  **AuthLevel** |Meghatározza, hogy mi kulcsok, ha van ilyen kell jelen lennie ahhoz, hogy a függvény meghívása a kérésre. A jogosultsági szintet a következő értékek egyike lehet: <ul><li><code>anonymous</code>&mdash;Nincs API-kulcsot meg kell adni.</li><li><code>function</code>&mdash;Funkcióspecifikus API-kulcs megadása kötelező. Ez az az alapértelmezett érték, ha nincs megadva.</li><li><code>admin</code>&mdash;A fő kulcsot meg kell adni.</li></ul> További információkért lásd: a szakasz [engedélyezési kulcsok](#authorization-keys). |
 | **Módszerek** |**Módszerek** | A tömb, amelyre a függvény válaszol a HTTP-metódus. Ha nincs megadva, a függvény válaszol-e a HTTP-metódus. Lásd: [testre szabhatja a http-végpont](#trigger---customize-the-http-endpoint). |
-| **útvonal** | **Útvonal** | Meghatározza az útvonalsablonhoz szabályozása, amelyhez a kérés URL-címeket, a függvény válaszol. Az alapértelmezett érték, ha nincs megadva `<functionname>`. További információkért lásd: [testre szabhatja a http-végpont](#customize-the-http-endpoint). |
+| **Útvonal** | **Útvonal** | Meghatározza az útvonalsablonhoz szabályozása, amelyhez a kérés URL-címeket, a függvény válaszol. Az alapértelmezett érték, ha nincs megadva `<functionname>`. További információkért lásd: [testre szabhatja a http-végpont](#customize-the-http-endpoint). |
 | **webHookType** | **WebHookType** |Konfigurálja a HTTP-eseményindítóval járhasson el egy [webhook](https://en.wikipedia.org/wiki/Webhook) fogadójának a megadott szolgáltatón. Ne állítsa be a `methods` tulajdonságot, ha a tulajdonság értékét. A webhook típus a következő értékek egyike lehet:<ul><li><code>genericJson</code>&mdash;Egy általános célú webhook végpont logika egy adott szolgáltató nélkül. Ez a beállítás megtiltja kérelmek Ha csak a HTTP-n keresztül, POST, hogy az a `application/json` tartalomtípus.</li><li><code>github</code>&mdash;A függvény válaszol-e a [GitHub webhook](https://developer.github.com/webhooks/). Ne használja a _authLevel_ GitHub webhook tulajdonságot. További információkért lásd a GitHub webhook című cikkben.</li><li><code>slack</code>&mdash;A függvény válaszol-e a [Slack-webhookok](https://api.slack.com/outgoing-webhooks). Ne használja a _authLevel_ Slack webhookok tulajdonságot. További információkért lásd: a Slack webhookok című cikkben.</li></ul>|
 
 ## <a name="trigger---usage"></a>Eseményindító - használat

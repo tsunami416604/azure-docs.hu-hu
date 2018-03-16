@@ -12,14 +12,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/31/2018
+ms.date: 03/12/2018
 ms.author: jeffgilb
 ms.reviewer: wamota
-ms.openlocfilehash: a198ff5fe7135e17301025d6a712236b76be0ede
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 04cfe3c4ac6011b9c3d31b7d4ac3c018c350d67b
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="network-connectivity"></a>Hálózati kapcsolat
 Ez a cikk információival Azure verem hálózati infrastruktúra segítségével eldöntheti, hogyan Azure verem legjobb integrálhatók a meglévő hálózati környezethez. 
@@ -53,7 +53,9 @@ A hálózati infrastruktúra Azure verem több logikai hálózatok, a kapcsolók
 ![Logikai hálózati diagram és kapcsoló kapcsolatok](media/azure-stack-network/NetworkDiagram.png)
 
 ### <a name="bmc-network"></a>BMC hálózati
-Ez a hálózat a felügyeleti hálózathoz csatlakozó összes az alaplapi felügyeleti vezérlők (más néven szolgáltatás processzorok, például iDRAC, iLO, iBMC, stb.) van kijelölve. Ha van ilyen, az a (HLH) hardver életciklus állomás a hálózaton található, és rendelkezhetnek OEM adott szoftver hardver karbantartás és/vagy a figyelés. 
+Ez a hálózat a felügyeleti hálózathoz csatlakozó összes az alaplapi felügyeleti vezérlők (más néven szolgáltatás processzorok, például iDRAC, iLO, iBMC, stb.) van kijelölve. Ha van ilyen, az életciklus állomás (HLH) ezen a hálózaton található, és rendelkezhetnek OEM adott szoftver hardver karbantartás vagy a figyelés. 
+
+A HLH is találhatók a telepítési virtuális gép (DVM). A DVM Azure verem központi telepítése során használt, és eltávolítják a telepítés befejezéséről. A DVM csatlakoztatott telepítési helyzetekben, teszteléséhez, ellenőrizze, és több összetevő elérésére internet-hozzáférés szükséges. Ezeket az összetevőket a vállalati hálózathoz; kívül és belül is lehet. például NTP, a DNS és Azure. Kapcsolat követelményeivel kapcsolatos további információkért lásd: a [Azure verem tűzfal integrációs NAT szakasz](azure-stack-firewall.md#network-address-translation). 
 
 ### <a name="private-network"></a>Magánhálózat
 A /24 (254 gazdagép IP-címekhez) hálózat az Azure-verem régió (nem bővíti ki a szegély kapcsoló eszközökre az Azure-verem régió túl) a saját, és két alhálózat oszlik:

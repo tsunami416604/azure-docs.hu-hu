@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 03/01/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: de585e123555188055b6bd63ab0a6cc68313311f
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: e21115915808899e8455dc6d4f1f4cf8a100f483
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="set-up-gpu-drivers-for-n-series-vms-running-windows-server"></a>Windows Server rendszert futtató N sorozatú virtuális gépek GPU illesztőprogramok beállítása
 A Windows Server 2016 vagy a Windows Server 2012 R2 rendszert futtató Azure N sorozatú virtuális gépek GPU lehetőségeinek kihasználásához, telepítse a támogatott NVIDIA video-illesztőprogramok. Ez a cikk lépéseit illesztőprogram beállítása az N-sorozatú virtuális gép telepítése után. Telepítési információk illesztőprogram érhető el is [Linux virtuális gépek](../linux/n-series-driver-setup.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
@@ -53,7 +53,7 @@ A GPU eszköz állapotát lekérdező, futtassa a [nvidia-smi](https://developer
 
 ## <a name="rdma-network-connectivity"></a>RDMA hálózati kapcsolat
 
-RDMA hálózati kapcsolat engedélyezhető RDMA N sorozatú virtuális gépek engedélyezve van, például az azonos rendelkezésre állási készlet NC24r telepítve. Telepítse a Windows hálózati illesztőprogramokat, amelyek lehetővé teszik az RDMA-kapcsolatot a HpcVmDrivers bővítmény szerepelnie kell. A Virtuálisgép-bővítmény adhat hozzá egy RDMA-kompatibilis N sorozatú virtuális gépre [Azure PowerShell](/powershell/azure/overview) az Azure Resource Manager parancsmagok.
+RDMA hálózati kapcsolatot az RDMA-kompatibilis N sorozatú virtuális gépeken futó engedélyezhető, mint például az azonos rendelkezésre állási csoport vagy a Virtuálisgép-méretezési készlet NC24r telepítve. Telepítse a Windows hálózati illesztőprogramokat, amelyek lehetővé teszik az RDMA-kapcsolatot a HpcVmDrivers bővítmény szerepelnie kell. A Virtuálisgép-bővítmény adhat hozzá egy RDMA-kompatibilis N sorozatú virtuális gépre [Azure PowerShell](/powershell/azure/overview) az Azure Resource Manager parancsmagok.
 
 A legújabb 1.1-es verziójának telepítése HpcVMDrivers bővítmény egy meglévő RDMA-kompatibilis virtuális gépen az USA nyugati régiója régióban myVM nevű virtuális:
   ```PowerShell

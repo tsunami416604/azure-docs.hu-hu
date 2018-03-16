@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: 
 ms.date: 01/22/2018
 ms.author: shlo
-ms.openlocfilehash: bfc95588378466fe1e83bcc4e899eca6b66b358a
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 98d58b97457cc64954094d7e8d8b4defca7e05ff
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="datasets-and-linked-services-in-azure-data-factory"></a>Adatkészletek és az Azure Data Factory összekapcsolt szolgáltatások 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -184,31 +184,37 @@ A példában az előző szakaszban, a DataSet adatbázisoszlophoz **AzureSqlTabl
 }
 ```
 ## <a name="dataset-structure"></a>Adatkészlet-szerkezetekben
-A **struktúra** szakasz nem kötelező megadni. Az adatkészlet sémája által tartalmazó nevét és az oszlopok adattípusát gyűjteményét határozza meg. A struktúra szakasz segítségével adja meg, amellyel típusok átalakítani, és képezze le a cél a forrás oszlop típusa információkat. A következő példában a dataset adatkészletben három oszlopot: timestamp, projektnév, és pageviews. Vannak típusú karakterlánc, karakterlánc, és tizedes, illetve.
-
-```json
-[
-    { "name": "timestamp", "type": "String"},
-    { "name": "projectname", "type": "String"},
-    { "name": "pageviews", "type": "Decimal"}
-]
-```
+A **struktúra** szakasz nem kötelező megadni. Az adatkészlet sémája által tartalmazó nevét és az oszlopok adattípusát gyűjteményét határozza meg. A struktúra szakasz segítségével adja meg, amellyel típusok átalakítani, és képezze le a cél a forrás oszlop típusa információkat.
 
 Minden egyes oszlopának a struktúra tartalmaz a következő tulajdonságokkal:
 
 Tulajdonság | Leírás | Szükséges
 -------- | ----------- | --------
 név | Az oszlop neve. | Igen
-type | Az oszlop adattípusát. | Nem
+type | Az oszlop adattípusát. Adat-előállító megengedett értékek, a következő ideiglenes adattípusokat támogatja: **Int16, Int32, Int64, egyetlen, Double, Decimal, Byte [], logikai érték, karakterlánc, Guid, Datetime, Datetimeoffset és Timespan** | Nem
 Kulturális környezet | . A NET-alapú kulturális környezet lehet használni, ha a típus a .NET-típus: `Datetime` vagy `Datetimeoffset`. Az alapértelmezett érték `en-us`. | Nem
-Formátumban | Formázó karakterlánc kell használni, ha a típus a .NET-típus: `Datetime` vagy `Datetimeoffset`. | Nem
+Formátumban | Formázó karakterlánc kell használni, ha a típus a .NET-típus: `Datetime` vagy `Datetimeoffset`. Tekintse meg [egyéni dátum és idő formátumú karakterláncok](https://docs.microsoft.com/en-us/dotnet/standard/base-types/custom-date-and-time-format-strings) a dátum és idő formázása. | Nem
 
-A következő irányelvek segítségével meghatározhatja, hogy mikor struktúra információval, és milyen ahhoz, hogy szerepeljen a **struktúra** szakasz.
+### <a name="example"></a>Példa
+A következő példában tegyük fel, hogy a forrás Blobadatok CSV formátumú három oszlopot tartalmaz: a felhasználói azonosítóját, nevét és lastlogindate. Vannak Int64, típusú karakterlánc, és a DateTime típusú érték a hét napjára rövidített francia nevekkel egyéni dátum és idő formátumban.
 
-- **A strukturált adatforrások**, adja meg a struktúra szakaszban csak akkor, ha a kívánt oszlopok gyűjtése forrásoszlopok leképezni, és a nevek nem azonosak. Strukturált adatforrás az ilyen adatok séma- és tároló típusa mellett az adatokat mozgatná. Strukturált adatforrások például SQL Server, az Oracle és az Azure SQL Database.<br/><br/>Típusra vonatkozó adat már áll rendelkezésre a strukturált adatforrásokhoz, akkor nem tartalmazhat típusinformációt elvégzését indokló, hogy a struktúra szakasz.
-- **Az olvasási adatforrások (kifejezetten Blob-tároló) séma**, választhat adatok tárolására nem tárolja az adatokat az séma vagy típus vonatkozó információk. Az ilyen típusú adatforrások tartalmazhat struktúra, ha a megjeleníteni kívánt oszlopok gyűjtése forrásoszlopok. Struktúra is tartalmazza, ha a dataset másolási tevékenységhez bemeneti, és a forrás adatkészlet adattípusok át kell alakítani a fogadó natív típust.<br/><br/> Adat-előállítót a következő értékek támogatja a struktúrában típusú adatokat ad: `Int16, Int32, Int64, Single, Double, Decimal, Byte[], Boolean, String, Guid, Datetime, Datetimeoffset, and Timespan`. 
+Adja meg a Blob adatkészlet-szerkezetekben típusdefiníciók az oszlopok együtt az alábbiak szerint:
 
-További tudnivalókért, hogyan adat-előállító leképezi a forrás-adatok gyűjtése a a [séma és a típusleképezéshez]( copy-activity-schema-and-type-mapping.md) és mikor adatainak megadása.
+```json
+"structure":
+[
+    { "name": "userid", "type": "Int64"},
+    { "name": "name", "type": "String"},
+    { "name": "lastlogindate", "type": "Datetime", "culture": "fr-fr", "format": "ddd-MM-YYYY"}
+]
+```
+
+### <a name="guidance"></a>Útmutatás
+
+A következő irányelveket segítenek megérteni, mikor struktúra információval, és milyen ahhoz, hogy szerepeljen a **struktúra** szakasz. További tudnivalókért, hogyan adat-előállító leképezi a forrás-adatok gyűjtése és mikor kell a struktúra információk megadása a [séma és a típusleképezéshez](copy-activity-schema-and-type-mapping.md).
+
+- **Az erős séma adatforrásokat**, adja meg a struktúra szakaszban csak akkor, ha a kívánt oszlopok gyűjtése forrásoszlopok leképezni, és a nevek nem azonosak. Strukturált adatforrás az ilyen adatok séma- és tároló típusa mellett az adatokat mozgatná. Strukturált adatforrások például SQL Server, az Oracle és az Azure SQL Database.<br/><br/>Típusra vonatkozó adat már áll rendelkezésre a strukturált adatforrásokhoz, akkor nem tartalmazhat típusinformációt elvégzését indokló, hogy a struktúra szakasz.
+- **Nem/weak séma adatforrások pl. a fájlt a blob storage**, struktúra tartalmazhat, ha a dataset másolási tevékenységhez bemeneti, és a forrás adatkészlet adattípusok át kell alakítani a fogadó natív típust. És struktúra tartalmazhat, ha a megjeleníteni kívánt oszlopok gyűjtése forrásoszlopok...
 
 ## <a name="create-datasets"></a>Adatkészletek létrehozása
 Ezen eszközök vagy az SDK-k használatával is létrehozhat a adatkészletek: [.NET API](quickstart-create-data-factory-dot-net.md), [PowerShell](quickstart-create-data-factory-powershell.md), [REST API](quickstart-create-data-factory-rest-api.md), Azure Resource Manager-sablon, és az Azure-portálon

@@ -3,8 +3,8 @@ title: "Hozzon létre egy virtuálisgép-lemezkép az Azure piactérről |} Micr
 description: "Részletes útmutatást az Azure piactéren mások megvásárlásához a virtuális gép lemezképének létrehozásához."
 services: Azure Marketplace
 documentationcenter: 
-author: HannibalSII
-manager: hascipio
+author: msmbaldwin
+manager: mbaldwin
 editor: 
 ms.assetid: 5c937b8e-e28d-4007-9fef-624046bca2ae
 ms.service: marketplace
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 01/05/2017
-ms.author: hascipio; v-divte
-ms.openlocfilehash: 0379592f1c4f6e9d3f6fd2127b8e34e99a8b0176
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.author: mbaldwin
+ms.openlocfilehash: f7b19066ca3fa156456766ff82afeadadc6b1efa
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="guide-to-create-a-virtual-machine-image-for-the-azure-marketplace"></a>Útmutató a virtuálisgép-lemezkép létrehozása az Azure piactéren
 Ez a cikk **2. lépés**, végigvezeti azokon a virtuális merevlemezeket (VHD), ha telepíti az Azure piactéren előkészítése. A virtuális merevlemezek a Termékváltozat alapját. A folyamat eltér attól függően, hogy meg van adva egy Linux- vagy Windows-alapú Termékváltozat. Ez a cikk mindkét forgatókönyvet ismertet. Ez a folyamat végrehajtható párhuzamosan [fióklétrehozás és a regisztrációs][link-acct-creation].
@@ -28,8 +28,8 @@ Ebben a szakaszban megismerheti az ajánlatok és azok kapcsolódó termékvált
 
 Az ajánlat az összes termékváltozatának „szülője”. Több ajánlattal is rendelkezhet. Ajánlatait igényei szerint strukturálhatja. Az ajánlat átmeneti üzembe helyezése annak összes termékváltozatával együtt történik. A Termékváltozat azonosítók alaposan gondolja át, mert az URL-cím látható lesz:
 
-* Azure.com webhelyre: http://azure.microsoft.com/marketplace/partners/ {PartnerNamespace} / {OfferIdentifier}-{SKUidentifier}
-* Az Azure betekintő portál: https://portal.azure.com/#gallery/ {PublisherNamespace}. {OfferIdentifier} {SKUIDdentifier}  
+* Azure.com: http://azure.microsoft.com/marketplace/partners/{PartnerNamespace}/{OfferIdentifier}-{SKUidentifier}
+* Az Azure betekintő portál: https://portal.azure.com/#gallery/{PublisherNamespace}.{OfferIdentifier}{SKUIDdentifier}  
 
 Egy termékváltozata Virtuálisgép-lemezkép kereskedelmi nevét. Virtuálisgép-lemezképet tartalmazza egy operációs rendszert tároló lemezének és nulla vagy több adatlemezek. Lényegében a virtuális gép teljes tárprofiljáról van szó. Egy virtuális merevlemez lemezenként van szükség. Még akkor is üres adatlemez kell létrehozni virtuális Merevlemezt.
 
@@ -372,7 +372,7 @@ Azure Tártallózó használatával SAS URL-cím létrehozásának lépései a k
 
 SAS URL-cím használatával a Microsoft Azure Tártallózó létrehozásának lépései a következők
 
-1.  Töltse le a Microsoft Azure Tártallózó űrlap [http://storageexplorer.com/](http://storageexplorer.com/) webhelyet. Ugrás a [Microsoft Azure Tártallózó](http://storageexplorer.com/releasenotes.html) kattintson **"Töltse le a Windows"**.
+1.  Töltse le a Microsoft Azure Tártallózó űrlap [ http://storageexplorer.com/ ](http://storageexplorer.com/) webhelyet. Ugrás a [Microsoft Azure Tártallózó](http://storageexplorer.com/releasenotes.html) kattintson **"Töltse le a Windows"**.
 
     ![rajz](media/marketplace-publishing-vm-image-creation/img5.2_10.png)
 
@@ -474,7 +474,7 @@ Azure parancssori felület használatával SAS URL-cím létrehozásának lépé
 
     Példa:
 
-    TestRGVM201631920152.vhd a VHD neveként, akkor VHD SAS URL-t 
+    TestRGVM201631920152.vhd a VHD neveként, akkor VHD SAS URL-t
 
     `https://st20151.blob.core.windows.net/vhds/ TestRGVM201631920152.vhd?st=2016-10-25T07%3A00%3A00Z&se=2016-11-02T07%3A00%3A00Z&sp=rl&sv=2015-12-11&sr=c&sig=wnEw9RfVKeSmVgqDfsDvC9IHhis4x0fc9Hu%2FW4yvBxk%3D`
 

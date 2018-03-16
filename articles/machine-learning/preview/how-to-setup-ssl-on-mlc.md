@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 01/24/2018
-ms.openlocfilehash: b76fe7c0caa4a9aca76a9a3f50d1fced0ab67cba
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 444803eeb77e79a8bfe3271ddf27bd428042c875
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="enable-ssl-on-an-azure-machine-learning-compute-mlc-cluster"></a>SSL engedélyezése az Azure Machine Learning számítási (MLC) fürtön 
 
@@ -31,7 +31,7 @@ Ezek az utasítások SSL beállítása a Machine Learning számítási (MLC) fü
 
 Az Előfeltételek befejezése után meg kell két fájlt:
 
-* A tanúsítvány, például egy fájl `cert.pem`
+* A tanúsítvány, például egy fájl `cert.pem`. Győződjön meg arról, hogy a fájl a teljes tanúsítványlánc.
 * A kulcs, például egy fájl `key.pem`
 
 
@@ -55,7 +55,7 @@ Set-AzureRmMlOpCluster -ResourceGroupName my-rg -Name my-cluster -SslStatus Enab
 
 ## <a name="map-the-cname-and-the-ip-address"></a>A CNAME és az IP-cím
 
-A CNAME REKORDOT a Előfeltételek kiválasztott és az IP-címét a valós idejű előtér (FE) közötti leképezést létrehozni. Annak megállapításához, a FE IP-címét, az alábbi parancsot futtatva. A kimenet egy "nyilvános", amely tartalmazza a valós idejű fürt előtéri IP-címe nevű mező jeleníti meg. Tekintse meg a állíthat be egy olyan CNAME rekordot a DNS-szolgáltatónál tartozó utasításokat.
+A CNAME REKORDOT a Előfeltételek kiválasztott és az IP-címét a valós idejű előtér (FE) közötti leképezést létrehozni. Annak megállapításához, a FE IP-címét, az alábbi parancsot futtatva. A kimenet egy "nyilvános", amely tartalmazza a valós idejű fürt előtéri IP-címe nevű mező jeleníti meg. Tekintse meg a DNS-szolgáltatónál egy olyan rekordot beállításához használt CNAME REKORDOT a nyilvános IP-cím teljes Tartománynevét a utasításait.
 
 
 

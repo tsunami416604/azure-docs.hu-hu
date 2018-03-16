@@ -14,11 +14,11 @@ ms.devlang:
 ms.topic: article
 ms.date: 01/18/2018
 ms.author: ellacroi
-ms.openlocfilehash: d02d6e942dfc503dd87a8ebcb6e2ddcf6b6065c5
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 7faa34b5528c53c06aeda25be17cbc5f3db2acdf
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-marketplace-and-appsource-publisher-guide"></a>Az Azure piactér és AppSource Publisher útmutatója
 
@@ -51,7 +51,7 @@ Az üzleti nő a piactér lehetőségeinek kihasználásához:
 
 ## <a name="what-are-azure-marketplace-and-appsource"></a>Mik az Azure piactér és AppSource?
 
-A Microsoft biztosít két különböző piactér kirakatokkal, amelyek lehetővé teszik a partnerek számára, hogy a listában ajánlatok kísérletek engedélyezése, és közvetlenül a Microsoft ügyfelei és az ökoszisztémákhoz transact: [Azure piactér] (https://azuremarketplace.microsoft.com) és () [AppSource] https://appsource.microsoft.com). Ezek kirakatokkal engedélyezése a felhasználók kereséséhez, próbálja meg, és alkalmazásokat vásárolhat és egyre gyorsabban jelennek meg a digitális átalakítása, és közzétevők súgó szolgáltatások nő a vállalatok számára a hozzáférést a Microsoft ügyfelei és az ökoszisztémákhoz partner növelésével.
+A Microsoft biztosít két különböző piactér kirakatokkal, amelyek lehetővé teszik a partnerek számára, hogy a listában ajánlatok kísérletek engedélyezése, és közvetlenül a Microsoft ügyfelei és az ökoszisztémákhoz transact: [Azure piactér] (https://azuremarketplace.microsoft.com) és [AppSource] (https://appsource.microsoft.com). Ezek kirakatokkal engedélyezése a felhasználók kereséséhez, próbálja meg, és alkalmazásokat vásárolhat és egyre gyorsabban jelennek meg a digitális átalakítása, és közzétevők súgó szolgáltatások nő a vállalatok számára a hozzáférést a Microsoft ügyfelei és az ökoszisztémákhoz partner növelésével.
  
 A piactér kirakatokkal célcsoportok és a Microsoft cloud termékek szükséges található ügyfelek igazodik. Minden egyes áruháznak speciális közzétételi beállítások segítségével maximalizálhatja a közzétételi való befektetés az alábbi táblázat foglalja össze:
 
@@ -172,7 +172,7 @@ Használjon egy **Azure Megoldássablonban** amikor megoldást igényel a virtu�
 Használjon egy **Azure felügyelt alkalmazás** való üzembe helyezés esetén egy virtuális gép vagy a teljes IaaS-alapú megoldás egy ügyfél előfizetését, amikor a közzétevőt vagy az ügyfél által a 3. fél, például egy SI vagy MSP által kezelt megoldás. További információ [által felügyelt alkalmazások építése Itt](https://docs.microsoft.com/azure/managed-applications/overview). Gyakran ismételt kérdések listájáért lásd: a [Azure piactéren GYIK](https://azure.microsoft.com/marketplace/faq/).
 
 >[!NOTE]
-> Felügyelt alkalmazások központilag telepíthető a piactéren keresztül kell lennie. Ha felhasználói communciation problémát jelent, vegye figyelembe, hogy meg tudják érheti el az ügyfelek érdekelt Ha átfutási megosztás engedélyezve van.
+> Felügyelt alkalmazások központilag telepíthető a piactéren keresztül kell lennie. Ha ügyfél-kommunikáció problémát jelent, vegye figyelembe, hogy meg tudják érheti el az ügyfelek érdekelt Ha átfutási megosztás engedélyezve van.
 
 ### <a name="azure-certified"></a>Azure Certified
 
@@ -210,11 +210,11 @@ Ezzel szemben ha engedélyezi a kapcsolja a saját licenc lehetőség:
 |A licenc költség     | Licenc díj egyeztetett és közzétevő által kiszámlázott        |
 |---------|---------|
 |Az Azure felhasználás költsége (D1/1-mag)    | $0.14 óránként         |
-|**Ügyfél lesz számlázva, Microsoft által**     | $0.14 óránként        |
+|**Ügyfél lesz számlázva, Microsoft által**     | **$0.14 óránként**        |
 
 Ebben a forgatókönyvben a Microsoft számára a közzétett virtuálisgép-lemezkép óránként 0.14 $ váltók stb. 
 
-|**Microsoft váltók**    |   $0.14 óránként      |
+|**Microsoft váltók**    |   **$0.14 óránként**      |
 |---------|---------|
 |A Microsoft megtartja az Azure-felhasználás költsége     |    $0.14 óránként     |
 |A Microsoft megtartja a licenc költség 0 %     |  0,00 $ óránként       |
@@ -240,7 +240,7 @@ Nagyvállalati ügyfeleink az Azure-ra vonatkozó előzetes pénzügyi köteleze
 |---------|---------|---------|
 |**Részvétel házirendek**    | Tekintse át az Azure piactér részvételét házirendek [itt] (https://azure.microsoft.com/support/legal/marketplace/participation-policies/).       | Lista, próbaverzió Transact        |
 |**Integráció a Microsoft**    | Az Azure piactér ajánlatok kell kihasználja kiterjesztése a Microsoft Azure-szolgáltatások, például a számítási, hálózati vagy tárolási, illetve hangolhatók össze a meglévő Azure piactér kategóriát, például adatbázisok, biztonság, hálózat, stb. A teljes listát található [Itt](https://azuremarketplace.microsoft.com/marketplace/apps).        | Lista, próbaverzió Transact        |
-|Célközönség    | Az Azure piactér ajánlatokat az informatikai szakemberek számára, a felhő fejlesztők és az egyéb technikai felhasználói szerepkörök kell lennie.       |  Lista, próbaverzió Transact 
+|**Célközönség**    | Az Azure piactér ajánlatokat az informatikai szakemberek számára, a felhő fejlesztők és az egyéb technikai felhasználói szerepkörök kell lennie.       |  Lista, próbaverzió Transact 
 |**Felügyeleti vezethet**    | Érdeklődők kap a piactérről, engedélyeznie kell a CRM (Marketo, Microsoft Dynamics vagy Salesforce) átfutási adatok fogadására.        |   Lista, próbaverzió Transact      |
 |**Adatvédelmi szabályzatát, illetve a használati feltételek**     |   Az adatvédelmi szabályzat egy nyilvános URL-CÍMEN keresztül elérhetőnek kell lennie, és a használati feltételeket kell bemeneti szövegként közzététele során.      |   Lista, próbaverzió Transact      |
 |**Támogatás**     |  Az ajánlat tartalmaznia kell egy nyilvánosan elérhető támogatási URL-címet, ahol az ügyfelek talál segítséget. A próbaverzió támogatási meg kell adni további költségek nélkül a próbaidőszak.       |  Próbaverzió Transact       |
@@ -260,20 +260,20 @@ Nagyvállalati ügyfeleink az Azure-ra vonatkozó előzetes pénzügyi köteleze
 |**Követelmény**  |**Részletek** |**Közzétételi beállítás**  |
 |---------|---------|---------|
 |**Számlázási és annak mérésére**    |  Támogatnia kell a virtuális gép vagy a saját licenc vagy használatalapú, havi-számlázási.       |    Transact    |
-|**Azure-kompatibilis virtuális merevlemez (VHD)**     |   Virtuális gépek kell kialakítani, a [Windows] (https://docs.microsoft.com/en-us/azure/marketplace-publishing/marketplace-publishing-vm-image-creation) vagy [Linux] (https://docs.microsoft.com/en-us/azure/marketplace-publishing/marketplace-publishing-vm-image-creation)    |   Transact      |
+|**Azure-kompatibilis virtuális merevlemez (VHD)**     |   Virtuális gépek kell kialakítani, a [Windows] (https://docs.microsoft.com/en-us/azure/marketplace-publishing/marketplace-publishing-vm-image-creation) vagy () [Linux]https://docs.microsoft.com/en-us/azure/marketplace-publishing/marketplace-publishing-vm-image-creation)    |   Transact      |
 
 ### <a name="prerequisites-specific-to-consulting-services-publishing"></a>Közzététel szolgáltatások tanácsadás vonatkozó Előfeltételek
 
 
-|Követelmények |**Részletek**  |**Közzétételi beállítás**  |
+|**Követelmények** |**Részletek**  |**Közzétételi beállítás**  |
 |---------|---------|---------|
 |**Szolgáltatások ajánlat jellemzői**     | Az egyeztetett szolgáltatás kézbesített rögzített hatókör, időtartam, rögzített rögzített ár (vagy szabad) kell lennie. engagement, elsősorban értékesítési célú, egyetlen ügyfél korlátozódik, és helyszíni végzett        |    Lista     |
-|**Partner tanácsadás követelményei**    |   **AppSource only.**  Az ügyfél Engagement Dynamics 365 [ezüst vagy arany felhő felhasználói kapcsolat felügyeleti kompetencia](https://partner.microsoft.com/en-us/membership/cloud-customer-relationship-management-competency). A pénzügyi és műveletek Enterprise edition Dynamics 365: ezüst vagy [vállalati erőforrás tervezési] (https://partner.microsoft.com/en-us/membership/enterprise-resource-planning-competency) Gold kompetencia, és egy minimális bevétel, 25 Ft felhőben Műveletek a záró 12 hónapon belül. Dynamics 365 pénzügyi, illetve műveletek, Business edition: szolgálhat [felhőalapú szolgáltatások szolgáltató (CSP)](https://partner.microsoft.com/en-us/cloud-solution-provider) vagy [digitális Partner a rekord (DPOR)](https://partner.microsoft.com/en-us/membership/digital-partner-of-record) legalább egy ügyfél. A Power BI: A feltételeknek [megoldás Partner] (file:///C:/Users/ellacroi/Downloads/BI%20Partner%20Program%20Overview%20 & % 20Incentives.pdf). PowerApps: Van egy [Partner Showcase] (https://powerapps.microsoft.com/en-us/partner-showcase/) megoldás |    Lista     |
+|**Partner tanácsadás követelményei**    |   **AppSource only.**  Az ügyfél Engagement Dynamics 365 [ezüst vagy arany felhő felhasználói kapcsolat felügyeleti kompetencia](https://partner.microsoft.com/en-us/membership/cloud-customer-relationship-management-competency). A pénzügyi és műveletek Enterprise edition Dynamics 365: ezüst vagy arany [vállalati erőforrás-tervezési] (https://partner.microsoft.com/en-us/membership/enterprise-resource-planning-competency) kompetencia, és a záró 12 hónapon keresztül minimális bevétel, 25 Ft a Felhőbeli műveletek. Dynamics 365 pénzügyi, illetve műveletek, Business edition: szolgálhat [felhőalapú szolgáltatások szolgáltató (CSP)](https://partner.microsoft.com/en-us/cloud-solution-provider) vagy [digitális Partner a rekord (DPOR)](https://partner.microsoft.com/en-us/membership/digital-partner-of-record) legalább egy ügyfél. A Power BI: A feltételeknek [megoldás Partner] (file:///C:/Users/ellacroi/Downloads/BI%20Partner%20Program%20Overview%20 & % 20Incentives.pdf). PowerApps: [Partner Showcase] rendelkezik (https://powerapps.microsoft.com/en-us/partner-showcase/) megoldás |    Lista     |
 
 ## <a name="using-azure-active-directory-to-enable-trials"></a>Az Azure Active Directory használatával kísérletek engedélyezése
 Az Azure Active Directory (AAD) egy identitás felhőszolgáltatás, amely lehetővé teszi, hogy a hitelesítést a Microsoft munkahelyi vagy iskolai fiók az iparági szabványos protokollok segítségével: OAuth és az OpenID Connect. További tudnivalók az AAD [Itt](https://www.microsoft.com/en-us/cloud-platform/azure-active-directory-features). 
 
-Microsoft összes piactér felhasználóit hitelesíti az aad-ben, ezért amikor a hitelesített felhasználók a próbaverzió listázása a piactéren keresztül kattint, és újra irányítja a rendszer a próbaverzióra környezetben, létesíthet a felhasználó közvetlenül a próbaverzió anélkül, hogy egy további bejelentkezési lépést. A [jogkivonatot, amely az alkalmazás aad megkapja a hitelesítés során] (https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-token-and-claims#sample-tokens) értékes felhasználói adatokat, hozhat létre, amely tartalmaz egy felhasználói fiók az alkalmazásban, így a telepítési élmény automatizálásához és átalakítás érdekében. 
+Microsoft összes piactér felhasználóit hitelesíti az aad-ben, ezért amikor a hitelesített felhasználók a próbaverzió listázása a piactéren keresztül kattint, és újra irányítja a rendszer a próbaverzióra környezetben, létesíthet a felhasználó közvetlenül a próbaverzió anélkül, hogy egy további bejelentkezési lépést. A [jogkivonatot, amely az alkalmazás aad megkapja a hitelesítés során] (https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-token-and-claims#sample-tokens) értékes felhasználói adatokat, amelyek segítségével felhasználói fiók létrehozása az alkalmazás, amely lehetővé teszi a telepítési élmény automatizálhatja és növeli az elágazás tartalmaz átalakítás. 
 
 Az AAD használata az alkalmazás vagy a próbaidőszak 1 kattintással hitelesítés engedélyezése:
 
@@ -295,7 +295,7 @@ Ha támogatja az AAD ma
 Ha még nem ismeri a AAD összevont egyszeri bejelentkezés
 
 - Az alkalmazás regisztrálása az Azure-portálon
-- Egyszeri bejelentkezés az aad-ben [OpenID Connect] (https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-protocols-openid-connect-code) használatával fejlesztése vagy [OAuth 2.0](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-protocols-oauth-code)
+- Egyszeri bejelentkezés az aad-ben [OpenID Connect] segítségével fejlesztése (https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-protocols-openid-connect-code) vagy [OAuth 2.0](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-protocols-oauth-code)
 - A "Tallózás" próbaverziója megszerezni az AAD szolgáltatás több-bérlős támogatási funkciójának engedélyezése
 - [További információk itt](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-devhowto-appsource-certified)
 
@@ -303,7 +303,7 @@ Single-bérlői alkalmazások:
 
 Az egyetlen bérlői alkalmazások több lehetőség áll rendelkezésre:
 
-- Felhasználók hozzáadása a címtárban, használatával [Azure B2B] vendégfelhasználók (https://docs.microsoft.com/en-us/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)
+- Felhasználók hozzáadása a címtárban, () [Azure B2B] vendég felhasználókhttps://docs.microsoft.com/en-us/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)
 - A "Me forduljon" via ügyfelek manuális kiépítési próbaverzió
 - Fejlesztés egy ügyfél "Tesztelése" /
 - Egy több-bérlős bemutató mintaalkalmazás SSO összeállítása
@@ -392,7 +392,7 @@ A közzétételi folyamat elindítása előtt érdemes egy ajánlatot létrehoz�
 
 |Szüksége lesz a összetevő közzététele  |Az ajánlattípus  |
 |---------|---------|
-|Verziószám     |    Transact "Azure alkalmazásokat (megoldás sablonok és a felügyelt alkalmazások)     |
+|**Verziószám**     |    Transact "Azure alkalmazásokat (megoldás sablonok és a felügyelt alkalmazások)     |
 |**A csomagfájl a sablonfájlokat importálni és createUIDefinitionFile tartalmazó**   |Transact "Azure alkalmazásokat (megoldás sablonok és a felügyelt alkalmazások)         |
 |**Operációs rendszer részletei**    |   Transact "virtuális gépek      |
 |**Portok és protokollok használata**    |  Transact "virtuális gépek       |
@@ -422,8 +422,8 @@ A kiválasztott e-mail címet lehetőleg kell a vállalati tartományhoz, és az
 A piactér bevezetési folyamat részeként meg kell küldenie jelölési űrlap, az alkalmazás vagy szolgáltatás ajánlat, a vállalati információk és a szintű támogatást biztosító akkor-nak adatokat küld.  
 Az űrlap elküldése után a piactér team tekintse át az alkalmazást, és a kérelem érvényesítése. Ha a kérelem áttekintette van, a rendszer értesíti, szükséges legyen, a Cloud Partner portálra egy jóváhagyott fele végrehajtani a következő lépéssel e-mailben. Küldjön a jelölési a:
 
-Azure Marketplace Nomination: http://aka.ms/listonazuremarketplace   
-AppSource Nomination: http://aka.ms/listonappsource
+Az Azure piactér jelölési: http://aka.ms/listonazuremarketplace   
+AppSource jelölési: http://aka.ms/listonappsource
 
 #### <a name="register-in-the-developer-center"></a>Regisztrálja a fejlesztői központban
 
@@ -510,7 +510,7 @@ A vállalati fiók létrehozásakor követi ezeket az irányelveket, ha egynél 
 - Adja hozzá a munkahelyi telefonszámot, amelyet a bővítmény nem igényel, és kulcs csapattagok számára érhető el.
 - Jelentkezzen be a vállalat fejlesztői fiókjába a megbízható eszközök segítségével a fejlesztők általában rendelkeznek. Minden kulcs csoporttag megbízható alkalmazáskatalógusából hozzáféréssel kell rendelkeznie. Ez csökkenti a szükséges biztonsági kódok küldését, ha a fiókjához fér hozzá.
 - Ha a fiókhoz való hozzáférés engedélyezése a nem megbízható számítógépről van szüksége, korlátozhatják, hogy legfeljebb öt fejlesztők számára. Ideális esetben a fejlesztők hozzá kell férnie a fiók a számítógépek, amelyek azonos földrajzi és a hálózati helyet.
-- Gyakran tekintse át a vállalat biztonsági adatait, [https://account.live.com/proofs/Manage](https://account.live.com/proofs/Manage) való győződjön meg arról, hogy az összes.
+- Gyakran tekintse át a vállalat biztonsági adatait, [ https://account.live.com/proofs/Manage ](https://account.live.com/proofs/Manage) való győződjön meg arról, hogy az összes.
 
 A fejlesztői fiókba elsősorban a megbízható számítógépekhez legyenek elérhetők. Ez azért fontos, mert fiókonként hetente létrehozott kódok száma korlátozva van. Azt is lehetővé teszi, hogy a legtöbb zökkenőmentes bejelentkezési élményt.
 További információt a további fejlesztői fiók irányelvek és biztonsági [Itt](https://docs.microsoft.com/en-us/windows/uwp/publish/opening-a-developer-account).
@@ -521,7 +521,7 @@ A vállalati fiók használatával kell összevont [Azure Active Directory](http
 
 Javasoljuk, hogy az új e-mail cím létrehozása a  **@outlook.com**  tartomány. Kövesse az alábbi lépéseket:
 
-1. Lépjen [https://signup.live.com/signup](https://signup.live.com/signup) válassza **egy új e-mail-cím beszerzése**
+1. Lépjen [ https://signup.live.com/signup ](https://signup.live.com/signup) válassza **egy új e-mail-cím beszerzése**
 
 
 2. Hozzon létre az új e-mail címet, és adjon meg egy jelszót. Ez létrehoz egy új Microsoft-ID, valamint az e-mail postaládájuk az Outlook.com-os szolgáltatásban. Továbbra is a regisztrációs folyamat során, amíg ez a fiók nincs létrehozva.
@@ -538,7 +538,7 @@ Az utolsó lépés befejezése után kell a Microsoft ID küldött e-mail fiókj
 ### <a name="instructions-on-how-to-register-in-the-development-center"></a>Regisztrálja a fejlesztői központban útmutatást
 
 1. Nyissa meg egy új Internet Explorer InPrivate vagy Chrome Incognito böngészési munkamenet győződjön meg arról, hogy még nem jelentkezett személyes fiókra.
-2. Ugrás a [http://dev.windows.com/registration?accountprogram=azure](http://dev.windows.com/registration?accountprogram=azure) el egy értékesítő a fejlesztői központjában. Olvassa el a következő fontos megjegyzés, mielőtt továbblép.
+2. Ugrás a [ http://dev.windows.com/registration?accountprogram=azure ](http://dev.windows.com/registration?accountprogram=azure) el egy értékesítő a fejlesztői központjában. Olvassa el a következő fontos megjegyzés, mielőtt továbblép.
 
    ![Fejlesztői központ E-mail](./media/marketplace-publishers-guide/registerdevcenteremail.png)
 
@@ -548,7 +548,7 @@ Az utolsó lépés befejezése után kell a Microsoft ID küldött e-mail fiókj
    ![Fiók adatai](./media/marketplace-publishers-guide/devcenterregistrationaccountinfo.png)
    
    >[!WARNING]
-   >"Értékesít-feladó" országok: a szolgáltatások az Azure piactéren, hogy a regisztrált entitás kell lennie egy jóváhagyott "értékesít-from" országok fenti. Ez a korlátozás kifizetés és adózás okból is. További információkért lásd: a [piactér részvételét házirendek] https://azure.microsoft.com/support/legal/marketplace/participation-policies/.
+   >"Értékesít-feladó" országok: a szolgáltatások az Azure piactéren, hogy a regisztrált entitás kell lennie egy jóváhagyott "értékesít-from" országok fenti. Ez a korlátozás kifizetés és adózás okból is. További információkért lásd: a [piactér részvételét házirendek]https://azure.microsoft.com/support/legal/marketplace/participation-policies/.
 
 5. Jelölje ki a "fiók típusa" **vállalati** , majd a **következő** gombra.
 
@@ -614,7 +614,7 @@ Ha közzé szeretné tenni a beszerzési kereskedelmi ajánlatokat, akkor is kel
 
 Ha problémába ütközik fejlesztői központ regisztrációját, jelentkezzen egy támogatási jegy alábbi:
 
-1. Ugrás a támogatási hivatkozás https://developer.microsoft.com/windows/support
+1. A támogatási hivatkozásra https://developer.microsoft.com/windows/support
 2. A **Kapcsolatfelvétel** területen kattintson a gombra **incidens nyújt** ahogy az az alábbi képernyőfelvételhez.
 3. Válasszon ki a "Súgó a fejlesztői központ" legyen **probléma típusa** és "közzététel és -alkalmazások kezelése a", **kategória**. Ezt követően kattintson a gombra "Kezdő email."
 

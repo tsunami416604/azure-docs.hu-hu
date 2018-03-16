@@ -2,24 +2,18 @@
 title: "Az Azure SQL Database teljesítménytesztek áttekintése"
 description: "Ez a témakör ismerteti az Azure SQL adatbázis teljesítményteszt használni a Azure SQL adatbázis teljesítménye."
 services: sql-database
-documentationcenter: na
 author: jan-eng
 manager: jhubbard
-editor: monicar
-ms.assetid: e26f8a66-2c12-49d7-8297-45b4d48a5c01
 ms.service: sql-database
 ms.custom: DBs & servers
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: On Demand
 ms.date: 06/21/2016
 ms.author: janeng
-ms.openlocfilehash: fb8a5f205ddc143dc47349829048f46f88963d05
-ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
+ms.openlocfilehash: 25685f663d976674ad877bcfa1409ef016dd02ae
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-sql-database-benchmark-overview"></a>Az Azure SQL Database teljesítménytesztek áttekintése
 ## <a name="overview"></a>Áttekintés
@@ -100,10 +94,10 @@ Az alábbi táblázat az egyes szolgáltatást és teljesítményszintet tényle
 
 | Szolgáltatási réteg (teljesítményszint szükséges) | Felhasználók | Adatbázisméret |
 | --- | --- | --- |
-| Basic |5 |720 MB |
+| Alapszintű |5 |720 MB |
 | Standard (S0) |10 |1 GB |
 | Standard (S1) |20 |2.1 GB |
-| Standard (s2 –) |50 |7.1 GB |
+| Standard (S2) |50 |7.1 GB |
 | Prémium (P1) |100 |14 GB |
 | Prémium (P2) |200 |28 GB |
 | Prémium (P6) |800 |114 GB |
@@ -121,12 +115,12 @@ Az alapvető metrikákat a teljesítményteszt olyan átviteli sebesség és a v
 | --- | --- | --- |
 | Prémium |Másodpercenkénti tranzakciók |95. százalékos érték 0,5 másodperc: |
 | Standard |Percenkénti tranzakciók |90. százalékos érték 1.0-ás másodperc: |
-| Basic |Óránkénti tranzakciók |80 PERCENTILIS 2.0 másodperc: |
+| Alapszintű |Óránkénti tranzakciók |80 PERCENTILIS 2.0 másodperc: |
 
 ## <a name="conclusion"></a>Összegzés
 Az Azure SQL adatbázis teljesítményteszt méri az Azure SQL Database keresztül elérhető szolgáltatásszintek és teljesítményszintek tartományán relatív teljesítménye. A javasolt alapszintű adatbázis-műveletek, az online tranzakció-feldolgozási (OLTP) munkaterhelések leggyakrabban előforduló vegyesen gyakorolja. Tényleges teljesítményének mérése, a referenciaalap biztosít a részletesebb elemzés milyen mértékben hat az átviteli sebességének módosítása teljesítményszintjét, mint ha csak az egyes szinteken, például a Processzor sebessége, a memóriaméret és a IOPS biztosított erőforrások listázása. A jövőben folytatjuk azt fejleszteni a teljesítményteszt hatókörében bővíthetők, és bontsa ki a megadott adatokat.
 
-## <a name="resources"></a>Erőforrások
+## <a name="resources"></a>További források
 [SQL-adatbázis bemutatása](sql-database-technical-overview.md)
 
 [Szolgáltatásszintek és teljesítményszintek](sql-database-service-tiers.md)

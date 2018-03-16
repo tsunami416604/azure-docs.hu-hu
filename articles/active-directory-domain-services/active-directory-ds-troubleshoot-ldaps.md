@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/21/2018
 ms.author: ergreenl
-ms.openlocfilehash: f80de47f8e9ba326fc224a8bc09f8029b5afd1ca
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 38885caacfb98f76627854a782aa56d8a609aad9
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-ad-domain-services---troubleshooting-secure-ldap-configuration"></a>Azure AD tartományi szolgáltatások - hibaelhárítás biztonságos LDAP-konfiguráció
 
@@ -58,7 +58,7 @@ Ha engedélyezve van a biztonságos LDAP, ajánlott bejövő LDAPS hozzáférés
 
 *A felügyelt tartományra biztonságos LDAP tanúsítványának érvényessége XX.*
 
-**Szervizelés:**
+**Megoldás:**
 
 Hozzon létre egy új biztonságos LDAP-tanúsítványt című rész lépéseit követve a [biztonságos LDAP konfigurálása](active-directory-ds-admin-guide-configure-secure-ldap.md) cikk.
 

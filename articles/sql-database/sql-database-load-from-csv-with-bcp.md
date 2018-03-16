@@ -2,24 +2,18 @@
 title: "Adatok betöltése az CSV-fájl az Azure SQL Database (bcp) |} Microsoft Docs"
 description: "Kisebb adatméret esetén a bcp segítségével importálhatja az adatokat az Azure SQL Database-be."
 services: sql-database
-documentationcenter: NA
 author: CarlRabeler
-manager: jhubbard
-editor: 
-ms.assetid: 875f9b8d-f1a1-4895-b717-f45570fb7f80
+manager: craigg
 ms.service: sql-database
 ms.custom: load & move data
-ms.devlang: NA
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: On Demand
 ms.date: 01/10/2017
 ms.author: carlrab
-ms.openlocfilehash: 2f00a740b3cc59c4e7b3b378c06cfa8cb05e8380
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: c9bc6d2de6647d0ec047a600a52d14ad24ccbae9
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="load-data-from-csv-into-azure-sql-database-flat-files"></a>Adatok betöltése CSV-fájlból az Azure SQL Database-be (egybesimított fájlok)
 A bcp parancssori segédprogram használatával adatokat importálhat egy CSV-fájlból az Azure SQL Database-be.
@@ -109,7 +103,7 @@ Az eredménynek így kell kinéznie:
 | 20151101 |4 |2 |
 | 20151201 |4 |2 |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az SQL Server-adatbázisok áttelepítésével kapcsolatban tekintse meg az [SQL Server-adatbázisok áttelepítésével](sql-database-cloud-migrate.md) foglalkozó cikket.
 
 <!--MSDN references-->

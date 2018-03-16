@@ -1,3 +1,19 @@
+---
+title: "fájl belefoglalása"
+description: "fájl belefoglalása"
+services: virtual-machines
+author: cynthn
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 03/09/2018
+ms.author: cynthn
+ms.custom: include file
+ms.openlocfilehash: d4075f644ed1ce42479e35544f0e1442488f78eb
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 03/16/2018
+---
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
 2. Kezdési bal felső sarokban, kattintson a **hozzon létre egy erőforrást** > **számítási** > **Windows Server 2016 Datacenter**.

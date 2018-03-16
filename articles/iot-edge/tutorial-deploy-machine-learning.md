@@ -6,14 +6,14 @@ keywords:
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 03/06/2018
+ms.date: 03/12/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: e2314f589456f604c8c008e10fb8084e0524575d
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 4201395085dd72eb92b774eaed5980737b2e5de0
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="deploy-azure-machine-learning-as-an-iot-edge-module---preview"></a>Azure Machine Learning egy IoT peremhálózati modulként telepítése – előzetes
 
@@ -41,12 +41,16 @@ Ebben a szakaszban a betanított modell fájlok letöltéséhez, és alakíthatj
 
 Azon a számítógépen, amelyen a modul kezelése az Azure ML, töltse le és mentse [iot_score.py](https://github.com/Azure/ai-toolkit-iot-edge/blob/master/IoT%20Edge%20anomaly%20detection%20tutorial/iot_score.py) és [model.pkl](https://github.com/Azure/ai-toolkit-iot-edge/blob/master/IoT%20Edge%20anomaly%20detection%20tutorial/model.pkl) az az Azure ML IoT eszközkészlet a Githubon. Ezek a fájlok határozza meg azt a betanított gépi tanulási modellt az Iot-peremhálózati eszközön telepíteni. 
 
-A betanított modell segítségével hozzon létre olyan tároló, amely IoT peremeszközök telepíthetők.
+A betanított modell segítségével hozzon létre olyan tároló, amely IoT peremeszközök telepíthetők. Az alábbi parancsot használja:
+
+   * A modell regisztrálni.
+   * Hozzon létre egy manafest.
+   * Hozzon létre egy Docker-tároló nevű kép *machinelearningmodule*.
+   * A lemezkép központi telepítését az Azure-tároló szolgáltatás (AKS) fürthöz.
 
 ```cmd
 az ml service create realtime --model-file model.pkl -f iot_score.py -n machinelearningmodule -r python
 ```
-A szolgáltatásnév *machinelearningmodule* ebben a példában a docker-tároló kép neve lesz.
 
 ### <a name="view-the-container-repository"></a>A tároló tárház megtekintése
 

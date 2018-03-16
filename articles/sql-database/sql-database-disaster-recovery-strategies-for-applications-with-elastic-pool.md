@@ -2,25 +2,19 @@
 title: "Vész-helyreállítási megoldások – az Azure SQL Database kialakítása |} Microsoft Docs"
 description: "Útmutató a felhőalapú megoldás vész-helyreállítási terv válassza ki a megfelelő feladatátvételi mintát."
 services: sql-database
-documentationcenter: 
 author: anosov1960
-manager: jhubbard
-editor: monicar
-ms.assetid: 2db99057-0c79-4fb0-a7f1-d1c057ec787f
+manager: craigg
 ms.service: sql-database
 ms.custom: business continuity
-ms.devlang: NA
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: Inactive
 ms.date: 03/05/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: b2a8f897130c2bf21321366a727ce2e2ae9d1d99
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 6ec202237a0b3fb1b7f0b7158c0aa454b4d65770
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="disaster-recovery-strategies-for-applications-using-sql-database-elastic-pools"></a>Vész helyreállítási stratégiát az SQL Database rugalmas készleteket használó alkalmazások
 Az évek azt megtanulhatta, győződjön meg arról, hogy felhőszolgáltatások nem biztos és katasztrofális incidensek olyan esetben fordulhat elő. SQL-adatbázis ezeket az incidensek előfordulásakor az üzletmenet folytonosságát, az alkalmazás így különböző képességeket biztosít. [Rugalmas készletek](sql-database-elastic-pool.md) és az önálló adatbázisok támogatja a vész-helyreállítási funkciók azonos típusú. Ez a cikk ismerteti a több vész-Helyreállítási stratégiát, a rugalmas készletbe, amely kihasználja ezeket az SQL-adatbázis üzleti folytonosságot biztosító szolgáltatásokat.

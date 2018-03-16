@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/24/2017
+ms.date: 03/14/2018
 ms.author: bradsev
-ms.openlocfilehash: a21316ef6ab05918f07a09243b5ce04950ecd9dc
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: 370ab807ef85240238c51d1693796c26981edb15
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="vehicle-telemetry-analytics-solution-playbook-deep-dive-into-the-solution"></a>Vehicle Telemetriai elemzési megoldások forgatókönyv: mély alaposabban tanulmányozhatja a megoldás
 Ez a forgatókönyv szakaszait menü hivatkozásokat: 
@@ -49,7 +49,7 @@ A JSON-formátumú adatkészlet a következő sémát tartalmaz.
 | Üzemanyag |A vehicle üzemanyag szintje |Véletlenszerűen létrehozott szám 0 és 100 (üzemanyag százalékos értéke jelzi) |
 | EngineOil |A vehicle motor olaj szintje |Véletlenszerűen létrehozott szám 0 és 100 (motor olaj százalékos értéke jelzi) |
 | Kulcsszava nyomás |A vehicle kulcsszava nyomás |Véletlenszerűen létrehozott szám 0 és 50 (kulcsszava nyomás százalékos értéke jelzi) |
-| Kilométer |A vehicle kilométer olvasása |0 és 200 000 véletlenszerűen létrehozott szám |
+| Odometer |A vehicle kilométer olvasása |0 és 200 000 véletlenszerűen létrehozott szám |
 | Accelerator_pedal_position |A vehicle gyorsító tartásához lehetőleg keveset pozíciója |Véletlenszerűen létrehozott szám 0 és 100 (gyorsító százalékos értéke jelzi) |
 | Parking_brake_status |Azt jelzi, hogy a vehicle kell itt tartózkodnia vagy sem |IGAZ vagy hamis |
 | Headlamp_status |Azt jelzi, hogy a fényszóró meg vagy nem |IGAZ vagy hamis |
@@ -366,7 +366,7 @@ A testreszabások RealtimeDashboardApp Visual Studio megoldás letöltéséhez l
 #### <a name="execute-the-real-time-dashboard-application"></a>**A valós idejű irányítópulton alkalmazás végrehajtása**
 1. Bontsa ki a RealtimeDashboardApp, és mentse helyileg.
 
-    ![RealTimeDashboardApp mappa](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig16-vehicle-telematics-realtimedashboardapp-folder.png) 
+    ![RealTimeDashboardApp folder](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig16-vehicle-telematics-realtimedashboardapp-folder.png) 
 
 2. Az alkalmazás RealtimeDashboardApp.exe végrehajtása.
 
@@ -662,7 +662,7 @@ A végső irányítópult ebben a példában néz ki:
 
 ![A Power BI-irányítópulton](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig30-vehicle-telematics-powerbi-dashboard.png)
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 Ez a dokumentum a Vehicle Telemetriai Analytics megoldás részletes Lehatolás tartalmaz. A lambda architektúra mintát használja a valós idejű és kötegelt elemzés előrejelzéseket és műveletek. Ebben a mintában azokat a használati esetek gyakran használt adatok elérési útja (valós időben) igénylő vonatkozik és az elemzések cold elérési útja (kötegelt). 
 
 ### <a name="references"></a>Referencia

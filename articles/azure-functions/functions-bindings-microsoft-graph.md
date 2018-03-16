@@ -11,11 +11,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 12/20/2017
 ms.author: mahender
-ms.openlocfilehash: 346fd26696480b6226c5e836e9876685fb408f96
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: d774f0ca644793235a8c423b052b559d26e289c4
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="microsoft-graph-bindings-for-azure-functions"></a>Az Azure Functions Microsoft Graph kötései
 
@@ -33,7 +33,13 @@ A Microsoft Graph-bővítmény a következő kötéseket biztosít:
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
 > [!Note]
-> A Microsoft Graph kötések még csak előzetes verziójúak.
+> A Microsoft Graph kötések jelenleg előzetes verzióban érhetők az Azure Functions verziójához 2.x. Ezek funkciók verziójában nem támogatott 1.x.
+
+## <a name="packages"></a>Csomagok
+
+A hitelesítési jogkivonat bemeneti kötése megtalálható a [Microsoft.Azure.WebJobs.Extensions.AuthTokens](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.AuthTokens/) NuGet-csomagot. A más Microsoft Graph kötések szerepelnek a [Microsoft.Azure.WebJobs.Extensions.MicrosoftGraph](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.MicrosoftGraph/) csomag. A csomagok forráskódja van a [azure-funkciók-microsoftgraph-bővítmény](https://github.com/Azure/azure-functions-microsoftgraph-extension/) GitHub-tárházban.
+
+[!INCLUDE [functions-package](../../includes/functions-package.md)]
 
 ## <a name="setting-up-the-extensions"></a>A bővítmények beállítása
 
@@ -54,9 +60,7 @@ Mindkét esetben megjelenik egy figyelmeztetés amely adja meg, hogy telepíteni
 > [!Note] 
 > A portál a telepítési folyamat egy fogyasztás terv akár 10 percet vehet igénybe.
 
-Ha a Visual Studio használ, a bővítmények kaphat a NuGet-csomagok telepítése:
-- [Microsoft.Azure.WebJobs.Extensions.AuthTokens](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.AuthTokens/)
-- [Microsoft.Azure.WebJobs.Extensions.MicrosoftGraph](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.MicrosoftGraph/)
+Visual Studio használatakor kaphat a bővítmények telepítése [a NuGet-csomagok, az ebben a cikkben felsorolt](#packages).
 
 ### <a name="configuring-authentication--authorization"></a>Konfigurálása a hitelesítési / engedélyezési
 
@@ -199,7 +203,7 @@ module.exports = function (context, req) {
 
 ### <a name="auth-token---attributes"></a>Hitelesítési jogkivonat - attribútumok
 
-A [C# osztálykönyvtárakhoz](functions-dotnet-class-library.md), használja a [Token](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/TokenBinding/TokenAttribute.cs) attribútumot, amelyet a NuGet-csomag [Microsoft.Azure.WebJobs.Extensions.AuthTokens](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.AuthTokens/).
+A [C# osztálykönyvtárakhoz](functions-dotnet-class-library.md), használja a [Token](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/TokenBinding/TokenAttribute.cs) attribútum.
 
 ### <a name="auth-token---configuration"></a>Hitelesítési jogkivonat - konfiguráció
 
@@ -212,7 +216,7 @@ Az alábbi táblázat ismerteti a beállított kötés konfigurációs tulajdons
 |**direction**||Szükséges – kell állítani `in`.|
 |**Identitás**|**Identitáskezelés**|Szükséges – az identitás, amely a művelet végrehajtásához használható. A következő értékek egyike lehet:<ul><li><code>userFromRequest</code> -Csak érvényes [HTTP-eseményindítóval]. A hívó felhasználó használja.</li><li><code>userFromId</code> -A korábban bejelentkezett felhasználó használ, a megadott. Tekintse meg a <code>userId</code> tulajdonság.</li><li><code>userFromToken</code> -A megadott jogkivonat által képviselt identitást használja. Tekintse meg a <code>userToken</code> tulajdonság.</li><li><code>clientCredentials</code> -Identitást a függvény alkalmazás használja.</li></ul>|
 |**userId**|**UserId**  |Ha szükséges, és csak akkor, ha _identitás_ értéke `userFromId`. Egy egyszerű társított felhasználói azonosító egy korábban bejelentkezett felhasználó.|
-|**userToken**|**UserToken**|Ha szükséges, és csak akkor, ha _identitás_ értéke `userFromToken`. A függvény alkalmazásra érvényes jogkivonat. |
+|**UserToken**|**UserToken**|Ha szükséges, és csak akkor, ha _identitás_ értéke `userFromToken`. A függvény alkalmazásra érvényes jogkivonat. |
 |**Erőforrás**|**resource**|Szükséges – az Azure AD forrás URL-cím, amelynek a token vonatkozó kérelem.|
 
 <a name="token-input-code"></a>
@@ -332,7 +336,7 @@ module.exports = function (context, req) {
 
 ### <a name="excel-input---attributes"></a>Excel bemenet – attribútumok
 
-A [C# osztálykönyvtárakhoz](functions-dotnet-class-library.md), használja a [Excel](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/ExcelAttribute.cs) attribútumot, amelyet a NuGet-csomag [Microsoft.Azure.WebJobs.Extensions.MicrosoftGraph](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.MicrosoftGraph/).
+A [C# osztálykönyvtárakhoz](functions-dotnet-class-library.md), használja a [Excel](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/ExcelAttribute.cs) attribútum.
 
 ### <a name="excel-input---configuration"></a>Excel-bemenet - konfiguráció
 
@@ -345,7 +349,7 @@ Az alábbi táblázat ismerteti a beállított kötés konfigurációs tulajdons
 |**direction**||Szükséges – kell állítani `in`.|
 |**Identitás**|**Identitáskezelés**|Szükséges – az identitás, amely a művelet végrehajtásához használható. A következő értékek egyike lehet:<ul><li><code>userFromRequest</code> -Csak érvényes [HTTP-eseményindítóval]. A hívó felhasználó használja.</li><li><code>userFromId</code> -A korábban bejelentkezett felhasználó használ, a megadott. Tekintse meg a <code>userId</code> tulajdonság.</li><li><code>userFromToken</code> -A megadott jogkivonat által képviselt identitást használja. Tekintse meg a <code>userToken</code> tulajdonság.</li><li><code>clientCredentials</code> -Identitást a függvény alkalmazás használja.</li></ul>|
 |**userId**|**UserId**  |Ha szükséges, és csak akkor, ha _identitás_ értéke `userFromId`. Egy egyszerű társított felhasználói azonosító egy korábban bejelentkezett felhasználó.|
-|**userToken**|**UserToken**|Ha szükséges, és csak akkor, ha _identitás_ értéke `userFromToken`. A függvény alkalmazásra érvényes jogkivonat. |
+|**UserToken**|**UserToken**|Ha szükséges, és csak akkor, ha _identitás_ értéke `userFromToken`. A függvény alkalmazásra érvényes jogkivonat. |
 |**path**|**Elérési út**|Szükséges – az Excel-munkafüzet a onedrive-on elérési útja.|
 |**worksheetName**|**WorksheetName**|A táblázatban található a munkalapon.|
 |**Táblanév**|**TableName**|A tábla neve. Ha nincs megadva, a munkalap tartalma lesz.|
@@ -492,7 +496,7 @@ module.exports = function (context, req) {
 
 ### <a name="excel-output---attributes"></a>Excel - kimeneti attribútumok
 
-A [C# osztálykönyvtárakhoz](functions-dotnet-class-library.md), használja a [Excel](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/ExcelAttribute.cs) attribútumot, amelyet a NuGet-csomag [Microsoft.Azure.WebJobs.Extensions.MicrosoftGraph](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.MicrosoftGraph/).
+A [C# osztálykönyvtárakhoz](functions-dotnet-class-library.md), használja a [Excel](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/ExcelAttribute.cs) attribútum.
 
 ### <a name="excel-output---configuration"></a>Excel-kimenet - konfiguráció
 
@@ -505,7 +509,7 @@ Az alábbi táblázat ismerteti a beállított kötés konfigurációs tulajdons
 |**direction**||Szükséges – kell állítani `out`.|
 |**Identitás**|**Identitáskezelés**|Szükséges – az identitás, amely a művelet végrehajtásához használható. A következő értékek egyike lehet:<ul><li><code>userFromRequest</code> -Csak érvényes [HTTP-eseményindítóval]. A hívó felhasználó használja.</li><li><code>userFromId</code> -A korábban bejelentkezett felhasználó használ, a megadott. Tekintse meg a <code>userId</code> tulajdonság.</li><li><code>userFromToken</code> -A megadott jogkivonat által képviselt identitást használja. Tekintse meg a <code>userToken</code> tulajdonság.</li><li><code>clientCredentials</code> -Identitást a függvény alkalmazás használja.</li></ul>|
 |**UserId** |**userId** |Ha szükséges, és csak akkor, ha _identitás_ értéke `userFromId`. Egy egyszerű társított felhasználói azonosító egy korábban bejelentkezett felhasználó.|
-|**userToken**|**UserToken**|Ha szükséges, és csak akkor, ha _identitás_ értéke `userFromToken`. A függvény alkalmazásra érvényes jogkivonat. |
+|**UserToken**|**UserToken**|Ha szükséges, és csak akkor, ha _identitás_ értéke `userFromToken`. A függvény alkalmazásra érvényes jogkivonat. |
 |**path**|**Elérési út**|Szükséges – az Excel-munkafüzet a onedrive-on elérési útja.|
 |**worksheetName**|**WorksheetName**|A táblázatban található a munkalapon.|
 |**Táblanév**|**TableName**|A tábla neve. Ha nincs megadva, a munkalap tartalma lesz.|
@@ -636,7 +640,7 @@ module.exports = function (context, req) {
 
 ### <a name="file-input---attributes"></a>Fájl bemenet – attribútumok
 
-A [C# osztálykönyvtárakhoz](functions-dotnet-class-library.md), használja a [OneDrive](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/OneDriveAttribute.cs) attribútumot, amelyet a NuGet-csomag [Microsoft.Azure.WebJobs.Extensions.MicrosoftGraph](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.MicrosoftGraph/).
+A [C# osztálykönyvtárakhoz](functions-dotnet-class-library.md), használja a [OneDrive](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/OneDriveAttribute.cs) attribútum.
 
 ### <a name="file-input---configuration"></a>Fájl a bemeneti - konfiguráció
 
@@ -649,7 +653,7 @@ Az alábbi táblázat ismerteti a beállított kötés konfigurációs tulajdons
 |**direction**||Szükséges – kell állítani `in`.|
 |**Identitás**|**Identitáskezelés**|Szükséges – az identitás, amely a művelet végrehajtásához használható. A következő értékek egyike lehet:<ul><li><code>userFromRequest</code> -Csak érvényes [HTTP-eseményindítóval]. A hívó felhasználó használja.</li><li><code>userFromId</code> -A korábban bejelentkezett felhasználó használ, a megadott. Tekintse meg a <code>userId</code> tulajdonság.</li><li><code>userFromToken</code> -A megadott jogkivonat által képviselt identitást használja. Tekintse meg a <code>userToken</code> tulajdonság.</li><li><code>clientCredentials</code> -Identitást a függvény alkalmazás használja.</li></ul>|
 |**userId**|**UserId**  |Ha szükséges, és csak akkor, ha _identitás_ értéke `userFromId`. Egy egyszerű társított felhasználói azonosító egy korábban bejelentkezett felhasználó.|
-|**userToken**|**UserToken**|Ha szükséges, és csak akkor, ha _identitás_ értéke `userFromToken`. A függvény alkalmazásra érvényes jogkivonat. |
+|**UserToken**|**UserToken**|Ha szükséges, és csak akkor, ha _identitás_ értéke `userFromToken`. A függvény alkalmazásra érvényes jogkivonat. |
 |**path**|**Elérési út**|Kötelező – a onedrive-on a fájl elérési útja.|
 
 <a name="onedrive-input-code"></a>
@@ -781,7 +785,7 @@ module.exports = function (context, req) {
 
 ### <a name="file-output---attributes"></a>Fájl – a kimeneti attribútumok
 
-A [C# osztálykönyvtárakhoz](functions-dotnet-class-library.md), használja a [OneDrive](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/OneDriveAttribute.cs) attribútumot, amelyet a NuGet-csomag [Microsoft.Azure.WebJobs.Extensions.MicrosoftGraph](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.MicrosoftGraph/).
+A [C# osztálykönyvtárakhoz](functions-dotnet-class-library.md), használja a [OneDrive](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/OneDriveAttribute.cs) attribútum.
 
 ### <a name="file-output---configuration"></a>Fájl kimeneti - konfiguráció
 
@@ -794,7 +798,7 @@ Az alábbi táblázat ismerteti a beállított kötés konfigurációs tulajdons
 |**direction**||Szükséges – kell állítani `out`.|
 |**Identitás**|**Identitáskezelés**|Szükséges – az identitás, amely a művelet végrehajtásához használható. A következő értékek egyike lehet:<ul><li><code>userFromRequest</code> -Csak érvényes [HTTP-eseményindítóval]. A hívó felhasználó használja.</li><li><code>userFromId</code> -A korábban bejelentkezett felhasználó használ, a megadott. Tekintse meg a <code>userId</code> tulajdonság.</li><li><code>userFromToken</code> -A megadott jogkivonat által képviselt identitást használja. Tekintse meg a <code>userToken</code> tulajdonság.</li><li><code>clientCredentials</code> -Identitást a függvény alkalmazás használja.</li></ul>|
 |**UserId** |**userId** |Ha szükséges, és csak akkor, ha _identitás_ értéke `userFromId`. Egy egyszerű társított felhasználói azonosító egy korábban bejelentkezett felhasználó.|
-|**userToken**|**UserToken**|Ha szükséges, és csak akkor, ha _identitás_ értéke `userFromToken`. A függvény alkalmazásra érvényes jogkivonat. |
+|**UserToken**|**UserToken**|Ha szükséges, és csak akkor, ha _identitás_ értéke `userFromToken`. A függvény alkalmazásra érvényes jogkivonat. |
 |**path**|**Elérési út**|Kötelező – a onedrive-on a fájl elérési útja.|
 
 <a name="onedrive-output-code"></a>
@@ -930,7 +934,7 @@ module.exports = function (context, req) {
 
 ### <a name="outlook-output---attributes"></a>Outlook kimeneti - attribútumok
 
-A [C# osztálykönyvtárakhoz](functions-dotnet-class-library.md), használja a [Outlook](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/OutlookAttribute.cs) attribútumot, amelyet a NuGet-csomag [Microsoft.Azure.WebJobs.Extensions.MicrosoftGraph](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.MicrosoftGraph/).
+A [C# osztálykönyvtárakhoz](functions-dotnet-class-library.md), használja a [Outlook](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/OutlookAttribute.cs) attribútum.
 
 ### <a name="outlook-output---configuration"></a>Outlook kimeneti - konfiguráció
 
@@ -943,7 +947,7 @@ Az alábbi táblázat ismerteti a beállított kötés konfigurációs tulajdons
 |**direction**||Szükséges – kell állítani `out`.|
 |**Identitás**|**Identitáskezelés**|Szükséges – az identitás, amely a művelet végrehajtásához használható. A következő értékek egyike lehet:<ul><li><code>userFromRequest</code> -Csak érvényes [HTTP-eseményindítóval]. A hívó felhasználó használja.</li><li><code>userFromId</code> -A korábban bejelentkezett felhasználó használ, a megadott. Tekintse meg a <code>userId</code> tulajdonság.</li><li><code>userFromToken</code> -A megadott jogkivonat által képviselt identitást használja. Tekintse meg a <code>userToken</code> tulajdonság.</li><li><code>clientCredentials</code> -Identitást a függvény alkalmazás használja.</li></ul>|
 |**userId**|**UserId**  |Ha szükséges, és csak akkor, ha _identitás_ értéke `userFromId`. Egy egyszerű társított felhasználói azonosító egy korábban bejelentkezett felhasználó.|
-|**userToken**|**UserToken**|Ha szükséges, és csak akkor, ha _identitás_ értéke `userFromToken`. A függvény alkalmazásra érvényes jogkivonat. |
+|**UserToken**|**UserToken**|Ha szükséges, és csak akkor, ha _identitás_ értéke `userFromToken`. A függvény alkalmazásra érvényes jogkivonat. |
 
 <a name="outlook-output-code"></a>
 ### <a name="outlook-output---usage"></a>Outlook kimeneti - használat
@@ -1071,7 +1075,7 @@ module.exports = function (context) {
 
 ### <a name="webhook-trigger---attributes"></a>Webhook eseményindító - attribútumok
 
-A [C# osztálykönyvtárakhoz](functions-dotnet-class-library.md), használja a [GraphWebHookTrigger](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/GraphWebHookTriggerAttribute.cs) attribútumot, amelyet a NuGet-csomag [Microsoft.Azure.WebJobs.Extensions.MicrosoftGraph](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.MicrosoftGraph/).
+A [C# osztálykönyvtárakhoz](functions-dotnet-class-library.md), használja a [GraphWebHookTrigger](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/GraphWebHookTriggerAttribute.cs) attribútum.
 
 ### <a name="webhook-trigger---configuration"></a>Webhook eseményindító - konfiguráció
 
@@ -1222,7 +1226,7 @@ module.exports = function (context, req) {
 
 ### <a name="webhook-input---attributes"></a>Webhook bemenet – attribútumok
 
-A [C# osztálykönyvtárakhoz](functions-dotnet-class-library.md), használja a [GraphWebHookSubscription](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/GraphWebHookSubscriptionAttribute.cs) attribútumot, amelyet a NuGet-csomag [Microsoft.Azure.WebJobs.Extensions.MicrosoftGraph](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.MicrosoftGraph/).
+A [C# osztálykönyvtárakhoz](functions-dotnet-class-library.md), használja a [GraphWebHookSubscription](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/GraphWebHookSubscriptionAttribute.cs) attribútum.
 
 ### <a name="webhook-input---configuration"></a>Webhook bemenet - konfiguráció
 
@@ -1362,7 +1366,7 @@ module.exports = function (context, req) {
 
 ### <a name="webhook-output---attributes"></a>Webhook kimeneti - attribútumok
 
-A [C# osztálykönyvtárakhoz](functions-dotnet-class-library.md), használja a [GraphWebHookSubscription](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/GraphWebHookSubscriptionAttribute.cs) attribútumot, amelyet a NuGet-csomag [Microsoft.Azure.WebJobs.Extensions.MicrosoftGraph](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.MicrosoftGraph/).
+A [C# osztálykönyvtárakhoz](functions-dotnet-class-library.md), használja a [GraphWebHookSubscription](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/GraphWebHookSubscriptionAttribute.cs) attribútum.
 
 ### <a name="webhook-output---configuration"></a>Webhook kimeneti - konfiguráció
 
@@ -1375,7 +1379,7 @@ Az alábbi táblázat ismerteti a beállított kötés konfigurációs tulajdons
 |**direction**||Szükséges – kell állítani `out`.|
 |**Identitás**|**Identitáskezelés**|Szükséges – az identitás, amely a művelet végrehajtásához használható. A következő értékek egyike lehet:<ul><li><code>userFromRequest</code> -Csak érvényes [HTTP-eseményindítóval]. A hívó felhasználó használja.</li><li><code>userFromId</code> -A korábban bejelentkezett felhasználó használ, a megadott. Tekintse meg a <code>userId</code> tulajdonság.</li><li><code>userFromToken</code> -A megadott jogkivonat által képviselt identitást használja. Tekintse meg a <code>userToken</code> tulajdonság.</li><li><code>clientCredentials</code> -Identitást a függvény alkalmazás használja.</li></ul>|
 |**userId**|**UserId**  |Ha szükséges, és csak akkor, ha _identitás_ értéke `userFromId`. Egy egyszerű társított felhasználói azonosító egy korábban bejelentkezett felhasználó.|
-|**userToken**|**UserToken**|Ha szükséges, és csak akkor, ha _identitás_ értéke `userFromToken`. A függvény alkalmazásra érvényes jogkivonat. |
+|**UserToken**|**UserToken**|Ha szükséges, és csak akkor, ha _identitás_ értéke `userFromToken`. A függvény alkalmazásra érvényes jogkivonat. |
 |**action**|**Művelet**|Kötelező – meghatározza a kötés műveletet végre kell hajtania. A következő értékek egyike lehet:<ul><li><code>create</code> – Egy új előfizetést regisztrál.</li><li><code>delete</code> -A megadott előfizetés törlése.</li><li><code>refresh</code> -A megadott előfizetés biztosítható, hogy lejárjanak frissíti.</li></ul>|
 |**subscriptionResource**|**SubscriptionResource**|Ha szükséges, és csak akkor, ha a _művelet_ értéke `create`. Adja meg a Microsoft Graph-erőforrás a változásokat a figyelendő. Lásd: [használata a Microsoft Graph webhookok]. |
 |**changeType**|**ChangeType**|Ha szükséges, és csak akkor, ha a _művelet_ értéke `create`. Az értesítés emeli előfizetett erőforrás módosítása típusát jelöli. A támogatott értékek a következők: `created`, `updated`, `deleted`. Több érték is használható együtt, vesszővel tagolt lista használatával.|

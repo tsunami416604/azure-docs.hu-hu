@@ -12,20 +12,20 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/15/2017
+ms.date: 03/14/2018
 ms.author: bradsev
-ms.openlocfilehash: 626987ec0648f9e770499b4a48bc4ca2d175d2b4
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: 6a46a05539a7211fbc2a3a9f6ec45a28f5c64039
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="vehicle-telemetry-analytics-solution-template-power-bi-dashboard-setup-instructions"></a>Vehicle Telemetriai Analytics megoldás sablon Power BI irányítópult telepítési utasításokat
 Ez a forgatókönyv a fejezetek menü hivatkozásokat: 
 
 [!INCLUDE [cap-vehicle-telemetry-playbook-selector](../../../includes/cap-vehicle-telemetry-playbook-selector.md)]
 
-A Vehicle Telemetriai elemzési megoldások bővíthető car kereskedők autó gyártók és biztosítási vállalatok használatát a Cortana Intelligence képességeit. Valós idejű és prediktív elemzések a vehicle állapotát befolyásoló tényezők a felhasználói élmény, a kutatás és fejlesztés javítása érdekében a szokásokat, és marketingkampányok is kapnak. Ezek a részletes útmutatók bemutatják, hogyan konfigurálható a Power BI-jelentéseket és az irányítópult után üzembe helyezéséhez az előfizetésben. 
+A Vehicle Telemetriai elemzési megoldások showcases hogyan car kereskedők, autó gyártók és biztosítási vállalatok képesek használni az képességeit, a Cortana Intelligence. Valós idejű és prediktív elemzések a vehicle állapotát befolyásoló tényezők a felhasználói élmény, a kutatás és fejlesztés javítása érdekében a szokásokat, és marketingkampányok ezeket úgy szerezheti be. Ezek a részletes útmutatók megjelenítése a Power BI-jelentéseket és a irányítópult konfigurálása után üzembe helyezéséhez az előfizetésben. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 * Telepítheti a [Vehicle Telemetriai Analytics](https://gallery.cortanaintelligence.com/Solution/5bdb23f3abb448268b7402ab8907cc90) megoldás. 
@@ -42,7 +42,7 @@ A Vehicle Telemetriai Analytics Megoldássablonban részeként a következő Cor
 * **Az Azure HDInsight** átalakítja az adatokat a skála.
 * **Az Azure Data Factory** vezénylési, ütemezés, erőforrás-kezelés és figyelés, a köteges feldolgozás folyamatának kezeli.
 
-**A Power BI** Ez a megoldás részletes irányítópult ad valós idejű adatok és a prediktív elemzés képi megjelenítések. 
+**A Power BI** Ez a megoldás részletes irányítópult ad adatokat és a prediktív elemzés képi megjelenítéseket. 
 
 A megoldás két különböző adatforrásból használ:
 
@@ -101,7 +101,7 @@ Ez a megoldás három valós idejű jelentéseket vannak:
 * Karbantartási igénylő járművekről gyűjtött
 * Vehicle egészségügyi statisztikák
 
-Beállíthatja, mind a hármat a valós idejű jelentéseket, vagy megszüntetheti a után fel. Majd folytassa a következő szakasszal kötegelt jelentések konfigurálásához. Azt javasoljuk, hogy hozzon létre minden három jelentéseket a megoldás a valós idejű elérési út teljes insights megjelenítéséhez.  
+Beállíthatja a jelentések három, vagy megszüntetheti a után fel. Majd folytassa a következő szakasszal kötegelt jelentések konfigurálásához. Azt javasoljuk, hogy hozzon létre minden három jelentéseket a megoldás a valós idejű elérési út teljes insights megjelenítéséhez.  
 
 ### <a name="vehicles-in-operation-report"></a>A művelet a jelentés járművekről gyűjtött
 1. Kattintson duplán a **lap 1**, és adjon neki **műveletben járművekről gyűjtött**.
@@ -160,7 +160,7 @@ Beállíthatja, mind a hármat a valós idejű jelentéseket, vagy megszüntethe
 
     ![A képi megjelenítések irányítópult](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4k.png)
 
-Sikeresen konfigurálta a "Járművekről gyűjtött a művelet" valós idejű jelentést. A következő valós idejű jelentést hozhat létre, vagy leállás, és konfigurálja az irányítópulton. 
+Sikeresen konfigurálta a "Járművekről gyűjtött a művelet a" jelentés. A következő valós idejű jelentést hozhat létre, vagy leállás, és konfigurálja az irányítópulton. 
 
 ### <a name="vehicles-requiring-maintenance-report"></a>Járművekről gyűjtött igénylő karbantartási jelentés
 
@@ -198,7 +198,7 @@ Sikeresen konfigurálta a "Járművekről gyűjtött a művelet" valós idejű j
 
 6. Az a **mezők** lapján húzza **modell** számára a **tengely** területen. A csomóponthúzási **vin** való a **érték** területen. Ezután szűrje a képi megjelenítés által **vin száma**. A diagram **cím** való **járművekről gyűjtött karbantartási igénylő modell**. 
 
-7. Az a **mezők** ![mezők](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4field.png) szakasza a **képi megjelenítések** lapján húzza **vin** való **szín telítettségét**.
+7. Az a **mezők** ![mezők-lemezkép](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4field.png) szakasza a **képi megjelenítések** lapján húzza **vin** való **szín telítettségét**.
 
     ![Szín telítettségét](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4q.png)  
 
@@ -268,7 +268,7 @@ Sikeresen konfigurálta a "Járművekről gyűjtött igénylő karbantartás" va
 
     ![Oszlop és sor értékek](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4aa.png)
 
-12. A diagram **cím** való **átlagos sebességét, kulcsszava nyomás, motor olaj- és motor**.  
+12. A diagram **cím** való **átlagos sebességét, kulcsszava nyomás, motor olaj és motor**.  
 
     ![Vonal- és fürtözött oszlopdiagram cím](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4bb.png)
 
@@ -298,13 +298,13 @@ Sikeresen konfigurálta a "Járművekről gyűjtött igénylő karbantartás" va
 
     ![Aggregáció típusa](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4ff.png)
 
-22. A diagram **cím** való **átlagos motor olaj, a terhelés, a sebesség és a karbantartás valószínűség megunja modell**.
+22. A diagram **cím** való **motor olaj, a kulcsszava nyomás, a sebesség és a karbantartás valószínűség átlagos modell**.
 
     ![Diagramcím terület](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4gg.png)
 
 23. Jelölje ki a hozzáadni az új képi megjelenítés üres területet.
 
-24. Az a **képi megjelenítések** lapon jelölje be a **pontdiagram diagram** képi megjelenítés. A csomóponthúzási **modell** való a **részletek** és **jelmagyarázat** területek. A csomóponthúzási **üzemanyag** számára a **X tengely** területen. Módosítsa a összevonása a **átlagos**. A csomóponthúzási **engineTemperature** számára a **Y tengely** területen. Módosítsa a összevonása a **átlagos**. A csomóponthúzási **vin** való a **mérete** területen.
+24. Az a **képi megjelenítések** lapon jelölje be a **pontdiagram diagram** képi megjelenítés. A csomóponthúzási **modell** való a **részletek** és **jelmagyarázat** területek. A csomóponthúzási **üzemanyag** való a **x tengely** területen. Módosítsa a összevonása a **átlagos**. A csomóponthúzási **engineTemperature** számára a **y tengely** területen. Módosítsa a összevonása a **átlagos**. A csomóponthúzási **vin** való a **mérete** területen.
 
     ![Részletek, jelmagyarázat, a tengely és a méret területek](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4hh.png)
 
@@ -333,7 +333,7 @@ Sikeresen létrehozta a valós idejű irányítópulton. Továbbra is CarEventGe
 
 ## <a name="set-up-the-power-bi-batch-processing-dashboard"></a>Állítsa be a Power BI kötegelt feldolgozásra irányítópult
 > [!NOTE]
-> A végpont kötegfeldolgozási folyamat végrehajtásának befejeződését, és létrehozott egy év értékelésével feldolgozni (az a telepítés sikeres befejezése) körülbelül két órás szükséges időt. Várjon, amíg a feldolgozás befejeződik, mielőtt továbblép a következő lépéseket. 
+> A végpont kötegfeldolgozási folyamat végrehajtásának befejeződését, és létrehozott egy év értékelésével feldolgozni (az a telepítés sikeres befejezése) körülbelül két órás szükséges időt. Várjon, amíg a feldolgozás befejeződik, mielőtt továbblép a következő lépéseket:
 > 
 > 
 

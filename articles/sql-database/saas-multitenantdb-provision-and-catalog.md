@@ -3,25 +3,19 @@ title: "SaaS több-bérlős Azure rendelkezése |} Microsoft Docs"
 description: "Megtudhatja, hogyan szeretnék telepíteni, és a katalógus egy Azure SQL Database több-bérlős SaaS-alkalmazás az új bérlők"
 keywords: "sql database-oktatóanyag"
 services: sql-database
-documentationcenter: 
 author: MightyPen
 manager: craigg
-editor: MightyPen
 ms.reviewer: billgib;andrela;genemi
-ms.assetid: 
 ms.service: sql-database
 ms.custom: saas apps
-ms.workload: Inactive
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 12/19/2017
 ms.author: billgib
-ms.openlocfilehash: 42bbb6131aa71520410b22af4d74e99a63fe81cf
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.openlocfilehash: fb2f2bcbbc8b7f0b0012c4e7baf4a274671d4af0
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="provision-and-catalog-new-tenants-in-a-saas-application-using-a-sharded-multi-tenant-azure-sql-database"></a>Új bérlők biztosítása és a katalógus egy SaaS-alkalmazáshoz szilánkos több-bérlős Azure SQL-adatbázis használata
 
@@ -241,7 +235,7 @@ A bérlők és az egyes megfelelő adatbázis teljes listáját a katalógus ér
 - A bérlő neve a bérlők tábla tárolódik.
 - Az adatbázis nevét a rendszer a Shard felügyeleti táblákban tárolja.
 
-1. Az SQL Server Management Studio (SSMS), csatlakozás a bérlők kiszolgálóra **katalógus-mt.\<felhasználói\>. database.windows.net**, bejelentkezéskor = **fejlesztői**, és a jelszó =**P@ssword1**
+1. Az SQL Server Management Studio (SSMS), csatlakozás a bérlők kiszolgálóra **katalógus-mt.\<felhasználói\>. database.windows.net**, bejelentkezéskor = **fejlesztői**, és a jelszó = **P@ssword1**
 
     ![SSMS kapcsolódási párbeszédpanel](media/saas-multitenantdb-provision-and-catalog/SSMSConnection.png)
 

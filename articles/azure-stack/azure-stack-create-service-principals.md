@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/25/2018
+ms.date: 03/15/2018
 ms.author: mabrigg
-ms.openlocfilehash: 64c424ee7045ae20b3fba6433166039580387d76
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 7b7028a92b93f29af10c5e4bc9ab4f671ca23961
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="provide-applications-access-to-azure-stack"></a>Alkalmazások elérést biztosíthat az Azure-verem
 
@@ -51,14 +51,14 @@ Ebben a szakaszban hoz létre egy alkalmazást (egyszerű szolgáltatásnév) az
 Az alkalmazás hozott létre egy egyszerű szolgáltatást.
 
 ### <a name="get-credentials"></a>Hitelesítő adatainak lekérése
-Bejelentkezéskor programozott módon, a Azonosítóját használnia az alkalmazás és egy hitelesítési kulcs. Ahhoz, hogy ezeket az értékeket, tegye a következőket:
+Bejelentkezéskor programozott módon, az alkalmazáshoz, és a webes alkalmazás Azonosítóját használnia / API-t a hitelesítési kulcs. Ahhoz, hogy ezeket az értékeket, tegye a következőket:
 
 1. A **App regisztrációk** az Active Directoryban, válassza ki az alkalmazást.
 
 2. Másolás a **Alkalmazásazonosító** és az alkalmazás kódjában tárolja. Az alkalmazások a [mintaalkalmazást](#sample-applications) szakasz tekintse meg ezt az értéket az ügyfél-azonosítót.
 
      ![ügyfél-azonosító](./media/azure-stack-create-service-principal/image12.png)
-3. A hitelesítési kulcs létrehozásához válasszon **kulcsok**.
+3. Egy hitelesítési kulcs egy webalkalmazás létrehozása / API, válassza ki **beállítások** > **kulcsok**. 
 
 4. Adja meg a kulcsot, és egy időtartamot a kulcs leírását. Ha elkészült, válassza ki a **mentése**.
 

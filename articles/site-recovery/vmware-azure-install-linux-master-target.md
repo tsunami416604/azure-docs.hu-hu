@@ -9,11 +9,11 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 03/05/2018
 ms.author: nisoneji
-ms.openlocfilehash: b7292514e72476f38e9a0572b201be8468f0030a
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 4d54ecb3f92754fa6575ec17ec5572b6fb9abb88
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="install-a-linux-master-target-server"></a>A Linux fő célkiszolgáló telepítése
 Miután a rendszer átadja a virtuális gépek Azure-ba, akkor is feladat-visszavételt a virtuális gépeket a helyszíni hely. A feladat-visszavételt, állítsa a virtuális gépet az Azure-ból a helyszíni helyre kell. Ez a folyamat szüksége van egy a helyszíni fő célkiszolgáló forgalom fogadására. 
@@ -41,7 +41,7 @@ Megjegyzéseit vagy kérdéseit a cikk vagy a végén utáni a [Azure Recovery S
 
 Hozza létre a fő célkiszolgálón a következő méretezési irányelvek szerint:
 - **RAM**: legalább 6 GB
-- **Az operációs rendszer lemezméret**: 100 GB vagy több (CentOS6.6 telepítendő)
+- **Az operációs rendszer lemezméret**: 100 GB vagy több (az operációs rendszer telepítése)
 - **További lemezmérete adatmegőrzési meghajtó**: 1 TB-os
 - **A Processzormagok**: 4 mag, vagy több
 
@@ -112,24 +112,31 @@ Ubuntu 16.04.2 minimális 64 bites ISO-Lemezképet tartani a DVD-meghajtóba, é
 
 1.  Válassza ki **Igen** írása a lemezre, majd válassza a módosítások **Enter**.
 
-1.  A konfigurálás proxy kiválasztása lapon jelölje be az alapértelmezett beállítás, válassza ki **Folytatás**, majd válassza ki **Enter**.
+    ![Válassza ki az alapértelmezett beállítás](./media/vmware-azure-install-linux-master-target/image16-ubuntu.png)
 
-     ![Válassza ki az alapértelmezett beállítás](./media/vmware-azure-install-linux-master-target/image17.png)
+1.  A konfigurálás proxy kiválasztása lapon jelölje be az alapértelmezett beállítás, válassza ki **Folytatás**, majd válassza ki **Enter**.
+     
+     ![Válassza ki a frissítések kezelése](./media/vmware-azure-install-linux-master-target/image17-ubuntu.png)
 
 1.  Válassza ki **automatikus frissítések** a telepítendő frissítések a rendszeren kezelése lehetőséget, majd válassza ki **Enter**.
 
-     ![Válassza ki a frissítések kezelése](./media/vmware-azure-install-linux-master-target/image18.png)
+     ![Válassza ki a frissítések kezelése](./media/vmware-azure-install-linux-master-target/image18-ubuntu.png)
 
     > [!WARNING]
     > Az Azure Site Recovery fő célkiszolgáló az Ubuntu olyan speciális verziója szükséges, mert annak érdekében, hogy a frissítések le vannak tiltva, a virtuális gép kernel szüksége. Ha engedélyezve vannak, a rendszeres megjelenjenek ezután a fő célkiszolgáló hibás működését. Mindenképpen jelölje ki a **automatikus frissítések** lehetőséget.
 
 1.  Válassza ki az alapértelmezett beállításokat. Ha openSSH az SSH csatlakozni, jelölje be a **OpenSSH server** lehetőséget, majd válassza ki **Folytatás**.
 
-    ![Válassza ki a szoftver](./media/vmware-azure-install-linux-master-target/image19.png)
+    ![Válassza ki a szoftver](./media/vmware-azure-install-linux-master-target/image19-ubuntu.png)
 
 1. A LÁRVAJÁRAT rendszertöltő telepítésének selction, válassza ki **Igen**, majd válassza ki **Enter**.
+     
+    ![Rendszerindító telepítő LÁRVAJÁRAT](./media/vmware-azure-install-linux-master-target/image20.png)
+
 
 1. Válassza ki a megfelelő eszköz, a rendszerindító betöltő telepítés (lehetőleg **/dev/sda**), majd válassza ki **Enter**.
+     
+    ![Válassza ki a megfelelő eszköz](./media/vmware-azure-install-linux-master-target/image21.png)
 
 1. Válassza ki **Folytatás**, majd válassza ki **Enter** fejezze be a telepítést.
 
@@ -154,7 +161,7 @@ Az azonosító lekérése minden SCSI merevlemez Linux virtuális gépre, a **le
 
 4. A bal oldali panelen válassza ki a **speciális** > **általános**, majd válassza ki a **konfigurációs paraméterek** gomb a képernyő jobb alsó részén.
 
-    ![Beállítások lap](./media/vmware-azure-install-linux-master-target/image20.png)
+    ![Nyissa meg a konfigurációs paraméter](./media/vmware-azure-install-linux-master-target/image24-ubuntu.png) 
 
     A **konfigurációs paraméterek** beállítás nem érhető el, a gép futása közben. Ahhoz, hogy aktív ezen a lapon, a virtuális gép leállítása.
 
@@ -168,7 +175,7 @@ Az azonosító lekérése minden SCSI merevlemez Linux virtuális gépre, a **le
 
     - A Név oszlopban hozzáadása **lemez. EnableUUID**, majd állítsa be az értéket, és **igaz**.
 
-    ![A rendszer ellenőrzi a e lemezen. EnableUUID már létezik.](./media/vmware-azure-install-linux-master-target/image21.png)
+    ![A rendszer ellenőrzi a e lemezen. EnableUUID már létezik.](./media/vmware-azure-install-linux-master-target/image25.png)
 
 #### <a name="disable-kernel-upgrades"></a>Tiltsa le a kernel frissítések
 
@@ -244,7 +251,7 @@ Adatmegőrzési lemez létrehozásához tegye a következőket:
     
     `mkfs.ext4 /dev/mapper/<Retention disk's multipath id>`
     
-    ![A meghajtón fájlrendszer létrehozása](./media/vmware-azure-install-linux-master-target/media/image23.png)
+    ![A meghajtón fájlrendszer létrehozása](./media/vmware-azure-install-linux-master-target/image23-centos.png)
 
 4. Miután létrehozta a fájlrendszer, csatlakoztassa az adatmegőrzési lemez.
 
@@ -252,7 +259,6 @@ Adatmegőrzési lemez létrehozásához tegye a következőket:
     mkdir /mnt/retention
     mount /dev/mapper/<Retention disk's multipath id> /mnt/retention
     ```
-    ![Az adatmegőrzési lemez csatlakoztatása](./media/vmware-azure-install-linux-master-target/image24.png)
 
 5. Hozzon létre a **fstab** bejegyzés az adatmegőrzési meghajtó csatlakoztatása, a rendszer minden indításakor.
     

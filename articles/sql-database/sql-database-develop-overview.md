@@ -2,24 +2,19 @@
 title: "Az Azure SQL Database-alapú alkalmazásfejlesztés áttekintése | Microsoft Docs"
 description: "Megismerheti az SQL Database-hez elérhető adatkapcsolattárakat és ajánlott eljárásokat az alkalmazások csatlakoztatásához."
 services: sql-database
-documentationcenter: 
 author: stevestein
-manager: jhubbard
-editor: genemi
-ms.assetid: 67c02204-d1bd-4622-acce-92115a7cde03
+manager: craigg
+ms.reviewer: genemi
 ms.service: sql-database
 ms.custom: develop apps
-ms.workload: Active
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2016
 ms.author: sstein
-ms.openlocfilehash: 5948db9a52dc24d75f3fecc4ed166dd327061b37
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: ec3569d37d399590b0c306a85f199221e7812253
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="sql-database-application-development-overview"></a>SQL-adatbázis alkalmazások fejlesztői áttekintés
 Ez a cikk ismerteti az alapvető szempontokat, amelyeket a fejlesztőknek érdemes figyelembe venniük az Azure SQL Database-hez való csatlakozáshoz használt kód írásakor.
@@ -46,7 +41,7 @@ Az Azure SQL Database erőforrásokat biztosít a hozzáférés korlátozásáho
 
 * További információ: [SQL-adatbázisok védelme](sql-database-security-overview.md).
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Hitelesítés
 * Az Azure SQL Database az SQL Server-alapú és az [Azure Active Directory-alapú](sql-database-aad-authentication.md) hitelesítést használó felhasználókat és bejelentkezéseket is támogatja.
 * Meg kell adnia egy konkrét adatbázist az alapértelmezett *master* adatbázis használata helyett.
 * Az SQL Database-ben a **USE myDatabaseName;** Transact-SQL utasítással nem válthat másik adatbázisra.
@@ -74,5 +69,5 @@ Rugalmasan méretezhető egyszerűbbé teszi a Méretezés (és).
 * [Adatok függő útválasztási](sql-database-elastic-scale-data-dependent-routing.md).
 * [Ismerkedés az Azure SQL Database rugalmas bővítést előzetes](sql-database-elastic-scale-get-started.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Fedezze fel az [SQL Database összes képességét](sql-database-technical-overview.md).

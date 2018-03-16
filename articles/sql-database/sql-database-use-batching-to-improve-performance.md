@@ -2,24 +2,18 @@
 title: "Az Azure SQL Database-alkalmazás teljesítményének javítása érdekében a kötegelés használata"
 description: "A témakör igazolja, hogy kötegelési adatbázis-műveletek sebessége nagy mértékben imroves és méretezhetőséget biztosít a az Azure SQL adatbázis-alkalmazások. Habár ezek a technológiák kötegelési bármely SQL Server-adatbázis is működik, a cikk célja az Azure-on."
 services: sql-database
-documentationcenter: na
 author: stevestein
-manager: jhubbard
-editor: 
-ms.assetid: 563862ca-c65a-46f6-975d-10df7ff6aa9c
+manager: craigg
 ms.service: sql-database
 ms.custom: develop apps
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: On Demand
 ms.date: 07/12/2016
 ms.author: sstein
-ms.openlocfilehash: 8622bddc809c9d95f7acf359ff708d5ab31cf620
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 5c7846fdd8d6a7584cab2b4f3811151332171ba4
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="how-to-use-batching-to-improve-sql-database-application-performance"></a>SQL-adatbázis teljesítményének javítása érdekében a kötegelés használata
 Az Azure SQL Database-műveletek kötegelése jelentősen javítja a teljesítményét és méretezhetőségét, az alkalmazások. Előnyeinek megismerése, hogy ez a cikk első része ismertet néhány minta vizsgálati eredmények, hasonlítsa össze az SQL-adatbázis szekvenciális és kötegelt kérelmek. A cikk fennmaradó a technikák, a forgatókönyvek és a szempontokat tartalmaz, amelyek segítséget nyújtanak az Azure-alkalmazásokban sikeresen kötegelés használandó jeleníti meg.
@@ -92,7 +86,7 @@ Az alábbi táblázat néhány alkalmi vizsgálati eredményeket jeleníti meg. 
 
 **Az Azure-bA helyszíni**:
 
-| Műveletek | Nincs tranzakció (ms) | Tranzakció (ms) |
+| Műveletek | No Transaction (ms) | Transaction (ms) |
 | --- | --- | --- |
 | 1 |130 |402 |
 | 10 |1208 |1226 |
@@ -101,7 +95,7 @@ Az alábbi táblázat néhány alkalmi vizsgálati eredményeket jeleníti meg. 
 
 **Azure-az Azure-ba (ugyanabban az adatközpontban)**:
 
-| Műveletek | Nincs tranzakció (ms) | Tranzakció (ms) |
+| Műveletek | No Transaction (ms) | Transaction (ms) |
 | --- | --- | --- |
 | 1 |21 |26 |
 | 10 |220 |56 |
@@ -617,6 +611,6 @@ Az alábbi lista a jelen témakörben bemutatott kötegelési ajánlások össze
 * Kerülje a párhuzamos végrehajtás kötegek, amely több adatbázis egyetlen táblájára működik. Ha a kötegek osztja szét több munkavégző szál, tesztek futtatása annak szálak ideális számának meghatározásához. Után egy nem meghatározott küszöbértéket több szál fog miatta a teljesítmény, nem pedig növeli azt.
 * Vegye figyelembe a pufferelés méret és így további forgatókönyvek kötegelés végrehajtási idő.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ez a cikk összpontosított hogyan adatbázis tervezési és a kapcsolódó kötegelés technikák kódolási javíthatja az alkalmazás teljesítményét és méretezhetőségét. Ez azonban csak egy tényező az általános stratégiában. A jobb teljesítmény és méretezhetőség további részleteket lásd: [Azure SQL Database teljesítményét útmutatást az önálló adatbázisok](sql-database-performance-guidance.md) és [rugalmas készletek ára és teljesítménye szempontok](sql-database-elastic-pool-guidance.md).
 

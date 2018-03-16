@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2018
+ms.date: 03/12/2018
 ms.author: magoedte
-ms.openlocfilehash: 3bb023cfd94c7b87550d692101d30f922de80bf9
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 778810001952daf9ac63a7f1f880b05234549965
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="connect-windows-computers-to-the-log-analytics-service-in-azure"></a>Windows számítógépek csatlakoztatása a Log Analytics szolgáltatás az Azure-ban
 
@@ -38,7 +38,7 @@ A Windows-ügynök telepítése a hálózati és a rendszer követelmények meg�
 ## <a name="obtain-workspace-id-and-key"></a>A munkaterület-azonosító és -kulcs lekérése
 A Windowshoz készült Microsoft Monitoring Agent telepítése előtt szüksége lesz a Log Analytics-munkaterület azonosítójára és kulcsára.  Szükség az egyes telepítési módszerek megfelelően konfigurálni az ügynököt, és képes sikeresen kommunikálni a kereskedelmi Azure Naplóelemzés és az USA szövetségi kormányzatának felhő telepítés során.  
 
-1. Az Azure portálon kattintson **minden szolgáltatás**. Az erőforrások listájába írja be a **Log Analytics** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza a **Log Analytics** elemet.
+1. Az Azure Portalon kattintson a **Minden szolgáltatás** lehetőségre. Az erőforrások listájába írja be a **Log Analytics** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza a **Log Analytics** elemet.
 2. A Naplóelemzési munkaterület, jelölje ki az ügynök konfigurálásáról jelenteni szeretné a munkaterületen.
 3. Válassza ki a **Speciális beállítások** elemet.<br><br> ![A Log Analytics speciális beállításai](media/log-analytics-quick-collect-azurevm/log-analytics-advanced-settings-01.png)<br><br>  
 4. Válassza ki a **Csatlakoztatott források**, majd a **Windowsos kiszolgálók** elemet.   
@@ -63,7 +63,7 @@ Az alábbi lépéseket telepítse, és konfigurálni az ügynököt a Naplóelem
 Ennek végeztével a **Microsoft Monitoring Agent** megjelenik a **Vezérlőpulton**. Erősítse meg a jelentések szolgáltatáshoz, tekintse át [Naplóelemzési ügynök ellenőrzésére](#verify-agent-connectivity-to-log-analytics). 
 
 ## <a name="install-the-agent-using-the-command-line"></a>Telepítse az ügynököt, a parancssor használatával
-Az ügynök a letöltött fájl csomag egy önálló telepítő IExpress létre.  A telepítőprogram az ügynök és a fájlokat a csomagban található, és megfelelően a parancssorból a következő példákban telepítéséhez ki kell.    
+Az ügynök a letöltött fájl csomag egy önálló telepítés.  A telepítőprogram az ügynök és a fájlokat a csomagban található, és megfelelően a parancssorból a következő példákban telepítéséhez ki kell.    
 
 >[!NOTE]
 >Ha azt szeretné, az ügynök frissítése, hogy szeretné használni, a parancsprogram-kezelési API Naplóelemzési. A témakörben [kezelése és karbantartása a Log Analyticshez ügynök a Windows és Linux](log-analytics-agent-manage.md) további tájékoztatást talál.
@@ -72,6 +72,7 @@ A következő táblázat ismerteti a az ügynök, beleértve az Automation DSC h
 
 |MMA vonatkozó beállítások                   |Megjegyzések         |
 |---------------------------------------|--------------|
+| NOAPM=1                               | Nem kötelező paraméter. Az ügynök nélkül .NET alkalmazásteljesítmény-figyelő telepíti.|   
 |ADD_OPINSIGHTS_WORKSPACE               | 1 = konfigurálása az ügynök számára, hogy a munkaterület                |
 |OPINSIGHTS_WORKSPACE_ID                | Munkaterületének azonosítóját (guid) a munkaterülethez való hozzáadása                    |
 |OPINSIGHTS_WORKSPACE_KEY               | Kezdetben a való hitelesítéshez szükséges a munkaterület kulcsát |
@@ -80,7 +81,7 @@ A következő táblázat ismerteti a az ügynök, beleértve az Automation DSC h
 |OPINSIGHTS_PROXY_USERNAME               | Egy hitelesített proxykiszolgálót eléréséhez felhasználónév |
 |OPINSIGHTS_PROXY_PASSWORD               | Egy hitelesített proxykiszolgálót eléréséhez szükséges jelszót. |
 
-1. Egy rendszergazda jogú parancssorból futtassa a telepítési fájlokat, kibontani `extract MMASetup-<platform>.exe` és felszólítja a fájlokat az elérési úthoz.  Másik lehetőségként az elérési utat is megadhat úgy, hogy az argumentumok `extract MMASetup-<platform>.exe /c:<Path> /t:<Path>`.  Az IExpress által támogatott parancssori swtiches további információkért lásd: [parancssori kapcsolók a IExpress](https://support.microsoft.com/help/197147/command-line-switches-for-iexpress-software-update-packages) majd frissítse a példa az igényeinek.
+1. Egy rendszergazda jogú parancssorból futtassa a telepítési fájlokat, kibontani `MMASetup-<platform>.exe /c` és felszólítja a fájlokat az elérési úthoz.  Másik lehetőségként az elérési utat is megadhat úgy, hogy az argumentumok `MMASetup-<platform>.exe /c /t:<Path>`.  
 2. Csendes telepítse az ügynököt, és konfigurálja azt, hogy az Azure kereskedelmi felhőben munkaterület mappából kibontotta a telepítési fájlokat be: 
    
      ```dos
@@ -108,9 +109,9 @@ A következő példa telepíti a 64 bites ügynök azonosítja a `URI` érték. 
 
 Az ügynök csomag 32 bites és 64 bites verziója eltérő termékkódok pedig kiadott új verziói is egyedi értéket.  A termékkód egy GUID, amely egy alkalmazás vagy termék egyszerű azonosítása és a Windows Installer által képviselt **ProductCode** tulajdonság.  A `ProductId value` a a **MMAgent.ps1** parancsfájl meg kell egyeznie a termékkódot a 32 bites vagy 64 bites ügynök telepítőcsomagból.
 
-A kódot közvetlenül az ügynök telepítési csomag lekérdezni, használhatja a Orca.exe a [Windows SDK összetevői a Windows Installer-fejlesztőknek](https://msdn.microsoft.com/library/windows/desktop/aa370834%27v=vs.85%28.aspx) , amely a Windows Software Development Kit összetevője vagy használatával PowerShell következő egy [a példaként megadott parancsfájlt](http://www.scconfigmgr.com/2014/08/22/how-to-get-msi-file-information-with-powershell/) egy Microsoft értékes Professional (MVP) által írt.
+A kódot közvetlenül az ügynök telepítési csomag lekérdezni, használhatja a Orca.exe a [Windows SDK összetevői a Windows Installer-fejlesztőknek](https://msdn.microsoft.com/library/windows/desktop/aa370834%28v=vs.85%29.aspx) , amely a Windows Software Development Kit összetevője vagy használatával PowerShell következő egy [a példaként megadott parancsfájlt](http://www.scconfigmgr.com/2014/08/22/how-to-get-msi-file-information-with-powershell/) egy Microsoft értékes Professional (MVP) által írt.  Vagy módjáról, akkor először vissza kell fejteni a **MOMagent.msi** fájl MMASetup telepítőcsomagból.  Ez az első lépésben szakaszban látható [telepítse az ügynököt, a parancssor használatával](#install-the-agent-using-the-command-line).  
 
-1. Modul importálása a xPSDesiredStateConfiguration DSC [http://www.powershellgallery.com/packages/xPSDesiredStateConfiguration](http://www.powershellgallery.com/packages/xPSDesiredStateConfiguration) az Azure Automation.  
+1. Modul importálása a xPSDesiredStateConfiguration DSC [ http://www.powershellgallery.com/packages/xPSDesiredStateConfiguration ](http://www.powershellgallery.com/packages/xPSDesiredStateConfiguration) az Azure Automation.  
 2.  Azure Automation változó eszközök létrehozása *OPSINSIGHTS_WS_ID* és *OPSINSIGHTS_WS_KEY*. Állítsa be *OPSINSIGHTS_WS_ID* a Naplóelemzési munkaterület azonosítója és a set *OPSINSIGHTS_WS_KEY* az elsődleges kulcsot a munkaterületet.
 3.  Másolja a parancsfájlt, és mentse MMAgent.ps1
 
@@ -161,7 +162,7 @@ A számítógépről a **Vezérlőpult**, keresse meg az elemet **Microsoft Moni
 
 Egyszerű napló keresést az Azure portálon is elvégezheti.  
 
-1. Az Azure portálon kattintson **minden szolgáltatás**. Az erőforrások listájába írja be a **Log Analytics** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza a **Log Analytics** elemet.  
+1. Az Azure Portalon kattintson a **Minden szolgáltatás** lehetőségre. Az erőforrások listájába írja be a **Log Analytics** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza a **Log Analytics** elemet.  
 2. A Naplóelemzési munkaterület lapon jelölje be a cél munkaterülettől, és válassza a **naplófájl-keresési** csempére. 
 2. A naplófájl-keresési panelen, a lekérdezés mező be a következőt:  
 

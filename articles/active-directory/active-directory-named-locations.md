@@ -1,6 +1,6 @@
 ---
-title: "Az Azure Active Directory helyek nevű |} Microsoft Docs"
-description: "Ismerje meg, mi nevű helyek vannak és konfigurálásuk módját."
+title: "Elnevezett helyek konfigurálása az Azure Active Directoryban |} Microsoft Docs"
+description: "Megtudhatja, hogyan elnevezett helyek konfigurálása."
 services: active-directory
 documentationcenter: 
 author: MarkusVi
@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2018
+ms.date: 03/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: b6f80cde24edcbec68309ba033d4da16ee97b731
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 3b7bd6f4bea111815f647af09ebaa868696b25bc
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/16/2018
 ---
-# <a name="named-locations-in-azure-active-directory"></a>Az Azure Active Directoryban elnevezett helyek
+# <a name="configure-named-locations-in-azure-active-directory"></a>Elnevezett helyek konfigurálása az Azure Active Directoryban
 
 Az elnevezett helyek a címkézés megbízható IP-címtartományok a szervezetében. Az Azure Active Directory környezetében elnevezett helyek használja:
 
@@ -89,22 +89,14 @@ Az elnevezett hely konfigurációs lapján végezheti el a **biztonsági** katti
 
 
 
-## <a name="what-you-should-know"></a>Tudnivalók
-
-**Tömeges frissítés**: elnevezett helyek tömeges frissíti, frissítése vagy létrehozásakor feltölteni, vagy az IP-címtartományai a CSV-fájl letöltése. Feltöltés a fájlban az IP-címtartományok hozzáadása a listához, a lista felülírja helyett.
-
-![A feltöltés és letöltés hivatkozások](./media/active-directory-named-locations/09.png)
-
-
-**Korlátozások**: legfeljebb 60 elnevezett helyek, a hozzájuk rendelt egy IP-címtartomány adhat meg. Ha csak egy elnevezett helyen konfigurálva van, akkor azt legfeljebb 500 IP-címtartományok adhat meg.
-
-
 ## <a name="next-steps"></a>További lépések
 
-További részletek:
+További információkért lásd:
 
-- **Kockázati események**, lásd: [Azure Active Directory kockázati események](active-directory-reporting-risk-events.md).
+- [Feltételes hozzáférés az Azure Active Directoryban](active-directory-conditional-access-azure-portal.md).
 
-- **Feltételes hozzáférés**, lásd: [feltételes hozzáférés az Azure Active Directoryban](active-directory-conditional-access-azure-portal.md).
+- [Azure Active Directory feltételes hozzáférési feltételek helye](active-directory-conditional-access-locations.md)
 
-- **Kockázatos bejelentkezések jelentések**, lásd: [kockázatos bejelentkezések a jelentés az Azure Active Directory portálon](active-directory-reporting-security-risky-sign-ins.md).  
+- [Az Azure Active Directory kockázati események](active-directory-reporting-risk-events.md).
+
+- [Az Azure Active Directory portálon kockázatos bejelentkezések jelentés](active-directory-reporting-security-risky-sign-ins.md).  

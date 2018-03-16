@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/23/2018
 ms.author: mbullwin
-ms.openlocfilehash: 7f3a0a1a22e14f12b86474dd5b1985029074444e
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 2d7405baee84b53311f01e748ca7975147c107d8
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="profile-aspnet-core-azure-linux-web-apps-with-application-insights-profiler"></a>Profil ASP.NET Core Azure Linux-webalkalmazásokban az Application Insights Profilkészítő
 
@@ -144,5 +144,7 @@ A következőhöz hasonló kimenetet fog látni:
 
     ![Nézetben nyomainak](./media/app-insights-profiler-aspnetcore-linux/view-traces.png)
 
-## <a name="report-issues-to-project-github-repository"></a>A projekt Github-tárházban jelentésekkel kapcsolatos problémák
+## <a name="next-steps"></a>További lépések
+Ha egyéni tárolók alkalmazásszolgáltatások által üzemeltetett használ, kövesse az utasításokat a [ szolgáltatásprofil-elemzőben engedélyezése indexelése ASP.NET Core alkalmazás](https://github.com/Microsoft/ApplicationInsights-Profiler-AspNetCore/tree/master/examples/EnableServiceProfilerForContainerApp) App Insights Profilkészítő engedélyezése
+
 Ha bármely problémák vagy a javaslatok, jelentse a github-adattár: [ApplicationInsights-Profiler-AspNetCore: problémák](https://github.com/Microsoft/ApplicationInsights-Profiler-AspNetCore/issues)

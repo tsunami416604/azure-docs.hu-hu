@@ -2,14 +2,11 @@
 
 Az IoT Hub szerializáló ügyfélkódtára egy modell alapján határozza meg az eszköz és az IoT Hub közötti üzenetek formátumát.
 
-<!-- TO DO This needs to be verified when we can access the UI -->
-
-1. Adja hozzá a következő változódeklarációkat az `#include` utasítások után. Cserélje le a helyőrző értékeket `[Device Id]` és `[Device Key]` az eszközt a távoli felügyeleti megoldás irányítópultja feljegyzett értékekkel. Cserélje le az IoT Hub állomásnevet a megoldás irányítópultról használatával `[IoTHub Name]`. Ha például az IoT Hub gazdaneve **contoso.azure-devices.net**, cserélje le az [IoTHub Name] helyőrzőt a **contoso** értékre:
+1. Adja hozzá a következő változódeklarációkat az `#include` utasítások után. Cserélje le a helyőrző értékeket `[Device Id]` és `[Device connection string]` fizikai eszköz feljegyzett értékekkel felvette a távoli figyelési megoldást:
 
     ```c
     static const char* deviceId = "[Device Id]";
-    static const char* connectionString = "HostName=[IoTHub Name].azure-devices.net;DeviceId=[Device Id];SharedAccessKey=[Device Key]";
-    static char propText[1024];
+    static const char* connectionString = "[Device connection string]";
     ```
 
 1. Adja hozzá a következő kódot az eszköz és az IoT Hub kommunikációját lehetővé tévő modell létrehozásához. Ez a modell meghatározza, hogy az eszköz:
@@ -50,6 +47,10 @@ Az IoT Hub szerializáló ügyfélkódtára egy modell alapján határozza meg a
     WITH_DATA(double, humidity),
     WITH_DATA(ascii_char_ptr, humidity_unit),
 
+    /* Manage firmware update process */
+    WITH_DATA(ascii_char_ptr, new_firmware_URI),
+    WITH_DATA(ascii_char_ptr, new_firmware_version),
+
     /* Device twin properties */
     WITH_REPORTED_PROPERTY(ascii_char_ptr, Protocol),
     WITH_REPORTED_PROPERTY(ascii_char_ptr, SupportedMethods),
@@ -65,7 +66,7 @@ Az IoT Hub szerializáló ügyfélkódtára egy modell alapján határozza meg a
 
     /* Direct methods implemented by the device */
     WITH_METHOD(Reboot),
-    WITH_METHOD(FirmwareUpdate),
+    WITH_METHOD(FirmwareUpdate, ascii_char_ptr, Firmware, ascii_char_ptr, FirmwareUri),
     WITH_METHOD(EmergencyValveRelease),
     WITH_METHOD(IncreasePressure)
     );
@@ -77,7 +78,65 @@ Az IoT Hub szerializáló ügyfélkódtára egy modell alapján határozza meg a
 
 Most adja hozzá a kódot, amely megvalósítja a modellben meghatározott viselkedést.
 
-1. Adja hozzá a következő függvényeket, amelyek a megoldás irányítópultján beállított kívánt tulajdonságokat kezelik. A modellben a következő kívánt tulajdonságok vannak meghatározva:
+1. Adja hozzá a következő visszahíváskezelőt, amely akkor fut, ha az eszköz új jelentett tulajdonságértékeket küldött az előre konfigurált megoldásnak:
+
+    ```c
+    /* Callback after sending reported properties */
+    void deviceTwinCallback(int status_code, void* userContextCallback)
+    {
+      (void)(userContextCallback);
+      printf("IoTHub: reported properties delivered with status_code = %u\n", status_code);
+    }
+    ```
+
+1. Adja hozzá a következő függvény, amely egy belső vezérlőprogram frissítési folyamatot:
+
+    ```c
+    static int do_firmware_update(void *param)
+    {
+      Chiller *chiller = (Chiller *)param;
+      printf("do_firmware_update('URI: %s, Version: %s')\r\n", chiller->new_firmware_URI, chiller->new_firmware_version);
+
+      printf("Simulating download phase...\r\n");
+      chiller->FirmwareUpdateStatus = "downloading";
+      /* Send reported properties to IoT Hub */
+      if (IoTHubDeviceTwin_SendReportedStateChiller(chiller, deviceTwinCallback, NULL) != IOTHUB_CLIENT_OK)
+      {
+        printf("Failed sending serialized reported state\r\n");
+      }
+      ThreadAPI_Sleep(5000);
+
+      printf("Simulating applying phase...\r\n");
+      chiller->FirmwareUpdateStatus = "applying";
+      /* Send reported properties to IoT Hub */
+      if (IoTHubDeviceTwin_SendReportedStateChiller(chiller, deviceTwinCallback, NULL) != IOTHUB_CLIENT_OK)
+      {
+        printf("Failed sending serialized reported state\r\n");
+      }
+      ThreadAPI_Sleep(5000);
+
+      printf("Simulating reboot phase...\r\n");
+      chiller->FirmwareUpdateStatus = "rebooting";
+      /* Send reported properties to IoT Hub */
+      if (IoTHubDeviceTwin_SendReportedStateChiller(chiller, deviceTwinCallback, NULL) != IOTHUB_CLIENT_OK)
+      {
+        printf("Failed sending serialized reported state\r\n");
+      }
+      ThreadAPI_Sleep(5000);
+
+      chiller->Firmware = _strdup(chiller->new_firmware_version);
+      chiller->FirmwareUpdateStatus = "waiting";
+      /* Send reported properties to IoT Hub */
+      if (IoTHubDeviceTwin_SendReportedStateChiller(chiller, deviceTwinCallback, NULL) != IOTHUB_CLIENT_OK)
+      {
+        printf("Failed sending serialized reported state\r\n");
+      }
+
+      return 0;
+    }
+    ```
+
+1. Adja hozzá a következő függvény, amely a kívánt tulajdonsága nincs beállítva a megoldás irányítópultjának kezeli. A modellben a következő kívánt tulajdonságok vannak meghatározva:
 
     ```c
     void onDesiredInterval(void* argument)
@@ -101,12 +160,32 @@ Most adja hozzá a kódot, amely megvalósítja a modellben meghatározott visel
       return result;
     }
 
-    METHODRETURN_HANDLE FirmwareUpdate(Chiller* chiller)
+    METHODRETURN_HANDLE FirmwareUpdate(Chiller* chiller, ascii_char_ptr Firmware, ascii_char_ptr FirmwareUri)
     {
-      (void)(chiller);
-
-      METHODRETURN_HANDLE result = MethodReturn_Create(201, "\"Updating Firmware\"");
-      printf("Recieved firmware update request\r\n");
+      printf("Recieved firmware update request request\r\n");
+      METHODRETURN_HANDLE result = NULL;
+      if (chiller->FirmwareUpdateStatus != "waiting")
+      {
+        LogError("Attempting to initiate a firmware update out of order");
+        result = MethodReturn_Create(400, "\"Attempting to initiate a firmware update out of order\"");
+      }
+      else
+      {
+        chiller->new_firmware_version = _strdup(Firmware);
+        chiller->new_firmware_URI = _strdup(FirmwareUri);
+        THREAD_HANDLE thread_apply;
+        THREADAPI_RESULT t_result = ThreadAPI_Create(&thread_apply, do_firmware_update, chiller);
+        if (t_result == THREADAPI_OK)
+        {
+          result = MethodReturn_Create(201, "\"Starting firmware update thread\"");
+        }
+        else
+        {
+          LogError("Failed to start firmware update thread");
+          result = MethodReturn_Create(500, "\"Failed to start firmware update thread\"");
+        }
+      }
+      
       return result;
     }
 
@@ -181,17 +260,6 @@ Most adja hozzá a kódot, amely megvalósítja a modellben meghatározott visel
     }
     ```
 
-1. Adja hozzá a következő visszahíváskezelőt, amely akkor fut, ha az eszköz új jelentett tulajdonságértékeket küldött az előre konfigurált megoldásnak:
-
-    ```c
-    /* Callback after sending reported properties */
-    void deviceTwinCallback(int status_code, void* userContextCallback)
-    {
-      (void)(userContextCallback);
-      printf("IoTHub: reported properties delivered with status_code = %u\n", status_code);
-    }
-    ```
-
 1. Adja hozzá a következő függvényt, amely összekapcsolja az eszközt az előre konfigurált megoldással a felhőben, és adatcserét végez. Ez a függvény a következő lépéseket hajtja végre:
 
     - Inicializálja a platformot.
@@ -199,7 +267,7 @@ Most adja hozzá a kódot, amely megvalósítja a modellben meghatározott visel
     - Inicializálja az ügyfelet az eszközkapcsolati karakterlánccal.
     - Hozzon létre egy példányát a **hűtő** modell.
     - Létrehozza és elküldi a jelentett tulajdonságértékeket.
-    - A telemetriai adatokat küldhet, ötpercenként hurkot hozna létre.
+    - Minden ötödik másodperc, amíg a belső vezérlőprogram-frissítés állapota telemetriai adatokat küldhet hurkot hoz létre **Várakozás**.
     - Deinicializálja az összes erőforrást.
 
     ```c
@@ -207,27 +275,27 @@ Most adja hozzá a kódot, amely megvalósítja a modellben meghatározott visel
     {
       if (platform_init() != 0)
       {
-        printf("Failed to initialize the platform.\n");
+        printf("Failed to initialize the platform.\r\n");
       }
       else
       {
         if (SERIALIZER_REGISTER_NAMESPACE(Contoso) == NULL)
         {
-          printf("Unable to SERIALIZER_REGISTER_NAMESPACE\n");
+          printf("Unable to SERIALIZER_REGISTER_NAMESPACE\r\n");
         }
         else
         {
           IOTHUB_CLIENT_HANDLE iotHubClientHandle = IoTHubClient_CreateFromConnectionString(connectionString, MQTT_Protocol);
           if (iotHubClientHandle == NULL)
           {
-            printf("Failure in IoTHubClient_CreateFromConnectionString\n");
+            printf("Failure in IoTHubClient_CreateFromConnectionString\r\n");
           }
           else
           {
             Chiller* chiller = IoTHubDeviceTwin_CreateChiller(iotHubClientHandle);
             if (chiller == NULL)
             {
-              printf("Failure in IoTHubDeviceTwin_CreateChiller\n");
+              printf("Failure in IoTHubDeviceTwin_CreateChiller\r\n");
             }
             else
             {
@@ -251,7 +319,7 @@ Most adja hozzá a kódot, amely megvalósítja a modellben meghatározott visel
               chiller->Telemetry.PressureSchema.MessageSchema.Fields = "{\"pressure\":\"Double\",\"pressure_unit\":\"Text\"}";
               chiller->Type = "Chiller";
               chiller->Firmware = "1.0.0";
-              chiller->FirmwareUpdateStatus = "";
+              chiller->FirmwareUpdateStatus = "waiting";
               chiller->Location = "Building 44";
               chiller->Latitiude = 47.638928;
               chiller->Longitude = -122.13476;
@@ -259,54 +327,58 @@ Most adja hozzá a kódot, amely megvalósítja a modellben meghatározott visel
               /* Send reported properties to IoT Hub */
               if (IoTHubDeviceTwin_SendReportedStateChiller(chiller, deviceTwinCallback, NULL) != IOTHUB_CLIENT_OK)
               {
-                printf("Failed sending serialized reported state\n");
+                printf("Failed sending serialized reported state\r\n");
               }
               else
               {
                 /* Send telemetry */
-                chiller->temperature = 50;
                 chiller->temperature_unit = "F";
-                chiller->pressure= 55;
                 chiller->pressure_unit = "psig";
-                chiller->humidity = 50;
                 chiller->humidity_unit = "%";
 
+                srand((unsigned int)time(NULL));
                 while (1)
                 {
+                  chiller->temperature = 50 + ((rand() % 10) - 5);
+                  chiller->pressure = 55 + ((rand() % 10) - 5);
+                  chiller->humidity = 30 + ((rand() % 10) - 5);
                   unsigned char*buffer;
                   size_t bufferSize;
 
-                  (void)printf("Sending sensor value Temperature = %f %s,\n", chiller->temperature, chiller->temperature_unit);
+                  if (chiller->FirmwareUpdateStatus == "waiting")
+                  {
+                    (void)printf("Sending sensor value Temperature = %f %s,\r\n", chiller->temperature, chiller->temperature_unit);
 
-                  if (SERIALIZE(&buffer, &bufferSize, chiller->temperature, chiller->temperature_unit) != CODEFIRST_OK)
-                  {
-                    (void)printf("Failed sending sensor value\r\n");
-                  }
-                  else
-                  {
-                    sendMessage(iotHubClientHandle, buffer, bufferSize, chiller->Telemetry.TemperatureSchema.MessageSchema.Name);
-                  }
+                    if (SERIALIZE(&buffer, &bufferSize, chiller->temperature, chiller->temperature_unit) != CODEFIRST_OK)
+                    {
+                      (void)printf("Failed sending sensor value\r\n");
+                    }
+                    else
+                    {
+                      sendMessage(iotHubClientHandle, buffer, bufferSize, chiller->Telemetry.TemperatureSchema.MessageSchema.Name);
+                    }
 
-                  (void)printf("Sending sensor value Humidity = %f %s,\n", chiller->humidity, chiller->humidity_unit);
+                    (void)printf("Sending sensor value Humidity = %f %s,\r\n", chiller->humidity, chiller->humidity_unit);
 
-                  if (SERIALIZE(&buffer, &bufferSize, chiller->humidity, chiller->humidity_unit) != CODEFIRST_OK)
-                  {
-                    (void)printf("Failed sending sensor value\r\n");
-                  }
-                  else
-                  {
-                    sendMessage(iotHubClientHandle, buffer, bufferSize, chiller->Telemetry.HumiditySchema.MessageSchema.Name);
-                  }
+                    if (SERIALIZE(&buffer, &bufferSize, chiller->humidity, chiller->humidity_unit) != CODEFIRST_OK)
+                    {
+                      (void)printf("Failed sending sensor value\r\n");
+                    }
+                    else
+                    {
+                      sendMessage(iotHubClientHandle, buffer, bufferSize, chiller->Telemetry.HumiditySchema.MessageSchema.Name);
+                    }
 
-                  (void)printf("Sending sensor value Pressure = %f %s,\n", chiller->pressure, chiller->pressure_unit);
+                    (void)printf("Sending sensor value Pressure = %f %s,\r\n", chiller->pressure, chiller->pressure_unit);
 
-                  if (SERIALIZE(&buffer, &bufferSize, chiller->pressure, chiller->pressure_unit) != CODEFIRST_OK)
-                  {
-                    (void)printf("Failed sending sensor value\r\n");
-                  }
-                  else
-                  {
-                    sendMessage(iotHubClientHandle, buffer, bufferSize, chiller->Telemetry.PressureSchema.MessageSchema.Name);
+                    if (SERIALIZE(&buffer, &bufferSize, chiller->pressure, chiller->pressure_unit) != CODEFIRST_OK)
+                    {
+                      (void)printf("Failed sending sensor value\r\n");
+                    }
+                    else
+                    {
+                      sendMessage(iotHubClientHandle, buffer, bufferSize, chiller->Telemetry.PressureSchema.MessageSchema.Name);
+                    }
                   }
 
                   ThreadAPI_Sleep(5000);
@@ -314,9 +386,9 @@ Most adja hozzá a kódot, amely megvalósítja a modellben meghatározott visel
 
                 IoTHubDeviceTwin_DestroyChiller(chiller);
               }
-            }
-            IoTHubClient_Destroy(iotHubClientHandle);
           }
+            IoTHubClient_Destroy(iotHubClientHandle);
+        }
           serializer_deinit();
         }
       }

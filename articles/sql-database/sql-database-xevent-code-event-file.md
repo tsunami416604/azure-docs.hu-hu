@@ -2,25 +2,18 @@
 title: "SQL-adatbázis XEvent Eseményfájlt kód |} Microsoft Docs"
 description: "PowerShell és a Transact-SQL biztosít egy kétfázisú példakód azt mutatja be az esemény cél az az Azure SQL Database-kiterjesztett esemény. Az Azure Storage ebben a forgatókönyvben egy kötelező részét képezi."
 services: sql-database
-documentationcenter: 
 author: MightyPen
-manager: jhubbard
-editor: 
-tags: 
-ms.assetid: bbb10ecc-739f-4159-b844-12b4be161231
+manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
-ms.workload: Inactive
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/05/2017
 ms.author: genemi
-ms.openlocfilehash: abf660e3fafd1a5020cdf9a6beb5b73252b72cfc
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 630e0ca84479757d3bb4397aa63ee8a440e69427
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="event-file-target-code-for-extended-events-in-sql-database"></a>Fájl cél eseménykód kiterjesztett események az SQL-adatbázis
 
@@ -254,7 +247,7 @@ A PowerShell parancsfájl néhány névvel ellátott értékek nyomtatva ért v�
 > A SAS-kulcs értékét a fenti PowerShell-parancsfájl által generált kezdődhet a "?" (kérdőjel). Ha a következő T-SQL-parancsfájlt az SAS-kulcsot használ, akkor meg kell *távolítsa el a bevezető "?"* . Ellenkező esetben a próbálkozások biztonsági blokkolhatja.
 
 
-### <a name="transact-sql-code"></a>Transact-SQL-kódot
+### <a name="transact-sql-code"></a>Transact-SQL code
 
 ```sql
 ---- TODO: First, run the earlier PowerShell portion of this two-part code sample.
@@ -531,7 +524,7 @@ Tegyük fel, hogy szeretné futtatni a Transact-SQL előző példa a Microsoft S
 Fiókok és az Azure Storage szolgáltatást a tárolók kapcsolatos további információkért lásd:
 
 * [A .NET-Blob-tároló használata](../storage/blobs/storage-dotnet-how-to-use-blobs.md)
-* [Elnevezésekor és a hivatkozó, tárolók, Blobok és metaadatok](http://msdn.microsoft.com/library/azure/dd135715.aspx)
+* [Tárolók, blobok és metaadatok elnevezése és hivatkozása](http://msdn.microsoft.com/library/azure/dd135715.aspx)
 * [A gyökérszintű tároló használata](http://msdn.microsoft.com/library/azure/ee395424.aspx)
 * [1. lecke: Egy tárolt hozzáférési házirend és a közös hozzáférésű jogosultságkód létrehozása egy Azure-tárolót a](http://msdn.microsoft.com/library/dn466430.aspx)
   * [2. lecke: SQL Server hitelesítő adatok használatával a közös hozzáférésű jogosultságkód létrehozása](http://msdn.microsoft.com/library/dn466435.aspx)

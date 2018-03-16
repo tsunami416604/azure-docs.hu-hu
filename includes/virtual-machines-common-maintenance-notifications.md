@@ -1,4 +1,19 @@
-
+---
+title: "fájl belefoglalása"
+description: "fájl belefoglalása"
+services: virtual-machines
+author: zivraf
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 03/09/2018
+ms.author: zivr
+ms.custom: include file
+ms.openlocfilehash: 9666a8fde808981dd798ff712b96a7c620c9003a
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 03/16/2018
+---
 ## <a name="view-vms-scheduled-for-maintenance-in-the-portal"></a>Ütemezett karbantartás miatt a portál nézet virtuális gépek
 
 A tervezett karbantartások wave ütemezve van, és a rendszer értesítéseket küld, ha a közelgő karbantartásokról wave által befolyásolt virtuális gépek listájának figyelheti meg. 
@@ -17,10 +32,10 @@ Az Azure-portálon, és keresse meg a virtuális gépek karbantartás ütemezve.
       
       | Érték | Leírás |
       |-------|-------------|
-      | Az első lépések | A virtuális gép az önkiszolgáló karbantartási időszak, amely lehetővé teszi, hogy a karbantartási kezdeményezni a saját maga. Lásd az alábbi karbantartási indításához a virtuális gépen | 
-      | Ütemezett | A virtuális gép ütemezett karbantartási nincs lehetőség, hogy a karbantartási kezdeményezni. Ebben a nézetben az automatikus ütemezett ablak kiválasztásával vagy a virtuális Gépre kattintva ismerje meg a karbantartási időszak | 
-      | Befejezve | Sikeresen kezdeményezett és karbantartása befejeződött a virtuális gépen. | 
-      | Kihagyva| Kijelölt karbantartási nem sikerrel kezdeményezéséhez. Csak akkor használhatják az önkiszolgáló karbantartási lehetőséget. A virtuális Gépet újra kell majd indítani az Azure-ban az ütemezett karbantartási fázisban kell. | 
+      | Az első lépések | A virtuális gép önkiszolgáló karbantartási időszakban van, amelyben Ön is kezdeményezheti a karbantartást. Lásd az alábbi karbantartási indításához a virtuális gépen | 
+      | Ütemezett | A virtuális gép karbantartásra van ütemezve, tehát Ön nem kezdeményezheti a karbantartást. Ebben a nézetben az automatikus ütemezett ablak kiválasztásával vagy a virtuális Gépre kattintva ismerje meg a karbantartási időszak | 
+      | Befejeződött | Sikeresen kezdeményezett és karbantartása befejeződött a virtuális gépen. | 
+      | Kihagyva| Ön kiválasztotta a karbantartás indítását, de a művelet nem sikerült. Csak akkor használhatják az önkiszolgáló karbantartási lehetőséget. A virtuális Gépet újra kell majd indítani az Azure-ban az ütemezett karbantartási fázisban kell. | 
 
    **Karbantartási proaktív** -látható, az időszak, amikor karbantartási önálló elindíthatja a virtuális gépeken.
    

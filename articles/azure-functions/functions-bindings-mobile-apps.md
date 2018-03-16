@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: glenga
-ms.openlocfilehash: a1e4f15747031ba75ba5ae589557750919a71853
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: c5fb7bdd88691c9aeab6b348507901c34502b28b
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="mobile-apps-bindings-for-azure-functions"></a>Az Azure Functions Mobile Apps kötései 
 
@@ -29,6 +29,12 @@ A Mobile Apps kötések lehetővé teszik, hogy olvassa és frissítse a mobilal
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
+## <a name="packages"></a>Csomagok
+
+A Mobile Apps kötések találhatók a [Microsoft.Azure.WebJobs.Extensions.MobileApps](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.MobileApps) NuGet-csomagot. A csomag forráskódja van a [azure-webjobs-sdk-bővítmények](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/) GitHub-tárházban.
+
+[!INCLUDE [functions-package](../../includes/functions-package.md)]
+
 ## <a name="input"></a>Input (Bemenet)
 
 A Mobile Apps bemeneti kötése tölt be egy olyan rekordot egy mobil table végpont a, és továbbadja azt a függvényt. A C# és F # függvényekben a rekord módosításai rendszer automatikusan küldi vissza a tábla amikor sikeresen kilép, a függvény.
@@ -37,7 +43,7 @@ A Mobile Apps bemeneti kötése tölt be egy olyan rekordot egy mobil table vég
 
 Tekintse meg a nyelvspecifikus példát:
 
-* [C# parancsfájl (.csx)](#input---c-script-example)
+* [C# script (.csx)](#input---c-script-example)
 * [JavaScript](#input---javascript-example)
 
 ### <a name="input---c-script-example"></a>Bemenet – C# parancsfájl – példa
@@ -128,7 +134,7 @@ module.exports = function (context, myQueueItem) {
 
 ## <a name="input---attributes"></a>Bemenet – attribútumok
 
-A [C# osztálykönyvtárakhoz](functions-dotnet-class-library.md), használja a [MobileTable](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs) attribútumot, amelyet a NuGet-csomag [Microsoft.Azure.WebJobs.Extensions.MobileApps](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.MobileApps).
+A [C# osztálykönyvtárakhoz](functions-dotnet-class-library.md), használja a [MobileTable](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs) attribútum.
 
 Konfigurálható attribútumtulajdonságok kapcsolatos információkért lásd: [a következő konfigurációs szakasz](#input---configuration).
 
@@ -138,12 +144,12 @@ Az alábbi táblázat ismerteti a beállított kötés konfigurációs tulajdons
 
 |Function.JSON tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-| **típusa**|| "MobileTable" értékre kell állítani|
-| **iránya**||"A" értékre kell állítani|
-| **név**|| Függvényaláíráshoz a bemeneti paraméter neve.|
-|**Táblanév** |**Táblanév**|A mobilalkalmazás adatok tábla neve|
-| **azonosítója**| **Azonosítója** | A beolvasandó bejegyzés azonosítója. Lehetnek statikusak vagy az eseményindító, amely hívja meg a függvény alapján. Például, ha használja a várólista eseményindító a függvény, majd `"id": "{queueTrigger}"` az üzenetsorban lévő üzenetet karakterlánc értékét használja a rekord azonosító beolvasása.|
-|**kapcsolat**|**Kapcsolat**|A mobilalkalmazás URL-címet tartalmazó alkalmazásbeállítás neve. A funkció URL-címet a mobilalkalmazás elleni szükséges REST-műveletek összeállításához. Hozzon létre egy Alkalmazásbeállítás a függvény alkalmazásban, amelyet a mobilalkalmazás URL-címet tartalmaz, majd adja meg az Alkalmazásbeállítás a nevét a `connection` tulajdonságot a bemeneti kötése. Az URL-cím a következőképpen néz `http://<appname>.azurewebsites.net`.
+| **Típusa**|| "MobileTable" értékre kell állítani|
+| **direction**||"A" értékre kell állítani|
+| **name**|| Függvényaláíráshoz a bemeneti paraméter neve.|
+|**Táblanév** |**TableName**|A mobilalkalmazás adatok tábla neve|
+| **id**| **Azonosító** | A beolvasandó bejegyzés azonosítója. Lehetnek statikusak vagy az eseményindító, amely hívja meg a függvény alapján. Például, ha használja a várólista eseményindító a függvény, majd `"id": "{queueTrigger}"` az üzenetsorban lévő üzenetet karakterlánc értékét használja a rekord azonosító beolvasása.|
+|**connection**|**Kapcsolat**|A mobilalkalmazás URL-címet tartalmazó alkalmazásbeállítás neve. A funkció URL-címet a mobilalkalmazás elleni szükséges REST-műveletek összeállításához. Hozzon létre egy Alkalmazásbeállítás a függvény alkalmazásban, amelyet a mobilalkalmazás URL-címet tartalmaz, majd adja meg az Alkalmazásbeállítás a nevét a `connection` tulajdonságot a bemeneti kötése. Az URL-cím a következőképpen néz `http://<appname>.azurewebsites.net`.
 |**apiKey**|**ApiKey**|A mobilalkalmazás API-kulcs alkalmazásbeállítás neve. Adja meg az API-kulcs Ha Ön [valósítja meg az API-kulcs a Node.js mobilalkalmazásban](https://github.com/Azure/azure-mobile-apps-node/tree/master/samples/api-key), vagy [valósítja meg az API-kulcs a .NET mobilalkalmazásban](https://github.com/Azure/azure-mobile-apps-net-server/wiki/Implementing-Application-Key). Adja meg a kulcsot, hozzon létre egy Alkalmazásbeállítás az API-kulcsot tartalmazó függvény alkalmazásban, és vegye fel a `apiKey` tulajdonságot a bemeneti kötése az Alkalmazásbeállítás nevét. |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
@@ -168,7 +174,7 @@ A Mobile Apps kimeneti kötése egy új rekordot írni a Mobile Apps tábla hasz
 Tekintse meg a nyelvspecifikus példát:
 
 * [C#](#output---c-example)
-* [C# parancsfájl (.csx)](#output---c-script-example)
+* [C# script (.csx)](#output---c-script-example)
 * [JavaScript](#output---javascript-example)
 
 ### <a name="output---c-example"></a>Kimeneti - C# – példa
@@ -274,7 +280,7 @@ module.exports = function (context, myQueueItem) {
 
 ## <a name="output---attributes"></a>Kimeneti - attribútumok
 
-A [C# osztálykönyvtárakhoz](functions-dotnet-class-library.md), használja a [MobileTable](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs) attribútumot, amelyet a NuGet-csomag [Microsoft.Azure.WebJobs.Extensions.MobileApps](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.MobileApps).
+A [C# osztálykönyvtárakhoz](functions-dotnet-class-library.md), használja a [MobileTable](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs) attribútum.
 
 Konfigurálható attribútumtulajdonságok kapcsolatos információkért lásd: [kimeneti - konfigurációs](#output---configuration). Íme egy `MobileTable` metódus-aláírás attribútum példát:
 
@@ -297,11 +303,11 @@ Az alábbi táblázat ismerteti a beállított kötés konfigurációs tulajdons
 
 |Function.JSON tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-| **típusa**|| "MobileTable" értékre kell állítani|
-| **iránya**||"Ki" értékre kell állítani|
-| **név**|| A kimeneti paraméter függvényaláíráshoz a neve.|
-|**Táblanév** |**Táblanév**|A mobilalkalmazás adatok tábla neve|
-|**kapcsolat**|**MobileAppUriSetting**|A mobilalkalmazás URL-címet tartalmazó alkalmazásbeállítás neve. A funkció URL-címet a mobilalkalmazás elleni szükséges REST-műveletek összeállításához. Hozzon létre egy Alkalmazásbeállítás a függvény alkalmazásban, amelyet a mobilalkalmazás URL-címet tartalmaz, majd adja meg az Alkalmazásbeállítás a nevét a `connection` tulajdonságot a bemeneti kötése. Az URL-cím a következőképpen néz `http://<appname>.azurewebsites.net`.
+| **Típusa**|| "MobileTable" értékre kell állítani|
+| **direction**||"Ki" értékre kell állítani|
+| **name**|| A kimeneti paraméter függvényaláíráshoz a neve.|
+|**Táblanév** |**TableName**|A mobilalkalmazás adatok tábla neve|
+|**connection**|**MobileAppUriSetting**|A mobilalkalmazás URL-címet tartalmazó alkalmazásbeállítás neve. A funkció URL-címet a mobilalkalmazás elleni szükséges REST-műveletek összeállításához. Hozzon létre egy Alkalmazásbeállítás a függvény alkalmazásban, amelyet a mobilalkalmazás URL-címet tartalmaz, majd adja meg az Alkalmazásbeállítás a nevét a `connection` tulajdonságot a bemeneti kötése. Az URL-cím a következőképpen néz `http://<appname>.azurewebsites.net`.
 |**apiKey**|**ApiKeySetting**|A mobilalkalmazás API-kulcs alkalmazásbeállítás neve. Adja meg az API-kulcs Ha Ön [valósít meg API-kulcs a Node.js mobile Apps-háttéralkalmazás](https://github.com/Azure/azure-mobile-apps-node/tree/master/samples/api-key), vagy [valósít meg API-kulcs a .NET-mobil háttéralkalmazás](https://github.com/Azure/azure-mobile-apps-net-server/wiki/Implementing-Application-Key). Adja meg a kulcsot, hozzon létre egy Alkalmazásbeállítás az API-kulcsot tartalmazó függvény alkalmazásban, és vegye fel a `apiKey` tulajdonságot a bemeneti kötése az Alkalmazásbeállítás nevét. |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
@@ -313,9 +319,9 @@ Az alábbi táblázat ismerteti a beállított kötés konfigurációs tulajdons
 
 A C# parancsfájl funkciók, használja a megnevezett kimeneti paramétert `out object` a kimeneti rekord eléréséhez. A C# osztálykönyvtárakhoz a `MobileTable` attribútum is használható a következő típusok:
 
-* `ICollector<T>`vagy `IAsyncCollector<T>`, ahol `T` vagy `JObject` vagy rendelkező bármilyen olyan `public string Id` tulajdonság.
+* `ICollector<T>` vagy `IAsyncCollector<T>`, ahol `T` vagy `JObject` vagy rendelkező bármilyen olyan `public string Id` tulajdonság.
 * `out JObject`
-* `out T`vagy `out T[]`, ahol `T` rendelkező bármilyen olyan `public string Id` tulajdonság.
+* `out T` vagy `out T[]`, ahol `T` rendelkező bármilyen olyan `public string Id` tulajdonság.
 
 A Node.js funkciók használata `context.bindings.<name>` a kimeneti rekord eléréséhez.
 

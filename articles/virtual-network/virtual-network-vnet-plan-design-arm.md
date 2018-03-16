@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/08/2016
 ms.author: jdial
-ms.openlocfilehash: ecdc3a847821fd83718f9cfc42308667460feabc
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: f11b2d1b4061b395918a274c4c53688bf34fbae1
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="plan-and-design-azure-virtual-networks"></a>Azure virtuális hálózatok megtervezése
 Létre virtuális hálózatok kísérletezhet elég egyszerűen, de valószínűleg több Vnetek adott idő alatt a szervezet a termelési igényeinek támogatásához telepíteni fogja. Az egyes tervezési és kialakítási lesz Vnetek telepítéséhez, és csatlakozzon a hatékonyabb szükséges erőforrások. Ha nem ismeri a Vneteket, javasoljuk, hogy Ön [Vnetek megismerése](virtual-networks-overview.md) és [telepítése](quick-create-portal.md) egy, a folytatás előtt.
@@ -248,7 +248,7 @@ Az alábbi követelmények kapcsolódó hozzáférés-vezérlés:
 Ezek a követelmények alapján sikerült felhasználókat adja hozzá a hálózati csapat a beépített **hálózat közreműködő** minden előfizetésben; szerepkör, és hozzon létre egy egyéni biztonsági szerepkört minden előfizetésben jogok jogosultságot ad az alkalmazásfejlesztők virtuális gépek hozzáadása meglévő alhálózatokat.
 
 ## <a name="next-steps"></a>További lépések
-* [Telepíthet egy virtuális hálózatot](virtual-networks-create-vnet-arm-template-click.md) eset alapján.
+* [Telepíthet egy virtuális hálózatot](quick-create-portal.md).
 * Megértéséhez hogyan [terheléselosztásához](../load-balancer/load-balancer-overview.md) IaaS virtuális gépeket és [kezelése az útválasztást a több Azure-régiók](../traffic-manager/traffic-manager-overview.md).
-* További információ [NSG-ket és a tervezés és kialakítás](virtual-networks-nsg.md) egy NSG-megoldáshoz.
+* További információ [hálózati biztonsági csoportok](security-overview.md) egy NSG-megoldáshoz.
 * További információ a [létesítmények közötti és VNet kapcsolati lehetőségek](../vpn-gateway/vpn-gateway-about-vpngateways.md#s2smulti).

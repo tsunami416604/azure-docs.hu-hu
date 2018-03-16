@@ -3,7 +3,7 @@ title: "A SharePoint Server-összekötő használata a Logic Apps |} Microsoft D
 description: "Az első lépéseiben a Logic Apps alkalmazásait a SharePoint Server-összekötő"
 services: logic-apps
 documentationcenter: 
-author: MandiOhlinger
+author: ecfan
 manager: anneta
 editor: 
 tags: connectors
@@ -14,12 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/18/2016
-ms.author: mandia; ladocs
-ms.openlocfilehash: da863e0249cb46e4e569812a851f3199d57b2107
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.author: estfan; ladocs
+ms.openlocfilehash: d342b3c4f84c5dab212b9327d6a72759934d0ae5
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="get-started-with-the-sharepoint-connector"></a>A SharePoint-összekötő az első lépései
 A SharePoint-összekötő segítségével egy SharePoint-webhelyre listák használata.
@@ -33,9 +33,9 @@ A SharePoint-összekötő használatához először létre kell hoznia egy **kap
 | --- | --- | --- |
 | Jogkivonat |Igen |Adja meg a SharePoint rendszerbeli hitelesítő adatokat |
 
-Csatlakozni **SharePoint**, adja meg az identitás (felhasználónév és jelszó, intelligens kártyához tartozó hitelesítő adatok, stb.) a SharePoint. Amennyiben Ön már hitelesítve, folytassa a SharePoint-összekötő használatához a Logic Apps alkalmazást a. 
+Csatlakozni **SharePoint**, adja meg az identitás (felhasználónév és jelszó, intelligens kártyához tartozó hitelesítő adatok, és így tovább). Ha már hitelesítése megtörtént, a SharePoint-összekötő használatához a Logic Apps alkalmazást a lépne. 
 
-A Logic Apps alkalmazást designer, a következő lépések segítségével jelentkezzen be a SharePoint, a VPN-kapcsolat létrehozásához **kapcsolat** használható a Logic Apps alkalmazást:
+Az a logikai alkalmazás designer, a következő lépésekkel jelentkezzen be, és hozzon létre a **kapcsolat** használható a Logic Apps alkalmazást:
 
 1. A keresőmezőbe írja be a SharePoint, és várja meg, a Keresés a SharePoint összes bejegyzés a nevét adja vissza:   
    ![A SharePoint konfigurálása][1]  
@@ -44,10 +44,10 @@ A Logic Apps alkalmazást designer, a következő lépések segítségével jele
    ![A SharePoint konfigurálása][2]    
 4. Jelentkezzen be a SharePoint való hitelesítéshez szükséges a SharePoint hitelesítő adatok megadása   
    ![A SharePoint konfigurálása][3]     
-5. A hitelesítés befejezése után meg fogja átirányítani a Logic Apps alkalmazást úgy konfigurálja a SharePoint befejezéséhez **fájl létrehozásának** párbeszédpanel.          
+5. Hitelesítés befejezése után a program átirányítja a logikai alkalmazáshoz, konfigurálásával SharePoint befejezéséhez **fájl létrehozásának** párbeszédpanel.          
    ![A SharePoint konfigurálása][4]  
 6. Más eseményindítók és műveletek végre kell hajtania a Logic Apps alkalmazást, majd adja hozzá.   
-7. Mentse a munkáját kiválasztásával **mentése** fenti menüsávjában.  
+7. Mentse a munkáját kiválasztásával **mentése** (tetejénél) menüben.
 
 ## <a name="connector-specific-details"></a>Összekötő-specifikus részletei
 

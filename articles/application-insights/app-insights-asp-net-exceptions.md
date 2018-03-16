@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: mbullwin
-ms.openlocfilehash: d6a0b945bad36842142d16a4840c9c3d69e1564e
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: ee04fc3338dec7893f9f33322bd6b9af932199e7
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="diagnose-exceptions-in-your-web-apps-with-application-insights"></a>Kivételek az Application insights szolgáltatással a webalkalmazások diagnosztizálásához
 Az élő webalkalmazását kivételek által jelentett [Application Insights](app-insights-overview.md). Sikertelen kérelmek hozhatók kivételeket és az ügyfél és a kiszolgáló, az eseményeket, így gyorsan felderítheti az az oka.
@@ -32,8 +32,8 @@ Az élő webalkalmazását kivételek által jelentett [Application Insights](ap
 * Egyes alkalmazás-keretrendszerbeli vagy az egyes beállítások néhány további lépések elvégzésével további kivételeket kell:
   * [Web Forms keretrendszerre](#web-forms)
   * [MVC](#mvc)
-  * [Webes API-1.*](#web-api-1x)
-  * [Webes API-k 2.*](#web-api-2x)
+  * [Web API 1.*](#web-api-1x)
+  * [Web API 2.*](#web-api-2x)
   * [WCF](#wcf)
 
 ## <a name="diagnosing-exceptions-using-visual-studio"></a>Visual Studio használatával kivételek diagnosztizálásáról
@@ -102,7 +102,7 @@ Szolgáltatáskérés részleteinek nem tartalmazza az alkalmazást a POST hív�
 
 ![Részletezés](./media/app-insights-asp-net-exceptions/060-req-related.png)
 
-## <a name="exceptions"></a>Kivételeket és a kapcsolódó diagnosztikai adatokat rögzítése
+## <a name="exceptions"></a> Kivételeket és a kapcsolódó diagnosztikai adatokat rögzítése
 Először nem jelenik meg a portálon a kivételeket, amelyek az alkalmazás hibákhoz vezethet. Látni fogja, a böngésző kivételek (használata a [JavaScript SDK](app-insights-javascript.md) a weblapok). De a legtöbb kivételek az IIS által észlelt, és el kell írni a kód azok bit.
 
 A következőket teheti:
@@ -113,8 +113,7 @@ A következőket teheti:
 ## <a name="reporting-exceptions-explicitly"></a>Explicit módon Reporting kivételek
 A legegyszerűbb módja TrackException() hívásakor be egy kivételkezelőbe.
 
-JavaScript
-
+```javascript
     try
     { ...
     }
@@ -124,9 +123,9 @@ JavaScript
         {Game: currentGame.Name,
          State: currentGame.State.ToString()});
     }
+```
 
-C#
-
+```csharp
     var telemetry = new TelemetryClient();
     ...
     try
@@ -144,9 +143,9 @@ C#
        // Send the exception telemetry:
        telemetry.TrackException(ex, properties, measurements);
     }
+```
 
-VISUAL BASIC
-
+```VB
     Dim telemetry = New TelemetryClient
     ...
     Try
@@ -162,6 +161,7 @@ VISUAL BASIC
       ' Send the exception telemetry:
       telemetry.TrackException(ex, properties, measurements)
     End Try
+```
 
 A tulajdonságok és a mérési paraméterek megadása nem kötelező, de hasznos a [szűrést és a hozzáadása](app-insights-diagnostic-search.md) további információt. Például ha egy alkalmazás futtatható több játékok, találta egy adott játékkal kapcsolatos összes kivétel jelentéseket. Szeretné, hogy mindegyik szótár elemek is hozzáadhat.
 
@@ -175,8 +175,7 @@ Web Forms keretrendszerre a HTTP-modulja lesznek képesek a kivételek gyűjtés
 
 De ha rendelkezik active átirányításokat, adja hozzá a következő sorokat Global.asax.cs Application_Error funkciójának. (Ha adja hozzá a Global.asax fájl még nem rendelkezik.)
 
-*C#*
-
+```csharp
     void Application_Error(object sender, EventArgs e)
     {
       if (HttpContext.Current.IsCustomErrorEnabled && Server.GetLastError  () != null)
@@ -186,11 +185,28 @@ De ha rendelkezik active átirányításokat, adja hozzá a következő sorokat 
          ai.TrackException(Server.GetLastError());
       }
     }
-
+```
 
 ## <a name="mvc"></a>MVC
+Application Insights webes SDK 2.6-os verziótól kezdve (beta3 és újabb verziók), az Application Insights gyűjti, nem kezelt kivételek az MVC 5 + vezérlők módszereket automatikusan. Ha korábban hozzáadott egyéni kezelő ilyen kivételek (a következő példákban leírt) nyomon követésére, eltávolíthatja, megakadályozhatja, hogy az kivételek dupla követését.
+
+Nincsenek olyan esetek számát, amelyet a kivételszűrők nem tudja kezelni. Példa:
+
+* A vezérlő konstruktorok kivételek.
+* Az üzenet kezelők kivételek.
+* Útválasztás során okozott kivételeket.
+* Válasz a tartalom szerializálás során okozott kivételeket.
+* Kivétel történt az alkalmazás indítás folyamán.
+* Kivétel történt a háttérben futó feladatot.
+
+Minden kivétel *kezelt* alkalmazás továbbra is szeretné manuálisan követhető nyomon. Nem kezelt kivételek rendszerint származó tartományvezérlők 500-as "Belső kiszolgálóhiba" válasz eredményez. Ha ilyen válasz manuálisan kezelt kivétel (vagy egyáltalán nincs kivétel) rendszer nyomon követi a megfelelő – kéréstelemetria `ResultCode` 500, azonban a Application Insights SDK nem tudja nyomon követni a megfelelő kivétel.
+
+### <a name="prior-versions-support"></a>A korábbi verziói támogatják az
+Ha MVC 4 (és az előzetes) Application Insights webes SDK 2.5 (és az előzetes) használ, tekintse meg az alábbi példák a kivételek nyomon követésére.
+
 Ha a [CustomErrors](https://msdn.microsoft.com/library/h0hfz6fc.aspx) konfiguráció `Off`, akkor kivételeket elérhető lesz a [HTTP-modulja](https://msdn.microsoft.com/library/ms178468.aspx) gyűjtéséhez. Azonban ha `RemoteOnly` (alapértelmezett), vagy `On`, akkor a kivétel törlődik, és nem érhető el az Application Insights segítségével automatikusan begyűjtik a rendszer. Ezt úgy javíthatja ki, amely felülbírálásával a [System.Web.Mvc.HandleErrorAttribute osztály](http://msdn.microsoft.com/library/system.web.mvc.handleerrorattribute.aspx), és a felülbírált osztály alkalmazása, ahogy az alábbi különböző MVC verzióihoz ([github forrás](https://github.com/AppInsightsSamples/Mvc2UnhandledExceptions/blob/master/MVC2App/Controllers/AiHandleErrorAttribute.cs)):
 
+```csharp
     using System;
     using System.Web.Mvc;
     using Microsoft.ApplicationInsights;
@@ -215,22 +231,26 @@ Ha a [CustomErrors](https://msdn.microsoft.com/library/h0hfz6fc.aspx) konfigurá
         }
       }
     }
+```
 
 #### <a name="mvc-2"></a>MVC 2
 A HandleError attribútum cserélje le a tartományvezérlőket az új attribútumot.
 
+```csharp
     namespace MVC2App.Controllers
     {
        [AiHandleError]
        public class HomeController : Controller
        {
     ...
+```
 
-[Minta](https://github.com/AppInsightsSamples/Mvc2UnhandledExceptions)
+[minta](https://github.com/AppInsightsSamples/Mvc2UnhandledExceptions)
 
 #### <a name="mvc-3"></a>MVC 3
 Regisztrálni `AiHandleErrorAttribute` Global.asax.cs globális szűrőként:
 
+```csharp
     public class MyMvcApplication : System.Web.HttpApplication
     {
       public static void RegisterGlobalFilters(GlobalFilterCollection filters)
@@ -238,12 +258,14 @@ Regisztrálni `AiHandleErrorAttribute` Global.asax.cs globális szűrőként:
          filters.Add(new AiHandleErrorAttribute());
       }
      ...
+```
 
-[Minta](https://github.com/AppInsightsSamples/Mvc3UnhandledExceptionTelemetry)
+[minta](https://github.com/AppInsightsSamples/Mvc3UnhandledExceptionTelemetry)
 
 #### <a name="mvc-4-mvc5"></a>MVC 4, MVC5
 FilterConfig.cs globális szűrőként regisztrálja a AiHandleErrorAttribute:
 
+```csharp
     public class FilterConfig
     {
       public static void RegisterGlobalFilters(GlobalFilterCollection filters)
@@ -252,12 +274,31 @@ FilterConfig.cs globális szűrőként regisztrálja a AiHandleErrorAttribute:
         filters.Add(new AiHandleErrorAttribute());
       }
     }
+```
 
-[Minta](https://github.com/AppInsightsSamples/Mvc5UnhandledExceptionTelemetry)
+[minta](https://github.com/AppInsightsSamples/Mvc5UnhandledExceptionTelemetry)
 
-## <a name="web-api-1x"></a>Webes API-t 1.x
-Bírálja felül System.Web.Http.Filters.ExceptionFilterAttribute:
+## <a name="web-api"></a>Webes API
+Application Insights webes SDK 2.6-os verziótól kezdve (beta3 és újabb verziók), az Application Insights gyűjti nem kezelt kivételek száma a vezérlő metódusokhoz automatikusan WebAPI 2 + a. Ha korábban hozzáadott egyéni kezelő ilyen kivételek (a következő példákban leírt) nyomon követésére, eltávolíthatja, megakadályozhatja, hogy az kivételek dupla követését.
 
+Nincsenek olyan esetek számát, amelyet a kivételszűrők nem tudja kezelni. Példa:
+
+* A vezérlő konstruktorok kivételek.
+* Az üzenet kezelők kivételek.
+* Útválasztás során okozott kivételeket.
+* Válasz a tartalom szerializálás során okozott kivételeket.
+* Kivétel történt az alkalmazás indítás folyamán.
+* Kivétel történt a háttérben futó feladatot.
+
+Minden kivétel *kezelt* alkalmazás továbbra is szeretné manuálisan követhető nyomon. Nem kezelt kivételek rendszerint származó tartományvezérlők 500-as "Belső kiszolgálóhiba" válasz eredményez. Ha ilyen válasz manuálisan kezelt kivétel (vagy egyáltalán nincs kivétel) rendszer nyomon követi a megfelelő kérést a telemetriai adatok `ResultCode` 500, azonban a Application Insights SDK nem tudja nyomon követni a megfelelő kivétel.
+
+### <a name="prior-versions-support"></a>A korábbi verziói támogatják az
+Ha WebAPI 1 (és az előzetes) Application Insights webes SDK 2.5 (és az előzetes) használ, tekintse meg az alábbi példák a kivételek nyomon követésére.
+
+#### <a name="web-api-1x"></a>Webes API-t 1.x
+Override System.Web.Http.Filters.ExceptionFilterAttribute:
+
+```csharp
     using System.Web.Http.Filters;
     using Microsoft.ApplicationInsights;
 
@@ -276,9 +317,11 @@ Bírálja felül System.Web.Http.Filters.ExceptionFilterAttribute:
         }
       }
     }
+```
 
 Felülbírált attribútum hozzáadása adott tartományvezérlők, vagy vegye fel a globális szűrőkonfigurációt a register osztályban:
 
+```csharp
     using System.Web.Http;
     using WebApi1.x.App_Start;
 
@@ -298,19 +341,14 @@ Felülbírált attribútum hozzáadása adott tartományvezérlők, vagy vegye f
         }
       }
     }
+```
 
-[Minta](https://github.com/AppInsightsSamples/WebApi_1.x_UnhandledExceptions)
+[minta](https://github.com/AppInsightsSamples/WebApi_1.x_UnhandledExceptions)
 
-Nincsenek olyan esetek számát, amelyet a kivételszűrők nem tudja kezelni. Példa:
-
-* A vezérlő konstruktorok kivételek.
-* Az üzenet kezelők kivételek.
-* Útválasztás során okozott kivételeket.
-* Válasz a tartalom szerializálás során okozott kivételeket.
-
-## <a name="web-api-2x"></a>Web API 2.x
+#### <a name="web-api-2x"></a>Web API 2.x
 Iexceptionlogger felület egy megvalósításának hozzáadása:
 
+```csharp
     using System.Web.Http.ExceptionHandling;
     using Microsoft.ApplicationInsights;
 
@@ -329,9 +367,11 @@ Iexceptionlogger felület egy megvalósításának hozzáadása:
         }
       }
     }
+```
 
 Adja hozzá a register-szolgáltatásaira ezt:
 
+```csharp
     using System.Web.Http;
     using System.Web.Http.ExceptionHandling;
     using ProductsAppPureWebAPI.App_Start;
@@ -355,9 +395,10 @@ Adja hozzá a register-szolgáltatásaira ezt:
             config.Services.Add(typeof(IExceptionLogger), new AiExceptionLogger());
         }
       }
-  }
+     }
+```
 
-[Minta](https://github.com/AppInsightsSamples/WebApi_2.x_UnhandledExceptions)
+[minta](https://github.com/AppInsightsSamples/WebApi_2.x_UnhandledExceptions)
 
 Alternatív megoldásként sikerült:
 
@@ -367,6 +408,7 @@ Alternatív megoldásként sikerült:
 ## <a name="wcf"></a>WCF
 Adjon hozzá egy osztály, amely kibővíti az attribútumot, és megvalósítja az IErrorHandler és az IServiceBehavior.
 
+```csharp
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -416,7 +458,7 @@ Adjon hozzá egy osztály, amely kibővíti az attribútumot, és megvalósítja
       }
     }
 
-Az attribútum hozzáadása a szolgáltatás hitelesítés megvalósításához:
+Add the attribute to the service implementations:
 
     namespace WcfService4
     {
@@ -424,8 +466,9 @@ Az attribútum hozzáadása a szolgáltatás hitelesítés megvalósításához:
         public class Service1 : IService1
         {
          ...
+```
 
-[Minta](https://github.com/AppInsightsSamples/WCFUnhandledExceptions)
+[minta](https://github.com/AppInsightsSamples/WCFUnhandledExceptions)
 
 ## <a name="exception-performance-counters"></a>Kivétel teljesítményszámlálói
 Ha rendelkezik [az Application Insights-ügynök telepítése](app-insights-monitor-performance-live-website-now.md) a kiszolgálón, és a kivételeket, .NET mérhető diagram kaphat. Ez magában foglalja a kezelt, mind a nem kezelt .NET-kivételek.

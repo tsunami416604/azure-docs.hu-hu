@@ -2,24 +2,18 @@
 title: "Az Azure SQL Database gyakori csatlakozási problémáinak hibaelhárítása"
 description: "Azonosítása és elhárítása közös kapcsolat az Azure SQL Database lépéseit."
 services: sql-database
-documentationcenter: 
 author: dalechen
-manager: cshepard
-editor: 
-ms.assetid: ac463d1c-aec8-443d-b66e-fa5eadcccfa8
+manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
-ms.workload: On Demand
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: troubleshooting
+ms.topic: article
 ms.date: 11/03/2017
 ms.author: daleche
-ms.openlocfilehash: 1d756aa023ae143608acc988ddd0ae8acee1a113
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 56ebe6876d621e190b4e808804113ff80cb3f50c
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="troubleshoot-connection-issues-to-azure-sql-database"></a>Az Azure SQL Database kapcsolati problémák elhárítása
 Ha az Azure SQL Database létesített kapcsolat megszakad, [hibaüzenetek](sql-database-develop-error-messages.md). Ez a cikk központi Ez a témakör segítséget nyújt az Azure SQL Database kapcsolódási problémáinak elhárítása. Okozna [gyakori okainak](#cause) kapcsolódási problémák javasolja [hibaelhárításhoz](#try-the-troubleshooter-for-azure-sql-database-connectivity-issues) , amely segít az identitás a problémát, és megoldásuk megoldására [átmeneti hibák](#troubleshoot-transient-errors) és [állandó vagy nem átmeneti hiba](#troubleshoot-persistent-errors). 
@@ -31,7 +25,7 @@ Ha problémák lépnek fel a kapcsolatot, próbálja meg a kapcsolatos problém�
 A következő oka lehet kapcsolódási problémák léptek fel:
 
 * Nem sikerült alkalmazni az ajánlott eljárások és tervezési útmutató az alkalmazások kialakítása során.  Lásd: [SQL adatbázis-fejlesztői áttekintés](sql-database-develop-overview.md) a kezdéshez.
-* Az Azure SQL Database újrakonfigurálása
+* Azure SQL Database reconfiguration
 * Tűzfalbeállítások
 * A kapcsolat időkorlátja
 * Helytelen bejelentkezési adatok
@@ -80,7 +74,7 @@ Ha az alkalmazás tartósan nem Azure SQL adatbázishoz való kapcsolódáshoz, 
 3. Ellenőrizze a kapcsolati karakterlánc és más csatlakozási beállításait. A kapcsolati karakterlánc című a [kapcsolódási problémák a témakör](sql-database-connectivity-issues.md#connections-to-sql-database).
 4. Ellenőrizze a szolgáltatás állapotát az irányítópulton. Ha úgy gondolja, hogy nincs regionális kimaradás, lásd: [kimaradás helyreállíthatók](sql-database-disaster-recovery.md) egy új területet a helyreállítás lépéseit.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Az Azure SQL Database teljesítménnyel kapcsolatos problémák elhárítása](sql-database-troubleshoot-performance.md)
 * [Keresés a dokumentációban a Microsoft Azure](http://azure.microsoft.com/search/documentation/)
 * [Az Azure SQL Database szolgáltatáshoz a legújabb frissítések megtekintése](http://azure.microsoft.com/updates/?service=sql-database)

@@ -11,13 +11,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/06/2017
+ms.date: 03/15/2018
 ms.author: dobett
-ms.openlocfilehash: 1b34e579f2ba40f4d77f7a3ba1841f59f795d292
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: d265d35c7d5a394afa0e59f40ff1a5741e0ec35c
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="send-cloud-to-device-messages-from-iot-hub"></a>Felhő-eszközre küldött üzenetek küldése az IoT-központ
 
@@ -81,11 +81,11 @@ A felhőből eszközre üzenetet küld, ha a szolgáltatás kérhetnek az üzene
 
 Ha **nyugtázási** van **teljes**, és nem kap egy üzenetet, visszajelzést, az azt jelenti, hogy a visszajelzés üzenet lejárt. A szolgáltatás nem tudja az eredeti üzenet Mi történt. A gyakorlatban egy szolgáltatás győződjön meg arról, hogy a visszajelzés lejárata előtt is feldolgozza. A lejárati idő két nap, így a szolgáltatás elemszámú fut újra hiba esetén.
 
-A [végpontok][lnk-endpoints], IoT-központ biztosítja a szolgáltatás felé néző végpont visszajelzései (**/messages/servicebound/feedback**) üzeneteihez. Visszajelzés fogadott szemantikáját ugyanúgy felhő-eszközre küldött üzenetek, és az [üzenet életciklus][lnk-lifecycle]. Amikor csak lehetséges, a program egy üzenetben, a következő formátumú kötegelni üzenet visszajelzés:
+A [végpontok][lnk-endpoints], IoT-központ biztosítja a szolgáltatás felé néző végpont visszajelzései (**/messages/servicebound/feedback**) üzeneteihez. Visszajelzés fogadott szemantikáját megegyeznek a felhő-eszközre küldött üzenetek. Amikor csak lehetséges, a program egy üzenetben, a következő formátumú kötegelni üzenet visszajelzés:
 
 | Tulajdonság     | Leírás |
 | ------------ | ----------- |
-| EnqueuedTime | Az üzenet létrehozásának jelző időbélyegző. |
+| EnqueuedTime | Jelzi, ha a visszajelzés üzenetet kapott a központ időbélyegző. |
 | UserId       | `{iot hub name}` |
 | ContentType  | `application/vnd.microsoft.iothub.feedback.json` |
 
@@ -93,7 +93,7 @@ A szervezet rekord, egy JSON-szerializált tömbje, minden, a következő tulajd
 
 | Tulajdonság           | Leírás |
 | ------------------ | ----------- |
-| EnqueuedTimeUtc    | Mikor történt, az üzenet eredményeit jelző időbélyegző. Például az eszköz befejeződött vagy az üzenet lejárt. |
+| EnqueuedTimeUtc    | Mikor történt, az üzenet eredményeit jelző időbélyegző. Például a központ visszajelzés hibaüzenetet kapta, vagy az eredeti üzenet érvényessége lejárt. |
 | OriginalMessageId  | **MessageId** a felhőből eszközre üzenet, amely a visszajelzési információk vonatkozik. |
 | statusCode         | Szükséges karakterlánc. Az IoT-központ által generált visszajelzés üzenetekben használatos. <br/> 'Success' <br/> 'Expired' <br/> 'DeliveryCountExceeded' <br/> "Visszautasított" <br/> "Kiürítve" |
 | Leírás        | Karakterlánc-értékek **StatusCode**. |

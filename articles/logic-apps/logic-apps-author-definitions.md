@@ -1,42 +1,63 @@
 ---
-title: "A JSON - Azure Logic Apps logikai alkalmazás definícióiról létrehozása |} Microsoft Docs"
-description: "Paraméterek hozzáadása, karakterláncok feldolgozni, hozzon létre paraméter maps és dátum függvényekkel adatok beolvasása"
+title: "Létrehozása, szerkesztése vagy JSON kiterjesztése a logikai alkalmazás definícióiról - Azure Logic Apps |} Microsoft Docs"
+description: "Szerzői és testre szabhatja a logikai alkalmazás definícióiról a JSON-ban"
 author: ecfan
-manager: anneta
+manager: SyntaxC4
 editor: 
 services: logic-apps
 documentationcenter: 
 ms.assetid: d565873c-6b1b-4057-9250-cf81a96180ae
 ms.service: logic-apps
-ms.workload: integration
+ms.workload: logic-apps
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.custom: H1Hack27Feb2017
-ms.date: 01/31/2018
-ms.author: LADocs; estfan
-ms.openlocfilehash: d05f7e34cbe670db6733c199e3420c810c304a84
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.date: 01/01/2018
+ms.author: estfan; LADocs
+ms.openlocfilehash: bde275eb75c97da2a99109484b46b599a5b2f871
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/16/2018
 ---
-# <a name="build-on-your-logic-app-definition-with-json"></a>A logic app-definíciót a JSON létrehozása
+# <a name="create-edit-or-customize-json-for-logic-app-definitions"></a>Létrehozása, szerkesztése vagy JSON logic app-definíciók testreszabása
 
-Több végrehajtásához advanced feladatok [Azure Logic Apps](../logic-apps/logic-apps-overview.md), használhatja a kód nézetre szerkesztése a logic app-definíciót, egyszerű, deklaratív JSON nyelvét használja. Ha még nem tette meg, olvassa el [az első logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md). További tájékoztatás a [hivatkozás a Munkafolyamatdefiníciós nyelve a teljes](http://aka.ms/logicappsdocs).
+A munkafolyamatok létrehozásakor vállalati integrációs megoldásokat az automatikus [Azure Logic Apps](../logic-apps/logic-apps-overview.md), az alapul szolgáló logikai alkalmazás definícióiról egyszerű és deklaratív JavaScript Object Notation (JSON) együtt használja a [ Munkafolyamat Definition Language (WDL) séma](../logic-apps/logic-apps-workflow-definition-language.md) leírás és érvényesítése. Ezek a formátumok könnyebben logikai alkalmazás definícióiról Elolvastam és megértettem nagy kód ismerete nélkül. Ha automatizálni szeretné a logikai alkalmazások létrehozása és telepítése, megadhatja a logikai alkalmazás definícióiról mint [Azure-erőforrások](../azure-resource-manager/resource-group-overview.md) belül [Azure Resource Manager-sablonok](../azure-resource-manager/resource-group-overview.md#template-deployment). Létrehozására, kezelésére és központi telepítése a logic apps, ezután [Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.logicapp), [Azure CLI](../azure-resource-manager/resource-group-template-deploy-cli.md), vagy a [Azure Logic Apps REST API-k](https://docs.microsoft.com/rest/api/logic/).
+
+Dolgozunk a logikai alkalmazás definícióiról a JSON-ban, nyissa meg a kód nézetre szerkesztőt, az Azure portálon vagy a Visual Studio használatakor, vagy másolja a definíció bármilyen kívánt szerkesztő. Ha most ismerkedik a logic apps, tekintse át a [az első logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 > [!NOTE]
-> Bizonyos Azure Logic Apps funkciók – paraméterek, például csak a logic app-definíciót kódnézetben munka esetén érhetők el. Paraméterek lehetővé teszik, hogy a Logic Apps alkalmazást értékét használja fel. Meghatározhatja például, ha azt szeretné, hogy ugyanazt az e-mail címet használja több műveletet, amellyel paraméterként.
+> Bizonyos Azure Logic Apps képességeit, például a paraméterek és több eseményindítók meghatározása a logikai alkalmazás definícióiról, csak a JSON-ban, nem a Logic Apps-Tervező érhetők el. Ezeket a feladatokat a kód nézetre, vagy egy másik szerkesztőt kell működni.
 
-## <a name="view-and-edit-your-logic-app-definitions-in-json"></a>Megtekintése és szerkesztése a logic app-definíció a JSON-ban
+## <a name="edit-json---azure-portal"></a>Szerkessze a JSON - Azure-portálon
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com "Azure Portal")
+1. Jelentkezzen be az <a href="https://portal.azure.com" target="_blank">Azure Portalra</a>.
 
-2. A bal oldali menüből **további szolgáltatások**. A **Vállalati integráció** résznél válassza a **Logikai alkalmazások** elemet. Válassza ki a logikai alkalmazást.
+2. A bal oldali menüből **minden szolgáltatás**. A keresési mezőbe "logic apps" keresse meg, és az eredmények közül jelölje a Logic Apps alkalmazást.
 
-3. A logic app menüből alatt **Fejlesztőeszközök**, válassza a **Logic App kódnézetben**.
+3. A logikai alkalmazás menü alatti **Fejlesztőeszközök**, jelölje be **Logic App kód nézetre**.
 
-   A kód nézet ablak nyílik meg, és jeleníti meg a logic app-definíciót.
+   A kód nézetre-szerkesztő megnyitása, és JSON formátumban jeleníti meg a logic app-definíciót.
+
+## <a name="edit-json---visual-studio"></a>Szerkessze a JSON - Visual Studio
+
+Mielőtt a logic app-definíciót a Visual Studio is dolgozhatnak, győződjön meg arról, hogy [telepítette a szükséges eszközöket](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md#prerequisites). Logikai alkalmazás létrehozása a Visual Studio, tekintse át [gyors üzembe helyezés: feladatok és az Azure Logic Apps - Visual Studio eljárások automatizálására](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md).
+
+A Visual Studio nyissa meg a logic apps létrehozott és telepített vagy közvetlenül az Azure-portálon, vagy Azure Resource Manager projekteket a Visual Studio eszközből.
+
+1. Nyissa meg a Visual Studio megoldás vagy [Azure erőforráscsoport](../azure-resource-manager/resource-group-overview.md) projekt, amely tartalmazza a Logic Apps alkalmazást.
+
+2. Keresse meg, és nyissa meg a logic app-definíciót, amely alapértelmezés szerint megjelenik egy [Resource Manager-sablon](../azure-resource-manager/resource-group-overview.md#template-deployment)nevű **LogicApp.json**. Használjon, és a különböző környezetekben való központi telepítési sablon testreszabása.
+
+3. Nyissa meg a logic app-definíciót és a sablon helyi menüje. Válassza ki **nyissa meg a Logic App tervezővel**.
+
+   ![Nyissa meg logikai alkalmazást a Visual Studio megoldás](./media/logic-apps-author-definitions/open-logic-app-designer.png)
+
+4. A designer alján válassza **kódnézetben**. 
+
+   A kód nézetre-szerkesztő megnyitása, és JSON formátumban jeleníti meg a logic app-definíciót.
+
+5. Térjen vissza a Tervező nézetre, a kód nézetre szerkesztő alján válassza **tervezési**.
 
 ## <a name="parameters"></a>Paraméterek
 

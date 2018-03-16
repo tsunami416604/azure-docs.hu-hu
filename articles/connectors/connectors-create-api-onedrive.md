@@ -3,7 +3,7 @@ title: "Adja hozzá a OneDrive-összekötőt a Logic Apps |} Microsoft Docs"
 description: "A OneDrive-összekötő REST API-paraméterekkel rendelkező áttekintése"
 services: logic-apps
 documentationcenter: 
-author: MandiOhlinger
+author: ecfan
 manager: anneta
 editor: 
 tags: connectors
@@ -14,12 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 10/18/2016
-ms.author: mandia; ladocs
-ms.openlocfilehash: e988ae22a3d6e47591c37ad0b4c9f781d523bcc8
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.author: estfan; ladocs
+ms.openlocfilehash: 15b88baf21ead5a6b9506c47ca9930d5088b8787
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="get-started-with-the-onedrive-connector"></a>A OneDrive-összekötő az első lépései
 Csatlakozni a onedrive-nak a fájlok kezelését, beleértve a feltöltés, get, törölje a fájlokat, és több. 
@@ -30,7 +30,7 @@ A onedrive-ról hogy:
 * Eseményindítók segítségével indítsa el a munkafolyamat, amikor egy fájl létrehozásakor vagy frissítésekor a onedrive-on belül.
 * Hozzon létre egy fájlt, törölje a fájlt, és egyéb műveleteket használni. Például egy új Office 365 e-mailt fogadásakor mellékletet (trigger) hozzon létre egy új fájlt a onedrive-on (művelet).
 
-Ez a témakör bemutatja, hogyan használható a onedrive vállalati verzió összekötő logikai alkalmazás, és eseményindítók és műveletek is tartalmazza.
+Ez a cikk bemutatja, hogyan használható a onedrive vállalati verzió összekötő logikai alkalmazás, és eseményindítók és műveletek is tartalmazza.
 
 A Logic Apps kapcsolatos további információkért lásd: [Mik azok a logic apps](../logic-apps/logic-apps-overview.md) és [logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
@@ -52,7 +52,7 @@ Egy eseményindító nem egy eseményt, a logikai alkalmazás definiált munkafo
    
     ![](./media/connectors-create-api-onedrive/sample-folder.png)
    
-    Ha a bejelentkezéshez kéri, akkor írja be a bejelentkezési a kapcsolat létrehozásához szükséges adatok. [A kapcsolat létrehozása](connectors-create-api-onedrive.md#create-the-connection) a témakör felsorolja azokat a lépéseket. 
+    Ha a bejelentkezéshez kéri, akkor írja be a bejelentkezési a kapcsolat létrehozásához szükséges adatok. [A kapcsolat létrehozása](connectors-create-api-onedrive.md#create-the-connection) ebben a cikkben szereplő lépéseket tartalmazza. 
    
    > [!NOTE]
    > Ebben a példában a logikai alkalmazás fut, amikor egy fájl a mappában, ha úgy dönt, hogy a rendszer frissíti. Ehhez az eseményindítóhoz eredményeinek megtekintéséhez adja hozzá az e-mailt küld egy másik művelet. Adja hozzá például az Office 365 Outlook *egy e-mailek küldése* , hogy e-mailt küld, amikor egy fájl frissítése műveletet. 
@@ -76,7 +76,7 @@ Egy művelet során a logikai alkalmazás definiált munkafolyamat által végze
    
     ![](./media/connectors-create-api-onedrive/sample-action.png)
    
-    Ha a kapcsolati adatokat kéri, adja meg a részleteket a VPN-kapcsolat létrehozásához. [A kapcsolat létrehozása](connectors-create-api-onedrive.md#create-the-connection) a témakörben ismertetett ezeket a tulajdonságokat. 
+    Ha a kapcsolati adatokat kéri, adja meg a részleteket a VPN-kapcsolat létrehozásához. [A kapcsolat létrehozása](connectors-create-api-onedrive.md#create-the-connection) ebben a cikkben ismerteti ezeket a tulajdonságokat. 
    
    > [!NOTE]
    > Ebben a példában azt hozzon létre egy új fájlt a onedrive vállalati verzió mappában. Egy másik eseményindító kimenetét a OneDrive-fájl létrehozására használhatja. Adja hozzá például az Office 365 Outlook *egy új e-mailt fogadásakor* eseményindító. Adja meg a onedrive vállalati verzió *létrehozás fájl* művelet, a mellékletek és a Content-Type használó mezők egy ForEach létrehozni az új fájlt a onedrive-on belül. 

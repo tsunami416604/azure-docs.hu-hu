@@ -1,10 +1,10 @@
 ---
-title: "Az Azure Active Directory kapcsolat varázsló hibák diagnosztizálása"
-description: "Az active directory kapcsolat varázsló nem kompatibilis hitelesítési típust észlelt"
+title: "Az Azure Active Directoryval hibák diagnosztizálása kapcsolódó szolgáltatás"
+description: "Az active directory kapcsolódó szolgáltatás nem kompatibilis hitelesítési típust észlelt"
 services: active-directory
 documentationcenter: 
 author: kraigb
-manager: mtillman
+manager: ghogen
 editor: 
 ms.assetid: dd89ea63-4e45-4da1-9642-645b9309670a
 ms.service: active-directory
@@ -12,88 +12,88 @@ ms.workload: web
 ms.tgt_pltfrm: vs-getting-started
 ms.devlang: na
 ms.topic: article
-ms.date: 03/05/2017
+ms.date: 03/12/2018
 ms.author: kraigb
 ms.custom: aaddev
-ms.openlocfilehash: 186bb1ede11c869b1352906b7ebafe57025f4f09
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: ab81c3385479a96fbfa7e68c4e81129ff327ed4b
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/16/2018
 ---
-# <a name="diagnosing-errors-with-the-azure-active-directory-connection-wizard"></a>Az Azure Active Directory kapcsolat varázsló hibák diagnosztizálása
-Történt észlelésekor előző hitelesítési kódot, a varázsló nem kompatibilis hitelesítési típust észlelt.   
+# <a name="diagnosing-errors-with-the-azure-active-directory-connected-service"></a>Az Azure Active Directory szolgáltatással kapcsolódó hibák diagnosztizálása
 
-## <a name="what-is-being-checked"></a>Mi ellenőrzés?
-**Megjegyzés:** megfelelően azonosíthatók a projekt korábbi hitelesítési kódot, a projekt kell kialakítani.  Ha ezt a hibát észlelt, és nem kell egy előző hitelesítési kódot a projektben, építse újra, és próbálkozzon újra.
+Előző hitelesítési kód észlelése, közben az Azure Active Directory connect-kiszolgáló azt észlelte egy nem kompatibilis hitelesítési típus.
 
-### <a name="project-types"></a>Projekttípusok
-A varázsló ellenőrzi, így azt a megfelelő hitelesítési logikát is szúrjon be a projekt kidolgozása projekt típusától.  Ha minden tartományvezérlő abból származó `ApiController` a projektben a projekt WebAPI projekt számít.  Ha csak azok a tartományvezérlők, amelyek a `MVC.Controller` a projektben a projekt egy MVC projekt számít.  Bármi más a varázsló által nem támogatott.
+A projekt megfelelően észlelheti az előző hitelesítési kódot, a projekt kell kialakítani.  Ha ezt a hibát észlelt, és nem kell egy előző hitelesítési kódot a projektben, építse újra, és próbálkozzon újra.
 
-### <a name="compatible-authentication-code"></a>Kompatibilis hitelesítési kód
-A varázsló is ellenőrzi a hitelesítési beállításokat, amelyek a varázsló a korábban konfigurált vagy kompatibilisek-e a varázslót.  Ha minden beállítás, akkor tekinthető párhuzamosan eset, és megnyílik a varázsló megjeleníti a beállításokat.  Ha csak néhány beállítás találhatók, hibás esetnek minősül.
+## <a name="project-types"></a>Projekttípusok
 
-MVC projekt a varázsló ellenőrzi, az alábbi beállításokat, amelyeket a varázsló előző használatából bármelyikéhez:
+A csatlakoztatott szolgáltatás ellenőrzi a projekt, akkor a megfelelő hitelesítési logikát is szúrjon be a projekt kidolgozása típusú. Ha minden tartományvezérlő abból származó `ApiController` a projektben a projekt WebAPI projekt számít. Ha csak azok a tartományvezérlők, amelyek a `MVC.Controller` a projektben a projekt egy MVC projekt számít. A csatlakoztatott szolgáltatás bármely más projekttípus nem támogatja.
+
+## <a name="compatible-authentication-code"></a>Kompatibilis hitelesítési kód
+
+A csatlakoztatott szolgáltatás is ellenőrzi a hitelesítési beállításokat, amelyek korábban konfigurált vagy kompatibilisek-e a szolgáltatás. Ha meg adva az összes beállítást, akkor tekinthető párhuzamosan eset, és a csatlakoztatott szolgáltatás megnyílik a beállítások megjelenítése.  Ha csak néhány beállítás találhatók, hibás esetnek minősül.
+
+MVC projekt, a csatlakoztatott szolgáltatás ellenőrzi az alábbi beállításokat, amelyeket a szolgáltatás előző használatából bármelyikét:
 
     <add key="ida:ClientId" value="" />
     <add key="ida:Tenant" value="" />
     <add key="ida:AADInstance" value="" />
     <add key="ida:PostLogoutRedirectUri" value="" />
 
-Emellett a varázsló ellenőrzi a Web API-projektet, a következő beállítások a varázsló előző használatából fakadó:
+Emellett a csatlakoztatott szolgáltatás ellenőrzi a Web API-projektet, a következő beállítások eredményeként a szolgáltatás előző használata:
 
     <add key="ida:ClientId" value="" />
     <add key="ida:Tenant" value="" />
     <add key="ida:Audience" value="" />
 
-### <a name="incompatible-authentication-code"></a>Nem kompatibilis hitelesítési kód
-Végezetül a varázsló megpróbálja észlelni a hitelesítési kód vannak konfigurálva a Visual Studio korábbi verziói-verziók. Ha ezt a hibát kapott, az azt jelenti, a projekt nem kompatibilis hitelesítési típust tartalmaz. A varázsló észleli a következő típusú hitelesítés a Visual Studio korábbi verzióiról:
+## <a name="incompatible-authentication-code"></a>Nem kompatibilis hitelesítési kód
 
-* Windows-hitelesítés 
-* Egyéni felhasználói fiókok 
-* Munkahelyi és iskolai fiókok 
+Végezetül a csatlakoztatott szolgáltatás megpróbálja észlelni a hitelesítési kód verzióit, amelyek a Visual Studio korábbi verziói vannak konfigurálva. Ha ezt a hibát kapott, az azt jelenti, a projekt nem kompatibilis hitelesítési típust tartalmaz. A csatlakoztatott szolgáltatás észleli a következő típusú hitelesítés a Visual Studio korábbi verzióiról:
 
-MVC projekt észleli a Windows-hitelesítést, a varázsló megkeresi a `authentication` elem a **web.config** fájlt.
+* Windows-hitelesítés
+* Egyéni felhasználói fiókok
+* Munkahelyi és iskolai fiókok
 
-<pre>
-    &lt;configuration&gt;
-        &lt;system.web&gt;
-            <span style="background-color: yellow">&lt;authentication mode="Windows" /&gt;</span>
-        &lt;/system.web&gt;
-    &lt;/configuration&gt;
-</pre>
+MVC projekt észleli a Windows-hitelesítést, a csatlakoztatott keresi a `authentication` eleme a `web.config` fájlt.
 
-Windows-hitelesítés azonosíthatók a Web API-projektet, a varázsló megkeresi a `IISExpressWindowsAuthentication` a projekt elem **.csproj** fájlt:
+```xml
+<configuration>
+    <system.web>
+        <span style="background-color: yellow"><authentication mode="Windows" /></span>
+    </system.web>
+</configuration>
+```
 
-<pre>
-    &lt;Project&gt;
-        &lt;PropertyGroup&gt;
-            <span style="background-color: yellow">&lt;IISExpressWindowsAuthentication&gt;enabled&lt;/IISExpressWindowsAuthentication&gt;</span>
-        &lt;/PropertyGroup>
-    &lt;/Project&gt;
-</pre>
+Windows-hitelesítés azonosíthatók a Web API-projektet, a csatlakoztatott szolgáltatás megkeresi a `IISExpressWindowsAuthentication` a projekt elem `.csproj` fájlt:
 
-Egyes felhasználói fiókok hitelesítési észlelését, a varázsló megkeresi a csomag elem a **Packages.config** fájlt.
+```xml
+<Project>
+    <PropertyGroup>
+        <span style="background-color: yellow"><IISExpressWindowsAuthentication>enabled</IISExpressWindowsAuthentication></span>
+    </PropertyGroup>
+</Project>
+```
 
-<pre>
-    &lt;packages&gt;
-        <span style="background-color: yellow">&lt;package id="Microsoft.AspNet.Identity.EntityFramework" version="2.1.0" targetFramework="net45" /&gt;</span>
-    &lt;/packages&gt;
-</pre>
+Az egyes felhasználói fiókok hitelesítési észlelését, a csatlakoztatott szolgáltatás keresi a csomag elemet a `packages.config` fájlt.
 
-Egy szervezeti fiók hitelesítése régi formája észlelését, a varázsló megkeresi a következő elem **web.config**:
+```xml
+<packages>
+    <span style="background-color: yellow"><package id="Microsoft.AspNet.Identity.EntityFramework" version="2.1.0" targetFramework="net45" /></span>
+</packages>
+```
 
-<pre>
-    &lt;configuration&gt;
-        &lt;appSettings&gt;
-            <span style="background-color: yellow">&lt;add key="ida:Realm" value="***" /&gt;</span>
-        &lt;/appSettings&gt;
-    &lt;/configuration&gt;
-</pre>
+Egy szervezeti fiók hitelesítése régi formája észlelését, a csatlakoztatott szolgáltatás keresi a következő elem`web.config`:
 
-A hitelesítési típus módosításához távolítsa el a nem kompatibilis hitelesítés típusát, és futtassa újra a varázslót.
+```xml
+<configuration>
+    <appSettings>
+        <span style="background-color: yellow"><add key="ida:Realm" value="***" /></span>
+    </appSettings>
+</configuration>
+```
+
+A hitelesítési típus módosításához távolítsa el a nem kompatibilis hitelesítés típusát, és próbálja meg újból hozzáadni a csatlakoztatott szolgáltatás.
 
 További információkért lásd: [hitelesítési forgatókönyvek az Azure AD](active-directory-authentication-scenarios.md).
-
-#<a name="next-steps"></a>Következő lépések
-- [Hitelesítési forgatókönyvek az Azure AD-hez](active-directory-authentication-scenarios.md)

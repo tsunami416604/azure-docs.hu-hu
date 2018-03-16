@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2017
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 3672beda8a502e5fe2c8182076a8edef7ee9ebf6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d3cd509a0073e45bf910e9a74a279d678ff03b63
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="build-a-serverless-app-in-visual-studio-with-logic-apps-and-functions"></a>Egy kiszolgáló nélküli alkalmazást a Visual Studio és a Logic Apps és függvények létrehozása
 
@@ -83,10 +83,10 @@ A központi telepítési sablont a megoldást a megadott git-tárházban szerepl
 
 JavaScript, Python, F #, Bash, kötegelt vagy PowerShell használata esetén kövesse a [szükséges lépések a funkciók CLI](../azure-functions/functions-run-local.md) projekt létrehozásához.  Ha egy függvényt a C# fejleszt, használhatja a [C# osztálytár](https://blogs.msdn.microsoft.com/appserviceteam/2017/03/16/publishing-a-net-class-library-as-a-function-app/) a jelenleg használt megoldás az Azure-függvény.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Ismerje meg, hogyan hozhat létre egy kiszolgáló nélküli közösségi irányítópult](logic-apps-scenario-social-serverless.md)
-* [A Visual Studio Cloud Explorer logikai alkalmazás kezelése](logic-apps-manage-from-vs.md)
+* [A Visual Studio Cloud Explorer logikai alkalmazás kezelése](manage-logic-apps-with-visual-studio.md)
 * [Logic App munkafolyamatdefiníciós nyelve](logic-apps-workflow-definition-language.md)
 
 <!-- Image references -->

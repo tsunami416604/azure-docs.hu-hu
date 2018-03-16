@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: bb5361022e4c9693812753ae33df5aeb037b5aaa
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 01e85290f00dc70323a16056ca8e73bfba72c975
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="http-apis-in-durable-functions-azure-functions"></a>HTTP API-k tartós funkciók (az Azure Functions)
 
@@ -28,7 +28,8 @@ A tartós feladatkiterjesztés tesz elérhetővé, HTTP API-k, amelyek segítsé
 * Esemény küldése a várakozási vezénylési példánya.
 * Egy futó vezénylési példány leáll.
 
-Összes ezen HTTP API-k kell közvetlenül a tartós feladatkiterjesztés által végrehajtott műveletek webhook. Nincsenek semmilyen feladatot, a függvény alkalmazás jellemző.
+
+Ezen HTTP API-k egy-egy webhook művelet, amely közvetlenül a tartós feladatkiterjesztés kezeli. Nincsenek semmilyen feladatot, a függvény alkalmazás jellemző.
 
 > [!NOTE]
 > Ezek a műveletek is meghívhatók közvetlenül a példány felügyeleti API-k a a [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) osztály. További információkért lásd: [Példánykezelés](durable-functions-instance-management.md).
@@ -78,7 +79,7 @@ A korábban említett HTTP-válasz célja segíteni a hosszan futó HTTP aszinkr
 Ez a protokoll lehetővé teszi, hogy hosszú futású folyamatokat a külső ügyfeleket vagy, amely támogatja a HTTP-végponttal lekérdezés és a következő szolgáltatások összehangolása a `Location` fejléc. Az alapvető eleme a tartós funkciók HTTP API-k beépített.
 
 > [!NOTE]
-> Alapértelmezés szerint az összes HTTP-alapú művelet által biztosított [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/) támogatja a szabványos aszinkron művelet szabályt. Ez lehetővé teszi a hosszan futó tartós függvény beágyazása a Logic Apps munkafolyamat részeként. További részleteket a Logic Apps támogatása aszinkron HTTP-minták megtalálhatók a [Azure Logic Apps munkafolyamat műveletek és eseményindítók dokumentáció](../logic-apps/logic-apps-workflow-actions-triggers.md#asynchronous-patterns).
+> Alapértelmezés szerint az összes HTTP-alapú művelet által biztosított [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/) támogatja a szabványos aszinkron művelet szabályt. Ez a funkció lehetővé teszi a hosszan futó tartós függvény beágyazása a Logic Apps munkafolyamat részeként. További részleteket a Logic Apps támogatása aszinkron HTTP-minták megtalálhatók a [Azure Logic Apps munkafolyamat műveletek és eseményindítók dokumentáció](../logic-apps/logic-apps-workflow-actions-triggers.md#asynchronous-patterns).
 
 ## <a name="http-api-reference"></a>HTTP API-referencia
 
@@ -86,12 +87,14 @@ Minden HTTP API valósítják meg a bővítmény hajtsa végre a következő par
 
 | Paraméter  | A paraméter típusa  | Leírás |
 |------------|-----------------|-------------|
-| instanceId | URL-CÍME             | Az orchestration-példány azonosítója. |
+| instanceId | URL-cím             | Az orchestration-példány azonosítója. |
 | taskHub    | Lekérdezési karakterlánc    | Neve a [feladat hub](durable-functions-task-hubs.md). Ha nincs megadva, az aktuális függvény app hub feladatnév feltételezi. |
 | kapcsolat | Lekérdezési karakterlánc    | A **neve** a tárfiók kapcsolati karakterlánc. Ha nincs megadva, a függvény alkalmazás alapértelmezett kapcsolati karakterláncában feltételezzük. |
 | systemKey  | Lekérdezési karakterlánc    | A hitelesítési kulcs a API meghívásához szükséges. |
+| showHistory| Lekérdezési karakterlánc    | Nem kötelező paraméter. Ha beállítása `true`, a vezénylési futtatási előzményei szerepelni fog a válasz forgalma.| 
+| showHistoryOutput| Lekérdezési karakterlánc    | Nem kötelező paraméter. Ha beállítása `true`, a tevékenység kimenete fog szerepelni a vezénylési futtatási előzményei.| 
 
-`systemKey`az Azure Functions állomás által automatikusan létrehozott van egy engedélyezési kulcsot. Kifejezetten engedélyezi a hozzáférést a tartós feladatkiterjesztés API-k és azonos módon kezelhetők [más engedélyezési kulcsok](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Key-management-API). A legegyszerűbben úgy felderítése a `systemKey` értéke használatával a `CreateCheckStatusResponse` azt korábban említettük a API.
+`systemKey` az Azure Functions állomás által automatikusan létrehozott van egy engedélyezési kulcsot. Kifejezetten engedélyezi a hozzáférést a tartós feladatkiterjesztés API-k és azonos módon kezelhetők [más engedélyezési kulcsok](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Key-management-API). A legegyszerűbben úgy felderítése a `systemKey` értéke használatával a `CreateCheckStatusResponse` azt korábban említettük a API.
 
 A következő néhány szakasz foglalkozik az egyes, a bővítmény által támogatott HTTP API-k, és adja meg a példák hogyan is használhatók.
 
@@ -110,7 +113,7 @@ GET /admin/extensions/DurableTaskExtension/instances/{instanceId}?taskHub={taskH
 A funkciók 2.0 formátumban ugyanazokat paraméterek, de van egy némileg eltérő URL-előtagját:
 
 ```http
-GET /webhookextensions/handler/DurableTaskExtension/instances/{instanceId}?taskHub={taskHub}&connection={connection}&code={systemKey}
+GET /webhookextensions/handler/DurableTaskExtension/instances/{instanceId}?taskHub={taskHub}&connection={connection}&code={systemKey}&showHistory={showHistory}&showHistoryOutput={showHistoryOutput}
 ```
 
 #### <a name="response"></a>Válasz
@@ -122,29 +125,68 @@ Néhány lehetséges kód állapotértékek adhatók vissza.
 * **A HTTP 400 (hibás kérés)**: A megadott példány nem sikerült, vagy le lett állítva.
 * **HTTP 404-es (nem található)**: A megadott példány nem létezik, vagy még nem kezdődött el.
 
-A válasz hasznos a **200-as HTTP** és **HTTP 202** esetben egy JSON-objektum a következő mezőket.
+A válasz hasznos a **200-as HTTP** és **HTTP 202** esetben egy JSON-objektum a következő mezőket:
 
 | Mező           | Adattípus | Leírás |
 |-----------------|-----------|-------------|
-| runtimeStatus   | Karakterlánc    | A példány futtatási állapota. Értékek: *futtató*, *függőben lévő*, *sikertelen*, *visszavonva*, *kilépett*, *Befejeződött*. |
+| runtimeStatus   | karakterlánc    | A példány futtatási állapota. Értékek: *futtató*, *függőben lévő*, *sikertelen*, *visszavonva*, *kilépett*, *Befejeződött*. |
 | Bemeneti           | JSON      | A példány inicializáló JSON-adatokat. |
-| Kimeneti          | JSON      | A példány JSON-kimenetét. Ez a mező `null` Ha a példány nem kész állapotú. |
-| createdTime     | Karakterlánc    | Az az idő, ahol a példány létrehozása. ISO 8601 notation kiterjesztett használja. |
-| LastUpdatedTime | Karakterlánc    | Az az idő, ahol a példány utolsó megőrzött. ISO 8601 notation kiterjesztett használja. |
+| output          | JSON      | A példány JSON-kimenetét. Ez a mező `null` Ha a példány nem kész állapotú. |
+| createdTime     | karakterlánc    | Az az idő, ahol a példány létrehozása. ISO 8601 notation kiterjesztett használja. |
+| lastUpdatedTime | karakterlánc    | Az az idő, ahol a példány utolsó megőrzött. ISO 8601 notation kiterjesztett használja. |
+| historyEvents   | JSON      | A vezénylési futtatási előzményei tartalmazó JSON-tömb. Ez a mező `null` kivéve, ha a `showHistory` lekérdezési karakterlánc paraméter értéke `true`.  | 
 
-Íme egy példa válasz forgalma (az olvashatóság formázott):
+Íme egy példa válasz hasznos, beleértve a vezénylési végrehajtási előzményekhez és a tevékenység (az olvashatóság formázott):
 
 ```json
 {
-  "runtimeStatus": "Completed",
-  "input": null,
-  "output": [
-    "Hello Tokyo!",
-    "Hello Seattle!",
-    "Hello London!"
+  "createdTime": "2018-02-28T05:18:49Z",
+  "historyEvents": [
+      {
+          "EventType": "ExecutionStarted",
+          "FunctionName": "E1_HelloSequence",
+          "Timestamp": "2018-02-28T05:18:49.3452372Z"
+      },
+      {
+          "EventType": "TaskCompleted",
+          "FunctionName": "E1_SayHello",
+          "Result": "Hello Tokyo!",
+          "ScheduledTime": "2018-02-28T05:18:51.3939873Z",
+          "Timestamp": "2018-02-28T05:18:52.2895622Z"
+      },
+      {
+          "EventType": "TaskCompleted",
+          "FunctionName": "E1_SayHello",
+          "Result": "Hello Seattle!",
+          "ScheduledTime": "2018-02-28T05:18:52.8755705Z",
+          "Timestamp": "2018-02-28T05:18:53.1765771Z"
+      },
+      {
+          "EventType": "TaskCompleted",
+          "FunctionName": "E1_SayHello",
+          "Result": "Hello London!",
+          "ScheduledTime": "2018-02-28T05:18:53.5170791Z",
+          "Timestamp": "2018-02-28T05:18:53.891081Z"
+      },
+      {
+          "EventType": "ExecutionCompleted",
+          "OrchestrationStatus": "Completed",
+          "Result": [
+              "Hello Tokyo!",
+              "Hello Seattle!",
+              "Hello London!"
+          ],
+          "Timestamp": "2018-02-28T05:18:54.3660895Z"
+      }
   ],
-  "createdTime": "2017-10-06T18:30:24Z",
-  "lastUpdatedTime": "2017-10-06T18:30:30Z"
+  "input": null,
+  "lastUpdatedTime": "2018-02-28T05:18:54Z",
+  "output": [
+      "Hello Tokyo!",
+      "Hello Seattle!",
+      "Hello London!"
+  ],
+  "runtimeStatus": "Completed"
 }
 ```
 
@@ -168,12 +210,12 @@ A funkciók 2.0 formátumban ugyanazokat paraméterek, de van egy némileg elté
 POST /webhookextensions/handler/DurableTaskExtension/instances/{instanceId}/raiseEvent/{eventName}?taskHub=DurableFunctionsHub&connection={connection}&code={systemKey}
 ```
 
-Kérelem ehhez az API paraméternek számít a korábban említett, valamint a következő egyedi paraméterek alapértelmezett beállítása.
+A kérelem ehhez az API paraméterek közé tartozik a a korábban említettük, valamint a következő egyedi paraméterek alapértelmezett beállítás:
 
 | Mező       | A paraméter típusa  | Adatok tType | Leírás |
 |-------------|-----------------|-----------|-------------|
-| EventName   | URL-CÍME             | Karakterlánc    | Az eseményt, amely a célpéldány vezénylési vár a neve. |
-| {tartalom}   | Tartalomkérelem | JSON      | A JSON-formátumú eseménytartalom. |
+| eventName   | URL-cím             | karakterlánc    | Az eseményt, amely a célpéldány vezénylési vár a neve. |
+| {content}   | Tartalomkérelem | JSON      | A JSON-formátumú eseménytartalom. |
 
 #### <a name="response"></a>Válasz
 
@@ -218,7 +260,7 @@ Kérelem ehhez az API paraméternek számít a korábban említett, valamint a k
 
 | Mező       | A paraméter típusa  | Adattípus | Leírás |
 |-------------|-----------------|-----------|-------------|
-| OK      | Lekérdezési karakterlánc    | Karakterlánc    | Választható. Leállítja a vezénylési példány okát. |
+| OK      | Lekérdezési karakterlánc    | karakterlánc    | Választható. Leállítja a vezénylési példány okát. |
 
 #### <a name="response"></a>Válasz
 
@@ -236,7 +278,7 @@ DELETE /admin/extensions/DurableTaskExtension/instances/bcf6fb5067b046fbb021b52b
 
 A válaszok ehhez az API nem tartalmaznak minden tartalmat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Ismerje meg a hibák kezelésének módját](durable-functions-error-handling.md)

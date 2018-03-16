@@ -3,8 +3,8 @@ title: "A helyszíni virtuális gép lemezkép létrehozása a Azure piactérrő
 description: "Ismerje meg, és hajtsa végre a lépéseket a helyszíni Virtuálisgép-lemezkép létrehozása és telepítése az Azure piactéren mások megvásárlásához."
 services: marketplace-publishing
 documentationcenter: 
-author: HannibalSII
-manager: hascipio
+author: msmbaldwin
+manager: mbaldwin
 editor: 
 ms.assetid: 26dfbd5a-8685-4b19-987e-c20ca60540ec
 ms.service: marketplace
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 04/29/2016
-ms.author: hascipio; v-divte
-ms.openlocfilehash: 77771f1e690bdfb59d42989a34068634f35f845d
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.author: mbaldwin
+ms.openlocfilehash: 6b927ce6032092ce258eeebca49da0571439dbfb
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="develop-an-on-premises-virtual-machine-image-for-the-azure-marketplace"></a>A helyszíni virtuálisgép-lemezkép kialakított az Azure piactéren
 Határozottan javasoljuk, hogy a távoli asztal protokoll használatával fejlesztése az Azure virtuális merevlemezeket (VHD) közvetlenül a felhőben. Azonban ha kell, akkor lehet töltse le a virtuális Merevlemezt és fejleszthetők a helyszíni infrastruktúra használatával.  
@@ -92,7 +92,7 @@ Hozzon létre egy tárfiókot, használhatja a [Microsoft Azure-portálon](https
 
 **A storage-fiók létrehozása a Microsoft Azure-portálon**
 
-1. Kattintson a **hozzon létre egy erőforrást**.
+1. Kattintson az **Erőforrás létrehozása** gombra.
 2. Válassza ki **tárolási**.
 3. Töltse ki a tárfiók nevét, és válassza ki a helyet.
    

@@ -2,24 +2,18 @@
 title: "Előzményadatokat az ideiglenes táblák megőrzési házirend kezelése |} Microsoft Docs"
 description: "Útmutató historikus adatmegőrzési előzményadatokat az ellenőrzése alatt tartani."
 services: sql-database
-documentationcenter: 
 author: bonova
-manager: drasumic
-editor: 
-ms.assetid: 76cfa06a-e758-453e-942c-9f1ed6a38c2a
+manager: craigg
 ms.service: sql-database
 ms.custom: develop databases
-ms.devlang: NA
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: Inactive
 ms.date: 10/12/2016
 ms.author: bonova
-ms.openlocfilehash: b4e1524008837094b57a3df469439ceaebf9c166
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 36ce6889cccbf5ae7df519c5c73846f12eed4a08
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="manage-historical-data-in-temporal-tables-with-retention-policy"></a>Előzményadatokat az ideiglenes táblák megőrzési házirend kezelése
 A historikus táblák növelheti reguláris táblák nagyobb adatbázisméret, különösen akkor, ha egy hosszabb ideig a korábbi adatok megőrzése mellett. Emiatt adatmegőrzési korábbi adatok tervezési és kezeléséért a minden historikus tábla fontos eleme. Az Azure SQL Database ideiglenes táblák megőrzési könnyen kezelhető mechanizmust, amely segít ennek a feladatnak rendelkeznek.
@@ -119,7 +113,7 @@ Kiváló adattömörítés és hatékony megőrzési tisztítás teszi fürtöz�
 ## <a name="index-considerations"></a>Index kapcsolatos szempontok
 A karbantartási feladat sortárindex fürtözött indexszel rendelkező táblák index kezdje az oszlop szükséges megfelelő SYSTEM_TIME időszak vége. Ha ilyen index nem létezik, a véges megőrzési időtartam nem konfigurálhatja:
 
-*Üzenet 13765, szint 16 állapot 1 <br> </br> "temporalstagetestdb.dbo.WebsiteUserInfo" rendszerverzióval ellátott historikus táblán véges megőrzési időszak beállítása sikertelen, mert a "temporalstagetestdb.dbo.WebsiteUserInfoHistory" előzménytábla nem tartalmazza a szükséges fürtözött indexszel. Érdemes lehet létrehozni a fürtözött oszlopcentrikus vagy SYSTEM_TIME végének megfelelő oszlopok kezdődő B-fa indexű idő alatt a előzménytáblán.*
+*Üzenet 13765, szint 16 állapot 1 <br> </br> véges megőrzési időszak beállítása sikertelen volt a rendszerverzióval ellátott historikus tábla "temporalstagetestdb.dbo.WebsiteUserInfo", mert a előzménytábla " temporalstagetestdb.dbo.WebsiteUserInfoHistory "nem tartalmazza a szükséges fürtözött indexszel. Érdemes lehet létrehozni a fürtözött oszlopcentrikus vagy SYSTEM_TIME végének megfelelő oszlopok kezdődő B-fa indexű idő alatt a előzménytáblán.*
 
 Fontos, hogy az alapértelmezett előzménytábla hozta létre az Azure SQL Database már rendelkezik fürtözött index, amely megfelel az adatmegőrzési láthatja. Ha el szeretné távolítani, hogy az index véges megőrzési idővel rendelkező táblán, a művelet sikertelen, a következő hiba miatt:
 
@@ -180,7 +174,7 @@ ALTER DATABASE <myDB>
 SET TEMPORAL_HISTORY_RETENTION  ON
 ````
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az alkalmazások ideiglenes táblák használata további tudnivalókért tekintse meg [Ismerkedés az Azure SQL Database az ideiglenes táblák](sql-database-temporal-tables.md).
 
 Látogasson el a Channel 9 hallani a [valós felhasználói historikus végrehajtása sikeres szövegegység](https://channel9.msdn.com/Blogs/jsturtevant/Azure-SQL-Temporal-Tables-with-RockStep-Solutions) és figyelési egy [historikus bemutató élő](https://channel9.msdn.com/Shows/Data-Exposed/Temporal-in-SQL-Server-2016).

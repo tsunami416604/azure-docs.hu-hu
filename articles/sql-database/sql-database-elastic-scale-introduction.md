@@ -2,24 +2,18 @@
 title: "Az Azure SQL Database méretezési out |} Microsoft Docs"
 description: "A szolgáltatott szoftverként (SaaS) fejlesztők szoftverként egyszerűen létrehozhat rugalmas, méretezhető adatbázisok a felhőben, ezek az eszközök használatával"
 services: sql-database
-documentationcenter: 
-manager: jhubbard
-author: ddove
-editor: 
-ms.assetid: d15a2e3f-5adf-41f0-95fa-4b945448e184
+manager: craigg
+author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: On Demand
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 09/06/2016
-ms.author: ddove
-ms.openlocfilehash: a99607a0a57087c313d1718ff0b77af3637e1fa9
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.author: sstein
+ms.openlocfilehash: 784f244f64464c92f1b04ce0523e8850f66b8383
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="scaling-out-with-azure-sql-database"></a>Scaling out with Azure SQL Database (Horizontális felskálázás az Azure SQL Database segítségével)
 Azure SQL Database-adatbázisok könnyen lehet horizontálisan a **Elastic Database** eszközök. Az eszközök és a szolgáltatások lehetővé teszik, hogy az adatbázis-erőforrások használata **Azure SQL Database** megoldások tranzakciós munkaterhelések, és különösen a szoftver egy szolgáltatott szoftverként (SaaS) alkalmazásokként létrehozásához. A rugalmas adatbázis-szolgáltatások álló a:
@@ -66,7 +60,7 @@ A legtöbb felhőméretű adatbázis-alkalmazások ezen két stratégiák együt
 * Horizontális skálázás kezeli a [Elastic Database ügyféloldali kódtárának](sql-database-elastic-database-client-library.md).
 * Függőleges skálázás úgy hajthatja végre, Azure PowerShell-parancsmagok használatával módosíthatja a szolgáltatásszintet, vagy úgy, hogy adatbázisok rugalmas készlethez.
 
-## <a name="sharding"></a>Horizontális
+## <a name="sharding"></a>Sharding
 *Horizontális* technika, nagy mennyiségű azonos strukturált adatok szét egy független adatbázisok számát. Általában különösen szoftver létrehozása a végfelhasználók vagy a vállalatok számára a szolgáltatás (SAAS) ajánlatok felhő fejlesztőkkel. Ezen end ügyfelek gyakran "bérlő" nevezik. Horizontális szükséges bármely számos oka lehet:  
 
 * Adatok teljes mérete túl nagy belül egy önálló adatbázis
@@ -88,7 +82,7 @@ Más forgatókönyvek csomag több bérlő együtt az adatbázisok, nem pedig az
 ### <a name="move-data-from-multiple-to-single-tenancy-databases"></a>Adatok áthelyezése több single-bérlőhöz adatbázisokhoz
 Egy SaaS-alkalmazás létrehozása, esetén jellemző, a lehetséges ügyfelek felajánlott a szoftver próbaverzióját. Ebben az esetben is költséghatékony, hogy egy több-bérlős adatbázisban az adatok. Azonban az ügyfél egy potenciális válásakor single-bérlő adatbázis jobb, mivel jobb teljesítményt nyújt. Ha a felhasználói adatok hozna létre, a próbaidőszak során, használja a [vegyes egyesítéses eszköz](sql-database-elastic-scale-overview-split-and-merge.md) a több-bérlős az adatok áthelyezése az új single-bérlő adatbázis.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Azt mutatja be, az ügyféloldali kódtár mintaalkalmazást, lásd: [Ismerkedés a rugalmas adatbáziseszközöket](sql-database-elastic-scale-get-started.md).
 
 További információ meglévő adatbázisok használata az eszközök átalakításáról: [telepítse át a meglévő adatbázisok horizontális](sql-database-elastic-convert-to-use-elastic-tools.md).

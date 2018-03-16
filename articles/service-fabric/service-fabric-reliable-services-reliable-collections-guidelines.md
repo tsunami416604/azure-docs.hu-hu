@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 12/10/2017
 ms.author: mcoskun
-ms.openlocfilehash: f9c48598a6bfb33f0151eff74ec5dd0ffb47b228
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 27ea71bcc378100e613a8edd1c57a93f3c9ed925
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="guidelines-and-recommendations-for-reliable-collections-in-azure-service-fabric"></a>Irányelvek és javaslatok az Azure Service Fabric megbízható gyűjtemények
 Ez a szakasz útmutatást nyújt a megbízható állapotkezelője és megbízható gyűjtemények használatával. A cél, hogy a felhasználók közös nehézségek elkerülése érdekében.
@@ -26,7 +26,7 @@ Ez a szakasz útmutatást nyújt a megbízható állapotkezelője és megbízhat
 Az irányelvek egyszerű ajánlásokat a feltételeket a következő előtaggal vannak sorolva *tegye*, *fontolja meg*, *kerülje* és *nem*.
 
 * Ne módosítsa az olvasási műveletek által visszaadott egyéni típusú objektum (például `TryPeekAsync` vagy `TryGetValueAsync`). Megbízható gyűjtemények, egyidejű gyűjtemények, mint például egy hivatkozást az objektumok és másolatát nem adhat vissza.
-* Lemásolni mély visszaadott típusú objektumhoz tartozó olyan egyéni módosítás előtt. Mivel a struktúrák és beépített pass-by-value, nem kell részletes lemásolni rajtuk.
+* Lemásolni mély visszaadott típusú objektumhoz tartozó olyan egyéni módosítás előtt. Mivel a struktúrák és beépített pass-by-value, nem kell csak referencia típusú mezők vagy a módosítani kívánt tulajdonságokat tartalmaznak, akkor a részletes másolatot rajtuk.
 * Ne használjon `TimeSpan.MaxValue` időtúllépési. Időtúllépések holtpont észleléséhez használandó.
 * Ne használjon tranzakció, miután ez befejeződött, megszakított, vagy elvetése megtörtént.
 * Ne használja az enumerálás a létrehozták a tranzakció hatókörén kívül.
@@ -49,7 +49,7 @@ Az alábbiakban néhány dolgot figyelembe venni:
   Ez azt jelenti, hogy egy verziója, amely egyetlen másodlagos olvasható adatok előfordulhat, hogy lehet hamis jutott el.
   Elsődleges olvasások a rendszer mindig stabil: is soha nem lehet false jutott el.
 
-### <a name="next-steps"></a>Következő lépések
+### <a name="next-steps"></a>További lépések
 * [A Reliable Collections használata](service-fabric-work-with-reliable-collections.md)
 * [Tranzakciók és a zárolásokat](service-fabric-reliable-services-reliable-collections-transactions-locks.md)
 * [Megbízható állapot Manager és a gyűjtemény belső funkciói](service-fabric-reliable-services-reliable-collections-internals.md)

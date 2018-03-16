@@ -2,24 +2,18 @@
 title: "A rugalmas adatbázis ügyféloldali kódtára a hitelesítő adatok kezelése |} Microsoft Docs"
 description: "A megfelelő szintű hitelesítő adatokat, csak olvasható, a rugalmas adatbázis-alkalmazások rendszergazdai beállítása"
 services: sql-database
-documentationcenter: 
-manager: jhubbard
-author: ddove
-editor: 
-ms.assetid: 72e0edaf-795e-4856-84a5-6594f735fb7e
+manager: craigg
+author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: Inactive
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
-ms.author: ddove
-ms.openlocfilehash: 0f266f3be8bf8c1699b3b19bea96c83d32f1bd69
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.author: sstein
+ms.openlocfilehash: 26d83779b218f8c936c020d63651861f45bafa2f
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="credentials-used-to-access-the-elastic-database-client-library"></a>Az Elastic Database ügyféloldali kódtár eléréséhez használt hitelesítő adatokat
 A [Elastic Database ügyféloldali kódtárának](sql-database-elastic-database-client-library.md) elérésére használt hitelesítő adatok három különböző típusú a [shard térkép manager](sql-database-elastic-scale-shard-map-management.md). Attól függően, hogy szükség van használja a legalacsonyabb szintű hozzáférés lehetséges a hitelesítő adatokat.
@@ -46,7 +40,7 @@ A változó **smmAdminConnectionString** egy kapcsolati karakterlánc, amely tar
 
 Ne használjon értékek formájában "username@server" – Ehelyett használja a "felhasználónév" értéket.  Ennek az az oka a hitelesítő adatokat kell működnie, szemben a shard manager adatbázist és az egyes szilánkok, lehet, hogy a különböző kiszolgálókon.
 
-## <a name="access-credentials"></a>Hozzáférési hitelesítő adatok
+## <a name="access-credentials"></a>Elérési hitelesítő adatok
 Létrehozásakor a shard térkép manager alkalmazásban nem felügyelheti a shard maps, használja a hitelesítő adatokat, amelyek csak olvasási engedéllyel a globális shard térképen. Ezeket a hitelesítő adatokat a globális shard leképezés beolvasott adatok használt [adatok függő útválasztási](sql-database-elastic-scale-data-dependent-routing.md) és az ügyfélen a shard térkép gyorsítótár adatokkal való feltöltése. A megadott hitelesítő adatok vannak a azonos hívás mintát keresztül **GetSqlShardMapManager**: 
 
 ```
@@ -71,7 +65,7 @@ Ebben a példában **smmUserConnectionString** tárolja a felhasználói hiteles
 
 Mivel a rendszergazdai hitelesítő adatokkal nem értékek formájában "username@server". Ehelyett használja "felhasználónév".  Ne feledje, hogy a kapcsolati karakterlánc nem tartalmaz a kiszolgáló és adatbázis nevét. Mivel ez a **OpenConnectionForKey** hívás automatikusan arra utasítja a kapcsolatot a megfelelő shard kulcs alapján. Ezért az adatbázis nevét és a kiszolgáló neve nincs megadva. 
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 [Adatbázisok és bejelentkezések kezelése az Azure SQL Database-ben](sql-database-manage-logins.md)
 
 [Az SQL Database-adatbázis védelme](sql-database-security-overview.md)

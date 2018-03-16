@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: 
 ms.date: 01/02/2018
 ms.author: lbosq
-ms.openlocfilehash: 59d926f54c8dfc2991929f2eb42b20056e3a09c3
-ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
+ms.openlocfilehash: b32838dfaf83ea3acfb7125322bb99124370bd8e
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-cosmos-db-gremlin-graph-support"></a>Azure Cosmos DB Gremlin graph-támogatás
 Azure Cosmos-adatbázis támogatja [Apache Tinkerpop](http://tinkerpop.apache.org) átjárás nyelvi diagramot [Gremlin](http://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps), vagyis egy grafikonon API graph entitások létrehozására és a graph lekérdezés műveletet hajt végre. A Gremlin nyelv segítségével (csúcsban és szélek) graph entitásokat hozhatnak létre, belül entitásokból tulajdonságainak módosítása, hajtsa végre a lekérdezéseket és traversals és entitások törlésére. 
@@ -84,7 +84,7 @@ A következő táblázat, amelyeket a rendszer Azure Cosmos DB TinkerPop szolgá
 | Változó szolgáltatások | Támogatja a logikai, egész, bájt, duplán, lebegőpontos, egész, hosszú, karakterlánc | Támogatja az egyszerű típusok, kompatibilis adatmodellt összetett típus |
 | Csúcspont szolgáltatások | Támogatja a RemoveVertices, MetaProperties, AddVertices, MultiProperties, StringIds, UserSuppliedIds, AddProperty, RemoveProperty  | Támogatja a létrehozása, módosítása és törlése csúcsban |
 | Csúcspont tulajdonság szolgáltatások | StringIds, UserSuppliedIds, AddProperty, RemoveProperty, BooleanValues, ByteValues, DoubleValues, FloatValues, IntegerValues, LongValues, StringValues | Támogatja a létrehozása, módosítása és törlése csúcspont tulajdonságai |
-| Biztonsági szolgáltatások | AddEges, RemoveEdges, StringIds, UserSuppliedIds, AddProperty, RemoveProperty | Támogatja a létrehozása, módosítása és törlése élei számára |
+| Biztonsági szolgáltatások | AddEdges, RemoveEdges, StringIds, UserSuppliedIds, AddProperty, RemoveProperty | Támogatja a létrehozása, módosítása és törlése élei számára |
 | Edge tulajdonság szolgáltatások | Tulajdonságok, BooleanValues, ByteValues, DoubleValues, FloatValues, IntegerValues, LongValues, StringValues | Támogatja a létrehozása, módosítása és törlése peremhálózati tulajdonságai |
 
 ## <a name="gremlin-wire-format-graphson"></a>Gremlin egybeírt: GraphSON
@@ -147,7 +147,7 @@ A csúcsban GraphSON által használt tulajdonságok a következők:
 | --- | --- |
 | id | Az él azonosítója. (A kombinációja értékű _partition, ha van ilyen) egyedinek kell lennie |
 | Címke | Az él címke. Ez a tulajdonság nem kötelező, de a kapcsolattípus leírására használt. |
-| Leltárjának | Az él csúcsban lévő listáját tartalmazza. A peremhálózati rendelkező Simuló információk tárolása lehetővé teszi a traversals gyors végrehajtása. Csúcsban a címkék alapján vannak csoportosítva. |
+| inV | Az él csúcsban lévő listáját tartalmazza. A peremhálózati rendelkező Simuló információk tárolása lehetővé teszi a traversals gyors végrehajtása. Csúcsban a címkék alapján vannak csoportosítva. |
 | properties | Az él társított felhasználó által definiált tulajdonságok összessége. Minden egyes tulajdonsága több értékeket veheti fel. |
 
 Minden egyes tulajdonság szerepel egy tömbben több érték is tárolható. 
@@ -171,9 +171,9 @@ Mostantól az Azure Cosmos DB által támogatott Gremlin lépéseket vizsgáljuk
 | `addV` | Egy csúcsának hozzáadja a diagramhoz | [addV lépés](http://tinkerpop.apache.org/docs/current/reference/#addvertex-step) | |
 | `and` | Biztosítja, hogy a traversals ad vissza értéket | [lépés](http://tinkerpop.apache.org/docs/current/reference/#and-step) | |
 | `as` | A lépés modulátor változó hozzárendelése a kimenet egy lépés | [lépéseként](http://tinkerpop.apache.org/docs/current/reference/#as-step) | |
-| `by` | A lépés modulátor használt `group` és`order` | [lépés](http://tinkerpop.apache.org/docs/current/reference/#by-step) | |
+| `by` | A lépés modulátor használt `group` és `order` | [lépés](http://tinkerpop.apache.org/docs/current/reference/#by-step) | |
 | `coalesce` | Az első átjárás, amely visszaadja az eredményt adja vissza | [a Coalesce lépés](http://tinkerpop.apache.org/docs/current/reference/#coalesce-step) | |
-| `constant` | Konstans értéket ad vissza. Együtt`coalesce`| [állandó lépés](http://tinkerpop.apache.org/docs/current/reference/#constant-step) | |
+| `constant` | Konstans értéket ad vissza. Együtt `coalesce`| [állandó lépés](http://tinkerpop.apache.org/docs/current/reference/#constant-step) | |
 | `count` | A count ad vissza a átjárás | [Count lépés](http://tinkerpop.apache.org/docs/current/reference/#count-step) | |
 | `dedup` | Az értékeket ad vissza, amelyben az ismétlődő értékek eltávolításával | [a deduplikáció lépés](http://tinkerpop.apache.org/docs/current/reference/#dedup-step) | |
 | `drop` | Elutasítja azokat az értékeket (csúcspont/oldal) | [közvetlen lépés](http://tinkerpop.apache.org/docs/current/reference/#drop-step) | |

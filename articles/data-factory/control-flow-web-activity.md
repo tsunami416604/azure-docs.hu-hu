@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/10/2018
 ms.author: shlo
-ms.openlocfilehash: 04b542bf1f77b75c1c92b147b578df630b86d0ac
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 510f9ac95245580cb7f2f51487b5aeacc2a4825c
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="web-activity-in-azure-data-factory"></a>Az Azure Data Factory webes tevékenység
 A webes tevékenység segítségével meghívható egy egyéni REST-végpont egy Data Factory-folyamatból. Az adatkészleteket és a társított szolgáltatásokat továbbíthatja a tevékenység számára felhasználásra vagy elérés céljára. 
@@ -69,7 +69,7 @@ Tulajdonság | Leírás | Megengedett értékek | Szükséges
 név | A webes tevékenység neve. | Karakterlánc | Igen
 type | Meg kell **WebActivity**. | Karakterlánc | Igen
 metódus | REST API-metódusra a cél-végponthoz. | Karakterlánc. <br/><br/>A támogatott típusok: "GET", "POST", "PUT" | Igen
-url | Cél-végponthoz és elérési útja | Karakterlánc (vagy a resultType kifejezés karakterlánc) | Igen
+url | Cél-végponthoz és elérési útja | Karakterlánc (vagy a resultType kifejezés karakterlánc). A tevékenység időtúllépési lesz a hibával 1 perc, ha nem kapott választ a végpontról. | Igen
 fejlécek | A kérelemben küldött fejléceket. Ahhoz például, hogy állítsa be a nyelvét és típusát kérelem: `"headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }`. | Karakterlánc (vagy a resultType kifejezés karakterlánc) | Igen, a Content-type fejléc szükség. `"headers":{ "Content-Type":"application/json"}`
 törzs | A tartalom a végpontnak küldött jelöli. A PUT/POST metódusok szükséges.  | Karakterlánc (vagy a resultType kifejezés karakterlánc). <br/><br/>Tekintse meg a séma, a kérelem hasznos [kérelem hasznos séma](#request-payload-schema) szakasz. | Nem
 hitelesítés | A végpont meghívása használt hitelesítési módszert. Támogatott típusok a következők: "Basic vagy ClientCertificate." További információkért lásd: [hitelesítési](#authentication) szakasz. Ha hitelesítési nincs szükség, zárja ki ezt a tulajdonságot. | Karakterlánc (vagy a resultType kifejezés karakterlánc) | Nem
@@ -77,11 +77,11 @@ Adatkészletek | A végpont átadott adatkészletek listáját. | A tömb adatk�
 linkedServices | Végpont átadott összekapcsolt szolgáltatások listája. | A kapcsolódószolgáltatás-hivatkozások tömbje. Üres tömb lehet. | Igen
 
 > [!NOTE]
-> A webes tevékenység elindítja a REST-végpontok egy válasz JSON típusú kell visszaadnia.
+> A webes tevékenység elindítja a REST-végpontok egy válasz JSON típusú kell visszaadnia. A tevékenység időtúllépési lesz a hibával 1 perc, ha nem kapott választ a végpontról.
 
 ## <a name="authentication"></a>Hitelesítés
 
-### <a name="none"></a>None
+### <a name="none"></a>Nincs
 Ha a hitelesítés nem szükséges, nem tartalmaznak a "hitelesítés" tulajdonság.
 
 ### <a name="basic"></a>Alapszintű

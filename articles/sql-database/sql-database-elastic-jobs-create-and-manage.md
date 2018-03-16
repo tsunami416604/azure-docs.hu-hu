@@ -2,29 +2,23 @@
 title: "Azure SQL-adatbázisok kezelése |} Microsoft Docs"
 description: "Végezze el a létrehozását és kezelését egy rugalmas feladat."
 services: sql-database
-documentationcenter: 
-manager: jhubbard
-author: ddove
-editor: 
-ms.assetid: f858344d-085b-4022-935e-1b5fa20adbac
+manager: craigg
+author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: Inactive
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2016
-ms.author: ddove
-ms.openlocfilehash: 9ccd7d78169fa5324808e91724e8e193b56b0290
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.author: sstein
+ms.openlocfilehash: 77204e167d298ad77b2786b5d0a3dab1b557ccfc
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="create-and-manage-scaled-out-azure-sql-databases-using-elastic-jobs-preview"></a>Létrehozásához és kezeléséhez méretezett kimenő Azure SQL Database-adatbázisok rugalmas feladat (előzetes verzió)
 
 
-**Rugalmas adatbázis-feladatok** egyszerűbbé teheti az adatbázisok csoportok kezelését a következő felügyeleti műveletek, például a sémamódosítások, a hitelesítő adatok kezelése, a hivatkozás adatfrissítések, a teljesítményadat-gyűjtés vagy a bérlő (ügyfél) telemetriai adatok gyűjtése futtatásával. Rugalmas adatbázis-feladatok érhető el jelenleg az Azure portál és a PowerShell-parancsmagok használatával. Azonban az Azure portál felületek csökkenteni az összes adatbázis között a végrehajtás során korlátozott funkciók egy [rugalmas készlet (előzetes verzió)](sql-database-elastic-pool.md). Keresztül férhetnek hozzá a további funkciók és a parancsprogramok végrehajtását egyénileg definiált gyűjteményét, illetve a shard például adatbázisok csoportja beállítása (használatával létrehozott [Elastic Database ügyféloldali kódtárának](sql-database-elastic-scale-introduction.md)), lásd: [létrehozása és kezelése a PowerShell használatával feladatok](sql-database-elastic-jobs-powershell.md). További információ a feladatok: [rugalmas adatbázis-feladatok áttekintése](sql-database-elastic-jobs-overview.md). 
+**Rugalmas adatbázis-feladatok** egyszerűbbé teheti az adatbázisok csoportok kezelését a következő felügyeleti műveletek, például a sémamódosítások, a hitelesítő adatok kezelése, a hivatkozás frissítéseket, a teljesítményadat-gyűjtés vagy a bérlő (ügyfél) telemetriai futtatásával gyűjtemény. Rugalmas adatbázis-feladatok érhető el jelenleg az Azure portál és a PowerShell-parancsmagok használatával. Azonban az Azure portál felületek csökkenteni az összes adatbázis között a végrehajtás során korlátozott funkciók egy [rugalmas készlet (előzetes verzió)](sql-database-elastic-pool.md). Keresztül férhetnek hozzá a további funkciók és a parancsprogramok végrehajtását egyénileg definiált gyűjteményét, illetve a shard például adatbázisok csoportja beállítása (használatával létrehozott [Elastic Database ügyféloldali kódtárának](sql-database-elastic-scale-introduction.md)), lásd: [létrehozása és kezelése a PowerShell használatával feladatok](sql-database-elastic-jobs-powershell.md). További információ a feladatok: [rugalmas adatbázis-feladatok áttekintése](sql-database-elastic-jobs-overview.md). 
 
 ## <a name="prerequisites"></a>Előfeltételek
 * Azure-előfizetés. Ingyenes próbaverzió, lásd: [ingyenes próbaverzió](https://azure.microsoft.com/pricing/free-trial/).

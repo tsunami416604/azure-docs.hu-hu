@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 08/15/2017
+ms.date: 03/12/2018
 ms.author: arramac
 ms.custom: devcenter
-ms.openlocfilehash: 0b19071bf871029b488b26d3f125d08d7d2a2dd4
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: 71eadc08aeb4ac197f55b6d3aac8eb6009be9107
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-cosmos-db-getting-started-with-the-sql-api-and-net-core"></a>Azure Cosmos DB: Az SQL API-t és a .NET Core első lépések
 > [!div class="op_single_selector"]
@@ -218,7 +218,7 @@ Másolja, majd illessze be az alábbi kódot a **GetStartedDemo** metódusba az 
 ```csharp
     this.client = new DocumentClient(new Uri(EndpointUri), PrimaryKey);
 
-    await this.client.CreateDatabaseIfNotExists("FamilyDB_oa");
+    await this.client.CreateDatabaseIfNotExistsAsync("FamilyDB_oa");
 
     // ADD THIS PART TO YOUR CODE
     await this.client.CreateDocumentCollectionIfNotExistsAsync(UriFactory.CreateDatabaseUri("FamilyDB_oa"), new DocumentCollection { Id = "FamilyCollection_oa" });
@@ -318,7 +318,7 @@ Ezután szúrjon be két dokumentumot, egyet az Andersen családhoz, egyet pedig
 Másolja, majd illessze be a `// ADD THIS PART TO YOUR CODE` után álló kódot a **GetStartedDemo** metódusba, a dokumentumgyűjtemény létrehozása alatt.
 
 ```csharp
-await this.CreateDatabaseIfNotExists("FamilyDB_oa");
+await this.CreateDatabaseIfNotExistsAsync("FamilyDB_oa");
 
 await this.CreateDocumentCollectionIfNotExists("FamilyDB_oa", "FamilyCollection_oa");
 
@@ -464,15 +464,8 @@ Másolja, majd illessze be a **ReplaceFamilyDocument** metódust az **ExecuteSim
 // ADD THIS PART TO YOUR CODE
 private async Task ReplaceFamilyDocument(string databaseName, string collectionName, string familyName, Family updatedFamily)
 {
-    try
-    {
-        await this.client.ReplaceDocumentAsync(UriFactory.CreateDocumentUri(databaseName, collectionName, familyName), updatedFamily);
-        this.WriteToConsoleAndPromptToContinue("Replaced Family {0}", familyName);
-    }
-    catch (DocumentClientException de)
-    {
-        throw;
-    }
+    await this.client.ReplaceDocumentAsync(UriFactory.CreateDocumentUri(databaseName, collectionName, familyName), updatedFamily);
+    this.WriteToConsoleAndPromptToContinue("Replaced Family {0}", familyName);
 }
 ```
 
@@ -505,15 +498,8 @@ Másolja, majd illessze be a **DeleteFamilyDocument** metódust a **ReplaceFamil
 // ADD THIS PART TO YOUR CODE
 private async Task DeleteFamilyDocument(string databaseName, string collectionName, string documentName)
 {
-    try
-    {
-        await this.client.DeleteDocumentAsync(UriFactory.CreateDocumentUri(databaseName, collectionName, documentName));
-        Console.WriteLine("Deleted Family {0}", documentName);
-    }
-    catch (DocumentClientException de)
-    {
-        throw;
-    }
+    await this.client.DeleteDocumentAsync(UriFactory.CreateDocumentUri(databaseName, collectionName, documentName));
+    Console.WriteLine("Deleted Family {0}", documentName);
 }
 ```
 
@@ -590,7 +576,7 @@ A cikkben szereplő összes mintát tartalmazó GetStarted-megoldás összeáll�
 
 Az SQL API hivatkozásainak Azure Cosmos DB .NET Core SDK-t a Visual Studio visszaállításához kattintson a jobb gombbal a **GetStarted** Megoldáskezelőben, majd megoldás **engedélyezése NuGet-csomagok visszaállításának**. Következő lépésként a Program.cs fájlban frissítse az EndpointUrl és az AuthorizationKey értékeket leírtak szerint [csatlakozás Azure Cosmos DB fiók](#Connect).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Összetettebb ASP.NET MVC-oktatóanyagot szeretne? Lásd: [ASP.NET MVC oktatóprogram: webalkalmazás fejlesztése a Azure Cosmos DB](sql-api-dotnet-application.md).
 * A Xamarin iOS, Android vagy űrlapok fejlesztése az Azure Cosmos DB .NET Core SDK-t az SQL API-t használó alkalmazások? Lásd: [használó alkalmazások mobil a Xamarinnal és Azure Cosmos DB](mobile-apps-with-xamarin.md).
 * Méret- és teljesítménytesztelést szeretne végezni az Azure Cosmos DB használatával? Lásd: [teljesítmény és méretezhetőség, az Azure Cosmos DB tesztelése](performance-testing.md)

@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 11/21/2017
 ms.author: wesmc
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 52a45f1b67e3194739fe97daad56de2d3515dee3
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: ff31f8b265452b6864e36323e770f808f87de019
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="twilio-binding-for-azure-functions"></a>Az Azure Functions Twilio-kötés
 
@@ -28,12 +28,18 @@ Ez a cikk azt ismerteti, hogyan a szöveges üzenetek küldéséhez a [Twilio](h
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
+## <a name="packages"></a>Csomagok
+
+A Twilio-kötések szerepelnek a [Microsoft.Azure.WebJobs.Extensions.Twilio](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Twilio) NuGet-csomagot. A csomag forráskódja van a [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Twilio/) GitHub-tárházban.
+
+[!INCLUDE [functions-package](../../includes/functions-package.md)]
+
 ## <a name="example"></a>Példa
 
 Tekintse meg a nyelvspecifikus példát:
 
 * [C#](#c-example)
-* [C# parancsfájl (.csx)](#c-script-example)
+* [C# script (.csx)](#c-script-example)
 * [JavaScript](#javascript-example)
 
 ### <a name="c-example"></a>C# – példa
@@ -195,7 +201,7 @@ module.exports = function (context, myQueueItem) {
 
 ## <a name="attributes"></a>Attribútumok
 
-A [C# osztálykönyvtárakhoz](functions-dotnet-class-library.md), használja a [TwilioSms](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Twilio/TwilioSMSAttribute.cs) attribútumot, amelyet a NuGet-csomag [Microsoft.Azure.WebJobs.Extensions.Twilio](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Twilio).
+A [C# osztálykönyvtárakhoz](functions-dotnet-class-library.md), használja a [TwilioSms](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Twilio/TwilioSMSAttribute.cs) attribútum.
 
 Konfigurálható attribútumtulajdonságok kapcsolatos információkért lásd: [konfigurációs](#configuration). Íme egy `TwilioSms` metódus-aláírás attribútum példát:
 
@@ -221,14 +227,14 @@ Az alábbi táblázat ismerteti a beállított kötés konfigurációs tulajdons
 
 |Function.JSON tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-|**típusa**|| meg kell `twilioSms`.|
-|**iránya**|| meg kell `out`.|
-|**név**|| A Twilio SMS szöveges üzenetek függvény kódban használt változó neve. |
+|**Típusa**|| meg kell `twilioSms`.|
+|**direction**|| meg kell `out`.|
+|**name**|| A Twilio SMS szöveges üzenetek függvény kódban használt változó neve. |
 |**accountSid**|**AccountSid**| Ez az érték, amely tárolja a Twilio-fiók Sid alkalmazásbeállítás neve értékre kell állítani.|
 |**authToken**|**AuthToken**| Ez az érték, amely tárolja a Twilio-hitelesítési jogkivonat alkalmazásbeállítás neve értékre kell állítani.|
-|**a**|**Címzett**| Ez az érték a telefonszámot, amelyet az SMS szöveg küldött értéke.|
-|**a**|**A**| Ez az érték értéke a telefonszámot, amelyet az SMS szöveg küldi.|
-|**törzs**|**Törzs**| Ez az érték használatával lehet SMS üzenetet a merevlemez code, ha nincs szüksége a függvény a kódban dinamikusan beállítása. |
+|**A**|**Címzett**| Ez az érték a telefonszámot, amelyet az SMS szöveg küldött értéke.|
+|**from**|**A**| Ez az érték értéke a telefonszámot, amelyet az SMS szöveg küldi.|
+|**Törzs**|**Törzs**| Ez az érték használatával lehet SMS üzenetet a merevlemez code, ha nincs szüksége a függvény a kódban dinamikusan beállítása. |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 

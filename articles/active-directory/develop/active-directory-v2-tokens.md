@@ -3,7 +3,7 @@ title: Az Azure Active Directory v2.0 jogkivonatok referencia |} Microsoft Docs
 description: "A jogkivonatok és jogcímek különböző típusairól a Azure AD v2.0-végpontra által kibocsátott"
 services: active-directory
 documentationcenter: 
-author: dstrockis
+author: hpsin
 manager: mtillman
 editor: 
 ms.assetid: dc58c282-9684-4b38-b151-f3e079f034fd
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/07/2017
-ms.author: dastrock
+ms.author: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 01994e067bd7ce0343f12ec3334a91bd062251a8
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 4479b3d34824b88f0a666b6185a6bc89337358a9
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-active-directory-v20-tokens-reference"></a>Az Azure Active Directory v2.0 jogkivonatok referenciái
 Az Azure Active Directory (Azure AD) v2.0-végponttól számos különböző típusú minden biztonsági jogkivonatokat bocsát ki [hitelesítési folyamat](active-directory-v2-flows.md). Ezt a hivatkozást a formátuma, a biztonsági jellemzőkkel és a különböző típusú lexikális elem tartalmát ismerteti.
@@ -54,7 +54,7 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VL
 >
 
 #### <a name="claims-in-id-tokens"></a>Azonosító-jogkivonatokat a jogcím
-| Név | Jogcím | Példaérték | Leírás |
+| Name (Név) | Jogcím | Példaérték | Leírás |
 | --- | --- | --- | --- |
 | Célközönség |`aud` |`6731de76-14a6-49ae-97bc-6eba6914391e` |A jogkivonat az illetékes címzett azonosítja. Az azonosító-jogkivonatokat a célközönségét az alkalmazás a Microsoft alkalmazás regisztrációs portálon rendelt az alkalmazás alkalmazás-azonosító. Az alkalmazás kell ellenőrizni az értékét, és utasítsa el a jogkivonatot, ha az érték nem egyezik. |
 | Kiállító |`iss` |`https://login.microsoftonline.com/b9419818-09af-49c2-b0c3-653adc1f376e/v2.0 ` |Azonosítja a biztonságijogkivonat-szolgáltatás (STS) hoz létre, és a jogkivonatot, és az Azure AD-bérlőt, amelyben a felhasználó hitelesítési adja vissza. Az alkalmazás érdemes ellenőrizni a kibocsátó jogcím győződjön meg arról, hogy a jogkivonat származik-e a v2.0-végponttól. Azt is használjon a GUID része a jogcímszabályok bérlőinek, amelyeket az alkalmazás való bejelentkezés korlátozni. A GUID, amely azt jelzi, hogy a felhasználó Microsoft-fiók fogyasztói felhasználó `9188040d-6c67-4c5b-b112-36a304b66dad`. |
@@ -67,7 +67,7 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VL
 | Hozzáférési jogkivonat kivonata |`at_hash` |`SGCPtt01wxwfgnYZy2VJtQ` |A hozzáférési token kivonatoló azonosító szerepel jogkivonatokat, csak ha az azonosító token kiadott olyan OAuth 2.0 hozzáférési jogkivonatot. A hozzáférési token hitelességének használható. Ezen ellenőrzés végrehajtásával kapcsolatos részletekért lásd: a [OpenID Connect specification](http://openid.net/specs/openid-connect-core-1_0.html). |
 | Nonce |`nonce` |`12345` |Az egyszeri üzenet hitelesítési karakterláncok ismétlésének támadások kiküszöböléséhez stratégiát. Az alkalmazás megadhat egy nonce engedélyezési kérelmet használatával a `nonce` lekérdezési paraméter. Megadja a kérelemben szereplő érték is ki lesz adva a Azonosítót jogkivonatban `nonce` jogcím változtatás nélkül. Az alkalmazás ellenőrizheti, hogy az érték azt a kérelmet, amely összerendeli az alkalmazás munkamenet egyedi azonosítója jogkivonatok megadott értékkel. Az alkalmazás végre kell hajtania az ellenőrzés az azonosító jogkivonatok érvényesség-ellenőrzése során. |
 | név |`name` |`Babe Ruth` |A jogcím nevét emberek számára olvasható érték, amely azonosítja a token tárgya biztosít. Az érték nem garantált egyedinek kell lennie, változtatható, és úgy van kialakítva, csak megjelenítési célra használható. A `profile` hatókör ezt az igényt fogadásához szükséges. |
-| e-mailben |`email` |`thegreatbambino@nyy.onmicrosoft.com` |Ha létezik egy felhasználói fiókhoz tartozó elsődleges e-mail címe. Az érték változtatható és idővel változhatnak. A `email` hatókör ezt az igényt fogadásához szükséges. |
+| e-mail |`email` |`thegreatbambino@nyy.onmicrosoft.com` |Ha létezik egy felhasználói fiókhoz tartozó elsődleges e-mail címe. Az érték változtatható és idővel változhatnak. A `email` hatókör ezt az igényt fogadásához szükséges. |
 | előnyben részesített felhasználónév |`preferred_username` |`thegreatbambino@nyy.onmicrosoft.com` |Elsődleges felhasználóneve, amely a felhasználót a v2.0-végpontra jelöli. Ez lehet egy e-mail címet, telefonszámot vagy egy általános felhasználónév nélkül a megadott formátumban. Az érték változtatható és idővel változhatnak. Mivel ez változtatható, ez az érték nem használható engedélyezéshez. A `profile` hatókör ezt az igényt fogadásához szükséges. |
 | Tulajdonos |`sub` |`MF4f-ggWMEji12KynJUNQZphaUTvLcQug5jdF2nl01Q` | Arról, hogy mely a token állításokat információkat, például egy alkalmazás a felhasználó rendszerbiztonsági tag. Ez az érték nem módosítható és nem lehet újbóli hozzárendelése és nem használja fel újra. Ellenőrzi a engedélyezési biztonságosan, például ha használja a tokent elért egy erőforrást használható, és egy adatbázistáblákban kulcs használható. Mivel a tulajdonos mindig szerepel a jogkivonatokat, hogy az Azure AD-problémák, azt javasoljuk, ez az érték egy általános célú engedélyezési rendszerben. A tulajdonos, azonban egy páros azonosító - egyedi legyen egy adott alkalmazásra.  Ezért ha egy felhasználó bejelentkezik a két különböző alkalmazások két különböző ügyfél-azonosító, az alkalmazások két eltérő értékek tartoznak a tulajdonos jogcím fog kapni.  Ez lehet, hogy vagy a architektúra és adatvédelmi követelményeitől függően nem is kívánatos. |
 | objektum azonosítója |`oid` |`a1dbdde8-e4f9-4571-ad93-3059e3750d23` | A Microsoft identity rendszer ebben az esetben egy felhasználói fiókot az objektum nem módosítható azonosítója.  Azt is segítségével biztonságos és kulcsként az adatbázistáblákban levő engedélyezési ellenőrzéseket hajtanak végre. Ezt az Azonosítót egyedileg azonosítja a felhasználó alkalmazásra – két különböző alkalmazások az azonos felhasználói bejelentkezés fog kapni a ugyanazt az értéket a `oid` jogcímek.  Ez azt jelenti, hogy használható Microsoft online szolgáltatások, például a Microsoft Graph lekérdezések létrehozásakor.  A Microsoft Graph ezt az Azonosítót ad vissza a `id` tulajdonság egy adott felhasználói fiók.  Mivel a `oid` lehetővé teszi, hogy a felhasználók, összefüggéseket több alkalmazást a `profile` hatókör ezt az igényt fogadásához szükséges. Vegye figyelembe, hogy ha egy felhasználó több bérlő, a felhasználó fogja tartalmazni az egyes bérlők különböző Objektumazonosító - nek minősíti azokat külön fiókot annak ellenére, hogy a felhasználó bejelentkezik az egyes fiókokhoz azokkal a hitelesítő adatokkal. |
@@ -86,7 +86,7 @@ Frissítési jogkivonatok több erőforrás. A frissítési token során egy er�
 
 A frissítési token választ kap, az alkalmazás kell igényelnie, és biztosítani a `offline_acesss` hatókör. További részletek a `offline_access` hatókörét, tekintse meg a [hozzájárulási és hatókörök](active-directory-v2-scopes.md) cikk.
 
-Frissítési jogkivonatok, és mindig lesz, az alkalmazás teljesen átlátszó. Ezek az Azure AD v2.0-végponttól által kiállított és csak felügyelete és a v2.0-végpontra értelmezi. Hosszú élettartamú, de az alkalmazás nem írható várható, hogy egy frissítési jogkivonat bármely ideig tart. Frissítési jogkivonatokat különböző okokból bármikor érvénytelenített lehet. Csak az alkalmazás tudja, hogy a frissítési jogkivonat érvényes, beváltani azt kérelmek, így a v2.0-végpontra kísérletet.
+Frissítési jogkivonatok, és mindig lesz, az alkalmazás teljesen átlátszó. Ezek az Azure AD v2.0-végponttól által kiállított és csak felügyelete és a v2.0-végpontra értelmezi. Hosszú élettartamú, de az alkalmazás nem írható várható, hogy egy frissítési jogkivonat bármely ideig tart. Lehet, hogy a frissítési jogkivonatokat érvénytelenített bármikor különböző okokból - további információkért lásd: [visszavonási token](active-directory-token-and-claims.md#token-revocation). Csak az alkalmazás tudja, hogy a frissítési jogkivonat érvényes, beváltani azt kérelmek, így a v2.0-végpontra kísérletet.
 
 Amikor új tokenre egy frissítési token beváltja (ha megadták az alkalmazás és a `offline_access` hatókör), kap egy új frissítési jogkivonat a biztonságijogkivonat-válaszban. Mentse az újonnan kiadott frissítési jogkivonat a kérésben használt helyett. Ez biztosítja, hogy, hogy a frissítési jogkivonatokat maradnak, amíg érvényes.
 
@@ -140,10 +140,10 @@ Jogcím-érvényesítést, végre kell hajtania, az alkalmazás teljes listájá
 
 Ezeket a jogcímeket a várt értékek részletek szerepelnek a [azonosító-jogkivonatokat](# ID tokens) szakasz.
 
-## <a name="token-lifetimes"></a>Token élettartama
+## <a name="token-lifetimes"></a>Jogkivonatok élettartama
 A következő token élettartama csak tájékoztatási nyújtunk. Az információk segíthetnek fejlesztése és alkalmazások hibakeresését. Az alkalmazások történik, ezek állandó maradjon élettartama bármelyikét nem kell írni. A token élettartama is, és bármikor változik.
 
-| Token | Élettartam | Leírás |
+| Jogkivonat | Élettartam | Leírás |
 | --- | --- | --- |
 | Azonosító-jogkivonatokat (munkahelyi vagy iskolai fiókok) |1 óra |Azonosító-jogkivonatokat általában érvényesek 1 óra. A webalkalmazás használhatja ez ugyanazt az élettartam (ajánlott) a felhasználó a saját munkamenet fenntartásához, vagy választhat egy teljesen más munkamenetek élettartamát. Ha az alkalmazás egy új ID-token beszerzése, kell új bejelentkezési kérés a v2.0 a végpont hitelesítéséhez. Ha a felhasználó egy érvényes böngésző-munkamenetet a v2.0-végponttal rendelkezik, a felhasználó előfordulhat, hogy nem kell írja be újra a hitelesítő adataikat. |
 | Azonosító-jogkivonatokat (személyes fiókok) |24 óra |A személyes fiókok azonosító-jogkivonatokat általában érvényes 24 órán át. A webalkalmazás használhatja ez ugyanazt az élettartam (ajánlott) a felhasználó a saját munkamenet fenntartásához, vagy választhat egy teljesen más munkamenetek élettartamát. Ha az alkalmazás egy új ID-token beszerzése, kell új bejelentkezési kérés a v2.0 a végpont hitelesítéséhez. Ha a felhasználó egy érvényes böngésző-munkamenetet a v2.0-végponttal rendelkezik, a felhasználó előfordulhat, hogy nem kell írja be újra a hitelesítő adataikat. |

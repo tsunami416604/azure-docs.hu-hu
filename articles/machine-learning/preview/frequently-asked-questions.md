@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 08/30/2017
-ms.openlocfilehash: 86ef8acf46cef2b057596d8224c6c29f3a0f534d
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 6146e1ce98144a05bef2ca29705f451aa3f5fb50
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-machine-learning-frequently-asked-questions"></a>Gyakori kérdések az Azure Machine Learning
 
@@ -32,7 +32,7 @@ További régiókban, azt a termék fejlesztésére lesz hozzáadva.  A telepít
 
 **Milyen más Azure-szolgáltatások szükségesek?**
 
-Az Azure Machine Learning összes képességeket teljesen tapasztal, Azure Machine Learnign Visual Studio VSTS fiókot, Azure Blob Storage, Azure tároló beállításjegyzék, adatok tudományos VM vagy a HDInsight számítási és az Azure Tárolószolgáltatás fogja használni.
+Az Azure Blob Storage és Azure tároló beállításjegyzék Azure Machine Learning használják. Továbbá szüksége lesz számítási erőforrások, például egy adatok tudományos VM vagy a HDInsight-fürt telepítéséhez. Számítási és tároló is szükség, mint a webes szolgáltatások telepítésekor [Azure Tárolószolgáltatás](https://docs.microsoft.com/azure/aks).
 
 **Hogyan kapcsolódnak Azure Machine Learning Microsoft Machine Learning szolgáltatásokat az SQL Server 2017?**   
 
@@ -46,7 +46,7 @@ Sajnos jelenleg támogatott Python csak. Jelenleg az R-integráció dolgozik, é
 
 MMLSpark biztosít a részletes tanulási, és a hatékonyságot, kiemeléssel Apache Spark adatok tudományos eszközök megkönnyítik a kísérleti és -az-a-legkorszerűbb algoritmusokat. MMLSpark kínál a Microsoft kognitív eszközkészlet és OpenCV Spark gépi tanulási folyamatok integrálását. A képnek és szövegnek adatok hatékony, magas szinten méretezhető prediktív és elemzési modellek hozhat létre. MMLSpark egy nyílt forráskódú licenc érhető el, és AML munkaterület fogyasztható modellek és algoritmusok halmazát tartalmazza. MMLSpark további információkért látogasson el a termék dokumentációját. 
 
-**Az új eszközök és szolgáltatások által támogatott Spark mely verzióival? Felső rész**
+**Az új eszközök és szolgáltatások által támogatott Spark mely verzióival?**
 
 Munkaterület jelenleg tartalmazza, és támogatja a MMLSpark verzió 0,8 értéket, amely összeegyeztethető Apache Spark 2.1. Akkor is szeretné MMLSpark 0,8 GPU-kompatibilis Docker képe Linux virtuális gépeken.
 
@@ -119,7 +119,7 @@ Az Azure Machine Learning-munkaterület egy kiegészítő alkalmazás szakmai ad
 
 **Munkaterület van egy IDE?**
 
-Nem. A Machine Learning-munkaterület úgy tervezték, mint például a Jupyter notebookok, Visual Studio Code és PyCharm népszerű IDEs való egy kiegészítő, de nincs teljesen működőképes IDE. A Machine Learning-munkaterület kínál néhány egyszerű szöveg szerkesztési képességeket, de a hibakeresést, intellisense és egyéb általánosan használt IDE képességek nem támogatottak. Azt javasoljuk, hogy használ a kedvenc IDE kód fejlesztési és hibakeresést. 
+Nem. A Machine Learning-munkaterület úgy tervezték, mint például a Jupyter notebookok, Visual Studio Code és PyCharm népszerű IDEs való egy kiegészítő, de nincs teljesen működőképes IDE. A Machine Learning-munkaterület kínál néhány egyszerű szöveg szerkesztési képességeket, de a hibakeresést, intellisense és egyéb általánosan használt IDE képességek nem támogatottak. Azt javasoljuk, hogy használ a kedvenc IDE kód fejlesztési és hibakeresést. Kezdésként érdemes lehet is próbálja [AI Visual Studio Code eszközök](https://www.visualstudio.com/downloads/ai-tools-vscode).
 
 **Az Azure Machine Learning-munkaterület használatával díjat van?**
 

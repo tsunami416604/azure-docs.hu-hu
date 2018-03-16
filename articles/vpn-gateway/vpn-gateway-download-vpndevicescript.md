@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2018
 ms.author: yushwang
-ms.openlocfilehash: ebff881cdaa7dd3e14fa1687588408cd9a911553
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 2ec428bc5d2cdfb376db3c27b9899014c7ffa2af
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="download-vpn-device-configuration-scripts-for-s2s-vpn-connections"></a>Töltse le a VPN-eszköz konfigurációs parancsfájlokat S2S VPN-kapcsolatokhoz
 
@@ -103,4 +103,4 @@ Miután letöltött és a konfigurációs parancsfájl érvényesítése, a köv
 
 ## <a name="next-steps"></a>További lépések
 
-Miután a kapcsolat létrejött, hozzáadhat virtuális gépeket a virtuális hálózataihoz. A lépésekért lásd: [Virtuális gép létrehozása](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+További konfigurálásához a [pont-pont kapcsolat](vpn-gateway-howto-site-to-site-resource-manager-portal.md).

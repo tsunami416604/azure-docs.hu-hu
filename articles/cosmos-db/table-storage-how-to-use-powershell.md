@@ -12,19 +12,16 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/02/2017
+ms.date: 03/14/2018
 ms.author: robinsh
-ms.openlocfilehash: 15a4ed2370598cb98565c48b4563bee3a4445827
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: c09809e9cf513dbb9420f675bbf431c176f740bd
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="perform-azure-table-storage-operations-with-azure-powershell"></a>Az Azure PowerShell Azure Table storage műveleteket 
-
->[!NOTE]
->Az Azure Cosmos DB tábla API prémium szolgáltatások biztosít a table storage például kulcsrakész globális terjesztési kis késleltetésű olvasások és írások, másodlagos indexelő vagy dedikált átviteli sebesség. A legtöbb esetben ez a cikk a munkahelyi Azure Cosmos DB tábla API, mind az Azure Table storage, de ez a cikk a PowerShell-parancsok csak az Azure Table storage. Ha Azure Cosmos DB tábla API-t használ, tekintse meg [Azure Cosmos DB tábla API műveletek az Azure PowerShell](table-powershell.md).
->
+[!INCLUDE [storage-table-cosmos-db-tip-include](../../includes/storage-table-cosmos-db-langsoon-tip-include.md)]
 
 Azure Table storage a NoSQL-adattár, amely segítségével tárolja, és hatalmas strukturált, nem relációs adatok lekérdezése egy. A szolgáltatás fő összetevőit táblák, entitásokat és tulajdonságok. A tábla az entitások gyűjteményét. Egy entitás tulajdonságait. Minden entitás legfeljebb 252 tulajdonságot, amely minden név-érték pár is rendelkezik. Ez a cikk feltételezi, hogy Ön már ismeri az Azure Table Storage szolgáltatással kapcsolatos fogalmak. Részletes információkért lásd: [ismertetése a Table szolgáltatás adatmodell](/rest/api/storageservices/Understanding-the-Table-Service-Data-Model) és [Ismerkedés az Azure Table storage használatának .NET](table-storage-how-to-use-dotnet.md).
 
@@ -38,7 +35,7 @@ Azure Table storage a NoSQL-adattár, amely segítségével tárolja, és hatalm
 > * Tábla entitások törlése
 > * Tábla törlése
 
-A cikkben található útmutató bemutatja, hogyan eltávolításához, amikor elkészült, hozzon létre egy új tárfiókot egy új erőforráscsoportot. Ha inkább használhatja egy meglévő tárfiókot használ, azt teheti meg helyette.
+A cikkben található útmutató bemutatja, hogyan eltávolításához, amikor elkészült, hozzon létre egy új Azure Storage-fiók egy új erőforráscsoportot. Ha inkább használhatja egy meglévő Tárfiókot használ, azt teheti meg helyette.
 
 A példák szükség Azure PowerShell modul verziója 4.4.0 vagy újabb. A PowerShell-ablakban futtassa `Get-Module -ListAvailable AzureRM` verzió található. Ha semmi nem jelenik meg, vagy szeretné frissíteni, lásd: [telepítése Azure PowerShell modul](/powershell/azure/install-azurerm-ps). 
 
@@ -105,7 +102,7 @@ New-AzureStorageTable –Name $tableName –Context $ctx
 A tárolási fiók használata a táblázatok listájának beolvasása [Get-AzureStorageTable](/powershell/module/azure.storage/Get-AzureStorageTable).
 
 ```powershell
-$storageTable = Get-AzureStorageTable –Context $ctx | select Name
+Get-AzureStorageTable –Context $ctx | select Name
 ```
 
 ## <a name="retrieve-a-reference-to-a-specific-table"></a>Egy adott táblához hivatkozást lekérni

@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
-ms.openlocfilehash: 5549fb8f20ac2eb07b52b3b8e1c418873e467c93
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: f1cf83044eb4f001ba341cabd0771b267c3f996d
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Attribútum-leképezésekhez kifejezések írása az Azure Active Directoryban
 Egy SaaS-alkalmazáshoz történő konfigurálásakor megadhatja attribútum-leképezésekhez típusú egyik egy kifejezés-hozzárendelést. Ezeknél a parancsfájl-szerű kifejezés, amely lehetővé teszi a felhasználók adatok átalakítása több biztosítható a SaaS-alkalmazás formátumokba kell írnia.
@@ -62,7 +62,7 @@ Attribútum-leképezésekhez kifejezések szintaxisa a Visual Basic Applications
 | Name (Név) | Kötelező / ismétlődő | Típus | Megjegyzések |
 | --- | --- | --- | --- |
 | **source** |Szükséges |Karakterlánc |Általában az attribútum neve a forrás-objektumból. |
-| **inputFormat** |Szükséges |Karakterlánc |Az érték formátumúak. A támogatott formátumok, lásd: [http://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx](http://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx). |
+| **inputFormat** |Szükséges |Karakterlánc |Az érték formátumúak. A támogatott formátumok, lásd: [ http://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx ](http://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx). |
 | **outputFormat** |Szükséges |Karakterlánc |A kimeneti dátum formátumát. |
 
 - - -
@@ -91,8 +91,8 @@ Ha a forrás-értékeket egy többértékű attribútum, akkor minden értékét
 | Name (Név) | Kötelező / ismétlődő | Típus | Megjegyzések |
 | --- | --- | --- | --- |
 | **source** |Szükséges |Karakterlánc |Általában az attribútum neve. |
-| **start** |Szükséges |egész szám |Az index a **forrás** karakterlánc, ahol a substring kell kezdődnie. A karakterlánc első karaktere az 1 indexe lesz, a második karakter 2 mutatója, és így tovább. |
-| **hossza** |Szükséges |egész szám |A substring hosszát. Hossza kívül lejártát a **forrás** karakterlánc, a függvény karakterláncrészletet ad vissza **start** végét indextől **forrás** karakterlánc. |
+| **start** |Szükséges |integer |Az index a **forrás** karakterlánc, ahol a substring kell kezdődnie. A karakterlánc első karaktere az 1 indexe lesz, a második karakter 2 mutatója, és így tovább. |
+| **Hossza** |Szükséges |integer |A substring hosszát. Hossza kívül lejártát a **forrás** karakterlánc, a függvény karakterláncrészletet ad vissza **start** végét indextől **forrás** karakterlánc. |
 
 - - -
 ### <a name="not"></a>nem
@@ -108,7 +108,7 @@ Ha a forrás-értékeket egy többértékű attribútum, akkor minden értékét
 
 - - -
 ### <a name="replace"></a>Csere
-**Függvény:**<br> ObsoleteReplace(source, oldValue, regexPattern, regexGroupName, replacementValue, replacementAttributeName, template)
+**Függvény:**<br> Replace(source, oldValue, regexPattern, regexGroupName, replacementValue, replacementAttributeName, template)
 
 **Leírás:**<br>
 Lecseréli az értékeket karakterláncként. Attól függően, hogy a megadott paraméterek másképp működik:
@@ -119,13 +119,13 @@ Lecseréli az értékeket karakterláncként. Attól függően, hogy a megadott 
 * Ha **oldValue** és **sablon** itt találhatók:
   
   * Összes előfordulását lecseréli a **oldValue** a a **sablon** rendelkező a **forrás** érték
-* Ha **oldValueRegexPattern**, **oldValueRegexGroupName**, **helyettesítő értéke** itt találhatók:
+* Ha **regexPattern**, **regexGroupName**, **helyettesítő értéke** itt találhatók:
   
   * Lecseréli az összes értékeket oldValueRegexPattern helyettesítő értéke a forrás karakterláncot az egyező
-* Ha **oldValueRegexPattern**, **oldValueRegexGroupName**, **replacementPropertyName** itt találhatók:
+* Ha **regexPattern**, **regexGroupName**, **replacementPropertyName** itt találhatók:
   
-  * Ha **forrás** értéke van, de **forrás** adja vissza
-  * Ha **forrás** nem rendelkezik értékkel, használja a **oldValueRegexPattern** és **oldValueRegexGroupName** csereértékre kibontani a tulajdonság  **replacementPropertyName**. Helyettesítő értéke az eredményt adja vissza a rendszer
+  * Ha **forrás** nincs értéke **forrás** adja vissza
+  * Ha **forrás** értéke, használja a **regexPattern** és **regexGroupName** csereértékre kibontani a tulajdonság **replacementPropertyName** . Helyettesítő értéke az eredményt adja vissza a rendszer
 
 **Paraméterek:**<br> 
 
@@ -137,7 +137,7 @@ Lecseréli az értékeket karakterláncként. Attól függően, hogy a megadott 
 | **regexGroupName** |Optional |Karakterlánc |A csoport nevét **regexPattern**. Csak akkor, ha replacementPropertyName használata esetén azt ki a csoport értékét, helyettesítő helyettesítő tulajdonság értéke. |
 | **replacementValue** |Optional |Karakterlánc |Új értéket lecseréli a régi kiszolgálóéval. |
 | **replacementAttributeName** |Optional |Karakterlánc |Az attribútum értékét, kell használni, ha a forrás értéke nincs neve. |
-| **sablon** |Optional |Karakterlánc |Ha **sablon** érték van megadva, fog keresni **oldValue** belül a sablont, és cserélje le az adatforrás-értéke. |
+| **Sablon** |Optional |Karakterlánc |Ha **sablon** érték van megadva, fog keresni **oldValue** belül a sablont, és cserélje le az adatforrás-értéke. |
 
 - - -
 ### <a name="singleapproleassignment"></a>SingleAppRoleAssignment
@@ -213,6 +213,17 @@ A felhasználói alias létrehozására alapul véve a felhasználó utónevét 
 * **BEMENETI** (givenName): "John"
 * **BEMENETI** (Vezetéknév): "Doe"
 * **KIMENETI**: "JohDoe"
+
+### <a name="remove-diacritics-from-a-string-and-convert-to-lowercase"></a>Távolítsa el az ékezetek karakterláncból, és a kisbetűssé alakítandó
+Távolítsa el a különleges karaktereket egy karakterlánc, és a nagybetűk kisbetűssé alakítandó kell.
+
+**Kifejezés:** <br>
+`Replace(Replace(Replace(Replace(Replace(Replace(Replace( Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace( Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace([givenName], , "([Øø])", , "oe", , ), , "[Ææ]", , "ae", , ), , "([äãàâãåáąÄÃÀÂÃÅÁĄA])", , "a", , ), , "([B])", , "b", , ), , "([CçčćÇČĆ])", , "c", , ), , "([ďĎD])", , "d", , ), , "([ëèéêęěËÈÉÊĘĚE])", , "e", , ), , "([F])", , "f", , ), , "([G])", , "g", , ), , "([H])", , "h", , ), , "([ïîìíÏÎÌÍI])", , "i", , ), , "([J])", , "j", , ), , "([K])", , "k", , ), , "([ľłŁĽL])", , "l", , ), , "([M])", , "m", , ), , "([ñńňÑŃŇN])", , "n", , ), , "([öòőõôóÖÒŐÕÔÓO])", , "o", , ), , "([P])", , "p", , ), , "([Q])", , "q", , ), , "([řŘR])", , "r", , ), , "([ßšśŠŚS])", , "s", , ), , "([TŤť])", , "t", , ), , "([üùûúůűÜÙÛÚŮŰU])", , "u", , ), , "([V])", , "v", , ), , "([W])", , "w", , ), , "([ýÿýŸÝY])", , "y", , ), , "([źžżŹŽŻZ])", , "z", , ), " ", , , "", , )`
+
+**Minta bemeneti/kimeneti:** <br>
+
+* **BEMENETI** (givenName): "Zoë"
+* **KIMENETI**: "zoe"
 
 ### <a name="output-date-as-a-string-in-a-certain-format"></a>Bizonyos formátumban karakterláncként kimeneti dátum
 Szeretne küldeni a dátumok adott formátumot SaaS-alkalmazás. <br>

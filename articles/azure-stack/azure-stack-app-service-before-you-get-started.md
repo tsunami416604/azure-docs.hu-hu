@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/09/2018
 ms.author: anwestg
-ms.openlocfilehash: 3261a312cde9ebdf41f6dadb82c14d108715f8f7
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 5323fe505adfd9b3495dd85ce41d6f141125184b
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="before-you-get-started-with-app-service-on-azure-stack"></a>Az App Service Azure veremben megkezdése előtt
 
@@ -47,7 +47,7 @@ Azure App Service Azure veremben telepítése előtt el kell végeznie az ebben 
 
 ## <a name="high-availability"></a>Magas rendelkezésre állás
 
-A 1802 kiadás Azure-készlet már támogatja a tartalék tartományok, mert az Azure App Service Azure veremben új telepítések tartalék tartományokban sor kerül, és biztosítja a hibatűrést.  Az Azure App Service Azure veremben meglévő telepítéséhez, amelyek telepítve vannak-e a 1802 kiadása előtt frissíteni, a dokumentáció (azure-stack-app-service-fault-domain-update.md) egyensúlyba a központi telepítési módját.
+A 1802 kiadás Azure-készlet már támogatja a tartalék tartományok, mert az Azure App Service Azure veremben új telepítések tartalék tartományokban sor kerül, és biztosítja a hibatűrést.  Frissítse az Azure App Service Azure veremben meglévő telepítéséhez, amelyek telepítve vannak-e a 1802 kiadása előtt, tekintse meg a [dokumentáció](azure-stack-app-service-fault-domain-update.md) egyensúlyba a központi telepítési módját.
 
 Ezen kívül az Azure App Service Azure veremben a magas rendelkezésre állás érdekében telepíteni a szükséges fájl server és SQL Server-példány egy magas rendelkezésre állású konfigurációban. 
 

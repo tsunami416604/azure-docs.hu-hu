@@ -1,3 +1,19 @@
+---
+title: "fájl belefoglalása"
+description: "fájl belefoglalása"
+services: virtual-machines
+author: jonbeck7
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 03/09/2018
+ms.author: azcspmt;jonbeck;cynthn
+ms.custom: include file
+ms.openlocfilehash: 1b46eac189f4b06ad134b7a4e6d8f5a281a66b94
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 03/16/2018
+---
 Általános célú Virtuálisgép-méretek adja meg az elosztott terhelésű CPU-memória aránya. Ideális választás tesztelési-fejlesztési feladatokhoz, kis és közepes méretű adatbázisokhoz, valamint kis és közepes adatforgalmú webkiszolgálókhoz. Ez a cikk tájékoztatást ad azokról a Vcpu, adatlemezek és hálózati adapterek, valamint tárolási átviteli sebesség és a hálózati sávszélesség minden méretéhez ennél a csoportosításnál száma. 
 
 - Az A- és az Av2-sorozat virtuális gépei különféle hardvertípusokon és processzorokon helyezhetőek üzembe. A méretük a hardvernek megfelelően szabályozott, hogy egyenletes processzorteljesítményt nyújtsanak a futó példány számára, a futtató hardvertől függetlenül. Az adott méretet futtató fizikai hardver meghatározásához kérdezze le a virtuális hardvert a virtuális gépen belülről.
@@ -85,7 +101,7 @@ ACU: 210–250
 | Standard_D2_v2    | 2         | 7           | 100            | 6000 / 93 / 46                                           | 8 / 8x500                         | 2 / 1500                     |
 | Standard_D3_v2    | 4         | 14          | 200            | 12000 / 187 / 93                                         | 16 / 16x500                         | 4 / 3000                     |
 | Standard_D4_v2    | 8         | 28          | 400            | 24000 / 375 / 187                                        | 32 / 32x500                       | 8 / 6000                     |
-| Standard_D5_v2    | 16        | 56          | 800            | 48000 / 750 / 375                                        | 64 / 64 x 500                       | 8 / 12000  |
+| Standard_D5_v2    | 16        | 56          | 800            | 48000 / 750 / 375                                        | 64 / 64x500                       | 8 / 12000  |
 
 
 <br>

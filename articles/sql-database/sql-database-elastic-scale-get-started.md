@@ -2,24 +2,18 @@
 title: "Rugalmas Adatbáziseszközöket - Azure beolvasása használatába |} Microsoft Docs"
 description: "A rugalmas adatbázis-eszközök szolgáltatás az Azure SQL Database, beleértve egy egyszerű alkalmazást mintaalkalmazás alapvető ismertetése."
 services: sql-database
-documentationcenter: 
-manager: jstrauss
+manager: craigg
 author: anumjs
-editor: CarlRabeler
-ms.assetid: b6911f8d-2bae-4d04-9fa8-f79a3db7129d
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: On Demand
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/16/2017
 ms.author: anjangsh
-ms.openlocfilehash: 615e5b0bf299a844ea2d37476fc704c48e17b363
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 28ff3f6eee2316a078badcf29e6780f3844f3a54
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="get-started-with-elastic-database-tools"></a>Ismerkedés a rugalmas adatbázis-eszközök
 Ez a dokumentum bemutatja a fejlesztői élményének a [elastic database ügyféloldali kódtárának](sql-database-elastic-database-client-library.md) segíti a minta alkalmazás futtatására. A mintaalkalmazás létrehoz egy egyszerű szilánkos alkalmazást, és felderíti az Azure SQL Database rugalmas Adatbáziseszközöket funkciójának főbb funkciók. Alkalmazási helyzetei összpontosít [shard térkép felügyeleti](sql-database-elastic-scale-shard-map-management.md), [adatok függő útválasztási](sql-database-elastic-scale-data-dependent-routing.md), és [több shard lekérdezése](sql-database-elastic-scale-multishard-querying.md). Az ügyféloldali kódtára a .NET, valamint a Java érhető el. 
@@ -117,7 +111,7 @@ A mintaalkalmazás például új adatbázisokat hoz létre. Ez a funkció a köl
 
 Díjszabási információkért lásd: [díjszabása SQL-adatbázis](https://azure.microsoft.com/pricing/details/sql-database/).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A rugalmas adatbázis-eszközökkel kapcsolatos további információkért tekintse meg a következő cikkeket:
 
 * Kódminták: 

@@ -1,10 +1,10 @@
 ---
 title: "A központi telepítési sablonok létrehozása az Azure Logic Apps |} Microsoft Docs"
-description: "A logic apps Azure Resource Manager sablonok üzembe helyezési és kiadás felügyeleti létrehozása"
+description: "A logic Apps alkalmazások telepítése Azure Resource Manager-sablonok létrehozása"
 services: logic-apps
 documentationcenter: .net,nodejs,java
-author: jeffhollan
-manager: anneta
+author: ecfan
+manager: SyntaxC4
 editor: 
 ms.assetid: 85928ec6-d7cb-488e-926e-2e5db89508ee
 ms.service: logic-apps
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.custom: H1Hack27Feb2017
 ms.date: 10/18/2016
-ms.author: LADocs; jehollan
-ms.openlocfilehash: 9cfbb294010d48deaf4b4c78c6a6bcd59a387d87
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: LADocs; estfan
+ms.openlocfilehash: 91d93a02bb9bf48c5bda0304c9d3d52c22e30209
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/16/2018
 ---
-# <a name="create-templates-for-logic-apps-deployment-and-release-management"></a>A logic apps-sablonok létrehozása központi telepítési és a kiadási felügyeleti
+# <a name="create-azure-resource-manager-templates-for-deploying-logic-apps"></a>A logic Apps alkalmazások telepítése Azure Resource Manager-sablonok létrehozása
 
 A logikai alkalmazás létrehozása után érdemes az Azure Resource Manager sablon létrehozásához.
 Így könnyen telepíthet a logikai alkalmazást a környezetben vagy az erőforráscsoport lehet szükség.
@@ -46,7 +46,7 @@ Vagy előfordulhat, hogy szeretné belül különböző előfizetésekhez vagy e
 
 ## <a name="create-a-logic-app-deployment-template"></a>Hozzon létre egy logic app központi telepítési sablont
 
-A legegyszerűbb módja annak, hogy egy érvényes logikai alkalmazás központi telepítési sablont, hogy használja a [Visual Studio eszközök a Logic Apps](logic-apps-deploy-from-vs.md).
+A legegyszerűbb módja annak, hogy egy érvényes logikai alkalmazás központi telepítési sablont, hogy használja a [Visual Studio eszközök a Logic Apps](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md#prerequisites).
 A Visual Studio eszközök, amelyek segítségével bármely előfizetés vagy a hely érvényes központi telepítési sablont hoz létre.
 
 Néhány más eszközök is segítséget nyújt logic app központi telepítési sablont hoz létre.
@@ -74,10 +74,106 @@ PowerShell telepítése után létrehozhat egy sablont a következő paranccsal:
 
 `armclient token $SubscriptionId | Get-LogicAppTemplate -LogicApp MyApp -ResourceGroup MyRG -SubscriptionId $SubscriptionId -Verbose | Out-File C:\template.json`
 
-`$SubscriptionId`az Azure-előfizetés-azonosító. Először lekérdezi egy hozzáférési jogkivonat segítségével ARMClient, majd kiszolgálókészletéhez keresztül, a PowerShell-parancsfájlba, és létrehozza a sablon egy JSON-fájlban.
+`$SubscriptionId` az Azure-előfizetés-azonosító. Először lekérdezi egy hozzáférési jogkivonat segítségével ARMClient, majd kiszolgálókészletéhez keresztül, a PowerShell-parancsfájlba, és létrehozza a sablon egy JSON-fájlban.
 
 ## <a name="add-parameters-to-a-logic-app-template"></a>Paraméterek hozzáadása a logic app-sablon
 A logic app-sablon létrehozása után továbbra is fel vagy módosít a paramétereket, amelyek hasznosak lehetnek. Például ha a definíciója tartalmaz egy erőforrás-azonosító egy Azure függvényt vagy beágyazott munkafolyamatot, amely egy központi telepítésben telepítését tervezi, hozzáadhat további erőforrások a sablonhoz és parametrizálja azonosítók, igény szerint. Ugyanez érvényes egyéni API-k és Swagger mutató hivatkozásokat az egyes erőforráscsoportokban telepítendő várt végpontok.
+
+### <a name="add-references-for-dependent-resources-to-visual-studio-deployment-templates"></a>Hivatkozások a tőle függő erőforrások hozzáadása a Visual Studio központi telepítési sablonok
+
+Ha azt szeretné, hogy a logikai alkalmazás függő erőforrásokra kell hivatkoznia, [Azure Resource Manager sablonfüggvényei](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-functions) logic app központi telepítési sablonba. Például érdemes hivatkozhasson rá az Azure-funkció vagy integrációs fiókkal, amely mellett a Logic Apps alkalmazást telepíteni szeretné a Logic Apps alkalmazást. Kövesse az alábbi irányelveket a központi telepítési sablont a paraméterek használatáról, úgy, hogy a Logic App Designer Renderelés megfelelően. 
+
+Eseményindítók és műveletek az ilyen típusú logic app paramétereket használhatja:
+
+*   Alárendelt munkafolyamat
+*   Függvényalkalmazás
+*   APIM hívás
+*   API kapcsolat futásidejű URL-címe
+*   API-kapcsolati útvonal
+
+És használhatja a sablont funkciókat, például a paraméterek, változókat, resourceId, concat, stb. Például ez hogyan lecserélheti az Azure-függvény erőforrás-azonosító:
+
+```
+"parameters":{
+    "functionName": {
+        "type":"string",
+        "minLength":1,
+        "defaultValue":"<FunctionName>"
+    }
+},
+```
+
+És ahol paraméterek szeretné használni:
+
+```
+"MyFunction": {
+    "type": "Function",
+    "inputs": {
+        "body":{},
+        "function":{
+            "id":"[resourceid('Microsoft.Web/sites/functions','functionApp',parameters('functionName'))]"
+        }
+    },
+    "runAfter":{}
+}
+```
+Másik példaként a Service Bus küldési üzenet művelet is parametrizálja:
+
+```
+"Send_message": {
+    "type": "ApiConnection",
+        "inputs": {
+            "host": {
+                "connection": {
+                    "name": "@parameters('$connections')['servicebus']['connectionId']"
+                }
+            },
+            "method": "post",
+            "path": "[concat('/@{encodeURIComponent(''', parameters('queueuname'), ''')}/messages')]",
+            "body": {
+                "ContentData": "@{base64(triggerBody())}"
+            },
+            "queries": {
+                "systemProperties": "None"
+            }
+        },
+        "runAfter": {}
+    }
+```
+> [!NOTE] 
+> host.runtimeUrl nem kötelező, és eltávolíthatja a sablon ha van ilyen.
+> 
+
+
+> [!NOTE] 
+> A Logic App Designer működéséhez paraméterek használatakor meg kell adni alapértelmezett értéket, például:
+> 
+> ```
+> "parameters": {
+>     "IntegrationAccount": {
+>     "type":"string",
+>     "minLength":1,
+>     "defaultValue":"/subscriptions/<subscriptionID>/resourceGroups/<resourceGroupName>/providers/Microsoft.Logic/integrationAccounts/<integrationAccountName>"
+>     }
+> },
+> ```
+
+## <a name="add-your-logic-app-to-an-existing-resource-group-project"></a>A logikai alkalmazás hozzáadása egy meglévő erőforráscsoport-projekt
+
+Ha egy meglévő erőforráscsoport-projekt, adhat hozzá a logikai alkalmazás erre a projektre a JSON-vázlat ablak. Egy másik logikai alkalmazást a korábban létrehozott alkalmazás mellett azt is megteheti.
+
+1. Nyissa meg az `<template>.json` fájlt.
+
+2. A JSON-vázlat ablak megnyitásához lépjen **nézet** > **más Windows** > **JSON-vázlat**.
+
+3. A sablonfájl egy erőforrás hozzáadásához kattintson **erőforrás hozzáadása** a JSON-vázlat ablak tetején. A JSON-vázlat ablak, kattintson a jobb gombbal vagy **erőforrások**, és válassza ki **új erőforrás hozzáadása**.
+
+    ![JSON-vázlat ablak](./media/logic-apps-create-deploy-template/jsonoutline.png)
+    
+4. Az a **erőforrás hozzáadása** párbeszédpanel, keresése és kijelölése **logikai alkalmazás**. A logikai alkalmazás neve, és válassza a **Hozzáadás**.
+
+    ![Erőforrás felvétele](./media/logic-apps-create-deploy-template/addresource.png)
+
 
 ## <a name="deploy-a-logic-app-template"></a>A logic app sablon üzembe helyezése
 

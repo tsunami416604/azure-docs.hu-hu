@@ -4,7 +4,7 @@ description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Az
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: femila
 ms.reviewer: joflore
 ms.assetid: 8264159a-11a2-4a8c-8285-4efea0adac8c
 ms.service: active-directory
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/07/2017
+ms.date: 03/12/2018
 ms.author: jeedes
-ms.openlocfilehash: e999e375d11f5d2a4657b360cf774ae10c28b0e0
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 1e7bd01c9c0f79a2cf96d7fd38dba57c4a407960
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clear-review"></a>Oktatóanyag: Azure Active Directoryval integrált egyértelmű áttekintése
 
@@ -108,9 +108,9 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Törölje a jelet felülvizsgálati tartomány és URL-címek az egyszeri bejelentkezés információk](./media/active-directory-saas-clearreview-tutorial/tutorial_clearreview_url.png)
 
-    a. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe:`https://<customer name>.clearreview.com/sso/metadata`
+    a. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe: `https://<customer name>.clearreview.com/sso/metadata/`
 
-    b. Az a **válasz URL-CÍMEN** szövegmező, adja meg a következő minta használatával URL-címe:`https://<customer>.clearreview.com/sso/acs/`
+    b. Az a **válasz URL-CÍMEN** szövegmező, adja meg a következő minta használatával URL-címe: `https://<customer name>.clearreview.com/sso/acs/`
 
 4. Ellenőrizze **megjelenítése speciális URL-beállításainak** , és végezze el a következő lépés, ha szeretne beállítani az alkalmazás **SP** kezdeményezett mód:
 
@@ -119,31 +119,36 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
     Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe:`https://<customer name>.clearreview.com`
 
     > [!NOTE] 
-    > Ezek az értékek nincsenek valós. Frissítheti ezeket az értékeket a tényleges azonosítója és a válasz URL-CÍMEN. Ügyfél [egyértelmű felülvizsgálati támogatási csoport](https://clearreview.com/contact/) beolvasni ezeket az értékeket.
+    > Ezek az értékek nincsenek valós. Frissítheti ezeket az értékeket a tényleges bejelentkezési URL-címet, a azonosítója és a válasz URL-CÍMEN. Ügyfél [egyértelmű felülvizsgálati támogatási csoport](https://clearreview.com/contact/) beolvasni ezeket az értékeket.
 
-5. A a **SAML-aláíró tanúsítványa** kattintson **tanúsítvány (Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
+5. Törölje a jelet felülvizsgálati alkalmazás az egyedi felhasználói azonosító értéket várt a névazonosítója jogcímek. Le kell képezni a felhasználói azonosító értéket **user.mail**.
+
+    ![Az attribútum szakasz](./media/active-directory-saas-clearreview-tutorial/attribute.png)
+
+
+6. A a **SAML-aláíró tanúsítványa** kattintson **tanúsítvány (Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
 
     ![A tanúsítvány letöltési hivatkozását](./media/active-directory-saas-clearreview-tutorial/tutorial_clearreview_certificate.png)
 
-6. Kattintson a **mentése** gombra.
+7. Kattintson a **mentése** gombra.
 
     ![Egyszeri bejelentkezés Mentés gombra konfigurálása](./media/active-directory-saas-clearreview-tutorial/tutorial_general_400.png)
 
-7. Az a **felülvizsgálati konfiguráció törlése** területen kattintson **egyértelmű felülvizsgálati konfigurálása** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **Sign-Out URL-címet, a SAML entitás azonosítója és a SAML-alapú egyszeri bejelentkezési URL-címe** a a **rövid összefoglaló szakasz.**
+8. Az a **felülvizsgálati konfiguráció törlése** területen kattintson **egyértelmű felülvizsgálati konfigurálása** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **Sign-Out és URL-címe, SAML Entitásazonosító SAML egyszeri bejelentkezés szolgáltatás** a a **rövid összefoglaló szakasz.**
 
     ![Törölje a konfiguráció áttekintése](./media/active-directory-saas-clearreview-tutorial/tutorial_clearreview_configure.png) 
 
-8. Egyszeri bejelentkezés konfigurálása **egyértelmű felülvizsgálati** oldalán, nyissa meg a **egyértelmű felülvizsgálati** portál, rendszergazdai hitelesítő adataival.
+9. Egyszeri bejelentkezés konfigurálása **egyértelmű felülvizsgálati** oldalán, nyissa meg a **egyértelmű felülvizsgálati** portál, rendszergazdai hitelesítő adataival.
 
-9. Válassza ki **Admin** a bal oldali navigációs sávon.
+10. Válassza ki **Admin** a bal oldali navigációs sávon.
 
     ![Egyszeri bejelentkezés Mentés gombra konfigurálása](./media/active-directory-saas-clearreview-tutorial/tutorial_clearreview_app_admin1.png)
 
-10. Válassza ki **módosítás** az oldal alján.
+11. Válassza ki **módosítás** az oldal alján.
 
     ![Egyszeri bejelentkezés Mentés gombra konfigurálása](./media/active-directory-saas-clearreview-tutorial/tutorial_clearreview_app_admin2.png)
 
-11. Hajtsa végre a következő lépéseket **egyszeri bejelentkezési beállítások** lap
+12. Hajtsa végre a következő lépéseket **egyszeri bejelentkezési beállítások** lap
 
     ![Egyszeri bejelentkezés Mentés gombra konfigurálása](./media/active-directory-saas-clearreview-tutorial/tutorial_clearreview_app_admin3.png)
 
@@ -155,7 +160,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     d. A letöltött tanúsítvány megnyitása a Jegyzettömbben, és illessze be a tartalom a **X.509 tanúsítvány** szövegmező.   
 
-12. Kattintson a **Save** (Mentés) gombra.
+13. Kattintson a **Save** (Mentés) gombra.
 
 > [!TIP]
 > Ezek az utasítások belül tömör verziója most el tudja olvasni a [Azure-portálon](https://portal.azure.com), míg az alkalmazás beállításakor!  Ez az alkalmazás a hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentációja keresztül a **konfigurációs** szakasz alján. További Itt a embedded dokumentációjából szolgáltatásról: [az Azure AD beágyazott dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -253,4 +258,3 @@ A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáf�
 [201]: ./media/active-directory-saas-clearreview-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-clearreview-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-clearreview-tutorial/tutorial_general_203.png
-

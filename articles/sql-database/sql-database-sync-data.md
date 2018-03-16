@@ -2,25 +2,19 @@
 title: "Az Azure SQL adatszinkronizálás (előzetes verzió) |} Microsoft Docs"
 description: "Ez az áttekintés bemutatja az Azure SQL adatszinkronizálás (előzetes verzió)"
 services: sql-database
-documentationcenter: 
 author: douglaslms
 manager: craigg
-editor: 
-ms.assetid: 
 ms.service: sql-database
-ms.custom: load & move data
-ms.workload: On Demand
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.custom: data-sync
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: douglasl
 ms.reviewer: douglasl
-ms.openlocfilehash: 5cf74140969fb354e426c41552d4d73a06c76890
-ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
+ms.openlocfilehash: 5abe3e5a56dfca263f109b86f473ac490da3eac7
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync-preview"></a>Szinkronizálja az adatokat több felhőalapú és helyszíni adatbázisok az SQL adatszinkronizálás (előzetes verzió)
 
@@ -78,7 +72,7 @@ Adatszinkronizálás nincs megfelelő, az alábbi helyzetekben:
     -   Ha *Hub wins*, a módosítások a központban mindig felülírja a tag változásai.
     -   Ha *tag wins*, a felülírási módosításához központban változásait. Ha egynél több tag, végső értéke függ, mely tag szinkronizálásának először.
 
-## <a name="sync-req-lim"></a>Követelmények és korlátozások
+## <a name="sync-req-lim"></a> Követelmények és korlátozások
 
 ### <a name="general-considerations"></a>Általános megfontolások
 
@@ -104,7 +98,7 @@ Adatok szinkronizálása által beszúrási, frissítési és törlési esemény
 
 #### <a name="unsupported-data-types"></a>Nem támogatott adattípusok
 
--   A FileStream
+-   FileStream
 
 -   SQL/CLR UDT
 
@@ -114,7 +108,7 @@ Adatok szinkronizálása által beszúrási, frissítési és törlési esemény
 
 #### <a name="limitations-on-service-and-database-dimensions"></a>A szolgáltatás és az adatbázis-dimenziókra korlátozásai
 
-| **Dimenziók**                                                      | **Korlát**              | **Megkerülő megoldás**              |
+| **Dimenziók**                                                      | **Limit**              | **Megkerülő megoldás**              |
 |-----------------------------------------------------------------|------------------------|-----------------------------|
 | Szinkronizálási csoportok maximális száma bármely adatbázis is tartozik.       | 5                      |                             |
 | Több végpont már egy szinkronizálási csoportban              | 30                     | Több szinkronizálási csoportok létrehozása |
@@ -122,7 +116,7 @@ Adatok szinkronizálása által beszúrási, frissítési és törlési esemény
 | Adatbázis, a tábla, a séma és az oszlop neve                       | nevenként 50 karakter hosszú lehet |                             |
 | A szinkronizálás csoport táblák                                          | 500                    | Több szinkronizálási csoportok létrehozása |
 | A táblázat egy szinkronizálási csoportban                              | 1000                   |                             |
-| Adatok sorméret táblán                                        | 24 mb                  |                             |
+| Adatok sorméret táblán                                        | 24 Mb                  |                             |
 | Minimális szinkronizálási időköz                                           | 5 perc              |                             |
 |||
 
@@ -164,7 +158,7 @@ Igen. SQL adatszinkronizálás támogatja a rendezést a következő esetekben:
 
 Összevonási gyökér adatbázis az SQL adatszinkronizálás (előzetes verzió) szolgáltatásban bármilyen korlátozás nélkül használható. Az összevont adatbázisban végpont nem tudja felvenni SQL adatszinkronizálás (előzetes verzió) aktuális verzióját.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 SQL adatszinkronizálás kapcsolatos további információkért lásd:
 

@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 01/26/2018
 ms.author: asmalser
-ms.openlocfilehash: 825bf3f6a3ea07cb229f00c81ad699d792ac53f9
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 976d7e7cb304a24f235e51952ce04826776e2789
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Oktatóanyag: Konfigurálja automatikus felhasználói kialakítási munkanap
 
@@ -35,7 +35,7 @@ A [kiépítése szolgáltatáshoz Azure Active Directory-felhasználó](active-d
 
 * **Az e-mailek visszaírási Workday-címek** -szolgáltatás kiépítését az Azure AD-felhasználó akkor írási ki az Azure AD felhasználói attribútumok vissza a Workday, például az e-mail cím.
 
-### <a name="scenarios-covered"></a>Ismertetett forgatókönyvek
+### <a name="what-human-resources-scenarios-does-it-cover"></a>Milyen emberi erőforrások forgatókönyvek nem vonatkozik?
 
 A Workday felhasználói létesítési munkafolyamatok az Azure AD-felhasználó létesítési szolgáltatás által támogatott automatizálhatják a következő emberi erőforrások és identitás életciklus-kezelési forgatókönyveket:
 
@@ -46,6 +46,20 @@ A Workday felhasználói létesítési munkafolyamatok az Azure AD-felhasználó
 * **Alkalmazott végződnek** – Ha egy alkalmazott a rendszer megszakítja a munkanapok, a felhasználói fiók automatikusan le van tiltva az Active Directory, Azure Active Directoryban, és opcionálisan Office 365 és [más használható az Azure-SaaS-alkalmazásokhoz AD](active-directory-saas-app-provisioning.md).
 
 * **Alkalmazott újra bízza** – Ha egy alkalmazott van rehired a munkanapok, a régi fiókot automatikusan újra aktiválni és újra létrehozni (attól függően, hogy igény szerint), hogy az Active Directory, Azure Active Directoryban, és opcionálisan Office 365 és [más SaaS-alkalmazásokhoz az Azure AD által támogatott](active-directory-saas-app-provisioning.md).
+
+### <a name="who-is-this-user-provisioning-solution-best-suited-for"></a>Ki a felhasználói kiépítési megoldás megfelelő?
+
+A Workday felhasználó kiépítési megoldás abban a pillanatban nyilvános előzetes verziójában, és akkor ajánlott, ha:
+
+* A szervezeteknek, amelyek egy előre elkészített, felhőalapú megoldás Workday felhasználólétesítés törlését
+
+* A szervezeteknek, amelyek közvetlenül a felhasználók átadása a WORKDAY-ből az Active Directory vagy az Azure Active Directory szükséges
+
+* A szervezeteknek, amelyek úgy kell létrehozni, adatok, a felhasználóknak a Workday HCM modulból kapott (lásd: [Get_Workers](https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v21.1/Get_Workers.html)) 
+
+* A szervezetek, amely esetében szeretne csatlakozni, helyezze át, és kilépés a felhasználók számára egy vagy több Active Directory-erdők szinkronizálva, tartományok és szervezeti egységek alapján csak a módosítása adatokat talált a Workday HCM modulban (lásd: [Get_Workers](https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v21.1/Get_Workers.html))
+
+* Office 365 e-mailek használó
 
 
 ## <a name="planning-your-solution"></a>A megoldás tervezése
@@ -62,10 +76,9 @@ Ebben az oktatóanyagban leírt forgatókönyv feltételezi, hogy már rendelkez
 * A felhasználók átadása, az Active Directory, 2012 vagy újabb Windows-szolgáltatást futtató, tartományhoz csatlakoztatott kiszolgálóra pedig szükséges a gazdagépre a [helyszíni szinkronizálási ügynök](https://go.microsoft.com/fwlink/?linkid=847801)
 * [Az Azure AD Connect](connect/active-directory-aadconnect.md) szinkronizálásához Active Directory és az Azure AD között
 
-
 ### <a name="solution-architecture"></a>Megoldás architektúrája
 
-Az Azure AD kiépítési összekötők megoldásához kiépítés és életciklus Identitáskezelés a WORKDAY-ből az Active Directory, az Azure AD SaaS-alkalmazásokhoz, és túl széles skáláját biztosítja. Milyen funkciókkal fogja használni, és hogyan lehet beállítani a megoldás attól függően, hogy a szervezet környezet és a követelmények változnak. Első lépésként számát a következő jelen, és a szervezetben telepített készlete érvénybe:
+Az Azure AD széles választéka csatlakozók telepítését és az identitások életciklus kezeléséhez a WORKDAY-ből Active Directory, az Azure AD SaaS-alkalmazásokhoz, és túl megoldásához kiépítés biztosít. Milyen funkciókkal fogja használni, és hogyan lehet beállítani a megoldás attól függően, hogy a szervezet környezet és a követelmények változnak. Első lépésként számát a következő jelen, és a szervezetben telepített készlete érvénybe:
 
 * Hány Active Directory-erdők használatban vannak?
 * Hány Active Directory-tartományok használatban vannak?
@@ -74,6 +87,7 @@ Az Azure AD kiépítési összekötők megoldásához kiépítés és életciklu
 * Vannak-e felhasználók, akik ki kell építeni az Active Directory és az Azure Active Directoryban (pl. "hibrid" felhasználók) is?
 * Vannak-e felhasználók, akik ki kell építeni az Azure Active Directory, de nem Active Directory (pl. "csak felhőalapú" felhasználók)?
 * Felhasználói e-mail címeket kell Workday visszaírását?
+
 
 Ha ezekre a kérdésekre adott válaszok, tervezze meg a Workday kiépítése a központi telepítés az alábbi útmutatást követve.
 
@@ -144,7 +158,7 @@ Hozzon létre egy korlátozás nélküli integrációs rendszerbiztonsági csopo
    
     ![CreateSecurity csoport](./media/active-directory-saas-workday-inbound-tutorial/IC750981.png "CreateSecurity csoport")
 2. Fejezze be a **biztonsági csoport létrehozása** feladat.  
-3. Integráció rendszerbiztonsági csoport kiválasztása – a korlátozás nélküli a **típus a központjaként biztonsági csoport** legördülő menüből.
+3. Válassza ki **integrációs rendszerbiztonsági csoport (nem korlátozott lehetőséget választja)** a a **típus a központjaként biztonsági csoport** legördülő menüből.
 4. Hozzon létre egy biztonsági csoportot, amelyhez tagokat a rendszer explicit módon hozzáadja. 
    
     ![CreateSecurity csoport](./media/active-directory-saas-workday-inbound-tutorial/IC750982.png "CreateSecurity csoport")
@@ -164,21 +178,11 @@ Hozzon létre egy korlátozás nélküli integrációs rendszerbiztonsági csopo
     ![Rendszerbiztonsági csoport](./media/active-directory-saas-workday-inbound-tutorial/IC750985.png "rendszerbiztonsági csoport")  
 
 ### <a name="configure-security-group-options"></a>Biztonsági csoport beállítások konfigurálása
-Ebben a lépésben engedélyt kell adnia lesz tartományi biztonsági házirend esetében a következő tartományi biztonsági házirend által védett adatok:
-
-
-| Művelet | Tartományi biztonsági házirend |
-| ---------- | ---------- | 
-| GET és a Put |  Külső fiók |
-| GET és a Put | Adatok: Nyilvános dolgozó jelentések |
-| GET és a Put | Adatok: Minden helyzetben |
-| GET és a Put | Adatok: Aktuális személyzeti információk |
-| GET és a Put | Adatok: Üzleti cím munkavégző profil |
-| Megtekintése és módosítása | Adatok: A munkahelyi E-mail |
+Ebben a lépésben engedélyt kell adnia lesz tartományi biztonsági házirend a munkavégző adatok a biztonsági csoporthoz.
 
 **Biztonsági csoport beállítások konfigurálása:**
 
-1. Adja meg a tartomány biztonsági házirendeket a keresési mezőbe, és kattintson a hivatkozásra **tartományi biztonsági házirendek funkcionális terület**.  
+1. Adja meg **tartományi biztonsági házirendek** a keresési mezőbe, és kattintson a hivatkozásra a **tartományi biztonsági házirendek funkcionális terület**.  
    
     ![Tartományi biztonsági házirendek](./media/active-directory-saas-workday-inbound-tutorial/IC750986.png "tartományi biztonsági házirendek")  
 2. Keresse meg a rendszer, és válassza a **rendszer** funkcionális területét.  Kattintson az **OK** gombra.  
@@ -190,23 +194,17 @@ Ebben a lépésben engedélyt kell adnia lesz tartományi biztonsági házirend 
 4. Kattintson a **engedélyek módosítása**, majd a a **engedélyek módosítása** párbeszédpanel lap, az új biztonsági csoportot hozzáadni a biztonsági csoportok listájának **beolvasása** és **Put**  integrációs engedélyeket. 
    
     ![Engedélyek szerkesztése](./media/active-directory-saas-workday-inbound-tutorial/IC750989.png "engedélyek szerkesztése")  
-5. Ismételje meg a működési területek kiválasztására szolgáló képernyő térjen vissza a fenti 1. lépés:, és ezúttal, keressen a személyzettel, válassza ki a **funkcionális területen személyzeti** kattintson **OK**.
+    
+5. Minden, a többi biztonsági házirendek ismételje meg a fenti 1 – 4:
+
+| Művelet | Tartományi biztonsági házirend |
+| ---------- | ---------- | 
+| GET és a Put | Adatok: Nyilvános dolgozó jelentések |
+| GET és a Put | Adatok: A munkahelyi kapcsolattartási adatok |
+| Lekérés | Adatok: Minden helyzetben |
+| Lekérés | Adatok: Aktuális személyzeti információk |
+| Lekérés | Adatok: Üzleti cím munkavégző profil |
    
-    ![Tartományi biztonsági házirendek](./media/active-directory-saas-workday-inbound-tutorial/IC750990.png "tartományi biztonsági házirendek")  
-6. A személyzeti funkcionális területen biztonsági szabályzatok listájában bontsa ki a **adatok: személyzeti** és minden egyes biztonsági házirendek fennmaradó megismétli a fenti 4:
-
-   * Adatok: Nyilvános dolgozó jelentések
-   * Adatok: Minden helyzetben
-   * Adatok: Aktuális személyzeti információk
-   * Adatok: Üzleti cím munkavégző profil
-   
-7. 1. lépés megismétlésével, a fenti való visszatéréshez kiválasztására szolgáló képernyő működési területek, és ez alkalommal keressen **elérhetőségi adatait**, jelölje ki a személyzeti funkcionális területet, és kattintson a **OK**.
-
-8.  A személyzeti funkcionális területen biztonsági szabályzatok listájában bontsa ki a **adatok: munkahelyi elérhetőségi adatait**, és a biztonsági házirendek az alábbi megismétli a fenti 4:
-
-    * Adatok: A munkahelyi E-mail
-
-    ![Tartományi biztonsági házirendek](./media/active-directory-saas-workday-inbound-tutorial/IC750991.png "tartományi biztonsági házirendek")  
     
 ### <a name="activate-security-policy-changes"></a>Aktiválja a biztonsági házirend módosításai
 
@@ -225,6 +223,41 @@ Ebben a lépésben engedélyt kell adnia lesz tartományi biztonsági házirend 
 ## <a name="configuring-user-provisioning-from-workday-to-active-directory"></a>A felhasználók átadása a WORKDAY-ből az Active Directory konfigurálása
 Kövesse ezeket az utasításokat a WORKDAY-ből minden Active Directory-erdőbe történő igénylő kiépítés felhasználói fiók beállítása.
 
+### <a name="planning"></a>Tervezés
+
+Mielőtt konfigurálná a felhasználók átadása egy Active Directory-erdőhöz, fontolja meg az alábbi kérdéseket. Ezekre a kérdésekre adott válaszokat határozza meg, hogy a hatókört szűrők és az attribútum-leképezésekhez meg kell adnia. 
+
+* **Mi a Workday felhasználók ki kell építeni az Active Directory erdőben?**
+
+   * *Példa: Felhasználók, ahol a Workday "Vállalati" attribútum értéke "Contoso", és a "Worker_Type" attribútum "Regular"*
+
+* **Felhasználók hogyan legyenek átirányítva a különböző szervezeti egységekhez (OU-k)?**
+
+   * *Példa: Felhasználók legyenek átirányítva, amely egy office-hely, szervezeti egységek az a Workday "Település" és "Country_Region_Reference" attribútumok*
+
+* **Hogyan lehet megadni a következő attribútumok az Active Directory?**
+
+   * Köznapi név (cn)
+      * *Példa: A Workday User_ID értéket használják az emberi erőforrások által beállított*
+      
+   * Alkalmazott azonosítója (employeeId)
+      * *Példa: A Workday Worker_ID értéket használja.*
+      
+   * SAM-fiók neve (sAMAccountName)
+      * *Példa: A Workday User_ID érték, egy Azure AD-kiépítés kifejezés érvénytelen karakterek eltávolítása a szűrt használata*
+      
+   * Egyszerű felhasználónév (userPrincipalName)
+      * *Példa: A Workday User_ID érték használata egy Azure AD kifejezés kiépítés hozzáfűzendő tartománynév*
+
+* **Hogyan felhasználók megfelelő Workday és az Active Directory között?**
+
+  * *Példa: Felhasználók egy adott Workday "Worker_ID" értéket a rendszer összehasonlítja az Active Directory-felhasználók "employeeID" ahol ugyanazzal az értékkel rendelkezik. Ha a Worker_ID érték nem található az Active Directoryban, majd létrehoz egy új felhasználót.*
+  
+* **Az Active Directory-erdőben már tartalmaz a felhasználó működéséhez szükséges a megfelelő logikai azonosítók?**
+
+  * *Példa: Ha ez egy új Workday központi telepítést, erősen ajánlott, hogy ki van töltve a megfelelő Workday Worker_ID értékek (vagy az egyedi azonosítóérték választott) lehető legegyszerűbb tartani a megfelelő programot kell-e az Active Directory.*
+    
+    
 ### <a name="part-1-adding-the-provisioning-connector-app-and-creating-the-connection-to-workday"></a>1. lépés: Az üzembe helyezési összekötő alkalmazás hozzáadása, és a Workday kapcsolat létrehozása
 
 **Az Active Directory kiépítésére konfigurálása a Workday:**
@@ -320,39 +353,38 @@ Ebben a szakaszban konfigurál, hogy felhasználói adatáramlás a WORKDAY-ből
 
 **Az alábbiakban néhány példa néhány gyakori kifejezésekkel a Workday és az Active Directory közötti attribútum-leképezésekhez**
 
--   A kifejezés, amely leképezhető a parentDistinguishedName AD attribútum kiépítése a felhasználót, hogy egy adott szervezeti egység egy vagy több Workday-forrás attribútum használható. Ebben a példában a város adataikat függően különböző szervezeti felhasználók helyezi a Workday.
+-   A kifejezés, amely leképezhető a parentDistinguishedName attribútum használják a felhasználók Workday forrás attribútum egy vagy több különböző szervezeti egységekhez. Itt ebben a példában a különböző szervezeti alapú helyezi a felhasználók a városban vannak.
 
--   A kifejezés, amely a userPrincipalName AD attribútum van leképezve, hozzon létre egy egyszerű firstName.LastName@contoso.com. A váltja fel érvénytelen különleges karaktereket is.
+-   Az Active Directoryban a userPrincipalName attribútum állítja elő a Workday felhasználói Azonosítót és a tartományutótag hozzáfűzésével
 
--   [Nincs a dokumentáció itt kifejezések írása](active-directory-saas-writing-expressions-for-attribute-mappings.md)
+-   [Nincs a dokumentáció itt kifejezések írása](active-directory-saas-writing-expressions-for-attribute-mappings.md). Ez magában foglalja a példák a speciális karakterek eltávolítása.
 
   
 | WORKDAY ATTRIBÚTUM | AZ ACTIVE DIRECTORY-ATTRIBÚTUM |  EGYEZŐ AZONOSÍTÓ? | LÉTREHOZÁSA / FRISSÍTÉSE |
 | ---------- | ---------- | ---------- | ---------- |
-|  **WorkerID**  |  EmployeeID | **Igen** | Írt csak létrehozásakor | 
-|  **Település**   |   l   |     | Hozzon létre + frissítése |
-|  **Vállalati**         | Vállalati   |     |  Hozzon létre + frissítése |
-|  **CountryReferenceTwoLetter**      |   CO |     |   Hozzon létre + frissítése |
-| **CountryReferenceTwoLetter**    |  c  |     |         Hozzon létre + frissítése |
-| **SupervisoryOrganization**  | Szervezeti egység  |     |  Hozzon létre + frissítése |
-|  **PreferredNameData**  |  displayName |     |   Hozzon létre + frissítése |
-| **EmployeeID**    |  cn    |   |   Írt csak létrehozásakor |
-| **Fax**      | facsimileTelephoneNumber     |     |    Hozzon létre + frissítése |
-| **Utónév**   | givenName       |     |    Hozzon létre + frissítése |
+| **WorkerID**  |  EmployeeID | **Igen** | Írt csak létrehozásakor | 
+| **UserID**    |  cn    |   |   Írt csak létrehozásakor |
+| **Csatlakozás ("@", [felhasználónév], a "contoso.com")**   | userPrincipalName     |     | Írt csak létrehozásakor 
+| **Replace(Mid(Replace(\[UserID\], , "(\[\\\\/\\\\\\\\\\\\\[\\\\\]\\\\:\\\\;\\\\|\\\\=\\\\,\\\\+\\\\\*\\\\?\\\\&lt;\\\\&gt;\])", , "", , ), 1, 20), , "([\\\\.)\*\$](file:///\\.)*$)", , "", , )**      |    sAMAccountName            |     |         Írt csak létrehozásakor |
 | **Kapcsoló (\[aktív\],, "0", "True", "1")** |  accountDisabled      |     | Hozzon létre + frissítése |
-| **Mobileszköz**  |    Mobileszköz       |     |       Hozzon létre + frissítése |
-| **E-mail cím**    | mail    |     |     Hozzon létre + frissítése |
+| **Utónév**   | givenName       |     |    Hozzon létre + frissítése |
+| **LastName**   |   sorozatszám   |     |  Hozzon létre + frissítése |
+| **PreferredNameData**  |  displayName |     |   Hozzon létre + frissítése |
+| **Vállalati**         | Vállalati   |     |  Hozzon létre + frissítése |
+| **SupervisoryOrganization**  | Szervezeti egység  |     |  Hozzon létre + frissítése |
 | **ManagerReference**   | Manager  |     |  Hozzon létre + frissítése |
+| **BusinessTitle**   |  cím     |     |  Hozzon létre + frissítése | 
+| **AddressLineData**    |  streetAddress  |     |   Hozzon létre + frissítése |
+| **Település**   |   l   |     | Hozzon létre + frissítése |
+| **CountryReferenceTwoLetter**      |   CO |     |   Hozzon létre + frissítése |
+| **CountryReferenceTwoLetter**    |  c  |     |         Hozzon létre + frissítése |
+| **CountryRegionReference** |  St     |     | Hozzon létre + frissítése |
 | **WorkSpaceReference** | physicalDeliveryOfficeName    |     |  Hozzon létre + frissítése |
 | **Irányítószám**  |   Irányítószám  |     | Hozzon létre + frissítése |
-| **LocalReference** |  preferredLanguage  |     |  Hozzon létre + frissítése |
-| **Replace(Mid(Replace(\[EmployeeID\], , "(\[\\\\/\\\\\\\\\\\\\[\\\\\]\\\\:\\\\;\\\\|\\\\=\\\\,\\\\+\\\\\*\\\\?\\\\&lt;\\\\&gt;\])", , "", , ), 1, 20), , "([\\\\.)\*\$](file:///\\.)*$)", , "", , )**      |    sAMAccountName            |     |         Írt csak létrehozásakor |
-| **LastName**   |   sorozatszám   |     |  Hozzon létre + frissítése |
-| **CountryRegionReference** |  St     |     | Hozzon létre + frissítése |
-| **AddressLineData**    |  streetAddress  |     |   Hozzon létre + frissítése |
 | **PrimaryWorkTelephone**  |  TelephoneNumber   |     | Hozzon létre + frissítése |
-| **BusinessTitle**   |  cím     |     |  Hozzon létre + frissítése |
-| **Csatlakozás ("@", cserélje le (cserélje le (cseréje (cserélje le (cserélje le (cserélje le (cserélje le (cserélje le (cserélje (le (a név felülírandó (csere (csere (csere (csere (csere (csere (csere (csere (csere (csere (csere (csere (csere (csere (csere (a név felülírandó () Cserélje le (Csatlakozás (".", [Keresztnév], [Vezetéknév]), "([Øø])", "Outlook Express",), "[Ææ]", "ae",), "([äãàâãåáąÄÃÀÂÃÅÁĄA])", "a",), "[B]", "b",), "([CçčćÇČĆ])", "c",), "([ďĎD])", "d",), "([ëèéêęěËÈÉÊĘĚE])", "e",), "[F]", "f",), "([G])" ,, "g",), "[H]", "h",), "([ïîìíÏÎÌÍI])", "i",), "[J]", "j",), "([-K])", "-k",), "([ľłŁĽL])", "l",), "([M])", "m",), "([ñńňÑŃŇN])", "n",), "([öòőõôóÖÒŐÕÔÓO])", "o",), "([P])", "p",), "([Q])", "q",),  "([ŘŘR])", "r",), "([ßšśŠŚS])", "s",), "([TŤť])", "t",), "([üùûúůűÜÙÛÚŮŰU])", "u",), "([V])", "v",), "([w" karakter]), "w",), "([ýÿýŸÝY])", "y",), "([źžżŹŽŻZ])", "z",), "",,, "",), "contoso.com")**   | userPrincipalName     |     | Írt csak létrehozásakor                                                   
+| **Fax**      | facsimileTelephoneNumber     |     |    Hozzon létre + frissítése |
+| **Mobileszköz**  |    Mobileszköz       |     |       Hozzon létre + frissítése |
+| **LocalReference** |  preferredLanguage  |     |  Hozzon létre + frissítése |                                               
 | **Kapcsoló (\[település\], "OU általános jogú felhasználók, OU = felhasználók, OU = alapértelmezett, OU = helyek, DC = = contoso, DC = com", "Dallas", "OU általános jogú felhasználók, OU = felhasználók, OU = Dallas, OU = helyek, DC = = contoso, DC = com", "Austin", "OU általános jogú felhasználók, OU = Felhasználók, OU = Austin, OU = helyek, DC = = contoso, DC = com ","Seattle"," OU általános jogú felhasználók, OU = felhasználók, OU = budapesti, OU = helyek, DC = = contoso, DC = com ","Londoni"," OU általános jogú felhasználók, OU = felhasználók, OU = London, OU = helyek, DC = = contoso, DC = com ")**  | parentDistinguishedName     |     |  Hozzon létre + frissítése |
   
 ### <a name="part-3-configure-the-on-premises-synchronization-agent"></a>3. lépés: A helyszíni-szinkronizálási ügynök konfigurálása
@@ -696,6 +728,7 @@ Ehhez az szükséges, használjon [Workday Studio](https://community.workday.com
             <wd:Include_Transaction_Log_Data>true</wd:Include_Transaction_Log_Data>
             <wd:Include_Photo>true</wd:Include_Photo>
             <wd:Include_User_Account>true</wd:Include_User_Account>
+            <wd:Include_Roles>true</wd:Include_Roles>
           </wd:Response_Group>
         </wd:Get_Workers_Request>
       </env:Body>

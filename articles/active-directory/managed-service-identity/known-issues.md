@@ -14,11 +14,11 @@ ms.tgt_pltfrm:
 ms.workload: identity
 ms.date: 12/12/2017
 ms.author: daveba
-ms.openlocfilehash: bd931b220c417f91b47278c82707d38de5c7f65e
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 84390f73fdac6554699dd43a0a36d16eace9a2bb
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="faqs-and-known-issues-with-managed-service-identity-msi-for-azure-active-directory"></a>Gyakori kérdések és ismert problémákat a felügyelt szolgáltatás Identity (MSI) az Azure Active Directory
 
@@ -37,6 +37,10 @@ Nincsenek nem, nem támogatja az MSI-fájl az Azure Cloud Services tervezi.
 ### <a name="does-msi-work-with-the-active-directory-authentication-library-adal-or-the-microsoft-authentication-library-msal"></a>MSI működik az Active Directory Authentication Library (ADAL) vagy a Microsoft hitelesítési könyvtár (MSAL)?
 
 Nem, MSI nincs még integrálva az adal-t vagy MSAL. Az MSI REST-végpont használatával egy MSI-token beszerzése a részletekért lásd: [egy Azure virtuális gép felügyelt szolgáltatás Identity (MSI) használata a token beszerzési](how-to-use-vm-token.md).
+
+### <a name="what-is-the-security-boundary-of-a-managed-service-identity"></a>Mi az a felügyelt Szolgáltatásidentitás biztonsági határ?
+
+A biztonsági határokat az identitás, amely kapcsolódik az erőforrás. A biztonsági határa a virtuális gép MSI-fájl, például a virtuális gép. Bármely kód, hogy a virtuális gépen: hívja az MSI-végpont és a jogkivonatok kérelem. Az MSI-t támogató egyéb erőforrások a hasonló élményt is.
 
 ### <a name="what-are-the-supported-linux-distributions"></a>Mik azok a támogatott Linux disztribúciókról?
 

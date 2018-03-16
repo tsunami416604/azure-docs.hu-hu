@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 06/02/2017
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: d05456912324c06a0895cd4cf049b60c9d126904
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 68de6295b84385f54eaadd6d24e8309a32fae9ce
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="certificate-credentials-for-application-authentication"></a>Alkalmazás-hitelesítési tanúsítvány hitelesítő adatai
 
@@ -32,7 +32,7 @@ A helyességi feltétel kiszámításához, érdemes lehet a több valamelyikév
 #### <a name="header"></a>Fejléc
 
 | Paraméter |  Megjegyzés |
-| --- | --- | --- |
+| --- | --- |
 | `alg` | Meg kell **RS256** |
 | `typ` | Meg kell **jwt-t** |
 | `x5t` | Az X.509 tanúsítvány SHA-1 ujjlenyomat kell lennie. |
@@ -40,8 +40,8 @@ A helyességi feltétel kiszámításához, érdemes lehet a több valamelyikév
 #### <a name="claims-payload"></a>Claims (Payload)
 
 | Paraméter |  Megjegyzés |
-| --- | --- | --- |
-| `aud` | A célközönség: Kell **https://login.microsoftonline.com/*tenant_Id*  /oauth2/token** |
+| --- | --- |
+| `aud` | A célközönség: Kell  **https://login.microsoftonline.com/ *tenant_Id*  /oauth2/token** |
 | `exp` | Lejárat dátuma: a dátum, amikor a jogkivonat érvényessége lejár. Az idő másodpercben 1970. január 1. a ki (1970-01-01T0:0:0Z) UTC, amíg a token érvényességi lejárati idejének.|
 | `iss` | Kibocsátó: a client_id (az ügyfélszolgáltatás alkalmazásazonosító) kell lennie. |
 | `jti` | GUID-ja: a JWT azonosító |
@@ -49,9 +49,11 @@ A helyességi feltétel kiszámításához, érdemes lehet a több valamelyikév
 | `sub` | Tulajdonos: megegyezik a `iss`, a client_id (az ügyfélszolgáltatás alkalmazásazonosító) kell lennie. |
 
 #### <a name="signature"></a>Aláírás
+
 Az aláírás alkalmazása a tanúsítványt, a számított a [JSON Web Token RFC7519 meghatározása](https://tools.ietf.org/html/rfc7519)
 
 ### <a name="example-of-a-decoded-jwt-assertion"></a>A dekódolt JWT helyességi feltétel – példa
+
 ```
 {
   "alg": "RS256",
@@ -73,6 +75,7 @@ Az aláírás alkalmazása a tanúsítványt, a számított a [JSON Web Token RF
 ```
 
 ### <a name="example-of-an-encoded-jwt-assertion"></a>Egy kódolt JWT helyességi feltétel – példa
+
 A következő karakterlánc kódolt helyességi feltétel példája. Gondosan tekintse meg a három pont (.) választja el szakasz figyelje meg.
 Az első szakaszban kódolja a fejlécet, a második, a tartalom, és az utolsó a tanúsítványokat az első két szakaszok tartalmának aláírással.
 ```
@@ -81,14 +84,17 @@ Gh95kHCOEGq5E_ArMBbDXhwKR577scxYaoJ1P{a lot of characters here}KKJDEg"
 ```
 
 ### <a name="register-your-certificate-with-azure-ad"></a>A tanúsítvány regisztrálása az Azure AD-val
+
 A tanúsítvány hitelesítő adat társítandó az ügyfélalkalmazás Azure AD-ben, akkor az alkalmazás jegyzékében módosíthatók.
 Tanúsítvány céllal rendelkezik, kell számítási:
+
 - `$base64Thumbprint`, vagyis a base64 kódolás a tanúsítvány kivonata
 - `$base64Value`, vagyis a base64 kódolása nyers Tanúsítványadatok
 
-is meg kell adnia a kulcs az alkalmazásjegyzékben szereplő azonosító egy GUID (`$keyId`)
+Is meg kell adnia a kulcs az alkalmazásjegyzékben szereplő azonosító egy GUID (`$keyId`).
 
 Az ügyfélalkalmazást Azure-alkalmazás regisztrációja, nyissa meg az alkalmazás jegyzékében, és cserélje le a *keyCredentials* tulajdonságot, amelyben az új tanúsítvány adatait a következő séma:
+
 ```
 "keyCredentials": [
     {

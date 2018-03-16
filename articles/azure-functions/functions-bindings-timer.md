@@ -17,11 +17,11 @@ ms.workload: na
 ms.date: 02/27/2017
 ms.author: tdykstra
 ms.custom: 
-ms.openlocfilehash: eeb8833470b2ba003ba74b1db57bbd2bbbb7f65d
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: bd1a2643d9faf65d664c786169c38f01767fb7e5
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Az Azure Functions időzítő indítófeltételt 
 
@@ -29,12 +29,18 @@ Ez a cikk ismerteti, hogyan használható az Azure Functions időzítő esemény
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
+## <a name="packages"></a>Csomagok
+
+Az időzítő indítófeltételt megtalálható a [Microsoft.Azure.WebJobs.Extensions](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions) NuGet-csomagot. A csomag forráskódja van a [azure-webjobs-sdk-bővítmények](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/) GitHub-tárházban.
+
+[!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
+
 ## <a name="example"></a>Példa
 
 Tekintse meg a nyelvspecifikus példát:
 
 * [C#](#trigger---c-example)
-* [C# parancsfájl (.csx)](#trigger---c-script-example)
+* [C# script (.csx)](#trigger---c-script-example)
 * [F#](#trigger---f-example)
 * [JavaScript](#trigger---javascript-example)
 
@@ -136,7 +142,7 @@ module.exports = function (context, myTimer) {
 
 ## <a name="attributes"></a>Attribútumok
 
-A [C# osztálykönyvtárakhoz](functions-dotnet-class-library.md), használja a [TimerTriggerAttribute](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerTriggerAttribute.cs)NuGet-csomagot a definiált [Microsoft.Azure.WebJobs.Extensions](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions).
+A [C# osztálykönyvtárakhoz](functions-dotnet-class-library.md), használja a [TimerTriggerAttribute](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerTriggerAttribute.cs).
 
 Az attribútumok konstruktorában CRON-kifejezés, hajtja végre a következő példában látható módon:
 
@@ -158,10 +164,10 @@ Az alábbi táblázat ismerteti a beállított kötés konfigurációs tulajdons
 
 |Function.JSON tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-|**típusa** | n/a | "TimerTrigger" értékre kell állítani. Ez a tulajdonság rendszer automatikusan beállítja az eseményindítót hoz létre az Azure portálon.|
-|**iránya** | n/a | "A" értékre kell állítani. Ez a tulajdonság rendszer automatikusan beállítja az eseményindítót hoz létre az Azure portálon. |
-|**név** | n/a | A függvény a kódban időzítő az objektumot határozza meg a változó neve. | 
-|**ütemezés**|**ScheduleExpression**|A felhasználási terv ütemezés a CRON-kifejezés lehet definiálni. Ha használ egy App Service-csomag, használhatja a `TimeSpan` karakterlánc. Az alábbi szakaszok ismertetik a CRON-kifejezést. Az ütemezés kifejezés be Alkalmazásbeállítás, és csomagolni értékre állítani ezt a tulajdonságot  **%**  jelentkezik, például: "% NameOfAppSettingWithCRONExpression %". |
+|**Típusa** | n/a | "TimerTrigger" értékre kell állítani. Ez a tulajdonság rendszer automatikusan beállítja az eseményindítót hoz létre az Azure portálon.|
+|**direction** | n/a | "A" értékre kell állítani. Ez a tulajdonság rendszer automatikusan beállítja az eseményindítót hoz létre az Azure portálon. |
+|**name** | n/a | A függvény a kódban időzítő az objektumot határozza meg a változó neve. | 
+|**schedule**|**ScheduleExpression**|A felhasználási terv ütemezés a CRON-kifejezés lehet definiálni. Ha használ egy App Service-csomag, használhatja a `TimeSpan` karakterlánc. Az alábbi szakaszok ismertetik a CRON-kifejezést. Az ütemezés kifejezés be Alkalmazásbeállítás, és csomagolni értékre állítani ezt a tulajdonságot  **%**  jelentkezik, például: "% NameOfAppSettingWithCRONExpression %". |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 

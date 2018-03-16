@@ -8,11 +8,11 @@ ms.service: storage
 ms.topic: article
 ms.date: 03/07/2018
 ms.author: lakasa
-ms.openlocfilehash: b40858640d10e5661be420976520774bd50837cb
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 1360d8bb0911c424747209c69b830fc1ee461798
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="storage-service-encryption-using-customer-managed-keys-in-azure-key-vault"></a>Storage szolgáltatás titkosítási kulcsok ügyfél által felügyelt Azure Key Vault használatával
 
@@ -81,6 +81,7 @@ Adja meg a kulcsot az URI, kövesse az alábbi lépéseket:
 
     ![Portál képernyőfelvétel: a titkosítási kulcs uri-beállítás megadása](./media/storage-service-encryption-customer-managed-keys/ssecmk2.png)
 
+
 #### <a name="specify-a-key-from-a-key-vault"></a>Adja meg a kulcstároló kulcsot 
 
 Adja meg a kulcstároló-kulcsot, kövesse az alábbi lépéseket:
@@ -96,6 +97,17 @@ Ha a tárfiók nincs hozzáférése a kulcstároló, futtathatja az Azure PowerS
 ![A hozzáférés megtagadva a kulcstartót portál képernyőfelvétel](./media/storage-service-encryption-customer-managed-keys/ssecmk4.png)
 
 Navigáljon az Azure Key Vault az Azure portálon, és a tárfiók való hozzáférés biztosítása szerint is engedélyezheti a hozzáférést az Azure-portálon.
+
+
+A fenti kulcs társíthatja egy meglévő tárfiókot használ, a következő PowerShell-parancsok használatával:
+```powershell
+$storageAccount = Get-AzureRmStorageAccount -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount"
+$keyVault = Get-AzureRmKeyVault -VaultName "mykeyvault"
+$key = Get-AzureKeyVaultKey -VaultName $keyVault.VaultName -Name "keytoencrypt"
+Set-AzureRmKeyVaultAccessPolicy -VaultName $keyVault.VaultName -ObjectId $storageAccount.Identity.PrincipalId -PermissionsToKeys wrapkey,unwrapkey,get
+Set-AzureRmStorageAccount -ResourceGroupName $storageAccount.ResourceGroupName -AccountName $storageAccount.StorageAccountName -EnableEncryptionService "Blob" -KeyvaultEncryption -KeyName $key.Name -KeyVersion $key.Version -KeyVaultUri $keyVault.VaultUri
+```
+
 
 ### <a name="step-5-copy-data-to-storage-account"></a>5. lépés: Adatok másolása storage-fiók
 

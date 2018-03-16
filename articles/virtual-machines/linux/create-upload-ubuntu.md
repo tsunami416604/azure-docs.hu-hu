@@ -13,19 +13,19 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 02/02/2017
+ms.date: 03/12/2018
 ms.author: szark
-ms.openlocfilehash: 2f4983f918eccd2ae1adb4ec2c88133465f47e07
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: 4c49cbefafe71646ba08dd049baf50ff04463fdc
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="prepare-an-ubuntu-virtual-machine-for-azure"></a>Ubuntus virtuális gép előkészítése Azure-beli használatra
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
 ## <a name="official-ubuntu-cloud-images"></a>Hivatalos Ubuntu felhő lemezképek
-Ubuntu most teszi közzé a következő hivatalos Azure VHD [http://cloud-images.ubuntu.com/](http://cloud-images.ubuntu.com/). Ha saját speciális Ubuntu rendszerkép létrehozása az Azure-van szüksége, ahelyett, hogy kövesse az alábbi manuális eljárást, mint ajánlott ezeket a VHD-k használata ismert kezdődnie, és igény szerint testre szabhatja. A kép Újdonságok mindig az alábbi helyeken találhatók:
+Ubuntu most teszi közzé a következő hivatalos Azure VHD [ http://cloud-images.ubuntu.com/ ](http://cloud-images.ubuntu.com/). Ha saját speciális Ubuntu rendszerkép létrehozása az Azure-van szüksége, ahelyett, hogy kövesse az alábbi manuális eljárást, mint ajánlott ezeket a VHD-k használata ismert kezdődnie, és igény szerint testre szabhatja. A kép Újdonságok mindig az alábbi helyeken találhatók:
 
 * Ubuntu 12.04/Precise: [ubuntu-12.04-server-cloudimg-amd64-disk1.vhd.zip](https://cloud-images.ubuntu.com/precise/current/precise-server-cloudimg-amd64-disk1.vhd.zip)
 * Ubuntu 14.04/Trusty: [ubuntu-14.04-server-cloudimg-amd64-disk1.vhd.zip](http://cloud-images.ubuntu.com/releases/trusty/release/ubuntu-14.04-server-cloudimg-amd64-disk1.vhd.zip)
@@ -40,11 +40,11 @@ Ez a cikk feltételezi, hogy már telepítette az Ubuntu Linux operációs rends
 * A VHDX formátum nem támogatott az Azure csak **rögzített VHD**.  Átválthat a lemez VHD formátumú Hyper-V kezelője vagy a convert-vhd-parancsmag segítségével.
 * A Linux rendszer telepítésekor LVM (gyakran sok telepítés alapértelmezett), hanem szabványos partíciók használata ajánlott. LVM neve ütközik a klónozott virtuális gépek, így elkerülhető, különösen akkor, ha egy operációsrendszer-lemez legalább egyszer meg kell hibaelhárítási egy másik virtuális géphez csatlakoztatható. [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) vagy [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) Ha előnyben részesített adatlemezek használható.
 * Ne konfiguráljon egy swap partíciót az operációsrendszer-lemezképet. A Linux-ügynök beállítható úgy, hogy az ideiglenes erőforrás lemezen a lapozófájl létrehozásához.  További információk a megtalálhatók az alábbi lépéseket.
-* Összes, a virtuális merevlemezeket kell rendelkeznie, amely többszörösei 1 MB méretű.
+* Minden, az Azure virtuális merevlemez rendelkeznie kell egy virtuális mérete 1MB igazodik. Virtuális merevlemez egy nyers lemezen történő átalakítása meg kell győződnie arról, hogy a nyers lemez mérete 1MB átalakítás előtti többszöröse. Lásd: [Linux telepítési jegyzetek](create-upload-generic.md#general-linux-installation-notes) további információt.
 
 ## <a name="manual-steps"></a>Manuális lépések
 > [!NOTE]
-> Mielőtt megpróbálná a saját egyéni Ubuntu lemezkép létrehozása az Azure-ba, fontolja meg az előre elkészített és tesztelt lemezképekkel [http://cloud-images.ubuntu.com/](http://cloud-images.ubuntu.com/) helyette.
+> Mielőtt megpróbálná a saját egyéni Ubuntu lemezkép létrehozása az Azure-ba, fontolja meg az előre elkészített és tesztelt lemezképekkel [ http://cloud-images.ubuntu.com/ ](http://cloud-images.ubuntu.com/) helyette.
 > 
 > 
 

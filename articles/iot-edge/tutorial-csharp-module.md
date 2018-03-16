@@ -5,15 +5,15 @@ services: iot-edge
 keywords: 
 author: kgremban
 manager: timlt
-ms.author: v-jamebr
-ms.date: 11/15/2017
+ms.author: kgremban
+ms.date: 03/14/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: fd46bb662af72ece799bb545d06d76f9e54ee62c
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 605f0cfe34e4fda14030bb38686095882846c7c0
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="develop-and-deploy-a-c-iot-edge-module-to-your-simulated-device---preview"></a>Fejlesztés és a szimulált eszköz egy C# IoT peremhálózati modul telepítése – előzetes
 
@@ -48,7 +48,7 @@ Ebben az oktatóanyagban a Docker-kompatibilis beállításjegyzék is használh
 3. Kattintson a **Létrehozás** gombra.
 4. A tároló beállításkulcs létrehozása után keresse meg a fájlt, és válassza ki **hívóbetűk**. 
 5. Váltás **rendszergazdai jogú felhasználó** való **engedélyezése**.
-6. Másolja a **bejelentkezési kiszolgáló**, **felhasználónév**, és **jelszó**. Ezeket az értékeket az oktatóanyag későbbi részében fogja használni. 
+6. Másolja a **bejelentkezési kiszolgáló**, **felhasználónév**, és **jelszó**. A Docker-lemezképet a beállításjegyzék közzétételekor, és amikor a beállításjegyzék hitelesítő adatokat ad hozzá a peremhálózati futásidejű az oktatóanyag későbbi részében fogja használni ezeket az értékeket. 
 
 ## <a name="create-an-iot-edge-module-project"></a>Az IoT-Edge modul projekt létrehozása
 A következő lépéseket megjelenítése, hogyan hozzon létre egy IoT peremhálózati modult .NET alapján alapvető Visual Studio Code és az Azure IoT peremhálózati bővítmény 2.0 használatával.
@@ -227,15 +227,14 @@ A következő lépéseket megjelenítése, hogyan hozzon létre egy IoT peremhá
 2. Kattintson a jobb gombbal a **Dockerfile** fájlt, és kattintson a **Build IoT peremhálózati modul Docker kép**. 
 3. Az a **Mappaválasztás** ablak, írja be vagy keresse meg a `./bin/Debug/netcoreapp2.0/publish`. Kattintson a **mappát adja meg a EXE_DIR**.
 4. Az előugró szövegmezőben a Visual STUDIO Code ablak tetején adja meg a lemezkép nevét. Például: `<your container registry address>/filtermodule:latest`. A tároló beállításjegyzék cím megegyezik a bejelentkezési kiszolgáló másolt a beállításjegyzékből. Meg kell formájában `<your container registry name>.azurecr.io`.
-5. Jelentkezzen be a Docker a Visual STUDIO Code integrált terminálban a következő parancs beírásával: 
+5. Jelentkezzen be a felhasználónév, jelszó és bejelentkezési kiszolgáló másolt az Azure-tárolót beállításkulcs létrehozása után Docker. A Visual STUDIO Code integrált terminálban adja meg a következő parancsot: 
      
    ```csh/sh
-   docker login -u <username> -p <password> <Login server>
+   docker login -u <ACR username> -p <ACR password> <ACR login server>
    ```
-        
-   Használja a felhasználónév, jelszó és bejelentkezési kiszolgáló másolt az Azure-tárolót beállításkulcs létrehozása után.
 
-3. A Docker-tárház küldje le a lemezképet. Válassza ki **nézet** > **parancs paletta** , és keresse meg a **peremhálózati: leküldéses IoT peremhálózati modul Docker kép** parancs. A Visual STUDIO Code ablak tetején az előugró mezőben adja meg a lemezkép nevét. A 4. lépésben használt kép névként válassza.
+6. A tároló beállításjegyzék küldje le a lemezképet. Válassza ki **nézet** > **parancs paletta** , és keresse meg a **peremhálózati: leküldéses IoT peremhálózati modul Docker kép** parancs. A Visual STUDIO Code ablak tetején az előugró mezőben adja meg a lemezkép nevét. A 4. lépésben használt kép névként válassza.
+7. A kép megtekintéséhez az Azure portálon, az Azure-tárolót beállításjegyzék váltson, és jelölje ki **Tárházak**. Megtekintheti az **filtermodule** szerepel a listában.
 
 ## <a name="add-registry-credentials-to-edge-runtime"></a>Peremhálózati futásidejű beállításjegyzék hitelesítő adatok hozzáadása
 A peremhálózati futásidejű a peremhálózati eszköz futtató számítógépen adja hozzá a rendszerleíró adatbázis hitelesítő adatait. Ezek a hitelesítő adatok hozzáférést a futásidejű való lekérésére a tárolót. 

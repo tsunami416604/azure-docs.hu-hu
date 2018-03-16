@@ -1,26 +1,19 @@
 ---
 title: "Azure SQL-adatbázis biztonsági másolatait tárolni legfeljebb tíz éve |} Microsoft Docs"
 description: "Ismerje meg, hogyan Azure SQL Database támogatja legfeljebb tíz éve tárolni a biztonsági mentéseket."
-keywords: 
 services: sql-database
-documentationcenter: 
 author: anosov1960
-manager: jhubbard
-editor: 
-ms.assetid: 66fdb8b8-5903-4d3a-802e-af08d204566e
+manager: craigg
 ms.service: sql-database
 ms.custom: business continuity
-ms.devlang: NA
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: On Demand
 ms.date: 12/22/2016
 ms.author: sashan
-ms.openlocfilehash: e44c92c3f37b3f1e3397d1c8cdb8c8f6d0f9942e
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 2f31e89fce2746e57d6a670aef949d0d534af4c1
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="store-azure-sql-database-backups-for-up-to-10-years"></a>Azure SQL-adatbázis biztonsági másolatait tárolni legfeljebb 10 év
 Számos alkalmazás rendelkezik szabályozó, megfelelőségi vagy egyéb üzleti célokat szolgál, amelyek megkövetelik a tartsa meg az adatbázis biztonsági mentése az Azure SQL Database által biztosított 7-35 napon túl [automatikus biztonsági mentésekhez](sql-database-automated-backups.md). A hosszú távú biztonsági másolatok megőrzésének szolgáltatás segítségével tárolhatja az SQL-adatbázis biztonsági mentése az Azure Recovery Services-tároló legfeljebb tíz éve. Legfeljebb 1000 adatbázisokat tároló száma tárolhatja. Ezután kiválaszthatja biztonsági másolat új adatbázisként visszaállítására a tárolóban lévő állapottal.
@@ -164,5 +157,5 @@ A replikák biztonsági mentések nem vesszük, mert jelenleg nincs beállítás
 * Ha feladatátvétel történik, és az adatbázis elsődleges adatbázis válik, azt egy teljes biztonsági másolatok készítéséhez, amely feltöltött tároló.
 * Nincs ingyenesen az ügyfélnek a másodlagos adatbázison hosszú távú biztonsági másolatok megőrzésének beállítása.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Adatbázis biztonsági másolatait véletlen sérülése vagy a törlés adatok védelme, mert nagyon fontos részét képezik az üzletmenet folytonosságának és a vész-helyreállítási stratégiát fontosságúak. A más SQL-adatbázis üzleti folytonosságot biztosító megoldásokkal kapcsolatos további tudnivalókért lásd: [üzleti folytonosság – áttekintés](sql-database-business-continuity.md).

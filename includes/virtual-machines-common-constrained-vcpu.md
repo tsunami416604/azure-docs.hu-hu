@@ -1,5 +1,19 @@
-
-
+---
+title: "fájl belefoglalása"
+description: "fájl belefoglalása"
+services: virtual-machines
+author: jonbeck7
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 03/09/2018
+ms.author: azcspmt;jonbeck;cynthn
+ms.custom: include file
+ms.openlocfilehash: 0b6846a68806354a58516fcbc87913815af87343
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 03/16/2018
+---
 Néhány adatbázis munkaterhelések, például az SQL Server- vagy Oracle igényelnek nagy memória, tárolási, és i/o-sávszélesség, de nem egy magas magok száma. Nincsenek processzorigényes adatbázis futó számos szolgáltatásnak. Az Azure bizonyos Virtuálisgép-méretek, ahol a virtuális gépek vCPU száma szoftverlicencelés, miközben fenntartja az ugyanahhoz a memóriához, a tároló és az i/o műveletek sávszélességétől költségeinek csökkentése érdekében is megkötése kínál.
 
 A vCPU száma is korlátozható a fele vagy egy negyedévében az eredeti virtuális gép méretét. Ezek új Virtuálisgép-méretek rendelkezik, amely meghatározza a könnyebb azonosítása érdekében aktív Vcpu számát utótaggal.

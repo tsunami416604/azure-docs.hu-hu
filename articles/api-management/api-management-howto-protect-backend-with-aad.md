@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2017
 ms.author: apimpm
-ms.openlocfilehash: 2a5be24aba8a675290045b282cc64dda4b7c594e
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: b7fc48412799aea0c4bba971102b4912dbb18e05
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="how-to-protect-a-web-api-backend-with-azure-active-directory-and-api-management"></a>Hogyan védi meg a webes API háttéralkalmazás az Azure Active Directory és az API Management
 
@@ -179,7 +179,7 @@ API-kat úgy vannak konfigurálva, a portálról API publisher, amely az Azure p
 
 ![Közzétevő portál][api-management-management-console]
 
-A műveleteket lehet [manuálisan hozzáadni az API-k](api-management-howto-add-operations.md), vagy az importálható lesz. Ez a videó műveletek importált 6:40 kezdődő Swagger formátumú.
+A műveleteket lehet [manuálisan hozzáadni az API-k](api-management-howto-add-operations.md), vagy az importálható lesz.
 
 Hozzon létre egy fájlt `calcapi.json` következő tartalommal, és mentse azt a számítógépet. Győződjön meg arról, hogy a `host` pontok attribútum a webes API háttéralkalmazás segítségével. Ebben a példában `"host": "apimaaddemo.azurewebsites.net"` szolgál.
 

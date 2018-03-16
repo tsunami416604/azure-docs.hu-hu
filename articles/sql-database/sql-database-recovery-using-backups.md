@@ -2,24 +2,18 @@
 title: "Azure SQL-adatbázis visszaállítása biztonsági másolatból |} Microsoft Docs"
 description: "További információk a pont időponthoz kötött visszaállítás, amely lehetővé teszi, hogy visszaállítása egy Azure SQL-adatbázis egy korábbi időpontra idő (akár 35 nap)."
 services: sql-database
-documentationcenter: 
 author: CarlRabeler
-manager: jhubbard
-editor: monicar
-ms.assetid: fd1d334d-a035-4a55-9446-d1cf750d9cf7
+manager: craigg
 ms.service: sql-database
 ms.custom: business continuity
-ms.devlang: NA
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: Active
 ms.date: 02/13/2018
 ms.author: carlrab
-ms.openlocfilehash: 81b61d59e63924e4af5befe4cbd638be98b385e6
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: d2cc2e44c13750b654e2d6acf39d4f6a80cac98a
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="recover-an-azure-sql-database-using-automated-database-backups"></a>Automatikus adatbázis biztonsági mentését használó Azure SQL-adatbázis helyreállítása
 SQL-adatbázis biztosítja ezeket a beállításokat, az adatbázis helyreállítási használatával [adatbázis biztonsági másolatait automatikus](sql-database-automated-backups.md) és [hosszú távú megőrzési a biztonsági másolatok](sql-database-long-term-retention.md). Egy adatbázis biztonsági másolatát arra állíthatja vissza:
@@ -136,7 +130,7 @@ Korábban már említettük, az Azure portálon kívül, mert az adatbázis hely
 ### <a name="powershell"></a>PowerShell
 | Parancsmag | Leírás |
 | --- | --- |
-| [Get-AzureRmSqlDatabase](/powershell/module/azurerm.sql/get-azurermsqldatabase) |Egy vagy több adatbázis lekérdezi. |
+| [Get-AzureRmSqlDatabase](/powershell/module/azurerm.sql/get-azurermsqldatabase) |Egy vagy több adatbázist kér le. |
 | [Get-AzureRMSqlDeletedDatabaseBackup](/powershell/module/azurerm.sql/get-azurermsqldeleteddatabasebackup) | Lekérdezi a törölt adatbázisok, amelyek is helyreállíthatja. |
 | [Get-AzureRmSqlDatabaseGeoBackup](/powershell/module/azurerm.sql/get-azurermsqldatabasegeobackup) |Egy adatbázis georedundáns biztonsági másolatot kap. |
 | [Restore-AzureRmSqlDatabase](/powershell/module/azurerm.sql/restore-azurermsqldatabase) |SQL-adatbázis visszaállítása. |

@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: support-article
 ms.date: 03/08/2018
 ms.author: tomfitz
-ms.openlocfilehash: 1c6712eaf17cf55c1422baca355ce99ed319df28
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 9626b3caaa7188a4e9a37f83d1fbf091951714f4
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="resolve-errors-for-invalid-template"></a>Érvénytelen a sablon által jelzett hibákat feloldása
 
@@ -38,6 +38,8 @@ A hibaüzenet a következő hiba típusától függ.
 
 Ez a hiba oka lehet több különböző típusú hibák. Általában magukban szintaxis vagy strukturális hiba történt a sablonban.
 
+<a id="syntax-error" />
+
 ## <a name="solution-1---syntax-error"></a>1 - szintaktikai hiba megoldás
 
 Ha a sablont nem sikerült érvényesítési jelző hibaüzenetet kapja, előfordulhat, hogy szintaktikai hiba a sablonban.
@@ -56,6 +58,8 @@ Ez a hiba akkor létrehozását, mert sablont kifejezések bonyolult lehet. Pél
 Ha nem ad meg a megfelelő szintaxist, az a sablon egy érték, amely eltér attól a levelezéshez hoz létre.
 
 Hiba az ilyen típusú megjelenésekor gondosan tekintse át a kifejezési szintaxist. Érdemes lehet például egy JSON-szerkesztővel [Visual Studio](vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) vagy [Visual Studio Code](resource-manager-vs-code.md), amely képes figyelmeztessen a szintaktikai hibákat.
+
+<a id="incorrect-segment-lengths" />
 
 ## <a name="solution-2---incorrect-segment-lengths"></a>2 - helytelen szegmens hosszának megoldás
 
@@ -116,6 +120,8 @@ A szegmensek megfelelő első megkapni erőforrás-kezelő típusú erőforrás-
 }
 ```
 
+<a id="parameter-not-valid" />
+
 ## <a name="solution-3---parameter-is-not-valid"></a>3 - megoldás paraméter érvénytelen
 
 Ha a paraméter értékét, amely nincs a megengedett értékeket ad meg, az alábbihoz hasonló üzenet jelenhet meg:
@@ -129,9 +135,13 @@ part of the allowed values
 
 Kettős ellenőrzi az engedélyezett értékek a sablonban, és egy központi telepítése során. A paraméterértékek engedélyezett kapcsolatos további információkért lásd: [paraméterek szakaszban az Azure Resource Manager-sablonok](resource-manager-templates-parameters.md).
 
+<a id="too-many-resource-groups" />
+
 ## <a name="solution-4---too-many-target-resource-groups"></a>Túl sok cél-erőforráscsoport 4 - megoldás
 
 Ha ötnél több cél-erőforráscsoport egy központi telepítésnél ad meg, ez a hibaüzenet jelenik meg. Vegye figyelembe, egyesítse a központi telepítésben lévő erőforrás-csoportok száma, vagy külön központi telepítéseket, sablonokat némelyike telepítése. További információkért lásd: [telepítése Azure erőforrások több mint egy előfizetéshez vagy erőforráscsoporthoz](resource-manager-cross-resource-group-deployment.md).
+
+<a id="circular-dependency" />
 
 ## <a name="solution-5---circular-dependency-detected"></a>Megoldás 5 - körkörös függőséget észlelt
 

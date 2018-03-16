@@ -2,24 +2,18 @@
 title: "Ismerkedés az Azure SQL Database ideiglenes táblák |} Microsoft Docs"
 description: "Ismerkedés az ideiglenes táblák használata az Azure SQL Database útmutató."
 services: sql-database
-documentationcenter: 
 author: bonova
-manager: jhubbard
-editor: 
-ms.assetid: c8c0f232-0751-4a7f-a36e-67a0b29fa1b8
+manager: craigg
 ms.service: sql-database
 ms.custom: develop databases
-ms.devlang: NA
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: On Demand
 ms.date: 01/10/2017
 ms.author: bonova
-ms.openlocfilehash: 58f97c142ba0b9282d8988fc1bc037b9c0c69986
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 8e76d78e402d2cdc58ca26767c55c413f83226d9
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="getting-started-with-temporal-tables-in-azure-sql-database"></a>Ismerkedés az Azure SQL Database ideiglenes táblák
 A historikus táblák egy új programozhatóság Azure SQL-adatbázis, amely lehetővé teszi, hogy nyomon követheti és elemezheti az adatokat, nincs szükség egyéni kódolási változásai teljes előzményeit. A historikus táblák tartsa szorosan kapcsolódó idő a környezetben, hogy a tárolt tények értelmezhető adatok szerint érvényes csak a meghatározott időszakon belül. Ez a tulajdonság a Historikus táblák hatékony időalapú elemzés és beolvasásakor információkat kaphat a adatok alakulása lehetővé teszi.
@@ -194,7 +188,7 @@ A rendszerverzióval ellátott historikus táblákon a előzménytábla megnöve
 * [Táblaparticionálást](https://msdn.microsoft.com/library/mt637341.aspx#Anchor_2)
 * [Egyéni karbantartási parancsprogramot](https://msdn.microsoft.com/library/mt637341.aspx#Anchor_3)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A Historikus táblák részletes információkért tekintse meg [az MSDN dokumentációjában tájékozódhat](https://msdn.microsoft.com/library/dn935015.aspx).
 Látogasson el a Channel 9 hallani a [valós felhasználói historikus implementációs sikeres szövegegység](https://channel9.msdn.com/Blogs/jsturtevant/Azure-SQL-Temporal-Tables-with-RockStep-Solutions) és figyelési egy [historikus bemutató élő](https://channel9.msdn.com/Shows/Data-Exposed/Temporal-in-SQL-Server-2016).
 

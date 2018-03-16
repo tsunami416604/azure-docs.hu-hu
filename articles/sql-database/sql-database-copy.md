@@ -2,24 +2,18 @@
 title: "Azure SQL-adatbázis másolása |} Microsoft Docs"
 description: "Hozzon létre egy meglévő Azure SQL adatbázis tranzakciós úton konzisztens példányát ugyanarra a kiszolgálóra vagy egy másik kiszolgálóra."
 services: sql-database
-documentationcenter: 
 author: CarlRabeler
-manager: jhubbard
-editor: 
-ms.assetid: 5aaf6bcd-3839-49b5-8c77-cbdf786e359b
+manager: craigg
 ms.service: sql-database
 ms.custom: load & move data
-ms.devlang: NA
 ms.date: 06/15/2017
 ms.author: carlrab
-ms.workload: On Demand
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.openlocfilehash: 7999c52a81165a9f8efb2f1302d04c9cb851faca
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: c4a3836cfd0bbbb8d26a42af2980deab5f9d7681
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="copy-an-azure-sql-database"></a>Azure SQL-adatbázis másolása
 
@@ -105,7 +99,7 @@ Minden felhasználó az új adatbázis a forrásadatbázis rendelkeztek engedél
 
 Felhasználók és bejelentkezések kezelése, ha az adatbázis másolása egy másik logikai kiszolgáló kapcsolatos további tudnivalókért lásd: [kezelése az Azure SQL database biztonsági katasztrófa utáni helyreállítás után](sql-database-geo-replication-security-config.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Bejelentkezések kapcsolatos információkért lásd: [bejelentkezések kezelése](sql-database-manage-logins.md) és [kezelése az Azure SQL database biztonsági katasztrófa utáni helyreállítás után](sql-database-geo-replication-security-config.md).
 * Egy adatbázis-exportálási, lásd: [exportálja az adatbázis egy BACPAC](sql-database-export.md).

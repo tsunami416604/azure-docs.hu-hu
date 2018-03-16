@@ -6,13 +6,13 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/08/2018
+ms.date: 03/15/2018
 ms.author: raynew
-ms.openlocfilehash: 413234204175b9361cd2a837e0b318bf5220f58f
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: c4fb466443e2f29fb79c3707ce142895f140f9a7
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="support-matrix-for-vmware-and-physical-server-replication-to-azure"></a>VMware és fizikai kiszolgálók replikálást az Azure-támogatási mátrix
 
@@ -22,15 +22,15 @@ Ez a cikk összefoglalja támogatott összetevők és az Azure-bA VMware virtuá
 
 **Scenario** | **Részletek**
 --- | ---
-**VMware virtuális gépek** | Helyszíni VMware virtuális gépek esetén az Azure-bA vész-helyreállítási végezheti el. Ebben a forgatókönyvben, az Azure portálon vagy a PowerShell használatával telepítheti.
-**Fizikai kiszolgálók** | A helyszíni windowsos/Linuxos fizikai kiszolgálók Azure-bA vész-helyreállítási végezheti el. Ebben a forgatókönyvben az Azure portálon telepítése.
+VMware virtuális gépek | Helyszíni VMware virtuális gépek esetén az Azure-bA vész-helyreállítási végezheti el. Ebben a forgatókönyvben, az Azure portálon vagy a PowerShell használatával telepítheti.
+Fizikai kiszolgálók | A helyszíni windowsos/Linuxos fizikai kiszolgálók Azure-bA vész-helyreállítási végezheti el. Ebben a forgatókönyvben az Azure portálon telepítése.
 
-## <a name="on-premises-virtualizationhost-servers"></a>A helyszíni/virtualizálási kiszolgálók
+## <a name="on-premises-virtualization-servers"></a>A helyszíni virtualizálási kiszolgálók
 
 **Kiszolgáló** | **Követelmények** | **Részletek**
 --- | --- | ---
-**VMware** | vCenter Server 6.5 6.0, vagy 5.5 vagy vSphere 6.5, 6.0 vagy 5.5 | Azt javasoljuk, hogy használja-e a vCenter-kiszolgálót.
-**Fizikai kiszolgálók** | –
+VMware | vCenter Server 6.5 6.0, vagy 5.5 vagy vSphere 6.5, 6.0 vagy 5.5 | Azt javasoljuk, hogy használja-e a vCenter-kiszolgálót.
+Fizikai | –
 
 
 ## <a name="replicated-machines"></a>Replikált gép
@@ -39,7 +39,7 @@ A következő táblázat összefoglalja a VMware virtuális gépek és fizikai k
 
 **Összetevő** | **Részletek**
 --- | ---
-Számítógép-beállítások | Meg kell felelnie a gépek replikálása Azure-bA [Azure-követelményeknek](#failed-over-azure-vm-requirements).
+Számítógép-beállítások | Meg kell felelnie a gépek replikálása Azure-bA [Azure-követelményeknek](#azure-vm-requirements).
 A Windows operációs rendszer | 64 bites Windows Server 2016 (Server Core, az asztali élmény kiszolgáló), Windows Server 2012 R2, Windows Server 2012, Windows Server 2008 R2: legalább SP1. Windows 2016 Nano Server nem támogatott.
 Linux operációs rendszer | Red Hat Enterprise Linux: 5.2 való 5.11, 6.1 való 6.9, 7.0-7.4 <br/><br/>CentOS: 5.2 való 5.11, 6.1 való 6.9, 7.0-7.4 <br/><br/>Ubuntu 14.04 LTS server[ (támogatott kernel verziók)](#supported-ubuntu-kernel-versions-for-vmwarephysical-servers)<br/><br/>Ubuntu 16.04 LTS server[ (támogatott kernel verziók)](#supported-ubuntu-kernel-versions-for-vmwarephysical-servers)<br/><br/>Debian 7/Debian 8<br/><br/>Oracle Enterprise Linux 6.4, a Red Hat kompatibilis kernel vagy szoros vállalati Kernel kiadási-3 (UEK3) 6.5 <br/><br/>SUSE Linux Enterprise Server 11 SP3, SUSE Linux Enterprise Server 11 SP4 <br/><br/>Replikált gép SP3 verzióra történő frissítése SP4 nem támogatott. A frissítéshez tiltsa le a replikációt, majd engedélyezze újra a frissítés után.
 
@@ -68,15 +68,15 @@ Linux operációs rendszer | Red Hat Enterprise Linux: 5.2 való 5.11, 6.1 való
 
 **Összetevő** | **Támogatott**
 --- | ---
-fájlrendszer | ext3, ext4, ReiserFS (csak Suse Linux Enterprise Server), XFS
-Kötetkezelő | LVM2
-A többutas szoftver | Eszköz leképezője
+fájlrendszer | ext3, ext4, ReiserFS (csak Suse Linux Enterprise Server), XFS.
+Kötetkezelő | LVM2.
+A többutas szoftver | Eszköz leképező.
 Paravirtualized tárolóeszközök | A paravirtualizált illesztőprogramok által exportált eszközök nem támogatottak.
 Több sor blokk IO eszközök | Nem támogatott.
 A HP CCISS tárolóvezérlő fizikai kiszolgálók | Nem támogatott.
-Könyvtárak | Ezeket a könyvtárakat (Ha külön partíciók /-fájlrendszerek beállított) kell lennie az azonos operációsrendszer-lemezképet a forráskiszolgálón lévő: / (gyökér), / Boot, / usr, /usr/local, /var, ETC.</br></br> / Boot lemezpartíción legyen, és nem lehet egy LVM kötet<br/><br/>
+Könyvtárak | Ezeket a könyvtárakat (Ha külön partíciók /-fájlrendszerek beállított) kell lennie az azonos operációsrendszer-lemezképet a forráskiszolgálón lévő: / (gyökér), / Boot, / usr, /usr/local, /var, ETC.</br></br> / Boot lemezpartíción legyen, és nem lehet egy LVM kötet.<br/><br/>
 Szabad lemezterület| A/root partíción 2 GB <br/><br/> A telepítési mappa 250 MB
-XFSv5 | XFSv5 szolgáltatások XFS fájlrendszerek metaadatok ellenőrzőösszeg, például a mobilitási szolgáltatás verziójából származó 9.10 és újabb verziók esetében támogatottak. A xfs_info segédprogram használatával ellenőrizze a XFS superblock a partíció. Ha ftype értéke 1, XFSv5 szolgáltatások használatát is.
+XFSv5 | A 9.10 Mobilitásiszolgáltatás-verziót meghajtóbetűjeltől XFS fájlrendszeren, például a metaadatok ellenőrzőösszeg XFSv5 funkciókat támogatja. A xfs_info segédprogram használatával ellenőrizze a XFS superblock a partíció. Ha ftype értéke 1, XFSv5 szolgáltatások használatát is.
 
 
 
@@ -85,15 +85,15 @@ XFSv5 | XFSv5 szolgáltatások XFS fájlrendszerek metaadatok ellenőrzőösszeg
 **Összetevő** | **Támogatott**
 --- | ---
 Gazdagép hálózati hálózati adapterek összevonása | VMware virtuális gépek esetén támogatott. <br/><br/>Fizikai gép replikálása nem támogatott.
-Gazdagép hálózati VLAN | Igen
-Gazdagép hálózati IPv4 | Igen
-Gazdagép hálózati IPv6 | Nem
-Vendég-kiszolgáló hálózati hálózati adapterek összevonása | Nem
-Vendég-kiszolgáló hálózati IPv4 | Igen
-Guest/server network IPv6 | Nem
-Vendég/kiszolgáló hálózati statikus IP-címe (Windows) | Igen
-Vendég/kiszolgáló hálózati statikus IP-címe (Linux) | Igen <br/><br/>Virtuális gépek feladat-visszavétel DHCP használatára vannak konfigurálva.  
-Vendég-kiszolgáló hálózati több hálózati adapter | Igen
+Gazdagép hálózati VLAN | Igen.
+Gazdagép hálózati IPv4 | Igen.
+Gazdagép hálózati IPv6 | Nem.
+Vendég-kiszolgáló hálózati hálózati adapterek összevonása | Nem.
+Vendég-kiszolgáló hálózati IPv4 | Igen.
+Guest/server network IPv6 | Nem.
+Vendég/kiszolgáló hálózati statikus IP-címe (Windows) | Igen.
+Vendég/kiszolgáló hálózati statikus IP-címe (Linux) | Igen. <br/><br/>Virtuális gépek feladat-visszavétel DHCP használatára vannak konfigurálva.
+Vendég-kiszolgáló hálózati több hálózati adapter | Igen.
 
 
 ## <a name="azure-vm-network-after-failover"></a>Az Azure Virtuálisgép-hálózat (után feladatátvétel)
@@ -113,24 +113,24 @@ Azure virtuális hálózat szolgáltatás-végpontok<br/><br/> (Az azure Storage
 ## <a name="storage"></a>Tárolás
 **Összetevő** | **Támogatott**
 --- | ---
-Állomás NFS | VMware Igen<br/><br/> A nem fizikai kiszolgálók.
+Állomás NFS | VMware Igen<br/><br/> Fizikai kiszolgálók esetében nem
 Host SAN (ISCSI) | Igen
 Állomás többutas (MPIO) | A Microsoft DSM, EMC PowerPath 5.7 SP4 EMC PowerPath DSM CLARiiON Igen, tesztelve
 Vendég-kiszolgáló vmdk-fájl | Igen
-Vendég-kiszolgáló EFI/UEFI| Részleges (Azure a Windows Server 2012 és újabb verziók VMware virtuális gépek csak áttelepítés) </br></br> Lásd a táblázat végére megjegyzést.
+Vendég-kiszolgáló EFI/UEFI| Részleges (Azure a Windows Server 2012 és újabb verziók VMware virtuális gépek csak áttelepítés) </br></br> Lásd a táblázat végén a megjegyzést
 Vendég-kiszolgáló megosztott fürtlemez | Nem
 Vendég/server titkosított lemez | Nem
 NFS Vendég-kiszolgáló | Nem
 Az SMB 3.0 Vendég-kiszolgáló | Nem
 Guest/server RDM | Igen<br/><br/> A fizikai kiszolgálók N/A
 Vendég-kiszolgáló > 1 TB méretű lemez | Igen<br/><br/>Legfeljebb 4095 GB
-Vendég/server 4 KB-os logikai és a 4 KB-os fizikai szektort méretű lemez | Igen <
+Vendég/server 4 KB-os logikai és a 4 KB-os fizikai szektort méretű lemez | Igen
 Vendég/server 4 KB-os logikai lemez és 512 bájtos fizikai szektorméretet | Igen
-Csíkozott > 4 TB-os kötet Vendég-kiszolgáló <br><br/>LVM logikai kötetkezelés | Igen
+Csíkozott Vendég/server kötetet > 4 TB-os <br><br/>Logikai kötetkezelés (LVM)| Igen
 Vendég/kiszolgáló - tárolóhelyek | Nem
 Vendég/server gyakran használt adatok hozzáadása lemez | Nem
 Vendég/kiszolgáló - kizárási lemez | Igen
-Vendég-kiszolgáló több utas (MPIO) | –
+Vendég-kiszolgáló többutas (MPIO) | –
 
 > [!NOTE]
 > UEFI rendszerindítási VMware virtuális gépek Windows Server 2012 rendszert futtató, vagy később is telepíthető az Azure-bA. A következő korlátozások vonatkoznak:
@@ -140,17 +140,17 @@ Vendég-kiszolgáló több utas (MPIO) | –
 > - Mobilitási szolgáltatás verziója 9.13 vagy újabb verzió szükséges.
 > - Fizikai kiszolgálók esetében nem támogatott.
 
-## <a name="azure-storage"></a>Azure Storage
+## <a name="azure-storage"></a>Azure Storage tárterület
 
 **Összetevő** | **Támogatott**
 --- | ---
-LRS | Igen
-GRS | Igen
-RA-GRS | Igen
+Helyileg redundáns tárolás | Igen
+Georedundáns tárolás | Igen
+Írásvédett georedundáns tárolás | Igen
 Ritkán használt adatok | Nem
 Gyakran használt adatok| Nem
 Blokkblobok | Nem
-Titkosítását (SSE)| Igen
+Titkosítását (Storage szolgáltatás titkosítási)| Igen
 Prémium szintű Storage | Igen
 Import/export szolgáltatás | Nem
 Virtuális hálózati szolgáltatási végpont<br/><br/> Tárolási tűzfalak és a célként megadott tárolási/gyorsítótár storage-fiók (használt replikációs adatokat tároló) konfigurált virtuális hálózatok | Nem
@@ -161,7 +161,7 @@ Virtuális hálózati szolgáltatási végpont<br/><br/> Tárolási tűzfalak é
 **Funkció** | **Támogatott**
 --- | ---
 Rendelkezésre állási csoportok | Igen
-HUB | Igen   
+HUB | Igen
 Felügyelt lemezek | Igen
 
 ## <a name="azure-vm-requirements"></a>Azure Virtuálisgép-követelményeknek
@@ -170,20 +170,18 @@ A helyszíni virtuális gépek replikálása Azure-ba, meg kell felelnie Azure v
 
 **Összetevő** | **Követelmények** | **Részletek**
 --- | --- | ---
-**Vendég operációs rendszer** | Győződjön meg arról [támogatott operációs rendszerek](#replicated machines). | Ellenőrzés sikertelen lesz, ha nem támogatott. 
-**Vendég operációs rendszer architektúrája** | 64 bites | Ellenőrzés sikertelen lesz, ha nem támogatott. 
-**Operációsrendszer-lemez mérete** | Legfeljebb 2048 GB | Ellenőrzés sikertelen lesz, ha nem támogatott. 
-**Operációsrendszer-lemezek száma** | 1 | Ellenőrzés sikertelen lesz, ha nem támogatott.  
-**Adatlemezek száma** | 64 vagy kevesebb | Ellenőrzés sikertelen lesz, ha nem támogatott.  
-**Adatlemez virtuális merevlemezének mérete** | Legfeljebb 4095 GB | Ellenőrzés sikertelen lesz, ha nem támogatott. 
-**Hálózati adapterek** | Több adapter támogatottak. | 
-**Megosztott VHD** | Nem támogatott. | Ellenőrzés sikertelen lesz, ha nem támogatott. 
-**FC-lemez** | Nem támogatott. | Ellenőrzés sikertelen lesz, ha nem támogatott. 
-**Merevlemez formátuma** | VHD <br/><br/> VHDX | VHDX jelenleg nem támogatott az Azure-ban, de a Site Recovery automatikusan átalakítja VHDX virtuális merevlemezen a feladatátvételt követően. Ha nem sikerül vissza a helyszíni, a virtuális gépek továbbra is a VHDX formátum.
-**BitLocker** | Nem támogatott | A BitLocker a gépek replikációjának engedélyezése előtt le kell tiltani. | 
-**Virtuális gép neve** | 1 és 63 karakter<br/><br/> Csak betűket, számokat és kötőjelet tartalmazhat.<br/><br/> A számítógépnév kell kezdődnie, és betűvel vagy számmal végződhet. |  Frissítse az értéket a virtuálisgép-tulajdonságokat a Site Recovery szolgáltatásban.
-**Virtuális gép típusa** | Az 1. generációs 2 (csak Windows) |  2. generációs virtuális gépek rendelkeznie kell alapvető operációsrendszer-lemez (beleértve a vagy két az adatkötetek VHDX formátumú), és kevesebb mint 300 GB szabad lemezterület 
-Linux generációs 2 virtuális gépek nem támogatottak. 
+Vendég operációs rendszer | Győződjön meg arról [támogatott operációs rendszerek](#replicated machines). | Ellenőrzés sikertelen lesz, ha nem támogatott. 
+Vendég operációs rendszer architektúrája | 64 bites. | Ellenőrzés sikertelen lesz, ha nem támogatott. 
+Operációs rendszert tároló lemez mérete | Legfeljebb 2048 GB. | Ellenőrzés sikertelen lesz, ha nem támogatott. 
+Operációs rendszer lemez száma | 1 | Ellenőrzés sikertelen lesz, ha nem támogatott.  
+Adatlemez | 64 vagy kisebb. | Ellenőrzés sikertelen lesz, ha nem támogatott.  
+Adattároló lemez virtuális merevlemez mérete | Legfeljebb 4095 GB | Ellenőrzés sikertelen lesz, ha nem támogatott. 
+Hálózati adapterek | Több adapter támogatottak. | 
+Megosztott virtuális merevlemez | Nem támogatott. | Ellenőrzés sikertelen lesz, ha nem támogatott. 
+FC-lemez | Nem támogatott. | Ellenőrzés sikertelen lesz, ha nem támogatott. 
+BitLocker | Nem támogatott. | A BitLocker a gépek replikációjának engedélyezése előtt le kell tiltani. | 
+a virtuális gép neve | 1 és 63 karakter.<br/><br/> Csak betűket, számokat és kötőjelet tartalmazhat.<br/><br/> A számítógépnév kell kezdődnie, és betűvel vagy számmal végződhet. |  Frissítse az értéket a virtuálisgép-tulajdonságokat a Site Recovery szolgáltatásban.
+
 
 ## <a name="vault-tasks"></a>Tároló feladatok
 
@@ -197,8 +195,8 @@ Tárolási, hálózati, Azure virtuális gépek között erőforráscsoportok á
 
 **Name (Név)** | **Leírás** | **legújabb verzió** | **Részletek**
 --- | --- | --- | --- | ---
-**Azure Site Recovery egyesített telepítő** | Koordinálja a helyszíni VMware-kiszolgálók és az Azure közötti kommunikáció <br/><br/> Helyszíni VMware-kiszolgálókon telepítve | 9.12.4653.1 (elérhető a portál) | [Legújabb funkcióit és javításokat](https://aka.ms/latest_asr_updates)
-**Mobilitási szolgáltatás** | Koordinálja a helyszíni VMware-kiszolgáló/fizikai kiszolgálók és az Azure és a másodlagos hely közötti replikálás<br/><br/> VMware virtuális gép vagy fizikai kiszolgálók replikálni kívánt telepítve | 9.12.4653.1 (elérhető a portál) | [Legújabb funkcióit és javításokat](https://aka.ms/latest_asr_updates)
+Azure Site Recovery egyesített telepítő | Koordinálja a helyszíni VMware-kiszolgálók és az Azure közötti kommunikáció <br/><br/> Helyszíni VMware-kiszolgálókon telepítve | 9.12.4653.1 (elérhető a portál) | [Legújabb funkcióit és javításokat](https://aka.ms/latest_asr_updates)
+Mobilitási szolgáltatás | Koordinálja a helyszíni VMware-kiszolgáló/fizikai kiszolgálók és az Azure és a másodlagos hely közötti replikálás<br/><br/> VMware virtuális gép vagy fizikai kiszolgálók replikálni kívánt telepítve | 9.12.4653.1 (elérhető a portál) | [Legújabb funkcióit és javításokat](https://aka.ms/latest_asr_updates)
 
 
 ## <a name="next-steps"></a>További lépések

@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 03/02/2018
 ms.author: sachins
-ms.openlocfilehash: d3a0dd70a03f97a9b6bfb243eda7cbd470b0c239
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: c394142ba40fc580bdcec11430dcae2816fa9760
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/16/2018
 ---
-# <a name="overview-of-azure-data-lake-store"></a>Az Azure Data Lake Store áttekintése
+# <a name="best-practices-for-using-azure-data-lake-store"></a>Azure Data Lake Store használatának ajánlott eljárásai
 Ebből a cikkből megismerheti kapcsolatos ajánlott eljárásokról és az Azure Data Lake Store használata szempontjai. A cikkben információkat biztosít a biztonsági, a teljesítmény, a rugalmasság és a Data Lake Store figyelését. Data Lake Store, mielőtt Azure HDInsight hasonló szolgáltatások valóban nagy adatokkal végzett bonyolult volt. Kellett részekre bonthatók az adatok több Blob storage-fiókok között, hogy petabájtnyi tárolási és optimális teljesítményt, hogy biztosít. A Data Lake Store a szigorú korlátok mérete és a teljesítményt a legtöbb törlődnek. Van azonban továbbra is számításba kell, hogy ez a cikk ismerteti, hogy a legjobb teljesítmény érdekében a Data Lake Store kaphat. 
 
 ## <a name="security-considerations"></a>Biztonsági szempontok
@@ -139,7 +139,7 @@ Ha Data Lake Store naplóküldésben nincs bekapcsolva, Azure HDInsight is lehet
 
     log4j.logger.com.microsoft.azure.datalake.store=DEBUG 
 
-Amennyiben az értéke, és a csomópont újraindul, Data Lake Store diagnosztika íródik a YARN naplókat a csomópontokon (/tmp/<user>/yarn.log), és fontos részleteket, például hibák, vagy a sávszélesség-szabályozás (HTTP 429 hibakód) felügyelni. Ezt az információt is figyelhetők OMS vagy mindig a naplók rendszerrel szállított a [diagnosztika](data-lake-store-diagnostic-logs.md) a Data Lake Store-fiók panelen. Javasoljuk, hogy legalább az ügyféloldali naplózás engedélyezve van, vagy a naplóküldés működési látható és egyszerűbb hibakeresés a Data Lake Store beállítást használják.
+Miután a tulajdonság értéke, és újraindítja a csomópontot, Data Lake Store diagnosztika beíródik YARN naplóit a csomópontokon (/tmp/<user>/yarn.log), és fontos részleteket, például hibák, vagy a sávszélesség-szabályozás (HTTP 429 hibakód) felügyelni. Ezt az információt is figyelhetők OMS vagy mindig a naplók rendszerrel szállított a [diagnosztika](data-lake-store-diagnostic-logs.md) a Data Lake Store-fiók panelen. Javasoljuk, hogy legalább az ügyféloldali naplózás engedélyezve van, vagy a naplóküldés működési látható és egyszerűbb hibakeresés a Data Lake Store beállítást használják.
 
 ### <a name="run-synthetic-transactions"></a>Szintetikus tranzakciók futtatása 
 
@@ -155,7 +155,7 @@ A, IoT-munkaterhelések nagyfokú az adattároló, amely számos termékek, eszk
 
     {Region}/{SubjectMatter(s)}/{yyyy}/{mm}/{dd}/{hh}/ 
 
-Például az Egyesült Királyságban belül repülőgép motor telemetriai adat üzenetsorokra nézhet ki: 
+Például az Egyesült Királyságban belül repülőgép motor telemetriai adat üzenetsorokra nézhet ki például az alábbi szerkezettel: 
 
     UK/Planes/BA1293/Engine1/2017/08/11/12/ 
 
@@ -163,7 +163,7 @@ Ezért fontos, amelyre az a dátum a gyökérmappa-szerkezetében végén van. H
 
 ### <a name="batch-jobs-structure"></a>Kötegelt feladatok struktúra 
 
-Egy magas szintű egy általánosan használt megközelítés a köteg feldolgozása a rendszer adatokat megnyílik egy "in" mappában található. Ezt követően az adatok feldolgozása után helyezze el az új adatok egy "out" mappájába, alsóbb rétegbeli folyamatok felhasználását. Ez látható néha van szükség az egyes fájlok feldolgozása és előfordulhat, hogy nem nagymértékben párhuzamos feldolgozási keresztül nagy adatkészletek feladatokhoz. Az IoT-struktúra ajánlott, például egy jó könyvtárstruktúrát régió és tárgyára (például a szervezet, a termék/készítő) szülő-szintű mappáit rendelkezik. Ezzel a megoldással az adatok védelme a szervezet és a munkaterhelések adatainak jobb kezelése. Továbbá fontolja meg a dátumot és időpontot a szerkezetében lévő, jobb szervezet, szűrt keresések, biztonsági és automatizálás engedélyezése feldolgozásakor. Az időköz, amelyen az adatok feltöltése vagy feldolgozását követően óránként, például napi vagy akár havi dátum struktúra részletesség szintjét határozza meg. 
+Egy magas szintű egy általánosan használt megközelítés a köteg feldolgozása a rendszer adatokat megnyílik egy "in" mappában található. Ezt követően az adatok feldolgozása után helyezze el az új adatok egy "out" mappájába, alsóbb rétegbeli folyamatok felhasználását. A könyvtárstruktúra, amely az egyes fájlok feldolgozást, és nem lehet szükség a nagy adatkészletek keresztül nagymértékben párhuzamos feldolgozási feladatok néha látható. Az IoT-struktúra ajánlott, például egy jó könyvtárstruktúrát régió és tárgyára (például a szervezet, a termék/készítő) szülő-szintű mappáit rendelkezik. Ez a struktúra elősegíti az adatok védelme a szervezet és a jobb kezelése az adatok a munkaterhelések között. Továbbá fontolja meg a dátumot és időpontot a szerkezetében lévő, jobb szervezet, szűrt keresések, biztonsági és automatizálás engedélyezése feldolgozásakor. Az időköz, amelyen az adatok feltöltése vagy feldolgozását követően óránként, például napi vagy akár havi dátum struktúra részletesség szintjét határozza meg. 
 
 Egyes esetekben fájl feldolgozása nem sikerül miatt a program sérült adatokat vagy váratlan formátumban. Ilyen esetekben könyvtárstruktúrát előnye származhat egy **/rossz** helyezze át a fájlokat a további ellenőrzési mappát. A kötegelt is előfordulhat, hogy kezelni, a jelentésekben vagy ezek értesítési *rossz* fájlok manuális beavatkozásra. Vegye figyelembe az alábbi sablon szerkezettel: 
 
@@ -171,7 +171,7 @@ Egyes esetekben fájl feldolgozása nem sikerül miatt a program sérült adatok
     {Region}/{SubjectMatter(s)}/Out/{yyyy}/{mm}/{dd}/{hh}/ 
     {Region}/{SubjectMatter(s)}/Bad/{yyyy}/{mm}/{dd}/{hh}/ 
 
-Például egy napi adatok kivonatokat a felhasználói frissítések fogadása az ügyfelek Észak-Amerikában marketing vállalat nézhet ki előtti és utáni feldolgozás alatt: 
+Marketing vállalkozás például napi adatok kivonatokat a felhasználói frissítések kap Észak-Amerikában ügyfeleiknek. Az alábbi kódrészletben nézhet, előtti és utáni feldolgozás alatt: 
 
     NA/Extracts/ACMEPaperCo/In/2017/08/14/updates_08142017.csv 
     NA/Extracts/ACMEPaperCo/Out/2017/08/14/processed_updates_08142017.csv 

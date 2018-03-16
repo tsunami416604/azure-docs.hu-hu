@@ -16,11 +16,11 @@ ms.date: 12/06/2017
 ms.author: curtand
 ms.reviewer: piotrci
 ms.custom: H1Hack27Feb2017;it-pro
-ms.openlocfilehash: 3ece2326a19e32666f46e8b737d15a48e335de6a
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 8a52d80f32f822691be862d566c17c84efc73c26
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="create-attribute-based-rules-for-dynamic-group-membership-in-azure-active-directory"></a>Dinamikus csoporttagság Attribútumalapú szabályok létrehozása az Azure Active Directoryban
 Az Azure Active Directory (Azure AD) összetett Attribútumalapú dinamikus csoporttagságok csoportok engedélyezése speciális szabályokat hozhat létre. Ez a cikk részletezi az attribútumokat és a felhasználók vagy eszközök dinamikus tagsági szabályok létrehozásához szintaxist.
@@ -35,6 +35,8 @@ Ha módosítja egy felhasználó vagy eszköz attribútuma, a rendszer kiérték
 > Létrehozhat egy dinamikus csoportot eszközök vagy felhasználók számára, de nem hozható létre egy szabályt, amely a felhasználó és eszköz objektumokat is tartalmaz.
 > 
 > A jelenleg nincs lehetőség a tulajdonos felhasználói attribútumok alapján eszköz csoport létrehozásához. Eszköz tagsági szabályok csak az eszköz a címtárban található objektumokhoz azonnali attribútumok hivatkozhat.
+> 
+> Microsoft Teams egyelőre nem támogatják a dinamikus csoporttagság. A hiba a "Nem tudja áttelepíteni a dinamikus tagságot csoport" társított naplófájlokban ellenőrizheti
 
 ## <a name="to-create-an-advanced-rule"></a>Speciális szabály létrehozása
 1. Jelentkezzen be a [az Azure AD felügyeleti központban](https://aad.portal.azure.com) egy olyan fiókkal, amely egy globális rendszergazda vagy egy felhasználói fiók rendszergazdájához.

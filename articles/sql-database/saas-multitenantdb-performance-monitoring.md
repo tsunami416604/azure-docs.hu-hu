@@ -3,24 +3,18 @@ title: "A több-bérlős SaaS-alkalmazás egy szilánkos több-bérlős Azure SQ
 description: "Megfigyelés és kezelés szilánkos több-bérlős egy több-bérlős SaaS-alkalmazás az Azure SQL adatbázis teljesítménye"
 keywords: "sql database-oktatóanyag"
 services: sql-database
-documentationcenter: 
 author: stevestein
 manager: craigg
-editor: 
-ms.assetid: 
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: data-management
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2017
 ms.author: sstein
-ms.openlocfilehash: 3e97f0635a856256dd08c29d33d8058be9c8d8b4
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: 53d8c099d68fd7eb3f00fb4d1be7ec54404521ff
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="monitor-and-manage-performance-of-sharded-multi-tenant-azure-sql-database-in-a-multi-tenant-saas-app"></a>Megfigyelés és kezelés szilánkos több-bérlős egy több-bérlős SaaS-alkalmazás az Azure SQL adatbázis teljesítménye
 
@@ -69,7 +63,7 @@ Ha egy korábbi oktatóanyag már ellátta a bérlő köteg, ugorjon a [szimulá
 
 1. Az a **PowerShell ISE**, nyissa meg... \\Tanulási modulok\\Teljesítményfigyelő és felügyeleti\\*bemutató-PerformanceMonitoringAndManagement.ps1*. Tartsa ezt a szkriptet nyitva, mivel az oktatóanyag során több különböző forgatókönyvet is futtatnia kell majd.
 1. Válassza a **$DemoScenario** = **1**, _Bérlők kötegelt kiépítése_ lehetőséget.
-1. A szkript futtatásához nyomja le az **F5** billentyűt.
+1. A szkriptek futtatásához nyomja le az **F5** billentyűt.
 
 A parancsfájl a több-bérlős adatbázisba 17 bérlők telepít néhány perc múlva. 
 
@@ -160,7 +154,7 @@ Ha már megtörtént egy új bérlőt a saját adatbázisában, ugorjon a követ
 1. Az a **PowerShell ISE**, nyissa meg... \\Tanulási modulok\\ProvisionTenants\\*bemutató-ProvisionTenants.ps1*. 
 1. Módosítsa **$TenantName = "Fűzfa milyen"** és **$VenueType = "dance"**
 1. Állítsa be **$Scenario** = **2**, _kiépíteni a bérlő az egyetlen-bérlő adatbázis_
-1. A szkript futtatásához nyomja le az **F5** billentyűt.
+1. A szkriptek futtatásához nyomja le az **F5** billentyűt.
 
 A parancsfájl kiépíteni a bérlő külön adatbázisban, regisztrálja az adatbázis és a bérlői a katalógusban, és a bérlői események lapot a böngészőben nyissa meg. Frissítse az események Hub oldalt, és látni fogja, mint egy helyszínére "Fűzfa milyen" hozzá lett adva.
 
@@ -187,7 +181,7 @@ Mert skálázás feladat könnyen az API management szolgáltatáson keresztül 
 
 Összesített bérlők követi, kiszámítható használati minták, ahol használhatja Azure Automation adatbázis felfelé és lefelé méretezési ütemezés szerint. Például csökkentheti adatbázis 18: 00 után, és nincs erőforrásigények csökkenését létrehozását, ha ismeri a reggel 6 óra, mielőtt újra fel.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ezen oktatóanyag segítségével megtanulhatja a következőket:
 

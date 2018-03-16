@@ -1,3 +1,19 @@
+---
+title: "fájl belefoglalása"
+description: "fájl belefoglalása"
+services: virtual-machines-windows
+author: cynthn
+ms.service: virtual-machines-windows
+ms.topic: include
+ms.date: 03/11/2018
+ms.author: cynthn
+ms.custom: include file
+ms.openlocfilehash: 6729c4281f4aa10b653d1c4f29104fd10a08a96e
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 03/16/2018
+---
 Azure virtuális gép létrehozásakor létre kell hoznia egy [virtuális hálózatot](../articles/virtual-network/virtual-networks-overview.md) (VNet), vagy egy meglévő VNetet kell használnia. Arról is döntenie kell, hogy a virtuális gépek milyen módon legyenek elérhetők a VNeten. Mindenképpen [készítsen tervet az erőforrások létrehozása előtt](../articles/virtual-network/virtual-network-vnet-plan-design-arm.md), továbbá győződjön meg arról, hogy tisztában van a [hálózati erőforrások korlátaival](../articles/azure-subscription-service-limits.md#networking-limits).
 
 Az alábbi ábrán a virtuális gépek web- és adatbázis-kiszolgálókként vannak ábrázolva. Az egyes virtuálisgép-csoportok a VNet különböző alhálózataihoz vannak rendelve.
@@ -75,7 +91,7 @@ Ez a táblázat egy VNet és alhálózatok létrehozásának lehetséges módsze
 | [Azure Portal](../articles/virtual-network/quick-create-portal.md) | Ha engedélyezi, hogy az Azure a virtuális gép létrehozáskor létrehozzon egy VNetet, akkor a név a VNetet tartalmazó erőforráscsoport nevéből és a **-vnet** elemből tevődik össze. A címtér a 10.0.0.0/24, a szükséges alhálózati név a **default**, az alhálózati címtartomány pedig a 10.0.0.0/24. |
 | [Azure PowerShell](../articles/virtual-network/quick-create-powershell.md) | A [New-AzureRmVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/resourcemanager/AzureRM.Network/v1.0.13/New-AzureRmVirtualNetworkSubnetConfig) és a [New-AzureRmVirtualNetwork](https://docs.microsoft.com/powershell/resourcemanager/AzureRM.Network/v1.0.13/New-AzureRmVirtualNetwork) parancs használatával hozhat létre alhálózatot és VNetet. Azt is megteheti, hogy az [Add-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/add-azurermvirtualnetworksubnetconfig) parancs használatával új alhálózatot ad egy meglévő VNethez. |
 | [Azure CLI](../articles/virtual-network/quick-create-cli.md) | Az alhálózat és a VNet egyidejűleg jön létre. Adjon egy **--subnet-name** paramétert az alhálózat nevével rendelkező [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet#create) parancshoz. |
-| [Sablon](../articles/virtual-network/virtual-networks-create-vnet-arm-template-click.md) | Egy VNet és az alhálózatok létrehozásának legegyszerűbb módja egy meglévő sablon letöltése (pl.: [virtuális hálózat két alhálózattal](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vnet-two-subnets)), és annak módosítása az igényeknek megfelelően. |
+| Sablon | A hálózatok és alhálózatok létrehozásával legegyszerűbb módja a egy meglévő sablont, például letöltési [két vnettel rendelkező virtuális hálózati](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vnet-two-subnets), és módosítsa az igényeinek. |
 
 ## <a name="network-security-groups"></a>Network security groups (Hálózati biztonsági csoportok)
 

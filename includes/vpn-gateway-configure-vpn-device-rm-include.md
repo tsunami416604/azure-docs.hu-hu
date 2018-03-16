@@ -1,10 +1,14 @@
-**Tekintse meg a konfigurációs adatokat a következőket:**
+**VPN-eszköz konfigurációs parancsfájlokat letöltése:**
+
+Attól függően, hogy a VPN-eszköz, amely rendelkezik akkor esetleg egy VPN-eszköz konfigurációs parancsprogram letöltése. További információkért lásd: [letöltése VPN eszköz konfigurációs parancsfájlokat](../articles/vpn-gateway/vpn-gateway-download-vpndevicescript.md).
+
+**Tekintse meg a következő hivatkozásokat a további konfigurációs adatokat:**
 
 - A kompatibilis VPN-eszközökkel kapcsolatos információért tekintse meg a [VPN-eszközökkel foglalkozó szakaszt](../articles/vpn-gateway/vpn-gateway-about-vpn-devices.md).
 
 - A VPN-eszköz konfigurálása előtt ellenőrizze, hogy a használni kívánt VPN-eszközre nem vonatkoznak-e [ismert eszközkompatibilitási problémák](../articles/vpn-gateway/vpn-gateway-about-vpn-devices.md#known).
 
-- Az eszközkonfigurációs beállításokra mutató hivatkozásokért lásd: [Ellenőrzött VPN-eszközök](../articles/vpn-gateway/vpn-gateway-about-vpn-devices.md#devicetable). Az eszközkonfigurációs hivatkozásokat képességeinkhez mérten biztosítjuk. Minden esetben célszerű az eszköz gyártójához fordulni a legfrissebb konfigurációs információért. A lista nyújtunk jeleníti meg a verzió tesztelése. Az operációs rendszer nincs a listán szereplő, akkor továbbra is lehetséges, hogy az verziója kompatibilis. Ellenőrizze az eszköz gyártójával annak ellenőrzéséhez, hogy a VPN-eszköz operációs rendszerének verziója kompatibilis.
+- Az eszközkonfigurációs beállításokra mutató hivatkozásokért lásd: [Ellenőrzött VPN-eszközök](../articles/vpn-gateway/vpn-gateway-about-vpn-devices.md#devicetable). Az eszközkonfigurációs hivatkozásokat képességeinkhez mérten biztosítjuk. Minden esetben célszerű az eszköz gyártójához fordulni a legfrissebb konfigurációs információért. A lista tartalmazza az általunk tesztelt verziók. Az operációs rendszer nincs a listán szereplő, akkor továbbra is lehetséges, hogy az verziója kompatibilis. Ellenőrizze az eszköz gyártójával annak ellenőrzéséhez, hogy a VPN-eszköz operációs rendszerének verziója kompatibilis.
 
 - A VPN-eszközök konfigurációjának áttekintését lásd: [Külső gyártmányú VPN-eszközök konfigurációjának áttekintése](../articles/vpn-gateway/vpn-gateway-3rdparty-device-config-overview.md).
 

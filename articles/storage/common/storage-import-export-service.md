@@ -8,11 +8,11 @@ ms.service: storage
 ms.topic: article
 ms.date: 02/28/2018
 ms.author: muralikk
-ms.openlocfilehash: 7eaf4c3c9b390e87dd8494cd6bfb2ea155451608
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 2b53dc5eeb2e5f25a0714af778ef3db1d5a79dc1
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="use-the-microsoft-azure-importexport-service-to-transfer-data-to-azure-storage"></a>Az adatok átviteléhez az Azure Storage a Microsoft Azure Import/Export szolgáltatás használata
 Ebben a cikkben azt részletes útmutatást nyújtanak az Azure Import/Export szolgáltatás használatával biztonságos átvitelére a nagy mennyiségű adatok Azure Blob storage és Azure fájlok által az Azure adatközpontba szállítási lemezmeghajtókat. Ez a szolgáltatás adatok átviteléhez az Azure storage merevlemez-meghajtók és a helyszíni helyek szállítás is használható. A SATA egyetlen lemezmeghajtó adatait vagy Azure Blob storage-vagy Azure fájlok importálhatók. 
@@ -31,13 +31,13 @@ Kövesse az alábbi lépéseket, ha a lemezen lévő adatok Azure Storage import
 1.  Hozzon létre egy NTFS-kötet minden merevlemez-meghajtón, és rendeljen meghajtóbetűjelet a köteten. Nincs csatlakozási pontok le.
 2.  A windows-gépen titkosítás engedélyezéséhez bit tároló titkosítási az NTFS-köteten. Kövesse az utasításokat a https://technet.microsoft.com/en-us/library/cc731549(v=ws.10).aspx.
 3.  Másolás & Beillesztés húzza & dobja el vagy Robocopy, illetve bármely ilyen eszköz lemezeken ezen titkosított egyetlen kötetek adatok másolása teljesen.
-7.  WAImportExport V1 letöltését https://www.microsoft.com/en-us/download/details.aspx?id=42659
+7.  Töltse le a WAImportExport V1 https://www.microsoft.com/en-us/download/details.aspx?id=42659
 8.  Csomagolja ki, hogy az alapértelmezett mappa waimportexportv1. Például C:\WaImportExportV1  
 9.  Futtatás rendszergazdaként, és nyissa meg a PowerShell vagy a parancssorból, és módosítsa a könyvtárat a tömörítetlen mappába. Például cd C:\WaImportExportV1
 10. Másolja a következő parancsot egy szövegszerkesztőben, és szerkesztheti a parancssor létrehozásához:
 
     ```
-    ./WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#1 /sk:***== /t:D /bk:*** /srcdir:D:\ /dstdir:ContainerName/ 
+    ./WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#1 /sk:***== /t:D /bk:*** /srcdir:D:\ /dstdir:ContainerName/ /skipwrite 
     ```
     
     A következő táblázat ismerteti a parancssori kapcsolókról:
@@ -50,13 +50,13 @@ Kövesse az alábbi lépéseket, ha a lemezen lévő adatok Azure Storage import
     |/bk:     |A BitLocker kulcs a meghajtón.         |
     |/srcdir:     |A meghajtóbetűjelet, a lemez szállítási követ `:\`. Például: `D:\`.         |
     |/dstdir:     |Az Azure Storage a cél-tároló neve         |
-
+    |/skipwrite:     |A beállítás, amely megadja, hogy nem kell átmásolnia szükséges új adatok és a lemezen található meglévő adatokat készüljön van         |
 1. Az egyes szállítási lemezt ismételje meg a 10.
 2. A parancssor minden Futtatás /j: paraméterrel megadott nevű napló fájl jön létre.
 
 ### <a name="step-2-create-an-import-job-on-azure-portal"></a>2. lépés: Az importálási feladat létrehozása Azure-portál.
 
-1. Jelentkezzen be a https://portal.azure.com/ és a további szolgáltatások -> tároló -> "importálási/exportálási feladatok" kattintson **létrehozás importálási/exportálási feladatok**.
+1. Jelentkezzen be https://portal.azure.com/ és a további szolgáltatások -> tároló -> "importálási/exportálási feladatok" kattintson **létrehozás importálási/exportálási feladatok**.
 
 2. Alapvető beállítások területen válassza ki a "Importálása az Azure", adjon meg egy karakterláncot feladat nevét, válasszon egy előfizetést, adja meg vagy válasszon egy erőforráscsoportot. Adjon meg egy leíró nevet az importálási feladatnak. Vegye figyelembe, hogy a név is tartalmazhat, csak kisbetűket, számokat, kötőjeleket és aláhúzásjeleket tartalmazhat, betűvel kell kezdődnie, és nem tartalmazhat szóközt. Úgy dönt, hogy a feladatok követésének, amikor folyamatban van, és azok befejezése után a nevet használja.
 

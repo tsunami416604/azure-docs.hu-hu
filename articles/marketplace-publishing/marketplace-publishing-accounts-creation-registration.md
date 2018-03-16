@@ -3,8 +3,8 @@ title: "Létrehozása és regisztrálása a közzétevő fiók |} Microsoft Docs
 description: "Utasítások a Microsoft Developer-fiók létrehozásához, így a jóváhagyást követően is értékesít különböző kínálnak az Azure piactéren típusok."
 services: Azure Marketplace
 documentationcenter: 
-author: HannibalSII
-manager: hascipio
+author: msmbaldwin
+manager: mbaldwin
 editor: 
 ms.assetid: 5a2fe68d-2967-463f-8af6-42bed07e3eaa
 ms.service: marketplace
@@ -13,17 +13,17 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/04/2017
-ms.author: hascipio
-ms.openlocfilehash: 642e4a2d11ef5a92f5ab46bc4872414966b04c0d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: mbaldwin
+ms.openlocfilehash: da805bead3f6af4ebd0b4b94b30a51ff2abc62dd
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="create-a-microsoft-developer-account"></a>A Microsoft Developer-fiók létrehozása
 Ez a cikk végigvezeti a szükséges fiókok létrehozása és a regisztrációs folyamat egy engedélyezett Microsoft Developer legyen, az Azure piactérről.
 
-## <a name="1-create-a-microsoft-account"></a>1. Microsoft-fiók létrehozása
+## <a name="1-create-a-microsoft-account"></a>1. Microsoft-fiók regisztrálása
 A közzétételi folyamat megkezdéséhez szüksége lesz egy Microsoft-fiók létrehozásához. Ez a fiók használható egyaránt rögzíteni a **Microsoft Developer Center** és **Azure közzétételi Portáljára**. Az az Azure piactér-ajánlatokhoz csak egy Microsoft-fiókkal kell rendelkeznie. Nem lehetnek szolgáltatások vagy ajánlatokat.
 
 A címet, amely a felhasználó neve képezi a tartományban kell lennie, és az informatikai csapat által. Ennek a fióknak minden közzétételi kapcsolódó tevékenységeket kell elvégezni.
@@ -45,15 +45,15 @@ A vállalati fiók létrehozásakor követi ezeket az irányelveket, ha egynél 
 * Adja hozzá a munkahelyi telefonszámot, amelyet a bővítmény nem igényel, és kulcs csapattagok számára érhető el.
 * Jelentkezzen be a vállalat fejlesztői fiókjába a megbízható eszközök segítségével a fejlesztők általában rendelkeznek. Minden kulcs csoporttag megbízható alkalmazáskatalógusából hozzáféréssel kell rendelkeznie. Ez csökkenti a szükséges biztonsági kódok küldését, ha a fiókjához fér hozzá.
 * Ha a fiókhoz való hozzáférés engedélyezése a nem megbízható számítógépről van szüksége, korlátozhatják, hogy legfeljebb öt fejlesztők számára. Ideális esetben a fejlesztők hozzá kell férnie a fiók a számítógépek, amelyek azonos földrajzi és a hálózati helyet.
-* Gyakran tekintse át a vállalat biztonsági adatait, [https://account.live.com/proofs/Manage](https://account.live.com/proofs/Manage) való győződjön meg arról, hogy az összes.
+* Gyakran tekintse át a vállalat biztonsági adatait, [ https://account.live.com/proofs/Manage ](https://account.live.com/proofs/Manage) való győződjön meg arról, hogy az összes.
 
 A fejlesztői fiókba elsősorban a megbízható számítógépekhez legyenek elérhetők. Ez azért fontos, mert fiókonként hetente létrehozott kódok száma korlátozva van. Azt is lehetővé teszi, hogy a legtöbb zökkenőmentes bejelentkezési élményt.
 
 További információt a további fejlesztői fiók irányelvek és biztonsági [Itt](https://msdn.microsoft.com/en-us/windows/uwp/publish/opening-a-developer-account#additional-guidelines-for-company-accounts).
 
-### <a name="instructions"></a>Útmutatás
+### <a name="instructions"></a>Utasítások
 1. Nyisson meg egy új Chrome Incognito vagy Internet Explorer InPrivate-böngészés munkamenet győződjön meg arról, hogy még nem jelentkezett ajánlása meglévő fiókhoz.
-2. Az e-mailt regisztrálni (a fenti irányelveket / pl. windowsapp@fabrikam.com) hivatkozásra kattint a Microsoft-fiókként [https://signup.live.com/signup.aspx](https://signup.live.com/signup.aspx). Kövesse az alábbi utasításokat.
+2. Az e-mailt regisztrálni (a fenti irányelveket / pl. windowsapp@fabrikam.com) hivatkozásra kattint a Microsoft-fiókként [ https://signup.live.com/signup.aspx ](https://signup.live.com/signup.aspx). Kövesse az alábbi utasításokat.
 
    1. Alatt a fiók regisztrálása a Microsoft-fiók, meg kell adnia egy telefonszámot a rendszer szöveges üzenetet vagy egy automata fel fogja hívni egy fiók ellenőrző kódja küld.
    2. Alatt a fiók regisztrálása a Microsoft-fiók, meg kell adnia egy érvényes e-mail azonosítót automatikus e-mailt a Fiókellenőrzés fogadására.
@@ -68,7 +68,7 @@ A Microsoft Developer Center regisztrálása a vállalati adatok egyszer haszná
 >
 >
 
-| Fejlesztői profil | Vázlat elejéig | Átmeneti | Szabad közzététele és a megoldás sablon | Kereskedelmi közzététele |
+| Fejlesztői profil | Vázlat elejéig | Fájlok másolása folyamatban | Szabad közzététele és a megoldás sablon | Kereskedelmi közzététele |
 | --- | --- | --- | --- | --- |
 | Vállalati eszközregisztrációs |Rendelkeznie kell |Rendelkeznie kell |Rendelkeznie kell |Rendelkeznie kell |
 | Profil Adószám |Optional |Optional |Optional |Rendelkeznie kell |
@@ -81,7 +81,7 @@ A Microsoft Developer Center regisztrálása a vállalati adatok egyszer haszná
 
 ### <a name="register-your-company-account"></a>A vállalati fiók regisztrálása
 1. Nyissa meg egy új Internet Explorer InPrivate vagy Chrome Incognito böngészési munkamenet győződjön meg arról, hogy még nem jelentkezett személyes fiókra.
-2. Ugrás a [http://dev.windows.com/registration?accountprogram=azure](http://dev.windows.com/registration?accountprogram=azure) el egy értékesítő a fejlesztői központjában. Olvassa el a következő fontos megjegyzés, mielőtt továbblép.
+2. Ugrás a [ http://dev.windows.com/registration?accountprogram=azure ](http://dev.windows.com/registration?accountprogram=azure) el egy értékesítő a fejlesztői központjában. Olvassa el a következő fontos megjegyzés, mielőtt továbblép.
 
    > [!IMPORTANT]
    > Gondoskodjon arról, hogy az e-mailek azonosító vagy terjesztési lista (függőség eltávolításához egyéni felhasználók számára egy terjesztési listát ajánlott) a fejlesztői központjában a regisztrációhoz használja először regisztrálva a Microsoft-fiók. Ha nem, majd regisztrálja a használatával [hivatkozás](https://signup.live.com/signup?uaid=e479342fe2824efeb0c3d92c8f961fd3&lic=1). Is **minden e-mail-azonosítója a Microsoft vállalati tartományi azaz @microsoft.com nem használható** Dev Center webhely regisztrációjához.
@@ -175,7 +175,7 @@ Frissítheti később az adó és a bank adatait szeretné végrehajtani, ha sza
 
 Ha problémába ütközik fejlesztői központ regisztrációját, a támogatási jegy jelentkezzen alábbi
 
-1. Keresse fel a támogatási hivatkozás [https://developer.microsoft.com/windows/support](https://developer.microsoft.com/windows/support)
+1. A támogatási hivatkozásra [https://developer.microsoft.com/windows/support](https://developer.microsoft.com/windows/support)
 2. A **Kapcsolatfelvétel** területen kattintson a gombra **incidens nyújt** (ahogy az alábbi képernyőképen látható)
 
     ![rajz](media/marketplace-publishing-accounts-creation-registration/imgAddTax_02.png)
@@ -191,7 +191,7 @@ Ha problémába ütközik fejlesztői központ regisztrációját, a támogatás
 A [portal közzétételi](http://publish.windowsazure.com) közzétételét és kezelését a esetében használatos.
 
 1. Nyisson meg egy új Chrome Incognito vagy Internet Explorer InPrivate-böngészés munkamenet győződjön meg arról, hogy még nem jelentkezett személyes fiókra.
-2. Ugrás a [http://publish.windowsazure.com](http://publish.windowsazure.com).
+2. Nyissa meg a következőt: [http://publish.windowsazure.com](http://publish.windowsazure.com).
 3. Ha egy új felhasználót, és jelentkezzen be a közzététel portál először, majd kell bejelentkeznie az azonos e-mail azonosítója, amelyhez a fejlesztői központban regisztrált fiókjában regisztrálva van-e. Ezzel a módszerrel a fejlesztői központban regisztrált fiókjában és a közzétételi portálbeli fiókja hozzákapcsolja egymással. Később hozzáadhat más tagjai a vállalat számára az alkalmazás dolgozik, a közzétételi lévő co-rendszergazdaként az alábbi lépéseket követve portál.
 
 Ha Ön hozzá szeretné adni egy társadminisztrátor a közzététel a portálon, majd bejelentkezhet a társadminisztrátori fiókot.
@@ -226,10 +226,10 @@ Ha Ön hozzá szeretné adni egy társadminisztrátor a közzététel a portálo
 
     ![rajz](media/marketplace-publishing-accounts-creation-registration/imgDeleteAdmin_03.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Most, hogy a fiók létrehozása és regisztrált, győződjön meg arról teljesítésére vagy elégíti az összes áttekintésével az ajánlatot közzétenni a nem technikai jellegű Előfeltételek [nem technikai jellegű Előfeltételek](marketplace-publishing-pre-requisites.md).
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 * [Első lépések: az ajánlat közzététele az Azure piactéren](marketplace-publishing-getting-started.md)
 
 [img-msalive]:media/marketplace-publishing-accounts-creation-registration/creating-msa-account-msa-live.jpg
