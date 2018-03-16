@@ -250,7 +250,7 @@ In this step, you will configure your project to use SSL, and then use the SSL U
 <!--start-test-->
 ## <a name="test-your-code"></a>Tesztelheti a kódját
 
-Nyomja le az `F5` a projektet a Visual Studio futtatásához. A böngészőben megnyílik, és arra utasítja, hogy *http://localhost: {port}* válaszoknál láthatja a *jelentkezzen be Microsoft* gombra. Lépjen tovább, és kattintson rá a bejelentkezéshez.
+Nyomja le az `F5` a projektet a Visual Studio futtatásához. A böngészőben megnyílik, és arra utasítja, hogy *http://localhost:{port}* válaszoknál láthatja a *jelentkezzen be Microsoft* gombra. Lépjen tovább, és kattintson rá a bejelentkezéshez.
 
 Amikor készen áll a teszt (az Azure Active Directory) munkahelyi fiókkal való bejelentkezéshez használt. 
 
@@ -280,7 +280,7 @@ Ezenkívül megjelenik egy táblázatot, beleértve az összes felhasználó sze
 ### <a name="test-accessing-a-method-that-has-an-authorize-attribute-optional"></a>Egy metódust, amelynek elérésekor teszt egy *[engedélyezés]* attribútum (nem kötelező)
 Ebben a lépésben meg elérésének tesztelése a jogcímek vezérlő névtelen felhasználóként:<br/>
 Válassza ki a Kijelentkezés hivatkozásra a felhasználó, és kijelentkezési folyamat befejezéséhez.<br/>
-A böngészőben, a parancssorba írja be a http://localhost: {port} / jogcímeket a tartományvezérlő által védett eléréséhez a `[Authorize]` attribútum
+A böngészőben, a parancssorba írja be a http://localhost{port}/jogcímeket a tartományvezérlő által védett eléréséhez a `[Authorize]` attribútum
 
 #### <a name="expected-results"></a>Kívánt eredmény elérése érdekében
 A parancssorba, nincs szükség, hogy a nézet hitelesítést kell kapnia.

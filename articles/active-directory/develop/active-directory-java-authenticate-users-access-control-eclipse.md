@@ -116,14 +116,14 @@ Ebben a feladatban konfigurálja ACS ismeri fel a Java-webalkalmazás érvényes
    
    1. A **neve**, írja be a függő Entitás nevét. Ez az oktatóanyag céljából, írja be a következőt **Azure Web Apps**.
    2. A **mód**, jelölje be **adja meg a beállításokat manuálisan**.
-   3. A **tartomány**, írja be az URI, amely az ACS által kiadott biztonsági jogkivonat vonatkozik. Ez a feladat, írja be a következőt **8080 /**.
+   3. A **tartomány**, írja be az URI, amely az ACS által kiadott biztonsági jogkivonat vonatkozik. Ez a feladat, írja be a következőt **http://localhost:8080/**.
       ![Függő entitás realm compute emulator használható][relying_party_realm_emulator]
    4. A **visszatérési URL-** URL-címét, amelyhez az ACS a biztonsági jogkivonatot ad vissza. Ez a feladat, írja be a következőt **http://localhost:8080/MyACSHelloWorld/index.jsp**
       ![függő entitás URL-cím használható compute emulator adja vissza.][relying_party_return_url_emulator]
    5. Fogadja el a többi mezőt az alapértelmezett értékeket.
 4. Kattintson a **Save** (Mentés) gombra.
 
-Ezzel sikeresen beállította a Java-webalkalmazás az Azure compute emulator futtatáskor (: 8080 /) kell lennie egy függő Entitás az ACS-névtérben. Ezután hozzon létre a szabályokat, amelyek ACS használatával feldolgozhatja a jogcímeket a függő Entitás számára.
+Ezzel sikeresen beállította a Java-webalkalmazás az Azure compute emulator futtatáskor ( http://localhost:8080/) kell lennie egy függő Entitás az ACS-névtérben. Ezután hozzon létre a szabályokat, amelyek ACS használatával feldolgozhatja a jogcímeket a függő Entitás számára.
 
 ## <a name="create-rules"></a>Szabályok létrehozása
 Ebben a feladatban határozza meg a szabályokat, amelyek meghatározzák a jogcímek átadott hogyan IP-címekről a függő Entitás. Ez az útmutató céljából azt egyszerűen konfigurálja ACS nélkül történő másolását a bemeneti jogcímek adattípusokat és az értékeket közvetlenül a kimeneti jogkivonatot szűrését, és módosítja azokat.
