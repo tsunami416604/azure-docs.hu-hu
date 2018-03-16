@@ -2,29 +2,26 @@
 title: "Az Azure SQL adatbázis felügyelt példány áttekintése |} Microsoft Docs"
 description: "Ez a témakör ismerteti az Azure SQL adatbázis felügyelt példánya, és elmagyarázza, hogyan működik, és hogyan eltér az Azure SQL-adatbázis egy adatbázist."
 services: sql-database
-documentationcenter: na
 author: bonova
 ms.reviewer: carlrab
-manager: cguyer
-editor: 
-ms.assetid: 
+manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: Active
-ms.date: 03/07/2018
+ms.date: 03/14/2018
 ms.author: bonova
-ms.openlocfilehash: dc3c93a1a13f3e10f9159d26411d6337c0269722
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 77d421e9c97f3baa3541040494fb91e0297edb5a
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="what-is-a-managed-instance-preview"></a>Mi az a felügyelt példánya (előzetes verzió)?
 
 Az Azure SQL adatbázis által felügyelt (előzetes verzió) példány új funkciója, az Azure SQL Database, közelében SQL Server helyszíni, 100 %-os kompatibilitást biztosít natív biztosító [virtuális hálózathoz (VNet)](../virtual-network/virtual-networks-overview.md) orvosló végrehajtása közös biztonsági problémákat, és egy [üzleti modell](https://azure.microsoft.com/pricing/details/sql-database/) kedvező a helyszíni SQL Server-ügyfelek számára. Felügyelt példány lehetővé teszi, hogy a meglévő SQL Server és az ügyfelek számára növekedési az eltolás mértékét megadó a felhőbe minimális alkalmazás- és adatbázis módosításait, azok a helyszíni alkalmazások. Egy időben példány által felügyelt összes PaaS-képességet (automatikus javítás és verzió frissítések, biztonsági mentés, magas rendelkezésre állás), amely jelentősen csökkenti a felügyeleti terheket és a teljes Birtoklási megőrzi.
+
+> [!IMPORTANT]
+> Ahol felügyelt példány érhető régiók listáját lásd: [telepítse át az adatbázisokat az Azure SQL Database-felügyelt példányt egy teljes körűen felügyelt szolgáltatás](https://azure.microsoft.com/blog/migrate-your-databases-to-a-fully-managed-service-with-azure-sql-database-managed-instance/).
  
 Az alábbi ábra bemutatja azokat a felügyelt példány a kulcsfontosságú szolgáltatásokat:
 

@@ -48,7 +48,7 @@ Az alkalmazás beállítása a felhasználók hitelesítésére, először regis
 4. Kattintson a **App regisztrációk**, majd válassza ki **Hozzáadás**.
 5. Kövesse a megjelenő utasításokat hozzon létre egy **webalkalmazás és/vagy WebAPI**.
   * **Név** az alkalmazásnak, hogy a felhasználók ismerteti.
-  * **Bejelentkezési URL-cím** az alkalmazás alap URL-címe. A vázat alapértelmezett URL-cím: 8080/adal4jsample /.
+  * **Bejelentkezési URL-cím** az alkalmazás alap URL-címe. A vázat alapértelmezett URL-cím: http://localhost:8080/adal4jsample/.
 6. A regisztráció befejezését követően az Azure AD rendeli hozzá az alkalmazás egy egyedi azonosítót. Kimásolhatja az értéket az alkalmazás oldalon a következő szakaszokban lévő használatára.
 7. Az a **beállítások** -> **tulajdonságok** az alkalmazás lapján frissítse a App ID URI. A **App ID URI** az alkalmazás egyedi azonosítója. Az elnevezési konvenció: `https://<tenant-domain>/<app-name>` (például `http://localhost:8080/adal4jsample/`).
 
@@ -1707,7 +1707,7 @@ A servlet közzététele a ADAL4J fog várt az alkalmazás futtatásához össze
 
  Ez a parancs a pom.xml fájlt, amelyet függőségek.
 
-Most a /targets könyvtárban adal4jsample.war fájl rendelkeznie kell. Telepítse a fájlt a Tomcat tárolóban, és látogasson el a 8080/adal4jsample/URL-CÍMÉT.
+Most a /targets könyvtárban adal4jsample.war fájl rendelkeznie kell. Telepítse a fájlt a Tomcat tárolóban, és látogasson el a http://localhost:8080/adal4jsample/ URL-CÍMÉT.
 
 > [!NOTE]
 > Könnyedén telepítheti a legújabb Tomcat kiszolgálókat .war fájlt. Ugrás a 8080/kezelő /, és kövesse az utasításokat a adal4jsample.war fájl feltöltése. A következőket hajtja végre autodeploy meg a helyes végpontját.
