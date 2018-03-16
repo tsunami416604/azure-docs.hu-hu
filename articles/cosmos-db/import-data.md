@@ -17,10 +17,10 @@ ms.date: 02/27/2018
 ms.author: anhoh
 ms.custom: mvc
 ms.openlocfilehash: cf8b0e6a06f787c5b38622e9343e893d5d7daa12
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/14/2018
 ---
 # <a name="azure-cosmos-db-data-migration-tool"></a>Azure Cosmos DB: Az adatáttelepítési eszköz
 
@@ -196,7 +196,7 @@ Az SQL-forrás hasonló, a beágyazási elválasztó tulajdonság lehetséges, h
 
 Vegye figyelembe például DomainInfo.Domain_Name és RedirectInfo.Redirecting aliasok. A beágyazási elválasztó megadásával ".", az importálási eszköz DomainInfo és RedirectInfo aldokumentumok hoz létre az importálás során. Íme egy példa az Azure Cosmos Adatbázisba az eredményül kapott dokumentum:
 
-*{"DomainInfo": {"Tartománynév": "ACUS.GOV", "Domain_Name_Address": "http://www.ACUS.GOV"}, "Szövetségi ügynökség": "felügyeleti konferencia az Amerikai Egyesült államokbeli", "RedirectInfo": {"Átirányítása": "0", "Redirect_Destination": ""}, "id": "9cc565c5-ebcd-1c03-ebd3-cc3e2ecd814d"}*
+*{"DomainInfo": {"Tartománynév": "ACUS.GOV", "Domain_Name_Address": "http://www.ACUS.GOV"}, "Szövetségi ügynökség": "felügyeleti konferencia az Amerikai Egyesült államokbeli", "RedirectInfo": {"Átirányítása": "0", "Redirect_Destination": ""}, "id": " 9cc565c5-ebcd-1c03-ebd3-cc3e2ecd814d"}*
 
 Az import eszközt próbál következtethető ki a CSV-fájlok nem jegyzett értékekre típusinformációt (idézőjelek közé zárt értékek mindig tekintendők karakterláncok).  Típusok azonosítja a következő sorrendben: szám, dátum és idő, logikai érték.  
 

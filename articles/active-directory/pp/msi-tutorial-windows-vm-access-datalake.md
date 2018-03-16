@@ -15,10 +15,10 @@ ms.date: 12/15/2017
 ms.author: skwan
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: 742b76e17b7ad00a70b0d18895c0b59ebe044d47
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/14/2018
 ---
 # <a name="use-a-windows-vm-managed-service-identity-msi-to-access-azure-data-lake-store"></a>Azure Data Lake Store eléréséhez használja a Windows virtuális gép felügyelt szolgáltatás identitásának (MSI)
 
@@ -39,7 +39,7 @@ Ez az oktatóanyag bemutatja, hogyan felügyelt szolgáltatás identitásának (
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
+Jelentkezzen be az Azure portálon, a [ https://portal.azure.com ](https://portal.azure.com).
 
 ## <a name="create-a-windows-virtual-machine-in-a-new-resource-group"></a>Windows virtuális gép egy új erőforráscsoport létrehozása
 
@@ -100,7 +100,7 @@ Ebben az oktatóanyagban bejelentkezik a Data Lake Store-fájlrendszer REST API 
 1. A portálon lépjen a **virtuális gépek**, nyissa meg a Windows virtuális gépre, és a a **áttekintése** kattintson **Connect**.
 2. Adja meg a **felhasználónév** és **jelszó** számára, amely hozzá van, a Windows virtuális gép létrehozása után. 
 3. Most, hogy létrehozott egy **távoli asztali kapcsolat** nyissa meg a virtuális gép **PowerShell** a távoli munkamenet. 
-4. A PowerShell használatával `Invoke-WebRequest`, indítson egy lekérdezést a helyi MSI-végpont az Azure Data Lake Store megszerezni az olyan hozzáférési jogkivonatot.  A Data Lake Store erőforrás-azonosító "https://datalake.azure.net/".  A Data Lake nem az erőforrás-azonosító a pontos egyezés, és a záró perjelet fontos.
+4. A PowerShell használatával `Invoke-WebRequest`, indítson egy lekérdezést a helyi MSI-végpont az Azure Data Lake Store megszerezni az olyan hozzáférési jogkivonatot.  Az erőforrás-azonosító a Data Lake Store "https://datalake.azure.net/".  A Data Lake nem az erőforrás-azonosító a pontos egyezés, és a záró perjelet fontos.
 
    ```powershell
    $response = Invoke-WebRequest -Uri http://localhost:50342/oauth2/token -Method GET -Body @{resource="https://datalake.azure.net/"} -Headers @{Metadata="true"}

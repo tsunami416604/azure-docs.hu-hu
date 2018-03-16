@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/10/2017
 ms.author: kumud
-ms.openlocfilehash: 0b0d474752615e60747ffe7681c2d04cd2685bba
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 3f67d4f537a832d1d3e13ff2a67645ae17ed8669
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="get-started-with-azure-dns-using-powershell"></a>Az Azure DNS PowerShell-lel való használatának első lépései
 
@@ -78,7 +78,7 @@ Ha a DNS-zóna és -rekordok megfelelően be lettek állítva, konfigurálnia ke
 A zóna névkiszolgálói az `Get-AzureRmDnsZone` parancsmaggal vannak megadva.
 
 ```powershell
-Get-AzureRmDnsZone -ZoneName contoso.com -ResourceGroupName MyResourceGroup
+Get-AzureRmDnsZone -Name contoso.com -ResourceGroupName MyResourceGroup
 
 Name                  : contoso.com
 ResourceGroupName     : myresourcegroup
@@ -99,7 +99,7 @@ A jelen cikkben létrehozott összes erőforrás törléséhez hajtsa végre az 
 Remove-AzureRMResourceGroup -Name MyResourceGroup
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure DNS-sel kapcsolatos további információért lásd [az Azure DNS áttekintését biztosító](dns-overview.md) cikket.
 

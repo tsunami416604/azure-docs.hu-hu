@@ -15,10 +15,10 @@ ms.date: 12/15/2017
 ms.author: skwan
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: e2a2b885dd0dc5b240aef234ef1ff139d788de3c
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/14/2018
 ---
 # <a name="use-a-linux-vm-managed-service-identity-msi-to-access-azure-data-lake-store"></a>Azure Data Lake Store eléréséhez használja egy Linux virtuális gép felügyelt szolgáltatás Identity (MSI)
 
@@ -39,7 +39,7 @@ Ez az oktatóanyag bemutatja, hogyan felügyelt szolgáltatás identitásának (
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
+Jelentkezzen be az Azure portálon, a [ https://portal.azure.com ](https://portal.azure.com).
 
 ## <a name="create-a-linux-virtual-machine-in-a-new-resource-group"></a>Egy új erőforráscsoportot a Linux virtuális gép létrehozása
 
@@ -103,7 +103,7 @@ Lépések elvégzéséhez szüksége van egy SSH-ügyfél. Windows használ, ha 
 
 1. A portálon lépjen a Linux virtuális gépre, majd a a **áttekintése**, kattintson a **Connect**.  
 2. **Csatlakozás** a virtuális géphez a az SSH-ügyfél az Ön által választott. 
-3. A Terminálszolgáltatások ablakban CURL, használatával indítson egy lekérdezést a helyi MSI-végpont a Data Lake Store-fájlrendszer megszerezni az olyan hozzáférési jogkivonatot.  A Data Lake Store az erőforrás-azonosító "https://datalake.azure.net/."  Fontos a záró perjelet az erőforrás-azonosító.
+3. A Terminálszolgáltatások ablakban CURL, használatával indítson egy lekérdezést a helyi MSI-végpont a Data Lake Store-fájlrendszer megszerezni az olyan hozzáférési jogkivonatot.  Az erőforrás-azonosító a Data Lake Store "https://datalake.azure.net/."  Fontos a záró perjelet az erőforrás-azonosító.
     
    ```bash
    curl http://localhost:50342/oauth2/token --data "resource=https://datalake.azure.net/" -H Metadata:true   

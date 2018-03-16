@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 10/26/2017
 ms.author: jdial
 ms.custom: 
-ms.openlocfilehash: d05492425381649a7893b872c4b1c49e9f241b50
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 4f4c4e9749eb5f0f6ba1950521f459f140cb5221
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="virtual-network-traffic-routing"></a>Virtuális hálózat forgalmának útválasztása
 
@@ -40,12 +40,12 @@ Mindegyik útvonal tartalmaz egy címelőtagot és a következő ugrás típusá
 |Alapértelmezett|0.0.0.0/0                                               |Internet       |
 |Alapértelmezett|10.0.0.0/8                                              |Nincs           |
 |Alapértelmezett|172.16.0.0/12                                           |Nincs           |
-|Alapértelmezett|192.168.0.0/16                                          |Nincs           |
+|Alapértelmezett|192.168.0.0/16                                          |None           |
 |Alapértelmezett|100.64.0.0/10                                           |Nincs           |
 
 Az előző táblában szereplő következő ugrástípusok azt jelölik, hogyan irányítja az Azure a listában szereplő címelőtagokra irányuló forgalmat. Itt a következő ugrás típusainak magyarázatait láthatja:
 
-- **Virtuális hálózat**: A virtuális hálózat [címterében](virtual-network-manage-network.md#add-address-spaces) lévő címtartományok közötti forgalmat irányítja. Az Azure létrehoz egy útvonalat a virtuális hálózat címterében meghatározott egyes címtartományoknak megfelelő címelőtaggal. Ha egy virtuális hálózat címteréhez több címtartomány van meghatározva, az Azure egyéni útvonalat hoz létre mindegyik címtartományhoz. Az Azure automatikusan irányítja az alhálózatok közötti forgalmat az egyes címtartományokhoz létrehozott útvonalakkal. Nem kell meghatároznia átjárókat az Azure-nak az alhálózatok közötti forgalom irányításához. Bár a virtuális hálózatok alhálózatokat tartalmaznak, és mindegyik alhálózat meghatározott címtartománnyal rendelkezik, az Azure *nem* hoz létre alapértelmezett útvonalakat az alhálózati címtartományokhoz, mert mindegyik alhálózati címtartomány egy virtuális hálózat címterének címtartományán belül van.
+- **Virtuális hálózat**: A virtuális hálózat [címterében](manage-virtual-network.md#add-or-remove-an-address-range) lévő címtartományok közötti forgalmat irányítja. Az Azure létrehoz egy útvonalat a virtuális hálózat címterében meghatározott egyes címtartományoknak megfelelő címelőtaggal. Ha egy virtuális hálózat címteréhez több címtartomány van meghatározva, az Azure egyéni útvonalat hoz létre mindegyik címtartományhoz. Az Azure automatikusan irányítja az alhálózatok közötti forgalmat az egyes címtartományokhoz létrehozott útvonalakkal. Nem kell meghatároznia átjárókat az Azure-nak az alhálózatok közötti forgalom irányításához. Bár a virtuális hálózatok alhálózatokat tartalmaznak, és mindegyik alhálózat meghatározott címtartománnyal rendelkezik, az Azure *nem* hoz létre alapértelmezett útvonalakat az alhálózati címtartományokhoz, mert mindegyik alhálózati címtartomány egy virtuális hálózat címterének címtartományán belül van.
 
 - **Internet**: A címelőtag által meghatározott forgalmat az internetre irányítja. A rendszer alapértelmezett útvonala a 0.0.0.0/0 címelőtagot határozza meg. Ha nem bírálja felül az Azure alapértelmezett útvonalait, az Azure az internetre irányítja a virtuális hálózaton címtartomány által nem meghatározott összes cím forgalmát, egy kivétellel. Ha a cél címe egy Azure-szolgáltatáshoz tartozik, az Azure közvetlenül a szolgáltatásra irányítja a forgalmat az Azure gerinchálózatán keresztül, nem pedig az internetre. Az Azure-szolgáltatások közötti forgalom attól függetlenül sem halad át az interneten, hogy melyik Azure-régióban van a virtuális hálózat, vagy hogy mely Azure-régióban van üzembe helyezve az Azure-szolgáltatás példánya. Az Azure 0.0.0.0/0 címelőtaghoz tartozó alapértelmezett rendszerútvonalát felülbírálhatja egy [egyéni útvonallal](#custom-routes).
 
@@ -110,7 +110,7 @@ A következő ugrás típusaihoz megjelenített és hivatkozott név eltér az A
 |Virtuális hálózat                 |VNetLocal                                       |VNetLocal (nem érhető el a parancssori felület 1.0-s verziójában asm mód esetén)|
 |Internet                        |Internet                                        |Internet (nem érhető el a parancssori felület 1.0-s verziójában asm mód esetén)|
 |Virtuális berendezés               |VirtualAppliance                                |VirtualAppliance|
-|Nincs                            |None                                            |Null (nem érhető el a parancssori felület 1.0-s verziójában asm mód esetén)|
+|Nincs                            |Nincs                                            |Null (nem érhető el a parancssori felület 1.0-s verziójában asm mód esetén)|
 |Társviszony létesítése virtuális hálózatok között         |Társviszony létesítése virtuális hálózatok között                                    |Nem alkalmazható|
 |Virtuális hálózati szolgáltatásvégpont|VirtualNetworkServiceEndpoint                   |Nem alkalmazható|
 
@@ -241,16 +241,16 @@ A *Subnet2* a képen látható útvonaltáblája a következő útvonalakat tart
 |Alapértelmezett |Aktív |10.2.0.0/16         |Társviszony létesítése virtuális hálózatok között              |                   |
 |Alapértelmezett |Aktív |10.10.0.0/16        |Virtuális hálózati átjáró   |[X.X.X.X]          |
 |Alapértelmezett |Aktív |0.0.0.0/0           |Internet                  |                   |
-|Alapértelmezett |Aktív |10.0.0.0/8          |None                      |                   |
+|Alapértelmezett |Aktív |10.0.0.0/8          |Nincs                      |                   |
 |Alapértelmezett |Aktív |100.64.0.0/10       |None                      |                   |
-|Alapértelmezett |Aktív |172.16.0.0/12       |None                      |                   |
+|Alapértelmezett |Aktív |172.16.0.0/12       |Nincs                      |                   |
 |Alapértelmezett |Aktív |192.168.0.0/16      |Nincs                      |                   |
 
 A *Subnet2* útvonaltáblája tartalmazza az összes, Azure által létrehozott alapértelmezett útvonalat és a választható virtuális hálózatok közötti társviszony és a virtuális hálózati átjáró választható útvonalait. Az Azure a virtuális hálózaton lévő összes alhálózathoz hozzáadta a választható útvonalakat, amikor az átjáró és a társviszony a virtuális hálózathoz lett adva. Az Azure eltávolította a 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16 és 100.64.0.0/10 címelőtagok útvonalait a *Subnet1* útvonaltáblából, amikor a 0.0.0.0/0 címelőtag felhasználó által megadott útvonala a *Subnet1* alhálózathoz került.  
 
 ## <a name="next-steps"></a>További lépések
 
-- [Felhasználó által megadott útvonaltábla létrehozása útvonalakkal és hálózati virtuális berendezéssel](create-user-defined-route-portal.md)
+- [Felhasználó által megadott útvonaltábla létrehozása útvonalakkal és hálózati virtuális berendezéssel](tutorial-create-route-table-portal.md)
 - [A BGP konfigurálása Azure VPN Gateway-átjáróhoz](../vpn-gateway/vpn-gateway-bgp-resource-manager-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 - [A BGP használata az ExpressRoute-tal](../expressroute/expressroute-routing.md?toc=%2fazure%2fvirtual-network%2ftoc.json#route-aggregation-and-prefix-limits)
 - [Alhálózat összes útvonalának megtekintése](virtual-network-routes-troubleshoot-portal.md). A felhasználó által megadott útvonaltáblák csak a felhasználó által megadott útvonalakat mutatják, az alhálózat alapértelmezett és BGP-útvonalait nem. Az összes útvonal megtekintésekor láthatja a hálózati adaptert tartalmazó alhálózat alapértelmezett, BGP- és felhasználó által megadott útvonalait.

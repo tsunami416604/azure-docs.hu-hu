@@ -17,10 +17,10 @@ ms.topic: article
 ms.date: 12/11/2017
 ms.author: nitinme
 ms.openlocfilehash: 5cef5e72af8a8b7c007b688b029f875e89d163ae
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/14/2018
 ---
 # <a name="install-and-use-hue-on-hdinsight-hadoop-clusters"></a>Telepítheti és használhatja Hue HDInsight Hadoop-fürtök
 
@@ -42,13 +42,13 @@ Hue olyan fürtökkel a Hadoop fürtök folytatott kommunikációhoz használhat
 > [!WARNING]
 > A HDInsight-fürt összetevői teljes mértékben támogatottak, és a Microsoft Support fog help elkülönítésére, és ezeket az összetevőket kapcsolatos problémák megoldásához.
 >
-> Egyéni összetevők kapnak minden üzleti szempontból ésszerű támogatási segítséget nyújtanak a probléma további hibaelhárításához. A probléma megoldását, vagy kéri fel, a nyílt forráskódú technológiák, ahol a részletes segítséget, hogy a technológiát található elérhető csatorna végezhetnek eredményezhet. Például nincsenek sok közösségi webhelyek használható, például: [MSDN fórum hdinsight](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), [http://stackoverflow.com](http://stackoverflow.com). Is Apache projektek rendelkezik projekt helyek [http://apache.org](http://apache.org), például: [Hadoop](http://hadoop.apache.org/).
+> Egyéni összetevők kapnak minden üzleti szempontból ésszerű támogatási segítséget nyújtanak a probléma további hibaelhárításához. A probléma megoldását, vagy kéri fel, a nyílt forráskódú technológiák, ahol a részletes segítséget, hogy a technológiát található elérhető csatorna végezhetnek eredményezhet. Például nincsenek sok közösségi webhelyek használható, például: [MSDN fórum hdinsight](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), [ http://stackoverflow.com ](http://stackoverflow.com). Is Apache projektek rendelkezik projekt helyek [ http://apache.org ](http://apache.org), például: [Hadoop](http://hadoop.apache.org/).
 >
 >
 
 ## <a name="install-hue-using-script-actions"></a>A Parancsfájlműveletek segítségével Hue telepítése
 
-A Hue telepítése egy Linux-alapú HDInsight-fürt parancsfájl https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh érhető el. Ez a parancsfájl segítségével Hue telepítése vagy az Azure Storage Blobs (WASB), vagy az Azure Data Lake Store alapértelmezett tárolóként fürtökön.
+A Hue telepítése egy Linux-alapú HDInsight-fürt parancsfájl érhető el: https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh. Ez a parancsfájl segítségével Hue telepítése vagy az Azure Storage Blobs (WASB), vagy az Azure Data Lake Store alapértelmezett tárolóként fürtökön.
 
 Ez a témakör leírja, a parancsfájl használata, ha a fürt az Azure portál használatával.
 
@@ -68,7 +68,7 @@ Ez a témakör leírja, a parancsfájl használata, ha a fürt az Azure portál 
     ![Adja meg parancsfájl művelet paramétereinek Hue](./media/hdinsight-hadoop-hue-linux/hue-script-action.png "nyújtása parancsfájl művelet paramétereinek Hue")
 
    * **NÉV**: Adja meg a parancsfájlművelet rövid nevét.
-   * **PARANCSFÁJL URI azonosítója**: https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh
+   * **PARANCSFÁJL URI AZONOSÍTÓJA**: https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh
    * **HEAD**: ezt a beállítást
    * **MUNKAVÉGZŐ**: hagyja üresen a mezőt.
    * **ZOOKEEPER**: hagyja üresen a mezőt.
@@ -146,7 +146,7 @@ SSH-bújtatás Hue hozzáférni a fürtön, miután fut-e az egyetlen lehetősé
    Ez egy ismert probléma okozza. A probléma megoldásához módosítsa Ambari, hogy az elsődleges headnode is fut a aktív erőforrás-kezelő.
 5. Hue együttműködik a WebHDFS, amíg a HDInsight-fürtök használata az Azure Storage használatával `wasb://`. A parancsfájlművelet használt egyéni parancsfájl tehát WebWasb, amely a WebHDFS-kompatibilis szolgáltatás beszélgetne a WASB telepíti. Igen, annak ellenére, hogy a Hue portál szerint helyen HDFS (például ha Ön az egérmutatót a **fájl böngésző**), úgy kell értelmezni, WASB.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Giraph telepíthető a HDInsight-fürtök](hdinsight-hadoop-giraph-install-linux.md). A HDInsight Hadoop-fürtök Giraph telepítése a fürt testreszabási használatával. Giraph lehetővé teszi a Hadoop használatával graph feldolgozás elvégzéséhez, és az Azure HDInsight használható.
 * [Solr telepíthető a HDInsight-fürtök](hdinsight-hadoop-solr-install-linux.md). A HDInsight Hadoop-fürtök Solr telepítése a fürt testreszabási használatával. Solr tárolt adatok hatékony keresési műveletek végrehajtását teszi lehetővé.
 * [A HDInsight-fürtökön R telepítéséhez](hdinsight-hadoop-r-scripts-linux.md). A HDInsight Hadoop-fürtök R telepítése a fürt testreszabási használatával. R egy nyílt forráskódú nyelv és környezet, amely statisztikai számításokhoz. Több száz beépített statisztikai függvények és a saját programozási nyelv, amely a működési és objektumorientált programozási aspektusát kombinálja biztosít. Nagy mennyiségű grafikus képességeket is tartalmaz.

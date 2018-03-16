@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 02/23/2017
 ms.author: billmath
 ms.openlocfilehash: 58ca992f9fcf9a03d917f0dc250a292c4d5f49e5
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/14/2018
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Az Azure Active Directory zökkenőmentes egyszeri bejelentkezés: első lépések
 
@@ -87,7 +87,7 @@ Emellett az Intranet zóna a házirend-beállítással a hívott engedélyeznie 
 
 ### <a name="why-do-you-need-to-modify-users-intranet-zone-settings"></a>Miért van szüksége a felhasználói intranetes beállítások módosítása?
 
-Alapértelmezés szerint a böngésző automatikusan kiszámítja a megfelelő zónához, internetes vagy intranetes, egy adott URL-címről. Például "http://contoso/" leképezve az Intranet zónához, mivel a "http://intranet.contoso.com/" rendeli az Internet zóna (mert az URL-cím pontot tartalmaz). Böngészők nem küld a Kerberos jegyek küldenek a felhővégpontnak, például az Azure AD URL-CÍMÉT, kivéve, ha explicit módon hozzáadása az URL-CÍMÉT a böngésző Intranet zónához.
+Alapértelmezés szerint a böngésző automatikusan kiszámítja a megfelelő zónához, internetes vagy intranetes, egy adott URL-címről. Például "http://contoso/" leképezve az Intranet zónához, mivel a "http://intranet.contoso.com/" (mert az URL-cím pontot tartalmaz) van leképezve az Internet zónában. Böngészők nem küld a Kerberos jegyek küldenek a felhővégpontnak, például az Azure AD URL-CÍMÉT, kivéve, ha explicit módon hozzáadása az URL-CÍMÉT a böngésző Intranet zónához.
 
 ### <a name="detailed-steps"></a>Részletes lépések
 
@@ -101,7 +101,7 @@ Alapértelmezés szerint a böngésző automatikusan kiszámítja a megfelelő z
 
     Az eredmény így néz ki:
 
-    Value: https://autologon.microsoftazuread-sso.com
+    Érték: https://autologon.microsoftazuread-sso.com
   
     Adatok: 1
 
@@ -129,7 +129,7 @@ Mozilla Firefox automatikusan nem használja a Kerberos-hitelesítést. Minden f
 1. Futtassa a Firefox, és adja meg `about:config` a böngésző címsorába. Hagyja figyelmen kívül belőle értesítéseket, amelyek akkor jelennek meg.
 2. Keresse meg a **network.negotiate-auth.trusted-URI-azonosítók** beállítás. Ez a beállítás a Firefox a megbízható helyek a Kerberos-hitelesítést sorolja fel.
 3. Kattintson a jobb gombbal, és válassza ki **módosítás**.
-4. Adja meg https://autologon.microsoftazuread-sso.com mezőben.
+4. Adja meg https://autologon.microsoftazuread-sso.com a mezőben.
 5. Válassza ki **OK** és a böngészőben nyissa meg újra.
 
 #### <a name="safari-mac-os"></a>Safari (Mac OS)
@@ -138,7 +138,7 @@ Győződjön meg arról, hogy a Mac OS futtató számítógép egy tartományhoz
 
 #### <a name="google-chrome-all-platforms"></a>Google Chrome (minden platform)
 
-Ha felülbírálva a [AuthNegotiateDelegateWhitelist](https://www.chromium.org/administrators/policy-list-3#AuthNegotiateDelegateWhitelist) vagy a [AuthServerWhitelist](https://www.chromium.org/administrators/policy-list-3#AuthServerWhitelist) házirend-beállítások a környezetben, győződjön meg arról, hogy ad hozzá az Azure AD URL-címe (https://autologon.microsoftazuread-sso.com) azokat is.
+Ha felülbírálva a [AuthNegotiateDelegateWhitelist](https://www.chromium.org/administrators/policy-list-3#AuthNegotiateDelegateWhitelist) vagy a [AuthServerWhitelist](https://www.chromium.org/administrators/policy-list-3#AuthServerWhitelist) házirend-beállítások a környezetben, győződjön meg arról, az Azure AD URL-cím hozzáadása (https://autologon.microsoftazuread-sso.com) is számukra.
 
 #### <a name="google-chrome-mac-os-only"></a>Google Chrome (Mac OS csak)
 
@@ -159,11 +159,11 @@ A szolgáltatás adott felhasználó tesztelése, gondoskodjon arról, hogy a k�
   - Rendelkezik [megkezdődött a szolgáltatás](##step-3-roll-out-the-feature) csoportházirenden keresztül a felhasználóhoz.
 
 A forgatókönyv, ahol a felhasználó beírja, csak a felhasználónév, de nem a jelszó ellenőrzése
-   - Jelentkezzen be egy új titkos böngésző-munkamenetben https://myapps.microsoft.com/.
+   - Jelentkezzen be https://myapps.microsoft.com/ egy új titkos böngésző-munkamenetben.
 
 Tesztelje a forgatókönyvet, ahol a felhasználó nem rendelkezik a felhasználónév vagy jelszó megadását, használja az alábbi lépések egyikét: 
-   - Jelentkezzen be egy új titkos böngésző-munkamenetben https://myapps.microsoft.com/contoso.onmicrosoft.com. Cserélje le *contoso* a bérlő névvel.
-   - Jelentkezzen be egy új titkos böngésző-munkamenetben https://myapps.microsoft.com/contoso.com. Cserélje le *contoso.com* a tenant egy ellenőrzött tartomány (nem összevont tartományhoz).
+   - Jelentkezzen be https://myapps.microsoft.com/contoso.onmicrosoft.com egy új titkos böngésző-munkamenetben. Cserélje le *contoso* a bérlő névvel.
+   - Jelentkezzen be https://myapps.microsoft.com/contoso.com egy új titkos böngésző-munkamenetben. Cserélje le *contoso.com* a tenant egy ellenőrzött tartomány (nem összevont tartományhoz).
 
 ## <a name="step-5-roll-over-keys"></a>5. lépés: A kulcs váltása
 

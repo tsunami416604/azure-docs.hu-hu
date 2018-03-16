@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/22/2018
 ms.author: nitinme
 ms.openlocfilehash: 5da6ffc346cc0e7f0f83bf4a4c33600b668a17ca
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/14/2018
 ---
 # <a name="frequently-asked-questions-about-azure-databricks"></a>Azure Databricks kapcsolatos gyakori kérdések
 
@@ -46,7 +46,7 @@ Az alábbiakban néhány Databricks az esetleg felmerülő problémákat.
 
 #### <a name="error-message"></a>Hibaüzenet
 
-"Ez az előfizetés nincs regisztrálva a következő névtérben:"Microsoft.Databricks"használja. Lásd: hogyan regisztrálhat előfizetések https://aka.ms/rps-not-found. (Code: MissingSubscriptionRegistration)"
+"Ez az előfizetés nincs regisztrálva a következő névtérben:"Microsoft.Databricks"használja. Lásd: https://aka.ms/rps-not-found hogyan regisztrálhat előfizetések. (Code: MissingSubscriptionRegistration)"
 
 #### <a name="solution"></a>Megoldás
 
@@ -101,7 +101,7 @@ Databricks fürtök csomópontonként egy nyilvános IP-cím használatára. Ha 
 #### <a name="error-message"></a>Hibaüzenet
 
 "A felhő szolgáltató indítási hiba: A felhőbeli szolgáltató hiba történt a fürt beállítása. További információ a Databricks útmutatójában talál.
-Az Azure hibakód: MissingSubscriptionRegistration Azure-hibaüzenet: az előfizetés nincs regisztrálva "Microsoft.Compute" névtér használatára. Hogyan regisztrálhat előfizetések https://aka.ms/rps-not-found talál."
+Az Azure hibakód: MissingSubscriptionRegistration Azure-hibaüzenet: az előfizetés nincs regisztrálva "Microsoft.Compute" névtér használatára. Lásd: https://aka.ms/rps-not-found hogyan regisztrálhat előfizetések. "
 
 #### <a name="solution"></a>Megoldás
 

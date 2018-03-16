@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 12/15/2016
 ms.author: apimpm
 ms.openlocfilehash: fc8c5774eb616c33c00ecebeacd31e2a07b36e0c
-ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/14/2018
 ---
 # <a name="how-to-delegate-user-registration-and-product-subscription"></a>Hogyan kell delegálni a felhasználói regisztráció és a termék-előfizetéshez
 Delegálás lehetővé teszi a meglévő webhely használatát fejlesztői bejelentkezési-a/regisztrációs és termékek a fejlesztői portálra beépített funkcióval szemben-előfizetés kezeléséhez. Ez lehetővé teszi, hogy a webhely tulajdonosai a felhasználó adatait, és hajtsa végre az alábbi lépéseket az érvényesítés egy egyedi módon.
@@ -44,7 +44,7 @@ Most kell létrehoznia a **delegálás végpont**. Van több műveletet végreha
 
 1. A kérés fogadásához a következő formában:
    
-   > *http://www.yourwebsite.com/apimdelegation?operation=SignIn&returnUrl={URL of source page}&salt={string}&sig={string}*
+   > *http://www.yourwebsite.com/apimdelegation?operation=SignIn&returnUrl={URL forrás lap} & védőérték = {karakterlánc} & sig = {karakterlánc}*
    > 
    > 
    
@@ -70,7 +70,7 @@ Most kell létrehoznia a **delegálás végpont**. Van több műveletet végreha
    * [egyszeri bejelentkezéses (SSO) jogkivonatot kérni] az API Management REST API-n keresztül
    * egy returnUrl lekérdezési paraméter hozzáfűzése fent API-hívás kapott egyszeri bejelentkezési URL-címe:
      
-     > for example, https://customer.portal.azure-api.net/signin-sso?token&returnUrl=/return/url 
+     > Például https://customer.portal.azure-api.net/signin-sso?token&returnUrl=/return/url 
      > 
      > 
    * a fenti létrehozott URL-címet átirányítja a felhasználót
@@ -101,7 +101,7 @@ Gondoskodnia kell a delegálás végpont a következő műveleteket hajtja végr
 
 1. A kérés fogadásához a következő formában:
    
-   > *http://www.yourwebsite.com/apimdelegation?operation={operation}&productId={product to subscribe to}&userId={user making request}&salt={string}&sig={string}*
+   > *http://www.yourwebsite.com/apimdelegation?operation={operation}&productId={product előfizetés} & userId = {a felhasználó kérést} & védőérték = {karakterlánc} & sig = {karakterlánc}*
    > 
    > 
    

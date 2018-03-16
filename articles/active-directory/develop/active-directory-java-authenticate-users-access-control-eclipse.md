@@ -16,10 +16,10 @@ ms.date: 04/25/2017
 ms.author: robmcm
 ms.custom: aaddev
 ms.openlocfilehash: b555ef40fae8156d2957643697d6450ef22b215a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/14/2018
 ---
 # <a name="how-to-authenticate-web-users-with-azure-access-control-service-using-eclipse"></a>Hogyan hitelesítheti az Eclipse használata Azure hozzáférés-vezérlési szolgáltatásban webes felhasználók
 Ez az útmutató bemutatja, hogyan használható az Azure Access Control Service (ACS) az Azure-eszközkészlet belül az eclipse-ben. Az ACS további információkért lásd: a [további lépések](#next_steps) szakasz.
@@ -205,7 +205,7 @@ A a **bejelentkezési oldal integrációs: Azure Web Apps** lapon, az URL-címe 
 4. Kattintson a **Befejezés** gombra.
 5. Kattintson a **Azure emulátorban futtatása** gombra.
 6. A Java-webalkalmazás a compute emulator a elindulása után zárja be a böngésző minden példányát (úgy, hogy a jelenlegi böngésző-munkamenetek ne zavarja meg az ACS-bejelentkezés tesztelése).
-7. Futtassa az alkalmazást megnyitásával <8080/MyACSHelloWorld/> a böngésző (vagy <https://localhost:8080/MyACSHelloWorld/> Ha bejelölte **szükséges HTTPS-kapcsolatok** ). A rendszer kéri a Windows Live ID bejelentkezési azonosítóhoz, akkor meg kell fordítani a függő entitás-alkalmazáshoz megadott visszatérési URL-cím.
+7. Futtassa az alkalmazást megnyitásával <http://localhost:8080/MyACSHelloWorld/> a böngésző (vagy <https://localhost:8080/MyACSHelloWorld/> Ha bejelölte **szükséges HTTPS-kapcsolatok**). A rendszer kéri a Windows Live ID bejelentkezési azonosítóhoz, akkor meg kell fordítani a függő entitás-alkalmazáshoz megadott visszatérési URL-cím.
 8. Amikor befejezte az alkalmazást, kattintson a **visszaállítása Azure Emulátorban** gombra.
 
 ## <a name="deploy-to-azure"></a>Üzembe helyezés az Azure-ban
@@ -244,7 +244,7 @@ Emellett ebben a példában használt a **a tanúsítvány beágyazása a WAR-f�
 
 1. Belül a **biztonsági** szakasza a **Azure Access Control szolgáltatások szűrő** párbeszédpanel, írja be **${env. JAVA_HOME}/MyCert.cer** és törölje a jelet **a tanúsítvány beágyazása a WAR-fájlt**. (Beállítása mycert.cer Ha a tanúsítvány neve eltér.) Kattintson a **Befejezés** bezárhatja a párbeszédpanelt.
 2. Másolja a tanúsítványt a központi telepítésben összetevőjeként: bontsa ki a Eclipse Project Explorer **MyAzureACSProject**, kattintson a jobb gombbal **WorkerRole1**, kattintson a **tulajdonságok**, Bontsa ki a **Azure szerepkör**, és kattintson a **összetevők**.
-3. Kattintson az **Add** (Hozzáadás) parancsra.
+3. Kattintson a **Hozzáadás** parancsra.
 4. Belül a **összetevő felvétele** párbeszédpanel:
    
    1. Az a **importálási** szakasz:

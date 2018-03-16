@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 02/27/2018
+ms.date: 03/05/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: dec4beef44e4086e1b41e3c20bea6585db385c9c
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 618e2bb7ef124883af2d73264e01922ad2329d12
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="fail-over-and-fail-back-vmware-vms-and-physical-servers-replicated-to-azure"></a>Az Azure-ba replikált VMware virtuális gépek és fizikai kiszolgálók feladatátvétele és feladat-visszavétele
 
@@ -48,7 +48,7 @@ A feladatátvétel és a feladat-visszavétel négy fázisból áll:
 
 ## <a name="verify-vm-properties"></a>A virtuális gép tulajdonságainak ellenőrzése
 
-Ellenőrizze a virtuális gép tulajdonságait, és győződjön meg arról, hogy a virtuális gép megfelel az [Azure-követelményeknek](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements).
+Ellenőrizze a virtuális gép tulajdonságait, és győződjön meg arról, hogy a virtuális gép megfelel az [Azure-követelményeknek](vmware-physical-azure-support-matrix.md#replicated-machines).
 
 1. A **Védett elemek** területen kattintson a **Replikált elemek** > VM lehetőségre.
 
@@ -88,7 +88,7 @@ A folyamatkiszolgáló adatokat fogad az Azure-beli virtuális gépről, és elk
 
 - Ha Azure ExpressRoute-kapcsolata van, tesztelési célból használhatja a konfigurációs kiszolgálóra automatikusan telepített helyszíni folyamatkiszolgálót.
 - Ha VPN-kapcsolata van, vagy ha éles környezetben futtat feladat-visszavételt, a feladat-visszavételhez be kell állítania egy Azure-beli virtuális gépet Azure alapú folyamatkiszolgálóként.
-- A folyamatkiszolgálók Azure-ban való beállításához kövesse az [ebben a cikkben](site-recovery-vmware-setup-azure-ps-resource-manager.md) szereplő utasításokat.
+- A folyamatkiszolgálók Azure-ban való beállításához kövesse az [ebben a cikkben](vmware-azure-set-up-process-server-azure.md) szereplő utasításokat.
 
 ## <a name="configure-the-master-target-server"></a>A fő célkiszolgáló konfigurálása
 

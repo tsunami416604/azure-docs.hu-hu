@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 09/25/2017
 ms.author: mabrigg
 ms.openlocfilehash: 7c34d7a225be63da95f664525b0366ff89b28838
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/14/2018
 ---
 # <a name="using-the-azure-stack-portal"></a>A verem Azure portál használatával
 
@@ -31,7 +31,7 @@ Az Azure-verem services vásárlói nyilvános ajánlatok előfizetni a verem Az
 Az Azure-verem operátor (a szolgáltató vagy a rendszergazda a szervezet), értesíti, hogy a helyes URL-címet a portál eléréséhez. 
 
 - Integrált rendszert az URL-cím attól függően változik, az üzemeltető régió és külső tartomány nevét, és a formátum https://portal lesz. &lt; *régió*&gt;.&lt; *FQDN*&gt;.
-- Ha a csomag Azure verem használata esetén a portál címe https://portal.local.azurestack.external.
+- Az Azure verem szoftverfejlesztői készlet használata, a portál címe https://portal.local.azurestack.external.
 
 ![Képernyőfelvétel az Azure-verem felhasználói portál](media/azure-stack-use-portal/UserPortal.png)
 
@@ -70,6 +70,6 @@ Ha további támogatási van szüksége, lépjen kapcsolatba a szervezet vagy a 
 
 Az Azure verem szoftverfejlesztői készlet használata a [Azure verem fórum](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack) támogatási egyetlen lehetőség.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Kulcs szempontok: szolgáltatásokkal vagy az alkalmazások Azure verem](azure-stack-considerations.md)
