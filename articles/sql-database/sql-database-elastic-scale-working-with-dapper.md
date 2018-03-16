@@ -2,23 +2,18 @@
 title: "A rugalmas adatbázis ügyféloldali kódtár használata Dapper |} Microsoft Docs"
 description: "A rugalmas adatbázis ügyféloldali kódtár Dapper használja."
 services: sql-database
-documentationcenter: 
-manager: jhubbard
-author: torsteng
-ms.assetid: 463d2676-3b19-47c2-83df-f8c50492c9d2
+manager: craigg
+author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: Inactive
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 05/27/2016
-ms.author: torsteng
-ms.openlocfilehash: c258b1859e14d9783a3dfa75431b69bef4d640fd
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.author: sstein
+ms.openlocfilehash: 192e9fa52f3829a18bbccc9c5fb3b953d74569c4
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="using-elastic-database-client-library-with-dapper"></a>A rugalmas adatbázis ügyféloldali kódtár használata Dapper
 Ez a dokumentum a fejlesztők olyan alkalmazásokat készíthetnek Dapper alapulnak, de is kívánja bevezetni a van [elastic database tooling](sql-database-elastic-scale-introduction.md) alkalmazásokat hozhat létre, hogy az adatok réteg megvalósítása horizontális.  Ez a dokumentum Dapper-alapú alkalmazásokat, amelyek szükségesek a rugalmas adatbáziseszközöket integrálása változásait mutatja be. A elsősorban a rugalmas adatbázis shard felügyeleti és adatok függő útválasztással Dapper létrehozása. 

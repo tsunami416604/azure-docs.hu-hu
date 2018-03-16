@@ -2,23 +2,18 @@
 title: "Veszélyforrások Detektálása - Azure SQL adatbázis |} Microsoft Docs"
 description: "A fenyegetésészlelés az adatbázist érintő rendellenes tevékenységeket észleli, amelyek esetleges biztonsági fenyegetéseket jelezhetnek."
 services: sql-database
-documentationcenter: 
 author: rmatchoro
-manager: shaik
-editor: v-romcal
+manager: craigg
 ms.service: sql-database
 ms.custom: security
-ms.devlang: NA
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: On Demand
 ms.date: 06/19/2017
 ms.author: ronmat
-ms.openlocfilehash: a01721b10305ac45082943fbe4fb7fb199a0e49f
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 4cb31eef4ba4b85ea28a58bb9b947b4e07cb0b58
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="sql-database-threat-detection"></a>SQL adatbázis fenyegetések észlelése
 
@@ -33,7 +28,7 @@ Például SQL-injektálás az egyik a közös webes alkalmazás biztonsági prob
 SQL Fenyegetésészlelés integrálja riasztások [az Azure Security Center](https://azure.microsoft.com/services/security-center/), és minden védett SQL adatbázis-kiszolgáló lesz számlázva, Azure Security Center szabványos rétegként $15/csomópont/hónappal, ahol minden védett SQL-adatbázis ugyanazon az áron kiszolgáló egy csomópont számítanak.  
 
 ## <a name="set-up-threat-detection-for-your-database-in-the-azure-portal"></a>A fenyegetésészlelés az adatbázis az Azure portálon beállítása
-1. Indítsa el az Azure portálon, a [https://portal.azure.com](https://portal.azure.com).
+1. Indítsa el az Azure portálon, a [ https://portal.azure.com ](https://portal.azure.com).
 2. Keresse meg a figyelni kívánt SQL-adatbázis-konfiguráció oldalán. Válassza a beállítások lapon **naplózás és Fenyegetésészlelés**. 
     ![Navigációs ablaktábla][1]
 3. Az a **naplózás és Fenyegetésészlelés** konfigurációs lapján kapcsolja **ON** naplózási, amelyek megjelenítik a fenyegetés észlelési beállítások.

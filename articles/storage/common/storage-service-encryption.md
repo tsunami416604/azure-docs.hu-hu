@@ -6,13 +6,13 @@ author: lakasa
 manager: jeconnoc
 ms.service: storage
 ms.topic: article
-ms.date: 03/06/2018
+ms.date: 03/14/2018
 ms.author: lakasa
-ms.openlocfilehash: 6b56cbb4220ce1c8767724938dd531b8ae5c3920
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: d9df2218acc218a796e502fa4e3b94573af86ca8
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-storage-service-encryption-for-data-at-rest"></a>Az Azure Storage szolgáltatás inaktívadat-titkosítása
 
@@ -62,17 +62,13 @@ V: Storage szolgáltatás titkosítási alapértelmezés szerint engedélyezve v
 
 V: nincs további költség nélkül.
 
-**K: kezelő a titkosítási kulcsokat?**
-
-V: Microsoft kezeli a kulcsokat.
-
 **K: használhatok saját titkosítási kulcsokat?**
 
-Jelenleg nem A:.
+V: Igen, a saját titkosítási kulcsokat is használhatja. További információkért lásd: [Storage szolgáltatás titkosítási kulcsokkal ügyfél által felügyelt Azure Key Vault a](storage-service-encryption-customer-managed-keys.md).
 
 **K: visszavonja a titkosítási kulcsokat a hozzáférést?**
 
-Jelenleg nem A:. A Microsoft teljes kezeli a kulcsokat.
+V: Igen, ha Ön [saját titkosítási kulcsok használata](storage-service-encryption-customer-managed-keys.md) az Azure Key Vault.
 
 **K: Storage szolgáltatás titkosítási alapértelmezés szerint engedélyezve van, a storage-fiók létrehozásakor?**
 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 06/29/2017
 ms.author: mikkelhegn
-ms.openlocfilehash: 314b29a56e4651222822f40a116af97a7372ff2c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3ff85991e87a4996890520a566b3909d331ed27f
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="configure-the-upgrade-of-a-service-fabric-application-in-visual-studio"></a>A Service Fabric-alkalmazás frissítését a Visual Studio konfigurálása
 A Visual Studio eszközök Azure Service Fabric frissítési támogatást nyújt a helyi vagy távoli fürtök közzétételt. Háromféle esetben kívánja frissíteni az alkalmazást tesztelés és hibakeresés során az alkalmazás felülírása helyett egy újabb verzióra van:
@@ -85,5 +85,5 @@ A következő példa bemutatja, hogyan egyedi ellenőrzés állapotházirend az 
     </HealthPolicy>
 </Policies>
 ```
-## <a name="next-steps"></a>Következő lépések
-Egy alkalmazás központi telepítésével kapcsolatos további információkért lásd: [telepítsen egy meglévő alkalmazást az Azure Service Fabric](service-fabric-deploy-existing-app.md).
+## <a name="next-steps"></a>További lépések
+Egy alkalmazás frissítésével kapcsolatos további információkért lásd: [frissít egy alkalmazást a Visual Studio használatával](service-fabric-application-upgrade-tutorial.md).

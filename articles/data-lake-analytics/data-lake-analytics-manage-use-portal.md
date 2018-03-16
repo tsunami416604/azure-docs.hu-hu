@@ -4,7 +4,7 @@ description: "Megtudhatja, hogyan kezelheti a Data Lake Analytics könyvvitelén
 services: data-lake-analytics
 documentationcenter: 
 author: saveenr
-manager: jhubbard
+manager: kfile
 editor: cgronlun
 ms.assetid: a0e045f1-73d6-427f-868d-7b55c10f811b
 ms.service: data-lake-analytics
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/05/2016
-ms.author: edmaca
-ms.openlocfilehash: 15b3b44e45a59f44bd9bbd96dce867cc87fa410c
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.author: saveenr
+ms.openlocfilehash: 93815904e7e21e1ba8283d7a522297c7e3466702
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="manage-azure-data-lake-analytics-by-using-the-azure-portal"></a>Azure Data Lake Analytics kezelése az Azure portál használatával
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
@@ -241,7 +241,7 @@ Nincs minden fiókhoz beállított alapértelmezett házirend. Az alapértelmeze
 1. Az Azure-portálon lépjen a Data Lake Analytics-fiókhoz.
 2. Kattintson a **Tulajdonságok** elemre.
 3. A **feladat elküldése korlátok**, keresse meg a szerkeszteni kívánt házirendet.
-4.  Hogy a **törlése** és **szerkesztése** beállítások, a tábla a jobb oldali oszlopban kattintson **... **.
+4.  Hogy a **törlése** és **szerkesztése** beállítások, a tábla a jobb oldali oszlopban kattintson **...** .
 
 ### <a name="additional-resources-for-job-policies"></a>További erőforrásokat a feladat házirendek
 * [Házirend által írt blogbejegyzés áttekintése](https://blogs.msdn.microsoft.com/azuredatalake/2017/06/08/managing-your-azure-data-lake-analytics-compute-resources-overview/)

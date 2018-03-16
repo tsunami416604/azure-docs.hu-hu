@@ -4,7 +4,7 @@ description: "Megtudhatja, hogyan HPC Pack 2016-fürt üzembe helyezése az Azur
 services: virtual-machines-windows
 documentationcenter: 
 author: dlepow
-manager: timlt
+manager: jeconnoc
 editor: 
 tags: azure-resource-manager
 ms.assetid: 3dde6a68-e4a6-4054-8b67-d6a90fdc5e3f
@@ -13,19 +13,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-multiple
 ms.workload: big-compute
-ms.date: 12/15/2016
+ms.date: 03/09/2018
 ms.author: danlep
-ms.openlocfilehash: 88d1f4e29f38ba1a6bef57c2da43bee205575eee
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c26dd85d896445e19efb9906d953fd535fc1fb5c
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="deploy-an-hpc-pack-2016-cluster-in-azure"></a>HPC Pack 2016-fürt üzembe helyezése az Azure-ban
 
-Ez a cikk telepítéséhez kövesse a [Microsoft HPC Pack 2016](https://technet.microsoft.com/library/cc514029) fürt az Azure virtuális gépeken. HPC Pack Microsoft a Microsoft Azure és a Windows Server technológiáira szabad HPC megoldása és a HPC széles tartomány munkaterhelések támogatja.
+Ez a cikk telepítéséhez kövesse a [Microsoft HPC Pack 2016 Update 1](https://technet.microsoft.com/library/cc514029) fürt az Azure virtuális gépeken. HPC Pack Microsoft a Microsoft Azure és a Windows Server technológiáira szabad HPC megoldása és a HPC széles tartomány munkaterhelések támogatja.
 
-Valamelyikével a [Azure Resource Manager-sablonok](https://github.com/MsHpcPack/HPCPack2016) a HPC Pack 2016 fürt telepítéséhez. Fürt-topológia központi fürtcsomópontok különböző számú, és vagy a Linux több lehetősége van, vagy a Windows számítási csomópontjain.
+Valamelyikével a [Azure Resource Manager-sablonok](https://github.com/MsHpcPack/HPCPack2016) a HPC Pack 2016 fürt telepítéséhez. Fürt topológia több lehetősége van az eltérő számú és típusú fürt átjárócsomópontokat, és a számítási csomópontok.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -37,7 +37,7 @@ A Microsoft HPC Pack 2016 fürt csak a személyes információcseréhez kapcsol�
 * Kulcshasználat a digitális aláírás és kulcstitkosítás tartalmaz
 * Kibővített kulcshasználat ügyfél-hitelesítéshez és a kiszolgáló hitelesítése tartalmazza
 
-Ha még nem rendelkezik olyan tanúsítvány, amely megfelel ezeknek a követelményeknek, a tanúsítványt kérhet egy hitelesítésszolgáltatótól. Azt is megteheti az alábbi parancsokkal létrehozni az önaláírt tanúsítvány alapján az operációs rendszer, amelyen a parancsot futtatja, és a PFX-formátum tanúsítvány exportálása a titkos kulccsal.
+Ha még nem rendelkezik olyan tanúsítvány, amely megfelel ezeknek a követelményeknek, a tanúsítványt kérhet egy hitelesítésszolgáltatótól. Alternatív megoldásként az alábbi parancsokkal létrehozni az önaláírt tanúsítvány alapján az operációs rendszer, amelyen a parancsot futtatja. Ezután exportálja a tanúsítványt jelszóval védett PFX-fájlt, és a titkos kulcs.
 
 * **A Windows 10 vagy Windows Server 2016**, futtassa a beépített **New-SelfSignedCertificate** PowerShell-parancsmagot az alábbiak szerint:
 
@@ -52,11 +52,13 @@ Ha még nem rendelkezik olyan tanúsítvány, amely megfelel ezeknek a követelm
     New-SelfSignedCertificateEx -Subject "CN=HPC Pack 2016 Communication" -KeySpec Exchange -KeyUsage "DigitalSignature,KeyEncipherment" -EnhancedKeyUsage "Server Authentication","Client Authentication" -StoreLocation CurrentUser -Exportable -NotAfter (Get-Date).AddYears(5)
     ```
 
+A tanúsítvány létrehozása után az aktuális felhasználó tárolójában, használja a tanúsítványok beépülő modul exportálja a tanúsítványt jelszóval védett PFX-fájlt, és a titkos kulcs. Emellett exportálhatja a tanúsítványt használja a [Export-Pfxcertificate](/powershell/module/pkiclient/export-pfxcertificate?view=win10-ps) PowerShell-parancsmagot.
+
 ### <a name="upload-certificate-to-an-azure-key-vault"></a>Az egy az Azure key vault-tanúsítvány feltöltése
 
-A HPC-fürt telepítése előtt töltse fel a tanúsítvány egy [az Azure key vault](../../key-vault/index.md) titkos kulcs és rekord a telepítés során használja a következő információkat: **tároló neve**, **tároló erőforráscsoport**, **tanúsítvány URL-címe**, és **tanúsítvány ujjlenyomata**.
+A HPC-fürt telepítése előtt a PFX-tanúsítvány feltöltése egy [az Azure key vault](../../key-vault/index.md) titkos kulcs és rekord a telepítés során használja a következő információkat: **tároló neve**, **tároló Erőforráscsoport**, **tanúsítvány URL-címe**, és **tanúsítvány ujjlenyomata**.
 
-A PowerShell-parancsfájlpélda a tanúsítvány feltöltése követi. További információ a tanúsítvány feltöltése egy az Azure key vault: [Ismerkedés az Azure Key Vault](../../key-vault/key-vault-get-started.md).
+A következő egy PowerShell-parancsfájlpélda a tanúsítvány feltöltése, a kulcstároló létrehozása és a szükséges adatokat. További információ a tanúsítvány feltöltése egy az Azure key vault: [Ismerkedés az Azure Key Vault](../../key-vault/key-vault-get-started.md).
 
 ```powershell
 #Give the following values
@@ -108,12 +110,11 @@ $hpcSecret = Set-AzureKeyVaultSecret -VaultName $VaultName -Name $SecretName -Se
 
 ## <a name="supported-topologies"></a>Támogatott topológiák
 
-Válasszon egyet a a [Azure Resource Manager-sablonok](https://github.com/MsHpcPack/HPCPack2016) a HPC Pack 2016 fürt telepítéséhez. Az alábbiakban a magas szintű architektúra három támogatott fürt topológiája. Magas rendelkezésre állású topológiák több központi fürtcsomópontok közé tartozik.
+Válasszon egyet a a [Azure Resource Manager-sablonok](https://github.com/MsHpcPack/HPCPack2016) a HPC Pack 2016 fürt telepítéséhez. Az alábbiakban a magas szintű architektúra három példa fürt topológiája. Magas rendelkezésre állású topológiák több központi fürtcsomópontok közé tartozik.
 
 1. Magas rendelkezésre állású fürt az Active Directory-tartomány
 
     ![Az Active Directory-tartománynak a magas rendelkezésre ÁLLÁSÚ fürt](./media/hpcpack-2016-cluster/haad.png)
-
 
 
 2. Magas rendelkezésre állású fürt nélkül Active Directory-tartomány
@@ -131,7 +132,7 @@ A fürt létrehozásához válassza ki a sablont, és kattintson **az Azure tele
 
 ### <a name="step-1-select-the-subscription-location-and-resource-group"></a>1. lépés: Válassza ki az előfizetést, helyét és erőforráscsoport
 
-A **előfizetés** és a **hely** meg kell egyeznie a PFX-tanúsítvány feltöltött amikor megadott (lásd). Azt javasoljuk, hogy hozzon létre egy **erőforráscsoport** a központi telepítéshez.
+A **előfizetés** és a **hely** meg kell egyeznie a PFX-tanúsítvány feltöltött amikor megadott (lásd). Azt javasoljuk, hogy hozzon létre egy másik **erőforráscsoport** a központi telepítéshez.
 
 ### <a name="step-2-specify-the-parameter-settings"></a>2. lépés: A paraméter-beállításainak megadása
 
@@ -139,20 +140,22 @@ Adja meg, vagy módosítsa a sablon paraméter értékét. Kattintson a súgó i
 
 Adja meg az értékeket az előfeltételeket a következő paraméterek rögzített: **tároló neve**, **tároló erőforráscsoport**, **tanúsítvány URL-címe**, és **tanúsítvány ujjlenyomata**.
 
-### <a name="step-3-review-legal-terms-and-create"></a>3. lépés Tekintse át a jogi feltételeket és létrehozása
-Kattintson a **tekintse át a jogi feltételeket** való olvassa el a feltételeket. Ha elfogadja, kattintson a **beszerzési**, és kattintson a **létrehozása** a telepítés elindításához.
+### <a name="step-3-review-terms-and-create"></a>3. lépés Tekintse át és létrehozása
+Tekintse át a sablonhoz társított feltételeit. Ha elfogadja, kattintson a **beszerzési** a telepítés elindításához.
+
+A fürt topológiájától függően telepítési 30 percig is tarthat, vagy hosszabb ideig.
 
 ## <a name="connect-to-the-cluster"></a>Csatlakozás a fürthöz
 1. Lépjen a HPC Pack fürt telepítése után a [Azure-portálon](https://portal.azure.com). Kattintson a **erőforráscsoportok**, és keresse meg az erőforráscsoportot, amely a fürt tették elérhetővé telepítésre. Az átjárócsomópont virtuális gépek található.
 
     ![Központi fürtcsomópontok a portálon](./media/hpcpack-2016-cluster/clusterhns.png)
 
-2. Kattintson egy átjárócsomópont (magas rendelkezésre állású fürt, kattintson a head csomópontokon). A **Essentials**, megtalálhatja a nyilvános IP-cím vagy a fürt teljes DNS-nevét.
+2. Kattintson egy átjárócsomópont (magas rendelkezésre állású fürt, kattintson a head csomópontokon). A **áttekintése**, megtalálhatja a nyilvános IP-cím vagy a fürt teljes DNS-nevét.
 
     ![Fürt kapcsolatbeállításai](./media/hpcpack-2016-cluster/clusterconnect.png)
 
-3. Kattintson a **Connect** jelentkezzen be a távoli asztal használata a megadott rendszergazdai felhasználónév központi csomópontokon. Ha a fürt, amelyet központilag telepített Active Directory-tartományban, a felhasználónév az űrlap van <privateDomainName> \<adminUsername > (például hpc.local\hpcadmin).
+3. Kattintson a **Connect** jelentkezzen be a távoli asztal használata a megadott rendszergazdai felhasználónév központi csomópontokon. Ha a fürt, amelyet központilag telepített Active Directory-tartományban, a felhasználónév az űrlap van \<privateDomainName >\\\<adminUsername > (például hpc.local\hpcadmin).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * A fürt feladatok elküldéséhez. Lásd: [küldés feladatok HPC egy HPC Pack fürtön, az Azure-ban](hpcpack-cluster-submit-jobs.md) és [kezelése az Azure-ban az Azure Active Directory HPC Pack 2016 fürtöt](hpcpack-cluster-active-directory.md).
 

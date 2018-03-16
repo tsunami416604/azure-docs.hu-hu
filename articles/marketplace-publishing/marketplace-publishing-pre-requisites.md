@@ -3,8 +3,8 @@ title: "Hozzon létre egy ajánlatot az Azure piactéren nem technikai jellegű 
 description: "A létrehozása és telepítése egy ajánlatot az Azure piactéren mások beszerzési vonatkozó követelmények megértése érdekében."
 services: marketplace-publishing
 documentationcenter: 
-author: HannibalSII
-manager: hascipio
+author: msmbaldwin
+manager: mbaldwin
 editor: 
 ms.assetid: 3dae463b-8f48-4f52-8fa8-4e3975f09f43
 ms.service: marketplace
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 08/18/2016
-ms.author: hascipio
-ms.openlocfilehash: 4f86d444a2f2b97fd8605d480db358813bc39fd3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: mbaldwin
+ms.openlocfilehash: 5c30e62bf345843fe83b3f17b728e1a937d19ce3
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="general-prerequisites-for-creating-an-offer-for-the-azure-marketplace"></a>Hozzon létre egy ajánlatot az Azure piactéren általános előfeltételei
 Az ajánlat létrehozási folyamat során eljutni szükséges általános, üzleti folyamat-központú Előfeltételek megismerésében.
@@ -65,7 +65,7 @@ Rendszergazdák a közzétételi portal hozzá más tagjai a vállalat számára
 > 
 
 ## <a name="acquire-an-azure-pay-as-you-go-subscription"></a>Szerezzen be a "használatalapú" Azure-előfizetés
-Ez az az előfizetést, a virtuális gép képek létrehozására és a képek keresztül kézi használhatja a [Azure piactér](https://azure.microsoft.com/marketplace/). Ha még nem rendelkezik egy meglévő előfizetéshez, majd jelentkezzen: https://account.windowsazure.com/signup?offer=ms-azr-0003p.
+Ez az az előfizetést, a virtuális gép képek létrehozására és a képek keresztül kézi használhatja a [Azure piactér](https://azure.microsoft.com/marketplace/). Ha nem rendelkezik egy meglévő előfizetéshez, majd jelentkezzen a https://account.windowsazure.com/signup?offer=ms-azr-0003p.
 
 ## <a name="sell-from-countries"></a>"Értékesít-feladó" országok
 > [!WARNING]
@@ -73,12 +73,12 @@ Ez az az előfizetést, a virtuális gép képek létrehozására és a képek k
 > 
 > 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ha a nem technikai jellegű előfeltételek teljesülnek, ezután előfeltételei az ajánlat adott műszaki. A hivatkozásra a cikk a megfelelő ajánlattípus szeretné létrehozni az Azure piactéren.
 
 * [Virtuális gép műszaki Előfeltételek](marketplace-publishing-vm-image-creation-prerequisites.md)
 * [Megoldás sablon műszaki Előfeltételek](marketplace-publishing-solution-template-creation-prerequisites.md)
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 * [Első lépések: az ajánlat közzététele az Azure piactéren](marketplace-publishing-getting-started.md)
 

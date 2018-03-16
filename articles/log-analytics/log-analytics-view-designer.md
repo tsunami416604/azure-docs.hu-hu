@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/18/2018
 ms.author: bwren
-ms.openlocfilehash: 08d0e557f03f771901c9ac92fb080e74e5966452
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: d63d47c39054230307416e24ed1c8295fbf68d93
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="create-custom-views-by-using-view-designer-in-log-analytics"></a>Naplóelemzési adatforrásnézet-tervezőből segítségével egyéni nézeteket hozhat létre
 Az adatforrásnézet-tervezőből használatával [Azure Naplóelemzés](log-analytics-overview.md), az Azure portálon, amelyik segíthet a Naplóelemzési munkaterület az adatok megjelenítése egyéni nézetek számos hozhat létre. Ez a cikk áttekintést nyújt adatforrásnézet-tervezőből és eljárások létrehozásának és szerkesztésének egyéni nézetek.
@@ -28,8 +28,6 @@ Az adatforrásnézet-tervezőből kapcsolatos további információkért lásd:
 * [Hivatkozás csempe](log-analytics-view-designer-tiles.md): a beállítások az egyes az egyéni nézetekben elérhető csempék hivatkozás ismerteti.
 * [A képi megjelenítés része hivatkozás](log-analytics-view-designer-parts.md): egy referencia-útmutató az egyéni nézetek elérhető képi megjelenítés összetevőkre vonatkozó beállításokat tartalmaz.
 
->[!NOTE]
-> Ha a munkaterületet lett frissítve a [új Log Analytics lekérdezési nyelv](log-analytics-log-search-upgrade.md), minden nézetben lekérdezések úgy kell megírni, a [új lekérdezési nyelv](https://go.microsoft.com/fwlink/?linkid=856078). A munkaterület verziófrissítése előtt készült nézetekkel automatikusan lesznek átalakítva.
 
 ## <a name="concepts"></a>Alapelvek
 Nézetek jelennek meg a **áttekintése** lap a Naplóelemzési munkaterület az Azure portálon. Betűrendben jelennek meg az egyes egyéni nézetek csempéket, és a csempék a megoldások telepített ugyanazon a munkaterületen.

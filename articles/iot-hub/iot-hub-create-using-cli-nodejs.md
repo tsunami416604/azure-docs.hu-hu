@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/04/2017
 ms.author: boltean
-ms.openlocfilehash: 5e37c6c5e8625ce446ab203f19f9a8b2f1cd5a46
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7ad0efeeacbdb5dd0185c6336e9bf0e4d7937c99
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="create-an-iot-hub-using-the-azure-cli"></a>Létrehoz egy IoT-központot, az Azure parancssori felület használatával
 
@@ -87,9 +87,9 @@ Kötelező paraméter:
 azure iothub create -g <resource-group> -n <name> -l <location> -s <sku-name> -u <units>
 ```
 
-* **Erőforráscsoport**. Az erőforráscsoport neve. A kis-és nagybetűket alfanumerikus, aláhúzásjelet, és kötőjelet tartalmazhat, 1-64 hossza érvénytelen.
-* **Név** Az IoT hub létrehozni neve. A kis-és nagybetűket alfanumerikus, aláhúzásjelet, és kötőjelet tartalmazhat, 3 – 50 hossza érvénytelen.
-* **hely**. A hely (azure régió/adatközpont) az IoT-központ telepítéséhez.
+* **resource-group**. Az erőforráscsoport neve. A kis-és nagybetűket alfanumerikus, aláhúzásjelet, és kötőjelet tartalmazhat, 1-64 hossza érvénytelen.
+* **Név** Az IoT hub létrehozni neve. A kis-és nagybetűket formátuma alfanumerikus és kötőjelet tartalmazhat, 3 – 50 hossza.
+* **Hely**. A hely (azure régió/adatközpont) az IoT-központ telepítéséhez.
 * **Termékváltozat**. A termékváltozat, egyik neve: [F1, S1, S2, S3]. A legújabb teljes listája tekintse meg a tarifákat tartalmazó oldalt az IoT-központot.
 * **egységek**. A kiépített egységek száma. Tartományon: [1-1] F1: S1, S2 [1-200]: [1 – 10] S3. IoT Hub-egységek az összes üzenet számán és a, amelyhez csatlakozni eszközök számán alapulnak.
 
@@ -114,11 +114,11 @@ azure iothub create -g exampleResourceGroup -n exampleIoTHubName -l westus -k s1
 > azure iothub delete -g exampleResourceGroup -n exampleIoTHubName
 > ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az IoT-központ fejlesztésével kapcsolatos további tudnivalókért tekintse meg a következő cikket:
 
-* [Az IoT-SDK][lnk-sdks]
+* [IoT SDKs][lnk-sdks]
 
 Az IoT-központ képességeit további megismeréséhez lásd:
 

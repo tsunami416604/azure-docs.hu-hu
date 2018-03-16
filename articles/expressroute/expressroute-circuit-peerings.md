@@ -12,20 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/30/2017
+ms.date: 03/01/2018
 ms.author: ganesr,cherylmc
-ms.openlocfilehash: c8f3c0e87a052b327e9949acd3e7db1d28c1eb46
-ms.sourcegitcommit: 804db51744e24dca10f06a89fe950ddad8b6a22d
+ms.openlocfilehash: 943305c78a17031d647bf2fa0977d10c51213ef5
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="expressroute-circuits-and-routing-domains"></a>ExpressRoute-Kapcsolatcsoportok és útválasztási tartományok
  Kell rendeznie egy *ExpressRoute-kapcsolatcsoportot* a helyszíni infrastruktúra csatlakozni a Microsoft a kapcsolat-szolgáltató használatával. Az alábbi ábrán a WAN és a Microsoft közötti kapcsolat egy logikai ábrázolását.
 
 ![](./media/expressroute-circuit-peerings/expressroute-basic.png)
 
-## <a name="expressroute-circuits"></a>ExpressRoute-Kapcsolatcsoportok
+## <a name="expressroute-circuits"></a>ExpressRoute-kapcsolatcsoportok
 Egy *ExpressRoute-kapcsolatcsoportot* jelenti. a helyszíni infrastruktúra és a kapcsolat-szolgáltató használatával a Microsoft felhőszolgáltatásai között. Több ExpressRoute-Kapcsolatcsoportok sorba rendezheti. A kapcsolatok azonos vagy különböző régiókban lehet, és a helyi kapcsolat különböző szolgáltatók keresztül lehet csatlakoztatni. 
 
 ExpressRoute-Kapcsolatcsoportok nem felelnek meg a fizikai entitások. Expressroute-kapcsolatcsoporthoz egyedileg azonosít egy szabványos GUID neve (s-kulcs) szolgáltatás kulcsként. A szolgáltatás kulcsa az egyetlen adat, Microsoft, a kapcsolat szolgáltatóját, és Ön között. Az s-kulcs nincs titkos kulcs biztonsági okokból. Van egy ExpressRoute-kapcsolatcsoportot és az s-kulcs közötti társítás 1:1.
@@ -60,12 +60,12 @@ Kapcsolat mindig kezdeményezni a WAN Microsoft Azure-szolgáltatásokhoz. Micro
 
 Csak a szükséges útvonalakat használ a hálózaton belüli egyéni útvonal szűrőket adhat meg. Tekintse meg a [útválasztás](expressroute-routing.md) lap részletes információkat a útválasztási konfigurációjáról. 
 
-Tekintse meg a [gyakori kérdéseket tartalmazó oldal](expressroute-faqs.md) keresztül a nyilvános társviszony-létesítési útválasztási tartomány támogatott szolgáltatások olvashat. 
+A nyilvános társviszony-létesítési útválasztási tartomány támogatott szolgáltatásokkal kapcsolatos további információkért lásd: a [gyakran ismételt kérdések](expressroute-faqs.md).
 
 ### <a name="microsoft-peering"></a>Microsoft társviszony-létesítés
 [!INCLUDE [expressroute-office365-include](../../includes/expressroute-office365-include.md)]
 
-Minden más Microsoft online-szolgáltatásokhoz való kapcsolódás (Office 365, Dynamics 365 és Azure PaaS szolgáltatások) a Microsoft társviszony-létesítés keresztül történik. Engedélyezzük a WAN és a Microsoft felhőszolgáltatások keresztül a Microsoft társviszony-létesítési útválasztási tartomány közötti kétirányú kapcsolatot. Csatlakoztatni kell a Microsoft csak nyilvános IP-címek, amelynek a tulajdonosa, vagy a kapcsolat szolgáltatójánál keresztül, és meg kell felelnie a definiált szabályokat. Tekintse meg a [ExpressRoute Előfeltételek](expressroute-prerequisites.md) olvashat.
+Microsoft online szolgáltatásokhoz (Office 365, Dynamics 365 és Azure PaaS szolgáltatások) való kapcsolódás a Microsoft társviszony-létesítés keresztül történik. Engedélyezzük a WAN és a Microsoft felhőszolgáltatások keresztül a Microsoft társviszony-létesítési útválasztási tartomány közötti kétirányú kapcsolatot. Csatlakoztatni kell a Microsoft csak nyilvános IP-címek, amelynek a tulajdonosa, vagy a kapcsolat szolgáltatójánál keresztül, és meg kell felelnie a definiált szabályokat. További információkért lásd: a [ExpressRoute Előfeltételek](expressroute-prerequisites.md) lap.
 
 Tekintse meg a [gyakori kérdéseket tartalmazó oldal](expressroute-faqs.md) további információk a támogatott szolgáltatások, a költségek és a konfigurációs adatait. Tekintse meg a [helyek ExpressRoute](expressroute-locations.md) lap kapcsolat szolgáltatók ajánlat a Microsoft társviszony-létesítés támogatása a listán szereplő információkat.
 
@@ -77,7 +77,7 @@ Az alábbi táblázat összehasonlítja a három útválasztási tartományok:
 | **Max. támogatott társviszony-létesítés # előtagok** |Alapértelmezés szerint 10 000-re az ExpressRoute Premium 4000 |200 |200 |
 | **Az IP-címtartományok támogatott** |Bármilyen érvényes IP-címet a WAN hálózaton belül. |Nyilvános IP-címet, vagy a kapcsolat szolgáltatóját. |Nyilvános IP-címet, vagy a kapcsolat szolgáltatóját. |
 | **Követelmények száma szerint** |Privát és nyilvános SZÁMAIT. A nyilvános kell saját SZÁMOT, ha úgy dönt, hogy egyetlen módszer alkalmazása. |Privát és nyilvános SZÁMAIT. Azonban igazolnia kell tulajdonjogát, a nyilvános IP-címeket. |Privát és nyilvános SZÁMAIT. Azonban igazolnia kell tulajdonjogát, a nyilvános IP-címeket. |
-| **Támogatott IP-protokollok**| IPv4-alapú | IPv4-alapú | IPv4, IPv6 |
+| **Támogatott IP-protokollok**| IPv4 | IPv4 | IPv4, IPv6 |
 | **Útválasztó illesztő IP-címek** |RFC1918 és nyilvános IP-címek |Nyilvános IP-címeket az útválasztási nyilvántartó regisztrálva. |Nyilvános IP-címeket az útválasztási nyilvántartó regisztrálva. |
 | **Az MD5 kivonatoló támogatása** |Igen |Igen |Igen |
 
@@ -87,7 +87,7 @@ Ha szeretné, legalább egy, az útválasztási tartományok engedélyezéséhez
 
 Ha minden három társviszony-létesítési munkamenetet választja, a BGP-munkamenetek (az egyes társviszony-létesítési egy pár) három párok kell rendelkeznie. A BGP-munkamenet Értékpárokat adjon meg egy magas rendelkezésre állású hivatkozást. Ha réteg 2 kapcsolat szolgáltatók keresztül kapcsolódik, telepítésért felelős, konfigurálásához és kezeléséhez útválasztást. Megtekintésével többet is megtudhat a [munkafolyamatok](expressroute-workflows.md) ExpressRoute beállításához.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Találjon egy szolgáltatót. Lásd: [ExpressRoute szolgáltatás szolgáltatók és a helyek](expressroute-locations.md).
 * Ellenőrizze, hogy minden előfeltétel teljesül-e. Lásd: [ExpressRoute-előfeltételek](expressroute-prerequisites.md).
 * Az ExpressRoute-kapcsolat konfigurálása.

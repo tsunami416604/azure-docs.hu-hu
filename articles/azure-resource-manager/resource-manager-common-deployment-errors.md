@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/08/2018
 ms.author: tomfitz
-ms.openlocfilehash: 2cf31b32e02923aa573d5586b8ca24bf30b7d97b
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: f251fe11c43dc4b3f29c70f937f5bfcb6af6c44e
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Hibaelhárítás általános az Azure-telepítés az Azure Resource Manager eszközzel
 
@@ -38,6 +38,7 @@ Ez a cikk ismerteti a gyakori az Azure-telepítés hibák észlelhetnek, és jav
 | Ütközés | A kért műveletet az erőforrás a jelenlegi állapotban nem engedélyezett. Például a lemezek átméretezése engedélyezett csak akkor, ha a virtuális gép létrehozása, vagy ha a virtuális gép felszabadítása. | |
 | DeploymentActive | Várjon, amíg párhuzamos központi telepítést, hogy ez az erőforráscsoport befejezéséhez. | |
 | Sikertelen | A "deploymentfailed" hiba: Általános hiba, amely nem adja meg a hiba megoldásához szükséges adatokat. Keresse meg a hiba részletei hibakódot nyújt részletesebb információt. | [Hibakód keresése](#find-error-code) |
+| DeploymentQuotaExceeded | Ha Ön eléri a erőforráscsoportra 800 központi telepítések, központi telepítések törlése az előzmények már nem szükséges. Az előzmények bejegyzéseinek törölheti [az csoport központi telepítésének törlése](/cli/azure/group/deployment#az_group_deployment_delete) Azure CLI használata esetén vagy [Remove-AzureRmResourceGroupDeployment](/powershell/module/azurerm.resources/remove-azurermresourcegroupdeployment) a PowerShellben. Bejegyzést az üzemelő példány előzményeinek a törlése nem érinti a telepítés erőforrások. | |
 | DnsRecordInUse | A DNS-rekord nevének egyedinek kell lennie. Adjon meg egy másik nevet, vagy módosítsa a meglévő bejegyzést. | |
 | ImageNotFound | Ellenőrizze a virtuális gép kép beállításait. |  |
 | InUseSubnetCannotBeDeleted | Ez a hiba jelentkezhetnek, ha megpróbált frissíteni egy erőforrást, de törlésével és az erőforrás létrehozása dolgozza fel a kérelmet. Ügyeljen arra, hogy az összes változatlan értékeket megadni. | [Erőforrás frissítése](/azure/architecture/building-blocks/extending-templates/update-resource) |
@@ -49,10 +50,13 @@ Ez a cikk ismerteti a gyakori az Azure-telepítés hibák észlelhetnek, és jav
 | InvalidResourceNamespace | A megadott erőforrás-névtér ellenőrzése a **típus** tulajdonság. | [Hivatkozása](/azure/templates/) |
 | InvalidResourceReference | Az erőforrás még nem létezik, vagy helytelenül hivatkozott. Ellenőrizze, hogy hozzáadjon egy függőséget szükséges. Ellenőrizze, hogy Ön miként használja a a **hivatkozás** függvény a forgatókönyvhöz szükséges paramétereket tartalmazza. | [-Függőségek feloldása](resource-manager-not-found-errors.md) |
 | InvalidResourceType | Ellenőrizze az erőforrás írja be az a **típus** tulajdonság. | [Hivatkozása](/azure/templates/) |
+| InvalidSubscriptionRegistrationState | Az előfizetés regisztrálása az erőforrás-szolgáltató. | [Hárítsa el a regisztrációs](resource-manager-register-provider-errors.md) |
 | InvalidTemplate | Ellenőrizze a hibákat a sablon szintaxisát. | [Érvénytelen a sablon feloldása](resource-manager-invalid-template-errors.md) |
+| InvalidTemplateCircularDependency | Távolítsa el a felesleges függőségeket. | [Körkörös függőségek feloldása](resource-manager-invalid-template-errors.md#circular-dependency) |
 | LinkedAuthorizationFailed | Ellenőrizze, hogy ha a fiókja tagja ugyanannak a bérlőnek a telepíti erőforráscsoportként működnek. | |
 | LinkedInvalidPropertyId | Az erőforrás-azonosítója egy erőforrás nem megfelelően van feloldása. Ellenőrizze, hogy értékeket ad meg minden szükséges erőforrás-azonosítóhoz, beleértve az előfizetés-azonosító, az erőforráscsoport neve, erőforrástípus, szülő erőforrás neve (ha szükséges) és erőforrás neve. | |
 | LocationRequired | Adjon meg egy helyet, az erőforrás. | [Hely beállítása](resource-manager-templates-resources.md#location) |
+| MismatchingResourceSegments | Győződjön meg arról, hogy beágyazott erőforrás rendelkezik megfelelő számú szegmenseinek nevét és típusát. | [Hárítsa el a szegmensek erőforrás](resource-manager-invalid-template-errors.md#incorrect-segment-lengths)
 | MissingRegistrationForLocation | Ellenőrizze az erőforrás-szolgáltató regisztrációs állapotát, és a támogatott helyek. | [Hárítsa el a regisztrációs](resource-manager-register-provider-errors.md) |
 | MissingSubscriptionRegistration | Az előfizetés regisztrálása az erőforrás-szolgáltató. | [Hárítsa el a regisztrációs](resource-manager-register-provider-errors.md) |
 | NoRegisteredProviderFound | Erőforrás-szolgáltató regisztráció állapotának ellenőrzése. | [Hárítsa el a regisztrációs](resource-manager-register-provider-errors.md) |
@@ -73,6 +77,8 @@ Ez a cikk ismerteti a gyakori az Azure-telepítés hibák észlelhetnek, és jav
 | StorageAccountAlreadyTaken | Adjon egyedi nevet a tárfiók. | [Oldja meg a tárfiók neve](resource-manager-storage-account-name-errors.md) |
 | StorageAccountNotFound | Ellenőrizze az előfizetés, erőforráscsoport és a használni kívánt tárfiók nevére. | |
 | SubnetsNotInSameVnet | A virtuális gépek csak rendelkezhet egy virtuális hálózatot. Több hálózati adapterrel való telepítésekor, ellenőrizze, hogy az azonos virtuális hálózatban tartoznak. | [Több hálózati adapter](../virtual-machines/windows/multiple-nics.md) |
+| TemplateResourceCircularDependency | Távolítsa el a felesleges függőségeket. | [Körkörös függőségek feloldása](resource-manager-invalid-template-errors.md#circular-dependency) |
+| TooManyTargetResourceGroups | Csökkentse az erőforráscsoportok egyetlen központi telepítés számát. | [Erőforráscsoportok közötti üzembe helyezés](resource-manager-cross-resource-group-deployment.md) |
 
 ## <a name="find-error-code"></a>Hibakód keresése
 

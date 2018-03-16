@@ -3,7 +3,7 @@ title: "Adja hozzá az Azure SQL Database-összekötőt a Logic Apps |} Microsof
 description: "REST API-paraméterek az Azure SQL Database-összekötő áttekintése"
 services: 
 documentationcenter: 
-author: MandiOhlinger
+author: ecfan
 manager: anneta
 editor: 
 tags: connectors
@@ -14,12 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2016
-ms.author: mandia; ladocs
-ms.openlocfilehash: def2b65f009c377233c45356f8fa661b86d73f51
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.author: estfan; ladocs
+ms.openlocfilehash: 4313ead0c31ab2e72238701d58dc2f321f116fa6
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="get-started-with-the-azure-sql-database-connector"></a>Ismerkedés az Azure SQL Database-összekötő
 Az Azure SQL Database-összekötővel, munkafolyamatokat a szervezet számára, hogy a tábla adatainak kezelése. 
@@ -29,7 +29,7 @@ Az SQL Database meg:
 * A munkafolyamat egy új ügyfél ügyfelek adatbázishoz, vagy frissítésétől egészen a rendelések adatbázisban egy rendelés hozhat létre.
 * Műveletek segítségével az adatok egy sor lekéréséhez, új sor beszúrására, és akkor is törli. Például egy rekord létrehozásakor a Dynamics CRM Online (trigger), majd sor beszúrása egy Azure SQL Database (a műveletet). 
 
-Ez a témakör bemutatja, hogyan használható az SQL-adatbázis összekötő logikai alkalmazás, és is felsorolja azokat a műveleteket.
+Ez a cikk bemutatja, hogyan használható az SQL-adatbázis összekötő logikai alkalmazás, és is felsorolja azokat a műveleteket.
 
 A Logic Apps kapcsolatos további információkért lásd: [Mik azok a logic apps](../logic-apps/logic-apps-overview.md) és [logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
@@ -54,11 +54,11 @@ Egy művelet során a logikai alkalmazás definiált munkafolyamat által végze
 3. A szövegmezőben írja be a rendelkezésre álló műveletek listájának "sql".
    
     ![](./media/connectors-create-api-sqlazure/sql-1.png) 
-4. Válassza ki a fenti példában **SQL Server - Get sor**. Ha már létezik egy kapcsolat, majd válassza ki a **táblanév** a legördülő listában, és adja meg a **Sorazonosító** szeretne visszaállítani.
+4. Ebben a példában válassza **SQL Server - Get sor**. Ha már létezik egy kapcsolat, majd válassza ki a **táblanév** a legördülő listában, és adja meg a **Sorazonosító** szeretne visszaállítani.
    
     ![](./media/connectors-create-api-sqlazure/sample-table.png)
    
-    Ha a kapcsolati adatokat kéri, adja meg a részleteket a VPN-kapcsolat létrehozásához. [A kapcsolat létrehozása](connectors-create-api-sqlazure.md#create-the-connection) a témakörben ismertetett ezeket a tulajdonságokat. 
+    Ha a kapcsolati adatokat kéri, adja meg a részleteket a VPN-kapcsolat létrehozásához. [A kapcsolat létrehozása](connectors-create-api-sqlazure.md#create-the-connection) ebben a cikkben ismerteti ezeket a tulajdonságokat. 
    
    > [!NOTE]
    > Ebben a példában azt egy táblából egy sort ad vissza. A sor adatai, vegye fel egy újabb műveletet, amely létrehoz egy fájlt, a mezők a táblából. Adja hozzá például a Keresztnév és Vezetéknév mező használatával hozzon létre egy új fájlt a felhőalapú társzolgáltatás fiókja a onedrive vállalati verzió végrehajtandó. 
@@ -71,5 +71,5 @@ Egy művelet során a logikai alkalmazás definiált munkafolyamat által végze
 Bármely eseményindítók és a swagger definiált műveletek megtekintése, és semmilyen határnak a Lásd még: a [connector részleteket](/connectors/sql/). 
 
 ## <a name="next-steps"></a>További lépések
-[Logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md). Az egyéb rendelkezésre álló összekötők Logic Apps, megismerkedhet a [API-k lista](apis-list.md).
+[Logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md). Fedezze fel az egyéb rendelkezésre álló összekötők Logic Apps: [API-k lista](apis-list.md).
 

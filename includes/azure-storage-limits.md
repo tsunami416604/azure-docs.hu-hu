@@ -11,7 +11,7 @@
 
 <sup>1</sup>magában foglalja a Standard és prémium szintű storage-fiókok. Ha több mint 200 tárfiókra van szüksége, nyújtson be egy kérést az [Azure ügyfélszolgálatán](https://azure.microsoft.com/support/faq/) keresztül. Az Azure Storage csapata kiértékeli az Ön vállalkozását, és jóváhagyhat legfeljebb 250 tárfiókot. 
 
-<sup>2</sup> ahhoz, hogy a hirdetett korlátai, a kapacitás, a be-és kilépési és a kérelmek aránya túli nő a szabványos storage-fiókok, ellenőrizze, hogy a kérelmet [Azure támogatási](https://azure.microsoft.com/support/faq/). Az Azure Storage csapat fog tekintse át a kérést, és előfordulhat, hogy hagyja jóvá a magasabb korlátok eseti alapon.
+<sup>2</sup> Ha a tárfiók bővített korlátok van szüksége, lépjen kapcsolatba [Azure támogatási](https://azure.microsoft.com/support/faq/). Az Azure Storage csapat fog tekintse át a kérést, és előfordulhat, hogy hagyja jóvá a magasabb korlátok eseti alapon. Általános célú mindkét és Blob storage-fiókok támogatási kérelem nagyobb kapacitást, belépés és kilépés és kérelmek aránya. A Blob storage-fiókok új maximális értéket, lásd: [nagyobb, magasabb méretezési tárfiókok bejelentése](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/).
 
 <sup>3</sup> tárfiókonként csak a fiók be-és kilépési korlátok alapján. *Érkező* küldi el a tárfiók (kérelmek) összes adatokra vonatkozik. *Kimenő forgalom* alatt egy tárfiók felől fogadott összes adatot (választ) értjük.  
 

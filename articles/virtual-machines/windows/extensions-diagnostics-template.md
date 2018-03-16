@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 05/31/2017
 ms.author: saurabh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e3ea1687e7fb6cc7af00e03b85fb48b0d7911275
-ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
+ms.openlocfilehash: e205352ebf4eaf89627c268d78b69bb2d49c3f3e
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="use-monitoring-and-diagnostics-with-a-windows-vm-and-azure-resource-manager-templates"></a>Figyelés és diagnosztika használata egy Windows virtuális gép és az Azure Resource Manager sablonok
 Az Azure Diagnostics bővítmény a figyelési és diagnosztikai képességeket biztosít a Windows-alapú Azure virtuális gépen. A kiterjesztéssel együtt az Azure Resource Manager sablon részeként engedélyezheti ezeket a képességeket a virtuális gépen. Lásd: [Azure Resource Manager sablonok készítése a Virtuálisgép-bővítmények](template-description.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#extensions) további információ a virtuálisgép-sablon részeként bármely kiterjesztéssel együtt. Ez a cikk ismerteti, hogyan adhat hozzá az Azure Diagnostics-bővítmény egy windows virtuális gépre vonatkozó sablont.  
@@ -152,7 +152,7 @@ Több virtuális gép ismétlődő létrehozásakor, rendelkezik-e tölteni a *r
 "xmlCfg": "[base64(concat(variables('wadcfgxstart'), variables('wadmetricsresourceid'), concat(parameters('vmNamePrefix'), copyindex()), variables('wadcfgxend')))]", 
 ```
 
-MetricAggregation értékének *PT1H* és *PT1M* összesítést egy perc alatt, és akár egy óráig összesítést jelölésére.
+MetricAggregation értékének *PT1M* és *PT1H* egy perc alatt összesítést és összesítést akár egy óráig, illetve jelölésére.
 
 ## <a name="wadmetrics-tables-in-storage"></a>A tárolási WADMetrics táblák
 A fenti metrikák konfigurációs táblákat hoz létre a diagnosztikai tárfiók a következő tanúsítványelnevezési módszerek:
@@ -168,7 +168,7 @@ Példa: *WADMetricsPT1HP10DV2S20151108* metrikai adatok indítása a 11-november
 Minden egyes WADMetrics tábla a következő oszlopok fogja tartalmazni:
 
 * **PartitionKey**: A partíciós kulcs összeállított alapján a *resourceID* értéket a virtuális gép erőforrásához egyedi azonosításához. Például: 002Fsubscriptions:<subscriptionID>: 002FresourceGroups:002F<ResourceGroupName>: 002Fproviders:002FMicrosoft:002ECompute:002FvirtualMachines:002F<vmName>  
-* **RowKey**: a formátumot követi `<Descending time tick>:<Performance Counter Name>`. A csökkenő idő osztásjelek számítás maximális idő ticks csökkentve az összesítési időszak kezdete idején. Ha például a mintavételi időszak kezdete: 10-november-2015 és 00:00Hrs UTC, majd a számítási lenne: `DateTime.MaxValue.Ticks - (new DateTime(2015,11,10,0,0,0,DateTimeKind.Utc).Ticks)`. A memória rendelkezésre álló bájtok teljesítményszámláló a sorkulcs hasonlóan fog kinézni:`2519551871999999999__:005CMemory:005CAvailable:0020Bytes`
+* **RowKey**: a formátumot követi `<Descending time tick>:<Performance Counter Name>`. A csökkenő idő osztásjelek számítás maximális idő ticks csökkentve az összesítési időszak kezdete idején. Ha például a mintavételi időszak kezdete: 10-november-2015 és 00:00Hrs UTC, majd a számítási lenne: `DateTime.MaxValue.Ticks - (new DateTime(2015,11,10,0,0,0,DateTimeKind.Utc).Ticks)`. A memória rendelkezésre álló bájtok teljesítményszámláló a sorkulcs hasonlóan fog kinézni: `2519551871999999999__:005CMemory:005CAvailable:0020Bytes`
 * **CounterName**: a teljesítményszámláló neve. Ez megegyezik a *counterSpecifier* az XML-konfiguráció sémaellenőrzése definiálva.
 * **Maximális**: A maximális érték a teljesítményszámláló az összesítési adott időszakban.
 * **Minimális**: A minimális érték a teljesítményszámláló az összesítési adott időszakban.

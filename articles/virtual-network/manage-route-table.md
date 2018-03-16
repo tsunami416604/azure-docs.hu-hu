@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2018
 ms.author: jdial
-ms.openlocfilehash: 7630fd82cf62f1fcb0df80cec5b5e0030da81a85
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: a7e45d6bccfd8113157eba63d311b6609bf35aaa
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="create-change-or-delete-a-route-table"></a>Létrehozása, módosítása vagy törlése egy útválasztási táblázatot
 
@@ -30,7 +30,7 @@ Azure automatikusan irányítja a forgalmat Azure alhálózatokat, virtuális h�
 Ez a cikk bármely szakaszának lépéseit befejezése előtt hajtsa végre a következőket:
 
 - Ha még nem rendelkezik Azure-fiókja, regisztráljon egy [ingyenes próbafiók](https://azure.microsoft.com/free).
-- Ha a portál használatával, nyissa meg a https://portal.azure.com, és jelentkezzen be az Azure-fiókjával.
+- A portál használatával, nyissa meg a https://portal.azure.com, és jelentkezzen be az Azure-fiókjával.
 - Ha a PowerShell-parancsokkal ebben a cikkben a feladatokat, vagy futtassa a parancsokat a [Azure Cloud rendszerhéj](https://shell.azure.com/powershell), vagy a PowerShell futtatásával a számítógépről. Az Azure Cloud Shell egy olyan ingyenes interaktív kezelőfelület, amelyet a jelen cikkben található lépések futtatására használhat. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. Ebben az oktatóanyagban az Azure PowerShell modul verziója 5.2.0 szükséges vagy újabb. Futtatás `Get-Module -ListAvailable AzureRM` telepített verziója található. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Login-AzureRmAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
 - Azure parancssori felület (CLI) parancsok használata ebben a cikkben a feladatokat, vagy futtassa a parancsokat a [Azure Cloud rendszerhéj](https://shell.azure.com/bash), vagy a CLI-t a számítógépen való futtatásával. Ez az oktatóanyag az Azure parancssori felület 2.0.26 verziója szükséges, vagy később. Futtatás `az --version` telepített verziója található. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése](/cli/azure/install-azure-cli). Ha helyileg futtatja az Azure parancssori felület, is futtatásához szükséges `az login` az Azure VPN-kapcsolat létrehozásához.
 
@@ -40,7 +40,7 @@ Hány útvonal táblákat hozhat létre egy Azure-beli hely és az előfizetés 
 
 1. Válassza ki a portál bal felső sarkában **+ hozzon létre egy erőforrást**.
 2. Válassza ki **hálózati**, majd jelölje be **útvonaltábla**.
-3. Adja meg egy **neve** útvonaltábla, válassza ki a **előfizetés**, hozzon létre egy új **erőforráscsoport**, vagy válasszon ki egy meglévő erőforráscsoportot, válassza ki a **helye** , majd jelölje be **létrehozása**. A **tiltsa le a BGP útválasztási propagálás** beállítás megakadályozza, hogy a helyi útvonalak BGP keresztül egy Azure virtuális hálózatra. Ha a virtuális hálózat nincs csatlakoztatva egy Azure-hálózatot átjáró (VPN- vagy ExpressRoute), hagyja a beállítást *letiltott*. 
+3. Adja meg egy **neve** útvonaltábla, válassza ki a **előfizetés**, hozzon létre egy új **erőforráscsoport**, vagy válasszon ki egy meglévő erőforráscsoportot, válassza ki a **helye** , majd jelölje be **létrehozása**. A **tiltsa le a BGP útválasztási propagálás** beállítás megakadályozza, hogy a helyszíni útvonalakat a BGP keresztül jutott el a hálózati illesztők egyetlen alhálózatának sem, amely hozzá van rendelve az útvonaltábla. Ha a virtuális hálózat nincs csatlakoztatva egy Azure-hálózatot átjáró (VPN- vagy ExpressRoute), hagyja a beállítást *letiltott*.
 
 **Parancsok**
 

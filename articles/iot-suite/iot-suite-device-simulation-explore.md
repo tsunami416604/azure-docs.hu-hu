@@ -12,11 +12,11 @@ ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: 25b9d1c7debe0d98a87b7d0b47dea6ab6f36c8af
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.openlocfilehash: 2a9a6f3387b7f9fb4e3896fc55a06ac4a902ad24
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="device-simulation-walkthrough"></a>Eszköz szimuláció forgatókönyv
 
@@ -35,7 +35,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 Az oktatóanyag elvégzéséhez szükséges Azure IoT eszköz szimuláció telepített példányát az Azure-előfizetéshez.
 
-Ha az eszköz szimuláció még nem telepítette még, el kell végeznie a [telepítése Azure IoT eszköz szimuláció](iot-suite-device-simulation-explore.md) oktatóanyag.
+Ha az eszköz szimuláció még nem telepítette még, el kell végeznie a [telepítése Azure IoT eszköz szimuláció](iot-suite-device-simulation-deploy.md) oktatóanyag.
 
 ## <a name="configuring-device-simulation"></a>Eszköz szimuláció konfigurálása
 
@@ -75,14 +75,14 @@ Az alábbi táblázat a minden előre konfigurált eszköz modell konfiguráció
 
 | Eszközmodell | Érzékelő | Unit (Egység) | Telemetria gyakorisága
 | -------------| ------ | -----| --------------------|
-| Hűtő | nedvességtartalma | % | 5 másodperc |
+| Chiller | nedvességtartalma | % | 5 másodperc |
 | | pressure | psig | 5 másodperc |
 | | Hőmérséklet | F | 5 másodperc |
 | Foglalhatja | Emelet | | 5 másodperc |
 | | vibráció | mm | 5 másodperc |
 | | Hőmérséklet | F | 5 másodperc |
-| Teherautó | Szélesség | | 3 másodpercenként |
-| | Hosszúság | | 3 másodpercenként |
+| Teherautó | Szélesség | | 3 másodperc |
+| | Hosszúság | | 3 másodperc |
 | | Sebesség | mph | 5 másodperc |
 | | cargotemperature | F | 5 másodperc |
 

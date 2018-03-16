@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 11/03/2017
 ms.author: mimig
-ms.openlocfilehash: a5511b8b2e76c6c651a8e05bda1322293601c92c
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: fadb81e16a6c641ca15efb4f910a51de4fe7c997
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-storage-table-design-guide-designing-scalable-and-performant-tables"></a>Az Azure Storage táblázat kialakítási Útmutató: Méretezhető tervezésével és Performant táblák
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../includes/storage-table-cosmos-db-tip-include.md)]
@@ -78,7 +78,7 @@ Az alábbi példában egy egyszerű Táblatervezés alkalmazott és részleg ent
 </tr>
 <tr>
 <td>jún.</td>
-<td>CaO</td>
+<td>Cao</td>
 <td>47</td>
 <td>junc@contoso.com</td>
 </tr>
@@ -207,8 +207,8 @@ Az alábbi példák azt feltételezik, hogy a table szolgáltatás a következő
 | **PartitionKey** (részleg neve) |Karakterlánc |
 | **RowKey** (alkalmazott azonosítója) |Karakterlánc |
 | **Utónév** |Karakterlánc |
-| **Vezetéknév** |Karakterlánc |
-| **Kora** |Egész szám |
+| **LastName** |Karakterlánc |
+| **kora** |Egész szám |
 | **E-mail cím** |Karakterlánc |
 
 A korábbi szakaszban [Azure Table szolgáltatás áttekintése](#overview) néhány szolgáltatását az Azure Table szolgáltatás, amely közvetlenül befolyásolják a lekérdezéshez tervezéséről foglalja össze. Ezek a Table szolgáltatás Lekérdezéstervezés vonatkozó általános irányelveket eredményez. Vegye figyelembe, hogy a Table szolgáltatásból REST API-t a további tudnivalókat lásd az alábbi példákban szereplő szűrőszintaxisának [lekérdezés entitások](http://msdn.microsoft.com/library/azure/dd179421.aspx).  
@@ -232,7 +232,7 @@ Az ügyféloldali kódot, amely hatékony-lekérdezéseket hajt végre a Storage
 * [Heterogén entitástípusok használata](#working-with-heterogeneous-entity-types)  
 
 ### <a name="choosing-an-appropriate-partitionkey"></a>Egy megfelelő PartitionKey kiválasztása
-A választott **PartitionKey** kell terheléselosztást kell EGTs (konzisztencia biztosításához) használatát teszi lehetővé a követelménnyel szemben az entitások szét több partíciót (méretezhető megoldás biztosításához).  
+A választott **PartitionKey** kell terheléselosztást kell EGTs (konzisztencia biztosításához) használatának engedélyezése a követelménnyel szemben az entitások szét több partíciót (méretezhető megoldás biztosításához).  
 
 Egy rendkívüli az entitások sikerült egyetlen partícióra vannak tárolva, de ez korlátozottá teheti méretezhetőségét a megoldás, és akadályozzák a table szolgáltatás terheléselosztásához kérelmek igényt. A rendkívüli egy entitás partíció található, amely magas szinten méretezhető lenne és amely lehetővé teszi a table szolgáltatás terheléselosztási kérésekre, de amelyek volna újrafelhasználásának megtiltása entitás csoport tranzakciók száma tárolhatja.  
 
@@ -261,7 +261,7 @@ Számos alkalmazás más-más sorrendben rendezett adatok használata követelm�
 
 * [Helyen belüli-partíció másodlagos index mintát](#intra-partition-secondary-index-pattern) - különböző RowKey értékei alapján (a partícióra) gyors engedélyezése minden entitás több példányát tárolja, és hatékony keresést és a másodlagos rendezési sorrend rendelések különböző RowKey értékek használatával.  
 * [Másodlagos helyek közötti partíció index mintát](#inter-partition-secondary-index-pattern) – minden külön táblázatban külön partíciók különböző RowKey értékek segítségével engedélyezi a gyors entitás több példányát tárolja, és hatékony keresést és a másodlagos rendezési sorrend rendelések különböző RowKey értékek használatával .
-* [Napló végéről mintát](#log-tail-pattern) -beolvasni a  *n*  partíció legutóbb hozzáadott entitások egy **RowKey** érték, amely fordított dátum és idő sorrendben rendezi.  
+* [Napló végéről mintát](#log-tail-pattern) -beolvasni a *n* partíció legutóbb hozzáadott entitások egy **RowKey** érték, amely fordított dátum és idő sorrendben rendezi.  
 
 ## <a name="design-for-data-modification"></a>Adatmódosítás kialakítása
 Ez a szakasz a beszúrások, a frissítések optimalizálása kialakítási szempontjai összpontosít, és törli. Néhány esetben szüksége lesz a kompromisszum terveket, terveket, hasonlóan a relációs adatbázisok terveket (bár a Tervező kompromisszumot kezelésére szolgáló módszerek optimalizálás adatok módosítása ellen lekérdezése optimalizálása közötti kiértékelése különböző egy relációs adatbázisban). A szakasz [táblázat kialakítási minta](#table-design-patterns) néhány részletes kialakítási minta a Table szolgáltatás ismerteti, és kiemeli a néhányat ezek kompromisszumot. A gyakorlatban találja, hogy az entitás lekérdezése optimalizált sok tervek is alkalmas entitások módosítása.  
@@ -296,7 +296,7 @@ Sok esetben egy tervezési módosítások hatékony, de hatékony lekérdező er
 A szakasz a következő minták [táblázat kialakítási minta](#table-design-patterns) hatékony lekérdezések tervezése és kialakítása hatékony adatok módosítása a közötti kompromisszumot cím:  
 
 * [Összetett kulcs mintát](#compound-key-pattern) – használható összetett **RowKey** értékek kapcsolódó adatok egyetlen pont lekérdezéssel talált ügyfél engedélyezése.  
-* [Napló végéről mintát](#log-tail-pattern) -beolvasni a  *n*  partíció legutóbb hozzáadott entitások egy **RowKey** érték, amely fordított dátum és idő sorrendben rendezi.  
+* [Napló végéről mintát](#log-tail-pattern) -beolvasni a *n* partíció legutóbb hozzáadott entitások egy **RowKey** érték, amely fordított dátum és idő sorrendben rendezi.  
 
 ## <a name="encrypting-table-data"></a>Tábla adatok titkosítása
 A .NET Azure Storage ügyféloldali kódtár támogatja a titkosítást a karakterlánc az Entitástulajdonságok szúrhatók be, és cserélje le a műveletek. A titkosított karakterláncok tárolja a szolgáltatás bináris tulajdonságként, és telepítésekké lesznek átalakítva vissza karakterláncok a visszafejtés után.    
@@ -331,7 +331,7 @@ Az alábbi táblázat foglalja össze, és az egyes az alkalmazottak és a rész
 
 <table>
 <tr>
-<th>Módszer</th>
+<th>Approach</th>
 <th>Informatikai szakemberek</th>
 <th>Hátrányok</th>
 </tr>
@@ -418,7 +418,7 @@ A minta térkép fent néhány minták (kék) és a jelen útmutatóban leírt e
 ### <a name="intra-partition-secondary-index-pattern"></a>Helyen belüli-partíció másodlagos index minta
 Több másolatot minden entitás használatával különböző tárolására **RowKey** értékeket (a partícióra) engedélyezése gyors és hatékony keresések és a másodlagos rendezési sorrend különböző **RowKey** értékeket. Példányok közötti frissítéseket is konzisztens EGT tartozó használatával.  
 
-#### <a name="context-and-problem"></a>A környezetben, és probléma
+#### <a name="context-and-problem"></a>Kontextus és probléma
 A Table szolgáltatás automatikusan elvégzi a segítségével a **PartitionKey** és **RowKey** értékeket. Ez lehetővé teszi, hogy hatékonyan végez ezeket az értékeket entitást lekérdezni egy ügyfélalkalmazást. Például a lent látható módon táblaszerkezet, ügyfélalkalmazás használatával pont lekérdezés egy adott alkalmazott bejegyzés lekérdezésére a részleg neve és az alkalmazott azonosítója (a **PartitionKey** és **RowKey** értékek). Egy ügyfél is kérje le az entitásokat alkalmazottazonosító belül minden részleg szerint rendezve.
 
 ![][6]
@@ -442,8 +442,8 @@ Ha alkalmazott entitástartományának kérdezze le, megadhatja a alkalmazott az
   
   Vegye figyelembe, hogy a Table szolgáltatásból REST API-t a további tudnivalókat lásd a fenti példákban használt szűrőszintaxisának [lekérdezés entitások](http://msdn.microsoft.com/library/azure/dd179421.aspx).  
 
-#### <a name="issues-and-considerations"></a>Problémákat és szempontok
-Ebben a mintában megvalósításához meghatározásakor, vegye figyelembe a következő szempontokat:  
+#### <a name="issues-and-considerations"></a>Problémák és megfontolandó szempontok
+A minta megvalósítása során az alábbi pontokat vegye figyelembe:  
 
 * A TABLE storage viszonylag olcsó használatára, így költség növeli a duplikált adatok tárolására nem szabad jelentős probléma. Azonban kell kiértékelésének eredménye mindig a tervező a várható tárolási szükségletek költségeinek, és csak hozzá az ügyfélalkalmazást hajtja végre a lekérdezéseket kettős bejegyzés.  
 * Mivel a másodlagos index entitások az eredeti entitásokat tartalmazó partícióra vannak tárolva, ellenőrizze, hogy nem haladhatja meg a a méretezhetőségi célok, az egyes partíciók.  
@@ -456,11 +456,11 @@ Ebben a mintában megvalósításához meghatározásakor, vegye figyelembe a k�
 
 * Általában jobb megoldás, az ismétlődő adatokat tárolhatnak, és győződjön meg arról, hogy egyetlen lekérdezést, a szükséges összes adatot kérheti le egy lekérdezés használata egy entitás, majd egy másikat talált a szükséges adatok kereséséhez.  
 
-#### <a name="when-to-use-this-pattern"></a>Mikor érdemes használni ezt a mintát
+#### <a name="when-to-use-this-pattern"></a>Mikor érdemes ezt a mintát használni?
 Ezt a mintát használja, ha az ügyfélalkalmazást kérje le az entitásokat, különböző kulccsal, számos használatát, ha az ügyfél eltérő rendezési sorrend entitásának lekérése, valamint olyan esetben minden entitás egyedi értékeket számos segítségével azonosíthatja. Azonban ügyelnie kell, hogy Ön nem lépik túl a partíció méretezhetőségének korlátai a különböző entitás keresések végrehajtásakor **RowKey** értékeket.  
 
-#### <a name="related-patterns-and-guidance"></a>Útmutató és a kapcsolódó minták
-A következő mintákat és útmutatókat is megfelelő ebben a mintában végrehajtása során:  
+#### <a name="related-patterns-and-guidance"></a>Kapcsolódó minták és útmutatók
+Az alábbi minták és útmutatók szintén hasznosak lehetnek a minta megvalósításakor:  
 
 * [Másodlagos helyek közötti partíció index minta](#inter-partition-secondary-index-pattern)
 * [Összetett kulcs minta](#compound-key-pattern)
@@ -470,7 +470,7 @@ A következő mintákat és útmutatókat is megfelelő ebben a mintában végre
 ### <a name="inter-partition-secondary-index-pattern"></a>Másodlagos helyek közötti partíció index minta
 Több másolatot minden entitás használatával különböző tárolására **RowKey** értékek a különböző partíciók, vagy a külön táblázatokat engedélyezése gyors és hatékony keresések és a másodlagos rendezési sorrend különböző **RowKey** értékeket.  
 
-#### <a name="context-and-problem"></a>A környezetben, és probléma
+#### <a name="context-and-problem"></a>Kontextus és probléma
 A Table szolgáltatás automatikusan elvégzi a segítségével a **PartitionKey** és **RowKey** értékeket. Ez lehetővé teszi, hogy hatékonyan végez ezeket az értékeket entitást lekérdezni egy ügyfélalkalmazást. Például a lent látható módon táblaszerkezet, ügyfélalkalmazás használatával pont lekérdezés egy adott alkalmazott bejegyzés lekérdezésére a részleg neve és az alkalmazott azonosítója (a **PartitionKey** és **RowKey** értékek). Egy ügyfél is kérje le az entitásokat alkalmazottazonosító belül minden részleg szerint rendezve.  
 
 ![][9]
@@ -496,8 +496,8 @@ Ha alkalmazott entitástartományának kérdezze le, megadhatja a alkalmazott az
 
 Vegye figyelembe, hogy a Table szolgáltatásból REST API-t a további tudnivalókat lásd a fenti példákban használt szűrőszintaxisának [lekérdezés entitások](http://msdn.microsoft.com/library/azure/dd179421.aspx).  
 
-#### <a name="issues-and-considerations"></a>Problémákat és szempontok
-Ebben a mintában megvalósításához meghatározásakor, vegye figyelembe a következő szempontokat:  
+#### <a name="issues-and-considerations"></a>Problémák és megfontolandó szempontok
+A minta megvalósítása során az alábbi pontokat vegye figyelembe:  
 
 * Hálózati adaptere esetében megtarthatja az ismétlődő entitások idővel konzisztenssé egymással használatával a [idővel konzisztenssé tranzakciók mintát](#eventually-consistent-transactions-pattern) az elsődleges és másodlagos index entitások fenntartásához.  
 * A TABLE storage viszonylag olcsó használatára, így költség növeli a duplikált adatok tárolására nem szabad jelentős probléma. Azonban kell kiértékelésének eredménye mindig a tervező a várható tárolási szükségletek költségeinek, és csak hozzá az ügyfélalkalmazást hajtja végre a lekérdezéseket kettős bejegyzés.  
@@ -508,11 +508,11 @@ Ebben a mintában megvalósításához meghatározásakor, vegye figyelembe a k�
   ![][11]
 * Érdemes jellemzően ismétlődő adatokat tárolhatnak, és győződjön meg arról, hogy egyetlen lekérdezést egy lekérdezési használata a másodlagos index, míg a másik keresési a szükséges adatok használatát az elsődleges index entitás található a szükséges összes adatot kérheti le.  
 
-#### <a name="when-to-use-this-pattern"></a>Mikor érdemes használni ezt a mintát
+#### <a name="when-to-use-this-pattern"></a>Mikor érdemes ezt a mintát használni?
 Ezt a mintát használja, ha az ügyfélalkalmazást kérje le az entitásokat, különböző kulccsal, számos használatát, ha az ügyfél eltérő rendezési sorrend entitásának lekérése, valamint olyan esetben minden entitás egyedi értékeket számos segítségével azonosíthatja. Ezt a mintát használja, ha el szeretné kerülni, a partíció méretezhetőségének korlátai meghaladja a különböző entitás keresések végrehajtásakor **RowKey** értékeket.  
 
-#### <a name="related-patterns-and-guidance"></a>Útmutató és a kapcsolódó minták
-A következő mintákat és útmutatókat is megfelelő ebben a mintában végrehajtása során:  
+#### <a name="related-patterns-and-guidance"></a>Kapcsolódó minták és útmutatók
+Az alábbi minták és útmutatók szintén hasznosak lehetnek a minta megvalósításakor:  
 
 * [Idővel konzisztenssé tranzakciók minta](#eventually-consistent-transactions-pattern)  
 * [Helyen belüli-partíció másodlagos index minta](#intra-partition-secondary-index-pattern)  
@@ -523,7 +523,7 @@ A következő mintákat és útmutatókat is megfelelő ebben a mintában végre
 ### <a name="eventually-consistent-transactions-pattern"></a>Idővel konzisztenssé tranzakciók minta
 Engedélyezze a idővel konzisztenssé viselkedés partícióhatárok vagy tárolási rendszer határok az Azure-üzenetsorok használatával.  
 
-#### <a name="context-and-problem"></a>A környezetben, és probléma
+#### <a name="context-and-problem"></a>Kontextus és probléma
 EGTs atomi tranzakciók engedélyezhető a kiszolgálók közötti ugyanazzal a partíciós kulccsal rendelkező entitásokat. A teljesítmény és méretezhetőség érdekében dönthet külön partíciók vagy egy különálló tárhelyet rendszer konzisztencia-követelményekkel rendelkező entitások tárolására: ilyen esetben nem használhat EGTs biztosítja az egységességet. Például lehetséges, hogy követelmény a végleges konzisztencia közötti karbantartása:  
 
 * Az entitások tárolva két különböző partíciók ugyanabban a táblában, a különböző táblák, a másik tárfiókokban.  
@@ -548,18 +548,18 @@ Ha a feldolgozói szerepkör soha nem fejeződik be a lépés **6**, majd után 
 
 A tábla- és várólista szolgáltatásokból hibák átmeneti hibák, és az ügyfélalkalmazás tartalmaznia kell a megfelelő újrapróbálkozási logika kezelni azokat.  
 
-#### <a name="issues-and-considerations"></a>Problémákat és szempontok
-Ebben a mintában megvalósításához meghatározásakor, vegye figyelembe a következő szempontokat:  
+#### <a name="issues-and-considerations"></a>Problémák és megfontolandó szempontok
+A minta megvalósítása során az alábbi pontokat vegye figyelembe:  
 
 * Ez a megoldás elkülönítési tranzakció nem ad meg. Például egy ügyfél olvasható a **aktuális** és **archív** táblák, ha a feldolgozói szerepkör lépések között **4** és **5**, és tekintse meg egy az adatok inkonzisztens nézetét. Vegye figyelembe, hogy az adatok konzisztens idővel.  
 * Lehet, hogy-e 4. és 5 idempotent végleges konzisztencia biztosításához.  
 * A megoldás több várólisták és feldolgozópéldányok szerepkör segítségével méretezhető.  
 
-#### <a name="when-to-use-this-pattern"></a>Mikor érdemes használni ezt a mintát
+#### <a name="when-to-use-this-pattern"></a>Mikor érdemes ezt a mintát használni?
 Ebben a mintában használja, ha azt szeretné, amely szerepel a különböző partíciók, illetve olyan táblázatok entitások közötti végleges konzisztencia biztosításához. Ebben a mintában biztosíthatja a végleges műveletekhez a tábla és a Blob szolgáltatás és más nem Azure Storage között adatforrások, például az adatbázis vagy a fájlrendszer terjeszthetők ki.  
 
-#### <a name="related-patterns-and-guidance"></a>Útmutató és a kapcsolódó minták
-A következő mintákat és útmutatókat is megfelelő ebben a mintában végrehajtása során:  
+#### <a name="related-patterns-and-guidance"></a>Kapcsolódó minták és útmutatók
+Az alábbi minták és útmutatók szintén hasznosak lehetnek a minta megvalósításakor:  
 
 * [Entitás csoport tranzakciók](#entity-group-transactions)  
 * [Egyesítés vagy cseréje](#merge-or-replace)  
@@ -572,7 +572,7 @@ A következő mintákat és útmutatókat is megfelelő ebben a mintában végre
 ### <a name="index-entities-pattern"></a>Index entitások minta
 Ahhoz, hogy térjen vissza az entitások listák hatékony kereséseket index entitások karbantartása.  
 
-#### <a name="context-and-problem"></a>A környezetben, és probléma
+#### <a name="context-and-problem"></a>Kontextus és probléma
 A Table szolgáltatás automatikusan elvégzi a segítségével a **PartitionKey** és **RowKey** értékeket. Ez lehetővé teszi, hogy egy entitás hatékonyan pont lekérdezéssel lekérni ügyfélalkalmazást. Például használja az alábbi táblázat szerkezetét, ügyfélalkalmazás hatékonyan alkalmazott entitás használatával lekérhető a részleg neve és az alkalmazott azonosítója (a **PartitionKey** és **RowKey**).  
 
 ![][13]
@@ -622,8 +622,8 @@ A **EmployeeIDs** tárolt utolsó nevű tulajdonsága tartalmazza az alkalmazott
 
 A harmadik beállítással biztosítja az egységességet, mert az index entitások az alkalmazott entitások külön partícióra EGTs nem használható. Ellenőrizze, hogy idővel konzisztenssé váljanak a alkalmazott entitások-e az index entitásokat.  
 
-#### <a name="issues-and-considerations"></a>Problémákat és szempontok
-Ebben a mintában megvalósításához meghatározásakor, vegye figyelembe a következő szempontokat:  
+#### <a name="issues-and-considerations"></a>Problémák és megfontolandó szempontok
+A minta megvalósítása során az alábbi pontokat vegye figyelembe:  
 
 * Ehhez a megoldáshoz szükségesek egyező entitást lekérdezni legalább két lekérdezést: egyet az index entitásokat a listájának lekérdezése **RowKey** értékek, majd beolvasni a listában szereplő lekérdezések.  
 * Fényében, hogy az egyes entitásnak van a maximális méret 1 MB, #2 és a megoldás #3 lehetőség feltételezik, hogy bármely adott Vezetéknév alkalmazott azonosítóinak listáját soha nem 1 MB-nál nagyobb. Ha alkalmazott azonosítók listáját mérete 1 MB-nál nagyobbnak kell lennie, #1. lehetőség és az index adatokat a blob Storage tárolóban tárolja.  
@@ -631,11 +631,11 @@ Ebben a mintában megvalósításához meghatározásakor, vegye figyelembe a k�
 * Ebben a megoldásban #2. lehetőség azt feltételezi, hogy szeretné-e kereshet meg egy részleg vezetéknév: például szeretné beolvasni az alkalmazottakat az értékesítési részleg János utolsó néven. Ha szeretné tudni nevű utolsó János a teljes szervezeten belül minden alkalmazott kereshet, #1. lehetőség vagy a #3. lehetőség használatával.
 * Megvalósíthat egy várólista-alapú megoldás, amely a végleges konzisztencia biztosítja (lásd a [idővel konzisztenssé tranzakciók mintát](#eventually-consistent-transactions-pattern) további részletekért).  
 
-#### <a name="when-to-use-this-pattern"></a>Mikor érdemes használni ezt a mintát
+#### <a name="when-to-use-this-pattern"></a>Mikor érdemes ezt a mintát használni?
 Ezt a mintát használja, ha meg szeretné megkeresni az, hogy minden közös közös tulajdonság értéke, például minden alkalmazott Vezetéknév János a entitások készletének.  
 
-#### <a name="related-patterns-and-guidance"></a>Útmutató és a kapcsolódó minták
-A következő mintákat és útmutatókat is megfelelő ebben a mintában végrehajtása során:  
+#### <a name="related-patterns-and-guidance"></a>Kapcsolódó minták és útmutatók
+Az alábbi minták és útmutatók szintén hasznosak lehetnek a minta megvalósításakor:  
 
 * [Összetett kulcs minta](#compound-key-pattern)  
 * [Idővel konzisztenssé tranzakciók minta](#eventually-consistent-transactions-pattern)  
@@ -645,7 +645,7 @@ A következő mintákat és útmutatókat is megfelelő ebben a mintában végre
 ### <a name="denormalization-pattern"></a>Denormalization minta
 Együtt kapcsolódó adatok egyesítése egyetlen entitás ahhoz, hogy beolvasni az összes adatot a hibaérzékeny pontok lekérdezéssel van szüksége.  
 
-#### <a name="context-and-problem"></a>A környezetben, és probléma
+#### <a name="context-and-problem"></a>Kontextus és probléma
 Egy relációs adatbázisban akkor általában normalizálása az adatok eltávolítása a lekérdezéseiben, amelyeket adatainak lekérése több táblából származó ismétlődést. Ha normalizálása az adatok Azure-táblákban, meg kell győződnie több kiszolgálókkal való adatváltások számát az ügyfélről a kiszolgálónak a kapcsolódó adatok beolvasása. Például a táblázat szerkezetét alábbi értékekre, akkor a két adatváltások beolvasni egy részleg részleteit kell: egyet a részleg entitás, amely tartalmazza a kezelő azonosítója és a kezelő részletek alkalmazott entitás lehívása majd egy másik kérelem beolvasása.  
 
 ![][16]
@@ -657,17 +657,17 @@ Helyett két külön entitás tárolni az adatokat, az adatok denormalize, és a
 
 Ezekkel a tulajdonságokkal tárolt részleg entitásokkal kapcsolatos pont lekérdezéssel részleget szükséges összes információt most le.  
 
-#### <a name="issues-and-considerations"></a>Problémákat és szempontok
-Ebben a mintában megvalósításához meghatározásakor, vegye figyelembe a következő szempontokat:  
+#### <a name="issues-and-considerations"></a>Problémák és megfontolandó szempontok
+A minta megvalósítása során az alábbi pontokat vegye figyelembe:  
 
 * Van néhány költsége terhet kétszer néhány adatainak tárolásához. A teljesítmény előny (kevesebb kéréseket a tárolási szolgáltatásba) általában ez fontosabb, mint a tárolási költségeket marginális növekedése (és az ehhez kapcsolódó költséget részben eltolva csökkentése szüksége van egy részleg részleteinek beolvasása tranzakciók száma ).  
 * A kezelők vonatkozó információt tároló két entitások konzisztencia kell fenntartani. Egy atomi tranzakción belül több entitás frissítése EGTs használatával kezelni tud a konzisztencia problémát: Ebben az esetben a részleg, és a alkalmazott entitás részleg kezelőjének partícióra tárolják.  
 
-#### <a name="when-to-use-this-pattern"></a>Mikor érdemes használni ezt a mintát
+#### <a name="when-to-use-this-pattern"></a>Mikor érdemes ezt a mintát használni?
 Ebben a mintában használja, ha gyakran kell a kapcsolódó tudnivalókat. Ebben a mintában csökkenti az ügyfél biztosítsa a szükséges adatok beolvasásához lekérdezések száma.  
 
-#### <a name="related-patterns-and-guidance"></a>Útmutató és a kapcsolódó minták
-A következő mintákat és útmutatókat is megfelelő ebben a mintában végrehajtása során:  
+#### <a name="related-patterns-and-guidance"></a>Kapcsolódó minták és útmutatók
+Az alábbi minták és útmutatók szintén hasznosak lehetnek a minta megvalósításakor:  
 
 * [Összetett kulcs minta](#compound-key-pattern)  
 * [Entitás csoport tranzakciók](#entity-group-transactions)  
@@ -676,7 +676,7 @@ A következő mintákat és útmutatókat is megfelelő ebben a mintában végre
 ### <a name="compound-key-pattern"></a>Összetett kulcs minta
 Használjon összetett **RowKey** értékek kapcsolódó adatok egyetlen pont lekérdezéssel talált ügyfél engedélyezése.  
 
-#### <a name="context-and-problem"></a>A környezetben, és probléma
+#### <a name="context-and-problem"></a>Kontextus és probléma
 Egy relációs adatbázisban hogy a rendszer teljesen illesztések lekérdezésekben használatához kapcsolódó adatok kódrészletek vissza az ügyfélnek egyetlen lekérdezést természetes. Például használhatja a alkalmazottazonosító megkeresheti a kapcsolódó entitásokból, melyek teljesítményét, és tekintse át az adatokat azt listáját.  
 
 Tegyük fel, a Table szolgáltatás használatával az alábbi szerkezettel alkalmazott entitások tárolja:  
@@ -700,28 +700,28 @@ A következő példa bemutatja, hogyan kérheti le a felülvizsgálati adatok (p
 
 $filter = (PartitionKey eq 'Értékesítés') és (RowKey ge "empid_000123") és (RowKey lt "empid_000124") & $select = RowKey, Manager értékelése, társ értékelése, megjegyzések  
 
-#### <a name="issues-and-considerations"></a>Problémákat és szempontok
-Ebben a mintában megvalósításához meghatározásakor, vegye figyelembe a következő szempontokat:  
+#### <a name="issues-and-considerations"></a>Problémák és megfontolandó szempontok
+A minta megvalósítása során az alábbi pontokat vegye figyelembe:  
 
 * Könnyen értelmezhető megfelelő elválasztó karaktert kell használnia a **RowKey** érték: például **000123_2012**.  
 * Ehhez az entitáshoz kapcsolódó adatokat tartalmaznak az azonos alkalmazott, ami azt jelenti, EGTs segítségével karbantartása erős konzisztenciát végző más entitásokkal partícióra is tárolja.
 * Akkor érdemes megfontolni, hogy milyen gyakran fogja kérdezni az adatokat a megállapításához, hogy ez a minta megfelelő.  Például ha az felülvizsgálati ritkán, és a főbb alkalmazotti adatok gyakran férnek hozzá legyen őket, különálló entitások.  
 
-#### <a name="when-to-use-this-pattern"></a>Mikor érdemes használni ezt a mintát
+#### <a name="when-to-use-this-pattern"></a>Mikor érdemes ezt a mintát használni?
 Ebben a mintában használatára kell tárolni egy vagy több kapcsolódó entitások lekérdezett gyakran.  
 
-#### <a name="related-patterns-and-guidance"></a>Útmutató és a kapcsolódó minták
-A következő mintákat és útmutatókat is megfelelő ebben a mintában végrehajtása során:  
+#### <a name="related-patterns-and-guidance"></a>Kapcsolódó minták és útmutatók
+Az alábbi minták és útmutatók szintén hasznosak lehetnek a minta megvalósításakor:  
 
 * [Entitás csoport tranzakciók](#entity-group-transactions)  
 * [Heterogén entitástípusok használata](#working-with-heterogeneous-entity-types)  
 * [Idővel konzisztenssé tranzakciók minta](#eventually-consistent-transactions-pattern)  
 
 ### <a name="log-tail-pattern"></a>Napló végéről minta
-Beolvasni a  *n*  partíció legutóbb hozzáadott entitások egy **RowKey** érték, amely fordított dátum és idő sorrendben rendezi.  
+Beolvasni a *n* partíció legutóbb hozzáadott entitások egy **RowKey** érték, amely fordított dátum és idő sorrendben rendezi.  
 
-#### <a name="context-and-problem"></a>A környezetben, és probléma
-A közös vonatkozó követelmény akkor állítható vissza a legutóbb létrehozott entitások, például a tíz legújabb kiadás az alkalmazottak által küldött jogcímek. Táblázat a támogatási lekérdezi egy **$top** lekérdezési művelet vissza az első  *n*  egy entitás: az utolsó n entitások vissza egy készlet nincs egyenértékű lekérdezési művelet.  
+#### <a name="context-and-problem"></a>Kontextus és probléma
+A közös vonatkozó követelmény akkor állítható vissza a legutóbb létrehozott entitások, például a tíz legújabb kiadás az alkalmazottak által küldött jogcímek. Táblázat a támogatási lekérdezi egy **$top** lekérdezési művelet vissza az első *n* egy entitás: az utolsó n entitások vissza egy készlet nincs egyenértékű lekérdezési művelet.  
 
 #### <a name="solution"></a>Megoldás
 Az entitások használatával tárolja a **RowKey** , hogy természetes rendezi fordított dátum/idő ahhoz, így a legutóbbi bejegyzés használatával, mindig az első egy a táblázatban.  
@@ -738,17 +738,17 @@ A lekérdezés így néz ki:
 
 `https://myaccount.table.core.windows.net/EmployeeExpense(PartitionKey='empid')?$top=10`  
 
-#### <a name="issues-and-considerations"></a>Problémákat és szempontok
-Ebben a mintában megvalósításához meghatározásakor, vegye figyelembe a következő szempontokat:  
+#### <a name="issues-and-considerations"></a>Problémák és megfontolandó szempontok
+A minta megvalósítása során az alábbi pontokat vegye figyelembe:  
 
 * Annak érdekében, hogy a karakterlánc rendezi a várt módon nullából kezdő fordított osztásjelek értékének kell írni.  
 * A partíció szinten vonatkozó méretezhetőségi célok tisztában kell lennie. Legyen óvatos nem interaktív terület partíciókat.  
 
-#### <a name="when-to-use-this-pattern"></a>Mikor érdemes használni ezt a mintát
+#### <a name="when-to-use-this-pattern"></a>Mikor érdemes ezt a mintát használni?
 Ebben a mintában felhasználhatja hozzá kell férnie a fordított dátum/idő sorrend, illetve ha a közelmúltban felvett entitások eléréséhez szükséges szerepelnek.  
 
-#### <a name="related-patterns-and-guidance"></a>Útmutató és a kapcsolódó minták
-A következő mintákat és útmutatókat is megfelelő ebben a mintában végrehajtása során:  
+#### <a name="related-patterns-and-guidance"></a>Kapcsolódó minták és útmutatók
+Az alábbi minták és útmutatók szintén hasznosak lehetnek a minta megvalósításakor:  
 
 * [Illesztenie elleni mintát hozzáfűzése](#prepend-append-anti-pattern)  
 * [Entitások beolvasása](#retrieving-entities)  
@@ -756,7 +756,7 @@ A következő mintákat és útmutatókat is megfelelő ebben a mintában végre
 ### <a name="high-volume-delete-pattern"></a>Nagy mennyiségű delete minta
 Az entitások nagy mennyiségű törlésének engedélyezése a entitásokhoz egyidejű törlésre tárolása saját külön táblázatban; a tábla törlésével törli az entitásokat.  
 
-#### <a name="context-and-problem"></a>A környezetben, és probléma
+#### <a name="context-and-problem"></a>Kontextus és probléma
 Számos alkalmazás törlése a régi adatokat, amely már nem elérhető egy ügyfélalkalmazást, vagy az alkalmazás rendelkezik archivált más adattárolóra. Általában azonosíthatja az ilyen adatokat a dátum: például, hogy egy követelmény, törlendő rekordok, amelyek több mint 60 napos bejelentkezési kérelmek.  
 
 Egy lehetséges tervezési, hogy a dátum és idő, a bejelentkezési kérelem a használja a **RowKey**:  
@@ -768,19 +768,19 @@ Ez a megközelítés partíció elérési pontokhoz való elkerülhető, mert az
 #### <a name="solution"></a>Megoldás
 Egy külön táblázattal minden nap a bejelentkezési kísérletek. A fenti entitás tervező segítségével elkerülése csatlakozási pontokhoz entities beszúrt, és most már egyszerűen törlése egy tábla minden nap adott esetben régi entitások törlése (egyetlen tárhelyművelettel) keresése és több száz és egyéni több ezer törlése helyett bejelentkezési entitások minden nap.  
 
-#### <a name="issues-and-considerations"></a>Problémákat és szempontok
-Ebben a mintában megvalósításához meghatározásakor, vegye figyelembe a következő szempontokat:  
+#### <a name="issues-and-considerations"></a>Problémák és megfontolandó szempontok
+A minta megvalósítása során az alábbi pontokat vegye figyelembe:  
 
 * Támogatja a Tervező más módon, az alkalmazás fogja használni az adatok, például adott entitások kapcsolódik-e más adatok, vagy előállítása összesített adatát keresésekor?  
 * Nem a Tervező elkerülése interaktív területek új entitások beszúráskor?  
 * A késleltetés várható, ha azt szeretné, hogy a tábla néven törlése után újból. Érdemes mindig használjon egyedi tábla neve.  
 * Várt néhány szabályozás első használata alkalmával érdemes egy új tábla a Table szolgáltatás Tanulja meg a hozzáférési minták, és a partíciók elosztja a csomópontok között. Milyen gyakran kell létrehoznia az új táblákat vegye figyelembe.  
 
-#### <a name="when-to-use-this-pattern"></a>Mikor érdemes használni ezt a mintát
+#### <a name="when-to-use-this-pattern"></a>Mikor érdemes ezt a mintát használni?
 Ezt a mintát használja, ha az entitásokat, törölnie kell az egyszerre nagy mennyiségű van.  
 
-#### <a name="related-patterns-and-guidance"></a>Útmutató és a kapcsolódó minták
-A következő mintákat és útmutatókat is megfelelő ebben a mintában végrehajtása során:  
+#### <a name="related-patterns-and-guidance"></a>Kapcsolódó minták és útmutatók
+Az alábbi minták és útmutatók szintén hasznosak lehetnek a minta megvalósításakor:  
 
 * [Entitás csoport tranzakciók](#entity-group-transactions)
 * [Entitások módosítása](#modifying-entities)  
@@ -788,7 +788,7 @@ A következő mintákat és útmutatókat is megfelelő ebben a mintában végre
 ### <a name="data-series-pattern"></a>Adatsorozat adatmintát
 Tároló teljes adatsorok egyetlen entitás minimalizálása érdekében elvégezte kérelmek számát jelenti.  
 
-#### <a name="context-and-problem"></a>A környezetben, és probléma
+#### <a name="context-and-problem"></a>Kontextus és probléma
 Egy általános forgatókönyv van az alkalmazás számára az adatok általában szükséges egyszerre beolvasandó sorozatát tárolja. Például az alkalmazás előfordulhat, hogy minden alkalmazott óránként küld hány Csevegési üzeneteket rögzíti, és majd használja az információt megrajzolásához hány üzenetek minden felhasználóhoz az előző 24 óra során küldött. Lehet, hogy egy tervezési tárolni 24 entitások minden alkalmazott számára:  
 
 ![][22]
@@ -802,17 +802,17 @@ Külön tulajdonsággal a következő tervezési használatával tárolja az üz
 
 Ezzel a kialakítással használhatja a partícióegyesítési művelet az üzenetek száma az alkalmazott frissíteni az adott időpont. Most kérheti le az összes kérelem használatával egyetlen entitás diagram megrajzolásához szükséges információkat.  
 
-#### <a name="issues-and-considerations"></a>Problémákat és szempontok
-Ebben a mintában megvalósításához meghatározásakor, vegye figyelembe a következő szempontokat:  
+#### <a name="issues-and-considerations"></a>Problémák és megfontolandó szempontok
+A minta megvalósítása során az alábbi pontokat vegye figyelembe:  
 
 * Ha a teljes adatsor nem fér el egyetlen entitás (egy entitás legfeljebb 252 tulajdonságot is rendelkeznek), például blob alternatív adattár használata.  
 * Ha egy entitás frissítése egyszerre több ügyfélnek, akkor használja a **ETag** egyidejű hozzáférések optimista végrehajtásához. Ha sok ügyfél, magas versengés tapasztalhatja.  
 
-#### <a name="when-to-use-this-pattern"></a>Mikor érdemes használni ezt a mintát
+#### <a name="when-to-use-this-pattern"></a>Mikor érdemes ezt a mintát használni?
 Akkor használja ezt a mintát, ha kell frissíteni, és az egyes entitáshoz kapcsolódó adatsor beolvasása.  
 
-#### <a name="related-patterns-and-guidance"></a>Útmutató és a kapcsolódó minták
-A következő mintákat és útmutatókat is megfelelő ebben a mintában végrehajtása során:  
+#### <a name="related-patterns-and-guidance"></a>Kapcsolódó minták és útmutatók
+Az alábbi minták és útmutatók szintén hasznosak lehetnek a minta megvalósításakor:  
 
 * [Nagy entitások minta](#large-entities-pattern)  
 * [Egyesítés vagy cseréje](#merge-or-replace)  
@@ -821,7 +821,7 @@ A következő mintákat és útmutatókat is megfelelő ebben a mintában végre
 ### <a name="wide-entities-pattern"></a>Széles entitások minta
 Használni több fizikai entitás legfeljebb 252 tulajdonságot rendelkező logikai entitás tárolni.  
 
-#### <a name="context-and-problem"></a>A környezetben, és probléma
+#### <a name="context-and-problem"></a>Kontextus és probléma
 Egyes entitás legfeljebb 252 tulajdonságot (kivéve a kötelező tulajdonságai) állhat, és nem tárolható 1 MB-nál több adatok összesen. Egy relációs adatbázisban általában számíthat round semmilyen határnak sor mérete hozzáadása egy új tábla és a közöttük 1-1 kapcsolatot.  
 
 #### <a name="solution"></a>Megoldás
@@ -831,16 +831,16 @@ A Table szolgáltatás több entitás legfeljebb 252 tulajdonságot az egyetlen 
 
 Ha olyan módosítást igénylő frissítése mindkét entitások, hogy továbbra is szinkronizálja egymással kell egy EGT is használhatja. Ellenkező esetben egy egyetlen egyesítési művelet használatával frissítse az üzenetek száma egy adott napjára. Az adatok beolvasása egyetlen alkalmazott be kell olvasni mindkét entitások, amely két hatékony kérelmekre is elvégezhető a **PartitionKey** és egy **RowKey** érték.  
 
-#### <a name="issues-and-considerations"></a>Problémákat és szempontok
-Ebben a mintában megvalósításához meghatározásakor, vegye figyelembe a következő szempontokat:  
+#### <a name="issues-and-considerations"></a>Problémák és megfontolandó szempontok
+A minta megvalósítása során az alábbi pontokat vegye figyelembe:  
 
 * A teljes logikai entitás beolvasásakor magában foglalja a legalább két storage-tranzakció: egy minden fizikai bejegyzés lekérdezésére.  
 
-#### <a name="when-to-use-this-pattern"></a>Mikor érdemes használni ezt a mintát
+#### <a name="when-to-use-this-pattern"></a>Mikor érdemes ezt a mintát használni?
 Használja ezt a mintát mikor kell entitások, amelynek méretét vagy a tulajdonságok száma meghaladja az egyes entitásnál a Table szolgáltatásban tárolni.  
 
-#### <a name="related-patterns-and-guidance"></a>Útmutató és a kapcsolódó minták
-A következő mintákat és útmutatókat is megfelelő ebben a mintában végrehajtása során:  
+#### <a name="related-patterns-and-guidance"></a>Kapcsolódó minták és útmutatók
+Az alábbi minták és útmutatók szintén hasznosak lehetnek a minta megvalósításakor:  
 
 * [Entitás csoport tranzakciók](#entity-group-transactions)
 * [Egyesítés vagy cseréje](#merge-or-replace)
@@ -848,7 +848,7 @@ A következő mintákat és útmutatókat is megfelelő ebben a mintában végre
 ### <a name="large-entities-pattern"></a>Nagy entitások minta
 A blob storage használatával nagy tulajdonságértékek tárolja.  
 
-#### <a name="context-and-problem"></a>A környezetben, és probléma
+#### <a name="context-and-problem"></a>Kontextus és probléma
 Egyes entitás nem 1 MB-nál több adat tárolása összesen. Ha egy vagy több, a tulajdonság tárolja az értékeket, amelyek a teljes mérete meghaladja ezt az értéket az entitás, a teljes entitás nem tárolja a Table szolgáltatás.  
 
 #### <a name="solution"></a>Megoldás
@@ -856,17 +856,17 @@ Ha az entitás meghaladja mérete 1 MB, mert egy vagy több tulajdonságának na
 
 ![][25]
 
-#### <a name="issues-and-considerations"></a>Problémákat és szempontok
-Ebben a mintában megvalósításához meghatározásakor, vegye figyelembe a következő szempontokat:  
+#### <a name="issues-and-considerations"></a>Problémák és megfontolandó szempontok
+A minta megvalósítása során az alábbi pontokat vegye figyelembe:  
 
 * Az entitás a Table szolgáltatás és az adatokat a Blob szolgáltatás közötti végleges konzisztencia fenntartása érdekében használja a [idővel konzisztenssé tranzakciók mintát](#eventually-consistent-transactions-pattern) az entitások fenntartásához.
 * Legalább két storage-tranzakció teljes entitásnak beolvasása foglalja magában: egyet az entitás és egyet a blob adatainak beolvasása.  
 
-#### <a name="when-to-use-this-pattern"></a>Mikor érdemes használni ezt a mintát
+#### <a name="when-to-use-this-pattern"></a>Mikor érdemes ezt a mintát használni?
 Használja ezt a mintát, ha a kell entitások, amelyek mérete meghaladja az egyes entitásnál a Table szolgáltatásban tárolni.  
 
-#### <a name="related-patterns-and-guidance"></a>Útmutató és a kapcsolódó minták
-A következő mintákat és útmutatókat is megfelelő ebben a mintában végrehajtása során:  
+#### <a name="related-patterns-and-guidance"></a>Kapcsolódó minták és útmutatók
+Az alábbi minták és útmutatók szintén hasznosak lehetnek a minta megvalósításakor:  
 
 * [Idővel konzisztenssé tranzakciók minta](#eventually-consistent-transactions-pattern)  
 * [Széles entitások minta](#wide-entities-pattern)
@@ -876,7 +876,7 @@ A következő mintákat és útmutatókat is megfelelő ebben a mintában végre
 ### <a name="prependappend-anti-pattern"></a>Víruskereső mintát illesztenie hozzáfűzése
 Méretezhetőség fokozása, ha nagyszámú Beszúrások által a Beszúrás több partíciót keresztül terjednek.  
 
-#### <a name="context-and-problem"></a>A környezetben, és probléma
+#### <a name="context-and-problem"></a>Kontextus és probléma
 Fertőző vagy entitások hozzáfűzi a tárolt entitásokat általában az alkalmazás új entitásokat ad hozzá az első vagy utolsó partíció partíciók több eredményez. Ebben az esetben egy adott időpontban Beszúrások mindegyikét történnek az egyazon partícióra kerüljenek, létrehozása, amely megakadályozza a table szolgáltatás betöltési eseménybeszúrások terheléselosztás több csomópont között, és ami miatt az alkalmazás elérte a méretezhetőségi célok az interaktív terület a partíció. Például, ha az alkalmazottak által elérhető naplók hálózati és az erőforrás alkalmazás, majd egy entitás struktúra alább látható módon eredményezhet a forgalmas adattömbök váljon, ha a tranzakciók mennyisége eléri a méretezhetőség célja a jelenlegi órán partíció egy egyes partíció:  
 
 ![][26]
@@ -888,17 +888,17 @@ A következő alternatív entitás struktúra bármely adott partíció interakt
 
 Figyelje meg, az ebben a példában hogyan mindkét a **PartitionKey** és **RowKey** összetett kulcs. A **PartitionKey** a részleg és az alkalmazott azonosítóját használja a naplózás szét több partíciót.  
 
-#### <a name="issues-and-considerations"></a>Problémákat és szempontok
-Ebben a mintában megvalósításához meghatározásakor, vegye figyelembe a következő szempontokat:  
+#### <a name="issues-and-considerations"></a>Problémák és megfontolandó szempontok
+A minta megvalósítása során az alábbi pontokat vegye figyelembe:  
 
 * Támogatja az alternatív struktúra, amely hatékonyan létrehozása a gyakran használt adatok partíciók a Beszúrás az ügyfélalkalmazás lekérdezések?  
 * A tranzakciók várható mennyisége azt jelenti, hogy valószínűleg, az egyes partíciók a méretezhetőségi célok eléréséhez, és a tároló szolgáltatás által szabályozott kell?  
 
-#### <a name="when-to-use-this-pattern"></a>Mikor érdemes használni ezt a mintát
+#### <a name="when-to-use-this-pattern"></a>Mikor érdemes ezt a mintát használni?
 A víruskereső prepend hozzáfűzése minta elkerülése a tranzakciók mennyisége valószínű, hogy a társzolgáltatás általi szabályozás, amikor hozzáfér a gyakran használt adatok partíció eredményez.  
 
-#### <a name="related-patterns-and-guidance"></a>Útmutató és a kapcsolódó minták
-A következő mintákat és útmutatókat is megfelelő ebben a mintában végrehajtása során:  
+#### <a name="related-patterns-and-guidance"></a>Kapcsolódó minták és útmutatók
+Az alábbi minták és útmutatók szintén hasznosak lehetnek a minta megvalósításakor:  
 
 * [Összetett kulcs minta](#compound-key-pattern)  
 * [Napló végéről minta](#log-tail-pattern)  
@@ -907,7 +907,7 @@ A következő mintákat és útmutatókat is megfelelő ebben a mintában végre
 ### <a name="log-data-anti-pattern"></a>Napló elleni adatmintát
 Általában kell használnia a Blob szolgáltatás helyett a Table szolgáltatás naplózási adatok tárolására.  
 
-#### <a name="context-and-problem"></a>A környezetben, és probléma
+#### <a name="context-and-problem"></a>Kontextus és probléma
 Egy gyakori használati eset, a naplózási adatokat beolvasni a kijelölt naplóbejegyzések adott dátum/idő köre: például keresendő összes hiba és kritikus üzeneteihez, az alkalmazás a rendszer 15:04 és 15:06 egy adott dátumon között. Nem szeretné, hogy a dátum és idő a naplóüzenet segítségével határozza meg a napló entitásokat mentése partíció:, amely az okozza, a működés közbeni partíció egy adott időpontban a napló entitások aliashoz ugyanaz **PartitionKey** érték (lásd: a a szakasz [elleni mintát Prepend hozzáfűzése](#prepend-append-anti-pattern)). Például egy naplófájlüzenetre a következő entitás sémát eredményezi egy gyakran használt adatok partíció, mert az alkalmazás összes naplóüzenetek ír a partíció az aktuális dátum és az óra:  
 
 ![][28]
@@ -933,14 +933,14 @@ Storage Analytics pufferek üzenetek naplózása belső majd rendszeres időköz
 
 Egy hasonló megoldás webkiszolgálókból a saját alkalmazásban, meg kell fontolnia és megbízhatóság (írása minden naplóbejegyzés a blob storage módon történik, akkor) és méretezhetőség (pufferelés az alkalmazás és az írás a frissítések közötti kompromisszum kezelése azokat a blob-tároló kötegekben).  
 
-#### <a name="issues-and-considerations"></a>Problémákat és szempontok
+#### <a name="issues-and-considerations"></a>Problémák és megfontolandó szempontok
 Módjának napló adatok tárolására, vegye figyelembe a következő szempontokat:  
 
 * Ha létrehoz egy Táblatervezés, amellyel elkerülhető a potenciális kiemelt partíciók, előfordulhat, hogy nem férhet hozzá a naplóadatok hatékonyan.  
 * Egy ügyfél naplóadatokat feldolgozni, gyakran kell sok rekord betöltése.  
 * Bár gyakran felépítése naplóadatokat, a blob storage egy jobb megoldás lehet.  
 
-### <a name="implementation-considerations"></a>Megvalósítási kapcsolatos szempontok
+### <a name="implementation-considerations"></a>Implementálási szempontok
 Ez a szakasz ismerteti a szempontokat tartalmaz, amelyek a korábbi szakaszokban ismertetett mintázatokat bevezetésekor figyelembe kell vennie néhány. Ez a szakasz a legtöbb a Storage ügyféloldali kódtára (verziója 4.3.0 időpontjában írása) használó C# nyelven írt példák használja.  
 
 ### <a name="retrieving-entities"></a>Entitások beolvasása

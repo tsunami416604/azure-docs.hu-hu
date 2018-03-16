@@ -2,32 +2,28 @@
 title: "Az Azure Automation szolgáltatásban, a változások követése |} Microsoft Docs"
 description: "A változáskövetési megoldás könnyebb legyen azonosítani a szoftver- és Windows-szolgáltatás módosításait a környezetében bekövetkező."
 services: automation
-documentationcenter: 
-author: georgewallace
-manager: carmonm
-editor: 
-ms.assetid: f8040d5d-3c89-4f0c-8520-751c00251cb7
 ms.service: automation
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 02/28/2018
+author: georgewallace
 ms.author: gwallace
+ms.date: 03/15/2018
+ms.topic: article
+manager: carmonm
+ms.devlang: na
+ms.tgt_pltfrm: na
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 79c5f354c3e63856474e46e2b6928af829604e15
-ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.openlocfilehash: fcee2956d2d33133c5d1a5bf367643a2095cad71
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/16/2018
 ---
-# <a name="track-software-changes-in-your-environment-with-the-change-tracking-solution"></a>A környezetben, a változáskövetési megoldás a szoftver változásainak követése
+# <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>A változáskövetési megoldás a környezetében lévő változások követése
 
 Ez a cikk segítséget nyújt a változáskövetési megoldás segítségével könnyedén azonosíthatók a változtatásokat a környezetben. A megoldás Windows és Linux-szoftver, a Windows és Linux-fájlok, a Windows-beállításkulcsok, a központi Windows-szolgáltatások és a Linux-démonok módosításokat követi nyomon. Konfigurációs változásokat segíthetnek a rögzítési ponthoz működési problémák.
 
 Telepített szoftverek, Windows-szolgáltatások, Windows beállításjegyzék és a fájlok és a figyelt kiszolgálók a Linux-démonok módosításai az Naplóelemzés szolgáltatás a felhőben feldolgozásra kerülnek. A fogadott adatokhoz logika vonatkozik, és a felhőszolgáltatás-adatait rögzíti. A változások követése irányítópulton szereplő információk segítségével a kiszolgálói infrastruktúra végrehajtott módosítások könnyen láthatja.
 
-## <a name="enable-change-tracking-and-inventory"></a>Változáskövetés és leltár engedélyezése
+## <a name="enable-change-tracking-and-inventory"></a>A Change Tracking és az Inventory engedélyezése
 
 
 A változások követése megkezdéséhez szeretne engedélyezni a változások követése és a készlet megoldás az Automation-fiókhoz.
@@ -55,14 +51,14 @@ Az alábbi lépések segítségével nyomon követésének konfigurálása a Lin
 |Engedélyezve     | Azt határozza meg, ha a beállítás lesz alkalmazva.        |
 |Elem neve     | A fájl egyszerre nyomon követendő rövid nevét.        |
 |Csoport     | Fájlok logikailag csoportosítása csoport nevét.        |
-|Adja meg az elérési út     | Ellenőrizze a fájl elérési útja. Például: "/etc/*.conf"       |
+|Elérési út megadása     | Ellenőrizze a fájl elérési útja. Például: "/etc/*.conf"       |
 |Elérési út típusa     | Típusú elemet kell lennie a nyomon követett, a lehetséges értékek a fájlokra és könyvtárakra.        |
-|A rekurzió     | Azt határozza meg, ha rekurzió használhatja a cikk keres nyomon kell követni.        |
-|Use Sudo     | Ez a beállítás határozza meg, ha a sudo szerepel-e, az elem keresésekor.         |
-|Hivatkozások     | Ez a beállítás meghatározza, hogy foglalkozik, ha a könyvtárak áthaladó hogyan szimbolikus csatolást.<br> **Hagyja figyelmen kívül** - figyelmen kívül hagyja a szimbolikus hivatkozást, és nem tartalmaz a fájlok vagy könyvtárak hivatkozik.<br>**Hajtsa végre a** – a szimbolikus csatolást rekurzió során a következő, és a fájlok vagy könyvtárak hivatkozott is tartalmaz.<br>**Kezelése** - követi a szimbolikus hivatkozást, és lehetővé teszi, hogy a visszaküldött tartalom módosítása.     |
+|Rekurzió     | Meghatározza, hogy a rendszer rekurziót használjon-e a követni kívánt elem keresésekor.        |
+|Sudo használata     | Ez a beállítás határozza meg, hogy a rendszer sudót használjon-e az elem keresésekor.         |
+|Hivatkozások     | Ez a beállítás határozza meg a szimbolikus hivatkozások kezelésének módját, amikor áthaladnak a címtárakon.<br> **Hagyja figyelmen kívül** - figyelmen kívül hagyja a szimbolikus hivatkozást, és nem tartalmaz a fájlok vagy könyvtárak hivatkozik.<br>**Hajtsa végre a** – a szimbolikus csatolást rekurzió során a következő, és a fájlok vagy könyvtárak hivatkozott is tartalmaz.<br>**Kezelése** - követi a szimbolikus hivatkozást, és lehetővé teszi, hogy a visszaküldött tartalom módosítása.     |
 
 > [!NOTE]
-> A "Kezelése" hivatkozást lehetőség nem ajánlott. A fájl tartalma nem támogatott.
+> A „Kezelés” használata nem ajánlott, mert a fájltartalom lekérése nem támogatott.
 
 ### <a name="configure-windows-files-to-track"></a>Windows-fájlok nyomon követéséhez beállítása
 
@@ -77,7 +73,7 @@ Az alábbi lépésekkel konfigurálhatja a fájlok nyomon követése a Windows r
 |Engedélyezve     | Azt határozza meg, ha a beállítás lesz alkalmazva.        |
 |Elem neve     | A fájl egyszerre nyomon követendő rövid nevét.        |
 |Csoport     | Fájlok logikailag csoportosítása csoport nevét.        |
-|Adja meg az elérési út     | Keressen például a fájl elérési útja: "c:\temp\myfile.txt"       |
+|Elérési út megadása     | A fájl elérési útja, például: „c:\temp\myfile.txt”       |
 
 ### <a name="configure-windows-registry-keys-to-track"></a>Windows-beállításkulcsok nyomon követéséhez konfigurálása
 
@@ -92,7 +88,7 @@ A következő lépésekkel konfigurálhatja a beállításjegyzék-kulcs követ�
 |Engedélyezve     | Azt határozza meg, ha a beállítás lesz alkalmazva.        |
 |Elem neve     | A fájl egyszerre nyomon követendő rövid nevét.        |
 |Csoport     | Fájlok logikailag csoportosítása csoport nevét.        |
-|Windows Registry Key   | Ellenőrizze a fájl elérési útja. Például: "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User rendszerhéj Folders\Common indításkor"      |
+|Windows-beállításkulcs   | Ellenőrizze a fájl elérési útja. Például: "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User rendszerhéj Folders\Common indításkor"      |
 
 ## <a name="limitations"></a>Korlátozások
 
@@ -195,8 +191,8 @@ A következő táblázat minta napló keres a megoldás által gyűjtött rekord
 
 |Lekérdezés  |Leírás  |
 |---------|---------|
-|ConfigurationData<br>&#124; Ha ConfigDataType == "WindowsServices" és a SvcStartupType == "Auto"<br>&#124; Ha SvcState == "Leállt"<br>&#124; összefoglalója arg_max(TimeGenerated, *) SoftwareName, a számítógép által         | Megjeleníti a legutóbbi Hardverleltár-rekordok volt automatikus értékre van beállítva, de volt jelentett leállására Windows-szolgáltatások<br>A program csak a legutóbbi rekord SoftwareName és a számítógép      |
-|Konfigurációváltozás<br>&#124; Ha ConfigChangeType == "Szoftver" és a ChangeCategory == "Eltávolítva"<br>&#124; TimeGenerated desc rendezési|Megjeleníti a módosítás bejegyzéseket eltávolított szoftver|
+|ConfigurationData<br>&#124;Ha ConfigDataType == "WindowsServices" és a SvcStartupType == "Auto"<br>&#124;Ha SvcState == "Leállt"<br>&#124;összefoglalója arg_max(TimeGenerated, *) SoftwareName, a számítógép által         | Megjeleníti a legutóbbi Hardverleltár-rekordok volt automatikus értékre van beállítva, de volt jelentett leállására Windows-szolgáltatások<br>A program csak a legutóbbi rekord SoftwareName és a számítógép      |
+|Konfigurációváltozás<br>&#124;Ha ConfigChangeType == "Szoftver" és a ChangeCategory == "Eltávolítva"<br>&#124;TimeGenerated desc rendezési|Megjeleníti a módosítás bejegyzéseket eltávolított szoftver|
 
 ## <a name="next-steps"></a>További lépések
 

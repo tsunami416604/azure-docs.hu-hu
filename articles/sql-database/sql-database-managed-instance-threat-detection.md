@@ -3,18 +3,18 @@ title: "Veszélyforrások Detektálása - Azure SQL adatbázis felügyelt péld�
 description: "A fenyegetésészlelés az adatbázist érintő rendellenes tevékenységeket észleli, amelyek esetleges biztonsági fenyegetéseket jelezhetnek."
 services: sql-database
 author: rmatchoro
-manager: cguyer
+manager: craigg
 ms.service: sql-database
 ms.custom: security, managed instance
 ms.topic: article
 ms.date: 03/07/2018
 ms.author: ronmat
 ms.reviewer: carlrab
-ms.openlocfilehash: f8c08bc16d622516958b8bd182179d07edfa4891
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 2112a0a3997af478de6b8c80abcf7924a66302f0
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-sql-database-managed-instance-threat-detection"></a>Az Azure SQL adatbázis felügyelt példány fenyegetések észlelése
 
@@ -29,7 +29,7 @@ A Fenyegetésészlelés biztonsági, amelyek segítségével a felhasználók é
 SQL Fenyegetésészlelés integrálja riasztások [az Azure Security Center](https://azure.microsoft.com/services/security-center/), és minden egyes védett felügyelt példányhoz lesz számlázva, Azure Security Center szabványos rétegként $15/csomópont/hónappal, ahol minden egyes védett felügyelt példány ugyanazon az áron egy csomópont számítanak.  
 
 ## <a name="set-up-threat-detection-for-your-managed-instance-in-the-azure-portal"></a>A Fenyegetésészlelés beállítása a felügyelt példányát az Azure-portálon
-1. Indítsa el az Azure portálon, a [https://portal.azure.com](https://portal.azure.com).
+1. Indítsa el az Azure portálon, a [ https://portal.azure.com ](https://portal.azure.com).
 2. Keresse meg a védeni kívánt felügyelt példány lap. Az a **beállítások** lapon jelölje be **Fenyegetésészlelés**. 
 3. A Fenyegetésészlelés konfigurálása lapon 
    - Kapcsolja be **ON** veszélyforrások detektálása.

@@ -2,24 +2,18 @@
 title: "Figyelheti és javíthatja a teljesítményt – az Azure SQL Database |} Microsoft Docs"
 description: "Az Azure SQL Database teljesítményét eszközöket biztosít, az aktuális lekérdezés teljesítményének területeit azonosították."
 services: sql-database
-documentationcenter: 
 author: stevestein
-manager: jhubbard
-editor: monicar
-ms.assetid: a60b75ac-cf27-4d73-8322-ee4d4c448aa2
+manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: Inactive
 ms.date: 07/19/2016
 ms.author: sstein
-ms.openlocfilehash: 49b24619372d41ff25f815ca493ca7e6ce69ef9c
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 1d327e33a84917688e70f234df311e7b7cf4b30b
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="monitor-and-improve-performance"></a>Figyelheti és javíthatja a teljesítményt
 Azure SQL Database az adatbázis potenciális problémákat ismertet, és javíthatja a teljesítményt a munkaterhelés intelligens hangolási műveletek és javaslatok biztosításával teendőket.
@@ -46,7 +40,7 @@ Ebben a nézetben az adatbázis teljesítményének összegzését tartalmazza, 
 * A **automatikus hangolása** csempe megjeleníti a [automatikus hangolása konfigurációs](sql-database-automatic-tuning-enable.md) (hangolási lehetőségeket, amelyek a rendszer automatikusan alkalmazza az adatbázis) az adatbázis számára. Ez a csempe kattintva megnyithatja az automation konfigurációs párbeszédpanel.
 * A **adatbázis-lekérdezésre** csempe a lekérdezési teljesítményt, az adatbázis (összesített DTU használati és felső erőforrás erőforrásigényes lekérdezések) összegzését jeleníti meg. Ez a csempe kattintva időt vesz igénybe, hogy  **[lekérdezési Terheléselemző](#query-performance-insight)**.
 
-## <a name="performance-recommendations"></a>Teljesítmény javaslatok
+## <a name="performance-recommendations"></a>Teljesítménnyel kapcsolatos javaslatok
 Ezen a lapon biztosít intelligens [javaslatok hangolása](sql-database-advisor.md) , amely az adatbázis a jobb teljesítmény érdekében. A következő típusú javaslatok ezen az oldalon láthatók:
 
 * Mely indexek létrehozása, vagy dobja el javaslatait.

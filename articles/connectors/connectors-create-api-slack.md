@@ -3,7 +3,7 @@ title: "A Slackhez Connector használata az Azure logic Apps alkalmazásait |} M
 description: "A logic apps a csatlakozás a Slackhez"
 services: logic-apps
 documentationcenter: 
-author: MandiOhlinger
+author: ecfan
 manager: anneta
 editor: 
 tags: connectors
@@ -14,15 +14,15 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/18/2016
-ms.author: mandia; ladocs
-ms.openlocfilehash: 04ea4508495b227d6ace4a3105f283c474c51d14
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.author: estfan; ladocs
+ms.openlocfilehash: 73c512c70f1c135bd791d93cecc42bd6f4c06b3d
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="get-started-with-the-slack-connector"></a>A Slack-összekötő az első lépései
-A Slack egy csoportos kommunikációs eszköz, amely a csoporton belüli összes kommunikációt egy helyre fogja össze. Ez a hely azonnal kereshető, és bárhonnan elérhető. 
+Slackhez az team kommunikációs eszközzel, összegyűjti az összes a csapat kommunikációs valamelyik helyezze, azonnal kereshető és útközben is elérhető. 
 
 Első lépések egy logikai alkalmazás létrehozása most; Lásd: [logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
@@ -33,7 +33,7 @@ A Slack-összekötő használatához először létre kell hoznia egy **kapcsola
 | --- | --- | --- |
 | Jogkivonat |Igen |Slack hitelesítő adatok megadása |
 
-Kövesse az alábbi lépéseket követve jelentkezzen be a Slackhez, és konfigurációjához a Slackhez, **kapcsolat** a logikai alkalmazásban:
+Jelentkezzen be az alábbi lépéseket követve Slackhez, és konfigurációjához a Slackhez, **kapcsolat** a logikai alkalmazásban:
 
 1. Válassza ki **ismétlődési**
 2. Válassza ki a **gyakoriság** , és írja be egy **időköz**
@@ -45,11 +45,11 @@ Kövesse az alábbi lépéseket követve jelentkezzen be a Slackhez, és konfigu
    ![Konfigurálja a Slackhez][2]
 7. Jelentkezzen be az alkalmazás a Slack hitelesítő adatok megadása    
    ![Konfigurálja a Slackhez][3]  
-8. Meg kell átirányítani a szervezet bejelentkezési oldalán. **Engedélyezi** Slackhez, amellyel kommunikálni tud a Logic Apps alkalmazást:      
+8. Lesz átirányítva, a szervezete bejelentkezési oldalára. **Engedélyezi** Slackhez, amellyel kommunikálni tud a Logic Apps alkalmazást:      
    ![Konfigurálja a Slackhez][5] 
-9. Az engedélyezés befejezése után meg fogja átirányítani a Logic Apps alkalmazást befejezéseként konfigurálja a **Slack - összes üzenet** szakasz. Vegyen fel más eseményindítók és műveletek, amelyekre szüksége van.  
+9. Engedélyezés után a program átirányítja a Logic Apps alkalmazást befejezéseként konfigurálja a **Slack - összes üzenet** szakasz. Vegyen fel más eseményindítók és műveletek, amelyekre szüksége van.  
    ![Konfigurálja a Slackhez][6]
-10. Mentse a munkáját kiválasztásával **mentése** fenti menüsávjában.
+10. Mentse a munkáját kiválasztásával **mentése** (tetejénél) menüben.
 
 ## <a name="connector-specific-details"></a>Összekötő-specifikus részletei
 

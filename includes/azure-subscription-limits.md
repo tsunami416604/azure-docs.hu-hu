@@ -6,9 +6,9 @@
 | [Felhőszolgáltatások](../articles/cloud-services/cloud-services-choose-me.md) előfizetésenként |20 |200 |
 | [Helyi hálózatok](http://msdn.microsoft.com/library/jj157100.aspx) előfizetésenként |10 |500 |
 | SQL Database-kiszolgálók előfizetésenként |6 |150 |
-| DNS-kiszolgálók előfizetésenként |9 |100 |
+| DNS servers per subscription |9 |100 |
 | Fenntartott IP-címek előfizetésenként |20 |100 |
-| Üzemeltetett szolgáltatás tanúsítványok előfizetésenként |400 |400 |
+| Üzemeltetett szolgáltatás tanúsítványok előfizetésenként |199 |199 |
 | [Affinitáscsoportok](../articles/virtual-network/virtual-networks-migrate-to-regional-vnet.md) előfizetésenként |256 |256 |
 
 

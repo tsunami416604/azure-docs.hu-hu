@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: 
 ms.devlang: 
 ms.topic: article
-ms.date: 02/07/2018
+ms.date: 03/15/2018
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: 1fed14fc117c7652e677a245625502c1810068ff
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: 8ba4787852902f194deb3eee27ff9f0fc28fa5aa
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="assigning-administrator-roles-in-azure-active-directory"></a>Rendszergazdai jogosultságok kiosztása az Azure Active Directoryban
 
@@ -61,9 +61,9 @@ A következő rendszergazdai szerepkörök állnak rendelkezésre:
   >
   >
 
-* **Vendég meghívó**: a szerepet betöltő felhasználók kezelhetik az Azure Active Directory B2B Vendég felhasználó meghívókat, amikor a felhasználó "Tagok kérhetnek" beállítás értéke nem. További információ a következő B2B együttműködés [kapcsolatban az Azure AD B2B együttműködés előzetes verziója](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b). Nem tartalmazza azokat az engedélyeket.
+* **Vendég meghívó**: a szerepet betöltő felhasználók kezelhetik az Azure Active Directory B2B Vendég felhasználó meghívókat, amikor a felhasználó "Tagok kérhetnek" beállítás értéke nem. További információ a következő B2B együttműködés [kapcsolatos Azure AD B2B együttműködés](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b). Nem tartalmazza azokat az engedélyeket.
 
-* **Információk védelme rendszergazda (előzetes verzió)**: Ezzel a szerepkörrel rendelkező felhasználók jogosultsággal rendelkező csak az Azure Information Protection-szolgáltatáshoz. Nem rendelkeznek Identity Protection-központtól, a Privileged Identity Management, a figyelő Office 365 szolgáltatás állapotát, vagy Office 365 biztonsági és megfelelőségi központ felhasználói jogosultságokkal. Azok címkéket az Azure Information Protection-házirend konfigurálása, védelmi sablonok kezelése és védelme aktiválja.
+* **Információk védelme rendszergazda**: Ezzel a szerepkörrel rendelkező felhasználók jogosultsággal rendelkező csak az Azure Information Protection-szolgáltatáshoz. Nem rendelkeznek Identity Protection-központtól, a Privileged Identity Management, a figyelő Office 365 szolgáltatás állapotát, vagy Office 365 biztonsági és megfelelőségi központ felhasználói jogosultságokkal. Azok címkéket az Azure Information Protection-házirend konfigurálása, védelmi sablonok kezelése és védelme aktiválja.
 
 * **Intune szolgáltatás-rendszergazda**: Ezzel a szerepkörrel rendelkező felhasználók engedélye globális belül a Microsoft Intune Online, ha a szolgáltatás jelen. Ez a szerepkör emellett képes kezelni a felhasználók és eszközök számára ahhoz, hogy társítja a házirendet, valamint a csoportok létrehozásához és kezeléséhez tartalmazza.
 
@@ -127,7 +127,7 @@ A következő rendszergazdai szerepkörök állnak rendelkezésre:
 | --- | --- |
 | <p>Vállalati és felhasználói adatok megtekintése</p><p>Office támogatási jegyek kezelése</p><p>Módosíthatja a felhasználók és más segélyszolgálat-rendszergazdák jelszavát</p>|<p>Office-termékek számlázási és beszerzési műveletek végrehajtása</p><p>Hozzon létre és kezelheti a felhasználói nézetek</p><p>Létrehozása, szerkesztése, törlése a felhasználók és csoportok és felhasználói licencek kezelése</p><p>Manage domains</p><p>Vállalati adatok kezelése</p><p>Rendszergazdai szerepkörök delegálása</p><p>Címtár-szinkronizálás</p><p>Jelentések megtekintése</p>|
 
-### <a name="information-protection-administrator-preview"></a>Információk védelme rendszergazda (előzetes verzió)
+### <a name="information-protection-administrator"></a>Információk védelme rendszergazda
 A | Teheti meg
 -------- | ---------
 Azure Information Protection | <li>A globális és hatókörbe tartozó házirendek címkék és a beállítások konfigurálása<li>Konfigurálhatja és kezelheti a védelmi sablonok<li>Aktiválni vagy inaktiválni védelmi –

@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/15/2018
+ms.date: 03/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 188f02aa69d7b39bc5bc4873b437825107a7ae4e
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 34d1ba2e1e84c268442d47d8865d3e3bebb53e53
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="how-to-configure-hybrid-azure-active-directory-joined-devices"></a>Hibrid Azure Active Directoryhoz csatlakoztatott eszközök konfigurálása
 
@@ -62,7 +62,13 @@ A leírások olvashatóságának, ez a témakör a következő kifejezést haszn
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Hibrid csatlakozott az Azure AD a szervezetnél található eszközökön engedélyezése előtt győződjön meg arról, hogy futnak-e az Azure AD egy naprakész verzióját kell csatlakozni.
+Hibrid csatlakozott az Azure AD a szervezetnél található eszközökön engedélyezése előtt győződjön meg arról, hogy kell adnia:
+
+- Futtatja egy naprakész az Azure AD connect.
+
+- Az Azure AD connect szinkronizálása megtörtént-e a számítógép-objektumokat kell az Azure AD-tartományhoz az Azure AD hibrid kívánt eszközt. Amennyiben a számítógép-objektumok tartozik adott szervezeti egységekhez (OU), majd a szervezeti egységek be kell állítani a szinkronizáláshoz az Azure AD connect is.
+
+  
 
 Az Azure AD Connect:
 
@@ -145,7 +151,7 @@ Az alábbi parancsfájlt mutat be a parancsmag használatával. Ezt a parancsfá
 A `Initialize-ADSyncDomainJoinedComputerSync` parancsmagot:
 
 - Használja az Active Directory PowerShell-moduljában és AD DS-eszközei, amely a tartományvezérlőn futó Active Directory webszolgáltatások támaszkodnak. Az Active Directory webszolgáltatások a Windows Server 2008 R2 rendszerű tartományvezérlők és újabb rendszer.
-- Csak akkor támogatott a **MSOnline PowerShell modul verziója 1.1.166.0**. Ez a modul letöltéséhez használjon ez [hivatkozás](http://connect.microsoft.com/site1164/Downloads/DownloadDetails.aspx?DownloadID=59185).   
+- Csak akkor támogatott a **MSOnline PowerShell modul verziója 1.1.166.0**. Ez a modul letöltéséhez használjon ez [hivatkozás](https://msconfiggallery.cloudapp.net/packages/MSOnline/1.1.166.0/).   
 - Ha az Active Directory tartományi szolgáltatások eszközei nincsenek telepítve, a `Initialize-ADSyncDomainJoinedComputerSync` sikertelen lesz.  Az Active Directory tartományi szolgáltatások eszközei a Kiszolgálókezelő a szerepkör-szolgáltatások - távoli kiszolgálófelügyelet eszközei - felügyeleti eszközök telepíthetők.
 
 A Windows Server 2008 vagy korábbi verzióit futtató tartományvezérlők a szolgáltatáskapcsolódási pont létrehozásához használja az alábbi parancsfájlt.

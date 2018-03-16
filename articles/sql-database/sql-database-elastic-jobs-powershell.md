@@ -2,23 +2,18 @@
 title: "PowerShell-lel rugalmas feladatok létrehozásához és kezeléséhez |} Microsoft Docs"
 description: "Az Azure SQL Database-készletek kezelésére szolgáló PowerShell"
 services: sql-database
-documentationcenter: 
-manager: jhubbard
-author: ddove
-ms.assetid: 737d8d13-5632-4e18-9cb0-4d3b8a19e495
+manager: craigg
+author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: Inactive
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2016
-ms.author: ddove
-ms.openlocfilehash: 357937aad5eb13ca87267629eb542cc43119dc0a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: sstein
+ms.openlocfilehash: 17e4176129da747925596c66ca9df936a3828c2d
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="create-and-manage-sql-database-elastic-jobs-using-powershell-preview"></a>SQL Database PowerShell (előzetes verzió) segítségével a rugalmas feladatok létrehozásához és kezeléséhez
 
@@ -50,7 +45,7 @@ A következő táblázat felsorolja az összes objektum típusú kimenő **rugal
     <td>Hitelesítő adat</td>
     <td>Felhasználónév és jelszó parancsprogramok végrehajtását vagy DACPACs alkalmazásának adatbázisok való kapcsolódáskor használ. <p>A jelszó küldése és a rugalmas adatbázis-feladatok adatbázis tárolási előtt titkosítva.  A rugalmas adatbázis-feladatok szolgáltatás a hitelesítő adat létrehozása és fel kell tölteni a telepítési parancsfájl segítségével visszafejti a jelszót.</td>
     <td><p>Get-AzureSqlJobCredential</p>
-    <p>Új AzureSqlJobCredential</p><p>Set-AzureSqlJobCredential</p></td></td>
+    <p>New-AzureSqlJobCredential</p><p>Set-AzureSqlJobCredential</p></td></td>
   </tr>
 
   <tr>
@@ -60,7 +55,7 @@ A következő táblázat felsorolja az összes objektum típusú kimenő **rugal
     <td>
     <p>Get-AzureSqlJobContent</p>
     <p>Get-AzureSqlJobContentDefinition</p>
-    <p>Új AzureSqlJobContent</p>
+    <p>New-AzureSqlJobContent</p>
     <p>Set-AzureSqlJobContentDefinition</p>
     </td>
   </tr>
@@ -71,7 +66,7 @@ A következő táblázat felsorolja az összes objektum típusú kimenő **rugal
     </td>
     <td>
     <p>Get-AzureSqlJobContent</p>
-    <p>Új AzureSqlJobContent</p>
+    <p>New-AzureSqlJobContent</p>
     <p>Set-AzureSqlJobContentDefinition</p>
     </td>
   </tr>
@@ -81,7 +76,7 @@ A következő táblázat felsorolja az összes objektum típusú kimenő **rugal
     </td>
     <td>
     <p>Get-AzureSqlJobTarget</p>
-    <p>Új AzureSqlJobTarget</p>
+    <p>New-AzureSqlJobTarget</p>
     </td>
   </tr>
   <tr>
@@ -90,7 +85,7 @@ A következő táblázat felsorolja az összes objektum típusú kimenő **rugal
     </td>
     <td>
     <p>Get-AzureSqlJobTarget</p>
-    <p>Új AzureSqlJobTarget</p>
+    <p>New-AzureSqlJobTarget</p>
     <p>Set-AzureSqlJobTarget</p>
     </td>
   </tr>
@@ -99,14 +94,14 @@ A következő táblázat felsorolja az összes objektum típusú kimenő **rugal
     <td>A végrehajtás együttesen használandó adatbázisok meghatározott csoportja.</td>
     <td>
     <p>Get-AzureSqlJobTarget</p>
-    <p>Új AzureSqlJobTarget</p>
+    <p>New-AzureSqlJobTarget</p>
     </td>
   </tr>
 <tr>
     <td>Egyéni gyűjtemény gyermek cél</td>
     <td>Egy egyéni gyűjteményből hivatkozott adatbázis cél.</td>
     <td>
-    <p>Adja hozzá AzureSqlJobChildTarget</p>
+    <p>Add-AzureSqlJobChildTarget</p>
     <p>Remove-AzureSqlJobChildTarget</p>
     </td>
   </tr>
@@ -118,7 +113,7 @@ A következő táblázat felsorolja az összes objektum típusú kimenő **rugal
     </td>
     <td>
     <p>Get-AzureSqlJob</p>
-    <p>Új AzureSqlJob</p>
+    <p>New-AzureSqlJob</p>
     <p>Set-AzureSqlJob</p>
     </td>
   </tr>
@@ -131,8 +126,8 @@ A következő táblázat felsorolja az összes objektum típusú kimenő **rugal
     <td>
     <p>Get-AzureSqlJobExecution</p>
     <p>Start-AzureSqlJobExecution</p>
-    <p>STOP-AzureSqlJobExecution</p>
-    <p>Várjon, amíg-AzureSqlJobExecution</p>
+    <p>Stop-AzureSqlJobExecution</p>
+    <p>Wait-AzureSqlJobExecution</p>
   </tr>
 
 <tr>
@@ -144,8 +139,8 @@ A következő táblázat felsorolja az összes objektum típusú kimenő **rugal
     <td>
     <p>Get-AzureSqlJobExecution</p>
     <p>Start-AzureSqlJobExecution</p>
-    <p>STOP-AzureSqlJobExecution</p>
-    <p>Várjon, amíg-AzureSqlJobExecution</p>
+    <p>Stop-AzureSqlJobExecution</p>
+    <p>Wait-AzureSqlJobExecution</p>
   </tr>
 
 <tr>
@@ -156,7 +151,7 @@ A következő táblázat felsorolja az összes objektum típusú kimenő **rugal
     </td>
     <td>
     <p>Get-AzureSqlJobExecutionPolicy</p>
-    <p>Új AzureSqlJobExecutionPolicy</p>
+    <p>New-AzureSqlJobExecutionPolicy</p>
     <p>Set-AzureSqlJobExecutionPolicy</p>
     </td>
   </tr>
@@ -168,7 +163,7 @@ A következő táblázat felsorolja az összes objektum típusú kimenő **rugal
     </td>
     <td>
     <p>Get-AzureSqlJobSchedule</p>
-    <p>Új AzureSqlJobSchedule</p>
+    <p>New-AzureSqlJobSchedule</p>
     <p>Set-AzureSqlJobSchedule</p>
     </td>
   </tr>
@@ -179,7 +174,7 @@ A következő táblázat felsorolja az összes objektum típusú kimenő **rugal
     <p>A feladatok és az ütemezés szerint eseményindító feladat végrehajtása a kívánt ütemezést közötti leképezést.</p>
     </td>
     <td>
-    <p>Új AzureSqlJobTrigger</p>
+    <p>New-AzureSqlJobTrigger</p>
     <p>Remove-AzureSqlJobTrigger</p>
     </td>
   </tr>

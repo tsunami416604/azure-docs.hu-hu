@@ -3,24 +3,18 @@ title: "Sok Azure SQL-adatbázisoknál a több-bérlős SaaS-alkalmazás teljes�
 description: "Megfigyelés és kezelés Azure SQL-adatbázisok és tárolókészletekben: a több-bérlős SaaS-alkalmazás teljesítménye"
 keywords: "sql database-oktatóanyag"
 services: sql-database
-documentationcenter: 
 author: stevestein
 manager: craigg
-editor: 
-ms.assetid: 
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: Inactive
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/31/2017
 ms.author: sstein
-ms.openlocfilehash: 289f1f99b1661e499fa7132887e2f65e086ad689
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: 352b0d48ab223a236b96c633526f792b6f8a703d
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="monitor-and-manage-performance-of-azure-sql-databases-and-pools-in-a-multi-tenant-saas-app"></a>Megfigyelés és kezelés Azure SQL-adatbázisok és tárolókészletekben: a több-bérlős SaaS-alkalmazás teljesítménye
 
@@ -181,7 +175,7 @@ A készlet felskálázása mellett másik lehetőségként létrehozhat egy más
     1. Kattintson a **adatbázisok hozzáadása** adatbázisok listájának megtekintéséhez azon a kiszolgálón, hozzáadható *Pool2*.
     1. Ezek az új készletbe helyezhető át, és kattintson a bármely 10 adatbázisok kijelölése **válasszon**. Ha már futott a terhelés generátor, a szolgáltatás már tudja, hogy a teljesítmény profil az alapértelmezett 50 eDTU méreténél nagyobb készlet igényel, és azt javasolja, hogy egy 100 eDTU-beállítás kezdve.
 
-    ![A javaslat](media/saas-dbpertenant-performance-monitoring/configure-pool.png)
+    ![ajánlás](media/saas-dbpertenant-performance-monitoring/configure-pool.png)
 
     1. Ebben az oktatóanyagban hagyja meg az alapértelmezett 50 edtu-k, és kattintson a **válasszon** újra.
     1. Válassza ki **OK** az új készlet létrehozása és a kijelölt adatbázisok áthelyezése bele.
@@ -232,9 +226,9 @@ Ha az összesített bérlői használat kiszámítható mintákat követ, az Azu
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
+Ezen oktatóanyag segítségével megtanulhatja a következőket:
 
 > [!div class="checklist"]
 > * A bérlői adatbázisok használatának szimulálása egy adott terhelésgenerátor futtatásával

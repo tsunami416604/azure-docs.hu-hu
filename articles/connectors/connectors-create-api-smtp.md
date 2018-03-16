@@ -3,7 +3,7 @@ title: "Az Azure Logic Apps összekötőt |} Microsoft Docs"
 description: "Az Azure App service logic Apps alkalmazások létrehozása E-mail küldhető SMTP csatlakozni."
 services: logic-apps
 documentationcenter: .net,nodejs,java
-author: MandiOhlinger
+author: ecfan
 manager: anneta
 editor: 
 tags: connectors
@@ -14,12 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 07/15/2016
-ms.author: mandia; ladocs
-ms.openlocfilehash: 6544a8e81a1c84fbd09e60b3f06c5fd308a18dcf
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.author: estfan; ladocs
+ms.openlocfilehash: 9bf7c9b7c3e775ab03b071d13d792f4b2d8fb3e3
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="get-started-with-the-smtp-connector"></a>Az SMTP-összekötő az első lépései
 E-mail küldhető SMTP csatlakozni.
@@ -37,13 +37,13 @@ A Logic Apps alkalmazást bármely szolgáltatás hozzáférni, először hozzon
 ## <a name="use-an-smtp-trigger"></a>Az SMTP-eseményindító használata
 Egy eseményindító nem egy eseményt, a logikai alkalmazás definiált munkafolyamat indításához használható. [További tudnivalók az eseményindítók](../logic-apps/logic-apps-overview.md#logic-app-concepts).
 
-Ebben a példában, mert SMTP nem rendelkezik saját, eseményindító fogjuk használni a **Salesforce - amikor létrejön egy objektum** eseményindító. Ehhez az eseményindítóhoz akkor aktiválódik, amikor új objektumot hoz létre a Salesforce-ban. A példa kedvéért be azt, hogy minden alkalommal új vezető jön létre a Salesforce, egy *e-mailek küldése* , egy értesítés, amely a létrehozandó új vezető az SMTP-összekötőn keresztül valósul meg.
+Ebben a példában a SMTP saját eseményindító nem rendelkezik. Igen, használja a **Salesforce - amikor létrejön egy objektum** eseményindító. Ehhez az eseményindítóhoz akkor aktiválódik, amikor új objektumot hoz létre a Salesforce-ban. Ehhez a példához létrehozott azt, hogy minden alkalommal új vezető jön létre a Salesforce, egy *e-mailek küldése* művelet következik be, az SMTP-összekötővel, egy értesítés, amely az új vezető létrehozás alatt áll.
 
 1. Adja meg *salesforce* be a keresőmezőbe a logic apps designer válassza ki a **Salesforce - amikor létrejön egy objektum** eseményindító.  
    ![](../../includes/media/connectors-create-api-salesforce/trigger-1.png)  
 2. A **egy objektumának létrejöttekor** vezérlő jelenik meg.
    ![](../../includes/media/connectors-create-api-salesforce/trigger-2.png)  
-3. Válassza ki a **objektumtípus** válassza *vezethet* objektumok közül. Ebben a lépésben vannak jelzi, hogy hoz létre egy eseményindítót, amely értesíti a Logic Apps alkalmazást, amikor egy új vezető jön létre a Salesforce-ban.  
+3. Válassza ki a **objektumtípus** válassza *vezethet* objektumok közül. Ebben a lépésben hoz létre egy eseményindítót, amely értesíti a Logic Apps alkalmazást, amikor egy új vezető jön létre a Salesforce-ban.  
    ![](../../includes/media/connectors-create-api-salesforce/trigger3.png)  
 4. Az eseményindító létrehozása befejeződött.  
    ![](../../includes/media/connectors-create-api-salesforce/trigger-4.png)  
@@ -51,7 +51,7 @@ Ebben a példában, mert SMTP nem rendelkezik saját, eseményindító fogjuk ha
 ## <a name="use-an-smtp-action"></a>Az SMTP-művelethez használata
 Egy művelet során a logikai alkalmazás definiált munkafolyamat által végzett. [További információ a műveletek](../logic-apps/logic-apps-overview.md#logic-app-concepts).
 
-Most, hogy hozzá lett adva az eseményindítót, kövesse az alábbi lépéseket egy SMTP-művelethez egy új vezető a Salesforce-ban létrehozásakor előforduló hozzáadni.
+Most, hogy az eseményindító hozzá lett adva, az alábbi lépések segítségével adja hozzá egy SMTP-művelet, amikor egy új vezető jön létre a Salesforce-ban.
 
 1. Válassza ki **+ új lépés** hozzáadása a műveletet hajtson végre egy új vezető jön létre.  
    ![](../../includes/media/connectors-create-api-salesforce/trigger4.png)  
@@ -62,7 +62,7 @@ Most, hogy hozzá lett adva az eseményindítót, kövesse az alábbi lépéseke
    ![](../../includes/media/connectors-create-api-smtp/smtp-2.png)    
 5. Adjon meg a kívánt e-mailek adataihoz a **SMTP - E-mail küldése** blokkot.  
    ![](../../includes/media/connectors-create-api-smtp/using-smtp-action-4.PNG)  
-6. Mentse a munkáját ahhoz, hogy aktiválja a munkafolyamatot.  
+6. Mentse a munkáját a munkafolyamat aktiválásához.  
 
 ## <a name="connector-specific-details"></a>Összekötő-specifikus részletei
 

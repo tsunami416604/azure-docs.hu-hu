@@ -3,7 +3,7 @@ title: "Adja hozzá az Oracle-adatbázishoz összekötő az Azure Logic Apps |} 
 description: "A logikai alkalmazás az Oracle-adatbázishoz összekötő használatára"
 services: 
 documentationcenter: 
-author: MandiOhlinger
+author: ecfan
 manager: anneta
 editor: 
 tags: connectors
@@ -14,12 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/29/2017
-ms.author: mandia; ladocs
-ms.openlocfilehash: 4119e72abd568c9b53245a872691f06329b040de
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.author: estfan; ladocs
+ms.openlocfilehash: 57931b6c2f96debeb9ab7f1a3b6700f23e7d2a7e
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="get-started-with-the-oracle-database-connector"></a>Az Oracle-adatbázishoz összekötő az első lépései
 
@@ -28,7 +28,7 @@ Az Oracle adatbázis-összekötő segítségével hoz létre a meglévő adatbá
 * A munkafolyamat egy új ügyfél ügyfelek adatbázishoz, vagy frissítésétől egészen a rendelések adatbázisban egy rendelés hozhat létre.
 * Műveletek segítségével az adatok egy sor lekéréséhez, új sor beszúrására, és akkor is törli. Például egy rekord létrehozásakor a Dynamics CRM Online (trigger), majd sor beszúrása az Oracle-adatbázisban (művelet). 
 
-Ez a témakör bemutatja, hogyan az Oracle-adatbázishoz összekötő használatára a logikai alkalmazás.
+Ez a cikk bemutatja, hogyan használja az Oracle-adatbázishoz összekötő logikai alkalmazás.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -46,7 +46,7 @@ Ez a témakör bemutatja, hogyan az Oracle-adatbázishoz összekötő használat
   [64 bites ODAC Windows x64 12c kiadás 4 (12.1.0.2.4)](http://www.oracle.com/technetwork/database/windows/downloads/index-090165.html)
 
     > [!TIP]
-    > Az Oracle-ügyfél nincs telepítve, ha hiba lép fel, amikor megpróbálja létrehozni, vagy a kapcsolat. Tekintse meg a közös hibákat ebben a témakörben.
+    > Az Oracle-ügyfél nincs telepítve, ha hiba lép fel, amikor megpróbálja létrehozni, vagy a kapcsolat. Ebben a cikkben a közös hibába ütközik.
 
 
 ## <a name="add-the-connector"></a>Az összekötő hozzáadása
@@ -104,7 +104,7 @@ Ez a témakör bemutatja, hogyan az Oracle-adatbázishoz összekötő használat
 
 **Megoldás**: Győződjön meg arról, hogy az átjáró fut a helyi számítógépen, amelyen telepítették őket, és, hogy kapcsolódni tud az internethez.  Azt javasoljuk, hogy nem telepíti az átjáró a számítógépre, amely ki van kapcsolva vagy alvó. A helyszíni átjáró szolgáltatás (PBIEgwService) is újraindíthatja.
 
-#### <a name="error-the-provider-being-used-is-deprecated-systemdataoracleclient-requires-oracle-client-software-version-817-or-greater-please-visit-httpsgomicrosoftcomfwlinkplinkid272376httpsgomicrosoftcomfwlinkplinkid272376-to-install-the-official-provider"></a>**Hiba**: A használt szolgáltató elavult: "System.Data.OracleClient szükséges verziójú Oracle ügyfélszoftvert 8.1.7-es vagy újabb.". Látogasson el a [https://go.microsoft.com/fwlink/p/?LinkID=272376](https://go.microsoft.com/fwlink/p/?LinkID=272376) a hivatalos szolgáltató telepítéséhez.
+#### <a name="error-the-provider-being-used-is-deprecated-systemdataoracleclient-requires-oracle-client-software-version-817-or-greater-see-httpsgomicrosoftcomfwlinkplinkid272376httpsgomicrosoftcomfwlinkplinkid272376-to-install-the-official-provider"></a>**Hiba**: A használt szolgáltató elavult: "System.Data.OracleClient szükséges verziójú Oracle ügyfélszoftvert 8.1.7-es vagy újabb.". Lásd: [ https://go.microsoft.com/fwlink/p/?LinkID=272376 ](https://go.microsoft.com/fwlink/p/?LinkID=272376) a hivatalos szolgáltató telepítéséhez.
 
 **OK**: az Oracle ügyfél SDK a helyszíni adatok átjárót futtató gépen nincs telepítve.  
 
@@ -130,8 +130,8 @@ Bármely eseményindítók és a swagger definiált műveletek megtekintése, é
 
 A [Azure Logic Apps-fórum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps) mutassa kérdései vannak, kérdést, és tekintse meg a többi Logic Apps felhasználók tevékenységeit. 
 
-Növelheti Logic Apps alkalmazások és összekötők szavazás, és a következő ötletek elküldésével [http://aka.ms/logicapps-wish](http://aka.ms/logicapps-wish). 
+Növelheti Logic Apps alkalmazások és összekötők szavazás, és a következő ötletek elküldésével [ http://aka.ms/logicapps-wish ](http://aka.ms/logicapps-wish). 
 
 
 ## <a name="next-steps"></a>További lépések
-[Logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md), és vizsgálja meg a rendelkezésre álló összekötők Logic Apps, az [API-k lista](apis-list.md).
+[Logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md), és vizsgálja meg a rendelkezésre álló összekötők Logic Apps: [API-k lista](apis-list.md).

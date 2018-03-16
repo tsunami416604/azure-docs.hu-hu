@@ -3,7 +3,7 @@ title: "Adja hozzá az Office 365 Outlook-összekötőt a Logic Apps |} Microsof
 description: "Hozzon létre a logic apps Office 365-összekötő és az Office 365 közötti interakció. Például: létrehozása, szerkesztése és a partnerek és a naptári elemek frissítése."
 services: 
 documentationcenter: 
-author: MandiOhlinger
+author: ecfan
 manager: anneta
 editor: 
 tags: connectors
@@ -14,12 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 10/18/2016
-ms.author: mandia; ladocs
-ms.openlocfilehash: 51b8e3de639b5cce954547adb77ff13b79ad6747
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.author: estfan; ladocs
+ms.openlocfilehash: ea0b2f657f808bb6ba4bf427497955b9e520c669
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="get-started-with-the-office-365-outlook-connector"></a>Az Office 365 Outlook-összekötő az első lépései
 Az Office 365 Outlook-összekötő lehetővé teszi, hogy az Office 365 Outlook való együttműködéshez. Ez az összekötő segítségével létrehozása, szerkesztése, és frissítse a névjegyeket és a naptári elemek, és is, küldése és e-mail válaszolni.
@@ -30,7 +30,7 @@ Az Office 365 Outlook meg:
 * Eseményindítók segítségével a munkafolyamat indítható el, amikor egy új e-mailt, a naptárelemek frissítésekor és még sok más.
 * Műveletek segítségével egy e-mailt küldeni, hozzon létre egy új naptár esemény, és több. Például ha van egy új objektumot a Salesforce (trigger), küldjön egy e-mailt a az Office 365 Outlook (művelet). 
 
-Ez a témakör bemutatja, hogyan használható az Office 365 Outlook összekötő logikai alkalmazás, és eseményindítók és műveletek is tartalmazza.
+Ez a cikk bemutatja, hogyan használható az Office 365 Outlook összekötő logikai alkalmazás, és eseményindítók és műveletek is tartalmazza.
 
 > [!NOTE]
 > A cikk e verziója a Logic Apps általános elérhetőségével (GA) vonatkozik.

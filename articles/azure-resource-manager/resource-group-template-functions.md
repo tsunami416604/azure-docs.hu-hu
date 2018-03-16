@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/18/2017
 ms.author: tomfitz
-ms.openlocfilehash: 725f12a6b5dcf4b66109512336e8a617013c5974
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 54580abdca8b6be10576cf74ad23e8ff2665341c
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-resource-manager-template-functions"></a>Az Azure Resource Manager sablonfüggvényei
-Ez a témakör ismerteti az Azure Resource Manager-sablonokban használható összes függvények.
+Ez a cikk ismerteti az Azure Resource Manager-sablonokban használható összes függvények.
 
 Funkciók hozzáadása szögletes zárójelben befoglaló azokat a sablonokat: `[` és `]`, illetve. A rendszer kiértékeli üzembe helyezése során. Megírva egy szöveges karakterlánc, miközben a értékeli a kifejezés eredménye egy eltérő típusú JSON, például egy tömb, objektum vagy egész szám lehet. Csak a például a JavaScript, függvényhívások-ként formázott `functionName(arg1,arg2,arg3)`. A pont és a [index] operátorok használatával tulajdonságok hivatkozik.
 
@@ -37,6 +37,7 @@ Sablon függvényeket és paramétereket nem különböztetik meg. Például az 
 <a id="empty" />
 <a id="first" />
 <a id="intersection" />
+<a id="json" />
 <a id="last" />
 <a id="length" />
 <a id="min" />
@@ -49,21 +50,21 @@ Sablon függvényeket és paramétereket nem különböztetik meg. Például az 
 ## <a name="array-and-object-functions"></a>A tömb és objektum funkciók
 Erőforrás-kezelő számos funkciókat nyújt, tömbök és objektumok.
 
-* [a tömb](resource-group-template-functions-array.md#array)
+* [array](resource-group-template-functions-array.md#array)
 * [Egyesítés](resource-group-template-functions-array.md#coalesce)
-* [Concat](resource-group-template-functions-array.md#concat)
+* [concat](resource-group-template-functions-array.md#concat)
 * [tartalmazza](resource-group-template-functions-array.md#contains)
 * [createArray](resource-group-template-functions-array.md#createarray)
 * [üres](resource-group-template-functions-array.md#empty)
 * [első](resource-group-template-functions-array.md#first)
-* [metszetének](resource-group-template-functions-array.md#intersection)
-* [JSON-ban](resource-group-template-functions-array.md#json)
-* [utolsó](resource-group-template-functions-array.md#last)
-* [hossza](resource-group-template-functions-array.md#length)
-* [perc](resource-group-template-functions-array.md#min)
-* [maximális](resource-group-template-functions-array.md#max)
-* [tartomány](resource-group-template-functions-array.md#range)
-* [hagyja ki](resource-group-template-functions-array.md#skip)
+* [intersection](resource-group-template-functions-array.md#intersection)
+* [json](resource-group-template-functions-array.md#json)
+* [last](resource-group-template-functions-array.md#last)
+* [Hossza](resource-group-template-functions-array.md#length)
+* [min](resource-group-template-functions-array.md#min)
+* [max](resource-group-template-functions-array.md#max)
+* [range](resource-group-template-functions-array.md#range)
+* [skip](resource-group-template-functions-array.md#skip)
 * [hajtsa végre a megfelelő](resource-group-template-functions-array.md#take)
 * [a UNION](resource-group-template-functions-array.md#union)
 
@@ -79,7 +80,7 @@ Erőforrás-kezelő számos funkciókat nyújt a sablonokban összehasonlítás�
 * [egyenlő](resource-group-template-functions-comparison.md#equals)
 * [kevesebb](resource-group-template-functions-comparison.md#less)
 * [lessOrEquals](resource-group-template-functions-comparison.md#lessorequals)
-* [nagyobb](resource-group-template-functions-comparison.md#greater)
+* [greater](resource-group-template-functions-comparison.md#greater)
 * [greaterOrEquals](resource-group-template-functions-comparison.md#greaterorequals)
 
 <a id="deployment" />
@@ -89,9 +90,24 @@ Erőforrás-kezelő számos funkciókat nyújt a sablonokban összehasonlítás�
 ## <a name="deployment-value-functions"></a>Központi telepítési érték funkciók
 Erőforrás-kezelő a következő funkciókat nyújt értékek lekérése a sablon és a központi telepítéshez kapcsolódó értékek szakaszait:
 
-* [központi telepítés](resource-group-template-functions-deployment.md#deployment)
-* [Paraméterek](resource-group-template-functions-deployment.md#parameters)
-* [változók](resource-group-template-functions-deployment.md#variables)
+* [deployment](resource-group-template-functions-deployment.md#deployment)
+* [paraméterek](resource-group-template-functions-deployment.md#parameters)
+* [variables](resource-group-template-functions-deployment.md#variables)
+
+<a id="and" />
+<a id="bool" />
+<a id="if" />
+<a id="not" />
+<a id="or" />
+
+## <a name="logical-functions"></a>Logikai funkciók
+Erőforrás-kezelő a következő funkciókat biztosít a logikai feltételek használata:
+
+* [És](resource-group-template-functions-logical.md#and)
+* [bool](resource-group-template-functions-logical.md#bool)
+* [if](resource-group-template-functions-logical.md#if)
+* [not](resource-group-template-functions-logical.md#not)
+* [or](resource-group-template-functions-logical.md#or)
 
 <a id="add" />
 <a id="copyindex" />
@@ -104,28 +120,19 @@ Erőforrás-kezelő a következő funkciókat nyújt értékek lekérése a sabl
 <a id="mul" />
 <a id="sub" />
 
-## <a name="logical-functions"></a>Logikai funkciók
-Erőforrás-kezelő a következő funkciókat biztosít a logikai feltételek használata:
-
-* [és](resource-group-template-functions-logical.md#and)
-* [logikai érték](resource-group-template-functions-logical.md#bool)
-* [Ha](resource-group-template-functions-logical.md#if)
-* [nem](resource-group-template-functions-logical.md#not)
-* [vagy](resource-group-template-functions-logical.md#or)
-
 ## <a name="numeric-functions"></a>Numerikus funkciók
 Erőforrás-kezelő a következő funkciókat nyújt egész számok használata:
 
-* [hozzáadása](resource-group-template-functions-numeric.md#add)
+* [add](resource-group-template-functions-numeric.md#add)
 * [copyIndex](resource-group-template-functions-numeric.md#copyindex)
-* [DIV](resource-group-template-functions-numeric.md#div)
-* [lebegőpontos](resource-group-template-functions-numeric.md#float)
+* [div](resource-group-template-functions-numeric.md#div)
+* [float](resource-group-template-functions-numeric.md#float)
 * [int](resource-group-template-functions-numeric.md#int)
-* [perc](resource-group-template-functions-numeric.md#min)
-* [maximális](resource-group-template-functions-numeric.md#max)
+* [min](resource-group-template-functions-numeric.md#min)
+* [max](resource-group-template-functions-numeric.md#max)
 * [MOD](resource-group-template-functions-numeric.md#mod)
 * [MUL számú](resource-group-template-functions-numeric.md#mul)
-* [Sub](resource-group-template-functions-numeric.md#sub)
+* [sub](resource-group-template-functions-numeric.md#sub)
 
 <a id="listkeys" />
 <a id="list" />
@@ -140,8 +147,8 @@ Erőforrás-kezelő a következő funkciókat biztosít erőforrás értékek be
 
 * [listKeys és a {Value} lista](resource-group-template-functions-resource.md#listkeys)
 * [szolgáltatók](resource-group-template-functions-resource.md#providers)
-* [hivatkozás](resource-group-template-functions-resource.md#reference)
-* [Erőforráscsoport](resource-group-template-functions-resource.md#resourcegroup)
+* [reference](resource-group-template-functions-resource.md#reference)
+* [resourceGroup](resource-group-template-functions-resource.md#resourcegroup)
 * [resourceId](resource-group-template-functions-resource.md#resourceid)
 * [előfizetést](resource-group-template-functions-resource.md#subscription)
 
@@ -155,6 +162,7 @@ Erőforrás-kezelő a következő funkciókat biztosít erőforrás értékek be
 <a id="emptystring" />
 <a id="endswith" />
 <a id="firststring" />
+<a id="guid" />
 <a id="indexof" />
 <a id="laststring" />
 <a id="lastindexof" />
@@ -178,38 +186,38 @@ Erőforrás-kezelő a következő funkciókat biztosít erőforrás értékek be
 ## <a name="string-functions"></a>Karakterlánc
 Erőforrás-kezelő a következő funkciókat nyújt karakterláncok használata.
 
-* [a Base64](resource-group-template-functions-string.md#base64)
+* [base64](resource-group-template-functions-string.md#base64)
 * [base64ToJson](resource-group-template-functions-string.md#base64tojson)
 * [base64ToString](resource-group-template-functions-string.md#base64tostring)
-* [Concat](resource-group-template-functions-string.md#concat)
+* [concat](resource-group-template-functions-string.md#concat)
 * [tartalmazza](resource-group-template-functions-string.md#contains)
 * [dataUri](resource-group-template-functions-string.md#datauri)
 * [dataUriToString](resource-group-template-functions-string.md#datauritostring)
 * [üres](resource-group-template-functions-string.md#empty)
 * [megadott módon végződő](resource-group-template-functions-string.md#endswith)
 * [első](resource-group-template-functions-string.md#first)
-* [GUID](resource-group-template-functions-string.md#guid)
+* [guid](resource-group-template-functions-string.md#guid)
 * [indexOf](resource-group-template-functions-string.md#indexof)
-* [utolsó](resource-group-template-functions-string.md#last)
+* [last](resource-group-template-functions-string.md#last)
 * [lastIndexOf](resource-group-template-functions-string.md#lastindexof)
-* [hossza](resource-group-template-functions-string.md#length)
+* [Hossza](resource-group-template-functions-string.md#length)
 * [padLeft](resource-group-template-functions-string.md#padleft)
-* [cserélje le](resource-group-template-functions-string.md#replace)
-* [hagyja ki](resource-group-template-functions-string.md#skip)
+* [replace](resource-group-template-functions-string.md#replace)
+* [skip](resource-group-template-functions-string.md#skip)
 * [felosztás](resource-group-template-functions-string.md#split)
 * [startswith elemnek](resource-group-template-functions-string.md#startswith)
-* [karakterlánc](resource-group-template-functions-string.md#string)
-* [Substring](resource-group-template-functions-string.md#substring)
+* [string](resource-group-template-functions-string.md#string)
+* [substring](resource-group-template-functions-string.md#substring)
 * [hajtsa végre a megfelelő](resource-group-template-functions-string.md#take)
 * [toLower](resource-group-template-functions-string.md#tolower)
 * [toUpper](resource-group-template-functions-string.md#toupper)
-* [Trim](resource-group-template-functions-string.md#trim)
+* [trim](resource-group-template-functions-string.md#trim)
 * [uniqueString](resource-group-template-functions-string.md#uniquestring)
-* [URI](resource-group-template-functions-string.md#uri)
+* [uri](resource-group-template-functions-string.md#uri)
 * [uriComponent](resource-group-template-functions-string.md#uricomponent)
 * [uriComponentToString](resource-group-template-functions-string.md#uricomponenttostring)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * A szakaszok az Azure Resource Manager-sablon ismertetését lásd: [Azure Resource Manager-sablonok készítése](resource-group-authoring-templates.md)
 * Több sablon egyesíteni, lásd: [kapcsolt sablonok használata az Azure Resource Manager eszközzel](resource-group-linked-templates.md)
 * Megadott számú alkalommal felépítésének egy adott típusú erőforrás létrehozása esetén lásd: [erőforrások több példányát az Azure Resource Manager létrehozása](resource-group-create-multiple.md)

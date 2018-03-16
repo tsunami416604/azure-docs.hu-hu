@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 01/11/2018
 ms.author: joflore
 ms.custom: seohack1
-ms.openlocfilehash: 686cc2a94af729e6f872c334a6e5fda947d43725
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: f5236b81c70caee4417777ffadcababebaa84620
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="password-management-frequently-asked-questions"></a>A jelszókezelés gyakran ismételt kérdések
 
@@ -40,7 +40,7 @@ Ez a GYIK a következő szakaszok oszlik:
 
 * **K: a felhasználók regisztrálhatják saját jelszó alaphelyzetbe állítása adatokat?**
 
-  > **V:** Igen. Mindaddig, amíg engedélyezve van a jelszó alaphelyzetbe állítása, és azok licencét, felhasználók lépjen a jelszó-visszaállítási portál (https://aka.ms/ssprsetup) regisztrálása a hitelesítési adatokat. A felhasználók is regisztrálhatják a hozzáférési Panel (http://myapps.microsoft.com) keresztül. A hozzáférési Panel keresztül regisztrálásához szükséges a profilkép megadásához válassza **profil**, majd válassza ki a **regisztrálhatnak a jelszóváltoztatásra** lehetőséget.
+  > **V:** Igen. Nyissa meg, amíg a jelszó alaphelyzetbe állítása engedélyezve van, és azok licencét, a jelszó-visszaállítási portál felhasználók (https://aka.ms/ssprsetup) regisztrálni a hitelesítési adatokat. A felhasználók is regisztrálhatják a hozzáférési Panel keresztül (http://myapps.microsoft.com). A hozzáférési Panel keresztül regisztrálásához szükséges a profilkép megadásához válassza **profil**, majd válassza ki a **regisztrálhatnak a jelszóváltoztatásra** lehetőséget.
   >
   >
 * **K: Ha engedélyezhető a jelszó alaphelyzetbe állítása egy csoport, és úgy dönt, hogy engedélyezze a Mindenki a felhasználók szükség regisztrálja újra?**
@@ -269,7 +269,7 @@ Ez a GYIK a következő szakaszok oszlik:
   >
 * **K: milyen típusú fiókok jelszóvisszaírás működik?**
 
-  > **V:** visszaírási működik, az összevont jelszó és a jelszó kivonatát a szinkronizált felhasználók.
+  > **V:** felhasználói fiókok a helyszíni Active Directoryból szinkronizált az Azure AD-jelszó visszaírási működik, beleértve az összevont, a Jelszókivonat szinkronizálása és a csatlakoztatott Autentication felhasználók.
   >
   >
 * **K: jelszóvisszaírás jelszóházirendjeinek érvényesítéséhez a tartományomat?**

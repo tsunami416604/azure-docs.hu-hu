@@ -2,25 +2,20 @@
 title: "Figyelési & teljesítményhangolás - Azure SQL Database |} Microsoft Docs"
 description: "Tippek az teljesítményhangolás, az Azure SQL Database keresztül értékelése és javítása."
 services: sql-database
-documentationcenter: 
 author: v-shysun
-manager: felixwu
+manager: craigg
 editor: 
 keywords: "SQL teljesítményének hangolása, adatbázis teljesítményének hangolása, ötleteket hangolás sql teljesítmény sql adatbázis teljesítményének hangolása"
-ms.assetid: eb7b3f66-3b33-4e1b-84fb-424a928a6672
 ms.service: sql-database
 ms.custom: monitor & tune
-ms.workload: On Demand
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: troubleshooting
+ms.topic: article
 ms.date: 11/03/2017
 ms.author: v-shysun
-ms.openlocfilehash: 1791c56f86ee1997177daa95638c4f14068f8115
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 273a80134975fb9aa4d40b132c1403cc27246371
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="monitoring-and-performance-tuning"></a>Figyelés és teljesítményének hangolása
 
@@ -63,7 +58,7 @@ Végezetül végrehajtható elem, amely az adatbázis teljesítményének eseté
 Módosíthatja az alkalmazás kódjában, hogy több optimálisan használja a-adatbázist, indexek módosítása, tervek kényszerített vagy mutatók segítségével manuálisan alkalmazkodnak az adatbázis, a munkaterhelés. Néhány útmutatás és tippek található manuális beállítás, és írja át a kódot a [teljesítmény útmutató témakör](sql-database-performance-guidance.md) cikk.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Engedélyezze az automatikus hangolással az Azure SQL Database és az automatikus, teljes mértékben felügyelhesse a számítási feladatok hangolási szolgáltatás segítségével [engedélyezze az automatikus hangolással](sql-database-automatic-tuning-enable.md).
 - Manuális hangolása használatához tekintse át [javaslatok az Azure-portálon hangolása](sql-database-advisor-portal.md) és alkalmazza manuálisan a gazdarendszerhez a lekérdezések teljesítményének javítása.

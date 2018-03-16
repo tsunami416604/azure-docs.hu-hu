@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 09/29/2017
 ms.author: bwren
 ms.openlocfilehash: 5f040d1480433ccf4c0b2b22c0cf1e25a7151d74
-ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="understanding-log-searches-in-log-analytics"></a>A Naplóelemzési keres ismertetése napló
 
@@ -27,7 +27,7 @@ A napló keresési adatokat lekérdezni a Naplóelemzési van szüksége.  Adato
 
 A különböző módon, hogy szüksége lesz napló keresések Naplóelemzési közé tartoznak a következők:
 
-- **Portálok.** Adatok elemzése interaktív elvégezhető a tárházat az Azure portálon vagy a [Advanced Analytics portál](https://go.microsoft.com/fwlink/?linkid=856587).  Ez lehetővé teszi, hogy a lekérdezés szerkesztése és a különböző formátumok és a képi megjelenítések eredményének kiértékelése.  Az Ön által létrehozott irányuló legtöbb lekérdezésnek a portálok egyikében elindul, és majd másolása után ellenőrizte, hogy az elvárt módon működik.
+- **Portals.** Adatok elemzése interaktív elvégezhető a tárházat az Azure portálon vagy a [Advanced Analytics portál](https://go.microsoft.com/fwlink/?linkid=856587).  Ez lehetővé teszi, hogy a lekérdezés szerkesztése és a különböző formátumok és a képi megjelenítések eredményének kiértékelése.  Az Ön által létrehozott irányuló legtöbb lekérdezésnek a portálok egyikében elindul, és majd másolása után ellenőrizte, hogy az elvárt módon működik.
 - **A riasztási szabályok.** [Riasztási szabályok](log-analytics-alerts.md) proaktív módon az adatokat a munkaterületen a problémák azonosításához.  Minden riasztási szabály, amely rendszeres időközönként automatikusan fut egy napló keresési alapul.  Annak meghatározásához, ha a riasztás létrejöjjön ellenőrzik az eredményeket.
 - **Nézetek.**  A felhasználó irányítópultok szereplő adatok képi megjelenítések hozhat létre [adatforrásnézet-tervezőből](log-analytics-view-designer.md).  Napló keresések adja meg az adatok által használt [csempék](log-analytics-view-designer-tiles.md) és [képi megjelenítés részek](log-analytics-view-designer-parts.md) az egyes nézetek.  Részletezhető le a képi megjelenítés részeiből a napló lapon további elemzés elvégzéséhez az adatokon.
 - **Exportálás.**  Adatainak exportálásához a Naplóelemzési munkaterület Excelbe vagy [Power BI](log-analytics-powerbi.md), létrehozhat egy napló keresést, az adatok exportálása meghatározásához.
@@ -81,7 +81,7 @@ Adatok között a Naplóelemzési munkaterület az előfizetésen belül is lek�
 
 Az az Azure Log Analytics lekérdezési nyelv oktatóanyagok és nyelvi referencia többek között a teljes dokumentációjáért lásd: a [Azure Log Analytics lekérdezési nyelv dokumentáció](https://docs.loganalytics.io/).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További tudnivalók a [létrehozásához és szerkesztéséhez használt portálok jelentkezzen keresések](log-analytics-log-search-portals.md).
 - Tekintse meg a [útmutató a lekérdezések írásáról](log-analytics-tutorial-viewdata.md) az új lekérdezés nyelven.

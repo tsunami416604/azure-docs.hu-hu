@@ -11,24 +11,26 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/06/2018
+ms.date: 03/13/2018
 ms.author: tomfitz
-ms.openlocfilehash: 40b2d04fe829c51a58fb3bec1519a590a12cfdb8
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 90cb87b3fe94b7b3b0eba1b261d29a1c8f4348d6
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="deploy-azure-resources-to-more-than-one-subscription-or-resource-group"></a>Azure-erőforrások telepítése egynél több előfizetésnek vagy erőforráscsoport
 
 Általában, központilag telepített összes erőforrást a sablonhoz, amelyekkel egyetlen [erőforráscsoport](resource-group-overview.md). Vannak azonban forgatókönyvek, ahol szeretne erőforráscsoport telepítsen együtt, de másik erőforráscsoport-sablonok és előfizetések helyezze el őket. Érdemes lehet például a biztonsági mentési virtuális gép telepítése az Azure Site Recovery egy külön erőforráscsoportot és helyet. Erőforrás-kezelő beágyazott cél különböző előfizetésekhez és erőforráscsoportokhoz, mint az előfizetés és a szülő sablon használt erőforráscsoport-sablonok használatát teszi lehetővé.
 
 > [!NOTE]
-> Egy központi telepítésnél csak öt erőforráscsoportok telepítene.
+> Egy központi telepítésnél csak öt erőforráscsoportok telepítene. Általában ez a korlátozás azt jelenti, hogy a szülő-sablon, és legfeljebb négy erőforráscsoportok beágyazott vagy csatolt telepítések megadott egy erőforráscsoportba történő telepítése. Azonban ha a szülő-sablon csak a beágyazott vagy csatolt sablont tartalmazza, és nem saját magát nem telepítheti olyan erőforrásokkal, majd felvehető legfeljebb öt erőforráscsoportok beágyazott vagy csatolt környezetekhez.
 
 ## <a name="specify-a-subscription-and-resource-group"></a>Adjon meg egy előfizetésbe és erőforráscsoportba csoportot
 
 Ha szeretne megcélozni egy másik erőforráscsoportban, beágyazott vagy csatolt sablont használ. A `Microsoft.Resources/deployments` erőforrástípust biztosít paramétereinek `subscriptionId` és `resourceGroup`. Ezek a tulajdonságok lehetővé teszik a határozzon meg egy másik előfizetésbe és erőforráscsoportba a beágyazott üzemelő példány. Az erőforráscsoportok léteznie kell a központi telepítés futtatása előtt. Ha nem adja meg az előfizetési azonosító vagy erőforrás-csoport, az előfizetés és a szülő sablonból erőforráscsoport használja.
+
+A sablon telepítéséhez használt fiók jogosultságok központi telepítése a megadott előfizetés-azonosító. Ha a megadott előfizetés egy másik Azure Active Directory-bérlő szerepel, akkor kell [egy másik címtárból adja hozzá a vendégfelhasználók](../active-directory/active-directory-b2b-what-is-azure-ad-b2b.md).
 
 Egy másik erőforráscsoportban található és az előfizetés megadásához használja:
 
@@ -175,7 +177,7 @@ Az alábbi sablonok bemutatják a több erőforrás-csoport központi telepíté
 
 PowerShell központi telepítése a két erőforráscsoport két storage-fiókok a **ugyanahhoz az előfizetéshez**, használja:
 
-```powershell
+```azurepowershell-interactive
 $firstRG = "primarygroup"
 $secondRG = "secondarygroup"
 
@@ -192,7 +194,7 @@ New-AzureRmResourceGroupDeployment `
 
 PowerShell központi telepítése a két tárfiókok **két előfizetések**, használja:
 
-```powershell
+```azurepowershell-interactive
 $firstRG = "primarygroup"
 $secondRG = "secondarygroup"
 
@@ -216,7 +218,7 @@ New-AzureRmResourceGroupDeployment `
 
 PowerShell tesztelése az **erőforrás csoportobjektum** oldja fel a szülő sablon, a beágyazott sablon és a csatolt sablonhoz használható:
 
-```powershell
+```azurepowershell-interactive
 New-AzureRmResourceGroup -Name parentGroup -Location southcentralus
 New-AzureRmResourceGroup -Name inlineGroup -Location southcentralus
 New-AzureRmResourceGroup -Name linkedGroup -Location southcentralus
@@ -224,6 +226,37 @@ New-AzureRmResourceGroup -Name linkedGroup -Location southcentralus
 New-AzureRmResourceGroupDeployment `
   -ResourceGroupName parentGroup `
   -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/crossresourcegroupproperties.json
+```
+
+Az előző példában is **parentRG** és **inlineRG** tartoznia **parentGroup**. **linkedRG** feloldása egy olyan **linkedGroup**. Az előző példában a kimenete a következő:
+
+```powershell
+ Name             Type                       Value
+ ===============  =========================  ==========
+ parentRG         Object                     {
+                                               "id": "/subscriptions/<subscription-id>/resourceGroups/parentGroup",
+                                               "name": "parentGroup",
+                                               "location": "southcentralus",
+                                               "properties": {
+                                                 "provisioningState": "Succeeded"
+                                               }
+                                             }
+ inlineRG         Object                     {
+                                               "id": "/subscriptions/<subscription-id>/resourceGroups/parentGroup",
+                                               "name": "parentGroup",
+                                               "location": "southcentralus",
+                                               "properties": {
+                                                 "provisioningState": "Succeeded"
+                                               }
+                                             }
+ linkedRG         Object                     {
+                                               "id": "/subscriptions/<subscription-id>/resourceGroups/linkedGroup",
+                                               "name": "linkedGroup",
+                                               "location": "southcentralus",
+                                               "properties": {
+                                                 "provisioningState": "Succeeded"
+                                               }
+                                             }
 ```
 
 ### <a name="azure-cli"></a>Azure CLI
@@ -276,6 +309,48 @@ az group deployment create \
   --name ExampleDeployment \
   --resource-group parentGroup \
   --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/crossresourcegroupproperties.json 
+```
+
+Az előző példában is **parentRG** és **inlineRG** tartoznia **parentGroup**. **linkedRG** feloldása egy olyan **linkedGroup**. Az előző példában a kimenete a következő:
+
+```azurecli
+...
+"outputs": {
+  "inlineRG": {
+    "type": "Object",
+    "value": {
+      "id": "/subscriptions/<subscription-id>/resourceGroups/parentGroup",
+      "location": "southcentralus",
+      "name": "parentGroup",
+      "properties": {
+        "provisioningState": "Succeeded"
+      }
+    }
+  },
+  "linkedRG": {
+    "type": "Object",
+    "value": {
+      "id": "/subscriptions/<subscription-id>/resourceGroups/linkedGroup",
+      "location": "southcentralus",
+      "name": "linkedGroup",
+      "properties": {
+        "provisioningState": "Succeeded"
+      }
+    }
+  },
+  "parentRG": {
+    "type": "Object",
+    "value": {
+      "id": "/subscriptions/<subscription-id>/resourceGroups/parentGroup",
+      "location": "southcentralus",
+      "name": "parentGroup",
+      "properties": {
+        "provisioningState": "Succeeded"
+      }
+    }
+  }
+},
+...
 ```
 
 ## <a name="next-steps"></a>További lépések

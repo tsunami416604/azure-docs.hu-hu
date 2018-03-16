@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 11/03/2017
 ms.author: genli
-ms.openlocfilehash: ee8334cbe9256b7a5ecd5e96afa2f15d6389afa8
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 06b3b246d5c350f0982faa9b1d5f5692cd0c428e
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="how-to-use-perfinsights"></a>PerfInsights használata 
 
@@ -238,11 +238,11 @@ Ha a PerfInsights eszközt, kövesse az alábbi lépéseket:
     >
     >Ha a duration kapcsoló **/d** nincs megadva, PerfInsights figyelmezteti, hogy Reprodukálja a hibát vmslow, azurefiles és egyéni esetek futtatása során. 
 
-A nyomkövetési adatokat vagy a műveletek befejezése után egy új fájl megtalálható-e D:\\napló\_gyűjtemény (vagy az ideiglenes meghajtón). A fájl neve **CollectedData\_éééé-hh-nn\_hh\_mm\_ss.zip.** Ezt a fájlt küldeni a támogatási ügynök elemzés, vagy nyissa meg a jelentés megállapítások és javaslatok tekintse át a zip-fájlt.
+A nyomkövetési adatokat vagy a műveletek befejezése után egy új fájlt a mappában, amelyben PerfInsights jelenik meg. A fájl neve **CollectedData\_éééé-hh-nn\_hh-hh-ss-fff.zip.** Ezt a fájlt küldeni a támogatási ügynök elemzés, vagy nyissa meg a jelentés megállapítások és javaslatok tekintse át a zip-fájlt.
 
 ## <a name="review-the-diagnostics-report"></a>Tekintse át a diagnosztikai jelentés
 
-Belül a **CollectedData\_éééé-hh-nn\_hh\_mm\_ss.zip** fájlt, egy HTML-jelentést, amely leírja, PerfInsights eredményei találja. Tekintse át a jelentést, bontsa ki a **CollectedData\_éééé-hh-nn\_hh\_mm\_ss.zip** fájlt, és nyissa meg a **PerfInsights diagram jelentés.HTML** fájlt.
+Belül a **CollectedData\_éééé-hh-nn\_hh-hh-ss-fff.zip** fájlt, egy HTML-jelentést, amely leírja, PerfInsights eredményei találja. Tekintse át a jelentést, bontsa ki a **CollectedData\_éééé-hh-nn\_hh-hh-ss-fff.zip** fájlt, és nyissa meg a **PerfInsights diagram jelentés.HTML** fájlt.
 
 Válassza ki a **megállapítások** fülre.
 
@@ -307,4 +307,4 @@ Az alábbi képernyőfelvételen egy üzenetet jelenít meg hasonló mi akkor fo
 
 Kövesse az utasításokat a fájl adatátviteli munkaterület eléréséhez az üzenetben. A fokozott biztonság érdekében kell módosítani a jelszavát, az első használatkor.
 
-Miután bejelentkezik, talál egy párbeszédpanel, töltse fel a **CollectedData\_éééé-hh-nn\_hh\_mm\_ss.zip** PerfInsights által összegyűjtött fájl.
+Miután bejelentkezik, talál egy párbeszédpanel, töltse fel a **CollectedData\_éééé-hh-nn\_hh-hh-ss-fff.zip** PerfInsights által összegyűjtött fájl.

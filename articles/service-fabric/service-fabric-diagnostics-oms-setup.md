@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 1/17/2017
 ms.author: dekapur
-ms.openlocfilehash: 288c7482058cd9f824b6001bb9ad36d1a5e0f8bf
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 98ac32b011744ce388762322edd538b467f93494
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="set-up-operations-management-suite-log-analytics-for-a-cluster"></a>Operations Management Suite Naplóelemzési beállítása egy fürtben
 
@@ -48,9 +48,9 @@ Ha Windows használ, folytassa a OMS Szolgáltatáshoz való kapcsolódáshoz a 
 >[!NOTE]
 >Ez a felület Linux-fürtök engedélyezése még nem érhető el. 
 
-### <a name="add-the-oms-agent-to-your-cluster"></a>Adja hozzá az OMS-ügynököt a fürthöz 
+### <a name="connect-the-oms-workspace-to-your-cluster"></a>Az OMS-munkaterület csatlakozzon a fürthöz 
 
-1. A munkaterület kell kapcsolódnia kell a fürtből származó diagnosztikai adatokat. Nyissa meg az erőforráscsoporthoz, amelyben létrehozta a Service Fabric elemzési megoldások. Válassza ki **ServiceFabric\<nameOfOMSWorkspace\> ** és Ugrás a – áttekintés oldalra. Ott módosíthatja a megoldás beállításai, munkaterület beállításai, és elérni az OMS-portálon.
+1. A munkaterület kell kapcsolódnia kell a fürtből származó diagnosztikai adatokat. Nyissa meg az erőforráscsoporthoz, amelyben létrehozta a Service Fabric elemzési megoldások. Válassza ki **ServiceFabric\<nameOfOMSWorkspace\>**  és Ugrás a – áttekintés oldalra. Ott módosíthatja a megoldás beállításai, munkaterület beállításai, és elérni az OMS-portálon.
 
 2. A bal oldali navigációs menü alatti **munkaterület adatforrások**, jelölje be **tárfiókok naplók**.
 

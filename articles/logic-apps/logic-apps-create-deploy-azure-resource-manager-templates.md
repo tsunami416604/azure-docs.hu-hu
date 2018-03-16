@@ -3,7 +3,7 @@ title: "A logic apps létrehozása az Azure Resource Manager-sablonok alapján |
 description: "Létrehozhat és telepíthet a logic app munkafolyamatok Azure Resource Manager-sablonok"
 services: logic-apps
 documentationcenter: 
-author: MandiOhlinger
+author: ecfan
 manager: anneta
 editor: 
 ms.assetid: 7574cc7c-e5a1-4b7c-97f6-0cffb1a5d536
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/15/2017
-ms.author: LADocs; mandia
-ms.openlocfilehash: e30ed8b1b8e2241bbebab1d7c5f337fabf37e1dd
-ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
+ms.author: LADocs; estfan
+ms.openlocfilehash: 9e696f6e4614052456cf2b55123d98d61b8b3b9c
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="create-and-deploy-logic-apps-with-azure-resource-manager-templates"></a>Logikai alkalmazások az Azure Resource Manager-sablonok létrehozása és telepítése
 
@@ -84,7 +84,7 @@ Az alábbiakban a sablon paramétereihez tartozó leírások:
 
 | Paraméter | Leírás | JSON-definíció példa | 
 | --------- | ----------- | ----------------------- | 
-| `logicAppName` | A nevét adja meg a logikai alkalmazást az, hogy a sablon hoz létre. | "logicAppName": {"type": "string", "metaadatok": {"description": "myExampleLogicAppName"}} |
+| `logicAppName` | A nevét adja meg a logikai alkalmazást az, hogy a sablon hoz létre. | "logicAppName": { "type": "string", "metadata": { "description": "myExampleLogicAppName" } } |
 | `testUri` | Meghatározza a tesztelési ping helyét. | "testUri": {"type": "string", "defaultValue": "http://azure.microsoft.com/status/feed/"} | 
 ||||
 
@@ -126,7 +126,7 @@ azure group deployment create --template-uri https://raw.githubusercontent.com/A
 * A kérdéseivel látogasson el az [Azure Logic Apps fórumára](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
 * A funkciókkal kapcsolatos ötletek elküldéséhez vagy megszavazásához látogasson el a [Logic Apps felhasználói visszajelzéseinek oldalára](http://aka.ms/logicapps-wish).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Logikai alkalmazások figyelése](../logic-apps/logic-apps-monitor-your-logic-apps.md)

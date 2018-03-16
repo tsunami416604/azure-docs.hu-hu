@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 02/21/2018
+ms.date: 03/15/2018
 ms.author: jonbeck
-ms.openlocfilehash: dfeb6b0cbd74ff5a5b11b730c6413df189096ab8
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 6f2c72689811d26f95a64fdf5f473606f3ea3f7d
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="high-performance-compute-vm-sizes"></a>Nagy teljesítményű számítási Virtuálisgép-méretek
 
@@ -29,16 +29,8 @@ ms.lasthandoff: 02/22/2018
 
 [!INCLUDE [virtual-machines-common-a8-a9-a10-a11-specs](../../../includes/virtual-machines-common-a8-a9-a10-a11-specs.md)]
 
-## <a name="rdma-capable-instances"></a>Az RDMA-kompatibilis példányok
-A számítási igényű példányok (H16r, H16mr, A8 és A9) egy részét a beállítást, a távoli közvetlen memória-hozzáférés (RDMA) hálózati kapcsolatot a hálózati adaptert. Ez az interfész mellett más Virtuálisgép-méretek elérhető szabványos Azure hálózati kapcsolat van. 
-  
-Ez az interfész lehetővé teszi az RDMA-kompatibilis példányok egy InfiniBand hálózati FDR sebességét H16r és H16mr virtuális gépek és a gyorsító A8 és A9 virtuális gépek QDR sebességet működő protokollt használó kommunikációra. E RDMA-képességeinek képes javítani, a méretezhetőség és a Message Passing Interface (MPI) alkalmazások teljesítményét.
-
-Az RDMA-kompatibilis Windows virtuális gépek, az Azure RDMA hálózati elérésére vonatkozó követelmények a következők: 
 
 * **Operációs rendszer** – Windows Server 2016-os, Windows Server 2012 R2, Windows Server 2012-ben
-
-* **Rendelkezésre állási csoportot, vagy a felhőalapú szolgáltatás** – RDMA-kompatibilisek-e a virtuális gépek, az azonos rendelkezésre állási csoport (Ha használja az Azure Resource Manager telepítési modell) vagy az ugyanazon a felhőalapú szolgáltatás telepítése (Ha használja a klasszikus üzembe helyezési modellel). Azure Batch használja, ha az RDMA-kompatibilisek-e virtuális gépek ugyanabban a készletben kell lennie.
 
 * **MPI** -Microsoft MPI (MS-MPI) 2012 R2 vagy újabb, illetve Intel MPI könyvtár 5.x
 
@@ -61,7 +53,6 @@ Az RDMA-kompatibilis Windows virtuális gépek, az Azure RDMA hálózati eléré
 ## <a name="using-hpc-pack"></a>HPC Pack használatával
 
 [A Microsoft HPC Pack](https://technet.microsoft.com/library/jj899572.aspx), a Microsoft szabad HPC fürt és a feladat felügyeleti megoldás, a beállítás egy a, hogy a számítási fürt létrehozása az Azure-ban MPI Windows-alapú alkalmazások és más HPC munkaterhelések futtatásához. HPC Pack 2012 R2 és újabb verziók például futtatókörnyezetének az MS-MPI, amely RDMA-kompatibilisek-e virtuális gépek az Azure RDMA hálózati telepítésekor használ.
-
 
 
 

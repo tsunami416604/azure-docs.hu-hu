@@ -2,8 +2,8 @@
 title: "Az Azure Machine Learning-telepítés hibaelhárítási útmutatója |} Microsoft Docs"
 description: "A központi telepítés és a szolgáltatások létrehozásakor hibaelhárítási útmutatója"
 services: machine-learning
-author: raymondl
-ms.author: raymondl
+author: AashishB
+ms.author: AashishB
 manager: mwinkle
 ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 11/16/2017
-ms.openlocfilehash: 4cf372f17c3ded5c25a6ebde70b17b2c095a7169
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 614767840f8781c3c30c358dcf3ffc366aa3c0d6
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="troubleshooting-service-deployment-and-environment-setup"></a>Hibaelhárítás a szolgáltatás telepítése és a környezet beállítása
 A következő információ segíthet a hiba okának megállapításához a modell felügyeleti környezet beállításakor.
@@ -87,7 +87,7 @@ Python példa:
 ```
 
 ## <a name="other-common-problems"></a>Egyéb gyakori problémák
-- Ha az azure cli-ml pip telepítési hibával meghiúsul `cannot find the path specified` Windows-gépen, hosszú elérési engedélyezni kell. See https://blogs.msdn.microsoft.com/jeremykuhne/2016/07/30/net-4-6-2-and-long-paths-on-windows-10/. 
+- Ha az azure cli-ml pip telepítési hibával meghiúsul `cannot find the path specified` Windows-gépen, hosszú elérési engedélyezni kell. Lásd: https://blogs.msdn.microsoft.com/jeremykuhne/2016/07/30/net-4-6-2-and-long-paths-on-windows-10/. 
 - Ha a `env setup` parancs `LocationNotAvailableForResourceType`, valószínűleg használja a megfelelő helyre (régió) gépi tanulási erőforrásokat. Győződjön meg arról, hogy a meghatározott helyre a `-l` paraméter `eastus2`, `westcentralus`, vagy `australiaeast`.
 - Ha a `env setup` parancs `Resource quota limit exceeded`, győződjön meg arról, hogy van elég az előfizetésben elérhető magok és, hogy az erőforrások nem használják fel egyéb folyamatok.
 - Ha a `env setup` parancs `Invalid environment name. Name must only contain lowercase alphanumeric characters`, győződjön meg arról, hogy a szolgáltatás neve nem tartalmaz-nagybetűk, szimbólumok vagy az aláhúzás (_) (mint a *my_environment*).

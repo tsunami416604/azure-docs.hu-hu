@@ -3,8 +3,8 @@ title: "A Virtuálisgép-ajánlat a piactér tesztelése |} Microsoft Docs"
 description: "A Virtuálisgép-lemezkép tesztelése az Azure piactéren ismertetése."
 services: marketplace-publishing
 documentationcenter: 
-author: HannibalSII
-manager: hascipio
+author: msmbaldwin
+manager: mbaldwin
 editor: 
 ms.assetid: 7a41c3c6-625c-4478-b804-e124dee89040
 ms.service: marketplace
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/01/2016
-ms.author: hascipio
-ms.openlocfilehash: 26f856059b381be91b9cdd1f98a11dc90813c0c5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: mbaldwin
+ms.openlocfilehash: 7f225f113dd465f79d5d195b59a809fe3be6a1f8
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="test-your-vm-offer-for-the-azure-marketplace-in-staging"></a>A tesztelési virtuális gép az Azure piactéren ajánlatát tesztelése
 Átmeneti azt jelenti, hogy a SKU "védőfal", ahol tesztelése és érvényesítése funkciókat, mielőtt telepítené őket a piactér privát telepítése. A Termékváltozat volna egy felhasználói, akik már telepítették az átmeneti jelenik meg. A Virtuálisgép-lemezkép igazolja a kell előkészítésre továbbít.
@@ -47,7 +47,7 @@ ms.lasthandoff: 10/11/2017
    * Győződjön meg arról, hogy tartalom marketing jeleníti meg helyesen a piactéren.
    * A Virtuálisgép-lemezkép-végpontok közötti üzembe helyezése.
      
-      ![img-térkép-portál](media/marketplace-publishing-push-to-staging/pubportal-mapping-azure-portal.jpg)
+      ![img-map-portal](media/marketplace-publishing-push-to-staging/pubportal-mapping-azure-portal.jpg)
 
 > [!IMPORTANT]
 > Az ajánlatot marad mindaddig, amíg Ön értesítést a közzétételi portálon Microsoft átmeneti [**közzététel** lapon > kattintson a gombra **"Kérelem jóváhagyásra való leküldéses az éles"**], hogy készen, amelyekkel a éles. Ez az az ideális idő szeretné, hogy a csoport ellenőrzése minden tagját keresztül minden felsorolt fog ajánlatát előkészítésekor.
@@ -56,9 +56,9 @@ ms.lasthandoff: 10/11/2017
 > 
 > 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Most, hogy az ajánlatot "előkészített" és funkciókat, tesztelése és tartalom marketing, folytathatja a végső közzétételi fázis **4. lépés**: [központi telepítése az ajánlatot a piactér](marketplace-publishing-push-to-production.md).
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 * [Első lépések: az ajánlat közzététele az Azure piactéren](marketplace-publishing-getting-started.md)
 

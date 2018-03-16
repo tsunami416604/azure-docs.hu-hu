@@ -14,7 +14,7 @@ Szeretne létrehozni, és az Azure virtuális gépek (VM) kezelése a konziszten
 
 
 ## <a name="ansible"></a>Ansible
-[Ansible](https://www.ansible.com/) egy automatizálási motor konfigurációs, virtuális gép létrehozása, vagy az alkalmazás központi telepítése. Ansible ügynök nélküli modellt alkalmaz, általában az SSH-kulcsokat, és kezelheti a célszámítógépekre hitelesítéséhez. Runbookok Ansible modullistából egyedi feladatokat hajthat végre számos konfigurációs feladatok vannak definiálva. További információkért lásd: [hogyan Ansible működik](https://www.ansible.com/how-ansible-works).
+[Ansible](https://www.ansible.com/) egy automatizálási motor konfigurációs, virtuális gép létrehozása, vagy az alkalmazás központi telepítése. Ansible ügynök nélküli modellt alkalmaz, általában az SSH-kulcsokat, és kezelheti a célszámítógépekre hitelesítéséhez. Konfigurációs feladatok playbooks Ansible modullistából egyedi feladatokat hajthat végre több vannak definiálva. További információkért lásd: [hogyan Ansible működik](https://www.ansible.com/how-ansible-works).
 
 Az alábbiak végrehajtásának módját ismerheti meg:
 
@@ -41,19 +41,19 @@ Az alábbiak végrehajtásának módját ismerheti meg:
 
 
 ## <a name="cloud-init"></a>Cloud-init
-[Felhő inicializálás](https://cloudinit.readthedocs.io) Linux virtuális gép testreszabása, először elinduló széles körben használt módszer. Felhő inicializálás használhatja csomagok és a fájlok írási, vagy a felhasználók és biztonsági beállításainak. Neve a rendszerindítási folyamat során a felhő inicializálás, mert nincsenek további lépéseket vagy a konfiguráció alkalmazásához szükséges ügynökök.  Helyes formátumban módjáról további információ a `#cloud-config` fájlok, tekintse meg a [felhő-inicializációs dokumentációs oldalát](http://cloudinit.readthedocs.io/en/latest/topics/format.html#cloud-config-data).  `#cloud-config`fájlok Base64 kódolású szöveget fájlok.
+A [cloud-init](https://cloudinit.readthedocs.io) egy széles körben használt módszer a Linux rendszerű virtuális gépek első indításkor való testreszabásához. A cloud-init használatával csomagokat telepíthet és fájlokat írhat, vagy beállíthatja a felhasználókat és a biztonságot. Neve a rendszerindítási folyamat során a felhő inicializálás, mert nincsenek további lépéseket vagy a konfiguráció alkalmazásához szükséges ügynökök.  Helyes formátumban módjáról további információ a `#cloud-config` fájlok, tekintse meg a [felhő-inicializációs dokumentációs oldalát](http://cloudinit.readthedocs.io/en/latest/topics/format.html#cloud-config-data).  `#cloud-config` fájlok Base64 kódolású szöveget fájlok.
 
-Felhő inicializálás terjesztéseket is használható. Például, hogy ne használjon **apt-get-telepítés** vagy **yum telepítése** csomag telepítéséhez. Helyette megadhatja a telepítendő csomagok listája. Felhő inicializálás automatikusan használja a natív csomag felügyeleti eszköz a distro választja.
+A cloud-init különböző disztribúciókon is működik. Például nem kell az **apt-get install** vagy a **yum install** használatával telepítenie a csomagokat. Ehelyett megadhatja a telepítendő csomagok listáját. A cloud-init automatikusan a natív csomagkezelő eszközt használja a kiválasztott disztribúcióhoz.
 
  Folyamatosan dolgozunk a Linux distro hitelesített Partnereinkkel együtt kell biztosítani a felhő inicializálás engedélyezve képek érhető el az Azure piactéren. Ezeket a lemezképeket elérhetővé teheti a felhő inicializálás és konfigurációk zökkenőmentesen működjön együtt a virtuális gépek és virtuálisgép-méretezési készlet. Az alábbi táblázat ismerteti az Azure platformon aktuális felhő inicializálás engedélyezve képek elérhetőségét:
 
 | Közzétevő | Ajánlat | SKU | Verzió | felhő inicializálás kész
 |:--- |:--- |:--- |:--- |:--- |:--- |
-|Canonical |UbuntuServer |16.04-ES LTS VERZIÓ |legújabb |igen | 
+|Canonical |UbuntuServer |16.04-LTS |legújabb |igen | 
 |Canonical |UbuntuServer |14.04.5-LTS |legújabb |igen |
 |CoreOS |CoreOS |Stable |legújabb |igen |
-|OpenLogic |CentOS |7-KONFIGURÁCIÓELEM |legújabb |előzetes verzióban |
-|RedHat |RHEL |7-NYERS-KONFIGURÁCIÓELEM |legújabb |előzetes verzióban |
+|OpenLogic |CentOS |7-CI |legújabb |előzetes verzió |
+|RedHat |RHEL |7-RAW-CI |legújabb |előzetes verzió |
 
 Ismerje meg a felhő inicializálás Azure kapcsolatos további részletek:
 
@@ -61,7 +61,7 @@ Ismerje meg a felhő inicializálás Azure kapcsolatos további részletek:
 - [Automatikus Virtuálisgép-konfiguráció használata felhő inicializálás oktatóanyag próbálja](../articles/virtual-machines/linux/tutorial-automate-vm-deployment.md).
 
 
-## <a name="powershell-dsc"></a>A PowerShell DSC
+## <a name="powershell-dsc"></a>PowerShell DSC
 [PowerShell kívánt állapot konfigurációs szolgáltatása (DSC)](https://msdn.microsoft.com/en-us/powershell/dsc/overview) olyan felügyeleti platform célszámítógépekre konfigurációjának meghatározása. A DSC használata Linux keresztül a [Open Management Infrastructure (OMI) kiszolgáló](https://collaboration.opengroup.org/omi/).
 
 A DSC-konfigurációk határozza meg, mi egy számítógépre telepítéséhez és a gazdagép konfigurálása. A helyi Configuration Manager (LCM) motor dolgozza fel a kért műveletek megnyomott konfigurációk alapján minden cél csomóponton fut. A lekérési kiszolgálójával egy webszolgáltatás, amelyet a DSC-konfigurációk és a kapcsolódó erőforrások egy központi gazdagépen futtatja. A lekérési kiszolgálójával kommunikál a LCM motor adja meg a konfigurálást, és a megfelelőségi jelentés minden egyes megcélzott gazdagépen.
@@ -103,7 +103,7 @@ Az alábbiak végrehajtásának módját ismerheti meg:
 
 
 ## <a name="azure-automation"></a>Azure Automation
-[Azure Automation szolgáltatásbeli](https://azure.microsoft.com/services/automation/) használja a runbookok feldolgozásához feladatokhoz a virtuális gépeken célozhat meg. Azure Automation szolgáltatásbeli meglévő virtuális gépek kezeléséhez helyett létrehozhat egy infrastruktúrát használja. Azure Automation szolgáltatásbeli futtathatja a Linux és Windows virtuális gépek, valamint a hibrid forgatókönyv-feldolgozók – helyszíni virtuális vagy fizikai gépek között. A verziókövetési tárházat, például a Githubon Runbookok tárolhatja. Ezek a runbookok követően futtathatja manuálisan vagy egy meghatározott ütemezés szerint.
+[Azure Automation szolgáltatásbeli](https://azure.microsoft.com/services/automation/) használja a runbookok feldolgozásához feladatokhoz a virtuális gépeken célozhat meg. Azure Automation szolgáltatásbeli meglévő virtuális gépek kezeléséhez helyett létrehozhat egy infrastruktúrát használja. Azure Automation szolgáltatásbeli futtathatja a Linux és Windows virtuális gépek, valamint a hibrid forgatókönyv-feldolgozót a helyszíni virtuális vagy fizikai gépek között. A verziókövetési tárházat, például a Githubon Runbookok tárolhatja. Ezek a runbookok követően futtathatja manuálisan vagy egy meghatározott ütemezés szerint.
 
 Azure Automation szolgáltatásbeli is biztosít, amely lehetővé teszi, hogyan kell konfigurálni a virtuális gépek adott halmazát definícióinak létrehozásához szükséges konfiguráló (DSC) szolgáltatás. A DSC majd biztosítja a szükséges konfiguráció alkalmazása és konzisztens marad a virtuális Gépet. Az Azure Automation DSC futó Windows- és Linux rendszerű gépek.
 
@@ -130,5 +130,5 @@ Az alábbiak végrehajtásának módját ismerheti meg:
 - [Létrehozhat egy fejlesztési infrastruktúrát a Linux virtuális gép az Azure-ban Jenkins, a Githubon és a Docker](../articles/virtual-machines/linux/tutorial-jenkins-github-docker-cicd.md).
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az Azure-infrastruktúra automatizálási eszközeivel használandó számos különböző lehetőség áll rendelkezésre. Lehetősége van a szabadságot, hogy a megoldás, amely a leginkább megfelel az igényeinek és a környezet használata. Első lépések, majd próbálja meg az egyes Azure beépített eszközök, lásd: a testreszabása automatizálása a [Linux](../articles/virtual-machines/linux/tutorial-automate-vm-deployment.md) vagy [Windows](../articles/virtual-machines/windows/tutorial-automate-vm-deployment.md) virtuális gép.

@@ -14,18 +14,18 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
-ms.author: cynthn
-ms.openlocfilehash: 3c7b34652ea4c9340b9fe7f6ada3f9992642aeac
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: cynthn;davberg
+ms.openlocfilehash: 1d3db66c54769a3efc91a4e909d9c53fc2650743
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="compute-benchmark-scores-for-linux-vms"></a>Teljesítményteszt pontszámok számítási Linux virtuális gépekhez
 A következő CoreMark teljesítményteszt eredmények megjelenítése Azure nagy teljesítményű virtuális gép következőhöz Ubuntu rendszert futtató számítási teljesítményt. Számítási teljesítményteszt pontszámok is elérhető [Windows virtuális gépek](../windows/compute-benchmark-scores.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 ## <a name="a-series---compute-intensive"></a>A-sorozatú-számítási igényű
-| Méret | Vcpu | NUMA-csomópontok | CPU | Fut. | Az ismétlés/mp | Szórás |
+| Méret | Virtuális magok | NUMA-csomópontok | CPU | Futtatások | Az ismétlés/mp | StdDev |
 | --- | --- | --- | --- | --- | --- | --- |
 | Standard_A8 |8 |1 |Intel Xeon CPU E5-2670 0 @ 2.6-os GHz |179 |110,294 |554 |
 | Standard_A9 |16 |2 |Intel Xeon CPU E5-2670 0 @ 2.6-os GHz |189 |210,816 |2,126 |
@@ -33,7 +33,7 @@ A következő CoreMark teljesítményteszt eredmények megjelenítése Azure nag
 | Standard_A11 |16 |2 |Intel Xeon CPU E5-2670 0 @ 2.6-os GHz |188 |210,727 |2,073 |
 
 ## <a name="dv2-series"></a>Dv2-sorozat
-| Méret | Vcpu | NUMA-csomópontok | CPU | Fut. | Az ismétlés/mp | Szórás |
+| Méret | Virtuális magok | NUMA-csomópontok | CPU | Futtatások | Az ismétlés/mp | StdDev |
 | --- | --- | --- | --- | --- | --- | --- |
 | Standard_D1_v2 |1 |1 |Intel Xeon E5-2673 v3 2,4 GHz-es @ |140 |14,852 |780 |
 | Standard_D2_v2 |2 |1 |Intel Xeon E5-2673 v3 2,4 GHz-es @ |133 |29,467 |1,863 |
@@ -47,7 +47,7 @@ A következő CoreMark teljesítményteszt eredmények megjelenítése Azure nag
 | Standard_D15_v2 |20 |2 |Intel Xeon E5-2673 v3 2,4 GHz-es @ |28 |268,560 |4,667 |
 
 ## <a name="f-series"></a>F-sorozat
-| Méret | Vcpu | NUMA-csomópontok | CPU | Fut. | Az ismétlés/mp | Szórás |
+| Méret | Virtuális magok | NUMA-csomópontok | CPU | Futtatások | Az ismétlés/mp | StdDev |
 | --- | --- | --- | --- | --- | --- | --- |
 | Standard_F1 |1 |1 |Intel Xeon E5-2673 v3 2,4 GHz-es @ |154 |15,602 |787 |
 | Standard_F2 |2 |1 |Intel Xeon E5-2673 v3 2,4 GHz-es @ |126 |29,519 |1,233 |
@@ -56,7 +56,7 @@ A következő CoreMark teljesítményteszt eredmények megjelenítése Azure nag
 | Standard_F16 |16 |2 |Intel Xeon E5-2673 v3 2,4 GHz-es @ |42 |218,571 |5,113 |
 
 ## <a name="g-series"></a>G-sorozat
-| Méret | Vcpu | NUMA-csomópontok | CPU | Fut. | Az ismétlés/mp | Szórás |
+| Méret | Virtuális magok | NUMA-csomópontok | CPU | Futtatások | Az ismétlés/mp | StdDev |
 | --- | --- | --- | --- | --- | --- | --- |
 | Standard_G1 |2 |1 |Intel Xeon E5-2698B v3 @ 2 GHz-es |83 |31,310 |2,891 |
 | Standard_G2 |4 |1 |Intel Xeon E5-2698B v3 @ 2 GHz-es |84 |60,112 |3,537 |
@@ -65,7 +65,7 @@ A következő CoreMark teljesítményteszt eredmények megjelenítése Azure nag
 | Standard szintű, G5 |32 |2 |Intel Xeon E5-2698B v3 @ 2 GHz-es |84 |360,329 |14,212 |
 
 ## <a name="gs-series"></a>GS sorozat
-| Méret | Vcpu | NUMA-csomópontok | CPU | Fut. | Az ismétlés/mp | Szórás |
+| Méret | Virtuális magok | NUMA-csomópontok | CPU | Futtatások | Az ismétlés/mp | StdDev |
 | --- | --- | --- | --- | --- | --- | --- |
 | Standard_GS1 |2 |1 |Intel Xeon E5-2698B v3 @ 2 GHz-es |84 |28,613 |1,884 |
 | Standard_GS2 |4 |1 |Intel Xeon E5-2698B v3 @ 2 GHz-es |83 |54,348 |3,474 |
@@ -74,7 +74,7 @@ A következő CoreMark teljesítményteszt eredmények megjelenítése Azure nag
 | Standard_GS5 |32 |2 |Intel Xeon E5-2698B v3 @ 2 GHz-es |84 |357,396 |16,228 |
 
 ## <a name="h-series"></a>H-sorozat
-| Méret | Vcpu | NUMA-csomópontok | CPU | Fut. | Az ismétlés/mp | Szórás |
+| Méret | Virtuális magok | NUMA-csomópontok | CPU | Futtatások | Az ismétlés/mp | StdDev |
 | --- | --- | --- | --- | --- | --- | --- |
 | Standard_H8 |8 |1 |Intel Xeon E5-2667 v3 3,2 GHz-es @ |28 |140,782 |2,512 |
 | Standard_H16 |16 |2 |Intel Xeon E5-2667 v3 3,2 GHz-es @ |35 |275,289 |7,110 |
@@ -86,7 +86,7 @@ A következő CoreMark teljesítményteszt eredmények megjelenítése Azure nag
 ## <a name="about-coremark"></a>CoreMark kapcsolatos
 Linux-számok futtatásával volt számított [CoreMark](http://www.eembc.org/coremark/faq.php) az Ubuntu. CoreMark lett konfigurálva a virtuális processzorok számának beállítása szálak számát, és feldolgozási PThreads értékre. A cél az ismétlések száma alapján várt teljesítményét, és adja meg a legyen legalább 20 másodperc (általában sokkal hosszabb) futtatókörnyezettel lett igazítva. A végleges pontszám elosztja a másodpercig tartott a a teszt futtatása befejeződött ismétlések számát jelöli. Minden teszt virtuális gépek legalább hét alkalommal volt futtatva. Teszteli (kivéve a H – series_ minden nyilvános Azure-régiót több virtuális a 2015 október futtassa a virtuális gép támogatta a Futtatás időpontjától.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Tárolási kapacitás, a lemez adatai és Virtuálisgép-méretek között további szempontokról, lásd: [virtuális gépek méretei](sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 * A CoreMark-parancsfájlok futtathatók a Linux virtuális gépek, le kell töltenie a [parancsfájl pack CoreMark](http://download.microsoft.com/download/3/0/5/305A3707-4D3A-4599-9670-AAEB423B4663/AzureCoreMarkScriptPack.zip).
 

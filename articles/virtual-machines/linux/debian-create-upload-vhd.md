@@ -13,13 +13,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 02/02/2017
+ms.date: 03/12/2018
 ms.author: szark
-ms.openlocfilehash: 7802ac701dfb865186beac3889ea2a5b4d0c4770
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: 9b32b298f141e9ee54b4c42d3ee9c15174daf8b7
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="prepare-a-debian-vhd-for-azure"></a>Debian-alapú VHD előkészítése Azure-beli használatra
 ## <a name="prerequisites"></a>Előfeltételek
@@ -30,7 +30,7 @@ Ez a szakasz azt feltételezi, hogy már telepítette a Debian Linux operációs
 * Az újabb VHDX formátum nem támogatott az Azure-ban. A lemez VHD formátumú Hyper-V kezelőjével konvertálhatja vagy a **convert-vhd** parancsmag.
 * A Linux rendszer telepítésekor LVM (gyakran sok telepítés alapértelmezett), hanem szabványos partíciók használata ajánlott. LVM neve ütközik a klónozott virtuális gépek, így elkerülhető, különösen akkor, ha egy operációsrendszer-lemez legalább egyszer meg kell hibaelhárítási egy másik virtuális géphez csatlakoztatható. [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) vagy [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) Ha előnyben részesített adatlemezek használható.
 * Ne konfiguráljon egy swap partíciót az operációsrendszer-lemezképet. Az Azure Linux ügynök beállítható úgy, hogy az ideiglenes erőforrás lemezen a lapozófájl létrehozásához. További információk a megtalálhatók az alábbi lépéseket.
-* Összes, a virtuális merevlemezeket kell rendelkeznie, amely többszörösei 1 MB méretű.
+* Minden, az Azure virtuális merevlemez rendelkeznie kell egy virtuális mérete 1MB igazodik. Virtuális merevlemez egy nyers lemezen történő átalakítása meg kell győződnie arról, hogy a nyers lemez mérete 1MB átalakítás előtti többszöröse. Lásd: [Linux telepítési jegyzetek](create-upload-generic.md#general-linux-installation-notes) további információt.
 
 ## <a name="use-azure-manage-to-create-debian-vhds"></a>Debian VHD-k létrehozásához használja a Azure-kezelése
 Eszközök is elérhetők generálásához. az Azure-ba, Debian virtuális merevlemezeket, mint a [azure-kezelése](https://github.com/credativ/azure-manage) parancsfájl [credativ](http://www.credativ.com/). Ez az az ajánlott módszer, és teljesen új lemezkép létrehozása. Például létrehozásához futtassa az alábbi parancsokat letöltése Debian 8 virtuális merevlemez azure-kezelése (és függőségeinek) és a azure_build_image parancsprogrammal:

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: seguler
-ms.openlocfilehash: 7d875a1e43908f49424f4e40fe923639cfa02385
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 13e09a3081c9dfa2d88625489a82c687d6722f20
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="transfer-data-with-the-azcopy-on-windows"></a>Adatátvitel az AzCopy a Windows rendszeren
 AzCopy egy parancssori segédprogram, és a Microsoft Azure Blob, a fájl és a tábla tárolási, adat másolása az optimális teljesítményének készült egyszerű parancsok használatával. Másolhat adatokat a fájlrendszer és a storage-fiók, vagy tárfiókok között.  
@@ -56,7 +56,7 @@ Vegye figyelembe, hogy ha a mappa `C:\myfolder` nem létezik, AzCopy hoz létre,
 ### <a name="download-a-single-blob-from-the-secondary-region"></a>A másodlagos régióban egyetlen blob letöltése
 
 ```azcopy
-AzCopy /Source:https://myaccount-secondary.blob.core.windows.net/mynewcontainer /Dest:C:\myfolder /SourceKey:key /Pattern:abc.txt
+AzCopy /Source:https://myaccount-secondary.blob.core.windows.net/mynewcontainer /Dest:C:\myfolder /SourceKey:key /Pattern:"abc.txt"
 ```
 
 Vegye figyelembe, hogy engedélyezve van a másodlagos régióba eléréséhez írásvédett georedundáns tárolás kell rendelkeznie.
@@ -106,7 +106,7 @@ A letöltési mappa művelet után `C:\myfolder` a következő fájlokat tartalm
     C:\myfolder\abc1.txt
     C:\myfolder\abc2.txt
 
-Az előtag a virtuális könyvtárban, a blob nevének első részét képező vonatkozik. A fenti példában a virtuális könyvtár nem egyezik a megadott előtagot, így azt nem töltődik le. Emellett ha a beállítás `\S` nincs megadva, az AzCopy nem tölti le a blobokat.
+Az előtag a virtuális könyvtárban, a blob nevének első részét képező vonatkozik. A fenti példában a virtuális könyvtár nem egyezik a megadott előtagot, így azt nem töltődik le. Emellett ha a beállítás `/S` nincs megadva, az AzCopy nem tölti le a blobokat.
 
 ### <a name="set-the-last-modified-time-of-exported-files-to-be-same-as-the-source-blobs"></a>Állítsa be az exportált fájlokat lehet ugyanaz, mint a forrás utolsó módosításának időpontja
 
@@ -276,7 +276,7 @@ A `/SyncCopy` lehetőség biztosítja, hogy a másolási művelet lekérdezi az 
 AzCopy /Source:https://myaccount1.blob.core.windows.net/myContainer/ /Dest:https://myaccount2.blob.core.windows.net/myContainer/ /SourceKey:key1 /DestKey:key2 /Pattern:ab /SyncCopy
 ```
 
-`/SyncCopy`További kilépő költség képest aszinkron másolási hozhat létre, az ajánlott módszer az, hogy egy Azure virtuális gép, amely ugyanabban a régióban, a forrás tárolási fiókkal kilépő költségek elkerülése érdekében használja ezt a beállítást.
+`/SyncCopy` További kilépő költség képest aszinkron másolási hozhat létre, az ajánlott módszer az, hogy egy Azure virtuális gép, amely ugyanabban a régióban, a forrás tárolási fiókkal kilépő költségek elkerülése érdekében használja ezt a beállítást.
 
 ## <a name="download-files-from-file-storage"></a>A File storage a fájlok letöltése
 
@@ -614,9 +614,9 @@ AzCopy /Source:https://127.0.0.1:10002/myaccount/mytable/ /Dest:C:\myfolder /Sou
 
 AzCopy paramétereinek az alábbiakban található. Is beírhatja a Súgó a parancssorból a következő parancsok egyikét az AzCopy segítségével:
 
-* AzCopy részletes parancssori segítséget:`AzCopy /?`
-* További információt az AzCopy paramétert:`AzCopy /?:SourceKey`
-* A parancssori példák:`AzCopy /?:Samples`
+* AzCopy részletes parancssori segítséget: `AzCopy /?`
+* További információt az AzCopy paramétert: `AzCopy /?:SourceKey`
+* A parancssori példák: `AzCopy /?:Sample`
 
 ### <a name="sourcesource"></a>/ Source: "forrás"
 

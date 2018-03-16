@@ -15,17 +15,23 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/08/2017
 ms.author: tdykstra
-ms.openlocfilehash: 7f82083cd18f762d1037da2ccf43e9d0c220fe09
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 8c028bd20518a07a5fb35e36d0819c001eb2a7d5
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-table-storage-bindings-for-azure-functions"></a>Azure Table storage kötései Azure Functions
 
 Ez a cikk ismerteti az Azure Functions kötések Azure Table storage használata. Az Azure Functions támogatja bemeneti és kimeneti Azure Table storage kötései.
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
+
+## <a name="packages"></a>Csomagok
+
+A Table storage kötések szerepelnek a [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs) NuGet-csomagot. A csomag forráskódja van a [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/) GitHub-tárházban.
+
+[!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
 ## <a name="input"></a>Input (Bemenet)
 
@@ -288,7 +294,7 @@ module.exports = function (context, myQueueItem) {
  
 A [C# osztálykönyvtárakhoz](functions-dotnet-class-library.md), bemeneti táblakötéssel konfigurálása a következő attribútumokat használhatja:
 
-* [TableAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/TableAttribute.cs), amely van megadva a NuGet-csomag [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs).
+* [TableAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/TableAttribute.cs)
 
   Az attribútum konstruktora a tábla nevét, a partíciós kulcs és a sorkulcs vesz igénybe. Használat egy kimeneti paramétert vagy a függvény visszatérési értéke a következő példában látható módon:
 
@@ -318,7 +324,7 @@ A [C# osztálykönyvtárakhoz](functions-dotnet-class-library.md), bemeneti táb
 
   Tekintse meg a teljes például [bemenet – C# példa](#input---c-example).
 
-* [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs)NuGet-csomagot a definiált [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs)
+* [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs)
 
   Adja meg a tárfiókot egy másik lehetőséget nyújt. A konstruktornak, amely tartalmazza a tárolási kapcsolati karakterlánc alkalmazásbeállítás neve vesz igénybe. Az attribútum a paraméter, módszer vagy osztály szintjén is alkalmazható. A következő példa bemutatja az osztály és módszer:
 
@@ -567,7 +573,7 @@ module.exports = function (context) {
 
 ## <a name="output---attributes"></a>Kimeneti - attribútumok
 
-A [C# osztálykönyvtárakhoz](functions-dotnet-class-library.md), használja a [TableAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/TableAttribute.cs), amely van megadva a NuGet-csomag [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs).
+A [C# osztálykönyvtárakhoz](functions-dotnet-class-library.md), használja a [TableAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/TableAttribute.cs).
 
 Az attribútum konstruktora a táblanév vesz igénybe. A használat egy `out` paraméter vagy a visszatérési érték a, a következő példában látható módon:
 
@@ -625,7 +631,7 @@ A Table storage kimeneti kötése támogatja a következő esetekben:
 
 * **Egy vagy több sor írása C# vagy C#**
 
-  A C# és C# a parancsfájlt, hozzáférhet a kimeneti táblaentitássá a metódusparaméter `ICollector<T> paramName` vagy `ICollectorAsync<T> paramName`. A C# parancsfájl `paramName` érték szerepel a `name` tulajdonsága *function.json*. `T` Adja meg a hozzáadni kívánt entitásokat sémája. Általában `T` származik `TableEntity` vagy megvalósítja `ITableEntity`, de nem kell. A partíciós kulcs és a sor kulcsértékek a *function.json* vagy a `Table` attribútum konstruktora nem szerepel ebben a forgatókönyvben.
+  A C# és C# a parancsfájlt, hozzáférhet a kimeneti táblaentitássá a metódusparaméter `ICollector<T> paramName` vagy `IAsyncCollector<T> paramName`. A C# parancsfájl `paramName` érték szerepel a `name` tulajdonsága *function.json*. `T` Adja meg a hozzáadni kívánt entitásokat sémája. Általában `T` származik `TableEntity` vagy megvalósítja `ITableEntity`, de nem kell. A partíciós kulcs és a sor kulcsértékek a *function.json* vagy a `Table` attribútum konstruktora nem szerepel ebben a forgatókönyvben.
 
   Helyett használja a `CloudTable paramName` metódus paraméterének írni, hogy a tábla az Azure Storage szolgáltatás SDK használatával.
 

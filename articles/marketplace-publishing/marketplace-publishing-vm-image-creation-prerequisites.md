@@ -3,8 +3,8 @@ title: "Hozzon létre egy virtuálisgép-lemezkép az Azure piactéren műszaki 
 description: "A létrehozása és telepítése a virtuálisgép-lemezkép megvásárlásához mások az Azure piactéren vonatkozó követelmények megértése érdekében."
 services: marketplace-publishing
 documentationcenter: 
-author: HannibalSII
-manager: hascipio
+author: msmbaldwin
+manager: mbaldwin
 editor: 
 ms.assetid: 63c16966-0304-4b17-a715-368a0a5ccb2c
 ms.service: marketplace
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 04/29/2016
-ms.author: hascipio; v-divte
-ms.openlocfilehash: af3e2ad623d8d7bfafe676411f9ae3fbee78aab8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: mbaldwin
+ms.openlocfilehash: cf1f061c28dd0c106823d34ad39aac5e577c8b41
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="technical-prerequisites-for-creating-a-virtual-machine-image-for-the-azure-marketplace"></a>Hozzon létre egy virtuálisgép-lemezkép az Azure piactéren műszaki előfeltételei
 A folyamat megkezdése előtt alaposan és megértettem, hogy hol és miért minden egyes lépést. Amennyire csak lehetséges, meg kell készítse elő a vállalati adatok és egyéb adatokat, töltse le a szükséges eszközök, és/vagy technikai összetevő létrehozása az ajánlat létrehozási folyamat megkezdése előtt. Ezek az elemek egyértelműen kiderül, hogy ez a cikk áttekintése kell lennie.  
@@ -29,7 +29,7 @@ Készen áll a megkezdése előtt a következő elemeket kell rendelkezniük:
 * Attól függően, hogy milyen operációs rendszert céloz meg, telepítse a [Azure PowerShell-parancsmagok](https://www.microsoft.com/web/handlers/webpi.ashx/getinstaller/WindowsAzurePowershellGet.3f.3f.3fnew.appids) vagy [Linux parancssori felület eszköz](https://go.microsoft.com/fwlink/?LinkId=253472&clcid=0x409) a a [Azure letölti](https://azure.microsoft.com/downloads/) lap.
 * Telepítse az Azure Storage Explorer a Codeplex webhelyen.
 * Töltse le, és a hitelesítésszolgáltató vizsgálati eszköz telepítése az Azure hitelesített:
-  * [http://go.microsoft.com/fwlink/?LinkId=526913](http://go.microsoft.com/fwlink/?LinkID=526913). A hitelesítésszolgáltató eszköz futtatásához Windows-alapú számítógépre van szüksége. Ha nem rendelkezik egy Windows-alapú számítógép elérhető, futtathatja az eszközt a Windows-alapú virtuális gépek használata az Azure-ban.
+  * [http://go.microsoft.com/fwlink/?LinkID=526913](http://go.microsoft.com/fwlink/?LinkID=526913). A hitelesítésszolgáltató eszköz futtatásához Windows-alapú számítógépre van szüksége. Ha nem rendelkezik egy Windows-alapú számítógép elérhető, futtathatja az eszközt a Windows-alapú virtuális gépek használata az Azure-ban.
 
 ## <a name="platforms-supported"></a>Támogatott platformok
 Virtuális gépek Azure-alapú Windows vagy Linux fejleszthet. A közzétételi folyamat – például létrehozhat egy Azure-kompatibilis virtuális merevlemez (VHD) – használja a különböző eszközök és lépések attól függően, hogy milyen operációs rendszert használ egyes elemei:  

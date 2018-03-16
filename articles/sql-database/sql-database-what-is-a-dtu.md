@@ -3,24 +3,18 @@ title: 'SQL Database: Mi a DTU? | Microsoft Docs'
 description: "Megismerheti az Azure SQL Database Transaction Unit egységek fogalmát."
 keywords: "adatbázis-beállítások, adatbázis-teljesítmény"
 services: sql-database
-documentationcenter: 
 author: CarlRabeler
-manager: jhubbard
-editor: CarlRabeler
-ms.assetid: 89e3e9ce-2eeb-4949-b40f-6fc3bf520538
+manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: Active
 ms.date: 04/14/2017
 ms.author: carlrab
-ms.openlocfilehash: 4ab447cd2ad71a787e4d6bb6052299cec52d73d0
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 9d13541444f487ad6afb9f59c6c6ac646091d42c
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="database-transaction-units-dtus-and-elastic-database-transaction-units-edtus"></a>Adatbázis-tranzakciós egységek (dtu-k) és a rugalmas adatbázis-tranzakciós egységek (edtu-k)
 Ez a cikk tartalmazza a Database Transaction Unitok (adatbázisok tranzakciós egységei, DTU-k) és a rugalmas Database Transaction Unitok (eDTU-k) ismertetését, valamint leírja, mi történik, ha a DTU-k vagy eDTU-k száma eléri a maximális értéket.  
@@ -60,7 +54,7 @@ A készleteket nagy számú, speciális felhasználási mintákkal rendelkező a
 ## <a name="what-happens-when-i-hit-my-maximum-dtus"></a>Mi történik, ha szeretnék elérte a maximális i?
 A teljesítményszintek arra vannak beállítva és utasítva, hogy biztosítsák az adatbázis futtatásához szükséges erőforrásokat a szolgáltatás-/teljesítményszint számára maximálisan megengedett korlátokon belül. Ha a számítási feladat eléri a processzor/adatátvitel/naplóátvitel számára beállított korlátok egyikét, az erőforrások továbbra is a maximálisan megengedett szinten állnak rendelkezésre, de a lekérések késleltetése valószínűleg megnövekszik. Ezek a korlátok nem okoznak hibákat, csak a számítási feladat elvégzésének lassulását. Egyes esetekben azonban a lassulás olyan jelentős lehet, hogy a lekérések időtúllépés miatt meghiúsulnak. Ha az egyidejű felhasználói munkamenetek/lekérések (munkaszálak) száma eléri a maximálisan engedélyezett korlátot, explicit hibaüzenetek jelennek meg. További információk a processzoron, a memórián, illetve az adat- és naplóátvitelen kívüli egyéb erőforrásokra vonatkozó korlátokkal kapcsolatban az [Azure SQL Database resource limits]( sql-database-resource-limits.md#what-happens-when-database-and-elastic-pool-resource-limits-are-reached) (Az Azure SQL Database erőforráskorlátai) cikk tartalmaz további információt.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Lásd: [szolgáltatásréteg](sql-database-service-tiers.md) Dtu és edtu-k érhető el, az önálló adatbázisok és a rugalmas, valamint eltérő CPU erőforrások vonatkozó korlátozások, a memória, a adatok i/o és a tranzakciós napló i/o.
 * A DTU-k felhasználásáról az [SQL Database lekérdezési terheléselemzőjének](sql-database-query-performance.md) leírásában talál további információt.
 * A DTU összetételének megállapításához használt OLTP számítási mintafeladat módszertanával kapcsolatos további információkat [az SQL Database mérési módszereinek áttekintése](sql-database-benchmark-overview.md) tartalmazza.

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 09/29/2017
 ms.author: genli
-ms.openlocfilehash: 8f6f3fc8325fb2587dc09b982efa52fbe663e2a9
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 3e2f8be0f77e220da483dcfb18d6b324d3f203ed
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-performance-diagnostics-vm-extension-for-windows"></a>Windows Azure teljesítmény Diagnostics Virtuálisgép-bővítménnyel
 
@@ -227,9 +227,7 @@ A PerfInsights eszköz különböző naplókat, konfigurálási és diagnosztika
 
 ## <a name="view-and-share-the-results"></a>Megjelenítheti és megoszthatja az eredmények
 
-A bővítményből származó kimeneti mappában tárolódik. A mappa neve log_collection, és alapértelmezés szerint a Temp meghajtó (általában D:\log_collection) alatt található. Ebben a mappában tekintheti meg a diagnosztikai naplókat, és egy jelentést az eredményekről és javaslatokat tartalmazó zip-fájlban.
-
-A zip-fájl is található a tárfiók, a telepítés során megadott. 30 napig történő megosztása [megosztott hozzáférési aláírásokkal (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md). Nevű *zipfilename*_saslink.txt is a log_collection mappában jön létre. Ez a fájl a zip-fájl letöltésére létrehozott SAS-hivatkozást tartalmaz. Bárki, aki ezt a hivatkozást tartalmaz, akkor képes a zip-fájl letöltésére.
+A bővítmény kimenete egy zip-fájl feltöltése a tárfiókba, a telepítés során megadott és 30 napig történő megosztása található [megosztott hozzáférési aláírásokkal (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md). A zip-fájl a diagnosztikai naplók és egy jelentést az eredményekről és javaslatokat tartalmaz. A kimeneti zip-fájl egy SAS hivatkozást nevű belül található *zipfilename*mappában lévő _saslink.txt **C:\Packages\Plugins\Microsoft.Azure.Performance.Diagnostics.AzurePerformanceDiagnostics \\ \<verzió >**. Bárki, aki ezt a hivatkozást tartalmaz, akkor képes a zip-fájl letöltésére.
 
 Segít a támogatási szakember, a támogatási jegy dolgozik, a Microsoft a ezen SAS hivatkozás segítségével lehet, hogy a diagnosztikai adatok letöltése.
 
@@ -240,7 +238,7 @@ Is kell tudni a portálról közvetlenül a zip-fájl letöltésére jelölje ki
 ![Képernyőfelvétel a teljesítmény diagnosztika részletes állapota](media/performance-diagnostics-vm-extension/view-detailed-status.png)
 
 > [!NOTE]
-> A SAS-hivatkozás megjelenik a portálon, hogy nem működik. Ezt okozhatja egy hibás URL-címet a kódolási és dekódolási műveletek során. Ehelyett letölthető a hivatkozás közvetlenül a *_saslink.txt fájlt a virtuális gépről.
+> A SAS-hivatkozás megjelenik a portálon néha nem működik. Ezt okozhatja egy hibás URL-címet a kódolási és dekódolási műveletek során. Ehelyett letölthető a hivatkozás közvetlenül a *_saslink.txt fájlt a virtuális gépről.
 
 ## <a name="troubleshoot-and-support"></a>Hibaelhárítás és támogatás
 
@@ -249,6 +247,6 @@ Is kell tudni a portálról közvetlenül a zip-fájl letöltésére jelölje ki
     A probléma biztonságosan figyelmen kívül hagyható, mindaddig, amíg a bővítmény állapotát jelzi, hogy a bővítmény sikeresen lett kiépítve.
 - Telepítés közben bizonyos problémák a bővítmény naplók segítségével lehet oldani. A következő könyvtárban található fájlok kerül a bővítmény végrehajtás kimenetének:
 
-        C:\Packages\Plugins\Microsoft.Azure.Performance.Diagnostics.AzurePerformanceDiagnostics
+        C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Performance.Diagnostics.AzurePerformanceDiagnostics\<version>
 
 Ha ez a cikk bármely pontján további segítségre van szüksége, forduljon az Azure-szakértők a a [MSDN Azure és a Stack Overflow fórumok](https://azure.microsoft.com/support/forums/). Másik lehetőségként is fájl az Azure támogatási incidens. Lépjen a [az Azure támogatási webhelyén](https://azure.microsoft.com/support/options/), és válassza ki **segítségre van szüksége**. Az Azure támogatási használatával kapcsolatos információkért olvassa el a [Microsoft Azure-támogatás – gyakori kérdések](https://azure.microsoft.com/support/faq/).

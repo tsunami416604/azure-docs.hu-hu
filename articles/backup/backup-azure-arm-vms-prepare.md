@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/1/2018
 ms.author: markgal;trinadhk;sogup;
-ms.openlocfilehash: 62e047d706bdc42abbe44340c87267e59eb84369
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: cd8274ab6b50eee83bc3e41ea543930aa309e790
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="prepare-your-environment-to-back-up-resource-manager-deployed-virtual-machines"></a>A környezet előkészítése a Resource Managerrel üzembe helyezett virtuális gépek biztonsági mentéséhez
 
@@ -49,12 +49,6 @@ Ha ezek a feltételek már szerepel a környezetben, lépjen a [készítsen bizt
 A környezet előkészítése előtt ügyeljen arra, hogy ezek a korlátozások megértése:
 
 * Több mint 16 adatlemezekkel rendelkező virtuális gépek biztonsági mentését nem támogatott.
-* Virtuális gépek biztonsági mentését adatokkal 1,023 GB-nál nagyobb mérete nem támogatott.
-
-  > [!NOTE]
-  > Van egy, a biztonsági mentések támogatása a virtuális gépek nagyobb, mint egy TB-os lemezeken a private Preview verziójára. További információkért tekintse meg [nagy virtuális gép biztonsági mentési támogatása a Private Preview verziójára](https://gallery.technet.microsoft.com/Instant-recovery-point-and-25fe398a).
-  >
-
 * A fenntartott IP-cím és a nem definiált végpontot a virtuális gépek biztonsági mentését nem támogatott.
 * Nem támogatott Linux egyesített kulcs beállítása (LUKS) titkosítással titkosított Linux virtuális gépek biztonsági mentéséről.
 * Nem ajánlott, amelyek tartalmazzák a fürt megosztott kötetei (CSV) vagy kibővített fájlkiszolgáló virtuális gépek biztonsági mentéséről. A fürt konfigurálása során egy pillanatkép-feladat szereplő összes virtuális gépet is érintő van szükségük. Azure biztonsági mentés nem támogatja a virtuális Gépre kiterjedő konzisztencia. 

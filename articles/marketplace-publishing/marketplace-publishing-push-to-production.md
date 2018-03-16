@@ -3,8 +3,8 @@ title: "Az ajánlat telepítése az Azure piactéren |} Microsoft Docs"
 description: "További információk, és végezze el az utasításokat az ajánlatot--telepítendő virtuálisgép-lemezkép, fejlesztői szolgáltatás, adatszolgáltatás, stb. – az Azure piactéren."
 services: marketplace-publishing
 documentationcenter: 
-author: HannibalSII
-manager: hascipio
+author: msmbaldwin
+manager: mbaldwin
 editor: 
 ms.assetid: 8f79b891-84e2-4f41-ba0d-66420e2c6b2e
 ms.service: marketplace
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/02/2016
-ms.author: hascipio
-ms.openlocfilehash: 12dc81642905cd9449a1032c7ab57298e6b69ba8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: mbaldwin
+ms.openlocfilehash: 8df7b0e49e17612743b02596e99f7d1fbe8c6803
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="deploy-your-offer-to-the-azure-marketplace"></a>Az ajánlat telepítése az Azure piactéren
 Ha elégedett az ajánlatot (Ez azt jelenti, amelyeket tesztelt forgatókönyvet, marketing tartalom stb.), és készen áll indítása, a kérelem **éles leküldése** a a **közzététel** lapon.  
@@ -76,10 +76,10 @@ Ha elégedett az ajánlatot (Ez azt jelenti, amelyeket tesztelt forgatókönyvet
 * Adatlemez nem szükséges módosítani a azonos Termékváltozat két verziója közötti.
 * Az Azure piactéren nem támogatja a felsorolt SKU árképzési megváltoztatását, az hatással van a meglévő ügyfeleknek számlázási. Győződjön meg arról, hogy nem módosítja a régiókban, amennyiben rendelkezésre áll-e a Termékváltozat felsorolt termékváltozatok árképzési. Azonban új termékváltozatok hozzáadása vagy új régiók hozzáadása egy meglévő Termékváltozat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az ajánlat élő kerül, ha tesztelje a forgatókönyvet, hogy a szerződések és -funkcióinak megfelelő működéséhez az éles környezetben, mint az összes tesztelése, és az átmeneti érvényesíthetők ellenőrzése.
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 * [Első lépések: az ajánlat közzététele az Azure piactéren](marketplace-publishing-getting-started.md)
 
 [img-pubportal-walkthru-checked]:media/marketplace-publishing-push-to-production/pubportal-walkthru-checked.png

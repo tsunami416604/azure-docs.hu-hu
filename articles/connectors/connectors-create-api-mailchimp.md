@@ -3,7 +3,7 @@ title: "Az Azure Logic Apps MailChimp összekötő |} Microsoft Docs"
 description: "Az Azure App service Logic Apps alkalmazások létrehozása A MailChimp egy SaaS-szolgáltatás, amely lehetővé teszi a cégek számára az e-mailben folytatott marketingtevékenységek (például marketing célú e-mailek küldése, automatizált üzenetek és célzott kampányok) kezelését és automatizálását."
 services: logic-apps
 documentationcenter: .net,nodejs,java
-author: MandiOhlinger
+author: ecfan
 manager: anneta
 editor: 
 tags: connectors
@@ -14,15 +14,15 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 08/18/2016
-ms.author: mandia; ladocs
-ms.openlocfilehash: 50919fd903c24e4748a6efe29af2c188b1c3c195
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.author: estfan; ladocs
+ms.openlocfilehash: 041212771db5b5971ccd220e68d71d59d8220531
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="get-started-with-the-mailchimp-connector"></a>A MailChimp-összekötő az első lépései
-A MailChimp egy SaaS-szolgáltatás, amely lehetővé teszi a cégek számára az e-mailben folytatott marketingtevékenységek (például marketing célú e-mailek küldése, automatizált üzenetek és célzott kampányok) kezelését és automatizálását.
+MailChimp, amely lehetővé teszi a vállalatok számára, kezelésére és automatizálására e-mail marketing tevékenységek, például küldés marketing e-mailek, az automatizált üzenetek és a célzott kampányok Szolgáltatottszoftver-szolgáltatásban.
 
 Most hozzon létre egy Logic app kezdheti, lásd: [logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 

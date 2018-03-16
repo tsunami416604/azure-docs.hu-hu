@@ -3,8 +3,8 @@ title: "A piactér sablon megoldás ajánlatát tesztelése |} Microsoft Docs"
 description: "Megtudhatja, hogyan tesztelheti a megoldás sablon ajánlat az Azure piactéren."
 services: marketplace-publishing
 documentationcenter: 
-author: HannibalSII
-manager: hascipio
+author: msmbaldwin
+manager: mbaldwin
 editor: 
 ms.assetid: ef8f9b5e-b98c-49f3-913f-cdf772c14c12
 ms.service: marketplace
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/04/2015
-ms.author: hascipio; v-divte
-ms.openlocfilehash: da1fc4713fd1d832c7ba91226f72cbef63b241bc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: mbaldwin
+ms.openlocfilehash: e789d0996e72c935ed9d5f456f9868b73d5ef4ee
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="test-your-solution-template-offer-in-staging"></a>A megoldás sablon ajánlat tesztelése az átmeneti
 Átmeneti azt jelenti, hogy a "védőfal", ahol tesztelése és funkciókat ellenőrzése előtt az üzemi környezetben privát ajánlatát telepítése. Az ajánlat volna egy felhasználói, akik már telepítették az átmeneti jelenik meg. Az ajánlat igazolja a kell előkészítésre továbbít.
@@ -36,7 +36,7 @@ A lefokozásra szolgáló átmeneti leküldéses és tesztelik azt a következő
    * Hajtsa végre a teljesítmény tesztelése, és magas terhelés tesztelése.
    * Győződjön meg arról, hogy a topológia megfelelő-e az ajánlott eljárásokat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ha elégedett az eredményeket, majd továbbléphet a végső ajánlat közzétételi fázis **4. lépés**: [központi telepítése az ajánlatot a piactér](marketplace-publishing-push-to-production.md). Ellenkező esetben módosítsa az ajánlatot, és kérjen tanúsítási újra.
 
 > [!NOTE]

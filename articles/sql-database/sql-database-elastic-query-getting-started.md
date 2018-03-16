@@ -2,23 +2,18 @@
 title: "A jelentés (vízszintes particionálás) kiterjesztett felhő az adatbázisok közötti |} Microsoft Docs"
 description: "Több adatbázis közötti adatbázis adatbázis-lekérdezéseinek jelentéshez használja."
 services: sql-database
-documentationcenter: 
 manager: jhubbard
 author: MladjoA
-ms.assetid: c81ef5e3-41e9-4fd2-8631-868f2e168147
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: Inactive
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2016
 ms.author: mlandzic
-ms.openlocfilehash: 996ad1d47ece592dcf03a6eb8ed1c1916ceba374
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: 29f1291f5c5d6023ca7bcd47fc2c0d9b69fd39fa
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="report-across-scaled-out-cloud-databases-preview"></a>Jelentés közötti kiterjesztett felhő (előzetes verzió)
 A több Azure SQL-adatbázisok egyetlen kapcsolódási pont használatával jelentéseket hozhat létre egy [rugalmas lekérdezési](sql-database-elastic-query-overview.md). Az adatbázisok vízszintesen kell particionálni (más néven "szilánkos").
@@ -39,7 +34,7 @@ Itt hoz létre a shard térképre manager több szegmensben osztják, az adatok 
 2. A parancsablakban írja be a "1", és nyomja le az ENTER **Enter**. Létrehozza a shard térkép manager, és két szilánkok hozzáadása a kiszolgálóhoz. Ezután írja be a "3", és nyomja le az ENTER **Enter**; a művelet megismétlése négy alkalommal. Ez a szilánkok minta adatsorok szúrja be.
 3. A [Azure-portálon](https://portal.azure.com) jelenítsen meg három új adatbázist a kiszolgálón:
 
-   ![A Visual Studio-jóváhagyás][2]
+   ![Visual Studio confirmation][2]
 
    Ezen a ponton adatbázisok közötti-lekérdezések használata támogatott a Elastic Database ügyféloldali kódtáraknál keresztül. Például használja a 4. lehetőséget a parancsablakban. A lekérdezés eredményeként előálló egy több shard a rendszer mindig egy **UNION ALL** az összes szilánkok az eredményeket.
 
@@ -104,7 +99,7 @@ Hajtsa végre a lekérdezést a ElasticDBQuery adatbázison:
 
 Megfigyelheti, hogy a lekérdezés eredményeit összesíti a szilánkok a, és lehetőséget ad a következő kimeneti:
 
-![Kimeneti részletei][4]
+![Kimenet részletei][4]
 
 ## <a name="import-elastic-database-query-results-to-excel"></a>A rugalmas adatbázis-lekérdezések eredményének Excel importálása
  Importálhatja az eredményeket a lekérdezés egy Excel-fájlhoz.
@@ -128,7 +123,7 @@ Nem kell külön fizetni a rugalmas adatbázis-lekérdezés szolgáltatás haszn
 
 Díjszabási információkért lásd: [SQL adatbázis díjszabás](https://azure.microsoft.com/pricing/details/sql-database/).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Rugalmas lekérdezési áttekintését lásd: [rugalmas lekérdezési áttekintése](sql-database-elastic-query-overview.md).
 * Függőleges particionálási oktatóanyagért lásd a [első lépések (a vertikális particionálás) közötti adatbázis-lekérdezés](sql-database-elastic-query-getting-started-vertical.md).

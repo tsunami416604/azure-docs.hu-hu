@@ -2,24 +2,18 @@
 title: "Telepítse át a meglévő adatbázisok horizontális |} Microsoft Docs"
 description: "Horizontálisan skálázott adatbázisokat rugalmas adatbáziseszközöket használhat hozzon létre egy shard térkép manager átalakítása"
 services: sql-database
-documentationcenter: 
-author: ddove
-manager: jhubbard
-editor: 
-ms.assetid: 8c851d8e-8fd5-4327-89c1-9178b20ddd69
+author: stevestein
+manager: craigg
 ms.service: sql-database
 ms.custom: scale out apps
-ms.devlang: NA
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: Inactive
 ms.date: 10/24/2016
-ms.author: ddove
-ms.openlocfilehash: 356c4223ff3ae844552b7bee40aa3ffc6aad7ea0
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.author: sstein
+ms.openlocfilehash: d82994f3ab925fa3ace0d0dbe1631a01dd1df586
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="migrate-existing-databases-to-scale-out"></a>Telepítse át a meglévő adatbázisok kívánt réteget
 Könnyedén felügyelheti a meglévő szilánkos kiterjesztett adatbázisok Azure SQL Database-adatbázis eszközökkel (például a [Elastic Database ügyféloldali kódtárának](sql-database-elastic-database-client-library.md)). Először alakítsa át az adatbázisokat kell használni, a készlet a [shard térkép manager](sql-database-elastic-scale-shard-map-management.md). 
@@ -150,10 +144,10 @@ A meglévő szilánkok és a hozzájuk társított leképezések kapcsolatos inf
     Get-Shards -ShardMap $ShardMap 
     Get-Mappings -ShardMap $ShardMap 
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 A telepítés befejezése után megkezdheti az Elastic Database ügyféloldali kódtár használata. Is [adatok függő útválasztási](sql-database-elastic-scale-data-dependent-routing.md) és [több shard lekérdezés](sql-database-elastic-scale-multishard-querying.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A PowerShell-parancsfájlok az beszerzése [Azure SQL DB-rugalmas adatbázis eszközök parancsfájlok](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-DB-Elastic-731883db).
 
 Az eszközök megtalálhatók a Githubon: [Azure/rugalmas-db-eszközök](https://github.com/Azure/elastic-db-tools).

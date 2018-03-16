@@ -14,13 +14,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/19/2017
+ms.date: 03/14/2018
 ms.author: jgao
-ms.openlocfilehash: 290e600b7be4a6f9fb57afa50bb771e42e6a0624
-ms.sourcegitcommit: 4bd369fc472dced985239aef736fece42fecfb3b
+ms.openlocfilehash: c74e02ea32a5aacf1a5208c0e194a25b0b6bcb48
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="visualize-interactive-query-hive-data-with-microsoft-power-bi-using-direct-query-in-azure-hdinsight"></a>A Microsoft Power BI közvetlen lekérdezéssel Azure hdinsight Hive lekérdezés interaktív adatok megjelenítése
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 01/04/2018
 
 ![HDInsight a Power BI a térkép jelentés](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-power-bi-visualization.png)
 
-Szeretne csatlakozni a Hive ODBC használatával, olvassa el a [adatok megjelenítése Hive ODBC Azure hdinsight használatával a Microsoft Power bi](../hadoop/apache-hadoop-connect-hive-power-bi.md). 
+Kihasználhatja a [Hive ODBC-illesztőprogram](../hadoop/apache-hadoop-connect-hive-power-bi.md) a Power BI Desktop az általános ODBC-összekötőn keresztül importálandó. Azonban nem ajánlott a Hive lekérdezési motor nem interaktív jellegéből BI munkaterhelésekhez. [HDInsight interaktív lekérdezés összekötő](./apache-hadoop-connect-hive-power-bi-directquery.md) és [HDInsight Spark összekötő](https://docs.microsoft.com/power-bi/spark-on-hdinsight-with-direct-connect) a teljesítményük jobb döntéseket.
 
 ## <a name="prerequisites"></a>Előfeltételek
 Ez a cikk keresztül haladó, mielőtt a következő elemeket kell rendelkeznie:

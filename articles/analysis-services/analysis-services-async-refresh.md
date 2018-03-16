@@ -15,11 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 03/05/2018
 ms.author: owend
-ms.openlocfilehash: 4c317736af30b4181fa975713258a41b42ed0da3
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: bb3e50c3e481bcedc436b8382fb55d6402d058b2
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="asynchronous-refresh-with-the-rest-api"></a>A REST API aszinkron frissítés
 Bármely programozási nyelv, amely támogatja a REST-hívások segítségével az Azure Analysis Services rendszerbeli táblázatos modellek aszinkron adatfrissítési műveleteket végezheti el. Ez magában foglalja a lekérdezés kibővített írásvédett replikák szinkronizálását. 
@@ -36,7 +36,7 @@ Az alap URL-cím a következő formát követi:
 https://<rollout>.asazure.windows.net/servers/<serverName>/models/<resource>/
 ```
 
-Vegye figyelembe például az AdventureWorks nevű modell, a myserver nyugati Velünk Azure régióban nevű kiszolgálóra a kiszolgáló nevét:
+Vegyük példaként a myserver nyugati Velünk Azure régióban nevű kiszolgálóra AdventureWorks nevű modell. A kiszolgáló nevének megadása:
 
 ```
 asazure://westus.asazure.windows.net/myserver 
@@ -48,7 +48,7 @@ Ez a kiszolgálónév alap URL-je:
 https://westus.asazure.windows.net/servers/myserver/models/AdventureWorks/ 
 ```
 
-Az alap URL-cím segítségével, erőforrások és a műveletek is hozzáfűzi a következők alapján: 
+Az alap URL-cím segítségével, erőforrások és a műveletek is hozzáfűzi a következő paraméterek alapján: 
 
 ![Aszinkron frissítése](./media/analysis-services-async-refresh/aas-async-refresh-flow.png)
 
@@ -56,7 +56,7 @@ Az alap URL-cím segítségével, erőforrások és a műveletek is hozzáfűzi 
 - Minden végződik **()** függvénye.
 - Bármi más egy/objektum.
 
-Például használhatja a FELADÁS egy vagy több műveletet a frissítések gyűjteményen a frissítési műveletet, ehhez hasonló:
+Például használhatja a FELADÁS egy vagy több műveletet a frissítések gyűjteményen a frissítési művelet végrehajtása:
 
 ```
 https://westus.asazure.windows.net/servers/myserver/models/AdventureWorks/refreshes
@@ -104,9 +104,9 @@ Paraméterek megadása nem kötelező. Az alapértelmezett vonatkozik.
 
 |Name (Név)  |Típus  |Leírás  |Alapértelmezett  |
 |---------|---------|---------|---------|
-|Típus     |  Enum       |  A végrehajtandó feldolgozástípust típusa. A típusok összhangban legyenek a TMSL [a frissítési parancs](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-commands/refresh-command-tmsl) típusok: full, clearValues, kiszámításához, dataOnly, automatikus, hozzáadását és töredezettségmentesítése.       |   automatic      |
+|Típus     |  Enum       |  A végrehajtandó feldolgozástípust típusa. A típusok összhangban legyenek a TMSL [a frissítési parancs](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-commands/refresh-command-tmsl) típusok: full, clearValues, kiszámításához, dataOnly, automatikus adja hozzá, és töredezettségmentesítése.       |   automatic      |
 |CommitMode     |  Enum       |  Határozza meg, ha objektumok véglegesített kötegekben telepítse, vagy csak akkor, ha teljes lesz. Módok közé tartozik: alapértelmezés szerint tranzakciós, partialBatch.  |  tranzakciós       |
-|MaxParallelism     |   Int      |  A párhuzamos feldolgozás parancsok futtatására szálak maximális számát határozza meg. Ez a MaxParallelism tulajdonsággal állítható be a TMSL igazítva [parancs feladatütemezési](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-commands/sequence-command-tmsl) vagy más módszerrel.       | 10        |
+|MaxParallelism     |   Int      |  A párhuzamos feldolgozás parancsok futtatására szálak maximális számát határozza meg. Ez az érték a MaxParallelism tulajdonsággal állítható be a TMSL igazítva [parancs feladatütemezési](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-commands/sequence-command-tmsl) vagy más módszerrel.       | 10        |
 |a retryCount    |    Int     |   Azt jelzi, hogy hányszor, mielőtt hibát jelentene próbálkozik újra a műveletet.      |     0    |
 |Objektumok     |   Tömb      |   Feldolgozandó objektumokból álló tömb. Minden objektum tartalmaz: "table" feldolgozásakor a teljes táblázat vagy "table" és "partíció" partíció feldolgozása során. Ha egyetlen objektum meg van adva, a teljes modell frissül. |   A teljes modell folyamat      |
 
@@ -188,7 +188,7 @@ A szinkronizálási művelet állapotának ellenőrzéséhez használja a GET m�
 }
 ```
 
-Szinkronizálási állapotban értékeit:
+Értékei `syncstate`:
 
 - 0: végez replikációt. Adatbázis replikál a célmappába.
 - 1: rehidratálása. Az adatbázis csak olvasható server-példányokat, a rehydrated van folyamatban.
@@ -228,7 +228,7 @@ Az űrlap-hitelesítés szükséges, az Azure-alkalmazások hozható létre a sz
 
     ![API-hozzáférés hozzáadása](./media/analysis-services-async-refresh/aas-async-add.png)
 
-5.  A **API kiválasztása**, típus **SQL Server Analysis Services** a keresési mezőbe, és válassza a **Azure Analysis Services (SQL Server Analysis Services Azure)**.
+5.  A **API kiválasztása**, típus **Azure Analysis Services** azokat a keresési mezőbe, majd állítsa be azt.
 
     ![API kiválasztása](./media/analysis-services-async-refresh/aas-async-select-api.png)
 
@@ -242,7 +242,7 @@ Az űrlap-hitelesítés szükséges, az Azure-alkalmazások hozható létre a sz
 
 #### <a name="service-principal"></a>Szolgáltatásnév
 
-Tekintse meg a [Automation az Azure Analysis Services Szolgáltatásnevekről és a PowerShell](https://azure.microsoft.com/blog/automation-of-azure-analysis-services-with-service-principals-and-powershell/) arról, hogyan állítson be egy egyszerű szolgáltatást, és rendelje hozzá a szükséges engedélyekkel, az Azure Analysis Services által írt blogbejegyzés. Miután végrehajtotta a lépéseket, a blogbejegyzés részletes, hajtsa végre az alábbi kiegészítő lépéseket:
+Lásd: [szolgáltatás elv - Azure-portálon hozzon létre](../azure-resource-manager/resource-group-create-service-principal-portal.md) és [adja hozzá a szolgáltatás funkciókat az a kiszolgáló-rendszergazdai szerepkör](analysis-services-addservprinc-admins.md) állítson be egy egyszerű szolgáltatást, és rendelje hozzá a szükséges engedélyekkel, az Azure-AS módjáról további információk . Miután végrehajtotta a lépéseket, hajtsa végre az alábbi kiegészítő lépéseket:
 
 1.  Ebben a kódmintában keresse **karakterlánc-szolgáltató =...** , cserélje le **közös** a szervezet bérlőazonosítóra azonosítóját.
 2.  Megjegyzés/állítsa vissza, a SecurityMode osztály szolgál az adatok objektumpéldány. Győződjön meg arról a \<Alkalmazásazonosító > és \<Alkalmazáskulcs > biztonságos módon érik el vagy az szolgáltatásnevekről tanúsítvány alapú hitelesítést használ.

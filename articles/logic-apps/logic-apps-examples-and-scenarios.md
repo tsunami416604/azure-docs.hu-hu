@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: logic-apps
 ms.date: 01/31/18
 ms.author: LADocs; jehollan
-ms.openlocfilehash: b979096731caa7513c02a9fb398c14da4d4819ae
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 02690284e5487dba8e5fb5d973958f944bfa339f
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="common-scenarios-examples-tutorials-and-walkthroughs-for-azure-logic-apps"></a>Gyakori forgatókönyvek, példák, oktatóanyagok és az Azure Logic Apps forgatókönyvek
 
@@ -81,7 +81,7 @@ A Logic apps speciális vezérlési folyamatában, például a feltételeket, ka
 
 Teljes körű fejlesztése és logikai alkalmazások telepítése a Visual Studio, a Visual Studio Team Services, vagy bármely más verziókezelő és automatizált összeállítási eszközök. A logic apps munkafolyamatok és a függő kapcsolatok egy erőforrás-sablon a központi telepítés támogatása, használja az Azure-erőforrás a központi telepítési sablonok. Visual Studio eszközök automatikusan létre ezeket a sablonokat, amelynek a verziókövetési verziószámozásának ellenőrizheti.
 
-* [Hozza létre és logikai alkalmazások Visual Studio telepítése](../logic-apps/logic-apps-deploy-from-vs.md)
+* [A Visual Studio programot alkalmazások létrehozása és telepítése](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)
 * [A figyelés, a naplózás vagy a meglévő logic Apps alkalmazások riasztások bekapcsolása](../logic-apps/logic-apps-monitor-your-logic-apps.md)
 * [Az automatikus központi telepítési sablon létrehozása](../logic-apps/logic-apps-create-deploy-template.md)
 
@@ -91,7 +91,7 @@ Elérheti, alakítsa át, és az Azure Logic Apps sok függvénnyel több tartal
 
 * [A logic apps a munkafolyamat-kifejezések működése](../logic-apps/logic-apps-author-definitions.md)
 * [Nem JSON tartalom kezelésére](../logic-apps/logic-apps-content-type.md), például `application/xml`, `application/octet-stream`, és `multipart/formdata`
-* [Útmutató: Az Azure Logic Apps munkafolyamatdefiníciós nyelve](http://aka.ms/logicappsdocs)
+* [Az Azure Logic Apps munkafolyamat Definition Language séma](http://aka.ms/logicappsdocs)
 
 ## <a name="other-integrations-and-capabilities"></a>Más integrációja és képességek
 

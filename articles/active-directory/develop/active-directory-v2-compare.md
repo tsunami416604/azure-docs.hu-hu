@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 05/01/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: 4216c2215f494a81935cd4cdca52427b0cbac143
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 502bfa128422a029878513d6aa4533718bdddbb5
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="whats-different-about-the-v20-endpoint"></a>Mi az a v2.0-végpontra vonatkozó különböző?
 Ha ismeri az Azure Active Directoryban, vagy rendelkezik integrált alkalmazások az Azure AD a múltban, valószínűleg eltérések a v2.0-végpontra nem teheti meg.  Ez a dokumentum ezen eltérésekhez tartozó megértését hív meg.
@@ -56,10 +56,10 @@ Az célja, hogy ezzel előfordulhat, hogy egy több egyszerűsített felügyelet
 ## <a name="scopes-not-resources"></a>Hatókörök, nem erőforrások
 Az Azure Active Directoryban, az alkalmazások viselkedhet, mint egy **erőforrás**, vagy a jogkivonatok címzett.  Erőforrás definiálhat számos **hatókörök** vagy **oAuth2Permissions** , hogy megértette, így az ügyfél-alkalmazások jogkivonatai és az adott erőforrás hatókörök bizonyos számú kérelem.  Fontolja meg az Azure AD Graph API példa bemutatja, erőforrás:
 
-* Erőforrás-azonosítót, vagy `AppID URI`:`https://graph.windows.net/`
+* Erőforrás-azonosítót, vagy `AppID URI`: `https://graph.windows.net/`
 * Hatókörök, vagy `OAuth2Permissions`: `Directory.Read`, `Directory.Write`stb.  
 
-Mindez igaz a a v2.0-végponttól.  Az alkalmazások továbbra is viselkedhet erőforrásként, adja meg a hatókörök és azonosítható, ha egy URI-t.  Ügyfél alkalmazások továbbra is kérhet ezeket a hozzáférést.  Azonban, amelyben egy ügyfél lekérdezi ezeket az engedélyeket a módszer megváltozott.  A múltban, az OAuth 2.0 engedélyezik az Azure AD-kérelem lehet, hogy rendelkezik keresést végrehajtani, például:
+Mindez igaz a v2.0-végponttól.  Az alkalmazások továbbra is viselkedhet erőforrásként, adja meg a hatókörök és azonosítható, ha egy URI-t.  Ügyfél alkalmazások továbbra is kérhet ezeket a hozzáférést.  Azonban, amelyben egy ügyfél lekérdezi ezeket az engedélyeket a módszer megváltozott.  A múltban, az OAuth 2.0 engedélyezik az Azure AD-kérelem lehet, hogy rendelkezik keresést végrehajtani, például:
 
 ```
 GET https://login.microsoftonline.com/common/oauth2/authorize?

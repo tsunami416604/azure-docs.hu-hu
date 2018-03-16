@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 01/22/2018
 ms.author: alkarche
-ms.openlocfilehash: 75b568c12fd58d5599b6878dedb6c2266b6cb649
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 0e7fe474c3b247baa6550770c661af62e83b3737
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="work-with-azure-functions-proxies"></a>Az Azure Functions proxyk használata
 
@@ -106,7 +106,7 @@ Például a háttér-URL-t *https://%ORDER_PROCESSING_HOST%/api/orders* kellene 
 
 ## <a name="debugProxies"></a>Proxyk hibaelhárítása
 
-A jelző hozzáadásával `"debug":true` bármely proxy a a `proxy.json` teszi lehetővé a hibakeresési naplózást. Naplója `D:\home\LogFiles\Application\Proxies\DetailedTrace` és a speciális eszközök (a kudu) keresztül érhető el. A HTTP-válaszok is tartalmazni fog egy `Proxy-Trace-Location` fejléc egy URL-cím, a fájl elérésére.
+A jelző hozzáadásával `"debug":true` bármely proxy a a `proxies.json` teszi lehetővé a hibakeresési naplózást. Naplója `D:\home\LogFiles\Application\Proxies\DetailedTrace` és a speciális eszközök (a kudu) keresztül érhető el. A HTTP-válaszok is tartalmazni fog egy `Proxy-Trace-Location` fejléc egy URL-cím, a fájl elérésére.
 
 A proxy ügyféloldali megoldhassuk hozzáadásával egy `Proxy-Trace-Enabled` fejléc beállítása `true`. Ezzel is nyomkövetés bejelentkezni a fájlrendszer, és térjen vissza a követési URL-cím, egy fejléc a következő a válasz.
 
@@ -114,7 +114,7 @@ A proxy ügyféloldali megoldhassuk hozzáadásával egy `Proxy-Trace-Enabled` f
 
 Biztonsági okokból nem érdemes lehet létrehozni a nyomkövetési a szolgáltatás hívása bárki. Nem fogja tudni elérni a bejelentkezési hitelesítő adatok nélkül nyomkövetési tartalma, de a nyomkövetés-erőforrásokat használ fel és függvény proxyk használatát mutatja.
 
-Letilthatja nyomkövetések teljesen `"debug":false` számára bármely adott proxyt a `proxy.json`.
+Letilthatja nyomkövetések teljesen `"debug":false` számára bármely adott proxyt a `proxies.json`.
 
 ## <a name="advanced-configuration"></a>Speciális konfiguráció
 

@@ -1,6 +1,6 @@
 ---
-title: "Oktatóanyag: Azure Active Directoryval integrált lr |} Microsoft Docs"
-description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és lr között."
+title: "Oktatóanyag: Azure Active Directoryval integrált LoginRadius |} Microsoft Docs"
+description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és LoginRadius között."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -12,32 +12,32 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/31/2018
+ms.date: 03/13/2018
 ms.author: jeedes
-ms.openlocfilehash: f7728c37db286b130a79db1353ee40825e8a4336
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 22f937a2ae9a2c715ce0866c2db0ac17769f0399
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/16/2018
 ---
-# <a name="tutorial-azure-active-directory-integration-with-lr"></a>Oktatóanyag: Azure Active Directoryval integrált lr
+# <a name="tutorial-azure-active-directory-integration-with-loginradius"></a>Oktatóanyag: Azure Active Directoryval integrált LoginRadius
 
-Ebben az oktatóanyagban elsajátíthatja lr integrálása az Azure Active Directory (Azure AD).
+Ebben az oktatóanyagban elsajátíthatja LoginRadius integrálása az Azure Active Directory (Azure AD).
 
-Lr integrálása az Azure AD lehetővé teszi a következő előnyöket biztosítja:
+LoginRadius integrálása az Azure AD lehetővé teszi a következő előnyöket biztosítja:
 
-- Az Azure AD, aki hozzáfér lr szabályozhatja.
-- Engedélyezheti a felhasználóknak, hogy automatikusan lekérni bejelentkezett lr (egyszeri bejelentkezés) a saját Azure AD-fiókok számára.
+- Az Azure AD, aki hozzáfér LoginRadius szabályozhatja.
+- Engedélyezheti a felhasználóknak, hogy automatikusan beolvasása bejelentkezett LoginRadius (egyszeri bejelentkezés) számára a saját Azure AD-fiókok.
 - A fiók egyetlen központi helyen – az Azure-portálon kezelheti.
 
 Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure AD-integrációs lr konfigurálni, kell a következő elemek:
+Konfigurálása az Azure AD-integrációs LoginRadius, a következőkre van szükség:
 
 - Az Azure AD szolgáltatásra
-- Egy lr egyszeri bejelentkezés engedélyezve van az előfizetés
+- Egy LoginRadius egyszeri bejelentkezés engedélyezve van az előfizetésben
 
 > [!NOTE]
 > Ez az oktatóanyag lépéseit teszteléséhez nem ajánlott használata termelési környezetben.
@@ -50,13 +50,13 @@ Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javasla
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 Ebben az oktatóanyagban tesztelése az Azure AD egyszeri bejelentkezéshez egy tesztkörnyezetben. Ebben az oktatóanyagban leírt forgatókönyv két fő építőelemeket áll:
 
-1. A gyűjteményből lr hozzáadása
+1. A gyűjteményből LoginRadius hozzáadása
 2. És tesztelés az Azure AD konfigurálása egyszeri bejelentkezés
 
-## <a name="adding-lr-from-the-gallery"></a>A gyűjteményből lr hozzáadása
-Az Azure AD integrálása a lr konfigurálásához kell hozzáadnia lr a gyűjteményből a felügyelt SaaS-alkalmazások listájára.
+## <a name="adding-loginradius-from-the-gallery"></a>A gyűjteményből LoginRadius hozzáadása
+Az Azure AD integrálása a LoginRadius konfigurálásához kell hozzáadnia LoginRadius a gyűjteményből a felügyelt SaaS-alkalmazások listájára.
 
-**A gyűjteményből lr hozzáadásához hajtsa végre az alábbi lépéseket:**
+**A gyűjteményből LoginRadius hozzáadásához hajtsa végre az alábbi lépéseket:**
 
 1. Az a  **[Azure-portálon](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen **Azure Active Directory** ikonra. 
 
@@ -70,58 +70,58 @@ Az Azure AD integrálása a lr konfigurálásához kell hozzáadnia lr a gyűjte
 
     ![Az új alkalmazás gomb][3]
 
-4. Írja be a keresőmezőbe, **lr**, jelölje be **lr** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+4. Írja be a keresőmezőbe, **LoginRadius**, jelölje be **LoginRadius** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
-    ![az eredménylistában LR](./media/active-directory-saas-lr-tutorial/tutorial_lr_addfromgallery.png)
+    ![Az eredménylistában LoginRadius](./media/active-directory-saas-lr-tutorial/tutorial_LoginRadius_addfromgallery.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés tesztelése és konfigurálása
 
-Ebben a szakaszban, konfigurálás és tesztelés az Azure AD egyszeri bejelentkezéshez "Britta Simon" nevű tesztfelhasználó alapján lr.
+Ebben a szakaszban, konfigurálás és tesztelés az Azure AD egyszeri bejelentkezéshez "Britta Simon" nevű tesztfelhasználó alapján LoginRadius.
 
-Az egyszeri bejelentkezés működéséhez az Azure AD meg kell tudja, hogy mi a párjukhoz felhasználó lr a felhasználó Azure AD-ben. Ez azt jelenti egy Azure AD-felhasználó és a kapcsolódó felhasználó a lr közötti kapcsolat kapcsolatot kell létrehozni.
+Az egyszeri bejelentkezés működéséhez az Azure AD meg kell tudja, hogy mi a párjukhoz felhasználó LoginRadius a felhasználó Azure AD-ben. Ez azt jelenti az Azure AD-felhasználó és a kapcsolódó felhasználó a LoginRadius közötti kapcsolat kapcsolatot kell létrehozni.
 
-Az Azure AD egyszeri bejelentkezést a lr tesztelése és konfigurálása, hogy végezze el a következő építőelemeket kell:
+Az Azure AD egyszeri bejelentkezést a LoginRadius tesztelése és konfigurálása, hogy végezze el a következő építőelemeket kell:
 
 1. **[Az Azure AD az egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – lehetővé teszi a felhasználók a szolgáltatás használatához.
 2. **[Hozzon létre egy Azure AD-teszt felhasználó](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezést a Britta Simon teszteléséhez.
-3. **[Lr tesztfelhasználó létrehozása](#create-a-lr-test-user)**  - szeretné, hogy a felhasználó az Azure AD ábrázolását kapcsolódó lr Britta Simon egy megfelelője.
+3. **[LoginRadius tesztfelhasználó létrehozása](#create-a-loginradius-test-user)**  - való Britta Simon valami LoginRadius, amely csatolva van a felhasználó az Azure AD-ábrázolását.
 4. **[Rendelje hozzá az Azure AD-teszt felhasználó](#assign-the-azure-ad-test-user)**  - Britta Simon használata az Azure AD az egyszeri bejelentkezés engedélyezése.
 5. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure portálon, és konfigurálása egyszeri bejelentkezéshez az lr alkalmazásban.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure portálon, és konfigurálása egyszeri bejelentkezéshez az LoginRadius alkalmazásban.
 
-**Konfigurálása az Azure AD az egyszeri bejelentkezés lr, hajtsa végre az alábbi lépéseket:**
+**Konfigurálása az Azure AD az egyszeri bejelentkezés LoginRadius, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure portálon a a **lr** alkalmazás integráció lapján, kattintson a **egyszeri bejelentkezés**.
+1. Az Azure portálon a a **LoginRadius** alkalmazás integráció lapján, kattintson a **egyszeri bejelentkezés**.
 
     ![Egyszeri bejelentkezés kapcsolat konfigurálása][4]
 
 2. Az a **egyszeri bejelentkezés** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezése.
  
-    ![Egyszeri bejelentkezés párbeszédpanel](./media/active-directory-saas-lr-tutorial/tutorial_lr_samlbase.png)
+    ![Egyszeri bejelentkezés párbeszédpanel](./media/active-directory-saas-lr-tutorial/tutorial_LoginRadius_samlbase.png)
 
-3. Az a **lr tartomány és az URL-címek** területen tegye a következőket:
+3. Az a **LoginRadius tartomány és az URL-címek** területen tegye a következőket:
 
-    ![Tartomány- és URL-címek egyetlen bejelentkezési adatokat LR](./media/active-directory-saas-lr-tutorial/tutorial_lr_url.png)
+    ![Az egyszeri bejelentkezés információk LoginRadius tartomány és az URL-címek](./media/active-directory-saas-lr-tutorial/tutorial_LoginRadius_url.png)
 
-    a.  Az a **bejelentkezési URL-cím** szövegmezőhöz URL-címet írja be:`https://secure.loginradius.com/login`
+    a.  Az a **bejelentkezési URL-cím** szövegmezőhöz URL-címet írja be: `https://secure.loginradius.com/login`
 
-    b. Az a **azonosító** szövegmezőhöz URL-címet írja be:`https://lr.hub.loginradius.com/`
+    b. Az a **azonosító** szövegmezőhöz URL-címet írja be: `https://LoginRadius.hub.loginradius.com/`
      
     > [!NOTE] 
-    > Nyissa meg a bejelentkezési URL-cím lapját. Kattintson a **egyszeri bejelentkezés** lapra, és írja be **beépülő modul name** által megadott a [lr támogatási csoport](mailto:support@loginradius.com) kattintson **jelentkezzen be a** gombra kattintva lesz bejelentkezés az Azure AD oldalt átirányítva. 
+    > Nyissa meg a bejelentkezési URL-cím lapját. Kattintson a **egyszeri bejelentkezés** lapra, és írja be **beépülő modul name** által megadott a [LoginRadius támogatási csoport](mailto:support@loginradius.com) kattintson **jelentkezzen be a** gombra kattintva lesz bejelentkezés az Azure AD oldalára irányítja. 
 
 5. Az a **SAML-aláíró tanúsítványa** területen kattintson **metaadatainak XML-kódja** és mentse a metaadat-fájlt a számítógépen.
 
-    ![A tanúsítvány letöltési hivatkozását](./media/active-directory-saas-lr-tutorial/tutorial_lr_certificate.png) 
+    ![A tanúsítvány letöltési hivatkozását](./media/active-directory-saas-lr-tutorial/tutorial_LoginRadius_certificate.png) 
 
 6. Kattintson a **mentése** gombra.
 
     ![Egyszeri bejelentkezés Mentés gombra konfigurálása](./media/active-directory-saas-lr-tutorial/tutorial_general_400.png)
     
-7. Egyszeri bejelentkezés konfigurálása **lr** oldalon kell küldeniük a letöltött **metaadatainak XML-kódja** való [lr támogatási csoport](mailto:support@loginradius.com). Akkor állítsa be ezt a beállítást, hogy a SAML SSO kapcsolat mindkét oldalán megfelelően beállítva.
+7. Egyszeri bejelentkezés konfigurálása **LoginRadius** oldalon kell küldeniük a letöltött **metaadatainak XML-kódja** való [LoginRadius támogatási csoport](mailto:support@loginradius.com). Akkor állítsa be ezt a beállítást, hogy a SAML SSO kapcsolat mindkét oldalán megfelelően beállítva.
 
 > [!TIP]
 > Ezek az utasítások belül tömör verziója most el tudja olvasni a [Azure-portálon](https://portal.azure.com), míg az alkalmazás beállításakor!  Ez az alkalmazás a hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentációja keresztül a **konfigurációs** szakasz alján. További Itt a embedded dokumentációjából szolgáltatásról: [az Azure AD beágyazott dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -158,25 +158,25 @@ Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta
 
     d. Kattintson a **Create** (Létrehozás) gombra.
  
-### <a name="create-a-lr-test-user"></a>Lr tesztfelhasználó létrehozása
+### <a name="create-a-loginradius-test-user"></a>LoginRadius tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy lr Britta Simon nevű felhasználót hoz létre. Együttműködve [lr támogatási csoport](mailto:support@loginradius.com) a felhasználók hozzáadása a lr platform. Felhasználók kell létrehoznia és aktiválni az egyszeri bejelentkezés használata előtt. 
+Ebben a szakaszban egy LoginRadius Britta Simon nevű felhasználót hoz létre. Együttműködve [LoginRadius támogatási csoport](mailto:support@loginradius.com) a felhasználók hozzáadása a LoginRadius platform. Felhasználók kell létrehoznia és aktiválni az egyszeri bejelentkezés használata előtt. 
 
 ### <a name="assign-the-azure-ad-test-user"></a>Rendelje hozzá az Azure AD-teszt felhasználó
 
-Ebben a szakaszban engedélyezze Britta Simon Azure egyszeri bejelentkezéshez használandó lr való hozzáférés biztosítása.
+Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés LoginRadius Azure egyszeri bejelentkezéshez használandó.
 
 ![A felhasználói szerepkör hozzárendelése][200] 
 
-**Britta Simon hozzárendelése lr, hajtsa végre az alábbi lépéseket:**
+**Britta Simon hozzárendelése LoginRadius, hajtsa végre az alábbi lépéseket:**
 
 1. Az Azure-portálon, nyissa meg az alkalmazások nézet, majd nyissa meg a könyvtár nézetet, és navigáljon **vállalati alkalmazások** kattintson **összes alkalmazás**.
 
     ![Felhasználó hozzárendelése][201] 
 
-2. Az alkalmazások listában válassza ki a **lr**.
+2. Az alkalmazások listában válassza ki a **LoginRadius**.
 
-    ![Az alkalmazások listáját a lr hivatkozás](./media/active-directory-saas-lr-tutorial/tutorial_lr_app.png)  
+    ![Az alkalmazások listáját a LoginRadius hivatkozás](./media/active-directory-saas-lr-tutorial/tutorial_LoginRadius_app.png)  
 
 3. A bal oldali menüben kattintson a **felhasználók és csoportok**.
 
@@ -196,7 +196,7 @@ Ebben a szakaszban engedélyezze Britta Simon Azure egyszeri bejelentkezéshez h
 
 Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen tesztelése.
 
-Ha a hozzáférési panelen lr csempére kattint, akkor kell beolvasása automatikusan bejelentkezett az lr alkalmazására.
+Ha a hozzáférési panelen LoginRadius csempére kattint, akkor kell beolvasása automatikusan bejelentkezett az LoginRadius alkalmazására.
 A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáférési Panel bemutatása](active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>További források

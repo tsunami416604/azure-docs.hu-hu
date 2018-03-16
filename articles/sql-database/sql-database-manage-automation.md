@@ -2,24 +2,18 @@
 title: "Azure SQL Database-adatbázisok Azure Automation kezelése |} Microsoft Docs"
 description: "További tudnivalók hogyan az Azure Automation szolgáltatás Azure SQL-adatbázisok léptékű kezelésére használható."
 services: sql-database, automation
-documentationcenter: 
-author: jodoglevy
-manager: jhubbard
-editor: monicar
-ms.assetid: 77c262a1-9b93-456d-b3c7-b2f23bdfcd61
+author: CarlRabeler
+manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
-ms.workload: On Demand
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 02/03/2017
-ms.author: jhubbard
-ms.openlocfilehash: c5f7e6da09c6ca8ddc6cc3ddcbcf7c5b53116e26
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.author: carlrab
+ms.openlocfilehash: 0174b2b1dd5942e17ea60c2dce624c87fd1289c8
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="managing-azure-sql-databases-using-azure-automation"></a>Azure SQL Database-adatbázisok Azure Automation kezelése
 Az útmutatóból megismerheti az Azure Automation szolgáltatás, és hogyan használható egyszerűbbé teheti az Azure SQL-adatbázisok kezelését.
@@ -43,7 +37,7 @@ A [Azure Automation-runbook gyűjtemény](https://azure.microsoft.com/blog/2014/
 * [Egy SQL-tábla csonkolni, ha az adatbázis megközelíti a maximális méretét](https://gallery.technet.microsoft.com/scriptcenter/Azure-Automation-Your-SQL-30f8736b)
 * [Azure SQL adatbázis táblák index, ha azok nagy mértékben töredezettek](https://gallery.technet.microsoft.com/scriptcenter/Indexes-tables-in-an-Azure-73a2a8ea)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Most, hogy megismerte az Azure Automation, és hogyan használható az Azure SQL-adatbázisok kezelése alapjait, az alábbi hivatkozásokból tudhat meg többet az Azure Automation.
 
 * [Azure Automation – áttekintés](../automation/automation-intro.md)

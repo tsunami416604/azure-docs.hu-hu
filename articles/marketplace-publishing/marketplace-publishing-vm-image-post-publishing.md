@@ -3,8 +3,8 @@ title: "A virtuálisgép-lemezkép az Azure piactéren kezelése |} Microsoft Do
 description: "Részletes útmutató a virtuálisgép-lemezkép az Azure piactéren kezdeti közzétételét követően kezelésének módját"
 services: Azure Marketplace
 documentationcenter: 
-author: HannibalSII
-manager: hascipio
+author: msmbaldwin
+manager: mbaldwin
 editor: 
 ms.assetid: cc8648d4-59c2-4678-b47d-992300677537
 ms.service: marketplace
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 08/03/2016
-ms.author: hascipio;
-ms.openlocfilehash: e1f90650e71345957c2d353774cb8bef62c1868b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: mbaldwin;
+ms.openlocfilehash: 19f60de4a6c651885da7ff1fb7612a77f3d0c8f1
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="post-production-guide-for-virtual-machine-offers-in-the-azure-marketplace"></a>A virtuális gép ajánlatok az Azure piactéren utáni éles útmutató
 Ez a cikk azt ismerteti, hogyan frissítheti az olyan élő virtuális gép ajánlat az Azure piactéren. Végigvezeti egy vagy több új termékváltozatok hozzáadása egy meglévő ajánlatra. Azt is végigvezeti Önt egy élő virtuális gép ajánlat vagy SKU eltávolítása a piactér folyamata.
@@ -27,13 +27,13 @@ Miután egy ajánlat/SKU elő van készítve az a [Azure-portálon](http://porta
 
 * **Ajánlat azonosítója**: az a közzététel-portálon lépjen **virtuális gépek** válassza ki az ajánlatot. Kattintson a **Virtuálisgép-rendszerképek** > **kínálnak azonosító**.
 * **Termékváltozat-azonosító**: az a közzététel-portálon lépjen **virtuális gépek** válassza ki az ajánlatot. Kattintson a **Termékváltozatok** > **adja hozzá a Termékváltozat**.
-* **A Publisher Namespace**: az a közzététel-portálon lépjen **virtuális gépek** > **forgatókönyv** > **mondja el nekünk kapcsolatban a vállalati** (az található a "Lépés 2 regisztrálása a vállalati") > **Publisher Namespace** > **Namespace**.
+* **A Publisher Namespace**: az a közzététel-portálon lépjen **virtuális gépek** > **forgatókönyv** > **mondja el nekünk kapcsolatban a vállalati**(az található a "Lépés 2 regisztrálása a vállalati") > **Publisher Namespace** > **Namespace**.
 
 Az ajánlat/SKU szerepel-e után a [piactér](http://azure.microsoft.com/marketplace), nem módosíthatja az alábbi mezőkbe:
 
 * **Ajánlat azonosítója**: az a közzététel-portálon lépjen **virtuális gépek** válassza ki az ajánlatot. Kattintson a **Virtuálisgép-rendszerképek** > **kínálnak azonosító**.
 * **Termékváltozat-azonosító**: az a közzététel-portálon lépjen **virtuális gépek** válassza ki az ajánlatot. Kattintson a **Termékváltozatok** > **adja hozzá a Termékváltozat**.
-* **A Publisher Namespace**: az a közzététel-portálon lépjen **virtuális gépek** > **forgatókönyv** > **mondja el nekünk kapcsolatban a vállalati** ("Lépés 2 regisztrálása" alatt található) **Publisher Namespace** > **Namespace**.
+* **A Publisher Namespace**: az a közzététel-portálon lépjen **virtuális gépek** > **forgatókönyv** > **mondja el nekünk kapcsolatban a vállalati**("Lépés 2 regisztrálása" alatt található) **Publisher Namespace** > **Namespace**.
 * **Portok**: az a közzététel-portálon lépjen **virtuális gépek** válassza ki az ajánlatot. Kattintson a **Virtuálisgép-rendszerképek** > **megnyitott portok**.
 * **Módosítsa a felsorolt SKU(s) díjszabása**
 * **Felsorolt SKU(s) számlázási modell megváltozott**
@@ -220,7 +220,7 @@ Az élő ajánlatot egy új SKU hozzáadásához kövesse az alábbi lépéseket
 8. Lépjen a **közzététel** fülre, majd **LEKÜLDÉSES átmeneti**. Az ajánlat tesztelése az átmeneti környezetben a részletes útmutatóért lásd: [tesztelése a virtuális gép-ajánlat a piactér](marketplace-publishing-vm-image-test-in-staging.md).
 9. Miután tesztelte az ajánlatot a tesztelési, lépjen a **közzététel** a közzétételi lapján portálon. Kattintson a **kérelem JÓVÁHAGYÁSRA való LEKÜLDÉSES az ÉLES** ismételt közzététele az ajánlatot a piactéren.
 
-    ![Termékváltozat](media/marketplace-publishing-vm-image-post-publishing/img03_09-01.png)
+    ![Termékváltozatok](media/marketplace-publishing-vm-image-post-publishing/img03_09-01.png)
 
     ![Adja hozzá a Termékváltozat](media/marketplace-publishing-vm-image-post-publishing/img03_09-02.png)
 
@@ -325,10 +325,10 @@ A felsorolt metódust az éles értékre a láthatósági visszaállításához 
 3. A bal oldali menüben kattintson a **Termékváltozatok** fülre.
 4. Válassza ki a Termékváltozat, és állítsa vissza a láthatósági az éles értékre metódust.
 
-    ![Látható](media/marketplace-publishing-vm-image-post-publishing/img10-04.png)
+    ![Láthatóság](media/marketplace-publishing-vm-image-post-publishing/img10-04.png)
 5. Miután a változtatásokat végzett, kattintson **kérelem JÓVÁHAGYÁSRA való LEKÜLDÉSES az ÉLES** ismételt közzététele az ajánlatot a piactéren.
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 * [Első lépések: Az ajánlat közzététele az Azure piactéren](marketplace-publishing-getting-started.md)
 * [Kifizetés reporting ismertetése](marketplace-publishing-report-payout.md)
 * [A Cloud Solution Provider viszonteladóhoz célzó olyan ösztönzők előnyeivel módosítása](marketplace-publishing-csp-incentive.md)

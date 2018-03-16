@@ -2,24 +2,18 @@
 title: "Működés közbeni alkalmazás frissítés - Azure SQL Database |} Microsoft Docs"
 description: "Útmutató: Azure SQL Database georeplikációja használatát a felhőalapú alkalmazások online frissítések támogatásához."
 services: sql-database
-documentationcenter: 
 author: anosov1960
-manager: jhubbard
-editor: monicar
-ms.assetid: 58f42859-1e37-463c-a3d8-a3ca2e867148
+manager: craigg
 ms.service: sql-database
 ms.custom: business continuity
-ms.devlang: NA
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: Inactive
 ms.date: 07/16/2016
 ms.author: sashan
-ms.openlocfilehash: deb91d55e5b796f7b1b53a99866156fe492e0a24
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 6efc14e5f8fab5baafff50e8eb6844f8decca1c9
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="managing-rolling-upgrades-of-cloud-applications-using-sql-database-active-geo-replication"></a>Az SQL-adatbázis aktív georeplikáció használatával a felhőalapú alkalmazásokhoz működés közbeni frissítések kezelése
 > [!NOTE]
@@ -129,10 +123,10 @@ Ezen a ponton az alkalmazás teljesen működőképes, és a frissítési lépé
 
 A kulcs **előny** ezt a beállítást az, hogy frissítheti az alkalmazás és a párhuzamos a georedundáns Másolás a frissítés során az üzletmenet folytonossága veszélyeztetése nélkül. A fő **kompromisszumot** igényel minden egyes alkalmazás-összetevő dupla redundanciát, így ezért költséget az magasabb dollár áll. A bonyolultabb munkafolyamat is magában foglalja. 
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 A cikkben ismertetett a két frissítési módszer nem egyezik a összetettsége pedig a költségeket, dollár, de mindkét a kis méretre az időpontot, amikor a végfelhasználó csak olvasási műveletek. A frissítési parancsfájl időtartama közvetlenül határozza meg, az időpont. Nem függ a az adatbázis mérete, a kiválasztott szolgáltatási rétegben, a webhely konfigurációs és egyéb tényezőkkel, amelyek könnyen nem tudja beállítani. Ennek az oka, hogy az előkészítő lépések vannak különválik a frissítési lépéseket, és a termelési alkalmazások befolyásolása nélkül végezheti. A frissítési parancsfájl hatékonyságának a kulcsfontosságú tényező, amely meghatározza, hogy a végfelhasználói élmény frissítéskor. Így a legjobb módja, fejlesztheti azt, a próbálkozások összpontosító és a frissítési parancsfájl felhasználását.  
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Egy üzleti folytonosság – áttekintés és forgatókönyvek: [üzleti folytonosság – áttekintés](sql-database-business-continuity.md).
 * További tudnivalók az Azure SQL adatbázis automatikus biztonsági mentés című [SQL-adatbázis biztonsági mentések automatikus](sql-database-automated-backups.md).
 * A helyreállítás automatikus biztonsági mentés használatával kapcsolatos további tudnivalókért lásd: [adatbázis visszaállítása biztonsági másolatból automatizált](sql-database-recovery-using-backups.md).

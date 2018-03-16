@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/28/2018
 ms.author: gwallace
-ms.openlocfilehash: 9280925cdd5cccf8d1d2f2b33a7de8523a07cd14
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 6b8aa174f7c25f04393de9dd32718a5078cba4ff
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="update-management-solution-in-azure"></a>Frissítse a felügyeleti megoldás az Azure-ban
 
@@ -160,7 +160,7 @@ Kattintson a a **frissítéskezelés** a az automation-fiók a gépek állapotá
 
 Ez a nézet a gépek hiányzó frissítések, a központi telepítést és az ütemezett frissítés központi telepítések tájékoztatást nyújt.
 
-Futtathatja a napló keresési, hogy a gép, a frissítés vagy a központi telepítés a listában az elem kiválasztásával információkat ad vissza. Ekkor megnyílik a **naplófájl-keresési** egy lekérdezést a kijelölt lapon.
+Futtathatja a napló keresési, amely információkat ad vissza a gépen, frissítés, vagy a központi telepítés a listában az elem kiválasztásával. Ekkor megnyílik a **naplófájl-keresési** egy lekérdezést a kijelölt lapon.
 
 ## <a name="installing-updates"></a>Frissítések telepítése
 
@@ -207,13 +207,13 @@ A következő táblázat a megoldás által gyűjtött frissítési rekordok min
 
 | Lekérdezés | Leírás |
 | --- | --- |
-|Frissítés<br>&#124; Ha UpdateState == "Szükséges" és az opcionális == false<br>&#124; Számítógép, a cím, a KBID, a besorolás, a PublishedDate projekt |Minden számítógép, amelyről hiányzik frissítés<br>Adja hozzá az operációs rendszer korlátozni a következők egyikét:<br>OSType = "Windows"<br>OSType == "Linux" |
-| Frissítés<br>&#124; Ha UpdateState == "Szükséges" és az opcionális == false<br>&#124; Ha számítógép == "ContosoVM1.contoso.com"<br>&#124; project Computer, Title, KBID, Product, PublishedDate |Egy adott számítógépről hiányzó frissítések (cserélje le az értéket a saját számítógépnevére)|
-| Esemény<br>&#124; Ha EventLevelName == "error" és a számítógép ((&#124; frissítése where (besorolási == "Biztonsági frissítések" vagy a besorolási == "Kritikus frissítések")<br>&#124; Ha UpdateState == "Szükséges" és az opcionális == false <br>&#124; különálló számítógép)) |Olyan gépek hibaeseményei, amelyeknél kritikus vagy biztonsági szükséges frissítések hiányoznak |
-| Frissítés<br>&#124; Ha UpdateState == "Szükséges" és az opcionális == false<br>&#124; különböző cím |Egyedi frissítések minden számítógépnél | 
-| UpdateRunProgress<br>&#124; Ha InstallationStatus == "sikertelen" <br>&#124; summarize AggregatedValue = count() by Computer, Title, UpdateRunName |Futtassa egy frissítés sikertelen rendelkező számítógépek<br>Adja hozzá az operációs rendszer korlátozni a következők egyikét:<br>OSType = "Windows"<br>OSType == "Linux" | 
-| Frissítés<br>&#124; Ha OSType == "Linux"<br>&#124; Ha UpdateState! = "Nem szükséges" és (besorolási == "Kritikus frissítések" vagy a besorolási == "Biztonsági frissítések")<br>&#124; AggregatedValue összefoglalója = count() számítógépenként |Linux gépeire, amelyeket a csomag frissítés érhető el, amely kritikus vagy biztonsági rést listája | 
-| UpdateRunProgress<br>&#124; Ha UpdateRunName == "DeploymentName"<br>&#124; AggregatedValue összefoglalója = count() számítógépenként|Az ebben a frissítésfuttatásban frissített számítógépek (cserélje le az értéket a saját frissítéstelepítésének nevére) | 
+|Frissítés<br>&#124;Ha UpdateState == "Szükséges" és az opcionális == false<br>&#124;Számítógép, a cím, a KBID, a besorolás, a PublishedDate projekt |Minden számítógép, amelyről hiányzik frissítés<br>Adja hozzá az operációs rendszer korlátozni a következők egyikét:<br>OSType = "Windows"<br>OSType == "Linux" |
+| Frissítés<br>&#124;Ha UpdateState == "Szükséges" és az opcionális == false<br>&#124;Ha számítógép == "ContosoVM1.contoso.com"<br>&#124; project Computer, Title, KBID, Product, PublishedDate |Egy adott számítógépről hiányzó frissítések (cserélje le az értéket a saját számítógépnevére)|
+| Esemény<br>&#124;Ha EventLevelName == "error" és a számítógép ((frissítés &#124; where (besorolási == "Biztonsági frissítések" vagy a besorolási == "Kritikus frissítések")<br>&#124;Ha UpdateState == "Szükséges" és az opcionális == false <br>&#124;különálló számítógép)) |Olyan gépek hibaeseményei, amelyeknél kritikus vagy biztonsági szükséges frissítések hiányoznak |
+| Frissítés<br>&#124;Ha UpdateState == "Szükséges" és az opcionális == false<br>&#124;különböző cím |Egyedi frissítések minden számítógépnél | 
+| UpdateRunProgress<br>&#124;Ha InstallationStatus == "sikertelen" <br>&#124; summarize AggregatedValue = count() by Computer, Title, UpdateRunName |Futtassa egy frissítés sikertelen rendelkező számítógépek<br>Adja hozzá az operációs rendszer korlátozni a következők egyikét:<br>OSType = "Windows"<br>OSType == "Linux" | 
+| Frissítés<br>&#124;Ha OSType == "Linux"<br>&#124;Ha UpdateState! = "Nem szükséges" és (besorolási == "Kritikus frissítések" vagy a besorolási == "Biztonsági frissítések")<br>&#124;AggregatedValue összefoglalója = count() számítógépenként |Linux gépeire, amelyeket a csomag frissítés érhető el, amely kritikus vagy biztonsági rést listája | 
+| UpdateRunProgress<br>&#124;Ha UpdateRunName == "DeploymentName"<br>&#124;AggregatedValue összefoglalója = count() számítógépenként|Az ebben a frissítésfuttatásban frissített számítógépek (cserélje le az értéket a saját frissítéstelepítésének nevére) | 
 
 ## <a name="integrate-with-system-center-configuration-manager"></a>Integrálás a System Center Configuration Managerrel
 

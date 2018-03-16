@@ -13,29 +13,30 @@ ms.devlang: azurecli
 ms.topic: 
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
-ms.date: 03/06/2018
+ms.date: 03/13/2018
 ms.author: jdial
 ms.custom: 
-ms.openlocfilehash: df56f2e3e13f80e7ce2c2b6c9cffeac3d03776e5
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: bbf2e757e2d9ad76c59394ba0138a61fd4029d15
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="connect-virtual-networks-with-virtual-network-peering-using-the-azure-cli"></a>Virtuális hálózatok csatlakoztatása a virtuális hálózati társviszony-létesítést az Azure parancssori felület használatával
 
-Kapcsolódás virtuális hálózatok egymástól a virtuális hálózati társviszony-létesítés. Virtuális hálózatok vannak társviszonyban, ha mindkét virtuális hálózat erőforrásainak képesek kommunikálnak egymással, ugyanahhoz késés és a sávszélesség, mintha az erőforrásokat ugyanabban a virtuális hálózatban. Ez a cikk ismerteti, létrehozása és a társviszony-létesítés két virtuális hálózatok. Az alábbiak végrehajtásának módját ismerheti meg:
+Kapcsolódás virtuális hálózatok egymástól a virtuális hálózati társviszony-létesítés. Virtuális hálózatok vannak társviszonyban, ha mindkét virtuális hálózat erőforrásainak képesek kommunikálnak egymással, ugyanahhoz késés és a sávszélesség, mintha az erőforrásokat ugyanabban a virtuális hálózatban. Ebből a cikkből megismerheti, hogyan:
 
 > [!div class="checklist"]
 > * Két virtuális hálózatok létrehozása
-> * Virtuális hálózatok közötti társviszony létrehozása
-> * Tesztelje a társviszony-létesítés
+> * A virtuális hálózati társviszony-létesítés két virtuális hálózatok csatlakoztatása
+> * Virtuális gép (VM) telepítése minden virtuális hálózathoz
+> * Virtuális gépek közötti kommunikáció
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Ha a CLI helyi telepítését és használatát választja, akkor ehhez a gyorsútmutatóhoz az Azure CLI 2.0.4-es vagy újabb verziójára lesz szükség. A verzió megkereséséhez futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése](/cli/azure/install-azure-cli). 
+Rendszererőforrásokra telepíti, és a parancssori felület helyileg, a gyors üzembe helyezés megköveteli, hogy futnak-e az Azure parancssori felület 2.0.28 verzió vagy újabb. A verzió megkereséséhez futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése](/cli/azure/install-azure-cli). 
 
 ## <a name="create-virtual-networks"></a>Virtuális hálózatok létrehozása
 
@@ -56,7 +57,7 @@ az network vnet create \
   --subnet-prefix 10.0.0.0/24
 ```
 
-Hozzon létre egy virtuális hálózatot nevű *myVirtualNetwork2* a címelőtaggal rendelkező *10.1.0.0/16*. A címelőtag nem fedi át a címelőtagot a *myVirtualNetwork1* virtuális hálózat. Virtuális hálózatok átfedő címelőtagok nem partnert.
+Hozzon létre egy virtuális hálózatot nevű *myVirtualNetwork2* a címelőtaggal rendelkező *10.1.0.0/16*:
 
 ```azurecli-interactive 
 az network vnet create \
@@ -120,17 +121,13 @@ az network vnet peering show \
 
 Amíg a többi virtuális hálózatán lévő erőforrásokat az egyik nem tud kommunikálni a virtuális hálózati erőforrásokhoz a **peeringState** mindkét virtuális hálózatok esetében: *csatlakoztatva*. 
 
-Társviszony virtuális hálózatok között, de nem tranzitív. Igen, például ha is egyenrangú *myVirtualNetwork2* való *myVirtualNetwork3*, kell létrehoznia a virtuális hálózatok közötti társviszony további *myVirtualNetwork2* és *myVirtualNetwork3*. Annak ellenére, hogy *myVirtualNetwork1* nincsenek társviszonyban, a *myVirtualNetwork2*, erőforrások *myVirtualNetwork1* csak hozzáférjen az erőforrásokhoz  *myVirtualNetwork3* Ha *myVirtualNetwork1* lett is társítottak, a *myVirtualNetwork3*. 
+## <a name="create-virtual-machines"></a>Virtuális gépek létrehozása
 
-Társviszony-létesítés előtt éles virtuális hálózatok, javasoljuk, hogy alaposan feltérképezése a [társviszony-létesítési áttekintése](virtual-network-peering-overview.md), [kezelése a társviszony-létesítés](virtual-network-manage-peering.md), és [virtuális hálózati korlátok ](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits). Bár ez a cikk bemutatja, hogy társviszony-létesítés között két virtuális hálózat ugyanabban az előfizetésben és helyen, a virtuális hálózatok is partnert is [különböző régiókban](#register) és [különböző Azure-előfizetések](create-peering-different-subscriptions.md#cli). Is létrehozhat [küllős hálózati kialakításokat](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json#vnet-peering) a társviszony-létesítés.
+Virtuális gép létrehozása minden egyes virtuális hálózatban, hogy egy későbbi lépésben közötti kommunikációt.
 
-## <a name="test-peering"></a>Tesztelje a társviszony-létesítés
+### <a name="create-the-first-vm"></a>Az első virtuális gép létrehozása
 
-A társviszony-létesítés különböző virtuális hálózatokon lévő virtuális gépek közötti hálózati kommunikációhoz teszteléséhez virtuális gép telepítése minden egyes alhálózathoz, és majd a virtuális gépek közötti kommunikációra. 
-
-### <a name="create-virtual-machines"></a>Virtuális gépek létrehozása
-
-A virtuális gép létrehozása [az virtuális gép létrehozása](/cli/azure/vm#az_vm_create). Az alábbi példa létrehoz egy virtuális gépet, nevű *myVm1* a a *myVirtualNetwork1* virtuális hálózat. Ha SSH-kulcsok még nem léteznek a kulcs alapértelmezett helye, a parancs létrehozza azokat. Ha konkrét kulcsokat szeretné használni, használja az `--ssh-key-value` beállítást. A `--no-wait` beállítás hoz létre a virtuális gép a háttérben, így továbbra is a következő lépéssel.
+Hozzon létre egy virtuális gépet az [az vm create](/cli/azure/vm#az_vm_create) paranccsal. Az alábbi példakód létrehozza a virtuális gépek nevű *myVm1* a a *myVirtualNetwork1* virtuális hálózat. Ha SSH-kulcsok még nem léteznek a kulcs alapértelmezett helye, a parancs létrehozza azokat. Ha konkrét kulcsokat szeretné használni, használja az `--ssh-key-value` beállítást. A `--no-wait` beállítás hoz létre a virtuális Gépet a háttérben, így továbbra is a következő lépéssel.
 
 ```azurecli-interactive
 az vm create \
@@ -143,7 +140,7 @@ az vm create \
   --no-wait
 ```
 
-Azure automatikusan hozzárendeli az 10.0.0.4 privát IP-címként a virtuális gép, mert 10.0.0.4 az első elérhető IP-cím *Alhalozat_1* a *myVirtualNetwork1*. 
+### <a name="create-the-second-vm"></a>A második virtuális gép létrehozása
 
 A virtuális gép létrehozása a *myVirtualNetwork2* virtuális hálózat.
 
@@ -172,11 +169,11 @@ A virtuális gép létrehozásához néhány percet vesz igénybe. A virtuális 
 }
 ```
 
-A példa kimenetben megjelenik az **privateipaddress tulajdonságot** van *10.1.0.4*. Azure DHCP automatikusan hozzárendelni 10.1.0.4 a virtuális géphez, mert az első elérhető címe *Alhalozat_1* a *myVirtualNetwork2*. Vegye figyelembe a **publicIpAddress**. Ez a cím a virtuális gép egy későbbi lépésben az internetről való eléréséhez használt.
+Vegye figyelembe a **publicIpAddress**. Ez a cím a virtuális gép egy későbbi lépésben az internetről való eléréséhez használt.
 
-### <a name="test-virtual-machine-communication"></a>Teszt virtuális gép kommunikáció
+## <a name="communicate-between-vms"></a>Virtuális gépek közötti kommunikáció
 
-Az SSH-munkamenetet létrehozni, az alábbi parancs segítségével a *myVm2* virtuális gépet. Cserélje le `<publicIpAddress>` a virtuális gép a nyilvános IP-címmel. Az előző példában a nyilvános IP-cím van *13.90.242.231*.
+Az SSH-munkamenetet létrehozni, az alábbi parancs segítségével a *myVm2* virtuális gép. Cserélje le `<publicIpAddress>` a virtuális gép a nyilvános IP-címmel. Az előző példában a nyilvános IP-cím van *13.90.242.231*.
 
 ```bash 
 ssh <publicIpAddress>
@@ -188,9 +185,9 @@ Pingelje meg a virtuális gép *myVirtualNetwork1*.
 ping 10.0.0.4 -c 4
 ```
 
-Négy választ kap. Ha a virtuális gép neve pingelése (*myVm1*), az IP-cím helyett pingelés sikertelen, mert *myVm1* egy ismeretlen állomás neve. Azure alapértelmezett névfeloldás működik, az azonos virtuális hálózatban lévő virtuális gépek között, de nem a különböző virtuális hálózatokon lévő virtuális gépek között. Virtuális hálózatok közötti névfeloldás, kell [a saját DNS-kiszolgáló telepítése](virtual-networks-name-resolution-for-vms-and-role-instances.md) , vagy használjon [titkos tartományok Azure DNS](../dns/private-dns-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+Négy választ kap. 
 
-Zárja be az SSH-munkamenetet a *myVm2* virtuális gépet. 
+Zárja be az SSH-munkamenetet a *myVm2* virtuális gép. 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -221,9 +218,9 @@ Az azonos régiókban lévő virtuális hálózatok közötti társviszony kiala
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben megtanulta, két hálózat kapcsolódás a virtuális hálózati társviszony-létesítés. Is [saját számítógép csatlakoztatása egy virtuális hálózati](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) egy VPN-en keresztül és a virtuális hálózatot, vagy nincsenek társviszonyban, virtuális hálózatok erőforrások.
+Ebben a cikkben megtanulta, két hálózat kapcsolódás a virtuális hálózati társviszony-létesítés. Ebben a cikkben megtanulta, ugyanazon a helyen az Azure, a két hálózat kapcsolódás a virtuális hálózati társviszony-létesítés. Akkor is a virtuális hálózatok is partnert [különböző régiókban](#register), a [különböző Azure-előfizetések](create-peering-different-subscriptions.md#portal) hozhat létre és [küllős hálózati kialakításokat](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json#vnet-peering) a társviszony-létesítés. Társviszony-létesítés előtt éles virtuális hálózatok, javasoljuk, hogy alaposan feltérképezése a [társviszony-létesítési áttekintése](virtual-network-peering-overview.md), [kezelése a társviszony-létesítés](virtual-network-manage-peering.md), és [virtuális hálózati korlátok](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
 
-Továbbra is a virtuális hálózati cikkekben ismertetett feladatok végrehajtásához újrafelhasználható parancsfájlok parancsfájl-példák.
+Is [saját számítógép csatlakoztatása egy virtuális hálózati](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) egy VPN-en keresztül és a virtuális hálózatot, vagy nincsenek társviszonyban, virtuális hálózatok erőforrások. Továbbra is a virtuális hálózati cikkekben ismertetett feladatok végrehajtásához újrafelhasználható parancsfájlok parancsfájl-példák.
 
 > [!div class="nextstepaction"]
 > [Virtuális hálózati parancsfájl minták](../networking/cli-samples.md?toc=%2fazure%2fvirtual-network%2ftoc.json)

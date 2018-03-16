@@ -3,8 +3,8 @@ title: "U-SQL felhasználói operátorok (udo-k) kidolgozása |} Microsoft Docs"
 description: "Megtudhatja, hogyan kell használni, és fel újra a Data Lake Analytics-feladatok felhasználói operátorok fejlesztése. "
 services: data-lake-analytics
 documentationcenter: 
-author: edmacauley
-manager: jhubbard
+author: saveenr
+manager: kfile
 editor: cgronlun
 ms.assetid: e5189e4e-9438-46d1-8686-ed4836bf3356
 ms.service: data-lake-analytics
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/05/2016
-ms.author: edmaca
-ms.openlocfilehash: 5e534f96b908d2aa1f4d7c48655509ece8dcf43e
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: saveenr
+ms.openlocfilehash: 7c0b9c193f8f1c3a3043824186e337f942ebfd56
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="develop-u-sql-user-defined-operators-udos"></a>U-SQL felhasználói operátorok (udo-k) fejlesztése
 Ismerje meg, hogyan fejleszthet operátorok felhasználói fel adatokat a U-SQL-feladatot.
@@ -129,6 +129,6 @@ Ismerje meg, hogyan fejleszthet operátorok felhasználói fel adatokat a U-SQL-
 1. A **Server Explorer**, bontsa ki a **Azure**, bontsa ki a **Data Lake Analytics**, bontsa ki a Data Lake Analytics-fiókjait, bontsa ki a **Tárfiókok**, kattintson a jobb gombbal az alapértelmezett tároló, és kattintson a **Explorer**.
 2. Bontsa ki a mintákat, bontsa ki a kimenetek, és kattintson duplán **Drivers.csv**.
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 * [U-SQL kifejezések felhasználói kóddal kiterjesztése](https://msdn.microsoft.com/en-us/library/azure/mt621316.aspx)
 * [Használja a Data Lake Tools for Visual Studio a U-SQL-alkalmazások fejlesztésével](data-lake-analytics-data-lake-tools-get-started.md)

@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 4d05d816b43e04c2c2e88cab33b8e4c623ab9185
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: e04de7cb3fad1ba651d0ce21be7f244a89753c1a
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="copy-data-from-servicenow-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatával ServiceNow
 
@@ -112,7 +112,7 @@ Adatok másolása a ServiceNow, állítsa be a forrás típusa a másolási tev�
 Megadásakor a séma- és oszlop ServiceNow a lekérdezésben, vegye figyelembe a következőket:
 
 - **Séma:** adja meg a séma szerint `Actual` vagy `Display` ServiceNow a lekérdezésben, vessen egy pillantást azt a paraméterét, amely `sysparm_display_value` igaz vagy hamis értéket, ha hívása [ServiceNow restful API-k](https://developer.servicenow.com/app.do#!/rest_api_doc?v=jakarta&id=r_AggregateAPI-GET). 
-- **Oszlop:** az oszlop nevét, a tényleges érték `Actual` scehma van `[columne name]_value`, a megjelenítési érték alatti `Display` sémája `[columne name]_display_value`. Megjegyzés: az oszlop nevét kell a lekérdezésben használt séma leképezés.
+- **Oszlop:** az oszlop nevét, a tényleges érték `Actual` sémája `[columne name]_value`, a megjelenítési érték alatti `Display` sémája `[columne name]_display_value`. Megjegyzés: az oszlop nevét kell a lekérdezésben használt séma leképezés.
 
 **Mintalekérdezés:** 
  `SELECT col_value FROM Actual.alm_asset` vagy `SELECT col_display_value FROM Display.alm_asset`

@@ -14,13 +14,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/11/2017
+ms.date: 03/08/2018
 ms.author: nitinme
-ms.openlocfilehash: e0977417ec8678db54d91677b1f9bdc709e196b5
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 38a33056ccd908b43319125b3fe517988b1507c6
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="release-notes-for-hadoop-components-on-azure-hdinsight"></a>Az Azure HDInsight Hadoop-összetevők kibocsátási megjegyzései
 
@@ -29,14 +29,17 @@ Ez a cikk nyújt tájékoztatást a **legutóbbi** Azure HDInsight kiadás friss
 > [!IMPORTANT]
 > A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További információkért lásd: [HDInsight versioning cikk](hdinsight-component-versioning.md).
 
+## <a name="notes-for-03082018---release-of-spark-22-on-hdinsight-36"></a>Megjegyzések a 03/08/2018 - 2.2 Spark on HDInsight 3.6 kiadása
+
+- Spark 2.2.0 stabilitását növeli a Spark mag, SQL, ML között, és számos lehetőséget kínál a strukturált Streaming GA állapotát. Spark 2.2.0 a HDInsight 3.6 most érhető el.
 
 ## <a name="notes-for-08012017-release-of-hdinsight"></a>A HDInsight 08/01/2017 kibocsátási megjegyzései
 
-| Cím | Leírás | Érintett terület  | Fürt típusa  | 
+| Beosztás | Leírás | Érintett terület  | Fürt típusa  | 
 | --- | --- | --- | --- | --- |
 | Microsoft R Server 9.1 hdinsight kiadása |HDInsight létesítési R Server 9.1 fürtök mostantól támogatja a hdinsight platformon. További információk a Microsoft R Server 9.1 kiadására: [ebben a blogban](https://blogs.technet.microsoft.com/dataplatforminsider/2017/04/19/introducing-microsoft-r-server-9-1-release/). |Szolgáltatás |R Server |
-| HDInsight 3.6 mostantól tartalmazza a Hadoop-veremmel újabb verziói|<ul><li>A frissített verziókat részletes listájáért lásd: [elérhető, a HDInsight Hadoop összetevő verzióinak](hdinsight-component-versioning.md#hadoop-components-available-with-different-hdinsight-versions).</li><li>A Hadoop-veremmel legújabb verziói javított listájáért lásd: [Apache javítás információk](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.1/bk_release-notes/content/patch_parent.html).</li><li>Módosítások között HDP (amely most már elérhető a HDInsight 3.6) 2.6.1 megtörje listáját lásd: [https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.1/bk_release-notes/content/behavior_changes.html](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.1/bk_release-notes/content/behavior_changes.html).</li><li>HDP 2.6.1 kapcsolatos ismert problémák listáját, [ismert problémák](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.1/bk_release-notes/content/known_issues.html).</li></ul> |Szolgáltatás |Összes |N/A |
-| Frissítések fürtökre interaktív struktúra (előzetes verzió) |<ul><li><b>A szolgáltatás javítására.</b> Gyorsítótárazott metaadattárhoz, amely csökkenti a metaadatok gyorsítótárazása révén a háttérkiszolgálón SQL, és javítja a teljesítményt az összes metaadat-művelet végrehajtása.  Ennek a fejlesztésnek köszönhetően már egy alapértelmezett összes interaktív Hive fürtökön. További információkért lásd: [https://issues.apache.org/jira/browse/HIVE-16520](https://issues.apache.org/jira/browse/HIVE-16520).</li><li><b>A szolgáltatás javítására.</b> Dinamikus partíció betöltése megfelelően lett optimalizálva. További információ: [https://issues.apache.org/jira/browse/HIVE-14204] (https://issues.apache.org/jira/browse/HIVE-14204).</li><li><b>A szolgáltatás javítására.</b> A HDInsight Linux rendszeren konfigurációs optimalizálás.</li><li><b>Hiba a javítás.</b> `CredentialProviderFactory$getProviders`Nincs szálbiztos. Ez a probléma fennáll most. További információkért lásd: [https://issues.apache.org/jira/browse/HADOOP-14195](https://issues.apache.org/jira/browse/HADOOP-14195).</li><li><b>Hiba a javítás.</b> Magas CPU-használatot a WASB illesztőprogram `liststatus` API rossz ATS teljesítményt eredményez. Ez a probléma fennáll most. További információkért lásd: [https://github.com/Azure/azure-storage-java/pull/154](https://github.com/Azure/azure-storage-java/pull/154).</li></ul> |Szolgáltatás |Interaktív struktúra (előzetes verzió) |
+| HDInsight 3.6 mostantól tartalmazza a Hadoop-veremmel újabb verziói|<ul><li>A frissített verziókat részletes listájáért lásd: [elérhető, a HDInsight Hadoop összetevő verzióinak](hdinsight-component-versioning.md#hadoop-components-available-with-different-hdinsight-versions).</li><li>A Hadoop-veremmel legújabb verziói javított listájáért lásd: [Apache javítás információk](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.1/bk_release-notes/content/patch_parent.html).</li><li>Módosítások között HDP (amely most már elérhető a HDInsight 3.6) 2.6.1 megtörje listáját lásd: [ https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.1/bk_release-notes/content/behavior_changes.html ](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.1/bk_release-notes/content/behavior_changes.html).</li><li>HDP 2.6.1 kapcsolatos ismert problémák listáját, [ismert problémák](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.1/bk_release-notes/content/known_issues.html).</li></ul> |Szolgáltatás |Összes |– |
+| Frissítések fürtökre interaktív struktúra (előzetes verzió) |<ul><li><b>A szolgáltatás javítására.</b> Gyorsítótárazott metaadattárhoz, amely csökkenti a metaadatok gyorsítótárazása révén a háttérkiszolgálón SQL, és javítja a teljesítményt az összes metaadat-művelet végrehajtása.  Ennek a fejlesztésnek köszönhetően már egy alapértelmezett összes interaktív Hive fürtökön. Tovább információ: [https://issues.apache.org/jira/browse/HIVE-16520](https://issues.apache.org/jira/browse/HIVE-16520).</li><li><b>A szolgáltatás javítására.</b> Dinamikus partíció betöltése megfelelően lett optimalizálva. További információ: [https://issues.apache.org/jira/browse/HIVE-14204] (https://issues.apache.org/jira/browse/HIVE-14204).</li><li><b>A szolgáltatás javítására.</b> A HDInsight Linux rendszeren konfigurációs optimalizálás.</li><li><b>Hiba a javítás.</b> `CredentialProviderFactory$getProviders` Nincs szálbiztos. Ez a probléma fennáll most. Tovább információ: [https://issues.apache.org/jira/browse/HADOOP-14195](https://issues.apache.org/jira/browse/HADOOP-14195).</li><li><b>Hiba a javítás.</b> Magas CPU-használatot a WASB illesztőprogram `liststatus` API rossz ATS teljesítményt eredményez. Ez a probléma fennáll most. Tovább információ: [https://github.com/Azure/azure-storage-java/pull/154](https://github.com/Azure/azure-storage-java/pull/154).</li></ul> |Szolgáltatás |Interaktív struktúra (előzetes verzió) |
 | Hadoop-fürtök módosításai |Lépni a Templeton feladat művelet megbízhatóságának növelése További információkért lásd: [https://issues.apache.org/jira/browse/HIVE-15947](https://issues.apache.org/jira/browse/HIVE-15947) |Szolgáltatás |Hadoop |
 | YARN frissítések | HDInsight létrehoz egy 250 GB Ambari adatbázis (nélkül költség növekvő), amely az ügyfelek egy jobb felhasználói élményt eredményez. Ez a változás kell ATS megakadályozása első tölti, és valószínűleg jobb teljesítményt. |Szolgáltatás |Összes |
 | Spark frissítések | Spark 2.1.1 kiadásában. További információkért lásd: [Spark kiadás 2.1.1](https://spark.apache.org/releases/spark-release-2-1-1.html). | Szolgáltatás | Spark |
@@ -53,7 +56,7 @@ Ez a cikk nyújt tájékoztatást a **legutóbbi** Azure HDInsight kiadás friss
     * A HBase v1.1.2
     * A Storm v1.1.0
     * Spark v2.1.0
-    * Interaktív Hive v2.1.0
+    * Interactive Hive v2.1.0
 
 * **Hive nézete 2.0 támogatása**. Ez kell Hive interaktív felhasználói élményének növelése. További információkért lásd: [Hortonworks dokumentáció](http://docs.hortonworks.com/HDPDocuments/Ambari-2.5.0.3/bk_ambari-views/content/ch_using_hive_view.html).
 

@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/16/2017
+ms.date: 03/09/2018
 ms.author: jeedes
-ms.openlocfilehash: 8b21c7b18c31f3111caa13d08efb5aa42ecc0e49
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: d893b55e2e771035bbd1097da678830fafb24e7a
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-servicenow"></a>Oktatóanyag: Azure Active Directoryval integrált ServiceNow
 
@@ -40,6 +40,7 @@ Az Azure AD-integráció konfigurálása a ServiceNow, a következőkre van szü
 - A ServiceNow, egy példány vagy bérlő ServiceNow, Calgary verzió vagy újabb
 - A ServiceNow expressz, ServiceNow kifejezett, Helsinki verzió példányának vagy újabb
 - A ServiceNow bérlő kell rendelkeznie a [több szolgáltató egyszeri bejelentkezést a beépülő modul](http://wiki.servicenow.com/index.php?title=Multiple_Provider_Single_Sign-On#gsc.tab=0) engedélyezve van. Ezt úgy teheti [szolgáltatási kérelem elküldése](https://hi.service-now.com).
+- Automatikus konfigurálásához a szolgáltató több beépülő modul engedélyezése a ServiceNow.
 
 > [!NOTE]
 > Ez az oktatóanyag lépéseit teszteléséhez nem ajánlott használata termelési környezetben.
@@ -111,9 +112,9 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![A ServiceNow tartomány és az URL-címek az egyszeri bejelentkezés információk](./media/active-directory-saas-servicenow-tutorial/tutorial_servicenow_url.png)
 
-    a. Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe:`https://<instance-name>.service-now.com/navpage.do`
+    a. Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe: `https://<instance-name>.service-now.com/navpage.do`
 
-    b. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe:`https://<instance-name>.service-now.com`
+    b. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe: `https://<instance-name>.service-now.com`
 
     > [!NOTE] 
     > Ezek az értékek nincsenek valós. Frissítheti ezeket az értékeket a tényleges bejelentkezési URL-cím és az oktatóanyag későbbi részében ismertetett azonosítója lesz szüksége.
@@ -146,17 +147,9 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     e. Készítése a **metaadatainak URL-CÍMÉT** használatával a következő mintát: `<FEDERATION METADATA DOCUMENT url>?appid=<application id>`.  A generált érték Másolás a Jegyzettömb ezeket a metaadatokat az oktatóanyag későbbi részében használható URL-CÍMÉT.
 
-7. Egy kattintással konfigurálhatja az service is biztosít a ServiceNow Ez azt jelenti, hogy az Azure AD automatikusan konfigurálja ServiceNow SAML-alapú hitelesítés. Ahhoz, hogy ez a szolgáltatás Ugrás **ServiceNow konfigurációs** területén kattintson **konfigurálása ServiceNow** konfigurálása bejelentkezés ablak megnyitásához.
+7. Jelentkezzen be rendszergazdaként a ServiceNow alkalmazás.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-servicenow-tutorial/tutorial_servicenow_configure.png)
-
-8. Adja meg a ServiceNow példány nevét, a rendszergazda felhasználónevét és a rendszergazdai jelszó a **bejelentkezés konfigurálása** kialakításához, és kattintson a **konfigurálása most**. Vegye figyelembe, hogy a rendszergazdai felhasználónevet kell rendelkeznie a **security_admin** működéséhez a ServiceNow hozzárendelve szerepkör. Ellenkező esetben a SAML-Identitásszolgáltatóként az Azure AD használandó ServiceNow kézzel konfigurálásához kattintson **manuális konfigurálása egyszeri bejelentkezéshez** , és másolja a **Sign-Out URL-címet, a SAML entitás azonosítója és a SAML-alapú egyszeri bejelentkezési URL-címe** rövid összefoglaló szakaszából.
-
-    ![Alkalmazás URL-CÍMEK konfigurálása](./media/active-directory-saas-servicenow-tutorial/configure.png "alkalmazás URL-CÍMEK konfigurálása")
-
-9. Jelentkezzen be rendszergazdaként a ServiceNow alkalmazás.
-
-10. Aktiválja a **integrációs - több szolgáltató egyszeri bejelentkezés telepítő** beépülő modul a következő lépéseket követve:
+8. Aktiválja a **integrációs - több szolgáltató egyszeri bejelentkezés telepítő** beépülő modul a következő lépéseket követve:
 
     a. A bal oldali navigációs ablakában keresse **rendszer Definition** szakasz a keresősávban, és kattintson a **beépülő modulok**.
 
@@ -170,11 +163,53 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     d. Kattintson a **aktiválás** gombra.
 
-11. A bal oldali navigációs ablakában keresse **több szolgáltató SSO** szakasz a keresősávban, és kattintson a **tulajdonságok**.
+9. Kétféleképpen, amelyben **ServiceNow** konfigurált automatikus és manuális lehet.
+
+10. Konfigurálásához **ServiceNow** automatikusan kövesse a következő lépések
+
+    a. Lépjen vissza a **ServiceNow** Signle-bejelentkezési oldal az Azure portálon.
+
+    b. Egy kattintással konfigurálhatja az service is biztosít a ServiceNow Ez azt jelenti, hogy az Azure AD automatikusan konfigurálja ServiceNow SAML-alapú hitelesítés. Ahhoz, hogy ez a szolgáltatás Ugrás **ServiceNow konfigurációs** területén kattintson **konfigurálása ServiceNow** konfigurálása bejelentkezés ablak megnyitásához.
+
+    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-servicenow-tutorial/tutorial_servicenow_configure.png)
+
+    c. Adja meg a ServiceNow példány nevét, a rendszergazda felhasználónevét és a rendszergazdai jelszó a **bejelentkezés konfigurálása** kialakításához, és kattintson a **konfigurálása most**. Vegye figyelembe, hogy a rendszergazdai felhasználónevet kell rendelkeznie a **security_admin** működéséhez a ServiceNow hozzárendelve szerepkör. Ellenkező esetben a SAML-Identitásszolgáltatóként az Azure AD használandó ServiceNow kézzel konfigurálásához kattintson **manuális konfigurálása egyszeri bejelentkezéshez** , és másolja a **Sign-Out URL-címet, a SAML entitás azonosítója és a SAML-alapú egyszeri bejelentkezési URL-címe** rövid összefoglaló szakaszából.
+
+    ![Alkalmazás URL-CÍMEK konfigurálása](./media/active-directory-saas-servicenow-tutorial/configure.png "alkalmazás URL-CÍMEK konfigurálása")
+
+    d. Jelentkezzen be rendszergazdaként a ServiceNow alkalmazás.
+
+    e. Az automatikus konfiguráció összes a szükséges beállításokat a **ServiceNow** oldalon, de a **X.509 tanúsítvány** alapértelmezés szerint nincs engedélyezve. Manuálisan képezze le az identitásszolgáltató a ServiceNow kell. Kövesse a következő lépések ugyanazon:
+    
+    * A bal oldali navigációs ablaktábláján kattintson **identitás-szolgáltatóktól** alatt **több szolgáltató SSO**.
+
+      ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-servicenow-tutorial/tutorial_servicenow_07.png "egyszeri bejelentkezés konfigurálása")
+
+    * Kattintson a az automatikusan létrehozott identitásszolgáltató
+
+      ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-servicenow-tutorial/tutorial_servicenow_08.png "egyszeri bejelentkezés konfigurálása")
+
+    * Görgessen le a **X.509 tanúsítvány** szakasz. Válassza a **Szerkesztés** elemet.
+
+      ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-servicenow-tutorial/tutorial_servicenow_09.png "egyszeri bejelentkezés konfigurálása")
+    
+    * A tanúsítvány kiválasztásához, majd kattintson a jobbra mutató nyíl ikonra a tanúsítvány hozzáadása
+
+      ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-servicenow-tutorial/tutorial_servicenow_11.png "egyszeri bejelentkezés konfigurálása")
+
+    * Kattintson a **Save** (Mentés) gombra.
+
+    * Kattintson a **aktiválás** , az oldal jobb felső sarkában.
+
+11. Konfigurálásához **ServiceNow** manuálisan kövesse a következő lépések
+
+12. Jelentkezzen be rendszergazdaként a ServiceNow alkalmazás.
+
+13. A bal oldali navigációs ablakában keresse **több szolgáltató SSO** szakasz a keresősávban, és kattintson a **tulajdonságok**.
 
     ![Alkalmazás URL-CÍMEK konfigurálása](./media/active-directory-saas-servicenow-tutorial/tutorial_servicenow_06.png "alkalmazás URL-CÍMEK konfigurálása")
 
-12. Az a **több SSO tulajdonságokat** párbeszédpanelen hajtsa végre a következő lépéseket:
+14. Az a **több SSO tulajdonságokat** párbeszédpanelen hajtsa végre a következő lépéseket:
 
     ![Alkalmazás URL-CÍMEK konfigurálása](./media/active-directory-saas-servicenow-tutorial/ic7694981.png "alkalmazás URL-CÍMEK konfigurálása")
 
@@ -188,15 +223,15 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     e. Kattintson a **Save** (Mentés) gombra.
 
-13. A bal oldali navigációs ablakában keresse **több szolgáltató SSO** szakasz a keresősávban, és kattintson a **x509 tanúsítványok**.
+14. A bal oldali navigációs ablakában keresse **több szolgáltató SSO** szakasz a keresősávban, és kattintson a **x509 tanúsítványok**.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-servicenow-tutorial/tutorial_servicenow_05.png "egyszeri bejelentkezés konfigurálása")
 
-14. Az a **X.509-tanúsítványokat** párbeszédpanel, kattintson a **új**.
+15. Az a **X.509-tanúsítványokat** párbeszédpanel, kattintson a **új**.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-servicenow-tutorial/ic7694974.png "egyszeri bejelentkezés konfigurálása")
 
-15. Az a **X.509-tanúsítványokat** párbeszédpanelen hajtsa végre a következő lépéseket:
+16. Az a **X.509-tanúsítványokat** párbeszédpanelen hajtsa végre a következő lépéseket:
 
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-servicenow-tutorial/ic7694975.png "egyszeri bejelentkezés konfigurálása")
 
@@ -212,19 +247,19 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
      f. Kattintson a **nyújt**.
 
-16. A bal oldali navigációs ablaktábláján kattintson **identitás-szolgáltatóktól**.
+17. A bal oldali navigációs ablaktábláján kattintson **identitás-szolgáltatóktól**.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-servicenow-tutorial/tutorial_servicenow_07.png "egyszeri bejelentkezés konfigurálása")
 
-17. Az a **identitás-szolgáltatóktól** párbeszédpanel, kattintson a **új**.
+18. Az a **identitás-szolgáltatóktól** párbeszédpanel, kattintson a **új**.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-servicenow-tutorial/ic7694977.png "egyszeri bejelentkezés konfigurálása")
 
-18. Az a **identitás-szolgáltatóktól** párbeszédpanel, kattintson a **egy SAML2 1. frissítés?**.
+19. Az a **identitás-szolgáltatóktól** párbeszédpanel, kattintson a **egy SAML2 1. frissítés?**.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-servicenow-tutorial/ic7694978.png "egyszeri bejelentkezés konfigurálása")
 
-19. Egy SAML2 1. frissítés tulajdonságai párbeszédpanelen hajtsa végre a következő lépéseket:
+20. Egy SAML2 1. frissítés tulajdonságai párbeszédpanelen hajtsa végre a következő lépéseket:
 
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-servicenow-tutorial/idp.png "egyszeri bejelentkezés konfigurálása")
 
@@ -234,25 +269,71 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     c. Kattintson az **Importálás** gombra.
 
-20. Beolvassa a kiállító terjesztési hely metaadatainak URL-CÍMÉT, és feltölti a mezők adatai.
+21. Beolvassa a kiállító terjesztési hely metaadatainak URL-CÍMÉT, és feltölti a mezők adatai.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-servicenow-tutorial/ic7694982.png "egyszeri bejelentkezés konfigurálása")
 
     a. Az a **neve** szövegmező, adja meg a konfiguráció nevét (például **SAML 2.0**).
-
-    b. Az a **felhasználói mező** szövegmezőhöz típus **e-mail** vagy **felhasználónév**, attól függően, melyik mezőt a ServiceNow környezetben a felhasználók egyedi azonosítására szolgál.
-
-    > [!NOTE]
-    > Konfigurálhatja az Azure AD vagy az Azure AD felhasználói azonosító (egyszerű felhasználónév), vagy az e-mail cím a SAML-jogkivonat egyedi azonosítóként kibocsátásához címen a **ServiceNow > attribútumok > egyszeri bejelentkezés** szakasza az Azure-portálon a kívánt mező a leképezési és a **nameidentifier** attribútum. A kijelölt attribútum (például az egyszerű felhasználónév) Azure AD-ben tárolt érték meg kell egyeznie a megadott mező (például felhasználónév) ServiceNow tárolt érték
-
-    c. Másolás **ServiceNow kezdőlap** értékét, illessze be a **bejelentkezési URL-cím** textbox **ServiceNow tartomány és az URL-címek** Azure-portál szakaszban.
+    
+    b. Másolás **ServiceNow kezdőlap** értékét, illessze be a **bejelentkezési URL-cím** textbox **ServiceNow tartomány és az URL-címek** Azure-portál szakaszban.
 
     > [!NOTE]
     > A ServiceNow példány kezdőlapon összefűzése a **ServieNow bérlői URL-cím** és **/navpage.do** (például:`https://fabrikam.service-now.com/navpage.do`).
 
-    d. Másolás **Entitásazonosító / kibocsátó** értékét, illessze be **azonosító** textbox **ServiceNow tartomány és az URL-címek** Azure-portál szakaszban.
+    c. Másolás **Entitásazonosító / kibocsátó** értékét, illessze be **azonosító** textbox **ServiceNow tartomány és az URL-címek** Azure-portál szakaszban.
+
+    d. Kattintson a **speciális**. Az a **felhasználói mező** szövegmezőhöz típus **e-mail** vagy **felhasználónév**, attól függően, melyik mezőt a ServiceNow környezetben a felhasználók egyedi azonosítására szolgál.
+
+    > [!NOTE]
+    > Konfigurálhatja az Azure AD vagy az Azure AD felhasználói azonosító (egyszerű felhasználónév), vagy az e-mail cím a SAML-jogkivonat egyedi azonosítóként kibocsátásához címen a **ServiceNow > attribútumok > egyszeri bejelentkezés** szakasza az Azure-portálon a kívánt mező a leképezési és a **nameidentifier** attribútum. A kijelölt attribútum (például az egyszerű felhasználónév) Azure AD-ben tárolt érték meg kell egyeznie a megadott mező (például felhasználónév) ServiceNow tárolt érték
 
      e. A **x509 tanúsítvány**, a tanúsítványt az előző lépésben létrehozott sorolja fel.
+
+     > [!NOTE]
+     > A ServiceNow nem teszi lehetővé a kiállító terjesztési hely aktiválásának nélkül kapcsolat tesztelése gombra kattint, bírálja felül, azonos, hajtsa végre az alábbi lépéseket.
+
+22. Kattintson a menü ikonra a konfigurálás részeként létrehozott új Identitásszolgáltatóként az és a listában válassza ki a **sys_id másolása**
+
+    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-servicenow-tutorial/ic7694992.png "egyszeri bejelentkezés konfigurálása")
+
+23. A bal felső keresési párbeszédpanelen keresse meg **sys_properties.list** , és nyomja le az enter.
+
+    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-servicenow-tutorial/ic7694993.png "egyszeri bejelentkezés konfigurálása")
+
+24. Kattintson az **Új** lehetőségre.
+
+    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-servicenow-tutorial/ic7694994.png "egyszeri bejelentkezés konfigurálása")
+
+25. Az a **rendszer tulajdonság** területen tegye a következőket:
+
+    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-servicenow-tutorial/ic7694995.png "egyszeri bejelentkezés konfigurálása")
+
+    a. Adja meg `glide.authenticate.sso.redirect.idp` értéket a szövegmezőben.
+
+    b. Az a **érték** szövegmező, illessze be a másolási sys_id érték, amely az előző lépésben másolt.
+
+    c. Válassza ki **titkos**.
+
+    d. Kattintson a **nyújt**.
+
+26. Kattintson az **Új** lehetőségre.
+
+    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-servicenow-tutorial/ic7694994.png "egyszeri bejelentkezés konfigurálása")
+
+27. Az a **rendszer tulajdonság** területen tegye a következőket:
+
+    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-servicenow-tutorial/ic7694996.png "egyszeri bejelentkezés konfigurálása")
+
+    a. Adja meg `glide.authenticate.multisso.test.connection.mandatory` értéket a szövegmezőben.
+
+    b. Az a **érték** szövegmezőhöz meg **hamis**.
+
+    c. Kattintson a **nyújt**.
+
+28. Ezzel a lépéssel fent, után most lesz az új identitásszolgáltató aktiválásához, és az SSO kell működnie
+
+> [!NOTE]
+> Továbbá ne feledje, hogy az új Idp konfigurációjának tesztelése incognito új ablakban
 
 ### <a name="configure-azure-ad-single-sign-on-for-servicenow-express"></a>A ServiceNow Express az Azure AD-egyszeri bejelentkezés konfigurálása
 
@@ -268,9 +349,9 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-servicenow-tutorial/tutorial_servicenow_url.png)
 
-    a. Az a **bejelentkezési URL-cím** szövegmező, írja be az értéket a következő minta használatával:`https://<instance-name>.service-now.com/navpage.do`
+    a. Az a **bejelentkezési URL-cím** szövegmező, írja be az értéket a következő minta használatával: `https://<instance-name>.service-now.com/navpage.do`
 
-    b. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe:`https://<instance-name>.service-now.com`
+    b. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe: `https://<instance-name>.service-now.com`
 
     > [!NOTE]
     > Ezek az értékek nincsenek valós. Frissítheti ezeket az értékeket a tényleges bejelentkezési URL-cím és azonosítója. Ügyfél [ServiceNow ügyfél-támogatási csoport](https://www.servicenow.com/support/contact-support.html) beolvasni ezeket az értékeket.
@@ -337,11 +418,11 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     a. Az a **neve** szövegmező, adja meg a konfiguráció nevét (például: **SAML 2.0**).
 
-    b. Az a **identitási szolgáltató URL-cím** mezőbe illessze be az értékét **identitás Szolgáltatóazonosító** ami Azure-portálon másolta.
+    b. Az a **identitási szolgáltató URL-cím** mezőbe illessze be az értékét **identitás Szolgáltatóazonosító**, amely Azure-portálon másolta.
     
-    c. Az a **identitásszolgáltató AuthnRequest** mezőbe illessze be az értékét **hitelesítési kérelem URL-cím** ami Azure-portálon másolta.
+    c. Az a **identitásszolgáltató AuthnRequest** mezőbe illessze be az értékét **hitelesítési kérelem URL-cím**, amely az Azure-portálon másolta.
 
-    d. Az a **identitásszolgáltató SingleLogoutRequest** mezőbe illessze be az értékét **egyetlen Sign-Out URL-címe** amely másolta Azure-portálon
+    d. Az a **identitásszolgáltató SingleLogoutRequest** mezőbe illessze be az értékét **egyetlen Sign-Out URL-címe**, amely az Azure-portálon másolta
 
     e. Mint **szolgáltató Identitástanúsítvány**, válassza ki az előző lépésben létrehozott tanúsítványt.
 
@@ -380,7 +461,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
     f. Kattintson a **Save** (Mentés) gombra.
 
 > [!TIP]
-> Ezek az utasítások belül tömör verziója most el tudja olvasni a [Azure-portálon](https://portal.azure.com), míg az alkalmazás beállításakor!  Ez az alkalmazás a hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentációja keresztül a **konfigurációs** szakasz alján. További Itt a embedded dokumentációjából szolgáltatásról: [az Azure AD beágyazott dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Ezek az utasítások belül tömör verziója most el tudja olvasni a [Azure-portálon](https://portal.azure.com), míg az alkalmazás beállításakor! Ez az alkalmazás a hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentációja keresztül a **konfigurációs** szakasz alján. További Itt a embedded dokumentációjából szolgáltatásról: [az Azure AD beágyazott dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure AD-teszt felhasználó

@@ -12,22 +12,21 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2017
+ms.date: 03/14/2017
 ms.author: curtand
 ms.reviewer: piotrci
 ms.custom: it-pro
-ms.openlocfilehash: 49a2c86516f0882f341597876d2a44ea3a312ea8
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 4aee5b28fd42be98fac8f9c7d61538319e3efd9a
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="using-a-group-to-manage-access-to-saas-applications"></a>Hozzáférés kezelése SaaS alkalmazásokhoz egy csoport használatával
 Az Azure Active Directoryval (Azure AD) az Azure AD prémium vagy alapszintű Azure AD-licenccel rendelkező, segítségével csoportok hozzáférés hozzárendelése integrálva van az Azure AD SaaS-alkalmazás. Például szeretne hozzárendelni a marketingrészleg használatára öt különböző SaaS-alkalmazásokhoz hozzáférést, ha akkor is hozzon létre egy csoportot, amely tartalmazza a felhasználók a marketingosztályon belül, és hozzárendelheti csoport ezek öt SaaS-alkalmazások által használt a marketingrészleg. Így időt takaríthat meg egy helyen a marketingrészleg tagjainak kezelésével. Felhasználók majd vannak hozzárendelve az alkalmazás hozzáadásuk után a marketing csoport tagjaként, és a hozzárendeléseik eltávolította az alkalmazásból a marketing csoport eltávolításakor. Ez a funkció több száz alkalmazásokat, amelyek adhat hozzá az Azure AD Application Gallery használható.
 
 > [!IMPORTANT]
-> Ez a szolgáltatás használható, csak azt követően, az Azure AD Premium kipróbálása vagy Azure AD prémium vagy alapszintű Azure AD licencet vásárolt.
-> A beágyazott csoporttagság az alkalmazásokhoz történő csoportalapú hozzárendeléseknél egyelőre nem támogatott.
+> Ez a szolgáltatás használható, csak azt követően, az Azure AD Premium kipróbálása vagy Azure AD prémium vagy alapszintű Azure AD licencet vásárolt. Csoport-alapú hozzárendelés csak biztonsági csoportok esetén támogatott. A beágyazott csoporttagság az alkalmazásokhoz történő csoportalapú hozzárendeléseknél egyelőre nem támogatott.
 
 **Hozzáférés egy felhasználó vagy csoport hozzárendelése egy SaaS-alkalmazáshoz**
 
@@ -38,7 +37,7 @@ Az Azure Active Directoryval (Azure AD) az Azure AD prémium vagy alapszintű Az
 6. Válassza ki a lehető legtöbb csoportok vagy felhasználók ahányat csak szeretne, majd kattintson vagy koppintson **válasszon** kattintva vegye fel a **hozzáadása hozzárendelés** listája. Ebben a szakaszban is hozzárendelése egy szerepkörhöz felhasználóhoz.
 7. Válassza ki **hozzárendelése** a felhasználók és csoportok hozzárendelése a kijelölt vállalati alkalmazás.
 
-### <a name="next-steps"></a>Következő lépések
+### <a name="next-steps"></a>További lépések
 E cikkekben további információk találhatók az Azure Active Directoryval kapcsolatban.
 
 * [Erőforráshozzáférés-kezelés Azure Active Directory-csoportokkal](active-directory-manage-groups.md)

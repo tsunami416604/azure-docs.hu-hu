@@ -1,5 +1,5 @@
 ---
-title: "Azure Table storage használata C++ |} Microsoft Docs"
+title: "Azure Table Storage és Azure Cosmos DB használata C++ |} Microsoft Docs"
 description: "Az Azure Table Storage, amely egy NoSQL-adattár, a strukturált adatok felhőben való tárolásához használható."
 services: cosmos-db
 documentationcenter: .net
@@ -12,20 +12,20 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/03/2017
+ms.date: 03/12/2018
 ms.author: mimig
-ms.openlocfilehash: a71098583af8722f2e191e0e665ac87ebd30f355
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 69d56c79320931419ff8d71373ec578af2dec921
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/16/2018
 ---
-# <a name="how-to-use-azure-table-storage-with-c"></a>Azure Table storage használata C++
+# <a name="how-to-use-azure-table-storage-and-azure-cosmos-db-table-api-with-c"></a>Azure Table storage és Azure Cosmos DB tábla API használata C++
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
-[!INCLUDE [storage-table-cosmos-db-langsoon-tip-include](../../includes/storage-table-cosmos-db-langsoon-tip-include.md)]
+[!INCLUDE [storage-table-cosmos-db-tip-include](../../includes/storage-table-cosmos-db-tip-include.md)]
 
 ## <a name="overview"></a>Áttekintés
-Ez az útmutató bemutatja, hogyan hajthat végre a gyakori forgatókönyvek az Azure Table storage szolgáltatás használatával. A minták írt C++ és használni a [Azure Storage ügyféloldali kódtára a C++](https://github.com/Azure/azure-storage-cpp/blob/master/README.md). Az ismertetett forgatókönyvek **létrehozása és egy tábla törlése** és **táblaentitásokat használata**.
+Ez az útmutató bemutatja, hogyan hajthat végre a gyakori forgatókönyvek az Azure Table storage szolgáltatást vagy az Azure Cosmos DB tábla API használatával. A minták írt C++ és használni a [Azure Storage ügyféloldali kódtára a C++](https://github.com/Azure/azure-storage-cpp/blob/master/README.md). Az ismertetett forgatókönyvek **létrehozása és egy tábla törlése** és **táblaentitásokat használata**.
 
 > [!NOTE]
 > Ez az útmutató az Azure Storage ügyféloldali kódtár célozza meg, a C++ 1.0.0 verzió vagy újabb. Az ajánlott verziója a Storage ügyféloldali kódtára 2.2.0, amelyik keresztül elérhető [NuGet](http://www.nuget.org/packages/wastorage) vagy [GitHub](https://github.com/Azure/azure-storage-cpp/).
@@ -46,7 +46,7 @@ Telepítse az Azure Storage ügyféloldali kódtára a C++, a következő módsz
   
      Install-Package wastorage
 
-## <a name="configure-your-application-to-access-table-storage"></a>Állítsa be az alkalmazását, a Table storage eléréséhez
+## <a name="configure-access-to-the-table-client-library"></a>A tábla ügyféloldali kódtár való hozzáférés konfigurálása
 Adja hozzá a következők utasítást, hogy a táblázatok eléréséhez használható az Azure storage API-kkal ahová C++ fájl elejéhez:  
 
 ```cpp
@@ -54,13 +54,24 @@ Adja hozzá a következők utasítást, hogy a táblázatok eléréséhez haszn�
 #include <was/table.h>
 ```
 
-## <a name="set-up-an-azure-storage-connection-string"></a>Egy Azure storage kapcsolati karakterlánc beállítása
-Egy Azure storage-ügyfél egy tárolási kapcsolati karakterlánc végpontok és adatok szolgáltatások eléréséhez szükséges hitelesítő adatok tárolására használ. Ha egy ügyfél-alkalmazás fut, a tárolási kapcsolati karakterlánc a következő formában kell megadnia. A tárfiók és a tárelérési kulcs nevét használja a tárfiók szerepelnek a [Azure Portal](https://portal.azure.com) a a *AccountName* és *AccountKey* értékeket. A storage-fiókok és a hívóbetűk információkért lásd: [tudnivalók az Azure storage-fiókok](../storage/common/storage-create-storage-account.md). Ez a példa bemutatja, hogyan deklarálhatnak ahhoz, hogy a kapcsolati karakterlánc statikus mezőben:  
+Egy Azure Storage-ügyfél vagy egy Cosmos DB ügyfél a kapcsolati karakterlánc segítségével tárolja a végpontok és adatok szolgáltatások eléréséhez szükséges hitelesítő adatokat. Ha egy ügyfél-alkalmazás fut, a tárolási kapcsolati karakterlánc- vagy Azure Cosmos DB kapcsolati karakterláncot a megfelelő formátumban kell megadnia.
+
+## <a name="set-up-an-azure-storage-connection-string"></a>Egy Azure Storage kapcsolati karakterlánc beállítása
+ A tárfiók és a hozzáférési kulcs nevét használja a tárfiók, szerepel a [Azure Portal](https://portal.azure.com) a a *AccountName* és *AccountKey* értékeket. A Storage-fiókok és a hívóbetűk információkért lásd: [Azure Storage-fiókok](../storage/common/storage-create-storage-account.md). Ez a példa bemutatja, hogyan deklarálhatnak ahhoz, hogy az Azure Storage kapcsolati karakterlánc statikus mezőben:  
 
 ```cpp
-// Define the connection string with your values.
+// Define the Storage connection string with your values.
 const utility::string_t storage_connection_string(U("DefaultEndpointsProtocol=https;AccountName=your_storage_account;AccountKey=your_storage_account_key"));
 ```
+
+## <a name="set-up-an-azure-cosmos-db-connection-string"></a>Egy Azure Cosmos DB kapcsolati karakterlánc beállítása
+Azure Cosmos DB fiókját, az elsődleges kulcs és a felsorolt végpont nevét használja a [Azure Portal](https://portal.azure.com) a a *fióknév*, *elsődleges kulcs*, és  *Végpont* értékeket. Ez a példa bemutatja, hogyan deklarálhatnak ahhoz, hogy az Azure Cosmos DB kapcsolati karakterlánc statikus mezőben:
+
+```cpp
+// Define the Azure Cosmos DB connection string with your values.
+const utility::string_t storage_connection_string(U("DefaultEndpointsProtocol=https;AccountName=your_cosmos_db_account;AccountKey=your_cosmos_db_account_key;TableEndpoint=your_cosmos_db_endpoint"));
+```
+
 
 Az alkalmazás tesztelése a helyi Windows-alapú számítógép, használhatja az Azure [storage emulator](../storage/common/storage-use-emulator.md) együtt települ, amely a [Azure SDK](https://azure.microsoft.com/downloads/). A storage emulator egy segédprogram, amely a helyi fejlesztési számítógépén elérhető Azure Blob, Queue és Table szolgáltatások. A következő példa bemutatja, hogyan deklarálhatja, hogy tárolni tudja a kapcsolati karakterláncot a helyi storage emulator statikus mezőben:  
 
@@ -74,7 +85,7 @@ Az Azure storage emulator elindításához kattintson a **Start** gombra, vagy n
 A következő minták azt feltételezik, hogy használt két módszer közül egyik beolvasni a tárolási kapcsolati karakterlánc.  
 
 ## <a name="retrieve-your-connection-string"></a>A kapcsolat-karakterlánc beolvasása
-Használhatja a **cloud_storage_account** osztályt határoz meg a tárfiók adatait. A tárfiók adatait le a tárolási kapcsolati karakterlánc, használhatja a parse metódus.
+Használhatja a **cloud_storage_account** osztályt határoz meg a tárfiók adatait. A tárfiók adatait a tárolási kapcsolati karakterlánc lekéréséhez használja a **elemezni** metódust.
 
 ```cpp
 // Retrieve the storage account from the connection string.
@@ -198,6 +209,9 @@ A kötegműveletekkel kapcsolatban ügyeljen a következőkre:
 ## <a name="retrieve-all-entities-in-a-partition"></a>Egy partíció összes entitásának lekérése
 Ha egy táblából egy partíció összes entitását, használja a **table_query** objektum. Az alábbi példakód megad egy szűrőt a „Smith” partíciókulcsú entitásokra. A példa megjeleníti a konzolon a lekérdezés eredményei között szereplő entitásokhoz tartozó mezőket.  
 
+> [!NOTE]
+> Ezek a módszerek jelenleg nem támogatottak az Azure Cosmos DB a c++-hoz.
+
 ```cpp
 // Retrieve the storage account from the connection string.
 azure::storage::cloud_storage_account storage_account = azure::storage::cloud_storage_account::parse(storage_connection_string);
@@ -232,6 +246,9 @@ Ebben a példában a lekérdezés során az összes entitást a szűrési felté
 
 ## <a name="retrieve-a-range-of-entities-in-a-partition"></a>Partíció entitástartományának lekérése
 Ha nem szeretné az összes entitást lekérdezni egy partícióból, megadhat egy tartományt a partíciókulcs és a sorkulcs szűrőjének kombinálásával. Az alábbi példakód két szűrő segítségével kéri le az összes olyan entitást a „Smith” partícióból, ahol a sorkulcs (keresztnév) az ábécében az „E”-t megelőző betűvel kezdődik, majd megjeleníti a lekérdezés eredményeit.  
+
+> [!NOTE]
+> Ezek a módszerek jelenleg nem támogatottak az Azure Cosmos DB a c++-hoz.
 
 ```cpp
 // Retrieve the storage account from the connection string.
@@ -436,23 +453,30 @@ azure::storage::cloud_table_client table_client = storage_account.create_cloud_t
 // Create a cloud table object for the table.
 azure::storage::cloud_table table = table_client.get_table_reference(U("people"));
 
-// Create an operation to retrieve the entity with partition key of "Smith" and row key of "Jeff".
-azure::storage::table_operation retrieve_operation = azure::storage::table_operation::retrieve_entity(U("Smith"), U("Jeff"));
-azure::storage::table_result retrieve_result = table.execute(retrieve_operation);
-
-// Create an operation to delete the entity.
-azure::storage::table_operation delete_operation = azure::storage::table_operation::delete_entity(retrieve_result.entity());
-
-// Submit the delete operation to the Table service.
-azure::storage::table_result delete_result = table.execute(delete_operation);
+// Delete the table if it exists
+if (table.delete_table_if_exists())
+    {
+        std::cout << "Table deleted!";
+    }
+    else
+    {
+        std::cout << "Table didn't exist";
+    }
 ```
 
-## <a name="next-steps"></a>További lépések
-Most, hogy megismerte a table storage alapjait, az alábbi hivatkozásokból tudhat meg többet az Azure Storage:  
+## <a name="troubleshooting"></a>Hibaelhárítás
+* Szerkesztés a Visual Studio 2017 Community Edition hibák
 
+  Ha a project build hibák miatt a belefoglalási fájlok storage_account.h és table.h lekérdezi, távolítsa el a **/ megengedő-** fordító kapcsoló. 
+  - A **Megoldáskezelőben**, kattintson jobb gombbal a projektre, és válassza ki **tulajdonságok**.
+  - Az a **tulajdonságlapjain** párbeszédpanelen bontsa ki **konfigurációs tulajdonságok**, bontsa ki a **C/C++**, és válassza ki **nyelvi**.
+  - Állítsa be **megfelelési mód** való **nem**.
+   
+## <a name="next-steps"></a>További lépések
+Az alábbi hivatkozásokból tudhat meg többet Azure Storage és a tábla API-nak Azure Cosmos DB: 
+
+* [A tábla API bemutatása](table-introduction.md)
 * A [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) egy ingyenes, önálló alkalmazás, amelynek segítségével vizuálisan dolgozhat Azure Storage-adatokkal Windows, macOS és Linux rendszereken.
-* [Blob storage-ának C++ használata](../storage/blobs/storage-c-plus-plus-how-to-use-blobs.md)
-* [A C++ a Queue storage használata](../storage/queues/storage-c-plus-plus-how-to-use-queues.md)
 * [A c++ Azure Storage-erőforrások felsorolása](../storage/common/storage-c-plus-plus-enumeration.md)
 * [A Storage ügyféloldali kódtára a c++ nyelvhez – dokumentáció](http://azure.github.io/azure-storage-cpp)
 * [Az Azure Storage-dokumentáció](https://azure.microsoft.com/documentation/services/storage/)

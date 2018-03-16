@@ -2,24 +2,18 @@
 title: "Lekérdezési teljesítménybe az Azure SQL Database |} Microsoft Docs"
 description: "A legtöbb CPU-felhasználása lekérdezések lekérdezési teljesítmény figyeléséhez azonosítja az Azure SQL-adatbázis."
 services: sql-database
-documentationcenter: 
 author: stevestein
-manager: jhubbard
-editor: monicar
-ms.assetid: c2f580b2-3835-453f-89f5-140e02dd2ea7
+manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: On Demand
 ms.date: 07/05/2017
 ms.author: sstein
-ms.openlocfilehash: 015f3255d0ff9691168899df1e983e70f35215b1
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 18d03ffcd586a809b37cbc1ca9a7843c25c7758d
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-sql-database-query-performance-insight"></a>Az Azure SQL adatbázis-lekérdezési Terheléselemző
 Kezelése és a relációs adatbázisok teljesítményének hangolása jelentős szakértelmét és az idő befektetési igénylő nehéz feladat. Lekérdezési Terheléselemző kevesebb időt azáltal, hogy a következő adatbázis teljesítményének hibaelhárítási teszi lehetővé:
@@ -37,7 +31,7 @@ Kezelése és a relációs adatbázisok teljesítményének hangolása jelentős
 ## <a name="permissions"></a>Engedélyek
 A következő [szerepköralapú hozzáférés-vezérlés](../active-directory/role-based-access-control-what-is.md) lekérdezési Terheléselemző használandó engedélyek szükségesek: 
 
-* **Olvasó**, **tulajdonos**, **közreműködő**, **SQL DB Contributor**, vagy **SQL Server közreműködői** engedélyekre szükség, a lekérdezések és diagramokat fel felső erőforrás megtekintéséhez. 
+* **Olvasó**, **tulajdonos**, **közreműködő**, **SQL DB Contributor**, vagy **SQL Server közreműködői** engedélyekre szükség a lekérdezések és diagramokat fel felső erőforrás megtekintéséhez. 
 * **Tulajdonos**, **közreműködő**, **SQL DB Contributor**, vagy **SQL Server közreműködői** engedélyekre van szükség a lekérdezés szövegének megjelenítéséhez.
 
 ## <a name="using-query-performance-insight"></a>Lekérdezési Terheléselemző használatával
@@ -93,7 +87,7 @@ Lekérdezés a részletek megtekintéséhez:
 
 1. Kattintson a lista leggyakoribb lekérdezések egyetlen lekérdezés.
    
-    ![Részletek](./media/sql-database-query-performance/details.png)
+    ![részletek](./media/sql-database-query-performance/details.png)
 2. A részleteket megjelenítő nézetet megnyílik, és a lekérdezések fogyasztás/időtartama/végrehajtás processzorszám időbeli bontásban.
 3. Kattintson a részletek a diagram körül.
    
@@ -206,10 +200,10 @@ Ezek a beállítások alkalmazásának végül ellenőrizze a Lekérdezéstár �
     ALTER DATABASE [YourDB] SET QUERY_STORE CLEAR;
 
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 Lekérdezési Terheléselemző segítségével megismerheti, hogy a lekérdezés-munkaterhelési a hatását, és hogyan vonatkozik adatbázis hálózatierőforrás-fogyasztás. Ezzel a szolgáltatással akkor fog információ a leginkább erőforrásigényes lekérdezések, és könnyen azonosíthatja a meglévők közül, így elkerülhetők a probléma megoldásához.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az SQL-adatbázis teljesítményének javítása kapcsolatos további javaslatok kattintson [javaslatok](sql-database-advisor.md) a a **lekérdezési Terheléselemző** panelen.
 
 ![Teljesítmény Advisor](./media/sql-database-query-performance/ia.png)

@@ -2,7 +2,7 @@
 title: "Munkafolyamat-eseményindítók és műveletek - Azure Logic Apps |} Microsoft Docs"
 description: "Az eseményindítók és műveletek automatizált munkafolyamatok és a folyamatok létrehozni a logic apps megismerése"
 services: logic-apps
-author: MandiOhlinger
+author: divyaswarnkar
 manager: anneta
 editor: 
 documentationcenter: 
@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: klam; LADocs
-ms.openlocfilehash: af30fd30f389cdc2070c45ae3b6e2cb1165239e7
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 28d28888ce66c354da39dc636579655aadbb9e51
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="triggers-and-actions-for-logic-app-workflows"></a>Eseményindítók és műveletek a logic app munkafolyamatok
 
@@ -990,7 +990,7 @@ Azt is megteheti várakozási idő az adott néhány percet, használhatja a pé
 
 | Elem neve | Szükséges | Típus | Leírás | 
 | ------------ | -------- | ---- | ----------- | 
-| amíg | Nem | Objektum | A pontok alapján időben várakozási időtartama | 
+| lejárati idő: | Nem | Objektum | A pontok alapján időben várakozási időtartama | 
 | amíg időbélyeg | Igen | Karakterlánc | Az az időpont [UTC dátum időformátum](https://en.wikipedia.org/wiki/Coordinated_Universal_Time) várakozási lejáratának | 
 | interval | Nem | Objektum | A várakozási időtartama időköze és száma alapján | 
 | időköze | Igen | Karakterlánc | Az idő egységét. Csak az egyik ezeket az értékeket használja: "második", "perc", "hour", "day", "hét" vagy "honap" | 
@@ -1161,7 +1161,7 @@ Ez a művelet, amely egy switch utasításban, egy objektum, kifejezés vagy tok
 | esetek | Igen | Objektum | A kifejezés eredménye alapján futtatnak belső műveleteket tartalmaznak. | 
 | Eset | Igen | Karakterlánc | A eredményeképpen teljesüléséhez szükséges értéke | 
 | műveletek | Igen | Objektum | A belső végrehajtandó műveleteket, az a kifejezés eredményének megfelelő eset futtatása | 
-| alapértelmezett | Nem | Objektum | A belső végrehajtandó futtatását, amikor egyetlen eset megfelelő eredménye | 
+| alapérték | Nem | Objektum | A belső végrehajtandó futtatását, amikor egyetlen eset megfelelő eredménye | 
 ||||| 
 
 Példa:

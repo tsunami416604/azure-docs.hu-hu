@@ -13,13 +13,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/12/2018
+ms.date: 03/14/2018
 ms.author: mimig
-ms.openlocfilehash: ac0088478701a1796380daa74602569800c1522e
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 466abbffd250685baf886b7fc7cc772ee9e327f2
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-cosmos-db-faq"></a>Az Azure Cosmos DB – gyakori kérdések
 ## <a name="azure-cosmos-db-fundamentals"></a>Az Azure Cosmos DB – alapok
@@ -211,6 +211,7 @@ Bizonyos különbségek vannak a viselkedést, amely az Azure Table storage érk
 * A CORS jelenleg nem támogatott
 * A táblanevek, az Azure Table storage-és nagybetűk nem, de a Azure Cosmos DB tábla API
 * Alább Azure Cosmos DB belső formátumok kódolási információkat, például bináris mezők jelenleg nem annyira hatékony, például előfordulhat, hogy egy. Ezért ennek hatására váratlan korlátozások adatok mérete. Például jelenleg egyik nem használható a teljes 1 Meg egy tábla entitás bináris adatok tárolására, mert a kódolás növeli az adatok méretét.
+* Entitás tulajdonság neve "Id" jelenleg nem támogatott
 
 A REST API tekintetében számos végpontok/lekérdezési lehetőségek Azure Cosmos DB tábla API által nem támogatott:
 | REST-metódussal | REST-végpont/lekérdezési lehetőség | DOC URL-címek | Magyarázat |
@@ -282,7 +283,7 @@ Igen, hozzon létre két külön példányának a CloudTableClient, minden egyes
 ### <a name="how-do-i-migrate-an-existing-azure-table-storage-application-to-this-offering"></a>Hogyan át egy meglévő Azure Table storage-alkalmazás ajánlathoz?
 [AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy) és a [Azure Cosmos DB adatáttelepítési eszköz](import-data.md) biztosan is támogatott.
 
-### <a name="how-is-expansion-of-the-storage-size-done-for-this-service-if-for-example-i-start-with-n-gb-of-data-and-my-data-will-grow-to-1-tb-over-time"></a>Hogyan van elvégezni ezt a szolgáltatást, ha például indításakor a tároló méretének bővítése  *n*  GB adatok és az adatok és 1 TB tájékoztatás idővel bővülni fog? 
+### <a name="how-is-expansion-of-the-storage-size-done-for-this-service-if-for-example-i-start-with-n-gb-of-data-and-my-data-will-grow-to-1-tb-over-time"></a>Hogyan van elvégezni ezt a szolgáltatást, ha például indításakor a tároló méretének bővítése *n* GB adatok és az adatok és 1 TB tájékoztatás idővel bővülni fog? 
 Azure Cosmos DB használatával a horizontális skálázás korlátlan tárolást szolgál. A szolgáltatás figyelése, és hatékonyan növelése tárhelyét. 
 
 ### <a name="how-do-i-monitor-the-table-api-offering"></a>Hogyan figyelhetek az tábla API elérhető?
@@ -377,7 +378,7 @@ A .NET SDK-ból elküldi az app.config fájlban:
 ```
 
 ### <a name="azure-cosmos-db-as-a-platform-seems-to-have-lot-of-capabilities-such-as-sorting-aggregates-hierarchy-and-other-functionality-will-you-be-adding-these-capabilities-to-the-table-api"></a>Azure Cosmos DB platformként úgy tűnik, hogy számos képesség, rendezés, összesítések, hierarchiát és egyéb funkciókat. Ön hozzáadja ezeket a képességeket a tábla API-val? 
-A tábla API Azure Table storage azonos lekérdezés funkciókat biztosít. Azure Cosmos-adatbázis is támogatja a rendezést, összesítések, a földrajzi lekérdezést, a hierarchia és a számos különféle beépített funkciók. A tábla API jövőbeli szolgáltatásfrissítés további funkciók lesz elérhető. További információkért lásd: [SQL-lekérdezések](sql-api-sql-query.md).
+A tábla API Azure Table storage azonos lekérdezés funkciókat biztosít. Az Azure Cosmos DB a rendezést, az összesítéseket, a földrajzi lekérdezéseket, a hierarchiát és számos különféle beépített funkciót is támogat. A tábla API jövőbeli szolgáltatásfrissítés további funkciók lesz elérhető. További információkért lásd: [SQL-lekérdezések](sql-api-sql-query.md).
  
 ### <a name="when-should-i-change-tablethroughput-for-the-table-api"></a>Mikor kell módosítani a táblázat API TableThroughput?
 TableThroughput kell módosítani, ha érvényes a következő feltételek valamelyike:

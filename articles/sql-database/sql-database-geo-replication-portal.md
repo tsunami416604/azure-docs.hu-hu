@@ -2,24 +2,18 @@
 title: "Azure-portálon: SQL Database georeplikációja |} Microsoft Docs"
 description: "A georeplikáció konfigurálása az Azure SQL Database az Azure-portálon és kezdeményezhet feladatátvételi"
 services: sql-database
-documentationcenter: 
 author: CarlRabeler
-manager: jhubbard
-editor: 
-ms.assetid: d0b29822-714f-4633-a5ab-fb1a09d43ced
+manager: craigg
 ms.service: sql-database
 ms.custom: business continuity
-ms.devlang: NA
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: On Demand
 ms.date: 03/06/2016
 ms.author: carlrab
-ms.openlocfilehash: d880a2f1aef3fa1bfc824f14650088bac4cb8693
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: 33e67c9415ddf3504d593858d56f15cdc7282d69
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="configure-active-geo-replication-for-azure-sql-database-in-the-azure-portal-and-initiate-failover"></a>Aktív georeplikáció konfigurálása az Azure SQL Database az Azure-portálon és kezdeményezhet feladatátvételi
 
@@ -93,7 +87,7 @@ Ez a művelet végleg leáll a replikálás, a másodlagos adatbázishoz, és a 
     ![Távolítsa el a másodlagos](./media/sql-database-geo-replication-portal/remove-secondary.png)
 5. Megnyílik egy ablak. Kattintson a **Igen** az adatbázis eltávolítása a georeplikáció partneri kapcsolat áll fenn. (Állítsa írható-olvasható adatbázis nem része semmilyen replikációs.)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Aktív georeplikáció kapcsolatos további információkért lásd: [aktív georeplikáció](sql-database-geo-replication-overview.md).
 * Egy üzleti folytonosság – áttekintés és forgatókönyvek: [üzleti folytonosság – áttekintés](sql-database-business-continuity.md).
 

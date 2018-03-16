@@ -9,17 +9,17 @@ author: lleonard-msft
 ms.author: alleonar
 manager: mbaldwin
 ms.date: 10/12/2017
-ms.openlocfilehash: 6ebac5fc90e259b19e0a4103a732754384232a44
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: a3f8d540c7e4c8a86b151540980724777fd150fd
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-key-vault-storage-account-keys"></a>Az Azure Key Vault Tárfiókkulcsok
 
-Azure Key Vault Tárfiókok kulcsait, mielőtt a fejlesztők kellett a saját Azure Storage-fiók (ASA) kulcsok kezelése és elforgatása őket manuálisan vagy egy külső automation. Most, a Key Vault Tárfiókok kulcsait, megvalósítva [Key Vault titkok](https://docs.microsoft.com/rest/api/keyvault/about-keys--secrets-and-certificates#BKMK_WorkingWithSecrets) hitelesítéséhez az Azure Storage-fiók. 
+Azure Key Vault Tárfiókok kulcsait, mielőtt a fejlesztők kellett a saját Azure Storage-fiók (ASA) kulcsok kezelése és elforgatása őket manuálisan vagy egy külső automation. Most, a Key Vault Tárfiókok kulcsait, megvalósítva [Key Vault titkok](https://docs.microsoft.com/rest/api/keyvault/about-keys--secrets-and-certificates#BKMK_WorkingWithSecrets) hitelesítéséhez az Azure Storage-fiók.
 
-Az Azure Storage-fiók (ASA) alapfunkciója kezeli az Ön titkos elforgatás. Is eltávolítja a közvetlen kapcsolattól szükség ASA kulccsal rendelkező megosztott hozzáférési aláírásokkal (SAS) módszerként felajánlásával. 
+Az Azure Storage-fiók (ASA) alapfunkciója kezeli az Ön titkos elforgatás. Is eltávolítja a közvetlen kapcsolattól szükség ASA kulccsal rendelkező megosztott hozzáférési aláírásokkal (SAS) módszerként felajánlásával.
 
 Az Azure Storage-fiókokról további általános információkért lásd: [tudnivalók az Azure storage-fiókok](https://docs.microsoft.com/azure/storage/storage-create-storage-account).
 
@@ -33,67 +33,66 @@ A teljes listát és a programozási és parancsfájl-kezelési felület mutató
 Key Vault több belső felügyeleti funkciókat az Ön nevében hajtja végre a Tárfiókkulcsok felügyelt használatakor.
 
 - Az Azure Key Vault kezeli a kulcsokat egy Azure Storage figyelembe (ASA).
-    - Belsőleg az Azure Key Vault készíthetünk egy Azure Storage-fiók (sync) kulcsokat.  
-    - Az Azure Key Vault újragenerálja (forog) a kulcsok rendszeres időközönként. 
-    - Értékek soha nem visszakerülnek a hívó adott válaszként. 
-    - Az Azure Key Vault kezeli a Storage-fiókok és a klasszikus Tárfiókokat kulcsokat. 
+    - Belsőleg az Azure Key Vault készíthetünk egy Azure Storage-fiók (sync) kulcsokat.
+    - Az Azure Key Vault újragenerálja (forog) a kulcsok rendszeres időközönként.
+    - Értékek soha nem visszakerülnek a hívó adott válaszként.
+    - Az Azure Key Vault kezeli a Storage-fiókok és a klasszikus Tárfiókokat kulcsokat.
 - Az Azure Key Vault lehetővé teszi, a tároló/objektum tulajdonosa, SAS (fiók vagy szolgáltatás SAS)-meghatározások létrehozása.
     - A SAS értéket, SAS-definícióban használatával létrehozott egy titkos kulcsként adja vissza a többi URI elérési útján. További információkért lásd: [Azure Key Vault tárolási fiók műveletek](https://docs.microsoft.com/rest/api/keyvault/storage-account-key-operations).
 
 ## <a name="naming-guidance"></a>Elnevezési irányelvei
 
-- A tárfiókok neve 3–24 karakter hosszúságú lehet, és csak számokból és kisbetűkből állhat.  
+- A tárfiókok neve 3–24 karakter hosszúságú lehet, és csak számokból és kisbetűkből állhat.
 - A SAS-definíció nevét 1-102 karakter hosszúságú-csak 0-9, a – z, A-Z kell lennie.
 
 ## <a name="developer-experience"></a>A fejlesztői változat
 
-### <a name="before-azure-key-vault-storage-keys"></a>Az Azure Key Vault tárolási kulcsok előtt 
+### <a name="before-azure-key-vault-storage-keys"></a>Az Azure Key Vault tárolási kulcsok előtt
 
-A fejlesztők kell tennie az alábbi eljárásokkal a tárfiók kulcsa a használatával is elérheti az Azure storage. 
- 
-```powershell
-//create an Azure Storage Account using a connection string containing an account name and a storage key 
+A fejlesztők kell tennie az alábbi eljárásokkal a tárfiók kulcsa a használatával is elérheti az Azure storage.
+1. Tárolja a kapcsolati karakterlánc vagy SAS-jogkivonatot az Azure App Service alkalmazás beállításait, vagy egy másik tárolási.
+1. Alkalmazás indításkor hívjon le a kapcsolati karakterlánc- vagy SAS-jogkivonat.
+1. Hozzon létre [CloudStorageAccount](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.cloudstorageaccount) tárolási kommunikál.
 
-var storageAccount = CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("StorageConnectionString"));
+```cs
+// The Connection string is being fetched from App Service application settings
+var connectionStringOrSasToken = CloudConfigurationManager.GetSetting("StorageConnectionString");
+var storageAccount = CloudStorageAccount.Parse(connectionStringOrSasToken);
 var blobClient = storageAccount.CreateCloudBlobClient();
  ```
- 
-### <a name="after-azure-key-vault-storage-keys"></a>Az Azure Key Vault tárolási kulcsok után 
 
-```powershell
-//Make sure to set storage permissions appropriately on your key vault
-Set-AzureRmKeyVaultAccessPolicy -VaultName 'yourVault' -ObjectId yourObjectId -PermissionsToStorage all
+### <a name="after-azure-key-vault-storage-keys"></a>Az Azure Key Vault tárolási kulcsok után
 
-//Get secret URI 
+A fejlesztők hozzon létre egy [KeyVaultClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.keyvault.keyvaultclient) és a SAS-jogkivonat lekérése a tároló, amely kihasználja. Ezt követően, hogy létre [CloudStorageAccount](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.cloudstorageaccount) adott tokenhez.
 
-Set-AzureKeyVaultManagedStorageSasDefinition -Service Blob -ResourceType Container,Service -VaultName yourKV  
+```cs
+// Create KeyVaultClient with vault credentials
+var kv = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(securityToken));
 
--AccountName msak01 -Name blobsas1 -Protocol HttpsOnly -ValidityPeriod ([System.Timespan]::FromDays(1)) -Permission Read,List
+// Get a SAS token for our storage from Key Vault
+var sasToken = await kv.GetSecretAsync("SecretUri");
 
-//Get a SAS token from Key Vault
+// Create new storage credentials using the SAS token.
+var accountSasCredential = new StorageCredentials(sasToken.Value);
 
-var secret = await kv.GetSecretAsync("SecretUri");
+// Use the storage credentials and the Blob storage endpoint to create a new Blob service client.
+var accountWithSas = new CloudStorageAccount(accountSasCredential, new Uri ("https://myaccount.blob.core.windows.net/"), null, null, null);
 
-// Create new storage credentials using the SAS token. 
+var blobClientWithSas = accountWithSas.CreateCloudBlobClient();
 
-var accountSasCredential = new StorageCredentials(secret.Value); 
+// Use the blobClientWithSas
+...
 
-// Use the storage credentials and the Blob storage endpoint to create a new Blob service client. 
-
-var accountWithSas = new CloudStorageAccount(accountSasCredential, new Uri ("https://myaccount.blob.core.windows.net/"), null, null, null); 
-
-var blobClientWithSas = accountWithSas.CreateCloudBlobClient(); 
- 
-// If your SAS token is about to expire, Get sasToken again from Key Vault and update it.
-
+// If your SAS token is about to expire, get the SAS Token again from Key Vault and update it.
+sasToken = await kv.GetSecretAsync("SecretUri");
 accountSasCredential.UpdateSASToken(sasToken);
 ```
 
  ### <a name="developer-guidance"></a>Fejlesztői útmutató
 
-- Engedélyezése csak a Key Vault a ASA kulcsok kezeléséhez. Ne kísérelje meg magának kezelhetők, a Key Vault folyamatok zavarja meg. 
-- Több Key Vault objektum által kezelt ASA kulcsok nem engedélyezett. 
-- Manuálisan újragenerálja a ASA kulcsok van szüksége, azt javasoljuk keresztül Key Vault generálni. 
+- Engedélyezése csak a Key Vault a ASA kulcsok kezeléséhez. Ne kísérelje meg magának kezelhetők, a Key Vault folyamatok zavarja meg.
+- Több Key Vault objektum által kezelt ASA kulcsok nem engedélyezett.
+- Manuálisan újragenerálja a ASA kulcsok van szüksége, azt javasoljuk keresztül Key Vault generálni.
 
 ## <a name="getting-started"></a>Első lépések
 
@@ -101,132 +100,140 @@ accountSasCredential.UpdateSASToken(sasToken);
 
 Az Azure Key Vault identitása engedélyeket kell *lista* és *újragenerálja* tárfiókok esetén a kulcsok. Állítsa be ezeket az engedélyeket az alábbi lépéseket követve:
 
-- Töltse le az Azure Key Vault identitás ObjectId: 
+```powershell
+# Get the resource ID of the Azure Storage Account you want to manage.
+# Below, we are fetching a storage account using Azure Resource Manager
+$storage = Get-AzureRmStorageAccount -ResourceGroupName "mystorageResourceGroup" -StorageAccountName "mystorage"
 
-    `Get-AzureRmADServicePrincipal -ServicePrincipalName cfa8b339-82a2-471a-a3c9-0fc0be7a4093`
+# Get ObjectId of Azure Key Vault Identity
+$servicePrincipal = Get-AzureRmADServicePrincipal -ServicePrincipalName cfa8b339-82a2-471a-a3c9-0fc0be7a4093
 
-- Tárolási kulcs kezelői szerepkör hozzárendelése az Azure Key Vault Identity: 
-
-    `New-AzureRmRoleAssignment -ObjectId <objectId of AzureKeyVault from previous command> -RoleDefinitionName 'Storage Account Key Operator Service Role' -Scope '<azure resource id of storage account>'`
+# Assign Storage Key Operator role to Azure Key Vault Identity
+New-AzureRmRoleAssignment -ObjectId $servicePrincipal.Id -RoleDefinitionName 'Storage Account Key Operator Service Role' -Scope $storage.Id
+```
 
     >[!NOTE]
-    > A klasszikus fióktípus be a szerepkör-paraméter *"Klasszikus tárolási fiók kulcs operátori szerepkör-szolgáltatás."*
+    > For a classic account type, set the role parameter to *"Classic Storage Account Key Operator Service Role."*
 
 ## <a name="working-example"></a>Munka – példa
 
 A következő példa bemutatja a kulcstároló létrehozása kezelt Azure Storage-fiókot és a társított közös hozzáférésű Jogosultságkód (SAS)-definíciót.
 
-### <a name="assumptions"></a>Előfeltételek
+### <a name="prerequisite"></a>Előfeltétel
 
-Az alábbi utasításokat a működő például givens.
+Győződjön meg arról, hogy végrehajtotta [szerepköralapú hozzáférés-vezérlést (RBAC) engedélyek beállítása](#setup-for-role-based-access-control-rbac-permissions).
 
-- A tároló-erőforrás a következő helyen található: */subscriptions/subscriptionId/resourceGroups/yourresgroup1/providers/Microsoft.Storage/storageAccounts/yourtest1*
-
-- A kulcstároló neve: *yourtest1*
-
-### <a name="get-a-service-principal"></a>A szolgáltatás egyszerű beolvasása
+### <a name="setup"></a>Beállítás
 
 ```powershell
-$yourKeyVaultServicePrincipalId = (Get-AzureRmADServicePrincipal -ServicePrincipalName cfa8b339-82a2-471a-a3c9-0fc0be7a4093).Id
+# This is the name of our Key Vault
+$keyVaultName = "mykeyVault"
+
+# Fetching all the storage account object, of the ASA we want to manage with KeyVault
+$storage = Get-AzureRmStorageAccount -ResourceGroupName "mystorageResourceGroup" -StorageAccountName "mystorage"
+
+# Get ObjectId of Azure KeyVault Identity service principal
+$servicePrincipalId = $(Get-AzureRmADServicePrincipal -ServicePrincipalName cfa8b339-82a2-471a-a3c9-0fc0be7a4093).Id
 ```
 
-Az előző parancs megjeleníti a szolgáltatásnév, amely Felhívjuk *yourKeyVaultServicePrincipalId*. 
-
-### <a name="set-permissions"></a>Engedélyek beállítása
-
-Győződjön meg arról, hogy a tároló engedély *összes*. YouruserPrincipalId lekérni, és engedélyeket a tárolóban, az alábbi parancsok használatával.
+Ezután állítsa be a **fiókja** annak érdekében, hogy a Key Vault a tárolási engedélyekkel kezelheti. Az alábbi példában az Azure-fiókra van  _developer@contoso.com_ .
 
 ```powershell
-$youruserPrincipalId = (Get-AzureRmADUser -SearchString "your user principal name").Id
+# Searching our Azure Active Directory for our account's ObjectId
+$userPrincipalId = $(Get-AzureRmADUser -SearchString "developer@contoso.com").Id
+
+# We use the ObjectId we found to setting permissions on the vault
+Set-AzureRmKeyVaultAccessPolicy -VaultName $keyVaultName -ObjectId $userPrincipalId -PermissionsToStorage all
 ```
-Most keresse meg a nevét, és a kapcsolódó ObjectId, mert ezzel fogja a tároló engedélyeinek beállítása az beszerzése.
+
+### <a name="create-a-key-vault-managed-storage-account"></a>Hozzon létre egy kulcstartót Tárfiók felügyelete
+
+Most felügyelt Storage-fiók létrehozása az Azure Key Vault, és a SAS-jogkivonat készítése esetleges a storage-fiókhoz tartozó hozzáférési kulcsot használ.
+- `-ActiveKeyName` a SAS-jogkivonatok létrehozásához használja a "key2".
+- `-AccountName` a felügyelt storage-fiók azonosítására szolgál. Az alábbi egyszerű biztosítható, hogy a tárfiók neve használunk, de ez bármilyen választott név lehet.
+- `-DisableAutoRegenerateKey` Itt adhatja meg újragenerálni a tárfiókkulcsokat.
 
 ```powershell
-Set-AzureRmKeyVaultAccessPolicy -VaultName 'yourtest1' -ObjectId $youruserPrincipalId -PermissionsToStorage all
+# Adds your storage account to be managed by Key Vault and will use the access key, key2
+Add-AzureKeyVaultManagedStorageAccount -VaultName $keyVaultName -AccountName $storage.StorageAccountName -AccountResourceId $storage.Id -ActiveKeyName key2 -DisableAutoRegenerateKey
 ```
 
-### <a name="allow-access"></a>Hozzáférés engedélyezése
+### <a name="key-regeneration"></a>Kulcs újragenerálása
 
-Hozzá kell rendelnie a Key Vault szolgáltatás hozzáférést a storage-fiókokra, a felügyelt storage-fiókok és a SAS-definíciók létrehozása előtt.
-
-```powershell
-New-AzureRmRoleAssignment -ObjectId $yourKeyVaultServicePrincipalId -RoleDefinitionName 'Storage Account Key Operator Service Role' -Scope '/subscriptions/subscriptionId/resourceGroups/yourresgroup1/providers/Microsoft.Storage/storageAccounts/yourtest1'
-```
-
-### <a name="create-storage-account"></a>Storage-fiók létrehozása
-
-Most hozzon létre egy felügyelt Tárfiókot és két SAS-definíciók. A fiók SAS eltérő engedélyekkel a blob szolgáltatás hozzáférést biztosít.
-
-```powershell
-Add-AzureKeyVaultManagedStorageAccount -VaultName yourtest1 -Name msak01 -AccountResourceId /subscriptions/subscriptionId/resourceGroups/yourresgroup1/providers/Microsoft.Storage/storageAccounts/yourtest1 -ActiveKeyName key2 -DisableAutoRegenerateKey
-```
-
-### <a name="regeneration"></a>Újragenerálása
-
-Állítsa be az újbóli időszakot az alábbi parancsok használatával.
+Ha azt szeretné, hogy a Key Vault rendszeresen újragenerálja a tárelérési kulcsot, beállíthat egy újragenerálása időszak. Az alábbi 3 nap újragenerálása időtartamra állítja azt. 3 nap után a Key Vault "key1" generálni, és az aktív-kulcsot "key2" a "key1" felcserélése.
 
 ```powershell
 $regenPeriod = [System.Timespan]::FromDays(3)
-Add-AzureKeyVaultManagedStorageAccount -VaultName yourtest1 -Name msak01 -AccountResourceId /subscriptions/subscriptionId/resourceGroups/yourresgroup1/providers/Microsoft.Storage/storageAccounts/yourtest1 -ActiveKeyName key2 -RegenerationPeriod $regenPeriod
+$accountName = $storage.StorageAccountName
+
+Add-AzureKeyVaultManagedStorageAccount -VaultName $keyVaultName -AccountName $accountName -AccountResourceId $storage.Id -ActiveKeyName key2 -RegenerationPeriod $regenPeriod
 ```
 
 ### <a name="set-sas-definitions"></a>SAS-definíciók beállítása
 
+A fiók SAS eltérő engedélyekkel a blob szolgáltatás hozzáférést biztosít.
 Állítsa be a SAS-definíciókat a Key Vault a felügyelt tárfiók.
+- `-AccountName` a kezelt tárfiókot a kulcstároló neve van.
+- `-Name` az azonosítóját, a SAS-jogkivonat a tárolóban van.
+- `-ValidityPeriod` Beállítja a generált SAS-jogkivonat lejárati dátuma.
 
 ```powershell
-Set-AzureKeyVaultManagedStorageSasDefinition -Service Blob -ResourceType Container,Service -VaultName yourtest1  -AccountName msak01 -Name blobsas1 -Protocol HttpsOnly -ValidityPeriod ([System.Timespan]::FromDays(1)) -Permission Read,List
-Set-AzureKeyVaultManagedStorageSasDefinition -Service Blob -ResourceType Container,Service,Object -VaultName yourtest1  -AccountName msak01 -Name blobsas2 -Protocol HttpsOnly -ValidityPeriod ([System.Timespan]::FromDays(1)) -Permission Read,List,Write
+$validityPeriod = [System.Timespan]::FromDays(1)
+$readSasName = "readBlobSas"
+$writeSasName = "writeBlobSas"
+
+Set-AzureKeyVaultManagedStorageSasDefinition -Service Blob -ResourceType Container,Service -VaultName $keyVaultName -AccountName $accountName -Name $readSasName -Protocol HttpsOnly -ValidityPeriod $validityPeriod -Permission Read,List
+
+Set-AzureKeyVaultManagedStorageSasDefinition -Service Blob -ResourceType Container,Service,Object -VaultName $keyVaultName -AccountName $accountName -Name $writeSasName -Protocol HttpsOnly -ValidityPeriod $validityPeriod -Permission Read,List,Write
 ```
 
-### <a name="get-token"></a>Szerezze be a tokent
+### <a name="get-sas-tokens"></a>A SAS-jogkivonatok lekérésére
 
-A megfelelő SAS-jogkivonatok lekérésére, és a Storage-hívások.
+A megfelelő SAS-jogkivonatok lekérésére, és a Storage-hívások. `-SecretName` a bemeneti segítségével jön létre a `AccountName` és `Name` hajtja végre paramétereket [Set-AzureKeyVaultManagedStorageSasDefinition](https://docs.microsoft.com/en-us/powershell/module/AzureRM.KeyVault/Set-AzureKeyVaultManagedStorageSasDefinition).
 
 ```powershell
-$sasToken1 = (Get-AzureKeyVaultSecret -VaultName yourtest1 -SecretName msak01-blobsas1).SecretValueText
-$sasToken2 = (Get-AzureKeyVaultSecret -VaultName yourtest1 -SecretName msak01-blobsas2).SecretValueText
+$readSasToken = (Get-AzureKeyVaultSecret -VaultName $keyVaultName -SecretName "$accountName-$readSasName").SecretValueText
+$writeSasToken = (Get-AzureKeyVaultSecret -VaultName $keyVaultName -SecretName "$accountName-$writeSasName").SecretValueText
 ```
 
 ### <a name="create-storage"></a>Tároló létrehozása
 
-Figyelje meg, hogy az elérni próbált *$sastoken1* nem sikerül, de ez lehet hozzáférni a *$sastoken2*. 
+Figyelje meg, hogy az elérni próbált *$readSasToken* nem sikerül, de ez lehet hozzáférni a *$writeSasToken*.
 
 ```powershell
-$context1 = New-AzureStorageContext -SasToken $sasToken1 -StorageAccountName yourtest1
-$context2 = New-AzureStorageContext -SasToken $sasToken2 -StorageAccountName yourtest1
-Set-AzureStorageBlobContent -Container containertest1 -File "abc.txt"  -Context $context1
-Set-AzureStorageBlobContent -Container cont1-file "file.txt"  -Context $context2
-```
+$context1 = New-AzureStorageContext -SasToken $readSasToken -StorageAccountName $storage.StorageAccountName
+$context2 = New-AzureStorageContext -SasToken $writeSasToken -StorageAccountName $storage.StorageAccountName
 
-### <a name="example-summary"></a>Összegző – példa
+Set-AzureStorageBlobContent -Container containertest1 -File "abc.txt" -Context $context1
+Set-AzureStorageBlobContent -Container cont1-file "file.txt" -Context $context2
+```
 
 Biztosan férnek hozzá a tárolási blob tartalom legyen írási hozzáférése a SAS-jogkivonatot.
 
 ### <a name="relevant-powershell-cmdlets"></a>Megfelelő Powershell-parancsmagok
 
-- [Get-AzureKeyVaultManagedStorageAccount ](https://docs.microsoft.com/powershell/module/azurerm.keyvault/get-azurekeyvaultmanagedstorageaccount?view=azurermps-4.3.1)
-- [Add-AzureKeyVaultManagedStorageAccount](https://docs.microsoft.com/powershell/module/AzureRM.KeyVault/Add-AzureKeyVaultManagedStorageAccount?view=azurermps-4.3.1)
-- [Get-AzureKeyVaultManagedStorageSasDefinition](https://docs.microsoft.com/powershell/module/AzureRM.KeyVault/Get-AzureKeyVaultManagedStorageSasDefinition?view=azurermps-4.3.1)
-- [Update-AzureKeyVaultManagedStorageAccountKey](https://docs.microsoft.com/powershell/module/AzureRM.KeyVault/Update-AzureKeyVaultManagedStorageAccountKey?view=azurermps-4.3.1)
-- [Remove-AzureKeyVaultManagedStorageAccount](https://docs.microsoft.com/powershell/module/azurerm.keyvault/remove-azurekeyvaultmanagedstorageaccount?view=azurermps-4.3.1)
-- [Remove-AzureKeyVaultManagedStorageSasDefinition](https://docs.microsoft.com/powershell/module/AzureRM.KeyVault/Remove-AzureKeyVaultManagedStorageSasDefinition?view=azurermps-4.3.1)
-- [Set-AzureKeyVaultManagedStorageSasDefinition](https://docs.microsoft.com/powershell/module/AzureRM.KeyVault/Set-AzureKeyVaultManagedStorageSasDefinition?view=azurermps-4.3.1)
+- [Get-AzureKeyVaultManagedStorageAccount](https://docs.microsoft.com/powershell/module/azurerm.keyvault/get-azurekeyvaultmanagedstorageaccount)
+- [Add-AzureKeyVaultManagedStorageAccount](https://docs.microsoft.com/powershell/module/AzureRM.KeyVault/Add-AzureKeyVaultManagedStorageAccount)
+- [Get-AzureKeyVaultManagedStorageSasDefinition](https://docs.microsoft.com/powershell/module/AzureRM.KeyVault/Get-AzureKeyVaultManagedStorageSasDefinition)
+- [Update-AzureKeyVaultManagedStorageAccountKey](https://docs.microsoft.com/powershell/module/AzureRM.KeyVault/Update-AzureKeyVaultManagedStorageAccountKey)
+- [Remove-AzureKeyVaultManagedStorageAccount](https://docs.microsoft.com/powershell/module/azurerm.keyvault/remove-azurekeyvaultmanagedstorageaccount)
+- [Remove-AzureKeyVaultManagedStorageSasDefinition](https://docs.microsoft.com/powershell/module/AzureRM.KeyVault/Remove-AzureKeyVaultManagedStorageSasDefinition)
+- [Set-AzureKeyVaultManagedStorageSasDefinition](https://docs.microsoft.com/powershell/module/AzureRM.KeyVault/Set-AzureKeyVaultManagedStorageSasDefinition)
 
-## <a name="storage-account-onboarding"></a>Tárolási fiók bevezetése 
+## <a name="storage-account-onboarding"></a>Tárolási fiók bevezetése
 
 Példa: tulajdonosaként Key Vault objektumot ad hozzá egy tárolóobjektumot fiók az Azure Key Vault szolgáltatás bevezetésében egy tárfiókot.
 
-Bevezetési, során Key Vault kell győződjön meg arról, hogy a bevezetési fiók identitását jogosult legyen *lista* , és *újragenerálja* tárolási kulcsok. Ahhoz, hogy ezek az engedélyek ellenőrzéséhez a Key Vault lekérése egy OBO (a nevében a) token a hitelesítési szolgáltatás, állítsa be az Azure Resource Manager célközönség, és lehetővé teszi egy *lista* kulcsát az Azure Storage szolgáltatás hívása. Ha a *lista* hívás sikertelen lesz, a Key Vault objektum-létrehozás sikertelen, és a HTTP-állapotkódot *tiltott*. Ilyen módon szereplő kulcsok gyorsítótárba kerüljenek-e a kulcstartót entitás tárolóval. 
+Bevezetési, során Key Vault kell győződjön meg arról, hogy a bevezetési fiók identitását jogosult legyen *lista* , és *újragenerálja* tárolási kulcsok. Ahhoz, hogy ezek az engedélyek ellenőrzéséhez a Key Vault lekérése egy OBO (a nevében a) token a hitelesítési szolgáltatás, állítsa be az Azure Resource Manager célközönség, és lehetővé teszi egy *lista* kulcsát az Azure Storage szolgáltatás hívása. Ha a *lista* hívás sikertelen lesz, a Key Vault objektum-létrehozás sikertelen, és a HTTP-állapotkódot *tiltott*. Ilyen módon szereplő kulcsok gyorsítótárba kerüljenek-e a kulcstartót entitás tárolóval.
 
 Key Vault ellenőriznie kell, hogy rendelkezik-e az identity *újragenerálja* engedélyek előtt tulajdonjogát, a kulcsok újragenerálása is igénybe vehet. Győződjön meg arról, hogy rendelkezik-e ezeket az engedélyeket az identitást, keresztül OBO jogkivonatot, valamint a Key Vault első fél identitás: a
 
 - Key Vault a tárolási fiók erőforrás RBAC engedélyeinek sorolja fel.
-- Key Vault érvényesíti a válaszból reguláris kifejezések egyeztetésének műveletek és a nem műveletek keresztül. 
+- Key Vault érvényesíti a válaszból reguláris kifejezések egyeztetésének műveletek és a nem műveletek keresztül.
 
 A támogató példákat található [Key Vault - kezelt tárolási fiók kulcsok minták](https://github.com/Azure/azure-sdk-for-net/blob/psSdkJson6/src/SDKs/KeyVault/dataPlane/Microsoft.Azure.KeyVault.Samples/samples/HelloKeyVault/Program.cs#L167).
 
-Ha az identitás nem rendelkezik *újragenerálja* engedélyeket, vagy ha a Key Vault első fél identitása nem rendelkezik *lista* vagy *újragenerálja* engedélyt, majd a Bevezetés kérelem sikertelen lesz, egy megfelelő hibakód és az üzenet vissza. 
+Ha az identitás nem rendelkezik *újragenerálja* engedélyeket, vagy ha a Key Vault első fél identitása nem rendelkezik *lista* vagy *újragenerálja* engedélyt, majd a Bevezetés kérelem sikertelen lesz, egy megfelelő hibakód és az üzenet vissza.
 
 A OBO jogkivonat-k, a PowerShell vagy a CLI natív ügyfélalkalmazások használatakor csak működik.
 

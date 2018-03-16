@@ -2,23 +2,18 @@
 title: "Frissítsen a legújabb elastic database ügyféloldali kódtára a |} Microsoft Docs"
 description: "A nugettel frissítési elastic database ügyféloldali kódtárára."
 services: sql-database
-documentationcenter: 
-manager: jhubbard
-author: ddove
-ms.assetid: 0a546510-76e7-465e-9271-f15ff0cfa959
+manager: craigg
+author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: Inactive
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 03/06/2017
-ms.author: ddove
-ms.openlocfilehash: 62609f2488a01d9b406c6b730c53ecc9f9b6ea1b
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.author: sstein
+ms.openlocfilehash: 54ddde10935fa5add07aaf0c514cf48c6115678e
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="upgrade-an-app-to-use-the-latest-elastic-database-client-library"></a>A legújabb elastic database ügyféloldali kódtár használata az alkalmazások frissítése
 Az új verzióit a [Elastic Database ügyféloldali kódtárának](sql-database-elastic-database-client-library.md) NuGetand a Visual Studio a NuGetPackage Manager felületén keresztül elérhető. Frissítések hibajavításokat tartalmaz, és új képességeket az ügyféloldali kódtár támogatja.
@@ -47,8 +42,8 @@ Ezeket a lépéseket hajtja végre sorrendben biztosítja, hogy az ügyféloldal
 ***1. lehetőség: A frissítési metaadatok PowerShell használatával***
 
 1. A legújabb parancssori segédprogramot letölteni a NuGet [Itt](http://nuget.org/nuget.exe) és egy mappába. 
-2. Nyisson meg egy parancssort, keresse meg az ugyanabban a mappában, és adja ki a parancsot:`nuget install Microsoft.Azure.SqlDatabase.ElasticScale.Client`
-3. Keresse meg az imént letöltött, például új ügyfél DLL-fájl verzióját tartalmazó almappa:`cd .\Microsoft.Azure.SqlDatabase.ElasticScale.Client.1.0.0\lib\net45`
+2. Nyisson meg egy parancssort, keresse meg az ugyanabban a mappában, és adja ki a parancsot: `nuget install Microsoft.Azure.SqlDatabase.ElasticScale.Client`
+3. Keresse meg az imént letöltött, például új ügyfél DLL-fájl verzióját tartalmazó almappa: `cd .\Microsoft.Azure.SqlDatabase.ElasticScale.Client.1.0.0\lib\net45`
 4. A rugalmas adatbázis ügyfél frissítési szkriptlet a töltse le a [Script Center](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-Database-Elastic-6442e6a9), és mentse a dll-fájlt tartalmazó ugyanabba a mappába.
 5. Ebből a könyvtárból "PowerShell.\upgrade.ps1" futtassa a parancssorból, és kövesse az utasításokat.
 

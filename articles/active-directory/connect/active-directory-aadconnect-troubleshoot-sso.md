@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/07/2018
+ms.date: 03/12/2018
 ms.author: billmath
-ms.openlocfilehash: 6e81ea9f98733b1b7e0c9bf7466ac844a37b6046
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: b383a081141d2fde90cfc574ec4b9ffb16940158
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="troubleshoot-azure-active-directory-seamless-single-sign-on"></a>Hibaelhárítás az Azure Active Directory zökkenőmentes egyszeri bejelentkezést.
 
@@ -34,8 +34,9 @@ Ez a cikk segít hibaelhárítási kapcsolatos Azure Active Directory (Azure AD)
 - Zökkenőmentes SSO privát böngészés módban a Firefox nem működik.
 - Zökkenőmentes SSO nem működik az Internet Explorerben, amikor a fokozott védett mód engedélyezve van.
 - Zökkenőmentes SSO nem működik a mobilböngészők iOS és Android rendszeren.
+- Ha egy felhasználó része túl sok csoportok Active Directory, a felhasználó Kerberos-jegy valószínűleg túl nagy feldolgozni, és ennek hatására a zökkenőmentes SSO sikertelen lesz. Az Azure AD HTTPS-kéréseket rendelkezhet fejléc mérete legfeljebb 16 KB-os; Kerberos-jegyek kell sokkal kisebb, mint más Azure AD-összetevők, például a cookie-k olyan sorszámát. Azt javasoljuk, csökkentse a felhasználó csoporttagságait, majd próbálja meg újból.
 - Ha 30 vagy több Active Directory-erdőre van szinkronizálást, zökkenőmentes SSO keresztül az Azure AD Connect nem engedélyezhető. Megoldás is [manuális módszerrel engedélyezze az](#manual-reset-of-azure-ad-seamless-sso) a bérlő a funkciót.
-- Az Azure AD szolgáltatás URL-címe (https://autologon.microsoftazuread-sso.com) hozzáadása a megbízható helyek zónában helyett a helyi intranet zónához *megakadályozza a felhasználókat ebben*.
+- Az Azure AD szolgáltatás URL-cím hozzáadása (https://autologon.microsoftazuread-sso.com) a megbízható helyek zónához helyett a helyi intranet zónához *megakadályozza a felhasználókat ebben*.
 - Használatának letiltása a **RC4_HMAC_MD5** titkosítási típus a Kerberos, az Active Directory beállításaiban zökkenőmentes SSO megszakad. A Csoportházirendkezelés-szerkesztő eszközben ellenőrizze, hogy a házirend értéke **RC4_HMAC_MD5** alatt **számítógép konfigurációja -> Windows-beállítások -> biztonsági beállítások -> helyi házirendek -> biztonsági beállítások - > "Hálózati biztonság: konfigurálja a Kerberos engedélyezett titkosítási típusok"** "Engedélyezett".
 
 ## <a name="check-status-of-feature"></a>A szolgáltatás állapotának ellenőrzése

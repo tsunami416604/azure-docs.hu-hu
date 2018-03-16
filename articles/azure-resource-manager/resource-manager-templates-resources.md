@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/13/2017
 ms.author: tomfitz
-ms.openlocfilehash: 89e4b52e7d306bd495c426bcf775f59d0f30eb55
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: b5438080f71fa8f5c4f03006b75b826f1cfa576a
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="resources-section-of-azure-resource-manager-templates"></a>Azure Resource Manager-sablonok források szakasza
 
@@ -78,7 +78,7 @@ Meghatározhatja az erőforrások az alábbi szerkezettel:
 | másolás |Nem |Ha egynél több példány van szükség, az olyan erőforrások száma létrehozásához. Az alapértelmezett mód párhuzamos. Adja meg a soros módban, ha nem szeretné, hogy az összes vagy egy időben üzembe helyezendő erőforrásokat. További információkért lásd: [erőforrások több példánya létrehozása az Azure Resource Manager](resource-group-create-multiple.md). |
 | dependsOn |Nem |Ehhez az erőforráshoz központi telepítése előtt telepíteni kell erőforrások. Erőforrás-kezelő kiértékeli az erőforrások közti függőségeket, és telepíti azokat a megfelelő sorrendben. Ha nincsenek függő erőforrások, párhuzamos központi telepítés. Az érték lehet egy vesszővel elválasztott lista erőforrás nevét vagy egyedi erőforrás-azonosítók. Ez a sablon üzembe helyezett erőforrások csak felsorolása Erőforrások, amelyek nincsenek meghatározva a sablonban már léteznie kell. Kerülje a szükségtelen függőségek hozzáadásával még a központi telepítés lassú, és hozzon létre körkörös függőségi viszony. A beállítás függőségek útmutatást lásd: [függőségek meghatározása az Azure Resource Manager-sablonok](resource-group-define-dependencies.md). |
 | properties |Nem |Erőforrás-specifikus konfigurációs beállításokat. A tulajdonságok értékeit ugyanazok, mint a REST API művelet (PUT metódust) létrehozni az erőforrást a kérés törzsében meg az értékeket. Egy tulajdonság több példányát létrehozni egy másolatot tömb is megadható. |
-| erőforrások |Nem |A múltbeli erőforrástól függő gyermekszintű erőforrása. Csak olyan típusú erőforrások a szülő erőforrás sémája által számukra engedélyezett. A gyermek-erőforrás teljesen minősített típusú tartalmaz szülő erőforrástípusra, például **Microsoft.Web/sites/extensions**. A szülő erőforrás függőség nem utal. Függőséget explicit módon meg kell adni. |
+| erőforrás |Nem |A múltbeli erőforrástól függő gyermekszintű erőforrása. Csak olyan típusú erőforrások a szülő erőforrás sémája által számukra engedélyezett. A gyermek-erőforrás teljesen minősített típusú tartalmaz szülő erőforrástípusra, például **Microsoft.Web/sites/extensions**. A szülő erőforrás függőség nem utal. Függőséget explicit módon meg kell adni. |
 
 ## <a name="resource-specific-values"></a>Erőforrás-specifikus értékeket
 
@@ -94,7 +94,7 @@ A **apiVersion**, **típus**, és **tulajdonságok** minden erőforrás típusa 
 ### <a name="unique-resource-names"></a>Egyedi erőforrás neve
 Egy adat-hozzáférési végponttal rendelkezik erőforrás típussal egyedi erőforrás nevét kell megadnia. Néhány gyakori erőforrástípusok esetében, amelyek egyedi nevet kell megadni a következők:
 
-* Az Azure Storage<sup>1</sup> 
+* Azure Storage<sup>1</sup> 
 * Web Apps funkció az Azure App Service-ben
 * SQL Server
 * Azure Key Vault
@@ -102,7 +102,7 @@ Egy adat-hozzáférési végponttal rendelkezik erőforrás típussal egyedi er�
 * Azure Batch
 * Azure Traffic Manager
 * Azure Search
-* Az Azure HDInsight
+* Azure HDInsight
 
 <sup>1</sup> tárfiókneveket is kisbetűnek kell lennie, 24 karakter vagy kevesebb, és nem rendelkezik a kötőjel.
 
@@ -213,7 +213,7 @@ Ha szeretné kódba foglalni a hely a sablonban, adja meg a támogatott régiók
 ```
 
 ## <a name="tags"></a>Címkék
-[!INCLUDE [resource-manager-tag-introduction](../../includes/resource-manager-tag-introduction.md)]
+[!INCLUDE [resource-manager-governance-tags](../../includes/resource-manager-governance-tags.md)]
 
 ### <a name="add-tags-to-your-template"></a>Címkék hozzáadása a sablon
 
@@ -242,9 +242,9 @@ Egyes erőforrástípusok belül is meghatározhat gyermekerőforrásait tömbj�
 
 Amikor beágyazott, a típusuk értéke `databases` , de a teljes erőforrás típusa `Microsoft.Sql/servers/databases`. Nincs megadva `Microsoft.Sql/servers/` mivel feltételezzük, hogy a szülő erőforrás típusból. A gyermek-erőforrás neve legyen `exampledatabase` , de a teljes nevet tartalmazza a szülő nevének. Nincs megadva `exampleserver` mivel feltételezzük, hogy a szülő erőforrás.
 
-A gyermek erőforrástípus formátuma:`{resource-provider-namespace}/{parent-resource-type}/{child-resource-type}`
+A gyermek erőforrástípus formátuma: `{resource-provider-namespace}/{parent-resource-type}/{child-resource-type}`
 
-A gyermek-erőforrás neve formátuma:`{parent-resource-name}/{child-resource-name}`
+A gyermek-erőforrás neve formátuma: `{parent-resource-name}/{child-resource-name}`
 
 De azt nem kell meghatároznia az adatbázis-kiszolgálón belül. Megadhatja, hogy a gyermek-erőforrás legfelső szintjén. Előfordulhat, hogy ezt a módszert használja, ha az a szülő erőforrás nem ugyanazt a sablont, vagy ha szeretné használni `copy` több gyermek-erőforrás létrehozása. Ezt a módszert használja adja meg a teljes erőforrás típusát, és a szülő erőforrás neve tartalmazza a gyermek-erőforrás neve.
 
@@ -273,7 +273,7 @@ Amikor egy erőforrást egy teljesen minősített hivatkozást hozhat létre, t�
 
 Példa:
 
-`Microsoft.Compute/virtualMachines/myVM/extensions/myExt`megfelelő `Microsoft.Compute/virtualMachines/extensions/myVM/myExt` helytelen
+`Microsoft.Compute/virtualMachines/myVM/extensions/myExt` megfelelő `Microsoft.Compute/virtualMachines/extensions/myVM/myExt` helytelen
 
 ## <a name="recommendations"></a>Javaslatok
 A következő információkat az erőforrásokkal való munka során lehet hasznos:
@@ -388,7 +388,7 @@ A következő információkat az erőforrásokkal való munka során lehet haszn
    > 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * A különböző megoldástípusokhoz használható teljes sablonok megtekintéséhez lásd: [Azure gyorsindítási sablonok](https://azure.microsoft.com/documentation/templates/).
 * A sablonon belül használhatja a functions szolgáltatással kapcsolatos részletekért lásd: [Azure Resource Manager Sablonfüggvényei](resource-group-template-functions.md).
 * Egyesítenie több sablon üzembe helyezése során, lásd: [kapcsolt sablonok használata az Azure Resource Manager](resource-group-linked-templates.md).

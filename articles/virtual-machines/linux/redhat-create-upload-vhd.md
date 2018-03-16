@@ -13,13 +13,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 12/01/2017
+ms.date: 03/12/2018
 ms.author: szark
-ms.openlocfilehash: 9769b3968f841334aebdc4a371ecd59e64d5ebc2
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: 2c48f95306ddce5d51100e869cc4ac80a4b55c20
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="prepare-a-red-hat-based-virtual-machine-for-azure"></a>Red Hat-alapú virtuális gép előkészítése Azure-beli használatra
 Ebből a cikkből megtudhatja hogyan készülhet fel a Red Hat Enterprise Linux (RHEL) virtuális gépek használata az Azure-ban. Ebben a cikkben ismertetett RHEL-verziók a következők: 6.7 + és 7.1 +. A hipervizorok előkészítése az ebben a cikkben ismertetett a Hyper-V, a kernel-alapú virtuális gép (KVM), és a VMware. Red Hat Felhőelérést programban való részvételre vonatkozó jogosultság követelményeivel kapcsolatos további információkért lásd: [Red Hat Felhőelérést webhely](http://www.redhat.com/en/technologies/cloud-computing/cloud-access) és [az Azure-on futó RHEL](https://access.redhat.com/ecosystem/ccsp/microsoft-azure).
@@ -38,7 +38,7 @@ Jelen szakaszban feltételezzük, hogy már egy ISO-fájlt kapott a Red Hat webh
 * Univerzális lemez formátum (UDF) fájlrendszerek csatlakoztatására kernel támogatására szükség. Az Azure-on első rendszerindításkor az UDF-formátumú adathordozót, amely csatolva van a Vendég továbbítja a létesítési konfiguráció a Linux virtuális gép. Az Azure Linux ügynök csatlakoztatása az UDF fájlrendszer beolvasni a konfigurációt, és a virtuális gép kiépítéséhez képesnek kell lennie.
 * A Linux kernel 2.6.37 verziónál korábbi verziói nem támogatják nem egységes memóriaelérés (NUMA) a Hyper-V a nagyobb virtuális gépek méretét. A probléma főként hatások régebbi azokat a terjesztéseket, amelyek használják a felsőbb rétegbeli Red Hat 2.6.32 kernel és javítását a RHEL 6.6 (kernel-2.6.32-504). Egyéni kernelek futtatják, amelyek régebbiek 2.6.37 vagy régebbi 2.6.32-504 RHEL-alapú kernelek kell állítani a `numa=off` paraméter rendszerindító a kernel parancssorában grub.conf. További információkért tekintse meg a Red Hat [KB 436883](https://access.redhat.com/solutions/436883).
 * Ne konfiguráljon egy swap partíció az operációs rendszer tárolására. A Linux-ügynök beállítható úgy, hogy az ideiglenes erőforrás lemezen a lapozófájl létrehozásához.  További információ található a következő lépések.
-* Minden virtuális merevlemez, amely többszörösei 1 MB méretű kell rendelkeznie.
+* Minden, az Azure virtuális merevlemez rendelkeznie kell egy virtuális mérete 1MB igazodik. Virtuális merevlemez egy nyers lemezen történő átalakítása meg kell győződnie arról, hogy a nyers lemez mérete 1MB átalakítás előtti többszöröse. További részletek találhatók az alábbi lépéseket. Lásd még: [Linux telepítési jegyzetek](create-upload-generic.md#general-linux-installation-notes) további információt.
 
 ### <a name="prepare-a-rhel-6-virtual-machine-from-hyper-v-manager"></a>A Hyper-V kezelőjéből a RHEL 6 virtuális gép előkészítése
 

@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 01/30/2018
+ms.date: 03/14/2018
 ms.author: mimig
-ms.openlocfilehash: 953ee3932ac1acad5cc41fba9bd5e168a94d7db7
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: d31dd1c267bcc63106616b191b6b79d5800e31e9
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="get-started-with-azure-table-storage-using-net"></a>Az Azure Table Storage használatának első lépései a .NET-keretrendszerrel
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -83,10 +83,10 @@ Az oktatóanyagban szereplő példák hozzáadhatók a konzolalkalmazás `Progra
 Az Azure CosmosDB tábla kódtárat bármilyen .NET-alkalmazás, beleértve az Azure felhőalapú szolgáltatás, vagy a webes alkalmazás, és az asztali és mobil alkalmazások is használhatja. Ebben az útmutatóban az egyszerűség kedvéért egy konzolalkalmazást használunk.
 
 ### <a name="use-nuget-to-install-the-required-packages"></a>A szükséges csomagok telepítése a NuGettel
-Nincsenek a projektben az oktatóanyag elvégzéséhez hivatkoznia kell három csomagok:
+Nincsenek a projektben az oktatóanyag elvégzéséhez hivatkoznia kell három javasolt csomagok:
 
-* [Az Azure Storage közös .NET-keretrendszerhez készült (8.6.0-preview)](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/8.6.0-preview). 
-* [A Microsoft Azure CosmosDB tábla .NET-keretrendszerhez készült](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table). Ez a csomag az Azure Table storage-fiók vagy Azure Cosmos DB tábla API-fiók adatforrásaihoz programozott hozzáférést biztosít.
+* [Az Azure Storage közös .NET-keretrendszerhez készült (előzetes verzió)](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common). 
+* [A Microsoft Azure Cosmos DB tábla könyvtár a .NET-hez](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table). Ez a csomag az Azure Table storage-fiók vagy Azure Cosmos DB tábla API-fiók adatforrásaihoz programozott hozzáférést biztosít.
 * [A Microsoft Azure Configuration Manager könyvtár a .NET-hez](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/): Ez a csomag egy osztályt biztosít a konfigurációs fájlban található kapcsolati karakterlánc elemzéséhez, függetlenül attól, hogy az alkalmazás hol fut.
 
 A NuGettel mindkét csomagot beszerezheti. Kövesse az alábbi lépéseket:
@@ -100,6 +100,11 @@ A NuGettel mindkét csomagot beszerezheti. Kövesse az alábbi lépéseket:
 > A Storage .NET közös könyvtárban ODataLib-függőségeit a ODataLib-csomagok érhető el a NuGet, nem a WCF Data Services által megoldott. Az ODataLib-kódtárak letölthetők közvetlenül, vagy a kódprojektje hivatkozhat rájuk a NuGeten keresztül. A Storage ügyféloldali kódtár által használt konkrét ODataLib-csomagok az [OData](http://nuget.org/packages/Microsoft.Data.OData/), az [Edm](http://nuget.org/packages/Microsoft.Data.Edm/) és a [Spatial](http://nuget.org/packages/System.Spatial/) csomagok. Ezeket a kódtárakat az Azure Table storage osztályai használják, amíg azok szükséges függőségek a Storage közös kódtár való programozáshoz.
 > 
 > 
+
+> [!TIP]
+> Lehetséges, hogy már ismeri az Azure Table storage fejlesztők megadva a [windowsazure.Storage kifejezésre](https://www.nuget.org/packages/WindowsAzure.Storage/) a múltban csomag. Javasoljuk, hogy minden új tábla alkalmazást használja a [Azure Storage közös kódtár](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table) és a [Azure Cosmos DB táblában könyvtár](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table), azonban a windowsazure.Storage kifejezésre csomag továbbra is támogatott. A windowsazure.Storage kifejezésre könyvtár használatakor szerepeljenek a Microsoft.WindowsAzure.Storage.Table a használatával utasításokat.
+>
+>
 
 ### <a name="determine-your-target-environment"></a>A célkörnyezet meghatározása
 Az útmutatóban lévő példákat kétféle környezetben futtathatja:

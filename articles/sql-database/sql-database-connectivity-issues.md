@@ -3,24 +3,18 @@ title: "Hárítsa el a SQL kapcsolódási hiba, átmeneti hiba |} Microsoft Docs
 description: "Megtudhatja, hogyan hibáinak elhárítása, diagnosztizálása és megelőzése egy SQL-kapcsolati hiba vagy az Azure SQL Database átmeneti hiba."
 keywords: "SQL-kapcsolatot, kapcsolati karakterláncot, problémák, átmeneti hiba, csatlakozási hiba"
 services: sql-database
-documentationcenter: 
 author: dalechen
-manager: cshepard
-editor: 
-ms.assetid: efb35451-3fed-4264-bf86-72b350f67d50
+manager: craigg
 ms.service: sql-database
 ms.custom: develop apps
-ms.workload: On Demand
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: troubleshooting
+ms.topic: article
 ms.date: 11/29/2017
 ms.author: daleche
-ms.openlocfilehash: 7d393cd08ef5c20ef680e4e1ab3aded191abe932
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: f6b5f825d7f8111075fe37b5dc29d174928d913e
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="troubleshoot-diagnose-and-prevent-sql-connection-errors-and-transient-errors-for-sql-database"></a>SQL-csatlakozási hibák és átmeneti hibák elhárítása, diagnosztizálása és elkerülése az SQL Database szolgáltatásban
 A cikkből megtudhatja, hogyan megakadályozása, hibáinak elhárítása, diagnosztizálása és csatlakozási hibáinak és, hogy az ügyfélalkalmazás tapasztal, amikor hatással van az Azure SQL Database átmeneti hibák elhárítása érdekében. Megtudhatja, hogyan konfigurálhatja az újrapróbálkozási logika, kapcsolódási karakterláncának felépítésére és további kapcsolati beállításokat.
@@ -427,7 +421,7 @@ public bool IsTransient(Exception ex)
 ```
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Egyéb közös SQL-adatbázis kapcsolati problémák elhárításával kapcsolatos további információkért lásd: [kapcsolódási problémák az Azure SQL Database](sql-database-troubleshoot-common-connection-issues.md).
 * [Adatkapcsolattárak SQL Database és SQL Server](sql-database-libraries.md)
 * [SQL Server kapcsolatkészlet (ADO.NET)](https://docs.microsoft.com/dotnet/framework/data/adonet/sql-server-connection-pooling)

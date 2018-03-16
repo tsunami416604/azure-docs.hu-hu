@@ -13,13 +13,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 02/02/2017
+ms.date: 03/12/2018
 ms.author: szark
-ms.openlocfilehash: 631557e0ad712827bb3375c4f152c0e2185fda18
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: b06144e6ad3df1626022edd856e14d6c47494336
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="information-for-non-endorsed-distributions"></a>Nem támogatott disztribúciókkal kapcsolatos tudnivalók
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -50,7 +50,7 @@ Ez a cikk többi általános útmutatást a Linux-disztribúció Azure-on futó 
 * Kernel támogatása UDF fájlrendszerek csatlakoztatására szükség. Azure első rendszerindításkor az üzembe helyezési konfiguráció lett átadva a Linux virtuális gép keresztül UDF formátumú adathordozót, amely csatolva van a Vendég. Az Azure Linux ügynök a UDF fájlrendszerben beolvasni a konfigurációt, és helyezze üzembe a virtuális gép csatlakoztatása képesnek kell lennie.
 * Linux kernel verziójánál régebbi 2.6.37 nem támogatott a Hyper-V nagyobb Virtuálisgép-méretek a. A probléma főként hatások régebbi azokat a terjesztéseket használatával a felsőbb rétegbeli Red Hat 2.6.32 kernel és javítását a RHEL 6.6 (kernel-2.6.32-504). Rendszerekre egyéni kernelek régebbi, mint 2.6.37 vagy régebbi RHEL alapú kernelek 2.6.32-504 a rendszerindító paramétert kell beállítani, mint `numa=off` a parancssori grub.conf a kernel. További információ: a Red Hat [KB 436883](https://access.redhat.com/solutions/436883).
 * Ne konfiguráljon egy swap partíciót az operációsrendszer-lemezképet. A Linux-ügynök beállítható úgy, hogy az ideiglenes erőforrás lemezen a lapozófájl létrehozásához.  További információk a megtalálhatók az alábbi lépéseket.
-* Összes, a virtuális merevlemezeket kell rendelkeznie, amely többszörösei 1 MB méretű.
+* Minden, az Azure virtuális merevlemez rendelkeznie kell egy virtuális mérete 1MB igazodik. Virtuális merevlemez egy nyers lemezen történő átalakítása meg kell győződnie arról, hogy a nyers lemez mérete 1MB átalakítás előtti többszöröse. További információk találhatók az alábbi lépéseket.
 
 ### <a name="installing-kernel-modules-without-hyper-v"></a>Hyper-V nélkül kernel-modulok telepítése
 Azure fut a Hyper-V hipervizort, Linux megköveteli, hogy az egyes kernel modulok telepítve vannak-e az Azure-ban futtatásához. Ha egy virtuális Gépet, amely a Hyper-V kívül hozták létre, a Linux-telepítők nem tartalmazhatnak az illesztőprogramokat a Hyper-V a a kezdeti ramdisk (initrd vagy initramfs) kivéve, ha azt észleli, hogy fut-e egy Hyper-V környezetben. Ha egy eltérő virtualizációs rendszer (azaz Virtualbox, KVM, stb.) a Linux-lemezkép előkészítése, szükség lehet, hogy a initrd annak érdekében, hogy legalább az `hv_vmbus` és `hv_storvsc` kernel modulok érhetők el a kezdeti ramdisk.  Ez az egy ismert probléma, legalább a felsőbb rétegbeli Red Hat terjesztési alapú rendszereken.

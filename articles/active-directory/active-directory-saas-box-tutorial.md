@@ -1,5 +1,5 @@
 ---
-title: "Oktatóanyag: Azure Active Directoryval integrált mezőben |} Microsoft Docs"
+title: "Oktatóanyag: Azure Active Directory integrálása mezőben |} Microsoft Docs"
 description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és a mező között."
 services: active-directory
 documentationCenter: na
@@ -14,145 +14,138 @@ ms.devlang: na
 ms.topic: article
 ms.date: 1/8/2017
 ms.author: jeedes
-ms.openlocfilehash: af43f4b2a11f217853a9160f473dea8c488ea852
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 638ae63057df00375b05a58e3ceab510e2a608de
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/16/2018
 ---
-# <a name="tutorial-azure-active-directory-integration-with-box"></a>Oktatóanyag: Azure Active Directory-integráció segítségével
+# <a name="integrate-azure-active-directory-with-box"></a>Az Azure Active Directory integrálása mezőbe
 
-Ebben az oktatóanyagban elsajátíthatja mezőben integrálása az Azure Active Directory (Azure AD).
+Ebben az oktatóanyagban megismerheti, hogyan integrálható az Azure Active Directory (Azure AD) segítségével.
 
-Mezőbe integrálása az Azure AD lehetővé teszi a következő előnyöket biztosítja:
+Által az Azure AD integrálása mezőben, töltse le a következő előnyöket biztosítja:
 
 - Azt is szabályozhatja az Azure AD, aki hozzáfér-e be.
-- Engedélyezheti a felhasználóknak, hogy automatikusan lekérni bejelentkezett (egyszeri bejelentkezés) mezőben az Azure AD-fiókok.
-- A fiók egyetlen központi helyen – az Azure-portálon kezelheti.
+- Engedélyezheti a felhasználóknak, hogy az beszerzése aláírva automatikusan (egyszeri bejelentkezés, vagy az SSO) mezőben az Azure AD-fiókok.
+- A fiók egyetlen központi helyen, az Azure-portálon kezelheti.
 
-Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](active-directory-appssoaccess-whatis.md).
+Az Azure AD SaaS alkalmazásintegráció, lásd: [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az Azure AD-integráció konfigurálása a jelölését, a következőkre van szükség:
 
 - Az Azure AD szolgáltatásra
-- A mezőben az egyszeri bejelentkezés engedélyezve van az előfizetés
+- Előfizetés mezőben SSO engedélyezése
 
 > [!NOTE]
-> Ez az oktatóanyag lépéseit teszteléséhez nem ajánlott használata termelési környezetben.
+> Ebben az oktatóanyagban tesztelésekor a lépéseket, azt javasoljuk, hogy végezzen *nem* használja az éles környezetben.
 
-Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javaslatokat:
+Ez az oktatóanyag lépéseit teszteléséhez hajtsa végre az ezek az ajánlások:
 
 - Ne használja az éles környezetben, nem szükséges.
 - Ha még nem rendelkezik az Azure AD próbaverziójának környezetben, akkor [egy hónapos próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
-Ebben az oktatóanyagban tesztelése az Azure AD egyszeri bejelentkezéshez egy tesztkörnyezetben. Ebben az oktatóanyagban leírt forgatókönyv két fő építőelemeket áll:
+Ebben az oktatóanyagban tesztelése az Azure AD egyszeri bejelentkezéshez egy tesztkörnyezetben. 
+
+Az ebben az oktatóanyagban a forgatókönyv két fő építőelemeket áll:
 
 1. Mező hozzáadása a gyűjteményből
 2. És tesztelés az Azure AD konfigurálása egyszeri bejelentkezés
 
-## <a name="adding-box-from-the-gallery"></a>Mező hozzáadása a gyűjteményből
-Konfigurálása az Azure AD integrálása a mezőbe, szükség mező hozzáadása a kezelt SaaS-alkalmazások listáját a gyűjteményből.
+## <a name="add-box-from-the-gallery"></a>Adja hozzá a mezőbe a gyűjteményből
+A rendszerrel történő integráció konfigurálása az Azure AD mezőben, mező hozzáadása a gyűjteményből a kezelt SaaS-alkalmazások listáját a következő módon:
 
-**Adja hozzá a mezőbe a gyűjteményből, hajtsa végre az alábbi lépéseket:**
-
-1. Az a  **[Azure-portálon](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen **Azure Active Directory** ikonra. 
+1. Az a [Azure-portálon](https://portal.azure.com), a bal oldali panelen válassza ki a **Azure Active Directory**. 
 
     ![Az Azure Active Directory gomb][1]
 
-2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen **összes alkalmazás**.
+2. Válassza ki **vállalati alkalmazások** > **összes alkalmazás**.
 
-    ![A vállalati alkalmazások szakasz][2]
+    ![A "Vállalati alkalmazások" ablak][2]
     
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** párbeszédpanel tetején gombra.
+3. Egy új alkalmazást szeretne telepíteni, válassza ki a **új alkalmazás** gombra az ablak tetején.
 
-    ![Az új alkalmazás gomb][3]
+    ![Az "új alkalmazás" gomb][3]
 
-4. Írja be a keresőmezőbe, **mezőben**, jelölje be **mezőben** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+4. Írja be a keresőmezőbe, **mezőben**, jelölje be **mezőben** az eredmények listájában, és válassza a **Hozzáadás**.
 
     ![Az eredmények listájában párbeszédpanel](./media/active-directory-saas-box-tutorial/tutorial_box_search.png)
+### <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés tesztelése és konfigurálása
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés tesztelése és konfigurálása
+Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezést a mezőbe, a "Britta Simon." nevű tesztfelhasználó alapján
 
-Ebben a szakaszban konfigurálása, és tesztelés az Azure AD egyszeri bejelentkezéshez "Britta Simon." nevű tesztfelhasználó alapján
+Az egyszeri bejelentkezés működéséhez az Azure AD az Azure ad-ben a mezőbe felhasználó és a megfelelő azonosítania kell. Ez azt jelenti az Azure AD-felhasználó és mezőben ugyanezen felhasználó között egy hivatkozás kapcsolatot kell létrehozni.
 
-Az egyszeri bejelentkezés működéséhez az Azure AD meg kell tudja, hogy mi a párjukhoz felhasználó mezőben a felhasználó Azure AD-ben. Ez azt jelenti egy Azure AD-felhasználó és a kapcsolódó felhasználó a mezőbe közötti kapcsolat kapcsolatot kell létrehozni.
+A hivatkozás kapcsolat létrehozására, rendelje hozzá, mint az a mező *felhasználónév* értékének a *felhasználónév* az Azure ad-ben.
 
-A mezőbe, rendelje az értékét a **felhasználónév** értékeként Azure AD-ben a **felhasználónév** a hivatkozás kapcsolat létrehozására.
-
-Az Azure AD egyszeri bejelentkezést a jelölését tesztelése és konfigurálása, kell végrehajtani a következő építőelemeket:
-
-1. **[Az Azure AD az egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – lehetővé teszi a felhasználók a szolgáltatás használatához.
-2. **[Hozzon létre egy Azure AD-teszt felhasználó](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezést a Britta Simon teszteléséhez.
-3. **[Mezőbe tesztfelhasználó létrehozása](#create-a-box-test-user)**  - kell rendelkeznie a megfelelője a Britta Simon be, amely csatolva van a felhasználó az Azure AD-ábrázolását.
-4. **[Rendelje hozzá az Azure AD-teszt felhasználó](#assign-the-azure-ad-test-user)**  - Britta Simon használata az Azure AD az egyszeri bejelentkezés engedélyezése.
-5. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+Az Azure AD egyszeri bejelentkezést a jelölését tesztelése és konfigurálása, végezze el a következő öt szakaszokban építőelemeit.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure portálon, és konfigurálása egyszeri bejelentkezéshez az mezőben alkalmazásban.
+Az Azure AD egyszeri bejelentkezés engedélyezése az Azure portálon, és egyszeri bejelentkezés konfigurálása az mezőben alkalmazásban a következő módon:
 
-**Az Azure AD az egyszeri bejelentkezés konfigurálása mezőbe, a következő lépésekkel:**
+1. Az Azure portálon a a **mezőben** alkalmazás integrációs ablakban válassza ki **egyszeri bejelentkezés**.
 
-1. Az Azure portálon a a **mezőben** alkalmazás integráció lapján, kattintson a **egyszeri bejelentkezés**.
+    ![Az "Egyszeri bejelentkezés" hivatkozásra][4]
 
-    ![Egyszeri bejelentkezés kapcsolat konfigurálása][4]
-
-2. Az a **egyszeri bejelentkezés** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezése.
+2. Az a **egyszeri bejelentkezés** ablakban, a a **egyszeri bejelentkezés mód** mezőben válassza **SAML-alapú bejelentkezés**.
  
-    ![Egyszeri bejelentkezés párbeszédpanel](./media/active-directory-saas-box-tutorial/tutorial_box_samlbase.png)
+    ![Az "Egyszeri bejelentkezés" ablak](./media/active-directory-saas-box-tutorial/tutorial_box_samlbase.png)
 
-3. Az a **mezőben tartomány és az URL-címek** területen tegye a következőket:
+3. A **mezőben tartomány és az URL-címek**, tegye a következőket:
 
-    ![Az egyszeri bejelentkezési adatokat mezőben tartomány és az URL-címek](./media/active-directory-saas-box-tutorial/url3.png)
+    ![Az egyszeri bejelentkezés információkat "Mezőben a tartomány és az URL-címek"](./media/active-directory-saas-box-tutorial/url3.png)
 
-    a. Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe: `https://<subdomain>.box.com`
+    a. Az a **bejelentkezési URL-cím** mezőbe, írja be egy URL-címet a következő formátumban: *https://\<altartomány >. box.com*.
 
-    b. Az a **azonosító** szövegmező, írja be az URL-cím: `box.net`
+    b. Az a **azonosító** szövegmezőhöz típus **box.net**.
      
     > [!NOTE] 
-    > Ez az érték nincs valós. Frissítse az értéket a tényleges bejelentkezési URL-címet. Ügyfél [mezőben ügyfél-támogatási csoport](https://community.box.com/t5/custom/page/page-id/submit_sso_questionaire) lekérni ezt az értéket. 
-4. Az a **SAML-aláíró tanúsítványa** területen kattintson **metaadatainak XML-kódja** és mentse a metaadat-fájlt a számítógépen.
+    > Az előző értékei nem valódi. Frissítse azokat a tényleges bejelentkezési URL-cím és azonosítója. Szerezze be az értékeket, lépjen kapcsolatba a [mezőben ügyfél-támogatási csoport](https://community.box.com/t5/custom/page/page-id/submit_sso_questionaire). 
+
+4. A **SAML-aláíró tanúsítványa**, jelölje be **metaadatainak XML-kódja**, és mentse a metaadat-fájlt a számítógépen.
 
     ![A tanúsítvány letöltési hivatkozását](./media/active-directory-saas-box-tutorial/tutorial_box_certificate.png) 
 
-5. Kattintson a **mentése** gombra.
+5. Kattintson a **Mentés** gombra.
 
     ![Egyszeri bejelentkezés Mentés gombra konfigurálása](./media/active-directory-saas-box-tutorial/tutorial_general_400.png)
     
-6. Ahhoz, hogy az alkalmazáshoz konfigurált SSO, hajtsa végre a lépéseket [beállítás be egyszeri Bejelentkezést a a saját](https://community.box.com/t5/How-to-Guides-for-Admins/Setting-Up-Single-Sign-On-SSO-for-your-Enterprise/ta-p/1263#ssoonyourown)
+6. Egyszeri bejelentkezés az alkalmazás konfigurálásához kövesse a [beállítania egyszeri Bejelentkezést a saját](https://community.box.com/t5/How-to-Guides-for-Admins/Setting-Up-Single-Sign-On-SSO-for-your-Enterprise/ta-p/1263#ssoonyourown).
 
 > [!NOTE] 
-> Ha nem lehet engedélyezni az egyszeri bejelentkezést a mezőbe fiók beállításainak, esetleg forduljon [mezőben ügyfél-támogatási csoport](https://community.box.com/t5/custom/page/page-id/submit_sso_questionaire) és adja meg a letöltött XML-fájl.
+> Ha be fiókja nem engedélyezi az egyszeri bejelentkezési beállítások, szükség lehet kapcsolódni a [mezőben ügyfél-támogatási csoport](https://community.box.com/t5/custom/page/page-id/submit_sso_questionaire) , és adja meg a letöltött XML-fájl.
 
 > [!TIP]
-> Ezek az utasítások belül tömör verziója most el tudja olvasni a [Azure-portálon](https://portal.azure.com), míg az alkalmazás beállításakor!  Ez az alkalmazás a hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentációja keresztül a **konfigurációs** szakasz alján. További Itt a embedded dokumentációjából szolgáltatásról: [az Azure AD beágyazott dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Hoz létre az alkalmazást, mert egy előző utasításait tömör verziója elolvashatja a [Azure-portálon](https://portal.azure.com). Az alkalmazás hozzáadása után a **Active Directory** > **vállalati alkalmazások** szakaszban jelölje be a **egyszeri bejelentkezés** lapot, és hozzáférhet a a beágyazott dokumentációjában találhatók a **konfigurációs** szakasz alján. A beágyazott dokumentáció szolgáltatással kapcsolatos további információkért lásd: [az Azure AD dokumentációjában beágyazott]( https://go.microsoft.com/fwlink/?linkid=845985).
+>
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure AD-teszt felhasználó
 
-Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta Simon nevezik.
+Ez a szakasz az alábbi lépésekkel hoz létre tesztfelhasználó Britta Simon az Azure-portálon:
 
-   ![Hozzon létre egy Azure AD-teszt felhasználó][100]
+![Hozzon létre egy Azure AD-teszt felhasználó][100]
 
-**Tesztfelhasználó létrehozása az Azure AD-ban, hajtsa végre az alábbi lépéseket:**
+1. Az Azure portálon a bal oldali panelen válassza ki a **Azure Active Directory**.
 
-1. Az Azure portálon a bal oldali ablaktáblán kattintson a **Azure Active Directory** gombra.
+    ![Az Azure Active Directory-hivatkozás](./media/active-directory-saas-box-tutorial/create_aaduser_01.png)
 
-    ![Az Azure Active Directory gomb](./media/active-directory-saas-box-tutorial/create_aaduser_01.png)
-
-2. Azon felhasználók listájának megtekintéséhez keresse fel **felhasználók és csoportok**, és kattintson a **minden felhasználó**.
+2. Az aktuális felhasználó listáját jeleníti meg, jelölje be **felhasználók és csoportok** > **minden felhasználó**.
 
     ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](./media/active-directory-saas-box-tutorial/create_aaduser_02.png)
 
-3. Megnyitásához a **felhasználói** párbeszédpanel, kattintson a **Hozzáadás** tetején a **minden felhasználó** párbeszédpanel megnyitásához.
+3. Felső részén a **minden felhasználó** ablakban válassza ki **Hozzáadás**.
 
     ![A Hozzáadás gombra.](./media/active-directory-saas-box-tutorial/create_aaduser_03.png)
 
-4. Az a **felhasználói** párbeszédpanelen hajtsa végre az alábbi lépéseket:
+    A **felhasználói** ablak nyílik meg.
 
-    ![A felhasználó párbeszédpanel](./media/active-directory-saas-box-tutorial/create_aaduser_04.png)
+4. Az a **felhasználói** ablakban tegye a következőket:
+
+    ![A felhasználó ablak](./media/active-directory-saas-box-tutorial/create_aaduser_04.png)
 
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
 
@@ -160,52 +153,49 @@ Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta
 
     c. Válassza ki a **megjelenítése jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson a **Létrehozás** gombra.
  
 ### <a name="create-a-box-test-user"></a>Mezőbe tesztfelhasználó létrehozása
 
-Ebben a szakaszban a felhasználók Britta Simon nevű létrehozása a mezőbe. Mezőbe támogatja közvetlenül az időponthoz kötött kiosztást, amely alapértelmezés szerint engedélyezve van.
-Nincs ebben a szakaszban az Ön művelet elem. Ha a felhasználó nem létezik a mezőbe, egy új mező elérésére tett kísérlet során jön létre.
+Ebben a szakaszban hoz létre a tesztfelhasználó Britta Simon mezőbe. Mezőbe támogatja közvetlenül az időponthoz kötött kiosztást, amely alapértelmezés szerint engedélyezve van. Ha a felhasználó nem létezik, egy új mező elérésére tett kísérlet során jön létre. Önnek a felhasználó létrehozásához kell semmilyen műveletet.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Rendelje hozzá az Azure AD-teszt felhasználó
 
-Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés be Azure egyszeri bejelentkezéshez használandó.
+Ebben a szakaszban a felhasználó által biztosított hozzáférés be Azure egyszeri bejelentkezéshez használandó Britta Simon engedélyezi. Ehhez tegye a következőket:
 
-![A felhasználói szerepkör hozzárendelése][200] 
+![A felhasználói szerepkör hozzárendelése][200]
 
-**Britta Simon hozzárendelése mezőben, hajtsa végre az alábbi lépéseket:**
+1. Az Azure portálon, nyissa meg a **alkalmazások** nézet, keresse fel a **Directory** megtekintéséhez, majd válassza ki **vállalati alkalmazások** > **összes alkalmazások**.
 
-1. Az Azure-portálon, nyissa meg az alkalmazások nézet, majd nyissa meg a könyvtár nézetet, és navigáljon **vállalati alkalmazások** kattintson **összes alkalmazás**.
+    ![A "Vállalati alkalmazások" és "Összes alkalmazás" hivatkozások][201] 
 
-    ![Felhasználó hozzárendelése][201] 
+2. Az a **alkalmazások** listáról válassza ki **mezőben**.
 
-2. Az alkalmazások listában válassza ki a **mezőben**.
+    ![A csatolás](./media/active-directory-saas-box-tutorial/tutorial_box_app.png)  
 
-    ![A csatolás alkalmazások listájában](./media/active-directory-saas-box-tutorial/tutorial_box_app.png)  
-
-3. A bal oldali menüben kattintson a **felhasználók és csoportok**.
+3. A bal oldali panelen válassza ki a **felhasználók és csoportok**.
 
     ![A "Felhasználók és csoportok" hivatkozásra][202]
 
-4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzáadása hozzárendelés** párbeszédpanel.
+4. Válassza ki **Hozzáadás** , majd a a **hozzáadása hozzárendelés** ablaktáblán válassza előbb **felhasználók és csoportok**.
 
     ![A hozzárendelés hozzáadása panelen][203]
 
-5. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
+5. Az a **felhasználók és csoportok** ablakban, a a **felhasználók** listáról válassza ki **Britta Simon**.
 
-6. Kattintson a **válasszon** gombra **felhasználók és csoportok** párbeszédpanel.
+6. Válassza ki a **válasszon** gombra.
 
-7. Kattintson a **hozzárendelése** gombra **hozzáadása hozzárendelés** párbeszédpanel.
+7. Az a **hozzáadása hozzárendelés** ablakban válassza ki **hozzárendelése**.
     
 ### <a name="test-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen tesztelése.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési Panel segítségével tesztelheti.
 
-Ha a hozzáférési Panel bezárásához mozaik gombra kattint, bejelentkezési oldalt az beszerzése aláírt-on mezőben Alkalmazásmódosítások szerezheti be.
+Ha bejelöli a **mezőben** csempére a hozzáférési panelre, akkor nyissa meg a bejelentkezési oldal való bejelentkezéshez a mezőbe alkalmazás.
 
 ## <a name="additional-resources"></a>További források
 
-* [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](active-directory-saas-tutorial-list.md)
+* [SaaS-alkalmazások integrálása az Azure Active Directoryval kapcsolatos bemutatók felsorolása](active-directory-saas-tutorial-list.md)
 * [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](active-directory-appssoaccess-whatis.md)
 * [A felhasználók átadása konfigurálása](active-directory-saas-box-userprovisioning-tutorial.md)
 

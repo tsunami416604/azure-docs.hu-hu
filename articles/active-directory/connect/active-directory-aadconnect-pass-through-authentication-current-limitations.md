@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/07/2018
+ms.date: 03/12/2018
 ms.author: billmath
-ms.openlocfilehash: ac085bf972885819f7c79996b0f6638fc01fc00d
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 3e533b8b23c095a3de845d9b26a96aea9d8ee086
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-active-directory-pass-through-authentication-current-limitations"></a>Az Azure Active Directory átmenő hitelesítést: Aktuális korlátozások
 
@@ -29,24 +29,25 @@ ms.lasthandoff: 03/08/2018
 
 A következő forgatókönyvek teljes mértékben támogatottak:
 
-- Felhasználói bejelentkezések minden webes webböngésző-alapú alkalmazásokhoz
-- Felhasználói bejelentkezések támogató Office-alkalmazások [modern hitelesítést](https://aka.ms/modernauthga): Office 2016 és Office 2013 _rendelkező_ modern hitelesítést
+- Felhasználói bejelentkezések kibocsátani minden webes webböngésző-alapú alkalmazáshoz.
+- Felhasználói bejelentkezések támogató Office-alkalmazások [modern hitelesítést](https://aka.ms/modernauthga): Office 2016 és Office 2013 _rendelkező_ modern hitelesítést.
 - Felhasználói bejelentkezések Outlook-ügyfelek, például az Exchange ActiveSync-, SMTP-, POP és IMAP örökölt protokollok használatával.
-- Felhasználói bejelentkezések a Skype vállalati adott modern hitelesítés támogatása, beleértve az Online és a hibrid topológiák. További információ a támogatott topológiák [Itt](https://technet.microsoft.com/library/mt803262.aspx).
-- Az Azure AD tartományi csatlakozik a Windows 10 rendszerű eszközökhöz
+- Felhasználói bejelentkezések a Skype vállalati verzió, amely támogatja a modern hitelesítést, beleértve az online és a hibrid topológiák. További információ a támogatott topológiák [Itt](https://technet.microsoft.com/library/mt803262.aspx).
+- Az Azure AD tartományi csatlakozik a Windows 10 rendszerű eszközökhöz.
 - A multi-factor Authentication alkalmazásjelszókat.
 
 ## <a name="unsupported-scenarios"></a>Nem támogatott forgatókönyvek
 
 A következő forgatókönyvek _nem_ támogatja:
 
-- Felhasználói bejelentkezések régebbi Office ügyfél alkalmazásokhoz, az Outlook kivételével: Office 2010 és Office 2013 _nélkül_ modern hitelesítést. A szervezetek javasolt, hogy váltani a modern hitelesítést, ha lehetséges. A modern hitelesítés lehetővé teszi, hogy átmenő hitelesítés támogatásához. Emellett segítséget nyújt a felhasználói fiókok használatával biztonságos [feltételes hozzáférés](../active-directory-conditional-access-azure-portal.md) szolgáltatásait, például az Azure multi-factor Authentication.
+- Felhasználói bejelentkezések régebbi Office ügyfél alkalmazásokhoz, az Outlook kivételével (lásd: **támogatott forgatókönyvek** újabb): az Office 2010 és Office 2013 _nélkül_ modern hitelesítést. A szervezetek javasolt, hogy váltani a modern hitelesítést, ha lehetséges. A modern hitelesítés lehetővé teszi, hogy átmenő hitelesítés támogatásához. Emellett segítséget nyújt a felhasználói fiókok használatával biztonságos [feltételes hozzáférés](../active-directory-conditional-access-azure-portal.md) szolgáltatásait, például az Azure multi-factor Authentication.
+- Számos naptár megosztása és szabad/foglalt információk az Exchange hibrid környezetekben az Office 2010 csak.
 - Felhasználói bejelentkezések a Skype vállalati ügyfélalkalmazások esetében _nélkül_ modern hitelesítést.
 - Felhasználói bejelentkezések a PowerShell 1.0-s verziója. Azt javasoljuk, hogy a PowerShell 2.0-s verzióját használja.
 - A felhasználók észlelési [hitelesítő adatok szivárgását](../active-directory-reporting-risk-events.md#leaked-credentials).
 - Azure AD tartományi szolgáltatások Jelszókivonat-szinkronizálást a bérlő engedélyezni kell. Ezért az átmenő hitelesítést használó bérlők _csak_ nem működik az Azure AD tartományi szolgáltatásokat igénylő forgatókönyvek.
 - Áteresztő hitelesítés nincs integrálva a [az Azure AD Connect Health](../connect-health/active-directory-aadconnect-health.md).
-- Az Apple Device Enrollment Program (Apple DEP) nem támogatja a modern hitelesítést.  Apple DEP-eszközök regisztrálása az Intune-ban az áteresztő hitelesítés használatával tartományok sikertelen lesz.
+- Az Apple Készülékregisztrációs Program (Apple DEP) az iOS beállítási asszisztens használatával nem támogatja a modern hitelesítést. Ez az Apple DEP-eszközök regisztrálása az Intune-ban az áteresztő hitelesítés használatával felügyelt tartományok sikertelen lesz. Érdemes lehet a [vállalati portál alkalmazás](https://blogs.technet.microsoft.com/intunesupport/2018/02/08/support-for-multi-token-dep-and-authentication-with-company-portal/) helyett.
 
 >[!IMPORTANT]
 >Nem támogatott forgatókönyvek megoldás _csak_, engedélyezze a Jelszókivonat-szinkronizálást a a [választható szolgáltatások](active-directory-aadconnect-get-started-custom.md#optional-features) az Azure AD Connect varázsló lapján.

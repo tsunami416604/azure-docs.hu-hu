@@ -14,11 +14,11 @@ ms.workload: identity
 ms.date: 12/22/2017
 ms.author: daveba
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: a9513a59ec4540c6d63236519873c6e1e177b65a
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 68454d3f3880df82ca895d1c5f140ebdb6030e77
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="acquire-an-access-token-for-a-vm-user-assigned-managed-service-identity-msi"></a>Olyan hozzáférési jogkivonatot szerezni a virtuális gépek, felhasználó által hozzárendelt felügyelt szolgáltatás identitásának (MSI)
 
@@ -26,9 +26,7 @@ ms.lasthandoff: 02/03/2018
 Ez a cikk példákat különböző kód és parancsfájl-token beszerzése, valamint útmutatást, például a jogkivonat lejáratáról és HTTP-hibák kezelése a fontos kérdésekben.
 
 ## <a name="prerequisites"></a>Előfeltételek
-
 [!INCLUDE [msi-core-prereqs](~/includes/active-directory-msi-core-prereqs-ua.md)]
-
 Ha azt tervezi, a cikkben az Azure PowerShell-példák használni, ügyeljen arra, hogy telepítse a legújabb verzióját [Azure PowerShell](https://www.powershellgallery.com/packages/AzureRM).
 
 > [!IMPORTANT]
@@ -48,21 +46,28 @@ Egy ügyfélalkalmazás kérhet egy olyan MSI Csomaghoz [csak alkalmazás-hozzá
 
 ## <a name="get-a-token-using-http"></a>Szolgáltatáshitelesítést egy token HTTP-n keresztül 
 
-Az alapvető kezelőfelület egy hozzáférési jogkivonat beszerzése REST, így elérhető bármely ügyfél alkalmazás számára, amelyekkel HTTP REST-hívások a virtuális gépen alapul. Ez az az Azure AD-programozási modell hasonló, kivéve az ügyfél használja a localhost végpont a virtuális gépen (és az Azure AD-végpont).
+Az alapvető kezelőfelület egy hozzáférési jogkivonat beszerzése REST, így elérhető bármely ügyfél alkalmazás számára, amelyekkel HTTP REST-hívások a virtuális gépen alapul. Ez az az Azure AD-programozási modell hasonló, kivéve az ügyfél használ egy végpontot a virtuális gépen (és az Azure AD-végpont).
 
-Mintakérelem:
+A példány metaadatok szolgáltatás (IMDS) végpont használatával kérelemmintát:
 
 ```
-GET http://localhost:50342/oauth2/token?resource=https%3A%2F%2Fmanagement.azure.com%2F&client_id=712eac09-e943-418c-9be6-9fd5c91078bl HTTP/1.1
-Metadata: true
+GET http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com%2F&client_id=712eac09-e943-418c-9be6-9fd5c91078bl HTTP/1.1 Metadata: true
+```
+
+Az MSI VM bővítmény végpont (jövőbeli érvénytelenítése) használatával kérelemmintát:
+
+```
+GET http://localhost:50342/oauth2/token?resource=https%3A%2F%2Fmanagement.azure.com%2F&client_id=712eac09-e943-418c-9be6-9fd5c91078bl HTTP/1.1 Metadata: true
 ```
 
 | Elem | Leírás |
 | ------- | ----------- |
 | `GET` | A HTTP-műveletet, amely azt jelzi, hogy szeretne lekérdezni a végpont adatait. Ebben az esetben az OAuth hozzáférési tokent. | 
-| `http://localhost:50342/oauth2/token` | Az MSI végpont, ahol 50342 az alapértelmezett port és konfigurálható. |
-| `resource` | A lekérdezési karakterlánc paraméterként, az App ID URI a célerőforrás jelző. Emellett megjelenik a `aud` (célközönség) jogcím a kiállított jogkivonat. Ez a példa kérelmek rendelkezik egy App ID URI https://management.azure.com/ az Azure Resource Manager hozzáférési jogkivonatot. |
-| `client_id` | A lekérdezési karakterlánc paraméterként, az ügyfél-azonosító (más néven Alkalmazásazonosító), a szolgáltatás egyszerű, a felhasználó által hozzárendelt MSI képviselő jelző. Ez az érték eredmény abban az esetben a `clientId` tulajdonság egy felhasználó által hozzárendelt MSI-fájl létrehozása során. Ebben a példában egy jogkivonatot az ügyfél-azonosító "712eac09-e943-418c-9be6-9fd5c91078bl" kéri. |
+| `http://169.254.169.254/metadata/identity/oauth2/token` | A példány metaadat-szolgáltatás MSI végpontja. |
+| `http://localhost:50342/oauth2/token` | Az MSI végpont a Virtuálisgép-bővítmény, ahol 50342 az alapértelmezett port és konfigurálható. |
+| `api-version`  | A lekérdezési karakterlánc paraméterként, az API-verzió a IMDS végpont jelző.  |
+| `resource` | A lekérdezési karakterlánc paraméterként, az App ID URI a célerőforrás jelző. Emellett megjelenik a `aud` (célközönség) jogcím a kiállított jogkivonat. Ez a példa kérelmek Azure Resource Manager hozzáférési jogkivonatot tartalmaz egy App ID URI-azonosítója https://management.azure.com/. |
+| `client_id` |  Egy *választható* lekérdezési karakterlánc, az ügyfél-azonosító (más néven Alkalmazásazonosító) jelzi a felhasználó által hozzárendelt MSI képviselő szolgáltatás rendszerbiztonsági tag. Ha a rendszer által hozzárendelt MSI használ, ez a paraméter nincs szükség. Ez az érték eredmény abban az esetben a `clientId` tulajdonság egy felhasználó által hozzárendelt MSI-fájl létrehozása során. Ebben a példában egy jogkivonatot az ügyfél-azonosító "712eac09-e943-418c-9be6-9fd5c91078bl" kéri. |
 | `Metadata` | Egy HTTP kérelem fejlécmező, mint a kiszolgáló oldalán kérelem hamisítására (SSRF) támadások elleni megoldás MSI szükséges. Ez az érték "true", az összes kisbetű értékre kell állítani.
 
 Mintaválasz:
@@ -94,6 +99,16 @@ Content-Type: application/json
 ## <a name="get-a-token-using-curl"></a>Szolgáltatáshitelesítést egy token használata CURL használatával
 
 Ügyeljen arra, hogy az ügyfél-azonosító (más néven Alkalmazásazonosító) egyszerű, az a felhasználó által hozzárendelt MSI-szolgáltatás helyettesítse a <MSI CLIENT ID> értékének a `client_id` paraméter. Ez az érték eredmény abban az esetben a `clientId` tulajdonság egy felhasználó által hozzárendelt MSI-fájl létrehozása során.
+  
+A példány metaadatok szolgáltatás (IMDS) végpont használatával kérelemmintát:
+
+   ```bash
+   response=$(curl -H Metadata:true "http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com/&client_id=<MSI CLIENT ID>")
+   access_token=$(echo $response | python -c 'import sys, json; print (json.load(sys.stdin)["access_token"])')
+   echo The MSI access token is $access_token
+   ```
+   
+Az MSI VM bővítmény végpont (jövőbeli érvénytelenítése) használatával kérelemmintát:
 
    ```bash
    response=$(curl http://localhost:50342/oauth2/token --data "resource=https://management.azure.com/&client_id=<MSI CLIENT ID>" -H Metadata:true -s)
@@ -104,7 +119,7 @@ Content-Type: application/json
    Példa válaszok:
 
    ```bash
-   user@vmLinux:~$ response=$(curl http://localhost:50342/oauth2/token --data "resource=https://management.azure.com/&client_id=9d484c98-b99d-420e-939c-z585174b63bl" -H Metadata:true -s)
+   user@vmLinux:~$ response=$(curl -H Metadata:true "http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com/&client_id=9d484c98-b99d-420e-939c-z585174b63bl")
    user@vmLinux:~$ access_token=$(echo $response | python -c 'import sys, json; print (json.load(sys.stdin)["access_token"])')
    user@vmLinux:~$ echo The MSI access token is $access_token
    The MSI access token is eyJ0eXAiOiJKV1QiLCJhbGciO...
@@ -112,7 +127,7 @@ Content-Type: application/json
 
 ## <a name="handling-token-expiration"></a>Kezelési jogkivonat lejáratáról
 
-A helyi MSI alrendszer gyorsítótárazza a jogkivonatokat. Ezért hívása, amilyen gyakran csak van lehetősége, és az Azure AD egy a tömörített hívás eredménye csak akkor, ha:
+Az MSI-alrendszer gyorsítótárazza a jogkivonatokat. Ezért hívása, amilyen gyakran csak van lehetősége, és az Azure AD egy a tömörített hívás eredménye csak akkor, ha:
 - a gyorsítótár-tévesztései miatt nem jogkivonat a gyorsítótárban történik
 - a jogkivonat érvényessége lejárt
 
@@ -142,7 +157,7 @@ Ez a szakasz a lehetséges hibaválaszok dokumentumokat. A "200 OK" állapota a 
 | ----------- | ----- | ----------------- | -------- |
 | 400 Hibás kérés | invalid_resource | AADSTS50001: Az alkalmazás nevű  *\<URI\>*  nem található a bérlő nevű  *\<TENANT-ID\>*. Ez akkor fordulhat elő, ha az alkalmazás nem lett telepítve a rendszergazda a bérlő által vagy a bérlő bármely felhasználó hozzájárulását. Előfordulhat, hogy elküldött a hitelesítési kérést a megfelelő bérlő számára. \ | (Csak Linux) |
 | 400 Hibás kérés | bad_request_102 | Nincs megadva a szükséges metaadat-fejléccel | Vagy a `Metadata` kérelem mező hiányzik a kérelemből, vagy helytelenül van formázva. Az értéket kell megadni, `true`, az összes kisbetű. A "kérelemmintát" című része a [Szolgáltatáshitelesítést egy token HTTP-n keresztül](#get-a-token-using-http) szakasz egy példát.|
-| 401 nem engedélyezett | unknown_source | Az ismeretlen forrásból  *\<URI\>* | Győződjön meg arról, hogy a HTTP GET kérelem URI-azonosítója helytelenül van formázva. A `scheme:host/resource-path` részét kell megadni, `http://localhost:50342/oauth2/token`. A "kérelemmintát" című része a [Szolgáltatáshitelesítést egy token HTTP-n keresztül](#get-a-token-using-http) szakasz egy példát.|
+| 401 nem engedélyezett | unknown_source | Az ismeretlen forrásból  *\<URI\>* | Győződjön meg arról, hogy a HTTP GET kérelem URI-azonosítója helytelenül van formázva. A `scheme:host/resource-path` részét kell megadni, `http://169.254.169.254/metadata/identity/oath2/token` vagy `http://localhost:50342/oauth2/token`. A "kérelemmintát" című része a [Szolgáltatáshitelesítést egy token HTTP-n keresztül](#get-a-token-using-http) szakasz egy példát.|
 |           | invalid_request | A kérés egyik kötelező paraméter hiányzik, érvénytelen paramétert tartalmaz, egy paraméter egynél többször tartalmazza vagy egyéb rosszul megformázva. |  |
 |           | unauthorized_client | Az ügyfél nem jogosult egy hozzáférési jogkivonatot: Ezzel a módszerrel igényelni. | Oka a kérelmeket, amelyek nem a helyi visszacsatolási hívni a bővítményt, vagy egy virtuális gépen, amely nem rendelkezik egy olyan MSI Csomaghoz, megfelelően konfigurálva. Lásd: [konfigurálja a virtuális gép felügyelt szolgáltatás identitásának (MSI) az Azure portál használatával](msi-qs-configure-portal-windows-vm.md) Ha Virtuálisgép-konfiguráció segítségre van szüksége. |
 |           | access_denied | Az erőforrás tulajdonosa vagy a hitelesítési kiszolgáló megtagadta a kérelmet. |  |

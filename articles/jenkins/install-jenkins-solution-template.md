@@ -1,20 +1,20 @@
 ---
 title: "Jenkins-kiszolgáló létrehozása az Azure-on"
 description: "Jenkins-kiszolgáló telepítése egy Azure-beli linuxos virtuális gépen a Jenkins-megoldássablonból és egy Java-mintaalkalmazás létrehozása."
-author: mlearned
-manager: douge
+author: tomarcher
+manager: rloutlaw
 ms.service: multiple
 ms.workload: web
-ms.devlang: java
+ms.devlang: na
 ms.topic: article
-ms.date: 08/21/2017
-ms.author: mlearned
+ms.date: 03/12/2018
+ms.author: tarcher
 ms.custom: Jenkins
-ms.openlocfilehash: 422d133841a380b1ef02e95245207c464089138d
-ms.sourcegitcommit: 6fb44d6fbce161b26328f863479ef09c5303090f
+ms.openlocfilehash: c9f86ab2536d3c598bb8c7084524395b41f18db0
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="create-a-jenkins-server-on-an-azure-linux-vm-from-the-azure-portal"></a>Jenkins-kiszolgáló létrehozása Azure-beli linuxos virtuális gépen az Azure Portalról
 
@@ -28,32 +28,13 @@ Ez a rövid útmutató bemutatja, hogyan telepítheti a [Jenkins](https://jenkin
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="create-the-jenkins-vm-from-the-solution-template"></a>Jenkins virtuális gép létrehozása a megoldássablonból
+Jenkins támogatja, ahol a kiszolgáló delegáltak működik egy vagy több ügynököt projektek nagy számú futtatására, vagy adja meg a szükséges különböző környezetek egyetlen Jenkins telepítéséhez Jenkins összeállít egy modell, vagy teszteli. Ebben a szakaszban a lépések részletes útmutatót kiszolgáló telepítése és konfigurálása a Jenkins az Azure-on.
 
-Nyissa meg a [Jenkins áruházbeli rendszerképét](https://azuremarketplace.microsoft.com/marketplace/apps/azure-oss.jenkins?tab=Overview) a webböngészőben, és az oldal bal oldalán válassza a **LETÖLTÉS MOST** lehetőséget. Tekintse át a díjszabás részleteit, és válassza a **Folytatás**, majd a **Létrehozás** lehetőséget a Jenkins-kiszolgáló Azure Portalon történő konfigurálásához. 
-   
-![Azure Portal párbeszédpanel](./media/install-jenkins-solution-template/ap-create.png)
-
-**Az alapszintű beállítások konfigurálása** lapon töltse ki a következő mezőket:
-
-![Az alapvető beállítások konfigurálása](./media/install-jenkins-solution-template/ap-basic.png)
-
-* Írja be a **Jenkins** értéket a **Név** mezőbe.
-* Írjon be egy **felhasználónevet**. A felhasználónévnek [egyedi követelményeknek](/azure/virtual-machines/linux/faq#what-are-the-username-requirements-when-creating-a-vm) kell megfelelnie.
-* A **Hitelesítés típusa** mezőben válassza a **Jelszó** lehetőséget, majd adjon meg egy jelszót. A jelszónak legalább egy nagybetűs karaktert, egy számot és egy speciális karaktert is tartalmaznia kell.
-* Az **Erőforráscsoport** mezőben adja meg a **myJenkinsResourceGroup** kifejezést.
-* A **Hely** legördülő menüből válassza az **USA keleti régiója** [Azure-régiót](https://azure.microsoft.com/regions/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-
-Az **OK** lehetőség kiválasztásával lépjen tovább a **További beállítások konfigurálása** lapra. Adjon meg egy egyedi tartománynevet a Jenkins-kiszolgáló azonosításához, majd válassza az **OK** lehetőséget.
-
-![További beállítások megadása](./media/install-jenkins-solution-template/ap-addtional.png)  
-
- Az ellenőrzés után válassza ismét az **OK** lehetőséget az **Összefoglalás** lapon. Végül válassza a **Vásárlás** lehetőséget a Jenkins virtuális gép létrehozásához. Ha a kiszolgáló készen áll, értesítést fog kapni az Azure Portalon:   
-
-![„A Jenkins készen áll” értesítés](./media/install-jenkins-solution-template/jenkins-deploy-notification-ready.png)
+[!INCLUDE [jenkins-install-from-azure-marketplace-image](../../includes/jenkins-install-from-azure-marketplace-image.md)]
 
 ## <a name="connect-to-jenkins"></a>Kapcsolódás a Jenkinshez
 
-A webböngészőjében nyissa meg a virtuális gépet (például: http://jenkins2517454.eastus.cloudapp.azure.com/). A Jenkins-konzol nem érhető el nem biztonságos HTTP-n keresztül. Az oldalon szereplő utasítások szerint, SSH-alagút használatával biztonságosan nyithatja meg a Jenkins-konzolt.
+Keresse meg a virtuális gép (például http://jenkins2517454.eastus.cloudapp.azure.com/) a böngészőben. A Jenkins-konzol nem érhető el nem biztonságos HTTP-n keresztül. Az oldalon szereplő utasítások szerint, SSH-alagút használatával biztonságosan nyithatja meg a Jenkins-konzolt.
 
 ![Jenkins zárolásának feloldása](./media/install-jenkins-solution-template/jenkins-ssh-instructions.png)
 

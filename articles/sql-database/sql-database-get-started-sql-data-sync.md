@@ -2,25 +2,19 @@
 title: "Azure SQL adatszinkronizálás (előzetes verzió) beállítása |} Microsoft Docs"
 description: "Az oktatóanyag bemutatja, hogyan állíthat be Azure SQL adatszinkronizálás (előzetes verzió)"
 services: sql-database
-documentationcenter: 
 author: douglaslms
 manager: craigg
-editor: 
-ms.assetid: a295a768-7ff2-4a86-a253-0090281c8efa
 ms.service: sql-database
 ms.custom: load & move data
-ms.workload: Active
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: douglasl
 ms.reviewer: douglasl
-ms.openlocfilehash: b356bc9db9e883c2514953b516d6dd51c1807610
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.openlocfilehash: 237a34c955f8ef36e25c30a6b13787f6a9296612
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="set-up-sql-data-sync-preview"></a>SQL adatszinkronizálás (előzetes verzió) beállítása
 Ebben az oktatóanyagban elsajátíthatja, hogyan Azure SQL Data szinkronizálás beállítása az Azure SQL Database és az SQL Server-példányokat tartalmazó hibrid szinkronizálási csoportok létrehozásával. Az új szinkronizálási csoport teljes van konfigurálva, és a beállított ütemezés szerint szinkronizálja.
@@ -62,7 +56,7 @@ Teljes PowerShell-példák bemutatják, hogyan konfigurálja az SQL adatszinkron
         > [!NOTE]
         > A Microsoft azt javasolja, hogy hozzon létre egy új, üres adatbázis kívánja használni, mint a szinkronizálás metaadatokat tároló adatbázis. Adatszinkronizálás hoz létre táblák az adatbázisban, és a gyakori munkaterhelés futtatja. Ez az adatbázis automatikusan megosztva a szinkronizálási metaadatokat tároló adatbázis az összes, a szinkronizálási csoportok a kiválasztott régióban. A szinkronizálás metaadatokat tároló adatbázis vagy a név nélküli eldobása nem módosítható.
 
-        Ha úgy döntött, hogy **új adatbázis**, jelölje be **új adatbázis létrehozása.** A **SQL-adatbázis** lap megnyitásakor. Az a **SQL-adatbázis** lapon, nevet, és konfigurálja az új adatbázist. Válassza ki **OK**.
+        Ha úgy döntött, hogy **új adatbázis**, jelölje be **új adatbázis létrehozása.** A **SQL-adatbázis** lap megnyitásakor. Az a **SQL-adatbázis** lapon, nevet, és konfigurálja az új adatbázist. Ezután kattintson az **OK** gombra.
 
         Ha úgy döntött, hogy **létező adatbázis használata**, a listáról válassza ki az adatbázist.
 
@@ -110,7 +104,7 @@ Az a **Azure-adatbázis beállítása** lapján tegye a következőket:
 
     ![Új SQL-adatbázis szinkronizálási tag hozzá lett adva.](media/sql-database-get-started-sql-data-sync/datasync-preview-memberadded.png)
 
-### <a name="add-on-prem"></a>A helyszíni SQL Server adatbázis hozzáadása
+### <a name="add-on-prem"></a> A helyszíni SQL Server adatbázis hozzáadása
 
 Az a **Tagadatbázis** szakaszban, és opcionálisan adja hozzá egy helyi SQL Server a szinkronizálási csoport kiválasztásával **adja hozzá az On-Premises adatbázis**. A **konfigurálása a helyszíni** lap megnyitásakor.
 
@@ -159,7 +153,7 @@ Az a **konfigurálása a helyszíni** lapján tegye a következőket:
 
         ![Hozzáadása és az SQL Server-adatbázisok konfigurálása](media/sql-database-get-started-sql-data-sync/datasync-preview-agent-adddb.png)
 
-    10. Az a **SQL Server-konfigurációs** párbeszédpanelen válassza ki, hogy az SQL Server-hitelesítés vagy a Windows-hitelesítés használatával csatlakoznak-e. Ha SQL Server-hitelesítést választja, adja meg a meglévő hitelesítő adatait. Adja meg az SQL Server nevét és a szinkronizálni kívánt adatbázis nevét. Válassza ki **tesztkapcsolat** a beállításainak ellenőrzéséhez. Válassza ki **mentése**. A regisztrált adatbázis listájában jelenik meg.
+    10. Az a **SQL Server-konfigurációs** párbeszédpanelen válassza ki, hogy az SQL Server-hitelesítés vagy a Windows-hitelesítés használatával csatlakoznak-e. Ha SQL Server-hitelesítést választja, adja meg a meglévő hitelesítő adatait. Adja meg az SQL Server nevét és a szinkronizálni kívánt adatbázis nevét. Válassza ki **tesztkapcsolat** a beállításainak ellenőrzéséhez. Ezután válassza a **Save** (Mentés) lehetőséget. A regisztrált adatbázis listájában jelenik meg.
 
         ![SQL Server-adatbázis most már regisztrálva van](media/sql-database-get-started-sql-data-sync/datasync-preview-agent-dbadded.png)
 
@@ -185,11 +179,11 @@ Miután az új szinkronizálási csoporttagok létrehozott és telepített, 3. l
 
 2.  Az elérhető táblák listájában jelölje ki a szinkronizálni kívánt táblák.
 
-    ![Válassza ki a szinkronizálandó táblák](media/sql-database-get-started-sql-data-sync/datasync-preview-tables.png)
+    ![Szinkronizálni kívánt táblák kiválasztása](media/sql-database-get-started-sql-data-sync/datasync-preview-tables.png)
 
 3.  Alapértelmezés szerint a táblázat összes oszlopa van kiválasztva. Ha nem szeretné szinkronizálni az oszlopok, tiltsa le az oszlopok nem kívánt szinkronizálására vonatkozó négyzet jelölését. Ne feledje, hogy a kiválasztott elsődleges kulcsként megadott oszlop.
 
-    ![Jelöljön ki mezőket szinkronizálása](media/sql-database-get-started-sql-data-sync/datasync-preview-tables2.png)
+    ![Szinkronizálni kívánt mezők kiválasztása](media/sql-database-get-started-sql-data-sync/datasync-preview-tables2.png)
 
 4.  Végül válassza ki **mentése**.
 
@@ -270,7 +264,7 @@ Ha azt szeretné, a helyi ügynök jelenleg meg egy másik számítógépen futn
 
 5. Adja meg az adatbázis hitelesítő adatai az összes olyan adatbázis, amely megjeleníti az nem érhető el. Ezeket az adatbázisokat az új számítógépre, amelyen az ügynök telepítve van a elérhetőnek kell lennie.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Gratulálunk! Létrehozott egy szinkronizálású csoport, amely tartalmazza az SQL Database-példányt, és egy SQL Server-adatbázis.
 
 SQL adatszinkronizálás kapcsolatos további információkért lásd:

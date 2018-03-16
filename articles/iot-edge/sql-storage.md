@@ -9,11 +9,11 @@ ms.author: kgremban, ebertrams
 ms.date: 02/21/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: ce3c3abd00dba23887b5f811af6cab8d2c83323d
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 792e754b84f1dc03a32780ed94d274c833be68f5
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="store-data-at-the-edge-with-sql-server-databases"></a>SQL Server-adatbázisok a peremhálózaton adatok tárolásához
 
@@ -67,7 +67,7 @@ Alapértelmezés szerint ez a szakasz a kód tárolót hoz létre az SQL Server 
             "status": "running",
             "restartPolicy": "always",
             "settings": {
-              "image": "localhost:5000/filterfunction:latest",
+              "image": "<docker registry address>/filterfunction:latest",
               "createOptions": "{}"
             }
           },
@@ -94,7 +94,12 @@ Alapértelmezés szerint ez a szakasz a kód tárolót hoz létre az SQL Server 
         }
    ```
 
-3. Attól függően, hogy az operációs rendszer Ön által futtatott frissítse az SQL-modul beállításait az alábbi kódra: 
+3. Cserélje le a `<docker registry address>` kitölteni a befejezett oktatóanyag címmel [Azure funkciót központi telepítése egy IoT peremhálózati modul – előzetes](https://docs.microsoft.com/en-us/azure/iot-edge/tutorial-deploy-function)
+
+   >[!NOTE]
+   >A tároló beállításjegyzék cím megegyezik a bejelentkezési kiszolgáló másolt a beállításjegyzékből. Meg kell formájában `<your container registry name>.azurecr.io`
+
+4. Attól függően, hogy az operációs rendszer Ön által futtatott frissítse az SQL-modul beállításait az alábbi kódra: 
 
    * Windows:
 
@@ -110,11 +115,11 @@ Alapértelmezés szerint ez a szakasz a kód tárolót hoz létre az SQL Server 
       "createOptions": "{\"Env\": [\"ACCEPT_EULA=Y\",\"MSSQL_SA_PASSWORD=Strong!Passw0rd\"],\"HostConfig\": {\"Mounts\": [{\"Target\": \"/var/opt/mssql\",\"Source\": \"sqlVolume\",\"Type\": \"volume\"}],\"PortBindings\": {\"1433/tcp\": [{\"HostPort\": \"1401\"}]}}}"
       ```
 
-4. Mentse a fájlt. 
-5. Válassza ki a Visual STUDIO Code parancs paletta **peremhálózati: peremhálózati eszköz a központi telepítés létrehozásához**. 
-6. Válassza ki az IoT-peremhálózati eszköz azonosítójával.
-7. Válassza ki a `deployment.json` , amelyeket azért frissített fájlt. A kimeneti ablakban megjelenik az üzembe helyezéshez megfelelő kimenetek. 
-8. A peremhálózati futásidejű elindításához válassza ki a **peremhálózati: Start peremhálózati** a parancs paletta.
+5. Mentse a fájlt. 
+6. Válassza ki a Visual STUDIO Code parancs paletta **peremhálózati: peremhálózati eszköz a központi telepítés létrehozásához**. 
+7. Válassza ki az IoT-peremhálózati eszköz azonosítójával.
+8. Válassza ki a `deployment.json` , amelyeket azért frissített fájlt. A kimeneti ablakban megjelenik az üzembe helyezéshez megfelelő kimenetek. 
+9. A peremhálózati futásidejű elindításához válassza ki a **peremhálózati: Start peremhálózati** a parancs paletta.
 
 >[!TIP]
 >Minden alkalommal, SQL Server tárolókat hozhat létre, éles környezetben, akkor [alapértelmezett rendszergazdai jelszavának módosítása](https://docs.microsoft.com/sql/linux/quickstart-install-connect-docker#change-the-sa-password).

@@ -3,22 +3,18 @@ title: "Kiterjesztett felhő az adatbázisok közötti Reporting |} Microsoft Do
 description: "vízszintes partíciók keresztül rugalmas lekérdezések beállítása"
 services: sql-database
 documentationcenter: 
-manager: jhubbard
+manager: craigg
 author: MladjoA
-ms.assetid: f86eccb8-6323-4ba7-8559-8a7c039049f3
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: Inactive
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 05/27/2016
 ms.author: mlandzic
-ms.openlocfilehash: 41accea2e94fc763d0dcbba709829ec07453da78
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: ec47a10fcfcb3ef52810ba2b3da9599b65db375a
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="reporting-across-scaled-out-cloud-databases-preview"></a>Jelentéskészítési közötti kiterjesztett felhő (előzetes verzió)
 ![Átfogó szilánkok lekérdezése][1]
@@ -191,7 +187,7 @@ Használja a rendszeres SQL Server kapcsolati karakterláncokat az alkalmazás k
 * Rugalmas lekérdezés jelenleg nem végeznek eltávolítási szilánkok predikátumok keresztül a horizontális kulcs lehetővé tenné, bizonyos szilánkok biztonságosan kizárását feldolgozása.
 * Rugalmas lekérdezési működik a legjobban az lekérdezések ahol a szilánkok a számítási többsége végezhető. Általában kap a szelektív szűrő predikátumok kiértékelhető a legjobb lekérdezési teljesítményt a szilánkok vagy illesztések keresztül a particionálási kulcsokhoz, az összes szilánkok partíciójához úgy végezheti el. Más lekérdezési mintáinak nagy mennyiségű adatok betöltése a szilánkok az átjárócsomóponthoz kell, és elvégezheti a kapcsolódó rosszul
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Rugalmas lekérdezési áttekintését lásd: [rugalmas lekérdezési áttekintése](sql-database-elastic-query-overview.md).
 * Függőleges particionálási oktatóanyagért lásd a [első lépések (a vertikális particionálás) közötti adatbázis-lekérdezés](sql-database-elastic-query-getting-started-vertical.md).

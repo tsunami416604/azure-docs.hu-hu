@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/07/2017
 ms.author: chackdan
-ms.openlocfilehash: 6675603bf741b1a668ba387c8304d2e2b7ab4e12
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: e8e5513df5ab412857403382e1940da27c85274a
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="create-a-service-fabric-cluster-by-using-azure-resource-manager"></a>A Service Fabric-fürt létrehozása az Azure Resource Manager használatával 
 > [!div class="op_single_selector"]
@@ -117,7 +117,7 @@ Az alábbi parancs segítségével gyorsan, hozzon létre egy fürtöt minimáli
 
 A használt sablon megtalálható a [azure service fabric sablon minták: windows sablon](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-1-NodeTypes-Secure-NSG) és [Ubuntu sablon](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Ubuntu-1-NodeTypes-Secure)
 
-Az alábbi működik a Windows és Linux-fürtök létrehozására vonatkozó parancsokat, egyszerűen adja meg az operációs rendszer, ennek megfelelően. A powershell parancssori felület parancsait is kiírja az tanúsítvány-tanúsítványt a megadott theCertificateOutputFolder /. A parancs felsorolásszerűen más paramétereket, valamint például a virtuális gép Termékváltozat.
+Az alábbi működik a Windows és Linux-fürtök létrehozására vonatkozó parancsokat, egyszerűen adja meg az operációs rendszer, ennek megfelelően. A PowerShell / parancssori felület parancsai is a tanúsítványt a megadott CertificateOutputFolder győződjön meg arról, hogy kimenetek tanúsítvány már létrehozott mappára. A parancs felsorolásszerűen más paramétereket, valamint például a virtuális gép Termékváltozat.
 
 ```Powershell
 
@@ -126,13 +126,13 @@ $resourceGroupName="mycluster"
 $vaultName="myvault"
 $vaultResourceGroupName="myvaultrg"
 $CertSubjectName="mycluster.westus.cloudapp.azure.com"
-$certPassword="Password!1" | ConvertTo-SecureString -AsPlainText -Force 
-$vmpassword="Password!4321" | ConvertTo-SecureString -AsPlainText -Force
+$certPassword="Password123!@#" | ConvertTo-SecureString -AsPlainText -Force 
+$vmpassword="Password4321!@#" | ConvertTo-SecureString -AsPlainText -Force
 $vmuser="myadmin"
 $os="WindowsServer2016DatacenterwithContainers"
 $certOutputFolder="c:\certificates"
 
-New-AzureRmServiceFabricCluster -ResourceGroupName $resourceGroupName -Location $resourceGroupLocation -CertificateOutputFolder $certOutputFolder -CertificatePassword $certpassword -CertificateSubjectName $CertSubjectName -OS $os -VmPassword $vmpassword -VmUserName $vmuser 
+New-AzureRmServiceFabricCluster -ResourceGroupName $resourceGroupName -Location $resourceGroupLocation -CertificateOutputFolder $certOutputFolder -CertificatePassword $certpassword -CertificateSubjectName $CertSubjectName -OS $os -VmPassword $vmpassword -VmUserName $vmuser –Location $resourceGroupLocation
 
 ```
 
@@ -178,7 +178,7 @@ Ha már rendelkezik egy egyéni sablont, majd győződjön meg arról, hogy elle
 ```
 
 
-```Powershell
+```PowerShell
 
 
 $resourceGroupLocation="westus"
@@ -195,7 +195,7 @@ New-AzureRmServiceFabricCluster -ResourceGroupName $resourceGroupName -Certifica
 
 ```
 
-Ez az egyenértékű parancssori felület parancsot ugyanerre. Módosítsa az értékeket a declare utasítást a megfelelő értékeket. Parancssori felülete támogatja az összes többi paraméter, amely támogatja a fenti powershell-parancsot.
+Ez az egyenértékű parancssori felület parancsot ugyanerre. Módosítsa az értékeket a declare utasítást a megfelelő értékeket. Parancssori felülete támogatja az összes többi paraméter, amely támogatja a fenti PowerShell-parancsot.
 
 ```CLI
 
@@ -226,7 +226,8 @@ Ha ez egy hitelesítésszolgáltató által aláírt tanúsítvány, amely kat, 
 #### <a name="use-the-default-5-node-1-nodetype-template-that-ships-in-the-module"></a>Az alapértelmezett 5-csomópont 1 nodetype sablon, a modul részét képező használata
 A használt sablon megtalálható a [azure-minták: windows sablon](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-1-NodeTypes-Secure-NSG) és [Ubuntu sablon](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Ubuntu-1-NodeTypes-Secure)
 
-```Powershell
+```PowerShell
+
 $resourceGroupLocation="westus"
 $resourceGroupName="mylinux"
 $vaultName="myvault"
@@ -279,7 +280,7 @@ Ha már rendelkezik egy egyéni sablont, majd győződjön meg arról, hogy elle
 ```
 
 
-```Powershell
+```PowerShell
 
 $resourceGroupLocation="westus"
 $resourceGroupName="mylinux"
@@ -292,7 +293,7 @@ $templateFilePath="c:\mytemplates\mytemplate.json"
 $certificateFile="C:\MyCertificates\chackonewcertificate3.pem"
 
 
-New-AzureRmServiceFabricCluster -ResourceGroupName $resourceGroupName -Location $resourceGroupLocation -TemplateFile $templateFilePath -ParameterFile $parameterFilePath -KeyVaultResouceGroupName $vaultResourceGroupName -KeyVaultName $vaultName -CertificateFile $certificateFile -CertificatePassword #certPassword
+New-AzureRmServiceFabricCluster -ResourceGroupName $resourceGroupName -Location $resourceGroupLocation -TemplateFile $templateFilePath -ParameterFile $parameterFilePath -KeyVaultResouceGroupName $vaultResourceGroupName -KeyVaultName $vaultName -CertificateFile $certificateFile -CertificatePassword $certPassword
 
 ```
 
@@ -314,34 +315,34 @@ az sf cluster create --resource-group $resourceGroupName --location $resourceGro
     --template-file $templateFilePath --parameter-file $parametersFilePath 
 ```
 
-#### <a name="use-a-pointer-to-the-secret-you-already-have-uploaded-into-the-keyvault"></a>A titkos kulcs már feltöltött a keyvault mutató hivatkozások használata
+#### <a name="use-a-pointer-to-the-secret-you-already-have-uploaded-into-the-key-vault"></a>A titkos kulcs már feltöltött a key vault mutató hivatkozások használata
 
 Egy meglévő kulcstároló használatára akkor _engedélyezni kell a központi telepítési_ tanúsítványok beszerzése és telepíti a fürtcsomópontokon a számítási erőforrás-szolgáltató engedélyezéséhez:
 
-```powershell
+```PowerShell
 
 Set-AzureRmKeyVaultAccessPolicy -VaultName 'ContosoKeyVault' -EnabledForDeployment
 
 
 $parameterFilePath="c:\mytemplates\mytemplate.json"
 $templateFilePath="c:\mytemplates\mytemplateparm.json"
-$secertId="https://test1.vault.azure.net:443/secrets/testcertificate4/55ec7c4dc61a462bbc645ffc9b4b225f"
+$secretID="https://test1.vault.azure.net:443/secrets/testcertificate4/55ec7c4dc61a462bbc645ffc9b4b225f"
 
 
-New-AzureRmServiceFabricCluster -ResourceGroupName $resourceGroup -SecretIdentifier $secretID -TemplateFile $templateFile -ParameterFile $templateParmfile 
+New-AzureRmServiceFabricCluster -ResourceGroupName $resourceGroup -SecretIdentifier $secretId -TemplateFile $templateFilePath -ParameterFile $parameterFilePath 
 
 ```
 Ez az egyenértékű parancssori felület parancsot ugyanerre. Módosítsa az értékeket a declare utasítást a megfelelő értékeket.
 
-```cli
-
+```CLI
+declare $resourceGroupName = "testRG"
 declare $parameterFilePath="c:\mytemplates\mytemplate.json"
 declare $templateFilePath="c:\mytemplates\mytemplateparm.json"
 declare $secertId="https://test1.vault.azure.net:443/secrets/testcertificate4/55ec7c4dc61a462bbc645ffc9b4b225f"
 
 
 az sf cluster create --resource-group $resourceGroupName --location $resourceGroupLocation  \
-    --secret-identifieraz $secretID  \
+    --secret-identifier az $secretID  \
     --template-file $templateFilePath --parameter-file $parametersFilePath 
 
 ```
@@ -522,9 +523,9 @@ A kulcstároló, amely tartalmazza a tanúsítvány kulcsait Vezérlőpultjának
 ```
 
 ### <a name="populate-the-parameter-file-with-the-values"></a>A paraméterfájl értékekkel való feltöltéséhez.
-Végezetül a kimeneti értékeit a kulcstartót és az Azure AD powershell-parancsok használata a paraméterfájlban feltöltéséhez:
+Végezetül a kimeneti értékeit a kulcstartót és az Azure AD PowerShell-parancsok használata a paraméterfájlban feltöltéséhez:
 
-Ha tervezi az Azure service fabric RM powershell-modulok, majd nem kell a fürt Tanúsítványadatok feltöltése, ha azt szeretné a rendszer hoz létre az önkiszolgáló aláírt fürt biztonsági tanúsítvány, csak válaszadás null. 
+Ha az Azure service fabric RM PowerShell-modulok, akkor nem kell a fürt Tanúsítványadatok feltöltése, azt szeretné, hogy a rendszer hoz létre az önkiszolgáló aláírt tanúsítvány a fürt biztonsági, ha használni kívánja, csak láthatóan tartja őket null értékként. 
 
 > [!NOTE]
 > Az erőforrás-kezelő modulok átvételéhez, és ezek üres paraméterértékek feltöltése a paraméterek sokkal nevének egyeznie az alábbi
@@ -542,9 +543,9 @@ Ha tervezi az Azure service fabric RM powershell-modulok, majd nem kell a fürt 
         },
 ```
 
-Alkalmazás Tanúsítványos használ, vagy egy meglévő fürthöz, amely a keyvault feltöltött használ, ha szeretné-e ezek az információk beszerzése és feltöltése 
+Alkalmazás Tanúsítványos használ, vagy egy meglévő fürthöz, amely a kulcstartót feltöltött használ, ha szeretné-e ezek az információk beszerzése és feltöltése 
 
-Az RM-modulok nincs geneate teszi meg az Azure AD beállításai. Ezért ha le szeretné használni az Azure AD az ügyfél hozzáférésének, meg kell feltöltéséről.
+Az RM-modulok nincs meg az Azure AD beállításai képességét. Ezért ha le szeretné használni az Azure AD az ügyfél hozzáférésének, meg kell feltöltéséről.
 
 ```json
 {
@@ -587,13 +588,13 @@ Az RM-modulok nincs geneate teszi meg az Azure AD beállításai. Ezért ha le s
 ### <a name="test-your-template"></a>A sablon tesztelése  
 A következő PowerShell-parancs segítségével tesztelje a Resource Manager-sablon paraméter-fájllal:
 
-```powershell
+```PowerShell
 Test-AzureRmResourceGroupDeployment -ResourceGroupName "myresourcegroup" -TemplateFile .\azuredeploy.json -TemplateParameterFile .\azuredeploy.parameters.json
 ```
 
 Ha problémákat tapasztal, és mégis fontos kontextusinformációkat üzeneteket, majd használja "-Debug" lehetőség.
 
-```powershell
+```PowerShell
 Test-AzureRmResourceGroupDeployment -ResourceGroupName "myresourcegroup" -TemplateFile .\azuredeploy.json -TemplateParameterFile .\azuredeploy.parameters.json -Debug
 ```
 
@@ -605,7 +606,7 @@ Az alábbi ábrán látható, ahol a kulcstartót és az Azure Active Directory 
 
 Most már telepítheti fürtben, a dokumentum korábbi szakaszában ismertetett lépésekkel, vagy ha már rendelkezik az értékek a paraméterfájl feltöltve, majd most készen áll a fürt létrehozása a [Azure-erőforrás sablon-üzembehelyezés] [ resource-group-template-deploy] közvetlenül.
 
-```powershell
+```PowerShell
 New-AzureRmResourceGroupDeployment -ResourceGroupName "myresourcegroup" -TemplateFile .\azuredeploy.json -TemplateParameterFile .\azuredeploy.parameters.json
 ```
 
@@ -677,7 +678,7 @@ Válassza ki az "App regisztrációk" AAD lapon, válassza ki a fürt alkalmazá
 ### <a name="connect-the-cluster-by-using-azure-ad-authentication-via-powershell"></a>A fürt csatlakoztatása az Azure AD hitelesítési PowerShell használatával
 Csatlakozás a Service Fabric-fürt, használja az alábbi PowerShell-példa:
 
-```powershell
+```PowerShell
 Connect-ServiceFabricCluster -ConnectionEndpoint <endpoint> -KeepAliveIntervalInSec 10 -AzureActiveDirectory -ServerCertThumbprint <thumbprint>
 ```
 

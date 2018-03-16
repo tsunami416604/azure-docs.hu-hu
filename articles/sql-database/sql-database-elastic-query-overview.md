@@ -2,23 +2,18 @@
 title: "Az Azure SQL Database rugalmas lekérdezési áttekintése |} Microsoft Docs"
 description: "Rugalmas lekérdezési lehetővé teszi több adatbázist is Transact-SQL-lekérdezés futtatható."
 services: sql-database
-documentationcenter: 
-manager: jhubbard
+manager: craigg
 author: MladjoA
-ms.assetid: a8bf0e2c-bc74-44d0-9b1e-bcc9a6aa2e33
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: On Demand
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 04/27/2016
 ms.author: mlandzic
-ms.openlocfilehash: 6389702b1be5e52c7191e6e57d17b48289e800b2
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: 76a8332b99639bacee994824b69624d7fd457a7f
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-sql-database-elastic-query-overview-preview"></a>Az Azure SQL Database rugalmas lekérdezési áttekintése (előzetes verzió)
 A rugalmas lekérdezés (az előzetes verzió) funkciójával is több adatbázis az Azure SQL Database Transact-SQL-lekérdezés futtatható. Lehetővé teszi a távoli táblákat elérő és a csatlakozás a Microsoft és harmadik féltől származó eszközök (az Excel, Power BI, Tableau, stb.) az adatok rétegek több adatbázisból átfogó lekérdezése közötti adatbázis-lekérdezések végrehajtásához. Ezzel a szolgáltatással horizontális felskálázás lekérdezések nagy adat szintet az SQL-adatbázis és az üzleti intelligenciával jelentések eredményeinek képi megjelenítése.
@@ -143,7 +138,7 @@ Rugalmas lekérdezési szerepel, az Azure SQL Database adatbázisok költségét
 ## <a name="feedback"></a>Visszajelzés
 Ossza meg a felhasználói élmény kapcsolatos visszajelzéseket rugalmas lekérdezési betartásának vizsgálatára Livefyre az alábbi, az MSDN fórumain vagy Stackoverflow. Folyamatban, a szolgáltatás (hibák, nyers szélén, a szolgáltatás hézagok) visszajelzést különböző érdekelt.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Függőleges particionálási oktatóanyagért lásd a [első lépések (a vertikális particionálás) közötti adatbázis-lekérdezés](sql-database-elastic-query-getting-started-vertical.md).
 * A szintaxis és a minta lekérdezések függőleges particionált adatok, lásd: [adatok lekérdezése függőleges particionálva)](sql-database-elastic-query-vertical-partitioning.md)

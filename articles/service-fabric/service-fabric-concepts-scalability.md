@@ -14,14 +14,16 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 6dc89bda31af35e4c7eb0f2255db301b39ac05eb
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: aeda1184610398c0445238ea2e7ccbea866ed418
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="scaling-in-service-fabric"></a>A Service Fabric skálázás
-Az Azure Service Fabric megkönnyíti a méretezhető alkalmazások hozhat létre a szolgáltatások, partíciók és a fürt csomópontjait a replikák kezelése. Számos különféle munkaterheléshez fut ugyanazon a hardveren lehetővé teszi, hogy a maximális erőforrás-használat, de rugalmas hogyan úgy dönt, hogy a munkaterhelés vertikális is biztosít. 
+Az Azure Service Fabric megkönnyíti a méretezhető alkalmazások hozhat létre a szolgáltatások, partíciók és a fürt csomópontjait a replikák kezelése. Számos különféle munkaterheléshez fut ugyanazon a hardveren lehetővé teszi, hogy a maximális erőforrás-használat, de rugalmas hogyan úgy dönt, hogy a munkaterhelés vertikális is biztosít. A Channel 9 videó ismerteti, hogyan hozhat létre méretezhető mikroszolgáltatások alkalmazások:
+
+> [!VIDEO https://channel9.msdn.com/Events/Connect/2017/T116/player]
 
 A Service Fabric skálázás több módon valósítható meg:
 
@@ -33,7 +35,7 @@ A Service Fabric skálázás több módon valósítható meg:
 6. A fürt erőforrás-kezelő metrikák skálázás
 
 ## <a name="scaling-by-creating-or-removing-stateless-service-instances"></a>Létrehozásában és eltávolításában állapotmentes szolgáltatáspéldány skálázása
-Állapotmentes szolgáltatások egyik legegyszerűbb módja Service Fabric belül méretezési működik. Egy állapotmentes szolgáltatások létrehozásakor kap arra, hogy adja meg egy `InstanceCount`. `InstanceCount`határozza meg, hogy a szolgáltatás kód hány futó példánya jön létre, amikor a szolgáltatás indítása. Tegyük fel, például, hogy nincsenek-e 100 csomópontokat a fürthöz. Tételezzük is fel, hogy a szolgáltatás hozza létre az `InstanceCount` 10. Futásidőben a kód 10 futó példányokat összes válhat túl elfoglalt (vagy nem sikerült elég foglalt). Egy adott munkaterhelés vertikális módja a példányok számát. Például néhány kódrészletek, figyelés vagy felügyeleti módosíthatja a meglévő példányok száma, 50, illetve 5, attól függően, hogy a munkaterhelés kell a vagy horizontális skálázása a terhelés alapján. 
+Állapotmentes szolgáltatások egyik legegyszerűbb módja Service Fabric belül méretezési működik. Egy állapotmentes szolgáltatások létrehozásakor kap arra, hogy adja meg egy `InstanceCount`. `InstanceCount` határozza meg, hogy a szolgáltatás kód hány futó példánya jön létre, amikor a szolgáltatás indítása. Tegyük fel, például, hogy nincsenek-e 100 csomópontokat a fürthöz. Tételezzük is fel, hogy a szolgáltatás hozza létre az `InstanceCount` 10. Futásidőben a kód 10 futó példányokat összes válhat túl elfoglalt (vagy nem sikerült elég foglalt). Egy adott munkaterhelés vertikális módja a példányok számát. Például néhány kódrészletek, figyelés vagy felügyeleti módosíthatja a meglévő példányok száma, 50, illetve 5, attól függően, hogy a munkaterhelés kell a vagy horizontális skálázása a terhelés alapján. 
 
 C#:
 
@@ -69,7 +71,7 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 ## <a name="scaling-by-creating-or-removing-new-named-services"></a>Létrehozásában és eltávolításában új méretezhetővé nevű szolgáltatások
 A megnevezett példánya egy adott típusú példány szolgáltatás (lásd: [Service Fabric-alkalmazás életciklusa](service-fabric-application-lifecycle.md)) a fürt egyes elnevezett alkalmazáspéldány belül. 
 
-Új elnevezett szolgáltatáspéldány létrehozott (vagy eltávolítása) válik több vagy kevesebb foglalt szolgáltatásként. Ez lehetővé teszi a kérelmek további szolgáltatáspéldány általában így csökkenti a meglévő szolgáltatások a terhelés lesz elosztva. Szolgáltatások létrehozásakor a Service Fabric fürt erőforrás-kezelő a szolgáltatásokat helyezi a fürt egy elosztott módon. A pontos lépéseket kell teljesítenie szabályozza a [metrikák](service-fabric-cluster-resource-manager-metrics.md) a fürt és más elhelyezési szabály. Szolgáltatások számos különböző módon hozható létre, de a legtöbb felügyeleti műveletek, például valaki hívása keresztül [ `New-ServiceFabricService` ](https://docs.microsoft.com/powershell/module/servicefabric/new-servicefabricservice?view=azureservicefabricps), vagy a kód hívása [ `CreateServiceAsync` ](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync?view=azure-dotnet). `CreateServiceAsync`még nem hívható a más szolgáltatásokkal, a fürtön belül.
+Új elnevezett szolgáltatáspéldány létrehozott (vagy eltávolítása) válik több vagy kevesebb foglalt szolgáltatásként. Ez lehetővé teszi a kérelmek további szolgáltatáspéldány általában így csökkenti a meglévő szolgáltatások a terhelés lesz elosztva. Szolgáltatások létrehozásakor a Service Fabric fürt erőforrás-kezelő a szolgáltatásokat helyezi a fürt egy elosztott módon. A pontos lépéseket kell teljesítenie szabályozza a [metrikák](service-fabric-cluster-resource-manager-metrics.md) a fürt és más elhelyezési szabály. Szolgáltatások számos különböző módon hozható létre, de a legtöbb felügyeleti műveletek, például valaki hívása keresztül [ `New-ServiceFabricService` ](https://docs.microsoft.com/powershell/module/servicefabric/new-servicefabricservice?view=azureservicefabricps), vagy a kód hívása [ `CreateServiceAsync` ](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync?view=azure-dotnet). `CreateServiceAsync` még nem hívható a más szolgáltatásokkal, a fürtön belül.
 
 Szolgáltatások létrehozása dinamikusan kívüli bármilyen típusú forgatókönyvben is használható, és a megszokott mintát követi. Vegye figyelembe például egy állapotalapú szolgáltatás, amely egy adott munkafolyamat jelöli. Jelölő munka hívások fogja jelenik meg a szolgáltatáshoz, és ez a szolgáltatás állapotra vált, hogy a munkafolyamat-rekord folyamatban van a lépések végrehajtása. 
 
@@ -145,7 +147,7 @@ A dinamikus létrehozása számos előnyt mintát:
   - Nem futtatja egy csoportját egy szolgáltatáspéldány vagy replikákat az ügyfelek számára jelenik meg várakozás közben
   - Az ügyfél kikerül, majd eltávolítja a szolgáltatásból adataikat esetén más dolga, mint hogy a kezelő törlése az adott szolgáltatás vagy alkalmazás, amely az jön létre.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A Service Fabric fogalmakat további információkért tekintse meg a következő cikkeket:
 
 * [A Service Fabric-szolgáltatások rendelkezésre állása](service-fabric-availability-services.md)

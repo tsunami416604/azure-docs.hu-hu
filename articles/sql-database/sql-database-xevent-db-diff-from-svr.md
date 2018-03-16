@@ -2,25 +2,19 @@
 title: "Az SQL-adatbázis események kiterjesztett |} Microsoft Docs"
 description: "Kiterjesztett események (Xevent) az Azure SQL Database, és hogyan esemény-munkamenet némileg eltér a Microsoft SQL Server esemény-munkamenet ismerteti."
 services: sql-database
-documentationcenter: 
 author: MightyPen
-manager: jhubbard
-editor: 
-tags: 
-ms.assetid: 3b28cf15-f820-4b3c-8310-908d6d5b9d0c
+manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
 ms.workload: On Demand
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 02/03/2017
 ms.author: genemi
-ms.openlocfilehash: f4e41d340b38a5f29387d75b8f65b68c5fb31eb9
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: dc4660b33d8df28fd59929838e054f6703c48107
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="extended-events-in-sql-database"></a>Az SQL-adatbázis kiterjesztett események
 [!INCLUDE [sql-database-xevents-selectors-1-include](../../includes/sql-database-xevents-selectors-1-include.md)]
@@ -49,7 +43,7 @@ Ez a témakör feltételezi, hogy már rendelkezik bizonyos:
 
 A következő elemek előzetes kitéve akkor hasznos, ha az esemény fájl kiválasztása a [cél](#AzureXEventsTargets):
 
-- [Az Azure Storage szolgáltatás](https://azure.microsoft.com/services/storage/)
+- [Azure Storage service](https://azure.microsoft.com/services/storage/)
 
 
 - PowerShell
@@ -186,7 +180,7 @@ Arról, hogy a maximális memória kényszerítve lenne hibaüzenetet kap, ha n�
 - Futtassa a kevesebb egyidejű esemény-munkamenet.
 - Keresztül a **létrehozása** és **ALTER** nyilatkozatait, esemény-munkamenet, csökkentse a memóriamennyiség, meg kell adnia a **maximális\_memória** záradékban.
 
-### <a name="network-latency"></a>Hálózati késés
+### <a name="network-latency"></a>Hálózati késleltetés
 
 A **Eseményfájlt** cél tapasztalhat, hálózati késés vagy hibák során az Azure Storage blobs adatait. Az SQL-adatbázis az eseményeket tarthat, amíg azok Várjon, amíg befejeződik a hálózati kommunikáció. Ez a késés lelassíthatja a terhelést.
 
@@ -199,12 +193,12 @@ A **Eseményfájlt** cél tapasztalhat, hálózati késés vagy hibák során az
 - [Azure PowerShell használata az Azure Storage](../storage/common/storage-powershell-guide-full.md) -PowerShell és az Azure Storage szolgáltatás átfogó információkat nyújt.
 - [A .NET-Blob-tároló használata](../storage/blobs/storage-dotnet-how-to-use-blobs.md)
 - [CREATE CREDENTIAL (Transact-SQL)](http://msdn.microsoft.com/library/ms189522.aspx)
-- [ESEMÉNY-munkamenet (Transact-SQL) létrehozása](http://msdn.microsoft.com/library/bb677289.aspx)
+- [CREATE EVENT SESSION (Transact-SQL)](http://msdn.microsoft.com/library/bb677289.aspx)
 - [A Microsoft SQL Server kiterjesztett eseményekről visszaküldés Jonathan Kehayias blog](http://www.sqlskills.com/blogs/jonathan/category/extended-events/)
 
 
 - Az Azure *szolgáltatásfrissítések* weblap, az Azure SQL Database paraméterrel maradt:
-    - [https://Azure.microsoft.com/Updates/?Service=SQL-Database](https://azure.microsoft.com/updates/?service=sql-database)
+    - [https://azure.microsoft.com/updates/?service=sql-database](https://azure.microsoft.com/updates/?service=sql-database)
 
 
 Más kód a minta témakörök kiterjesztett események a következő hivatkozások webhelyen érhetők el. Azonban rendszeresen ellenőrizni kell a minta megtekintéséhez, hogy a minta irányul-e a Microsoft SQL Server és az Azure SQL Database. Ezután eldöntheti, hogy kisebb módosításokat a minta futtatásához szükség van-e.

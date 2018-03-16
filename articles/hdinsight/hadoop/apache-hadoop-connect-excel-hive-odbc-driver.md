@@ -17,11 +17,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 02/22/2018
 ms.author: jgao
-ms.openlocfilehash: b2b5427f037203e86f6b73610084993892ed4a37
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 2050741b46699043836cae1e6465e18dbae87d25
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="connect-excel-to-hadoop-in-azure-hdinsight-with-the-microsoft-hive-odbc-driver"></a>Excel csatlakoztatása Azure HDInsight Hadoop a Microsoft Hive ODBC-illesztőprogram
 
@@ -31,10 +31,7 @@ A Microsoft Big Data típusú adatok megoldás integrálódik a Microsoft üzlet
 
 Akkor is kapcsolódni HDInsight-fürtök és más adatforrások, például más (nem HDInsight) Hadoop-fürtök, az Excel alkalmazásban, a Microsoft Power Query beépülő modul az Excel programhoz kapcsolódó adatokat. Telepítés és a Power Query használatával kapcsolatos tudnivalókat lásd: [HDInsight a Power Query az Excel csatlakozás][hdinsight-power-query].
 
-> [!NOTE]
-> A cikkben leírt lépéseket egy Linux vagy a Windows-alapú HDInsight-fürttel használható, amíg az ügyfél-munkaállomás szükség a Windows.
-> 
-> 
+
 
 **Előfeltételek**:
 

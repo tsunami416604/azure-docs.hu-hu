@@ -2,24 +2,19 @@
 title: "Intelligens Insights diagnosztika Teljesítménynapló - Azure SQL Database |} Microsoft Docs"
 description: "Intelligens Insights biztosít az Azure SQL Database teljesítménnyel kapcsolatos problémák diagnosztika naplózása"
 services: sql-database
-documentationcenter: 
 author: danimir
-manager: drasumic
-editor: carlrab
-ms.assetid: 
+manager: craigg
+ms.reviewer: carlrab
 ms.service: sql-database
 ms.custom: monitor & tune
-ms.devlang: NA
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: Inactive
 ms.date: 09/25/2017
 ms.author: v-daljep
-ms.openlocfilehash: e147ca57658c232580fd9867790e55c3454e7e05
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: b380d3a8a35750602a4a0d20d595f71b125fc118
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="use-the-intelligent-insights-azure-sql-database-performance-diagnostics-log"></a>Az intelligens Insights Azure SQL Database teljesítményét diagnosztika napló használata
 
@@ -92,7 +87,7 @@ Attól függően, hogy a teljesítménycsökkenés oka észlel, a részletek a d
 | Új lekérdezés | <li>Az új lekérdezések lekérdezés kivonata</li> |
 | Szokatlan várakozási statisztika | <li>Szokatlan várakozási típusok</li><li>Lekérdezés kivonatok</li><li>Lekérdezés várakozási idő</li> |
 | A TempDB versengés | <li>A lekérdezések versengés, amely a kivonatok lekérdezése</li><li>Azokat a teljes adatbázis pagelatch versengés várakozási idő [%] lekérdezése</li> |
-| A rugalmas készlet DTU kevés | <li>A rugalmas készlet</li><li>Felső DTU-igényes adatbázis</li><li>Készlet DTU felső fogyasztója használja százaléka</li> |
+| A rugalmas készlet DTU kevés | <li>Rugalmas készlet</li><li>Felső DTU-igényes adatbázis</li><li>Készlet DTU felső fogyasztója használja százaléka</li> |
 | Regressziós megtervezése | <li>Lekérdezés kivonatok</li><li>Jó terv azonosítók</li><li>Hibás terv azonosítók</li> |
 | Adatbázis-alapú kötődő konfigurációs érték módosítása | <li>Az alapértelmezett értékeket képest adatbázishoz kötődő konfigurációs módosítások</li> |
 | Lassú ügyfél | <li>Lekérdezés kivonatok</li><li>Várakozási idő</li> |
@@ -141,7 +136,7 @@ Az intelligens Insights Teljesítménynapló utolsó részének a automatizált 
 
 Használhatja az intelligens Insights teljesítmény naplóra [Azure Naplóelemzés]( https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql) vagy egy külső megoldás egyéni DevOps lehetőséget, és a jelentéskészítési képességek.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - További tudnivalók [intelligens Insights](sql-database-intelligent-insights.md) fogalmakat.
 - Megtudhatja, hogyan [intelligens, amelyen az Azure SQL Database teljesítménnyel kapcsolatos problémák elhárítása](sql-database-intelligent-insights-troubleshoot-performance.md).
 - Megtudhatja, hogyan [figyelje az Azure SQL Database az Azure SQL elemzés](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql).

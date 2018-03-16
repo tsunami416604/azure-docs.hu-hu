@@ -14,11 +14,11 @@ ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
 ms.date: 08/22/2017
 ms.author: wesmc
-ms.openlocfilehash: fa78c42ce93729379d3c532f94bc67bb8c069d53
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 2e2e22c17bce4bdaf4988001db8de31b68f497fc
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="how-to-configure-azure-redis-cache"></a>Azure Redis Cache konfigurálása
 Ez a témakör ismerteti az Azure Redis Cache példány érhető el a konfigurációkat. Ez a témakör is magában foglalja az Azure Redis Cache példány alapértelmezett Redis kiszolgálókonfiguráció.
@@ -280,8 +280,6 @@ A tűzfalszabályok kezdő és záró IP-címtartománnyal rendelkező adhatja m
 > [!IMPORTANT]
 > Azure Redis Cache rendszerek figyelése a kapcsolatok mindig engedélyezettek, még akkor is, ha a tűzfal-szabályok úgy vannak konfigurálva.
 > 
-> Tűzfalszabályok esetén csak prémium szintű réteghez gyorsítótárainak érhetők el.
-> 
 > 
 
 ### <a name="properties"></a>Tulajdonságok
@@ -404,7 +402,7 @@ Kattintson a **új támogatja a kérelem** a gyorsítótárhoz támogatási kér
 | `maxmemory-samples` |3 |A memóriahasználat LRU és minimális TTL algoritmusok közelítő algoritmusok pontos algoritmusok helyett. Alapértelmezés szerint Redis ellenőrzések három kulcsok és kivételezések azt, amelyik kevesebb nemrég lett megadva. |
 | `lua-time-limit` |5000 |Maximális végrehajtási idő ezredmásodpercben Lua parancsfájlra. Ha eléri a maximális végrehajtási ideje, Redis naplózza, hogy egy parancsfájl még végrehajtása után a maximális engedélyezett idő, és hiba történt a lekérdezések megválaszolásához kezdődik. |
 | `lua-event-limit` |500 |Parancsfájl esemény sor maximális mérete. |
-| `client-output-buffer-limit` `normalclient-output-buffer-limit` `pubsub` |0 0 032mb 8mb 60 |Az ügyfél kimeneti puffer korlátok segítségével kényszerítheti az ügyfelek, amelyek nem adatainak olvasása elég gyors kiszolgálóról (gyakori oka az, hogy Pub/Sub ügyfél nem lehet felhasználni a lehető leghamarabb a közzétevő születik őket üzenetek) valamilyen okból megszakad. További információkért lásd: [http://redis.io/topics/clients](http://redis.io/topics/clients). |
+| `client-output-buffer-limit` `normalclient-output-buffer-limit` `pubsub` |0 0 032mb 8mb 60 |Az ügyfél kimeneti puffer korlátok segítségével kényszerítheti az ügyfelek, amelyek nem adatainak olvasása elég gyors kiszolgálóról (gyakori oka az, hogy Pub/Sub ügyfél nem lehet felhasználni a lehető leghamarabb a közzétevő születik őket üzenetek) valamilyen okból megszakad. Tovább információ: [http://redis.io/topics/clients](http://redis.io/topics/clients). |
 
 <a name="databases"></a>
 <sup>1</sup>vonatkozó korlát `databases` eltér az egyes Azure Redis Cache IP-címek és a gyorsítótár létrehozásakor állítható be. Ha nincs `databases` beállítás során megadott gyorsítótár létrehozását, az alapértelmezett érték 16.
@@ -471,14 +469,14 @@ Adatbázisokkal kapcsolatos további információkért lásd: [Mik azok a Redis-
 > 
 > 
 
-Redis parancsokkal kapcsolatos további információkért lásd: [http://redis.io/commands](http://redis.io/commands).
+Redis parancsokkal kapcsolatos további információkért lásd: [ http://redis.io/commands ](http://redis.io/commands).
 
 ## <a name="redis-console"></a>Redis-konzol
 Az Azure Redis Cache példány használatával biztonságosan kiadhatja parancsok a **Redis konzol**, az Azure portálon, minden gyorsítótár rétege számára elérhető.
 
 > [!IMPORTANT]
 > - A Redis-konzol nem tud együttműködni [VNET](cache-how-to-premium-vnet.md). Ha a gyorsítótár egy virtuális hálózat része, csak a virtuális hálózaton lévő ügyfelek is gyorsítótár-hozzáféréshez. Konzol Redis fut a helyi böngészőben, amely a virtuális hálózaton kívül, mert nem tud kapcsolódni a gyorsítótárhoz.
-> - Nem minden Redis-parancsok az Azure Redis Cache támogatottak. Le vannak tiltva, az Azure Redis Cache Redis-parancsok listáját lásd az előző [parancsok nem támogatott az Azure Redis Cache Redis](#redis-commands-not-supported-in-azure-redis-cache) szakasz. Redis parancsokkal kapcsolatos további információkért lásd: [http://redis.io/commands](http://redis.io/commands).
+> - Nem minden Redis-parancsok az Azure Redis Cache támogatottak. Le vannak tiltva, az Azure Redis Cache Redis-parancsok listáját lásd az előző [parancsok nem támogatott az Azure Redis Cache Redis](#redis-commands-not-supported-in-azure-redis-cache) szakasz. Redis parancsokkal kapcsolatos további információkért lásd: [ http://redis.io/commands ](http://redis.io/commands).
 > 
 > 
 

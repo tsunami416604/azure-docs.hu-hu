@@ -12,13 +12,13 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/30/2018
+ms.date: 03/15/2018
 ms.author: tomfitz
-ms.openlocfilehash: c4bf3871b4636ce769dd8d84a637b88d4a00db97
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 4709ee707aa67c8de531b2b3e0b58dbed5c2667b
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe
 
@@ -123,7 +123,7 @@ A szolgáltatások, amelyek lehetővé teszik egy új erőforráscsoportot és a
 * A HDInsight-fürtök - Lásd [HDInsight korlátozásai](#hdinsight-limitations)
 * IoT Hubok
 * Key Vault
-* Terheléselosztók
+* Terheléselosztók – lásd [terheléselosztó korlátozásai](#lb-limitations)
 * Logic Apps
 * Machine Learning
 * Media Services
@@ -132,6 +132,7 @@ A szolgáltatások, amelyek lehetővé teszik egy új erőforráscsoportot és a
 * Operational Insights
 * Operations Management
 * Power BI
+* Nyilvános IP - lásd [nyilvános IP-korlátozások](#pip-limitations)
 * Redis Cache
 * Scheduler
 * Keresés
@@ -161,8 +162,10 @@ A szolgáltatások, amelyek jelenleg nem engedélyezi az erőforrás áthelyezé
 * Express Route
 * DevTest Labs - helyezze át az új erőforráscsoport ugyanahhoz az előfizetéshez engedélyezve van, de több előfizetés áthelyezése nem engedélyezett.
 * Dynamics LCS
+* Terheléselosztók – lásd [terheléselosztó korlátozásai](#lb-limitations)
 * Felügyelt alkalmazások
 * Tekintse meg a felügyelt lemezek - [virtuális gépek korlátozásai](#virtual-machines-limitations)
+* Nyilvános IP - lásd [nyilvános IP-korlátozások](#pip-limitations)
 * Recovery Services-tároló - is do helyezi át a számítási, hálózati és tárolási erőforrásokat, a Recovery Services-tároló társított lásd [helyreállítási szolgáltatások korlátozásai](#recovery-services-limitations).
 * Biztonság
 * StorSimple-eszközkezelő
@@ -320,6 +323,16 @@ Amikor egy új előfizetés helyezi át a HDInsight-fürtöt, először helyezze
 
 Helyezni különböző régiókban egyszerre több keresési erőforrások nem helyezhető át.
 Ebben az esetben áthelyezése külön kell.
+
+## <a name="lb-limitations"></a> Load Balancer korlátozásai
+
+Alapszintű Termékváltozat terheléselosztó helyezhetők.
+Standard Termékváltozat Load Balancer nem helyezhető át.
+
+## <a name="pip-limitations"></a> Nyilvános IP-korlátozások
+
+Alapszintű Termékváltozat nyilvános IP-cím helyezhetők.
+Standard Termékváltozat nyilvános IP-cím nem helyezhető át.
 
 ## <a name="use-portal"></a>A portál használatával
 

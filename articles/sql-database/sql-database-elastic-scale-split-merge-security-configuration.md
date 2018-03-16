@@ -3,23 +3,18 @@ title: "Vegyes egyesítéses biztonsági beállításai |} Microsoft Docs"
 description: "Állítson be x409 tanúsítványok titkosítási a vegyes/egyesítés szolgáltatással a rugalmas méretezést."
 metakeywords: Elastic Database certificates security
 services: sql-database
-documentationcenter: 
-manager: jhubbard
-author: torsteng
-ms.assetid: f9e89c57-61a0-484f-b787-82dae2349cb6
+manager: craigg
+author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: Inactive
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 05/27/2016
-ms.author: torsteng
-ms.openlocfilehash: 98f046a943c1fe33b421b3ab6830d78e6c4304a0
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.author: sstein
+ms.openlocfilehash: c07ba1e74daace546bae4f4209842312136914a3
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="split-merge-security-configuration"></a>Vegyes egyesítéses biztonsági konfiguráció
 A felosztott/egyesítés szolgáltatással biztonsági megfelelően be kell állítania. A szolgáltatás a Microsoft Azure SQL Database a rugalmas bővítést szolgáltatás részét képezi. További információkért lásd: [rugalmas méretezési felosztása és egyesítése szolgáltatás oktatóanyag](sql-database-elastic-scale-configure-deploy-split-and-merge.md).
@@ -36,7 +31,7 @@ Tanúsítványok vagy a nyilvános hitelesítésszolgáltatótól (CA) szerezhet
 Ha ezek a lehetőségek nem állnak rendelkezésre, létrehozhat **önaláírt tanúsítványokat**.
 
 ## <a name="tools-to-generate-certificates"></a>Eszközök tanúsítványainak létrehozásához
-* [MakeCert.exe](http://msdn.microsoft.com/library/bfsktky3.aspx)
+* [makecert.exe](http://msdn.microsoft.com/library/bfsktky3.aspx)
 * [pvk2pfx.exe](http://msdn.microsoft.com/library/windows/hardware/ff550672.aspx)
 
 ### <a name="to-run-the-tools"></a>Az eszközök futtatása
@@ -327,7 +322,7 @@ Minden egyes személy, amely ügyféltanúsítványt adtak ki a gépeket többé
 ## <a name="copy-client-certificate-thumbprints"></a>Másolja a tanúsítvány-ujjlenyomatok client
 Minden egyes személy, amely ügyféltanúsítványt adtak ki kövesse az alábbi lépéseket ahhoz, hogy az beszerzése ujjlenyomatát his/hers tanúsítvány, amelyek nem kerülnek be a szolgáltatás konfigurációs fájlja:
 
-* Certmgr.exe futtatása
+* Run certmgr.exe
 * Válassza ki a személyes lap
 * Kattintson duplán a hitelesítéshez használandó ügyféltanúsítványt
 * A tanúsítvány megnyíló párbeszédpanelen válassza ki a részleteket tartalmazó lapot
@@ -386,9 +381,9 @@ Az ujjlenyomat értékét az alábbi beállítások a konfigurációs fájlban f
 Kövesse az alábbi lépéseket:
 
 1. Futtassa a mmc.exe.
-2. Fájl -> beépülő modul hozzáadása/eltávolítása...
+2. File -> Add/Remove Snap-in…
 3. Válassza ki **tanúsítványok**.
-4. Kattintson az **Add** (Hozzáadás) parancsra.
+4. Kattintson a **Hozzáadás** parancsra.
 5. Válassza ki a tanúsítványt tároló helyét.
 6. Kattintson a **Befejezés** gombra.
 7. Kattintson az **OK** gombra.

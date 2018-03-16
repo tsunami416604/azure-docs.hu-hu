@@ -3,7 +3,7 @@ title: "A SharePoint Online összekötőt használata a logic apps |} Microsoft 
 description: "Hozzon létre a logic apps alkalmazást a SharePoint Online Manage listák a SharePoint-összekötővel."
 services: logic-apps
 documentationcenter: .net,nodejs,java
-author: MandiOhlinger
+author: ecfan
 manager: anneta
 editor: 
 tags: connectors
@@ -14,12 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 07/19/2016
-ms.author: mandia; ladocs
-ms.openlocfilehash: bdda380360cd2a7595fa05dfe3fc6504e76255b5
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.author: estfan; ladocs
+ms.openlocfilehash: 9fdd5ff83bee974953331791f38e1ce8ba8b6dc3
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="get-started-with-the-sharepoint-online-connector"></a>A SharePoint Online összekötő az első lépései
 A SharePoint Online összekötő segítségével kezelheti a SharePoint-listát.  

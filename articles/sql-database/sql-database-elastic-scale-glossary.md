@@ -3,23 +3,18 @@ title: "A rugalmas adatbázis eszközök szószedet |} Microsoft Docs"
 description: "A rugalmas adatbáziseszközöket használt kifejezések magyarázatát"
 services: sql-database
 documentationcenter: 
-manager: jhubbard
-author: ddove
-editor: 
-ms.assetid: a23a4e81-6706-452d-afc1-a550e5e47af9
+manager: craigg
+author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: Inactive
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2016
-ms.author: ddove
-ms.openlocfilehash: db8ce257479888db63758e681393c0244af01ce7
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.author: sstein
+ms.openlocfilehash: 75abd818b29c78a4ae7499741904637e8ed6798c
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="elastic-database-tools-glossary"></a>A rugalmas adatbázis eszközök szószedet
 A következő feltételek meghatározása a [skálázáshoz rugalmas adatbáziseszközöket](sql-database-elastic-scale-introduction.md), Azure SQL-adatbázis szolgáltatása. Az eszközök kezeléséhez használt [shard leképezhető](sql-database-elastic-scale-shard-map-management.md), és adja meg a [ügyféloldali kódtár](sql-database-elastic-database-client-library.md), a [vegyes egyesítéses eszköz](sql-database-elastic-scale-overview-split-and-merge.md), [rugalmas készletek](sql-database-elastic-pool.md), és [lekérdezések](sql-database-elastic-query-overview.md). 
@@ -68,7 +63,7 @@ Ezeket a kifejezéseket használjuk [hozzáadása egy rugalmas eszközökkel sha
 
 **A shard térkép manager**: A felügyeleti-objektum és az adattárhoz, amely tartalmazza a shard azt, a shard helyek és egy vagy több shard készletet leképezéseit.
 
-![Hozzárendelések][2]
+![Leképezések][2]
 
 ## <a name="verbs"></a>Műveletek
 **Horizontális skálázás**: scaling out (vagy a) történő hozzáadásával vagy eltávolításával a shard térképre szilánkok alább látható módon szilánkok gyűjteménye.

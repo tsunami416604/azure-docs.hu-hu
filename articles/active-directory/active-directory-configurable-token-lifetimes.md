@@ -16,11 +16,11 @@ ms.date: 07/20/2017
 ms.author: billmath
 ms.custom: aaddev
 ms.reviewer: anchitn
-ms.openlocfilehash: 568bf5f0a4cf3eb77b528af2550d9729dcc59878
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 553283f246b701b5084f0a3a9914d7ceb8826fe4
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-public-preview"></a>Konfigurálható jogkivonat élettartamát az Azure Active Directoryban (nyilvános előzetes verzió)
 Megadhat egy Azure Active Directory (Azure AD) által kiállított jogkivonat élettartamát. A szervezet jogkivonat élettartamát a szervezet összes alkalmazást, egy több-bérlős (több szervezet) alkalmazáshoz, vagy egy adott szolgáltatás egyszerű állíthatja be.
@@ -276,7 +276,7 @@ Ebben a példában a felhasználók a webalkalmazáson belüli gyakrabban hitele
 
 2.  A házirend hozzárendelése a szolgáltatásnevet. Is kell beszereznie a **ObjectId** a szolgáltatás rendszerbiztonsági tag. 
 
-    1.  A szervezet szolgáltatásnevekről megtekintéséhez kérdezze [Microsoft Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity). Vagy a [Azure AD Graph Explorer](https://graphexplorer.cloudapp.net/), jelentkezzen be az Azure AD-fiókot.
+    1.  A szervezet összes szolgáltatás rendszerbiztonsági tagok megtekintéséhez, lekérdezheti vagy a [Microsoft Graph](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/serviceprincipal#properties) vagy a [Azure AD Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity). Emellett tesztelheti ezt a a [Azure AD Graph Explorer](https://graphexplorer.cloudapp.net/), és a [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) az Azure AD-fiók használatával.
 
     2.  Ha rendelkezik a **ObjectId** , a szolgáltatás egyszerű, a következő parancsot:
 
@@ -332,7 +332,7 @@ Ebben a példában néhány házirendek, megtudhatja, hogyan működik, a priori
 
     Most hogy egy házirendet az egész szervezetre érvényes. Előfordulhat, hogy szeretné megőrizni a 30 napos házirend az egy adott szolgáltatás egyszerű, de a szervezet alapértelmezett házirend módosítsa a felső korlátja "amíg visszavont."
 
-    1.  A szervezet szolgáltatásnevekről megtekintéséhez kérdezze [Microsoft Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity). Vagy a [Azure AD Graph Explorer](https://graphexplorer.cloudapp.net/), jelentkezzen be az Azure AD-fiókot.
+    1.  A szervezet összes szolgáltatás rendszerbiztonsági tagok megtekintéséhez, lekérdezheti vagy a [Microsoft Graph](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/serviceprincipal#properties) vagy a [Azure AD Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity). Emellett tesztelheti ezt a a [Azure AD Graph Explorer](https://graphexplorer.cloudapp.net/), és a [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) az Azure AD-fiók használatával.
 
     2.  Ha rendelkezik a **ObjectId** , a szolgáltatás egyszerű, a következő parancsot:
 

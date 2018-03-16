@@ -1,8 +1,20 @@
- 
-
-
-
-Az Azure-alapú számítási egység (Azure Compute Unit, ACU) fogalmát azért vezettük be, hogy lehetséges legyen összehasonlítani az egyes Azure-termékváltozatok számítási (CPU-) teljesítményét. Így könnyebben választhatja ki a teljesítményigényeinek leginkább megfelelő termékváltozatot.  Az ACU jelenlegi standard alapjaként a Kisméretű (Standard_A1) virtuális gép 100-as értéket képvisel, és a többi termékváltozat értéke ehhez képest jelöli, hogy mennyivel gyorsabban futtatja az adott termékváltozat a standard teljesítménytesztet. 
+---
+title: "fájl belefoglalása"
+description: "fájl belefoglalása"
+services: virtual-machines
+author: cynthn
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 03/09/2018
+ms.author: cynthn;davberg
+ms.custom: include file
+ms.openlocfilehash: fde43e40a7a5bb87b9e63af47ae795616fac8b3f
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 03/16/2018
+---
+A koncepció az Azure számítási egység (ACU) biztosítja az Azure termékváltozatok között (CPU) számítási teljesítmény összehasonlítása. Így könnyebben választhatja ki a teljesítményigényeinek leginkább megfelelő termékváltozatot.  Az ACU jelenlegi standard alapjaként a Kisméretű (Standard_A1) virtuális gép 100-as értéket képvisel, és a többi termékváltozat értéke ehhez képest jelöli, hogy mennyivel gyorsabban futtatja az adott termékváltozat a standard teljesítménytesztet. 
 
 > [!IMPORTANT]
 > Az ACU csupán iránymutatóként szolgál.  Az egyes számítási terhelések eredményei ettől eltérhetnek. 
@@ -11,7 +23,7 @@ Az Azure-alapú számítási egység (Azure Compute Unit, ACU) fogalmát azért 
 
 <br>
 
-| Termékváltozat-család | ACU \ vCPU | vCPU:Core |
+| Termékváltozat-család | ACU \ vCPU | vCPU: Core |
 | --- | --- |---|
 | [A0](../articles/virtual-machines/windows/sizes-general.md) |50 | 1:1 |
 | [A1–A4](../articles/virtual-machines/windows/sizes-general.md) |100 | 1:1 |

@@ -15,18 +15,18 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: big-compute
 ms.date: 12/29/2016
 ms.author: danlep
-ms.openlocfilehash: c15dc66718a855e22f8109448cb8c8a23787b9bf
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 477859db8c884714d9b5140483d300ebfe6c116a
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="create-a-linux-high-performance-computing-hpc-cluster-with-the-hpc-pack-iaas-deployment-script"></a>Hozzon létre egy Linux-fürt nagy teljesítményű számítástechnikai rendszerek (HPC) a HPC Pack IaaS telepítési parancsfájl
-A HPC Pack IaaS központi telepítés központi telepítése az Azure virtuális gépeken Linux munkaterhelések teljes HPC Pack 2012 R2 fürt PowerShell-parancsfájl futtatása. A fürt egy Active Directory-tartományhoz átjárócsomópont Windows Server és a Microsoft HPC Pack fut, és a Linux terjesztéseket HPC Pack által támogatott valamelyikét futtató számítási csomópontok áll. Ha szeretné HPC Pack-fürt üzembe helyezése a Azure Windows-munkaterhelések, lásd: [hozzon létre egy Windows HPC-fürtöt a HPC Pack IaaS telepítési parancsfájl](../../windows/classic/hpcpack-cluster-powershell-script.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json). Az Azure Resource Manager-sablon segítségével is HPC Pack-fürt üzembe helyezése. Egy vonatkozó példáért lásd: [HPC-fürt létrehozása Linux számítási csomópontok](https://azure.microsoft.com/documentation/templates/create-hpc-cluster-linux-cn/).
-
+A HPC Pack IaaS központi telepítés központi telepítése az Azure virtuális gépeken Linux munkaterhelések teljes HPC Pack 2012 R2 fürt PowerShell-parancsfájl futtatása. A fürt egy Active Directory-tartományhoz átjárócsomópont Windows Server és a Microsoft HPC Pack fut, és a Linux terjesztéseket HPC Pack által támogatott valamelyikét futtató számítási csomópontok áll. Ha szeretné HPC Pack-fürt üzembe helyezése a Azure Windows-munkaterhelések, lásd: [hozzon létre egy Windows HPC-fürtöt a HPC Pack IaaS telepítési parancsfájl](../../windows/classic/hpcpack-cluster-powershell-script.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 > [!IMPORTANT] 
 > A jelen cikkben ismertetett PowerShell-parancsfájl az Azure-ban a klasszikus üzembe helyezési modellel hoz létre a Microsoft HPC Pack 2012 R2-fürt. A Microsoft azt javasolja, hogy az új telepítések esetén a Resource Manager modellt használja.
-> A jelen cikkben ismertetett parancsfájl emellett nem támogatja a HPC Pack 2016.
+> A jelen cikkben ismertetett parancsfájl emellett nem támogatja a HPC Pack 2016. Információ HPC Pack 2012 R2 és a HPC Pack 2016 Resource Manager-sablonok, tekintse meg a [HPC Pack fürt telepítési lehetőségek az Azure-ban](../hpcpack-cluster-options.md).
+
 
 [!INCLUDE [virtual-machines-common-classic-hpcpack-cluster-powershell-script](../../../../includes/virtual-machines-common-classic-hpcpack-cluster-powershell-script.md)]
 
@@ -82,7 +82,7 @@ Helyettesítse a saját értékeit az előfizetés nevét, a fiók és a szolgá
   
     Ez a probléma, jelentkezzen be a tartományvezérlő, és vagy távolítsa el a továbbító konfigurációs beállítás, vagy egy érvényes továbbító DNS-kiszolgáló konfigurálása. Ehhez a Kiszolgálókezelőben kattintson **eszközök** > **DNS** nyissa meg a DNS-kezelőben, és kattintson duplán a **továbbítók**.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Lásd: [Ismerkedés az Azure-ban HPC Pack-fürtben lévő Linux számítási csomópontok](hpcpack-cluster.md) támogatott Linux disztribúciókról kapcsolatos információkért megköveteli az adatok, és a Linux és HPC Pack fürthöz feladatok elküldése számítási csomópontjain.
 * Oktatóprogramot kínál, amelyek a parancsfájl segítségével hozzon létre egy fürtöt, és futtassa a Linux HPC munkaterhelés lásd:
   * [A Microsoft HPC Pack NAMD futó Linux számítási csomópontok az Azure-ban](hpcpack-cluster-namd.md)

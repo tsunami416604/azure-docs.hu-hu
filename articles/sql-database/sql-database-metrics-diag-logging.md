@@ -4,22 +4,17 @@ description: "Tudnivalók Azure SQL-adatbázis tárolásához, erőforrás-haszn
 services: sql-database
 documentationcenter: 
 author: veljko-msft
-manager: jhubbard
-editor: 
-ms.assetid: 89c2a155-c2fb-4b67-bc19-9b4e03c6d3bc
+manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
-ms.workload: On Demand
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 09/16/2017
+ms.date: 03/13/2018
 ms.author: vvasic
-ms.openlocfilehash: 2d0a2d5966c8c99e7d71d97d4819d58a1474c2fe
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 3ac0c87ca41315eb3b63ddfab2736f68bac8dbee
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Az Azure SQL Database metrikák és diagnosztikai naplózás 
 Az Azure SQL-adatbázis el tudná küldeni, metrikákat és diagnosztikai naplókat a könnyebb figyelése. Az SQL Database beállítható az erőforrás-használatra, feldolgozókra és munkamenetekre, valamint kapcsolatokra vonatkozó adatok tárolására a következő Azure-erőforrások valamelyikén:
@@ -257,7 +252,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 ### <a name="download-metrics-and-logs-from-storage"></a>Tárolási metrikák és a naplók letöltése
 
-Megtudhatja, hogyan [metrikák és diagnosztikai naplókat letölteni az tárolóból](../storage/blobs/storage-dotnet-how-to-use-blobs.md#download-blobs).
+Megtudhatja, hogyan [metrikák és diagnosztikai naplókat letölteni az tárolóból](../storage/blobs/storage-quickstart-blobs-dotnet.md#download-the-sample-application).
 
 ## <a name="metrics-and-logs-available"></a>Metrikák és elérhető naplók
 
@@ -478,4 +473,4 @@ Az Event Hubs kapcsolatban, olvassa el:
 * [Mi az Azure Event Hubs?](../event-hubs/event-hubs-what-is-event-hubs.md)
 * [Bevezetés az Event Hubs használatába](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)
 
-Tárolási kapcsolatos további információkért lásd: hogyan [metrikák és diagnosztikai naplókat letölteni az tárolóból](../storage/blobs/storage-dotnet-how-to-use-blobs.md#download-blobs).
+Tárolási kapcsolatos további információkért lásd: hogyan [metrikák és diagnosztikai naplókat letölteni az tárolóból](../storage/blobs/storage-quickstart-blobs-dotnet.md#download-the-sample-application).

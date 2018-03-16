@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 01/26/2018
 ms.author: tdykstra
-ms.openlocfilehash: a1ffd9311f6ff171502efe64557463abc49ad636
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 5039798d76017d93b77d724b2e6bca6712af0370
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="event-grid-trigger-for-azure-functions"></a>Az Azure Functions rács eseményindító
 
@@ -37,11 +37,11 @@ Tetszés szerint, egy HTTP-eseményindítóval használatával kezeli a rács es
 
 Az esemény rács eseményindító megtalálható a [Microsoft.Azure.WebJobs.Extensions.EventGrid](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventGrid) NuGet-csomagot. A csomag forráskódja van a [azure-funkciók-eventgrid-bővítmény](https://github.com/Azure/azure-functions-eventgrid-extension) GitHub-tárházban.
 
-A csomagban használt [C# class library fejlesztési](functions-triggers-bindings.md#local-c-development-using-visual-studio-or-vs-code) és [v2 kötés bővítményregisztráció működik](functions-triggers-bindings.md#local-development-azure-functions-core-tools).
-
 <!--
 If you want to bind to the `Microsoft.Azure.EventGrid.Models.EventGridEvent` type instead of `JObject`, install the [Microsoft.Azure.EventGrid](https://www.nuget.org/packages/Microsoft.Azure.EventGrid) package.
 -->
+
+[!INCLUDE [functions-package](../../includes/functions-package.md)]
 
 ## <a name="example"></a>Példa
 
@@ -348,7 +348,7 @@ Ha elkészült tesztelni, használhatja ugyanazt az előfizetést üzemi a végp
 
 ### <a name="create-a-requestbin-endpoint"></a>RequestBin-végpont létrehozása
 
-RequestBin egy nyílt forráskódú eszköz, amely elfogadja a HTTP-kérelmekre, és megjeleníti a kérés törzsében. A http://requestb.in URL-cím lekérése különleges kezelés Azure esemény rács által. Tesztelés megkönnyítéséhez esemény rács eseményeket küldi a RequestBin URL-cím anélkül, hogy az előfizetés érvényesítése kérelmek helyes választ. Két vizsgálati eszközök azonos kezelésére adta: http://webhookinbox.com és http://hookbin.com.
+RequestBin egy nyílt forráskódú eszköz, amely elfogadja a HTTP-kérelmekre, és megjeleníti a kérés törzsében. A http://requestb.in URL-cím beolvasása különleges kezelés Azure esemény rács által. Tesztelés megkönnyítéséhez esemény rács eseményeket küldi a RequestBin URL-cím anélkül, hogy az előfizetés érvényesítése kérelmek helyes választ. Két vizsgálati eszközök azonos kezelésére adta: http://webhookinbox.com és http://hookbin.com.
 
 RequestBin nem célja a magas teljesítmény-használatról. Ha egyszerre több eseményt továbbít, lehetséges, hogy az eszközben nem fog megjelenni az összes esemény.
 

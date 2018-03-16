@@ -9,12 +9,11 @@ ms.service: sql-database
 ms.topic: article
 ms.date: 06/07/2017
 ms.author: mireks
-ms.workload: Inactive
-ms.openlocfilehash: b1c569e414de292b59e0915483d45bf011edb1a6
-ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
+ms.openlocfilehash: f32928805275c9d797c8cb15bb731fe172d5903f
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="conditional-access-mfa-with-azure-sql-database-and-data-warehouse"></a>Feltételes hozzáférés (MFA) az Azure SQL adatbázishoz és Adatraktárhoz  
 
@@ -30,10 +29,10 @@ SQL Database és az SQL Data Warehouse támogatja a Microsoft feltételes hozzá
      
 2.  Az a **feltételes hozzáférés-házirendek** panelen kattintson a **új házirend**, adjon meg egy nevet, és kattintson a **szabályok konfigurálása**.  
 3.  A **hozzárendelések**, jelölje be **felhasználók és csoportok**, ellenőrizze **felhasználók és csoportok kiválasztása**, majd válassza ki a felhasználó vagy csoport a feltételes hozzáférés. Kattintson **kiválasztása**, és kattintson a **végzett** a kiválasztott fogadásához.  
-  ![felhasználók és csoportok kiválasztása](./media/sql-database-conditional-access/select-users-and-groups.png)  
+  ![Felhasználók és csoportok kiválasztása](./media/sql-database-conditional-access/select-users-and-groups.png)  
 
 4.  Válassza ki **felhőalapú alkalmazásokba**, kattintson a **alkalmazásokról**. Megjelenik az elérhető, a feltételes hozzáférés az összes alkalmazást. Válassza ki **Azure SQL Database**, a lap alján kattintson **kiválasztása**, és kattintson a **végzett**.  
-  ![Válassza ki az SQL-adatbázis](./media/sql-database-conditional-access/select-sql-database.png)  
+  ![select SQL Database](./media/sql-database-conditional-access/select-sql-database.png)  
   Ha nem talál **Azure SQL Database** szerepel a következő harmadik képernyőfelvétel, kövesse az alábbi lépéseket:   
   - Jelentkezzen be az Azure SQL adatbázis vagy Adatraktár-példányhoz SSMS használatával egy AAD-rendszergazdai fiókkal.  
   - Végrehajtás `CREATE USER [user@yourtenant.com] FROM EXTERNAL PROVIDER`.  

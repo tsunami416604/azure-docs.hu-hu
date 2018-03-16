@@ -3,7 +3,7 @@ title: "Virtuális merevlemez létrehozása során kapcsolatos gyakori hibák el
 description: "A gyakori hibaelhárítási kérdésekre adott válaszok és a virtuális merevlemez létrehozása során."
 services: Azure Marketplace
 documentationcenter: 
-author: HannibalSII
+author: msmbaldwin
 manager: 
 editor: 
 ms.assetid: e39563d8-8646-4cb7-b078-8b10ac35b494
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 09/26/2016
-ms.author: hascipio; v-divte
-ms.openlocfilehash: c4e88a9fbb15dd90d619b159ae1065dfacc1907f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: mbaldwin
+ms.openlocfilehash: 65361ad5bd7c3311c428b64b8476ec8f2ea2d17b
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="how-to-troubleshoot-common-issues-encountered-during-vhd-creation"></a>Virtuális merevlemez létrehozása során észlelt közös kapcsolatos problémák elhárítása
 Ez a cikk az Azure piactér közzétevő vagy a közös rendszergazda problémát tapasztal vagy közös kérdése van a közzététel vagy a virtuális gép solution(s) kezelése közben segítségével valósul meg.
@@ -32,19 +32,19 @@ Ez a cikk az Azure piactér közzétevő vagy a közös rendszergazda problémá
    * [Útmutató a Linux virtuális gép](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-classic-reset-access/)
 3. Hogyan lehet új ssh tanúsítványokat létrehozni?
    
-   Tekintse meg a hivatkozás: [https://azure.microsoft.com/documentation/articles/virtual-machines-linux-classic-reset-access/](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-classic-reset-access/)
+   Tekintse meg a hivatkozásra: [https://azure.microsoft.com/documentation/articles/virtual-machines-linux-classic-reset-access/](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-classic-reset-access/)
 4. Egy nyitott VPN-tanúsítványt konfigurálhat, hogyan?
    
-   Tekintse meg a hivatkozás: [https://azure.microsoft.com/documentation/articles/vpn-gateway-point-to-site-create/](https://azure.microsoft.com/documentation/articles/vpn-gateway-point-to-site-create/)
+   Tekintse meg a hivatkozásra: [https://azure.microsoft.com/documentation/articles/vpn-gateway-point-to-site-create/](https://azure.microsoft.com/documentation/articles/vpn-gateway-point-to-site-create/)
 5. Újdonságok a Microsoft server szoftver futtatásához a Microsoft Azure virtuális gép környezetben (infrastruktúra-,--szolgáltatás) a támogatási szabályzata?
    
-   Tekintse meg a hivatkozás: [https://support.microsoft.com/kb/2721672](https://support.microsoft.com/kb/2721672)
+   Tekintse meg a hivatkozásra: [https://support.microsoft.com/kb/2721672](https://support.microsoft.com/kb/2721672)
 6. Virtuális gépek rendelkeznek egyedi azonosítót?
    
    Azure Azure virtuális gép egyedi Azonosítót a minden virtuális gép kódolja. A részleteket a ez blog és dokumentáció található.
 7. A virtuális gép hogyan kezelhetők az egyéni parancsprogramok futtatására szolgáló bővítmény a indítási feladat?
    
-   Tekintse meg a hivatkozás: [https://azure.microsoft.com/documentation/articles/virtual-machines-windows-extensions-customscript/](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-extensions-customscript/)
+   Tekintse meg a hivatkozásra: [https://azure.microsoft.com/documentation/articles/virtual-machines-windows-extensions-customscript/](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-extensions-customscript/)
 8. Hogyan lehet a virtuális gép létrehozása az Azure-portálról a prémium szintű Storage feltöltött virtuális merevlemez használatával?
    
    Ez a funkció még nem támogatott.

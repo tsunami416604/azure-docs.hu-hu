@@ -14,21 +14,20 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/04/2017
 ms.author: anmola
-ms.openlocfilehash: 6f8ad0bad8d1ae861e6b72f7e1a32ab0675813c2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e66e488d8e547e828c014b105a816a14726e5005
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="how-to-containerize-your-service-fabric-reliable-services-and-reliable-actors-preview"></a>Hogyan containerize a Service Fabric Reliable Services és Reliable Actors (előzetes verzió)
 
 A Service Fabric containerizing Service Fabric mikroszolgáltatások (Reliable Services és megbízható alapú aktorszolgáltatások) támogatja. További információkért lásd: [service fabric-tárolók](service-fabric-containers-overview.md).
 
-
- Ez a funkció jelenleg előzetes verzióban érhető, és ez a cikk lépéseit a különböző egy tároló-keretrendszeren belül fut. a szolgáltatás eléréséhez.  
+Ez a funkció jelenleg előzetes verzióban érhető, és ez a cikk lépéseit a különböző egy tároló-keretrendszeren belül fut. a szolgáltatás eléréséhez.  
 
 > [!NOTE]
-> Ez a funkció jelenleg előzetes verzióban érhető és éles környezetben nem támogatott. Jelenleg ez a funkció csak akkor működik a Windows.
+> Ez a funkció jelenleg előzetes verzióban érhető és éles környezetben nem támogatott. Jelenleg ez a funkció csak akkor működik a Windows. Tárolók futtatásához, a fürt Windows Server 2016 tárolókhoz kell futnia.
 
 ## <a name="steps-to-containerize-your-service-fabric-application"></a>A Service Fabric-alkalmazás containerize lépései
 
@@ -110,6 +109,6 @@ A Service Fabric containerizing Service Fabric mikroszolgáltatások (Reliable S
 
 Most rendelkeznie kell egy indexelése Service Fabric-alkalmazás fut a fürtön.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * További információk a [tárolók futtatásáról a Service Fabricban](service-fabric-get-started-containers.md).
 * További információk a Service Fabric [alkalmazásainak élettartamáról](service-fabric-application-lifecycle.md).

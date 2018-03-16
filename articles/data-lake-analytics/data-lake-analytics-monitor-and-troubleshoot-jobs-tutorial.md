@@ -13,17 +13,17 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/05/2016
-ms.author: edmaca
-ms.openlocfilehash: b9c7453cc0a94f70d0098ed83e5f127832065a62
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: saveenr
+ms.openlocfilehash: f6168997c449be5354bd223c516d4f929a1bf894
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/16/2018
 ---
-# <a name="troubleshoot-azure-data-lake-analytics-jobs-using-azure-portal"></a>Azure portál használata az Azure Data Lake Analytics-feladatok hibaelhárítása
-Útmutató a Data Lake Analytics-feladatok hibaelhárítása az Azure portál használatával.
+# <a name="troubleshoot-azure-data-lake-analytics-jobs-using-azure-portal"></a>Az Azure portál használata az Azure Data Lake Analytics-feladatok hibaelhárítása
+Útmutató a Data Lake Analytics-feladatok hibaelhárítása az Azure-portál használatával.
 
-Ebben az oktatóanyagban meg fog beállítani egy hiányzó forrás fájl probléma, valamint az Azure portál használatával a probléma elhárításához.
+Ebben az oktatóanyagban fog beállításában hiányzó forrás fájl problémát, és az Azure portál segítségével a probléma elhárításához.
 
 ## <a name="submit-a-data-lake-analytics-job"></a>Data Lake Analytics-feladat küldése
 
@@ -62,7 +62,7 @@ A forrásfájl, a parancsfájl definiált **/Samples/Data/SearchLog.tsv1**, ahol
 3. Kattintson a **feladatkezelés** csempe a feladatok megtekintéséhez. A feladat szerint vannak kategóriába sorolva **futtató**, **várakozik**, és **befejezve**. Ekkor megjelenik a sikertelen feladat a **befejezve** szakasz. A lista első tanúsítványt kell lennie. Ha nagy mennyiségű feladatok, rákattinthat **szűrő** segítségével megkeresheti a feladatokat.
 
     ![Azure Data Lake Analytics szűrheti a feladatokat](./media/data-lake-analytics-monitor-and-troubleshoot-tutorial/data-lake-analytics-filter-jobs.png)
-4. Kattintson a sikertelen feladatot a listából a nyissa meg a feladat részleteit egy új panelen:
+4. Kattintson a sikertelen feladatot a listából a nyissa meg a feladat részletei:
 
     ![Az Azure Data Lake Analytics feladat sikertelen volt.](./media/data-lake-analytics-monitor-and-troubleshoot-tutorial/data-lake-analytics-failed-job.png)
 
@@ -73,12 +73,12 @@ A forrásfájl, a parancsfájl definiált **/Samples/Data/SearchLog.tsv1**, ahol
 
     Jelzi, hogy a forrás mappa nem található.
 6. Kattintson a **parancsfájl ismétlődő**.
-7. Frissítés a **FROM** elérési útja a következő:
+7. Frissítés a **FROM** elérési útja:
 
     "/ Samples/Data/SearchLog.tsv"
 8. Kattintson a **Feladat elküldése** elemre.
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 * [Azure Data Lake Analytics áttekintése](data-lake-analytics-overview.md)
 * [Ismerkedés az Azure Data Lake Analytics Azure PowerShell használatával](data-lake-analytics-get-started-powershell.md)
 * [Ismerkedés az Azure Data Lake Analytics és a U-SQL Visual Studio használatával](data-lake-analytics-u-sql-get-started.md)

@@ -12,13 +12,13 @@ ms.devlang: rest-api
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 07/13/2017
+ms.date: 08/12/2018
 ms.author: eugenesh
-ms.openlocfilehash: 2ec1e02ccc8d8916f6d9d50ce787f2562f33fd7d
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: 5f85b81e894cba7354fb146d6e9a1aa987be7dc5
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="connecting-azure-sql-database-to-azure-search-using-indexers"></a>Csatlakozás Azure SQL adatbázis Azure Search használatával az indexelők
 
@@ -43,7 +43,7 @@ Egyetlen indexelő csak felhasználhat egy táblát vagy nézetet, de több inde
 Állítsa be, és konfigurálhatja az Azure SQL indexelő segítségével:
 
 * Az adatok importálása varázslót a [Azure-portálon](https://portal.azure.com)
-* Az Azure Search [.NET SDK-val](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer?view=azure-dotnet)
+* Azure Search [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer?view=azure-dotnet)
 * Az Azure Search [REST API-n](https://docs.microsoft.com/rest/api/searchservice/indexer-operations)
 
 Ebben a cikkben használjuk a REST API létrehozása **indexelők** és **adatforrások**.
@@ -57,6 +57,9 @@ Attól függően, hogy az adatok vonatkozó számos tényező az Azure SQL index
 | Adattípusok kompatibilisek. | Nem minden a SQL típusok támogatottak az Azure Search-index. Az útmutató, [adattípusok leképezési](#TypeMapping). |
 | Nincs szükség a valós idejű adatok szinkronizálása | Az indexelő indexelheti újra a tábla legfeljebb 5 perc. Ha az adatok gyakran változnak, és a változások figyelembe kell venni az indexben vagy egyetlen perceken belül, azt javasoljuk, a [REST API](https://docs.microsoft.com/rest/api/searchservice/AddUpdate-or-Delete-Documents) vagy [.NET SDK](search-import-data-dotnet.md) frissített sorok leküldéses közvetlenül. |
 | Növekményes indexelő lehetőség | Ha egy nagy adatkészlet és a terv az indexelő ütemezés szerint futtatni, Azure Search lehet hatékonyan tudja azonosítani az új, módosított vagy törölt sor kell lennie. Nem növekményes indexelő csak engedélyezett, ha az igény szerinti (nem a ütemezés) indexelő, vagy kevesebb, mint 100 000 sor indexelése. További információkért lásd: [rögzítése módosított és törölt sorok](#CaptureChangedRows) alatt. |
+
+> [!NOTE] 
+> Az Azure Search csak az SQL Server-hitelesítést támogatja. Ha a támogatási Azure Active Directory jelszavas hitelesítés szükséges, adjon szavazzon ez [UserVoice javaslat](https://feedback.azure.com/forums/263029-azure-search/suggestions/33595465-support-azure-active-directory-password-authentica).
 
 ## <a name="create-an-azure-sql-indexer"></a>Hozzon létre egy Azure SQL indexelőt
 
@@ -221,7 +224,7 @@ A módosítás szabályzat rögzítése a verzió vagy idő, amikor egy sor utol
 * Minden Beszúrások adja meg az oszlop értékét.
 * Egy elem összes frissítését is módosíthatja az oszlop értéke.
 * Ez az oszlop értékének növeli az egyes insert vagy update mutatóval.
-* A következő lekérdezések ahol és ORDER BY záradékok hatékonyan hajtható végre:`WHERE [High Water Mark Column] > [Current High Water Mark Value] ORDER BY [High Water Mark Column]`
+* A következő lekérdezések ahol és ORDER BY záradékok hatékonyan hajtható végre: `WHERE [High Water Mark Column] > [Current High Water Mark Value] ORDER BY [High Water Mark Column]`
 
 > [!IMPORTANT] 
 > Határozottan javasoljuk a [rowversion](https://docs.microsoft.com/sql/t-sql/data-types/rowversion-transact-sql) a magas vízjel alapján oszlop adattípusa esetében. Ha bármilyen más típusú adatokat használ, változások követése nem biztos, hogy rögzítése tranzakciók egyidejűleg az indexelő lekérdezések végrehajtása mellett minden változást. Használata esetén **rowversion** írásvédett replikával konfiguráció esetén az elsődleges másodpéldány, az indexelő kell mutatnia. Csak egy elsődleges másodpéldány adatok szinkronizálása forgatókönyvek esetén használható.
@@ -290,7 +293,7 @@ A **softDeleteMarkerValue** kell egy karakterlánc – használja a tényleges �
 | bigint |Edm.Int64, Edm.String | |
 | valódi, lebegőpontos |Edm.Double, Edm.String | |
 | kis pénz típusú értékké, pénzt decimális numerikus |Edm.String |Az Azure Search nem támogatja a decimális típusok konvertálásakor Edm.Double, mert ez elveszítik pontosság |
-| CHAR, nchar, varchar, nvarchar |Edm.String<br/>Collection(Edm.String) |Egy SQL-karakterlánc Collection(Edm.String) mező feltöltéséhez, ha a karakterlánc egy JSON-tömb karakterláncok használhatók:`["red", "white", "blue"]` |
+| CHAR, nchar, varchar, nvarchar |Edm.String<br/>Collection(Edm.String) |Egy SQL-karakterlánc Collection(Edm.String) mező feltöltéséhez, ha a karakterlánc egy JSON-tömb karakterláncok használhatók: `["red", "white", "blue"]` |
 | smalldatetime, dátum és idő, datetime2, dátum, datetimeoffset |Edm.DateTimeOffset, Edm.String | |
 | uniqueidentifer |Edm.String | |
 | földrajzi hely |Edm.GeographyPoint |Csak az srid-Azonosítónak 4326 (Ez az alapértelmezett) pontra típusú geográfiai példányban támogatottak. |
