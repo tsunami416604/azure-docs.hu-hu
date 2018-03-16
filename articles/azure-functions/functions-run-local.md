@@ -215,7 +215,7 @@ func host start
 | **`--nodeDebugPort -n`** | A csomópont hibakereső használandó portot. Alapértelmezett: Launch.json vagy 5858 egy értéket. |
 | **`--debugLevel -d`** | A konzol nyomkövetési szint (kikapcsolt, részletes, információ, figyelmeztetés vagy hiba). Alapértelmezett: adatait.|
 | **`--timeout -t`** | Az időtúllépés másodpercben elindításához a funkciók gazdagép. Alapértelmezett: 20 másodperc.|
-| **`--useHttps`** | Https://localhost köthető: {port} helyett a http://localhost: {port}. Ez a beállítás alapértelmezés szerint létrehoz megbízható tanúsítvány a számítógépen.|
+| **`--useHttps`** | Köthető https://localhost:{port} helyett a http://localhost:{port}. Ez a beállítás alapértelmezés szerint létrehoz megbízható tanúsítvány a számítógépen.|
 | **`--pause-on-error`** | A folyamat leállítása előtt szüneteltetése további adatokat. Akkor hasznos, ha az Azure Functions Core eszközök fókusza az integrált fejlesztési környezeti (IDE).|
 
 A funkciók gazdagép indításakor azt az URL-cím a HTTP-eseményindítókkal aktivált függvényeket kimenete:

@@ -196,7 +196,7 @@ Az SQL-forrás hasonló, a beágyazási elválasztó tulajdonság lehetséges, h
 
 Vegye figyelembe például DomainInfo.Domain_Name és RedirectInfo.Redirecting aliasok. A beágyazási elválasztó megadásával ".", az importálási eszköz DomainInfo és RedirectInfo aldokumentumok hoz létre az importálás során. Íme egy példa az Azure Cosmos Adatbázisba az eredményül kapott dokumentum:
 
-*{"DomainInfo": {"Tartománynév": "ACUS.GOV", "Domain_Name_Address": "http://www.ACUS.GOV"}, "Szövetségi ügynökség": "felügyeleti konferencia az Amerikai Egyesült államokbeli", "RedirectInfo": {"Átirányítása": "0", "Redirect_Destination": ""}, "id": " 9cc565c5-ebcd-1c03-ebd3-cc3e2ecd814d"}*
+*{"DomainInfo": {"Tartománynév": "ACUS.GOV", "Domain_Name_Address": "http://www.ACUS.GOV" }, "Szövetségi ügynökség": "felügyeleti konferencia az Amerikai Egyesült államokbeli", "RedirectInfo": {"Átirányítása": "0", "Redirect_Destination": ""}, "id": " 9cc565c5-ebcd-1c03-ebd3-cc3e2ecd814d"}*
 
 Az import eszközt próbál következtethető ki a CSV-fájlok nem jegyzett értékekre típusinformációt (idézőjelek közé zárt értékek mindig tekintendők karakterláncok).  Típusok azonosítja a következő sorrendben: szám, dátum és idő, logikai érték.  
 
