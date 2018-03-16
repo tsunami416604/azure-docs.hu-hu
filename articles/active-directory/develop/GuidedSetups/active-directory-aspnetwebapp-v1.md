@@ -15,10 +15,10 @@ ms.workload: identity
 ms.date: 12/08/2017
 ms.author: andret
 ms.openlocfilehash: b23afd26f7ac1828381a0410d2455206c8f43c88
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 03/14/2018
 ---
 <!--start-intro-->
 # <a name="add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>Bejelentkezés a Microsoft ASP.NET webalkalmazás hozzáadása
@@ -66,14 +66,14 @@ Ez a szakasz ismerteti a lépéseket, telepítését és konfigurálását a hit
 > Ez a minta Visual Studio-projekt letöltése helyette inkább? [Töltse le a projekt](https://github.com/AzureADQuickStarts/WebApp-OpenIdConnect-DotNet/archive/GuidedSetup.zip) és ugorjon a [konfigurációs lépés](#configure-your-webconfig-and-register-an-application) konfigurálása a kódminta végrehajtása előtt.
 
 ## <a name="create-your-aspnet-project"></a>Az ASP.NET-projekt létrehozása
-1. A Visual Studio:`File` > `New` > `Project`<br/>
+1. A Visual Studio: `File` > `New` > `Project`<br/>
 2. A *Visual C# \Web*, jelölje be `ASP.NET Web Application (.NET Framework)`.
 3. Az alkalmazás neve, és kattintson a *OK*
 4. Válassza ki `Empty` , és válassza a jelölőnégyzet bejelölésével vegye fel `MVC` hivatkozások
 
 ## <a name="add-authentication-components"></a>Hitelesítés-összetevők hozzáadása
 
-1. A Visual Studio:`Tools` > `Nuget Package Manager` > `Package Manager Console`
+1. A Visual Studio: `Tools` > `Nuget Package Manager` > `Package Manager Console`
 2. Adja hozzá *OWIN köztes NuGet-csomagok* , a Package Manager Console ablakban írja be a következő:
 
     ```powershell
@@ -92,8 +92,8 @@ Az alábbi lépések segítségével hozzon létre egy OWIN köztes *indítási 
 
 > [!TIP]
 > Ha a projekt nem rendelkezik egy `Startup.cs` fájl a gyökérmappában található:<br/>
-> 1. Kattintson a jobb gombbal a projekt gyökérmappához: >`Add` > `New Item...` > `OWIN Startup class`<br/>
-> 2. Nevezze el`Startup.cs`<br/>
+> 1. Kattintson a jobb gombbal a projekt gyökérmappához: >    `Add` > `New Item...` > `OWIN Startup class`<br/>
+> 2. Nevezze el `Startup.cs`<br/>
 >
 >> Győződjön meg arról, hogy a kiválasztott osztály egy OWIN indítási osztályt és a nem szabványos C#-osztály. Ellenőrizheti, ha ellenőrzésével `[assembly: OwinStartup(typeof({NameSpace}.Startup))]` fent a névteret.
 
@@ -119,7 +119,7 @@ Az alábbi lépések segítségével hozzon létre egy OWIN köztes *indítási 
 
 Ez a lépés bemutatja, hogyan hozzon létre egy új tartományvezérlő teszi közzé a bejelentkezési és kijelentkezési metódusokat.
 
-1.  Kattintson a jobb gombbal a `Controllers` mappára, és válassza`Add` > `Controller`
+1.  Kattintson a jobb gombbal a `Controllers` mappára, és válassza `Add` > `Controller`
 2.  Válassza a(z) `MVC (.NET version) Controller – Empty` lehetőséget.
 3.  Kattintson a *hozzáadása*
 4.  Nevezze el `HomeController` kattintson *hozzáadása*
@@ -135,7 +135,7 @@ Ez a lépés bemutatja, hogyan hozzon létre egy új tartományvezérlő teszi k
 
 A Visual Studio vegye fel a Bejelentkezés gombra, és megjeleníti a felhasználói adatok hitelesítés után új nézet létrehozása:
 
-1.  Kattintson a jobb gombbal a `Views\Home` mappára, és válassza`Add View`
+1.  Kattintson a jobb gombbal a `Views\Home` mappára, és válassza `Add View`
 2.  Nevezze el a következőképpen: `Index`.
 3.  A következő HTML, amely tartalmazza a Bejelentkezés gombra, adja hozzá a fájlhoz:
 
@@ -149,10 +149,10 @@ A Visual Studio vegye fel a Bejelentkezés gombra, és megjeleníti a felhaszná
 ## <a name="display-users-claims-by-adding-a-controller"></a>Felhasználói jogcímek egy tartományvezérlőre való hozzáadásával megjelenítése
 Ebben a vezérlőben a használatát mutatja be a `[Authorize]` attribútum egy tartományvezérlőre védelméhez. Ez az attribútum korlátozza a hozzáférést a vezérlő csak a hitelesített felhasználók lehetővé. A következő kódot elérhetővé válnak az attribútum használatával megjelenítheti a felhasználói jogcímeket lekérése, a bejelentkezés részeként.
 
-1.  Kattintson a jobb gombbal a `Controllers` mappába:`Add` > `Controller`
+1.  Kattintson a jobb gombbal a `Controllers` mappába: `Add` > `Controller`
 2.  Válassza a(z) `MVC {version} Controller – Empty` lehetőséget.
 3.  Kattintson a *hozzáadása*
-4.  Nevezze el`ClaimsController`
+4.  Nevezze el `ClaimsController`
 5.  Cserélje le a vezérlő osztály kódját a következő kódra - Ez a gyorsjavítás a `[Authorize]` attribútumot az osztályra:
 
     [!code-csharp[main](../../../../WebApp-OpenIDConnect-DotNet/WebApp-OpenIDConnect-DotNet\Controllers\ClaimsController.cs?name=ClaimsController "ClaimsController.cs")]
@@ -166,7 +166,7 @@ Ebben a vezérlőben a használatát mutatja be a `[Authorize]` attribútum egy 
 
 A Visual Studio a felhasználói jogcímek megjelenő weblap új nézet létrehozása:
 
-1.  Kattintson a jobb gombbal a `Views\Claims` mappa és:`Add View`
+1.  Kattintson a jobb gombbal a `Views\Claims` mappa és: `Add View`
 2.  Nevezze el a következőképpen: `Index`.
 3.  Adja hozzá a fájlhoz a következő HTML-KÓDBAN:
 
@@ -186,7 +186,7 @@ A Visual Studio a felhasználói jogcímek megjelenő weblap új nézet létreho
     <add key="Authority" value="https://login.microsoftonline.com/{0}" /> 
     ```
 2. A Megoldáskezelőben, válassza ki a projektet, és tekintse meg a <i>tulajdonságok</i> (Ha nem látja a Tulajdonságok ablak az F4) ablak
-3. Módosítsa az SSL engedélyezve<code>True</code>
+3. Módosítsa az SSL engedélyezve <code>True</code>
 4. Másolja a vágólapra a projekt SSL URL-címe:<br/><br/>![Projekt tulajdonságai](media/active-directory-aspnetwebapp-v1/visual-studio-project-properties.png)<br />
 5. A <code>web.config</code>, cserélje le <code>Enter_the_Redirect_URL_here</code> a SSL URL-címet a projekt 
 
@@ -213,8 +213,8 @@ Beállíthatja, hogy az alkalmazás engedélyezése csak az egyik szervezet Azur
 Kövesse az alábbi lépéseket, ha azt szeretné, hogy fogadja el a munkahelyi és iskolai fiókok bármely vállalat vagy szervezet, amely az Azure Active Directoryval integrált bejelentkezések. Ez egy általános forgatókönyv esetében az *SaaS-alkalmazásokhoz*:
 
 1. Lépjen vissza a [Microsoft Azure Portal - alkalmazás regisztrációk](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps) , és keresse meg az imént regisztrált alkalmazás
-2. A `All Settings` kiválasztása`Properties`
-3. Változás `Multi-tenanted` tulajdonságot `Yes` kattintson`Save`
+2. A `All Settings` kiválasztása `Properties`
+3. Változás `Multi-tenanted` tulajdonságot `Yes` kattintson `Save`
 
 Ez a beállítás és a több-bérlős alkalmazásokhoz fogalmát kapcsolatos további információkért lásd: [Ez a cikk](../active-directory-devhowto-multi-tenant-overview.md "több-bérlős áttekintése").
 
@@ -271,7 +271,7 @@ Válassza ki a hivatkozásra kattintva tekintse meg a felhasználói jogcímeket
 |---|---|---|
 | Name (Név) | {Felhasználó teljes neve} | A felhasználó nagyapja vezeték- és keresztneve
 |Felhasználónév | <span>user@domain.com</span>| A felhasználó azonosítására használt felhasználónév
-| Tárgy| {Tulajdonos}|A karakterlánc egyedi azonosítására a weben a felhasználói bejelentkezés|
+| Tárgy| {Subject}|A karakterlánc egyedi azonosítására a weben a felhasználói bejelentkezés|
 | Bérlőazonosító| {Guid}| A *guid* a felhasználó Azure Active Directory szervezeti egyedileg ábrázolásához.|
 
 Ezenkívül megjelenik egy táblázatot, beleértve az összes felhasználó szerepel a hitelesítési kérelmet. Az azonosító-tokent és a magyarázat minden jogcím listája: ezzel [cikk](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims "jogcímek listája az Azonosítót jogkivonatban").

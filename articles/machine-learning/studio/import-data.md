@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 11/29/2017
 ms.author: garye;bradsev
 ms.openlocfilehash: eb22f516f298df9396ca809acaa9c8cb62589c2a
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 03/14/2018
 ---
 # <a name="import-your-training-data-into-azure-machine-learning-studio-from-various-data-sources"></a>A betanítási adatok importálása az Azure Machine Learning Studióba különböző adatforrásokból
 A saját adatok használata a Machine Learning Studióban fejlesztésére és egy prediktív elemzési megoldások betanítását, a következőket teheti: 
@@ -82,7 +82,7 @@ A következő **adattípusok** felismeri a Machine Learning Studio:
 * Dupla
 * Logikai
 * DateTime
-* A TimeSpan
+* TimeSpan
 
 A Machine Learning Studio nevű belső adatok típust használ ***adattábla*** mechanizmusok adatok átadására modulok között. Explicit módon az adatokat átalakíthatja adattábla formátum használatával az [átalakítása Dataset] [ convert-to-dataset] modul.
 

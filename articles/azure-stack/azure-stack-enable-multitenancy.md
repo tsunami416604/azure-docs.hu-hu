@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 02/28/2018
 ms.author: mabrigg
 ms.openlocfilehash: 66689d80cbee0be36b3e8c9951a43d0d43fa01be
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/14/2018
 ---
 # <a name="enable-multi-tenancy-in-azure-stack"></a>Több vállalat kiszolgálása Azure verem engedélyezése
 
@@ -89,9 +89,9 @@ Register-AzSWithMyDirectoryTenant `
  -Verbose 
 ````
 ## <a name="direct-users-to-sign-in"></a>Közvetlen felhasználók jelentkezhetnek be
-Most, hogy és Mária végzett előkészítésére Mária könyvtár lépéseit, Mária utasíthatja a Fabrikam felhasználók jelentkezhetnek be.  Fabrikam felhasználók (Ez azt jelenti, hogy a fabrikam.onmicrosoft.com utótagjával rendelkező felhasználók) https://portal.local.azurestack.external felkeresésével jelentkezzen be.  
+Most, hogy és Mária végzett előkészítésére Mária könyvtár lépéseit, Mária utasíthatja a Fabrikam felhasználók jelentkezhetnek be.  Fabrikam felhasználók (Ez azt jelenti, hogy a fabrikam.onmicrosoft.com utótagjával rendelkező felhasználók) jelentkezzen be ellátogatva https://portal.local.azurestack.external.  
 
-Mária átirányítja a bármely [idegen rendszerbiztonsági tagok](../active-directory/active-directory-understanding-resource-access.md) a Fabrikam könyvtárban (Ez azt jelenti, hogy a Fabrikam könyvtárban nélkül fabrikam.onmicrosoft.com utótagja felhasználók) https://portal.local.azurestack.external/fabrikam.onmicrosoft.com bejelentkezésnek.  Ha nem használják az URL-cím, azok küldi a program az alapértelmezett címtár (Fabrikam), és arról, hogy a rendszergazda nem hozzájárult hibaüzenetet kap.
+Mária átirányítja a bármely [idegen rendszerbiztonsági tagok](../active-directory/active-directory-understanding-resource-access.md) a Fabrikam könyvtárban (Ez azt jelenti, hogy a Fabrikam könyvtárban nélkül fabrikam.onmicrosoft.com utótagja felhasználók) is bejelentkezhet https://portal.local.azurestack.external/fabrikam.onmicrosoft.com.  Ha nem használják az URL-cím, azok küldi a program az alapértelmezett címtár (Fabrikam), és arról, hogy a rendszergazda nem hozzájárult hibaüzenetet kap.
 
 ## <a name="next-steps"></a>További lépések
 

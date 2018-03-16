@@ -15,10 +15,10 @@ ms.devlang: na
 ms.date: 10/23/2017
 ms.author: yoelh
 ms.openlocfilehash: 77e2b9b283e4051370ffb905681135c27512834e
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/14/2018
 ---
 # <a name="azure-active-directory-b2c-add-linkedin-as-an-identity-provider-by-using-custom-policies"></a>Az Azure Active Directory B2C: Egyéni házirendek segítségével hozzáadni az identitás-szolgáltatóként LinkedIn
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
@@ -43,7 +43,7 @@ LinkedIn használata az Azure Active Directory B2C identitás-szolgáltatóként
 
     c. Válasszon egy **alkalmazás használata**.
 
-    d. Az a **webhely URL-címe** mezőbe illessze be **https://login.microsoftonline.com**.
+    d. Az a **webhely URL-címe** mezőbe illessze be  **https://login.microsoftonline.com** .
 
     e. Típus a **üzleti E-mail** cím és **munkahelyi telefon** számát.
 
@@ -53,7 +53,7 @@ LinkedIn használata az Azure Active Directory B2C identitás-szolgáltatóként
 
 3. Válassza ki **hitelesítési**, és jegyezze fel a **ügyfél-azonosító** és **Ügyfélkulcs** értékeket.
 
-4. Az a **átirányítási URL-t engedélyezett** mezőbe illessze be **https://login.microsoftonline.com/te/ {tenant}.onmicrosoft.com/oauth2/authresp**. Cserélje le {*bérlői*}, a bérlő neve (például contosob2c.onmicrosoft.com). Győződjön meg arról, hogy a HTTPS protokollt használ. 
+4. Az a **átirányítási URL-t engedélyezett** mezőbe illessze be  **https://login.microsoftonline.com/te/{tenant}.onmicrosoft.com/oauth2/authresp** . Cserélje le {*bérlői*}, a bérlő neve (például contosob2c.onmicrosoft.com). Győződjön meg arról, hogy a HTTPS protokollt használ. 
 
     ![Fiók LinkedIn - készlet engedélyezett átirányítási URL-címek](media/active-directory-b2c-custom-setup-li-idp/adb2c-ief-setup-li-idp-new-app3.png)
 

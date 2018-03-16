@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 12/26/2017
 ms.author: willzhan;juliako;johndeu
 ms.openlocfilehash: ed78d6c6d4c695b841dbfbf917cd1681adc44ee7
-ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 03/14/2018
 ---
 # <a name="use-azure-ad-authentication-to-access-the-azure-media-services-api-with-rest"></a>Az Azure Media Services API REST eléréséhez használja az Azure AD-alapú hitelesítés
 
@@ -59,10 +59,10 @@ Media Services API eléréséhez kell összegyűjtenie a következő adatpontokh
 
 |Beállítás|Példa|Leírás|
 |---|-------|-----|
-|Azure Active Directory-bérlői tartomány|Microsoft.onmicrosoft.com|Azure AD szolgáltatásba a Secure Token Service (STS) végpont jön létre a következő formátumban: https://login.microsoftonline.com/ {your-aad-tenant-name.onmicrosoft.com}/oauth2/token. Az Azure AD kibocsát jwt-t (olyan hozzáférési jogkivonatot) erőforrások eléréséhez.|
-|REST API-végpont|https://amshelloworld.restv2.westus.Media.Azure.NET/API/|Ez az a végpont, mely összes Media Services REST API elleni hívások az alkalmazásban végrehajtott.|
+|Azure Active Directory-bérlői tartomány|microsoft.onmicrosoft.com|Azure AD szolgáltatásba a Secure Token Service (STS) végpont jön létre a következő formátumban: https://login.microsoftonline.com/{your-aad-tenant-name.onmicrosoft.com}/oauth2/token. Az Azure AD kibocsát jwt-t (olyan hozzáférési jogkivonatot) erőforrások eléréséhez.|
+|REST API-végpont|https://amshelloworld.restv2.westus.media.azure.net/api/|Ez az a végpont, mely összes Media Services REST API elleni hívások az alkalmazásban végrehajtott.|
 |Ügyfél-azonosító (Alkalmazásazonosító)|f7fbbb29-a02d-4d91-bbc6-59a2579259d2|Az Azure AD (ügyfél) azonosítót. A hozzáférési jogkivonat beszerzése az ügyfél-azonosító szükséges. |
-|Titkos ügyfélkulcs|mUERiNzVMoJGggD6aV1etzFGa1n6KeSlLjIq + Dbim0 =|Az Azure AD alkalmazás kulcsok (titkos). A titkos ügyfélkulcs szükség van a hozzáférési jogkivonat.|
+|Titkos ügyfélkulcs|+mUERiNzVMoJGggD6aV1etzFGa1n6KeSlLjIq+Dbim0=|Az Azure AD alkalmazás kulcsok (titkos). A titkos ügyfélkulcs szükség van a hozzáférési jogkivonat.|
 
 ### <a name="get-aad-auth-info-from-the-azure-portal"></a>Beolvasni az aad-ben hitelesítési adatait az Azure-portálon
 
@@ -123,7 +123,7 @@ Ez a szakasz bemutatja, hogyan használható **Postman** végrehajtani egy REST 
 2. Válassza a **POST** lehetőséget.
 3. Az URL-címét, amely tartalmazza a bérlő neve a következő formátumban: a bérlő nevét kell végződnie **. onmicrosoft.com** és az URL-címet kell végződnie **oauth2/token**: 
 
-    {your-aad-tenant-name.onmicrosoft.com}/oauth2/token https://Login.microsoftonline.com/
+    https://login.microsoftonline.com/{your-aad-tenant-name.onmicrosoft.com}/oauth2/token
 
 4. Válassza ki a **fejlécek** fülre.
 5. Adja meg a **fejlécek** információit a "Kulcs/érték" adatrácson. 
@@ -159,7 +159,7 @@ Ez a szakasz bemutatja, hogyan férhet hozzá a **eszközök** API használatáv
 
 1. Nyissa meg **Postman**.
 2. Válassza a **GET** lehetőséget.
-3. Illessze be a REST API-végpont (például https://amshelloworld.restv2.westus.media.azure.net/api/Assets)
+3. Illessze be (például a REST API-végpont https://amshelloworld.restv2.westus.media.azure.net/api/Assets)
 4. Válassza ki a **engedélyezési** fülre. 
 5. Válassza ki **tulajdonosi jogkivonattal**.
 6. Illessze be a jogkivonat az előző szakaszban létrehozott.

@@ -15,10 +15,10 @@ ms.devlang: na
 ms.date: 04/25/2017
 ms.author: joroja
 ms.openlocfilehash: 40245c25a7f80db27a25a0d34eb20f1057fc5e02
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/14/2018
 ---
 # <a name="customize-the-ui-of-a-user-journey-with-custom-policies"></a>Egy felhasználó út egyéni házirendek felhasználói felület testreszabása
 
@@ -72,10 +72,10 @@ Győződjön meg arról, hogy minden megfelelően működik-e, a következőket 
 - Használjon abszolút URL-CÍMEI, például a https://yourdomain/content hivatkozások és a CSS-tartalom.
 
 > [!TIP]
-> Ellenőrizze, hogy a hely, a tartalom üzemeltet a CORS engedélyezése mellett, és tesztelése a CORS-kérelmeket, a webhely http://test-cors.org/ is használhat. Ez a hely környezetnek köszönhetően a CORS kérés küldése egy távoli kiszolgálóra (tesztelje, hogy a CORS támogatott), vagy a CORS kérés küldése egy tesztkiszolgálón (alapján megismerheti a CORS bizonyos funkcióinak).
+> Ellenőrizze, hogy a hely, a tartalom üzemeltet a CORS engedélyezése mellett, és tesztelése a CORS-kérelmeket, használhatja a hely http://test-cors.org/. Ez a hely környezetnek köszönhetően a CORS kérés küldése egy távoli kiszolgálóra (tesztelje, hogy a CORS támogatott), vagy a CORS kérés küldése egy tesztkiszolgálón (alapján megismerheti a CORS bizonyos funkcióinak).
 
 > [!TIP]
-> A hely http://enable-cors.org/ is jelent a több, mint a CORS hasznos erőforrásokhoz.
+> A hely http://enable-cors.org/ egy több, mint a CORS hasznos erőforrásokhoz is jelent.
 
 Környezetnek köszönhetően a CORS-alapú módszert használja a végfelhasználók számára az alkalmazás és az Azure AD B2C által kiszolgált oldalak közötti egységes élmény rendelkezik.
 
@@ -122,8 +122,8 @@ A végponthoz, a tartalom betölteni, mert a tartalmak tárolása egy tartomány
 
 Annak ellenőrzéséhez, hogy rendelkezik-e a tárolási üzemeltet a tartalmat a CORS engedélyezése mellett, folytassa a következő lépéseket:
 
-1. Nyissa meg a böngésző munkamenetet, és keresse meg a lap *unified.html* használja a teljes URL-CÍMÉT a tárfiókban lévő helyére `https://<storageAccountName>.blob.core.windows.net/<containerName>/unified.html`. For example, https://contoso369b2c.blob.core.windows.net/b2c/unified.html.
-2. Navigáljon a http://test-cors.org. Ez a hely lehetővé teszi, hogy ellenőrizze, hogy a lap használ rendelkezik-e a CORS engedélyezése mellett.  
+1. Nyissa meg a böngésző munkamenetet, és keresse meg a lap *unified.html* használja a teljes URL-CÍMÉT a tárfiókban lévő helyére `https://<storageAccountName>.blob.core.windows.net/<containerName>/unified.html`. Például: https://contoso369b2c.blob.core.windows.net/b2c/unified.html.
+2. Nyissa meg a http://test-cors.org címet. Ez a hely lehetővé teszi, hogy ellenőrizze, hogy a lap használ rendelkezik-e a CORS engedélyezése mellett.  
 <!--
 ![test-cors.org](../../media/active-directory-b2c-customize-ui-of-a-user-journey/test-cors.png)
 -->

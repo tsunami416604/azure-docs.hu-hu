@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
 ms.openlocfilehash: cfd4e478850783983caa3042cbbb2b096a576292
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/14/2018
 ---
 # <a name="problems-signing-in-to-a-non-gallery-application-configured-for-federated-single-sign-on"></a>Bejelentkezés egy összevont egyszeri bejelentkezés beállítása nem galéria alkalmazás problémák
 
@@ -31,7 +31,7 @@ A hiba elhárításához ellenőrizze az alkalmazás konfigurációját az Azure
 
 ## <a name="application-not-found-in-directory"></a>Az alkalmazás nem található a könyvtárban
 
-*Hiba AADSTS70001: "Https://contoso.com" azonosítójú alkalmazás nem található a könyvtárban*.
+*Hiba AADSTS70001: Alkalmazás-azonosítójú "https://contoso.com" nem található a könyvtárban*.
 
 **Lehetséges ok**
 
@@ -63,7 +63,7 @@ Miután frissítette az azonosító értéket az Azure ad-ben, és azt az érté
 
 ## <a name="the-reply-address-does-not-match-the-reply-addresses-configured-for-the-application"></a>A válaszcím nem egyezik meg az alkalmazáshoz beállított válasz-címeket. 
 
-*AADSTS50011. hiba: A válasz "https://contoso.com" nem egyezik a válasz címek konfigurálva az alkalmazáshoz* 
+*AADSTS50011. hiba: A címethttps://contoso.com"nem felel meg a válasz címek konfigurálva az alkalmazáshoz* 
 
 **Lehetséges ok** 
 

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 12/01/2017
 ms.author: apurvajo;cephalin
 ms.openlocfilehash: 6c0125bf0bd22912a21372b5a7da6846e924e6cd
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/14/2018
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-your-azure-app-service"></a>SSL-tanúsítvány vásárlása és konfigurálása saját Azure App Service szolgáltatások számára
 
@@ -26,7 +26,7 @@ Ez az oktatóanyag bemutatja, hogyan tegye biztonságossá webalkalmazását ál
 
 ## <a name="step-1---log-in-to-azure"></a>1. lépés – Azure való bejelentkezéshez
 
-Jelentkezzen be az Azure portálon, a http://portal.azure.com
+Jelentkezzen be az Azure-portálon: http://portal.azure.com
 
 ## <a name="step-2---place-an-ssl-certificate-order"></a>2. lépés - az SSL-tanúsítvány megrendelés
 
@@ -159,14 +159,14 @@ Válassza ezt a beállítást csak a [egy App Service-tartomány, az Azure-ból 
 
 1. Tartalom ennek a fájlnak kell lennie a tartomány ellenőrző jogkivonat pontos nevét. (Átmásolhatja a jogkivonatot a tartomány ellenőrzése lapon)
 
-1. Ez a fájl a webkiszolgálón, a tartomány gyökerében feltöltése`/.well-known/pki-validation/starfield.html`
+1. Ez a fájl a webkiszolgálón, a tartomány gyökerében feltöltése `/.well-known/pki-validation/starfield.html`
 
 1. Kattintson a **frissítése** ellenőrzés után a tanúsítvány állapotának frissítése. Az ellenőrzés befejezéséhez néhány percig is eltarthat.
 
 > [!TIP]
 > Ellenőrizze a terminál használatával `curl -G http://<domain>/.well-known/pki-validation/starfield.html` a válasz tartalmaznia kell a `<verification-token>`.
 
-#### <a name="dns-txt-record-verification"></a>DNS TXT rekord ellenőrzése
+#### <a name="dns-txt-record-verification"></a>DNS TXT Record Verification
 
 1. A DNS-kezelő használatával hozzon létre egy TXT rekordot a a `@` altartomány értékkel egyenlőnek a tartomány ellenőrző jogkivonat.
 1. Kattintson a **"Frissítés"** ellenőrzés után a tanúsítvány állapotának frissítése.

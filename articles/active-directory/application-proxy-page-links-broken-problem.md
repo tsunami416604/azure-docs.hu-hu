@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
 ms.openlocfilehash: 17f2afb0aaf3b899784a504b77f33a1284f0a232
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/14/2018
 ---
 # <a name="links-on-the-page-dont-work-for-an-application-proxy-application"></a>A lapon lévő hivatkozások nem működnek az alkalmazásproxy alkalmazás
 
@@ -42,8 +42,8 @@ A probléma megoldásához három módja van. Az alábbi lehetőségek a felsoro
 
 3.  Ha egyik sem valósítható meg, egy új szolgáltatás, amelyek URL-cím fordítása/írja át az előzetes csatlakozik. Ezzel a lehetőséggel belső URL-címeket és az alkalmazások HTML törzsében fennálló lefordítva, vagy "leképezve", a közzétett külső Proxy URL-címek. Ez csak akkor működik, a HTML-vagy CSS hivatkozások, és ez segít a hivatkozás segítségével JS jön létre. 
 
-Ennek eredményeképpen, erősen ajánlott használatával a [egyéni tartományok](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-custom-domains) megoldás Ha lehetséges. Ha csatlakozni szeretne az előzetes, e-mailben < aadapfeedback@microsoft.com > a applicationId(s) együtt.
+Ennek eredményeképpen, erősen ajánlott használatával a [egyéni tartományok](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-custom-domains) megoldás Ha lehetséges. Ha csatlakozni szeretne az előzetes, e-mailben <aadapfeedback@microsoft.com> a applicationId(s) együtt.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [A meglévő helyszíni proxykiszolgálókkal működik](application-proxy-working-with-proxy-servers.md)
 

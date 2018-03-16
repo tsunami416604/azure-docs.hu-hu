@@ -17,10 +17,10 @@ ms.date: 12/12/2017
 ms.author: negat
 ms.custom: na
 ms.openlocfilehash: 52be84b73e70a02c43ef71917dc272060d82b42d
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 03/14/2018
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Az Azure virtuálisgép-skálázási készletekben – gyakori kérdések
 
@@ -77,7 +77,7 @@ A PowerShell vagy az Azure parancssori felület használatával virtuálisgép-m
 
 A virtuálisgép-méretezési csoport targetresourceid azonosítója így néz ki: 
 
-/Subscriptions/yoursubscriptionid/resourceGroups/yourresourcegroup/Providers/Microsoft.COMPUTE/virtualMachineScaleSets/yourvmssname
+/subscriptions/yoursubscriptionid/resourceGroups/yourresourcegroup/providers/Microsoft.Compute/virtualMachineScaleSets/yourvmssname
 
 A metrika a riasztások, dönthet úgy a virtuális gép teljesítményszámláló. További információkért lásd: [Resource Manager-alapú Windows virtuális gépek vendég operációs rendszer metrikák](https://azure.microsoft.com/documentation/articles/insights-autoscale-common-metrics/#guest-os-metrics-resource-manager-based-windows-vms) és [Linux virtuális gépek vendég operációs rendszer metrikák](https://azure.microsoft.com/documentation/articles/insights-autoscale-common-metrics/#guest-os-metrics-linux-vms) a a [Azure figyelő automatikus skálázás közös metrikák](https://azure.microsoft.com/documentation/articles/insights-autoscale-common-metrics/) cikk.
 
@@ -293,7 +293,7 @@ Az Azure Key Vault dokumentáció szerint, hogy az beszerzése titkos REST API-t
  
 Módszer | URL-cím
 --- | ---
-GET | https://mykeyvault.vault.Azure.NET/secrets/ {titkos kulcs neve} / {titkos-version}? api-version = {api-version}
+GET | https://mykeyvault.vault.azure.net/secrets/{secret-name}/{secret-version}?api-version={api-version}
 
 Cserélje le {*titkos-name*} nevű, és cserélje le {*titkos verziójú*} a titkos kulcsot szeretné beolvasni a verzióját. Előfordulhat, hogy ki kell zárni a titkos kulcs verzióját. Ebben az esetben az aktuális verzió lekérése.
   
@@ -339,7 +339,7 @@ További információkért lásd: [Microsoft Adatvédelmi központ](https://www.
 
 ### <a name="does-azure-managed-service-identityhttpsdocsmicrosoftcomazureactive-directorymsi-overview-work-with-virtual-machine-scale-sets"></a>Does [Azure felügyelt Szolgáltatásidentitás](https://docs.microsoft.com/azure/active-directory/msi-overview) a virtuálisgép-méretezési csoportok?
 
-Igen. Néhány példa MSI sablonok az Azure gyors üzembe helyezési sablonokat tekintheti meg. Linux: [https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-msi-linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-msi-linux). Windows: [https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-msi-windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-msi-windows).
+Igen. Néhány példa MSI sablonok az Azure gyors üzembe helyezési sablonokat tekintheti meg. Linux: [ https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-msi-linux ](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-msi-linux). Windows: [ https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-msi-windows ](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-msi-windows).
 
 
 ## <a name="extensions"></a>Bővítmények
@@ -674,7 +674,7 @@ A rendszerindítási diagnosztika bekapcsolásához, először hozzon létre egy
 }
 ```
 
-Új virtuális gép létrehozásakor a InstanceView tulajdonság a virtuális gép számára a képernyőkép, és így tovább részleteit jeleníti meg. Íme egy példa:
+Új virtuális gép létrehozásakor a InstanceView tulajdonság a virtuális gép számára a képernyőkép, és így tovább részleteit jeleníti meg. Például:
  
 ```json
 "bootDiagnostics": {
@@ -690,7 +690,7 @@ A rendszerindítási diagnosztika bekapcsolásához, először hozzon létre egy
 
 Ahhoz, hogy az egyes virtuális gépek a tulajdonság adatait anélkül, hogy több hívást, hívása `ListVMInstanceViews` egy REST API végrehajtásával `GET` a következő alaposztály:
 
-/Subscriptions/ < ELŐFIZETÉS_AZONOSÍTÓJA > /resourceGroups/ < resource_group_name > /providers/Microsoft.Compute/virtualMachineScaleSets/ < scaleset_name > / virtuális gépek vannak? $expand argumentum = instanceView & $select = instanceView
+/subscriptions/<subscription_id>/resourceGroups/<resource_group_name>/providers/Microsoft.Compute/virtualMachineScaleSets/<scaleset_name>/virtualMachines?$expand=instanceView&$select=instanceView
 
 ### <a name="can-i-pass-different-extension-arguments-to-different-vms-in-a-virtual-machine-scale-set"></a>I argumentumok adhatók át másik bővítményt egy virtuálisgép-méretezési csoportban lévő különböző virtuális gépek?
 

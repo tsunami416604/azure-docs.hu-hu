@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 09/25/2017
 ms.author: mabrigg
 ms.openlocfilehash: 34d9d207225327758d535a11c870019f3db31cb0
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/14/2018
 ---
 # <a name="using-the-administrator-portal-in-azure-stack"></a>Azure-készletben a felügyeleti portál használatával
 
@@ -79,6 +79,6 @@ Ha a felügyeleti portál jobb felső sarkában kattintson a Súgó és támogat
 - Ha egy integrált rendszer használata esetén ez a művelet megnyitja egy helyet, ahol közvetlenül megnyithatja a támogatási jegy a Microsoft ügyfél támogatja a szolgáltatások (CSS). Tekintse át a "Hol kaphat segítséget" részt a [Azure verem Adminisztráció alapjai](azure-stack-manage-basics.md) megérteni, hogy mikor kell lépjen a Microsoft támogatási szolgálatához vagy az eredeti hardvergyártó (OEM) hardver gyártójával támogatási keresztül.
 - A csomag használata, ezzel megnyílik a verem Azure fórumok hely közvetlenül. Ezek a fórumok rendszeresen figyeli. A csomag egy kiértékelési környezete, mert nincs Microsoft CSS kínált hivatalos támogatás.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Azure-készletben régió kezelése](azure-stack-region-management.md)

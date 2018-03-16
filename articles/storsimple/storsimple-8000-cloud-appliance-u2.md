@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/08/2017
 ms.author: alkohli
-ms.openlocfilehash: 46b1be5bdd4fa400f437bca274e7f3f6e0dfec08
-ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
+ms.openlocfilehash: 4d47b5426da5d857085991767faa5fb227476408
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="deploy-and-manage-a-storsimple-cloud-appliance-in-azure-update-3-and-later"></a>A StorSimple Cloud Appliance üzembe helyezése és kezelése az Azure-ban (3. frissítés és újabb)
 
@@ -78,7 +78,7 @@ Az alábbi szakaszok ismertetik a StorSimple felhőalapú készülék előfelté
 A felhőalapú készülék kiépítése előtt a következő előkészületekre lesz szükség az Azure-környezetben:
 
 * Győződjön meg arról, hogy az adatközpontban StorSimple 8000 sorozatú fizikai eszköz (8100-as vagy 8600-as modell) van üzembe helyezve és fut. Az eszközt ugyanazzal a StorSimple-eszközkezelő szolgáltatással regisztrálja, amelyhez StorSimple Cloud Appliance-t kíván létrehozni.
-* A felhőalapú készülékhez [konfigurálnia kell egy virtuális hálózatot az Azure-on](../virtual-network/virtual-networks-create-vnet-arm-pportal.md). Premium szintű Storage használata esetén a Premium szintű Storage-ot támogató Azure-régióban kell létrehoznia egy virtuális hálózatot. A prémium szintű Storage-régiók olyan régiók, amelyek a Lemezes tárolás sornak felelnek meg az [Azure-szolgáltatások régió szerint](https://azure.microsoft.com/regions/services/) című lapon található listában.
+* A felhőalapú készülékhez [konfigurálnia kell egy virtuális hálózatot az Azure-on](../virtual-network/manage-virtual-network.md#create-a-virtual-network). Premium szintű Storage használata esetén a Premium szintű Storage-ot támogató Azure-régióban kell létrehoznia egy virtuális hálózatot. A prémium szintű Storage-régiók olyan régiók, amelyek a Lemezes tárolás sornak felelnek meg az [Azure-szolgáltatások régió szerint](https://azure.microsoft.com/regions/services/) című lapon található listában.
 * Saját DNS-kiszolgálónév megadása helyett az Azure által megadott alapértelmezett DNS-kiszolgáló használata javasolt. Ha a megadott DNS-kiszolgálónév nem érvényes, vagy ha a DNS-kiszolgáló nem tudja megfelelően feloldani az IP-címeket, akkor a felhőalapú készülék létrehozása sikertelen lesz.
 * A végpont és telephely közötti, valamint a telephely és telephely közötti lehetőségek választhatóak, de nem kötelezőek. Igény szerint ezeket a lehetőségeket speciális forgatókönyvekhez is konfigurálhatja.
 * Az [Azure-beli virtuális gépeket](../virtual-machines/virtual-machines-windows-quick-create-portal.md) (gazdakiszolgálókat) létrehozhatja abban a virtuális hálózatban, amely a felhőalapú készüléken elérhető köteteket használja. Ezeknek a kiszolgálóknak az alábbi követelményeknek kell megfelelniük:
@@ -273,6 +273,6 @@ Ha nincs internetkapcsolat a felhőalapú berendezés létrehozása közben, a l
 5. Ha az `nslookup` sikertelen, akkor az internetkapcsolat hibája megakadályozza, hogy a felhőalapú berendezés regisztráljon a StorSimple-eszközkezelő szolgáltatásban.
 6. Végezze el a szükséges módosításokat a virtuális hálózaton, hogy a felhőalapú berendezés elérhesse az Azure-helyeket, például a _windows.net_ helyet.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Tekintse át, hogyan [felügyelhető a felhőalapú berendezés a StorSimple-eszközkezelő szolgáltatással](storsimple-8000-manager-service-administration.md).
 * Ismerje meg, hogyan hajtható végre egy [StorSimple-kötet visszaállítása egy biztonságimentés-készletből](storsimple-8000-restore-from-backup-set-u2.md).

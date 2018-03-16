@@ -16,10 +16,10 @@ ms.author: barlan
 ms.reviewer: librown
 ms.custom: end-user
 ms.openlocfilehash: 86cf6ba2f2ec86a609b4ec60cc143b07d9e542b3
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/14/2018
 ---
 # <a name="sign-in-with-your-phone-not-your-password"></a>Jelentkezzen be a telefon, nem a jelszót
 
@@ -72,7 +72,7 @@ Nem, nem. Bejelentkezés Microsoft-fiókkal és a telefon számít a kétlépés
 
 ### <a name="what-if-i-lose-my-phone-or-dont-have-it-with-me-how-can-i-access-my-account"></a>Mi történik, ha elveszti a telefonszám, vagy nincs velem, hogyan lehet érhető-fiókom?  
 
-Mindig kattinthat **használja helyette a jelszó** a bejelentkezési oldalon való visszatéréshez az Ön jelszavát. Ne feledje, hogy használatakor a kétlépéses ellenőrzést, továbbra is szüksége van egy második módszer a bejelentkezés ellenőrzése. Ezért azt javasoljuk, hogy győződjön meg arról, hogy rendelkezik-e további, naprakész biztonsági adatok fiókja. A biztonsági adatokat a https://account.live.com/proofs/manage kezelheti.
+Mindig kattinthat **használja helyette a jelszó** a bejelentkezési oldalon való visszatéréshez az Ön jelszavát. Ne feledje, hogy használatakor a kétlépéses ellenőrzést, továbbra is szüksége van egy második módszer a bejelentkezés ellenőrzése. Ezért azt javasoljuk, hogy győződjön meg arról, hogy rendelkezik-e további, naprakész biztonsági adatok fiókja. Kezelheti a biztonsági adatait https://account.live.com/proofs/manage.
  
 ### <a name="how-do-i-stop-using-this-feature-and-go-back-to-entering-my-password"></a>Hogyan állítsa le, ezzel a szolgáltatással és térjen vissza a jelszó beírása?
 
@@ -87,7 +87,7 @@ A számítógép bejelentkezni a Windows Hello Windows 10 használatát javasolj
 ### <a name="can-i-sign-in-with-my-windows-phone"></a>I jelentkezhet be a Windows Phone?  
 Most azt nem fejleszt ezt a funkciót az a Microsoft Authenticator a Windows Phone. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ha még nem töltötte le a Microsoft Authenticator alkalmazást, tekintse meg. Az alkalmazás érhető el [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071), és a telefonos bejelentkezés érhető el a Microsoft Authenticator alkalmazást [Android](http://go.microsoft.com/fwlink/?Linkid=825072) és [iOS](http://go.microsoft.com/fwlink/?Linkid=825073).
 
 Ha kérdései az alkalmazással kapcsolatos általános, vessen egy pillantást a [Microsoft hitelesítő – gyakori kérdések](microsoft-authenticator-app-faq.md)

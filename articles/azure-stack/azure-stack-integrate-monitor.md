@@ -16,10 +16,10 @@ ms.date: 02/01/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
 ms.openlocfilehash: 3435ada40afb9f1c6e57be64d1b9086d0cdaefd9
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/14/2018
 ---
 # <a name="integrate-external-monitoring-solution-with-azure-stack"></a>Külső figyelési megoldást integrálása Azure verem
 
@@ -145,7 +145,7 @@ A kérelem lekérdezi az alapértelmezett szolgáltató előfizetés az összes 
 
 |Argumentum  |Leírás  |
 |---------|---------|
-|armendpoint     |  Az Azure-verem környezethez, a formátum https://adminmanagement az Azure Resource Manager végpontja. {RegionName}. {Külső FQDN}. Például, ha a külső FQDN-je *azurestack.external* régió neve pedig *helyi*, akkor a Resource Manager-végpont https://adminmanagement.local.azurestack.external.       |
+|armendpoint     |  Az Azure-verem környezethez, a formátum https://adminmanagement az Azure Resource Manager végpontja. {RegionName}. {Külső FQDN}. Például, ha a külső FQDN-je *azurestack.external* régió neve pedig *helyi*, akkor a Resource Manager-végpont esetében https://adminmanagement.local.azurestack.external.       |
 |subid     |   A felhasználó, aki a hívás előfizetés-azonosítója. Ez az API lekérdezés csak olyan felhasználó, aki jogosult az alapértelmezett szolgáltató előfizetéshez használható.      |
 |RegionName     |    Az Azure Alkalmazásveremben üzembe régió neve.     |
 |API-verzió     |  Az ilyen kérést használt protokoll verziója. 2016-05-01 kell használnia.      |
@@ -206,7 +206,7 @@ GET https://adminmanagement.local.azurestack.external/subscriptions/<Subscriptio
 |---------|---------|
 |*id*     |      A riasztás egyedi azonosítója.   |
 |*name*     |     A riasztás belső nevét.   |
-|*típusa*     |     Erőforrás-definícióban.    |
+|*Típusa*     |     Erőforrás-definícióban.    |
 |*hely*     |       A régió neve.     |
 |*címkét*     |   Az erőforráscímkék.     |
 |*closedtimestamp*    |  UTC idő, amikor a riasztás be lett zárva.    |
@@ -221,14 +221,14 @@ GET https://adminmanagement.local.azurestack.external/subscriptions/<Subscriptio
 |*fabricname*     |    A hibás összetevő regisztrált háló neve.   |
 |*description*     |  A regisztrált összetevőjének leírása.   |
 |*servicetype*     |   A regisztrált fabric-szolgáltatás típusú.   |
-|*szervizkiszolgáló*     |   Ajánlott javítási lépéseket.    |
-|*típusa*     |   Riasztási típus.    |
+|*Szervizkiszolgáló*     |   Ajánlott javítási lépéseket.    |
+|*Típusa*     |   Riasztási típus.    |
 |*resourceRegistrationid*    |     A regisztrált erőforrás-azonosítója.    |
 |*resourceProviderRegistrationID*   |    A regisztrált erőforrás-szolgáltató az érintett összetevő azonosítója.  |
 |*serviceregistrationid*     |    A regisztrált szolgáltatás azonosítója.   |
 |*severity*     |     Riasztás súlyossága.  |
 |*state*     |    A riasztás állapota.   |
-|*cím*     |    Riasztás címét.   |
+|*Cím*     |    Riasztás címét.   |
 |*impactedresourceid*     |     Érintett erőforrás azonosítója.    |
 |*ImpactedresourceDisplayName*     |     Az érintett erőforrás nevét.  |
 |*closedByUserAlias*     |   Riasztás lezáró felhasználó.      |
@@ -248,7 +248,7 @@ A kérelem egyedi azonosítójú riasztás bezárása után
 
 |Argumentum  |Leírás  |
 |---------|---------|
-|*armendpoint*     |   Az Azure-verem környezethez, a formátum https://adminmanagement az erőforrás-kezelő végpontját. {RegionName}. {Külső FQDN}. Például, ha a külső FQDN-je *azurestack.external* régió neve pedig *helyi*, akkor a Resource Manager-végpont https://adminmanagement.local.azurestack.external.      |
+|*armendpoint*     |   Az Azure-verem környezethez, a formátum https://adminmanagement az erőforrás-kezelő végpontját. {RegionName}. {Külső FQDN}. Például, ha a külső FQDN-je *azurestack.external* régió neve pedig *helyi*, akkor a Resource Manager-végpont esetében https://adminmanagement.local.azurestack.external.      |
 |*subid*     |    A felhasználó, aki a hívás előfizetés-azonosítója. Ez az API lekérdezés csak olyan felhasználó, aki jogosult az alapértelmezett szolgáltató előfizetéshez használható.     |
 |*RegionName*     |   Az Azure Alkalmazásveremben üzembe régió neve.      |
 |*api-version*     |    Az ilyen kérést használt protokoll verziója. 2016-05-01 kell használnia.     |
@@ -349,7 +349,7 @@ PUT https://adminmanagement.local.azurestack.external//subscriptions/<Subscripti
 |---------|---------|
 |*id*     |      A riasztás egyedi azonosítója.   |
 |*name*     |     A riasztás belső nevét.   |
-|*típusa*     |     Erőforrás-definícióban.    |
+|*Típusa*     |     Erőforrás-definícióban.    |
 |*hely*     |       A régió neve.     |
 |*címkét*     |   Az erőforráscímkék.     |
 |*closedtimestamp*    |  UTC idő, amikor a riasztás be lett zárva.    |
@@ -364,14 +364,14 @@ PUT https://adminmanagement.local.azurestack.external//subscriptions/<Subscripti
 |*fabricname*     |    A hibás összetevő regisztrált háló neve.   |
 |*description*     |  A regisztrált összetevőjének leírása.   |
 |*servicetype*     |   A regisztrált fabric-szolgáltatás típusú.   |
-|*szervizkiszolgáló*     |   Ajánlott javítási lépéseket.    |
-|*típusa*     |   Riasztási típus.    |
+|*Szervizkiszolgáló*     |   Ajánlott javítási lépéseket.    |
+|*Típusa*     |   Riasztási típus.    |
 |*resourceRegistrationid*    |     A regisztrált erőforrás-azonosítója.    |
 |*resourceProviderRegistrationID*   |    A regisztrált erőforrás-szolgáltató az érintett összetevő azonosítója.  |
 |*serviceregistrationid*     |    A regisztrált szolgáltatás azonosítója.   |
 |*severity*     |     Riasztás súlyossága.  |
 |*state*     |    A riasztás állapota.   |
-|*cím*     |    Riasztás címét.   |
+|*Cím*     |    Riasztás címét.   |
 |*impactedresourceid*     |     Érintett erőforrás azonosítója.    |
 |*ImpactedresourceDisplayName*     |     Az érintett erőforrás nevét.  |
 |*closedByUserAlias*     |   Riasztás lezáró felhasználó.      |
@@ -435,7 +435,7 @@ GET https://adminmanagement.local.azurestack.external/subscriptions/<Subscriptio
 |---------|---------|
 |*Azonosító*     |   A riasztás egyedi azonosítója.      |
 |*name*     |  A riasztás belső nevét.       |
-|*típusa*     |  Erőforrás-definícióban.       |
+|*Típusa*     |  Erőforrás-definícióban.       |
 |*hely*     |  A régió neve.       |
 |*címkét*     |     Az erőforráscímkék.    |
 |*registrationId*     |   Az erőforrás-szolgáltató regisztrálása egyedi.      |
@@ -503,7 +503,7 @@ GET https://adminmanagement.local.azurestack.external/subscriptions/<Subscriptio
 |---------|---------|
 |*Azonosító*     |   A riasztás egyedi azonosítója.      |
 |*name*     |  A riasztás belső nevét.       |
-|*típusa*     |  Erőforrás-definícióban.       |
+|*Típusa*     |  Erőforrás-definícióban.       |
 |*hely*     |  A régió neve.       |
 |*címkét*     |     Az erőforráscímkék.    |
 |*registrationId*     |   Az erőforrás-szolgáltató regisztrálása egyedi.      |
@@ -514,7 +514,7 @@ GET https://adminmanagement.local.azurestack.external/subscriptions/<Subscriptio
 |*resourceURI*     |   Az erőforrás URI.   |
 |*alertSummary*     |   Kritikus összegzése és figyelmeztető riasztások állapotát.     |
 
-## <a name="learn-more"></a>További információ
+## <a name="learn-more"></a>Részletek
 
 További információ a beépített állapotfigyelés: [állapotának és az Azure-készletben riasztások figyelése](azure-stack-monitor-health.md).
 
