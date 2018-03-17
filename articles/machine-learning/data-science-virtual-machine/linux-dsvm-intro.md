@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/10/2017
+ms.date: 03/16/2018
 ms.author: bradsev
-ms.openlocfilehash: e36c28ef1c05dcdcebc7372316c7f144c92fd02f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 550d49e3d6007c6b494deec95b785ea9bc214f3a
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="provision-a-linux-centos-data-science-virtual-machine-on-azure"></a>A Linux CentOS adatok tudományos virtuális gépet az Azure telepítéséhez
 
@@ -32,7 +32,7 @@ A Linux adatok tudományos virtuális gép CentOS-alapú Azure virtuális gép a
 * JupyterHub - R, Python, PySpark, Ágnes kernelek támogató többfelhasználós Jupyter notebook kiszolgáló
 * Azure Storage Explorer
 * Azure parancssori felület (CLI) Azure-erőforrások kezelése
-* PostgresSQL adatbázis
+* PostgresSQL Database
 * Machine learning-eszközök
   * [Kognitív eszközkészlet](https://github.com/Microsoft/CNTK): A Microsoft Research software eszközkészletet tanulási mély.
   * [Vowpal Wabbit](https://github.com/JohnLangford/vowpal_wabbit): gyors machine learning-rendszer támogatása, például a online, a kivonatoló, allreduce, csökkentése, learning2search, aktív, és interaktív tanulási.
@@ -153,8 +153,8 @@ A Python interaktív munkamenet meghívni, csak gépelje **python** a rendszerh�
 
 További Python-könyvtárak telepítéséhez futtatnia kell ```conda``` vagy ````pip```` a sudo parancsot, és adja meg a teljes elérési útja a Python package Manager (conda vagy pip) a megfelelő Python-környezetben való telepítéséhez. Példa:
 
-    sudo /anaconda/bin/pip install <package> #for Python 2.7 environment
-    sudo /anaconda/envs/py35/bin/pip install <package> # for Python 3.5 environment
+    sudo /anaconda/bin/pip install -n <package> #for Python 2.7 environment
+    sudo /anaconda/envs/py35/bin/pip install -n <package> # for Python 3.5 environment
 
 
 ### <a name="jupyter-notebook"></a>Jupyter notebook
@@ -366,7 +366,7 @@ Most már egy grafikus felület megnyílik lapok vannak beállítva. Az első l�
 
 Kiléphet Rattle és R. Most módosítja a generált R-parancsfájl, vagy használja, mert az ismétlődő minden, ami a Rattle felhasználói felületen belül lett elvégezve bármikor futtatásához. Különösen az R kezdők, ez pedig egyszerűen gyorsan elemzést és a gépi tanulás egyszerű grafikus felületen, automatikusan az R módosítása és/vagy ismerje meg, a kód létrehozása közben.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ez hogyan folytathatja a tanulási és feltárása:
 
 * A [adattudomány lévő Linux adatok tudományos virtuálisgép](linux-dsvm-walkthrough.md) forgatókönyv bemutatja, hogyan itt kiépítése Linux adatok tudományos VM több közös tudományos feladatok elvégzésére. 

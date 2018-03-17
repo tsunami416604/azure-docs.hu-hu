@@ -1,24 +1,18 @@
 ---
-title: "Azure Automation ütemezései segítségével |} Microsoft Docs"
+title: "Azure Automation ütemezései segítségével"
 description: "Az automatizálási ütemezések használatával ütemezhető a runbookok az Azure Automationben automatikus indításra. Ismerteti, hogyan létrehozásához és kezeléséhez az ütemezés szerint, így képes automatikusan elindít egy runbookot egy adott időpontban vagy egy ismétlődő ütemezés szerint."
 services: automation
-documentationcenter: 
-author: georgewallace
-manager: jwhit
-editor: tysonn
-ms.assetid: 1c2da639-ad20-4848-920b-88e471b2e1d9
 ms.service: automation
-ms.devlang: na
+author: georgewallace
+ms.author: gwallace
+ms.date: 03/16/2018
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 09/29/2017
-ms.author: magoedte
-ms.openlocfilehash: 6ad70d736cd0a267ace3ade0a1ecfea38128ac72
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+manager: carmonm
+ms.openlocfilehash: ae7378c6d0f85e71c9522a6678adcb1f2e4b01f1
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="scheduling-a-runbook-in-azure-automation"></a>Runbook ütemezése az Azure Automationben
 A megadott időben elindítani Azure Automation forgatókönyv ütemezése, csatolható egy vagy több ütemezés. Ütemezés beállítható úgy, hogy az Azure-portálon a runbookok egyszeri és egy ismétlődés óránkénti futtatási vagy napi ütemezés. Beütemezhet őket heti, havi, a hét meghatározott napjain vagy a hónap napjait, vagy a hónap adott napja.  Egy runbook több ütemezéssel is lehet társítani, és egy ütemezés szerint lehet kapcsolni több runbook.
@@ -35,20 +29,20 @@ A következő táblázatban található parancsmagokkal létrehozása és kezel�
 |:--- |:--- |
 | **Az Azure Resource Manager parancsmagok** | |
 | [Get-AzureRmAutomationSchedule](/powershell/module/azurerm.automation/get-azurermautomationschedule) |Ütemezés lekérése. |
-| [Új AzureRmAutomationSchedule](/powershell/module/azurerm.automation/new-azurermautomationschedule) |Létrehoz egy új ütemezést. |
+| [New-AzureRmAutomationSchedule](/powershell/module/azurerm.automation/new-azurermautomationschedule) |Létrehoz egy új ütemezést. |
 | [Remove-AzureRmAutomationSchedule](/powershell/module/azurerm.automation/remove-azurermautomationschedule) |Eltávolítja az ütemezés szerint. |
 | [Set-AzureRmAutomationSchedule](/powershell/module/azurerm.automation/set-azurermautomationschedule) |Meglévő ütemezés tulajdonságainak beállítása. |
 | [Get-AzureRmAutomationScheduledRunbook](/powershell/module/azurerm.automation/set-azurermautomationscheduledrunbook) |Lekéri a runbookok ütemezett. |
 | [Register-AzureRmAutomationScheduledRunbook](/powershell/module/azurerm.automation/register-azurermautomationscheduledrunbook) |Az ütemezés szerint egy runbook társítja. |
-| [AzureRmAutomationScheduledRunbook regisztrációjának törlése](/powershell/module/azurerm.automation/unregister-azurermautomationscheduledrunbook) |Egy runbook ütemezés dissociates. |
+| [Unregister-AzureRmAutomationScheduledRunbook](/powershell/module/azurerm.automation/unregister-azurermautomationscheduledrunbook) |Egy runbook ütemezés dissociates. |
 | **Azure szolgáltatásfelügyelet-parancsmagokkal** | |
 | [Get-AzureAutomationSchedule](/powershell/module/azure/get-azureautomationschedule?view=azuresmps-3.7.0) |Ütemezés lekérése. |
-| [Új AzureAutomationSchedule](/powershell/module/azure/new-azureautomationschedule?view=azuresmps-3.7.0) |Létrehoz egy új ütemezést. |
+| [New-AzureAutomationSchedule](/powershell/module/azure/new-azureautomationschedule?view=azuresmps-3.7.0) |Létrehoz egy új ütemezést. |
 | [Remove-AzureAutomationSchedule](/powershell/module/azure/remove-azureautomationschedule?view=azuresmps-3.7.0) |Eltávolítja az ütemezés szerint. |
 | [Set-AzureAutomationSchedule](/powershell/module/azure/set-azureautomationschedule?view=azuresmps-3.7.0) |Meglévő ütemezés tulajdonságainak beállítása. |
 | [Get-AzureAutomationScheduledRunbook](/powershell/module/azure/get-azureautomationscheduledrunbook?view=azuresmps-3.7.0) |Lekéri a runbookok ütemezett. |
 | [Register-AzureAutomationScheduledRunbook](/powershell/module/azure/register-azureautomationscheduledrunbook?view=azuresmps-3.7.0) |Az ütemezés szerint egy runbook társítja. |
-| [AzureAutomationScheduledRunbook regisztrációjának törlése](/powershell/module/azure/unregister-azureautomationscheduledrunbook?view=azuresmps-3.7.0) |Egy runbook ütemezés dissociates. |
+| [Unregister-AzureAutomationScheduledRunbook](/powershell/module/azure/unregister-azureautomationscheduledrunbook?view=azuresmps-3.7.0) |Egy runbook ütemezés dissociates. |
 
 ## <a name="creating-a-schedule"></a>Ütemezés létrehozása
 A runbookok új ütemtervet hozhat létre, az Azure portálon vagy a Windows PowerShell használatával. Új ütemezés létrehozására, ha egy runbook egy ütemezést az Azure klasszikus vagy az Azure portál használatával is rendelkezik.

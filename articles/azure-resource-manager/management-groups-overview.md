@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2018
 ms.author: rithorn
-ms.openlocfilehash: 1264bf77b6d922f5beb22177d1ac63efa9386ef2
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: a86fc568a0c7f4ada0b853cda8a7b2e06ed7dfcb
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>Az Azure felügyeleti csoportok-erőforrások rendszerezése 
 
-Ha több előfizetéssel rendelkezik, rendszerezheti őket a szállító "felügyeleti csoport" nevű hozzáférési házirend és megfelelőség kezeléséhez az előfizetések között. Felügyeleti csoportjai vállalati szintű felügyeleti függetlenül attól, milyen típusú előfizetések lehetséges, hogy nagy léptékben.  
+Ha a szervezetben sok a lekérdezés, szükség lehet egy úgy, hogy hatékonyan kezelheti a hozzáférést, a házirendek és a megfelelőségi előfizetésekben. Az Azure felügyeleti csoportok fent előfizetések hatókör biztosít. A "felügyeleti csoport" nevű tárolók előfizetések rendszerezése és a cégirányítási feltételek vonatkoznak a felügyeleti csoportok. A felügyeleti csoporton belül minden előfizetés automatikusan öröklik a feltételeket, a felügyeleti csoportra alkalmazza. Felügyeleti csoportjai vállalati szintű felügyeleti függetlenül attól, milyen típusú előfizetések lehetséges, hogy nagy léptékben.
 
 A felügyeleti csoport funkciót egy nyilvános előzetes verziójában érhető el. Indíthatja a felügyeleti csoportok, jelentkezzen be a [Azure-portálon](https://portal.azure.com) keresse meg a **felügyeleti csoportok** a a **minden szolgáltatás** szakasz. 
 

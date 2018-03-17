@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/13/2018
+ms.date: 03/16/2018
 ms.author: billmath
-ms.openlocfilehash: e97d3e3e35ee87864c5d38e75e08e62088e25fdb
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 06c715cf5dbf039334adfde8b3111d9bfcb86568
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="azure-ad-connect-sync-make-a-change-to-the-default-configuration"></a>Azure AD Connect szinkronizálása: megváltoztatja az alapértelmezett konfiguráció
 Ez a cikk célja végigvezetik Önt az Azure Active Directory (Azure AD) Connect szinkronizálási szolgáltatás az alapértelmezett konfigurációs módosításokat. Lépéseket biztosít olyan gyakori forgatókönyveket tartalmaz. Ennek az információnak a egyszerű módosíthatják a saját üzleti szabályok alapján saját konfigurációs kell lennie.
@@ -245,7 +245,7 @@ Alapértelmezés szerint az Azure AD Connect terület UserType attribútuma nem 
  1. Lépjen a **összekötők** lapon a Synchronization Service Managert.
  2. Kattintson a jobb gombbal a **Azure AD-összekötő** válassza **tulajdonságok**.
  3. Az előugró párbeszédpanelen keresse meg a **attribútumok kiválasztása** fülre.
- 4. Ellenőrizze, hogy a PreferredDataLocation attribútum be van jelölve, a attribútum listában.
+ 4. Ellenőrizze, hogy a UserType attribútuma be van jelölve, a attribútum listában.
  5. Kattintson a **OK** mentéséhez.
 
 ![Adatforrás-attribútum hozzáadása az Azure AD-összekötő séma](./media/active-directory-aadconnectsync-change-the-configuration/usertype2.png)
@@ -293,7 +293,7 @@ A bejövő szinkronizálási szabály lehetővé teszi a forrásattribútum a he
 ![Bejövő szinkronizálási szabályának létrehozása](./media/active-directory-aadconnectsync-change-the-configuration/usertype3.png)
 
 ### <a name="step-5-create-an-outbound-synchronization-rule-to-flow-the-attribute-value-to-azure-ad"></a>5. lépés: Az attribútum értéke az Azure AD-rendszer kimenő szinkronizálási szabály létrehozása
-A kimenő szinkronizálási szabály lehetővé teszi az attribútumérték felé haladjanak a metaverzumba a PreferredDataLocation attribútumhoz az Azure ad-ben:
+A kimenő szinkronizálási szabály lehetővé teszi az attribútumérték felé haladjanak a metaverzumba UserType attribútuma az Azure AD-ben:
 
 1. Nyissa meg a szinkronizálási szabályok szerkesztőbe.
 2. Állítsa be a keresési szűrő **irány** kell **kimenő**.

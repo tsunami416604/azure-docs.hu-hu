@@ -16,10 +16,10 @@ ms.custom: performance
 ms.date: 08/23/2017
 ms.author: joeyong;barbkess;kavithaj
 ms.openlocfilehash: eaf2d43286dbaa52ada1430fbb7ce1e37f41c0d4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="concurrency-and-workload-management-in-sql-data-warehouse"></a>Párhuzamossági és munkaterhelés-kezelés az SQL Data Warehouse
 Kiszámítható teljesítményt biztosítanak a Microsoft Azure SQL Data Warehouse segítséget nyújt a nagyságrendnél párhuzamossági szintek és erőforrás-hozzárendelések például memória és CPU rangsorolási ellenőrzése. Ez a cikk bemutatja a feldolgozási és munkaterhelés-kezelés, elmagyarázza, hogyan mindkét szolgáltatásokat nyújt, és hogy miként szabályozható őket az adatraktár elveit. SQL Data Warehouse munkaterhelés felügyeleti Többfelhasználós környezetek támogatására segítenek célja. Nem célja a több-bérlős munkaterhelésekhez.
@@ -221,12 +221,12 @@ A tárolt eljárás célja van:
 >  [!NOTE]  
 >  Ha nem kap kimeneti megadva, előfordulhat, hogy két esetben paraméterekkel tárolt eljárás végrehajtása után. <br />1. Vagy DW paraméter érvénytelen SLO értéket tartalmazza: <br />2. VAGY nem megfelelő erőforrásosztály közösségi koordináló intézet művelet Ha megadva tábla neve. <br />Például: DW100, legmagasabb rendelkezésre memóriaengedély 400MB, és ha táblaséma elég széles kereszt-követelmény 400MB.
       
-#### <a name="usage-example"></a>Példa:
+#### <a name="usage-example"></a>Példa a használatra:
 Szintaxis:  
 `EXEC dbo.prc_workload_management_by_DWU @DWU VARCHAR(7), @SCHEMA_NAME VARCHAR(128), @TABLE_NAME VARCHAR(128)`  
-1. @DWU:Adja meg az aktuális DWU kinyerése az Adatraktár-adatbázisban, vagy bármely támogatott DWU "DW100" formájában adja meg egy NULL értékű paramétert vagy
-2. @SCHEMA_NAME:Adja meg a tábla a séma neve
-3. @TABLE_NAME:Adjon meg egy tábla nevét, a fontos
+1. @DWU: Adja meg az aktuális DWU kinyerése az Adatraktár-adatbázisban, vagy bármely támogatott DWU "DW100" formájában adja meg egy NULL értékű paramétert vagy
+2. @SCHEMA_NAME: Adja meg a tábla a séma neve
+3. @TABLE_NAME: Adjon meg egy tábla nevét, a fontos
 
 A tárolt eljárás végrehajtása példák:  
 ```sql  
@@ -573,7 +573,7 @@ Az alábbi táblázat az egyes tevékenységprofil-csoport fontosság leképezé
 Az a **foglalási és felhasználási párhuzamossági tárolóhelyek** diagram, ellenőrizheti, hogy egy DW500 használ 1, 4, 8, vagy 16 párhuzamossági üzembe helyezési ponti smallrc, mediumrc, largerc és xlargerc, illetve. Megtekintheti ezeket az értékeket az előző táblázat az egyes erőforrás fontossága kereséséhez.
 
 ### <a name="dw500-mapping-of-resource-classes-to-importance"></a>Az erőforrás fontossága osztályok DW500 leképezése
-| Erőforrásosztály | A tevékenységprofil-csoport | Párhuzamossági tárhelyek használt | MB / terjesztési | Fontos |
+| Erőforrásosztály | A tevékenységprofil-csoport | Párhuzamossági tárhelyek használt | MB / terjesztési | Fontosság |
 |:--- |:--- |:---:|:---:|:--- |
 | smallrc |SloDWGroupC00 |1 |100 |Közepes |
 | mediumrc |SloDWGroupC02 |4 |400 |Közepes |
@@ -643,7 +643,7 @@ A következő utasításokat megújítja, tiszteletben az erőforrás-osztályok
 
 * INSERT-KIVÁLASZTÁSA
 * FRISSÍTÉS
-* TÖRLÉSE
+* DELETE
 * Válassza ki a (felhasználói táblák lekérdezésekor)
 * ALTER INDEX REBUILD
 * ALTER INDEX ÁTSZERVEZ
@@ -682,7 +682,7 @@ Removed as these two are not confirmed / supported under SQLDW
 - REDISTRIBUTE
 -->
 
-##  <a name="changing-user-resource-class-example"></a>A felhasználói erőforrás osztály példa módosítása
+##  <a name="changing-user-resource-class-example"></a> A felhasználói erőforrás osztály példa módosítása
 1. **Hozzon létre bejelentkezési:** kapcsolatot létesíteni a **fő** adatbázis az SQL Data Warehouse-adatbázist futtató SQL-kiszolgálón, és a következő parancsok.
    
     ```sql
@@ -699,7 +699,7 @@ Removed as these two are not confirmed / supported under SQLDW
     ```sql
     CREATE USER newperson FOR LOGIN newperson;
     ```
-3. **Engedélyek:** a következő példa engedélyezi a `CONTROL` a a **SQL Data Warehouse** adatbázis. `CONTROL`az adatbázist szintje megegyezik a db_owner az SQL Server kiszolgálón.
+3. **Engedélyek:** a következő példa engedélyezi a `CONTROL` a a **SQL Data Warehouse** adatbázis. `CONTROL` az adatbázist szintje megegyezik a db_owner az SQL Server kiszolgálón.
    
     ```sql
     GRANT CONTROL ON DATABASE::MySQLDW to newperson;
@@ -827,7 +827,7 @@ SELECT    w.[pdw_node_id]
 FROM    sys.dm_pdw_wait_stats w;
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Adatbázis-felhasználók és biztonsági kezelésével kapcsolatos további információkért lásd: [az SQL Data Warehouse adatbázis védelme][Secure a database in SQL Data Warehouse]. További információ a hogyan nagyobb erőforrás osztályok javíthatja a fürtözött oszlopcentrikus index minőségének, lásd: [szegmens minőségének javítására indexek újraépítése].
 
 <!--Image references-->

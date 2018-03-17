@@ -1,24 +1,18 @@
 ---
-title: "Azure Automation-Runbook típusok |} Microsoft Docs"
+title: "Azure Automation-Runbook típusok"
 description: "Ismerteti a runbookok, amelyek az Azure Automation és kapcsolatos szempontokat, akkor figyelembe kell vennie annak meghatározása, amelyek használatához írja be. "
 services: automation
-documentationcenter: 
-author: georgewallace
-manager: jwhit
-editor: tysonn
-ms.assetid: 9265c975-4281-4819-a84f-d86641277f36
 ms.service: automation
-ms.devlang: na
+author: georgewallace
+ms.author: gwallace
+ms.date: 03/16/2018
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 06/01/2017
-ms.author: bwren
-ms.openlocfilehash: e4a8ab0e68d6614fea1b44f0115a1c633f145277
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+manager: carmonm
+ms.openlocfilehash: f3a6b15891a4a1564073d149a198f6789b407342
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="azure-automation-runbook-types"></a>Azure Automation-runbook típusok
 Azure Automation szolgáltatásbeli számos különböző típusú, amely röviden ismerteti a runbookok támogatja a következő táblázatban.  Az alábbi szakaszokban minden típusát, melynek során vegye figyelembe az egyes esetekben a további információt.
@@ -104,7 +98,7 @@ Akkor figyelembe kell vennie a következő további szempontok számának meghat
 * A grafikus forgatókönyvek nem konvertálható szöveges típusra, vagy fordítva.
 * Különböző típusú runbookok használja, a gyermek runbook korlátozások is.  Lásd: [az Azure Automation runbookjai gyermek](automation-child-runbooks.md) további információt.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * További információk a létrehozásról grafikus forgatókönyvnek, [grafikus készítése az Azure Automationben](automation-graphical-authoring-intro.md)
 * PowerShell és a PowerShell közötti különbségek megismeréséhez munkafolyamatok runbookok, lásd: [tanulási Windows PowerShell munkafolyamat](automation-powershell-workflow.md)
 * Hozzon létre vagy Runbook importálása további információkért lásd: [létrehozása vagy egy Runbook importálása](automation-creating-importing-runbook.md)

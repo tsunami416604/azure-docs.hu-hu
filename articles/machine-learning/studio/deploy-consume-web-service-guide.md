@@ -3,8 +3,8 @@ title: "Az Azure Machine Learning webszolgáltatások: Telepítés és használa
 description: "Erőforrások üzembe helyezéséhez és webszolgáltatások felhasználása."
 services: machine-learning
 documentationcenter: 
-author: garyericson
-manager: raymondl
+author: aashishb
+manager: hjerez
 editor: 
 ms.assetid: 47635376-d1f4-4ea4-a6af-bd1f99f69a69
 ms.service: machine-learning
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
-ms.author: raymondl
-ms.openlocfilehash: 88a61467a79a424670d49e662315cab59ab52d13
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.author: aashishb
+ms.openlocfilehash: 7eecfe4a80499fbba0533f0d410dd920db61e62c
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="azure-machine-learning-web-services-deployment-and-consumption"></a>Azure Machine Learning webszolgáltatások: telepítés és használat
 Azure Machine Learning segítségével telepítheti a gépi tanulásra munkafolyamatok és -modellek webszolgáltatásként. Ezek a webszolgáltatások majd használható a gépi tanulási modelljeit felelnek meg, alkalmazásokat és a valós idejű vagy kötegelt módban előrejelzéseket ehhez az interneten keresztül. Mivel a webes szolgáltatások RESTful, hívása azokat a különböző programozási nyelveket és platformok, például a .NET és a Java, és az alkalmazások, például az Excel.
@@ -49,7 +49,7 @@ Az Azure Machine Learning webszolgáltatások erőforrás-szolgáltató REST API
 ### <a name="with-powershell-cmdlets"></a>A PowerShell-parancsmagokkal
 Az Azure Machine Learning erőforrás-szolgáltató web Services lehetővé teszi, hogy üzembe helyezési és kezelési webszolgáltatások PowerShell-parancsmagok használatával.
 
-A parancsmagokat használja, akkor először be kell jelentkeznie Azure-fiókjába a PowerShell környezetben használatával a [Add-AzureRmAccount](https://msdn.microsoft.com/library/mt619267.aspx) parancsmag. Ha nincs tisztában a hogyan hívhatja meg PowerShell-parancsok alapuló erőforrás-kezelő, lásd: [az Azure PowerShell használata Azure Resource Managerrel](../../azure-resource-manager/powershell-azure-resource-manager.md#log-in-to-your-azure-account).
+A parancsmagokat használja, akkor először be kell jelentkeznie Azure-fiókjába a PowerShell környezetben használatával a [Add-AzureRmAccount](https://msdn.microsoft.com/library/mt619267.aspx) parancsmag. Ha nincs tisztában a hogyan hívhatja meg PowerShell-parancsok alapuló erőforrás-kezelő, lásd: [az Azure PowerShell használata Azure Resource Managerrel](../../azure-resource-manager/powershell-azure-resource-manager.md).
 
 A prediktív kísérletté exportálásához használja [a mintakód](https://github.com/ritwik20/AzureML-WebServices). Miután létrehozta az .exe fájl kód, adhatja meg:
 

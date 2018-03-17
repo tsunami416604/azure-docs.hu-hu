@@ -7,13 +7,13 @@ manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: article
-ms.date: 02/28/2018
+ms.date: 03/16/2018
 ms.author: carlrab
-ms.openlocfilehash: a6e1b6230742c1c2f065418110f76932306a9588
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 2e05be2131ca89a084da5eeffc0b025b38432a8d
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="create-and-manage-azure-sql-database-servers-and-databases"></a>Azure SQL Database-kiszolgálók és adatbázisok létrehozása és kezelése
 
@@ -21,7 +21,7 @@ SQL-adatbázis három típusú adatbázisokból kínálja:
 
 - Belül létrehozott egy adatbázist egy [Azure erőforráscsoport](../azure-resource-manager/resource-group-overview.md) meghatározott számú [számítási és tárolási erőforrásokat a különböző munkaterhelések](sql-database-service-tiers.md). Azure SQL-adatbázis nem tartozik egy Azure SQL Database logikai kiszolgáló, ami a rendszer létrehoz egy adott Azure-régiót.
 - Részeként létrehozott adatbázis egy [adatbázisok készlete](sql-database-elastic-pool.md) belül egy [Azure erőforráscsoport](../azure-resource-manager/resource-group-overview.md) meghatározott számú [számítási és tárolási erőforrásokat a különböző munkaterhelések](sql-database-service-tiers.md) , amelyek megosztott összes a készletben lévő adatbázisok között. Azure SQL-adatbázis nem tartozik egy Azure SQL Database logikai kiszolgáló, ami a rendszer létrehoz egy adott Azure-régiót.
-- Egy [egy SQL server-példányt](sql-database-managed-instance.md) belül létrehozott egy [Azure erőforráscsoport](../azure-resource-manager/resource-group-overview.md) a számítási és tárolási erőforrásokat, az összes olyan server-példányon adatbázis egy adott csoportján. A felügyelt példánya rendszer és a felhasználó adatbázist tartalmaz. Felügyelt példány lehetővé teszi, hogy adatbázis növekedési-és-shift egy teljes körűen felügyelt PaaS, hogy az alkalmazás újratervezése nélkül. Felügyelt példány magas kompatibilitási a helyszíni SQL Server programozási modellt biztosít, és támogatja az SQL Server szolgáltatásai és a hozzá tartozó eszközök és szolgáltatások nagy részét.  
+- Egy [egy SQL server-példányt](sql-database-managed-instance.md) jött létre (a felügyelt példánya) egy [Azure erőforráscsoport](../azure-resource-manager/resource-group-overview.md) a számítási és tárolási erőforrásokat, az összes olyan server-példányon adatbázis egy adott csoportján. A felügyelt példánya rendszer és a felhasználó adatbázist tartalmaz. Felügyelt példány lehetővé teszi, hogy adatbázis növekedési-és-shift egy teljes körűen felügyelt PaaS, hogy az alkalmazás újratervezése nélkül. Felügyelt példány magas kompatibilitási a helyszíni SQL Server programozási modellt biztosít, és támogatja az SQL Server szolgáltatásai és a hozzá tartozó eszközök és szolgáltatások nagy részét.  
 
 Microsoft Azure SQL Database 7.3 vagy újabb tabulált adatfolyam (TDS) protokoll ügyfél verziója támogatja, és lehetővé teszi, hogy csak a titkosított TCP/IP-kapcsolatokat.
 
@@ -140,7 +140,7 @@ Létrehozásához és kezeléséhez az Azure SQL server, adatbázisok és a tűz
 |[az group create](/cli/azure/group#az_group_create)|Létrehoz egy erőforráscsoportot|
 |[az sql server create](/cli/azure/sql/server#az_sql_server_create)|A kiszolgáló létrehozása|
 |[az sql server listája](/cli/azure/sql/server#az_sql_server_list)|Kiszolgálók listája|
-|[az sql server lista-módjait](/cli/azure/sql/server#az_sql_server_list-usages)|Kiszolgáló módjait adja vissza|
+|[az sql server lista-módjait](/cli/azure/sql/server#az_sql_server_list_usages)|Kiszolgáló módjait adja vissza|
 |[az sql server megjelenítése](/cli/azure/sql/server#az_sql_server_show)|A kiszolgáló beolvasása|
 |[az sql server frissítése](/cli/azure/sql/server#az_sql_server_update)|A kiszolgáló frissítése|
 |[az sql server törlése](/cli/azure/sql/server#az_sql_server_delete)|Kiszolgáló törlése|
@@ -196,7 +196,6 @@ Létrehozásához, és kezelheti az Azure SQL server, adatbázisok és a tűzfal
 |[Kiszolgálók – lista](/rest/api/sql/servers/list)|Kiszolgálók listáját adja vissza.|
 |[Kiszolgálók - erőforráscsoport listája](/rest/api/sql/servers/listbyresourcegroup)|Egy erőforráscsoportban található kiszolgálók listáját adja vissza.|
 |[Kiszolgálók – frissítés](/rest/api/sql/servers/update)|Frissíti a meglévő kiszolgáló.|
-|[Sql-kiszolgálók –](/rest/api/sql/servers%20-%20sql)|Meghatározza, hogy egy erőforrás hozhatja létre a megadott név.|
 |[-Adatbázis létrehozása vagy frissítése](/rest/api/sql/databases/createorupdate)|Létrehoz egy új adatbázist, vagy egy meglévő adatbázist frissíti.|
 |[Adatbázis - Get](/rest/api/sql/databases/get)|Lekérdezi egy adatbázis.|
 |[Adatbázis - hozza ki a rugalmas készlet](/rest/api/sql/databases/getbyelasticpool)|Egy adatbázis lekérdezi a rugalmas készletekben belül.|

@@ -1,24 +1,18 @@
 ---
-title: "A Runbook végrehajtása az Azure Automationben |} Microsoft Docs"
+title: "A Runbook végrehajtása az Azure Automationben"
 description: "Azure Automation forgatókönyv feldolgozásának módja részleteit ismerteti."
 services: automation
-documentationcenter: 
-author: georgewallace
-manager: jwhit
-editor: tysonn
-ms.assetid: d10c8ce2-2c0b-4ea7-ba3c-d20e09b2c9ca
 ms.service: automation
-ms.devlang: na
+author: georgewallace
+ms.author: gwallace
+ms.date: 03/16/2018
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 11/15/2017
-ms.author: magoedte;bwren
-ms.openlocfilehash: a443071aee3e0f845de4387322d2866157a9fe87
-ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
+manager: carmonm
+ms.openlocfilehash: edfd317e7d3f7595f656c6c24ad65f3d87fea14c
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="runbook-execution-in-azure-automation"></a>A Runbook végrehajtása az Azure Automationben
 Az Azure Automationben elindít egy runbookot, ha egy feladat jön létre. Egy feladat a runbook egyszeri futtatási példánya. Egy Azure Automation munkavégző rendelt minden feladat futtatása. Munkavállalók több Azure-fiókra által megosztott, amíg feladatokat azok másik Automation-fiók el különítve egymástól. Nem irányítás melyik Worker-szolgáltatások a feladat a kérelmet. Egyetlen runbook fut egyszerre több feladattal rendelkezhet.  Az Automation-fiók a feladatok végrehajtási környezetnek felhasználhatók. Az Azure portálon megtekintett forgatókönyvek listája, amely minden runbook indított összes feladatok állapotának sorolja fel. Megtekintheti a feladatok minden runbook egyes állapotának nyomon követése érdekében. A különböző feladatállapotok leírását [feladatállapotok](#job-statuses).
@@ -38,11 +32,11 @@ A következő táblázat ismerteti a különböző állapotok feladat lehetsége
 
 | status | Leírás |
 |:--- |:--- |
-| Befejezve |A feladat sikeresen befejeződött. |
-| Sikertelen |A [grafikus és a PowerShell-munkafolyamati forgatókönyvek](automation-runbook-types.md), a runbookot nem sikerült lefordítani.  A [PowerShell-parancsfájl runbookok](automation-runbook-types.md), a runbookot nem sikerült elindítani, vagy a feladat kivételbe ütközött. |
+| Befejeződött |A feladat sikeresen befejeződött. |
+| Meghiúsult |A [grafikus és a PowerShell-munkafolyamati forgatókönyvek](automation-runbook-types.md), a runbookot nem sikerült lefordítani.  A [PowerShell-parancsfájl runbookok](automation-runbook-types.md), a runbookot nem sikerült elindítani, vagy a feladat kivételbe ütközött. |
 | Nem sikerült, erőforrás Várakozás |A feladat sikertelen volt, mert elérte a [igazságos elosztása révén](#fair-share) háromszor korlátjának növelését, és az azonos ellenőrzőpont vagy a runbook elindítása indított minden alkalommal. |
-| Várakozási sorba helyezve |A feladat arra vár erőforrások egy automatizálási feldolgozó elérhető lesz, így indíthatók el. |
-| Indulás alatt |A feladat egy feldolgozónak van kiosztva, és az elindítás folyamatban van. |
+| Várakozik |A feladat arra vár erőforrások egy automatizálási feldolgozó elérhető lesz, így indíthatók el. |
+| Indítás |A feladat egy feldolgozónak van kiosztva, és az elindítás folyamatban van. |
 | Folytatás |A folytatása a feladat felfüggesztését követően annak folyamatban van. |
 | Fut |A feladat fut. |
 | Rendszert futtató erőforrások vár |A feladat le lett távolítva a memóriából, mert elérte a [igazságos elosztása révén](#fair-share) korlátot. Röviddel a legutóbbi ellenőrzőponttól folytatja. |
@@ -96,6 +90,6 @@ Ha a runbook nem ellenőrzőpontokkal rendelkezik, vagy a feladat nem érte el a
 
 Ha létrehozta a forgatókönyvet, győződjön meg róla, hogy a tevékenységek között két ellenőrzőpontokat futási időnek nem haladja meg a három óra. Ellenőrzőpontok hozzáadása a runbookhoz, annak érdekében, hogy nem érte el a három óra határértékét vagy feloszthatja a hosszú szeretne műveletek futtatása. Például a runbook egy ismételt indexelése előfordulhat, hogy végre nagy SQL-adatbázis. Ha egyetlen művelet igazságos elosztása révén belül nem fejeződik be, majd a feladat a memóriából és a legelejétől újraindul. Ebben az esetben kell szakítsa meg a több lépést, például egy olyan táblát újraindexelés egyszerre, az ismételt indexelése művelet, és helyezze egy ellenőrzőpontot egyes műveletek után, úgy, hogy a feladat az utolsó művelet befejezését követően sikerült folytatni.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * A különböző módszereket, amelyek segítségével elindít egy forgatókönyvet az Azure Automation kapcsolatos további információkért lásd: [runbook elindítása az Azure Automationben](automation-starting-a-runbook.md)
 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: a5d539172f03246e3c658f2485d29d3ae389ae52
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 446ddbff7d945e90ebfd12bc6e9e7a1f0e18267c
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="fan-outfan-in-scenario-in-durable-functions---cloud-backup-example"></a>Fan-kimenő/fan-a forgatókönyv tartós funkciókkal – felhő biztonsági mentési – példa
 
@@ -97,7 +97,7 @@ A megvalósítás betölti a fájlt a lemezről, és aszinkron módon adatfolyam
 > [!NOTE]
 > Ez az i/o-műveletek történő áthelyezését tökéletes példája egy `activityTrigger` függvény. Nem csak a munkahelyi terjeszthető sok különböző virtuális gépek között, de is kap az ellenőrzőpontok előnyeit a folyamatban. Ha a gazdagép-folyamat bármely okból lekérdezi, tudja, melyik feltöltések már befejeződött.
 
-## <a name="run-the-sample"></a>A minta futtatásához
+## <a name="run-the-sample"></a>Minta futtatása
 
 A vezénylési megkezdheti úgy, hogy a következő HTTP POST-kérelmet küld.
 
@@ -156,9 +156,9 @@ Most láthatja, hogy a vezénylési befejeződött, és körülbelül mennyi id�
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/BackupSiteContent.cs)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ez a minta azt mutatja, a fan-kimenő/fan-a minta megvalósításához. A következő példa bemutatja, hogyan megvalósításához a [egypéldányos állapot-nyilvántartó](durable-functions-singletons.md) a mintát egy [eternal vezénylési](durable-functions-eternal-orchestrations.md).
+Ez a minta azt mutatja, a fan-kimenő/fan-a minta megvalósításához. A következő példa bemutatja, hogyan valósítja meg a figyelő minta segítségével [tartós időzítők](durable-functions-timers.md).
 
 > [!div class="nextstepaction"]
-> [Az állapot-nyilvántartó egypéldányos minta futtatásához](durable-functions-counter.md)
+> [A figyelő minta futtatásához](durable-functions-monitor.md)

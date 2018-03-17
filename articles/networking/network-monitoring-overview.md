@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ajaycode
-ms.openlocfilehash: 66e6b49dd3e3c7d0f2cbd7547b68733e1d4959ce
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 7b9f42607f313f5570f414e810eafc6775ea18b9
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="network-monitoring-solutions"></a>A hálózatfigyelési megoldások 
 
@@ -33,6 +33,8 @@ Hálózati teljesítmény figyelése (NPM) képességeket, amelyek részesíti e
 * Több adatközpontok és a fiókirodák számára
 * Küldetési kritikus Többrétegű alkalmazások és micro-szolgáltatások
 * Felhasználói helyek és a webes alkalmazás (HTTP/HTTPs) 
+
+Teljesítményfigyelő, ExpressRoute-figyelő és végpont-figyelő szolgáltatás NPM képességeire figyeli, és az alábbiakban található.
 
 ## <a name="performance-monitor"></a>Teljesítménymonitorozás
 
@@ -91,6 +93,7 @@ Forgalom Analytics egy felhőalapú megoldás, amely a felhasználó-és alkalma
 * Felső talkers, chatty alkalmazások, virtuális gép beszélgetések a felhőben, a forgalom csatlakozási pontokhoz
 * Források és a célhelyek között Vnetek, közötti kritikus fontosságú üzleti szolgáltatások és alkalmazások közötti kapcsolatok forgalom
 * Biztonság – rosszindulatú forgalmat, a portokat nyissa meg az internethez, az alkalmazások és a virtuális gépek Internet-hozzáférés megkísérlése...
+* Kapacitáskihasználás - megakadályozhatja, hogy túlzott kiosztása és alacsony kihasználtságot eredményez problémákat figyeli a kihasználtsági trendek VPN-átjárók és egyéb szolgáltatások
 
 Forgalom Analytics vontatón végrehajthatóként adatokat, hogy a segítségével a szervezet hálózati tevékenységet, biztonságos alkalmazásokhoz és adatokhoz, naplózási munkaterhelés teljesítményének optimalizálásához, és megfelelő maradnak.
 
@@ -100,7 +103,7 @@ Kapcsolódó hivatkozások:
 * [Blogbejegyzés](https://aka.ms/trafficanalytics), [dokumentáció](https://aka.ms/trafficanalyticsdocs), [– gyakori kérdések](https://docs.microsoft.com/azure/network-watcher/traffic-analytics-faq)
 
 ## <a name="dns-analytics"></a>DNS-elemzés
-DNS-rendszergazdák számára készült, ez a megoldás gyűjti, elemzi és biztonsága, DNS-naplók hibához kapcsolódó elemzések műveletek és a teljesítmény.  Néhány olyan funkciója, a következők:
+DNS-rendszergazdák számára készült, ez a megoldás gyűjti, elemzi és DNS-bejegyzéseit, amelyek adja meg a biztonsági, műveletek és teljesítménnyel kapcsolatos insights ad eredményül.  Néhány olyan funkciója, a következők:
 
 * Ügyfelek, rosszindulatú tartományokhoz megoldásának azonosítója
 * Elavult erőforrásrekordok azonosítása

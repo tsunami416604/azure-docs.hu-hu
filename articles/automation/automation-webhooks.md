@@ -1,24 +1,18 @@
 ---
-title: "Egy Azure Automation-runbook kezdődő, és olyan webhook |} Microsoft Docs"
+title: "Egy Azure Automation-runbook kezdődő, és olyan webhook"
 description: "A webhook, amely lehetővé teszi az ügyfél elindít egy forgatókönyvet az Azure Automation egy HTTP-hívás.  Ez a cikk ismerteti a webhook létrehozása, és hogyan hívhatja meg egy runbook indítása."
 services: automation
-documentationcenter: 
-author: georgewallace
-manager: jwhit
-editor: tysonn
-ms.assetid: 9b20237c-a593-4299-bbdc-35c47ee9e55d
 ms.service: automation
-ms.devlang: na
+author: georgewallace
+ms.author: gwallace
+ms.date: 03/16/2018
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 02/22/2017
-ms.author: magoedte;bwren;sngun
-ms.openlocfilehash: 03d1617eb64c48b6a90925ae76e1ab3ce0312ff1
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+manager: carmonm
+ms.openlocfilehash: b3e8e489ef4b79a89facb2395543743c427b0310
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="starting-an-azure-automation-runbook-with-a-webhook"></a>Egy Azure Automation-runbook kezdődő, és olyan webhook
 A *webhook* lehetővé teszi az adott forgatókönyv indítása az Azure Automationben egyetlen HTTP-kérelem keresztül. Ez lehetővé teszi, hogy a külső szolgáltatások, például a Visual Studio Team Services, GitHub, a Microsoft Operations Management Suite Naplóelemzési vagy egy Azure Automation API használatával teljes megoldás megvalósításának nélküli runbookok elindítását egyéni alkalmazások.  
@@ -41,7 +35,7 @@ A webhook runbook paramétereket, illetve ha a runbook indítja el, hogy a webho
 
 Amikor egy ügyfél elindítja a runbookot egy webhook, nem bírálhatja felül a webhook definiált paraméterértékek.  Az adatok fogadásához az ügyfél a runbook neve egyetlen paramétert fogadhat **$WebhookData** típusú [objektum], amely az ügyfél a POST kérelemben tartalmazó adatok fogja tartalmazni.
 
-![Webhookdata tulajdonságai](media/automation-webhooks/webhook-data-properties.png)
+![Webhookdata properties](media/automation-webhooks/webhook-data-properties.png)
 
 A **$WebhookData** objektum lesz a következő jellemzőkkel rendelkezik:
 
@@ -107,7 +101,7 @@ Az ügyfél kap a következő visszatérési kódok a POST-kérelmet.
 | 202 |Elfogadva |Elfogadta a kérést, és a runbook sikeresen várólistára került. |
 | 400 |Hibás kérelem |A kérelem nem fogadták a következő okok valamelyike miatt. <ul> <li>A webhook érvényessége lejárt.</li> <li>A webhook le van tiltva.</li> <li>A lexikális elem szerepel az URL-cím érvénytelen.</li>  </ul> |
 | 404 |Nem található |A kérelem nem fogadták a következő okok valamelyike miatt. <ul> <li>A webhook nem található.</li> <li>A runbook nem található.</li> <li>A fiók nem található.</li>  </ul> |
-| 500 |Belső kiszolgálóhiba |Az URL-cím érvénytelen volt, de hiba történt.  Küldje el a kérelmet. |
+| 500 |Belső kiszolgálóhiba. |Az URL-cím érvénytelen volt, de hiba történt.  Küldje el a kérelmet. |
 
 Feltéve, hogy a kérelem sikeres, a webhook válasz tartalmazza a feladatazonosítót JSON formátumban az alábbiak szerint. Egyetlen feladatazonosító fogja tartalmazni, de lehetséges jövőbeli fejlesztések lehetővé teszi a JSON formátumban.
 

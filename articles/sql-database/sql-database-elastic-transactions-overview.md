@@ -5,15 +5,16 @@ services: sql-database
 author: stevestein
 manager: craigg
 ms.service: sql-database
+ms.topic: article
 ms.custom: scale out apps
 ms.workload: On Demand
 ms.date: 05/27/2016
 ms.author: sstein
-ms.openlocfilehash: 0a57f06d874f8a746d59bb927b4200656a999c11
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 65657a4813467edd45a6eee4fa98964b4a781663
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="distributed-transactions-across-cloud-databases"></a>Elosztott tranzakciók több felhőalapú adatbázisban
 Az Azure SQL Database (SQL-adatbázis a) rugalmas adatbázis-tranzakciók teszik tranzakciók, amelyek több adatbázisok az SQL-adatbázis futtatását. Az SQL-adatbázis a rugalmas adatbázis-tranzakciók érhetők el a .NET-alkalmazásokban ADO .NET használatával, és a megszokott programozási élmény segítségével integrálja a [System.Transaction](https://msdn.microsoft.com/library/system.transactions.aspx) osztályok. Ahhoz, hogy a könyvtárban, lásd: [.NET-keretrendszer 4.6.1 (webes telepítő)](https://www.microsoft.com/download/details.aspx?id=49981).

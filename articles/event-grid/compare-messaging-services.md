@@ -6,13 +6,13 @@ author: tfitzmac
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 01/30/2018
+ms.date: 03/16/2018
 ms.author: tomfitz
-ms.openlocfilehash: e082b9014e3734b554d3dae1cf8aecbaed65a28a
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 30bbe7442cac96a1dcf6959cac2abedd61454a29
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="choose-between-azure-services-that-deliver-messages"></a>Válassza az Azure-szolgáltatásokat, hogy a üzenetek
 
@@ -30,18 +30,22 @@ Fontos megjegyezni, hogy a esemény szolgáltatások és üzenetet szolgáltatá
 
 ### <a name="event"></a>Esemény
 
-Az esemény az egy művelet vagy állapotváltozás egyszerűsített értesítést. Az eseményadatok Mi történt információkat tartalmaz, de nem rendelkezik az adatok az eseményt kiváltó. Például egy esemény értesíti előfizetők, hogy a fájl létrejött-e. A fájl általános információt tartalmazhat, de nem tartalmaz magát a fájlt. Események általában eseménykezelők segítségével valós idejű indítható el.
+Egy esemény egy egyszerűsített értesítést feltételt vagy állapotváltozás. Az esemény a közzétevő nem várt értéket, az eseményt a rendszer hogyan kezelje kapcsolatos rendelkezik. A fogyasztó az esemény mellett dönt, mi a teendő, ha az értesítés. Események diszkrét egység vagy egy sorozat része lehet.
+
+Különálló események jelentés állapotváltozás és hajtható végre. A következő lépéssel, az ügyfél csak kell tudnia, hogy történt. Az eseményadatok Mi történt információkat tartalmaz, de nem rendelkezik az adatok az eseményt kiváltó. Például egy esemény értesíti a fogyasztók, hogy a fájl létrejött-e. A fájl általános információt tartalmazhat, de nem tartalmaz magát a fájlt. Különálló események alkalmasak a kiszolgáló nélküli méretezési igénylő megoldásokhoz.
+
+Adatsorozat események jelentést egy feltételt és analyzable. Az események idő rendelt és egymáshoz. A fogyasztó az előkészített eseménysorozatokat, mi történt elemzéséhez szükséges.
 
 ### <a name="message"></a>Üzenet
 
-Egy üzenet által felhasznált vagy máshol tárolt szolgáltatás nyers adatok. Az üzenet az üzenet folyamat elindul adatokat tartalmazza. Ez az üzenet elektronikus kereskedelmi megrendelés felhasználói telemetriai bármi lehet. Egy eseményértesítés eltérően a közzétevő üzenet ettől a választ. Egy üzenet például a nyers adatokat tartalmaz, de vár a következő fájl létrehozása az adatokat a rendszer része.
+Egy üzenet által felhasznált vagy máshol tárolt szolgáltatás nyers adatok. Az üzenet az üzenet folyamat elindul adatokat tartalmazza. A közzétevő, az üzenet rendelkezik egy általános gyakorlat kapcsolatos miként kezeli a fogyasztó a az üzenetet. A szerződés létezik-e a két fél közötti. Például a közzétevő a nyers adatokat tartalmazó üzenetet küld, és vár a felhasználó a fájl létrehozása az adatok, és választ küld, ha a munkát.
 
 ## <a name="comparison-of-services"></a>Szolgáltatások összehasonlítása
 
 | Szolgáltatás | Cél | Típus | A következő esetekben használja |
 | ------- | ------- | ---- | ----------- |
-| Event Grid | Reaktív programozás | Események terjesztését | Állapotmódosítások reagálnak |
-| Event Hubs | Big Data típusú adatok feldolgozási folyamat | Adatfolyam-esemény | Telemetriai adatok és az elosztott adatokon adatfolyam |
+| Event Grid | Reaktív programozás | Események terjesztését (diszkrét) | Állapotmódosítások reagálnak |
+| Event Hubs | Big Data típusú adatok feldolgozási folyamat | Esemény streaming (sorozat) | Telemetriai adatok és az elosztott adatokon adatfolyam |
 | Service Bus | A jó minőségű vállalati üzenetkezeléstől | Üzenet | Rendelés feldolgozása és a pénzügyi tranzakciók |
 
 ### <a name="event-grid"></a>Event Grid

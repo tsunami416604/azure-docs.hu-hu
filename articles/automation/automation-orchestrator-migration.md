@@ -1,24 +1,20 @@
 ---
-title: "Az Orchestrator áttelepítése az Azure Automation |} Microsoft Docs"
+title: "Azure Automation szolgáltatásbeli Orchestrator áttelepítése"
 description: "Ismerteti, hogyan telepíthetők át a runbookok és integrációs csomagokat a System Center Orchestrator Azure Automation."
 services: automation
-documentationcenter: 
-author: bwren
-manager: stevenka
-editor: tysonn
-ms.assetid: 1a7da58c-7a98-49b5-9d9d-001a9f6e631a
 ms.service: automation
-ms.devlang: na
+author: georgewallace
+ms.author: gwallace
+ms.date: 03/16/2018
 ms.topic: article
+manager: carmonm
+ms.devlang: na
 ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 02/09/2016
-ms.author: bwren
-ms.openlocfilehash: 457888b4d38875b912ad87d44e96ab727e3ee3ee
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b50f9973ef7ea5f884930d4f1ee67f886cc36ad0
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="migrating-from-orchestrator-to-azure-automation-beta"></a>Az Orchestrator áttelepítése az Azure Automation (béta)
 A Runbookok [System Center Orchestrator](http://technet.microsoft.com/library/hh237242.aspx) tevékenységei során az Azure Automation runbookjai Windows PowerShell alapuló kimondottan az orchestrator alkalmazáshoz írt integrációs csomagok alapulnak.  [Grafikus forgatókönyvek](automation-runbook-types.md#graphical-runbooks) az Azure Automationben rendelkezik egy hasonló megjelenési az Orchestrator runbookjai az eszközök, a PowerShell parancsmagok és a runbookok képviselő tevékenységek.

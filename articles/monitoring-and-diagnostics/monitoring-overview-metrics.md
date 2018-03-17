@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: johnkem
-ms.openlocfilehash: 32ca0ce5148ae2641500c98cb04b0d7db1987960
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 4a78236f9c6945bb982466b59690b221f35a1804
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="overview-of-metrics-in-microsoft-azure"></a>A Microsoft Azure-ban mérőszámok áttekintése
 Ez a cikk ismerteti, hogy milyen adatok gyűjtése le van a Microsoft Azure-ban az előnyöket, és használatuk indítása.  
@@ -63,7 +63,7 @@ További lehetőségek:
 Az alábbiakban látható egy gyors útmutató arról, hogyan metrika diagram létrehozása az Azure-portál használatával.
 
 ### <a name="to-view-metrics-after-creating-a-resource"></a>Erőforrás létrehozása után metrikák megtekintése
-1. Nyissa meg az Azure-portálon.
+1. Nyissa meg az Azure Portalt.
 2. Az Azure App Service-webhelyet hoz létre.
 3. Miután létrehozott egy webhelyen, lépjen a **áttekintése** a webhely paneljén.
 4. Új mérőszámok, megtekintheti a **figyelés** csempére. Módosíthatja a csempén, majd válassza ki a további metrikákat.
@@ -71,7 +71,7 @@ Az alábbiakban látható egy gyors útmutató arról, hogyan metrika diagram l�
    ![Az Azure-figyelő erőforrás metrikáit](./media/monitoring-overview-metrics/MetricsOverview1.png)
 
 ### <a name="to-access-all-metrics-in-a-single-place"></a>Egy helyen lévő összes metrikát eléréséhez
-1. Nyissa meg az Azure-portálon.
+1. Nyissa meg az Azure Portalt.
 2. Keresse meg az új **figyelő** fülre, és majd, és válassza ki a **metrikák** alatta lehetőséget.
 3. Válassza ki az előfizetés, erőforráscsoport és az erőforrás nevét a legördülő listából.
 4. Az elérhető mérőszámok lista megtekintése. Ezután jelölje be a metrika kapcsolatban, és azt megrajzolásához.
@@ -116,7 +116,7 @@ Metrika riasztások: is majd e-mailben értesítse arról, vagy egy egyéni para
 
  ![Metrikák és az Azure-figyelő riasztási szabályok](./media/monitoring-overview-metrics/MetricsOverview4.png)
 
-Majdnem valós idejű riasztások (előzetes verzió): ezek, hogy a számítógép több metrikákat, és a küszöbértékek erőforrás figyelése és majd értesítést kérhet a keresztül egy [művelet csoport](/monitoring-action-groups.md). További részletek Leran [közel valós idejű metrika riasztásokat Itt](https://aka.ms/azuremonitor/near-real-time-alerts).
+Majdnem valós idejű riasztások (előzetes verzió): ezek, hogy a számítógép több metrikákat, és a küszöbértékek erőforrás figyelése és majd értesítést kérhet a keresztül egy [művelet csoport](/monitoring-action-groups.md). További információ [közel valós idejű metrika riasztásokat Itt](https://aka.ms/azuremonitor/near-real-time-alerts).
 
 
 ### <a name="autoscale-your-azure-resources"></a>Automatikus skálázási az Azure erőforrások
@@ -127,7 +127,7 @@ Egyes Azure-erőforrások támogatja, a méretezés fel- vagy a munkaterhelések
 ## <a name="learn-about-supported-services-and-metrics"></a>Támogatott szolgáltatások és
 A támogatott szolgáltatások és azok metrikákat, részletes listáját megtekintheti [Azure figyelő metrikák--erőforrás típusonkénti támogatott metrikák](monitoring-supported-metrics.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ez a cikk hivatkozásaiban hivatkozik. Ezenkívül további információk:  
 
 * [Az automatikus skálázás közös metrikák](insights-autoscale-common-metrics.md)

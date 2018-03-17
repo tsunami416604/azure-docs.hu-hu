@@ -8,11 +8,11 @@ ms.service: storage
 ms.topic: article
 ms.date: 02/28/2018
 ms.author: muralikk
-ms.openlocfilehash: 2b53dc5eeb2e5f25a0714af778ef3db1d5a79dc1
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: d096d6fd4664fecc9c759d683ed79e76cda9b6af
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="use-the-microsoft-azure-importexport-service-to-transfer-data-to-azure-storage"></a>Az adatok átviteléhez az Azure Storage a Microsoft Azure Import/Export szolgáltatás használata
 Ebben a cikkben azt részletes útmutatást nyújtanak az Azure Import/Export szolgáltatás használatával biztonságos átvitelére a nagy mennyiségű adatok Azure Blob storage és Azure fájlok által az Azure adatközpontba szállítási lemezmeghajtókat. Ez a szolgáltatás adatok átviteléhez az Azure storage merevlemez-meghajtók és a helyszíni helyek szállítás is használható. A SATA egyetlen lemezmeghajtó adatait vagy Azure Blob storage-vagy Azure fájlok importálhatók. 
@@ -47,7 +47,7 @@ Kövesse az alábbi lépéseket, ha a lemezen lévő adatok Azure Storage import
     |/j:     |A napló kiterjesztésű, a .jrn neve. A napló fájl meghajtónkénti jön létre. A lemez sorozatszám napló fájlneve használata javasolt.         |
     |/sk:     |Az Azure-Tárfiók kulcsának.         |
     |/t:     |A meghajtó betűjelével szállítani a lemezen. Például meghajtó `D`.         |
-    |/bk:     |A BitLocker kulcs a meghajtón.         |
+    |/bk:     |A BitLocker kulcs a meghajtón. A numerikus jelszót a kimenetből ` manage-bde -protectors -get D: `      |
     |/srcdir:     |A meghajtóbetűjelet, a lemez szállítási követ `:\`. Például: `D:\`.         |
     |/dstdir:     |Az Azure Storage a cél-tároló neve         |
     |/skipwrite:     |A beállítás, amely megadja, hogy nem kell átmásolnia szükséges új adatok és a lemezen található meglévő adatokat készüljön van         |

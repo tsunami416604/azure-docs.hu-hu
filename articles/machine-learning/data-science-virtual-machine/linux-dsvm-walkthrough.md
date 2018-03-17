@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/10/2017
+ms.date: 03/16/2018
 ms.author: bradsev;paulsh
-ms.openlocfilehash: 650b11d66f3ca32266b9842af77c909e125b4e4d
-ms.sourcegitcommit: d03907a25fb7f22bec6a33c9c91b877897e96197
+ms.openlocfilehash: 9b8a9b9bba242fd7c86dc285a77317a5821948df
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-on-azure"></a>Adattudomány rendelkező Linux adatok tudományos virtuális gépek Azure-on
 Ez a forgatókönyv bemutatja, hogyan végezhető több közös adatok tudományos a Linux adatok tudományos virtuális gép. A Linux adatok tudományos virtuális gép (DSVM) érhető el, amely adatelemzés és a gépi tanulás általánosan használt eszközöket együtt telepített Azure virtuálisgép-lemezkép. A kulcs szoftverösszetevőket van felsorolva a [a Linux adatok tudományos virtuális gép kiépítéséhez](linux-dsvm-intro.md) témakör. A Virtuálisgép-lemezkép megkönnyíti az első lépések során adattudomány (percben), anélkül, hogy telepítse és konfigurálja az egyes eszközökről külön-külön kellene. Könnyedén növelheti a virtuális gép, ha szükséges, és állítsa le, ha nincsenek használatban. Ehhez az erőforráshoz, mind a rugalmas és költséghatékony.
@@ -78,7 +78,7 @@ Ahhoz, hogy ebben a forgatókönyvben használt mintakódok példányait, klóno
 Nyisson meg egy terminálablakot, és indítson el egy új R munkamenetet az R-interaktív konzol.
 
 > [!NOTE]
-> Az alábbi eljárásokat használhatja Rstudióból is. Rstudióból telepítéséhez az adott parancs végrehajtásához:`./Desktop/DSVM\ tools/installRStudio.sh`
+> Az alábbi eljárásokat használhatja Rstudióból is. Rstudióból telepítéséhez az adott parancs végrehajtásához: `./Desktop/DSVM\ tools/installRStudio.sh`
 >
 >
 
@@ -238,7 +238,7 @@ A fennmaradó részei bemutatják, hogyan használhatja néhány a Linux adatok 
 * Jupyterhub
 * Rattle
 * PostgreSQL & Squirrel SQL
-* SQL Server-adatraktár
+* SQL Server Data Warehouse
 
 ## <a name="xgboost"></a>XGBoost
 [XGBoost](https://xgboost.readthedocs.org/en/latest/) olyan eszköz, amely gyors és pontos súlyozott fa valósítja meg.
@@ -499,7 +499,7 @@ A legtöbb e-mailek, amelyek magas előfordulása *3d* vannak látszólag levél
 
 Ha egy PostgreSQL-adatbázisban tárolt adatok gépi tanulás elvégzésére, érdemes lehet [MADlib](http://madlib.incubator.apache.org/).
 
-## <a name="sql-server-data-warehouse"></a>SQL Server-adatraktár
+## <a name="sql-server-data-warehouse"></a>SQL Server Data Warehouse
 Az Azure SQL Data Warehouse egy felhőalapú, horizontálisan felskálázható adatbázis, amely nagy mennyiségű relációs és nem relációs adatot képes feldolgozni. További információkért lásd: [Mi az Azure SQL Data Warehouse?](../../sql-data-warehouse/sql-data-warehouse-overview-what-is.md)
 
 Csatlakozás az adatraktárhoz, és a tábla létrehozásához futtassa a következő parancsot a parancssorba:
@@ -527,7 +527,7 @@ Másolja az adatokat a BCP-vel:
 
 Az Squirrel SQL is lekérdezhet. Hasonló lépésekkel PostgreSQL, használja a Microsoft MSSQL Server JDBC-illesztőt, amely itt található: a ***/usr/share/java/jdbcdrivers/sqljdbc42.jar***.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Témakörök, amelyek végigvezetik a feladatokat az Azure-ban a Adattudomány folyamat alkotó áttekintését lásd: [Team adatok tudományos folyamat](http://aka.ms/datascienceprocess).
 
 Egy másik végpont forgatókönyvek, amelyek bemutatják, meghatározott forgatókönyvek esetén az Team tudományos folyamat lépéseit ismertetését lásd: [Team adatok tudományos folyamat forgatókönyvek](../team-data-science-process/walkthroughs.md). A forgatókönyvek is bemutatják, hogyan lehet a felhő- és a helyszíni eszközök és szolgáltatások egyesítése munkafolyamat vagy csővezeték intelligens alkalmazás létrehozása.

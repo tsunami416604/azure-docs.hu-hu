@@ -84,9 +84,10 @@ sql-database-elastic-pool.md
 | Maximális tárterület (GB) adatbázisonként* | 1024 | 1024 | 1024 | 1024 | 1024 | 
 ||||||||
 
+
 > [!IMPORTANT]
 > \* A szolgáltatási keretbe foglaltnál nagyobb tárterületek előzetes verzióban érhetők el, és extra költségek vonatkoznak rájuk. További információkért lásd: a [árképzést ismertető oldalra SQL-adatbázis](https://azure.microsoft.com/pricing/details/sql-database/). Tárolási mérete nagyobb, mint a belefoglalt tárolókapacitást még csak előzetes verziójúak, és további költségek alkalmazni. További információkért lásd: a [árképzést ismertető oldalra SQL-adatbázis](https://azure.microsoft.com/pricing/details/sql-database/).
 >
-> \* Prémium szint több, mint 1 TB-nyi tárhelyre érhető el jelenleg a következő régiókban: Kanada központi, Kanada keleti, Franciaország központi, Németország központi, kelet-japán, koreai központi, déli középső Régiójában, Dél Kelet-Ázsia, Velünk East2, USA nyugati régiója, Velünk – (kormányzati) Virginia és nyugati régiója Európa. 
+> \* Az 1 TB tárhelyméretet meghaladó prémium szintű készletek jelenleg a következő régiókban érhetők el: Kelet-Ausztrália, Délkelet-Ausztrália, Dél-Brazília, Közép-Kanada, Kelet-Kanada, USA középső régiója, Közép-Franciaország, Közép-Németország, Kelet-Japán, Nyugat-Japán, Korea középső régiója, USA északi középső régiója, Észak-Európa, USA déli középső régiója, Délkelet-Ázsia, az Egyesült Királyság déli régiója, az Egyesült Királyság nyugati régiója, USA keleti régiója 2, USA nyugati régiója, USA-beli államigazgatás – Virginia, és Nyugat-Európa. Lásd: [P11–P15 – Aktuális korlátozások](../articles/sql-database/sql-database-resource-limits.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
 >
 

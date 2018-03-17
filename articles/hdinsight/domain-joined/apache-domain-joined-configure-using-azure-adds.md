@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 11/10/2017
 ms.author: bhanupr
-ms.openlocfilehash: 08795e6aafc6ccb43bad59189676a8680c03c966
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: a0156915c329dfad1424cfd1f10a6ebb27c56acc
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="configure-domain-joined-hdinsight-clusters-using-azure-active-directory-domain-services"></a>Tartományhoz csatlakozó HDInsight-fürtök Azure Active Directory tartományi szolgáltatások konfigurálása
 
@@ -56,6 +56,9 @@ Amikor létrehoz egy tartományhoz csatlakozó HDInsight-fürtöt, meg kell adni
 - **Szervezeti egység**: a HDInsight-fürthöz használni kívánt szervezeti egység megkülönböztető nevét. Például: OU HDInsightOU, DC = contoso, DC = = onmicrosohift, DC = com. Ha a szervezeti egység nem létezik, a HDInsight-fürt megkísérli a szervezeti egység létrehozása. 
 - **LDAPS URL-cím**: például ldaps://contoso.onmicrosoft.com:636
 - **Hozzáférés felhasználói csoport**: A biztonsági csoportokat, amelynek a fürthöz szinkronizálni kívánt felhasználókat. Például HiveUsers. Ha meg szeretné határozni több felhasználói csoport, külön azokat vesszővel (,).
+ 
+> [!NOTE]
+> Apache Zeppelin tartománynevet használja: a felügyeleti szolgáltatás fiók hitelesítéséhez, mert a szolgáltatásfióknak a tartomány neve megegyezik az Apache Zeppelin megfelelő működéséhez az egyszerű Felhasználónévi utótagot kell rendelkeznie.
  
 Az alábbi képernyőfelvételen látható a konfigurációkat az Azure-portálon:
 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: 4c6b53673dd4c79ce435c1593e7d08c7dd4a1cb0
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: c87b5d82b6eef2b1d28a3280cc2fa07c28084f90
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="service-fabric-testability-scenarios-service-communication"></a>A Service Fabric tesztelhetőségi forgatókönyvek: kommunikációs szolgáltatás
 Mikroszolgáltatások létrehozására és természetesen az Azure Service Fabric architekturális stílusok szolgáltatásorientált felülete. Az elosztott-architektúrák típusai componentized mikroszolgáltatási alkalmazások általában több szolgáltatás egymással kapcsolatot igénylő álló. Még a legegyszerűbb esetben általában van legalább egy állapot nélküli webszolgáltatás és az állapot-nyilvántartó tárolási ADATSZOLGÁLTATÁSNÁL, amely kell kommunikálniuk.
@@ -67,7 +67,7 @@ A Service Fabric tesztelhetőségi eszközök segítségével egy teszt forgató
    
     ```powershell
    
-    PS > Restart-ServiceFabricNode -NodeName Node_1
+    PS > Stop-ServiceFabricNode -NodeName Node_1
    
     ```
 
@@ -89,7 +89,7 @@ PS > Invoke-ServiceFabricPartitionQuorumLoss -ServiceName fabric:/Myapplication/
 
 Ebben a példában hivatott `QuorumLossMode` való `QuorumReplicas` annak jelzésére, hogy azt szeretnénk, hogy kvórum elvesztése nélkül összes replika le. Ezzel a módszerrel az olvasási műveletek is továbbra is lehetséges. Egy olyan forgatókönyvet, amikor nem érhető el egy teljes partíció teszteléséhez állíthat be erre a kapcsolóra `AllReplicas`.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [További tudnivalók tesztelhetőségi műveletek](service-fabric-testability-actions.md)
 
 [További tudnivalók tesztelhetőségi forgatókönyvek](service-fabric-testability-scenarios.md)

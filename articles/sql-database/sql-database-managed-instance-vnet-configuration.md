@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: managed instance
 ms.topic: article
-ms.date: 03/07/2018
+ms.date: 03/21/2018
 ms.author: srbozovi
 ms.reviewer: bonova, carlrab
-ms.openlocfilehash: 2f2a1289aa4c7681d16ab27bf8546b97f5ea3939
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: e724a660f8ba2373cefdabe8595908b7bb42f4d6
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="configure-a-vnet-for-azure-sql-database-managed-instance"></a>A virtuális hálózat konfigurálása az Azure SQL adatbázis felügyelt példány
 
@@ -33,7 +33,7 @@ Tervezze meg, hogyan telepítsék központilag az alábbi kérdésekre adott vá
 
    Ha azt tervezi, meglévő virtuális hálózat használatára, szüksége, hogy a felügyelt példányát olyan hálózati konfiguráció módosítása. További információkért lásd: [módosíthatja a meglévő virtuális hálózat felügyelt példány](#modify-an-existing-virtual-network-for-managed-instances). 
 
-   Ha azt tervezi, új virtuális hálózat létrehozásához, lásd: [új virtuális hálózat létrehozása kezelt példány](#create-new-virtual-network-for-managed-instances).
+   Ha azt tervezi, új virtuális hálózat létrehozásához, lásd: [új virtuális hálózat létrehozása kezelt példány](#create-a-new-virtual-network-for-managed-instances).
 
 ## <a name="requirements"></a>Követelmények
 

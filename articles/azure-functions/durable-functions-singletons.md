@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 8384d17405653a29207cdfa4f6143504d0db2022
-ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
+ms.openlocfilehash: ea8b5db946d6b35ea4583d9170ec36e5f95e16cd
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="singleton-orchestrators-in-durable-functions-azure-functions"></a>Egypéldányos orchestrators tartós funkciókkal (az Azure Functions)
 
@@ -61,10 +61,7 @@ Alapértelmezés szerint példány azonosítói véletlenszerűen létrehozott G
 
 Az orchestrator függvény végrehajtása részleteit ténylegesen nem számít. Ez lehet egy rendszeres orchestrator függvényt, amely indulásakor és befejezésekor, vagy egy végtelen futtató lehet (Ez azt jelenti, hogy egy [Eternal Vezénylési](durable-functions-eternal-orchestrations.md)). A legfontosabb az, hogy van-e legalább egyszer csak egy példány fut egyszerre.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Ismerje meg, hogyan hívhatja meg alárendelt álló üzenettípusok összehangolását](durable-functions-sub-orchestrations.md)
-
-> [!div class="nextstepaction"]
-> [A minta egypéldányos futtatása](durable-functions-counter.md)

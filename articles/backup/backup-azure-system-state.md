@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/31/2017
 ms.author: saurse;markgal
-ms.openlocfilehash: e7dce94e56a8b51dd1c47e306aeb1d11d0dfb45c
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: df2565be7c543be061c3297f4d87aeae5eae4b8e
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="back-up-windows-system-state-in-resource-manager-deployment"></a>A Resource Manager telepítés Windows rendszerállapot biztonsági mentését
 Ez a cikk ismerteti a rendszerállapot biztonsági mentését a Windows Server az Azure-bA. Ez az oktatóanyag végigvezeti az alapokon.
@@ -33,7 +33,7 @@ Rendszerállapot biztonsági mentését a Windows Server, szüksége Recovery Se
 
 ### <a name="to-create-a-recovery-services-vault"></a>Recovery Services-tároló létrehozása
 1. Ha még nem tette meg, jelentkezzen be az [Azure Portalra](https://portal.azure.com/) az Azure-előfizetésével.
-2. A központ menüben kattintson a **minden szolgáltatás** írja be az erőforrások listájához, **Recovery Services** kattintson **Recovery Services-tárolók**.
+2. A központi menüben kattintson a **Minden szolgáltatás** elemre, majd az erőforrások listájában írja be a **Recovery Services** szöveget, és kattintson a **Recovery Services-tárolók** elemre.
 
     ![Recovery Services-tároló létrehozása – 1. lépés](./media/backup-azure-system-state/open-rs-vault-list.png) <br/>
 
@@ -138,6 +138,8 @@ Most, hogy létrehozta a tárolót, konfigurálja a Windows rendszerállapotról
 > [!NOTE]
 > A tárolói hitelesítő adatok csak olyan helyre, amely a Windows Server, amelyen az ügynök használni kívánt helyi kell menteni. 
 >
+
+[!INCLUDE [backup-upgrade-mars-agent.md](../../includes/backup-upgrade-mars-agent.md)]
 
 ## <a name="install-and-register-the-agent"></a>Az ügynök telepítése és regisztrálása
 

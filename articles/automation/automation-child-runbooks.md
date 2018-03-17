@@ -1,24 +1,20 @@
 ---
-title: Azure Automation runbookjai gyermek |} Microsoft Docs
+title: Azure Automation runbookjai gyermek
 description: "Az Azure Automationben runbook indítása másik runbookból és a közöttük információk megosztása a különböző módszereket írja le."
 services: automation
-documentationcenter: 
-author: georgewallace
-manager: jwhit
-editor: tysonn
-ms.assetid: 919887b9-43e2-4c16-883c-f81807fe37db
 ms.service: automation
-ms.devlang: na
+author: georgewallace
+ms.author: gwallace
+ms.date: 03/15/2018
 ms.topic: article
+manager: carmonm
+ms.devlang: na
 ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 02/02/2017
-ms.author: magoedte;bwren
-ms.openlocfilehash: 5c18444b5a2767ccdd9a61a3bc9218fa4c0aac04
-ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
+ms.openlocfilehash: e8fe3b0023d2cdb9061b5a2c15c3b2c7095c128e
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="child-runbooks-in-azure-automation"></a>Azure Automation runbookjai gyermek
 Az Azure Automationben egy más runbookok által használható önálló funkcióval újrafelhasználható, moduláris runbookok írása a legjobb. Gyakran a szülő runbook fel fogja hívni egy vagy több gyermek runbook végrehajtani a kért funkciót. A gyermek runbook hívásához két módja van, és mindegyik rendelkezik-e különböző módszer közötti különbségeket tisztában kell lennie, hogy megállapíthassa, amely a különböző forgatókönyvek esetén ajánlott lesz.
@@ -74,7 +70,7 @@ Az alábbi példa paraméterekkel rendelkező gyermekrunbook elindul, és majd m
 ## <a name="comparison-of-methods-for-calling-a-child-runbook"></a>A gyermekrunbookok meghívására szolgáló módszerek összehasonlítása
 A következő táblázat összefoglalja, a két módszer egy runbook másik runbookból hívja.
 
-|  | Beágyazott | Parancsmag |
+|  | Inline | Parancsmag |
 |:--- |:--- |:--- |
 | Feladat |Gyermekrunbookok a szülővel azonos feladatban fut. |A gyermekrunbook egy külön feladat jön létre. |
 | Végrehajtás |Szülőrunbook megvárja a gyermekrunbook befejeződjön, mielőtt továbblépne. |Szülő runbook továbbra is fennáll, a gyermekrunbook indítását követően azonnal *vagy* szülőrunbook megvárja, a gyermek feladat befejeződésére. |

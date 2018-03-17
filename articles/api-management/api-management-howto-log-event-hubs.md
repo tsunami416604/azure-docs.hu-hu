@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: apimpm
-ms.openlocfilehash: 77c3e41dd4b1fdf7e518de67b353f69fcb758c60
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 3f4da70d94d28496f5b08035ead0ef7acf1ca3bc
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="how-to-log-events-to-azure-event-hubs-in-azure-api-management"></a>Hogyan naplózza az eseményeket az Azure Event Hubs az Azure API Management
 Az Azure Event Hubs egy kiválóan méretezhető adatbefogadási szolgáltatás, amely másodpercenként több millió esemény fogadására képes, így a csatlakoztatott eszközök és alkalmazások által létrehozott nagy mennyiségű adatot egyszerűen feldolgozhatja és elemezheti. Az Event Hubs úgy működik, mint a "bejárati ajtón" egy eseményfolyamat számára, és amennyiben az eseményközpontnak összegyűjtött adatok átalakíthatók, és bármilyen valós idejű elemzési szolgáltató vagy kötegelési/tárolóadapter segítségével tárolják. Az Event Hubs elválasztja az eseménystreamek létrehozását azok felhasználásától, így az események felhasználói a saját ütemezésüknek megfelelően férhetnek hozzá az eseményekhez.
@@ -36,7 +36,7 @@ Az API Management-figyelő szoftverek használatával vannak konfigurálva a [AP
 
 Hozzon létre egy naplózó, hogy egy HTTP PUT-kérelmet a következő URL-cím sablonnal:
 
-`https://{your service}.management.azure-api.net/loggers/{new logger name}?api-version=2014-02-14-preview`
+`https://{your service}.management.azure-api.net/loggers/{new logger name}?api-version=2017-03-01`
 
 * Cserélje le `{your service}` az API Management szolgáltatáspéldány nevét.
 * Cserélje le `{new logger name}` az új naplózó a kívánt néven. Ez a név hivatkoznak, amikor konfigurálja a [napló eventhub](https://msdn.microsoft.com/library/azure/dn894085.aspx#log-to-eventhub) házirend
@@ -51,7 +51,7 @@ Adja meg a kérelem törzsében, az alábbi sablon használatával:
 
 ```json
 {
-  "loggertype" : "AzureEventHub",
+  "loggerType" : "AzureEventHub",
   "description" : "Sample logger description",
   "credentials" : {
     "name" : "Name of the Event Hub from the Azure Classic Portal",
@@ -60,9 +60,9 @@ Adja meg a kérelem törzsében, az alábbi sablon használatával:
 }
 ```
 
-* `loggertype`meg kell `AzureEventHub`.
-* `description`egy leírást a naplózó biztosít, és szükség esetén egy nulla hosszúságú karakterlánc lehet.
-* `credentials`tartalmazza a `name` és `connectionString` az Azure Event hubs.
+* `loggerType` meg kell `AzureEventHub`.
+* `description` egy leírást a naplózó biztosít, és szükség esetén egy nulla hosszúságú karakterlánc lehet.
+* `credentials` tartalmazza a `name` és `connectionString` az Azure Event hubs.
 
 Ha elvégezte a kérelmet, ha a naplózó létrejön egy állapotkódját `201 Created` adja vissza.
 

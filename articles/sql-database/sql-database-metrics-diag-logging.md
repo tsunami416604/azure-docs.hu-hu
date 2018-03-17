@@ -8,13 +8,13 @@ manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
 ms.topic: article
-ms.date: 03/13/2018
+ms.date: 03/16/2018
 ms.author: vvasic
-ms.openlocfilehash: 3ac0c87ca41315eb3b63ddfab2736f68bac8dbee
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 11ffb1a6260fca52ccb173cb842c1a2d5adbf139
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Az Azure SQL Database metrikák és diagnosztikai naplózás 
 Az Azure SQL-adatbázis el tudná küldeni, metrikákat és diagnosztikai naplókat a könnyebb figyelése. Az SQL Database beállítható az erőforrás-használatra, feldolgozókra és munkamenetekre, valamint kapcsolatokra vonatkozó adatok tárolására a következő Azure-erőforrások valamelyikén:
@@ -47,8 +47,8 @@ Metrikák és diagnosztikai naplózás engedélyezése esetén meg kell adnia a 
 - [QueryStoreRuntimeStatistics](sql-database-metrics-diag-logging.md#query-store-runtime-statistics): a lekérdezés futásidejű statisztikája, például a CPU-használat és a lekérdezés időtartama kapcsolatos információt tartalmazza.
 - [QueryStoreWaitStatistics](sql-database-metrics-diag-logging.md#query-store-wait-statistics): megtudhatja, mi a lekérdezések várta, ha a következőkre például Processzor, a napló és a ZÁROLÁS lekérdezés várakozási statisztikai adatait tartalmazza.
 - [Hibák](sql-database-metrics-diag-logging.md#errors-dataset):, és ismételje meg ezt az adatbázist az SQL-hibákkal kapcsolatos információkat tartalmaz.
-- [DatabaseWaitStatistics](sql-database-metrics-diag-logging.md#database-waits-dataset): Várakozás a különböző várakozási típusok kapcsolatos mennyi idő adatbázis töltött információkat tartalmaz.
-- [Időtúllépések](sql-database-metrics-diag-logging.md#timeouts-dataset): időtúllépés történt egy adatbázis adatait tartalmazza.
+- [DatabaseWaitStatistics](sql-database-metrics-diag-logging.md#database-wait-statistics-dataset): Várakozás a különböző várakozási típusok kapcsolatos mennyi idő adatbázis töltött információkat tartalmaz.
+- [Időtúllépések](sql-database-metrics-diag-logging.md#time-outs-dataset): időtúllépés történt egy adatbázis adatait tartalmazza.
 - [Blockings](sql-database-metrics-diag-logging.md#blockings-dataset): adatbázis ideje eseményeket blokkolja adatait tartalmazza.
 - [SQLInsights](sql-database-metrics-diag-logging.md#intelligent-insights-dataset): intelligens Insights tartalmazza. [További tudnivalók az intelligens Insights](sql-database-intelligent-insights.md).
 

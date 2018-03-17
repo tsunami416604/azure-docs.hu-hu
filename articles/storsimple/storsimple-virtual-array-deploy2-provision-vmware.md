@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 11/14/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 495ef6a93ee06423495269306ad06e76dda13e10
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.openlocfilehash: be737550aa1cff22bc413ee8ce243f8d8588f6a5
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="deploy-storsimple-virtual-array---provision-in-vmware"></a>A StorSimple virtuális tömb - Provision VMware-ben telepítése
 ![](./media/storsimple-virtual-array-deploy2-provision-vmware/vmware4.png)
@@ -127,7 +127,7 @@ A következő lépésekkel a hipervizor a virtuális eszköz létrehozásához.
 17. Az a **tárolási** lapon, válassza ki a virtuális gép kiépítéséhez használni kívánt adattárolót.
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image18.png)
-18. Az a **virtuális gép verziójának** lapon jelölje be **virtuális gép verziójának: 8**. 8 – 11 verzió használatát támogatja.
+18. Az a **virtuális gép verziójának** lapon jelölje be **virtuális gép verziójának: 8**.
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image19.png)
 19. Az a **vendég operációs rendszer** lapon jelölje be a **vendég operációs rendszer** , **Windows**. A **verzió**, a legördülő listából válassza ki a **Microsoft Windows Server 2012 (64 bites)**.
@@ -157,7 +157,7 @@ A következő lépésekkel a hipervizor a virtuális eszköz létrehozásához.
 27. Az a **készen áll a Complete** lapján tekintse át az új virtuális géphez társított összes beállítást. Ellenőrizze **még a befejeződése előtt a virtuális gép beállításainak szerkesztése**. Kattintson a **továbbra is**.
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image28.png)
-28. Az a **virtuális gépek tulajdonságai** lap a **hardver** lapján keresse meg a hardver. Válassza ki **új merevlemez**. Kattintson az **Add** (Hozzáadás) parancsra.
+28. Az a **virtuális gépek tulajdonságai** lap a **hardver** lapján keresse meg a hardver. Válassza ki **új merevlemez**. Kattintson a **Hozzáadás** parancsra.
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image29.png)
 29. Megjelenik egy **hardver hozzáadása** ablak. A a **eszköztípus** lap **válassza ki a hozzáadni kívánt eszköz**, jelölje be **merevlemez**, és kattintson a **következő**.
@@ -243,6 +243,6 @@ Ha a helyi webes felhasználói felület használata a kezdeti konfiguráció so
 * Diagnosztikai tesztek futtatása annak [webes felhasználói felületen való beállításának hibaelhárítása](storsimple-ova-web-ui-admin.md#troubleshoot-web-ui-setup-errors).
 * [Napló csomagot és naplófájlban](storsimple-ova-web-ui-admin.md#generate-a-log-package).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Állítsa be a StorSimple virtuális tömb fájlkiszolgálóként](storsimple-virtual-array-deploy3-fs-setup.md)
 * [Állítsa be a StorSimple virtuális tömb iSCSI-kiszolgálóként](storsimple-virtual-array-deploy3-iscsi-setup.md)

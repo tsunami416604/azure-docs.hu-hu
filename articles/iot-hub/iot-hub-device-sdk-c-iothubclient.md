@@ -3,7 +3,7 @@ title: "Az Azure IoT-eszközök SDK c - IoTHubClient |} Microsoft Docs"
 description: "Hogyan használható a IoTHubClient könyvtár, az Azure IoT eszközben C-hez készült SDK kommunikáló eszközön futó alkalmazások létrehozásához az IoT-központ számára."
 services: iot-hub
 documentationcenter: 
-author: olivierbloch
+author: yzhong94
 manager: timlt
 editor: 
 ms.assetid: 828cf2bf-999d-4b8a-8a28-c7c901629600
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/29/2017
-ms.author: obloch
-ms.openlocfilehash: 8428857bcd444f99ba2c0f6b31ff662d5596b591
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.author: yizhon
+ms.openlocfilehash: 6efd2980ce4dde99d934b3fe174d341fb68fac03
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="azure-iot-device-sdk-for-c--more-about-iothubclient"></a>Az Azure IoT-eszközök SDK c – további információ az IoTHubClient
 A [először a következő cikket:](iot-hub-device-sdk-c-intro.md) a sorozat bevezette a **C-hez készült SDK Azure IoT-eszközök**. A cikk alapján, hogy nincsenek-e két architekturális rétegek SDK. Az alap van a **IoTHubClient** könyvtárban, amely közvetlenül kezeli az IoT-központ folytatott kommunikáció. Szerepel továbbá a **szerializáló** könyvtár épülő a szerializálási szolgáltatások biztosításához. Ebben a cikkben a következőkhöz nyújtunk további részletek a a **IoTHubClient** könyvtárban.
@@ -60,10 +60,10 @@ IoTHubClient_Destroy(iotHubClientHandle);
 
 Azonban ezen API-k mindegyikének kiegészítő funkciók vannak:
 
-* IoTHubClient\_inden\_CreateFromConnectionString
-* IoTHubClient\_inden\_SendEventAsync
-* IoTHubClient\_inden\_SetMessageCallback
-* IoTHubClient\_inden\_megszüntetése
+* IoTHubClient\_LL\_CreateFromConnectionString
+* IoTHubClient\_LL\_SendEventAsync
+* IoTHubClient\_LL\_SetMessageCallback
+* IoTHubClient\_LL\_Destroy
 
 Ezek a függvények minden "R" szerepeljenek az API-név. Eltérő ezek a paraméterek megegyeznek mint a nem le. Azonban ezeket a funkciókat a viselkedés eltér egy fontos módon.
 
@@ -127,10 +127,10 @@ Nincs alapvetően csak egy készletét API-k a háttérszálon és API-k, amelye
 
 Bármelyik modellt választja, ne felejtse el konzisztens mely API-kat használ. Ha először meghívásával **IoTHubClient\_inden\_CreateFromConnectionString**, győződjön meg a megfelelő alacsonyabb szintű API-kat csak használ követő munka:
 
-* IoTHubClient\_inden\_SendEventAsync
-* IoTHubClient\_inden\_SetMessageCallback
-* IoTHubClient\_inden\_megszüntetése
-* IoTHubClient\_inden\_DoWork
+* IoTHubClient\_LL\_SendEventAsync
+* IoTHubClient\_LL\_SetMessageCallback
+* IoTHubClient\_LL\_Destroy
+* IoTHubClient\_LL\_DoWork
 
 Ellenkező is igaz. Ha először **IoTHubClient\_CreateFromConnectionString**, majd használja a nem - inden API-k minden további feldolgozásra.
 
@@ -264,14 +264,14 @@ Van néhány gyakran használt beállításokat:
 
 Fontos a kötegelési lehetőséget. Alapértelmezés szerint a szalagtár ingresses események külön-külön (egy adott eseményhez bármilyen át a **IoTHubClient\_inden\_SendEventAsync**). Ha a kötegelési beállítás **igaz**, a könyvtár (akár a maximális méretét, amely elfogadja az IoT-központ) pufferből használhatja annyi eseményeit gyűjti.  Az esemény kötegelt IoT Hub (az egyes események, egy JSON-tömb be vannak becsomagolva) egyetlen HTTPS hívás érkezik. Általában kötegelés engedélyezését eredményezi nagy teljesítménynövekedéshez óta hálózati üzenetváltások most csökkentése. Mivel egy esemény-es HTTPS fejlécek egy készletét, nem pedig a minden egyes esemény fejléc készlettel küldi is jelentősen csökkenti a sávszélesség. Ha valamiért másképp nincs, általában érdemes engedélyezni a kötegelés.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ez a cikk ismerteti részletesen a működését a **IoTHubClient** függvénytár szerepel a **C-hez készült SDK Azure IoT-eszközök**. Az információ funkcióinak beható ismerete rendelkeznie kell a **IoTHubClient** könyvtárban. A [tovább cikk](iot-hub-device-sdk-c-serializer.md) hasonló részletesen ismerteti a a **szerializáló** könyvtár.
 
 Az IoT-központ fejlesztésével kapcsolatos további tudnivalókért tekintse meg a [Azure IoT SDK-k][lnk-sdks].
 
 Az IoT-központ képességeit további megismeréséhez lásd:
 
-* [Az Azure IoT peremhálózati peremeszközök AI központi telepítése][lnk-iotedge]
+* [Mesterséges intelligencia telepítése peremeszközökön az Azure IoT Edge szolgáltatással][lnk-iotedge]
 
 [lnk-sdks]: iot-hub-devguide-sdks.md
 

@@ -2,19 +2,20 @@
 title: "Megtudhatja, hogyan előkészítésére frissítéskezelés, a változások követése, és a készlet megoldásokat az Azure Automationben"
 description: "Ismerje meg, hogyan érheti egy Azure virtuális gép Azure Automation részét képező frissítéskezelés, a változások követése, és a készlet megoldásokkal"
 services: automation
-keywords: 
+ms.service: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 02/28/2018
+ms.date: 03/16/2018
 ms.topic: article
-ms.service: automation
-ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 670a0c2a11ebfe09406233ab4b454b2e9c2ba0e0
-ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.devlang: na
+ms.tgt_pltfrm: na
+ms.custom: mvc
+ms.openlocfilehash: 65bf0d98da8111e986d5dbdfd58f1692d40ee286
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions"></a>A bevezetni frissítéskezelés, a változások követése, és a készlet megoldások
 
@@ -22,23 +23,23 @@ Azure Automation-megoldások kezelése az operációs rendszer biztonsági friss
 
 ## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
 
-Jelentkezzen be az Azure-ba a https://portal.azure.com címen
+Jelentkezzen be az Azure: https://portal.azure.com
 
-## <a name="enable-solutions"></a>Megoldások
+## <a name="enable-solutions"></a>Megoldások engedélyezése
 
 Nyissa meg az Automation-fiók, és válassza ki vagy **készlet** vagy **a változáskövetés** alatt **konfigurációkezelés**.
 
-Válassza ki a naplóelemzési munkaterület és Automation-fiók, és kattintson a **engedélyezése** ahhoz, hogy a megoldás. A megoldás ahhoz, hogy akár 15 percet vesz igénybe.
+Válassza ki a naplóelemzési munkaterület és Automation-fiók, és kattintson a **engedélyezése** ahhoz, hogy a megoldás. A megoldás engedélyezése akár 15 percet is igénybe vehet.
 
 ![A bevezetni készlet megoldás](media/automation-onboard-solutions-from-automation-account/onboardsolutions.png)
 
-A változások követése és a készlet megoldás lehetővé teszi a [követni a változásokat](automation-vm-change-tracking.md) és [készlet](automation-vm-inventory.md) a virtuális gépeken. Ebben a lépésben engedélyezi a megoldás a virtuális gépen.
+A Change Tracking és az Inventory megoldással [változáskövetési](automation-vm-change-tracking.md) és [leltárkészítési](automation-vm-inventory.md) képességeket biztosíthat a virtuális gépek számára. Ebben a lépésben engedélyezzük a megoldást egy virtuális gépen.
 
-Nyomon követését és a készlet megoldás bevezetése értesítést befejezését követően kattintson a **frissítéskezelés** alatt **konfigurációkezelés**.
+Ha a Change tracking és az Inventory megoldás előkészítése befejeződött az értesítés szerint, a **KONFIGURÁCIÓKEZELÉS** területen kattintson az **Update Management** lehetőségre.
 
-A frissítés felügyeleti megoldás lehetővé teszi a frissítések és javítások kezelheti a Windows Azure virtuális gépeken. A rendelkezésre álló frissítések, a szükséges frissítések telepítése ütemezés állapotát felmérheti, és felülvizsgálati központi telepítés eredményeinek ellenőrzése a frissítések alkalmazása sikeresen megtörtént a virtuális géphez. Ez a művelet a virtuális gép számára engedélyezve van a megoldás.
+Az Update Management megoldás segítségével kezelheti az Azure-beli Windows rendszerű virtuális gépek frissítéseit és javításait. Felmérheti az elérhető frissítések állapotát, ütemezheti a szükséges frissítések telepítését, és áttekintheti a telepítési eredményeket, hogy ellenőrizze, sikeres volt-e a frissítések telepítése a virtuális gépen. Ez a művelet a virtuális gép számára engedélyezve van a megoldás.
 
-Válassza ki **frissítéskezelés** alatt **FRISSÍTÉSKEZELÉS**. A kiválasztott naplóelemzési munkaterület ugyanazon a munkaterületen használja az előző lépésben. Kattintson a **engedélyezése** bevezetni a frissítés-kezelési megoldásban. A megoldás ahhoz, hogy akár 15 percet vesz igénybe.
+Válassza ki **frissítéskezelés** alatt **FRISSÍTÉSKEZELÉS**. A kiválasztott Log Analytics-munkaterület megegyezik az előző lépésben használt munkaterülettel. Az Update Management megoldás előkészítéséhez kattintson az **Engedélyezés** lehetőségre. A megoldás engedélyezése akár 15 percet is igénybe vehet.
 
 ![A bevezetni frissítés megoldás](media/automation-onboard-solutions-from-automation-account/onboardsolutions2.png)
 

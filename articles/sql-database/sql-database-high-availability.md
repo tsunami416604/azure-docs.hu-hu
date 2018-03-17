@@ -6,14 +6,14 @@ author: anosov1960
 manager: craigg
 ms.service: sql-database
 ms.topic: article
-ms.date: 03/07/2018
+ms.date: 03/16/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 5e0d0166377f80c1f43782156fa735915cbc31f1
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 8deb78ba108aafc3297e6b96d6d88d0c56c60afd
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="high-availability-and-azure-sql-database"></a>Magas rendelkezésre állású és az Azure SQL-adatbázis
 Az Azure SQL adatbázis Platformszolgáltatási ajánlat kezdete óta a Microsoft tett a felhőalkalmazások nyújtotta az ügyfelek, amelyek a szolgáltatás részét magas rendelkezésre állású (HA), és az ügyfelek nem szükséges üzemeltetéséhez, különleges logika hozzáadása, és magas rendelkezésre ÁLLÁSÚ körül döntéseket. A Microsoft fenntartja a magas rendelkezésre ÁLLÁSÚ rendszerkonfiguráció és a művelet, teljes hozzáféréssel, szolgáltatásiszint-szerződésben garantált kínál az ügyfeleknek. A magas rendelkezésre ÁLLÁSÚ SLA régióban SQL-adatbázis vonatkozik, és nem nyújt védelmet a teljes tartomány hibák, amely kívül a Microsoft irányítása alá tartozó tényezők miatt esetekben (például természeti katasztrófa, war, tevékenységéért terrorakció is történhet, lázadások, kormányzati műveletet, vagy egy hálózati vagy az eszköz hiba a Microsoft adatközpontokban, beleértve az ügyfél helyeken vagy a felhasználói helyek és a Microsoft-adatközpont közti külső).
@@ -52,7 +52,7 @@ A magas rendelkezésre állású megoldás az SQL-adatbázis alapul [Alwayson](/
 
 Ebben a konfigurációban az egyes adatbázisok online állapotba a szolgáltatás (MS) belül a vezérlő gyűrű. Egy elsődleges és legalább két másodlagos replika (kvórum-készlet) nem található, a bérlő ring kiterjedő három független fizikai alrendszerek ugyanabban az adatközpontban. Az átjáró (GW) az elsődleges másodpéldány által küldött összes olvasási és írási, és az írási műveletek aszinkron módon replikálva vannak a másodlagos replikákon. SQL-adatbázis egy kvórum-alapú véglegesítési sémát használja, ha az adatok írása az elsődleges és a tranzakciók véglegesítése előtt legalább egy másodlagos másodpéldány.
 
-A [Service Fabric](/service-fabric/service-fabric-overview.md) feladatátvételi rendszer automatikusan újraépíti a replikákat, a csomópont meghibásodik, és kvórum-készlet tagsági karbantartott csomópontok egymástól, és csatlakoztassa a rendszer. Tervezett karbantartás gondosan koordinált, hogy megakadályozza a kvórum-set állapotra vált a replikakészlet minimális száma (általában 2) alatt. Premium adatbázisok esetén ez a modell működik, de van szükség a redundancia számítási és a tárolási összetevők, és egy magasabb költsége eredményez.
+A [Service Fabric](../service-fabric/service-fabric-overview.md) feladatátvételi rendszer automatikusan újraépíti a replikákat, a csomópont meghibásodik, és kvórum-készlet tagsági karbantartott csomópontok egymástól, és csatlakoztassa a rendszer. Tervezett karbantartás gondosan koordinált, hogy megakadályozza a kvórum-set állapotra vált a replikakészlet minimális száma (általában 2) alatt. Premium adatbázisok esetén ez a modell működik, de van szükség a redundancia számítási és a tárolási összetevők, és egy magasabb költsége eredményez.
 
 ## <a name="remote-storage-configuration"></a>Távoli tárolás beállítása
 

@@ -6,14 +6,14 @@ author: seanmck
 manager: timlt
 ms.service: container-instances
 ms.topic: article
-ms.date: 12/19/2017
+ms.date: 03/19/2018
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: 7e8a5014ce9168ba3d67d175935649bfd9fec511
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 6f7f0d9aea86594140c302e6d12e6528e802b9e7
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="container-groups-in-azure-container-instances"></a>Azure-tároló példányát tárolócsoportok
 
@@ -23,13 +23,14 @@ A legfelső szintű erőforrás Azure tároló példányát a *a tárolócsoport
 
 A tárolócsoport, ugyanazon gazdagép ütemezhetők tárolókat gyűjteménye. A tárolók egy tárolócsoport megosztani egy életciklussal, helyi hálózati és tárolási köteteket. Hasonló, amelynek a *pod* a [Kubernetes] [ kubernetes-pod] és [DC/OS][dcos-pod].
 
-Az alábbi ábrán látható egy példa a tároló-csoportot, amely több tároló tartalmazza.
+Az alábbi ábrán látható egy példa a tároló-csoportot, amely több tároló tartalmazza:
 
 ![Tároló csoportok diagramja][container-groups-example]
 
 Ez a példa tárolócsoport:
 
 * Van ütemezve, egy önálló gazdagépen.
+* A DNS-névcímke hozzá van rendelve.
 * Elérhetővé teszi a egyetlen nyilvános IP-cím, egy kitett port.
 * Két tárolók áll. Egy tároló 80-as porton, a további figyeli közben 5000-es porton figyel.
 * Kettő Azure fájlmegosztás használja, a kötet csatlakoztatások, és minden tárolót csatlakoztatja egy helyileg a megosztásokat.
@@ -51,7 +52,7 @@ Megadhatja, hogy külső kötetek csatlakoztatni a tároló csoporton belül. A 
 
 ## <a name="common-scenarios"></a>Gyakori forgatókönyvek
 
-Több tároló csoportok olyan hasznos olyan esetekben, ahol kis számú tároló képek, amely különböző csapatok által kézbesítése, és külön erőforrás követelményei egyetlen működési feladat feloszthatja szeretné.
+Több tároló csoportok olyan hasznos olyan esetekben, ahol egyetlen működési feladat felosztani tároló képek kis számú szeretné. Ezek a lemezképek különböző csapatok által majd kézbesítése, és külön erőforrás követelményekkel rendelkezik.
 
 Példa használati lehetnek:
 

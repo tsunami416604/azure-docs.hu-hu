@@ -12,13 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 06/08/2017
+ms.date: 03/16/2018
 ms.author: alkohli
-ms.openlocfilehash: 264764c5e9c32574d97beb2cc3c1bb1cfb555568
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 46fd818d8ca15515c91bb6e65e99b0a3bc1f1fa4
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="storsimple-virtual-array-best-practices"></a>A StorSimple virtuális tömb gyakorlati tanácsok
 ## <a name="overview"></a>Áttekintés
@@ -38,7 +38,7 @@ A virtuális tömb létesítésekor, valósítja meg a következő gyakorlati ta
 
 |  | Hyper-V | VMware |
 | --- | --- | --- |
-| **Virtuális gép típusa** |**2. generációs** használata Windows Server 2012 vagy újabb virtuális gép és egy *.vhdx* kép. <br></br> **1. generációs** használata a Windows Server 2008 vagy újabb virtuális gép és egy *.vhd* kép. |Virtuális gép verziója 8-11 használatakor *.vmdk* kép. |
+| **Virtuális gép típusa** |**2. generációs** használata Windows Server 2012 vagy újabb virtuális gép és egy *.vhdx* kép. <br></br> **1. generációs** használata a Windows Server 2008 vagy újabb virtuális gép és egy *.vhd* kép. |Használjon virtuális gép verziójának használatakor 8 *.vmdk* kép. |
 | **Memória típusa** |Beállítása **statikus memória**. <br></br> Ne használja a **dinamikus memória** lehetőséget. | |
 | **Adattípus-lemez** |Mint kiépítése **dinamikusan bővülő**.<br></br> **Rögzített méretű** hosszú időt vesz igénybe. <br></br> Ne használja a **különbséglemezek** lehetőséget. |Használja a **rendelkezés dinamikusan** lehetőséget. |
 | **Adatok lemez módosítása** |Bővítése vagy zsugorítását nem engedélyezett. Ehhez kísérlet az eszköz összes a helyi adatok elvesztését eredményezi. |Bővítése vagy zsugorítását nem engedélyezett. Ehhez kísérlet az eszköz összes a helyi adatok elvesztését eredményezi. |
@@ -87,7 +87,7 @@ Amíg nem várt növekedés és új visszaállítások, körül a helyi lemezen 
 > Azt javasoljuk, hogy a helyi lemez kiosztása. Ez a javaslat oka az, hogy a visszaállítási területre csak van szükség, ha visszaállítja öt napnál régebbi adatokat. Elemszintű helyreállítás lehetővé teszi adatok helyreállítását a legutóbbi öt napig anélkül, hogy a helyet a visszaállításhoz.
 
 
-#### <a name="example-2"></a>2. példa:
+#### <a name="example-2"></a>2. példa
 A virtuális tömb szeretné tudni
 
 * kiépítése 2 TB rétegzett kötet
@@ -191,7 +191,7 @@ ACRs konfigurálása a StorSimple-köteteket kövesse az alábbi gyakorlati tan�
 
 * Ha egynél több ACR hozzárendelése egy kötetet, győződjön meg arról, hogy a kötet nincs felfedve oly módon, ahol egyidejűleg hozzáférhetők egynél több nem fürtözött gazdagép. Ha egy köteten több ACRs rendelt, egy figyelmeztető üzenet jelenik meg, ahhoz, hogy ellenőrizze a konfigurációt.
 
-### <a name="data-security-and-encryption"></a>Adatbiztonság és -titkosítás
+### <a name="data-security-and-encryption"></a>Adatbiztonság és titkosítás
 A StorSimple virtuális tömb adatok biztonsági és a titkosítási szolgáltatással, amely titkosítás és az adatok sértetlenségének biztosítása rendelkezik. Ha használja ezeket a funkciókat, javasoljuk, hogy pontosan kövesse az alábbi gyakorlati tanácsok: 
 
 * Adja meg a felhőalapú tárolás titkosítási kulcsát létrehozni az AES-256 titkosítás, az adatokat a felhőbe a virtuális tömbből elküldése előtt. Ez a kulcs nincs szükség, ha először az adatok titkosítva legyenek. A kulcs jön létre, és biztonságos kulcskezelés rendszert használ, mint maradjon [az Azure key vault](../key-vault/key-vault-whatis.md).
@@ -236,7 +236,7 @@ Amikor keresztül hajtja végre a sikertelen a virtuális tömb, vegye figyelemb
   * Hiba történt a tényleges feladatátvétel során. Ebben az esetben a céleszközt van megjelölve használható. Konfigurálnia kell kiépíteni és egy másik virtuális céltömb valamint, hogy a feladatátvételre használni.
   * A feladatátvétel befejeződött, amely a forráseszközt törölve lett a következő volt, de a céleszközt problémákkal rendelkezik, és adatokat nem férhet hozzá. Az adatok a felhőben továbbra is biztonságban, és egy másik virtuális tömb létrehozásával, és majd használni a céleszközön a Dr könnyen olvasható.
 
-### <a name="deactivate"></a>inaktiválása
+### <a name="deactivate"></a>Inaktiválás
 Ha inaktiválja a StorSimple virtuális tömb, akkor az eszköz és a megfelelő StorSimple Manager szolgáltatás közötti kapcsolat Server. Az inaktiválást van egy **állandó** műveletet, és nem vonható vissza. Deaktivált eszköz nem lehet regisztrálni a StorSimple Manager szolgáltatásban újra. További információkért látogasson el [inaktiválja és törölje a StorSimple virtuális tömb](storsimple-virtual-array-deactivate-and-delete-device.md).
 
 Ha a virtuális tömb inaktiválása tartsa szem előtt az alábbi gyakorlati tanácsokat:
@@ -282,6 +282,6 @@ Több virtuális tömbök kell telepíteni kell egy egyre bővülő munkakészle
 * Ha több virtuális tömbök üzembe, azt javasoljuk, hogy a terheléselosztó szempontjából, a tömb szét a különböző hipervizor-állomás.
 * Több virtuális tömbök (Ha be van állítva, mint egy fájl vagy iSCSI-kiszolgáló) olyan elosztott fájl rendszer Namespace is telepíthető. A részletes lépéseket lásd a [elosztott fájl rendszer Namespace megoldást hibrid felhőalapú tárolás telepítési útmutató](https://www.microsoft.com/download/details.aspx?id=45507). Az elosztott fájlrendszer replikációs jelenleg nem ajánlott a virtuális tömb való használatra. 
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 Megtudhatja, hogyan [felügyelete a StorSimple virtuális tömb](storsimple-virtual-array-manager-service-administration.md) a StorSimple Manager szolgáltatással.
 
