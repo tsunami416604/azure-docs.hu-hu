@@ -57,10 +57,12 @@ Az alábbiakban néhány, a prémium szintű Storage szolgáltatásait:
 
     A prémium szintű tárfiók csak a helyileg redundáns tárolás támogatja a következő replikálási beállítás között. Helyileg redundáns tárolás három másolatot az adatok tartja egyetlen régión belül. Regionális katasztrófa utáni helyreállítás, biztonsági másolatot kell készíteni a virtuális gép lemezeit, egy másik régióban használatával [Azure biztonsági mentés](../articles/backup/backup-introduction-to-azure-backup.md). A georedundáns tárolás (GRS) fiókot és a biztonsági mentési tárolónak kell használnia. 
 
-    Azure a tárfiók tárolóként a nem kezelt lemezeken használ. Ha hoz létre egy Azure DS-méretek, DSv2-méretek, GS-méretek, vagy Fs sorozatú virtuális gép, és nem felügyelt lemezeket, és válassza ki a prémium szintű storage-fiók, az operációs rendszer, és adatlemezek vannak tárolva, hogy a tárfiók.
+    Azure a tárfiók tárolóként a nem kezelt lemezeken használ. Egy Azure virtuális Gépen, amely támogatja a prémium szintű Storage nem felügyelt lemezzel létrehozásakor, és a prémium szintű tárfiók lehetőséget választja, az operációs rendszer és az adatlemezek vannak tárolva, hogy a tárfiók.
 
 ## <a name="supported-vms"></a>Támogatott virtuális gépek
-Prémium szintű Storage támogatja a DS-méretek, DSv2-méretek, GS-méretek, Ls-sorozat, Fs-sorozat és a B sorozatú virtuális gépeken. Az ilyen méretű standard és prémium szintű storage lemezek is használhatók. Nem használhat a prémium szintű storage lemezekhez Virtuálisgép-sorozat, amelyek nem prémium szintű Storage-kompatibilis.
+
+Prémium szintű Storage támogatja a B sorozatnak, DS-méretek, DSv2-méretek, DSv3-sorozat, GS sorozatnak, Ls-sorozat, M-sorozat és Fs sorozatú virtuális gépeket. Az ilyen méretű standard és prémium szintű storage lemezek is használhatók. Nem használhat a prémium szintű storage lemezekhez Virtuálisgép-sorozat, amelyek nem prémium szintű Storage-kompatibilis.
+
 
 További információt az Azure windowsos virtuálisgép-típusairól és -méreteiről a [windowsos virtuális gépek méretét](../articles/virtual-machines/windows/sizes.md) ismertető szakaszban talál. További információt az Azure linuxos virtuálisgép-típusairól és -méreteiről a [linuxos virtuális gépek méretét](../articles/virtual-machines/linux/sizes.md) ismertető szakaszban talál.
 
