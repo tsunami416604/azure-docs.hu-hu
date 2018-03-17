@@ -2,8 +2,8 @@
 title: "Az Azure Machine Learning modell kezelése parancssori felület referencia |} Microsoft Docs"
 description: "Az Azure Machine Learning modell kezelése parancssori felület hivatkozás."
 services: machine-learning
-author: raymondl
-ms.author: raymondl, aashishb
+author: aashishb
+ms.author: aashishb
 manager: hjerez
 ms.reviewer: jasonwhowell, mldocs
 ms.service: machine-learning
@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 11/08/2017
-ms.openlocfilehash: 219c61d1842369caadaf8e85dcb039242c37ef6c
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 27361c5b92a8748a026d457875fadfc1f3529076
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="model-management-command-line-interface-reference"></a>Modell felügyeleti parancssori felület referenciája
 
@@ -40,7 +40,7 @@ A modell felügyeleti fiók a szolgáltatásokat, amelyek lehetővé teszik, tel
 
 **Modell felügyeleti fiók létrehozása**
 
-Hozzon létre egy modell felügyeleti fiókot a következő parancsot. Ez a fiók számlázási fog történni.
+Hozzon létre egy modell felügyeleti fiókot a számlázási a következő paranccsal:
 
 `az ml account modelmanagement create --location [Azure region e.g. eastus2] --name [new account name] --resource-group [resource group name to store the account in]`
 
@@ -76,7 +76,7 @@ Központi telepítés esetén két lehetőség áll rendelkezésre: *helyi* és 
 
 `az ml env setup [-c] --location [location of environment resources] --name[name of environment]`
 
-Ez inicializálja az Azure gépi tanulási a környezet egy tárfiókot, ACR beállításjegyzék és App Insights szolgáltatás létrehozása az előfizetésben. Alapértelmezés szerint a környezet inicializálását helyi telepítés esetén csak (nincs ACS) Ha nem jelző van megadva. Ha a szolgáltatás méretezésére van szüksége, adja meg a `--cluster` (vagy `-c`) jelzőjét, hogy az ACS-fürtöt létrehozni.
+Ez a parancs inicializálja az Azure gépi tanulási a környezet egy tárfiókot, ACR beállításjegyzék és App Insights szolgáltatás létrehozása az előfizetésben. Alapértelmezés szerint a környezet inicializálását helyi telepítés esetén csak (nincs ACS) Ha nem jelző van megadva. Ha a szolgáltatás méretezésére van szüksége, adja meg a `--cluster` (vagy `-c`) jelzőjét, hogy az ACS-fürtöt létrehozni.
 
 Parancs részletei:
 
@@ -89,12 +89,12 @@ Parancs részletei:
     --cluster -c                   : Flag to provision ACS cluster. Off by default; specify this to force an ACS cluster deployment.
     --key-pem                      : Path to .pem file with certificate key.
     --master-count -m              : Number of master nodes to provision in the ACS cluster. Acceptable values: 1, 3, 5. Default: 1.
-    --resource-group -g            : Resource group in which to create compute resource. Will be created if it does not exist.
-                                     If not provided, resource group will be created with 'rg' appended to 'name.'.
+    --resource-group -g            : Resource group in which to create compute resource. Is created if it does not exist.
+                                     If not provided, resource group is created with 'rg' appended to 'name.'.
     --service-principal-app-id -a  : App ID of service principal to use for configuring ML compute.
     --service-principal-password -p: Password associated with service principal.
     --storage -s                   : ARM ID of storage account to associate with this environment.
-    --yes -y                       : Flag to answer 'yes' to any prompts. Command will fail if user is not logged in.
+    --yes -y                       : Flag to answer 'yes' to any prompts. Command fails if user is not logged in.
 
 Globális argumentumok
 ```
@@ -110,7 +110,7 @@ Globális argumentumok
     register
     show
 
-A modell regisztrálása
+**A modell regisztrálása**
 
 A modell parancsot.
 
@@ -143,7 +143,7 @@ Globális argumentumok
 
 **Jegyzékfájl létrehozása**
 
-A modell jegyzékfájlt hoz létre. 
+A következő parancs létrehoz egy jegyzékfájl modell. 
 
 `az ml manifest create --manifest-name [your new manifest name] -f [path to code file] -r [runtime for the image, e.g. spark-py]`
 
@@ -289,7 +289,7 @@ Globális argumentumok
 
 Vegye figyelembe a a `-d` jelző kapcsolódó függőségek: Ha a nevét adja meg egy könyvtárat, amely még nincs kötegelt (zip, bont stb.), könyvtárhoz automatikusan tar'ed lekérdezi és a másik végpont nem kombinált jelszavat, majd automatikusan átadása. 
 
-Ha már kötegelt könyvtár át, azt fájlként kezeli, és adja át mentén. Nem lesz átengedett automatikusan; az várhatóan kezelni, a kódban.
+Már kötegelt könyvtár át, ha a címtár-fájlként kezelni és átadott mentén, mert a. Átengedett automatikusan; az várhatóan kezelni, a kódban.
 
 **Szolgáltatás-részletek**
 

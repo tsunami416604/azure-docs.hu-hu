@@ -1,25 +1,22 @@
 ---
-title: "Továbbítsa az Azure Automation DSC jelentésadatait OMS szolgáltatáshoz |} Microsoft Docs"
-description: "Ez a cikk bemutatja, hogyan elküldeni kívánt konfiguráló (DSC) adatok jelentéskészítés a Microsoft Operations Management Suite Log Analytics képes biztosítani a további betekintést és kezelése."
+title: "Azure Automation DSC Log Analyticshez való jelentéskészítéshez szükséges adatok továbbítása"
+description: "Ez a cikk bemutatja, hogyan küldhetők szükséges konfiguráló (DSC) jelentéskészítéshez szükséges adatok további elemzéséhez és a felügyeleti szolgáltatáshoz."
 services: automation
-documentationcenter: 
-author: georgewallace
-manager: carmonm
-editor: tysonn
 ms.service: automation
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 05/24/2017
+author: georgewallace
 ms.author: gwallace
-ms.openlocfilehash: 5de22072a436e7a2dbaa7d413595c048f730189b
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.date: 03/16/2018
+ms.topic: article
+manager: carmonm
+ms.devlang: na
+ms.tgt_pltfrm: na
+ms.openlocfilehash: d06ec240477c2defca7a463b2e9338bc5e3930ab
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/17/2018
 ---
-# <a name="forward-azure-automation-dsc-reporting-data-to-oms-log-analytics"></a>Azure Automation DSC OMS szolgáltatáshoz jelentéskészítéshez szükséges adatok továbbítása
+# <a name="forward-azure-automation-dsc-reporting-data-to-oms-log-analytics"></a>Az Azure Automation DSC jelentési adatainak továbbítása az OMS Log Analyticsbe
 
 Automation DSC csomópont állapota adatokat küldhet a Microsoft Operations Management Suite (OMS) Naplóelemzési munkaterület.  
 Megfelelőségi állapota látható az Azure portálon, vagy a PowerShell használatával, a csomópontok számára, és az egyedi DSC erőforrások a csomópont-konfigurációt. Log Analytics segítségével:
@@ -81,9 +78,9 @@ A **DscResourceStatusData** művelet nem sikerült DSC erőforrásokat hiba adat
 Kattintson az adott műveletre vonatkozó adatok megjelenítéséhez a listában lévő egyes műveletek.
 
 A naplók megtekintéséhez által [Log Analyticshez megkeresése. Lásd: [található adatokat, és napló keresések](../log-analytics/log-analytics-log-searches.md).
-Írja be a következő lekérdezés futtatásával a DSC-napló keresése:`Type=AzureDiagnostics ResourceProvider="MICROSOFT.AUTOMATION" Category = "DscNodeStatus"`
+Írja be a következő lekérdezés futtatásával a DSC-napló keresése: `Type=AzureDiagnostics ResourceProvider="MICROSOFT.AUTOMATION" Category = "DscNodeStatus"`
 
-A művelet neve is szűkítheti a lekérdezést. Például: ' típus = AzureDiagnostics ResourceProvider = "MICROSOFT. AUTOMATIZÁLÁSI"kategória ="DscNodeStatus"OperationName ="DscNodeStatusData"
+A művelet neve is szűkítheti a lekérdezést. For example: `Type=AzureDiagnostics ResourceProvider="MICROSOFT.AUTOMATION" Category = "DscNodeStatus" OperationName = "DscNodeStatusData"
 
 ### <a name="send-an-email-when-a-dsc-compliance-check-fails"></a>E-mailt küld, ha a DSC-megfelelőségi ellenőrzés sikertelen lesz.
 
@@ -92,7 +89,7 @@ A felső ügyfelek kéréseire egyik arra, hogy a szöveg vagy egy e-mailt küld
 A riasztási szabályt létrehozni, akkor először hozzon létre egy napló keressen rá a DSC jelentés azt jelzi, hogy a riasztás kell meghívnia.  Kattintson a **riasztás** gombra kattintva hozza létre és konfigurálja a riasztási szabályt.
 
 1. A napló elemzés áttekintése lapon kattintson **naplófájl-keresési**.
-1. A riasztás napló keresési lekérdezés létrehozásához írja be a következő keresést a lekérdezés mezőbe:`Type=AzureDiagnostics Category=DscNodeStatus NodeName_s=DSCTEST1 OperationName=DscNodeStatusData ResultType=Failed`
+1. A riasztás napló keresési lekérdezés létrehozásához írja be a következő keresést a lekérdezés mezőbe:  `Type=AzureDiagnostics Category=DscNodeStatus NodeName_s=DSCTEST1 OperationName=DscNodeStatusData ResultType=Failed`
 
   Ha állított be naplók egynél több Automation-fiók vagy előfizetés a munkaterületet, csoportosíthatók a a riasztások előfizetés és az Automation-fiók.  
   Automation-fiók nevét a DscNodeStatusData keresése erőforrás mezője származtatható.  
@@ -104,7 +101,7 @@ Egy Naplóelemzési előnye, hogy a csomópontok közötti sikertelen ellenőrz�
 Találja DSC-erőforrások, melyeknél nem sikerült az összes példányát.
 
 1. A napló elemzés áttekintése lapon kattintson **naplófájl-keresési**.
-1. A riasztás napló keresési lekérdezés létrehozásához írja be a következő keresést a lekérdezés mezőbe:`Type=AzureDiagnostics Category=DscNodeStatus OperationName=DscResourceStatusData ResultType=Failed`
+1. A riasztás napló keresési lekérdezés létrehozásához írja be a következő keresést a lekérdezés mezőbe:  `Type=AzureDiagnostics Category=DscNodeStatus OperationName=DscResourceStatusData ResultType=Failed`
 
 ### <a name="view-historical-dsc-node-status"></a>Korábbi DSC csomópont állapotának megtekintése
 
@@ -131,7 +128,7 @@ Azure Automation diagnosztika rekordok két kategóriába Naplóelemzési hoz l�
 | DscReportStatus |Ellenőrizze, hogy a megfelelőségi sikeresen lefutott. |
 | ConfigurationMode | A konfiguráció alkalmazásának a módját a csomópontra. A lehetséges értékek: __"ApplyOnly"__,__"ApplyandMonitior"__, és __"ApplyandAutoCorrect"__. <ul><li>__ApplyOnly__: DSC konfigurációjának alkalmazására szolgál, és nincs semmi hatása további, kivéve, ha az új konfiguráció célcsomóponton, vagy ha egy kiszolgáló új konfigurációt van lekért fejlesztőre. Az új konfiguráció első alkalmazása után DSC nem ellenőrzi a korábban konfigurált állapotból eltéréseket. A konfiguráció alkalmazásához, amíg az nem lesz sikeres, mielőtt megpróbálja DSC __ApplyOnly__ lép érvénybe. </li><li> __ApplyAndMonitor__: Ez az az alapértelmezett érték. A LCM alkalmazza minden új konfigurációt. Az új konfiguráció első alkalmazása után a célcsomóponton drifts kívánt állapotból, ha DSC jelent a naplókban az eltérés. A konfiguráció alkalmazásához, amíg az nem lesz sikeres, mielőtt megpróbálja DSC __ApplyAndMonitor__ lép érvénybe.</li><li>__ApplyAndAutoCorrect__: DSC alkalmazza minden új konfigurációt. Az új konfiguráció első alkalmazása után a célcsomópont drifts kívánt állapotból, ha DSC jelent a naplókban az eltérés, és majd újra alkalmazza a jelenlegi konfiguráció.</li></ul> |
 | HostName_s | A felügyelt csomópont neve. |
-| IP-cím | A felügyelt csomóponthoz IPv4-címét. |
+| IPAddress | A felügyelt csomóponthoz IPv4-címét. |
 | Kategória | DscNodeStatus |
 | Erőforrás | Az Azure Automation-fiók neve. |
 | Tenant_g | A hívónak a bérlői azonosító GUID. |
@@ -146,7 +143,7 @@ Azure Automation diagnosztika rekordok két kategóriába Naplóelemzési hoz l�
 | ResultDescription | Ez a művelet leírását. |
 | SubscriptionId | Az Azure-előfizetés azonosítója (GUID) az Automation-fiókhoz. |
 | ResourceGroup | Az erőforráscsoport neve az Automation-fiók. |
-| ResourceProvider | MICROSOFT. AUTOMATIZÁLÁS |
+| ResourceProvider | MICROSOFT.AUTOMATION |
 | ResourceType | AUTOMATIONACCOUNTS |
 | CorrelationId |A megfelelőségi jelentés korrelációs azonosítója GUID. |
 
@@ -177,11 +174,11 @@ Azure Automation diagnosztika rekordok két kategóriába Naplóelemzési hoz l�
 | ResultDescription | Ez a művelet leírását. |
 | SubscriptionId | Az Azure-előfizetés azonosítója (GUID) az Automation-fiókhoz. |
 | ResourceGroup | Az erőforráscsoport neve az Automation-fiók. |
-| ResourceProvider | MICROSOFT. AUTOMATIZÁLÁS |
+| ResourceProvider | MICROSOFT.AUTOMATION |
 | ResourceType | AUTOMATIONACCOUNTS |
 | CorrelationId |A megfelelőségi jelentés korrelációs azonosítója GUID. |
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
 Az Automation DSC adatokat küld a Naplóelemzési, az Automation DSC-csomópontok által állapotának jobb betekintést kaphat:
 
@@ -190,7 +187,7 @@ Az Automation DSC adatokat küld a Naplóelemzési, az Automation DSC-csomópont
 
 A Naplóelemzési az Automation DSC adatait működési áttekinthetősége biztosít, és gyorsabban segít a cím incidensek.  
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Különböző keresési lekérdezések összeállításához, és tekintse át a Automation DSC a Naplóelemzési kapcsolatos további tudnivalókért lásd: [Log Analytics-e jelentkezni a keresések](../log-analytics/log-analytics-log-searches.md)
 * Azure Automation DSC használatával kapcsolatos további tudnivalókért lásd: [Ismerkedés az Azure Automation DSC](automation-dsc-getting-started.md)

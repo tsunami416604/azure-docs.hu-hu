@@ -3,8 +3,9 @@ title: "Használja az Azure Machine Learning webszolgáltatás-paramétereket |}
 description: "Hogyan használható az Azure Machine Learning webszolgáltatás-paramétereket a webszolgáltatás elérésekor a modell működésének módosítása céljából."
 services: machine-learning
 documentationcenter: 
-author: raymondlaghaeian
-manager: jhubbard
+author: aashishb
+ms.author: aashishb
+manager: hjerez
 editor: cgronlun
 ms.assetid: c49187db-b976-4731-89d6-11a0bf653db1
 ms.service: machine-learning
@@ -13,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/12/2017
-ms.author: raymondl;garye
-ms.openlocfilehash: 715ea008b84c1a503661394da14e8af167327941
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 41b35b8160c777c8598a30e2d775d997e06438f0
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="use-azure-machine-learning-web-service-parameters"></a>Az Azure Machine Learning webszolgáltatás paramétereinek használata
 Az Azure Machine Learning webszolgáltatás közzététele, amely konfigurálható paraméterekkel lehetővé tevő modulokat tartalmaz a kísérlet hozta létre. Bizonyos esetekben érdemes lehet a modul megváltozzon, miközben fut a webes szolgáltatás. *Webszolgáltatási paramétereket* engedélyezi, hogy a feladat végrehajtásához. 
@@ -53,7 +53,7 @@ Tegyük fel, tételezzük fel, hogy az a kísérlet van egy [adatok exportálás
    * A **adja meg a hitelesítési típus**, jelölje be az "Account".
    * Írja be az Azure blob storage fiók adatait. 
      <p />
-3.Kattintson a jobb oldalán ikonra a **elérési útját a blob-tároló paraméter-tól kezdődően**. Néz ki:
+3. Kattintson a jobb oldalán ikonra a **elérési útját a blob-tároló paraméter-tól kezdődően**. Néz ki:
    
    ![Webes szolgáltatás paraméter ikon][icon]
    

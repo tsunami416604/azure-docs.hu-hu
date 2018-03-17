@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/01/2017
+ms.date: 03/16/2018
 ms.author: vturecek
-ms.openlocfilehash: 101ea717816fa2eb9fa9ae25cef21df67cf6ef9c
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: dbd8508a7f55b8b5fdf53912d2189a18ef504193
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="get-started-with-reliable-services"></a>Ismerkedés a Reliable Services használatával
 > [!div class="op_single_selector"]
@@ -27,7 +27,7 @@ ms.lasthandoff: 01/24/2018
 > 
 > 
 
-Az Azure Service Fabric-alkalmazás egy vagy több olyan szolgáltatás, amely az Ön kódjának futtatásához tartalmazza. Ez az útmutató bemutatja, hogy az állapotmentes és állapotalapú mind a Service Fabric-alkalmazások létrehozása [Reliable Services](service-fabric-reliable-services-introduction.md).  A Microsoft Virtual Academy videó is bemutatja, hogyan hozzon létre egy megbízható állapotmentes szolgáltatások:<center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=s39AO76yC_7206218965">  
+Az Azure Service Fabric-alkalmazás egy vagy több olyan szolgáltatás, amely az Ön kódjának futtatásához tartalmazza. Ez az útmutató bemutatja, hogy az állapotmentes és állapotalapú mind a Service Fabric-alkalmazások létrehozása [Reliable Services](service-fabric-reliable-services-introduction.md).  A Microsoft Virtual Academy videó is bemutatja, hogyan hozzon létre egy megbízható állapotmentes szolgáltatások: <center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=s39AO76yC_7206218965">  
 <img src="./media/service-fabric-reliable-services-quick-start/ReliableServicesVid.png" WIDTH="360" HEIGHT="244">  
 </a></center>
 
@@ -46,7 +46,7 @@ Indítsa el a Visual Studio 2015-öt vagy a Visual Studio 2017 rendszergazdakén
 
 ![Az új projekt párbeszédpanel segítségével hozzon létre egy új Service Fabric-alkalmazás](media/service-fabric-reliable-services-quick-start/hello-stateless-NewProject.png)
 
-Majd létre szeretne hozni egy állapotmentes szolgáltatások nevű projekt *HelloWorldStateless*:
+Ezután hozzon létre egy állapotmentes szolgáltatások projektet a **.Net 2.0 alapvető** nevű *HelloWorldStateless*:
 
 ![A második párbeszédpanelen állapotmentes szolgáltatások-projekt létrehozása](media/service-fabric-reliable-services-quick-start/hello-stateless-NewProject2.png)
 
@@ -97,7 +97,7 @@ protected override async Task RunAsync(CancellationToken cancellationToken)
     {
         cancellationToken.ThrowIfCancellationRequested();
 
-        ServiceEventSource.Current.ServiceMessage(this, "Working-{0}", ++iterations);
+        ServiceEventSource.Current.ServiceMessage(this.Context, "Working-{0}", ++iterations);
 
         await Task.Delay(TimeSpan.FromSeconds(1), cancellationToken);
     }
@@ -113,7 +113,7 @@ A platform ezt a módszert hívja, ha a szolgáltatás egy példánya elhelyezet
 
 A vezénylési kezeli a rendszer megtartani a szolgáltatást, magas rendelkezésre állású és megfelelően kiegyensúlyozott.
 
-`RunAsync()`meg nem blokkolják szinkron módon történik. RunAsync megvalósítását kell vissza egy feladatot, vagy folytatja a futtatókörnyezet engedélyezi a hosszan futó vagy blokkoló műveleteket a await. Vegye figyelembe, hogy a `while(true)` az előző példában a feladatot visszaadó hurok `await Task.Delay()` szolgál. Ha a terhelést a szinkron módon kell blokkolja, olyan időszakra ütemezze egy új feladatot `Task.Run()` a a `RunAsync` végrehajtására.
+`RunAsync()` meg nem blokkolják szinkron módon történik. RunAsync megvalósítását kell vissza egy feladatot, vagy folytatja a futtatókörnyezet engedélyezi a hosszan futó vagy blokkoló műveleteket a await. Vegye figyelembe, hogy a `while(true)` az előző példában a feladatot visszaadó hurok `await Task.Delay()` szolgál. Ha a terhelést a szinkron módon kell blokkolja, olyan időszakra ütemezze egy új feladatot `Task.Run()` a a `RunAsync` végrehajtására.
 
 A számítási feladatok megszakítását egy együttműködési elérhető a megadott cancellation jogkivonat által összehangolva. A rendszer várakozik a feladat befejezéséhez (által sikeres befejezése, megszakítása vagy hiba), mielőtt az átvitel során. Fontos, hogy a megszakítási token tiszteletben, Befejezés munka és kilépés `RunAsync()` lehető leggyorsabban tegye, amikor a rendszer törlését kéri.
 
@@ -128,7 +128,7 @@ Ugyanazon *HelloWorld* alkalmazás, adhat hozzá egy új szolgáltatás kattints
 
 ![Szolgáltatás hozzáadása a Service Fabric-alkalmazás](media/service-fabric-reliable-services-quick-start/hello-stateful-NewService.png)
 
-Válassza ki **állapotalapú alkalmazások és szolgáltatások szolgáltatás** és adjon neki nevet *HelloWorldStateful*. Kattintson az **OK** gombra.
+Válassza ki **.Net Core 2.0 -> állapotalapú alkalmazások és szolgáltatások szolgáltatás** és adjon neki nevet *HelloWorldStateful*. Kattintson az **OK** gombra.
 
 ![Az új projekt párbeszédpanel segítségével hozzon létre egy új állapotalapú Service Fabric-szolgáltatás](media/service-fabric-reliable-services-quick-start/hello-stateful-NewProject.png)
 
@@ -154,7 +154,7 @@ protected override async Task RunAsync(CancellationToken cancellationToken)
         {
             var result = await myDictionary.TryGetValueAsync(tx, "Counter");
 
-            ServiceEventSource.Current.ServiceMessage(this, "Current Counter Value: {0}",
+            ServiceEventSource.Current.ServiceMessage(this.Context, "Current Counter Value: {0}",
                 result.HasValue ? result.Value.ToString() : "Value does not exist.");
 
             await myDictionary.AddOrUpdateAsync(tx, "Counter", 0, (key, value) => ++value);
@@ -169,7 +169,7 @@ protected override async Task RunAsync(CancellationToken cancellationToken)
 ```
 
 ### <a name="runasync"></a>RunAsync
-`RunAsync()`az állapot nélküli és állapotalapú alkalmazások és szolgáltatások hasonlóan működnek. Azonban az állapotalapú service, a platform hajt végre további feladata az Ön nevében végrehajtása előtt `RunAsync()`. Ez a munkahelyi tartalmazhatnak, ezzel biztosítható, hogy a megbízható állapotkezelője és megbízható gyűjtemények rendszer készen áll a használatra.
+`RunAsync()` az állapot nélküli és állapotalapú alkalmazások és szolgáltatások hasonlóan működnek. Azonban az állapotalapú service, a platform hajt végre további feladata az Ön nevében végrehajtása előtt `RunAsync()`. Ez a munkahelyi tartalmazhatnak, ezzel biztosítható, hogy a megbízható állapotkezelője és megbízható gyűjtemények rendszer készen áll a használatra.
 
 ### <a name="reliable-collections-and-the-reliable-state-manager"></a>Megbízható gyűjtemények és a megbízható állapot-kezelő
 ```csharp

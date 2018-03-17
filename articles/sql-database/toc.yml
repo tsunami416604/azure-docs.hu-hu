@@ -380,7 +380,6 @@
             - name: Bérlők kiosztása
               href: saas-standaloneapp-provision-and-catalog.md
         - name: Bérlőnkénti adatbázis
-          href: saas-dbpertenant-wingtip-app-overview.md
           items:
             - name: Bevezetés az oktatóanyagba
               href: saas-dbpertenant-wingtip-app-overview.md

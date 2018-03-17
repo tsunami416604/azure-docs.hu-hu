@@ -1,24 +1,18 @@
 ---
-title: "Az Azure Automationben változó eszközök |} Microsoft Docs"
+title: "Az Azure Automationben változó eszközök"
 description: "Változó eszközök értékeket összes forgatókönyve és az Azure Automation DSC-konfiguráció számára elérhető.  Ez a cikk ismerteti a változók és a szöveges és a grafikus szerzői őket munkavégzés részleteit."
 services: automation
-documentationcenter: 
-author: georgewallace
-manager: carmonm
-editor: tysonn
-ms.assetid: b880c15f-46f5-4881-8e98-e034cc5a66ec
 ms.service: automation
-ms.devlang: na
+author: georgewallace
+ms.author: gwallace
+ms.date: 03/16/2018
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 03/07/2018
-ms.author: magoedte;bwren
-ms.openlocfilehash: 2ed4cf16615a0ca1789b789a635de564af568eb9
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+manager: carmonm
+ms.openlocfilehash: 7c36fce380712da6572e9512a05af9c23c4152a2
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="variable-assets-in-azure-automation"></a>Az Azure Automationben változó eszközök
 
@@ -34,8 +28,8 @@ Automatizálási változók megmaradnak, így azok továbbra is elérhetők, mé
 
 Egy változó létrehozásakor megadhatja, hogy tárolt titkosított. Ha titkosított változó, az Azure Automation tárolja biztonságos helyen és az értéke nem lehet beolvasni a [Get-AzureRmAutomationVariable](/powershell/module/AzureRM.Automation/Get-AzureRmAutomationVariable) parancsmagot tartalmaz, az Azure PowerShell modul részét képezi. Származik, csak úgy lehetséges, hogy egy titkosított értéke lehet beolvasni a **Get-AutomationVariable** tevékenység egy runbookot vagy a DSC-konfiguráció.
 
-> [!NOTE]
-> Az Azure Automationben biztonságos eszközök közé tartozik a hitelesítő adatokat, a tanúsítványokat, a kapcsolatok és a titkosított változók. Ezek az eszközök titkosítva, és tárolja az Azure Automation létrehozott egyedi kulcs segítségével minden egyes automation-fiókhoz. Ezt a kulcsot egy mestertanúsítvány titkosítja és az Azure Automationben tárolja. Előtt tárolása biztonságos eszköz, az automatizálási fiók kulcs visszafejtése a mestertanúsítvány, és majd az eszköz titkosításához használt.
+>[!NOTE]
+>Az Azure Automationben biztonságos eszközök közé tartozik a hitelesítő adatokat, a tanúsítványokat, a kapcsolatok és a titkosított változók. Ezek az eszközök titkosítva, és tárolja az Azure Automationben létrehozott egyedi kulcs segítségével minden egyes automation-fiókhoz. Ezt a kulcsot a Key Vault van tárolva. A kulcs tárolása biztonságos eszköz, mielőtt Key Vault betöltődnek és majd az eszköz titkosításához használt.
 
 ## <a name="variable-types"></a>Változó típusa
 

@@ -1,24 +1,18 @@
 ---
-title: "Indítása/leállítása virtuális gépek során munkaidőn kívüli megoldás (előzetes verzió) |} Microsoft Docs"
+title: "Indítása/leállítása virtuális gépek során munkaidőn kívüli megoldás (előzetes verzió)"
 description: "A Virtuálisgép-felügyeleti megoldás elindul, és leállítja az Azure Resource Manager virtuális gépek ütemezés szerint, és a Naplóelemzési proaktív figyeli."
 services: automation
-documentationCenter: 
-authors: eslesar
-manager: carmonm
-editor: 
-ms.assetid: 06c27f72-ac4c-4923-90a6-21f46db21883
 ms.service: automation
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: georgewallace
+ms.author: gwallace
+ms.date: 03/16/2018
 ms.topic: article
-ms.date: 12/18/2017
-ms.author: magoedte
-ms.openlocfilehash: 7ffd424de2a7224b5ac50fa228289c5397092b2e
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+manager: carmonm
+ms.openlocfilehash: ec15859a92527c4e084075b40d3439d7a19fea1a
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="startstop-vms-during-off-hours-solution-preview-in-azure-automation"></a>Indítása/leállítása virtuális gépek során munkaidőn kívüli megoldás (előzetes verzió) az Azure Automationben
 
@@ -195,7 +189,7 @@ Teszteléséhez, és a konfiguráció érvényesítéséhez, manuálisan indíts
 ### <a name="scenario-2-sequence-the-startstop-vms-across-a-subscription-by-using-tags"></a>2. forgatókönyv: A indítása/leállítása virtuális gépek egy előfizetésből feladatütemezési címkék használatával
 Egy olyan környezetben, egy elosztott terheléseknél engedélyezett támogató több virtuális gépekre két vagy több összetevője is megtalálható összetevők elindul vagy leáll, amelyben a feladatütemezési támogatása érdekében fontos.  Ez a következő lépések elvégzésével érhető el:
 
-1. Adja hozzá a **SequenceStart** és egy **SequenceStop** pozitív egész értéket a virtuális gépekhez, amelyek a címkézés **External_Start_ResourceGroupNames** és ** External_Stop_ResourceGroupNames** változók.  A kezdési és befejezési műveletek növekvő sorrendben kell végrehajtani.  A virtuális gépek címkézésére, lásd: [címke Windows virtuális gépként az Azure-ban](../virtual-machines/windows/tag.md) és [Linux virtuális gépek címke az Azure-ban](../virtual-machines/linux/tag.md).
+1. Adja hozzá a **SequenceStart** és egy **SequenceStop** pozitív egész értéket a virtuális gépekhez, amelyek a címkézés **External_Start_ResourceGroupNames** és  **External_Stop_ResourceGroupNames** változók.  A kezdési és befejezési műveletek növekvő sorrendben kell végrehajtani.  A virtuális gépek címkézésére, lásd: [címke Windows virtuális gépként az Azure-ban](../virtual-machines/windows/tag.md) és [Linux virtuális gépek címke az Azure-ban](../virtual-machines/linux/tag.md).
 2. A ütemezésének módosítása **Sequenced-StartVM** és **Sequenced-StopVM** dátumát és idejét, amelyek megfelelnek az elvárásainak, és engedélyezi az ütemezést.  
 
 Teszteléséhez, és a konfiguráció érvényesítéséhez, manuálisan indítsa el a **SequencedStartStop_Parent** runbook. A művelet paraméternek **start** vagy **leállítása** és a WHATIF paraméter **igaz**.<br><br> ![A runbook paramétereinek a konfigurálása](media/automation-solution-vm-management/solution-startrunbook-parameters-01.png)<br> Tekintse meg a műveletet, és az üzemi virtuális gépek elleni implementálása előtt végezze el a szükséges módosításokat.  Kész, manuálisan végrehajtása közben a runbook a paraméter értéke **hamis**, illetve engedélyezheti, hogy az automatizálás ütemezést **Sequenced-StartVM** és **Sequenced-StopVM** futtatása az előírt ütemezés automatikusan követően.  

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: f1def2a43edee58bc8b5a33880e206130a1b4687
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: b5269bb51c787c927b4224b3520d5514b6d24501
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="durable-functions-overview-preview"></a>Tartós Functions áttekintése (előzetes verzió)
 
@@ -153,44 +153,43 @@ public static async Task<HttpResponseMessage> Run(
 
 A [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) `starter` paraméter értéke az a `orchestrationClient` kimeneti, kötelező, amely a tartós funkciók bővítmény része. Módszerek kezdési, küldő az események, leáll, és lekérdezi-e új vagy meglévő orchestrator-funkció példányok biztosít. A fenti példában egy HTTP indított-függvény veszi a `functionName` értéket a bejövő URL-cím és, hogy egy érték fázisok [StartNewAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_StartNewAsync_). A kötés API majd visszaküldi a választ, amely tartalmazza a `Location` fejléc és a példányon, amely később segítségével keressen további információt a elindított példány állapotának regisztrálnia, vagy állítsa le azt.
 
-## <a name="pattern-4-stateful-singletons"></a>#4. szabály: Állapot-nyilvántartó singletons
+## <a name="pattern-4-monitoring"></a>#4 mintát: figyelése
 
-A legtöbb függvények van egy explicit kezdő és záró, és nem közvetlenül kommunikál a külső eseményforrások. Azonban álló üzenettípusok összehangolását támogatja a [egypéldányos állapot-nyilvántartó](durable-functions-singletons.md) mintát, amely lehetővé teszi, hogy azok viselkedését, például a megbízható [szereplője](https://en.wikipedia.org/wiki/Actor_model) elosztott számítástechnikai.
+A figyelő mintát hivatkozik egy rugalmas *ismétlődő* folyamat például a munkafolyamat - lekérdezés csak bizonyos feltételek teljesülnek. Egy rendszeres időzítő indítófeltételt kezelheti egy egyszerű forgatókönyv, például a rendszeres karbantartási feladat, de az intervallumon statikus, példány élettartamát kezelése bonyolult válik. Tartós funkciók lehetővé teszi a rugalmas ismételt időszakok, a feladat életciklusának kezelését és a használatával hozhat létre több monitor folyamatok egyetlen vezénylési lehetőséget.
 
-A következő ábra szemlélteti a függvény fut e végtelen ciklusban külső forrásból származó események feldolgozása közben.
+Példa a korábbi aszinkron HTTP API forgatókönyv volna lehet felcserélni. Ahelyett, hogy az ilyen végpont egy külső ügyfél figyelését egy hosszú ideig futó művelet, a hosszan futó figyelő használ fel külső végpont néhány állapotváltozás vár.
 
-![Egypéldányos állapot-nyilvántartó diagramja](media/durable-functions-overview/stateful-singleton.png)
+![A figyelő diagramja](media/durable-functions-overview/monitor.png)
 
-Míg a tartós funkciók nem szereplő modell megvalósítását, orchestrator funkciók futásidejű azonos jellemzőkkel számos rendelkezik. Például a hosszan futó (valószínűleg végtelen), állapotalapú, megbízható, egyszálas, hely-átlátható és globálisan címezhető. Így az orchestrator funkciók hasznos, ha "szereplő"-forgatókönyvek, például.
-
-A szokványos függvények olyan állapot nélküli és ezért nem alkalmazható egy egypéldányos állapot-nyilvántartó mintát végrehajtásához. A tartós funkciók bővítmény azonban az állapot-nyilvántartó egypéldányos mintát viszonylag trivial megvalósításához. Az alábbi kódot, akkor egy egyszerű orchestrator függvény, amely egy számlálót.
+Tartós funkciókat használ, több monitor, ahol a tetszőleges végpontot néhány sornyi kód hozhatók létre. A figyelők végrehajtásának befejezése bizonyos feltétel teljesül, vagy azonnali hatállyal a [DurableOrchestrationClient](durable-functions-instance-management.md), és a várakozási időközt módosíthatja a bizonyos feltétel (például az exponenciális leállítási.) A következő kód egy alapszintű figyelő valósítja meg.
 
 ```cs
 public static async Task Run(DurableOrchestrationContext ctx)
 {
-    int counterState = ctx.GetInput<int>();
-
-    string operation = await ctx.WaitForExternalEvent<string>("operation");
-    if (operation == "incr")
+    int jobId = ctx.GetInput<int>();
+    int pollingInterval = GetPollingInterval();
+    DateTime expiryTime = GetExpiryTime();
+    
+    while (ctx.CurrentUtcDateTime < expiryTime) 
     {
-        counterState++;
-    }
-    else if (operation == "decr")
-    {
-        counterState--;
+        var jobStatus = await ctx.CallActivityAsync<string>("GetJobStatus", jobId);
+        if (jobStatus == "Completed")
+        {
+            // Perform action when condition met
+            await ctx.CallActivityAsync("SendAlert", machineId);
+            break;
+        }
+
+        // Orchestration will sleep until this time
+        var nextCheck = ctx.CurrentUtcDateTime.AddSeconds(pollingInterval);
+        await ctx.CreateTimer(nextCheck, CancellationToken.None);
     }
 
-    ctx.ContinueAsNew(counterState);
+    // Perform further work here, or let the orchestration end
 }
 ```
 
-Ez a kód, mint "eternal vezénylési" lehet, hogy ismertetik &mdash; Ez azt jelenti, amelyik elindul, és soha nem ér véget. Ez végrehajtja a következő lépéseket:
-
-* A bemeneti értékkel kezdődik `counterState`.
-* Egy üzenet határozatlan ideig vár nevű `operation`.
-* Hajt végre bizonyos logika helyi állapotát.
-* "Újraindítja a" saját magát meghívásával `ctx.ContinueAsNew`.
-* Várja újra meghatározatlan ideig a következő művelet.
+Amikor egy kérelem érkezik, egy új vezénylési példány létrehozásakor a feladat azonosítóját. A példány állapota kérdezi le, amíg a feltétel teljesül, és a hurok van kilépett. Tartós időzítő segítségével szabályozhatja a lekérdezési időközt. További munkára majd hajtható végre, vagy az orchestration fejezheti. Ha a `ctx.CurrentUtcDateTime` meghaladja a `expiryTime`, a figyelő végpontok.
 
 ## <a name="pattern-5-human-interaction"></a>#5. minta: Emberi beavatkozást igényel
 

@@ -13,13 +13,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/10/2017
+ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: a3e4c989c1dbb31b237115acfcc032aa2dee4f2a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f74b5c68c2c04eebc1d6f1e59fac8cbb11fef46a
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="introduction-to-the-deep-learning-virtual-machine"></a>A Virtual Machine Learning mély bemutatása
 
@@ -30,11 +30,11 @@ Egyre, mély tanulási algoritmus / mély Neurális hálózatokat egyre számos 
 ## <a name="what-is-deep-learning-virtual-machine"></a>Mi az a mély tanulási virtuális gépet? 
 A részletes tanulási virtuális gép egy kifejezetten konfigurált változata a [adatok tudományos virtuális gép](overview.md) (DSVM) abba, hogy egyszerűbb GPU-alapú virtuális gép használata a részletes tanulási modellek betanítása példányának. A Windows 2016 és az Ubuntu adatok tudományos virtuális gép támogatott.  Közösen használja az ugyanazon alapvető VM-lemezképekkel (és így a gazdag eszközkészlet), a DSVM azonban úgy van konfigurálva, a részletes tanulási megkönnyítése. Is biztosítunk végpont minták a lemezkép és a szöveges ismertetése, amelyek több valós AI forgatókönyv körben vonatkoznak. A mély tanulási virtuális géphez is megpróbál eszközök és minták számos a DSVM a könnyebben felderíthetők által felszínre hozza a katalógus az eszközöket és minták a virtuális gépen. A tooling tekintetében a mély tanulási virtuális gépet biztosít a számos népszerű mély tanulási keretrendszerek, eszközök beszerzése és előre folyamatok kép, a szöveges adatokat. Az eszközök átfogó listáját, olvassa el a [tudományos virtuális gép – Áttekintés lap](overview.md#whats-included-in-the-data-science-vm). 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerkedés a mély tanulási rendelkező virtuális gépet a következő lépéseket:
 
 * [A Virtual Machine Learning mély kiépítése](provision-deep-learning-dsvm.md)
 * [A Virtual Machine Learning mély használata](use-deep-learning-dsvm.md)
 * [Eszköz-hivatkozás](dsvm-deep-learning-ai-frameworks.md)
-* [Példák](dsvm-samples-and-walkthroughs.md)
+* [Minták](dsvm-samples-and-walkthroughs.md)

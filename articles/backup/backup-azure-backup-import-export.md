@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 2/6/2018
 ms.author: saurse;nkolli;trinadhk
-ms.openlocfilehash: 306c4c7498601cf3ab7e918ba6ce6bfef173236a
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 7af2623a25f73f6d9062d476309ecd53da542f70
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="offline-backup-workflow-in-azure-backup"></a>Offline biztonsági mentési munkafolyamat az Azure Backupban
 Azure biztonsági mentés számos beépített hatékonyság, hálózati és tárolási költségek csökkentése során a kezdeti teljes biztonsági mentés az Azure-bA rendelkezik. Kezdeti teljes biztonsági mentés általában nagy adatmennyiségek átvitelét, és azt követő biztonsági mentéseket, amely csak az eltérések/növekményes átviteli képest nagyobb hálózati sávszélesség szükséges. Azure biztonsági mentés tömöríti a kezdeti biztonsági mentéseket. A folyamatot, amely offline összehangolása Azure biztonsági mentési lemezek is használhatók a tömörített kezdeti biztonsági másolati adatokat kapcsolat nélküli feltöltése az Azure-bA.  
@@ -46,6 +46,8 @@ Offline biztonsági másolat az Azure Backup szolgáltatás, amely külső helys
 
    > [!NOTE]
    > Offline biztonsági másolat nem támogatott a rendszerállapot biztonsági mentéshez az Azure Backup-ügynök használatával történik. 
+
+[!INCLUDE [backup-upgrade-mars-agent.md](../../includes/backup-upgrade-mars-agent.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 Győződjön meg arról, hogy a következő előfeltételek teljesülnek-e a kapcsolat nélküli biztonsági mentés munkafolyamat kezdeményezése előtt

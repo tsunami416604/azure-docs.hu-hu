@@ -1,25 +1,23 @@
 ---
-title: "Egy JSON-objektum átadása egy Azure Automation-runbook |} Microsoft Docs"
+title: "JSON-objektum továbbítása Azure Automation-runbookba"
 description: "Egy runbook JSON-objektumként paraméterek továbbítása"
 services: automation
-documentationcenter: dev-center-name
-author: georgewallace
-manager: carmonm
-keywords: PowerShell, a runbook, json, az azure automation
 ms.service: automation
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: powershell
-ms.workload: TBD
-ms.date: 06/15/2017
+author: georgewallace
 ms.author: gwallace
-ms.openlocfilehash: 5390ba34a25713aed84d6e778335e30f27c2b1f8
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.date: 03/16/2018
+ms.topic: article
+manager: carmonm
+ms.devlang: na
+ms.tgt_pltfrm: na
+keywords: PowerShell, a runbook, json, az azure automation
+ms.openlocfilehash: c5ceced9f37cb76c8c760a7f2d1c680f98e704c3
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/17/2018
 ---
-# <a name="pass-a-json-object-to-an-azure-automation-runbook"></a>Egy JSON-objektum átadása egy Azure Automation-runbook
+# <a name="pass-a-json-object-to-an-azure-automation-runbook"></a>JSON-objektum továbbítása Azure Automation-runbookba
 
 Lehet hasznos, ha szeretné, hogy egy runbook egy JSON-fájlban használni kívánt adatok tárolásához.
 Például előfordulhat, hogy hozzon létre egy JSON-fájl, amely tartalmazza az összes runbook átadni kívánt paramétert.
@@ -90,7 +88,7 @@ Futtassa a következő PowerShell-parancsokat:
     ```powershell
     $json =  (Get-content -path 'JsonPath\test.json' -Raw) | Out-string
     ```
-    `JsonPath`az elérési utat, ahová mentette a JSON-fájl van.
+    `JsonPath` az elérési utat, ahová mentette a JSON-fájl van.
 1. Karakterlánc tartalmát `$json` PowerShell objektumhoz:
    ```powershell
    $JsonParams = @{"json"=$json}
@@ -105,14 +103,14 @@ Futtassa a következő PowerShell-parancsokat:
    }
    ```
    Figyelje meg, az értéke határozza meg `Parameters` és a PowerShell-objektum, amely tartalmazza a JSON-fájl értékeinek. 
-1. Elindítja a runbookot
+1. A runbook indítása
    ```powershell
    $job = Start-AzureRmAutomationRunbook @RBParams
    ```
 
 A runbook értékeket használja a JSON-fájlt a virtuális gép elindításához.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Szöveges szerkesztővel PowerShell és a PowerShell-munkafolyamati forgatókönyvek szerkesztésével kapcsolatos további tudnivalókért lásd: [szöveges az Azure Automation runbookjai szerkesztése](automation-edit-textual-runbook.md) 
 * További információ létrehozása és importálása a runbookok további tudnivalókért lásd: [létrehozása vagy egy Azure Automation forgatókönyv importálása](automation-creating-importing-runbook.md)

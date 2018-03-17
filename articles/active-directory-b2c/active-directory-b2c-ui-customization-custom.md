@@ -14,11 +14,11 @@ ms.topic: article
 ms.devlang: na
 ms.date: 04/04/2017
 ms.author: saeedakhter-msft
-ms.openlocfilehash: c430b488016f038ed1d7a67a8d52c057df1ea40e
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: dcd8b6df68a68f5feb428b4fd98aee938b3bfe6c
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="azure-active-directory-b2c-configure-ui-customization-in-a-custom-policy"></a>Az Azure Active Directory B2C: Egyéni házirendek konfigurálása a felhasználói felület testreszabása
 
@@ -30,7 +30,7 @@ Ez a cikk befejezése után fog regisztráció és bejelentkezés egyéni házir
 
 Mielőtt elkezdené, fejezze be a [Ismerkedés az egyéni házirendek](active-directory-b2c-get-started-custom.md). A regisztrációt, és jelentkezzen be helyi fiókok működő egyéni házirendet kell rendelkeznie.
 
-## <a name="page-ui-customization"></a>Lap felhasználói felületének testreszabása
+## <a name="page-ui-customization"></a>Oldal-UI testreszabása
 
 A lap felhasználói felületének testreszabása szolgáltatás segítségével testre szabhatja a bármely egyéni házirend megjelenését és működését. Kezelheti a márka és egységes megjelenést az alkalmazás és az Azure AD B2C között is.
 
@@ -106,19 +106,19 @@ Konfigurálása a Blob storage eltérő eredetű erőforrások megosztása a kö
 >Szeretné, hogy a minta HTML és CSS tartalom használatával a felhasználói felület testreszabása a szolgáltatás kipróbálásához? Mellékelt [egy egyszerű segédeszköze](active-directory-b2c-reference-ui-customization-helper-tool.md) , amely feltölti és konfigurálja a minta tartalmat a Blob storage-fiók. Ha az eszköz használatához ugorjon előre [módosítsa a regisztráció vagy bejelentkezés egyéni házirendet](#modify-your-sign-up-or-sign-in-custom-policy).
 
 1. Az a **tárolási** panel alatt **beállítások**, nyissa meg **CORS**.
-2. Kattintson az **Add** (Hozzáadás) parancsra.
+2. Kattintson a **Hozzáadás** parancsra.
 3. A **engedélyezett eredeteket**, írja be egy csillag (\*).
 4. Az a **engedélyezett műveletek** legördülő listából válassza ki, válassza ki mindkét **beolvasása** és **beállítások**.
 5. A **engedélyezett fejlécek**, írja be egy csillag (\*).
 6. A **fejlécek kitett**, írja be egy csillag (\*).
 7. A **maximális élettartama (másodperc)**, típus **200**.
-8. Kattintson az **Add** (Hozzáadás) parancsra.
+8. Kattintson a **Hozzáadás** parancsra.
 
 ## <a name="test-cors"></a>A CORS tesztelése
 
 Ellenőrizze, hogy készen áll a következő módon:
 
-1. Lépjen a [teszt-cors.org](http://test-cors.org/) webhelyen, majd illessze be az URL-címet a **távoli URL-cím** mezőbe.
+1. Lépjen a [www.test-cors.org](http://www.test-cors.org/) webhelyen, majd illessze be az URL-címet a **távoli URL-cím** mezőbe.
 2. Kattintson a **kérés küldése**.  
     Ha hibaüzenetet kap, ellenőrizze, hogy a [CORS-beállítások](#configure-cors) helyes-e. Is szükség lehet a böngésző gyorsítótárat kiürítheti, vagy egy InPrivate-böngészés munkamenet megnyitásához nyomja le a Ctrl + Shift + P.
 
@@ -149,7 +149,7 @@ A legfelső szintű alatt  *\<TrustFrameworkPolicy\>*  címke, keresse meg  *\<B
 2. Válassza ki az egyéni házirendet, feltöltött, majd kattintson a **futtatása most** gombra.
 3. Az e-mail címükkel iratkozhat fel kell lennie.
 
-## <a name="reference"></a>Referencia
+## <a name="reference"></a>Leírások
 
 Minta sablonok a felhasználói felület testreszabásával itt található:
 
@@ -161,27 +161,27 @@ A sample_templates/wingtip mappa a következő HTML-fájlokat tartalmazza:
 
 | HTML5-sablon | Leírás |
 |----------------|-------------|
-| *phonefactor.HTML* | Használja ezt a fájlt egy sablont a többtényezős hitelesítés lap. |
-| *ResetPassword.HTML* | Használja ezt a fájlt a sablont egy elfelejtett jelszó lap. |
-| *selfasserted.HTML* | Használja ezt a fájlt egy közösségi fiók regisztrációs oldalon, a helyi fiók előfizetéshez vagy egy helyi fiók bejelentkezési oldalának sablont. |
-| *Unified.HTML* | Használja ezt a fájlt egy egységes regisztráció vagy bejelentkezés lap sablont. |
-| *updateprofile.HTML* | Használja ezt a fájlt egy profil frissítés lap sablont. |
+| *phonefactor.html* | Használja ezt a fájlt egy sablont a többtényezős hitelesítés lap. |
+| *resetpassword.html* | Használja ezt a fájlt a sablont egy elfelejtett jelszó lap. |
+| *selfasserted.html* | Használja ezt a fájlt egy közösségi fiók regisztrációs oldalon, a helyi fiók előfizetéshez vagy egy helyi fiók bejelentkezési oldalának sablont. |
+| *unified.html* | Használja ezt a fájlt egy egységes regisztráció vagy bejelentkezés lap sablont. |
+| *updateprofile.html* | Használja ezt a fájlt egy profil frissítés lap sablont. |
 
 Az a [módosítása a regisztráció vagy bejelentkezés egyéni házirend szakasz](#modify-your-sign-up-or-sign-in-custom-policy), konfigurálta a tartalom definíciója `api.idpselections`. A tartalom teljes készletének meghatározása az azonosítókat, és azok leírásait tartalmazza az Azure AD B2C identitás élmény keretében felismeri az alábbi táblázatban vannak:
 
 | Tartalmi azonosító | Leírás | 
 |-----------------------|-------------|
-| *API.Error* | **Hibalap**. Ezen a lapon megjelenik, ha kivétel, vagy hiba történt. |
-| *API.idpselections* | **Identitás-szolgáltató kiválasztása lapon**. Ezen a lapon a bejelentkezés során a felhasználó választhat az identitás-szolgáltatóktól listáját tartalmazza. Ezek a beállítások esetén a vállalati identitás-szolgáltatóktól, például a Facebookhoz és a Google + közösségi Identitásszolgáltatók, vagy helyi fiók. |
-| *API.idpselections.Signup* | **Identity provider adatgyűjtésre vonatkozó felhasználói előfizetési**. Ezen a lapon a regisztráció során a felhasználó választhat az identitás-szolgáltatóktól listáját tartalmazza. Ezek a beállítások esetén a vállalati identitás-szolgáltatóktól, például a Facebookhoz és a Google + közösségi Identitásszolgáltatók, vagy helyi fiók. |
-| *API.localaccountpasswordreset* | **Elfelejtett jelszó lap**. Ez a lap tartalmaz egy képernyőn a felhasználó által végrehajtandó kezdeményezheti a jelszó alaphelyzetbe állítása.  |
-| *API.localaccountsignin* | **Helyi fiók bejelentkezési oldalának**. Ez a lap tartalmaz egy helyi fiók, az e-mail címet vagy egy felhasználónevet alapuló bejelentkezést a bejelentkezési űrlap. Az űrlap egy bemeneti szövegmező és a jelszó mező tartalmazhat. |
-| *API.localaccountsignup* | **Helyi fiók előfizetéshez**. Ezen a lapon található regisztrációs űrlap iratkozik fel egy helyi fiók, amely egy e-mail címet vagy egy felhasználónevet alapul. Az űrlap különböző bemeneti vezérlők, például szöveg beviteli mezőt, a jelszó mező, választógomb, egyetlen legördülő listák és a többszörös kiválasztási jelölőnégyzetek is tartalmazhat. |
-| *API.phonefactor* | **Többtényezős hitelesítés lap**. Ezen a lapon, a felhasználók a telefonszámok (segítségével ellenőrizheti szöveges vagy hangos) regisztráció vagy bejelentkezés során. |
-| *API.selfasserted* | **Közösségi fiók bejelentkezési oldalának**. Ezen a lapon, hogy a felhasználók kell végeznie, amikor azok az egy meglévő fiókkal a Facebook-on vagy a Google + például közösségi identitásszolgáltató regisztráljon regisztrációs űrlap tartalmazza. Ezen a lapon hasonlít az előző közösségi fiók regisztrációs oldalon, a jelszó számbeviteli mezők kivételével. |
-| *API.selfasserted.profileupdate* | **Profil update lapon**. Ezen a lapon, hogy a felhasználók használhatják a profil frissítése űrlap tartalmazza. Ezen a lapon hasonlít a közösségi fiók regisztrációs oldalon, a jelszó számbeviteli mezők kivételével. |
-| *API.signuporsignin* | **Egyesített előfizetési vagy a bejelentkezési oldal**. Ezen a lapon a regisztráció és bejelentkezés a felhasználók, akik vállalati identitás-szolgáltatóktól, például a Facebook-on vagy a Google + és helyi fiókok közösségi Identitásszolgáltatók kezeli.  |
+| *api.error* | **Hibalap**. Ezen a lapon megjelenik, ha kivétel, vagy hiba történt. |
+| *api.idpselections* | **Identitás-szolgáltató kiválasztása lapon**. Ezen a lapon a bejelentkezés során a felhasználó választhat az identitás-szolgáltatóktól listáját tartalmazza. Ezek a beállítások esetén a vállalati identitás-szolgáltatóktól, például a Facebookhoz és a Google + közösségi Identitásszolgáltatók, vagy helyi fiók. |
+| *api.idpselections.signup* | **Identity provider adatgyűjtésre vonatkozó felhasználói előfizetési**. Ezen a lapon a regisztráció során a felhasználó választhat az identitás-szolgáltatóktól listáját tartalmazza. Ezek a beállítások esetén a vállalati identitás-szolgáltatóktól, például a Facebookhoz és a Google + közösségi Identitásszolgáltatók, vagy helyi fiók. |
+| *api.localaccountpasswordreset* | **Elfelejtett jelszó lap**. Ez a lap tartalmaz egy képernyőn a felhasználó által végrehajtandó kezdeményezheti a jelszó alaphelyzetbe állítása.  |
+| *api.localaccountsignin* | **Helyi fiók bejelentkezési oldalának**. Ez a lap tartalmaz egy helyi fiók, az e-mail címet vagy egy felhasználónevet alapuló bejelentkezést a bejelentkezési űrlap. Az űrlap egy bemeneti szövegmező és a jelszó mező tartalmazhat. |
+| *api.localaccountsignup* | **Helyi fiók előfizetéshez**. Ezen a lapon található regisztrációs űrlap iratkozik fel egy helyi fiók, amely egy e-mail címet vagy egy felhasználónevet alapul. Az űrlap különböző bemeneti vezérlők, például szöveg beviteli mezőt, a jelszó mező, választógomb, egyetlen legördülő listák és a többszörös kiválasztási jelölőnégyzetek is tartalmazhat. |
+| *api.phonefactor* | **Többtényezős hitelesítés lap**. Ezen a lapon, a felhasználók a telefonszámok (segítségével ellenőrizheti szöveges vagy hangos) regisztráció vagy bejelentkezés során. |
+| *api.selfasserted* | **Közösségi fiók bejelentkezési oldalának**. Ezen a lapon, hogy a felhasználók kell végeznie, amikor azok az egy meglévő fiókkal a Facebook-on vagy a Google + például közösségi identitásszolgáltató regisztráljon regisztrációs űrlap tartalmazza. Ezen a lapon hasonlít az előző közösségi fiók regisztrációs oldalon, a jelszó számbeviteli mezők kivételével. |
+| *api.selfasserted.profileupdate* | **Profil update lapon**. Ezen a lapon, hogy a felhasználók használhatják a profil frissítése űrlap tartalmazza. Ezen a lapon hasonlít a közösségi fiók regisztrációs oldalon, a jelszó számbeviteli mezők kivételével. |
+| *api.signuporsignin* | **Egyesített előfizetési vagy a bejelentkezési oldal**. Ezen a lapon a regisztráció és bejelentkezés a felhasználók, akik vállalati identitás-szolgáltatóktól, például a Facebook-on vagy a Google + és helyi fiókok közösségi Identitásszolgáltatók kezeli.  |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a testre szabható felhasználói felületi elemeket: [beépített házirendek felhasználói felület testreszabása a referencia-útmutató](active-directory-b2c-reference-ui-customization.md).

@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/12/2018
 ms.author: arramac
 ms.custom: devcenter
-ms.openlocfilehash: 71eadc08aeb4ac197f55b6d3aac8eb6009be9107
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 90b720c174ab5730237f27d5ebb253976a70b071
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="azure-cosmos-db-getting-started-with-the-sql-api-and-net-core"></a>Azure Cosmos DB: Az SQL API-t és a .NET Core első lépések
 > [!div class="op_single_selector"]
@@ -63,7 +63,7 @@ Most pedig lássunk neki!
 
   [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
-* [!INCLUDE [cosmos-db-emulator-vs](../../includes/cosmos-db-emulator-vs.md)] 
+* Ha még nincs telepítve a Visual Studio 2017, töltse le, és az ingyenes [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/). Ha egy univerzális Windows Platform (UWP) alkalmazást fejleszt, használjon **Visual Studio 2017 15.4 verziójával** vagy újabb verzióját. Ügyeljen arra, hogy engedélyezze az **Azure Development** használatát a Visual Studio telepítése során.
     * Ha MacOS vagy Linux dolgozik, a parancssorban a .NET Core alkalmazásokat fejleszthet telepítésével a [.NET Core SDK](https://www.microsoft.com/net/core#macos) a platform, az Ön által választott. 
     * Ha Windows dolgozik, a parancssorból .NET Core alkalmazásokat fejleszthet telepítésével a [.NET Core SDK](https://www.microsoft.com/net/core#windows). 
     * A saját szerkesztővel, vagy töltse le [Visual Studio Code](https://code.visualstudio.com/), amely szabad és a Windows, Linux és MacOS működik. 

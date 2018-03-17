@@ -1,24 +1,18 @@
 ---
-title: "Verziókövetés integrálása az Azure Automation forrás |} Microsoft Docs"
+title: "Verziókövetés integrálása az Azure Automation forrás"
 description: "Ez a cikk ismerteti a verziókövetés integrálása az Azure Automation a Githubon."
 services: automation
-documentationcenter: 
-author: georgewallace
-manager: jwhit
-editor: tysonn
-ms.assetid: 224d7375-9887-44dd-b137-06ffe396a4b4
 ms.service: automation
-ms.devlang: na
+author: georgewallace
+ms.author: gwallace
+ms.date: 03/16/2018
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 09/29/2017
-ms.author: magoedte;sngun
-ms.openlocfilehash: 15e69105d4171c63b4ccef0b072bccf49a2e9ceb
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+manager: carmonm
+ms.openlocfilehash: 96b4f38ea990edcb23ae792d40651672a921a7c7
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="source-control-integration-in-azure-automation"></a>Verziókövetés integrálása az Azure Automation szolgáltatásban
 Verziókövetés integrálása lehetővé teszi az Automation-fiók egy GitHub verziókövetési tárházat a runbookok hozzárendelni. A verziókövetési rendszerrel lehetővé teszi, hogy egyszerűen együttműködni a csapatával, követni a változásokat, és visszaállíthatja a runbookok korábbi verzióiban. Például verziókezelő lehetővé teszi a fejlesztői, tesztelési vagy éles Automation-fiók, így könnyen kódot, amely a fejlesztési környezetet az éles tárhely Automation tesztelését elősegítő forrás vezérlőelemet ággal szinkronizálása fiók.

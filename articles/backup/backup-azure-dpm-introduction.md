@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2017
 ms.author: adigan;giridham;jimpark;markgal;trinadhk
-ms.openlocfilehash: c22e6fc85e88d89007107c8c3bad142ac91e9d12
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 0e547a5991c0ce00344eff6d6b77edb0e34bd62c
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="preparing-to-back-up-workloads-to-azure-with-dpm"></a>Számítási feladatok Azure-ba való biztonsági mentésének előkészítése a DPM-mel
 > [!div class="op_single_selector"]
@@ -43,27 +43,29 @@ Ez a cikk bemutatja azokat a Microsoft Azure Backup segítségével a System Cen
 [A System Center DPM](https://docs.microsoft.com/system-center/dpm/dpm-overview) készít biztonsági másolatot fájl-és alkalmazásadatok. További információ a támogatott munkaterhelésekkel található [Itt](https://docs.microsoft.com/system-center/dpm/dpm-protection-matrix). Adatok biztonsági mentése a DPM a lemezen, szalagon tárolja, vagy biztonsági mentése az Azure-ba, a Microsoft Azure Backup szolgáltatásnál. A DPM a következőképpen együttműködik az Azure Backup szolgáltatással:
 
 * **Fizikai kiszolgáló vagy a helyszíni virtuális gépként telepített DPM** – Ha a DPM fizikai kiszolgálóként vagy helyszíni Hyper-V virtuális gépként is adatok biztonsági mentését a Recovery Services-tároló lemez és szalag mellett a rendszer biztonsági mentés.
-* **Az Azure virtuális gépként telepített DPM** – a System Center 2012 R2 Update 3, a DPM telepíthető Azure virtuális gépként. Ha a DPM biztonsági másolatot készíthet adatok Azure-os lemezekre Azure virtuális gépként van telepítve a DPM Azure virtuális géphez csatolt, vagy biztonsági mentés Recovery Services-tároló által is kiszervezése a adatok tárolására.
+* **Az Azure virtuális gépként telepített DPM** – a System Center 2012 R2 Update 3, a DPM telepíthető Azure virtuális géphez. Ha a DPM Azure virtuális gépként van telepítve, adatokról biztonsági másolatot a virtuális géphez csatolt Azure lemezekre, vagy az adattárolási kiszervezése biztonsági mentést a Recovery Services-tároló által.
 
-## <a name="why-backup-from-dpm-to-azure"></a>Miért biztonsági mentését a DPM-ből az Azure-bA?
-Az Azure Backup használatával biztonsági mentéséről a DPM-kiszolgálók üzleti előnyei a következők:
+## <a name="why-back-up-dpm-to-azure"></a>Miért érdemes biztonsági másolatot készíteni a DPM az Azure-bA?
+A biztonsági másolatot a DPM-kiszolgálók Azure az üzleti előnyei a következők:
 
-* A helyszíni DPM-telepítés használhatja Azure szalagra hosszú távú központi telepítés helyett.
-* A DPM az Azure-ban történő telepítés esetén Azure Backup szolgáltatás lehetővé teszi kiszervezése tárolás az Azure lemezről, lehetővé téve a tárolást a régebbi adatokat a Recovery Services-tároló és a lemezen lévő új adatokat.
+* A helyszíni DPM-telepítés használata Azure szalagra hosszú távú központi telepítés helyett.
+* Egy Azure-ban a DPM telepítéséhez, a lemezt az Azure storage-kiszervezés. Régebbi adatok tárolását a Recovery Services-tároló lehetővé teszi az üzleti növelheti a lemezre új adatokat tárol.
 
 ## <a name="prerequisites"></a>Előfeltételek
 Készítse elő az Azure biztonsági mentési adatainak biztonsági mentése a DPM az alábbiak szerint:
 
 1. **Recovery Services-tároló létrehozása** – Azure-portálon hozzon létre egy tárolót.
-2. **Töltse le a tárolói hitelesítő adatokat** – töltse le a hitelesítő adataikat, amelyek segítségével regisztrálja a DPM-kiszolgálón a Recovery Services-tároló.
-3. **Az Azure Backup szolgáltatás ügynökének telepítése** – az Azure biztonsági másolatból, az ügynök telepítése minden DPM-kiszolgálón.
-4. **A kiszolgáló regisztrálásához** – a DPM-kiszolgáló a Recovery Services-tároló.
+2. **Töltse le a tárolói hitelesítő adatokat** – töltse le a hitelesítő adatokkal kell a DPM-kiszolgáló regisztrálása a Recovery Services-tároló.
+3. **Az Azure Backup szolgáltatás ügynökének telepítése** – az ügynök telepítése minden DPM-kiszolgálón.
+4. **A kiszolgáló regisztrálásához** – a DPM-kiszolgáló regisztrálása a Recovery Services-tároló.
+
+[!INCLUDE [backup-upgrade-mars-agent.md](../../includes/backup-upgrade-mars-agent.md)]
 
 ## <a name="key-definitions"></a>Fontos definíciókat
 Az alábbiakban néhány fontos definíciókat az Azure biztonsági mentés a DPM:
 
-1. **Hitelesítő adatok tároló** – tárolói hitelesítő adatok szükségesek, a gép biztonsági mentési adatokat küldhet egy meghatározott tárolóban, az Azure Backup szolgáltatásban hitelesítést. Letölthető a tárolóból, és 48hrs érvényes.
-2. **Jelszó** – a felhőbe biztonsági másolatok titkosításához használt jelszót. Mentse a fájlt egy biztonságos helyre az előírt módon a helyreállítási művelet során.
+1. **Hitelesítő adatok tároló** – tárolói hitelesítő adatok szükségesek, a gép biztonsági mentési adatokat küldhet egy meghatározott tárolóban, az Azure Backup szolgáltatásban hitelesítést. Letölthető a tárolóból, és 48 órán keresztül érvényes.
+2. **Jelszó** – a felhőbe biztonsági másolatok titkosításához használt jelszót. Mentse a fájlt egy biztonságos helyre, szükség van egy helyreállítási művelet során.
 3. **PIN-kód biztonsági** – Ha engedélyezte a [biztonsági beállítások](https://docs.microsoft.com/azure/backup/backup-azure-security-feature) tároló, biztonsági PIN-kód szükséges kritikus fontosságú biztonsági mentési műveletek végrehajtása. A többtényezős hitelesítés újabb biztonsági réteget ad hozzá. 
 4. **A helyreállítási mappa** – a kifejezést a biztonsági mentések a felhőből ideiglenesen a letöltött felhő helyreállítások alatt. Méretének körülbelül a biztonsági mentési elemek párhuzamosan helyreállítani kívánt egyenlőnek kell lennie.
 
@@ -81,7 +83,7 @@ Egy Recovery Services-tároló létrehozásához:
 
     ![Recovery Services-tároló létrehozása – 2. lépés](./media/backup-azure-dpm-introduction/rs-vault-menu.png)
 
-    Megnyílik a Recovery Services-tároló panelje, a rendszer pedig egy **Név**, **Előfizetés**, **Erőforráscsoport** és **Hely** megadását kéri.
+    A Recovery Services tároló menü megnyitása, amely felszólítja, hogy adja meg a **neve**, **előfizetés**, **erőforráscsoport**, és **hely**.
 
     ![Recovery Services-tároló létrehozása – 5. lépés](./media/backup-azure-dpm-introduction/rs-vault-attributes.png)
 4. A **Név** mezőben adjon meg egy egyszerű nevet a tároló azonosításához. A névnek egyedinek kell lennie az Azure-előfizetéshez. Írjon be egy 2–50 karakter hosszúságú nevet. Ennek egy betűvel kell kezdődnie, és csak betűket, számokat és kötőjeleket tartalmazhat.
@@ -96,8 +98,8 @@ A tárreplikáció lehetősége lehetővé teszi, hogy georedundáns tárolás �
 
 A tárreplikációs beállítás szerkesztése:
 
-1. Válassza ki a tárolót, amelyhez megnyitja a tároló irányítópultját és a Beállítások panelt. Ha a **Beállítások** panel nem nyílik meg, kattintson az **Összes beállítás** elemre a tároló irányítópultján.
-2. A **Beállítások** panelen kattintson a **Biztonsági mentési infrastruktúra** > **Biztonsági mentés konfigurációja** elemre a **Biztonsági mentés konfigurációja** panel megnyitásához. A **Biztonsági mentés konfigurációja** panelen válassza ki a tárreplikációs beállítást a tároló számára.
+1. Válassza ki a tároló, a tároló irányítópult és a beállítások menü megnyitásához. Ha a **beállítások** menü nem nyitható meg **összes beállítás** a tároló irányítópultjának.
+2. A a **beállítások** menüben kattintson a **biztonsági infrastruktúra** > **biztonsági mentési konfigurációhoz** megnyitásához a **biztonsági mentési konfigurációhoz**menü. Az a **biztonsági mentési konfigurációhoz** menüben válassza ki a tárolási replikációs beállítás a tároló számára.
 
     ![A Backup-tárolók listája](./media/backup-azure-vms-first-look-arm/choose-storage-configuration-rs-vault.png)
 
@@ -112,9 +114,9 @@ A tárolói hitelesítő adatok fájlját az Azure-portálról egy biztonságos 
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 2. Nyissa meg a Recovery Services-tároló, amelyet szeretne regisztrálni a DPM-számítógépről.
-3. Alapértelmezés szerint megnyílik beállítások panelen. Ha be van zárva, kattintson a **beállítások** tároló irányítópult beállítások panel megnyitásához. A beállítások panelen, kattintson a **tulajdonságok**.
+3. Alapértelmezés szerint megnyílik beállítások menüjében. Ha be van zárva, kattintson a **beállítások** tároló irányítópult a beállítások menü megnyitásához. A beállítások menüben kattintson a **tulajdonságok**.
 
-    ![Tároló panelének megnyitása](./media/backup-azure-dpm-introduction/vault-settings-dpm.png)
+    ![A tárolók menüjének megnyitása](./media/backup-azure-dpm-introduction/vault-settings-dpm.png)
 4. Kattintson a Tulajdonságok lap **letöltése** alatt **biztonsági hitelesítő adatok**. A portál létrehozza a tárolói hitelesítő adatok fájlját, amely letölthető.
 
     ![Letöltés](./media/backup-azure-dpm-introduction/vault-credentials.png)
@@ -130,9 +132,9 @@ A portál a tároló hitelesítő adatait, a tároló neve és az aktuális dát
 Miután létrehozta az Azure Backup-tárolóban, az ügynök telepíthető mindegyik a Windows gép (Windows Server, a Windows ügyfél, a System Center Data Protection Manager-kiszolgáló vagy Azure biztonsági mentési kiszolgálóként működő számítógép), amely lehetővé teszi, hogy készítsen biztonsági másolatot az adat és alkalmazás az Azure-bA.
 
 1. Nyissa meg a Recovery Services-tároló, amelyet szeretne regisztrálni a DPM-számítógépről.
-2. Alapértelmezés szerint megnyílik beállítások panelen. Ha be van zárva, kattintson a **beállítások** beállítások panel megnyitásához. A beállítások panelen, kattintson a **tulajdonságok**.
+2. Alapértelmezés szerint megnyílik beállítások menüjében. Ha be van zárva, kattintson a **beállítások** a beállítások menü megnyitásához. A beállítások menüben kattintson a **tulajdonságok**.
 
-    ![Tároló panelének megnyitása](./media/backup-azure-dpm-introduction/vault-settings-dpm.png)
+    ![A tárolók menüjének megnyitása](./media/backup-azure-dpm-introduction/vault-settings-dpm.png)
 3. Kattintson a beállítások lap **letöltése** alatt **Azure Backup szolgáltatás ügynökének**.
 
     ![Letöltés](./media/backup-azure-dpm-introduction/azure-backup-agent.png)

@@ -9,11 +9,11 @@ ms.custom: DBs & servers
 ms.topic: article
 ms.date: 03/15/2018
 ms.author: carlrab
-ms.openlocfilehash: 6e6aaeea0375e92d7913e47c6b929a469ceb5c94
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: ba192b6dba68f01af796a1099b064d6ec0bd3f1b
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="azure-sql-database-resource-limits"></a>Az Azure SQL Database erőforrás korlátok
 
@@ -58,7 +58,7 @@ A teljes felskálázási folyamat időtartama az adatbázis a módosítás előt
 
 ## <a name="single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb"></a>Önálló adatbázist: P11 és P15, ha a maximális méret 1 TB-nál nagyobb korlátozásai
 
-Egy 1 TB-nál nagyobb, a P11 és P15 adatbázis a következő régiókban támogatott maximális mérete: US East2, USA nyugati régiója, Velünk – (kormányzati) Virginia, Nyugat-Európa, Németország központi, Dél Kelet-Ázsiában, kelet-japán, Kanada központi és Kanada keleti. Az alábbi szempontokat és korlátozásokat 1 TB-nál nagyobb maximális mérettel P11 és P15 adatbázisokra érvényesek:
+Egy 1 TB-nál nagyobb, a P11 és P15 adatbázis a következő régiókban támogatott maximális mérete: Kelet-Ausztrália, Ausztrália délkeleti, Dél-Brazília, Kanada központi, Kanada keleti régiója, USA középső RÉGIÓJA, Franciaország központi, Németország központi, kelet-japán, Nyugat-japán, koreai központi Észak-USA középső RÉGIÓJA, Észak-Európa, USA déli középső RÉGIÓJA, Délkelet-Ázsia, Egyesült Királyság déli régiója, Egyesült Királyság nyugati régiója, USA East2, USA nyugati régiója, USA – (kormányzati) Virginia és Nyugat-Európa. Az alábbi szempontokat és korlátozásokat 1 TB-nál nagyobb maximális mérettel P11 és P15 adatbázisokra érvényesek:
 
 - Ha 1 TB-nál nagyobb méretű egy adatbázist (értéke 4 TB-os vagy 4096 GB) létrehozásához, a Létrehozás parancs hibával meghiúsul, ha az adatbázis egy nem támogatott régióban lett kiépítve.
 - A támogatott régiók egyikéhez sem található meglévő P11 és P15 adatbázisokhoz, növelheti a maximális tárhelyet túl az 1 TB-os lépésekben 256 GB akár 4 TB. Ha egy nagyobb méretű támogatott-e az adott régióban, használja a [DATABASEPROPERTYEX](/sql/t-sql/functions/databasepropertyex-transact-sql) működik, vagy vizsgálja meg az adatbázis mérete az Azure portálon. Egy meglévő P11 vagy P15 frissítése adatbázis csak hajtható végre egy kiszolgálószintű fő bejelentkezéssel, vagy a dbmanager adatbázis-szerepkör tagjai. 

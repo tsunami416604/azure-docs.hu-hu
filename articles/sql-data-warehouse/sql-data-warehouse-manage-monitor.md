@@ -6,23 +6,22 @@ documentationcenter: NA
 author: sqlmojo
 manager: jhubbard
 editor: 
-ms.assetid: 69ecd479-0941-48df-b3d0-cf54c79e6549
 ms.service: sql-data-warehouse
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: performance
-ms.date: 12/14/2017
+ms.date: 03/15/2018
 ms.author: joeyong;barbkess;kevin
-ms.openlocfilehash: 1895e9c6174dfb05212991040cc265b8cb6e0651
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 7e25a1f8d807fa317e8ce246fd49de034182af96
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="monitor-your-workload-using-dmvs"></a>Monitor your workload using DMVs
-A cikkből megtudhatja, hogyan lehet a számítási feladat figyeléséhez, és vizsgálja meg a lekérdezés végrehajtása az Azure SQL Data Warehouse dinamikus felügyeleti nézetek (dinamikus felügyeleti nézetek) segítségével.
+A cikkből megtudhatja, hogyan lehet a számítási feladat figyeléséhez dinamikus felügyeleti nézetek (dinamikus felügyeleti nézetek) segítségével. Ez magában foglalja az Azure SQL Data Warehouse lekérdezés-végrehajtás vizsgálja.
 
 ## <a name="permissions"></a>Engedélyek
 Ebben a cikkben a dinamikus felügyeleti nézetek lekérdezéséhez adatbázis állapotának megtekintése vagy a vezérlő engedéllyel kell rendelkezni. Általában támogatást nyújtó ADATBÁZIST a rendszer az előnyben részesített engedély, mert az sokkal jobban korlátozó.
@@ -72,7 +71,7 @@ WHERE   [label] = 'My Query';
 
 Az előző lekérdezés eredménybe **jegyezze fel a kérelem azonosítója** a lekérdezés, amely meg szeretné vizsgálni.
 
-A lekérdezi a **felfüggesztett** állapot éppen sorba feldolgozási korlátok miatt. Ezeket a lekérdezéseket is megjelennek a sys.dm_pdw_waits vár lekérdezés UserConcurrencyResourceType típusú. Lásd: [egyidejűségi és munkaterhelés-kezelés] [ Concurrency and workload management] kapcsolatban további részleteket a feldolgozási korlátok. Lekérdezéseket is, amíg a többi okai többek között objektum zárolások.  Ha a lekérdezés arra vár, hogy egy erőforrást, lásd: [Várakozás erőforrásokra lekérdezések kivizsgálása] [ Investigating queries waiting for resources] további le a cikkben.
+A lekérdezi a **felfüggesztett** állapot éppen sorba feldolgozási korlátok miatt. Ezeket a lekérdezéseket is megjelennek a sys.dm_pdw_waits vár lekérdezés UserConcurrencyResourceType típusú. A feldolgozási korlátok információkért lásd: [teljesítmény rétegek](performance-tiers.md) vagy [erőforrás-osztályok a munkaterhelés felügyeleti](resource-classes-for-workload-management.md). Lekérdezéseket is, amíg a többi okai többek között objektum zárolások.  Ha a lekérdezés arra vár, hogy egy erőforrást, lásd: [Várakozás erőforrásokra lekérdezések kivizsgálása] [ Investigating queries waiting for resources] további le a cikkben.
 
 A Keresés a sys.dm_pdw_exec_requests tábla lekérdezés egyszerűsítése érdekében használja a [címke] [ LABEL] Megjegyzés hozzárendelése a lekérdezést, amely a sys.dm_pdw_exec_requests nézetben lehet keresni.
 
@@ -135,7 +134,7 @@ WHERE request_id = 'QID####' AND step_index = 2;
 ```
 
 * Ellenőrizze a *total_elapsed_time* oszlopban tekintheti meg, ha egy adott terjesztési adatátvitelt jelölik a többinél jelentősen tovább tart.
-* A hosszan futó terjesztési tekintse meg a *rows_processed* oszlopban tekintheti meg, hogy-e jelentősen nagyobb, mint a többire, hogy a terjesztési mozgatásának sorok száma. Ha igen, a mögöttes adatok eltérésére is jelezhet.
+* A hosszan futó terjesztési tekintse meg a *rows_processed* oszlopban tekintheti meg, hogy-e jelentősen nagyobb, mint a többire, hogy a terjesztési mozgatásának sorok száma. Ha igen, a Keresés az alapjául szolgáló adatok eltérésére utalhat.
 
 Ha a lekérdezés fut, [DBCC PDW_SHOWEXECUTIONPLAN] [ DBCC PDW_SHOWEXECUTIONPLAN] az SQL Server becsült terv lekérdezni az SQL Server gyorsítótárban a jelenleg futó SQL lépés belül egy adott terjesztési használható.
 
@@ -174,9 +173,9 @@ ORDER BY waits.object_name, waits.object_type, waits.state;
 Ha a lekérdezés aktívan Várakozás egy másik lekérdezés erőforrások, akkor az állapot lesz **AcquireResources**.  Ha a lekérdezés rendelkezik a szükséges erőforrásokat, akkor az állapot lesz **engedélyezve**.
 
 ## <a name="monitor-tempdb"></a>A figyelő a tempdb
-A tempdb magas kihasználtsága lehet az alapvető ok, a lassú teljesítmény és a kimenő memóriaproblémák léptek fel. Fontolja meg az adatraktár skálázás, ha a tempdb teljes kapacitásukkal működjenek elérése a lekérdezés végrehajtása közben. A következő útmutató minden egyes csomóponton lekérdezésenként tempdb használatának azonosítása. 
+A tempdb magas kihasználtsága lehet az alapvető ok, a lassú teljesítmény és a kimenő memóriaproblémák léptek fel. Fontolja meg az adatraktár skálázás, ha a tempdb teljes kapacitásukkal működjenek elérése a lekérdezés végrehajtása közben. Az alábbi adatokat minden egyes csomóponton lekérdezésenként tempdb használatának azonosítása ismerteti. 
 
-Hozzon létre a következő nézetet társítja a megfelelő csomópont sys.dm_pdw_sql_requests azonosítóját. Ez lehetővé teszi a használhatják fel a többi csatlakoztatott dinamikus felügyeleti nézetek, és ezek a táblák sys.dm_pdw_sql_requests illesztése.
+Hozzon létre a következő nézetet társítja a megfelelő csomópont sys.dm_pdw_sql_requests Azonosítóját. Ha a csomópont-azonosító lehetővé teszi a más csatlakoztatott dinamikus felügyeleti nézetek használja, és ezek a táblák sys.dm_pdw_sql_requests illesztése.
 
 ```sql
 -- sys.dm_pdw_sql_requests with the correct node id
@@ -200,7 +199,7 @@ CREATE VIEW sql_requests AS
 FROM sys.pdw_distributions AS d
 RIGHT JOIN sys.dm_pdw_sql_requests AS sr ON d.distribution_id = sr.distribution_id)
 ```
-Futtassa a következő lekérdezést a tempdb figyelése:
+A tempdb figyeléséhez, futtassa a következő lekérdezést:
 
 ```sql
 -- Monitor tempdb
@@ -258,7 +257,7 @@ pc1.counter_name = 'Total Server Memory (KB)'
 AND pc2.counter_name = 'Target Server Memory (KB)'
 ```
 ## <a name="monitor-transaction-log-size"></a>A figyelő tranzakciós napló mérete
-A következő lekérdezés a tranzakciós napló mérete minden terjesztési adja vissza. Ha egy, a naplófájlok 160GB közel jár, érdemes a példány vertikális felskálázásával, vagy a tranzakció mérete korlátozza. 
+A következő lekérdezés a tranzakciós napló mérete minden terjesztési adja vissza. Ha egy, a naplófájlok 160 GB közel jár, érdemes a példány vertikális felskálázásával, vagy a tranzakció mérete korlátozza. 
 ```sql
 -- Transaction log size
 SELECT
@@ -284,8 +283,8 @@ GROUP BY t.pdw_node_id, nod.[type]
 ```
 
 ## <a name="next-steps"></a>További lépések
-Lásd: [rendszernézetek] [ System views] dinamikus felügyeleti nézetek olvashat.
-Lásd: [gyakorlati tanácsok az SQL Data Warehouse] [ SQL Data Warehouse best practices] ajánlott eljárásokra vonatkozó további információ
+További információ a dinamikus felügyeleti nézetek: [rendszernézetek][System views].
+
 
 <!--Image references-->
 
@@ -294,7 +293,6 @@ Lásd: [gyakorlati tanácsok az SQL Data Warehouse] [ SQL Data Warehouse best pr
 [SQL Data Warehouse best practices]: ./sql-data-warehouse-best-practices.md
 [System views]: ./sql-data-warehouse-reference-tsql-system-views.md
 [Table distribution]: ./sql-data-warehouse-tables-distribute.md
-[Concurrency and workload management]: ./sql-data-warehouse-develop-concurrency.md
 [Investigating queries waiting for resources]: ./sql-data-warehouse-manage-monitor.md#waiting
 
 <!--MSDN references-->

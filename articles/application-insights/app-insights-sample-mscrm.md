@@ -11,13 +11,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 04/16/2017
+ms.date: 03/16/2018
 ms.author: mbullwin
-ms.openlocfilehash: 759dac681592d0e5951e09638533b93c6348d899
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: c5a651a24fcf5d1fc64922483045c08321a3b89c
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="walkthrough-enabling-telemetry-for-microsoft-dynamics-crm-online-using-application-insights"></a>Forgatókönyv: Telemetriai engedélyezése a Microsoft Dynamics CRM Online Application Insights segítségével
 Ez a cikk bemutatja, hogyan telemetriai adatok beolvasására [Microsoft Dynamics CRM Online](https://www.dynamics.com/) használatával [Azure Application Insights](https://azure.microsoft.com/services/application-insights/). Végigvezetjük a teljes folyamat Application Insights-parancsfájl hozzáadása az alkalmazáshoz, adatokat és az adatok vizuális rögzítése.
@@ -33,12 +33,12 @@ Ha figyelni szeretné az alkalmazást, az Application Insights SDK az alkalmazá
 ### <a name="create-an-application-insights-resource-in-azure"></a>Az Application Insights-erőforrás létrehozása az Azure-ban
 1. Első [egy fiókot a Microsoft Azure-ban](http://azure.com/pricing). 
 2. Jelentkezzen be a [Azure-portálon](https://portal.azure.com) , és adja hozzá egy új Application Insights-erőforrást. Ez az, ha az adatok feldolgozása és jelenik meg.
-   
+
     ![Kattintson a +, fejlesztői szolgáltatások, az Application Insights.](./media/app-insights-sample-mscrm/01.png)
-   
+
     Az alkalmazás típusának válassza az ASP.NET lehetőséget.
 3. Az első lépések lap megnyitásához, és nyissa meg a "a figyelő és diagnosztizálhatja az ügyféloldali".
-   
+
     ![A weblap beszúrásához kódrészletet](./media/app-insights-sample-mscrm/03.png)
 
 **Tartsa nyitva, a kódlapot** közben a következő lépés egy másik böngészőablakban teszi. A kód hamarosan lesz szüksége. 
@@ -46,41 +46,38 @@ Ha figyelni szeretné az alkalmazást, az Application Insights SDK az alkalmazá
 ### <a name="create-a-javascript-web-resource-in-microsoft-dynamics-crm"></a>A Microsoft Dynamics CRM JavaScript webes erőforrás létrehozása
 1. Nyissa meg az CRM Online-példány és a bejelentkezési rendszergazdai jogosultságokkal.
 2. Nyissa meg a Microsoft Dynamics CRM beállításait, egyéni beállításokat, a rendszer testreszabása
-   
-    ![A Microsoft Dynamics CRM-beállítások](./media/app-insights-sample-mscrm/04.png)
-   
-    ![Beállítások > Testreszabás](./media/app-insights-sample-mscrm/05.png)
 
-    ![A rendszer lehetőség testreszabása](./media/app-insights-sample-mscrm/06.png)
+    ![Microsoft Dynamics CRM settings](./media/app-insights-sample-mscrm/00001.png)
+
+    ![Beállítások > Testreszabás](./media/app-insights-sample-mscrm/00002.png)
 
 1. Hozzon létre egy JavaScript-erőforrást.
-   
+
     ![Az új webes erőforrás párbeszédpanel](./media/app-insights-sample-mscrm/07.png)
-   
+
     Adjon neki egy névvel, jelölje be **parancsfájl (JScript)** , és nyissa meg a szövegszerkesztőben.
-   
-    ![Nyissa meg a szövegszerkesztőben.](./media/app-insights-sample-mscrm/08.png)
-2. Másolja a kódot az Application Insights. Győződjön meg arról, hogy másolása figyelmen kívül hagyása parancsfájl címkéket. Tekintse meg az alábbi képernyőfelvételen:
-   
-    ![A rendszerállapot-kulcs beállítása](./media/app-insights-sample-mscrm/09.png)
-   
+
+    ![Nyissa meg a szövegszerkesztőben.](./media/app-insights-sample-mscrm/00004.png)
+2. Másolja a kódot az Application Insights. Másolása, ügyeljen arra, hogy figyelmen kívül hagyása parancsprogramcímkékben-e. Tekintse meg az alábbi képernyőfelvételen:
+
+    ![A rendszerállapot-kulcs beállítása](./media/app-insights-sample-mscrm/00005.png)
+
     A kód a instrumentation kulcsot, amely azonosítja az Application insights-erőforrást tartalmazza.
 3. Mentse, és tegye közzé.
-   
-    ![Mentse és közzététele](./media/app-insights-sample-mscrm/10.png)
+
+    ![Mentse és közzététele](./media/app-insights-sample-mscrm/00006.png)
 
 ### <a name="instrument-forms"></a>Eszköz űrlapok
 1. Microsoft CRM Online-hoz nyissa meg a fiók képernyő
-   
-    ![Fiók képernyő](./media/app-insights-sample-mscrm/11.png)
+
+    ![Fiók képernyő](./media/app-insights-sample-mscrm/00007.png)
 2. Nyissa meg az űrlap tulajdonságai
-   
-    ![Űrlap tulajdonságai](./media/app-insights-sample-mscrm/12.png)
+
+    ![Űrlap tulajdonságai](./media/app-insights-sample-mscrm/00008.png)
 3. A JavaScript létrehozott webes erőforrás hozzáadása
-   
+
     ![Hozzáadásra szolgáló menü](./media/app-insights-sample-mscrm/13.png)
-   
-    ![A webes erőforrás hozzáadása](./media/app-insights-sample-mscrm/14.png)
+
 4. Mentse, és tegye közzé az űrlapok testreszabásai.
 
 ## <a name="metrics-captured"></a>Rögzített metrikák
@@ -104,7 +101,7 @@ Kattintson a diagram megszerezni a további részletek:
 #### <a name="usage"></a>Használat
 ![Felhasználók, a munkamenetek és az oldalmegtekintéseket](./media/app-insights-sample-mscrm/19.png)
 
-![Sesion diagramok](./media/app-insights-sample-mscrm/20.png)
+![Munkamenet diagramok](./media/app-insights-sample-mscrm/20.png)
 
 ![Böngésző-verziók](./media/app-insights-sample-mscrm/21.png)
 

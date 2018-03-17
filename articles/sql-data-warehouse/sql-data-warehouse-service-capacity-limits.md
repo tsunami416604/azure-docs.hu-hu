@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: reference
-ms.date: 12/14/2017
+ms.date: 03/15/2018
 ms.author: kevin;barbkess
-ms.openlocfilehash: 3a8edb3806f981ebb6f8c1ca6c994ae198df2ec2
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: b1ff33f80a8dd0a0861a5c39731c9f59689db101
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="sql-data-warehouse-capacity-limits"></a>Az SQL Data Warehouse kapacitáskorlátait
 Az alábbi táblázatban a különböző összetevőket az Azure SQL Data Warehouse engedélyezett maximális értékeket tartalmazza.
@@ -28,11 +28,11 @@ Az alábbi táblázatban a különböző összetevőket az Azure SQL Data Wareho
 | Kategória | Leírás | Maximum |
 |:--- |:--- |:--- |
 | [Adattárházegységek (DWU)][Data Warehouse Units (DWU)] |Maximális DWU egyetlen SQL-adatraktár | A rugalmasság optimalizálva [teljesítményszinttel](performance-tiers.md): DW6000<br></br>A számítási optimalizált [teljesítményszinttel](performance-tiers.md): DW30000c |
-| [Adattárházegységek (DWU)][Data Warehouse Units (DWU)] |Alapértelmezett DTU kiszolgálónként |54,000<br></br>Alapértelmezés szerint minden SQL server (például myserver.database.windows.net) rendelkezik egy DTU-Kvótáról 54 000, amely lehetővé teszi, hogy legfeljebb DW6000c. Ez a kvóta egyszerűen egy biztonsági korlát. A kvótája által [a támogatási jegy létrehozása] [ creating a support ticket] választja *kvóta* kérelem típusként.  A DTU kiszámításához van, a 7.5 szorozza meg a teljes DWU szükséges, vagy a 9.0 szorozza meg a teljes cDWU szükséges. Példa:<br></br>7.5 = 45,000 x DW6000 dtu-k<br></br>X 9.0 = 54 000 DW600c dtu-inak száma.<br></br>Az SQL server beállítás az aktuális DTU-használat a portálon tekintheti meg. Felfüggesztett, mind a megkezdődhet adatbázisok száma felé a DTU-kvótát. |
+| [Adattárházegységek (DWU)][Data Warehouse Units (DWU)] |Alapértelmezett DTU kiszolgálónként |54,000<br></br>Alapértelmezés szerint minden SQL server (például myserver.database.windows.net) rendelkezik egy DTU-Kvótáról 54 000, amely lehetővé teszi, hogy legfeljebb DW6000c. Ez a kvóta egyszerűen egy biztonsági korlát. A kvótája által [a támogatási jegy létrehozása] [ creating a support ticket] választja *kvóta* kérelem típusként.  A DTU kiszámításához van, a 7.5 szorozza meg a teljes DWU szükséges, vagy a 9.0 szorozza meg a teljes cDWU szükséges. Példa:<br></br>7.5 = 45,000 x DW6000 dtu-k<br></br>X 9.0 = 54 000 DW600c dtu-inak száma.<br></br>Az SQL server beállítás az aktuális DTU-használat a portálon tekintheti meg. A DTU-kvótába a szüneteltetett és a nem szüneteltetett adatbázisok is beleszámítanak. |
 | Adatbázis-kapcsolat |Egyidejű megnyitott munkamenetek |1024<br/><br/>A 1024 aktív munkamenetek mindegyikének kérelmezheti SQL Data Warehouse-adatbázishoz egy időben. Vegye figyelembe, hogy egyidejűleg futtatható szolgáltatásobjektumok lekérdezések száma korlátozott. A feldolgozási korlát túllépésekor a kéréseket, amelyekre egy belső várólistán ahol vár feldolgozásra. |
 | Adatbázis-kapcsolat |Maximális memória előkészített utasítások |20 MB |
 | [Munkaterhelés-kezelés][Workload management] |Maximális párhuzamos lekérdezések |32<br/><br/> Alapértelmezés szerint az SQL Data Warehouse legfeljebb 32 egyidejű lekérdezéseket és lekérdezések fennmaradó várólisták hajthat végre.<br/><br/>Az egyidejű lekérdezések descrease is, amikor felhasználók vannak hozzárendelve a magasabb erőforrás osztályok, vagy ha az SQL Data warehouse-bA rendelkezik alsó [szolgáltatási szint](performance-tiers.md#service-levels). Néhány lekérdezést, például a DMV lekérdezések futtatása mindig engedélyezett. |
-| [a TempDB][Tempdb] |Maximális GB |399 GB-ot DW100. Ezért a DWU1000, a tempdb mérete és 3.99 TB |
+| [tempdb][Tempdb] |Maximális GB |399 GB-ot DW100. Ezért a DWU1000, a tempdb mérete és 3.99 TB |
 
 ## <a name="database-objects"></a>Adatbázis-objektumok
 | Kategória | Leírás | Maximum |
@@ -69,10 +69,10 @@ Az alábbi táblázatban a különböző összetevőket az Azure SQL Data Wareho
 | Lekérdezés |Maximális paraméterek |2098 |
 | Batch |Maximális méret |65,536*4096 |
 | Jelölje be eredmények |Oszlopok soronkénti |4096<br/><br/>Soronként legfeljebb 4096 oszlopok a SELECT eredmény soha nem rendelkezhet. Nem garantálja, hogy mindig legyen a 4096 van. Ha a lekérdezésterv egy ideiglenes táblát igényel, az 1024-oszlopok maximális táblánként is vonatkozhatnak. |
-| VÁLASSZA KI |Beágyazott segédlekérdezések |32<br/><br/>Soha nem lehet több mint 32 beágyazott segédlekérdezések SELECT utasítással. Nincs nem garantálja, hogy mindig legyen a 32. Például a CSATLAKOZZON egy segédlekérdezésbe is bevezetéséhez a lekérdezéstervben. A segédlekérdezések számát is is korlátozza a memória. |
-| VÁLASSZA KI |CSATLAKOZTATÁS / oszlopok |1024 oszlopot<br/><br/>Az ILLESZTÉS soha nem lehet több mint 1024 oszlopot. Nincs nem garantálja, hogy mindig legyen a 1024. Ha az ILLESZTÉS terv több oszlop, mint az ILLESZTÉS eredményeit tartalmazó ideiglenes táblát igényel, az 1024 korlát vonatkozik, az ideiglenes táblába. |
-| VÁLASSZA KI |A GROUP BY oszlopok bájtokat. |8060<br/><br/>A GROUP BY záradékban oszlopok 8060 bájtok maximális rendelkezhet. |
-| VÁLASSZA KI |Bájtok ORDER BY oszlopok száma |8060 bájt.<br/><br/>Az oszlopok az ORDER BY záradékban legfeljebb 8060 bájt lehet. |
+| KIVÁLASZTÁS |Beágyazott segédlekérdezések |32<br/><br/>Soha nem lehet több mint 32 beágyazott segédlekérdezések SELECT utasítással. Nincs nem garantálja, hogy mindig legyen a 32. Például a CSATLAKOZZON egy segédlekérdezésbe is bevezetéséhez a lekérdezéstervben. A segédlekérdezések számát is is korlátozza a memória. |
+| KIVÁLASZTÁS |CSATLAKOZTATÁS / oszlopok |1024 oszlopot<br/><br/>Az ILLESZTÉS soha nem lehet több mint 1024 oszlopot. Nincs nem garantálja, hogy mindig legyen a 1024. Ha az ILLESZTÉS terv több oszlop, mint az ILLESZTÉS eredményeit tartalmazó ideiglenes táblát igényel, az 1024 korlát vonatkozik, az ideiglenes táblába. |
+| KIVÁLASZTÁS |A GROUP BY oszlopok bájtokat. |8060<br/><br/>A GROUP BY záradékban oszlopok 8060 bájtok maximális rendelkezhet. |
+| KIVÁLASZTÁS |Bájtok ORDER BY oszlopok száma |8060 bájt.<br/><br/>Az oszlopok az ORDER BY záradékban legfeljebb 8060 bájt lehet. |
 | Azonosítók és állandók utasítás száma |Hivatkozott azonosítók és állandók száma. |65,535<br/><br/>Az SQL Data Warehouse azonosítók és a lekérdezés egyetlen kifejezés tartalmazó állandók számának korlátozása. Ezt a határt 65 535. Haladja meg az SQL Server-hiba 8632 szám eredményez. További információkért lásd: [belső hiba: elérte az egyik korlátozását][Internal error: An expression services limit has been reached]. |
 
 ## <a name="metadata"></a>Metaadatok
@@ -88,7 +88,7 @@ Az alábbi táblázatban a különböző összetevőket az Azure SQL Data Wareho
 | sys.dm_pdw_os_event_logs |10,000 |
 | sys.dm_pdw_sql_requests |A legutóbbi 1000 SQL kérelmek sys.dm_pdw_exec_requests vannak tárolva. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Hivatkozás kapcsolatos további információkért lásd: [SQL Data Warehouse hivatkozás áttekintés][SQL Data Warehouse reference overview].
 
 <!--Image references-->
@@ -96,7 +96,7 @@ Hivatkozás kapcsolatos további információkért lásd: [SQL Data Warehouse hi
 <!--Article references-->
 [Data Warehouse Units (DWU)]: ./sql-data-warehouse-overview-what-is.md
 [SQL Data Warehouse reference overview]: ./sql-data-warehouse-overview-reference.md
-[Workload management]: ./sql-data-warehouse-develop-concurrency.md
+[Workload management]: ./resource-classes-for-workload-management.md
 [Tempdb]: ./sql-data-warehouse-tables-temporary.md
 [data type]: ./sql-data-warehouse-tables-data-types.md
 [creating a support ticket]: /sql-data-warehouse-get-started-create-support-ticket.md

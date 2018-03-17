@@ -1,6 +1,6 @@
 ---
-title: "Engedélyezheti vagy tilthatja le a LinkedIn-integráció az Office-alkalmazásokhoz az Azure Active Directoryban |} Microsoft Docs"
-description: "Ismerteti, hogyan engedélyezhető vagy tiltható le Microsoft-alkalmazások az Azure Active Directoryban LinkedIn-integráció"
+title: "A Microsoft-alkalmazások és szolgáltatások az Azure Active Directoryban LinkedIn-kapcsolatok engedélyezése |} Microsoft Docs"
+description: "Ismerteti a Microsoft-alkalmazások az Azure Active Directoryban LinkedIn fiók kapcsolatok engedélyezése vagy letiltása"
 services: active-directory
 author: curtand
 manager: mtillman
@@ -9,40 +9,51 @@ ms.workload: identity
 ms.tgt_pltfrm: 
 ms.devlang: 
 ms.topic: article
-ms.date: 02/28/2018
+ms.date: 03/15/2018
 ms.author: curtand
 ms.reviewer: beengen
 ms.custom: it-pro
-ms.openlocfilehash: cdfb5458b020e9d3a3f33cecbeb0ee7b9a48909d
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 3bf224edea9e6da0d0eadb6fb6a409248de3d0e3
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/17/2018
 ---
-# <a name="linkedin-integration-for-office-applications"></a>Office alkalmazások LinkedIn-integráció
-Ez a cikk bemutatja, hogyan korlátozhatja a felhasználókat, akiknek LinkedIn-integráció foglalt Azure Active Directory (Azure AD). LinkedIn-integráció alapértelmezés szerint engedélyezve van, a bérlő számára, amely lehetővé teszi a Microsoft-alkalmazások némelyike belül nyilvános LinkedIn adatok való hozzáadásakor. Minden felhasználó egymástól függetlenül választhat LinkedIn-fiókjuk csatlakozni a munkahelyi vagy iskolai fiókkal.
+# <a name="linkedin-account-connections-for-microsoft-apps-and-services"></a>LinkedIn fiók kapcsolatok a Microsoft-alkalmazások és szolgáltatások
+Ebből a cikkből megismerheti az Azure Active Directory (Azure AD) felügyeleti központban a bérlő LinkedIn fiók kapcsolatok kezelésére. 
 
 > [!IMPORTANT]
-> LinkedIn-integráció nem telepítése minden Azure AD-bérlő egyszerre. Miután annak frissítése hogy az Azure-bérlőhöz, LinkedIn-integráció alapértelmezés szerint engedélyezve van. Nyissa meg helyi, állami és kormányzati bérlők LinkedIn-integráció nem érhető el. Bevezetés információk naprakészen nézetet, tekintse meg a [Office 365 terv](https://products.office.com/business/office-365-roadmap?filters=%26freeformsearch=linkedin#abc) lap.
+> LinkedIn fiók kapcsolatok használatának van jelenleg megkezdődött az Azure AD bérlők számára. Ha annak frissítése a bérlő, alapértelmezés szerint engedélyezve van. Nincs elérhető az Amerikai Egyesült Államok kormányzati ügyfelek és a szervezetek számára az Exchange Online szolgáltatásban működő Ausztrália, Kanada, Kína, Franciaország, Németország, India, Dél-Korea, Egyesült Királyságban, japán, és Dél-afrikai postaládák. Ezeket a postaláda-helyeket támogatása hamarosan elérhető.  Bevezetés információk naprakészen nézetet, tekintse meg a [Office 365 terv](https://products.office.com/business/office-365-roadmap?filters=%26freeformsearch=linkedin#abc) lap.
 
-## <a name="linkedin-integration-from-the-user-perspective"></a>A felhasználó szemszögéből LinkedIn-integráció
-Ha a szervezetében lévő felhasználók kapcsolódnak a LinkedIn a munkahelyi vagy iskolai fiók, [tehetik lehetővé, hogy adatokkal LinkedIn](https://www.linkedin.com/help/linkedin/answer/84077) Microsoft-alkalmazások és szolgáltatások, amelyek a szervezet által használható. [Felhasználói fiókok leválaszthatja](https://www.linkedin.com/help/linkedin/answer/85097), amely távolítja el az adatok megosztása a Microsofttal LinkedIn engedély. LinkedIn integrációs nyilvánosan elérhető LinkedIn-profil adatait használja. [Felhasználók szabályozhatják, hogyan saját LinkedIn-profilját megtekintett](https://www.linkedin.com/help/linkedin/answer/83) LinkedIn adatvédelmi beállításai, beleértve, hogy a profil tekintheti meg Microsoft-alkalmazások.
+## <a name="how-linkedin-account-connections-appear-to-the-user"></a>Hogyan LinkedIn fiók kapcsolatok jelennek meg, a felhasználó számára
+LinkedIn fiók kapcsolatok engedélyezése a felhasználók a Microsoft-alkalmazások némelyike belül nyilvános LinkedIn profil információk megjelenítéséhez. A bérlő a felhasználók eldönthetik, LinkedIn és a Microsoft munkahelyi vagy iskolai fiókok LinkedIn-profil további információk megjelenítéséhez. További információkért lásd: [LinkedIn információkat és a Microsoft-alkalmazások és szolgáltatások funkciókat](https://go.microsoft.com/fwlink/?linkid=850740).
+
+Ha a szervezetében lévő felhasználók csatlakozzon a LinkedIn és a Microsoft munkahelyi vagy iskolai fiókok, azok két lehetőség közül választhat: 
+* Mindkét fiókok közötti adatmegosztásra engedélyt. Ez azt jelenti, hogy azok engedélyt a LinkedIn fiókjuk adatok megosztása a Microsoft munkahelyi vagy iskolai fiókját, valamint a Microsoft munkahelyi vagy iskolai fiók adatok megosztása a LinkedIn-fiókkal. LinkedIn a megosztott adatok hagyja el az online szolgáltatások számára. 
+* Ahhoz, hogy csak a LinkedIn-fiókot a Microsoft munkahelyi és iskolai fiókjával adatokat engedélyezése
+
+További információ a felhasználói LinkedIn és a Microsoft között megosztott adatok munkahelyi vagy iskolai fiókok című [a Microsoft-alkalmazások a munkahelyi és iskolai LinkedIn](https://www.linkedin.com/help/linkedin/answer/84077). 
+* [Felhasználói fiókok leválaszthatja](https://www.linkedin.com/help/linkedin/answer/85097) és a megosztási engedélyek bármikor adatokat távolítja el. 
+* [Felhasználók szabályozhatják, hogyan saját LinkedIn-profilját megtekintett](https://www.linkedin.com/help/linkedin/answer/83), például hogy a profil tekintheti meg Microsoft-alkalmazások.
 
 ## <a name="privacy-considerations"></a>Adatvédelmi megfontolások
-Az Azure AD LinkedIn-integráció engedélyezése lehetővé teszi a Microsoft-alkalmazások és szolgáltatások eléréséhez a felhasználók LinkedIn adatok egy részét. Olvassa el a [Microsoft adatvédelmi nyilatkozatát](https://privacy.microsoft.com/privacystatement/) további információt az adatvédelmi megfontolások, ha engedélyezi a LinkedIn-integráció az Azure ad-ben. 
+LinkedIn fiók kapcsolatok lehetővé teszi, hogy a Microsoft-alkalmazások és szolgáltatások eléréséhez a felhasználók LinkedIn adatok egy részét. Olvassa el a [Microsoft adatvédelmi nyilatkozatát](https://privacy.microsoft.com/privacystatement/) további információt az adatvédelmi megfontolások LinkedIn fiók kapcsolatok engedélyezése az Azure ad-ben. 
 
-## <a name="manage-linkedin-integration"></a>LinkedIn-integráció kezelése
-A vállalatok LinkedIn-integráció alapértelmezés szerint engedélyezve van a Azure AD-ben. LinkedIn-integráció lehetővé teszi, hogy minden felhasználó a szervezeten belül a Microsoft-szolgáltatások, például az Outlook megtekintés, LinkedIn profilok LinkedIn funkcióinak használatát. LinkedIn-integráció letiltása LinkedIn-szolgáltatásokat távolít el a Microsoft-alkalmazások és szolgáltatások, és leállítja az adatmegosztás LinkedIn és a szervezet Microsoft-szolgáltatások között.
+## <a name="manage-linkedin-account-connections"></a>LinkedIn fiók kapcsolatok kezelése
+LinkedIn fiók kapcsolatok funkció alapértelmezés szerint be van a teljes bérlő számára. Kiválaszthatja, hogy a teljes bérlő LinkedIn fiók kapcsolatok, engedélyezése vagy letiltása LinkedIn fiók kapcsolatok kijelölt felhasználóknak az Ön bérelt szolgáltatásának. 
 
-### <a name="enable-or-disable-linkedin-integration-for-your-organization-in-the-azure-portal"></a>Engedélyezheti vagy tilthatja le a szervezet az Azure portálon LinkedIn-integráció
+### <a name="enable-or-disable-linkedin-account-connection-for-your-tenant-in-the-azure-portal"></a>Engedélyezheti vagy tilthatja le a LinkedIn fiók kapcsolat a bérlője Azure-portálon
 
 1. Jelentkezzen be a [Azure Active Directory felügyeleti központ](https://aad.portal.azure.com/) egy olyan fiókkal, amely az Azure AD-bérlő globális rendszergazdája.
 2. Válassza ki **felhasználók**.
 3. Az a **felhasználók** panelen válassza **felhasználói beállítások**.
-4. A **LinkedIn integrációs**, jelölje be **Igen** vagy **nem** engedélyezheti vagy tilthatja le a LinkedIn-integráció.
-   ![LinkedIn-integráció engedélyezése](./media/linkedin-integration/LinkedIn-integration.PNG)
+4. A **LinkedIn fiók kapcsolatok**:
+  * Válassza ki **Igen** LinkedIn fiók kapcsolatok az összes felhasználó számára az Ön bérelt szolgáltatásának engedélyezése
+  * Válassza ki **kijelölt** engedélyezése LinkedIn-fiókok csak a kiválasztott bérlő kapcsolatok felhasználóinak
+  * Válassza ki **nem** LinkedIn fiók kapcsolatok az összes felhasználó letiltása ![engedélyezése LinkedIn fiók kapcsolatok](./media/linkedin-integration/LinkedIn-integration.png)
+5. Mentse a beállításokat, amikor elkészült, kiválasztásával **mentése**.
 
-### <a name="enable-or-disable-linkedin-integration-for-your-organizations-office-2016-apps-using-group-policy"></a>Engedélyezheti vagy tilthatja le a csoportházirend segítségével a szervezet Office 2016 alkalmazások LinkedIn-integráció
+### <a name="enable-or-disable-linkedin-account-connections-for-your-organizations-office-2016-apps-using-group-policy"></a>A csoportházirend segítségével a szervezet Office 2016 alkalmazások LinkedIn fiók kapcsolatok engedélyezése vagy letiltása
 
 1. Töltse le a [Office 2016 felügyeleti sablonfájlokat (ADMX/ADML)](https://www.microsoft.com/download/details.aspx?id=49030)
 2. Bontsa ki a **ADMX** fájlokat, és másolja őket a **központi tárházban**.
@@ -60,6 +71,6 @@ Ez a csoportházirend csak a helyi számítógépen Office 2016 alkalmazások é
 * [LinkedIn Súgó](https://www.linkedin.com/help/linkedin)
 
 ## <a name="next-steps"></a>További lépések
-A következő hivatkozás segítségével megtekintheti az aktuális LinkedIn-integrációs beállításainak az Azure-portálon:
+A következő hivatkozás segítségével megtekintheti az aktuális LinkedIn fiók kapcsolat beállítása az Azure portálon:
 
-[LinkedIn-integráció konfigurálása](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/UserManagementMenuBlade/UserSettings) 
+[LinkedIn fiók kapcsolatok konfigurálása](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/UserManagementMenuBlade/UserSettings) 

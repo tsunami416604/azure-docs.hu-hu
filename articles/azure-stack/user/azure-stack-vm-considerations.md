@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/23/2018
 ms.author: brenduns
-ms.openlocfilehash: 2b39ff3665a4cc3aeddf81b83e0c90c7f770da72
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 50c0f293ac669ade4e45a5f45b0adf9a7c4b6c36
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="considerations-for-virtual-machines-in-azure-stack"></a>Virtuális gépek Azure-készletben szempontjai
 
@@ -37,7 +37,7 @@ Virtuális gépek az igény szerinti, méretezhető számítási erőforrások A
 | Virtuálisgép-hálózat | Nyilvános IP-címek hozzárendelését a virtuális gép az interneten keresztül érhetők el.<br><br><br>Az Azure virtuális gépek egy rögzített DNS-névvel rendelkezik. | A bérlői virtuális géphez rendelt nyilvános IP-címek csak Azure verem szoftverfejlesztői készlet környezetben érhetők el. A felhasználóknak rendelkezniük kell az Azure verem szoftverfejlesztői készlet keresztül hozzáférést [RDP](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop) vagy [VPN](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn) csatlakozni a virtuális gép, amely Azure-készletben jön létre.<br><br>Egy Azure verem példány belül létrehozott virtuális gépek rendelkezik egy DNS-nevet, a felhő rendszergazdája által beállított értéke alapján. |
 | Virtuálisgép-tároló | Támogatja a [által kezelt lemezeken.](../../virtual-machines/windows/managed-disks-overview.md) | Felügyelt lemezek még nem támogatottak Azure-készletben. |
 | API-verziók | Azure mindig a legújabb API-verziók a virtuális gép minden funkció rendelkezik. | Azure verem adott Azure-szolgáltatások és az adott API-verziók támogatja ezeket a szolgáltatásokat. A támogatott API-verziók listáját megtekintéséhez tekintse meg a [API-verziók](#api-versions) című szakaszát. |
-|Virtuális gép rendelkezésre állási csoportok|Több tartalék tartományok (2 vagy 3 régiónként)<br>Több frissítési tartományt<br>Felügyelt támogatása|Egyetlen tartalék tartomány<br>Egyetlen frissítési tartományi<br>Nem felügyelt támogatása|
+|Virtuális gép rendelkezésre állási csoportok|Több tartalék tartományok (2 vagy 3 régiónként)<br>Több frissítési tartományt<br>Felügyelt támogatása|Több tartalék tartományok (2 vagy 3 régiónként)<br>Több frissítési tartományt (legfeljebb 20)<br>Nem felügyelt támogatása|
 |Virtuálisgép-méretezési csoportok|Támogatott automatikus méretezése|Automatikus skálázása nem támogatott.<br>Adja hozzá a méretezési készletben, a portál, a Resource Manager-sablonok vagy a PowerShell használatával további példányokat.
 
 ## <a name="virtual-machine-sizes"></a>Virtuálisgép-méretek

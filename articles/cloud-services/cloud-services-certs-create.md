@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: adegeo
-ms.openlocfilehash: 4032a429901c675436cb5e7fb04aa5645925fa30
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 6a1e4f5316cc0321c1409f9e48daeae6ee483bf6
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="certificates-overview-for-azure-cloud-services"></a>Azure Cloud Services tanúsítványok áttekintése
 Rendszer tanúsítványokat használ az Azure felhőszolgáltatások ([tanúsítványok szolgáltatás](#what-are-service-certificates)) és a felügyeleti API hitelesítéséhez ([felügyeleti tanúsítványok](#what-are-management-certificates)). Ez a témakör hogyan mindkét tanúsítványtípusok általános áttekintést nyújt a [létrehozása](#create) és [telepítése](#deploy) őket az Azure-bA.
@@ -48,8 +48,6 @@ Felügyeleti tanúsítványok lehetővé teszik a klasszikus üzembe helyezési 
 ### <a name="limitations"></a>Korlátozások
 A 100 felügyeleti tanúsítványok előfizetésenként korlátozva van. Szerepel továbbá egy legfeljebb 100 felügyeleti tanúsítványok előfizetéseket alapján egy adott szolgáltatás-rendszergazda felhasználói azonosítóját. Ha a felhasználói Azonosítóját a fiókadminisztrátor már használatban van 100 felügyeleti tanúsítványok hozzáadása, és nincs szükség további tanúsítványok, a további tanúsítványok hozzáadása egy közös rendszergazdát adhat hozzá. 
 
-100-nál több tanúsítványok hozzáadása, előtt tekintse meg, ha újra felhasználhatja egy meglévő tanúsítvány. A tanúsítvány felügyeleti folyamat esetleg felesleges összetettsége társrendszergazdák használatával hozzáadja.
-
 <a name="create"></a>
 ## <a name="create-a-new-self-signed-certificate"></a>Hozzon létre egy új önaláírt tanúsítványt
 Minden elérhető, amíg azok igazodik ezeket a beállításokat, hozzon létre egy önaláírt tanúsítványt eszközt is használhatja:
@@ -66,7 +64,7 @@ Minden elérhető, amíg azok igazodik ezeket a beállításokat, hozzon létre 
 
 Windows, a tanúsítvány létrehozása a két egyszerű módja van a `makecert.exe` segédprogram, vagy az IIS.
 
-### <a name="makecertexe"></a>MakeCert.exe
+### <a name="makecertexe"></a>Makecert.exe
 A segédprogram elavult, és már nem itt dokumentált. További információkért lásd: [MSDN-cikkben](https://msdn.microsoft.com/library/windows/desktop/aa386968).
 
 ### <a name="powershell"></a>PowerShell
@@ -86,13 +84,13 @@ Ha ezt szeretné [tanúsítvány a kezelési portállal](../azure-api-management
 Export-Certificate -Type CERT -Cert $cert -FilePath .\my-cert-file.cer
 ```
 
-### <a name="internet-information-services-iis"></a>Az Internet Information Services (IIS)
+### <a name="internet-information-services-iis"></a>Internet Information Services (IIS)
 Nincsenek számos lapot az interneten tér ki az ehhez az IIS-kiszolgálón. [Itt](https://www.sslshopper.com/article-how-to-create-a-self-signed-certificate-in-iis-7.html) találtam ismerteti azt is gondolja kiváló egy. 
 
 ### <a name="linux"></a>Linux
 [Ez](../virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) cikk ismerteti az SSH olyan tanúsítványokat hoznak létre.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [A szolgáltatás-tanúsítvány feltöltése az Azure-portálon](cloud-services-configure-ssl-certificate-portal.md).
 
 Töltse fel a [felügyeleti API tanúsítvány](../azure-api-management-certs.md) az Azure portálon.

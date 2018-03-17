@@ -14,11 +14,11 @@ ms.topic: article
 ms.devlang: na
 ms.date: 08/04/2017
 ms.author: saeda
-ms.openlocfilehash: 65a39479b4d4b86d569501636e4a0678b052d426
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: 4f71380917a5a29497da9831791cd9f86ec4c8ca
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="azure-active-directory-b2c-collecting-logs"></a>Az Azure Active Directory B2C: Naplógyűjtés időtartamát
 
@@ -52,16 +52,16 @@ Az Azure AD B2C támogatja egy szolgáltatást, hogy az Application insights ré
   UserJourneyRecorderEndpoint="urn:journeyrecorder:applicationinsights"
   ```
 
-1. Ha már nem létezik, adja hozzá a gyermekcsomópontja `<UserJourneyBehaviors>` számára a `<RelyingParty>` csomópont. Kell elhelyezni után azonnal a`<DefaultUserJourney ReferenceId="UserJourney Id from your extensions policy, or equivalent (for example:SignUpOrSigninWithAAD" />`
+1. Ha már nem létezik, adja hozzá a gyermekcsomópontja `<UserJourneyBehaviors>` számára a `<RelyingParty>` csomópont. Kell elhelyezni után azonnal a `<DefaultUserJourney ReferenceId="UserJourney Id from your extensions policy, or equivalent (for example:SignUpOrSigninWithAAD" />`
 2. Adja hozzá a következő csomópont gyermekeként a `<UserJourneyBehaviors>` elemet. Győződjön meg arról, hogy `{Your Application Insights Key}` rendelkező a **Instrumentation kulcs** az Application Insights az előző szakaszban beszerzett.
 
   ```XML
   <JourneyInsights TelemetryEngine="ApplicationInsights" InstrumentationKey="{Your Application Insights Key}" DeveloperMode="true" ClientEnabled="false" ServerEnabled="true" TelemetryVersion="1.0.0" />
   ```
 
-  * `DeveloperMode="true"`be van állítva ApplicationInsights keresztül a feldolgozási sorban, a telemetria jó elősegítésére fejlesztési, de a nagy mennyiségük korlátozott.
-  * `ClientEnabled="true"`elküldi a ApplicationInsights ügyféloldali parancsprogram nyomon követése lap megtekintése és ügyféloldali hibák (nem kötelező).
-  * `ServerEnabled="true"`a meglévő UserJourneyRecorder JSON egyéni eseményként küld az Application Insights.
+  * `DeveloperMode="true"` be van állítva ApplicationInsights keresztül a feldolgozási sorban, a telemetria jó elősegítésére fejlesztési, de a nagy mennyiségük korlátozott.
+  * `ClientEnabled="true"` elküldi a ApplicationInsights ügyféloldali parancsprogram nyomon követése lap megtekintése és ügyféloldali hibák (nem kötelező).
+  * `ServerEnabled="true"` a meglévő UserJourneyRecorder JSON egyéni eseményként küld az Application Insights.
 Minta:
 
   ```XML
@@ -97,7 +97,7 @@ Minta:
 | Lekérdezés | Leírás |
 |---------------------|--------------------|
 nyomkövetések | Az összes Azure AD B2C által létrehozott naplók |
-nyomok \| Ha időbélyeg > ago(1d) | Az elmúlt nap során az Azure AD B2C által létrehozott naplók számú
+nyomkövetések \| ahol időbélyeg > ago(1d) | Az elmúlt nap során az Azure AD B2C által létrehozott naplók számú
 
 A bejegyzések hosszú lehet.  Exportálás CSV-FÁJLBA a részletes bemutatása.
 
@@ -105,6 +105,8 @@ Az elemzés eszközzel kapcsolatos részletesebb [Itt](https://docs.microsoft.co
 
 >[!NOTE]
 >A Közösség dolgozott egy felhasználó út megjelenítő segítségével a fejlesztők identitás.  Nem Microsoft által támogatott és elérhetővé tegyen szigorúan-van.  Olvassa be az Application Insights-példány, és a felhasználó well-struktúra áttekintést nyújt a út események.  Szerezze be a forráskódot, és telepítheti saját megoldásban.
+
+Olvassa be az eseményeket az Application Insights viewer verziója található [Itt](https://github.com/Azure-Samples/active-directory-b2c-advanced-policies/tree/master/wingtipgamesb2c/src/WingTipUserJourneyPlayerWebApplication)
 
 >[!NOTE]
 >Az itt leírt részletes tevékenységi naplóit célja jelenleg **csak** a egyéni házirendek fejlesztésének segítése érdekében. Éles környezetben fejlesztői mód nem használható.  Naplók gyűjtése és az identitás-szolgáltatóktól származó a fejlesztés során küldött összes jogcímet.  Ha éles környezetben használt, a fejlesztői felelősséget PII (közvetlenül a Microsoftnak azonosításra alkalmas adatokat) gyűjtése a saját App Insights naplóban.  Ezek a részletes naplók csak gyűjtött, ha a házirend a **fejlesztői mód**.

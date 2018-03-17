@@ -8,13 +8,13 @@ manager: craigg
 ms.service: sql-database
 ms.custom: migrate
 ms.topic: article
-ms.date: 03/07/2018
+ms.date: 03/16/2018
 ms.author: carlrab
-ms.openlocfilehash: 7892c74f03647e289ed96055fb9db5c2f08f0234
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 59ee56e225623295dd63bf5ae303bfe1aa8e95cf
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="sql-server-database-migration-to-azure-sql-database"></a>SQL Server adatbázis áttelepítése az Azure SQL Database
 
@@ -33,7 +33,7 @@ Mindkét esetben gondoskodnia kell arról, hogy kompatibilis legyen az Azure SQL
 
  Ezt a módszert történő megengedhet bizonyos időre leállítást, vagy későbbi áttelepítés éles adatbázis teszt áttelepítését hajtja végre egyetlen vagy egy készletezett adatbázis áttelepítéséhez. Az oktatóanyagok esetén lásd: [egy SQL Server-adatbázis áttelepítése](sql-database-migrate-your-sql-server-database.md).
 
-Az alábbi lista tartalmazza egy egyetlen SQL Server adatbázis áttelepítés általános munkafolyamata vagy egy készletezett adatbázis ezzel a módszerrel. Áttelepítési felügyelt példányához, lásd: [felügyelt példányra áttelepítési](sql-database-cloud-migrate.md#migration-to-azure-sql-database-managed-instance).
+Az alábbi lista tartalmazza egy egyetlen SQL Server adatbázis áttelepítés általános munkafolyamata vagy egy készletezett adatbázis ezzel a módszerrel. Áttelepítési felügyelt példányához, lásd: [felügyelt példányra áttelepítési](sql-database-managed-instance-migrate.md).
 
   ![VSSSDT áttelepítési ábra](./media/sql-database-cloud-migrate/azure-sql-migration-sql-db.png)
 

@@ -6,13 +6,13 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 01/30/2018
+ms.date: 03/15/2018
 ms.author: babanisa
-ms.openlocfilehash: 9d2b32df6e4b931539eac34d09135ea33069b936
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 0b7ef71cf940f82f46a7f053e5c9f7ef64342b6e
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="event-grid-security-and-authentication"></a>Esemény rács biztonsági és hitelesítési 
 
@@ -24,9 +24,9 @@ Az Azure Event rács három típusú hitelesítés van:
 
 ## <a name="webhook-event-delivery"></a>WebHook Event delivery
 
-Webhook olyan események fogadásához az Azure Event rács valós időben számos módja közül. Minden alkalommal, amikor készen áll a kézbesítendő új esemény van, az esemény rács Webhook HTTP-kérelmet küld a beállított HTTP-végpont az eseményhez törzsében.
+Webhook olyan események fogadása Azure esemény rács számos módja közül. Amikor készen áll az új esemény, az esemény rács Webhook HTTP-kérelmet küld a beállított HTTP-végpont a törzsben szereplő eseménnyel.
 
-Esemény rácshoz is regisztrálhatja a saját WebHook végpont, akkor küld Önnek egy POST kérést egy egyszerű érvényesítési kódot ahhoz, hogy a végpont igazolva. Az alkalmazás kell válaszolnia által echo vissza az érvényesítési kódot. Esemény rács nem kézbesíteni WebHook végpontok, amelyek nem adta át az ellenőrzés.
+Ha saját WebHook végpont regisztrálása esemény rács, küld, akkor egy POST kérést egy egyszerű érvényességi kóddal igazolnia a végpont tulajdonosa. Az alkalmazás kell válaszolnia által echo vissza az érvényesítési kódot. Esemény rács WebHook végpontok, amelyek még nem kapott az érvényesítés nem kézbesíteni.
 
 ### <a name="validation-details"></a>Ellenőrzési részletek
 
@@ -34,6 +34,7 @@ Esemény rácshoz is regisztrálhatja a saját WebHook végpont, akkor küld Ön
 * Az esemény "AEG ügyet Eseménytípus: SubscriptionValidation" fejléc értéke tartalmazza.
 * Az esemény törzsében van ugyanazon séma más esemény rács eseményként is rögzíti.
 * Az eseményadat tartalmazza egy véletlenszerűen generált karakterlánc "validationCode" tulajdonságot. Például "validationCode: acb13...".
+* A tömb csak az érvényesítési esemény tartalmazza. A további események küldése egy külön kérelmet a után echo vissza az érvényesítési kódot.
 
 Példa SubscriptionValidationEvent van az alábbi példában látható módon:
 
@@ -52,7 +53,7 @@ Példa SubscriptionValidationEvent van az alábbi példában látható módon:
 }]
 ```
 
-Ahhoz, hogy a végpont igazolva echo vissza a Ellenőrzőkód validationResponse tulajdonság a következő példában látható módon:
+Végpont igazolva, hogy echo vissza a Ellenőrzőkód validationResponse tulajdonság a következő példában látható módon:
 
 ```json
 {
@@ -69,7 +70,7 @@ Végezetül fontos ügyeljen arra, hogy csak Azure esemény rács támogatja a H
 
 ## <a name="event-subscription"></a>Az esemény-előfizetés
 
-Egy esemény előfizetni, rendelkeznie kell a **Microsoft.EventGrid/EventSubscriptions/Write** engedéllyel rendelkezik a szükséges erőforrás. Meg kell ezzel az engedéllyel, mivel egy új előfizetést a hatókörben, az erőforrás írása. A szükséges erőforrás eltér e vannak, egyéni vagy egy rendszer témakört való előfizetés. Ez a szakasz ismerteti a kétféle típusú.
+Egy esemény előfizetni, rendelkeznie kell a **Microsoft.EventGrid/EventSubscriptions/Write** engedéllyel rendelkezik a szükséges erőforrás. Meg kell ezt az engedélyt, mivel szeretne írni egy új előfizetést a hatókörben, az erőforrás. A szükséges erőforrás eltér e még, egyéni vagy egy rendszer témakört való előfizetés. Ez a szakasz ismerteti a kétféle típusú.
 
 ### <a name="system-topics-azure-service-publishers"></a>Rendszer témakörök (az Azure szolgáltatáshoz kiadók)
 
@@ -103,7 +104,7 @@ aeg-sas-key: VXbGWce53249Mt8wuotr0GPmyJ/nDT4hgdEj9DpBeRr38arnnm5OFg==
 
 SAS-tokenje esemény rács közé tartozik, az erőforrás lejárati időt és aláírás. A SAS-jogkivonat formátuma: `r={resource}&e={expiration}&s={signature}`.
 
-Az erőforrás elérési útja a következő témakörben, amelyhez az események küldése. Például egy érvényes erőforrás elérési útja: `https://<yourtopic>.<region>.eventgrid.azure.net/eventGrid/api/events`
+Az erőforrás elérési útja, amelyhez események küldjük esemény rács témakör. Például egy érvényes erőforrás elérési útja: `https://<yourtopic>.<region>.eventgrid.azure.net/eventGrid/api/events`
 
 Az aláírás generálása egy kulcsot.
 

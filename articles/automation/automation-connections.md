@@ -1,24 +1,20 @@
 ---
-title: "Azure Automation szolgáltatásbeli kapcsolódási eszközök |} Microsoft Docs"
+title: "Azure Automation szolgáltatásbeli kapcsolódási eszközök"
 description: "Kapcsolati objektumok Azure Automation DSC-konfiguráció vagy a runbook egy külső szolgáltatás vagy alkalmazás való kapcsolódáshoz szükséges adatokat tartalmaz. Ez a cikk ismerteti a kapcsolatok és a szöveges és a grafikus szerzői őket munkavégzés részleteit."
 services: automation
-documentationcenter: 
-author: georgewallace
-manager: jwhit
-editor: tysonn
-ms.assetid: f0239017-5c66-4165-8cca-5dcb249b8091
 ms.service: automation
-ms.devlang: na
+author: georgewallace
+ms.author: gwallace
+ms.date: 03/15/2018
 ms.topic: article
+manager: carmonm
+ms.devlang: na
 ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 01/13/2017
-ms.author: magoedte; bwren
-ms.openlocfilehash: c1e56f00e46dc3d04f6ac3bb42df6c1935c5c8b0
-ms.sourcegitcommit: 7d4b3cf1fc9883c945a63270d3af1f86e3bfb22a
+ms.openlocfilehash: 547ec5a7de7a58e591a2ea44b8e54804ca41974c
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="connection-assets-in-azure-automation"></a>Azure Automation szolgáltatásbeli kapcsolódási eszközök
 
@@ -26,8 +22,8 @@ Automation szolgáltatásbeli kapcsolódási eszköz csatlakozhat egy külső sz
 
 Amikor kapcsolatot hoz létre, meg kell adnia egy *kapcsolattípus*. A kapcsolat típusa a sablont, amely tulajdonságait határozza meg. A kapcsolat határozza meg a kapcsolódási típus definiált tulajdonságok értékeit. Kapcsolattípusok integrációs modulok az Azure Automation hozzáadásakor vagy létrehozni a [Azure Automation API](http://msdn.microsoft.com/library/azure/mt163818.aspx) Ha az integrációs modul kapcsolattípus tartalmaz, és importálja az Automation-fiók. Ellenkező esetben szüksége lesz hozzon létre egy metaadatfájl automatizálási kapcsolat típusának megadását.  Ezzel kapcsolatos további információkért lásd: [integrációs modulok](automation-integration-modules.md).  
 
->[!NOTE] 
->Az Azure Automationben biztonságos eszközök közé tartozik a hitelesítő adatokat, a tanúsítványokat, a kapcsolatok és a titkosított változók. Ezek az eszközök titkosítva, és tárolja az Azure Automation létrehozott egyedi kulcs segítségével minden egyes automation-fiókhoz. Ezt a kulcsot egy mestertanúsítvány titkosítja és az Azure Automationben tárolja. Előtt tárolása biztonságos eszköz, az automatizálási fiók kulcs visszafejtése a mestertanúsítvány, és majd az eszköz titkosításához használt.
+>[!NOTE]
+>Az Azure Automationben biztonságos eszközök közé tartozik a hitelesítő adatokat, a tanúsítványokat, a kapcsolatok és a titkosított változók. Ezek az eszközök titkosítva, és tárolja az Azure Automationben létrehozott egyedi kulcs segítségével minden egyes automation-fiókhoz. Ezt a kulcsot a Key Vault van tárolva. A kulcs tárolása biztonságos eszköz, mielőtt Key Vault betöltődnek és majd az eszköz titkosításához használt.
 
 ## <a name="windows-powershell-cmdlets"></a>Windows PowerShell-parancsmagjai
 
@@ -36,7 +32,7 @@ A következő táblázatban található parancsmagokkal létrehozása és kezel�
 |Parancsmag|Leírás|
 |:---|:---|
 |[Get-AzureRmAutomationConnection](/powershell/module/azurerm.automation/get-azurermautomationconnection)|Lekéri a kapcsolat. Tartalmaz egy kivonattáblát a kapcsolat mezők értékekkel.|
-|[Új AzureRmAutomationConnection](/powershell/module/azurerm.automation/new-azurermautomationconnection)|Létrehoz egy új kapcsolatot.|
+|[New-AzureRmAutomationConnection](/powershell/module/azurerm.automation/new-azurermautomationconnection)|Létrehoz egy új kapcsolatot.|
 |[Remove-AzureRmAutomationConnection](/powershell/module/azurerm.automation/remove-azurermautomationconnection)|Eltávolít egy létező kapcsolatot.|
 |[Set-AzureRmAutomationConnectionFieldValue](/powershell/module/azurerm.automation/set-azurermautomationconnectionfieldvalue)|Beállítja egy létező kapcsolat adott mezőjének értékét.|
 

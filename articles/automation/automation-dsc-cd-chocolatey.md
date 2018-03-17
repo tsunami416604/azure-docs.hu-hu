@@ -1,24 +1,20 @@
 ---
-title: "Azure Automation DSC Chocolatey a folyamatos üzembe helyezés |} Microsoft Docs"
+title: "Azure Automation DSC Chocolatey a folyamatos üzembe helyezés"
 description: "DevOps folyamatos üzembe helyezés Azure Automation DSC és Chocolatey Csomagkezelő használatával.  Példa a teljes JSON ARM-sablon és a PowerShell-forrás."
 services: automation
-documentationcenter: 
-author: georgewallace
-manager: carmonm
-editor: tysonn
-ms.assetid: c0baa411-eb76-4f91-8d14-68f68b4805b6
 ms.service: automation
-ms.devlang: na
+author: georgewallace
+ms.author: gwallace
+ms.date: 03/16/2018
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
-ms.workload: na
-ms.date: 10/29/2016
-ms.author: golive
-ms.openlocfilehash: f9957d745ed910fbdcbeeee7d9ddb24a51da141b
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+manager: carmonm
+ms.devlang: na
+ms.tgt_pltfrm: na
+ms.openlocfilehash: 8c1427bd40a6fd75a755c4709d88a4b8e4c55571
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="usage-example-continuous-deployment-to-virtual-machines-using-automation-dsc-and-chocolatey"></a>Példa: A virtuális gépek Automation DSC és Chocolatey folyamatos üzembe helyezés
 DevOps világában sok eszközöket különböző pontok folyamatos integrációs folyamatban van.  Azure Automation kívánt állapot konfigurációs szolgáltatása (DSC) egy üdvözlő új hozzáadása arra a DevOps csoportokat is alkalmaz.  Ez a cikk bemutatja a beállítás mentése folyamatos Deployment (CD) a Windows-számítógépen.  Könnyen kiterjesztheti a technika (egy webhely, például) szerepkör, és onnan, valamint a további szerepkörök közé tartoznak a tetszőleges számú, Windows rendszerű számítógépeken szükség szerint.
@@ -77,7 +73,7 @@ Vagy nincs az manuális módszerrel.  A PowerShell integrációs modul a Windows
 
 * A modul telepítése, amelyekre szüksége van a munkaállomáson, az alábbiak szerint:
   * Telepítés [Windows Management Framework v5](http://aka.ms/wmf5latest) (a Windows 10-hez nem szükséges)
-  * `Install-Module –Name MODULE-NAME`< – a PowerShell-galériából modul grabs 
+  * `Install-Module –Name MODULE-NAME`    < – a PowerShell-galériából modul grabs 
 * A modul mappát másolja `c:\Program Files\WindowsPowerShell\Modules\MODULE-NAME` egy ideiglenes mappába 
 * A fő mappa minták és dokumentáció törlése 
 * A ZIP-mappáját, pontosan ugyanaz, mint a mappa a ZIP-fájl elnevezése 
@@ -138,7 +134,7 @@ ISVBoxConfig.ps1:
         }    
     }
 
-Új-ConfigurationScript.ps1:
+New-ConfigurationScript.ps1:
 
     Import-AzureRmAutomationDscConfiguration ` 
         -ResourceGroupName MY-AUTOMATION-RG –AutomationAccountName MY-AUTOMATION-ACCOUNT ` 

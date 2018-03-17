@@ -13,13 +13,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/11/2017
-ms.author: gokuma;bradsev
-ms.openlocfilehash: 9b8beb51c555c6125fa3b0abbad892d627a180b9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 03/16/2018
+ms.author: gokuma;
+ms.openlocfilehash: 921ccf67e5e0320e742066186b7929643536424f
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="data-platforms"></a>Adatplatformok
 
@@ -100,7 +100,7 @@ A Hadoop leállíthatja kapcsolódó szolgáltatások, ha már nincs szükség f
 |Platform|Telepítési helyet ($SPARK_HOME)|
 |:--------|:--------|
 |Windows | c:\dsvm\tools\spark-X.X.X-bin-hadoopX.X|
-|Linux   | /dsvm/Tools/Spark-X.X.X-bin-hadoopX.X|
+|Linux   | /dsvm/tools/spark-X.X.X-bin-hadoopX.X|
 
 
 Szalagtárak adatok eléréséhez Azure Blob vagy Azure Data Lake-(ADLS-) és a Microsoft MMLSpark gépi tanulás könyvtárak segítségével előre vannak telepítve $SPARK_HOME/JAR-fájlok kivételével. Spark indításakor automatikusan tölti be a JAR-fájlok kivételével. Alapértelmezés szerint a Spark használja a helyi lemezen lévő adatokat. Ahhoz, hogy a hozzáférési adatok Azure blob vagy ADLS tárolt DSVM Spark-példányban létrehozása/konfigurálni kell a `core-site.xml` fájl található $SPARK_HOME/conf/core-site.xml.template a sablon alapján (ha vannak a helyőrzők Blob és ADLS konfigurációk) az Azure blob és az Azure Data Lake tárolási megfelelő hitelesítő adatokkal. ADLS szolgáltatás hitelesítő adatainak létrehozásakor a lépések részletes talált [Itt](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-authenticate-using-active-directory#create-an-active-directory-application). Miután az Azure blob vagy ADLS hitelesítőadatok meg legyenek adva, a core-site.xml fájlban, a wasb URI-előtag forrásokra tárolt adatokat is hivatkozni: / / vagy az adl: / /. 

@@ -6,14 +6,14 @@ author: jovanpop-msft
 ms.reviewer: bonova, carlrab
 ms.service: sql-database
 ms.topic: article
-ms.date: 02/28/2018
+ms.date: 03/16/2018
 ms.author: jovanpop
 manager: craigg
-ms.openlocfilehash: 11439a8bc10e616773068416b5a7def2f4becb36
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 4c50adeef0d6e811af6e144aa7351d9b65c1bd76
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="feature-comparison-azure-sql-database-versus-sql-server"></a>Szolgáltatások összehasonlítása: Azure SQL Database és SQL Server 
 
@@ -51,7 +51,7 @@ A következő táblázat az SQL Server főbb szolgáltatásokat sorolja fel, és
 | [Tartalmazott felhasználók](https://docs.microsoft.com/sql/relational-databases/security/contained-database-users-making-your-database-portable) | Igen | Igen |
 | [Attribútumfolyam nyelvi kulcsszavak ellenőrzése](https://docs.microsoft.com/sql/t-sql/language-elements/control-of-flow) | Igen | Igen |
 | [Kereszt-adatbázis-lekérdezések](https://docs.microsoft.com/sql/relational-databases/linked-servers/linked-servers-database-engine) | Nem - látható [rugalmas lekérdezések](sql-database-elastic-query-overview.md) | Igen, valamint [rugalmas lekérdezések](sql-database-elastic-query-overview.md) |
-| [Adatbázisközi tranzakciók]((https://docs.microsoft.com/sql/relational-databases/linked-servers/linked-servers-database-engine)) | Nem | Igen |
+| [Adatbázisközi tranzakciók](https://docs.microsoft.com/sql/relational-databases/linked-servers/linked-servers-database-engine) | Nem | Igen |
 | [A kurzorok](https://docs.microsoft.com/sql/t-sql/language-elements/cursors-transact-sql) | Igen |Igen | 
 | [Adatok tömörítése](https://docs.microsoft.com/sql/relational-databases/data-compression/data-compression) | Igen |Igen |
 | [Az adatbázisbeli levelezés](https://docs.microsoft.com/sql/relational-databases/database-mail/database-mail) | Nem | Igen |

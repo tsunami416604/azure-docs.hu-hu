@@ -9,11 +9,11 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
 ms.date: 02/28/2018
-ms.openlocfilehash: 6ea839c10bffc9a024af38132081f2c9bd7dfc0a
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: f74c60cb99ee5bae1af8e000ebbd21b41600638d
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="migrate-your-postgresql-database-using-dump-and-restore"></a>Telepítse át az PostgreSQL-adatbázist használ a biztonsági másolat és helyreállítás
 Használható [pg_dump](https://www.postgresql.org/docs/9.3/static/app-pgdump.html) PostgreSQL-adatbázisból egy biztonsági másolat fájlba kibontásához és [pg_restore](https://www.postgresql.org/docs/9.3/static/app-pgrestore.html) fájlból történő visszaállításához a PostgreSQL-adatbázisból az archív pg_dump hozta létre.
@@ -38,11 +38,13 @@ pg_dump -Fc -v --host=localhost --username=masterlogin --dbname=testdb > testdb.
 ## <a name="restore-the-data-into-the-target-azure-database-for-postrgesql-using-pgrestore"></a>Állítsa vissza az adatokat a cél Azure Database-be a PostrgeSQL pg_restore használatával
 Miután létrehozta a céladatbázis, használhatja a pg_restore parancs és a -d, az adatok helyreállítását a kiírt fájlok a cél adatbázisba--dbname paraméter.
 ```bash
-pg_restore -v –-host=<server name> --port=<port> --username=<user@servername> --dbname=<target database name> <database>.dump
+pg_restore -v --no-owner –-host=<server name> --port=<port> --username=<user@servername> --dbname=<target database name> <database>.dump
 ```
-Ebben a példában, visszaállíthatja az adatokat a memóriakép **testdb.dump** az adatbázisba **mypgsqldb** célkiszolgálón **mydemoserver.postgres.database.azure.com**.
+--Nem-owner paraméter okairól minden objektumot létrehozni a felhasználó által megadott felhasználónévvel--tartozó a visszaállítás során is beleértve. További információkért lásd a PostgreSQL dokumentációs [pg_restore](https://www.postgresql.org/docs/9.6/static/app-pgrestore.html).
+
+Ebben a példában, visszaállíthatja az adatokat a memóriakép **testdb.dump** az adatbázisba **mypgsqldb** célkiszolgálón **mydemoserver.postgres.database.azure.com**. 
 ```bash
-pg_restore -v --host=mydemoserver.postgres.database.azure.com --port=5432 --username=mylogin@mydemoserver --dbname=mypgsqldb testdb.dump
+pg_restore -v --no-owner --host=mydemoserver.postgres.database.azure.com --port=5432 --username=mylogin@mydemoserver --dbname=mypgsqldb testdb.dump
 ```
 
 ## <a name="next-steps"></a>További lépések

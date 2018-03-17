@@ -12,29 +12,32 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/10/2017
+ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: 9bc56d242abde919f6150b88c81921d409e1d94c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ab955edec61799495e877943237236fb7fc82cb8
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="using-the-deep-learning-virtual-machine"></a>A Virtual Machine Learning mély használatával
 
-A részletes tanulási virtuális gép (DLVM) kiépítése után megkezdheti, létrehozási mély Neurális hálózat modelleket például a számítógép stratégiai tartományokban AI alkalmazásokat hozhatnak létre nyelvi ismertetése. 
+A részletes tanulási virtuális gép (DLVM) kiépítése után elindíthatja a létrehozási mély Neurális hálózat modelleket például a számítógép stratégiai és nyelvi ismertetése tartományokban AI alkalmazásokat hozhatnak létre. 
 
-Számos AI a DLVM a megadott eszközök. A [mély tanulási és AI keretrendszerek lap](dsvm-deep-learning-ai-frameworks.md) ezekkel az eszközökkel kapcsolatos részleteket tartalmazza. A [minták lap](dsvm-samples-and-walkthroughs.md) nyújt segítséget a keretrendszerekre minden egyes virtuális gépen előre betöltött kódpéldák mutatók gyors használatbavétel. 
+Számos AI a virtuális Gépen mélységi tanulási megadott eszközök. A [mély tanulási és AI keretrendszerek lap](dsvm-deep-learning-ai-frameworks.md) ezekkel az eszközökkel kapcsolatos részleteket tartalmazza. 
 
-# <a name="deep-learning-tutorials-and-walkthroughs"></a>Részletes tanulási oktatóanyagok és forgatókönyvek
+## <a name="deep-learning-tutorials-and-walkthroughs"></a>Részletes tanulási oktatóanyagok és forgatókönyvek
 
-A keretrendszer-alapú minták mellett azt is kínálnak átfogó forgatókönyvek, amelyek érvényesítése a DLVM a. Ezek a tartományok mély tanulást segítő alkalmazások fejlesztésének jump-start meg súgó például a lemezkép és az SMS-nyelvét ismertetése. Adja hozzá a további végpontok-oktatóanyagok eltérő tartományokban és technológia továbbra is.   
-
-1. [Neurális hálózatokat futtatásáért különböző keretrendszerek](https://github.com/ilkarman/DeepLearningFrameworks): Ez az egy átfogó forgatókönyv bemutatja, hogyan telepítheti át a kódot egy keretrendszere a másikra. Azt is bemutatja, hogyan modell összehasonlítására, és futtassa a teljesítményét keretek között. 
-
-2. [Lemezképek termékek észleléséhez egy végpont megoldás – útmutató útmutatóját](https://github.com/Azure/cortana-intelligence-product-detection-from-images): kép észlelési a keresse meg és lemezképek objektumainak besorolása technika. Ez a technológia nem kapcsolja a hatalmas megtérüléséhez sok valós üzleti tartományok. Például illetve a kiskereskedelemben segítségével ezzel a technikával határozza meg, melyik termék ügyfél rendelkezik felvenni, a forgalomban a. Ezt az információt viszonzásul segíti a termék kezelése tárolja. 
-
-3. [Szöveg a dokumentumok besorolásának](https://github.com/anargyri/lstm_han): Ez a forgatókönyv bemutatja, hogyan lehet létrehozni, és két különböző Neurális hálózati architektúra (hierarchikus figyelmet hálózati és a hosszú rövid távú memória (LSTM) hálózati) betanítása szöveg dokumentumok besorolási a részletes tanulási Keras API használatával. Keras háromra keretrendszerek, Microsoft kognitív eszközkészlet, TensorFlow és Theano tanulási legnépszerűbb átfogó előtér.
+A keretrendszer-alapú minták mellett átfogó forgatókönyvek készlete is biztosít a DLVM a érvényesítve. Ezek a forgatókönyvek segítséget nyújtanak a tartományokban, például a lemezkép és az SMS-nyelvét ismertetése mély tanulást segítő alkalmazások fejlesztésének jump-start. Több végpont oktatóanyagok eltérő tartományokban és technológia továbbra is fel kell venni a párbeszédpanelre.   
 
 
+- [Neurális hálózatokat futtatásáért különböző keretrendszerek](https://github.com/ilkarman/DeepLearningFrameworks): egy átfogó forgatókönyv bemutatja, hogyan telepítheti át a kódot egy keretrendszere a másikra. Azt is bemutatja, hogyan modell összehasonlítására, és futtassa a teljesítményét keretek között. 
+
+- [Lemezképek termékek észleléséhez egy végpont megoldás – útmutató útmutatóját](https://github.com/Azure/cortana-intelligence-product-detection-from-images): kép észlelési a keresse meg és lemezképek objektumainak besorolása technika. Ez a technológia nem kapcsolja a hatalmas megtérüléséhez sok valós üzleti tartományok. Például illetve a kiskereskedelemben segítségével ezzel a technikával határozza meg, melyik termék ügyfél rendelkezik felvenni, a forgalomban a. Ezt az információt viszonzásul segíti a termék kezelése tárolja. 
+
+- [Szöveg a dokumentumok besorolásának](https://github.com/anargyri/lstm_han): Ez a forgatókönyv bemutatja, hogyan lehet létrehozni, és két különböző Neurális hálózat architektúrák betanítása: hierarchikus figyelmet hálózati és a hosszú rövid távú memória (LSTM) hálózati. Ezeket a Neurális hálózatokat mély megismerésére a Keras API használatával szöveges dokumentumok besorolását. Keras háromra keretrendszerek tanulási legnépszerűbb átfogó előtér: Microsoft kognitív eszközkészlet TensorFlow és Theano.
+
+## <a name="next-steps"></a>További lépések
+
+A [minták lap](dsvm-samples-and-walkthroughs.md) nyújt segítséget a keretrendszerekre minden egyes virtuális gépen előre betöltött kódpéldák mutatók gyors használatbavétel. 
 

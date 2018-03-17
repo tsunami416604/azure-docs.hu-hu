@@ -6,30 +6,29 @@ documentationcenter: NA
 author: kevinvngo
 manager: jhubbard
 editor: 
-ms.assetid: 51f1e444-9ef7-4e30-9a88-598946c45196
 ms.service: sql-data-warehouse
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: manage
-ms.date: 03/30/2017
+ms.date: 03/15/2018
 ms.author: kevin;barbkess
-ms.openlocfilehash: 48318397f9c5e463c82320ad9d7c23a1a62af77e
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 0829d448e8b925d0dcc032ed143d8fff42ab1b69
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="troubleshooting-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse hibaelhárítása
 Ez a témakör néhány a gyakori hibaelhárítási kérdések hozzáadunk kapunk az ügyfelektől.
 
-## <a name="connecting"></a>Csatlakozás...
+## <a name="connecting"></a>Csatlakozás
 | Probléma | Megoldás: |
 |:--- |:--- |
-| "NT AUTHORITY\NÉVTELEN bejelentkezés" felhasználó bejelentkezése sikertelen volt. (A Microsoft SQL Server, hiba: 18456) |Ez akkor fordul elő, amikor egy AAD-felhasználó megpróbál csatlakozni a master adatbázisban, de nem rendelkezik a felhasználó a főadatbázisban.  Ez a probléma elhárításához adjon meg az SQL Data Warehouse kapcsolat időpontban csatlakozni, vagy vegye fel a felhasználót a fő adatbázist kíván.  Lásd: [biztonsági áttekintése] [ Security overview] cikkben olvashat. |
-| A kiszolgáló egyszerű "sajátfelhasználónév" nincs hozzáférhetnek a "fő" adatbázis aktuális biztonsági környezetében. Nem lehet megnyitni a felhasználói alapértelmezett adatbázist. A bejelentkezés nem sikerült. "Sajátfelhasználónév" felhasználó bejelentkezése sikertelen volt. (A Microsoft SQL Server, hiba: 916) |Ez akkor fordul elő, amikor egy AAD-felhasználó megpróbál csatlakozni a master adatbázisban, de nem rendelkezik a felhasználó a főadatbázisban.  Ez a probléma elhárításához adjon meg az SQL Data Warehouse kapcsolat időpontban csatlakozni, vagy vegye fel a felhasználót a fő adatbázist kíván.  Lásd: [biztonsági áttekintése] [ Security overview] cikkben olvashat. |
-| CTAIP hiba |Ez a hiba akkor fordulhat elő, a bejelentkezés az SQL-kiszolgáló adatbázisában, de nem az SQL Data Warehouse-adatbázis létrehozása.  Ha ezt a hibát észlel, vessen egy pillantást a [biztonsági áttekintése] [ Security overview] cikk.  Ez a cikk ismerteti, hogyan hozzon létre egy felhasználónevet és egy felhasználó létrehozása a master és a felhasználó az SQL Data Warehouse-adatbázis létrehozása. |
+| "NT AUTHORITY\NÉVTELEN bejelentkezés" felhasználó bejelentkezése sikertelen volt. (Microsoft SQL Server, Error: 18456) |Ez akkor fordul elő, amikor egy AAD-felhasználó megpróbál csatlakozni a master adatbázisban, de nem rendelkezik a felhasználó a főadatbázisban.  Ez a probléma elhárításához, vagy adja meg az SQL Data Warehouse kapcsolat időpontban csatlakozni, vagy vegye fel a felhasználót a fő adatbázist kíván.  Lásd: [biztonsági áttekintése] [ Security overview] cikkben olvashat. |
+| A kiszolgáló egyszerű "sajátfelhasználónév" nincs hozzáférhetnek a "fő" adatbázis aktuális biztonsági környezetében. Nem lehet megnyitni a felhasználói alapértelmezett adatbázist. A bejelentkezés nem sikerült. "Sajátfelhasználónév" felhasználó bejelentkezése sikertelen volt. (A Microsoft SQL Server, hiba: 916) |Ez akkor fordul elő, amikor egy AAD-felhasználó megpróbál csatlakozni a master adatbázisban, de nem rendelkezik a felhasználó a főadatbázisban.  Ez a probléma elhárításához, vagy adja meg az SQL Data Warehouse kapcsolat időpontban csatlakozni, vagy vegye fel a felhasználót a fő adatbázist kíván.  Lásd: [biztonsági áttekintése] [ Security overview] cikkben olvashat. |
+| CTAIP hiba |Ez a hiba akkor fordulhat elő, a bejelentkezés az SQL-kiszolgáló adatbázisában, de nem az SQL Data Warehouse-adatbázis létrehozása.  Ha ezt a hibát észlel, vessen egy pillantást a [biztonsági áttekintése] [ Security overview] cikk.  Ez a cikk ismerteti a fő egy felhasználónevet és egy felhasználó létrehozása, és a felhasználó az SQL Data Warehouse-adatbázis létrehozása. |
 | Tiltsa le tűzfal |Az Azure SQL-adatbázisok kiszolgáló és az adatbázis szintjén tűzfallal védett biztosításához csak ismert IP-címek van egy adatbázis eléréséhez. A tűzfalak biztonságosabbak alapértelmezett, ami azt jelenti, hogy explicit módon engedélyeznie kell, és az IP-cím vagy a címtartományt, mielőtt az csatlakozna.  A tűzfalbeállításokat, a hozzáférés, kövesse a lépéseket a [kiszolgáló tűzfal elérésének konfigurálása az ügyfél IP-címhez] [ Configure server firewall access for your client IP] a a [utasításokat kiépítés][Provisioning instructions]. |
 | Az eszköz vagy az illesztőprogram nem lehet kapcsolódni |Az SQL Data Warehouse használatát javasolja [SSMS][SSMS], [az SSDT a Visual Studio][SSDT for Visual Studio], vagy [sqlcmd] [ sqlcmd] az adatok lekérdezésére. Illesztőprogramok és a csatlakozás az SQL Data Warehouse további részletekért lásd: [az Azure SQL Data Warehouse illesztőprogramok] [ Drivers for Azure SQL Data Warehouse] és [csatlakozás az Azure SQL Data Warehouse] [ Connect to Azure SQL Data Warehouse] cikkeket. |
 
@@ -47,7 +46,7 @@ Ez a témakör néhány a gyakori hibaelhárítási kérdések hozzáadunk kapun
 | Alacsony feldolgozási / lekérdezések várólistára |Understanding [munkaterhelés felügyeleti] [ Workload management] fontos annak megértése, hogyan együtt memóriafoglalást elosztása érdekében. |
 | Megvalósításához ajánlott eljárások |A legjobb hely a start további lehetőségek lekérdezés teljesítményének javítására van [gyakorlati tanácsok az SQL Data Warehouse] [ SQL Data Warehouse best practices] cikk. |
 | A méretezés teljesítményének javításával |Egyes esetekben a megoldást a teljesítmény fokozása-hoz egyszerűen adhat hozzá további számítási a lekérdezések teljesítményét [az SQL Data Warehouse skálázás][Scaling your SQL Data Warehouse]. |
-| Gyenge lekérdezési teljesítményt, gyenge index minőségi miatt |Néhány eset lekérdezéseket is lassulást miatt [gyenge oszlopcentrikus index minőségi][Poor columnstore index quality].  Ebben a cikkben találhat további információt és [szegmens minőségének javítására indexek újraépítése][Rebuild indexes to improve segment quality]. |
+| Gyenge lekérdezési teljesítményt, gyenge index minőségi miatt |Néhány eset lekérdezések miatt lelassíthatja [gyenge oszlopcentrikus index minőségi][Poor columnstore index quality].  Ebben a cikkben találhat további információt és [szegmens minőségének javítására indexek újraépítése][Rebuild indexes to improve segment quality]. |
 
 ## <a name="system-management"></a>Rendszer-felügyeleti
 | Probléma | Megoldás: |
@@ -60,7 +59,7 @@ Ez a témakör néhány a gyakori hibaelhárítási kérdések hozzáadunk kapun
 ## <a name="polybase"></a>PolyBase
 | Probléma | Megoldás: |
 |:--- |:--- |
-| Betöltési nagy sorok miatt meghiúsul |Nagy sor támogatása jelenleg nem érhető el a Polybase.  Ez azt jelenti, hogy ha a tábla tartalmaz, VARCHAR(MAX), NVARCHAR(MAX) vagy VARBINARY(MAX), külső táblák nem használhatók az adatok betöltésére.  Nagy sorok terhelések jelenleg csak az Azure Data Factory (a BCP-vel), Azure Stream Analytics, SSIS, BCP vagy a .NET SQLBulkCopy osztály támogatott. Nagy sorok PolyBase támogatása egy későbbi kiadásban lesz hozzáadva. |
+| Betöltési nagy sorok miatt meghiúsul |Nagy sor támogatása jelenleg nem érhető el a Polybase.  Ez azt jelenti, hogy ha a tábla tartalmaz, VARCHAR(MAX), NVARCHAR(MAX) vagy VARBINARY(MAX), külső táblák nem használhatók az adatok betöltésére.  Nagy sorok betöltése jelenleg csak az Azure Data Factory (a BCP-vel), Azure Stream Analytics, SSIS, BCP vagy a .NET SQLBulkCopy osztály támogatott. Nagy sorok PolyBase támogatása egy későbbi kiadásban lesz hozzáadva. |
 | MAXIMÁLIS adattípus-táblázat BCP betöltése sikertelen |Nincs olyan ismert probléma, amely megköveteli, hogy az VARCHAR(MAX), NVARCHAR(MAX) vagy VARBINARY(MAX) kerüljenek-e bizonyos esetekben a táblázat végére.  Próbálja meg a maximális oszlopok a tábla végéhez. |
 
 ## <a name="differences-from-sql-database"></a>Eltérések a SQL-adatbázis
@@ -74,7 +73,7 @@ Ez a témakör néhány a gyakori hibaelhárítási kérdések hozzáadunk kapun
 | Felhasználó által megadott függvények nem támogatják a SELECT utasítás |Ez az a felhasználó által megadott függvények aktuális korlátozása.  Lásd: [CREATE FUNCTION] [ CREATE FUNCTION] a szintaxis támogatott. |
 
 ## <a name="next-steps"></a>További lépések
-Ha Ön volt nem sikerült megtalálni a megoldást a fenti problémát, az alábbiakban néhány más erőforrások, próbálja meg.
+A megoldás a probléma további segítséget itt találhat az alábbiakban néhány más erőforrások, próbálja meg.
 
 * [Blogok]
 * [Funkciókérések]
@@ -113,7 +112,7 @@ Ha Ön volt nem sikerült megtalálni a megoldást a fenti problémát, az aláb
 [Temporary]: ./sql-data-warehouse-tables-temporary.md
 [Poor columnstore index quality]: ./sql-data-warehouse-tables-index.md#causes-of-poor-columnstore-index-quality
 [Rebuild indexes to improve segment quality]: ./sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality
-[Workload management]: ./sql-data-warehouse-develop-concurrency.md
+[Workload management]: ./resource-classes-for-workload-management.md
 [Using CTAS to work around unsupported UPDATE and DELETE syntax]: ./sql-data-warehouse-develop-ctas.md#using-ctas-to-work-around-unsupported-features
 [UPDATE workarounds]: ./sql-data-warehouse-develop-ctas.md#ansi-join-replacement-for-update-statements
 [DELETE workarounds]: ./sql-data-warehouse-develop-ctas.md#ansi-join-replacement-for-delete-statements

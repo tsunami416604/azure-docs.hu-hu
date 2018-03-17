@@ -7,20 +7,20 @@ author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: article
-ms.date: 11/28/2017
+ms.date: 03/16/2018
 ms.author: sstein
-ms.openlocfilehash: beddb3d9ac4a8c1ec5bd034c959c6b734c5b4403
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: cf8d4427cddbe6368ac265fe9ecc0f408f7fb1fb
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="scale-out-databases-with-the-shard-map-manager"></a>A szilánkok térkép manager adatbázisokkal kiterjesztése
 Könnyen horizontális felskálázás az SQL Azure adatbázisokat, használja a shard térkép kezelőjét. A szilánkok térkép manager shard csoportban lévő összes szilánkok (adatbázisok) globális hozzárendelés információt egy különleges adatbázis. A metaadatok lehetővé teszi, hogy egy alkalmazás értéke alapján a megfelelő adatbázishoz való kapcsolódáshoz a **horizontális kulcs**. Emellett minden shard készletében tartalmazza, amelyek nyomon követik a helyi részekre bonthatók az adatok (úgynevezett **shardlets**). 
 
 ![A shard leképezés kezelése](./media/sql-database-elastic-scale-shard-map-management/glossary.png)
 
-Hogyan össze ezeket a maps elengedhetetlen megérteni a shard térkép kezelési. Ebben az esetben a ShardMapManager osztály használatával ([Java](https://docs.microsoft.com/java/api/com.microsoft.azure.elasticdb.shard.mapmanager._shard_map_manager), [.NET](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.aspx)), a tényleges a [Elastic Database ügyféloldali kódtárának](sql-database-elastic-database-client-library.md) shard leképezések kezelésére.  
+Hogyan össze ezeket a maps elengedhetetlen megérteni a shard térkép kezelési. Ebben az esetben a ShardMapManager osztály használatával ([Java](https://docs.microsoft.com/java/api/com.microsoft.azure.elasticdb.shard.mapmanager._shard_map_manager), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager), a tényleges a [Elastic Database ügyféloldali kódtárának](sql-database-elastic-database-client-library.md) shard leképezések kezelésére.  
 
 ## <a name="shard-maps-and-shard-mappings"></a>A shard leképezések és shard hozzárendelések
 Az egyes shard ki kell választani a típusát, a shard térkép létrehozásához. A választott attól függ, hogy az adatbázis-architektúra: 
@@ -96,7 +96,7 @@ A **ShardMapManager** objektum gyár segítségével jön létre ([Java](/java/a
 
 **Ne feledje:** a **ShardMapManager** kell példányosítani csak egyszer app tartományonként, az inicializálási kód egy alkalmazáshoz. ShardMapManager alkalmazás ugyanabban a tartományban további példányának létrehozása nagyobb memória és CPU-felhasználás az alkalmazás eredményez. A **ShardMapManager** shard maps tetszőleges számú tartalmazhat. Lehet, hogy elegendő-e számos alkalmazás egyetlen shard térképre, amíg nincsenek alkalommal, ha az adatbázisok más-más részhalmazához használt különböző séma vagy egyedi célokra; azokban az esetekben érdemes lehet több shard maps. 
 
-Ezzel a kóddal, az alkalmazás megpróbálja megnyitni egy meglévő **ShardMapManager** a TryGetSqlShardMapManager rendelkező ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager._shard_map_manager_factory.trygetsqlshardmapmanager), [.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.trygetsqlshardmapmanager.aspx)) metódust.  Ha egy globális objektumokból **ShardMapManager** (GSM) létezhet az adatbázis még nem, az ügyféloldali kódtár létrehozásuk van a CreateSqlShardMapManager használatával ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager._shard_map_manager_factory.createsqlshardmapmanager), [.NET ](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.createsqlshardmapmanager)) metódust.
+Ezzel a kóddal, az alkalmazás megpróbálja megnyitni egy meglévő **ShardMapManager** a TryGetSqlShardMapManager rendelkező ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager._shard_map_manager_factory.trygetsqlshardmapmanager), [.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager) metódust. Ha egy globális objektumokból **ShardMapManager** (GSM) létezhet az adatbázis még nem, az ügyféloldali kódtár létrehozásuk van a CreateSqlShardMapManager használatával ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager._shard_map_manager_factory.createsqlshardmapmanager), [.NET ](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.createsqlshardmapmanager)) metódust.
 
 ```Java
 // Try to get a reference to the Shard Map Manager in the shardMapManager database.

@@ -8,13 +8,13 @@ ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 01/18/2018
+ms.date: 03/15/2018
 ms.author: tomfitz
-ms.openlocfilehash: fccc2dbb7623f4ceb0d3decc7037f75a05858910
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 61815098a4935983f19b3dcea6e001230aee4771
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="azure-managed-applications-in-the-marketplace"></a>A piactéren Azure kezelt alkalmazások
 
@@ -42,7 +42,7 @@ Az Azure piactéren közzétevő válik, a következőket kell tennie:
 
 1. Hozzon létre egy Microsoft ID – egy e-mail-címét használja a vállalati tartományhoz, de nem egy személy a Microsoft-fiók létrehozásához. Ez az e-mail cím a Microsoft Developer Center és a Cloud Partner portálra szolgál. További információkért lásd: [Azure piactér Publisher útmutató](https://aka.ms/sellerguide).
 1. Küldje el [Azure piactér jelölési űrlap](https://aka.ms/ampnomination) – **megoldás, amely közzé kívánja?**, jelölje be **kezelt alkalmazás**. Az űrlap elküldése, miután a piactér bevezetési csapat ellenőrzi, hogy az alkalmazás, és érvényesíti a kérelmet. A jóváhagyási folyamat eltarthat egy-három nap. Ha a jelölési jóváhagyják, kap egy promóciós kódot arra a regisztrációs díja a fejlesztői központban. Ha így tesz **nem** töltse ki a piactér jelölési űrlapot, a rendszer felkéri $99 regisztrációs díjat kell fizetnie.
-1. Regisztrálja a [fejlesztői központ](https://developer.microsoft.com) -a Microsoft ellenőrzi, hogy a szervezet egy érvényes jogalany az ország, amelyen regisztrálva van egy érvényes adó azonosítóval. A jóváhagyási folyamat 5 – 10 nap vehet igénybe. A regisztrációs díj elkerülése érdekében használja a promóciós e-mailben a jelölési eljárás a kapott kódot. További információkért lásd: [Azure piactér Publisher útmutató](https://aka.ms/sellerguide).
+1. Regisztrálja a [fejlesztői központ](http://dev.windows.com/registration?accountprogram=azure) -a Microsoft ellenőrzi, hogy a szervezet egy érvényes jogalany az ország, amelyen regisztrálva van egy érvényes adó azonosítóval. A jóváhagyási folyamat 5 – 10 nap vehet igénybe. A regisztrációs díj elkerülése érdekében használja a promóciós e-mailben a jelölési eljárás a kapott kódot. További információkért lásd: [Azure piactér Publisher útmutató](https://aka.ms/sellerguide).
 1. Jelentkezzen be [Cloud Partner portálra](https://cloudpartner.azure.com) - közzétevő profilban a fejlesztői központban regisztrált fiókjában társítsa a piactér Publisher profilhoz. További információkért lásd: [Azure piactér Publisher útmutató](https://aka.ms/sellerguide).
 
 ## <a name="create-a-new-azure-application-offer"></a>Hozzon létre egy új Azure-alkalmazásokban ajánlatot

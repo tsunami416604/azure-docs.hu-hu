@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 1763c63b37c5e6b326c3623dc058974f718ac990
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: e0b919ae5ef0639c8afdc5f9b006d899c8dbc4c1
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="human-interaction-in-durable-functions---phone-verification-sample"></a>Emberi beavatkozást igényel a tartós funkciók - telefon ellenőrzési minta
 
@@ -33,23 +33,15 @@ Ez a minta egy SMS-alapú telefonos ellenőrzési rendszerétől valósítja meg
 
 ## <a name="scenario-overview"></a>Forgatókönyv áttekintése
 
-Telefonszám ellenőrzése, hogy a végfelhasználók az alkalmazás nem levélszemétküldők és, hogy azok mondja ki, hogy azok ki ellenőrzésére szolgál. Multi-factor authentication egy gyakori használati eset a felhasználói fiókok védelme érdekében a támadóktól. Az ügyfél a saját Telefonszám ellenőrzése a végrehajtási kérdésre szüksége van egy **állapot-nyilvántartó interakció** egy ember rendelkező. A felhasználó általában biztosított néhány kódot (pl. 4-jegyű szám), és kell válaszolnia **elfogadható időn belül**.
+Telefonszám ellenőrzése, hogy a végfelhasználók az alkalmazás nem levélszemétküldők és, hogy azok mondja ki, hogy azok ki ellenőrzésére szolgál. Multi-factor authentication egy gyakori használati eset a felhasználói fiókok védelme érdekében a támadóktól. Az ügyfél a saját Telefonszám ellenőrzése a végrehajtási kérdésre szüksége van egy **állapot-nyilvántartó interakció** egy ember rendelkező. A felhasználó általában biztosított néhány kódot (például 4-jegyű szám), és kell válaszolnia **elfogadható időn belül**.
 
-Szokásos Azure Functions állapot nélküli (a rendszer sok más felhőalapú végpont platformokon), így ezek a típusok kölcsönhatások tartalmazzon explicit módon kezelése külsőleg állapot egy adatbázisban vagy valamilyen más állandó tárolja. A kapcsolati emellett több funkció, amely koordinált együtt kell felosztva. Legalább egy függvény például eldönti, a kódot, megőrzése ki valahol és a felhasználó telefonjára küldéséhez kell. Emellett egyéb kapott választ a felhasználó és valamilyen módon leképez az eredeti függvény hívásához szükséges művelet a kód érvényességi végrehajtásához legalább egy függvény van szüksége. Időtúllépés az is fontos eleme biztonsága érdekében. Ez elég bonyolult közérthető gyorsan kaphatunk.
+Szokásos Azure Functions állapot nélküli (a rendszer sok más felhőalapú végpont platformokon), így ezek a típusok kölcsönhatások tartalmaz, amely explicit módon kezelése állapot külsőleg egy adatbázisban vagy valamilyen más állandó tárolásának. A kapcsolati emellett több funkció, amely koordinált együtt kell felosztva. Legalább egy függvény például eldönti, a kódot, megőrzése ki valahol és a felhasználó telefonjára küldéséhez kell. Emellett egyéb kapott választ a felhasználó és valamilyen módon leképez az eredeti függvény hívásához szükséges művelet a kód érvényességi végrehajtásához legalább egy függvény van szüksége. Időtúllépés az is fontos eleme biztonsága érdekében. Ez elég bonyolult gyorsan kaphatunk.
 
-Ebben a forgatókönyvben összetettsége jelentős mértékben csökken, ha a tartós funkciók használata. Ahogy látni fogja, ez a példa, egy orchestrator-funkció az állapot-nyilvántartó beavatkozás nagyon egyszerűen és kezelhetők minden külső adattárolókhoz bevonása nélkül. Mivel az orchestrator funkciók *tartós*, interaktív folyamok megtalálhatók nagymértékben megbízható.
+Ebben a forgatókönyvben összetettsége jelentős mértékben csökken, ha a tartós funkciók használata. Mivel látni fogja, ez a példa, egy orchestrator-funkció az állapot-nyilvántartó beavatkozás könnyen és kezelhetők minden külső adattárolókhoz bevonása nélkül. Mivel az orchestrator funkciók *tartós*, interaktív folyamok megtalálhatók nagymértékben megbízható.
 
 ## <a name="configuring-twilio-integration"></a>Twilio-integráció konfigurálása
 
-Ez a minta használata szükséges a [Twilio](https://www.twilio.com/) SMS küldése mobiltelefonra szolgáltatást. Az Azure Functions már Twilio keresztül támogatása a [Twilio-kötés](https://docs.microsoft.com/azure/azure-functions/functions-bindings-twilio), és a mintát használja ezt a szolgáltatást.
-
-Kell elsőként az egy Twilio-fiók. Létrehozhat egy ingyenes, https://www.twilio.com/try-twilio. Miután egy fiókot, adja hozzá a következő három **Alkalmazásbeállítások** függvény alkalmazása.
-
-| Alkalmazás-beállítás neve | Érték Leírás |
-| - | - |
-| **TwilioAccountSid**  | A SID Twilio-fiókja |
-| **TwilioAuthToken**   | A hitelesítési jogkivonat Twilio-fiókja |
-| **TwilioPhoneNumber** | A Twilio-fiókjához társított telefonszám. SMS küldése szolgál. |
+[!INCLUDE [functions-twilio-integration](../../includes/functions-twilio-integration.md)]
 
 ## <a name="the-functions"></a>A Funkciók
 
@@ -77,7 +69,7 @@ Miután elindult, ez a függvény az orchestrator a következőket teszi:
 3. Létrehoz egy tartós számlálót, hogy az eseményindítók 90 másodpercet az aktuális idő.
 4. Az időzítő párhuzamosan vár egy **SmsChallengeResponse** esemény a felhasználótól.
 
-A felhasználó kap egy SMS-üzenet egy négyjegyű kóddal. 90 másodpercet, hogy ugyanazt a 4-jegyű kódot küldenek vissza az orchestrator függvény példány az ellenőrzési folyamat elvégzéséhez rendelkeznek. Helytelen kódot elküldenék, elérték egy további három záma jobbra (belül az azonos 90 második ablak) eléréséhez.
+A felhasználó kap egy SMS-üzenet egy négyjegyű kóddal. 90 másodpercet, hogy ugyanazt a 4-jegyű kódot küldenek vissza az orchestrator függvény példány az ellenőrzési folyamat elvégzéséhez rendelkeznek. Helytelen kódot elküldenék, elérték egy további három záma jobbra (belül az azonos 90 másodperc ablak) eléréséhez.
 
 > [!NOTE]
 > Nem lehet nyilvánvaló első, de az orchestrator, a függvény teljesen determinisztikus. Ennek az az oka a `CurrentUtcDateTime` tulajdonság használatával kiszámításához időzítő lejárati idejét, és ezt a tulajdonságot minden egyes ismétlés ezen a ponton az orchestrator-kódban a ugyanazt az értéket adja vissza. Ez fontos annak érdekében, hogy az azonos `winner` minden ismételt hívása annak az eredménye `Task.WhenAny`.
@@ -97,9 +89,9 @@ A **E4_SendSmsChallenge** a funkció a Twilio-kötés az a 4-jegyű kódot SMS �
 
 Ez **E4_SendSmsChallenge** függvény csak menüelemnek egyszer, még akkor is, ha a folyamat leállásából eredő vagy lekérdezi a rendszer játssza vissza. Ez a helyes, mert nem szeretné, hogy a végfelhasználó több SMS-üzenet beolvasása. A `challengeCode` vissza az értéket automatikusan maradnak, az orchestrator függvény mindig tudja a helyes kódot van.
 
-## <a name="run-the-sample"></a>A minta futtatásához
+## <a name="run-the-sample"></a>Minta futtatása
 
-Használja a HTTP-eseményindítókkal aktivált függvényeket, a mintában szereplő, megkezdheti a vezénylési úgy, hogy a következő HTTP POST-kérelmet küld.
+Használja a HTTP-eseményindítókkal aktivált függvényeket, a mintában szereplő, megkezdheti a vezénylési úgy, hogy a következő HTTP POST-kérelmet küld:
 
 ```
 POST http://{host}/orchestrators/E4_SmsPhoneVerification
@@ -158,7 +150,7 @@ Content-Length: 145
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/PhoneVerification.cs)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez a példa azt mutatják, néhány speciális funkciót, a tartós függvények, nevezetesen `WaitForExternalEvent` és `CreateTimer`. Megtudhatta, hogyan ezek kombinálva `Task.WaitAny` egy megbízható időtúllépés, a rendszer, amely gyakran hasznos a valódi személyek való interakció. Többet tudhat meg adott témákat részletes körét kínáló cikkek olvasásával tartós funkciók használatával kapcsolatos.
 

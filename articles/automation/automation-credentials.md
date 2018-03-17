@@ -1,30 +1,26 @@
 ---
-title: "Hitelesítőadat-eszköz az Azure Automationben |} Microsoft Docs"
+title: "Azure Automation szolgáltatásbeli hitelesítőadat eszközök"
 description: "Az Azure Automationben hitelesítő eszközök tartalmaz a hitelesítő adatokat, amelyek segítségével a runbookot vagy a DSC-konfiguráció számára elérhető erőforrások hitelesítéséhez. Ez a cikk ismerteti, hogyan hitelesítő eszközök létrehozása és azok a runbookot vagy a DSC-konfiguráció használatát."
 services: automation
-documentationcenter: 
-author: georgewallace
-manager: carmonm
-editor: tysonn
-ms.assetid: 3209bf73-c208-425e-82b6-df49860546dd
 ms.service: automation
-ms.devlang: na
+author: georgewallace
+ms.author: gwallace
+ms.date: 03/16/2018
 ms.topic: article
+manager: carmonm
+ms.devlang: na
 ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 04/14/2017
-ms.author: bwren
-ms.openlocfilehash: 12a7d00f9e0721fc4cf2668598515fd769c8a728
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: bb6aec41813930cbf74ab989cc4ce6b526b9c6b6
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="credential-assets-in-azure-automation"></a>Azure Automation szolgáltatásbeli hitelesítőadat eszközök
 Automation szolgáltatásbeli hitelesítőadat-eszköz rendelkezik egy [PSCredential](http://msdn.microsoft.com/library/system.management.automation.pscredential) biztonsági hitelesítő adatok, például a felhasználónevet és jelszót tartalmazó objektum. A Runbookok és a DSC-konfigurációk használhat parancsmagokat, fogadja el a hitelesítést egy PSCredential objektumot, vagy azokat lehet, hogy bontsa ki a felhasználónevet és jelszót a PSCredential objektum bizonyos alkalmazás vagy a hitelesítés megkövetelése a szolgáltatás biztosításához. Egy hitelesítő adat tulajdonságait az Azure Automationben biztonságosan tároljuk, és a runbookot vagy a DSC-konfiguráció érhetők el a [Get-AutomationPSCredential](http://msdn.microsoft.com/library/system.management.automation.pscredential.aspx) tevékenység.
 
-> [!NOTE]
-> Az Azure Automationben biztonságos eszközök közé tartozik a hitelesítő adatokat, a tanúsítványokat, a kapcsolatok és a titkosított változók. Ezek az eszközök titkosítva, és tárolja az Azure Automation létrehozott egyedi kulcs segítségével minden egyes automation-fiókhoz. Ezt a kulcsot egy mestertanúsítvány titkosítja és az Azure Automationben tárolja. Előtt tárolása biztonságos eszköz, az automatizálási fiók kulcs visszafejtése a mestertanúsítvány, és majd az eszköz titkosításához használt.  
+>[!NOTE]
+>Az Azure Automationben biztonságos eszközök közé tartozik a hitelesítő adatokat, a tanúsítványokat, a kapcsolatok és a titkosított változók. Ezek az eszközök titkosítva, és tárolja az Azure Automationben létrehozott egyedi kulcs segítségével minden egyes automation-fiókhoz. Ezt a kulcsot a Key Vault van tárolva. A kulcs tárolása biztonságos eszköz, mielőtt Key Vault betöltődnek és majd az eszköz titkosításához használt.
 
 ## <a name="azure-classic-powershell-cmdlets"></a>Az Azure klasszikus PowerShell-parancsmagok
 A következő táblázatban található parancsmagokkal létrehozása és kezelése az automatizálási hitelesítő eszközök a Windows PowerShell segítségével.  Részét képezi a [Azure PowerShell modul](/powershell/azure/overview) elérhető Automation-forgatókönyveket és a DSC-konfigurációk.

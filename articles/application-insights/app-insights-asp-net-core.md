@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/21/2018
 ms.author: mbullwin
-ms.openlocfilehash: e9fb3e68db66449d9ca3b43e6974910cb9477e62
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 77c48a22f974e027b4e8858d5e38018bbf5bb54f
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="application-insights-for-aspnet-core"></a>ASP.Net Core-hoz készült Application Insights
 
@@ -214,5 +214,6 @@ _Teljesítményszámlálók_ ebben a környezetben hivatkozik [kiszolgálóoldal
 
 ## <a name="next-steps"></a>További lépések
 * [Megismerkedhet a felhasználók Forgalomáramlás](app-insights-usage-flows.md) tudni, hogy a felhasználók hogyan navigálnak az alkalmazás.
+* [Konfigurálja a pillanatkép-gyűjtemény](https://docs.microsoft.com/azure/application-insights/app-insights-snapshot-debugger#configure-snapshot-collection-for-aspnet-core-20-applications) forráskódja és változók állapotának megtekintéséhez el a rendszer kivételt hoz létre.
 * [Az API-val](app-insights-api-custom-events-metrics.md) a saját eseményeket és metrikákat az alkalmazás teljesítményét és használatának részletes nézet küldését.
 * [Rendelkezésreállás figyelésére szolgáló tesztek](app-insights-monitor-web-app-availability.md) ellenőrizze a világszerte folyamatosan az alkalmazást.

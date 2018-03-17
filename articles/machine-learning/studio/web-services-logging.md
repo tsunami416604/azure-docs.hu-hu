@@ -3,8 +3,9 @@ title: "A Machine Learning webszolgáltatások naplózása |} Microsoft Docs"
 description: "Útmutató a Machine Learning webszolgáltatások naplózásának engedélyezéséről. Naplózási nyújt további információkat az API-k hibaelhárítás elősegítése érdekében."
 services: machine-learning
 documentationcenter: 
-author: raymondlaghaeian
-manager: jhubbard
+author: aashishb
+ms.author: aashishb
+manager: hjerez
 editor: cgronlun
 ms.assetid: c54d41e1-0300-46ef-bbfc-d6f7dca85086
 ms.service: machine-learning
@@ -13,12 +14,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/15/2017
-ms.author: raymondl;garye
-ms.openlocfilehash: 31497bcae5889590a2261b716574ec4eae21852d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1e04ef638c46ef0f3b40fd56d27ba3673565bdc7
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="enable-logging-for-machine-learning-web-services"></a>A naplózás engedélyezése a Machine Learning webszolgáltatásokhoz
 Ez a dokumentum tájékoztatást nyújt a Machine Learning webszolgáltatások a naplózási szolgáltatás. Naplózási nyújt további információkat, csak olyan hiba száma és egy üzenetet, amely segíthet a hívások a Machine Learning API-k elhárításában.  
@@ -27,7 +27,7 @@ Ez a dokumentum tájékoztatást nyújt a Machine Learning webszolgáltatások a
 
 A naplózás engedélyezése a [Azure Machine Learning webszolgáltatások](https://services.azureml.net) portálon. 
 
-1. Jelentkezzen be az Azure Machine Learning webszolgáltatások portálon, a [https://services.azureml.net](https://services.azureml.net). A klasszikus webszolgáltatáshoz is kaphat a portálra kattintva **új webes felhasználói élményt** a Machine Learning webszolgáltatások oldalon a Machine Learning Studióban.
+1. Jelentkezzen be az Azure Machine Learning webszolgáltatások portálon, a [ https://services.azureml.net ](https://services.azureml.net). A klasszikus webszolgáltatáshoz is kaphat a portálra kattintva **új webes felhasználói élményt** a Machine Learning webszolgáltatások oldalon a Machine Learning Studióban.
 
    ![Új webes felhasználói élményt hivatkozás](./media/web-services-logging/new-web-services-experience-link.png)
 
@@ -82,7 +82,7 @@ Minden egyes blob neve a következő előtag van:
 
 Ha _típusú naplózása_ a következő értékek egyike:  
 
-* Kötegelt  
+* kötegelt  
 * pontszám/kérelem  
 * pontszám/init  
 

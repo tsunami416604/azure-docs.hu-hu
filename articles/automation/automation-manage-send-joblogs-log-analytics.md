@@ -1,24 +1,20 @@
 ---
-title: "Azure Automation-feladat adatok továbbítására OMS szolgáltatáshoz |} Microsoft Docs"
+title: "Azure Automation-feladat adatok továbbítására OMS szolgáltatáshoz"
 description: "Ez a cikk bemutatja, hogyan küldhet feladat állapotát és a runbook feladat adatfolyamokat a Microsoft Operations Management Suite Log Analytics képes biztosítani a további betekintést és kezelése."
 services: automation
-documentationcenter: 
-author: georgewallace
-manager: carmonm
-editor: tysonn
-ms.assetid: c12724c6-01a9-4b55-80ae-d8b7b99bd436
 ms.service: automation
-ms.devlang: na
+author: georgewallace
+ms.author: gwallace
+ms.date: 03/16/2018
 ms.topic: article
+manager: carmonm
+ms.devlang: na
 ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 08/31/2017
-ms.author: magoedte
-ms.openlocfilehash: 47cca0c3b6b7010323dd816cdb863c652516bfe5
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: c73a523f1239fb7d549b573ea6105168f4a63144
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="forward-job-status-and-job-streams-from-automation-to-log-analytics-oms"></a>Továbbítsa feladat állapotát és a feladat adatfolyamok Automation való Naplóelemzés (OMS)
 Automatizálási küldhet runbook feladat állapotát és a feladat adatfolyamokat a Microsoft Operations Management Suite (OMS) Naplóelemzési munkaterületet. Feladat naplózza, és a feladat adatfolyamok láthatók az Azure portálon, vagy a PowerShell használatával, az egyes feladatokat, és ez lehetővé teszi egyszerű vizsgálatok végrehajtását. Most Log Analytics segítségével:

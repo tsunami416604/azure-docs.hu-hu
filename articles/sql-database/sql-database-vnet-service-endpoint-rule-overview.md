@@ -2,18 +2,19 @@
 title: "Virtuális hálózati szolgáltatási végpont és az Azure SQL Database szabályok |} Microsoft Docs"
 description: "Egy alhálózat megjelölése egy virtuális hálózati végpontot. Ezután a végpont a hozzáférés-vezérlési lista az Azure SQL Database a virtuális hálózati szabály. SQL-adatbázist, majd fogad kommunikációt az összes virtuális gép és az alhálózat más csomópontok."
 services: sql-database
+ms.service: sql-database
 author: MightyPen
 manager: craigg
 ms.custom: VNet Service endpoints
 ms.topic: article
-ms.date: 02/20/2018
+ms.date: 03/15/2018
 ms.reviewer: genemi
 ms.author: dmalik
-ms.openlocfilehash: 61f3112d684e0b1ec1d331f063f7930b3dc64d0c
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 7622c6e6ffb1410cc2cbd42f6ac3601d281832da
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-sql-database"></a>Virtuális hálózati szolgáltatás végpontok és szabályok az Azure SQL Database használata
 
@@ -229,6 +230,12 @@ Ez a szakasz bemutatja, hogyan használhatja a [Azure-portálon] [ http-azure-po
 
 Virtuális hálózati szabályokat is létrehozhat egy PowerShell-parancsfájlt. A kritikus fontosságú parancsmag **New-AzureRmSqlServerVirtualNetworkRule**. Ha az érdekelt, lásd: [egy virtuális hálózati szolgáltatási végpont és a szabály létrehozása az Azure SQL Database PowerShell][sql-db-vnet-service-endpoint-rule-powershell-md-52d].
 
+#### <a name="rest-api-alternative"></a>REST API alternatív
+
+A PowerShell-parancsmagok SQL VNet tevékenységek belső, REST API-k hívása. Hívása a REST API-k közvetlenül.
+
+- [Virtuális hálózati szabályok: műveletek][rest-api-virtual-network-rules-operations-862r]
+
 #### <a name="prerequisites"></a>Előfeltételek
 
 Már rendelkeznie kell olyan alhálózatot, amely az adott virtuális hálózati szolgáltatási végpont címkéje *típusnév* az Azure SQL Database megfelelő.
@@ -288,6 +295,8 @@ A virtuális hálózati szabály funkció az Azure SQL Database váltak elérhet
 ## <a name="next-steps"></a>További lépések
 
 - [A PowerShell szolgáltatás használatával egy virtuális hálózati végpontot, és a virtuális hálózati szabály létrehozása az Azure SQL Database.][sql-db-vnet-service-endpoint-rule-powershell-md-52d]
+- [Virtuális hálózati szabályok: Műveletek] [ rest-api-virtual-network-rules-operations-862r] REST API-khoz
+
 
 
 <!-- Link references, to images. -->
@@ -328,6 +337,7 @@ A virtuális hálózati szabály funkció az Azure SQL Database váltak elérhet
 
 [http-azure-portal-link-ref-477t]: https://portal.azure.com/
 
+[rest-api-virtual-network-rules-operations-862r]: https://docs.microsoft.com/rest/api/sql/virtualnetworkrules
 
 
 

@@ -6,56 +6,55 @@ documentationcenter: NA
 author: jrowlandjones
 manager: barbkess
 editor: 
-ms.assetid: 996e3afc-c21c-4e21-b9df-997f953f6dfd
 ms.service: sql-data-warehouse
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: develop
-ms.date: 10/31/2016
+ms.date: 03/15/2018
 ms.author: jrj;barbkess
-ms.openlocfilehash: b85a4f09e561e429aa5bf46ec680014487fb40c7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 329217faaf865052b79a1d44200cc3c788702046
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="design-decisions-and-coding-techniques-for-sql-data-warehouse"></a>Tervezési döntések és az SQL Data Warehouse kódolási eljárások
-Tekintse meg a fejlesztési cikkeiben jobb megértése érdekében tervezési döntések, ajánlásokat és kódolási eljárások az SQL Data Warehouse keresztül.
+Tekintse meg a fejlesztési cikkeiben jobb megértése érdekében tervezési döntések javaslatok és kódolási eljárások az SQL Data Warehouse keresztül.
 
 ## <a name="key-design-decisions"></a>Tervezési döntések
-A következő cikkekben néhány főbb fogalmait és tervezési lépéseket kell teljesítenie kell az SQL Data Warehouse az elosztott adatraktár fejlesztésének ismertetése:
+A következő cikkekben fogalmakat és a tervezési döntések egy elosztott data warehouse az SQL Data Warehouse adattárházzal:
 
-* [kapcsolatok száma][connections]
-* [egyidejűségi][concurrency]
-* [tranzakciók][transactions]
-* [felhasználó által definiált sémák][user-defined schemas]
+* [Kapcsolatok száma][connections]
+* [concurrency][concurrency]
+* [Tranzakciók][transactions]
+* [Felhasználó által definiált sémák][user-defined schemas]
 * [elosztása][table distribution]
 * [-táblák indexeit][table indexes]
 * [tábla partíciók][table partitions]
 * [CTAS][CTAS]
-* [statisztika][statistics]
+* [statistics][statistics]
 
 ## <a name="development-recommendations-and-coding-techniques"></a>Javaslatok és kódolási eljárások
-A cikkekben, konkrét programozási módszerek, tippeket és javaslatok az SQL Data Warehouse adattárházzal:
+A cikkekben, konkrét programozási módszerek, tippeket és javaslatokat az SQL Data Warehouse adattárházzal:
 
-* [tárolt eljárások][stored procedures]
-* [címkék][labels]
+* [Tárolt eljárások][stored procedures]
+* [Címkék][labels]
 * [nézetek][views]
 * [az ideiglenes táblák][temporary tables]
-* [dinamikus SQL][dynamic SQL]
-* [hurkolás][looping]
-* [a csoportosítás alapját beállítások][group by options]
-* [a változó-hozzárendelés][variable assignment]
+* [dynamic SQL][dynamic SQL]
+* [looping][looping]
+* [Beállítások szerint kell csoportosítani][group by options]
+* [A változó-hozzárendelés][variable assignment]
 
-## <a name="next-steps"></a>Következő lépések
-Ha rendelkezik-e a fejlesztési cikkek keresztül tekintse át a [Transact-SQL referencia] [ Transact-SQL reference] oldalon olvashat az SQL Data Warehouse támogatott szintaxisa.
+## <a name="next-steps"></a>További lépések
+Hivatkozás kapcsolatos további információkért lásd: a [Transact-SQL referencia] [ Transact-SQL reference] az SQL Data Warehouse lap.
 
 <!--Image references-->
 
 <!--Article references-->
-[concurrency]: ./sql-data-warehouse-develop-concurrency.md
+[concurrency]: ./resource-classes-for-workload-management.md
 [connections]: ./sql-data-warehouse-connect-overview.md
 [CTAS]: ./sql-data-warehouse-develop-ctas.md
 [dynamic SQL]: ./sql-data-warehouse-develop-dynamic-sql.md
