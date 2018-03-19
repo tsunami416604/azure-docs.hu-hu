@@ -63,7 +63,7 @@ Miután frissítette az azonosító értéket az Azure ad-ben, és azt az érté
 
 ## <a name="the-reply-address-does-not-match-the-reply-addresses-configured-for-the-application"></a>A válaszcím nem egyezik meg az alkalmazáshoz beállított válasz-címeket. 
 
-*AADSTS50011. hiba: A címethttps://contoso.com"nem felel meg a válasz címek konfigurálva az alkalmazáshoz* 
+*AADSTS50011. hiba: A címet https://contoso.com "nem felel meg a válasz címek konfigurálva az alkalmazáshoz* 
 
 **Lehetséges ok** 
 
