@@ -1,4 +1,4 @@
-# [Az Azure Network Watchers dokumentációja](index.md)
+# [Az Azure Network Watcher dokumentációja](index.md)
 
 # Áttekintés
 ## [Mi az a Network Watcher?](network-watcher-monitoring-overview.md)

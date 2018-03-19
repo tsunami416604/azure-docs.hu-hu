@@ -64,6 +64,7 @@
 ## Visual Studio-eszközök
 ### [Eszközök telepítése](stream-analytics-tools-for-visual-studio-install.md)
 ### [Felhőalapú feladat fejlesztése](stream-analytics-tools-for-visual-studio.md)
+### [Edge-feladatok fejlesztése](stream-analytics-tools-for-visual-studio-edge-jobs.md)
 ### [CI-/CD-folyamat beállítása](stream-analytics-tools-for-visual-studio-cicd.md)
 
 ## Hibaelhárítás

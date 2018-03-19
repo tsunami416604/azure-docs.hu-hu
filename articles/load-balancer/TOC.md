@@ -11,6 +11,7 @@
 ## [IPv6-támogatás](load-balancer-ipv6-overview.md)
 ## [Több virtuális IP-cím](load-balancer-multivip-overview.md)
 ## [Kimenő kapcsolatok áttekintése](load-balancer-outbound-connections.md)
+## [A Standard Load Balancer és a rendelkezésre állási zónák](load-balancer-standard-availability-zones.md)
 
 # Első lépések
 
@@ -49,6 +50,7 @@
 ### [Azure Load Balancer hibaelhárítása](load-balancer-troubleshoot.md)
 
 ## Klasszikus üzemi modellhez kapcsolódó cikkek
+### [Kimenő kapcsolatok (klasszikus)](load-balancer-outbound-connections-classic.md)
 ### [Belső Load Balancer konfigurálása a Cloud Services szolgáltatáshoz](load-balancer-get-started-ilb-classic-cloud.md)
 #### [Belső Load Balancer konfigurálása a Cloud Services szolgáltatáshoz (PowerShell)](load-balancer-get-started-ilb-classic-ps.md)
 #### [Belső Load Balancer konfigurálása a Cloud Services szolgáltatáshoz (parancssori felület)](load-balancer-get-started-ilb-classic-cli.md)

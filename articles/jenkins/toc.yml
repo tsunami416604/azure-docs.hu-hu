@@ -1,4 +1,4 @@
-- name: A Jenkins on Azure dokumentációja
+- name: A Jenkins az Azure-on
   href: index.yml
 - name: Áttekintés
   items:
@@ -46,7 +46,7 @@
 - name: Példák
   items:
     - name: Mintafeladatok és -szkriptek
-      href: 'https://github.com/Azure/azure-devops-utils/tree/master/jenkins'
+      href: 'https://github.com/azure/jenkins'
 - name: További források
   items:
     - name: Beépülő modulok
@@ -75,3 +75,6 @@
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Jenkins kezdőlap
       href: 'https://jenkins.io/'
+    - name: Jenkins-architektúra
+      href: /azure/architecture/reference-architectures/jenkins/
+      maintainContext: true
