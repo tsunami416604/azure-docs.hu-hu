@@ -50,7 +50,7 @@
     - name: Naplók keresése
       items:
         - name: A naplókeresések áttekintése
-          href: log-analytics-log-search-new.md
+          href: log-analytics-log-search.md
         - name: Naplókeresési portálok
           href: log-analytics-log-search-portals.md
 - name: Útmutatók
@@ -107,7 +107,7 @@
           href: 'https://docs.loganalytics.io'
         - name: Váltás az örökölt nyelvről
           href: log-analytics-log-search-transition.md
-        - name: Keresés több munkaterületen
+        - name: Keresés több erőforrásban
           href: log-analytics-cross-workspace-search.md
         - name: Műveletek végrehajtása a keresési eredményekből
           href: log-analytics-log-search-takeaction.md
@@ -117,20 +117,6 @@
           href: log-analytics-flow-tutorial.md
         - name: Log Search API
           href: 'https://dev.loganalytics.io/'
-    - name: Örökölt naplók keresése
-      items:
-        - name: A naplókeresések áttekintése
-          href: log-analytics-log-searches.md
-        - name: Keresési referencia
-          href: log-analytics-search-reference.md
-          items:
-            - name: Reguláris kifejezések
-              href: log-analytics-log-searches-regex.md
-        - name: Log Search API
-          href: log-analytics-log-search-api.md
-          items:
-            - name: Python
-              href: log-analytics-log-search-api-python.md
     - name: Adatok elemzése
       items:
         - name: Irányítópultok
