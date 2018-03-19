@@ -27,11 +27,6 @@
 ### [Hálózati biztonsági csoportok](virtual-networks-nsg.md)
 
 ## Üzembe helyezés
-### Virtuális hálózatok
-#### [Azure Portal](virtual-networks-create-vnet-arm-pportal.md)
-#### [Azure PowerShell](virtual-networks-create-vnet-arm-ps.md)
-#### [Azure CLI](virtual-networks-create-vnet-arm-cli.md)
-#### [Sablon](virtual-networks-create-vnet-arm-template-click.md)
 
 ### Network security groups (Hálózati biztonsági csoportok)
 #### [Azure Portal](virtual-networks-create-nsg-arm-pportal.md)
