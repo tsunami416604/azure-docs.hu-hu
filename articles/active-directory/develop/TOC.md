@@ -57,10 +57,12 @@
 ## [Azure AD alkalmazáskatalógus](active-directory-app-gallery-listing.md)
 ## [Office 365-értékesítői információközpont](https://msdn.microsoft.com/office/office365/howto/submit-web-apps-seller-dashboard)
 ## A Visual Studio használata
-### [Ismerkedés a Visual Studio kapcsolódó szolgáltatásaival](vs-active-directory-dotnet-getting-started.md)
+### [Az Active Directory csatlakoztatott szolgáltatás használata](vs-active-directory-add-connected-service.md)
+### [Bevezetés a .NET MVC-projektek használatába](vs-active-directory-dotnet-getting-started.md)
+### [Mi történt a .NET MVC-projektemmel?](vs-active-directory-dotnet-what-happened.md)
+### [Bevezetés a WebAPI-projektek használatába](vs-active-directory-webapi-getting-started.md)
+### [Mi történt a WebAPI-projektemmel?](vs-active-directory-webapi-what-happened.md)
 ### [Hiba a hitelesítés észlelésekor](vs-active-directory-error.md)
-### [Bevezetés a WebApi használatába](vs-active-directory-webapi-getting-started.md)
-### [Mi történt a webes API-projektemmel?](vs-active-directory-webapi-what-happened.md)
 ## [Windows Server ADFS](https://technet.microsoft.com/windows-server-docs/identity/ad-fs/overview/ad-fs-scenarios-for-developers)
 ## [ACS migrálása](active-directory-acs-migration.md)
 ## [Ajánlott hibakezelési eljárások az ADAL-hoz](active-directory-devhowto-adal-error-handling.md)
@@ -110,7 +112,7 @@
 #### [Jogkivonat-referencia](active-directory-v2-tokens.md)
 #### [Tanúsítványok hitelesítő adatai](active-directory-certificate-credentials.md)
 ### [Hatókörök](active-directory-v2-scopes.md)
-# Erőforrások
+# További források
 ## [Segítség kérése](active-directory-develop-help-support.md)
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=security-identity)
 ## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)

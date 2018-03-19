@@ -62,6 +62,8 @@
           href: module-development.md
         - name: Összeállítás
           href: module-composition.md
+        - name: Edge-ügynök és hub tulajdonságai
+          href: module-edgeagent-edgehub.md
     - name: IoT Edge-futtatókörnyezet
       href: iot-edge-runtime.md
     - name: Központi telepítés

@@ -22,8 +22,9 @@
 ### Virtuálisgép-méretezési csoportok
 #### [Méretezési csoport létrehozása egy rendelkezésre állási zónában](../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md)
 
-### Terheléselosztó
+### Load Balancer
 #### [Mi az a Load Balancer?](../load-balancer/load-balancer-standard-overview.md)
+#### [A Load Balancer Standard és a rendelkezésre állási zónák](../load-balancer/load-balancer-standard-availability-zones.md)
 #### [Zónaredundáns nyilvános Load Balancer Standard létrehozása az Azure Portalon](../load-balancer/load-balancer-get-started-internet-az-portal.md)
 #### [Zónaredundáns Load Balancer Standard létrehozása a PowerShell-lel](../load-balancer/load-balancer-get-started-internet-az-powershell.md)
 #### [Zónaredundáns nyilvános Load Balancer Standard létrehozása a parancssori felület használatával](../load-balancer/load-balancer-get-started-internet-az-cli.md)

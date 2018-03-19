@@ -27,6 +27,8 @@
       href: overview-general-concepts.md
 - name: Útmutatók
   items:
+    - name: Leggyakoribb parancssori felületi feladatok
+      href: cli-for-azure-machine-learning.md
     - name: A Workbench használata
       items:
         - name: A Python IDE-k használata

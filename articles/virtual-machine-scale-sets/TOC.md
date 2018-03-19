@@ -38,6 +38,7 @@
 #### [Az Azure CLI 2.0 használata](virtual-machine-scale-sets-encrypt-disks-cli.md)
 ### [Nagyméretű méretezési csoportokkal végzett munka](virtual-machine-scale-sets-placement-groups.md)
 ### [Méretezési csoport sablonjának konvertálása felügyelt lemez használatához](virtual-machine-scale-sets-convert-template-to-md.md)
+### [Alacsony prioritás használata](virtual-machine-scale-sets-use-low-priority.md)
 
 ## Kezelés
 ### Általános kezelési feladatok

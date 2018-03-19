@@ -18,7 +18,7 @@
 
 
 # Oktatóanyagok
-## [1 – Adatok betöltése a blobból](load-data-from-azure-blob-storage-using-polybase.md)
+## [1 – WideWorldImporters betöltése](load-data-wideworldimportersdw.md)
 
 # Alapelvek
 ## Szolgáltatásjellemzők
@@ -101,6 +101,7 @@
 
 
 ## Adatok betöltése és áthelyezése
+### [New York-i taxik adatai](load-data-from-azure-blob-storage-using-polybase.md)
 ### [A Contoso nyilvános adatai](sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md)
 ### [Azure Data Lake Store](sql-data-warehouse-load-from-azure-data-lake-store.md)
 ### [BCP](sql-data-warehouse-load-with-bcp.md)

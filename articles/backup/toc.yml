@@ -107,6 +107,8 @@
               href: backup-azure-vms-encryption.md
             - name: Virtuális gép biztonsági mentésének engedélyezése a virtuális gépek létrehozása során
               href: backup-during-vm-creation.md
+            - name: Frissítés a virtuális gép biztonságimásolat-vermének 2-es verziójára
+              href: backup-upgrade-to-vm-backup-stack-v2.md
         - name: Virtuális gépek kezelése és monitorozása
           items:
             - name: Azure-beli virtuális gépek biztonsági másolatainak kezelése az Azure Portalon

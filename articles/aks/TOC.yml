@@ -79,6 +79,8 @@
           href: jenkins-continuous-deployment.md
         - name: OpenFaaS használata AKS-sel
           href: openfaas.md
+        - name: Spark-feladatok futtatása AKS-en
+          href: spark-job.md
     - name: A Kubernetes alapjai
       items:
         - name: A Kubernetes-irányítópult használata

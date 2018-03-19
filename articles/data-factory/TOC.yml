@@ -92,6 +92,8 @@
           href: tutorial-control-flow-portal.md
         - name: .NET
           href: tutorial-control-flow.md
+    - name: 9 – Adatok átalakítása az Azure Databricks használatával
+      href: transform-data-using-databricks-notebook.md
 - name: Példák
   items:
     - name: Kódminták
@@ -290,8 +292,6 @@
           href: transform-data-using-stored-procedure.md
         - name: Data Lake U-SQL-tevékenység
           href: transform-data-using-data-lake-analytics.md
-        - name: Databricks-jegyzetfüzetek tevékenységei
-          href: transform-data-using-databricks-notebook.md
         - name: Egyéni tevékenység
           href: transform-data-using-dotnet-custom-activity.md
         - name: Társított szolgáltatások számítása

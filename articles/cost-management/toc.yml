@@ -21,7 +21,9 @@
       href: tutorial-forecast-spending.md
     - name: 3 – Költségek kezelése
       href: tutorial-manage-costs.md
-    - name: 4 – Az adathozzáférés szabályozása
+    - name: 4 – Fenntartott példányok optimalizálása
+      href: tutorial-optimize-reserved-instances.md
+    - name: 5 – Az adathozzáférés szabályozása
       href: tutorial-user-access.md
 - name: Alapelvek
   items:

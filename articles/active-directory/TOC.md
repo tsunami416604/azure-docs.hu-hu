@@ -190,11 +190,10 @@
 #### [Jelentés a felhasználók automatikus átadásáról](active-directory-saas-provisioning-reporting.md)
 #### [A felhasználók átadásának hibaelhárítása](active-directory-application-provisioning-content-map.md)
 
-
-
 ### [Appok távoli elérése az App Proxyval](active-directory-application-proxy-get-started.md)
 #### Bevezetés
 ##### [Alkalmazásproxy engedélyezése](active-directory-application-proxy-enable.md)
+##### [GDPR-támogatás](active-directory-application-proxy-gdpr.md)
 ##### [Alkalmazások közzététele](application-proxy-publish-azure-portal.md)
 ##### [Egyéni tartományok](active-directory-application-proxy-custom-domains.md)
 #### [Egyszeri bejelentkezés](application-proxy-sso-overview.md)
