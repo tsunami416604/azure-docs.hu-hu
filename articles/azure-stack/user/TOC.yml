@@ -131,6 +131,8 @@
   items:
     - name: Az Azure Stack operátori dokumentációja
       href: /azure/azure-stack/
+    - name: ASDK dokumentáció
+      href: /azure/azure-stack/asdk/
 - name: További források
   items:
     - name: Azure verem menetrend

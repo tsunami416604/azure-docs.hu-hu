@@ -6,18 +6,14 @@
       href: azure-stack-poc.md
     - name: Kibocsátási megjegyzések
       items:
-        - name: Fejlesztői csomag kibocsátási megjegyzései
-          href: azure-stack-asdk-release-notes.md
-        - name: Integrált rendszerek kibocsátási megjegyzései
-          items:
-            - name: 1802 frissítés
-              href: azure-stack-update-1802.md
-            - name: 1712 frissítés
-              href: azure-stack-update-1712.md
-            - name: 1711 frissítés
-              href: azure-stack-update-1711.md
-            - name: 1710 frissítés
-              href: azure-stack-update-1710.md
+        - name: 1802 frissítés
+          href: azure-stack-update-1802.md
+        - name: 1712 frissítés
+          href: azure-stack-update-1712.md
+        - name: 1711 frissítés
+          href: azure-stack-update-1711.md
+        - name: 1710 frissítés
+          href: azure-stack-update-1710.md
 - name: Gyors útmutatók
   expanded: true
   items:
@@ -67,8 +63,6 @@
               href: validate-pki-certs.md
         - name: Identitásintegráció
           href: azure-stack-integrate-identity.md
-        - name: Az Azure verem regisztrálása
-          href: azure-stack-registration.md
         - name: Külső figyelése
           href: azure-stack-integrate-monitor.md
         - name: Biztonsági integráció
@@ -77,30 +71,14 @@
       href: azure-stack-servicing-policy.md
     - name: A legfontosabb jellemzők és fogalmak
       href: azure-stack-key-features.md
-    - name: Fejlesztői csomag architektúrája
-      href: azure-stack-architecture.md
     - name: Az adminisztráció alapjai
       href: azure-stack-manage-basics.md
 - name: Útmutatók
   items:
-    - name: A ASDK telepítése
-      items:
-        - name: Előfeltételek
-          href: azure-stack-deploy.md
-        - name: Telemetria
-          href: azure-stack-telemetry.md
-        - name: Üzembe helyezés
-          href: azure-stack-run-powershell-script.md
-        - name: A PowerShell telepítése
-          href: azure-stack-powershell-install.md
-        - name: Regisztráljon
-          href: azure-stack-register.md
-        - name: Csatlakozás az Azure Stackhez
-          href: azure-stack-connect-azure-stack.md
-        - name: Alapértelmezett rendszerkép hozzáadása
-          href: azure-stack-add-default-image.md
-        - name: Tesztelési virtuális gép létrehozása
-          href: azure-stack-provision-vm.md
+    - name: Konfigurálja a telemetriai adatok gyűjtése
+      href: azure-stack-telemetry.md
+    - name: Az Azure verem regisztrálása
+      href: azure-stack-registration.md
     - name: Kezelés
       items:
         - name: Régiók kezelése
@@ -246,7 +224,7 @@
               href: azure-stack-app-service-add-worker-roles.md
             - name: Központi telepítés forrásának konfigurálása
               href: azure-stack-app-service-configure-deployment-sources.md
-            - name: Az App Service frissítése egy kibocsátási megjegyzései
+            - name: App Service az Azure-verem update 1 kibocsátási megjegyzései
               href: azure-stack-app-service-release-notes-update-one.md
         - name: A Marketplace feltöltése
           items:
@@ -318,6 +296,8 @@
   items:
     - name: Az Azure Stack felhasználói dokumentációja
       href: /azure/azure-stack/user/
+    - name: ASDK dokumentáció
+      href: /azure/azure-stack/asdk/
 - name: További források
   items:
     - name: Azure verem menetrend

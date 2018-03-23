@@ -1,24 +1,25 @@
 ---
-title: "Frissítés Azure verem 1711 |} Microsoft Docs"
-description: "További tudnivalók az Azure-verem 1711 frissítés Újdonságok integrált rendszerek, az ismert problémák és letöltéséről a frissítést."
+title: Frissítés Azure verem 1711 |} Microsoft Docs
+description: További tudnivalók az Azure-verem 1711 frissítés Újdonságok integrált rendszerek, az ismert problémák és letöltéséről a frissítést.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: brenduns
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 2b66fe05-3655-4f1a-9b30-81bd64ba0013
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/31/2018
+ms.date: 03/22/2018
 ms.author: brenduns
-ms.openlocfilehash: 3b3f6d66d8d5a095ff839195ccf718a9fa085527
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.reviewer: justini
+ms.openlocfilehash: fd57699a329fbccdbefc73dae7d473070cd831ea
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-stack-1711-update"></a>Az Azure verem 1711 frissítés
 
@@ -37,7 +38,13 @@ Az Azure verem 1711 frissítés buildszáma **171201.3**.
 
 ### <a name="prerequisites"></a>Előfeltételek
 
-Először telepítenie kell az Azure-verem [1710 frissítése](https://docs.microsoft.com/azure/azure-stack/azure-stack-update-1710) frissítés alkalmazása előtt.
+- Először telepítenie kell az Azure-verem [1710 frissítése](https://docs.microsoft.com/azure/azure-stack/azure-stack-update-1710) frissítés alkalmazása előtt.
+
+- Tekintse át a használatát **CloudAdmin** telepítése előtt figyelembe névként 1711 frissítése. Verziójától 1711, *CloudAdmin* egy fenntartott fiók nevét, és nem szabad kézzel megadni. Ha 1711 verzióra frissíti, a frissítés eltávolítja (általában AzureStackAdmin is nevezik) fiókja meglévő példányát. Ha a fiókja *CloudAdmin*, frissítése az 1711 törli őket. 
+
+  *CloudAdmin* való kapcsolódáshoz a beépített fiók az [ *kiemelt végpont* ](azure-stack-privileged-endpoint.md) (EGP). Ez a fiók törlése az EGP a rendszer a kizárás eredményezhet, kivéve, ha már van egy másik felhasználói fiókot, amely a CloudAdmin csoport tagja. 
+
+  Ha CloudAdmin neveként a fiókja, új CloudAdmin felhasználó hozzáadása a EGP 1711 elfogyott Azure zárolva elkerülése érdekében a frissítés megkezdése előtt. CloudAdmin új felhasználó hozzáadásához futtassa a parancsmagot **New-CloudAdminUser** az EGP meg.
 
 ### <a name="new-features-and-fixes"></a>Új szolgáltatásokat és javításokat
 
@@ -61,7 +68,7 @@ A frissítés tartalmazza a következő fejlesztéseket és javításokat Azure 
 
 #### <a name="windows-server-2016-new-features-and-fixes"></a>Windows Server 2016 új szolgáltatásokat és javításokat
 
-- [2017. november 14 – KB4048953 (operációsrendszer-verzióval 14393.1884)](https://support.microsoft.com/help/4048953)
+- [2017. november 14 – KB4048953 (operációsrendszer-verzióval 14393.1884) ](https://support.microsoft.com/help/4048953)
 
 ### <a name="known-issues-with-the-update-process"></a>A frissítési folyamat szolgáltatással kapcsolatos ismert problémák
 
@@ -76,11 +83,11 @@ Ez a szakasz a 1711 frissítés telepítése során előforduló ismert problém
     1. **OK:** probléma okozza, ha egy Rendszerjogosultságú végpont (EGP) használatával, amely korábban a portálról frissítésének folytatása folytatódik.
     2. **Megoldás:** kapcsolatfelvétel a Microsoft ügyfélszolgálatával és a támogatási szolgálathoz (CSS) segítségért.
 <br><br>
-3. **Jelenség:**Azure verem operátorok a következő hiba jelenhet meg a frissítési folyamat alatt:*"szerepkör típusú,"CheckHealth"a"Virtuális gép"jelenik meg, egy kivétel: \n\nVirtual gépet az állapot-ellenőrzéssel a <machineName>– előállított ACS01 a a következő hibák. \nThere sikerült beolvasni a Virtuálisgép-adatok gazdagépekről. Kivétel részletei: \nGet-VM: A művelet nem sikerült Node03 számítógépen: A WS-Management szolgáltatás nem tudja feldolgozni a kérelmet. A WMI \nservice vagy a WMI-szolgáltató ismeretlen hibát adott vissza: HRESULT 0x8004106c ".*
+3. **Jelenség:** Azure verem operátorok a következő hiba jelenhet meg a frissítési folyamat alatt:*"szerepkör típusú,"CheckHealth"a"Virtuális gép"jelenik meg, egy kivétel: \n\nVirtual gépet az állapot-ellenőrzéssel a <machineName>– előállított ACS01 a a következő hibák. \nThere sikerült beolvasni a Virtuálisgép-adatok gazdagépekről. Kivétel részletei: \nGet-VM: A művelet nem sikerült Node03 számítógépen: A WS-Management szolgáltatás nem tudja feldolgozni a kérelmet. A WMI \nservice vagy a WMI-szolgáltató ismeretlen hibát adott vissza: HRESULT 0x8004106c ".*
     1. **OK:** probléma okozza-e egy Windows Server-hiba, amely a célja, hogy a Windows server soron következő frissítések figyelembe venni.
     2. **Megoldás:** kapcsolatfelvétel a Microsoft ügyfélszolgálatával és a támogatási szolgálathoz (CSS) segítségért.
 <br><br>
-4. **Jelenség:**Azure verem operátorok a következő hiba jelenhet meg a frissítési folyamat alatt:*""URP"szerepkör"DefenderUpdate"típusú kivételt okozott: sikertelen első verziójában \\SU1FileServer\SU1_Public\ DefenderUpdates\x64\{fájlnév} .exe után 60 kísérletek másolási AzSDefenderFiles, C:\Program Files\WindowsPowerShell\Modules\Microsoft.AzureStack.Defender\Microsoft.AzureStack.Defender.psm1: 262" sor*
+4. **Jelenség:** Azure verem operátorok a következő hiba jelenhet meg a frissítési folyamat alatt:*""URP"szerepkör"DefenderUpdate"típusú kivételt okozott: sikertelen első verziójában \\SU1FileServer\SU1_Public\ DefenderUpdates\x64\{fájlnév} .exe után 60 kísérletek másolási AzSDefenderFiles, C:\Program Files\WindowsPowerShell\Modules\Microsoft.AzureStack.Defender\Microsoft.AzureStack.Defender.psm1: 262" sor*
     1. **OK:** probléma okozza-e a Windows Defender definíciófrissítések hibás vagy hiányos háttérben történő letöltését.
     2. **Megoldás:** legfeljebb 8 óra elteltével a frissítés folytatásához győződjön kísérlet eltelt próbálja az első frissítés óta.
 

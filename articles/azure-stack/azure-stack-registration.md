@@ -1,87 +1,83 @@
 ---
-title: "Az Azure regisztrációs Azure verem integrált rendszerek |} Microsoft Docs"
-description: "Több csomópontos rendszerekhez. Azure-verem Azure csatlakoztatott Azure regisztrációs folyamatát mutatjuk be."
+title: Az Azure regisztrációs Azure verem integrált rendszerek |} Microsoft Docs
+description: Több csomópontos rendszerekhez. Azure-verem Azure csatlakoztatott Azure regisztrációs folyamatát mutatjuk be.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: jeffgilb
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/27/2018
+ms.date: 03/21/2018
 ms.author: jeffgilb
-ms.reviewer: wfayed
-ms.openlocfilehash: 27bd44f936e19890526c0834e14084647dcec086
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.reviewer: avishwan
+ms.openlocfilehash: e51a15b197e875c35997cfe2ac96d673c01a80f9
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="register-azure-stack-with-azure"></a>Azure verem regisztrálni Azure-ral
-Azure verem regisztrálhatja az Azure-ral Piactéri elemek letölteni az Azure-ból, és megkezdheti a Microsoft commerce adatok beállításához. Miután regisztrálta Azure verem, használati Azure kereskedelmi bejelentések. Megtekintheti az előfizetésben a regisztrációhoz használt.
+Regisztrálás [Azure verem](azure-stack-poc.md) az Azure-ral lehetővé teszi a Piactéri elemek letölteni az Azure-ból, és megkezdheti a Microsoft commerce adatok beállításához. Miután regisztrálta Azure-vermet, használati bejelentések Azure kereskedelmi, és megtekintheti az előfizetésben a regisztrációhoz használt. 
 
 > [!IMPORTANT]
 > Regisztrációs megadása kötelező, ha úgy dönt, hogy a fizetés,-akkor-használható számlázási modellt. Ellenkező esetben Ön lesz az Azure Alkalmazásveremben üzembe licencfeltételeit megsértését megfelelően használati ellenkező esetben nem fog szerepelni.
 
-## <a name="before-you-register-azure-stack-with-azure"></a>Mielőtt regisztrálná Azure verem az Azure-ral
+## <a name="prerequisites"></a>Előfeltételek
 Mielőtt regisztrálná az Azure-vermet az Azure-ral, rendelkeznie kell:
 
 - Az előfizetés-azonosító az Azure-előfizetéssel. Ahhoz, hogy az azonosító, jelentkezzen be az Azure-ba, és kattintson **további szolgáltatások** > **előfizetések**, kattintson az előfizetést szeretné használni, és a **Essentials** megtalálhatja a Előfizetés-azonosító. 
 
   > [!NOTE]
-  > Kínai, német és US government felhőalapú előfizetések jelenleg nem támogatottak. 
+  > Kínai, a Németországi és az Amerikai Egyesült államokbeli kormányzati felhőalapú előfizetések jelenleg nem támogatottak. 
 
 - A felhasználónév és jelszó egy olyan fiók, amely az előfizetés tulajdonosa (a felügyelt Szolgáltatásfiók/2FA fiókok támogatottak)
-- *Nem kötelező Azure verem 1712 frissítés verziójától (180106.1)*: az Azure ad-val az Azure-előfizetés. Ez a könyvtár az Azure-ban fölé a profilképet, az Azure-portál jobb felső sarkában található. 
-- Az Azure-verem erőforrás-szolgáltató regisztrálva (lásd a regisztrálni Azure verem erőforrás-szolgáltató szakaszát alatt)
+- Az Azure-verem erőforrás-szolgáltató regisztrálva (lásd a regisztrálni Azure verem erőforrás-szolgáltató szakaszát alatt).
 
 Ha nem rendelkezik Azure-előfizetéssel, amely megfelel ezeknek a követelményeknek, akkor [ingyenes Azure-fiók létrehozása itt](https://azure.microsoft.com/free/?b=17.06). Azure verem regisztrálása költséget nem áll, az Azure-előfizetése.
 
 ### <a name="bkmk_powershell"></a>A verem az Azure PowerShell telepítése
-A legújabb Azure verem PowerShell segítségével a rendszer regisztrálja az Azure-ral szeretne.
+Szeretné használni a legújabb Azure verem PowerShell Azure regisztrálására.
 
 Ha még nincs telepítve, [verem Azure PowerShell telepítése](https://docs.microsoft.com/azure/azure-stack/azure-stack-powershell-install). 
 
 ### <a name="bkmk_tools"></a>Töltse le az Azure-verem eszközök
 Az Azure-verem eszközök GitHub-tárházban tartalmazza, amelyek támogatják az Azure-verem funkció; PowerShell-modulok beleértve a regisztrációs funkciót. A regisztráció során kell importálni és használni a RegisterWithAzure.psm1 PowerShell modul folyamat található, a Azure verem eszközök, az Azure-verem példányának regisztrálni Azure tárházban. 
 
-```powershell
-# Change directory to the root directory. 
-cd \
-
-# Download the tools archive.
-  [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12 
-  invoke-webrequest `
-  https://github.com/Azure/AzureStack-Tools/archive/master.zip `
-  -OutFile master.zip
-
-# Expand the downloaded files.
-  expand-archive master.zip `
-  -DestinationPath . `
-  -Force
-
-# Change to the tools directory.
-  cd AzureStack-Tools-master
-```
+Győződjön meg arról, a legújabb verzióját használja, törölnie kell az Azure-verem eszközök minden meglévő verzióját, és [a legújabb verzió letöltéséhez a Githubról](azure-stack-powershell-download.md) mielőtt regisztrálná az Azure-ral.
 
 ## <a name="register-azure-stack-in-connected-environments"></a>Regisztrálja az Azure verem csatlakoztatott környezetekben
 Csatlakoztatott környezetekben az internetes és az Azure férhetnek hozzá. Ilyen környezetben kell az Azure-verem erőforrás-szolgáltató regisztrálása az Azure-ral, és adja meg a számlázási modellt.
+
+> [!NOTE]
+> Ezeket a lépéseket egy számítógépről, amely hozzáfér a kiemelt végpontot kell futtatni. 
 
 ### <a name="register-the-azure-stack-resource-provider"></a>Az Azure-verem erőforrás-szolgáltató regisztrálása
 Az Azure-verem erőforrás-szolgáltató regisztrálása az Azure-ral, indítsa el a Powershell ISE rendszergazdaként, és a következő PowerShell-parancsokkal. Ezek a parancsok lesznek:
 - Jelentkezzen be egy használt, állítsa be az Azure-előfizetés tulajdonosának kérik a `EnvironmentName` paramétert **AzureCloud**.
 - Az Azure erőforrás-szolgáltató regisztrálása **Microsoft.AzureStack**.
 
-A PowerShell futtatásához:
+1. Adja hozzá az Azure-fiókot regisztrálni Azure verem használó. A fiók hozzáadásához futtassa a **Add-AzureRmAccount** parancsmag. A Azure globális rendszergazdai fiók hitelesítő adatainak megadását kéri, és előfordulhat, hogy a fiók konfigurációja alapján 2-factor authentication használatával.
 
-```powershell
-Login-AzureRmAccount -EnvironmentName "AzureCloud"
-Register-AzureRmResourceProvider -ProviderNamespace Microsoft.AzureStack 
-```
+   ```Powershell
+      Add-AzureRmAccount -EnvironmentName AzureCloud
+   ```
+
+2. Ha több előfizetéssel rendelkezik, futtassa a következő parancsot a használni kívánt válassza:  
+
+   ```powershell
+      Get-AzureRmSubscription -SubscriptionID '<Your Azure Subscription GUID>' | Select-AzureRmSubscription
+   ```
+
+3. A következő parancsot az Azure-előfizetéshez az Azure-verem erőforrás-szolgáltató regisztrálása:
+
+   ```Powershell
+   Register-AzureRmResourceProvider -ProviderNamespace Microsoft.AzureStack
+   ```
 
 ### <a name="register-azure-stack-with-azure-using-the-pay-as-you-use-billing-model"></a>A fizetési,-akkor-használható számlázási modellt használó Azure Azure verem regisztrálása
 Az alábbi lépéseket a fizetési,-akkor-használható számlázási modellt használó Azure regisztrálni Azure verem használható.
@@ -197,22 +193,6 @@ Ha azt szeretné, a számlázási modellt vagy az együttműködési szolgáltat
 ```powershell
 Set-AzsRegistration -CloudAdminCredential $YourCloudAdminCredential -PrivilegedEndpoint $YourPrivilegedEndpoint -BillingModel PayAsYouUse
 ```
-
-## <a name="remove-a-registered-resource"></a>Távolítsa el a regisztrált erőforrás
-Ha el szeretné távolítani a regisztráció, akkor kell használnia **UnRegister-AzsEnvironment** parancsmag és a regisztrációs erőforrás neve vagy a regisztráció pass meg használt token **Register-AzsEnvironment**.
-
-Egy erőforrás nevét-regisztrációk eltávolítása:
-
-```Powershell    
-UnRegister-AzsEnvironment -RegistrationName "*Name of the registration resource*"
-```
-A regisztrációs tokent regisztráció eltávolítása:
-
-```Powershell
-$registrationToken = "*Your copied registration token*"
-UnRegister-AzsEnvironment -RegistrationToken $registrationToken
-```
-
 ## <a name="next-steps"></a>További lépések
 
-[Külső figyelési integráció](azure-stack-integrate-monitor.md)
+[Töltse le a Piactéri elemek az Azure-ból](azure-stack-download-azure-marketplace-item.md)

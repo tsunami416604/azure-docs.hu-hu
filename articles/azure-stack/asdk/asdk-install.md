@@ -1,25 +1,25 @@
 ---
-title: "Telepítse az Azure verem szoftverfejlesztői készlet (ASDK) |} Microsoft Docs"
-description: "Az Azure verem Development Kit (ASDK) telepítését ismerteti."
+title: Telepítse az Azure verem szoftverfejlesztői készlet (ASDK) |} Microsoft Docs
+description: Az Azure verem Development Kit (ASDK) telepítését ismerteti.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: jeffgilb
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/16/2018
+ms.date: 03/22/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: e1f4cfb74d83cb23631e5a16a6e6f2dba98027ef
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 7b8fe61731a9412c61152bc58e55deebb611d011
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="install-the-azure-stack-development-kit-asdk"></a>Telepítse az Azure verem szoftverfejlesztői készlet (ASDK)
 Miután [a ASDK számítógép előkészítése](asdk-prepare-host.md), a ASDK a CloudBuilder.vhdx lemezképpel ebben a cikkben az alábbi lépéseket követve telepíthető.
@@ -55,8 +55,10 @@ A cikkben ismertetett bemutatják a telepítése egy grafikus felhasználói fel
     - **DHCP** (alapértelmezett): A virtuális gép IP-hálózati konfigurációja lekérdezi a DHCP-kiszolgálótól.
     - **Statikus**: csak akkor használja ezt a beállítást, ha a DHCP nem rendelhető hozzá egy érvényes IP-címet az Internet eléréséhez Azure verem. **Egy statikus IP-címet kell megadni az alhálózati maszk hosszának CIDR-formátumban (például 10.0.0.5/24)**.
     - Írja be egy érvényes **idő a kiszolgáló IP-címe** cím. Ez a kötelező mező beállítja azt a kiszolgálót a szoftverfejlesztői készlet által használható. Ez a paraméter egy érvényes idő kiszolgáló IP-címet meg kell adni. Kiszolgálók nevei nem támogatottak.
+
       > [!TIP]
       > Egy IP-címének, látogasson el a [pool.ntp.org](http:\\pool.ntp.org) vagy time.windows.com pingelését. 
+
     - **Opcionálisan**, akkor állítsa be a következő értékeket:
         - **VLAN-azonosító**: Beállítja a VLAN-azonosítót. Csak akkor használja ezt a beállítást, ha a gazdagép és a AzS-BGPNAT01 konfigurálnia kell a VLAN-Azonosítót a fizikai hálózaton (és az internet) elérésére. 
         - **DNS-továbbító**: A DNS-kiszolgáló jön létre az Azure-verem központi telepítésének részeként. Lehetővé teszi a számítógépek belül a megoldás a stamp kívül nevek feloldására, adja meg a meglévő infrastruktúra DNS-kiszolgáló. A stamp a DNS-kiszolgáló ismeretlen névfeloldási erre a kiszolgálóra továbbítja.
@@ -88,10 +90,10 @@ Gratulálunk, sikeresen telepítette a ASDK!
 
 Ha valamilyen okból nem sikerül a telepítés, akkor [újratelepíteni](asdk-redeploy.md) teljesen új vagy használata a következő PowerShell-parancsok, azonos emelt szintű PowerShell-ablakából, az utolsó sikeres lépésben a központi telepítés újraindítása:
 
-    ```powershell
-    cd C:\CloudDeployment\Setup
-    .\InstallAzureStackPOC.ps1 -Rerun
-    ```
+  ```powershell
+  cd C:\CloudDeployment\Setup
+  .\InstallAzureStackPOC.ps1 -Rerun
+  ```
 
 ## <a name="next-steps"></a>További lépések
 [POST központi telepítés konfigurálása](asdk-post-deploy.md)

@@ -1,25 +1,25 @@
 ---
-title: "Az Azure verem szoftverfejlesztői készlet (ASDK) telepítésének előfeltételei |} Microsoft Docs"
-description: "Tekintse át a környezetére és hardverére Azure verem Development Kit (ASDK)."
+title: Az Azure verem szoftverfejlesztői készlet (ASDK) telepítésének előfeltételei |} Microsoft Docs
+description: Tekintse át a környezetére és hardverére Azure verem Development Kit (ASDK).
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: jeffgilb
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/16/2018
+ms.date: 03/21/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 24a766ada1cdd1cb854b6869d571acd73e376327
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: f4b55bb3287f67792b3257c3f62256437f5625ca
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-stack-deployment-planning-considerations"></a>Az Azure-verem telepítés tervezési szempontok
 Az Azure verem Development Kit (ASDK) telepítése, előtt győződjön meg arról, hogy a fejlesztési kit állomás a számítógép megfelel a jelen cikkben ismertetett.
@@ -34,7 +34,7 @@ Az Azure verem Development Kit (ASDK) telepítése, előtt győződjön meg arr�
 | Számítási igény: Memória |96 GB RAM |128 GB RAM (Ez az a minimális erőforrás-szolgáltató PaaS támogatásához.)|
 | Számítási igény: BIOS |Hyper-V engedélyezve (SLAT-támogatással) |Hyper-V engedélyezve (SLAT-támogatással) |
 | Hálózat: NIC |Windows Server 2012 R2-tanúsítvány szükséges a NIC-hez; speciális jellemzők nem szükségesek |Windows Server 2012 R2-tanúsítvány szükséges a NIC-hez; speciális jellemzők nem szükségesek |
-| Hardveres tanúsítványembléma |[A Windows Server 2012 R2 hitelesített](http://windowsservercatalog.com/results.aspx?&chtext=&cstext=&csttext=&chbtext=&bCatID=1333&cpID=0&avc=79&ava=0&avq=0&OR=1&PGS=25&ready=0) |[A Windows Server 2012 R2 hitelesített](http://windowsservercatalog.com/results.aspx?&chtext=&cstext=&csttext=&chbtext=&bCatID=1333&cpID=0&avc=79&ava=0&avq=0&OR=1&PGS=25&ready=0) |
+| Hardveres tanúsítványembléma |[A Windows Server 2012 R2 hitelesített](http://windowsservercatalog.com/results.aspx?&chtext=&cstext=&csttext=&chbtext=&bCatID=1333&cpID=0&avc=79&ava=0&avq=0&OR=1&PGS=25&ready=0) |[A Windows Server 2016 hitelesített](http://windowsservercatalog.com/results.aspx?&chtext=&cstext=&csttext=&chbtext=&bCatID=1333&cpID=0&avc=79&ava=0&avq=0&OR=1&PGS=25&ready=0) |
 
 <sup>*</sup> Kell több, mint a kapacitás ez ajánlott, ha azt tervezi, számos hozzáadásával a [Piactéri elemek](asdk-marketplace-item.md) az Azure-ból.
 

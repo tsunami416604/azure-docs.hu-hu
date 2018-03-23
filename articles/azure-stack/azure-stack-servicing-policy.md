@@ -1,11 +1,11 @@
 ---
-title: "Házirend karbantartási Azure verem |} Microsoft Docs"
-description: "További tudnivalók az Azure verem karbantartási házirend, és hogyan kell fenntartani az integrált rendszer támogatott állapotban."
+title: Házirend karbantartási Azure verem |} Microsoft Docs
+description: További tudnivalók az Azure verem karbantartási házirend, és hogyan kell fenntartani az integrált rendszer támogatott állapotban.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.assetid: caac3d2f-11cc-4ff2-82d6-52b58fee4c39
 ms.service: azure-stack
 ms.workload: na
@@ -14,16 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: mabrigg
-ms.openlocfilehash: 13155349775e71e777e868b6cd311d2e8683706d
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: f495ca12e7cdb1bf61f09bd2d4a8a21654745d8a
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-stack-servicing-policy"></a>Az Azure verem karbantartása házirend
-
-*A következőkre vonatkozik: Azure verem integrált rendszerek*
-
 Ez a cikk ismerteti a karbantartási házirend integrált Azure verem rendszerekhez, és hogy a rendszer egy támogatott állapotban kell tennie. 
 
 ## <a name="update-package-types"></a>A csomagok frissítése
@@ -53,7 +50,7 @@ A következő táblázatban példa frissítési csomag kiadások, az Előfeltét
 
 | Legfrissebb csomagot (*példa*) | Előfeltétel | Legkisebb támogatott verzió |
 | -- | -- | -- |
-| 1710 | 1709 | N.A. |
+| 1710 | 1709 | – |
 | 1711 | 1710 | 1709 |
 | 1712 | 1711 | 1710 |
 | 1802 | 1801 | 1712 |

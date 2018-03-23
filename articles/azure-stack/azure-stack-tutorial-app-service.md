@@ -1,29 +1,28 @@
 ---
-title: "Web- és API-alkalmazások felhasználók számára elérhetővé az Azure-verem |} Microsoft Docs"
-description: "Az oktatóanyag segítséget nyújt az App Service erőforrás-szolgáltató telepítéséhez, és hozzon létre kínál, amelyek biztosíthat Azure verem felhasználóinak való web- és API-alkalmazások létrehozásának képessége."
+title: Web- és API-alkalmazások felhasználók számára elérhetővé az Azure-verem |} Microsoft Docs
+description: Az oktatóanyag segítséget nyújt az App Service erőforrás-szolgáltató telepítéséhez, és hozzon létre kínál, amelyek biztosíthat Azure verem felhasználóinak való web- és API-alkalmazások létrehozásának képessége.
 services: azure-stack
-documentationcenter: 
-author: brenduns
+documentationcenter: ''
+author: jeffgilb
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 7/03/2017
-ms.author: brenduns
-ms.reviewer: 
+ms.date: 03/22/2018
+ms.author: jeffgilb
+ms.reviewer: ''
 ms.custom: mvc
-ms.openlocfilehash: 5978706f2cab69c83a49bfd0e15ae904a38c7bab
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: e2f15ca3a46af51ab6228e772298c51ad33fd49c
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="make-web-and-api-apps-available-to-your-azure-stack-users"></a>Web- és API-alkalmazások felhasználók számára elérhetővé az Azure-verem
-
 Rendszergazdaként Azure verem felhő ajánlatokat, amelyek segítségével a felhasználók hozhat létre (bérlőkkel) az Azure Functions és a webes és API-alkalmazások létrehozása. Igény szerint a felhőalapú alkalmazások elérhetőségének biztosításával a felhasználók számára, mentheti azokat időt és erőforrásokat. Ennek beállításához a fogja végrehajtani:
 
 > [!div class="checklist"]
@@ -58,12 +57,12 @@ Tegyük fel az ajánlat, amely lehetővé teszi, hogy a felhasználók létre DN
 Most, hogy az App Service erőforrás-szolgáltató telepítése után, és létrehozott egy ajánlatot, bármikor beléphet egy olyan felhasználó nevében, az ajánlat előfizetni, és hozzon létre egy alkalmazást. Ehhez a példához létrehozunk egy DNN Platform tartalomkezelési rendszer. Először létre kell hoznia egy SQL-adatbázis és a DNN webalkalmazás.
 
 ### <a name="subscribe-to-the-offer"></a>Az ajánlat előfizetés
-1. Jelentkezzen be a verem Azure portal (https://portal.local.azurestack.external) a bérlőt.
+1. Jelentkezzen be a verem Azure-portálra (https://portal.local.azurestack.external) hez bérlőként.
 2. Kattintson a **egy előfizetés** > típus **TestAppServiceSubscription** alatt **megjelenített név** > **válasszon egy ajánlatot**  >  **TestAppServiceOffer** > **létrehozása**.
 
 ### <a name="create-a-sql-database"></a>SQL-adatbázis létrehozása
 
-1. Kattintson a  **+**   >  **adatok + tárolás** > **SQL-adatbázis**.
+1. Kattintson a **+**  >  **adatok + tárolás** > **SQL-adatbázis**.
 2. Hagyja meg az alapértelmezett értéket a mezőket, kivéve az alábbiak szerint:
     - **Adatbázis neve**: DNNdb
     - **Maximális méretét megabájtban**: 100
@@ -75,7 +74,7 @@ Most, hogy az App Service erőforrás-szolgáltató telepítése után, és lét
 
 ### <a name="create-a-dnn-app"></a>DNN-alkalmazás létrehozása    
 
-1. Kattintson a  **+**   >  **láthatja az összes** > **DNN Platform preview** > **létrehozása**.
+1. Kattintson a **+**  >  **láthatja az összes** > **DNN Platform preview** > **létrehozása**.
 2. Típus *DNNapp* alatt **alkalmazásnév** válassza **TestAppServiceOffer** alatt **előfizetés**.
 3. Kattintson a **kötelező beállítások konfigurálása** > **hozzon létre új** > típus egy **App Service-csomag** nevét.
 4. Kattintson a **tarifacsomag** > **F1 ingyenes** > **válasszon** > **OK**.

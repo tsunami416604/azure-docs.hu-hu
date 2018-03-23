@@ -1,29 +1,28 @@
 ---
-title: "SQL-adatbázisok Azure verem felhasználók számára történő elérhetővé |} Microsoft Docs"
-description: "Az oktatóanyag segítséget nyújt az SQL Server erőforrás-szolgáltató telepítéséhez, és hozzon létre kínál, amelyekkel Azure verem felhasználók SQL adatbázisok létrehozására."
+title: SQL-adatbázisok Azure verem felhasználók számára történő elérhetővé |} Microsoft Docs
+description: Az oktatóanyag segítséget nyújt az SQL Server erőforrás-szolgáltató telepítéséhez, és hozzon létre kínál, amelyekkel Azure verem felhasználók SQL adatbázisok létrehozására.
 services: azure-stack
-documentationcenter: 
-author: brenduns
+documentationcenter: ''
+author: jeffgilb
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 7/03/2017
-ms.author: brenduns
-ms.reviewer: 
+ms.date: 03/22/2017
+ms.author: jeffgilb
+ms.reviewer: ''
 ms.custom: mvc
-ms.openlocfilehash: e9fd74fa44bb9482ee2285f4305085ee6ff2fb73
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: f8d2dd65d9d427872fe78508ed0bcc61e644fdb0
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="make-sql-databases-available-to-your-azure-stack-users"></a>SQL-adatbázisok Azure verem felhasználók számára történő elérhetővé
-
 Rendszergazdaként Azure verem felhő ajánlatokat, amelyek segítségével a felhasználók hozhat létre (bérlőkkel), amely a felhő-natív alkalmazások, webhelyek és a munkaterhelések használhatják SQL-adatbázisok létrehozására. Egyéni, igény szerinti, felhőalapú adatbázist biztosít a felhasználók számára, mentheti azokat időt és erőforrásokat. Ennek beállításához a fogja végrehajtani:
 
 > [!div class="checklist"]
@@ -56,7 +55,7 @@ A telepítési folyamat részletes leírása a [Azure verem cikken használja az
 Most, hogy az SQL Server erőforrás-szolgáltató telepítése után, és létrehozott egy ajánlatot, bármikor beléphet egy olyan felhasználó nevében, az ajánlat előfizetni, és hozzon létre egy adatbázist.
 
 ### <a name="subscribe-to-the-offer"></a>Az ajánlat előfizetés
-1. Jelentkezzen be a verem Azure portal (https://portal.local.azurestack.external) a bérlőt.
+1. Jelentkezzen be a verem Azure-portálra (https://portal.local.azurestack.external) hez bérlőként.
 2. Kattintson a **egy előfizetés** és írja be **TestSQLServerSubscription** alatt **megjelenített név**.
 3. Kattintson a **válasszon egy ajánlatot** > **TestSQLServerOffer** > **létrehozása**.
 4. Kattintson a **további szolgáltatások** > **előfizetések** > **TestSQLServerSubscription** > **erőforrás szolgáltatók**.
@@ -64,7 +63,7 @@ Most, hogy az SQL Server erőforrás-szolgáltató telepítése után, és létr
 
 ### <a name="create-a-sql-database"></a>SQL-adatbázis létrehozása
 
-1. Kattintson a  **+**   >  **adatok + tárolás** > **SQL-adatbázis**.
+1. Kattintson a **+**  >  **adatok + tárolás** > **SQL-adatbázis**.
 2. Meghagyhatja az alapértelmezett beállításokat, a mezők, vagy a példákat is használhatja:
     - **Adatbázis neve**: SQLdb
     - **Maximális méretét megabájtban**: 100

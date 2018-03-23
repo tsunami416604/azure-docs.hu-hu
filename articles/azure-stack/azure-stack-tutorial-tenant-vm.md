@@ -1,31 +1,28 @@
 ---
-title: "Virtuális gépek Azure verem felhasználók számára történő elérhetővé |} Microsoft Docs"
-description: "Az oktatóanyag segítséget nyújt a virtuális gépek Azure-veremben elérhetővé"
+title: Virtuális gépek Azure verem felhasználók számára történő elérhetővé |} Microsoft Docs
+description: Az oktatóanyag segítséget nyújt a virtuális gépek Azure-veremben elérhetővé
 services: azure-stack
-documentationcenter: 
-author: brenduns
+documentationcenter: ''
+author: jeffgilb
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/23/2017
-ms.author: brenduns
-ms.reviewer: 
+ms.date: 03/22/2018
+ms.author: jeffgilb
+ms.reviewer: ''
 ms.custom: mvc
-ms.openlocfilehash: d169a18df8916cfb8dd30b00248099a3d374aacc
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: af97f32736959f8ebf8f3c4fbca400d6b0c41f3e
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="make-virtual-machines-available-to-your-azure-stack-users"></a>Virtuális gépek Azure verem felhasználók számára történő elérhetővé
-
-*A következőkre vonatkozik: Azure verem integrált rendszerek és az Azure verem szoftverfejlesztői készlet*
-
 Rendszergazdaként Azure verem felhő ajánlatokat, amelyek a (más néven bérlői) felhasználók előfizethetnek is létrehozhat. Használja az előfizetését, felhasználók tudják felhasználni Azure verem szolgáltatások.
 
 Ez a cikk bemutatja, hogyan hozzon létre egy ajánlatot, és tesztelik azt. A vizsgálathoz fog majd hozza létre a virtuális gépek az előfizetéshez, az ajánlat előfizetni és jelentkezzen be a portál egy olyan felhasználó nevében el.
@@ -117,7 +114,7 @@ Most, hogy létrehozta az ajánlatot, tesztelheti. Jelentkezzen be a felhasznál
 
    a. Jelentkezzen be a felhasználói portálra, a felhasználó, és kattintson **egy előfizetés**.
    - Integrált rendszert az URL-cím attól függően változik, az üzemeltető régió és külső tartomány nevét, és a formátum https://portal lesz. &lt; *régió*&gt;.&lt; *FQDN*&gt;.
-   - Ha a csomag Azure verem használata esetén a portál címe https://portal.local.azurestack.external.
+   - Az Azure verem szoftverfejlesztői készlet használata, a portál címe https://portal.local.azurestack.external.
 
    ![Előfizetés beszerzése](media/azure-stack-subscribe-plan-provision-vm/image01.png)
 
@@ -135,7 +132,7 @@ Most, hogy létrehozta az ajánlatot, tesztelheti. Jelentkezzen be a felhasznál
 
    a. Jelentkezzen be a felhasználói portál egy olyan felhasználó nevében.
       - Integrált rendszert az URL-cím attól függően változik, az üzemeltető régió és külső tartomány nevét, és a formátum https://portal lesz. &lt; *régió*&gt;.&lt; *FQDN*&gt;.
-   - Ha a csomag Azure verem használata esetén a portál címe https://portal.local.azurestack.external.
+   - Az Azure verem szoftverfejlesztői készlet használata, a portál címe https://portal.local.azurestack.external.
 
    b.  Az irányítópulton kattintson **új** > **számítási** > **Windows Server 2016 Datacenter próbaverzió**, és kattintson a **létrehozása**.
 

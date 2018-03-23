@@ -1,24 +1,24 @@
 ---
-title: "Használatával a privilegizált végpont Azure verem |} Microsoft Docs"
-description: "Bemutatja, hogyan használja a rendszerjogosultságú végpontot (EGP) Azure-készletben (az Azure-verem operátor)."
+title: Használatával a privilegizált végpont Azure verem |} Microsoft Docs
+description: Bemutatja, hogyan használja a rendszerjogosultságú végpontot (EGP) Azure-készletben (az Azure-verem operátor).
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.assetid: e94775d5-d473-4c03-9f4e-ae2eada67c6c
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/23/2018
+ms.date: 03/22/2018
 ms.author: mabrigg
-ms.openlocfilehash: 29ac4517ec691f94f24ced81ca227cd4d1e7214e
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: fb4dea9832e781b2ec9f4cfa573b5a4f630188db
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="using-the-privileged-endpoint-in-azure-stack"></a>Használatával a privilegizált végpont Azure verem
 
@@ -74,7 +74,7 @@ Azt javasoljuk, hogy csatlakozni az EGP csak a hardver életciklus gazdagépről
       ```` 
    Amikor a rendszer kéri, a következő hitelesítő adatok használata:
 
-      - **Felhasználónév**: formátumban adja meg a CloudAdmin fiók  **&lt; *Azure verem tartomány*&gt;\cloudadmin**. (ASDK, a felhasználónév nem **azurestack\cloudadmin**.)
+      - **Felhasználónév**: formátumban adja meg a CloudAdmin fiók  **&lt; *Azure verem tartomány*&gt;\accountname**. (ASDK, a felhasználónév nem **azurestack\accountname**.) 
       - **Jelszó**: Adja meg ugyanazt a jelszót a AzureStackAdmin tartományi rendszergazdai fiók a telepítés során megadott.
     
 3.  Miután csatlakozott, a kérdés módosul **[*IP-cím vagy ERCS virtuális gép neve*]: PS >** vagy **[azs-ercs01]: PS >**, attól függően, a környezet. Itt futtatása `Get-Command` elérhető parancsmagok listájának megtekintéséhez.
@@ -143,7 +143,7 @@ Importálja a EGP munkamenet a helyi gépén, tegye a következőket:
       ```` 
    Amikor a rendszer kéri, a következő hitelesítő adatok használata:
 
-      - **Felhasználónév**: formátumban adja meg a CloudAdmin fiók  **&lt; *Azure verem tartomány*&gt;\cloudadmin**. (ASDK, a felhasználónév nem **azurestack\cloudadmin**.)
+      - **Felhasználónév**: formátumban adja meg a CloudAdmin fiók  **&lt; *Azure verem tartomány*&gt;\accountname**. (ASDK, a felhasználónév nem **azurestack\accountname**.) 
       - **Jelszó**: Adja meg ugyanazt a jelszót a AzureStackAdmin tartományi rendszergazdai fiók a telepítés során megadott.
 
 3. A EGP munkamenet importálja a helyi számítógép
@@ -161,7 +161,7 @@ A végpont munkamenet lezárása:
 
 1. Az EGP által elérhető külső fájlmegosztás létrehozása. Fejlesztői csomag környezetben csak a development kit gazdagépen hozhat létre fájlmegosztást.
 2. Futtassa a `Close-PrivilegedEndpoint` parancsmag. 
-3. Egy elérési utat, amelyen a Beszélgetés szövegének naplófájl tárolási kéri. Adja meg a fájlmegosztás létrehozott korábban, a formátum &#92; &#92; *kiszolgálónév*&#92; *megosztásnév*. Ha nem ad meg egy elérési utat, a parancsmag futtatása sikertelen, és a munkamenet nyitva marad. 
+3. Egy elérési utat, amelyen a Beszélgetés szövegének naplófájl tárolási kéri. Adja meg a fájlmegosztás formátumban, korábban létrehozott &#92; &#92; *kiszolgálónév*&#92;*megosztásnév*. Ha nem ad meg egy elérési utat, a parancsmag futtatása sikertelen, és a munkamenet nyitva marad. 
 
     ![Zárja be-PrivilegedEndpoint parancsmag kimenetében, amely mutatja, amelyben meg kell határoznia a Beszélgetés szövegének cél elérési útja](media/azure-stack-privileged-endpoint/closeendpoint.png)
 

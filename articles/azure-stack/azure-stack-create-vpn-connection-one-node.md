@@ -1,11 +1,11 @@
 ---
-title: "Különböző Azure verem szoftverfejlesztői készlet környezetekben két virtuális hálózat közötti pont-pont VPN-kapcsolat létrehozása |} Microsoft Docs"
-description: "Lépésről lépésre, amely egycsomópontos Azure verem szoftverfejlesztői készlet két környezet közötti pont-pont VPN-kapcsolat létrehozásához használja a felhő rendszergazdájához."
+title: Különböző Azure verem szoftverfejlesztői készlet környezetekben két virtuális hálózat közötti pont-pont VPN-kapcsolat létrehozása |} Microsoft Docs
+description: Lépésről lépésre, amely egycsomópontos Azure verem szoftverfejlesztői készlet két környezet közötti pont-pont VPN-kapcsolat létrehozásához használja a felhő rendszergazdájához.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: brenduns
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 3f1b4e02-dbab-46a3-8e11-a777722120ec
 ms.service: azure-stack
 ms.workload: na
@@ -15,11 +15,11 @@ ms.topic: get-started-article
 ms.date: 7/10/2017
 ms.author: brenduns
 ms.reviewer: scottnap
-ms.openlocfilehash: 886d56169c5500c9175b7ddc43edfc29c5142fbb
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 8bb10be63ef31ebe6241c15a79dafe71923a4cf7
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="create-a-site-to-site-vpn-connection-between-two-virtual-networks-in-different-azure-stack-development-kit-environments"></a>Különböző Azure verem szoftverfejlesztői készlet környezetekben két virtuális hálózat közötti pont-pont VPN-kapcsolat létrehozása
 ## <a name="overview"></a>Áttekintés
@@ -33,7 +33,7 @@ Az alábbi ábrán látható, hogy mi a kapcsolat konfigurációs kell hasonlít
 ### <a name="before-you-begin"></a>Előkészületek
 A kapcsolat a konfigurálás befejezéséhez gondoskodjon arról, hogy a következő elemek megkezdése előtt:
 
-* Két kiszolgáló, amely által megadott Azure verem szoftverfejlesztői készlet hardverkövetelményeinek megfelelő a [Azure verem telepítésének előfeltételei](azure-stack-deploy.md). Győződjön meg arról, hogy más előfeltételt jelennek meg a [cikk](azure-stack-deploy.md) túl teljesülnek-e.
+* Két kiszolgálót és egyéb előfeltételeket, amelyek megfelelnek az Azure verem szoftverfejlesztői készlet hardverkövetelmények a [gyors üzembe helyezés: az Azure verem szoftverfejlesztői készlet kiértékelése](azure-stack-deploy-overview.md). 
 * A [Azure verem szoftverfejlesztői készlet](https://azure.microsoft.com/en-us/overview/azure-stack/try/) központi telepítési csomagot.
 
 ## <a name="deploy-the-azure-stack-development-kit-environments"></a>Az Azure verem szoftverfejlesztői készlet környezetek központi telepítése
@@ -168,7 +168,7 @@ A VPN-kapcsolaton keresztül átvitt adatok ellenőrzéséhez szüksége van a v
 5. Adjon meg egy érvényes felhasználónevet és jelszót. Ez a fiók használatával jelentkezzen be a virtuális gép létrehozása után.
 6. Adjon meg egy **előfizetés**, **erőforráscsoport**, és **hely**, majd válassza ki **OK**.
 7. Az a **mérete** paneljét, ebben az esetben válassza ki a virtuális gép méretét, és válassza **válasszon**.
-8. Az a **beállítások** panelen fogadja el az alapértelmezett beállításokat. Győződjön meg arról, hogy a **VNET-01** virtuális hálózat van kiválasztva. Ellenőrizze, hogy az alhálózat **10.0.10.0/24**. Válassza ki **OK**.
+8. Az a **beállítások** panelen fogadja el az alapértelmezett beállításokat. Győződjön meg arról, hogy a **VNET-01** virtuális hálózat van kiválasztva. Ellenőrizze, hogy az alhálózat **10.0.10.0/24**. Ezután kattintson az **OK** gombra.
 9. Az a **összegzés** panelt, tekintse át a beállításokat, majd válassza ki **OK**.
 
 

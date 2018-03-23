@@ -1,25 +1,25 @@
 ---
-title: "Hálózati integráció szempontjai integrált Azure verem rendszerek |} Microsoft Docs"
-description: "Ismerje meg, mi mindent datacenter hálózati integráció az többcsomópontos Azure veremnek megfelelő tervezését."
+title: Hálózati integráció szempontjai integrált Azure verem rendszerek |} Microsoft Docs
+description: Ismerje meg, mi mindent datacenter hálózati integráció az többcsomópontos Azure veremnek megfelelő tervezését.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: jeffgilb
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/12/2018
+ms.date: 03/21/2018
 ms.author: jeffgilb
 ms.reviewer: wamota
-ms.openlocfilehash: 04cfe3c4ac6011b9c3d31b7d4ac3c018c350d67b
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 5ade2a09d0729f48c075a5bcaa20bee079ead47d
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="network-connectivity"></a>Hálózati kapcsolat
 Ez a cikk információival Azure verem hálózati infrastruktúra segítségével eldöntheti, hogyan Azure verem legjobb integrálhatók a meglévő hálózati környezethez. 
@@ -67,7 +67,7 @@ A /24 (254 gazdagép IP-címekhez) hálózat az Azure-verem régió (nem bővít
 Ez/24 van számára kijelölt hálózat belső Azure verem összetevők, hogy kommunikál, és exchange-adatok egymás között. Ez az alhálózat elérhető IP-címet igényel, de tartják titokban megoldás hozzáférés-vezérlési listák (ACL) segítségével. Azt a szegély kapcsolók, kivéve egy kis méretű egyenértékű egy /27 tartomány túl irányíthatja át nem várt hálózati külső erőforrások és/vagy az internet eléréséhez szükséges néhány szolgáltatás által használatos. 
 
 ### <a name="public-infrastructure-network"></a>Nyilvános infrastruktúra-hálózathoz
-Ez/27 hálózati a kis közé az Azure-verem infrastruktúra-alhálózat már említettük, nem igényel nyilvános IP-címek, de azt internetelérés NAT vagy transzparens Proxy keresztül. Ez a hálózat oszt ki a sürgős helyreállítási konzol rendszer (ERCS) a, a ERCS VM internet-hozzáférést igényel az Azure-bA regisztráció során, és a felügyeleti hálózathoz hibaelhárítási célból irányíthatóknak kell lenniük.
+Ez/27 hálózati a kis közé az Azure-verem infrastruktúra-alhálózat már említettük, nem igényel nyilvános IP-címek, de azt internetelérés NAT vagy transzparens Proxy keresztül. Ez a hálózat oszt ki a sürgős helyreállítási konzol rendszer (ERCS) a, a ERCS VM internet-hozzáférést igényel, az Azure regisztrációs és infrastruktúra biztonsági mentés során. A ERCS virtuális Gépet a felügyeleti hálózathoz hibaelhárítási célból irányíthatóknak kell lenniük.
 
 ### <a name="public-vip-network"></a>Nyilvános virtuális IP-hálózat
 A nyilvános virtuális IP-hálózati hozzá van rendelve a hálózati vezérlő Azure-készletben. Egy logikai hálózatot a kapcsoló nincs. A SLB címek készletét használja, és hozzárendeli/32 hálózatokra vonatkozó bérlői munkaterheléseket. A kapcsoló-útválasztási táblázat ezek 32 IP-cím van-e hirdetve BGP keresztül a rendelkezésre álló útvonalként. Ez a hálózat a külső érhető el vagy nyilvános IP-címet tartalmaz. Az Azure-verem infrastruktúra a nyilvános virtuális IP-hálózati legalább 8 címeket használ, amíg a többi bérlői virtuális gépek által használt. Az alhálózaton hálózati mérete között lehet (64 gazdagépek) /26 legalább /22 (1022 gazdagépek) legfeljebb, azt javasoljuk, hogy tervezi-e egy/24 hálózati.

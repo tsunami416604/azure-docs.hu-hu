@@ -1,20 +1,20 @@
 ---
-title: "Azure datacenter integráció a verem - végpontok közzététele"
-description: "Útmutató: Azure verem végpontok közzététele az adatközpontban található"
+title: Azure datacenter integráció a verem - végpontok közzététele
+description: 'Útmutató: Azure verem végpontok közzététele az adatközpontban található'
 services: azure-stack
 author: jeffgilb
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 02/28/2018
+ms.date: 03/21/2018
 ms.author: jeffgilb
 ms.reviewer: wamota
-keywords: 
-ms.openlocfilehash: 8dec686b9ccf87009a23cedf6023f15b84a0f155
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+keywords: ''
+ms.openlocfilehash: 694b8604949406c1c3064fd91bf1fe38f83ee946
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-stack-datacenter-integration---publish-endpoints"></a>Azure datacenter integráció a verem - végpontok közzététele
 Az Azure verem hoz létre az infrastruktúra-szerepkör virtuális IP-címek (VIP). A virtuális IP-címek a nyilvános IP-címkészletből foglal le. A szoftver által meghatározott hálózati rétegben hozzáférés-vezérlési listaként (ACL) minden egyes VIP védi. Hozzáférés-vezérlési listákat a megoldás további támogatnia kell a is használhatók a fizikai kapcsolók (TORs és bmc-n) keresztül. A DNS-bejegyzés jön létre a külső DNS-zónában, a központi telepítéskor megadott végpontok.
