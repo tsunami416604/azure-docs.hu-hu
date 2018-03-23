@@ -1,25 +1,25 @@
 ---
-title: "A Microsoft Azure verem hibaelhárítása |} Microsoft Docs"
-description: "Az Azure verem Development Kit (ASDK) hibaelhárítási információkat."
+title: A Microsoft Azure verem hibaelhárítása |} Microsoft Docs
+description: Az Azure verem Development Kit (ASDK) hibaelhárítási információkat.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: jeffgilb
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/16/2018
+ms.date: 03/22/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 6ed3fb7c7c4de9edbf31fb2c47290e2e39ceadcd
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 6c715f07f75c9196b7cf2cc8659c6e541e1260da
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="microsoft-azure-stack-development-kit-asdk-troubleshooting"></a>A Microsoft Azure verem Development Kit (ASDK) hibaelhárítása
 Ez a dokumentum a ASDK általános hibaelhárítási információkat nyújt. Ha nem tárgyalt problémát tapasztalja, ellenőrizze, hogy a [Azure verem MSDN fórumon](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack) további segítséget vagy arról információkat.  
@@ -31,7 +31,12 @@ Ebben a szakaszban ismertetett hibaelhárításával kapcsolatos ajánlások tö
 
 ## <a name="deployment"></a>Környezet
 ### <a name="deployment-failure"></a>Központi telepítési problémái
-Hiba a telepítés során tapasztal, indíthatja el a központi telepítést a sikertelen lépés használata a telepítési parancsfájl a - Újrafuttatás lehetőséget.  
+Hiba a telepítés során tapasztal, indíthatja el a központi telepítést a hibás lépést használatával - Újrafuttatás lehetőséget a telepítési parancsfájl a következő példában látható módon:
+
+  ```powershell
+  cd C:\CloudDeployment\Setup
+  .\InstallAzureStackPOC.ps1 -Rerun
+  ```
 
 ### <a name="at-the-end-of-the-deployment-the-powershell-session-is-still-open-and-doesnt-show-any-output"></a>A telepítés végén a PowerShell-munkamenet még meg nyitva, és nem jelenik meg a kimenetet
 Ez a viselkedés esetén valószínűleg csak egy PowerShell-parancsablakban alapértelmezett viselkedése eredményét van kijelölve. A development kit központi telepítés sikeresen befejeződött, de a parancsfájl az ablak kiválasztásakor szünetel. Ellenőrizheti a telepítés befejeződött, a word keresi, "select" a parancs ablakának címsorában. Az ESC billentyű kikapcsolni azt, és az üzenet megjelenjenek-e után azt.

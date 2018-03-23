@@ -1,11 +1,11 @@
 ---
-title: "Az Azure verem Adminisztráció alapjai |} Microsoft Docs"
-description: "Ismerje meg kell tudni, hogy Azure verem felügyeletéhez."
+title: Az Azure verem Adminisztráció alapjai |} Microsoft Docs
+description: Ismerje meg kell tudni, hogy Azure verem felügyeletéhez.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 856738a7-1510-442a-88a8-d316c67c757c
 ms.service: azure-stack
 ms.workload: na
@@ -14,16 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: mabrigg
-ms.openlocfilehash: fa77faac195de3be7bf7b2785eb589b030a6e6ce
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 799651caf937ca2bafc79dc76f99ae43e700673a
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-stack-administration-basics"></a>Az Azure verem Adminisztráció alapjai
-
-*A következőkre vonatkozik: Azure verem integrált rendszerek és az Azure verem szoftverfejlesztői készlet*
-
 Számos szempontot Ha most ismerkedik az Azure-verem felügyeleti tudnia kell. Ez az útmutató az Azure-verem kezelőként szerepkör áttekintése és a felhasználóknak a számukra gyorsan eredményesebbé kell biztosít.
 
 ## <a name="understand-the-builds"></a>A buildek ismertetése
@@ -47,7 +44,7 @@ Szüksége lesz egy tájékoztatási, mely szolgáltatások elérhetővé teheti
 Alapértelmezés szerint az Azure-verem tartalmazza a következő "eligazodást szolgáltatások" Azure verem telepítésekor:
 
 - Számítás
-- Storage
+- Tárolás
 - Hálózat
 - Key Vault
 
@@ -132,7 +129,7 @@ Bármi más forduljon a Microsoft CSS.
 
 A csomag, az a támogatási kapcsolatos kérdéseit teheti fel a [Microsoft fórumok](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack). Ha a felügyeleti portál jobb felső sarkában kattintson a Súgó és támogatás ikonra (kérdőjel), és kattintson a **új támogatja a kérelem**, ekkor megnyílik a fórumok hely közvetlenül. Ezek a fórumok rendszeresen figyeli. A csomag egy kiértékelési környezete, mert nincs Microsoft CSS kínált hivatalos támogatás.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Azure-készletben régió kezelése](azure-stack-region-management.md)
 

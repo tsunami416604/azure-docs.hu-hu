@@ -1,24 +1,24 @@
 ---
-title: "A Microsoft Azure verem szoftverfejlesztői készlet kibocsátási megjegyzései |} Microsoft Docs"
-description: "Fejlesztések, javítások és Azure verem szoftverfejlesztői készlet kapcsolatos ismert problémák."
+title: A Microsoft Azure verem szoftverfejlesztői készlet kibocsátási megjegyzései |} Microsoft Docs
+description: Fejlesztések, javítások és Azure verem szoftverfejlesztői készlet kapcsolatos ismert problémák.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: jeffgilb
 manager: femila
-ms.assetid: 
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/16/2018
+ms.date: 03/22/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 176b850120958a5ca5fdaece4831e2ed27ac0a04
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 6b08c1793857fd6c6a6a04c0d450e76a36357597
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-stack-development-kit-release-notes"></a>Az Azure verem szoftverfejlesztői készlet kibocsátási megjegyzései
 A kibocsátási megjegyzések fejlesztései, javítások és Azure verem szoftverfejlesztői készlet ismert problémáira vonatkozó információkat tartalmazzák. Ha nem biztos abban, hogy melyik verzióját futtatja, akkor [a portál használatával ellenőrizze](.\.\azure-stack-updates.md#determine-the-current-version).
@@ -56,6 +56,11 @@ Tekintse meg a [új szolgáltatásokat és javításokat](.\.\azure-stack-update
     - *Hiba – hiányzik a sablon FaultType ResourceProviderTimeout.*
 
     Ez a riasztás biztonságosan figyelmen kívül hagyhatja. 
+
+- A felügyeleti portál és a felhasználói portálra, mind a áttekintése panel nem töltődik be, amikor kijelöl egy korábbi API-verzióval készült storage-fiókok – áttekintés panel (Példa: 2015-06-15). 
+
+  A probléma megoldásához PowerShell használatával futtassa a **Start-ResourceSynchronization.ps1** parancsfájl állítsa vissza a tárfiókadatok való hozzáférést. [A parancsfájl érhető el a Githubról]( https://github.com/Azure/AzureStack-Tools/tree/master/Support/scripts), és kell futnia, amely szolgáltatás rendszergazdai hitelesítő adatait a development kit gazdagépen a ASDK használatakor.  
+
 
 #### <a name="health-and-monitoring"></a>Állapot- és figyelés
 A verem Azure felügyeleti portálon, előfordulhat, hogy a kritikus riasztások nevű látható **függőben lévő külső tanúsítvány lejárta**.  Ezt a figyelmeztetést is nyugodtan figyelmen kívül hagyható, és az Azure verem szoftverfejlesztői készlet működésére hatással. 
@@ -273,9 +278,11 @@ Az Azure Active Directory összevonási szolgáltatások (ADFS) környezetben te
     > A elemek egy része szerepel a **új szolgáltatásokat és javításokat** szakasz csak integrált Azure verem rendszerek szempontjából.
 
 ### <a name="known-issues"></a>Ismert problémák
+
  
 #### <a name="deployment"></a>Környezet
 - Adjon meg egy IP-cím szerint üzembe helyezése során.
+- Verziójától 1711, **CloudAdmin** egy fenntartott fiók nevét, és nem szabad kézzel megadni a csomag telepítésekor. 
 
 #### <a name="infrastructure-management"></a>Infrastruktúra felügyelete
 - Ne engedélyezze a infrastruktúra biztonsági mentés a **infrastruktúra biztonsági mentés** panelen.

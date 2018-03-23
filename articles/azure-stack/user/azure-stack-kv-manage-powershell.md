@@ -1,11 +1,11 @@
 ---
-title: "A verem Azure Key Vault kezelése a PowerShell használatával |} Microsoft Docs"
-description: "A verem Azure Key Vault kezelése a PowerShell használatával"
+title: A verem Azure Key Vault kezelése a PowerShell használatával |} Microsoft Docs
+description: A verem Azure Key Vault kezelése a PowerShell használatával
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 22B62A3B-B5A9-4B8C-81C9-DA461838FAE5
 ms.service: azure-stack
 ms.workload: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: mabrigg
-ms.openlocfilehash: 6ee2ceff10d16456a6e8c6283f40fa594b3311bc
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 9dac59d74347e21bebaf7cb65d199711f45b29a9
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="manage-key-vault-in-azure-stack-by-using-powershell"></a>A verem Azure Key Vault kezelése a PowerShell használatával
 
@@ -90,7 +90,7 @@ Az Active Directory összevonási szolgáltatásokban (AD FS)-alapú telepítés
 $adUser = Get-ADUser -Filter "Name -eq '{Active directory user name}'"
 $objectSID = $adUser.SID.Value 
 
-#Set the key vault access policy
+# Set the key vault access policy
 Set-AzureRmKeyVaultAccessPolicy -VaultName "{key vault name}" -ResourceGroupName "{resource group name}" -ObjectId "{object SID}" -PermissionsToKeys {permissionsToKeys} -PermissionsToSecrets {permissionsToSecrets} -BypassObjectIdValidation 
 ```
 
@@ -113,8 +113,8 @@ A **cél** paraméterrel adja meg, hogy a kulcs védett szoftver. Ha a kulcs sik
 
 A létrehozott kulcsot hivatkozhat az URI használatával. Ha hoz létre, vagy egy kulcs, amelynek neve megegyezik egy meglévő kulcs importálása, az eredeti kulcsra frissül az új kulcs megadott értékeket. Az előző verzió verzióspecifikus URI-azonosítója a kulcs használatával végezheti el. Példa: 
 
-* "Https://vault10.vault.local.azurestack.external:443/kulcsok/key01" mindig letöltheti a legfrissebb verziót használja. 
-* "Https://vault010.vault.local.azurestack.external:443/kulcsok/key01/d0b36ee2e3d14e9f967b8b6b1d38938a" használja ezt a verziót.
+* Használjon "https://vault10.vault.local.azurestack.external:443/keys/key01" mindig lekérni az aktuális verzióját. 
+* Használjon "https://vault010.vault.local.azurestack.external:443/keys/key01/d0b36ee2e3d14e9f967b8b6b1d38938a" lekérni ezt a verziót.
 
 ### <a name="get-a-key"></a>A kulcs lekérése
 
@@ -162,7 +162,7 @@ Ha szeretné engedélyezni, hogy az alkalmazás megnyithassa a tárolóban, futt
 Set-AzureRmKeyVaultAccessPolicy -VaultName 'ContosoKeyVault' -ServicePrincipalName 8f8c4bbd-485b-45fd-98f7-ec6300 -PermissionsToKeys Get
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [A Key Vault tárolt jelszóval egy virtuális gép üzembe helyezése](azure-stack-kv-deploy-vm-with-secret.md) 
 * [A Key Vault tárolt tanúsítvány egy virtuális gép üzembe helyezése](azure-stack-kv-push-secret-into-vm.md)
 

@@ -1,25 +1,25 @@
 ---
-title: "Frissítés Azure verem 1802 |} Microsoft Docs"
-description: "További tudnivalók az Azure-verem 1802 frissítés Újdonságok integrált rendszerek, az ismert problémák és letöltéséről a frissítést."
+title: Frissítés Azure verem 1802 |} Microsoft Docs
+description: További tudnivalók az Azure-verem 1802 frissítés Újdonságok integrált rendszerek, az ismert problémák és letöltéséről a frissítést.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: brenduns
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/08/2018
+ms.date: 03/20/2018
 ms.author: brenduns
 ms.reviewer: justini
-ms.openlocfilehash: 247f13717971d3660b3ec0ee94821bd593c5fed0
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 71862463a62f11a4f2cea7dfcc60961331ded377
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-stack-1802-update"></a>Az Azure verem 1802 frissítés
 
@@ -103,7 +103,7 @@ Az alábbiakban telepítés utáni build kapcsolatos ismert problémák **201803
 
 #### <a name="portal"></a>Portál
 - Lehetővé teszi [új támogatási kérést nyithat a legördülő menüből](azure-stack-manage-portals.md#quick-access-to-help-and-support) a belül a felügyeleti portál nem érhető el. Ehelyett használja a következő hivatkozásra:     
-    - Azure verem integrált rendszerek https://aka.ms/newsupportrequest használja.
+    - Azure verem integrált, rendszereihez https://aka.ms/newsupportrequest.
 
 - <!-- 2050709 --> In the admin portal, it is not possible to edit storage metrics for Blob service, Table service, or Queue service. When you go to Storage, and then select the blob, table, or queue service tile, a new blade opens that displays a metrics chart for that service. If you then select Edit from the top of the metrics chart tile, the Edit Chart blade opens but does not display options to edit metrics.
 
@@ -123,6 +123,13 @@ Az alábbiakban telepítés utáni build kapcsolatos ismert problémák **201803
     - *Hiba – hiányzik a sablon FaultType ResourceProviderTimeout.*
 
     Ez a riasztás biztonságosan figyelmen kívül hagyhatja. 
+
+- <!-- 2253274 --> In the admin and user portals, the Settings blade for vNet Subnets fails to load. As a workaround, use PowerShell and the [Get-AzureRmVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/azurerm.network/get-azurermvirtualnetworksubnetconfig?view=azurermps-5.5.0) cmdlet to view and  manage this information.
+
+- A felügyeleti portál és a felhasználói portálra, mind a áttekintése panel nem töltődik be, amikor kijelöl egy korábbi API-verzióval készült storage-fiókok – áttekintés panel (Példa: 2015-06-15). Ez magában foglalja a rendszer storage-fiókok hasonló **updateadminaccount** javítás és a frissítés során használt. 
+
+  A probléma megoldásához PowerShell használatával futtassa a **Start-ResourceSynchronization.ps1** parancsfájl állítsa vissza a tárfiókadatok való hozzáférést. [A parancsfájl érhető el a Githubról]( https://github.com/Azure/AzureStack-Tools/tree/master/Support/scripts), és a kiemelt végpont szolgáltatás rendszergazdai hitelesítő adatokkal kell futnia. 
+
 
 #### <a name="health-and-monitoring"></a>Állapot- és figyelés
 Nincsenek ismert problémák 1802 történő frissítés után.

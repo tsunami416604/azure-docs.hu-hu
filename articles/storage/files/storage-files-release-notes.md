@@ -10,7 +10,7 @@ ms.date: 03/12/2018
 ms.author: wgries
 ms.openlocfilehash: b42287580078b4391ddbc5b8ff2835131c64236d
 ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/16/2018
 ---

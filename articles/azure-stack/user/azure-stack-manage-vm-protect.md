@@ -1,11 +1,11 @@
 ---
-title: "Azure-veremben telepített virtuális gépek védelme |} Microsoft Docs"
-description: "Irányelvek Azure verem telepített virtuális gépek védelme."
+title: Azure-veremben telepített virtuális gépek védelme |} Microsoft Docs
+description: Irányelvek Azure verem telepített virtuális gépek védelme.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 4e5833cf-4790-4146-82d6-737975fb06ba
 ms.service: azure-stack
 ms.workload: na
@@ -15,11 +15,11 @@ ms.topic: 02get-started-article
 ms.date: 02/27/2018
 ms.author: mabrigg
 ms.reviewer: hector.linares
-ms.openlocfilehash: e7c437e3310fbf5c921920a3f08ecb8fe1f0d931
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 0e74c6af36130d206456634548f452a1f1a2d4af
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="protect-virtual-machines-deployed-on-azure-stack"></a>Azure verem telepített virtuális gépek védelme
 
@@ -68,8 +68,8 @@ A Virtuálisgép-alapú alkalmazások leggyakoribb védelmi rendszere biztonság
  
 Az alkalmazás helyreállítása szükséges visszaállítása egy vagy több, azonos felhőben, vagy új felhő. A datacenter vagy a nyilvános felhő felhő célba. Melyik felhőalapú célozhat meg teljesen a vezérlőben, és az adatvédelmi és közös joghatóság alá követelmények alapján. 
  
- - RTO: Állásidő mérése másodpercben történik 
- - A helyreállítási Időkorlát: Minimális adatvesztéssel
+ - RTO: Az órában mért állásidő 
+ - A helyreállítási Időkorlát: Változó adatvesztés (attól függően, hogy biztonsági mentési gyakoriság)
  - Üzembe helyezési topológia: aktív/passzív 
 
 #### <a name="planning-your-backup-strategy"></a>A biztonsági mentési stratégia tervezése
@@ -95,8 +95,8 @@ Ezt a módszert használja az alkalmazás csak egy felhőhöz telepítve. A virt
 
 ![Replikációs-kézi feladatátvételt](media\azure-stack-manage-vm-backup\vm_backupdataflow_02.png)
 
- - RTO: Az állásidő perc 
- - A helyreállítási Időkorlát: Változó adatvesztés
+ - RTO: Percben mért állásidő 
+ - A helyreállítási Időkorlát: Változó adatvesztés (replikáció gyakoriságától függően)
  - Üzembe helyezési topológia: aktív/passzív készenléti által
  
 ### <a name="high-availabilityautomatic-failover"></a>Magas rendelkezésre állás vagy automatikus feladatátvétel
