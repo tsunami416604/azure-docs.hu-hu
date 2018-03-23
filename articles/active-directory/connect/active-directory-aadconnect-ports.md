@@ -1,8 +1,8 @@
 ---
-title: "Hibrid identitás szükséges portok és protokollok - Azure |} Microsoft Docs"
-description: "Ezen a lapon egy technikai referencia jellegű lap-portokhoz, amelyek szükségesek az Azure AD Connect nyitva kell lennie"
+title: Hibrid identitás szükséges portok és protokollok - Azure |} Microsoft Docs
+description: Ezen a lapon egy technikai referencia jellegű lap-portokhoz, amelyek szükségesek az Azure AD Connect nyitva kell lennie
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
 editor: curtand
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/02/2017
 ms.author: billmath
 ms.openlocfilehash: 79c339c136e614be8a98461533c63d244dabc166
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="hybrid-identity-required-ports-and-protocols"></a>Hibrid identitás – szükséges portok és protokollok
 A következő dokumentum a szükséges portok és protokollok a hibrid identitáskezelési megoldás megvalósításának műszaki hivatkozást. Használja az alábbi ábrán látható, és tekintse meg a megfelelő táblázatot.
@@ -32,10 +32,10 @@ Ez a táblázat ismerteti a portok és az Azure AD Connect-kiszolgáló között
 | --- | --- | --- |
 | DNS |53 (TCP/UDP) |DNS-keresések a cél-erdőre. |
 | Kerberos |88 (TCP/UDP) |Kerberos-hitelesítés az AD-erdőben. |
-| MS-RPC |135-ÖS (TCP/UDP) |Ha az AD-erdőben is kötődik az Azure AD Connect varázsló a kezdeti konfiguráció során és a jelszó-szinkronizálás során használt. |
+| MS-RPC |135 (TCP/UDP) |Ha az AD-erdőben is kötődik az Azure AD Connect varázsló a kezdeti konfiguráció során és a jelszó-szinkronizálás során használt. |
 | LDAP |389 (TCP/UDP) |Adatok importálása az Active Directoryból használatos. A Kerberos-aláírás és a titkosítással titkosítja az adatokat. |
 | RPC | 445 (TCP/UDP) |Zökkenőmentes SSO használják a számítógép-fiók létrehozása az Active Directory-erdőben. |
-| LDAP-/ SSL |636 (TCP/UDP) |Adatok importálása az Active Directoryból használatos. Az adatátvitel van aláírását és titkosítását. Csak akkor használható, ha SSL-t használ. |
+| LDAP/SSL |636 (TCP/UDP) |Adatok importálása az Active Directoryból használatos. Az adatátvitel van aláírását és titkosítását. Csak akkor használható, ha SSL-t használ. |
 | RPC |49152 és 65535 (véletlenszerű magas RPC Port)(TCP/UDP) |Az Azure AD Connect, amikor is kötve van az AD-erdőkkel a kezdeti konfiguráció során, és a jelszó-szinkronizálás során használt. Lásd: [KB929851](https://support.microsoft.com/kb/929851), [KB832017](https://support.microsoft.com/kb/832017), és [KB224196](https://support.microsoft.com/kb/224196) további információt. |
 
 ## <a name="table-2---azure-ad-connect-and-azure-ad"></a>2. táblázat – Azure AD Connect és az Azure AD
@@ -55,7 +55,7 @@ Ez a táblázat ismerteti a portok és protokollok, az Azure AD Connect-kiszolg�
 | --- | --- | --- |
 | HTTP |80 (TCP/UDP) |Töltse le a visszavonási listák (tanúsítvány-visszavonási listákat) SSL-tanúsítványok ellenőrzésére használt. |
 | HTTPS |443(TCP/UDP) |Az Azure ad-val szinkronizálásához használni. |
-| A Rendszerfelügyeleti webszolgáltatások |5985 |A WinRM figyelő |
+| WinRM |5985 |WinRM Listener |
 
 ## <a name="table-4---wap-and-federation-servers"></a>4. táblázat – WAP és az összevonási kiszolgálók
 Ez a táblázat ismerteti a portok és protokollok, az összevonási kiszolgálók és a WAP-kiszolgálókkal közötti kommunikációhoz szükséges.
@@ -70,7 +70,7 @@ Ez a táblázat ismerteti a portok és protokollok, a felhasználók és a WAP-k
 | Protokoll | Portok | Leírás |
 | --- | --- | --- |
 | HTTPS |443(TCP/UDP) |Eszköz-hitelesítéshez használt. |
-| TCP |A 49443-AS (TCP) |Tanúsítvány-hitelesítéshez használt. |
+| TCP |49443 (TCP) |Tanúsítvány-hitelesítéshez használt. |
 
 ## <a name="table-6a--6b---pass-through-authentication-with-single-sign-on-sso-and-password-hash-sync-with-single-sign-on-sso"></a>Tábla 6a & 6b - áteresztő hitelesítés az egyszeri bejelentkezés (SSO) és a Jelszókivonat-szinkronizálás az egyszeri bejelentkezés (SSO)
 Az alábbi táblázatok a portok és protokollok, amelyek szükségesek az Azure AD Connect és az Azure AD közötti kommunikáció ismerteti.

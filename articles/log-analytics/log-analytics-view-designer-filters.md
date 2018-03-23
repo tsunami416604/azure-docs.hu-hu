@@ -1,11 +1,11 @@
 ---
-title: "Az Azure Naplóelemzés nézetekben szűrők |} Microsoft Docs"
-description: "Naplóelemzési nézetben szűrő lehetővé teszi, hogy a felhasználók számára az adatok szűrése a nézetben által egy adott tulajdonság értéke maga a nézet módosítása nélkül.  Ez a cikk ismerteti, hogyan szűrőt, és vegyen fel egyet a egyéni nézetekben."
+title: Az Azure Naplóelemzés nézetekben szűrők |} Microsoft Docs
+description: Naplóelemzési nézetben szűrő lehetővé teszi, hogy a felhasználók számára az adatok szűrése a nézetben által egy adott tulajdonság értéke maga a nézet módosítása nélkül.  Ez a cikk ismerteti, hogyan szűrőt, és vegyen fel egyet a egyéni nézetekben.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: ce41dc30-e568-43c1-97fa-81e5997c946a
 ms.service: log-analytics
 ms.workload: na
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 10/31/2017
 ms.author: bwren
 ms.openlocfilehash: 5c2201292eb085dcc043e4257580c7971dbaffbd
-ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="filters-in-log-analytics-views"></a>A Naplóelemzési nézetekben szűrők
 A **szűrő** a egy [Naplóelemzési megtekintése](log-analytics-view-designer.md) lehetővé teszi a felhasználóknak a nézetben szereplő adatok szűrését által egy adott tulajdonság értéke maga a nézet módosítása nélkül.  Így például csak egy adott számítógépről származó adatok a nézet szűréséhez a nézet felhasználók vagy számítógépek csoportja.  Létrehozhat több szűrő a felhasználók több tulajdonságra szűrés egyetlen nézetben.  Ez a cikk ismerteti, hogyan szűrőt, és vegyen fel egyet a egyéni nézetekben.
@@ -36,7 +36,7 @@ Ha nem ad meg értéket a szűrő van kijelölve, ez a szűrő a nézet nem alka
 
 A szűrő létrehozása a **szűrők** lapon mikor [nézet szerkesztése](log-analytics-view-designer.md).  A szűrő globális a nézet, és a nézetben mind részt vonatkozik.  
 
-![Beállítások szűrése](media/log-analytics-view-designer/filters-settings.png)
+![Szűrőbeállítások](media/log-analytics-view-designer/filters-settings.png)
 
 Az alábbi táblázat bemutatja a szűrő beállításait.
 
@@ -52,9 +52,9 @@ Az alábbi táblázatban néhány példa a közös szűrőket tartalmaz.
 
 | Mező neve | Lekérdezés értékek | Címke |
 |:--|:--|:--|
-| Computer   | Szívverés &#124; különálló számítógép &#124; Rendezze a számítógép asc | Számítógépek |
+| Computer   | Szívverés &#124; különálló számítógép &#124; számítógép asc rendezés | Számítógépek |
 | EventLevelName | Esemény &#124; különböző EventLevelName | Súlyosság |
-| Súlyossági szint | Syslog &#124; különböző súlyossági szint | Súlyosság |
+| SeverityLevel | Syslog &#124; különböző súlyossági szint | Súlyosság |
 | SvcChangeType | Konfigurációváltozás &#124; különböző svcChangeType | ChangeType |
 
 
@@ -74,5 +74,5 @@ Ha adott súlyossági nevű másik szűrőt, a következő lekérdezés segíts�
 
     Event | where ${Computers} | where ${Severity} | summarize count() by EventLevelName
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * További információ a [képi megjelenítés részek](log-analytics-view-designer-parts.md) adhat hozzá az egyéni nézetben.

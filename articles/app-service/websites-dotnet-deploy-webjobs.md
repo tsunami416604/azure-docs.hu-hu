@@ -1,9 +1,9 @@
 ---
-title: "Fejlesztésekor és telepítésekor használja a Visual Studio - Azure webjobs-feladatok"
-description: "Megtudhatja, hogyan fejleszthet és Azure WebJobs telepítése az Azure App Service Visual Studio használatával."
+title: Fejlesztésekor és telepítésekor használja a Visual Studio - Azure webjobs-feladatok
+description: Megtudhatja, hogyan fejleszthet és Azure WebJobs telepítése az Azure App Service Visual Studio használatával.
 services: app-service
-documentationcenter: 
-author: ggailey777
+documentationcenter: ''
+author: tdykstra
 manager: erikre
 editor: jimbe
 ms.assetid: a3a9d320-1201-4ac8-9398-b4c9535ba755
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/12/2017
 ms.author: glenga;david.ebbo;suwatch;pbatum;naren.soni
-ms.openlocfilehash: 8793485f2f1967e8c14ef335f14f81c9b946f974
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: babe190c0865f5be4aeecb40ca48b52673c6920e
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="develop-and-deploy-webjobs-using-visual-studio---azure-app-service"></a>Fejlesztésekor és telepítésekor a Visual Studio - Azure App Service segítségével webjobs-feladatok
 
@@ -29,7 +29,7 @@ Ez a témakör ismerteti, hogyan egy konzolalkalmazás projekt telepítése egy 
 Ha a Visual Studio telepíti a WebJobs-kompatibilis Konzolalkalmazás projekt, két feladatokat hajtja végre:
 
 * Futásidejű fájlokat másolja a megfelelő mappát a web app alkalmazásban (*App_Data/feladatok/folyamatos* a folyamatos webjobs-feladatok, *App_Data/feladatok/indított* az ütemezett és igény szerinti webjobs-feladatok).
-* Beállítja az [Azure ütemezőjének](#scheduler) az adott időpontokban futtatásra ütemezett webjobs-feladatok. (Ez nem szükséges a folyamatos WebJobs.)
+* Beállítja az [Azure Scheduler](https://docs.microsoft.com/azure/scheduler/) webjobs-feladatok, amelyek adott időpontokban ütemezett feladatok. (Ez nem szükséges a folyamatos WebJobs.)
 
 A WebJobs-kompatibilis projekt van felvéve a következő elemek:
 
@@ -50,7 +50,7 @@ Ha a Visual Studio 2015-öt használ, telepítse a [Azure SDK for .NET (Visual S
 
 Ha a Visual Studio 2017 használata esetén telepítse a [Azure fejlesztési munkaterhelés](https://docs.microsoft.com/visualstudio/install/install-visual-studio#step-4---select-workloads).
 
-## <a id="convert"></a>Webjobs-feladatok meglévő Konzolalkalmazás projekt központi telepítésének engedélyezése
+## <a id="convert"></a> Webjobs-feladatok meglévő Konzolalkalmazás projekt központi telepítésének engedélyezése
 
 Erre két lehetősége van:
 
@@ -62,7 +62,7 @@ Erre két lehetősége van:
 
   Webjobs-feladat készítéséhez önmagában, a webes projektet Kapcsolódás meglévő Konzolalkalmazás projekt konfigurálása. Használja ezt a beállítást, ha azt szeretné, a webjobs-feladat futtatása a webalkalmazásban önmagában nem fut a webes alkalmazás webes alkalmazásokkal együtt. Érdemes ehhez ahhoz, hogy a lehetővé válik a webjobs-feladat erőforrások, függetlenül a webes alkalmazás erőforrásaihoz.
 
-### <a id="convertlink"></a>WebJobs-automatikus központi telepítési egy webes projekt engedélyezése
+### <a id="convertlink"></a> WebJobs-automatikus központi telepítési egy webes projekt engedélyezése
 
 1. Kattintson a jobb gombbal a webes projekt **Megoldáskezelőben**, és kattintson a **Hozzáadás** > **Azure webjobs-feladat létező projekt**.
    
@@ -74,7 +74,7 @@ Erre két lehetősége van:
     ![Válassza ki a projektet az Azure Webjobs hozzáadása párbeszédpanel](./media/websites-dotnet-deploy-webjobs/aaw1.png)
 3. Fejezze be a [adja hozzá a Azure webjobs-feladat](#configure) párbeszédpanel, és kattintson **OK**. 
 
-### <a id="convertnolink"></a>Webjobs-feladatok központi telepítés nélkül webes projektet engedélyezése
+### <a id="convertnolink"></a> Webjobs-feladatok központi telepítés nélkül webes projektet engedélyezése
 1. Kattintson a jobb gombbal a Konzolalkalmazás-projektre a **Megoldáskezelőben**, és kattintson a **Azure webjobs-feladat közzététel...** . 
    
     ![Közzététel az Azure webjobs-feladat](./media/websites-dotnet-deploy-webjobs/paw.png)
@@ -99,13 +99,13 @@ WebJobs-kompatibilis új projekt létrehozásához, használhatja a Konzolalkalm
 > 
 > 
 
-### <a id="createnolink"></a>A webjobs-feladatok – új projekt sablon használata az egy független webjobs-feladat
+### <a id="createnolink"></a> A webjobs-feladatok – új projekt sablon használata az egy független webjobs-feladat
 1. Kattintson a **fájl** > **új projekt**, majd a **új projekt** párbeszédpanelen kattintson **felhő** > **Azure webjobs-feladat (.NET-keretrendszer)**.
    
     ![Webjobs-feladat sablon új projekt párbeszédpanel](./media/websites-dotnet-deploy-webjobs/np.png)
 2. Kövesse az utasításokat a korábbi látható [ellenőrizze a Konzolalkalmazás projekt egy független WebJobs-projekt](#convertnolink).
 
-### <a id="createlink"></a>A webjobs-feladatok – új projekt sablon használata az egy webes projekt kapcsolódó webjobs-feladat
+### <a id="createlink"></a> A webjobs-feladatok – új projekt sablon használata az egy webes projekt kapcsolódó webjobs-feladat
 1. Kattintson a jobb gombbal a webes projekt **Megoldáskezelőben**, és kattintson a **Hozzáadás** > **új Azure webjobs-feladat projekt**.
    
     ![Új Azure webjobs-feladat projekt menübejegyzést](./media/websites-dotnet-deploy-webjobs/nawj.png)
@@ -127,7 +127,7 @@ A mezők ezen a párbeszédpanelen mezőinek felelnek meg a **hozzáadása webjo
 > 
 > 
 
-## <a id="publishsettings"></a>webjobs-feladat közzététele settings.json
+## <a id="publishsettings"></a>webjob-publish-settings.json
 Amikor konfigurál egy konzolalkalmazás WebJobs központi telepítés, a Visual Studio telepíti a [Microsoft.Web.WebJobs.Publish](http://www.nuget.org/packages/Microsoft.Web.WebJobs.Publish/) NuGet csomag- és ütemezési információkat tárolja egy *webjobs-feladat közzététele settings.json* fájlt a projektben *tulajdonságok* a WebJobs-projekt mappájából. Íme egy példa, hogy a fájl:
 
         {
@@ -140,7 +140,7 @@ Amikor konfigurál egy konzolalkalmazás WebJobs központi telepítés, a Visual
           "runMode": "Continuous"
         }
 
-Közvetlenül szerkesztheti a fájlt, és a Visual Studio IntelliSense biztosít. A fájl séma tárolódik [http://schemastore.org](http://schemastore.org/schemas/json/webjob-publish-settings.json) nem lehet megtekinteni.  
+Közvetlenül szerkesztheti a fájlt, és a Visual Studio IntelliSense biztosít. A fájl séma tárolódik [ http://schemastore.org ](http://schemastore.org/schemas/json/webjob-publish-settings.json) nem lehet megtekinteni.  
 
 ## <a id="webjobslist"></a>webjobs-list.json
 Ha egy WebJobs-kompatibilis projekt webes projektet, a Visual Studio tárolja a webjobs-feladatok projekt nevét egy *webjobs-list.json* fájl a webes projekt *tulajdonságok* mappa. A lista tartalmazhat több WebJobs-projektet, a következő példában látható módon:
@@ -157,7 +157,7 @@ Ha egy WebJobs-kompatibilis projekt webes projektet, a Visual Studio tárolja a 
           ]
         }
 
-Közvetlenül szerkesztheti a fájlt, és a Visual Studio IntelliSense biztosít. A fájl séma tárolódik [http://schemastore.org](http://schemastore.org/schemas/json/webjobs-list.json) nem lehet megtekinteni.
+Közvetlenül szerkesztheti a fájlt, és a Visual Studio IntelliSense biztosít. A fájl séma tárolódik [ http://schemastore.org ](http://schemastore.org/schemas/json/webjobs-list.json) nem lehet megtekinteni.
 
 ## <a id="deploy"></a>Webjobs-feladatok projekt telepítése
 Webjobs-feladatok projektben lévő nyit meg egy webes projekt automatikusan telepíti a webes projekt. A webes projekt telepítése kapcsolatos információkért lásd: **útmutató útmutató** > **telepítés app** a bal oldali navigációs.

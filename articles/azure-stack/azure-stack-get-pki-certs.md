@@ -1,25 +1,25 @@
 ---
-title: "Azure verem nyilvános kulcsokra épülő infrastruktúrát tanúsítványok integrált Azure verem rendszerek központi telepítés létrehozása |} Microsoft Docs"
-description: "Az Azure verem PKI-tanúsítvány telepítési folyamatának integrált Azure verem rendszerek ismerteti."
+title: Azure verem nyilvános kulcsokra épülő infrastruktúrát tanúsítványok integrált Azure verem rendszerek központi telepítés létrehozása |} Microsoft Docs
+description: Az Azure verem PKI-tanúsítvány telepítési folyamatának integrált Azure verem rendszerek ismerteti.
 services: azure-stack
-documentationcenter: 
-author: jeffgilb
+documentationcenter: ''
+author: mattbriggs
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2018
-ms.author: jeffgilb
+ms.date: 03/22/2018
+ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: 991a94e4ca41bad438a3c8d06e4e1f691cff91bc
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 4a7432260167b8740567ad4308e102417abad82c
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="generate-pki-certificates-for-azure-stack-deployment"></a>Azure Alkalmazásveremben üzembe nyilvános kulcsú infrastruktúra tanúsítványainak előállításához
 Most, hogy tudja [a PKI-tanúsítványkövetelmények](azure-stack-pki-certs.md) Azure verem telepítések esetén be kell szereznie ezeknek a tanúsítványoknak a tanúsítvány hitelesítésszolgáltatói (CA) az Ön által választott. 
@@ -30,7 +30,7 @@ Egy igényel tanúsítványokat nyilvános Hitelesítésszolgáltatótól vagy b
 ### <a name="sample-inf-file"></a>Minta INF-fájl 
 A példa tanúsítvány kérelem INF-fájl segítségével hozzon létre egy kapcsolat nélküli kérelem tanúsítványfájlt elküldhesse azokat egy Hitelesítésszolgáltatónak (belső vagy nyilvános). Az INF-fájl tartalmazza a szükséges végpontok (beleértve a nem kötelező PaaS-szolgáltatásokat) egyetlen helyettesítő tanúsítvány. 
 
-A minta INF-fájl azt feltételezi, hogy adott régióban egyenlő **tengeri** és a külső FQDN érték **Sze &#46; contoso &#46; com**. Módosítsa megfelelően a környezet létrehozása előtt ezeket az értékeket egy. Az üzembe helyezéshez INF-fájl. 
+A minta INF-fájl azt feltételezi, hogy adott régióban egyenlő **tengeri** és a külső FQDN érték **tengeri&#46;contoso&#46;com**. Módosítsa megfelelően a környezet létrehozása előtt ezeket az értékeket egy. Az üzembe helyezéshez INF-fájl. 
 
     
     [Version] 

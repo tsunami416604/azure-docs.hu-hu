@@ -1,11 +1,11 @@
 ---
-title: "Az Azure AD Connect és általános adatok védelme |} Microsoft Docs"
-description: "Ez a dokumentum ismerteti az beszerzése az Azure AD Connect GDPR előírásainak."
+title: Az Azure AD Connect és általános adatok védelme |} Microsoft Docs
+description: Ez a dokumentum ismerteti az beszerzése az Azure AD Connect GDPR előírásainak.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 02/15/2018
 ms.author: billmath
 ms.openlocfilehash: c3956dd379961b119f65bdebe1f5a8038c4fa8f0
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="gdpr-compliance-and-azure-ad-connect"></a>GDPR megfelelőség és az Azure AD Connect 
 
@@ -66,7 +66,7 @@ If ($File.ToUpper() -ne "$env:programdata\aadconnect\PERSISTEDSTATE.XML".toupper
 ### <a name="schedule-this-script-to-run-every-48-hours"></a>A parancsfájl futtatását 48 óránként ütemezése
 A következő lépésekkel ütemezni a parancsfájl futtatásához 48 óránként.
 
-1.  A parancsfájl kiterjesztésű fájlba mentése **&#46; PS1**, majd nyissa meg a Vezérlőpultot, és kattintson a **rendszerek és biztonsági**.
+1.  A parancsfájl kiterjesztésű fájlba mentése  **&#46;PS1**, majd nyissa meg a Vezérlőpultot, és kattintson a **rendszerek és biztonsági**.
     ![Rendszer](media\active-directory-aadconnect-gdpr\gdpr2.png)
 
 2.  Felügyeleti eszközök fejléc alatt kattintson a **feladatok ütemezése**.

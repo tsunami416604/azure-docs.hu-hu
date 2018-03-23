@@ -1,6 +1,6 @@
 ---
-title: "Prémium szintű Azure Storage áttelepítése virtuális gépek |} Microsoft Docs"
-description: "Prémium szintű Azure Storage telepíthet át a meglévő virtuális gépekre. Prémium szintű Storage nagy teljesítményű, alacsony késésű támogatása az Azure virtuális gépeken futó I/O-igényes munkaterhelések kínál."
+title: Prémium szintű Azure Storage áttelepítése virtuális gépek |} Microsoft Docs
+description: Prémium szintű Azure Storage telepíthet át a meglévő virtuális gépekre. Prémium szintű Storage nagy teljesítményű, alacsony késésű támogatása az Azure virtuális gépeken futó I/O-igényes munkaterhelések kínál.
 services: storage
 documentationcenter: na
 author: yuemlu
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/27/2017
 ms.author: yuemlu
 ms.openlocfilehash: 36ff73d36c752fb342dcfff2360b4f6f7013740e
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="migrating-to-azure-premium-storage-unmanaged-disks"></a>Prémium szintű Azure Storage (nem felügyelt lemezek) áttelepítése
 
@@ -163,7 +163,7 @@ Hozzon létre egy tárfiókot, a virtuális merevlemezek karbantartásához. A v
 Az adatlemezek esetén dönthet úgy, hogy néhány adatlemezek tartsa egy standard szintű tárfiókot (például lemezek hűtőre tárhellyel rendelkező), de határozottan javasoljuk, hogy az üzemi alkalmazások és szolgáltatások a prémium szintű storage minden adat áthelyezése.
 
 #### <a name="copy-vhd-with-azcopy-or-powershell"></a>3. lépés. Másolja a VHD AzCopy vagy a PowerShell használatával
-Szüksége lesz a tároló elérési útját és a tárolási fiók kulcs található feldolgozni az alábbi két lehetőség közül. Tároló elérési útja és a tároló kulcsa megtalálható **Azure Portal** > **tárolási**. A tároló URL-címe például a "https://myaccount.blob.core.windows.net/mycontainer/" lesz.
+Szüksége lesz a tároló elérési útját és a tárolási fiók kulcs található feldolgozni az alábbi két lehetőség közül. Tároló elérési útja és a tároló kulcsa megtalálható **Azure Portal** > **tárolási**. A tároló URL-címet fog, például a "https://myaccount.blob.core.windows.net/mycontainer/".
 
 ##### <a name="option-1-copy-a-vhd-with-azcopy-asynchronous-copy"></a>1. lehetőség: Az AzCopy (aszinkron másolhatja azokat) egy virtuális merevlemez másolása
 Használja az AzCopy, egyszerűen feltöltheti a VHD-t az interneten keresztül. A virtuális merevlemezek méretétől függően ez időt vehet igénybe. Fontos, hogy ellenőrizze a tárfiókok be-és kilépési korlátai, ez a beállítás használata esetén. Lásd: [Azure Storage méretezhetőségi és teljesítménycéloknak](storage-scalability-targets.md) részleteiről.
@@ -222,7 +222,7 @@ Ha az áttelepítés VHD-t a nem - Azure felhőalapú tárolást az Azure-ba, el
 
 #### <a name="step-1-export-vhd-to-a-local-directory"></a>1. lépés A VHD exportálása egy helyi könyvtárba
 ##### <a name="copy-a-vhd-from-aws"></a>Másolja a VHD-t AWS
-1. Ha AWS használ, exportálja a EC2 példány az Amazon S3 gyűjtő virtuális. Az Amazon EC2 példányok telepítse az Amazon EC2 parancssori felület (CLI) eszközt, és a létrehozás-példány-export-tevékenység parancsot a EC2 példány exportálni egy VHD-fájl exportálása Amazon dokumentációjában ismertetett lépéseket követve. Használjon **VHD** a lemez &#95; kép &#95; FORMÁTUM változó futtatásakor a **-példány-export-feladat létrehozása** parancsot. Az exportált VHD-fájl kerül az Amazon S3 gyűjtő jelöl ki, a folyamat során.
+1. Ha AWS használ, exportálja a EC2 példány az Amazon S3 gyűjtő virtuális. Az Amazon EC2 példányok telepítse az Amazon EC2 parancssori felület (CLI) eszközt, és a létrehozás-példány-export-tevékenység parancsot a EC2 példány exportálni egy VHD-fájl exportálása Amazon dokumentációjában ismertetett lépéseket követve. Használjon **VHD** a lemez&#95;kép&#95;formátum változó futtatásakor a **-példány-export-feladat létrehozása** parancsot. Az exportált VHD-fájl kerül az Amazon S3 gyűjtő jelöl ki, a folyamat során.
 
     ```
     aws ec2 create-instance-export-task --instance-id ID --target-environment TARGET_ENVIRONMENT \
