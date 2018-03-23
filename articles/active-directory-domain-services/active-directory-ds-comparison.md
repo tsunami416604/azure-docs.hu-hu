@@ -1,8 +1,8 @@
 ---
-title: "Azure AD tartományi szolgáltatások: Hasonlítsa össze az Azure AD tartományi szolgáltatások DIY tartományvezérlőn |} Microsoft Docs"
-description: "Azure Active Directory tartományi szolgáltatások összehasonlítása DIY tartományvezérlőn"
+title: 'Azure AD tartományi szolgáltatások: Hasonlítsa össze az Azure AD tartományi szolgáltatások DIY tartományvezérlőn |} Microsoft Docs'
+description: Azure Active Directory tartományi szolgáltatások összehasonlítása DIY tartományvezérlőn
 services: active-directory-ds
-documentationcenter: 
+documentationcenter: ''
 author: mahesh-unnikrishnan
 manager: mtillman
 editor: curtand
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/07/2017
 ms.author: maheshu
 ms.openlocfilehash: c384046d280e03de5a808d245dd273fdf7b44549
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="how-to-decide-if-azure-ad-domain-services-is-right-for-your-use-case"></a>A használati esetnek megfelelő kiválasztásáról, ha az Azure AD tartományi szolgáltatások
 Az Azure AD tartományi szolgáltatásokkal telepítheti is az Azure infrastruktúra-szolgáltatásokat, a munkaterhelés nem kell foglalkoznia az identitás-infrastruktúra az Azure-ban karbantartása. A felügyelt szolgáltatás eltér a szokásos Windows Server Active Directory központi telepítéséhez, telepítheti és felügyelheti a saját. A szolgáltatás könnyű üzembe helyezni, és kézbesíti az automatizált állapotfigyelést és javítási. Folyamatosan fejlődik azt a szolgáltatás használatát a gyakori telepítési forgatókönyvekben.
@@ -34,21 +34,21 @@ Az alábbi táblázat segítségével eldöntheti, hogy Azure AD tartományi szo
 
 | **Funkció** | **Azure AD tartományi szolgáltatások** | **"Saját munka" AD az Azure virtuális gépeken** |
 | --- |:---:|:---:|
-| [**Felügyelt szolgáltatás**](active-directory-ds-comparison.md#managed-service) |**&amp;#x2713;;** |**& #x 2715;** |
-| [**Biztonságos telepítéshez**](active-directory-ds-comparison.md#secure-deployments) |**&amp;#x2713;;** |A rendszergazdának a üzembe. |
-| [**DNS-kiszolgáló**](active-directory-ds-comparison.md#dns-server) |**& #x 2713;**  (a felügyelt) |**&amp;#x2713;;** |
-| [**Tartományi vagy vállalati rendszergazdai jogosultságokkal**](active-directory-ds-comparison.md#domain-or-enterprise-administrator-privileges) |**& #x 2715;** |**&amp;#x2713;;** |
-| [**Csatlakozás tartományhoz**](active-directory-ds-comparison.md#domain-join) |**&amp;#x2713;;** |**&amp;#x2713;;** |
-| [**Tartomány hitelesítése NTLM és Kerberos használatával**](active-directory-ds-comparison.md#domain-authentication-using-ntlm-and-kerberos) |**&amp;#x2713;;** |**&amp;#x2713;;** |
+| [**Felügyelt szolgáltatás**](active-directory-ds-comparison.md#managed-service) |**&#x2713;** |**&#x2715;** |
+| [**Biztonságos telepítéshez**](active-directory-ds-comparison.md#secure-deployments) |**&#x2713;** |A rendszergazdának a üzembe. |
+| [**DNS-kiszolgáló**](active-directory-ds-comparison.md#dns-server) |**&#x2713;**(felügyelt szolgáltatás) |**&#x2713;** |
+| [**Tartományi vagy vállalati rendszergazdai jogosultságokkal**](active-directory-ds-comparison.md#domain-or-enterprise-administrator-privileges) |**&#x2715;** |**&#x2713;** |
+| [**Csatlakozás tartományhoz**](active-directory-ds-comparison.md#domain-join) |**&#x2713;** |**&#x2713;** |
+| [**Tartomány hitelesítése NTLM és Kerberos használatával**](active-directory-ds-comparison.md#domain-authentication-using-ntlm-and-kerberos) |**&#x2713;** |**&#x2713;** |
 | [**Kerberos által korlátozott delegálás**](active-directory-ds-comparison.md#kerberos-constrained-delegation)|erőforrás-alapú|erőforrás-alapú & ügyfélalapú|
-| [**Egyéni Szervezetiegység-struktúrája**](active-directory-ds-comparison.md#custom-ou-structure) |**&amp;#x2713;;** |**&amp;#x2713;;** |
-| [**Sémakiterjesztések**](active-directory-ds-comparison.md#schema-extensions) |**& #x 2715;** |**&amp;#x2713;;** |
-| [**AD-tartomány vagy erdő megbízhatónak tekinti**](active-directory-ds-comparison.md#ad-domain-or-forest-trusts) |**& #x 2715;** |**&amp;#x2713;;** |
-| [**LDAP olvasása**](active-directory-ds-comparison.md#ldap-read) |**&amp;#x2713;;** |**&amp;#x2713;;** |
-| [**Biztonságos LDAP (LDAPS)**](active-directory-ds-comparison.md#secure-ldap) |**&amp;#x2713;;** |**&amp;#x2713;;** |
-| [**LDAP írási**](active-directory-ds-comparison.md#ldap-write) |**& #x 2715;** |**&amp;#x2713;;** |
-| [**Csoportházirend**](active-directory-ds-comparison.md#group-policy) |**&amp;#x2713;;** |**&amp;#x2713;;** |
-| [**Földrajzilag elosztott központi telepítések**](active-directory-ds-comparison.md#geo-dispersed-deployments) |**& #x 2715;** |**&amp;#x2713;;** |
+| [**Egyéni Szervezetiegység-struktúrája**](active-directory-ds-comparison.md#custom-ou-structure) |**&#x2713;** |**&#x2713;** |
+| [**Sémakiterjesztések**](active-directory-ds-comparison.md#schema-extensions) |**&#x2715;** |**&#x2713;** |
+| [**AD-tartomány vagy erdő megbízhatónak tekinti**](active-directory-ds-comparison.md#ad-domain-or-forest-trusts) |**&#x2715;** |**&#x2713;** |
+| [**LDAP olvasása**](active-directory-ds-comparison.md#ldap-read) |**&#x2713;** |**&#x2713;** |
+| [**Secure LDAP (LDAPS)**](active-directory-ds-comparison.md#secure-ldap) |**&#x2713;** |**&#x2713;** |
+| [**LDAP írási**](active-directory-ds-comparison.md#ldap-write) |**&#x2715;** |**&#x2713;** |
+| [**Csoportházirend**](active-directory-ds-comparison.md#group-policy) |**&#x2713;** |**&#x2713;** |
+| [**Földrajzilag elosztott központi telepítések**](active-directory-ds-comparison.md#geo-dispersed-deployments) |**&#x2715;** |**&#x2713;** |
 
 #### <a name="managed-service"></a>Felügyelt szolgáltatás
 A Microsoft által felügyelt Azure AD tartományi szolgáltatások-tartományt. Nem kell aggódnia javítását, frissítések, figyelés, a biztonsági mentések, és a tartomány rendelkezésre állását biztosítja. A felügyeleti feladatok kínálják szolgáltatásként a Microsoft Azure által a felügyelt tartományok.
@@ -56,14 +56,14 @@ A Microsoft által felügyelt Azure AD tartományi szolgáltatások-tartományt.
 #### <a name="secure-deployments"></a>Biztonságos telepítéshez
 A felügyelt tartományra biztonságosan zárolva van a Microsoft biztonsági javaslatok AD telepítések szerint. Ezek a javaslatok az AD termékcsapatának évtizedekben mérnöki és az azt támogató AD központi telepítések felhasználói felület vezethető vissza. Saját munka telepítések esetén kell venni az adott központi telepítési lépéseket le/biztonságos zárolását a központi telepítés.
 
-#### <a name="dns-server"></a>DNS-kiszolgáló
+#### <a name="dns-server"></a>DNS server
 Az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz felügyelt DNS-szolgáltatásokat tartalmazza. A "AAD DC rendszergazdák" csoportba kezelheti a felügyelt tartományra DNS. A csoport tagjai teljes DNS-felügyeleti jogosultságokat kap a felügyelt tartomány számára. DNS-kezelés használatával végezheti el a Távoli kiszolgálófelügyelet eszközei (RSAT) csomagban található a "DNS-felügyeleti konzol".
 [További információ](active-directory-ds-admin-guide-administer-dns.md)
 
 #### <a name="domain-or-enterprise-administrator-privileges"></a>Tartományi vagy vállalati rendszergazdai jogosultságokkal
 Ezek a emelt szintű jogosultságok nem érhető el a az AAD-Directory tartományi szolgáltatások által felügyelt tartományokhoz. Ezek a emelt szintű jogosultságok nem telepíthető az AAD-DS-en igénylő alkalmazások felügyelt tartományok. Rendszergazdai jogosultságokkal kisebb részhalmazát az úgynevezett "AAD DC rendszergazdák" delegált felügyeleti csoport tagjai számára érhető el. Ezek a jogosultságok például jogosultsága a DNS konfigurálása, csoportházirend konfigurálásához, hogy rendszergazdai jogokkal a tartományhoz csatlakozó gépek stb.
 
-#### <a name="domain-join"></a>Csatlakozás tartományhoz
+#### <a name="domain-join"></a>Domain join
 Csatlakozhat a virtuális gépek hasonló hogyan számítógépek csatlakoztatása egy Active Directory-tartománynak a felügyelt tartományra.
 
 #### <a name="domain-authentication-using-ntlm-and-kerberos"></a>Tartomány hitelesítése NTLM és Kerberos használatával

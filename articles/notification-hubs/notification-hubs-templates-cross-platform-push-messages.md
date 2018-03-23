@@ -1,11 +1,11 @@
 ---
 title: Sablonok
-description: "Ez a témakör ismerteti a sablonok az Azure notification hubs használatával."
+description: Ez a témakör ismerteti a sablonok az Azure notification hubs használatával.
 services: notification-hubs
 documentationcenter: .net
 author: ysxu
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: a41897bb-5b4b-48b2-bfd5-2e3c65edc37e
 ms.service: notification-hubs
 ms.workload: mobile
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/29/2016
 ms.author: yuaxu
 ms.openlocfilehash: 1ca24a4bf08ecdbe1c1e47a931613144309a04a9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="templates"></a>Sablonok
 ## <a name="overview"></a>Áttekintés
@@ -114,13 +114,13 @@ XML- vagy JSON-dokumentum formátumok sablonok korlátozódnak. Emellett csak el
 
 Az alábbi táblázat a sablonok engedélyezett nyelv:
 
-| kifejezés | Leírás |
+| Kifejezés | Leírás |
 | --- | --- |
 | $(prop) |A megadott nevű egy eseménytulajdonság hivatkozás. A tulajdonságnevek nem nagybetűk között. Ebben a kifejezésben oldja fel a tulajdonságérték szöveg vagy üres karakterlánc, ha a tulajdonság nem található. |
 | $(prop, n) |A fenti de a szöveg explicit módon levágva n karakterek, például $(cím, 20) levágja a cím tulajdonság tartalmának: 20 karakter. |
 | . (prop, n) |A fenti de három pont utótaggal a szöveg, amelyhez hozzá van kapcsolva. A lerövidített karakterlánc és az utótag teljes mérete nem haladja meg a n karakter. . (cím, 20) és az "Ez a cím sor az" eredményeinek tulajdonsága bemeneti **címe...** |
 | %(prop) |Hasonló $(name) azzal a különbséggel, hogy a kimeneti URI-kódolású. |
-| #(prop) |A JSON-sablonokban használt (például az iOS és Android sablonok).<br><br>Ez a funkció ugyanúgy működik mint a korábban megadott, kivéve ha szerepel a JSON-sablonokat (például Apple-sablonok) $(prop). Ebben az esetben, ha ez a funkció nem körülvett "{","}" (például "myJsonProperty':"#(név)"), és az eredmény egy számot a Javascript-formátumban, például RegExp szolgáltatást: (0 &#124; (&#91; 1 – 9 &#93; &#91; 0-9 &#93;;*))(\. &#91; 0-9 &#93; +)? ((az e &#124; E) (+ &#124;-)? &#91; 0-9 &#93; +)?, akkor a kimenet JSON egy számot.<br><br>Például "jelvény:"#(név)"válik"jelvények": 40 (és nem"40"). |
+| #(prop) |A JSON-sablonokban használt (például az iOS és Android sablonok).<br><br>Ez a funkció ugyanúgy működik mint a korábban megadott, kivéve ha szerepel a JSON-sablonokat (például Apple-sablonok) $(prop). Ebben az esetben, ha ez a funkció nem körülvett "{","}" (például "myJsonProperty':"#(név)"), és az eredmény egy számot a Javascript-formátumban, például RegExp szolgáltatást: (0&#124;(&#91;1 – 9&#93;&#91;0-9&#93;*)) (\. &#91;0-9&#93;+)? ((e&#124;E) (+&#124;-)? &#91;0-9&#93;+)?, akkor a kimenet JSON egy számot.<br><br>Például "jelvény:"#(név)"válik"jelvények": 40 (és nem"40"). |
 | "text" vagy "text" |A szövegkonstans. Literálok egyetlen vagy dupla idézőjelek közé tetszőleges szöveget tartalmaznak. |
 | Kif1 + Kif2 |A csatlakozás egyetlen karakterlánccá egyesít két kifejezések összefűzése operátor. |
 

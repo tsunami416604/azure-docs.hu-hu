@@ -1,11 +1,11 @@
 ---
-title: "A fájl szintjén SAP HANA Azure biztonsági mentés |} Microsoft Docs"
-description: "Két fő biztonsági mentési lehetőség SAP Hana az Azure virtuális gépeken, ez a cikk foglalkozik SAP HANA Azure biztonsági mentési fájl szinten"
+title: A fájl szintjén SAP HANA Azure biztonsági mentés |} Microsoft Docs
+description: Két fő biztonsági mentési lehetőség SAP Hana az Azure virtuális gépeken, ez a cikk foglalkozik SAP HANA Azure biztonsági mentési fájl szinten
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: hermanndms
 manager: timlt
-editor: 
+editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: NA
 ms.topic: article
@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 3/13/2017
 ms.author: rclaus
 ms.openlocfilehash: 5db0ceb1648b5afa278e1cbe1c42fce8033bfdc1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="sap-hana-azure-backup-on-file-level"></a>A fájl szintjén SAP HANA Azure biztonsági mentés
 
@@ -87,9 +87,9 @@ Ezen a képernyőfelvételen látható egy láthatja, hogyan nézzen ki az Azure
 
 A biztonsági mentési HANA Studio konzol lehetővé teszi egy HANA biztonságimásolat-fájlok maximális méretének korlátozására. A minta környezetben teljesítményét azáltal, hogy előfordulhat, hogy több kisebb biztonságimásolat-fájl egy nagy 230 GB-os fájl helyett javult.
 
-![A biztonságimásolat-fájl méretkorlátot beállítása a HANA ügyféloldali nem &#39; t javítása a biztonságimásolat-készítési időpont](media/sap-hana-backup-file-level/image029.png)
+![A biztonságimásolat-fájl méretkorlátot beállítása a HANA ügyféloldali nem&#39;t javítása a biztonságimásolat-készítési időpont](media/sap-hana-backup-file-level/image029.png)
 
-A biztonságimásolat-fájl méretkorlátot beállítása a HANA ügyféloldali nem &#39; t javíthatja a biztonságimásolat-készítési időpont, mert egymás után, az ábrán látható módon írja a fájlt. A fájlok méretkorlátját beállított 60 GB, így a biztonsági másolat négy nagy fájlok 230 GB-os egyetlen fájl helyett.
+A biztonságimásolat-fájl méretkorlátot beállítása a HANA ügyféloldali nem&#39;t a biztonsági mentéskor javítása, mert egymás után, az ábrán látható módon írja a fájlt. A fájlok méretkorlátját beállított 60 GB, így a biztonsági másolat négy nagy fájlok 230 GB-os egyetlen fájl helyett.
 
 ![A blobxfer eszköz párhuzamosságát teszteléséhez a maximális fájlméret HANA biztonsági másolatok majd beállítása 15 GB](media/sap-hana-backup-file-level/image030.png)
 
@@ -139,7 +139,7 @@ A tulajdonos alternatív helyi stripe-készlethez biztonságimásolat-készíté
 
 Akkor lehet csatlakoztatni az Azure fájlmegosztások egy Azure Linux virtuális Gépen belül. A cikk [Azure File storage használata Linux](../../../storage/files/storage-how-to-use-files-linux.md) menete részleteit. Ne feledje, hogy jelenleg egy 5-TB-os kvótakorlátot egy Azure fájlmegosztás és a fájl mérete legfeljebb 1 TB-os fájlonként. Lásd: [Azure Storage méretezhetőségi és teljesítménycéloknak](../../../storage/common/storage-scalability-targets.md) tárhelyet olvashat.
 
-Tesztek kimutatták, azonban SAP HANA biztonsági mentési állapotszolgáltatáson &#39; t közvetlenül az ilyen típusú CIFS csatlakoztatási jelenleg működik. Azt is van megadva a [SAP Megjegyzés 1820529](https://launchpad.support.sap.com/#/notes/1820529) CIFS nem ajánlott.
+Tesztek kimutatták, azonban SAP HANA biztonsági mentési állapotszolgáltatáson&#39;jelenleg munkahelyi közvetlenül az ilyen típusú CIFS csatlakoztatási t. Azt is van megadva a [SAP Megjegyzés 1820529](https://launchpad.support.sap.com/#/notes/1820529) CIFS nem ajánlott.
 
 ![Az ábrán látható hiba az SAP HANA Studio a biztonsági mentés párbeszédpanelen](media/sap-hana-backup-file-level/image038.png)
 
@@ -155,7 +155,7 @@ Ezen a képernyőfelvételen látható egy láthatja, hogy a forrás mappastrukt
 
 SAP HANA biztonságimásolat-fájlok az Azure files tárolása érdekes lehetősége lehet a jövőben, ha a SAP HANA-fájlok biztonsági másolatait közvetlenül támogatja. Vagy ha csatlakoztatási Azure fájlok NFS keresztül lehetővé válik, és a maximális kvótakorlát jelentősen nagyobb, mint 5 TB.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Biztonsági mentési útmutató SAP Hana Azure virtuális gépeken](sap-hana-backup-guide.md) áttekintése és bevezető információkat biztosít.
 * [A storage-pillanatfelvételekkel alapján SAP HANA biztonsági mentés](sap-hana-backup-storage-snapshots.md) ismerteti a tárolási pillanatkép-alapú biztonsági mentési beállítás.
 * Magas rendelkezésre állás és az Azure (nagy példány) az SAP HANA vész-helyreállítási terv létrehozásához, lásd: [SAP HANA (nagy példányok) magas rendelkezésre állási és vészhelyreállítási helyreállítási Azure](hana-overview-high-availability-disaster-recovery.md).
