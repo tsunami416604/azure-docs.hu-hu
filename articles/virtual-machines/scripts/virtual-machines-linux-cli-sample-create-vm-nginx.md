@@ -1,13 +1,13 @@
 ---
-title: "Az Azure CLI Script Sample – a Linux virtuális gép létrehozása az NGINX |} Microsoft Docs"
-description: "Az Azure CLI parancsfájl-mintában - NGINX Linux virtuális gép létrehozása"
+title: Azure CLI-példaszkript – Linux rendszerű virtuális gép létrehozása NGINX-szel | Microsoft Docs
+description: Azure CLI-példaszkript – Linux rendszerű virtuális gép létrehozása NGINX-szel
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: neilpeterson
 manager: timlt
 editor: tysonn
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: azurecli
 ms.topic: sample
@@ -16,27 +16,27 @@ ms.workload: infrastructure
 ms.date: 02/27/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 0a6c33d84f1fab85e6ed2933c47c041ca2e59520
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: MT
+ms.openlocfilehash: a88077d405a662c0b5f83022209712545fea537f
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/09/2018
 ---
-# <a name="create-a-vm-with-nginx"></a>Hozzon létre egy virtuális gép NGINX
+# <a name="create-a-vm-with-nginx"></a>Virtuális gép létrehozása NGINX-szel
 
-Ez a parancsfájl létrehoz egy Azure virtuális gépet, és használja az Azure virtuális gép egyéni parancsprogramok futtatására szolgáló bővítmény NGINX telepítéséhez. A parancsfájl futtatása után hozzáférhet a nyilvános IP-címet a virtuális gép egy bemutató webhelyet.
+Ez a szkript egy Azure-beli virtuális gépet hoz létre, és az Azure Virtual Machine egyéni szkriptbővítménnyel telepíti az NGINX-et. A szkript futtatása után Ön hozzáférhet egy bemutató webhelyhez a virtuális gép nyilvános IP-címén.
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="sample-script"></a>Mintaparancsfájl
+## <a name="sample-script"></a>Példaszkript
 
 [!code-azurecli-interactive[main](../../../cli_scripts/virtual-machine/create-vm-nginx/create-vm-nginx.sh "Quick Create VM")]
 
 ## <a name="custom-script-extension"></a>Egyéni szkriptbővítmény
 
-Az egyéni parancsprogramok futtatására szolgáló bővítmény másolja át a virtuális gép ezt a parancsfájlt. A parancsfájlt majd telepítését és konfigurálását egy olyan NGINX-webkiszolgálón. 
+Az egyéni szkriptbővítmény átmásolja ezt a szkriptet a virtuális gépre. Ezután a szkript futtatásával telepíthető és konfigurálható egy NGINX-webiszolgáló. 
 
 ```bash
 #!/bin/bash
@@ -50,26 +50,26 @@ apt-get -y install nginx
 
 ## <a name="clean-up-deployment"></a>Az üzemelő példány eltávolítása 
 
-A következő parancsot az erőforráscsoport, virtuális gép és az összes kapcsolódó erőforrások eltávolítása.
+Az alábbi paranccsal eltávolítható az erőforráscsoport, a virtuális gép és az összes kapcsolódó erőforrás.
 
 ```azurecli-interactive 
 az group delete --name myResourceGroup
 ```
 
-## <a name="script-explanation"></a>Parancsfájl ismertetése
+## <a name="script-explanation"></a>Szkript ismertetése
 
-A parancsfájl a következő parancsokat egy erőforráscsoport, virtuális gép és minden kapcsolódó erőforrás létrehozásához. Minden egyes parancsa a tábla-parancs adott dokumentációjára mutató hivatkozásokat.
+A szkript a következő parancsokat használja egy erőforráscsoport, egy virtuális gép és minden kapcsolódó erőforrás létrehozásához. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
 | Parancs | Megjegyzések |
 |---|---|
-| [az csoport létrehozása](https://docs.microsoft.com/cli/azure/group#az_group_create) | Az összes erőforrás tároló erőforrás csoportot hoz létre. |
-| [az virtuális gép létrehozása](https://docs.microsoft.com/cli/azure/vm#az_vm_create) | A virtuális gépet hoz létre. Ez a parancs is meghatározza a használandó virtuálisgép-lemezkép, és rendszergazdai hitelesítő adatait.  |
-| [az vm-port megnyitása](https://docs.microsoft.com/cli/azure/network/nsg/rule#az_network_nsg_rule_create) | Bejövő adatforgalom engedélyezésére a hálózati biztonsági csoport szabályt hoz létre. Ez a példa a 80-as port a HTTP-forgalom van megnyitva. |
-| [Azure virtuális gép bővítmény beállítása](https://docs.microsoft.com/cli/azure/vm/extension#az_vm_extension_set) | Hozzáadja, és futtat egy virtuálisgép-bővítményt egy virtuális géphez. Ez a példa az egyéni parancsprogramok futtatására szolgáló bővítmény segítségével NGINX telepítése.|
-| [az csoport törlése](https://docs.microsoft.com/cli/azure/vm/extension#az_vm_extension_set) | Egy olyan erőforráscsoport, beleértve az összes beágyazott erőforrások törlése. |
+| [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
+| [az vm create](https://docs.microsoft.com/cli/azure/vm#az_vm_create) | Létrehozza a virtuális gépet. A parancs megadja továbbá a használandó virtuálisgép-rendszerképet és a rendszergazdai jelszavakat.  |
+| [az vm open-port](https://docs.microsoft.com/cli/azure/network/nsg/rule#az_network_nsg_rule_create) | Létrehoz egy hálózati biztonsági csoportra vonatkozó szabályt a befelé irányuló forgalom engedélyezésére. Ebben a példában a 80-as portot nyitjuk meg a HTTP-forgalom számára. |
+| [azure vm extension set](https://docs.microsoft.com/cli/azure/vm/extension#az_vm_extension_set) | Hozzáad és futtat egy virtuálisgép-bővítményt egy virtuális gépen. Ebben a példában az NGINX telepítésére az egyéni szkriptbővítmény használatával kerül sor.|
+| [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az_vm_extension_set) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-További információ az Azure parancssori felület: [Azure CLI dokumentáció](https://docs.microsoft.com/cli/azure/overview).
+Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](https://docs.microsoft.com/cli/azure).
 
-További virtuális gép CLI parancsfájl minták megtalálhatók a [Azure Linux virtuális dokumentációját](../linux/cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+A virtuális gépekhez kapcsolódó további CLI-példaszkripteket az [Azure Linux rendszerű virtuális gépekre vonatkozó dokumentációjában](../linux/cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) találhat.

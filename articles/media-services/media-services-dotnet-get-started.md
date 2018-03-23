@@ -1,11 +1,11 @@
 ---
-title: "Tartalmak továbbítása igény szerint a .NET használatával | Microsoft Docs"
-description: "Ez az útmutató lépésről lépésre ismerteti, hogyan valósíthat meg egy igény szerinti tartalomtovábbító alkalmazást a .NET-keretrendszert használó Azure Media Services segítségével."
+title: Tartalmak továbbítása igény szerint a .NET használatával | Microsoft Docs
+description: Ez az útmutató lépésről lépésre ismerteti, hogyan valósíthat meg egy igény szerinti tartalomtovábbító alkalmazást a .NET-keretrendszert használó Azure Media Services segítségével.
 services: media-services
-documentationcenter: 
+documentationcenter: ''
 author: Juliako
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 388b8928-9aa9-46b1-b60a-a918da75bd7b
 ms.service: media-services
 ms.workload: media
@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 12/10/2017
 ms.author: juliako
-ms.openlocfilehash: f88a9a732099f2bd63f46d3f45e5ff96f7441f03
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 48824929ee3fc01952fb6525c514a2cdbb265c9d
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-net-sdk"></a>Tartalmak továbbítása igény szerint a .NET SDK használatával
 [!INCLUDE [media-services-selector-get-started](../../includes/media-services-selector-get-started.md)]
@@ -236,7 +236,7 @@ Adja hozzá a Program osztályhoz a következő módszert.
 
 ## <a name="publish-the-asset-and-get-urls-for-streaming-and-progressive-download"></a>Adatkészlet közzététele és az adatfolyam-továbbításhoz és progresszív letöltéshez szükséges URL-címek lekérése
 
-Egy adategység továbbításához vagy letöltéséhez először a „közzététele” szükséges, egy kereső létrehozásával. Az objektumban található fájlokhoz a lokátorok biztosítanak hozzáférést. A Media Services kétféle keresőtípust támogat: az OnDemandOrigin keresők médiatartalmak továbbításához használatosak (például MPEG DASH, HLS vagy Smooth Streaming), a közös hozzáférésű jogosultságkódos (SAS) keresők pedig médiafájlok letöltéséhez (a SAS-keresőkkel kapcsolatos további információkért lásd [ezt](http://southworks.com/blog/2015/05/27/reusing-azure-media-services-locators-to-avoid-facing-the-5-shared-access-policy-limitation/) a blogot).
+Egy adategység továbbításához vagy letöltéséhez először a „közzététele” szükséges, egy kereső létrehozásával. A keresők biztosítják az adategységben található fájlokhoz való hozzáférést. A Media Services kétféle keresőtípust támogat: az OnDemandOrigin keresők médiatartalmak továbbításához használatosak (például MPEG DASH, HLS vagy Smooth Streaming), a hozzáférési jogosultságkód (SAS)-keresők pedig médiafájlok letöltéséhez.
 
 ### <a name="some-details-about-url-formats"></a>Néhány információ az URL-formátumokról
 

@@ -1,8 +1,8 @@
 ---
-title: "Oktatóanyag – Kiadások előrejelzése az Azure Cost Management szolgáltatással | Microsoft Docs"
-description: "Ez az oktatóanyag bemutatja, hogyan jelezheti előre a költségeit a korábbi használati és költségadatok használatával."
+title: Oktatóanyag – Kiadások előrejelzése az Azure Cost Management szolgáltatással | Microsoft Docs
+description: Ez az oktatóanyag bemutatja, hogyan jelezheti előre a költségeit a korábbi használati és költségadatok használatával.
 services: cost-management
-keywords: 
+keywords: ''
 author: bandersmsft
 ms.author: banders
 ms.date: 02/27/2018
@@ -10,15 +10,15 @@ ms.topic: tutorial
 ms.service: cost-management
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 35142cb40560db848c71da266bbaa1881f12e15d
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 20046d8bb475ddce8962915e5bd8215117261ac6
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="tutorial-forecast-future-spending"></a>Oktatóanyag: Jövőbeli kiadások előrejelzése
 
-Az Azure Cost Management by Cloudyn szolgáltatás segít előre jelezni a jövőbeli kiadásokat a korábbi használati és költségadatok alapján. Cloudyn-jelentések használatával minden költség-előrejelzési adat megtekinthető. Az ebben az oktatóanyagban szereplő példák végigvezetik a költség-előrejelzések áttekintésén a jelentések használatával. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az Azure Cost Management segít előre jelezni a jövőbeli kiadásokat a korábbi használati és költségadatok alapján. Cloudyn-jelentések használatával minden költség-előrejelzési adat megtekinthető. Az ebben az oktatóanyagban szereplő példák végigvezetik a költség-előrejelzések áttekintésén a jelentések használatával. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Jövőbeli kiadások előrejelzése

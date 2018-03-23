@@ -1,13 +1,13 @@
 ---
-title: "Parancssori felület példa-figyelő-skálázási-egyetlen Azure SQL adatbázis |} Microsoft Docs"
-description: "Az Azure parancssori felület a példaként megadott parancsfájlt figyelését, valamint egy Azure SQL-adatbázis méretezése"
+title: CLI-példaszkript – Egyetlen Azure SQL-adatbázis monitorozása és méretezése | Microsoft Docs
+description: Azure CLI-példaszkript – Egyetlen Azure SQL-adatbázis monitorozása és méretezése
 services: sql-database
 documentationcenter: sql-database
 author: janeng
 manager: jstrauss
 editor: carlrab
 tags: azure-service-management
-ms.assetid: 
+ms.assetid: ''
 ms.service: sql-database
 ms.custom: monitor & tune, mvc
 ms.devlang: azurecli
@@ -16,15 +16,15 @@ ms.tgt_pltfrm: sql-database
 ms.workload: database
 ms.date: 12/14/2017
 ms.author: janeng
-ms.openlocfilehash: 741c066d62364e34b788883bfc96fba1ea3507c3
-ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
-ms.translationtype: MT
+ms.openlocfilehash: 6a09558b67c3e84d1057e5e51af256e6ed71a9e5
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 03/09/2018
 ---
-# <a name="use-cli-to-monitor-and-scale-a-single-sql-database"></a>Parancssori felület használatával figyelheti és egy SQL-adatbázis méretezése
+# <a name="use-cli-to-monitor-and-scale-a-single-sql-database"></a>Egyetlen SQL-adatbázis monitorozása és méretezése CLI-vel
 
-Az Azure CLI mintaparancsfájl egy Azure SQL-adatbázis különböző teljesítményszintet is méretezi a méretre vonatkozó adatok az adatbázis lekérdezése után. 
+Ez az Azure CLI-példaszkript egyetlen Azure SQL-adatbázist méretez más teljesítményszintre az adatbázis méretadatainak lekérdezése után. 
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -32,36 +32,36 @@ Az Azure CLI mintaparancsfájl egy Azure SQL-adatbázis különböző teljesítm
 
 Ha a parancssori felület helyi telepítése és használata mellett dönt, a témakörben leírt lépésekhez az Azure CLI 2.0-s vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli). 
 
-## <a name="sample-script"></a>Mintaparancsfájl
+## <a name="sample-script"></a>Példaszkript
 
 [!code-azurecli-interactive[main](../../../cli_scripts/sql-database/monitor-and-scale-database/monitor-and-scale-database.sh "Monitor and scale single SQL Database")]
 
 > [!TIP]
-> Használjon [az sql db op lista](/cli/azure/sql/db/op?#az_sql_db_op_list) az adatbázis és a végrehajtott műveletek listájának [az sql db op Mégse](/cli/azure/sql/db/op#az_sql_db_op_cancel) az adatbázis frissítési művelet megszakításához.
+> Az [az sql db op list](/cli/azure/sql/db/op?#az_sql_db_op_list) paranccsal lekérheti az adatbázison végrehajtott műveletek listáját, az [az sql db op cancel](/cli/azure/sql/db/op#az_sql_db_op_cancel) paranccsal pedig megszakíthat egy, az adatbázison végzett frissítési műveletet.
 
 ## <a name="clean-up-deployment"></a>Az üzemelő példány eltávolítása
 
-A parancsfájl-minta futtatása után a következő parancs segítségével távolítsa el az erőforráscsoportot és a vele társított összes erőforrást.
+A példaszkript futtatása után a következő paranccsal távolítható el az erőforráscsoport és az összes ahhoz kapcsolódó erőforrás.
 
 ```azurecli-interactive
 az group delete --name myResourceGroup
 ```
 
-## <a name="script-explanation"></a>Parancsfájl ismertetése
+## <a name="script-explanation"></a>Szkript ismertetése
 
-A parancsfájl a következő parancsokat. Minden egyes parancsa a tábla-parancs adott dokumentációjára mutató hivatkozásokat.
+A szkript a következő parancsokat használja. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
 | Parancs | Megjegyzések |
 |---|---|
-| [az csoport létrehozása](https://docs.microsoft.com/cli/azure/group#az_group_create) | Az összes erőforrás tároló erőforrás csoportot hoz létre. |
-| [az sql-kiszolgáló létrehozása](https://docs.microsoft.com/cli/azure/sql/server#az_sql_server_create) | Egy adatbázist tároló logikai kiszolgáló létrehozása. |
-| [az sql db megjelenítése-használat](https://docs.microsoft.com/cli/azure/sql/db#az_sql_db_show_usage) | Az adatbázis méretének használati információit jeleníti meg. |
-| [az sql-adatbázis frissítése](https://docs.microsoft.com/cli/azure/sql/db#az_sql_db_update) | Frissíti az adatbázis-tulajdonságai (például a szolgáltatási szint vagy a teljesítmény szint), vagy azokat, kívüli vagy rugalmas készletek között adatbázis helyezi. |
-| [az csoport törlése](https://docs.microsoft.com/cli/azure/vm/extension#az_vm_extension_set) | Egy olyan erőforráscsoport, beleértve az összes beágyazott erőforrások törlése. |
+| [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
+| [az sql server create](https://docs.microsoft.com/cli/azure/sql/server#az_sql_server_create) | Létrehoz egy, az adatbázist üzemeltető logikai kiszolgálót. |
+| [az sql db show-usage](https://docs.microsoft.com/cli/azure/sql/db#az_sql_db_show_usage) | Megjeleníti egy adatbázis méretkihasználtsági adatait. |
+| [az sql db update](https://docs.microsoft.com/cli/azure/sql/db#az_sql_db_update) | Frissíti az adatbázis tulajdonságait (például a szolgáltatási vagy a teljesítményszintet), vagy áthelyezi az adatbázist egy rugalmas készletbe vagy rugalmas készletek között, vagy kiveszi egy rugalmas készletből. |
+| [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az_vm_extension_set) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 |||
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-További információ az Azure parancssori felület: [Azure CLI dokumentáció](https://docs.microsoft.com/cli/azure/overview).
+Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](https://docs.microsoft.com/cli/azure).
 
-További SQL-adatbázis CLI parancsfájl minták megtalálhatók a [dokumentáció az Azure SQL Database](../sql-database-cli-samples.md).
+További SQL Database CLI-példaszkripteket az [Azure SQL Database dokumentációjában](../sql-database-cli-samples.md) találhat.

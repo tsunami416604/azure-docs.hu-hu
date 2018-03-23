@@ -1,25 +1,25 @@
 ---
-title: "Rövid útmutató – Privát Docker regisztrációs adatbázis létrehozása az Azure-ban az Azure CLI-vel"
-description: "Az útmutató azt ismerteti, hogyan hozhat létre egy privát Docker regisztrációs adatbázist az Azure CLI-vel."
+title: Rövid útmutató – Privát Docker regisztrációs adatbázis létrehozása az Azure-ban az Azure CLI-vel
+description: Az útmutató azt ismerteti, hogyan hozhat létre egy privát Docker regisztrációs adatbázist az Azure CLI-vel.
 services: container-registry
 author: neilpeterson
 manager: timlt
 ms.service: container-registry
 ms.topic: quickstart
-ms.date: 12/07/2017
+ms.date: 03/03/2018
 ms.author: nepeters
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: a74a1ce5c9401d6445f5feec4af8d5cb771d2c64
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: db1fb3deec4b70a9341753a59910aeb0e002bca0
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="create-a-container-registry-using-the-azure-cli"></a>Tároló-beállításjegyzék létrehozása az Azure CLI-vel
 
-Az Azure Container Registry egy felügyelt Docker-tárolóregisztrációs adatbázis-szolgáltatás, amely a privát Docker-tárolók rendszerképeinek tárolására szolgál. Ez az útmutató az Azure Container Registry-példányok Azure CLI-vel való létrehozásának módját ismerteti.
+Az Azure Container Registry egy felügyelt Docker-tárolóregisztrációs adatbázis-szolgáltatás, amely a privát Docker-tárolók rendszerképeinek tárolására szolgál. Ez az útmutató a következőket ismerteti: Azure Container Registry-példány létrehozása az Azure CLI-vel, tárolórendszerkép továbbítása a regisztrációs adatbázisba, végül a tároló üzembe helyezése a regisztrációs adatbázisból az Azure Container Instances (ACI) szolgáltatásban.
 
-A rövid útmutatóhoz az Azure CLI 2.0.25-ös vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése][azure-cli].
+A rövid útmutatóhoz az Azure CLI 2.0.27-es vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése][azure-cli].
 
 A Dockert is telepítenie kell helyileg. A Docker csomagokat biztosít, amelyekkel a Docker egyszerűen konfigurálható bármely [Mac][docker-mac], [Windows][docker-windows] vagy [Linux][docker-linux] rendszeren.
 
@@ -29,13 +29,13 @@ Hozzon létre egy erőforráscsoportot az [az group create][az-group-create] par
 
 A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *eastus* helyen.
 
-```azurecli-interactive
+```azurecli
 az group create --name myResourceGroup --location eastus
 ```
 
 ## <a name="create-a-container-registry"></a>Tároló-beállításjegyzék létrehozása
 
-Ebben a rövid útmutatóban egy *Alapszintű* beállításjegyzéket hozunk létre. Az Azure Container Registry több különböző termékváltozatban érhető el, amelyek rövid leírása az alábbi táblázatban található. Bővebb részletekért lásd a [Container Registry termékváltozatait][container-registry-skus] ismertető cikket.
+Ebben a rövid útmutatóban egy *Alapszintű* regisztrációs adatbázist hoz létre. Az Azure Container Registry több különböző termékváltozatban érhető el, amelyek rövid leírása az alábbi táblázatban található. Bővebb részletekért lásd a [Container Registry termékváltozatait][container-registry-skus] ismertető cikket.
 
 [!INCLUDE [container-registry-sku-matrix](../../includes/container-registry-sku-matrix.md)]
 
@@ -138,20 +138,64 @@ Result
 v1
 ```
 
+## <a name="deploy-image-to-aci"></a>Rendszerkép üzembe helyezése az ACI szolgáltatásban
+
+Tárolópéldánynak a létrehozott regisztrációs adatbázisból történő üzembe helyezéséhez meg kell adnia a regisztrációs adatbázis hitelesítő adatait az üzembe helyezéskor. Éles forgatókönyvekben használjon [szolgáltatásnevet][container-registry-auth-aci] a tárolóregisztrációs adatbázis eléréséhez, a rövid útmutató tömörségének megőrzéséhez azonban engedélyezze a rendszergazdai felhasználót a regisztrációs adatbázisban az alábbi paranccsal:
+
+```azurecli
+az acr update --name <acrName> --admin-enabled true
+```
+
+Miután engedélyezte a rendszergazdát, a felhasználónév megegyezik a regisztrációs adatbázis nevével, a jelszót pedig az alábbi paranccsal kérheti le:
+
+```azurecli
+az acr credential show --name <acrName> --query "passwords[0].value"
+```
+
+A tárolórendszerkép 1 processzormaggal és 1 GB memóriával történő üzembe helyezéséhez futtassa az alábbi parancsot. Cserélje le az `<acrName>`, `<acrLoginServer>` és `<acrPassword>` helyőrzőt az előző parancsokból beszerzett értékekre.
+
+```azurecli
+az container create --resource-group myResourceGroup --name acr-quickstart --image <acrLoginServer>/aci-helloworld:v1 --cpu 1 --memory 1 --registry-username <acrName> --registry-password <acrPassword> --dns-name-label aci-demo --ports 80
+```
+
+Az Azure Resource Manager kezdeti válaszát kell megkapnia a tároló részleteivel. A tároló állapotának monitorozásához és annak ellenőrzéséhez, hogy mikor fut, ismételje meg az [az container show][az-container-show] parancsot. Ez kevesebb mint egy percet vesz igénybe.
+
+```azurecli
+az container show --resource-group myResourceGroup --name acr-quickstart --query instanceView.state
+```
+
+## <a name="view-the-application"></a>Az alkalmazás megtekintése
+
+Ha az üzembe helyezés az ACI szolgáltatásban sikeresen megtörtént, az [az container show][az-container-show] paranccsal kérje le a tároló teljes tartománynevét:
+
+```azurecli
+az container show --resource-group myResourceGroup --name acr-quickstart --query ipAddress.fqdn
+```
+
+Példa a kimenetre: `"aci-demo.eastus.azurecontainer.io"`
+
+A futó alkalmazás megtekintéséhez nyissa meg a nyilvános IP-címet kedvenc böngészőjében.
+
+![A Hello World alkalmazás a böngészőben][aci-app-browser]
+
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs rájuk szükség, az [az group delete][az-group-delete] paranccsal eltávolítható az erőforráscsoport, az ACR-példány és az összes tárolórendszerkép.
 
-```azurecli-interactive
+```azurecli
 az group delete --name myResourceGroup
 ```
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban létrehozott egy Azure-beli tároló-beállításjegyzéket az Azure CLI segítségével. Ha az Azure Container Registry és az Azure Container Instances együttes használatának módját szeretné megismerni, folytassa az Azure Container Instances oktatóanyagával.
+Ebben a rövid útmutatóban létrehozott egy Azure Container Registry-példányt az Azure CLI segítségével, továbbított egy tárolórendszerképet a regisztrációs adatbázisba, és futtatta annak egy példányát az Azure Container Instances használatával. Folytassa az Azure Container Instances oktatóanyagával, amelyben alaposabban megismerheti az ACI szolgáltatást.
 
 > [!div class="nextstepaction"]
 > [Az Azure Container Instances oktatóanyaga][container-instances-tutorial-prepare-app]
+
+<!-- IMAGES> -->
+[aci-app-browser]: ../container-instances/media/container-instances-quickstart/aci-app-browser.png
+
 
 <!-- LINKS - external -->
 [docker-linux]: https://docs.docker.com/engine/installation/#supported-platforms
@@ -167,5 +211,7 @@ Ebben a rövid útmutatóban létrehozott egy Azure-beli tároló-beállításje
 [az-group-create]: /cli/azure/group#az_group_create
 [az-group-delete]: /cli/azure/group#az_group_delete
 [azure-cli]: /cli/azure/install-azure-cli
+[az-container-show]: /cli/azure/container#az_container_show
 [container-instances-tutorial-prepare-app]: ../container-instances/container-instances-tutorial-prepare-app.md
 [container-registry-skus]: container-registry-skus.md
+[container-registry-auth-aci]: container-registry-auth-aci.md

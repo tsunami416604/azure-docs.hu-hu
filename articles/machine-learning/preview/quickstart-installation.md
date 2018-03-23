@@ -1,21 +1,21 @@
 ---
-title: "Az Azure Machine Learning-szolgáltatások rövid telepítési útmutatója | Microsoft Docs"
-description: "Ebben a rövid útmutatóban megtanulja, hogyan hozhat létre Azure Machine Learning-erőforrásokat, és hogyan telepítheti és kezdheti el használni az Azure Machine Learning Workbenchet."
+title: Az Azure Machine Learning-szolgáltatások rövid telepítési útmutatója | Microsoft Docs
+description: Ebben a rövid útmutatóban megtanulja, hogyan hozhat létre Azure Machine Learning-erőforrásokat, és hogyan telepítheti és kezdheti el használni az Azure Machine Learning Workbenchet.
 services: machine-learning
 author: hning86
 ms.author: haining, raymondl, chhavib, j-martens
 manager: mwinkle
-ms.reviewer: jmartens, jasonwhowell, mldocs
+ms.reviewer: jmartens, jasonwhowell, mldocs, gcampanella
 ms.service: machine-learning
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 2/22/2018
-ms.openlocfilehash: 33ced510dc9579248b75fb21520d55bd747a6a5c
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.date: 3/7/2018
+ms.openlocfilehash: ac206d7fdcf6aba1e0ab83f84d8c583d085a36fa
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="quickstart-install-and-get-started-with-azure-machine-learning-services"></a>Rövid útmutató: Az Azure Machine Learning-szolgáltatások telepítése és az első lépések
 Az Azure Machine Learning-szolgáltatások (előzetes verzió) átfogó, integrált és fejlett adatelemzési megoldások. A hivatásos adatszakértők számára nyújt segítséget az adatok előkészítésében, a kísérletek kidolgozásában és a modellek felhőszinten való üzembe helyezésében.
@@ -64,7 +64,7 @@ Azure Machine Learning-fiókokat az Azure Portalon hozhat létre:
    Erőforráscsoport | _Az erőforráscsoport_ | Az előfizetése valamelyik meglévő erőforráscsoportját használja, vagy adjon meg egy nevet új erőforráscsoport létrehozásához a kísérletezési fiók számára. 
    Hely | _A felhasználókhoz legközelebb eső régió_ | Válassza ki a felhasználókhoz és az adatforrásokhoz legközelebb eső helyet.
    Munkaállomások száma | 2 | Adja meg a munkaállomások számát. Itt találhat további tudnivalókat arról, [hogyan befolyásolja a munkaállomások száma a díjszabást](https://azure.microsoft.com/pricing/details/machine-learning/).<br/><br/>Ehhez a rövid útmutatóhoz csak két munkaállomásra van szükség. A munkaállomások igény szerint adhatók hozzá és távolíthatók el az Azure Portalon.
-   Tárfiók | _Egyedi név_ | Válassza az **Új létrehozása** elemet, és adjon meg egy nevet az [Azure Storage-fiók](https://docs.microsoft.com/en-us/azure/storage/common/storage-quickstart-create-account?tabs=portal) létrehozásához. Másik lehetőségként válassza a **Meglévő használata** lehetőséget, majd a legördülő listából válasszon egy meglévő tárfiókot. A tárfiók megadása kötelező, hiszen a projektösszetevőket és a futtatási előzményadatokat tárolja. 
+   Tárfiók | _Egyedi név_ | Válassza az **Új létrehozása** elemet, és adjon meg egy nevet az [Azure Storage-fiók](https://docs.microsoft.com/en-us/azure/storage/common/storage-quickstart-create-account?tabs=portal) létrehozásához. A név 3–24 karakter hosszúságú lehet, és csak alfanumerikus karaktereket tartalmazhat. Másik lehetőségként válassza a **Meglévő használata** lehetőséget, majd a legördülő listából válasszon egy meglévő tárfiókot. A tárfiók megadása kötelező, hiszen a projektösszetevőket és a futtatási előzményadatokat tárolja. 
    A Kísérletezés-fiók munkaterülete | IrisGarden<br/>(az oktatóanyagokban használt név) | Adja meg a fiók munkaterületének nevét. A név 2–32 karakter hosszúságú lehet. A név csak alfanumerikus és kötőjel (-) karaktert tartalmazhat. Ez a munkaterület tartalmazza a kísérletek létrehozásához, kezeléséhez és közzétételéhez szükséges eszközöket.
    A munkaterülethez társított tulajdonos | _Saját fiók_ | Válassza ki a saját fiókját a munkaterület tulajdonosaként.
    Modellkezelési fiók létrehozása | **bejelölve** |Hozzon létre egy modellkezelési fiókot, hogy ez az erőforrás elérhető legyen, amikor valós idejű webszolgáltatásként szeretné üzembe helyezni és felügyelni a modelleket. <br/><br/>Ez nem kötelező, de javasoljuk, hogy a kísérletezési fiókkal egy időben hozza létre a modellkezelési fiókot.
@@ -78,7 +78,7 @@ Azure Machine Learning-fiókokat az Azure Portalon hozhat létre:
 
    ![A Machine Learning-kísérletezési fiók konfigurálása](media/quickstart-installation/portal-create-experimentation-button.png)
 
-   A fiók létrehozása pár percet is igénybe vehet. Az üzembehelyezési folyamat állapotának ellenőrzéséhez kattintson az Azure Portal eszköztárában található harang ikonra.
+   A fiók létrehozása pár percet is igénybe vehet. Az üzembehelyezési folyamat állapotának ellenőrzéséhez kattintson az Azure Portal eszköztárában található Értesítések ikonra (harang).
    
    ![Az Azure Portal értesítései](media/quickstart-installation/portal-notification.png)
 
@@ -110,21 +110,20 @@ Az Azure Machine Learning Workbench Windows és macOS rendszeren érhető el. It
    
    | |Az Azure Machine Learning Workbench telepítési útvonala|
    |--------|------------------------------------------------|
-   |Windows|C:\Users\<felhasználó>\AppData\Local\AmlWorkbench|
+   |Windows|C:\Users\\<felhasználó\>\AppData\Local\AmlWorkbench|
    |macOS|/Applications/Azure ML Workbench.app|
 
-   A telepítő letöltötte és beállította az összes szükséges függőséget, köztük a Python-, a Miniconda- és az egyéb kapcsolódó kódtárakat.    Ez a telepítési csomag tartalmazza az Azure többplatformos parancssori eszközét (Azure CLI) is.
+   A telepítő letölti és beállítja az összes szükséges függőséget, köztük a Python-, a Miniconda- és az egyéb kapcsolódó kódtárakat. Ez a telepítési csomag tartalmazza az Azure többplatformos parancssori eszközét (Azure CLI) is.
 
-  
 1. A Workbench elindításához válassza a **Workbench indítása** gombot a telepítő utolsó lapján. 
 
-   Ha már bezárta a telepítőt, az sem jelent problémát, ekkor tegye a következőket: 
+   Ha már bezárta a telepítőt:
    + Windowsban használja a **Machine Learning Workbench** asztali parancsikonját. 
    + MacOS rendszeren válassza a Launchpaden az **Azure ML Workbench** elemet.
 
-1. Az első képernyőn válassza a **Bejelentkezés** elemet az Azure Machine Learning Workbenchben való hitelesítéshez. A kísérletezési és a modellkezelési fiókok létrehozásához ugyanazokat a hitelesítő adatokat használja, amelyet az Azure Portalon is használt. 
+1. Az első képernyőn válassza a **Bejelentkezés Microsoft-fiókkal** elemet az Azure Machine Learning Workbenchben való hitelesítéshez. A kísérletezési és a modellkezelési fiókok létrehozásához ugyanazokat a hitelesítő adatokat használja, amelyet az Azure Portalon is használt. 
 
-   Miután bejelentkezett, a Workbench az Azure-előfizetésben található első kísérletezési fiókot használja.  A Workbench az első észlelt kísérletezési fiókot használja, és megjeleníti a fiókhoz tartozó összes munkaterületet és projektet. 
+   Miután bejelentkezett, a Workbench az Azure-előfizetésben elsőként észlelt kísérletezési fiókot használja, és megjeleníti a fiókhoz tartozó összes munkaterületet és célprojektet. 
 
    >[!TIP]
    > Másik kísérletezési fiókra is válthat a Workbench alkalmazás ablakának bal alsó sarkában lévő ikonnal.
@@ -133,7 +132,7 @@ Az Azure Machine Learning Workbench Windows és macOS rendszeren érhető el. It
 
 Az Azure Machine Learningben a projektek a problémák megoldása érdekében végzett munka logikai tárolói. Egyetlen, a helyi lemezen lévő mappára vannak leképezve, és tetszőleges számú fájl vagy almappa adható hozzájuk. 
 
-Itt az [Iris flower adathalmazt](https://en.wikipedia.org/wiki/iris_flower_data_set) tartalmazó sablonnal hozunk létre egy új Workbench-projektet. Az ezen rövid útmutatót követő oktatóanyagok ezekre az adatokra támaszkodva készítenek olyan modellt, amely előrejelzi az írisz típusát néhány fizikai jellemzője alapján.  
+Itt az [Iris flower adathalmazt](https://en.wikipedia.org/wiki/Iris_flower_data_set) tartalmazó sablonnal hozunk létre egy új Workbench-projektet. Az ezen rövid útmutatót követő oktatóanyagok ezekre az adatokra támaszkodva készítenek olyan modellt, amely előrejelzi az írisz típusát néhány fizikai jellemzője alapján.  
 
 1. Amikor meg van nyitva az Azure Machine Learning Workbench, válassza a **PROJEKTEK** panelen lévő pluszjelet (+), majd az **Új projekt** lehetőséget.  
 
@@ -146,8 +145,8 @@ Itt az [Iris flower adathalmazt](https://en.wikipedia.org/wiki/iris_flower_data_
    Projektnév | myIris |Adjon meg egy egyedi nevet a fiók azonosításához. Használhatja a saját nevét, vagy egy részleg vagy projekt nevét is. Olyasmit adjon meg, amivel a legjobban azonosítható a kísérlet. A név 2–32 karakter hosszúságú lehet. A név csak alfanumerikus és kötőjel (-) karaktert tartalmazhat. 
    Projektkönyvtár | c:\Temp\ | Adja meg a könyvtárat, amelyben a projekt létrejött.
    Projekt leírása | _hagyja üresen_ | A projekt leírására szolgáló mező, amelyet nem kötelező kitölteni.
-   Visualstudio.com |_hagyja üresen_ | Nem kötelező kitölteni. Dönthet úgy, hogy egy projektet Git-adattárhoz társít a Visual Studio Team Servicesben a forráskezelés és az együttműködés megkönnyítése érdekében. [További tudnivalókat erről a lehetőségről itt talál](https://docs.microsoft.com/en-us/azure/machine-learning/preview/using-git-ml-project#step-3-set-up-a-machine-learning-project-and-git-repo). 
-   Munkaterület | IrisGarden (ha van) | Válasszon egy olyan munkaterületet, amelyet a kísérletezési fiókhoz hozott létre az Azure Portalon. <br/>Ha követte a rövid útmutatót, rendelkeznie kell egy IrisGarden nevű munkaterülettel. Ha nincs ilyen munkaterülete, válassza azt, amelyet a kísérletezési fiók létrehozásakor hozott létre, vagy válasszon egy tetszőleges munkaterületet.
+   Visualstudio.com GIT-adattár URL-címe |_hagyja üresen_ | Nem kötelező kitölteni. Dönthet úgy, hogy egy projektet Git-adattárhoz társít a Visual Studio Team Servicesben a forráskezelés és az együttműködés megkönnyítése érdekében. [További tudnivalókat erről a lehetőségről itt talál](https://docs.microsoft.com/en-us/azure/machine-learning/preview/using-git-ml-project#step-3-set-up-a-machine-learning-project-and-git-repo). 
+   Kiválasztott munkaterület | IrisGarden (ha van) | Válasszon egy olyan munkaterületet, amelyet a kísérletezési fiókhoz hozott létre az Azure Portalon. <br/>Ha követte a rövid útmutatót, rendelkeznie kell egy IrisGarden nevű munkaterülettel. Ha nincs ilyen munkaterülete, válassza azt, amelyet a kísérletezési fiók létrehozásakor hozott létre, vagy válasszon egy tetszőleges munkaterületet.
    Projektsablon | Írisz osztályozása | A sablonok olyan szkripteket és adatokat tartalmaznak, amelyek elősegítik a termék különböző funkcióinak megismerését. Ez a sablon azokat a szkripteket és adatokat tartalmazza, amelyekre szüksége van ehhez a rövid bemutatóhoz, illetve a dokumentációs webhelyen található egyéb oktatóanyagokhoz. 
 
    ![Új projekt](media/tutorial-classifying-iris/new_project.png)
@@ -159,7 +158,7 @@ Itt az [Iris flower adathalmazt](https://en.wikipedia.org/wiki/iris_flower_data_
 
 ## <a name="run-a-python-script"></a>Python-szkriptek futtatása
 
-Most futtathatja az **iris_sklearn.py** szkriptet a helyi számítógépen. Alapértelmezés szerint ez a szkript szerepel az **Írisz osztályozása** projektsablonban. A szkript a népszerű [scikit-learn](http://scikit-learn.org/stable/index.html) Python-kódtár [logisztikai regressziós](https://en.wikipedia.org/wiki/logistic_regression) algoritmusát használja a modell létrehozásához.
+Most futtathatja az **iris_sklearn.py** szkriptet a helyi számítógépen. Alapértelmezés szerint ez a szkript szerepel az **Írisz osztályozása** projektsablonban. A szkript a népszerű [scikit-learn](http://scikit-learn.org/stable/index.html) Python-kódtár segítségével hozza létre a [logisztikai regressziós](https://en.wikipedia.org/wiki/Logistic_regression) modellt.
 
 1. A **Projekt-irányítópult** oldal tetején lévő parancssávban válassza a **helyi** elemet végrehajtási célként, majd az **iris_sklearn.py** szkriptet futtatandó szkriptként. Ezek az értékek alapértelmezés szerint előre ki vannak választva. 
 
@@ -167,21 +166,21 @@ Most futtathatja az **iris_sklearn.py** szkriptet a helyi számítógépen. Alap
 
    ![Parancssáv](media/quickstart-installation/run_control.png)
 
-1. Az **Argumentumok** szövegmezőbe írja be a következőt: **0,01**. Ezt az értéket használja a szkriptkód a regularizációs arány beállításához. Az érték használatával a lineáris regressziós modell tanításának módja konfigurálható. 
+1. Az **Argumentumok** szövegmezőbe írja be a következőt: **0,01**. Ez a szám megfelel a regularizációs aránynak, és a szkriptben a logisztikai regressziós modell konfigurálásához használatos. 
 
-1. Válassza a **Futtatás** parancsot a szkript végrehajtásának megkezdéséhez a számítógépen. Az **iris_sklearn** feladat azonnal megjelenik a jobb oldali **Feladatok** panelen, ahol figyelemmel kísérheti a szkript végrehajtását.
+1. Válassza a **Futtatás** parancsot a szkript végrehajtásának megkezdéséhez a számítógépen. Az **iris_sklearn.py** feladat azonnal megjelenik a jobb oldali **Feladatok** panelen, ahol figyelemmel kísérheti a szkript végrehajtását.
 
    Gratulálunk! Sikeresen futtatott egy Python-szkriptet az Azure Machine Learning Workbenchben.
 
-1. Többször ismételje meg a 2–3. lépéseket különböző, **0,001** és **10** közötti argumentumértékekkel. Mindegyik végrehajtási feladat megjelenik a **Feladatok** panelen.
+1. Többször ismételje meg a 2–3. lépést különböző, **0,001** és **10** közötti argumentumértékekkel (használhatja például a 10 hatványait). Mindegyik futtatás megjelenik a **Feladatok** panelen.
 
-1. A futtatási előzmények megvizsgálásához válassza a **Futtatások** nézetet, majd az **iris_sklearn.py** fájlt a futtatások listájában a szkript futtatási előzményeinek megjelenítéséhez. 
+1. A futtatási előzmények megvizsgálásához válassza a **Futtatások** nézetet, majd az **iris_sklearn.py** fájlt a futtatások listájában. 
 
    ![Futtatási előzmények irányítópultja](media/quickstart-installation/run_view.png)
 
-   Ez az **iris_sklearn.py** összes futtatását megjeleníti. A futtatási előzmények irányítópultján a kiemelt metrikák, néhány alapértelmezett diagram és az egyes futtatások metrikáinak listája látható. 
+   Ez a nézet az **iris_sklearn.py** összes futtatását megjeleníti. A futtatási előzmények irányítópultján a kiemelt metrikák, néhány alapértelmezett diagram és az egyes futtatások metrikáinak listája látható. 
 
-1. A nézet testreszabható rendezéssel, szűréssel és a konfiguráció a fogaskerék vagy szűrő ikonokkal való módosításával.
+1. A nézet testreszabható rendezéssel, szűréssel és a konfiguráció fogaskerék és szűrő ikonokkal való módosításával.
 
    ![Mérőszámok és gráfok](media/quickstart-installation/run_dashboard.png)
 
@@ -191,9 +190,9 @@ Most futtathatja az **iris_sklearn.py** szkriptet a helyi számítógépen. Alap
 
 Az Azure Machine Learning parancssori felülete (CLI) is telepítve van. A parancssori felületen elérheti és kezelheti az Azure Machine Learning-szolgáltatásokat az `az` parancsokkal, és a teljes adatelemzési munkafolyamathoz szükséges összes feladatot elvégezheti. [Részletek](tutorial-iris-azure-cli.md)
 
-Az azure-cli-ml parancssori felületét a Workbench eszköztáráról indíthatja el a **Fájl --> Parancssor megnyitása** paranccsal.
+Az Azure Machine Learning parancssori felületét a Workbench eszköztáráról indíthatja el a **Fájl → Parancssor megnyitása** paranccsal.
 
-Az azure-cli-ml parancssori felületén használható parancsokkal kapcsolatban a --help argumentummal kaphat segítséget.
+Az Azure Machine Learning parancssori felületén használható parancsokkal kapcsolatban a --help argumentummal kaphat segítséget.
 
 ```az ml --help```
 
@@ -202,7 +201,7 @@ Az azure-cli-ml parancssori felületén használható parancsokkal kapcsolatban 
 [!INCLUDE [aml-delete-resource-group](../../../includes/aml-delete-resource-group.md)]
 
 ## <a name="next-steps"></a>További lépések
-Létrehozta a szükséges Azure Machine Learning-fiókokat, és telepítette az Azure Machine Learning Workbench alkalmazást. Az alkalmazásban létrehozott egy projektet, futtatott egy szkriptet, és megvizsgálta a szkript futtatási előzményeit.
+Létrehozta a szükséges Azure Machine Learning-fiókokat, és telepítette az Azure Machine Learning Workbench alkalmazást. Létrehozott egy projektet is, futtatott egy szkriptet, és megvizsgálta a szkript futtatási előzményeit.
 
 A munkafolyamat behatóbb megismeréséért, többek között az íriszmodell webszolgáltatásként való üzembe helyezéséhez kövesse a teljes *Írisz osztályozása* oktatóanyagot. Az oktatóanyag részletes útmutatásokat tartalmaz az [adatok előkészítésével](tutorial-classifying-iris-part-1.md), a [kísérletezéssel](tutorial-classifying-iris-part-2.md) és a [modellkezeléssel](tutorial-classifying-iris-part-3.md) kapcsolatban. 
 
@@ -210,4 +209,4 @@ A munkafolyamat behatóbb megismeréséért, többek között az íriszmodell we
 > [Oktatóanyag: Írisz osztályozása (1. rész)](tutorial-classifying-iris-part-1.md)
 
 >[!NOTE]
-> Bár a modellkezelési fiók már létrejött, a környezet még nincs beállítva a webszolgáltatások üzembe helyezéséhez.  Itt megtudhatja, hogyan állíthatja be az [üzembehelyezési környezetet](deployment-setup-configuration.md).
+> Bár a modellkezelési fiókot már létrehozta, a környezet még nincs beállítva a webszolgáltatások üzembe helyezéséhez. Itt megtudhatja, hogyan állíthatja be az [üzembehelyezési környezetet](deployment-setup-configuration.md).

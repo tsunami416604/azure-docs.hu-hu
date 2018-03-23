@@ -1,21 +1,21 @@
 ---
-title: "Adatok előkészítése az Írisz osztályozása oktatóanyaghoz az Azure Machine Learning-szolgáltatásokban (előzetes verzió) | Microsoft Docs"
-description: "Ez a részletes oktatóanyag bemutatja, hogyan használhatók ki teljeskörűen az (előzetes verziójú) Azure Machine Learning-szolgáltatások. Ez az 1. rész, amely az adatok előkészítését ismerteti."
+title: Adatok előkészítése az Írisz osztályozása oktatóanyaghoz az Azure Machine Learning-szolgáltatásokban (előzetes verzió) | Microsoft Docs
+description: Ez a részletes oktatóanyag bemutatja, hogyan használhatók ki teljeskörűen az (előzetes verziójú) Azure Machine Learning-szolgáltatások. Ez az 1. rész, amely az adatok előkészítését ismerteti.
 services: machine-learning
 author: hning86
 ms.author: haining, j-martens
 manager: mwinkle
-ms.reviewer: jmartens, jasonwhowell, mldocs
+ms.reviewer: jmartens, jasonwhowell, mldocs, gcampanella
 ms.service: machine-learning
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 02/28/2018
-ms.openlocfilehash: 12cba3d4acf0e6018cea6e76df9208bcf380d976
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.date: 3/7/2018
+ms.openlocfilehash: caddfff329d0e8f4c4007386b377ea56a51249a5
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="tutorial-classify-iris-part-1---preparing-the-data"></a>Oktatóanyag: Írisz osztályozása, 1. rész – Az adatok előkészítése
 
@@ -60,8 +60,8 @@ Ha követte a [telepítés és indítás rövid útmutatójában](quickstart-ins
    Projektnév | myIris |Adjon meg egy egyedi nevet a fiók azonosításához. Használhatja a saját nevét, vagy egy részleg vagy projekt nevét is. Olyasmit adjon meg, amivel a legjobban azonosítható a kísérlet. A név 2–32 karakter hosszúságú lehet. A név csak alfanumerikus és kötőjel (-) karaktert tartalmazhat. 
    Projektkönyvtár | c:\Temp\ | Adja meg a könyvtárat, amelyben a projekt létrejött.
    Projekt leírása | _hagyja üresen_ | A projekt leírására szolgáló mező, amelyet nem kötelező kitölteni.
-   Visualstudio.com |_hagyja üresen_ | Nem kötelező kitölteni. Egy projektet egy Git-adattárhoz társíthat a Visual Studio Team Servicesben a forráskezelés és az együttműködés megkönnyítése érdekében. [További tudnivalókat erről a lehetőségről itt talál](https://docs.microsoft.com/en-us/azure/machine-learning/preview/using-git-ml-project#step-3-set-up-a-machine-learning-project-and-git-repo). 
-   Munkaterület | IrisGarden (ha van) | Válasszon egy olyan munkaterületet, amelyet a kísérletezési fiókhoz hozott létre az Azure Portalon. <br/>Ha követte a rövid útmutatót, rendelkeznie kell egy IrisGarden nevű munkaterülettel. Ha nincs ilyen munkaterülete, válassza azt, amelyet a kísérletezési fiók létrehozásakor hozott létre, vagy válasszon egy tetszőleges munkaterületet.
+   Visualstudio.com GIT-adattár URL-címe |_hagyja üresen_ | Nem kötelező kitölteni. Egy projektet egy Git-adattárhoz társíthat a Visual Studio Team Servicesben a forráskezelés és az együttműködés megkönnyítése érdekében. [További tudnivalókat erről a lehetőségről itt talál](https://docs.microsoft.com/en-us/azure/machine-learning/preview/using-git-ml-project#step-3-set-up-a-machine-learning-project-and-git-repo). 
+   Kiválasztott munkaterület | IrisGarden (ha van) | Válasszon egy olyan munkaterületet, amelyet a kísérletezési fiókhoz hozott létre az Azure Portalon. <br/>Ha követte a rövid útmutatót, rendelkeznie kell egy IrisGarden nevű munkaterülettel. Ha nincs ilyen munkaterülete, válassza azt, amelyet a kísérletezési fiók létrehozásakor hozott létre, vagy válasszon egy tetszőleges munkaterületet.
    Projektsablon | Írisz osztályozása | A sablonok olyan szkripteket és adatokat tartalmaznak, amelyek elősegítik a termék különböző funkcióinak megismerését. Ez a sablon azokat a szkripteket és adatokat tartalmazza, amelyekre szüksége van ehhez a rövid bemutatóhoz, illetve a dokumentációs webhelyen található egyéb oktatóanyagokhoz. 
 
    ![Új projekt](media/tutorial-classifying-iris/new_project.png)
@@ -77,7 +77,7 @@ Következő lépésként felderítheti az adatokat, és megkezdheti az előkész
 
 Az adatelőkészítési csomag később átadható egy futtatókörnyezetnek, például a local-C#/CoreCLR-nek, a Scala/Sparknak vagy a Scala/HDI-nek. 
 
-1. Válassza ki a mappaikont a fájlnézet, majd az **iris.csv** fájlt a fájl megnyitásához.  
+1. Válassza ki a mappaikont a Fájlok nézet megnyitásához, majd az **iris.csv** fájlt a tartalma megjelenítéséhez.
 
    A fájl egy 5 oszlopból és 50 sorból álló táblázatot tartalmaz. Négy oszlop számokat tartalmaz. Az ötödik egy karakterláncokat tartalmazó céloszlop. Egyik oszlopnak sincs fejlécneve.
 
@@ -90,28 +90,25 @@ Az adatelőkészítési csomag később átadható egy futtatókörnyezetnek, p�
 
    ![Az Adatnézet az Azure Machine Learning Workbenchben](media/tutorial-classifying-iris/data_view.png)
 
-3. Válassza a **Szövegfájlok (*.csv, .json, .txt., …)** lehetőséget, és kattintson a **Tovább** gombra.
+3. Válassza a **Szövegfájlok (\*.csv, \*.json, \*.txt., …)** lehetőséget, és kattintson a **Tovább** gombra.
    ![Adatforrás az Azure Machine Learning Workbenchben](media/tutorial-classifying-iris/data-source.png)
-   
 
-4. Keresse meg az **iris.csv** fájlt, majd kattintson a **Tovább** gombra.  
+4. Keresse meg az **iris.csv** fájlt, majd kattintson a **Befejezés** gombra. Így a paraméterek (például az elválasztó- és adattípusok) alapértelmezett értékei lesznek használatban.
 
    >[!IMPORTANT]
    >Győződjön meg arról, hogy az **iris.csv** fájlt választja ki a gyakorlathoz az aktuális projektmappából. Máskülönben a későbbi lépések sikertelenek lehetnek.
  
    ![Válassza ki az iris elemet](media/tutorial-classifying-iris/select_iris_csv.png)
    
-5. Ne módosítsa az alapértelmezett értékeket, és kattintson a **Befejezés** gombra.
-
-6. Létrejön egy új fájl **iris-1.dsource** néven. A fájl neve egyedi, és tartalmazza a „-1” karakterláncot, mert a projektben már van egy nem számozott, **iris.dsource** nevű fájl.  
+5. Létrejön egy új fájl **iris-1.dsource** néven. A fájl neve egyedi, és tartalmazza a „-1” karakterláncot, mert a projektben már van egy nem számozott, **iris.dsource** nevű fájl.  
 
    Megnyílik a fájl, és megjelennek az adatok. A rendszer az **1.** és **5. oszlop** között automatikusan hozzáadja az oszlopfejlécet az adatkészlethez. Görgessen le a táblázat aljára. Itt az adatkészlet utolsó sora üres. Ez azért van, mert a CSV-fájl tartalmaz egy extra sortörést.
 
    ![Iris adatnézet](media/tutorial-classifying-iris/iris_data_view.png)
 
-1. Válassza a **Mérőszámok** gombot. Hisztogramok jönnek létre és jelennek meg a képernyőn.
+1. Válassza a **Mérőszámok** gombot. Hisztogramok jönnek létre és jelennek meg.
 
-   Az **Adat** gombra kattintva válthat vissza az adatnézetbe. 
+   Az **Adat** gombra kattintva válthat vissza az adatnézetre.
    
    ![Iris adatnézet](media/tutorial-classifying-iris/iris_data_view_metrics.png)
 
@@ -121,7 +118,7 @@ Az adatelőkészítési csomag később átadható egy futtatókörnyezetnek, p�
 
 8. Az **Előkészítés** gombra kattintva kezdheti el az adatelőkészítési csomag létrehozását. Megnyílik az **Előkészítés** párbeszédpanel. 
 
-   A mintaprojekt alapértelmezés szerint tartalmaz egy **iris.dprep** nevű adatelőkészítési fájlt. 
+   A mintaprojekt tartalmaz egy **iris.dprep** nevű adatelőkészítési fájlt, amely alapértelmezés szerint ki van választva. 
 
    ![Iris adatnézet](media/tutorial-classifying-iris/prepare.png)
 
@@ -129,7 +126,7 @@ Az adatelőkészítési csomag később átadható egy futtatókörnyezetnek, p�
 
    ![Iris adatnézet](media/tutorial-classifying-iris/prepare_new.png)
 
-1. Adjon meg új értéket a csomag neveként (**iris-1**), majd válassza az **OK** gombot.
+1. Adjon meg egy új értéket a csomag neveként (**iris-1**), majd válassza az **OK** gombot.
 
    Létrejön egy új adat-előkészítési csomag **iris-1.dprep** néven, és megnyílik az adatelőkészítés-szerkesztőben.
 
@@ -148,7 +145,7 @@ Az adatelőkészítési csomag később átadható egy futtatókörnyezetnek, p�
    1. Kattintson a jobb gombbal a kiválasztásához. 
    1. Válassza az **Értékek száma** elemet a legördülő menüből. 
 
-   Megnyílik a **Vizsgálók** panel az adatok alatt. Megjelenik egy négysávos hisztogram. A céloszlop három különféle értékkel rendelkezik: **Iris_virginica**, **Iris_versicolor**, illetve **Iris-setosa**, és van még egy **(null)** érték.
+   Megnyílik a **Vizsgálók** panel az adatok alatt. Megjelenik egy négysávos hisztogram. A céloszlop négy különféle értékkel rendelkezik: **Iris-virginica**, **Iris-versicolor**, **Iris-setosa**, valamint egy **(null)** érték.
 
    ![Az Értékek számának kiválasztása](media/tutorial-classifying-iris/value_count.png)
 
@@ -160,15 +157,15 @@ Az adatelőkészítési csomag később átadható egy futtatókörnyezetnek, p�
 
    ![Null értékek kiszűrése](media/tutorial-classifying-iris/filter_out2.png)
 
-1. Figyelje meg a **LÉPÉSEK** panelen részletezett egyes adatelőkészítési lépéseket. Amikor átnevezi az oszlopokat és kiszűri a nullértékű sorokat, a rendszer minden műveletet adat-előkészítési lépésként rögzít. Az egyes lépések szerkesztésével módosíthatja a beállításokat, illetve átrendezheti vagy eltávolíthatja a lépéseket.
+1. Figyelje meg a **LÉPÉSEK** panelen részletezett egyes adatelőkészítési lépéseket. Amikor átnevezi az oszlopokat és kiszűri a nullértékű sorokat, a rendszer minden műveletet adat-előkészítési lépésként rögzít. Az egyes lépések szerkesztésével módosíthatja azok beállításait, illetve átrendezheti vagy eltávolíthatja a lépéseket.
 
    ![Lépések](media/tutorial-classifying-iris/steps.png)
 
-1. Zárja be az adatelőkészítés-szerkesztőt. Válassza az x ikont a diagram ikonnal ellátott **iris-1** fülön a lap bezárásához. A rendszer automatikusan menti a munkáját az **Adat-előkészítések** fejléc alatt látható **iris-1.dprep** fájlban.
+1. Zárja be az adatelőkészítés-szerkesztőt. Válassza az **x** ikont a diagramikonnal ellátott **iris-1** lapon a lap bezárásához. A rendszer automatikusan menti a munkáját az **Adat-előkészítések** fejléc alatt látható **iris-1.dprep** fájlban.
 
    ![Bezárás](media/tutorial-classifying-iris/close.png)
 
-## <a name="generate-pythonpyspark-code-to-invoke-a-data-preparation-package"></a>Python-/PySpark-kód létrehozása az adatelőkészítési csomagok meghívásához
+## <a name="generate-pythonpyspark-code-to-invoke-a-data-preparation-package"></a>Python-/PySpark-kód létrehozása az adat-előkészítési csomagok meghívásához
 
  Az adatelőkészítési csomagok kimenetét közvetlenül megvizsgálhatja a Pythonban vagy egy Jupyter notebookban. A csomagok több futtatókörnyezetben is végrehajthatók, beleértve a helyi Pythont, a Sparkot (a Dockerrel együtt) és a HDInsight-környezetet. 
 
@@ -197,7 +194,7 @@ Az adatelőkészítési csomag később átadható egy futtatókörnyezetnek, p�
    df.head(10)
    ```
 
-   Attól függően, hogy a kód milyen környezetben fut, a `df` az adatkerettípust jelöli. 
+   Attól függően, hogy a kód milyen környezetben fut, a `df` más és más DataFrame-típust jelöl:
    + Python-futtatókörnyezetben a rendszer [pandas Dataframe](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html)-et használ.
    + Spark-környezetben a [Spark DataFrame](https://spark.apache.org/docs/latest/sql-programming-guide.html) van használatban. 
    

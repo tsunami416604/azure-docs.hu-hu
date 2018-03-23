@@ -1,8 +1,8 @@
 ---
-title: "Regisztrálás az Azure Cost Managementbe CSP-partneradatokkal | Microsoft Docs"
-description: "Regisztrálhat az Azure Cost Managementbe CSP-partneradatokkal a Cloudynen keresztül."
+title: Regisztrálás az Azure Cost Managementbe CSP-partneradatokkal | Microsoft Docs
+description: Az Azure Cost Managementbe CSP-partneradataival regisztrálhat.
 services: cost-management
-keywords: 
+keywords: ''
 author: bandersmsft
 ms.author: banders
 ms.date: 01/30/2018
@@ -10,15 +10,15 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.service: cost-management
 manager: carmonm
-ms.openlocfilehash: 0e5e247182335b88f109aa6624a40bc782975b97
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: cf4fb7e82529388a030fd37da9469bf17c8dc343
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="register-with-the-csp-partner-program-and-view-cost-data"></a>Regisztrálás a CSP partnerprogrammal és a költségadatok megtekintése
 
-CSP-partnerként regisztrálhat az Azure Cost Managementbe a Cloudynen keresztül. A regisztráció hozzáférést biztosít a Cloudyn portálhoz. Ez a rövid útmutató részletesen ismerteti a Cloudyn próbaverziójára szóló előfizetés létrehozásához és a Cloudyn-portálra való bejelentkezéshez szükséges folyamatot. Azt is bemutatja, hogyan tekintheti meg azonnal a költségadatokat.
+CSP-partnerként regisztrálhat az Azure Cost Managementbe. A regisztráció hozzáférést biztosít a Cloudyn portálhoz. Ez a rövid útmutató részletesen ismerteti a Cloudyn próbaverziójára szóló előfizetés létrehozásához és a Cloudyn-portálra való bejelentkezéshez szükséges folyamatot. Azt is bemutatja, hogyan tekintheti meg azonnal a költségadatokat.
 
 
 >[!NOTE]
@@ -71,7 +71,7 @@ A közvetett CSP-partnerek bejelentkezhetnek a Cloudyn portálra a számukra lé
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban a CSP-adatokat használta arra, hogy regisztráljon a Cost Management szolgáltatásra. A Cloudyn portálra is bejelentkezett, és elkezdte a költségadatok áttekintését. Ha bővebb információra van szüksége a Cloudynen keresztül használt Azure Cost Managementről, lépjen tovább a Cost Management oktatóanyagára.
+Ebben a rövid útmutatóban a CSP-adatokat használta arra, hogy regisztráljon a Cost Management szolgáltatásra. A Cloudyn portálra is bejelentkezett, és elkezdte a költségadatok áttekintését. Ha bővebb információra van szüksége az Azure Cost Managementről, lépjen tovább a Cost Management oktatóanyagára.
 
 > [!div class="nextstepaction"]
 > [A használat és a költségek áttekintése](./tutorial-review-usage.md)

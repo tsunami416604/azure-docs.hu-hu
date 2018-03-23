@@ -1,8 +1,8 @@
 ---
-title: "Az Azure Data Lake Analytics használatának első lépései az Azure PowerShell-lel | Microsoft Docs"
-description: "Az Azure PowerShell használata egy Data Lake Analytics-fiók létrehozásához, egy Data Lake Analytics-feladat létrehozására U-SQL használatával, valamint a feladat elküldésére. "
+title: Az Azure Data Lake Analytics használatának első lépései az Azure PowerShell-lel | Microsoft Docs
+description: 'Az Azure PowerShell használata egy Data Lake Analytics-fiók létrehozásához, egy Data Lake Analytics-feladat létrehozására U-SQL használatával, valamint a feladat elküldésére. '
 services: data-lake-analytics
-documentationcenter: 
+documentationcenter: ''
 author: saveenr
 manager: saveenr
 editor: cgronlun
@@ -13,12 +13,12 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 05/04/2017
-ms.author: edmaca
-ms.openlocfilehash: 832a859e70e382eb2eeb41560d1b880f7b87de53
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.author: saveenr
+ms.openlocfilehash: f37a4563a758d442760f4a6be3c11bb9a9ddfc28
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-azure-powershell"></a>Az Azure Data Lake Analytics használatának első lépései az Azure PowerShell-lel
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
@@ -129,7 +129,7 @@ Töltse le a kimeneti fájlt.
 Export-AdlStoreItem -Account $adls -Path "/data.csv" -Destination "C:\data.csv"
 ```
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 * Ha ugyanezt az oktatóanyagot más eszközök használatával szeretné megtekinteni, kattintson az oldal tetején található lapválasztókra.
 * A U-SQL nyelv megismerése: [Get started with Azure Data Lake Analytics U-SQL language](data-lake-analytics-u-sql-get-started.md) (Ismerkedés az Azure Data Lake Analytics U-SQL nyelvével).
 * Felügyeleti feladatok: [Manage Azure Data Lake Analytics using Azure Portal](data-lake-analytics-manage-use-portal.md) (Az Azure Data Lake Analytics kezelése az Azure Portallal).

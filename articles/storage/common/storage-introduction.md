@@ -1,24 +1,18 @@
 ---
-title: "Bevezetés az Azure Storage használatába | Microsoft Docs"
-description: "Bevezetés az Azure Storage, a Microsoft felhőalapú adattároló szolgáltatásának használatába."
+title: Bevezetés az Azure Storage használatába | Microsoft Docs
+description: Bevezetés az Azure Storage, a Microsoft felhőalapú adattároló szolgáltatásának használatába.
 services: storage
-documentationcenter: 
 author: tamram
-manager: timlt
-editor: tysonn
-ms.assetid: a4a1bc58-ea14-4bf5-b040-f85114edc1f1
+manager: jeconnoc
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/21/2018
+ms.date: 03/06/2018
 ms.author: tamram
-ms.openlocfilehash: 088a58bf5bfe3736a158d2384c69cb5928b53556
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 799636d0a702407be06bbe8cebae552b34d860db
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="introduction-to-microsoft-azure-storage"></a>A Microsoft Azure Storage bemutatása
 
@@ -137,7 +131,7 @@ A Storage-szolgáltatásokban két alapszintű titkosítási módszer áll rende
 
 Az Azure Storage Service Encryption (SSE) segít az adatok biztonságos megőrzésében inaktív állapotban a vállalat által előírt biztonsági és megfelelőségi követelmények kielégítése érdekében. Ezzel a funkcióval az Azure Storage automatikusan titkosítja az adatokat a tárolás előtt, és visszafejti őket a lekérés előtt. A titkosítás, visszafejtés, és kulcskezelés teljes mértékben átlátható a felhasználók számára.
 
-A Storage Service Encryption (SSE) engedélyezhető a Blob-tárterülethez vagy az Azure Files szolgáltatáshoz (előzetes verzió). Engedélyezésével az adott szolgáltatásba írt összes adat titkosítva lesz az írást megelőzően. Az adatok olvasásakor a rendszer visszafejti az adatokat, mielőtt visszaadná azokat.
+Az SSE automatikusan titkosítja minden teljesítményszint (Standard és Prémium), minden üzembehelyezési modell (Azure Resource Manager és klasszikus) és minden Azure Storage-szolgáltatás (Blob, Queue, Table és File) adatait. Az SSE nem befolyásolja az Azure Storage teljesítményét.
 
 Az inaktív adatok SSE-titkosításával kapcsolatos további információkért látogasson el ide: [Azure Storage szolgáltatás inaktívadat-titkosítása](storage-service-encryption.md).
 

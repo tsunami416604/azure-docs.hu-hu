@@ -1,13 +1,13 @@
 ---
-title: "Az Azure CLI-parancsfájlt minták – hozzon létre egy Docker-állomás |} Microsoft Docs"
-description: "Az Azure CLI-parancsfájlt minták – hozzon létre egy Docker-állomás"
+title: Azure CLI-példaszkript – Docker-gazdagép létrehozása | Microsoft Docs
+description: Azure CLI-példaszkript – Docker-gazdagép létrehozása
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: neilpeterson
 manager: timlt
 editor: tysonn
 tags: azure-service-management
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: azurecli
 ms.topic: sample
@@ -16,46 +16,46 @@ ms.workload: infrastructure
 ms.date: 03/15/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: c1e0be0e305ba4d53d8e26c55a92b63e1291171d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: MT
+ms.openlocfilehash: fbb6c39d2e29678130dd8f495a1bf552bf89d9e4
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/09/2018
 ---
-# <a name="create-a-vm-with-docker"></a>Hozzon létre egy virtuális gép Docker
+# <a name="create-a-vm-with-docker"></a>Virtuális gép létrehozása a Dockerrel
 
-Ezt a parancsfájlt hoz létre egy virtuális gép Docker engedélyezve van, és elindítja egy Docker-tároló NGINX futtató. A parancsfájl futtatása után az Azure virtuális gép teljes Tartományneve keresztül érheti el az NGINX-webkiszolgálón. 
+Ez a szkript létrehoz egy virtuális gépet, amelyen engedélyezve van a Docker, és elindít egy NGINX-et futtató Docker-tárolót. A szkript futtatása után az Azure-beli virtuális gép teljes tartománynevén keresztül érheti el az NGINX-webkiszolgálót. 
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="sample-script"></a>Mintaparancsfájl
+## <a name="sample-script"></a>Példaszkript
 
 [!code-azurecli-interactive[main](../../../cli_scripts/virtual-machine/create-docker-host/create-docker-host.sh "Docker Host")]
 
 ## <a name="clean-up-deployment"></a>Az üzemelő példány eltávolítása 
 
-A következő parancsot az erőforráscsoport, virtuális gép és az összes kapcsolódó erőforrások eltávolítása.
+Az alábbi paranccsal eltávolítható az erőforráscsoport, a virtuális gép és az összes kapcsolódó erőforrás.
 
 ```azurecli-interactive 
 az group delete --name myResourceGroup
 ```
 
-## <a name="script-explanation"></a>Parancsfájl ismertetése
+## <a name="script-explanation"></a>Szkript ismertetése
 
-A parancsfájl a következő parancsokat a központi telepítés létrehozásához. A parancs adott dokumentáció tábla mutató összes elemére.
+A szkript a következő parancsokat használja az üzemelő példány létrehozásához. A táblázatban lévő összes elem a hozzá tartozó dokumentációra hivatkozik.
 
 | Parancs | Megjegyzések |
 |---|---|
-| [az csoport létrehozása](https://docs.microsoft.com/cli/azure/group#az_group_create) | Az összes erőforrás tároló erőforrás csoportot hoz létre. |
-| [az virtuális gép létrehozása](https://docs.microsoft.com/cli/azure/vm#az_vm_create) | A virtuális gépet hoz létre, és csatlakozik a hálózati kártya, virtuális hálózatot, alhálózatot és hálózati biztonsági csoport. Ez a parancs is meghatározza a használandó virtuálisgép-lemezkép, és rendszergazdai hitelesítő adatait.  |
-| [az vm-port megnyitása](https://docs.microsoft.com/cli/azure/vm#az_vm_open_port) | Bejövő adatforgalom engedélyezésére a hálózati biztonsági csoport szabályt hoz létre. Ez a példa a 80-as port a HTTP-forgalom van megnyitva. |
-| [Azure virtuális gép bővítmény beállítása](https://docs.microsoft.com/cli/azure/vm/extension#az_vm_extension_set) | Hozzáadja, és futtat egy virtuálisgép-bővítményt egy virtuális géphez. Ez a példa a Docker Virtuálisgép-bővítmény konfigurálására szolgál egy Docker-állomás.|
-| [az csoport törlése](https://docs.microsoft.com/cli/azure/vm/extension#az_vm_extension_set) | Egy erőforráscsoport, beleértve az összes beágyazott erőforrások törlése. |
+| [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
+| [az vm create](https://docs.microsoft.com/cli/azure/vm#az_vm_create) | Létrehozza a virtuális gépet, és csatlakoztatja a hálózati kártyához, virtuális hálózathoz, alhálózathoz és hálózati biztonsági csoporthoz. A parancs megadja továbbá a használandó virtuálisgép-rendszerképet és a rendszergazdai jelszavakat.  |
+| [az vm open-port](https://docs.microsoft.com/cli/azure/vm#az_vm_open_port) | Létrehoz egy hálózati biztonsági csoportra vonatkozó szabályt a befelé irányuló forgalom engedélyezésére. Ebben a példában a 80-as portot nyitjuk meg a HTTP-forgalom számára. |
+| [azure vm extension set](https://docs.microsoft.com/cli/azure/vm/extension#az_vm_extension_set) | Hozzáad és futtat egy virtuálisgép-bővítményt egy virtuális gépen. Ebben a példában a Docker-gazdagép konfigurálására a Docker virtuálisgép-bővítmény használatával kerül sor.|
+| [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az_vm_extension_set) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-További információ az Azure parancssori felület: [Azure CLI dokumentáció](https://docs.microsoft.com/cli/azure/overview).
+Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](https://docs.microsoft.com/cli/azure).
 
-További virtuális gép CLI parancsfájl minták megtalálhatók a [Azure Linux virtuális dokumentációját](../linux/cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+A virtuális gépekhez kapcsolódó további CLI-példaszkripteket az [Azure Linux rendszerű virtuális gépekre vonatkozó dokumentációjában](../linux/cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) találhat.

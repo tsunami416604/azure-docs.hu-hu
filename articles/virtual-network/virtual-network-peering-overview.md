@@ -1,6 +1,6 @@
 ---
-title: "Társviszony kialakítása virtuális hálózatok között az Azure-ban | Microsoft Docs"
-description: "Tudnivalók az Azure-beli virtuális hálózatok közötti társviszony-létesítésről"
+title: Társviszony kialakítása virtuális hálózatok között az Azure-ban | Microsoft Docs
+description: Tudnivalók az Azure-beli virtuális hálózatok közötti társviszony-létesítésről
 services: virtual-network
 documentationcenter: na
 author: NarayanAnnamalai
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: narayan;anavin
-ms.openlocfilehash: 7c384f07ec6b71596dcdbc5b7214fa7ce65d0b7d
-ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
+ms.openlocfilehash: 23281067021dd6e4b8959fe73f3c8a11a651d9d2
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="virtual-network-peering"></a>Társviszony létesítése virtuális hálózatok között
 
@@ -35,7 +35,7 @@ A virtuális társhálózatok használatának előnyei:
 
 ## <a name="requirements-constraints"></a>Követelmények és korlátozások
 
-* Az azonos régiókban lévő virtuális hálózatok közötti társviszony kialakítása általánosan elérhető. Az eltérő régiókban lévő virtuális hálózatok közötti társviszony kialakítása jelenleg előzetes kiadásban érhető el az USA nyugati középső régiójában, a Közép-Kanada régióban, az USA 2. nyugati régiójában, Korea déli régiójában, az Egyesült Királyság déli régiójában, az Egyesült Királyság nyugati régiójában, Kelet-Kanadában, Dél-Indiában, Közép-Indiában és Nyugat-Indiában. Mielőtt különböző régiókban lévő virtuális hálózatok között alakítana ki társviszonyt, [regisztrálnia kell az előfizetését](virtual-network-create-peering.md#register) az előzetes verzióra. A különböző régióban lévő virtuális hálózatok közötti társviszony kialakításának kísérlete meghiúsul, ha még nem regisztrált az előzetes verzióra.
+* Az azonos régiókban lévő virtuális hálózatok közötti társviszony kialakítása általánosan elérhető. Az eltérő régiókban lévő virtuális hálózatok közötti társviszony kialakítása jelenleg előzetes kiadásban érhető el az USA nyugati középső régiójában, a Közép-Kanada régióban, az USA 2. nyugati régiójában, Korea déli régiójában, az Egyesült Királyság déli régiójában, az Egyesült Királyság nyugati régiójában, Kelet-Kanadában, Dél-Indiában, Közép-Indiában és Nyugat-Indiában. Mielőtt különböző régiókban lévő virtuális hálózatok között alakítana ki társviszonyt, [regisztrálnia kell az előfizetését](tutorial-connect-virtual-networks-powershell.md#register) az előzetes verzióra. A különböző régióban lévő virtuális hálózatok közötti társviszony kialakításának kísérlete meghiúsul, ha még nem regisztrált az előzetes verzióra.
     > [!WARNING]
     > A régiók között létrehozott virtuális társhálózatok rendelkezésre állása és megbízhatósága eltérő lehet az általánosan elérhető kiadások társításaitól. Előfordulhat, hogy a virtuális társhálózatok korlátozott képességekkel rendelkeznek, vagy nem érhetőek el minden Azure-régióban. A szolgáltatás rendelkezésre állásával és állapotával kapcsolatos legfrissebb értesítésekért tekintse meg az [Azure virtuális hálózati frissítésekkel kapcsolatos](https://azure.microsoft.com/updates/?product=virtual-network) oldalát.
 
@@ -126,7 +126,7 @@ Egy névleges díj vonatkozik a társviszony-kapcsolatot használó bejövő és
 
     |Azure üzembehelyezési modell  | Előfizetés  |
     |---------|---------|
-    |Mindkét Resource Manager |[Ugyanaz](virtual-network-create-peering.md)|
+    |Mindkét Resource Manager |[Ugyanaz](tutorial-connect-virtual-networks-portal.md)|
     | |[Különböző](create-peering-different-subscriptions.md)|
     |Egy Resource Manager, egy klasszikus     |[Ugyanaz](create-peering-different-deployment-models.md)|
     | |[Különböző](create-peering-different-deployment-models-subscriptions.md)|

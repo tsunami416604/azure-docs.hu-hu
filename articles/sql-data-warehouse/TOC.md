@@ -52,11 +52,12 @@
 ### [Az SQL Database rugalmas lekérdezése](how-to-use-elastic-query-with-sql-data-warehouse.md)
 
 
-## Monitorozás és hangolás
-### [Számítási feladatok kezelése](resource-classes-for-workload-management.md)
+## Lekérdezési teljesítmény
+### [Erőforrásosztályok](resource-classes-for-workload-management.md)
 ### [Oszlopcentrikus tömörítés](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md)
-### [Figyelés](sql-data-warehouse-manage-monitor.md)
-### [Hibaelhárítás](sql-data-warehouse-troubleshoot.md)
+
+## [Figyelés](sql-data-warehouse-manage-monitor.md)
+
 
 ## Adattárházak fejlesztése
 ### [Áttekintés](sql-data-warehouse-overview-develop.md)
@@ -87,6 +88,8 @@
 #### [Felhasználó által definiált sémák](sql-data-warehouse-develop-user-defined-schemas.md)
 #### [Változó-hozzárendelés](sql-data-warehouse-develop-variable-assignment.md)
 #### [Nézetek](sql-data-warehouse-develop-views.md)
+
+## [Hibaelhárítás](sql-data-warehouse-troubleshoot.md)
 
 # Útmutatók
 ## Szolgáltatásjellemzők

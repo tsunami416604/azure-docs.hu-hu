@@ -1,6 +1,6 @@
 ---
-title: "Az Azure Storage-fiók beállításai | Microsoft Docs"
-description: "Az Azure Storage használatához kapcsolódó beállítások megismerése."
+title: Az Azure Storage-fiók beállításai | Microsoft Docs
+description: Az Azure Storage használatához kapcsolódó beállítások megismerése.
 services: storage
 author: jirwin
 manager: jwillis
@@ -9,11 +9,11 @@ ms.workload: storage
 ms.topic: get-started-article
 ms.date: 01/17/2018
 ms.author: jirwin
-ms.openlocfilehash: aa8704b9991dde639b50a5b6c9a27ad5cd08ad02
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 2c69519b865169b477950bc8fa659d5ad9081bbf
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="azure-storage-account-options"></a>Az Azure Storage-fiók beállításai
 
@@ -298,8 +298,8 @@ Az adatok a Blob Storage-fiókra való áttelepítéséhez létrehozhat egy egy�
 
 További információért lásd [az Azure Blob Storage ismertetését](../blobs/storage-dotnet-how-to-use-blobs.md).
 
-> [!NOTE]
-> Az ügyféloldali titkosítással titkosított blobok a titkosítással kapcsolatos metaadatokat a blobbal együtt tárolják. Ezért elengedhetetlen, hogy a másolási műveletek során a blob metaadatai, különösen a titkosítással kapcsolatos metaadatok megmaradjanak. Ha a blobokat a metaadatok nélkül másolja, a blob tartalma nem kérhető le újból. További információt a titkosítással kapcsolatos metaadatokról [az Azure Storage ügyféloldali titkosítását](../common/storage-client-side-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) ismertető szakaszban talál.
+> [!IMPORTANT]
+> Az ügyféloldali titkosítással titkosított blobok a titkosítással kapcsolatos metaadatokat a blobbal együtt tárolják. Ha ügyféloldali titkosítással titkosított blobot másol, ügyeljen arra, hogy a másolási művelet megőrizze a blob metaadatait, különös tekintettel a titkosítással kapcsolatos metaadatokra. Ha a blobokat a titkosítási metaadatok nélkül másolja, a blob tartalma nem kérhető le újból. További információt a titkosítással kapcsolatos metaadatokról [az Azure Storage ügyféloldali titkosítását](../common/storage-client-side-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) ismertető szakaszban talál.
 
 ## <a name="faq"></a>GYIK
 

@@ -1,11 +1,11 @@
 ---
-title: "Munkaterületek kezelése az Azure Log Analyticsben | Microsoft Docs"
-description: "Az Azure Log Analytics munkaterületeinek kezeléséhez különféle adminisztratív feladatokat futtathat a felhasználókon, fiókokon, munkaterületeken és Azure-fiókokon."
+title: Munkaterületek kezelése az Azure Log Analyticsben | Microsoft Docs
+description: Az Azure Log Analytics munkaterületeinek kezeléséhez különféle adminisztratív feladatokat futtathat a felhasználókon, fiókokon, munkaterületeken és Azure-fiókokon.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: d0e5162d-584b-428c-8e8b-4dcaa746e783
 ms.service: log-analytics
 ms.workload: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/12/2017
 ms.author: magoedte
-ms.openlocfilehash: 5121535768b7fb430486c1c2c623e1a3a488858f
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 6caa0c8769ea6e62a22659089f37f74f6962e1c7
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="manage-workspaces"></a>Munkaterületek kezelése
 
@@ -246,7 +246,7 @@ A következő lépésekkel távolíthat el egy felhasználót egy munkaterületr
 4. Jelölje ki a csoportot a kapott listán, majd kattintson a **Hozzáadás** gombra.
 
 ## <a name="link-an-existing-workspace-to-an-azure-subscription"></a>Meglévő munkaterület csatolása Azure-előfizetéshez
-Minden 2016. szeptember 26. után létrehozott munkaterület a létrehozásukkor kell társítani egy Azure-előfizetéshez. Az ezen dátum előtt létrehozott munkaterületeket a bejelentkezéskor kell társítani egy munkaterülethez. Amikor az Azure Portalon hoz létre egy munkaterületet, vagy ha munkaterületét egy Azure-előfizetéshez társítja, az Azure Active Directory a szervezeti fiókjaként lesz társítva.
+Minden 2016. szeptember 26. után létrehozott munkaterület a létrehozásukkor kell társítani egy Azure-előfizetéshez. Az ezen dátum előtt létrehozott munkaterületeket a bejelentkezéskor kell társítani egy előfizetéshez. Amikor az Azure Portalon hoz létre egy munkaterületet, vagy ha munkaterületét egy Azure-előfizetéshez társítja, az Azure Active Directory a szervezeti fiókjaként lesz társítva.
 
 ### <a name="to-link-a-workspace-to-an-azure-subscription-in-the-oms-portal"></a>Munkaterület társítása egy Azure-előfizetéshez az OMS-portálon
 

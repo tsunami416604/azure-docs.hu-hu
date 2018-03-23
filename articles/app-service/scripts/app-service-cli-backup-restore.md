@@ -1,11 +1,11 @@
 ---
-title: "Az Azure CLI parancsfájl minta - visszaállítást egy biztonsági másolatból webalkalmazás |} Microsoft Docs"
-description: "Az Azure CLI parancsfájl minta - visszaállítást egy biztonsági másolatból webes alkalmazás"
+title: Azure CLI-példaszkript – Webalkalmazás visszaállítása biztonsági másolatból | Microsoft Docs
+description: Azure CLI-példaszkript – Webalkalmazás visszaállítása biztonsági másolatból
 services: app-service\web
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 manager: cfowler
-editor: 
+editor: ''
 tags: azure-service-management
 ms.service: app-service-web
 ms.workload: web
@@ -14,39 +14,39 @@ ms.topic: sample
 ms.date: 12/07/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: bec915f3e321cf2422f7cc2cad3ce1dfb6b3317a
-ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
-ms.translationtype: MT
+ms.openlocfilehash: c1b2a008a0b474630cba1d8eca479197cdeb9497
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/09/2018
 ---
-# <a name="restore-a-web-app-from-a-backup"></a>A webes alkalmazás visszaállítása biztonsági másolatból
+# <a name="restore-a-web-app-from-a-backup"></a>Webalkalmazás visszaállítása biztonsági másolatból
 
-Ez a parancsfájlpélda hoz létre egy webalkalmazást az App Service azok kapcsolódó erőforrásait, és egyszeri biztonsági másolatot a hozza létre. 
+Ez a példaszkript egy webalkalmazást hoz létre az App Service-ben a kapcsolódó erőforrásokkal együtt, majd egyszeri biztonsági mentést hajt végre. 
 
-A parancsfájl futtatásával szüksége meglévő biztonsági mentésből egy webalkalmazás. Szeretne létrehozni egyet, lásd: [kész a webalkalmazás biztonsági mentési](app-service-cli-backup-onetime.md) vagy [ütemezett biztonsági mentés egy webalkalmazás létrehozása](app-service-cli-backup-scheduled.md).
+A szkript futtatásához szükség van egy webalkalmazás meglévő biztonsági másolatára. Ennek létrehozásáról lásd: [Webalkalmazások biztonsági mentése](app-service-cli-backup-onetime.md) vagy [Ütemezett biztonsági másolat létrehozása egy webalkalmazásról](app-service-cli-backup-scheduled.md).
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Ha telepítése és a parancssori felület helyileg használata mellett dönt, az Azure parancssori felület verzió szüksége 2.0-s vagy újabb. A verzió megkereséséhez futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli). 
+Ha a parancssori felület helyi telepítését és használatát választja, az Azure CLI 2.0-s vagy újabb verziójára lesz szükség. A verzió megkereséséhez futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli). 
 
-## <a name="sample-script"></a>Mintaparancsfájl
+## <a name="sample-script"></a>Példaszkript
 
 [!code-azurecli-interactive[main](../../../cli_scripts/app-service/backup-restore/backup-restore.sh?highlight=3-4,9 "Restore a web app from a backup")]
 
 [!INCLUDE [cli-script-clean-up](../../../includes/cli-script-clean-up.md)]
 
-## <a name="script-explanation"></a>Parancsfájl ismertetése
+## <a name="script-explanation"></a>Szkript ismertetése
 
-A parancsfájl a következő parancsokat. Minden egyes parancsa a tábla-parancs adott dokumentációjára mutató hivatkozásokat.
+A szkript a következő parancsokat használja. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
 | Parancs | Megjegyzések |
 |---|---|
-| [`az webapp config backup list`](/cli/azure/webapp/config/backup?view=azure-cli-latest#az_webapp_config_backup_list) | A webalkalmazás biztonsági mentések listájának lekérése. |
-| [`az webapp config backup restore`](/cli/azure/webapp/config/backup?view=azure-cli-latest#az_webapp_config_backup_restore) | A webes alkalmazás visszaállítása egy biztonsági másolatból. |
+| [`az webapp config backup list`](/cli/azure/webapp/config/backup?view=azure-cli-latest#az_webapp_config_backup_list) | Lekéri egy webalkalmazás biztonsági másolatainak listáját. |
+| [`az webapp config backup restore`](/cli/azure/webapp/config/backup?view=azure-cli-latest#az_webapp_config_backup_restore) | Visszaállít egy webalkalmazást egy biztonsági másolatból. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-További információ az Azure parancssori felület: [Azure CLI dokumentáció](https://docs.microsoft.com/cli/azure/overview).
+Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](https://docs.microsoft.com/cli/azure).
 
-További App Service CLI parancsfájl minták megtalálhatók a [Azure App Service-dokumentáció](../app-service-cli-samples.md).
+További App Service CLI-példaszkripteket az [Azure App Service dokumentációjában](../app-service-cli-samples.md) találhat.

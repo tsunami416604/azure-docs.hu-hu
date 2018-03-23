@@ -1,8 +1,23 @@
- ;---cím: figyelése rendelkezésre állásának és reakcióidőt, a webhely |} Microsoft Docs leírása: webes tesztjeinek használatát az Application Insights beállítása. Riasztásokat kaphat, ha egy webhely elérhetetlenné válik vagy lassan válaszol.
-szolgáltatások: alkalmazás-elemzések documentationcenter: "Szerző: SoubhagyaDash manager: carmonm
-
-ms.assetid: 46dc13b4-eb2e-4142-a21c-94a156f760ee ms.service: application-insights ms.workload: tbd ms.tgt_pltfrm: ibiza ms.devlang: na ms.topic: get-started-article ms.date: 02/09/2018 ms.author: sdash ; mbullwin
-
+---
+title: Webhelyek rendelkezésre állásának és válaszkészségének megfigyelése | Microsoft Docs
+description: Webes teszteket állíthat be az Application Insightsban. Riasztásokat kaphat, ha egy webhely elérhetetlenné válik vagy lassan válaszol.
+services: application-insights
+documentationcenter: ''
+author: SoubhagyaDash
+manager: carmonm
+ms.assetid: 46dc13b4-eb2e-4142-a21c-94a156f760ee
+ms.service: application-insights
+ms.workload: tbd
+ms.tgt_pltfrm: ibiza
+ms.devlang: na
+ms.topic: get-started-article
+ms.date: 02/09/2018
+ms.author: sdash ; mbullwin
+ms.openlocfilehash: d8d6c6a242f63ad891a8134657273ff73dfcde18
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="monitor-availability-and-responsiveness-of-any-web-site"></a>Webhelyek rendelkezésre állásának és válaszkészségének megfigyelése
 Miután telepítette a webappot vagy a webhelyet bármely kiszolgálóra, webes teszteket állíthat be az alkalmazás rendelkezésre állásának és válaszkészségének megfigyeléséhez. Az [Azure Application Insights](app-insights-overview.md) rendszeres időközönként, világszerte különböző helyekről webes kéréseket küld az alkalmazására. Riasztást jelenít meg, ha az alkalmazás nem válaszol, vagy lassan válaszol.
@@ -26,7 +41,7 @@ Alkalmazás-erőforrásonként legfeljebb 100 rendelkezésre állási tesztet ho
 
 **Ha már konfigurálta az Application Insights szolgáltatást** a webapphoz, nyissa meg a hozzá tartozó Application Insights-erőforrást [az Azure Portalon](https://portal.azure.com).
 
-**Vagy, ha meg szeretné tekinteni a jelentések egy új erőforrást a** keresse fel a [Azure-portálon](https://portal.azure.com), és hozzon létre egy Application Insights-erőforrást.
+**Vagy ha a jelentéseket új erőforrásban szeretné megtekinteni,** lépjen az [Azure Portalra](https://portal.azure.com), és hozzon létre egy Application Insights-erőforrást.
 
 ![Új > Application Insights](./media/app-insights-monitor-web-app-availability/11-new-app.png)
 
@@ -44,7 +59,7 @@ Nyissa meg a Rendelkezésre állás panelt, és adjon hozzá egy tesztet.
 
 * **Újrapróbálkozások engedélyezése**: Ha ez a beállítás be van jelölve, és a teszt meghiúsul, a rendszer rövid idő után újrapróbálkozik. Csak akkor jelent hibát, ha három egymást követő kísérlet meghiúsul. Ezután a rendszer a teszteket a szokásos tesztelési gyakorisággal végzi el. Az újrapróbálkozás ideiglenesen fel van függesztve a következő sikeres műveletig. Ez a szabály függetlenül van alkalmazva minden egyes teszthelyen. Ezt a beállítást javasoljuk. Átlagosan körülbelül a hibák 80%-a megszűnik az újrapróbálkozáskor.
 
-* **Teszt gyakorisága**: Beállítja, hogy milyen gyakran fut a teszt mindegyik teszthelyen. Öt perc és öt teszt-helyek alapértelmezett gyakorisággal a webhely lett tesztelve átlagosan percenként.
+* **Teszt gyakorisága**: Beállítja, hogy milyen gyakran fut a teszt mindegyik teszthelyen. Öt perces alapértelmezett gyakorisággal és öt teszthellyel a helyén átlagosan percenként egy teszt történik.
 
 * A **Teszthelyek** olyan helyek, ahonnan a kiszolgálóink webes kérelmeket küldenek az Ön URL-címére. Többet válasszon, hogy megkülönböztethesse webhelye problémáit a hálózati hibáktól. Legfeljebb 16 hely választható ki.
 

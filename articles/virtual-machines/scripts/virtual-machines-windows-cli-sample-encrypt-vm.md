@@ -1,13 +1,13 @@
 ---
-title: "Az Azure CLI Script Sample – a Windows virtuális gép titkosítása |} Microsoft Docs"
-description: "Az Azure CLI Script Sample – a Windows virtuális gép titkosítása"
+title: Azure CLI-példaszkript – Windows rendszerű virtuális gép titkosítása | Microsoft Docs
+description: Azure CLI-példaszkript – Windows rendszerű virtuális gép titkosítása
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: iainfoulds
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.devlang: azurecli
 ms.topic: sample
@@ -15,50 +15,50 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 12/15/2017
 ms.author: iainfou
-ms.openlocfilehash: 7e1e9a69d226b03e6722c2d19b7a091cfe4e71c7
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
-ms.translationtype: MT
+ms.openlocfilehash: 9d7b2b0c731c5fc820fe649394a13ee586e47606
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2017
+ms.lasthandoff: 03/09/2018
 ---
-# <a name="encrypt-a-windows-virtual-machine-in-azure"></a>A Windows Azure virtuális gép titkosítása
+# <a name="encrypt-a-windows-virtual-machine-in-azure"></a>Windows rendszerű virtuális gép titkosítása az Azure-ban
 
-Ez a parancsfájl létrehoz egy biztonságos Azure Key Vault, a titkosítási kulcsokat, az Azure Active Directory szolgáltatás egyszerű és a Windows rendszerű virtuális gép (VM). A virtuális Gépet a rendszer ezután titkosítja a Key Vault és a szolgáltatás egyszerű hitelesítő adatait a titkosítási kulcs használatával.
+Ez a szkript egy biztonságos Azure Key Vault-tárolót, titkosító kulcsokat, egy Azure Active Directory-szolgáltatásnevet és egy Windows rendszerű virtuális gépet (VM) hoz létre. A virtuális gépet ezután a Key Vaultból származó titkosítási kulccsal és a szolgáltatásnév hitelesítő adataival titkosítjuk.
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="sample-script"></a>Mintaparancsfájl
+## <a name="sample-script"></a>Példaszkript
 
 [!code-azurecli-interactive[main](../../../cli_scripts/virtual-machine/encrypt-disks/encrypt_windows_vm.sh "Encrypt VM disks")]
 
 ## <a name="clean-up-deployment"></a>Az üzemelő példány eltávolítása 
 
-A következő parancsot az erőforráscsoport, virtuális gép és az összes kapcsolódó erőforrások eltávolítása.
+Az alábbi paranccsal eltávolítható az erőforráscsoport, a virtuális gép és az összes kapcsolódó erőforrás.
 
 ```azurecli
 az group delete --name myResourceGroup
 ```
 
-## <a name="script-explanation"></a>Parancsfájl ismertetése
+## <a name="script-explanation"></a>Szkript ismertetése
 
-A parancsfájl a következő parancsokat egy erőforráscsoport, az Azure Key Vault, egyszerű szolgáltatásnév, virtuális gép és minden kapcsolódó erőforrás létrehozásához. Minden egyes parancsa a tábla-parancs adott dokumentációjára mutató hivatkozásokat.
+A szkript a következő parancsokat használja egy erőforráscsoport, egy Azure Key Vault-tároló, egy szolgáltatásnév, egy virtuális gép és minden kapcsolódó erőforrás létrehozásához. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
 | Parancs | Megjegyzések |
 |---|---|
-| [az csoport létrehozása](https://docs.microsoft.com/cli/azure/group#az_group_create) | Az összes erőforrás tároló erőforrás csoportot hoz létre. |
-| [az keyvault létrehozása](https://docs.microsoft.com/cli/azure/keyvault#az_keyvault_create) | Létrehoz egy Azure Key Vault, például a titkosítási kulcsok biztonságos adatok tárolására. |
-| [az keyvault kulcs létrehozása](https://docs.microsoft.com/cli/azure/keyvault/key#az_keyvault_key_create) | A Key Vault egy titkosítási kulcsot hoz létre. |
-| [az ad sp létrehozása-az-rbac](https://docs.microsoft.com/cli/azure/ad/sp#az_ad_sp_create_for_rbac) | Létrehoz egy Azure Active Directory szolgáltatás egyszerű biztonságosan hitelesítéséhez és titkosítási kulcsok való hozzáférés szabályozása. |
-| [az keyvault-szabály beállítása](https://docs.microsoft.com/cli/azure/keyvault#az_keyvault_set_policy) | A szolgáltatás egyszerű hozzáférést biztosít a titkosítási kulcsokat a Key Vault engedélyeinek beállítása. |
-| [az virtuális gép létrehozása](https://docs.microsoft.com/cli/azure/vm#az_vm_create) | A virtuális gépet hoz létre, és csatlakozik a hálózati kártya, virtuális hálózatot, alhálózatot és NSG. Ez a parancs is meghatározza a használandó virtuálisgép-lemezkép, és rendszergazdai hitelesítő adatait.  |
-| [az vm-titkosítás engedélyezése](https://docs.microsoft.com/cli/azure/vm/encryption#az_vm_encryption_enable) | Engedélyezi a titkosítás használatát a virtuális gépek, a szolgáltatás egyszerű hitelesítő adatait és a titkosítási kulcs segítségével. |
-| [az vm titkosítási megjelenítése](https://docs.microsoft.com/cli/azure/vm/encryption#az_vm_encryption_show) | A virtuális gép titkosítási folyamat állapotát jeleníti meg. |
-| [az csoport törlése](https://docs.microsoft.com/cli/azure/vm/extension#az_vm_extension_set) | Egy olyan erőforráscsoport, beleértve az összes beágyazott erőforrások törlése. |
+| [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
+| [az keyvault create](https://docs.microsoft.com/cli/azure/keyvault#az_keyvault_create) | Létrehoz egy Azure Key Vault-tárolót a védett adatok (például titkosítási kulcsok) tárolásához. |
+| [az keyvault key create](https://docs.microsoft.com/cli/azure/keyvault/key#az_keyvault_key_create) | Létrehoz egy titkosítási kulcsot a Key Vault-tárolóban. |
+| [az ad sp create-for-rbac](https://docs.microsoft.com/cli/azure/ad/sp#az_ad_sp_create_for_rbac) | Létrehoz egy Azure Active Directory-szolgáltatásnevet a titkosítási kulcsok biztonságos hitelesítéséhez és elérésének szabályozásához. |
+| [az keyvault set-policy](https://docs.microsoft.com/cli/azure/keyvault#az_keyvault_set_policy) | Beállítja a jogosultságokat a Key Vault-tárolóban, hogy a szolgáltatásnév hozzáférhessen a titkosítási kulcsokhoz. |
+| [az vm create](https://docs.microsoft.com/cli/azure/vm#az_vm_create) | Létrehozza a virtuális gépet, és csatlakoztatja a hálózati kártyához, a virtuális hálózathoz, az alhálózathoz és az NSG-hez. A parancs megadja továbbá a használandó virtuálisgép-rendszerképet és a rendszergazdai jelszavakat.  |
+| [az vm encryption enable](https://docs.microsoft.com/cli/azure/vm/encryption#az_vm_encryption_enable) | Bekapcsolja egy virtuális gép titkosítását a szolgáltatásnév hitelesítési adataival és titkosítási kulcsával. |
+| [az vm encryption show](https://docs.microsoft.com/cli/azure/vm/encryption#az_vm_encryption_show) | Megmutatja a virtuális gép titkosítási folyamatának állapotát. |
+| [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az_vm_extension_set) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-További információ az Azure parancssori felület: [Azure CLI dokumentáció](https://docs.microsoft.com/cli/azure/overview).
+Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](https://docs.microsoft.com/cli/azure).
 
-További virtuális gép CLI parancsfájl minták megtalálhatók a [Azure Windows virtuális dokumentációját](../windows/cli-samples.md?toc=%2fazure%2fvirtual-machines%windows%2ftoc.json).
+További virtuális gép CLI-példaszkripteket az [Azure Windows virtuális gépekre vonatkozó dokumentációban](../windows/cli-samples.md?toc=%2fazure%2fvirtual-machines%windows%2ftoc.json) találhat.

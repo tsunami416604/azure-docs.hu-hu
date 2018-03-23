@@ -1,6 +1,6 @@
 ---
-title: "SQL Servert futtató, Windows rendszerű virtuális gép létrehozása a portálon | Microsoft Docs"
-description: "Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre Windows rendszerű SQL Server 2017 virtuális gépet az Azure Portalon."
+title: SQL Servert futtató, Windows rendszerű virtuális gép létrehozása a portálon | Microsoft Docs
+description: Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre Windows rendszerű SQL Server 2017 virtuális gépet az Azure Portalon.
 services: virtual-machines-windows
 documentationcenter: na
 author: rothja
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: infrastructure-services
 ms.date: 12/12/2017
 ms.author: jroth
-ms.openlocfilehash: e6ae3937a9805dfec8784efaf8370117754a03ad
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 080fecc7e89d9a76a9b160ba2ff4ba9dc31d0925
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="quickstart-create-a-sql-server-2017-windows-virtual-machine-in-the-azure-portal"></a>Rövid útmutató: SQL Server 2017-et futtató, Windows rendszerű virtuális gép létrehozása az Azure Portalon
 
@@ -29,6 +29,11 @@ Ez a rövid útmutató részletesen bemutatja egy SQL Servert futtató virtuáli
 
 > [!TIP]
 > Ez a rövid útmutató bemutatja az SQL virtuális gépek gyors kiépítését és az azokhoz való csatlakozást. Az SQL virtuális gépek többi kiépítési lehetőségéről további információért tekintse meg a [Windows SQL Server virtuális gépek Azure Portalon való kiépítésének útmutatóját](virtual-machines-windows-portal-sql-server-provision.md).
+
+> [!TIP]
+> Ha kérdése van az SQL Servert futtató virtuális gépek használatával kapcsolatban, tekintse meg a [gyakori kérdéseket](virtual-machines-windows-sql-server-iaas-faq.md).
+
+## <a id="subscription"></a> Azure-előfizetés beszerzése
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 

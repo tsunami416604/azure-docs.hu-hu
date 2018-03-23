@@ -1,12 +1,12 @@
 ---
-title: "Az ASP.NET Core szolgáltatások monitorozása és diagnosztikája az Azure Service Fabricben | Microsoft Docs"
-description: "Ez az oktatóanyag ismerteti, hogyan állíthat be monitorozást és diagnosztikát az Azure Service Fabric ASP.NET Core-alkalmazásokhoz."
+title: Az ASP.NET Core szolgáltatások monitorozása és diagnosztikája az Azure Service Fabricben | Microsoft Docs
+description: Ez az oktatóanyag ismerteti, hogyan állíthat be monitorozást és diagnosztikát az Azure Service Fabric ASP.NET Core-alkalmazásokhoz.
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotNet
 ms.topic: tutorial
@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 09/14/2017
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 26cca3604faa46e7398b24a2e8c25a6ad9650c18
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 0f51b52d9f4d5c8979ba636311e63089c11cd114
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="tutorial-monitor-and-diagnose-an-aspnet-core-application-on-service-fabric"></a>Oktatóanyag: ASP.NET Core-alkalmazás monitorozása és diagnosztizálása a Service Fabric szolgáltatásban
 Ez az oktatóanyag egy sorozat negyedik része. A Service Fabric-fürtön futó ASP.NET Core alkalmazás Application Insights használatával való monitorozása és diagnosztizálása beállításának lépéseit írja le. Telemetriát gyűjtünk az oktatóanyag [.NET Service Fabric-alkalmazás létrehozása](service-fabric-tutorial-create-dotnet-app.md) című első részében kifejlesztett alkalmazásból. 
@@ -104,15 +104,16 @@ A következő lépéseket kell végrehajtani a NuGet beállításához:
     Ez hozzáadja a *szolgáltatáskörnyezetet* a telemetriához, így jobban megértheti a telemetria forrását az Application Insightsban. A *VotingWeb.cs* fájlban lévő beágyazott *return* utasításnak így kell kinéznie:
     
     ```csharp
-    return new WebHostBuilder().UseWebListener()
+    return new WebHostBuilder()
+        .UseKestrel()
         .ConfigureServices(
             services => services
+                .AddSingleton<HttpClient>(new HttpClient())
+                .AddSingleton<FabricClient>(new FabricClient())
                 .AddSingleton<StatelessServiceContext>(serviceContext)
-                .AddSingleton<ITelemetryInitializer>((serviceProvider) => FabricTelemetryInitializerExtension.CreateFabricTelemetryInitializer(serviceContext))
-                .AddSingleton<HttpClient>())
+                .AddSingleton<ITelemetryInitializer>((serviceProvider) => FabricTelemetryInitializerExtension.CreateFabricTelemetryInitializer(serviceContext)))
         .UseContentRoot(Directory.GetCurrentDirectory())
         .UseStartup<Startup>()
-        .UseApplicationInsights()
         .UseServiceFabricIntegration(listener, ServiceFabricIntegrationOptions.None)
         .UseUrls(url)
         .Build();
@@ -126,8 +127,8 @@ A következő lépéseket kell végrehajtani a NuGet beállításához:
         .ConfigureServices(
             services => services
                 .AddSingleton<StatefulServiceContext>(serviceContext)
-                .AddSingleton<ITelemetryInitializer>((serviceProvider) => FabricTelemetryInitializerExtension.CreateFabricTelemetryInitializer(serviceContext))
-                .AddSingleton<IReliableStateManager>(this.StateManager))
+                .AddSingleton<IReliableStateManager>(this.StateManager)
+                .AddSingleton<ITelemetryInitializer>((serviceProvider) => FabricTelemetryInitializerExtension.CreateFabricTelemetryInitializer(serviceContext)))
         .UseContentRoot(Directory.GetCurrentDirectory())
         .UseStartup<Startup>()
         .UseApplicationInsights()
@@ -233,6 +234,6 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 > * Egyéni események hozzáadása az Application Insights API-val
 
 Most, hogy elvégezte az ASP.NET alkalmazás monitorozása és diagnosztizálása beállítását, megpróbálkozhat a következőkkel:
-- [A monitorozás és diagnosztika felderítése a Service Fabricben](service-fabric-diagnostics-overview.md)
+- [A monitorozás és diagnosztika részletesebb megismerése a Service Fabricben](service-fabric-diagnostics-overview.md)
 - [Service Fabric eseményelemzés az Application Insights szolgáltatással](service-fabric-diagnostics-event-analysis-appinsights.md)
 - Az Application Insightsról további információt az [Application Insights dokumentációban](https://docs.microsoft.com/azure/application-insights/) talál

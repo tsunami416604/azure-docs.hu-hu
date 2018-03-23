@@ -1,14 +1,14 @@
 ---
-title: "Az Azure CLI parancsfájl-mintában - ACS Windows Kubernetes fürt létrehozása |} Microsoft Docs"
-description: "Az Azure CLI parancsfájl-mintában - ACS Windows Kubernetes fürt létrehozása"
+title: Azure CLI-példaszkript – ACS Windows Kubernetes-fürt létrehozása | Microsoft Docs
+description: Azure CLI-példaszkript – ACS Windows Kubernetes-fürt létrehozása
 services: container-service
-documentationcenter: 
+documentationcenter: ''
 author: neilpeterson
 manager: timlt
-editor: 
+editor: ''
 tags: acs, azure-container-service
-keywords: "Docker, tárolók, mikroszolgáltatások, Kubernetes, DC/OS, Azure"
-ms.assetid: 
+keywords: Docker, tárolók, mikroszolgáltatások, Kubernetes, DC/OS, Azure
+ms.assetid: ''
 ms.service: container-service
 ms.devlang: azurecli
 ms.topic: sample
@@ -16,21 +16,21 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/30/2017
 ms.author: nepeters
-ms.openlocfilehash: 3711363dea77a2671a8d35a92895bee91a803bc0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: MT
+ms.openlocfilehash: 3711d53f0dfa7aef1bf30354461fd5db61d51a62
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/09/2018
 ---
-# <a name="create-an-azure-container-service-kubernetes-windows-cluster"></a>Hozzon létre egy Kubernetes Windows Azure Tárolószolgáltatási fürt
+# <a name="create-an-azure-container-service-kubernetes-windows-cluster"></a>Azure Container Service Kubernetes Windows-fürt létrehozása
 
-Ez a minta futó Kubernetes a Windows-alapú tárolók egy Azure Tárolószolgáltatás-fürtöt hoz létre.
+Ez a példa egy Azure Container Service-fürtöt hoz létre, amely Kubernetest futtat Windows-alapú tárolókon.
 
 [!INCLUDE [sample-cli-install](../../../../includes/sample-cli-install.md)]
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="sample-script"></a>Mintaparancsfájl
+## <a name="sample-script"></a>Példaszkript
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
@@ -47,23 +47,23 @@ az acs create \
 
 ## <a name="clean-up-deployment"></a>Az üzemelő példány eltávolítása 
 
-A következő parancsot az erőforráscsoport, virtuális gép és az összes kapcsolódó erőforrások eltávolítása.
+Az alábbi paranccsal eltávolítható az erőforráscsoport, a virtuális gép és az összes kapcsolódó erőforrás.
 
 ```azurecli
 az group delete --name myResourceGroup
 ```
 
-## <a name="script-explanation"></a>Parancsfájl ismertetése
+## <a name="script-explanation"></a>Szkript ismertetése
 
-A parancsfájl a következő parancsokat a központi telepítés létrehozásához. A parancs adott dokumentáció tábla mutató összes elemére.
+A szkript a következő parancsokat használja az üzemelő példány létrehozásához. A táblázatban lévő összes elem a hozzá tartozó dokumentációra hivatkozik.
 
 | Parancs | Megjegyzések |
 |---|---|
-| [az csoport létrehozása](https://docs.microsoft.com/cli/azure/group#az_group_create) | Az összes erőforrás tároló erőforrás csoportot hoz létre. |
-| [az acs létrehozása](https://docs.microsoft.com/cli/azure/acs#az_acs_create) | Létrehozza és az ACS-fürthöz. |
+| [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
+| [az acs create](https://docs.microsoft.com/cli/azure/acs#az_acs_create) | Létrehoz egy ACS-fürtöt. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-További információ az Azure parancssori felület: [Azure CLI dokumentáció](https://docs.microsoft.com/cli/azure/overview).
+Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](https://docs.microsoft.com/cli/azure).
 
-További Azure-tároló szolgáltatás CLI parancsfájl minták megtalálhatók a [Azure Tárolószolgáltatás-dokumentáció](../cli-samples.md).
+További Azure Container Service CLI-példaszkripteket az [Azure Container Service dokumentációjában](../cli-samples.md) találhat.

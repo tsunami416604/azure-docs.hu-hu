@@ -1,6 +1,6 @@
 ---
-title: "SQL&#92;IIS&#92;.NET vermet futtató virtuális gépek létrehozása az Azure-ban | Microsoft Docs"
-description: "Oktatóanyag – Azure SQL, IIS, .NET verem telepítése Windows rendszerű virtuális gépeken."
+title: SQL&#92;IIS&#92;.NET vermet futtató virtuális gépek létrehozása az Azure-ban | Microsoft Docs
+description: Oktatóanyag – Azure SQL, IIS, .NET verem telepítése Windows rendszerű virtuális gépeken.
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: cynthn
@@ -15,11 +15,11 @@ ms.workload: infrastructure
 ms.date: 02/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: ad84d6e8f74fa184ac2359ff7f08e6c8143d419a
-ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.openlocfilehash: ac6038f7600d6eb4c8d021998f9cfc40bd369332
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="install-a-sql92iis92net-stack-in-azure"></a>SQL&#92;IIS&#92;.NET verem telepítése az Azure-ban
 
@@ -33,7 +33,7 @@ Ebben az oktatóanyagban egy SQL&#92;IIS&#92;.NET vermet fogunk telepíteni az A
 
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 
-Ehhez az oktatóanyaghoz az AzureRM.Compute modul 4.3.1-es vagy újabb verziója szükséges. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable AzureRM.Compute`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket.
+Ha a PowerShell helyi telepítése és használata mellett dönt, az oktatóanyaghoz az AzureRM.Compute modul 4.3.1-es vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable AzureRM.Compute`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket.
 
 ## <a name="create-a-iis-vm"></a>IIS rendszerű virtuális gép létrehozása 
 

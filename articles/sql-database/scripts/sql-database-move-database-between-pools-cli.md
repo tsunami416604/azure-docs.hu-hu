@@ -1,13 +1,13 @@
 ---
-title: "Parancssori felület példa-áthelyezési Azure SQL adatbázis-SQL rugalmas készlet |} Microsoft Docs"
-description: "Az Azure parancssori felület a példaként megadott parancsfájlt egy SQL-adatbázis áthelyezése a rugalmas SQL-készlet"
+title: CLI-példaszkript – Azure SQL Database-adatbázis áthelyezése egy rugalmas SQL-készletben | Microsoft Docs
+description: Azure CLI-példaszkript egy Azure SQL Database-adatbázis áthelyezésére egy rugalmas SQL-készletben
 services: sql-database
 documentationcenter: sql-database
 author: janeng
 manager: jstrauss
 editor: carlrab
 tags: azure-service-management
-ms.assetid: 
+ms.assetid: ''
 ms.service: sql-database
 ms.custom: monitor & tune, mvc
 ms.devlang: azurecli
@@ -16,15 +16,15 @@ ms.tgt_pltfrm: sql-database
 ms.workload: database
 ms.date: 07/05/2017
 ms.author: janeng
-ms.openlocfilehash: 6da859530cd692d80f82270cb599483041612db7
-ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
-ms.translationtype: MT
+ms.openlocfilehash: 162617caae751d027deac0a2e2710d425b5a7101
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 03/09/2018
 ---
-# <a name="use-cli-to-move-an-azure-sql-database-in-a-sql-elastic-pool"></a>Azure SQL-adatbázis áthelyezése rugalmas SQL-készletet a parancssori felület használatával
+# <a name="use-cli-to-move-an-azure-sql-database-in-a-sql-elastic-pool"></a>Azure SQL Database-adatbázis áthelyezése egy rugalmas SQL-készletben a CLI használatával
 
-Az Azure CLI mintaparancsfájl hoz létre két rugalmas készletek és egy rugalmas SQL-készlet egy Azure SQL Database adatbázist áthelyezi egy másik rugalmas SQL-készlet, és majd kimozdul a database rugalmas készlet egyetlen Azure-adatbázis teljesítményének szintjét. 
+Ez az Azure CLI-példaszkript két rugalmas készletet hoz létre, áthelyez egy Azure SQL Database-adatbázist az egyik rugalmas SQL-készletből a másikba, majd átviszi az adatbázist a rugalmas készletből egy egyetlen Azure-adatbázishoz tartozó teljesítményszintre. 
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -32,35 +32,35 @@ Az Azure CLI mintaparancsfájl hoz létre két rugalmas készletek és egy rugal
 
 Ha a parancssori felület helyi telepítése és használata mellett dönt, a témakörben leírt lépésekhez az Azure parancssori felületének 2.0-s vagy annál újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli). 
 
-## <a name="sample-script"></a>Mintaparancsfájl
+## <a name="sample-script"></a>Példaszkript
 
 [!code-azurecli-interactive[main](../../../cli_scripts/sql-database/move-database-between-pools/move-database-between-pools.sh "Move database between pools")]
 
 ## <a name="clean-up-deployment"></a>Az üzemelő példány eltávolítása
 
-A parancsfájl-minta futtatása után a következő parancs segítségével távolítsa el az erőforráscsoportot és a vele társított összes erőforrást.
+A példaszkript futtatása után a következő paranccsal távolítható el az erőforráscsoport és az összes ahhoz kapcsolódó erőforrás.
 
 ```azurecli-interactive
 az group delete --name myResourceGroup
 ```
 
-## <a name="script-explanation"></a>Parancsfájl ismertetése
+## <a name="script-explanation"></a>Szkript ismertetése
 
-A parancsfájl a következő parancsokat. Minden egyes parancsa a tábla-parancs adott dokumentációjára mutató hivatkozásokat.
+A szkript a következő parancsokat használja. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
 | Parancs | Megjegyzések |
 |---|---|
-| [az csoport létrehozása](https://docs.microsoft.com/cli/azure/group#az_group_create) | Az összes erőforrás tároló erőforrás csoportot hoz létre. |
-| [az sql-kiszolgáló létrehozása](https://docs.microsoft.com/cli/azure/sql/server#az_sql_server_create) | Adatbázis vagy a rugalmas készlet tároló logikai kiszolgáló létrehozása. |
-| [az sql rugalmas-címkészletek létrehozása](https://docs.microsoft.com/cli/azure/sql/elastic-pool#az_sql_elastic_pool_create) | Létrehoz egy rugalmas készletet a logikai kiszolgálón belül. |
-| [az sql-adatbázis létrehozása](https://docs.microsoft.com/cli/azure/sql/db#az_sql_db_create) | Adatbázist hoz létre egy logikai egyetlen vagy egy készletezett adatbázis-kiszolgálót. |
-| [az sql-adatbázis frissítése](https://docs.microsoft.com/cli/azure/sql/db#az_sql_db_update) | Frissíti az adatbázis-tulajdonságai, vagy azokat, kívüli vagy rugalmas készletek között adatbázis helyezi. |
-| [az csoport törlése](https://docs.microsoft.com/cli/azure/vm/extension#az_vm_extension_set) | Egy olyan erőforráscsoport, beleértve az összes beágyazott erőforrások törlése. |
+| [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
+| [az sql server create](https://docs.microsoft.com/cli/azure/sql/server#az_sql_server_create) | Olyan logikai kiszolgálót hoz létre, amely egy adatbázist vagy rugalmas készletet üzemeltet. |
+| [az sql elastic-pools create](https://docs.microsoft.com/cli/azure/sql/elastic-pool#az_sql_elastic_pool_create) | Létrehoz egy rugalmas készletet a logikai kiszolgálón. |
+| [az sql db create](https://docs.microsoft.com/cli/azure/sql/db#az_sql_db_create) | Létrehoz egy adatbázist egy logikai kiszolgálón egyetlen vagy készletezett adatbázisként. |
+| [az sql db update](https://docs.microsoft.com/cli/azure/sql/db#az_sql_db_update) | Frissíti az adatbázis tulajdonságait vagy az adatbázist egy rugalmas készletbe, egy rugalmas készletből vagy rugalmas készletek között helyezi át. |
+| [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az_vm_extension_set) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-További információ az Azure parancssori felület: [Azure CLI dokumentáció](https://docs.microsoft.com/cli/azure/overview).
+Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](https://docs.microsoft.com/cli/azure).
 
-További SQL-adatbázis CLI parancsfájl minták megtalálhatók a [dokumentáció az Azure SQL Database](../sql-database-cli-samples.md).
+További SQL Database CLI-példaszkripteket az [Azure SQL Database dokumentációjában](../sql-database-cli-samples.md) találhat.
 
 

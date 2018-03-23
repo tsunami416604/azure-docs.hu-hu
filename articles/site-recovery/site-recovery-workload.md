@@ -1,24 +1,24 @@
 ---
-title: "Milyen számítási feladatokat tud védeni az Azure Site Recovery? | Microsoft Docs"
-description: "Azokat a számítási feladatokat ismerteti, amelyeket meg lehet védeni a vészhelyreállítás Azure Site Recovery szolgáltatással történő használatával."
+title: Milyen számítási feladatokat tud védeni az Azure Site Recovery? | Microsoft Docs
+description: Azokat a számítási feladatokat ismerteti, amelyeket meg lehet védeni a vészhelyreállítás Azure Site Recovery szolgáltatással történő használatával.
 services: site-recovery
-documentationcenter: 
+documentationcenter: ''
 author: rayne-wiselman
 manager: cfreeman
-editor: 
+editor: ''
 ms.assetid: 4953948f-26c0-4699-8fe7-59d3bfc1d3da
 ms.service: site-recovery
 ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 12/15/2017
+ms.date: 3/16/2018
 ms.author: raynew
-ms.openlocfilehash: 03d311f84a4b9bc5f3a4c3c488ee7c84b1ef49ad
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: 3b138546ffb1cb6d5bec0aaf2bb11510ab399933
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="what-workloads-can-you-protect-with-azure-site-recovery"></a>Milyen számítási feladatokat tud védeni az Azure Site Recovery?
 
@@ -62,7 +62,7 @@ A Site Recovery a támogatott gépeken futó bármilyen alkalmazást képes repl
 | Dynamics AX |I |I |I |I |I|
 | Oracle |I (a Microsoft által végzett tesztek alapján) |I (a Microsoft által végzett tesztek alapján) |I (a Microsoft által végzett tesztek alapján) |I (a Microsoft által végzett tesztek alapján) |I (a Microsoft által végzett tesztek alapján)|
 | Windows fájlkiszolgáló |I |I |I |I |I|
-| Citrix XenApp és XenDesktop |I|N. a. |I |N. a. |I |
+| Citrix XenApp és XenDesktop |I|N/A |I |N/A |I |
 
 ## <a name="replicate-active-directory-and-dns"></a>Active Directory és DNS replikálása
 A legtöbb vállalati alkalmazás számára elengedhetetlen az Active Directory- és DNS-infrastruktúra használata. A vészhelyreállítás során a számítási feladatok és az alkalmazások helyreállítása előtt ezeket az infrastruktúra-összetevőket meg kell védenie és helyre kell állítania.

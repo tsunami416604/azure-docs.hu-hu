@@ -1,11 +1,11 @@
 ---
-title: "Áttekintés: Azure virtuális gépek védelme Recovery Services-tárolóval | Microsoft Docs"
-description: "Megvédheti Azure virtuális gépeit egy Recovery Services-tárolóval. Adatai védelmére a Resource Manager-alapú és a klasszikus üzemi modellen alapuló virtuális gépek, a Premium Storage-alapú virtuális gépek, a titkosított virtuális gépek és a Managed Disksen található virtuális gépek biztonsági másolatait használhatja. Létrehozhat és regisztrálhat egy Recovery Services-tárolót. Regisztrálhat virtuális gépeket, létrehozhat egy házirendet, és megvédheti virtuális gépeit az Azure-ban."
+title: 'Áttekintés: Azure virtuális gépek védelme Recovery Services-tárolóval | Microsoft Docs'
+description: Megvédheti Azure virtuális gépeit egy Recovery Services-tárolóval. Adatai védelmére a Resource Manager-alapú és a klasszikus üzemi modellen alapuló virtuális gépek, a Premium Storage-alapú virtuális gépek, a titkosított virtuális gépek és a Managed Disksen található virtuális gépek biztonsági másolatait használhatja. Létrehozhat és regisztrálhat egy Recovery Services-tárolót. Regisztrálhat virtuális gépeket, létrehozhat egy házirendet, és megvédheti virtuális gépeit az Azure-ban.
 services: backup
-documentationcenter: 
+documentationcenter: ''
 author: markgalioto
 manager: carmonm
-editor: 
+editor: ''
 keyword: backups; vm backup
 ms.assetid: 45e773d6-c91f-4501-8876-ae57db517cd1
 ms.service: backup
@@ -16,11 +16,11 @@ ms.topic: hero-article
 ms.date: 01/05/2018
 ms.author: markgal;jimpark
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6cd6e9ba575a0efe6e612a2185076d5a6c189525
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 3a450e3432a629a4fae9627c0e2df58102ad3387
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="back-up-azure-virtual-machines-to-recovery-services-vaults"></a>Azure-beli virtuális gépek biztonsági mentése Recovery Services-tárolókba
 
@@ -34,7 +34,7 @@ Ez az oktatóprogram végigkíséri egy Recovery Services-tároló létrehozás�
 * Az Azure Disk Encryption használatával titkosított virtuális gépek
 * Windows rendszerű virtuális gépek alkalmazáskonzisztens biztonsági mentése VSS és Linux rendszerű virtuális gépekkel egyéni, pillanatkép előtti és utáni szkriptekkel
 
-A Prémium szintű tárolós virtuális gépek védelméről további információt a következő cikkben talál: [Prémium szintű tárolós virtuális gépek biztonsági mentése és visszaállítása](backup-introduction-to-azure-backup.md#using-premium-storage-vms-with-azure-backup). További információ a felügyelt lemezeken található virtuális gépek támogatásáról: [ Virtuális gépek biztonsági mentése és visszaállítása felügyelt lemezeken](backup-introduction-to-azure-backup.md#using-managed-disk-vms-with-azure-backup). A Linux rendszerű virtuális gépek biztonsági mentéseinek szkript előtti és utáni keretrendszerével kapcsolatos további információért lásd: [Linux rendszerű virtuális gépek alkalmazáskonzisztens biztonsági mentése szkript előtti és utáni keretrendszerrel] (https://docs.microsoft.com/azure/backup/backup-azure-linux-app-consistent).
+A Prémium szintű tárolós virtuális gépek védelméről további információt a következő cikkben talál: [Prémium szintű tárolós virtuális gépek biztonsági mentése és visszaállítása](backup-introduction-to-azure-backup.md#using-premium-storage-vms-with-azure-backup). További információ a felügyelt lemezeken található virtuális gépek támogatásáról: [ Virtuális gépek biztonsági mentése és visszaállítása felügyelt lemezeken](backup-introduction-to-azure-backup.md#using-managed-disk-vms-with-azure-backup). A Linux rendszerű virtuális gépek biztonsági mentéseinek szkript előtti és utáni keretrendszerével kapcsolatos további információért lásd: [Linux rendszerű virtuális gépek alkalmazáskonzisztens biztonsági mentése szkript előtti és utáni keretrendszerrel](https://docs.microsoft.com/azure/backup/backup-azure-linux-app-consistent).
 
 [Ide](backup-azure-arm-vms-prepare.md#limitations-when-backing-up-and-restoring-a-vm) kattintva további információt talál arról, hogy miről készülhet biztonsági másolat, és miről nem
 

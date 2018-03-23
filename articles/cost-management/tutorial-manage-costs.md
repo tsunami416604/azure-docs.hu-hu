@@ -1,8 +1,8 @@
 ---
-title: "Oktatóanyag – Költségek kezelése az Azure Cost Managementtel | Microsoft Docs"
-description: "Ebben az oktatóanyagban megtudhatja, hogyan kezelheti a költségeket költséglefoglalási, költséghelyi visszacsatolási és költséghelyi elszámolási jelentésekkel."
+title: Oktatóanyag – Költségek kezelése az Azure Cost Managementtel | Microsoft Docs
+description: Ebben az oktatóanyagban megtudhatja, hogyan kezelheti a költségeket költséglefoglalási, költséghelyi visszacsatolási és költséghelyi elszámolási jelentésekkel.
 services: cost-management
-keywords: 
+keywords: ''
 author: bandersmsft
 ms.author: banders
 ms.date: 02/27/2018
@@ -10,15 +10,15 @@ ms.topic: tutorial
 ms.service: cost-management
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 7e9f11e702dbbe8864f8a0c307777c922e5f028d
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 238964540bffaf8d05148c587462256ce20d87f4
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="tutorial-manage-costs-by-using-azure-cost-management"></a>Oktatóanyag: Költségek kezelése az Azure Cost Managementtel
 
-Az Azure Cost Management by Cloudynben a költségeket címkék alapján foglalhatja le a költségek kezelése és a visszacsatolási jelentések előállítása érdekében. A költséglefoglalási folyamat során költségeket rendel hozzá a felhasznált felhőalapú erőforrásokhoz. A költségek teljes lefoglalása akkor történik meg, ha az összes erőforrást kategóriákba sorolta címkék segítségével. A költségek lefoglalását követően irányítópultokon és jelentéseken keresztül biztosíthat költséghelyi visszacsatolást és elszámolást a felhasználóknak. Azonban a Cost Management használatba vételekor előfordulhat, hogy számos erőforrás nem rendelkezik vagy nem látható el címkével.
+Az Azure Cost Managementben a költségeket címkék alapján foglalhatja le a költségek kezelése és a visszacsatolási jelentések előállítása érdekében. A költséglefoglalási folyamat során költségeket rendel hozzá a felhasznált felhőalapú erőforrásokhoz. A költségek teljes lefoglalása akkor történik meg, ha az összes erőforrást kategóriákba sorolta címkék segítségével. A költségek lefoglalását követően irányítópultokon és jelentéseken keresztül biztosíthat költséghelyi visszacsatolást és elszámolást a felhasználóknak. Azonban a Cost Management használatba vételekor előfordulhat, hogy számos erőforrás nem rendelkezik vagy nem látható el címkével.
 
 Például előfordulhat, hogy szeretné megtéríttetni a műszaki tervezési költségeket. Be kell tudnia mutatni a műszaki csapat számára az adott igényelt összeget az erőforrásköltségek alapján. Mutathat nekik egy jelentést, amely a *műszaki tervezés* címkével ellátott összes felhasznált erőforrást tartalmazza.
 

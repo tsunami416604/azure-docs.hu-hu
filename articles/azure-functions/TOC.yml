@@ -175,8 +175,8 @@
           href: durable-functions-sequence.md
         - name: Elosztás/összevonás
           href: durable-functions-cloud-backup.md
-        - name: Állapotalapú egyszeres
-          href: durable-functions-counter.md
+        - name: Monitorozások
+          href: durable-functions-monitor.md
         - name: Emberi beavatkozás
           href: durable-functions-phone-verification.md
         - name: Egységtesztelés

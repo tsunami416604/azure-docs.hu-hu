@@ -1,19 +1,19 @@
 ---
-title: "Helyszíni VMware-kiszolgálók előkészítése VMware virtuális gépek az Azure-ba való vészhelyreállításához | Microsoft Docs"
-description: "Ismerje meg, hogyan készíthet elő VMware-kiszolgálókat az Azure-ba irányuló vészhelyreállításhoz az Azure Site Recovery szolgáltatással."
+title: Helyszíni VMware-kiszolgálók előkészítése VMware virtuális gépek az Azure-ba való vészhelyreállításához | Microsoft Docs
+description: Ismerje meg, hogyan készíthet elő VMware-kiszolgálókat az Azure-ba irányuló vészhelyreállításhoz az Azure Site Recovery szolgáltatással.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 02/27/2018
+ms.date: 03/08/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 6b5c16e5b4136acc06c4ace4b16e8eb0e3522d24
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 07f62775c9286250d33635febe01dbad4362df12
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="prepare-on-premises-vmware-servers-for-disaster-recovery-to-azure"></a>Helyszíni VMware-kiszolgálók előkészítése az Azure-ba irányuló vészhelyreállításához
 
@@ -86,7 +86,7 @@ Győződjön meg arról, hogy a virtuális gép megfelel az alábbi táblázatba
 **Virtuális gép neve** | 1 és 63 karakter között.<br/><br/> Csak betűket, számokat és kötőjelet tartalmazhat. A virtuális gép nevének betűvel vagy számmal kell kezdődnie és végződnie.
 **Virtuális gép típusa** | 1. generációs – Linux vagy Windows<br/><br/>2. generációs – csak Windows
 
-A virtuális gépen valamelyik támogatott operációs rendszernek is futnia kell. A támogatott verziók teljes listájához tekintse meg a következőt: [Site Recovery támogatási mátrix](site-recovery-support-matrix-to-azure.md#support-for-replicated-machine-os-versions).
+A virtuális gépen valamelyik támogatott operációs rendszernek is futnia kell. A támogatott verziók teljes listájához tekintse meg a [VMware és a fizikai kiszolgáló támogatási mátrixát](vmware-physical-azure-support-matrix.md#replicated-machines).
 
 ## <a name="prepare-to-connect-to-azure-vms-after-failover"></a>Felkészülés az Azure virtuális gépekhez való kapcsolódásra a feladatátvételt követően
 

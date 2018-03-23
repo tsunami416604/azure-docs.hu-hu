@@ -1,8 +1,8 @@
 ---
-title: "Az Azure Cost Management by Cloudyn áttekintése | Microsoft Docs"
-description: "Az Azure Cost Management by Cloudyn egy többfelhős költségkezelő megoldás, amely segítséget nyújt az Azure és egyéb felhőerőforrások használatához."
+title: Az Azure Cost Management áttekintése | Microsoft Docs
+description: Az Azure Cost Management egy többfelhős költségkezelő megoldás, amely segítséget nyújt az Azure és egyéb felhőerőforrások használatához.
 services: cost-management
-keywords: 
+keywords: ''
 author: bandersmsft
 ms.author: banders
 ms.date: 01/30/2018
@@ -10,17 +10,17 @@ ms.topic: overview
 ms.service: cost-management
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: f09bb135d4521325ab3e3e12af2f69d862434b75
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: e2f12a989eb275e645c8b3bde3494928c5cbdb47
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="what-is-azure-cost-management"></a>Mi az Azure Cost Management?
 
-Az Azure Cost Management by Cloudyn használatával követheti a felhőhasználatot és az Azure-erőforrások költségeit és egyéb felhőszolgáltatókat, az AWS-t és a Google-t is beleértve. A könnyen értelmezhető irányítópult-jelentések segítenek a költséglefoglalásban és a költséghelyi visszacsatolásban/elszámolásban. A Cost Management segít optimalizálni a felhő költségeit, mivel azonosítja azokat az alacsony kihasználtságú erőforrásokat, amelyeket kezelhet és módosíthat.
+A Microsoft Cloudyn nevű leányvállalata által licencelt Azure Cost Management használatával követheti az Azure-erőforrások és egyéb felhőszolgáltatók felhőhasználatát és költségeit és, az AWS-t és a Google-t is beleértve. A könnyen értelmezhető irányítópult-jelentések segítenek a költséglefoglalásban és a költséghelyi visszacsatolásban/elszámolásban. A Cost Management segít optimalizálni a felhő költségeit, mivel azonosítja azokat az alacsony kihasználtságú erőforrásokat, amelyeket kezelhet és módosíthat.
 
-Bevezető videó: [Bevezetés az Azure Cost Management by Cloudynba](https://youtu.be/NWIRny6Wpsk).
+Bevezető videó: [Az Azure Cost Management bemutatása](https://youtu.be/NWIRny6Wpsk).
 
 ## <a name="monitor-usage-and-spending"></a>Használat és költségek monitorozása
 

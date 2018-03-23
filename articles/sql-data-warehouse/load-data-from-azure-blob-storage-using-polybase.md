@@ -1,13 +1,13 @@
 ---
-title: "Oktatóanyag: Polybase-adatbetöltés az Azure Storage Blobból az Azure SQL Data Warehouse-ba | Microsoft Docs"
-description: "Oktatóanyag, amelyben az Azure Portal és az SQL Server Management Studio használatával töltheti be New York-i taxik adatait az Azure Blob Storage-ból az Azure SQL Data Warehouse-ba."
+title: 'Oktatóanyag: Polybase-adatbetöltés az Azure Storage Blobból az Azure SQL Data Warehouse-ba | Microsoft Docs'
+description: Oktatóanyag, amelyben az Azure Portal és az SQL Server Management Studio használatával töltheti be New York-i taxik adatait az Azure Blob Storage-ból az Azure SQL Data Warehouse-ba.
 services: sql-data-warehouse
-documentationcenter: 
+documentationcenter: ''
 author: ckarst
 manager: jhubbard
-editor: 
-tags: 
-ms.assetid: 
+editor: ''
+tags: ''
+ms.assetid: ''
 ms.service: sql-data-warehouse
 ms.custom: mvc,develop data warehouses
 ms.devlang: na
@@ -56,7 +56,7 @@ Kövesse az alábbi lépéseket egy üres SQL-adattárház létrehozásához.
 
 1. Kattintson az Azure Portal bal felső sarkában található **Erőforrás létrehozása** gombra.
 
-2. Az **Új** oldalon válassza az **Adatbázisok** elemet, majd az **Új **oldal** Kiemelt **területén válassza az** SQL Data Warehouse** lehetőséget.
+2. Az **Új** oldalon válassza az **Adatbázisok** elemet, majd az **Új** oldal **Kiemelt** területén válassza az **SQL Data Warehouse** lehetőséget.
 
     ![adattárház létrehozása](media/load-data-from-azure-blob-storage-using-polybase/create-empty-data-warehouse.png)
 

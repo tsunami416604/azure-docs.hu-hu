@@ -1,24 +1,24 @@
 ---
-title: "Biztonsági megoldások integrálása az Azure Security Centerbe | Microsoft Docs"
-description: "Megtudhatja, hogy az Azure Security Center hogyan integrálható a partnerekkel az Azure-erőforrások általános biztonságának növelése érdekében."
+title: Biztonsági megoldások integrálása az Azure Security Centerbe | Microsoft Docs
+description: Megtudhatja, hogy az Azure Security Center hogyan integrálható a partnerekkel az Azure-erőforrások általános biztonságának növelése érdekében.
 services: security-center
 documentationcenter: na
 author: YuriDio
 manager: mbaldwin
-editor: 
+editor: ''
 ms.assetid: 6af354da-f27a-467a-8b7e-6cbcf70fdbcb
 ms.service: security-center
 ms.topic: hero-article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2017
+ms.date: 03/08/2018
 ms.author: yurid
-ms.openlocfilehash: 42cbc442d03cdca04d380d05d9e904355476099e
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 48648c2e84d2a2e4de01f04495fb08df603c6017
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>Biztonsági megoldások integrálása az Azure Security Centerbe
 Ez a dokumentum az Azure Security Centerhez már csatlakoztatott biztonsági megoldások kezelésében és újak hozzáadásában segít.
@@ -63,7 +63,15 @@ A Security Centerből üzembe helyezett Azure biztonsági megoldások automatiku
 
 ## <a name="manage-integrated-azure-security-solutions-and-other-data-sources"></a>Integrált Azure biztonsági megoldások és egyéb adatforrások kezelése
 
-Az üzembe helyezés után megtekintheti az integrált Azure biztonsági megoldás állapotinformációit, valamint alapszintű felügyeleti feladatokat hajthat végre. Emellett egyéb típusú biztonsági adatforrásokat is csatlakoztathat, például Common Event Format (CEF) formátumú Azure Active Directory Identity Protection-riasztásokat és tűzfalnaplókat. A Security Center irányítópultján válassza a Biztonsági megoldások lehetőséget.
+1. Jelentkezzen be az [Azure Portalra](https://azure.microsoft.com/features/azure-portal/).
+
+2. A **Microsoft Azure menüben** válassza a **Security Center** elemet. Megnyílik a **Security Center – Áttekintés** képernyő.
+
+  ![Security Center – Áttekintés](./media/security-center-partner-integration/overview.png)
+
+3. Az **Áttekintés** menüpontban válassza a **Biztonsági megoldások** elemet.
+
+A **Biztonsági megoldások** területen megtekintheti az Azure integrált biztonsági megoldásainak állapotinformációit, valamint alapszintű felügyeleti feladatokat hajthat végre. Emellett egyéb típusú biztonsági adatforrásokat is csatlakoztathat, például Common Event Format (CEF) formátumú Azure Active Directory Identity Protection-riasztásokat és tűzfalnaplókat.
 
 ### <a name="connected-solutions"></a>Csatlakoztatott megoldások
 
@@ -71,13 +79,22 @@ A **Csatlakoztatott megoldások** szakasz a Security Centerhez jelenleg csatlako
 
 ![Csatlakoztatott megoldások](./media/security-center-partner-integration/security-center-partner-integration-fig4.png)
 
+További tudnivalókért lásd a [csatlakoztatott partnermegoldások kezelését](security-center-partner-solutions.md).
+
 ### <a name="discovered-solutions"></a>Felderített megoldások
 
-A **Felderített megoldások** szakaszban az összes, az Azure-on keresztül hozzáadott megoldás látható. Emellett azok a megoldások is láthatók, amelyek csatlakoztatását a Security Center javasolja.
+A Security Center automatikusan felderíti az Azure-ban futó, azonban a Security Centerhez nem csatlakoztatott biztonsági megoldásokat, és azokat a **Felderített megoldások** szakaszban jeleníti meg. Ez az Azure-beli megoldásokat, például az [Azure AD Identity Protectiont](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection), valamint a partnermegoldásokat is tartalmazza.
+
+> [!NOTE]
+> A Felderített megoldások funkció a Standard szintű Security Centerben érhető el. A Security Center tarifacsomagjaival kapcsolatos további információért lásd a [díjszabást](security-center-pricing.md).
+>
+>
+
+Az egyes megoldások alatt a **CSATLAKOZTATÁS** gombra kattintva integrálhatja azokat a Security Centerbe, és értesülhet a biztonsági riasztásokról.
 
 ![Felderített megoldások](./media/security-center-partner-integration/security-center-partner-integration-fig5.png)
 
-A Security Center automatikusan felderíti az Azure-ban futó egyéb biztonsági megoldásokat. Ez az Azure-beli megoldásokat tartalmazza, például az [Azure AD Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection) megoldást, valamint az Azure-ban futó partnermegoldásokat. Ha integrálni szeretné ezeket a megoldásokat a Security Centerrel, válassza a **CSATLAKOZTATÁS** lehetőséget.
+A Security Center az előfizetésben üzembe helyezett azon megoldásokat is felderíti, amelyek képesek Common Event Format (CEF) formátumú naplókat továbbítani. Ismerje meg, hogyan [csatlakoztathat CEF-naplókat használó biztonsági megoldásokat](quick-security-solutions.md) a Security Centerhez.
 
 ### <a name="add-data-sources"></a>Adatforrások hozzáadása
 
@@ -86,11 +103,10 @@ Az **Adatforrások hozzáadása** szakasz sorolja fel az egyéb csatlakoztathat�
 ![Adatforrások](./media/security-center-partner-integration/security-center-partner-integration-fig7.png)
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben megismerkedett a partnermegoldások Security Centerrel való integrálásával. A Security Centerrel kapcsolatos további információkért olvassa el a következő cikkeket:
 
-* [Útmutató a Security Center tervezéséhez és működtetéséhez](security-center-planning-and-operations-guide.md)
 * [A Microsoft Advanced Threat Analytics csatlakoztatása az Azure Security Centerhez](security-center-ata-integration.md)
 * [Az Azure Active Directory Identity Protection csatlakoztatása az Azure Security Centerhez](security-center-aadip-integration.md)
 * [Biztonsági állapot monitorozása a Security Centerben](security-center-monitoring.md). Az Azure-erőforrások állapotának figyelését ismertető útmutató.
