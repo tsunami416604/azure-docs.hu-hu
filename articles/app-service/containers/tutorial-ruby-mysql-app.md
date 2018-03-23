@@ -1,8 +1,8 @@
 ---
-title: "Ruby- és MySQL-webalkalmazás létrehozása a Linuxon futó Azure App Service-ben | Microsoft Docs Microsoft Docs"
-description: "Megismerheti, hogyan tehet szert egy olyan, az Azure-ban működő Ruby-alkalmazásra, amely csatlakozik egy MySQL-adatbázishoz az Azure-ban."
+title: Ruby- és MySQL-webalkalmazás létrehozása a Linuxon futó Azure App Service-ben | Microsoft Docs Microsoft Docs
+description: Megismerheti, hogyan tehet szert egy olyan, az Azure-ban működő Ruby-alkalmazásra, amely csatlakozik egy MySQL-adatbázishoz az Azure-ban.
 services: app-service\web
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 manager: cfowler
 ms.service: app-service-web
@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 12/21/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 951e66e47cf8fbe9d2cdf1606a8d63054bcada13
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 73839127c23eca29e3a20ab4d68668dfb7c6a375
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="build-a-ruby-and-mysql-web-app-in-azure-app-service-on-linux"></a>Ruby- és MySQL-webalkalmazás létrehozása a Linuxon futó Azure App Service-ben
 
@@ -132,7 +132,7 @@ Ebben a lépésben egy MySQL-adatbázist hoz létre az [Azure Database for MySQL
 
 ### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
-[!INCLUDE [Create resource group](../../../includes/app-service-web-create-resource-group-no-h.md)] 
+[!INCLUDE [Create resource group](../../../includes/app-service-web-create-resource-group-linux-no-h.md)] 
 
 ### <a name="create-a-mysql-server"></a>MySQL-kiszolgáló létrehozása
 
@@ -312,37 +312,7 @@ Ebben a lépésben üzembe helyezi a MySQL-hez csatlakoztatott Rails-alkalmazás
 
 ### <a name="create-a-web-app"></a>Webalkalmazás létrehozása
 
-A Cloud Shellben az [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create) paranccsal hozzon létre egy webalkalmazást a `myAppServicePlan` App Service-csomagban. 
-
-A következő példában cserélje ki az `<app_name>` nevet egy globálisan egyedi névre (érvényes karakterek: `a-z`, `0-9` és `-`). A futtatókörnyezet beállítása `RUBY|2.3`, amely az [alapértelmezett Ruby rendszerképet](https://hub.docker.com/r/appsvc/ruby/) helyezi üzembe. Az összes támogatott futtatókörnyezet megtekintéséhez futtassa az [`az webapp list-runtimes`](/cli/azure/webapp?view=azure-cli-latest#az_webapp_list_runtimes) parancsot. 
-
-```azurecli-interactive
-az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app_name> --runtime "RUBY|2.3" --deployment-local-git
-```
-
-A webalkalmazás létrehozása után az Azure CLI az alábbi példához hasonló eredményeket jelenít meg:
-
-```json
-Local git is configured with url of 'https://<username>@<app_name>.scm.azurewebsites.net/<app_name>.git'
-{
-  "availabilityState": "Normal",
-  "clientAffinityEnabled": true,
-  "clientCertEnabled": false,
-  "cloningInfo": null,
-  "containerSize": 0,
-  "dailyMemoryTimeQuota": 0,
-  "defaultHostName": "<app_name>.azurewebsites.net",
-  "deploymentLocalGitUrl": "https://<username>@<app_name>.scm.azurewebsites.net/<app_name>.git",
-  "enabled": true,
-  < JSON data removed for brevity. >
-}
-```
-
-Ezzel létrehozott egy üres, új webalkalmazást, engedélyezett Git üzemelő példánnyal.
-
-> [!NOTE]
-> A távoli Git URL-címe a `deploymentLocalGitUrl` tulajdonságban látható, a következő formátumban: `https://<username>@<app_name>.scm.azurewebsites.net/<app_name>.git`. Mentse el ezt az URL-t, később még szüksége lesz rá.
->
+[!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-ruby-linux-no-h.md)] 
 
 ### <a name="configure-database-settings"></a>Adatbázis-beállítások konfigurálása
 

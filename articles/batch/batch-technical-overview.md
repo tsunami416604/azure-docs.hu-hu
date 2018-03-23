@@ -1,12 +1,12 @@
 ---
-title: "Nagyméretű párhuzamos feladatok futtatása a felhőben az Azure Batch használatával | Microsoft Docs"
-description: "Megismerheti, hogyan használhatja az Azure Batch szolgáltatást nagyméretű párhuzamos és HPC számítási feladatokhoz."
+title: Nagyméretű párhuzamos feladatok futtatása a felhőben az Azure Batch használatával | Microsoft Docs
+description: Megismerheti, hogyan használhatja az Azure Batch szolgáltatást nagyméretű párhuzamos és HPC számítási feladatokhoz.
 services: batch
-documentationcenter: 
+documentationcenter: ''
 author: mscurrell
 manager: jkabat
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: batch
 ms.workload: big-compute
 ms.tgt_pltfrm: na
@@ -15,11 +15,11 @@ ms.topic: overview
 ms.date: 01/19/2018
 ms.author: mscurrell
 ms.custom: mvc
-ms.openlocfilehash: 93eabc0bdf4889d89f8dc3fc30f99dafa1b3a47a
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: d6a0355874e9fc98e551a2a05c776109c916d90a
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="what-is-azure-batch"></a>Mi az Azure Batch?
 
@@ -85,7 +85,7 @@ Az alábbi diagram egy általános Batch-munkafolyamat lépéseit mutatja be, ah
 
 Vegye figyelembe, hogy ez a Batch használatának csak egyik módja, és ez a forgatókönyv a szolgáltatás mindössze néhány funkcióját ismerteti. Futtathat például [párhuzamosan több tevékenységet](batch-parallel-node-tasks.md) mindegyik számítási csomóponton, a [feladat-előkészítési és befejezési tevékenységekkel](batch-job-prep-release.md) pedig előkészítheti a csomópontokat a feladatokhoz, majd tisztítást végezhet. 
 
-A [Batch szolgáltatásait ismertető, fejlesztőknek szóló áttekintés](batch-api-basics.md) a készletek, csomópontok, feladatok, tevékenységek és a Batch-alkalmazások kiépítésekor használható rengeteg API-funkció részletesebb információit tartalmazza. 
+A [Batch szolgáltatásait ismertető, fejlesztőknek szóló áttekintés](batch-api-basics.md) a készletek, csomópontok, feladatok, tevékenységek és a Batch-alkalmazások kiépítésekor használható rengeteg API-funkció részletesebb információit tartalmazza. Lásd továbbá a [Batch szolgáltatás legújabb frissítéseit](https://azure.microsoft.com/updates/?product=batch).
 
 ## <a name="next-steps"></a>További lépések
 

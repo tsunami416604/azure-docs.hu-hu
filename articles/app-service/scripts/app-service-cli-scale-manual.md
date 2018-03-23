@@ -1,11 +1,11 @@
 ---
-title: "Az Azure CLI parancsfájl minta - skálázási egy webalkalmazást, manuálisan az Azure CLI 2.0 használatával |} Microsoft Docs"
-description: "Az Azure CLI parancsfájl minta - skálázási egy webalkalmazást, manuálisan az Azure CLI 2.0 használatával"
+title: Azure CLI-példaszkript – Webalkalmazások manuális skálázása az Azure CLI 2.0 használatával | Microsoft Docs
+description: Azure CLI-példaszkript – Webalkalmazások manuális skálázása az Azure CLI 2.0 használatával
 services: appservice
 documentationcenter: appservice
 author: syntaxc4
 manager: erikre
-editor: 
+editor: ''
 tags: azure-service-management
 ms.assetid: 251d9074-8fff-4121-ad16-9eca9556ac96
 ms.service: app-service
@@ -16,41 +16,41 @@ ms.workload: web
 ms.date: 12/11/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: 961805842e9beca0ee2e34abcd0c1355f502a46b
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
-ms.translationtype: MT
+ms.openlocfilehash: e5aaa6dd960544a07d786d6ccb5747f3e7914b0a
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 03/09/2018
 ---
-# <a name="scale-a-web-app-manually"></a>A webalkalmazás skálázása manuálisan
+# <a name="scale-a-web-app-manually"></a>Webalkalmazások manuális skálázása
 
-Ez a parancsfájlpélda létrehoz egy erőforráscsoport, az App Service-csomag és egy webalkalmazást. Az alkalmazásszolgáltatási csomag egyetlen példánya több példány majd méretezés.
+Ez a példaszkript egy erőforráscsoportot, egy App Service-csomagot és egy webalkalmazást hoz létre. Ezután egy példányból több példányra skálázza az App Service-csomagot.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Ha telepítése és a parancssori felület helyileg használata mellett dönt, az Azure parancssori felület verzió szüksége 2.0-s vagy újabb. A verzió megkereséséhez futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli).
+Ha a parancssori felület helyi telepítését és használatát választja, az Azure CLI 2.0-s vagy újabb verziójára lesz szükség. A verzió megkereséséhez futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli).
 
-## <a name="sample-script"></a>Mintaparancsfájl
+## <a name="sample-script"></a>Példaszkript
 
 [!code-azurecli-interactive[main](../../../cli_scripts/app-service/scale-manual/scale-manual.sh "Manual Scale")]
 
 [!INCLUDE [cli-script-clean-up](../../../includes/cli-script-clean-up.md)]
 
-## <a name="script-explanation"></a>Parancsfájl ismertetése
+## <a name="script-explanation"></a>Szkript ismertetése
 
-A parancsfájl a következő parancsokat egy erőforráscsoport, a web app és az összes kapcsolódó erőforrások létrehozásához. Minden egyes parancsa a tábla-parancs adott dokumentációjára mutató hivatkozásokat.
+A szkript a következő parancsokat használja egy erőforráscsoport, egy webalkalmazás és minden kapcsolódó erőforrás létrehozásához. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
 | Parancs | Megjegyzések |
 |---|---|
-| [`az group create`](/cli/azure/group?view=azure-cli-latest#az_group_create) | Az összes erőforrás tároló erőforrás csoportot hoz létre. |
-| [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az_appservice_plan_create) | App Service-csomag létrehozása. |
-| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create) | Létrehoz egy Azure-webalkalmazásban. |
+| [`az group create`](/cli/azure/group?view=azure-cli-latest#az_group_create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
+| [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az_appservice_plan_create) | Létrehoz egy App Service-csomagot. |
+| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create) | Létrehoz egy Azure-webalkalmazást. |
 | [`az appservice plan update`](/cli/azure/appservice/plan?view=azure-cli-latest#az_appservice_plan_update) | Frissíti az App Service-csomag tulajdonságait. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-További információ az Azure parancssori felület: [Azure CLI dokumentáció](https://docs.microsoft.com/cli/azure/overview).
+Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](https://docs.microsoft.com/cli/azure).
 
-További App Service CLI parancsfájl minták megtalálhatók a [Azure App Service-dokumentáció](../app-service-cli-samples.md).
+További App Service CLI-példaszkripteket az [Azure App Service dokumentációjában](../app-service-cli-samples.md) találhat.

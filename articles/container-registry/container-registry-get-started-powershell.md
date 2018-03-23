@@ -1,23 +1,23 @@
 ---
-title: "Rövid útmutató – Privát Docker regisztrációs adatbázis létrehozása az Azure-ban a PowerShell-lel"
-description: "Az útmutató azt ismerteti, hogyan hozhat létre egy privát Docker regisztrációs adatbázist a PowerShell-lel."
+title: Rövid útmutató – Privát Docker regisztrációs adatbázis létrehozása az Azure-ban a PowerShell-lel
+description: Az útmutató azt ismerteti, hogyan hozhat létre egy privát Docker regisztrációs adatbázist a PowerShell-lel.
 services: container-registry
 author: neilpeterson
 manager: timlt
 ms.service: container-registry
 ms.topic: quickstart
-ms.date: 02/12/2018
+ms.date: 03/03/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 80b5055dee35cd6efe62ee949c05aef386a3ba14
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 2bae45955cf3c2b157acce2544b1f35fbddd0170
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="create-an-azure-container-registry-using-powershell"></a>Azure Container Registry létrehozása a PowerShell-lel
 
-Az Azure Container Registry egy felügyelt Docker-tárolóregisztrációs adatbázis-szolgáltatás, amely a privát Docker-tárolók rendszerképeinek tárolására szolgál. Ez az útmutató az Azure Container Registry-példányok PowerShell-lel való létrehozásának módját ismerteti.
+Az Azure Container Registry egy felügyelt Docker-tárolóregisztrációs adatbázis-szolgáltatás, amely a privát Docker-tárolók rendszerképeinek tárolására szolgál. Ez az útmutató a következőket ismerteti: Azure Container Registry-példány létrehozása a PowerShell használatával, tárolórendszerkép továbbítása a regisztrációs adatbázisba, végül a tároló üzembe helyezése a regisztrációs adatbázisból az Azure Container Instances (ACI) szolgáltatásban.
 
 Ehhez a rövid útmutatóhoz az Azure PowerShell-modul 3.6-os vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable AzureRM`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket.
 
@@ -59,7 +59,7 @@ $creds = Get-AzureRmContainerRegistryCredential -Registry $registry
 
 Ezután a [docker login][docker-login] paranccsal jelentkezzen be az ACR-példányba.
 
-```bash
+```powershell
 docker login $registry.LoginServer -u $creds.Username -p $creds.Password
 ```
 
@@ -69,31 +69,61 @@ A parancs a `Login Succeeded` üzenetet adja vissza, ha befejeződött. Előford
 
 Ahhoz, hogy rendszerképet tudjon küldeni egy Azure Container Registry tárolóregisztrációs adatbázisba, először szüksége van egy rendszerképre. Ha szükséges, futtassa a következő parancsot egy előre létrehozott rendszerkép lekéréshez a Docker Hubból.
 
-```bash
+```powershell
 docker pull microsoft/aci-helloworld
 ```
 
-A rendszerképet fel kell címkézni az ACR bejelentkezési kiszolgálójának nevével. Az ACR-példány bejelentkezési kiszolgálójának teljes nevét a [Get-AzureRmContainerRegistry](/powershell/module/containerregistry/Get-AzureRmContainerRegistry) paranccsal kérheti le.
+A rendszerképet fel kell címkézni az ACR bejelentkezési kiszolgálójának nevével. Ehhez használja a [docker tag][docker-tag] parancsot. 
 
 ```powershell
-Get-AzureRmContainerRegistry | Select Loginserver
+$image = $registry.LoginServer + "/aci-helloworld:v1"
+docker tag microsoft/aci-helloworld $image
 ```
 
-Címkézze fel a rendszerképet a [docker tag][docker-tag] parancs használatával. Helyettesítse be az *acrLoginServer* helyére az ACR-példány bejelentkezési kiszolgálójának nevét.
+Végül a [docker push][docker-push] paranccsal továbbítsa a rendszerképet az ACR-be.
 
-```bash
-docker tag microsoft/aci-helloworld <acrLoginServer>/aci-helloworld:v1
+```powershell
+docker push $image
 ```
 
-Végül a [docker push][docker-push] paranccsal küldje le a rendszerképeket az ACR-példányba. Helyettesítse be az *acrLoginServer* helyére az ACR-példány bejelentkezési kiszolgálójának nevét.
+## <a name="deploy-image-to-aci"></a>Rendszerkép üzembe helyezése az ACI szolgáltatásban
+A rendszerképnek az Azure Container Instances (ACI) szolgáltatásban tárolópéldányként való üzembe helyezéséhez először konvertálja a regisztrációs adatbázis hitelesítő adatait PSCredential adattá.
 
-```bash
-docker push <acrLoginServer>/aci-helloworld:v1
+```powershell
+$secpasswd = ConvertTo-SecureString $creds.Password -AsPlainText -Force
+$pscred = New-Object System.Management.Automation.PSCredential($creds.Username, $secpasswd)
 ```
+
+A tárolórendszerképnek a tárolóregisztrációs adatbázisból 1 processzormaggal és 1 GB memóriával történő üzembe helyezéséhez futtassa az alábbi parancsot:
+
+```powershell
+New-AzureRmContainerGroup -ResourceGroup myResourceGroup -Name mycontainer -Image $image -Cpu 1 -MemoryInGB 1 -IpAddressType public -Port 80 -RegistryCredential $pscred
+```
+
+Az Azure Resource Manager kezdeti válaszát kell megkapnia a tároló részleteivel. A tároló állapotának monitorozásához és annak ellenőrzéséhez, hogy mikor fut, ismételje meg a [Get-AzureRmContainerGroup][Get-AzureRmContainerGroup] parancsot. Ez kevesebb mint egy percet vesz igénybe.
+
+```powershell
+(Get-AzureRmContainerGroup -ResourceGroupName myResourceGroup -Name mycontainer).ProvisioningState
+```
+
+Példa a kimenetre: `Succeeded`
+
+## <a name="view-the-application"></a>Az alkalmazás megtekintése
+Ha az üzembe helyezés az ACI szolgáltatásban sikeresen megtörtént, a [Get-AzureRmContainerGroup][Get-AzureRmContainerGroup] paranccsal kérje le a tároló teljes tartománynevét:
+
+```powershell
+(Get-AzureRmContainerGroup -ResourceGroupName myResourceGroup -Name mycontainer).IpAddress
+```
+
+Példa a kimenetre: `"13.72.74.222"`
+
+A futó alkalmazás megtekintéséhez nyissa meg a nyilvános IP-címet kedvenc böngészőjében. A következőhöz hasonló eredményt kell kapnia:
+
+![A Hello World alkalmazás a böngészőben][qs-portal-15]
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs rájuk szükség, a [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) paranccsal eltávolítható az erőforráscsoport, az ACR-példány és az összes tárolórendszerkép.
+Ha már nincs rá szükség, a [Remove-AzureRmResourceGroup][Remove-AzureRmResourceGroup] paranccsal eltávolítható az erőforráscsoport, az Azure Container Registry és az Azure Container Instances.
 
 ```powershell
 Remove-AzureRmResourceGroup -Name myResourceGroup
@@ -101,7 +131,7 @@ Remove-AzureRmResourceGroup -Name myResourceGroup
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban létrehozott egy Azure-beli tároló-beállításjegyzéket az Azure CLI segítségével. Ha az Azure Container Registry és az Azure Container Instances együttes használatának módját szeretné megismerni, folytassa az Azure Container Instances oktatóanyagával.
+Ebben a rövid útmutatóban létrehozott egy Azure Container Registry-példányt az Azure CLI segítségével, és futtatta annak egy példányát az Azure Container Instances szolgáltatásban. Folytassa az Azure Container Instances oktatóanyagával, amelyben alaposabban megismerheti az ACI szolgáltatást.
 
 > [!div class="nextstepaction"]
 > [Az Azure Container Instances oktatóanyaga](../container-instances/container-instances-tutorial-prepare-app.md)
@@ -113,3 +143,10 @@ Ebben a rövid útmutatóban létrehozott egy Azure-beli tároló-beállításje
 [docker-push]: https://docs.docker.com/engine/reference/commandline/push/
 [docker-tag]: https://docs.docker.com/engine/reference/commandline/tag/
 [docker-windows]: https://docs.docker.com/docker-for-windows/
+
+<!-- Links - internal -->
+[Get-AzureRmContainerGroup]: /powershell/module/azurerm.containerinstance/get-azurermcontainergroup
+[Remove-AzureRmResourceGroup]: /powershell/module/azurerm.resources/remove-azurermresourcegroup
+
+<!-- IMAGES> -->
+[qs-portal-15]: ./media/container-registry-get-started-portal/qs-portal-15.png

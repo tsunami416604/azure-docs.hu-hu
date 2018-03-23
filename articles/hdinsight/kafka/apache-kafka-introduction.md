@@ -1,8 +1,8 @@
 ---
-title: "Az Azure HDInsight-alapú Apache Kafka bemutatása | Microsoft Docs"
-description: "Ismerje meg a HDInsight-alapú Apache Kafkát: Mi ez, mire való, hol találhat rá példákat, és hol találhatja meg az első lépésekre vonatkozó információt?"
+title: Az Azure HDInsight-alapú Apache Kafka bemutatása | Microsoft Docs
+description: 'Ismerje meg a HDInsight-alapú Apache Kafkát: Mi ez, mire való, hol találhat rá példákat, és hol találhatja meg az első lépésekre vonatkozó információt?'
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 02/27/2018
 ms.author: larryfr
-ms.openlocfilehash: b91d1c1eb452ade005fceb095f8d9e62b28a14ac
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 35dc83dea7dc1310852437cd7eede32cfa890e8f
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="introducing-apache-kafka-on-hdinsight"></a>A HDInsight alatt futó Apache Kafka bemutatása
 
@@ -29,7 +29,7 @@ Az [Apache Kafka](https://kafka.apache.org) egy nyílt forráskódú elosztott s
 
 A HDInsight alatt futó Kafka a következő szolgáltatásokat biztosítja:
 
-* __99%-os szolgáltatói szerződés (SLA) a Kafka üzemidejével kapcsolatban__: További információkért lásd [a HDInsight szolgáltatói szerződésével kapcsolatos információkat ismertető](https://azure.microsoft.com/support/legal/sla/hdinsight/v1_0/) dokumentumot.
+* __99,9%-os szolgáltatói szerződés (SLA) a Kafka üzemidejével kapcsolatban__: További információkért lásd [a HDInsight szolgáltatói szerződésével kapcsolatos információkat ismertető](https://azure.microsoft.com/support/legal/sla/hdinsight/v1_0/) dokumentumot.
 
 * __Hibatűrés és állványfigyelés__: A Kafkát egy egydimenziós állványnézettel tervezték, amely jól működik bizonyos környezetekben. Viszont az olyan környezetek esetében, mint amilyen az Azure, az állvány két dimenzióra oszlik: a frissítési tartományokra (UD-k) és a tartalék tartományokra (FD-k). A Microsoft biztosítja azokat az eszközöket, amelyek kiegyenlítik a Kafka-partíciókat és -replikákat a frissítési és tartalék tartományok között. 
 

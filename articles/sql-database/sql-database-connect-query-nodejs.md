@@ -1,25 +1,20 @@
 ---
-title: "Node.js használata Azure SQL Database-adatbázis lekérdezéséhez | Microsoft Docs"
-description: "Ez a témakör bemutatja, hogyan használhatja a Node.js-t egy Azure SQL Database-adatbázishoz csatlakozó program létrehozásához, és hogyan hajthat végre lekérdezést Transact-SQL-utasításokkal."
+title: Node.js használata Azure SQL Database-adatbázis lekérdezéséhez | Microsoft Docs
+description: Ez a témakör bemutatja, hogyan használhatja a Node.js-t egy Azure SQL Database-adatbázishoz csatlakozó program létrehozásához, és hogyan hajthat végre lekérdezést Transact-SQL-utasításokkal.
 services: sql-database
-documentationcenter: 
 author: CarlRabeler
-manager: jhubbard
-editor: 
-ms.assetid: 53f70e37-5eb4-400d-972e-dd7ea0caacd4
+manager: craigg
 ms.service: sql-database
 ms.custom: mvc,develop apps
-ms.workload: On Demand
-ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 07/06/2017
 ms.author: carlrab
-ms.openlocfilehash: fc7bc80e332afeb284f9e71609d1d02b8193b6f7
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.openlocfilehash: 3f28f360eda52087c8fca841bbd0a6804185813f
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="use-nodejs-to-query-an-azure-sql-database"></a>Node.js használata Azure SQL Database-adatbázis lekérdezéséhez
 
@@ -125,7 +120,7 @@ Nyisson meg egy parancssort, és hozzon létre egy *sqltest* nevű mappát. Kere
 
 2. Győződjön meg arról, hogy a parancssori felület visszaadta az első 20 sort, majd zárja be az alkalmazásablakot.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ az [SQL Serverhez készült Microsoft Node.js-illesztőről](https://docs.microsoft.com/sql/connect/node-js/node-js-driver-for-sql-server/)
 - További információ [az Azure SQL Database-adatbázisokhoz való csatlakozásról és a .NET Core-ral való lekérdezésükről](sql-database-connect-query-dotnet-core.md) Windows/Linux/macOS rendszeren.  

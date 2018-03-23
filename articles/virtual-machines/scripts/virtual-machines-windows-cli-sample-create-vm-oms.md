@@ -1,13 +1,13 @@
 ---
-title: "Az Azure CLI-parancsfájlt minták – Windows Server 2016 virtuális gép létrehozása az OMS-figyeléssel |} Microsoft Docs"
-description: "Az Azure CLI-parancsfájlt minták – Windows Server 2016 virtuális gép létrehozása az OMS-figyeléssel"
+title: Azure CLI-példaszkript – Windows Server 2016 virtuális gép létrehozása OMS-monitorozással | Microsoft Docs
+description: Azure CLI-példaszkript – Windows Server 2016 virtuális gép létrehozása OMS-monitorozással
 services: virtual-machines-Windows
 documentationcenter: virtual-machines
 author: rickstercdn
 manager: timlt
 editor: tysonn
-tags: 
-ms.assetid: 
+tags: ''
+ms.assetid: ''
 ms.service: virtual-machines-Windows
 ms.devlang: azurecli
 ms.topic: sample
@@ -16,45 +16,45 @@ ms.workload: infrastructure
 ms.date: 02/23/2017
 ms.author: rclaus
 ms.custom: mvc
-ms.openlocfilehash: f59d3576526d6e91482cd1df10fa2e9de75954aa
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: MT
+ms.openlocfilehash: 7d9a72ba46def786e03565521ca225d438aa26b4
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/09/2018
 ---
-# <a name="monitor-a-vm-with-operations-management-suite"></a>Virtuális gép és az Operations Management Suite figyelése
+# <a name="monitor-a-vm-with-operations-management-suite"></a>Virtuális gép monitorozása az Operations Management Suite használatával
 
-Ezt a parancsfájlt hoz létre egy Azure virtuális gépet, telepíti az Operations Management Suite (OMS) ügynök, és regisztrálja a rendszer az OMS-munkaterület. Miután a parancsfájl lefutott, a virtuális gép lesz látható az OMS-konzolon.
+Ez a szkript egy Azure-beli virtuális gépet hoz létre, telepíti az Operations Management Suite- (OMS-) ügynököt, és regisztrálja a rendszert egy OMS-munkaterületen. A szkript futtatását követően a virtuális gép megjelenik az OMS-konzolon.
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="sample-script"></a>Mintaparancsfájl
+## <a name="sample-script"></a>Példaszkript
 
 [!code-azurecli-interactive[main](../../../cli_scripts/virtual-machine/create-vm-monitor-oms/create-windows-vm-monitor-oms.sh "Quick Create VM")]
 
 ## <a name="clean-up-deployment"></a>Az üzemelő példány eltávolítása 
 
-A következő parancsot az erőforráscsoport, virtuális gép és az összes kapcsolódó erőforrások eltávolítása.
+Az alábbi paranccsal eltávolítható az erőforráscsoport, a virtuális gép és az összes kapcsolódó erőforrás.
 
 ```azurecli-interactive 
 az group delete --name myResourceGroup --yes
 ```
 
-## <a name="script-explanation"></a>Parancsfájl ismertetése
+## <a name="script-explanation"></a>Szkript ismertetése
 
-A parancsfájl a következő parancsokat egy erőforráscsoport, virtuális gép és minden kapcsolódó erőforrás létrehozásához. Minden egyes parancsa a tábla-parancs adott dokumentációjára mutató hivatkozásokat.
+A szkript a következő parancsokat használja egy erőforráscsoport, egy virtuális gép és minden kapcsolódó erőforrás létrehozásához. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
 | Parancs | Megjegyzések |
 |---|---|
-| [az csoport létrehozása](https://docs.microsoft.com/cli/azure/group#az_group_create) | Az összes erőforrás tároló erőforrás csoportot hoz létre. |
-| [az virtuális gép létrehozása](https://docs.microsoft.com/cli/azure/vm#az_vm_create) | A virtuális gépet hoz létre, és csatlakozik a hálózati kártya, virtuális hálózatot, alhálózatot és NSG. Ez a parancs is meghatározza a használandó virtuálisgép-lemezkép, és rendszergazdai hitelesítő adatait.  |
-| [Azure virtuális gép bővítmény beállítása](https://docs.microsoft.com/cli/azure/vm/extension#az_vm_extension_set) | A virtuális gép fut egy Virtuálisgép-bővítmény. Ebben az esetben az Operations Management Suite ügynök kiterjesztést az OMS-ügynököt telepíteni és regisztrálni az OMS-munkaterület virtuális gép használja. |
-| [az csoport törlése](https://docs.microsoft.com/cli/azure/vm/extension#az_vm_extension_set) | Egy olyan erőforráscsoport, beleértve az összes beágyazott erőforrások törlése. |
+| [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
+| [az vm create](https://docs.microsoft.com/cli/azure/vm#az_vm_create) | Létrehozza a virtuális gépet, és csatlakoztatja a hálózati kártyához, a virtuális hálózathoz, az alhálózathoz és az NSG-hez. A parancs megadja továbbá a használandó virtuálisgép-rendszerképet és a rendszergazdai jelszavakat.  |
+| [azure vm extension set](https://docs.microsoft.com/cli/azure/vm/extension#az_vm_extension_set) | Futtat egy virtuálisgép-bővítményt egy virtuális gépen. Ebben az esetben az Operations Management Suite-ügynökbővítmény telepíti az OMS-ügynököt, és regisztrálja a virtuális gépet egy OMS-munkaterületen. |
+| [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az_vm_extension_set) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-További információ az Azure parancssori felület: [Azure CLI dokumentáció](https://docs.microsoft.com/cli/azure/overview).
+Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](https://docs.microsoft.com/cli/azure).
 
-További virtuális gép CLI parancsfájl minták megtalálhatók a [Azure Windows virtuális dokumentációját](../windows/cli-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+További virtuális gép CLI-példaszkripteket az [Azure Windows virtuális gépekre vonatkozó dokumentációban](../windows/cli-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) találhat.

@@ -1,8 +1,8 @@
 ---
-title: "Azure Nagyvállalati Szerződés regisztrálása az Azure Cost Managementben | Microsoft Docs"
-description: "Regisztrálhat az Azure Cost Managementbe a Nagyvállalati Szerződésével a Cloudynen keresztül."
+title: Azure Nagyvállalati Szerződés regisztrálása az Azure Cost Managementben | Microsoft Docs
+description: Az Azure Cost Managementbe a Nagyvállalati Szerződésével regisztrálhat.
 services: cost-management
-keywords: 
+keywords: ''
 author: bandersmsft
 ms.author: banders
 ms.date: 01/30/2018
@@ -10,15 +10,15 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.service: cost-management
 manager: carmonm
-ms.openlocfilehash: 1b552ba5a0c3afd066e2ac62c8b3a90dd7696185
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 75ae3aabf51a14ceb3326e7f3cee3e20d9b98579
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="register-an-azure-enterprise-agreement-and-view-cost-data"></a>Azure Nagyvállalati Szerződés regisztrálása és a költségadatok megtekintése
 
-Regisztrálhat az Azure Cost Managementbe az Azure Nagyvállalati Szerződéssel a Cloudynen keresztül. A regisztráció hozzáférést biztosít a Cloudyn portálhoz. Ez a rövid útmutató részletesen ismerteti a Cloudyn próbaverziójára szóló előfizetés létrehozásához és a Cloudyn-portálra való bejelentkezéshez szükséges folyamatot. Azt is bemutatja, hogyan tekintheti meg azonnal a költségadatokat.
+Az Azure Cost Managementbe Azure Nagyvállalati Szerződésével regisztrálhat. A regisztráció hozzáférést biztosít a Cloudyn portálhoz. Ez a rövid útmutató részletesen ismerteti a Cloudyn próbaverziójára szóló előfizetés létrehozásához és a Cloudyn-portálra való bejelentkezéshez szükséges folyamatot. Azt is bemutatja, hogyan tekintheti meg azonnal a költségadatokat.
 
 ## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
 
@@ -41,13 +41,13 @@ Regisztrálhat az Azure Cost Managementbe az Azure Nagyvállalati Szerződéssel
 7. Az **Invite other stakeholders** (További érdekelt felek meghívása) területen hozzáadhat felhasználókat az e-mail-címük megadásával. Ha kész van, kattintson a **Next** (Tovább) gombra. Az Azure-regisztrációja méretétől függően akár 24 órát is igénybe vehet, míg a rendszer az összes elszámolási adatot hozzáadja a Clodynhez.
 8. A **Go to Cloudyn** (Ugrás a Cloudynre) elemre kattintva nyissa meg a Cloudyn portált, ahol a **Cloud Accounts Management** (Felhőalapú fiókok felügyelete) oldalon látnia kell a regisztrált EA-fiók adatait.
 
-Oktatóvideó a Nagyvállalati Szerződés regisztrációjáról: [Az EA regisztrációs azonosító és API-kulcs megkeresése az Azure Cost Management használatához a Cloudynen keresztül](https://youtu.be/u_phLs_udig).
+Oktatóvideó a Nagyvállalati Szerződés regisztrációjáról: [Az EA regisztrációs azonosító és API-kulcs megkeresése az Azure Cost Management használatához](https://youtu.be/u_phLs_udig).
 
 [!INCLUDE [cost-management-create-account-view-data](../../includes/cost-management-create-account-view-data.md)]
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban az Azure Nagyvállalati Szerződés adatait használta arra, hogy regisztráljon a Cost Management szolgáltatásra. A Cloudyn portálra is bejelentkezett, és elkezdte a költségadatok áttekintését. Ha bővebb információra van szüksége a Cloudynen keresztül használt Azure Cost Managementről, lépjen tovább a Cost Management oktatóanyagára.
+Ebben a rövid útmutatóban az Azure Nagyvállalati Szerződés adatait használta arra, hogy regisztráljon a Cost Management szolgáltatásra. A Cloudyn portálra is bejelentkezett, és elkezdte a költségadatok áttekintését. Ha bővebb információra van szüksége az Azure Cost Managementről, lépjen tovább a Cost Management oktatóanyagára.
 
 > [!div class="nextstepaction"]
 > [A használat és a költségek áttekintése](./tutorial-review-usage.md)

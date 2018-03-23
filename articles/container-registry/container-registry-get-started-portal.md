@@ -1,23 +1,23 @@
 ---
-title: "Rövid útmutató – Privát Docker-tárolójegyzék létrehozása az Azure-ban az Azure Portallal"
-description: "Gyorsan megismerheti egy privát Docker-tárolójegyzék az Azure Portallal való létrehozásának módját."
+title: Rövid útmutató – Privát Docker-tárolójegyzék létrehozása az Azure-ban az Azure Portallal
+description: Gyorsan megismerheti egy privát Docker-tárolójegyzék az Azure Portallal való létrehozásának módját.
 services: container-registry
 author: mmacy
 manager: timlt
 ms.service: container-registry
 ms.topic: quickstart
-ms.date: 12/06/2017
+ms.date: 03/03/2018
 ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: 1a4c5b365b93b30987ff6541aba762cbf8a4b7a5
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: db112f7f8f486093509a86f9781c30133925c25f
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="create-a-container-registry-using-the-azure-portal"></a>Tároló-beállításjegyzék létrehozása az Azure Portalon
 
-Az Azure-beli tároló-beállításjegyzék egy privát Docker-tárolójegyzék az Azure-ban, amelyben tárolhatja és kezelheti privát Docker-tárolóinak rendszerképeit. Ebben a rövid útmutatóban létrehozhat egy tároló-beállításjegyzéket az Azure Portallal.
+Az Azure-beli tároló-beállításjegyzék egy privát Docker-tárolójegyzék az Azure-ban, amelyben tárolhatja és kezelheti privát Docker-tárolóinak rendszerképeit. Ebben a rövid útmutatóban létrehoz egy tárolóregisztrációs adatbázist az Azure Portallal, továbbít egy rendszerképet a regisztrációs adatbázisba, végül üzembe helyezi a tárolót a regisztrációs adatbázisból az Azure Container Instances (ACI) szolgáltatásban.
 
 A rövid útmutató elvégzéséhez a Docker helyi telepítése szükséges. A Docker csomagokat biztosít, amelyekkel a Docker egyszerűen konfigurálható bármely [Mac][docker-mac], [Windows][docker-windows] vagy [Linux][docker-linux] rendszeren.
 
@@ -73,13 +73,13 @@ docker pull microsoft/aci-helloworld
 
 Mielőtt leküldi a rendszerképet a beállításjegyzékbe, fel kell címkéznie az ACR bejelentkezési kiszolgáló nevével. Címkézze fel a rendszerképet a [docker tag][docker-tag] parancs használatával. Cserélje le a *bejelentkezési kiszolgáló* értéket a korábban feljegyzett bejelentkezési kiszolgáló nevére.
 
-```
+```bash
 docker tag microsoft/aci-helloworld <login server>/aci-helloworld:v1
 ```
 
 Végül a [docker push][docker-push] paranccsal küldje le a rendszerképet az ACR-példányba. Cserélje le a *bejelentkezési kiszolgáló* értéket ACR-példánya bejelentkezési kiszolgálójának nevére.
 
-```
+```bash
 docker push <login server>/aci-helloworld:v1
 ```
 
@@ -104,15 +104,43 @@ Ebben a példában az **aci-helloworld** adattárat választjuk; a **CÍMKÉK** 
 
 ![Tároló-beállításjegyzék létrehozása az Azure Portalon][qs-portal-09]
 
+## <a name="deploy-image-to-aci"></a>Rendszerkép üzembe helyezése az ACI szolgáltatásban
+
+Egy példány regisztrációs adatbázisból való üzembe helyezéséhez meg kell keresnie az adattárat (aci-helloworld) és a v1 mellett található három pontra kell kattintania.
+
+![Azure Container Instance-példány indítása a portálról][qs-portal-10]
+
+Válassza a megjelenő helyi menü **Run instance** (Példány futtatása) elemét:
+
+![ACI indítása – helyi menü][qs-portal-11]
+
+Töltse ki a **Tárolónév** mezőt, ellenőrizze, hogy a megfelelő előfizetés van kijelölve, az **Erőforráscsoport** részen válassza a meglévő „myResourceGroup” erőforráscsoportot, majd kattintson az **OK** gombra az Azure Container Instance-példány elindításához.
+
+![ACI indítása – üzembehelyezési beállítások][qs-portal-12]
+
+Az üzembe helyezés kezdetekor az irányítópulton egy csempe jelenik meg, amely az üzembehelyezési folyamatot jelzi. Miután az üzembe helyezés befejeződött, a csempe frissül, és az új **mycontainer** tárolócsoportot mutatja.
+
+![ACI üzembehelyezési állapota][qs-portal-13]
+
+Válassza ki a mycontainer tárolócsoportot a tárolócsoport tulajdonságainak megjelenítéséhez. Jegyezze fel a tárolócsoport **IP-címét** és a tároló **ÁLLAPOT** értékét.
+
+![ACI-tároló részletei][qs-portal-14]
+
+## <a name="view-the-application"></a>Az alkalmazás megtekintése
+
+Ha a tároló **Fut** állapotú, a kedvenc böngészőjében nyissa meg az előző lépésben feljegyzett IP-címet az alkalmazás megjelenítéséhez.
+
+![A Hello World alkalmazás a böngészőben][qs-portal-15]
+
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs rá szükség, törölje a **myResourceGroup** erőforráscsoportot. Ezzel törli az erőforráscsoportot, az ACR-példányt és az összes tárolórendszerképet.
+Az erőforrások eltávolításához lépjen a **myResourceGroup** erőforráscsoporthoz a portálon. Miután az erőforráscsoport betöltött, kattintson az **Erőforráscsoport törlése** lehetőségre az erőforráscsoport, az Azure Container Registry és az Azure Container Instances eltávolításához.
 
 ![Tároló-beállításjegyzék létrehozása az Azure Portalon][qs-portal-08]
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban létrehozott egy Azure Container Registry tárolóregisztrációs adatbázist az Azure Portalon. Ha az Azure Container Registry és az Azure Container Instances együttes használatának módját szeretné megismerni, folytassa az Azure Container Instances oktatóanyagával.
+Ebben a rövid útmutatóban létrehozott egy Azure Container Registry-példányt az Azure CLI segítségével, és futtatta annak egy példányát az Azure Container Instances használatával. Folytassa az Azure Container Instances oktatóanyagával, amelyben alaposabban megismerheti az ACI szolgáltatást.
 
 > [!div class="nextstepaction"]
 > [Az Azure Container Instances oktatóanyagai][container-instances-tutorial-prepare-app]
@@ -127,6 +155,12 @@ Ebben a rövid útmutatóban létrehozott egy Azure Container Registry tárolór
 [qs-portal-07]: ./media/container-registry-get-started-portal/qs-portal-07.png
 [qs-portal-08]: ./media/container-registry-get-started-portal/qs-portal-08.png
 [qs-portal-09]: ./media/container-registry-get-started-portal/qs-portal-09.png
+[qs-portal-10]: ./media/container-registry-get-started-portal/qs-portal-10.png
+[qs-portal-11]: ./media/container-registry-get-started-portal/qs-portal-11.png
+[qs-portal-12]: ./media/container-registry-get-started-portal/qs-portal-12.png
+[qs-portal-13]: ./media/container-registry-get-started-portal/qs-portal-13.png
+[qs-portal-14]: ./media/container-registry-get-started-portal/qs-portal-14.png
+[qs-portal-15]: ./media/container-registry-get-started-portal/qs-portal-15.png
 
 <!-- LINKS - external -->
 [docker-linux]: https://docs.docker.com/engine/installation/#supported-platforms

@@ -1,6 +1,6 @@
 ---
-title: "Kerékpármegosztással kapcsolatos oktatóanyag – Fejlett adat-előkészítés az Azure Machine Learning Workbench használatával"
-description: "Ebben az oktatóanyagban az Azure Machine Learning Workbench használatával fog egy teljes körű adat-előkészítési műveletet elvégezni"
+title: Kerékpármegosztással kapcsolatos oktatóanyag – Fejlett adat-előkészítés az Azure Machine Learning Workbench használatával
+description: Ebben az oktatóanyagban az Azure Machine Learning Workbench használatával fog egy teljes körű adat-előkészítési műveletet elvégezni
 services: machine-learning
 author: ranvijaykumar
 ms.author: ranku
@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 09/21/2017
-ms.openlocfilehash: ca7239fd3e31c7a6cfc6fb64e04afb376e01c190
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: f1d4b58d0fe0628aa00b8229a1383d3ada414f62
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="tutorial-use-azure-machine-learning-workbench-for-advanced-data-preparation-bike-share-data"></a>Oktatóanyag: Az Azure Machine Learning Workbench használata haladó adat-előkészítéshez (Kerékpármegosztási adatok)
 Az Azure Machine Learning (előzetes verzió) egy adatszakértőknek készült, az adatok előkészítéséhez, a kísérletek kidolgozásához és a modellek felhőméretű üzembe helyezéséhez létrehozott átfogó, integrált és fejlett adatelemzési megoldás.
@@ -204,7 +204,7 @@ Az Azure Blob Storage használható az adatfájlok tárolására.
 
    ![Az adatforrás, a minta és a lépések megjelenítése](media/tutorial-bikeshare-dataprep/weatherdataloaded.png)
 
-### <a name="view-data-source-metrics"></a>Az adatforrás metrikáinak megtekintése
+### <a name="view-data-source-metrics"></a>Az adatforrás mérőszámainak megtekintése
 
 Kattintson a lap rácsnézetének bal felső sarkában található __Metrikák__ gombra. Ez a nézet jeleníti meg a mintavételezett adatok elosztását és egyéb összesített statisztikáit.
 
@@ -736,7 +736,7 @@ Ha az **Összekapcsolás eredményei** adatfolyamot egy .CSV fájlba szeretné m
 3. Hozza létre a HDInsight futtatási konfigurációt. Ehhez a fürtje nevére és az `sshuser` jelszavára lesz szüksége.
 
     ```azurecli
-    az ml computetarget attach --name hdinsight --address <yourclustername>.azurehdinsight.net --username sshuser --password <your password> --type cluster
+    az ml computetarget attach cluster --name hdinsight --address <yourclustername>.azurehdinsight.net --username sshuser --password <your password>
     az ml experiment prepare -c hdinsight
     ```
 > [!NOTE]

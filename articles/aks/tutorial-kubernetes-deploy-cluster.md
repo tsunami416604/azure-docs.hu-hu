@@ -1,6 +1,6 @@
 ---
-title: "Azure-on futó Kubernetes oktatóanyag – Fürtök üzembe helyezése"
-description: "AKS-oktatóanyag – Fürtök üzembe helyezése"
+title: Azure-on futó Kubernetes oktatóanyag – Fürtök üzembe helyezése
+description: AKS-oktatóanyag – Fürtök üzembe helyezése
 services: container-service
 author: neilpeterson
 manager: timlt
@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.date: 02/24/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 975069dbe9283c98482d7d0d5741a595ef323b35
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 6ea26a2d4214c41faa5d63b7c72667955a43d6a2
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="deploy-an-azure-container-service-aks-cluster"></a>Azure Container Service- (AKS-) fürt üzembe helyezése
 
@@ -85,7 +85,7 @@ Az oktatóanyag elvégzésével rendelkezésére áll majd egy számítási fela
 
 ## <a name="configure-acr-authentication"></a>Az ACR-hitelesítés konfigurálása
 
-Hitelesítést kell konfigurálni az AKS-fürt és az ACR-beállításjegyzék között. Ennek részeként megfelelő jogosultságokat kell biztosítania az ACS-identitásnak, hogy rendszerképeket tudjon lekérni az ACR-beállításjegyzékből.
+Hitelesítést kell konfigurálni az AKS-fürt és az ACR-beállításjegyzék között. Ennek részeként megfelelő jogosultságokat kell biztosítania az AKS-identitásnak, hogy rendszerképeket tudjon lekérni az ACR-beállításjegyzékből.
 
 Először szerezze be az AKS-hez konfigurált szolgáltatásnév azonosítóját. Frissítse az erőforráscsoport és az AKS-fürt nevét, hogy megfeleljenek az aktuális környezetnek.
 
@@ -96,7 +96,7 @@ CLIENT_ID=$(az aks show --resource-group myResourceGroup --name myAKSCluster --q
 Szerezze be az ACR-beállításjegyzék erőforrás-azonosítóját. Frissítse a beállításjegyzék nevét az ACR-beállításjegyzék nevére, és az erőforráscsoportot arra az erőforráscsoportra, ahol az ACR-beállításjegyzék található.
 
 ```azurecli
-ACR_ID=$(az acr show --name myACRRegistry --resource-group myResourceGroup --query "id" --output tsv)
+ACR_ID=$(az acr show --name <acrName> --resource-group myResourceGroup --query "id" --output tsv)
 ```
 
 Hozza létre a megfelelő hozzáférést biztosító szerepkör-hozzárendelést.

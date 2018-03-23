@@ -1,11 +1,11 @@
 ---
-title: "Egy nem galéria-alkalmazást konfigurált összevont bejelentkezés problémák egyszeri bejelentkezés |} Microsoft Docs"
-description: "Útmutató a konkrét problémák lehetséges, hogy szembesülhetnek, az alkalmazás beállítása az SAML-alapú összevont egyszeri bejelentkezés az Azure ad-vel történő bejelentkezéskor"
+title: Egy nem galéria-alkalmazást konfigurált összevont bejelentkezés problémák egyszeri bejelentkezés |} Microsoft Docs
+description: Útmutató a konkrét problémák lehetséges, hogy szembesülhetnek, az alkalmazás beállítása az SAML-alapú összevont egyszeri bejelentkezés az Azure ad-vel történő bejelentkezéskor
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -63,7 +63,7 @@ Miután frissítette az azonosító értéket az Azure ad-ben, és azt az érté
 
 ## <a name="the-reply-address-does-not-match-the-reply-addresses-configured-for-the-application"></a>A válaszcím nem egyezik meg az alkalmazáshoz beállított válasz-címeket. 
 
-*AADSTS50011. hiba: A címet https://contoso.com "nem felel meg a válasz címek konfigurálva az alkalmazáshoz* 
+*AADSTS50011. hiba: A címet "https://contoso.com" nem felel meg a válasz címek konfigurálva az alkalmazáshoz* 
 
 **Lehetséges ok** 
 

@@ -1,8 +1,8 @@
 ---
-title: "Oktatóanyag – Hozzáférések hozzárendelése az Azure Cost Managementben | Microsoft Docs"
-description: "Ebben az oktatóanyagban megtudhatja, hogyan rendelhet hozzáféréseket a költségkezelési adatokhoz olyan felhasználói fiókokkal, amelyek meghatározzák az entitások hozzáférési szintjeit."
+title: Oktatóanyag – Hozzáférések hozzárendelése az Azure Cost Managementben | Microsoft Docs
+description: Ebben az oktatóanyagban megtudhatja, hogyan rendelhet hozzáféréseket a költségkezelési adatokhoz olyan felhasználói fiókokkal, amelyek meghatározzák az entitások hozzáférési szintjeit.
 services: cost-management
-keywords: 
+keywords: ''
 author: bandersmsft
 ms.author: banders
 ms.date: 02/27/2018
@@ -10,11 +10,11 @@ ms.topic: tutorial
 ms.service: cost-management
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 0e2edc946c5d6ada1049fbd6a960ec138f7088f2
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 6434eb9780eefdcd492273f11f8675668d8d6479
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="tutorial-assign-access-to-cost-management-data"></a>Oktatóanyag: Hozzáférések hozzárendelése költségkezelési adatokhoz
 
@@ -54,7 +54,7 @@ A költségvetési adatokhoz irányítópult- és jelentésszintű hozzáférés
 
 ![felhasználói hozzáféréssel rendelkező új felhasználó hozzáadása](.\media\tutorial-user-access\new-user-access.png)
 
-A felhasználók hozzáadásáról szóló oktatóvideó: [Felhasználók felvétele az Azure Cost Management by Cloudyn rendszerébe](https://youtu.be/Nzn7GLahx30).
+A felhasználók hozzáadásáról szóló oktatóvideó: [Felhasználók felvétele az Azure Cost Management rendszerébe](https://youtu.be/Nzn7GLahx30).
 
 ## <a name="create-entities"></a>Entitások létrehozása
 
@@ -75,9 +75,9 @@ Az **Entities** (Entitások) elem mellett kattintson az **Add Entity** (Entitás
 Amikor elkészült, **mentse** az entitást.
 
 
-A költségentitás-hierarchiák létrehozásáról szóló oktatóvideó: [Költségentitás-hierarchia létrehozása az Azure Cost Management by Cloudynben](https://youtu.be/dAd9G7u0FmU).
+A költségentitás-hierarchiák létrehozásáról szóló oktatóvideó: [Költségentitás-hierarchia létrehozása az Azure Cost Managementben](https://youtu.be/dAd9G7u0FmU).
 
-Ha Ön Azure Nagyvállalati Szerződés alá tartozó felhasználó, tekintse meg a fiókok és előfizetések entitásokkal való társításáról szóló videót: [Csatlakozás az Azure Resource Managerhez az Azure Cost Management by Cloudynben](https://youtu.be/oCIwvfBB6kk).
+Ha Ön Azure Nagyvállalati Szerződés alá tartozó felhasználó, tekintse meg a fiókok és előfizetések entitásokkal való társításáról szóló videót: [Csatlakozás az Azure Resource Managerhez az Azure Cost Managementben](https://youtu.be/oCIwvfBB6kk).
 
 ## <a name="next-steps"></a>További lépések
 

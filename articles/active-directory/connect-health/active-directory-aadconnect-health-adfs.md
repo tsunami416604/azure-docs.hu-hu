@@ -1,8 +1,8 @@
 ---
-title: "Az Azure AD Connect Health használata az AD FS szolgáltatással | Microsoft Docs"
-description: "Ez az Azure AD Connect Health oldal bemutatja, hogyan figyelheti helyszíni AD FS infrastruktúráját."
+title: Az Azure AD Connect Health használata az AD FS szolgáltatással | Microsoft Docs
+description: Ez az Azure AD Connect Health oldal bemutatja, hogyan figyelheti helyszíni AD FS infrastruktúráját.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: karavar
 manager: mtillman
 editor: curtand
@@ -15,11 +15,11 @@ ms.topic: get-started-article
 ms.date: 07/18/2017
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4928364ffd732f587e41a788c4d834e91339a7fc
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: f363119ae75a1adb5a01d584de70fba0f3852dfc
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="monitor-ad-fs-using-azure-ad-connect-health"></a>Az AD FS monitorozása az Azure AD Connect Health használatával
 Az alábbi dokumentáció az AD FS infrastruktúra Azure AD Connect Health használatával végzett figyelésére vonatkozik. Az Azure AD Connect (szinkronizálási szolgáltatás) az Azure AD Connect Health használatával történő megfigyelésével kapcsolatos információkat [Az Azure AD Connect Health szinkronizálási szolgáltatás használata](active-directory-aadconnect-health-sync.md) című témakörben tekintheti meg. Az Active Directory tartományi szolgáltatások az Azure AD Connect Health használatával történő megfigyelésével kapcsolatos információkat pedig a [Using Azure AD Connect Health with AD DS](active-directory-aadconnect-health-adds.md) (Az Azure AD Connect Health használata az AD DS szolgáltatással) című témakörben találja.
@@ -115,9 +115,12 @@ A jelentésben az alábbi információk találhatók:
 | Legutóbbi sikertelen kísérlet IP-címe |A legutóbbi sikertelen kérelemhez tartozó IP-címet jeleníti meg. |
 
 > [!NOTE]
-> A jelentés 12 óránként automatikusan frissül az ez idő alatt gyűjtött új információkkal. Ezért az utolsó két órában gyűjtött bejelentkezési kísérletek esetleg még nem szerepelnek a jelentésben.
+> A jelentés 12 óránként automatikusan frissül az ez idő alatt gyűjtött új információkkal. Ezért az utolsó 12 órában gyűjtött bejelentkezési kísérletek esetleg még nem szerepelnek a jelentésben.
 >
 >
+
+### <a name="risky-ip-report"></a>Kockázatos IP jelentés 
+Az előzetes verzió hamarosan elérhető lesz.
 
 ## <a name="related-links"></a>Kapcsolódó hivatkozások
 * [Azure AD Connect Health](active-directory-aadconnect-health.md)

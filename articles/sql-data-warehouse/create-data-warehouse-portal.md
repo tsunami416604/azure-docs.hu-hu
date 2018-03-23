@@ -1,12 +1,12 @@
 ---
-title: "Rövid útmutató: Azure SQL Data Warehouse létrehozása – Azure Portal | Microsoft Docs"
-description: "Az Azure SQL Data Warehouse számára létrehozhat egy SQL-kiszolgálót, egy kiszolgálószintű tűzfalszabályt és egy adattárházat az Azure Portalon. Ezután lekérdezéseket futtathat rajta."
-keywords: "sql data warehouse oktatóanyag, sql data warehouse létrehozása"
+title: 'Rövid útmutató: Azure SQL Data Warehouse létrehozása – Azure Portal | Microsoft Docs'
+description: Az Azure SQL Data Warehouse számára létrehozhat egy SQL-kiszolgálót, egy kiszolgálószintű tűzfalszabályt és egy adattárházat az Azure Portalon. Ezután lekérdezéseket futtathat rajta.
+keywords: sql data warehouse oktatóanyag, sql data warehouse létrehozása
 services: sql-database
-documentationcenter: 
+documentationcenter: ''
 author: barbkess
 manager: jhubbard
-editor: 
+editor: ''
 ms.service: sql-database
 ms.custom: mvc,DBs & servers
 ms.workload: Active
@@ -43,7 +43,7 @@ Az alábbi lépéseket követve létrehozhat egy SQL-adattárházat az Adventure
 
 1. Kattintson az Azure Portal bal felső sarkában található **Erőforrás létrehozása** gombra.
 
-2. Az **Új** oldalon válassza az **Adatbázisok** elemet, majd az **Új **oldal** Kiemelt **területén válassza az** SQL Data Warehouse** lehetőséget.
+2. Az **Új** oldalon válassza az **Adatbázisok** elemet, majd az **Új** oldal **Kiemelt** területén válassza az **SQL Data Warehouse** lehetőséget.
 
     ![üres adattárház létrehozása](media/load-data-from-azure-blob-storage-using-polybase/create-empty-data-warehouse.png)
 

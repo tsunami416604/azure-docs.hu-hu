@@ -1,0 +1,208 @@
+---
+title: Azure rövid útmutató – Objektumok továbbítása Azure Blob-tárolókra és -tárolókról a PHP használatával | Microsoft Docs
+description: Gyors áttekintést kaphat arról, hogyan továbbíthat objektumokat az Azure Blob-tárolókra és -tárolókról a PHP használatával
+services: storage
+author: roygara
+manager: jeconnoc
+ms.service: storage
+ms.tgt_pltfrm: na
+ms.devlang: php
+ms.topic: quickstart
+ms.date: 03/09/2018
+ms.author: rogarana
+ms.openlocfilehash: 474c03921369035cd7334fdddd9806f8f90b7d58
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 03/12/2018
+---
+#  <a name="transfer-objects-tofrom-azure-blob-storage-using-php"></a>Objektumok továbbítása Azure Blob-tárolókra és -tárolókról a PHP használatával
+A rövid útmutató azt ismerteti, hogyan használható a PHP blokkblobok feltöltésére, letöltésére és listázására egy, az Azure Blob Storage-ban található tárolóban. 
+
+## <a name="prerequisites"></a>Előfeltételek
+
+A gyorsútmutató elvégzéséhez: 
+* A [PHP](http://php.net/downloads.php) telepítése
+* A [PHP-hez készült Azure SDK](https://github.com/Azure/azure-storage-php) telepítése
+
+
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+
+[!INCLUDE [storage-quickstart-tutorial-create-account-portal](../../../includes/storage-quickstart-tutorial-create-account-portal.md)]
+
+## <a name="download-the-sample-application"></a>A mintaalkalmazás letöltése
+A rövid útmutatóban használt [mintaalkalmazás](https://github.com/Azure-Samples/storage-blobs-php-quickstart.git) egy egyszerű PHP-alkalmazás.  
+
+A [git](https://git-scm.com/) használatával töltse le az alkalmazás egy másolatát a fejlesztői környezetbe. 
+
+```bash
+git clone https://github.com/Azure-Samples/storage-blobs-php-quickstart.git
+```
+
+Ez a parancs a helyi git mappába klónozza az adattárat. A PHP mintaalkalmazás megnyitásához keresse meg a storage-blobs-php-quickstart mappát, és nyissa meg a phpqs.php fájlt.  
+
+## <a name="configure-your-storage-connection-string"></a>A tárolási kapcsolati karakterlánc konfigurálása
+Az alkalmazásban meg kell adnia a tárfiók nevét és a fiókkulcsot, hogy létrehozhasson egy **BlobRestProxy** példányt az alkalmazásból. Javasoljuk, hogy ezeket az azonosítókat egy környezeti változóban tárolja az alkalmazást futtató helyi gépen. A környezeti változó létrehozásához kövesse az alábbi példák egyikét az operációs rendszerének megfelelően. A **youraccountname** és a **youraccountkey** értékeket cserélje le a fiók nevére, illetve kulcsára.
+
+# <a name="linux-tablinux"></a>[Linux] (#tab/linux)
+
+```bash
+export ACCOUNT_NAME=<youraccountname>
+export ACCOUNT_KEY=<youraccountkey>
+```
+
+# <a name="windows-tabwindows"></a>[Windows] (#tab/windows)
+
+```cmd
+setx ACCOUNT_NAME=<youraccountname>
+setx ACCOUNT_KEY=<youraccountkey>
+```
+---
+
+## <a name="configure-your-environment"></a>A környezet konfigurálása
+Fogja a mappát a helyi git-mappából, és helyezze egy, a PHP-kiszolgáló által kiszolgált címtárba. Ezután nyisson meg egy parancssort, amelynek a hatóköre ugyanaz a címtár, és írja be a következőt: `php composer.phar install`
+
+## <a name="run-the-sample"></a>Minta futtatása
+Ez a minta egy tesztfájlt hoz létre a „.” mappában. A mintaprogram feltölti a tesztfájlt a Blob-tárolóba, listázza a tárolóban található blobokat, majd letölti a fájlt egy új néven. 
+
+Futtassa a mintát. Az alábbi kimenet példa az alkalmazás futtatásakor kapott kimenetre:
+  
+```
+Uploading BlockBlob: HelloWorld.txt
+These are the blobs present in the container: HelloWorld.txt: https://myexamplesacct.blob.core.windows.net/blockblobsleqvxd/HelloWorld.txt
+
+This is the content of the blob uploaded: Hello Azure!
+```
+Amikor lenyomja a megjelenített gombot, a mintaprogram törli a Storage-tárolót és a fájlokat. Mielőtt továbblépne, ellenőrizze a két fájlt a kiszolgálója mappájában. Ha megnyitja őket, láthatja, hogy megegyeznek.
+
+Az [Azure Storage Explorert](http://storageexplorer.com) vagy egy ahhoz hasonló eszközt is használhat a fájl megtekintéséhez a Blob-tárolóban. Az Azure Storage Explorer egy ingyenes, platformfüggetlen eszköz, amellyel elérheti a tárfiókjával kapcsolatos információkat. 
+
+A fájlok ellenőrzése után nyomja le bármelyik billentyűt a bemutató befejezéséhez és a tesztfájlok törléséhez. Most, hogy tisztában van a minta működésével, nyissa meg az example.rb fájlt, és tekintse meg a kódot. 
+
+## <a name="understand-the-sample-code"></a>A mintakód értelmezése
+
+A következőkben áttekintjük a mintakódot, és értelmezzük, hogyan működik.
+
+### <a name="get-references-to-the-storage-objects"></a>Referenciák beszerzése a tárolóobjektumokhoz
+Az első teendő a referenciák létrehozása a Blob-tárolóhoz való hozzáféréshez és kezeléséhez használt objektumokhoz. Ezek az objektumok egymásra épülnek, és mindegyiket a listában utánuk következő használja.
+
+* Hozzon létre egy példányt az Azure Storage **BlobRestProxy** objektumából a kapcsolati hitelesítő adatok beállításához. 
+* Hozza létre a **BlobService** objektumot, amely a tárfiók Blob szolgáltatására mutat. 
+* Hozza létre a **Container** objektumot. Ez azt a tárolót képviseli, amelyhez Ön hozzáfér. A tárolók a blobok csoportosítására használhatók, hasonlóan ahhoz, ahogyan a számítógépen a mappákkal rendszerezi a fájlokat.
+
+A **blobClient** tárolóobjektum létrehozása után létrehozhatja a **Block** blobobjektumot, amely pontosan arra a blobra mutat, amelyre kíváncsi. Ezután elvégezheti a feltöltési, letöltési, másolási vagy egyéb műveleteket.
+
+> [!IMPORTANT]
+> A tárolók nevei csak kisbetűket tartalmazhatnak. A tárolók és blobok elnevezésével kapcsolatos részletekért lásd a [tárolók, blobok és metaadatok elnevezésével és hivatkozásával](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata) foglalkozó cikket.
+
+Ebben a szakaszban létre fogja hozni az Azure Storage-kliens és a blobszolgáltatás objektumának egy példányát, valamint egy új tárolót, majd beállítja annak engedélyeit úgy, hogy a blobok nyilvánosak legyenek. A tároló neve **quickstartblobs**. 
+
+```PHP
+    # Setup a specific instance of an Azure::Storage::Client
+    $connectionString = "DefaultEndpointsProtocol=https;AccountName=".getenv('account_name').";AccountKey=".getenv('account_key');
+    
+    // Create blob client.
+    $blobClient = BlobRestProxy::createBlobService($connectionString);
+    
+    # Create the BlobService that represents the Blob service for the storage account
+    $createContainerOptions = new CreateContainerOptions();
+    
+    $createContainerOptions->setPublicAccess(PublicAccessType::CONTAINER_AND_BLOBS);
+    
+    // Set container metadata.
+    $createContainerOptions->addMetaData("key1", "value1");
+    $createContainerOptions->addMetaData("key2", "value2");
+
+    $containerName = "blockblobs".generateRandomString();
+
+    try    {
+        // Create container.
+        $blobClient->createContainer($containerName, $createContainerOptions);
+```
+
+### <a name="upload-blobs-to-the-container"></a>Blobok feltöltése a tárolóba
+
+A Blob Storage támogatja a blokkblobokat, a hozzáfűző blobokat és a lapblobokat. A leggyakrabban használt elemek a blokkblobok, és ez a rövid útmutató is ezeket használja.  
+
+Ha szeretne feltölteni egy fájlt a blobba, szüksége lesz a fájl teljes útvonalára, amelyet a helyi meghajtón található könyvtárnév és fájlnév összefűzésével kap meg. Ezt követően feltöltheti a fájlt a megadott útvonalra a **createblockblob()** metódus használatával. 
+
+A mintakód egy helyi fájlt tölt fel az Azure-ba. A fájlt a rendszer **myfile** néven tárolja, a blob pedig **fileToUpload** néven szerepel a kódban. A következő példa feltölti a fájlt a **quickstartblobs** nevű tárolóba.
+
+```PHP
+    $myfile = fopen("HelloWorld.txt", "w") or die("Unable to open file!");
+    fclose($myfile);
+
+    # Upload file as a block blob
+    echo "Uploading BlockBlob: ".PHP_EOL;
+    echo $fileToUpload;
+    echo "<br />";
+    
+    $content = fopen($fileToUpload, "r");
+
+    //Upload blob
+    $blobClient->createBlockBlob($containerName, $fileToUpload, $content);
+```
+
+Egy blokkblob tartalmának részleges frissítéséhez használja a **createblocklist()** metódust. A blokkblobok legfeljebb 4,7 TB méretűek lehetnek, és az Excel-munkafüzetektől kezdve a nagyméretű videofájlokig bármit tartalmazhatnak. A lapblobok elsősorban az IaaS virtuális gépek biztonsági mentéséhez szükséges VHD-fájlokhoz használatosak. A hozzáfűző blobok a naplózáshoz használhatók, például amikor egy fájlba szeretne írni, majd folyamatosan újabb információkat szeretne hozzáadni. A hozzáfűző blobokat egyetlen írót tartalmazó modellek esetében érdemes használni. A blobtárolókban tárolt objektumok a legtöbb esetben blokkblobok.
+
+### <a name="list-the-blobs-in-a-container"></a>A tárolóban lévő blobok listázása
+
+A tárolóban található fájlok listáját a **listblobs()** metódus használatával kérheti le. A következő kód lekéri a blobok listáját, majd végighalad rajtuk, és megjeleníti a tárolóban talált blobok nevét.  
+
+```PHP
+    $listBlobsOptions = new ListBlobsOptions();
+    $listBlobsOptions->setPrefix("HelloWorld");
+    
+    echo "These are the blobs present in the container: ";
+    
+    do{
+        $result = $blobClient->listBlobs($containerName, $listBlobsOptions);
+        foreach ($result->getBlobs() as $blob)
+        {
+            echo $blob->getName().": ".$blob->getUrl()."<br />";
+        }
+        
+        $listBlobsOptions->setContinuationToken($result->getContinuationToken());
+    } while($result->getContinuationToken());
+```
+
+### <a name="get-the-content-of-your-blobs"></a>Blobok tartalmának lekérése
+
+A blobok tartalmát a **getBlob()** metódus segítségével kérheti le. A következő kód megjeleníti a korábbi szakaszban feltöltött blob tartalmát.
+
+```PHP
+    $blob = $blobClient->getBlob($containerName, $fileToUpload);
+    fpassthru($blob->getContentStream());
+```
+
+### <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+Ha már nincs szüksége az ebben a rövid útmutatóban feltöltött blobokra, a teljes tárolót törölheti a **deletecontainer()** metódussal. Ha már nincs szüksége a létrehozott fájlokra, a **deleteblob()** metódus használatával törölheti őket.
+
+```PHP
+    // Delete blob.
+    echo "Deleting Blob".PHP_EOL;
+    echo $fileToUpload;
+    echo "<br />";
+    $blobClient->deleteBlob($_GET["containerName"], $fileToUpload);
+
+    // Delete container.
+    echo "Deleting Container".PHP_EOL;
+    echo $_GET["containerName"].PHP_EOL;
+    echo "<br />";
+    $blobClient->deleteContainer($_GET["containerName"]);
+
+    //Deleting local file
+    echo "Deleting file".PHP_EOL;
+    echo "<br />";
+    unlink($fileToUpload);   
+```
+
+## <a name="next-steps"></a>További lépések
+ 
+Ennek a rövid útmutatónak a segítségével megtanulta, hogyan vihetők át fájlok egy helyi lemez és az Azure Blob Storage között a PHP használatával. Ha bővebb információra van szüksége a Blob Storage használatával kapcsolatban, lépjen tovább a Blob Storage használati útmutatójára.
+
+> [!div class="nextstepaction"]
+> [Blob Storage-műveletek használati útmutatója](./storage-php-how-to-use-blobs.md)
+
+
+További információk a Storage Explorerről és a blobokról: [Azure Blob Storage-erőforrások kezelése a Storage Explorer használatával](../../vs-azure-tools-storage-explorer-blobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).

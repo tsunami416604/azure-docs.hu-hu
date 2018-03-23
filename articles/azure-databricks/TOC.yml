@@ -11,8 +11,10 @@
       href: quickstart-create-databricks-workspace-portal.md
 - name: Oktatóanyagok
   items:
-    - name: Események streamelése az Event Hubs használatával
+    - name: Adatok streamelése az Event Hubs használatával
       href: databricks-stream-from-eventhubs.md
+    - name: Hangulatelemzés a Cognitive Services használatával
+      href: databricks-sentiment-analysis-cognitive-services.md
 - name: Útmutatók
   items:
     - name: 'Kapcsolódás Excel, R és Python használatával'

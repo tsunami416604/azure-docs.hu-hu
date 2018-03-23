@@ -1,25 +1,20 @@
 ---
-title: "Ruby használata Azure SQL Database-adatbázis lekérdezéséhez | Microsoft Docs"
-description: "Ez a témakör bemutatja, hogyan használhatja a Rubyt egy Azure SQL Database-adatbázishoz csatlakozó program létrehozásához, és hogyan hajthat végre lekérdezést Transact-SQL-utasításokkal."
+title: Ruby használata Azure SQL Database-adatbázis lekérdezéséhez | Microsoft Docs
+description: Ez a témakör bemutatja, hogyan használhatja a Rubyt egy Azure SQL Database-adatbázishoz csatlakozó program létrehozásához, és hogyan hajthat végre lekérdezést Transact-SQL-utasításokkal.
 services: sql-database
-documentationcenter: 
 author: CarlRabeler
-manager: jhubbard
-editor: 
-ms.assetid: 94fec528-58ba-4352-ba0d-25ae4b273e90
+manager: craigg
 ms.service: sql-database
 ms.custom: mvc,develop apps
-ms.workload: Inactive
-ms.tgt_pltfrm: na
 ms.devlang: ruby
 ms.topic: quickstart
 ms.date: 07/15/2017
 ms.author: carlrab
-ms.openlocfilehash: 3427d216540451bc10b968f866d0fce0f6df3c54
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.openlocfilehash: 19ff40c5e4a42195dcfe0b68c8d0b941e53f25a2
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="use-ruby-to-query-an-azure-sql-database"></a>Ruby használata Azure SQL Database-adatbázis lekérdezéséhez
 
@@ -81,7 +76,7 @@ end
 2. Győződjön meg arról, hogy a parancssori felület visszaadta az első 20 sort, majd zárja be az alkalmazásablakot.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - [Az első SQL Database-adatbázis megtervezése](sql-database-design-first-database.md)
 - [GitHub-adattár a TinyTDS-hez](https://github.com/rails-sqlserver/tiny_tds)
 - [Problémák jelentése és kérdezés a TinyTDS-sel kapcsolatban](https://github.com/rails-sqlserver/tiny_tds/issues)

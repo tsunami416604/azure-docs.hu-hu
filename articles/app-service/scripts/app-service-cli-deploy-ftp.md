@@ -1,11 +1,11 @@
 ---
-title: "Azure CLI parancsfájl minta - webalkalmazás létrehozása és központi telepítése FTP-vel fájlok |} Microsoft Docs"
-description: "Azure CLI parancsfájl minta - webalkalmazás létrehozása és központi telepítése FTP-vel fájlok"
+title: Azure CLI-példaszkript – Webalkalmazás létrehozása és fájlok üzembe helyezése FTP használatával | Microsoft Docs
+description: Azure CLI-példaszkript – Webalkalmazás létrehozása és fájlok üzembe helyezése FTP használatával
 services: app-service\web
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 manager: cfowler
-editor: 
+editor: ''
 tags: azure-service-management
 ms.service: app-service-web
 ms.workload: web
@@ -15,41 +15,41 @@ ms.topic: sample
 ms.date: 12/12/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 9e71c5ac8bbf494ed60995457180efaf1a17111f
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
-ms.translationtype: MT
+ms.openlocfilehash: d8b4cc9c80f1e9e3743e615c205972d027eb726f
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 03/09/2018
 ---
-# <a name="create-a-web-app-and-deploy-files-with-ftp"></a>Webalkalmazás létrehozása és központi telepítése FTP-vel fájlok
+# <a name="create-a-web-app-and-deploy-files-with-ftp"></a>Webalkalmazás létrehozása és fájlok üzembe helyezése FTP használatával
 
-Ez a parancsfájlpélda hoz létre egy webalkalmazást az App Service azok kapcsolódó erőforrásait, és a statikus HTML-lapot, FTP-használ, majd telepíti. Az FTP-feltöltési, a parancsfájl a [cURL](https://en.wikipedia.org/wiki/CURL) példaként. A fájlok feltöltéséhez bármely FTP-eszköz is használhatja.
+Ez a példaszkript egy webalkalmazást hoz létre az App Service-ben a kapcsolódó erőforrásokkal együtt, majd üzembe helyez egy statikus HTML-oldalt FTP használatával. Az FTP-feltöltéshez a szkript a [cURL](https://en.wikipedia.org/wiki/CURL) segédprogramot használja példaként. A fájlok feltöltéséhez bármilyen FTP-eszközt használhat.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Ha telepítése és a parancssori felület helyileg használata mellett dönt, az Azure parancssori felület verzió szüksége 2.0-s vagy újabb. A verzió megkereséséhez futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli).
+Ha a parancssori felület helyi telepítését és használatát választja, az Azure CLI 2.0-s vagy újabb verziójára lesz szükség. A verzió megkereséséhez futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli).
 
-## <a name="sample-script"></a>Mintaparancsfájl
+## <a name="sample-script"></a>Példaszkript
 
 [!code-azurecli-interactive[main](../../../cli_scripts/app-service/deploy-ftp/deploy-ftp.sh "Create a web app and deploy files with FTP")]
 
 [!INCLUDE [cli-script-clean-up](../../../includes/cli-script-clean-up.md)]
 
-## <a name="script-explanation"></a>Parancsfájl ismertetése 
+## <a name="script-explanation"></a>Szkript ismertetése 
 
-A parancsfájl a következő parancsokat. Minden egyes parancsa a tábla-parancs adott dokumentációjára mutató hivatkozásokat.
+A szkript a következő parancsokat használja. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
 | Parancs | Megjegyzések |
 |---|---|
-| [`az group create`](/cli/azure/group?view=azure-cli-latest#az_group_create) | Az összes erőforrás tároló erőforrás csoportot hoz létre. |
-| [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az_appservice_plan_create) | App Service-csomag létrehozása. |
-| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create) | Létrehoz egy Azure-webalkalmazásban. |
-| [`az webapp deployment list-publishing-profiles`](/cli/azure/webapp/deployment?view=azure-cli-latest#az_webapp_deployment_list_publishing_profiles) | Ismerje meg a részleteket érhető el webes alkalmazás központi telepítési profil esetében. |
+| [`az group create`](/cli/azure/group?view=azure-cli-latest#az_group_create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
+| [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az_appservice_plan_create) | Létrehoz egy App Service-csomagot. |
+| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create) | Létrehoz egy Azure-webalkalmazást. |
+| [`az webapp deployment list-publishing-profiles`](/cli/azure/webapp/deployment?view=azure-cli-latest#az_webapp_deployment_list_publishing_profiles) | Lekéri az elérhető webalkalmazás-telepítési profilok részleteit. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-További információ az Azure parancssori felület: [Azure CLI dokumentáció](https://docs.microsoft.com/cli/azure/overview).
+Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](https://docs.microsoft.com/cli/azure).
 
-További App Service CLI parancsfájl minták megtalálhatók a [Azure App Service-dokumentáció](../app-service-cli-samples.md).
+További App Service CLI-példaszkripteket az [Azure App Service dokumentációjában](../app-service-cli-samples.md) találhat.

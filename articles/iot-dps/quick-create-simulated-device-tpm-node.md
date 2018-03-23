@@ -1,22 +1,22 @@
 ---
-title: "Szimulált TPM-eszköz kiépítése Azure IoT Hubra Node.js használatával | Microsoft Docs"
-description: "Azure rövid útmutató – Szimulált TPM-eszköz létrehozása és kiépítése az Azure IoT Hub Device Provisioning Service-hez készült Node.js eszközoldali SDK-val"
+title: Szimulált TPM-eszköz kiépítése Azure IoT Hubra Node.js használatával | Microsoft Docs
+description: Azure rövid útmutató – Szimulált TPM-eszköz létrehozása és kiépítése az Azure IoT Hub Device Provisioning Service-hez készült Node.js eszközoldali SDK-val
 services: iot-dps
-keywords: 
+keywords: ''
 author: msebolt
 ms.author: v-masebo
 ms.date: 03/01/2018
 ms.topic: hero-article
 ms.service: iot-dps
-documentationcenter: 
+documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 3cc667286e9c643f31d9c704a8a2dfac18312bb3
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 5ade9eca4b16e4864ec4e9d7bc6977c1e8322daa
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="create-and-provision-a-simulated-tpm-device-using-nodejs-device-sdk-for-iot-hub-device-provisioning-service"></a>Szimulált TPM-eszköz létrehozása és kiépítése az IoT Hub Device Provisioning Service-hez készült Node.js eszközoldali SDK-val
 
@@ -62,7 +62,7 @@ A folytatás előtt végezze el az [IoT Hub eszközkiépítési szolgáltatás b
     ```
 
     > [!NOTE]
-    > A fenti csomagok telepítése során ismert problémák fordulhatnak elő. Ezek elhárításához futtassa az `npm install --global --production windows-build-tools` parancsot a parancssorból **Futtatás rendszergazdaként** módban, majd futtassa a `SET VCTargetsPath=C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140` parancsot, amelyben a telepített verziónak megfelelően cserélj le az útvonalat, végül pedig futtassa újra a fenti telepítési parancsokat.
+    > A fenti csomagok telepítése során ismert problémák fordulhatnak elő. Ezen problémák elhárításához futtassa az `npm install --global --production windows-build-tools` parancsot a parancssorból **Futtatás rendszergazdaként** módban, majd futtassa a `SET VCTargetsPath=C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140` parancsot, amelyben a telepített verziónak megfelelően cserélje le az útvonalat, végül pedig futtassa újra a fenti telepítési parancsokat.
     >
 
 1. Telepítse a következő csomagokat, amelyek a regisztráció során használt összetevőket tartalmazzák:
@@ -81,7 +81,7 @@ A folytatás előtt végezze el az [IoT Hub eszközkiépítési szolgáltatás b
     > Az alábbi minták az `azure-iot-provisioning-device-http` és az `azure-iot-device-mqtt` átviteli összetevőket használják.
     > 
 
-    A következő parancs parancssorbeli futtatásával egyszerre telepítheti ezek mindegyikét a **registereddevice** mappába:
+    A következő parancs parancssorbeli futtatásával egyszerre telepítheti ezen csomagok mindegyikét a **registerdevice** mappába:
 
         ```cmd/sh
         npm install --save azure-iot-device azure-iot-device-mqtt azure-iot-security-tpm azure-iot-provisioning-device-http azure-iot-provisioning-device

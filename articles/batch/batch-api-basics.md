@@ -1,11 +1,11 @@
 ---
-title: "Az Azure Batch áttekintése fejlesztők számára | Microsoft Docs"
-description: "Megismerheti a Batch szolgáltatás funkcióit és API-jait a fejlesztés szempontjából."
+title: Az Azure Batch áttekintése fejlesztők számára | Microsoft Docs
+description: Megismerheti a Batch szolgáltatás funkcióit és API-jait a fejlesztés szempontjából.
 services: batch
 documentationcenter: .net
 author: dlepow
 manager: jeconnoc
-editor: 
+editor: ''
 ms.assetid: 416b95f8-2d7b-4111-8012-679b0f60d204
 ms.service: batch
 ms.devlang: multiple
@@ -15,11 +15,11 @@ ms.workload: big-compute
 ms.date: 02/28/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c53007530fe80f03cefbf138193cfad4b0e8292a
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: b0a18f975530d2a291e529308ee53d6d48a68e42
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>Nagy léptékű párhuzamos számítási megoldások fejlesztése a Batch segítségével
 
@@ -28,7 +28,7 @@ Ebben a cikkben áttekintjük az Azure Batch legfontosabb alkotóelemeit, valami
 Akár olyan elosztott számítási alkalmazást vagy szolgáltatást fejleszt, amely közvetlen [REST API][batch_rest_api]-hívásokkal működik, akár valamelyik [Batch SDK-t](batch-apis-tools.md#azure-accounts-for-batch-development) használja, biztosan szüksége lesz a cikkben tárgyalt erőforrásokra és funkciókra.
 
 > [!TIP]
-> A Batch szolgáltatás részletesebb leírásáért olvassa el a következő cikket: [Basics of Azure Batch](batch-technical-overview.md) (Az Azure Batch alapjai).
+> A Batch szolgáltatás részletesebb leírásáért olvassa el a következő cikket: [Basics of Azure Batch](batch-technical-overview.md) (Az Azure Batch alapjai). Lásd továbbá a [Batch szolgáltatás legújabb frissítéseit](https://azure.microsoft.com/updates/?product=batch).
 >
 >
 

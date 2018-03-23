@@ -1,31 +1,31 @@
 ---
-title: "Mi az Azure SQL Database szolgáltatás? | Microsoft Docs"
-description: "Bevezetés az SQL Database-be: a Microsoft felhőalapú relációs adatbázis-kezelő rendszerének (RDBMS) technikai részletei és funkciói."
-keywords: "bevezetés az sql-be,az sql bemutatása,mi az sql database"
+title: Mi az Azure SQL Database szolgáltatás? | Microsoft Docs
+description: 'Bevezetés az SQL Database-be: a Microsoft felhőalapú relációs adatbázis-kezelő rendszerének (RDBMS) technikai részletei és funkciói.'
+keywords: bevezetés az sql-be,az sql bemutatása,mi az sql database
 services: sql-database
-documentationcenter: 
+documentationcenter: ''
 author: CarlRabeler
 manager: jhubbard
-editor: 
+editor: ''
 ms.assetid: c561f600-a292-4e3b-b1d4-8ab89b81db48
 ms.service: sql-database
 ms.custom: overview
 ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
-ms.date: 02/12/2018
+ms.date: 03/07/2018
 ms.workload: Active
 ms.author: carlrab
 ms.reviewer: carlrab
-ms.openlocfilehash: 1671cbe47b2aee53e4ec6d2bc731cbe4496ce586
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: a1c4426acec8e9e006c2349b886297f45cc8ecb2
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="what-is-the-azure-sql-database-service"></a>Mi az Azure SQL Database szolgáltatás? 
 
-Az SQL Database általános célú relációs adatbázis-szolgáltatás a Microsoft Azure-ban, amely egyebek mellett relációs, JSON-, térbeli és XML-struktúrákat is támogat. [Dinamikusan méretezhető teljesítményt](sql-database-service-tiers.md) nyújt és olyan lehetőségeket kínál, mint az [oszlopcentrikus indexelés](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) kivételes mélységű elemzéshez és jelentéskészítéshez, és a [memóriabeli OLTP](sql-database-in-memory.md) a kivételesen nagy teljesítményű tranzakció-feldolgozáshoz. A Microsoft zökkenőmentesen kezeli az SQL kódbázis karbantartását és frissítését, és teljesen átveszi az alapul szolgáló infrastruktúra kezelését. 
+Az SQL Database általános célú, felügyelt relációsadatbázis-szolgáltatás a Microsoft Azure-ban, amely egyebek mellett relációs, JSON-, térbeli és XML-struktúrákat is támogat. Az SQL Database kínálatában felügyelt [önálló SQL-adatbázisok](sql-database-servers-databases.md), [rugalmas készletben](sql-database-elastic-pool.md) lévő felügyelt SQL-adatbázisok és [felügyelt SQL Database-példánynak](sql-database-managed-instance.md) nevezett felügyelt SQL-példányok (nyilvános előzetes verzióban) szerepelnek. [Dinamikusan méretezhető teljesítményt](sql-database-service-tiers.md) nyújt és olyan lehetőségeket kínál, mint az [oszlopcentrikus indexelés](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) kivételes mélységű elemzéshez és jelentéskészítéshez, és a [memóriabeli OLTP](sql-database-in-memory.md) a kivételesen nagy teljesítményű tranzakció-feldolgozáshoz. A Microsoft zökkenőmentesen kezeli az SQL kódbázis karbantartását és frissítését, és teljesen átveszi az alapul szolgáló infrastruktúra kezelését. 
 
 Az SQL Database kódbázisa közös a [Microsoft SQL Server adatbázismotorjáéval](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation). A Microsoft felhőt előnyben részesítő stratégiájának jegyében az SQL Server új lehetőségei először az SQL Database-ben jelentek meg, és csak aztán magában az SQL Serverben. Ennek a hozzáállásnak köszönhetően az SQL Server legújabb lehetőségei a karbantartás és frissítés terhei nélkül állnak az Ön rendelkezésére úgy, hogy az új funkciókat már több millió adatbázison tesztelték. A bejelentett új funkciókról az alábbi helyeken kaphat tájékoztatást:
 
@@ -37,19 +37,22 @@ Az SQL Database kódbázisa közös a [Microsoft SQL Server adatbázismotorjáé
 
 A több szolgáltatási szinten is kiszámítható teljesítményt nyújtó SQL Database dinamikus méretezhetőséget kínál állásidő nélkül, beépített intelligens optimalizálással, globális méretezhetőséggel és rendelkezésre állással és fejlett biztonsági beállításokkal – mindezt szinte adminisztráció nélkül. Ezen képességek birtokában az alkalmazások gyors fejlesztésére és forgalomba hozásának felgyorsítására összpontosíthat ahelyett, hogy értékes időt és erőforrásokat kellene lefoglalnia a virtuális gépek és infrastruktúra kezeléséhez. Az SQL Database szolgáltatás jelenleg a világ 38 adatközpontjában áll rendelkezésre, és újabb adatközpontok is rendszeresen lépnek működésbe, így Ön a saját adatbázisát egy közeli adatközponton futtathatja.
 
-> [!NOTE]
-> Az Azure platformbiztonságáról az [Azure biztonsági és adatkezelési központ](https://azure.microsoft.com/support/trust-center/security/) részben talál információkat.
+> [!FONTOS] A felügyelt SQL Database-példány jelenleg előzetes verzióban és csak egyetlen szolgáltatási szinten érhető el. További információért tekintse meg a [felügyelt SQL Database-példányt](sql-database-managed-instance.md) ismertető cikket.
 >
 
 ## <a name="scalable-performance-and-pools"></a>Méretezhető teljesítmény és készletek
 
 Az SQL Database-zel minden adatbázis önálló, hordozható, és saját garantált teljesítményt nyújtó [szolgáltatásszinttel](sql-database-service-tiers.md) rendelkezik. Az SQL Database a különböző igényekre különböző teljesítmény-szinteket kínál, és lehetővé teszi az adatbázisok készletekbe rendezését az erőforrások hatékony és költségkímélő kihasználása érdekében.
 
+A felügyelt SQL Database-példányok használata esetén az egyes példányok garantált erőforrásokkal vannak elkülönítve egymástól. További információért tekintse meg a [felügyelt SQL Database-példányt](sql-database-managed-instance.md) ismertető cikket. 
+
 ### <a name="adjust-performance-and-scale-without-downtime"></a>Teljesítmény módosítása és skálázása leállási idő nélkül
 
 Az SQL Database három szolgáltatásszintet kínál a kis és nagy terhelést jelentő adatbázisokhoz: ezek az Alapszintű, a Standard és a Prémium. Csekély havi díjért létrehozhatja első alkalmazását egy egyedülálló, kisméretű adatbázison, majd később az aktuális szükségletek alapján manuálisan vagy programon keresztül bármikor módosíthatja a szolgáltatásszintet. Úgy módosíthatja a teljesítményt, hogy az nem jár leállással az alkalmazás vagy az ügyfelek számára. A dinamikus méretezhetőség révén az adatbázis átlátható módon reagál a gyorsan változó erőforrásigényekre, és lehetővé teszi, hogy csak azokért az erőforrásokért fizessen, amelyekre és amikor szüksége van.
 
    ![méretezés](./media/sql-database-what-is-a-dtu/single_db_dtus.png)
+
+A felügyelt SQL Database-példány előzetes verzióban érhető el, és egyetlen szolgáltatási szintet kínál. További információért tekintse meg a [felügyelt SQL Database-példányt](sql-database-managed-instance.md) ismertető cikket.
 
 ### <a name="elastic-pools-to-maximize-resource-utilization"></a>Rugalmas készletek az erőforrások kihasználtságának maximalizálásához
 
@@ -58,6 +61,9 @@ Számos vállalkozás és alkalmazás számára elegendő az, ha önálló adatb
    ![rugalmas készletek](./media/sql-database-what-is-a-dtu/sqldb_elastic_pools.png)
 
 A rugalmas készletekkel az erőforrásigények ingadozásakor sem kell a az adatbázis teljesítményének fel- és leskálázására koncentrálnia. A készletezett adatbázisok szükség szerint használják fel a teljesítmény-erőforrásokat. A készletezett adatbázisok használják az adatbáziskészlethez hozzárendelt teljesítményt, de nem lépik túl az adatbáziskészlet teljesítménykorlátait, így költségei előre jelezhetők még akkor is, ha az egyéni adatbázis-használat nem jelezhető előre. Ráadásul [adatbázisokat adhat hozzá a készlethez, és távolíthat el a készletből](sql-database-elastic-pool-manage-portal.md), így előre jelezhető költségek mellett néhány adatbázisról több ezer adatbázisra skálázhatja fel alkalmazását. A készlet adatbázisai számára elérhető erőforrások minimális és maximális mennyiségét is szabályozhatja annak érdekében, hogy a készlet egyetlen adatbázisa se használja fel a készlet összes erőforrását, és hogy minden készletezett adatbázis rendelkezzen egy garantált minimális erőforrás-mennyiséggel. A rugalmas készleteket használó SaaS-alkalmazások szerkezeti kialakításainak alaposabb megismeréséhez olvassa el a [Tervminták több-bérlős SaaS-alkalmazásokhoz SQL Database esetén](sql-database-design-patterns-multi-tenancy-saas-applications.md) című részt.
+
+> [!IMPORTANT]
+> A felügyelt SQL Database-példány nem támogatja a rugalmas készleteket.
 
 ### <a name="blend-single-databases-with-pooled-databases"></a>Önálló adatbázisok beolvasztása a készletezett adatbázisokba
 
@@ -83,6 +89,7 @@ Az Azure szolgáltatói szerződésében [(SLA)](http://azure.microsoft.com/supp
 - **[Adott időpontnak megfelelő helyreállítás](sql-database-recovery-using-backups.md)**: Az SQL Database támogatja a visszaállást bármely időpontra az automatikus biztonsági mentések megőrzési idején belül.
 - **[Aktív georeplikáció](sql-database-geo-replication-overview.md)**: Az SQL Database lehetővé teszi legfeljebb négy olvasható másodlagos adatbázis konfigurálását akár egyazon Azure adatközponton belül, akár globálisan elosztva.  Ha például egy SaaS-alkalmazás nagyszámú egyidejű csak olvasási tranzakciót kiszolgáló katalógus-adatbázisra épül, akkor az aktív georeplikáció által növelhető az olvashatóság, és megszűnik az elsődleges adatbázis magas olvasási terhelése miatti szűk keresztmetszet. 
 - **[Feladatátvételi csoportok](sql-database-geo-replication-overview.md)**: Az SQL Database lehetővé teszi, hogy magas rendelkezésre állást és terheléselosztást kínáljon globális léptékben, beleértve a transzparens georeplikációt, nagy adatbázis-készletek feladatátvételét és rugalmas készleteket. A feladatátvételi csoportok és az aktív georeplikáció által a lehető legkevesebb adminisztrációs többletmunkával hozhatók létre globálisan elosztott SaaS-alkalmazások úgy, hogy a figyelés, útválasztás és feladatátvétel összetett feladatát az SQL Database-re bízzuk.
+- **[Zónaredundáns adatbázisok](sql-database-high-availability.md)**: Az SQL Database segítségével több rendelkezésre állási zónában is kiépíthet Prémium adatbázisokat vagy Prémium rugalmas készleteket. Mivel a Prémium adatbázisok és a Prémium rugalmas készletek több redundáns replikával rendelkeznek a magas rendelkezésre állás érdekében, e replikák több rendelkezésre állási zónában történő elhelyezése nagyobb rugalmasságot biztosít, beleértve az adatközpont méretezési hibáiból az adatvesztés nélküli, automatikus helyreállítás lehetőségét is. Ez a szolgáltatás jelenleg előzetes kiadásban elérhető. 
 
 ## <a name="built-in-intelligence"></a>Beépített intelligencia
 
@@ -158,7 +165,7 @@ Az SQL Database támogatja a Python, Java, Node.js, PHP, Ruby, és .NET alkalmaz
 
 - [DBA-veremcsere](https://dba.stackexchange.com/questions/tagged/sql-server): Kérdések az adatbázis rendszergazdájának
 - [Veremtúlcsordulás](http://stackoverflow.com/questions/tagged/sql-server): Kérdések a fejlesztőknek
-- [MSDN fórumok](https://social.msdn.microsoft.com/Forums/en-US/home?category=sqlserver): Műszaki kérdések
+- [MSDN fórumok](https://social.msdn.microsoft.com/Forums/home?category=sqlserver): Műszaki kérdések
 - [Visszajelzés](http://aka.ms/sqlfeedback): Hibák jelentése és funkciók kérése
 - [Reddit](https://www.reddit.com/r/SQLServer/): Az SQL Server megvitatása
 

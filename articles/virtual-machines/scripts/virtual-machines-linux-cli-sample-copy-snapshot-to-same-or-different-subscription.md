@@ -1,13 +1,13 @@
 ---
-title: "Az Azure CLI parancsfájl minta - azonos vagy különböző-előfizetéshez CLI felügyelt lemezes pillanatképet másolása (áthelyezése) |} Microsoft Docs"
-description: "Az Azure CLI parancsfájl minta - azonos vagy különböző-előfizetéshez CLI felügyelt lemezes pillanatképet másolása (áthelyezése)"
+title: Azure CLI-példaszkript – Felügyelt lemez pillanatképének másolása (áthelyezése) előfizetésen belül vagy előfizetések között a CLI használatával | Microsoft Docs
+description: Azure CLI-példaszkript – Felügyelt lemez pillanatképének másolása (áthelyezése) előfizetésen belül vagy előfizetések között a CLI használatával
 services: virtual-machines-linux
 documentationcenter: storage
 author: ramankumarlive
 manager: kavithag
 editor: tysonn
 tags: azure-service-management
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: azurecli
 ms.topic: sample
@@ -16,39 +16,39 @@ ms.workload: infrastructure
 ms.date: 05/19/2017
 ms.author: ramankum
 ms.custom: mvc
-ms.openlocfilehash: 7c301a314ee946bb9199650bb7f674b8dce7c141
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: MT
+ms.openlocfilehash: 904f564d2f3c0584851309780eb2ccca379534fa
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/09/2018
 ---
-# <a name="copy-snapshot-of-a-managed-disk-to-same-or-different-subscription-with-cli"></a>Másolja a felügyelt lemezes pillanatképet CLI ugyanazon vagy másik előfizetés
+# <a name="copy-snapshot-of-a-managed-disk-to-same-or-different-subscription-with-cli"></a>Felügyelt lemez pillanatképének másolása előfizetésen belül vagy előfizetések között a CLI használatával
 
-Ez a parancsfájl egy felügyelt lemezes pillanatképet ugyanazon vagy másik előfizetés másolja. Ezen parancsfájl segítségével pillanatkép áthelyezése másik előfizetésben található a szülőhely pillanatképet ugyanabban a régióban.
+Ez a szkript átmásolja egy felügyelt lemez pillanatképét az előfizetésen belül vagy előfizetések között. A szkript használatával a pillanatképet a szülőpillanatképpel egy régióban lévő előfizetésekbe helyezheti át.
 
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="sample-script"></a>Mintaparancsfájl
+## <a name="sample-script"></a>Példaszkript
 
 [!code-azurecli[main](../../../cli_scripts/virtual-machine/copy-snapshot-to-same-or-different-subscription/copy-snapshot-to-same-or-different-subscription.sh "Copy snapshot")]
 
 
-## <a name="script-explanation"></a>Parancsfájl ismertetése
+## <a name="script-explanation"></a>Szkript ismertetése
 
-A parancsfájl a következő parancsokat a célként megadott előfizetés, a forrás pillanatkép azonosítóját használja a pillanatkép létrehozásához. Minden egyes parancsa a tábla-parancs adott dokumentációjára mutató hivatkozásokat.
+A szkript a következő parancsokat használja egy, a forráspillanatkép azonosítóját használó pillanatkép a célelőfizetésben történő létrehozásához. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
 | Parancs | Megjegyzések |
 |---|---|
-| [az pillanatkép megjelenítése](https://docs.microsoft.com/cli/azure/snapshot#az_snapshot_show) | Lekérdezi a az alábbi néven pillanatkép tulajdonságainak és a pillanatkép erőforráscsoport tulajdonságai. Azonosító tulajdonságot használja a pillanatkép másolása másik előfizetést.  |
-| [az pillanatkép létrehozása](https://docs.microsoft.com/cli/azure/snapshot#az_snapshot_create) | Másolja át a pillanatképet hoz létre pillanatképet különböző előfizetési azonosító és a szülő pillanatkép neve.  |
+| [az snapshot show](https://docs.microsoft.com/cli/azure/snapshot#az_snapshot_show) | Lekérdezi egy pillanatkép összes tulajdonságát a pillanatkép neve és erőforráscsoport-tulajdonságai alapján. Az „Id” tulajdonság a pillanatkép másik előfizetésbe való másolásakor használatos.  |
+| [az snapshot create](https://docs.microsoft.com/cli/azure/snapshot#az_snapshot_create) | Lemásol egy pillanatképet úgy, hogy a szülőpillanatkép azonosítójának és nevének használatával egy másik előfizetésben hoz létre egy pillanatképet.  |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-[Hozzon létre egy virtuális gépet egy pillanatképből](./virtual-machines-linux-cli-sample-create-vm-from-snapshot.md?toc=%2fpowershell%2fmodule%2ftoc.json)
+[Virtuális gép létrehozása pillanatképből](./virtual-machines-linux-cli-sample-create-vm-from-snapshot.md?toc=%2fpowershell%2fmodule%2ftoc.json)
 
-További információ az Azure parancssori felület: [Azure CLI dokumentáció](https://docs.microsoft.com/cli/azure/overview).
+Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](https://docs.microsoft.com/cli/azure).
 
-További virtuális gép és a felügyelt lemezek CLI parancsfájl minták megtalálhatók a [Azure Linux virtuális dokumentációját](../../app-service/app-service-cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+A virtuális gépekhez és felügyelt lemezekhez kapcsolódó további CLI-példaszkripteket az [Azure Linux rendszerű virtuális gépekre vonatkozó dokumentációjában](../../app-service/app-service-cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) találhat.

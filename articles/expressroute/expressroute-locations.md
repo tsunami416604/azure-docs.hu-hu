@@ -1,24 +1,24 @@
 ---
-title: "Kapcsolatszolgáltatók és helyek: Azure ExpressRoute | Microsoft Docs"
-description: "A cikk részletes áttekintést nyújt a szolgáltatási helyekről és az Azure-régiókhoz való csatlakozásról. Kapcsolatszolgáltatók szerint rendezve."
+title: 'Kapcsolatszolgáltatók és helyek: Azure ExpressRoute | Microsoft Docs'
+description: A cikk részletes áttekintést nyújt a szolgáltatási helyekről és az Azure-régiókhoz való csatlakozásról. Kapcsolatszolgáltatók szerint rendezve.
 services: expressroute
 documentationcenter: na
 author: cherylmc
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: c878513a-d594-42ad-8b0e-403efd0c4b25
 ms.service: expressroute
 ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/08/2018
+ms.date: 03/07/2018
 ms.author: pareshmu
-ms.openlocfilehash: fd549ff0e6753c854ce9d43cab8e3a672f6502f3
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 8eb67fa41ca8ac12187ed5024bc42d4567b2626e
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute-partnerek és társviszony-létesítési helyszínek.
 
@@ -105,7 +105,7 @@ Az alábbi táblázat a szolgáltatók szerint jeleníti meg a helyeket. Ha az e
 | **[Neutrona Networks](http://www.neutrona.com/index.php/azure-expressroute/)** |Támogatott |Támogatott |Miami, Sao Paulo |
 | **[Következő generációs adatok](http://www.nextgenerationdata.co.uk/ngd-cloud-gateway/)** |Támogatott |Támogatott |Newport (Wales) |
 | **NEXTDC** |Támogatott |Támogatott |Melbourne, Sydney |
-| **[NTT Communications](http://www.ntt.com/en/services/network/virtual-private-network.html)** |Támogatott |Támogatott |London, Los Angeles, Oszaka, Szingapúr, Tokió, Washington, D.C. |
+| **[NTT Communications](http://www.ntt.com/en/services/network/virtual-private-network.html)** |Támogatott |Támogatott |Amszterdam, Hongkong, London, Los Angeles, Oszaka, Szingapúr, Sydney, Tokió, Washington DC |
 | **[NTT SmartConnect](http://cloud.nttsmc.com/cxc/azure.html)** |Támogatott |Támogatott |Oszaka |
 | **[Orange](http://www.orange-business.com/en/products/business-vpn-galerie)** |Támogatott |Támogatott |Amszterdam, Hong Kong, London, Párizs, Szilícium-völgy, Szingapúr, Sydney, Washington, D.C. |
 | **[PacketFabric](https://www.packetfabric.com/packetcor/microsoft-azure/)** |Támogatott |Támogatott |Chicago, Szilícium-völgy |
@@ -114,6 +114,7 @@ Az alábbi táblázat a szolgáltatók szerint jeleníti meg a helyeket. Ha az e
 | **[SIFY](http://telecom.sify.com/azure-expressroute.html)** |Támogatott |Támogatott |Csennai, Mumbai |
 | **[SingTel](http://info.singtel.com/about-us/news-releases/singtel-provide-secure-private-access-microsoft-azure-public-cloud)** |Támogatott |Támogatott |Szingapúr, Szingapúr2 |
 | **[Softbank](http://www.softbank.jp/biz/cloud/cloud_access/direct_access_for_az/)** |Támogatott |Támogatott |Oszaka, Tokió |
+| **[Sprint](https://business.sprint.com/solutions/cloud-networking/)** |Támogatott |Támogatott |Washington, D.C. |
 | **[Tata Communications](http://www.tatacommunications.com/lp/izo/azure/azure_index.html)** |Támogatott |Támogatott |Amszterdam, Csennai, Hongkong, London, Mumbai, Szilícium-völgy, Szingapúr, Washington, D.C. |
 | **[TeleCity Group](http://www.telecitygroup.com/investor-centre/news_details.htm?locid=03100500400b00d&xml)** |Támogatott |Támogatott |Amszterdam, Dublin, London |
 | **[Telefonica](https://www.business-solutions.telefonica.com/es/enterprise/solutions/efficient-infrastructure/managed-voice-data-connectivity/)** |Támogatott |Támogatott |Amszterdam, Sao Paulo |

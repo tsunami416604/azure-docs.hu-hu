@@ -1,11 +1,11 @@
 ---
-title: "Párhuzamosan fennálló ExpressRoute- és helyek közötti VPN-kapcsolatok konfigurálása: Resource Manager: Azure | Microsoft Docs"
-description: "A cikk bemutatja az ExpressRoute- és egy helyek közötti VPN-kapcsolat konfigurálását, amelyek párhuzamosan használhatók a Resource Manager-alapú üzemi modellben."
+title: 'Párhuzamosan fennálló ExpressRoute- és helyek közötti VPN-kapcsolatok konfigurálása: Resource Manager: Azure | Microsoft Docs'
+description: A cikk bemutatja az ExpressRoute- és egy helyek közötti VPN-kapcsolat konfigurálását, amelyek párhuzamosan használhatók a Resource Manager-alapú üzemi modellben.
 documentationcenter: na
 services: expressroute
 author: charwen
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: c7717b14-3da3-4a6d-b78e-a5020766bc2c
 ms.service: expressroute
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/19/2017
 ms.author: charwen,cherylmc
-ms.openlocfilehash: d1dd5a71d922d688ee7b64cef8887e903f78c802
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: bec984aa04efbe123b71fa9088fbd37ae53cc2f2
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections"></a>Párhuzamos ExpressRoute- és párhuzamos telephelyközi kapcsolatok konfigurálása
 > [!div class="op_single_selector"]
@@ -88,7 +88,7 @@ Az eljárás a VNetek, valamint az egyidejűleg jelenlévő helyek közötti és
   $resgrp = New-AzureRmResourceGroup -Name "ErVpnCoex" -Location $location
   $VNetASN = 65010
   ```
-3. Hozzon létre egy virtuális hálózatot az átjáró-alhálózattal együtt. A virtuális hálózat konfigurálásával kapcsolatos információkért lásd: [Azure Virtual Network konfigurálása](../virtual-network/virtual-networks-create-vnet-arm-ps.md).
+3. Hozzon létre egy virtuális hálózatot az átjáró-alhálózattal együtt. A virtuális hálózatok létrehozásával kapcsolatos további információkért lásd a [virtuális hálózatok létrehozásával](../virtual-network/manage-virtual-network.md#create-a-virtual-network) foglalkozó témakört. Az alhálózatok létrehozásával kapcsolatos további információkért lásd az [alhálózatok létrehozásával](../virtual-network/virtual-network-manage-subnet.md#add-a-subnet) foglalkozó témakört.
    
    > [!IMPORTANT]
    > Az átjáró-alhálózat /27 vagy egy rövidebb előtag kell legyen (például /26 vagy /25).

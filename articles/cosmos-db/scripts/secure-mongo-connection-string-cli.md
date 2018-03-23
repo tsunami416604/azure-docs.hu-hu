@@ -1,13 +1,13 @@
 ---
-title: "Az Azure CLI parancsfájl-Get Azure Cosmos DB kapcsolati karakterlánc MongoDB-alkalmazásokhoz |} Microsoft Docs"
-description: "Az Azure CLI parancsfájl minta - Get Azure Cosmos DB kapcsolati karakterlánc MongoDB-alkalmazásokhoz"
+title: Azure CLI-példaszkript – Azure Cosmos DB kapcsolati sztring lekérése MongoDB-alkalmazáshoz | Microsoft Docs
+description: Azure CLI-példaszkript – Azure Cosmos DB kapcsolati sztring lekérése MongoDB-alkalmazáshoz
 services: cosmos-db
 documentationcenter: cosmosdb
 author: mimig1
 manager: jhubbard
-editor: 
+editor: ''
 tags: azure-service-management
-ms.assetid: 
+ms.assetid: ''
 ms.service: cosmos-db
 ms.custom: mvc
 ms.devlang: azurecli
@@ -16,45 +16,45 @@ ms.tgt_pltfrm: cosmosdb
 ms.workload: database
 ms.date: 06/02/2017
 ms.author: mimig
-ms.openlocfilehash: 12e51922db4e9a2ff9b176186a4180ae2238be7d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: MT
+ms.openlocfilehash: 3720c4725c9557f9226264911bf5530ce514576f
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/09/2018
 ---
-# <a name="get-an-azure-cosmos-db-connection-string-for-mongodb-apps-using-the-azure-cli"></a>Egy Azure Cosmos DB kapcsolati karakterlánc beolvasása a MongoDB-alkalmazásokhoz az Azure parancssori felület használatával
+# <a name="get-an-azure-cosmos-db-connection-string-for-mongodb-apps-using-the-azure-cli"></a>Azure Cosmos DB kapcsolati sztring lekérése MongoDB-alkalmazáshoz az Azure CLI-vel
 
-Ez a minta lekérdezi egy Azure Cosmos DB kapcsolati karakterláncot a MongoDB-alkalmazásokhoz az Azure parancssori felület használatával. 
+Ez a példa egy Azure Cosmos DB kapcsolati sztringet kér le MongoDB-alkalmazáshoz az Azure CLI használatával. 
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 Ha a parancssori felület helyi telepítése és használata mellett dönt, a témakörben leírt lépésekhez az Azure parancssori felületének 2.0-s vagy annál újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli). 
 
-## <a name="sample-script"></a>Mintaparancsfájl
+## <a name="sample-script"></a>Példaszkript
 
 [!code-azurecli-interactive[main](../../../cli_scripts/cosmosdb/secure-cosmosdb-get-mongodb-connection-string/secure-cosmosdb-get-mongodb-connection-string.sh?highlight=36-39 "Get Azure Cosmos DB connection string for MongoDB apps")]
 
 ## <a name="clean-up-deployment"></a>Az üzemelő példány eltávolítása
 
-A parancsfájl-minta futtatása után a következő parancs segítségével távolítsa el az erőforráscsoportot és a vele társított összes erőforrást.
+A példaszkript futtatása után a következő paranccsal távolítható el az erőforráscsoport és az összes ahhoz kapcsolódó erőforrás.
 
 ```azurecli-interactive
 az group delete --name myResourceGroup
 ```
 
-## <a name="script-explanation"></a>Parancsfájl ismertetése
+## <a name="script-explanation"></a>Szkript ismertetése
 
-A parancsfájl a következő parancsokat. Minden egyes parancsa a tábla-parancs adott dokumentációjára mutató hivatkozásokat.
+A szkript a következő parancsokat használja. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
 | Parancs | Megjegyzések |
 |---|---|
-| [az csoport létrehozása](https://docs.microsoft.com/cli/azure/group#az_group_create) | Az összes erőforrás tároló erőforrás csoportot hoz létre. |
-| [az cosmosdb frissítés](https://docs.microsoft.com/cli/azure/cosmosdb#az_cosmosdb_update) | Egy Azure Cosmos DB fiók frissíti. |
-| [az cosmosdb lista-kapcsolat-karakterlánc](https://docs.microsoft.com/cli/azure/cosmosdb#az_cosmosdb_list_connection_strings) | A kapcsolati karakterlánc lekérdezi a fiókhoz.|
-| [az csoport törlése](https://docs.microsoft.com/cli/azure/group#az_group_delete) | Egy olyan erőforráscsoport, beleértve az összes beágyazott erőforrások törlése. |
+| [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
+| [az cosmosdb update](https://docs.microsoft.com/cli/azure/cosmosdb#az_cosmosdb_update) | Frissít egy Azure Cosmos DB-fiókot. |
+| [az cosmosdb list-connection-strings](https://docs.microsoft.com/cli/azure/cosmosdb#az_cosmosdb_list_connection_strings) | Lekéri a fiók kapcsolati sztringjét.|
+| [az group delete](https://docs.microsoft.com/cli/azure/group#az_group_delete) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-További információ az Azure parancssori felület: [Azure CLI dokumentáció](https://docs.microsoft.com/cli/azure/overview).
+Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](https://docs.microsoft.com/cli/azure).
 
-További Azure Cosmos DB CLI parancsfájl minták megtalálhatók a [Azure Cosmos DB CLI dokumentáció](../cli-samples.md).
+További Azure Cosmos DB CLI-példaszkripteket az [Azure Cosmos DB CLI dokumentációjában](../cli-samples.md) találhat.

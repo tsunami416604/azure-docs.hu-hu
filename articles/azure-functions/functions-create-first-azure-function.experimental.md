@@ -1,12 +1,12 @@
 ---
-title: "Az első függvény létrehozása az Azure portálon | Microsoft Docs"
-description: "Ismerje meg, hogyan hozhatja létre az első Azure-függvényét kiszolgáló nélküli végrehajtáshoz az Azure Portalon."
+title: Az első függvény létrehozása az Azure portálon | Microsoft Docs
+description: Ismerje meg, hogyan hozhatja létre az első Azure-függvényét kiszolgáló nélküli végrehajtáshoz az Azure Portalon.
 services: functions
 documentationcenter: na
 author: ggailey777
 manager: cfowler
-editor: 
-tags: 
+editor: ''
+tags: ''
 ms.assetid: 96cf87b9-8db6-41a8-863a-abb828e3d06d
 ms.service: functions
 ms.devlang: multiple
@@ -16,12 +16,11 @@ ms.workload: na
 ms.date: 02/05/2018
 ms.author: glenga
 ms.custom: mvc, devcenter
-experiment: 
-ms.openlocfilehash: e6ca80d90460f89c014ef1e425bc888cafaf93df
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 31437360396e220de24789fdff9d2602af385053
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="create-your-first-function-in-the-azure-portal"></a>Az első függvény létrehozása az Azure portálon
 

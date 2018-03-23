@@ -1,25 +1,20 @@
 ---
-title: "Visual Studio és .NET használata Azure SQL Database-adatbázis lekérdezéséhez | Microsoft Docs"
-description: "Ez a témakör bemutatja, hogyan használhatja a Visual Studiót egy Azure SQL Database-adatbázishoz csatlakozó program létrehozásához, és hogyan hajthat végre lekérdezést Transact-SQL-utasításokkal."
+title: Visual Studio és .NET használata Azure SQL Database-adatbázis lekérdezéséhez | Microsoft Docs
+description: Ez a témakör bemutatja, hogyan használhatja a Visual Studiót egy Azure SQL Database-adatbázishoz csatlakozó program létrehozásához, és hogyan hajthat végre lekérdezést Transact-SQL-utasításokkal.
 services: sql-database
-documentationcenter: 
 author: CarlRabeler
-manager: jhubbard
-editor: 
-ms.assetid: 
+manager: craigg
 ms.service: sql-database
 ms.custom: devcenter
-ms.workload: Active
-ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 11/29/2017
 ms.author: carlrab
-ms.openlocfilehash: 913055fca46580d870dc2e015f442b431c9ff6e0
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.openlocfilehash: a76b9058f0bf7afdc332cee4ff7a49fa0e6987a6
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="use-net-c-with-visual-studio-to-connect-and-query-an-azure-sql-database"></a>A .NET (C#) használata a Visual Studióval Azure SQL Database-adatbázishoz való kapcsolódáshoz és lekérdezéséhez
 
@@ -127,7 +122,7 @@ namespace sqltest
 1. Az alkalmazás futtatásához nyomja le az **F5** billentyűt.
 2. Győződjön meg arról, hogy a parancssori felület visszaadta az első 20 sort, majd zárja be az alkalmazásablakot.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ [az Azure SQL Database-adatbázisokhoz való csatlakozásról és a .NET Core-ral való lekérdezésükről](sql-database-connect-query-dotnet-core.md) Windows/Linux/macOS rendszeren.  
 - További információ [a .NET Core használatának első lépéseiről Windows/Linux/macOS rendszeren a parancssorral](/dotnet/core/tutorials/using-with-xplat-cli).

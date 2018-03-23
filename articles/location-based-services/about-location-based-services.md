@@ -1,25 +1,29 @@
 ---
-title: "Az Azure Location Based Services áttekintése | Microsoft Docs"
-description: "Az Azure Location Based Services (előzetes verzió) bemutatása"
+title: Az Azure Location Based Services áttekintése | Microsoft Docs
+description: Az Azure Location Based Services (előzetes verzió) bemutatása
 services: location-based-services
-keywords: 
-author: dsk-2015
-ms.author: dkshir
-ms.date: 02/05/2017
+keywords: ''
+author: kgremban
+ms.author: kgremban
+ms.date: 02/05/2018
 ms.topic: overview
 ms.service: location-based-services
-documentationcenter: 
+documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 9e6236f7d69556d7636962c98886d9f9508445ac
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 91df49aa3f522ea765698a1d64ed2686606f71f3
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="an-introduction-to-azure-location-based-services-preview"></a>Az Azure Location Based Services (előzetes verzió) bemutatása
 Az Azure Location Based Services olyan térinformatikai szolgáltatások portfóliója, amelyek elérhetővé teszik a térképek, a keresés, az útválasztás, a forgalom és az időzónák API-jainak elérését. Az Azure OneAPI kompatibilis szolgáltatásainak portfóliója lehetővé teszi, hogy ismerős fejlesztői eszközökkel gyorsan fejlesszen és méretezzen olyan megoldásokat, amelyek helyadatokat tesznek elérhetővé az Azure-megoldásokban. Az Azure Location Based Services a webes és mobilalkalmazások földrajzi kontextusának biztosításához szükséges, friss térképadatokat használó, hatékony térinformatikai funkciókat biztosít minden iparág fejlesztői számára. Az Azure Location Based Services egy Azure One API-kompatibilis REST API-készlet, amely webalapú JavaScript-vezérlővel rendelkezik a rendkívül egyszerű, rugalmas és különböző médiumokon elérhető fejlesztés érdekében. 
+
+Az alábbi videó az Azure Location Based Services szolgáltatást mutatja be.
+
+<iframe src="https://channel9.msdn.com/Shows/Azure-Friday/Azure-Location-Based-Services/player" width="960" height="540" allowFullScreen frameBorder="0"></iframe>
 
 Az Azure Location Based Services öt fő szolgáltatást tartalmaz a földrajzi kontextust igénylő Azure-alkalmazások támogatására. Az alábbiakban ezen szolgáltatások mindegyikét részletesen ismertetjük.
 
@@ -64,6 +68,16 @@ Az Azure Location Based Services öt fő szolgáltatást tartalmaz a földrajzi 
 Az Azure Location Based Services a mobilitás jegyében készült, valamint különböző platformokon futó alkalmazásokat is képes kiszolgálni, mivel a programozási modell platformfüggetlen és támogatja a JSON-kimeneteket a REST API-k használatával. Az Azure LBS továbbá tartalmaz egy kényelmes JavaScript-térképvezérlőt, amelynek egyszerű programozási modellje lehetővé teszi a webes és mobilalkalmazások gyors és egyszerű fejlesztését. 
 
 Az Azure Location Based Services egy kulcsalapú hitelesítési sémát használ, így a szolgáltatások eléréséhez csupán létre kell hozni egy Azure Location Based Services-fiókot az [Azure Portal](http://portal.azure.com) használatával. A fiókhoz két előre létrehozott kulcs is jár. Használja ezen kulcsok egyikét az Azure Location Based Services szolgáltatás felé küldött kérésekben a helyalapú szolgáltatások közvetlenül az alkalmazásokba való integrálásának megkezdéséhez.
+
+## <a name="unsupported-regions"></a>Nem támogatott régiók
+Az API jelenleg nem érhető el az alábbi országokban. Kérjük, ellenőrizze a jelenlegi IP-címét, és győződjön meg arról, hogy az IP-címe helye nem az alábbi nem támogatott országok valamelyikében található.
+
+* Argentína
+* Kína
+* India
+* Marokkó
+* Pakisztán
+* Dél-Korea
 
 ## <a name="relationship-with-bing-maps"></a>Kapcsolat a Bing Térképek szolgáltatással
 Az ebben a dokumentumban ismertetett Azure Location Based Services szolgáltatások nem azonosak a Bing Térképek szolgáltatásaival.  Bár számos funkciójuk megegyezik, ezek a szolgáltatások különbözőek, és nem kapcsolódnak egymáshoz.  Ennek az új, külön kezelt Azure-szolgáltatásnak az elérthetősége nem érinti a Bing Térképek termék által biztosított szolgáltatásokat és ütemterveket.

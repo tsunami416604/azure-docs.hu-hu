@@ -1,8 +1,8 @@
 ---
-title: "Az SQL Server használatának áttekintése az Azure Virtual Machines szolgáltatásban (Windows rendszeren) | Microsoft Docs"
-description: "Ismerje meg, hogyan futtathat teljes SQL Server-kiadásokat az Azure Virtual Machines szolgáltatásban."
+title: Az SQL Server használatának áttekintése az Azure Virtual Machines szolgáltatásban (Windows rendszeren) | Microsoft Docs
+description: Ismerje meg, hogyan futtathat teljes SQL Server-kiadásokat az Azure Virtual Machines szolgáltatásban.
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: rothja
 manager: craigg
 tags: azure-service-management
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 12/14/2017
+ms.date: 02/28/2018
 ms.author: jroth
-ms.openlocfilehash: 268ae1dae1a247ee63adef22403f89680daa4961
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: c5c480db8586db7ef125d5c992ff66f5cc28c1e2
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="what-is-sql-server-on-azure-virtual-machines-windows"></a>Mi az az Azure Virtual Machines szolgáltatásban futó SQL Server? (Windows)
 
@@ -51,10 +51,7 @@ Az Azure-beli virtuális gépek a számítási feladatokkal kapcsolatos különb
 Első lépésként válassza ki a megfelelő verziójú, kiadású és operációs rendszerű SQL Server virtuális gép rendszerképét. Az alábbi szakaszokban közvetlen hivatkozások találhatók az Azure Portalra az SQL Server virtuálisgép-katalógus rendszerképeinek letöltéséhez.
 
 > [!TIP]
-> Az ezekhez a rendszerképekhez tartozó virtuális gépek és SQL díjszabásának megismeréséhez tekintse meg [az SQL Server Azure virtuális gépek díjszabási útmutatóját](virtual-machines-windows-sql-server-pricing-guidance.md).
-
-> [!TIP]
-> Az SQL Server virtuálisgép-katalógusbeli rendszerképeinek frissítési és életciklus-szabályzatárólaz [SQL Server virtuális gépek GYIK](virtual-machines-windows-sql-server-iaas-faq.md#images) dokumentumában olvashat.
+> Az SQL-rendszerképek díjszabásával kapcsolatos további információkért tekintse meg [az SQL Servert futtató Azure-beli virtuális gépek díjszabási útmutatóját](virtual-machines-windows-sql-server-pricing-guidance.md). 
 
 ### <a id="payasyougo"></a> Használatalapú fizetés
 A következő táblázat a használatalapú fizetéssel elérhető SQL Server-rendszerképeket foglalja össze.
@@ -86,6 +83,9 @@ SQL Server virtuális gépe létrehozását követően csatlakozhat hozzá olyan
 
 ### <a name="migrate-your-data"></a>Adatok áttelepítése
 Ha van meglévő adatbázisa, érdemes áthelyeznie az újonnan kiépített SQL virtuális gépre. Az áttelepítési lehetőségekért és útmutatásért lásd: [Migrating a Database to SQL Server on an Azure VM](virtual-machines-windows-migrate-sql.md) (Adatbázis áttelepítése egy Azure virtuális gépen SQL Serverre).
+
+## <a id="lifecycle"></a> Az SQL virtuálisgép-rendszerképek frissítési szabályzata
+Az Azure csak egy virtuálisgép-rendszerképet tart fenn minden egyes támogatott operációs rendszer, verzió és kiadás kombináció számára. Ez azt jelenti, hogy a rendszer folyamatosan frissíti a rendszerképeket, a régebbi rendszerképek pedig el lesznek távolítva. További információkért tekintse meg az [SQL Server virtuális gépek GYIK](virtual-machines-windows-sql-server-iaas-faq.md#images) dokumentumának **Rendszerképek** című szakaszát.
 
 ## <a name="customer-experience-improvement-program-ceip"></a>Felhasználói élmény fokozása program (CEIP)
 A Felhasználói élmény fokozása program (CEIP) alapértelmezés szerint engedélyezve van. Ez a program rendszeres időközönként jelentéseket küld a Microsoftnak az SQL Server fejlesztése érdekében. A CEIP-pel nem kell felügyeleti feladatokat végezni, hacsak nem kívánja letiltani az üzembe helyezés után. A CEIP testreszabásához vagy letiltásához csatlakozzon a virtuális géphez a távoli asztalról. Ezután futtassa az **SQL Server hiba- és használatai jelentések** segédprogramot. A jelentések letiltásához kövesse az utasításokat. Az adatgyűjtésről további információért tekintse meg az [SQL Server adatvédelmi nyilatkozatát](https://www.microsoft.com/EN-US/privacystatement/SQLServer/Default.aspx).

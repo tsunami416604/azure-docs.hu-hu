@@ -76,10 +76,16 @@
               href: tutorial-incremental-copy-change-tracking-feature-powershell.md
     - name: 6 – Adatok átalakítása a felhőben
       items:
-        - name: Felhasználói felület (UI)
-          href: tutorial-transform-data-spark-portal.md
-        - name: Azure PowerShell
-          href: tutorial-transform-data-spark-powershell.md
+        - name: HDInsight Spark
+          items:
+            - name: Felhasználói felület (UI)
+              href: tutorial-transform-data-spark-portal.md
+            - name: Azure PowerShell
+              href: tutorial-transform-data-spark-powershell.md
+        - name: Databricks-jegyzetfüzet
+          items:
+            - name: Felhasználói felület (UI)
+              href: transform-data-using-databricks-notebook.md
     - name: 7 – Adatok átalakítása a virtuális hálózatban
       items:
         - name: Felhasználói felület (UI)
@@ -92,8 +98,6 @@
           href: tutorial-control-flow-portal.md
         - name: .NET
           href: tutorial-control-flow.md
-    - name: 9 – Adatok átalakítása az Azure Databricks használatával
-      href: transform-data-using-databricks-notebook.md
 - name: Példák
   items:
     - name: Kódminták
@@ -292,6 +296,8 @@
           href: transform-data-using-stored-procedure.md
         - name: Data Lake U-SQL-tevékenység
           href: transform-data-using-data-lake-analytics.md
+        - name: Databricks-jegyzetfüzetek tevékenységei
+          href: transform-data-databricks-notebook.md
         - name: Egyéni tevékenység
           href: transform-data-using-dotnet-custom-activity.md
         - name: Társított szolgáltatások számítása

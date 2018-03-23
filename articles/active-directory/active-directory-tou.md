@@ -1,24 +1,24 @@
 ---
-title: "Azure Active Directory – Használati feltételek| Microsoft Docs"
-description: "Az Azure AD Használati feltételek funkción keresztül Ön és vállalata felhasználási feltételeket biztosíthat az Azure AD-szolgáltatások felhasználóinak."
+title: Azure Active Directory – Használati feltételek| Microsoft Docs
+description: Az Azure AD Használati feltételek funkción keresztül Ön és vállalata felhasználási feltételeket biztosíthat az Azure AD-szolgáltatások felhasználóinak.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: d55872ef-7e45-4de5-a9a0-3298e3de3565
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 12/14/2017
+ms.date: 03/06/2018
 ms.author: billmath
-ms.openlocfilehash: c01ea7c6a05c77244ab29fe6eec00ed1e49b6f7e
-ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
+ms.openlocfilehash: e29e842a54d286e19d23c1c91c08d55933a0eada
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="azure-active-directory-terms-of-use-feature-preview"></a>Azure Active Directory – Használati feltételek funkció (Előzetes verzió)
 Az Azure AD Használati feltételek funkcióján keresztül a vállalatok egyszerűen láthatják el a végfelhasználókat a szükséges információkkal.  Így gondoskodni lehet róla, hogy a felhasználók megkapják a jogi vagy megfelelőségi követelményekre vonatkozó nyilatkozatokat.
@@ -125,10 +125,10 @@ Ennek az az oka, hogy a feltételes hozzáférési szabályzatok azonnal hatály
 V: Ha a felhasználó elfogadja a használati feltételeket, az bekerül a naplóba. Az Azure AD-naplókban keresést is végezhet a kívánt találatok megjelenítéséhez.  
 
 **K: Ha megváltoznak a használati feltételek, azokat a felhasználóknak újra el kell fogadniuk?**</br>
-V: Igen, egy rendszergazda megváltoztathatja a használati feltételeket, amelyeket aztán mindenkinek újból el kell fogadnia.
+V: Igen, a rendszergazdák módosíthatja a használati feltételeket, amelyeket aztán mindenkinek újból el kell fogadnia.
 
-**K: A használati feltételek egyszerre több nyelvet is támogathatnak?**</br>
-V: Nem, jelenleg nem szerepelhet többféle nyelv ugyanazon használati feltételek között.  Azonban a hatókört csoportokra is korlátozhatja (például a Franciaországban érvényes használati feltételek különbözhetnek az Egyesült Királyságra vonatkozóktól). 
+**K: A használati feltételek több nyelv használatát is támogatják?**</br>
+V: Igen.  A rendszergazdák jelenleg 18 különböző nyelven konfigurálhatják a használati feltételeket. 
 
 **K: Mikor lépnek életbe a használati feltételek?**</br>
 V: A használati feltételek a bejelentkezéskor lépnek életbe.

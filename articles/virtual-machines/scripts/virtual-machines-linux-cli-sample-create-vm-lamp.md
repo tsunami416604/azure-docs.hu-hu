@@ -1,13 +1,13 @@
 ---
-title: "Az Azure CLI Script Sample – a LÁMPA verem A(z) terheléselosztást alkalmazó szolgáltatásszintű Machin méretezési csoportban lévő telepítése |} Microsoft Docs"
-description: "Egy egyéni parancsprogramok futtatására szolgáló bővítmény használatával telepítheti a LÁMPA verem egy elosztott terhelésű virtuális gép méretezési készletben Azure =."
+title: Azure CLI-példaszkript – A LAMP-verem üzembe helyezése egy elosztott terhelésű virtuálisgép-méretezési csoportban | Microsoft Docs
+description: Egy egyéni szkriptbővítmény használatával helyezheti üzembe a LAMP-vermet az Azure-on egy elosztott terhelésű virtuálisgép-méretezési csoportban.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: allclark
 manager: douge
 editor: tysonn
 tags: azure-service-management
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: azurecli
 ms.topic: sample
@@ -16,53 +16,53 @@ ms.workload: infrastructure
 ms.date: 04/05/2017
 ms.author: allclark
 ms.custom: mvc
-ms.openlocfilehash: 23170923d7c05c9b7230cf331725250b2a3c0f09
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: MT
+ms.openlocfilehash: 1764fc15a888fbe15cc14b990721240d1baf3c40
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/09/2018
 ---
-# <a name="deploy-the-lamp-stack-in-a-load-balanced-virtual-machine-scale-set"></a>A LÁMPA tartozó, egy elosztott terhelésű virtuálisgép-méretezési csoport központi telepítése
+# <a name="deploy-the-lamp-stack-in-a-load-balanced-virtual-machine-scale-set"></a>A LAMP-verem üzembe helyezése egy elosztott terhelésű virtuálisgép-méretezési csoportban
 
-Ez a példa hoz létre egy virtuálisgép-méretezési csoport, és egyéni parancsfájl központi telepítése a LÁMPA verem a méretezési csoportban lévő összes virtuális gépén futó bővítmény vonatkozik.
+Ez a példa létrehoz egy virtuálisgép-méretezési csoportot, és egy bővítményt alkalmaz, amely üzembe helyezi a LAMP-vermet a méretezési csoportba tartozó mindegyik virtuális gépen.
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
-## <a name="sample-script"></a>Mintaparancsfájl
+## <a name="sample-script"></a>Példaszkript
 
 [!code-azurecli-interactive[main](../../../cli_scripts/virtual-machine/create-scaleset-php-ansible/build-stack.sh "Create virtual machine scale set with LAMP stack")]
 
 ## <a name="connect"></a>Kapcsolódás
 
-Ezt a kódot használja, hogyan csatlakozhat a virtuális gépek és a skála beállítása.
+A kód használatával látható, hogyan lehet a virtuális gépekhez és a méretezési csoporthoz kapcsolódni.
 
 [!code-azurecli[main](../../../cli_scripts/virtual-machine/create-scaleset-php-ansible/how-to-access.sh "Access the virtual machine scale set")]
 
 ## <a name="clean-up-deployment"></a>Az üzemelő példány eltávolítása 
 
-Az erőforráscsoport, a méretezési és a virtuális gépek eltávolítása a következő parancsot, és az összes kapcsolódó erőforrásokat.
+Az alábbi paranccsal eltávolítható az erőforráscsoport, a méretezési csoport és a virtuális gépek, valamint az összes kapcsolódó erőforrás.
 
 ```azurecli-interactive 
 az group delete -n myResourceGroup
 ```
 
-## <a name="script-explanation"></a>Parancsfájl ismertetése
+## <a name="script-explanation"></a>Szkript ismertetése
 
-A parancsfájl a következő parancsokat egy erőforráscsoport, virtuális gép, a rendelkezésre állási csoporthoz, terheléselosztó és minden kapcsolódó erőforrások létrehozásához. Minden egyes parancsa a tábla-parancs adott dokumentációjára mutató hivatkozásokat.
+A szkript a következő parancsokat használja egy erőforráscsoport, egy virtuális gép, egy rendelkezésre állási csoport, egy terheléselosztó és minden kapcsolódó erőforrás létrehozásához. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
 | Parancs | Megjegyzések |
 |---|---|
-| [az csoport létrehozása](https://docs.microsoft.com/cli/azure/group#az_group_create) | Az összes erőforrás tároló erőforrás csoportot hoz létre. |
-| [az vmss létrehozása](https://docs.microsoft.com/cli/azure/vmss#az_vmss_create) | A virtuálisgép-méretezési csoport létrehozása |
-| [az hálózati terheléselosztó szabály létrehozása](https://docs.microsoft.com/cli/azure/network/lb/rule#az_network_lb_rule_create) | Elosztott terhelésű végpont hozzáadása |
-| [az vmss bővítmény beállítása](https://docs.microsoft.com/cli/azure/vmss/extension#az_vmss_extension_set) | A bővítmény, az egyéni parancsprogramok futtatására egy virtuális gépet futtató létrehozása |
-| [az vmss frissítés-példányok](https://docs.microsoft.com/cli/azure/vmss#az_vmss_update_instances) | Az egyéni parancsprogrammal üzembe helyezése előtt a bővítmény alkalmazta a méretezési VM-példányokon. |
-| [az vmss méretezési](https://docs.microsoft.com/cli/azure/vmss#az_vmss_scale) | Vertikális felskálázás a méretezési készletben több Virtuálisgép-példányok hozzáadásával. Az egyéni parancsfájl futtatása ezekkel amikor központilag telepítették azokat. |
-| [az nyilvános ip-lista](https://docs.microsoft.com/cli/azure/network/public-ip#az_network_public_ip_list) | A minta által létrehozott virtuális gépek IP-címek lekérése. |
-| [az hálózati lb megjelenítése](https://docs.microsoft.com/cli/azure/network/lb#az_network_lb_show) | Az előtér- és háttérszolgáltatások a terheléselosztó által használt portok beolvasása. |
+| [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
+| [az vmss create](https://docs.microsoft.com/cli/azure/vmss#az_vmss_create) | Létrehoz egy virtuálisgép-méretezési csoportot. |
+| [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule#az_network_lb_rule_create) | Hozzáad egy elosztott terhelésű végpontot. |
+| [az vmss extension set](https://docs.microsoft.com/cli/azure/vmss/extension#az_vmss_extension_set) | Létrehozza a bővítményt, amely futtatja majd az egyéni szkriptet egy virtuális gép üzemelő példányán. |
+| [az vmss update-instances](https://docs.microsoft.com/cli/azure/vmss#az_vmss_update_instances) | Futtatja az egyéni szkriptet a bővítmény a méretezési csoporton való alkalmazását megelőzően üzembe helyezett virtuálisgép-példányokon. |
+| [az vmss scale](https://docs.microsoft.com/cli/azure/vmss#az_vmss_scale) | Vertikálisan felskálázza a méretezési csoportot további virtuálisgép-példányok hozzáadásával. Az egyéni szkript ezeken is lefut az üzembe helyezésük alkalmával. |
+| [az network public-ip list](https://docs.microsoft.com/cli/azure/network/public-ip#az_network_public_ip_list) | Lekéri a példaszkript által létrehozott virtuális gépek IP-címét. |
+| [az network lb show](https://docs.microsoft.com/cli/azure/network/lb#az_network_lb_show) | Lekéri a terheléselosztó által használt előtér- és háttérportokat. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-További információ az Azure parancssori felület: [Azure CLI dokumentáció](https://docs.microsoft.com/cli/azure/overview).
+Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](https://docs.microsoft.com/cli/azure).
 
-További virtuális gép CLI parancsfájl minták megtalálhatók a [Azure Linux virtuális dokumentációját](../linux/cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+A virtuális gépekhez kapcsolódó további CLI-példaszkripteket az [Azure Linux rendszerű virtuális gépekre vonatkozó dokumentációjában](../linux/cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) találhat.

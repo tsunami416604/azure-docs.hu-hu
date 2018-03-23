@@ -1,25 +1,20 @@
 ---
-title: "A .NET Core használata Azure SQL Database-adatbázisok lekérdezéséhez | Microsoft Docs"
-description: "Ez a témakör bemutatja, hogyan használhatja a .NET Core-t egy Azure SQL Database-adatbázishoz csatlakozó program létrehozásához, és hogyan hajthat végre lekérdezést Transact-SQL-utasításokkal."
+title: A .NET Core használata Azure SQL Database-adatbázisok lekérdezéséhez | Microsoft Docs
+description: Ez a témakör bemutatja, hogyan használhatja a .NET Core-t egy Azure SQL Database-adatbázishoz csatlakozó program létrehozásához, és hogyan hajthat végre lekérdezést Transact-SQL-utasításokkal.
 services: sql-database
-documentationcenter: 
 author: CarlRabeler
-manager: jhubbard
-editor: 
-ms.assetid: 
+manager: craigg
 ms.service: sql-database
 ms.custom: mvc,develop apps
-ms.workload: On Demand
-ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 07/07/2017
 ms.author: carlrab
-ms.openlocfilehash: 1d2a22500c322a63b134e29e5f7509df271eafb9
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.openlocfilehash: 4d858606b0c645069602fba80cdba3d13582170d
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="use-net-core-c-to-query-an-azure-sql-database"></a>A .NET Core (C#) használata Azure SQL Database-adatbázisok lekérdezéséhez
 
@@ -139,7 +134,7 @@ namespace sqltest
 2. Győződjön meg arról, hogy a parancssori felület visszaadta az első 20 sort, majd zárja be az alkalmazásablakot.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Bevezetés a .NET Core használatába Windows/Linux/macOS rendszeren a parancssorral](/dotnet/core/tutorials/using-with-xplat-cli).
 - További információ [az Azure SQL Database-adatbázisokhoz való csatlakozásról és a lekérdezésükről a .NET-keretrendszer és a Visual Studio használatával](sql-database-connect-query-dotnet-visual-studio.md).  

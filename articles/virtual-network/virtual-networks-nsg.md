@@ -1,6 +1,6 @@
 ---
-title: "Hálózati biztonsági csoportok az Azure-ban | Microsoft Docs"
-description: "Ismerje meg, miként különítheti el és irányíthatja a forgalmat virtuális hálózatán belül a hálózati biztonsági csoportokra épülő Azure elosztott tűzfal használatával."
+title: Hálózati biztonsági csoportok az Azure-ban | Microsoft Docs
+description: Ismerje meg, miként különítheti el és irányíthatja a forgalmat virtuális hálózatán belül a hálózati biztonsági csoportokra épülő Azure elosztott tűzfal használatával.
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/11/2016
 ms.author: jdial
-ms.openlocfilehash: 5eca18ca2f34097d98ce947c61c635abc6ab27b8
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: bd15b7786552d21c8791eeb307aa8c87066b2bcd
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="filter-network-traffic-with-network-security-groups"></a>Hálózati forgalom szűrése hálózati biztonsági csoportokkal
 
 A hálózati biztonsági csoport (NSG) egy biztonsági szabályokból álló listát tartalmaz, amelyek engedélyezik vagy megtagadják a hálózati forgalmat az Azure-alapú virtuális hálózatokhoz (VNet-ekhez) csatlakozó erőforrásoknak. Az NSG-k társíthatóak alhálózatokhoz, egyedi virtuális gépekhez (klasszikus) vagy virtuális gépekhez (Resource Manager) kapcsolt hálózati adapterekhez (NIC). Ha az NSG-t hozzárendelik egy alhálózathoz, a szabályok érvényesek lesznek az alhálózathoz csatlakozó összes erőforrásra. A forgalom tovább korlátozható egy NGS-t virtuális géphez vagy hálózati adapterhez társításával.
-
+ 
 > [!NOTE]
 > Az Azure két különböző üzembe helyezési modellel rendelkezik az erőforrások létrehozásához és használatához: [Resource Manager és klasszikus](../resource-manager-deployment-model.md). A jelen cikk mindkét modell használatát bemutatja, de a Microsoft azt javasolja, hogy az új telepítések esetén a Resource Manager modellt használja.
 
@@ -47,7 +47,7 @@ Az NSG-szabályok az alábbi tulajdonságokat tartalmazzák:
 | Tulajdonság | Leírás | Korlátozások | Megfontolandó szempontok |
 | --- | --- | --- | --- |
 | **Name (Név)** |A szabály neve. |Egyedinek kell lennie a régión belül.<br/>Betűket, számokat, aláhúzásjeleket, pontokat és kötőjeleket tartalmazhat.<br/>Betűvel vagy számmal kell kezdődnie.<br/>Betűvel, számmal vagy aláhúzásjellel kell végződnie.<br/>Nem lehet hosszabb 80 karakternél. |Egy NSG-n belül több szabály is lehet, ezért győződjön meg arról, hogy van egy elnevezési konvenciója, amellyel azonosíthatja a szabályok funkcióját. |
-| **Protocol (Protokoll)** |A szabálynak megfelelő protokoll. |TCP, UDP vagy * |A * protokollként történő használata tartalmazza az ICMP-t (csak a kiszolgálók közötti forgalom), valamint az UDP-t és a TCP-t, és csökkentheti a szükséges szabályok számát.<br/>A * használata azonban túl széles körű lehet, ezért ügyeljen arra, hogy * csak szükség esetén használja. |
+| **Protocol (Protokoll)** |A szabálynak megfelelő protokoll. |TCP, UDP vagy * |A * protokollként történő használata tartalmazza az ICMP-t (csak a kiszolgálók közötti forgalom), valamint az UDP-t és a TCP-t, és csökkentheti a szükséges szabályok számát.<br/>A * használata azonban túl széles körű lehet, ezért ügyeljen arra, hogy csak szükség esetén használja. |
 | **Source port range (Forrásporttartomány)** |A szabálynak megfelelő forrásporttartomány. |Egy portszám 1 és 65535 között, egy porttartomány (például 1–65535) vagy * (minden porthoz). |A forrásportok rövid élettartamúak is lehetnek. Ha az ügyfélprogram nem egy adott portot használ, a legtöbb esetben a * jelet használja.<br/>A lehető legtöbb esetben használjon porttartományokat, hogy ne legyen szükség több szabályra.<br/>Több portot vagy porttartományt nem lehet vesszővel csoportosítani. |
 | **Destination port range (Célporttartomány)** |A szabálynak megfelelő célporttartomány. |Egy portszám 1 és 65535 között, egy porttartomány (pl. 1–65535) vagy \* (minden porthoz). |A lehető legtöbb esetben használjon porttartományokat, hogy ne legyen szükség több szabályra.<br/>Több portot vagy porttartományt nem lehet vesszővel csoportosítani. |
 | **Source address prefix (Forráscímelőtag)** |A szabálynak megfelelő forráscím-előtag vagy címke. |Egy IP-cím (pl. 10.10.10.10), IP-alhálózat (pl. 192.168.1.0/24), [alapértelmezett címke](#default-tags) vagy * (minden címhez). |Érdemes lehet tartományokat, alapértelmezett címkéket és a * jelet használni a szabályok számának csökkentéséhez. |
@@ -98,7 +98,7 @@ Az NSG-ket virtuális gépekhez, hálózati adapterekhez és alhálózatokhoz is
 
 * **VM (csak klasszikus modell):** A biztonsági szabályok a virtuális gép teljes bejövő és kimenő forgalmára érvényesek. 
 * **NIC (csak Resource Manager-alapú modell):** A biztonsági szabályok az NSG-hez társított hálózati adapter teljes bejövő és kimenő forgalmára érvényesek. Egy több hálózati adapterrel rendelkező virtuális gép esetében minden egyes hálózati adapterhez rendelhet eltérő NSG-t (vagy akár ugyanazt is). 
-* **Alhálózat (Resource Manager-alapú és klasszikus modell):** A biztonsági szabályok az összes, a virtuális hálózathoz csatlakozó erőforrás teljes bejövő és kimenő forgalmára érvényesek.
+* **Alhálózat (Resource Manager-alapú és klasszikus modell):** A biztonsági szabályok az alhálózathoz csatlakozó összes erőforrás teljes bejövő és kimenő forgalmára érvényesek.
 
 Különböző NSG-ket társíthat egy virtuális géphez (vagy hálózati adapterhez, a üzembe helyezési modelltől függően) és az alhálózathoz, amelyhez csatlakoztatva van egy hálózati adapter vagy egy virtuális gép. A rendszer a biztonsági szabályokat prioritás szerint alkalmazza a forgalomra az egyes NSG-kben, a következő sorrendben:
 

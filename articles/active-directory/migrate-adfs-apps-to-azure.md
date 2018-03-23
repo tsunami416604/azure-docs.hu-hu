@@ -1,6 +1,6 @@
 ---
-title: "AD FS helyszíni alkalmazások migrálása az Azure-ba | Microsoft Docs"
-description: "Ez a dokumentum azt ismerteti, hogy a vállalatoknak hogyan érdemes az Azure AD-be migrálniuk a helyszíni alkalmazásaikat, és kifejezetten az összevont SaaS-alkalmazásaikat."
+title: AD FS helyszíni alkalmazások migrálása az Azure-ba | Microsoft Docs
+description: Ez a dokumentum azt ismerteti, hogy a vállalatoknak hogyan érdemes az Azure AD-be migrálniuk a helyszíni alkalmazásaikat, és kifejezetten az összevont SaaS-alkalmazásaikat.
 services: active-directory
 author: billmath
 manager: mtillman
@@ -9,13 +9,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/29/2018
+ms.date: 03/02/2018
 ms.author: billmath
-ms.openlocfilehash: ec0731534da2543d48bedc575bf882b790fa136b
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: f1256e2fefe1ad3d37403f37804888ab9dcf6e99
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="migrate-ad-fs-on-premises-apps-to-azure"></a>AD FS helyszíni alkalmazások migrálása az Azure-ba 
 
@@ -166,7 +166,7 @@ A következő képességeket igénylő alkalmazások jelenleg nem migrálhatók.
 - Jogkivonatokban lévő jogcímek képességei
     - Helyszíni csoportnevek kiállítása jogcímekként
     - Az Azure AD-től eltérő tárolókból származó jogcímek
-    - Összetett jogcímkiadás-átalakítási szabályok (a támogatott jogcímek leképezésével kapcsolatos információért lásd ezt és ezt a dokumentumot).
+    - Összetett jogcímkiadás-átalakítási szabályok (a támogatott jogcímek társításával kapcsolatos információért tekintse meg [ezt](https://docs.microsoft.com/azure/active-directory/active-directory-claims-mapping) és [ezt](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-claims-customization) a dokumentumot).
     - Címtárbővítmények kiállítása jogcímekként
     - A NameID-formátum egyedi meghatározása
     - Többértékű attribútumok kiállítása

@@ -1,25 +1,25 @@
 ---
-title: "Azure Cosmos DB: Webalkalmazás létrehozása .NET-tel és SQL API-val | Microsoft Docs"
-description: "Egy .NET-kódmintát mutat be, amellyel csatlakozni lehet az Azure Cosmos DB SQL API-hoz, és lekérdezést lehet végezni vele"
+title: 'Azure Cosmos DB: Webalkalmazás létrehozása .NET-tel és SQL API-val | Microsoft Docs'
+description: Egy .NET-kódmintát mutat be, amellyel csatlakozni lehet az Azure Cosmos DB SQL API-hoz, és lekérdezést lehet végezni vele
 services: cosmos-db
-documentationcenter: 
+documentationcenter: ''
 author: mimig1
 manager: jhubbard
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: cosmos-db
 ms.custom: quick start connect, mvc, devcenter
-ms.workload: 
+ms.workload: ''
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 12/15/2017
 ms.author: mimig
-ms.openlocfilehash: 9541fa7331a5a6a5a5405244dd79eb8a92d96386
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: b5ab66371b47bdd0f3bd7a4c9e86e419efebe902
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="azure-cosmos-db-build-a-sql-api-web-app-with-net-and-the-azure-portal"></a>Azure Cosmos DB: SQL API-webalkalmazás létrehozása .NET-tel és az Azure Portallal
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 12/18/2017
 
 Az Azure Cosmos DB a Microsoft globálisan elosztott, többmodelles adatbázis-szolgáltatása. Segítségével gyorsan létrehozhat és lekérdezhet dokumentum, kulcs/érték és gráf típusú adatbázisokat, amelyek mindegyike felhasználja az Azure Cosmos DB középpontjában álló globális elosztási és horizontális skálázhatósági képességeket. 
 
-Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre az Azure Portal segítségével Azure Cosmos DB-fiókot, dokumentum-adatbázist és gyűjteményt. Ezután megtudhatja, hogyan hozhat létre és hogyan helyezhet üzembe egy, az [SQL .NET API-n](sql-api-sdk-dotnet.md) alapuló teendőlista-kezelő webalkalmazást. (Lásd az alábbi képernyőfelvételen.) 
+Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre az Azure Portal segítségével Azure Cosmos DB-fiókot, dokumentum-adatbázist és gyűjteményt. Ezután megtudhatja, hogyan hozhat létre és hogyan helyezhet üzembe egy, az [SQL .NET API](sql-api-sdk-dotnet.md)-n alapuló teendőlista-kezelő webalkalmazást. (Lásd az alábbi képernyőfelvételen.) 
 
 ![Teendőkezelő alkalmazás mintaadatokkal](./media/create-sql-api-dotnet/azure-comosdb-todo-app-list.png)
 
@@ -97,19 +97,19 @@ Most pedig váltsunk át kódok használatára. Klónozunk egy SQL API-alkalmaz�
 
 Tekintsük át, hogy mi történik az alkalmazásban. Nyissa meg a DocumentDBRepository.cs fájlt: az itt található kódsorok hozzák létre az Azure Cosmos DB-erőforrásokat. 
 
-* A DocumentClient inicializálva van a 78. sorban.
+* A DocumentClient inicializálva van a 76. sorban.
 
     ```csharp
     client = new DocumentClient(new Uri(ConfigurationManager.AppSettings["endpoint"]), ConfigurationManager.AppSettings["authKey"]);
     ```
 
-* A rendszer létrehozza az új adatbázist a 93. sorban.
+* A rendszer létrehozza az új adatbázist a 91. sorban.
 
     ```csharp
     await client.CreateDatabaseAsync(new Database { Id = DatabaseId });
     ```
 
-* A rendszer létrehozza az új gyűjteményt a 112. sorban.
+* A rendszer létrehozza az új gyűjteményt a 110. sorban.
 
     ```csharp
     await client.CreateDocumentCollectionAsync(
@@ -117,10 +117,9 @@ Tekintsük át, hogy mi történik az alkalmazásban. Nyissa meg a DocumentDBRep
         new DocumentCollection { Id = CollectionId },
         new DocumentCollection
             {
-               Id = CollectionId,
-               PartitionKey = new PartitionKeyDefinition() { Paths = new Collection<string>() { "/category" } }
+               Id = CollectionId
             },
-        new RequestOptions { OfferThroughput = 1000 });
+        new RequestOptions { OfferThroughput = 400 });
     ```
 
 ## <a name="update-your-connection-string"></a>A kapcsolati karakterlánc frissítése
