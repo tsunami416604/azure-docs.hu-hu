@@ -1,24 +1,24 @@
 ---
-title: "Az Azure SQL Server Stretch Database dokumentációja – oktatóanyagok | Microsoft Docs"
-description: "Megismerheti, hogyan használhatja az SQL Server Stretch Database-t a ritkán használt adatok biztonságos áttelepítésére az Azure-ba a lekérdezések vagy alkalmazások módosítása nélkül. Oktatóanyagok és egyéb dokumentációk."
+title: Az Azure SQL Server Stretch Database dokumentációja – oktatóanyagok | Microsoft Docs
+description: Megismerheti, hogyan használhatja az SQL Server Stretch Database-t a ritkán használt adatok biztonságos áttelepítésére az Azure-ba a lekérdezések vagy alkalmazások módosítása nélkül. Oktatóanyagok és egyéb dokumentációk.
 services: sql-server-stretch-database
 author: czeumault
 manager: carolz
 layout: LandingPage
-ms.assetid: 
+ms.assetid: ''
 ms.service: sql-server-stretch-database
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: cbdd210f2fe46228daa8c138815826df2b3b0fd7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d40cd906abbee8b1d33f9e67c1940918ba4acb28
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
-#<a name="sql-server-stretch-database-documentation"></a>Az SQL Server Stretch Database dokumentációja
+# <a name="sql-server-stretch-database-documentation"></a>Az SQL Server Stretch Database dokumentációja
 
 Megismerheti, hogyan használhatja az SQL Server Stretch Database-t a ritkán használt adatok átlátható és biztonságos áttelepítésére az Azure-felhőbe. Az oktatóanyagok és egyéb dokumentációk segítenek a ritkábban használt adatokat tartalmazó adatbázisok költséghatékony rendelkezésre állásának beállításában anélkül, hogy a meglévő lekérdezéseket vagy alkalmazásokat módosítani kellene.
 

@@ -1,24 +1,24 @@
 ---
-title: "Az Azure Load Balancer dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs"
-description: "Megtudhatja, hogy hogyan használja a Load Balancer szolgáltatást az appok hálózati teljesítményének biztosítására. Kezelheti a virtuális gépek és felhőalapú erőforrások, illetve a helyszínek közötti virtuális hálózatok forgalmát."
+title: Az Azure Load Balancer dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs
+description: Megtudhatja, hogy hogyan használja a Load Balancer szolgáltatást az appok hálózati teljesítményének biztosítására. Kezelheti a virtuális gépek és felhőalapú erőforrások, illetve a helyszínek közötti virtuális hálózatok forgalmát.
 services: load-balancer
 author: czeumault
 manager: carolz
 layout: LandingPage
-ms.assetid: 
+ms.assetid: ''
 ms.service: load-balancer
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 169ca89ccd80e5a70f3e9ab07b3c34358c154be7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4642b0108343b417dc09bbc5978b6a18a58d39a9
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
-#<a name="load-balancer-documentation"></a>Load Balancer – dokumentáció
+# <a name="load-balancer-documentation"></a>Load Balancer – dokumentáció
 
 Itt megtanulhatja, hogy hogyan konfigurálhatja a Load Balancert az alkalmazások magas rendelkezésre állásának és hálózati teljesítményének biztosítására. A dokumentáció bemutatja, hogy hogyan egyenlítheti ki a virtuális gépek és felhőalapú erőforrások, illetve a helyszínek közötti virtuális hálózatok forgalmát.
 

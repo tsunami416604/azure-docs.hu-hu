@@ -28,7 +28,7 @@
 - name: Alapelvek
   items:
     - name: A költségjelentések értelmezése
-      href: understading-cost-reports.md
+      href: understanding-cost-reports.md
 - name: Útmutatók
   items:
     - name: Azure-előfizetések és -fiókok aktiválása

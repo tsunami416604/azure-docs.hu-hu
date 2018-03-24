@@ -124,6 +124,8 @@
           href: security-center-ata-integration.md
         - name: Az Azure AD Identity Protection csatlakoztatása
           href: security-center-aadip-integration.md
+        - name: Adatok exportálása SIEM-be
+          href: security-center-export-data-to-siem.md
     - name: Fenyegetések vizsgálata
       href: security-center-detection-capabilities.md
       items:

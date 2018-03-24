@@ -1,24 +1,24 @@
 ---
-title: "Az Azure DevTest Labs dokumentációja – oktatóanyagok | Microsoft Docs"
-description: "Ismerje meg, hogy az újrahasznosítható összetevőkkel hogyan hozhat létre alkalmazástesztelési környezetet. Oktatóanyagok, videók és egyéb anyagok, amelyekből megtudhatja, hogyan hozza létre, kezelje és tegye biztonságossá a laborokat."
+title: Az Azure DevTest Labs dokumentációja – oktatóanyagok | Microsoft Docs
+description: Ismerje meg, hogy az újrahasznosítható összetevőkkel hogyan hozhat létre alkalmazástesztelési környezetet. Oktatóanyagok, videók és egyéb anyagok, amelyekből megtudhatja, hogyan hozza létre, kezelje és tegye biztonságossá a laborokat.
 services: devtest-lab
 author: czeumault
 manager: carolz
 layout: LandingPage
-ms.assetid: 
+ms.assetid: ''
 ms.service: devtest-lab
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 92aab190dfba196d48feacbfcc81a0097102b810
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 41b7ae5ecf87f4ca544e03c3e62b6c850cf799d0
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
-#<a name="devtest-labs-documentation"></a>DevTest Labs-dokumentáció
+# <a name="devtest-labs-documentation"></a>DevTest Labs-dokumentáció
 
 Ismerje meg a Devtest Labs használatát, amellyel alkalmazástesztelő környezetet hozhat létre az újrahasznosítható összetevőkből. Oktatóanyagok, videók és egyéb dokumentációk, amelyekből megtudhatja, hogyan hozzon létre, kezeljen és tegyen biztonságossá laborokat, valamint hogyan kezeljen és adjon hozzá összetevőket.
 
