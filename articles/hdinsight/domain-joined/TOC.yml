@@ -6,8 +6,6 @@
       href: apache-domain-joined-introduction.md
     - name: Tartományhoz csatlakoztatott fürtök megtervezése
       href: apache-domain-joined-architecture.md
-    - name: Tartományhoz csatlakoztatott tesztkörnyezet konfigurálása
-      href: apache-domain-joined-configure.md
     - name: Tartományhoz csatlakoztatott fürtök konfigurálása az Azure AD DS-sel
       href: apache-domain-joined-configure-using-azure-adds.md
     - name: Azure AD-felhasználók szinkronizálása HDInsight-fürttel

@@ -1,24 +1,24 @@
 ---
-title: "Az Azure HDInsight dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs"
-description: "Információk a HDInsight-alapú Hadoopról. A dokumentációból megismerheti a Hadoop, Spark, HBase, R-Server stb. használatát a big data-betekintések feldolgozásához, elemzéséhez és kinyeréséhez."
+title: Az Azure HDInsight dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs
+description: Információk a HDInsight-alapú Hadoopról. A dokumentációból megismerheti a Hadoop, Spark, HBase, R-Server stb. használatát a big data-betekintések feldolgozásához, elemzéséhez és kinyeréséhez.
 services: hdinsight
 author: czeumault
 manager: carolz
 layout: LandingPage
-ms.assetid: 
+ms.assetid: ''
 ms.service: hdinsight
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
 ms.date: 12/05/2017
 ms.author: carolz
-ms.openlocfilehash: 12fbfada95f9356b1d32c0edd3346a57c6ffa26f
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 6d00f3194f7cf02d9c0218ed768f3c3350efdd16
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/23/2018
 ---
-#<a name="azure-hdinsight-documentation"></a>Azure HDInsight – dokumentáció
+# <a name="azure-hdinsight-documentation"></a>Azure HDInsight – dokumentáció
 
 Ismerje meg, hogyan használhatja az Azure HDInsightot streamelt vagy előzményadatok elemzésére. Oktatóanyagok és egyéb dokumentáció, amelyek bemutatják a fürtök létrehozását, big data adatok feldolgozását és elemzését, illetve megoldások fejlesztését a legnépszerűbb nyílt forráskódú keretrendszerekkel, mint a Hadoop, a Spark, a Hive, az LLAP, a Kafka, a Storm vagy az R. 
 

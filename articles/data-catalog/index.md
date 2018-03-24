@@ -1,24 +1,24 @@
 ---
-title: "Az Azure Data Catalog dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs"
-description: "Ismerje meg, hogyan állíthat be egy adatkatalógust, ahol a szervezete megtalálhat, megismerhet és felhasználhat adatforrásokat. Oktatóanyagok, API-referenciák és egyéb dokumentáció."
+title: Az Azure Data Catalog dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs
+description: Ismerje meg, hogyan állíthat be egy adatkatalógust, ahol a szervezete megtalálhat, megismerhet és felhasználhat adatforrásokat. Oktatóanyagok, API-referenciák és egyéb dokumentáció.
 services: data-catalog
 author: czeumault
 manager: carolz
 layout: LandingPage
-ms.assetid: 
+ms.assetid: ''
 ms.service: data-catalog
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
 ms.date: 05/25/2017
 ms.author: carolz
-ms.openlocfilehash: c901562753be86613ac4ca4dec1e727d1383e626
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7ec21b9b55015c247cef3f216dbb14f4ddc30e8d
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
-#<a name="data-catalog-documentation"></a>Data Catalog – dokumentáció
+# <a name="data-catalog-documentation"></a>Data Catalog – dokumentáció
 
 Ismerje meg, hogyan használhatja a Data Catalog szolgáltatást arra, hogy a cég és a csapat könnyebben deríthesse fel, ismerhesse meg és használhassa fel az adatforrásokat. Az oktatóanyagok, REST API-leírás és egyéb dokumentáció bemutatják, hogyan tervezheti meg és állíthatja be az adattárat, ahol az adatfelhasználók hozzájuthatnak az elérhető adatforrásokhoz, és szakértők által közzétett tudást sajátíthatnak el.
 

@@ -1,24 +1,24 @@
 ---
-title: "Az Azure StorSimple dokumentációja – oktatóanyagok | Microsoft Docs"
-description: "Ismerje meg az Azure StorSimple integrált tárhelymegoldás használatát, amely a helyszíni eszközök és az Azure felhőtárhelyek közötti tárhelyfeladatok kezelésére szolgál."
+title: Az Azure StorSimple dokumentációja – oktatóanyagok | Microsoft Docs
+description: Ismerje meg az Azure StorSimple integrált tárhelymegoldás használatát, amely a helyszíni eszközök és az Azure felhőtárhelyek közötti tárhelyfeladatok kezelésére szolgál.
 services: storsimple
 author: czeumault
 manager: carolz
 layout: LandingPage
-ms.assetid: 
+ms.assetid: ''
 ms.service: storsimple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 579fe32f75e051e679e6cbbaea5f99c7fcd6037b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0115c1794878296df826e7d04724a561464125d6
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
-#<a name="storsimple-documentation"></a>StorSimple-dokumentáció
+# <a name="storsimple-documentation"></a>StorSimple-dokumentáció
 
 Ismerje meg az Azure StorSimple integrált tárhelymegoldás használatát, amely a helyszíni eszközök és az Azure felhőtárhelyek közötti tárhelyfeladatok kezelésére szolgál. Az oktatóanyagok és egyéb dokumentációk bemutatják a tárhelykezelés beállítását, a helyszínfüggetlen biztonsági mentést és a vészhelyreállítást.
 
@@ -117,7 +117,7 @@ Ismerje meg az Azure StorSimple integrált tárhelymegoldás használatát, amel
 
 ---
 
-##<a name="other-storsimple-solutions"></a>Egyéb StorSimple-megoldások
+## <a name="other-storsimple-solutions"></a>Egyéb StorSimple-megoldások
 
 <ul class="panelContent cardsW">
     <li>

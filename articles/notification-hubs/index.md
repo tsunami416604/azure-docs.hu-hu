@@ -1,24 +1,24 @@
 ---
-title: "Az Azure Notification Hubs dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs"
-description: "Ismerje meg, hogyan küldhet leküldéses értesítéseket akármilyen háttérrendszerből bármely mobileszközre a Notification Hubs használatával. Oktatóanyagok, API-referenciák, és egyéb dokumentációk."
+title: Az Azure Notification Hubs dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs
+description: Ismerje meg, hogyan küldhet leküldéses értesítéseket akármilyen háttérrendszerből bármely mobileszközre a Notification Hubs használatával. Oktatóanyagok, API-referenciák, és egyéb dokumentációk.
 services: notification-hubs
 author: czeumault
 manager: carolz
 layout: LandingPage
-ms.assetid: 
+ms.assetid: ''
 ms.service: notification-hubs
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: f7b8560d4ce7374e36d5f7e8a5d2056396e4f089
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8f4921e4c7571b05bb8612dcd6fe9750f83a7142
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
-#<a name="notification-hubs-documentation"></a>Notification Hubs – dokumentáció
+# <a name="notification-hubs-documentation"></a>Notification Hubs – dokumentáció
 
 Ismerje meg, hogyan küldhet gyorsan akár több millió üzenetet a Notification Hubs többplatformos, méretezhető leküldéses értesítési motor használatával. Az oktatóanyagok, API-referenciák és az egyéb dokumentáció bemutatják, hogyan állíthat be és küldhet leküldéses értesítéseket akármilyen háttérrendszerből bármely mobileszközre. 
 
