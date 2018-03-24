@@ -1,9 +1,9 @@
 ---
-title: "Hozzon létre Azure-szolgáltatások - PowerShell riasztásokat |} Microsoft Docs"
-description: "Eseményindító e-mailek, értesítések, a megadott feltételek teljesülnek webhely URL-címek (webhookok), vagy az automation hívni."
+title: Hozzon létre Azure-szolgáltatások - PowerShell riasztásokat |} Microsoft Docs
+description: Eseményindító e-mailek, értesítések, a megadott feltételek teljesülnek webhely URL-címek (webhookok), vagy az automation hívni.
 author: rboucher
 manager: carmonm
-editor: 
+editor: ''
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
 ms.assetid: d26ab15b-7b7e-42a9-81c8-3ce9ead5d252
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/20/2016
 ms.author: robb
-ms.openlocfilehash: d3fca8675c1f15b8fd0f952cfbf520f5c68478b3
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 03026ee8bedd5277b2bb6cf28dabafabf207b0ae
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/23/2018
 ---
-# <a name="create-metric-alerts-in-azure-monitor-for-azure-services---powershell"></a>Hozzon létre metrika riasztások Azure figyelése az Azure-szolgáltatások - PowerShell
+# <a name="create-classic-metric-alerts-in-azure-monitor-for-azure-services---powershell"></a>Hozzon létre klasszikus metrika riasztások Azure figyelése az Azure-szolgáltatások - PowerShell
 > [!div class="op_single_selector"]
 > * [Portal](insights-alerts-portal.md)
 > * [PowerShell](insights-alerts-powershell.md)
@@ -29,12 +29,18 @@ ms.lasthandoff: 12/21/2017
 >
 
 ## <a name="overview"></a>Áttekintés
+
+> [!NOTE]
+> Ez a cikk ismerteti, hogyan régebbi metrika riasztások létrehozásához. Az Azure figyelő most támogatja [újabb, metrika riasztások jobb](monitoring-near-real-time-metric-alerts.md). Ezek a riasztások több metrikát, és lehetővé teszik a dimenzionális metrikák riasztást küld. Újabb metrika riasztások PowerShell támogatása hamarosan elérhető.
+>
+>
+
 Ez a cikk bemutatja, hogyan PowerShell használata Azure metrika riasztások beállítása.  
 
 A figyelési metrikákat, vagy események, az Azure-szolgáltatások alapuló riasztást kaphat.
 
 * **Metrika értékek** -a riasztás elindítja a megadott metrika értékét ebbe a küszöbérték mindkét irányban rendel. Ez azt jelenti, hogy elindítja a mindkét Ha először a feltétel teljesül, és majd ezt követően, hogy a feltétel mikor van már nem teljesül.    
-* **Tevékenység naplóeseményeket** -riasztást aktiválhatók *minden* esemény, vagy csak akkor, ha egy bizonyos események következik be. További információt a naplófájl tevékenységriasztásokat [kattintson ide](monitoring-activity-log-alerts.md)
+* **Tevékenység naplóeseményeket** -riasztást aktiválhatók *minden* esemény, vagy csak akkor, ha bizonyos események megtörténtekor. További információt a naplófájl tevékenységriasztásokat [kattintson ide](monitoring-activity-log-alerts.md)
 
 A metrika riasztások tegye a következőket, amikor elindítja a konfigurálhatja:
 
@@ -47,13 +53,13 @@ Konfigurálhatja, és a riasztási szabályok használatával adatainak beolvas�
 
 * [Azure Portal](insights-alerts-portal.md)
 * [PowerShell](insights-alerts-powershell.md)
-* [parancssori felület (CLI)](insights-alerts-command-line-interface.md)
+* [Parancssori felület (CLI)](insights-alerts-command-line-interface.md)
 * [Az Azure figyelő REST API-n](https://msdn.microsoft.com/library/azure/dn931945.aspx)
 
 További információkért mindig beírhatja ```Get-Help``` és majd a keresett PowerShell-parancsot.
 
 ## <a name="create-alert-rules-in-powershell"></a>A riasztási szabályok létrehozása a PowerShell
-1. Jelentkezzen be az Azure-bA.   
+1. Bejelentkezik az Azure-ba.   
 
     ```PowerShell
     Login-AzureRmAccount

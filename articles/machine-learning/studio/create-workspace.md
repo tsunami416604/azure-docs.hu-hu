@@ -1,29 +1,28 @@
 ---
-title: "Hozzon létre a Machine Learning Studio munkaterületének |} Microsoft Docs"
-description: "Egy munkaterület létrehozása az Azure Machine Learning Studióban"
+title: Hozzon létre a Machine Learning Studio munkaterületének |} Microsoft Docs
+description: Egy munkaterület létrehozása az Azure Machine Learning Studióban
 services: machine-learning
-author: garyericson
-manager: jhubbard
+author: heatherbshapiro
+ms.author: hshapiro
+manager: hjerez
 editor: cgronlun
 ms.assetid: aa96b784-ac6c-44bc-a28a-85d49fbe90a2
 ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 12/07/2017
-ms.author: garye
-ms.reviewer: garyericson, jasonwhowell, MicrosoftDocs/mlreview
-ms.openlocfilehash: 7aad885b1643ddeb25e5d00a151005b8444315fa
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 8da10e474c62868ca109a44e7c66dc11ee62b6de
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="create-and-share-an-azure-machine-learning-workspace"></a>Azure Machine Learning-munkaterület létrehozása és megosztása
 Ez a menüben a témakörök, amelyek bemutatják, hogyan állíthatja be a különböző adatok tudományos környezetekben a Cortana Analytics folyamat (nagybetűs) által használt mutató hivatkozásokat tartalmaz.
 
 [!INCLUDE [data-science-environment-setup](../../../includes/cap-setup-environments.md)]
 
-Azure Machine Learning Studio használatához meg kell rendelkeznie a Machine Learning munkaterülettel. A munkaterület létrehozására, kezelésére és kísérletek közzétételéhez szükséges eszközöket tartalmazza.
+Azure Machine Learning Studio használatához meg kell rendelkeznie a Machine Learning munkaterülettel. Ez a munkaterület tartalmazza a kísérletek létrehozásához, kezeléséhez és közzétételéhez szükséges eszközöket.
 
 [!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
 
@@ -41,7 +40,7 @@ Azure Machine Learning Studio használatához meg kell rendelkeznie a Machine Le
 
 4. Adja meg a munkaterület adatokat:
 
-    - A *munkaterületnevet* nem adható meg a befejezési legfeljebb 260 karakter lehet. A neve nem tartalmazhatja a következő karaktereket:`< > * % & : \ ? + /`
+    - A *munkaterületnevet* nem adható meg a befejezési legfeljebb 260 karakter lehet. A neve nem tartalmazhatja a következő karaktereket: `< > * % & : \ ? + /`
     - A *web service-csomag* akkor válasszon (vagy hozzon létre), valamint a társított *tarifacsomag* válassza ki, akkor használatos, ha a munkaterület webszolgáltatások telepítése.
 
     ![Új munkaterület létrehozása](./media/create-workspace/create-new-workspace.png)
@@ -50,7 +49,7 @@ Azure Machine Learning Studio használatához meg kell rendelkeznie a Machine Le
 
 Ha a munkaterületet van telepítve, a Machine Learning Studióban indíthatja el.
 
-1. Tallózás a Machine Learning Studióba [https://studio.azureml.net/](https://studio.azureml.net/).
+1. Tallózás a Machine Learning Studióba [ https://studio.azureml.net/ ](https://studio.azureml.net/).
 
 2. A munkaterület kiválasztása a felső – jobb sarkában található.
 

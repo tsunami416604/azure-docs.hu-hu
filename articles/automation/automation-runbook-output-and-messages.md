@@ -1,6 +1,6 @@
 ---
-title: "Runbook-kimenet és üzenetek az Azure Automationben"
-description: "Hogyan hozhat létre, és kimeneti és a hiba az Azure Automation runbookjai érkező üzenetek Desribes."
+title: Runbook-kimenet és üzenetek az Azure Automationben
+description: Hogyan hozhat létre, és kimeneti és a hiba az Azure Automation runbookjai érkező üzenetek Desribes.
 services: automation
 ms.service: automation
 author: georgewallace
@@ -8,11 +8,11 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: a02ea2854de7ff32a8c50ff2e6f317596fb4aa1b
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: d4b8d485906701b4f05e057996bc31232a29e620
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="runbook-output-and-messages-in-azure-automation"></a>Runbook-kimenet és üzenetek az Azure Automationben
 Azure Automation-forgatókönyv a legtöbb van valamilyen kimenetet például egy hibaüzenet a felhasználó számára, vagy egy összetett objektumot egy másik munkafolyamat számára készült. A Windows PowerShell szintén [több adatfolyam](http://blogs.technet.com/heyscriptingguy/archive/2014/03/30/understanding-streams-redirection-and-write-host-in-powershell.aspx) kimenetként egy parancsfájl vagy a munkafolyamat számára. Az összes ezekbe az adatfolyamokba eltérő módon működik az Azure Automation, és ajánlott eljárások használata minden egyes runbook létrehozásakor kell.
@@ -204,8 +204,8 @@ Az előző képernyőképen látható látható, hogy ha engedélyezi a részlet
    
    ![Grafikus szerzői naplózás és nyomkövetés panel](media/automation-runbook-output-and-messages/logging-and-tracing-settings-blade.png)
 
-### <a name="microsoft-operations-management-suite-oms-log-analytics"></a>A Microsoft Operations Management Suite (OMS) szolgáltatáshoz
-Automatizálási küldhet runbook feladat állapotát és a feladat adatfolyamokat a Microsoft Operations Management Suite (OMS) Naplóelemzési munkaterületet. A Naplóelemzési is,
+### <a name="microsoft-azure-log-analytics"></a>A Microsoft Azure Naplóelemzés
+Automatizálási küldhet runbook feladat állapotát és a feladat adatfolyamok Naplóelemzési munkaterületet. A Naplóelemzési is,
 
 * Az automatizálási feladatok insight letöltése 
 * A runbook-feladat állapota (például felfüggesztett vagy sikertelen) alapuló riasztás vagy e-mail eseményindító 
@@ -213,7 +213,7 @@ Automatizálási küldhet runbook feladat állapotát és a feladat adatfolyamok
 * Feladatok összefüggéseket Automation-fiókok között 
 * A feladatelőzmények megjelenítheti az adott idő alatt    
 
-Hogyan gyűjthet, egyeztetéséhez és feladatadatok intézkedjen Naplóelemzési rendszerrel történő integráció konfigurálása További információkért lásd: [továbbítása feladat állapotát és a feladat adatfolyamok Automation való Naplóelemzés (OMS)](automation-manage-send-joblogs-log-analytics.md).
+Hogyan gyűjthet, egyeztetéséhez és feladatadatok intézkedjen Naplóelemzési rendszerrel történő integráció konfigurálása További információkért lásd: [feladat állapotát és a feladat adatfolyam továbbítása Automation Naplóelemzési](automation-manage-send-joblogs-log-analytics.md).
 
 ## <a name="next-steps"></a>További lépések
 * A runbook végrehajtásával, a runbook-feladatok figyelésével, illetve az egyéb technikai részletekkel kapcsolatos további tudnivalókat a [Runbook-feladatok nyomon követése](automation-runbook-execution.md) című rész tartalmazza

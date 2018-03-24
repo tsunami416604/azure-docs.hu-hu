@@ -1,11 +1,11 @@
 ---
-title: "PowerShell segítségével hozza létre és konfigurálja a Naplóelemzési munkaterület |} Microsoft Docs"
-description: "A helyszíni kiszolgálók elemzés által használt adatok bejelentkezhet, illetve a felhőalapú infrastruktúra. Gép adatgyűjtést az Azure storage Azure diagnostics generálásakor."
+title: PowerShell segítségével hozza létre és konfigurálja a Naplóelemzési munkaterület |} Microsoft Docs
+description: A helyszíni kiszolgálók elemzés által használt adatok bejelentkezhet, illetve a felhőalapú infrastruktúra. Gép adatgyűjtést az Azure storage Azure diagnostics generálásakor.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: richrundmsft
 manager: jochan
-editor: 
+editor: ''
 ms.assetid: 3b9b7ade-3374-4596-afb1-51b695f481c2
 ms.service: log-analytics
 ms.workload: na
@@ -14,16 +14,16 @@ ms.devlang: powershell
 ms.topic: article
 ms.date: 11/21/2016
 ms.author: richrund
-ms.openlocfilehash: 6807ab67e3593da82c147669b29bfdae3b6c967c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6a3f91323a017533d2d012f1e81760396c17a643
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="manage-log-analytics-using-powershell"></a>A Log Analytics felügyelete PowerShell használatával
 Használhatja a [napló Analytics PowerShell-parancsmagok](https://msdn.microsoft.com/library/mt188224\(v=azure.300\).aspx) végzik el a különböző funkciókat a Naplóelemzési parancssori vagy parancsfájl részeként.  A PowerShell használatával végezheti el a feladatok közé:
 
-* Munkaterületek létrehozása
+* Munkaterület létrehozása
 * Hozzáadni vagy eltávolítani egy megoldást
 * Importálás és exportálás a mentett keresések
 * Hozzon létre egy számítógépcsoportot
@@ -49,7 +49,7 @@ Ezek a példák 2.3.0 verziójával vagy későbbi a AzureRm.OperationalInsights
 ## <a name="create-and-configure-a-log-analytics-workspace"></a>Hozza létre és konfigurálja a Naplóelemzési munkaterület
 Az alábbi parancsfájl minta bemutatja, hogyan:
 
-1. Munkaterületek létrehozása
+1. Munkaterület létrehozása
 2. A rendelkezésre álló megoldások felsorolása
 3. A munkaterület megoldások hozzáadása
 4. Importálás mentett keresések
@@ -145,7 +145,7 @@ foreach ($solution in $Solutions) {
     Set-AzureRmOperationalInsightsIntelligencePack -ResourceGroupName $ResourceGroup -WorkspaceName $WorkspaceName -IntelligencePackName $solution -Enabled $true
 }
 
-#List enabled solutions
+# List enabled solutions
 (Get-AzureRmOperationalInsightsIntelligencePacks -ResourceGroupName $ResourceGroup -WorkspaceName $WorkspaceName).Where({($_.enabled -eq $true)})
 
 # Import Saved Searches
@@ -197,8 +197,8 @@ Az ügynök nélküli figyelés az Azure-erőforrások, az erőforrások kell re
 | A Data Lake analytics     | Igen | | 
 | A Data Lake store         | Igen | |
 | A rugalmas SQL-készlet        |     | Igen |
-| Event Hub névtér     |     | Igen |
-| IoT-központok                |     | Igen |
+| Eseményközpont-névtér     |     | Igen |
+| IoT Hubok                |     | Igen |
 | Key Vault               | Igen | |
 | Terheléselosztók          | Igen | |
 | Logic Apps              | Igen | Igen |
@@ -206,9 +206,9 @@ Az ügynök nélküli figyelés az Azure-erőforrások, az erőforrások kell re
 | Redis Cache             |     | Igen |
 | Szolgáltatások keresése         | Igen | Igen |
 | Service Bus-névtér   |     | Igen |
-| SQL (12-es verzió)               |     | Igen |
+| SQL (v12)               |     | Igen |
 | Webhelyek               |     | Igen |
-| Kiszolgáló-webfarmok        |     | Igen |
+| Web Server farms        |     | Igen |
 
 Az elérhető mérőszámok leírását, [támogatott Azure-figyelő metrikák](../monitoring-and-diagnostics/monitoring-supported-metrics.md).
 
@@ -263,6 +263,6 @@ Remove-AzureRmOperationalInsightsStorageInsight -ResourceGroupName $workspace.Re
 A fenti parancsfájl segítségével is gyűjteni a tárfiók különböző előfizetésekhez. A parancsfájl tud dolgozni előfizetések között, mert meg van adva, a tárfiók erőforrás azonosítója és a megfelelő hozzáférési kulcsot. A hozzáférési kulcs módosításakor kell frissíteni az új kulcsot a tároló betekintést.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Tekintse át a napló Analytics PowerShell-parancsmagok](https://msdn.microsoft.com/library/mt188224\(v=azure.300\).aspx) további információt a PowerShell használatával Log Analytics-konfigurációhoz.
 

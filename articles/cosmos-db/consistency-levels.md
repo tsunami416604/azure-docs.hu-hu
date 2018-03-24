@@ -1,12 +1,12 @@
 ---
-title: "Az Azure Cosmos Adatbázisba konzisztenciaszintek |} Microsoft Docs"
-description: "Azure Cosmos-adatbázis segítségével egyenleg végleges konzisztencia, a rendelkezésre állás és a késleltetés kompromisszumot öt konzisztenciaszintek rendelkezik."
-keywords: "az azure végleges konzisztencia cosmos db, azure, a Microsoft azure"
+title: Az Azure Cosmos Adatbázisba konzisztenciaszintek |} Microsoft Docs
+description: Azure Cosmos-adatbázis segítségével egyenleg végleges konzisztencia, a rendelkezésre állás és a késleltetés kompromisszumot öt konzisztenciaszintek rendelkezik.
+keywords: az azure végleges konzisztencia cosmos db, azure, a Microsoft azure
 services: cosmos-db
 author: mimig1
 manager: jhubbard
 editor: cgronlun
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: 3fe51cfa-a889-4a4a-b320-16bf871fe74c
 ms.service: cosmos-db
 ms.workload: data-services
@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 02/12/2018
 ms.author: mimig
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c3bd28316e3d2e7596021d6964594002d47d160a
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: aa95cae5d62ebe23d6822232c4a5ab872e1f2c6a
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="tunable-data-consistency-levels-in-azure-cosmos-db"></a>Az Azure Cosmos Adatbázisba hangolható konzisztencia szintek
 Azure Cosmos-adatbázis úgy van kialakítva egészen az alapoktól fel a globális terjesztési szem előtt az összes adatmodell. Előre jelezhető késés garanciák és több jól meghatározott laza konzisztencia modellek tervezték. Jelenleg az Azure Cosmos DB biztosít öt konzisztenciaszintek: erős, kötött elavulás, munkamenet, egységes előtag, és végleges. Kötött elavulás, munkamenet, egységes előtag és végleges biztosan néven "laza konzisztencia modellek" azok adjon meg kevesebb konzisztencia erős, mint amely a legtöbb rendelkezésre állású egységes modellje. 
@@ -60,6 +60,7 @@ A lépésköz legyen konzisztencia egy felhasználói kérelem hatókörét. Egy
 ## <a name="consistency-levels"></a>Konzisztenciaszintek
 A Cosmos DB fiókját az adatbázis-fiókra, amely az összes gyűjteményt (és adatbázisok) egy alapértelmezett konzisztenciaszint adhat meg. Alapértelmezés szerint minden olvasási és a felhasználó által definiált erőforrások állították ki lekérdezések használja a következő adatbázisfiókot beállított alapértelmezett konzisztencia szint. A meghatározott olvasás/lekérdezési kérelmek használatával az egyes támogatott API-k konzisztenciaszint is enyhíteni. Öt típusa van konzisztenciaszintek az Azure Cosmos DB replikációs protokoll által támogatott, adjon meg egy egyértelmű kompromisszum között adott konzisztencia biztosítja, és a teljesítmény, ebben a szakaszban leírtak szerint.
 
+<a id="strong"></a>
 **Erős**: 
 
 * Erős konzisztenciát biztosít egy [linearizability](https://aphyr.com/posts/313-strong-consistency-models) garantálja az olvasási garantált, hogy a legfrissebb elemet adja vissza. 
@@ -67,6 +68,7 @@ A Cosmos DB fiókját az adatbázis-fiókra, amely az összes gyűjteményt (és
 * Az erős konzisztencia használatára konfigurált Azure Cosmos DB fiókok nem társítható egynél több Azure-régiót Azure Cosmos DB fiókkal.  
 * Egy olvasási művelet költsége (a [egységek kérelem](request-units.md) felhasznált) erős konzisztencia értéke nagyobb, mint a munkamenet és végleges, de ugyanaz, mint a kötött elavulási.
 
+<a id="bounded-staleness"></a>
 **A kötött elavulási**: 
 
 * A kötött elavulási konzisztencia biztosítja, hogy az lehet, hogy legfeljebb olvasási késés által írt *K* verziója vagy az előtagok elem vagy *t* időköz. 
@@ -76,6 +78,7 @@ A Cosmos DB fiókját az adatbázis-fiókra, amely az összes gyűjteményt (és
 * A kötött elavulási konzisztencia konfigurált Azure Cosmos DB fiókok tetszőleges számú Azure-régiók társíthatja Azure Cosmos DB fiókjuk. 
 * Egy olvasási művelet (tekintetében felhasznált RUs) költsége a kötött elavulási, azaz magasabb-munkamenet és végleges konzisztencia, de ugyanaz, mint az erős konzisztencia.
 
+<a id="session"></a>
 **Munkamenet**: 
 
 * A Globális konzisztenciahiba modellek erős és a kötött elavulási konzisztencia szintek által kínált, eltérően a munkamenet-konzisztencia ügyfél hatókörét. 
@@ -91,6 +94,7 @@ A Cosmos DB fiókját az adatbázis-fiókra, amely az összes gyűjteményt (és
 * Egységes előtag biztosítja, hogy az, hogy olvasási műveletek nem veszi észre üzemen kívüli írási műveleteket. Ha sorrendben végrehajtott írási műveletek `A, B, C`, ügyfél látja el, majd `A`, `A,B`, vagy `A,B,C`, de soha nem megfelelő sorrendben például `A,C` vagy `B,A,C`.
 * Egységes előtag konzisztencia konfigurált Azure Cosmos DB fiókok tetszőleges számú Azure-régiók társíthatja Azure Cosmos DB fiókjuk. 
 
+<a id="eventual"></a>
 **Végső**: 
 
 * Végleges konzisztencia biztosítja, hogy bármilyen további írás hiányában a csoportban lévő replikák végül össze vonva. 
@@ -114,7 +118,7 @@ Alapértelmezés szerint a felhasználó által definiált erőforrások a leké
 | --- | --- | --- |
 | A CONSISTENT (alapértelmezett) |Válassza ki az erős, kötött elavulási, munkamenet, egységes előtag, vagy végleges |Válassza ki az erős, kötött elavulás, munkamenet, vagy végleges |
 | Lassú |Válassza ki az erős, kötött elavulási, munkamenet, egységes előtag, vagy végleges |Végleges |
-| Nincs |Válassza ki az erős, kötött elavulási, munkamenet, egységes előtag, vagy végleges |Nem alkalmazható |
+| None |Válassza ki az erős, kötött elavulási, munkamenet, egységes előtag, vagy végleges |Nem alkalmazható |
 
 Mint az olvasási kéréseket csökkenthető a konzisztenciaszint minden API-ban meghatározott lekérdezési kérelem.
 
@@ -125,19 +129,12 @@ Azure Cosmos-adatbázis jelenleg két konzisztencia beállításokkal, erős és
 ## <a name="next-steps"></a>További lépések
 Ha azt szeretné, további elolvasása konzisztenciaszintek és kompromisszumot elvégzéséhez, a következőket javasoljuk:
 
-* Doug Terry. A replikált adatok konzisztencia viszonylag baseball (videó) keresztül.   
-  [https://www.youtube.com/watch?v=gluIh8zd26I](https://www.youtube.com/watch?v=gluIh8zd26I)
-* Doug Terry. A replikált adatok konzisztencia viszonylag baseball keresztül.   
-  [http://research.microsoft.com/pubs/157411/ConsistencyAndBaseballReport.pdf](http://research.microsoft.com/pubs/157411/ConsistencyAndBaseballReport.pdf)
-* Doug Terry. Munkamenet garanciák gyengén konzisztens replikált adatok.   
-  [http://dl.acm.org/citation.cfm?id=383631](http://dl.acm.org/citation.cfm?id=383631)
-* Daniel Abadi. Konzisztencia mellékhatásokkal Modern elosztott adatbázis rendszerek kialakításában: CAP csak a szövegegység része ".   
-  [http://computer.org/csdl/mags/co/2012/02/mco2012020037-abs.html](http://computer.org/csdl/mags/co/2012/02/mco2012020037-abs.html)
-* Peter Bailis, Shivaram Venkataraman, Michael J. tw, Joseph M. Hellerstein, adatmegőrzési Stoica. Probabilisztikus kötött elavulási (PBS) a gyakorlati részleges határozatképességére.   
-  [http://vldb.org/pvldb/vol5/p776_peterbailis_vldb2012.pdf](http://vldb.org/pvldb/vol5/p776_peterbailis_vldb2012.pdf)
-* Wernernek Vogels. Végső konzisztens - javított változat.    
-  [http://allthingsdistributed.com/2008/12/eventually_consistent.html](http://allthingsdistributed.com/2008/12/eventually_consistent.html)
-* MONi Naor, Avishai gyapjú, a betöltés, a kapacitás és kvórum rendszerek, a számítástechnikai, v.27 n.2, p.423 447, 1998. április SIAM napló rendelkezésre állását.
-  [http://epubs.siam.org/doi/abs/10.1137/S0097539795281232](http://epubs.siam.org/doi/abs/10.1137/S0097539795281232)
-* Sebastian Burckhardt, Chris Dern, Macanal Musuvathi, Roy Tan, Line-up: a teljes és automatikus linearizability-ellenőrző eljárás programozási nyelv tervezési és megvalósítási, június 05-10-es, 2010, Toronto, Ontario, 2010-es ACM SIGPLAN konferencia Kanadában [doi > 10.1145/1806596.1806634] [http://dl.acm.org/citation.cfm?id=1806634](http://dl.acm.org/citation.cfm?id=1806634)
-* Peter Bailis, Shivaram Venkataraman, Michael J. tw, Joseph M. Hellerstein adatmegőrzési Stoica Probabilistically kötött elavulási gyakorlati részleges határozatképességére, a VLDB dotációs, még az v.5 n.8, p.776 787, 2012 áprilisi eljárásai az [http:// DL.ACM.org/CITATION.cfm?ID=2212359](http://dl.acm.org/citation.cfm?id=2212359)
+* [A replikált adatok konzisztencia keresztül Doug Terry által (videó) baseball ismertetése](https://www.youtube.com/watch?v=gluIh8zd26I)
+* [A replikált adatok konzisztencia keresztül baseball (tanulmány) Doug Terry által ismertetése](http://research.microsoft.com/pubs/157411/ConsistencyAndBaseballReport.pdf)
+* [Munkamenet-garanciák gyengén konzisztens replikált adatok](http://dl.acm.org/citation.cfm?id=383631)
+* [Konzisztencia mellékhatásokkal Modern elosztott adatbázis rendszerek kialakításában: CAP csak a szövegegység része](http://computer.org/csdl/mags/co/2012/02/mco2012020037-abs.html)
+* [A gyakorlati részleges határozatképességére probabilisztikus a kötött elavulási (PBS)](http://vldb.org/pvldb/vol5/p776_peterbailis_vldb2012.pdf)
+* [Végső konzisztens - javított változat](http://allthingsdistributed.com/2008/12/eventually_consistent.html)
+* [A betöltési, a kapacitás és a kvórum rendszerek, meg a számítási SIAM napló](http://epubs.siam.org/doi/abs/10.1137/S0097539795281232)
+* [Line-up: a teljes és automatikus linearizability-ellenőrző eljárás programozási nyelv tervezési és megvalósítási 2010 ACM SIGPLAN konferencia](http://dl.acm.org/citation.cfm?id=1806634)
+* [A gyakorlati részleges határozatképességére probabilistically a kötött elavulási](http://dl.acm.org/citation.cfm?id=2212359)

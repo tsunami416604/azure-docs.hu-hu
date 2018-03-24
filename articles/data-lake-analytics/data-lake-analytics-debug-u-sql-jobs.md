@@ -1,8 +1,8 @@
 ---
-title: "Felhasználó által definiált C# programkódja sikertelen Azure Data Lake U-SQL feladatok Debug |} Microsoft Docs"
-description: "Útmutató az Azure Data Lake Tools for Visual Studio használatával U-SQL sikertelen csúcspont hibakeresését."
+title: Felhasználó által definiált C# programkódja sikertelen Azure Data Lake U-SQL feladatok Debug |} Microsoft Docs
+description: Útmutató az Azure Data Lake Tools for Visual Studio használatával U-SQL sikertelen csúcspont hibakeresését.
 services: data-lake-analytics
-documentationcenter: 
+documentationcenter: ''
 author: yanancai
 manager: jhubbard
 editor: cgronlun
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 11/31/2017
 ms.author: yanacai
-ms.openlocfilehash: 739d46753729b70a24dbd3d6e2d78f8513e143e6
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: b614583079347c2634f8d03531517d1d32c75132
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="debug-user-defined-c-code-for-failed-u-sql-jobs"></a>Felhasználó által definiált C# programkódja sikertelen U-SQL feladatok hibakeresése
 
@@ -41,7 +41,7 @@ Amikor megnyit sikertelen feladat a Azure Data Lake Tools for Visual Studio, egy
 
 1. Kattintson a **letöltése** letölteni a szükséges erőforrások és a bemeneti adatfolyam. Kattintson a letöltés indul el, ha **újra**.
 
-2. Kattintson a **nyitott** helyi hibakeresési környezetben létrehozásához a letöltés befejezése után. Az automatikusan létrehozott és megnyitott egy új Visual Studio-példány és a hibakeresési megoldás.
+2. Kattintson a **nyitott** helyi hibakeresési környezetben létrehozásához a letöltés befejezése után. Nyitja meg egy új hibakeresési megoldás, és ha van meglévő megoldás megnyitni a Visual Studio adja ügyeljen rá, hogy mentse és zárja be azt a hibakeresés előtt.
 
 ![Az Azure Data Lake Analytics U-SQL hibakeresési visual studio letöltése csúcspont](./media/data-lake-analytics-debug-u-sql-jobs/data-lake-analytics-download-vertex.png)
 
@@ -109,7 +109,7 @@ A küldje el újra a sikertelen feladatot:
 
 3. Küldje el újra a U-SQL-feladatot.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [U-SQL programozástámogatási útmutató](data-lake-analytics-u-sql-programmability-guide.md)
 - [Azure Data Lake Analytics-feladatok U-SQL-felhasználó által definiált operátorok fejlesztése](data-lake-analytics-u-sql-develop-user-defined-operators.md)

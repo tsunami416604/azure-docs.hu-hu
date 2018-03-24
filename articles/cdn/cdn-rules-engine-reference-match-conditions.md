@@ -1,11 +1,11 @@
 ---
-title: "Az Azure CDN szabályok motor egyezés feltételek |} Microsoft Docs"
-description: "Az Azure Content Delivery Network referenciadokumentációt szabályok motor egyeztetési feltételeknek."
+title: Az Azure CDN szabályok motor egyezés feltételek |} Microsoft Docs
+description: Az Azure Content Delivery Network referenciadokumentációt szabályok motor egyeztetési feltételeknek.
 services: cdn
-documentationcenter: 
+documentationcenter: ''
 author: Lichard
 manager: akucer
-editor: 
+editor: ''
 ms.assetid: 669ef140-a6dd-4b62-9b9d-3f375a14215e
 ms.service: cdn
 ms.workload: media
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/21/2017
 ms.author: rli
-ms.openlocfilehash: e4b7113f27e5e15d69dfdd1efd13e255ef4a8ab7
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: f8dac5469e7160fae93e8251ab7f4195a383f8b4
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-cdn-rules-engine-match-conditions"></a>Az Azure CDN szabálymotor feltételek egyeznek 
 Ez a cikk a rendelkezésre álló egyezés feltételek esetében az Azure Content Delivery Network (CDN) részletes leírását tartalmazza [szabálymotor](cdn-rules-engine.md).
@@ -526,15 +526,15 @@ Kapcsolatos információkat:
 
      Például: https:\//&lt;végpont&gt;.azureedge.net/**SajátMappa**/index.htm 
 
-     Az URL-cím a következő Verizon CDN állomásnév mutat: http:\//wpc.0001.&lt; Tartomány&gt;/800001/myorigin/**SajátMappa**/index.htm
+     Az URL-cím a következő Verizon CDN állomásnév mutat: http:\//wpc.0001.&lt; tartomány&gt;/800001/myorigin/**SajátMappa**/index.htm
 
 - CNAME URL-cím él az URL-cím összehasonlítás előtt CDN URL-címre van írni.
 
     Például mind a következő URL-címeket az azonos eszköz mutasson, így rendelkezik azonos URL-címet.
-    - CDN URL-címe: http:\//wpc.0001.&lt; Tartomány&gt;/800001/CustomerOrigin/path/asset.htm
+    - CDN URL-címe: http:\//wpc.0001.&lt; tartomány&gt;/800001/CustomerOrigin/path/asset.htm
     
     - Edge CNAME URL: http:\//&lt;endpoint&gt;.azureedge.net/path/asset.htm
-
+    
     További információ:
     - Az egyéni tartomány: https:\//my.domain.com/path/asset.htm
     
@@ -640,21 +640,21 @@ Kapcsolatos információkat:
     A következő értékek érhetők el a **viszonyítva** lehetőséget:
      - **Legfelső szintű**: azt jelzi, hogy az URL-cím összehasonlítás elkezdi közvetlenül a CDN állomásnév után.
 
-       Például: http:\//wpc.0001.&lt; Tartomány&gt;/**800001/myorigin/myfolder/index.htm**
+       Például: http:\//wpc.0001.&lt; tartomány&gt;/**800001/myorigin/myfolder/index.htm**
 
      - **Forrás**: azt jelzi, hogy az URL-cím összehasonlítás elkezdi a tartalom-hozzáférési pont (például /000001 vagy/800001/myorigin) után. Mivel a \*. azureedge.net CNAME képest a Verizon CDN állomásnév származási könyvtárához alapértelmezés szerint létrejön, Azure CDN felhasználónak kell használnia a **származási** érték. 
 
        Például: https:\//&lt;végpont&gt;.azureedge.net/**myfolder/index.htm**
 
-     Az URL-cím a következő Verizon CDN állomásnév mutat: http:\//wpc.0001.&lt; Tartomány&gt;/800001/myorigin/**myfolder/index.htm**
+     Az URL-cím a következő Verizon CDN állomásnév mutat: http:\//wpc.0001.&lt; tartomány&gt;/800001/myorigin/**myfolder/index.htm**
 
 - CNAME URL-cím él egy URL-cím összehasonlítás előtt CDN URL-címre van írni.
 
-   Például egyaránt a következő URL-címeket az azonos eszköz mutasson, és így az azonos URL-címet rendelkezik:
-    - CDN URL-címe: http:\//wpc.0001.&lt; Tartomány&gt;/800001/CustomerOrigin/path/asset.htm
+    Például egyaránt a következő URL-címeket az azonos eszköz mutasson, és így az azonos URL-címet rendelkezik:
+    - CDN URL-címe: http:\//wpc.0001.&lt; tartomány&gt;/800001/CustomerOrigin/path/asset.htm
     - Edge CNAME URL: http:\//&lt;endpoint&gt;.azureedge.net/path/asset.htm
-
-   További információ:
+    
+    További információ:
     
     - URL-címe (gyökeréhez viszonyítva): /800001/CustomerOrigin/path/asset.htm
    
@@ -662,7 +662,7 @@ Kapcsolatos információkat:
 
 - Lekérdezési karakterláncok a URL-címben a rendszer figyelmen kívül hagyja.
 - Használja a **esetben figyelmen kívül hagyása** vezérlőhöz lehetőséget, hogy egy kis-és nagybetűket összehasonlítás történik.
-- Ez a feltétel egyezik a megadott relatív elérési útja a pontos az ügyfél által küldött kérelem elleni össze kell hasonlítani.
+- Ez a feltétel egyezik a rendszer összehasonlítja a relatív elérési útja a pontos kérelmet az ügyfél által megadott érték.
 
 - Egy adott könyvtár intézett összes kérelem kereséséhez használja a [URL-cím elérési út Directory](#url-path-directory) vagy a [URL-cím elérési út helyettesítő](#url-path-wildcard) feltételének.
 
@@ -681,13 +681,13 @@ A **egyező**/**nem felel meg** beállítás határozza meg a feltételeket, ame
 Kapcsolatos információkat:
 - CNAME URL-cím él URL-cím összehasonlítás előtt CDN URL-címre van írni. 
  
-   Például mindkét URL-címeket az azonos eszköz mutasson, és így az azonos URL-címet rendelkezik.
+    Például mindkét URL-címeket az azonos eszköz mutasson, és így az azonos URL-címet rendelkezik.
 
-     - CDN URL-címe: http:\//wpc.0001.&lt; Tartomány&gt;/800001/CustomerOrigin/path/asset.htm
+     - CDN URL-címe: http:\//wpc.0001.&lt; tartomány&gt;/800001/CustomerOrigin/path/asset.htm
 
      - Edge CNAME URL: http:\//my.domain.com/path/asset.htm
-
-   További információ:
+    
+    További információ:
     
      - URL-címe: /800001/CustomerOrigin/path/asset.htm
 
@@ -715,21 +715,21 @@ Kapcsolatos információkat:
    Ez a beállítás a következő értékeket veheti fel:
      - **Legfelső szintű**: azt jelzi, hogy az URL-cím összehasonlítás elkezdi közvetlenül a CDN állomásnév után.
 
-       Például: http:\//wpc.0001.&lt; Tartomány&gt;/**800001/myorigin/myfolder/index.htm**
+       Például: http:\//wpc.0001.&lt; tartomány&gt;/**800001/myorigin/myfolder/index.htm**
 
      - **Forrás**: azt jelzi, hogy az URL-cím összehasonlítás elkezdi a tartalom-hozzáférési pont (például /000001 vagy/800001/myorigin) után. Mivel a \*. azureedge.net CNAME képest a Verizon CDN állomásnév származási könyvtárához alapértelmezés szerint létrejön, Azure CDN felhasználónak kell használnia a **származási** érték. 
 
        Például: https:\//&lt;végpont&gt;.azureedge.net/**myfolder/index.htm**
 
-     Az URL-cím a következő Verizon CDN állomásnév mutat: http:\//wpc.0001.&lt; Tartomány&gt;/800001/myorigin/**myfolder/index.htm**
+     Az URL-cím a következő Verizon CDN állomásnév mutat: http:\//wpc.0001.&lt; tartomány&gt;/800001/myorigin/**myfolder/index.htm**
 
 - CNAME URL-cím él URL-cím összehasonlítás előtt CDN URL-címre van írni.
 
-   Például egyaránt a következő URL-címeket az azonos eszköz mutasson, és így az azonos URL-címet rendelkezik:
-     - CDN URL-cím: http://wpc.0001. &lt;Tartomány&gt;/800001/CustomerOrigin/path/asset.htm
+    Például egyaránt a következő URL-címeket az azonos eszköz mutasson, és így az azonos URL-címet rendelkezik:
+     - CDN URL: http://wpc.0001.&lt;domain&gt;/800001/CustomerOrigin/path/asset.htm
      - Edge CNAME URL: http:\//&lt;endpoint&gt;.azureedge.net/path/asset.htm
-
-   További információ:
+    
+    További információ:
     
      - URL-címe (gyökeréhez viszonyítva): /800001/CustomerOrigin/path/asset.htm
     
@@ -757,7 +757,7 @@ A minta-konfigurációja az alábbi táblázat azt feltételezik, hogy ez egyez�
 /80ABCD/origin/text/*   | Gyökér           | Ez a minta egyezik, amikor a kért eszköz megfelel-e a következő feltételeknek: <br />-Kell lennie egy ügyfél forrás neve "origin." <br />– A relatív elérési út egy "szöveg" nevű mappát kell kezdődnie. Ez azt jelenti, hogy a kért eszköz elhelyezkedhet a "text" mappában vagy egy rekurzív almappája.
 */CSS/* */js/*          | A legfelső szintű vagy forrása | Ebben a mintában a rendszer megkeres minden CDN vagy peremhálózati egy css vagy js mappát tartalmazó CNAME URL-címeket.
 *.jpg *.gif *.png       | A legfelső szintű vagy forrása | Ebben a mintában a rendszer megkeres minden CDN vagy peremhálózati CNAME URL-címek .jpg, .gif vagy .png végződő által. Adja meg ezt a mintát egy alternatív módja van a [URL-cím elérési út bővítmény felel meg a feltétel](#url-path-extension).
-/ képek / * / media / *      | Forrás         | Ez a minta egyezik CDN vagy peremhálózati relatív elérési úton kezdődik-e egy "képek" vagy "media" mappa CNAME URL-címeket. <br />-CDN URL-cím: http:\//wpc.0001.&lt; Tartomány&gt;/800001/myorigin/images/sales/event1.png<br />- Sample edge CNAME URL: http:\//cdn.mydomain.com/images/sales/event1.png
+/ képek / * / media / *      | Forrás         | Ez a minta egyezik CDN vagy peremhálózati relatív elérési úton kezdődik-e egy "képek" vagy "media" mappa CNAME URL-címeket. <br />- CDN URL: http:\//wpc.0001.&lt;domain&gt;/800001/myorigin/images/sales/event1.png<br />- Sample edge CNAME URL: http:\//cdn.mydomain.com/images/sales/event1.png
 
 [Lap tetejére](#match-conditions-for-the-azure-cdn-rules-engine)
 
@@ -867,11 +867,11 @@ Kapcsolatos információkat:
 #### <a name="sample-scenarios"></a>Használati példák
 A következő példa bemutatja, hogyan működik ez a beállítás adott helyzetekben:
 
-Name (Név)      | Érték |  Eredmény
-----------|-------|--------
-Felhasználó      | Joe   | Ez a minta egyezik a kért URL-címhez tartozó lekérdezési karakterlánc esetén "? felhasználó = joe."
-Felhasználó      | *     | Ez a minta egyezik, amikor a kért URL-címhez tartozó lekérdezési karakterlánc egy felhasználó paramétert tartalmaz.
-E-mailek Joe | *     | Ez a minta egyezik, amikor a kért URL-címhez tartozó lekérdezési karakterlánc a "Joe." kezdetű E-mail paramétert tartalmaz
+Name (Név)  | Érték |  Eredmény
+------|-------|--------
+Felhasználó  | Joe   | Ez a minta egyezik a kért URL-címhez tartozó lekérdezési karakterlánc esetén "? felhasználó = joe."
+Felhasználó  | *     | Ez a minta egyezik, amikor a kért URL-címhez tartozó lekérdezési karakterlánc egy felhasználó paramétert tartalmaz.
+E-mail cím | Joe\* | Ez a minta egyezik, amikor a kért URL-címhez tartozó lekérdezési karakterlánc a "Joe." kezdetű E-mail paramétert tartalmaz
 
 [Lap tetejére](#match-conditions-for-the-azure-cdn-rules-engine)
 
@@ -908,7 +908,7 @@ Kapcsolatos információkat:
    Érték | Értelmezésre 
    ------|---------------
    \\+    | +
-   \\\+   | \\+
+   \\\\+   | \\+
 
 - Mely gyorsítótárában beállítások követi módon, mert ez egyeznek az állapot nem kompatibilis a következő szolgáltatásokat:
    - Fejezze be a gyorsítótár kitöltés
@@ -970,8 +970,8 @@ user=joe              | Ez a minta egyezik a kért URL-címhez tartozó lekérde
 
 ## <a name="next-steps"></a>További lépések
 * [Az Azure Content Delivery Network áttekintése](cdn-overview.md)
-* [Szabályok motor referencia](cdn-rules-engine-reference.md)
-* [Szabályok motor feltételes kifejezések](cdn-rules-engine-reference-conditional-expressions.md)
-* [Szabályok adatbázismotor-szolgáltatások](cdn-rules-engine-reference-features.md)
+* [Szabálymotor-referencia](cdn-rules-engine-reference.md)
+* [Szabálymotor feltételes kifejezései](cdn-rules-engine-reference-conditional-expressions.md)
+* [Szabálymotor funkciói](cdn-rules-engine-reference-features.md)
 * [A szabályok használata alapértelmezett HTTP működés felülbírálata](cdn-rules-engine.md)
 

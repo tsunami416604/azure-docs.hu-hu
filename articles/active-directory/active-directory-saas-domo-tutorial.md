@@ -1,23 +1,23 @@
 ---
-title: "Oktatóanyag: Azure Active Directoryval integrált Domo |} Microsoft Docs"
-description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és Domo között."
+title: 'Oktatóanyag: Azure Active Directoryval integrált Domo |} Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és Domo között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: femila
 ms.assetid: 058626e4-73b3-4dc2-86ca-b060d002d70a
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/11/2017
+ms.date: 03/20/2017
 ms.author: jeedes
-ms.openlocfilehash: 3fbfd8839b1a45c6927753a48d1ac617f2d34427
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: c7f74d3bd8a2f0173f8f3cc69c611696044875a9
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-domo"></a>Oktatóanyag: Azure Active Directoryval integrált Domo
 
@@ -110,7 +110,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-domo-tutorial/tutorial_domo_url.png)
 
-    a. Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe:`https://<companyname>.domo.com`
+    a. Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe: `https://<companyname>.domo.com`
 
     b. Az a **azonosító** szövegmezőhöz URL-címet a következő minták használatával írja be:     
 
@@ -139,8 +139,8 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
     
     | Attribútum neve | Attribútum értéke |
     | ------------------- | -------------------- |    
-    | név | User.DisplayName |
-    | e-mailben | User.mail |
+    | név | user.displayname |
+    | e-mail | user.mail |
     
     a. Kattintson a **Hozzáadás attribútum** megnyitásához a **attribútum hozzáadása** párbeszédpanel.
 
@@ -167,7 +167,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-domo-tutorial/tutorial_domo_configure.png) 
 
-9. Egyszeri bejelentkezés konfigurálása **Domo** oldalon kell küldeniük a letöltött **tanúsítvány**, **SAML Entitásazonosító**, a **SAML-alapú egyszeri bejelentkezési URL-címe** és a **Sign-Out URL-cím** való [Domo támogatási csoport](mailto:support@domo.com). Akkor állítsa be ezt a beállítást, hogy a SAML SSO kapcsolat mindkét oldalán megfelelően beállítva.
+9. Egyszeri bejelentkezés konfigurálása **Domo** oldalán, nyissa meg Domo a Tudásbázis következő cikke található [Itt](http://knowledge.domo.com?cid=azuread), és kövesse az utasításokat.
 
 > [!TIP]
 > Ezek az utasítások belül tömör verziója most el tudja olvasni a [Azure-portálon](https://portal.azure.com), míg az alkalmazás beállításakor!  Ez az alkalmazás a hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentációja keresztül a **konfigurációs** szakasz alján. További Itt a embedded dokumentációjából szolgáltatásról: [az Azure AD beágyazott dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -250,8 +250,6 @@ A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáf�
 
 * [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](active-directory-saas-tutorial-list.md)
 * [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](active-directory-appssoaccess-whatis.md)
-
-
 
 <!--Image references-->
 

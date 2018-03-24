@@ -1,24 +1,24 @@
 ---
-title: "Az Azure Service Fabric esemény összesítési a Windows Azure diagnosztikai |} Microsoft Docs"
-description: "További tudnivalók összesítésére és események gyűjtése ÜVEGVATTA figyelési és diagnosztika Azure Service Fabric-fürt segítségével."
+title: Az Azure Service Fabric esemény összesítési a Windows Azure diagnosztikai |} Microsoft Docs
+description: További tudnivalók összesítésére és események gyűjtése ÜVEGVATTA figyelési és diagnosztika Azure Service Fabric-fürt segítségével.
 services: service-fabric
 documentationcenter: .net
-author: dkkapur
+author: srrengar
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/02/2017
-ms.author: dekapur
-ms.openlocfilehash: 8e6c82aa60544d672bb249d589b63d55b48309fe
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.date: 03/19/2018
+ms.author: dekapur;srrengar
+ms.openlocfilehash: f8159d8637967c3297c886ec79a002f0765047e4
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="event-aggregation-and-collection-using-windows-azure-diagnostics"></a>Esemény összesítésére és az adatgyűjtést, a Windows Azure diagnosztikai
 > [!div class="op_single_selector"]
@@ -170,67 +170,75 @@ Ezt követően frissítse a `VirtualMachineProfile` a template.json fájl a köv
 
 Lásd a template.json fájl módosítása, után közzé a Resource Manager-sablon. Ha a sablon exportált, a sablon a deploy.ps1 fájlt futtatja addig. Miután telepít, győződjön meg arról, hogy **ProvisioningState** van **sikeres**.
 
-## <a name="collect-health-and-load-events"></a>Állapot gyűjtése és események betöltése
+## <a name="log-collection-configurations"></a>Napló gyűjtemény konfigurációk
+A további csatornák érhetők el naplók is gyűjtemény, Íme néhány a leggyakrabban használt használható konfigurációkat részletezik Azure-ban futó fürtök a sablonban.
 
-A Service Fabric 5.4 kiadástól kezdve, állapotát és a terheléselosztási metrika események állnak rendelkezésre a gyűjteményhez. Ezek az események tükrözze az állapotfigyelő segítségével a rendszer vagy a kód által előállított eseményeket vagy nem tölthető be, mint jelentéskészítési API-k [ReportPartitionHealth](https://msdn.microsoft.com/library/azure/system.fabric.iservicepartition.reportpartitionhealth.aspx) vagy [ReportLoad](https://msdn.microsoft.com/library/azure/system.fabric.iservicepartition.reportload.aspx). Ez lehetővé teszi, hogy összesítésére és idővel állapotának megtekintése és a riasztás állapotát vagy a betöltési események alapján. Ezeket az eseményeket a Visual Studio diagnosztikai eseménynapló adja hozzá megtekintése "Microsoft-ServiceFabric:4:0x4000000000000008" ETW-szolgáltatók listáját.
-
-A fürt az események összegyűjtésére, módosítsa a `scheduledTransferKeywordFilter` a Resource Manager sablon WadCfg a `4611686018427387912`.
+* Működési csatorna - alap: Alapértelmezett, magas szintű műveleteket végzi el a Service Fabric és a fürt, beleértve az események várható, egy új alkalmazást telepített, a csomópont vagy egy frissítési visszaállítási által engedélyezett stb. Az események listája, [csatorna működési eseményeit](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-diagnostics-event-generation-operational).
+  
+```json
+      scheduledTransferKeywordFilter: "4611686018427387904"
+  ```
+* Részletes működési csatorna -: Rendszerállapot-jelentések és a terheléselosztási döntések, valamint minden, az alapvető működési csatornán ilyenek. Ezeket az eseményeket az állapotfigyelő segítségével a rendszer vagy a kód által előállított vagy nem tölthető be, mint jelentéskészítési API-k [ReportPartitionHealth](https://msdn.microsoft.com/library/azure/system.fabric.iservicepartition.reportpartitionhealth.aspx) vagy [ReportLoad](https://msdn.microsoft.com/library/azure/system.fabric.iservicepartition.reportload.aspx). Ezeket az eseményeket a Visual Studio diagnosztikai eseménynapló adja hozzá megtekintése "Microsoft-ServiceFabric:4:0x4000000000000008" ETW-szolgáltatók listáját.
 
 ```json
-  "EtwManifestProviderConfiguration": [
-    {
-      "provider": "cbd93bc2-71e5-4566-b3a7-595d8eeca6e8",
-      "scheduledTransferLogLevelFilter": "Information",
-      "scheduledTransferKeywordFilter": "4611686018427387912",
-      "scheduledTransferPeriod": "PT5M",
-      "DefaultEvents": {
-        "eventDestination": "ServiceFabricSystemEventTable"
-      }
-    }
-```
+      scheduledTransferKeywordFilter: "4611686018427387912"
+  ```
 
-## <a name="collect-reverse-proxy-events"></a>Fordított proxy eseményeinek gyűjtése
-
-A Service Fabric 5.7 kiadástól kezdve [fordított proxy](service-fabric-reverseproxy.md) események gyűjtemény adat & Messaging csatornákon keresztül érhetők el. 
-
-A fordított proxy a fő adatok & Messaging-csatornán keresztül - feldolgozási hibák és a kritikus fontosságú problémáit tükröző csak hibaesemények leküldéses értesítések. A részletes csatorna a fordított proxy által feldolgozott összes kérelem kapcsolatos részletes eseményeket tartalmazza. 
-
-Megtekintéséhez a Visual Studio diagnosztikai eseménynapló hiba események hozzáadása "Microsoft-ServiceFabric:4:0x4000000000000010" ETW-szolgáltatók listáját. A – kéréstelemetria frissítés a Microsoft-ServiceFabric bejegyzés ETW szolgáltató listában "Microsoft-ServiceFabric:4:0x4000000000000020".
-
-Azure-ban futó fürtök:
-
-A nyomkövetési adatokat abban a fő adatok & Messaging csatorna átvételéhez, módosítsa a `scheduledTransferKeywordFilter` érték a Resource Manager sablon WadCfg `4611686018427387920`.
+* Adatok és Messaging csatorna - alap: kritikus naplókat és az esemény jön létre a (jelenleg csak a ReverseProxy) üzenetküldési és elérési útja, továbbá részletes működési csatorna naplókba. Ezek az események a feldolgozási hibák és más kritikus fontosságú problémáit a ReverseProxy és a feldolgozott kérések. **Ez az átfogó naplózási javasoljuk**. Ezek az események a Visual Studio diagnosztikai eseménynapló megtekintéséhez adja hozzá a "Microsoft-ServiceFabric:4:0x4000000000000010" ETW-szolgáltatók listáját.
 
 ```json
-  "EtwManifestProviderConfiguration": [
-    {
-      "provider": "cbd93bc2-71e5-4566-b3a7-595d8eeca6e8",
-      "scheduledTransferLogLevelFilter": "Information",
-      "scheduledTransferKeywordFilter": "4611686018427387920",
-      "scheduledTransferPeriod": "PT5M",
-      "DefaultEvents": {
-        "eventDestination": "ServiceFabricSystemEventTable"
-      }
-    }
-```
+      scheduledTransferKeywordFilter: "4611686018427387928"
+  ```
 
-Minden Kérelemfeldolgozás eseményeinek gyűjtése, kapcsolja be az adatok & Messaging - részletes csatorna módosításával a `scheduledTransferKeywordFilter` érték a Resource Manager sablon WadCfg `4611686018427387936`.
+* Adatok & Messaging csatorna - részletes: részletes csatornán, és azokat a nem kritikus naplókat, és a fürt és a részletes működési csatorna üzenetekkel adatokból. Részletes minden fordított proxy eseményt, tekintse meg a [fordított proxy diagnosztika útmutató](service-fabric-reverse-proxy-diagnostics.md).  Ezek az események a Visual Studio diagnosztikai eseménynapló megtekintéséhez adja hozzá a "Microsoft-ServiceFabric:4:0x4000000000000020" ETW-szolgáltatók listáját.
 
 ```json
-  "EtwManifestProviderConfiguration": [
-    {
-      "provider": "cbd93bc2-71e5-4566-b3a7-595d8eeca6e8",
-      "scheduledTransferLogLevelFilter": "Information",
-      "scheduledTransferKeywordFilter": "4611686018427387936",
-      "scheduledTransferPeriod": "PT5M",
-      "DefaultEvents": {
-        "eventDestination": "ServiceFabricSystemEventTable"
-      }
-    }
-```
+      scheduledTransferKeywordFilter: "4611686018427387944"
+  ```
 
-Jelen gyűjtését események engedélyezése részletes nyomkövetések gyors létrehozás alatt számos csatorna eredményez, és felhasználhat a tárolási kapacitást. Csak kapcsolja be ezt a feltétlenül szükséges.
-Részletes fordított proxy eseményeket, tekintse meg a [fordított proxy diagnosztika útmutató](service-fabric-reverse-proxy-diagnostics.md).
+>[!NOTE]
+>Ez a csatorna nagyon nagy mennyiségű esemény, a jelen engedélyezése eseménygyűjtés részletes nyomkövetések gyors létrehozás alatt számos csatorna eredményez, és felhasználhat a tárolási kapacitást. Csak kapcsolja be ezt a ha feltétlenül szükséges.
+
+
+Ahhoz, hogy a **kiinduló adatforgalom és Messaging csatorna** átfogó naplózást, az ajánlott megoldás a `EtwManifestProviderConfiguration` a a `WadCfg` a sablon az alábbihoz hasonlóan fog kinézni a következő:
+
+```json
+  "WadCfg": {
+        "DiagnosticMonitorConfiguration": {
+          "overallQuotaInMB": "50000",
+          "EtwProviders": {
+            "EtwEventSourceProviderConfiguration": [
+              {
+                "provider": "Microsoft-ServiceFabric-Actors",
+                "scheduledTransferKeywordFilter": "1",
+                "scheduledTransferPeriod": "PT5M",
+                "DefaultEvents": {
+                  "eventDestination": "ServiceFabricReliableActorEventTable"
+                }
+              },
+              {
+                "provider": "Microsoft-ServiceFabric-Services",
+                "scheduledTransferPeriod": "PT5M",
+                "DefaultEvents": {
+                  "eventDestination": "ServiceFabricReliableServiceEventTable"
+                }
+              }
+            ],
+            "EtwManifestProviderConfiguration": [
+              {
+                "provider": "cbd93bc2-71e5-4566-b3a7-595d8eeca6e8",
+                "scheduledTransferLogLevelFilter": "Information",
+                "scheduledTransferKeywordFilter": "4611686018427387928",
+                "scheduledTransferPeriod": "PT5M",
+                "DefaultEvents": {
+                  "eventDestination": "ServiceFabricSystemEventTable"
+                }
+              }
+            ]
+          }
+        }
+      },
+```
 
 ## <a name="collect-from-new-eventsource-channels"></a>Új EventSource csatornák gyűjtése
 

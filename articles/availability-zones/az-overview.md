@@ -1,26 +1,26 @@
 ---
-title: "Rendelkezésre állási zónák áttekintése |} Microsoft Docs"
-description: "Ez a cikk áttekintést nyújt a rendelkezésre állási zónák az Azure-ban."
-services: 
-documentationcenter: 
+title: Rendelkezésre állási zónák áttekintése |} Microsoft Docs
+description: Ez a cikk áttekintést nyújt a rendelkezésre állási zónák az Azure-ban.
+services: ''
+documentationcenter: ''
 author: markgalioto
 manager: carmonm
-editor: 
-tags: 
-ms.assetid: 
+editor: ''
+tags: ''
+ms.assetid: ''
 ms.service: azure
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/05/2018
+ms.date: 03/19/2018
 ms.author: markgal
 ms.custom: mvc I am an ITPro and application developer, and I want to protect (use Availability Zones) my applications and data against data center failure (to build Highly Available applications).
-ms.openlocfilehash: 9274cb1fc490ab61e962e8a7918a9c44976dc755
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: b4db442a54b4360b75df40156ca0d4e4ee1eb0d1
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="overview-of-availability-zones-in-azure-preview"></a>A rendelkezésre állási zónák (előzetes verzió) Azure-ban – áttekintés
 
@@ -34,6 +34,7 @@ Rendelkezésre állási zónák a Súgó gombra a datacenter-szintű hibák elle
 - USA középső régiója
 - Nyugat-Európa
 - Közép-Franciaország
+- Délkelet-Ázsia
 
 ## <a name="services-that-support-availability-zones"></a>Rendelkezésre állási zónák támogató szolgáltatások
 

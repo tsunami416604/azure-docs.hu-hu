@@ -1,11 +1,11 @@
 ---
-title: "Ismerkedés az Azure table storage és a Visual Studio kapcsolódó szolgáltatások (ASP.NET) |} Microsoft Docs"
-description: "Ismerkedés az Azure table storage használata egy ASP.NET-projekt, a Visual Studio egy tárfiókot, a Visual Studio kapcsolódó szolgáltatások használatával történő kapcsolódás után"
+title: Ismerkedés az Azure table storage és a Visual Studio kapcsolódó szolgáltatások (ASP.NET) |} Microsoft Docs
+description: Ismerkedés az Azure table storage használata egy ASP.NET-projekt, a Visual Studio egy tárfiókot, a Visual Studio kapcsolódó szolgáltatások használatával történő kapcsolódás után
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: kraigb
 manager: ghogen
-editor: 
+editor: ''
 ms.assetid: af81a326-18f4-4449-bc0d-e96fba27c1f8
 ms.service: storage
 ms.workload: web
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/21/2016
 ms.author: kraigb
-ms.openlocfilehash: 32a57e77bf6fe3cff88b9d6772ede9e6669ec75f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 646ff3a12d1b28f99376ea67af25f1b6858d675a
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="get-started-with-azure-table-storage-and-visual-studio-connected-services-aspnet"></a>Ismerkedés az Azure table storage és a Visual Studio kapcsolódó szolgáltatások (ASP.NET)
 [!INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]
@@ -29,7 +29,7 @@ Az Azure Table storage lehetővé teszi nagy mennyiségű strukturált adatok t�
 
 Ez az oktatóanyag bemutatja, hogyan írhat kódot ASP.NET olyan gyakori forgatókönyveket tartalmaz, az Azure table storage entitások használata. Ilyen például, egy tábla létrehozása és hozzáadása, lekérdezése és tábla entitások törlése. 
 
-##<a name="prerequisites"></a>Előfeltételek
+## <a name="prerequisites"></a>Előfeltételek
 
 * [Microsoft Visual Studio](https://www.visualstudio.com/downloads/)
 * [Azure Storage-fiók](../storage/common/storage-create-storage-account.md#create-a-storage-account)
@@ -172,7 +172,7 @@ A következő lépések bemutatják, hogyan hozzon létre egy táblát:
 
 1. Futtassa az alkalmazást, és válassza ki **tábla létrehozása** az alábbi képernyőfelvételhez hasonló eredmények megtekintése érdekében:
   
-    ![tábla létrehozása](./media/vs-storage-aspnet-getting-started-tables/create-table-results.png)
+    ![Tábla létrehozása](./media/vs-storage-aspnet-getting-started-tables/create-table-results.png)
 
     Ahogy korábban említettük a **CloudTable.CreateIfNotExists** metódus beolvasása **igaz** csak a tábla nem létezik és jön létre. Ezért, ha futtatja a az alkalmazás a tábla létezik, a metódus visszaadja **hamis**. Az alkalmazás többször is lefuthat, törölnie kell az a táblázat az alkalmazás ismételt futtatása előtt. A tábla törlésével megteheti a **CloudTable.Delete** metódust. A tábla használatával is törölheti a [Azure-portálon](http://go.microsoft.com/fwlink/p/?LinkID=525040) vagy a [Microsoft Azure Tártallózó](../vs-azure-tools-storage-manage-with-storage-explorer.md).  
 
@@ -708,7 +708,7 @@ Ez a szakasz bemutatja, hogyan entitás törlése a táblázatból.
   
     ![Egyetlen beolvasása](./media/vs-storage-aspnet-getting-started-tables/delete-entity-results.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az Azure-ban való adattárolás további lehetőségeiről tekintse meg a többi szolgáltatás-útmutatót.
 
   * [Ismerkedés az Azure blob storage és a Visual Studio kapcsolódó szolgáltatások (ASP.NET)](../storage/vs-storage-aspnet-getting-started-blobs.md)

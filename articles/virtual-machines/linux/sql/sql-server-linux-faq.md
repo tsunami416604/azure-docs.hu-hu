@@ -1,8 +1,8 @@
 ---
-title: "SQL Server Linux Azure virtuális gépeken – gyakori kérdések |} Microsoft Docs"
-description: "Ez a cikk ismerteti az Linux Azure virtuális gépeken futó SQL Server rendszert futtató gyakran feltett kérdésekre adott válaszok."
+title: SQL Server Linux Azure virtuális gépeken – gyakori kérdések |} Microsoft Docs
+description: Ez a cikk ismerteti az Linux Azure virtuális gépeken futó SQL Server rendszert futtató gyakran feltett kérdésekre adott válaszok.
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: rothja
 manager: jhubbard
 tags: azure-service-management
@@ -12,11 +12,11 @@ ms.topic: troubleshooting
 ms.workload: iaas-sql-server
 ms.date: 12/13/2017
 ms.author: jroth
-ms.openlocfilehash: 8b556b01aa47aeb3588138dfa61e517c00dc44dc
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 56a0629249cdb5f0f098d2b7b6d36b3fbb215009
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="frequently-asked-questions-for-sql-server-on-linux-azure-virtual-machines"></a>Gyakori kérdések az SQL Server Linux Azure virtuális gépeken
 
@@ -31,7 +31,7 @@ Ez a cikk ismerteti a leggyakoribb kérdésekre vonatkozó válaszokat [SQL Serv
 
 [!INCLUDE [support-disclaimer](../../../../includes/support-disclaimer.md)]
 
-## <a id="images"></a>Lemezképek
+## <a id="images"></a> Lemezképek
 
 1. **Milyen SQL Server virtuális gép a gyűjtemény lemezképei állnak rendelkezésre?**
 
@@ -71,13 +71,17 @@ Ez a cikk ismerteti a leggyakoribb kérdésekre vonatkozó válaszokat [SQL Serv
 
 1. **Módosíthatja a saját SQL Server licence használja, ha az egyik a használatalapú lévő képek hozták létre a virtuális gépek?**
 
-   Nem. Nem lehet átállítani a fizetési-percalapú licencelés saját licenc használatával. Kell egy új Linux virtuális gép létrehozása, az SQL Server telepítése és az adatok áttelepítését. Az előző kérdéssel állapotba hozása a saját licenc kapcsolatos további részletekért tekintse meg.
+   Nem. Nem lehet átállítani a saját licenc használata licencelési fizetési / másodperc. Kell egy új Linux virtuális gép létrehozása, az SQL Server telepítése és az adatok áttelepítését. Az előző kérdéssel állapotba hozása a saját licenc kapcsolatos további részletekért tekintse meg.
 
 ## <a name="administration"></a>Adminisztráció
 
 1. **Kezelheti egy Linux SQL Server virtuális gép az SQL Server Management Studio (SSMS)?**
 
    Igen, de SSMS jelenleg csak Windows eszköz. Mindenképpen kapcsolódnia kell távolról SSMS Linux SQL Server virtuális gépen használni kívánt Windows-gépről. Helyileg a Linux az új [mssql-conf](https://docs.microsoft.com/sql/linux/sql-server-linux-configure-mssql-conf) eszköz számos felügyeleti feladatokat hajthat végre. Platformok közötti adatbázis-felügyeleti eszköz megtekintéséhez lásd: [SQL Server Operations Studio (előzetes verzió)](https://docs.microsoft.com/sql/sql-operations-studio/what-is).
+
+1. **Eltávolítható az SQL Server teljesen SQL virtuális gép alapján?**
+
+   Igen, de Ön továbbra is az SQL virtuális gép számlázni leírtak szerint [útmutatást az SQL Server Azure virtuális gépek díjszabása](../../windows/sql/virtual-machines-windows-sql-server-pricing-guidance.md?toc=%2fazure%2fvirtual-machines%2flinux%2fsql%2ftoc.json). Ha már nem kell az SQL Server, egy új virtuális gép telepítéséhez, és telepítse át az adatokat és alkalmazásokat az új virtuális gépet. Az SQL Server virtuális gép távolíthatja el.
 
 ## <a name="updating-and-patching"></a>Frissítés és a javítás
 

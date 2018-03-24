@@ -1,10 +1,10 @@
 ---
-title: "A webhook séma napló tevékenységriasztásokat használt megértése |} Microsoft Docs"
-description: "További tudnivalók az fel az a webhook URL-CÍMÉT egy figyelmeztetés a napló aktiválja JSON-séma."
+title: A webhook séma napló tevékenységriasztásokat használt megértése |} Microsoft Docs
+description: További tudnivalók az fel az a webhook URL-CÍMÉT egy figyelmeztetés a napló aktiválja JSON-séma.
 author: johnkemnetz
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
-ms.assetid: 
+ms.assetid: ''
 ms.service: monitoring-and-diagnostics
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: johnkem
-ms.openlocfilehash: 7816efd44c01c3ed60c95d8699042f89cf6de5ec
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: f71714774d7ad54d7eb2132e8c20c87f972157ab
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="webhooks-for-azure-activity-log-alerts"></a>Az Azure tevékenység napló riasztásokhoz Webhookok
 Egy művelet csoport definíciójának részeként tevékenység napló riasztási értesítések fogadásának webhook végpontok is konfigurálhat. A webhook a más rendszerekkel utófeldolgozási vagy egyéni műveletek irányíthatja a ezek az értesítések. Ez a cikk bemutatja, mi a hasznos a HTTP POST egy webhook a következőhöz hasonló.
@@ -31,7 +31,7 @@ A webhook opcionálisan használhatja engedélyezési jogkivonat-alapú hiteles�
 ## <a name="payload-schema"></a>Hasznos séma
 A JSON-adattartalmat a FELADÁS egy vagy több művelet található helytől a tartalom data.context.activityLog.eventSource mező.
 
-###<a name="common"></a>Közös
+### <a name="common"></a>Közös
 ```json
 {
     "schemaId": "Microsoft.Insights/activityLogs",
@@ -58,7 +58,7 @@ A JSON-adattartalmat a FELADÁS egy vagy több művelet található helytől a t
     }
 }
 ```
-###<a name="administrative"></a>Adminisztratív
+### <a name="administrative"></a>Adminisztratív
 ```json
 {
     "schemaId": "Microsoft.Insights/activityLogs",
@@ -85,7 +85,7 @@ A JSON-adattartalmat a FELADÁS egy vagy több művelet található helytől a t
 }
 
 ```
-###<a name="servicehealth"></a>ServiceHealth
+### <a name="servicehealth"></a>ServiceHealth
 ```json
 {
     "schemaId": "Microsoft.Insights/activityLogs",
@@ -140,10 +140,10 @@ Más tevékenység napló minden riasztásról adott séma részletekért lásd:
 | név |A riasztási szabály neve. |
 | id |A riasztás erőforrás-azonosító. |
 | leírás |Riasztás leírása állítható be, ha a riasztást hoz létre. |
-| subscriptionId |Az Azure előfizetés-azonosító. |
+| subscriptionId |Azure subscription ID. |
 | időbélyeg |Az idő, amelyen az esemény váltotta az Azure-szolgáltatás, amely a kérelem feldolgozása. |
 | resourceId |Erőforrás-azonosító az érintett erőforrás. |
-| erőforráscsoport-név |Az érintett erőforrás az erőforráscsoport neve. |
+| resourceGroupName |Az érintett erőforrás az erőforráscsoport neve. |
 | properties |Állítsa be a `<Key, Value>` párok (Ez azt jelenti, hogy `Dictionary<String, String>`), amely tartalmazza az esemény részleteit. |
 | esemény |Az eseménnyel kapcsolatos metaadatokat tartalmazó elemet. |
 | Engedélyezési |A szerepköralapú hozzáférés-vezérlés az esemény tulajdonságai. Ezek a Tulajdonságok általában például a művelet, a szerepkör és a hatókör. |
@@ -152,10 +152,10 @@ Más tevékenység napló minden riasztásról adott séma részletekért lásd:
 | correlationId |Általában egy GUID karakterlánc-formátum. A correlationId események ugyanaz a nagyobb művelet tartozik, és általában megosztani az egy correlationId. |
 | eventDescription |Az esemény leírása statikus szöveg. |
 | eventDataId |Az esemény egyedi azonosítója. |
-| Eseményforrás |Az Azure-szolgáltatás vagy az eseményt létrehozó infrastruktúra neve. |
+| eventSource |Az Azure-szolgáltatás vagy az eseményt létrehozó infrastruktúra neve. |
 | httpRequest |A kérelem általában tartalmazza a clientRequestId clientIpAddress és HTTP-metódust (például PUT). |
 | szint |A következő értékek egyikét: kritikus, hiba, figyelmeztetés és tájékoztató. |
-| OperationID azonosítójú |Általában egy GUID azonosító az egyetlen műveletben megfelelő események között meg van osztva. |
+| operationId |Általában egy GUID azonosító az egyetlen műveletben megfelelő események között meg van osztva. |
 | operationName |A művelet neve. |
 | properties |Az esemény tulajdonságai. |
 | status |Karakterlánc. A művelet állapotát. A gyakori értékek a következők: elindítva, folyamatban lévő, sikeres, sikertelen, aktív és megoldva. |

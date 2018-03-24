@@ -1,24 +1,21 @@
 ---
-title: "Az Azure Active Directory B2C: Adja hozzá az AD FS-t egyéni házirendekkel SAML-Identitásszolgáltatóként"
-description: "A SAML protokoll és az egyéni házirendek használata az AD FS 2016 beállításával kapcsolatos cikkben található útmutató"
+title: 'Az Azure Active Directory B2C: Adja hozzá az AD FS-t egyéni házirendekkel SAML-Identitásszolgáltatóként'
+description: A SAML protokoll és az egyéni házirendek használata az AD FS 2016 beállításával kapcsolatos cikkben található útmutató
 services: active-directory-b2c
-documentationcenter: 
-author: yoelhor
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: 
-ms.assetid: 
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.devlang: na
 ms.date: 08/04/2017
-ms.author: yoelh
-ms.openlocfilehash: 22b360aec8878925ebe8d2c67c76d275a42ca7a8
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: davidmu
+ms.openlocfilehash: af102bbc3bc7608fe641db19f4af8c760907a564
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-active-directory-b2c-add-adfs-as-a-saml-identity-provider-using-custom-policies"></a>Az Azure Active Directory B2C: Adja hozzá az AD FS-t egyéni házirendekkel SAML-Identitásszolgáltatóként
 
@@ -63,7 +60,7 @@ Tagság a **rendszergazdák**, vagy ezzel egyenértékű a helyi számítógépe
 7.  Az a **URL konfigurálása** lapon jelölje be a **a SAML 2.0 WebSSO-protokoll támogatásának engedélyezése** jelölőnégyzetet. A **függő entitás SAML 2.0 SSO szolgáltatás URL-címe**, írja be a függő entitás megbízhatóságának a Security Assertion Markup Language (SAML) szolgáltatás végpont URL-CÍMÉT, és kattintson a **következő**.  Az a **függő entitás SAML 2.0 SSO szolgáltatás URL-címe**, illessze be a `https://login.microsoftonline.com/te/{tenant}.onmicrosoft.com/{policy}`. {Tenant} cserélje le a bérlő neve (például contosob2c.onmicrosoft.com), és a {házirend} cserélje le a bővítményeket házirend nevét (például B2C_1A_TrustFrameworkExtensions).
     > [!IMPORTANT]
     >A házirend nevére, amelyet a signup_or_signin házirend örököl, ebben az esetben: `B2C_1A_TrustFrameworkExtensions`.
-    >Az URL-cím lehet például: https://login.microsoftonline.com/te/**contosob2c**.onmicrosoft.com/**B2C_1A_TrustFrameworkBase**.
+    >Az URL-cím lehet például: https://login.microsoftonline.com/te/ **contosob2c**.onmicrosoft.com/**B2C_1A_TrustFrameworkBase**.
 
     ![Függő entitás SAML 2.0 SSO URL-címe](media/active-directory-b2c-custom-setup-adfs2016-idp/aadb2c-ief-setup-adfs2016-idp-rp-6.png)
 8. Az a **azonosítók konfigurálása** lapon adja meg az előző lépésben leírt, azonos URL-CÍMÉT, és kattintson **Hozzáadás** vegye fel őket a listára, majd **következő**.
@@ -163,10 +160,10 @@ Ezen a ponton az identitásszolgáltató beállítása.  Azonban nincs sem a sig
 4.  Illessze be a teljes tartalmát `<UserJournesy>` csomópont gyermekeként másolt a `<UserJourneys>` elemet.
 
 ### <a name="display-the-button"></a>A gomb megjelenítése
-A `<ClaimsProviderSelections>` elem definiálja a jogcímeket szolgáltató tanúsítványválasztási beállítások és a sorrendjük listáját.  `<ClaimsProviderSelection>`a elem egy identity provider gombra a sign-Close-Up/sign-in oldalán hasonló. Ha ad hozzá egy `<ClaimsProviderSelection>` elem az AD FS-fiókhoz, egy új gomb megjelenik, amikor egy felhasználó fájljai az oldalon. Ez az elem hozzáadása:
+A `<ClaimsProviderSelections>` elem definiálja a jogcímeket szolgáltató tanúsítványválasztási beállítások és a sorrendjük listáját.  `<ClaimsProviderSelection>` a elem egy identity provider gombra a sign-Close-Up/sign-in oldalán hasonló. Ha ad hozzá egy `<ClaimsProviderSelection>` elem az AD FS-fiókhoz, egy új gomb megjelenik, amikor egy felhasználó fájljai az oldalon. Ez az elem hozzáadása:
 
 1.  Keresés a `<UserJourney>` tartalmazó csomópont `Id="SignUpOrSignIn"` a a felhasználók utazás másolt.
-2.  Keresse meg a `<OrchestrationStep>` tartalmazó csomópont`Order="1"`
+2.  Keresse meg a `<OrchestrationStep>` tartalmazó csomópont `Order="1"`
 3.  Adja hozzá a következő XML-részletet a `<ClaimsProviderSelections>` csomópont:
 
 ```xml
@@ -206,7 +203,7 @@ Most, hogy a gomb helyen, hogy egy művelet kapcsolódnia kell. A művelet, ebbe
 ### <a name="display-the-button"></a>A gomb megjelenítése
 1.  Nyissa meg a bővítményfájl házirend (például TrustFrameworkExtensions.xml).
 2.  Keresés a `<UserJourney>` tartalmazó csomópont `Id="ProfileEdit"` a a felhasználók utazás másolt.
-3.  Keresse meg a `<OrchestrationStep>` tartalmazó csomópont`Order="1"`
+3.  Keresse meg a `<OrchestrationStep>` tartalmazó csomópont `Order="1"`
 4.  Adja hozzá a következő XML-részletet a `<ClaimsProviderSelections>` csomópont:
 
 ```xml

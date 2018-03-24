@@ -1,7 +1,7 @@
 ---
-title: "Azure SQL-adatbázist használó, szilánkos több-bérlős adatbázis SaaS-alkalmazás telepítése |} Microsoft Docs"
-description: "Központi telepítése, és vizsgálja meg a szilánkos Wingtip jegyek SaaS több-bérlős adatbázis-alkalmazás, bemutatja a Szolgáltatottszoftver-minták Azure SQL adatbázis használatával."
-keywords: "sql database-oktatóanyag"
+title: Azure SQL-adatbázist használó, szilánkos több-bérlős adatbázis SaaS-alkalmazás telepítése |} Microsoft Docs
+description: Központi telepítése, és vizsgálja meg a szilánkos Wingtip jegyek SaaS több-bérlős adatbázis-alkalmazás, bemutatja a Szolgáltatottszoftver-minták Azure SQL adatbázis használatával.
+keywords: sql database-oktatóanyag
 services: sql-database
 author: MightyPen
 manager: craigg
@@ -11,11 +11,11 @@ ms.workload: data-management
 ms.topic: article
 ms.date: 12/18/2017
 ms.author: genemi
-ms.openlocfilehash: 82983c8926bdf3c7256c529448e5b4f3b2c2381c
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 3806b165e0124e979f59b51d5583cdbb1f949366
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="deploy-and-explore-a-sharded-multi-tenant-application-that-uses-azure-sql-database"></a>Központi telepítése, és vizsgálja meg a szilánkos több-bérlős alkalmazás által használt Azure SQL adatbázis
 
@@ -172,7 +172,7 @@ A kezdeti telepítés három minta bérlők magában foglalja a *Tenants1* adatb
 2. Nyomja le az **F5** (nem **F8**) a parancsfájl futtatásához (hagyja meg az alapértelmezett értékeket most).
 
    > [!NOTE]
-   > A PowerShell-parancsfájlok csak billentyűkombináció lenyomásával futtatnia kell a **F5** kulcs, nem billentyűkombináció lenyomásával **F8** kijelölt része a parancsfájl futtatásához. A probléma **F8** , hogy a *$PSScriptRoot* változót a rendszer nem értékeli ki. Ez a változó sok parancsfájlok van szükség, keresse meg a mappák, vagy további parancsfájlok meghívni, vagy modulok importálásához.
+   > A PowerShell-parancsfájlok csak billentyűkombináció lenyomásával futtatnia kell a **F5** kulcs, nem billentyűkombináció lenyomásával **F8** kijelölt része a parancsfájl futtatásához. A probléma **F8** , hogy a *$PSScriptRoot* változót a rendszer nem értékeli ki. Ez a változó mappák megnyitása számos parancsfájlok meghívása egyéb parancsfájlokat vagy modul importálása van szükség.
 
 A piros Maple Racing új bérlő hozzáadódik a *Tenants1* adatbázisról, és a katalógusban regisztrált. Az új bérlőhöz tartozó jegy értékesítési **események** webhely megnyitása a böngészőben:
 

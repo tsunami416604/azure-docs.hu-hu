@@ -1,26 +1,26 @@
 ---
-title: "Az Azure figyelés és frissítése és a Windows virtuális gépek |} Microsoft Docs"
-description: "Az oktatóanyag - figyelésére és frissítésére a Windows rendszerű virtuális gép az Azure PowerShell"
+title: Az Azure figyelés és frissítése és a Windows virtuális gépek |} Microsoft Docs
+description: Az oktatóanyag - figyelésére és frissítésére a Windows rendszerű virtuális gép az Azure PowerShell
 services: virtual-machines-windows
 documentationcenter: virtual-machines
-author: davidmu1
-manager: timlt
-editor: tysonn
+author: iainfoulds
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 05/04/2017
-ms.author: davidmu
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: a37aed8b3321d3518ffd73e09f5bb21266a7e577
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 94151008f0aba6020786e65c60cec66285f310c4
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="monitor-and-update-a-windows-virtual-machine-with-azure-powershell"></a>Figyelheti és frissítheti a Windows virtuális gépként az Azure PowerShell
 
@@ -33,14 +33,14 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * Rendszerindítási diagnosztika megtekintése
 > * Virtuális gép gazdagép-metrikák megtekintése
 > * A diagnosztika-kiterjesztés telepítése
-> * Nézet VM metrikák
+> * Virtuálisgép-metrikák megtekintése
 > * Riasztás létrehozása
 > * Windows-frissítések kezelése
-> * Speciális figyelés beállítása
+> * Speciális monitorozás beállítása
 
 Az oktatóanyaghoz az Azure PowerShell-modul 3.6-os vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: ` Get-Module -ListAvailable AzureRM`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket.
 
-A példa az oktatóanyag elvégzéséhez rendelkeznie kell egy meglévő virtuális gépet. Ha szükséges, ez [parancsfájl minta](../scripts/virtual-machines-windows-powershell-sample-create-vm.md) hozhat létre egyet. Az oktatóanyag lépéseinek használatakor, cserélje ki az erőforráscsoportot, a virtuális gép nevét és a helyet, ha szükséges.
+Az oktatóanyagban található példa elvégzéséhez szüksége lesz egy meglévő virtuális gépre. Amennyiben szükséges, [ezzel a mintaszkripttel](../scripts/virtual-machines-windows-powershell-sample-create-vm.md) létrehozhat egyet. Az oktatóanyag lépéseinek használatakor, cserélje ki az erőforráscsoportot, a virtuális gép nevét és a helyet, ha szükséges.
 
 ## <a name="view-boot-diagnostics"></a>Rendszerindítási diagnosztika megtekintése
 
@@ -52,100 +52,100 @@ A rendszerindítási diagnosztikai adatok kaphat a [Get-AzureRmVMBootDiagnostics
 Get-AzureRmVMBootDiagnosticsData -ResourceGroupName myResourceGroup -Name myVM -Windows -LocalPath "c:\"
 ```
 
-## <a name="view-host-metrics"></a>Gazdagép-metrikák megtekintése
+## <a name="view-host-metrics"></a>Gazdagép metrikáinak megtekintése
 
 Egy Windows virtuális gép a gazdagép dedikált virtuális gépek rendelkezik, amely hatással van az Azure-ban. Metrikák automatikusan összegyűjtött ahhoz, hogy a gazdagép és az Azure portálon is megtekinthetők.
 
-1. Az Azure portálon kattintson **erőforráscsoportok**, jelölje be **myResourceGroup**, majd válassza ki **myVM** erőforrás listájában.
+1. Az Azure Portalon kattintson az **Erőforráscsoportok** lehetőségre, és válassza ki a **myResourceGroup**, majd a **myVM** elemet az erőforrások listájából.
 2. Kattintson a **metrikák** a virtuális gép panelen, majd válassza ki a gazdagép-metrikák bármelyikét **elérhető** tekintheti meg, hogyan működik-e a gazdagép virtuális.
 
-    ![Gazdagép-metrikák megtekintése](./media/tutorial-monitoring/tutorial-monitor-host-metrics.png)
+    ![Gazdagép metrikáinak megtekintése](./media/tutorial-monitoring/tutorial-monitor-host-metrics.png)
 
-## <a name="install-diagnostics-extension"></a>Diagnosztika-kiterjesztés telepítése
+## <a name="install-diagnostics-extension"></a>A diagnosztikai bővítmény telepítése
 
-Az alapvető állomás adatok gyűjtése le elérhető, de a részletesebb és Virtuálisgép-specifikus metrika, meg kell telepítenie az Azure diagnostics bővítményt a virtuális Gépen. Az Azure diagnostics bővítmény lehetővé teszi, hogy további figyelési és diagnosztikai adatokat beolvasni a virtuális gépről. Megtekintheti a metrikák és riasztások alapján hogyan hajtja végre a virtuális gép létrehozása. A diagnosztikai bővítmény telepítve van az Azure portálon keresztül az alábbiak szerint:
+Az alapvető állomás adatok gyűjtése le elérhető, de a részletesebb és Virtuálisgép-specifikus metrika, meg kell telepítenie az Azure diagnostics bővítményt a virtuális Gépen. Az Azure diagnosztikai bővítményének segítségével további monitorozási és diagnosztikai adatok kérdezhetők le a virtuális gépről. Megtekintheti ezeket a teljesítménymetrikákat, és a virtuális gép teljesítményétől függő riasztásokat hozhat létre. A diagnosztikai bővítmény telepítését az Azure Portalon végezheti el a következő módon:
 
-1. Az Azure portálon kattintson **erőforráscsoportok**, jelölje be **myResourceGroup**, majd válassza ki **myVM** erőforrás listájában.
-2. Kattintson a **diagnosztikai beállítások**. A lista azt mutatja, hogy *rendszerindítási diagnosztika* már engedélyezve van az előző szakaszából. Jelölje be a jelölőnégyzetet a *alapvető metrikák*.
+1. Az Azure Portalon kattintson az **Erőforráscsoportok** lehetőségre, és válassza ki a **myResourceGroup**, majd a **myVM** elemet az erőforrások listájából.
+2. Kattintson a **Diagnosztikai beállítások** lehetőségre. A listából látható, hogy a *rendszerindítási diagnosztika* az előző szakaszban már engedélyezve lett. Jelölje be az *Alapmetrikák* jelölőnégyzetet.
 3. Kattintson a **vendégszintű a figyelés bekapcsolható** gombra.
 
-    ![Nézet diagnosztikai metrikák](./media/tutorial-monitoring/enable-diagnostics-extension.png)
+    ![Diagnosztikai metrikák megtekintése](./media/tutorial-monitoring/enable-diagnostics-extension.png)
 
-## <a name="view-vm-metrics"></a>Nézet VM metrikák
+## <a name="view-vm-metrics"></a>Virtuálisgép-metrikák megtekintése
 
-A virtuális gép mérni, hogy megtekinthetők-e a gazdagép VM metrikák azonos módon tekintheti meg:
+A virtuális gép metrikái ugyanúgy tekinthetők meg, mint korábban a virtuális gazdagép metrikái:
 
-1. Az Azure portálon kattintson **erőforráscsoportok**, jelölje be **myResourceGroup**, majd válassza ki **myVM** erőforrás listájában.
-2. Hogyan működik-e a virtuális gép megtekintéséhez kattintson **metrikák** a virtuális gép panelen, majd válassza ki a diagnosztika mérőszámok alapján bármelyikét **elérhető**.
+1. Az Azure Portalon kattintson az **Erőforráscsoportok** lehetőségre, és válassza ki a **myResourceGroup**, majd a **myVM** elemet az erőforrások listájából.
+2. A virtuális gép teljesítményének nyomon követéséhez kattintson a **Metrikák** elemre a virtuális gép paneljén, majd válassza ki valamelyik diagnosztikai metrikát a **Rendelkezésre álló metrikák** területen.
 
-    ![Nézet VM metrikák](./media/tutorial-monitoring/monitor-vm-metrics.png)
+    ![Virtuálisgép-metrikák megtekintése](./media/tutorial-monitoring/monitor-vm-metrics.png)
 
 ## <a name="create-alerts"></a>Riasztások létrehozása
 
-Riasztások adott mérőszámok alapján hozhat létre. Riasztások értesíti, amikor az átlagos CPU-használat meghaladja az egy bizonyos küszöb vagy a rendelkezésre álló szabad lemezterületet alá csökken egy adott értékre, például használható. Riasztások jelennek meg az Azure portálon, vagy e-mailben küldhetők el. Riasztás generálása Azure Automation-forgatókönyveket vagy Azure Logic Apps is elindítható.
+Létrehozhat megadott teljesítménymetrikákon alapuló riasztásokat. A riasztások segítségével értesülhet például arról, ha az átlagos processzorhasználat meghalad egy bizonyos küszöbértéket vagy a rendelkezésre álló szabad lemezterület egy adott érték alá csökken. A riasztások megjeleníthetők az Azure Portalon vagy elküldhetők e-mailben. A létrehozott riasztásokra adott válaszként aktiválhatók Azure Automation-runbookok vagy Azure Logic Apps-alkalmazások.
 
-A következő példa az átlagos processzorhasználat riasztást hoz létre.
+A következő példában az átlagos processzorhasználat alapján hozunk létre riasztást.
 
-1. Az Azure portálon kattintson **erőforráscsoportok**, jelölje be **myResourceGroup**, majd válassza ki **myVM** erőforrás listájában.
-2. Kattintson a **riasztási szabályok** virtuális gép paneljén kattintson a **metrika riasztás hozzáadása** a riasztások panel tetején.
-4. Adjon meg egy **neve** a riasztás például *myAlertRule*
-5. Riasztást vált ki, ha processzor 1.0 meghaladja 5 percig, hagyja a többi alapértelmezett kiválasztva.
-6. Szükség esetén jelölje be a *E-mail-tulajdonosok, közreműködőknek és olvasóknak* e-mail értesítést küldeni. Az alapértelmezett művelet is értesítést megjeleníteni a portálon.
+1. Az Azure Portalon kattintson az **Erőforráscsoportok** lehetőségre, és válassza ki a **myResourceGroup**, majd a **myVM** elemet az erőforrások listájából.
+2. Kattintson a **Riasztási szabályok** elemre a virtuális gép paneljén, majd a **Metrikariasztás hozzáadása** lehetőségre a riasztási panel felső részén.
+4. Adjon meg egy **nevet** a riasztás számára, például *myAlertRule*
+5. Ha szeretne riasztást aktiválni, amikor a processzorhasználat 5 percig meghaladja az 1,0 értéket, hagyja változatlanul az összes többi alapértelmezett beállítást.
+6. E-mail-értesítés küldéséhez jelölje be az *E-mail küldése a tulajdonosoknak, közreműködőknek és olvasóknak* jelölőnégyzetet. Az alapértelmezett művelet az értesítés megjelenítése a portálon.
 7. Kattintson az **OK** gombra.
 
 ## <a name="manage-windows-updates"></a>Windows-frissítések kezelése
 
 Frissítéskezelés lehetővé teszi a frissítések és javítások kezelheti a Windows Azure virtuális gépeken.
-Közvetlenül a virtuális gépről, gyorsan mérje fel a rendelkezésre álló frissítések állapotát, kötelező frissítések telepítésének ütemezése, és tekintse át a központi telepítési eredmények ellenőrzése a frissítések alkalmazása sikeresen megtörtént a virtuális géphez.
+A virtuális gépről gyorsan felmérheti az elérhető frissítések állapotát, ütemezheti a szükséges frissítések telepítését, és áttekintheti a telepítési eredményeket, hogy ellenőrizze, sikeres volt-e a frissítések telepítése a virtuális gépen.
 
-Díjszabási információkért lásd: [Automation frissítéskezelés az díjszabása](https://azure.microsoft.com/pricing/details/automation/)
+Díjszabási információkért tekintse meg az [Automation Update Management-díjszabását](https://azure.microsoft.com/pricing/details/automation/) ismertető cikket.
 
-### <a name="enable-update-management"></a>Frissítéskezelés engedélyezése
+### <a name="enable-update-management"></a>Az Update Management engedélyezése
 
 A virtuális gép frissítéskezelés engedélyezése:
  
-1. A képernyő bal oldalán kattintson **virtuális gépek**.
-2. A listában jelölje ki a virtuális gépek.
-3. A virtuális gép képernyőn a a **műveletek** kattintson **frissítéskezelés**. A **engedélyezze Frissítéskezelésről** képernyőn megnyílik.
+1. A képernyő bal oldalán válassza a **Virtuális gépek** elemet.
+2. Válasszon ki egy virtuális gépet a listából.
+3. A virtuális gép képernyőjének **Műveletek** szakaszában kattintson a **Frissítéskezelés** elemre. Ekkor megnyílik **Az Update Management engedélyezése** képernyő.
 
-Az érvényesség annak meghatározásához, hogy engedélyezve van-e frissítéskezelésről a virtuális gép. Az érvényesítési tartalmaz ellenőrzi a Naplóelemzési munkaterület és a csatolt Automation-fiók, és ha a megoldás a munkaterületen.
+A rendszer ellenőrzi, hogy az Update Management engedélyezve van-e a virtuális gépen. A rendszer eközben azt is ellenőrzi, hogy létezik-e Log Analytics-munkaterület és egy csatlakoztatott Automation-fiók, valamint hogy a megoldás már jelen van-e a munkaterületen.
 
-A Naplóelemzési munkaterület funkciókat és szolgáltatásokat, például a frissítéskezelés által generált adatok összegyűjtésére szolgál. A munkaterületen áttekintheti, és a különböző forrásokból származó adatok elemzése egyetlen helyen. A virtuális gépeken, amelyek a frissítés szükséges további művelet végrehajtásához Azure Automation futtatását teszi-szkriptek használatát a virtuális gépek, többek között letöltéséhez, és alkalmazza a frissítéseket.
+A Log Analytics-munkaterület az Update Management, valamint a hasonló funkciók és szolgáltatások által létrehozott adatok gyűjtésére szolgál. A munkaterület egyetlen központi helyet biztosít a több forrásból származó adatok áttekintéséhez és elemzéséhez. A frissítést igénylő virtuális gépeken további műveletek elvégzése érdekében az Azure Automation-szkriptek futtatását is lehetővé teszi a virtuális gépeken (pl. letöltés és frissítések alkalmazása).
 
-Az érvényesítési folyamat is ellenőrzi, hogy ha a virtuális gép ki van építve a Microsoft Monitoring Agent (MMA) és a hibrid feldolgozó. Ez az ügynök segítségével kommunikálnak a virtuális gép és a frissítési állapot kapcsolatos információkhoz. 
+Az ellenőrzési folyamat arra is kiterjed, hogy a virtuális gépen működik-e a Microsoft Monitoring Agent (MMA) és egy hibrid feldolgozó. Ez az ügynök kommunikál a virtuális géppel, továbbá begyűjti a frissítési állapottal kapcsolatos információkat. 
 
-Ha az előfeltételek nem teljesülnek, a megoldás lehetővé teszi lehetővé teszi egy fejléc jelenik meg.
+Ha az előfeltételek nem teljesülnek, egy szalagcím jelenik meg, amelyen engedélyezheti a megoldást.
 
-![Felügyeleti előkészítésére konfigurációs szalagcím frissítése](./media/tutorial-monitoring/manageupdates-onboard-solution-banner.png)
+![Az Update Management felvételének konfigurációs szalagcíme](./media/tutorial-monitoring/manageupdates-onboard-solution-banner.png)
 
-A megoldás engedélyezéséhez kattintson a szalagcímre. Ha az ellenőrzés után nem található a következő előfeltételek bármelyike található, akkor automatikusan megkapja:
+A megoldás engedélyezéséhez kattintson a szalagcímre. Ha az ellenőrzést követően az alábbi előfeltételek bármelyike hiányzik, a rendszer automatikusan hozzáadja azt:
 
-* [Naplófájl Analytics](../../log-analytics/log-analytics-overview.md) munkaterület
+* [Log Analytics](../../log-analytics/log-analytics-overview.md)-munkaterület
 * [Automatizálás](../../automation/automation-offering-get-started.md)
-* A [hibrid forgatókönyv-feldolgozó](../../automation/automation-hybrid-runbook-worker.md) engedélyezve van a virtuális Gépen
+* Engedélyezett [hibrid runbook-feldolgozó](../../automation/automation-hybrid-runbook-worker.md) a virtuális gépen
 
-A **engedélyezze Frissítéskezelésről** képernyőn megnyílik. Adja meg a beállításokat, és kattintson a **engedélyezése**.
+Ekkor megnyílik **Az Update Management engedélyezése** képernyő. Adja meg a beállításokat, és kattintson az **Engedélyezés** gombra.
 
-![Frissítés felügyeleti megoldás engedélyezése](./media/tutorial-monitoring/manageupdates-update-enable.png)
+![Az Update Management megoldás engedélyezése](./media/tutorial-monitoring/manageupdates-update-enable.png)
 
-A megoldás engedélyezése akár 15 percig is eltarthat, és ebben az időszakban, akkor nem zárja be a böngészőablakot. A megoldás engedélyezése után információ a frissítések a virtuális Gépre szolgáltatáshoz zajlik.
-30 perc és 6 óra elemzéshez használható az adatok között is igénybe vehet.
+A megoldás engedélyezése akár 15 percet is igénybe vehet. Ez idő alatt ne zárja be a böngészőablakot. A megoldás engedélyezését követően a virtuális gép hiányzó frissítéseivel kapcsolatos adatok elkezdenek beérkezni a Log Analytics szolgáltatásba.
+Az adatok legalább 30 perc és legfeljebb 6 óra múlva állnak készen az elemzésre.
 
 ### <a name="view-update-assessment"></a>A frissítésfelmérés megtekintése
 
 A **Frissítéskezelés** engedélyezése után megjelenik a **Frissítéskezelés** képernyő. A **Hiányzó frissítések** lapon a hiányzó frissítések listája látható.
 
- ![Frissítési állapotának megtekintése](./media/tutorial-monitoring/manageupdates-view-status-win.png)
+ ![Frissítés állapotának megtekintése](./media/tutorial-monitoring/manageupdates-view-status-win.png)
 
 ### <a name="schedule-an-update-deployment"></a>Frissítéstelepítés ütemezése
 
 A frissítések telepítéséhez ütemezzen egy olyan telepítést, amely megfelel a kiadási ütemtervnek és a szolgáltatási időkeretnek.
-Kiválaszthatja, hogy a telepítés milyen típusú frissítéseket tartalmazzon. Például megadhatja, hogy a kritikus vagy biztonsági frissítések és -kizárási kumulatív frissítését.
+Kiválaszthatja, hogy a telepítés milyen típusú frissítéseket tartalmazzon. Például hozzáadhatja a kritikus vagy a biztonsági frissítéseket, és kizárhatja a kumulatív frissítéseket.
 
-A virtuális Gépet egy új központi telepítésének ütemezése kattintva **ütemezés központi telepítésének** tetején a **frissítéskezelés** képernyő. Az a **új üzemelő példány frissítése** képernyőn, adja meg a következőket:
+Ütemezzen egy új frissítéstelepítést a virtuális géphez. Ehhez kattintson a **Frissítéskezelés** képernyő felső részén található **Frissítések központi telepítésének ütemezése** elemre. Az **Új frissítéstelepítés** képernyőn adja meg a következő információkat:
 
 * **Név** – Adjon meg egy egyedi nevet a frissítéstelepítés azonosításához.
-* **Frissítés besorolása** – a frissítés telepítése a központi telepítésben lévő szoftvertípusok kiválasztása. A választható besorolási típusok a következők:
+* **Frissítési besorolás** – Válassza ki azokat a szoftvertípusokat, amelyeket a frissítéstelepítés belefoglal a telepítésbe. A választható besorolási típusok a következők:
   * Kritikus frissítések
   * Biztonsági frissítések
   * Kumulatív frissítések
@@ -163,7 +163,7 @@ A virtuális Gépet egy új központi telepítésének ütemezése kattintva **�
 * **Karbantartási időszak (perc)** – Adja meg azt az időtartamot, amelyen belül szeretné, hogy a frissítés telepítése megtörténjen.  Ez biztosítja, hogy a módosítások a megadott szolgáltatási időkereten belül menjenek végbe.
 
 Ha befejezte az ütemezés konfigurálását, kattintson a **Létrehozás** gombra. Ezután visszalép az állapot-irányítópultra.
-Figyelje meg, hogy a **ütemezett** táblázat mutatja a központi telepítési ütemezés létrehozott.
+Ekkor az **Ütemezett** táblázatban már látható az Ön által létrehozott telepítésütemezés.
 
 > [!WARNING]
 > A számítógép újraindítása szükséges frissítések a virtuális gép automatikusan újraindul.
@@ -175,26 +175,26 @@ Ha éppen fut, az állapota **Folyamatban**. Ha sikeresen befejeződik, **Sikere
 Ha a telepítésben lévő frissítések közül egy vagy több meghiúsul, az állapota **Részben sikertelen**.
 Ha rákattint a befejezett frissítéstelepítésre, megjelenik az adott frissítéstelepítés irányítópultja.
 
-   ![Frissítés telepítési állapotát irányítópult az adott központi telepítéshez](./media/tutorial-monitoring/manageupdates-view-results.png)
+   ![Adott telepítés frissítéstelepítési állapot-irányítópultja](./media/tutorial-monitoring/manageupdates-view-results.png)
 
-A **frissítésének elmulasztása az** csempe a frissítések és a virtuális gép telepítési eredmények száma összegzését.
+A **Frissítés eredményei** csempe összesíti a frissítések teljes számát és az adott virtuális gépre vonatkozó telepítési eredményeket.
 A jobb oldali táblázat az egyes frissítések részletes áttekintését és a telepítés eredményét tartalmazza, amely a következők egyike lehet:
 
-* **Nem történt kísérlet** – a frissítés nem lett telepítve, mert nincs elegendő rendelkezésre álló idő definiált karbantartási ablak időtartam alapján.
-* **Sikeres** – a frissítés telepítése sikeres volt
-* **Nem sikerült** – a frissítés nem sikerült
+* **Nem lett megkísérelve** – a frissítés nem lett telepítve, mert a megadott karbantartási időszak alapján nem lett volna rá elég idő.
+* **Sikeres** – a frissítés sikeres volt
+* **Sikertelen** – a frissítés sikertelen volt
 
 Kattintson a **Minden napló** csempére a telepítés által létrehozott összes naplóbejegyzés megtekintéséhez.
 
-Kattintson a **kimeneti** csempe a runbook a frissítés telepítése a cél virtuális gép kezeléséért feladatstream megjelenítéséhez.
+Kattintson a **Kimenet** csempére azon runbook feladatstreamjének megtekintéséhez, amely a frissítések telepítését kezeli a cél virtuális gépen.
 
 Kattintson a **Hibák** csempére a telepítés közben felmerülő hibák részletes információinak megtekintéséhez.
 
 ## <a name="advanced-monitoring"></a>Speciális figyelés 
 
-Fejlettebb, figyelés, a virtuális gép segítségével teheti [Operations Management Suite](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview). Ha még nem tette meg, akkor regisztrálhatnak az egy [ingyenes próbaverzió](https://www.microsoft.com/en-us/cloud-platform/operations-management-suite-trial) az Operations Management Suite szolgáltatásban.
+Az [Operations Management Suite](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview) használatával fejlettebb virtuálisgép-monitorozási megoldásokat is alkalmazhat. Regisztráljon az Operations Management Suite [ingyenes próbaverziójára](https://www.microsoft.com/en-us/cloud-platform/operations-management-suite-trial), ha még nem tette meg.
 
-Ha rendelkezik az OMS-portállal, találja a kulcsát és a munkaterület azonosítóját a beállítások panelen. Használja a [Set-AzureRmVMExtension](https://docs.microsoft.com/powershell/module/azurerm.compute/set-azurermvmextension) parancs futtatásával adja hozzá az OMS-bővítményt a virtuális Gépet. Frissíti a változó értékét az alábbi minta megfelelően, OMS-munkaterület kulcs és a munkaterület azonosítóját.  
+Ha rendelkezik hozzáféréssel az OMS-portálhoz, a Beállítások panelen találja a munkaterület kulcsát és azonosítóját. Használja a [Set-AzureRmVMExtension](https://docs.microsoft.com/powershell/module/azurerm.compute/set-azurermvmextension) parancs futtatásával adja hozzá az OMS-bővítményt a virtuális Gépet. Frissíti a változó értékét az alábbi minta megfelelően, OMS-munkaterület kulcs és a munkaterület azonosítóját.  
 
 ```powershell
 $omsId = "<Replace with your OMS Id>"
@@ -215,20 +215,20 @@ Néhány perc múlva megtekintheti az új virtuális Gépet az OMS-munkaterület
 
 ![OMS panel](./media/tutorial-monitoring/tutorial-monitor-oms.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben az oktatóanyagban konfigurálva, és tekintse át a virtuális gépek az Azure Security Center. Megismerte, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Virtuális hálózat létrehozása
 > * Egy erőforráscsoport és a virtuális gép létrehozása 
-> * Rendszerindítási diagnosztika a virtuális Gépre engedélyezése
+> * Rendszerindítási diagnosztika engedélyezése a virtuális gépen
 > * Rendszerindítási diagnosztika megtekintése
-> * Gazdagép-metrikák megtekintése
+> * Gazdagép metrikáinak megtekintése
 > * A diagnosztika-kiterjesztés telepítése
-> * Nézet VM metrikák
+> * Virtuálisgép-metrikák megtekintése
 > * Riasztás létrehozása
 > * Windows-frissítések kezelése
-> * Speciális figyelés beállítása
+> * Speciális monitorozás beállítása
 
 A következő oktatóanyag az Azure security Centerrel kapcsolatos további továbblépés.
 

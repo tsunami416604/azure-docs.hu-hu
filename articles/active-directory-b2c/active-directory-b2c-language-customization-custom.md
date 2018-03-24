@@ -1,23 +1,23 @@
 ---
-title: "Az egyéni házirendek az Azure Active Directory B2C:Language testreszabási |} Microsoft Docs"
-description: "Ismerje meg, hogyan használható az egyéni házirendeket több nyelvhez tartalom localize"
+title: Az egyéni házirendek az Azure Active Directory B2C:Language testreszabási |} Microsoft Docs
+description: Ismerje meg, hogyan használható az egyéni házirendeket több nyelvhez tartalom localize
 services: active-directory-b2c
-documentationcenter: 
-author: sammak
+documentationcenter: ''
+author: davidmu1
+manager: mtillman
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.devlang: na
 ms.date: 11/13/2017
-ms.author: sama
-ms.openlocfilehash: 4ed9791d6590e3982a1bc79b96f8592995bc315c
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.author: davidmu
+ms.openlocfilehash: 45cfa152615da1447cc695e0dd201e5b8d046cf4
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 03/23/2018
 ---
-#<a name="language-customization-in-custom-policies"></a>Az egyéni házirendek nyelvi testreszabása
+# <a name="language-customization-in-custom-policies"></a>Az egyéni házirendek nyelvi testreszabása
 
 > [!NOTE]
 > A funkció jelenleg nyilvános előzetes verziójához.
@@ -25,7 +25,7 @@ ms.lasthandoff: 11/15/2017
 
 Az egyéni házirendek nyelvi testreszabási működik, mint beépített házirendek.  Tekintse meg a beépített [dokumentáció](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-language-customization) , amely leírja, hogyan egy nyelvet a paraméterek és a böngésző beállításai alapján kell kiválasztani a viselkedését.
 
-##<a name="enable-supported-languages"></a>Engedélyezze a támogatott nyelvek
+## <a name="enable-supported-languages"></a>Engedélyezze a támogatott nyelvek
 Ha nincs megadva a felhasználói felület – területi beállításokat, és a felhasználó kéri az egyiken, támogatott nyelvek jelennek meg a felhasználó számára.  
 
 Támogatott nyelvek meghatározott `<BuildingBlocks>` a következő formátumban:
@@ -43,15 +43,15 @@ Támogatott nyelvek meghatározott `<BuildingBlocks>` a következő formátumban
 
 Alapértelmezett nyelv és a támogatott nyelveket működik ugyanúgy, mint a beépített házirendek.
 
-##<a name="enable-custom-language-strings"></a>Egyéni nyelvi karakterláncok engedélyezése
+## <a name="enable-custom-language-strings"></a>Egyéni nyelvi karakterláncok engedélyezése
 
 Egyéni nyelvi karakterláncok létrehozása két lépésből áll:
 1. Szerkessze a `<ContentDefinition>` adjon meg a kívánt nyelvhez erőforrás-Azonosítót a lap
-2. Hozzon létre a `<LocalizedResources>` a megfelelő azonosítók a`<BuildingBlocks>`
+2. Hozzon létre a `<LocalizedResources>` a megfelelő azonosítók a `<BuildingBlocks>`
 
 Ne feledje, hogy helyezhet el egy `<ContentDefinition>` és `<BuildingBlock>` a kiterjesztés vagy a függő házirend-fájl attól függően, hogy a módosítások a öröklő házirendek találhatók, vagy nem is.
 
-###<a name="edit-the-contentdefinition-for-the-page"></a>A lap ContentDefinition szerkesztése
+### <a name="edit-the-contentdefinition-for-the-page"></a>A lap ContentDefinition szerkesztése
 
 Az összes lapon localize, kívánt adhat meg a `<ContentDefinition>` milyen nyelvi erőforrásokat, amelyet meg kíván keresni az egyes nyelvi kódot.
 
@@ -67,7 +67,7 @@ Az összes lapon localize, kívánt adhat meg a `<ContentDefinition>` milyen nye
 Ez a példa francia (fr) és az angol (en) egyéni karakterláncok kerülnek az egyesített előfizetési vagy a bejelentkezési oldalon.  A `LocalizedResourcesReferenceId` minden `LocalizedResourcesReference` ugyanaz, mint a területi beállítás, de bármilyen karakterlánc azonosítóként használata  Minden egyes nyelvet és a lap kombináció, létre kell hoznia egy megfelelő `<LocalizedResources>` az alábbiak.
 
 
-###<a name="create-the-localizedresources"></a>A LocalizedResources létrehozása
+### <a name="create-the-localizedresources"></a>A LocalizedResources létrehozása
 
 A felülbírálások találhatók a `<BuildingBlocks>` , és nincs olyan `<LocalizedResources>` minden oldalon és a nyelvi megadott a `<ContentDefinition>` az összes lapon.  Minden felülbírálás van megadva egy `<LocalizedString>` például a következő mintát:
 

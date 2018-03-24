@@ -1,11 +1,10 @@
 ---
-title: "Adatok áthelyezése az Azure tábla |} Microsoft Docs"
-description: "Megtudhatja, hogyan helyezi át az adatokat és a Azure Table Storage Azure Data Factory használatával."
+title: Adatok áthelyezése az Azure tábla |} Microsoft Docs
+description: Megtudhatja, hogyan helyezi át az adatokat és a Azure Table Storage Azure Data Factory használatával.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: monicar
+manager: craigg
 ms.assetid: 07b046b1-7884-4e57-a613-337292416319
 ms.service: data-factory
 ms.workload: data-services
@@ -15,11 +14,11 @@ ms.topic: article
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 765ca21c7c38fa116e0ca95b3c8dc6a6152834ce
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 2c560bf9eeac5f9aed1024bd87d450f7aee7ce05
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="move-data-to-and-from-azure-table-using-azure-data-factory"></a>Adatok áthelyezése, és az Azure tábla Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -479,7 +478,7 @@ Ha megköveteli az adatok & Azure táblából, a következő [Azure Table szolg�
 | Edm.Binary |Byte] |Bájttömb legfeljebb 64 KB. |
 | Edm.Boolean |logikai érték |Logikai érték. |
 | Edm.DateTime |DateTime |Egy 64 bites érték kifejezett, egyezményes világidő (UTC). A támogatott dátum és idő tartomány kezdődik 12:00 éjféltől. január 1, i 1601. (C.E.), UTC. A tartomány vége December 31 9999. |
-| Edm.Double |duplaszó |Egy 64 bites lebegőpontos értéket. |
+| Edm.Double |Dupla |Egy 64 bites lebegőpontos értéket. |
 | Edm.Guid |GUID |A 128 bites globálisan egyedi azonosítóját. |
 | Edm.Int32 |Int32 |Egy 32 bites egész számot. |
 | Edm.Int64 |Int64 |Egy 64 bites egész számot. |

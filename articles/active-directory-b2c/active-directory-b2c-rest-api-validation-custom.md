@@ -1,24 +1,21 @@
 ---
-title: "Az Azure Active Directory B2C: REST API-jogcímek cseréjét, érvényesítési |} Microsoft Docs"
-description: "Témakör: Azure Active Directory B2C egyéni házirendek"
+title: 'Az Azure Active Directory B2C: REST API-jogcímek cseréjét, érvényesítési |} Microsoft Docs'
+description: 'Témakör: Azure Active Directory B2C egyéni házirendek'
 services: active-directory-b2c
-documentationcenter: 
-author: rojasja
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: rojasja
-ms.assetid: 
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.devlang: na
 ms.date: 04/24/2017
-ms.author: joroja
-ms.openlocfilehash: dfd33a9ecdce7b21f58660fb39a5f2d7b4ce6f43
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: davidmu
+ms.openlocfilehash: 50968cb96a5ef2cf8fe450899e04d7856e8d4dcc
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="walkthrough-integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-validation-on-user-input"></a>Forgatókönyv: Integrálása az Azure AD B2C felhasználói út a REST API jogcímek cseréjét, a felhasználói bevitel ellenőrzése
 
@@ -127,7 +124,7 @@ A jogcímek exchange hozzáadása a saját szükséges műszaki profil:
 2. Használjon **futtatása most** a profil szerkesztése RP házirendfájl teszteléséhez.
 3. Tesztelje az érvényesítési egyik meglévő nevét (például mcvinny) biztosításával a **Utónév** mező. Ha minden megfelelően van beállítva, kell kapnia egy üzenetet, amely értesíti a felhasználót, hogy a player címke már használatban van.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Módosítsa a profil szerkesztése és felhasználói regisztráció gyűjtsön további információt a felhasználók](active-directory-b2c-create-custom-attributes-profile-edit-custom.md)
 

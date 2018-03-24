@@ -1,33 +1,33 @@
 ---
-title: "Az Azure piactér tanácsadás ajánlatok"
-description: "Jogosultsági feltételeket és az Azure piactéren új ajánlattípus közzétételi követelményei"
+title: Az Azure piactér tanácsadás ajánlatok
+description: Jogosultsági feltételeket és az Azure piactéren új ajánlattípus közzétételi követelményei
 services: Marketplace, Compute, Storage, Networking, Blockchain, Security
-documentationcenter: 
+documentationcenter: ''
 author: ellacroi
 manager: msmbaldwin
-editor: 
+editor: ''
 ms.assetid: e8d228c8-f9e8-4a80-9319-7b94d41c43a6
 ms.service: marketplace
-ms.workload: 
-ms.tgt_pltfrm: 
-ms.devlang: 
+ms.workload: ''
+ms.tgt_pltfrm: ''
+ms.devlang: ''
 ms.topic: article
 ms.date: 03/9/2018
 ms.author: ellacroi
-ms.openlocfilehash: dd00711a9be208ddf635c998a77935ed63fcf996
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: e063721f2fa2ac87b2f9dd7385b2d114a1b76cb3
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
-#<a name="azure-marketplace-consulting-services"></a>Az Azure piactér Consulting Services tanácsadó szolgálat
+# <a name="azure-marketplace-consulting-services"></a>Az Azure piactér Consulting Services tanácsadó szolgálat
 Azzal a céllal, csatlakozó ügyfelek támogatja, és kiterjesztése fogják használni a Microsoft Azure-szolgáltatások Azure piactér a lista tartalmazza a Microsoft partnerei rendszert integráló (SI) szolgáltatások ajánlatok tanácsadás támogatja. 
 
 Ezek tanácsadás kérésajánlatok olyan specifikus kapcsolattartás során, és időtartamától, a rögzített ár kijavíthatók vagy ingyenes, és rendelkezik egy definiált eredménye. A lehetséges ügyfeleket súrlódás szabad módon kapcsolódhassanak kérjen. Partnerek értesítést kap, a CRM-rendszerbe, és célja, hogy a felhasználók 48hrs belül válaszol.
 
 Szolgáltatás nyújt a Microsoft Dynamics 365, a Microsoft Office 365 és a Microsoft Power BI alapján kerülnek AppSource szerepel. Tekintse át a részletes [útmutatást itt ezen szolgáltatások](https://smp-cdn-prod.azureedge.net/documents/Microsoft%20AppSource%20Partner%20Listing%20Guidelines.pdf). 
 
-##<a name="eligible-services-and-partners"></a>Jogosult szolgáltatások és a partnerek
+## <a name="eligible-services-and-partners"></a>Jogosult szolgáltatások és a partnerek
 
 Partnerek is kell lennie egy ezüst vagy gold kompetencia az érintett területen a szolgáltatáshoz. Olvassa el az alábbi jogosult hatáskörét:
 
@@ -49,7 +49,7 @@ Eligazítás tartása, kivéve tanácsadás ajánlja fel személy (vagyis az üg
 
 Tudjon meg többet az [Microsoft Partner Network szakértelem](https://partner.microsoft.com/en-US/membership/competencies#simple-tab-content-1). 
 
-##<a name="countries-supported"></a>Támogatott országok
+## <a name="countries-supported"></a>Támogatott országok
 
 Csatolmány partnerek is elküldhetik a 18 országok tanácsadási szolgáltatásokat ajánlatok. 
 
@@ -65,7 +65,7 @@ Csatolmány partnerek is elküldhetik a 18 országok tanácsadási szolgáltatá
 
 Az Azure piactér Consulting Services tanácsadó szolgálat a bevezetésre kerül élő először Ausztrália, Kanada, az Egyesült Királyságban és az Amerikai Egyesült Államokban. A katalógusokat más országokban élő kerül, ha egy jelentéssel bíró számát és a szolgáltatások ajánlatok kényszerítő kiválasztása rendelkezik benyújtása partnerek és a Microsoft által jóváhagyott.
 
-##<a name="prepare-your-publishing-artifacts"></a>A közzétételi összetevők előkészítése
+## <a name="prepare-your-publishing-artifacts"></a>A közzétételi összetevők előkészítése
 Még a szolgáltatás jelöl ki, mielőtt gyűjtése indítható, és előkészíti a tartalmat, amely segítségére lesz a listaelem fogalmazza meg a szolgáltatás és a cél ügyfélnek megoldás értékét. 
 
 
@@ -88,7 +88,7 @@ Még a szolgáltatás jelöl ki, mielőtt gyűjtése indítható, és előkész�
 |Marketing dokumentumok (maximális 3)     |
 
 
-##<a name="publishing-process"></a>Közzétételi folyamata
+## <a name="publishing-process"></a>Közzétételi folyamata
 Az Azure piactéren tanácsadási szolgáltatás-ajánlatot listázása az alábbiakat foglalja magában:
 
 1. **Kérelem:** a kérés küldése [Itt](https://azuremarketplace.microsoft.com/en-us/sell/nominate) és mondja el, további információk a szervezet. 

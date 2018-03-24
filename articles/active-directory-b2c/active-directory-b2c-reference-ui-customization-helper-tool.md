@@ -1,24 +1,21 @@
 ---
-title: "Az Azure Active Directory B2C: Lap felhasználói felületének testreszabása segédeszköze |} Microsoft Docs"
-description: "A lap felhasználói felületi testreszabási szolgáltatás az Azure Active Directory B2C bemutatásához használt segítő eszköz"
+title: 'Az Azure Active Directory B2C: Lap felhasználói felületének testreszabása segédeszköze |} Microsoft Docs'
+description: A lap felhasználói felületi testreszabási szolgáltatás az Azure Active Directory B2C bemutatásához használt segítő eszköz
 services: active-directory-b2c
-documentationcenter: 
-author: swkrish
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: bryanla
-ms.assetid: ae935d52-3520-4a94-b66e-b35bb40e7514
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/07/2017
-ms.author: swkrish
-ms.openlocfilehash: a9ccdea64213d564b271699afe28f5ae6db0a71a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: davidmu
+ms.openlocfilehash: f898c626d52b1a4e7df72284190749f4481999ad
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-active-directory-b2c-a-helper-tool-used-to-demonstrate-the-page-user-interface-ui-customization-feature"></a>Az Azure Active Directory B2C: Segítő használt eszköz a lap felhasználói felület (UI) testreszabási szolgáltatás bemutatása
 Ez a cikk egy kiegészítő, hogy a [fő felhasználói felület testreszabása cikk](active-directory-b2c-reference-ui-customization.md) az Azure Active Directory (Azure AD) B2C. A következő lépések azt ismertetik, hogyan gyakorlására a lap felhasználói felületi testreszabási szolgáltatás minta HTML- és CSS tartalom mellékelt használatával.
@@ -26,7 +23,7 @@ Ez a cikk egy kiegészítő, hogy a [fő felhasználói felület testreszabása 
 ## <a name="get-an-azure-ad-b2c-tenant"></a>Az Azure AD B2C-bérlő beszerzése
 Mielőtt testre szabhatja semmit, akkor [az Azure AD B2C-bérlő beszerzése](active-directory-b2c-get-started.md) Ha még nem rendelkezik.
 
-## <a name="create-a-sign-up-or-sign-in-policy"></a>Regisztráció vagy bejelentkezés házirend létrehozása
+## <a name="create-a-sign-up-or-sign-in-policy"></a>Regisztrálási vagy bejelentkezési szabályzat létrehozása
 A mellékelt minta tartalom customze két oldalán használható egy [regisztráció vagy bejelentkezés házirend](active-directory-b2c-reference-policies.md): a [egyesített bejelentkezési oldal](active-directory-b2c-reference-ui-customization.md) és a [önálló szükséges attribútumok lap](active-directory-b2c-reference-ui-customization.md). Ha [a regisztráció vagy bejelentkezés házirend létrehozása](active-directory-b2c-reference-policies.md#create-a-sign-up-or-sign-in-policy), adja hozzá a helyi fiókkal (e-mail cím), a Facebook, a Google és a Microsoft részére **identitás-szolgáltatóktól**. Ezek azok a csak IDPs, amely elfogadja a minta HTML-tartalmakat.  Ha is hozzáadhat a IDPs egy részét.
 
 ## <a name="register-an-application"></a>Egy alkalmazás regisztrálása
@@ -80,7 +77,7 @@ git clone https://github.com/azureadquickstarts/b2c-azureblobstorage-client
 Ebben a tárházban tartalmaz egy `sample_templates\wingtip` címtár, például HTML, CSS, és a képeket tartalmazó. Ezek a sablonok hivatkoznak a saját Azure Blob Storage-fiók akkor a HTML-fájlok szerkesztése. Nyissa meg `unified.html` és `selfasserted.html` , és cserélje le minden példányát `https://localhost` saját tárolót, amelyet az előző lépésben URL-címét. Abszolút elérési útja a HTML-fájlokat kell használnia, mivel a HTML-KÓDBAN Azure Active Directory, a tartományi által kiszolgált ebben az esetben `https://login.microsoftonline.com`.
 
 ### <a name="upload-the-sample-files"></a>A minta-fájl feltöltése
-Bontsa ki az adott adattár a `B2CAzureStorageClient.zip` , és futtassa a `B2CAzureStorageClient.exe` fájlon belül. Ez a program egyszerűen csak meg kell adnia a tárfiók könyvtárban található összes fájl feltöltése, és engedélyezze a hozzáférést a CORS azokat a fájlokat. Ha követte a fenti lépéseket, a HTML- és CSS fájlok most kell mutat a tárfiókhoz. Vegye figyelembe, hogy a tárfiók nevét a része, amely megelőzi `blob.core.windows.net`, például `contoso`. Ellenőrizheti, hogy a tartalom feltöltötte megfelelően által elérni kívánt `https://{storage-account-name}.blob.core.windows.net/{container-name}/wingtip/unified.html` egy böngésző. Is [http://test-cors.org/](http://test-cors.org/) győződjön meg arról, hogy a tartalom jelenleg engedélyezett CORS. (Keressen "XHR állapota: 200" az eredményben.)
+Bontsa ki az adott adattár a `B2CAzureStorageClient.zip` , és futtassa a `B2CAzureStorageClient.exe` fájlon belül. Ez a program egyszerűen csak meg kell adnia a tárfiók könyvtárban található összes fájl feltöltése, és engedélyezze a hozzáférést a CORS azokat a fájlokat. Ha követte a fenti lépéseket, a HTML- és CSS fájlok most kell mutat a tárfiókhoz. Vegye figyelembe, hogy a tárfiók nevét a része, amely megelőzi `blob.core.windows.net`, például `contoso`. Ellenőrizheti, hogy a tartalom feltöltötte megfelelően által elérni kívánt `https://{storage-account-name}.blob.core.windows.net/{container-name}/wingtip/unified.html` egy böngésző. Is [ http://test-cors.org/ ](http://test-cors.org/) győződjön meg arról, hogy a tartalom jelenleg engedélyezett CORS. (Keressen "XHR állapota: 200" az eredményben.)
 
 ### <a name="customize-your-policy-again"></a>A házirendet, újra testreszabása
 Most, hogy a minta tartalmat a saját tárfiók feltöltött, szerkesztenie kell a regisztrációs szabályzatban arra mutató hivatkozás használatára. Ismételje meg a lépéseket a ["Testreszabhatja az"](#customize-your-policy) a fenti szakaszban ezúttal a saját storage-fiók URL-címeket. Például a helyét a `unified.html` fájl lenne `<url-of-your-container>/wingtip/unified.html`.

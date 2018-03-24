@@ -1,3 +1,19 @@
+---
+title: fájl belefoglalása
+description: fájl belefoglalása
+services: vpn-gateway
+author: cherylmc
+ms.service: vpn-gateway
+ms.topic: include
+ms.date: 03/21/2018
+ms.author: cherylmc
+ms.custom: include file
+ms.openlocfilehash: dfc75a64e8bd28d7aba9984e5a1d5720330f1da3
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 03/23/2018
+---
 ### <a name="is-bgp-supported-on-all-azure-vpn-gateway-skus"></a>Minden Azure VPN Gateway SKU-n támogatott a BGP?
 Nem, a BGP-t az Azure **VpnGw1**, **VpnGw2**, **VpnGw3**, **Standard** és **Nagy teljesítményű** VPN-átjárók támogatják. Az **alapszintű** SKU NEM támogatott.
 
@@ -72,4 +88,3 @@ Az Azure helyi hálózati átjárója adja meg a kezdeti címelőtagokat a helys
 
 ### <a name="what-should-i-add-to-my-on-premises-vpn-device-for-the-bgp-peering-session"></a>Mit kell felvennem a helyszíni VPN-eszközön a BGP társviszony-munkamenethez?
 Vegye fel a VPN-eszközén az Azure BGP-társgép IP-címének gazdaútvonalát, amely az IPsec S2S VPN-alagútra mutat. Ha például az Azure VPN-társgép IP-címe „10.12.255.30”, akkor a VPN-eszköz megfelelő IPsec alagútkapcsolatának a „10.12.255.30” címre mutató gazdaútvonalat kell megadnia egy következő ugrás felülettel.
-

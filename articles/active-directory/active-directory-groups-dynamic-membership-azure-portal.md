@@ -1,26 +1,26 @@
 ---
-title: "Attribútumalapú dinamikus csoporttagság az Azure Active Directoryban |} Microsoft Docs"
-description: "Dinamikus csoport tagsági többek között a speciális szabályok létrehozása támogatott szabályoperátorokat kifejezés és paraméterek."
+title: Attribútumalapú dinamikus csoporttagság az Azure Active Directoryban |} Microsoft Docs
+description: Dinamikus csoport tagsági többek között a speciális szabályok létrehozása támogatott szabályoperátorokat kifejezés és paraméterek.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: curtand
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: fb434cc2-9a91-4ebf-9753-dd81e289787e
 ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: 
-ms.devlang: 
+ms.tgt_pltfrm: ''
+ms.devlang: ''
 ms.topic: article
 ms.date: 12/06/2017
 ms.author: curtand
 ms.reviewer: piotrci
 ms.custom: H1Hack27Feb2017;it-pro
-ms.openlocfilehash: 8a52d80f32f822691be862d566c17c84efc73c26
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 22fdb448dda1c824ae5e1fee6f9b2e7377680d6b
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="create-attribute-based-rules-for-dynamic-group-membership-in-azure-active-directory"></a>Dinamikus csoporttagság Attribútumalapú szabályok létrehozása az Azure Active Directoryban
 Az Azure Active Directory (Azure AD) összetett Attribútumalapú dinamikus csoporttagságok csoportok engedélyezése speciális szabályokat hozhat létre. Ez a cikk részletezi az attribútumokat és a felhasználók vagy eszközök dinamikus tagsági szabályok létrehozásához szintaxist.
@@ -106,11 +106,11 @@ Minden operátorok részesíti a alacsonyabb magasabb / alább láthatók. Ugyan
 Minden műveleteivel végrehajtható vagy a kötőjel előtag nélkül. Kerek zárójeleket tartalmazhatnak van szükség, csak akkor, amikor sorrendje nem felel meg a követelményeknek.
 Példa:
 ```
-   user.department –eq "Marketing" –and user.country –eq "US"
+   user.department -eq "Marketing" -and user.country -eq "US"
 ```
 az egyenértékű:
 ```
-   (user.department –eq "Marketing") –and (user.country –eq "US")
+   (user.department -eq "Marketing") -and (user.country -eq "US")
 ```
 ## <a name="using-the--in-and--notin-operators"></a>Használja az - a és - notIn operátorok
 

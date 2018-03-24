@@ -1,11 +1,11 @@
 ---
-title: "Ismerkedés az Azure AD AngularJS |} Microsoft Docs"
-description: "Megtudhatja, hogyan hozható létre egy AngularJS egyoldalas alkalmazás, amely integrálható az Azure ad-val bejelentkezhet, és meghívja az Azure AD-védelemmel ellátott API-OAuth használatával."
+title: Ismerkedés az Azure AD AngularJS |} Microsoft Docs
+description: Megtudhatja, hogyan hozható létre egy AngularJS egyoldalas alkalmazás, amely integrálható az Azure ad-val bejelentkezhet, és meghívja az Azure AD-védelemmel ellátott API-OAuth használatával.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: jmprieur
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: f2991054-8146-4718-a5f7-59b892230ad7
 ms.service: active-directory
 ms.workload: identity
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/30/2017
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 51734f5b39e9ca8af65048f2a7efd5c61cd53204
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 2f78a6b17a512ab54ffab4554ccc0f3f1486f27a
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-ad-angularjs-getting-started"></a>Ismerkedés az Azure AD AngularJS
 
@@ -52,13 +52,13 @@ Ahhoz, hogy az alkalmazás hitelesíti a felhasználókat, és a jogkivonatok le
 4. Kattintson a **App regisztrációk**, majd válassza ki **Hozzáadás**.
 5. Kövesse az utasításokat, és hozzon létre egy új webalkalmazás és/vagy webes API:
   * **Név** az alkalmazás a felhasználók számára ismerteti.
-  * **Átirányítási Uri** az a hely, amelyhez az Azure AD jogkivonatok ad vissza. Az alapértelmezett helye Ez a minta `https://localhost:44326/`.
+  * **Bejelentkezés URL-cím** az a hely, amelyhez az Azure AD jogkivonatok ad vissza. Az alapértelmezett helye Ez a minta `https://localhost:44326/`.
 6. Regisztráció befejezése után az Azure AD egy egyedi alkalmazás Azonosítót rendel az alkalmazáshoz.  Ez az érték kell a következő szakaszokban lévő, másolja az alkalmazás lapján.
 7. Adal.js az OAuth implicit engedélyezési folyamat használatával kommunikálni az Azure AD. Az alkalmazás engedélyeznie kell a implicit engedélyezési folyamat:
   1. Kattintson az alkalmazás, és válassza **Manifest** a jegyzék beágyazott-szerkesztő megnyitásához.
   2. Keresse meg a `oauth2AllowImplicitFlow` tulajdonság. Állítsa be az értékét `true`.
   3. Kattintson a **mentése** a jegyzékfájl mentése.
-8. Az alkalmazás a bérlő jogosultságot adni. Lépjen **beállítások** > **tulajdonságok** > **szükséges engedélyek**, és kattintson a **engedélyt adjon** a felső eszköztáron gombra. Kattintson a **Yes** (Igen) gombra a megerősítéshez.
+8. Az alkalmazás a bérlő jogosultságot adni. Lépjen **beállítások** > **szükséges engedélyek**, és kattintson a **engedélyt adjon** a felső eszköztáron gombra. Kattintson a **Yes** (Igen) gombra a megerősítéshez.
 
 ## <a name="step-2-install-adal-and-configure-the-single-page-app"></a>2. lépés: Telepítse adal-t és az alkalmazás konfigurálása
 Most, hogy az Azure AD-alkalmazás, adal.js telepítse, és az identitás-kapcsolódó kód írása.

@@ -1,26 +1,30 @@
 ---
-title: "Élő adatfolyam-továbbítási az Azure Media Services áttekintése |} Microsoft Docs"
-description: "Ez a témakör áttekintést nyújt az Azure Media Services segítségével élő adatfolyam."
+title: Élő adatfolyam-továbbítási az Azure Media Services áttekintése |} Microsoft Docs
+description: Ez a témakör áttekintést nyújt az Azure Media Services segítségével élő adatfolyam.
 services: media-services
-documentationcenter: 
+documentationcenter: ''
 author: Juliako
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: fb63502e-914d-4c1f-853c-4a7831bb08e8
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 06/29/2017
+ms.date: 03/19/2018
 ms.author: juliako
-ms.openlocfilehash: 6f500f25129470a679c75cae6cd1abc9d71b72a7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 451513c364978348eba922f5cf42b6e6c79f8700
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="overview-of-live-streaming-using-azure-media-services"></a>Élő adatfolyam-továbbítási az Azure Media Services áttekintése
+
+> [!NOTE]
+> 2018. május 12., az élő csatornák indítása rendszer már nem támogatja a RTP/MPEG-2 transport stream betöltési protokollt. Végezzen áttelepítést az RTP/MPEG-2 RTMP vagy töredezett MP4) (Smooth Streaming) betöltési protokollok.
+
 ## <a name="overview"></a>Áttekintés
 Ha az Azure Media Services események élő adatfolyamainak továbbítása a következő összetevők általában érintett:
 
@@ -66,7 +70,7 @@ A Media Services támogatott csatorna kétféle összehasonlításával való az
 | Maximális felbontás, a rétegek száma |1080p, 8 rétegek 60 + fps |720p, 6 rétegek 30 fps |
 | Bemeneti protokollok |RTMP, Smooth Streaming |RTMP, Smooth Streaming vagy RTP |
 | Ár |Tekintse meg a [árképzést ismertető oldalra](https://azure.microsoft.com/pricing/details/media-services/) , majd kattintson a "Live videó" lap |Tekintse meg a [árképzést ismertető oldalra](https://azure.microsoft.com/pricing/details/media-services/) |
-| Maximálisan engedélyezett futási idő |24 x 7 |8 óra |
+| Maximálisan engedélyezett futási idő |A hét minden napján, 24 órában elérhető |8 óra |
 | Táblagépükkel beszúrása támogatása |Nem |Igen |
 | Ad-jelzés támogatása |Nem |Igen |
 | Áteresztő CEA 608/708 feliratok |Igen |Igen |
@@ -133,7 +137,7 @@ Az alábbi táblázat azt ismerteti, hogy az egyes csatornaállapotok esetében 
 
 | Csatorna állapota | Jelzése a portál kezelőfelületén | Ennyi az egész számlázási? |
 | --- | --- | --- |
-| Indulás alatt |Indulás alatt |Nem (átmeneti állapot) |
+| Indítás |Indítás |Nem (átmeneti állapot) |
 | Fut |Üzemkész (nincs futó program)<br/>vagy<br/>Streamelés (legalább egy futó program) |IGEN |
 | Leállítás |Leállítás |Nem (átmeneti állapot) |
 | Leállítva |Leállítva |Nem |

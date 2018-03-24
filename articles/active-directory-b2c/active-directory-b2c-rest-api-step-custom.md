@@ -1,24 +1,21 @@
 ---
-title: "Az Azure Active Directory B2C: REST API jogcím cseréje egy vezénylési lépés |} Microsoft Docs"
-description: "Témakör: Azure Active Directory B2C egyéni házirendek, amelyek az API-k integrálása"
+title: 'Az Azure Active Directory B2C: REST API jogcím cseréje egy vezénylési lépés |} Microsoft Docs'
+description: 'Témakör: Azure Active Directory B2C egyéni házirendek, amelyek az API-k integrálása'
 services: active-directory-b2c
-documentationcenter: 
-author: rojasja
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: rojasja
-ms.assetid: 
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.devlang: na
 ms.date: 04/24/2017
-ms.author: joroja
-ms.openlocfilehash: 3e4f0bccf02c0332663a746d4ed8e5234c51f54e
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: davidmu
+ms.openlocfilehash: bde1ef711fe19b7e26f2d93b58d653dc816b1a07
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="walkthrough-integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-an-orchestration-step"></a>Forgatókönyv: Integrálása az Azure AD B2C felhasználói út a REST API jogcímek cseréjét egy vezénylési lépés
 
@@ -257,7 +254,7 @@ Ha minden megfelelően van beállítva, a jogkivonat tartalmazza az új jogcíme
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [A REST API-t használják a ellenőrzési lépés](active-directory-b2c-rest-api-validation-custom.md)
 

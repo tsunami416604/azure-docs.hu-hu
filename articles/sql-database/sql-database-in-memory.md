@@ -1,19 +1,19 @@
 ---
-title: "Az Azure SQL adatbázis memórián belüli technológiák |} Microsoft Docs"
-description: "Az Azure SQL adatbázis memórián belüli technológiák jelentősen javítja a tranzakciós teljesítményét és elemzés munkaterhelések."
+title: Az Azure SQL adatbázis memórián belüli technológiák |} Microsoft Docs
+description: Az Azure SQL adatbázis memórián belüli technológiák jelentősen javítja a tranzakciós teljesítményét és elemzés munkaterhelések.
 services: sql-database
 author: jodebrui
 manager: craigg
 ms.service: sql-database
 ms.custom: develop databases
 ms.topic: article
-ms.date: 11/16/2017
+ms.date: 03/21/2018
 ms.author: jodebrui
-ms.openlocfilehash: 107df78f0ec6ce924785f5027958ee66f2a86c7c
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 442c860a13e2af1d5398fb30a6069a0e3764ee64
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="optimize-performance-by-using-in-memory-technologies-in-sql-database"></a>A memórián belüli technológiái az SQL-adatbázis teljesítményének optimalizálása
 
@@ -104,7 +104,7 @@ Fürtözetlen oszlopcentrikus indexek használata esetén a következő alaptáb
 
 Nincsenek soha nem azonosított inkompatibilitásokat vagy egyéb problémák történő frissítésekor egy magasabb szintű tarifacsomagban használható, többek között a Premium szabvány. Az elérhető funkciókat és erőforrások csak növelni.
 
-De alacsonyabb verziójúra változtatása az árképzési szint negatív hatással lehet az adatbázis. A hatás különösen kétségtelenül, amikor Ön visszaminősítését prémiumról alapszintű vagy Standard amikor az adatbázis memórián belüli online Tranzakciófeldolgozási objektumokat tartalmaz. Memóriaoptimalizált táblákkal, és oszlopcentrikus indexek esetében nem érhetők el az alacsonyabb szintre való visszalépést után (még akkor is, ha akkor is látható maradjon,). Ugyanazok a feltételek vonatkoznak, amikor egy rugalmas készlet árképzési szintjének csökkentése, vagy egy adatbázis áthelyezése a szolgáltatáshoz. A memóriában, alapszintű vagy Standard rugalmas készlet.
+De alacsonyabb verziójúra változtatása az árképzési szint negatív hatással lehet az adatbázis. A hatás különösen kétségtelenül, amikor Ön visszaminősítését prémiumról alapszintű vagy Standard amikor az adatbázis memórián belüli online Tranzakciófeldolgozási objektumokat tartalmaz. A memóriaoptimalizált táblák nem érhetők el az alacsonyabb szintre való visszalépést után (még akkor is, ha akkor is látható maradjon,). Ugyanazok a feltételek vonatkoznak, amikor egy rugalmas készlet árképzési szintjének csökkentése, vagy egy adatbázis áthelyezése a szolgáltatáshoz. A memóriában, alapszintű vagy Standard rugalmas készlet.
 
 ### <a name="in-memory-oltp"></a>Memóriabeli OLTP
 
@@ -130,11 +130,11 @@ SELECT * FROM sys.sql_modules WHERE uses_native_compilation=1
 
 ### <a name="columnstore-indexes"></a>Oszlopcentrikus indexek
 
-*Basic vagy Standard visszaminősítése*: Oszlopcentrikus indexek használata támogatott, csak a prémium tarifacsomag, nem pedig a Standard vagy Basic rétegek. Amikor visszaminősítését alapszintű vagy Standard az adatbázist, az oszlopcentrikus index nem érhető el. A rendszer megőrzi az oszlopcentrikus index, de soha ne használja a az index. Ha később frissíteni vissza Premium, az oszlopcentrikus index azonnal készen áll a újra javítható.
+*Basic vagy Standard visszaminősítése*: Oszlopcentrikus indexek használata támogatott, csak a prémium tarifacsomag és a normál rétegben, S3 és felett, és nem az alapszintű rétegben. Amikor visszaminősítését az adatbázis egy nem támogatott réteg vagy szint, az oszlopcentrikus index nem érhető el. A rendszer megőrzi az oszlopcentrikus index, de soha ne használja a az index. Ha később frissíteni egy támogatott réteg vagy szint, az oszlopcentrikus index azonnal készen áll a újra javítható.
 
-Ha rendelkezik egy **fürtözött** oszlopcentrikus indexet, az egész tábla nem érhető el réteg alacsonyabb szintre való visszalépést után. Ezért ajánlott minden drop *fürtözött* oszlopcentrikus indexeket előtt meg megállapításában, hogy az adatbázis alatt prémium tarifacsomagra.
+Ha rendelkezik egy **fürtözött** oszlopcentrikus indexet, az egész tábla nem érhető el az alacsonyabb szintre való visszalépést után. Ezért ajánlott minden drop *fürtözött* oszlopcentrikus indexeket, mielőtt az adatbázis egy nem támogatott réteg vagy szintje alacsonyabb.
 
-*Egy alacsonyabb prémium csomagra alacsonyabb verziójúra változtatása*: az alacsonyabb szintre való visszalépést sikeres lesz, ha a teljes adatbázis megfelel a cél IP-címek a maximális méretét, vagy a rendelkezésre álló tár az a rugalmas készlet belül. Nincs az oszlopcentrikus indexek az adott hatással.
+*Egy alacsonyabb támogatott réteg vagy szintje alacsonyabb verziójúra változtatása*: az alacsonyabb szintre való visszalépést sikeres lesz, ha a teljes adatbázis megfelel a cél IP-címek a maximális méretét, vagy a rendelkezésre álló tár az a rugalmas készlet belül. Nincs az oszlopcentrikus indexek az adott hatással.
 
 
 <a id="install_oltp_manuallink" name="install_oltp_manuallink"></a>

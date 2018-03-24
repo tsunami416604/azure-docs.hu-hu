@@ -1,11 +1,11 @@
 ---
-title: "Probléma a felhasználók átadása egy Azure AD-katalógusában alkalmazás konfigurálása |} Microsoft Docs"
-description: "Konfigurálását a felhasználók átadása egy alkalmazás már szerepel az Azure AD Application Gallery tapasztalt kapcsolatos gyakori hibák elhárítása"
+title: Probléma a felhasználók átadása egy Azure AD-katalógusában alkalmazás konfigurálása |} Microsoft Docs
+description: Konfigurálását a felhasználók átadása egy alkalmazás már szerepel az Azure AD Application Gallery tapasztalt kapcsolatos gyakori hibák elhárítása
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: 3a19169effad54e26cd2061bffae369cd31e9a9e
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 9fcfee9cbbeb01422e7d9e92d90b908e054f96da
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="problem-configuring-user-provisioning-to-an-azure-ad-gallery-application"></a>A probléma a felhasználók átadása egy Azure AD-katalógusában alkalmazás konfigurálása
 
@@ -31,7 +31,7 @@ Ha a szolgáltatás már konfigurálva van, a művelet a szolgáltatás a legtö
 
 -   **A naplók** – a telepítési naplók az rekord minden a létesítési szolgáltatás, így az Azure ad-val lekérdezése által végrehajtott műveletek felelőse felhasználók hatókörébe történő üzembe helyezéséhez. A lekérdezés a cél alkalmazás azoknak a felhasználóknak a felhasználói objektumok között a rendszer összehasonlítja a megléte. Majd adja hozzá, frissíteni vagy tiltsa le a felhasználói fiókot a célrendszeren, az összehasonlítás alapján. A telepítési naplók érhetők el az Azure portálon, a **Azure Active Directory &gt; vállalati alkalmazások &gt; \[alkalmazásnév\] &gt; vizsgálati naplókban** fülre. A naplók szűrést végezni a **fiók** kategóriát csak az adott alkalmazáshoz létesítési események megjelenítéséhez.
 
--   **Előkészítési állapotát –** utolsó kiépítési összegzését futtatni egy adott alkalmazás látható a **Azure Active Directory &gt; vállalati alkalmazások &gt; \[alkalmazásnév\] &gt; Kiépítés** szakaszban, a szolgáltatás beállításai alapján a képernyő alján. Ez a szakasz foglalja össze, hogy hány felhasználók (és/vagy csoportok) vannak jelenleg szinkronizálja a két rendszer között, és ha hiba történik. Hiba legutolsó részletes adatai a felügyeleti naplók találhatók. Vegye figyelembe, hogy az üzembe helyezési állapota nem tölthető fel, amíg egy teljes kezdeti szinkronizálása befejeződött az Azure AD között és az alkalmazás.
+-   **Előkészítési állapotát –** utolsó kiépítési összegzését futtatni egy adott alkalmazás látható a **Azure Active Directory &gt; vállalati alkalmazások &gt; \[alkalmazásnév\] &gt;Kiépítés** szakaszban, a szolgáltatás beállításai alapján a képernyő alján. Ez a szakasz foglalja össze, hogy hány felhasználók (és/vagy csoportok) vannak jelenleg szinkronizálja a két rendszer között, és ha hiba történik. Hiba legutolsó részletes adatai a felügyeleti naplók találhatók. Vegye figyelembe, hogy az üzembe helyezési állapota nem tölthető fel, amíg egy teljes kezdeti szinkronizálása befejeződött az Azure AD között és az alkalmazás.
 
 ## <a name="general-problem-areas-with-provisioning-to-consider"></a>Vegye figyelembe, hogy az általános problémás területek
 
@@ -66,5 +66,5 @@ Amikor a felhasználó megjelenik, a "kihagyva" a naplófájlban, nagyon fontos 
 
    * **Azon csoportok attribútum:** telepítése a csoport nevét és a csoport részletes adatait, a tagok, ha az egyes alkalmazásokra támogatott mellett. Engedélyezheti vagy letilthatja ezt a funkciót engedélyezésével vagy letiltásával a **leképezési** a csoport objektumainak látható a **kiépítési** fülre. Ha csoportok kiépítés engedélyezve van, feltétlenül olvassa el a attribútum-leképezésekhez ellenőrizze a megfelelő mezőben használja a "egyező azonosító". Ez lehet a megjelenített nevet vagy e-mail címét), mert a csoport és annak tagjait nem építhető ki, ha a megfelelő tulajdonság értéke üres vagy nem ki van töltve a csoport az Azure AD.
 
-#<a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [Felhasználói kiépítésének és megszüntetésének biztosítása SaaS-alkalmazásokhoz az Azure Active Directoryval történő automatizálásához](active-directory-saas-app-provisioning.md)

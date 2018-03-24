@@ -1,24 +1,21 @@
 ---
-title: "Bővítmények alkalmazás – az Azure AD B2C |} Microsoft Docs"
-description: "A b2c-bővítmények-alkalmazás visszaállítása"
+title: Bővítmények alkalmazás – az Azure AD B2C |} Microsoft Docs
+description: A b2c-bővítmények-alkalmazás visszaállítása
 services: active-directory-b2c
-documentationcenter: 
-author: parakhj
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: parakhj
-ms.assetid: f0392e32-0771-473c-a799-81438ca2bcff
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 9/06/2017
-ms.author: parja
-ms.openlocfilehash: 450a7a5051cdbd6a3c8105a06fd3ebae10d5388e
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.author: davidmu
+ms.openlocfilehash: c07aba797118af2cc8283509944eda8b41d499b3
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-ad-b2c-extensions-app"></a>Az Azure AD B2C: Bővítmények alkalmazás
 
@@ -39,7 +36,7 @@ Annak ellenőrzéséhez, hogy a b2c-bővítmények-alkalmazás jelen:
 
 Ha véletlenül törli a b2c-bővítmények-alkalmazás, végezze el a helyreállítást 30 napja van. Visszaállíthatja az alkalmazást, a Graph API-val:
 
-1. Keresse meg a [https://graphexplorer.azurewebsites.net/](https://graphexplorer.azurewebsites.net/).
+1. Keresse meg a [ https://graphexplorer.azurewebsites.net/ ](https://graphexplorer.azurewebsites.net/).
 1. Jelentkezzen be a webhely, amelyet szeretne visszaállítani a törölt alkalmazást az Azure AD B2C könyvtár globális rendszergazdaként. A globális rendszergazdának rendelkeznie kell egy e-mail címet a következőhöz hasonló: `username@{yourTenant}.onmicrosoft.com`.
 1. Az URL egy HTTP GET ki `https://graph.windows.net/myorganization/deletedApplications` az api-version 1.6-os =. Ez a művelet felsorolja összes alkalmazást, amely az elmúlt 30 napban törölve lett.
 1. Alkalmazás található a listában, ahol a karaktersorozattal kezdődő "b2c-bővítmény-alkalmazás", és másolja a `objectid` tulajdonság értéke.

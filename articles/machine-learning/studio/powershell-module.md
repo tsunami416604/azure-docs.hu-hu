@@ -1,11 +1,12 @@
 ---
 title: PowerShell-modul a Machine Learning |} Microsoft Docs
-description: "Az Azure Machine Learning PowerShell-modulja nyilvános előzetes verzióban érhető el. PowerShell segítségével munkaterületek, kísérleteket, a webszolgáltatások és több létrehozása és kezelése."
-keywords: "kísérlet,lineáris regresszió,machine learning-algoritmusok,machine learning-oktatóanyag,prediktív modellezési technikák,adatelemzési kísérlet"
+description: Az Azure Machine Learning PowerShell-modulja nyilvános előzetes verzióban érhető el. PowerShell segítségével munkaterületek, kísérleteket, a webszolgáltatások és több létrehozása és kezelése.
+keywords: kísérlet,lineáris regresszió,machine learning-algoritmusok,machine learning-oktatóanyag,prediktív modellezési technikák,adatelemzési kísérlet
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: hning86
-manager: jhubbard
+ms.author: haining
+manager: mwinkle
 editor: cgronlun
 ms.assetid: a9001cc2-3aa0-47e1-b175-1f76408ba1d1
 ms.service: machine-learning
@@ -14,17 +15,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/15/2017
-ms.author: garye;haining
-ms.openlocfilehash: 47d005e584b6cb87d27a77f56ff619d342481aaa
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c9553e372f4d1cb5c60935fae5a7af61806ea6d4
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="powershell-module-for-microsoft-azure-machine-learning"></a>A Microsoft Azure Machine Learning PowerShell-modulja
 Az Azure Machine Learning PowerShell-modul, amely lehetővé teszi a Windows PowerShell segítségével kezelje munkaterületek, kísérletek, adatkészleteket, klasszikus webszolgáltatások és további hatékony eszköz.
 
-A dokumentáció megtekintéséhez és a modul letöltéséhez a teljes forráskóddal együtt lépjen a következő helyre: [https://aka.ms/amlps](https://aka.ms/amlps). 
+A dokumentációjában tekintheti meg és töltse le a modult, valamint a teljes forráskód a [ https://aka.ms/amlps ](https://aka.ms/amlps). 
 
 > [!NOTE]
 > Az Azure Machine Learning PowerShell modult jelenleg csak előzetes módban működik. A modul továbbfejlesztett és a próbaidőszak alatt kibontva továbbra is. Nyomon követheti a a [Cortana Intelligence és a Machine Learning Blog](https://blogs.technet.microsoft.com/machinelearning/) hírek és információ.
@@ -58,7 +58,7 @@ A Machine Learning PowerShell használatának megkezdéséhez töltse le a [kiad
 
 Ha azt szeretné, átmásolhatja a git fa módosításához a kódot, és hogy helyileg Visual Studio.
 
-## <a name="next-steps"></a>Következő lépések
-A PowerShell modul teljes dokumentációjában található [https://aka.ms/amlps](https://aka.ms/amlps). 
+## <a name="next-steps"></a>További lépések
+A PowerShell modul teljes dokumentációjában található [ https://aka.ms/amlps ](https://aka.ms/amlps). 
 
 Kiterjesztett példát a modul használata valós forgatókönyv esetében, tekintse meg a részletes használati eset [létrehozása számos Machine Learning modellek és webes Szolgáltatásvégpontok PowerShell-lel egy kísérlet](create-models-and-endpoints-with-powershell.md).

@@ -1,13 +1,13 @@
 ---
-title: "Események ütemezett Linux virtuális gépek Azure-ban |} Microsoft Docs"
-description: "Események ütemezése a Linux virtuális gépek Azure metaadat-szolgáltatás használatával."
+title: Események ütemezett Linux virtuális gépek Azure-ban |} Microsoft Docs
+description: Események ütemezése a Linux virtuális gépek Azure metaadat-szolgáltatás használatával.
 services: virtual-machines-windows, virtual-machines-linux, cloud-services
-documentationcenter: 
+documentationcenter: ''
 author: ericrad
 manager: timlt
-editor: 
-tags: 
-ms.assetid: 
+editor: ''
+tags: ''
+ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.devlang: na
 ms.topic: article
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ericrad
-ms.openlocfilehash: e697a8f1160aff5774dc416c81819220c316707a
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: c87dd5bdbdc87bf238f34d145bd7380a61b90cb6
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-metadata-service-scheduled-events-for-linux-vms"></a>Azure metaadat-szolgáltatás: Linux virtuális gépek ütemezett eseménye
 
@@ -129,7 +129,7 @@ Abban az esetben, ahol ütemezett események, a válasz események tömbjét tar
 | ResourceType | Ez az esemény érinti erőforrás típusát. <br><br> Értékek: <ul><li>`VirtualMachine`|
 | További források| Ez az esemény érinti erőforrások listáját. A listában legalább egy gépeket tartalmazhat garantáltan [frissítési tartomány](manage-availability.md), de nem tartalmaz a UD összes gép. <br><br> Példa: <br><ul><li> ["FrontEnd_IN_0", "BackEnd_IN_0"] |
 | EventStatus | Ez az esemény állapotát. <br><br> Értékek: <ul><li>`Scheduled`: Ez az esemény után a megadott ideig történő futásra van ütemezve a `NotBefore` tulajdonság.<li>`Started`: Ez az esemény elindult.</ul> Nem `Completed` vagy hasonló állapot valaha is biztosítja. Az esemény már nem ad vissza, amikor befejeződött az esemény.
-| NotBefore| Idő elteltével ezt az eseményt elindíthatja. <br><br> Példa: <br><ul><li> 2016-09-19T18:29:47Z  |
+| NotBefore| Idő elteltével ezt az eseményt elindíthatja. <br><br> Példa: <br><ul><li> F, 19 szeptember 2016 18:29:47 GMT  |
 
 ### <a name="event-scheduling"></a>Esemény ütemezése
 Minden esemény van ütemezve egy jövőbeli időpontot minimális mennyiségű esemény típusa alapján. Most megjelenik egy esemény `NotBefore` tulajdonság. 

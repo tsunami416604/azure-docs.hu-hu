@@ -1,11 +1,11 @@
 ---
-title: "Bevezetés az Azure hálózati figyelőt a hibakeresési erőforrás |} Microsoft Docs"
-description: "Ezen a lapon a hálózati figyelőt erőforrás hibaelhárítási képességei áttekintése"
+title: Bevezetés az Azure hálózati figyelőt a hibakeresési erőforrás |} Microsoft Docs
+description: Ezen a lapon a hálózati figyelőt erőforrás hibaelhárítási képességei áttekintése
 services: network-watcher
 documentationcenter: na
 author: jimdial
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 ms.assetid: c1145cd6-d1cf-4770-b1cc-eaf0464cc315
 ms.service: network-watcher
 ms.devlang: na
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: jdial
-ms.openlocfilehash: a37c92e1aa58184ed29185742ec727c120fe593f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 646caa5e4aacd58377c0a2b5985a69277d00cec3
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="introduction-to-resource-troubleshooting-in-azure-network-watcher"></a>Bevezetés az Azure hálózati figyelőt a hibakeresési erőforrás
 
-Virtuális hálózati átjárók biztosít a helyi erőforrások és más Azure-ban virtuális hálózatok közötti kapcsolatot. Ezek átjárók és a kapcsolatok figyelés létfontosságú kommunikáció biztosításához megszakad nem. Hálózati figyelő lehetővé teszi a virtuális hálózati átjárók és kapcsolatok hibáinak elhárítása. Ez a portál, a PowerShell, a parancssori felület vagy a REST API-n keresztül kell meghívni. Meghívásakor, a hálózati figyelőt diagnosztizálja a virtuális hálózati átjáró vagy a kapcsolat állapotát, és a megfelelő eredményeket. A kérelem egy hosszú ideig futó tranzakció, az eredmény akkor minősül diagnosztizálására végrehajtása után.
+Virtuális hálózati átjárók biztosít a helyi erőforrások és más Azure-ban virtuális hálózatok közötti kapcsolatot. Átjárók figyelési és a kapcsolatok kulcsfontosságúként kommunikáció biztosításához megszakad nem. Hálózati figyelő lehetővé teszi az átjárók és kapcsolatok hibáinak elhárítása. A funkció a portálra, a PowerShell, az Azure parancssori felület vagy a REST API hívása. Meghívásakor, a hálózati figyelőt diagnosztizálja az átjárót, vagy a kapcsolat állapotát, és a megfelelő eredményeket ad vissza. A kérelem teljesítése hosszú ideig futó tranzakció. A diagnosztikai végrehajtása után a rendszer visszairányítja az eredményeket.
 
 ![portal][2]
 
@@ -50,44 +50,44 @@ Az alábbi táblázatok bemutatják a különböző tartalék típusok (azonosí
 
 | Hibatípus | Ok | Napló|
 |---|---|---|
-| NoFault | Ha nincs hiba észlelhető. |Igen|
-| GatewayNotFound | Nem található átjáró vagy az átjáró nem lett beállítva. |Nem|
+| NoFault | Ha nincs hiba észlelhető |Igen|
+| GatewayNotFound | Nem található átjáró vagy az átjáró nincs telepítve |Nem|
 | PlannedMaintenance |  Átjárópéldány karbantartás alatt áll.  |Nem|
-| UserDrivenUpdate | Amikor a felhasználó frissítése folyamatban van. Ennek oka lehet egy átméretezés. | Nem |
-| VipUnResponsive | Az elsődleges példány az átjáró nem érhető el. Ez akkor fordul elő, amikor a állapotmintáihoz sikertelen. | Nem |
+| UserDrivenUpdate | Ez a hiba akkor fordul elő, amikor a felhasználó frissítése folyamatban van. A frissítés egy átméretezés lehet. | Nem |
+| VipUnResponsive | Ez a hiba akkor fordul elő, ha az elsődleges példány az átjáró egy állapot-mintavételi hiba miatt nem érhető el. | Nem |
 | PlatformInActive | A platformon probléma van. | Nem|
 | ServiceNotRunning | Az alapul szolgáló szolgáltatás nem fut. | Nem|
-| NoConnectionsFoundForGateway | Kapcsolat nem létezik az átjáróhoz. Ez a figyelmeztetés csak.| Nem|
-| ConnectionsNotConnected | Kapcsolatok nem kapcsolódnak. Ez a figyelmeztetés csak.| Igen|
+| NoConnectionsFoundForGateway | Kapcsolat nem létezik az átjáróhoz. Ez a hiba csak egy figyelmeztetés.| Nem|
+| ConnectionsNotConnected | Kapcsolatok nem kapcsolódnak. Ez a hiba csak egy figyelmeztetés.| Igen|
 | GatewayCPUUsageExceeded | Az aktuális átjáró CPU-használat > 95 %. | Igen |
 
 ### <a name="connection"></a>Kapcsolat
 
 | Hibatípus | Ok | Napló|
 |---|---|---|
-| NoFault | Ha nincs hiba észlelhető. |Igen|
-| GatewayNotFound | Nem található átjáró vagy az átjáró nem lett beállítva. |Nem|
+| NoFault | Ha nincs hiba észlelhető |Igen|
+| GatewayNotFound | Nem található átjáró vagy az átjáró nincs telepítve |Nem|
 | PlannedMaintenance | Átjárópéldány karbantartás alatt áll.  |Nem|
-| UserDrivenUpdate | Amikor a felhasználó frissítése folyamatban van. Ennek oka lehet egy átméretezés.  | Nem |
-| VipUnResponsive | Az elsődleges példány az átjáró nem érhető el. Akkor történik, ha a állapotmintáihoz sikertelen lesz. | Nem |
+| UserDrivenUpdate | Ez a hiba akkor fordul elő, amikor a felhasználó frissítése folyamatban van. A frissítés egy átméretezés lehet.  | Nem |
+| VipUnResponsive | Ez a hiba akkor fordul elő, ha az elsődleges példány az átjáró egy állapot-mintavételi hiba miatt nem érhető el. | Nem |
 | ConnectionEntityNotFound | Kapcsolat konfigurációja hiányzik. | Nem |
 | ConnectionIsMarkedDisconnected | A kapcsolat "leválasztott" van megjelölve. |Nem|
 | ConnectionNotConfiguredOnGateway | Az alapul szolgáló szolgáltatás nincs konfigurálva a kapcsolat. | Igen |
 | ConnectionMarkedStandy | Az alapul szolgáló szolgáltatás készenléti jelölésű.| Igen|
-| Authentication | Előmegosztott kulcs nem megfelelő. | Igen|
+| Hitelesítés | Előmegosztott kulcsa eltérő | Igen|
 | PeerReachability | A társ-átjáró nem érhető el. | Igen|
 | IkePolicyMismatch | A társ átjáró rendelkezik IKE szabályzatok Azure által nem támogatott. | Igen|
-| WfpParse hiba | Hiba történt a Windows Fájlvédelem napló elemzésekor. |Igen|
+| WfpParse Error | Hiba történt a Windows Fájlvédelem napló elemzésekor. |Igen|
 
 ## <a name="supported-gateway-types"></a>Támogatott átjáró típusok
 
-Az alábbi lista tartalmazza a támogatási jeleníti meg, melyik átjárót és a kapcsolatok támogatottak a hibaelhárításban hálózati figyelőt.
+A következő táblázat sorolja fel, melyik átjárót és a kapcsolatok támogatottak a hibaelhárításban hálózati figyelőt:
+
 |  |  |
 |---------|---------|
 |**Átjáró típusa**   |         |
 |VPN      | Támogatott        |
 |ExpressRoute | Nem támogatott |
-|Hypernet | Nem támogatott|
 |**VPN-típusai** | |
 |Útvonal alapján | Támogatott|
 |Csoportházirend-alapú | Nem támogatott|
@@ -95,7 +95,6 @@ Az alábbi lista tartalmazza a támogatási jeleníti meg, melyik átjárót és
 |IPSec| Támogatott|
 |VNet2Vnet| Támogatott|
 |ExpressRoute| Nem támogatott|
-|Hypernet| Nem támogatott|
 |VPNClient| Nem támogatott|
 
 ## <a name="log-files"></a>Naplófájlok
@@ -147,11 +146,11 @@ Error: On-prem device sent invalid payload.
      based on log : IkeFindPayloadInPacket failed with Windows error 13843(ERROR_IPSEC_IKE_INVALID_PAYLOAD)
 ```
 
-### <a name="scrubbed-wfpdiagtxt"></a>Törlődik wfpdiag.txt
+### <a name="scrubbed-wfpdiagtxt"></a>Scrubbed-wfpdiag.txt
 
 A **Scrubbed-wfpdiag.txt** naplófájl tartalmazza a Windows fájlvédelem naplót. Ez a napló tartalmaz csomagjai és IKE/AuthIP hibák naplózása.
 
-A következő példa bemutatja a Scrubbed-wfpdiag.txt fájl tartalmát. Ebben a példában a kapcsolat megosztott kulcsa nem volt pontosak, mivel a 3. sor, a lista aljáról is látható. Az alábbi példa esetén csak a teljes napló, a részlet, mert a napló megnőhet, attól függően, hogy a problémát.
+A következő példa bemutatja a Scrubbed-wfpdiag.txt fájl tartalmát. Ebben a példában a kapcsolat megosztott kulcsa nem volt pontosak, mivel a harmadik sorban a lista aljáról is látható. Az alábbi példa esetén csak a teljes napló, a részlet, mert a napló megnőhet, attól függően, hogy a problémát.
 
 ```
 ...
@@ -180,7 +179,7 @@ A következő példa bemutatja a Scrubbed-wfpdiag.txt fájl tartalmát. Ebben a 
 ...
 ```
 
-### <a name="wfpdiagtxtsum"></a>wfpdiag.txt.Sum
+### <a name="wfpdiagtxtsum"></a>wfpdiag.txt.sum
 
 A **wfpdiag.txt.sum** fájl egy napló, a buffers és a feldolgozott események megjelenítése.
 
@@ -210,7 +209,7 @@ Elapsed Time            330 sec
 |        12    ikeext               ike_sa_management_c3307  7857a320-42ee-6e90-d5d9-3f414e3ea2d3|
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Megtudhatja, hogyan diagnosztizálhatja VPN-átjárók és kapcsolatok a portálon keresztül ellátogatva [átjáró hibaelhárítás – Azure-portálon](network-watcher-troubleshoot-manage-portal.md).
 <!--Image references-->

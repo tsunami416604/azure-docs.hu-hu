@@ -1,11 +1,11 @@
 ---
-title: "Terheléselosztó egyéni mintavételt segítségével állapot figyelése |} Microsoft Docs"
-description: "Ismerje meg, hogyan használható az Azure Load Balancer egyéni mintavételt terheléselosztó mögött példányok figyelése céljából"
+title: Terheléselosztó egyéni mintavételt segítségével állapot figyelése |} Microsoft Docs
+description: Ismerje meg, hogyan használható az Azure Load Balancer egyéni mintavételt terheléselosztó mögött példányok figyelése céljából
 services: load-balancer
 documentationcenter: na
 author: KumudD
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 46b152c5-6a27-4bfc-bea3-05de9ce06a57
 ms.service: load-balancer
@@ -15,15 +15,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/8/2018
 ms.author: kumud
-ms.openlocfilehash: be0359889f48f2fe16104f2bee5d1c85ab883b34
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 0aab72fdf48589a72707ae87f90af11f65f35088
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="understand-load-balancer-probes"></a>Terheléselosztó mintavételt ismertetése
-
-[!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
 
 Az Azure Load Balancer állapotteljesítmény alapján határozza meg, melyik háttér címkészletet példány új adatfolyamok kell kapniuk. Ha nem sikerül egy állapotmintáihoz, terheléselosztó leállítja az új forgalom küldése a megfelelő nem megfelelő állapotú példány, és meglévő forgalom azon a példányon nem érinti.  Háttér címkészletet példányainak mintavételi le, ha az összes meglévő forgalom lesz háttérkészlethez összes példánya túllépi az időkorlátot.
 

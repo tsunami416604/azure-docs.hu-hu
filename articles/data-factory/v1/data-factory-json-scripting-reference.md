@@ -1,11 +1,11 @@
 ---
-title: "Az Azure Data Factory - JSON-Parancsprogramokról |} Microsoft Docs"
-description: "JSON-sémákat biztosít a Data Factory-entitásokhoz."
+title: Az Azure Data Factory - JSON-Parancsprogramokról |} Microsoft Docs
+description: JSON-sémákat biztosít a Data Factory-entitásokhoz.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: sharonlo101
-manager: jhubbard
-editor: 
+manager: craigg
+editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 519a762e5f89533f4425d38e4a1ca76d8e3dd40f
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 198fa15b7ee8cce6781e6a2575844a9666185be9
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-data-factory---json-scripting-reference"></a>Az Azure Data Factory - JSON-Parancsprogramokról
 > [!NOTE]
@@ -493,13 +493,13 @@ Adja meg az Azure-Blob adatkészletet, állítsa be a **típus** a DataSet **Azu
 További információkért lásd: [Azure Blob összekötő](data-factory-azure-blob-connector.md#dataset-properties) cikk.
 
 ### <a name="blobsource-in-copy-activity"></a>A másolási tevékenység BlobSource
-Adatok másolása az Azure Blob-tárolóból, állítsa be a **adatforrástípust** a másolási tevékenység **BlobSource**, és adja meg a következő tulajdonságokat a ** forrás ** szakasz:
+Adatok másolása az Azure Blob-tárolóból, állítsa be a **adatforrástípust** a másolási tevékenység **BlobSource**, és adja meg a következő tulajdonságokat a **forrás** szakasz:
 
 | Tulajdonság | Leírás | Megengedett értékek | Szükséges |
 | --- | --- | --- | --- |
 | Rekurzív |Azt jelzi, hogy az adatok olvasható rekurzív módon az almappák vagy csak a megadott mappát. |TRUE hamis (alapértelmezés) |Nem |
 
-#### <a name="example-blobsource"></a>Példa: BlobSource **
+#### <a name="example-blobsource"></a>Példa: **BlobSource**
 ```json
 {
     "name": "SamplePipeline",
@@ -3898,7 +3898,7 @@ Egyszerű hitelesítést használ, állítsa be `authenticationType` , `Basic`, 
 }
 ```
 
-#### <a name="example-basic-authentication-with-encrypted-credential"></a>Példa: Egyszerű hitelesítést a titkosított hitelesítő adat **
+#### <a name="example-basic-authentication-with-encrypted-credential"></a>Példa: **titkosított hitelesítő adatokat az egyszerű hitelesítés**
 
 ```json
 {
@@ -3919,7 +3919,7 @@ Egyszerű hitelesítést használ, állítsa be `authenticationType` , `Basic`, 
 }
 ```
 
-#### <a name="using-ssh-public-key-authentication"></a>SSH nyilvános kulcsos hitelesítés használatával: **
+#### <a name="using-ssh-public-key-authentication"></a>**SSH nyilvános kulcsos hitelesítés használatával:**
 
 Egyszerű hitelesítést használ, állítsa be `authenticationType` , `SshPublicKey`, és adja meg az SFTP összekötő általános néhányat a meglévők közül az utolsó szakaszban bemutatott mellett az alábbi tulajdonságokat:
 
@@ -3949,7 +3949,7 @@ Egyszerű hitelesítést használ, állítsa be `authenticationType` , `SshPubli
 }
 ```
 
-#### <a name="example-sshpublickey-authentication-using-private-key-content"></a>Példa: Az SshPublicKey hitelesítés titkos kulcs tartalom **
+#### <a name="example-sshpublickey-authentication-using-private-key-content"></a>Példa: **SshPublicKey hitelesítés használata a titkos kulcs tartalmát**
 
 ```json
 {
@@ -4438,7 +4438,7 @@ Az ODBC meghatározásához társított szolgáltatás, állítsa be a **típus*
 | Tulajdonság | Leírás | Szükséges |
 | --- | --- | --- |
 | connectionString |A kapcsolati karakterlánc és egy opcionális titkosított hitelesítő adat nem hozzáférési hitelesítő adatok része. Példák az alábbi szakaszokban található. |Igen |
-| hitelesítő adatok |A hozzáférési hitelesítő adatok része illesztőprogram-specifikus tulajdonság-érték formátumban megadott kapcsolódási karakterlánc. Példa: "Uid =<user ID>; Pwd =<password>; RefreshToken =<secret refresh token>; ". |Nem |
+| hitelesítő adat |A hozzáférési hitelesítő adatok része illesztőprogram-specifikus tulajdonság-érték formátumban megadott kapcsolódási karakterlánc. Példa: "Uid =<user ID>; Pwd =<password>; RefreshToken =<secret refresh token>; ". |Nem |
 | authenticationType |Az ODBC-adattár eléréséhez használt hitelesítés típusa. Lehetséges értékek a következők: névtelen és alapvető. |Igen |
 | felhasználónév |Ha egyszerű hitelesítést használ, adja meg a felhasználónevet. |Nem |
 | jelszó |Adja meg a felhasználónévhez megadott felhasználói fiók jelszavát. |Nem |
@@ -4591,7 +4591,7 @@ A Salesforce meghatározásához társított szolgáltatás, állítsa be a **t�
 
 | Tulajdonság | Leírás | Szükséges |
 | --- | --- | --- |
-| environmentUrl | Adja meg az URL-címet a Salesforce-példány. <br><br> -Alapértelmezett érték a "https://login.salesforce.com". <br> -Adatok másolása az védőfal, adja meg a "https://test.salesforce.com". <br> -Adatok másolása az egyéni tartományt, adja meg, például "https://[domain].my.salesforce.com". |Nem |
+| environmentUrl | Adja meg az URL-címet a Salesforce-példány. <br><br> -Alapértelmezett érték "https://login.salesforce.com". <br> -Adatok másolása az védőfal, adja meg a "https://test.salesforce.com". <br> -Adatok másolása az egyéni tartományt, adja meg, például "https://[domain].my.salesforce.com". |Nem |
 | felhasználónév |Adja meg a felhasználói fiók felhasználói nevét. |Igen |
 | jelszó |Adja meg a felhasználói fiókhoz tartozó jelszót. |Igen |
 | securityToken |Adja meg a felhasználói fiók biztonsági jogkivonatot. Lásd: [biztonsági jogkivonatának beszerzéséhez](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm) útmutatást, ha alaphelyzetbe állítása/get egy biztonsági jogkivonatot. Általános biztonsági jogkivonatokat kapcsolatos további tudnivalókért lásd: [biztonsági és az API-t](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm). |Igen |

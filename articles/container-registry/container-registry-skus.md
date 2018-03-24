@@ -1,18 +1,18 @@
 ---
-title: "Azure-tárolót beállításjegyzék termékváltozatok"
-description: "Hasonlítsa össze a különböző szolgáltatásrétegeiben használt funkciókkal elérhető Azure tároló beállításjegyzékben."
+title: Azure-tárolót beállításjegyzék termékváltozatok
+description: Hasonlítsa össze a különböző szolgáltatásrétegeiben használt funkciókkal elérhető Azure tároló beállításjegyzékben.
 services: container-registry
 author: mmacy
 manager: timlt
 ms.service: container-registry
 ms.topic: article
-ms.date: 12/20/2017
+ms.date: 03/15/2018
 ms.author: marsma
-ms.openlocfilehash: 15179fa3e3567f92a5eae69ba9a684addc3138dd
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: c9b8e072b5ccd89c27d9c46407e472d6bf1e1e84
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-container-registry-skus"></a>Azure-tárolót beállításjegyzék termékváltozatok
 
@@ -37,11 +37,11 @@ A Basic, Standard és Premium termékváltozat összefoglaló néven *felügyelt
 
 ### <a name="managed-basic-standard-premium"></a>Felügyelt (Basic, Standard, Premium)
 
-Felügyelt nyilvántartó Azure által felügyelt Azure Storage-fiók üzemelnek. Ez azt jelenti, hogy a tárfiókot, amely tárolja a lemezképeket, nem jelenik meg az Azure-előfizetéshez belül. Több előnye is van a felügyelt beállításjegyzék termékváltozatok egyikével szerzett, a részletes ismertetése [egy klasszikus beállításjegyzék frissítése][container-registry-upgrade]. Ez a cikk a felügyelt beállításjegyzék termékváltozatok és azok képességeinek szolgál.
+Felügyelt nyilvántartó juttatás teljes mértékben az Azure által kezelt képtároláshoz. Ez azt jelenti, hogy a storage-fiók, amely tárolja a lemezképeket, nem jelenik meg az Azure-előfizetéshez belül. Több előnye is van a felügyelt beállításjegyzék termékváltozatok egyikével szerzett, a részletes ismertetése [tároló lemezkép tárolási Azure tároló beállításjegyzék][container-registry-storage]. Ez a cikk a felügyelt beállításjegyzék termékváltozatok és azok képességeinek szolgál.
 
 ### <a name="unmanaged-classic"></a>Nem felügyelt (klasszikus)
 
-Klasszikus nyilvántartó vannak "nem felügyelt" lehet, hogy a tárfiókot, amely a klasszikus beállításjegyzékbeli biztonsági belül helyezkedik el a *a* Azure-előfizetés. Ön felelősséggel tartozik a tárfiókot, az a tároló lemezképeket tároló kezelését. A nem felügyelt nyilvántartó, nem lehet átállítani a termékváltozatok közötti igényeinek módosítása (eltérő [frissítése] [ container-registry-upgrade] felügyelt beállításjegyzék), és több felügyelt nyilvántartó számára nem érhető el (például tároló lemezkép törlése, [georeplikáció] [ container-registry-geo-replication] és [webhookok][container-registry-webhook]).
+Klasszikus nyilvántartó vannak "nem felügyelt" lehet, hogy a tárfiókot, amely a klasszikus beállításjegyzékbeli biztonsági belül helyezkedik el a *a* Azure-előfizetés. Ön felelősséggel tartozik a tárfiókot, az a tároló lemezképeket tároló kezelését. A nem felügyelt nyilvántartó, nem lehet átállítani a termékváltozatok közötti igényeinek módosítása (eltérő [frissítése] [ container-registry-upgrade] felügyelt beállításjegyzék), és több felügyelt nyilvántartó számára nem érhető el (például tároló lemezkép törlése, [georeplikáció][container-registry-geo-replication], és [webhookok][container-registry-webhook]).
 
 Egy, a felügyelt SKU klasszikus beállításjegyzékbeli frissítésével kapcsolatos további információkért lásd: [egy klasszikus beállításjegyzék frissítése][container-registry-upgrade].
 
@@ -103,4 +103,5 @@ Küldje el, majd az új szolgáltatási javaslataikat szavazhatnak [ACR UserVoic
 [az-acr-update]: /cli/azure/acr#az_acr_update
 [container-registry-geo-replication]: container-registry-geo-replication.md
 [container-registry-upgrade]: container-registry-upgrade.md
+[container-registry-storage]: container-registry-storage.md
 [container-registry-webhook]: container-registry-webhook.md

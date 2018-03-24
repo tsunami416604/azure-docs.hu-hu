@@ -1,12 +1,12 @@
 ---
-title: "Azure AD Connect szinkronizálása: az Azure AD Connect szinkronizálási szolgáltatás fiók módosítása |} Microsoft Docs"
-description: "Ez a témakör a dokumentum útmutatást nyújt a titkosítási kulcsot és abandon azt a jelszó módosítása után."
+title: 'Azure AD Connect szinkronizálása: az Azure AD Connect szinkronizálási szolgáltatás fiók módosítása |} Microsoft Docs'
+description: Ez a témakör a dokumentum útmutatást nyújt a titkosítási kulcsot és abandon azt a jelszó módosítása után.
 services: active-directory
-keywords: "Azure AD sync szolgáltatás-fiók, jelszó"
-documentationcenter: 
+keywords: Azure AD sync szolgáltatás-fiók, jelszó
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 76b19162-8b16-4960-9e22-bd64e6675ecc
 ms.service: active-directory
 ms.workload: identity
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
-ms.openlocfilehash: c22dd91f236454c774c00371bff668da245d45c6
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: faa6d667b514563516c23e0484437ac9572e52b7
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="changing-the-azure-ad-connect-sync-service-account-password"></a>Az Azure AD Connect szinkronizálási szolgáltatásfiók jelszavának módosítása
 Ha módosítja a Azure AD Connect szinkronizálási szolgáltatás fiók jelszavát, a szinkronizálási szolgáltatás nem lesz képes start megfelelően félbehagyná a titkosítási kulcs, és újra lesz inicializálva a Azure AD Connect szinkronizálási szolgáltatás fiók jelszavát. 
@@ -30,7 +30,7 @@ A használt titkosítási kulcs használatával lett biztonságossá téve [Wind
 
 Ha a szolgáltatásfiók jelszavát módosítani kell az eljárásokkal [az Azure AD Connect szinkronizálási szolgáltatás titkosítási kulcs kivonásának](#abandoning-the-azure-ad-connect-sync-encryption-key) ehhez.  Ezekkel az eljárásokkal kell is használható, ha bármilyen okból a titkosítási kulcs abandon kell.
 
-##<a name="issues-that-arise-from-changing-the-password"></a>A jelszó módosításának felmerülő problémák
+## <a name="issues-that-arise-from-changing-the-password"></a>A jelszó módosításának felmerülő problémák
 Két dolgot kell elvégezni, ha módosítja a szolgáltatás fiók jelszavát.
 
 Először módosítani szeretné a jelszó alapján a Windows szolgáltatásvezérlő kezelőjétől.  A probléma megoldásáig jelenik meg a következő hibák:
@@ -72,9 +72,9 @@ A meglévő titkosítási kulcs Abandon, így az új titkosítási kulcs is lét
 
 2. Indítson el egy új PowerShell-munkamenetet.
 
-3. Navigáljon a következő mappához:`$env:Program Files\Microsoft Azure AD Sync\bin\`
+3. Navigáljon a következő mappához: `$env:Program Files\Microsoft Azure AD Sync\bin\`
 
-4. Futtassa a parancsot:`./miiskmu.exe /a`
+4. Futtassa a parancsot: `./miiskmu.exe /a`
 
 ![Az Azure AD Connect Sync titkosítási kulcs segédprogram](media/active-directory-aadconnectsync-encryption-key/key5.png)
 

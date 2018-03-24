@@ -1,8 +1,8 @@
 ---
-title: "Az IoT-megoldás létrehozása a Stream Analytics segítségével |} Microsoft Docs"
-description: "A Stream Analytics IoT-megoldás az őrbódét forgatókönyv-bevezető oktatóanyag"
-keywords: "IOT-megoldás, ablakban funkciók"
-documentationcenter: 
+title: Az IoT-megoldás létrehozása a Stream Analytics segítségével |} Microsoft Docs
+description: A Stream Analytics IoT-megoldás az őrbódét forgatókönyv-bevezető oktatóanyag
+keywords: IOT-megoldás, ablakban funkciók
+documentationcenter: ''
 services: stream-analytics
 author: SnehaGunda
 manager: kfile
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 01/12/2018
+ms.date: 03/21/2018
 ms.author: sngun
-ms.openlocfilehash: cc84a34a410a750ddf2acb8f19b3bb809d269098
-ms.sourcegitcommit: a0d2423f1f277516ab2a15fe26afbc3db2f66e33
+ms.openlocfilehash: 6ee2c1c4b1255b462f2974c111e626d62608de5c
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="build-an-iot-solution-by-using-stream-analytics"></a>Az IoT-megoldás létrehozása a Stream Analytics segítségével
 
@@ -41,8 +41,7 @@ Szüksége lesz az oktatóanyag elvégzéséhez a következő előfeltételek te
 * A Visual Studio 2017, 2015, vagy az ingyenes [Visual Studio Community](https://www.visualstudio.com/products/visual-studio-community-vs.aspx)
 * Egy [Azure-előfizetés](https://azure.microsoft.com/pricing/free-trial/)
 * Rendszergazdai jogosultságokkal azon a számítógépen
-* Töltse le a [TollApp.zip](https://github.com/Azure/azure-stream-analytics/blob/master/Samples/TollApp/TollApp.zip) a Microsoft letöltőközpontból
-* Választható lehetőség: Forráskód a TollApp esemény generátor a [GitHub](https://aka.ms/azure-stream-analytics-toll-source)
+* Töltse le a forráskód TollApp érzékelő adatelemzés a a [azure-adatfolyam-analytics GitHub-tárházban.](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/TollApp). Ebben a tárházban mintaadatok és lekérdezéseket, amelyekkel a következő szakaszokban lévő tartalmazza. 
 
 ## <a name="scenario-introduction-hello-toll"></a>A forgatókönyv bevezető: "Hello, téren!"
 Téren állomás egy közös jelenség. Tapasztal őket több gyorsforgalmi, hidak és alagutakon keresztül történik. Minden téren állomás van több téren fülkéit foglalja magában. A manuális fülkéit foglalja magában le kell fizetnie a téren egy kísérő. Automatikus fülkéit foglalja magában: felett minden kiállítási érzékelő megvizsgálja egy RFID kártya, amely, ha a téren kiállítási, a vehicle szélvédőkeret rögzítettek. Akkor is könnyen egy esemény adatfolyamként, amelyben érdekes művelet végrehajtható ezen a téren állomások keresztül járművekről gyűjtött áthaladását megjelenítéséhez.

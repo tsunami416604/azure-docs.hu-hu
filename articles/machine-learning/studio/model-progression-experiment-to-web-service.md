@@ -1,10 +1,11 @@
 ---
-title: "Hogyan az Azure Machine Learning modell válik egy webszolgáltatás-bővítmény |} Microsoft Docs"
-description: "A beállítás esetén milyen az Azure Machine Learning modell történik a fejlesztői kísérletezhet az operationalized webszolgáltatásnak áttekintése."
+title: Hogyan az Azure Machine Learning modell válik egy webszolgáltatás-bővítmény |} Microsoft Docs
+description: A beállítás esetén milyen az Azure Machine Learning modell történik a fejlesztői kísérletezhet az operationalized webszolgáltatásnak áttekintése.
 services: machine-learning
-documentationcenter: 
-author: garyericson
-manager: jhubbard
+documentationcenter: ''
+author: YasinMSFT
+ms.author: yahajiza
+manager: hjerez
 editor: cgronlun
 ms.assetid: 25e0c025-f8b0-44ab-beaf-d0f2d485eb91
 ms.service: machine-learning
@@ -13,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.author: garye
-ms.openlocfilehash: 383f0a466f92a230e49c3d1e96d306a0b7d67da2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f36c8cf68c707e4472fd1779044a64e7f9f4c004
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="how-a-machine-learning-model-progresses-from-an-experiment-to-an-operationalized-web-service"></a>Hogyan gépi tanulási modell megfelelően egy kísérlet egy operationalized webszolgáltatás
 Az Azure Machine Learning Studio biztosít egy interaktív vászonra, amely lehetővé teszi a fejlesztés, futtassa, tesztelése és többször egy ***kísérletezhet*** képviselő prediktív elemzési modellek. Nincsenek modullistából, amelyek számos:
@@ -98,7 +98,7 @@ Példa: Tegyük fel, hogy a prediktív kísérletté a teljes sor a bemeneti ada
 
 Ha meg szeretné tartani a gépi tanulási a modell, de új adatokkal újratanítása azt szeretné, két lehetősége van:
 
-1. **A modell újratanítása, miközben fut a webes szolgáltatás** -kívánja a modell működik, a prediktív webes szolgáltatás futása közben, ha ehhez azáltal, hogy a tanítási kísérletet, hogy néhány módosításait egy ***kísérlet átképezési***, ezután telepítheti azt egy  ***megőrzési webes* szolgáltatás**. Ennek módjáról, lásd: [Machine Learning-modellek szoftveres](retrain-models-programmatically.md).
+1. **A modell újratanítása, miközben fut a webes szolgáltatás** -Ha a modell működik, a prediktív webes szolgáltatás futása közben, ehhez azáltal, hogy a tanítási kísérletet, hogy néhány módosításait egy ***átképezési kísérletezhet***, majd telepítheti azt egy  ***megőrzési webes* szolgáltatás**. Ennek módjáról, lásd: [Machine Learning-modellek szoftveres](retrain-models-programmatically.md).
 2. **Lépjen vissza az eredeti tanítási kísérletet, és különböző betanítási adatok segítségével a modellezése** – a prediktív kísérletté csatolva van a webszolgáltatás, de ezzel a módszerrel nem közvetlenül kapcsolódik a tanítási kísérletet. Ha módosítja az eredeti tanítási kísérletet, és kattintson **webes szolgáltatások beállítása**, az létrehoz egy *új* prediktív kísérletezhet, amellyel telepítésekor létrehoz egy *új* webszolgáltatás. Csak az eredeti webszolgáltatás nem frissíti.
    
    Ha módosítania kell a tanítási kísérletet, nyissa meg, majd kattintson a **Mentés másként** másolatot. Ezzel az eredeti tanítási kísérletet, prediktív kísérletté érintetlenül és webes szolgáltatás. Létrehozhat egy új webszolgáltatás-bővítmény most a módosításokat. Miután a Ezután eldöntheti, hogy az előző webes szolgáltatás leállítása vagy működése érdekében együtt egy új webszolgáltatás telepítése után.
@@ -107,7 +107,7 @@ Ha meg szeretné tartani a gépi tanulási a modell, de új adatokkal újrataní
 
 Ha szeretné módosítani az eredeti prediktív kísérletté, például a különböző gépi tanulási algoritmus kiválasztása próbált egy másik képzési metódus stb., majd kövesse a második eljárás a modell átképezési fent ismertetett: Nyissa meg a tanítási kísérletet, kattintson **Mentés másként** készítsen egy másolatot, és indítsa el az új elérési utat a modell fejlődő le , a prediktív kísérletté létrehozása, és a webszolgáltatás telepítése. Ezzel létrehoz egy új webhely, az eredetihez - szolgáltatás egymástól független eldöntheti, melyik, vagy mindkettőt, tovább futnak.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A folyamat fejlesztése és kísérlet a további részletekért lásd: a következő cikkeket:
 
 * a kísérlet - átalakítás [a modell Azure Machine Learning Studio központi telepítésének előkészítése](convert-training-experiment-to-scoring-experiment.md)

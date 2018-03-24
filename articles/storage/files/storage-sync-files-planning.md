@@ -1,8 +1,8 @@
 ---
-title: "Egy Azure fájlszinkronizálás (előzetes verzió) telepítésének tervezése |} Microsoft Docs"
-description: "További tudnivalók az Azure-fájlok központi telepítésének tervezése során megfontolandó tényezőkről."
+title: Egy Azure fájlszinkronizálás (előzetes verzió) telepítésének tervezése |} Microsoft Docs
+description: További tudnivalók az Azure-fájlok központi telepítésének tervezése során megfontolandó tényezőkről.
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: wmgries
 manager: klaasl
 editor: jgerend
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2017
 ms.author: wgries
-ms.openlocfilehash: 5f42bee31e3bc1a23c9b0c6de9d6748e23c94713
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 097c1719ffc493539276cd98edc761eba20f3751
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="planning-for-an-azure-file-sync-preview-deployment"></a>Egy Azure fájlszinkronizálás (előzetes verzió) telepítésének tervezése
 Sync szolgáltatás használatával Azure fájl (előzetes verzió) központosítása fájlmegosztások a szervezet Azure fájlokban, ugyanakkor változatlanul megőrizze a rugalmasság, a teljesítmény és a kompatibilitási egy helyszíni fájlkiszolgáló. Azure fájlszinkronizálás átalakítja a Windows Server az Azure fájlmegosztás gyors gyorsítótárába. Minden protokoll, amely a Windows Server helyileg, az adatok eléréséhez használhatja, többek között a ftps-t, SMB és NFS. Akkor is annyi gyorsítótárak világszerte szükség szerint.
@@ -160,9 +160,14 @@ Az Azure fájlszinkronizálás csak a következő régiókban Preview érhető e
 |--------|---------------------|
 | Kelet-Ausztrália | Új-Dél-Wales |
 | Közép-Kanada | Toronto |
+| USA középső régiója | Iowa |
+| Kelet-Ázsia | Hongkong |
 | USA keleti régiója | Virginia |
+| Kelet-US2 | Virginia |
+| Észak-Európa | Írország |
 | Délkelet-Ázsia | Szingapúr |
 | Az Egyesült Királyság déli régiója | London |
+| USA nyugati régiója Cental |
 | Nyugat-Európa | Hollandia |
 | USA nyugati régiója | Kalifornia |
 

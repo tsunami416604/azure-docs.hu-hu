@@ -1,6 +1,6 @@
 ---
-title: "Azure Automation hibrid forgatókönyv-feldolgozót a runbookot"
-description: "Ez a cikk tájékoztatást ad azokról a helyi adatközpontban, illetve a hibrid forgatókönyv-feldolgozó szerepkörrel rendelkező felhőszolgáltatóként gépeken futó runbookok."
+title: Azure Automation hibrid forgatókönyv-feldolgozót a runbookot
+description: Ez a cikk tájékoztatást ad azokról a helyi adatközpontban, illetve a hibrid forgatókönyv-feldolgozó szerepkörrel rendelkező felhőszolgáltatóként gépeken futó runbookok.
 services: automation
 ms.service: automation
 author: georgewallace
@@ -8,13 +8,11 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.devlang: na
-ms.tgt_pltfrm: na
-ms.openlocfilehash: 6e1e6272009b4357162339643580f3d31dc6062e
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 4a334b63856a348838cbe61dfc0ab724f58100fb
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>A hibrid forgatókönyv-feldolgozók a futó runbookot 
 Nincs különbség a futó Azure Automation és a hibrid forgatókönyv-feldolgozót a futó runbookok struktúrában. Az összes használt Runbookok valószínűleg jelentős különbség azonban mivel a hibrid forgatókönyv-feldolgozók általában célzó runbookok kezelheti az erőforrásokat a helyi számítógép vagy a helyi környezetben, ahol központilag telepítették, a runbookok közben erőforrásokon Azure Automation szolgáltatásbeli általában az Azure felhőalapú erőforrások kezelésére.

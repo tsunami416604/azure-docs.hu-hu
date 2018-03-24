@@ -1,24 +1,21 @@
 ---
-title: "Az Azure Active Directory B2C: Integrálása az Azure AD B2C felhasználói út a REST API jogcím cseréje, felhasználói bevitel ellenőrzése"
-description: "REST API jogcím cseréje a Azure AD B2C felhasználói használatában az integrálását, felhasználói bevitel ellenőrzése."
+title: 'Az Azure Active Directory B2C: Integrálása az Azure AD B2C felhasználói út a REST API jogcím cseréje, felhasználói bevitel ellenőrzése'
+description: REST API jogcím cseréje a Azure AD B2C felhasználói használatában az integrálását, felhasználói bevitel ellenőrzése.
 services: active-directory-b2c
-documentationcenter: 
-author: yoelhor
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: 
-ms.assetid: 
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.devlang: na
 ms.date: 09/30/2017
-ms.author: yoelh
-ms.openlocfilehash: fd9c95ae78590aa772fde10c8c80914c905767a8
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.author: davidmu
+ms.openlocfilehash: 9429f690940e1282d94b4d67ad1c618a24655cb5
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-validation-of-user-input"></a>Az Azure AD B2C felhasználói út a REST API jogcímek cseréjét integrálása, felhasználói bevitel ellenőrzése
 A identitás élmény keretrendszerrel, amelynek alapjául szolgáló Azure Active Directory B2C (az Azure AD B2C), integrálható egy RESTful API-nak felhasználói út. Ez a forgatókönyv megtudhatja, hogyan kommunikál az Azure AD B2C .NET-keretrendszer RESTful szolgáltatás (webes API-k).
@@ -249,8 +246,8 @@ A jogcím-szolgáltató különböző okokból rendelkezhet több műszaki profi
 A következő XML-részletet két műszaki profil a jogcímeket szolgáltató csomópontokat tartalmazza:
 
 * **TechnicalProfile Id="REST-API-SignUp"**: Defines your RESTful service. 
-   * `Proprietary`leírt protokollt a RESTful-alapú szolgáltató. 
-   * `InputClaims`határozza meg a jogcímeket, amely a REST-szolgáltatást az Azure AD B2C kapnak. 
+   * `Proprietary` leírt protokollt a RESTful-alapú szolgáltató. 
+   * `InputClaims` határozza meg a jogcímeket, amely a REST-szolgáltatást az Azure AD B2C kapnak. 
 
    Ebben a példában a tartalom a jogcím `givenName` küld a többi szolgáltatás `firstName`, a tartalom a jogcím `surname` küld a többi szolgáltatás `lastName`, és `email` esetben van. A `OutputClaims` elem definiálja a jogcímeket a rendszer beolvassa az RESTful szolgáltatás vissza az Azure AD B2C.
 

@@ -1,24 +1,24 @@
 ---
-title: "Windows Azure Virtuálisgép-lemezképek létrehozása a csomagoló |} Microsoft Docs"
-description: "Csomagoló használata Windows virtuális gépek létrehozását az Azure-ban"
+title: Windows Azure Virtuálisgép-lemezképek létrehozása a csomagoló |} Microsoft Docs
+description: Csomagoló használata Windows virtuális gépek létrehozását az Azure-ban
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: iainfoulds
 manager: timlt
 editor: tysonn
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 12/18/2017
 ms.author: iainfou
-ms.openlocfilehash: b5030e12743ca81b74502e31767eb6b2e05e444f
-ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
+ms.openlocfilehash: b53b301a45fb7482aa05f24b386b79fcedc148e2
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="how-to-use-packer-to-create-windows-virtual-machine-images-in-azure"></a>Windows virtuális gép képek létrehozása az Azure-ban a csomagoló segítségével
 Minden virtuális gép (VM) az Azure-ban, amely meghatározza a Windows terjesztési és az operációs rendszer verziója lemezkép jön létre. Lemezképek előre telepített alkalmazások és konfigurációk tartalmazhatnak. Az Azure piactéren sok első és a külső képek biztosít a leggyakrabban használt operációs rendszer, és alkalmazás környezetekben, vagy a saját egyéni lemezképek igényeinek igazított hozhat létre. Ez a cikk részletesen a nyílt forráskódú eszköz [csomagoló](https://www.packer.io/) definiálására és egyéni lemezképeket az Azure-ban.
@@ -27,7 +27,7 @@ Minden virtuális gép (VM) az Azure-ban, amely meghatározza a Windows terjeszt
 ## <a name="create-azure-resource-group"></a>Azure erőforráscsoport létrehozása
 A létrehozási folyamat során a csomagoló ideiglenes Azure-erőforrások létrehozza a, a forrás Virtuálisgép-buildekről nyújtanak. A forrás virtuális gép képként rögzíti, meg kell határoznia egy erőforráscsoportot. Ez az erőforráscsoport tárolja a csomagoló felépítési folyamat kimenetét.
 
-Hozzon létre egy erőforráscsoportot a [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup). Az alábbi példa létrehoz egy erőforráscsoportot *myResourceGroup* a a *eastus* helye:
+Hozzon létre egy erőforráscsoportot a [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup). A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *EastUS* helyen:
 
 ```powershell
 $rgName = "myResourceGroup"
@@ -59,17 +59,17 @@ A két azonosító használja a következő lépésben.
 
 
 ## <a name="define-packer-template"></a>Adja meg a csomagoló sablon
-Lemezképeket, létrehozhat egy sablon JSON-fájlként. A sablon megadása a létrehozói és a tényleges felépítési folyamat végrehajtott provisioners. Csomagoló rendelkezik egy [Azure webhelykiépítőt](https://www.packer.io/docs/builders/azure.html) , amely lehetővé teszi, hogy adható meg az Azure-erőforrások, például a szolgáltatás egyszerű létrehozott hitelesítő adatok az előző lépésben.
+Lemezképeket, létrehozhat egy sablon JSON-fájlként. A sablon megadása a létrehozói és a tényleges felépítési folyamat végrehajtott provisioners. Csomagoló rendelkezik egy [az Azure-szerkesztő](https://www.packer.io/docs/builders/azure.html) , amely lehetővé teszi, hogy adható meg az Azure-erőforrások, például a szolgáltatás egyszerű létrehozott hitelesítő adatok az előző lépésben.
 
 Hozzon létre egy fájlt *windows.json* , majd illessze be a következő tartalmat. Adja meg a saját értékeket a következő:
 
 | Paraméter                           | Beszerzési helyét |
 |-------------------------------------|----------------------------------------------------|
-| *client_id*                         | Nézet szolgáltatás résztvevő-azonosító az`$sp.applicationId` |
-| *client_secret*                     | A megadott jelszó`$securePassword` |
+| *client_id*                         | Nézet szolgáltatás résztvevő-azonosító az `$sp.applicationId` |
+| *client_secret*                     | A megadott jelszó `$securePassword` |
 | *tenant_id*                         | A kimeneti `$sub.TenantId` parancs |
-| *ELŐFIZETÉS_AZONOSÍTÓJA*                   | A kimeneti `$sub.SubscriptionId` parancs |
-| *object_id*                         | A nézet szolgáltatás egyszerű objektum azonosítója:`$sp.Id` |
+| *subscription_id*                   | A kimeneti `$sub.SubscriptionId` parancs |
+| *object_id*                         | A nézet szolgáltatás egyszerű objektum azonosítója: `$sp.Id` |
 | *managed_image_resource_group_name* | Az első lépésben létrehozott erőforráscsoport nevét |
 | *managed_image_name*                | A felügyelt lemezképe létrehozott nevét |
 
@@ -110,8 +110,8 @@ Hozzon létre egy fájlt *windows.json* , majd illessze be a következő tartalm
     "type": "powershell",
     "inline": [
       "Add-WindowsFeature Web-Server",
-      "if( Test-Path $Env:SystemRoot\\windows\\system32\\Sysprep\\unattend.xml ){ rm $Env:SystemRoot\\windows\\system32\\Sysprep\\unattend.xml -Force}",
-      "& $Env:SystemRoot\\System32\\Sysprep\\Sysprep.exe /oobe /generalize /shutdown /quiet"
+      "& $env:SystemRoot\\System32\\Sysprep\\Sysprep.exe /oobe /generalize /quiet /quit",
+      "while($true) { $imageState = Get-ItemProperty HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Setup\\State | Select ImageState; if($imageState.ImageState -ne 'IMAGE_STATE_GENERALIZE_RESEAL_TO_OOBE') { Write-Output $imageState.ImageState; Start-Sleep -s 10  } else { break } }"
     ]
   }]
 }
@@ -281,7 +281,7 @@ A csomagoló lemezképből a virtuális gép létrehozásához néhány percet v
 
 
 ## <a name="test-vm-and-iis"></a>Virtuális gép és az IIS tesztelése
-A nyilvános IP-címet a virtuális gép az beszerzése [Get-AzureRmPublicIPAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress). Az alábbi példa beolvassa az IP-címek *myPublicIP* korábban létrehozott:
+Kérje le a virtuális gép nyilvános IP-címét a [Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) paranccsal. A következő példa a korábban létrehozott *myPublicIP* IP-címét kéri le:
 
 ```powershell
 Get-AzureRmPublicIPAddress `
@@ -289,7 +289,7 @@ Get-AzureRmPublicIPAddress `
     -Name "myPublicIP" | select "IpAddress"
 ```
 
-Beírhatja a nyilvános IP-címet a webböngésző.
+A nyilvános IP-címet beírhatja egy böngészőbe.
 
 ![Alapértelmezett IIS-webhely](./media/build-image-with-packer/iis.png) 
 

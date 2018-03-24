@@ -1,10 +1,10 @@
 ---
-title: "Az Azure SDK for .NET 3.0-s kibocsátási megjegyzései |} Microsoft Docs"
-description: "Az Azure SDK for .NET 3.0 kibocsátási megjegyzések"
+title: Az Azure SDK for .NET 3.0-s kibocsátási megjegyzései |} Microsoft Docs
+description: Az Azure SDK for .NET 3.0 kibocsátási megjegyzések
 services: app-service\web
 documentationcenter: .net
 author: chrissfanos
-editor: 
+editor: ''
 ms.assetid: c83d815b-fc19-4260-821e-7d2a7206dffc
 ms.service: app-service
 ms.devlang: multiple
@@ -13,23 +13,23 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 03/07/2017
 ms.author: juliako
-ms.openlocfilehash: eea4e569ac2d0192ed7872d2fcb9bed03614832b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 207aa137b25e44baf73e7f481ebc8b6362dfa245
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-sdk-for-net-30-release-notes"></a>Az Azure SDK for .NET 3.0 kibocsátási megjegyzései
 
 Ez a témakör fontos tudnivalók az Azure SDK 3.0-s verziójának a .NET-keretrendszerhez készült.
 
-##<a name="azure-sdk-for-net-30-release-summary"></a>Az Azure SDK .NET 3.0 kiadás összefoglaló
+## <a name="azure-sdk-for-net-30-release-summary"></a>Az Azure SDK .NET 3.0 kiadás összefoglaló
 
 Kiadás dátuma: 03/07/2017
  
 Ebben a kiadásban nincs jelentős változásokat az Azure SDK 3.0 vezettek be. Nem szükséges az SDK-val meglévő Felhőszolgáltatás-projektek kihasználhatják frissítési folyamat is van. Ahhoz, hogy az Azure SDK 3.0 használatát anélkül, hogy a frissítési folyamat, Azure SDK 3.0-s telepítése az Azure SDK 2.9 mint ugyanazon könyvtárak. Leggyakrabban az összetevők 2.9 a fő verziószáma nem változott, de ehelyett frissítése a buildszáma.
 
-## <a name="visual-studio-2017-rtw"></a>A Visual Studio 2017 RTW
+## <a name="visual-studio-2017-rtw"></a>Visual Studio 2017 RTW
 
 - A Visual Studio 2017 ebben a kiadásban az Azure SDK for .NET-t az Azure-alkalmazások. Minden eszköz a végre kell hajtani az Azure fejlesztési továbbítja a Visual Studio 2017 része lesz. A Visual Studio 2015 az SDK-t továbbra is elérhetők WebPI keresztül. A Microsoft megszüntetése Azure SDK .NET kiadásokban a Visual Studio 2013 most, hogy a Visual Studio 2017 kiadása.
 

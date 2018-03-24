@@ -1,24 +1,24 @@
 ---
-title: "Összekötő Verziókiadások |} Microsoft Docs"
-description: "Ez a témakör az összekötők összes kiadásaiban a Forefront Identity Manager (FIM) és a Microsoft Identity Manager (MIM)"
+title: Összekötő Verziókiadások |} Microsoft Docs
+description: Ez a témakör az összekötők összes kiadásaiban a Forefront Identity Manager (FIM) és a Microsoft Identity Manager (MIM)
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 6a0c66ab-55df-4669-a0c7-1fe1a091a7f9
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/06/2017
-ms.author: billmath
-ms.openlocfilehash: 5b43284a86a7e5d4cdbf50a29d73f970c9ad9d58
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.date: 03/22/2018
+ms.author: davidste
+ms.openlocfilehash: 5b13338646abda7eefec44c42dc0159e9338adfa
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="connector-version-release-history"></a>Összekötő verziókiadásai
 Az összekötők a Forefront Identity Manager (FIM) és a Microsoft Identity Manager (MIM) gyakran frissül.
@@ -34,9 +34,26 @@ Kapcsolódó hivatkozások:
 * [Töltse le a legfrissebb összekötők](http://go.microsoft.com/fwlink/?LinkId=717495)
 * [Általános LDAP-összekötő](active-directory-aadconnectsync-connector-genericldap.md) dokumentáció
 * [Általános SQL-összekötő](active-directory-aadconnectsync-connector-genericsql.md) dokumentáció
-* [Webalkalmazás-Services-összekötő](http://go.microsoft.com/fwlink/?LinkID=226245) dokumentáció
+* [Webalkalmazás-Services-összekötő](https://docs.microsoft.com/en-us/microsoft-identity-manager/reference/microsoft-identity-manager-2016-ma-ws) dokumentáció
 * [PowerShell-összekötő](active-directory-aadconnectsync-connector-powershell.md) dokumentáció
 * [Lotus Domino-összekötő](active-directory-aadconnectsync-connector-domino.md) dokumentáció
+
+
+## <a name="118300"></a>1.1.830.0
+
+### <a name="fixed-issues"></a>Javított problémák:
+* Megoldott ConnectorsLog System.Diagnostics.EventLogInternal.InternalWriteEvent(Message: A device attached to the system is not functioning)
+* Ebben a kiadásban összekötők kell kötés irányítja át a felhasználókat 3.3.0.0-4.1.3.0 a miiserver.exe.config 4.1.4.0 frissítése
+* Általános webszolgáltatások:
+    * Megoldott érvényes JSON-válasz nem lehet menteni a konfigurációs eszközt
+* Generic SQL:
+    * Exportálás mindig törlésével a művelet csak frissítés lekérdezés állít elő. A delete lekérdezés létrehozásához hozzá
+    * Az SQL-lekérdezést, amely lekérdezi objektumok különbözeti importálás működéséhez, ha "Különbözeti stratégia" változások követése rögzített volt. Ebben az implementációban ismert korlátozás: a változások követése mód különbözeti importálás nem többértékű attribútumok változásainak követése
+    * A hozzáadott lehetőségét esetben törlő lekérdezés generáljon többértékű attribútum utolsó értékét törölni kell, és a sor nem tartalmaz értéket, amelyet törölni kell kivételével bármely egyéb adatot.
+    * Mikor kezelése System.ArgumentException végrehajtott SP által a kimeneti paraméterek 
+    * Ha a műveletet exportálás mezőbe, amely a varbinary(max) típusú helytelen lekérdezés
+    * Probléma parameterList változóval kétszer (a ExportAttributes és GetQueryForMultiValue funkciók) inicializálása
+
 
 ## <a name="116490-aadconnect-116490"></a>1.1.649.0 (AADConnect 1.1.649.0)
 
@@ -79,7 +96,9 @@ Kapcsolódó hivatkozások:
 * Általános webszolgáltatások:
   * A Wsconfig eszköz nem megfelelő átalakítani a Json-tömb, a "kérelemmintát" a többi metódust. A Json-tömb, a többi kéréshez ennek oka a szerializálás problémákat.
   * Web Service Connector konfigurációs eszköz nem támogatja a hely szimbólumok használata a JSON-attribútum neve 
-    * A behelyettesítések is manuálisan hozzáadni az WSConfigTool.exe.config fájlra, pl.```<appSettings> <add key=”JSONSpaceNamePattern” value="__" /> </appSettings>```
+    * A behelyettesítések is manuálisan hozzáadni az WSConfigTool.exe.config fájlra, pl. ```<appSettings> <add key=”JSONSpaceNamePattern” value="__" /> </appSettings>```
+> [!NOTE]
+> JSONSpaceNamePattern kulcsra szükség, mivel az exportált a következő hibaüzenet fog megjelenni: üzenet: üres a név nem lehet. 
 
 * Lotus Notes:
   * Ha a beállítás **lehetővé teszik egyéni képesítést adók engedélyezése a szervezet vagy szervezeti egység** le van tiltva, akkor az összekötő nem tud exportálásakor (frissítés), miután az Exportálás flow attribútumainak Domino exportálják, de exportálás időpontjában egy KeyNotFoundException szinkronizálási visszakerül. 

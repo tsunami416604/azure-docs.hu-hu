@@ -1,6 +1,6 @@
 ---
-title: "Oktatóanyag: Azure Active Directoryval integrált SAP Cloud Platform |} Microsoft Docs"
-description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és az SAP Cloud Platform között."
+title: 'Oktatóanyag: Azure Active Directoryval integrált SAP Cloud Platform |} Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és az SAP Cloud Platform között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: jeedes
-ms.openlocfilehash: 309415a68308943f638195303ceb236569519472
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: a578a732efa3d2b91240ef0f4c02670aea8e547f
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-cloud-platform"></a>Oktatóanyag: Azure Active Directoryval integrált SAP Cloud Platform
 
@@ -111,7 +111,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Az egyszeri bejelentkezés információkat SAP felhő Platform tartomány és az URL-címek](./media/active-directory-saas-sap-hana-cloud-platform-tutorial/tutorial_sapcloudplatform_url.png)
 
-    a. Az a **URL-cím bejelentkezési** szövegmező, írja be az URL-cím segítségével a felhasználók jelentkezzen be a **SAP Cloud Platform** alkalmazás. Ez az a fiók-specifikus az SAP Cloud Platform alkalmazásban védett erőforrás URL-CÍMÉT. Az URL-cím a következő mintát alapul:`https://<applicationName><accountName>.<landscape host>.ondemand.com/<path_to_protected_resource>`
+    a. Az a **URL-cím bejelentkezési** szövegmező, írja be az URL-cím segítségével a felhasználók jelentkezzen be a **SAP Cloud Platform** alkalmazás. Ez az a fiók-specifikus az SAP Cloud Platform alkalmazásban védett erőforrás URL-CÍMÉT. Az URL-cím a következő mintát alapul: `https://<applicationName><accountName>.<landscape host>.ondemand.com/<path_to_protected_resource>`
       
      >[!NOTE]
      >Ez az URL-CÍMÉT, amelyhez a felhasználó hitelesítésére az SAP Cloud Platform alkalmazásban.
@@ -159,7 +159,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
 7. Kattintson a **megbízható** fülre.
    
-    ![Megbízható](./media/active-directory-saas-sap-hana-cloud-platform-tutorial/ic790800.png "megbízhatóság")
+    ![Trust](./media/active-directory-saas-sap-hana-cloud-platform-tutorial/ic790800.png "Trust")
 
 8. A megbízható felügyeleti csoportban a **helyi szolgáltató**, hajtsa végre a következő lépéseket:
 
@@ -218,7 +218,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
     | --- | --- |
     | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname` |Utónév |
     | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname` |Vezetéknév |
-    | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` |e-mailben |
+    | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` |e-mail |
    
      >[!NOTE]
      >A konfiguráció az attribútumok attól függ, hogyan a szolgáltatáskapcsolódási pont alkalmazás(ok) fejlesztett, ez azt jelenti, hogy mely attribútum(ok) a SAML-válasz várható, és milyen néven (egyszerű attribútum) hozzáféréskor ezt az attribútumot a kódot.
@@ -228,7 +228,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
  
     c. A nevek és értékek **egyszerű attribútum** a képernyőfelvételen látható módon az alkalmazás fejlesztése hogyan függ. Akkor lehet, hogy az alkalmazás által igényelt különböző leképezéseket.
 
-###<a name="assertion-based-groups"></a>Csoportok helyességi feltétel alapján
+### <a name="assertion-based-groups"></a>Csoportok helyességi feltétel alapján
 
 Egy nem kötelező lépés konfigurálható az Azure Active Directory identitásszolgáltató csoportok helyességi feltétel alapján.
 

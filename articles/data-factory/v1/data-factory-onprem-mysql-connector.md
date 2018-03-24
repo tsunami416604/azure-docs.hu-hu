@@ -1,11 +1,10 @@
 ---
-title: "Adatok áthelyezése az Azure Data Factory használatával MySQL |} Microsoft Docs"
-description: "Tudnivalók az adatok áthelyezése az Azure Data Factory használatával MySQL-adatbázisból."
+title: Adatok áthelyezése az Azure Data Factory használatával MySQL |} Microsoft Docs
+description: Tudnivalók az adatok áthelyezése az Azure Data Factory használatával MySQL-adatbázisból.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: monicar
+manager: craigg
 ms.assetid: 452f4fce-9eb5-40a0-92f8-1e98691bea4c
 ms.service: data-factory
 ms.workload: data-services
@@ -15,11 +14,11 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: f04a3b8c7bb744e3a9d539f6d3a392bc59702758
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 685998729e9aa01f60c80735b5f2f4d278769bdb
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="move-data-from-mysql-using-azure-data-factory"></a>Helyezze át az adatokat a MySQL Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -312,13 +311,13 @@ Ha az adatok áthelyezése a MySQL, .NET típusú a következő megfeleltetések
 | dátum/idő |Dátum és idő |
 | Decimális |Decimális |
 | a kétszeres pontosság |Dupla |
-| duplaszó |Dupla |
+| Dupla |Dupla |
 | Enum |Karakterlánc |
-| lebegőpontos |Egyedülálló |
+| Lebegőpontos |Egyedülálló |
 | aláíratlan int |Int64 |
 | int |Int32 |
 | aláíratlan egész szám |Int64 |
-| egész szám |Int32 |
+| integer |Int32 |
 | hosszú varbinary |Byte] |
 | hosszú varchar |Karakterlánc |
 | longblob |Byte] |

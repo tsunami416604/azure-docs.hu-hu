@@ -1,11 +1,11 @@
 ---
-title: "Informatikai Management-összekötő az Azure Naplóelemzés szolgáltatás |} Microsoft Docs"
-description: "Ez a cikk áttekintést IT Service Management Connector (ITSMC), és ez a megoldás segítségével központilag figyelheti és kezelheti a ITSM információ az Azure Log Analytics-munkaelemek, és gyorsan hárítson el minden problémát."
+title: Informatikai Management-összekötő az Azure Naplóelemzés szolgáltatás |} Microsoft Docs
+description: Ez a cikk áttekintést IT Service Management Connector (ITSMC), és ez a megoldás segítségével központilag figyelheti és kezelheti a ITSM információ az Azure Log Analytics-munkaelemek, és gyorsan hárítson el minden problémát.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: JYOTHIRMAISURI
 manager: riyazp
-editor: 
+editor: ''
 ms.assetid: 0b1414d9-b0a7-4e4e-a652-d3a6ff1118c4
 ms.service: log-analytics
 ms.workload: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2018
 ms.author: v-jysur
-ms.openlocfilehash: 56da2d4349a4a32eed783045381e504b529b1a1c
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: a51b96641c80a6575c64f58fa09e0bf6078e4185
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>Csatlakozás Azure ITSM eszközök IT Service Management-összekötő használatával
 
@@ -191,7 +191,7 @@ A csatlakoztatott ITSM forrásokban közvetlenül egy naplóbejegyzést képvise
 4. Adja meg a megfelelő értékeket a **ügyfél típusú**, **hatás**, **sürgősség**, **kategória**, és **alkategória** szövegmezőbe, és kattintson **létrehozása**.
 
 
-##<a name="visualize-and-analyze-the-incident-and-change-request-data"></a>Megjelenítheti és az incidens elemzése és kérelem adatainak módosítása
+## <a name="visualize-and-analyze-the-incident-and-change-request-data"></a>Megjelenítheti és az incidens elemzése és kérelem adatainak módosítása
 
 A konfiguráció alapján, a kapcsolat beállításához, ITSM összekötő szinkronizálhatják Incidenshez és Változáskéréshez kérelem adatok legfeljebb 120 nap. A rekord séma ezeket az adatokat a rendszer biztosítja a [következő szakasz](#additional-information).
 
@@ -234,7 +234,7 @@ ServiceDeskWorkItemType_s="Incident"
 - Sürgős
 - Hatás
 - Prioritás
-- Eszkalációs
+- Eszkalálás
 - Létrehozta
 - Megoldó
 - Lezárt
@@ -265,7 +265,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 - Típus
 - Kategória
 - Állapot
-- Eszkalációs
+- Eszkalálás
 - Ütközés állapota
 - Sürgős
 - Prioritás

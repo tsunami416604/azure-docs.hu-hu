@@ -1,11 +1,10 @@
 ---
-title: "Figyelheti és folyamatok kezelése az Azure portál és a PowerShell használatával |} Microsoft Docs"
-description: "Útmutató az Azure portál és az Azure PowerShell használatával az Azure adat-előállítók és a folyamatok létrehozott felügyeletét és kezelését."
+title: Figyelheti és folyamatok kezelése az Azure portál és a PowerShell használatával |} Microsoft Docs
+description: Útmutató az Azure portál és az Azure PowerShell használatával az Azure adat-előállítók és a folyamatok létrehozott felügyeletét és kezelését.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: sharonlo101
-manager: jhubbard
-editor: monicar
+manager: craigg
 ms.assetid: 9b0fdc59-5bbe-44d1-9ebc-8be14d44def9
 ms.service: data-factory
 ms.workload: data-services
@@ -15,11 +14,11 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: b361ca67ebece9ba1ced1010835eb90586dd7359
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: f3fb7c0be6f69f15b5b761f0c36d983f008282e9
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-azure-portal-and-powershell"></a>Figyelheti és kezelheti az Azure Data Factory-folyamatok az Azure portál és a PowerShell használatával
 > [!div class="op_single_selector"]
@@ -134,10 +133,10 @@ A dataset szeletek adat-előállító a következő állapotok egyike lehet:
 <td>Kész</td><td>-</td><td>A szelet készen áll a felhasználásra.</td>
 </tr>
 <tr>
-<td>Kihagyva</td><td>Nincs</td><td>A szelet feldolgozása folyamatban nem.</td>
+<td>Kihagyva</td><td>None</td><td>A szelet feldolgozása folyamatban nem.</td>
 </tr>
 <tr>
-<td>Nincs</td><td>-</td><td>A szelet használt létezett egy eltérő állapottal, de a rendszer visszaállította.</td>
+<td>None</td><td>-</td><td>A szelet használt létezett egy eltérő állapottal, de a rendszer visszaállította.</td>
 </tr>
 </table>
 
@@ -624,7 +623,7 @@ Cserélje le *subscriptionId*, *resourceGroupName*, és *dataFactoryName* a mint
 * FailedRuns
 * SuccessfulRuns
 
-A riasztás telepítése
+**A riasztás telepítése**
 
 A riasztás telepítéséhez használja az Azure PowerShell-parancsmag **New-AzureRmResourceGroupDeployment**, a következő példában látható módon:
 

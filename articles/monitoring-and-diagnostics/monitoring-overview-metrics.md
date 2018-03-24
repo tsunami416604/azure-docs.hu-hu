@@ -1,9 +1,9 @@
 ---
-title: "A Microsoft Azure-ban mérőszámok áttekintése |} Microsoft Docs"
-description: "Metrikák és a használatukat a Microsoft Azure-ban – áttekintés"
-author: johnkemnetz
+title: A Microsoft Azure-ban mérőszámok áttekintése |} Microsoft Docs
+description: Metrikák és a használatukat a Microsoft Azure-ban – áttekintés
+author: anirudhcavale
 manager: orenr
-editor: 
+editor: ''
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
 ms.assetid: 405ec51c-0946-4ec9-b535-60f65c4a5bd1
@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2017
-ms.author: johnkem
-ms.openlocfilehash: 4a78236f9c6945bb982466b59690b221f35a1804
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.date: 03/19/2018
+ms.author: ancav
+ms.openlocfilehash: 88020b27403f06ab8f1c0a1c45b798db02f517f5
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="overview-of-metrics-in-microsoft-azure"></a>A Microsoft Azure-ban mérőszámok áttekintése
 Ez a cikk ismerteti, hogy milyen adatok gyűjtése le van a Microsoft Azure-ban az előnyöket, és használatuk indítása.  
@@ -38,9 +38,9 @@ Metrikák egy értékes telemetriai adatok forrását, és lehetővé teszik a k
 ## <a name="what-are-the-characteristics-of-metrics"></a>Mik azok a metrikák jellemzői?
 Metrikák a következő jellemzőkkel rendelkezik:
 
-* Összes metrikát rendelkezik **egy perces gyakoriságot**. Kapott a metrika értékét percenként az erőforrás felkínálva közel valós idejű információkat az állapot és az erőforrás állapotát.
+* Összes metrikát rendelkezik **egy perces gyakoriságot** (kivéve, ha a egy metrika-definíció). Kapott a metrika értékét percenként az erőforrás felkínálva közel valós idejű információkat az állapot és az erőforrás állapotát.
 * Adatok gyűjtése le van **érhető el azonnal**. Nem kell részt vevő, vagy állítsa be a további diagnosztikához.
-* Van-e hozzáférési **előzmények 30 napnyi** minden mérőszám. Gyorsan megtalálhatja a legutóbbi és havi kapcsolatos trendeket szemlélteti a teljesítmény- vagy az erőforrás állapotát.
+* Van-e hozzáférési **93 a napok** minden mérőszám. Gyorsan megtalálhatja a legutóbbi és havi kapcsolatos trendeket szemlélteti a teljesítmény- vagy az erőforrás állapotát.
 * Néhány metrikák is attribútumokkal név-érték pár nevű **dimenziók**. Ezek lehetővé teszik a további szegmentálni, és vizsgálja meg a metrika részletesebb módon.
 
 További lehetőségek:
@@ -93,7 +93,7 @@ Azure metrikák az Azure-figyelő API-k keresztül érhetők el. Két API-k, ame
 * Használja a [Azure figyelő metrikák REST API](https://docs.microsoft.com/rest/api/monitor/metrics) szegmentálni, szűréséhez, és a tényleges metrikai adatok elérésére.
 
 > [!NOTE]
-> Ez a cikk ismerteti a metrikák keresztül a [új API-t a metrikák](https://docs.microsoft.com/rest/api/monitor/) az Azure-erőforrások. Az API-verzió az új metrikai meghatározásainak és a metrikák API-k 2017-05-01. dátumú előnézeti. Az örökölt metrikai meghatározásainak és a metrikák elérhető verzió 2014-04-01 API-val.
+> Ez a cikk ismerteti a metrikák keresztül a [új API-t a metrikák](https://docs.microsoft.com/rest/api/monitor/) az Azure-erőforrások. Az API-verzió az új metrikai meghatározásainak és a metrikák API-k 2018-01-01. Az örökölt metrikai meghatározásainak és a metrikák elérhető verzió 2014-04-01 API-val.
 >
 >
 

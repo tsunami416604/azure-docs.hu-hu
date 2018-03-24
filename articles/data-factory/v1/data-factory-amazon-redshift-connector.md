@@ -1,11 +1,10 @@
 ---
-title: "Adatok áthelyezése az Amazon Redshift Azure Data Factory használatával |} Microsoft Docs"
-description: "Megtudhatja, hogyan tárolt adatok mozgatása az Amazon Redshift Azure Data Factory másolási tevékenység használatával."
+title: Adatok áthelyezése az Amazon Redshift Azure Data Factory használatával |} Microsoft Docs
+description: Megtudhatja, hogyan tárolt adatok mozgatása az Amazon Redshift Azure Data Factory másolási tevékenység használatával.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: monicar
+manager: craigg
 ms.assetid: 01d15078-58dc-455c-9d9d-98fbdf4ea51e
 ms.service: data-factory
 ms.workload: data-services
@@ -15,11 +14,11 @@ ms.topic: article
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 47a9feaa692eaf048371b4e534e6b2e8c4086997
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: ab21eaf935ed03b6f34af00f69e993eaffdad1db
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="move-data-from-amazon-redshift-using-azure-data-factory"></a>Helyezze át az adatokat az Amazon Redshift Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -63,12 +62,12 @@ A következő táblázat ismerteti a JSON-elemek szerepelnek, amelyek az Amazon 
 
 | Tulajdonság | Leírás | Szükséges |
 | --- | --- | --- |
-| **típusa** |Ez a tulajdonság értékre kell állítani **AmazonRedshift**. |Igen |
+| **Típusa** |Ez a tulajdonság értékre kell állítani **AmazonRedshift**. |Igen |
 | **server** |A kiszolgáló IP-címét vagy állomásnevét kiszolgálónevét az Amazon Redshift. |Igen |
 | **port** |A TCP-portot, amelyen az Amazon Redshift kiszolgáló ügyfélkapcsolatokat száma. |Nem (alapértelmezett érték 5439) |
 | **database** |Az Amazon Redshift adatbázis nevét. |Igen |
 | **username** |A felhasználó, aki hozzáféréssel rendelkezik az adatbázishoz neve. |Igen |
-| **jelszó** |A felhasználói fiók jelszavát. |Igen |
+| **Jelszó** |A felhasználói fiók jelszavát. |Igen |
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
 

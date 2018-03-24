@@ -1,19 +1,19 @@
 ---
-title: "Ismerkedés az Azure SQL Database ideiglenes táblák |} Microsoft Docs"
-description: "Ismerkedés az ideiglenes táblák használata az Azure SQL Database útmutató."
+title: Ismerkedés az Azure SQL Database ideiglenes táblák |} Microsoft Docs
+description: Ismerkedés az ideiglenes táblák használata az Azure SQL Database útmutató.
 services: sql-database
 author: bonova
+ms.date: 03/21/2018
 manager: craigg
 ms.service: sql-database
 ms.custom: develop databases
 ms.topic: article
-ms.date: 01/10/2017
 ms.author: bonova
-ms.openlocfilehash: 8e76d78e402d2cdc58ca26767c55c413f83226d9
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 0299d52396549baf8ea7e5eb7145585c7b5900a6
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="getting-started-with-temporal-tables-in-azure-sql-database"></a>Ismerkedés az Azure SQL Database ideiglenes táblák
 A historikus táblák egy új programozhatóság Azure SQL-adatbázis, amely lehetővé teszi, hogy nyomon követheti és elemezheti az adatokat, nincs szükség egyéni kódolási változásai teljes előzményeit. A historikus táblák tartsa szorosan kapcsolódó idő a környezetben, hogy a tárolt tények értelmezhető adatok szerint érvényes csak a meghatározott időszakon belül. Ez a tulajdonság a Historikus táblák hatékony időalapú elemzés és beolvasásakor információkat kaphat a adatok alakulása lehetővé teszi.
@@ -64,7 +64,7 @@ A rendszerverzióval ellátott historikus tábla létrehozásakor a rendszer aut
 Ebben az esetben a Microsoft célja végrehajtásához időalapú trendelemzés keresztül hosszabb adatok előzményeit, és a nagyobb adatkészletek esetében, az előzmények tábla tárolási választott nem fürtözött oszlopcentrikus index. A fürtözött oszlopcentrikus nagyon jó tömörítési elemzési lekérdezések teljesítményt nyújt. A historikus táblák a munkakörnyezetnek indexek teljesen független a jelenlegi és a historikus táblák konfigurálása. 
 
 > [!NOTE]
-> Oszlopcentrikus indexek csak érhetők el a prémium szolgáltatásszintet.
+> Oszlopcentrikus indexek állnak rendelkezésre, a prémium csomagban és a normál rétegben, S3 vagy újabb.
 >
 
 Az alábbi parancsfájl bemutatja, hogyan alapértelmezett index előzménytáblán módosítani lehet a fürtözött oszlopcentrikus:

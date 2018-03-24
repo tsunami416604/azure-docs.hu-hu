@@ -1,12 +1,13 @@
 ---
-title: "Gépi tanulási algoritmusok kiválasztása |} Microsoft Docs"
-description: "A felügyelt és nem felügyelt tanítás Azure Machine Learning algoritmusok kiválasztása a fürtszolgáltatás, besorolási vagy regressziós kísérletekben módját."
+title: Gépi tanulási algoritmusok kiválasztása |} Microsoft Docs
+description: A felügyelt és nem felügyelt tanítás Azure Machine Learning algoritmusok kiválasztása a fürtszolgáltatás, besorolási vagy regressziós kísérletekben módját.
 services: machine-learning
-documentationcenter: 
-author: garyericson
-manager: jhubbard
+documentationcenter: ''
+author: pakalra
+ms.author: pakalra
+manager: cgronlun
 editor: cgronlun
-tags: 
+tags: ''
 ms.assetid: a3b23d7f-f083-49c4-b6b1-3911cd69f1b4
 ms.service: machine-learning
 ms.devlang: na
@@ -14,12 +15,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 12/18/2017
-ms.author: garye
-ms.openlocfilehash: 1b30e4dbf20cac653c323720de779aa5f8edba68
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: e1c7030a5f0c6e13653b302fcb48e7d4efa232c7
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="how-to-choose-algorithms-for-microsoft-azure-machine-learning"></a>A Microsoft Azure Machine Learning-algoritmusok kiválasztása
 A "Milyen gépi tanulási algoritmus érdemes használni?" kérdésre adott válasz mindig kapcsolva "Attól függ." Azt a mérete, a minőségi és a adatok jellegének függ. Ez attól függ, hogy mit kíván tenni a választ. Ez attól függ, hogy hogyan algoritmus matematikai utasításokat a számítógépet, hogy lett lefordítva. Annak függvénye, és mennyi idővel rendelkezik. Még a legtöbb tapasztalt adatszakértőkön nem sikerült megállapítani, mely algoritmus hajtja végre a legjobb előtt őket.
@@ -102,10 +102,10 @@ Bizonyos típusú adatok, szolgáltatások száma lehet nagyon nagy adatpontok s
 ### <a name="special-cases"></a>Bizonyos esetekben
 Néhány tanulási algoritmusok ellenőrizze az adatokat, vagy a kívánt eredményeket szerkezete adott feltételezéseket. Ha talál egyet, amely megfelel az igényeinek, azt tudhatja meg több eredményeket, több pontos előrejelzéseket vagy gyorsabb képzési.
 
-| **Algoritmus** | **Pontosság** | **Képzési idő** | **Lineáris** | **Paraméterek** | **Megjegyzések** |
+| **Algoritmus** | **Accuracy** | **Képzési idő** | **Lineáris** | **Paraméterek** | **Megjegyzések** |
 | --- |:---:|:---:|:---:|:---:| --- |
 | **Két osztályú osztályozás** | | | | | |
-| [logisztikai regresszió](https://msdn.microsoft.com/library/azure/dn905994.aspx) | |● |● |5 | |
+| [Logisztikai regresszió](https://msdn.microsoft.com/library/azure/dn905994.aspx) | |● |● |5 | |
 | [döntési erdő](https://msdn.microsoft.com/library/azure/dn906008.aspx) |● |○ | |6 | |
 | [döntési Dzsungel](https://msdn.microsoft.com/library/azure/dn905976.aspx) |● |○ | |6 |Alacsony memóriaigény |
 | [súlyozott döntési fája](https://msdn.microsoft.com/library/azure/dn906025.aspx) |● |○ | |6 |Nagy memóriaigény |
@@ -115,20 +115,20 @@ Néhány tanulási algoritmusok ellenőrizze az adatokat, vagy a kívánt eredm�
 | [helyileg mély támogatási vektoros gép](https://msdn.microsoft.com/library/azure/dn913070.aspx) |○ | | |8 |Jó nagy szolgáltatás beállítása |
 | [Bayes' pontozó gépet](https://msdn.microsoft.com/library/azure/dn905930.aspx) | |○ |● |3 | |
 | **Több osztály besorolás** | | | | | |
-| [logisztikai regresszió](https://msdn.microsoft.com/library/azure/dn905853.aspx) | |● |● |5 | |
+| [Logisztikai regresszió](https://msdn.microsoft.com/library/azure/dn905853.aspx) | |● |● |5 | |
 | [döntési erdő](https://msdn.microsoft.com/library/azure/dn906015.aspx) |● |○ | |6 | |
-| [döntési Dzsungel](https://msdn.microsoft.com/library/azure/dn905963.aspx) |● |○ | |6 |Alacsony memóriaigény |
+| [döntési Dzsungel ](https://msdn.microsoft.com/library/azure/dn905963.aspx) |● |○ | |6 |Alacsony memóriaigény |
 | [Neurális hálózat](https://msdn.microsoft.com/library/azure/dn906030.aspx) |● | | |9 |[További testreszabási lehetőség.](http://go.microsoft.com/fwlink/?LinkId=402867) |
-| [egyik-v-összes](https://msdn.microsoft.com/library/azure/dn905887.aspx) |- |- |- |- |Tekintse meg a kiválasztott két osztályú módszer tulajdonságait |
-| **Regressziós** | | | | | |
-| [lineáris](https://msdn.microsoft.com/library/azure/dn905978.aspx) | |● |● |4 | |
+| [one-v-all](https://msdn.microsoft.com/library/azure/dn905887.aspx) |- |- |- |- |Tekintse meg a kiválasztott két osztályú módszer tulajdonságait |
+| **Regression** | | | | | |
+| [linear](https://msdn.microsoft.com/library/azure/dn905978.aspx) | |● |● |4 | |
 | [Bayes-féle lineáris](https://msdn.microsoft.com/library/azure/dn906022.aspx) | |○ |● |2 | |
 | [döntési erdő](https://msdn.microsoft.com/library/azure/dn905862.aspx) |● |○ | |6 | |
 | [súlyozott döntési fája](https://msdn.microsoft.com/library/azure/dn905801.aspx) |● |○ | |5 |Nagy memóriaigény |
 | [gyors erdő ki osztóérték](https://msdn.microsoft.com/library/azure/dn913093.aspx) |● |○ | |9 |Terjesztési pont előrejelzéseket helyett |
 | [Neurális hálózat](https://msdn.microsoft.com/library/azure/dn905924.aspx) |● | | |9 |[További testreszabási lehetőség.](http://go.microsoft.com/fwlink/?LinkId=402867) |
-| [A POISSON](https://msdn.microsoft.com/library/azure/dn905988.aspx) | | |● |5 |Technikailag napló lineáris. Előrejelzésére száma |
-| [sorszám](https://msdn.microsoft.com/library/azure/dn906029.aspx) | | | |0 |Előrejelzésére dimenziószáma-rendezés |
+| [Poisson](https://msdn.microsoft.com/library/azure/dn905988.aspx) | | |● |5 |Technikailag napló lineáris. Előrejelzésére száma |
+| [ordinal](https://msdn.microsoft.com/library/azure/dn906029.aspx) | | | |0 |Előrejelzésére dimenziószáma-rendezés |
 | **Anomáliadetektálás** | | | | | |
 | [támogatja a vektoros gép](https://msdn.microsoft.com/library/azure/dn913103.aspx) |○ |○ | |2 |Különösen hasznos nagy szolgáltatás beállítása |
 | [PEM-alapú anomáliadetektálás](https://msdn.microsoft.com/library/azure/dn913102.aspx) | |○ |● |3 | |
@@ -187,7 +187,7 @@ Támogatási vektoros gépek (SVMs) található, amely elválasztja az osztályo
 
 ***A szokásos támogatási vektoros gép osztály határ a lehető legnagyobbra növeli a két osztály elválasztó margó***
 
-Egy másik szoftver a Microsoft Research a [két osztályú helyileg mély SVM](https://msdn.microsoft.com/library/azure/dn913070.aspx) nem lineáris változatát, amely megőrzi a sebesség és a memória hatékonyságát lineáris verziója a legtöbb SVM van. Ideális esetekben, ahol a lineáris módszert nem biztosítják a elég pontos válaszokat. A fejlesztők megőrzi azt gyors bontásához, a probléma a álló, lemezcsoport típusú kisebb lineáris SVM problémák. Olvassa el a [teljes körű ismertetését](http://research.microsoft.com/um/people/manik/pubs/Jose13.pdf) hogyan azok lekért ki ez a trükk a leírását.
+Egy másik szoftver a Microsoft Research a [két osztályú helyileg mély SVM](https://msdn.microsoft.com/library/azure/dn913070.aspx) nem lineáris változatát, amely megőrzi a sebesség és a memória hatékonyságát lineáris verziója a legtöbb SVM van. Ideális esetekben, ahol a lineáris módszert nem biztosítják a elég pontos válaszokat. A fejlesztők megőrzi azt gyors bontásához, a probléma a álló, lemezcsoport típusú kisebb lineáris SVM problémák. Olvassa el a [teljes körű ismertetését](http://proceedings.mlr.press/v28/jose13.html) hogyan azok lekért ki ez a trükk a leírását.
 
 Egy intelligens lineáris SVMs bővítményének használatával a [egy szintű SVM](https://msdn.microsoft.com/library/azure/dn913103.aspx) megrajzolja a határ, amely a teljes adatkészlet szorosan ismerteti. Akkor célszerű közüli. Minden új adatponthoz sokkal adott határán kívül eső szokatlanok elég kell megjegyezni.
 

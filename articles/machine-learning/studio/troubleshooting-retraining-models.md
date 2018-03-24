@@ -1,11 +1,12 @@
 ---
-title: "Az Azure Machine Learning klasszikus webszolgáltatás átképezési hibaelhárítása |} Microsoft Docs"
-description: "Határozza meg és javítsa ki a gyakori problémák közben, amikor az Azure Machine Learning webszolgáltatás van mind a modellben."
+title: Az Azure Machine Learning klasszikus webszolgáltatás átképezési hibaelhárítása |} Microsoft Docs
+description: Határozza meg és javítsa ki a gyakori problémák közben, amikor az Azure Machine Learning webszolgáltatás van mind a modellben.
 services: machine-learning
-documentationcenter: 
-author: garyericson
+documentationcenter: ''
+author: YasinMSFT
+ms.author: yahajiza
 manager: hjerez
-editor: 
+editor: cgronlun
 ms.assetid: 75cac53c-185c-437d-863a-5d66d871921e
 ms.service: machine-learning
 ms.workload: data-services
@@ -13,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 011/01/2017
-ms.author: garye
-ms.openlocfilehash: 486f66e3d864a172ba301d017c12406ebafc4824
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: f5b826decd360ea0e8c2394c4205fafcf6cb16d0
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="troubleshooting-the-retraining-of-an-azure-machine-learning-classic-web-service"></a>Az Azure Machine Learning klasszikus webszolgáltatás átképezési hibaelhárítása
 ## <a name="retraining-overview"></a>Megőrzési áttekintése

@@ -1,24 +1,24 @@
 ---
-title: "A helyi Service Fabric-fürt beállításának hibaelhárítása |} Microsoft Docs"
-description: "Ez a cikk ismerteti a javaslatok az a helyi fejlesztési fürtök készlete"
+title: A helyi Azure Service Fabric-fürt beállításának hibaelhárítása |} Microsoft Docs
+description: Ez a cikk ismerteti a javaslatok az a helyi fejlesztési fürtök készlete
 services: service-fabric
 documentationcenter: .net
 author: mikkelhegn
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 97f4feaa-bba0-47af-8fdd-07f811fe2202
 ms.service: service-fabric
 ms.devlang: dotNet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 06/07/2017
-ms.author: mikkelhegn
-ms.openlocfilehash: aa393f884b564cee81fcf75cc2eff895efea9471
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 02/23/2018
+ms.author: mikhegn
+ms.openlocfilehash: 6879a24df434d5bf69c9ba14aa00cdc9cd67df57
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="troubleshoot-your-local-development-cluster-setup"></a>A helyi fejlesztési fürtöt való beállításának hibaelhárítása
 Ha problémát tapasztal az Azure Service Fabric helyi fejlesztési fürtök való interakció során, tekintse át a következő javaslatok a lehetséges megoldásokról.
@@ -26,7 +26,7 @@ Ha problémát tapasztal az Azure Service Fabric helyi fejlesztési fürtök val
 ## <a name="cluster-setup-failures"></a>Fürt telepítési hiba
 ### <a name="cannot-clean-up-service-fabric-logs"></a>Nem lehet tisztítást végezni a Service Fabric-naplók
 #### <a name="problem"></a>Probléma
-A DevClusterSetup parancsprogram futtatása közben ehhez hasonló hibaüzenetet jelenik meg:
+A DevClusterSetup parancsprogram futtatása közben a következő hiba jelenik meg:
 
     Cannot clean up C:\SfDevCluster\Log fully as references are likely being held to items in it. Please remove those and run this script again.
     At line:1 char:1 + .\DevClusterSetup.ps1
@@ -36,20 +36,9 @@ A DevClusterSetup parancsprogram futtatása közben ehhez hasonló hibaüzenetet
 
 
 #### <a name="solution"></a>Megoldás
-Zárja be a jelenlegi PowerShell-ablakot, és nyissa meg rendszergazdaként egy új PowerShell-ablakot. Most kell tudni sikeresen futtatni a parancsfájlt.
+Zárja be a jelenlegi PowerShell-ablakot, és nyissa meg rendszergazdaként egy új PowerShell-ablakot. Most sikeresen futtathatja a parancsfájlt.
 
 ## <a name="cluster-connection-failures"></a>Fürt kapcsolódási hibák
-### <a name="service-fabric-powershell-cmdlets-are-not-recognized-in-azure-powershell"></a>Service Fabric PowerShell-parancsmagok a rendszer nem ismeri fel az Azure PowerShell
-#### <a name="problem"></a>Probléma
-Ha futtatja a Service Fabric PowerShell-parancsmagokat például `Connect-ServiceFabricCluster` egy Azure PowerShell-ablakban, ez nem sikerül, arról, hogy a parancsmag nem ismerhető fel. A ennek oka, hogy az Azure PowerShell 32 bites verzióját használja a Windows PowerShell (még akkor is, 64 bites operációs rendszer verzió), mivel a Service Fabric-parancsmagok csak 64 bites környezetben működik.
-
-#### <a name="solution"></a>Megoldás
-A Service Fabric parancsmagok futtatása mindig közvetlenül a Windows PowerShell.
-
-> [!NOTE]
-> Az Azure PowerShell legújabb verziójának nem hoz létre egy külön helyi, ez már nem jöjjön létre.
-> 
-> 
 
 ### <a name="type-initialization-exception"></a>Írja be az inicializálási kivétel
 #### <a name="problem"></a>Probléma
@@ -70,14 +59,14 @@ Connect-ServiceFabricCluster hívásakor meghiúsul, és ehhez hasonló hibát:
     + FullyQualifiedErrorId : CreateClusterConnectionErrorId,Microsoft.ServiceFabric.Powershell.ConnectCluster
 
 #### <a name="solution"></a>Megoldás
-Zárja be a jelenlegi PowerShell-ablakot, és nyissa meg rendszergazdaként egy új PowerShell-ablakot. Most kell tud sikeresen csatlakozni.
+Zárja be a jelenlegi PowerShell-ablakot, és nyissa meg rendszergazdaként egy új PowerShell-ablakot.
 
 ### <a name="fabric-connection-denied-exception"></a>Háló kapcsolat megtagadva kivétel
 #### <a name="problem"></a>Probléma
 Hibakereséshez a következőből: Visual Studio, a FabricConnectionDeniedException hiba nyílik meg.
 
 #### <a name="solution"></a>Megoldás
-Ez a hiba általában akkor következik be, indítsa el a szolgáltatás gazdafolyamatokon manuálisan, ahelyett, hogy a Service Fabric-futtatókörnyezet indítsa el az Ön így megkísérlésekor.
+Ez a hiba általában akkor fordul elő, manuálisan indítsa el a szolgáltatás gazdafolyamatokon megkísérlésekor.
 
 Győződjön meg arról, hogy nem kell minden service projektek állítja be kiindulási projektet a megoldásban. Csak a Service Fabric application projektek indítási projektként kell beállítani.
 
@@ -86,7 +75,7 @@ Győződjön meg arról, hogy nem kell minden service projektek állítja be kii
 > 
 > 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Ismertetése és hibaelhárítása a fürt rendszerállapot-jelentések](service-fabric-understand-and-troubleshoot-with-system-health-reports.md)
 * [A fürt megjelenítése a Service Fabric Explorerrel](service-fabric-visualizing-your-cluster.md)
 

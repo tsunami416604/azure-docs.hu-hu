@@ -1,19 +1,19 @@
 ---
-title: "Az Azure SQL Database szolgáltatásban |} Microsoft Docs"
-description: "Ismerje meg egyetlen szolgáltatásszintek és teljesítményszintek és tárolási méretek készlet adatbázisok."
+title: Az Azure SQL Database szolgáltatásban |} Microsoft Docs
+description: Ismerje meg egyetlen szolgáltatásszintek és teljesítményszintek és tárolási méretek készlet adatbázisok.
 services: sql-database
 author: CarlRabeler
-manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: article
-ms.date: 03/15/2018
+ms.date: 03/21/2018
+manager: craigg
 ms.author: carlrab
-ms.openlocfilehash: 6153616de763eee1b20fff40d38816eca8b455de
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 3fe7add4ad4c5563a6307db0dec27c658913429b
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="what-are-azure-sql-database-service-tiers"></a>Mik az Azure SQL Database szolgáltatási szinteket?
 
@@ -33,7 +33,8 @@ Elsősorban az üzletmenet folytonosságát, a tároló és a teljesítményre v
 |CPU|Alacsony|Alacsony, közepes, magas|Közepes, magas|
 |IO átviteli sebesség (hozzávetőleges) |2.5 DTU iops-értéket  | 2.5 DTU iops-értéket | DTU 48 iops-értéket|
 |I/O várakozási ideje (hozzávetőleges)|10 ms (írás) (olvasás), 5 ms|10 ms (írás) (olvasás), 5 ms|2 ms (olvasás/írás)|
-|Oszlopcentrikus indexelő és a memórián belüli online Tranzakciófeldolgozási|–|–|Támogatott|
+|Oszlopcentrikus indexelő |–|S3 vagy újabb verzió|Támogatott|
+|A memórián belüli online Tranzakciófeldolgozási|–|–|Támogatott|
 |||||
 
 ## <a name="performance-level-and-storage-size-limits"></a>Teljesítmény-szintjét és a tárolási méretkorlátai

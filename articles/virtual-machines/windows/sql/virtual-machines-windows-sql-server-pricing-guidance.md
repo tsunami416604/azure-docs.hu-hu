@@ -1,13 +1,13 @@
 ---
-title: "Költségek hatékony kezelésére az SQL Server Azure virtuális gépeken futó |} Microsoft Docs"
-description: "Ajánlott eljárásokat biztosít a megfelelő SQL Server virtuális gép fizetési modell kiválasztása."
+title: Költségek hatékony kezelésére az SQL Server Azure virtuális gépeken futó |} Microsoft Docs
+description: Ajánlott eljárásokat biztosít a megfelelő SQL Server virtuális gép fizetési modell kiválasztása.
 services: virtual-machines-windows
 documentationcenter: na
 author: rothja
 manager: craigg
-editor: 
+editor: ''
 tags: azure-service-management
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-sql
 ms.devlang: na
 ms.topic: article
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 02/20/2018
 ms.author: jroth
-ms.openlocfilehash: 3103ca2c659e40fd945b597ed4671fe96daf1905
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: a275df84ce784147b5fd4f09afe4995417affffd
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="pricing-guidance-for-sql-server-azure-vms"></a>Útmutató a SQL Server Azure virtuális gépek díjszabása
 
@@ -63,7 +63,7 @@ Az SQL Server licencelési ezeknek a kiadásoknak díj ellenében két lehetős�
 
 ### <a name="pay-per-usage"></a>Használati / kell fizetnie
 
-**Az SQL Server licence / használati fizető** azt jelenti, hogy az Azure virtuális Gépen futó perc költsége tartalmaz-e az SQL Server licence költségét. Látható az az SQL Server különböző kiadásai (Web, Standard, Enterprise) díjszabása a [Azure virtuális gép árképzést ismertető oldalra](https://azure.microsoft.com/pricing/details/virtual-machines/windows/). A költség megegyezik az SQL Server (2012 SP3 2017) bármely verziója. Csakúgy, mint az SQL Server általában licencelés, a percalapú licencelési költségeit VM magok száma függ.
+**Az SQL Server licence / használati fizető** azt jelenti, hogy az Azure virtuális Gépen futó másodpercenként költsége tartalmaz-e az SQL Server licence költségét. Látható az az SQL Server különböző kiadásai (Web, Standard, Enterprise) díjszabása a [Azure virtuális gép árképzést ismertető oldalra](https://azure.microsoft.com/pricing/details/virtual-machines/windows/). A költség megegyezik az SQL Server (2012 SP3 2017) bármely verziója. Csakúgy, mint az SQL Server általában licencelés, a másodpercenként licencelési költségeit VM magok száma függ.
 
 Az SQL Server fizető / használati licencelési ajánlott:
 
@@ -113,7 +113,7 @@ SQL Server 2016 Azure virtuális gép valamelyik, a bring your-saját-licencet l
 > Ossza meg velünk 10 napon belül hány fogja használni az Azure SQL Server-licencet. Az előző lemezképek mutató hivatkozások utasításokat ennek rendelkezik.
 
 > [!NOTE]
-> Nem lehetséges saját licencre módosítani egy percalapú SQL Server virtuális gép licencelési modelljét. Jelen esetben létre kell hoznia egy új BYOL virtuális gépet, majd az új virtuális gépre kell telepítenie az adatbázisokat. 
+> Már nem lehet módosítani egy fizetési másodpercenkénti saját licenc használatához SQL Server virtuális gép licencelési modelljét. Jelen esetben létre kell hoznia egy új BYOL virtuális gépet, majd az új virtuális gépre kell telepítenie az adatbázisokat. 
 
 ## <a name="avoid-unnecessary-costs"></a>Felesleges költségek elkerülése érdekében
 

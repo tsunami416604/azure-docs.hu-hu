@@ -1,11 +1,10 @@
 ---
-title: "A hibatűrés hozzáadása az Azure Data Factory másolási tevékenység nem kompatibilis sorok kihagyása |} Microsoft Docs"
-description: "Megtudhatja, hogyan hibatűrést hozzáadása az Azure Data Factory másolási tevékenység nem kompatibilis sorok kihagyása másolása során"
+title: A hibatűrés hozzáadása az Azure Data Factory másolási tevékenység nem kompatibilis sorok kihagyása |} Microsoft Docs
+description: Megtudhatja, hogyan hibatűrést hozzáadása az Azure Data Factory másolási tevékenység nem kompatibilis sorok kihagyása másolása során
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: monicar
+manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -14,11 +13,11 @@ ms.topic: article
 ms.date: 01/05/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 6e7923e2e0a23f22f7dff8c316050a1757310456
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: 29c78eb850b418772126dea50b40e924b6e71423
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="add-fault-tolerance-in-copy-activity-by-skipping-incompatible-rows"></a>A hibatűrés hozzáadása a másolási tevékenység nem kompatibilis sorok kihagyása
 > [!NOTE]
@@ -71,7 +70,7 @@ A következő példa egy JSON-definícióból, a másolási tevékenység nem ko
 | **enableSkipIncompatibleRow** | Vagy nem engedélyezheti a nem kompatibilis sorok kihagyása másolása során. | True (Igaz)<br/>Hamis (alapértelmezés) | Nem |
 | **redirectIncompatibleRowSettings** | Egy csoport, amely tulajdonságok meg, ha azt szeretné, a nem kompatibilis sorok bejelentkezni. | &nbsp; | Nem |
 | **linkedServiceName** | A napló, a rendszer kihagyta sorokat tartalmazó tárolásához Azure Storage társított szolgáltatás. | A neve egy [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service) vagy [AzureStorageSas](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service) társított szolgáltatás, amely a tárolási példányon, amely a naplófájl tárolási használni kívánt vonatkozik. | Nem |
-| **elérési út** | A rendszer kihagyta sorokat tartalmaz-e a naplófájl elérési útja | Adja meg a Blob storage elérési utat, amely a nem kompatibilis adatokat naplózhatnak használni kívánt. Ha nem ad meg egy elérési utat, a szolgáltatás létrehoz egy tárolót. | Nem |
+| **path** | A rendszer kihagyta sorokat tartalmaz-e a naplófájl elérési útja | Adja meg a Blob storage elérési utat, amely a nem kompatibilis adatokat naplózhatnak használni kívánt. Ha nem ad meg egy elérési utat, a szolgáltatás létrehoz egy tárolót. | Nem |
 
 ## <a name="monitoring"></a>Figyelés
 A másolási tevékenység során futtatása után megtekintheti a figyelési szakaszban kihagyott sorok száma:

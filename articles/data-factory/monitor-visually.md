@@ -1,11 +1,11 @@
 ---
-title: "Vizuálisan figyelése az Azure adat-előállítók |} Microsoft Docs"
-description: "Ismerje meg, vizuálisan figyelése az Azure adat-előállítók"
+title: Vizuálisan figyelése az Azure adat-előállítók |} Microsoft Docs
+description: Ismerje meg, vizuálisan figyelése az Azure adat-előállítók
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: sharonlo101
-manager: jhubbard
-editor: spelluru
+manager: craigg
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/06/2018
 ms.author: shlo
-ms.openlocfilehash: 60d7897caebcb138180d99358ec754c1b9594fe5
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: b67c384ffd04176653ad434d39361ee67dc1ffea
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="visually-monitor-azure-data-factories"></a>Vizuálisan figyelése az Azure adat-előállítók
 Az Azure Data Factory egy felhőalapú adatintegrációs szolgáltatás. Lehetővé teszi olyan, a felhőben futó, adatvezérelt munkafolyamatok létrehozását, amelyek alkalmasak az adatok átvitelének és átalakításának irányítására és automatizálására. Az Azure Data Factory segítségével létrehozhatók és ütemezhetők a különböző adattárolókból adatokat beolvasó adatvezérelt munkafolyamatok, feldolgozhatók és átalakíthatók az adatok különböző számítási szolgáltatások használatával (pl. Azure HDInsight Hadoop, Spark, Azure Data Lake Analytics és Azure Machine Learning), és a kimeneti adatok közzétehetők olyan adattárakban, mint például az Azure SQL Data Warehouse, ahonnan az üzleti intelligenciára épülő (BI-) alkalmazások felhasználhatják őket.
@@ -29,7 +29,7 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
 
 ## <a name="monitor-data-factory-v2-pipelines"></a>Data factory v2 folyamatok figyelése
 
-1. Indítsa el **Microsoft Edge** vagy **Google Chrome** webböngésző. Data Factory felhasználói felület jelenleg csak a Microsoft Edge és a Google Chrome webböngésző használata támogatott.
+1. Indítsa el a **Microsoft Edge** vagy a **Google Chrome** böngészőt. A Data Factory felhasználói felületének használata jelenleg csak a Microsoft Edge-ben és a Google Chrome-ban támogatott.
 2. Jelentkezzen be a [Azure-portálon](https://portal.azure.com/).
 3. Keresse meg a létrehozott adatok gyári panel az Azure-portálon, és kattintson a "A figyelő & kezelése" csempére. Ez elindítja a ADF v2 visual figyeléshez.
 

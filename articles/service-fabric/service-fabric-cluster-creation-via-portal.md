@@ -1,6 +1,6 @@
 ---
-title: "Service Fabric-fürt létrehozása az Azure portálon |} Microsoft Docs"
-description: "A cikkből megtudhatja, hogyan állíthat be az Azure-ban az Azure portál és az Azure Key Vault biztonságos Service Fabric-fürt."
+title: Service Fabric-fürt létrehozása az Azure portálon |} Microsoft Docs
+description: A cikkből megtudhatja, hogyan állíthat be az Azure-ban az Azure portál és az Azure Key Vault biztonságos Service Fabric-fürt.
 services: service-fabric
 documentationcenter: .net
 author: chackdan
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/09/2018
 ms.author: chackdan
-ms.openlocfilehash: 4a42e36307f440a29740d947314f91dffac51a42
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 864952554b04d8d6bc14aad92d168298e554710e
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="create-a-service-fabric-cluster-in-azure-using-the-azure-portal"></a>A Service Fabric-fürt létrehozása az Azure-ban az Azure-portálon
 > [!div class="op_single_selector"]
@@ -131,7 +131,7 @@ Konfigurálja a fürtcsomópontokat. Csomóponttípusok a Virtuálisgép-mérete
 
 A biztonságos tesztfürthöz beállításának könnyen elvégzésére, adtunk a **alapvető** lehetőséget. Ha már rendelkezik egy tanúsítvánnyal rendelkezik fel van töltve, a keyvault (és engedélyezve van a központi telepítés a key vault), majd használja a **egyéni** beállítás
 
-#####<a name="basic-option"></a>Alapszintű beállítás
+##### <a name="basic-option"></a>Alapszintű beállítás
 Kövesse a képernyőn hozzáadása vagy egy meglévő keyvault felhasználhatja és tanúsítvány hozzáadásához. A tanúsítvány hozzáadása szinkron eljárás, és úgy kell várja meg a tanúsítványt létrehozni.
 
 
@@ -151,7 +151,7 @@ Most már készen áll a folytatáshoz ki a fürt létrehozása folyamat.
 
 ![CreateKeyVault4]
 
-#####<a name="custom-option"></a>Egyéni beállítást
+##### <a name="custom-option"></a>Egyéni beállítást
 Ebben a szakaszban hagyja ki, ha már elvégezte a lépéseket a **alapvető** lehetőséget.
 
 ![SecurityCustomOption]

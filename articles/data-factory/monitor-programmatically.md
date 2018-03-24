@@ -1,11 +1,11 @@
 ---
-title: "Programozott módon figyelheti az Azure data factory |} Microsoft Docs"
-description: "Ismerje meg, hogy egy adat-előállítóban folyamat figyelése különböző software development Kit (SDK-k) használatával."
+title: Programozott módon figyelheti az Azure data factory |} Microsoft Docs
+description: Ismerje meg, hogy egy adat-előállítóban folyamat figyelése különböző software development Kit (SDK-k) használatával.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: douglaslMS
-manager: jhubbard
-editor: 
+manager: craigg
+editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,17 +13,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2018
 ms.author: douglasl
-ms.openlocfilehash: 95934de9b84270ff112489a7b67f622dad609970
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 87e69349245c5f67e23022e3a45ed798400e6a2c
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="programmatically-monitor-an-azure-data-factory"></a>Egy Azure data factory programozott módon figyelése
 Ez a cikk ismerteti az adat-előállító adatcsatorna figyelése különböző software development Kit (SDK-k) használatával. 
 
 > [!NOTE]
 > Ez a cikk a Data Factory 2. verziójára vonatkozik, amely jelenleg előzetes verzióban érhető el. A Data Factory szolgáltatásnak, amely általánosan elérhető (GA), 1 verziójának használatakor lásd: [figyelése és kezelése a Data Factory version1 adatcsatornák](v1/data-factory-monitor-manage-pipelines.md).
+
+## <a name="data-range"></a>Az adattartománynak
+
+Adat-előállító csak a folyamat futtatása az adatok 45 napig tárolja. Ha kérdezze le programozott módon fut a Data Factory csővezeték - adatokat például a PowerShell-paranccsal `Get-AzureRmDataFactoryV2PipelineRun` -nincsenek a választható maximális dátumok `LastUpdatedAfter` és `LastUpdatedBefore` paraméterek. De ha a lekérdezés az adatok az elmúlt év, például a lekérdezés nem ad vissza a hiba, de csak ad vissza a következő feldolgozási sorban az elmúlt 45 nap adatait.
+
+Ha szeretné megőrizni a csővezeték adatok futtassa a több mint 45 nap, a saját diagnosztikai naplózás beállítása [Azure figyelő](monitor-using-azure-monitor.md).
 
 ## <a name="net"></a>.NET
 A létrehozás és a .NET SDK használatával folyamat figyelése részletes útmutatást lásd: [tartalmazó data factory létrehozása és használata a .NET-feldolgozási folyamat](quickstart-create-data-factory-dot-net.md).

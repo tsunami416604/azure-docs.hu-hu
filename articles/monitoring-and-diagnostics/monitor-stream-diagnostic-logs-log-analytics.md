@@ -1,12 +1,12 @@
 ---
-title: "Adatfolyam-szolgáltatáshoz Azure diagnosztikai naplók |} Microsoft Docs"
-description: "Útmutató az Azure diagnosztikai naplókat a Naplóelemzési munkaterület adatfolyamként történő küldéséhez."
+title: Adatfolyam-szolgáltatáshoz Azure diagnosztikai naplók |} Microsoft Docs
+description: Útmutató az Azure diagnosztikai naplókat a Naplóelemzési munkaterület adatfolyamként történő küldéséhez.
 author: johnkemnetz
 manager: orenr
-editor: 
+editor: ''
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
-ms.assetid: 
+ms.assetid: ''
 ms.service: monitoring-and-diagnostics
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/01/2017
 ms.author: johnkem
-ms.openlocfilehash: 9440bd7f872914887c1f6e50f08a3c273536fcf8
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 517ce3547f471dd1b40c79b2f087b02ad7f51b85
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="stream-azure-diagnostic-logs-to-log-analytics"></a>Adatfolyam-szolgáltatáshoz Azure diagnosztikai naplók
 **[Az Azure diagnosztikai naplók](monitoring-overview-of-diagnostic-logs.md)**  továbbítható közel valós időben az Azure Naplóelemzés szolgáltatáshoz a portál, PowerShell-parancsmagok vagy az Azure parancssori felület használatával.
@@ -40,21 +40,21 @@ A Naplóelemzési munkaterület nem kell lennie a naplók kibocsátó mindaddig,
 ## <a name="stream-diagnostic-logs-using-the-portal"></a>Az adatfolyam diagnosztikai naplókat a portálon
 1. A portál Azure figyelő keresse meg és kattintson a **diagnosztikai beállítások**
 
-    ![Figyelés szakaszban Azure-figyelő](media/monitoring-stream-diagnostic-logs-to-event-hubs/diagnostic-settings-blade.png)
+    ![Figyelés szakaszban Azure-figyelő](media/monitoring-stream-diagnostic-logs-to-log-analytics/diagnostic-settings-blade.png)
 
 2. Opcionálisan erőforráscsoport és erőforrások típus szerint a lista szűréséhez, majd kattintson az erőforráson, amelynek szeretné beállítani a diagnosztikai.
 
 3. Ha a beállítások nem található az erőforrás a választott, kéri beállítás létrehozása. Kattintson a "Diagnosztika bekapcsolásához."
 
-   ![Diagnosztikai beállítás - nincsenek meglévő beállítások hozzáadása](media/monitoring-stream-diagnostic-logs-to-event-hubs/diagnostic-settings-none.png)
+   ![Diagnosztikai beállítás - nincsenek meglévő beállítások hozzáadása](media/monitoring-stream-diagnostic-logs-to-log-analytics/diagnostic-settings-none.png)
 
    Ha az erőforrás-meglévő beállítások, látni fogja már ehhez az erőforráshoz konfigurált beállítások listája. A "Hozzáadás diagnosztikai beállításának."
 
-   ![Diagnosztikai beállítás - meglévő beállítások hozzáadása](media/monitoring-stream-diagnostic-logs-to-event-hubs/diagnostic-settings-multiple.png)
+   ![Diagnosztikai beállítás - meglévő beállítások hozzáadása](media/monitoring-stream-diagnostic-logs-to-log-analytics/diagnostic-settings-multiple.png)
 
 3. Adjon a beállítás a neve, és jelölje be a **küldeni a Naplóelemzési**, majd válassza ki a Naplóelemzési munkaterület.
    
-   ![Diagnosztikai beállítás - meglévő beállítások hozzáadása](media/monitoring-stream-diagnostic-logs-to-event-hubs/diagnostic-settings-configure.png)
+   ![Diagnosztikai beállítás - meglévő beállítások hozzáadása](media/monitoring-stream-diagnostic-logs-to-log-analytics/diagnostic-settings-configure.png)
 
 4. Kattintson a **Save** (Mentés) gombra.
 
@@ -69,7 +69,7 @@ Set-AzureRmDiagnosticSetting -ResourceId [your resource ID] -WorkspaceID [resour
 
 Vegye figyelembe, hogy a workspaceID tulajdonság szükséges a munkaterület, nem a munkaterület azonosítója/kulcs jelenik meg a Log Analytics-portálon az Azure erőforrás-azonosítója.
 
-### <a name="via-azure-cli"></a>Az Azure parancssori felület használatával
+### <a name="via-azure-cli"></a>Via Azure CLI
 Adatfolyamként keresztül a [Azure CLI](insights-cli-samples.md), használhatja a `insights diagnostic set` ehhez hasonló parancsot:
 
 ```azurecli
@@ -83,5 +83,5 @@ Vegye figyelembe, hogy a workspaceId tulajdonság szükséges a munkaterület, n
 A naplófájl-keresési panelen a portálon vagy Advanced Analytics élmény Naplóelemzési részeként a napló-kezelési megoldás a AzureDiagnostics táblázat alatt részeként lekérdezheti a diagnosztikai naplókat. Is [több megoldásokat kínál az Azure-erőforrások](../log-analytics/log-analytics-add-solutions.md) webhelynaplókat azonnali a naplóadatok küldendő Log Analyticshez való telepítése.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [További tudnivalók az Azure diagnosztikai naplók](monitoring-overview-of-diagnostic-logs.md)

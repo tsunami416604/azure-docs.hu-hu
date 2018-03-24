@@ -1,11 +1,11 @@
 ---
-title: "Biztonsági szempontok az Azure Data Factory |} Microsoft Docs"
-description: "Ismerteti az alapvető biztonsági infrastruktúra, amelynek segítségével az Azure Data Factory adatátviteli szolgáltatások biztonságos adatait."
+title: Biztonsági szempontok az Azure Data Factory |} Microsoft Docs
+description: Ismerteti az alapvető biztonsági infrastruktúra, amelynek segítségével az Azure Data Factory adatátviteli szolgáltatások biztonságos adatait.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: nabhishek
-manager: jhubbard
-editor: spelluru
+manager: craigg
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/26/2018
 ms.author: abnarain
-ms.openlocfilehash: 3c8215ab4a1759efef3c2c13a5ac44f6944b53d7
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 56602e269a441f9541314424190da04be2c4add5
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Biztonsági szempontok az Azure Data Factory adatok áttelepítéséről –
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -49,9 +49,10 @@ Ez a cikk a Microsoft biztonsági szempontok a következő két adatelérési mo
 - **Hibrid forgatókönyvek**: Ebben a forgatókönyvben a forrás- vagy a cél van egy tűzfal mögött található, vagy egy helyszíni vállalati hálózaton belül. Vagy az adattárban privát vagy virtuális hálózaton (általában a forrás) és nincs nyilvánosan elérhető. Adatbázis-kiszolgálóin futó virtuális gépek is alá ebben a forgatókönyvben.
 
 ## <a name="cloud-scenarios"></a>Felhő forgatókönyvek
-### <a name="secure-data-store-credentials"></a>Védett adatok adattárolóhoz használandó hitelesítő adatok
-- **Titkosított hitelesítő adatok tárolása az Azure Data Factory felügyelt store**. Adat-előállító segít az adatok adattárolóhoz használandó hitelesítő adatok védelme a Microsoft által felügyelt tanúsítványokkal titkosításával. Ezeknek a tanúsítványoknak (amely tartalmazza a tanúsítvány megújításához és az áttelepítés a hitelesítő adatok) két évente legyenek-e elforgatva. Egy Azure Data Factory szolgáltatások által felügyelt Azure-tárfiók biztonságosan tárolja a titkosított hitelesítő adatokat. Azure Storage biztonsággal kapcsolatos további információkért lásd: [Azure Storage biztonsági áttekintése](../security/security-storage-overview.md).
 
+### <a name="securing-data-store-credentials"></a>Biztonságossá tétele adatok adattárolóhoz használandó hitelesítő adatok
+
+- **Titkosított hitelesítő adatok tárolása az Azure Data Factory felügyelt store**. Adat-előállító segít az adatok adattárolóhoz használandó hitelesítő adatok védelme a Microsoft által felügyelt tanúsítványokkal titkosításával. Ezeknek a tanúsítványoknak (amely tartalmazza a tanúsítvány megújításához és az áttelepítés a hitelesítő adatok) két évente legyenek-e elforgatva. Egy Azure Data Factory szolgáltatások által felügyelt Azure-tárfiók biztonságosan tárolja a titkosított hitelesítő adatokat. Azure Storage biztonsággal kapcsolatos további információkért lásd: [Azure Storage biztonsági áttekintése](../security/security-storage-overview.md).
 - **Hitelesítő adatok tárolása az Azure Key Vault**. Az adattár-hitelesítő adatok is tárolhatja [Azure Key Vault](https://azure.microsoft.com/services/key-vault/). Adat-előállító tevékenység végrehajtása közben olvassa be a hitelesítő adatokat. További információkért lásd: [tároló-hitelesítő adatok az Azure Key Vault](store-credentials-in-key-vault.md).
 
 ### <a name="data-encryption-in-transit"></a>Adattitkosítás átvitel közben
@@ -144,7 +145,7 @@ A következő táblázat ismerteti a vállalati tűzfal kimenő port és a tarto
 
 | Tartománynevek                  | Kimenő portok | Leírás                              |
 | ----------------------------- | -------------- | ---------------------------------------- |
-| `*.servicebus.windows.net`    | 443, 80        | Adat-előállítóban adatátviteli szolgáltatások eléréséhez szükséges önálló üzemeltetett integrációs futásidőben. |
+| `*.servicebus.windows.net`    | 443            | Adat-előállítóban adatátviteli szolgáltatások eléréséhez szükséges önálló üzemeltetett integrációs futásidőben. |
 | `*.core.windows.net`          | 443            | Csatlakozás az Azure storage-fiókok használatakor az önálló üzemeltetett integrációs futásidejű segítségével a [másolási előkészített](copy-activity-performance.md#staged-copy) szolgáltatás. |
 | `*.frontend.clouddatahub.net` | 443            | A Data Factory szolgáltatásnak való kapcsolódáshoz szükséges önálló üzemeltetett integrációs futásidőben. |
 | `*.database.windows.net`      | 1433           | (Választható) Szükséges a vagy az Azure SQL Database vagy az Azure SQL Data Warehouse másolásakor. Funkcióival előkészített adatok másolása az Azure SQL Database vagy az Azure SQL Data Warehouse 1433-as port megnyitása nélkül. |

@@ -1,3 +1,19 @@
+---
+title: fájl belefoglalása
+description: fájl belefoglalása
+services: vpn-gateway
+author: cherylmc
+ms.service: vpn-gateway
+ms.topic: include
+ms.date: 03/21/2018
+ms.author: cherylmc
+ms.custom: include file
+ms.openlocfilehash: b5aea9d7fe54402693be095350f7c095334fd4b5
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 03/23/2018
+---
 **VPN-eszköz konfigurációs parancsfájlokat letöltése:**
 
 Attól függően, hogy a VPN-eszköz, amely rendelkezik akkor esetleg egy VPN-eszköz konfigurációs parancsprogram letöltése. További információkért lásd: [letöltése VPN eszköz konfigurációs parancsfájlokat](../articles/vpn-gateway/vpn-gateway-download-vpndevicescript.md).

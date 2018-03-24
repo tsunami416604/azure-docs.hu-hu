@@ -1,24 +1,21 @@
 ---
-title: "Az Azure Active Directory B2C: Áttelepítheti a felhasználókat a közösségi identitások"
-description: "Alapfogalmak ismertetik a közösségi identitások az Azure AD B2C Graph API-val rendelkező felhasználók áttelepítése"
+title: 'Az Azure Active Directory B2C: Áttelepítheti a felhasználókat a közösségi identitások'
+description: Alapfogalmak ismertetik a közösségi identitások az Azure AD B2C Graph API-val rendelkező felhasználók áttelepítése
 services: active-directory-b2c
-documentationcenter: 
-author: yoelhor
-manager: joroja
-editor: 
-ms.assetid: 
+documentationcenter: ''
+author: davidmu
+manager: mtillman
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.devlang: na
-ms.date: 14/03/2018
-ms.author: yoelh
-ms.openlocfilehash: b82805f1c5d83c4d4a11c4b88fd6771c0b85f0f4
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.date: 03/03/2018
+ms.author: davidmu
+ms.openlocfilehash: 76ed4dac40872bf6db07b26c5805a4db62dc9dfc
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-active-directory-b2c-migrate-users-with-social-identities"></a>Az Azure Active Directory B2C: Áttelepítheti a felhasználókat a közösségi identitások
 Ha Identitásszolgáltatóként az Azure AD B2C áttelepítését tervezi, is szükség lehet áttelepítheti a felhasználókat a közösségi identitásokat. Ez a cikk azt ismerteti, hogyan telepíthet át meglévő közösségi identitások fiókokat, például: az Azure AD B2C Facebook, a LinkedIn, a Microsoft és a Google fiókokat. Ez a cikk vonatkozik is összevont identitások kialakítása, azonban ezek áttelepítések amelyek kevésbé gyakran.

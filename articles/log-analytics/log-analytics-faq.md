@@ -1,24 +1,24 @@
 ---
-title: "Naplófájl Analytics – gyakori kérdések |} Microsoft Docs"
-description: "Az Azure Naplóelemzés szolgáltatással kapcsolatos gyakran feltett kérdésekre adott válaszokat."
+title: Naplófájl Analytics – gyakori kérdések |} Microsoft Docs
+description: Az Azure Naplóelemzés szolgáltatással kapcsolatos gyakran feltett kérdésekre adott válaszokat.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: ad536ff7-2c60-4850-a46d-230bc9e1ab45
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2017
+ms.date: 03/21/2018
 ms.author: magoedte
-ms.openlocfilehash: 0b27386cd0f9f3ae50314b8c5d7708aea3e3d028
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 398a62cbba952f35f29c1b1f411a6d5b901d2973
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="log-analytics-faq"></a>Log Analytics – gyakori kérdések
 A Microsoft FAQ a Microsoft Azure Naplóelemzés gyakran feltett kérdésekre listáját. Amennyiben a Naplóelemzési kapcsolatos további kérdése van, a [vitafóruma](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights) és kérdéseit. Ha kérdése van gyakori, azt adja hozzá a cikkben, hogy gyorsan és könnyen megtalálhatók.
@@ -51,19 +51,21 @@ V: nem. A Naplóelemzési egy méretezhető felhőalapú szolgáltatás, amely f
 
 ### <a name="q-how-do-i-troubleshoot-if-log-analytics-is-no-longer-collecting-data"></a>Q. Hogyan hibaelhárítása Ha Log Analyticshez már nem gyűjt adatokat?
 
-A:, ha vannak a az ingyenes tarifacsomag, és naponta elküldött 500 MB-nál több adat, adatgyűjtés leáll, a többi nap. Napi korlát elérése gyakori oka, hogy Naplóelemzési leállítja az adatgyűjtést, vagy az adatok akkor jelenik meg, hogy hiányzik.
+A:, ha vannak a az ingyenes tarifacsomag, és naponta elküldött 500 MB-nál több adat, adatgyűjtés leáll, a többi nap. Napi korlát elérése gyakori oka, hogy Naplóelemzési leállítja az adatgyűjtést, vagy az adatok akkor jelenik meg, hogy hiányzik.  
 
-A Naplóelemzési hoz létre eseményt, típusú *művelet* amikor adatgyűjtés indítása és leállítása. 
+Naplóelemzési hoz létre eseményt, típusú *szívverés* és segítségével határozza meg, ha az adatgyűjtés leáll. 
 
-Futtassa a következő lekérdezést a keresést, hogy ellenőrizze, hogy vannak napi korlát elérése és hiányzó adat:`Type=Operation OperationCategory="Data Collection Status"`
+Futtassa a következő lekérdezést a keresést, hogy ellenőrizze, hogy vannak napi korlát elérése és hiányzó adat: `Heartbeat | summarize max(TimeGenerated)`
 
-Amikor leállítja az adatgyűjtést, a *OperationStatus* van **figyelmeztetés**. Adatgyűjtés indításakor, a *OperationStatus* van **sikeres**. 
+Egy adott számítógép ellenőrzéséhez futtassa az alábbi lekérdezést: `Heartbeat | where Computer=="contosovm" | summarize max(TimeGenerated)`
+
+Adatgyűjtés leáll, attól függően, hogy az időtartományt kiválasztva, akkor addig nem jelennek meg minden visszaadott rekordok.   
 
 A következő táblázat ismerteti az oka, hogy leállítja az adatgyűjtést, és folytathatja az adatgyűjtést a javasolt művelet:
 
 | OK adatgyűjtés leállítása                       | Adatgyűjtés folytatása |
 | -------------------------------------------------- | ----------------  |
-| Elérte az ingyenes adatok napi korlátot<sup>1</sup>       | Várja meg, amíg a következő napon gyűjtemény automatikus újraindítása, vagy<br> A fizetős tarifacsomag módosítása |
+| Az ingyenes adatok határértékét<sup>1</sup>       | Várja meg, amíg a következő hónap gyűjtemény automatikus újraindítása, vagy<br> A fizetős tarifacsomag módosítása |
 | Azure-előfizetés miatt felfüggesztett állapotban van: <br> Ingyenes próbaverzió befejeződött <br> Az Azure hozzáférési lejárt <br> Havi költségkeret érhető el (például a az MSDN webhelyen vagy a Visual Studio előfizetői)                          | A szolgáltatás fizetős átalakítása <br> A szolgáltatás fizetős átalakítása <br> Távolítsa el a korlátot, vagy várjon, amíg a korlát alaphelyzetbe állítása |
 
 <sup>1</sup> Ha a munkaterületet az ingyenes tarifacsomag, tehát legfeljebb 500 MB naponkénti adat küldése a szolgáltatást. Ha eléri a napi korlátot, adatgyűjtés leáll, a következő napig. Adatgyűjtés leállítása küldött adatok nem indexelt, és nem érhető el a kereséshez. Adatok gyűjtése folytatódik, ha csak az új adatok feldolgozása következik be. 
@@ -77,14 +79,13 @@ A: a leírt lépésekkel [riasztási szabályt létrehozni](log-analytics-alerts
 Amikor leállítja az adatgyűjtést kapcsolatos riasztás létrehozása, ha a:
 - **Név** való *adatgyűjtés leállítása*
 - A **Súlyosság** legyen *Figyelmeztetés*
-- A **Keresési lekérdezés** legyen a következő: `Type=Operation OperationCategory="Data Collection Status" OperationStatus=Warning`
-- **Időablak** való *2 óra*.
-- A **Riasztási időköz** legyen egy óra, mivel a használati adatok csak óránként egyszer frissülnek.
+- A **Keresési lekérdezés** legyen a következő: `Heartbeat | summarize LastCall = max(TimeGenerated) by Computer | where LastCall < ago(15m)`
+- **Időablak** való *30 perc*.
+- **Riasztási gyakoriságot** minden *tíz* perc.
 - A **Riasztások létrehozása a következő alapján:** értéke legyen az *eredmények száma*
 - Az **Eredmények száma** legyen *Nagyobb, mint 0*
 
-A [műveletek a riasztási szabályokhoz adásával kapcsolatos](log-analytics-alerts-actions.md) részben leírt lépéseket követve konfigurálhat e-mailt, webhookot, vagy runbook-műveletet a riasztási szabályhoz.
-
+Ez a riasztás fog érvényesítést, ha a lekérdezési eredményeket ad vissza, csak akkor, ha több mint 15 percig hiányzó szívverés rendelkezik.  A [műveletek a riasztási szabályokhoz adásával kapcsolatos](log-analytics-alerts-actions.md) részben leírt lépéseket követve konfigurálhat e-mailt, webhookot, vagy runbook-műveletet a riasztási szabályhoz.
 
 ## <a name="configuration"></a>Konfiguráció
 ### <a name="q-can-i-change-the-name-of-the-tableblob-container-used-to-read-from-azure-diagnostics-wad"></a>Q. Módosítható az az Azure Diagnostics (ÜVEGVATTA) olvasásához használt tábla/blob-tároló neve?
@@ -141,9 +142,9 @@ Ellenőrizze, hogy Ön a két Azure-előfizetések.
 ### <a name="q-how-much-data-can-i-send-through-the-agent-to-log-analytics-is-there-a-maximum-amount-of-data-per-customer"></a>Q. Mennyi adatot lehet küldeni az ügynök keresztül szolgáltatáshoz? Van egy / felhasználói adatok maximális mérete?
 A. Az ingyenes csomagban egy napi cap 500 MB / munkaterület állítja be. A standard és premium tervek nincs korlátozva van feltöltött adatok mennyiségét. Felhő alapú szolgáltatásként Log Analytics célja, hogy automatikusan legfeljebb leíró a kötet méretezési érkező ügyfél –, akkor is, ha TB naponta.
 
-A Naplóelemzési ügynök úgy lett kialakítva, annak érdekében, hogy kevés erőforrást tartalmaz. Ügyfeleink egyik megírt blog kapcsolatos az elvégzett azokat az ügynök, és hogyan impressed voltak szemben. Engedélyezi a megoldások adatmennyiség függ. Részletes információk a adatmennyiség és a megoldás darabolását láthatja a [használati](log-analytics-usage.md) lap.
+A Naplóelemzési ügynök úgy lett kialakítva, annak érdekében, hogy kevés erőforrást tartalmaz. Engedélyezi a megoldások adatmennyiség függ. Részletes információk a adatmennyiség, és tekintse meg a részletes információkat a megoldás a [használati](log-analytics-usage.md) lap.
 
-További információkért olvassa a [ügyfél blog](http://thoughtsonopsmgr.blogspot.com/2015/09/one-small-footprint-for-server-one.html) kapcsolatos az alacsony helyigénnyel, az OMS-ügynököt.
+További információkért olvassa a [ügyfél blog](http://thoughtsonopsmgr.blogspot.com/2015/09/one-small-footprint-for-server-one.html) kapcsolatos az OMS-ügynök kevés erőforrást.
 
 ### <a name="q-how-much-network-bandwidth-is-used-by-the-microsoft-management-agent-mma-when-sending-data-to-log-analytics"></a>Q. Mekkora hálózati sávszélességet a Microsoft Management Agent (MMA) használatos, ha a Log Analyticshez való adatküldés?
 
@@ -165,5 +166,5 @@ A számítógépek számára, amely a WireData ügynök futhasson használja a k
 Type=WireData (ProcessName="C:\\Program Files\\Microsoft Monitoring Agent\\Agent\\MonitoringHost.exe") (Direction=Outbound) | measure Sum(TotalBytes) by Computer
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Ismerkedés a Naplóelemzési](log-analytics-get-started.md) tudjon meg többet a Naplóelemzési, és működik, és perc múlva.

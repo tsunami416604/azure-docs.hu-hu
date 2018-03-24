@@ -1,12 +1,12 @@
 ---
-title: "A tárolók - Azure webalkalmazás egy Docker-tároló beállításjegyzék folyamatos üzembe helyezés |} Microsoft Docs"
-description: "A telepítő a folyamatos üzembe helyezés hogyan tárolók a Web App alkalmazásban egy Docker tároló beállításjegyzékből."
+title: Folyamatos üzembe helyezés és a tárolók - Azure Web App egy Docker tároló beállításjegyzékből |} Microsoft Docs
+description: Hogyan állítható be az tárolókat Web App alkalmazásban egy Docker tároló beállításjegyzékből folyamatos üzembe helyezést.
 keywords: az Azure app service, linux, docker, acr, oss
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: ahmedelnably
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: a47fb43a-bbbd-4751-bdc1-cd382eae49f8
 ms.service: app-service
 ms.workload: na
@@ -15,80 +15,82 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2017
 ms.author: aelnably;msangapu
-ms.openlocfilehash: e61c767ada31fc32e28bfd9a2a4e843e9ca88053
-ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.openlocfilehash: ac35dbd041de50ab8aae1a0fb4c00fe3917a7297
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="continuous-deployment-with-web-app-for-containers"></a>A webalkalmazás az tárolókat folyamatos üzembe helyezés
 
-Ebben az oktatóanyagban konfigurálása a folyamatos üzembe egy egyéni tároló lemezkép felügyelt [Azure tároló beállításjegyzék](https://azure.microsoft.com/services/container-registry/) tárházak vagy [Docker Hub](https://hub.docker.com).
+Ebben az oktatóanyagban a folyamatos üzembe helyezés egy egyéni tároló lemezkép konfigurálása a felügyelt [Azure tároló beállításjegyzék](https://azure.microsoft.com/services/container-registry/) tárházak vagy [Docker Hub](https://hub.docker.com).
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Jelentkezzen be a [Azure-portálon](https://portal.azure.com)
+Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-## <a name="enable-container-continuous-deployment-feature"></a>Tároló folyamatos üzembe helyezés funkció engedélyezése
+## <a name="enable-the-continuous-deployment-feature"></a>A folyamatos üzembe helyezés funkció engedélyezése
 
-Engedélyezheti a folyamatos üzembe helyezés funkció használatával [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) és a következő parancs végrehajtása
+Engedélyezze a folyamatos üzembe helyezés szolgáltatás [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) és futtassa a következő parancsot:
 
 ```azurecli-interactive
 az webapp deployment container config --name name --resource-group myResourceGroup --enable-cd true
 ```
 
-Az a  **[Azure-portálon](https://portal.azure.com/)**, kattintson a **App Service** lehetőséget a bal oldali a lap.
+Az a [Azure-portálon](https://portal.azure.com/), jelölje be a **App Service** a lap bal oldalán lehetőséget.
 
-Kattintson a nevére, amely a folyamatos üzembe Docker Hub konfigurálni szeretné az alkalmazás.
+Válassza ki a nevét, amelynek a Docker Hub folyamatos üzembe helyezés konfigurálni szeretné az alkalmazást.
 
-A **Docker-tároló**, válassza a "On", majd kattintson a Mentés folyamatos üzembe helyezés engedélyezéséhez.
+A a **Docker-tároló** lapon jelölje be **a**, majd válassza ki **mentése** folyamatos üzembe helyezés engedélyezéséhez.
 
-![Helyezze be a Alkalmazásbeállítás képe](./media/app-service-webapp-service-linux-ci-cd/step2.png)
+![Képernyőkép a Alkalmazásbeállítás](./media/app-service-webapp-service-linux-ci-cd/step2.png)
 
-## <a name="prepare-webhook-url"></a>Készítse elő a Webhook URL-CÍMÉT
+## <a name="prepare-the-webhook-url"></a>Készítse elő a webhook URL-CÍMÉT
 
-Ezt úgy szerezheti be a Webhook URL-cím használatával [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) és a következő parancs végrehajtása
+A webhook URL-cím beszerzése a [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) és futtassa a következő parancsot:
 
 ```azurecli-interactive
 az webapp deployment container show-cd-url --name sname1 --resource-group rgname
 ```
 
-A Webhook URL-címhez kell rendelkeznie a következő végpontot: `https://<publishingusername>:<publishingpwd>@<sitename>.scm.azurewebsites.net/docker/hook`.
+A webhook URL-cím van szüksége a következő végpontot: `https://<publishingusername>:<publishingpwd>@<sitename>.scm.azurewebsites.net/docker/hook`.
 
 Ezt úgy szerezheti be a `publishingusername` és `publishingpwd` úgy, hogy letölti a webes alkalmazás közzététele a profil az Azure portál használatával.
 
-![Helyezze be a webhook 2 hozzáadása képe](./media/app-service-webapp-service-linux-ci-cd/step3-3.png)
+![Képernyőkép a webhook 2 hozzáadása](./media/app-service-webapp-service-linux-ci-cd/step3-3.png)
 
-## <a name="add-a-web-hook"></a>Egy webes hook hozzáadása
+## <a name="add-a-webhook"></a>A webhook hozzáadása
 
 ### <a name="azure-container-registry"></a>Azure Container Registry
 
-A beállításjegyzék portálpanelén kattintson **Webhookok**, hozzon létre egy új webhook kattintva **Hozzáadás**. Az a **webhook létrehozása** panelen adjon a webhook nevét. A Webhook URI-hoz, meg kell adnia az URL-címet szerzett **3. lépés**
+1. A beállításjegyzék portál lapján válassza ki a **Webhookok**.
+2. Hozzon létre egy új webhook, jelölje be **Hozzáadás**. 
+3. Az a **webhook létrehozása** ablaktáblán nevezze el a webhook. A webhook URI adja meg az előző szakaszban beszerzett URL-CÍMÉT.
 
-Győződjön meg arról, mint a tárház, amely tartalmazza a tároló lemezkép hatókörének meghatározása.
+Ellenőrizze, hogy a hatókör határozza meg, a tárház, amely tartalmazza a tároló lemezkép.
 
-![Helyezze be a webhook képe](./media/app-service-webapp-service-linux-ci-cd/step3ACRWebhook-1.png)
+![Képernyőkép a webhook](./media/app-service-webapp-service-linux-ci-cd/step3ACRWebhook-1.png)
 
-A lemezkép frissítésekor a lekérdezi a web app frissül automatikusan a új lemezképpel.
+A lemezkép frissítésekor a webes alkalmazás automatikusan frissül az új lemezképet.
 
 ### <a name="docker-hub"></a>Docker központ
 
-A Docker Hub oldalon kattintson **Webhookok**, majd **A WEBHOOK létrehozása**.
+A Docker központ lapon jelölje be **Webhookok**, majd **A WEBHOOK létrehozása**.
 
-![Helyezze be a webhook 1 hozzáadása képe](./media/app-service-webapp-service-linux-ci-cd/step3-1.png)
+![Képernyőkép a webhook 1 hozzáadása](./media/app-service-webapp-service-linux-ci-cd/step3-1.png)
 
-A Webhook URL-címhez, meg kell adnia az URL-címet szerzett **3. lépés**
+A webhook URL-CÍMÉT adja meg a korábban beszerzett URL-CÍMÉT.
 
-![Helyezze be a webhook 2 hozzáadása képe](./media/app-service-webapp-service-linux-ci-cd/step3-2.png)
+![Képernyőkép a webhook 2 hozzáadása](./media/app-service-webapp-service-linux-ci-cd/step3-2.png)
 
-A lemezkép frissítésekor a lekérdezi a web app frissül automatikusan a új lemezképpel.
+A lemezkép frissítésekor a webes alkalmazás automatikusan frissül az új lemezképet.
 
 ## <a name="next-steps"></a>További lépések
 
-* [Mi az Azure App Service Linux?](./app-service-linux-intro.md)
+* [Bevezetés az Azure App Service Linux rendszeren](./app-service-linux-intro.md)
 * [Azure Container Registry](https://azure.microsoft.com/services/container-registry/)
-* [A .NET Core használata a Linuxon futó Azure App Service-ben](quickstart-dotnetcore.md)
-* [A Ruby használata a Linuxon futó Azure App Service-ben](quickstart-ruby.md)
-* [Egyéni Docker-rendszerkép használata a Web App for Containers szolgáltatásban](quickstart-docker-go.md)
-* [Azure App Service Web App for Containers – gyakori kérdések](./app-service-linux-faq.md)
-* [Webalkalmazás az Azure CLI 2.0 használatával tárolók kezelése](./app-service-linux-cli.md)
+* [.NET Core-webalkalmazás létrehozása Linuxon futó App Service-ben](quickstart-dotnetcore.md)
+* [Ruby-webalkalmazás létrehozása az App Service Linux rendszeren](quickstart-ruby.md)
+* [A Web App az tárolókat Docker/Ugrás webalkalmazás üzembe helyezése](quickstart-docker-go.md)
+* [Azure App Service Linuxon – gyakori kérdések](./app-service-linux-faq.md)
+* [Webalkalmazás az Azure parancssori felület használatával tárolók kezelése](./app-service-linux-cli.md)

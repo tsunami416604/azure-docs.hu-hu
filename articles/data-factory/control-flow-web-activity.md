@@ -1,11 +1,11 @@
 ---
-title: "Az Azure Data Factory tevékenység webes |} Microsoft Docs"
-description: "Ismerje meg, hogyan használható fel a webes tevékenység, a Data Factory által támogatott vezérlésfolyam-tevékenységek egyik egy láncból REST-végpont meghívása."
+title: Az Azure Data Factory tevékenység webes |} Microsoft Docs
+description: Ismerje meg, hogyan használható fel a webes tevékenység, a Data Factory által támogatott vezérlésfolyam-tevékenységek egyik egy láncból REST-végpont meghívása.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: sharonlo101
-manager: jhubbard
-editor: 
+manager: craigg
+editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/10/2018
 ms.author: shlo
-ms.openlocfilehash: 510f9ac95245580cb7f2f51487b5aeacc2a4825c
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: e6846661370fcad139730fc0443d9df54fa12a70
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="web-activity-in-azure-data-factory"></a>Az Azure Data Factory webes tevékenység
 A webes tevékenység segítségével meghívható egy egyéni REST-végpont egy Data Factory-folyamatból. Az adatkészleteket és a társított szolgáltatásokat továbbíthatja a tevékenység számára felhasználásra vagy elérés céljára. 

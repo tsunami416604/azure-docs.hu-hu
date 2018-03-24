@@ -1,7 +1,7 @@
 ---
-title: "Log Analytics használata SQL Database több-bérlős alkalmazással | Microsoft Docs"
-description: "A telepítő és Naplóelemzés (OMS) használja egy több-bérlős Azure SQL adatbázis SaaS-alkalmazáshoz"
-keywords: "sql database-oktatóanyag"
+title: Naplóelemzési használhatja egy SQL-adatbázis több-bérlős alkalmazással |} Microsoft Docs
+description: Állítson be és Naplóelemzési (Operations Management Suite) használja egy több-bérlős Azure SQL adatbázis SaaS-alkalmazáshoz
+keywords: sql database-oktatóanyag
 services: sql-database
 author: stevestein
 manager: craigg
@@ -11,125 +11,129 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: sstein
 ms.reviewer: billgib
-ms.openlocfilehash: b141ca521ae9c4d9bf6a4be620bc8e5432c52f83
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 38a849ca5f4a767a4b9d9b9b86549e89a8217a2a
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
-# <a name="set-up-and-use-log-analytics-oms-with-a-multi-tenant-azure-sql-database-saas-app"></a>Állítson be és Naplóelemzés (OMS) használja egy több-bérlős Azure SQL adatbázis SaaS-alkalmazáshoz
+# <a name="set-up-and-use-log-analytics-operations-management-suite-with-a-multitenant-sql-database-saas-app"></a>Állítson be és Naplóelemzési (Operations Management Suite) használja egy több-bérlős SQL adatbázis SaaS-alkalmazáshoz
 
-Ebben az oktatóanyagban beállítása és használata *Naplóelemzési ([OMS](https://www.microsoft.com/cloud-platform/operations-management-suite))* a rugalmas készletek és adatbázisokat figyeli. Ez az oktatóanyag épít, a [Teljesítményfigyelő és a felügyeleti útmutató](saas-dbpertenant-performance-monitoring.md). Azt illusztrálja, hogyan használandó *Naplóelemzési* révén a figyelés és riasztás a megadott Azure-portálon. Naplóelemzési figyelési ezer rugalmas készletek és a több száz akár több ezer adatbázis támogatja. A Naplóelemzési egy egyetlen figyelési megoldást, amely integrálható a különböző alkalmazások és az Azure-szolgáltatások, az több Azure-előfizetések átívelő figyelésére is biztosít.
+Ebben az oktatóanyagban beállítását, és használja az Azure Naplóelemzés ([Operations Management Suite](https://www.microsoft.com/cloud-platform/operations-management-suite)) rugalmas készletek és adatbázisok figyelése. Ez az oktatóanyag épít, a [teljesítmény figyelése és kezelése az oktatóanyag](saas-dbpertenant-performance-monitoring.md). Azt illusztrálja, hogyan Naplóelemzési használata révén a figyelési és riasztási megadott Azure-portálon. Naplóelemzési figyelési ezer rugalmas készletek és a több száz akár több ezer adatbázis támogatja. A Naplóelemzési egy egyetlen figyelési megoldást, amely integrálható a különböző alkalmazások és az Azure-szolgáltatásokat az több Azure-előfizetések átívelő figyelésére is biztosít.
 
 Ezen oktatóanyag segítségével megtanulhatja a következőket:
 
 > [!div class="checklist"]
-> * Log Analytics (OMS) telepítése és konfigurálása
-> * A Log Analytics segítségével készleteket és adatbázisokat figyelhet
+> * Telepítse és konfigurálja a Log Analyticshez (Operations Management Suite).
+> * Log Analytics segítségével figyelheti a készletek és adatbázisokat.
 
 Az oktatóanyag teljesítéséhez meg kell felelnie az alábbi előfeltételeknek:
 
-* A Wingtip jegyek SaaS adatbázis / bérlői alkalmazás telepítve van. Kevesebb mint öt perc alatt telepítéséhez lásd: [központi telepítése és vizsgálja meg a Wingtip jegyek SaaS adatbázis / bérlői alkalmazás](saas-dbpertenant-get-started-deploy.md)
-* Az Azure PowerShell telepítve van. A részletekért lásd: [Ismerkedés az Azure PowerShell-lel](https://docs.microsoft.com/powershell/azure/get-started-azureps)
+* A Wingtip jegyek Szolgáltatottszoftver-adatbázis egy bérlő alkalmazás telepítve van. Kevesebb mint öt perc alatt telepítéséhez lásd: [központi telepítése és vizsgálja meg a Wingtip jegyek SaaS-adatbázis egy bérlő alkalmazás](saas-dbpertenant-get-started-deploy.md).
+* Az Azure PowerShell telepítve van. További információkért lásd: [Ismerkedés az Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps).
 
-Az SaaS-forgatókönyveknek és -mintáknak és azok figyelési megoldásokkal szemben támasztott követelményekre gyakorolt hatásának a megbeszélését lásd a [Teljesítményfigyelés és kezelés oktatóanyagban](saas-dbpertenant-performance-monitoring.md).
+Tekintse meg a [teljesítmény figyelése és kezelése az oktatóanyag](saas-dbpertenant-performance-monitoring.md) információt a Szolgáltatottszoftver-forgatókönyvek és megoldások és hatásuk a figyelési megoldás vonatkozó követelmények.
 
-## <a name="monitoring-and-managing-database-and-elastic-pool-performance-with-log-analytics-or-operations-management-suite-oms"></a>Figyelés és Log Analytics vagy az Operations Management Suite (OMS) adatbázis és a rugalmas készlet a teljesítmény kezelése
+## <a name="monitor-and-manage-database-and-elastic-pool-performance-with-log-analytics-or-operations-management-suite"></a>Megfigyelés és kezelés Naplóelemzési vagy az Operations Management Suite adatbázis és a rugalmas készlet teljesítmény
 
-SQL-adatbázis figyelés és riasztás érhető el az adatbázisok és a készletek az Azure portálon. A beépített figyelés és riasztás kényelmesen használható, de éppen erőforrás-specifikus, akkor megfelelően megfelelő nagyobb telepítések figyelése, vagy az egységes nézetének köszönhetően erőforrásokat és -előfizetések között.
+Az Azure SQL Database figyelés és riasztás érhető el az adatbázisok és a készletek az Azure portálon. A beépített figyelés és riasztás akkor hasznos, de erőforrás-specifikus. Ez azt jelenti, hogy megfelelően megfelelő nagyobb telepítések figyelése, vagy meg kell egyesítve láthassák erőforrásokat és -előfizetések között.
 
-Nagy mennyiségű forgatókönyvek esetén Naplóelemzési alkalmas figyelés és riasztás. A Naplóelemzési egy, külön Azure szolgáltatás, amely lehetővé teszi az elemzés során diagnosztikai naplók és potenciálisan sok szolgáltatások munkaterület összegyűjtött telemetrikus. Naplóelemzési egy lekérdezési nyelv és az adatok a képi megjelenítés olyan eszközöket biztosít operatív adatelemzés lehetővé. Az SQL-elemzési megoldások tartalmaz számos előre definiált rugalmas készlet és adatbázis figyelési és riasztási nézetek és lekérdezések. Az OMS egyéni nézettervező is biztosít.
+Nagy mennyiségű forgatókönyvek esetén használható Naplóelemzési figyelés és riasztás. A Naplóelemzési egy külön Azure szolgáltatás, amely lehetővé teszi az analytics diagnosztikai naplók és potenciálisan sok szolgáltatások munkaterület összegyűjtött telemetrikus keresztül. Naplóelemzési beépített lekérdezési nyelv és az adatok a képi megjelenítés olyan eszközöket biztosít, amelyek lehetővé teszik az operatív adatelemzés. Az SQL-elemzési megoldások a több előre meghatározott rugalmas készlet és adatbázis-figyelési és riasztási nézetek és lekérdezések biztosít. Az Operations Management Suite emellett egy egyéni adatforrásnézet-tervezőből.
 
-A Log Analytics-munkahelyek és elemzési megoldások az Azure Portalon és az OMS-ben is megnyithatók. Az Azure Portal az újabb hozzáférési pont, de lehet, hogy egyes területeken az OMS-portál mögött marad.
+Napló elemzési munkaterületekkel és elemzési megoldásokat nyissa meg az Azure portálon, és az Operations Management Suite. Az Azure-portál az újabb-hozzáférési pontnak, de előfordulhat, hogy az egyes területeken Operations Management Suite portálját mögött.
 
 ### <a name="create-performance-diagnostic-data-by-simulating-a-workload-on-your-tenants"></a>A bérlők a munkaterhelést szimulál diagnosztikai teljesítményadatok létrehozása 
 
-1. Az a **PowerShell ISE**, nyissa meg *... \\WingtipTicketsSaaS főkiszolgálós MultiTenantDb\\tanulási modulok\\Teljesítményfigyelő és felügyeleti\\** bemutató-PerformanceMonitoringAndManagement.ps1***. Tartsa nyitva ezt a szkriptet, mivel előfordulhat, hogy az oktatóanyag használata közben szeretne több terhelésgenerálási forgatókönyvet is futtatni.
-1. Ha még nem tette meg, kiépítése érdekesebb figyelési környezetet biztosít a bérlők egy tranzakcióköteghez. Ez néhány percet vesz igénybe:
-   1. Állítsa be **$DemoScenario = 1**, _bérlő köteg kiépítése_
-   1. Futtassa a parancsfájlt, és központi telepítése egy további 17 bérlők, nyomja meg a **F5**.  
+1. Nyissa meg a PowerShell ISE *... \\WingtipTicketsSaaS főkiszolgálós MultiTenantDb\\tanulási modulok\\Teljesítményfigyelő és felügyeleti\\bemutató-PerformanceMonitoringAndManagement.ps1*. Ez a parancsfájl tartsa nyitva, mert ez az oktatóanyag során generációs forgatókönyvek a terhelés számos futtatni kívánt.
+2. Ön még nem tette volna meg, ha használhatók a bérlők annak a figyelési környezetben ennél is érdekesebb megoldást egy tranzakcióköteghez. Ez a folyamat néhány percet vesz igénybe.
 
-1. Most indítsa el a terhelés generátor szimulált teher futtathatnak a bérlők számára.  
-    1. Állítsa be **$DemoScenario = 2**, _Generate normál intenzitásának terhelés (KB. 30 DTU)_.
-    1. A parancsfájl futtatásához nyomja le az **F5**.
+   a. Állítsa be **$DemoScenario = 1**, _kiépíteni a bérlő köteg_.
+
+   b. Futtassa a parancsfájlt, és egy további 17 bérlők telepítése, nyomja le az F5 billentyűt.
+
+3. Most indítsa el a terhelés generátor szimulált teher futtathatnak a bérlők számára.
+
+    a. Állítsa be **$DemoScenario = 2**, _Generate normál intenzitásának terhelés (KB. 30 DTU)_.
+
+    b. A parancsfájl futtatásához nyomja le az F5 billentyűt.
 
 ## <a name="get-the-wingtip-tickets-saas-database-per-tenant-application-scripts"></a>A Wingtip jegyek SaaS adatbázis / bérlői alkalmazás parancsfájlok beolvasása
 
-A Wingtip jegyek SaaS több-bérlős adatbázis parancsfájlok és az alkalmazás forráskódjához érhetők el a [WingtipTicketsSaaS-DbPerTenant](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant) GitHub-tárház. Tekintse meg a [általános útmutatást](saas-tenancy-wingtip-app-guidance-tips.md) töltse le és feloldása a Wingtip jegyek PowerShell-parancsfájlok lépéseit.
+A Wingtip jegyek SaaS több-bérlős adatbázis parancsfájlok és az alkalmazás forráskódjához érhetők el a [WingtipTicketsSaaS-DbPerTenant](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant) GitHub-tárház. Töltse le és feloldása a Wingtip jegyek PowerShell-parancsfájlok lépéseiért lásd: a [általános útmutatást](saas-tenancy-wingtip-app-guidance-tips.md).
 
-## <a name="installing-and-configuring-log-analytics-and-the-azure-sql-analytics-solution"></a>A Log Analytics és az Azure SQL Analytics megoldás telepítése és konfigurálása
+## <a name="install-and-configure-log-analytics-and-the-azure-sql-analytics-solution"></a>A Naplóelemzési és az Azure SQL elemzési megoldás telepítése és konfigurálása
 
-A Log Analytics egy különálló szolgáltatás, amelyet konfigurálni kell. A Naplóelemzési naplóadatokat, telemetriai adatok és a log analytics-munkaterület metrikák gyűjti. A naplóelemzési munkaterület erőforrás, csakúgy, mint más erőforrások, az Azure-ban, és létre kell hozni. Amíg a munkaterületen hozhatók létre ugyanabban az erőforráscsoportban, az alkalmazás nem szükséges általa figyelt, ez gyakran így elérhetővé válnak a legtöbb logika. A Wingtip jegyek alkalmazás esetén a egyetlen erőforráscsoportként működnek biztosítja az alkalmazással együtt törlődik a munkaterületen.
+A Naplóelemzési egy külön szolgáltatás, amelyet be kell állítani. A Naplóelemzési naplóadatokat, telemetriai adatok és metrikák Naplóelemzési munkaterület gyűjti. További erőforrások az Azure-ban, mint például a Naplóelemzési munkaterület kell létrehozni. A munkaterület nem szükséges, az általa figyelt alkalmazások ugyanabban az erőforráscsoportban hozható létre. Ez így gyakran az így a legtöbb, ha. A Wingtip jegyek alkalmazás esetén egyetlen erőforráscsoportként működnek segítségével győződjön meg arról, hogy a munkaterület törlése alkalmazásával.
 
-1. Az a **PowerShell ISE**, nyissa meg *... \\WingtipTicketsSaaS főkiszolgálós MultiTenantDb\\tanulási modulok\\Teljesítményfigyelő és felügyeleti\\Analytics jelentkezzen\\** bemutató-LogAnalytics.ps1***.
-1. A parancsfájl futtatásához nyomja le az **F5**.
+1. Nyissa meg a PowerShell ISE *... \\WingtipTicketsSaaS főkiszolgálós MultiTenantDb\\tanulási modulok\\Teljesítményfigyelő és felügyeleti\\Analytics jelentkezzen\\** bemutató-LogAnalytics.ps1***.
+2. A parancsfájl futtatásához nyomja le az F5 billentyűt.
 
-Ezen a ponton a nyitott Naplóelemzési tudja az Azure-portál (vagy az OMS-portállal) kell lennie. Telemetria kell gyűjteni a Naplóelemzési munkaterület, és láthatóvá válnak néhány percet vesz igénybe. A továbbiakban hagyja a rendszer a ennél is érdekesebb megoldást a szolgáltatás diagnosztikai adatok összegyűjtése. Eljött a pillanat, hogy magához vegyen valamilyen frissítőt, csak hagyja nyugodtan futni a terhelésgenerátort!
+Most már ki tudja nyitni a Naplóelemzési az Azure-portálon vagy az Operations Management Suite portálját. A Naplóelemzési munkaterület gyűjthet, és láthatóvá tegye azt néhány percet vesz igénybe. A továbbiakban hagyja a rendszer diagnosztikai adatok összegyűjtése, a ennél is érdekesebb megoldást a szolgáltatás. 
 
 ## <a name="use-log-analytics-and-the-sql-analytics-solution-to-monitor-pools-and-databases"></a>Készletek és adatbázisok figyelése a Log Analytics és az SQL Analytics megoldással
 
 
-Ebben a gyakorlatban nyissa meg a Naplóelemzési és az OMS-portálon az adatbázisok és a készletek alatt gyűjtött telemetriai adatok közül.
+Ebben a gyakorlatban nyissa meg a Naplóelemzési és az Operations Management Suite portálját az adatbázisok és a készletek gyűjtött telemetriai adatok közül.
 
-1. Keresse meg a [Azure-portálon](https://portal.azure.com) és megnyitásához kattintson a Naplóelemzési **minden szolgáltatás**, majd keresse meg a Naplóelemzési:
+1. Keresse meg a [Azure-portálon](https://portal.azure.com). Válassza ki **minden szolgáltatás** Naplóelemzési megnyitásához. Majd keresse meg a szolgáltatáshoz.
 
-   ![Log Analytics megnyitása](media/saas-dbpertenant-log-analytics/log-analytics-open.png)
+   ![Nyissa meg a Naplóelemzési](media/saas-dbpertenant-log-analytics/log-analytics-open.png)
 
-1. Válassza ki a munkaterület nevű _wtploganalytics -&lt;felhasználói&gt;_.
+2. Válassza ki a munkaterület nevű _wtploganalytics -&lt;felhasználói&gt;_.
 
-1. Válassza az **Áttekintés** lehetőséget a Log Analytics megoldás megnyitásához az Azure Portalon.
+3. Válassza az **Áttekintés** lehetőséget a Log Analytics megoldás megnyitásához az Azure Portalon.
 
-   ![áttekintés-hivatkozás](media/saas-dbpertenant-log-analytics/click-overview.png)
+   ![Áttekintés](media/saas-dbpertenant-log-analytics/click-overview.png)
 
     > [!IMPORTANT]
-    > Szükség lehet néhány perc elteltével a megoldás nem aktív. Legyen türelemmel!
+    > Eltarthat néhány percig, a megoldás csak aktív. 
 
-1. Kattintson az Azure SQL Analytics csempére a megnyitásához.
+4. Válassza ki a **Azure SQL elemzés** csempére kattintva nyissa meg azt.
 
-    ![Áttekintés](media/saas-dbpertenant-log-analytics/overview.png)
+    ![Áttekintés csempe](media/saas-dbpertenant-log-analytics/overview.png)
 
-    ![analytics](media/saas-dbpertenant-log-analytics/log-analytics-overview.png)
+5. A nézetek a megoldás az oldalt, a saját belső görgetősáv alján görgessen. Ha szükséges, frissítse az oldalt.
 
-1. A nézetek a megoldás az oldalt, görgessen a saját belső görgetősáv alján (frissítse a lapot, ha szükséges).
+6. Az összefoglalás lapon megismeréséhez válassza ki a csempéket, vagy az egyes adatbázisokat egy részletes explorer megnyitásához.
 
-1. Az összefoglalás lapon megismerkedhet a csempéket, vagy egy részletes explorer megnyitásához egyedi adatbázis kattintva.
+    ![Napló elemzések irányítópultján](media/saas-dbpertenant-log-analytics/log-analytics-overview.png)
 
-1. Módosítsa a szűrőt időintervallumát - e oktatóanyag kivételezési módosítandó beállítás _elmúlt 1 óra_
+7. Módosítsa a szűrőt az időtartományt módosításához. A jelen oktatóanyag esetében válassza ki a **elmúlt 1 óra**.
 
     ![időszűrője](media/saas-dbpertenant-log-analytics/log-analytics-time-filter.png)
 
-1. Válassza ki a lekérdezés használatát és az adatbázishoz tartozó metrikákat felfedezése egy adatbázist.
+8. Válasszon ki egy egyetlen adatbázist felfedezése, mely a lekérdezés használati és az adatbázishoz tartozó metrikákat.
 
     ![adatbázis elemzés](media/saas-dbpertenant-log-analytics/log-analytics-database.png)
 
-1. A használati metrikák görgessen a analytics lap jobb.
+9. A szoftverhasználati mérési adatok megtekintéséhez görgessen jobbra a analytics lap.
  
      ![adatbázis metrikák](media/saas-dbpertenant-log-analytics/log-analytics-database-metrics.png)
 
-1. Görgessen az analytics lap bal oldalán, majd kattintson a kiszolgáló csempére az erőforrás adatait listában. Ekkor megnyílik egy oldal, a készletek és adatbázisokat megjelenítő a kiszolgálón. 
+10. Görgessen az analytics lap bal oldalán, és válassza ki a kiszolgáló csempe az a **erőforrás Info** listája.  
 
-     ![Erőforrás-adatai](media/saas-dbpertenant-log-analytics/log-analytics-resource-info.png)
+    ![Erőforrások Info listája](media/saas-dbpertenant-log-analytics/log-analytics-resource-info.png)
 
- 
-     ![a készletek és adatbázisok kiszolgáló](media/saas-dbpertenant-log-analytics/log-analytics-server.png)
+    Megnyílik egy oldal, amely a készletek és az adatbázis a kiszolgálón.
 
-1. A kiszolgálón, amely megnyíló lapon látható a készletek és a kiszolgálón lévő adatbázis kattintson a készlet.  A készlet lapon görgessen jobbra a készlet metrikák megjelenítéséhez.  
+    ![a készletek és adatbázisok kiszolgáló](media/saas-dbpertenant-log-analytics/log-analytics-server.png)
 
-     ![készlet metrikák](media/saas-dbpertenant-log-analytics/log-analytics-pool-metrics.png)
+11. Válasszon ki egy készletet. A készlet lapon görgessen jobbra a készlet metrikák megjelenítéséhez. 
+
+    ![készlet metrikák](media/saas-dbpertenant-log-analytics/log-analytics-pool-metrics.png)
 
 
+12. A Naplóelemzési munkaterület válassza **OMS-portálon** van a munkaterület megnyitásához.
 
-1. Vissza a Naplóelemzési munkaterület válassza **OMS-portálon** van a munkaterület megnyitásához.
+    ![Az Operations Management Suite portálját csempe](media/saas-dbpertenant-log-analytics/log-analytics-workspace-oms-portal.png)
 
-    ![oms](media/saas-dbpertenant-log-analytics/log-analytics-workspace-oms-portal.png)
+Az Operations Management Suite-portálon ismerje meg a napló és a metrika adatok további a munkaterületen. 
 
-Az OMS-portálon ismerje meg a napló és a metrika adatok további a munkaterületen.  
+Figyelés és riasztás Naplóelemzés és az Operations Management Suite alapulnak lekérdezések az adatokat a munkaterületen eltérően a riasztási definiált az egyes erőforrások az Azure portálon keresztül. Riasztások sablon a lekérdezések, egy riasztást, amely felett az összes adatbázisra, nem pedig adatbázisonként definiáló egy definiálhat. Lekérdezések csak a munkaterület érhető el az adatok korlátozza.
 
-A figyelés és riasztás Naplóelemzés és az OMS lekérdezéseken alapul az adatokat a munkaterületen eltérően a riasztási definiált az egyes erőforrások az Azure portálon keresztül. Riasztások sablon a lekérdezések, egy riasztást, amely felett az összes adatbázisra, nem pedig adatbázisonként definiáló egy definiálhat. A lekérdezéseket csak a munkaterületen elérhető adatok korlátozzák.
+Lekérdezése, és állítson be riasztásokat az Operations Management Suite használatáról további információk: [Naplóelemzési a riasztási szabályok használata](https://docs.microsoft.com/azure/log-analytics/log-analytics-alerts-creating).
 
-További információ az OMS használatával lekérdezése, és állítson be riasztásokat, a megtekintéséhez [Naplóelemzési a riasztási szabályok használata](https://docs.microsoft.com/azure/log-analytics/log-analytics-alerts-creating).
-
-Az SQL Database-ben a Log Analytics díjszabása a munkaterületen található adatmennyiségtől függ. Ebben az oktatóanyagban létrehozott egy szabad munkaterület, amely korlátozódik 500 MB / nap. Felső határ elérésekor adatok nem kerülnek a munkaterületen.
+A Naplóelemzési SQL-adatbázis költségek a munkaterületen adatok mennyisége alapján. Ebben az oktatóanyagban létrehozott egy szabad munkaterület, amely korlátozódik 500 MB / nap. Ezt a határértéket elérése után adatok nem kerülnek a munkaterületen.
 
 
 ## <a name="next-steps"></a>További lépések
@@ -137,13 +141,13 @@ Az SQL Database-ben a Log Analytics díjszabása a munkaterületen található a
 Ennek az oktatóanyagnak a segítségével megtanulta a következőket:
 
 > [!div class="checklist"]
-> * Log Analytics (OMS) telepítése és konfigurálása
-> * A Log Analytics segítségével készleteket és adatbázisokat figyelhet
+> * Telepítse és konfigurálja a Log Analyticshez (Operations Management Suite).
+> * Log Analytics segítségével figyelheti a készletek és adatbázisokat.
 
-[Bérlői elemzések – oktatóanyag](saas-dbpertenant-log-analytics.md)
+Próbálja meg a [bérlői analytics oktatóanyag](saas-dbpertenant-log-analytics.md).
 
 ## <a name="additional-resources"></a>További források
 
-* [További oktatóprogramot kínál, amelyek a kezdeti Wingtip jegyek SaaS adatbázis / bérlői alkalmazástelepítés épül](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
+* [További oktatóprogramot kínál, amelyek a kezdeti Wingtip jegyek SaaS adatbázis / bérlői alkalmazás központi telepítésének létrehozása](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
 * [Azure Log Analytics](../log-analytics/log-analytics-azure-sql.md)
-* [OMS](https://blogs.technet.microsoft.com/msoms/2017/02/21/azure-sql-analytics-solution-public-preview/)
+* [Operations Management Suite](https://blogs.technet.microsoft.com/msoms/2017/02/21/azure-sql-analytics-solution-public-preview/)

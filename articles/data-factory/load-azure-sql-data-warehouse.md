@@ -1,21 +1,21 @@
 ---
-title: "Adatok betöltése az Azure SQL Data Warehouse Azure Data Factory használatával |} Microsoft Docs"
-description: "Adatok másolása az Azure SQL Data Warehouse az Azure Data Factory használatával"
+title: Adatok betöltése az Azure SQL Data Warehouse Azure Data Factory használatával |} Microsoft Docs
+description: Adatok másolása az Azure SQL Data Warehouse az Azure Data Factory használatával
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: spelluru
+manager: craigg
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: article
 ms.date: 01/17/2018
 ms.author: jingwang
-ms.openlocfilehash: eec6eeb3419c5f5f4c8d22398051f7cf057ac980
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 49ba61ba8cf68a39eef21b1939a3e8a6c92f8827
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="load-data-into-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Adatok betöltése az Azure SQL Data Warehouse Azure Data Factory használatával
 
@@ -42,18 +42,18 @@ A cikkből megtudhatja, hogyan használható a Data Factory adatok másolása es
 * Azure-előfizetés: Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/) megkezdése előtt.
 * Az SQL Data Warehouse: Az adatraktár adatait tartalmazza, amely az SQL-adatbázis átmásolva keresztül. Ha nem rendelkezik Azure SQL Data Warehouse, lásd az útmutatást [SQL Data Warehouse létrehozása](../sql-data-warehouse/sql-data-warehouse-get-started-tutorial.md).
 * Az Azure SQL Database: Ez az oktatóanyag az Adventure Works LT mintaadatokkal Azure SQL-adatbázis adatok másolja át. A cikk utasításait követve létrehozhat SQL-adatbázis [hozzon létre egy Azure SQL-adatbázis](../sql-database/sql-database-get-started-portal.md). 
-* Azure storage-fiókok: az Azure Storage használatos a _átmeneti_ blob a tömeges másolási műveletnél. Ha egy Azure storage-fiók nem rendelkezik, tekintse meg a utasításait [hozzon létre egy tárfiókot](../storage/common/storage-create-storage-account.md#create-a-storage-account).
+* Azure storage-fiókok: az Azure Storage használatos a _átmeneti_ blob a tömeges másolási műveletnél. Ha még nem rendelkezik Azure Storage-fiókkal, a szükséges utasításokat a [Storage-fiók létrehozását](../storage/common/storage-create-storage-account.md#create-a-storage-account) ismertető cikkben találja.
 
 ## <a name="create-a-data-factory"></a>Data factory létrehozása
 
 1. A bal oldali menüben válassza **új** > **adatok + analitika** > **adat-előállító**: 
    
-   ![Hozzon létre egy új adat-előállító](./media/load-azure-sql-data-warehouse/new-azure-data-factory-menu.png)
+   ![Új adat-előállító létrehozása](./media/load-azure-sql-data-warehouse/new-azure-data-factory-menu.png)
 2. Az a **új adat-előállító** lapján adja meg a mezőket, amelyeknek az alábbi ábrán látható:
       
    ![Új adat-előállító lap](./media/load-azure-sql-data-warehouse/new-azure-data-factory.png)
  
-    * **Név**: Adja meg az az Azure data factory globálisan egyedi nevet. Ha a hibaüzenet "adat-előállító \"LoadSQLDWDemo\" nem áll rendelkezésre," írjon be egy másik nevet az adat-előállítóban. Például használhatja a név  _**saját_név**_**ADFTutorialDataFactory**. Próbálja meg újra létrehozni az adat-előállítóban. Adat-előállító összetevők elnevezési szabályait, lásd: [Data Factory elnevezési szabályok](naming-rules.md).
+    * **Név**: Adja meg az az Azure data factory globálisan egyedi nevet. Ha a hibaüzenet "adat-előállító \"LoadSQLDWDemo\" nem áll rendelkezésre," írjon be egy másik nevet az adat-előállítóban. Például használhatja a név  _**saját_név**_**ADFTutorialDataFactory**. Próbálja meg újra létrehozni az adat-előállítóban. A Data Factory-összetevők elnevezési szabályait a [Data Factory elnevezési szabályait](naming-rules.md) ismertető cikkben találja.
     * **Előfizetés**: válassza ki az Azure-előfizetéshez használandó adat-előállító létrehozása. 
     * **Erőforráscsoport**: a legördülő listából válasszon ki egy meglévő erőforráscsoportot, vagy válassza ki a **hozzon létre új** lehetőséget, majd írja be az erőforráscsoport nevét. Az erőforráscsoportokkal kapcsolatos információkért tekintse meg a [Using resource groups to manage your Azure resources](../azure-resource-manager/resource-group-overview.md) (Erőforráscsoportok használata az Azure-erőforrások kezeléséhez) című cikket.  
     * **Verzió**: válasszon **V2 (előzetes verzió)**.

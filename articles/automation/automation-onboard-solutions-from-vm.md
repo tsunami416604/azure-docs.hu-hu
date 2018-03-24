@@ -1,20 +1,19 @@
 ---
-title: "Megtudhatja, hogyan előkészítésére frissítéskezelés, a változások követése, és a készlet megoldásokat az Azure virtuális gép"
-description: "Ismerje meg, hogyan érheti egy Azure virtuális gép Azure Automation részét képező frissítéskezelés, a változások követése, és a készlet megoldásokkal"
+title: Megtudhatja, hogyan előkészítésére frissítéskezelés, a változások követése, és a készlet megoldásokat az Azure virtuális gép
+description: Ismerje meg, hogyan érheti egy Azure virtuális gép Azure Automation részét képező frissítéskezelés, a változások követése, és a készlet megoldásokkal
 services: automation
-keywords: 
 author: georgewallace
 ms.author: gwallace
-ms.date: 02/28/2018
+ms.date: 03/19/2018
 ms.topic: article
 ms.service: automation
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: a850189406b394e7935763206f9e3a191b415170
-ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.openlocfilehash: 8713447386e116b3f1ecb2754d46cc8d88d00b39
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions-from-an-azure-virtual-machine"></a>A bevezetni frissítéskezelés, a változások követése, és a készlet megoldások egy Azure virtuális gépen
 
@@ -22,19 +21,19 @@ Azure Automation-megoldások kezelése az operációs rendszer biztonsági friss
 
 ## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
 
-Jelentkezzen be az Azure-ba a https://portal.azure.com címen
+Jelentkezzen be az Azure: https://portal.azure.com
 
 ## <a name="enable-the-solutions"></a>A megoldások
 
 Nyissa meg egy létező virtuális gépet, és válassza **frissítéskezelés**, **készlet**, vagy **a változáskövetés** alatt **műveletek**.
 
-Válassza ki a naplóelemzési munkaterületet, és automatizálási fiókot, kattintson **engedélyezése** ahhoz, hogy a megoldás. A megoldás ahhoz, hogy akár 15 percet vesz igénybe.
+A megoldás engedélyezéséhez válassza ki a Log Analytics-munkaterületet és az Automation-fiókot, majd kattintson az **Engedélyezés** gombra. A megoldás engedélyezése akár 15 percet is igénybe vehet.
 
-![A bevezetni frissítés megoldás](media/automation-onboard-solutions-from-vm/onboard-solution.png)
+![Az Update megoldás előkészítése](media/automation-onboard-solutions-from-vm/onboard-solution.png)
 
 Nyissa meg az egyéb megoldások, és kattintson a **engedélyezése**, a naplóelemzési és legördülő listák le vannak tiltva, mivel ezek ugyanazt a munkaterületet, és automatizálási fiókot az előzőekben engedélyezett megoldásként az Automation-fiókhoz.
 
-![A bevezetni frissítés megoldás](media/automation-onboard-solutions-from-vm/onboard-solutions2.png)
+![Az Update megoldás előkészítése](media/automation-onboard-solutions-from-vm/onboard-solutions2.png)
 
 > [!NOTE]
 > **Változások követése** és **készlet** ugyanahhoz a megoldáshoz, használja, ha engedélyezve van a másik engedélyezve legyen.

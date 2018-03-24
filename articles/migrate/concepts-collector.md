@@ -1,17 +1,17 @@
 ---
-title: "Adatgyűjtő készülék Azure áttelepítése |} Microsoft Docs"
-description: "A gyűjtő készüléket és konfigurálásának áttekintése."
+title: Adatgyűjtő készülék Azure áttelepítése |} Microsoft Docs
+description: A gyűjtő készüléket és konfigurálásának áttekintése.
 author: ruturaj
 ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 01/23/2017
 ms.author: ruturajd
 services: azure-migrate
-ms.openlocfilehash: 49f3d5ba55a9c1abfcd6dcb50058ed7a001a2eec
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: ea2367a6e1facfbe6a36cb145e258491a1c99517
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="collector-appliance"></a>Adatgyűjtő-készülék
 
@@ -21,7 +21,7 @@ ms.lasthandoff: 03/08/2018
 
 ## <a name="overview"></a>Áttekintés
 
-Az Azure-áttelepítése gyűjtő egy lighweight készülék felderítéséhez a helyszíni vCenter környezetben használható. A készülék deríti fel a helyszíni VMware rendszerű gépek, és a rájuk vonatkozó metaadatok küld az Azure áttelepítése szolgáltatás.
+Az Azure-áttelepítése gyűjtő egy egyszerűsített készülék felderítéséhez a helyszíni vCenter környezetben használható. A készülék deríti fel a helyszíni VMware rendszerű gépek, és a rájuk vonatkozó metaadatok küld az Azure áttelepítése szolgáltatás.
 
 A gyűjtő készülék valójában egy OVF, amely az Azure áttelepítése projekt letölthető. 4 mag, 8 GB RAM és 80 GB egy lemeznek VMware virtuális gépek elindítja. A készülék operációs rendszer Windows Server 2012 R2 (64 bites).
 
@@ -172,6 +172,15 @@ A következő táblázat a teljesítményszámlálók gyűjtése, valamint is fe
 A gyűjtő csak felderítésére szolgál az adatokról, és elküldi a projektet. A projekt a felderített adatokat jelenik meg a portálon, és értékelés készítése előtt további időt vehet igénybe.
 
 A kijelölt hatókörben lévő virtuális gépek száma alapján, az legfeljebb 15 percet vesz igénybe a statikus metaadatok küldésére a projektet. A statikus metaadatok a portálon elérhetővé válik, lásd a gépet a portálon, és csoportok létrehozása. Egy értékelési nem hozható létre, amíg a feladat befejeződött, és a projekt feldolgozta-e az adatokat. Egyszer a feladatot a gyűjtő befejeződött, is igénybe vehet, legfeljebb egy órával a teljesítményadatokat a portálon elérhető legyen a kijelölt hatókörben lévő virtuális gépek száma alapján.
+
+## <a name="locking-down-the-collector-appliance"></a>A gyűjtő készülék zárolása
+Azt javasoljuk, hogy fut a folyamatos Windows-frissítéseket az adatgyűjtő-készüléken. Ha a gyűjtő 45 napig nem frissül, a gyűjtő indul el automatikusan – a gép leállítása. Ha a felderítés fut, a gép nem ki lesz kapcsolva, akkor is, ha a 45 nap időszak lejárt. Indítsa el a felderítési feladat befejeződik, a számítógép ki lesz kapcsolva. Ha a gyűjtő legfeljebb 45 napig használ, azt javasoljuk, hogy a gép frissült, minden alkalommal futó Windows Update.
+
+Javasoljuk továbbá az alábbi lépéseket a készülék biztonságos
+1. Ne ossza és rendszergazdai jelszavakat feljegyezte jogosulatlan felekkel.
+2. Állítsa le a készülék, ha nincsenek használatban.
+3. A készülék a biztonságos hálózati helyezze el.
+4. Ha az áttelepítés munkaelem befejeződött, törölje a készülék-példányt. Győződjön meg arról, a lemez (VMDKs) fájlok biztonsági mentése is törli, a lemezek esetleg gyorsítótárazott azokat a vCenter hitelesítőadat.
 
 ## <a name="how-to-upgrade-collector"></a>Gyűjtő frissítése
 

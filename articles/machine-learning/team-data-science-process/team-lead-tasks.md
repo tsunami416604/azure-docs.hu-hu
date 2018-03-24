@@ -1,11 +1,11 @@
 ---
-title: "Vonja össze az adatokat tudományos folyamat Team vezethet feladatok – Azure |} Microsoft Docs"
-description: "A feladatokat egy csoport röviden a tudományos adatok team projekt vezethet."
-documentationcenter: 
+title: Vonja össze az adatokat tudományos folyamat Team vezethet feladatok – Azure |} Microsoft Docs
+description: A feladatokat egy csoport röviden a tudományos adatok team projekt vezethet.
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: bradsev;
-ms.openlocfilehash: 58e8bfeb547fbcd7f472fbed50073b1ca3176b72
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.openlocfilehash: 995ad557eb06e545b1813e1f4631e243a98830b3
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="team-lead-tasks"></a>Az érdeklődési feladatainak
 
@@ -208,7 +208,7 @@ Klónozás, a két címtár után **MyTeamProjectTemplate** (D3) és **MyTeamUti
 
 Másolja a tartalmat a helyi **GroupProjectTemplate** (D1) mappát a helyi **MyTeamProjectTemplate** (D3), futtassa a következő rendszerhéj-parancsfájlok egyikét: 
 
-####<a name="from-the-powershell-command-line-for-windows"></a>A parancssori Windows Powershellből        
+#### <a name="from-the-powershell-command-line-for-windows"></a>A parancssori Windows Powershellből       
 
     wget "https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/TDSP/tdsp_local_copy_win.ps1" -outfile "tdsp_local_copy_win.ps1"
     .\tdsp_local_copy_win.ps1 2
@@ -216,7 +216,7 @@ Másolja a tartalmat a helyi **GroupProjectTemplate** (D1) mappát a helyi **MyT
     
 ![16](./media/team-lead-tasks/team-leads-16-local_copy_team_lead_new.png)
 
-####<a name="from-the-linux-shell-for-the-linux-dsvm"></a>A Linux-rendszerhéjból a **Linux DSVM**
+#### <a name="from-the-linux-shell-for-the-linux-dsvm"></a>A Linux-rendszerhéjból a **Linux DSVM**
     
     wget "https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/TDSP/tdsp_local_copy_linux.sh"
     bash tdsp_local_copy_linux.sh 2
@@ -388,7 +388,7 @@ Győződjön meg arról, hogy egy új F meghajtó sikeresen csatlakoztatva lett 
 
 **Adja meg manuálisan az Azure file storage adatokat hogyan:** nem rendelkezik az Azure file storage adatait egy szövegfájlt, ha akkor is kövesse az utasításokat a következő képernyőn írja be a szükséges előfizetés, a tárfiók és az Azure fájl tárolással kapcsolatos:
 
-- Bemeneti  **n** .
+- Bemeneti **n**.
 - Válassza ki az előfizetés nevét, ahol az az Azure file storage az előző lépésben jött létre az indexet:
 
     ![41](./media/team-lead-tasks/team-leads-41-attach-s5-linux.png)
@@ -408,7 +408,7 @@ A csoport VSTS server kezdőlapján kattintson a **fogaskerék ikonra** mellett 
 
 ![44](./media/team-lead-tasks/team-leads-44-add-team-members.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az alábbiakban a szerepkörök és az adatok tudományos eljárással meghatározott feladatok részletes leírását mutató hivatkozásokat:
 

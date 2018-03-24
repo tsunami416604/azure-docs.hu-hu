@@ -1,29 +1,27 @@
 ---
-title: "Események fogadása az Azure Event Hubs Java használatával |} Microsoft Docs"
-description: "Első lépések fogadását az Event Hubs Java használatával"
+title: Események fogadása az Azure Event Hubs Java használatával |} Microsoft Docs
+description: Első lépések fogadását az Event Hubs Java használatával
 services: event-hubs
-documentationcenter: 
+documentationcenter: ''
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 38e3be53-251c-488f-a856-9a500f41b6ca
 ms.service: event-hubs
 ms.workload: core
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2017
+ms.date: 03/21/2018
 ms.author: sethm
-ms.openlocfilehash: 94b56fdd1ad350d861b27644c6bedcc59e1cefb0
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: bf87bed80c142bce6229ad858a33a1c6ede63a23
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="receive-events-from-azure-event-hubs-using-java"></a>Események fogadása az Azure Event Hubs Java használatával
 
-
-## <a name="introduction"></a>Bevezetés
 Az Event Hubs egy kiválóan méretezhető fogadórendszer, amely is több millió eseményt másodpercenként, az alkalmazás engedélyezése feldolgozni, és elemezze a nagy mennyiségű adatot a csatlakoztatott eszközök és alkalmazások által létrehozott. Az adatoknak az Event Hubs szolgáltatásban való összegyűjtését követően, az adatokat átalakíthatja és tárolhatja bármilyen valós idejű elemzési szolgáltató vagy tárolási fürt használatával.
 
 További információkért lásd: a [Event Hubs – áttekintés][Event Hubs overview].
@@ -35,43 +33,47 @@ Ez az oktatóanyag bemutatja, hogyan használja a Java nyelven írt konzolalkalm
 Az oktatóanyag teljesítéséhez szüksége van a következő előfeltételek teljesülését:
 
 * A Java-fejlesztőkörnyezet. Ebben az oktatóanyagban feltételezzük, hogy [Eclipse](https://www.eclipse.org/).
-* Aktív Azure-fiók. <br/>Ha nincs fiókja, néhány perc alatt létrehozhat egy ingyenes fiókot. További információkért lásd: <a href="http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F" target="_blank">Ingyenes Azure-fiók létrehozása</a>.
+* Aktív Azure-fiók. Ha még nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot][] megkezdése előtt.
+
+A jelen oktatóanyagban található kód alapján a [EventProcessorSample kódja a Githubon](https://github.com/Azure/azure-event-hubs/tree/master/samples/Java/Basic/EventProcessorSample), amely láthatja, hogy a teljes működő alkalmazást.
 
 ## <a name="receive-messages-with-eventprocessorhost-in-java"></a>Üzenetek fogadása az EventProcessorHost használatával Javában
 
 **EventProcessorHost** egy Java-osztály, amely leegyszerűsíti az események fogadását az Event Hubs kezeli az állandó ellenőrzőpontokat és párhuzamos fogadásokat az adott Event hubs Eseményközpontokból. EventProcessorHost használ, akkor is feloszthatja az eseményeket több fogadóra, akkor is, ha különböző csomópontokon üzemelnek. Ez a példa bemutatja, hogyan használható az EventProcessorHost egyetlen fogadóhoz.
 
 ### <a name="create-a-storage-account"></a>Create a storage account
+
 EventProcessorHost használatához rendelkeznie kell egy [Azure Storage-fiók][Azure Storage account]:
 
-1. Jelentkezzen be a [Azure-portálon][Azure portal], és kattintson a **+ új** a képernyő bal oldalán.
-2. Kattintson a **Tárolás**, majd a **Tárfiók** elemre. A **Tárfiókok létrehozása** panelen írja be a tárfiók nevét. Fejezze be a mezőket, válassza ki a kívánt régiót, és kattintson **létrehozása**.
+1. Jelentkezzen be a [Azure-portálon][Azure portal], és kattintson a **+ hozzon létre egy erőforrást** a képernyő bal oldalán.
+2. Kattintson a **Tárolás**, majd a **Tárfiók** elemre. Az a **storage-fiók létrehozása** ablak, írja be a tárfiók nevét. Fejezze be a mezőket, válassza ki a kívánt régiót, és kattintson **létrehozása**.
    
     ![](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-storage2.png)
 
-3. Kattintson az imént létrehozott tárfiókra, majd a **Manage Access Keys** (Elérési kulcsok kezelése) lehetőségre:
+3. Kattintson az újonnan létrehozott tárfiók, és kattintson a **hívóbetűk**:
    
     ![](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-storage3.png)
 
-    Másolja az elsődleges elérési kulcsot egy ideiglenes helyre, az oktatóanyag későbbi részében használni.
+    A key1 értéket másol egy ideiglenes helyre, az oktatóanyag későbbi részében használni.
 
 ### <a name="create-a-java-project-using-the-eventprocessor-host"></a>Java-projekt létrehozása az EventProcessor Hosttal
-Az Event Hubs Java ügyfélkódtár a Maven-projektek használható a [Maven központi tárházban][Maven Package], és a következő függőségi nyilatkozat az Maven project fájl használatával lehet hivatkozni:    
+
+Az Event Hubs Java ügyfélkódtár a Maven-projektek használható a [Maven központi tárházban][Maven Package], és lehet rá hivatkozni a következő függőségi nyilatkozat belül a Maven használata projekt fájlt. A jelenlegi verzió: 1.0.0:    
 
 ```xml
 <dependency>
     <groupId>com.microsoft.azure</groupId>
     <artifactId>azure-eventhubs</artifactId>
-    <version>{VERSION}</version>
+    <version>1.0.0</version>
 </dependency>
 <dependency>
     <groupId>com.microsoft.azure</groupId>
     <artifactId>azure-eventhubs-eph</artifactId>
-    <version>{VERSION}</version>
+    <version>1.0.0</version>
 </dependency>
 ```
 
-A különböző típusú buildkörnyezeteket, explicit módon beszerezheti a legfrissebb kiadott JAR fájlok a [Maven központi tárházban] [ Maven Package] vagy [a kiadási terjesztési pontot a Githubon](https://github.com/Azure/azure-event-hubs/releases).  
+A különböző típusú buildkörnyezeteket, explicit módon beszerezheti a legfrissebb kiadott JAR fájlok a [Maven központi tárházban][Maven Package].  
 
 1. A következő mintában először hozzon létre egy új Maven-projektet egy konzol/felületalkalmazáshoz a kedvenc Java-fejlesztőkörnyezetében. Az osztály `ErrorNotificationHandler`.     
    
@@ -88,135 +90,173 @@ A különböző típusú buildkörnyezeteket, explicit módon beszerezheti a leg
         }
     }
     ```
-2. A következő kóddal hozzon létre egy `EventProcessor` nevű új osztályt.
+2. A következő kóddal hozzon létre egy `EventProcessorSample` nevű új osztályt. A helyőrzőket cserélje le a event hub és a tárolási fiók létrehozásakor használt értékek:
+   
+   ```java
+   package com.microsoft.azure.eventhubs.samples.eventprocessorsample;
+
+   import com.microsoft.azure.eventhubs.ConnectionStringBuilder;
+   import com.microsoft.azure.eventhubs.EventData;
+   import com.microsoft.azure.eventprocessorhost.CloseReason;
+   import com.microsoft.azure.eventprocessorhost.EventProcessorHost;
+   import com.microsoft.azure.eventprocessorhost.EventProcessorOptions;
+   import com.microsoft.azure.eventprocessorhost.ExceptionReceivedEventArgs;
+   import com.microsoft.azure.eventprocessorhost.IEventProcessor;
+   import com.microsoft.azure.eventprocessorhost.PartitionContext;
+
+   import java.util.concurrent.ExecutionException;
+   import java.util.function.Consumer;
+
+   public class EventProcessorSample
+   {
+       public static void main(String args[]) throws InterruptedException, ExecutionException
+       {
+           String consumerGroupName = "$Default";
+           String namespaceName = "----NamespaceName----";
+           String eventHubName = "----EventHubName----";
+           String sasKeyName = "----SharedAccessSignatureKeyName----";
+           String sasKey = "----SharedAccessSignatureKey----";
+           String storageConnectionString = "----AzureStorageConnectionString----";
+           String storageContainerName = "----StorageContainerName----";
+           String hostNamePrefix = "----HostNamePrefix----";
+        
+           ConnectionStringBuilder eventHubConnectionString = new ConnectionStringBuilder()
+                .setNamespaceName(namespaceName)
+                .setEventHubName(eventHubName)
+                .setSasKeyName(sasKeyName)
+                .setSasKey(sasKey);
+        
+           EventProcessorHost host = new EventProcessorHost(
+                EventProcessorHost.createHostName(hostNamePrefix),
+                eventHubName,
+                consumerGroupName,
+                eventHubConnectionString.toString(),
+                storageConnectionString,
+                storageContainerName);
+        
+           System.out.println("Registering host named " + host.getHostName());
+           EventProcessorOptions options = new EventProcessorOptions();
+           options.setExceptionNotification(new ErrorNotificationHandler());
+
+           host.registerEventProcessor(EventProcessor.class, options)
+           .whenComplete((unused, e) ->
+           {
+               if (e != null)
+               {
+                   System.out.println("Failure while registering: " + e.toString());
+                   if (e.getCause() != null)
+                   {
+                       System.out.println("Inner exception: " + e.getCause().toString());
+                   }
+               }
+           })
+           .thenAccept((unused) ->
+           {
+               System.out.println("Press enter to stop.");
+               try 
+               {
+                   System.in.read();
+               }
+               catch (Exception e)
+               {
+                   System.out.println("Keyboard read failed: " + e.toString());
+               }
+           })
+           .thenCompose((unused) ->
+           {
+               return host.unregisterEventProcessor();
+           })
+           .exceptionally((e) ->
+           {
+               System.out.println("Failure while unregistering: " + e.toString());
+               if (e.getCause() != null)
+               {
+                   System.out.println("Inner exception: " + e.getCause().toString());
+               }
+               return null;
+           })
+           .get(); // Wait for everything to finish before exiting main!
+        
+           System.out.println("End of sample");
+       }
+    ```
+3. Hozzon létre egy további osztályt `EventProcessor`, a következő kódot:
    
     ```java
-    import com.microsoft.azure.eventhubs.EventData;
-    import com.microsoft.azure.eventprocessorhost.CloseReason;
-    import com.microsoft.azure.eventprocessorhost.IEventProcessor;
-    import com.microsoft.azure.eventprocessorhost.PartitionContext;
-   
-    public class EventProcessor implements IEventProcessor
+    public static class EventProcessor implements IEventProcessor
     {
         private int checkpointBatchingCount = 0;
-   
+
+        // OnOpen is called when a new event processor instance is created by the host. In a real implementation, this
+        // is the place to do initialization so that events can be processed when they arrive, such as opening a database
+        // connection.
         @Override
         public void onOpen(PartitionContext context) throws Exception
         {
             System.out.println("SAMPLE: Partition " + context.getPartitionId() + " is opening");
         }
-   
+
+        // OnClose is called when an event processor instance is being shut down. The reason argument indicates whether the shut down
+        // is because another host has stolen the lease for this partition or due to error or host shutdown. In a real implementation,
+        // this is the place to do cleanup for resources that were opened in onOpen.
         @Override
         public void onClose(PartitionContext context, CloseReason reason) throws Exception
         {
             System.out.println("SAMPLE: Partition " + context.getPartitionId() + " is closing for reason " + reason.toString());
         }
-   
+        
+        // onError is called when an error occurs in EventProcessorHost code that is tied to this partition, such as a receiver failure.
+        // It is NOT called for exceptions thrown out of onOpen/onClose/onEvents. EventProcessorHost is responsible for recovering from
+        // the error, if possible, or shutting the event processor down if not, in which case there will be a call to onClose. The
+        // notification provided to onError is primarily informational.
         @Override
         public void onError(PartitionContext context, Throwable error)
         {
             System.out.println("SAMPLE: Partition " + context.getPartitionId() + " onError: " + error.toString());
         }
-   
+
+        // onEvents is called when events are received on this partition of the Event Hub. The maximum number of events in a batch
+        // can be controlled via EventProcessorOptions. Also, if the "invoke processor after receive timeout" option is set to true,
+        // this method will be called with null when a receive timeout occurs.
         @Override
-        public void onEvents(PartitionContext context, Iterable<EventData> messages) throws Exception
+        public void onEvents(PartitionContext context, Iterable<EventData> events) throws Exception
         {
-            System.out.println("SAMPLE: Partition " + context.getPartitionId() + " got message batch");
-            int messageCount = 0;
-            for (EventData data : messages)
+            System.out.println("SAMPLE: Partition " + context.getPartitionId() + " got event batch");
+            int eventCount = 0;
+            for (EventData data : events)
             {
-                System.out.println("SAMPLE (" + context.getPartitionId() + "," + data.getSystemProperties().getOffset() + "," +
-                        data.getSystemProperties().getSequenceNumber() + "): " + new String(data.getBody(), "UTF8"));
-                messageCount++;
-   
-                this.checkpointBatchingCount++;
-                if ((checkpointBatchingCount % 5) == 0)
+                // It is important to have a try-catch around the processing of each event. Throwing out of onEvents deprives
+                // you of the chance to process any remaining events in the batch. 
+                try
                 {
-                    System.out.println("SAMPLE: Partition " + context.getPartitionId() + " checkpointing at " +
-                        data.getSystemProperties().getOffset() + "," + data.getSystemProperties().getSequenceNumber());
-                    context.checkpoint(data);
+                    System.out.println("SAMPLE (" + context.getPartitionId() + "," + data.getSystemProperties().getOffset() + "," +
+                            data.getSystemProperties().getSequenceNumber() + "): " + new String(data.getBytes(), "UTF8"));
+                    eventCount++;
+                    
+                    // Checkpointing persists the current position in the event stream for this partition and means that the next
+                    // time any host opens an event processor on this event hub+consumer group+partition combination, it will start
+                    // receiving at the event after this one. Checkpointing is usually not a fast operation, so there is a tradeoff
+                    // between checkpointing frequently (to minimize the number of events that will be reprocessed after a crash, or
+                    // if the partition lease is stolen) and checkpointing infrequently (to reduce the impact on event processing
+                    // performance). Checkpointing every five events is an arbitrary choice for this sample.
+                    this.checkpointBatchingCount++;
+                    if ((checkpointBatchingCount % 5) == 0)
+                    {
+                        System.out.println("SAMPLE: Partition " + context.getPartitionId() + " checkpointing at " +
+                            data.getSystemProperties().getOffset() + "," + data.getSystemProperties().getSequenceNumber());
+                        // Checkpoints are created asynchronously. It is important to wait for the result of checkpointing
+                        // before exiting onEvents or before creating the next checkpoint, to detect errors and to ensure proper ordering.
+                        context.checkpoint(data).get();
+                    }
+                }
+                catch (Exception e)
+                {
+                    System.out.println("Processing failed for an event: " + e.toString());
                 }
             }
-            System.out.println("SAMPLE: Partition " + context.getPartitionId() + " batch size was " + messageCount + " for host " + context.getOwner());
+            System.out.println("SAMPLE: Partition " + context.getPartitionId() + " batch size was " + eventCount + " for host " + context.getOwner());
         }
     }
-    ```
-3. Hozzon létre egy további osztályt `EventProcessorSample`, az alábbi kód használatával.
-   
-    ```java
-    import com.microsoft.azure.eventprocessorhost.*;
-    import com.microsoft.azure.servicebus.ConnectionStringBuilder;
-    import com.microsoft.azure.eventhubs.EventData;
-   
-    public class EventProcessorSample
-    {
-        public static void main(String args[])
-        {
-            final String consumerGroupName = "$Default";
-            final String namespaceName = "----ServiceBusNamespaceName-----";
-            final String eventHubName = "----EventHubName-----";
-            final String sasKeyName = "-----SharedAccessSignatureKeyName-----";
-            final String sasKey = "---SharedAccessSignatureKey----";
-   
-            final String storageAccountName = "---StorageAccountName----";
-            final String storageAccountKey = "---StorageAccountKey----";
-            final String storageConnectionString = "DefaultEndpointsProtocol=https;AccountName=" + storageAccountName + ";AccountKey=" + storageAccountKey;
-   
-            ConnectionStringBuilder eventHubConnectionString = new ConnectionStringBuilder(namespaceName, eventHubName, sasKeyName, sasKey);
-   
-            EventProcessorHost host = new EventProcessorHost(eventHubName, consumerGroupName, eventHubConnectionString.toString(), storageConnectionString);
-   
-            System.out.println("Registering host named " + host.getHostName());
-            EventProcessorOptions options = new EventProcessorOptions();
-            options.setExceptionNotification(new ErrorNotificationHandler());
-            try
-            {
-                host.registerEventProcessor(EventProcessor.class, options).get();
-            }
-            catch (Exception e)
-            {
-                System.out.print("Failure while registering: ");
-                if (e instanceof ExecutionException)
-                {
-                    Throwable inner = e.getCause();
-                    System.out.println(inner.toString());
-                }
-                else
-                {
-                    System.out.println(e.toString());
-                }
-            }
-   
-            System.out.println("Press enter to stop");
-            try
-            {
-                System.in.read();
-                host.unregisterEventProcessor();
-   
-                System.out.println("Calling forceExecutorShutdown");
-                EventProcessorHost.forceExecutorShutdown(120);
-            }
-            catch(Exception e)
-            {
-                System.out.println(e.toString());
-                e.printStackTrace();
-            }
-   
-            System.out.println("End of sample");
-        }
-    }
-    ```
-4. Cserélje le a következő mezőket a event hub és a tárolási fiók létrehozásakor használt értékek.
-   
-    ```java
-    final String namespaceName = "----ServiceBusNamespaceName-----";
-    final String eventHubName = "----EventHubName-----";
-   
-    final String sasKeyName = "-----SharedAccessSignatureKeyName-----";
-    final String sasKey = "---SharedAccessSignatureKey----";
-   
-    final String storageAccountName = "---StorageAccountName----"
-    final String storageAccountKey = "---StorageAccountKey----";
     ```
 
 > [!NOTE]
@@ -240,3 +280,4 @@ Az alábbi webhelyeken további információt talál az Event Hubsról:
 <!-- Images -->
 [11]: ./media/service-bus-event-hubs-get-started-receive-ephjava/create-eph-csharp2.png
 [12]: ./media/service-bus-event-hubs-get-started-receive-ephjava/create-eph-csharp3.png
+[ingyenes fiókot]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio

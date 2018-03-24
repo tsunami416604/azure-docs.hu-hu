@@ -1,3 +1,19 @@
+---
+title: fájl belefoglalása
+description: fájl belefoglalása
+services: vpn-gateway
+author: cherylmc
+ms.service: vpn-gateway
+ms.topic: include
+ms.date: 03/21/2018
+ms.author: cherylmc
+ms.custom: include file
+ms.openlocfilehash: 517ebbf739c64c0364dc21386fee86ebc740e997
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 03/23/2018
+---
 Amikor egy ügyfél-tanúsítványt hoz létre, automatikusan települ azon a számítógépen, amelyet az létrehozásához használt. Ha azt szeretné, telepíti az ügyféltanúsítványt egy másik ügyfélszámítógépen, kell exportálni az ügyféltanúsítványt, ami akkor jön létre.
 
 1. Ügyféltanúsítvány exportálásához nyissa meg a **Felhasználói tanúsítványok kezelése** elemet. Az ügyfél-tanúsítványok, ami akkor jön létre, alapértelmezés szerint találhatók "Tanúsítványok - aktuális User\Personal\Certificates". Kattintson a jobb gombbal az ügyféltanúsítvány exportálása, kattintson a kívánt **feladataival**, és kattintson a **exportálása** megnyitásához a **Tanúsítványexportáló varázsló**.

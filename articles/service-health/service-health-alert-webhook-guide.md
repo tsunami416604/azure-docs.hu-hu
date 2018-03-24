@@ -1,12 +1,12 @@
 ---
-title: "Konfigurálja a meglévő probléma felügyeleti rendszerekhez használatával olyan webhook állapotával kapcsolatos értesítésekre |} Microsoft Docs"
-description: "Személyre szabott értesítések a probléma meglévő felügyeleti rendszer eseményekről a szolgáltatás állapotának beolvasása."
+title: Konfigurálja a meglévő probléma felügyeleti rendszerekhez használatával olyan webhook állapotával kapcsolatos értesítésekre |} Microsoft Docs
+description: Személyre szabott értesítések a probléma meglévő felügyeleti rendszer eseményekről a szolgáltatás állapotának beolvasása.
 author: shawntabrizi
 manager: scotthit
-editor: 
+editor: ''
 services: service-health
 documentationcenter: service-health
-ms.assetid: 
+ms.assetid: ''
 ms.service: service-health
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2017
 ms.author: shtabriz
-ms.openlocfilehash: b6a5f61f61675b825dcfe9c706c80944f5890538
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: 0e233fe537ea37da97ebe5d4e8221d24f656fd10
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="configure-health-notifications-for-existing-problem-management-systems-using-a-webhook"></a>Konfigurálja a meglévő probléma felügyeleti rendszerekhez használatával olyan webhook állapotával kapcsolatos értesítésekre
 
-Ez a cikk bemutatja, hogyan Webhookok keresztül adatokat küldeni a értesítést a rendszer a szolgáltatás állapotát riasztások konfigurálása.
+Ez a cikk bemutatja, hogyan Webhookok keresztül adatokat küldeni a meglévő értesítési rendszer a szolgáltatás állapotának riasztások konfigurálása.
 
 Health-riasztások ma, beállíthatja, hogy az Azure szolgáltatás incidensek észleli, ha értesítést kap arról keresztül szöveges üzenetben vagy e-mailben.
 Azonban előfordulhat, hogy már meglévő külső értesítési rendszer, amely használni szeretné.
@@ -36,7 +36,7 @@ Ha egy előre konfigurált integrációt használni kívánt, lásd: hogyan:
 ## <a name="configuring-a-custom-notification-using-the-service-health-webhook-payload"></a>A szolgáltatás állapotának webhook forgalma használatával egyéni értesítést konfigurálása
 Ha azt szeretné, a saját egyéni webhook integráció beállítása, a szolgáltatás állapotával kapcsolatos értesítésekre során elküldött JSON-adattartalmat elemezni szeretné.
 
-Keresse meg [lásd például itt](../monitoring-and-diagnostics/monitoring-activity-log-alerts-webhook.md) határozzák meg a `Service Health` webhook hasznos tűnik.
+Keresse meg [lásd például itt](../monitoring-and-diagnostics/monitoring-activity-log-alerts-webhook.md) határozzák meg a `ServiceHealth` webhook hasznos tűnik.
 
 Ez egy olyan szolgáltatás állapota riasztás, ha megnézi észlelését `context.eventSource == "ServiceHealth"`. Onnan, amelyek leginkább megfelelnek a betöltési tulajdonságai vannak:
  * `data.context.activityLog.status`
@@ -48,13 +48,13 @@ Ez egy olyan szolgáltatás állapota riasztás, ha megnézi észlelését `cont
  * `data.context.activityLog.properties.impactedServices`
  * `data.context.activityLog.properties.trackingId`
 
-## <a name="creating-a-direct-link-to-azure-service-health-for-an-incident"></a>Egy közvetlen hivatkozást az Azure szolgáltatás állapotát az incidens létrehozása
-Létrehozhat egy közvetlen hivatkozást a személyre szabott Azure szolgáltatás állapota incidens asztali vagy hordozható létrehozott egy speciális URL-címet. Használja a `trackingId`, az első és az utolsó három számjegy, valamint a `subscriptionId`, kialakításához:
+## <a name="creating-a-direct-link-to-the-service-health-dashboard-for-an-incident"></a>A szolgáltatás állapotjelző irányítópulthoz incidens közvetlen kapcsolat létrehozása
+Létrehozhat egy közvetlen hivatkozást az állapotfigyelő szolgáltatás Irányítópultjára asztali vagy hordozható létrehozott egy speciális URL-címet. Használja a `trackingId`, az első és az utolsó három számjegy, valamint a `subscriptionId`, kialakításához:
 ```
 https://app.azure.com/h/<trackingId>/<first and last three digits of subscriptionId>
 ```
 
-Például ha a `subscriptionId` van `bba14129-e895-429b-8809-278e836ecdb3` és a `trackingId` van `0DET-URB`, akkor a személyre szabott Azure szolgáltatás állapota URL-címe:
+Például ha a `subscriptionId` van `bba14129-e895-429b-8809-278e836ecdb3` és a `trackingId` van `0DET-URB`, akkor a szolgáltatás állapotának URL-címe:
 
 ```
 https://app.azure.com/h/0DET-URB/bbadb3
@@ -101,7 +101,7 @@ Ez azt jelenti, hogy vannak-e "Riasztásokat és metrikák" Kelet-Ausztrália é
 
 
 ## <a name="testing-your-webhook-integration-via-an-http-post-request"></a>A webhook integrációs via HTTP POST-kérelmet tesztelése
-1. Hozzon létre a szolgáltatás állapotát forgalma szeretne küldeni. Példa szolgáltatásának állapota webhook payloadot címen található [Webhookok Azure tevékenység naplózása riasztások](../monitoring-and-diagnostics/monitoring-activity-log-alerts-webhook.md).
+1. Hozzon létre a szolgáltatás állapotának forgalma szeretne küldeni. Példa service állapotfigyelő webhook payloadot címen található [Webhookok Azure tevékenység naplózása riasztások](../monitoring-and-diagnostics/monitoring-activity-log-alerts-webhook.md).
 
 2. Hozzon létre egy HTTP POST-kérelmet az alábbiak szerint:
 
@@ -110,13 +110,13 @@ Ez azt jelenti, hogy vannak-e "Riasztásokat és metrikák" Kelet-Ausztrália é
 
     HEADERS     Content-Type: application/json
 
-    BODY        <Service Health payload>
+    BODY        <service health payload>
     ```
 3. Ekkor egy `2XX - Successful` választ.
 
 4. Ugrás a [PagerDuty](https://www.pagerduty.com/) annak ellenőrzéséhez, hogy integráció sikeres volt-e beállítva.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - Tekintse át a [műveletnapló riasztási webhook séma](../monitoring-and-diagnostics/monitoring-activity-log-alerts-webhook.md). 
 - További tudnivalók [szolgáltatás állapotával kapcsolatos értesítésekre](../monitoring-and-diagnostics/monitoring-service-notifications.md).
 - További információ [művelet csoportok](../monitoring-and-diagnostics/monitoring-action-groups.md).

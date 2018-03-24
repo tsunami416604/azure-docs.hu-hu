@@ -1,6 +1,6 @@
 ---
-title: "Az Azure DNS - PowerShell DNS-zónák kezelése |} Microsoft Docs"
-description: "DNS-zónák Azure Powershell használatával kezelheti. Ez a cikk ismerteti, hogyan frissítés, törlés és DNS-zóna létrehozása az Azure DNS szolgáltatásra"
+title: Az Azure DNS - PowerShell DNS-zónák kezelése |} Microsoft Docs
+description: DNS-zónák Azure Powershell használatával kezelheti. Ez a cikk ismerteti, hogyan frissítés, törlés és DNS-zóna létrehozása az Azure DNS szolgáltatásra
 services: dns
 documentationcenter: na
 author: georgewallace
@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/22/2016
+ms.date: 03/19/2018
 ms.author: gwallace
-ms.openlocfilehash: 3f28e70bb6ef46f53375d256a520db40fcb71ad0
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: b9c263acf754a72cde5b2716703b8e771a349457
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="how-to-manage-dns-zones-using-powershell"></a>PowerShell-lel DNS-zónák kezelése
 
@@ -28,6 +28,8 @@ ms.lasthandoff: 12/21/2017
 > * [Azure CLI 2.0](dns-operations-dnszones-cli.md)
 
 Ez a cikk bemutatja, hogyan a DNS-zónák kezelése az Azure PowerShell használatával. Emellett kezelhetők a DNS-zónák használata a platformok közötti [Azure CLI](dns-operations-dnszones-cli.md) vagy az Azure-portálon.
+
+Ez az útmutató konkrétan a nyilvános DNS-zónák foglalkozik. További információ az Azure PowerShell használatával az Azure DNS-saját zónák kezelése,: [Ismerkedés az Azure DNS saját zónák az Azure PowerShell](private-dns-getstarted-powershell.md).
 
 [!INCLUDE [dns-create-zone-about](../../includes/dns-create-zone-about-include.md)]
 
@@ -50,7 +52,7 @@ A következő példa bemutatja, hogyan hozzon létre egy DNS-zónát és két [A
 New-AzureRmDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup -Tag @{ project="demo"; env="test" }
 ```
 
-Az Azure DNS most is támogatja a saját DNS-zóna (jelenleg előzetes verziójú funkciók).  Például a saját DNS-zóna létrehozását, [Ismerkedés az Azure DNS-titkos zónák PowerShell-lel](./private-dns-getstarted-powershell.md).
+Az Azure DNS most is támogatja a saját DNS-zóna (jelenleg a nyilvános előzetes verzió).  További információk a saját DNS-zónákról: [Az Azure DNS használata saját tartományok esetében](private-dns-overview.md). Például a saját DNS-zóna létrehozását, [Ismerkedés az Azure DNS-titkos zónák PowerShell-lel](./private-dns-getstarted-powershell.md).
 
 ## <a name="get-a-dns-zone"></a>A DNS-zóna beolvasása
 
@@ -117,7 +119,7 @@ Set-AzureRmDnsZone -Zone $zone
 
 Használata esetén `Set-AzureRmDnsZone` $zone objektummal [Etag ellenőrzi](dns-zones-records.md#etags) biztosítják az egyidejű változtatások nem íródnak felül. A választható használható `-Overwrite` kapcsoló ezen ellenőrzések letiltásához.
 
-## <a name="delete-a-dns-zone"></a>A DNS-zóna törlése
+## <a name="delete-a-dns-zone"></a>Delete a DNS Zone
 
 DNS-zónák segítségével törölhetők a `Remove-AzureRmDnsZone` parancsmag.
 

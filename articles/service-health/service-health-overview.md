@@ -1,12 +1,12 @@
 ---
-title: "Az Azure szolgáltatás állapota áttekintése |} Microsoft Docs"
-description: "Személyre szabott információk az Azure-alkalmazásokban az Azure szolgáltatás jelenlegi és jövőbeli problémák és karbantartási által érintett hogyan."
+title: Állapotfigyelő szolgáltatás áttekintése |} Microsoft Docs
+description: Személyre szabott információk az Azure-alkalmazásokban az Azure szolgáltatás jelenlegi és jövőbeli problémák és karbantartási által érintett hogyan.
 services: Resource health
-documentationcenter: 
+documentationcenter: ''
 author: rboucher
-manager: 
-editor: 
-ms.assetid: 
+manager: ''
+editor: ''
+ms.assetid: ''
 ms.service: service-health
 ms.devlang: na
 ms.topic: article
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: Supportability
 ms.date: 07/07/2017
 ms.author: robb
-ms.openlocfilehash: 5f2b68e800f484a64e79f965fc855aebe090186a
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: af6871264029c3037ed4b7f1f0581433735563a6
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/23/2018
 ---
-# <a name="azure-service-health"></a>Azure Service Health
-Azure szolgáltatás állapota megfelelő időben és személyre szabott kapcsolatos információkat biztosít, ha az Azure-szolgáltatásokban problémák hatással van a szolgáltatások.  Emellett segítséget nyújt küszöbönálló tervezett karbantartási előkészítése.
+# <a name="service-health"></a>Service Health
+Szolgáltatás állapota egy testre szabható irányítópultot, amely nyomon követi a régiókban, ahol használhatja azokat az Azure-szolgáltatások állapotáról biztosít. Az irányítópulton például a folyamatos szolgáltatás problémák, a tervezett jövőbeli maintence vagy a megfelelő egészségügyi tanácsadók aktív események követheti nyomon. Események inaktív állapotba, ha azok elhelyezett állapotfigyelő előzményekben 90 napig. Végezetül segítségével a szolgáltatás irányítópult létrehozása és kezelése a szolgáltatás állapotát, de riasztások proaktív értesítést küldenek, ha a szolgáltatás problémák vannak érinti Önt.
 
 ## <a name="service-health-events"></a>Szolgáltatás állapotával kapcsolatos események
 Szolgáltatás állapotát követi nyomon, hogy háromféle állapotával kapcsolatos események, amely hatással lehet az erőforrások:
@@ -29,26 +29,23 @@ Szolgáltatás állapotát követi nyomon, hogy háromféle állapotával kapcso
 2. **A tervezett karbantartások** -, amelyek hatással lehetnek a jövőben a szolgáltatások rendelkezésre állásának közelgő karbantartásokról.  
 3. **Állapotfigyelő tanácsadók** -Azure-szolgáltatások figyelmet igénylő változásairól. Például ha az Azure-funkció elavult, vagy ha az túllépi a memóriahasználati kvóta.
 
-    ![Szolgáltatás állapotával kapcsolatos események](./media/service-health-overview/azure-service-health-overview-7.png)
-
 ## <a name="get-started-with-service-health"></a>Ismerkedés a szolgáltatás állapota
-A szolgáltatás állapota irányítópult elindításához válassza ki a szolgáltatás állapotát a portál irányítópultján csempéjén. 
+A szolgáltatás állapota irányítópult elindításához válassza ki a szolgáltatás állapotát a portál irányítópultján csempéjén. Ha korábban eltávolította a csempe, vagy egyéni irányítópult használata, keresse meg a "További szolgáltatások" szolgáltatás Állapotfigyelő szolgáltatás (az irányítópulton bal alsó).
 
 ![Ismerkedés a szolgáltatás állapota](./media/service-health-overview/azure-service-health-overview-1.png)
 
-Ha korábban eltávolította a csempe, vagy egyéni irányítópult használata, keresse meg a szolgáltatás Állapotfigyelő szolgáltatás "**minden szolgáltatás**" (az irányítópulton bal felső).
-
-![Ismerkedés a szolgáltatás állapota](./media/service-health-overview/azure-service-health-overview-1a.png)
-
 ## <a name="see-current-issues-which-impact-your-services"></a>Aktuális problémák, amely hatással van a szolgáltatások lásd:
 A **problémák szolgáltatás** a nézet jeleníti meg a folyamatban lévő problémákat, az Azure-szolgáltatásokat, hogy az erőforrások vannak hatással. Ha a probléma ekkor kezdődött, és milyen szolgáltatásokat és régiók érintett tudja értelmezni. A legújabb frissítés megértéséhez Azure tevékenységeit a probléma megoldásához is olvasható. 
+
 ![Szolgáltatási probléma kezelése](./media/service-health-overview/azure-service-health-overview-2.png)
 
 Válassza ki a **célgyűjtemény** fülre, és Ön a tulajdonosa, előfordulhat, hogy a probléma által érintett erőforrások adott listája látható. Az alábbi forrásokból megoszthatja munkatársaival CSV listája töltheti le.
+
 ![Szolgáltatási probléma - hatás kezelése](./media/service-health-overview/azure-service-health-overview-4.png)
 
 ## <a name="get-links-and-downloadable-explanations"></a>Hivatkozások és a letölthető magyarázata 
 Egy hivatkozást a hibát a probléma felügyeleti rendszer használata a kérheti le. PDF- és egyes esetekben CSV-fájlok megosztása nem férnek hozzá az Azure-portálon személyek töltheti le.   
+
 ![Szolgáltatási probléma - problémakezelés kezelése](./media/service-health-overview/azure-service-health-overview-3.png)
 
 ## <a name="get-support-from-microsoft"></a>Segítségre van szüksége a Microsofttól
@@ -56,10 +53,13 @@ Ha az erőforrás hibás állapotban marad, ha a probléma megoldódott, fordulj
 
 ## <a name="pin-a-personalized-health-map-to-your-dashboard"></a>Rögzítés az irányítópulton való személyre szabott egészségügyi térképre
 Szűrés jelenítse meg az üzleti szempontból kritikus fontosságú előfizetések, régiók és erőforrástípusok szolgáltatás állapotát. A szűrő mentéséhez, és a PIN kódok egy személyre szabott egészségügyi globális leképezés a portál Irányítópultjára. 
-![Szűrő személyre szabott egészségügyi térkép](./media/service-health-overview/azure-service-health-overview-6a.png)
+
+![Szűrő személyre szabott egészségügyi leképezése](./media/service-health-overview/azure-service-health-overview-6a.png)
+
 ![PIN-kód egy személyre szabott egészségügyi térkép](./media/service-health-overview/azure-service-health-overview-6b.png)
 
-## <a name="configure-service-health-alerts"></a>Szolgáltatás állapota riasztások konfigurálása
-Az Azure szolgáltatás állapota Azure figyelő riasztást, e-maileket, a szöveges üzenetek és a webhook értesítések, ha az üzleti szempontból kulcsfontosságú erőforrások érintett integrálható. Állítsa be a megfelelő szolgáltatásának állapota esemény napló tevékenység riasztást. Riasztás átirányíthatja az illetékes személyek férhessenek hozzá a szervezet művelet csoportok használatával. További információkért lásd: [riasztásainak konfigurálása szolgáltatásának állapota](../monitoring-and-diagnostics/monitoring-activity-log-alerts-on-service-notifications.md)
+## <a name="configure-service-health-alerts"></a>Állapotfigyelő szolgáltatásriasztások konfigurálása
+Azure figyelő riasztást, e-maileket, a szöveges üzenetek és a webhook értesítések, ha az üzleti szempontból kulcsfontosságú erőforrások érintett integrálható a szolgáltatás állapotát. Állítsa be a megfelelő szolgáltatásra állapotesemény napló tevékenység riasztást. Riasztás átirányíthatja az illetékes személyek férhessenek hozzá a szervezet művelet csoportok használatával. További információkért lásd: [riasztásainak konfigurálása szolgáltatásának állapota](../monitoring-and-diagnostics/monitoring-activity-log-alerts-on-service-notifications.md)
 
- 
+# <a name="next-steps"></a>További lépések
+Riasztások beállítása, így ügynökállapottal kapcsolatos hibákkal értesítést kap. További információkért lásd: [riasztások konfigurálása a szolgáltatás állapotát](../monitoring-and-diagnostics/monitoring-activity-log-alerts-on-service-notifications.md). 

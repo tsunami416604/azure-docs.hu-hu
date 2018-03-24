@@ -1,11 +1,10 @@
 ---
-title: "Azure Data Factory által támogatott környezetek számítási |} Microsoft Docs"
-description: "További információk a számítási környezetek esetén, amelyek segítségével az Azure Data Factory folyamatok (például az Azure HDInsight)-átalakítási és folyamat-adatokat."
+title: Azure Data Factory által támogatott környezetek számítási |} Microsoft Docs
+description: További információk a számítási környezetek esetén, amelyek segítségével az Azure Data Factory folyamatok (például az Azure HDInsight)-átalakítási és folyamat-adatokat.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: sharonlo101
-manager: jhubbard
-editor: monicar
+manager: craigg
 ms.assetid: 6877a7e8-1a58-4cfb-bbd3-252ac72e4145
 ms.service: data-factory
 ms.workload: data-services
@@ -14,11 +13,11 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 410fb74d8f8ec6196bbd4cc19cc97704649b75c9
-ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
+ms.openlocfilehash: 09568dcbbec90bcba2f2782072b83cc04d9e8a87
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Számítási környezetek Azure Data Factory által támogatott
 > [!NOTE]
@@ -51,7 +50,7 @@ A Microsoft a HDInsight támogatott verziók listáját frissítése a legújabb
 Miután 2017. December 15.:
 
 - Már nem hozhatók létre Linux-alapú HDInsight 3.3-as verzió (vagy korábbi verziójú) segítségével egy igény szerinti HDInsight fürtök társított adat-előállítóban 1-es verziójú szolgáltatás. 
-- Ha a [ **osType** és **verzió** tulajdonságok](https://docs.microsoft.com/azure/data-factory/v1/data-factory-compute-linked-services#azure-hdinsight-on-demand-linked-service) nincs explicit módon megadott egy meglévő adat-előállító 1-es verziójú igény szerinti HDInsight társított szolgáltatás JSON-definícióból , az alapértelmezett érték változtatják **verzió 3.1, osType = = Windows** való **verzió =\<HDI-alapértelmezett legújabb verziója\>(https://docs.microsoft.com/azure/hdinsight/ hdinsight-Component-Versioning#hadoop-Components-Available-with-different-hdinsight-versions), osType = Linux**.
+- Ha a [ **osType** és **verzió** tulajdonságok](https://docs.microsoft.com/azure/data-factory/v1/data-factory-compute-linked-services#azure-hdinsight-on-demand-linked-service) nincs explicit módon megadott egy meglévő adat-előállító 1-es verziójú igény szerinti HDInsight társított szolgáltatás JSON-definícióból , az alapértelmezett érték változtatják **verzió 3.1, osType = = Windows** való **verzió =\<HDI-alapértelmezett legújabb verziója\>(https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#hadoop-components-available-with-different-hdinsight-versions), osType = Linux**.
 
 Miután július 31, 2018:
 
@@ -124,7 +123,7 @@ A következő JSON igény kapcsolódó HDInsight Linux-alapú szolgáltatás hat
 | Tulajdonság                     | Leírás                              | Szükséges |
 | ---------------------------- | ---------------------------------------- | -------- |
 | type                         | A type tulajdonság beállítása **HDInsightOnDemand**. | Igen      |
-| Nagyobbnak                  | A fürt munkavégző és az adatok csomópontok száma. A HDInsight-fürt 2 átjárócsomópontokkal, ehhez a tulajdonsághoz megadott feldolgozó csomópontok száma hozza létre. A csomópontok méretű standard, D3, amelynek 4 mag van. A 4-munkavégző csomópontot tartalmazó fürtben veszi 24 mag (4\*a munkavégző csomópontokról, valamint 2 processzormag, 4 = 16\*az átjárócsomópontokkal processzormag, 4 = 8). A standard, D3 réteg kapcsolatos részletekért lásd: [hdinsight létrehozása Linux-alapú Hadoop-fürtök](../../hdinsight/hdinsight-hadoop-provision-linux-clusters.md). | Igen      |
+| clusterSize                  | A fürt munkavégző és az adatok csomópontok száma. A HDInsight-fürt 2 átjárócsomópontokkal, ehhez a tulajdonsághoz megadott feldolgozó csomópontok száma hozza létre. A csomópontok méretű standard, D3, amelynek 4 mag van. A 4-munkavégző csomópontot tartalmazó fürtben veszi 24 mag (4\*a munkavégző csomópontokról, valamint 2 processzormag, 4 = 16\*az átjárócsomópontokkal processzormag, 4 = 8). A standard, D3 réteg kapcsolatos részletekért lásd: [hdinsight létrehozása Linux-alapú Hadoop-fürtök](../../hdinsight/hdinsight-hadoop-provision-linux-clusters.md). | Igen      |
 | timeToLive                   | A megengedett üresjárati idő az igény szerinti HDInsight-fürthöz. Meghatározza, mennyi ideig az igény szerinti HDInsight-fürt marad aktív, ha egy tevékenység futtatás befejeződött, ha nincsenek a fürt más aktív feladatok.<br /><br />Például ha egy tevékenység futott 6 percig tart, és **timeToLive** értéke 5 perc, a fürt a tevékenységfuttatási feldolgozásának 6 perc után 5 percig aktív marad. Ha a 6 percnél ablakban futtassa egy másik tevékenységgel, dolgoz fel ugyanabban a fürtben.<br /><br />Igény szerinti HDInsight-fürtök létrehozása során költséges (eltarthat egy ideig). A beállítás segítségével szükség esetén újból felhasználja az igény szerinti HDInsight-fürtök által egy adat-előállító teljesítményének javítása.<br /><br />Ha a **timeToLive** egy érték **0**, a fürtök törlése, amint a tevékenység futtatása befejeződött. Azonban ha nagy érték van beállítva, a fürt maradhatnak, inaktív, feleslegesen magas költségeket eredményez. Fontos a megfelelő érték a igények alapján.<br /><br />Ha a **timeToLive** értékének megfelelően van beállítva, több folyamatok megoszthatja az igény szerinti HDInsight-fürt példányának. | Igen      |
 | verzió:                      | A HDInsight-fürt verziószáma. Engedélyezett HDInsight verzióiért lásd: [támogatott HDInsight-verziókról](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#supported-hdinsight-versions). Ha az érték nincs megadva, a [HDI alapértelmezett legfrissebb](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#hadoop-components-available-with-different-hdinsight-versions) szolgál. | Nem       |
 | linkedServiceName            | Az Azure tárolás társított szolgáltatásának történő tárolására és feldolgozására adatok az igény szerinti fürt által használható. A HDInsight-fürt létrehozása a tárfiók ugyanabban a régióban.<p>Jelenleg nem hozható létre, amely az Azure Data Lake Store használ a tárolási igény szerinti HDInsight-fürtöt. A HDInsight a Data Lake Store feldolgozása eredmény adatokat tárolni szeretné, ha az adatok másolása a Blob storage Data Lake Store-másolási tevékenység segítségével. </p> | Igen      |

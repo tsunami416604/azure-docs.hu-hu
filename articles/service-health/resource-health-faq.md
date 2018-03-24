@@ -1,11 +1,11 @@
 ---
-title: "Az Azure Resource Health – gyakori kérdések |} Microsoft Docs"
-description: "Azure-erőforrás állapotának áttekintése"
+title: Az Azure Resource Health – gyakori kérdések |} Microsoft Docs
+description: Azure-erőforrás állapotának áttekintése
 services: Resource health
 documentationcenter: dev-center-name
 author: BernardoAMunoz
-manager: 
-editor: 
+manager: ''
+editor: ''
 ms.assetid: 85cc88a4-80fd-4b9b-a30a-34ff3782855f
 ms.service: service-health
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: Supportability
 ms.date: 07/05/2017
 ms.author: BernardoAMunoz
-ms.openlocfilehash: 692d03ad80989a969a73b15bb9042a01c286d1ec
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 5155faac6051f5a586255148f77a52a90745673e
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-resource-health-faq"></a>Az Azure Resource Health – gyakori kérdések
 További tudnivalók az Azure Resource Health kapcsolatos gyakori kérdésekre adott válaszok.
@@ -81,12 +81,12 @@ Erőforrás állapota érhető el az összes Azure geos, kivéve az alábbi ter�
 - Közép-Németország
 - Északkelet-Németország
 
-## <a name="how-is-resource-health-different-from-the-service-health-dashboard-or-the-azure-portal-service-notifications"></a>Miben különbözik erőforrás állapota az állapotjelző irányítópulton vagy az Azure portál szolgáltatás értesítéseket?
-A Resource Health által biztosított információk is pontosabb, mint mi az Azure az állapotjelző irányítópulthoz által biztosított.
+## <a name="how-is-resource-health-different-from-azure-status-or-the-service-health-dashboard"></a>Miben különbözik Resource Health Azure állapot vagy a szolgáltatás irányítópult?
+A Resource Health által biztosított információk is pontosabb, mint mi az Azure állapot vagy a szolgáltatás irányítópult által biztosított.
 
-Mivel [Azure állapot](https://status.azure.com) és a portál szolgáltatás értesítések tájékoztatnak, szolgáltatásokkal kapcsolatos problémákról, amelyek hatással vannak a felhasználók (például egy Azure-régió) széles körét, erőforrás állapota kapcsolódik csak a részletesebb események közzététele a adott erőforrás. Például ha egy gazdagép váratlanul újraindul, a Resource Health csak ezek az ügyfelek amelynek virtuális gépek az adott gazdagépen futó riasztást küld.
+Mivel [Azure állapot](https://status.azure.com) és a szolgáltatás irányítópult tájékoztatnak, szolgáltatásokkal kapcsolatos problémákról, amelyek hatással vannak a felhasználók (például egy Azure-régió) széles körét, erőforrás állapota kapcsolódik csak a részletesebb események közzététele a adott erőforrás. Például ha egy gazdagép váratlanul újraindul, a Resource Health csak ezek az ügyfelek amelynek virtuális gépek az adott gazdagépen futó riasztást küld.
 
-Fontos, hogy figyelje meg, hogy biztosítja, hogy az erőforrások érintő események teljes láthatóságát, erőforrás állapota is felfed szolgáltatás értesítések és az állapotjelző irányítópulton a közzétett események.
+Fontos, hogy figyelje meg, hogy biztosítja, hogy az erőforrások érintő események teljes láthatóságát, erőforrás állapota is Felfed, a szolgáltatás irányítópult közzé eseményeket.
 
 ## <a name="do-i-need-to-activate-resource-health-for-each-resource"></a>Kell aktiválni az erőforrás állapota az egyes erőforrások?
 Nem, állapottal kapcsolatos adatok érhető el az összes erőforrástípus Resource Health keresztül érhető el. 

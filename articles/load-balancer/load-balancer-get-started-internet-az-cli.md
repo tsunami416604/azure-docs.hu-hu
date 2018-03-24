@@ -1,25 +1,25 @@
 ---
-title: "Hozzon létre egy Load Balancer szabványos nyilvános zónaredundáns nyilvános IP-cím cím előtér Azure parancssori felületével |} Microsoft Docs"
-description: "Megtudhatja, hogyan hozzon létre egy Load Balancer szabványos nyilvános zónaredundáns nyilvános IP-cím cím előtér Azure parancssori felület használatával"
+title: Hozzon létre egy Load Balancer szabványos nyilvános zónaredundáns nyilvános IP-cím cím előtér Azure parancssori felületével |} Microsoft Docs
+description: Megtudhatja, hogyan hozzon létre egy Load Balancer szabványos nyilvános zónaredundáns nyilvános IP-cím cím előtér Azure parancssori felület használatával
 services: load-balancer
 documentationcenter: na
 author: KumudD
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/20/2017
+ms.date: 03/22/2018
 ms.author: kumud
-ms.openlocfilehash: 725e1717110ebfe52e2b45ab0c45edc36055704f
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 1a430f5c6349741e5d04626158dc89d42169a15b
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 #  <a name="create-a-public-load-balancer-standard-with-zone-redundant-frontend-using-azure-cli"></a>Hozzon létre egy Load Balancer szabványos nyilvános zónaredundáns előtér Azure parancssori felület használatával
 
@@ -27,19 +27,14 @@ Ez a cikk lépésről-lépésre nyilvános létrehozása [Load Balancer szabván
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
-## <a name="register-for-availability-zones-load-balancer-standard-and-public-ip-standard-preview"></a>Standard Preview rendelkezésre állási zónák, a Load Balancer Standard és a nyilvános IP-cím regisztrálása
+## <a name="register-for-availability-zones-preview"></a>A rendelkezésre állási zónák Preview regisztrálása
 
 Rendszererőforrásokra telepíti, és a parancssori felület helyileg, ez az oktatóanyag megköveteli, hogy futnak-e az Azure parancssori felület 2.0.17 verzió vagy újabb verzióját.  A verzió megkereséséhez futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli). 
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)] 
 
->[!NOTE]
-[Terheléselosztó Standard Termékváltozat betöltése](https://aka.ms/azureloadbalancerstandard) jelenleg előzetes verzió. Az előzetes kiadás során a szolgáltatás rendelkezésre állása és megbízhatósága eltérő lehet az általánosan elérhető kiadásétól. További részletekért lásd: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Használja a nyilvánosan elérhető [Load Balancer alapszintű Termékváltozat](load-balancer-overview.md) a termelés számára. 
-
 > [!NOTE]
 > Rendelkezésre állási zónák még csak előzetes verziójúak, és készen áll a fejlesztési és forgatókönyvek tesztelése. A select Azure-erőforrások és a régiók és a virtuális gép mérete családok támogatás érhető el. További információ az első lépések, és mely Azure-erőforrások, régiók és virtuális gép mérete családok megpróbálhatja a rendelkezésre állási zónákat, lásd: [rendelkezésre állási zónák áttekintése](https://docs.microsoft.com/azure/availability-zones/az-overview). Ha támogatásra van szüksége, keresse fel a [StackOverflow](https://stackoverflow.com/questions/tagged/azure-availability-zones) fórumot, vagy [nyisson meg egy Azure támogatási jegyet](../azure-supportability/how-to-create-azure-support-request.md?toc=%2fazure%2fvirtual-network%2ftoc.json).  
-
-Mielőtt kiválasztja, a zóna vagy zónaredundáns. lehetőséget az az előtérbeli nyilvános IP-címet a terheléselosztóhoz, akkor először el kell végeznie a lépéseket [regisztrálja a rendelkezésre állási zónák Preview](https://docs.microsoft.com/azure/availability-zones/az-overview).
 
 Győződjön meg arról, hogy telepítette-e a legújabb [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) és az Azure-fiókkal bejelentkezett [az bejelentkezési](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az_login).
 

@@ -1,13 +1,13 @@
 ---
-title: "Hozzáadása, módosítása vagy egy Azure virtuális hálózati alhálózat törlése |} Microsoft Docs"
-description: "Megtudhatja, hogyan hozzáadása, módosítása vagy törlése a virtuális hálózati alhálózat az Azure-ban."
+title: Hozzáadása, módosítása vagy egy Azure virtuális hálózati alhálózat törlése |} Microsoft Docs
+description: Megtudhatja, hogyan hozzáadása, módosítása vagy törlése a virtuális hálózati alhálózat az Azure-ban.
 services: virtual-network
 documentationcenter: na
 author: jimdial
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2018
 ms.author: jdial
-ms.openlocfilehash: 902c0eee88f0de8a20b9c8bf9c0dae6e3c3a7d79
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 16ce5aac26abcf2ef2cf7664fb0b9aae600708d4
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="add-change-or-delete-a-virtual-network-subnet"></a>Hozzáadása, módosítása vagy virtuális hálózati alhálózat törlése
 
@@ -30,9 +30,9 @@ Megtudhatja, hogyan hozzáadása, módosítása vagy virtuális hálózati alhá
 Ez a cikk bármely szakaszának lépéseit befejezése előtt hajtsa végre a következőket:
 
 - Ha még nem rendelkezik Azure-fiókja, regisztráljon egy [ingyenes próbafiók](https://azure.microsoft.com/free).
-- Ha a portál használatával, nyissa meg a https://portal.azure.com, és jelentkezzen be az Azure-fiókjával.
-- Ha a PowerShell-parancsokkal ebben a cikkben a feladatokat, vagy futtassa a parancsokat a [Azure Cloud rendszerhéj](https://shell.azure.com/powershell), vagy a PowerShell futtatásával a számítógépről. Az Azure Cloud Shell egy olyan ingyenes interaktív kezelőfelület, amelyet a jelen cikkben található lépések futtatására használhat. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. Ebben az oktatóanyagban az Azure PowerShell modul verziója 5.2.0 szükséges vagy újabb. Futtatás `Get-Module -ListAvailable AzureRM` telepített verziója található. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Login-AzureRmAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
-- Azure parancssori felület (CLI) parancsok használata ebben a cikkben a feladatokat, vagy futtassa a parancsokat a [Azure Cloud rendszerhéj](https://shell.azure.com/bash), vagy a CLI-t a számítógépen való futtatásával. Ez az oktatóanyag az Azure parancssori felület 2.0.26 verziója szükséges, vagy később. Futtatás `az --version` telepített verziója található. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése](/cli/azure/install-azure-cli). Ha helyileg futtatja az Azure parancssori felület, is futtatásához szükséges `az login` az Azure VPN-kapcsolat létrehozásához.
+- A portál használatával, nyissa meg a https://portal.azure.com, és jelentkezzen be az Azure-fiókjával.
+- Ha a PowerShell-parancsokkal ebben a cikkben a feladatokat, vagy futtassa a parancsokat a [Azure Cloud rendszerhéj](https://shell.azure.com/powershell), vagy a PowerShell futtatásával a számítógépről. Az Azure Cloud Shell egy olyan ingyenes interaktív kezelőfelület, amelyet a jelen cikkben található lépések futtatására használhat. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. Ebben az oktatóanyagban az Azure PowerShell modul verziója 5.2.0 szükséges vagy újabb. A telepített verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable AzureRM`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Login-AzureRmAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
+- Azure parancssori felület (CLI) parancsok használata ebben a cikkben a feladatokat, vagy futtassa a parancsokat a [Azure Cloud rendszerhéj](https://shell.azure.com/bash), vagy a CLI-t a számítógépen való futtatásával. Ez az oktatóanyag az Azure parancssori felület 2.0.26 verziója szükséges, vagy később. A telepített verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése](/cli/azure/install-azure-cli). Ha helyileg futtatja az Azure parancssori felület, is futtatásához szükséges `az login` az Azure VPN-kapcsolat létrehozásához.
 
 ## <a name="add-a-subnet"></a>Adjon hozzá egy alhálózatot
 
@@ -67,7 +67,7 @@ Ez a cikk bármely szakaszának lépéseit befejezése előtt hajtsa végre a k�
 
 **Parancsok**
 
-- Az Azure CLI: [az hálózat vnet alhálózat frissítése](/cli/azure/network/vnet#az_network_vnet_update)
+- Az Azure CLI: [az hálózat vnet alhálózat frissítése](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update)
 - PowerShell: [Set-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/set-azurermvirtualnetworksubnetconfig)
 
 ## <a name="delete-a-subnet"></a>Alhálózat törlése
@@ -82,7 +82,7 @@ Csak akkor, ha nincsenek erőforrások az alhálózatban lévő alhálózatot t�
 
 **Parancsok**
 
-- Az Azure CLI: [az hálózati virtuális hálózat törlése](/cli/azure/network/vnet?toc=%2fazure%2fvirtual-network%2ftoc.json#az_network_vnet_delete)
+- Az Azure CLI: [az hálózati virtuális hálózat törlése](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-delete)
 - PowerShell: [Remove-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/remove-azurermvirtualnetworksubnetconfig?toc=%2fazure%2fvirtual-network%2ftoc.json)
 
 ## <a name="permissions"></a>Engedélyek

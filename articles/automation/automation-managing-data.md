@@ -1,24 +1,18 @@
 ---
-title: "Azure Automation-adatok kezelése |} Microsoft Docs"
-description: "Ez a cikk egy Azure Automation-környezet kezelése több témaköröket tartalmazza.  Jelenleg magában foglalja az adatok megőrzése és az Azure Automation vész-helyreállítási az Azure Automationben biztonsági mentéséről."
+title: Azure Automation-adatok kezelése
+description: Ez a cikk egy Azure Automation-környezet kezelése több témaköröket tartalmazza.  Jelenleg magában foglalja az adatok megőrzése és az Azure Automation vész-helyreállítási az Azure Automationben biztonsági mentéséről.
 services: automation
-documentationcenter: 
-author: georgewallace
-manager: stevenka
-editor: tysonn
-ms.assetid: 2896f129-82e3-43ce-b9ee-a3860be0423a
 ms.service: automation
-ms.devlang: na
+author: georgewallace
+ms.author: gwallace
+ms.date: 03/16/2018
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 06/02/201
-ms.author: magoedte;bwren;sngun
-ms.openlocfilehash: 2afcf918ffa104bd0e13048c152e04992f55ffe1
-ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
+manager: carmonm
+ms.openlocfilehash: c71807a14c8a7f1edff60411a84f7d0d6f70fd23
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="managing-azure-automation-data"></a>Azure Automation-adatok kezelése
 Ez a cikk egy Azure Automation-környezet kezelése több témaköröket tartalmazza.
@@ -43,7 +37,7 @@ A következő táblázat összefoglalja az adatmegőrzési különböző erőfor
 
 Az adatmegőrzési házirend minden felhasználójára vonatkoznak, és jelenleg nem szabható testre.
 
-Azonban ha megőrizhetők az adatok egy hosszabb ideig van szüksége, továbbíthatja a runbook Log Analytics-feladat naplókat.  További információkért tekintse át [OMS szolgáltatáshoz Azure Automation-feladat adatok továbbítására](automation-manage-send-joblogs-log-analytics.md).   
+Azonban ha megőrizhetők az adatok egy hosszabb ideig van szüksége, továbbíthatja a runbook Log Analytics-feladat naplókat.  További információkért tekintse át [Azure Automation-feladat adatok továbbítására Naplóelemzési](automation-manage-send-joblogs-log-analytics.md).   
 
 ## <a name="backing-up-azure-automation"></a>Az Azure Automation biztonsági mentése
 A Microsoft Azure automation-fiók törlésekor a fiók összes objektum törlődnek, beleértve a runbookok, modulok, konfigurációk, beállítások, feladatok és eszközök. Az objektumok nem állítható helyre, miután a fiókot törölték.  Az alábbi információk segítségével biztonsági mentés a tartalmát az automation-fiók törlése előtt. 
@@ -74,7 +68,7 @@ A következő táblázat a rendelkezésre álló elsődleges és másodlagos ré
 | Elsődleges | Másodlagos |
 | --- | --- |
 | USA déli középső régiója |USA északi középső régiója |
-| USA 2. keleti régiója |USA középső régiója |
+| USA keleti régiója 2 |USA középső régiója |
 | Nyugat-Európa |Észak-Európa |
 | Délkelet-Ázsia |Kelet-Ázsia |
 | Kelet-Japán |Nyugat-Japán |

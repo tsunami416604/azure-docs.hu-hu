@@ -1,6 +1,6 @@
 ---
-title: "Az Azure gépi tanulási modell felügyeleti beállítás és konfiguráció |} Microsoft Docs"
-description: "Ez a dokumentum ismerteti a lépéseket és fogalmak beállításáról és konfigurálásáról a modell kezelése az Azure Machine Learning részt."
+title: Az Azure gépi tanulási modell felügyeleti beállítás és konfiguráció |} Microsoft Docs
+description: Ez a dokumentum ismerteti a lépéseket és fogalmak beállításáról és konfigurálásáról a modell kezelése az Azure Machine Learning részt.
 services: machine-learning
 author: aashishb
 ms.author: aashishb
@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 12/6/2017
-ms.openlocfilehash: d231fd525d310d2496c9ace40808b7deab0dd48f
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 0859031ac26b061861aa51dce1093f2fe4350935
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="model-management-setup"></a>Modell kezelésének beállítása
 
@@ -154,12 +154,9 @@ Egy meglévő fiókot használja, használja a következő parancsot:
 az ml account modelmanagement set -n [your account name] -g [resource group it was created in]
 ```
 
-### <a name="deploy-your-model"></a>A modell rendszerbe állítása
-Most már készen áll a mentett modell webszolgáltatásként központi telepítése. 
-
-```azurecli
-az ml service create realtime --model-file [model file/folder path] -f [scoring file e.g. score.py] -n [your service name] -s [schema file e.g. service_schema.json] -r [runtime for the Docker container e.g. spark-py or python] -c [conda dependencies file for additional python packages]
-```
+Ez a folyamat eredményeként a környezet készen áll, és a modell felügyeleti fiók használatával kezelheti és telepítheti a Machine Learning modellek szükséges szolgáltatások biztosításához jött létre (lásd: [Azure Machine Learning modell felügyeleti](model-management-overview.md) a egy – áttekintés).
 
 ## <a name="next-steps"></a>További lépések
-Tekintse meg a sok minták a gyűjteményben.
+
+* Az útmutatást webszolgáltatások üzembe helyezése futtatását a helyi számítógép vagy fürt továbbra is a [központi telepítése a gépi tanulási modellek webszolgáltatásként](model-management-service-deploy.md).
+* Tekintse meg a sok minták a gyűjteményben.

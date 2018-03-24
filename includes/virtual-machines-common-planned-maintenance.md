@@ -1,6 +1,6 @@
 ---
-title: "fájl belefoglalása"
-description: "fájl belefoglalása"
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: virtual-machines
 author: cynthn
 ms.service: virtual-machines
@@ -8,15 +8,15 @@ ms.topic: include
 ms.date: 03/09/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 193003cef0aed464596e913c0df86e6123292b9f
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: e484dac645ff2e5867d2e652c389a9950e8bac12
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 Azure rendszeres időközönként megbízhatóságát, teljesítményét és a virtuális gépek állomás infrastruktúra biztonságát javító frissítés. Ezen frissítések közé javítását szoftverösszetevőket. az üzemeltetési környezetben (például az operációs rendszer, hipervizor, és a gazdagépen rendszerbe állított különböző ügynökök), hálózati összetevők frissítése hardver leszerelése. A legtöbb, a frissítések a futtatott virtuális gépek számára gyakorolt hatás nélkül kerül sor. Vannak azonban esetekben, amikor frissítések ütközés:
 
-- A karbantartási nem igényel újraindítást, ha Azure helyben történő áttelepítés használatával a virtuális gép felfüggesztése, amíg a gazdagép frissül.
+- Lehetőség egy újraindítás nélküli frissítést, ha az Azure megőrzi az karbantartási memóriát használja a virtuális gép felfüggesztése, amíg frissül, a gazdagép vagy a virtuális gép áthelyezése egy már frissített gazdagépre regisztrálását.
 
 - Ha karbantartási újraindítást igényel, kap értesítést, ha a karbantartási tervezett. Ezekben az esetekben akkor lesz is kell adni egy olyan időkeretet, ahol megkezdheti a karbantartási saját magának, megfelelő egyszerre.
 
@@ -24,15 +24,15 @@ Ez a lap ismerteti, hogyan Microsoft Azure-ban mindkét karbantartási típusú.
 
 A virtuális gépen futó alkalmazások jövőbeli frissítések információt tud gyűjteni az Azure metaadat-szolgáltatás használatával [Windows](../articles/virtual-machines/windows/instance-metadata-service.md) vagy [Linux] (.. / articles/virtual-machines/linux/instance-metadata-service.md).
 
-"" Útmutatót a tervezett maintence kezelését, tekintse meg "Kezelési tervezett karbantartás értesítések" [Linux](../articles/virtual-machines/linux/maintenance-notifications.md) vagy [Windows](../articles/virtual-machines/windows/maintenance-notifications.md).
+"" Útmutatót a tervezett karbantartások kezelésére, tekintse meg "Kezelési tervezett karbantartás értesítések" [Linux](../articles/virtual-machines/linux/maintenance-notifications.md) vagy [Windows](../articles/virtual-machines/windows/maintenance-notifications.md).
 
-## <a name="in-place-vm-migration"></a>Helyszíni virtuális gép áttelepítés
+## <a name="memory-preserving-maintenance"></a>Megőrzi az karbantartási memória
 
-Ha a frissítéseket egy teljes számítógép újraindítása nem szükséges, egy helyszíni élő áttelepítés szolgál. A frissítés során a virtuális gép fel van függesztve, körülbelül 30 másodpercig, RAM, a memória megőrzi, amíg az üzemeltetési környezetben alkalmazza, a szükséges frissítések és javítások. A virtuális gép majd folytatja a működését, és a rendszer automatikusan szinkronizálja az óra, a virtuális gép.
+Frissítések egy teljes számítógép újraindítása nem szükséges, ha memória megóvása karbantartási mechanizmusok használatával a virtuális gép gyakorolt hatást. A virtuális gép fel van függesztve, legfeljebb 30 másodpercig, a RAM memória megőrzi az üzemeltetési környezetben alkalmazza, a szükséges frissítések és javítások, vagy a virtuális gép gazdagépre helyezi át egy már frissített. A virtuális gép majd folytatja a működését, és a rendszer automatikusan szinkronizálja az óra, a virtuális gép. 
 
 Virtuális gépek a rendelkezésre állási csoportokban a frissítés tartományai frissített egyszerre csak egy. Frissítési tartományok (UD) virtuális gépeinek szünetel, frissítése és majd folytatása előtt a következő UD a tervezett karbantartások helyezi át.
 
-Egyes alkalmazások negatív hatással lehet az ilyen típusú frissítések. Valós idejű Eseményfeldolgozási, például a médiaadatfolyam vagy az átkódolás vagy a magas teljesítmény forgatókönyvek, hálózati végző alkalmazások nem úgy tervezték, hogy egy 30 másodperces szünet működését. <!-- sooooo, what should they do? --> 
+Egyes alkalmazások negatív hatással lehet az ilyen típusú frissítések. Valós idejű Eseményfeldolgozási, például a médiaadatfolyam vagy az átkódolás vagy a magas teljesítmény forgatókönyvek, hálózati végző alkalmazások nem úgy tervezték, hogy egy 30 másodperces szünet működését. <!-- sooooo, what should they do? --> Ha a virtuális gép alatt áthelyezése egy másik gazdagépet, bizonyos érzékeny alkalmazások és szolgáltatások előfordulhat, hogy teljesítménycsökkenést enyhe a vezet a virtuális gép szüneteltetési néhány perc múlva. 
 
 
 ## <a name="maintenance-requiring-a-reboot"></a>A rendszer újraindítását igénylik karbantartás
@@ -47,9 +47,11 @@ A **önkiszolgáló ablak** lehetővé teszi, hogy kezdeményezni a virtuális g
 
 Az önkiszolgáló időszak elteltével a **ütemezett karbantartási időszaknál** kezdődik. Időablak során továbbra is kereshet a karbantartási időszak, de már nem lehet elindítani a karbantartási magát.
 
+Információ a rendszer újraindítását igénylik karbantartási kezeléséről: "Kezelési tervezett karbantartás értesítések" a [Linux](../articles/virtual-machines/linux/maintenance-notifications.md) vagy [Windows](../articles/virtual-machines/windows/maintenance-notifications.md). 
+
 ## <a name="availability-considerations-during-planned-maintenance"></a>Tervezett karbantartás során a rendelkezésre állási lehetőségekért 
 
-Ha úgy dönt, hogy a tervezett karbantartások megvárni, néhány szempontot kell figyelembe venni a virtuális gépek közül a legmagasabb availabilty megőrzéséhez. 
+Ha úgy dönt, hogy a tervezett karbantartások megvárni, néhány szempontot kell figyelembe venni a legnagyobb rendelkezésre állást, a virtuális gépek fenntartásához. 
 
 ### <a name="paired-regions"></a>Párhuzamos régiók
 

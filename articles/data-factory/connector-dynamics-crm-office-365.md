@@ -1,25 +1,25 @@
 ---
-title: "Adatok másolása a Dynamics CRM vagy Dynamics 365 és Azure Data Factory használatával |} Microsoft Docs"
-description: "Adatok másolása a Microsoft Dynamics CRM-hez vagy a Microsoft Dynamics 365 támogatott adattárolókhoz gyűjtése, vagy a forrás adattárolókhoz a Dynamics CRM vagy Dynamics 365 használata támogatott a másolási tevékenység során a data factory-folyamathoz."
+title: Adatok másolása a Dynamics CRM vagy Dynamics 365 (közös szolgáltatás) és Azure Data Factory használatával |} Microsoft Docs
+description: Adatok másolása a Microsoft Dynamics CRM-hez vagy a Microsoft Dynamics 365 (közös adatszolgáltatás) támogatott adattárolókhoz gyűjtése, vagy a forrás adattárolókhoz a Dynamics CRM vagy Dynamics 365 használata támogatott a másolási tevékenység az adatokat előállító adatcsatorna.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: spelluru
+manager: craigg
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2018
+ms.date: 03/16/2018
 ms.author: jingwang
-ms.openlocfilehash: dc0b01e23ebb2695fd0365f054b3cacd2573f3c6
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: ea69fdab9ec510f6060b280db3afffb7533a4bda
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
-# <a name="copy-data-from-and-to-dynamics-365-or-dynamics-crm-by-using-azure-data-factory"></a>Adatok másolása Dynamics 365 vagy a Dynamics CRM és Azure Data Factory használatával
+# <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>Adatok másolása Dynamics 365 (közös adatszolgáltatás) vagy a Dynamics CRM és Azure Data Factory használatával
 
 Ez a cikk a másolási tevékenység használható az Azure Data Factory másolja az adatokat a Microsoft Dynamics 365 vagy a Microsoft Dynamics CRM és módját ismerteti. Buildekről nyújtanak a [másolási tevékenység áttekintése](copy-activity-overview.md) cikket, amely megadja a másolási tevékenység általános áttekintést.
 
@@ -28,7 +28,7 @@ Ez a cikk a másolási tevékenység használható az Azure Data Factory másolj
 
 ## <a name="supported-capabilities"></a>Támogatott képességei
 
-Adatokat másolhat a Dynamics 365 vagy a Dynamics CRM bármely támogatott fogadó adattárolóhoz. Is másolhatja adatok bármely támogatott forrás adattár Dynamics 365 vagy a Dynamics CRM-hez. Adatforrások vagy mosdók a másolási tevékenység által támogatott adattárolókhoz listájáért lásd: a [adattárolókhoz támogatott](copy-activity-overview.md#supported-data-stores-and-formats) tábla.
+Adatokat másolhat a Dynamics 365 (közös adatszolgáltatás) vagy a Dynamics CRM bármely támogatott fogadó adattárolóhoz. Is másolhatja adatok bármely támogatott forrás adattár Dynamics 365 (közös adatszolgáltatás) vagy a Dynamics CRM-hez. Adatforrások vagy mosdók a másolási tevékenység által támogatott adattárolókhoz listájáért lásd: a [adattárolókhoz támogatott](copy-activity-overview.md#supported-data-stores-and-formats) tábla.
 
 A Dynamics összekötő támogatja a következő Dynamics verziói és a hitelesítési típus. (Internetes Elérésű a rövid a internetre irányuló központi telepítési.)
 

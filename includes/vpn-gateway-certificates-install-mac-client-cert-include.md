@@ -1,3 +1,19 @@
+---
+title: fájl belefoglalása
+description: fájl belefoglalása
+services: vpn-gateway
+author: cherylmc
+ms.service: vpn-gateway
+ms.topic: include
+ms.date: 03/21/2018
+ms.author: cherylmc
+ms.custom: include file
+ms.openlocfilehash: c75d123fec9cbc98a532f4a38887cfd2fc88feda
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 03/23/2018
+---
 Az ügyféltanúsítvány telepítésekor szükség lesz az ügyféltanúsítvány exportálásakor létrehozott jelszóra.
 
 1. Keresse meg a .pfx fájlt, és másolja a Mac Többféle módon is ki lehet a tanúsítványt a Mac, például tud e-mailben elküldi a tanúsítványfájlt.

@@ -1,11 +1,11 @@
 ---
-title: "Ütemezés eseményindítók létrehozása az Azure Data Factory |} Microsoft Docs"
-description: "Megtudhatja, hogyan lehet indítót létrehozni az Azure Data Factoryben, amelyek egy folyamat ütemezés szerint futtatott."
+title: Ütemezés eseményindítók létrehozása az Azure Data Factory |} Microsoft Docs
+description: Megtudhatja, hogyan lehet indítót létrehozni az Azure Data Factoryben, amelyek egy folyamat ütemezés szerint futtatott.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: sharonlo101
-manager: jhubbard
-editor: 
+manager: craigg
+editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2018
 ms.author: shlo
-ms.openlocfilehash: 51e2dddbe66ca372d89fc8efeb24bdab9fe6a442
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: 6466d6cb535bbe0042d7c4c3e828e576e23d5d07
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-schedule"></a>Hozzon létre egy eseményindítót, amelyek egy folyamat ütemezés szerint fut
 Ez a cikk tájékoztatást ad azokról az ütemezés eseményindító és létrehozása, indítsa el, és ütemezés eseményindító figyeléséhez szükséges lépésekről. Eseményindítók más típusú, lásd: [csővezeték-végrehajtási és eseményindítók](concepts-pipeline-execution-triggers.md).
@@ -25,7 +25,7 @@ Ez a cikk tájékoztatást ad azokról az ütemezés eseményindító és létre
 Ütemezés eseményindító létrehozása, ha megad egy ütemezés (kezdő dátum, ismétlődési, lejárati dátuma stb.) a eseményindító, és az adatcsatorna társítható. A folyamatok és az eseményindítók között több-a-többhöz kapcsolat áll fenn. Egyetlen folyamatot több eseményindító is indíthat. Egyetlen eseményindító elindíthat több folyamatot is.
 
 > [!NOTE]
-> Ez a cikk az Azure Data Factory 2-es verziójú, amely jelenleg előzetes verzióban érhetők vonatkozik. Ha szeretne megtudni az Azure Data Factory 1-es verziójú, amely általánosan elérhető (GA), lásd: [Ismerkedés az Azure Data Factory 1-es verziójú](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
+> Ez a cikk az Azure Data Factory 2. verziójára vonatkozik, amely jelenleg előzetes verzióban érhető el. Ha szeretne megtudni az Azure Data Factory 1-es verziójú, amely általánosan elérhető (GA), lásd: [Ismerkedés az Azure Data Factory 1-es verziójú](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 
 A következő szakaszokban különböző módon ütemezés eseményindító létrehozásához szükséges lépéseket. 
 
@@ -306,101 +306,101 @@ A következő JSON-definícióból bemutatja, hogyan hozható létre ütemezés 
 ```
 
 > [!IMPORTANT]
->  A **paraméterek** tulajdonság egy kötelező tulajdonság az a **folyamatok** elemet. Ha a folyamat nem helyez el paramétereket, meg kell adni egy üres JSON definíciója a **paraméterek** tulajdonság.
+>  A **paraméterek** tulajdonság a **folyamatok** elem kötelező tulajdonsága. Ha a folyamat nem használ paramétert, akkor is vegyen fel egy üres JSON-definíciót a **paraméterek** tulajdonságba.
 
 
-### <a name="schema-overview"></a>Séma – áttekintés
-A következő táblázat a fő séma elemei, amelyek kapcsolódnak ismétlődési és ütemezési eseményindító magas szintű áttekintést nyújt:
+### <a name="schema-overview"></a>Séma áttekintése
+Az alábbi táblázat magas szintű áttekintést nyújt az eseményindítóval kapcsolatos ismétlődés és ütemezés fő sémaelemeiről:
 
 | JSON-tulajdonság | Leírás |
 |:--- |:--- |
-| **startTime** | Egy dátum-idő értéknek megfelelően. Az egyszerű ütemezés, értékét a **startTime** tulajdonság első vonatkozik. Az összetett ütemezések a indítsák el a megadott legkorábban **startTime** érték. |
-| **Befejezés időpontja** | A befejezési dátum és idő, az eseményindító. Az eseményindító nem hajtja végre a megadott záró dátum és idő után. A tulajdonság értéke nem lehet múltbeli. Ez a tulajdonság nem kötelező. |
-| **timeZone** | Az időzónát. Jelenleg csak az UTC időzóna használata támogatott. |
-| **recurrence** | Egy ütemezésismétlődési objektum, amely meghatározza az ismétlődési a szabályokat. Az ismétlődési objektum támogatja a **gyakoriság**, **interva**l, **endTime**, **száma**, és **ütemezés**elemek. Ha egy ütemezésismétlődési objektum be van állítva, a **gyakoriság** elemet kell megadni. Az ismétlődési objektum az egyéb elemek egyike sem kötelező. |
-| **frequency** | A gyakoriság, amellyel az eseményindító ismét előfordul egység. A támogatott értékek: "minute", "hour", "day", "hét" és "honap." |
-| **interval** | Egy pozitív egész szám, amely azt jelzi, az időközt a **gyakoriság** érték, amely megadja, hogy milyen gyakran az eseményindító fut-e. Például ha a **időköz** 3 és a **gyakoriság** "hét," az eseményindító minden 3 hét ismétlődik. |
-| **ütemezés** | Az ismétlődés ütemezésének az eseményindító. A megadott eseményindító **gyakoriság** értékét megváltoztatja az ismétlődési a ismétlődési ütemezés szerint. A **ütemezés** tulajdonsága tartalmazza az ismétlődés módosítások, a perc, óra, létrehozását, hónap és a hét számát alapuló.
+| **startTime** | Dátum-idő érték. Egyszerű ütemezések esetében a **startTime** tulajdonság értéke az első előfordulásra vonatkozik. Összetett ütemezéseknél az eseményindító nem indul korábban a megadott **startTime** értéknél. |
+| **endTime** | Az eseményindító záró dátuma és időpontja. Az eseményindító nem lesz végrehajtva a megadott záró dátum és idő után. A tulajdonság értéke nem lehet múltbéli időpont. Ez a tulajdonság nem kötelező. |
+| **timeZone** | Az időzóna. Jelenleg csak az UTC időzóna támogatott. |
+| **recurrence** | Az eseményindítóhoz tartozó ismétlődési szabályokat megadó recurrence objektum. Az ismétlődési objektum támogatja a **gyakoriság**, **interva**l, **endTime**, **száma**, és **ütemezés**elemek. Recurrence objektum meghatározásakor a **frequency** elem megadása kötelező. A recurrence objektum többi elemének megadása nem kötelező. |
+| **frequency** | Az eseményindító ismétlődésének gyakorisági egysége. A támogatott értékek például: „minute”, „hour”, „day”, „week”, és „month” (percenként, óránként, naponta, hetente és havonta). |
+| **interval** | Pozitív egész szám, amely az eseményindító futásának gyakoriságát meghatározó **frequency** érték időközét jelöli. Ha például az **interval** 3, a **frequency** pedig „week”, az eseményindító 3 hetente ismétlődik. |
+| **schedule** | Az eseményindító ismétlődési ütemezése. Egy megadott **frequency** értékkel rendelkező eseményindító az ismétlődést az ismétlődési ütemezés alapján módosítja. A **schedule** tulajdonságban az ismétlődéshez tartozó módosítások szerepelnek, amelyek alapjául a percek, órák, a hét napja, a hónap napjai és a hét száma szolgál.
 
 
-### <a name="schema-defaults-limits-and-examples"></a>Alapértelmezett séma, korlátok és példák
+### <a name="schema-defaults-limits-and-examples"></a>Séma alapértékei, korlátai és példái
 
 | JSON-tulajdonság | Típus | Szükséges | Alapértelmezett érték | Érvényes értékek | Példa |
 |:--- |:--- |:--- |:--- |:--- |:--- |
 | **startTime** | Karakterlánc | Igen | Nincs | ISO-8601 dátum-idők | `"startTime" : "2013-01-09T09:30:00-08:00"` |
-| **recurrence** | Objektum | Igen | None | Recurrence objektum | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
-| **interval** | Szám | Nem | 1 | 1-1 000 | `"interval":10` |
-| **Befejezés időpontja** | Karakterlánc | Igen | None | A jövőben egy időpontot jelző dátum-idő érték. | `"endTime" : "2013-02-09T09:30:00-08:00"` |
-| **ütemezés** | Objektum | Nem | Nincs | Schedule objektum | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
+| **recurrence** | Objektum | Igen | Nincs | Recurrence objektum | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
+| **interval** | Szám | Nem | 1 | 1–1000 | `"interval":10` |
+| **endTime** | Karakterlánc | Igen | None | Egy jövőbeli időpontot jelölő dátum-idő érték. | `"endTime" : "2013-02-09T09:30:00-08:00"` |
+| **schedule** | Objektum | Nem | Nincs | Schedule objektum | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
 
 ### <a name="starttime-property"></a>startTime tulajdonság
-Az alábbi táblázat bemutatja, hogyan a **startTime** a tulajdonság szabja meg futtatni egy eseményindító:
+Az alábbi táblázatban látható, hogy a **startTime** tulajdonság hogyan irányítja a folyamatfuttatást:
 
 | startTime értéke | Ismétlődés ütemezés nélkül | Ismétlődés ütemezéssel |
 |:--- |:--- |:--- |
-| Múltbeli kezdési időpont | Az első jövőbeli végrehajtási idő kiszámítja a kezdési idő utánra, és adott időpontban lefut.<br/><br/>A későbbi végrehajtások során a legutóbbi végrehajtásának időpontja kiszámítása alapján futtatja.<br/><br/>Lásd a táblázat alatti példát. | A indítsák el _nem sooner mint_ a megadott kezdési időponttal. A első előfordulása az ütemezés kezdési idejét alapján számított alapul.<br/><br/>A későbbi végrehajtások során ismétlődési ütemezés szerint futtatja. |
-| Jövőbeli vagy aktuális kezdési időpont | Egyszer, a megadott kezdési időpontban futtatja.<br/><br/>A későbbi végrehajtások során a legutóbbi végrehajtásának időpontja kiszámítása alapján futtatja. | A indítsák el _egyes_ mint a megadott kezdési időpont. A első előfordulása az ütemezés kezdési idejét alapján számított alapul.<br/><br/>A későbbi végrehajtások során ismétlődési ütemezés szerint futtatja. |
+| Múltbeli kezdési időpont | Kiszámítja a kezdőidőpontot követő első jövőbeli végrehajtási időpontot, és abban az időpontban fut.<br/><br/>Az azt követő végrehajtásokat mindig az utolsó végrehajtási időpont alapján számítja ki.<br/><br/>Lásd a táblázat alatti példát. | Az eseményindító _nem indulhat hamarabb_ a megadott kezdési időpontnál. Az első előfordulás a kezdési időpontból kiszámított ütemezésen alapul.<br/><br/>Az azt követő végrehajtásokat az ismétlődési ütemezés alapján futtatja. |
+| Jövőbeli vagy aktuális kezdési időpont | Egyszer fut a megadott kezdési időpontban.<br/><br/>Az azt követő végrehajtásokat mindig az utolsó végrehajtási időpont alapján számítja ki. | Az eseményindító _nem indulhat hamarabb_ a megadott kezdési időpontnál. Az első előfordulás a kezdési időpontból kiszámított ütemezésen alapul.<br/><br/>Az azt követő végrehajtásokat az ismétlődési ütemezés alapján futtatja. |
 
-Nézzük meg, mi történik, ha a kezdési időpont ismétlődése, de nincs ütemezés a múltban példát. Feltételezik, hogy az aktuális idő `2017-04-08 13:00`, a kezdési időpont `2017-04-07 14:00`, és az Ismétlődési gyakoriság két nap. (A **ismétlődési** beállításával értéke meg van adva a **gyakoriság** tulajdonság "Day" és a **időköz** tulajdonság 2.) Figyelje meg, hogy a **startTime** érték a múltban van, és az aktuális időpont előtt következik be.
+Tekintsünk meg egy példát arról, hogy mi történik, ha a kezdési időpont egy múltbeli időpont, ismétlődéssel, de ütemezés nélkül. Tegyük fel, hogy az aktuális időpont `2017-04-08 13:00`, a kezdési idő `2017-04-07 14:00`, és az eseményindító kétnaponta ismétlődik. (A **recurrence** értéke a **frequency** tulajdonság „day” értékre és az **interval** tulajdonság 2 értékre történő állításával adható meg.) Figyelje meg, hogy a **startTime** értéke múltbeli időpont, és az aktuális időpont elé esik.
 
-Ezen feltételek mellett az első végrehajtási időpont `2017-04-09 at 14:00`. Az ütemezőmotor a kezdési időpont alapján kiszámítja a végrehajtási alkalmakat. A múltbéli időpontokat a rendszer elveti. A motor az első jövőbeli alkalmat használja. Ebben a forgatókönyvben a kezdési időpont van `2017-04-07 at 2:00pm`, így a következő példány kezdve, amely két nap `2017-04-09 at 2:00pm`.
+Ezen feltételek mellett az első végrehajtási időpont `2017-04-09 at 14:00`. Az ütemezőmotor a kezdési időpont alapján kiszámítja a végrehajtási alkalmakat. A múltbéli időpontokat a rendszer elveti. A motor az első jövőbeli alkalmat használja. Tehát ebben a forgatókönyvben a kezdési időpont `2017-04-07 at 2:00pm`, így a következő alkalom két napra esik ettől, azaz `2017-04-09 at 2:00pm`.
 
-Az első végrehajtási ideje a azonos még akkor is, ha a **startTime** értéke `2017-04-05 14:00` vagy `2017-04-01 14:00`. A későbbi végrehajtások során az első végrehajtása után az ütemezés segítségével számított. Ezért a későbbi végrehajtások során erővel `2017-04-11 at 2:00pm`, majd `2017-04-13 at 2:00pm`, majd `2017-04-15 at 2:00pm`, és így tovább.
+Az első végrehajtási időpont akkor is ez, ha a **startTime** értéke `2017-04-05 14:00` vagy `2017-04-01 14:00`. Az első végrehajtás után a rendszer a következő végrehajtási időpontokat az ütemezés alapján számítja ki. Ezért a következő végrehajtások a következő időpontokban történnek: `2017-04-11 at 2:00pm`, `2017-04-13 at 2:00pm` majd `2017-04-15 at 2:00pm` és így tovább.
 
-Végül a órában vagy percben nincsenek beállítva az ütemezésben eseményindító, ha az óra vagy percek száma, az első végrehajtása használatosak az alapértelmezett beállításokat.
+Végül, ha az eseményindító ütemezésében nincs megadva az óra vagy perc, a rendszer alapértelmezés szerint az első végrehajtás óra vagy perc értékeit használja.
 
-### <a name="schedule-property"></a>ütemezés tulajdonság
-Egyrészről a ütemezés használata korlátozhatja a eseményindító végrehajtások száma. Például ha egy eseményindító havi gyakorisággal ütemezett csak a 31 nap, az eseményindító futtatja csak azokat a 31 napos hónapokban.
+### <a name="schedule-property"></a>schedule tulajdonság
+A schedule használata egyrészt korlátozhatja a eseményindító végrehajtásainak számát. Ha például egy havi gyakoriságú eseményindító csak a 31. napon való futásra van ütemezve, akkor az eseményindító csak a 31 napos hónapokban fut.
 
-Ezzel szemben az ütemezés növelheti is az eseményindító végrehajtásának számát. Például egy eseményindítót, amely a hónap napjain 1 és 2, ütemezett havi gyakorisággal havonta, hanem a hónap 1. és 2. napon futtatja.
+Ezzel szemben az ütemezés növelheti is az eseményindító végrehajtásának számát. Ha például egy havi gyakoriságú eseményindító a hónap 1. és 2. napján való futásra van ütemezve, akkor az eseményindító minden elsején és másodikán is fut, nem csak egyszer egy hónapban.
 
-Ha több **ütemezés** elemek vannak megadva, a kiértékelés sorrendjét legnagyobbaktól a legkisebb ütemezési beállítás. A kiértékelés hét számát, valamint majd hónap és nap, hétköznap, óra, kezdődik, és végül perc.
+Ha több **schedule** elem is meg van adva, a kiértékelési sorrend a legnagyobb ütemezési beállítástól halad a legkisebb felé. A kiértékelés a hét számával kezdődik, majd ezt követi a hónap napja, a hét napja, az óra és végül a perc.
 
-A következő táblázat ismerteti a **ütemezés** elemek részletesen:
+A következő táblázat részletesen ismerteti a **schedule** elemeit:
 
 
 | JSON-elem | Leírás | Érvényes értékek |
 |:--- |:--- |:--- |
-| **perc** | Az óra azon perce, amikor az eseményindító fut. | <ul><li>Egész szám</li><li>Egész számok tömbje</li></ul>
-| **üzemideje (óra)** | A nap azon órái, amikor az eseményindító fut. | <ul><li>Egész szám</li><li>Egész számok tömbje</li></ul> |
-| **hétköznapokon** | Napokat a hét, amelyen fut az eseményindító. Az érték csak a heti gyakorisággal adható meg. | <ul><li>Hétfő, kedd, szerda, csütörtök, péntek, szombat, vasárnap</li><li>Tömböt nap (maximális tömb mérete 7)</li><li>Értékek nap-és nagybetűk nem</li></ul> |
-| **monthlyOccurrences** | Amikor az eseményindító fut. hónap napjai. Az érték csak a havi gyakorisággal adható meg. | <ul><li>A tömb **monthlyOccurence** objektumok: `{ "day": day,  "occurrence": occurence }`.</li><li>A **nap** attribútuma, amikor az eseményindító fut. a hét napját. Például egy **monthlyOccurrences** tulajdonság egy **nap** értékének `{Sunday}` azt jelenti, hogy a hónap minden vasárnap. A **nap** attribútumot kell megadni.</li><li>A **előfordulási** attribútum értéke a megadott előfordulása **nap** a hónap során. Például egy **monthlyOccurrences** tulajdonság **nap** és **előfordulási** értékének `{Sunday, -1}` azt jelenti, hogy a hónap utolsó vasárnap. A **előfordulási** attribútum megadása nem kötelező.</li></ul> |
-| **monthDays** | Napot a hónapban, amelyen fut az eseményindító. Az érték csak a havi gyakorisággal adható meg. | <ul><li>Bármilyen érték -1 és -31 között</li><li>Bármilyen érték 1 és 31 között</li><li>Tömböt</li></ul> |
+| **minutes** | Az óra azon perce, amikor az eseményindító fut. | <ul><li>Egész szám</li><li>Egész számok tömbje</li></ul>
+| **hours** | A nap azon órái, amikor az eseményindító fut. | <ul><li>Egész szám</li><li>Egész számok tömbje</li></ul> |
+| **weekDays** | A hét azon napjai, amelyeken az eseményindító fut. Az érték csak heti gyakorisággal adható meg. | <ul><li>Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday (Hétfő, Kedd, Szerda, Csütörtök, Péntek, Szombat, Vasárnap)</li><li>A nap értékek tömbje (a tömb maximális értéke 7)</li><li>A nap értékek nem tesznek különbséget a kis- és nagybetű között</li></ul> |
+| **monthlyOccurrences** | A hónap azon napjai, amelyeken az eseményindító fut. Az érték csak havi gyakorisággal adható meg. | <ul><li>A **monthlyOccurence** objektumok tömbje: `{ "day": day,  "occurrence": occurence }`.</li><li>A **day** attribútum a hét azon napja, amelyen az eseményindító fut. Például a `{Sunday}` értékű **day** attribútummal rendelkező **monthlyOccurrences** tulajdonság a hónap minden vasárnapját jelenti. A **day** attribútum megadása kötelező.</li><li>Az **occurrence** attribútum a megadott **day** attribútum előfordulása a hónapban. Például a `{Sunday, -1}` értékű **day** és **occurrence** attribútumokkal rendelkező **monthlyOccurrences** tulajdonság a hónap utolsó vasárnapját jelenti. Az **occurrence** attribútum megadása nem kötelező.</li></ul> |
+| **monthDays** | A hónap azon napja, amelyen az eseményindító lefut. Az érték csak havi gyakorisággal adható meg. | <ul><li>Bármilyen érték -1 és -31 között</li><li>Bármilyen érték 1 és 31 között</li><li>Értékek tömbje</li></ul> |
 
 
-## <a name="examples-of-trigger-recurrence-schedules"></a>Példák eseményindító ismétlődési ütemezés
-Ez a szakasz ismétlődés ütemezésének példákat tartalmaz, és elsősorban a **ütemezés** objektum és az elemei.
+## <a name="examples-of-trigger-recurrence-schedules"></a>Eseményindító-ismétlődési ütemezések példái
+Ez a szakasz az ismétlődésütemezésekre mutat példákat, és a **schedule** objektumra és annak elemeire koncentrál.
 
-A példák azt feltételezik, hogy a **időköz** értéke 1 és, hogy a **gyakoriság** érték szerint az ütemezés definíciója helyes. Nem lehet például egy **gyakoriság** "day" értékének és a "monthDays" módosítását is a **ütemezés** objektum. Ezek a korlátozások a táblázatban az előző szakaszban szerepelnek.
+Ez a példa azt feltételezi, hogy az **interval** értéke 1, és hogy a **frequency** értéke helyes, az ütemezés meghatározása szerint. Nem lehet például a **frequency** értéke „day”, ha a **schedule** objektum „monthDays” értékre lett módosítva. Ez és az ehhez hasonló korlátozások az előző szakaszban található táblázatban szerepelnek.
 
 | Példa | Leírás |
 |:--- |:--- |
-| `{"hours":[5]}` | 5:00 órakor naponta fut. |
-| `{"minutes":[15], "hours":[5]}` | 5:15 óra naponta futtatni. |
-| `{"minutes":[15], "hours":[5,17]}` | 5 15 Perckor és délután 5:15 óra naponta futtatni. |
-| `{"minutes":[15,45], "hours":[5,17]}` | Futtatás éjfélre (5:15), 5 óra 45 Perckor, 5:15 előtti, és 5:45 PM minden nap. |
-| `{"minutes":[0,15,30,45]}` | 15 percenként fut. |
-| `{hours":[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]}` | Minden órában futtatva. Ez az eseményindító óránként fut le. A perc szabályozzák a **startTime** értéket, ha meg van adva. Ha nincs megadva, a perc szabályozzák a létrehozásának ideje. Például ha a kezdési ideje vagy létrehozásának idejét (amelyik vonatkozik) 12:25 PM, az eseményindító fut 00:25, 01:25, 02:25,..., és 23:25.<br/><br/>Az ütemezés értéke megegyezik a eseményindító rendelkezik egy **gyakorisága** "órás," értékre egy **időköz** értékének 1 és nem **ütemezés**.  Ezt az ütemezést is használható különböző **gyakoriság** és **időköz** értékek más eseményindítókat létrehozni. Például, ha a **gyakoriság** értéke "honap", az ütemezés futtatása csak havonta ahelyett, hogy minden nap, amikor a **gyakoriság** érték: "day". |
-| `{"minutes":[0]}` | Minden órában futtatva egész. Ehhez az eseményindítóhoz óránként fut az Óra kezdő pozíció: 12:00-kor, 1:00-kor, 2:00-kor, és így tovább.<br/><br/>Ezt az ütemezést a eseményindító megegyezik egy **gyakoriság** "hour" értékének és egy **startTime** nulla perc vagy a nem érték **ütemezés** , de egy **gyakorisága**  értéke "day". Ha a **gyakoriság** értéke "hét" vagy "honap", az ütemezés csak, illetve hajt végre egy napját a heti vagy havi egy nap. |
-| `{"minutes":[15]}` | 15 perc óránként túlra futtatni. Ehhez az eseményindítóhoz óránként fut kezdő pozíció: 00:15 AM, 1:15 AM, 2:15 AM, 15 perc, és így tovább, és 11:15 előtti végű. |
-| `{"hours":[17], "weekDays":["saturday"]}` | Minden héten, 5:00 PM szombaton futtassa. |
-| `{"hours":[17], "weekDays":["monday", "wednesday", "friday"]}` | Minden héten, 5:00 PM hétfőn, szerdán és pénteken futtassa. |
-| `{"minutes":[15,45], "hours":[17], "weekDays":["monday", "wednesday", "friday"]}` | Minden héten, 5:15 előtti és délután 5:45 óra hétfőn, szerdán és pénteken futtassa. |
-| `{"minutes":[0,15,30,45], "weekDays":["monday", "tuesday", "wednesday", "thursday", "friday"]}` | 15 percenként futtatható létrehozását. |
-| `{"minutes":[0,15,30,45], "hours": [9, 10, 11, 12, 13, 14, 15, 16] "weekDays":["monday", "tuesday", "wednesday", "thursday", "friday"]}` | 9:00-kor és du. 4:45 közötti napok vannak 15 percenként fut. |
-| `{"weekDays":["tuesday", "thursday"]}` | Futtassa a keddi és csütörtöki napokon a megadott kezdési időpontban. |
-| `{"minutes":[0], "hours":[6], "monthDays":[28]}` | Minden hónap 28 napján 6:00 órakor futtassa (feltéve, hogy egy **gyakoriság** "honap", érték). |
-| `{"minutes":[0], "hours":[6], "monthDays":[-1]}` | Futtatás a hónap utolsó napján 6:00 órakor. Egy eseményindító Futtatás a hónap utolsó napján, használja a -1 helyett 28, 29, 30 és 31 nap. |
-| `{"minutes":[0], "hours":[6], "monthDays":[1,-1]}` | Minden hónap első és utolsó napján 6:00 órakor futtassa. |
-| `{monthDays":[1,14]}` | Futtassa a megadott kezdési időpontban minden hónap első és 14. napon. |
-| `{"minutes":[0], "hours":[5], "monthlyOccurrences":[{"day":"friday", "occurrence":1}]}` | Futtassa az első péntekén havonta, 5:00-kor. |
-| `{"monthlyOccurrences":[{"day":"friday", "occurrence":1}]}` | Futtassa a megadott kezdési időpontban minden hónap első péntekén. |
-| `{"monthlyOccurrences":[{"day":"friday", "occurrence":-3}]}` | Futtatás a hónap minden hónapban a megadott kezdési időpontban végén harmadik péntekén. |
-| `{"minutes":[15], "hours":[5], "monthlyOccurrences":[{"day":"friday", "occurrence":1},{"day":"friday", "occurrence":-1}]}` | Futtassa az első és utolsó péntekén legyen havonta Reggel 5:15. |
-| `{"monthlyOccurrences":[{"day":"friday", "occurrence":1},{"day":"friday", "occurrence":-1}]}` | Futtassa az első és utolsó péntekén legyen minden hónapban a megadott kezdési időpontban. |
-| `{"monthlyOccurrences":[{"day":"friday", "occurrence":5}]}` | Futtassa a megadott kezdési időpontban havonta ötödik péntekén. Esetén nem ötödik pénteken egy hónap, a folyamat nem fut, mivel csak ötödik péntekenként futtatásra ütemezve van. Az eseményindító futtatásához utolsó péntekén legyen a hónap előforduló fontolja meg 5,-1 érték helyett a **előfordulási** érték. |
-| `{"minutes":[0,15,30,45], "monthlyOccurrences":[{"day":"friday", "occurrence":-1}]}` | A hónap utolsó péntekén 15 percenként fut. |
-| `{"minutes":[15,45], "hours":[5,17], "monthlyOccurrences":[{"day":"wednesday", "occurrence":3}]}` | Futtatás éjfélre (5:15), 5 óra 45 Perckor, 5:15 előtti, és délután 5:45 óra minden hónap harmadik szerdáján. |
+| `{"hours":[5]}` | Minden nap 05:00-kor fut le. |
+| `{"minutes":[15], "hours":[5]}` | Minden nap 05:15-kor fut le. |
+| `{"minutes":[15], "hours":[5,17]}` | Minden nap 05:15-kor és 17:15-kor fut le. |
+| `{"minutes":[15,45], "hours":[5,17]}` | Minden nap 05:15-kor, 05:45-kor, 17:15-kor és 17:45-kor fut le. |
+| `{"minutes":[0,15,30,45]}` | 15 percenként fut le. |
+| `{hours":[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]}` | Óránként fut le. Ez az eseményindító óránként fut le. A perceket a **startTime** értéke szabályozza, ha az érték meg van adva. Ha az érték nincs megadva, akkor a perceket a létrehozás ideje szabályozza. Ha például a kezdés időpontja vagy a létrehozás időpontja (amelyik alkalmazható) 12:25, akkor az eseményindító 00:25-kor, 01:25-kor, 02:25-kor stb. fut le, végül pedig 23:25-kor.<br/><br/>Ez az ütemezés egyenértékű azzal, mintha egy „hour” értékű **frequency** attribútummal rendelkező eseményindító lenne, 1-es **interval** értékkel, **schedule** nélkül.  Ez az ütemezés különböző **frequency** és **interval** értékekkel használható egyéb eseményindítók létrehozásához. Ha például a **frequency** értéke „month”, az ütemezés egy hónapban csak egyszer fut le, nem pedig minden nap, amikor a **frequency** értéke „day”. |
+| `{"minutes":[0]}` | Minden óra kezdetén fut le. Ez az eseményindító minden óra kezdetén fut le, 00:00-kor, 01:00-kor, 02:00-kor és így tovább.<br/><br/>Ez az ütemezés megegyezik egy olyan eseményindítóval, amely „hour” **frequency** értékkel és nulla perc **startTime** értékkel rendelkezik, vagy nincs **schedule** érték, de a **frequency** értéke „day”. Ha a **frequency** értéke „week” vagy „month”, az ütemezés csak egy héten egyszer vagy egy hónapban egyszer fut le. |
+| `{"minutes":[15]}` | Minden óra 15. percében fut le. Ez az eseményindító minden óra 15. percében fut le, 00:15-kor, 01:15-kor, 02:15-kor és így tovább, egészen 23:15-ig. |
+| `{"hours":[17], "weekDays":["saturday"]}` | Minden héten szombaton, 17:00-kor fut le. |
+| `{"hours":[17], "weekDays":["monday", "wednesday", "friday"]}` | Minden héten hétfőn, szerdán és pénteken, 17:00-kor fut le. |
+| `{"minutes":[15,45], "hours":[17], "weekDays":["monday", "wednesday", "friday"]}` | Minden héten hétfőn, szerdán és pénteken, 17:15-kor és 17:45-kor fut le. |
+| `{"minutes":[0,15,30,45], "weekDays":["monday", "tuesday", "wednesday", "thursday", "friday"]}` | Hétköznapokon 15 percenként fut le. |
+| `{"minutes":[0,15,30,45], "hours": [9, 10, 11, 12, 13, 14, 15, 16] "weekDays":["monday", "tuesday", "wednesday", "thursday", "friday"]}` | Hétköznapokon 15 percenként fut le 09:00 és 16:45 között. |
+| `{"weekDays":["tuesday", "thursday"]}` | Keddenként és csütörtökönként, a megadott kezdési időpontban fut le. |
+| `{"minutes":[0], "hours":[6], "monthDays":[28]}` | Minden hónap 28. napján, 06:00-kor fut le (azt feltételezi, hogy a **frequency** „month” értékre van állítva). |
+| `{"minutes":[0], "hours":[6], "monthDays":[-1]}` | Minden hónap utolsó napján, 06:00-kor fut le. Ha az adott eseményindítót a hónap utolsó napján kívánja futtatni, a 28., 29., 30. vagy 31. nap megadása helyett használjon -1-et. |
+| `{"minutes":[0], "hours":[6], "monthDays":[1,-1]}` | Minden hónap első és utolsó napján, 06:00-kor fut le. |
+| `{monthDays":[1,14]}` | Minden hónap első és 14. napján, a megadott kezdési időpontban fut le. |
+| `{"minutes":[0], "hours":[5], "monthlyOccurrences":[{"day":"friday", "occurrence":1}]}` | Minden hónap első péntekjén, 05:00-kor fut le. |
+| `{"monthlyOccurrences":[{"day":"friday", "occurrence":1}]}` | Minden hónap első péntekjén, a megadott kezdési időpontban fut le. |
+| `{"monthlyOccurrences":[{"day":"friday", "occurrence":-3}]}` | A hónap végétől számított harmadik pénteken, minden hónapban, a megadott kezdési időpontban fut le. |
+| `{"minutes":[15], "hours":[5], "monthlyOccurrences":[{"day":"friday", "occurrence":1},{"day":"friday", "occurrence":-1}]}` | Minden hónap első és utolsó péntekjén, 05:15-kor fut le. |
+| `{"monthlyOccurrences":[{"day":"friday", "occurrence":1},{"day":"friday", "occurrence":-1}]}` | Minden hónap első és utolsó péntekjén, a megadott kezdési időpontban fut le. |
+| `{"monthlyOccurrences":[{"day":"friday", "occurrence":5}]}` | Minden hónap ötödik péntekjén, a megadott kezdési időpontban fut le. Ha az adott hónapban nincs ötödik péntek, a folyamat nem fut le, mivel kizárólag a minden ötödik pénteken történő futásra van ütemezve. Az eseményindító a hónap utolsó péntekjén való futtatásához az **occurrence** értékénél használjon -1-et 5 helyett. |
+| `{"minutes":[0,15,30,45], "monthlyOccurrences":[{"day":"friday", "occurrence":-1}]}` | Minden hónap utolsó péntekjén, 15 percenként fut le. |
+| `{"minutes":[15,45], "hours":[5,17], "monthlyOccurrences":[{"day":"wednesday", "occurrence":3}]}` | Minden hónap harmadik szerdáján, 05:15-kor, 05:45-kor, 17:15-kor és 17:45-kor fut le. |
 
 
 ## <a name="next-steps"></a>További lépések

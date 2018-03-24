@@ -1,12 +1,12 @@
 ---
-title: "A klasszikus webszolgáltatás újratanítása |} Microsoft Docs"
-description: "Megtudhatja, hogyan programozott módon modell működik, és frissíti a az újonnan betanított modell használatára az Azure Machine Learning webszolgáltatás."
+title: A klasszikus webszolgáltatás újratanítása |} Microsoft Docs
+description: Megtudhatja, hogyan programozott módon modell működik, és frissíti a az újonnan betanított modell használatára az Azure Machine Learning webszolgáltatás.
 services: machine-learning
-documentationcenter: 
-author: aashishb
-ms.author: aashishb
+documentationcenter: ''
+author: YasinMSFT
+ms.author: yahajiza
 manager: hjerez
-editor: 
+editor: cgronlun
 ms.assetid: e36e1961-9e8b-4801-80ef-46d80b140452
 ms.service: machine-learning
 ms.workload: data-services
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
-ms.openlocfilehash: 7adc5995b830d049c8dd6412415bd5987e60fe08
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: d0c40d952008f58f9b99c1c44d06e971a1e60c3b
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="retrain-a-classic-web-service"></a>Klasszikus webszolgáltatás újratanítása
 A prediktív telepített webes szolgáltatás az alapértelmezett érték scoring-végpontja. Alapértelmezett végpontok szinkronban vannak az eredeti képzési és kísérletek pontozási tárolják, és ezért a betanított modell alapértelmezett végpont nem cserélhető le. A webszolgáltatás működik, hozzá kell adnia egy új végpont a webszolgáltatással. 

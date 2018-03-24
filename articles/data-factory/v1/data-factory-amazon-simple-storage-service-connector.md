@@ -1,11 +1,10 @@
 ---
-title: "Adatok áthelyezése tárolószolgáltatásból Amazon egyszerű Data Factory használatával |} Microsoft Docs"
-description: "További tudnivalók az adatok mozgatása az Amazon egyszerű tároló szolgáltatás (S3) Azure Data Factory használatával."
+title: Adatok áthelyezése tárolószolgáltatásból Amazon egyszerű Data Factory használatával |} Microsoft Docs
+description: További tudnivalók az adatok mozgatása az Amazon egyszerű tároló szolgáltatás (S3) Azure Data Factory használatával.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: monicar
+manager: craigg
 ms.assetid: 636d3179-eba8-4841-bcb4-3563f6822a26
 ms.service: data-factory
 ms.workload: data-services
@@ -15,11 +14,11 @@ ms.topic: article
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: fb2b534955a2cd0e1294df5425550ac6958ff3c2
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 455c1247ee68c4841647d942a1ac210b1b91694a
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="move-data-from-amazon-simple-storage-service-by-using-azure-data-factory"></a>Adatok áthelyezése tárolószolgáltatásból Amazon egyszerű Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -36,8 +35,8 @@ Amazon S3 adatok bármely támogatott fogadó adattárolóhoz másolhatja. A má
 ## <a name="required-permissions"></a>Szükséges engedélyek
 Adatok másolása az Amazon S3, győződjön meg arról, hogy rendelkezik a következő engedélyekkel:
 
-* `s3:GetObject`és `s3:GetObjectVersion` Amazon S3 objektum műveletekhez.
-* `s3:ListBucket`Amazon S3 gyűjtő műveletekhez. A Data Factory másolása varázsló használata `s3:ListAllMyBuckets` is szükség.
+* `s3:GetObject` és `s3:GetObjectVersion` Amazon S3 objektum műveletekhez.
+* `s3:ListBucket` Amazon S3 gyűjtő műveletekhez. A Data Factory másolása varázsló használata `s3:ListAllMyBuckets` is szükség.
 
 A teljes listát az Amazon S3 engedélyekkel kapcsolatos részletekért lásd: [megadása engedélyeket egy házirendben](http://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html).
 

@@ -1,11 +1,10 @@
 ---
-title: "Az adatkezelési átjáró az adat-előállító |} Microsoft Docs"
-description: "Állítsa be a data gateway áthelyezni az adatokat a helyszíni és a felhő között. Az Azure Data Factoryben az adatkezelési átjáró segítségével az adatok áthelyezése."
+title: Az adatkezelési átjáró az adat-előállító |} Microsoft Docs
+description: Állítsa be a data gateway áthelyezni az adatokat a helyszíni és a felhő között. Az Azure Data Factoryben az adatkezelési átjáró segítségével az adatok áthelyezése.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: nabhishek
-manager: jhubbard
-editor: monicar
+manager: craigg
 ms.assetid: b9084537-2e1c-4e96-b5bc-0e2044388ffd
 ms.service: data-factory
 ms.workload: data-services
@@ -15,11 +14,11 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 1f83b3568cf5c6ad0650f2289263d855ab395772
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 9ed679c555d9bb363ffb4d896e791dcbd1b90f8e
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="data-management-gateway"></a>Adatkezelési átjáró
 > [!NOTE]
@@ -237,7 +236,7 @@ A pontok mellett szükség ügyeljen arra, hogy a Microsoft Azure a vállalat en
 Ha hibákba ütközik a következő hasonló, valószínű a tűzfalhoz vagy proxyhoz kiszolgáló, amely blokkolja az átjárót, csatlakozzon a Data Factory hitelesítse magát a helytelen konfiguráció miatt. Tekintse meg a tűzfalat, hogy az előző szakaszban, és a proxykiszolgáló megfelelően vannak konfigurálva.
 
 1. Amikor megpróbálja regisztrálni az átjárót, a következő hibaüzenetet kapja: "nem sikerült regisztrálni az átjáró kulcsa. Regisztrálja újra az átjáró kulcsát előtt győződjön meg arról, hogy az adatkezelési átjáró csatlakoztatott állapotban van, és az adatkezelési átjáró gazdaszolgáltatás elindult."
-2. A Configuration Manager megnyitásakor állapota megjelenik "Kapcsolat" vagy "Csatlakozás". Amikor megtekintik a Windows eseménynaplóiban keresse meg, a "Eseménynapló" > "Alkalmazások és szolgáltatások Logs" > "Az adatkezelési átjáró" hibaüzenetek jelennek meg például a következő hibával:`Unable to connect to the remote server`
+2. A Configuration Manager megnyitásakor állapota megjelenik "Kapcsolat" vagy "Csatlakozás". Amikor megtekintik a Windows eseménynaplóiban keresse meg, a "Eseménynapló" > "Alkalmazások és szolgáltatások Logs" > "Az adatkezelési átjáró" hibaüzenetek jelennek meg például a következő hibával: `Unable to connect to the remote server`
    `A component of Data Management Gateway has become unresponsive and restarts automatically. Component name: Gateway.`
 
 ### <a name="open-port-8050-for-credential-encryption"></a>Nyissa meg a portot 8050 a hitelesítő adatok titkosításához

@@ -1,12 +1,12 @@
 ---
-title: "Figyelése és hibaelhárítása az Azure Site Recovery |} Microsoft Docs"
-description: "Figyelésére és hibaelhárítására az Azure Site Recovery replikálási problémák megoldásához és a műveletek a portál használatával"
+title: Figyelése és hibaelhárítása az Azure Site Recovery |} Microsoft Docs
+description: Figyelésére és hibaelhárítására az Azure Site Recovery replikálási problémák megoldásához és a műveletek a portál használatával
 services: site-recovery
-documentationcenter: 
+documentationcenter: ''
 author: bsiva
 manager: abhemraj
 editor: raynew
-ms.assetid: 
+ms.assetid: ''
 ms.service: site-recovery
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 02/22/2018
 ms.author: bsiva
-ms.openlocfilehash: bb453f6c16440fae8a12cc1c4890a473ce541f45
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: b357a3231dac6dfa54cb02fe921baf771c0880f4
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="monitoring-and-troubleshooting-azure-site-recovery"></a>Figyelés és hibaelhárítás céljából az Azure Site Recovery
 
@@ -145,7 +145,7 @@ A környezet egyetlen replikáló gépek egy infrastruktúra nézetet a repliká
 **V.** Az infrastruktúra nézet funkció csak érhető el virtuális gépek Azure-bA replikál. A szolgáltatás jelenleg nem érhető el virtuális gépek számára a helyszíni helyek között replikálja.
 
 **K.** Miért megjelennek a tároló infrastruktúra nézetben a számuk eltérő virtuális gépek száma a replikált elemek fánk?</br>
-**V.** A tároló-infrastruktúra nézet által a replikáció eseteire hatókörét. Részt vesz a jelenleg kijelölt replikációs környezet csak virtuális gépek szerepelnek a infrastruktúra nézetben látható a virtuális gépek száma. Emellett a választott forgatókönyv, csak az olyan virtuális gépek replikálása Azure-bA jelenleg konfigurált szerepelni fog az infrastruktúra nézetben látható a virtuális gépek száma (a például: virtuális gépek, Replikáló virtuális gépek a feladatátvételt egy helyi webhelyre nem szerepelnek az infrastruktúra nézetben.)
+**V.** A tároló-infrastruktúra nézet által a replikáció eseteire hatókörét. Részt vesz a jelenleg kijelölt replikációs környezet csak virtuális gépek szerepelnek a infrastruktúra nézetben látható a virtuális gépek száma. Emellett a választott forgatókönyv, csak az olyan virtuális gépek replikálása Azure-bA jelenleg konfigurált szerepelni fog az infrastruktúra nézetben látható a virtuális gépek száma (fő példa: replikáló virtuális gépek biztonsági virtuális gépek a feladatátvételt egy helyi helyre nem szerepelnek az infrastruktúra nézetben.)
 
 **K.** Miért van az essentials-fiókot a fánk a diagramon az irányítópulton látható replikált elemek száma eltér az áttekintése lapon látható replikált elemek száma?</br>
 **V.** Csak azon virtuális gépek melyik kezdeti replikáció befejeződik szerepelni fog a count látható módon az essentials-fiókot. A teljes replikált elemek fánk tartalmazza az összes virtuális gép a tároló, beleértve a kiszolgálókat, amelyhez a kezdeti replikáció folyamatban van.

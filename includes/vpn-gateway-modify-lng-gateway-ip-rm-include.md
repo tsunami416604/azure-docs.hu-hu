@@ -1,3 +1,19 @@
+---
+title: fájl belefoglalása
+description: fájl belefoglalása
+services: vpn-gateway
+author: cherylmc
+ms.service: vpn-gateway
+ms.topic: include
+ms.date: 03/21/2018
+ms.author: cherylmc
+ms.custom: include file
+ms.openlocfilehash: e4d6c23bc7bf9b3228f851ab38ec587bc8552455
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 03/23/2018
+---
 ### <a name="gwipnoconnection"></a> Helyi hálózati átjáró „GatewayIpAddress” értékének módosítása – nincs átjárókapcsolat
 
 Ha a VPN-eszköz, amelyhez csatlakozni akar, megváltoztatta nyilvános IP-címét, a változtatásnak megfelelően módosítania kell a helyi hálózati átjárót. A példa alapján módosítsa a helyi hálózati átjárót, amelynek nincs átjárókapcsolata.

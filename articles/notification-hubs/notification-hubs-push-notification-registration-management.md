@@ -1,11 +1,11 @@
 ---
-title: "Regisztrációs kezelése"
-description: "Ez a témakör ismerteti az eszközök regisztrálása a notification hubs leküldéses értesítések fogadásához."
+title: Registration Management
+description: Ez a témakör ismerteti az eszközök regisztrálása a notification hubs leküldéses értesítések fogadásához.
 services: notification-hubs
 documentationcenter: .net
 author: ysxu
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: fd0ee230-132c-4143-b4f9-65cef7f463a1
 ms.service: notification-hubs
 ms.workload: mobile
@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/29/2016
 ms.author: yuaxu
-ms.openlocfilehash: a1a349150ef4c7837932706f0c4fcc8d022ec7ab
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: af5738ac96bd2afacee493765453567f7f13c9e5
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="registration-management"></a>Regisztrációkezelés
 ## <a name="overview"></a>Áttekintés
@@ -39,7 +39,7 @@ Fő előnye, hogy telepítések a következők:
 * A telepítési modell segítségével egyszerűen egyedi leküldéses értesítések - eszközre célzó tegye. A rendszer címke **"$InstallationId: [végrehajtott]"** automatikusan fel lesz véve az egyes telepítési alapú regisztrációs. Így hívása egy ezt a címkét az adott eszközön anélkül, hogy programozás további küldés.
 * Telepítés használatával is lehetővé teszi részleges regisztrációs frissítéseinek. A részleges frissítés telepítésének van szükség a javítás módszer használatával a [JSON-javítás standard](https://tools.ietf.org/html/rfc6902). Ez akkor különösen hasznos, ha frissíti a regisztrációját a címkék. Húzza le a teljes regisztrációját, és küldje el újra a korábbi címkék nincs.
 
-Telepítés tartalmazhat a a következő tulajdonságokkal. Teljes listáját a telepítési tulajdonságok lásd [létrehozása vagy egy telepítési felülírása REST API](https://msdn.microsoft.com/library/azure/mt621153.aspx) vagy [telepítési tulajdonságok](https://msdn.microsoft.com/library/azure/microsoft.azure.notificationhubs.installation_properties.aspx) a a.
+Telepítés tartalmazhat a a következő tulajdonságokkal. Teljes listáját a telepítési tulajdonságok lásd [létrehozása vagy egy telepítési felülírása REST API](https://msdn.microsoft.com/library/azure/mt621153.aspx) vagy [telepítési tulajdonságok](https://msdn.microsoft.com/library/azure/microsoft.azure.notificationhubs.installation_properties.aspx).
 
     // Example installation format to show some supported properties
     {

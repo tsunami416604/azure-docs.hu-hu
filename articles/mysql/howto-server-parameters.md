@@ -1,6 +1,6 @@
 ---
-title: "Kiszolgáló paraméterek MySQL az Azure-adatbázis konfigurálása"
-description: "Ez a cikk ismerteti a MySQL-kiszolgáló adatait az Azure-adatbázis konfigurálása MySQL az Azure portál használatával."
+title: Kiszolgáló paraméterek MySQL az Azure-adatbázis konfigurálása
+description: Ez a cikk ismerteti a MySQL-kiszolgáló adatait az Azure-adatbázis konfigurálása MySQL az Azure portál használatával.
 services: mysql
 author: ajlam
 ms.author: andrela
@@ -9,11 +9,11 @@ editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
 ms.date: 02/28/2018
-ms.openlocfilehash: b3510c616d2a9ba66cb83cb998c42e03fdbb0f2b
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 6865663bebc84df288f4c7e2564ddb4870667c6f
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="how-to-configure-server-parameters-in-azure-database-for-mysql-by-using-the-azure-portal"></a>Hogyan állítsa be a kiszolgáló adatait az Azure Database MySQL az Azure portál használatával
 
@@ -40,25 +40,24 @@ InnoDB pufferkészlet és a kapcsolatok maximális számának elérésekor nincs
 
 |**Tarifacsomag**| **Számítási létrehozása**|**vCore(s)**|**InnoDB pufferkészlet (MB)**| **Kapcsolatok maximális száma**|
 |---|---|---|---|--|
-|Alapszintű| 4. generációból| 1| 1024| 50 |
-|Alapszintű| 4. generációból| 2| 2560| 100 |
-|Alapszintű| 5. generációból| 1| 1024| 50 |
-|Alapszintű| 5. generációból| 2| 2560| 100 |
-|Általános rendeltetés| 4. generációból| 2| 2560| 200|
-|Általános rendeltetés| 4. generációból| 4| 5120| 400|
-|Általános rendeltetés| 4. generációból| 8| 10240| 800|
-|Általános rendeltetés| 4. generációból| 16| 20480| 1600|
-|Általános rendeltetés| 4. generációból| 32| 40960| 3200|
-|Általános rendeltetés| 5. generációból| 2| 2560| 200|
-|Általános rendeltetés| 5. generációból| 4| 5120| 400|
-|Általános rendeltetés| 5. generációból| 8| 10240| 800|
-|Általános rendeltetés| 5. generációból| 16| 20480| 1600|
-|Általános rendeltetés| 5. generációból| 32| 40960| 3200|
-|Memóriára optimalizált| 5. generációból| 2| 7168| 600|
-|Memóriára optimalizált| 5. generációból| 4| 15360| 1250|
-|Memóriára optimalizált| 5. generációból| 8| 30720| 2500|
-|Memóriára optimalizált| 5. generációból| 16| 62464| 5000|
-|Memóriára optimalizált| 5. generációból| 32| 125952| 10000| 
+|Alapszintű| Gen 4| 1| 1024| 50|
+|Alapszintű| Gen 4| 2| 2560| 100|
+|Alapszintű| Gen 5| 1| 1024| 50|
+|Alapszintű| Gen 5| 2| 2560| 100|
+|Általános rendeltetés| Gen 4| 2| 3584| 300|
+|Általános rendeltetés| Gen 4| 4| 7680| 625|
+|Általános rendeltetés| Gen 4| 8| 15360| 1250|
+|Általános rendeltetés| Gen 4| 16| 31232| 2500|
+|Általános rendeltetés| Gen 4| 32| 62976| 5000|
+|Általános rendeltetés| Gen 5| 2| 3584| 300|
+|Általános rendeltetés| Gen 5| 4| 7680| 625|
+|Általános rendeltetés| Gen 5| 8| 15360| 1250|
+|Általános rendeltetés| Gen 5| 16| 31232| 2500|
+|Általános rendeltetés| Gen 5| 32| 62976| 5000|
+|Memóriára optimalizált| Gen 5| 2| 7168| 600|
+|Memóriára optimalizált| Gen 5| 4| 15360| 1250|
+|Memóriára optimalizált| Gen 5| 8| 30720| 2500|
+|Memóriára optimalizált| Gen 5| 16| 62464| 5000|
 
 A további kiszolgáló paraméterei nem konfigurálható a rendszerben:
 

@@ -1,10 +1,11 @@
 ---
-title: "Az Azure AI gyűjtemény |} Microsoft Docs"
-description: "Ossza meg, és Fedezze fel az elemzés erőforrások és az Azure Eszközintelligencia-katalógus több. Ismerje meg, mások, és a saját hozzájárulások tegye a közösségi."
+title: Az Azure AI gyűjtemény |} Microsoft Docs
+description: Ossza meg, és Fedezze fel az elemzés erőforrások és az Azure Eszközintelligencia-katalógus több. Ismerje meg, mások, és a saját hozzájárulások tegye a közösségi.
 services: machine-learning
-documentationcenter: 
-author: garyericson
-manager: jhubbard
+documentationcenter: ''
+author: heatherbshapiro
+ms.author: hshapiro
+manager: hjerez
 editor: cgronlun
 ms.assetid: cf518538-6046-4657-a7cb-a0bc487c67e6
 ms.service: machine-learning
@@ -13,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
-ms.author: garye
-ms.openlocfilehash: 5ccb595e24d8ee169cc6ee589a3ddc2f9fef5dcd
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 540f97d1383b8a992a12426b03249ef82af0e7a4
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="share-and-discover-resources-in-the-azure-ai-gallery"></a>Ossza meg, majd az Azure Eszközintelligencia-katalógus erőforrások felderítéséhez
 [!INCLUDE [gallery-item-selector](../../../includes/machine-learning-gallery-item-selector.md)]
@@ -46,7 +46,7 @@ Ezen alapszintű galéria-erőforrásai foghatók egybe logikailag néhány kül
 * **[Gyűjtemények](gallery-collections.md)**  - gyűjtemény lehetővé teszi a kísérleteket, API-k, egy csoportba, és egyéb a tár elemet, hogy a cím, egy bizonyos megoldást vagy a koncepció.
 * **[Iparágakban](gallery-industries.md)**  -iparágakban a szakasz a tár összegyűjti az ilyen iparágakban kiskereskedelmi, gyártási, banki és egészségügy jellemző különböző erőforrások.
 
-Végezetül  **[versenyek](gallery-competitions.md)**  befolyásolják a Közösség adatok scientsts a Cortana Intelligence Suite segítségével összetett problémák megoldására izgalmas lehetőséget kínálnak.
+Végezetül **[versenyek](gallery-competitions.md)** befolyásolják a Közösség adatok scientsts a Cortana Intelligence Suite segítségével összetett problémák megoldására izgalmas lehetőséget kínálnak.
 
 ![Az Azure AI gyűjtemény kezdőlap](./media/gallery-how-to-use-contribute-publish/gallery-home-page.png)
 
@@ -91,5 +91,5 @@ Azt szeretnénk, ha a felhasználók és a felhasználók számára vezeti a kat
 
 ![Visszajelzés](./media/gallery-how-to-use-contribute-publish/feedback.png)
 
-**[UGRÁS A A GYŰJTEMÉNY >>](http://gallery.cortanaintelligence.com)**
+**[UGRÁS A A GYŰJTEMÉNY &GT;&GT;](http://gallery.cortanaintelligence.com)**
 

@@ -1,24 +1,21 @@
 ---
-title: "Az Azure Active Directory B2C: Felhasználói áttelepítési módszer"
-description: "Vitassa meg alapvető és speciális fogalmak a Graph API-val, és külön kérésre mintázatot használ az Azure AD B2C egyéni házirendek felhasználói áttelepítése."
+title: 'Az Azure Active Directory B2C: Felhasználói áttelepítési módszer'
+description: Vitassa meg alapvető és speciális fogalmak a Graph API-val, és külön kérésre mintázatot használ az Azure AD B2C egyéni házirendek felhasználói áttelepítése.
 services: active-directory-b2c
-documentationcenter: 
-author: yoelhor
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: 
-ms.assetid: 
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.devlang: na
 ms.date: 10/04/2017
-ms.author: yoelh
-ms.openlocfilehash: 25023359e3f1eeb241f6f0e70bcb179aa32974af
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: davidmu
+ms.openlocfilehash: be80ea534be6de4fad2b072cf531669f45eda527
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-active-directory-b2c-user-migration"></a>Az Azure Active Directory B2C: Felhasználói áttelepítése
 Ha végez Identitásszolgáltatóként az Azure Active Directory B2C (az Azure AD B2C), szükség lehet áttelepíteni a felhasználói fiók. Ez a cikk azt ismerteti, hogyan telepíthetők át a meglévő felhasználói fiókokat bármely identitásszolgáltató az Azure AD B2C. A cikk nem célja, hogy lehet előírásoknak megfelelő, de helyett, ismerteti, hogyan kettőnél több megközelítés közül. A fejlesztői felelős az egyes frissítési megfelelőségét.
@@ -34,7 +31,7 @@ Azure AD B2C, felhasználókon telepíthet át [Graph API](https://docs.microsof
 
 Mindkét adatfolyamok, a először futtatja az áttelepítést megelőző folyamatba, olvassa el a felhasználók a régi identitásszolgáltatótól származó, és új fiók létrehozása az Azure AD B2C-címtárat a. Ha még nem rendelkezik a jelszót, akkor hozzon létre a fiók véletlenszerűen létrehozott jelszót. Majd kérje meg a felhasználó módosíthatja a jelszót, vagy a felhasználó először jelentkezik be, az Azure AD B2C megkérdezi a felhasználót, hogy állítsa alaphelyzetbe.
 
-## <a name="password-policy"></a>Jelszó-házirend
+## <a name="password-policy"></a>Jelszóházirend
 Az Azure AD B2C jelszóházirend (helyi fiókok esetében) az Azure AD-házirend alapul. Az Azure AD B2C regisztráció vagy bejelentkezés és a jelszó alaphelyzetbe állítása házirendek használata a "erős" jelszó erőssége, és nem jár le a jelszavakat. További információkért lásd: [az Azure AD-jelszóházirendet](https://msdn.microsoft.com/library/azure/jj943764.aspx).
 
 Ha a fiókok, amelyet át szeretne használni egy gyengébb jelszó erőssége, mint a [kényszeríti ki az Azure AD B2C erős jelszó erőssége](https://msdn.microsoft.com/library/azure/jj943764.aspx), letilthatja a erős jelszóval kapcsolatos követelmények. Az alapértelmezett jelszó-házirend módosításához állítsa a `passwordPolicies` tulajdonságot `DisableStrongPassword`. Például az alábbiak szerint módosíthatja a felhasználó kérés: 
@@ -97,7 +94,7 @@ Most már rendelkezik egy alkalmazás létrehozása, olvasása, és frissítheti
 Olvasási és írási directory adatok engedélyt *nem* tartalmazzák a felhasználók törlése. Ahhoz, hogy megkapja az alkalmazás törlésének felhasználók (a környezet törlése) lehetőségét, el kell végeznie egy további lépést, amely magában foglalja a futtató felhasználói fiók rendszergazdai engedélyek beállítása PowerShell. Egyéb esetben ugorjon a következő szakaszban.
 
 > [!IMPORTANT]
-> A B2C bérlői rendszergazdai fiókot, amely segítségével kell *helyi* a B2C bérlő számára. A fiók nevének szintaxisa  *admin@contosob2c.onmicrosoft.com* .
+> A B2C bérlői rendszergazdai fiókot, amely segítségével kell *helyi* a B2C bérlő számára. A fiók nevének szintaxisa *admin@contosob2c.onmicrosoft.com*.
 
 >[!NOTE]
 > A következő PowerShell-parancsfájl szükséges [Azure Active Directory PowerShell 2-es verzió](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0).
@@ -148,7 +145,7 @@ A JSON-fájl szerkesztéséhez nyissa meg a `AADB2C.UserMigration.sln` Visual St
 ![Felhasználói adatok fájl](media/active-directory-b2c-user-migration/pre-migration-data-file.png)
 
 Ahogy látja, akkor a fájl felhasználói entitások listáját tartalmazza. Minden felhasználó entitás tulajdonságai a következők:
-* e-mailben
+* e-mail
 * displayName
 * Utónév
 * Vezetéknév

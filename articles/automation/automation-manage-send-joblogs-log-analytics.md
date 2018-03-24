@@ -1,6 +1,6 @@
 ---
-title: "Azure Automation-feladat adatok továbbítására OMS szolgáltatáshoz"
-description: "Ez a cikk bemutatja, hogyan küldhet feladat állapotát és a runbook feladat adatfolyamokat a Microsoft Operations Management Suite Log Analytics képes biztosítani a további betekintést és kezelése."
+title: Azure Automation-feladat adatainak továbbítása a Log Analyticsbe
+description: Ez a cikk bemutatja, hogyan küldhet feladat állapotát és a runbook feladat adatfolyamokat a Microsoft Operations Management Suite Log Analytics képes biztosítani a további betekintést és kezelése.
 services: automation
 ms.service: automation
 author: georgewallace
@@ -8,16 +8,14 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.devlang: na
-ms.tgt_pltfrm: na
-ms.openlocfilehash: c73a523f1239fb7d549b573ea6105168f4a63144
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: c9b604b0fc7a3524686bec6832a19ee9f85f6ed2
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
-# <a name="forward-job-status-and-job-streams-from-automation-to-log-analytics-oms"></a>Továbbítsa feladat állapotát és a feladat adatfolyamok Automation való Naplóelemzés (OMS)
-Automatizálási küldhet runbook feladat állapotát és a feladat adatfolyamokat a Microsoft Operations Management Suite (OMS) Naplóelemzési munkaterületet. Feladat naplózza, és a feladat adatfolyamok láthatók az Azure portálon, vagy a PowerShell használatával, az egyes feladatokat, és ez lehetővé teszi egyszerű vizsgálatok végrehajtását. Most Log Analytics segítségével:
+# <a name="forward-job-status-and-job-streams-from-automation-to-log-analytics"></a>Feladat állapotát és a feladat adatfolyam továbbítása Automation Naplóelemzési
+Automatizálási küldhet runbook feladat állapotát és a feladat adatfolyamok Naplóelemzési munkaterületet. Feladat naplózza, és a feladat adatfolyamok láthatók az Azure portálon, vagy a PowerShell használatával, az egyes feladatokat, és ez lehetővé teszi egyszerű vizsgálatok végrehajtását. Most Log Analytics segítségével:
 
 * Az automatizálási feladatok insight szerezni.
 * A runbook-feladat állapota (például felfüggesztett vagy sikertelen) alapuló riasztás vagy e-mail eseményindító.
@@ -157,7 +155,7 @@ Ha egy feladat hibakeresése, is érdemes lehet megismerhetők a feladat adatfol
 Végül érdemes lehet a feladatelőzményekben megjelenítheti az adott idő alatt. Ez a lekérdezés segítségével keresse meg a feladatok állapotának adott idő alatt.
 
 `AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobLogs" and ResultType != "started" | summarize AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h)`  
-<br> ![OMS korábbi feladat állapota diagram](media/automation-manage-send-joblogs-log-analytics/historical-job-status-chart.png)<br>
+<br> ![Naplózási előzmények feladat állapota diagramra](media/automation-manage-send-joblogs-log-analytics/historical-job-status-chart.png)<br>
 
 ## <a name="summary"></a>Összegzés
 Az Automation feladat állapotát és az adatfolyam adatokat küld a Naplóelemzési, által az automatizálási feladatok állapotának jobb betekintést kaphat:
@@ -170,4 +168,4 @@ A Naplóelemzési az Automation-feladat működési áttekinthetősége biztosí
 * Különböző keresési lekérdezések összeállításához, és tekintse át az Automation-feladat naplók és a Naplóelemzési kapcsolatos további tudnivalókért lásd: [Log Analytics-e jelentkezni a keresések](../log-analytics/log-analytics-log-searches.md).
 * Szeretné megtudni, hogyan hozhat létre és runbook-kimenet és a hiba üzeneteket beolvasni, lásd: [Runbook kimenet és üzenetek](automation-runbook-output-and-messages.md).
 * A runbook végrehajtásával, a runbook-feladatok figyelésével, illetve az egyéb technikai részletekkel kapcsolatos további tudnivalókat a [Runbook-feladatok nyomon követése](automation-runbook-execution.md) című rész tartalmazza.
-* Az OMS szolgáltatáshoz és a gyűjtemény adatforrások kapcsolatos további információkért lásd: [gyűjtése Azure storage adatok a Naplóelemzési – áttekintés](../log-analytics/log-analytics-azure-storage.md).
+* Log Analytics és a gyűjtemény adatforrások kapcsolatos további információkért lásd: [gyűjtése Azure storage adatok a Naplóelemzési – áttekintés](../log-analytics/log-analytics-azure-storage.md).

@@ -1,10 +1,11 @@
 ---
-title: "Az Azure AI gyűjtemény egyéni modulok |} Microsoft Docs"
-description: "Egyéni gépi tanulási modulok Azure Eszközintelligencia-katalógus felderítése."
+title: Az Azure AI gyűjtemény egyéni modulok |} Microsoft Docs
+description: Egyéni gépi tanulási modulok Azure Eszközintelligencia-katalógus felderítése.
 services: machine-learning
-documentationcenter: 
-author: garyericson
-manager: jhubbard
+documentationcenter: ''
+author: YasinMSFT
+ms.author: yahajiza
+manager: hjerez
 editor: cgronlun
 ms.assetid: 16037a84-dad0-4a8c-9874-a1d3bd551cf0
 ms.service: machine-learning
@@ -13,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/14/2017
-ms.author: garye
-ms.openlocfilehash: bec2860d1da5044ad6969e2b23142256aa90042e
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 26cd814980af0824cbf40052a4a9f47161b8cc62
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="discover-custom-machine-learning-modules-in-azure-ai-gallery"></a>Egyéni gépi tanulási modulok Azure Eszközintelligencia-katalógus felderítése
 [!INCLUDE [machine-learning-gallery-item-selector](../../../includes/machine-learning-gallery-item-selector.md)]
@@ -34,7 +34,7 @@ Az egyéni modulok tallózással [a katalógusban](http://gallery.cortanaintelli
 
 ![Válassza ki az egyéni modulok gyűjtemény kezdőlapján](./media/gallery-custom-modules/select-custom-modules-in-gallery.png)
 
-A  **[egyéni modulok](https://gallery.cortanaintelligence.com/customModules)**  lap megjeleníti a legutóbb hozzáadott és népszerű modulokat. Minden egyéni modul megtekintéséhez jelölje ki a **láthatja az összes** gombra. Egy adott egyéni modult keres, válassza ki a **láthatja az összes**, és jelölje ki a szűrési feltételeket. Kifejezést is írhatja a **keresési** a gyűjtemény lap felső részén.
+A **[egyéni modulok](https://gallery.cortanaintelligence.com/customModules)** lap megjeleníti a legutóbb hozzáadott és népszerű modulokat. Minden egyéni modul megtekintéséhez jelölje ki a **láthatja az összes** gombra. Egy adott egyéni modult keres, válassza ki a **láthatja az összes**, és jelölje ki a szűrési feltételeket. Kifejezést is írhatja a **keresési** a gyűjtemény lap felső részén.
 
 ![Jelölje be "Lásd: minden" összes egyéni modulok tallózással](./media/gallery-custom-modules/click-see-all-for-all-custom-modules.png)
 

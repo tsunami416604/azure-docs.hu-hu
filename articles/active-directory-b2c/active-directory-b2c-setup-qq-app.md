@@ -1,24 +1,21 @@
 ---
-title: "Az Azure Active Directory B2C: Gyorsműveletek konfigurációs |} Microsoft Docs"
-description: "Adja meg a regisztráció és bejelentkezés az Azure Active Directory B2C által védett alkalmazások Gyorsműveletek fiókkal rendelkező felhasználók számára."
+title: 'Az Azure Active Directory B2C: Gyorsműveletek konfigurációs |} Microsoft Docs'
+description: Adja meg a regisztráció és bejelentkezés az Azure Active Directory B2C által védett alkalmazások Gyorsműveletek fiókkal rendelkező felhasználók számára.
 services: active-directory-b2c
-documentationcenter: 
-author: parakhj
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: parakhj
-ms.assetid: 18c2cf94-8004-4de1-81c2-e45be65ce12d
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 3/26/2017
-ms.author: parakhj
-ms.openlocfilehash: d4cc26d4f206baf9137feae0825b1f9fa5a7c8d6
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: davidmu
+ms.openlocfilehash: 12daed5f90e2b073a7520c061f18761baaed5c03
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-active-directory-b2c-provide-sign-up-and-sign-in-to-consumers-with-qq-accounts"></a>Az Azure Active Directory B2C: Regisztráció és bejelentkezés adhat Gyorsműveletek fiókkal rendelkező felhasználók
 
@@ -28,12 +25,12 @@ ms.lasthandoff: 12/11/2017
 
 ## <a name="create-a-qq-application"></a>Gyorsműveletek-alkalmazás létrehozása
 
-Gyorsműveletek az Azure Active Directory (Azure AD) B2C identitás-szolgáltatóként használatához szüksége Gyorsműveletek-alkalmazás létrehozása, és adja meg azt a megfelelő paraméterekkel. Ehhez Gyorsműveletek fiók szükséges. Ha még nincs fiókja, akkor kaphat egyenként [https://ssl.zc.qq.com/en/index.html?type=1&ptlang=1033](https://ssl.zc.qq.com/en/index.html?type=1&ptlang=1033).
+Gyorsműveletek az Azure Active Directory (Azure AD) B2C identitás-szolgáltatóként használatához szüksége Gyorsműveletek-alkalmazás létrehozása, és adja meg azt a megfelelő paraméterekkel. Ehhez Gyorsműveletek fiók szükséges. Ha még nincs fiókja, akkor kaphat egyenként [ https://ssl.zc.qq.com/en/index.html?type=1&ptlang=1033 ](https://ssl.zc.qq.com/en/index.html?type=1&ptlang=1033).
 
 ### <a name="register-for-the-qq-developer-program"></a>Regisztrálja a Gyorsműveletek fejlesztői programhoz
 
 1. Lépjen a [Gyorsműveletek fejlesztői portálján](http://open.qq.com) és jelentkezzen be a Gyorsműveletek fiók hitelesítő adataival.
-2. Lépjen a bejelentkezést követően a [http://open.qq.com/reg](http://open.qq.com/reg) egy fejlesztő el.
+2. Lépjen a bejelentkezést követően a [ http://open.qq.com/reg ](http://open.qq.com/reg) egy fejlesztő el.
 3. A menüben válasszon ki**个人**(az egyéni fejlesztői).
 4. Adja meg a szükséges adatokat az űrlapon, és kattintson a**下一步**(Tovább).
 5. Végezze el az e-mailek ellenőrzési folyamata.
@@ -43,7 +40,7 @@ Gyorsműveletek az Azure Active Directory (Azure AD) B2C identitás-szolgáltat�
 
 ### <a name="register-a-qq-application"></a>Egy Gyorsműveletek alkalmazás regisztrálása
 
-1. Ugrás a [https://connect.qq.com/index.html](https://connect.qq.com/index.html).
+1. Nyissa meg a következőt: [https://connect.qq.com/index.html](https://connect.qq.com/index.html).
 2. Kattintson a**应用管理**(Alkalmazáskezelés).
 3. Kattintson a**创建应用**(az alkalmazás létrehozása).
 4. Adja meg a szükséges alkalmazást.

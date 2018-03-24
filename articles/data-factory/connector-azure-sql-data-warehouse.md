@@ -1,11 +1,11 @@
 ---
-title: "Adatok másolása az Azure SQL Data Warehouse Data Factory használatával |} Microsoft Docs"
-description: "Útmutató: adatok másolása az Azure SQL Data Warehouse támogatott forrás áruházakból (vagy) az SQL Data Warehouse támogatott fogadó áruházak Data Factory használatával."
+title: Adatok másolása az Azure SQL Data Warehouse Data Factory használatával |} Microsoft Docs
+description: 'Útmutató: adatok másolása az Azure SQL Data Warehouse támogatott forrás áruházakból (vagy) az SQL Data Warehouse támogatott fogadó áruházak Data Factory használatával.'
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: spelluru
+manager: craigg
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/26/2018
 ms.author: jingwang
-ms.openlocfilehash: 2601d386bdacbe005b2930a44db531a0b58fb7b5
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 5d284277f600465345be0058468192f2f5609d89
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Másolja a adatok vagy az Azure SQL Data Warehouse Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -375,10 +375,10 @@ További való betöltése az SQL Data Warehouse hatékonyan a következő szaka
 
 ## <a name="use-polybase-to-load-data-into-azure-sql-data-warehouse"></a>Adatok betöltése az Azure SQL Data Warehouse PolyBase segítségével
 
-Használatával  **[PolyBase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide)**  egy hatékony módszer a nagy mennyiségű adatok betöltését az Azure SQL Data Warehouse nagy átviteli sebességgel. A teljesítmény a nagy nyereség helyett az alapértelmezett BULKINSERT mechanizmus a PolyBase használatával tekintheti meg. Lásd: [teljesítmény hivatkozási szám másolása](copy-activity-performance.md#performance-reference) a részletes összehasonlítását. A használati esetek bemutatóért lásd: [1 TB-os betöltése az Azure SQL Data Warehouse a 15 perc Azure Data Factory](connector-azure-sql-data-warehouse.md).
+Használatával **[PolyBase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide)** egy hatékony módszer a nagy mennyiségű adatok betöltését az Azure SQL Data Warehouse nagy átviteli sebességgel. A teljesítmény a nagy nyereség helyett az alapértelmezett BULKINSERT mechanizmus a PolyBase használatával tekintheti meg. Lásd: [teljesítmény hivatkozási szám másolása](copy-activity-performance.md#performance-reference) a részletes összehasonlítását. A használati esetek bemutatóért lásd: [1 TB-os betöltése az Azure SQL Data Warehouse a 15 perc Azure Data Factory](connector-azure-sql-data-warehouse.md).
 
-* Ha a forrás adatok **Azure Blob vagy az Azure Data Lake Store**, és a formátuma nem kompatibilis a PolyBase, közvetlenül másolhatja az Azure SQL Data Warehouse PolyBase használatával. Lásd:  **[közvetlen másolása a PolyBase használatával](#direct-copy-using-polybase)**  adatokkal.
-* Ha a forrás-tárolót és formátum eredetileg nem támogatott a PolyBase által, használhatja a  **[előkészített másolása a PolyBase használatával](#staged-copy-using-polybase)**  inkább a beállítást. Is biztosít, nagyobb átviteli sebesség automatikusan adatok PolyBase-kompatibilis formátumra való konvertálása, és az adatok tárolása az Azure Blob Storage tárolóban. Majd betölti az SQL Data Warehouse-adatok.
+* Ha a forrás adatok **Azure Blob vagy az Azure Data Lake Store**, és a formátuma nem kompatibilis a PolyBase, közvetlenül másolhatja az Azure SQL Data Warehouse PolyBase használatával. Lásd: **[közvetlen másolása a PolyBase használatával](#direct-copy-using-polybase)** adatokkal.
+* Ha a forrás-tárolót és formátum eredetileg nem támogatott a PolyBase által, használhatja a **[előkészített másolása a PolyBase használatával](#staged-copy-using-polybase)** inkább a beállítást. Is biztosít, nagyobb átviteli sebesség automatikusan adatok PolyBase-kompatibilis formátumra való konvertálása, és az adatok tárolása az Azure Blob Storage tárolóban. Majd betölti az SQL Data Warehouse-adatok.
 
 > [!IMPORTANT]
 > Megjegyzés: a PolyBase csak támogatja az Azure SQL Data Warehouse SQL authentcation viszont nem az Azure Active Directory-hitelesítés.
@@ -395,7 +395,7 @@ A feltételeknek nem felel meg, ha az Azure Data Factory ellenőrzi a beállít�
 1. **Forrás társított szolgáltatás** típusa: **AzureStorage** vagy **AzureDataLakeStore** szolgáltatás egyszerű hitelesítéssel.
 2. A **bemeneti adatkészlet** típusa: **AzureBlob** vagy **AzureDataLakeStoreFile**, és írja be a format `type` tulajdonságai **OrcFormat** , **ParquetFormat**, vagy **szöveges** , a következő beállításokat:
 
-   1. `rowDelimiter` kell  **\n** .
+   1. `rowDelimiter` kell **\n**.
    2. `nullValue` értéke **üres karakterlánc** (""), vagy `treatEmptyAsNull` értéke **igaz**.
    3. `encodingName` értéke **utf-8**, amely **alapértelmezett** érték.
    4. `escapeChar`, `quoteChar`, `firstRowAsHeader`, és `skipLineCount` nincs megadva.
@@ -510,7 +510,7 @@ Ha 1 MB-nál nagyobb méretű sorokat tartalmazó forrásadatok, érdemes lehet 
 
 ### <a name="sql-data-warehouse-resource-class"></a>Az SQL Data Warehouse erőforrás osztály
 
-Lehetséges legjobb teljesítmény elérése érdekében fontolja meg a felhasználói adatok betöltése az SQL Data Warehouse polybase használt nagyobb erőforrásosztály hozzárendelése. Útmutató a következő ehhez [módosíthatja a felhasználói erőforrás osztály példa](../sql-data-warehouse/sql-data-warehouse-develop-concurrency.md#changing-user-resource-class-example).
+Lehetséges legjobb teljesítmény elérése érdekében fontolja meg egy nagyobb erőforrásosztály hozzárendelése a felhasználói adatok betöltése az SQL Data Warehouse polybase használt.
 
 ### <a name="tablename-in-azure-sql-data-warehouse"></a>az Azure SQL Data Warehouse táblanév
 

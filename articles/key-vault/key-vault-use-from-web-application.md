@@ -1,6 +1,6 @@
 ---
-title: "Használja az Azure Key Vault-webalkalmazások |} Microsoft Docs"
-description: "Ez az oktatóanyag segítségével megtudhatja, hogyan használható az Azure Key Vault egy webalkalmazás."
+title: Használja az Azure Key Vault-webalkalmazások |} Microsoft Docs
+description: Ez az oktatóanyag segítségével megtudhatja, hogyan használható az Azure Key Vault egy webalkalmazás.
 services: key-vault
 author: adhurwit
 manager: mbaldwin
@@ -11,11 +11,11 @@ ms.workload: identity
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: adhurwit
-ms.openlocfilehash: 107be940b4c105056c63f793fb0111b03469bf66
-ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
+ms.openlocfilehash: 93ef76729123c7187c3dd616419b5771324fe2cb
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="use-azure-key-vault-from-a-web-application"></a>Használja az Azure Key Vault-webalkalmazások
 
@@ -61,7 +61,7 @@ Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 2.16.20
 Install-Package Microsoft.Azure.KeyVault
 ```
 
-## <a id="webconfig"></a>Web.Config módosítása
+## <a id="webconfig"></a>Modify Web.Config
 
 Nincsenek három-alkalmazásbeállításokat, amelyek hozzá kell adni a web.config fájlban az alábbiak szerint.
 
@@ -151,7 +151,7 @@ makecert -sv mykey.pvk -n "cn=KVWebApp" KVWebApp.cer -b 07/31/2017 -e 07/31/2018
 pvk2pfx -pvk mykey.pvk -spc KVWebApp.cer -pfx KVWebApp.pfx -po test123
 ```
 
-Jegyezze fel a záró dátum és a jelszót a .pfx (ebben a példában: 07/31/2017 és test123). Szüksége lesz rájuk az alábbi.
+Jegyezze fel a záró dátum és a jelszót a .pfx (ebben a példában: 07/31/2018 és test123). Szüksége lesz rájuk az alábbi.
 
 Teszttanúsítványt létrehozásával kapcsolatos további információkért lásd: [Útmutató: A saját tesztelése tanúsítvány létrehozása](https://msdn.microsoft.com/library/ff699202.aspx)
 

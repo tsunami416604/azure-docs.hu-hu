@@ -1,24 +1,21 @@
 ---
-title: "Az Application Insights egyéni házirendek – hibaelhárítás az Azure AD B2C |} Microsoft Docs"
-description: "a telepítő az Application Insights nyomon követésére, a végrehajtás, egyéni házirendek hogyan"
+title: Az Application Insights egyéni házirendek – hibaelhárítás az Azure AD B2C |} Microsoft Docs
+description: a telepítő az Application Insights nyomon követésére, a végrehajtás, egyéni házirendek hogyan
 services: active-directory-b2c
-documentationcenter: 
-author: saeedakhter-msft
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: parakhj
-ms.assetid: 658c597e-3787-465e-b377-26aebc94e46d
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.devlang: na
 ms.date: 08/04/2017
-ms.author: saeda
-ms.openlocfilehash: 4f71380917a5a29497da9831791cd9f86ec4c8ca
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.author: davidmu
+ms.openlocfilehash: 3e27976b02ee75083b07ca2e4f0c06e19502d1f5
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-active-directory-b2c-collecting-logs"></a>Az Azure Active Directory B2C: Naplógyűjtés időtartamát
 
@@ -104,7 +101,7 @@ A bejegyzések hosszú lehet.  Exportálás CSV-FÁJLBA a részletes bemutatása
 Az elemzés eszközzel kapcsolatos részletesebb [Itt](https://docs.microsoft.com/azure/application-insights/app-insights-analytics).
 
 >[!NOTE]
->A Közösség dolgozott egy felhasználó út megjelenítő segítségével a fejlesztők identitás.  Nem Microsoft által támogatott és elérhetővé tegyen szigorúan-van.  Olvassa be az Application Insights-példány, és a felhasználó well-struktúra áttekintést nyújt a út események.  Szerezze be a forráskódot, és telepítheti saját megoldásban.
+>A Közösség dolgozott egy felhasználó út megjelenítő segítségével a fejlesztők identitás.  Nem Microsoft által támogatott és elérhetővé tegyen szigorúan-van.  Olvassa be az Application Insights-példány, és a felhasználó jól strukturált áttekintést nyújt a út események.  Szerezze be a forráskódot, és telepítheti saját megoldásban.
 
 Olvassa be az eseményeket az Application Insights viewer verziója található [Itt](https://github.com/Azure-Samples/active-directory-b2c-advanced-policies/tree/master/wingtipgamesb2c/src/WingTipUserJourneyPlayerWebApplication)
 

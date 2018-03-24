@@ -1,24 +1,19 @@
 ---
-title: "Azure Automation integrálása Visual Stuido Team Services verziókezelő |} Microsoft Docs"
-description: "A forgatókönyv bemutatja, hogyan egy Azure Automation-fiók és a Visual Stuido Team Services a verziókövetési rendszerrel való integráció beállításával."
+title: Azure Automation integrálása Visual Stuido Team Services verziókezelő
+description: A forgatókönyv bemutatja, hogyan egy Azure Automation-fiók és a Visual Stuido Team Services a verziókövetési rendszerrel való integráció beállításával.
 services: automation
-documentationcenter: 
-author: eamono
-manager: 
-editor: 
-keywords: "az Azure powershell, a VSTS, verziókezelő, automatizálás"
-ms.assetid: a43b395a-e740-41a3-ae62-40eac9d0ec00
+documentationcenter: ''
+author: eamonoreilly
+ms.author: eamono
+keywords: az Azure powershell, a VSTS, verziókezelő, automatizálás
 ms.service: automation
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2017
-ms.openlocfilehash: 5afccc4aa7b751958952d1401182f93109cff358
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.date: 03/19/2017
+ms.openlocfilehash: a60143db03e5f89685a25f26789003de30d91f4c
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-automation-scenario---automation-source-control-integration-with-visual-studio-team-services"></a>Azure Automation forgatókönyv - automatizálási verziókövetés integrálása a Visual Studio Team Services
 
@@ -51,7 +46,7 @@ Hozzon létre egy [biztonságos változó](automation-variables.md) a személyes
 
 ![](media/automation-scenario-source-control-integration-with-VSTS/VSTSTokenVariable.png)
 
-A forgatókönyv Szinkronizáló a runbookok vagy az automation-fiók konfigurációk importálása. Használhatja a [VSTS minta runbook](https://www.powershellgallery.com/packages/Sync-VSTS/1.0/DisplayScript) vagy az [a Git minta runbook VSTS] (https://www.powershellgallery.com/packages/Sync-VSTSGit/1.0/DisplayScript) a PowerShellGallery.com attól függően, hogy a VSTS-forrás használatára vezérlő vagy a Git VSTS, és telepítse az automation-fiók.
+A forgatókönyv Szinkronizáló a runbookok vagy az automation-fiók konfigurációk importálása. Használhatja a [VSTS minta runbook](https://www.powershellgallery.com/packages/Sync-VSTS/1.0/DisplayScript) vagy az [a Git minta runbook VSTS] (https://www.powershellgallery.com/packages/Sync-VSTSGit/1.0/DisplayScript) a PowerShellGallery.com attól függően, hogy a VSTS verziókezelő vagy VSTS használja a Gitet, és telepítse az automation-fiók.
 
 ![](media/automation-scenario-source-control-integration-with-VSTS/VSTSPowerShellGallery.png)
 

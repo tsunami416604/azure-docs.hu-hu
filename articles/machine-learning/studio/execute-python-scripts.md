@@ -1,11 +1,12 @@
 ---
-title: "Python machine learning parancsfájlok végrehajtása |} Microsoft Docs"
-description: "Vázol fel tervezési alapelvek az alapul szolgáló Azure Machine Learning és alapvető használati forgatókönyvek, képességekre és korlátozásokra Python parancsfájlok támogatása."
-keywords: "Python gépi tanulási, pandas, a python pandas, a python-parancsfájlok, python-parancsfájl végrehajtása"
+title: Python machine learning parancsfájlok végrehajtása |} Microsoft Docs
+description: Vázol fel tervezési alapelvek az alapul szolgáló Azure Machine Learning és alapvető használati forgatókönyvek, képességekre és korlátozásokra Python parancsfájlok támogatása.
+keywords: Python gépi tanulási, pandas, a python pandas, a python-parancsfájlok, python-parancsfájl végrehajtása
 services: machine-learning
-documentationcenter: 
-author: bradsev
-manager: cgronlun
+documentationcenter: ''
+author: heatherbshapiro
+ms.author: hshapiro
+manager: hjerez
 editor: cgronlun
 ms.assetid: ee9eb764-0d3e-4104-a797-19fc29345d39
 ms.service: machine-learning
@@ -14,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
-ms.author: bradsev;garye
-ms.openlocfilehash: c25f31ca72417672298657c4585184ad72db6c99
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: 0efa2a7604b41b791ed3717b7f2b667b7181085d
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="execute-python-machine-learning-scripts-in-azure-machine-learning-studio"></a>A Python Machine Learning parancsfájlok végrehajtása az Azure Machine Learning Studióban
 
@@ -188,7 +188,7 @@ A Python funkció a fontos pontokat és a szolgáltatások alapján a pontszámo
 ![image11](./media/execute-python-scripts/figure8.png)
 
 10. ábra. Működik a sorrendet megadó szolgáltatások által pontszámait.
- A következő kísérlet majd kiszámítja, és az Azure Machine Learning "Pima indiai cukorbetegség" adatkészlet a szolgáltatások fontos eredményét adja vissza:
+  A következő kísérlet majd kiszámítja, és az Azure Machine Learning "Pima indiai cukorbetegség" adatkészlet a szolgáltatások fontos eredményét adja vissza:
 
 ![image12](./media/execute-python-scripts/figure9a.png)
 ![image13](./media/execute-python-scripts/figure9b.png)    
@@ -208,7 +208,7 @@ A [Python-parancsfájl végrehajtására] [ execute-python-script] modul lehető
 
 Várhatóan új lehetőségeket biztosítanak a [Python-parancsfájl végrehajtására] [ execute-python-script] modul például betanítása, és azok modellek a Python, valamint nagyobb mértékű támogatást biztosítsanak a fejlesztési hozzáadása és az Azure Machine Learning Studióban kód hibakereséséhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információ: [Python fejlesztői központban](https://azure.microsoft.com/develop/python/).
 
 <!-- Module References -->

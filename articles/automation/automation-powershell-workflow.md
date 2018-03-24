@@ -1,6 +1,6 @@
 ---
-title: "Azure Automation PowerShell-munkafolyamati tanulási"
-description: "Ez a cikk szándék szerint egy gyors lecke használta a Powershellt szerzők adott PowerShell és a PowerShell munkafolyamatok és a vonatkozó Automation-runbook fogalmak közötti különbségek megismeréséhez."
+title: Azure Automation PowerShell-munkafolyamati tanulási
+description: Ez a cikk szándék szerint egy gyors lecke használta a Powershellt szerzők adott PowerShell és a PowerShell munkafolyamatok és a vonatkozó Automation-runbook fogalmak közötti különbségek megismeréséhez.
 services: automation
 ms.service: automation
 author: georgewallace
@@ -8,13 +8,11 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.devlang: na
-ms.tgt_pltfrm: na
-ms.openlocfilehash: b8d78d6dfd258fb51e7b30832b6c214c67ac0fec
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 32f991f0b0017e673828b1ceb832511e118efa92
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="learning-key-windows-powershell-workflow-concepts-for-automation-runbooks"></a>Tanulási automatizálási runbookok Windows PowerShell munkafolyamat alapfogalmai 
 Azure Automation Runbookjai Windows PowerShell-munkafolyamatként vannak megvalósítva.  A Windows PowerShell munkafolyamat hasonló Windows PowerShell-parancsfájlba, de néhány jelentős különbség az, hogy egy új felhasználóhoz zavaró lehet.  Ez a cikk segítséget nyújt a runbookok használatával. a PowerShell-munkafolyamat írása készült, de javasolt PowerShell használatával, ha nem kell az ellenőrzőpontok runbookok írása.  Több szintaktikai különbségek vannak PowerShell munkafolyamat runbookok létrehozásakor, és ezek a különbségek egy kicsit nagyobb munkahelyi hatékony munkafolyamatok írása szükséges.  

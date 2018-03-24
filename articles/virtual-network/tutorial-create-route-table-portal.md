@@ -1,13 +1,13 @@
 ---
-title: "Hálózati forgalmat - az Azure portálon |} Microsoft Docs"
-description: "Útmutató a hálózati forgalom irányításához egy útválasztási táblázathoz, az Azure portál használatával."
+title: Hálózati forgalmat - az Azure portálon |} Microsoft Docs
+description: Útmutató a hálózati forgalom irányításához egy útválasztási táblázathoz, az Azure portál használatával.
 services: virtual-network
 documentationcenter: virtual-network
 author: jimdial
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: azurecli
 ms.topic: article
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: jdial
-ms.custom: 
-ms.openlocfilehash: 45b07c6ca86802d0cc3e773234e1122ba7bd9ea7
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.custom: ''
+ms.openlocfilehash: 980cf7b59ed16778bbb6cd1b657e3522407c79c9
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="route-network-traffic-with-a-route-table-using-the-azure-portal"></a>Hálózati forgalom egy útválasztási táblázathoz, az Azure portál használatával
 
@@ -260,4 +260,4 @@ Ebben a cikkben létrehozott egy útválasztási táblázatot, és az alhálóza
 A virtuális hálózaton belül számos Azure-erőforrások telepítése során egyes Azure PaaS szolgáltatások erőforrás nem telepíthető virtuális hálózatba. Továbbra is korlátozzuk néhány Azure PaaS-szolgáltatást csak a virtuális hálózati alhálózat forgalom erőforrásaihoz, ha. A következő oktatóanyag áttekintésével megismerheti, hogyan Azure PaaS erőforrásokhoz való hálózati hozzáférés korlátozása továbblépés.
 
 > [!div class="nextstepaction"]
-> [Hálózati hozzáférés korlátozása PaaS erőforrások](virtual-network-service-endpoints-configure.md#azure-portal)
+> [Hálózati hozzáférés korlátozása PaaS erőforrások](tutorial-restrict-network-access-to-resources.md)

@@ -1,3 +1,19 @@
+---
+title: fájl belefoglalása
+description: fájl belefoglalása
+services: vpn-gateway
+author: cherylmc
+ms.service: vpn-gateway
+ms.topic: include
+ms.date: 03/21/2018
+ms.author: cherylmc
+ms.custom: include file
+ms.openlocfilehash: 9b168231669c50c8f00d3527288fd03ab3bf9ce8
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 03/23/2018
+---
 ### <a name="noconnection"></a>Helyi hálózati átjáró IP-címelőtagjainak módosítása – nincs átjárókapcsolat
 
 Ha nincs átjárókapcsolata, és szeretne hozzáadni vagy eltávolítani IP-címelőtagokat, használja ugyanazt a parancsot, amellyel létrehozza a helyi hálózati átjárót: [az network local-gateway create](https://docs.microsoft.com/cli/azure/network/local-gateway#az_network_local_gateway_create). Ezzel a paranccsal emellett a VPN-eszközhöz tartozó átjárói IP-címet is frissítheti. Az aktuális beállítások felülírásakor a helyi hálózati átjáró meglévő nevét használja. Ha más nevet használ, új helyi hálózati átjárót hoz létre a meglévő felülírása helyett.

@@ -1,24 +1,21 @@
 ---
-title: "Az Azure Active Directory B2C: Egyéni házirendekkel identitás-szolgáltatóként hozzáadása a Microsoft-fiók (MSA)"
-description: "A Microsoft identitás-szolgáltatóként OpenID Connect (OIDC) protokollt használó minta"
+title: 'Az Azure Active Directory B2C: Egyéni házirendekkel identitás-szolgáltatóként hozzáadása a Microsoft-fiók (MSA)'
+description: A Microsoft identitás-szolgáltatóként OpenID Connect (OIDC) protokollt használó minta
 services: active-directory-b2c
-documentationcenter: 
-author: yoelhor
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: 
-ms.assetid: 
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.devlang: na
 ms.date: 08/04/2017
-ms.author: yoelh
-ms.openlocfilehash: cdc77d093358fa15bb1acbc9ba6b1867bae062f8
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: davidmu
+ms.openlocfilehash: a49e9589322eeb90a713321b4fbe4c4820609f7a
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-active-directory-b2c-add-microsoft-account-msa-as-an-identity-provider-using-custom-policies"></a>Az Azure Active Directory B2C: Egyéni házirendekkel identitás-szolgáltatóként hozzáadása a Microsoft-fiók (MSA)
 
@@ -38,7 +35,7 @@ Ezek a lépések az alábbiak:
 5.  A házirend feltöltése az Azure AD B2C bérlői és tesztelik azt
 
 ## <a name="create-a-microsoft-account-application"></a>Microsoft-fiók alkalmazás létrehozása
-Az Azure Active Directory (Azure AD) B2C identitás-szolgáltatóként a Microsoft-fiók használatához szüksége hozzon létre egy Microsoft-fiók alkalmazást, és adja meg azt a megfelelő paraméterekkel. Microsoft-fiók szükséges. Ha még nincs fiókja, látogasson el [https://www.live.com/](https://www.live.com/).
+Az Azure Active Directory (Azure AD) B2C identitás-szolgáltatóként a Microsoft-fiók használatához szüksége hozzon létre egy Microsoft-fiók alkalmazást, és adja meg azt a megfelelő paraméterekkel. Microsoft-fiók szükséges. Ha még nincs fiókja, látogasson el [ https://www.live.com/ ](https://www.live.com/).
 
 1.  Lépjen a [Microsoft alkalmazásregisztrációs portálra](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) , és jelentkezzen be Microsoft-fiók hitelesítő adataival.
 2.  Kattintson a **hozzáadhat egy alkalmazást**.
@@ -156,10 +153,10 @@ Ezen a ponton az identitásszolgáltató be van állítva, de a sign-Close-Up/si
 4.  Illessze be a teljes tartalmát `<UserJournesy>` csomópont gyermekeként másolt a `<UserJourneys>` elemet.
 
 ### <a name="display-the-button"></a>A gomb megjelenítése
-A `<ClaimsProviderSelections>` elem definiálja a jogcímeket szolgáltató tanúsítványválasztási beállítások és a sorrendjük listáját.  `<ClaimsProviderSelection>`a elem egy identity provider gombra a sign-Close-Up/sign-in oldalán hasonló. Ha ad hozzá egy `<ClaimsProviderSelection>` elem Microsoft-fiókot, egy új gomb megjelenik, amikor a felhasználó az oldalon fájljai. Ez az elem hozzáadása:
+A `<ClaimsProviderSelections>` elem definiálja a jogcímeket szolgáltató tanúsítványválasztási beállítások és a sorrendjük listáját.  `<ClaimsProviderSelection>` a elem egy identity provider gombra a sign-Close-Up/sign-in oldalán hasonló. Ha ad hozzá egy `<ClaimsProviderSelection>` elem Microsoft-fiókot, egy új gomb megjelenik, amikor a felhasználó az oldalon fájljai. Ez az elem hozzáadása:
 
 1.  Keresés a `<UserJourney>` tartalmazó csomópont `Id="SignUpOrSignIn"` a a felhasználók utazás másolt.
-2.  Keresse meg a `<OrchestrationStep>` tartalmazó csomópont`Order="1"`
+2.  Keresse meg a `<OrchestrationStep>` tartalmazó csomópont `Order="1"`
 3.  Adja hozzá a következő XML-részletet a `<ClaimsProviderSelections>` csomópont:
 
 ```xml
@@ -204,7 +201,7 @@ Most, hogy a gomb helyen, hogy egy művelet kapcsolódnia kell. A művelet, ebbe
 ### <a name="display-the-button"></a>A gomb megjelenítése
 1.  Nyissa meg a bővítményfájl házirend (például TrustFrameworkExtensions.xml).
 2.  Keresés a `<UserJourney>` tartalmazó csomópont `Id="ProfileEdit"` a a felhasználók utazás másolt.
-3.  Keresse meg a `<OrchestrationStep>` tartalmazó csomópont`Order="1"`
+3.  Keresse meg a `<OrchestrationStep>` tartalmazó csomópont `Order="1"`
 4.  Adja hozzá a következő XML-részletet a `<ClaimsProviderSelections>` csomópont:
 
 ```xml

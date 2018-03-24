@@ -1,25 +1,25 @@
 ---
-title: "Rendszerindítási diagnosztika a Linux virtuális gépek Azure-ban |} Microsoft Doc"
-description: "A Linux virtuális gépek Azure-ban két hibakeresési funkcióinak áttekintése"
+title: Rendszerindítási diagnosztika a Linux virtuális gépek Azure-ban |} Microsoft Doc
+description: A Linux virtuális gépek Azure-ban két hibakeresési funkcióinak áttekintése
 services: virtual-machines-linux
 documentationcenter: virtual-machines-linux
 author: Deland-Han
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.workload: infrastructure
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 08/21/2017
+ms.date: 03/19/2018
 ms.author: delhan
-ms.openlocfilehash: 70254d39b5c6326166f7e29fdfc99533835502f9
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: bf8e1b338012898ed3de3f443cf492b6890af796
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="how-to-use-boot-diagnostics-to-troubleshoot-linux-virtual-machines-in-azure"></a>Rendszerindítási diagnosztika használata a Linux virtuális gépek Azure-ban hibaelhárítása
 
@@ -39,9 +39,9 @@ Mindkét szolgáltatás támogatott az Azure virtuális gépeken minden régiób
 
 ## <a name="common-boot-errors"></a>Gyakori rendszerindítási hibák
 
-- [Kapcsolatos problémák](https://blogs.msdn.microsoft.com/linuxonazure/2016/09/13/linux-recovery-cannot-ssh-to-linux-vm-due-to-file-system-errors-fsck-inodes/)
-- [Kernel-problémák](https://blogs.msdn.microsoft.com/linuxonazure/2016/10/09/linux-recovery-manually-fixing-non-boot-issues-related-to-kernel-problems/)
-- [FSTAB hibák](https://blogs.msdn.microsoft.com/linuxonazure/2016/07/21/cannot-ssh-to-linux-vm-after-adding-data-disk-to-etcfstab-and-rebooting/ )
+- [Kapcsolatos problémák](https://support.microsoft.com/help/3213321/linux-recovery-cannot-ssh-to-linux-vm-due-to-file-system-errors-fsck) 
+- [Kernel-problémák](https://support.microsoft.com/help/4091524/how-recovery-azure-linux-vm-from-kernel-related-boot-related-issues/) 
+- [FSTAB hibák](https://support.microsoft.com/help/3206699/azure-linux-vm-cannot-start-because-of-fstab-errors)
 
 ## <a name="enable-diagnostics-on-a-new-virtual-machine"></a>Diagnosztika engedélyezése egy új virtuális gépen
 1. Amikor új virtuális gépet hoz létre a Betekintő portálon, válassza az **Azure Resource Manager** lehetőséget az üzemi modell legördülő menüből:
@@ -79,3 +79,7 @@ Mindkét szolgáltatás támogatott az Azure virtuális gépeken minden régiób
 Ahhoz, hogy a rendszerindítási diagnosztika a portálon keresztül, egy meglévő virtuális gépet a portálon keresztül is frissítheti. Válassza a Rendszerindítási diagnosztika lehetőséget, majd kattintson a Mentés elemre. A módosítás a virtuális gép újraindítása után lép életbe.
 
 ![Létező virtuális gép frissítése](./media/boot-diagnostics/screenshot5.png)
+
+## <a name="next-steps"></a>További lépések
+
+Ha a virtuális gép rendszerindítási diagnosztika használatakor a "Nem sikerült lekérni a tartalmat a napló" hibát látja, tekintse meg [nem sikerült lekérni a tartalmat a napló hiba a virtuális gép rendszerindítási diagnosztika](https://support.microsoft.com/help/4094480/failed-to-get-contents-of-the-log-error-in-vm-boot-diagnostics-in-azur).

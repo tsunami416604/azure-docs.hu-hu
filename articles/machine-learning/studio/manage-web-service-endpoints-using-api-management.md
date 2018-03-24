@@ -1,12 +1,13 @@
 ---
-title: "Az API Management használata AzureML webszolgáltatások kezelése |} Microsoft Docs"
-description: "Egy útmutató bemutatja, hogyan kezelheti az AzureML-webszolgáltatások API Management használata."
-keywords: "gépi tanulási, az api management"
+title: Az API Management használata AzureML webszolgáltatások kezelése |} Microsoft Docs
+description: Egy útmutató bemutatja, hogyan kezelheti az AzureML-webszolgáltatások API Management használata.
+keywords: gépi tanulási, az api management
 services: machine-learning
-documentationcenter: 
-author: roalexan
-manager: jhubbard
-editor: 
+documentationcenter: ''
+author: YasinMSFT
+ms.author: yahajiza
+manager: hjerez
+editor: cgronlun
 ms.assetid: 05150ae1-5b6a-4d25-ac67-fb2f24a68e8d
 ms.service: machine-learning
 ms.workload: data-services
@@ -14,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/03/2017
-ms.author: roalexan
-ms.openlocfilehash: b2c9f53de1abd2aea5fabbefecc5bbb144148a7b
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: fe916df286b0e50430464b3f2f8837b898abb827
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="learn-how-to-manage-azureml-web-services-using-api-management"></a>AzureML webszolgáltatások kezelése az API Management használatával
 ## <a name="overview"></a>Áttekintés
@@ -65,7 +65,7 @@ Az API létrehozása:
 1. Nyissa meg az imént létrehozott szolgáltatáspéldány az Azure-portálon.
 2. A bal oldali navigációs ablakból válassza **API-k**.
 
-   ![API-felügyeleti-menü](./media/manage-web-service-endpoints-using-api-management/api-management.png)
+   ![api-management-menu](./media/manage-web-service-endpoints-using-api-management/api-management.png)
 
 1. Kattintson a **API hozzáadása**.
 2. Adjon meg egy **webes API-név** (a példában az "AzureML bemutató API").
@@ -161,7 +161,7 @@ Műveletek hívható közvetlenül a megtekintése, és az API-k működésének
 
    A **Request body**, típus `{"Inputs": {"input1": {"ColumnNames": ["Col2"], "Values": [["This is a good day"]]}}, "GlobalParameters": {}}`.
 
-   ![az azureml-bemutató-api](./media/manage-web-service-endpoints-using-api-management/azureml-demo-api.png)
+   ![azureml-demo-api](./media/manage-web-service-endpoints-using-api-management/azureml-demo-api.png)
 
 5. Kattintson a **küldése**.
 
@@ -179,7 +179,7 @@ Az alábbiakban az AzureML egyszerű kísérlet létrehozását és telepítés�
 | --- | --- |
 | Ez az jó naponta |1 1 2 2 0 2 0 1 |
 
-Először egy böngészőt, nyissa meg azt: [https://studio.azureml.net/](https://studio.azureml.net/) bejelentkezési hitelesítő adataival. Ezután hozzon létre egy új üres kísérlet.
+Először egy böngészőt, nyissa meg azt: [ https://studio.azureml.net/ ](https://studio.azureml.net/) bejelentkezési hitelesítő adataival. Ezután hozzon létre egy új üres kísérlet.
 
 ![Keresés – kísérlet-sablonok](./media/manage-web-service-endpoints-using-api-management/search-experiment-templates.png)
 
@@ -197,7 +197,7 @@ Kattintson a **Select Columns in Dataset** majd **Oszlopválasztás** válassza 
 
 Bontsa ki a **Szövegelemzések** , és húzza **Szolgáltatáskivonatolás** alakzatot a kísérletet. Csatlakozás **oszlopok kiválasztása az adathalmaz** való **Szolgáltatáskivonatolás**.
 
-![Connect--projektoszlopok](./media/manage-web-service-endpoints-using-api-management/connect-project-columns.png)
+![connect-project-columns](./media/manage-web-service-endpoints-using-api-management/connect-project-columns.png)
 
 Típus **3** a a **bitsize kivonatoláshoz**. Ezzel létrehoz 8 (23) oszlopot.
 
@@ -214,7 +214,7 @@ Most hozzon létre egy webszolgáltatás-bővítmény. Bontsa ki a **webszolgál
 
 Kattintson a **webszolgáltatás**.
 
-![közzététel-webszolgáltatás](./media/manage-web-service-endpoints-using-api-management/publish-web-service.png)
+![publish-web-service](./media/manage-web-service-endpoints-using-api-management/publish-web-service.png)
 
 Kattintson a **Igen** közzététele a kísérletet.
 
@@ -225,7 +225,7 @@ Az AzureML webszolgáltatás RSS (kérelem/válasz szolgáltatás) és a BES (k�
 
 Konfigurálnia kell a **munkaterület**, **szolgáltatás**, és **api_key** a kísérlet az alábbi minta adatforrásra vonatkozóan. Megtalálhatja az munkaterület és a szolgáltatás lehet **kérelem/válasz** vagy **kötegelt végrehajtási** webes szolgáltatás irányítópultján a kísérleti fázisú funkciókat.
 
-![Keresés – munkaterület-és-szolgáltatás](./media/manage-web-service-endpoints-using-api-management/find-workspace-and-service.png)
+![find-workspace-and-service](./media/manage-web-service-endpoints-using-api-management/find-workspace-and-service.png)
 
 Megtalálhatja az **api_key** webes szolgáltatás irányítópultján kísérletbe kattintva.
 
@@ -243,7 +243,7 @@ Típus **Ez az jó naponta** a **col2**. Kattintson a pipa jelre.
 
 Látni fogja hasonlót
 
-![minta-kimenet](./media/manage-web-service-endpoints-using-api-management/sample-output.png)
+![sample-output](./media/manage-web-service-endpoints-using-api-management/sample-output.png)
 
 ##### <a name="sample-code"></a>Mintakód
 Egy másik módszer a RR-EKET az Ügyfélkód származik. Ha **kérelem/válasz** az irányítópultot és a felülről lefelé görgetési jelennek meg példakód C#, Python, és R. Ezenkívül megjelenik az RRS kérelem a kérelem URI-azonosítója, beleértve a szintaxist fejlécek és törzse.

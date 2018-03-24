@@ -1,24 +1,24 @@
 ---
-title: "Az Azure szabványos terheléselosztó és a rendelkezésre állási zónák |} Microsoft Docs"
-description: "Standard terheléselosztó és a rendelkezésre állási zónák"
+title: Az Azure szabványos terheléselosztó és a rendelkezésre állási zónák |} Microsoft Docs
+description: Standard terheléselosztó és a rendelkezésre állási zónák
 services: load-balancer
 documentationcenter: na
 author: KumudD
 manager: jeconnoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/13/2018
+ms.date: 03/21/2018
 ms.author: kumud
-ms.openlocfilehash: 61e0e7cf960d7eb2294bc294ec1eec9d80428a81
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 70b39b854a3b7cb28716d3cb290998690dbeb549
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="standard-load-balancer-and-availability-zones"></a>Standard terheléselosztó és a rendelkezésre állási zónák
 
@@ -151,7 +151,7 @@ Ha meglévő Resource Manager-sablonok a konfigurációt használ, adja hozzá a
 
 Kereszt-zóna terheléselosztás terheléselosztó képessége, egy háttér-végpont minden zónában eléréséhez, és független az előtér- és a zonality.
 
-Ha szeretne igazítása és a központi telepítés egy zóna garantálni, igazítása zonal előtér- és zonal háttér-erőforrások ugyanabban a zónában. Nincs szükség semmilyen további műveletre.
+Ha szeretne igazítása és a központi telepítés egy zóna belül garantálni, igazítása zonal előtér- és zonal háttér-erőforrások ugyanabban a zónában. Nincs szükség semmilyen további műveletre.
 
 ### <a name="backend"></a>Háttérszolgáltatás
 
@@ -210,7 +210,7 @@ Zónaredundáns nyújthat a zóna-független, és a szolgáltatás-címen egyetl
 
 Zonal biztosíthat egy explicit garancia zónához, sorsáról osztja meg a zóna állapotát. Társítása zonal IP cím vagy zonal terheléselosztó előtér lehet kívánatos vagy ésszerű attribútum különösen akkor, ha a csatolt erőforrás a zonal virtuális gépek ugyanabban a zónában.  Vagy lehet, hogy az alkalmazás által igényelt explicit Tudásbázis mely zónára erőforrás található, és az okból elérhetősége a különálló zónákra explicit módon kívánja.  Választhat egy végpontok közötti szolgáltatás zónák pontjain több zonal frontends tenni (Ez azt jelenti, hogy egy zóna zonal frontends a több zonal virtuálisgép-méretezési állítja be).  Ha a zonal frontends nyilvános IP-címek, a több zonal frontends használhatja a szolgáltatást, amely közzétételénél és [Traffic Manager](../traffic-manager/traffic-manager-overview.md).  Vagy több zonal frontends segítségével egy zóna állapotának és teljesítményének insights figyelési megoldásoknak harmadik féltől származó keresztül szerezhet, és tegye elérhetővé az általános zónaredundáns előtér-bA. Meg kell csak szolgáltat zonal erőforrásokat zonal frontends az azonos zónába igazodik a, és elkerülheti a potenciálisan káros kereszt-zóna forgatókönyv-zonal erőforrásokat.  Zonal erőforrások csak azokban a régiókban, ahol a rendelkezésre állási zónák létezik létezik.
 
-Nincs általános útmutatás az, hogy még jobb megoldás, mint a másikra anélkül, hogy tudnák a végpont szolgáltatás.
+Nincs, hogy még jobb megoldás, mint a másikra anélkül, hogy tudnák a service-architektúra általános útmutatás.
 
 ## <a name="limitations"></a>Korlátozások
 

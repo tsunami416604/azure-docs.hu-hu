@@ -1,6 +1,6 @@
 ---
-title: "Azure Automation DSC Log Analyticshez való jelentéskészítéshez szükséges adatok továbbítása"
-description: "Ez a cikk bemutatja, hogyan küldhetők szükséges konfiguráló (DSC) jelentéskészítéshez szükséges adatok további elemzéséhez és a felügyeleti szolgáltatáshoz."
+title: Azure Automation DSC Log Analyticshez való jelentéskészítéshez szükséges adatok továbbítása
+description: Ez a cikk bemutatja, hogyan küldhetők szükséges konfiguráló (DSC) jelentéskészítéshez szükséges adatok további elemzéséhez és a felügyeleti szolgáltatáshoz.
 services: automation
 ms.service: automation
 author: georgewallace
@@ -8,17 +8,15 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.devlang: na
-ms.tgt_pltfrm: na
-ms.openlocfilehash: d06ec240477c2defca7a463b2e9338bc5e3930ab
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: ac0da2b73341f0c6ed4f1e99e077996525890ab7
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
-# <a name="forward-azure-automation-dsc-reporting-data-to-oms-log-analytics"></a>Az Azure Automation DSC jelentési adatainak továbbítása az OMS Log Analyticsbe
+# <a name="forward-azure-automation-dsc-reporting-data-to-log-analytics"></a>Azure Automation DSC Log Analyticshez való jelentéskészítéshez szükséges adatok továbbítása
 
-Automation DSC csomópont állapota adatokat küldhet a Microsoft Operations Management Suite (OMS) Naplóelemzési munkaterület.  
+Automation DSC csomópont állapota adatokat küldhet a Naplóelemzési munkaterület.  
 Megfelelőségi állapota látható az Azure portálon, vagy a PowerShell használatával, a csomópontok számára, és az egyedi DSC erőforrások a csomópont-konfigurációt. Log Analytics segítségével:
 
 * A megfelelőségi adatok lekérése a felügyelt csomópontok és az egyes erőforrások
@@ -34,7 +32,7 @@ Indítsa el az Automation DSC-jelentéseket küld a Naplóelemzési, az alábbia
 * A November 2016 vagy újabb kiadása [Azure PowerShell](/powershell/azure/overview) (v2.3.0).
 * Egy Azure Automation-fiókra. További információkért lásd: [Ismerkedés az Azure Automation szolgáltatással](automation-offering-get-started.md)
 * A Naplóelemzési munkaterület egy **Automation & vezérlő** szolgáltatásajánlat. További információkért lásd: [Ismerkedés a Naplóelemzési](../log-analytics/log-analytics-get-started.md).
-* Legalább egy Azure Automation DSC-csomópont. További információkért lásd: [bevezetési gépeket Azure Automation DSC általi kezelésre](automation-dsc-onboarding.md) 
+* Legalább egy Azure Automation DSC-csomópont. További információkért lásd: [bevezetési gépeket Azure Automation DSC általi kezelésre](automation-dsc-onboarding.md)
 
 ## <a name="set-up-integration-with-log-analytics"></a>Log Analytics-integráció beállítása
 
@@ -191,5 +189,5 @@ A Naplóelemzési az Automation DSC adatait működési áttekinthetősége bizt
 
 * Különböző keresési lekérdezések összeállításához, és tekintse át a Automation DSC a Naplóelemzési kapcsolatos további tudnivalókért lásd: [Log Analytics-e jelentkezni a keresések](../log-analytics/log-analytics-log-searches.md)
 * Azure Automation DSC használatával kapcsolatos további tudnivalókért lásd: [Ismerkedés az Azure Automation DSC](automation-dsc-getting-started.md)
-* Az OMS Log Analytics használatával és adatgyűjtési forrásokkal kapcsolatos további tudnivalókat lásd: az [Azure-tárfiókbeli adatok Log Analytics-ben történő gyűjtésének az áttekintése](../log-analytics/log-analytics-azure-storage.md)
+* Log Analytics és a gyűjtemény adatforrások kapcsolatos további információkért lásd: [gyűjtése Azure storage adatok a Naplóelemzési – áttekintés](../log-analytics/log-analytics-azure-storage.md)
 

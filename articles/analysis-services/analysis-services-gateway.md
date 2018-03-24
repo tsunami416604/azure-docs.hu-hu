@@ -1,25 +1,25 @@
 ---
-title: "A helyszíni adatátjáró |} Microsoft Docs"
-description: "Egy helyszíni átjárót szükség, ha az Azure-ban az Analysis Services-kiszolgálóhoz csatlakoznak a helyszíni adatforrások."
+title: A helyszíni adatátjáró |} Microsoft Docs
+description: Egy helyszíni átjárót szükség, ha az Azure-ban az Analysis Services-kiszolgálóhoz csatlakoznak a helyszíni adatforrások.
 services: analysis-services
-documentationcenter: 
+documentationcenter: ''
 author: minewiskan
 manager: kfile
-editor: 
-tags: 
+editor: ''
+tags: ''
 ms.assetid: cd596155-b608-4a34-935e-e45c95d884a9
 ms.service: analysis-services
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 02/02/2018
+ms.date: 03/19/2018
 ms.author: owend
-ms.openlocfilehash: a0af2e0448d8ce991c9bcc138d6132d216715768
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 2bb85eafc7722840b6a35956403c29d4ac642cc1
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="connecting-to-on-premises-data-sources-with-azure-on-premises-data-gateway"></a>Csatlakozás az adatforrásokhoz helyszíni Azure a helyszíni adatok átjáróval
 Az a helyszíni átjáró működik hídként, a helyszíni adatforrások és a felhőben az Azure Analysis Services-kiszolgálók közötti biztonságos adatátvitel biztosítása. Mellett több Azure Analysis Services-kiszolgáló ugyanabban a régióban dolgozik, az átjáró legújabb verzióját is működik az Azure Logic Apps, a Power bi-ban, a kiemelt alkalmazások és a Microsoft Flow. Csak egyetlen átjáró ugyanabban a régióban több szolgáltatáshoz is társíthat. 
@@ -36,7 +36,7 @@ Az átjáró telepítése az első alkalommal első az egy négyrészes folyamat
 
 Rögtön használatba, lásd: [telepítse és konfigurálja a helyszíni adatátjáró](analysis-services-gateway-install.md).
 
-## <a name="how-it-works"></a>Annak működéséről
+## <a name="how-it-works"> </a>Hogyan működik?
 A szervezet egy számítógépre telepítse az átjáró fut a Windows, **helyszíni adatátjáró**. A helyi szolgáltatás az átjáró Felhőszolgáltatáshoz Azure Service Buson keresztül van regisztrálva. Ezután hozzon létre egy átjáró-erőforráshoz átjáró Felhőszolgáltatáshoz Azure-előfizetése. Az Azure Analysis Services-kiszolgáló majd csatlakoznak az átjáró-erőforráshoz. Ha a kiszolgálón lévő modellek az adatokhoz történő kapcsolódáshoz a helyszíni adatforrások lekérdezések és feldolgozásra vonatkozó, a lekérdezés és az adatok áramlását az átjáró-erőforráshoz, Azure Service Bus, a helyi helyszíni átjáró szolgáltatás és az adatforrások halad át. 
 
 ![Működés](./media/analysis-services-gateway/aas-gateway-how-it-works.png)
@@ -50,7 +50,7 @@ Lekérdezések és adatfolyam:
 5. Az átjáró a lekérdezést küld az adatforrás-végrehajtásra.
 6. Az eredményeket az adatforrásból kerülnek vissza az átjáró, majd a felhőszolgáltatás és a kiszolgáló.
 
-## <a name="windows-service-account"></a>Windows-szolgáltatás fiókja
+## <a name="windows-service-account"> </a>Windows-szolgáltatás fiókja
 Az a helyszíni átjáró használatára van konfigurálva *NT SERVICE\PBIEgwService* a Windows szolgáltatás bejelentkezési hitelesítő adatok. Alapértelmezés szerint rendelkezik bejelentkezési jobb szolgáltatásként; a gépet, telepíti az átjárót a környezetében. Ezeket a hitelesítő adatokat, de nem ugyanazt a fiókot a helyszíni adatforrások eléréséhez használt az Azure-fiókjával.  
 
 Ha problémák lépnek fel a proxykiszolgáló hitelesítést miatt, előfordulhat, hogy módosítani szeretné a Windows-fiók egy tartományi felhasználó vagy a felügyelt szolgáltatásfiók.
@@ -61,7 +61,7 @@ Az átjáró Azure Service Bus egy kimenő kapcsolatot hoz létre. A kimenő por
 Javasoljuk, hogy a tűzfal az adatterület az IP-címek engedélyezési listája. Letöltheti a [Microsoft Azure Datacenter IP-lista](https://www.microsoft.com/download/details.aspx?id=41653). A lista a heti frissül.
 
 > [!NOTE]
-> Az IP-címek szerepel-e az Azure Datacenter IP CIDR-formátumban vannak. Például: 10.0.0.0/24 nem jelenti azt 10.0.0.0 10.0.0.24 keresztül. További információ a [CIDR-jelöléssel](http://whatismyipaddress.com/cidr).
+> Az IP-címek szerepel-e az Azure Datacenter IP CIDR-formátumban vannak. További tudnivalókért lásd: [Classless Inter-Domain Routing](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing).
 >
 >
 
@@ -141,7 +141,7 @@ A külső eszköz Azure sebesség teszt alkalmazás segítségével fel tudja m�
 **A Q**: Mi az az előnye, hogy a helyreállítási kulcs? <br/>
 **A**: A helyreállítási kulcs biztosítja az áttelepítéshez, vagy az átjáró beállításainak katasztrófa utáni helyreállításhoz.
 
-## <a name="troubleshooting"></a>Hibaelhárítása
+## <a name="troubleshooting"> </a>Hibaelhárítás
 
 **A Q**: Miért nem látom az átjáró a példányai közül az Azure-ban az átjáró erőforrás létrehozása közben? <br/>
 **A**: két lehetséges oka lehet. Első az erőforrás már létre van hozva a jelenlegi vagy valamilyen más előfizetés átjáró. Elkerülése érdekében ezt a lehetőséget, az a típusú erőforrások számbavétele **helyszíni Data Gateways** a portálról. Ügyeljen arra, hogy az előfizetések válassza, ha az erőforrások számbavétele. Az erőforrás létrehozása után az átjáró nem szerepelnek a listán az átjáró erőforrás létrehozása portál élmény átjáró példánya. A második lehetőség, hogy a felhasználó, aki telepítette az átjárót az Azure AD identitása eltér a felhasználó bejelentkezve az Azure-portálon. Oldja meg, jelentkezzen be a portálon ugyanazzal a fiókkal, a felhasználó, aki telepítette az átjárót.

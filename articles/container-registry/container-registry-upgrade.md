@@ -1,18 +1,18 @@
 ---
-title: "A klasszikus Azure-tároló beállításjegyzék frissítése"
-description: "A kibontott előnyeinek kihasználása szolgáltatáskészlet a Basic, Standard és prémium szintű tároló nyilvántartó kezeli a nem felügyelt klasszikus tároló beállításjegyzék frissítése."
+title: A klasszikus Azure-tároló beállításjegyzék frissítése
+description: A kibontott előnyeinek kihasználása szolgáltatáskészlet a Basic, Standard és prémium szintű tároló nyilvántartó kezeli a nem felügyelt klasszikus tároló beállításjegyzék frissítése.
 services: container-registry
 author: mmacy
 manager: timlt
 ms.service: container-registry
 ms.topic: article
-ms.date: 12/20/2017
+ms.date: 03/15/2018
 ms.author: marsma
-ms.openlocfilehash: 19090bb69d7165c1e904450dc93b925e23e44782
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: c5a61941bab2aa49cd8205e0a07dd2b5f7378ce9
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="upgrade-a-classic-container-registry"></a>A klasszikus tároló beállításjegyzék frissítése
 
@@ -27,16 +27,18 @@ Adja meg a felügyelt nyilvántartó:
 * Az Azure Active Directory-integráció [egyedi bejelentkezési](container-registry-authentication.md#individual-login-with-azure-ad)
 * Kép és a címke törlése támogatása
 * [Georeplikáció](container-registry-geo-replication.md)
-* [Webhook](container-registry-webhook.md)
+* [Webhooks](container-registry-webhook.md)
 
-Az összes, a klasszikus beállításjegyzékbeli függ a storage-fiók adott Azure automatikusan létrehozza az Azure-előfizetéséhez, a beállításjegyzék létrehozásakor. Ezzel szemben a Basic, Standard és Premium termékváltozat előnyeit *tárolási felügyelt*. Ez azt jelenti, hogy Azure a tárterület átlátható módon kezeli az Ön--a képek külön tárfiókot nem jön létre a saját előfizetésének.
+A klasszikus beállításjegyzék leginkább az összes, a tárfiók, hogy Azure automatikusan látja el az Azure-előfizetése a beállításjegyzék létrehozásakor függ. Ezzel szemben a Basic, Standard és Premium termékváltozat előnyeit Azure [speciális tárolási szolgáltatások](container-registry-storage.md) átláthatóan hajtják végre a képek tárolási az Ön által. Külön tárfiókot nem jön létre a saját előfizetésének.
 
 Felügyelt beállításjegyzék storage a következő előnyöket nyújtja:
 
-* Tároló lemezképek [titkosítása](../storage/common/storage-service-encryption.md).
-* Lemezképek használatával tárolja [georedundáns tárolás](../storage/common/storage-redundancy.md#geo-redundant-storage)modulhoz, biztonsági mentési több területi replikáció a képek.
+* Tároló lemezképek [titkosítása](container-registry-storage.md#encryption-at-rest).
+* Lemezképek használatával tárolja [georedundáns tárolás](container-registry-storage.md#geo-redundant-storage)modulhoz, biztonsági mentési több területi replikáció a képek.
 * Képes szabadon [termékváltozatok közötti áthelyezése](container-registry-skus.md#changing-skus), ha úgy dönt, hogy egy magasabb szintű SKU, amely lehetővé teszi, hogy nagyobb átviteli sebesség. Az egyes SKU ACR is megfeleljenek a átviteli sebesség növelése az igényeinek.
 * A beállításjegyzék és annak tárolóját egységes biztonsági modellt biztosít egyszerűsített rights management. Csak a tároló beállításjegyzék engedélyeit is kezeli az engedélyeket egy külön tárfiókhoz anélkül kezelheti.
+
+A lemezkép tárolási ACR a további részletekért lásd: [tároló lemezkép tárolási Azure tároló beállításjegyzék](container-registry-storage.md).
 
 ## <a name="migration-considerations"></a>Az áttelepítés szempontjai
 

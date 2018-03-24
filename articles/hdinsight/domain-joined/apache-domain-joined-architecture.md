@@ -1,8 +1,8 @@
 ---
-title: "Tartományhoz csatlakozó Azure HDInsight-architektúra |} Microsoft Docs"
-description: "Útmutató a tartományhoz csatlakoztatott HDInsight tervezéséhez."
+title: Tartományhoz csatlakozó Azure HDInsight-architektúra |} Microsoft Docs
+description: Útmutató a tartományhoz csatlakoztatott HDInsight tervezéséhez.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: bhanupr
 manager: jhubbard
 editor: cgronlun
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 12/14/2017
+ms.date: 03/20/2018
 ms.author: bprakash
-ms.openlocfilehash: 5285199d22528ed6b9fa3b7dbc85e382e7b28569
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: b4f79388e45e24dc906a3a03dc0c0e51df52160d
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="plan-azure-domain-joined-hadoop-clusters-in-hdinsight"></a>Azure-tartományhoz csatlakoztatott Hadoop-fürtök tervezése a HDInsightban
 
@@ -47,16 +47,14 @@ Az alábbi képernyőfelvételen látható egy szervezeti Egységet létrehozni 
 
 ![Tartományhoz csatlakoztatott HDInsight-fürtök szervezeti egység](./media/apache-domain-joined-architecture/hdinsight-domain-joined-ou.png).
 
-### <a name="two-ways-of-bringing-your-own-active-directory-domain-controllers"></a>Két módon, hogy a saját Active Directory-tartományvezérlők
-
-Két módon helyezheti az Active Directory-tartományvezérlők tartományhoz a HDInsight-fürtök létrehozása. 
+### <a name="the-way-of-bringing-your-own-active-directory-domain-controllers"></a>A úgy, hogy a saját Active Directory-tartományvezérlők
 
 - **Az Azure Active Directory tartományi szolgáltatások**: Ez a szolgáltatás egy felügyelt Active Directory-tartományhoz, amely teljes mértékben kompatibilis a Windows Server Active Directory biztosítja. A Microsoft gondoskodik kezelését, javítását és az AD-tartomány ellenőrzése. A fürtök telepítése anélkül, hogy a tartományvezérlők karbantartásához. Felhasználók, csoportok, és jelszavak szinkronizálódnak az Azure Active Directoryból, így a felhasználók jelentkezzen be a fürtre, a vállalati hitelesítő adatok használatával. További információkért lásd: [Azure Active Directory tartományi szolgáltatások konfigurálása tartományhoz csatlakoztatott HDInsight-fürtök](./apache-domain-joined-configure-using-azure-adds.md).
 
-- **Az Azure IaaS virtuális gépeken futó Active Directory**: ezt a beállítást, az telepíti és kezeli a saját Windows Server Active Directory-tartomány Azure IaaS virtuális gépeken. További információkért lásd: [konfigurálása tartományhoz csatlakoztatott védőfal mögötti környezet](./apache-domain-joined-configure.md).
+> [!NOTE]
+> Active Directory Azure IaaS virtuális gépeken már nem támogatott.
 
 ## <a name="next-steps"></a>További lépések
-* A tartományhoz csatlakoztatott HDInsight-fürtök konfigurálásához lásd: [Tartományhoz csatlakoztatott HDInsight-fürtök konfigurálása](apache-domain-joined-configure.md).
 * A tartományhoz csatlakoztatott HDInsight-fürtök kezeléséhez lásd: [Tartományhoz csatlakoztatott HDInsight-fürtök kezelése](apache-domain-joined-manage.md).
 * A Hive-házirendek konfigurálásához és a Hive-lekérdezések futtatásához lásd: [Hive-házirendek konfigurálása a tartományhoz csatlakoztatott HDInsight-fürtökben](apache-domain-joined-run-hive.md).
 * Hive-lekérdezések futtatása HDInsight-fürtök tartományhoz az ssh protokoll használatával, lásd: [az SSH a Hdinsighttal](../hdinsight-hadoop-linux-use-ssh-unix.md).

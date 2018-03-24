@@ -1,11 +1,12 @@
 ---
-title: "Adatok importálása a Machine Learning Studio online adatforrásokból |} Microsoft Docs"
-description: "A betanítási adatok Azure Machine Learning Studio különböző online forrásokból importálásának módját."
-keywords: "adatok, adatformátum, adattípusok, adatforrások, betanítási adatok importálása"
+title: Adatok importálása a Machine Learning Studio online adatforrásokból |} Microsoft Docs
+description: A betanítási adatok Azure Machine Learning Studio különböző online forrásokból importálásának módját.
+keywords: adatok, adatformátum, adattípusok, adatforrások, betanítási adatok importálása
 services: machine-learning
-documentationcenter: 
-author: bradsev
-manager: jhubbard
+documentationcenter: ''
+author: heatherbshapiro
+ms.author: hshapiro
+manager: hjerez
 editor: cgronlun
 ms.assetid: 701b93fe-765b-4d15-a1cf-9b607f17add6
 ms.service: machine-learning
@@ -14,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
-ms.author: bradsev;garye
-ms.openlocfilehash: c6185cd240d1c040c993e581c27624e1f170f709
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 5882f79b6479f71cfd1df503f55703e6177c072b
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="import-data-into-azure-machine-learning-studio-from-various-online-data-sources-with-the-import-data-module"></a>Adatok importálása az Azure Machine Learning Studióba különböző online adatforrásokból az Adatok importálása modullal
 Ez a cikk ismerteti a támogatás online adatimportálási különböző forrásokból és a források tárolt adatok mozgatása az Azure Machine Learning kísérlet szükséges információkat.
@@ -70,9 +70,9 @@ Az Azure Machine Learning **és adatokat importálhat** modul támogatja a köve
 | Helyszíni SQL Database adatbázis |A helyszíni SQL-adatbázisban tárolt adatok beolvasása. |<b>Az átjáró</b>: az adatkezelési átjáró egy számítógépre, ahol az SQL Server adatbázis férhetnek telepített nevét adja meg. Az átjáró beállításával kapcsolatos információkért lásd: [advanced analytics egy helyszíni SQL server adatait használó Azure Machine Learning segítségével végezze el](use-data-from-an-on-premises-sql-server.md).<br/><br/><b>Adatbázis-kiszolgáló neve</b>: a kiszolgáló, amelyen fut az adatbázis neve.<br/><br/><b>Az adatbázisnév </b>: az adatbázis nevét adja meg a kiszolgálón. <br/><br/><b>Felhasználói fiók kiszolgálónév</b>: a hozzáférési engedélyekkel rendelkezik az adatbázisban a fiók felhasználónevét határozza meg. <br/><br/><b>Felhasználónév és jelszó</b>: kattintson a <b>adja meg az értékeket</b> adatbázis hitelesítő adatait. Használhatja az integrált Windows-hitelesítést vagy SQL Server-hitelesítés a helyszíni SQL Server konfigurációtól függően.<br/><br/><b>Adatbázis-lekérdezés</b>: Adjon meg egy SQL-utasítást, amely leírja azokat az olvasni kívánt adatokat. |
 | Azure-tábla |A Table szolgáltatás az Azure Storage olvassa be az adatokat.<br/><br/>Ha nagy mennyiségű adat ritkán olvasni, használja az Azure Table szolgáltatás. Biztosít egy rugalmas, nem relációs (NoSQL), nagymértékben méretezhető, alacsony költségű és magas rendelkezésre állású tárolási megoldást. |A beállítások a **és adatokat importálhat** attól függően, hogy nyilvános információt vagy a privát storage-fiók bejelentkezési hitelesítő adatokat igénylő elérése módosítása. Ez határozza meg a <b>hitelesítési típus</b> amelyben lehetnek értéke "PublicOrSAS" vagy "Fiók", amelyek mindegyikének saját beállítása olyan paraméterek összessége. <br/><br/><b>Nyilvános vagy közös hozzáférésű Jogosultságkód (SAS) URI</b>: paraméterei:<br/><br/><ul><b>Tábla URI</b>: nyilvános vagy SAS URL-címet adja meg a következő táblázatban.<br/><br/><b>Meghatározza a sorok szolgáltatást a tulajdonságnevek</b>: az értékek a következők <i>TopN</i> megvizsgálja a megadott számú sort, vagy <i>ScanAll</i> a tábla összes sorát eléréséhez. <br/><br/>Ha az adatok homogén és előre jelezhető, javasoljuk, hogy kiválassza *TopN* és N. meg Nagy táblák Ez gyorsabb olvasási idő eredményezhet.<br/><br/>Ha a mélység függően változhat a tulajdonságok beállítása és a helyére a táblázat felépítése az adatokat, válassza ki azt a *ScanAll* beállítás megvizsgálja az összes sort. Ez biztosítja, hogy az eredményül kapott tulajdonság és a metaadatok átalakítás integritása.<br/><br/></ul><b>Saját Tárfiók</b>: paraméterei: <br/><br/><ul><b>Fióknév</b>: a fiók, amely tartalmazza a tábla olvasni nevét adja meg.<br/><br/><b>A fiókkulcsot</b>: Adja meg a fiókhoz tartozó kulcsot.<br/><br/><b>Táblanév</b> : olvassa el az adatokat tartalmazó tábla neve.<br/><br/><b>A tulajdonságnevek vizsgálatához sorok</b>: az értékek a következők <i>TopN</i> megvizsgálja a megadott számú sort, vagy <i>ScanAll</i> a tábla összes sorát eléréséhez.<br/><br/>Ha az adatok homogén és előre jelezhető, azt javasoljuk, hogy kiválassza *TopN* és N. meg Nagy táblák Ez gyorsabb olvasási idő eredményezhet.<br/><br/>Ha a mélység függően változhat a tulajdonságok beállítása és a helyére a táblázat felépítése az adatokat, válassza ki azt a *ScanAll* beállítás megvizsgálja az összes sort. Ez biztosítja, hogy az eredményül kapott tulajdonság és a metaadatok átalakítás integritása.<br/><br/> |
 | Azure Blob Storage |A Blob szolgáltatás az Azure Storage, beleértve a képeket, strukturálatlan szöveges vagy bináris adatok tárolt adatokat olvas.<br/><br/>A Blob szolgáltatással nyilvánosan elérhetővé az adatokat, vagy közvetlenül a Microsoftnak az alkalmazás adatainak tárolásához. Hozzáférhet az adatokhoz, bárhonnan HTTP vagy HTTPS-kapcsolatokon keresztül. |A beállítások a **és adatokat importálhat** modul módosítás attól függően, hogy nyilvános információt vagy a privát storage-fiók bejelentkezési hitelesítő adatokat igénylő elérésére. Ez határozza meg a <b>hitelesítési típus</b> amely "PublicOrSAS" vagy "Fiók" értéke lehet.<br/><br/><b>Nyilvános vagy közös hozzáférésű Jogosultságkód (SAS) URI</b>: paraméterei:<br/><br/><ul><b>URI</b>: nyilvános vagy SAS URL-címet adja meg a tárolási BLOB.<br/><br/><b>Fájlformátum</b>: Adja meg az adatok formátumának a Blob szolgáltatás. A támogatott formátumok a következők: CSV, TSV és ARFF.<br/><br/></ul><b>Saját Tárfiók</b>: paraméterei: <br/><br/><ul><b>Fióknév</b>: a fiók, amely tartalmazza az olvasni kívánt blob neve.<br/><br/><b>A fiókkulcsot</b>: Adja meg a fiókhoz tartozó kulcsot.<br/><br/><b>Tároló, a könyvtár vagy a blob elérési </b> : olvassa el az adatokat tartalmazó blob neve.<br/><br/><b>A BLOB Formátum</b>: Adja meg az adatok formátumának a blob szolgáltatás. A támogatott adatobjektum-formátumok a következők CSV, TSV, ARFF, fürt megosztott kötetei szolgáltatás a megadott kódolás és Excel. <br/><br/><ul>Ha a formátum CSV vagy TSV, ügyeljen arra, hogy azt jelzi, hogy a fájl tartalmazza-e a fejlécsor.<br/><br/>Az Excel-beállítás segítségével adatokat olvasni az Excel-munkafüzetekhez. Az a <i>Excel adatformátum</i> lehetőséget, adja meg, van-e az adatok a egy Excel-munkalap esik, vagy egy Excel-táblázatban. Az a <i>Excel-táblában vagy beágyazott tábla </i>lehetőségre, adja meg a lap vagy az olvasni kívánt tábla nevét.</ul><br/> |
-| Adatcsatorna-szolgáltató |A támogatott adatcsatorna szolgáltató olvassa be az adatokat. Jelenleg csak a Megnyitás Data (OData) protokollnak formátum támogatott. |<b>Adatok tartalomtípus</b>: meghatározza az OData-formátumot.<br/><br/><b>Forrás URL-címe</b>: Adja meg a teljes adatcsatorna URL-címet. <br/>Például a következő URL-cím olvassa be az adatbázisunk: http://services.odata.org/northwind/northwind.svc/ |
+| Adatcsatorna-szolgáltató |A támogatott adatcsatorna szolgáltató olvassa be az adatokat. Jelenleg csak a Megnyitás Data (OData) protokollnak formátum támogatott. |<b>Adatok tartalomtípus</b>: meghatározza az OData-formátumot.<br/><br/><b>Forrás URL-címe</b>: Adja meg a teljes adatcsatorna URL-címet. <br/>A következő URL-címe például a Northwind adatbázist olvas: http://services.odata.org/northwind/northwind.svc/ |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Adatok importálása és az adatok exportálása modulokat használó Azure ML web szolgáltatások telepítése](web-services-that-use-import-export-modules.md)
 

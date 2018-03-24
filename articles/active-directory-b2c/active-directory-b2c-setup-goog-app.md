@@ -1,28 +1,25 @@
 ---
-title: "Az Azure Active Directory B2C: Google + konfigurációs |} Microsoft Docs"
-description: "Adja meg a regisztráció és bejelentkezés Google + az Azure Active Directory B2C által védett alkalmazások fiókkal rendelkező felhasználók számára."
+title: 'Az Azure Active Directory B2C: Google + konfigurációs |} Microsoft Docs'
+description: Adja meg a regisztráció és bejelentkezés Google + az Azure Active Directory B2C által védett alkalmazások fiókkal rendelkező felhasználók számára.
 services: active-directory-b2c
-documentationcenter: 
-author: swkrish
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: bryanla
-ms.assetid: 4dcca66f-29e4-4b4d-8840-50baad736bd7
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 12/06/2016
-ms.author: swkrish
-ms.openlocfilehash: 93589352094fdd556811ba906ee27e7b8ac1d8b5
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: davidmu
+ms.openlocfilehash: db3044754e0c1316b49eda0600d41e3009c1ba16
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-active-directory-b2c-provide-sign-up-and-sign-in-to-consumers-with-google-accounts"></a>Az Azure Active Directory B2C: Regisztráció és bejelentkezés biztosítása Google + fiókkal rendelkező felhasználók
 ## <a name="create-a-google-application"></a>Google +-alkalmazás létrehozása
-Használatához Google + az Azure Active Directory (Azure AD) B2C identitás-szolgáltatóként kell Google +-alkalmazás létrehozása, és adja meg azt a megfelelő paraméterekkel. Google +-fiók szükséges ehhez. Ha még nincs fiókja, beszerezheti a [https://accounts.google.com/SignUp](https://accounts.google.com/SignUp).
+Használatához Google + az Azure Active Directory (Azure AD) B2C identitás-szolgáltatóként kell Google +-alkalmazás létrehozása, és adja meg azt a megfelelő paraméterekkel. Google +-fiók szükséges ehhez. Ha még nincs fiókja, beszerezheti a [ https://accounts.google.com/SignUp ](https://accounts.google.com/SignUp).
 
 1. Lépjen a [Google fejlesztői konzol](https://console.developers.google.com/) , és jelentkezzen be Google + fiók hitelesítő adataival.
 2. Kattintson a **Create project**, adjon meg egy **projekt neve**, és kattintson a **létrehozása**.

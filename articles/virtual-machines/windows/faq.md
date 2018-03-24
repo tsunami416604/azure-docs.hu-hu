@@ -1,11 +1,11 @@
 ---
-title: "Windows Azure virtuális gépek gyakori kérdések |} Microsoft Docs"
-description: "Windows virtuális gépek létrehozása a Resource Manager modellt kapcsolatos gyakori kérdésekre adott válaszok biztosít."
+title: Windows Azure virtuális gépek gyakori kérdések |} Microsoft Docs
+description: Windows virtuális gépek létrehozása a Resource Manager modellt kapcsolatos gyakori kérdésekre adott válaszok biztosít.
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: cynthn
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-management
 ms.assetid: 757da816-a050-4889-a010-6f75d7978eb7
 ms.service: virtual-machines-windows
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/20/2017
 ms.author: cynthn
-ms.openlocfilehash: 9aa316e59fb78373cc044f8e18f5d24ea9c5258f
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: e440385ca0f22dce8668fe73b91efe14e0c8a9b6
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="frequently-asked-question-about-windows-virtual-machines"></a>Windows virtuális gépek kapcsolatos gyakran ismételt kérdések
 Ez a cikk foglalkozik Windows virtuális gépek létrehozása az Azure-ban a Resource Manager üzembe helyezési modellel kapcsolatos gyakori kérdésekre. Ez a témakör Linux verziója: [gyakran feltett kérdés kapcsolatos Linux virtuális gépek](../linux/faq.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
@@ -75,7 +75,7 @@ Igen. Próbálja ki a Linux virtuális gépek gyors létrehozásához lásd: [Li
 Igen, ez a lehetőség most. A virtuális gép először meg kell állítani a felszabadított. Majd adja hozzá, vagy távolítsa el a hálózati adapter (kivéve, ha a virtuális gép utolsó hálózati adapter). 
 
 ## <a name="are-there-any-computer-name-requirements"></a>Vannak-e a számítógép neve követelmények?
-Igen. A számítógépnév legfeljebb 15 karakter hosszúságú lehet. Lásd: [elnevezési konvenciókat szabályokat és korlátozásokat](/architecture/best-practices/naming-conventions#naming-rules-and-restrictions?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) további információt az erőforrások elnevezési körül.
+Igen. A számítógépnév legfeljebb 15 karakter hosszúságú lehet. Lásd: [elnevezési konvenciókat szabályokat és korlátozásokat](/azure/architecture/best-practices/naming-conventions#compute) további információt az erőforrások elnevezési körül.
 
 ## <a name="are-there-any-resource-group-name-requirements"></a>Vannak-e valamely erőforrás csoport vonatkozó követelményeknek?
 Igen. Az erőforráscsoport neve legfeljebb 90 karakter hosszúságú lehet. Lásd: [elnevezési konvenciókat szabályokat és korlátozásokat](/azure/architecture/best-practices/naming-conventions#naming-rules-and-restrictions) erőforráscsoportok további információt.

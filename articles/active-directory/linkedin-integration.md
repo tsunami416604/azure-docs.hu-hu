@@ -1,23 +1,23 @@
 ---
-title: "A Microsoft-alkalmazások és szolgáltatások az Azure Active Directoryban LinkedIn-kapcsolatok engedélyezése |} Microsoft Docs"
-description: "Ismerteti a Microsoft-alkalmazások az Azure Active Directoryban LinkedIn fiók kapcsolatok engedélyezése vagy letiltása"
+title: A Microsoft-alkalmazások és szolgáltatások az Azure Active Directoryban LinkedIn-kapcsolatok engedélyezése |} Microsoft Docs
+description: Ismerteti a Microsoft-alkalmazások az Azure Active Directoryban LinkedIn fiók kapcsolatok engedélyezése vagy letiltása
 services: active-directory
 author: curtand
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: 
-ms.devlang: 
+ms.tgt_pltfrm: ''
+ms.devlang: ''
 ms.topic: article
-ms.date: 03/15/2018
+ms.date: 03/22/2018
 ms.author: curtand
 ms.reviewer: beengen
 ms.custom: it-pro
-ms.openlocfilehash: 3bf224edea9e6da0d0eadb6fb6a409248de3d0e3
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 33e3305288edc3990ed88b39c819293a8adc2dfe
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="linkedin-account-connections-for-microsoft-apps-and-services"></a>LinkedIn fiók kapcsolatok a Microsoft-alkalmazások és szolgáltatások
 Ebből a cikkből megismerheti az Azure Active Directory (Azure AD) felügyeleti központban a bérlő LinkedIn fiók kapcsolatok kezelésére. 
@@ -56,9 +56,9 @@ LinkedIn fiók kapcsolatok funkció alapértelmezés szerint be van a teljes bé
 ### <a name="enable-or-disable-linkedin-account-connections-for-your-organizations-office-2016-apps-using-group-policy"></a>A csoportházirend segítségével a szervezet Office 2016 alkalmazások LinkedIn fiók kapcsolatok engedélyezése vagy letiltása
 
 1. Töltse le a [Office 2016 felügyeleti sablonfájlokat (ADMX/ADML)](https://www.microsoft.com/download/details.aspx?id=49030)
-2. Bontsa ki a **ADMX** fájlokat, és másolja őket a **központi tárházban**.
+2. Bontsa ki a **ADMX** fájlokat, és másolja a fájlokat a központi tárolóból.
 3. Nyissa meg a házirend kezelése.
-4. Hozzon létre egy csoportházirend-objektum a következő beállítás: **felhasználói konfiguráció** > **felügyeleti sablonok** > **Microsoft Office 2016**  >  **Vegyes** > **LinkedIn-integráció engedélyezése**.
+4. Hozzon létre egy csoportházirend-objektum a következő beállítás: **felhasználói konfiguráció** > **felügyeleti sablonok** > **Microsoft Office 2016**  >  **Vegyes** > **megjelenítése LinkedIn-funkciók egy Office-alkalmazásban**.
 5. Válassza ki **engedélyezett** vagy **letiltott**.
   * Ha a házirend van **engedélyezve**, a **megjelenítése LinkedIn-funkciók egy Office-alkalmazásban** az Office 2016 beállítások párbeszédpanelen található beállítás engedélyezve van. Ez azt is jelenti, hogy a szervezeti felhasználók az Office-alkalmazásokban LinkedIn funkciók is használhatók.
   * Ha a házirend van **le van tiltva**, a **megjelenítése LinkedIn-funkciók egy Office-alkalmazásban** talált az Office 2016 beállításai párbeszédpanelen állítsa be a letiltott állapotba, és a végfelhasználók a beállítás nem módosítható. A szervezeti felhasználók az Office 2016 alkalmazásaikat LinkedIn-funkciók nem használható. 

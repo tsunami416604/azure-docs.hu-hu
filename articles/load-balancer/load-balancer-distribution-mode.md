@@ -1,6 +1,6 @@
 ---
-title: "Azure Load Balancer terjesztési mód konfigurálása |} Microsoft Docs"
-description: "Megtudhatja, hogyan állíthatja be a telepítési módot, a Azure Load Balancer forrás IP-kapcsolat támogatásához."
+title: Azure Load Balancer terjesztési mód konfigurálása |} Microsoft Docs
+description: Megtudhatja, hogyan állíthatja be a telepítési módot, a Azure Load Balancer forrás IP-kapcsolat támogatásához.
 services: load-balancer
 documentationcenter: na
 author: KumudD
@@ -13,15 +13,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: d04a469c04553b7d6a14df7054ad5ef795baa500
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: ae793bad9cef86158418eb87e0c38ee0370a6bd2
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="configure-the-distribution-mode-for-azure-load-balancer"></a>A telepítési mód konfigurálása az Azure Load Balancer
-
-[!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
 
 ## <a name="hash-based-distribution-mode"></a>Kivonat-alapú terjesztési mód
 
@@ -156,7 +154,7 @@ A korábban ismertetett, beállíthatja a `LoadBalancerDistribution` sourceIP 2-
     x-ms-request-id: 9c7bda3e67c621a6b57096323069f7af
     Date: Thu, 16 Oct 2014 22:49:21 GMT
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Az Azure belső terheléselosztó áttekintése](load-balancer-internal-overview.md)
 * [Első lépések egy internetre irányuló terheléselosztót konfigurálása](load-balancer-get-started-internet-arm-ps.md)

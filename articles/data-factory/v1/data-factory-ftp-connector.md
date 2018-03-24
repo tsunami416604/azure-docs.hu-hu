@@ -1,11 +1,10 @@
 ---
-title: "Adatok áthelyezése az FTP-kiszolgáló Azure Data Factory használatával |} Microsoft Docs"
-description: "Tudnivalók az adatok áthelyezése az Azure Data Factory használatával FTP-kiszolgálóhoz."
+title: Adatok áthelyezése az FTP-kiszolgáló Azure Data Factory használatával |} Microsoft Docs
+description: Tudnivalók az adatok áthelyezése az Azure Data Factory használatával FTP-kiszolgálóhoz.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: monicar
+manager: craigg
 ms.assetid: eea3bab0-a6e4-4045-ad44-9ce06229c718
 ms.service: data-factory
 ms.workload: data-services
@@ -15,11 +14,11 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: daf865ef33e2b099e01f4647b17f36ca8df92c94
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 17dea2d1106a57aa678a88db6647c71048d8c38f
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="move-data-from-an-ftp-server-by-using-azure-data-factory"></a>Adatok áthelyezése az FTP-kiszolgáló Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -74,8 +73,8 @@ A következő táblázat ismerteti a JSON-elemek szerepelnek az FTP-kapcsolódó
 | encryptedCredential |Adja meg a titkosított hitelesítő adatokat, az FTP-kiszolgáló eléréséhez. |Nem |&nbsp; |
 | gatewayName |Adja meg az átjáró nevét az adatkezelési átjáró helyszíni FTP-kiszolgálóhoz való kapcsolódáshoz. |Nem |&nbsp; |
 | port |Adja meg a portot, amelyet az FTP-kiszolgáló figyel. |Nem |21 |
-| enableSsl |Adja meg, hogy a TLS/SSL csatornán FTP használata. |Nem |igaz |
-| enableServerCertificateValidation |Adja meg, hogy engedélyezze a kiszolgálói SSL-tanúsítvány hitelesítése a TLS/SSL csatornán keresztül FTP használata esetén. |Nem |igaz |
+| enableSsl |Adja meg, hogy a TLS/SSL csatornán FTP használata. |Nem |true |
+| enableServerCertificateValidation |Adja meg, hogy engedélyezze a kiszolgálói SSL-tanúsítvány hitelesítése a TLS/SSL csatornán keresztül FTP használata esetén. |Nem |true |
 
 ### <a name="use-anonymous-authentication"></a>Névtelen hitelesítés
 
@@ -155,7 +154,7 @@ A **typeProperties** szakaszban nem egyezik az adatkészlet egyes típusú. A da
 | --- | --- | --- |
 | folderPath |Részleges azt a mappát. Használja az escape-karakter "\" a speciális karakterek a karakterláncban. Lásd: [minta kapcsolódó szolgáltatás és az adatkészlet-definíciók](#sample-linked-service-and-dataset-definitions) példákat.<br/><br/>Ez a tulajdonság a kombinálhatja **partitionBy** mappa elérési utak alapján szelet kezdési és befejezési dátum-idő. |Igen |
 | fileName |Adja meg a fájl nevét a **folderPath** Ha azt szeretné, hogy a tábla egy adott fájlra a mappában. Ha nem ad meg ehhez a tulajdonsághoz értéket, a tábla a mappában lévő összes fájlt mutat.<br/><br/>Ha **Fájlnév** nincs megadva egy kimeneti adatkészletet, a létrehozott fájl neve nem a következő formátumban: <br/><br/>Adatok. <Guid>.txt (Példa: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt) |Nem |
-| fileFilter |Adjon meg egy szűrőt, amely használatával a fájlok egy részét jelölje ki a **folderPath**, ahelyett, hogy minden fájl.<br/><br/>Két érték engedélyezett: `*` (több karaktert) és `?` (egyetlen karakter).<br/><br/>1. példa:`"fileFilter": "*.log"`<br/>2. példa:`"fileFilter": 2014-1-?.txt"`<br/><br/> **fileFilter** egy bemeneti fájlmegosztási adatkészlet esetében alkalmazható. Ez a tulajdonság nem támogatott a Hadoop elosztott fájlrendszerrel (HDFS). |Nem |
+| fileFilter |Adjon meg egy szűrőt, amely használatával a fájlok egy részét jelölje ki a **folderPath**, ahelyett, hogy minden fájl.<br/><br/>Két érték engedélyezett: `*` (több karaktert) és `?` (egyetlen karakter).<br/><br/>1. példa: `"fileFilter": "*.log"`<br/>2. példa: `"fileFilter": 2014-1-?.txt"`<br/><br/> **fileFilter** egy bemeneti fájlmegosztási adatkészlet esetében alkalmazható. Ez a tulajdonság nem támogatott a Hadoop elosztott fájlrendszerrel (HDFS). |Nem |
 | partitionedBy |Használatával adja meg a dinamikus **folderPath** és **Fájlnév** idő adatsorozat adatok. Megadhat például egy **folderPath** , amely az adatok óránkénti paraméteres. |Nem |
 | Formátumban | A következő formátumban típusok támogatottak: **szöveges**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Állítsa be a **típus** tulajdonság a formátuma a következő értékek egyikét. További információkért lásd: a [szövegformátum](data-factory-supported-file-and-compression-formats.md#text-format), [Json formátumban](data-factory-supported-file-and-compression-formats.md#json-format), [az Avro formátum](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc formátum](data-factory-supported-file-and-compression-formats.md#orc-format), és [Parquet formátum](data-factory-supported-file-and-compression-formats.md#parquet-format) szakaszok. <br><br> Ha szeretné átmásolni a fájlokat, mivel ezek között a fájlalapú tárolók (bináris másolhatja azokat), hagyja ki a Formátum szakasz mindkét bemeneti és kimeneti adatkészlet-definíciókban. |Nem |
 | Tömörítés | Adja meg a típus és az adatok tömörítése szintjét. Támogatott típusok a következők **GZip**, **Deflate**, **BZip2**, és **ZipDeflate**, és a támogatott szintek a következők **Optimal** és **leggyorsabb**. További információkért lásd: [formátumú és tömörítést az Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Nem |

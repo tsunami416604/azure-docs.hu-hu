@@ -1,16 +1,16 @@
 ---
-title: "Hyper-V számára az Azure Site Recovery architektúrájáról Azure replikációs |} Microsoft Docs"
-description: "Ez a cikk áttekintést nyújt a helyszíni Hyper-V (VMM nélküli) virtuális gépeknek az Azure Site Recovery szolgáltatással az Azure-ba történő replikációjakor használt összetevőkről és architektúráról."
+title: Hyper-V számára az Azure Site Recovery architektúrájáról Azure replikációs |} Microsoft Docs
+description: Ez a cikk áttekintést nyújt a helyszíni Hyper-V (VMM nélküli) virtuális gépeknek az Azure Site Recovery szolgáltatással az Azure-ba történő replikációjakor használt összetevőkről és architektúráról.
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: article
-ms.date: 02/14/2018
+ms.date: 03/194/2018
 ms.author: raynew
-ms.openlocfilehash: dd3dcf325ed5a628c98ac63683440e1796aa8c3f
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 978d290287a4ff8875eea7e93f003c78e7177dae
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="hyper-v-to-azure-replication-architecture"></a>Hyper-V replikáció Azure-architektúra
 
@@ -28,7 +28,7 @@ A következő tábla és a kép adja meg a Hyper-V-gazdagépek a VMM nem felügy
 **Összetevő** | **Követelmény** | **Részletek**
 --- | --- | ---
 **Azure** | Egy Azure-előfizetéssel, Azure storage-fiók és Azure-hálózatot. | A tárfiók a helyszíni virtuális gép munkaterhelések replikált adatait tárolja. Azure virtuális gépek jönnek létre a replikált munkaterhelések adatokkal a helyszíni helyről feladatátvétel esetén.<br/><br/> Az Azure virtuális gépek a létrejöttükkor csatlakoznak az Azure virtuális hálózathoz.
-**Hyper-V** | Site Recovery üzembe helyezése során gyűjtse össze a Hyper-V gazdagépek és fürtök a Hyper-V helyekre. Az Azure Site Recovery Provider és Recovery Services Agent ügynök telepítése minden egyes Hyper-V gépen. | A Provider a Site Recoveryvel az interneten keresztül vezényli a replikációt. Az adatreplikációt a Recovery Services-ügynök kezeli.<br/><br/> A Provider és az Agent kommunikációja biztonságos, titkosított csatornákon történik. Ezenfelül az Azure-tárfiókba replikált adatok is titkosítást kapnak.
+**Hyper-V** | Site Recovery üzembe helyezése során gyűjtse össze a Hyper-V gazdagépek és fürtök a Hyper-V helyekre. Az Azure Site Recovery Provider és Recovery Services agent telepítése minden önálló Hyper-V gazdagépen, vagy a Hyper-V fürt minden csomópontján. | A Provider a Site Recoveryvel az interneten keresztül vezényli a replikációt. Az adatreplikációt a Recovery Services-ügynök kezeli.<br/><br/> A Provider és az Agent kommunikációja biztonságos, titkosított csatornákon történik. Ezenfelül az Azure-tárfiókba replikált adatok is titkosítást kapnak.
 **Hyper-V virtuális gépek** | Egy vagy több rendszert futtató virtuális gépek Hyper-v. | Nem kell explicit módon telepíthető virtuális gépek.
 
 
@@ -46,7 +46,7 @@ A következő tábla és a kép adja meg a VMM-felhőkben felügyelt Hyper-V-gaz
 --- | --- | ---
 **Azure** | Egy Azure-előfizetéssel, Azure storage-fiók és Azure-hálózatot. | A tárfiók a helyszíni virtuális gép munkaterhelések replikált adatait tárolja. Azure virtuális gépek jönnek létre a replikált adatokat a helyszíni helyről feladatátvétel esetén.<br/><br/> Az Azure virtuális gépek a létrejöttükkor csatlakoznak az Azure virtuális hálózathoz.
 **VMM-kiszolgáló** | A VMM-kiszolgáló egy vagy több, Hyper-V-gazdagépeket tartalmazó felhőt tartalmaz. | A Site Recovery Provider telepítése a VMM-kiszolgálón, a Site Recovery replikációra, és regisztrálja a kiszolgálót a Recovery Services-tároló.
-**Hyper-V gazdagép** | A VMM által felügyelt egy vagy több Hyper-V-gazdagép/-fürt. |  Telepítse a Recovery Services ügynököt mindegyik gazdagépre vagy fürttagra.
+**Hyper-V gazdagép** | A VMM által felügyelt egy vagy több Hyper-V-gazdagép/-fürt. |  A Recovery Services Agent ügynök telepítése minden egyes Hyper-V gazdagép vagy fürt csomóponton.
 **Hyper-V virtuális gépek** | Hyper-V-gazdakiszolgálón futó egy vagy több virtuális gép. | A virtuális gépekre semmit nem kell explicit módon telepíteni.
 **Hálózat** | A VMM-kiszolgálón beállított logikai- és virtuálisgép-hálózatok. A Virtuálisgép-hálózatot kösse össze a felhőhöz társított logikai hálózatot. | A Virtuálisgép-hálózatok az Azure virtuális hálózatok vannak leképezve. Ha a feladatátvételt követően létrehozott Azure virtuális gépeken, az Azure-hálózatot a Virtuálisgép-hálózathoz csatlakoztatott történő hozzáadásuk.
 

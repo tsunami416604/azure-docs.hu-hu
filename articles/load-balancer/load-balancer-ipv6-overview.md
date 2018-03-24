@@ -1,12 +1,12 @@
 ---
-title: "IPv6-alapú, az Azure Load Balancer áttekintése |} Microsoft Docs"
-description: "IPv6-támogatás az Azure terheléselosztó és a virtuális gépek elosztott terhelésű ismertetése."
+title: IPv6-alapú, az Azure Load Balancer áttekintése |} Microsoft Docs
+description: IPv6-támogatás az Azure terheléselosztó és a virtuális gépek elosztott terhelésű ismertetése.
 services: load-balancer
 documentationcenter: na
 author: KumudD
-manager: timlt
-editor: 
-keywords: "IPv6-alapú, azure load balancer, kettős verem, nyilvános IP-cím, natív ipv6, mobil, iot"
+manager: jeconnoc
+editor: ''
+keywords: IPv6-alapú, azure load balancer, kettős verem, nyilvános IP-cím, natív ipv6, mobil, iot
 ms.assetid: 6a1d583f-a305-40fd-a94b-fa42e1943bbb
 ms.service: load-balancer
 ms.devlang: na
@@ -15,16 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 1902475c81c4f83f8ba69a05f9564bc65a5de833
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9622ad4922aa98efe093e7f809a490a8797eb1fd
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="overview-of-ipv6-for-azure-load-balancer"></a>IPv6-alapú, az Azure Load Balancer áttekintése
 
 
-[!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
+>[!NOTE] 
+>Az Azure Load Balancer két különböző típust támogat: Alapszintű és Standard. Ez a cikk az Alapszintű Load Balancert ismerteti. Standard terheléselosztó kapcsolatos további információkért lásd: [szabványos Load Balancer áttekintése](load-balancer-standard-overview.md).
 
 Az Internet felé néző terheléselosztók üzembe helyezhetők IPv6-címet. IPv4-kapcsolatot, valamint lehetővé teszi a következő lehetőségeket:
 
@@ -78,7 +79,7 @@ Korlátozások
 * Az IPv6 az megváltoztatása a loadDistributionMethod paraméter **jelenleg nem támogatott**.
 * IPv6-alapú IP-címek fenntartott (ahol IP = static) vannak **jelenleg nem támogatott**.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A terheléselosztó IPv6 telepítésének megismerése.
 

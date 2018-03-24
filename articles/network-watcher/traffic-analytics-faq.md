@@ -1,11 +1,11 @@
 ---
-title: "Az Azure Traffic Analytics kapcsolatos gyakori kérdések |} Microsoft Docs"
-description: "Egyes forgalom Analytics leggyakrabban feltett kérdésekre adott válaszok."
+title: Az Azure Traffic Analytics kapcsolatos gyakori kérdések |} Microsoft Docs
+description: Egyes forgalom Analytics leggyakrabban feltett kérdésekre adott válaszok.
 services: network-watcher
 documentationcenter: na
 author: jimdial
 manager: jeconnoc
-editor: 
+editor: ''
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: jdial
-ms.openlocfilehash: fd97e0ca7615691c537dcb1dc18643627046742d
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: b9090f91db11b5bde53f3652028030201f135fa5
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>Gyakori kérdések a forgalom elemzés
 
@@ -29,6 +29,18 @@ ms.lasthandoff: 03/09/2018
     - NSG folyamata naplók a figyelni kívánt NSG-k engedélyezve
     - Egy Azure Storage-fiók tárolására nyers flog naplók
     - Az olvasási és írási hozzáférés egy Naplóelemzés (OMS) munkaterületen
+    - Ön fiókjához társítva kell lennie a Microsoft.Network szolgáltató a következő műveleteket:
+
+        - Microsoft.Network/applicationGateways/read
+        - Microsoft.Network/connections/read
+        - Microsoft.Network/loadBalancers/read 
+        - Microsoft.Network/localNetworkGateways/read 
+        - Microsoft.Network/networkInterfaces/read 
+        - Microsoft.Network/networkSecurityGroups/read 
+        - Microsoft.Network/publicIPAddresses/read
+        - Microsoft.Network/routeTables/read
+        - Microsoft.Network/virtualNetworkGateways/read 
+        - Microsoft.Network/virtualNetworks/read
 
 2.  Mely Azure-régiók találhatók forgalom Analytics?
 
@@ -94,7 +106,7 @@ ms.lasthandoff: 03/09/2018
 
 14.  Hogyan áron a forgalom Analytics?
 
-        Nincsenek terhelések számlázása forgalom Analytics nyilvános előzetes verzió alatt. Az NSG-naplók Flow generációs és az OMS-munkaterület adatok tárolási közzétett ütemben díjak vonatkoznak.
+        Forgalom Analytics forgalmi díjas csökkentett naplók növelésére és a továbbfejlesztett naplók tárolása a Naplóelemzési munkaterület. A képen forgalom Analytics nem számlázása történik a csökkentett naplók lehetőségeinek azonban munkaterület az adatok tárolási közzétett ütemben számlázási vonatkoznak. Ez a válasz frissíti az forgalom Analytics díjszabása elérhetővé válik.
 
 15.  Hogyan navigálhatnak meg, hogy a földrajzi nézet a billentyűzet használata-e?
 

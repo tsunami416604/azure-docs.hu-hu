@@ -1,6 +1,6 @@
 ---
-title: "Ismerkedés az Azure Automation DSC"
-description: "MAGYARÁZAT és példákat a leggyakoribb feladatokat az Azure Automation szükséges konfiguráló (DSC)"
+title: Ismerkedés az Azure Automation DSC
+description: MAGYARÁZAT és példákat a leggyakoribb feladatokat az Azure Automation szükséges konfiguráló (DSC)
 services: automation
 ms.service: automation
 author: georgewallace
@@ -8,13 +8,11 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.devlang: na
-ms.tgt_pltfrm: na
-ms.openlocfilehash: e6e4df6fce783e7b4cc33d7f3c26136680ceb44f
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 0833005963fa8728c2a52cc9cf5968bf4afe147d
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="getting-started-with-azure-automation-dsc"></a>Ismerkedés az Azure Automation DSC
 Ez a cikk ismerteti a leggyakoribb feladatokat az Azure Automation szükséges konfiguráló (DSC), például a létrehozása, importálása, és konfigurációk, kezeléséhez, a bevezetési gépek fordítása és jelentések megtekintése. Milyen Azure Automation DSC áttekintést van, a következő témakörben: [Azure Automation DSC – áttekintés](automation-dsc-overview.md). A DSC-dokumentáció, lásd: [Windows PowerShell kívánt állapot beállítása – áttekintés](https://msdn.microsoft.com/PowerShell/dsc/overview).

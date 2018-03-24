@@ -1,11 +1,11 @@
 ---
-title: "Az Azure portál használatával eszközök kezelése |} Microsoft Docs"
-description: "Ismerje meg, hogyan használható az Azure-portálon eszközök kezelésére."
+title: Az Azure portál használatával eszközök kezelése |} Microsoft Docs
+description: Ismerje meg, hogyan használható az Azure-portálon eszközök kezelésére.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
 ms.service: active-directory
 ms.workload: identity
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/14/2017
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 85447809cbc803c13ad731b5328e94a1b03abba8
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: a4bdea4844c4aaa9990d619d59326a83cf0aef6c
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="managing-devices-using-the-azure-portal"></a>Az Azure portál használatával eszközök kezelése
 
@@ -36,7 +36,7 @@ Ez a témakör:
 
 Az Azure-portálon az eszközök kezeléséhez központi helyet biztosít. Ennek a helynek a vagy használatával beszerezheti a [közvetlen hivatkozást](https://portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/Devices) vagy a következő manuális lépéseket:
 
-1. Rang be a [Azure-portálon](https://portal.azure.com) rendszergazdaként.
+1. Jelentkezzen be a [Azure-portálon](https://portal.azure.com) rendszergazdaként.
 
 2. Kattintson a bal oldali navigációs sávja **Active Directory**.
 

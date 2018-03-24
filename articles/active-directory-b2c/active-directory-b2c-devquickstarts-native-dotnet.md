@@ -1,25 +1,21 @@
 ---
-title: "Hitelesítés, a regisztráció, szerkesztheti a profilját .NET Azure Active Directory B2C |} Microsoft Docs"
-description: "Hogyan hozhat létre, amely tartalmazza a bejelentkezéshez, regisztráció, a Windows asztali alkalmazások és profilok kezelése az Azure Active Directory B2C használatával."
+title: Hitelesítés, a regisztráció, szerkesztheti a profilját .NET Azure Active Directory B2C |} Microsoft Docs
+description: Hogyan hozhat létre, amely tartalmazza a bejelentkezéshez, regisztráció, a Windows asztali alkalmazások és profilok kezelése az Azure Active Directory B2C használatával.
 services: active-directory-b2c
 documentationcenter: .net
-author: dstrockis
+author: davidmu1
 manager: mtillman
-editor: 
-ms.assetid: 9da14362-8216-4485-960e-af17cd5ba3bd
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/07/2017
-ms.author: dastrock
-ms.custom: seohack1
-ms.openlocfilehash: 5d4664e87ca0a45d59d976f6415fce858bc51dcd
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.author: davidmu
+ms.openlocfilehash: ec679115259611eb05021a68a552d25777a73356
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-ad-b2c-build-a-windows-desktop-app"></a>Az Azure AD B2C: A Windows asztali alkalmazás elkészítésére.
 Azure Active Directory (Azure AD) B2C használatával az asztali alkalmazást a néhány néhány lépés elvégzésével hatékony önkiszolgáló identitáskezelési funkciókat adhat hozzá. Ez a cikk bemutatja, hogyan hozzon létre egy .NET Windows megjelenítési alaprendszer (WPF) "Feladatlista" alkalmazást, amely tartalmazza a felhasználói regisztráció, bejelentkezés és profilok kezelése. Az alkalmazás támogatni fogja előfizetési, és jelentkezzen be egy felhasználónevet vagy e-mailek használatával. Azt is támogatni fogja előfizetési, és jelentkezzen be például a Facebookhoz és a Google közösségi fiókokkal.

@@ -1,6 +1,6 @@
 ---
-title: "Az Azure-SSIS integrációs futásidejű tartozó nagyteljesítményű konfigurálása |} Microsoft Docs"
-description: "Az Azure-SSIS integrációs futásidejű tartozó nagyteljesítményű tulajdonságainak konfigurálása"
+title: Az Azure-SSIS integrációs futásidejű tartozó nagyteljesítményű konfigurálása |} Microsoft Docs
+description: Az Azure-SSIS integrációs futásidejű tartozó nagyteljesítményű tulajdonságainak konfigurálása
 services: data-factory
 ms.date: 01/10/2018
 ms.topic: article
@@ -9,11 +9,11 @@ ms.workload: data-services
 author: douglaslMS
 ms.author: douglasl
 manager: craigg
-ms.openlocfilehash: 7d0e75ad85731b10f9a993c2fa62f30c0142ed05
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 3c19ebc601136653a88ca8d2a3073d897af863f9
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-for-high-performance"></a>Az Azure-SSIS integrációs futásidejű tartozó nagyteljesítményű konfigurálása
 
@@ -24,7 +24,7 @@ Ez a cikk ismerteti az Azure-SSIS integrációs futásidejű (IR) tartozó nagyt
 
 ## <a name="properties-to-configure"></a>Tulajdonságok konfigurálása
 
-A következő része egy konfigurációs parancsfájl jeleníti meg a tulajdonságokat, amelyeket konfigurálhat egy Azure-SSIS-integrációs futásidejű létrehozásakor. A teljes PowerShell-parancsfájlt és a leírás [Azure csomagok központi telepítése az SQL Server Integration Services](tutorial-deploy-ssis-packages-azure.md).
+A következő része egy konfigurációs parancsfájl jeleníti meg a tulajdonságokat, amelyeket konfigurálhat egy Azure-SSIS-integrációs futásidejű létrehozásakor. A teljes PowerShell-parancsfájlt és a leírás [Azure csomagok központi telepítése az SQL Server Integration Services](tutorial-deploy-ssis-packages-azure-powershell.md).
 
 ```powershell
 $SubscriptionName = "<Azure subscription name>"

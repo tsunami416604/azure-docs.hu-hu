@@ -1,555 +1,204 @@
 ---
-title: "Egy webes API háttéralkalmazás, az Azure Active Directory és az API Management védelme |} Microsoft Docs"
-description: "Ismerje meg, hogyan védi meg a webes API háttéralkalmazás az Azure Active Directory és az API Management."
+title: Az API-k OAuth 2.0-s használata Azure Active Directory és az API Management védelme |} Microsoft Docs
+description: Ismerje meg, hogyan védi meg a webes API háttéralkalmazás az Azure Active Directory és az API Management.
 services: api-management
-documentationcenter: 
-author: juliako
+documentationcenter: ''
+author: miaojiang
 manager: cfowler
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/30/2017
+ms.date: 03/18/2018
 ms.author: apimpm
-ms.openlocfilehash: b7fc48412799aea0c4bba971102b4912dbb18e05
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 3caa3d2b8640c83f1001aeac3b0a5e9ada143183
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
-# <a name="how-to-protect-a-web-api-backend-with-azure-active-directory-and-api-management"></a>Hogyan védi meg a webes API háttéralkalmazás az Azure Active Directory és az API Management
+# <a name="how-to-protect-an-api-using-oauth-20-with-azure-active-directory-and-api-management"></a>Hogyan védi meg az API-k és Azure Active Directory és az API Management OAuth 2.0 használatával
 
-Ez a témakör bemutatja, hogyan állíthatja össze egy webes API háttéralkalmazás, és megvédi az OAuth 2.0 protokollt használó Azure Active Directory és az API Management.  
+Ez az útmutató bemutatja, hogyan konfigurálhatja az API Management (APIM) példány védelmét az API-k az OAuth 2.0 protokollt használja az Azure Active Directory (AAD). 
 
-## <a name="create-an-azure-ad-directory"></a>Az Azure AD-címtár létrehozása
-A webes API háttéralkalmazás, Azure Active Directory használatával biztonságos először egy AAD-bérlőt kell rendelkeznie. Hozzon létre egy AAD-bérlőt, hogy jelentkezzen be a [klasszikus Azure portál](https://manage.windowsazure.com) kattintson **új**->**alkalmazásszolgáltatások**->**Active Directory**  -> **Directory**->**egyéni létrehozás**. 
+## <a name="prerequisite"></a>Előfeltétel
+Kövesse a cikkben, kell rendelkeznie:
+* APIM példánya
+* Az API-k közzétett APIM példányának használatával
+* Az Azure AD-bérlő
 
-![Azure Active Directory][api-management-create-aad-menu]
+## <a name="overview"></a>Áttekintés
 
-Ebben a példában szereplő könyvtár neve **APIMDemo** létrejön egy alapértelmezett tartomány nevű **DemoAPIM.onmicrosoft.com**. 
+Ez az útmutató bemutatja, hogyan védi meg az API-k APIM az OAuth 2.0-s verziójával. Ebben a cikkben az Azure AD szolgáltatásba az engedélyezési (OAuth kiszolgáló) használatos. Az alábbiakban van egy gyors áttekintést a lépéseket:
 
-![Azure Active Directory][api-management-create-aad]
+1. Az Azure AD határoz meg az API-alkalmazás (háttér-alkalmazás) regisztrálása
+2. Egy másik alkalmazás (ügyfél-alkalmazás) regisztrálni kell az Azure AD-be egy ügyfél-alkalmazás, amely hívja az API-t kell meghatároznia
+3. Az Azure AD-engedélyezze, hogy az ügyfél-alkalmazás hívni a háttér-alkalmazás
+4. A fejlesztői konzolján OAuth 2.0 felhasználói engedélyezési használandó konfigurálása
+5. Az OAuth jogkivonatot az összes bejövő kérés érvényesítéséhez érvényesítése jwt-házirend hozzáadása
 
-## <a name="create-a-web-api-service-secured-by-azure-active-directory"></a>Azure Active Directory által biztosított webes API szolgáltatás létrehozása
-Ebben a lépésben egy webes API háttéralkalmazás létrehozása a Visual Studio 2013. Webes API háttéralkalmazás-projekt létrehozása a Visual Studio kattintson **fájl**->**új**->**projekt**, és válassza a **ASP.NET webalkalmazás Alkalmazás** a a **webes** sablonok listájának. 
+## <a name="register-an-application-in-azure-ad-to-represent-the-api"></a>Alkalmazás regisztrálása az Azure AD-határoz meg az API-t
 
-![Visual Studio][api-management-new-web-app]
+Az API-k és az Azure AD védelme érdekében az első lépés az alkalmazás regisztrálása az Azure ad-ben, amely jelöli az API-t. 
 
-Kattintson a **Web API** a a **jelöljön ki egy sablon listát** egy webes API-projekt létrehozása. Az Azure Directory hitelesítési megadásához kattintson **hitelesítés módosítása**.
+Navigáljon az Azure AD-bérlőn, majd navigáljon a **App regisztrációk**.
 
-![Új projekt][api-management-new-project]
+Válassza ki **új alkalmazás regisztrációja**. 
 
-Kattintson a **munkahelyi és iskolai fiókok**, és adja meg a **tartomány** , az AAD-bérlőt. Ebben a példában a tartomány pedig **DemoAPIM.onmicrosoft.com**. A Directory-tartomány lehet lekérni a **tartományok** a címtár lapján.
+Adjon meg egy nevet az alkalmazás. Ebben a példában `backend-app` szolgál.  
 
-![Tartományok][api-management-aad-domains]
+Válasszon **Web app / API** , a **alkalmazástípus**. 
 
-Adja meg a kívánt beállításokat a **hitelesítés módosítása** párbeszédpanel megnyitásához, és kattintson **OK**.
+A **bejelentkezési URL-cím**, használhat `https://localhost` helyőrzőként.
 
-![Hitelesítés módosítása][api-management-change-authentication]
+Kattintson a **létrehozása**.
 
-Amikor rákattint **OK** Visual Studio megkísérli az alkalmazás regisztrálása az Azure AD-címtár és a Visual Studio bejelentkezéshez kérheti. Jelentkezzen be egy rendszergazdai fiókkal a címtáron.
+Az alkalmazás létrehozása után jegyezze fel a **Alkalmazásazonosító** egy későbbi lépésben használatra. 
 
-![Jelentkezzen be a Visual Studio][api-management-sign-in-vidual-studio]
+## <a name="register-another-application-in-azure-ad-to-represent-a-client-application"></a>Egy másik alkalmazás regisztrálása az Azure AD-ügyfélalkalmazás képviselő
 
-Konfigurálhatja az ebben a projektben egy Azure webes API-t, jelölje be a **a felhőben lévő gazdagéphez** majd **OK**.
+Minden ügyfél-alkalmazás, amelyet az API regisztrálva kell lennie, valamint az Azure AD-ben alkalmazásként. Ebben az útmutatóban a minta ügyfél alkalmazásként használjuk a APIM fejlesztői portálra a fejlesztői konzolján. 
 
-![Új projekt][api-management-new-project-cloud]
+Igazolnia kell egy másik alkalmazás regisztrálása az Azure AD-határoz meg a fejlesztői konzolján.
 
-Meg lehet kérni jelentkezzen be Azure, és a Web App beállításához használhatja.
+Kattintson a **új alkalmazás regisztrációja** újra. 
 
-![Konfigurálás][api-management-configure-web-app]
+Adja meg az alkalmazás nevét, és válassza a **Web app / API** , a **alkalmazástípus**. Ebben a példában `client-app` szolgál.  
 
-Ebben a példában egy új **App Service-csomag** nevű **APIMAADDemo** van megadva.
+A **bejelentkezési URL-cím**, használhat `https://localhost` helyőrző vagy a bejelentkezési URL-CÍMÉT a APIM példányát használja. Ebben a példában `https://contoso5.portal.azure-api.net/signin` szolgál.
 
-Kattintson a **OK** a webalkalmazás konfigurálása és a projekt létrehozásához.
+Kattintson a **létrehozása**.
 
-## <a name="add-the-code-to-the-web-api-project"></a>Adja hozzá a kódot a Web API-projekt
+Az alkalmazás létrehozása után jegyezze fel a **Alkalmazásazonosító** egy későbbi lépésben használatra. 
 
-Ebben a példában a webes API és a vezérlő alapvető Számológép szolgáltatás megvalósítja. A szolgáltatás a modell hozzáadásához kattintson a jobb gombbal **modellek** a **Solution Explorer** válassza **Hozzáadás**, **osztály**. Az osztály neve `CalcInput` kattintson **Hozzáadás**.
+Most létre kell hozzon létre egy ügyfélkulcsot a az alkalmazás használatát egy későbbi lépésben.
 
-Adja hozzá a következő `using` nyilatkozat tetején a `CalcInput.cs` fájlt.
+Kattintson a **beállítások** újra, és navigáljon **kulcsok**.
 
-```csharp
-using Newtonsoft.Json;
-```
+A **jelszavak**, adjon meg egy **kulcs leírását**, válassza ki, ha a kulcsot kell jár le, és kattintson a **mentése**.
 
-Cserélje le a következő kódot a létrehozott osztály.
+Jegyezze fel a kulcs értékét. 
 
-```csharp
-public class CalcInput
-{
-    [JsonProperty(PropertyName = "a")]
-    public int a;
+## <a name="grant-permissions-in-aad"></a>Engedélyeket az aad-ben
 
-    [JsonProperty(PropertyName = "b")]
-    public int b;
-}
-```
+Most azt regisztrált két alkalmazás felel meg az API-t (Ez azt jelenti, hogy háttér-alkalmazás) és a fejlesztői konzolján (Ez azt jelenti, hogy az ügyfél-alkalmazás), azt kell biztosítania engedélyt, hogy az ügyfél-alkalmazásnak, hogy a háttér-alkalmazást hívja.  
 
-Kattintson a jobb gombbal **tartományvezérlők** a **Megoldáskezelőben** válassza **Hozzáadás**->**vezérlő**. Válasszon **Web API 2 vezérlő - üres** kattintson **Hozzáadás**. Típus **CalcController** a vezérlő nevet, és kattintson a **Hozzáadás**.
+Navigáljon a **alkalmazás regisztrációk** újra. 
 
-![Vezérlő hozzáadása][api-management-add-controller]
+Kattintson a `client-app` , és navigáljon **beállítások**.
 
-Adja hozzá a következő `using` nyilatkozat tetején a `CalcController.cs` fájlt.
+Kattintson a **szükséges engedélyek** , majd **Hozzáadás**.
 
-```csharp
-using System.IO;
-using System.Web;
-using APIMAADDemo.Models;
-```
+Kattintson a **API kiválasztása** keresse meg a `backend-app`.
 
-Cserélje le a következő kódot a létrehozott vezérlőosztály. Ez a kód valósítja meg a `Add`, `Subtract`, `Multiply`, és `Divide` alapvető Számológép API műveletek.
+Ellenőrizze `Access backend-app` alatt **delegált engedélyekkel**. 
 
-```csharp
-[Authorize]
-public class CalcController : ApiController
-{
-    [Route("api/add")]
-    [HttpGet]
-    public HttpResponseMessage GetSum([FromUri]int a, [FromUri]int b)
-    {
-        string xml = string.Format("<result><value>{0}</value><broughtToYouBy>Azure API Management - http://azure.microsoft.com/apim/ </broughtToYouBy></result>", a + b);
-        HttpResponseMessage response = Request.CreateResponse();
-        response.Content = new StringContent(xml, System.Text.Encoding.UTF8, "application/xml");
-        return response;
-    }
-
-    [Route("api/sub")]
-    [HttpGet]
-    public HttpResponseMessage GetDiff([FromUri]int a, [FromUri]int b)
-    {
-        string xml = string.Format("<result><value>{0}</value><broughtToYouBy>Azure API Management - http://azure.microsoft.com/apim/ </broughtToYouBy></result>", a - b);
-        HttpResponseMessage response = Request.CreateResponse();
-        response.Content = new StringContent(xml, System.Text.Encoding.UTF8, "application/xml");
-        return response;
-    }
-
-    [Route("api/mul")]
-    [HttpGet]
-    public HttpResponseMessage GetProduct([FromUri]int a, [FromUri]int b)
-    {
-        string xml = string.Format("<result><value>{0}</value><broughtToYouBy>Azure API Management - http://azure.microsoft.com/apim/ </broughtToYouBy></result>", a * b);
-        HttpResponseMessage response = Request.CreateResponse();
-        response.Content = new StringContent(xml, System.Text.Encoding.UTF8, "application/xml");
-        return response;
-    }
-
-    [Route("api/div")]
-    [HttpGet]
-    public HttpResponseMessage GetDiv([FromUri]int a, [FromUri]int b)
-    {
-        string xml = string.Format("<result><value>{0}</value><broughtToYouBy>Azure API Management - http://azure.microsoft.com/apim/ </broughtToYouBy></result>", a / b);
-        HttpResponseMessage response = Request.CreateResponse();
-        response.Content = new StringContent(xml, System.Text.Encoding.UTF8, "application/xml");
-        return response;
-    }
-}
-```
-
-Nyomja le az **F6** építsenek, és ellenőrizze a megoldást.
-
-## <a name="publish-the-project-to-azure"></a>A projekt közzététele az Azure-ban
-
-A projekt közzététele az Azure-ba, kattintson a jobb gombbal a **APIMAADDemo** a Visual Studio projekt, és válassza a **közzététel**. Az alapértelmezett beállítások megtartásához a **webhely közzététele** párbeszédpanel megnyitásához, és kattintson **közzététel**.
-
-![Webes közzététel][api-management-web-publish]
-
-## <a name="grant-permissions-to-the-azure-ad-backend-service-application"></a>Engedélyezze, hogy az Azure AD szolgáltatás háttéralkalmazás
-Egy új alkalmazást a háttérszolgáltatáshoz jön létre az Azure AD-címtár a webes API-projekt konfigurálása és a közzétételi folyamat részeként.
-
-![Alkalmazás][api-management-aad-backend-app]
-
-Kattintson a nevére, az alkalmazás a szükséges engedélyek konfigurálásához. Keresse meg a **konfigurálása** lapra, és görgessen le a **egyéb alkalmazások engedélyei** szakasz. Kattintson a **Alkalmazásengedélyek** melletti legördülő **Windows** **Azure Active Directory**, jelölje be a **címtáradatok olvasása** , és kattintson a **mentése**.
-
-![Engedélyek hozzáadása][api-management-aad-add-permissions]
+Kattintson a **válasszon** , majd **végzett**. 
 
 > [!NOTE]
-> Ha **Windows** **Azure Active Directory** van az engedélyek más alkalmazásoknak nincs felsorolva, kattintson a **alkalmazás hozzáadása** , és adja hozzá a listából.
+> Ha **Windows** **Azure Active Directory** van az engedélyek más alkalmazásoknak nincs felsorolva, kattintson a **Hozzáadás** , és adja hozzá a listából.
 > 
 > 
 
-Jegyezze fel a **App Id URI** használható egy későbbi lépésben, ha egy Azure AD-alkalmazást úgy van konfigurálva az API Management fejlesztői portálján.
+## <a name="enable-oauth-20-user-authorization-in-the-developer-console"></a>A fejlesztői konzolján OAuth 2.0 felhasználó engedélyezése
 
-![App Id URI][api-management-aad-sso-uri]
+Ezen a ponton azt hozott létre az alkalmazások az Azure ad-ben, és lehetővé teszi a háttér-alkalmazást hívja az ügyfél-alkalmazásnak megfelelő engedélyekkel rendelkeznek. 
 
-## <a name="import-the-web-api-into-api-management"></a>A webes API-k importálnia kell az API Management
-API-kat úgy vannak konfigurálva, a portálról API publisher, amely az Azure portálon keresztül érhető el. Az eléréséhez kattintson **Publisher portal** az eszköztáron az API Management szolgáltatás. Ha még nem hozott létre az API Management szolgáltatáspéldány, lásd: [hozzon létre egy API-kezelés szolgáltatás példányt] [ Create an API Management service instance] a a [kezelése az első API] [ Manage your first API] oktatóanyag.
+Ebben az útmutatóban a fejlesztői konzolján használjuk, ha az ügyfél-alkalmazásként. Következő lépések azt ismertetik, hogyan OAuth 2.0 felhasználói engedélyezési a fejlesztői konzolján engedélyezése 
 
-![Közzétevő portál][api-management-management-console]
+Nyissa meg a APIM példányát.
 
-A műveleteket lehet [manuálisan hozzáadni az API-k](api-management-howto-add-operations.md), vagy az importálható lesz.
+Kattintson a **OAuth 2.0** , majd **hozzáadása**.
 
-Hozzon létre egy fájlt `calcapi.json` következő tartalommal, és mentse azt a számítógépet. Győződjön meg arról, hogy a `host` pontok attribútum a webes API háttéralkalmazás segítségével. Ebben a példában `"host": "apimaaddemo.azurewebsites.net"` szolgál.
+Adjon meg egy **megjelenített név** és **leírás**.
 
-```json
-{
-  "swagger": "2.0",
-  "info": {
-    "title": "Calculator",
-    "description": "Arithmetics over HTTP!",
-    "version": "1.0"
-  },
-  "host": "apimaaddemo.azurewebsites.net",
-  "basePath": "/api",
-  "schemes": [
-    "http"
-  ],
-  "paths": {
-    "/add?a={a}&b={b}": {
-      "get": {
-        "description": "Responds with a sum of two numbers.",
-        "operationId": "Add two integers",
-        "parameters": [
-          {
-            "name": "a",
-            "in": "query",
-            "description": "First operand. Default value is <code>51</code>.",
-            "required": true,
-            "type": "string",
-            "default": "51",
-            "enum": [
-              "51"
-            ]
-          },
-          {
-            "name": "b",
-            "in": "query",
-            "description": "Second operand. Default value is <code>49</code>.",
-            "required": true,
-            "type": "string",
-            "default": "49",
-            "enum": [
-              "49"
-            ]
-          }
-        ],
-        "responses": { }
-      }
-    },
-    "/sub?a={a}&b={b}": {
-      "get": {
-        "description": "Responds with a difference between two numbers.",
-        "operationId": "Subtract two integers",
-        "parameters": [
-          {
-            "name": "a",
-            "in": "query",
-            "description": "First operand. Default value is <code>100</code>.",
-            "required": true,
-            "type": "string",
-            "default": "100",
-            "enum": [
-              "100"
-            ]
-          },
-          {
-            "name": "b",
-            "in": "query",
-            "description": "Second operand. Default value is <code>50</code>.",
-            "required": true,
-            "type": "string",
-            "default": "50",
-            "enum": [
-              "50"
-            ]
-          }
-        ],
-        "responses": { }
-      }
-    },
-    "/div?a={a}&b={b}": {
-      "get": {
-        "description": "Responds with a quotient of two numbers.",
-        "operationId": "Divide two integers",
-        "parameters": [
-          {
-            "name": "a",
-            "in": "query",
-            "description": "First operand. Default value is <code>100</code>.",
-            "required": true,
-            "type": "string",
-            "default": "100",
-            "enum": [
-              "100"
-            ]
-          },
-          {
-            "name": "b",
-            "in": "query",
-            "description": "Second operand. Default value is <code>20</code>.",
-            "required": true,
-            "type": "string",
-            "default": "20",
-            "enum": [
-              "20"
-            ]
-          }
-        ],
-        "responses": { }
-      }
-    },
-    "/mul?a={a}&b={b}": {
-      "get": {
-        "description": "Responds with a product of two numbers.",
-        "operationId": "Multiply two integers",
-        "parameters": [
-          {
-            "name": "a",
-            "in": "query",
-            "description": "First operand. Default value is <code>20</code>.",
-            "required": true,
-            "type": "string",
-            "default": "20",
-            "enum": [
-              "20"
-            ]
-          },
-          {
-            "name": "b",
-            "in": "query",
-            "description": "Second operand. Default value is <code>5</code>.",
-            "required": true,
-            "type": "string",
-            "default": "5",
-            "enum": [
-              "5"
-            ]
-          }
-        ],
-        "responses": { }
-      }
-    }
-  }
-}
-```
+Az ügyfél-regisztrációk a lap URL-címe, ** adja meg például a helyőrző értékét `http://localhost`.  A **ügyfél regisztrációs URL-címe** mutat, a felhasználók segítségével hozza létre és konfigurálja a saját felhasználói a felhasználói fiókok kezelését támogató OAuth 2.0-s szolgáltatók oldal. Ebben a példában a felhasználók létrehozása és nem a saját felhasználói konfigurálása, így helyőrzőjeként szolgál.
 
-A számológép API importálásához kattintson a bal oldali **API Management** menü **API-k** elemére, majd kattintson az **API importálása** lehetőségre.
-
-![API importálása gomb][api-management-import-api]
-
-Hajtsa végre a következő lépésekkel állíthatja be a Számológép API.
-
-1. Kattintson a **fájlból**, keresse meg a `calculator.json` fájlt mentette, és kattintson a **Swagger** választógombot.
-2. Típus **Számológép** azokat a **webes API URL-címe utótag** szövegmező.
-3. Kattintson a **Termékek (választható)** mezőre, és válassza a **Kezdő** lehetőséget.
-4. Kattintson a **Mentés** gombra az API importálásához.
-
-![Új API hozzáadása][api-management-import-new-api]
-
-Az API importálása után megjelenik az API összefoglaló lapja a közzétevő portálon.
-
-## <a name="call-the-api-unsuccessfully-from-the-developer-portal"></a>Sikertelenül hívja az API-t a fejlesztői portálján
-Ezen a ponton az API-t az API Management importálva van, de nem még hívható sikeresen a developer portálról, mert a háttérszolgáltatáshoz védi az Azure AD-alapú hitelesítés. 
-
-Kattintson a **fejlesztői portálján** a közzétevő portál jobb felső szélétől.
-
-![Fejlesztői portál][api-management-developer-portal-menu]
-
-Kattintson a **API-k** , és kattintson a **Számológép** API.
-
-![Fejlesztői portál][api-management-dev-portal-apis]
-
-Kattintson a **kipróbálás**.
-
-![Kipróbálom][api-management-dev-portal-try-it]
-
-Kattintson a **küldése** meg és jegyezze fel a választ állapotának **401 nem engedélyezett**.
-
-![Küldés][api-management-dev-portal-send-401]
-
-A kérelem nem engedélyezett, mert a háttér-API Azure Active Directory által védett. Az API-t a fejlesztői sikeresen hívása előtt portal engedélyezéséhez OAuth 2.0 használatával fejlesztők be kell állítani. Ez a folyamat az alábbi szakaszokban ismertetett.
-
-## <a name="register-the-developer-portal-as-an-aad-application"></a>A fejlesztői portálján regisztrálható egy AAD-alkalmazást
-Az első lépés a fejlesztői portálján engedélyezéséhez OAuth 2.0 használatával fejlesztők konfigurálása, hogy regisztrálja a fejlesztői portálján egy AAD-alkalmazást. 
-
-Nyissa meg az Azure AD-bérlő. Ebben a példában válassza **APIMDemo** , és keresse meg a **alkalmazások** fülre.
-
-![Új alkalmazás][api-management-aad-new-application-devportal]
-
-Kattintson a **Hozzáadás** gombra kattintva hozzon létre egy új Azure Active Directory-alkalmazást, és válassza a **a szerveztem által fejlesztett alkalmazás hozzáadása**.
-
-![Új alkalmazás][api-management-new-aad-application-menu]
-
-Válasszon **webes alkalmazáshoz és/vagy webes API**, adjon meg egy nevet, és kattintson a Tovább nyílra. Ebben a példában **APIMDeveloperPortal** szolgál.
-
-![Új alkalmazás][api-management-aad-new-application-devportal-1]
-
-A **bejelentkezési URL-cím** adja meg az URL-címet a API Management szolgáltatás és a hozzáfűző `/signin`. Ebben a példában `https://contoso5.portal.azure-api.net/signin` szolgál.
-
-A **azonosító URL-címet** adja meg az URL-címet a API Management szolgáltatás és a hozzáfűző néhány egyedi karaktert. Ezek lehetnek a kívánt karaktereket és a jelen példában `https://contoso5.portal.azure-api.net/dp` szolgál. Ha a kívánt **alkalmazás tulajdonságainak** vannak konfigurálva, kattintson a pipa jelre az alkalmazás létrehozása.
-
-![Új alkalmazás][api-management-aad-new-application-devportal-2]
-
-## <a name="configure-an-api-management-oauth-20-authorization-server"></a>Az API Management OAuth 2.0 hitelesítési kiszolgáló konfigurálása
-A következő lépés az OAuth 2.0 hitelesítési kiszolgáló konfigurálása az API Management. 
-
-Kattintson a **biztonsági** kattintson a bal oldalon található API-kezelés menü, **OAuth 2.0**, és kattintson a **adja hozzá az engedélyezési** kiszolgáló.
-
-![Engedélyezési kiszolgáló hozzáadása][api-management-add-authorization-server]
-
-Adjon meg egy nevet és egy leírást a **neve** és **leírás** mezőket. Ezeket a mezőket az OAuth 2.0-engedélyezési kiszolgálót az API Management szolgáltatáspéldány azonosítására szolgálnak. Ebben a példában **engedélyezési server bemutató** szolgál. Később az OAuth 2.0-kiszolgáló API-hitelesítéshez használandó megadásakor kiválaszthatja ezt a nevet.
-
-Az a **ügyfél regisztrációs URL-címe** adja meg például a helyőrző értékét `http://localhost`.  A **ügyfél regisztrációs URL-címe** mutat, a felhasználók segítségével hozza létre és konfigurálja a saját felhasználói a felhasználói fiókok kezelését támogató OAuth 2.0-s szolgáltatók oldal. Ebben a példában a felhasználók létrehozása és nem a saját felhasználói konfigurálása, így helyőrzőjeként szolgál.
-
-![Engedélyezési kiszolgáló hozzáadása][api-management-add-authorization-server-1]
+Ellenőrizze **engedélyezési kód** , a **engedélyezési biztosítani típusok**.
 
 Ezt követően adja meg **engedélyezési végpont URL-címet** és **végponti URL-cím Token**.
 
-![engedélyezési kiszolgáló][api-management-add-authorization-server-1a]
-
-Ezek az értékek lekérhetők a **App végpontok** az AAD-alkalmazást a fejlesztői portálon létrehozott oldalán. A végpontok szeretne használni, keresse meg a **konfigurálása** lapján az AAD-alkalmazást, és kattintson a **végpontok megtekintése**.
-
-![Alkalmazás][api-management-aad-devportal-application]
-
-![Végpontok megtekintése][api-management-aad-view-endpoints]
+Ezek az értékek lekérhetők a **végpontok** lap az Azure AD-bérlőben. A végpontok szeretne használni, keresse meg a **App regisztrációk** újra lapon, majd kattintson a **végpontok**.
 
 Másolás a **OAuth 2.0 hitelesítési végpont** és illessze be azt a **engedélyezési végpont URL-címet** szövegmező.
 
-![Engedélyezési kiszolgáló hozzáadása][api-management-add-authorization-server-2]
+Másolás a **OAuth 2.0 Token-végpont** és illessze be azt a **végponti URL-cím Token** szövegmező.
 
-Másolás a **OAuth 2.0 token-végpont** és illessze be azt a **végponti URL-cím Token** szövegmező.
+A jogkivonat végpontjához beillesztésével, mellett hozzáadása egy további válaszüzenettörzs-paramétert nevű **erőforrás** és az érték használható a **Alkalmazásazonosító** a háttér-alkalmazás.
 
-![Engedélyezési kiszolgáló hozzáadása][api-management-add-authorization-server-2a]
+Ezt követően adja meg az ügyfél hitelesítő adatait. Ezek a hitelesítő adatai az ügyfélalkalmazás.
 
-Mellett a jogkivonat végpontjához beillesztésével, adja hozzá a további válaszüzenettörzs-paramétert nevű **erőforrás** és az érték használható a **App Id URI** az aad-ben alkalmazásból a háttér-szolgáltatás, hogy mikor jött létre a A Visual Studio-projekt közzététele.
+A **ügyfél-azonosító**, használja a **Alkalmazásazonosító** az ügyfél-alkalmazás.
 
-![App Id URI][api-management-aad-sso-uri]
+A **ügyfélkulcs**, korábban létrehozott kulcs használ az ügyfélalkalmazás. 
 
-Ezt követően adja meg az ügyfél hitelesítő adatait. Ezek a hozzáférési, ez esetben a fejlesztői portálján kívánt erőforrás hitelesítő adatai.
+Azonnal követően a titkos ügyfélkulcs van a **redirect_url** engedélyezési kód támogatás típusa.
 
-![Ügyfél-hitelesítő adatok][api-management-client-credentials]
+Jegyezze fel az URL-címet.
 
-A beolvasandó a **ügyfél-azonosító**, keresse meg a **konfigurálása** lapján a fejlesztői portálján, és másolja az AAD-alkalmazást a **ügyfél-azonosító**.
+Kattintson a **létrehozása**.
 
-A beolvasandó a **Ügyfélkulcs** kattintson a **időtartam válassza** a legördülő a **kulcsok** szakaszt, és adjon meg egy időközt. Ebben a példában 1 év szolgál.
+Lépjen vissza a **beállítások** lap az ügyfél-alkalmazás.
 
-![Ügyfél-azonosító][api-management-aad-client-id]
+Kattintson a **válasz URL-címek** , majd illessze be a **redirect_url** első sorában. Ebben a példában azt írni `https://localhost` a URL-címet az első sorban.  
 
-Kattintson a **mentése** a konfiguráció mentéséhez, és a kulcs megjelenítéséhez. 
+Most azt az OAuth 2.0 hitelesítési kiszolgáló van konfigurálva, a fejlesztői konzolján kell tudni az Azure AD hozzáférési tokenek beszerzése érdekében. 
 
-> [!IMPORTANT]
-> Jegyezze fel ezt a kulcsot. Az Azure Active Directory konfigurációs ablak bezárása után a kulcs nem jeleníthető meg újra.
-> 
-> 
+A következő lépés az API felületen az OAuth 2.0 felhasználói engedélyezése, a felhasználó nevében egy hozzáférési jogkivonat beszerzése az API hívása előtt kell, hogy a fejlesztői konzolján tudja azt.
 
-Másolja a vágólapra a kulcsot, lépjen vissza a közzétevő portal, illessze be a kulcs a **Ügyfélkulcs** szövegmező, és kattintson a **mentése**.
+Keresse meg a APIM példányát, írja be a **API-k**.
 
-![Engedélyezési kiszolgáló hozzáadása][api-management-add-authorization-server-3]
+Kattintson az API-t, amelyet védeni kíván. A jelen példában használjuk a `Echo API`.
 
-Azonnal az ügyfél hitelesítő adatait a következő kód egy hitelesítésengedélyezési. Az Azure AD fejlesztői portál alkalmazásba az engedélyezési kód és a kapcsoló készítsen biztonsági másolatot konfigurálása lap, és illessze be a hitelesítésengedélyezési azokat a **válasz URL-CÍMEN** mezőben, majd kattintson a **mentése** újra.
+Ugrás a **beállítások**.
 
-![Válasz-URL][api-management-aad-reply-url]
+A **biztonsági**, válassza a **OAuth 2.0** jelölje ki a korábban konfigurált OAuth 2.0-kiszolgálót. 
 
-A következő lépés a fejlesztői portálhoz AAD-alkalmazást az engedélyek beállításához. Kattintson a **Alkalmazásengedélyek** , és jelölje be a **címtáradatok olvasása**. Kattintson a **mentése** a módosítás mentéséhez, majd **alkalmazás hozzáadása**.
+Kattintson a **Mentés** gombra.
 
-![Engedélyek hozzáadása][api-management-add-devportal-permissions]
+## <a name="successfully-call-the-api-from-the-developer-portal"></a>Sikeresen hívja az API-t a fejlesztői portálján
 
-Kattintson a keresés ikonra típus **APIM** be a kezdő a jelölését, jelölje ki a **APIMAADDemo**, és kattintson a pipa jelre mentéséhez.
+Most, hogy az OAuth 2.0 felhasználói hitelesítés engedélyezve van a `Echo API`, a fejlesztői konzolján egy jogkivonatot a felhasználó nevében beszerzi a API hívása előtt.
 
-![Engedélyek hozzáadása][api-management-aad-add-app-permissions]
+Keresse meg az összes műveletet a `Echo API` a fejlesztői portálján, majd kattintson a **kipróbálás**, amely be fogja hozni nekünk a fejlesztői konzolhoz.
 
-Kattintson a **delegált engedélyek** a **APIMAADDemo** , és jelölje be a **hozzáférés APIMAADDemo**, és kattintson a **mentése**. Ez lehetővé teszi a fejlesztők a háttérszolgáltatáshoz eléréséhez portál alkalmazás.
+Jegyezze fel az új elem a **engedélyezési** szakasz megfelelő a hitelesítési kiszolgáló, az előzőekben adott hozzá.
 
-![Engedélyek hozzáadása][api-management-aad-add-delegated-permissions]
+Válassza ki **engedélyezési kód** az engedélyt a legördülő listából válassza ki, és kéri jelentkezzen be az Azure AD-bérlő. Ha már be van jelentkezve a fiókot, előfordulhat, hogy nem kell kérni.
 
-## <a name="enable-oauth-20-user-authorization-for-the-calculator-api"></a>A Számológép API OAuth 2.0 felhasználó engedélyezése
-Most, hogy az OAuth 2.0-kiszolgáló van konfigurálva, megadhatja az API biztonsági beállításait. 
+Sikeres bejelentkezés, miután egy `Authorization` fejléc nem kerülnek be a hozzáférési token kérelmet az Azure AD. 
 
-Kattintson a **API-k** a bal oldali menüben, majd kattintson a **Számológép** is megtekinthetik és konfigurálhatják a beállításai.
+Egy minta tokent tűnik, hogy az alábbi Base64-kódolású legyen.
 
-![A Számológép API][api-management-calc-api]
+```
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6IlNTUWRoSTFjS3ZoUUVEU0p4RTJnR1lzNDBRMCIsImtpZCI6IlNTUWRoSTFjS3ZoUUVEU0p4RTJnR1lzNDBRMCJ9.eyJhdWQiOiIxYzg2ZWVmNC1jMjZkLTRiNGUtODEzNy0wYjBiZTEyM2NhMGMiLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC80NDc4ODkyMC05Yjk3LTRmOGItODIwYS0yMTFiMTMzZDk1MzgvIiwiaWF0IjoxNTIxMTUyNjMzLCJuYmYiOjE1MjExNTI2MzMsImV4cCI6MTUyMTE1NjUzMywiYWNyIjoiMSIsImFpbyI6IkFWUUFxLzhHQUFBQUptVzkzTFd6dVArcGF4ZzJPeGE1cGp2V1NXV1ZSVnd1ZXZ5QU5yMlNkc0tkQmFWNnNjcHZsbUpmT1dDOThscUJJMDhXdlB6cDdlenpJdzJLai9MdWdXWWdydHhkM1lmaDlYSGpXeFVaWk9JPSIsImFtciI6WyJyc2EiXSwiYXBwaWQiOiJhYTY5ODM1OC0yMWEzLTRhYTQtYjI3OC1mMzI2NTMzMDUzZTkiLCJhcHBpZGFjciI6IjEiLCJlbWFpbCI6Im1pamlhbmdAbWljcm9zb2Z0LmNvbSIsImZhbWlseV9uYW1lIjoiSmlhbmciLCJnaXZlbl9uYW1lIjoiTWlhbyIsImlkcCI6Imh0dHBzOi8vc3RzLndpbmRvd3MubmV0LzcyZjk4OGJmLTg2ZjEtNDFhZi05MWFiLTJkN2NkMDExZGI0Ny8iLCJpcGFkZHIiOiIxMzEuMTA3LjE3NC4xNDAiLCJuYW1lIjoiTWlhbyBKaWFuZyIsIm9pZCI6IjhiMTU4ZDEwLWVmZGItNDUxMS1iOTQzLTczOWZkYjMxNzAyZSIsInNjcCI6InVzZXJfaW1wZXJzb25hdGlvbiIsInN1YiI6IkFGaWtvWFk1TEV1LTNkbk1pa3Z3MUJzQUx4SGIybV9IaVJjaHVfSEM1aGciLCJ0aWQiOiI0NDc4ODkyMC05Yjk3LTRmOGItODIwYS0yMTFiMTMzZDk1MzgiLCJ1bmlxdWVfbmFtZSI6Im1pamlhbmdAbWljcm9zb2Z0LmNvbSIsInV0aSI6ImFQaTJxOVZ6ODBXdHNsYjRBMzBCQUEiLCJ2ZXIiOiIxLjAifQ.agGfaegYRnGj6DM_-N_eYulnQdXHhrsus45QDuApirETDR2P2aMRxRioOCR2YVwn8pmpQ1LoAhddcYMWisrw_qhaQr0AYsDPWRtJ6x0hDk5teUgbix3gazb7F-TVcC1gXpc9y7j77Ujxcq9z0r5lF65Y9bpNSefn9Te6GZYG7BgKEixqC4W6LqjtcjuOuW-ouy6LSSox71Fj4Ni3zkGfxX1T_jiOvQTd6BBltSrShDm0bTMefoyX8oqfMEA2ziKjwvBFrOjO0uK4rJLgLYH4qvkR0bdF9etdstqKMo5gecarWHNzWi_tghQu9aE3Z3EZdYNI_ZGM-Bbe3pkCfvEOyA
+```
 
-Keresse meg a **biztonsági** lapon jelölje a **OAuth 2.0** jelölőnégyzetet, válassza ki a kívánt engedélyezési kiszolgálót a a **engedélyezési server** legördülő, kattintson **Mentés**.
+Kattintson a **küldése** és meg kell sikeresen hívja az API-t.
 
-![A Számológép API][api-management-enable-aad-calculator]
-
-## <a name="successfully-call-the-calculator-api-from-the-developer-portal"></a>Sikeresen meg tudja hívni a Számológép API a developer portálról
-Most, hogy az OAuth 2.0 hitelesítési az API konfigurálva van, a fejlesztői központból sikeresen hívható a műveleteket. 
-
-Lépjen vissza a **két egész számok hozzáadása** műveletet a fejlesztői portálján, majd kattintson a Számológép szolgáltatás **kipróbálás**. Jegyezze fel az új elem a **engedélyezési** szakasz megfelelő a hitelesítési kiszolgáló, az előzőekben adott hozzá.
-
-![A Számológép API][api-management-calc-authorization-server]
-
-Válassza ki **engedélyezési kód** engedélynek legördülő listában, és adja meg a használandó fiók hitelesítő adatait. Ha már be van jelentkezve a fiók nem kérheti.
-
-![A Számológép API][api-management-devportal-authorization-code]
-
-Kattintson a **küldése** meg és jegyezze fel a **válaszállapot** a **200 OK** és a válasz tartalmat a művelet eredményét.
-
-![A Számológép API][api-management-devportal-response]
-
-## <a name="configure-a-desktop-application-to-call-the-api"></a>Az API hívása asztali alkalmazások konfigurálása
-
-Az API hívása egyszerű asztali alkalmazások konfigurálása. Az első lépés az asztali alkalmazás regisztrálása az Azure ad-ben, és adjon neki hozzáférés a címtárhoz, és által a háttérszolgáltatáshoz. 
 
 ## <a name="configure-a-jwt-validation-policy-to-pre-authorize-requests"></a>Előre a kérések hitelesítése JWT érvényesítési házirend konfigurálása
 
-Használja a [érvényesítése JWT](api-management-access-restriction-policies.md#ValidateJWT) előre engedélyezésére kérelmek érvényesítésével megjeleníthető az egyes bejövő kérelmek a hozzáférési jogkivonatok házirend. Ha a kérelem nem érvényesíti a JWT érvényesítése házirend, a kérelem API Management le van tiltva, és nem kerül át, mentén háttérkiszolgálóra.
+Ezen a ponton amikor egy felhasználó megpróbál egy hívás a fejlesztői konzolról, a felhasználót a rendszer kéri a bejelentkezéshez és a fejlesztői konzolján fog szerezzen be egy hozzáférési jogkivonat a felhasználó nevében. Minden az elvárások szerint működik. Azonban mi történik, ha valaki hívja az API-t a token nélküli vagy lexikális eleme érvénytelen? Például megpróbálhatja a `Authorization` fejlécet, és megkeresi az API továbbra is képes. A az oka, mert APIM nem ellenőrzi a hozzáférési jogkivonat ezen a ponton. Adja át a `Auhtorization` a háttér-API fejlécben.
+
+Használhatjuk a [érvényesítése JWT](api-management-access-restriction-policies.md#ValidateJWT) előre engedélyezésére APIM kérelmek érvényesítésével megjeleníthető az egyes bejövő kérelmek a hozzáférési jogkivonatok házirend. A kérelem nem rendelkezik érvényes tokent, ha API Management le van tiltva, és nem kerül át, mentén háttérkiszolgálóra. Azt is hozzáadhat a házirend számára, alá `Echo API`. 
 
 ```xml
 <validate-jwt header-name="Authorization" failed-validation-httpcode="401" failed-validation-error-message="Unauthorized. Access token is missing or invalid.">
-    <openid-config url="https://login.microsoftonline.com/DemoAPIM.onmicrosoft.com/.well-known/openid-configuration" />
+    <openid-config url="https://login.microsoftonline.com/{aad-tenant}/.well-known/openid-configuration" />
     <required-claims>
         <claim name="aud">
-            <value>https://DemoAPIM.NOTonmicrosoft.com/APIMAADDemo</value>
+            <value>{Application ID of backend-app}</value>
         </claim>
     </required-claims>
 </validate-jwt>
 ```
 
-További információkért lásd: [felhő fedik le a epizód 177: több API Management szolgáltatást](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) és előretekerés 13:50. Gyors továbbítsa 15:00, a házirendek a Helyicsoportházirend-szerkesztő konfigurált megjelenítéséhez, majd a művelet hívása a developer portálról, és a szükséges engedélyezési jogkivonat anélkül bemutatója 18:50.
-
 ## <a name="next-steps"></a>További lépések
 * Tekintse meg több [videók](https://azure.microsoft.com/documentation/videos/index/?services=api-management) API-kezeléssel kapcsolatos.
 * Egyéb módjai a háttérszolgáltatás biztonságos, lásd: [kölcsönös tanúsítványhitelesítés](api-management-howto-mutual-certificates.md).
-
-[api-management-management-console]: ./media/api-management-howto-protect-backend-with-aad/api-management-management-console.png
-
-[api-management-import-api]: ./media/api-management-howto-protect-backend-with-aad/api-management-import-api.png
-[api-management-import-new-api]: ./media/api-management-howto-protect-backend-with-aad/api-management-import-new-api.png
-[api-management-create-aad-menu]: ./media/api-management-howto-protect-backend-with-aad/api-management-create-aad-menu.png
-[api-management-create-aad]: ./media/api-management-howto-protect-backend-with-aad/api-management-create-aad.png
-[api-management-new-web-app]: ./media/api-management-howto-protect-backend-with-aad/api-management-new-web-app.png
-[api-management-new-project]: ./media/api-management-howto-protect-backend-with-aad/api-management-new-project.png
-[api-management-new-project-cloud]: ./media/api-management-howto-protect-backend-with-aad/api-management-new-project-cloud.png
-[api-management-change-authentication]: ./media/api-management-howto-protect-backend-with-aad/api-management-change-authentication.png
-[api-management-sign-in-vidual-studio]: ./media/api-management-howto-protect-backend-with-aad/api-management-sign-in-vidual-studio.png
-[api-management-configure-web-app]: ./media/api-management-howto-protect-backend-with-aad/api-management-configure-web-app.png
-[api-management-aad-domains]: ./media/api-management-howto-protect-backend-with-aad/api-management-aad-domains.png
-[api-management-add-controller]: ./media/api-management-howto-protect-backend-with-aad/api-management-add-controller.png
-[api-management-web-publish]: ./media/api-management-howto-protect-backend-with-aad/api-management-web-publish.png
-[api-management-aad-backend-app]: ./media/api-management-howto-protect-backend-with-aad/api-management-aad-backend-app.png
-[api-management-aad-add-permissions]: ./media/api-management-howto-protect-backend-with-aad/api-management-aad-add-permissions.png
-[api-management-developer-portal-menu]: ./media/api-management-howto-protect-backend-with-aad/api-management-developer-portal-menu.png
-[api-management-dev-portal-apis]: ./media/api-management-howto-protect-backend-with-aad/api-management-dev-portal-apis.png
-[api-management-dev-portal-try-it]: ./media/api-management-howto-protect-backend-with-aad/api-management-dev-portal-try-it.png
-[api-management-dev-portal-send-401]: ./media/api-management-howto-protect-backend-with-aad/api-management-dev-portal-send-401.png
-[api-management-aad-new-application-devportal]: ./media/api-management-howto-protect-backend-with-aad/api-management-aad-new-application-devportal.png
-[api-management-aad-new-application-devportal-1]: ./media/api-management-howto-protect-backend-with-aad/api-management-aad-new-application-devportal-1.png
-[api-management-aad-new-application-devportal-2]: ./media/api-management-howto-protect-backend-with-aad/api-management-aad-new-application-devportal-2.png
-[api-management-aad-devportal-application]: ./media/api-management-howto-protect-backend-with-aad/api-management-aad-devportal-application.png
-[api-management-add-authorization-server]: ./media/api-management-howto-protect-backend-with-aad/api-management-add-authorization-server.png
-[api-management-aad-sso-uri]: ./media/api-management-howto-protect-backend-with-aad/api-management-aad-sso-uri.png
-[api-management-aad-view-endpoints]: ./media/api-management-howto-protect-backend-with-aad/api-management-aad-view-endpoints.png
-[api-management-aad-client-id]: ./media/api-management-howto-protect-backend-with-aad/api-management-aad-client-id.png
-[api-management-add-authorization-server-1]: ./media/api-management-howto-protect-backend-with-aad/api-management-add-authorization-server-1.png
-[api-management-add-authorization-server-2]: ./media/api-management-howto-protect-backend-with-aad/api-management-add-authorization-server-2.png
-[api-management-add-authorization-server-2a]: ./media/api-management-howto-protect-backend-with-aad/api-management-add-authorization-server-2a.png
-[api-management-add-authorization-server-3]: ./media/api-management-howto-protect-backend-with-aad/api-management-add-authorization-server-3.png
-[api-management-aad-reply-url]: ./media/api-management-howto-protect-backend-with-aad/api-management-aad-reply-url.png
-[api-management-add-devportal-permissions]: ./media/api-management-howto-protect-backend-with-aad/api-management-add-devportal-permissions.png
-[api-management-aad-add-app-permissions]: ./media/api-management-howto-protect-backend-with-aad/api-management-aad-add-app-permissions.png
-[api-management-aad-add-delegated-permissions]: ./media/api-management-howto-protect-backend-with-aad/api-management-aad-add-delegated-permissions.png
-[api-management-calc-api]: ./media/api-management-howto-protect-backend-with-aad/api-management-calc-api.png
-[api-management-enable-aad-calculator]: ./media/api-management-howto-protect-backend-with-aad/api-management-enable-aad-calculator.png
-[api-management-devportal-authorization-code]: ./media/api-management-howto-protect-backend-with-aad/api-management-devportal-authorization-code.png
-[api-management-devportal-response]: ./media/api-management-howto-protect-backend-with-aad/api-management-devportal-response.png
-[api-management-calc-authorization-server]: ./media/api-management-howto-protect-backend-with-aad/api-management-calc-authorization-server.png
-[api-management-add-authorization-server-1a]: ./media/api-management-howto-protect-backend-with-aad/api-management-add-authorization-server-1a.png
-[api-management-client-credentials]: ./media/api-management-howto-protect-backend-with-aad/api-management-client-credentials.png
-[api-management-new-aad-application-menu]: ./media/api-management-howto-protect-backend-with-aad/api-management-new-aad-application-menu.png
 
 [Create an API Management service instance]: get-started-create-service-instance.md
 [Manage your first API]: import-and-publish.md

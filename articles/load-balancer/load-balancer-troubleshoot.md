@@ -1,12 +1,12 @@
 ---
-title: "Azure Load Balancer hibaelhárítása |} Microsoft Docs"
-description: "Azure Load Balancer szolgáltatással kapcsolatos ismert problémák elhárítása"
+title: Azure Load Balancer hibaelhárítása |} Microsoft Docs
+description: Azure Load Balancer szolgáltatással kapcsolatos ismert problémák elhárítása
 services: load-balancer
 documentationcenter: na
 author: RamanDhillon
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: bc059221656a695bb43af0dca06df941ca77c73d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 560e2ed7cafd1018f4b64ac6d0e45134560082b6
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="troubleshoot-azure-load-balancer"></a>Azure Load Balancer hibaelhárítása
 
@@ -54,7 +54,7 @@ Ha a virtuális gép működik megfelelően, de a mintavétel nem válaszol, maj
 3. Ha a port állapota nem szerepel az **FIGYELŐ**, konfigurálja a megfelelő portot. 
 4. Azt is megteheti, válasszon egy másik portra, amely blokkolandóként **FIGYELŐ**, és ennek megfelelően betölteni a terheléselosztó-konfiguráció frissítése.              
 
-###<a name="cause-3-firewall-or-a-network-security-group-is-blocking-the-port-on-the-load-balancer-backend-pool-vms"></a>3. ok: Tűzfal vagy egy hálózati biztonsági csoport blokkolja az a terheléselosztó háttérkészletéből virtuális gépek portja  
+### <a name="cause-3-firewall-or-a-network-security-group-is-blocking-the-port-on-the-load-balancer-backend-pool-vms"></a>3. ok: Tűzfal vagy egy hálózati biztonsági csoport blokkolja az a terheléselosztó háttérkészletéből virtuális gépek portja  
 Ha a virtuális Gépen a tűzfal blokkolja a mintavételi portot, vagy egy vagy több hálózati az alhálózaton lévő vagy a virtuális Gépen konfigurált biztonsági csoportok, nem engedélyezi, hogy a mintavétel elérni a portot, a virtuális gép nem tudja válaszolni a állapotmintáihoz.          
 
 **Érvényesítési és megoldás szerint**
@@ -131,7 +131,7 @@ Ha úgy dönt, hogy nyissa meg a támogatási esetet, gyűjtése gyorsabb rendez
 - A háttér virtuális gépek a Vneten belül egyikéből TCPing segítségével ellenőrizze, a mintavételi portot választ (Példa: a psping 10.0.0.4:3389), és jegyezze fel eredmények.
 - Ha nem érkezik válasz ping a vizsgálatok, futtassa egy egyidejű Netsh trace parancsának a háttér virtuális gép és a virtuális hálózat teszteléshez használt virtuális gép közben PsPing futtatni, majd állítsa le a Netsh trace. 
   
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha az előző lépések nem a probléma megoldásához nyissa meg a [támogatja a jegy](https://azure.microsoft.com/support/options/).
 

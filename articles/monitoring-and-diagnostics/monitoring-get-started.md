@@ -1,9 +1,9 @@
 ---
-title: "Ismerkedés az Azure-figyelő |} Microsoft Docs"
-description: "Ismerkedjen meg az Azure Monitor használatával, hogy betekintést kapjon az erőforrásai működéséről, és az adatok alapján végrehajthassa a megfelelő műveleteteket."
+title: Ismerkedés az Azure-figyelő |} Microsoft Docs
+description: Ismerkedjen meg az Azure Monitor használatával, hogy betekintést kapjon az erőforrásai működéséről, és az adatok alapján végrehajthassa a megfelelő műveleteteket.
 author: johnkemnetz
 manager: orenr
-editor: 
+editor: ''
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
 ms.assetid: ce2930aa-fc41-4b81-b0cb-e7ea922467e1
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: johnkem
-ms.openlocfilehash: 9c352c67aa0e9392c9e9d68822abeb27344bd8b7
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 69ec5392f034ffe94315c17366a9242d86c69d6d
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="get-started-with-azure-monitor"></a>Ismerkedés az Azure Monitor szolgáltatással
-Az Azure Monitor egy olyan platformszolgáltatás, mely egyetlen forrást kínál az Azure-erőforrások figyeléséhez. Az Azure Monitorral az egyes erőforrásoktól az Azure-ba érkező metrikákat és naplókat láthatóvá teheti, lekérdezheti, átirányíthatja, archiválhatja, illetve ezekkel különböző műveleteket is végezhet. Adatok segítségével az Azure portál használatával dolgozhat [figyelő PowerShell-parancsmagok](insights-powershell-samples.md), [platformfüggetlen parancssori felület](insights-cli-samples.md), vagy [Azure figyelő REST API-k](https://msdn.microsoft.com/library/dn931943.aspx). Ebben a cikkben sorra vesszük az Azure Monitor főbb összetevőit, és a portál segítségével mutatjuk be őket.
+Az Azure Monitor egy olyan platformszolgáltatás, mely egyetlen forrást kínál az Azure-erőforrások figyeléséhez. Azure megfigyelővel ábrázolhatja, lekérdezése, továbbítani, archivált, és ellenkező esetben hajtsa végre a műveletet a metrikák és a naplók az Azure-erőforrások származik. Adatok segítségével az Azure portál használatával dolgozhat [figyelő PowerShell-parancsmagok](insights-powershell-samples.md), [platformfüggetlen parancssori felület](insights-cli-samples.md), vagy [Azure figyelő REST API-k](https://msdn.microsoft.com/library/dn931943.aspx). Ebben a cikkben sorra vesszük az Azure Monitor főbb összetevőit, és a portál segítségével mutatjuk be őket.
 
 ## <a name="walkthrough"></a>Útmutatás
 1. A portálon lépjen a **minden szolgáltatás** keresse meg a **figyelő** lehetőséget. A csillag ikonra kattintva adja hozzá ezt a lehetőséget a kedvencekhez, így az a bal oldali navigációs sávról mindig könnyen elérhető lesz.
@@ -39,7 +39,7 @@ Az Azure Monitor egy olyan platformszolgáltatás, mely egyetlen forrást kíná
     A [**tevékenységnapló**](monitoring-overview-activity-logs.md) az előfizetéshez tartozó erőforrásokon végrehajtott összes műveletet ismerteti. A tevékenységnapló használatával az előfizetés erőforrásain végzett minden létrehozási, frissítési vagy törlési művelet esetén választ kaphat a „ki, mit és mikor” kérdésre. A tevékenységnaplóban láthatja például, hogy ki és mikor állított le egy webalkalmazást. A tevékenységnapló eseményeit tárolja a platform, és 90 napig lekérdezhetők maradnak.
 
     Létrehozhatja és mentheti a gyakran alkalmazott szűrőket tartalmazó lekérdezéseket, majd a legfontosabb lekérdezéseket rögzítheti a portál irányítópultján, így mindig tudni fogja, hogy előfordultak-e olyan események, amelyek megfelelnek a megadott feltételeknek.
-4. Szűrje a nézetet egy adott erőforráscsoport múlt heti eseményeire szűkítve, majd kattintson a **Mentés** gombra.
+4. Szűrje a nézetet egy adott erőforráscsoport múlt heti eseményeire szűkítve, majd kattintson a **Mentés** gombra. Nevezze el a lekérdezést. 
 
     ![Tevékenységnapló lekérdezésének mentése](./media/monitoring-get-started/monitor-act-log-save.png)
 5. Most kattintson a **Rögzítés** gombra.

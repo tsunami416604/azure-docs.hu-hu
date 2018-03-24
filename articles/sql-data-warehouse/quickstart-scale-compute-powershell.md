@@ -1,24 +1,24 @@
 ---
-title: "Gyors üzembe helyezés: Horizontális felskálázás az Azure SQL Data Warehouse - PowerShell számítási |} Microsoft Docs"
-description: "PowerShell feladatok horizontális adattárházegységek beállításával számítási erőforrásokat."
+title: 'Gyors üzembe helyezés: Horizontális felskálázás az Azure SQL Data Warehouse - PowerShell számítási |} Microsoft Docs'
+description: PowerShell feladatok horizontális adattárházegységek beállításával számítási erőforrásokat.
 services: sql-data-warehouse
 documentationcenter: NA
 author: hirokib
 manager: jhubbard
-editor: 
+editor: ''
 ms.service: sql-data-warehouse
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: manage
-ms.date: 01/31/2018
+ms.date: 03/16/2018
 ms.author: elbutter;barbkess
-ms.openlocfilehash: a3a435d6bdb0d35c96349540d5e9f9b5be61bd9b
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 3236c0ad9676712afd220a3c8a9326f3ea1f59d5
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="quickstart-scale-compute-in-azure-sql-data-warehouse-in-powershell"></a>Gyors üzembe helyezés: Az Azure SQL Data Warehouse a PowerShellben számítási méretezési
 
@@ -64,7 +64,7 @@ Kövesse az alábbi lépéseket az adatraktár Tartózkodásihely-adatok keresé
 
     ![Kiszolgáló nevét és az erőforrás-csoport](media/pause-and-resume-compute-powershell/locate-data-warehouse-information.png)
 
-4. Jegyezze fel az adatraktár nevét, amely az adatbázis neve lesz. Is írja be a kiszolgáló nevét, és az erőforráscsoportot. Először használja ezeket az szüneteltetése, folytatása parancsok.
+4. Jegyezze fel az adatraktár-nevét, amely az adatbázis neve lesz. Ne feledje, hogy egy adatraktár az adatbázis egy típust. Is írja be a kiszolgáló nevét, és az erőforráscsoportot. Először használja ezeket az szüneteltetése, folytatása parancsok.
 5. Ha a kiszolgáló foo.database.windows.net, akkor csak az első rész a PowerShell-parancsmagok a kiszolgálónevet. Az előző ábrán a teljes kiszolgálónevet newserver-20171113.database.windows.net. Használjuk **newserver-20171113** a PowerShell-parancsmag a kiszolgálónevet.
 
 ## <a name="scale-compute"></a>Számítások méretezése
@@ -77,12 +77,13 @@ Adattárházegységek módosításához használja a [Set-AzureRmSqlDatabase](/p
 Set-AzureRmSqlDatabase -ResourceGroupName "myResourceGroup" -DatabaseName "mySampleDataWarehouse" -ServerName "mynewserver-20171113" -RequestedServiceObjectiveName "DW300"
 ```
 
-## <a name="check-database-state"></a>Ellenőrizze az adatbázis állapota
+## <a name="check-data-warehouse-state"></a>Ellenőrizze, adatraktár állapota
 
 Az adatraktár aktuális állapotának megtekintéséhez használja a [Get-AzureRmSqlDatabase](/powershell/module/azurerm.sql/get-azurermsqldatabase) PowerShell-parancsmagot. Ez a állapotának beolvasása a **mySampleDataWarehouse** ResourceGroup adatbázis **myResourceGroup** és a kiszolgáló **mynewserver-20171113.database.windows.net**.
 
 ```powershell
-Get-AzureRmSqlDatabase -ResourceGroupName myResourceGroup -ServerName mynewserver-20171113 -DatabaseName mySampleDataWarehouse
+$database = Get-AzureRmSqlDatabase -ResourceGroupName myResourceGroup -ServerName mynewserver-20171113 -DatabaseName mySampleDataWarehouse
+$database
 ```
 
 Emiatt, az alábbihoz hasonló:
@@ -113,7 +114,13 @@ ReadScale                     : Disabled
 ZoneRedundant                 : False
 ```
 
-Majd ellenőrizze, hogy a **állapot** az adatbázis. Ebben az esetben láthatja, hogy az adatbázis online állapotban.  Ez a parancs futtatásakor Online, felfüggesztése, folytatása, méretezés vagy felfüggesztett állapot értéket kell kapnia.
+Megtekintheti a **állapot** az adatbázis, a kimenetben. Ebben az esetben láthatja, hogy az adatbázis online állapotban.  Ez a parancs futtatásakor Online, felfüggesztése, folytatása, méretezés vagy felfüggesztett állapot értéket kell kapnia. 
+
+Az állapot önmagában, használja a következő parancsot:
+
+```powershell
+$database | Select-Object DatabaseName,Status
+```
 
 ## <a name="next-steps"></a>További lépések
 Most megtanulhatta, az adatraktár számítási méretezése. Ha bővebb információra van szüksége az Azure SQL Data Warehouse-zal kapcsolatban, folytassa az adatok betöltésével foglalkozó oktatóanyaggal.

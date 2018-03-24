@@ -1,24 +1,18 @@
 ---
-title: "Verziókövetés integrálása az Azure Automation a Githubon vállalati |} Microsoft Docs"
-description: "A GitHub vállalati integrációs konfigurálása az Automation-forgatókönyv verziókövetési részleteit ismerteti."
+title: Verziókövetés integrálása az Azure Automation a Githubon vállalati
+description: A GitHub vállalati integrációs konfigurálása az Automation-forgatókönyv verziókövetési részleteit ismerteti.
 services: automation
-documentationCenter: 
-authors: georgewallace
-manager: jwhit
-editor: 
-ms.assetid: e01d817c-7d38-421c-adf5-647a4b526eb4
 ms.service: automation
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: georgewallace
+ms.author: gwallace
+ms.date: 03/16/2018
 ms.topic: article
-ms.date: 07/26/2017
-ms.author: magoedte
-ms.openlocfilehash: 2944b62cb3dc6146573041533d56d45b6cc87f18
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+manager: carmonm
+ms.openlocfilehash: eab61daafe7ef8b5ca2fc1416dc7c04f97b8c671
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-automation-scenario---automation-source-control-integration-with-github-enterprise"></a>Azure Automation forgatókönyv - automatizálási verziókövetés integrálása a Githubon vállalati
 
@@ -52,10 +46,10 @@ GitHRWCredential | Hitelesítőadat-eszköz hoz létre a felhasználónév és a
 
 1. A Sync-LocalGitFolderToAutomationAccount runbook használatával hitelesít a [Azure-beli futtató fiók](automation-sec-configure-azure-runas-account.md). 
 
-2. Az Azure Automation-megoldás engedélyezve és konfigurálva van a Microsoft Operations Management Suite (OMS) munkaterület is szükség. Ha még nem rendelkezik ilyennel, amelyek telepítése és konfigurálása ebben a forgatókönyvben használt Automation-fiók van hozzárendelve, az azt létre és konfigurálta az Ön végrehajtásakor a **New-OnPremiseHybridWorker.ps1** parancsfájlt a hibrid forgatókönyv munkavégző.        
+2. Az Azure Automation-megoldás engedélyezve és konfigurálva van a Naplóelemzési munkaterület is szükség. Ha még nem rendelkezik ilyennel, amelyek telepítése és konfigurálása ebben a forgatókönyvben használt Automation-fiók van hozzárendelve, az azt létre és konfigurálta az Ön végrehajtásakor a **New-OnPremiseHybridWorker.ps1** parancsfájlt a hibrid forgatókönyv munkavégző.        
 
     > [!NOTE]
-    > Jelenleg a következő régiókban csak támogatja OMS - automatizálás integrálását **Ausztrália délkeleti**, **USA keleti régiója 2**, **Délkelet-Ázsia**, és **nyugati régiója Európa**. 
+    > Jelenleg a következő régiókban csak támogatja Log Analytics - automatizálás integrálását **Ausztrália délkeleti**, **USA keleti régiója 2**, **Délkelet-Ázsia**, és  **Nyugat-Európában**. 
 
 3. Egy számítógép, amely egy dedikált hibrid forgatókönyv-feldolgozót a Githubon szoftvert futtató szolgál, és a runbook fájlok karbantartása (*runbook*.ps1) a GitHub és az automatizálás közötti szinkronizálás a fájlrendszerben forráskönyvtárat fiók.
 

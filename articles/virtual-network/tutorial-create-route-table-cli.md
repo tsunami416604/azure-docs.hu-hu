@@ -1,13 +1,13 @@
 ---
-title: "Hálózati forgalmat - az Azure parancssori felület |} Microsoft Docs"
-description: "Útmutató egy útválasztási táblázathoz, az Azure parancssori felület használatával irányítható a hálózati forgalom."
+title: Hálózati forgalmat - az Azure parancssori felület |} Microsoft Docs
+description: Útmutató egy útválasztási táblázathoz, az Azure parancssori felület használatával irányítható a hálózati forgalom.
 services: virtual-network
 documentationcenter: virtual-network
 author: jimdial
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: azurecli
 ms.topic: article
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: jdial
-ms.custom: 
-ms.openlocfilehash: 67bfc8ee677a14735174e9501fa5e10a69bd1ec7
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.custom: ''
+ms.openlocfilehash: 871b562fa12b93d1b65e23ca58615d35ef6bb34b
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="route-network-traffic-with-a-route-table-using-the-azure-cli"></a>Hálózati forgalom egy útválasztási táblázathoz, az Azure parancssori felület használatával
 
@@ -207,7 +207,7 @@ Vegye figyelembe a **publicIpAddress**. Ez a cím a virtuális gép egy később
 
 ## <a name="route-traffic-through-an-nva"></a>NVA-útvonal forgalmát
 
-Az SSH-munkamenetet létrehozni, az alábbi parancs segítségével a *myVmPrivate* virtuális gép. Cserélje le  *<publicIpAddress>*  a virtuális gép a nyilvános IP-címmel. A fenti példában az IP-cím van *13.90.242.231*.
+Az SSH-munkamenetet létrehozni, az alábbi parancs segítségével a *myVmPrivate* virtuális gép. Cserélje le *<publicIpAddress>* a virtuális gép a nyilvános IP-címmel. A fenti példában az IP-cím van *13.90.242.231*.
 
 ```bash 
 ssh azureuser@<publicIpAddress>
@@ -280,4 +280,4 @@ Ebben a cikkben létrehozott egy útválasztási táblázatot, és az alhálóza
 A virtuális hálózaton belül számos Azure-erőforrások telepítése során egyes Azure PaaS szolgáltatások erőforrás nem telepíthető virtuális hálózatba. Továbbra is korlátozzuk néhány Azure PaaS-szolgáltatást csak a virtuális hálózati alhálózat forgalom erőforrásaihoz, ha. A következő oktatóanyag áttekintésével megismerheti, hogyan Azure PaaS erőforrásokhoz való hálózati hozzáférés korlátozása továbblépés.
 
 > [!div class="nextstepaction"]
-> [Hálózati hozzáférés korlátozása PaaS erőforrások](virtual-network-service-endpoints-configure.md#azure-cli)
+> [Hálózati hozzáférés korlátozása PaaS erőforrások](tutorial-restrict-network-access-to-resources-cli.md)

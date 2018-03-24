@@ -1,11 +1,11 @@
 ---
-title: "Létrehozása, módosítása vagy törlése az Azure nyilvános IP-cím |} Microsoft Docs"
-description: "Megtudhatja, hogyan létrehozása, módosítása vagy a nyilvános IP-cím törlése."
+title: Létrehozása, módosítása vagy törlése az Azure nyilvános IP-cím |} Microsoft Docs
+description: Megtudhatja, hogyan létrehozása, módosítása vagy a nyilvános IP-cím törlése.
 services: virtual-network
 documentationcenter: na
 author: jimdial
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: bb71abaf-b2d9-4147-b607-38067a10caf6
 ms.service: virtual-network
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: jdial
-ms.openlocfilehash: 8efc0bff4764a7265a5f1bcdd995979af0b22234
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: c36a3451dabbb0d08e5e475e0eec14f861bd41ce
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="create-change-or-delete-a-public-ip-address"></a>Létrehozása, módosítása vagy a nyilvános IP-cím törlése
 
@@ -32,9 +32,9 @@ Információ a nyilvános IP-cím és létrehozása, módosítása és törlése
 Ez a cikk bármely szakaszának lépéseit befejezése előtt hajtsa végre a következőket:
 
 - Ha még nem rendelkezik Azure-fiókja, regisztráljon egy [ingyenes próbafiók](https://azure.microsoft.com/free).
-- Ha a portál használatával, nyissa meg a https://portal.azure.com, és jelentkezzen be az Azure-fiókjával.
-- Ha a PowerShell-parancsokkal ebben a cikkben a feladatokat, vagy futtassa a parancsokat a [Azure Cloud rendszerhéj](https://shell.azure.com/powershell), vagy a PowerShell futtatásával a számítógépről. Az Azure Cloud Shell egy olyan ingyenes interaktív kezelőfelület, amelyet a jelen cikkben található lépések futtatására használhat. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. Ebben az oktatóanyagban az Azure PowerShell modul verziója 5.2.0 szükséges vagy újabb. Futtatás `Get-Module -ListAvailable AzureRM` telepített verziója található. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Login-AzureRmAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
-- Azure parancssori felület (CLI) parancsok használata ebben a cikkben a feladatokat, vagy futtassa a parancsokat a [Azure Cloud rendszerhéj](https://shell.azure.com/bash), vagy a CLI-t a számítógépen való futtatásával. Ez az oktatóanyag az Azure parancssori felület 2.0.26 verziója szükséges, vagy később. Futtatás `az --version` telepített verziója található. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése](/cli/azure/install-azure-cli). Ha helyileg futtatja az Azure parancssori felület, is futtatásához szükséges `az login` az Azure VPN-kapcsolat létrehozásához.
+- A portál használatával, nyissa meg a https://portal.azure.com, és jelentkezzen be az Azure-fiókjával.
+- Ha a PowerShell-parancsokkal ebben a cikkben a feladatokat, vagy futtassa a parancsokat a [Azure Cloud rendszerhéj](https://shell.azure.com/powershell), vagy a PowerShell futtatásával a számítógépről. Az Azure Cloud Shell egy olyan ingyenes interaktív kezelőfelület, amelyet a jelen cikkben található lépések futtatására használhat. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. Ebben az oktatóanyagban az Azure PowerShell modul verziója 5.2.0 szükséges vagy újabb. A telepített verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable AzureRM`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Login-AzureRmAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
+- Azure parancssori felület (CLI) parancsok használata ebben a cikkben a feladatokat, vagy futtassa a parancsokat a [Azure Cloud rendszerhéj](https://shell.azure.com/bash), vagy a CLI-t a számítógépen való futtatásával. Ez az oktatóanyag az Azure parancssori felület 2.0.26 verziója szükséges, vagy később. A telepített verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése](/cli/azure/install-azure-cli). Ha helyileg futtatja az Azure parancssori felület, is futtatásához szükséges `az login` az Azure VPN-kapcsolat létrehozásához.
 
 Nyilvános IP-címek rendelkezik egy névleges kell fizetni. Az árképzés megtekintéséhez olvassa el a [IP-cím árképzési](https://azure.microsoft.com/pricing/details/ip-addresses) lap. 
 
@@ -46,7 +46,7 @@ Nyilvános IP-címek rendelkezik egy névleges kell fizetni. Az árképzés megt
 
     |Beállítás|Kötelező?|Részletek|
     |---|---|---|
-    |SKU|Igen|Minden nyilvános IP-címek termékváltozatok bevezetése előtt létrehozott **alapvető** SKU nyilvános IP-címeket.  A Termékváltozat a nyilvános IP-cím létrehozása után nem módosítható. Egy különálló virtuális gépet, a virtuális gépek rendelkezésre állási csoportok, vagy a virtuálisgép-méretezési csoportok alapszintű vagy Standard termékváltozat használhatja.  SKU keverése virtuális gépek rendelkezésre állási készletek vagy méretezési csoportok között nem engedélyezett. **Alapszintű** Termékváltozat: létrehozásakor egy nyilvános IP-címet, amely támogatja a rendelkezésre állási zónák régióban a **rendelkezésre állási zóna** beállítása *nincs* alapértelmezés szerint. Ha szeretné, válassza ki egy rendelkezésre állási zóna biztosítása a nyilvános IP-cím a megadott zónában. **Standard** Termékváltozat: A Standard Termékváltozat nyilvános IP-cím egy virtuális gép vagy egy load balancer előtér társíthatók. Ha egy nyilvános IP-címet, amely támogatja a rendelkezésre állási zónák régióban hoz létre a **rendelkezésre állási zóna** beállítása *zónaredundáns* alapértelmezés szerint. Rendelkezésre állási zónák kapcsolatos további információkért tekintse meg a **rendelkezésre állási zóna** beállítást. A standard Termékváltozat szükség, ha a cím, egy szabványos terheléselosztóhoz rendeli. Standard terheléselosztók kapcsolatos további információkért lásd: [Azure terheléselosztó standard Termékváltozat](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json). A szabványos termékváltozata előzetes kiadásban. Mielőtt létrehozna egy Standard Termékváltozat nyilvános IP-címet, akkor először el kell végeznie a lépéseket [regisztrálja a standard Termékváltozat Preview](#register-for-the-standard-sku-preview) és a nyilvános IP-cím létrehozása egy támogatott helyre (régió). Támogatott helyek listáját lásd: [régiónkénti elérhetőség](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#region-availability) és figyelheti a [frissíti az Azure Virtual Network](https://azure.microsoft.com/updates/?product=virtual-network) további régió támogatási oldalán. Ha egy standard termékváltozatú nyilvános IP-címet hozzárendel egy virtuális gép hálózati adapteréhez, kifejezetten engedélyeznie kell a kívánt forgalmat egy [hálózati biztonsági csoporttal](security-overview.md#network-security-groups). Az erőforrással történő kommunikáció meghiúsul, amíg nem hoz létre és rendel hozzá egy hálózati biztonsági csoportot, és kifejezetten nem engedélyezi a kívánt forgalmat.|
+    |SKU|Igen|Minden nyilvános IP-címek termékváltozatok bevezetése előtt létrehozott **alapvető** SKU nyilvános IP-címeket.  A Termékváltozat a nyilvános IP-cím létrehozása után nem módosítható. Egy különálló virtuális gépet, a virtuális gépek rendelkezésre állási csoportok, vagy a virtuálisgép-méretezési csoportok alapszintű vagy Standard termékváltozat használhatja.  SKU keverése virtuális gépek rendelkezésre állási készletek vagy méretezési csoportok között nem engedélyezett. **Alapszintű** Termékváltozat: létrehozásakor egy nyilvános IP-címet, amely támogatja a rendelkezésre állási zónák régióban a **rendelkezésre állási zóna** beállítása *nincs* alapértelmezés szerint. Ha szeretné, válassza ki egy rendelkezésre állási zóna biztosítása a nyilvános IP-cím a megadott zónában. **Standard** Termékváltozat: A Standard Termékváltozat nyilvános IP-cím egy virtuális gép vagy egy load balancer előtér társíthatók. Ha egy nyilvános IP-címet, amely támogatja a rendelkezésre állási zónák régióban hoz létre a **rendelkezésre állási zóna** beállítása *zónaredundáns* alapértelmezés szerint. Rendelkezésre állási zónák kapcsolatos további információkért tekintse meg a **rendelkezésre állási zóna** beállítást. A standard Termékváltozat szükség, ha a cím, egy szabványos terheléselosztóhoz rendeli. Standard terheléselosztók kapcsolatos további információkért lásd: [Azure terheléselosztó standard Termékváltozat](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Ha egy standard termékváltozatú nyilvános IP-címet hozzárendel egy virtuális gép hálózati adapteréhez, kifejezetten engedélyeznie kell a kívánt forgalmat egy [hálózati biztonsági csoporttal](security-overview.md#network-security-groups). Az erőforrással történő kommunikáció meghiúsul, amíg nem hoz létre és rendel hozzá egy hálózati biztonsági csoportot, és kifejezetten nem engedélyezi a kívánt forgalmat.|
     |Name (Név)|Igen|A nevét, válassza ki az erőforráscsoporton belül egyedinek kell lennie.|
     |IP-verziója|Igen| Válassza ki az IPv4- vagy IPv6. Nyilvános IPv4-címek hozzárendelhetők legyenek több Azure-erőforrások, míg IPv6 nyilvános IP-cím csak egy internetre irányuló terheléselosztót rendelhető. A load balancer is terheléselosztásához IPv6-forgalom Azure virtuális gépekhez. További információ [terheléselosztási IPv6-forgalom a virtuális gépek](../load-balancer/load-balancer-ipv6-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Ha bejelölte a **Standard Termékváltozat**, nincs lehetőség kijelölésére *IPv6*. Csak hozhat létre egy IPv4-cím használata esetén a **Standard Termékváltozat**.|
     |IP-cím hozzárendelése|Igen|**Dinamikus:** dinamikus címek hozzárendelésének csak után a nyilvános IP-cím társítva egy virtuális gépre, a virtuális gép hálózati kapcsolatát első alkalommal elindul. Dinamikus címet használva módosítható, ha a virtuális gép, a hálózati adapter csatlakozik leállított (felszabadított). A cím változatlan marad, ha a virtuális gép újraindítása vagy leállítása (de nem felszabadítása. lehetséges) is. **Statikus:** statikus címek hozzárendelésének a nyilvános IP-cím létrehozásakor. Statikus címeket ne változtassa meg akkor is, ha a virtuális gép leállított (felszabadított) állapotában kerül. A cím csak kiadott, hálózati kapcsolat törlésekor. A hálózati illesztő létrehozása után módosíthatja a hozzárendelési módszert. Ha *IPv6* a a **verziójú IP**, a hozzárendelés módszer *dinamikus*. Ha *szabványos* a **SKU**, a hozzárendelés módszer *statikus*.|
@@ -67,7 +67,7 @@ Bár a portálon hozzon létre két nyilvános IP-cím erőforrás (egy IPv4- é
 
 |Eszköz|Parancs|
 |---|---|
-|parancssori felület|[az hálózati nyilvános ip-létrehozása](/cli/azure/network/public-ip?toc=%2fazure%2fvirtual-network%2ftoc.json#az_network_public_ip_create)|
+|parancssori felület|[az network public-ip create](/cli/azure/network/public-ip?toc=%2fazure%2fvirtual-network%2ftoc.json#az_network_public_ip_create)|
 |PowerShell|[New-AzureRmPublicIpAddress](/powershell/module/azurerm.network/new-azurermpublicipaddress)|
 
 ## <a name="view-change-settings-for-or-delete-a-public-ip-address"></a>Megtekintése, módosítsa a beállításokat, vagy egy nyilvános IP-cím törlése
@@ -88,24 +88,6 @@ Bár a portálon hozzon létre két nyilvános IP-cím erőforrás (egy IPv4- é
 |---|---|
 |parancssori felület|[az nyilvános ip-azon hálózati](/cli/azure/network/public-ip?toc=%2fazure%2fvirtual-network%2ftoc.json#az_network_public_ip_list) nyilvános IP-címeinek listáját, hogy [az hálózati nyilvános ip-megjelenítése](/cli/azure/network/public-ip?toc=%2fazure%2fvirtual-network%2ftoc.json#az_network_public_ip_show) ; beállítások megjelenítése [az hálózati nyilvános ip-frissítés](/cli/azure/network/public-ip?toc=%2fazure%2fvirtual-network%2ftoc.json#az_network_public_ip_update) frissítése; [az hálózati nyilvános ip-törlése](/cli/azure/network/public-ip?toc=%2fazure%2fvirtual-network%2ftoc.json#az_network_public_ip_delete) törlése|
 |PowerShell|[Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress?toc=%2fazure%2fvirtual-network%2ftoc.json) egy nyilvános IP-cím objektum beolvasása és a beállítások megtekintéséhez [Set-AzureRmPublicIpAddress](/powershell/resourcemanager/azurerm.network/set-azurermpublicipaddress?toc=%2fazure%2fvirtual-network%2ftoc.json) frissíteni a beállításait; [Remove-AzureRmPublicIpAddress](/powershell/module/azurerm.network/remove-azurermpublicipaddress) törlése|
-
-## <a name="register-for-the-standard-sku-preview"></a>A standard Termékváltozat Preview regisztrálása
-
-> [!NOTE]
-> Az előzetes funkciók nem rendelkezhet azonos szintű rendelkezésre állást és megbízhatóságot, szolgáltatások, amelyek általában a rendelkezésre állási kiadási. Előzetes verziójú funkciók nem támogatottak, van, korlátozott képességeket, és előfordulhat, hogy nem érhető el az összes Azure helyét. 
-
-Mielőtt létrehozna egy Standard Termékváltozat nyilvános IP-címet, először regisztrálnia kell az előzetes verziójára. Végezze el az előzetes regisztrálásához a következő lépéseket:
-
-1. A Powershellből adja meg az előzetes regisztrálásához a következő parancsot:
-   
-    ```powershell
-    Register-AzureRmProviderFeature -FeatureName AllowLBPreview -ProviderNamespace Microsoft.Network
-    ```
-2. Győződjön meg arról, hogy be vannak jegyezve a az előzetes a következő parancs beírásával:
-
-    ```powershell
-    Get-AzureRmProviderFeature -FeatureName AllowLBPreview -ProviderNamespace Microsoft.Network
-    ```
 
 ## <a name="next-steps"></a>További lépések
 Rendelje hozzá a nyilvános IP-címek, a következő Azure-erőforrások létrehozásakor:

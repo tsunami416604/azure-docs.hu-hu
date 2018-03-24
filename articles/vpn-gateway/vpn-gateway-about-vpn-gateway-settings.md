@@ -1,11 +1,11 @@
 ---
-title: "VPN-átjáró beállításokat a létesítmények közötti Azure-kapcsolatok |} Microsoft Docs"
-description: "További tudnivalók az Azure virtuális hálózati átjárók VPN-átjáró beállításainak."
+title: VPN-átjáró beállításokat a létesítmények közötti Azure-kapcsolatok |} Microsoft Docs
+description: További tudnivalók az Azure virtuális hálózati átjárók VPN-átjáró beállításainak.
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
-manager: timlt
-editor: 
+manager: jpconnock
+editor: ''
 tags: azure-resource-manager,azure-service-management
 ms.assetid: ae665bc5-0089-45d0-a0d5-bc0ab4e79899
 ms.service: vpn-gateway
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/05/2018
+ms.date: 03/20/2018
 ms.author: cherylmc
-ms.openlocfilehash: e4f02e2b001b6821e732cead660aa0b758f1133e
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: dfa116981cb0ce912ee83fade54f2502262178bc
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="about-vpn-gateway-configuration-settings"></a>VPN-átjáró konfigurációs beállításairól
 
@@ -28,7 +28,9 @@ VPN-átjáró olyan virtuális hálózati átjáró által a titkosított forgal
 VPN gateway-kapcsolattal konfigurálható beállításokat tartalmaz, amelyek mindegyike több erőforrás konfigurációjának támaszkodik. Ebben a cikkben a szakaszok tárgyalják az erőforrások és a Resource Manager üzembe helyezési modellel létrehozott virtuális hálózat VPN-átjáró szoftverközponthoz kapcsolódó beállításokat. Minden kapcsolat megoldás megtalálhatja leírásokat és topológiai diagramot a [VPN-átjáró](vpn-gateway-about-vpngateways.md) cikk.
 
 >[!NOTE]
-> Ebben a cikkben szereplő értékek a - GatewayType "Vpn" használó virtuális hálózati átjárók vonatkozik. Ezért ezek nevezzük VPN-átjárók. -GatewayType "ExpressRoute" vonatkozó értékeket, lásd: [ExpressRoute a virtuális hálózati átjárók](../expressroute/expressroute-about-virtual-network-gateways.md). Az ExpressRoute-átjáró értékei nem ugyanazokat az értékeket a VPN-átjáróként használt.
+> Ebben a cikkben szereplő értékek a - GatewayType "Vpn" használó virtuális hálózati átjárók vonatkozik. Ezért ezek adott virtuális hálózati átjárók VPN-átjáróként hivatkozunk. Az ExpressRoute-átjáró értékei nem ugyanazokat az értékeket a VPN-átjáróként használt.
+>
+>-GatewayType "ExpressRoute" vonatkozó értékeket, lásd: [ExpressRoute a virtuális hálózati átjárók](../expressroute/expressroute-about-virtual-network-gateways.md).
 >
 >
 
@@ -55,7 +57,7 @@ New-AzureRmVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg `
 
 [!INCLUDE [vpn-gateway-gwsku-include](../../includes/vpn-gateway-gwsku-include.md)]
 
-### <a name="configure-the-gateway-sku"></a>Az átjáró-Termékváltozat konfigurálása
+### <a name="configure-a-gateway-sku"></a>Konfiguráljon egy átjárót Termékváltozat
 
 #### <a name="azure-portal"></a>Azure Portal
 
@@ -63,24 +65,35 @@ Ha egy erőforrás-kezelő virtuális hálózati átjáró létrehozásához has
 
 #### <a name="powershell"></a>PowerShell
 
-A következő PowerShell-példa meghatározza, hogy a `-GatewaySku` VpnGw1 szerint.
+A következő PowerShell-példa meghatározza, hogy a `-GatewaySku` VpnGw1 szerint. Amikor egy átjáró létrehozása a PowerShell használatával, akkor először hozza létre az IP-konfigurációt, majd a változó segítségével hivatkozik rá. Ebben a példában a konfigurációs változó $gwipconfig.
 
 ```powershell
-New-AzureRmVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg `
--Location 'West US' -IpConfigurations $gwipconfig -GatewaySku VpnGw1 `
+New-AzureRmVirtualNetworkGateway -Name VNet1GW -ResourceGroupName TestRG1 `
+-Location 'US East' -IpConfigurations $gwipconfig -GatewaySku VpnGw1 `
 -GatewayType Vpn -VpnType RouteBased
 ```
 
-#### <a name="resize"></a>Módosítás (átméretezési) egy átjáró-Termékváltozat
+#### <a name="azure-cli"></a>Azure CLI
 
-Ha azt szeretné, és egy nagyobb teljesítményű Termékváltozat az átjáró-Termékváltozat frissítse, használhatja a `Resize-AzureRmVirtualNetworkGateway` PowerShell-parancsmagot. Az átjáró-Termékváltozat-méretét, ez a parancsmag segítségével is visszaminősítheti.
-
-A következő PowerShell-példa látható egy átjáró VpnGw2 az átméretezett Termékváltozat.
-
-```powershell
-$gw = Get-AzureRmVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg
-Resize-AzureRmVirtualNetworkGateway -VirtualNetworkGateway $gw -GatewaySku VpnGw2
+```azurecli
+az network vnet-gateway create --name VNet1GW --public-ip-address VNet1GWPIP --resource-group TestRG1 --vnet VNet1 --gateway-type Vpn --vpn-type RouteBased --sku VpnGw1 --no-wait
 ```
+
+###  <a name="resizechange"></a>A Termékváltozat módosítása és átméretezése
+
+Átjáró átméretezése termékváltozata viszonylag egyszerű. Minimális állásidő, az átjáró átméretezi lesz. Van azonban szabályok vonatkozó átméretezése:
+
+1. Az átméretezés során a VpnGw1, a VpnGw2 és a VpnGw3 termékváltozatok közül választhat.
+2. Ha a régi átjárók termékváltozataival dolgozik, az átméretezéskor az Alapszintű, a Standard és a Nagy teljesítményű termékváltozatok közül választhat.
+3. Az Alapszintű/Standard/Nagy teljesítményű termékváltozatokról **nem** méretezhet a VpnGw1/VpnGw2/VpnGw3 termékváltozatokra. Ehelyett kell [módosítása](#change) az új termékváltozatok számára.
+
+#### <a name="resizegwsku"></a>Átjáró átméretezése
+
+[!INCLUDE [Resize a SKU](../../includes/vpn-gateway-gwsku-resize-include.md)]
+
+####  <a name="change"></a>Egy új másikra régi (örökölt) termékváltozatból módosítása
+
+[!INCLUDE [Change a SKU](../../includes/vpn-gateway-gwsku-change-legacy-sku-include.md)]
 
 ## <a name="connectiontype"></a>Kapcsolat típusai
 
@@ -150,7 +163,7 @@ New-AzureRmLocalNetworkGateway -Name LocalSite -ResourceGroupName testrg `
 
 Néha módosítania kell a helyi hálózati átjáró beállításainak. Például ha fel vagy módosít a címtartományt, vagy ha megváltozik-e a VPN-eszköz IP-címét. Lásd: [PowerShell használatával a helyi hálózati átjáró beállításainak módosítása](vpn-gateway-modify-local-network-gateway.md).
 
-## <a name="resources"></a>REST API-k és a PowerShell-parancsmagok
+## <a name="resources"></a>REST API-k, PowerShell-parancsmagok és parancssori felület
 
 További technikai erőforrások és konkrét szintaxis használatával kapcsolatos követelményeket REST API-k, a PowerShell-parancsmagok vagy az Azure CLI VPN Gateway-konfigurációk esetén tekintse meg a következő oldalakon:
 

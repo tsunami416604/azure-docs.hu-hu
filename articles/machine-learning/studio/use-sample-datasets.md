@@ -1,10 +1,11 @@
 ---
-title: "Használja a mintaként használható adathalmazt a Machine Learning Studióban |} Microsoft Docs"
-description: "A Machine Learning Studio szereplő mintákat a adatkészletekből leírását. A kísérletek ezek mintaként használható adathalmazt is használhatja."
+title: Használja a mintaként használható adathalmazt a Machine Learning Studióban |} Microsoft Docs
+description: A Machine Learning Studio szereplő mintákat a adatkészletekből leírását. A kísérletek ezek mintaként használható adathalmazt is használhatja.
 services: machine-learning
-documentationcenter: 
-author: garyericson
-manager: jhubbard
+documentationcenter: ''
+author: heatherbshapiro
+ms.author: hshapiro
+manager: hjerez
 editor: cgronlun
 ms.assetid: 03a0b844-e8a7-4896-996f-d3c7a0db7a50
 ms.service: machine-learning
@@ -13,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/19/2018
-ms.author: garye
-ms.openlocfilehash: 3339d3b3bab2c0ce210950c178ef03fc6c0ecab9
-ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
+ms.openlocfilehash: 38f31220b7cf4624367d872df152ef9e1304e841
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="use-the-sample-datasets-in-azure-machine-learning-studio"></a>Az Azure Machine Learning Studió mintaadatkészleteinek használata
 [top]: #machine-learning-sample-datasets
@@ -47,7 +47,7 @@ Egy részét a 1994 nyilvántartásba adatbázist, működő felnőttek > 100 m�
 <p></p>
 <b>Használat:</b> demográfiai használatával megjósolható, hogy egy személy szerez évente több mint 50 K személyek besorolását.
 <p></p>
-<b>Kapcsolódó kutatási:</b> Kohavi, R., Becker, b, (1996). UCI gépi tanulási a tárház <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>. Irvine, CA: Egyetemi a kaliforniai, a iskolai az adatokat és a számítástechnikai </td>
+<b>Kapcsolódó kutatási:</b> Kohavi, R., Becker, b, (1996). UCI gépi tanulási a tárház <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, CA: Egyetemi a kaliforniai, a iskolai az adatokat és a számítástechnikai </td>
 </tr>
 
 <tr>
@@ -68,7 +68,7 @@ A kockázati pontszám kezdetben tartozik automatikus ár. Majd ellátó matemat
 <p></p>
 <b>Használat:</b> előre jelezni a kockázati pontszám funkcióihoz regressziós vagy multivariate besorolásával. 
 <p></p>
-<b>Kapcsolódó kutatási:</b> Schlimmer, J.C. (1987). UCI gépi tanulási a tárház <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>. Irvine, CA: Egyetemi a kaliforniai, a iskolai az adatokat és a számítástechnikai </td>
+<b>Kapcsolódó kutatási:</b> Schlimmer, J.C. (1987). UCI gépi tanulási a tárház <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, CA: Egyetemi a kaliforniai, a iskolai az adatokat és a számítástechnikai </td>
 </tr>
 
 <tr>
@@ -99,9 +99,9 @@ Donor adatok tartalmazzák a hónap utolsó adományozás óta), és gyakoriság
 <p></p>
 <b>Használat:</b> becsülhető besorolás keresztül, hogy a donor elajándékozni vér március 2007, ahol 1, és a célként megadott időszak, 0 ország nem ország célja. 
 <p></p>
-<b>Kapcsolódó kutatási:</b> Yeh, úgy, (2008). UCI gépi tanulási a tárház <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>. Irvine, CA: Egyetemi a kaliforniai, a iskolai az adatokat és a számítástechnikai
+<b>Kapcsolódó kutatási:</b> Yeh, úgy, (2008). UCI gépi tanulási a tárház <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, CA: Egyetemi a kaliforniai, a iskolai az adatokat és a számítástechnikai
 <p></p>
-Yeh, I-Cheng, Yang, képeznie-Jang, és tudomásul véve, Tao-Ming, "Tudásbázis felderítési az RFM-modellben Bernoulli feladatütemezési," 2008, az alkalmazásokkal szakértői rendszereket <a href="http://dx.doi.org/10.1016/j.eswa.2008.07.018">http://dx.doi.org/10.1016/j.eswa.2008.07.018</a>
+Yeh, I-Cheng, Yang, képeznie-Jang, és tudomásul véve, Tao Ming, "Tudásbázis felderítés RFM-modellben Bernoulli feladatütemezési,"szakértői rendszereket 2008, az alkalmazásokkal <a href="http://dx.doi.org/10.1016/j.eswa.2008.07.018">http://dx.doi.org/10.1016/j.eswa.2008.07.018</a>
   </td>
 </tr>
 
@@ -112,7 +112,7 @@ A machine learning szakirodalomban gyakran megjelenő Oncology Intézet által b
 <p></p>
 <b>Használat:</b> kapcsolatos típusú besorolását, 9-es attribútumok alapján, amelyeket lineáris és kategorikus. 
 <p></p>
-<b>Kapcsolódó kutatási:</b> Wohlberg, W.H., utca, W.N. & Mangasarian, O.L. (1995). UCI gépi tanulási a tárház <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>. Irvine, CA: Egyetemi a kaliforniai, a iskolai az adatokat és a számítástechnikai </td>
+<b>Kapcsolódó kutatási:</b> Wohlberg, W.H., utca, W.N. & Mangasarian, O.L. (1995). UCI gépi tanulási a tárház <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, CA: Egyetemi a kaliforniai, a iskolai az adatokat és a számítástechnikai </td>
 </tr>
 
 <tr>
@@ -165,7 +165,7 @@ Szimulált energia profilok, 12 különböző épület alakzatok alapján gyűjt
 <p></p>
 <b>Használat:</b> használnak regressziós vagy besorolási minősítés alapján rendelkezésre álló két valós értékelni válaszok energiahatékonyság előre jelezni. Több osztály besorolási van a válasz változó kerekítése a legközelebbi egész kerek. 
 <p></p>
-<b>Kapcsolódó kutatási:</b> Xifara, A. & Tsanas, azonosítójához. (2012). UCI gépi tanulási a tárház <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>. Irvine, CA: Egyetemi a kaliforniai, a iskolai az adatokat és a számítástechnikai </td>
+<b>Kapcsolódó kutatási:</b> Xifara, A. & Tsanas, azonosítójához. (2012). UCI gépi tanulási a tárház <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, CA: Egyetemi a kaliforniai, a iskolai az adatokat és a számítástechnikai </td>
 </tr>
 
 <tr>
@@ -190,7 +190,7 @@ Repülőgép repülési érkezők és a 2011. októberi az Amerikai Egyesült Á
 <p></p>
 <b>Használat:</b> repülési késések előre jelezni. 
 <p></p>
-<b>Related Research:</b> From US Dept. of Transportation <a href="http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time">http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time</a>.
+<b>Kapcsolódó kutatási:</b> a szállítására részleg USA <a href="http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time"> http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time </a>.
   </td>
 </tr>
 
@@ -201,9 +201,9 @@ Időjárás adatokat tartalmaz, például a hőmérséklet és a páratartalom i
 <p></p>
 <b>Használat:</b> Ez az regressziós nehéz feladat, ahol a célja, hogy előre jelezni erdőtüzek kiírt területén. 
 <p></p>
-<b>Kapcsolódó kutatási:</b> Cortez, p, & Morais, azonosítójához. (2008). UCI gépi tanulási a tárház <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>. Irvine, CA: Egyetemi a kaliforniai, a iskolai az adatokat és a számítástechnikai
+<b>Kapcsolódó kutatási:</b> Cortez, p, & Morais, azonosítójához. (2008). UCI gépi tanulási a tárház <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, CA: Egyetemi a kaliforniai, a iskolai az adatokat és a számítástechnikai
 <p></p>
-[Cortez és Morais, 2007] P Cortez és A. Morais. A Data Mining megközelítése időjárási adatokkal előrejelzése erdőtüzek. A J. Neves, M. f Santos és J. Machado Eds., mesterséges Eszközintelligencia, a 13 EPIA 2007 - mesterséges intelligens, December, Guimarães, Portugália, oldal 512-523, 2007 portugál konferencia eljárás új trendeket. APPIA, ISBN-13 978-989-95618-0-9. Megtekinthető a következő helyen: <a href="http://www.dsi.uminho.pt/~pcortez/fires.pdf">http://www.dsi.uminho.pt/~pcortez/fires.pdf</a>.
+[Cortez és Morais, 2007] P Cortez és A. Morais. A Data Mining megközelítése időjárási adatokkal előrejelzése erdőtüzek. A J. Neves, M. f Santos és J. Machado Eds., mesterséges Eszközintelligencia, a 13 EPIA 2007 - mesterséges intelligens, December, Guimarães, Portugália, oldal 512-523, 2007 portugál konferencia eljárás új trendeket. APPIA, ISBN-13 978-989-95618-0-9. Megtekinthető a következő helyen: <a href="http://www.dsi.uminho.pt/~pcortez/fires.pdf"> http://www.dsi.uminho.pt/~pcortez/fires.pdf </a>.
   </td>
 </tr>
 
@@ -230,7 +230,7 @@ Lehet, hogy ez az a legjobb ismert adatbázis a minta felismerés szakirodalomba
 <p></p>
 <b>Használat:</b> előre jelezni a mérések iris típusát.  
 <p></p>
-<b>Kapcsolódó kutatási:</b> Fisher, R.A. (1988). UCI gépi tanulási a tárház <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>. Irvine, CA: Egyetemi a kaliforniai, a iskolai az adatokat és a számítástechnikai </td>
+<b>Kapcsolódó kutatási:</b> Fisher, R.A. (1988). UCI gépi tanulási a tárház <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, CA: Egyetemi a kaliforniai, a iskolai az adatokat és a számítástechnikai </td>
 </tr>
 
 <tr>
@@ -249,7 +249,7 @@ Az adatok a miles / gallonra különböző autók üzemanyag-fogyasztás sorolja
 <p></p>
 <b>Használat:</b> üzemanyag-fogyasztási három többértékű diszkrét attribútumok és öt folytonos attribútumok alapján előre jelezni. 
 <p></p>
-<b>Kapcsolódó kutatási:</b> StatLib, Carnegie Mellon egyetemi, (1993). UCI gépi tanulási a tárház <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>. Irvine, CA: Egyetemi a kaliforniai, a iskolai az adatokat és a számítástechnikai </td>
+<b>Kapcsolódó kutatási:</b> StatLib, Carnegie Mellon egyetemi, (1993). UCI gépi tanulási a tárház <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, CA: Egyetemi a kaliforniai, a iskolai az adatokat és a számítástechnikai </td>
 </tr>
 
 <tr>
@@ -259,7 +259,7 @@ A cukorbetegség National Institute és emésztőtraktus és vese betegségek ad
 <p></p>
 <b>Használat:</b> előre jelezni, hogy rendelkezik-e a tulajdonos cukorbetegség (bináris osztályozás). 
 <p></p>
-<b>Kapcsolódó kutatási:</b> Sigillito, V. (1990). UCI gépi tanulási a tárház <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml "</a>. Irvine, CA: Egyetemi a kaliforniai, a iskolai az adatokat és a számítástechnikai </td>
+<b>Kapcsolódó kutatási:</b> Sigillito, V. (1990). UCI gépi tanulási a tárház <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml"</a>. Irvine, CA: Egyetemi a kaliforniai, a iskolai az adatokat és a számítástechnikai </td>
 </tr>
 
 <tr>
@@ -269,7 +269,7 @@ A cukorbetegség National Institute és emésztőtraktus és vese betegségek ad
 <p></p>
 <b>Használat:</b> ehhez az adatkészlethez, képzése, és tesztelje a ajánló rendszert a többi két éttermi adathalmazt együtt használja. 
 <p></p>
-<b>Kapcsolódó kutatási:</b> Bache, K. és Lichman, M. (2013). UCI gépi tanulási a tárház <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>. Irvine, CA: Egyetemi a kaliforniai, iskolai az adatokat és számítástechnikai.
+<b>Kapcsolódó kutatási:</b> Bache, K. és Lichman, M. (2013). UCI gépi tanulási a tárház <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, CA: Egyetemi a kaliforniai, iskolai az adatokat és számítástechnikai.
   </td>
 </tr>
 
@@ -280,7 +280,7 @@ A metaadatok éttermekben és a hozzájuk tartozó funkciók áttekintése, pél
 <p></p>
 <b>Használat:</b> ehhez az adatkészlethez, képzése, és tesztelje a ajánló rendszert a többi két éttermi adathalmazt együtt használja. 
 <p></p>
-<b>Kapcsolódó kutatási:</b> Bache, K. és Lichman, M. (2013). UCI gépi tanulási a tárház <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>. Irvine, CA: Egyetemi a kaliforniai, iskolai az adatokat és számítástechnikai.
+<b>Kapcsolódó kutatási:</b> Bache, K. és Lichman, M. (2013). UCI gépi tanulási a tárház <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, CA: Egyetemi a kaliforniai, iskolai az adatokat és számítástechnikai.
   </td>
 </tr>
 
@@ -291,7 +291,7 @@ Adott felhasználók éttermekben méretű 0 2 minősítések tartalmazza.
 <p></p>
 <b>Használat:</b> ehhez az adatkészlethez, képzése, és tesztelje a ajánló rendszert a többi két éttermi adathalmazt együtt használja. 
 <p></p>
-<b>Kapcsolódó kutatási:</b> Bache, K. és Lichman, M. (2013). UCI gépi tanulási a tárház <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>. Irvine, CA: Egyetemi a kaliforniai, iskolai az adatokat és számítástechnikai.
+<b>Kapcsolódó kutatási:</b> Bache, K. és Lichman, M. (2013). UCI gépi tanulási a tárház <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, CA: Egyetemi a kaliforniai, iskolai az adatokat és számítástechnikai.
   </td>
 </tr>
 
@@ -304,9 +304,9 @@ Ez az adatkészlet kísérletek primerek acélból származó rekordokat tartalm
 <p></p>
 Készült besorolási hajtsa végre egy szabvány, SAE és más szervezetekkel. Egy adott "osztály" (Ez az osztály változó) keres, és szeretné tudni, hogy a szükséges értékeket. 
 <p></p>
-<b>Kapcsolódó kutatási:</b> Sterling, d & Buntine, w (NA). UCI gépi tanulási a tárház <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>. Irvine, CA: Egyetemi a kaliforniai, a iskolai az adatokat és a számítástechnikai
+<b>Kapcsolódó kutatási:</b> Sterling, d & Buntine, w (NA). UCI gépi tanulási a tárház <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, CA: Egyetemi a kaliforniai, a iskolai az adatokat és a számítástechnikai
 <p></p>
-Egy hasznos útmutató készült osztályokra itt található: <a href="http://www.outokumpu.com/SiteCollectionDocuments/Outokumpu-steel-grades-properties-global-standards.pdf">http://www.outokumpu.com/SiteCollectionDocuments/Outokumpu-steel-grades-properties-global-standards.pdf</a>
+Acélminőségek hasznos útmutatóját itt található: <a href="http://www.outokumpu.com/SiteCollectionDocuments/Outokumpu-steel-grades-properties-global-standards.pdf">http://www.outokumpu.com/SiteCollectionDocuments/Outokumpu-steel-grades-properties-global-standards.pdf</a>
   </td>
 </tr>
 
@@ -325,7 +325,7 @@ A korábban már Előfeldolgozott egy nyújtott alakú fürt létrehozása a hos
 <p></p>
 Vegye figyelembe azt is, hogy kellőképpen-e a háttérben események (hadronic zuhanyozók h) száma. Valós mérések a h vagy zaj osztály jelenti. a legtöbb esemény. 
 <p></p>
-<b>Kapcsolódó kutatási:</b> Bock, R.K. (1995). UCI gépi tanulási a tárház <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>. Irvine, CA: Egyetemi a kaliforniai, iskolai vonatkozó információk </td>
+<b>Kapcsolódó kutatási:</b> Bock, R.K. (1995). UCI gépi tanulási a tárház <a href="http://archive.ics.uci.edu/ml"> http://archive.ics.uci.edu/ml </a>. Irvine, CA: Egyetemi a kaliforniai, iskolai vonatkozó információk </td>
 </tr>
 
 <tr>

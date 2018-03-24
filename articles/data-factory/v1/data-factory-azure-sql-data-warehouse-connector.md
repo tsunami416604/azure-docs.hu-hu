@@ -1,11 +1,10 @@
 ---
-title: "Adatok másolása az Azure SQL Data Warehouse |} Microsoft Docs"
-description: "Útmutató: Azure SQL Data Warehouse Azure Data Factory használatával és a-adatok másolása"
+title: Adatok másolása az Azure SQL Data Warehouse |} Microsoft Docs
+description: 'Útmutató: Azure SQL Data Warehouse Azure Data Factory használatával és a-adatok másolása'
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: monicar
+manager: craigg
 ms.assetid: d90fa9bd-4b79-458a-8d40-e896835cfd4a
 ms.service: data-factory
 ms.workload: data-services
@@ -15,11 +14,11 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 97782d1437f47a5ec403a98464d38961874d7575
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 709a178d99a34adb9c77086e55270fe41ed84551
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="copy-data-to-and-from-azure-sql-data-warehouse-using-azure-data-factory"></a>Másolja az adatokat, és az Azure SQL Data Warehouse Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -166,10 +165,10 @@ GO
 ```
 
 ## <a name="use-polybase-to-load-data-into-azure-sql-data-warehouse"></a>Adatok betöltése az Azure SQL Data Warehouse PolyBase segítségével
-Használatával  **[PolyBase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide)**  egy hatékony módszer a nagy mennyiségű adatok betöltését az Azure SQL Data Warehouse nagy átviteli sebességgel. A teljesítmény a nagy nyereség helyett az alapértelmezett BULKINSERT mechanizmus a PolyBase használatával tekintheti meg. Lásd: [teljesítmény hivatkozási szám másolása](data-factory-copy-activity-performance.md#performance-reference) a részletes összehasonlítását. A használati esetek bemutatóért lásd: [1 TB-os betöltése az Azure SQL Data Warehouse a 15 perc Azure Data Factory](data-factory-load-sql-data-warehouse.md).
+Használatával **[PolyBase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide)** egy hatékony módszer a nagy mennyiségű adatok betöltését az Azure SQL Data Warehouse nagy átviteli sebességgel. A teljesítmény a nagy nyereség helyett az alapértelmezett BULKINSERT mechanizmus a PolyBase használatával tekintheti meg. Lásd: [teljesítmény hivatkozási szám másolása](data-factory-copy-activity-performance.md#performance-reference) a részletes összehasonlítását. A használati esetek bemutatóért lásd: [1 TB-os betöltése az Azure SQL Data Warehouse a 15 perc Azure Data Factory](data-factory-load-sql-data-warehouse.md).
 
-* Ha a forrás adatok **Azure Blob vagy az Azure Data Lake Store**, és a formátuma nem kompatibilis a PolyBase, közvetlenül másolhatja az Azure SQL Data Warehouse PolyBase használatával. Lásd:  **[közvetlen másolása a PolyBase használatával](#direct-copy-using-polybase)**  adatokkal.
-* Ha a forrás-tárolót és formátum eredetileg nem támogatott a PolyBase által, használhatja a  **[előkészített másolása a PolyBase használatával](#staged-copy-using-polybase)**  inkább a beállítást. Is biztosít, nagyobb átviteli sebesség automatikusan adatok PolyBase-kompatibilis formátumra való konvertálása, és az adatok tárolása az Azure Blob Storage tárolóban. Majd betölti az SQL Data Warehouse-adatok.
+* Ha a forrás adatok **Azure Blob vagy az Azure Data Lake Store**, és a formátuma nem kompatibilis a PolyBase, közvetlenül másolhatja az Azure SQL Data Warehouse PolyBase használatával. Lásd: **[közvetlen másolása a PolyBase használatával](#direct-copy-using-polybase)** adatokkal.
+* Ha a forrás-tárolót és formátum eredetileg nem támogatott a PolyBase által, használhatja a **[előkészített másolása a PolyBase használatával](#staged-copy-using-polybase)** inkább a beállítást. Is biztosít, nagyobb átviteli sebesség automatikusan adatok PolyBase-kompatibilis formátumra való konvertálása, és az adatok tárolása az Azure Blob Storage tárolóban. Majd betölti az SQL Data Warehouse-adatok.
 
 Állítsa be a `allowPolyBase` tulajdonságot **igaz** az Azure Data Factoryben az adatok másolása az Azure SQL Data Warehouse polybase szolgáltatást akkor használja a következő példában látható módon. AllowPolyBase értéke igaz, amikor a PolyBase konkrét tulajdonságok használatával megadhatja a `polyBaseSettings` tulajdonságcsoport. Tekintse meg a [SqlDWSink](#SqlDWSink) szakasz kapcsolódó polyBaseSettings használható tulajdonságokról vonatkozó további információért.
 
@@ -198,11 +197,11 @@ A feltételeknek nem felel meg, ha az Azure Data Factory ellenőrzi a beállít�
 1. **Forrás társított szolgáltatás** típusa: **AzureStorage** vagy **szolgáltatás egyszerű hitelesítéssel AzureDataLakeStore**.  
 2. A **bemeneti adatkészlet** típusa: **AzureBlob** vagy **AzureDataLakeStore**, és írja be a format `type` tulajdonságai **OrcFormat**, **ParquetFormat**, vagy **szöveges** , a következő beállításokat:
 
-   1. `rowDelimiter`kell  **\n** .
-   2. `nullValue`értéke **üres karakterlánc** (""), vagy `treatEmptyAsNull` értéke **igaz**.
-   3. `encodingName`értéke **utf-8**, amely **alapértelmezett** érték.
+   1. `rowDelimiter` kell **\n**.
+   2. `nullValue` értéke **üres karakterlánc** (""), vagy `treatEmptyAsNull` értéke **igaz**.
+   3. `encodingName` értéke **utf-8**, amely **alapértelmezett** érték.
    4. `escapeChar`, `quoteChar`, `firstRowAsHeader`, és `skipLineCount` nincs megadva.
-   5. `compression`lehet **tömörítés**, **GZip**, vagy **Deflate**.
+   5. `compression` lehet **tömörítés**, **GZip**, vagy **Deflate**.
 
     ```JSON
     "typeProperties": {

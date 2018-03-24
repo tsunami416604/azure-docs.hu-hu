@@ -1,11 +1,11 @@
 ---
-title: "Klasszikus virtuális hálózatok csatlakoztatása Azure Resource Manager Vnetek: portál |} Microsoft Docs"
-description: "A hagyományos Vneteket és erőforrás-kezelő Vnetek VPN-átjáró és a portál használatával lépésein"
+title: 'Klasszikus virtuális hálózatok csatlakoztatása Azure Resource Manager Vnetek: portál |} Microsoft Docs'
+description: A hagyományos Vneteket és erőforrás-kezelő Vnetek VPN-átjáró és a portál használatával lépésein
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
 manager: jpconnock
-editor: 
+editor: ''
 tags: azure-service-management,azure-resource-manager
 ms.assetid: 5a90498c-4520-4bd3-a833-ad85924ecaf9
 ms.service: vpn-gateway
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/13/2018
 ms.author: cherylmc
-ms.openlocfilehash: ad6b33b5411d3e38f099726df01fcafc8dc90d38
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 65cfbafbd5fbdd576f01b5cba638c1b5869f377b
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-the-portal"></a>Virtuális hálózatok csatlakoztatása a különböző üzembe helyezési modellel, a portál használatával
 
@@ -216,7 +216,7 @@ Ezeket a lépéseket konfigurálja a kapcsolat a Resource Manager virtuális há
 2. Kattintson a **konfigurációs** , és győződjön meg arról, hogy az IP-cím érték a klasszikus virtuális hálózaton a VPN-átjárót. Szükség esetén frissítse, majd kattintson az **mentése**. Zárja be a lapot.
 3. A **összes erőforrás**, kattintson a helyi hálózati átjáró.
 4. Kattintson a **kapcsolatok** a kapcsolatok lap megnyitásához.
-5. Az a **kapcsolatok** kattintson  **+**  -kapcsolatot.
+5. Az a **kapcsolatok** kattintson **+** -kapcsolatot.
 6. Az a **kapcsolat hozzáadása a** lapon, a kapcsolat nevét. Például "RMtoClassic."
 7. **Pont-pont** már be van jelölve ezen a lapon.
 8. Válassza ki a virtuális hálózati átjáró, amely a webhelyhez hozzárendelni kívánt.
@@ -301,7 +301,7 @@ Az Azure-portálon vagy a PowerShell használatával ellenőrizheti a kapcsolato
 
 [!INCLUDE [vpn-gateway-verify-connection-azureportal-classic](../../includes/vpn-gateway-verify-connection-azureportal-classic-include.md)]
 
-###<a name="to-verify-the-connection-from-your-resource-manager-vnet-to-your-classic-vnet"></a>A kapcsolat az erőforrás-kezelő virtuális hálózat és a klasszikus virtuális hálózat ellenőrzése
+### <a name="to-verify-the-connection-from-your-resource-manager-vnet-to-your-classic-vnet"></a>A kapcsolat az erőforrás-kezelő virtuális hálózat és a klasszikus virtuális hálózat ellenőrzése
 
 [!INCLUDE [vpn-gateway-verify-connection-portal-rm](../../includes/vpn-gateway-verify-connection-portal-rm-include.md)]
 

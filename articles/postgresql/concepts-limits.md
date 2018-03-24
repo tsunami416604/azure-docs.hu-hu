@@ -1,6 +1,6 @@
 ---
-title: "Az Azure-adatbázis PostgreSQL korlátozásai"
-description: "Ez a cikk ismerteti az Azure adatbázis korlátozásai PostgreSQL, például a kapcsolat és a tárolási motor beállításai."
+title: Az Azure-adatbázis PostgreSQL korlátozásai
+description: Ez a cikk ismerteti az Azure adatbázis korlátozásai PostgreSQL, például a kapcsolat és a tárolási motor beállításai.
 services: postgresql
 author: kamathsun
 ms.author: sukamat
@@ -8,15 +8,15 @@ manager: kfile
 editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
-ms.date: 02/28/2018
-ms.openlocfilehash: ba05308039e9743dd207333476e61a45c0ca166a
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.date: 03/20/2018
+ms.openlocfilehash: 7e06cdba7c9c9f7e5c1d621e7421a18c342c0fdb
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="limitations-in-azure-database-for-postgresql"></a>Az Azure-adatbázis PostgreSQL korlátozásai
-Az Azure-adatbázis PostgreSQL szolgáltatás nyilvános előzetes verzió van. A következő szakaszok ismertetik a kapacitás és az adatbázis szolgáltatásban működik korlátok.
+A következő szakaszok ismertetik a kapacitás és az adatbázis szolgáltatásban működik korlátok.
 
 ## <a name="pricing-tier-maximums"></a>Árképzési szint méretkorlát
 Azure PostgreSQL-adatbázishoz a kiszolgáló létrehozása választhat több tarifacsomagok rendelkezik. További információkért lásd: [Tarifacsomagjainak Azure-adatbázis a PostgreSQL](concepts-pricing-tiers.md).  
@@ -25,25 +25,24 @@ Van a kapcsolatok, a számítási egység és a tár az egyes tarifacsomagok max
 
 |Tarifacsomag| Számítási létrehozása| vCore(s)| Kapcsolatok maximális száma |
 |---|---|---|---|
-|Alapszintű| 4. generációból| 1| 50 |
-|Alapszintű| 4. generációból| 2| 100 |
-|Alapszintű| 5. generációból| 1| 50 |
-|Alapszintű| 5. generációból| 2| 100 |
-|Általános rendeltetés| 4. generációból| 2| 150|
-|Általános rendeltetés| 4. generációból| 4| 250|
-|Általános rendeltetés| 4. generációból| 8| 480|
-|Általános rendeltetés| 4. generációból| 16| 950|
-|Általános rendeltetés| 4. generációból| 32| 1500|
-|Általános rendeltetés| 5. generációból| 2| 150|
-|Általános rendeltetés| 5. generációból| 4| 250|
-|Általános rendeltetés| 5. generációból| 8| 480|
-|Általános rendeltetés| 5. generációból| 16| 950|
-|Általános rendeltetés| 5. generációból| 32| 1500|
-|Memóriára optimalizált| 5. generációból| 2| 150|
-|Memóriára optimalizált| 5. generációból| 4| 250|
-|Memóriára optimalizált| 5. generációból| 8| 480|
-|Memóriára optimalizált| 5. generációból| 16| 950|
-|Memóriára optimalizált| 5. generációból| 32| 1900|
+|Alapszintű| Gen 4| 1| 50 |
+|Alapszintű| Gen 4| 2| 100 |
+|Alapszintű| Gen 5| 1| 50 |
+|Alapszintű| Gen 5| 2| 100 |
+|Általános rendeltetés| Gen 4| 2| 150|
+|Általános rendeltetés| Gen 4| 4| 250|
+|Általános rendeltetés| Gen 4| 8| 480|
+|Általános rendeltetés| Gen 4| 16| 950|
+|Általános rendeltetés| Gen 4| 32| 1500|
+|Általános rendeltetés| Gen 5| 2| 150|
+|Általános rendeltetés| Gen 5| 4| 250|
+|Általános rendeltetés| Gen 5| 8| 480|
+|Általános rendeltetés| Gen 5| 16| 950|
+|Általános rendeltetés| Gen 5| 32| 1500|
+|Memóriára optimalizált| Gen 5| 2| 150|
+|Memóriára optimalizált| Gen 5| 4| 250|
+|Memóriára optimalizált| Gen 5| 8| 480|
+|Memóriára optimalizált| Gen 5| 16| 950|
 
 Kapcsolatok száma meghaladja a korlátot, ha a következő hibaüzenet jelenhet meg:
 > Súlyos hiba: sajnos már túl sok ügyfél

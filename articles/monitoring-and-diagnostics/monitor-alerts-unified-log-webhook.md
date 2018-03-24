@@ -1,12 +1,12 @@
 ---
-title: "A napló riasztásokhoz (előzetes verzió) Azure riasztások webhookműveletek |} Microsoft Docs"
-description: "Ez a cikk ismerteti, hogyan napló riasztási szabály a napló analytics vagy az application insights segítségével fogja leküldeni a adatok HTTP webhook és a különböző testreszabásokat részleteit lehetséges."
+title: A napló riasztásokhoz Azure riasztások webhookműveletek |} Microsoft Docs
+description: Ez a cikk ismerteti, hogyan napló riasztási szabály a napló analytics vagy az application insights segítségével fogja leküldeni a adatok HTTP webhook és a különböző testreszabásokat részleteit lehetséges.
 author: msvijayn
 manager: kmadnani1
-editor: 
+editor: ''
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
-ms.assetid: 
+ms.assetid: ''
 ms.service: monitoring-and-diagnostics
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 2/2/2018
 ms.author: vinagara
-ms.openlocfilehash: 5852eb099f6620656aa69e5085447c2a8b4e0c01
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 9d2bc934424ff7a31b65ad6c03624ff02ee2a6f3
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>A napló riasztási szabályok webhookműveletek
-Ha egy [riasztást hoz létre az Azure (előzetes verzió)](monitor-alerts-unified-usage.md), lehetősége van a [konfigurálása művelet csoportok használatával](monitoring-action-groups.md) egy vagy több műveletek elvégzéséhez.  Ez a cikk ismerteti a rendelkezésre álló különböző webhookműveletek és a részletek a egyéni JSON-alapú webhook konfigurálásával.
+Ha egy [riasztást hoz létre az Azure-ban ](monitor-alerts-unified-usage.md), lehetősége van a [konfigurálása művelet csoportok használatával](monitoring-action-groups.md) egy vagy több műveletek elvégzéséhez.  Ez a cikk ismerteti a rendelkezésre álló különböző webhookműveletek és a részletek a egyéni JSON-alapú webhook konfigurálásával.
 
 
 ## <a name="webhook-actions"></a>Webhookműveletek
@@ -33,7 +33,7 @@ Webhookműveletek megkövetelése a tulajdonságok a következő táblázatban:
 | Tulajdonság | Leírás |
 |:--- |:--- |
 | Webhook URL-CÍMÉT |A webhook URL-CÍMÉT. |
-| Egyéni JSON-adattartalmat |Riasztás létrehozása során ezt a lehetőséget választja, a webhook küldött egyéni hasznos. Rendelkezésre álló részletek [Azure figyelmeztetések (előzetes verzió) használatával riasztások kezelése](monitor-alerts-unified-usage.md) |
+| Egyéni JSON-adattartalmat |Riasztás létrehozása során ezt a lehetőséget választja, a webhook küldött egyéni hasznos. Rendelkezésre álló részletek [használata Azure riasztások-riasztások kezelése ](monitor-alerts-unified-usage.md) |
 
 > [!NOTE]
 > Tesztelje a Webhook gomb mellett *Include egyéni JSON-adattartalmat webhook* napló riasztási választás, akkor indul el, üres hívása teszteli a webhook URL-CÍMÉT. Tényleges adatokat és a jellemző a napló riasztások használt JSON-séma nem tartalmaz. 
@@ -157,6 +157,8 @@ Az alábbiakban látható egy minta hasznos szabványos webhook *egyéni Json-be
     }
     }
 
+> [!NOTE]
+> Az Application Insights riasztásainak naplózási jelenleg nyilvános előzetes - funkcióit és felhasználói élmény változhat.
 
 #### <a name="log-alert-with-custom-json-payload"></a>Egyéni JSON-adattartalmat napló riasztás
 Például egy egyéni adattartalom, amely tartalmazza a riasztás neve és a keresési eredmények létrehozásához használhatja a következő: 
@@ -194,7 +196,7 @@ Az alábbiakban látható egy minta hasznos bármely napló riasztás egyéni we
 
 
 ## <a name="next-steps"></a>További lépések
-- További tudnivalók [napló riasztásait az Azure-riasztások (előzetes verzió)](monitor-alerts-unified-log.md)
+- További tudnivalók [riasztások jelentkezzen be Azure riasztások ](monitor-alerts-unified-log.md)
 - Létrehozásához és kezeléséhez [művelet csoportok az Azure-ban](monitoring-action-groups.md)
 - További információ [Application insights szolgáltatással](../application-insights/app-insights-analytics.md)
 - További információ [Naplóelemzési](../log-analytics/log-analytics-overview.md). 

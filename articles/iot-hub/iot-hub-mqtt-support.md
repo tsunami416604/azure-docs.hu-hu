@@ -1,11 +1,11 @@
 ---
-title: "Azure IoT Hub MQTT támogatás ismertetése |} Microsoft Docs"
-description: "Fejlesztői útmutató - eszközök csatlakoztatása az IoT Hub eszköz felé néző végpont a MQTT protokollal támogatása. Az Azure IoT-eszközök SDK-k MQTT támogatja a beépített kapcsolatos adatokat tartalmaz."
+title: Azure IoT Hub MQTT támogatás ismertetése |} Microsoft Docs
+description: Fejlesztői útmutató - eszközök csatlakoztatása az IoT Hub eszköz felé néző végpont a MQTT protokollal támogatása. Az Azure IoT-eszközök SDK-k MQTT támogatja a beépített kapcsolatos adatokat tartalmaz.
 services: iot-hub
 documentationcenter: .net
 author: fsautomata
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 1d71c27c-b466-4a40-b95b-d6550cf85144
 ms.service: iot-hub
 ms.devlang: multiple
@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 03/05/2018
 ms.author: elioda
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9acda980583319414cc9e8668424907947a257db
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: d119cc4c4053a737e48739c17ae586abd51f3efa
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>Az IoT hub a MQTT protokoll segítségével kommunikálnak.
 
@@ -181,7 +181,7 @@ További információkért lásd: [fejlesztői útmutató üzenetküldési][lnk-
 
 Az eszköz nem fogadhat üzeneteket az IoT-központot, amíg sikeresen feliratkozott a eszközspecifikus végpontra, által képviselt a `devices/{device_id}/messages/devicebound/#` témakör szűrő. Előfizetés létrehozása után az eszköz megkaphatná a felhőből eszközre távozó üzeneteinek hozzá az előfizetés az időpont után. Ha az eszköz csatlakozik az **CleanSession** jelző beállítása **0**, az előfizetés megőrződjenek különböző munkamenetek között. Ebben az esetben, amikor az eszköz csatlakozik az **CleanSession 0** kap a leválasztott küldött függőben lévő üzeneteket. Ha az eszköz által használt **CleanSession** jelző beállítása **1** azonban azt nem bármely üzenetek fogadása az IoT-központ mindaddig, amíg az eszköz-végpont feliratkozva.
 
-Az IoT-központ lekéri az üzeneteket a **témakör** `devices/{device_id}/messages/devicebound/`, vagy `devices/{device_id}/messages/devicebound/{property_bag}` üzenettulajdonságok esetén. `{property_bag}` url-kódolású kulcs/érték párok az üzenet tulajdonságait tartalmazza. Csak alkalmazáshoz és a felhasználó állítható be rendszer tulajdonságai (például **messageId** vagy **correlationId**) a tulajdonságcsomag szerepelnek. Rendszer tulajdonságnevek előtaggal van ellátva  **$** , alkalmazástulajdonságok használja az eredeti tulajdonság nevét nincs előtagja.
+Az IoT-központ lekéri az üzeneteket a **témakör** `devices/{device_id}/messages/devicebound/`, vagy `devices/{device_id}/messages/devicebound/{property_bag}` üzenettulajdonságok esetén. `{property_bag}` url-kódolású kulcs/érték párok az üzenet tulajdonságait tartalmazza. Csak alkalmazáshoz és a felhasználó állítható be rendszer tulajdonságai (például **messageId** vagy **correlationId**) a tulajdonságcsomag szerepelnek. Rendszer tulajdonságnevek előtaggal van ellátva **$**, alkalmazástulajdonságok használja az eredeti tulajdonság nevét nincs előtagja.
 
 Ha egy eszköz alkalmazás előfizet egy témakör **QoS 2**, IoT-központ maximális QoS szintjének 1 biztosít a **SUBACK** csomagot. Ezt követően az IoT-központ kézbesíti üzenetek a QoS-1-eszközt.
 
@@ -300,7 +300,7 @@ Az IoT-központ képességeit további megismeréséhez lásd:
 [lnk-mqtt-docs]: http://mqtt.org/documentation
 [lnk-sample-node]: https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/simple_sample_device.js
 [lnk-sample-java]: https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-samples/send-receive-sample/src/main/java/samples/com/microsoft/azure/sdk/iot/SendReceive.java
-[lnk-sample-c]: https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples/iothub_client_sample_mqtt
+[lnk-sample-c]: https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples/iothub_client_sample_mqtt_dm
 [lnk-sample-csharp]: https://github.com/Azure/azure-iot-sdk-csharp/tree/master/device/samples
 [lnk-sample-python]: https://github.com/Azure/azure-iot-sdk-python/tree/master/device/samples
 [lnk-device-explorer]: https://github.com/Azure/azure-iot-sdk-csharp/blob/master/tools/DeviceExplorer

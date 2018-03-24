@@ -1,8 +1,8 @@
 ---
-title: "Az ASP.NET core Azure Linux webalkalmazások Application Insights Profilkészítő profil |} Microsoft Docs"
-description: "A koncepció áttekintése és a részletes útmutatót engedélyezheti a"
+title: Az ASP.NET core Azure Linux webalkalmazások Application Insights Profilkészítő profil |} Microsoft Docs
+description: A koncepció áttekintése és a részletes útmutatót engedélyezheti a
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.service: application-insights
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/23/2018
 ms.author: mbullwin
-ms.openlocfilehash: 2d7405baee84b53311f01e748ca7975147c107d8
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 63a7ceacffe1ee33227d3a8272dda7de7b3b1135
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="profile-aspnet-core-azure-linux-web-apps-with-application-insights-profiler"></a>Profil ASP.NET Core Azure Linux-webalkalmazásokban az Application Insights Profilkészítő
 
@@ -143,6 +143,18 @@ A következőhöz hasonló kimenetet fog látni:
 5. Nyissa meg az Application Insights teljesítmény ablaktáblán az Azure portálon. Szolgáltatásprofil-elemzői adat érhető el a jobb alsó sarokban jelenik meg.
 
     ![Nézetben nyomainak](./media/app-insights-profiler-aspnetcore-linux/view-traces.png)
+
+## <a name="known-issues"></a>Ismert problémák
+
+### <a name="enable-button-in-profiler-configuration-pane-does-not-work"></a>A Profilkészítő konfigurációs ablaktáblában nem működik gomb
+**Ha az App Services Linux használó alkalmazás működteti, nem kell újra engedélyezni Profilkészítő App Insights portálon találja meg teljesítmény paneljén. Beleértve a NuGet-csomagot a projekt és az App Insights beállítása iKey az alkalmazás beállításai megfelelőek Profilkészítő engedélyezése**.
+
+Ha követi a [App Insights Profilkészítő for Windows](./app-insights-profiler.md) engedélyezése a munkafolyamatot kattintson **engedélyezése** konfigurálása Profilkészítő ablaktáblában, hibaüzenetet kap, a gomb megpróbálja telepíteni a Windows-verzión Profilkészítő ügynök a Linux-környezeten.
+
+A engedélyezése élményt nyújt a probléma megoldásán dolgozunk.
+
+![Nem működik a Linux alkalmazásszolgáltatások Profilkészítő el újra a teljesítmény ablaktáblán a Profilkészítő engedélyezni kell](./media/app-insights-profiler-aspnetcore-linux/issue-enable-profiler.png)
+
 
 ## <a name="next-steps"></a>További lépések
 Ha egyéni tárolók alkalmazásszolgáltatások által üzemeltetett használ, kövesse az utasításokat a [ szolgáltatásprofil-elemzőben engedélyezése indexelése ASP.NET Core alkalmazás](https://github.com/Microsoft/ApplicationInsights-Profiler-AspNetCore/tree/master/examples/EnableServiceProfilerForContainerApp) App Insights Profilkészítő engedélyezése

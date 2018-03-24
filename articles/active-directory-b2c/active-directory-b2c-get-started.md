@@ -1,24 +1,21 @@
 ---
-title: "Azure Active Directory B2C-bérlő létrehozása |} Microsoft Docs"
-description: "Témakör: Azure Active Directory B2C-bérlő létrehozása"
+title: Azure Active Directory B2C-bérlő létrehozása |} Microsoft Docs
+description: 'Témakör: Azure Active Directory B2C-bérlő létrehozása'
 services: active-directory-b2c
-documentationcenter: 
-author: parakhj
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: patricka
-ms.assetid: eec4d418-453f-4755-8b30-5ed997841b56
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.devlang: na
 ms.date: 06/07/2017
-ms.author: parja
-ms.openlocfilehash: afca6cf8f19c9b96de292881582e27133e35f096
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: davidmu
+ms.openlocfilehash: 56e0ae7454e86911c894da88b5aa8ccc03a08af3
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="create-an-azure-active-directory-b2c-tenant-in-the-azure-portal"></a>Azure Active Directory B2C-bérlő létrehozása az Azure-portálon
 
@@ -57,7 +54,7 @@ Az Azure AD B2C-bérlő csatolása az Azure-előfizetés engedélyezése a B2C-f
 
 Emellett a blade megadásával `Azure AD B2C` a **keresési erőforrások** a portál felső. Az eredmények listájában válassza **az Azure AD B2C** a B2C beállítások panel eléréséhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [A B2C alkalmazás regisztrálása a B2C-bérlőben](active-directory-b2c-app-registration.md)

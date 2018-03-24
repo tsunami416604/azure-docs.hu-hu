@@ -1,12 +1,12 @@
 ---
-title: "Az Azure Media Services Streamvégponton áttekintése |} Microsoft Docs"
-description: "Ez a témakör áttekintést nyújt az Azure Media Services adatfolyam-végpontok."
+title: Az Azure Media Services Streamvégponton áttekintése |} Microsoft Docs
+description: Ez a témakör áttekintést nyújt az Azure Media Services adatfolyam-végpontok.
 services: media-services
-documentationcenter: 
+documentationcenter: ''
 author: Juliako
 writer: juliako
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 097ab5e5-24e1-4e8e-b112-be74172c2701
 ms.service: media-services
 ms.workload: media
@@ -15,15 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: juliako
-ms.openlocfilehash: 80d625a6ab2d3c6d5de0a90fbff0760888154d70
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: f923a2fb328ee62ce4dc73669fd922f275ba34a0
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="streaming-endpoints-overview"></a>Adatfolyam-továbbítási végpontok áttekintése 
 
-##<a name="overview"></a>Áttekintés
+## <a name="overview"></a>Áttekintés
 
 A Microsoft Azure Media Services (AMS), egy **Streamvégponton** egy adatfolyam-szolgáltatás által biztosított tartalom közvetlenül player ügyfélalkalmazást, vagy az a Content Delivery Network (CDN) későbbi terjesztés jelöli. A Media Services is biztosít az Azure CDN való zökkenőmentes integrációt. A kimenő adatfolyam egy StreamingEndpoint szolgáltatásból lehet élő stream, igény szerint, vagy az eszköz a Media Services-fiók a progresszív letöltés videó. Minden Azure Media Services-fiók egy alapértelmezett StreamingEndpoint tartalmazza. A fiók alatt további Streamvégpontok hozhatók létre. Streamvégpontok, 1.0-s és 2.0 két verziója van. 10 2017. január verziótól kezdődően az újonnan létrehozott AMS számlákat tartalmazza 2.0-s verziójának **alapértelmezett** StreamingEndpoint. Ehhez a fiókhoz hozzáadni kívánt további streamvégpontok is 2.0-s verziójában. Ez a változás nem befolyásolja a meglévő fiókokat; meglévő Streamvégpontok 1.0-s verziója és a 2.0-s verziójának frissítése. A módosítás nem lesznek viselkedés, a számlázásra és a szolgáltatás módosításokat (további információkért lásd: a **típusai és verziói** szakasz leírása az alábbiakban).
 
@@ -91,7 +91,7 @@ Ajánlott kihasználtsága |Az adatfolyam-forgatókönyvek többsége ajánlott.
 
 ## <a name="migration-between-types"></a>Áttelepítési típus között
 
-Feladó | Művelet | Műveletek
+Forrás | Művelet | Műveletek
 ---|---|---
 Klasszikus|Standard|Részt kell
 Klasszikus|Prémium| A skála (További adatfolyam-egységek)

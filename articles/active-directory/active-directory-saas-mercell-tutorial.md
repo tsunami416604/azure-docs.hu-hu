@@ -1,0 +1,236 @@
+---
+title: 'Oktatóanyag: Azure Active Directoryval integrált Mercell |} Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és Mercell között.
+services: active-directory
+documentationCenter: na
+author: jeevansd
+manager: femila
+ms.reviewer: joflore
+ms.assetid: bb94c288-2ed4-4683-acde-62474292df29
+ms.service: active-directory
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 03/16/2018
+ms.author: jeedes
+ms.openlocfilehash: 8d009e8bdf513b10198aac826236ff44376ed630
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 03/23/2018
+---
+# <a name="tutorial-azure-active-directory-integration-with-mercell"></a>Oktatóanyag: Azure Active Directoryval integrált Mercell
+
+Ebben az oktatóanyagban elsajátíthatja Mercell integrálása az Azure Active Directory (Azure AD).
+
+Mercell integrálása az Azure AD lehetővé teszi a következő előnyöket biztosítja:
+
+- Az Azure AD, aki hozzáfér Mercell szabályozhatja.
+- Engedélyezheti a felhasználóknak, hogy automatikusan beolvasása bejelentkezett Mercell (egyszeri bejelentkezés) számára a saját Azure AD-fiókok.
+- A fiók egyetlen központi helyen – az Azure-portálon kezelheti.
+
+Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](active-directory-appssoaccess-whatis.md).
+
+## <a name="prerequisites"></a>Előfeltételek
+
+Konfigurálása az Azure AD-integrációs Mercell, a következőkre van szükség:
+
+- Az Azure AD szolgáltatásra
+- Egy Mercell egyszeri bejelentkezés engedélyezve van az előfizetés
+
+> [!NOTE]
+> Ez az oktatóanyag lépéseit teszteléséhez nem ajánlott használata termelési környezetben.
+
+Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javaslatokat:
+
+- Ne használja az éles környezetben, nem szükséges.
+- Ha még nem rendelkezik az Azure AD próbaverziójának környezetben, akkor [egy hónapos próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/).
+
+## <a name="scenario-description"></a>Forgatókönyv leírása
+Ebben az oktatóanyagban tesztelése az Azure AD egyszeri bejelentkezéshez egy tesztkörnyezetben. Ebben az oktatóanyagban leírt forgatókönyv két fő építőelemeket áll:
+
+1. A gyűjteményből Mercell hozzáadása
+2. És tesztelés az Azure AD konfigurálása egyszeri bejelentkezés
+
+## <a name="adding-mercell-from-the-gallery"></a>A gyűjteményből Mercell hozzáadása
+Az Azure AD integrálása a Mercell konfigurálásához kell hozzáadnia Mercell a gyűjteményből a felügyelt SaaS-alkalmazások listájára.
+
+**A gyűjteményből Mercell hozzáadásához hajtsa végre az alábbi lépéseket:**
+
+1. Az a  **[Azure-portálon](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen **Azure Active Directory** ikonra. 
+
+    ![Az Azure Active Directory gomb][1]
+
+2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen **összes alkalmazás**.
+
+    ![A vállalati alkalmazások panel][2]
+    
+3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** párbeszédpanel tetején gombra.
+
+    ![Az új alkalmazás gomb][3]
+
+4. Írja be a keresőmezőbe, **Mercell**, jelölje be **Mercell** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+
+    ![Az eredménylistában Mercell](./media/active-directory-saas-mercell-tutorial/tutorial_mercell_addfromgallery.png)
+
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés tesztelése és konfigurálása
+
+Ebben a szakaszban, konfigurálás és tesztelés az Azure AD egyszeri bejelentkezéshez "Britta Simon" nevű tesztfelhasználó alapján Mercell.
+
+Az egyszeri bejelentkezés működéséhez az Azure AD meg kell tudja, hogy mi a párjukhoz felhasználó Mercell a felhasználó Azure AD-ben. Ez azt jelenti az Azure AD-felhasználó és a kapcsolódó felhasználó a Mercell közötti kapcsolat kapcsolatot kell létrehozni.
+
+Az Azure AD egyszeri bejelentkezést a Mercell tesztelése és konfigurálása, hogy végezze el a következő építőelemeket kell:
+
+1. **[Az Azure AD az egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – lehetővé teszi a felhasználók a szolgáltatás használatához.
+2. **[Hozzon létre egy Azure AD-teszt felhasználó](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezést a Britta Simon teszteléséhez.
+3. **[Mercell tesztfelhasználó létrehozása](#create-a-mercell-test-user)**  - való Britta Simon valami Mercell, amely csatolva van a felhasználó az Azure AD-ábrázolását.
+4. **[Rendelje hozzá az Azure AD-teszt felhasználó](#assign-the-azure-ad-test-user)**  - Britta Simon használata az Azure AD az egyszeri bejelentkezés engedélyezése.
+5. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+
+### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés konfigurálása
+
+Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure portálon, és konfigurálása egyszeri bejelentkezéshez az Mercell alkalmazásban.
+
+**Konfigurálása az Azure AD az egyszeri bejelentkezés Mercell, hajtsa végre az alábbi lépéseket:**
+
+1. Az Azure portálon a a **Mercell** alkalmazás integráció lapján, kattintson a **egyszeri bejelentkezés**.
+
+    ![Egyszeri bejelentkezés kapcsolat konfigurálása][4]
+
+2. Az a **egyszeri bejelentkezés** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezése.
+ 
+    ![Egyszeri bejelentkezés párbeszédpanel](./media/active-directory-saas-mercell-tutorial/tutorial_mercell_samlbase.png)
+
+3. Az a **Mercell tartomány és az URL-címek** területen tegye a következőket:
+
+    ![Az egyszeri bejelentkezés információk Mercell tartomány és az URL-címek](./media/active-directory-saas-mercell-tutorial/tutorial_mercell_url.png)
+
+    Az a **azonosító** szövegmező, írja be az URL-cím: `https://my.mercell.com/`
+ 
+4. Kattintson a **mentése** gombra.
+
+    ![Egyszeri bejelentkezés Mentés gombra konfigurálása](./media/active-directory-saas-mercell-tutorial/tutorial_general_400.png)
+
+5. Létrehozásához a **metaadatainak URL-CÍMÉT**, hajtsa végre a következő lépéseket:
+
+    a. Kattintson a **App regisztrációk**.
+    
+    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-mercell-tutorial/tutorial_mercell_appregistrations.png)
+   
+    b. Kattintson a **végpontok** megnyitásához **végpontok** párbeszédpanel megnyitásához.  
+    
+    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-mercell-tutorial/tutorial_mercell_endpointicon.png)
+
+    c. Kattintson a Másolás gombra másolása **ÖSSZEVONÁSI METAADAT-dokumentum** URL-címet, és illessze be a Jegyzettömbbe.
+    
+    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-mercell-tutorial/tutorial_mercell_endpoint.png)
+     
+    d. Most lépjen a tulajdonságlapján **Mercell** , és másolja a **alkalmazásazonosító** használatával **másolási** gombra, majd illessze be a Jegyzettömbbe.
+ 
+    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-mercell-tutorial/tutorial_mercell_appid.png)
+
+    e. Készítése a **metaadatainak URL-CÍMÉT** a következő minta használatával: `<FEDERATION METADATA DOCUMENT url>?appid=<application id>`
+
+6. Egyszeri bejelentkezés konfigurálása **Mercell** oldalon kell küldeniük a létrehozott **metaadatainak URL-CÍMÉT** való [Mercell támogatási csoport](mailto:webmaster@mercell.com). Akkor állítsa be ezt a beállítást, hogy a SAML SSO kapcsolat mindkét oldalán megfelelően beállítva.
+
+> [!TIP]
+> Ezek az utasítások belül tömör verziója most el tudja olvasni a [Azure-portálon](https://portal.azure.com), míg az alkalmazás beállításakor!  Ez az alkalmazás a hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentációja keresztül a **konfigurációs** szakasz alján. További Itt a embedded dokumentációjából szolgáltatásról: [az Azure AD beágyazott dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
+> 
+
+### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure AD-teszt felhasználó
+
+Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta Simon nevezik.
+
+   ![Hozzon létre egy Azure AD-teszt felhasználó][100]
+
+**Tesztfelhasználó létrehozása az Azure AD-ban, hajtsa végre az alábbi lépéseket:**
+
+1. Az Azure portálon a bal oldali ablaktáblán kattintson a **Azure Active Directory** gombra.
+
+    ![Az Azure Active Directory gomb](./media/active-directory-saas-mercell-tutorial/create_aaduser_01.png)
+
+2. Azon felhasználók listájának megtekintéséhez keresse fel **felhasználók és csoportok**, és kattintson a **minden felhasználó**.
+
+    ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](./media/active-directory-saas-mercell-tutorial/create_aaduser_02.png)
+
+3. Megnyitásához a **felhasználói** párbeszédpanel, kattintson a **Hozzáadás** tetején a **minden felhasználó** párbeszédpanel megnyitásához.
+
+    ![A Hozzáadás gombra.](./media/active-directory-saas-mercell-tutorial/create_aaduser_03.png)
+
+4. Az a **felhasználói** párbeszédpanelen hajtsa végre az alábbi lépéseket:
+
+    ![A felhasználó párbeszédpanel](./media/active-directory-saas-mercell-tutorial/create_aaduser_04.png)
+
+    a. Az a **neve** mezőbe írja be **BrittaSimon**.
+
+    b. Az a **felhasználónév** mezőbe írja be a felhasználó e-mail címe az Britta Simon.
+
+    c. Válassza ki a **megjelenítése jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
+
+    d. Kattintson a **Create** (Létrehozás) gombra.
+ 
+### <a name="create-a-mercell-test-user"></a>Mercell tesztfelhasználó létrehozása
+
+Ez a szakasz célja Mercell Britta Simon nevű felhasználót létrehozni. Mercell támogatja just-in-time kiosztást, amely alapértelmezés szerint van engedélyezve. Nincs ebben a szakaszban az Ön művelet elem. Új felhasználó jön létre az Mercell elérésére, ha még nem létezik tett kísérlet során.
+>[!Note]
+>Ha manuálisan hozzon létre egy felhasználó van szüksége, forduljon a [Mercell támogatási csoport](mailto:webmaster@mercell.com).
+
+### <a name="assign-the-azure-ad-test-user"></a>Rendelje hozzá az Azure AD-teszt felhasználó
+
+Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés Mercell Azure egyszeri bejelentkezéshez használandó.
+
+![A felhasználói szerepkör hozzárendelése][200] 
+
+**Britta Simon hozzárendelése Mercell, hajtsa végre az alábbi lépéseket:**
+
+1. Az Azure-portálon, nyissa meg az alkalmazások nézet, majd nyissa meg a könyvtár nézetet, és navigáljon **vállalati alkalmazások** kattintson **összes alkalmazás**.
+
+    ![Felhasználó hozzárendelése][201] 
+
+2. Az alkalmazások listában válassza ki a **Mercell**.
+
+    ![Az alkalmazások listáját a Mercell hivatkozás](./media/active-directory-saas-mercell-tutorial/tutorial_mercell_app.png)  
+
+3. A bal oldali menüben kattintson a **felhasználók és csoportok**.
+
+    ![A "Felhasználók és csoportok" hivatkozásra][202]
+
+4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzáadása hozzárendelés** párbeszédpanel.
+
+    ![A hozzárendelés hozzáadása panelen][203]
+
+5. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
+
+6. Kattintson a **válasszon** gombra **felhasználók és csoportok** párbeszédpanel.
+
+7. Kattintson a **hozzárendelése** gombra **hozzáadása hozzárendelés** párbeszédpanel.
+    
+### <a name="test-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
+
+Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen tesztelése.
+
+Ha a hozzáférési panelen Mercell csempére kattint, akkor kell beolvasása automatikusan bejelentkezett az Mercell alkalmazására.
+A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáférési Panel bemutatása](active-directory-saas-access-panel-introduction.md). 
+
+## <a name="additional-resources"></a>További források
+
+* [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](active-directory-saas-tutorial-list.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](active-directory-appssoaccess-whatis.md)
+
+
+
+<!--Image references-->
+
+[1]: ./media/active-directory-saas-mercell-tutorial/tutorial_general_01.png
+[2]: ./media/active-directory-saas-mercell-tutorial/tutorial_general_02.png
+[3]: ./media/active-directory-saas-mercell-tutorial/tutorial_general_03.png
+[4]: ./media/active-directory-saas-mercell-tutorial/tutorial_general_04.png
+
+[100]: ./media/active-directory-saas-mercell-tutorial/tutorial_general_100.png
+
+[200]: ./media/active-directory-saas-mercell-tutorial/tutorial_general_200.png
+[201]: ./media/active-directory-saas-mercell-tutorial/tutorial_general_201.png
+[202]: ./media/active-directory-saas-mercell-tutorial/tutorial_general_202.png
+[203]: ./media/active-directory-saas-mercell-tutorial/tutorial_general_203.png
+

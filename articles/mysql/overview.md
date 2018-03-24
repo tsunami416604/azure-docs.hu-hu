@@ -1,6 +1,6 @@
 ---
-title: "A MySQL adatbázis-szolgáltatás Azure-adatbázis – áttekintés"
-description: "Az Azure-adatbázishoz a MySQL adatbázis-szolgáltatás áttekintése."
+title: A MySQL adatbázis-szolgáltatás Azure-adatbázis – áttekintés
+description: Az Azure-adatbázishoz a MySQL adatbázis-szolgáltatás áttekintése.
 services: mysql
 author: ajlam
 ms.author: andrela
@@ -8,16 +8,16 @@ manager: kfile
 editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
-ms.date: 02/28/2018
+ms.date: 03/20/2018
 ms.custom: mvc
-ms.openlocfilehash: 82d96424569daf481e31ab04c08dcb5e63e58476
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 2689befc6a686d0ffc25d1fccbacb66cc6e10725
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="what-is-azure-database-for-mysql"></a>Mi az Azure-adatbázis a MySQL?
-Azure MySQL-adatbázis a Microsoft felhőalapú relációs adatbázis-szolgáltatás a [MySQL Community Edition](https://www.mysql.com/products/community/) adatbázismotor. Ez a szolgáltatás nyilvános előzetes verziója. Azure MySQL-adatbázis biztosítja:
+Azure MySQL-adatbázis a Microsoft felhőalapú relációs adatbázis-szolgáltatás a [MySQL Community Edition](https://www.mysql.com/products/community/) adatbázismotor. Azure MySQL-adatbázis biztosítja:
 
 - Beépített magas rendelkezésre állás további költség nélkül.
 - Kiszámítható teljesítmény, használatalapú díjszabással.
@@ -38,7 +38,7 @@ Több Azure CLI-mintát talál itt:
 - [Azure CLI-minták MySQL az Azure-adatbázis](sample-scripts-azure-cli.md)
 
 ## <a name="adjust-performance-and-scale-within-seconds"></a>Teljesítmény módosítása és skálázása másodperceken belül
-A kép, az Azure-adatbázishoz a MySQL-szolgáltatás nyújt többféle szolgáltatáscsomagban kapható: alapvető, általános célú és Memóriaoptimalizált. Az egyes szintek különböző teljesítményt és képességeket kínálnak, így különböző adatbázis-tevékenységprofilokat képesek támogatni, a könnyűtől a nehéz számítási feladatokig. Havi pár dollárért létrehozhatja első, kisméretű adatbázis-alkalmazását, majd később a megoldása szükségletei alapján módosíthatja a méretet. A dinamikus méretezhetőség révén az adatbázis átlátható módon reagál a gyorsan változó erőforrásigényekre. Csak azokért az erőforrásokért kell fizetnie, amelyekre szüksége van, és csak akkor, amikor szüksége van rájuk. A részleteket a [tarifacsomagok](concepts-service-tiers.md) leírása tartalmazza.
+Az Azure-adatbázishoz a MySQL-szolgáltatás többféle szolgáltatáscsomagban kapható kínál: alapvető, általános célú és Memóriaoptimalizált. Az egyes szintek különböző teljesítményt és képességeket kínálnak, így különböző adatbázis-tevékenységprofilokat képesek támogatni, a könnyűtől a nehéz számítási feladatokig. Havi pár dollárért létrehozhatja első, kisméretű adatbázis-alkalmazását, majd később a megoldása szükségletei alapján módosíthatja a méretet. A dinamikus méretezhetőség révén az adatbázis átlátható módon reagál a gyorsan változó erőforrásigényekre. Csak azokért az erőforrásokért kell fizetnie, amelyekre szüksége van, és csak akkor, amikor szüksége van rájuk. A részleteket a [tarifacsomagok](concepts-service-tiers.md) leírása tartalmazza.
 
 ## <a name="monitoring-and-alerting"></a>Figyelés és riasztás
 Hogyan lehet megállapítani, hogy mikor van szükség fel- és leskálázásra? A beépített teljesítmény figyelési és riasztási szolgáltatásokat, a teljesítmény értékelések alapján vCores együtt használja. Ezen eszközök segítségével gyorsan felmérheti a méretezési vCores hatását felfelé vagy lefelé a jelenlegi vagy tervezett teljesítmény igények alapján. A részleteket a [riasztások](howto-alert-on-metric.md) leírása tartalmazza.

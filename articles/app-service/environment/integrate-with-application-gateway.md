@@ -1,6 +1,6 @@
 ---
-title: "A ILB App Service Environment-környezet integrálható a meglévő Alkalmazásátjáró"
-description: "Az Alkalmazásátjáró a ILB App Service Environment-környezet az alkalmazások integrálása forgatókönyv"
+title: A ILB App Service Environment-környezet integrálható a meglévő Alkalmazásátjáró
+description: Az Alkalmazásátjáró a ILB App Service Environment-környezet az alkalmazások integrálása forgatókönyv
 services: app-service
 documentationcenter: na
 author: ccompy
@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2017
 ms.author: ccompy
-ms.openlocfilehash: d56eab79c3b3f6b37dc39d8e4bea0d5b7759631a
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: c64b686d7a9016b3834096ebc88179db8972098f
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="integrate-your-ilb-app-service-environment-with-an-application-gateway"></a>A ILB App Service Environment-környezet integrálható a meglévő Alkalmazásátjáró #
 
-A [App Service-környezet PowerApps](./intro.md) az alhálózat egy ügyfél az Azure virtuális hálózat az Azure App Service üzemelő példány. Központilag telepíthető egy nyilvános vagy privát végponttal az alkalmazás eléréséhez. A központi telepítés az App Service Environment-környezet egy titkos végponttal (Ez azt jelenti, hogy a belső terheléselosztók) ILB App Service-környezetek nevezik.  
+A [App Service Environment-környezet](./intro.md) az alhálózat egy ügyfél az Azure virtuális hálózat az Azure App Service üzemelő példány. Központilag telepíthető egy nyilvános vagy privát végponttal az alkalmazás eléréséhez. A központi telepítés az App Service Environment-környezet egy titkos végponttal (Ez azt jelenti, hogy a belső terheléselosztók) ILB App Service-környezetek nevezik.  
 
 Az Azure Application Gateway egy virtuális készüléket, amely 7 réteg terheléselosztás, SSL-feladatkiszervezést és a webes alkalmazás tűzfalat (waf-ot). Ez a figyelheti egy nyilvános IP-cím- és útvonal forgalom az alkalmazás végpontjának. 
 

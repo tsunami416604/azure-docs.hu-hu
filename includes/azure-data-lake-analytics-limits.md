@@ -3,6 +3,6 @@ A Data Lake Analytics leegyszerűsíti az elosztott infrastruktúra és az össz
 | **Erőforrás** | **Alapértelmezett korlát** | **Megjegyzések** |
 | --- | --- | --- |
 | Egyidejű feladatok maximális száma |20 | |
-| Fiókonként (ausztráliai) Analytics egységek maximális száma |250 | Legfeljebb 250 együtt is használhatók ausztráliai 20 feladatok között. |
+| Fiókonként (ausztráliai) Analytics egységek maximális száma |250 | Legfeljebb 250 együtt is használhatók ausztráliai 20 feladatok között.  Ez a korlát növeléséhez a Microsoft támogatási szolgálatához. |
 | A feladat elküldése parancsfájl maximális mérete | 3 MB | |
-
+| Régiónként ADLA fiókok maximális száma | 5 | Ez a korlát növeléséhez a Microsoft támogatási szolgálatához. |

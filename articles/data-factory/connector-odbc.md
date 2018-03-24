@@ -1,11 +1,11 @@
 ---
-title: "Adatok másolása az Azure Data Factory használatával ODBC adatforrások |} Microsoft Docs"
-description: "Ismerje meg az adatok másolása az OData forrásból származó támogatott fogadó adattárolókhoz egy Azure Data Factory-folyamat a másolási tevékenység használatával."
+title: Adatok másolása az Azure Data Factory használatával ODBC adatforrások |} Microsoft Docs
+description: Ismerje meg az adatok másolása az OData forrásból származó támogatott fogadó adattárolókhoz egy Azure Data Factory-folyamat a másolási tevékenység használatával.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: spelluru
+manager: craigg
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: ab29338b5ce2090166e75f3860744562aa9f6b01
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 8b8a200fb7234feeac8679b657c8d4be6ee8b748
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="copy-data-from-and-to-odbc-data-stores-using-azure-data-factory"></a>Adatok másolása az és ODBC adattárolókhoz Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -59,7 +59,7 @@ ODBC kapcsolódó szolgáltatás támogatott a következő tulajdonságokkal:
 | authenticationType | Az ODBC-adattár eléréséhez használt hitelesítés típusa.<br/>Két érték engedélyezett: **alapvető** és **névtelen**. | Igen |
 | Felhasználónév | Ha egyszerű hitelesítést használ, adja meg a felhasználónevet. | Nem |
 | jelszó | Adja meg a felhasználónévhez megadott felhasználói fiók jelszavát. Ez a mező megjelölése a SecureString tárolja biztonságos helyen, a Data factoryban vagy [hivatkozik az Azure Key Vault tárolt titkos kulcs](store-credentials-in-key-vault.md). | Nem |
-| hitelesítő adatok | A hozzáférési hitelesítő adatok része illesztőprogram-specifikus tulajdonság-érték formátumban megadott kapcsolódási karakterlánc. Példa: `"RefreshToken=<secret refresh token>;"`. Ez a mező megjelölése a SecureString. | Nem |
+| hitelesítő adat | A hozzáférési hitelesítő adatok része illesztőprogram-specifikus tulajdonság-érték formátumban megadott kapcsolódási karakterlánc. Példa: `"RefreshToken=<secret refresh token>;"`. Ez a mező megjelölése a SecureString. | Nem |
 | connectVia | A [integrációs futásidejű](concepts-integration-runtime.md) csatlakozni az adattárolóhoz használandó. Egy Self-hosted integrációs futásidejű szükség, ahogyan az [Előfeltételek](#prerequisites). |Igen |
 
 **1. példa: egyszerű hitelesítést használ.**

@@ -1,3 +1,19 @@
+---
+title: fájl belefoglalása
+description: fájl belefoglalása
+services: data-factory
+author: linda33wj
+ms.service: data-factory
+ms.topic: include
+ms.date: 03/19/2018
+ms.author: jingwang
+ms.custom: include file
+ms.openlocfilehash: 4a47b30b30e15bbd3df4f70b2a6f63b4ab167aea
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 03/23/2018
+---
 | Kategória | Adattár | Forrásként támogatott | Fogadóként támogatott | Az [Azure IR](../articles/data-factory/concepts-integration-runtime.md#azure-integration-runtime) által támogatott | [Saját üzemeltetésű IR](../articles/data-factory/concepts-integration-runtime.md#self-hosted-integration-runtime) által támogatott |
 |:--- |:--- |:--- |:--- |:--- |:--- |
 | **Azure** |[Azure Blob Storage](../articles/data-factory/connector-azure-blob-storage.md) |✓ |✓ |✓ |✓  |
@@ -46,6 +62,7 @@
 | &nbsp; |[Általános OData](../articles/data-factory/connector-odata.md) |✓ | |✓ |✓  |
 | &nbsp; |[Általános ODBC](../articles/data-factory/connector-odbc.md) |✓ |✓ | |✓  |
 | **Szolgáltatások és alkalmazások** |[Amazon piactér webszolgáltatás (béta)](../articles/data-factory/connector-amazon-marketplace-web-service.md) |✓ | |✓ |✓  |
+| &nbsp; |[Az alkalmazások közös adatszolgáltatás](../articles/data-factory/connector-dynamics-crm-office-365.md) |✓ |✓ |✓ |✓  |
 | &nbsp; |[Egyetért (béta)](../articles/data-factory/connector-concur.md) |✓ | |✓ |✓  |
 | &nbsp; |[Dynamics 365](../articles/data-factory/connector-dynamics-crm-office-365.md) |✓ |✓ |✓ |✓  |
 | &nbsp; |[Dynamics CRM](../articles/data-factory/connector-dynamics-crm-office-365.md) |✓ |✓ |✓ |✓  |

@@ -1,18 +1,18 @@
 ---
-title: "Azure Import/Export használatával történő adatátvitelhez számára és Azure Storage-ból |} Microsoft Docs"
-description: "Megtudhatja, hogyan importálási létrehozni és exportálni a feladatokat az adatoknak az Azure Storage érkező vagy oda irányuló az Azure portálon."
+title: Azure Import/Export használatával történő adatátvitelhez számára és Azure Storage-ból |} Microsoft Docs
+description: Megtudhatja, hogyan importálási létrehozni és exportálni a feladatokat az adatoknak az Azure Storage érkező vagy oda irányuló az Azure portálon.
 author: muralikk
 manager: syadav
 services: storage
 ms.service: storage
 ms.topic: article
-ms.date: 02/28/2018
+ms.date: 03/22/2018
 ms.author: muralikk
-ms.openlocfilehash: d096d6fd4664fecc9c759d683ed79e76cda9b6af
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: cc36fdde962ec44d679dc0e96f440b0437a84fa8
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="use-the-microsoft-azure-importexport-service-to-transfer-data-to-azure-storage"></a>Az adatok átviteléhez az Azure Storage a Microsoft Azure Import/Export szolgáltatás használata
 Ebben a cikkben azt részletes útmutatást nyújtanak az Azure Import/Export szolgáltatás használatával biztonságos átvitelére a nagy mennyiségű adatok Azure Blob storage és Azure fájlok által az Azure adatközpontba szállítási lemezmeghajtókat. Ez a szolgáltatás adatok átviteléhez az Azure storage merevlemez-meghajtók és a helyszíni helyek szállítás is használható. A SATA egyetlen lemezmeghajtó adatait vagy Azure Blob storage-vagy Azure fájlok importálhatók. 
@@ -151,7 +151,7 @@ Az exportálási feladatok a meghajtók, az adatok másolását követően a szo
 ### <a name="operating-system"></a>Operációs rendszer
 A merevlemez-meghajtót a meghajtó az Azure-ba, mielőtt a WAImportExport eszközzel készítse elő a következő 64 bites operációs rendszerek egyikét használhatja:
 
-Windows 7 Enterprise, Windows 7 Ultimate, Windows 8 Pro, Windows 8 Enterprise, Windows 8.1 Pro, Windows 8.1 Enterprise, Windows 10<sup>1</sup>, Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2 rendszerben. Mindegyik említett operációs rendszerektől támogatja, a BitLocker meghajtótitkosítás.
+Windows 7 Enterprise, Windows 7 Ultimate, Windows 8 Pro, Windows 8 Enterprise, Windows 8.1 Pro, Windows 8.1 Enterprise, Windows 10, Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2-ben. Mindegyik említett operációs rendszerektől támogatja, a BitLocker meghajtótitkosítás.
 
 ### <a name="locations"></a>Helyek
 Az Azure Import/Export szolgáltatás támogatja az adatok másolását, és az összes nyilvános Azure storage-fiók. A felsorolt helyek valamelyikén merevlemez-meghajtók elküldhet. Ha a tárfiók egy nyilvános Azure helyre, amely nincs megadva itt, egy másik szállítási helyre lesz kell megadni, ha a feladatot az Azure-portálon vagy az Import/Export REST API használatával hoz létre.

@@ -1,24 +1,21 @@
 ---
-title: "Az Azure Active Directory B2C: A felügyeleti fenyegetés |} Microsoft Docs"
-description: "További információk a észlelés és javaslat technikák-szolgáltatásmegtagadási támadások és az Azure Active Directory B2C jelszó támadásokat."
+title: 'Az Azure Active Directory B2C: A felügyeleti fenyegetés |} Microsoft Docs'
+description: További információk a észlelés és javaslat technikák-szolgáltatásmegtagadási támadások és az Azure Active Directory B2C jelszó támadásokat.
 services: active-directory-b2c
-documentationcenter: 
-author: vigunase
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: 
-ms.assetid: 6df79878-65cb-4dfc-98bb-2b328055bc2e
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 03/27/2016
-ms.author: 
-ms.openlocfilehash: a88a04dcc83482813b8ada0e7dbff985e9f49aba
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: davidmu
+ms.openlocfilehash: 5ab699b0dccd772ec905699d94dedaca0eefcdad
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-active-directory-b2c-threat-management"></a>Az Azure Active Directory B2C: A fenyegetés kezelése
 

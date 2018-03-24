@@ -1,6 +1,6 @@
 ---
-title: "Az Azure Storage adatreplikáció |} Microsoft Docs"
-description: "A Microsoft Azure Storage-fiók adatait a tartósság és magas rendelkezésre állású replikálja a rendszer. Replikációs beállítások közé tartozik a helyileg redundáns tárolás (LRS), a zónaredundáns tárolás (ZRS), a georedundáns tárolás (GRS) és az írásvédett georedundáns tárolás (RA-GRS)."
+title: Az Azure Storage adatreplikáció |} Microsoft Docs
+description: A Microsoft Azure Storage-fiók adatait a tartósság és magas rendelkezésre állású replikálja a rendszer. Replikációs beállítások közé tartozik a helyileg redundáns tárolás (LRS), a zónaredundáns tárolás (ZRS), a georedundáns tárolás (GRS) és az írásvédett georedundáns tárolás (RA-GRS).
 services: storage
 author: tamram
 manager: jeconnoc
@@ -9,11 +9,11 @@ ms.workload: storage
 ms.topic: article
 ms.date: 01/21/2018
 ms.author: tamram
-ms.openlocfilehash: 18d0e8bc6cc1559f9ae1a1a4457aa85d2a206597
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 600b66af3b7da24c5a40d09d5cdf76f2d5be67ac
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-storage-replication"></a>Azure Storage replication (Azure Storage replikáció)
 
@@ -30,7 +30,7 @@ Tárfiók létrehozásakor választhat a következő replikációs lehetőségek
 * [Georedundáns tárolás (GRS)](#geo-redundant-storage)
 * [Írásvédett georedundáns tárolás (RA-GRS)](#read-access-geo-redundant-storage)
 
-Írásvédett georedundáns tárolás (RA-GRS) beállítás az alapértelmezett tárfiók létrehozásakor.
+Helyileg redundáns tárolás (LRS) beállítás az alapértelmezett tárfiók létrehozásakor.
 
 Az alábbi táblázat egy gyors áttekintést nyújt az LRS, a zrs-t, a GRS és az RA-GRS közötti különbségeket. A cikk későbbi szakaszaiban részletesebben replikációs különböző típusú cím.
 
@@ -54,9 +54,9 @@ Lásd: [Azure Storage szolgáltatás díjszabása](https://azure.microsoft.com/p
 
 ### <a name="zrs-classic-accounts"></a>A ZRS klasszikus fiókok
 
-A meglévő ZRS funkció most nevezzük ZRS klasszikus. A ZRS klasszikus fiókok csak a V1 általános célú tárfiókok a blokkblobokhoz érhetők el. 
+A meglévő ZRS funkció most nevezzük ZRS klasszikus. A klasszikus ZRS-fiókok csak blokkblobokhoz érhetők el az általános célú v1-tárfiókok esetén. 
 
-A ZRS klasszikus replikálja az adatokat aszinkron módon egy-két régiókban üzemeltetésében. A replika nem lehet elérhető, kivéve, ha a Microsoft kezdeményezi a másodlagos. 
+A klasszikus ZRS az adatokat aszinkron módon replikálja egy vagy két régió adatközpontjaiba. Lehetséges, hogy a replika nem lesz elérhető, hacsak a Microsoft nem kezdeményezi a másodlagos példány feladatátvételét. 
 
 A ZRS klasszikus fiókokat nem lehet konvertálni, vagy a LRS, grs-re vagy RA-GRS. A ZRS klasszikus fiókok is nem támogatják az metrikákat és naplózási.   
 
@@ -148,5 +148,5 @@ Amikor az első zónára leáll, a zrs-t továbbra is replikákat az adatok ír�
 * [Az Azure Storage szolgáltatás díjszabása](https://azure.microsoft.com/pricing/details/storage/)
 * [Az Azure storage-fiókokról](../storage-create-storage-account.md)
 * [Az Azure Storage méretezhetőségi és Teljesítménycélok](storage-scalability-targets.md)
-* [A Microsoft Azure tárolás redundancia beállítások és olvasási hozzáférést földrajzi redundáns tárolás](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/11/introducing-read-access-geo-replicated-storage-ra-grs-for-windows-azure-storage.aspx)
+* [A Microsoft Azure tárolás redundancia beállítások és olvasási hozzáférést földrajzi redundáns tárolás ](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/11/introducing-read-access-geo-replicated-storage-ra-grs-for-windows-azure-storage.aspx)
 * [SOSP Paper - Azure Storage: Egy magas rendelkezésre állású felhőalapú tárolási szolgáltatásba erős konzisztencia](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)

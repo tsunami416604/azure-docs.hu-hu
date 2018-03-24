@@ -1,6 +1,6 @@
 ---
 title: Azure Automation runbookjai gyermek
-description: "Az Azure Automationben runbook indítása másik runbookból és a közöttük információk megosztása a különböző módszereket írja le."
+description: Az Azure Automationben runbook indítása másik runbookból és a közöttük információk megosztása a különböző módszereket írja le.
 services: automation
 ms.service: automation
 author: georgewallace
@@ -8,13 +8,11 @@ ms.author: gwallace
 ms.date: 03/15/2018
 ms.topic: article
 manager: carmonm
-ms.devlang: na
-ms.tgt_pltfrm: na
-ms.openlocfilehash: e8fe3b0023d2cdb9061b5a2c15c3b2c7095c128e
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 587a6badd57aad839b4b03ca9da1b62d97b38f82
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="child-runbooks-in-azure-automation"></a>Azure Automation runbookjai gyermek
 Az Azure Automationben egy más runbookok által használható önálló funkcióval újrafelhasználható, moduláris runbookok írása a legjobb. Gyakran a szülő runbook fel fogja hívni egy vagy több gyermek runbook végrehajtani a kért funkciót. A gyermek runbook hívásához két módja van, és mindegyik rendelkezik-e különböző módszer közötti különbségeket tisztában kell lennie, hogy megállapíthassa, amely a különböző forgatókönyvek esetén ajánlott lesz.

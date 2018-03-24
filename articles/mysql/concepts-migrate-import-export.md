@@ -1,6 +1,6 @@
 ---
-title: "A MySQL az Azure-adatbázis exportálására és importálásra"
-description: "Ez a cikk ismerteti a leggyakoribb importálása és exportálása az Azure Database adatbázisok MySQL, az eszközöket, például a MySQL munkaterület használatával."
+title: A MySQL az Azure-adatbázis exportálására és importálásra
+description: Ez a cikk ismerteti a leggyakoribb importálása és exportálása az Azure Database adatbázisok MySQL, az eszközöket, például a MySQL munkaterület használatával.
 services: mysql
 author: ajlam
 ms.author: andrela
@@ -8,12 +8,12 @@ manager: kfile
 editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
-ms.date: 02/28/2018
-ms.openlocfilehash: f15811cd44e405ee33d9ba3d565c2982e71a80c0
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.date: 03/20/2018
+ms.openlocfilehash: 74b8c6afc5167225414f467f76f08c0e53bbade5
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="migrate-your-mysql-database-by-using-import-and-export"></a>A MySQL-adatbázis áttelepítéséhez importálása és exportálása
 Ez a cikk azt ismerteti, két gyakori módszer az adatok importálása és exportálása a MySQL-kiszolgáló Azure adatbázisba MySQL munkaterület használatával. 
@@ -33,9 +33,9 @@ Nem kell áthelyezni az importálás és exportfájlok különleges felhő bárh
 ## <a name="create-a-database-on-the-azure-database-for-mysql-server"></a>A MySQL-kiszolgálóhoz tartozó Azure-adatbázis egy adatbázis létrehozásához.
 Üres adatbázist létrehozni az Azure-adatbázisban MySQL kiszolgálók az adatok áttelepítéséhez. Például a MySQL-munkaterületet, varangy vagy Navicat eszköz segítségével hozza létre az adatbázist. Az adatbázis neve megegyezik a dömpingelt adatokat tartalmazó adatbázis is rendelkezik, vagy létrehozhat egy adatbázist egy eltérő nevű.
 
-Kapcsolat létesítése, keresse meg a kapcsolati adatokat a **tulajdonságok** MySQL az Azure-adatbázis paneljén.
+A csatlakozás, keresse meg a kapcsolati információit a **áttekintése** a MySQL az Azure-adatbázis.
 
-![A kapcsolati adatok az Azure portálon található](./media/concepts-migrate-import-export/1_server-properties-name-login.png)
+![A kapcsolati adatok az Azure portálon található](./media/concepts-migrate-import-export/1_server-overview-name-login.png)
 
 A kapcsolati adatok hozzáadása a MySQL-munkaterületet.
 

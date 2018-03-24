@@ -1,11 +1,10 @@
 ---
-title: "U-SQL parancsfájl - Azure használatával adatok átalakítása |} Microsoft Docs"
-description: "Ismerje meg, hogyan kell feldolgozni vagy átalakítási adatok számítási szolgáltatás Azure Data Lake Analytics U-SQL-parancsfájlok futtatásával."
+title: U-SQL parancsfájl - Azure használatával adatok átalakítása |} Microsoft Docs
+description: Ismerje meg, hogyan kell feldolgozni vagy átalakítási adatok számítási szolgáltatás Azure Data Lake Analytics U-SQL-parancsfájlok futtatásával.
 services: data-factory
-documentationcenter: 
-author: spelluru
-manager: jhubbard
-editor: monicar
+documentationcenter: ''
+author: douglaslMS
+manager: craigg
 ms.assetid: e17c1255-62c2-4e2e-bb60-d25274903e80
 ms.service: data-factory
 ms.workload: data-services
@@ -13,13 +12,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/01/2017
-ms.author: spelluru
+ms.author: douglasl
 robots: noindex
-ms.openlocfilehash: ff91a3da978fd027605b3674eae14d1d74b309cd
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 7861a3380ee330241f0c735ee6c5ed84f121e512
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>Adatok átalakítása Azure Data Lake Analytics U-SQL-parancsfájlok futtatásával 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -42,18 +41,18 @@ U-SQL-tevékenység alábbi Data Lake Analytics elleni hitelesítési típust t�
 
 Azt javasoljuk, hogy használja-e szolgáltatás egyszerű hitelesítést, különösen a egy ütemezett U-SQL-végrehajtást. Jogkivonat lejáratáról fordulhat elő a felhasználói hitelesítő adatok hitelesítéssel. További konfigurációs információkért lásd: a [szolgáltatástulajdonságok kapcsolódó](#azure-data-lake-analytics-linked-service) szakasz.
 
-## <a name="azure-data-lake-analytics-linked-service"></a>Az Azure Data Lake Analytics társított szolgáltatás
+## <a name="azure-data-lake-analytics-linked-service"></a>Azure Data Lake Analytics Linked Service
 Létrehozhat egy **Azure Data Lake Analytics** társított szolgáltatás az Azure Data Lake Analytics csatolásához számítási egy az Azure data factory szolgáltatást. A Data Lake Analytics U-SQL-tevékenység a feldolgozási szolgáltatásnak hivatkozik. 
 
 A következő táblázat ismerteti a JSON-definícióból használt általános tulajdonságok. További választhat egyszerű szolgáltatásnév és felhasználói hitelesítő adatok hitelesítése.
 
 | Tulajdonság | Leírás | Szükséges |
 | --- | --- | --- |
-| **típusa** |A type tulajdonságot kell megadni: **AzureDataLakeAnalytics**. |Igen |
+| **Típusa** |A type tulajdonságot kell megadni: **AzureDataLakeAnalytics**. |Igen |
 | **Fióknév** |Az Azure Data Lake Analytics-fiók neve. |Igen |
-| **datalakeanalyticsuri paraméter** |Az Azure Data Lake Analytics URI. |Nem |
-| **előfizetés-azonosító** |Az Azure előfizetés-azonosító |Nem (Ha nincs megadva, a data factory-előfizetése szerepel). |
-| **erőforráscsoport-név** |Azure erőforráscsoport-név |Nem (Ha nincs megadva, az adat-előállító erőforráscsoport szerepel). |
+| **dataLakeAnalyticsUri** |Az Azure Data Lake Analytics URI. |Nem |
+| **subscriptionId** |Az Azure előfizetés-azonosító |Nem (Ha nincs megadva, a data factory-előfizetése szerepel). |
+| **resourceGroupName** |Azure erőforráscsoport-név |Nem (Ha nincs megadva, az adat-előállító erőforráscsoport szerepel). |
 
 ### <a name="service-principal-authentication-recommended"></a>Szolgáltatás egyszerű hitelesítés (ajánlott)
 Szolgáltatás egyszerű hitelesítést használ, egy alkalmazás entitás regisztrálni kell az Azure Active Directory (Azure AD), és hozzáférést, a Data Lake Store-bA. Részletes útmutató: [szolgáltatások közötti hitelesítési](../../data-lake-store/data-lake-store-authenticate-using-active-directory.md). Jegyezze fel a következő érték, melynek segítségével határozza meg a társított szolgáltatás:
@@ -93,8 +92,8 @@ Alternatív megoldásként használható felhasználói hitelesítő Data Lake A
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| **engedélyezési** | Kattintson a **engedélyezés** a Data Factory Editor gombra, és adja meg a hitelesítő adatok, amelyek az automatikusan létrehozott engedélyezési URL-címet rendel hozzá ehhez a tulajdonsághoz. | Igen |
-| **munkamenet-azonosító** | OAuth munkamenet-azonosító az OAuth hitelesítési munkamenetből. Minden munkamenet-azonosító egyedi, és csak egyszer használható. Ez a beállítás automatikusan jön létre, a Data Factory Editor használatakor. | Igen |
+| **authorization** | Kattintson a **engedélyezés** a Data Factory Editor gombra, és adja meg a hitelesítő adatok, amelyek az automatikusan létrehozott engedélyezési URL-címet rendel hozzá ehhez a tulajdonsághoz. | Igen |
+| **sessionId** | OAuth munkamenet-azonosító az OAuth hitelesítési munkamenetből. Minden munkamenet-azonosító egyedi, és csak egyszer használható. Ez a beállítás automatikusan jön létre, a Data Factory Editor használatakor. | Igen |
 
 **Példa: Felhasználók hitelesítő adatok hitelesítése**
 ```json
@@ -115,7 +114,7 @@ Alternatív megoldásként használható felhasználói hitelesítő Data Lake A
 ```
 
 #### <a name="token-expiration"></a>Jogkivonat lejáratáról
-Az engedélyezési kód használatával előállított a **engedélyezés** gomb némi várakozás után lejár. Lásd az alábbi táblázatban a különböző típusú felhasználói fiókokat a lejárati idejét. Jelenhetnek meg a következő hiba jelenik meg, ha a hitelesítési **-token érvényessége lejár**: hitelesítőadat-műveleti hiba: invalid_grant - AADSTS70002: Hiba történt a hitelesítő adatok ellenőrzése. AADSTS70008: A megadott hozzáférés biztosítása lejárt vagy visszavonták. Nyomkövetési azonosító: d18629e8-af88-43c5-88e3-d8419eb1fca1 Korrelációazonosító: fac30a0c-6be6-4e02-8d69-a776d2ffefd7 időbélyegző: 2015-12-15 21:09:31Z
+Az engedélyezési kód használatával előállított a **engedélyezés** gomb némi várakozás után lejár. Lásd az alábbi táblázatban a különböző típusú felhasználói fiókokat a lejárati idejét. Jelenhetnek meg a következő hiba jelenik meg, ha a hitelesítési **-token érvényessége lejár**: hitelesítőadat-műveleti hiba: invalid_grant - AADSTS70002: Hiba történt a hitelesítő adatok ellenőrzése. AADSTS70008: A megadott hozzáférés biztosítása lejárt vagy visszavonták. Trace ID: d18629e8-af88-43c5-88e3-d8419eb1fca1 Correlation ID: fac30a0c-6be6-4e02-8d69-a776d2ffefd7 Timestamp: 2015-12-15 21:09:31Z
 
 | Felhasználó típusa | Után lejár |
 |:--- |:--- |
@@ -215,7 +214,7 @@ A következő táblázat ismerteti a neveket és leírásokat erre a tevékenys�
 | scriptLinkedService | Kapcsolódó szolgáltatás, amely a tárolóban, amely tartalmazza az adat-előállító parancsfájl | Nem (Ha a parancsfájl használata)                   |
 | Parancsfájl              | Adja meg a beágyazott parancsfájlja scriptPath és a scriptLinkedService megadása helyett. Például: `"script": "CREATE DATABASE test"`. | Nem (Ha a ScriptPath tulajdonságot is és a scriptLinkedService használ) |
 | degreeOfParallelism | A feladat futtatásához egyidejűleg használt csomópontok maximális száma. | Nem                                       |
-| Prioritás            | Azt határozza meg, melyet futtatni kíván szereplő várólistáján szereplő feladatok közül melyeket. Az alacsonyabb a szám, annál magasabb a prioritás. | Nem                                       |
+| prioritás            | Azt határozza meg, melyet futtatni kíván szereplő várólistáján szereplő feladatok közül melyeket. Az alacsonyabb a szám, annál magasabb a prioritás. | Nem                                       |
 | paraméterek          | A U-SQL parancsfájl paraméterek          | Nem                                       |
 | runtimeVersion      | A U-SQL motort használja futásidejű verzióját | Nem                                       |
 | compilationMode     | <p>Fordítási mód az U-SQL. A következő értékek egyike lehet:</p> <ul><li>**Szemantikus:** csak a szemantikai ellenőrzések és a szükséges megerősítések végrehajtani.</li><li>**Teljes:** hajtsa végre a teljes fordítási, beleértve a szintaxis-ellenőrzés, optimalizálás, kódgenerálás, stb.</li><li>**SingleBox:** hajtsa végre a teljes fordítási SingleBox való a TargetType beállítással.</li></ul><p>Ez a tulajdonság értékét nem adja meg, ha a kiszolgáló meghatározza a optimális fordítás módja. </p> | Nem                                       |
@@ -289,7 +288,7 @@ Ez a minta Azure Data Lake Store társított szolgáltatás által a bemeneti/ki
 
 Lásd: [helyezze át az adatokat, és az Azure Data Lake Store](data-factory-azure-datalake-connector.md) cikk a JSON-tulajdonságok leírását. 
 
-## <a name="sample-u-sql-script"></a>Minta U-SQL parancsfájl
+## <a name="sample-u-sql-script"></a>Sample U-SQL Script
 
 ```
 @searchlog =
@@ -318,7 +317,7 @@ OUTPUT @rs1
       USING Outputters.Tsv(quoting:false, dateTimeFormat:null);
 ```
 
-Az értékek  **@in**  és  **@out**  a U-SQL parancsfájl átadott paraméterek dinamikusan ADF által a "parameters" szakaszában. A "parameters" című rész a csővezeték-definícióban.
+Az értékek **@in** és **@out** a U-SQL parancsfájl átadott paraméterek dinamikusan ADF által a "parameters" szakaszában. A "parameters" című rész a csővezeték-definícióban.
 
 Megadhat más tulajdonságait, például degreeOfParallelism és prioritását, valamint a csővezeték-definícióban az az Azure Data Lake Analytics szolgáltatásban futó feladatok.
 

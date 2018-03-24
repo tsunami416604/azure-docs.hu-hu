@@ -1,20 +1,20 @@
 ---
-title: "Az Azure SQL adatbázis felügyelt példány T-SQL különbségek |} Microsoft Docs"
-description: "A cikk ismerteti az Azure SQL Database felügyelt-példányt és az SQL Server T-SQL különbségei."
+title: Az Azure SQL adatbázis felügyelt példány T-SQL különbségek |} Microsoft Docs
+description: A cikk ismerteti az Azure SQL Database felügyelt-példányt és az SQL Server T-SQL különbségei.
 services: sql-database
 author: jovanpop-msft
 ms.reviewer: carlrab, bonova
 ms.service: sql-database
 ms.custom: managed instance
 ms.topic: article
-ms.date: 03/16/2018
+ms.date: 03/19/2018
 ms.author: jovanpop
 manager: craigg
-ms.openlocfilehash: bd8733590819faa3c4286c1940f0b9258842c930
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: b633c3c4a4f476cb8e89afde8adeb94558643d4b
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Az SQL Serverről az Azure SQL adatbázis felügyelt példány T-SQL különbségek 
 
@@ -393,7 +393,11 @@ A következő változók, funkciók és a nézetek különböző eredményeket:
 
 ### <a name="exceeding-storage-space-with-small-database-files"></a>Kis adatbázisfájlok meghaladó tárhelyen
 
-Minden felügyelt példány mentése 35 TB lefoglalt tárhely, és minden adatbázisfájlt kezdetben el van helyezve 128 GB tárhely foglalási egység. A sok kisméretű fájlok adatbázisok túllépő összesen 35 TB 128 GB-os egységekben lévő előfordulhat, hogy elhelyezni. Ebben az esetben új adatbázisok nem hozható létre vagy visszaállításra, még akkor is, ha az összes adatbázis teljes mérete nem éri el a példány méretkorlátot. A visszaadott hiba ebben az esetben nem feltétlenül törölje a jelet.
+Felügyelt feltünteti Azure Premium lemezterület számára fenntartott 35 TB tárterületre nem rendelkezik fel, és mindegyik adatbázisfájlt külön fizikai lemezen helyezkedik. Mérete 128 GB-os, 256 GB, 512 GB, 1 TB-os vagy 4 TB-os lehet. Nem használt terület a lemezen nem fel van töltve, de a teljes összegére Azure Premium mérete nem haladhatja meg a 35 TB. Bizonyos esetekben egy felügyelt példány, nem kell 8 TB összesen meghaladhatja a 35 TB Azure tárolási mérete miatt belső töredezettsége vonatkozó korlátozást. 
+
+Például egy felügyelt példány 1.2-es TB méretű 4 TB-os lemezt használ, egy fájlt, és 248-fájlok 1 GB minden kerülnek, 248 lemezek 128 GB méretű lehet. Ebben a példában a lemez teljes tároló mérete 1 x 4 TB + 248 x 128 GB = 35 TB. Azonban teljes fenntartott példány adatbázisok mérete x 1.2 1 TB + 248 x 1 GB = 1,4 TB. Ez az ábra bemutatja, hogy bizonyos körülmények között egy olyan speciális elosztása, mert a felügyelt példány Azure Premium lemez tárolási kapacitása, ahol előfordulhat, hogy nem a várt lehet elérni. 
+
+Nem lenne nincs hiba a meglévő adatbázis, és azok az bármilyen probléma nélkül növekedhet, ha új fájlok nem lettek hozzáadva, de az új adatbázisok nem hozható létre vagy vissza, mert nincs elegendő lemezterület áll rendelkezésre egy új lemezmeghajtó, még akkor is, ha az összes adatbázis teljes mérete nem éri el a t He példány méretkorlátját. A visszaadott hiba ebben az esetben nem egyértelmű.
 
 ### <a name="incorrect-configuration-of-sas-key-during-database-restore"></a>SAS-kulcs helytelen konfigurációja során adatbázis visszaállítása
 

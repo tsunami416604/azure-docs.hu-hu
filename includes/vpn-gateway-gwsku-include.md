@@ -1,39 +1,51 @@
-Egy virtuális hálózati átjáró létrehozásakor meg kell adni a használni kívánt termékváltozatot. Válassza ki a számítási feladatok, a teljesítmény, a funkciók és a szolgáltatói szerződés igényeinek megfelelő termékváltozatokat.
+---
+title: fájl belefoglalása
+description: fájl belefoglalása
+services: vpn-gateway
+author: cherylmc
+ms.service: vpn-gateway
+ms.topic: include
+ms.date: 03/21/2018
+ms.author: cherylmc
+ms.custom: include file
+ms.openlocfilehash: 05dc8ae48a9164e4f7118d378ab0eb7c30a4249e
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 03/23/2018
+---
+Egy virtuális hálózati átjáró létrehozásakor meg kell adni a használni kívánt termékváltozatot. Válassza ki a Termékváltozat, amely megfelel a munkaterhelések, teljesítmények, szolgáltatások és SLA-k alapján.
 
-[!INCLUDE [classic SKU](./vpn-gateway-classic-sku-support-include.md)]
+###  <a name="benchmark"></a>Alagút, a kapcsolat és az átviteli sebesség Gateway SKU-n
 
 [!INCLUDE [Aggregated throughput by SKU](./vpn-gateway-table-gwtype-aggtput-include.md)]
 
-###  <a name="workloads"></a>Termelés *vs.* Dev-Test számítási feladatok
+[!INCLUDE [classic SKU](./vpn-gateway-classic-sku-support-include.md)]
 
-A szolgáltatói szerződések és a szolgáltatáskészletek eltérései miatt az alábbi termékváltozatokat javasoljuk termelés *vs.* dev-test környezetekhez:
+###  <a name="feature"></a>Által szolgáltatáskészlet Gateway SKU-n
 
-| **Számítási feladat**                       | **Termékváltozatok**               |
-| ---                                | ---                    |
-| **Termelés, kritikus fontosságú számítási feladatok** | VpnGw1, VpnGw2, VpnGw3 |
-| **Dev-test vagy a koncepció igazolása**   | Basic                  |
-|                                    |                        |
-
-Ha a régi termékváltozatokat használja, a termelési termékváltozatnak a Standard és a Nagy teljesítményű termékváltozatot javasoljuk. További információ a régi termékváltozatokról: [Átjáró termékváltozatai (örökölt termékváltozatok)](../articles/vpn-gateway/vpn-gateway-about-skus-legacy.md).
-
-###  <a name="feature"></a>Átjáró termékváltozatainak szolgáltatáskészletei
-
-Az átjárók új termékváltozatai egyszerűbbé teszik az átjárókon elérhető szolgáltatáskészleteket alkalmazását:
+Az új VPN-átjáró termékváltozatok egyszerűsítésére átjáró kínált szolgáltatáskészletek:
 
 | **Termékváltozat**| **Szolgáltatások**|
 | ---    | ---         |
-|**Basic**   | **Útvonalalapú VPN**: 10 alagutak rendelkező P2S; P2S; nincs RADIUS-hitelesítés nincs IKEv2 rendszer P2S<br>**Házirend-alapú VPN** (IKEv1): 1 alagút, P2S nélkül|
-| **VpnGw1, VpnGw2 és VpnGw3** | **Útvonalalapú VPN**: legfeljebb 30 alagút ( * ), P2S, BGP, aktív-aktív, egyéni IPsec/IKE-házirend, ExpressRoute/VPN együttes jelenléte |
+|**Alapszintű** (*)   | **Útvonalalapú VPN**: 10 alagutak rendelkező P2S; P2S; nincs RADIUS-hitelesítés nincs IKEv2 rendszer P2S<br>**Házirend-alapú VPN** (IKEv1): 1 alagút, P2S nélkül|
+| **VpnGw1, VpnGw2 és VpnGw3** | **Útvonalalapú VPN**: legfeljebb 30 alagutak (*), P2S, a BGP, aktív-aktív, az egyéni IPsec/IKE házirend, ExpressRoute és a VPN-együttműködés |
 |        |             |
 
 ( * ) A „PolicyBasedTrafficSelectors” paraméter konfigurálásával egy útvonalalapú VPN-átjárót (VpnGw1, VpnGw2, VpnGw3) több helyszíni, házirendalapú tűzfaleszközhöz is csatlakoztathat. További részletekért tekintse meg a [VPN-átjárók több helyszíni házirendalapú VPN-eszközhöz való csatlakoztatása a PowerShellel](../articles/vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md) című cikket.
 
-###  <a name="resize"></a>Az átjárók termékváltozatainak átméretezése
+(**) Az alapszintű Termékváltozat egy örökölt SKU minősül. Az alapszintű Termékváltozat bizonyos funkció korlátozásokkal rendelkezik. Nem méretezhető át egy átjáró, amely egy alapszintű Termékváltozat az új átjáró-termékváltozat egyikét használja, ezért módosítania kell helyette egy új másikra, amely magában foglalja a törlése és a VPN-átjáró újbóli létrehozása.
 
-1. Az átméretezés során a VpnGw1, a VpnGw2 és a VpnGw3 termékváltozatok közül választhat.
-2. Ha a régi átjárók termékváltozataival dolgozik, az átméretezéskor az Alapszintű, a Standard és a Nagy teljesítményű termékváltozatok közül választhat.
-2. Az Alapszintű/Standard/Nagy teljesítményű termékváltozatokról **nem** méretezhet a VpnGw1/VpnGw2/VpnGw3 termékváltozatokra. Ehelyett [migrálnia](#migrate) kell az új termékváltozatokra.
+###  <a name="workloads"></a>Gateway SKU - éles vs. Dev-Test számítási feladatok
 
-###  <a name="migrate"></a>Migrálás a régi termékváltozatokról az új termékváltozatokra
+SLA-k és szolgáltatáskészletek eltérései miatt a következő termékváltozatok és fejlesztési-tesztelési célú üzemi javasoljuk:
 
-[!INCLUDE [Migrate SKU](./vpn-gateway-migrate-legacy-sku-include.md)]
+| **Számítási feladat**                       | **Termékváltozatok**               |
+| ---                                | ---                    |
+| **Termelés, kritikus fontosságú számítási feladatok** | VpnGw1, VpnGw2, VpnGw3 |
+| **Dev-test vagy a koncepció igazolása**   | Basic (**)                 |
+|                                    |                        |
+
+(**) Az alapszintű Termékváltozat egy örökölt SKU minősülnek, és a szolgáltatás korlátozások vonatkoznak. Győződjön meg arról, hogy a szükséges támogatja az alapszintű Termékváltozat használata előtt.
+
+Ha a régi termékváltozatok (örökölt) használ, Standard és a HighPerformance által a termelési SKU ajánlások. További információt és útmutatást a régi SKU,: [Gateway SKU-n (örökölt)](../articles/vpn-gateway/vpn-gateway-about-skus-legacy.md).

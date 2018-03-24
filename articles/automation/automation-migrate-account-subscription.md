@@ -1,24 +1,18 @@
 ---
-title: "Automation-fiók és erőforrások áttelepítése |} Microsoft Docs"
-description: "Ez a cikk ismerteti az Azure Automation és a kapcsolódó erőforrások Automation-fiók áthelyezése egy előfizetés másik."
+title: Automation-fiók és erőforrások áttelepítése
+description: Ez a cikk ismerteti az Azure Automation és a kapcsolódó erőforrások Automation-fiók áthelyezése egy előfizetés másik.
 services: automation
-documentationcenter: 
-author: georgewallace
-manager: jwhit
-editor: tysonn
-ms.assetid: 9c2db4a2-f324-48dc-8ce7-3343bf7230d5
 ms.service: automation
-ms.devlang: na
+author: georgewallace
+ms.author: gwallace
+ms.date: 03/16/2018
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 09/29/2017
-ms.author: magoedte
-ms.openlocfilehash: 40567d1b1f450c499715682cf8c22f0c79c7d0c7
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+manager: carmonm
+ms.openlocfilehash: a9e76634a7392bca93ba06749741505e7b34cb41
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="migrate-automation-account-and-resources"></a>Automation-fiók és erőforrások áttelepítése
 Az Automation-fiókok és a kapcsolódó erőforrások (Ez azt jelenti, eszközök, a runbookok, modulok, stb.), amely az Azure-portálon létrehozott, és szeretne áttérni az egyik erőforráscsoportból egy másikra, vagy egy előfizetésből az egy másik Ez a könnyen elvégezhető a [erőforrások áthelyezése](../azure-resource-manager/resource-group-move-resources.md) funkció érhető el az Azure portálon. Azonban ez a művelet folytatása előtt először tekintse át a következő [erőforrások áthelyezése előtt ellenőrzőlista](../azure-resource-manager/resource-group-move-resources.md#checklist-before-moving-resources) és emellett a következő lista az Automation adott.  

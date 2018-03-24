@@ -1,16 +1,16 @@
 ---
-title: "Az Azure Site Recovery architektúrájáról Azure replikációs VMware |} Microsoft Docs"
-description: "Ez a cikk áttekintést összetevők és használható, ha a helyszíni VMware virtuális gépek replikálása Azure-bA az Azure Site Recovery architektúra"
+title: Az Azure Site Recovery architektúrájáról Azure replikációs VMware |} Microsoft Docs
+description: Ez a cikk áttekintést összetevők és használható, ha a helyszíni VMware virtuális gépek replikálása Azure-bA az Azure Site Recovery architektúra
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: article
-ms.date: 02/27/2018
+ms.date: 03/19/2018
 ms.author: raynew
-ms.openlocfilehash: 3d20ce1da2ed9b6e3213c9689b49cc2d759e5376
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: c1aa89f14edab7d0e560c20d6bc48480aff1631f
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="vmware-to-azure-replication-architecture"></a>VMware Azure replikációs-architektúra
 
@@ -32,25 +32,35 @@ A következő tábla és a kép adja meg az Azure-bA VMware-replikációhoz hasz
 
 ![Összetevők](./media/vmware-azure-architecture/arch-enhanced.png)
 
+## <a name="configuration-steps"></a>Konfigurációs lépések
+
+Az Azure vész-helyreállítási vagy áttelepítési VMware beállításával kapcsolatos általános lépéseket a következők:
+
+1. **Állítsa be az Azure összetevők**. Az Azure-fiók a megfelelő engedélyekkel, egy Azure storage-fiókot, egy Azure virtuális hálózatra és Recovery Services-tároló van szüksége. [További információk](tutorial-prepare-azure.md).
+2. **Állítsa be a helyszíni**. Ezek közé tartozik az a VMware Server fiók beállítása, hogy a Site Recovery automatikusan fel tud deríteni replikálni, virtuális gépeket telepíteni a mobilitási szolgáltatás összetevőt a replikálni kívánt virtuális gépeken használt fiók beállítása és ellenőrzése, hogy a VMware-kiszolgálók és a virtuális gépek Előfeltételek felel meg. Opcionálisan készítheti elő a feladatátvételt követően Azure virtuális gépeken való kapcsolódáshoz. A Site Recovery replikálja a virtuális gép adatainak Azure storage-fiók, és létrehozza az Azure virtuális gépek használatát az adatokat, ha a feladatátvételt az Azure-bA. [További információk](vmware-azure-tutorial-prepare-on-premises.md).
+3. **A replikáció beállítása**. Válassza ki a helyét a replikálni kívánt. Konfigurálja a forrás replikációs környezet egyetlen helyszíni VMware virtuális gép (a konfigurációs kiszolgáló) rendszert futtató összes az helyszíni, amelyekre szüksége van a Site Recovery-összetevők beállítását. A telepítés után a konfigurációs kiszolgáló számítógépén a Recovery Services-tároló rögzítheti. Ezután válassza ki a cél beállításai. [További információk](vmware-azure-tutorial.md).
+4. **Hozzon létre egy replikációs házirendet**. Létrehozhat egy replikációs házirendet, amely meghatározza, hogyan történjen a replikáció. 
+    - **Helyreállítási Időkorlát küszöbértéke**: A figyelés beállítás állapotok, ha a replikáció a megadott időn belül nem történik, egy riasztást (és választhatóan egy e-mailt) jelenik meg. Például beállíthatja a helyreállítási Időkorlát küszöbértéke – 30 percet, és egy probléma megakadályozza, hogy a replikációs 30 percig le, ha az jön létre. Ez a beállítás nincs hatással a replikáció. Replikáció folyamatos, és a helyreállítási pontokat hoz létre néhány percenként
+    - **Megőrzési**: helyreállítási pont megőrzési határozza meg, hogy mennyi ideig helyreállítási pontok kell tartani az Azure-ban. Adjon meg egy értéket 0 és 24 óra, a prémium szintű storage, vagy akár 72 óra szabványos tárolására. A legutóbbi helyreállítási pontot, vagy egy tárolt ponthoz való feladatátvételi Igen, ha a nullánál nagyobb értéket. A megőrzési időszak után a helyreállítási pontok kiürítésekor.
+    - **Összeomlás-konzisztens pillanatképek**: alapértelmezés szerint a Site Recovery összeomlás-konzisztens pillanatképek vesz igénybe, és helyreállítási pontok velük hoz létre a néhány percenként. A helyreállítási pont összeomlás-konzisztens, ha a egymáshoz az összetevők mindegyike írási magasrendű konzisztens, azonnali, mint a helyreállítási pont létrehozása. Jobb megértése érdekében, képzelhető el, a számítógép merevlemez-meghajtón lévő adatok állapotának áramkimaradás vagy hasonló esemény után. Összeomlás-konzisztens helyreállítási pontot az általában elegendő, ha az alkalmazást úgy tervezték, hogy egy összeomlási adatok inkonzisztenciákat nélkül helyreállíthatók.
+    - **Alkalmazáskonzisztens pillanatképek**: Ha ez az érték nem nulla, a mobilitási szolgáltatást a virtuális gépen kísérletek fájl rendszer alkalmazáskonzisztens pillanatképeket és a helyreállítási pontok létrehozásához. Az első pillanatfelvétel kezdeti replikáció befejezése után. Ezt követően pillanatfelvételeket készít a megadott gyakorisággal. Helyreállítási pont alkalmazáskonzisztens akkor, ha írási-sorrendje nem egységes, futó alkalmazások végrehajtani a műveleteket, és kiüríteni a lemezre (alkalmazás leépítése) puffer. Alkalmazáskonzisztens helyreállítási pontokat például az SQL, Oracle, és az Exchange adatbázis-alkalmazások használata ajánlott. Ha egy összeomlás-konzisztens pillanatkép elegendő, ez az érték 0 állítható be.  
+    - **Több virtuális Gépre kiterjedő konzisztencia**: nem kötelezően hozhat létre egy replikációs csoport. Ezután, amikor a replikáció engedélyezése virtuális gépek gyűjthet, hogy a csoportba. A replikációt a virtuális gépek replikálásához csoportosíthatja, és megosztott összeomlás-konzisztens és alkalmazáskonzisztens helyreállítási pontokat, amikor a feladatátvételt. Ezt a beállítást használjon gondosan, mivel több számítógépen összegyűjteni szükséges pillanatképként számítási feladat teljesítményére gyakorolt. Csak erre, ha a virtuális gépek futtatásához ugyanazokat a munkaterhelés és kell lenniük a konzisztens, és a virtuális gépek rendelkezik hasonló biztosítsanak. Legfeljebb 8 virtuális gépeket adhat hozzá egy csoporthoz. 
+5. **Engedélyezze a virtuális gép replikációját**. Végül lehetővé teszik a helyszíni VMware virtuális gépek replikációját. Ha hoztak létre fiókot telepíteni a mobilitási szolgáltatást, és meg, hogy a Site Recovery kell tennie egy leküldéses telepítési, majd a mobilitási szolgáltatást telepíteni szeretné minden, amelynek a replikáció engedélyezése virtuális gépen. [További információk](vmware-azure-tutorial.md#enable-replication). Ha létrehozott egy replikációs csoportot a virtuális Gépre kiterjedő konzisztencia, a virtuális gépek ehhez a csoporthoz is hozzáadhat.
+6. **Feladatátvételi teszt**. Után minden be van állítva, ellenőrizze, hogy virtuális gépek feladatátadást elvárt végezhet feladatátvételi tesztet. [További információk](tutorial-dr-drill-azure.md).
+7. **Feladatátvételi**. Ha még csupán az áttelepítést a virtuális gépek Azure - feladatátvételt teljes ehhez. Ha katasztrófa utáni helyreállítás beállítása, teljes feladatátvevő futtathatja, szükség van. Teljes vész-helyreállítási az Azure-ba, a feladatátvétel után, sikertelen lehet a helyszíni webhelyre, és a rendelkezésre álló. [További információk](vmware-azure-tutorial-failover-failback.md).
+
 ## <a name="replication-process"></a>Replikációs folyamat
 
-1. Az Azure erőforrások és a helyszíni összetevőinek előkészítése.
-2. Adja meg a Recovery Services-tároló forrás replikációs beállításokat. Ez a folyamat részeként a helyszíni konfigurációs kiszolgáló beállítása. Ez a kiszolgáló, a VMware virtuális gépként telepíti, előkészített OVF sablon letöltése, és importálni szeretné a VMware virtuális gép létrehozása.
-3. Adja meg a cél replikációs beállítások, hozzon létre egy replikációs házirendet, és engedélyezze a replikálást a VMware virtuális gépek esetén.
-4. A replikációs házirendet, és egy kezdeti másolatot készít a virtuális gép adatai megfelelően a gépek replikálásához Azure Storage replikálódik.
-5. Kezdeti replikáció befejezését követően, a változási különbözeteket az Azure-bA replikálását kezdődik. A gépek nyomon követett módosításait a rendszer egy .hrl fájlban tárolja.
+1. Ha engedélyezi a virtuális gépek replikálása, megkezdi a replikációs nyilatkozatnak replikálni. 
+2. Forgalom replikálja az Azure storage nyilvános végpontok az interneten keresztül. Alternatív megoldásként használhatja az Azure ExpressRoute [nyilvános társviszony](../expressroute/expressroute-circuit-peerings.md#azure-public-peering). Replikálásához forgalom a pont-pont virtuális magánhálózat (VPN) keresztül egy helyszíni hely Azure-ba nem támogatott.
+3. Egy kezdeti másolatot készít a virtuális gép adatait a rendszer replikálja az Azure storage.
+4. Kezdeti replikáció befejezését követően, a változási különbözeteket az Azure-bA replikálását kezdődik. A gépek nyomon követett módosításait a rendszer egy .hrl fájlban tárolja.
+5. Kommunikáció a következőképpen történik:
 
-    * Gépek kommunikálni a konfigurációs kiszolgáló HTTPS 443-as portot a bejövő, a replikáció kezelését.
-
-    * Gépek replikációs adatokat küldeni a folyamatkiszolgáló HTTPS 9443 porton bejövő (módosítható).
-
-    * Az Azure-replikációs folyamat kezelését a konfigurációs kiszolgáló a 443-as kimenő HTTPS-porton keresztül végzi el.
-
-    * A folyamatkiszolgáló adatokat fogad az forrásgépek, optimalizálja és titkosítja azokat, és küld az Azure Storage 443-as porton keresztül kimenő.
-
-    * Ha engedélyezte a több virtuális gépre kiterjedő konzisztenciát, a replikációs csoportban található gépek a 20004-es porton kommunikálnak egymással. Több virtuális gépes környezetről akkor beszélünk, ha a gépek feladatátvételkor azonos összeomlásbiztos és alkalmazáskonzisztens helyreállítási pontokat használó replikációs csoportokba vannak rendezve. Ez a módszer akkor hasznos, ha a gépeken ugyanaz az alkalmazás fut, és konzisztens kell.
-
-6. Forgalom replikálja az Azure storage nyilvános végpontok az interneten keresztül. Erre a célra az Azure ExpressRoute [nyilvános társviszony-létesítési](../expressroute/expressroute-circuit-peerings.md#azure-public-peering) szolgáltatását is használhatja. Replikálásához forgalom a pont-pont virtuális magánhálózat (VPN) keresztül egy helyszíni hely Azure-ba nem támogatott.
+    - Virtuális gépek kommunikálni a helyszíni konfigurációs kiszolgáló HTTPS 443-as portot a bejövő, a replikáció kezelését.
+    - A konfigurációs kiszolgáló koordinálja a replikálás az Azure-ral HTTPS 443-as kimenő porton keresztül.
+    - Virtuális gépek elküldeni a replikációs adatok a folyamatkiszolgálótól (a konfigurációs kiszolgáló gépen futó) HTTPS 9443 port bejövő. Ez a port módosítható.
+    - A folyamatkiszolgáló kap replikációs adatokat, optimalizálja és titkosítja azokat, és elküldi azt az Azure storage 443-as porton keresztül kimenő.
 
 
 **VMware-ből az Azure replikációs folyamat**
@@ -61,30 +71,23 @@ A következő tábla és a kép adja meg az Azure-bA VMware-replikációhoz hasz
 
 Miután replikáció be van állítva, és futtatja a vész helyreállítási részletezéshez (feladatátvételi teszt) ellenőrizze, hogy minden a várt módon működik, futtatása feladatátvétel és a feladat-visszavétel szükség van.
 
-1. Egyetlen gép feladatátvételt, vagy hozzon létre több virtuális gépek a feladatátvétel tartalmazó helyreállítási terveket.
-
-2. Amikor feladatátvételt, Azure virtuális gépek replikált adatokból jönnek létre az Azure storage.
-
-3. Után váltanak ki a kezdeti feladatátvételi, véglegesítheti a munkaterhelés elérése az Azure virtuális gép elindításához.
-
-Amint az elsődleges helyszíni hely megint elérhetővé válik, visszaadhatja a feladatokat.
-1. A feladat-visszavétel infrastruktúra beállításához szüksége többek között:
+1. Futtassa az egy gépen sikertelen lesz, vagy hozzon létre helyreállítási tervek egyszerre több virtuális gép feladatátvételt. Egyetlen gép feladatátvételi helyett egy helyreállítási terv előnye a következők:
+    - A modell alkalmazás-függőségeit a virtuális gépek belefoglalja egy helyreállítási tervben az alkalmazás között.
+    - Parancsfájlok, Azure runbookok hozzáadása, és manuális műveletek a felfüggesztését.
+2. Után váltanak ki a kezdeti feladatátvételi, véglegesítheti a munkaterhelés elérése az Azure virtuális gép elindításához.
+3. A helyszíni elsődleges hely újra nem érhető el, előkészítheti a visszaállítása sikertelen. A feladat-visszavétel infrastruktúra beállításához szükséges ahhoz, hogy a feladat-visszavételt, beleértve:
 
     * **Ideiglenes folyamatkiszolgáló az Azure-ban**: sikertelen lesz az Azure-ból, állít be egy Azure virtuális gép az Azure-ból replikáció kezelésére folyamat kiszolgálója. Ez a virtuális gép a feladatok visszaadását követően törölhető.
-
     * **VPN-kapcsolat**: a feladat-visszavételt, kell egy VPN-kapcsolat (vagy ExpressRoute) Azure-hálózatában a helyszíni hely.
-
     * **Külön fő célkiszolgáló**: alapértelmezés szerint a fő célkiszolgáló telepítése sikeres volt, a konfigurációs kiszolgáló a helyszíni VMware virtuális gép feladat-visszavétel kezeli. Ha sikertelen biztonsági nagy mennyiségű forgalom van szüksége, beállítása egy önálló helyszíni fő célkiszolgáló erre a célra.
-
     * **Feladat-visszavételi szabályzat**: A helyszíni helyre történő újbóli replikáláshoz feladat-visszavételi szabályzatra van szükség. Ezzel a házirend-automatikusan létrejött, amikor a helyszíni Azure létrehozta a replikációs házirend.
-2. Miután az összetevő a következő helyen, feladat-visszavétel három lépésben történik:
+4. Miután a helyen van, feladat-visszavétel három művelet történik:
 
-    a. 1. fázis: Lássa el újból védelemmel az Azure virtuális gépeket, hogy azok replikálása az Azure-ból a helyszíni VMware virtuális gépek vissza a.
-
-    b. 2. fázis: Feladatátvételt végez a helyszíni hely.
-
-    c. 3. fázis: Miután munkaterhelések ismét sikertelen, újból engedélyezi a helyszíni virtuális gépek replikációját.
-
+    - 1. fázis: Lássa el újból védelemmel az Azure virtuális gépeket, hogy azok replikálása az Azure-ból a helyszíni VMware virtuális gépek vissza a.
+    -  2. fázis: Feladatátvételt végez a helyszíni hely.
+    - 3. fázis: Miután munkaterhelések ismét sikertelen, újból engedélyezi a helyszíni virtuális gépek replikációját.
+    
+ 
 **Az Azure-ból VMware feladat-visszavétel**
 
 ![Feladat-visszavétel](./media/vmware-azure-architecture/enhanced-failback.png)

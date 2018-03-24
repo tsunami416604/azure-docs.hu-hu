@@ -1,6 +1,6 @@
 ---
-title: "Azure Machine Learning modell felügyeleti webes szolgáltatás központi telepítése |} Microsoft Docs"
-description: "Ez a dokumentum a gépi tanulási modellek felügyeleti modell Azure Machine Learning segítségével telepítésének lépéseit ismerteti."
+title: Azure Machine Learning modell felügyeleti webes szolgáltatás központi telepítése |} Microsoft Docs
+description: Ez a dokumentum a gépi tanulási modellek felügyeleti modell Azure Machine Learning segítségével telepítésének lépéseit ismerteti.
 services: machine-learning
 author: aashishb
 ms.author: aashishb
@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 01/03/2018
-ms.openlocfilehash: 7b481fb3287b8ee2c22e5f25f8cf1935eed05428
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 5211fa29af1d8cba17049b69974189990d30f34a
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="deploying-a-machine-learning-model-as-a-web-service"></a>A gépi tanulási modellek webszolgáltatásként telepítése
 
@@ -22,10 +22,17 @@ Modell kezelése az Azure Machine Learning modellek, Docker-alapú webes szolgá
 
 Ez a dokumentum a modellek webszolgáltatásként, az Azure Machine Learning modell kezelése parancssori felület (CLI) használatával telepítésének a lépéseit ismerteti.
 
+## <a name="what-you-need-to-get-started"></a>Mi szükséges a kezdéshez
+
+Ahhoz, hogy ez az útmutató a legtöbbet, Azure-előfizetés vagy egy erőforráscsoport, amely központilag telepíthető a modellek közreműködői hozzáférést kell rendelkeznie.
+A parancssori felület előre előre telepített, az Azure Machine Learning-munkaterület és a [Azure DSVMs](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-virtual-machine-overview).  Az önálló csomag is telepíthető.
+
+Emellett a modell felügyeleti fiók és a telepítési környezet már kell be kell állítania.  A modell felügyeleti fiókja és a helyi környezet és a fürtöt tartalmazó környezetben beállításával kapcsolatos további információk: [modell felügyeletkonfigurálási](deployment-setup-configuration.md).
+
 ## <a name="deploying-web-services"></a>Webszolgáltatások üzembe helyezése
 A CLIs használja, telepítheti a webszolgáltatások futtatásához a helyi számítógépen vagy egy fürtön.
 
-Azt javasoljuk, hogy a helyi telepítés kezdve. Először ellenőrizze, hogy a modell és kód működik, majd a webszolgáltatás telepítése egy fürt méretű üzemi használatra. A fürtöt tartalmazó környezetben környezet beállításával kapcsolatos további információk: [modell felügyeletkonfigurálási](deployment-setup-configuration.md). 
+Azt javasoljuk, hogy a helyi telepítés kezdve. Először ellenőrizze, hogy a modell és kód működik, majd a webszolgáltatás telepítése egy fürt méretű üzemi használatra.
 
 Az üzembe helyezés lépései a következők:
 1. A mentett, betanított, gépi tanulási modell
@@ -49,7 +56,8 @@ saved_model = pickle.dumps(clf)
 ```
 
 ### <a name="2-create-a-schemajson-file"></a>2. Hozzon létre egy schema.json fájlt
-Ez a lépés nem kötelező. 
+
+Séma generációs ugyan nem kötelező, lehetőleg jobban kezeli a kérelmet, és a bemeneti változó formátumban megadhatók.
 
 Hozzon létre egy séma a bemeneti és kimeneti a webszolgáltatás automatikusan érvényesítéséhez. A CLIs is használhatja a séma létrehozni a Swagger-dokumentum a webszolgáltatáshoz.
 
@@ -77,6 +85,13 @@ A következő példában egy PANDAS dataframe:
 
 ```python
 inputs = {"input_df": SampleDefinition(DataTypes.PANDAS, yourinputdataframe)}
+generate_schema(run_func=run, inputs=inputs, filepath='./outputs/service_schema.json')
+```
+
+A következő példa egy általános JSON formátumot használja:
+
+```python
+inputs = {"input_json": SampleDefinition(DataTypes.STANDARD, yourinputjson)}
 generate_schema(run_func=run, inputs=inputs, filepath='./outputs/service_schema.json')
 ```
 
@@ -147,10 +162,13 @@ A képfájl beállítással, a jegyzék előtt hozunk létre hozhat létre.
 az ml image create -n [image name] --manifest-id [the manifest ID]
 ```
 
-Vagy a jegyzékfájl létrehozása, és egyetlen paranccsal lemezképet. 
+>[!NOTE] 
+>Egy parancs segítségével hajtsa végre a modell regisztráció, a jegyzékfájlt és a modell létrehozása. Használjon -h a szolgáltatással létrehozhat további részletekért.
+
+Alternatív megoldásként nincs regisztrálása a modell jegyzékfájl létrehozása és lemezkép létrehozása (de nem hozzon létre, és a webszolgáltatás telepítése még) egy parancs egyik lépés az alábbiak szerint.
 
 ```
-az ml image create -n [image name] --model-file [model file or folder path] -f [code file, e.g. the score.py file] -r [the runtime eg.g. spark-py which is the Docker container image base]
+az ml image create -n [image name] --model-file [model file or folder path] -f [code file, e.g. the score.py file] -r [the runtime e.g. spark-py which is the Docker container image base]
 ```
 
 >[!NOTE]
@@ -165,7 +183,14 @@ az ml service create realtime --image-id <image id> -n <service name>
 ```
 
 >[!NOTE] 
->Egy parancs használatával végezze el az előző 4 lépéseket. Használjon -h a szolgáltatással létrehozhat további részletekért.
+>Egy parancs használatával végezze el az összes korábbi 4 lépéseket. Használjon -h a szolgáltatással létrehozhat további részletekért.
+
+Alternatív megoldásként nincs regisztrálása a modell jegyzékfájl létrehozása, készítsen lemezképet, valamint, hozzon létre, és a webszolgáltatás telepítése egy lépést, az alábbiak szerint egy parancs.
+
+```azurecli
+az ml service create realtime --model-file [model file/folder path] -f [scoring file e.g. score.py] -n [your service name] -s [schema file e.g. service_schema.json] -r [runtime for the Docker container e.g. spark-py or python] -c [conda dependencies file for additional python packages]
+```
+
 
 ### <a name="8-test-the-service"></a>8. A szolgáltatás tesztelése
 Az alábbi parancs segítségével hogyan hívhatja meg a szolgáltatás információk beolvasása:

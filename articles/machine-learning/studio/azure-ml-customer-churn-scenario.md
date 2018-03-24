@@ -1,10 +1,11 @@
 ---
-title: "Ügyfél Kavarog egyidejűleg Machine Learning segítségével elemzése |} Microsoft Docs"
-description: "Egy integrált modell elemzésére és a felhasználói forgalom pontozási fejlődő bemutató esettanulmány"
+title: Ügyfél Kavarog egyidejűleg Machine Learning segítségével elemzése |} Microsoft Docs
+description: Egy integrált modell elemzésére és a felhasználói forgalom pontozási fejlődő bemutató esettanulmány
 services: machine-learning
-documentationcenter: 
-author: jeannt
-manager: jhubbard
+documentationcenter: ''
+author: heatherbshapiro
+ms.author: hshapiro
+manager: hjerez
 editor: cgronlun
 ms.assetid: 1333ffe2-59b8-4f40-9be7-3bf1173fc38d
 ms.service: machine-learning
@@ -13,18 +14,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/18/2017
-ms.author: jeannt
-ms.openlocfilehash: e0b82fe8e8c8bc4ac9c45370d90fa9330d749878
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: 6c64444fc8d42782065d42ed5ee0c193678bb1f1
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 03/23/2018
 ---
-# <a name="analyzing-customer-churn-by-using-azure-machine-learning"></a>Az ügyfél változásainak elemzése az Azure Machine Learning segítségével
+# <a name="analyzing-customer-churn-using-azure-machine-learning"></a>Ügyfél Kavarog egyidejűleg Azure Machine Learning segítségével elemzése
 ## <a name="overview"></a>Áttekintés
 Ez a cikk bemutatja a felhasználói forgalom elemzése projekt, Azure Machine Learning segítségével részét képező egy hivatkozás végrehajtása. Ez a cikk arról lesz szó kapcsolódó általános modellek holistically a ipari ügyfél forgalmának kezeléséhez, a probléma megoldására. Is mérjük a modellt a Machine Learning segítségével beépített pontosságát, és további fejlesztési irányban értékeléséhez.  
 
-### <a name="acknowledgements"></a>A nyugtázás
+### <a name="acknowledgements"></a>Nyugták
 Ehhez a kísérlethez fejlesztette ki és tesztelt Serge Berger, egyszerű adatok tudósok Microsoft és Roger Barga, a Microsoft Azure Machine Learning korábban termék Manager. Az Azure dokumentációs csapattól gratefully elfogadja a saját ismereteit, és Köszönjük őket, hogy ez a dokumentum megosztása.
 
 > [!NOTE]
@@ -192,7 +192,7 @@ A távközlési iparágban több eljárások rendelkezik kiderült, elemezheti a
 
 * Származtatni a használatmérés négy alapvető kategóriák:
   * **Entitás (például egy előfizetés)**. Az előfizetés és/vagy az ügyfél, amely a forgalom tárgya alapvető információkat kiépítéséhez.
-  * **Tevékenység**. Szerezze be a kapcsolódó entitás, például a bejelentkezések száma az összes lehetséges használati adatait.
+  * **Tevékenység** – Szerezze be a kapcsolódó entitás, például a bejelentkezések száma az összes lehetséges használati adatait.
   * **Ügyfél-támogatási**. Nem kér be adatokat annak jelzésére, hogy az előfizetés kellett problémák vagy ügyfélszolgálata interakció naplókból a felhasználói támogatási információkat.
   * **Versenyképes és üzleti adatokat**. Minden lehetséges kapcsolatos információkhoz az ügyfél (például lehet nem érhető el vagy nehéz nyomon követése).
 * Meghajtó szolgáltatásválasztást fontosak használja. Ez azt jelenti, hogy a súlyozott döntési fa modell mindig a ígéret megközelítést.  

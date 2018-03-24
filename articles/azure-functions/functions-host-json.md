@@ -1,12 +1,12 @@
 ---
-title: "az Azure Functions Host.JSON referenciája"
-description: "Az Azure Functions host.json fájl dokumentációját."
+title: az Azure Functions Host.JSON referenciája
+description: Az Azure Functions host.json fájl dokumentációját.
 services: functions
 author: tdykstra
 manager: cfowler
-editor: 
-tags: 
-keywords: 
+editor: ''
+tags: ''
+keywords: ''
 ms.service: functions
 ms.devlang: multiple
 ms.topic: article
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 02/12/2018
 ms.author: tdykstra
-ms.openlocfilehash: 6b5a8c81b1e3e45c85ea84a46054b6a38a886c5b
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 577c45edc832288943a7eeefe27c7a189a61b7b0
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="hostjson-reference-for-azure-functions"></a>az Azure Functions Host.JSON referenciája
 
-A *host.json* metaadatait tartalmazó fájl tartalmazza, amelyek hatással vannak az összes funkciójának függvény alkalmazások globális konfigurációs beállításokat. Ez a cikk a rendelkezésre álló beállításokat sorolja fel. A JSON-séma http://json.schemastore.org/host jelenleg.
+A *host.json* metaadatait tartalmazó fájl tartalmazza, amelyek hatással vannak az összes funkciójának függvény alkalmazások globális konfigurációs beállításokat. Ez a cikk a rendelkezésre álló beállításokat sorolja fel. A JSON-séma jelenleg http://json.schemastore.org/host.
 
 A más globális konfigurációs beállítások [Alkalmazásbeállítások](functions-app-settings.md) és a a [local.settings.json](functions-run-local.md#local-settings-file) fájlt.
 
@@ -139,7 +139,7 @@ Szabályozza a [Application Insights szolgáltatással mintavételi](functions-m
 
 |Tulajdonság  |Alapértelmezett | Leírás |
 |---------|---------|---------| 
-|IsEnabled|hamis|Engedélyezheti vagy letilthatja a mintavétel.| 
+|IsEnabled|false|Engedélyezheti vagy letilthatja a mintavétel.| 
 |maxTelemetryItemsPerSecond|5|A küszöbérték, mely mintavételi kezdődik.| 
 
 ## <a name="eventhub"></a>eventHub
@@ -186,7 +186,7 @@ Konfigurációs beállításainak [állomás figyelő](https://github.com/Azure/
 
 |Tulajdonság  |Alapértelmezett | Leírás |
 |---------|---------|---------| 
-|engedélyezve|igaz|Hogy az engedélyezve van. | 
+|engedélyezve|true|Hogy az engedélyezve van. | 
 |healthCheckInterval|10 másodperc|A háttérben történő rendszeres állapotfigyelő közötti időközt ellenőrzi. | 
 |healthCheckWindow|2 perc|Egy alkalommal csúszóablak együtt használható a `healthCheckThreshold` beállítást.| 
 |healthCheckThreshold|6|Az állapot-ellenőrzéssel maximálisan megengedett számú meghiúsulhatnak előtt állomás újrahasznosítást lehet kezdeményezni.| 
@@ -201,6 +201,9 @@ Konfigurációs beállításainak [http eseményindítók és kötések](functio
 ## <a name="id"></a>id
 
 Egy feladat állomás egyedi azonosítója. A kötőjelek kisbetű GUID távolíthatja el. A helyi futtatás során szükséges. Az Azure Functions futtatásakor egy hozza létre automatikusan Ha `id` meg van adva.
+
+Ha több függvény alkalmazások között megosztott tárfiókot, győződjön meg arról, hogy minden függvény alkalmazás rendelkezik egy másik `id`. Akkor kihagyhatja a `id` tulajdonság, vagy manuálisan állítsa be az egyes függvény alkalmazások `id` más értékre. Az időzítő indítófeltételt tárolási zárolást használatával gondoskodjon arról, hogy csak egy időzítő példány amikor egy függvény app méretezi ki több példányára. Ha két függvény alkalmazások azonos `id` és egy időzítő indítófeltételt használó minden egyes, csak egy időzítő fog futni.
+
 
 ```json
 {

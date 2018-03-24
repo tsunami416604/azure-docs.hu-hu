@@ -1,24 +1,24 @@
 ---
-title: "Kezelheti a tartós funkciók - Azure-példány"
-description: "Útmutató a tartós funkciók bővítmény példánya kezelése az Azure Functions."
+title: Kezelheti a tartós funkciók - Azure-példány
+description: Útmutató a tartós funkciók bővítmény példánya kezelése az Azure Functions.
 services: functions
 author: cgillum
 manager: cfowler
-editor: 
-tags: 
-keywords: 
+editor: ''
+tags: ''
+keywords: ''
 ms.service: functions
 ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 09/29/2017
+ms.date: 03/19/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 9cea9b18cd7434a34138d5cecad8a8fd7f10d2e5
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 01a6fefc10dfd83997acc290dbd1c85ba86a4799
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="manage-instances-in-durable-functions-azure-functions"></a>Példányok a tartós függvények (az Azure Functions) kezelése
 
@@ -104,7 +104,7 @@ public static async Task Run(
 
 ## <a name="terminating-instances"></a>Leállítja a példányok
 
-Egy futó példány használatával kell szüntetni a [TerminateAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_TerminateAsync_) metódusában a [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) osztály. A két paraméter egy `instanceId` és egy `reason` karakterláncot, amely a naplókat, és a példány állapota lesz írva. A leállított példánya, amint a következő eléri le fog állni `await` pontot, vagy megszünteti az azonnal Ha már be egy `await`.
+Egy futó példány vezénylési használatával kell szüntetni a [TerminateAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_TerminateAsync_) metódusában a [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) osztály. A két paraméter egy `instanceId` és egy `reason` karakterláncot, amely a naplókat, és a példány állapota lesz írva. A leállított példánya, amint a következő eléri le fog állni `await` pontot, vagy megszünteti az azonnal Ha már be egy `await`. 
 
 ```csharp
 [FunctionName("TerminateInstance")]
@@ -119,6 +119,9 @@ public static Task Run(
 
 > [!NOTE]
 > Példány lezárást jelenleg csak a C# orchestrator funkcióihoz támogatott.
+
+> [!NOTE]
+> Jelenleg nem propagál példány megszüntetése. Tevékenység funkciók és alárendelt álló üzenettípusok összehangolását végrehajtása, függetlenül attól, hogy a vezénylési példány nevezett azokat le lett állítva.
 
 ## <a name="sending-events-to-instances"></a>Események küldése példányok
 

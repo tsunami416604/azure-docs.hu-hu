@@ -1,24 +1,24 @@
 ---
-title: "Működik a tartós funkciókkal - Azure-láncolás"
-description: "Megtudhatja, hogyan futtasson egy tartós funkciók mintát, amely a funkciók egy műveletsorozatot hajt végre."
+title: Működik a tartós funkciókkal - Azure-láncolás
+description: Megtudhatja, hogyan futtasson egy tartós funkciók mintát, amely a funkciók egy műveletsorozatot hajt végre.
 services: functions
 author: cgillum
 manager: cfowler
-editor: 
-tags: 
-keywords: 
+editor: ''
+tags: ''
+keywords: ''
 ms.service: functions
 ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 09/29/2017
+ms.date: 03/19/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 9ba1cdc5c72e04802d29794fa6cb40a29cc1d353
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 0020f19e00f3365c4a0d80ebb67aeeedd7fe76df
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="function-chaining-in-durable-functions---hello-sequence-sample"></a>A tartós funkciók - Hello feladatütemezési minta láncolás működik
 
@@ -26,7 +26,7 @@ A minta a funkciók sorozatát végrehajtási meghatározott sorrendben függvé
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Kövesse az utasításokat a [tartós funkciók telepítése](durable-functions-install.md) a minta beállítása.
+* [Telepítse a tartós funkciók](durable-functions-install.md).
 
 ## <a name="the-functions"></a>A Funkciók
 
@@ -35,7 +35,7 @@ Ez a cikk ismerteti a mintaalkalmazást a következő funkciókat:
 * `E1_HelloSequence`: Az orchestrator függvény, amely behívja `E1_SayHello` többször sorrendje egy sorozatban. A kimeneteinek tárol a `E1_SayHello` hívja, és a eredményeit rögzíti.
 * `E1_SayHello`: Egy tevékenység függvény, amely lefoglalja a karakterlánc a "Hello"szövegrészt.
 
-Az alábbi szakaszok ismertetik a konfiguráció és a kódot, amely az Azure portál fejlesztésére szolgálnak. A Visual Studio fejlesztési kód a cikk végén meg.
+Az alábbi szakaszok ismertetik a konfiguráció és a használt kód a C# parancsfájlok. A Visual Studio fejlesztési kód a cikk végén meg.
  
 ## <a name="functionjson-file"></a>Function.JSON fájl
 
@@ -71,7 +71,7 @@ Végrehajtásának `E1_SayHello` egy viszonylag trivial művelet formázási kar
 
 Ez a függvény típusú paraméterrel rendelkezik [DurableActivityContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableActivityContext.html), az orchestrator függvény által átadott bemeneti eléréséhez használt [ `CallActivityAsync<T>` ](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CallActivityAsync_).
 
-## <a name="run-the-sample"></a>A minta futtatásához
+## <a name="run-the-sample"></a>Minta futtatása
 
 Végrehajtásához a `E1_HelloSequence` vezénylési, a következő HTTP POST kérelem küldése.
 
@@ -121,7 +121,7 @@ Tekintse meg a függvény végrehajtási naplót. A `E1_HelloSequence` függvén
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HelloSequence.cs)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez a példa azt mutatják, egy egyszerű függvény-láncolás vezénylési. A következő példa bemutatja, hogyan fan-kimenő/fan-a minta végrehajtásához. 
 

@@ -1,24 +1,24 @@
 ---
-title: "Ügynökállapot megoldás az OMS-ben | Microsoft Docs"
-description: "Ebből a cikkből megtudhatja, hogyan használhatja ezt a megoldást azon ügynökök állapotának monitorozására, amelyek közvetlenül az OMS vagy a System Center Operations Manager felé jelentenek."
+title: Ügynökállapot megoldás az OMS-ben | Microsoft Docs
+description: Ebből a cikkből megtudhatja, hogyan használhatja ezt a megoldást azon ügynökök állapotának monitorozására, amelyek közvetlenül az OMS vagy a System Center Operations Manager felé jelentenek.
 services: operations-management-suite
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: operations-management-suite
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/17/2017
+ms.date: 03/19/2017
 ms.author: magoedte
-ms.openlocfilehash: 939bf5ae6ee306008567ce62ddf8a6d1f05da60a
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: d7eb1550a21e66d4ae4cc4932b30a90956c60d1e
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 03/23/2018
 ---
 #  <a name="agent-health-solution-in-oms"></a>Ügynökállapot megoldás
 Az ügynökállapot megoldás segít átlátni, hogy az OMS munkaterület vagy egy OMS-hez csatlakozó System Center Operations Manager-felügyeleticsoport felé jelentő ügynökök közül melyik nem válaszol, és melyik küld működési adatokat.  Azt is nyomon követheti, hogy hány ügynök lett üzembe helyezve, és milyen a földrajzi eloszlásuk, illetve egyéb lekérdezéseket hajthat végre, amelyekkel megismerheti az Azure-ban, egyéb felhőkörnyezetekben, illetve helyszínen üzembe helyezett ügynökök eloszlását.    
@@ -98,25 +98,6 @@ Minden Operations Manager felügyeleti kiszolgáló felé jelentő ügynök két
 A következő táblázat a megoldás által összegyűjtött rekordokkal kapcsolatos naplókeresési mintákat tartalmazza.
 
 | Lekérdezés | Leírás |
-| --- | --- |
-| Type=Heartbeat &#124; Distinct Computer |Az ügynökök száma összesen |
-| Type=Heartbeat &#124; measure max(TimeGenerated) as LastCall by Computer &#124; where LastCall < NOW-24HOURS |Az elmúlt 24 órában nem válaszoló ügynökök száma |
-| Type=Heartbeat &#124; measure max(TimeGenerated) as LastCall by Computer &#124; where LastCall < NOW-15MINUTES |Az elmúlt 15 percben nem válaszoló ügynökök száma |
-| Type=Heartbeat TimeGenerated>NOW-24HOURS Computer IN {Type=Heartbeat TimeGenerated>NOW-24HOURS &#124; distinct Computer} &#124; measure max(TimeGenerated) as LastCall by Computer |Online számítógépek száma (az elmúlt 24 órában) |
-| Type=Heartbeat TimeGenerated>NOW-24HOURS Computer NOT IN {Type=Heartbeat TimeGenerated>NOW-30MINUTES &#124; distinct Computer} &#124; measure max(TimeGenerated) as LastCall by Computer |Az elmúlt 30 percben offline ügynökök száma (az elmúlt 24 órára vonatkozóan) |
-| Type=Heartbeat &#124; measure countdistinct(Computer) by OSType |Az ügynökök számának trendje időbeli alakulásának lekérése operációsrendszer-típusonként|
-| Type=Heartbeat&#124;measure countdistinct(Computer) by OSType |Eloszlás operációsrendszer-típusok szerint |
-| Type=Heartbeat&#124;measure countdistinct(Computer) by Version |Eloszlás ügynökverzió szerint |
-| Type=Heartbeat&#124;measure count() by Category |Eloszlás ügynökkategória szerint |
-| Type=Heartbeat&#124;measure countdistinct(Computer) by ManagementGroupName | Eloszlás felügyeleti csoport szerint |
-| Type=Heartbeat&#124;measure countdistinct(Computer) by RemoteIPCountry |Az ügynökök földrajzi helye |
-| Type=Heartbeat IsGatewayInstalled=true&#124;Distinct Computer |A telepített OMS-átjárók száma |
-
-
->[!NOTE]
-> Ha a munkaterülete frissítve lett az [új Log Analytics lekérdezési nyelvre](../log-analytics/log-analytics-log-search-upgrade.md), akkor a fenti lekérdezések a következők szerint módosulnak.
->
->| Lekérdezés | Leírás |
 |:---|:---|
 | Heartbeat &#124; distinct Computer |Az ügynökök száma összesen |
 | Heartbeat &#124; summarize LastCall = max(TimeGenerated) by Computer &#124; where LastCall < ago(24h) |Az elmúlt 24 órában nem válaszoló ügynökök száma |
@@ -130,6 +111,9 @@ A következő táblázat a megoldás által összegyűjtött rekordokkal kapcsol
 | Heartbeat &#124; summarize AggregatedValue = dcount(Computer) by ManagementGroupName | Eloszlás felügyeleti csoport szerint |
 | Heartbeat &#124; summarize AggregatedValue = dcount(Computer) by RemoteIPCountry |Az ügynökök földrajzi helye |
 | Heartbeat &#124; where iff(isnotnull(toint(IsGatewayInstalled)), IsGatewayInstalled == true, IsGatewayInstalled == "true") == true &#124; distinct Computer |A telepített OMS-átjárók száma |
+
+
+
 
 ## <a name="next-steps"></a>További lépések
 

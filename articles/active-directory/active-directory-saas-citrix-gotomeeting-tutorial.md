@@ -1,6 +1,6 @@
 ---
-title: "Oktatóanyag: Azure Active Directoryval integrált GoToMeeting |} Microsoft Docs"
-description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és GoToMeeting között."
+title: 'Oktatóanyag: Azure Active Directoryval integrált GoToMeeting |} Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és GoToMeeting között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/02/2018
 ms.author: jeedes
-ms.openlocfilehash: 4826dee82e62ffac70d7ca3d6dcfe005129de764
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: d26b78fb5be96e979fb7b375acf6e907d858b706
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-gotomeeting"></a>Oktatóanyag: Azure Active Directoryval integrált GoToMeeting
 
@@ -108,77 +108,32 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Az egyszeri bejelentkezés információk GoToMeeting tartomány és az URL-címek](./media/active-directory-saas-gotomeeting-tutorial/tutorial_gotomeeting_url.png)
 
-    Az a **azonosító** szövegmező, írja be az URL-cím:`https://login.citrixonline.com/saml/sp`
+    Az a **azonosító** szövegmező, írja be az URL-cím: `https://authentication.logmeininc.com/saml/sp`
 
-4. Az a **SAML-aláíró tanúsítványa** területen kattintson **metaadatainak XML-kódja** és mentse a metaadat-fájlt a számítógépen.
+4. Kattintson a **speciális URL-cím megjelenítése a configuration** , és konfigurálja az alábbi URL-címek
 
-    ![A tanúsítvány letöltési hivatkozását](./media/active-directory-saas-gotomeeting-tutorial/tutorial_gotomeeting_certificate.png) 
-
+    **Jelentkezzen be az URL-cím** (ezt mindig tartsa üres)
+    
+    **Válasz URL-cím**: `https://authentication.logmeininc.com/saml/acs`
+    
+    **RelayState**:
+    
+    - GoToMeeting alkalmazás esetén `https://global.gotomeeting.com`
+    
+    - A GoToTraining használjon `https://global.gototraining.com`
+    
+    - A GoToWebinar használjon `https://global.gotowebinar.com` 
+    
+    - A GoToAssist használjon `https://app.gotoassist.com`
+    
 5. Kattintson a **mentése** gombra.
 
     ![Egyszeri bejelentkezés Mentés gombra konfigurálása](./media/active-directory-saas-gotomeeting-tutorial/tutorial_general_400.png)
 
-6. Létrehozásához a **metaadatok** URL-címe, hajtsa végre a következő lépéseket:
+6. Egy másik böngészőablakban, jelentkezzen be a [GoToMeeting szervezet Center](https://organization.logmeininc.com/). Kérni fogja annak ellenőrzéséhez, hogy a kiállító terjesztési hely frissült
 
-    a. Kattintson a **App regisztrációk**.
-    
-    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-gotomeeting-tutorial/tutorial_gotomeeting_appregistrations.png)
-   
-    b. Kattintson a **végpontok** megnyitásához **végpontok** párbeszédpanel megnyitásához.  
-    
-    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-gotomeeting-tutorial/tutorial_gotomeeting_endpointicon.png)
+7. Engedélyezze a "Saját identitásszolgáltató frissítve lett az új tartomány" jelölőnégyzetet. Kattintson a **végzett** befejezésekor.
 
-    c. Kattintson a Másolás gombra másolása **ÖSSZEVONÁSI METAADAT-dokumentum** URL-címet, és illessze be a Jegyzettömbbe.
-    
-    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-gotomeeting-tutorial/tutorial_gotomeeting_endpoint.png)
-     
-    d. Most lépjen a tulajdonságlapján **GoToMeeting** , és másolja a **alkalmazásazonosító** használatával **másolási** gombra, majd illessze be a Jegyzettömbbe.
- 
-    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-gotomeeting-tutorial/tutorial_gotomeeting_appid.png)
-
-    e. Készítése a **metaadatainak URL-CÍMÉT** a következő minta használatával:`<FEDERATION METADATA DOCUMENT url>?appid=<application id>`   
-
-7. A a **GoToMeeting konfigurációs** kattintson **konfigurálása GoToMeeting** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **Sign-Out URL-címet, a SAML entitás azonosítója és a SAML-alapú egyszeri bejelentkezési URL-címe** a a **rövid összefoglaló szakasz.**
-
-    ![GoToMeeting konfiguráció](./media/active-directory-saas-gotomeeting-tutorial/tutorial_gotomeeting_configure.png) 
-
-8. Egy másik böngészőablakban, jelentkezzen be a [GoToMeeting szervezet Center](https://organization.logmeininc.com/)
-
-9. A **identitásszolgáltató** lapon konfigurálhatja az Azure-alapú vagy megadásával a létrehozott beállítások **metaadatainak URL-CÍMÉT** vagy a letöltött **metaadatfájl** vagy **Manuális**.
-
-10. A **metaadatainak URL-CÍMÉT** hajtsa végre a következő lépéseket:
-
-    ![GoToMeeting konfiguráció](./media/active-directory-saas-gotomeeting-tutorial/config1.png)
-
-    a. Az a **hogyan szeretné konfigurálni a SAML IDP?**, jelölje be **automatikus** a legördülő listából.
-
-    b. Beillesztés a **metaadatainak URL-CÍMÉT**, amely hozta létre az előző lépésben a **metaadatainak URL-CÍMÉT** szövegmező.
-
-    c. Kattintson a **Save** (Mentés) gombra.
-
-11. A **metaadatfájl** hajtsa végre a következő lépéseket:
-
-    ![GoToMeeting konfiguráció](./media/active-directory-saas-gotomeeting-tutorial/config2.png)
-
-    a. Az a **hogyan szeretné konfigurálni a SAML IDP?**, jelölje be **feltöltése SAML-metaadatfájl** a legördülő listából.
-
-    b. A letöltött metaadat-fájl feltöltése, kattintson a **feltöltés metaadatfájl**.
-
-    c. Kattintson a **Save** (Mentés) gombra.
-
-12. A **manuális** hajtsa végre a következő lépéseket:
-
-    ![GoToMeeting konfiguráció](./media/active-directory-saas-gotomeeting-tutorial/config3.png)
-
-    a.  A **bejelentkezési URL-címe** szövegmezőhöz illessze be az értékét **SAML-alapú egyszeri bejelentkezési URL-címe** ami Azure-portálon másolta.
-
-    b.  A **kijelentkezési URL-címe** szövegmezőhöz illessze be az értékét **Sign-Out URL-cím** ami Azure-portálon másolta.
-
-    c.  A **Identity Provider Entitásazonosító** szövegmezőhöz illessze be az értékét **SAML Entitásazonosító** ami Azure-portálon másolta.
-
-    d. Az x.509 kinyerése a letöltött metaadatait tartalmazó fájl, és ez a tanúsítvány feltöltése kattintva **feltöltés tanúsítvány**.
-
-    e. Kattintson a **Save** (Mentés) gombra.
 
 > [!TIP]
 > Ezek az utasítások belül tömör verziója most el tudja olvasni a [Azure-portálon](https://portal.azure.com), míg az alkalmazás beállításakor!  Ez az alkalmazás a hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentációja keresztül a **konfigurációs** szakasz alján. További Itt a embedded dokumentációjából szolgáltatásról: [az Azure AD beágyazott dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)

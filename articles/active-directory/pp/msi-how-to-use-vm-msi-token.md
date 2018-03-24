@@ -1,11 +1,11 @@
 ---
-title: "Hogyan használja a felhasználó által hozzárendelt felügyelt Szolgáltatásidentitás a virtuális gép olyan hozzáférési jogkivonatot."
-description: "Lépésenkénti útmutatás és példák a használatát, a felhasználó által hozzárendelt MSI egy Azure virtuális gép szerezzen be egy OAuth hozzáférési tokent."
+title: Hogyan használja a felhasználó által hozzárendelt felügyelt Szolgáltatásidentitás a virtuális gép olyan hozzáférési jogkivonatot.
+description: Lépésenkénti útmutatás és példák a használatát, a felhasználó által hozzárendelt MSI egy Azure virtuális gép szerezzen be egy OAuth hozzáférési tokent.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.workload: identity
 ms.date: 12/22/2017
 ms.author: daveba
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 68454d3f3880df82ca895d1c5f140ebdb6030e77
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 6c6422bc2b13c0c40e48dabf0470c821b13e7851
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="acquire-an-access-token-for-a-vm-user-assigned-managed-service-identity-msi"></a>Olyan hozzáférési jogkivonatot szerezni a virtuális gépek, felhasználó által hozzárendelt felügyelt szolgáltatás identitásának (MSI)
 
@@ -42,7 +42,9 @@ Egy ügyfélalkalmazás kérhet egy olyan MSI Csomaghoz [csak alkalmazás-hozzá
 | [Szolgáltatáshitelesítést egy token használata CURL használatával](#get-a-token-using-curl) | Az MSI REST-végpont a Bash/CURL ügyfélben használatának példája |
 | [Kezelési jogkivonat lejáratáról](#handling-token-expiration) | Útmutató a lejárt hozzáférési jogkivonatok kezelése |
 | [Hibakezelés](#error-handling) | Útmutató a token MSI-végpont által visszaadott HTTP-hibák kezelése |
+| [Sávszélesség-szabályozási útmutató](#throttling-guidance) | Útmutató a sávszélesség-szabályozás a token MSI-végpont kezelése |
 | [Erőforrás-azonosítók az Azure-szolgáltatások](#resource-ids-for-azure-services) | Erőforrás-azonosítók támogatott Azure-szolgáltatásokat az beszerzése |
+
 
 ## <a name="get-a-token-using-http"></a>Szolgáltatáshitelesítést egy token HTTP-n keresztül 
 
@@ -155,7 +157,7 @@ Ez a szakasz a lehetséges hibaválaszok dokumentumokat. A "200 OK" állapota a 
 
 | Állapotkód | Hiba | Hibaleírás | Megoldás |
 | ----------- | ----- | ----------------- | -------- |
-| 400 Hibás kérés | invalid_resource | AADSTS50001: Az alkalmazás nevű  *\<URI\>*  nem található a bérlő nevű  *\<TENANT-ID\>*. Ez akkor fordulhat elő, ha az alkalmazás nem lett telepítve a rendszergazda a bérlő által vagy a bérlő bármely felhasználó hozzájárulását. Előfordulhat, hogy elküldött a hitelesítési kérést a megfelelő bérlő számára. \ | (Csak Linux) |
+| 400 Hibás kérés | invalid_resource | AADSTS50001: Az alkalmazás nevű *\<URI\>* nem található a bérlő nevű  *\<TENANT-ID\>*. Ez akkor fordulhat elő, ha az alkalmazás nem lett telepítve a rendszergazda a bérlő által vagy a bérlő bármely felhasználó hozzájárulását. Előfordulhat, hogy elküldött a hitelesítési kérést a megfelelő bérlő számára. \ | (Csak Linux) |
 | 400 Hibás kérés | bad_request_102 | Nincs megadva a szükséges metaadat-fejléccel | Vagy a `Metadata` kérelem mező hiányzik a kérelemből, vagy helytelenül van formázva. Az értéket kell megadni, `true`, az összes kisbetű. A "kérelemmintát" című része a [Szolgáltatáshitelesítést egy token HTTP-n keresztül](#get-a-token-using-http) szakasz egy példát.|
 | 401 nem engedélyezett | unknown_source | Az ismeretlen forrásból  *\<URI\>* | Győződjön meg arról, hogy a HTTP GET kérelem URI-azonosítója helytelenül van formázva. A `scheme:host/resource-path` részét kell megadni, `http://169.254.169.254/metadata/identity/oath2/token` vagy `http://localhost:50342/oauth2/token`. A "kérelemmintát" című része a [Szolgáltatáshitelesítést egy token HTTP-n keresztül](#get-a-token-using-http) szakasz egy példát.|
 |           | invalid_request | A kérés egyik kötelező paraméter hiányzik, érvénytelen paramétert tartalmaz, egy paraméter egynél többször tartalmazza vagy egyéb rosszul megformázva. |  |
@@ -164,6 +166,16 @@ Ez a szakasz a lehetséges hibaválaszok dokumentumokat. A "200 OK" állapota a 
 |           | unsupported_response_type | A hitelesítési kiszolgáló nem támogatja egy hozzáférési jogkivonatot: Ezzel a módszerrel lehet beszerezni. |  |
 |           | invalid_scope | A kért hatóköre érvénytelen, ismeretlen vagy nem megfelelően formázott. |  |
 | 500 belső kiszolgálóhiba | ismeretlen | Nem sikerült jogkivonatot lekérdezni az Active Directory címtárban. További információ: a naplók  *\<fájl elérési útja\>* | Győződjön meg arról, hogy MSI engedélyezve van a virtuális Gépen. Lásd: [konfigurálja a virtuális gép felügyelt szolgáltatás identitásának (MSI) az Azure portál használatával](msi-qs-configure-portal-windows-vm.md) Ha Virtuálisgép-konfiguráció segítségre van szüksége.<br><br>Azt is ellenőrizze, hogy a HTTP GET kérés URI formátuma megfelelő, különösen az erőforrás URI megadva a lekérdezésben. A "kérelemmintát" című része a [Szolgáltatáshitelesítést egy token HTTP-n keresztül](#get-a-token-using-http) szakasz egy vonatkozó példáért vagy [Azure-szolgáltatások, hogy támogatja az Azure AD hitelesítési](msi-overview.md#azure-services-that-support-azure-ad-authentication) szolgáltatások és a megfelelő erőforrás-azonosítók listáját.
+
+## <a name="throttling-guidance"></a>Sávszélesség-szabályozási útmutató 
+
+Sávszélesség-szabályozási korlátozások vonatkoznak az MSI IMDS végponthoz intézett hívások száma. A sávszélesség-szabályozási küszöbérték túllépésekor a MSI IMDS végpont semmilyen további kérelmet korlátozza, amíg a késleltetési érvényben van. Ebben az időszakban, a MSI IMDS végpont visszatér a HTTP-állapotkód 429 ("túl sok kérelem"), és a kérelem sikertelen lesz. 
+
+Próbálkozzon újra a következő stratégia javasoljuk: 
+
+| **Újrapróbálkozási stratégia** | **Beállítások** | **Értékek** | **Működési elv** |
+| --- | --- | --- | --- |
+|ExponentialBackoff |Ismétlések száma<br />Visszatartás (min.)<br />Visszatartás (max.)<br />Visszatartás (változás)<br />Első gyors újrapróbálkozás |5<br />0 másodperc<br />60 másodperc<br />2 másodperc<br />false |1. kísérlet – 0 mp. késleltetés<br />2. kísérlet – kb. 2 mp. késleltetés<br />3. kísérlet – kb. 6 mp. késleltetés<br />4. kísérlet – kb. 14 mp. késleltetés<br />5. kísérlet – kb. 30 mp. késleltetés |
 
 ## <a name="resource-ids-for-azure-services"></a>Erőforrás-azonosítók az Azure-szolgáltatások
 

@@ -1,11 +1,11 @@
 ---
-title: "Aktor megbízható szereplője kiegészítő írja be a szerializálási |} Microsoft Docs"
-description: "Ismerteti, amelyek alapvető követelményeivel szerializálható olyan osztállyal, amelynek segítségével határozza meg a Service Fabric Reliable Actors állapotait és az illesztők meghatározása"
+title: Aktor megbízható szereplője kiegészítő írja be a szerializálási |} Microsoft Docs
+description: Ismerteti, amelyek alapvető követelményeivel szerializálható olyan osztállyal, amelynek segítségével határozza meg a Service Fabric Reliable Actors állapotait és az illesztők meghatározása
 services: service-fabric
 documentationcenter: .net
 author: vturecek
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 6e50e4dc-969a-4a1c-b36c-b292d964c7e3
 ms.service: service-fabric
 ms.devlang: dotnet
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: b1b7c8af6d852599359baab2188bfc3395d33a28
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 210f47b4b052286900781f97077af4d0a0b9c968
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="notes-on-service-fabric-reliable-actors-type-serialization"></a>Tudnivalók a Service Fabric Reliable Actors írja be a szerializálási
-Összes metódus argumentumaként, egy szereplő felület minden metódusa által visszaadott eredmény típusú a feladatokat, és egy szereplő állapotkezelője tárolt objektumok kell [adategyezmény-szerializálható](https://msdn.microsoft.com/library/ms731923.aspx). Ez vonatkozik az argumentumok a meghatározott módszerek [szereplő eseményfelület](service-fabric-reliable-actors-events.md). (Szereplő esemény a felület metódusai mindig visszaadniuk.)
+Összes metódus argumentumaként, egy szereplő felület minden metódusa által visszaadott eredmény típusú a feladatokat, és egy szereplő állapotkezelője tárolt objektumok kell [adategyezmény-szerializálható](/dotnet/framework/wcf/feature-details/types-supported-by-the-data-contract-serializer). Ez vonatkozik az argumentumok a meghatározott módszerek [szereplő eseményfelület](service-fabric-reliable-actors-events.md). (Szereplő esemény a felület metódusai mindig visszaadniuk.)
 
 ## <a name="custom-data-types"></a>Egyéni adattípusok
 Ebben a példában a következő szereplő kapcsolat határozza meg, amely visszaadja az egy egyéni adattípus nevű metódus `VoicemailBox`:
@@ -144,7 +144,7 @@ public class VoicemailBox implements Serializable
 ```
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Aktor életciklusának és szemétgyűjtési gyűjtése](service-fabric-reliable-actors-lifecycle.md)
 * [Aktor időzítők és az emlékeztetők](service-fabric-reliable-actors-timers-reminders.md)
 * [Szereplő események](service-fabric-reliable-actors-events.md)

@@ -1,11 +1,11 @@
 ---
-title: "SQL Server a Windows Azure virtuális gépek – gyakori kérdések |} Microsoft Docs"
-description: "Ez a cikk ismerteti az Azure virtuális gépeken futó SQL Server gyakran feltett kérdésekre adott válaszok."
+title: SQL Server a Windows Azure virtuális gépek – gyakori kérdések |} Microsoft Docs
+description: Ez a cikk ismerteti az Azure virtuális gépeken futó SQL Server gyakran feltett kérdésekre adott válaszok.
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: v-shysun
 manager: felixwu
-editor: 
+editor: ''
 tags: azure-service-management
 ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
 ms.service: virtual-machines-sql
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 12/14/2017
+ms.date: 03/20/2018
 ms.author: v-shysun
-ms.openlocfilehash: 141dd1fe9e727f430b7c45dbb798f5471167c355
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 42a82a59d0cf786e80b93f124cbe04007b2a4704
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="frequently-asked-questions-for-sql-server-on-windows-azure-virtual-machines"></a>Gyakori kérdések az SQL Server a Windows Azure virtuális gépeken
 
@@ -34,7 +34,7 @@ Ez a cikk ismerteti a leggyakoribb kérdésekre vonatkozó válaszokat [SQL Serv
 
 [!INCLUDE [support-disclaimer](../../../../includes/support-disclaimer.md)]
 
-## <a id="images"></a>Lemezképek
+## <a id="images"></a> Lemezképek
 
 1. **Milyen SQL Server virtuális gép a gyűjtemény lemezképei állnak rendelkezésre?**
 
@@ -48,6 +48,10 @@ Ez a cikk ismerteti a leggyakoribb kérdésekre vonatkozó válaszokat [SQL Serv
 
    Igen. Azure csak egy kép / fő verzióját és kiadását tart fenn. Például egy új SQL Server szervizcsomag megjelenésekor, Azure ad hozzá egy új lemezképet szervizcsomagnak gyűjteménye. Az SQL Server-rendszerképet az előző service Pack azonnal távolítja el az Azure-portálon. Azonban célszerű továbbra is elérhető, a következő három hónapban a Powershellből kiépítéshez. Három hónap után az előző service pack kép már nem érhető el. Az eltávolítási házirend csak akkor is vonatkozik, ha egy SQL Server-verzió nem támogatott válik, amikor eléri a életciklusának végét.
 
+1. **Létrehozhatók a Virtuálismerevlemez-kép egy SQL Server virtuális gépről?**
+
+   Igen, de nincs van néhány szempontokat. Ha a virtuális merevlemez telepít egy új Azure-ban, szeretne nem ge az SQL Server-konfigurációs szakasz a portálon. Az SQL Server-konfigurációs beállítások Powershellen keresztül majd kell kezelni. Is fizetnie kell az os az SQL virtuális gép, a lemezkép eredetileg alapján. Ez igaz, akkor is, ha az SQL Server eltávolítja telepítése előtt a virtuális Merevlemezt. 
+
 1. **Az nem látható a virtuális gép gyűjtemény (a + SQL Server 2012-ben például a Windows 2008 R2) konfigurációk beállítható?**
 
    Nem. A virtuális gép gyűjtemény lemezképek, amely tartalmazza az SQL Server ki kell választania, egy megadott lemezképet.
@@ -56,7 +60,7 @@ Ez a cikk ismerteti a leggyakoribb kérdésekre vonatkozó válaszokat [SQL Serv
 
 1. **Hogyan hozható létre egy Azure virtuális gépen futó SQL Server?**
 
-   A legegyszerűbb megoldás az, hogy hozzon létre egy virtuális gépet, amely tartalmazza az SQL Server. Oktatóanyag regisztrál az Azure és az SQL virtuális gép létrehozása a portálon, lásd: [egy SQL Server rendszerű virtuális gép az Azure portálon](virtual-machines-windows-portal-sql-server-provision.md). Kiválaszthatja, hogy a virtuálisgép-lemezkép perc fizetési SQL Server licencelési használó, vagy egy olyanra, amely lehetővé teszi a saját SQL Server-licenc is használhat. Lehetősége is van manuálisan telepíti az SQL Server a virtuális gép sem szabadon licenccel rendelkező kiadásra (fejlesztői vagy Express) vagy egy helyszíni licenc újból felhasználja. Ha később saját licenc, rendelkeznie kell [Azure frissítési garancián keresztüli Licenchordozhatósági](https://azure.microsoft.com/pricing/license-mobility/). További információkért tekintse meg [az SQL Server Azure virtuális gépek díjszabási útmutatóját](virtual-machines-windows-sql-server-pricing-guidance.md).
+   A legegyszerűbb megoldás az, hogy hozzon létre egy virtuális gépet, amely tartalmazza az SQL Server. Oktatóanyag regisztrál az Azure és az SQL virtuális gép létrehozása a portálon, lásd: [egy SQL Server rendszerű virtuális gép az Azure portálon](virtual-machines-windows-portal-sql-server-provision.md). Kiválaszthatja, hogy a virtuálisgép-lemezkép által használt fizetési / másodperces SQL Server licencelési, vagy egy olyanra, amely lehetővé teszi a saját SQL Server-licenc is használhat. Lehetősége is van manuálisan telepíti az SQL Server a virtuális gép sem szabadon licenccel rendelkező kiadásra (fejlesztői vagy Express) vagy egy helyszíni licenc újból felhasználja. Ha később saját licenc, rendelkeznie kell [Azure frissítési garancián keresztüli Licenchordozhatósági](https://azure.microsoft.com/pricing/license-mobility/). További információkért tekintse meg [az SQL Server Azure virtuális gépek díjszabási útmutatóját](virtual-machines-windows-sql-server-pricing-guidance.md).
 
 1. **Hogyan telepíthet át a felhőbe a helyszíni SQL Server-adatbázist?**
 
@@ -70,7 +74,7 @@ Ez a cikk ismerteti a leggyakoribb kérdésekre vonatkozó válaszokat [SQL Serv
 
 1. **Módosíthatja a saját SQL Server licence használja, ha az egyik a használatalapú lévő képek hozták létre a virtuális gépek?**
 
-   Nem. Nem lehet átállítani a fizetési-percalapú licencelés saját licenc használatával. Hozzon létre egy új Azure virtuális gép egyikével a [BYOL képek](virtual-machines-windows-sql-server-iaas-overview.md#BYOL), majd telepítse át az adatbázisokat az új kiszolgálóra a szabványos [adatok áttelepítési technikák](virtual-machines-windows-migrate-sql.md).
+   Nem. Nem lehet átállítani a saját licenc használata licencelési fizetési / másodperc. Hozzon létre egy új Azure virtuális gép egyikével a [BYOL képek](virtual-machines-windows-sql-server-iaas-overview.md#BYOL), majd telepítse át az adatbázisokat az új kiszolgálóra a szabványos [adatok áttelepítési technikák](virtual-machines-windows-migrate-sql.md).
 
 1. **Rendelkeznie kell fizetnie licencre SQL Server egy Azure virtuális gépen, ha csak használatos készenléti vagy feladatátvételi?**
 
@@ -85,15 +89,16 @@ Ez a cikk ismerteti a leggyakoribb kérdésekre vonatkozó válaszokat [SQL Serv
 
 1. **SQL Server alapértelmezett példányának eltávolítása**
 
-   Igen. Azonban nincs szempontokat. Amint azt a korábbi választ, szolgáltatások, amelyek támaszkodjon a [SQL Server infrastruktúra-szolgáltatási ügynök bővítmény](virtual-machines-windows-sql-server-agent-extension.md) csak az alapértelmezett példányon működik. Ha az alapértelmezett példányt eltávolítja, a bővítmény továbbra is fennáll, amelyet meg kíván keresni az és Eseménynapló hibák léphetnek fel. Ezeket a hibákat a következő két forrásból származnak: **Microsoft SQL Server hitelesítőadat-kezelés** és **Microsoft SQL Server IaaS-ügynök**. A hibák lehetnek a következőhöz hasonló:
+   Igen, de nincs olyan szempontokat. Amint azt a korábbi választ, szolgáltatások, amelyek támaszkodjon a [SQL Server infrastruktúra-szolgáltatási ügynök bővítmény](virtual-machines-windows-sql-server-agent-extension.md) csak az alapértelmezett példányon működik. Ha az alapértelmezett példányt eltávolítja, a bővítmény továbbra is fennáll, amelyet meg kíván keresni az és Eseménynapló hibák léphetnek fel. Ezeket a hibákat a következő két forrásból származnak: **Microsoft SQL Server hitelesítőadat-kezelés** és **Microsoft SQL Server IaaS-ügynök**. A hibák lehetnek a következőhöz hasonló:
 
       A hálózattal kapcsolatos vagy példányspecifikus hiba történt az SQL-kiszolgálóhoz való kapcsolódás során. A kiszolgáló nem található vagy nem érhető el.
 
    Ha úgy dönt, az alapértelmezett példány eltávolítása, is eltávolítja a [SQL Server infrastruktúra-szolgáltatási ügynök bővítmény](virtual-machines-windows-sql-server-agent-extension.md) is.
-   
-   >[!NOTE]
-   >Egy SQL Server Azure virtuális gép lesz számlázva, a [útmutatást az SQL Server Azure virtuális gépek díjszabása](virtual-machines-windows-sql-server-pricing-guidance.md). Ha el kell távolítania az SQL Server, a hálózathasználati költségeket továbbra is. Ha már nem kell az SQL Server, egy új virtuális gép telepítéséhez, és telepítse át az adatokat és alkalmazásokat az új virtuális gépet. Az SQL Server virtuális gép távolíthatja el.
 
+1. **Eltávolítható az SQL Server teljesen SQL virtuális gép alapján?**
+
+   Igen, de Ön továbbra is az SQL virtuális gép számlázni leírtak szerint [útmutatást az SQL Server Azure virtuális gépek díjszabása](virtual-machines-windows-sql-server-pricing-guidance.md). Ha már nem kell az SQL Server, egy új virtuális gép telepítéséhez, és telepítse át az adatokat és alkalmazásokat az új virtuális gépet. Az SQL Server virtuális gép távolíthatja el.
+   
 ## <a name="updating-and-patching"></a>Frissítés és a javítás
 
 1. **Hogyan lehet frissíteni az SQL Server egy Azure virtuális gép egy új verziójához/kiadásához számára?**

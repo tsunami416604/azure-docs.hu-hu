@@ -1,28 +1,25 @@
 ---
-title: "Az Azure Active Directory B2C: Amazon konfigurációs |} Microsoft Docs"
-description: "Adja meg a regisztráció és bejelentkezés az Azure Active Directory B2C által védett alkalmazások Amazon-fiókkal rendelkező felhasználók számára."
+title: 'Az Azure Active Directory B2C: Amazon konfigurációs |} Microsoft Docs'
+description: Adja meg a regisztráció és bejelentkezés az Azure Active Directory B2C által védett alkalmazások Amazon-fiókkal rendelkező felhasználók számára.
 services: active-directory-b2c
-documentationcenter: 
-author: swkrish
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: bryanla
-ms.assetid: 77c099bb-a005-4d75-87f9-f61e3de48725
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 12/06/2016
-ms.author: swkrish
-ms.openlocfilehash: df69b075717e6b4311e336f5bd2d385c5f0e1f52
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: davidmu
+ms.openlocfilehash: a2989baa61e7b69534fe5703b2501d62a4f8aa94
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-active-directory-b2c-provide-sign-up-and-sign-in-to-consumers-with-amazon-accounts"></a>Az Azure Active Directory B2C: Regisztráció és bejelentkezés adhat Amazon-fiókkal rendelkező felhasználók
 ## <a name="create-an-amazon-application"></a>Az Amazon-alkalmazás létrehozása
-Az Azure Active Directory (Azure AD) B2C identitás-szolgáltatóként Amazon használatához szüksége Amazon alkalmazás létrehozása, és adja meg azt a megfelelő paraméterekkel. Ehhez az Amazon-fiók szükséges. Ha még nincs fiókja, beszerezheti a [http://www.amazon.com/](http://www.amazon.com/).
+Az Azure Active Directory (Azure AD) B2C identitás-szolgáltatóként Amazon használatához szüksége Amazon alkalmazás létrehozása, és adja meg azt a megfelelő paraméterekkel. Ehhez az Amazon-fiók szükséges. Ha még nincs fiókja, beszerezheti a [ http://www.amazon.com/ ](http://www.amazon.com/).
 
 1. Lépjen a [Amazon fejlesztői központ](https://login.amazon.com/) és jelentkezzen be az Amazon fiók hitelesítő adatait.
 2. Ha még nem tette meg, kattintson a **regisztráció**, hajtsa végre a fejlesztői regisztrációs lépéseket, és fogadja el a szabályzatot.

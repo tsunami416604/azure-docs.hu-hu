@@ -1,11 +1,11 @@
 ---
-title: "Adja meg a Service Fabric Szolgáltatásvégpontok |} Microsoft Docs"
-description: "Hogyan leírására végpont erőforrások egy szolgáltatás jegyzékben, beleértve a HTTPS-végpontnak beállítása"
+title: Adja meg a Service Fabric Szolgáltatásvégpontok |} Microsoft Docs
+description: Hogyan leírására végpont erőforrások egy szolgáltatás jegyzékben, beleértve a HTTPS-végpontnak beállítása
 services: service-fabric
 documentationcenter: .net
 author: mani-ramaswamy
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: da36cbdb-6531-4dae-88e8-a311ab71520d
 ms.service: service-fabric
 ms.devlang: dotnet
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 6fa425829e8da294c8db3d64c3d8fd202c74375a
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: a028471871754c2b9c3981ec13f5788643675a77
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="specify-resources-in-a-service-manifest"></a>Erőforrások meghatározása szolgáltatásjegyzékben
 ## <a name="overview"></a>Áttekintés
@@ -154,7 +154,7 @@ Linux-fürtök esetén a **MY** tárolja a mappát az alapértelmezett **/var/li
 
 ## <a name="overriding-endpoints-in-servicemanifestxml"></a>Végpontok ServiceManifest.xml felülbírálása
 
-Adja hozzá egy testvér ConfigOverrides szakaszra használandó ResourceOverrides szakaszt az applicationmanifest jegyzékben. Ebben a szakaszban adja meg a felülbírálás a végpontok szakasz a szolgáltatás jegyzékben megadott erőforrások szakaszában.
+Adja hozzá egy testvér ConfigOverrides szakaszra használandó ResourceOverrides szakaszt az applicationmanifest jegyzékben. Ebben a szakaszban adja meg a felülbírálás a végpontok szakasz a szolgáltatás jegyzékben megadott erőforrások szakaszában. Futásidejű végpontok felülbírálása támogatott 5.7.217/SDK 2.7.217 és magasabb.
 
 Ahhoz, hogy a végpont a következő ApplicationParameters módosítása az applicationmanifest jegyzékben használatával ServiceManifest felülbírálása:
 

@@ -1,34 +1,32 @@
 ---
-title: "Az Azure több Frontends terheléselosztó |} Microsoft Docs"
-description: "Több Frontends az Azure Load Balancer áttekintése"
+title: Az Azure több Frontends terheléselosztó |} Microsoft Docs
+description: Több Frontends az Azure Load Balancer áttekintése
 services: load-balancer
 documentationcenter: na
 author: chkuhtz
 manager: narayan
-editor: 
+editor: ''
 ms.assetid: 748e50cd-3087-4c2e-a9e1-ac0ecce4f869
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/25/2017
+ms.date: 03/22/2018
 ms.author: chkuhtz
-ms.openlocfilehash: e4c77f3b9bd53df632a433532376eb859969a036
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: cf8fa396e0518e1c847225dfc1d8f91c3421bd11
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="multiple-frontends-for-azure-load-balancer"></a>Az Azure Load Balancer több Frontends
-
-[!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
 
 Az Azure terheléselosztó lehetővé teszi, hogy egyenleg szolgáltatások több portot vagy több IP-címet. Nyilvános és a belső terheléselosztó definíciók segítségével egyenleg adatfolyamok betölteni a virtuális gépek csoportja között.
 
 Ez a cikk ismerteti a lehetősége, fontos fogalmakat és korlátozások alapjait. Ha csak egy IP-címet a szolgáltatások közzétételét, egyszerűsített utasításokat található [nyilvános](load-balancer-get-started-internet-portal.md) vagy [belső](load-balancer-get-started-ilb-arm-portal.md) terheléselosztó konfigurációjában betölteni. Több frontends hozzáadása akkor növekményes egyetlen előtér-konfigurációhoz. A koncepció ismertetése érdekében használja a cikkben, bővítheti egy egyszerűsített konfigurációs bármikor.
 
-Ha az Azure Load Balancer, egy előtér- és a háttér-konfiguráció csatlakoztatott szabályok. A szabály által hivatkozott állapotmintáihoz azt határozza meg, hogyan új forgalom háttérkészlethez csomópont küldött. Az előtér egy előtér-IP-konfiguráció (más néven VIP), amely egy 3-rekord az IP-cím (nyilvános vagy belső), egy átviteli protokoll (UDP vagy TCP) és a terheléselosztási szabály egy portot határozza meg. Egy DIP egy Azure kapcsolt virtuális hálózati Adaptert egy virtuális géphez háttérkészlethez tartozó IP-címet.
+Ha az Azure Load Balancer, egy előtér- és egy háttér címkészletet konfigurációs csatlakoztatott szabályok. A szabály által hivatkozott állapotmintáihoz azt határozza meg, hogyan új forgalom háttérkészlethez csomópont küldött. Az előtér (más néven VIP) 3-rekordot egy IP-cím (nyilvános vagy belső), egy átviteli protokoll (UDP vagy TCP) és a terheléselosztási szabály egy portot határozza meg. A háttérkészlet virtuális gép IP-konfigurációk (a hálózati erőforrás része), amelyik a terheléselosztó háttérkészletéből gyűjteménye.
 
 Az alábbi táblázatban néhány példa előtér konfigurációkat tartalmazza:
 
@@ -134,6 +132,10 @@ A fix IP-Címek szabálytípus az alapja a terheléselosztói konfiguráció-min
 ## <a name="limitations"></a>Korlátozások
 
 * Több előtér-konfiguráció csak az infrastruktúra-szolgáltatási virtuális gépek támogatottak.
-* A fix IP-Címek szabállyal az alkalmazást kell használnia a DIP kimenő forgalom. Ha az alkalmazás az előtérbeli IP-cím a vendég operációs rendszer visszacsatolási van kötve, majd SNAT nem elérhető legyen a kimenő folyam újraírási és a folyamat sikertelen lesz.
+* A fix IP-Címek szabállyal az alkalmazást kell használnia az elsődleges IP-konfiguráció kimenő forgalom. Ha az alkalmazás az előtérbeli IP-cím konfigurálva van kötve a visszacsatolás a felület a vendég operációs rendszer, Azure tartozó SNAT nem elérhető legyen a kimenő folyam újraírási és a folyamat sikertelen lesz.
 * Nyilvános IP-címek számlázási hatással. További információkért lásd: [IP-cím díjszabása](https://azure.microsoft.com/pricing/details/ip-addresses/)
 * Érvényes előfizetési korlátozásait. További információkért lásd: [szolgáltatási korlátait](../azure-subscription-service-limits.md#networking-limits) részleteiről.
+
+## <a name="next-steps"></a>További lépések
+
+- Felülvizsgálati [kimenő kapcsolatok](load-balancer-outbound-connections.md) tudni, hogy a kimenő kapcsolat viselkedés több frontends hatását.

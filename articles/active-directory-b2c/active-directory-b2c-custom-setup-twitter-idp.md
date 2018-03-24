@@ -1,24 +1,21 @@
 ---
-title: "Az Azure Active Directory B2C: Hozzáadása Twitter OAuth1 identitás-szolgáltatóként használatával egyéni házirendek"
-description: "Használja a Twitter identitás-szolgáltatóként a OAuth1 protokoll használatával"
+title: 'Az Azure Active Directory B2C: Hozzáadása Twitter OAuth1 identitás-szolgáltatóként használatával egyéni házirendek'
+description: Használja a Twitter identitás-szolgáltatóként a OAuth1 protokoll használatával
 services: active-directory-b2c
-documentationcenter: 
-author: yoelhor
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: 
-ms.assetid: 
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.devlang: na
 ms.date: 10/23/2017
-ms.author: yoelh
-ms.openlocfilehash: 629e0bbaa7c62ef5d381085588c6a99c203c41cb
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.author: davidmu
+ms.openlocfilehash: 4a7cc552f49877874dc173a47efe22873d5aeeed
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/14/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-active-directory-b2c-add-twitter-as-an-oauth1-identity-provider-by-using-custom-policies"></a>Az Azure Active Directory B2C: Hozzáadása Twitter OAuth1 identitás-szolgáltatóként használatával egyéni házirendek
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
@@ -39,9 +36,9 @@ Twitter használata az Azure Active Directory B2C identitás-szolgáltatóként 
  
     a. Típus a **neve** és egy **leírás** az új alkalmazás. 
 
-    b. Az a **webhely** mezőbe illessze be  **https://login.microsoftonline.com** . 
+    b. Az a **webhely** mezőbe illessze be **https://login.microsoftonline.com**. 
 
-    c. Az a **visszahívási URL-cím** mezőbe illessze be  **https://login.microsoftonline.com/te/{tenant}.onmicrosoft.com/oauth2/authresp** . Cserélje le {*bérlői*}, a bérlő neve (például contosob2c.onmicrosoft.com). Győződjön meg arról, hogy a HTTPS protokollt használ. 
+    c. Az a **visszahívási URL-cím** mezőbe illessze be **https://login.microsoftonline.com/te/{tenant}.onmicrosoft.com/oauth2/authresp**. Cserélje le {*bérlői*}, a bérlő neve (például contosob2c.onmicrosoft.com). Győződjön meg arról, hogy a HTTPS protokollt használ. 
 
     d. A lap alján, olvassa el és fogadja el a feltételeket, majd válassza ki **az Twitter-alkalmazás létrehozása**.
 

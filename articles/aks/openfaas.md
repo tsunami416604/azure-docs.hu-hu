@@ -1,6 +1,6 @@
 ---
-title: "OpenFaaS használata az Azure Tárolószolgáltatás (AKS)"
-description: "Üzembe helyezés és használat OpenFaaS Azure tároló szolgáltatás (AKS)"
+title: OpenFaaS használata az Azure Tárolószolgáltatás (AKS)
+description: Üzembe helyezés és használat OpenFaaS Azure tároló szolgáltatás (AKS)
 services: container-service
 author: justindavies
 manager: timlt
@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 03/05/2018
 ms.author: juda
 ms.custom: mvc
-ms.openlocfilehash: 06706450d8af6f571f002789815290f75da9623d
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: d531bb40421716bf9fb3c253a3e76207b2806912
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="using-openfaas-on-aks"></a>A AKS OpenFaaS használatával
 
@@ -230,7 +230,7 @@ Azt is tesztelni, a függvény a OpenFaaS felhasználói felületen belül.
 
 ![helyettesítő szöveg](media/container-service-serverless/OpenFaaSUI.png)
 
-# <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>További lépések
 
 OpenFaas alapértelmezett telepítését OpenFaaS átjáró és a funkciók zárolni kell. [Alex Ellis blogbejegyzés](https://blog.alexellis.io/lock-down-openfaas/) további részleteket tartalmaz a biztonságos konfigurációs beállításokat. 
 

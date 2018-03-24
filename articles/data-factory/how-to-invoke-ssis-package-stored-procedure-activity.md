@@ -1,23 +1,23 @@
 ---
-title: "SSIS-csomag használata az Azure Data Factory - tárolt eljárási tevékenység meghívása |} Microsoft Docs"
-description: "Ez a cikk ismerteti, hogyan lehet meghívni egy Azure Data Factory-folyamat a tárolt eljárási tevékenység használja az SQL Server Integration Services (SSIS) csomag."
+title: SSIS-csomag használata az Azure Data Factory - tárolt eljárási tevékenység meghívása |} Microsoft Docs
+description: Ez a cikk ismerteti, hogyan lehet meghívni egy Azure Data Factory-folyamat a tárolt eljárási tevékenység használja az SQL Server Integration Services (SSIS) csomag.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: spelluru
+manager: craigg
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: 
+ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: article
 ms.date: 12/07/2017
 ms.author: jingwang
-ms.openlocfilehash: 89eb2e567e06660efa5feddce1db0fcdb47792f3
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: dba1accbedf32099cc92be820d0937f3573746a0
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="invoke-an-ssis-package-using-stored-procedure-activity-in-azure-data-factory"></a>Egy SSIS-csomagot, a tárolt eljárási tevékenység az Azure Data Factory meghívása
 Ez a cikk ismerteti, hogyan lehet meghívni egy SSIS-csomagot az Azure Data Factory-folyamat a tárolt eljárási tevékenység használatával. 

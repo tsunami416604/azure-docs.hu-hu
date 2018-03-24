@@ -1,11 +1,11 @@
 ---
-title: "Azure Active Directory tartományi szolgáltatások: Az egyszerű szolgáltatás beállításának hibakeresésére |} Microsoft Docs"
-description: "Hibakeresés egyszerű szolgáltatásnév az Azure AD tartományi szolgáltatásokhoz"
+title: 'Azure Active Directory tartományi szolgáltatások: Az egyszerű szolgáltatás beállításának hibakeresésére |} Microsoft Docs'
+description: Hibakeresés egyszerű szolgáltatásnév az Azure AD tartományi szolgáltatásokhoz
 services: active-directory-ds
-documentationcenter: 
+documentationcenter: ''
 author: eringreenlee
-manager: 
-editor: 
+manager: ''
+editor: ''
 ms.assetid: f168870c-b43a-4dd6-a13f-5cfadc5edf2c
 ms.service: active-directory-ds
 ms.workload: identity
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: ergreenl
-ms.openlocfilehash: e1be075ba2d3e6ae7512ccc030073fd7f1862502
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: d1a605ae5c0ea598ba507de0b21a841333df79ef
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="troubleshoot-invalid-service-principal-configuration-for-your-managed-domain"></a>A felügyelt tartományok érvénytelen egyszerű konfiguráció hibaelhárítása
 
@@ -93,7 +93,7 @@ Kövesse az alábbi lépéseket, ha a szolgáltatás egyszerű azonosítójú ``
 
 ## <a name="alert-aadds105-password-synchronization-application-is-out-of-date"></a>Riasztási AADDS105: A jelszó-szinkronizálás alkalmazás elavultak
 
-**Figyelmeztető üzenet:** az alkalmazás azonosítójával "d87dcbc6-a371-462e-88e3-28ad15ec4e64" a szolgáltatás egyszerű törölve lett, és a Microsoft hozza létre újra. Ez a szolgáltatás egyszerű kezeli, egy másik szolgáltatás egyszerű és a jelszó-szinkronizáláshoz használt alkalmazás. A felügyelt egyszerű szolgáltatásnév és az alkalmazás nem jogosultak az újonnan létrehozott egyszerű alatt, és amikor a szinkronizálás tanúsítványa lejár lesz elavult. Ez azt jelenti, hogy az újonnan létrehozott egyszerű, nem lehet frissíteni a régi kezelt alkalmazások és a szinkronizálási objektumok aad milyen hatással lesz.
+**Figyelmeztető üzenet:** az alkalmazás azonosítójával "d87dcbc6-a371-462e-88e3-28ad15ec4e64" a szolgáltatás egyszerű lett törölve, és majd újra létrehozza. Ez a szolgáltatás egyszerű kezeli, egy másik szolgáltatás egyszerű és a jelszó-szinkronizáláshoz használt alkalmazás. A felügyelt szolgáltatásnevet, illetve az alkalmazás nem volt engedélyezve a az újonnan létrehozott egyszerű, akkor a szolgáltatás nem tudja kezelni. Ez azt jelenti, hogy az újonnan létrehozott egyszerű, nem lehet frissíteni a régi kezelt alkalmazások és a jelszavak szinkronizálása az hatással lesz.
 
 
 **Megoldás:** Azure AD PowerShell lépések elvégzéséhez szüksége. Azure AD PowerShell telepítésével kapcsolatos információkért lásd: [Ez a cikk](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0.).
@@ -108,7 +108,7 @@ A probléma megoldására PowerShell ablakban írja be a következő parancsokat
 2. Törölje a régi alkalmazás és a következő PowerShell-parancsokkal objektum
 
     ```powershell
-    $app = Get-AzureADApplication -Filter "DisplayName eq 'Azure AD Domain Services Sync'"
+    $app = Get-AzureADApplication -Filter "IdentifierUris eq 'https://sync.aaddc.activedirectory.windowsazure.com'"
     Remove-AzureADApplication -ObjectId $app.ObjectId
     $spObject = Get-AzureADServicePrincipal -Filter "DisplayName eq 'Azure AD Domain Services Sync'"
     Remove-AzureADServicePrincipal -ObjectId $app.ObjectId

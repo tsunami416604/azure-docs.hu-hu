@@ -1,24 +1,24 @@
 ---
-title: "Figyeli a tartós funkciók – Azure"
-description: "Útmutató a használ a tartós funkciók kiterjesztést az Azure Functions állapotfigyelő végrehajtásához."
+title: Figyeli a tartós funkciók – Azure
+description: Útmutató a használ a tartós funkciók kiterjesztést az Azure Functions állapotfigyelő végrehajtásához.
 services: functions
 author: kashimiz
 manager: cfowler
-editor: 
-tags: 
-keywords: 
+editor: ''
+tags: ''
+keywords: ''
 ms.service: functions
 ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 03/16/2018
+ms.date: 03/19/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 617b33a9f860ce3b06ff560de22824037eab8332
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 7e520429e5f5e219e05a77eb4ca18d0d6b6b3977
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="monitor-scenario-in-durable-functions---weather-watcher-sample"></a>A figyelő forgatókönyv tartós funkciókkal - időjárási megfigyelő minta
 
@@ -26,8 +26,8 @@ A figyelő mintát hivatkozik egy rugalmas *ismétlődő* folyamat például a m
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Kövesse az utasításokat a [tartós funkciók telepítése](durable-functions-install.md) a minta beállítása.
-* Ez a cikk feltételezi, hogy már lezajlott a [Hello feladatütemezési](durable-functions-sequence.md) minta forgatókönyv.
+* [Telepítse a tartós funkciók](durable-functions-install.md).
+* Fejezze be a [Hello feladatütemezési](durable-functions-sequence.md) forgatókönyv.
 
 ## <a name="scenario-overview"></a>Forgatókönyv áttekintése
 
@@ -64,7 +64,7 @@ Ez a cikk ismerteti a mintaalkalmazást a következő funkciókat:
 * `E3_GetIsClear`: Egy tevékenység függvény, amely a hely aktuális időjárási feltételeket ellenőrzi.
 * `E3_SendGoodWeatherAlert`: Egy tevékenység függvény, hogy a Twilio keresztül SMS üzenetet küld.
 
-Az alábbi szakaszok ismertetik a konfiguráció és a kódot, amely az Azure portál fejlesztésére szolgálnak. A Visual Studio fejlesztési kód a cikk végén meg.
+Az alábbi szakaszok ismertetik a konfiguráció és a használt kód a C# parancsfájlok. A Visual Studio fejlesztési kód a cikk végén meg.
  
 ## <a name="the-weather-monitoring-orchestration-visual-studio-code-and-azure-portal-sample-code"></a>A vezénylési (Visual Studio Code és az Azure portál mintakód) figyelési időjárási
 

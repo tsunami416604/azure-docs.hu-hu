@@ -1,24 +1,21 @@
 ---
-title: "Egyszeri bejelentkezési munkamenet felügyeleti egyéni házirendekkel – az Azure AD B2C |} Microsoft Docs"
-description: "Útmutató az Azure AD B2C egyéni házirendekkel egyszeri bejelentkezési munkameneteket kezelhessen."
+title: Egyszeri bejelentkezési munkamenet felügyeleti egyéni házirendekkel – az Azure AD B2C |} Microsoft Docs
+description: Útmutató az Azure AD B2C egyéni házirendekkel egyszeri bejelentkezési munkameneteket kezelhessen.
 services: active-directory-b2c
-documentationcenter: 
-author: parakhj
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: parakhj
-ms.assetid: 809f6000-2e52-43e4-995d-089d85747e1f
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/20/2017
-ms.author: parja
-ms.openlocfilehash: 676b277ae3fbf4554838eee70c5d3e2d8e12c33d
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: davidmu
+ms.openlocfilehash: 3d378d188d9acec06f37ca91e3c67e82fb31fc08
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-ad-b2c-single-sign-on-sso-session-management"></a>Az Azure AD B2C: Az egyszeri bejelentkezés (SSO) munkamenet-kezelés
 
@@ -66,7 +63,7 @@ Ez a szolgáltató munkamenetben jogcímek tárolására használható. Ez a szo
 </TechnicalProfile>
 ```
 
-A munkamenet jogcímek hozzáadásához használja a `<PersistedClaims>` a műszaki profil elemének. Ha a szolgáltatót használja a tudja kezelni a munkamenetet, a megőrzött jogcímeket hozzáadja a jogcímek tulajdonságcsomagjait. `<OutputClaims>`a jogcímeket kér le a munkamenet szolgál.
+A munkamenet jogcímek hozzáadásához használja a `<PersistedClaims>` a műszaki profil elemének. Ha a szolgáltatót használja a tudja kezelni a munkamenetet, a megőrzött jogcímeket hozzáadja a jogcímek tulajdonságcsomagjait. `<OutputClaims>` a jogcímeket kér le a munkamenet szolgál.
 
 ### <a name="externalloginssosessionprovider"></a>ExternalLoginSSOSessionProvider
 
@@ -98,15 +95,15 @@ A műszaki profil két metaadat-elemek szerepelnek:
 
 | Elem | Alapértelmezett érték | Lehetséges értékek | Leírás
 | --- | --- | --- | --- |
-| IncludeSessionIndex | igaz | Igaz/hamis | A szolgáltató jelzi, hogy a munkamenet index kell tárolni. |
-| RegisterServiceProviders | igaz | Igaz/hamis | Azt jelzi, hogy a szolgáltató minden SAML szolgáltatók, egy helyességi feltétel kiadott kell regisztrálni. |
+| IncludeSessionIndex | true | Igaz/hamis | A szolgáltató jelzi, hogy a munkamenet index kell tárolni. |
+| RegisterServiceProviders | true | Igaz/hamis | Azt jelzi, hogy a szolgáltató minden SAML szolgáltatók, egy helyességi feltétel kiadott kell regisztrálni. |
 
 Amikor a szolgáltató használata a SAML-identity provider munkamenetek tárolásához, a fenti mindkét értéke csak hamis lehet. A szolgáltató használata a B2C SAML-munkamenetek tárolásához, a fenti kell igaz vagy nincs megadva az alapértelmezett beállításokat teljesül.
 
 >[!NOTE]
 > SAML-munkamenet kijelentkezési igényel a `SessionIndex` és `NameID` befejezéséhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A Microsoft kedvelt visszajelzését és javaslatait! Ha bármilyen nehézségbe ütközik az ebben a témakörben, tegye fel Stack Overflow címkével ["azure-ad-b2c"](https://stackoverflow.com/questions/tagged/azure-ad-b2c). A funkciókra vonatkozó kérések szavazzon azokat a [visszajelzési fórumon](https://feedback.azure.com/forums/169401-azure-active-directory/category/160596-b2c).
 

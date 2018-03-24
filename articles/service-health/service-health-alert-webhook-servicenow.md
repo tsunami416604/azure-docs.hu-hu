@@ -1,10 +1,10 @@
 ---
-title: "Azure-szolgáltatások állapotának riasztások konfigurálása a ServiceNow |} Microsoft Docs"
-description: "A ServiceNow példányra szolgáltatás állapotának eseményekről személyre szabott értesítések lekérése."
+title: Azure-szolgáltatások állapotának riasztások konfigurálása a ServiceNow |} Microsoft Docs
+description: A ServiceNow példányra szolgáltatás állapotának eseményekről személyre szabott értesítések lekérése.
 author: shawntabrizi
 services: service-health
 documentationcenter: service-health
-ms.assetid: 
+ms.assetid: ''
 ms.service: service-health
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2017
 ms.author: shtabriz
-ms.openlocfilehash: 625718ab82443c897d1b15c2eac51dea3d0dfeb4
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: 867a8c0b478df9d2b7690b8b914ded7c42558583
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="configure-service-health-alerts-with-servicenow"></a>A ServiceNow health-riasztások konfigurálása
 
@@ -49,9 +49,9 @@ Ez a cikk bemutatja, hogyan Azure-szolgáltatások állapotának riasztások int
 
     >[!NOTE]
     >Frissíteni kell a `<secret>`,`<group>`, és `<email>` értékét az alábbi parancsfájlt.
-    >* `<secret>`véletlenszerű karakterlánc, például a GUID-nak kell lennie.
-    >* `<group>`a ServiceNow csoport ki szeretné osztani az incidenst a következőhöz
-    >* `<email>`az adott személy ki szeretné osztani az incidenst a következőhöz (nem kötelező) kell lennie.
+    >* `<secret>` véletlenszerű karakterlánc, például a GUID-nak kell lennie.
+    >* `<group>` a ServiceNow csoport ki szeretné osztani az incidenst a következőhöz
+    >* `<email>` az adott személy ki szeretné osztani az incidenst a következőhöz (nem kötelező) kell lennie.
     >
 
     ```javascript
@@ -183,7 +183,7 @@ Ez a cikk bemutatja, hogyan Azure-szolgáltatások állapotának riasztások int
 5. Válassza ki **mentése** végzett frissíteni a művelet csoportot.
 
 ## <a name="testing-your-webhook-integration-via-an-http-post-request"></a>A webhook integrációs via HTTP POST-kérelmet tesztelése
-1. Hozzon létre a szolgáltatás állapotát forgalma szeretne küldeni. Példa szolgáltatásának állapota webhook payloadot címen található [Webhookok Azure tevékenység naplózása riasztások](../monitoring-and-diagnostics/monitoring-activity-log-alerts-webhook.md).
+1. Hozzon létre a szolgáltatás állapotának forgalma szeretne küldeni. Példa service állapotfigyelő webhook payloadot címen található [Webhookok Azure tevékenység naplózása riasztások](../monitoring-and-diagnostics/monitoring-activity-log-alerts-webhook.md).
 
 2. Hozzon létre egy HTTP POST-kérelmet az alábbiak szerint:
 
@@ -192,13 +192,13 @@ Ez a cikk bemutatja, hogyan Azure-szolgáltatások állapotának riasztások int
 
     HEADERS     Content-Type: application/json
 
-    BODY        <Service Health payload>
+    BODY        <service health payload>
     ```
 3. Ekkor egy `200 OK` válasz a következő üzenettel: "Incidenst hozott létre."
 
 4. Ugrás a [ServiceNow](https://www.servicenow.com/) annak ellenőrzéséhez, hogy integráció sikeres volt-e beállítva.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - Megtudhatja, hogyan [meglévő probléma felügyeleti rendszerekhez webhook értesítések konfigurálása](service-health-alert-webhook-guide.md).
 - Tekintse át a [műveletnapló riasztási webhook séma](../monitoring-and-diagnostics/monitoring-activity-log-alerts-webhook.md). 
 - További tudnivalók [szolgáltatás állapotával kapcsolatos értesítésekre](../monitoring-and-diagnostics/monitoring-service-notifications.md).

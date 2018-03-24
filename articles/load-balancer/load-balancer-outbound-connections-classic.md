@@ -1,24 +1,24 @@
 ---
-title: "Kimenő kapcsolatok (klasszikus) Azure-ban |} Microsoft Docs"
-description: "Ez a cikk azt ismerteti, hogyan Azure lehetővé teszi, hogy a felhőalapú szolgáltatások nyilvános internetes szolgáltatásokkal kommunikálni."
+title: Kimenő kapcsolatok (klasszikus) Azure-ban |} Microsoft Docs
+description: Ez a cikk azt ismerteti, hogyan Azure lehetővé teszi, hogy a felhőalapú szolgáltatások nyilvános internetes szolgáltatásokkal kommunikálni.
 services: load-balancer
 documentationcenter: na
 author: KumudD
 manager: jeconnoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/14/2018
+ms.date: 03/22/2018
 ms.author: kumud
-ms.openlocfilehash: 7a307a598bd71369615b30476d387c06f473c397
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 8a24987ae3423a02647b1dd246b40179be100c06
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="outbound-connections-classic"></a>Kimenő kapcsolatok (klasszikus)
 
@@ -123,6 +123,18 @@ A központi telepítés méretének módosítása hatással lehet a meglévő ad
 
 Ha a központi telepítési méret csökkenti, és az alacsonyabb szint közeledik, a rendelkezésre álló SNAT portok száma nő. Ebben az esetben meglévő lefoglalt SNAT portok, és a megfelelő adatfolyamok, nem érintettek.
 
+SNAT port lefoglalását meghatározott IP-protokoll (TCP és UDP külön-külön karbantarthatók) és a következő feltételek kiadott:
+
+### <a name="tcp-snat-port-release"></a>TCP SNAT port kiadás
+
+- Ha mindkét kiszolgáló ügyfél küld FIN/ACK, SNAT port kiadjuk 240 másodperc múlva.
+- Ha egy RST látható, SNAT port kiadjuk 15 másodperc után.
+- üresjárati időtúllépés el lett érve.
+
+### <a name="udp-snat-port-release"></a>UDP-SNAT port kiadás
+
+- üresjárati időtúllépés el lett érve.
+
 ## <a name="problemsolving"></a> A probléma megoldásához 
 
 Ez a szakasz segítséget nyújtanak az SNAT Erőforrásfogyás és a többi olyan forgatókönyvet, amely akkor fordulhat elő, a kimenő kapcsolatok az Azure-ban készült.
@@ -170,3 +182,4 @@ Az nslookup parancs használatával a OpenDNS feloldó elküldheti a név myip.o
 ## <a name="next-steps"></a>További lépések
 
 - További információ [terheléselosztó](load-balancer-overview.md) Resource Manager üzembe helyezések szerepel.
+- Mód megismerése [kimenő kapcsolat](load-balancer-outbound-connections.md) forgatókönyvek Resource Manager üzembe helyezések érhető el.

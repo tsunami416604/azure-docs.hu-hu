@@ -1,6 +1,6 @@
 ---
-title: "A MySQL az Azure-adatbázis árképzési szinteket"
-description: "Ez a cikk ismerteti az Azure-adatbázis árképzési szinteket, a MySQL."
+title: A MySQL az Azure-adatbázis árképzési szinteket
+description: Ez a cikk ismerteti az Azure-adatbázis árképzési szinteket, a MySQL.
 services: mysql
 author: jan-eng
 ms.author: janeng
@@ -8,12 +8,12 @@ manager: kfile
 editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
-ms.date: 02/28/2018
-ms.openlocfilehash: 6bd24da05c337a902ce0e4a2b9acf22a809eb653
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.date: 03/20/2018
+ms.openlocfilehash: ec475648f1da4420e86bf59053d95770409bed8e
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>Azure tarifacsomagok MySQL-adatbázis
 
@@ -21,8 +21,8 @@ Egy MySQL-kiszolgálóhoz tartozó Azure-adatbázis három különböző árkép
 
 |    | **Basic** | **Általános célú** | **Memóriaoptimalizált** |
 |:---|:----------|:--------------------|:---------------------|
-| Számítási létrehozása | 4, 5. generációból generációs | 4, 5. generációból generációs | 5. generációból |
-| vCores | 1, 2 | 2, 4, 8, 16, 32 |2, 4, 8, 16, 32 |
+| Számítási létrehozása | 4, 5. generációból generációs | 4, 5. generációból generációs | Gen 5 |
+| vCores | 1, 2 | 2, 4, 8, 16, 32 |2, 4, 8, 16 |
 | Memória mennyisége vCore | 1x | 2 x Basic | Általános célú x 2 |
 | Storage mérete | 5 GB és 1 TB | 5 GB és 1 TB | 5 GB és 1 TB |
 | Tárolási típus | Azure Standard Storage | Azure Premium Storage | Azure Premium Storage |
@@ -40,7 +40,32 @@ Miután létrehozott egy kiszolgálót, vCores száma módosítható felfelé va
 
 ## <a name="compute-generations-vcores-and-memory"></a>Számítási generációja, vCores és memória
 
-A számítási erőforrások vannak megadva, a vCores, a logikai Processzor, a mögöttes hardver jelző. Jelenleg két számítási generációja, generációs 4. és Gen 5, kínálják választhat. A Gen 4 logikai CPU-k Intel E5-2673 v3 (Haswell) 2,4 GHz-es processzorokkal működnek. A Gen 5 logikai CPU-k Intel E5-2673 v4 (Broadwell) 2,3 GHz-es processzorokkal működnek.
+A számítási erőforrások vannak megadva, a vCores, a logikai Processzor, a mögöttes hardver jelző. Jelenleg két számítási generációja, generációs 4. és Gen 5, kínálják választhat. A Gen 4 logikai CPU-k Intel E5-2673 v3 (Haswell) 2,4 GHz-es processzorokkal működnek. A Gen 5 logikai CPU-k Intel E5-2673 v4 (Broadwell) 2,3 GHz-es processzorokkal működnek. 4. generációból és generációs 5 (az "X" jelöli elérhető), a következő régiókban érhetőek el: 
+
+| **Azure Region** | **4. generációs** | **5. generációs** |
+|:---|:----------:|:--------------------:|
+| USA középső régiója |  | X |
+| USA keleti régiója | X | X |
+| USA 2. keleti régiója | X |  |
+| USA északi középső régiója | X |  |
+| USA déli középső régiója | X |  |
+| USA nyugati régiója | X | X |
+| USA nyugati régiója, 2. |  | X |
+| Közép-Kanada | X | X |
+| Kelet-Kanada | X | X |
+| Dél-Brazília | X |  |
+| Észak-Európa | X | X |
+| Nyugat-Európa | X | X |
+| Az Egyesült Királyság nyugati régiója |  | X |
+| Az Egyesült Királyság déli régiója |  | X |
+| Kelet-Ázsia | X |  |
+| Délkelet-Ázsia | X |  |
+| Kelet-Ausztrália |  | X |
+| Közép-India | X |  |
+| Nyugat-India | X |  |
+| Kelet-Japán | X |  |
+| Nyugat-Japán | X |  |
+| Korea déli régiója |  | X |
 
 Attól függően, hogy ez a tarifacsomag minden vCore ki van építve a meghatározott RAM mennyiséggel. Növeléséhez vagy csökkentéséhez tegye a következőket vCores a kiszolgáló, a memória növeli vagy csökkenti arányosan. Az általános célú réteg biztosít kettős az alapszintű rétegben képest vCore memória mennyisége. A Memóriaoptimalizált réteget biztosít duplán az általános célú réteghez képest memória mennyisége.
 

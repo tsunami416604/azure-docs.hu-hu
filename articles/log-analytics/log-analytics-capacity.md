@@ -1,11 +1,11 @@
 ---
-title: "Az Azure Naplóelemzés kapacitást és teljesítményt megoldás |} Microsoft Docs"
-description: "Log Analytics a kapacitást és teljesítményt megoldás segítségével megismerheti a kapacitás, a Hyper-V-kiszolgálók."
+title: Az Azure Naplóelemzés kapacitást és teljesítményt megoldás |} Microsoft Docs
+description: Log Analytics a kapacitást és teljesítményt megoldás segítségével megismerheti a kapacitás, a Hyper-V-kiszolgálók.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: 51617a6f-ffdd-4ed2-8b74-1257149ce3d4
 ms.service: log-analytics
 ms.workload: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: magoedte
-ms.openlocfilehash: 26e87da60dc02dce8122c82a2208477a8b1813a7
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 99c29afec7d06a458ed6d34071f1b6acbba1f03b
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="plan-hyper-v-virtual-machine-capacity-with-the-capacity-and-performance-solution-preview"></a>Hyper-V virtuális gép Kapacitástervezés a kapacitást és teljesítményt megoldás (előzetes verzió)
 
@@ -120,29 +120,17 @@ A termelési számítási környezetek eltérőek jelentősen egy szervezet. Eme
 
 A következő táblázat a kapacitást és teljesítményt adatokat gyűjt, és ez a megoldás által kiszámított minta napló keres.
 
+
 | Lekérdezés | Leírás |
-|---|---|
-| Az összes állomás tárolómemória beállításai | <code>Type=Perf ObjectName="Capacity and Performance" CounterName="Host Assigned Memory MB" &#124; measure avg(CounterValue) as MB by InstanceName</code> |
-| Az összes virtuális gép memória konfigurációja | <code>Type=Perf ObjectName="Capacity and Performance" CounterName="VM Assigned Memory MB" &#124; measure avg(CounterValue) as MB by InstanceName</code> |
-| Minden virtuális gép közötti összes lemez IOPS bontása | <code>Type=Perf ObjectName="Capacity and Performance" (CounterName="VHD Reads/s" OR CounterName="VHD Writes/s") &#124; top 2500 &#124; measure avg(CounterValue) by CounterName, InstanceName interval 1HOUR</code> |
-| Minden virtuális gépek között a teljes lemez átviteli lebontása | <code>Type=Perf ObjectName="Capacity and Performance" (CounterName="VHD Read MB/s" OR CounterName="VHD Write MB/s") &#124; top 2500 &#124; measure avg(CounterValue) by CounterName, InstanceName interval 1HOUR</code> |
-| Minden CSV-k között teljes IOPS bontása | <code>Type=Perf ObjectName="Capacity and Performance" (CounterName="CSV Reads/s" OR CounterName="CSV Writes/s") &#124; top 2500 &#124; measure avg(CounterValue) by CounterName, InstanceName interval 1HOUR</code> |
-| Teljes átviteli sebesség minden CSV-k között bontása | <code>Type=Perf ObjectName="Capacity and Performance" (CounterName="CSV Read MB/s" OR CounterName="CSV Write MB/s") &#124; top 2500 &#124; measure avg(CounterValue) by CounterName, InstanceName interval 1HOUR</code> |
-| Minden CSV-k között teljes késést bontása | <code> Type=Perf ObjectName="Capacity and Performance" (CounterName="CSV Read Latency" OR CounterName="CSV Write Latency") &#124; top 2500 &#124; measure avg(CounterValue) by CounterName, InstanceName interval 1HOUR</code> |
-
->[!NOTE]
-> Ha a munkaterülete frissítve lett az [új Log Analytics lekérdezési nyelvre](log-analytics-log-search-upgrade.md), akkor a fenti lekérdezések a következők szerint módosulnak.
-
-> | Lekérdezés | Leírás |
 |:--- |:--- |
-| Az összes állomás tárolómemória beállításai | A Teljesítményfigyelő &#124; Ha ObjectName == "Kapacitást és teljesítményt" és a CounterName == "Fogadó hozzárendelt memória (MB)" &#124; MB összefoglalója által példánynév avg(CounterValue) = |
-| Az összes virtuális gép memória konfigurációja | A Teljesítményfigyelő &#124; Ha ObjectName == "Kapacitást és teljesítményt" és a CounterName == "Virtuális gép hozzárendelt memória (MB)" &#124; MB összefoglalója által példánynév avg(CounterValue) = |
-| Minden virtuális gép közötti összes lemez IOPS bontása | A Teljesítményfigyelő &#124; Ha ObjectName == "Kapacitást és teljesítményt" és (CounterName == "VHD olvasási műveletek/mp" vagy a CounterName == "VHD írási műveletek/mp") &#124; AggregatedValue összefoglalója bin (TimeGenerated, 1 óra), amelyet avg(CounterValue) = CounterName, az InstanceName |
-| Minden virtuális gépek között a teljes lemez átviteli lebontása | A Teljesítményfigyelő &#124; Ha ObjectName == "Kapacitást és teljesítményt" és (CounterName == "VHD olvasási MB/s" vagy a CounterName == "VHD írás MB/s") &#124; AggregatedValue összefoglalója bin (TimeGenerated, 1 óra), amelyet avg(CounterValue) = CounterName, az InstanceName |
-| Minden CSV-k között teljes IOPS bontása | A Teljesítményfigyelő &#124; Ha ObjectName == "Kapacitást és teljesítményt" és (CounterName == "CSV olvasási műveletek/mp" vagy a CounterName == "CSV írási műveletek/mp") &#124; AggregatedValue összefoglalója bin (TimeGenerated, 1 óra), amelyet avg(CounterValue) = CounterName, az InstanceName |
-| Teljes átviteli sebesség minden CSV-k között bontása | A Teljesítményfigyelő &#124; Ha ObjectName == "Kapacitást és teljesítményt" és (CounterName == "CSV olvasási műveletek/mp" vagy a CounterName == "CSV írási műveletek/mp") &#124; AggregatedValue összefoglalója bin (TimeGenerated, 1 óra), amelyet avg(CounterValue) = CounterName, az InstanceName |
-| Minden CSV-k között teljes késést bontása | A Teljesítményfigyelő &#124; Ha ObjectName == "Kapacitást és teljesítményt" és (CounterName == "CSV olvasási késése" vagy a CounterName == "CSV írás késés") &#124; AggregatedValue összefoglalója bin (TimeGenerated, 1 óra), amelyet avg(CounterValue) = CounterName, az InstanceName |
+| Az összes állomás tárolómemória beállításai | A Teljesítményfigyelő &#124; ahol ObjectName == "Kapacitást és teljesítményt" és a CounterName == "Állomás hozzárendelt memória (MB)" &#124; MB összefoglalója által példánynév avg(CounterValue) = |
+| Az összes virtuális gép memória konfigurációja | A Teljesítményfigyelő &#124; ahol ObjectName == "Kapacitást és teljesítményt" és a CounterName == "Virtuális gép hozzárendelt memória (MB)" &#124; MB összefoglalója által példánynév avg(CounterValue) = |
+| Minden virtuális gép közötti összes lemez IOPS bontása | A Teljesítményfigyelő &#124; ahol ObjectName == "Kapacitást és teljesítményt" és (CounterName == "VHD olvasási műveletek/mp" vagy a CounterName == "VHD írási műveletek/mp") &#124; AggregatedValue összefoglalója bin (TimeGenerated, 1 óra), amelyet avg(CounterValue) = CounterName, az InstanceName |
+| Minden virtuális gépek között a teljes lemez átviteli lebontása | A Teljesítményfigyelő &#124; ahol ObjectName == "Kapacitást és teljesítményt" és (CounterName == "VHD olvasási MB/s" vagy a CounterName == "VHD írás MB/s") &#124; AggregatedValue összefoglalója bin (TimeGenerated, 1 óra), amelyet avg(CounterValue) = CounterName, az InstanceName |
+| Minden CSV-k között teljes IOPS bontása | A Teljesítményfigyelő &#124; ahol ObjectName == "Kapacitást és teljesítményt" és (CounterName == "CSV olvasási műveletek/mp" vagy a CounterName == "CSV írási műveletek/mp") &#124; AggregatedValue összefoglalója bin (TimeGenerated, 1 óra), amelyet avg(CounterValue) = CounterName, az InstanceName |
+| Teljes átviteli sebesség minden CSV-k között bontása | A Teljesítményfigyelő &#124; ahol ObjectName == "Kapacitást és teljesítményt" és (CounterName == "CSV olvasási műveletek/mp" vagy a CounterName == "CSV írási műveletek/mp") &#124; AggregatedValue összefoglalója bin (TimeGenerated, 1 óra), amelyet avg(CounterValue) = CounterName, az InstanceName |
+| Minden CSV-k között teljes késést bontása | A Teljesítményfigyelő &#124; ahol ObjectName == "Kapacitást és teljesítményt" és (CounterName == "CSV olvasási késése" vagy a CounterName == "CSV írási késése") &#124; AggregatedValue összefoglalója bin (TimeGenerated, 1 óra), amelyet avg(CounterValue) = CounterName, az InstanceName |
 
 
 ## <a name="next-steps"></a>További lépések
-* Használjon [Log Analytics-e jelentkezni a keresések](log-analytics-log-searches.md) kapacitást és teljesítményt részletes adatainak megtekintéséhez.
+* Használjon [Log Analytics-e jelentkezni a keresések](log-analytics-log-search.md) kapacitást és teljesítményt részletes adatainak megtekintéséhez.
