@@ -1,10 +1,11 @@
 ---
-title: "A gépi tanulási modell eredmények értelmezését |} Microsoft Docs"
-description: "Válassza ki az optimális paraméterkészlet, az algoritmus használatával, és pontszám modell kimeneti megjelenítése módjáról."
+title: A gépi tanulási modell eredmények értelmezését |} Microsoft Docs
+description: Válassza ki az optimális paraméterkészlet, az algoritmus használatával, és pontszám modell kimeneti megjelenítése módjáról.
 services: machine-learning
-documentationcenter: 
-author: bradsev
-manager: cgronlun
+documentationcenter: ''
+author: heatherbshapiro
+ms.author: hshapiro
+manager: hjerez
 editor: cgronlun
 ms.assetid: 6230e5ab-a5c0-4c21-a061-47675ba3342c
 ms.service: machine-learning
@@ -13,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
-ms.author: bradsev;garye
-ms.openlocfilehash: d6563d411e9f159399f9863a5b572365dc2b05cc
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: e8f6d3accc7ad8de1161f08cceb0e856cf764255
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="interpret-model-results-in-azure-machine-learning"></a>Az Azure Machine Learning modell eredmények értelmezését
 Ez a témakör azt ismerteti, hogyan jelenítheti meg, és az Azure Machine Learning Studióban előrejelzés eredmények értelmezéséhez. A modellek betanítása és előrejelzéseket utasítást ("pontozza a mennyiségeket a modell") történik, után kell megértéséhez, valamint az előrejelzés eredmény értelmezhetők.

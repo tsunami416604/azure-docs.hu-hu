@@ -1,18 +1,18 @@
 ---
-title: "A VMware virtuális gépek és fizikai kiszolgálók replikálása Azure-bA az Azure Site Recovery támogatási mátrix |} Microsoft Docs"
-description: "A támogatott operációs rendszerek és a VMware virtuális gépek és fizikai kiszolgálók replikálása az Azure Site Recovery segítségével Azure összetevőket foglalja össze."
+title: A VMware virtuális gépek és fizikai kiszolgálók replikálása Azure-bA az Azure Site Recovery támogatási mátrix |} Microsoft Docs
+description: A támogatott operációs rendszerek és a VMware virtuális gépek és fizikai kiszolgálók replikálása az Azure Site Recovery segítségével Azure összetevőket foglalja össze.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/15/2018
+ms.date: 03/20/2018
 ms.author: raynew
-ms.openlocfilehash: c4fb466443e2f29fb79c3707ce142895f140f9a7
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 6f2f28b36fdb3751a469d66f242f9fa2119f9ae8
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="support-matrix-for-vmware-and-physical-server-replication-to-azure"></a>VMware és fizikai kiszolgálók replikálást az Azure-támogatási mátrix
 
@@ -175,7 +175,7 @@ Vendég operációs rendszer architektúrája | 64 bites. | Ellenőrzés sikerte
 Operációs rendszert tároló lemez mérete | Legfeljebb 2048 GB. | Ellenőrzés sikertelen lesz, ha nem támogatott. 
 Operációs rendszer lemez száma | 1 | Ellenőrzés sikertelen lesz, ha nem támogatott.  
 Adatlemez | 64 vagy kisebb. | Ellenőrzés sikertelen lesz, ha nem támogatott.  
-Adattároló lemez virtuális merevlemez mérete | Legfeljebb 4095 GB | Ellenőrzés sikertelen lesz, ha nem támogatott. 
+Adattároló lemezeinek mérete | Legfeljebb 4095 GB | Ellenőrzés sikertelen lesz, ha nem támogatott. 
 Hálózati adapterek | Több adapter támogatottak. | 
 Megosztott virtuális merevlemez | Nem támogatott. | Ellenőrzés sikertelen lesz, ha nem támogatott. 
 FC-lemez | Nem támogatott. | Ellenőrzés sikertelen lesz, ha nem támogatott. 

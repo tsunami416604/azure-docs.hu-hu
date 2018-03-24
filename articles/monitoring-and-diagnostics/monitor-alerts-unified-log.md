@@ -1,9 +1,9 @@
 ---
-title: "Napló riasztások figyelése Azure - riasztások (előzetes verzió) |} Microsoft Docs"
-description: "Eseményindító e-mailek, értesítések, az összetett lekérdezések megadott feltételek (előzetes verzió) Azure riasztásokhoz webhely URL-címek (webhookok), vagy az automation hívni."
+title: Riasztások jelentkezzen be Azure Monitor - riasztás |} Microsoft Docs
+description: Eseményindító e-mailek, értesítések, a webhely URL-címek (webhookok), vagy az automation Azure riasztások esetén megadott összetett lekérdezések feltételek teljesülése esetén hívható.
 author: msvijayn
 manager: kmadnani1
-editor: 
+editor: ''
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
 ms.assetid: f7457655-ced6-4102-a9dd-7ddf2265c0e2
@@ -12,35 +12,35 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/02/2018
+ms.date: 03/17/2018
 ms.author: vinagara
-ms.openlocfilehash: 0cee8bf77e0facc12159b823152b8859ce5cedd8
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 5928bbcec08d6ba4ac0b0d03b66fa4bfc8f5e3d7
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/23/2018
 ---
-# <a name="log-alerts-in-azure-monitor---alerts-preview"></a>Napló riasztások figyelése Azure - riasztások (előzetes verzió)
-Ez a cikk részletesen ismerteti, hogyan riasztási szabályok elemzési lekérdezések használata az Azure-riasztások (előzetes verzió), és különböző típusú riasztási szabályok napló közötti különbségeket ismerteti. A naplók segítségével metrika riasztások leírását, [közel valós idejű metrika riasztások](monitoring-near-real-time-metric-alerts.md)
+# <a name="log-alerts-in-azure-monitor---alerts"></a>Napló riasztásait az Azure Monitor - riasztás 
+Ez a cikk részletesen ismerteti, hogyan riasztási szabályok elemzési lekérdezések használata az Azure-riasztások, és különböző típusú riasztási szabályok napló közötti különbségeket ismerteti. A naplók segítségével metrika riasztások leírását, [közel valós idejű metrika riasztások](monitoring-near-real-time-metric-alerts.md)
 
-Jelenleg Azure riasztások (előzetes verzió), támogatja jelentkezzen ki riasztást a lekérdezések [Azure Naplóelemzés](../log-analytics/log-analytics-tutorial-viewdata.md) és [Application Insights](../application-insights/app-insights-cloudservices.md#view-azure-diagnostic-events).
+Jelenleg Azure riasztások támogatja jelentkezzen ki riasztást a lekérdezések [Azure Naplóelemzés](../log-analytics/log-analytics-tutorial-viewdata.md) és [Application Insights](../application-insights/app-insights-cloudservices.md#view-azure-diagnostic-events).
 
 > [!WARNING]
 
-> Jelenleg napló riasztással Azure riasztások (előzetes verzió) nem támogatja a kereszt-munkaterület vagy az alkalmazások közötti lekérdezések.
+> Jelenleg Azure riasztások napló riasztással nem támogatja a kereszt-munkaterület vagy az alkalmazások közötti lekérdezések. És az Application Insights riasztásainak naplózási megtalálható-e nyilvános előzetes verzió – a funkciókat és a felhasználói élmény változhat.
 
-Emellett a felhasználók is tökéletes Analytics platform választott Azure-ban a lekérdezések, majd *importálja azokat az értesítések (előzetes verzió) használható a lekérdezés mentésével*. Lépést kell végrehajtania:
+Emellett a felhasználók is tökéletes Analytics platform választott Azure-ban a lekérdezések, majd *importálja a lekérdezés mentésével riasztások használható*. Lépést kell végrehajtania:
 - Az Application Insights: Nyissa meg az Analytics-portálról érvényesítése a lekérdezés és az eredményeket. Mentse az egyedi névvel rendelkező *megosztott lekérdezések*.
 - A Naplóelemzési: Nyissa meg a napló kereséshez, ellenőrizze a lekérdezés és az eredményeket. Majd menteni, ebbe a kategóriába egyedi neve.
 
-Amikor [egy napló riasztás létrehozása a riasztások (előzetes verzió)](monitor-alerts-unified-usage.md), megjelenik a korábban mentett lekérdezés jel típusként felsorolt **napló (mentett lekérdezés)**; az alábbi példában ismertetett módon: ![mentett lekérdezés riasztások importálása](./media/monitor-alerts-unified/AlertsPreviewResourceSelectionLog-new.png)
+Amikor [egy napló riasztás létrehozása a riasztások ](monitor-alerts-unified-usage.md), megjelenik a korábban mentett lekérdezés jel típusként felsorolt **napló (mentett lekérdezés)**; az alábbi példában ismertetett módon: ![mentett lekérdezés riasztások importálása](./media/monitor-alerts-unified/AlertsPreviewResourceSelectionLog-new.png)
 
 > [!NOTE]
 > Használatával **napló (mentett lekérdezés)** riasztások van egy importálási eredmények. Az elemzés után végzett módosításokat ezért nem lesz tükröző mentett riasztási szabályok és fordítva.
 
 ## <a name="log-alert-rules"></a>Napló riasztási szabályok
 
-Riasztások (előzetes verzió) az automatikus futtatásra napló lekérdezések rendszeres időközönként Azure riasztások jönnek létre.  Ha a napló lekérdezés eredményeit az adott feltételeknek megfelelő, egy riasztás rekord jön létre. A szabály automatikusan követően futtathatja egy vagy több műveletek proaktív értesítést küldenek, a figyelmeztetés vagy meg kíván hívni egy másik folyamat, például a külső alkalmazás használatával történő adatküldés [json-alapú webhook](monitor-alerts-unified-log-webhook.md)használatával [művelet csoportok](monitoring-action-groups.md). Különböző típusú riasztási szabályok az elemzés végrehajtásához használja a másik programot.
+Riasztások automatikusan rendszeres időközönként a napló lekérdezéseinek futtatásához Azure riasztások jönnek létre.  Ha a napló lekérdezés eredményeit az adott feltételeknek megfelelő, egy riasztás rekord jön létre. A szabály automatikusan követően futtathatja egy vagy több műveletek proaktív értesítést küldenek, a figyelmeztetés vagy meg kíván hívni egy másik folyamat, például a külső alkalmazás használatával történő adatküldés [json-alapú webhook](monitor-alerts-unified-log-webhook.md)használatával [művelet csoportok](monitoring-action-groups.md). Különböző típusú riasztási szabályok az elemzés végrehajtásához használja a másik programot.
 
 A riasztási szabályok határozzák meg a következő adatokat:
 
@@ -118,7 +118,7 @@ Ebben a példában külön riasztások létrehozott KSZLG02 és srv03 mivel azok
 
 ## <a name="next-steps"></a>További lépések
 * Megértéséhez [webhookműveletek napló riasztások](monitor-alerts-unified-log-webhook.md)
-* [Azure riasztások (előzetes verzió) áttekintése](monitoring-overview-unified-alerts.md)
-* További tudnivalók [Azure riasztások használatával (előzetes verzió)](monitor-alerts-unified-usage.md)
+* [Azure riasztások áttekintése ](monitoring-overview-unified-alerts.md)
+* További tudnivalók [Azure riasztások használata ](monitor-alerts-unified-usage.md)
 * További információ [Application insights szolgáltatással](../application-insights/app-insights-analytics.md)
 * További információ [Naplóelemzési](../log-analytics/log-analytics-overview.md).    

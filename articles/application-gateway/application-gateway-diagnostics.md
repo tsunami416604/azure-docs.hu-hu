@@ -1,6 +1,6 @@
 ---
-title: "Az Alkalmazásátjáró belépési naplók, a Teljesítménynaplók, a háttér-állapotának és a metrikák figyelése |} Microsoft Docs"
-description: "Megtudhatja, hogyan engedélyezheti és kezelheti a belépési naplók és a Teljesítménynaplók az Alkalmazásátjáró"
+title: Az Alkalmazásátjáró belépési naplók, a Teljesítménynaplók, a háttér-állapotának és a metrikák figyelése |} Microsoft Docs
+description: Megtudhatja, hogyan engedélyezheti és kezelheti a belépési naplók és a Teljesítménynaplók az Alkalmazásátjáró
 services: application-gateway
 documentationcenter: na
 author: amitsriva
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/17/2017
 ms.author: amitsriva
-ms.openlocfilehash: 12c252340b82aba5ee69b12db83353750782e7c5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c739d98f81bafb6474995b141cab3400bcb4dc33
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="back-end-health-diagnostic-logs-and-metrics-for-application-gateway"></a>Háttér-állapot, a diagnosztikai naplók és a metrikák az Alkalmazásátjáró
 
@@ -152,9 +152,9 @@ Minden erőforrás-kezelő erőforrás naplózása automatikusan engedélyezve v
 
    ![A konfigurációs folyamat elindítása][2]
 
-4. Válassza ki egy meglévő Operations Management Suite (OMS) munkaterületet, vagy hozzon létre egy újat. A példa egy meglévőt.
+4. Válassza ki egy meglévő Naplóelemzési munkaterületet, vagy hozzon létre egy újat. A példa egy meglévőt.
 
-   ![Beállítások OMS-munkaterület][3]
+   ![A Naplóelemzési munkaterület beállítások][3]
 
 5. Ellenőrizze a beállításokat, majd kattintson a **mentése**.
 
@@ -172,15 +172,15 @@ A hozzáférési napló jön létre, csak akkor, ha engedélyezte az összes App
 |Érték  |Leírás  |
 |---------|---------|
 |instanceId     | A kérés átjáró alkalmazáspéldányt.        |
-|Ügyfélip     | A kérelem származási IP.        |
+|clientIP     | A kérelem származási IP.        |
 |clientPort     | A kérelem származási port.       |
-|HttpMethod     | A kérelem által használt HTTP-metódus.       |
+|httpMethod     | A kérelem által használt HTTP-metódus.       |
 |requestUri     | URI-címe, a kérelem érkezett.        |
 |RequestQuery     | **Kiszolgáló irányított**: háttér-készlet-példányt, a kérelem lett elküldve. </br> **X-AzureApplicationGateway-napló-ID**: a kérelemhez használt korrelációs azonosítója. A háttér-kiszolgálókon forgalom problémák hibaelhárításához használható. </br>**KISZOLGÁLÓ-állapota**: Application Gateway kapott a háttér HTTP válaszkódot.       |
-|Felhasználói ügynök     | Felhasználói ügynök a HTTP-kérelem fejléc.        |
+|UserAgent     | Felhasználói ügynök a HTTP-kérelem fejléc.        |
 |httpStatus     | HTTP-állapotkód küld vissza az ügyfélnek az Alkalmazásátjáró.       |
 |httpVersion     | A kérelem HTTP-verzió.        |
-|ReceivedBytes     | Csomag érkezett, bájtban kifejezett mérete.        |
+|receivedBytes     | Csomag érkezett, bájtban kifejezett mérete.        |
 |SentBytes| Küldött bájtok a csomag mérete.|
 |TimeTaken| (Ezredmásodpercben), hogy mennyi ideig tart a feldolgozandó kérelmet, és a válasz küldését. Ez az az idő, amikor az Alkalmazásátjáró megkapja az idő, amikor a válasz küldése művelet befejezésekor HTTP-kérelem első bájtját időszakaként kiszámítása. Fontos megjegyezni, hogy a Time-Taken mező általában tartalmazza az idő, amely a kérelem-válasz csomagok utazás a hálózaton keresztül. |
 |sslEnabled| Hogy a kommunikáció a háttér-címkészletek SSL használható. Érvényes értékei a be- és kikapcsolható.|
@@ -218,8 +218,8 @@ A teljesítmény napló jön létre, csak akkor, ha engedélyezte az összes App
 |instanceId     |  Átjáró alkalmazáspéldányt amelyek esetében az adatok létrehozása. Az egy több-példány Alkalmazásátjáró soronként egy példány van.        |
 |healthyHostCount     | A háttér-készletben található megfelelő gazdagép száma.        |
 |unHealthyHostCount     | A háttér-készlet nem megfelelő állapotú gazdagépek száma.        |
-|RequestCount     | Kiszolgált kérelmek száma.        |
-|Késés | A háttérben, a kérelmek látja, hogy a példány érkező kéréseket késése (ezredmásodpercben). |
+|requestCount     | Kiszolgált kérelmek száma.        |
+|késés | A háttérben, a kérelmek látja, hogy a példány érkező kéréseket késése (ezredmásodpercben). |
 |failedRequestCount| Sikertelen kérelmek száma.|
 |Átviteli sebesség| Átlagos átviteli sebessége a legutóbbi naplóban másodpercenként bájtban mért óta.|
 
@@ -253,19 +253,19 @@ A tűzfal napló jön létre, csak akkor, ha engedélyezte az egyes Alkalmazás�
 |Érték  |Leírás  |
 |---------|---------|
 |instanceId     | Átjáró alkalmazáspéldányt mely tűzfal adatok létrehozása folyamatban van. Az egy több-példány Alkalmazásátjáró soronként egy példány van.         |
-|Ügyfélip     |   A kérelem származási IP.      |
+|clientIp     |   A kérelem származási IP.      |
 |clientPort     |  A kérelem származási port.       |
 |requestUri     | A kérelem érkezett URL-CÍMÉT.       |
 |ruleSetType     | A szabály típusának beállítása. A rendelkezésre álló értéke OWASP.        |
 |ruleSetVersion     | A szabálykészlet használt verzió. Lehetséges értékek a következők: program 2.2.9-es és 3.0-s.     |
 |ruleId     | A kiváltó eseményt Szabályazonosító.        |
-|Üzenet     | A kiváltó eseményt felhasználóbarát üzenetet. További részletek a részletes adatait tartalmazó részben szerepelnek.        |
-|A művelet     |  A kérésre végrehajtott műveletet. Lehetséges értékek a következők: letiltott és engedélyezett.      |
-|Helykiszolgáló     | A hely, amelynek a napló jött létre. Jelenleg csak globális mert szabályok globális szerepel.|
-|Részletek     | Az eseményindító esemény részleteit.        |
-|details.Message     | A szabály leírása.        |
-|details.Data     | A szabály kérelemhez található meghatározott adatok.         |
-|details.File     | A szabályt tartalmazó konfigurációs fájlt.        |
+|üzenet     | A kiváltó eseményt felhasználóbarát üzenetet. További részletek a részletes adatait tartalmazó részben szerepelnek.        |
+|művelet     |  A kérésre végrehajtott műveletet. Lehetséges értékek a következők: letiltott és engedélyezett.      |
+|hely     | A hely, amelynek a napló jött létre. Jelenleg csak globális mert szabályok globális szerepel.|
+|részletek     | Az eseményindító esemény részleteit.        |
+|details.message     | A szabály leírása.        |
+|details.data     | A szabály kérelemhez található meghatározott adatok.         |
+|details.file     | A szabályt tartalmazó konfigurációs fájlt.        |
 |details.line     | A konfigurációs fájlban, az eseményt kiváltó sorszámot.       |
 
 ```json
@@ -322,7 +322,7 @@ Metrikák egyik újdonsága az egyes Azure-erőforrások ahol teljesítményszá
 
 Metrikák aktuális listájának megtekintéséhez lásd: [támogatott Azure-figyelő metrikák](../monitoring-and-diagnostics/monitoring-supported-metrics.md).
 
-### <a name="alert-rules"></a>A riasztási szabályok
+### <a name="alert-rules"></a>Riasztási szabályok
 
 Megkezdheti a riasztási szabályok alapján egy erőforrás metrikáit. Például egy riasztás hívható meg olyan webhook vagy a rendszergazda e-mail, ha az alkalmazás-átjáró átviteli fent, alatt vagy küszöbértékkel van a megadott idő.
 
@@ -354,7 +354,7 @@ Riasztási értesítések kapcsolatos további információkért lásd: [riaszt�
 
 További információ a webhookok, és hogyan használhatók a riasztások ismertetése, látogasson el a [olyan webhook konfigurálása Azure metrika riasztást](../monitoring-and-diagnostics/insights-webhooks-alerts.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A számláló és az eseménynaplók színtartományok használatával [Naplóelemzési](../log-analytics/log-analytics-azure-networking-analytics.md).
 * [Megjelenítheti a Power bi Azure tevékenységnapló](http://blogs.msdn.com/b/powerbi/archive/2015/09/30/monitor-azure-audit-logs-with-power-bi.aspx) blogbejegyzést.

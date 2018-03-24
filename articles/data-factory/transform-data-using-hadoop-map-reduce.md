@@ -1,11 +1,11 @@
 ---
-title: "Hadoop-MapReduce művelethez használata az Azure Data Factory adatok átalakítása |} Microsoft Docs"
-description: "Megtudhatja, hogyan futtatásával Hadoop MapReduce programok az Azure HDInsight-fürtök egy az Azure data factory feldolgozni az adatokat."
+title: Hadoop-MapReduce művelethez használata az Azure Data Factory adatok átalakítása |} Microsoft Docs
+description: Megtudhatja, hogyan futtatásával Hadoop MapReduce programok az Azure HDInsight-fürtök egy az Azure data factory feldolgozni az adatokat.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: shengcmsft
-manager: jhubbard
-editor: spelluru
+manager: craigg
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2018
 ms.author: shengc
-ms.openlocfilehash: c1fbb6864629874ef116cdf81d48df4a9ed5af1f
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 7c736f08e35f217be1ab7eef0a06ce418025973a
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="transform-data-using-hadoop-mapreduce-activity-in-azure-data-factory"></a>Hadoop-MapReduce művelethez használata az Azure Data Factory adatok átalakítása
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]

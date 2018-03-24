@@ -1,11 +1,12 @@
 ---
-title: "Az Azure Machine Learning REST API-hibakódok |} Microsoft Docs"
-description: "Az ezen hibakódok által az Azure Machine Learning webszolgáltatás művelet sikerült visszaadni."
-keywords: 
+title: Az Azure Machine Learning REST API-hibakódok |} Microsoft Docs
+description: Az ezen hibakódok által az Azure Machine Learning webszolgáltatás művelet sikerült visszaadni.
+keywords: ''
 services: machine-learning
-documentationcenter: 
-author: garyericson
-manager: jhubbard
+documentationcenter: ''
+author: heatherbshapiro
+ms.author: hshapiro
+manager: hjerez
 editor: cgronlun
 ms.assetid: 0923074b-3728-439d-a1b8-8a7245e39be4
 ms.service: machine-learning
@@ -14,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
 ms.date: 11/16/2016
-ms.author: garye
-ms.openlocfilehash: 5cf7d5bb878f323e4e3559822dc745359e43608e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0ba44b2a93bcd542db1350def2d0554c8c44233c
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="machine-learning-rest-api-error-codes"></a>Gépi tanulási REST API-hibakódok
  
@@ -31,7 +31,7 @@ A következő hibakódok visszatérő kiszolgálón az Azure Machine Learning we
  
 Ez az osztály a hiba azt jelenti, hogy valahol megadott argumentum érvénytelen volt. Ennek oka az lehet, a hitelesítő adatok vagy egy webkiszolgáló átadott Azure tárolási helyét. Tekintse meg a hiba a "kód" mező "a Részletek" szakaszban diagnosztizálásához mely megadott argumentum érvénytelen volt.
  
-| Hibakód: | Felhasználói üzenet |
+| Hibakód | Felhasználói üzenet |
 | ---------- |--------------|
 | BadParameterValue | A megadott paraméter értéke nem felel meg a paraméter a szabály a paraméter |
 | BadSubscriptionId | Az előfizetési azonosító, amellyel pontozása nincs jelen az erőforrás egy |
@@ -71,7 +71,7 @@ Ez az osztály a hiba azt jelenti, hogy valahol megadott argumentum érvénytele
 | RequestBodyInvalid | Nincs kérés törzsében megadott vagy hiba történt a kérelem törzsének deszerializálása során. |
 | RequestIsEmpty | Kérelem nem biztosított. Adjon meg egy érvényes kérelmet, és próbálkozzon újra. |
 | UnexpectedParameter | Nem várt paraméterek megadva. Ellenőrizze a paraméternevek helyesen írta-e, csak a várt paraméterek át lettek adva, majd próbálkozzon újra. |
-| UnknownError | Ismeretlen hiba történt. |
+| UnknownError | Ismeretlen hiba. |
 | UserParameterInvalid | {0} |
 | WebServiceConcurrentRequestRequirementInvalid | Nem módosítható az egyidejű kérelmek követelmények {0} webszolgáltatáshoz. |
 | WebServiceIdInvalid | Érvénytelen webszolgáltatás megadott felügyeletiszolgáltatás-azonosító. Webes szolgáltatás azonosítója érvényes guid-nak kell lennie. |
@@ -82,7 +82,7 @@ Ez az osztály a hiba azt jelenti, hogy valahol megadott argumentum érvénytele
  
 Érvénytelen a megadott argumentum.
  
-| Hibakód: | Felhasználói üzenet |
+| Hibakód | Felhasználói üzenet |
 | ---------- |--------------|
 | InputMismatchError | A bemeneti adat nem felel meg a bemeneti porthoz séma. |
 | InputParseError | Nem sikerült a bemeneti vektoros elemzése.  Ellenőrizze a bemeneti vektor rendelkezik a megfelelő számú oszlopot és adattípusokat.  További részletek: {0}. |
@@ -94,7 +94,7 @@ Ez az osztály a hiba azt jelenti, hogy valahol megadott argumentum érvénytele
  
 A kérés nem érvényes az aktuális környezetben.
  
-| Hibakód: | Felhasználói üzenet |
+| Hibakód | Felhasználói üzenet |
 | ---------- |--------------|
 | CannotStartJob | A feladat nem indítható el, mert {0} állapotban van. |
 | IncompatibleModel | A modell nem kompatibilis a kérelem-verzióját. A kérelem verzióval csak egyetlen datatable kimeneti modellek. |
@@ -114,7 +114,7 @@ Modul végrehajtási hibát észlelt.
  
 Érvénytelen webszolgáltatás service-csomag. Győződjön meg a webes szolgáltatás csomag megadott helyességéről, majd próbálkozzon újra.
  
-| Hibakód: | Felhasználói üzenet |
+| Hibakód | Felhasználói üzenet |
 | ---------- |--------------|
 | FormatError | A webes szolgáltatás csomag rosszul megformázva. Részletek: {0} |
 | RuntimesError | A web service csomag graph érvénytelen. Részletek: {0} |
@@ -124,7 +124,7 @@ Modul végrehajtási hibát észlelt.
  
 Kérelme, mert jogosulatlan hozzáférés erőforráshoz.
  
-| Hibakód: | Felhasználói üzenet |
+| Hibakód | Felhasználói üzenet |
 | ---------- |--------------|
 | AdminRequestUnauthorized | Nem engedélyezett |
 | ManagementRequestUnauthorized | Nem engedélyezett |
@@ -134,7 +134,7 @@ Kérelme, mert jogosulatlan hozzáférés erőforráshoz.
  
 Az erőforrás nem található.
  
-| Hibakód: | Felhasználói üzenet |
+| Hibakód | Felhasználói üzenet |
 | ---------- |--------------|
 | ModelPackageNotFound | A csomag nem található modell. Győződjön meg a modell csomagazonosító helyességéről, majd próbálkozzon újra. |
 | WebServiceIdNotFoundInWorkspace | A webszolgáltatás nem található a munkaterület alatt. A webServiceId és a workspaceId között eltérés tapasztalható. Ellenőrizze, hogy a megadott webes szolgáltatás része a munkaterületet, és próbálkozzon újra. |
@@ -145,7 +145,7 @@ Az erőforrás nem található.
  
 A műveletet nem sikerült a rendelkezésre álló időn belül befejezni.
  
-| Hibakód: | Felhasználói üzenet |
+| Hibakód | Felhasználói üzenet |
 | ---------- |--------------|
 | RequestCanceled | Az ügyfél megszakította a kérelem. |
 | ScoreRequestTimeout | Végrehajtási kérelem túllépte az időkorlátot. |
@@ -154,7 +154,7 @@ A műveletet nem sikerült a rendelkezésre álló időn belül befejezni.
  
 Erőforrás már létezik.
  
-| Hibakód: | Felhasználói üzenet |
+| Hibakód | Felhasználói üzenet |
 | ---------- |--------------|
 | ModelOutputMetadataMismatch | Érvénytelen kimeneti paraméter neve. Próbálja meg átnevezni az oszlopot, majd próbálja meg ismét a metaadatok modul használatával. |
  
@@ -162,7 +162,7 @@ Erőforrás már létezik.
  
 A modell nagyobb volt rendelve memóriakvótáját.
  
-| Hibakód: | Felhasználói üzenet |
+| Hibakód | Felhasználói üzenet |
 | ---------- |--------------|
 | OutOfMemoryLimit | A modell több memóriára hozzá lett sajátíthatja felhasználja. A modell engedélyezett maximális memória {0} MB. Ellenőrizze, hogy a modell problémák. |
  
@@ -170,7 +170,7 @@ A modell nagyobb volt rendelve memóriakvótáját.
  
 Végrehajtási belső hibát észlelt.
  
-| Hibakód: | Felhasználói üzenet |
+| Hibakód | Felhasználói üzenet |
 | ---------- |--------------|
 | AdminAuthenticationFailed |  |
 | BackendArgumentError |  |
@@ -223,7 +223,7 @@ Végrehajtási belső hibát észlelt. A rendszer kevés a memória. Kérjük, p
  
 Érvénytelen webszolgáltatás service-csomag. Ellenőrizze a megadott webes csomag helyességét, és próbálkozzon újra.
  
-| Hibakód: | Felhasználói üzenet |
+| Hibakód | Felhasználói üzenet |
 | ---------- |--------------|
 | ModuleError | A web service csomag graph érvénytelen. Részletek: {0} |
  
@@ -236,7 +236,7 @@ A kérelem nem hajtható végre, mert a tárolók inicializálás alatt.
  
 Szolgáltatás átmenetileg nem érhető el.
  
-| Hibakód: | Felhasználói üzenet |
+| Hibakód | Felhasználói üzenet |
 | ---------- |--------------|
 | NoMoreResources | Erőforrások nem érhetők el a kérelmet. |
 | RequestThrottled | Kérelem {0} végpont lett csökkentve. A végpont a maximális feldolgozási {1}. |
@@ -248,7 +248,7 @@ Szolgáltatás átmenetileg nem érhető el.
  
 A műveletet nem sikerült a rendelkezésre álló időn belül befejezni.
  
-| Hibakód: | Felhasználói üzenet |
+| Hibakód | Felhasználói üzenet |
 | ---------- |--------------|
 | BackendInitializationTimeout | A webes szolgáltatás inicializálása nem sikerült a rendelkezésre álló időn belül. |
 | BackendScoreTimeout | A webes szolgáltatás kérelem végrehajtása nem sikerült a rendelkezésre álló időn belül. |

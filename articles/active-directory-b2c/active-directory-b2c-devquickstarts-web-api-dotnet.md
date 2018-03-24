@@ -1,25 +1,21 @@
 ---
-title: "Hívja a biztonságos webes API-t az ASP.NET Azure Active Directory B2C |} Microsoft Docs"
-description: "Hogyan kell a .NET-webalkalmazás létrehozása, és hívja meg a webes api Azure Active Directory B2C és az OAuth 2.0 hozzáférési jogkivonatok használatával."
+title: Hívja a biztonságos webes API-t az ASP.NET Azure Active Directory B2C |} Microsoft Docs
+description: Hogyan kell a .NET-webalkalmazás létrehozása, és hívja meg a webes api Azure Active Directory B2C és az OAuth 2.0 hozzáférési jogkivonatok használatával.
 services: active-directory-b2c
 documentationcenter: .net
-author: parakhj
+author: davidmu1
 manager: mtillman
-editor: 
-ms.assetid: d3888556-2647-4a42-b068-027f9374aa61
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/17/2017
-ms.author: parakhj
-ms.custom: seohack1
-ms.openlocfilehash: d81976988a26ce264dd7b9ed24f43aed21d4ee99
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.author: davidmu
+ms.openlocfilehash: 75ae88898d3d6b275ec462e865347056305fd666
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-ad-b2c-call-a-net-web-api-from-a-net-web-app"></a>Az Azure AD B2C: .NET webes API-hívás .NET-webalkalmazásból
 
@@ -52,7 +48,7 @@ Az oktatóanyag kódjának kezelése a [GitHubon](https://github.com/Azure-Sampl
 git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi.git
 ```
 
-Miután letöltötte a mintakódot, nyissa meg a Visual Studio .sln fájlt a kezdéshez. A megoldásfájl két projektet tartalmaz: `TaskWebApp` és `TaskService`. `TaskWebApp`a felhasználó kommunikál MVC webalkalmazás van. A `TaskService` az alkalmazás webes API háttérszolgáltatása, amely tárolja a felhasználók feladatlistáit. Ez a cikk nem tér ki az épület a `TaskWebApp` webes alkalmazás vagy a `TaskService` webes API-t. Megtudhatja, hogyan hozhat létre az Azure AD B2C segítségével .NET web app, tekintse meg a [.NET web app oktatóanyag](active-directory-b2c-devquickstarts-web-dotnet-susi.md). Megtudhatja, hogyan hozhat létre a .NET webes API-t az Azure AD B2C használatával biztonságossá téve, tekintse meg a [.NET webes API-k oktatóanyag](active-directory-b2c-devquickstarts-api-dotnet.md).
+Miután letöltötte a mintakódot, nyissa meg a Visual Studio .sln fájlt a kezdéshez. A megoldásfájl két projektet tartalmaz: `TaskWebApp` és `TaskService`. `TaskWebApp` a felhasználó kommunikál MVC webalkalmazás van. A `TaskService` az alkalmazás webes API háttérszolgáltatása, amely tárolja a felhasználók feladatlistáit. Ez a cikk nem tér ki az épület a `TaskWebApp` webes alkalmazás vagy a `TaskService` webes API-t. Megtudhatja, hogyan hozhat létre az Azure AD B2C segítségével .NET web app, tekintse meg a [.NET web app oktatóanyag](active-directory-b2c-devquickstarts-web-dotnet-susi.md). Megtudhatja, hogyan hozhat létre a .NET webes API-t az Azure AD B2C használatával biztonságossá téve, tekintse meg a [.NET webes API-k oktatóanyag](active-directory-b2c-devquickstarts-api-dotnet.md).
 
 ### <a name="update-the-azure-ad-b2c-configuration"></a>Az Azure AD B2C konfiguráció frissítése
 
@@ -61,7 +57,7 @@ A minta úgy van konfigurálva, hogy a bemutató bérlőnk házirendjeit és üg
 1. Nyissa meg a `web.config` fájlt a `TaskService` projektben, és a következőképpen cserélje le az értékeket:
 
     * Az `ida:Tenant` helyett szerepeljen a bérlő neve
-    * `ida:ClientId`a webes api-alkalmazás azonosítójú
+    * `ida:ClientId` a webes api-alkalmazás azonosítójú
     * Az `ida:SignUpSignInPolicyId` helyett szerepeljen a „regisztrálási vagy bejelentkezési” házirend neve
 
 2. Nyissa meg a `web.config` fájlt a `TaskWebApp` projektben, és a következőképpen cserélje le az értékeket:

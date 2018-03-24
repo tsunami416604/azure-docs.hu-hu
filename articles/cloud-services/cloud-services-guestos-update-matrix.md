@@ -1,24 +1,24 @@
 ---
-title: "További tudnivalók a legújabb Azure vendég operációs rendszereinek kiadásait |} Microsoft Docs"
-description: "A legújabb kiadás híreket és SDK való kompatibilitást, Azure Cloud Services vendég operációs rendszer."
+title: További tudnivalók a legújabb Azure vendég operációs rendszereinek kiadásait |} Microsoft Docs
+description: A legújabb kiadás híreket és SDK való kompatibilitást, Azure Cloud Services vendég operációs rendszer.
 services: cloud-services
 documentationcenter: na
 author: raiye
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 6306cafe-1153-44c7-8554-623b03d59a34
 ms.service: cloud-services
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 2/27/2018
+ms.date: 3/19/2018
 ms.author: raiye
-ms.openlocfilehash: dac0efdb1ce76ad6f143479782f164d3304aeaf3
-ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.openlocfilehash: 0456bf8d8cdd84078d12c3fc0f48d16b0370cddd
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Az Azure vendég operációs rendszereinek kiadásait és SDK-kompatibilitási mátrix
 Itt való naprakész információkat a legújabb Azure vendég operációs rendszer feloldja a Felhőszolgáltatásai számára. Ez az információ segít a frissítési lépések megtervezéséről, mielőtt egy vendég operációs rendszer le van tiltva. Ha a szerepkörök használatára konfigurálja *automatikus* vendég operációs rendszer frissíti a [Azure vendég operációs rendszer frissítési beállítások][Azure Guest OS Update Settings], nem elengedhetetlen, hogy olvassa el ezen a lapon.
@@ -42,6 +42,9 @@ Itt való naprakész információkat a legújabb Azure vendég operációs rends
 Nem tudja, hogy milyen a vendég operációs rendszer, vagy hogyan a vendég operációs rendszer feloldja a munkát? Olvasási [ez](#how-it-works) szakasz.
 
 ## <a name="news-updates"></a>Hírek
+###### <a name="march-19-2018"></a>**2018. március 19.**
+A február vendég operációs rendszer adott ki.
+
 ###### <a name="january-29-2018"></a>**2018. január 29.**
 A január vendég operációs rendszer kiadása az operációsrendszer-családok 2 (WA-VENDÉG-OS-2.70_201801-01) & 3 (WA-VENDÉG-operációsrendszer-3.57_201801-01)
 
@@ -72,12 +75,6 @@ Július vendég operációs rendszer adott ki.
 ###### <a name="july-19-2017"></a>**2017. július 19.**
 Július vendég operációs rendszer bevezetés július 19 indul, és a tervezett kiadását augusztus 8 rendelkezik.
 
-###### <a name="july-7-2017"></a>**2017. július 7.**
-Június vendég operációs rendszer adott ki.
-
-###### <a name="june-16-2017"></a>**2017. június 16.**
-Június vendég operációs rendszer bevezetés. június 16 indul, és a tervezett kiadását. július 11 rendelkezik.
-
 
 ## <a name="releases"></a>Kiadások
 ## <a name="family-5-releases"></a>Feloldja a családja 5
@@ -93,8 +90,9 @@ Június vendég operációs rendszer bevezetés. június 16 indul, és a terveze
 
 | Konfigurációs karakterlánc | Kiadási dátum | Tiltsa le a dátum | Lejárt dátum |
 | --- | --- | --- | --- |
+| WA-GUEST-OS-5.16_201802-01 |2018. március 12. |POST 5.18 |TBD |
 | WA-GUEST-OS-5.15_201801-01 |2018. január 4. |POST 5.17 |TBD |
-| WA-GUEST-OS-5.14_201712-01 |2018. január 4. |POST 5.16 |TBD |
+|~~WA-GUEST-OS-5.14_201712-01~~ |2018. január 4. |2018. március 12. |TBD |
 |~~WA-GUEST-OS-5.13_201711-01~~ |2017. december 14. |2018. január 4.|TBD |
 |~~WA-GUEST-OS-5.12_201710-02~~ |2017. november 8. |2018. január 4. |TBD |
 |~~WA-GUEST-OS-5.11_201709-01~~ |2017. október 6. |2017. december 14. |TBD |
@@ -118,8 +116,9 @@ Június vendég operációs rendszer bevezetés. június 16 indul, és a terveze
 
 | Konfigurációs karakterlánc | Kiadási dátum | Tiltsa le a dátum | Lejárt dátum |
 | --- | --- | --- | --- |
+| WA-GUEST-OS-4.51_201802-01 |2018. március 12. |POST 4,53 |TBD |
 | WA-GUEST-OS-4.50_201801-01 |2018. január 4. |POST 4.52-es |TBD |
-| WA-GUEST-OS-4.49_201712-01 |2018. január 4. |POST 4.51 |TBD |
+|~~WA-GUEST-OS-4.49_201712-01~~ |2018. január 4. |2018. március 12. |TBD |
 |~~WA-GUEST-OS-4.48_201711-01~~ |2017. december 14. |2018. január 4. |TBD |
 |~~WA-GUEST-OS-4.47_201710-02~~ |2017. november 8. |2018. január 4. |TBD |
 |~~WA-GUEST-OS-4.46_201709-01~~ |2017. október 6. |2017. december 14. |TBD |
@@ -143,8 +142,9 @@ Június vendég operációs rendszer bevezetés. június 16 indul, és a terveze
 
 | Konfigurációs karakterlánc | Kiadási dátum | Tiltsa le a dátum | Lejárt dátum |
 | --- | --- | --- | --- |
+| WA-GUEST-OS-3.58_201802-01 |2018. március 19. |POST 3.60 |TBD |
 | WA-GUEST-OS-3.57_201801-01 |2018. január 29. |POST 3.59 |TBD |
-| WA-GUEST-OS-3.56_201712-01 |2018. január 4. |POST 3.58 |TBD |
+|~~WA-GUEST-OS-3.56_201712-01~~ |2018. január 4. |2018. március 19. |TBD |
 |~~WA-GUEST-OS-3.55_201711-01~~ |2017. december 14. |2018. január 29. |TBD |
 |~~WA-GUEST-OS-3.54_201710-02~~ |2017. november 8. |2018. január 4. |TBD |
 |~~WA-GUEST-OS-3.53_201709-01~~ |2017. október 6. |2017. december 14. |TBD |
@@ -168,8 +168,9 @@ Június vendég operációs rendszer bevezetés. június 16 indul, és a terveze
 
 | Konfigurációs karakterlánc | Kiadási dátum | Tiltsa le a dátum | Lejárt dátum |
 | --- | --- | --- | --- |
+| WA-GUEST-OS-2.71_201802-01 |2018. március 12. |POST 2,73 |TBD |
 | WA-GUEST-OS-2.70_201801-01 |2018. január 29. |POST 2.72 |TBD |
-| WA-GUEST-OS-2.69_201712-01 |2018. január 4. |POST 2.71 |TBD |
+|~~WA-GUEST-OS-2.69_201712-01~~ |2018. január 4. |2018. március 12. |TBD |
 |~~WA-GUEST-OS-2.68_201711-01~~ |2017. december 14. |2018. január 29. |TBD |
 |~~WA-GUEST-OS-2.67_201710-02~~ |2017. november 8. |2018. január 4. |TBD |
 |~~WA-GUEST-OS-2.66_201709-01~~ |2017. október 6. |2017. december 14. |TBD |

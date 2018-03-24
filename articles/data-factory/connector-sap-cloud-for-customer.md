@@ -1,11 +1,11 @@
 ---
-title: "Adatok másolása/SAP felhőbe az Azure Data Factory használatával |} Microsoft Docs"
-description: "Útmutató: adatok másolása SAP felhő ügyfél támogatott fogadó adattárolókhoz (vagy) a támogatott forráshierarchiából adattárolókhoz SAP felhő ügyfél Data Factory használatával."
+title: Adatok másolása/SAP felhőbe az Azure Data Factory használatával |} Microsoft Docs
+description: 'Útmutató: adatok másolása SAP felhő ügyfél támogatott fogadó adattárolókhoz (vagy) a támogatott forráshierarchiából adattárolókhoz SAP felhő ügyfél Data Factory használatával.'
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: spelluru
+manager: craigg
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 4d7df73bec7306b135f5a559c2bc66ac88d88809
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 571c77a0de4bb30f5476f1bc79a7d4bd8d1cd322
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="copy-data-from-sap-cloud-for-customer-c4c-using-azure-data-factory"></a>Azure Data Factory használatával SAP felhőből ügyfél (C4C) adatok másolása
 
@@ -118,7 +118,7 @@ SAP felhő a felhasználói adatok másolása, állítsa be a forrás típusa a 
 | type | A type tulajdonságot kell beállítani: **SapCloudForCustomerSource**  | Igen |
 | lekérdezés | Adja meg az egyéni OData-lekérdezési adatokat olvasni. | Nem |
 
-Az adatok lekérése egy adott napjára mintalekérdezés:`"query": "$filter=CreatedOn ge datetimeoffset'2017-07-31T10:02:06.4202620Z' and CreatedOn le datetimeoffset'2017-08-01T10:02:06.4202620Z'"`
+Az adatok lekérése egy adott napjára mintalekérdezés: `"query": "$filter=CreatedOn ge datetimeoffset'2017-07-31T10:02:06.4202620Z' and CreatedOn le datetimeoffset'2017-08-01T10:02:06.4202620Z'"`
 
 **Példa**
 

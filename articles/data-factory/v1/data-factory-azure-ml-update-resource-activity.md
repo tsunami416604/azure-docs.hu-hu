@@ -1,11 +1,10 @@
 ---
-title: "Azure Data Factory használatával gépi tanulási modellek módosítása |} Microsoft Docs"
-description: "Ismerteti, hogyan hozzon létre Azure Data Factory és az Azure Machine Learning a prediktív folyamatok létrehozása"
+title: Azure Data Factory használatával gépi tanulási modellek módosítása |} Microsoft Docs
+description: Ismerteti, hogyan hozzon létre Azure Data Factory és az Azure Machine Learning a prediktív folyamatok létrehozása
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: sharonlo101
-manager: jhubbard
-editor: monicar
+manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -14,11 +13,11 @@ ms.topic: article
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 502bf8771bf7854755ccd72c7002110f1e25bd40
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 3702f4b7a58e9ca65a8ee309699a7e31b207159b
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="updating-azure-machine-learning-models-using-update-resource-activity"></a>Frissítés Azure Machine Learning modellek használata az Update-Erőforrástevékenység
 

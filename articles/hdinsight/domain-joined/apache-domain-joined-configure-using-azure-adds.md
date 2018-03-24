@@ -1,35 +1,33 @@
 ---
-title: "Azure Active Directory tartományszolgáltatásokban - Azure tartományhoz HDInsight-fürtök konfigurálása |} Microsoft Docs"
-description: "Megtudhatja, hogyan telepítheti és konfigurálhatja az Azure Active Directory tartományi szolgáltatások tartományhoz HDInsight-fürtök"
+title: Azure Active Directory tartományszolgáltatásokban - Azure tartományhoz HDInsight-fürtök konfigurálása |} Microsoft Docs
+description: Megtudhatja, hogyan telepítheti és konfigurálhatja az Azure Active Directory tartományi szolgáltatások tartományhoz HDInsight-fürtök
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: bprakash
 manager: jhubbard
 editor: cgronlun
-tags: 
+tags: ''
 ms.service: hdinsight
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/10/2017
+ms.date: 03/20/2018
 ms.author: bhanupr
-ms.openlocfilehash: a0156915c329dfad1424cfd1f10a6ebb27c56acc
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: ae7ccaf3d167176a1fc6015e84b0eb023da945d5
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="configure-domain-joined-hdinsight-clusters-using-azure-active-directory-domain-services"></a>Tartományhoz csatlakozó HDInsight-fürtök Azure Active Directory tartományi szolgáltatások konfigurálása
 
 Tartományhoz csatlakoztatott fürtök biztonsági képességeket biztosítanak a többfelhasználós vállalati a HDInsight. A HDInsight-fürtök tartományhoz az active directory-tartományok, csatlakozik, hogy a tartományi felhasználók a tartományi hitelesítő adataik használatával hitelesítik magukat a fürtök és a big Data típusú adatok feladatok futtatása. 
 
-Két módon lehet, hogy egy tartományhoz csatlakozó HDInsight-fürt csatlakozni tud-e a tartományvezérlő beállítása:
-
-- Azure Active Directory Domain Services (Azure AD DS)
-- Active Directory-tartományvezérlő Azure IaaS virtuális gépeken
-
 Ebből a cikkből megismerheti, hogyan konfigurálhatja egy Azure Active Directory tartományi szolgáltatások tartományhoz HDInsight-fürtöt.
+
+> [!NOTE]
+> Active Directory Azure IaaS virtuális gépeken már nem támogatott.
 
 ## <a name="create-azure-adds"></a>Az Azure ADDS létrehozása
 

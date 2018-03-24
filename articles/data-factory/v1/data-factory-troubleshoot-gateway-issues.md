@@ -1,10 +1,9 @@
 ---
-title: "Az adatkezelési átjáró elhárítása |} Microsoft Docs"
-description: "Tippek az adatkezelési átjáró kapcsolatos problémák elhárítása érdekében."
+title: Az adatkezelési átjáró elhárítása |} Microsoft Docs
+description: Tippek az adatkezelési átjáró kapcsolatos problémák elhárítása érdekében.
 services: data-factory
 author: nabhishek
-manager: jhubbard
-editor: monicar
+manager: craigg
 ms.assetid: c6756c37-4e5a-4d1e-ab52-365f149b4128
 ms.service: data-factory
 ms.workload: data-services
@@ -14,17 +13,17 @@ ms.topic: article
 ms.date: 10/01/2017
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: b3b34921168661089946b5c5dd9e6d489880733b
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: d82592bfda3eaf44d28f67b8bb6599aa4ae4bae7
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="troubleshoot-issues-with-using-data-management-gateway"></a>Az adatkezelési átjáró használata közben felmerülő hibák elhárítása
 Ez a cikk tájékoztatást nyújt az adatkezelési átjáró használatával kapcsolatos hibák elhárításához.
 
 > [!NOTE]
-> Ez a cikk vonatkozik 1 a Azure Data Factory, amelyek általánosan elérhető (GA). Lásd a 2-es verziójának a Data Factory szolgáltatásnak, amely jelenleg előzetes verzióban érhető, használatakor [önállóan üzemel az adat-előállítóban 2-es integrációs futásidejű](../create-self-hosted-integration-runtime.md).
+> Ez a cikk az Azure Data Factory általánosan elérhető 1. verziójára vonatkozik. Lásd a 2-es verziójának a Data Factory szolgáltatásnak, amely jelenleg előzetes verzióban érhető, használatakor [önállóan üzemel az adat-előállítóban 2-es integrációs futásidejű](../create-self-hosted-integration-runtime.md).
 
 Tekintse meg a [az adatkezelési átjáró](data-factory-data-management-gateway.md) cikk az átjáró kapcsolatos részletes információkat. Tekintse meg a [helyezze át az adatokat a helyszíni és a felhő között](data-factory-move-data-between-onprem-and-cloud.md) áthelyezése adatok egy helyi SQL Server-adatbázis a Microsoft Azure Blob storage az átjáró használatával kapcsolatos általános bemutatóért cikkében.
 
@@ -206,7 +205,7 @@ Az SSL-tanúsítvány előfordulhat, hogy már megszakadt az átjáró számít�
 Kövesse az alábbi lépéseket a probléma megoldásához:
 
 1. Indítsa el az adatkezelési átjáró Konfigurációkezelőjében.
-2. Váltás a **beállítások** fülre.  
+2. Váltson a **Settings** (Beállítások) lapra.  
 3. Kattintson a **módosítása** gombra kattintva módosíthatja az SSL-tanúsítvány.
 
    ![Módosítás tanúsítvány gombra](media/data-factory-troubleshoot-gateway-issues/change-button-ssl-certificate.png)

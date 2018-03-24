@@ -1,11 +1,11 @@
 ---
-title: "További tudnivalók a különböző jogkivonatot, és az Azure AD által támogatott jogcímtípusok |} Microsoft Docs"
-description: "Ismertetése és értékelése a jogcím szerepel a SAML 2.0 és a JSON Web Tokens (JWT) tokenek által Azure Active Directory (AAD) kiadott egy útmutató"
+title: További tudnivalók a különböző jogkivonatot, és az Azure AD által támogatott jogcímtípusok |} Microsoft Docs
+description: Ismertetése és értékelése a jogcím szerepel a SAML 2.0 és a JSON Web Tokens (JWT) tokenek által Azure Active Directory (AAD) kiadott egy útmutató
 documentationcenter: na
 author: hpsin
 services: active-directory
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 166aa18e-1746-4c5e-b382-68338af921e2
 ms.service: active-directory
 ms.devlang: na
@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 09/07/2017
 ms.author: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: ca8a34c0a29ffad21e6384feac055d7a292311a5
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 8f9eb95f49e0d2bd01d9ead7eda7d13288bfd573
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-ad-token-reference"></a>Az Azure AD-jogkivonatok referenciájából
 Azure Active Directory (Azure AD) bocsát ki biztonsági jogkivonatainak feldolgozása minden hitelesítési folyamat során számos különböző. Ez a dokumentum ismerteti a formátumát, a biztonsági jellemzőkkel és a különböző típusú lexikális elem tartalmát.
@@ -321,3 +321,4 @@ Jogcímek, az mellett a token tartalmaz egy verziószámot a **ver** és **appid
 ## <a name="related-content"></a>Kapcsolódó tartalom
 * Tekintse meg az Azure AD Graph [házirend műveletek](https://msdn.microsoft.com/library/azure/ad/graph/api/policy-operations) és a [házirend entitás](https://msdn.microsoft.com/library/azure/ad/graph/api/entity-and-complex-type-reference#policy-entity), tudhat meg többet az Azure AD Graph API-n keresztül a jogkivonatok élettartama házirend kezelése.
 * További információk és minták a PowerShell-parancsmagok, többek között a minták keresztül házirendek kezelése [konfigurálható jogkivonat élettartamát az Azure AD](../active-directory-configurable-token-lifetimes.md). 
+* Adja hozzá [egyéni és az opcionális jogcímek](active-directory-optional-claims.md) a jogkivonatok az alkalmazás számára. 

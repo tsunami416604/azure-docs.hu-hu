@@ -1,10 +1,11 @@
 ---
-title: "A Cortana Intelligence versenyek – gyakori kérdések |} Microsoft Docs"
-description: "A Microsoft a Cortana Intelligence versenyek vonatkozó gyakran ismételt kérdések."
+title: A Cortana Intelligence versenyek – gyakori kérdések |} Microsoft Docs
+description: A Microsoft a Cortana Intelligence versenyek vonatkozó gyakran ismételt kérdések.
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: hning86
-manager: jhubbard
+ms.author: haining
+manager: mwinkle
 editor: cgronlun
 ms.assetid: 9bac5154-a56c-4e78-9d67-34368b9d1624
 ms.service: machine-learning
@@ -13,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/18/2017
-ms.author: haining;garye
-ms.openlocfilehash: f7c839a8471dc54daebc47d0bb5a450358f5250d
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: db6fb6cd6c500ffe4537b57a968ef3b8792bcad6
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="microsoft-cortana-intelligence-competitions-faq"></a>Microsoft Cortana Intelligence-versenyek – GYIK
 **Mi az a Cortana Intelligence versenyek?**
@@ -35,7 +35,7 @@ Azt fogja indítani rendszeresen, 1. féltől, a Microsoft által birtokolt vers
 
 **Hogyan adjon meg egy verseny?**
 
-Hozzáférés a [versenyek](https://gallery.cortanaintelligence.com/competitions) kezdőlapja a [Azure Eszközintelligencia-katalógus](https://gallery.cortanaintelligence.com/), vagy keresse fel [http://aka.ms/CIComp](http://aka.ms/CIComp). A kezdőlapon éppen futó összes versenyek. Minden egyes verseny rendelkezik részletes utasításokat és részvételi szabályok díjak és a regisztrációs oldalon található időtartama.
+Hozzáférés a [versenyek](https://gallery.cortanaintelligence.com/competitions) kezdőlapja a [Azure Eszközintelligencia-katalógus](https://gallery.cortanaintelligence.com/), vagy keresse fel [ http://aka.ms/CIComp ](http://aka.ms/CIComp). A kezdőlapon éppen futó összes versenyek. Minden egyes verseny rendelkezik részletes utasításokat és részvételi szabályok díjak és a regisztrációs oldalon található időtartama.
 
 1. Keresse meg a verseny szeretne részt vesznek, olvassa el az utasításokat, és tekintse meg az útmutató videót. Kattintson a **meg verseny** gombra, és a Starter kísérlet átmásolja a meglévő Azure Machine Learning munkaterülettel. Ha már nincs hozzáférése a munkaterületet, akkor létre kell hoznia egy előre. Alapszintű kísérlet futtatása, megfigyelheti, a teljesítmény metrika, majd a modell a teljesítmény javítása érdekében a kreativitást használja. A legtöbb, a idő ebben a lépésben töltött valószínűleg lesz.   
 
@@ -55,7 +55,7 @@ A verseny résztvevők Azure Machine Learning Studio, a felhő alapú szolgálta
 
 Nem. Valójában javasoljuk adatok hivalatos bárki adattudomány és egyéb aspiring adatszakértőkön át a adja meg a környezetével kapcsolatos fejezetét. A Microsoft támogató dokumentumok engedélyezése mindenki számára "versenyeznek" a létrehozott. A célközönség van:
 
-* **Adatok fejlesztők**, **Adatszakértőkön**, **BI** és **Analytics szakemberek**: azok, akik létrehozó adatok és analitikák tartalom felhasználásához másoknak
+* **Adatok fejlesztők**, **Adatszakértőkön**, **BI** és **Analytics szakemberek**: azok, akik az adatok és analitikák tartalom létrehozó mások felhasználásához
 * **Adatok megbízott**: azokat az adatokat, mit jelent, és hogyan azt rendelkezik való használatra készült, és milyen célra információ
 * **A diákok** & **kutatói:** rendelkező képzési és a kapcsolódó adatok ismeretek felsőoktatási vagy nagy nyitott Online tanfolyamokat (MOOCs) részt academic programok segítségével történő
 

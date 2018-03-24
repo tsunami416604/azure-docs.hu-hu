@@ -1,8 +1,8 @@
 ---
-title: "Azure Naplóelemzés megoldást kezelési riasztási |} Microsoft Docs"
-description: "A riasztások kezelésében a Naplóelemzési megoldással elemzése összes a riasztásokat a környezetben.  Mellett konszolidálása riasztások Naplóelemzési vezérlőben akkor importálja riasztások csatlakoztatott System Center Operations Manager felügyeleti csoportokból származó Naplóelemzési."
+title: Azure Naplóelemzés megoldást kezelési riasztási |} Microsoft Docs
+description: A riasztások kezelésében a Naplóelemzési megoldással elemzése összes a riasztásokat a környezetben.  Mellett konszolidálása riasztások Naplóelemzési vezérlőben akkor importálja riasztások csatlakoztatott System Center Operations Manager felügyeleti csoportokból származó Naplóelemzési.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: jwhit
 editor: tysonn
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/19/2018
 ms.author: bwren
-ms.openlocfilehash: c34916913915331020d9fc9789221f790b75a070
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: 0d9028b821e4c488186143311c81bfa6d17908ff
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="alert-management-solution-in-azure-log-analytics"></a>Az Azure Naplóelemzés riasztási felügyeleti megoldás
 
@@ -109,28 +109,15 @@ A megoldás riasztások importálása a System Center Operations Manager, és mi
 A következő táblázat a megoldás által gyűjtött riasztási rekordok minta napló keres: 
 
 | Lekérdezés | Leírás |
-|:--- |:--- |
-| Type=Alert SourceSystem=OpsManager AlertSeverity=error TimeRaised>NOW-24HOUR |Az elmúlt 24 órában kiadott kritikus riasztások |
-| Típusú riasztás AlertSeverity = figyelmeztetés TimeRaised = > most már 24 ÓRÁNKÉNT |Az elmúlt 24 órában kiadott figyelmeztető riasztások |
-| Típusú riasztás SourceSystem = OpsManager AlertState =! lezárt TimeRaised = > most már 24 ÓRÁS &#124; mérték count() által SourceDisplayName darabszámként |Az elmúlt 24 órában kiadott aktív riasztásokkal rendelkező források |
-| Type=Alert SourceSystem=OpsManager AlertSeverity=error TimeRaised>NOW-24HOUR AlertState!=Closed |Az elmúlt 24 órában, amelyek még mindig aktív kritikus riasztások |
-| Type=Alert SourceSystem=OpsManager TimeRaised>NOW-24HOUR AlertState=Closed |Az elmúlt 24 órában, amely a már lezárt riasztások |
-| Típusú riasztás SourceSystem = OpsManager TimeRaised = > most - 1 nap &#124; mérték count() által AlertSeverity darabszámként |Során súlyosságuk szerint csoportosítva az elmúlt 1 napban kiadott riasztások |
-| Típusú riasztás SourceSystem = OpsManager TimeRaised = > most - 1 nap &#124; RepeatCount desc rendezése |Riasztások ismétléseik száma szerint rendezve az elmúlt 1 napban |
-
-
->[!NOTE]
-> Ha a munkaterületet lett frissítve a [új Log Analytics lekérdezési nyelv](log-analytics-log-search-upgrade.md), akkor az előző lekérdezések megváltozna a következők:
->
->| Lekérdezés | Leírás |
 |:---|:---|
-| Riasztás &#124; Ha SourceSystem "OpsManager" és a AlertSeverity == "error" és a TimeRaised == > ago(24h) |Az elmúlt 24 órában kiadott kritikus riasztások |
-| Riasztás &#124; Ha AlertSeverity "figyelmeztetés" és a TimeRaised == > ago(24h) |Az elmúlt 24 órában kiadott figyelmeztető riasztások |
-| Riasztás &#124; Ha SourceSystem == "OpsManager" és a AlertState! = "Lezárva" és a TimeRaised > ago(24h) &#124; összesíteni a Count = count() SourceDisplayName által |Az elmúlt 24 órában kiadott aktív riasztásokkal rendelkező források |
-| Riasztás &#124; Ha SourceSystem "OpsManager" és a AlertSeverity == "error" és a TimeRaised == > ago(24h) és AlertState! = "Lezárva" |Az elmúlt 24 órában, amelyek még mindig aktív kritikus riasztások |
-| Riasztás &#124; Ha SourceSystem "OpsManager" és a TimeRaised == > ago(24h) és AlertState == "Lezárva" |Az elmúlt 24 órában, amely a már lezárt riasztások |
-| Riasztás &#124; Ha SourceSystem "OpsManager" és a TimeRaised == > ago(1d) &#124; összesíteni a Count = count() AlertSeverity által |Során súlyosságuk szerint csoportosítva az elmúlt 1 napban kiadott riasztások |
-| Riasztás &#124; Ha SourceSystem "OpsManager" és a TimeRaised == > ago(1d) &#124; Rendezze a RepeatCount desc |Riasztások ismétléseik száma szerint rendezve az elmúlt 1 napban |
+| Riasztási &#124; ahol SourceSystem "OpsManager" és a AlertSeverity == "error" és a TimeRaised == > ago(24h) |Az elmúlt 24 órában kiadott kritikus riasztások |
+| Riasztási &#124; ahol AlertSeverity "figyelmeztetés" és a TimeRaised == > ago(24h) |Az elmúlt 24 órában kiadott figyelmeztető riasztások |
+| Riasztási &#124; ahol SourceSystem == "OpsManager" és a AlertState! = "Lezárva" és a TimeRaised > ago(24h) &#124; összesíteni a Count = count() SourceDisplayName által |Az elmúlt 24 órában kiadott aktív riasztásokkal rendelkező források |
+| Riasztási &#124; ahol SourceSystem "OpsManager" és a AlertSeverity == "error" és a TimeRaised == > ago(24h) és AlertState! = "Lezárva" |Az elmúlt 24 órában, amelyek még mindig aktív kritikus riasztások |
+| Riasztási &#124; ahol SourceSystem "OpsManager" és a TimeRaised == > ago(24h) és AlertState == "Lezárva" |Az elmúlt 24 órában, amely a már lezárt riasztások |
+| Riasztási &#124; ahol SourceSystem "OpsManager" és a TimeRaised == > ago(1d) &#124; összesíteni a Count = count() AlertSeverity által |Során súlyosságuk szerint csoportosítva az elmúlt 1 napban kiadott riasztások |
+| Riasztási &#124; ahol SourceSystem "OpsManager" és a TimeRaised == > ago(1d) &#124; RepeatCount desc rendezés |Riasztások ismétléseik száma szerint rendezve az elmúlt 1 napban |
+
 
 
 ## <a name="next-steps"></a>További lépések

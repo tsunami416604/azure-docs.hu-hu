@@ -1,11 +1,11 @@
 ---
-title: "Az egyszeri bejelentkezés felügyeleti a vállalati alkalmazásokhoz az Azure Active Directoryban |} Microsoft Docs"
-description: "Egyszeri bejelentkezés beállításainak kezelése vállalati alkalmazások a szervezetben az Azure Active Directory alkalmazáskatalógusában"
+title: Az egyszeri bejelentkezés felügyeleti a vállalati alkalmazásokhoz az Azure Active Directoryban |} Microsoft Docs
+description: Egyszeri bejelentkezés beállításainak kezelése vállalati alkalmazások a szervezetben az Azure Active Directory alkalmazáskatalógusában
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: bcc954d3-ddbe-4ec2-96cc-3df996cbc899
 ms.service: active-directory
 ms.devlang: na
@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 09/19/2017
 ms.author: markvi
 ms.reviewer: asmalser
-ms.openlocfilehash: bb9c2e1fdf392e234e6c72e0728ab04d2fd88a81
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 45141551c502c89311ab7e43b53af50450d8babd
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="managing-single-sign-on-for-enterprise-apps"></a>Egyszeri bejelentkezés a vállalati alkalmazások kezelése
 
@@ -88,7 +88,7 @@ Ha támogatja az alkalmazáshoz, a csatolt SSO mód kiválasztása lehetővé te
 
 ![Csatolt bejelentkezés][5]
 
-##<a name="feedback"></a>Visszajelzés
+## <a name="feedback"></a>Visszajelzés
 
 Reméljük, például a továbbfejlesztett használata az Azure AD felhasználói élmény. Ne hamarosan visszajelzését! Visszajelzését és ötleteket javítására szolgáló utáni a **felügyeleti portál** szakasza a [visszajelzési fórumon](https://feedback.azure.com/forums/169401-azure-active-directory/category/162510-admin-portal).  Ritkán használt adatok új dolgai minden nap kiépítésével foglalkozó még érdeklődőbbek és az útmutató a shape felhasználása és határozza meg, mi készíteni.
 

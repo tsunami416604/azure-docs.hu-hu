@@ -1,24 +1,24 @@
 ---
-title: "Kezeli az alkalmazásokat a Visual Studio |} Microsoft Docs"
-description: "Visual Studio használatával hozzon létre, fejlesztése, csomag, a központi telepítése és a hibakereséshez a Service Fabric-alkalmazások és szolgáltatások."
+title: A Visual Studio Azure szolgáltatás Fabric-alkalmazások kezelése |} Microsoft Docs
+description: Visual Studio használatával hozzon létre fejlesztése, a csomag, telepítése, illetve hibakeresése az Azure Service Fabric-alkalmazások és szolgáltatások.
 services: service-fabric
 documentationcenter: .net
 author: mikkelhegn
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: c317cb7e-7eae-466e-ba41-6aa2518be5cf
 ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/07/2017
-ms.author: mikkelhegn
-ms.openlocfilehash: 81814ef07cfab06855b3bfbf0eb6ef51b8dfce4f
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.date: 02/23/2018
+ms.author: mikhegn
+ms.openlocfilehash: 16ca821f7cae252148e8901c2ccb8539a25d1d59
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="use-visual-studio-to-simplify-writing-and-managing-your-service-fabric-applications"></a>Visual Studio segítségével egyszerűsítheti az írást, és a Service Fabric-alkalmazások kezelése
 Az Azure Service Fabric-alkalmazások és szolgáltatások Visual Studio alkalmazással kezelheti. Miután megismerte [beállította a fejlesztőkörnyezetet](service-fabric-get-started.md), használhatja a Visual Studio Service Fabric-alkalmazások létrehozása, adja hozzá a szolgáltatásokhoz, vagy a csomag, regisztrálása és alkalmazások telepítése a helyi fejlesztési fürtöt.
@@ -45,7 +45,7 @@ A Visual Studio adja meg a tulajdonságot, **alkalmazás hibakeresési módban**
 
 #### <a name="application-debug-modes"></a>Alkalmazás hibakeresési üzemmód
 
-1. **Frissítse az alkalmazás** ebben a módban lehetővé teszi, hogy gyorsan módosítása és hibakeresése a kód és a statikus webes fájlok szerkesztésének hibakeresés során támogatja. Ebben az üzemmódban csak akkor működik, ha a helyi fejlesztési fürtök [1-csomópont mód](/service-fabric-get-started-with-a-local-cluster.md#one-node-and-five-node-cluster-mode).
+1. **Frissítse az alkalmazás** ebben a módban lehetővé teszi, hogy gyorsan módosítása és hibakeresése a kód és a statikus webes fájlok szerkesztésének hibakeresés során támogatja. Ebben az üzemmódban csak akkor működik, ha a helyi fejlesztési fürtök [1-csomópont mód](/service-fabric-get-started-with-a-local-cluster.md#one-node-and-five-node-cluster-mode). Ez az alkalmazás hibakeresési mód alapértelmezés szerint.
 2. **Távolítsa el az alkalmazás** az alkalmazás távolítható el, amikor a hibakeresési munkamenet befejeződik.
 3. **Automatikus frissítés** az alkalmazás továbbra is fut, amikor a hibakeresési munkamenet befejeződik. A következő hibakeresési munkamenetben kezeli az üzemelő példány frissítése. A frissítési folyamat megőrzi a korábbi hibakeresési munkamenetben megadott adatokat.
 4. **Alkalmazás megtartása** az alkalmazás a fürt folyamatosan működik, amikor a hibakeresési munkamenet befejeződik. A következő hibakeresési munkamenet elején, az alkalmazás törlődni fog.
@@ -53,7 +53,7 @@ A Visual Studio adja meg a tulajdonságot, **alkalmazás hibakeresési módban**
 A **automatikus frissítése** adatok megmaradjanak a alkalmazás Service Fabric frissítési lehetőségeit alkalmazásával. Alkalmazások, és hogyan lehet, hogy frissíti az valós környezetben történő frissítéssel kapcsolatos további információkért lásd: [Service Fabric az alkalmazásfrissítés](service-fabric-application-upgrade.md).
 
 ## <a name="add-a-service-to-your-service-fabric-application"></a>Szolgáltatás hozzáadása a Service Fabric-alkalmazás
-Új szolgáltatások adhat hozzá az alkalmazás a bővíthetők.  Győződjön meg arról, hogy a szolgáltatás része az alkalmazáscsomag, vegye fel a szolgáltatásba a **új Fabric-szolgáltatás...**  menüpont.
+Új szolgáltatások adhat hozzá az alkalmazás a bővíthetők. Győződjön meg arról, hogy a szolgáltatás része az alkalmazáscsomag, vegye fel a szolgáltatásba a **új Fabric-szolgáltatás...**  menüpont.
 
 ![Egy új Service Fabric-szolgáltatás hozzáadása][newservice]
 
@@ -79,7 +79,7 @@ Műveleteket hajthat végre alapszintű fürt felügyeleti belül a Visual Studi
 >
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [A Service Fabric alkalmazásmodellt.](service-fabric-application-model.md)
 * [A Service Fabric-alkalmazás központi telepítése](service-fabric-deploy-remove-applications.md)
 * [Alkalmazás paramétereinek több környezet kezelése](service-fabric-manage-multiple-environment-app-configuration.md)

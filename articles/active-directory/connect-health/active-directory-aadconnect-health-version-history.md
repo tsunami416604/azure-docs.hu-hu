@@ -1,8 +1,8 @@
 ---
-title: "Azure AD Connect Health Version History (Az Azure AD Connect Health verzióelőzményei)"
-description: "Ez a dokumentum ismerteti a kiadások, az Azure AD Connect Health és mi ezeket a kiadásokat szerepel."
+title: Azure AD Connect Health Version History (Az Azure AD Connect Health verzióelőzményei)
+description: Ez a dokumentum ismerteti a kiadások, az Azure AD Connect Health és mi ezeket a kiadásokat szerepel.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: karavar
 manager: mtillman
 editor: curtand
@@ -14,16 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: edc1771153581e73398e8df25e70660f9f85ceba
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 57cc8a63773cda5b66856ba7d6b3215d9c52162c
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-ad-connect-health-version-release-history"></a>Azure AD Connect Health: Version History (Az Azure AD Connect Health verzióelőzményei)
 Az Azure Active Directory ügyfélszolgálata rendszeresen frissíti az Azure AD Connect Health új szolgáltatásait és funkcióit. Ez a cikk felsorolja a kiadott szolgáltatások és verziókat.
 
 ## <a name="march-2018"></a>2018 március
+**Új előzetes verziójú funkciók:**
+* Az Azure AD Connect Health AD FS - kockázatos IP-cím jelentés és a riasztás.
+
 **Ügynök frissítése:**
 
 *   Az Azure AD Connect Health-ügynök az AD DS (3.0.176.0 verzió)
@@ -64,7 +67,7 @@ Az Azure Active Directory ügyfélszolgálata rendszeresen frissíti az Azure AD
   1. Hibajavításokat tartalmaz, és általános fejlesztések
   2. Szuverén felhő támogatása
 * Az Azure AD Connect Health-ügynök (verzió: 3.0.68.0)-szinkronizáláshoz az Azure AD Connect 1.1.614.0 verziója, amely a
-1. Támogatja a Microsoft Azure Government felhő és a Microsoft Cloud Németország
+  1. Támogatja a Microsoft Azure Government felhő és a Microsoft Cloud Németország
 
 ## <a name="april-2017"></a>2017. április      
 **Ügynök frissítése:**

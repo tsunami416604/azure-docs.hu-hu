@@ -1,11 +1,11 @@
 ---
-title: "A Naplóelemzési Azure SQL elemzési megoldások |} Microsoft Docs"
-description: "Az Azure SQL elemzési megoldások kezelheti az Azure SQL Database adatbázisok."
+title: A Naplóelemzési Azure SQL elemzési megoldások |} Microsoft Docs
+description: Az Azure SQL elemzési megoldások kezelheti az Azure SQL Database adatbázisok.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: b2712749-1ded-40c4-b211-abc51cc65171
 ms.service: log-analytics
 ms.workload: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/26/2017
 ms.author: magoedte
-ms.openlocfilehash: 5fb7fd0be8b131ee098689b06c34c4e7c333801e
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: d6bc7824687f5418f1270e22b216f8637578aa6d
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview-in-log-analytics"></a>Azure SQL adatbázis Azure SQL elemzés (előzetes verzió) Naplóelemzési figyelése
 
@@ -87,10 +87,6 @@ PS C:\> .\Enable-AzureRMDiagnostics.ps1 -WSID $WSID
 
 ## <a name="using-the-solution"></a>A megoldás használata
 
->[!NOTE]
-> Frissítse a Log Analyticshez Azure SQL elemzés legújabb verziójának.
->
-
 A megoldás a munkaterülethez való hozzáadásakor az Azure SQL elemzés csempe hozzáadódik a munkaterület, és megjeleníti a áttekintése. A csempe az Azure SQL-adatbázisok és az Azure SQL rugalmas készletek a megoldás csatlakozik a számát mutatja.
 
 ![Azure SQL Analytics tile](./media/log-analytics-azure-sql/azure-sql-sol-tile.png)
@@ -141,8 +137,6 @@ A lekérdezés időtartam és a lekérdezés vár perspektívák hozhatók leké
 ### <a name="analyze-data-and-create-alerts"></a>Adatok elemzése és értesítések
 
 Az Azure SQL Database-forrásokból származó adatokat tartalmazó könnyen riasztásokat hozhat létre. Íme néhány hasznos [naplófájl-keresési](log-analytics-log-searches.md) riasztások használható lekérdezéseket:
-
-[!INCLUDE[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
 
 
 *Az Azure SQL Database magas DTU*

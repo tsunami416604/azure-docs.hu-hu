@@ -1,6 +1,6 @@
 ---
-title: "Azure Automation szolgáltatásbeli hitelesítőadat eszközök"
-description: "Az Azure Automationben hitelesítő eszközök tartalmaz a hitelesítő adatokat, amelyek segítségével a runbookot vagy a DSC-konfiguráció számára elérhető erőforrások hitelesítéséhez. Ez a cikk ismerteti, hogyan hitelesítő eszközök létrehozása és azok a runbookot vagy a DSC-konfiguráció használatát."
+title: Azure Automation szolgáltatásbeli hitelesítőadat eszközök
+description: Az Azure Automationben hitelesítő eszközök tartalmaz a hitelesítő adatokat, amelyek segítségével a runbookot vagy a DSC-konfiguráció számára elérhető erőforrások hitelesítéséhez. Ez a cikk ismerteti, hogyan hitelesítő eszközök létrehozása és azok a runbookot vagy a DSC-konfiguráció használatát.
 services: automation
 ms.service: automation
 author: georgewallace
@@ -8,13 +8,11 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.devlang: na
-ms.tgt_pltfrm: na
-ms.openlocfilehash: bb6aec41813930cbf74ab989cc4ce6b526b9c6b6
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: c56758012fc09287d0abb887db9148bd093a678a
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="credential-assets-in-azure-automation"></a>Azure Automation szolgáltatásbeli hitelesítőadat eszközök
 Automation szolgáltatásbeli hitelesítőadat-eszköz rendelkezik egy [PSCredential](http://msdn.microsoft.com/library/system.management.automation.pscredential) biztonsági hitelesítő adatok, például a felhasználónevet és jelszót tartalmazó objektum. A Runbookok és a DSC-konfigurációk használhat parancsmagokat, fogadja el a hitelesítést egy PSCredential objektumot, vagy azokat lehet, hogy bontsa ki a felhasználónevet és jelszót a PSCredential objektum bizonyos alkalmazás vagy a hitelesítés megkövetelése a szolgáltatás biztosításához. Egy hitelesítő adat tulajdonságait az Azure Automationben biztonságosan tároljuk, és a runbookot vagy a DSC-konfiguráció érhetők el a [Get-AutomationPSCredential](http://msdn.microsoft.com/library/system.management.automation.pscredential.aspx) tevékenység.

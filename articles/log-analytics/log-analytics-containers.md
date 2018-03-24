@@ -1,11 +1,11 @@
 ---
-title: "Tároló figyelés megoldás az Azure Naplóelemzés |} Microsoft Docs"
-description: "A tároló figyelésére szolgáló megoldás a Log Analyticshez segít megtekintése és kezelése a Docker és a Windows tároló állomások egyetlen helyen megvalósítható."
+title: Tároló figyelés megoldás az Azure Naplóelemzés |} Microsoft Docs
+description: A tároló figyelésére szolgáló megoldás a Log Analyticshez segít megtekintése és kezelése a Docker és a Windows tároló állomások egyetlen helyen megvalósítható.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: e1e4b52b-92d5-4bfa-8a09-ff8c6b5a9f78
 ms.service: log-analytics
 ms.workload: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/06/2017
 ms.author: magoedte
-ms.openlocfilehash: 0ad267b9694c2f9cdb574b6b6008d4f6fa027fce
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 0041a58c8da58785ebc3ead6c8128316b153728c
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="container-monitoring-solution-in-log-analytics"></a>A Naplóelemzési tároló figyelés megoldás
 
@@ -100,7 +100,10 @@ Az alábbi információk segítségével telepítse és konfigurálja a megoldá
     - A Windows Server 2016 és a Windows 10 a Docker-motorhoz és az ügyfél telepítése, majd kösse a az ügynök információkat gyűjt, és elküldi a Naplóelemzési. Tekintse át [telepítse és konfigurálja a Windows tároló gazdagépeket](#install-and-configure-windows-container-hosts) Ha egy Windows-környezettel rendelkezik.
   - A Docker több állomás vezénylés:
     - Ha a Red Hat OpenShift környezettel rendelkezik, tekintse át a [OMS-ügynököt a Red Hat OpenShift konfigurálása](#configure-an-oms-agent-for-red-hat-openshift).
-    - Ha az Azure Tárolószolgáltatás Kubernetes fürtöt, tekintse át a [Kubernetes az OMS-ügynököt konfigurálása](#configure-an-oms-agent-for-kubernetes).
+    - Ha az Azure Tárolószolgáltatás Kubernetes fürtöt:
+       - Felülvizsgálati [konfigurálása egy OMS Linux-ügynökének Kubernetes](#configure-an-oms-linux-agent-for-kubernetes).
+       - Felülvizsgálati [Kubernetes OMS Windows ügynökének konfigurálása](#configure-an-oms-windows-agent-for-kubernetes).
+       - Felülvizsgálati [használata Helm Linux Kubernetes az OMS-ügynök telepítése](#use-helm-to-deploy-oms-agent-on-linux-kubernetes).
     - Ha egy Azure tároló szolgáltatás DC/OS-fürtről, további tudnivalókért olvassa el [figyelése az Azure tároló szolgáltatás DC/OS fürtben, az Operations Management Suite](../container-service/dcos-swarm/container-service-monitoring-oms.md).
     - Ha a Docker Swarm mód környezettel rendelkezik, további tudnivalókért olvassa el [OMS-ügynököt a Docker Swarmra konfigurálása](#configure-an-oms-agent-for-docker-swarm).
     - Ha a Service Fabric-fürt, további tudnivalókért olvassa el [OMS Naplóelemzési tárolók figyelése](../service-fabric/service-fabric-diagnostics-oms-containers.md).
@@ -387,7 +390,7 @@ WSID:   36 bytes
 KEY:    88 bytes
 ```
 
-#### <a name="configure-an-oms-agent-for-windows-kubernetes"></a>A Windows Kubernetes OMS-ügynököt konfigurálása
+#### <a name="configure-an-oms-windows-agent-for-kubernetes"></a>Egy OMS Windows ügynököt Kubernetes konfigurálása
 A Windows Kubernetes egy parancsfájllal hozott létre a titkos kulcsok yam fájlt a munkaterület azonosítója és az elsődleges kulcs az OMS-ügynök telepítéséhez. : A [OMS Docker Kubernetes GitHub](https://github.com/Microsoft/OMS-docker/tree/master/Kubernetes/windows) lapon, a titkos információkkal használható fájl van.  A fő- és ügynök csomópontok külön-külön az OMS-ügynököt telepíteni szeretné.  
 
 1. Titkos információk alapján a fő OMS-ügynök DaemonSet használandó csomópont, jelentkezzen be, és először hozza létre a titkos kulcsok.

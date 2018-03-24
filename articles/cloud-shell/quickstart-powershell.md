@@ -1,12 +1,12 @@
 ---
-title: "Az Azure-felhőbe rendszerhéj (előzetes verzió) gyors üzembe helyezés PowerShell |} Microsoft Docs"
-description: "A felhő rendszerhéj PowerShell gyors üzembe helyezés"
+title: Az Azure-felhőbe rendszerhéj (előzetes verzió) gyors üzembe helyezés PowerShell |} Microsoft Docs
+description: A felhő rendszerhéj PowerShell gyors üzembe helyezés
 services: Azure
-documentationcenter: 
+documentationcenter: ''
 author: maertendmsft
 manager: timlt
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: azure
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/19/2018
 ms.author: damaerte
-ms.openlocfilehash: 71ae70c13b4de87593345fd957a773741294b49c
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 4b0831173212d3324c851ad1bd04ec443a9face5
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="quickstart-for-powershell-in-azure-cloud-shell-preview"></a>Gyors üzembe helyezés PowerShell Azure-felhőbe rendszerhéj (előzetes verzió)
 
@@ -33,7 +33,7 @@ Ez a dokumentum részletesen a PowerShell használatával a felhő rendszerhéj 
 
   ![](media/quickstart-powershell/shell-icon.png)
 
-2. A legördülő listán válassza ki a PowerShell-környezet és az Azure meghajtóban fogja`(Azure:)`
+2. A legördülő listán válassza ki a PowerShell-környezet és az Azure meghajtóban fogja `(Azure:)`
 
   ![](media/quickstart-powershell/environment-ps.png)
 
@@ -62,7 +62,7 @@ MyResourceGroup         MyVM2       eastus   Standard_DS2_v2_Promo  Windows    S
     PS Azure:\> dir
     ```
 
- 2. `cd`az előnyben részesített előfizetéséhez
+ 2. `cd` az előnyben részesített előfizetéséhez
 
     ``` PowerShell
     PS Azure:\> cd MySubscriptionName
@@ -118,7 +118,7 @@ Azonban mindig használhatja `dir -Force` friss adatok eléréséhez.
 
 ### <a name="navigate-storage-resources"></a>Keresse meg a tárolási erőforrások
     
-Írja be azokat a `StorageAccounts` egyszerűen nyissa meg a tárolási erőforrások mappa
+Írja be azokat a `StorageAccounts` egyszerűen nyissa meg a tárolási erőforrások könyvtár
     
 ``` PowerShell 
 PS Azure:\MySubscriptionName\StorageAccounts\MyStorageAccountName\Files> dir
@@ -227,7 +227,7 @@ Akkor is megtalálhatja a `VirtualMachines` directory első és futtatási `Ente
 
 ### <a name="discover-webapps"></a>Discover WebApps
 
-Írja be azokat a `WebApps` egyszerűen nyissa meg a webes alkalmazások erőforrások mappa
+Írja be azokat a `WebApps` egyszerűen nyissa meg a webes alkalmazások erőforrások könyvtár
 
 ``` PowerShell
 PS Azure:\MySubscriptionName> dir .\WebApps\
@@ -274,11 +274,11 @@ Hitelesítés kiszolgálók vagy az SSH használatával virtuális gépek, a nyi
 
 ### <a name="using-a-custom-profile-to-persist-git-and-ssh-settings"></a>Egy egyéni profilt használ a GIT és az SSH-beállítások megtartására
 
-Mivel munkamenetek nem maradnak kijelentkezési, mentse a `$env:USERPROFILE\.ssh` mappa `CloudDrive` , vagy hozzon létre egy symlink felhő rendszerhéj lekérdezi indításakor.
+Mivel munkamenetek nem maradnak kijelentkezési, mentse a `$env:USERPROFILE\.ssh` könyvtárból `CloudDrive` , vagy hozzon létre egy symlink felhő rendszerhéj lekérdezi indításakor.
 Adja hozzá a következő kódrészletet a profile.ps1 egy symlink CloudDrive történő létrehozásához a.
 
 ``` PowerShell
-# Check if the .ssh folder exists
+# Check if the .ssh directory exists
 if( -not (Test-Path $home\CloudDrive\.ssh)){
     mkdir $home\CloudDrive\.ssh
 }
@@ -357,7 +357,7 @@ PS C:\users\ContainerAdministrator\CloudDrive> .\helloworld.ps1
 Hello World!
 ```
 
-Használatakor PowerShell felhő rendszerhéj, amikor legközelebb a `helloworld.ps1` fájl alapján lesznek megtalálhatók, a `CloudDrive` mappát, amely csatlakoztatja a Azure fájlok megosztáshoz.
+Használatakor PowerShell felhő rendszerhéj, amikor legközelebb a `helloworld.ps1` fájl alapján lesznek megtalálhatók, a `CloudDrive` címtárhoz, amely csatlakoztatja a Azure fájlok megosztáshoz.
 
 ## <a name="use-custom-profile"></a>Egyéni profil használata
 

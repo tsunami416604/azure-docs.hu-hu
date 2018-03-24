@@ -1,24 +1,21 @@
 ---
-title: "Az Azure Active Directory B2C: Módosítsa a bejelentkezési be az egyéni házirendek, és saját magas szolgáltató konfigurálása"
-description: "Egy általános bemutató hozzáadása regisztrálhat és konfigurálása a felhasználó által megadott jogcímek"
+title: 'Az Azure Active Directory B2C: Módosítsa a bejelentkezési be az egyéni házirendek, és saját magas szolgáltató konfigurálása'
+description: Egy általános bemutató hozzáadása regisztrálhat és konfigurálása a felhasználó által megadott jogcímek
 services: active-directory-b2c
-documentationcenter: 
-author: rojasja
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: tbd
-ms.assetid: 
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.devlang: na
 ms.date: 04/29/2017
-ms.author: joroja
-ms.openlocfilehash: e9eb9fa941569c508c4dddc6b85786537a5a0fac
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: davidmu
+ms.openlocfilehash: b9ea48f0700509194602dd15ff42c7c689685a53
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-active-directory-b2c-modify-sign-up-to-add-new-claims-and-configure-user-input"></a>Az Azure Active Directory B2C: A módosítás jelentkezzen be új jogcímeket adhatnak hozzá, és konfigurálja a felhasználói bevitel.
 
@@ -47,11 +44,11 @@ Lehetővé teszi, hogy azok városhoz kérnie a felhasználót.  A következő e
 ```
 Nincsenek további lehetőségek tehet itt testre szabhatja a jogcímek.  A teljes séma, tekintse meg a **identitás élmény keretrendszer a műszaki referencia-útmutató**.  Ez az útmutató az útmutató szakaszban a közeljövőben lesznek közzétéve.
 
-* `<DisplayName>`egy karakterlánc, amely meghatározza a felhasználók számára is elérhető *címke*
+* `<DisplayName>` egy karakterlánc, amely meghatározza a felhasználók számára is elérhető *címke*
 
-* `<UserHelpText>`a rendszer kötelező felhasználó segítségével
+* `<UserHelpText>` a rendszer kötelező felhasználó segítségével
 
-* `<UserInputType>`a következő négy beállítás alatt van kiemelve:
+* `<UserInputType>` a következő négy beállítás alatt van kiemelve:
     * `TextBox`
 ```xml
 <ClaimType Id="city">
@@ -62,7 +59,7 @@ Nincsenek további lehetőségek tehet itt testre szabhatja a jogcímek.  A telj
 </ClaimType>
 ```
 
-    * `RadioSingleSelectduration`-Egyszeres kijelölésnél érvényesíti.
+    * `RadioSingleSelectduration` -Egyszeres kijelölésnél érvényesíti.
 ```xml
 <ClaimType Id="city">
   <DisplayName>city where you work</DisplayName>
@@ -76,7 +73,7 @@ Nincsenek további lehetőségek tehet itt testre szabhatja a jogcímek.  A telj
 </ClaimType>
 ```
 
-    * `DropdownSingleSelect`-Lehetővé teszi, hogy a kijelölés csak érvényes érték.
+    * `DropdownSingleSelect` -Lehetővé teszi, hogy a kijelölés csak érvényes érték.
 
 ![Képernyőfelvétel a legördülő lista lehetőséget](./media/active-directory-b2c-configure-signup-self-asserted-custom/dropdown-menu-example.png)
 
@@ -95,7 +92,7 @@ Nincsenek további lehetőségek tehet itt testre szabhatja a jogcímek.  A telj
 ```
 
 
-* `CheckboxMultiSelect`Lehetővé teszi a kijelölt egy vagy több értéket.
+* `CheckboxMultiSelect` Lehetővé teszi a kijelölt egy vagy több értéket.
 
 ![Képernyőkép a multiselect beállítás](./media/active-directory-b2c-configure-signup-self-asserted-custom/multiselect-menu-example.png)
 
@@ -188,7 +185,7 @@ Nincsenek további lehetőségek tehet itt testre szabhatja a jogcímek.  A telj
   </TechnicalProfile>
   ```
 
-3. Az olvasó a könyvtárból, amikor a felhasználó jelentkezik be a TechnicalProfile jogcím hozzáadása egy`<OutputClaim ClaimTypeReferenceId="city" />`
+3. Az olvasó a könyvtárból, amikor a felhasználó jelentkezik be a TechnicalProfile jogcím hozzáadása egy `<OutputClaim ClaimTypeReferenceId="city" />`
 
   ```xml
   <TechnicalProfile Id="AAD-UserReadUsingEmailAddress">
@@ -278,7 +275,7 @@ Alapértelmezés szerint engedélyezve van a e-mailek ellenőrzése a `<Technica
 <OutputClaim ClaimTypeReferenceId="email" PartnerClaimType="Verified.Email" Required="true" />
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Adja hozzá a közösségi fiók bejelentkezések során a viszonylatában új jogcímet a lenti TechnicalProfiles módosításával. Ezek használhatók társadalombiztosítási/összevont fiók bejelentkezések által írható és olvasható a felhasználói adatokat a alternativeSecurityId használja, mint a lokátor.
 ```xml

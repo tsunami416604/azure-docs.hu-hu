@@ -1,10 +1,10 @@
 ---
-title: "Az Azure Log Analytics-kapcsolatok informatikai szolgáltatás Management-összekötő támogatott |} Microsoft Docs"
-description: "Ez a cikk tájékoztatást ad azokról a ITSM termékek vagy szolgáltatások összekapcsolása a a informatikai szolgáltatás Management Connector (ITSMC) az OMS szolgáltatáshoz központilag figyelheti és a ITSM munkaelemek kezelésére."
-documentationcenter: 
+title: Az Azure Log Analytics-kapcsolatok informatikai szolgáltatás Management-összekötő támogatott |} Microsoft Docs
+description: Ez a cikk tájékoztatást ad azokról a ITSM termékek vagy szolgáltatások összekapcsolása a a informatikai szolgáltatás Management Connector (ITSMC) az OMS szolgáltatáshoz központilag figyelheti és a ITSM munkaelemek kezelésére.
+documentationcenter: ''
 author: JYOTHIRMAISURI
 manager: riyazp
-editor: 
+editor: ''
 ms.assetid: 8231b7ce-d67f-4237-afbf-465e2e397105
 ms.service: log-analytics
 ms.workload: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2018
 ms.author: v-jysur
-ms.openlocfilehash: e0cae844e8b7f3eab68ed02dbcd17f4d1cebfd25
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 35d04fabc66ede309fe91969c5bec3131a282afb
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>Csatlakozás ITSM termékek vagy szolgáltatások IT Service Management-összekötő
 Ez a cikk tájékoztatást ad azokról a ITSM termékszolgáltatásból és az informatikai szolgáltatás Management Connector (ITSMC) közötti kapcsolat konfigurálása a Log Analyticshez központilag a a munkaelemek kezeléséhez. ITSMC kapcsolatos további információkért lásd: [áttekintése](log-analytics-itsmc-overview.md).
@@ -200,7 +200,7 @@ Győződjön meg arról, a következő előfeltételek teljesülését:
 - Telepítse a Microsoft OMS-integráció (ServiceNow alkalmazás) felhasználói alkalmazás. [További információk](https://store.servicenow.com/sn_appstore_store.do#!/store/application/ab0265b2dbd53200d36cdc50cf961980/1.0.1 ).
 - A felhasználó az alkalmazás telepítve van az integráció felhasználói szerepkört létrehozni. Az integráció felhasználói szerepkör létrehozása található [Itt](#create-integration-user-role-in-servicenow-app).
 
-### <a name="connection-procedure"></a>Kapcsolat létesítése
+### <a name="connection-procedure"></a>**Kapcsolat létesítése**
 A következő eljárással ServiceNow VPN-kapcsolat létrehozásához:
 
 
@@ -271,13 +271,7 @@ Ha a felhasználó sikeresen létrejött, állapotának **ellenőrizze telepít�
 
 > [!NOTE]
 
-> Hozzon létre egy felhasználó **riasztások** és **események** a ServiceNow az Azure-ból:
-
-> - Ügyeljen arra, hogy az esemény modul telepített rendelkezzen a ServiceNow példányát.
-
-> - Az integrációs felhasználó hozzáadása a következő szerepkörök:
->      - evt_mgmt_integration
->      - evt_mgmt_operator  
+> ITSM összekötő telepítve a ServiceNow-példányon más modulok nélkül küldhet a ServiceNow incidensek. Ha EventManagement modul a ServiceNow példányát használja, és létrehozza az események és riasztások a ServiceNow az összekötővel, a következő szerepkörök hozzáadása az integráció felhasználói: – evt_mgmt_integration - evt_mgmt_operator  
 
 
 ## <a name="connect-provance-to-it-service-management-connector-in-azure"></a>IT-szolgáltatás Provance csatlakozni az Azure-ban Management-összekötő

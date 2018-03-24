@@ -1,13 +1,13 @@
 ---
-title: "Az Azure Functions időzítő indítófeltételt"
-description: "Időzítő eseményindítók használata az Azure Functions ismertetése."
+title: Az Azure Functions időzítő indítófeltételt
+description: Időzítő eseményindítók használata az Azure Functions ismertetése.
 services: functions
 documentationcenter: na
 author: tdykstra
 manager: cfowler
-editor: 
-tags: 
-keywords: "Azure functions, Funkciók, Eseményfeldolgozási, dinamikus számítási kiszolgáló nélküli architektúrája"
+editor: ''
+tags: ''
+keywords: Azure functions, Funkciók, Eseményfeldolgozási, dinamikus számítási kiszolgáló nélküli architektúrája
 ms.assetid: d2f013d1-f458-42ae-baf8-1810138118ac
 ms.service: functions
 ms.devlang: multiple
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 02/27/2017
 ms.author: tdykstra
-ms.custom: 
-ms.openlocfilehash: bd1a2643d9faf65d664c786169c38f01767fb7e5
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.custom: ''
+ms.openlocfilehash: 6f74dd4d9cb78c1316c87bd5a261e751b9b34923
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Az Azure Functions időzítő indítófeltételt 
 
@@ -167,7 +167,7 @@ Az alábbi táblázat ismerteti a beállított kötés konfigurációs tulajdons
 |**Típusa** | n/a | "TimerTrigger" értékre kell állítani. Ez a tulajdonság rendszer automatikusan beállítja az eseményindítót hoz létre az Azure portálon.|
 |**direction** | n/a | "A" értékre kell állítani. Ez a tulajdonság rendszer automatikusan beállítja az eseményindítót hoz létre az Azure portálon. |
 |**name** | n/a | A függvény a kódban időzítő az objektumot határozza meg a változó neve. | 
-|**schedule**|**ScheduleExpression**|A felhasználási terv ütemezés a CRON-kifejezés lehet definiálni. Ha használ egy App Service-csomag, használhatja a `TimeSpan` karakterlánc. Az alábbi szakaszok ismertetik a CRON-kifejezést. Az ütemezés kifejezés be Alkalmazásbeállítás, és csomagolni értékre állítani ezt a tulajdonságot  **%**  jelentkezik, például: "% NameOfAppSettingWithCRONExpression %". |
+|**schedule**|**ScheduleExpression**|A felhasználási terv ütemezés a CRON-kifejezés lehet definiálni. Ha használ egy App Service-csomag, használhatja a `TimeSpan` karakterlánc. Az alábbi szakaszok ismertetik a CRON-kifejezést. Az ütemezés kifejezés be Alkalmazásbeállítás, és csomagolni értékre állítani ezt a tulajdonságot **%** jelentkezik, például: "% NameOfAppSettingWithCRONExpression %". |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -256,6 +256,10 @@ Egy időzítő funkció meghívásakor a [objektum](https://github.com/Azure/azu
 ## <a name="scale-out"></a>Kiterjesztés
 
 Az időzítő indítófeltételt többpéldányos kibővített támogatja. Egy adott időzítő egyetlen példányán fut minden példányára.
+
+## <a name="function-apps-sharing-storage"></a>Függvény alkalmazások megosztása
+
+Ha több függvény alkalmazások között megosztott tárfiókot, győződjön meg arról, hogy minden függvény alkalmazás rendelkezik egy másik `id` a *host.json*. Akkor kihagyhatja a `id` tulajdonság, vagy manuálisan állítsa be az egyes függvény alkalmazások `id` más értékre. Az időzítő indítófeltételt tárolási zárolást használatával gondoskodjon arról, hogy csak egy időzítő példány amikor egy függvény app méretezi ki több példányára. Ha két függvény alkalmazások azonos `id` és egy időzítő indítófeltételt használó minden egyes, csak egy időzítő fog futni.
 
 ## <a name="next-steps"></a>További lépések
 

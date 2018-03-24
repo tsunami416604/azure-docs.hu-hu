@@ -1,11 +1,11 @@
 ---
-title: "A helyszíni kódolókkal által létrehozott többféle sávszélességű adatfolyamok - Azure élő adatfolyam |} Microsoft Docs"
-description: "Ez a témakör ismerteti a helyszíni kódoló egy többszörös sávszélességű élő streamet fogadó csatornát. Az adatfolyam majd továbbítható lejátszás ügyfélalkalmazások keresztül egy vagy több adatfolyam-továbbítási végpontok, a következő adaptív adatfolyam-továbbítási protokollok egyikének használatával: HLS, Smooth Streaming, DASH."
+title: A helyszíni kódolókkal által létrehozott többféle sávszélességű adatfolyamok - Azure élő adatfolyam |} Microsoft Docs
+description: 'Ez a témakör ismerteti a helyszíni kódoló egy többszörös sávszélességű élő streamet fogadó csatornát. Az adatfolyam majd továbbítható lejátszás ügyfélalkalmazások keresztül egy vagy több adatfolyam-továbbítási végpontok, a következő adaptív adatfolyam-továbbítási protokollok egyikének használatával: HLS, Smooth Streaming, DASH.'
 services: media-services
-documentationcenter: 
+documentationcenter: ''
 author: Juliako
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: d9f0912d-39ec-4c9c-817b-e5d9fcf1f7ea
 ms.service: media-services
 ms.workload: media
@@ -14,13 +14,17 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 04/12/2017
 ms.author: cenkd;juliako
-ms.openlocfilehash: 1266c7b6c1539f84eafea1007999fb4360184857
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: fae123d2cc594bb741fb1cdb0da62bef05a2a8c2
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="live-streaming-with-on-premises-encoders-that-create-multi-bitrate-streams"></a>Élő Stream továbbítása helyszíni kódolókkal, amely többféle sávszélességű adatfolyamok létrehozása
+
+> [!NOTE]
+> 2018. május 12., az élő csatornák indítása rendszer már nem támogatja a RTP/MPEG-2 transport stream betöltési protokollt. Végezzen áttelepítést az RTP/MPEG-2 RTMP vagy töredezett MP4) (Smooth Streaming) betöltési protokollok.
+
 ## <a name="overview"></a>Áttekintés
 Azure Media Services a *csatorna* live-streaming tartalom feldolgozása csővezeték jelöli. Egy csatorna élő bemeneti adatfolyamok megkapja az alábbi két módszer egyikével:
 

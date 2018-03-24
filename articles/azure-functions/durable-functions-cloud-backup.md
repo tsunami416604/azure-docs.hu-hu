@@ -1,24 +1,24 @@
 ---
-title: "Fan-kimenő/fan-a forgatókönyvek a tartós funkciók – Azure"
-description: "Útmutató a fan-kimenő-ventilátor-a forgatókönyv megvalósításához a tartós funkciók bővítményben az Azure Functions."
+title: Fan-kimenő/fan-a forgatókönyvek a tartós funkciók – Azure
+description: Útmutató a fan-kimenő-ventilátor-a forgatókönyv megvalósításához a tartós funkciók bővítményben az Azure Functions.
 services: functions
 author: cgillum
 manager: cfowler
-editor: 
-tags: 
-keywords: 
+editor: ''
+tags: ''
+keywords: ''
 ms.service: functions
 ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 09/29/2017
+ms.date: 03/19/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 446ddbff7d945e90ebfd12bc6e9e7a1f0e18267c
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 35877831c7f63c20fee2f2bc3838e73bb98328c0
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="fan-outfan-in-scenario-in-durable-functions---cloud-backup-example"></a>Fan-kimenő/fan-a forgatókönyv tartós funkciókkal – felhő biztonsági mentési – példa
 
@@ -26,8 +26,8 @@ ms.lasthandoff: 03/17/2018
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Kövesse az utasításokat a [tartós funkciók telepítése](durable-functions-install.md) a minta beállítása.
-* Ez a cikk feltételezi, hogy már lezajlott a [Hello feladatütemezési](durable-functions-sequence.md) minta forgatókönyv.
+* [Telepítse a tartós funkciók](durable-functions-install.md).
+* Fejezze be a [Hello feladatütemezési](durable-functions-sequence.md) forgatókönyv.
 
 ## <a name="scenario-overview"></a>Forgatókönyv áttekintése
 
@@ -47,7 +47,7 @@ Ez a cikk ismerteti a mintaalkalmazást a következő funkciókat:
 * `E2_GetFileList`
 * `E2_CopyFileToBlob`
 
-Az alábbi szakaszok ismertetik a konfiguráció és a kódot, amely az Azure portál fejlesztésére szolgálnak. A Visual Studio fejlesztési kód a cikk végén meg.
+Az alábbi szakaszok ismertetik a konfiguráció és a használt kód a C# parancsfájlok. A Visual Studio fejlesztési kód a cikk végén meg.
 
 ## <a name="the-cloud-backup-orchestration-visual-studio-code-and-azure-portal-sample-code"></a>A felhő biztonsági mentési vezénylési (Visual Studio Code és az Azure portál mintakód)
 

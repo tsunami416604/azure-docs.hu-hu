@@ -1,6 +1,6 @@
 ---
-title: "Az Azure DNS - Azure CLI 2.0 DNS-zónák kezelése |} Microsoft Docs"
-description: "Kezelheti a DNS-zónákat az Azure CLI 2.0 verziót használja. Ez a cikk bemutatja, hogyan frissítése, törlése és a DNS-zóna létrehozása az Azure DNS szolgáltatásra."
+title: Az Azure DNS - Azure CLI 2.0 DNS-zónák kezelése |} Microsoft Docs
+description: Kezelheti a DNS-zónákat az Azure CLI 2.0 verziót használja. Ez a cikk bemutatja, hogyan frissítése, törlése és a DNS-zóna létrehozása az Azure DNS szolgáltatásra.
 services: dns
 documentationcenter: na
 author: KumudD
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/27/2017
 ms.author: kumud
-ms.openlocfilehash: 2042d9c2864a4f8da474e0df38882414bfe3417e
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: d384f8867ddfd28acaf78a47a7d32729e87c5580
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="how-to-manage-dns-zones-in-azure-dns-using-the-azure-cli-20"></a>Az Azure DNS az Azure CLI 2.0 használatával DNS-zónák kezelése
 
@@ -28,6 +28,8 @@ ms.lasthandoff: 12/21/2017
 
 
 Ez az útmutató bemutatja a platformok közötti Azure parancssori felület használatával, amely érhető el a Windows, Mac és Linux a DNS-zónák kezelése. Emellett kezelhetők a DNS-zónák használatával [Azure PowerShell](dns-operations-dnszones.md) vagy az Azure-portálon.
+
+Ez az útmutató konkrétan a nyilvános DNS-zónák foglalkozik. További információ az Azure parancssori felület használatával az Azure DNS-saját zónák kezelése,: [Ismerkedés az Azure DNS saját zónák Azure CLI 2.0](private-dns-getstarted-cli.md).
 
 ## <a name="introduction"></a>Bevezetés
 
@@ -45,7 +47,7 @@ A konfigurálás megkezdése előtt győződjön meg arról, hogy rendelkezik a 
 
 ### <a name="sign-in-to-your-azure-account"></a>Jelentkezzen be az Azure-fiókjába
 
-Nyisson meg egy konzolablakot, adja meg a saját hitelesítő adatait. További információt az Azure parancssori felületből (CLI) Azure-ba történő bejelentkezést ismertető cikkben talál.
+Nyisson meg egy konzolablakot, adja meg a saját hitelesítő adatait. További információt az [Azure parancssori felületből (CLI) Azure-ba történő bejelentkezést ismertető cikkben](https://docs.microsoft.com/en-us/cli/azure/authenticate-azure-cli?view=azure-cli-latest) talál.
 
 ```
 az login
@@ -64,6 +66,12 @@ Válassza ki, hogy melyik Azure előfizetést fogja használni.
 ```azurecli
 az account set --subscription "subscription name"
 ```
+
+### <a name="optional-to-installuse-azure-dns-private-zones-feature-public-preview"></a>Választható lehetőség: Telepítés/használatához Azure saját DNS-zónák funkció (nyilvános előzetes verzió)
+Az Azure DNS saját zóna funkció Public Preview bővítménye, az Azure parancssori felület használatával jelent meg. A "dns" Azure CLI-bővítmény telepítése 
+```
+az extension add --name dns
+``` 
 
 ### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 

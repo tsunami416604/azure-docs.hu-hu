@@ -1,11 +1,11 @@
 ---
-title: "Egyéni tevékenységek használata Azure Data Factory-folyamatban"
-description: "Megtudhatja, hogyan hozzon létre egyéni tevékenységeket, és használja őket az Azure Data Factory-folyamathoz."
+title: Egyéni tevékenységek használata Azure Data Factory-folyamatban
+description: Megtudhatja, hogyan hozzon létre egyéni tevékenységeket, és használja őket az Azure Data Factory-folyamathoz.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: shengcmsft
-manager: jhubbard
-editor: spelluru
+manager: craigg
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2018
 ms.author: shengc
-ms.openlocfilehash: 6aaeaaacdc9ee67ebbed3ea3090455dde2357c3d
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 770187c16ed9d0eacfaf99e571ad048c6723a9cf
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Egyéni tevékenységek használata Azure Data Factory-folyamatban
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -298,7 +298,7 @@ Ha szeretné, hogy az alsóbb rétegbeli tevékenységet stdout.txt tartalmakat,
   > - A activity.json linkedServices.json és datasets.json a kötegelt tevékenység futásidejű mappában tárolják. Az ebben a példában a activity.json linkedServices.json és datasets.json vannak tárolva "https://adfv2storage.blob.core.windows.net/adfjobs/<GUID>/runtime/" elérési út. Ha szükséges, eltávolítással külön-külön szeretné. 
   > - Társított szolgáltatások felhasználásra Self-Hosted integrációs futásidejű, a bizalmas adatok, például a kulcsokat vagy jelszavakat a Self-Hosted integrációs futásidejű annak biztosítása érdekében a hitelesítő adatok titkosított marad az ügyfelek definiált titkos hálózati környezetben. Néhány időérzékeny mezőinek hiányzó lehet, amikor ezzel a módszerrel egyéni alkalmazáskódjában hivatkozik. Szükség esetén a társított szolgáltatás hivatkozása helyett extendedProperties SecureString használja. 
 
-## <a name="compare-v2-custom-activity-and-version-1-custom-dotnet-activity"></a>Hasonlítsa össze v2 egyéni tevékenység és (egyéni) 1-es verziójú DotNet tevékenység
+## <a name="compare-v2-v1"></a> Hasonlítsa össze v2 egyéni tevékenység és (egyéni) 1-es verziójú DotNet tevékenység
 
   Az Azure Data Factoryben az 1-es, hozzon létre egy .net alkalmazhat egy (egyéni) DotNet tevékenység Class Library a projekt egy osztály, amely megvalósítja a `Execute` metódusában a `IDotNetActivity` felületet. A társított szolgáltatások adatkészletek és a JSON-adattartalmat (egyéni) DotNet tevékenység az Extended Properties kerülnek átadásra a végrehajtási metódus szigorú típusmegadású objektumként. Az 1-es verziójú viselkedés kapcsolatos részletekért lásd: [az 1-es verziójú (egyéni) DotNet](v1/data-factory-use-custom-activities.md). Miatt ez a megvalósítás a 1-es verziójú DotNet tevékenység kódot tartalmaz, amelyekre a .net keretrendszer 4.5.2-es verzióját. 1-es verziójával DotNet tevékenység is rendelkezik Windows-alapú Azure Batch-készlet csomópontján hajthatnak végre. 
 

@@ -1,12 +1,12 @@
 ---
-title: "Telepítse az Azure biztonságimásolat-kiszolgáló v2 |} Microsoft Docs"
-description: "Az Azure Backup Server v2 lehetővé teszi a virtuális gép, fájlok és mappák, munkaterhelések és több védelméhez továbbfejlesztett biztonsági mentési lehetőségeket. Megtudhatja, hogyan telepítse, vagy frissítsen az Azure Backup Server v2."
+title: Telepítse az Azure biztonságimásolat-kiszolgáló v2 |} Microsoft Docs
+description: Az Azure Backup Server v2 lehetővé teszi a virtuális gép, fájlok és mappák, munkaterhelések és több védelméhez továbbfejlesztett biztonsági mentési lehetőségeket. Megtudhatja, hogyan telepítse, vagy frissítsen az Azure Backup Server v2.
 services: backup
-documentationcenter: 
+documentationcenter: ''
 author: markgalioto
 manager: carmonm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: backup
 ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2017
 ms.author: masaran;markgal
-ms.openlocfilehash: 1bbb16afef7940933b4c3ae23873f212770137e0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: dd7b76d9e06bc82ffd75f12131c2c247da05cc91
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="install-azure-backup-server-v2"></a>Azure biztonságimásolat-kiszolgáló v2 telepítése
 
@@ -36,7 +36,7 @@ Biztonsági mentés kiszolgáló v2 telepíthető Windows Server 2012 R2 vagy Wi
 ## <a name="upgrade-backup-server-to-v2"></a>Tartalék kiszolgáló frissítsen v2
 A biztonsági mentés kiszolgáló v1 frissítsen Backup Server v2, győződjön meg a telepítést a szükséges frissítéseket:
 
-- [A védelmi ügynökök frissítésének](backup-mabs-upgrade-to-v2.md#update-the-dpm-protection-agent) a védett kiszolgálókon.
+- [A védelmi ügynökök frissítésének](backup-mabs-upgrade-to-v2.md#update-the-data-protection-manager-protection-agent) a védett kiszolgálókon.
 - Windows Server 2012 R2, Windows Server 2016 váltson.
 - Azure biztonsági mentés kiszolgáló távoli felügyeleti frissítse az összes üzemi kiszolgálón.
 - Győződjön meg arról, hogy a biztonsági mentés van beállítva az üzemi kiszolgáló újraindítása nélkül szeretné folytatni.
@@ -74,7 +74,7 @@ A biztonsági mentés kiszolgáló v1 frissítsen Backup Server v2, győződjön
 
   ![A telepítő installer - SQL ellenőrizze és telepítése gombra](./media/backup-mabs-upgrade-to-v2/mabs-installer-s5a-check-and fix-settings.png)
 
-8. Az a **telepítési beállítások** lapon, a helyre, ahol a biztonsági mentés Server telepítve van, vagy az ideiglenes helyre végezze el a módosításokat. Válassza ki **következő**.
+8. Az a **telepítési beállítások** lapon, a helyre, ahol a biztonsági mentés Server telepítve van, vagy az ideiglenes helyre végezze el a módosításokat. Kattintson a **Tovább** gombra.
 
   ![A telepítő installer - telepítési beállítások lapon](./media/backup-mabs-upgrade-to-v2/mabs-installer-s6-installation-settings.png)
 
@@ -115,7 +115,7 @@ A kötet hozzáadása a felügyeleti konzol:
 
 A kiszolgáló biztonsági mentése megadhatja, mely munkaterhelések kötetek vannak rendelve. Például beállíthat költséges kötetek, amelyek támogatják a bemeneti/kimeneti műveletek száma másodpercenként (IOPS) túl magas száma csak azok a szolgáltatások, amelyek rendszeres, nagy mennyiségű biztonsági másolatok tárolásához. Példa: SQL Server, a tranzakciós naplók.
 
-#### <a name="update-dpmdiskstorage"></a>Frissítés-DPMDiskStorage
+#### <a name="update-dpmdiskstorage"></a>Update-DPMDiskStorage
 
 Frissítés-DPMDiskStorage PowerShell-parancsmag segítségével egy kötetet a biztonsági mentés Server tárolókészletben tulajdonságainak frissítéséhez.
 
@@ -143,12 +143,12 @@ A védelmi csoport létrehozása:
 
   ![Új védelmi csoport létrehozása varázsló](./media/backup-mabs-upgrade-to-v2/create-a-protection-group-1.png)
 
-3. Az a **üdvözlő** lapon jelölje be **következő**.
+3. Az **Üdvözöljük** lapon kattintson a **Tovább** gombra.
 4. Az a **védelmi csoport típusának kiválasztása** lapon, válassza ki a védelmi csoport létrehozásához, és válassza ki a kívánt **következő**.
 
   ![Válassza ki a védelmi csoport típusa lap](./media/backup-mabs-upgrade-to-v2/create-a-protection-group-2.png)
 
-5. Az a **csoporttagok kiválasztása** lap a **választható tagok** ablaktáblán, a tagokat a védelmi ügynökök találhatók. Ehhez a példához válassza ki a kötetet a D:\ és E:\, és hozzáadhatja a **kijelölt tagok** ablaktáblán. Válassza ki **következő**.
+5. Az a **csoporttagok kiválasztása** lap a **választható tagok** ablaktáblán, a tagokat a védelmi ügynökök találhatók. Ehhez a példához válassza ki a kötetet a D:\ és E:\, és hozzáadhatja a **kijelölt tagok** ablaktáblán. Kattintson a **Tovább** gombra.
 
   ![Csoport kijelölése tagok lap](./media/backup-mabs-upgrade-to-v2/create-a-protection-group-3.png)
 
@@ -276,10 +276,10 @@ az Azure biztonsági mentés futtassa a DPMSYNC-SYNC
 ## <a name="new-powershell-cmdlets-in-v2"></a>A v2 új PowerShell-parancsmagok
 
 Ha telepíti az Azure Backup Server v2, a két új parancsmagok érhetők el: 
-* [Csatlakoztatási-DPMRecoveryPoint](https://technet.microsoft.com/library/mt787159.aspx)
+* [Mount-DPMRecoveryPoint](https://technet.microsoft.com/library/mt787159.aspx)
 * [Dismount-DPMRecoveryPoint](https://technet.microsoft.com/library/mt787158.aspx)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Megtudhatja, hogyan készíti elő a kiszolgálót, vagy a munkaterhelések védelmének megkezdéséhez:
 - [A kiszolgálói biztonsági mentési feladatok előkészítése](backup-azure-microsoft-azure-backup.md)

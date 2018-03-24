@@ -1,11 +1,10 @@
 ---
-title: "Data Factory használati eset - termék javaslatok"
-description: "További tudnivalók az Azure Data Factory használatával más szolgáltatásokkal együtt használati eset."
+title: Data Factory használati eset - termék javaslatok
+description: További tudnivalók az Azure Data Factory használatával más szolgáltatásokkal együtt használati eset.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: sharonlo101
-manager: jhubbard
-editor: monicar
+manager: craigg
 ms.assetid: 6f1523c7-46c3-4b8d-9ed6-b847ae5ec4ae
 ms.service: data-factory
 ms.workload: data-services
@@ -15,11 +14,11 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 04504d1e32243f752e488a24e04ec5ba73fbadc1
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 41948d8141d0f3c0e41b95f169bcec6c4b641106
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="use-case---product-recommendations"></a>Használati eset – Termékajánlások
 Az Azure Data Factory a Cortana Intelligence Suite a megoldás gyorsítók végrehajtásához használt sok szolgáltatások egyike.  Lásd: [Cortana Intelligence Suite](http://www.microsoft.com/cortanaanalytics) lap ennek a programcsomagnak vonatkozó további információért. Ebben a dokumentumban azt ismertetik, amelyek az Azure felhasználók már lehet megoldani, és Azure Data Factory és az egyéb Cortana Intelligence Komponensszolgáltatások készletével megvalósított gyakori használati eset.
@@ -29,7 +28,7 @@ Online kiskereskedőktől gyakran szeretne rávenni a megvásárolt termékek fe
 
 Ezek a kiskereskedőktől célja felhasználói kattintson pénztári átalakítás esetén optimalizálása és vett szolgáltatás érvényessége alatt magasabb értékesítési bevétel.  Környezetfüggő, viselkedés alapú termék ajánlásainkat ügyfél érdeklődési és műveletek mivoltát elérésének az átalakításhoz. A használati eset, az online kiskereskedőktől vállalatok számára, az ügyfelek számára optimalizálása szeretne példát vesszük. Az alapelvek azonban bármely üzleti, hogy az ügyfelek a termékek és szolgáltatások köré és az ügyfelek vásárló élmény személyre szabott termék ajánlásokkal próbál alkalmazni.
 
-## <a name="challenges"></a>Kihívásai
+## <a name="challenges"></a>Problémák
 Sok akadályok merülnek, hogy online kiskereskedőktől arcfelismerési használati eset az ilyen típusú végrehajtására tett kísérlet során. 
 
 Először különböző méretű és alakú adatainak kell fogyasztanak több adatforrásokból, mind a helyszíni és a felhőben. Ezen adatok tartalmazzák a termék adatokat, a korábbi felhasználói viselkedési adatokat és a felhasználói adatok, a felhasználó megnyitja a online kereskedelmi webhelyen. 

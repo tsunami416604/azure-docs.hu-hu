@@ -1,9 +1,9 @@
 ---
-title: "Ismerkedés a szerepkörök, engedélyek és biztonsági Azure megfigyelővel |} Microsoft Docs"
-description: "Ismerje meg, hogyan használható az Azure figyelő beépített szerepköröket és engedélyeket figyelési erőforrásokhoz való hozzáférés korlátozása."
+title: Ismerkedés a szerepkörök, engedélyek és biztonsági Azure megfigyelővel |} Microsoft Docs
+description: Ismerje meg, hogyan használható az Azure figyelő beépített szerepköröket és engedélyeket figyelési erőforrásokhoz való hozzáférés korlátozása.
 author: johnkemnetz
 manager: orenr
-editor: 
+editor: ''
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
 ms.assetid: 2686e53b-72f0-4312-bcd3-3dc1b4a9b912
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/27/2017
 ms.author: johnkem
-ms.openlocfilehash: f8767073bb7a6723088bb2727346d23ec8872cd1
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 81f083b799e359f69605de22c30d3adc4480e44b
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="get-started-with-roles-permissions-and-security-with-azure-monitor"></a>Ismerkedés a szerepkörök, engedélyek és biztonságának és az Azure-figyelő
 Sok csapatok kell szigorúan szabályozzák, figyelési adatok és beállítások. Például ha vannak olyan dolgozó kizárólag figyelése (a támogatási szakértők, devops mérnökök) csoport tagjai, vagy ha egy felügyelt szolgáltató használja, érdemes lehet hozzáférést azokat csak figyelési adatok korlátozásával létrehozása, módosítása, vagy törli az erőforrást. Ez a cikk bemutatja, hogyan gyorsan figyelési beépített RBAC szerepkör alkalmazni a felhasználók az Azure-ban vagy a saját egyéni szerepkör a felhasználókat, akiknek korlátozott felügyeleti engedélyekkel. A cikk ismerteti az Azure-figyelő kapcsolódó erőforrások és hogyan korlátozhatja az adatok tartalmazzák a hozzáférést a biztonsági szempontok majd.
@@ -26,10 +26,11 @@ Sok csapatok kell szigorúan szabályozzák, figyelési adatok és beállításo
 ## <a name="built-in-monitoring-roles"></a>Beépített figyelési szerepkörök
 Az Azure figyelő beépített szerepkörök útmutatók célja, továbbra is engedélyezze az beszerzése és konfigurálja a szükséges adatok infrastruktúra figyelése egy előfizetésben erőforrásokhoz való hozzáférés korlátozása. Az Azure két out-of-az-box szerepkörök biztosít: A figyelési olvasó és a figyelés közreműködő.
 
-### <a name="monitoring-reader"></a>Figyelési olvasó
+### <a name="monitoring-reader"></a>Olvasó figyelése
 A figyelés olvasó szerepét személyek összes figyelési adatok megtekintése az előfizetés, de nem módosíthatja bármely erőforrás vagy bármely források követésével kapcsolatos beállítások szerkesztése. A szerepkör megfelelő vállalatnál, például a támogatási szolgálathoz vagy a műveletek mérnökök, akiknek kell tennie:
 
 * Figyelési irányítópult megtekintése a portálon, és a saját személyes figyelési irányítópultot létrehozni.
+* Megtekintheti a definiált riasztási szabályok [Azure riasztások](monitoring-overview-unified-alerts.md)
 * Metrikák használatára vonatkozó lekérdezés a [Azure figyelő REST API](https://msdn.microsoft.com/library/azure/dn931930.aspx), [PowerShell-parancsmagok](insights-powershell-samples.md), vagy [platformfüggetlen parancssori felület](insights-cli-samples.md).
 * A lekérdezés a műveletnapló a portálon, a Azure figyelő REST API-t, a PowerShell-parancsmagok vagy a platformfüggetlen parancssori felület használatával.
 * Nézet a [diagnosztikai beállítások](monitoring-overview-of-diagnostic-logs.md#resource-diagnostic-settings) erőforrás.
@@ -49,13 +50,13 @@ A figyelés olvasó szerepét személyek összes figyelési adatok megtekintése
 > 
 > 
 
-### <a name="monitoring-contributor"></a>A közreműködői figyelése
+### <a name="monitoring-contributor"></a>Közreműködő figyelése
 A figyelési közreműködői szerepkör hozzárendelése mások is láthatják az összes figyelési adatok az előfizetés és hozzon létre vagy figyelési beállítások azonban nem lehet módosítani más erőforrásokat. Ez a szerepkör kibővíti a figyelési olvasó szerepkört, és megfelelő-e a szervezetek figyelési team vagy felügyelt szolgáltatók, akik mellett a fentiek engedélyeket is kell tennie:
 
 * Tegye közzé a figyelési irányítópult megosztott irányítópultként.
 * Állítsa be [diagnosztikai beállítások](monitoring-overview-of-diagnostic-logs.md#resource-diagnostic-settings) egy resource.* számára
 * Állítsa be a [profilt naplózni](monitoring-overview-activity-logs.md#export-the-activity-log-with-a-log-profile) egy subscription.* számára
-* Riasztási tevékenység és a beállítások megadásához.
+* Riasztási szabályok tevékenység és a beállítások segítségével [Azure riasztások](monitoring-overview-unified-alerts.md).
 * Az Application Insights webalkalmazás-tesztek és összetevők létrehozása.
 * Lista Naplóelemzési munkaterület a megosztott kulcsok szükségesek.
 * Engedélyezi vagy letiltja a Naplóelemzési eszközintelligencia csomagokat.
@@ -74,22 +75,24 @@ Ha a fenti beépített szerepkörök nem felelnek meg a csoport pontos igényein
 
 | Művelet | Leírás |
 | --- | --- |
-| Microsoft.Insights/ActionGroups/[Read, írási, törlési] |A csoport olvasási, írási és törlési művelet. |
-| Microsoft.Insights/ActivityLogAlerts/[Read, írási, törlési] |Olvasási, írási és törlési tevékenység napló riasztásokat. |
-| Microsoft.Insights/AlertRules/[Read, írási, törlési] |Olvasási, írási és törlési riasztási szabályok (metrika riasztások). |
+| Microsoft.Insights/ActionGroups/[Read, Write, Delete] |A csoport olvasási, írási és törlési művelet. |
+| Microsoft.Insights/ActivityLogAlerts/[Read, Write, Delete] |Olvasási, írási és törlési tevékenység napló riasztásokat. |
+| Microsoft.Insights/AlertRules/[Read, Write, Delete] |Olvasási, írási és törlési riasztási szabályok (a riasztások klasszikus). |
 | Microsoft.Insights/AlertRules/Incidents/Read |A riasztási szabályok listázása incidensek (váltódik ki, hogy a riasztási szabály előzmények). Ez csak a portál vonatkozik. |
-| Microsoft.Insights/AutoscaleSettings/[Read, írási, törlési] |Olvasási, írási és törlési automatikus skálázási beállításokat. |
-| Microsoft.Insights/DiagnosticSettings/[Read, írási, törlési] |Olvasási, írási és törlési diagnosztikai beállítások. |
+| Microsoft.Insights/AutoscaleSettings/[Read, Write, Delete] |Olvasási, írási és törlési automatikus skálázási beállításokat. |
+| Microsoft.Insights/DiagnosticSettings/[Read, Write, Delete] |Olvasási, írási és törlési diagnosztikai beállítások. |
 | Microsoft.Insights/EventCategories/Read |Az összes kategória lehetséges a műveletnaplóban számbavétele. Az Azure portál által használt. |
 | Microsoft.Insights/eventtypes/digestevents/Read |Ez az engedély szükség a felhasználók számára, akiknek tevékenységi naplóit a portálon hozzáférésre van szükségük. |
 | Microsoft.Insights/eventtypes/values/Read |Tevékenységnapló események (felügyeleti események) egy előfizetésben listában. Ezzel az engedéllyel csak a műveletnapló programozott és a portál eléréséhez alkalmazható. |
-| Microsoft.Insights/ExtendedDiagnosticSettings/[Read, írási, törlési] | Olvasási, írási és törlési diagnosztikai beállítások hálózati folyamata naplókhoz. |
+| Microsoft.Insights/ExtendedDiagnosticSettings/[Read, Write, Delete] | Olvasási, írási és törlési diagnosztikai beállítások hálózati folyamata naplókhoz. |
 | Microsoft.Insights/LogDefinitions/Read |Ez az engedély szükség a felhasználók számára, akiknek tevékenységi naplóit a portálon hozzáférésre van szükségük. |
-| Microsoft.Insights/LogProfiles/[Read, írási, törlési] |Olvasási, írási és törlési napló profilok (tevékenységnapló streaming event hub vagy tárolási fiókhoz). |
-| Microsoft.Insights/MetricAlerts/[Read, írási, törlési] |Olvasási, írási és törlési közel valós idejű metrika riasztások (nyilvános előzetes verzió). |
+| Microsoft.Insights/LogProfiles/[Read, Write, Delete] |Olvasási, írási és törlési napló profilok (tevékenységnapló streaming event hub vagy tárolási fiókhoz). |
+| Microsoft.Insights/MetricAlerts/[Read, Write, Delete] |Olvasási, írási és törlési közel valós idejű metrika riasztások |
 | Microsoft.Insights/MetricDefinitions/Read |Olvassa el a metrikai meghatározásainak (erőforrás elérhető metrika típusok listája). |
 | Microsoft.Insights/Metrics/Read |Egy erőforrás olvasni. |
 | Microsoft.Insights/Register/Action |Az Azure-figyelő erőforrás-szolgáltató regisztrálása. |
+| Microsoft.Insights/ScheduledQueryRules/[Read, Write, Delete] |Az Application Insights riasztásainak olvasási, írási és törlési napló. |
+
 
 
 > [!NOTE]
@@ -118,9 +121,9 @@ Figyelési adatok – különösen naplófájlok – tartalmazhatnak bizalmas ad
 2. Diagnosztikai naplók, amelyek az erőforrás által kibocsátott naplókat.
 3. Metrika, amely erőforrások által kibocsátott.
 
-Ezek az adattípusok három storage-fiókban tárolt, vagy Eseményközpont, amelyek mindkettő általános célú Azure-erőforrások részére. Mivel ezek az általános célú erőforrások, létrehozása, törlése és hozzájuk férni egy olyan privileged művelet általában a rendszergazda számára van fenntartva. Javasoljuk, hogy az alábbi eljárásokkal kapcsolatos megfigyelési erőforrások megakadályozására használja:
+Ezek az adattípusok három storage-fiókban tárolt, vagy Eseményközpont, amelyek mindkettő általános célú Azure-erőforrások részére. Mivel ezek az általános célú erőforrások, létrehozása, törlése és hozzájuk férni a rendszergazda számára fenntartott kiemelt művelet. Javasoljuk, hogy az alábbi eljárásokkal kapcsolatos megfigyelési erőforrások megakadályozására használja:
 
-* A figyelési adatok dedikált tárolási fiók használata. Figyelési adatok több tárfiókot külön kell, ha ne ossza meg a storage-fiókok között figyelés használatát, és előfordulhat, hogy nem figyelési adatok, ez véletlenül adjon azok, akik csak a figyelési adatok (például) hozzáféréssel kell rendelkezniük egy külső SIEM) hozzáférést nem figyelési adatokat.
+* A figyelési adatok dedikált tárolási fiók használata. Figyelési adatok több tárfiókot külön kell, ha ne ossza meg a storage-fiókok között figyelés használatát, és előfordulhat, hogy nem figyelési adatok, ez véletlenül adjon azok, akik csak a figyelési adatok (például egy harmadik fél SIEM) hozzáféréssel kell rendelkezniük hozzáférést nem figyelési adatokat.
 * Használja a dedikált Service Bus vagy az Event Hubs-névtér összes diagnosztikai beállítások ugyanebből az okból a fenti.
 * Korlátozhatja az kapcsolatos megfigyelési tárfiók vagy az event hubs egy külön erőforráscsoportot tartva és [hatókört használja](../active-directory/role-based-access-control-what-is.md#basics-of-access-management-in-azure) a figyelési szerepkörökhöz való hozzáférés csak ennek az erőforráscsoportnak korlátozására.
 * Soha nem engedélyt ListKeys storage-fiókok vagy az event hubs előfizetési hatókört, ha a felhasználó csak nem figyelési adatok eléréséhez. Ehelyett biztosítják azokat az engedélyeket a felhasználó egy erőforrás vagy az erőforráscsoportot, (ha van egy dedikált figyelési erőforráscsoport) hatókör.
@@ -174,7 +177,7 @@ Az event hubs gyűjtheti hasonló mintát, de először hozzon létre egy dedik�
    New-AzureRmRoleDefinition -Role $role 
    ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [További tudnivalók a Szerepalapú és engedélyeket az erőforrás-kezelőben](../active-directory/role-based-access-control-what-is.md)
 * [Olvassa el az Azure-ban Figyelés áttekintése](monitoring-overview.md)
 

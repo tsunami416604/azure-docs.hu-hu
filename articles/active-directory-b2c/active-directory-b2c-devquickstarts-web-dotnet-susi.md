@@ -1,25 +1,21 @@
 ---
-title: "Hitelesítés, regisztráció, jelszó-átállítási ASP.NET Azure Active Directory B2C"
-description: "Hogyan hozhat létre, a sign-Close-Up/sign-a webalkalmazás, a profil szerkesztése és a jelszó alaphelyzetbe állítása az Azure Active Directory B2C használatával."
+title: Hitelesítés, regisztráció, jelszó-átállítási ASP.NET Azure Active Directory B2C
+description: Hogyan hozhat létre, a sign-Close-Up/sign-a webalkalmazás, a profil szerkesztése és a jelszó alaphelyzetbe állítása az Azure Active Directory B2C használatával.
 services: active-directory-b2c
 documentationcenter: .net
-author: parakhj
+author: davidmu1
 manager: mtillman
-editor: barbaraselden
-ms.assetid: 30261336-d7a5-4a6d-8c1a-7943ad76ed25
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/17/2017
-ms.author: parakhj
-ms.custom: seohack1
-ms.openlocfilehash: ffc46f4348a2ac3cae51c859a24c609756a710fe
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.author: davidmu
+ms.openlocfilehash: f7b7cce84f8ff7be14120568e710432be639ce8e
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="create-an-aspnet-web-app-with-azure-active-directory-b2c-sign-up-sign-in-profile-edit-and-password-reset"></a>Egy ASP.NET-webalkalmazás létrehozása az Azure Active Directory B2C regisztráció, bejelentkezés, profil szerkesztése és a jelszó alaphelyzetbe állítása
 
@@ -65,11 +61,11 @@ Válassza ki a beállítások **identitás-szolgáltatóktól** , és válassza 
 
 [!INCLUDE [active-directory-b2c-create-sign-in-sign-up-policy](../../includes/active-directory-b2c-create-sign-in-sign-up-policy.md)]
 
-### <a name="create-a-profile-editing-policy"></a>A Profilszerkesztési házirend létrehozása
+### <a name="create-a-profile-editing-policy"></a>Profilszerkesztési szabályzat létrehozása
 
 [!INCLUDE [active-directory-b2c-create-profile-editing-policy](../../includes/active-directory-b2c-create-profile-editing-policy.md)]
 
-### <a name="create-a-password-reset-policy"></a>A jelszó-visszaállítási házirend létrehozása
+### <a name="create-a-password-reset-policy"></a>Új jelszó kérésére vonatkozó szabályzat létrehozása
 
 [!INCLUDE [active-directory-b2c-create-password-reset-policy](../../includes/active-directory-b2c-create-password-reset-policy.md)]
 
@@ -83,7 +79,7 @@ Az oktatóanyag kódjának kezelése a [GitHubon](https://github.com/Azure-Sampl
 git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi.git
 ```
 
-Miután letöltötte a mintakódot, nyissa meg a Visual Studio .sln fájlt a kezdéshez. A megoldásfájl két projektet tartalmaz: `TaskWebApp` és `TaskService`. `TaskWebApp`a rendszer az MVC webalkalmazás, amely a felhasználó kommunikál. A `TaskService` az alkalmazás webes API háttérszolgáltatása, amely tárolja a felhasználók feladatlistáit. Ez a cikk csak a `TaskWebApp` alkalmazást ismerteti. Megtudhatja, hogyan hozhat létre `TaskService` Azure AD B2C segítségével, lásd: [a .NET webes api-oktatóanyag](active-directory-b2c-devquickstarts-api-dotnet.md).
+Miután letöltötte a mintakódot, nyissa meg a Visual Studio .sln fájlt a kezdéshez. A megoldásfájl két projektet tartalmaz: `TaskWebApp` és `TaskService`. `TaskWebApp` a rendszer az MVC webalkalmazás, amely a felhasználó kommunikál. A `TaskService` az alkalmazás webes API háttérszolgáltatása, amely tárolja a felhasználók feladatlistáit. Ez a cikk csak a `TaskWebApp` alkalmazást ismerteti. Megtudhatja, hogyan hozhat létre `TaskService` Azure AD B2C segítségével, lásd: [a .NET webes api-oktatóanyag](active-directory-b2c-devquickstarts-api-dotnet.md).
 
 ## <a name="update-code-to-use-your-tenant-and-policies"></a>A bérlői és a házirendek kód frissítése
 
@@ -97,7 +93,7 @@ A minta úgy van konfigurálva, hogy a bemutató bérlőnk házirendjeit és üg
 * Az `ida:ResetPasswordPolicyId` helyett szerepeljen a „Jelszó alaphelyzetbe állítása” házirend neve
 
 ## <a name="launch-the-app"></a>Indítsa el az alkalmazást
-A Visual studióban, indítsa el az alkalmazást. A feladatlista lapon keresse meg és jegyezze fel, az URL-címe: https://login.microsoftonline.com/*YourTenantName*/oauth2/v2.0/authorize?p=*YourSignUpPolicyName*& client_id = *YourclientID*...
+A Visual studióban, indítsa el az alkalmazást. A feladatlista lapon keresse meg és jegyezze fel, az URL-címe: https://login.microsoftonline.com/ *YourTenantName*/oauth2/v2.0/authorize?p=*YourSignUpPolicyName*& client_id =*YourclientID*.....
 
 Iratkozzon fel az alkalmazást az e-mail cím vagy a felhasználó neve. Jelentkezzen ki, majd jelentkezzen be újra, és szerkesztheti a profilját, vagy a jelszó alaphelyzetbe állítása. Kijelentkezés és bejelentkezés másik felhasználóként. 
 

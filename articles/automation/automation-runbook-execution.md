@@ -1,6 +1,6 @@
 ---
-title: "A Runbook végrehajtása az Azure Automationben"
-description: "Azure Automation forgatókönyv feldolgozásának módja részleteit ismerteti."
+title: A Runbook végrehajtása az Azure Automationben
+description: Azure Automation forgatókönyv feldolgozásának módja részleteit ismerteti.
 services: automation
 ms.service: automation
 author: georgewallace
@@ -8,11 +8,11 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: edfd317e7d3f7595f656c6c24ad65f3d87fea14c
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 18059ef1e0efba4f030a6e99198f0b7c72b7daf3
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="runbook-execution-in-azure-automation"></a>A Runbook végrehajtása az Azure Automationben
 Az Azure Automationben elindít egy runbookot, ha egy feladat jön létre. Egy feladat a runbook egyszeri futtatási példánya. Egy Azure Automation munkavégző rendelt minden feladat futtatása. Munkavállalók több Azure-fiókra által megosztott, amíg feladatokat azok másik Automation-fiók el különítve egymástól. Nem irányítás melyik Worker-szolgáltatások a feladat a kérelmet. Egyetlen runbook fut egyszerre több feladattal rendelkezhet.  Az Automation-fiók a feladatok végrehajtási környezetnek felhasználhatók. Az Azure portálon megtekintett forgatókönyvek listája, amely minden runbook indított összes feladatok állapotának sorolja fel. Megtekintheti a feladatok minden runbook egyes állapotának nyomon követése érdekében. A különböző feladatállapotok leírását [feladatállapotok](#job-statuses).
@@ -46,7 +46,7 @@ A következő táblázat ismerteti a különböző állapotok feladat lehetsége
 | Felfüggesztés |A rendszer megkísérli a feladat felfüggesztését a felhasználó kérésére. A runbooknak el kell érnie a következő ellenőrzőpontot felfüggesztés előtt. Ha már elhagyta az utolsó ellenőrzőpontot, majd befejezné a felfüggesztés előtt.  Érvényes [grafikus és a PowerShell-munkafolyamati forgatókönyvek](automation-runbook-types.md) csak. |
 
 ## <a name="viewing-job-status-from-the-azure-portal"></a>Az Azure-portál a feladat állapotának megtekintése
-Megtekintheti az összes runbook-feladatok összesített állapotának vagy elemezze az Azure-portálon vagy az integráció konfigurálása a Microsoft Operations Management Suite (OMS) Naplóelemzési munkaterület továbbítják a runbook-feladat állapotát és a feladat az adott runbook-feladatok részleteit adatfolyamokat.  OMS Naplóelemzési integrálása kapcsolatos további információkért lásd: [továbbítása feladat állapotát és a feladat adatfolyamok Automation való Naplóelemzés (OMS)](automation-manage-send-joblogs-log-analytics.md).  
+Tekintse meg az összes runbook-feladatok egy összesített állapotát, vagy elemezze az Azure portálon vagy a Naplóelemzési munkaterület továbbítani a runbook a feladat állapotát és a feladat adatfolyamok integrációjának konfigurálása adott runbook-feladatok részleteit.  A Naplóelemzési integrálása kapcsolatos további információkért lásd: [feladat állapotát és a feladat adatfolyam továbbítása Automation Naplóelemzési](automation-manage-send-joblogs-log-analytics.md).  
 
 ### <a name="automation-runbook-jobs-summary"></a>Automatizálási runbook-feladatok összegzése
 Jobb oldalán a kijelölt Automation-fiók, megtekintheti az összes kijelölt Automation-fiókhoz a runbook-feladatok **Projekt statisztika** csempére.<br><br> ![Projekt statisztika csempe](./media/automation-runbook-execution/automation-account-job-status-summary.png).<br> Ez a csempe egy száma és a grafikus ábrázolása az összes feladat végrehajtása a feladat állapotát jeleníti meg.  

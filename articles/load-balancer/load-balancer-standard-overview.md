@@ -1,72 +1,98 @@
 ---
-title: "Az Azure Load Balancer szabványos áttekintése |} Microsoft Docs"
-description: "Azure Load Balancer szabványos funkcióinak áttekintése"
+title: Az Azure szabványos Load Balancer áttekintése |} Microsoft Docs
+description: Azure Standard terheléselosztó funkcióinak áttekintése
 services: load-balancer
 documentationcenter: na
 author: KumudD
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/15/2018
+ms.date: 03/21/2018
 ms.author: kumud
-ms.openlocfilehash: 2d7fcb3ee066fa768615fbf643a0c2e1c1d28498
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: cfc789b3768c21efc7a03c11370b17ac6c3985cd
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
-# <a name="azure-load-balancer-standard-overview-preview"></a>Az Azure Load Balancer szabványos áttekintése (előzetes verzió)
+# <a name="azure-load-balancer-standard-overview"></a>Az Azure Load Balancer szabványos áttekintése
 
-Az Azure Load Balancer Standard Termékváltozat és nyilvános IP-Standard Termékváltozat együtt lehetővé teszik rugalmasan méretezhető, megbízható architektúrák létrehozásához. Alkalmazásokat, amelyek használják a Load Balancer szabványos kihasználhatják új képességeit. Kis késleltetésű, a magas teljesítmény és a skála az összes TCP és UDP-alkalmazás adatfolyamok több millió érhetők el.
+Az Azure Load Balancer lehetővé teszi az alkalmazások és a szolgáltatások magas rendelkezésre állás létrehozása. Terheléselosztó bejövő, valamint az olyan kimenő forgatókönyvekhez használható, és kis késés, nagyobb teljesítményt nyújt, és akár több millió összes TCP és UDP-alkalmazás flow méretezi. 
+
+Ez a cikk szabványos terheléselosztó összpontosít.  Azure Load Balancer általánosabb áttekintéséért lásd [Load Balancer áttekintése](load-balancer-overview.md) is.
+
+## <a name="what-is-standard-load-balancer"></a>Mi az a szabványos terheléselosztót?
+
+Standard terheléselosztó egy új terheléselosztó termék összes TCP és UDP-alkalmazások egy bővített és részletesebb szolgáltatás alapvető terheléselosztó beállításához.  Miközben sok a hasonlóság, fontos Ismerkedjen meg a különbségek ebben a cikkben leírt módon.
+
+Használhat szabványos terhelés terheléselosztó szabványos nyilvános vagy belső terheléselosztó. És egy virtuális gépet egy nyilvános és egy belső terheléselosztó erőforrás lehet csatlakoztatni.
+
+A Load Balancer erőforrás funkciók mindig egész időtúllépést, egy szabályt, a állapotmintáihoz és a háttér-készlet definíciójának beolvasása.  Egy erőforrás több szabály is tartalmazhat. A háttérkészlet virtuális gépek elhelyezheti a háttérkészlet, a virtuális gép hálózati erőforrás megadásával.  A virtuálisgép-méretezési csoport esetén ez a paraméter továbbítja a hálózati profil, és kibontva.
+
+Egyik legfőbb szempontja a virtuális hálózat a az erőforrás.  Közben alapvető terheléselosztó létezik rendelkezésre állási csoportok hatókörében, szabványos terheléselosztó teljesen integrálva van a virtuális hálózat a hatókörét, és minden virtuális hálózati fogalmak alkalmazni.
+
+Load Balancer erőforrások objektumai belül, amely akkor is express hogyan Azure kell programot, a több-bérlős-infrastruktúrát a létrehozni kívánt forgatókönyvhöz.  Nincs terheléselosztó erőforrások és a tényleges infrastruktúra; közötti közvetlen kapcsolat Terheléselosztó létrehozása nem példányt létrehozni, mindig érhető el a kapacitás és nem indítási vagy skálázás késések kell figyelembe venni. 
 
 >[!NOTE]
-> A Load Balancer Standard Termékváltozat jelenleg előzetes verzió. Előzetes a szolgáltatás esetleg nincs azonos szintű rendelkezésre állást és megbízhatóságot, szolgáltatások, amelyek általában a rendelkezésre állási kiadási. További részletekért lásd: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Használja a nyilvánosan elérhető [Load Balancer alapszintű Termékváltozat](load-balancer-overview.md) a termelés számára. Használandó [rendelkezésre állási zónák előzetes](https://aka.ms/availabilityzones) ebben az előzetes szükséges egy [előfizetési külön](https://aka.ms/availabilityzones), mellett regisztrál a Load Balancer [szabványos előzetes](#preview-sign-up).
+> Azure teljes körűen felügyelt terheléselosztási megoldások az forgatókönyvek együttesét nyújtja.  Ha a TLS-lezárást ("SSL kiszervezési") vagy HTTP/HTTPS alkalmazás réteg feldolgozási keres, tekintse át a [Alkalmazásátjáró](../application-gateway/application-gateway-introduction.md).  Ha a globális DNS a(z) terheléselosztást, tekintse át [Traffic Manager](../traffic-manager/traffic-manager-overview.md).  Előfordulhat, hogy a végpont forgatókönyvek előnyt ezek a megoldások kombinálásával, igény szerint.
 
-## <a name="why-use-load-balancer-standard"></a>Miért használ a Load Balancer szabványos?
+## <a name="why-use-standard-load-balancer"></a>Standard terheléselosztó miért érdemes használni?
 
-Használhat Load Balancer szabványos virtuális adatközpontok teljes skáláját. A nagy és összetett több zóna architektúrák kis méretű telepítések alkalmazás Load Balancer szabványos előnyeit a következő lehetőségeket:
+Virtuális adatközpontok, a nagy és összetett több zóna architektúrák kis méretű telepítések az összes szabványos terheléselosztó használható.
 
-- [Vállalati méretű](#enterprisescale) a Load Balancer Standard érheti el. Ez a szolgáltatás használható, ha bármely virtuális gép (VM) példánya, mely legfeljebb 1000 Virtuálisgép-példányok a virtuális hálózaton belül.
+Tekintse át az alábbi táblázatban a szabványos terheléselosztó és alapvető terheléselosztó közötti különbséget áttekintése:
 
-- [Új diagnosztikai insights](#diagnosticinsights) elérhető segítenek megérteni, kezelése és hibáinak elhárítása a virtuális adatközpontok alapvető összetevőjét. Azure-figyelője (előzetes verzió) segítségével megjelenítése, szűrésére és az adatok folyamatos elérési állapotfigyelő mérték új többdimenziós metrikák csoportban. Az adatok az előtér virtuális gépre, a végpont állapota mintavételek menüpontban, az TCP-kapcsolódási kísérletek, és a kimenő kapcsolatok figyelésére.
+>[!NOTE]
+> Új tervek érdemes megfontolni, szabványos terheléselosztó használatát. 
 
-- [Hálózati biztonsági csoportok](#nsg) van a Virtuálisgép-példány betöltése terheléselosztó szabványos termékváltozatok vagy nyilvános IP-Standard termékváltozat társított most szükséges. Hálózati biztonsági csoportokkal (NSG-k) adja meg a forgatókönyvnek fokozott biztonságot.
+| | Standard termékváltozat | Alapszintű termékváltozat |
+| --- | --- | --- |
+| Háttér-készlet mérete | legfeljebb 1000 példányok | legfeljebb 100 példányok |
+| Háttér címkészletet végpontok | Egyetlen virtuális hálózatban, beleértve a virtuális gépek rendelkezésre állási csoportok esetében, amelyet minden virtuális gép virtuálisgép-skálázási készletekben. | virtuális gépek egy egyetlen rendelkezésre állási készlet vagy a virtuális gép méretezési beállítása |
+| Rendelkezésre állási zónák | Zónaredundáns és zonal frontends a bejövő és kimenő, a kimenő forgalom hozzárendelések után is megmaradnak a zóna hiba, terheléselosztás kereszt-zóna | / |
+| Diagnosztika | Azure figyelő bájt és csomag számlálók, egészségügyi többdimenziós metrikákat a állapot, kapcsolódási kísérletek (TCP SZIN), kimenő kapcsolat állapota (SNAT sikeres és sikertelen adatfolyamok), az aktív adatforrás vezérlősík mérések mintavételi modulja | Az Azure Naplóelemzés csak a nyilvános terheléselosztót, SNAT Erőforrásfogyás riasztást, háttér címkészletet állapotfigyelő száma |
+| Magas rendelkezésre ÁLLÁSÚ portok | Belső terheléselosztó | / |
+| Alapértelmezés szerint biztonságos | alapértelmezett le a következő nyilvános IP-cím és a terheléselosztó végpontokat és a hálózati biztonsági csoport kell használni kifejezetten engedélyezett forgalom áramlását felé | alapértelmezett megnyitva, a hálózati biztonsági csoport nem kötelező |
+| Kimenő kapcsolatok | Egy szabályban a több frontends lemondáshoz. Egy kimenő forgatókönyv _kell_ explicit módon hozhatók létre a virtuális gép nem használható a kimenő kapcsolat.  [Virtuális hálózat Szolgáltatásvégpontok](../virtual-network/virtual-network-service-endpoints-overview.md) kimenő kapcsolat nélkül elérhető, és nem számítanak bele a feldolgozott adatokat.  Nyilvános IP-címek, beleértve az Azure PaaS szolgáltatások nem érhetők el a virtuális hálózat szolgáltatás végpontként kell kimenő kapcsolat és a feldolgozott adatok felé száma keresztül érhető el. Ha csak egy belső terheléselosztó van egy virtuális gépet szolgáltató, alapértelmezett SNAT keresztül kifelé irányuló kapcsolatok nem érhetők el. | Egyetlen előtér véletlenszerűen kiválasztott, ha több frontends jelen.  Csak belső terheléselosztó van egy virtuális gépet szolgáltató, amikor az alapértelmezett SNAT szolgál.  Kimenő SNAT programozás az átviteli protokoll adott. |
+| Több frontends | Bejövő és kimenő | Csak bejövő |
+| Felügyeleti műveletek | A legtöbb műveletek < 30 másodperc | 60-90 másodpercet tipikus |
+| SLA | a két kifogástalan állapotú virtuális gép elérési útja 99,99 %-os | A virtuális gép SLA implicit | 
+| Díjszabás | A szabályok száma alapján, adatfeldolgozási bejövő vagy kimenő társított erőforrás  | Nem kell fizetni |
 
-- [Magas rendelkezésre állású (HA) portot adja meg a magas megbízhatósági](#highreliability) és hálózati virtuális készülékek (NVAs) skálájának és más alkalmazás-forgatókönyveket. Magas rendelkezésre ÁLLÁSÚ portok terhelésének elosztása minden port a egy Azure belső betölteni a terheléselosztó (ILB) előtér egy Virtuálisgép-példányok készletéhez.
-
-- [Kimenő kapcsolatok](#outboundconnections) most egy új forrás hálózati cím fordítási (SNAT) port foglalási modellt használja, amely nagyobb rugalmasságot és a skála.
-
-- [A rendelkezésre állási zónák szabványos terheléselosztó betölteni](#availabilityzones) zónaredundáns és zonal architektúrák is használható. Mindkét ezek architektúrák tartalmazhatnak terheléselosztás kereszt-zóna. Zóna-redundancia DNS-rekordok függőség nem érhető el. Egyetlen IP-címnek zónaredundáns alapértelmezés szerint.  Egyetlen IP-címnek e virtuális Gépet egy virtuális hálózaton belül az összes rendelkezésre állási zóna között van terület érhető el.
+Felülvizsgálati [szolgáltatási korlátait terheléselosztóhoz](https://aka.ms/lblimits), valamint [árképzési](https://aka.ms/lbpricing), és [SLA](https://aka.ms/lbsla).
 
 
-Választhat Load Balancer szabványos nyilvános vagy belső konfiguráció a következő alapvető forgatókönyvek támogatása céljából:
+### <a name="backend"></a>Háttérkészlet
 
-- A terhelést a megfelelő háttér-példányok bejövő forgalmát.
-- Port bejövő forgalom háttér-egypéldányos.
-- A nyilvános IP-cím egy magánhálózati IP-címet a virtuális hálózaton belül kimenő forgalmát lefordítani.
+Standard terheléselosztó háttérkészletek bővíti a virtuális hálózatban lévő virtuális gép erőforrásokhoz.  Legfeljebb 1000 háttér példányokat tartalmazhat.  A háttér-példány IP-konfigurációt, amely a hálózati erőforrás-tulajdonság.
 
-### <a name = "enterprisescale"></a>Vállalati méretű
+A háttérkészlet önálló virtuális gépek, a rendelkezésre állási készletek vagy a virtuálisgép-méretezési csoportok tartalmazhatnak.  Akkor is keverése háttérkészlethez erőforrásokat, és ezeket az erőforrásokat, akár 150 teljes kombinációja tartalmazhat.
 
- A nagy teljesítményű virtuális adatközpont tervezése, és bármely TCP vagy UDP-alkalmazásokat használni a Load Balancer szabványos. Önálló Virtuálisgép-példány használja, vagy legfeljebb 1000 példányai virtuálisgép-méretezési beállítja a háttér-készletben. Továbbra is használhatja a továbbítási kis késés, a magas teljesítmény teljesítmény és a méretezhetőség adatfolyamok több millió egy teljes körűen felügyelt Azure-szolgáltatáshoz.
- 
-Load Balancer szabványos továbbíthatja a Virtuálisgép-példány az egy régióban található virtuális hálózat felé irányuló forgalom. Háttér-készlet mérete legfeljebb 1000 példányok a következő virtuális gép forgatókönyvek tetszőleges kombinációja lehet:
+Annak eldöntéséhez, hogy a háttérkészlet megtervezésére, megtervezheti a legkevésbé egyedi háttér címkészletet erőforrásokat tovább optimalizálhatja a kezelési műveletek időtartama száma.  Nincs különbség az adatok vezérlősík teljesítményt és a skála.
 
-- Önálló virtuális gépek rendelkezésre állási készletek nélkül
-- Önálló virtuális gépek rendelkezésre állási csoportok
-- Virtuálisgép-skálázási készletekben, legfeljebb 1000 példány
-- Több virtuálisgép-skálázási készletekben
-- A virtuális gépek és virtuálisgép-méretezési csoportok színátmenet
+## <a name="az"></a>Rendelkezésre állási zónák
 
-Nincs már nem követelmény a rendelkezésre állási csoportok. Ha szeretné, rendelkezésre állási készletek használata a előnye, hogy biztosítani.
+>[!NOTE]
+> Használandó [rendelkezésre állási zónák Preview](https://aka.ms/availabilityzones) szabványos terheléselosztót igényel a [előfizetési rendelkezésre állási zónák](https://aka.ms/availabilityzones).
 
-### <a name = "diagnosticinsights"></a>Diagnosztikai insights
+Standard terheléselosztó további képességek azokban a régiókban, ahol a rendelkezésre állási zónák elérhetők támogatja.  Ezek a szolgáltatások akkor növekményes összes szabványos terheléselosztóhoz biztosít.  Rendelkezésre állási zónák konfigurációk nyilvános és a belső szabványos terheléselosztó érhetők el.
 
-Load Balancer szabványos nyilvános és a belső terheléselosztó konfigurációk új többdimenziós diagnosztikai képességeket biztosít. Új metrikákat szolgáltatáson keresztül Azure Monitor (előzetes verzió), és a kapcsolódó funkciók, például az alsóbb rétegbeli fogyasztók integrálása felhasználását.
+A rendelkezésre állási zónák régióban telepítésekor alapértelmezés szerint nem zonal frontends vált zónaredundáns.   Zónaredundáns időtúllépést survives zóna hibát, és a zónák mindegyikében dedikált infrastruktúra által egyidejűleg kiszolgált. 
+
+Ezen felül egy adott zónához időtúllépést garantálható. Zonal időtúllépést sorsáról osztanak meg a megfelelő zónához, és csak egy zóna dedikált infrastruktúra által kiszolgált.
+
+Kereszt-zóna terheléselosztás háttérkészlet érhető el, és a virtuálisgép-erőforrás a vneten belül háttérkészlet része lehet.
+
+Felülvizsgálati [részletes leírást a rendelkezésre állási zónák kapcsolódó képességek](load-balancer-standard-availability-zones.md).
+
+### <a name="diagnostics"></a> diagnosztika
+
+Standard terheléselosztó többdimenziós metrikák Azure figyelő keresztül biztosít.  A metrikák lehet szűrni, csoportosítva, és betekintést aktuális és előzménynaplók teljesítmény és a szolgáltatás állapotát.  Erőforrás állapota is támogatott.  Az alábbiakban olvashat rövid áttekintést támogatott diagnosztika:
 
 | Metrika | Leírás |
 | --- | --- |
@@ -77,222 +103,74 @@ Load Balancer szabványos nyilvános és a belső terheléselosztó konfiguráci
 | Bájt számlálók | Load Balancer szabványos jelentések az előtér-feldolgozott adatokat.|
 | Csomag számlálók | Load Balancer szabványos jelentések egy előtér-feldolgozott a csomagokat.|
 
-### <a name = "highreliability"></a>Magas megbízhatóság
+Felülvizsgálati [részletes leírását a szokásos terhelés terheléselosztó diagnosztikai](load-balancer-standard-diagnostics.md).
 
-Terheléselosztási szabályok az alkalmazás méretezési és nagymértékben megbízható kell konfigurálni. Úgy is beállíthatja az egyes portok szabályokat, vagy használhatja a magas rendelkezésre ÁLLÁSÚ portokat minden forgalmat a TCP vagy UDP-portszám függetlenül elosztása érdekében.  
+### <a name="haports"></a>Magas rendelkezésre ÁLLÁSÚ portok
 
-A magas rendelkezésre ÁLLÁSÚ portok szolgáltatását használhatja különféle forgatókönyvekhez, amik, beleértve a magas rendelkezésre állás és méretezhetőség belső NVAs feloldásához. A szolgáltatás akkor hasznos, az egyéb forgatókönyvek, ahol nem praktikus, vagy megadhat egyéni portokat a nemkívánatos. Magas rendelkezésre ÁLLÁSÚ portok biztosítható a redundancia és a skála azáltal, hogy annyi példányok csak szeretne. A konfigurációs rendszer már nem aktív/passzív forgatókönyvek. A rendszerállapot-mintavétel konfigurációk védi meg a szolgáltatás csak megfelelő példányok-forgalom.
+Standard Load Balancer egy új típusú szabály támogatja.  
 
-NVA szállítók teljes mértékben szállítói támogatott, a refs forgatókönyvek biztosíthat az ügyfelek számára. A rendszer eltávolítja a hibaérzékeny pontok kialakulását, és több aktív példányok méretezési támogatottak. Két vagy több példányát, attól függően, hogy a készülék képességeinek méretezheti. A NVA gyártójától kaphat további útmutatás t forgatókönyvek esetén.
+Terheléselosztási szabályok az alkalmazás méretezési és magas megbízható konfigurálhatja. Amikor az egy magas rendelkezésre ÁLLÁSÚ portok terheléselosztási szabály, szabványos terheléselosztó folyamata terheléselosztási minden rövid élettartamú port egy belső szabványos terheléselosztó tartozó előtérbeli IP-cím / biztosít.  A szolgáltatás akkor hasznos, az egyéb forgatókönyvek, ahol nem praktikus, vagy megadhat egyéni portokat a nemkívánatos.
 
-### <a name = "availabilityzones"></a>Rendelkezésre állási zónák
+Egy magas rendelkezésre ÁLLÁSÚ portok terheléselosztási szabály lehetővé teszi, hogy aktív-passzív vagy aktív-aktív n + 1 esetek létrehozása hálózati virtuális gépek és az összes alkalmazást, amely nagy adattartományokat vizsgálnak át bejövő portra van szükség.  Egy állapotmintáihoz segítségével határozza meg, melyik háttérkiszolgálókon kell kapnia új folyamatok.  A hálózati biztonsági csoportok segítségével egy port tartomány forgatókönyv emulálni.
 
-[!INCLUDE [availability-zones-preview-statement](../../includes/availability-zones-preview-statement.md)]
+>[!IMPORTANT]
+> Ha azt tervezi, hogy a hálózati virtuális készülék használja, ellenőrizze az gyártójánál, hogy tesztelték a terméket a magas rendelkezésre ÁLLÁSÚ portok útmutatót, és kövesse a végrehajtására vonatkozó konkrét útmutatást. 
 
-Az alkalmazás rugalmasság használatával a rendelkezésre állási zónák támogatott régióban előzetes. Rendelkezésre állási zónák jelenleg előzetes verzióban érhetők meghatározott régióiba, és további részt igényelnek.
+Felülvizsgálati [részletes leírását a magas rendelkezésre ÁLLÁSÚ portok](load-balancer-ha-ports-overview.md).
 
-### <a name="automatic-zone-redundancy"></a>Automatikus zóna-redundancia
+### <a name="securebydefault"></a>Alapértelmezés szerint biztonságos
 
-Kiválaszthatja, hogy terheléselosztó biztosítania kell a zónaredundáns vagy zonal előtér-összes az alkalmazáshoz. Akkor is könnyen a Load Balancer Standard zóna-redundancia megteremtése érdekében. Egyetlen előtér-IP-címnek automatikusan zónaredundáns. A zónaredundáns előtér-által kiszolgált összes rendelkezésre állási zónák régióban egyidejűleg. Zónaredundáns adatútvonalat bejövő és kimenő kapcsolatok jön létre. Zóna-redundancia az Azure-ban nem kell több IP-címek és DNS-rekordokat. 
-
-Zóna-redundancia nyilvános vagy belső első végpontok érhető el. A nyilvános IP-cím és a belső terheléselosztó előtérbeli magánhálózati IP-címe lehet zónaredundáns.
-
-A következő parancsfájl segítségével hozzon létre egy zónaredundáns nyilvános IP-címet a belső terheléselosztóhoz. Ha meglévő Resource Manager-sablonok a konfigurációt használ, adja hozzá a **sku** szakasz ezeket a sablonokat.
-
-```json
-            "apiVersion": "2017-08-01",
-            "type": "Microsoft.Network/publicIPAddresses",
-            "name": "public_ip_standard",
-            "location": "region",
-            "sku":
-            {
-                "name": "Standard"
-            },
-```
-
-A következő parancsfájl segítségével hozzon létre egy zónaredundáns előtér-IP-cím a belső terheléselosztóhoz. Ha meglévő Resource Manager-sablonok a konfigurációt használ, adja hozzá a **sku** szakasz ezeket a sablonokat.
-
-```json
-            "apiVersion": "2017-08-01",
-            "type": "Microsoft.Network/loadBalancers",
-            "name": "load_balancer_standard",
-            "location": "region",
-            "sku":
-            {
-                "name": "Standard"
-            },
-            "properties": {
-                "frontendIPConfigurations": [
-                    {
-                        "name": "zone_redundant_frontend",
-                        "properties": {
-                            "subnet": {
-                                "Id": "[variables('subnetRef')]"
-                            },
-                            "privateIPAddress": "10.0.0.6",
-                            "privateIPAllocationMethod": "Static"
-                        }
-                    },
-                ],
-```
-
-Ha a nyilvános IP-cím előtér-zónaredundáns, a kimenő kapcsolatokhoz a Virtuálisgép-példányok automatikusan zónaredundáns válik. Az előtér-védett a zóna hiba. A SNAT portkiosztással is survives zóna hiba.
-
-#### <a name="cross-zone-load-balancing"></a>Kereszt-zóna terheléselosztás
-
-Kereszt-zóna terheléselosztási érhető el a háttér-készlet régión belül, és a Virtuálisgép-példányok maximális rugalmasságot biztosít. A virtuális gép virtuális hálózatban, függetlenül a rendelkezésre állási zóna a Virtuálisgép-példány egy előtér-kézbesíti adatfolyamok.
-
-Megadhatja, hogy egy adott zónában az előtér- és példányok, akkor igazíthatók az elérési útja és erőforrások eléréséről a megadott zónában.
-
-A zóna soha nem korlátozza a virtuális hálózatok és alhálózatok. A konfigurálása nem fejeződött be, és csak a egy háttér-címkészlet, amely a kívánt Virtuálisgép-példányok megadása.
-
-#### <a name="zonal-deployments"></a>Zonal központi telepítések
-
-Alternatívaként igazíthatja a terheléselosztó előtér-egy adott zónához meghatározhat egy zonal előtér. Egy zonal előtér-által kiszolgált a kijelölt egy rendelkezésre állási zóna csak. Az előtér-együttes zonal Virtuálisgép-példányok, igazíthatja erőforrások zónához.
-
-Egy nyilvános IP-címet, amely jön létre a megadott zónában mindig csak adott zónában van. Nincs lehetőség a zóna egy nyilvános IP-cím módosításához. Nyilvános IP-cím több zóna erőforrásokhoz csatolt hozzon létre helyette zónaredundáns nyilvános IP-cím.
-
-A következő parancsfájl segítségével hozzon létre egy zonal nyilvános IP-címet a rendelkezésre állási zóna 1. Ha meglévő Resource Manager-sablonok a konfigurációt használ, adja hozzá a **sku** szakasz ezeket a sablonokat.
-
-```json
-            "apiVersion": "2017-08-01",
-            "type": "Microsoft.Network/publicIPAddresses",
-            "name": "public_ip_standard",
-            "location": "region",
-            "zones": [ "1" ],
-            "sku":
-            {
-                "name": "Standard"
-            },
-```
-
-A következő parancsfájl segítségével hozzon létre egy belső terheléselosztó előtér-a rendelkezésre állási zóna 1.
-
-Ha meglévő Resource Manager-sablonok a konfigurációt használ, adja hozzá a **sku** szakasz ezeket a sablonokat. Továbbá adja meg a **zónák** tulajdonság az előtér-IP-konfigurációban a gyermek-erőforrás.
-
-```json
-            "apiVersion": "2017-08-01",
-            "type": "Microsoft.Network/loadBalancers",
-            "name": "load_balancer_standard",
-            "location": "region",
-            "sku":
-            {
-                "name": "Standard"
-            },
-            "properties": {
-                "frontendIPConfigurations": [
-                    {
-                        "name": "zonal_frontend_in_az1",
-                        "zones": [ "1" ],
-                        "properties": {
-                            "subnet": {
-                                "Id": "[variables('subnetRef')]"
-                            },
-                            "privateIPAddress": "10.0.0.6",
-                            "privateIPAllocationMethod": "Static"
-                        }
-                    },
-                ],
-```
-
-Adja hozzá a kereszt-zóna terheléselosztást a háttér-készlet és a Virtuálisgép-példány egy virtuális hálózatban, a készletbe.
-
-A Load Balancer szabványos erőforrást, mert mindig regionális és zónaredundáns ahol rendelkezésre állási zónák használata támogatott. Telepítheti a nyilvános IP-cím vagy a belső terheléselosztó előtér-minden régióban egy hozzárendelt zóna nem található. Rendelkezésre állási zónák támogatása nem befolyásolja a telepítési lehetőség. Ha egy régiót később átveszi a rendelkezésre állási zónák, korábban telepített nyilvános IP-cím vagy a belső terheléselosztó első-végpontok automatikusan a zónaredundáns válnak. A zónaredundáns elérési útja nem feltétlenül jelenti azt a 0 % csomagveszteség.
-
-### <a name = "nsg"></a>Hálózati biztonsági csoportok
-
-Terheléselosztó szabványos és nyilvános IP szabványos teljesen bevezetésében betölteni a virtuális hálózathoz, amely hálózati biztonsági csoportokkal (NSG-k) használatát igényli. Az NSG-k lehetővé teszik az engedélyezési lista adatforgalmat. Az NSG-k segítségével forgalom teljes mértékben átveheti az Ön telepítésére. Többé nem kell várnia más adatforgalmakat, hogy végezze el.
-
-NSG-k társítása alhálózathoz vagy a hálózati adapterek (NIC) a Virtuálisgép-példánya a háttér-készlet. Használja ezt a konfigurációt a Load Balancer Standard és a nyilvános IP szabványos, ha olyan példányszintű nyilvános IP-címet használják. Az NSG explicit módon kell ahhoz, hogy a forgalmat engedélyezni szeretné a forgalom engedélyezett.
+Standard terheléselosztó teljesen előkészítve a virtuális hálózathoz.  A virtuális hálózat egy saját, lezárt hálózati.  Szabványos Terheléselosztókról, illetve a szabványos nyilvános IP-címeket úgy tervezték, hogy engedélyezze a virtuális hálózaton kívülről is hozzáférhetnek a virtuális hálózat, mert ezekhez az erőforrásokhoz alapértelmezés szerinti zárva, kivéve, ha megnyitja őket. Ez azt jelenti, hogy hálózati biztonsági csoportokkal (NSG-k) használnak az explicit módon engedélyezi, és a engedélyezett forgalmat.  A teljes virtuális adatközpont létrehozhat és NSG keresztül döntse el, mi, és ha annak elérhetőnek kell lennie.  Ha az alhálózat egy NSG-t vagy a virtuálisgép-erőforrás hálózati adapter nem rendelkezik, azt nem ad engedélyt forgalom az erőforrás elérésére.
 
 Az NSG-k és hogyan kell alkalmazni a forgatókönyvnek kapcsolatos további információkért lásd: [hálózati biztonsági csoportok](../virtual-network/virtual-networks-nsg.md).
 
-### <a name ="outboundconnections"></a>Kimenő kapcsolatok
+### <a name="outbound"></a> Kimenő kapcsolatok
 
-Load Balancer szabványos biztosít a virtuális gépekhez, amelyek a virtuális hálózaton belül, ha a terheléselosztó által használt port színleg SNAT kimenő kapcsolatokat. A port színleg SNAT algoritmus nagyobb robusztusság és a skála biztosít.
+Terheléselosztó bejövő és kimenő forgatókönyveket támogat.  Standard terheléselosztó jelentősen eltér alapvető terheléselosztó kimenő kapcsolatok tekintetében.
 
-Egy nyilvános terheléselosztó erőforrás társított Virtuálisgép-példányok esetén a rendszer írni minden kimenő kapcsolat forrása. A forrás a terheléselosztó előtérbeli nyilvános IP-cím a virtuális hálózat privát IP-címtér van írni.
+Forrás hálózati cím fordítási (SNAT) szolgál a virtuális hálózat belső, privát IP-cím hozzárendelése terheléselosztó frontends nyilvános IP-címeit.
 
-Kimenő kapcsolatok használatakor a zónaredundáns egy előtér-, a kapcsolatok esetén is zónaredundáns és SNAT port lefoglalását zóna hiba képesek túlélni.
+Standard terheléselosztó bevezet egy új algoritmust a [stabil, méretezhető és kiszámítható SNAT algoritmus](load-balancer-outbound-connections.md#snat) és lehetővé teszi, hogy új képességek, eltávolítja a félreérthetőség és kényszeríti explicit konfigurációk ahelyett, hogy hatások oldalán. Ezeket a módosításokat is szükséges ahhoz, hogy az új szolgáltatások merülnek fel. 
 
-Az új algoritmust a Load Balancer szabványos preallocates SNAT minden virtuális gép hálózati adapter által használt portok. Egy hálózati Adaptert a készletben való felvételekor a SNAT portok vannak előzetesen lefoglalt készlet mérete alapján. Az alábbi táblázat a port preallocations háttér-készlet méretű hat rétege számára:
+A kulcs tenets megjegyezhető az szabványos terheléselosztó használatakor az alábbiak:
 
-| Készlet mérete (Virtuálisgép-példány) | Előzetesen lefoglalt SNAT portok száma |
-| --- | --- |
-| 1 - 50 | 1024 |
-| 51 - 100 | 512 |
-| 101 - 200 | 256 |
-| 201 - 400 | 128 |
-| 401 - 800 | 64 |
-| 801 - 1,000 | 32 |
+- szabály létrehozása után a Load Balancer erőforrás meghajtók.  minden Azure programozását konfigurációjában származik.
+- Ha több frontends érhetők el, az összes frontends használatosak, és minden előtér szorozza meg a rendelkezésre álló SNAT portok száma
+- Válassza ki, és szabályozhatja, ha nem szeretné az adott időtúllépést a kimenő kapcsolatokhoz használt.
+- kimenő forgatókönyvek a következők explicit, és a kimenő kapcsolat nem létezik, amíg meg van adva.
+- terheléselosztási szabályok következtethető ki, hogyan SNAT programozott-e. Terheléselosztási szabályok adott protokoll. SNAT adott protokoll és konfigurációs kell ennek megfelelően helyett hozzon létre egy mellékhatása.
 
-SNAT portok közvetlenül nem lefordítani a kimenő kapcsolatok száma. Egy SNAT port a több célhoz rendelt egyedi felhasználhatók. További információkért tekintse át a [kimenő kapcsolatok](load-balancer-outbound-connections.md) cikk.
+#### <a name="multiple-frontends"></a>Több frontends
+Ha azt szeretné további SNAT portok, mert számított vagy már a kimenő kapcsolatok nagy igényt ró tapasztal, azt is megteheti növekményes SNAT port készlet további frontends, szabályok és háttérkészletek ugyanahhoz a virtuális géphez erőforrások.
 
-Ha a háttér-készlet mérete növeli, és a magasabb szintű használható közeledik, a lefoglalt portok felének visszaigényelt vannak. Kapcsolatok száma, amelyek regenerált port időtúllépés tartoznak, és létre kell hozni. Új kapcsolódási kísérletek sikeres azonnal. Ha csökkenti a háttér-készlet méretét, és az alacsonyabb szint transitions lehetőségnél SNAT elérhető portok száma növekszik. Ebben az esetben nem érinti a meglévő kapcsolatok.
+#### <a name="control-which-frontend-is-used-for-outbound"></a>A vezérlő melyik előtér használt kimenő
+Ha szeretné korlátozni az egy adott előtérbeli IP-cím csak oly módon, hogy a kimenő kapcsolatokat, letilthatja a szabályt, amely a kimenő leképezés fejezi ki a kimenő SNAT opcionálisan.
 
-Load Balancer szabványos rendelkezik olyan további konfigurációs beállítás, amely a szabály alapon is használható. Azt is szabályozhatja, amely előtér használja port színleg SNAT, amikor több első-végpontok érhetők el.
+#### <a name="control-outbound-connectivity"></a>Kimenő kapcsolódás vezérlő
+Standard terheléselosztó létezik a virtuális hálózati környezetében.  Egy virtuális hálózat egy saját, elkülönített hálózatot.  Csak nyilvános IP-címek egy hozzárendelés létrejött, a nyilvános kapcsolódási nem engedélyezett.  Érhető el [VNet Szolgáltatásvégpontok](../virtual-network/virtual-network-service-endpoints-overview.md) ezek ugyanis a vállalaton belüli és a helyi a virtuális hálózathoz.  Ha azt szeretné, a virtuális hálózaton kívüli egy célra kimenő kapcsolat létrehozásához, két lehetősége van:
+- egy Standard Termékváltozat nyilvános IP-címet rendeljen a virtuális gép erőforrásának példányszintű nyilvános IP-címet vagy
+- a szabványos nyilvános terheléselosztó háttérkészletének helyezze el a virtuálisgép-erőforrást.
 
-Ha csak Load Balancer szabványos szolgálja ki a Virtuálisgép-példányok, SNAT kifelé irányuló kapcsolatok nem érhetők el. Ez a lehetőség explicit módon visszaállíthatja a Virtuálisgép-példányok is rendel egy nyilvános terheléselosztó. Nyilvános IP-címek közvetlenül is rendelhet hozzá, példányszintű nyilvános IP-címek Virtuálisgép-példányokhoz csatlakoznak. Lehet, hogy ez a beállítás szükséges az egyes operációs rendszer és az alkalmazás-forgatókönyvek. 
+Egyaránt lehetővé teszi a kimenő kapcsolat a virtuális hálózat a virtuális hálózaton kívülről. 
 
-### <a name="port-forwarding"></a>Port átirányítása
+Ha Ön _csak_ egy belső szabványos elosztott terhelésű a háttérkészlet, ahol a virtuálisgép-erőforrás társítva, a virtuális gép csak képes elérni a virtuális hálózati erőforrások és [VNet szolgáltatás Végpontok](../virtual-network/virtual-network-service-endpoints-overview.md).  A kimenő kapcsolat létrehozása az előző bekezdésben ismertetett lépések követésével.
 
-Egyszerű és szabványos Terheléselosztók biztosít az ügyfélgépek konfigurálására olyan előtér-port hozzárendelése egyéni háttér-példány bejövő NAT-szabályok. Úgy konfigurálja ezeket a szabályokat, a távoli asztal protokoll végpontok és az SSH-végpontok tesz közzé, vagy más alkalmazás-forgatókönyvekre végrehajtani.
+Egy virtuálisgép-erőforrás nincs hozzárendelve a Standard termékváltozat marad, mielőtt kimenő kapcsolatok.
 
-Load Balancer szabványos továbbra is a bejövő NAT-szabályok port-továbbítási lehetőséget nyújtanak. Zónaredundáns első-ends elemmel sem használatakor a bejövő NAT-szabályok zónaredundáns válik, és után is megmaradnak a zóna hiba.
+Felülvizsgálati [részletes leírását a kimenő kapcsolatok](load-balancer-outbound-connections.md).
 
-### <a name="multiple-front-ends"></a>Több első-végpontok
+### <a name="multife"></a>Több frontends
+Terheléselosztó támogatja a több-több frontends szabályokat.  Standard terheléselosztó bontja ki a kimenő forgatókönyvek.  Kimenő forgatókönyvek a következők lényegében egy bejövő terheléselosztási szabály inverzét.  A bejövő terheléselosztási szabály is kimenő kapcsolatok társult hoz létre. Standard terheléselosztó terheléselosztási szabály keresztül virtuálisgép-erőforrás társított összes frontends használja.  Emellett a terheléselosztással paraméterként szabály, és lehetővé teszi, hogy letiltsa a kimenő kapcsolat, amely lehetővé teszi az adott frontends nincs beleértve alkalmazásában terheléselosztási szabály.
 
-Az alkalmazásoknak kell tenni, például a TLS-webhelyek vagy az SQL AlwaysOn rendelkezésre állási csoport végpontok több egyedi IP-cím konfigurálása több első-végpontok tervezési rugalmasságot biztosít. 
+Az összehasonlításhoz alapvető terheléselosztó egyetlen előtérbeli véletlenszerűen választ, és nem tudja vezérelni, hogy melyik kiválasztott van.
 
-Load Balancer szabványos továbbra is nyújt több első-végpontok ahol ki kell tenni egy adott alkalmazás végpontja egy egyedi IP-címet.
+Felülvizsgálati [részletes leírását a kimenő kapcsolatok](load-balancer-outbound-connections.md).
 
-Több előtér-IP-cím konfigurálásával kapcsolatos további információkért lásd: [több IP-konfiguráció](load-balancer-multivip-overview.md).
+### <a name="operations"></a> Felügyeleti műveletek
 
-## <a name = "sku"></a>Kapcsolatos termékváltozatok
+Standard terheléselosztó erőforrások létezik egy teljesen új infrastruktúra platformon.  Ez lehetővé teszi, hogy a Standard termékváltozat jelentősen gyorsabb felügyeleti műveletek és befejezési idők általában Standard Termékváltozat erőforrásonként kevesebb, mint 30 másodperc.  Vegye figyelembe, hogy a méret növekedését háttérkészletek menüpontot, háttér szükséges időtartam készlet változik is növelését.
 
-Az Azure Resource Manager üzembe helyezési modellel termékváltozatok csak érhetők el. Az előzetes terheléselosztó és a nyilvános IP-erőforrások két termékváltozatok: Basic és Standard. A termékváltozat nem egyezik a képességek, teljesítményt nyújt, korlátozások és egyes belső viselkedését. Virtuális gépek vagy SKU használható. Mind a Terheléselosztóról, mind a nyilvános IP-cím erőforrások termékváltozatok választható attribútumok marad. SKU forgatókönyv definíciójában nincs megadva érték, ha a konfigurációs alapértelmezés szerint az alapszintű Termékváltozat használja.
-
->[!IMPORTANT]
->Az erőforrás termékváltozata nem változtatható. A meglévő erőforrás Termékváltozata nem módosítható.  
-
-### <a name="load-balancer"></a>Load Balancer
-
-A [meglévő terheléselosztó erőforrást](load-balancer-overview.md) az alapszintű Termékváltozat válik, és általában elérhető és változatlan marad.
-
-Load Balancer Standard Termékváltozat új, és jelenleg előzetes verzióban érhetők. Az 1. augusztus, 2017, API-verzió Microsoft.Network/loadBalancers hozzáadja a **sku** tulajdonságot az erőforrás-definícióban:
-
-```json
-            "apiVersion": "2017-08-01",
-            "type": "Microsoft.Network/loadBalancers",
-            "name": "load_balancer_standard",
-            "location": "region",
-            "sku":
-            {
-                "name": "Standard"
-            },
-```
-Load Balancer szabványos is automatikusan zóna-lehetséges a rendelkezésre állási zónák kínáló régióban. Ha a terheléselosztó zonal van deklarálva, majd nincs automatikusan zóna rugalmas.
-
-### <a name="public-ip"></a>Nyilvános IP-cím
-
-A [meglévő nyilvános IP-cím erőforrás](../virtual-network/virtual-network-ip-addresses-overview-arm.md) az alapszintű Termékváltozat válik, és az összes, a képességek, a teljesítményt és a korlátozások általánosan elérhető marad.
-
-Nyilvános IP-Standard Termékváltozat új, és jelenleg előzetes verzióban érhetők. Az 1. augusztus, 2017, API-verzió Microsoft.Network/publicIPAddresses hozzáadja a **sku** tulajdonságot az erőforrás-definícióban:
-
-```json
-            "apiVersion": "2017-08-01",
-            "type": "Microsoft.Network/publicIPAddresses",
-            "name": "public_ip_standard",
-            "location": "region",
-            "sku":
-            {
-                "name": "Standard"
-            },
-```
-
-Nyilvános IP alapvető, amely több elosztási módszert kínál, eltérően nyilvános IP szabványos mindig használja statikus foglalási.
-
-Nyilvános IP szabványos is automatikusan zóna-lehetséges a rendelkezésre állási zónák kínáló régióban. Ha a nyilvános IP-cím zonal van deklarálva, majd nincs automatikusan zóna rugalmas. Egy zonal nyilvános IP-cím nem módosítható egy zónából egy másikra.
+Standard terheléselosztó erőforrások módosítja, és a szabványos nyilvános IP-cím áthelyezése egy olyan virtuális gépet másik sokkal gyorsabb.
 
 ## <a name="migration-between-skus"></a>SKU közötti áttelepítés
 
@@ -322,158 +200,45 @@ Termékváltozat nem változtatható. Kövesse az ebben a szakaszban található
 >
 >Magas rendelkezésre ÁLLÁSÚ portok és a szabványos metódust diagnosztikai találhatók csak a Standard Termékváltozat. Nem az alapszintű Termékváltozat a Standard Termékváltozat át, és nem is megőrzik, ezeket a szolgáltatásokat.
 >
->Megfelelő termékváltozatok terheléselosztó és a nyilvános IP-erőforrások kell használni. Alapszintű Termékváltozat Standard Termékváltozat erőforrásokat és vegyesen tartalmazhat. Nem lehet csatolni a virtuális gép, egy rendelkezésre állási csoportban, virtuális gépek vagy virtuálisgép-méretezési egyidejűleg állítsa mindkét SKU.
+>Basic és Standard Termékváltozat egyaránt rendelkezik különbségek számos ebben a cikkben leírt módon.  Győződjön meg arról, hogy tudomásul veszi, és készítse elő azokat a.
 >
+>Megfelelő termékváltozatok terheléselosztó és a nyilvános IP-erőforrások kell használni. Alapszintű Termékváltozat Standard Termékváltozat erőforrásokat és vegyesen tartalmazhat. Nem lehet csatolni a önálló virtuális gépek, virtuális gépek egy rendelkezésre állási készlet erőforrás vagy egy virtuálisgép-méretezési állítsa erőforrások mindkét termékváltozatok egyidejűleg.
 
 ## <a name="region-availability"></a>Régiónkénti elérhetőség
 
-Load Balancer szabványos érhető el jelenleg USA nyugati régiója kivételével minden nyilvános felhő területen.
+Load Balancer szabványos már érhető el nyilvános felhő minden régióban.
 
->[!IMPORTANT]
-> Rövid idő alatt, hozzáférni a kezdeti indítási kívül régiók régiók (USA keleti régiója 2. régiója, USA középső RÉGIÓJA, Észak-Európa, Nyugat középső Régiójában, Nyugat-Európában, Délkelet-Ázsiában) előírja, hogy további előfizetési funkciók regisztrációjának (AllowLBPreviewWave2 és AllowLBPreviewWave3).  [Kövesse az alábbi lépéseket](#additionalpreviewregions). Hajtsa végre az összes akkor is, ha korábban már feliratkozott a AllowLBPreview már.
-> Ez a követelmény az elkövetkező hetektől törlődni fog.
+## <a name="sla"></a>SLA
 
-## <a name="sku-service-limits-and-abilities"></a>Termékváltozat-szolgáltatásra vonatkozó korlátozások és képességek
+Egy 99,99 % SLA-t a szabványos Terheléselosztók érhetők el.  Tekintse át a [szokásos terhelés terheléselosztó SLA](https://aka.ms/lbsla) részleteiről.
 
-Azure [szolgáltatásra vonatkozó korlátozások hálózati](https://docs.microsoft.com/azure/azure-subscription-service-limits#networking-limits) régiónként alkalmazni. 
-
-Az alábbi táblázat összehasonlítja a korlátozások és a Load Balancer Basic és Standard termékváltozat képességek:
-
-| Load Balancer | Alapszintű | Standard |
-| --- | --- | --- |
-| Háttér-készlet mérete | legfeljebb 100 | legfeljebb 1000 |
-| Háttér-készlet határ | Rendelkezésre állási csoport | virtuális hálózat, a régiót |
-| Háttér-készlet kialakítása | Virtuális gépek rendelkezésre állási csoportban, állítsa be a rendelkezésre állási csoport virtuálisgép-méretezési | A Virtuálisgép-példány a virtuális hálózat |
-| Magas rendelkezésre ÁLLÁSÚ portok | Nem támogatott | Elérhető |
-| Diagnosztika | Korlátozott, nyilvános csak | Elérhető |
-| VIP rendelkezésre állása  | Nem támogatott | Elérhető |
-| Gyors IP-címes | Nem támogatott | Elérhető |
-|Rendelkezésre állási zónák forgatókönyvek | Csak Zonal | Zonal, zónaredundáns, kereszt-zóna terheléselosztás |
-| Kimenő SNAT algoritmus | Igény szerinti | Előzetesen lefoglalt |
-| Kimenő SNAT előtér-kiválasztása | Nem konfigurálható, több jelöltek | Opcionális konfigurációs jelöltek csökkentése érdekében |
-| Hálózati biztonsági csoport | Nem kötelező a hálózati adapter/alhálózatot | Szükséges |
-
-Az alábbi táblázat összehasonlítja a korlátozások és a nyilvános IP Basic és Standard termékváltozat képességek:
-
-| Nyilvános IP-cím | Alapszintű | Standard |
-| --- | --- | --- |
-| Rendelkezésre állási zónák forgatókönyvek | Csak Zonal | Zónaredundáns (alapértelmezett), zonal (nem kötelező) | 
-| Gyors IP-címes | Nem támogatott | Elérhető |
-| VIP rendelkezésre állása | Nem támogatott | Elérhető |
-| Számlálók | Nem támogatott | Elérhető |
-| Hálózati biztonsági csoport | Nem kötelező a hálózati adapter | Szükséges |
-
-
-## <a name="preview-sign-up"></a>Előnézet-előfizetés
-
-Az előzetes betöltési terheléselosztó Standard Termékváltozat és a kiegészítő nyilvános IP-Standard Termékváltozat részt, az előfizetés regisztrálása  Az előfizetés hozzáférést tud biztosítani, a PowerShell vagy Azure CLI 2.0 regisztrálása. Regisztrálásához hajtsa végre az alábbi lépéseket:
-
->[!NOTE]
->A Load Balancer szabványos szolgáltatás regisztrációs órát is igénybe vehet egy globálisan hatályba. Ha szeretné használni a Load Balancer szabványosnak [rendelkezésre állási zónák](https://aka.ms/availabilityzones), egy [előfizetési külön](https://aka.ms/availabilityzones) a AZ előzetes verzió szükséges.
-
-<a name="additionalpreviewregions"></a>
->[!IMPORTANT]
-> Rövid időn kívül a kezdeti indítási régiókban elérhető régiók (USA keleti régiója 2. régiója, USA középső RÉGIÓJA, Észak-Európa, Nyugat középső Régiójában, Nyugat-Európában, Délkelet-Ázsiában) a további előfizetési funkciók való regisztráció megkövetelése (AllowLBPreviewWave2 és AllowLBPreviewWave3).  Az alábbi lépéseket az előfizetés további funkciók engedélyezésére módosítva lett. Hajtsa végre az összes akkor is, ha korábban már feliratkozott a AllowLBPreview már. Ez a követelmény az elkövetkező hetektől törlődni fog.
-
-
-### <a name="sign-up-by-using-azure-cli-20"></a>Jelentkezzen Azure CLI 2.0 használatával
-
-1. A szolgáltatás regisztrálja a szolgáltatót:
-
-    ```cli
-    az feature register --name AllowLBPreview --namespace Microsoft.Network
-    az feature register --name AllowLBPreviewWave2 --namespace Microsoft.Network
-    az feature register --name AllowLBPreviewWave3 --namespace Microsoft.Network
-    ```
-    
-2. A művelet elvégzéséhez akár 10 percet is igénybe vehet. A állapotának a művelet a következő paranccsal:
-
-    ```cli
-    az feature list --query "[?name=='Microsoft.Network/AllowLBPreview']" --output json
-    az feature list --query "[?name=='Microsoft.Network/AllowLBPreviewWave2']" --output json
-    az feature list --query "[?name=='Microsoft.Network/AllowLBPreviewWave3']" --output json
-    ```
-    
-    Ha a szolgáltatás regisztrációs állapota "Regisztrált" minden, a fenti előfizetés funkciók ad vissza. a folytatáshoz a következő lépéssel. Példa:
-   
-    ```json
-    {
-       "id": "/subscriptions/foo/providers/Microsoft.Features/providers/Microsoft.Network/features/AllowLBPreview",
-       "name": "Microsoft.Network/AllowLBPreview",
-       "properties": {
-          "state": "Registered"
-       },
-       "type": "Microsoft.Features/providers/features"
-    }
-    ```
-    
-4. Fejezze be az előfizetési előzetes újra az erőforrás-szolgáltató előfizetésének regisztrálása:
-
-    ```cli
-    az provider register --namespace Microsoft.Network
-    ```
-    
-
-### <a name="sign-up-by-using-powershell"></a>Iratkozzon fel a PowerShell használatával
-
-1. A szolgáltatás regisztrálja a szolgáltatót:
-
-    ```powershell
-    Register-AzureRmProviderFeature -FeatureName AllowLBPreview -ProviderNamespace Microsoft.Network
-    Register-AzureRmProviderFeature -FeatureName AllowLBPreviewWave2 -ProviderNamespace Microsoft.Network
-    Register-AzureRmProviderFeature -FeatureName AllowLBPreviewWave3 -ProviderNamespace Microsoft.Network
-    ```
-    
-2. A művelet elvégzéséhez akár 10 percet is igénybe vehet. A állapotának a művelet a következő paranccsal:
-
-    ```powershell
-    Get-AzureRmProviderFeature -FeatureName AllowLBPreview -ProviderNamespace Microsoft.Network
-    Get-AzureRmProviderFeature -FeatureName AllowLBPreviewWave2 -ProviderNamespace Microsoft.Network
-    Get-AzureRmProviderFeature -FeatureName AllowLBPreviewWave3 -ProviderNamespace Microsoft.Network
-    ```
-
-  Ha a szolgáltatás regisztrációs állapota "Regisztrált" minden, a fenti előfizetés funkciók ad vissza. a folytatáshoz a következő lépéssel. Példa:
-
-    ```
-    FeatureName      ProviderName        RegistrationState
-    -----------      ------------        -----------------
-    AllowLBPreview   Microsoft.Network   Registered
-    ```
-    
-3. Fejezze be az előfizetési előzetes újra az erőforrás-szolgáltató előfizetésének regisztrálása:
-
-    ```powershell
-    Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Network
-    ```
- 
 ## <a name="pricing"></a>Díjszabás
 
-Load Balancer Standard Termékváltozat számlázási konfigurált szabályok és a feldolgozott adatok alapul. Nincs díjak sem merülnek fel, a próbaidőszak alatt. További információkért tekintse át a [terheléselosztó](https://aka.ms/lbpreviewpricing) és [nyilvános IP-cím](https://aka.ms/lbpreviewpippricing) lapok árképzési.
-
-Az ügyfelek továbbra is kihasználhatja a Load Balancer alapszintű Termékváltozat díjmentesen előnyeit.
+Standard terheléselosztó terheléselosztási szabályok konfigurálva és az összes bejövő és kimenő adatfeldolgozási száma alapján megterhelni termék. Standard terheléselosztóhoz árakról, látogasson el a [Load Balancer árképzési](https://aka.ms/lbpricing) lap.
 
 ## <a name="limitations"></a>Korlátozások
 
 A következő korlátozások vonatkoznak az előzetes időpontjában alkalmazni, és van változhatnak:
 
-- Load Balancer háttér-példányok nem található a virtuális hálózatok társviszonyban most. Háttér-példányainak ugyanabban a régióban kell lennie.
+- Betöltési terheléselosztó háttér példányok nem található a virtuális hálózatok társviszonyban most. Háttér-példányainak ugyanabban a régióban kell lennie.
 - Termékváltozat nem változtatható. A meglévő erőforrás Termékváltozata nem módosítható.
-- Mindkét termékváltozatok lehet használt különálló virtuális gép, Virtuálisgép-példányok a rendelkezésre állási csoport, vagy a virtuálisgép-méretezési készlet. Virtuális gép kombinációk nem használható mindkét termékváltozatok egyidejűleg. Az SKU vegyesen tartalmazó konfiguráció nem engedélyezett.
-- Letiltja a Virtuálisgép-példány (vagy a rendelkezésre állási csoport valamely része) egy belső Load Balancer Standard használó [SNAT kimenő kapcsolatok alapértelmezett](load-balancer-outbound-connections.md). Ez olyan önálló virtuális gép, Virtuálisgép-példány egy rendelkezésre állási csoportban, vagy egy virtuálisgép-méretezési csoport is helyreállíthatja. Kimenő kapcsolatok képesség is állíthatja. Ezeket a funkciókat visszaállításához egyidejűleg rendeljen a Load Balancer szabványos nyilvános vagy nyilvános IP Standard egy példányszintű nyilvános IP-cím, a virtuális gép ugyanazon. A hozzárendelés befejezése után a nyilvános IP-cím, port-színleg SNAT valósul meg újra.
-- Virtuálisgép-példányok teljes háttér címkészletet méretezési eléréséhez a rendelkezésre állási készletek csoportosítva lehet szükség. Legfeljebb 150 rendelkezésre állási készletek és önálló virtuális gépek elhelyezhetők legyenek egy háttér-készlet.
+- Egy különálló virtuális gép erőforrás rendelkezésre állási csoport erőforrás, vagy a virtuálisgép-méretezési készlet erőforrás egyik Termékváltozatáról, soha nem is hivatkozhat.
+- A virtuális hálózaton Azure DDoS-védelem engedélyezése hatással van a felügyeleti műveletek időtartama.
 - Az IPv6 nem támogatott.
-- A rendelkezésre állási zónák a környezetben egy előtér-nem változtatható zonal a zónaredundáns, vagy fordítva. Egy előtér-létrehozása után a zónaredundáns marad zónaredundáns. Egy előtér-létrehozása után a zonal marad zonal.
-- A rendelkezésre állási zónák környezetében zonal nyilvános IP-címnek nem lehet áthelyezni egy zónából egy másikra.
 - [Riasztások figyelése Azure](../monitoring-and-diagnostics/monitoring-overview-alerts.md) jelenleg nem támogatottak.
-- Portál még nem támogatja a kibővített előzetes régiók.  Használjon például sablonokat, az Azure CLI 2.0-s vagy megoldás PowerShell ügyféleszközök elől.
 - [Előfizetés műveletek áthelyezése](../azure-resource-manager/resource-group-move-resources.md) Standard Termékváltozat LB és PIP erőforrások esetén nem támogatottak.
-- USA nyugati régiója nem elérhető.
-
 
 ## <a name="next-steps"></a>További lépések
 
-- További információ [Load Balancer alapvető](load-balancer-overview.md).
+- További információ használatáról [szabványos terheléselosztó és a rendelkezésre állási zónák](load-balancer-standard-availability-zones.md)
 - További információ [rendelkezésre állási zónák](../availability-zones/az-overview.md).
+- További tudnivalók [normál terhelésen terheléselosztó diagnosztika](load-balancer-standard-diagnostics.md).
+- További tudnivalók [többdimenziós metrikák támogatott](../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftnetworkloadbalancers) a diagnosztikai [Azure figyelő](../monitoring-and-diagnostics/monitoring-overview.md).
+- További információ használatáról [terheléselosztó kimenő kapcsolatok](load-balancer-outbound-connections.md)
+- További tudnivalók [szabványos terheléselosztó a magas rendelkezésre ÁLLÁSÚ portok terheléselosztási szabályok](load-balancer-ha-ports-overview.md)
+- További információ használatáról [több Frontends rendelkező terheléselosztó](load-balancer-multivip-overview.md)
+- További tudnivalók [virtuális hálózatok](../virtual-network/virtual-networks-overview.md).
 - További információ [hálózati biztonsági csoportok](../virtual-network/virtual-networks-nsg.md).
+- További tudnivalók [VNet Szolgáltatásvégpontok](../virtual-network/virtual-network-service-endpoints-overview.md)
 - Ismerje meg, azzal kapcsolatban, a másik kulccsal [hálózati lehetőségeket](../networking/networking-overview.md) az Azure-ban.
-- További tudnivalók [kitett metrikák](../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftnetworkloadbalancers) a [Azure figyelő](../monitoring-and-diagnostics/monitoring-overview.md).
+- További információ [terheléselosztó](load-balancer-overview.md).

@@ -1,22 +1,21 @@
 ---
-title: "Az Azure Active Directory B2C: Használati jelentéskészítési API-mintákat és meghatározások |} Microsoft Docs"
-description: "Útmutató és a felhasználók, hitelesítés és többtényezős hitelesítés az Azure AD B2C bérlő jelentések témáját minták"
+title: 'Az Azure Active Directory B2C: Használati jelentéskészítési API-mintákat és meghatározások |} Microsoft Docs'
+description: Útmutató és a felhasználók, hitelesítés és többtényezős hitelesítés az Azure AD B2C bérlő jelentések témáját minták
 services: active-directory-b2c
 documentationcenter: dev-center-name
-author: rojasja
+author: davidmu1
 manager: mtillman
+editor: ''
 ms.service: active-directory-b2c
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/04/2017
-ms.author: joroja
-ms.openlocfilehash: 6014301a026d60775634138cbdfe56bfa625508f
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: davidmu
+ms.openlocfilehash: 3470f45683ea508dfe338c313a5307eb6c1164d8
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="accessing-usage-reports-in-azure-ad-b2c-via-the-reporting-api"></a>Az Azure AD B2C a reporting API-n keresztül használati jelentések használata
 
@@ -118,7 +117,7 @@ Felhasználói száma az adatok frissítése a 48 24 óránként. Hitelesítési
   * Az Alkalmazásazonosító létezik, de a jelentési időszak adatot nem található. Ellenőrizze a dátum/idő paramétereket.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 ### <a name="monthly-bill-estimates-for-azure-ad"></a>Havi számlán az Azure AD becslése
 Együtt [a legfrissebb Azure AD B2C díjszabási elérhető](https://azure.microsoft.com/pricing/details/active-directory-b2c/), megbecsülheti napi, heti és havi Azure-használatát.  Becsült különösen fontos, ha azt tervezi, hogy a bérlő működését, ami hatással lehet a teljes költség szempontjából. Tekintse át a tényleges költségek a [Azure-előfizetéssel társított](active-directory-b2c-how-to-enable-billing.md).
 

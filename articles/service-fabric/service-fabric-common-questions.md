@@ -1,11 +1,11 @@
 ---
-title: "A Microsoft Azure Service Fabric kapcsolatos gyakori kérdéseket |} Microsoft Docs"
-description: "A Service Fabric és a válaszok kapcsolatos gyakori kérdések"
+title: A Microsoft Azure Service Fabric kapcsolatos gyakori kérdéseket |} Microsoft Docs
+description: A Service Fabric és a válaszok kapcsolatos gyakori kérdések
 services: service-fabric
 documentationcenter: .net
 author: chackdan
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 5a179703-ff0c-4b8e-98cd-377253295d12
 ms.service: service-fabric
 ms.devlang: dotnet
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/18/2017
 ms.author: chackdan
-ms.openlocfilehash: facbb980f57b4e70c34b238a8b8fbd988cb20d57
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 0ecce5581e8f14a02ad0ad618a226f4671e92f4b
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>A Service Fabric gyakori kérdések
 
@@ -89,17 +89,7 @@ Napjainkban fejlesztjük fejlett élményt, amíg való telepítésért felelős
 ### <a name="can-i-encrypt-attached-data-disks-in-a-cluster-node-type-virtual-machine-scale-set"></a>Titkosíthatja a mellékelt adatok lemezt a fürt csomóponttípus (virtuálisgép-méretezési csoport)?
 Igen.  További információkért lásd: [hozzon létre egy fürtöt csatolt adatlemezek](../virtual-machine-scale-sets/virtual-machine-scale-sets-attached-disks.md#create-a-service-fabric-cluster-with-attached-data-disks), [lemezek (PowerShell) titkosítása](../virtual-machine-scale-sets/virtual-machine-scale-sets-encrypt-disks-ps.md), és [lemezek (CLI) titkosítása](../virtual-machine-scale-sets/virtual-machine-scale-sets-encrypt-disks-cli.md).
 
-## <a name="container-support"></a>Tároló-támogatás
-
-### <a name="why-are-my-containers-that-are-deployed-to-sf-unable-to-resolve-dns-addresses"></a>Miért van a tárolók nem oldható fel DNS címek ú telepített?
-
-A probléma 5.6.204.9494 lévő fürtökön érkezett jelentés verziója 
-
-**Megoldás**: kövesse [Ez a dokumentum](service-fabric-dnsservice.md) ahhoz, hogy a DNS service fabric-szolgáltatás a fürtön.
-
-**Javítsa ki**: frissítés a fürt támogatott verzióra, amely értéke magasabb, mint 5.6.204.9494, ha azok elérhetők. Ha az automatikus frissítések beállítása a fürt, majd a fürt automatikusan frissíti a rögzített probléma verziót.
-
-  
+ 
 ## <a name="application-design"></a>Alkalmazás tervezése
 
 ### <a name="whats-the-best-way-to-query-data-across-partitions-of-a-reliable-collection"></a>Adatait kérdezi le. a legjobb módszer mekkora megbízható gyűjtemény partíciók között?
@@ -146,9 +136,11 @@ Tárolók csomag szolgáltatások és függőségi viszonyaikat egyszerű módsz
 
 ### <a name="are-you-planning-to-open-source-service-fabric"></a>Tervezi nyílt forráskódú Service Fabric?
 
-Azt tervezi, hogy nyílt forráskódú a megbízható szolgáltatások és megbízható szereplője keretrendszerek a Githubon, és fogadja el ezeket a projektek közösségi hozzájárulások. Kövesse a [Service Fabric blog](https://blogs.msdn.microsoft.com/azureservicefabric/) azok még jelent további részletekért.
+Service Fabric nyílt forrása részei tudunk ([megbízható szolgáltatások keretrendszer](https://github.com/Azure/service-fabric-services-and-actors-dotnet), [megbízható szereplője keretrendszer](https://github.com/Azure/service-fabric-services-and-actors-dotnet), [ASP.NET Core integrációs szalagtárak](https://github.com/Azure/service-fabric-aspnetcore), [ Service Fabric Explorer](https://github.com/Azure/service-fabric-explorer), és [Service Fabric CLI](https://github.com/Azure/service-fabric-cli)) a Githubon, és fogadja el ezeket a projektek közösségi hozzájárulások. 
 
-A rendszer jelenleg nem nyílt forráskódú tervezi a Service Fabric-futtatókörnyezet.
+A Microsoft [nemrég jelentette be](https://blogs.msdn.microsoft.com/azureservicefabric/2018/03/14/service-fabric-is-going-open-source/) , hogy tervezzük nyílt forráskódú a Service Fabric-futtatókörnyezet. Ezen a ponton tudunk a [Service Fabric-tárház](https://github.com/Microsoft/service-fabric/) akár a Githubon Linux összeállításához és teszteléséhez eszközök, ami azt jelenti, hogy a tárház klónozása, létrehozhatja a Service Fabric Linux, egyszerű tesztek futtatása, nyissa meg a problémákat, és lekérési kérelmek elküldése. Keményen dolgozunk a Windows-összeállító környezetet áttelepítve, és teljes körű CI-környezetet.
+
+Kövesse a [Service Fabric blog](https://blogs.msdn.microsoft.com/azureservicefabric/) azok még jelent további részletekért.
 
 ## <a name="next-steps"></a>További lépések
 

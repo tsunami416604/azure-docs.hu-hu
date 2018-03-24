@@ -1,24 +1,24 @@
 ---
-title: "Gyors üzembe helyezés: Horizontális felskálázás az Azure SQL Data Warehouse - T-SQL számítási |} Microsoft Docs"
-description: "T-SQL parancsokkal méretezési dwu-k beállításával számítási erőforrásokat."
+title: 'Gyors üzembe helyezés: Horizontális felskálázás az Azure SQL Data Warehouse - T-SQL számítási |} Microsoft Docs'
+description: T-SQL parancsokkal méretezési dwu-k beállításával számítási erőforrásokat.
 services: sql-data-warehouse
 documentationcenter: NA
 author: hirokib
 manager: jhubbard
-editor: 
+editor: ''
 ms.service: sql-data-warehouse
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: manage
-ms.date: 01/31/2018
+ms.date: 03/16/2018
 ms.author: elbutter;barbkess
-ms.openlocfilehash: f984f9b348f589e20cb8a4b68578ddef84d8292d
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 1591192c72f5bf201dbbef80acc5895c8324fca4
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="quickstart-scale-compute-in-azure-sql-data-warehouse-using-t-sql"></a>Gyors üzembe helyezés: Méretezési számítási az Azure SQL Data Warehouse T-SQL használatával
 
@@ -101,18 +101,9 @@ MODIFY (SERVICE_OBJECTIVE = 'DW300')
 ;
 ```
 
-## <a name="check-database-state"></a>Ellenőrizze az adatbázis állapota
+## <a name="check-data-warehouse-state"></a>Ellenőrizze, adatraktár állapota
 
-Az adatbázis állapotának ellenőrzéséhez futtassa a következő lekérdezést, szemben a **fő** adatbázis.
-
-```sql
-SELECT name AS "Database Name", state_desc AS "Status" 
-FROM sys.databases db
-WHERE db.name = 'mySampleDataWarehouse'
-;
-```
-
-Ez a parancs futtatásakor Online, felfüggesztése, folytatása, méretezés vagy felfüggesztett állapot értéket kell kapnia.
+Ha egy adatraktár fel van függesztve, nem kapcsolódik hozzá a T-SQL. Egy PowerShell parancsmaggal az adatraktár aktuális állapotának megtekintéséhez. Egy vonatkozó példáért lásd: [ellenőrizze, adatraktár állapota - Powershell](quickstart-scale-compute-powershell.md#check-data-warehouse-state). 
 
 ## <a name="check-operation-status"></a>Műveleti állapotának ellenőrzése
 

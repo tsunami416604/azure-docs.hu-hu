@@ -1,24 +1,21 @@
 ---
-title: "Az Azure Active Directory B2C: Testreszabása az Azure AD B2C felhasználói felület (UI) dinamikusan egyéni házirendek használatával"
-description: "Támogatja a HTML5/CSS tartalommal, amely dinamikusan változik a futásidőben több márkajelzési lép."
+title: 'Az Azure Active Directory B2C: Testreszabása az Azure AD B2C felhasználói felület (UI) dinamikusan egyéni házirendek használatával'
+description: Támogatja a HTML5/CSS tartalommal, amely dinamikusan változik a futásidőben több márkajelzési lép.
 services: active-directory-b2c
-documentationcenter: 
-author: yoelhor
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: 
-ms.assetid: 
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.devlang: na
 ms.date: 09/20/2017
-ms.author: yoelh
-ms.openlocfilehash: 3a2310ae6266709df6677c55f11b15239c0425a2
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.author: davidmu
+ms.openlocfilehash: d8aaf0ef8cefdc0cb1c4ff3dec656d31c32f664f
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-active-directory-b2c-configure-the-ui-with-dynamic-content-by-using-custom-policies"></a>Az Azure Active Directory B2C: A felhasználói felület konfigurálása dinamikus tartalom egyéni házirendek használatával
 Azure Active Directory B2C segítségével (az Azure AD B2C) egyéni házirendek, elküldheti a paraméter egy lekérdezési karakterlánc. Úgy, hogy a paraméter a HTML-végpontot, dinamikusan módosíthatja az oldal tartalmát. Például a háttérkép, a Azure AD B2C regisztráció vagy bejelentkezés lapon adja meg a webkiszolgáló vagy a mobilalkalmazás paramétereinek alapján módosíthatja. 
@@ -121,7 +118,7 @@ Az egyéni HTML5-sablon az Azure AD B2C beépített HTML5 sablon alapján. Letö
 
 ### <a name="step-23-change-the-background-image"></a>2.3. lépés: Módosítsa a háttérkép
 
-Keresse meg a `<img>` elem, amely tartalmazza a `ID` érték *background_background_image*, majd cserélje le a `src` rendelkező érték **https://kbdevstorage1.blob.core.windows.net/ eszköz-blobok/19889_en_1** vagy bármely más háttérkép szeretne használni.
+Keresse meg a `<img>` elem, amely tartalmazza a `ID` érték *background_background_image*, majd cserélje le a `src` rendelkező érték **https://kbdevstorage1.blob.core.windows.net/asset-blobs/19889_en_1** vagy bármely más a háttérkép szeretne használni.
 
 ![A lap hátterének módosítása](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-add-static-background.png)
 

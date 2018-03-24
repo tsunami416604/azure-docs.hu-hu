@@ -1,24 +1,18 @@
 ---
-title: "Frissítések SCCM gyűjtemények használatával az Azure Automation - felügyelete |} Microsoft Docs"
-description: "Ebből a cikkből megtudhatja, hogyan konfigurálhatja a System Center Configuration Managert ezzel a megoldással az SCCM által kezelt számítógépek frissítéseinek kezelésére."
+title: Frissítések SCCM gyűjtemények használatával az Azure Automation - frissítéskezelés
+description: Ebből a cikkből megtudhatja, hogyan konfigurálhatja a System Center Configuration Managert ezzel a megoldással az SCCM által kezelt számítógépek frissítéseinek kezelésére.
 services: automation
-documentationcenter: 
-author: georgewallace
-manager: carmonm
-editor: 
-ms.assetid: 
 ms.service: automation
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 02/28/2018
+author: georgewallace
 ms.author: gwallace
-ms.openlocfilehash: c1636ce84f6d0d228dcb15e62af4a88b50fd84bd
-ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.date: 03/19/2018
+ms.topic: article
+manager: carmonm
+ms.openlocfilehash: 481195538a8c0ece572b4589ea2c2303e559fc44
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="integrate-system-center-configuration-manager-with-update-management"></a>Frissítéskezelés a System Center Configuration Manager integrálása
 

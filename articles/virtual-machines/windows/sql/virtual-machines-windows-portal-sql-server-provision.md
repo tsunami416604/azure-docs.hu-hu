@@ -1,6 +1,6 @@
 ---
-title: "Kialakítási útmutató Windows SQL Server virtuális gépek az Azure portálon |} Microsoft Docs"
-description: "Ez az útmutató útmutató ismerteti a beállítások a Windows az SQL Server 2017 virtuális gépek létrehozása az Azure portálon."
+title: Kialakítási útmutató Windows SQL Server virtuális gépek az Azure portálon |} Microsoft Docs
+description: Ez az útmutató útmutató ismerteti a beállítások a Windows az SQL Server 2017 virtuális gépek létrehozása az Azure portálon.
 services: virtual-machines-windows
 documentationcenter: na
 author: rothja
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: infrastructure-services
 ms.date: 02/15/2018
 ms.author: jroth
-ms.openlocfilehash: 7e55227773820af26435100b11dfefce058e7e78
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 33b7c82f08f63199cd128055bc497f61cb30fc4a
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="how-to-provision-a-windows-sql-server-virtual-machine-in-the-azure-portal"></a>Útmutató a Windows az SQL Server rendszerű virtuális gép az Azure-portálon
 
@@ -27,7 +27,7 @@ Ez az útmutató részletesen az elérhető beállításokról Windows SQL Serve
 Ez az útmutató segítségével a saját SQL Server virtuális gép létrehozása. Másik lehetőségként használja referenciának az Azure portálon elérhető beállítások.
 
 > [!TIP]
-> Ha az SQL Server virtuális gépek kérdése van, tekintse meg a [gyakran ismételt kérdések](virtual-machines-windows-sql-server-iaas-faq.md).
+> Ha kérdése van az SQL Servert futtató virtuális gépek használatával kapcsolatban, tekintse meg a [gyakori kérdéseket](virtual-machines-windows-sql-server-iaas-faq.md).
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
@@ -59,7 +59,7 @@ Egy SQL Server virtuális gép létrehozásakor válassza ki egy számos előre 
    > A fejlesztői edition ebben a bemutatóban használhatja, mert az egy teljes körű, szabad SQL Server kiadása fejlesztői teszteléshez. Csak a virtuális gép futtatásával járó költségeket kell kifizetni. Azonban szabadon válasszon a forgatókönyv a lemezképet. A rendelkezésre álló rendszerképek, olvassa el a [SQL Server Windows virtuális gépek – áttekintés](virtual-machines-windows-sql-server-iaas-overview.md#payasyougo).
 
    > [!TIP]
-   > Az SQL Server licencelési költségei be vannak építve a virtuális gép létrehozása és a változó díjszabás perc edition és a magok. Azonban az SQL Server Developer kiadásában a szabad (nem éles) fejlesztési/tesztelési, és az SQL Express szabad egyszerűsített munkaterhelésekhez (kevesebb mint 1 GB memória, kevesebb, mint 10 GB tárhely). Emellett bring your-saját-licencet (BYOL) és a fizetési csak a virtuális gép számára. Az ilyen rendszerképek nevei {BYOL} előtagot kapnak. 
+   > Az SQL Server licencelési költségei be vannak építve a virtuális gép létrehozása és a változó díjszabás másodpercenként edition és a magok. Azonban az SQL Server Developer kiadásában a szabad (nem éles) fejlesztési/tesztelési, és az SQL Express szabad egyszerűsített munkaterhelésekhez (kevesebb mint 1 GB memória, kevesebb, mint 10 GB tárhely). Emellett bring your-saját-licencet (BYOL) és a fizetési csak a virtuális gép számára. Az ilyen rendszerképek nevei {BYOL} előtagot kapnak. 
    >
    > A lehetőségekkel kapcsolatos további információkért tekintse meg [az SQL Server Azure virtuális gépek díjszabási útmutatóját](virtual-machines-windows-sql-server-pricing-guidance.md).
 

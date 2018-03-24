@@ -1,11 +1,11 @@
 ---
-title: "Az Azure hálózati figyelő ügynök virtuálisgép-bővítmény Linux |} Microsoft Docs"
-description: "A hálózati figyelő ügynök a Linux virtuális gépet egy virtuálisgép-bővítmény telepítése."
+title: Az Azure hálózati figyelő ügynök virtuálisgép-bővítmény Linux |} Microsoft Docs
+description: A hálózati figyelő ügynök a Linux virtuális gépet egy virtuálisgép-bővítmény telepítése.
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: dennisg
 manager: amku
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 5c81e94c-e127-4dd2-ae83-a236c4512345
 ms.service: virtual-machines-linux
@@ -15,17 +15,17 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/14/2017
 ms.author: dennisg
-ms.openlocfilehash: fd160fc8cfc2e79ffa9492bb0ef4556bec5820d0
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: a51566148eec88f707b524346afc59606196e4da
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="network-watcher-agent-virtual-machine-extension-for-linux"></a>Hálózati figyelő ügynök virtuálisgép-bővítmény Linux
 
 ## <a name="overview"></a>Áttekintés
 
-[Az Azure hálózati figyelőt](https://review.docs.microsoft.com/azure/network-watcher/) hálózati teljesítmény figyelési, diagnosztikai és elemzési szolgáltatás, amely lehetővé teszi az Azure-hálózatok figyelését. A hálózati figyelő ügynök virtuálisgép-bővítményt az egyes hálózati figyelőt szolgáltatásokat az Azure virtuális gépeken működik. Ez magában foglalja, igény szerint és egyéb speciális funkciók a hálózati forgalom rögzítése.
+[Az Azure hálózati figyelőt](https://docs.microsoft.com/azure/network-watcher/) hálózati teljesítmény figyelési, diagnosztikai és elemzési szolgáltatás, amely lehetővé teszi az Azure-hálózatok figyelését. A hálózati figyelő ügynök virtuálisgép-bővítményt az egyes hálózati figyelőt szolgáltatásokat az Azure virtuális gépeken működik. Ez magában foglalja, igény szerint és egyéb speciális funkciók a hálózati forgalom rögzítése.
 
 Ez a dokumentum részletesen a támogatott platformokról és a Linux hálózati figyelő ügynök virtuálisgép-bővítmény vonatkozó telepítési lehetőségeket.
 
@@ -40,7 +40,7 @@ A hálózati figyelő ügynök bővítmény is futtathatók a a Linux terjeszté
 | Ubuntu | 16.04 LTS, 14.04 LTS és 12.04 LTS |
 | Debian | 7. és 8 |
 | RedHat | 6.x, 7.x és |
-| Oracle Linux | 7 x |
+| Oracle Linux | 7x |
 | SUSE | 11 és 12 |
 | OpenSuse | 7.0 |
 | CentOS | 7.0 |
@@ -75,10 +75,10 @@ A következő JSON jeleníti meg a hálózati figyelő ügynök bővítmény sé
 
 ### <a name="property-values"></a>A tulajdonság értékek
 
-| Név | Érték / – példa |
+| Name (Név) | Érték / – példa |
 | ---- | ---- |
 | apiVersion | 2015-06-15 |
-| Közzétevő | Microsoft.Azure.NetworkWatcher |
+| publisher | Microsoft.Azure.NetworkWatcher |
 | type | NetworkWatcherAgentLinux |
 | typeHandlerVersion | 1.4 |
 

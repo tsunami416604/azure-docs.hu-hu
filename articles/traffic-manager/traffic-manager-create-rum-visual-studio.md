@@ -1,31 +1,28 @@
 ---
-title: "Az az Azure Traffic Manager a Visual Studio Mobile központtal felhasználó mérések |} Microsoft Docs"
-description: "A Visual Studio Mobile Center küldése valós felhasználói mérések felvétele a Traffic Manager segítségével létrehozott mobilalkalmazás beállítása"
+title: Az az Azure Traffic Manager a Visual Studio Mobile központtal felhasználó mérések |} Microsoft Docs
+description: A Visual Studio Mobile Center küldése valós felhasználói mérések felvétele a Traffic Manager segítségével létrehozott mobilalkalmazás beállítása
 services: traffic-manager
 documentationcenter: traffic-manager
 author: KumudD
 manager: timlt
-editor: 
-tags: 
-ms.assetid: 
+editor: ''
+tags: ''
+ms.assetid: ''
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: 
+ms.tgt_pltfrm: ''
 ms.workload: infrastructure
-ms.date: 09/29/2017
+ms.date: 03/16/2018
 ms.author: kumud
-ms.custom: 
-ms.openlocfilehash: 756496e5291d932ee9ac89265291e6892c4304fd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.custom: ''
+ms.openlocfilehash: 893e84b07b365fb0b534e0ddc021b2249c4174cf
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="how-to-send-real-user-measurements-to-traffic-manager-with-visual-studio-mobile-center"></a>Valós felhasználói mérések felvétele a Traffic Manager Visual Studio Mobile Center küldése
-
->[!NOTE]
->A tényleges felhasználói mérések szolgáltatást a Traffic Manager nyilvános előzetes verziójában, és nem rendelkezhet azonos szintű rendelkezésre állást és megbízhatóságot, szolgáltatások, amelyek általában a rendelkezésre állási kiadási. A szolgáltatás nem támogatott, van, korlátozott képességeket, és előfordulhat, hogy nem érhető el az összes Azure helyét. A rendelkezésre állás és a szolgáltatás állapotát a legfrissebb értesítések, tekintse meg a [Azure Traffic Manager-frissítések](https://azure.microsoft.com/updates/?product=traffic-manager) lap.
 
 A Visual Studio Mobile Center küldendő valós felhasználói mérések felvétele a Traffic Manager következő lépések segítségével létrehozott mobilalkalmazás állíthat be:
 
@@ -101,7 +98,7 @@ A tényleges felhasználói mérések használatához kövesse az alábbi lépé
     MobileCenter.start(getApplication(), "<Your Mobile Center AppSecret>", RealUserMeasurements.class);
     ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - További információ [valós felhasználói mérések](traffic-manager-rum-overview.md)
 - Ismerje meg, [Traffic Manager működése](traffic-manager-overview.md)
 - További információ [Mobile Center](https://docs.microsoft.com/mobile-center/)

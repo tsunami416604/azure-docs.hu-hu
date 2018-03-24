@@ -1,23 +1,20 @@
 ---
-title: "Bejelentkezés felvétele Node.js webalkalmazásokba - Azure Active Directory B2C"
-description: "Megtudhatja, hogyan hozhat létre, amely képes bejelentkeztetni a felhasználókat az Azure Active Directory B2C Node.js-webalkalmazás."
+title: Bejelentkezés felvétele Node.js webalkalmazásokba - Azure Active Directory B2C
+description: Megtudhatja, hogyan hozhat létre, amely képes bejelentkeztetni a felhasználókat az Azure Active Directory B2C Node.js-webalkalmazás.
 services: active-directory-b2c
-author: PatAltimore
+author: davidmu1
 manager: mtillman
-editor: dstrockis
-ms.custom: seo
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: javascript
 ms.topic: article
 ms.date: 03/10/2017
-ms.author: xerners
-ms.openlocfilehash: 25a2bef2f3cc6f210c574f920164b8d69b0d90db
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.author: davidmu
+ms.openlocfilehash: b10b2338bfbcd449075e612ae00cc23802dce3a9
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-ad-b2c-add-sign-in-to-a-nodejs-web-app"></a>Azure AD B2C: Bejelentkezés felvétele Node.js-webalkalmazásokba
 
@@ -400,7 +397,7 @@ Futtassa a `node app.js`-t, és nyissa meg a következő oldalt: `http://localho
 
 Regisztráljon az alkalmazásra e-mail vagy Facebook használatával, majd jelentkezzen be. Jelentkezzen ki, majd jelentkezzen be ismét egy másik felhasználóval.
 
-##<a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>További lépések
 
 Az elkészült mintát (a konfigurációs értékek nélkül) referenciaként [.zip-fájlban is letöltheti](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-NodeJS/archive/complete.zip). Ezenfelül a GitHubból is klónozhatja:
 

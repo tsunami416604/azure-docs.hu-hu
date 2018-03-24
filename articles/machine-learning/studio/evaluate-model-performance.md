@@ -1,10 +1,11 @@
 ---
-title: "Értékelje ki a gépi tanulási modell teljesítmény |} Microsoft Docs"
-description: "Ismerteti, hogyan értékelje az Azure Machine Learning modell teljesítményét."
+title: Értékelje ki a gépi tanulási modell teljesítmény |} Microsoft Docs
+description: Ismerteti, hogyan értékelje az Azure Machine Learning modell teljesítményét.
 services: machine-learning
-documentationcenter: 
-author: garyericson
-manager: jhubbard
+documentationcenter: ''
+author: heatherbshapiro
+ms.author: hshapiro
+manager: hjerez
 editor: cgronlun
 ms.assetid: 5dc5348a-4488-4536-99eb-ff105be9b160
 ms.service: machine-learning
@@ -13,17 +14,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.author: bradsev;garye
-ms.openlocfilehash: 48ce4584f7270d78b1d09b848bfdd305d03012b9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5bf065d8e91bd4ebb4cc3932c0525cb091b26b38
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="how-to-evaluate-model-performance-in-azure-machine-learning"></a>A modellek teljesítményének kiértékelése az Azure Machine Learning rendszerben
 Ez a cikk bemutatja, hogyan kell az Azure Machine Learning Studióban-modell teljesítményét értékeli, és a voltak elérhetők metrikák olvashat rövid magyarázatot biztosít ezt a feladatot. Felügyelt tanítás során három gyakori forgatókönyveket mutatnak be: 
 
-* Regressziós
+* regression
 * bináris osztályozás 
 * multiclass besorolás
 
@@ -151,7 +151,7 @@ Csatlakoztassa a portokat, a 10. ábra az alább látható módon.
 
 Állítsa be a címke oszlop indexe a [tanítási modell] [ train-model] 5 modul. A dataset adatkészletben nem fejlécsor, de tudjuk, hogy az osztály feliratai az ötödik oszlopban.
 
-Kattintson a a [és adatokat importálhat] [ import-data] modul és a készlet a *adatforrás* tulajdonságot *webes URL-Címéhez HTTP Protokollon keresztül*, és a *URL-cím* http://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data számára.
+Kattintson a a [és adatokat importálhat] [ import-data] modul és a készlet a *adatforrás* tulajdonságot *webes URL-Címéhez HTTP Protokollon keresztül*, és a *URL* való http://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data.
 
 Állítsa be, hogy a képzés használható hányada a [Split Data] [ split] modul (például 0,7).
 

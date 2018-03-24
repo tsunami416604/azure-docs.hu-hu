@@ -1,24 +1,24 @@
 ---
-title: "Telepítse a tartós funkciók bővítményt, és minták – Azure"
-description: "A tartós funkciók bővítményének telepítése az Azure Functions portálon fejlesztési vagy a Visual Studio fejlesztői útmutató."
+title: Telepítse a tartós funkciók bővítményt, és minták – Azure
+description: A tartós funkciók bővítményének telepítése az Azure Functions portálon fejlesztési vagy a Visual Studio fejlesztői útmutató.
 services: functions
 author: cgillum
 manager: cfowler
-editor: 
-tags: 
-keywords: 
+editor: ''
+tags: ''
+keywords: ''
 ms.service: functions
 ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 09/29/2017
+ms.date: 03/19/2018
 ms.author: azfuncdf
-ms.openlocfilehash: e1e8b019fe4632b0b6ac02888b562d6718c14fcc
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 3451f268e78df6efa5e3fc489b88415349efe169
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="install-the-durable-functions-extension-and-samples-azure-functions"></a>Telepítse a tartós funkciók bővítményt, és minták (az Azure Functions)
 
@@ -77,12 +77,17 @@ A Visual Studio Code vonatkozó összes fő platformok – a Windows, a macOS é
 3. Azure Functions tartós bővítményének telepítése a következő parancs futtatásával Rákérdezés / terminál ablakban:
 
     ```bash
-    func extensions install -p Microsoft.Azure.WebJobs.Extensions.DurableTask -v 1.1.0-beta2
+    func extensions install -p Microsoft.Azure.WebJobs.Extensions.DurableTask -v 1.2.0-beta3
     ```
-4. Futtassa az Azure Storage Emulator vagy a frissítés a *local.appsettings.json* fájl valós Azure Storage kapcsolati karakterlánccal.
-3. Nyissa meg a projektet a Visual Studio Code. 
-5. A minta futtatásához útmutatást, kezdje [működéséhez láncolás – feladatütemezési példa Hello](durable-functions-sequence.md). A minta helyileg történő futtatása, vagy az Azure-bA közzé.
-6. Indítsa el a projekt parancsban Rákérdezés / terminál a következő parancs futtatásával:
+4. Azure Functions Twilio-kiterjesztés telepítése a következő parancs futtatásával Rákérdezés / terminál ablakban:
+
+    ```bash
+    func extensions install -p Microsoft.Azure.WebJobs.Extensions.Twilio -v 3.0.0-beta4
+    ```
+5. Futtassa az Azure Storage Emulator vagy a frissítés a *local.appsettings.json* fájl valós Azure Storage kapcsolati karakterlánccal.
+6. Nyissa meg a projektet a Visual Studio Code. 
+7. A minta futtatásához útmutatást, kezdje [működéséhez láncolás – feladatütemezési példa Hello](durable-functions-sequence.md). A minta helyileg történő futtatása, vagy az Azure-bA közzé.
+8. Indítsa el a projekt parancsban Rákérdezés / terminál a következő parancs futtatásával:
     ```bash
     func host start
     ```

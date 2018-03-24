@@ -1,24 +1,24 @@
 ---
-title: "Költség jelentések használata Azure költség Management |} Microsoft Docs"
-description: "Ez a cikk ismerteti a különböző költség hálózatkezelési jelentések használata a Cloudyn portálon."
+title: Költség jelentések használata Azure költség Management |} Microsoft Docs
+description: Ez a cikk ismerteti a különböző költség hálózatkezelési jelentések használata a Cloudyn portálon.
 services: cost-management
-keywords: 
+keywords: ''
 author: bandersmsft
 ms.author: banders
 ms.date: 01/30/2018
 ms.topic: article
 ms.service: cost-management
 manager: carmonm
-ms.custom: 
-ms.openlocfilehash: 8078591b1e2ad120190a23dd29800bd0f1ae33ea
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.custom: ''
+ms.openlocfilehash: fa263a4b6f41e2b31328f46b8d1341d0d74c9a85
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="use-cost-management-reports"></a>A Cost Management jelentéseinek használata
 
-Ez a cikk ismerteti a különböző költség hálózatkezelési jelentések használata a Cloudyn portálon. A legtöbb Cloudyn jelentések intuitív és egy egységes megjelenés és működés. Cloudyn jelentésekkel kapcsolatos áttekintéséért lásd: [ismertetése költség jelentések](understading-cost-reports.md). A cikk a különböző beállítások és a legtöbb jelentésekben használt mezőket is ismerteti.
+Ez a cikk ismerteti a különböző költség hálózatkezelési jelentések használata a Cloudyn portálon. A legtöbb Cloudyn jelentések intuitív és egy egységes megjelenés és működés. Cloudyn jelentésekkel kapcsolatos áttekintéséért lásd: [ismertetése költség jelentések](understanding-cost-reports.md). A cikk a különböző beállítások és a legtöbb jelentésekben használt mezőket is ismerteti.
 
 ## <a name="cost-analysis-reports"></a>Költség elemzési jelentések
 

@@ -1,11 +1,11 @@
 ---
-title: "Az Azure Cosmos DB: Ismerkedés a .NET Core oktatóanyag SQL API |} Microsoft Docs"
-description: "Ez az oktatóanyag létrehoz egy online adatbázist és a C#-konzolalkalmazást a Azure Cosmos DB SQL API .NET Core SDK használatával."
+title: 'Az Azure Cosmos DB: Ismerkedés a .NET Core oktatóanyag SQL API |} Microsoft Docs'
+description: Ez az oktatóanyag létrehoz egy online adatbázist és a C#-konzolalkalmazást a Azure Cosmos DB SQL API .NET Core SDK használatával.
 services: cosmos-db
 documentationcenter: .net
 author: arramac
 manager: jhubbard
-editor: 
+editor: ''
 ms.assetid: 9f93e276-9936-4efb-a534-a9889fa7c7d2
 ms.service: cosmos-db
 ms.workload: data-services
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/12/2018
 ms.author: arramac
 ms.custom: devcenter
-ms.openlocfilehash: 90b720c174ab5730237f27d5ebb253976a70b071
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 460b963f09384e246d914cd7c4aeca046da83dd3
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-cosmos-db-getting-started-with-the-sql-api-and-net-core"></a>Azure Cosmos DB: Az SQL API-t és a .NET Core első lépések
 > [!div class="op_single_selector"]
@@ -51,9 +51,6 @@ Ez az oktatóanyag ismerteti:
 Nincs elég ideje? Ne aggódjon! A teljes megoldás elérhető a [GitHubon](https://github.com/Azure-Samples/documentdb-dotnet-core-getting-started). A gyors utasításokért ugorjon [A teljes megoldás beszerzése szakaszra](#GetSolution).
 
 A Xamarin iOS, Android vagy űrlapok kívánt alkalmazást az SQL API-t és a .NET Core SDK használatával? Lásd: [használó alkalmazások mobil a Xamarinnal és Azure Cosmos DB](mobile-apps-with-xamarin.md).
-
-> [!NOTE]
-> Az Azure Cosmos DB .NET Core SDK ebben az oktatóanyagban használt még nem kompatibilis az univerzális Windows Platform (UWP-) alkalmazásokat. A .NET Core SDK UWP-alkalmazásokat is támogató előzetes verziójáért küldjön e-mailt a következő címre: [askcosmosdb@microsoft.com](mailto:askcosmosdb@microsoft.com).
 
 Most pedig lássunk neki!
 

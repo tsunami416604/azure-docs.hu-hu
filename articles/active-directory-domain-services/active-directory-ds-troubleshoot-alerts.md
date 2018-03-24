@@ -1,11 +1,11 @@
 ---
-title: "Az Azure Active Directory tartományi szolgáltatások: A riasztások hibaelhárítása |} Microsoft Docs"
-description: "Riasztások hibaelhárítása az Azure AD tartományi szolgáltatásokhoz"
+title: 'Az Azure Active Directory tartományi szolgáltatások: A riasztások hibaelhárítása |} Microsoft Docs'
+description: Riasztások hibaelhárítása az Azure AD tartományi szolgáltatásokhoz
 services: active-directory-ds
-documentationcenter: 
+documentationcenter: ''
 author: eringreenlee
-manager: 
-editor: 
+manager: ''
+editor: ''
 ms.assetid: 54319292-6aa0-4a08-846b-e3c53ecca483
 ms.service: active-directory-ds
 ms.workload: identity
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/28/2018
 ms.author: ergreenl
-ms.openlocfilehash: e4b8f31fe3eb79f9b38ae01af598290582a2cde3
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 436fa31b9fd1231b38b39d911d9b6c2d4829461d
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-ad-domain-services---troubleshoot-alerts"></a>Azure AD tartományi szolgáltatások - riasztások hibaelhárítása
 A cikkben hibaelhárítási útmutatók a felügyelt tartományok indításakor a riasztásokhoz.
@@ -34,7 +34,7 @@ Válassza ki a hibaelhárítási lépéseket, amelyek megfelelnek az ID vagy az 
 | AADDS102 | *Az Azure AD tartományi szolgáltatások megfelelő működéséhez szükséges egyszerű szolgáltatás az Azure AD-címtár törölve lett. Ez a konfiguráció hatással van a Microsoft képes figyeléséhez, kezeléséhez, a javítás, és a felügyelt tartományok szinkronizálása.* | [Hiányzó egyszerű szolgáltatásnév](active-directory-ds-troubleshoot-service-principals.md) |
 | AADDS103 | *Az IP-címtartományt, amelyben engedélyezte az Azure AD tartományi szolgáltatásokat a virtuális hálózat van egy nyilvános IP-címtartományban. Azure AD tartományi szolgáltatások engedélyezni kell a privát IP-címtartománnyal rendelkező virtuális hálózatban. Ez a konfiguráció hatással van a Microsoft figyeléséhez, kezeléséhez, a javítás lehetőségét, és a felügyelt tartományok szinkronizálása.* | [A nyilvános IP-címtartományban címe](#aadds103-address-is-in-a-public-ip-range) |
 | AADDS104 | *A Microsoft nem tudja elérni a tartományvezérlőket, a felügyelt tartomány. Ez akkor fordulhat elő, ha egy hálózati biztonsági csoport (NSG) van konfigurálva. a virtuális hálózati blokkok hozzáférési a felügyelt tartományra. Egy másik lehetséges oka-e a felhasználó által megadott útvonal, hogy blokkolja az internetről érkező bejövő forgalmat.* | [Hálózati hiba](active-directory-ds-troubleshoot-nsg.md) |
-| AADDS105 | *Az egyszerű szolgáltatásnév az alkalmazás azonosítójával "d87dcbc6-a371-462e-88e3-28ad15ec4e64" törölve lett, és a Microsoft hozza létre újra. Ez a szolgáltatás egyszerű kezeli, egy másik szolgáltatás egyszerű és a jelszó-szinkronizáláshoz használt alkalmazás. A felügyelt egyszerű szolgáltatásnév és az alkalmazás nem jogosultak az újonnan létrehozott egyszerű alatt, és amikor a szinkronizálás tanúsítványa lejár lesz elavult. Ez azt jelenti, hogy az újonnan létrehozott egyszerű, nem lehet frissíteni a régi kezelt alkalmazások és a szinkronizálási objektumok aad milyen hatással lesz.* | [A jelszó-szinkronizálás alkalmazás elavultak](active-directory-ds-troubleshoot-service-principals.md#alert-aadds105-password-synchronization-application-is-out-of-date) |
+| AADDS105 | *Az alkalmazás azonosítójával "d87dcbc6-a371-462e-88e3-28ad15ec4e64" a szolgáltatás egyszerű lett törölve, és majd újra létrehozza. Ez a szolgáltatás egyszerű kezeli, egy másik szolgáltatás egyszerű és a jelszó-szinkronizáláshoz használt alkalmazás. A felügyelt szolgáltatásnevet, illetve az alkalmazás nem volt engedélyezve a az újonnan létrehozott egyszerű, akkor a szolgáltatás nem tudja kezelni. Ez azt jelenti, hogy az újonnan létrehozott egyszerű, nem lehet frissíteni a régi kezelt alkalmazások és a jelszavak szinkronizálása az hatással lesz.* | [A jelszó-szinkronizálás alkalmazás elavultak](active-directory-ds-troubleshoot-service-principals.md#alert-aadds105-password-synchronization-application-is-out-of-date) |
 | AADDS500 | *A felügyelt tartományra volt utoljára szinkronizálva az Azure ad-val [dátum]. Felhasználók nem tudnak bejelentkezni a felügyelt tartományra, vagy a csoporttagságot nem lehet az Azure AD Szinkronizáló.* | [Szinkronizálás ideje még nem történt.](#aadds500-synchronization-has-not-completed-in-a-while) |
 | AADDS501 | *A felügyelt tartományra legutolsó biztonsági mentése [dátum].* | [A biztonsági mentés még nem került sor egy kis idő](#aadds501-a-backup-has-not-been-taken-in-a-while) |
 | AADDS502 | *A felügyelt tartományra biztonságos LDAP tanúsítványának érvényessége XX.* | [Biztonságos LDAP tanúsítvány lejár](active-directory-ds-troubleshoot-ldaps.md#aadds502-secure-ldap-certificate-expiring) |

@@ -1,12 +1,12 @@
 ---
-title: "Az Azure diagnosztikai naplók |} Microsoft Docs"
-description: "Ügyfél engedélyezheti a webhelynapló elemzése Azure CDN szolgáltatás használata."
+title: Az Azure diagnosztikai naplók |} Microsoft Docs
+description: Ügyfél engedélyezheti a webhelynapló elemzése Azure CDN szolgáltatás használata.
 services: cdn
-documentationcenter: 
-author: 
-manager: 
-editor: 
-ms.assetid: 
+documentationcenter: ''
+author: ''
+manager: ''
+editor: ''
+ms.assetid: ''
 ms.service: cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/12/2017
 ms.author: v-deasim
-ms.openlocfilehash: 7bb4eebc80d1c0fdcb9fb5d0f6bb7aeeeb3cb08d
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: f9711f9cfaab1ef22da220a773689c95b1103970
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-diagnostic-logs"></a>Azure diagnosztikai naplók
 
@@ -109,7 +109,7 @@ Naplózási adatok késések kapcsolatos további információkért lásd: [adat
 
 A következő példa bemutatja, hogyan engedélyezése diagnosztikai naplók az Azure PowerShell-parancsmagok használatával.
 
-###<a name="enabling-diagnostic-logs-in-a-storage-account"></a>Diagnosztika engedélyezése bejelentkezik a Storage-fiók
+### <a name="enabling-diagnostic-logs-in-a-storage-account"></a>Diagnosztika engedélyezése bejelentkezik a Storage-fiók
 
 Először jelentkezzen be, és válasszon egy előfizetést:
 
@@ -162,10 +162,10 @@ Az alapvető analitikai adatok eléréséhez az Azure Storage-fiókjához, elős
 |Erőforrás |Csoport neve neve az erőforráscsoport, amelybe a CDN-erőforrások tartoznak.|
 |Profilnév |A CDN-profil neve|
 |A végpont neve |A CDN-végpont neve|
-|Év|  az év, például 2017 4 számjegyből álló ábrázolása|
-|Hónap| a hónapok sorszáma 2 számjegyű ábrázolása. 01 január =... 12 decembert jelenti – =|
+|év|  az év, például 2017 4 számjegyből álló ábrázolása|
+|Hónap| a hónapok sorszáma 2 számjegyű ábrázolása. 01 január =... 12=December|
 |Nap|   a hónap napját 2 számjegyű ábrázolása|
-|PT1H.JSON| Az analitikai adatok tárolására tényleges JSON-fájl|
+|PT1H.json| Az analitikai adatok tárolására tényleges JSON-fájl|
 
 ### <a name="exporting-the-core-analytics-data-to-a-csv-file"></a>Az alapvető analitikai adatok exportálása CSV-fájlba
 
@@ -173,7 +173,7 @@ Egyszerűsített analitika hozzáférési megkönnyítése mintakód egy eszköz
 
 Ez az eszköz használatát:
 
-1.  Látogasson el a github-címre: [https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv](https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv )
+1.  Látogasson el a github-hivatkozást: [https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv ](https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv )
 2.  Töltse le a kódot.
 3.  Kövesse az utasításokat, lefordítása és konfigurálásához.
 4.  Futtassa az eszközt.
@@ -201,7 +201,7 @@ Telepíthető megoldások Azure piactérről kattintva a **most töltse le innen
 Kövesse az alábbi lépéseket a felügyeleti megoldás hozzáadása:
 
 1.   Ha még nem tette meg, jelentkezzen be az Azure-előfizetéshez az Azure portálra, és nyissa meg az irányítópulton való rögzítéséhez.
-    ![Az Azure irányítópult](./media/cdn-diagnostics-log/13_Azure-dashboard.png)
+    ![Azure Dashboard](./media/cdn-diagnostics-log/13_Azure-dashboard.png)
 
 2. Az a **új** részen **piactér**, jelölje be **figyelés + felügyeleti**.
 

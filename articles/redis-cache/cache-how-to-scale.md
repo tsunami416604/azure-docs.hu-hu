@@ -1,11 +1,11 @@
 ---
-title: "Azure Redis Cache méretezése |} Microsoft Docs"
-description: "További tudnivalók az Azure Redis Cache példány méretezése"
+title: Azure Redis Cache méretezése |} Microsoft Docs
+description: További tudnivalók az Azure Redis Cache példány méretezése
 services: redis-cache
-documentationcenter: 
+documentationcenter: ''
 author: wesmc7777
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 350db214-3b7c-4877-bd43-fef6df2db96c
 ms.service: cache
 ms.workload: tbd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/11/2017
 ms.author: wesmc
-ms.openlocfilehash: b0a9208681b164fe7be33bf9ef5f635358284ba3
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 0cf0e41fe03bf3be7ecf2172cff3e6ab5f3eb65d
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="how-to-scale-azure-redis-cache"></a>Azure Redis Cache méretezése
 Azure Redis Cache rendelkezik másik gyorsítótármappa ajánlatokat, amelyek gyorsítótár mérete és a szolgáltatások rugalmasságot biztosítanak. A gyorsítótár létrehozása után méretezheti méretét és a gyorsítótár az árképzési szint Ha megváltoztatja az alkalmazás követelményeinek. Ez a cikk bemutatja, hogyan méretezése a gyorsítótár az Azure portál, és az Azure PowerShell vagy az Azure parancssori felület használatával.
@@ -111,6 +111,7 @@ Az alábbi lista tartalmazza az Azure Redis Cache skálázás gyakran feltett k�
 * [I adat elvész a gyorsítótárból skálázás során?](#will-i-lose-data-from-my-cache-during-scaling)
 * [Az egyéni adatbázisok állít érintett skálázás során?](#is-my-custom-databases-setting-affected-during-scaling)
 * [A gyorsítótár elérhető lesz skálázás során?](#will-my-cache-be-available-during-scaling)
+* [A konfigurált, miért nem tudok méretezheti a gyorsítótárban, vagy egy fürtben szilánkok megváltoztatása?](#scaling-limitations-with-geo-relication)
 * [Nem támogatott műveletek](#operations-that-are-not-supported)
 * [Mennyi időt skálázás igénybe?](#how-long-does-scaling-take)
 * [Hogyan állapítható meg, hogy ha skálázás befejeződött?](#how-can-i-tell-when-scaling-is-complete)
@@ -151,6 +152,12 @@ Míg a Standard és Premium gyorsítótárak egy 99,9 %-os SLA-t a rendelkezésr
 * **Standard** és **prémium** gyorsítótárak elérhetők maradnak a méretezési művelet során. Kapcsolat blips azonban csak akkor fordulhat elő, Standard és Premium gyorsítótárak méretezés közben és a szabványos gyorsítótárak az egyszerű méretezés közben. A kapcsolat blips várható rövid és kell, hogy a redis-ügyfelek azonnal helyreállítani a kapcsolatot.
 * **Alapszintű** során skálázás műveletek különböző méretű gyorsítótárak offline módban. Alapszintű gyorsítótárak továbbra is elérhető, ha a skálázás **alapvető** való **szabványos** , de egy kis kapcsolat blip problémákat tapasztalhat. Egy kapcsolat blip akkor fordul elő, ha a redis-ügyfelek azonnal helyreállítani a kapcsolatot kell lennie.
 
+
+### <a name="scaling-limitations-with-geo-relication"></a>A földrajzi-relication skálázási korlátozások
+
+Miután hozzáadta a két-gyorsítótárak közötti georeplikációs hivatkozást, már nem lesz képes indítsa el a méretezési műveletet, vagy a fürt szilánkok számának módosítása. Ezek a parancsok kibocsátására gyorsítótár kell választható. További információkért lásd: [konfigurálása georeplikáció](cache-how-to-geo-replication.md).
+
+
 ### <a name="operations-that-are-not-supported"></a>Nem támogatott műveletek
 * Egy alacsonyabb tarifacsomagra, méretezhető nem a magasabb szintű tarifacsomagban használható.
   * Nem lehet méretezni a egy **prémium** le a gyorsítótár egy **szabványos** vagy egy **alapvető** gyorsítótár.
@@ -160,6 +167,7 @@ Míg a Standard és Premium gyorsítótárak egy 99,9 %-os SLA-t a rendelkezésr
 * A nagyobb méretű le nem lehet méretezni a **C0 csomag (250 MB)** méretét.
 
 A méretezési művelet sikertelen lesz, ha a szolgáltatás megkísérli a művelet visszaállítja, és a gyorsítótár visszaáll az eredeti méret.
+
 
 ### <a name="how-long-does-scaling-take"></a>Mennyi időt skálázás igénybe?
 Skálázás vesz körülbelül 20 percet, attól függően, hogy mennyi adatot a gyorsítótárban.

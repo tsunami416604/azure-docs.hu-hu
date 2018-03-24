@@ -1,32 +1,32 @@
 ---
-title: "Magas rendelkezésre állás portok konfigurálása az Azure terheléselosztó |} Microsoft Docs"
-description: "Az összes porton belső forgalom terheléselosztási magas rendelkezésre állás portok használata"
+title: Magas rendelkezésre állás portok konfigurálása az Azure terheléselosztó |} Microsoft Docs
+description: Az összes porton belső forgalom terheléselosztási magas rendelkezésre állás portok használata
 services: load-balancer
 documentationcenter: na
 author: rdhillon
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/02/2017
+ms.date: 03/21/20178
 ms.author: kumud
-ms.openlocfilehash: 36bc3d7a35f41384706cbc7101457d00848639b2
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 7f7f8e254e0ed0556446e7b08eaf46ec59977f62
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="configure-high-availability-ports-for-an-internal-load-balancer"></a>Magas rendelkezésre állás portok konfigurálása a belső terheléselosztók
 
 Ez a cikk a magas rendelkezésre állás portok telepítését bemutató példát Ez a belső terheléselosztót. Konfigurációk (NVAs) virtuális készülékekre vonatkozó további információkért tekintse meg a megfelelő szolgáltató webhelyeket.
 
 >[!NOTE]
-> A magas rendelkezésre állás portok funkció jelenleg előzetes verzió. Az előzetes változatban a szolgáltatás esetleg nincs azonos szintű rendelkezésre állást és megbízhatóságot, szolgáltatások, amelyek általában a rendelkezésre állási kiadási. További részletekért lásd: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+>Az Azure Load Balancer két különböző típust támogat: Alapszintű és Standard. A cikk ismerteti a szabványos terheléselosztóhoz. Alapszintű terheléselosztó kapcsolatos további információkért lásd: [Load Balancer áttekintése](load-balancer-overview.md).
 
 Az ábrán a központi telepítési példa a cikkben a következő konfigurációt:
 
@@ -108,6 +108,6 @@ lbrule = New-AzureRmLoadBalancerRuleConfig -Name "HAPortsRule" -FrontendIpConfig
 azure network lb rule create --resource-group contoso-rg --lb-name contoso-ilb --name haportsrule --protocol all --frontend-port 0 --backend-port 0 --frontend-ip-name feilb --backend-address-pool-name beilb
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ [magas rendelkezésre állás portok](load-balancer-ha-ports-overview.md).

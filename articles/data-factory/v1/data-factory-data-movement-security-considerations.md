@@ -1,11 +1,10 @@
 ---
-title: "Biztonsági szempontok az Azure Data Factory adatok áttelepítéséről – |} Microsoft Docs"
-description: "További információk a biztonságossá tétele az Azure Data Factory adatátvitelt jelölik."
+title: Biztonsági szempontok az Azure Data Factory adatok áttelepítéséről – |} Microsoft Docs
+description: További információk a biztonságossá tétele az Azure Data Factory adatátvitelt jelölik.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: nabhishek
-manager: jhubbard
-editor: monicar
+manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -14,11 +13,11 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: f483109170ed1dda7506f7ef5f02fb8b42ea331e
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: c2b6c494a9c4d0dac37315520b8d7b962f3490b7
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-data-factory---security-considerations-for-data-movement"></a>Az Azure Data Factory - adatátvitelt jelölik a kapcsolódó biztonsági szempontok
 
@@ -48,7 +47,7 @@ Ez a cikk a Microsoft biztonsági szempontok a következő két adatelérési mo
 - **Hibrid forgatókönyvek**– ebben a forgatókönyvben a cél- és a tűzfal mögött, vagy egy helyszíni vállalati hálózaton vagy az adatok belül tároló egy magánhálózaton / virtuális hálózatot (általában a forrás), és nincs nyilvánosan elérhető. Adatbázis-kiszolgálóin futó virtuális gépek is alá ebben a forgatókönyvben.
 
 ## <a name="cloud-scenarios"></a>Felhő forgatókönyvek
-###<a name="securing-data-store-credentials"></a>Biztonságossá tétele adatok adattárolóhoz használandó hitelesítő adatok
+### <a name="securing-data-store-credentials"></a>Biztonságossá tétele adatok adattárolóhoz használandó hitelesítő adatok
 Az Azure Data Factory védi az adatokat adattárolóhoz használandó hitelesítő adatok szerint **titkosított** őket a **tanúsítványokat a Microsoft által felügyelt**. Ezek a tanúsítványok legyenek-e elforgatva minden **kétéves** (amely tartalmazza a tanúsítvány megújítása és a hitelesítő adatok áttelepítését). A titkosított hitelesítő adatokat biztonságosan vannak tárolva egy **Azure Storage Azure Data Factory szolgáltatások által kezelt**. Azure Storage biztonsággal kapcsolatos további információkért tekintse meg a [Azure Storage biztonsági áttekintése](../../security/security-storage-overview.md).
 
 ### <a name="data-encryption-in-transit"></a>Adattitkosítás átvitel közben

@@ -1,11 +1,12 @@
 ---
-title: "Infographic: A gép tanulás alapjainak - algoritmus példák |} Microsoft Docs"
-description: "A machine learning alapjai könnyen érthető áttekintését algoritmus vonatkozó példákat tartalmaz. A letölthető infographic legtöbb gépi tanulási a kérdések ismerteti."
-keywords: "Machine learning alapjai algoritmus példák gépi tanulás kezdők, a machine learning kérdéseket, a népszerű algoritmusok, algoritmus infographic"
+title: 'Infographic: A gép tanulás alapjainak - algoritmus példák |} Microsoft Docs'
+description: A machine learning alapjai könnyen érthető áttekintését algoritmus vonatkozó példákat tartalmaz. A letölthető infographic legtöbb gépi tanulási a kérdések ismerteti.
+keywords: Machine learning alapjai algoritmus példák gépi tanulás kezdők, a machine learning kérdéseket, a népszerű algoritmusok, algoritmus infographic
 services: machine-learning
-documentationcenter: 
-author: garyericson
-manager: jhubbard
+documentationcenter: ''
+author: heatherbshapiro
+ms.author: hshapiro
+manager: hjerez
 editor: cgronlun
 ms.assetid: cf4e2308-9285-4adc-9f00-408e3ee7931b
 ms.service: machine-learning
@@ -14,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/18/2017
-ms.author: garye
-ms.openlocfilehash: 8c392740eb0c06b7a3c47e07e5beb667b17117ae
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: 4f07defd3df3a7933a69463729240d856f6282d4
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="downloadable-infographic-machine-learning-basics-with-algorithm-examples"></a>Letölthető infografika: a gépi tanulás alapjai algoritmuspéldákkal
 Töltse le a machine learning alapjai további információt a machine learning gyakori kérdések megválaszolása használt népszerű algoritmusok könnyen érthető infographic áttekintése. Algoritmus példák segítségével a machine learning kezdő melyik algoritmust használja, és azok még felhasználási területének ismertetése.

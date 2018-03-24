@@ -1,26 +1,20 @@
 ---
-title: "Azure Automation kapcsolatos gyakori hibák elhárítása |} Microsoft Docs"
-description: "Ez a cikk bővebb információt talál, és Azure Automation gyakori hibák elhárítása."
+title: Azure Automation kapcsolatos gyakori hibák elhárítása |} Microsoft Docs
+description: Ez a cikk bővebb információt talál, és Azure Automation gyakori hibák elhárítása.
 services: automation
-documentationcenter: 
-author: georgewallace
-manager: stevenka
-editor: tysonn
-tags: top-support-issue
-keywords: "Automation-hiba, hibaelhárítási, probléma"
-ms.assetid: 5f3cfe61-70b0-4e9c-b892-d02daaeee07d
 ms.service: automation
-ms.devlang: na
+author: georgewallace
+ms.author: gwallace
+ms.date: 03/16/2018
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 09/22/2017
-ms.author: sngun; v-reagie
-ms.openlocfilehash: 76a3096595d07916159b3a50da0793c653a490a0
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+manager: carmonm
+tags: top-support-issue
+keywords: Automation-hiba, hibaelhárítási, probléma
+ms.openlocfilehash: 9764068dd7a1a499c61695f39bff726a8ea3aac9
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="troubleshooting-common-issues-in-azure-automation"></a>Az Azure Automationben kapcsolatos gyakori hibák elhárítása 
 Ez a cikk ismerteti a hibaelhárítást előforduló hibákat tapasztalhat az Azure Automationben és azok megoldását lehetséges megoldások javasolja.
@@ -33,7 +27,7 @@ Ez a cikk ismerteti a hibaelhárítást előforduló hibákat tapasztalhat az Az
 
 **Hibaelhárítási tippek:** annak megállapítására, hogy mi, tegye a következőket:  
 
-1. Győződjön meg arról, hogy nincs-e a különleges karaktereket, beleértve a  **@**  az automatizálási hitelesítő adatok objektumnév Azure való kapcsolódáshoz használt karakter.  
+1. Győződjön meg arról, hogy nincs-e a különleges karaktereket, beleértve a **@** az automatizálási hitelesítő adatok objektumnév Azure való kapcsolódáshoz használt karakter.  
 2. Ellenőrizze, hogy használhatja-e a felhasználónévvel és jelszóval, tárolódnak az Azure Automation szolgáltatásbeli hitelesítőadat a helyi PowerShell ISE-szerkesztőben. Ez a PowerShell ISE a következő parancsmag futtatásával teheti meg:  
 
         $Cred = Get-Credential  
@@ -133,7 +127,7 @@ Ez a cikk ismerteti a hibaelhárítást előforduló hibákat tapasztalhat az Az
 
 **Hibaelhárítási tippek:** a probléma elhárításához a következő megoldásokat bármelyikét:
 
-* Győződjön meg arról, hogy a modul a következő formátumot követi: ModuleName.Zip  **->**  ModuleName vagy a verziószám  **->**  (ModuleName.psm1, ModuleName.psd1)
+* Győződjön meg arról, hogy a modul a következő formátumot követi: ModuleName.Zip **->** ModuleName vagy a verziószám **->** (ModuleName.psm1, ModuleName.psd1)
 * Nyissa meg a .psd1 fájlt, és a modul vannak-e az összes függőséget. Ha igen, töltse fel ezeket a modulokat az Automation-fiók.
 * Győződjön meg arról, hogy minden hivatkozott .dll a modul mappában találhatók.
 
@@ -171,7 +165,7 @@ Ez a cikk ismerteti a hibaelhárítást előforduló hibákat tapasztalhat az Az
 ### <a name="scenario-unable-to-use-a-credential-in-a-dsc-configuration"></a>Forgatókönyv: Nem sikerült a hitelesítő adatok használata a DSC-konfiguráció
 **Hiba:** a DSC-fordítási feladat fel lett függesztve, a következő hibaüzenettel: "tulajdonság"-hitelesítőadat"típusú feldolgozása System.InvalidOperationException hiba ``<some resource name>``: átalakítása és egy titkosított jelszó tárolására, egyszerű szöveges érték adható meg, csak ha PSDscAllowPlainTextPassword értéke TRUE ".
 
-**A hiba oka:** konfigurációban használt hitelesítő adatokat, de nem adott meg megfelelő **ConfigurationData** beállítása **PSDscAllowPlainTextPassword** minden csomópont-konfiguráció igaz.
+**A hiba oka:** konfigurációban használt hitelesítő adatokat, de nem adott meg megfelelő **ConfigurationData** beállítása **PSDscAllowPlainTextPassword** igaz az egyes csomópontok konfiguráció.
 
 **Hibaelhárítási tippeket:**
 

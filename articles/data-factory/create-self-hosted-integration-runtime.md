@@ -1,11 +1,10 @@
 ---
-title: "Önálló üzemeltetett integrációs futásidejű létrehozása az Azure Data Factory |} Microsoft Docs"
-description: "Ismerje meg, hogy önálló üzemeltetett integrációs futásidejű létrehozása az Azure Data Factory, amely lehetővé teszi az adat-előállítók való hozzáférést egy magánhálózaton."
+title: Önálló üzemeltetett integrációs futásidejű létrehozása az Azure Data Factory |} Microsoft Docs
+description: Ismerje meg, hogy önálló üzemeltetett integrációs futásidejű létrehozása az Azure Data Factory, amely lehetővé teszi az adat-előállítók való hozzáférést egy magánhálózaton.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: nabhishek
-manager: jhubbard
-editor: monicar
+manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2018
 ms.author: abnarain
-ms.openlocfilehash: 3f1b55f2752821de447e6c03bcbf79f01d9f8264
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: b18fa2879056600cfc9c6a85afc599e2695af711
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="how-to-create-and-configure-self-hosted-integration-runtime"></a>Hozzon létre, és Self-hosted integrációs futásidejű konfigurálása
 Az integrációs futásidejű (IR) a számítási infrastruktúrától által használt Azure Data Factory adatok integrációs funkciók különböző hálózati környezetek között. Infravörös kapcsolatos részletekért lásd: [integrációs futásidejű áttekintése](concepts-integration-runtime.md).

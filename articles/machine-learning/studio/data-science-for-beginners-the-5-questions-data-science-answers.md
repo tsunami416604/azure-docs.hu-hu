@@ -1,11 +1,12 @@
 ---
-title: "A 5 adattudomány kérdésekre - Adattudomány kezdőknek - Azure Machine Learning |} Microsoft Docs"
-description: "Adattudomány kezdők érték útmutatást ad az alapvető fogalmait a 5 rövid videók, az 5 kérdések adatok tudományos válaszok kezdve. Az Azure gépi tanulás."
-keywords: "Ennek során adattudomány, adatok tudományos kezdők, adattudomány kezdők, adatok tudományos alapjai, tudományos kérdésekre, adatok tudományos videó, adatok tudományos bemutatása"
+title: A 5 adattudomány kérdésekre - Adattudomány kezdőknek - Azure Machine Learning |} Microsoft Docs
+description: Adattudomány kezdők érték útmutatást ad az alapvető fogalmait a 5 rövid videók, az 5 kérdések adatok tudományos válaszok kezdve. Az Azure gépi tanulás.
+keywords: Ennek során adattudomány, adatok tudományos kezdők, adattudomány kezdők, adatok tudományos alapjai, tudományos kérdésekre, adatok tudományos videó, adatok tudományos bemutatása
 services: machine-learning
 documentationcenter: na
-author: cjgronlund
-manager: jhubbard
+author: heatherbshapiro
+ms.author: hshapiro
+manager: hjerez
 editor: cjgronlund
 ms.assetid: a01f93ee-01eb-4afe-abbd-cfa035c119b0
 ms.service: machine-learning
@@ -14,12 +15,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/03/2018
-ms.author: cgronlun
-ms.openlocfilehash: 0482a680999e58b8be45334c9ae620b6b37ac273
-ms.sourcegitcommit: 4bd369fc472dced985239aef736fece42fecfb3b
+ms.openlocfilehash: 494c8293a1dbfccbfe2df1e2f48f770edb6452dc
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="data-science-for-beginners-video-1-the-5-questions-data-science-answers"></a>Adatelemzés kezdőknek – 1. videó: 5 kérdés, amelyre az adatelemzés választ ad
 A gyors Bevezetés a adattudomány az beszerzése *Adattudomány kezdőknek* a egy felső adatok tudósok az öt rövid videók. Videók olyan alapvető, de hasznos, hogy érdekli, ennek során adattudomány vagy adatszakértőkön használata.
@@ -41,7 +41,7 @@ Ez a videó első kérdésekhez, amely meg tudja válaszolni, adattudomány típ
 * 5. Videó: [mások munkahelyi adattudomány ehhez másolja](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3 perc 18 másodperc)*
 
 ## <a name="transcript-the-5-questions-data-science-answers"></a>A Beszélgetés szövegének: A 5 kérdésekre adatok tudományos válaszok
-szia! Üdvözli a videósorozat *Adattudomány kezdőknek*.
+Hi! Üdvözli a videósorozat *Adattudomány kezdőknek*.
 
 Adattudomány ijesztő lehet, ezért I lesz szükség az alapok itt egyenleteket vagy a számítógép egy zsargon programozási nélkül.
 

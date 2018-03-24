@@ -1,12 +1,12 @@
 ---
-title: "Azure DevTest Labs egyéni lemezkép létrehozása a PowerShell használatával VHD-fájl |} Microsoft Docs"
-description: "Egyéni lemezképként az Azure DevTest Labs szolgáltatásban, a PowerShell használatával VHD-fájl létrehozásának automatizálása"
+title: Azure DevTest Labs egyéni lemezkép létrehozása a PowerShell használatával VHD-fájl |} Microsoft Docs
+description: Egyéni lemezképként az Azure DevTest Labs szolgáltatásban, a PowerShell használatával VHD-fájl létrehozásának automatizálása
 services: devtest-lab,virtual-machines
 documentationcenter: na
 author: craigcaseyMSFT
 manager: douge
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: devtest-lab
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/10/2017
 ms.author: v-craic
-ms.openlocfilehash: 0810a67c28224170ccde7e2c347f8704896e69ad
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: 2c542f9d47eb8011a13bf7156430324c53d238ce
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="create-a-custom-image-from-a-vhd-file-using-powershell"></a>Egyéni lemezkép létrehozása a PowerShell használatával VHD-fájl
 
@@ -117,6 +117,6 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName $lab.ResourceGroupName -Na
 - [Egyéni lemezképek vagy képletek?](https://blogs.msdn.microsoft.com/devtestlab/2016/04/06/custom-images-or-formulas/)
 - [Az Azure DevTest Labs között egyéni lemezképek másolása](http://www.visualstudiogeeks.com/blog/DevOps/How-To-Move-CustomImages-VHD-Between-AzureDevTestLabs#copying-custom-images-between-azure-devtest-labs)
 
-##<a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>További lépések
 
 - [A virtuális gépek hozzáadása a tesztkörnyezet](devtest-lab-add-vm.md)

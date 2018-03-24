@@ -1,11 +1,11 @@
 ---
-title: "Másolja az Azure Data Factory használatával DB2 adatait |} Microsoft Docs"
-description: "Útmutató: adatok másolása DB2 támogatott fogadó adattárolókhoz egy Azure Data Factory-folyamat a másolási tevékenység használatával."
+title: Másolja az Azure Data Factory használatával DB2 adatait |} Microsoft Docs
+description: 'Útmutató: adatok másolása DB2 támogatott fogadó adattárolókhoz egy Azure Data Factory-folyamat a másolási tevékenység használatával.'
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: spelluru
+manager: craigg
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 865e6fe1dd13736c1899c72b4e49612d970d45cd
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 0ef1ce8b4949c908595473f0183f585a6fd3da80
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="copy-data-from-db2-by-using-azure-data-factory"></a>Adatok másolása az DB2 Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -45,7 +45,7 @@ Pontosabban a DB2-összekötő a következő IBM DB2-platformok és verziók ren
 
 > [!TIP]
 > Ha kap olyan hibaüzenetet, amely szerint az "a megfelelő SQL-utasítás végrehajtása kérelmet csomag nem található. SQLSTATE 51002 SQLCODE =-805 = ", a hiba oka egy szükséges csomag nem lesz létrehozva normál felhasználói ilyen operációs rendszeren. Ezek a lépések alapján a DB2-kiszolgáló típusa:
-> - A DB2 i (AS400): lehetővé teszik a kiemelt felhasználó létrehozása a másolási tevékenység használata előtt a bejelentkezési felhasználói gyűjteményt. Parancs:`create collection <username>`
+> - A DB2 i (AS400): lehetővé teszik a kiemelt felhasználó létrehozása a másolási tevékenység használata előtt a bejelentkezési felhasználói gyűjteményt. Parancs: `create collection <username>`
 > - A z/OS- vagy LUW DB2: egy magas jogosultságú fiók - kiemelt felhasználói vagy a felügyeleti csomag hitelesítésszolgáltatók és a kötési, BINDADD, GRANT hajtható végre a nyilvános engedélyeket - használatával futtassa egyszer a másolási tevékenység során, majd a szükséges csomag másolása során automatikusan létrejön. Ezután válthat vissza a normál felhasználói a későbbi másolási kísérletekhez.
 
 ## <a name="prerequisites"></a>Előfeltételek

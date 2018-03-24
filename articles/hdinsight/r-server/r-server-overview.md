@@ -1,8 +1,8 @@
 ---
-title: "Az R Server on Azure HDInsight bemutatása |} Microsoft Docs"
-description: "Megtudhatja, hogyan R Server használata a HDInsight a big data elemző alkalmazások létrehozásához."
+title: Az R Server on Azure HDInsight bemutatása |} Microsoft Docs
+description: Megtudhatja, hogyan R Server használata a HDInsight a big data elemző alkalmazások létrehozásához.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: jhubbard
 editor: cgronlun
@@ -15,13 +15,13 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/19/2017
 ms.author: bradsev
-ms.openlocfilehash: 860099b2634765f3088199c89341f0b48b20b801
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: 2106e5f0c9b6a27da3747bc67aad0937f2356873
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 03/23/2018
 ---
-#<a name="introduction-to-r-server-and-open-source-r-capabilities-on-hdinsight"></a>R Server, és nyílt forráskódú R képességek a HDInsight bemutatása
+# <a name="introduction-to-r-server-and-open-source-r-capabilities-on-hdinsight"></a>R Server, és nyílt forráskódú R képességek a HDInsight bemutatása
 
 Microsoft R Server a HDInsight-fürtök létrehozása az Azure-ban esetén érhető el, mint a központi telepítési lehetőség. Ez az új képesség biztosít adatelemzők, statisztikusok és R-t használó programozók méretezhető, igény szerinti hozzáféréssel rendelkező elosztott elemzés hdinsight platformon történő módszerek.
 
@@ -53,7 +53,7 @@ Akkor is csatlakozhatnak a R Server a parancssor az R-konzol eléréséhez a SSH
 ## <a name="develop-and-run-r-scripts"></a>Fejlesztéséhez és az R parancsfájlok futtatása
 Az R parancsfájlok létrehozása és futtatása használhatja a rendelkezésre álló párhuzamos működésű és elosztott rutinok mellett 8000 + nyílt forráskódú R csomagokat a ScaleR könyvtárban. R Server élcsomópont a futó parancsfájl általában az R parancsértelmező belül fut, ezen a csomóponton. A kivételek közé tartoznak a fenti lépések, amelyeket a beállított számítási környezetet ScaleR függvény Hadoop térkép csökkentése (RxHadoopMR) vagy a Spark (RxSpark). A függvény ebben az esetben egy elosztott módon fut, ezen adatok (feladat) csomópontokon a fürt társított hivatkozott adatokkal. A különböző számítási környezet beállításokkal kapcsolatos további információkért lásd: [számítási környezet lehetőségek R Server on HDInsight](r-server-compute-contexts.md).
 
-## <a name="operationalize-a-model"></a>Azok a modell
+## <a name="operationalize-a-model"></a>Modell üzembe helyezése
 Az adatok modellezési befejeződése után az új adatokat, vagy az Azure és a helyszíni előrejelzéseket készítsen a modellt üzembe. Ez a folyamat pontozási néven ismert. Pontozó teheti HDInsight, Azure Machine Learning vagy a helyszínen.
 
 ### <a name="score-in-hdinsight"></a>Pontszám a Hdinsightban

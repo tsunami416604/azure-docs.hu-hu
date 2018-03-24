@@ -1,6 +1,6 @@
 ---
-title: "Műveleteket, eseményeket és számlálókat figyelje a Load Balancer |} Microsoft Docs"
-description: "Megtudhatja, hogyan engedélyezze a figyelmeztetési események, és a mintavételi Azure Load Balancer egészségügyi állapot naplózása"
+title: Műveleteket, eseményeket és számlálókat figyelje a Load Balancer |} Microsoft Docs
+description: Megtudhatja, hogyan engedélyezze a figyelmeztetési események, és a mintavételi Azure Load Balancer egészségügyi állapot naplózása
 services: load-balancer
 documentationcenter: na
 author: KumudD
@@ -14,15 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 4388a1e933a0ebf211b5a7621c74b0622be41a4c
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: dabf4bcae957559978e731636bb13554f1a68b73
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="log-analytics-for-azure-load-balancer"></a>Naplóelemzés az Azure Load Balancerhez
 
-[!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
+>[!NOTE] 
+>Az Azure Load Balancer két különböző típust támogat: Alapszintű és Standard. Ez a cikk az Alapszintű Load Balancert ismerteti. Standard terheléselosztó kapcsolatos további információkért lásd: [szabványos Load Balancer áttekintése](load-balancer-standard-overview.md).
 
 Segítségével különböző típusú naplók az Azure-ban kezelésére és hibaelhárítására terheléselosztók. Néhányat ezek a naplók a portálon keresztül is elérhetők. Minden naplók az Azure blob storage kicsomagolja, és különböző eszközök, például az Excel és a Power bi megtekintett. Többet tudhat meg az alábbi listában naplók különböző típusú.
 

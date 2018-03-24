@@ -1,3 +1,19 @@
+---
+title: fájl belefoglalása
+description: fájl belefoglalása
+services: expressroute
+author: cherylmc
+ms.service: expressroute
+ms.topic: include
+ms.date: 03/22/2018
+ms.author: cherylmc
+ms.custom: include file
+ms.openlocfilehash: 17edbef03f1e2882bd85f5a58e2a32a1541b50c8
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 03/23/2018
+---
 Ez a feladat lépéseit a következő konfigurációs hivatkozás listában található értékek alapján a VNet használja. További beállításokat és a nevek azt is ezen a listán. Nem használjuk a lista összes lépést, közvetlenül a Bár jelenleg felvenni a listában szereplő értékek alapján a változók. A listában referenciaként, az értékeket cserélje le a saját másolhatja.
 
 **Konfigurációs hivatkozáslista**
@@ -14,7 +30,7 @@ Ez a feladat lépéseit a következő konfigurációs hivatkozás listában tal�
 * Átjáró IP-név = "GWIP"
 * Átjáró IP-konfiguráció neve = "gwipconf"
 * Típus = "ExpressRoute" Ez a típus egy ExpressRoute-konfiguráció szükséges.
-* Átjáró nyilvános IP-név = "gwpip"
+* Gateway Public IP Name = "gwpip"
 
 ## <a name="add-a-gateway"></a>Átjáró hozzáadása
 1. Csatlakozás az Azure-előfizetéshez.

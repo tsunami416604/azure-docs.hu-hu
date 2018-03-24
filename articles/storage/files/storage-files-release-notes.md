@@ -8,11 +8,11 @@ ms.service: storage
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: wgries
-ms.openlocfilehash: b42287580078b4391ddbc5b8ff2835131c64236d
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
-ms.translationtype: HT
+ms.openlocfilehash: bb7fa68809341b5132d551ff1cab187bd4d7eeac
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent-preview"></a>Az Azure File Sync ügynök (előzetes verzió) kibocsátási megjegyzései
 Az Azure File Sync lehetővé teszi a vállalat Azure Files szolgáltatásban tárolt fájlmegosztásainak központosítását anélkül, hogy fel kellene adnia a helyi fájlkiszolgálók rugalmasságát, teljesítményét és kompatibilitását. A Windows Server-telepítéseket az Azure-fájlmegosztás gyors gyorsítótáraivá alakítja át. A Windows Serveren elérhető bármely protokollt használhatja a fájlok helyi eléréséhez (pl.: SMB, NFS vagy FTPS). Annyi gyorsítótára lehet világszerte, amennyire csak szüksége van.
@@ -22,7 +22,7 @@ A jelen cikk az Azure File Sync ügynök támogatott verzióinak kibocsátási m
 ## <a name="supported-versions"></a>Támogatott verziók
 Az Azure File Sync ügynök alábbi verziói támogatottak:
 
-| Milestone | Az ügynök verziószáma | Kiadás dátuma | Állapot |
+| Milestone | Az ügynök verziószáma | Kiadási dátum | status |
 |----|----------------------|--------------|------------------|
 | Március kumulatív frissítés | 2.2.0.0 | 2018. március 12. | Támogatott (ajánlott verzió) |
 | Kumulatív frissítés. február | 2.1.0.0 | 2018. február 28. | Támogatott |
@@ -93,11 +93,12 @@ A következő elemek nem szinkronizálhatók, de a rendszer többi része továb
 - Kiszolgálóvégpontok nem lehetnek a rendszerköteten. A C:\MyFolder például nem elfogadható elérési út, ha a C:\MyFolder nem csatlakoztatási pont.
 - A feladatátvételi fürtszolgáltatás csak fürtözött lemezekkel támogatott, megosztott fürtkötetekkel (CSV-kkel) nem.
 - A kiszolgálóvégpontok nem ágyazhatók be. Ugyanazon a köteten azonban szerepelhetnek egymás mellett.
-- Ha egyszerre nagy mennyiségű címtárat töröl egy kiszolgálóról (több mint 10 000-et), az szinkronizálási hibákat okozhat. 10 000 címtárasnál kisebb kötegekben törölje a címtárakat. A következő köteg törlése előtt győződjön meg arról, hogy a törlési műveletek sikeresen szinkronizálva lettek.
 - Ez a kiadás annak támogatásával bővült, hogy a szinkronizálás gyökere egy kötet gyökerénél legyen.
 - Ne tárolja operációs rendszer vagy alkalmazás lapozófájlját a kiszolgálóvégponton.
 - Ebben a kiadásban új események lettek hozzáadva a felhőrétegzés összes futásidejének követéséhez (9016-os eseményazonosító), a feltöltési folyamat szinkronizálásához (9302-es eseményazonosító) és a nem szinkronizált fájlokhoz (9900-as eseményazonosító).
-- Ebben a kiadásban jelentős mértékben nőtt a gyors DR névtér-szinkronizálás teljesítménye.
+- Továbbfejlesztett ebben a kiadásban: 
+- Gyors vész-Helyreállítási névtér szinkronizálási növelhető a teljesítmény, jelentős mértékben.
+- Sok (több mint 10 000) könyvtár törlése nem kell a v2 * kötegekben kell elvégezni.
  
 ### <a name="cloud-tiering"></a>Felhőbeli rétegzés
 - Az előző verzióhoz képest az új fájlokat 1 órán belül rétegzi a rendszer a rétegzési szabályzat beállításainak megfelelően (ez korábban 32 óra volt). PowerShell-parancsmagot biztosítunk az igény szerinti rétegezéshez. Ezen parancsmag segítségével hatékonyabban értékelheti ki a rétegzést anélkül, hogy várnia kellene a háttérfolyamatokra.

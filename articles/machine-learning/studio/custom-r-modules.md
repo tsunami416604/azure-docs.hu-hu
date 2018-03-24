@@ -1,10 +1,11 @@
 ---
-title: "Az Azure Machine Learning modulok egyéni R szerzői |} Microsoft Docs"
-description: "Gyors üzembe helyezési egyéni R modul az Azure Machine Learning-szerzésre vonatkozó információ."
+title: Az Azure Machine Learning modulok egyéni R szerzői |} Microsoft Docs
+description: Gyors üzembe helyezési egyéni R modul az Azure Machine Learning-szerzésre vonatkozó információ.
 services: machine-learning
-documentationcenter: 
-author: bradsev
-manager: cgronlun
+documentationcenter: ''
+author: heatherbshapiro
+ms.author: hshapiro
+manager: hjerez
 editor: cgronlun
 ms.assetid: 6cbc628a-7e60-42ce-9f90-20aaea7ba630
 ms.service: machine-learning
@@ -13,12 +14,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 11/29/2017
-ms.author: bradsev;ankarlof;garye
-ms.openlocfilehash: 16442a30f130e7cc9b60d2d9ae9c86d7282471ff
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: 945c238411dac8f2e64666935308ef3c1cb2f0ab
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="author-custom-r-modules-in-azure-machine-learning"></a>Egyéni R-modul létrehozása az Azure Machine Learningben
 Ez a témakör ismerteti a létrehozásáról és központi telepítése az Azure Machine Learning egy egyéni R modult. Egyéni R modul és a megadásukhoz használt fájlokat ismerteti. Azt mutatja be, hogyan készítse a fájlokat, a modulok meghatározásához és a Machine Learning-munkaterület központi telepítés modul regisztrálása. Az elemek és attribútumok az egyéni modul definíciójában használja majd ismerteti részletesen. Kiegészítő funkciók és a fájlok és a több kimenet használata is ismertet. 
@@ -295,7 +295,7 @@ A modul paraméter használatával van definiálva a **Arg** gyermekeleme a **ar
     * Összes
   * **alapértelmezett** -érvényes alapértelmezett beállításokat az Oszlopválasztó a következők: 
     
-    * Nincs
+    * None
     * NumericFeature
     * NumericLabel
     * NumericScore

@@ -1,24 +1,21 @@
 ---
-title: "Az Azure Active Directory B2C: Hozzáadása Google + identitás-szolgáltatóként OAuth2 egyéni házirendekkel"
-description: "Google + identitás-szolgáltatóként OAuth2 protokollt használó mintákkal"
+title: 'Az Azure Active Directory B2C: Hozzáadása Google + identitás-szolgáltatóként OAuth2 egyéni házirendekkel'
+description: Google + identitás-szolgáltatóként OAuth2 protokollt használó mintákkal
 services: active-directory-b2c
-documentationcenter: 
-author: yoelhor
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: 
-ms.assetid: 
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.devlang: na
 ms.date: 08/04/2017
-ms.author: yoelh
-ms.openlocfilehash: d389a44ce38d84e510060f3b0a53cda58513dee5
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.author: davidmu
+ms.openlocfilehash: f12bbc2472aa2d83088c7d4d7b8f173744fb36b4
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-active-directory-b2c-add-google-as-an-oauth2-identity-provider-using-custom-policies"></a>Az Azure Active Directory B2C: Hozzáadása Google + identitás-szolgáltatóként OAuth2 egyéni házirendekkel
 
@@ -48,7 +45,7 @@ Használatához Google + az Azure Active Directory (Azure AD) B2C identitás-szo
 
     ![Google + fiók – válassza ki a projekt](media/active-directory-b2c-custom-setup-goog-idp/goog-add-new-app1.png)
 
-4.  Kattintson a  **+**  gombra.
+4.  Kattintson a **+** gombra.
 
     ![Google + fiók – új projekt létrehozása](media/active-directory-b2c-custom-setup-goog-idp//goog-add-new-app2.png)
 
@@ -178,10 +175,10 @@ Az identitásszolgáltató beállítása.  Azonban nincs sem a sign-Close-Up/sig
 4.  Illessze be a teljes tartalmát `<UserJourney>` csomópont gyermekeként másolt a `<UserJourneys>` elemet.
 
 ### <a name="display-the-button"></a>A gomb megjelenítése
-A `<ClaimsProviderSelections>` elem definiálja a jogcímeket szolgáltató tanúsítványválasztási beállítások és a sorrendjük listáját.  `<ClaimsProviderSelection>`a elem egy identity provider gombra a sign-Close-Up/sign-in oldalán hasonló. Ha ad hozzá egy `<ClaimsProviderSelection>` elem Google + fiókhoz, egy új gomb megjelenik, amikor egy felhasználó fájljai az oldalon. Ez az elem hozzáadása:
+A `<ClaimsProviderSelections>` elem definiálja a jogcímeket szolgáltató tanúsítványválasztási beállítások és a sorrendjük listáját.  `<ClaimsProviderSelection>` a elem egy identity provider gombra a sign-Close-Up/sign-in oldalán hasonló. Ha ad hozzá egy `<ClaimsProviderSelection>` elem Google + fiókhoz, egy új gomb megjelenik, amikor egy felhasználó fájljai az oldalon. Ez az elem hozzáadása:
 
 1.  Keresés a `<UserJourney>` tartalmazó csomópont `Id="SignUpOrSignIn"` a a felhasználók utazás másolt.
-2.  Keresse meg a `<OrchestrationStep>` tartalmazó csomópont`Order="1"`
+2.  Keresse meg a `<OrchestrationStep>` tartalmazó csomópont `Order="1"`
 3.  Adja hozzá a következő XML-részletet a `<ClaimsProviderSelections>` csomópont:
 
 ```xml
@@ -229,7 +226,7 @@ Most, hogy a gomb helyen, hogy egy művelet kapcsolódnia kell. A műveleti fió
 ### <a name="display-the-button"></a>A gomb megjelenítése
 1.  Nyissa meg a bővítményfájl házirend (például TrustFrameworkExtensions.xml).
 2.  Keresés a `<UserJourney>` tartalmazó csomópont `Id="ProfileEdit"` a a felhasználók utazás másolt.
-3.  Keresse meg a `<OrchestrationStep>` tartalmazó csomópont`Order="1"`
+3.  Keresse meg a `<OrchestrationStep>` tartalmazó csomópont `Order="1"`
 4.  Adja hozzá a következő XML-részletet a `<ClaimsProviderSelections>` csomópont:
 
 ```xml

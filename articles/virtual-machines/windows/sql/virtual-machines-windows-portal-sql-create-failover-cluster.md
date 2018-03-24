@@ -1,6 +1,6 @@
 ---
-title: "SQL Server FCI - Azure virtuális gépek |} Microsoft Docs"
-description: "Ez a cikk azt ismerteti, hogyan SQL Server feladatátvevő fürt példány létrehozásához Azure virtuális gépeken."
+title: SQL Server FCI - Azure virtuális gépek |} Microsoft Docs
+description: Ez a cikk azt ismerteti, hogyan SQL Server feladatátvevő fürt példány létrehozásához Azure virtuális gépeken.
 services: virtual-machines
 documentationCenter: na
 authors: MikeRayMSFT
@@ -14,13 +14,13 @@ ms.custom: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 09/26/2017
+ms.date: 13/22/2018
 ms.author: mikeray
-ms.openlocfilehash: 8c957b1f2b4466ba68d81885fb014ad4026a47d2
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: faa849fc53aa15a47e850a20531c4fa30544f750
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="configure-sql-server-failover-cluster-instance-on-azure-virtual-machines"></a>Azure virtuális gépeken futó SQL Server-példány feladatátvevő fürt konfigurálása
 
@@ -46,6 +46,18 @@ A fenti ábrán látható:
 S2D kapcsolatos részletekért lásd: [közvetlen tárolóhelyek a Windows Server 2016 Datacenter edition \(S2D\)](http://technet.microsoft.com/windows-server-docs/storage/storage-spaces/storage-spaces-direct-overview).
 
 S2D kétféle típusú architektúrák - átszervezett és többszörösen összevont támogatja. Ez a dokumentum architektúrájáról többszörösen összevont. A többszörösen összevont infrastruktúra a tárolási helyezi a fürtözött alkalmazást futtató kiszolgálón. Ebben az architektúrában a tároló nem mindegyik SQL Server FCI csomópontján.
+
+## <a name="licensing-and-pricing"></a>Licencelés és az árképzés terén
+
+Azure virtuális gépeken is licenc SQL Server használatalapú fizetés (PAYG) használatával, vagy kapcsolja a saját licenc (használata BYOL) VM-lemezképekkel. Úgy dönt, a kép típusa van hatással, hogyan van szó.
+
+Licencelési PAYG, a Feladatátvevőfürt-példány (FCI) az SQL Server Azure virtuális gépeken terhel FCI, beleértve a passzív csomópontokat az összes csomópont. További információkért lásd: [SQL Server Enterprise Virtual Machines díjszabása](http://azure.microsoft.com/pricing/details/virtual-machines/sql-server-enterprise/). 
+
+Software Assurance nagyvállalati szerződéssel rendelkező ügyfelek áll egy szabad passzív FCI csomópont használandó minden aktív csomópontja. Az az Azure előnyök kihasználásához, használja a BYOL VM-rendszerképek, majd a azonos licenc mindkét csomópontján az aktív és passzív az FCI. További információkért lásd: [nagyvállalati szerződés](http://www.microsoft.com/en-us/Licensing/licensing-programs/enterprise.aspx).
+
+Hasonlítsa össze a PAYG és BYOL licencelése az SQL Server Azure virtuális gépeken lásd: [Ismerkedés az SQL virtuális gépek](virtual-machines-windows-sql-server-iaas-overview.md#get-started-with-sql-vms).
+
+A licencelési SQL Server kapcsolatos részletes információkért lásd: [árazás](http://www.microsoft.com/sql-server/sql-server-2017-pricing).
 
 ### <a name="example-azure-template"></a>Példa Azure-sablon alapján
 
@@ -91,7 +103,7 @@ Az előfeltételek teljesülnek folytassa a a feladatátvevő fürt. Az első l�
 
    Ha létrehozta az erőforráscsoport nem a virtuális gépek, elvégezhető az Azure rendelkezésre állási csoport létrehozásakor. A rendelkezésre állási csoport létrehozása használata az Azure-portálon, tegye a következőket:
 
-   - Az Azure portálon kattintson  **+**  Azure piactérről elemre. Keresse meg **rendelkezésre állási csoport**.
+   - Az Azure portálon kattintson **+** Azure piactérről elemre. Keresse meg **rendelkezésre állási csoport**.
    - Kattintson a **rendelkezésre állási csoport**.
    - Kattintson a **Create** (Létrehozás) gombra.
    - Az a **rendelkezésre állási csoport létrehozása** panelen állítsa be a következő értékeket:
@@ -123,7 +135,7 @@ Az előfeltételek teljesülnek folytassa a a feladatátvevő fürt. Az első l�
 
    Válassza ki a megfelelő lemezképet, hogyan szeretné kifizetni a SQL Server licence alapján:
 
-   - **Használati licencelési kell fizetnie**: ezek a lemezképek perc költsége tartalmazza az SQL Server licencelési:
+   - **Használati licencelési kell fizetnie**: ezek a lemezképek másodpercenként költsége tartalmazza az SQL Server licencelési:
       - **A Windows Server Datacenter 2016 SQL Server 2016 Enterprise**
       - **Az SQL Server 2016 Standard a Windows Server Datacenter 2016**
       - **SQL Server 2016 fejlesztői a Windows Server Datacenter 2016**

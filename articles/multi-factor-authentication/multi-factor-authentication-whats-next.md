@@ -1,8 +1,8 @@
 ---
-title: "Az Azure többtényezős hitelesítés beállítása |} Microsoft Docs"
-description: "Ez a cikk ismerteti az Azure multi-factor Authentication beállításainak jelentések, visszaélési riasztás, egyszeri mellőzés, egyéni hangüzenetek, gyorsítótárazás, a megbízható IP-címek és az alkalmazásjelszókat."
+title: Az Azure többtényezős hitelesítés beállítása |} Microsoft Docs
+description: Ez a cikk ismerteti az Azure multi-factor Authentication beállításainak jelentések, visszaélési riasztás, egyszeri mellőzés, egyéni hangüzenetek, gyorsítótárazás, a megbízható IP-címek és az alkalmazásjelszókat.
 services: multi-factor-authentication
-documentationcenter: 
+documentationcenter: ''
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.assetid: 75af734e-4b12-40de-aba4-b68d91064ae8
@@ -14,15 +14,15 @@ ms.topic: article
 ms.date: 01/03/2018
 ms.author: joflore
 ms.reviewer: richagi
-ms.openlocfilehash: 4421b995e69e115fbb6c7379af79aaef537aed0d
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: e2b6651f0d341567f1d02d0ca16b8f445e3d26f4
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Azure multi-factor Authentication beállításainak konfigurálása
 
-Ez a cikk segít Azure multi-factor Authentication kezeléséhez most, hogy működik, és Ön. Bemutatja, különböző témakörök, amelyek segítenek az Azure multi-factor Authentication minél hatékonyabb működtetését. Nem minden szolgáltatását érhetők el minden [Azure multi-factor Authentication verziójának](/multi-factor-authentication-get-started.md#what-features-do-i-need).
+Ez a cikk segít Azure multi-factor Authentication kezeléséhez most, hogy működik, és Ön. Bemutatja, különböző témakörök, amelyek segítenek az Azure multi-factor Authentication minél hatékonyabb működtetését. Nem minden szolgáltatását érhetők el minden [Azure multi-factor Authentication verziójának](multi-factor-authentication-get-started.md#what-features-do-i-need).
 
 | Szolgáltatás | Leírás | 
 |:--- |:--- |
@@ -30,7 +30,7 @@ Ez a cikk segít Azure multi-factor Authentication kezeléséhez most, hogy műk
 | [Csalási riasztás](#fraud-alert) |Konfigurálja a csalási riasztás szolgáltatás úgy, hogy a felhasználók jelenthetik-e rosszindulatú megpróbál hozzáférni az erőforrásokhoz. |
 | [Az egyszeri Mellőzés](#one-time-bypass) |Az egyszeri Mellőzés szolgáltatással a felhasználók által egy alkalommal a hitelesítést _kihagyásával_ többtényezős hitelesítést. |
 | [Egyedi Hangüzenetek](#custom-voice-messages) |A szolgáltatással egyedi Hangüzenetek üzeneteket a saját felvételek vagy a hónap és a többtényezős hitelesítés. |
-| [Gyorsítótárazás](#caching-in-azure-multi-factor-authentication) |A gyorsítótárazási szolgáltatás használatával beállíthat egy adott időszakra vonatkozóan, így a későbbi hitelesítési próbálkozások automatikusan sikeres. |
+| [Caching](#caching-in-azure-multi-factor-authentication) |A gyorsítótárazási szolgáltatás használatával beállíthat egy adott időszakra vonatkozóan, így a későbbi hitelesítési próbálkozások automatikusan sikeres. |
 | [Megbízható IP-címek](#trusted-ips) |A felügyelt vagy összevont bérlők rendszergazdái a megbízható IP-címek szolgáltatás segítségével a felhasználók számára a vállalati intraneten jelentkezzen be a kétlépéses ellenőrzés megkerülését. |
 | [Alkalmazásjelszók](#app-passwords) |Az alkalmazás jelszó szolgáltatás használatával lehetővé teszik az alkalmazások az választhatják a multi-factor Authentication, és folytathatja a munkát. |
 | [Ne feledje többtényezős hitelesítés a megbízható eszközök és böngészők](#remember-multi-factor-authentication-for-trusted-devices) |E szolgáltatás használatával megbízható eszközökkel és a böngészők tárolja egy meghatározott számú nap elteltével a felhasználó rendelkezik-e sikeresen bejelentkezett a multi-factor Authentication használatával. |
@@ -73,7 +73,7 @@ Konfigurálja a _csalási riasztás_ a beállítást, így a felhasználók jele
 ### <a name="configuration-options"></a>Konfigurációs beállítások
 
 - **Felhasználó blokkolása visszaélés jelentésekor**: Ha egy felhasználó csalás, a fiókja mindaddig zárolva van 90 napig, vagy amíg a rendszergazda feloldja a fiókba. A rendszergazda bejelentkezések áttekintheti a bejelentkezési jelentés használatával, és hajtsa végre a megfelelő műveletet jövőbeli csalás megelőzése érdekében. A rendszergazda tudja majd [feloldása](#unblock-a-user) a felhasználói fiók.
-- **Kód a visszaélés jelentéséhez a kezdeti üdvözlés során**: amikor a felhasználók felhívja Önt telefonján kétlépéses ellenőrzés, akkor általában nyomja le az ENTER  **#**  a bejelentkezés megerősítéséhez. A visszaélés jelentéséhez a felhasználó megadja a kód előtt  **#** . Ez a kód **0** alapértelmezés szerint azonban testre szabható.
+- **Kód a visszaélés jelentéséhez a kezdeti üdvözlés során**: amikor a felhasználók felhívja Önt telefonján kétlépéses ellenőrzés, akkor általában nyomja le az ENTER **#** a bejelentkezés megerősítéséhez. A visszaélés jelentéséhez a felhasználó megadja a kód előtt **#**. Ez a kód **0** alapértelmezés szerint azonban testre szabható.
 
   >[!NOTE]
   >Az alapértelmezett hangüdvözléseit Microsoft utasítsa a felhasználókat, hogy nyomja meg az **0#** a csalási értesítést küldeni. Ha egy kódot eltérő használni kívánt **0**, jegyezze fel, és töltse fel a megfelelő utasításokat tartalmaz a felhasználók a saját egyéni hangüdvözléseit.

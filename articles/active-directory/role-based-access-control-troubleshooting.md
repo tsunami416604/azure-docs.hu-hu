@@ -1,6 +1,6 @@
 ---
-title: "Szerepköralapú hozzáférés-vezérlést Azure RBAC hibaelhárítása |} Microsoft Docs"
-description: "Segítség problémák vagy a szerepköralapú hozzáférés-vezérlés erőforrások kapcsolatos kérdésekre."
+title: Szerepköralapú hozzáférés-vezérlést Azure RBAC hibaelhárítása |} Microsoft Docs
+description: Segítség problémák vagy a szerepköralapú hozzáférés-vezérlés erőforrások kapcsolatos kérdésekre.
 services: azure-portal
 documentationcenter: na
 author: rolyon
@@ -11,19 +11,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/14/2018
+ms.date: 03/19/2018
 ms.author: rolyon
 ms.reviewer: rqureshi
 ms.custom: seohack1
-ms.openlocfilehash: c2589aabce86f848fa1aa3e25b3f78be180c5525
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 766ff118638538520c8f17694b32f35dbe6d1025
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="troubleshooting-azure-role-based-access-control"></a>Hibaelhárítási Azure szerepköralapú hozzáférés-vezérlés 
 
-A dokumentum cikk a szerepköröket, meghatározott hozzáférési jogosultságai kapcsolatos gyakori kérdésekre ad választ, megállapításához, hogy mi történik, ha használja a szerepkörök az Azure portál és a részleg-hozzáférési problémák megoldása. Ezek a szerepkörök az összes erőforrástípus terjed ki:
+A cikk a szerepköröket, meghatározott hozzáférési jogosultságai kapcsolatos gyakori kérdésekre ad választ, megállapításához, hogy mi történik, ha használja a szerepkörök az Azure portál és a részleg-hozzáférési problémák megoldása. Ezek a szerepkörök az összes erőforrástípus terjed ki:
 
 * Tulajdonos  
 * Közreműködő  
@@ -31,7 +31,7 @@ A dokumentum cikk a szerepköröket, meghatározott hozzáférési jogosultsága
 
 Tulajdonos és közreműködő szerepkörrel rendelkező személyek mindkét megoldást vezet a teljes hozzáféréssel rendelkeznek, de a közreműködői nem hozzáférést más felhasználóknak vagy csoportoknak. Részek lesznek még ennél is érdekesebb megoldást az olvasó szerepkört, hogy az adott azt fogja szánjon némi időt. Tekintse meg a [szerepköralapú hozzáférés-vezérlés a get-started cikk](role-based-access-control-configure.md) talál részletes hozzáférést.
 
-## <a name="app-service-workloads"></a>App service munkaterhelések
+## <a name="app-service"></a>App Service
 ### <a name="write-access-capabilities"></a>Írási képességek
 Ha megadta a felhasználói csak olvasható hozzáférést egyetlen webalkalmazáshoz, néhány funkció le vannak tiltva, hogy nem várt. A következő felügyeleti képességeket szükséges **írási** egy webalkalmazást (tulajdonos vagy közreműködő) által elérhető, és nem érhetők el a olyan írásvédett forgatókönyv.
 
@@ -69,7 +69,14 @@ Ezek az elemek szükség **írási** a teljes hozzáférés **erőforráscsoport
 * Application Insights-összetevők  
 * Webtesztek  
 
-## <a name="virtual-machine-workloads"></a>Virtuális gépek terheléséhez
+## <a name="azure-functions"></a>Azure Functions
+Néhány funkciójának [Azure Functions](../azure-functions/functions-overview.md) írási hozzáférés szükséges. Például ha egy felhasználó az Olvasó szerepkör van hozzárendelve, nem fogják a Funkciók, a függvény alkalmazások megtekintheti. A portál megjeleníti **(nincs hozzáférése)**.
+
+![Működnek az alkalmazások nem lehet hozzáférni](./media/role-based-access-control-troubleshooting/functionapps-noaccess.png)
+
+Egy olvasó kattinthat a **Platform funkciói** fülre, majd **összes beállítás** az egyes beállítások megtekintéséhez a függvény app (webalkalmazás hasonlóan) kapcsolódik, de nem módosíthatják a beállítások.
+
+## <a name="virtual-machine"></a>Virtuális gép
 Sokkal hasonlóan a web apps, a virtuális gépek paneljét bizonyos funkcióinak írási hozzáférés szükséges a virtuális gépet, vagy további erőforrások az erőforráscsoportban.
 
 Virtuális gépek tartomány nevét, virtuális hálózatok, storage-fiókok és a riasztási szabályok kapcsolódnak.

@@ -1,23 +1,21 @@
 ---
 title: 'Az Azure Active Directory B2C: KMSI |} Microsoft Docs'
-description: "A témakör bemutatja, hogyan lehet beállítani a \"me bejelentkezve megőrzése\""
+description: A témakör bemutatja, hogyan lehet beállítani a "me bejelentkezve megőrzése"
 services: active-directory-b2c
-documentationcenter: 
-author: vigunase
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-ms.assetid: 926e9711-71c0-49e8-b658-146ffb7386c0
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 09/05/2016
-ms.author: vigunase
-ms.openlocfilehash: a3d78945f862d1ae12cec05da0cf0ea7df511f43
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: davidmu
+ms.openlocfilehash: 073ba8eef7f2f42d1c308fb20d3bfdbfc8d321b7
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-active-directory-b2c-enable-keep-me-signed-in-kmsi"></a>Az Azure Active Directory B2C: Engedélyezése "Megtartása (KMSI) bejelentkezve"  
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
@@ -94,7 +92,7 @@ A jogcímszolgáltató, megadhatja a helyi fiókkal bejelentkezik a `<ClaimsProv
 
 Adja hozzá a Alkalmazásazonosítók a bővítmények fájlhoz (`TrustFrameworkExtensions.xml`):
 
-1. A bővítmények fájlban (TrustFrameworkExtensions.xml), az elem található `<TechnicalProfile Id="login-NonInteractive">` és`<TechnicalProfile Id="login-NonInteractive-PasswordChange">`
+1. A bővítmények fájlban (TrustFrameworkExtensions.xml), az elem található `<TechnicalProfile Id="login-NonInteractive">` és `<TechnicalProfile Id="login-NonInteractive-PasswordChange">`
 
 2. Cserélje le az összes példányát `IdentityExperienceFrameworkAppId` az identitás élmény keretrendszer alkalmazás leírtak szerint az alkalmazás azonosítójával [bevezetés](active-directory-b2c-get-started-custom.md). Például:
 
@@ -166,11 +164,11 @@ Következő lépésként frissítse a függő entitásonkénti (RP) fájl, amely
 
 4. KMSI van konfigurálva a `UserJourneyBehaviors`. 
 
-5. **`KeepAliveInDays`**Meghatározza, mennyi ideig felhasználó bejelentkezett marad. A következő példában KMSI munkamenet automatikusan függetlenül attól, milyen gyakran a felhasználói beavatkozás nélküli hitelesítést hajt végre 14 nap után jár le.
+5. **`KeepAliveInDays`** Meghatározza, mennyi ideig felhasználó bejelentkezett marad. A következő példában KMSI munkamenet automatikusan függetlenül attól, milyen gyakran a felhasználói beavatkozás nélküli hitelesítést hajt végre 14 nap után jár le.
 
    Beállítás `KeepAliveInDays` 0 érték kikapcsolja a KMSI funkciót. Alapértelmezés szerint ez az érték: 0
 
-6. Ha  **`SessionExpiryType`**  van *működés közbeni*, majd a KMSI munkamenet ki van bővítve 14 nap minden alkalommal, amikor a felhasználói beavatkozás nélküli hitelesítést hajt végre.  Ha *működés közbeni* van kijelölve, azt javasoljuk, hogy legalább hány nap nyomon. 
+6. Ha **`SessionExpiryType`** van *működés közbeni*, majd a KMSI munkamenet ki van bővítve 14 nap minden alkalommal, amikor a felhasználói beavatkozás nélküli hitelesítést hajt végre.  Ha *működés közbeni* van kijelölve, azt javasoljuk, hogy legalább hány nap nyomon. 
 
        <RelyingParty>
        <DefaultUserJourney ReferenceId="SignUpOrSignInWithKmsi" />

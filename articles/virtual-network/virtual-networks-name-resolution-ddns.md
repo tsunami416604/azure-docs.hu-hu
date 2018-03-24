@@ -1,11 +1,11 @@
 ---
-title: "Dinamikus DNS segítségével hostnames regisztrálása"
-description: "Ezen a lapon részleteket nyújt a saját DNS-kiszolgálók regisztrálása állomásnevek dinamikus DNS beállítása."
+title: Dinamikus DNS segítségével hostnames regisztrálása
+description: Ezen a lapon részleteket nyújt a saját DNS-kiszolgálók regisztrálása állomásnevek dinamikus DNS beállítása.
 services: dns
 documentationcenter: na
 author: GarethBradshawMSFT
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: c315961a-fa33-45cf-82b9-4551e70d32dd
 ms.service: dns
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/23/2017
 ms.author: garbrad
-ms.openlocfilehash: 440a062e5fff73526b2d77d7d0a7c52ca72a66f1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5d62c40bfc909915fa222db12413634aa7ce7158
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="using-dynamic-dns-to-register-hostnames-in-your-own-dns-server"></a>Dinamikus DNS segítségével hostnames regisztrálni a saját DNS-kiszolgáló
 [Azure biztosít névfeloldás](virtual-networks-name-resolution-for-vms-and-role-instances.md) a virtuális gépek (VM) és a szerepkörpéldányok. Amikor a névfeloldás kell túlmutató Azure által biztosított naplókon, megadhatja a saját DNS-kiszolgálók. Ez lehetővé teszi a kitevőt, a DNS-megoldást a saját igényeinek megfelelően testre szabni. Például szükség lehet keresztül férnek hozzá a helyszíni erőforrásokhoz az Active Directory-tartományvezérlőhöz.
@@ -26,7 +26,7 @@ ms.lasthandoff: 10/11/2017
 Az egyéni DNS-kiszolgálók működtetnek Azure virtuális gépeken, ha ugyanazt a virtuális hálózatot az állomásnév lekérdezések továbbíthatja az Azure állomásnevek megoldásához. Ha nem szeretne használni, ez az útvonal, a virtuális gép állomásnevek regisztrálhatja a dinamikus DNS használatával DNS-kiszolgáló.  Azure közvetlenül bejegyzéseket létrehozni a DNS-kiszolgálók alternatív megoldások gyakran van szükség, nem rendelkezik (pl. a hitelesítő adatok) lehetőséget. Az alábbiakban néhány gyakori helyzetek lehetőségeket.
 
 ## <a name="windows-clients"></a>Windows-ügyfelek
-A nem tartományhoz csatlakoztatott Windows-ügyfelek nem biztonságos dinamikus DNS (DDNS) frissítések történt kísérlet, ha indulnak, vagy ha megváltoztatja az IP-címet. A DNS-neve az állomásnév és az elsődleges DNS-utótag. Azure az elsődleges DNS-utótag üresen hagyja, de ez a beállíthatja a virtuális gép keresztül a [felhasználói felület](https://technet.microsoft.com/library/cc794784.aspx) vagy [automatizálás segítségével](https://social.technet.microsoft.com/forums/windowsserver/3720415a-6a9a-4bca-aa2a-6df58a1a47d7/change-primary-dns-suffix).
+A nem tartományhoz csatlakoztatott Windows-ügyfelek nem biztonságos dinamikus DNS (DDNS) frissítések történt kísérlet, ha indulnak, vagy ha megváltoztatja az IP-címet. A DNS-neve az állomásnév és az elsődleges DNS-utótag. Azure az elsődleges DNS-utótag üresen hagyja, de ez a beállíthatja a virtuális gép keresztül a [felhasználói felület](https://technet.microsoft.com/library/cc794784.aspx) vagy [automatizálás segítségével című szakaszban leírtaknak megfelelően Itt](https://social.technet.microsoft.com/forums/windowsserver/3720415a-6a9a-4bca-aa2a-6df58a1a47d7/change-primary-dns-suffix).
 
 A tartományhoz csatlakoztatott Windows-ügyfelek regisztrálja az IP-címét a tartományvezérlő biztonságos dinamikus DNS használatával. A tartományhoz való csatlakozást folyamat az ügyfél az elsődleges DNS-utótag be és hoz létre, és a megbízhatósági kapcsolatot tart fenn.
 

@@ -1,11 +1,11 @@
 ---
-title: "Az adatbázis-titkosítás aktívan: Azure Cosmos DB |} Microsoft Docs"
-description: "Ismerje meg, hogyan nyújt az Azure Cosmos DB a alapértelmezett titkosítás az összes adatot."
+title: 'Az adatbázis-titkosítás aktívan: Azure Cosmos DB |} Microsoft Docs'
+description: Ismerje meg, hogyan nyújt az Azure Cosmos DB a alapértelmezett titkosítás az összes adatot.
 services: cosmos-db
 author: voellm
 manager: jhubbard
 editor: mimig
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: 99725c52-d7ca-4bfa-888b-19b1569754d3
 ms.service: cosmos-db
 ms.workload: data-services
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2017
 ms.author: voellm
-ms.openlocfilehash: 193dbede0655376714c6f8f12c826ba3f9bc8933
-ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
+ms.openlocfilehash: df793fb0511d1289b927caad200eb8252f2b64e6
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-cosmos-db-database-encryption-at-rest"></a>Az Azure Cosmos DB adatbázis titkosítását
 
@@ -53,7 +53,6 @@ V: Microsoft tartozik egy belső iránymutatásokat titkosítási kulcs elforgat
 
 ### <a name="q-can-i-use-my-own-encryption-keys"></a>K: használhatok saját titkosítási kulcsokat?
 V: cosmos DB egy PaaS szolgáltatás, és ezért merevlemez előre tartani a szolgáltatás könnyen használható. Ez a kérdés gyakran ismételt egy megfelelőségi követelményt, például a PCI DSS kiválassza proxy kérdésként már észleltünk. Ez a szolgáltatás létrehozásának részeként ezért előre a megfelelőségi ellenőrök annak érdekében, hogy az ügyfelek, akik Cosmos-Adatbázist kíván használni megfelelnek-e a követelményeknek, nem kell maguknak kulcsok kezelése.
-Ennek eredményeképpen azt jelenleg nem teszi lehetővé felhasználók terheljék magukat a kulcskezelést.
 
 ### <a name="q-what-regions-have-encryption-turned-on"></a>K: Mi memóriaterületnél engedélyezve van a titkosítás?
 V: minden Azure Cosmos DB memóriaterületnél titkosítás az összes felhasználói adat-e kapcsolva.

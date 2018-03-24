@@ -1,21 +1,21 @@
 ---
-title: "Adatok másolása az Azure Data Factory eszköz |} Microsoft Docs"
-description: "Információkat nyújt azokról az adatok másolása eszköz Azure Data Factory felhasználói felületen"
+title: Adatok másolása az Azure Data Factory eszköz |} Microsoft Docs
+description: Információkat nyújt azokról az adatok másolása eszköz Azure Data Factory felhasználói felületen
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: spelluru
+manager: craigg
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: article
 ms.date: 01/10/2018
 ms.author: jingwang
-ms.openlocfilehash: 2fb25dcc0de4ebb1d025101670a9edfe3fe2bea9
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: b82ee060ff3f25e7a92c85114d457ecb349159b3
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="copy-data-tool-in-azure-data-factory"></a>Másolja az adatokat eszközt az Azure Data Factory
 Az Azure Data Factory adatok másolása eszköz megkönnyíti a, és optimalizálja a folyamatot, az adatok választásával dolgozhat fel a data lake, amely általában az első lépés egy végpont integrációs forgatókönyvet.  Menti a idő, különösen ha használatával Azure Data Factory először betöltik az adatforrásból származó adatokat. Ez az eszköz használatának előnyei a következők:
@@ -27,7 +27,7 @@ Az Azure Data Factory adatok másolása eszköz megkönnyíti a, és optimalizá
 
 A következő táblázat nyújt útmutatást a Data Factory felhasználói felületén szerzői tevékenység és az adatok másolása eszköz használatával: 
 
-| Másolja az eszköz | Egy tevékenység (másolási tevékenység) készítése |
+| Adatok másolása eszköz | Egy tevékenység (másolási tevékenység) készítése |
 | -------------- | -------------------------------------- |
 | Könnyen hozhat létre egy Azure Data Factory entitások (társított szolgáltatások, adathalmazokat, adatcsatornákat stb.) megismerését nélkül feladat betöltése adatokat szeretné | Szeretné végrehajtani az adatok betöltését lake összetett és rugalmas logikát. |
 | Gyorsan adatösszetevők nagy számú betöltése a data lake szeretné. | Szeretné láncolt soron következő tevékenységek adatok tisztítására vagy feldolgozásra a másolási tevékenység. |
@@ -49,7 +49,7 @@ Ez az eszköz lehetővé teszi, hogy könnyedén helyezhetik át adatokat külö
 
  Az eszközt a big Data típusú adatok szem előtt, támogatja a különböző adatok és az Objektumtípusok Start tervezték. Helyezze át a mappát, a fájlok vagy a táblák több száz azt használhatja. Az eszköz automatikus adatelőnézet, séma rögzítési és automatikus leképezés és az adatok szűrése, valamint támogatja.
 
-![Másolja az eszköz](./media/copy-data-tool/copy-data-tool.png)
+![Adatok másolása eszköz](./media/copy-data-tool/copy-data-tool.png)
 
 ## <a name="automatic-data-preview"></a>Automatikus megtekintés
 Megtekintheti a kiválasztott forráshely adattárból, amely lehetővé teszi a adatokat másolással érvényesítéséhez adatok egy részét. Ezenkívül ha az adatok a fájlt, az adatok másolása eszköz kijelölt szöveg automatikus észlelése a sor- és elválasztókat és séma.

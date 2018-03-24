@@ -1,24 +1,17 @@
 ---
-title: "Megfigyelő feladat létrehozása az Azure Automation-fiókban |} Microsoft Docs"
-description: "Megtudhatja, hogyan hozzon létre egy megfigyelő feladatot az Azure Automation-fiók egy mappában létrehozott új fájlokat beállításjegyzékek."
+title: Megfigyelő feladat létrehozása az Azure Automation-fiókban
+description: Megtudhatja, hogyan hozzon létre egy megfigyelő feladatot az Azure Automation-fiók egy mappában létrehozott új fájlokat beállításjegyzékek.
 services: automation
-documentationcenter: 
-author: eamonoreilly
-manager: 
-editor: 
-ms.assetid: 0dd95270-761f-448e-af48-c8b1e82cd821
 ms.service: automation
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 12/11/2017
+author: eamonoreilly
 ms.author: eamono
-ms.openlocfilehash: 294faa48f9840919b087594835706bad8048d45b
-ms.sourcegitcommit: a648f9d7a502bfbab4cd89c9e25aa03d1a0c412b
+ms.topic: article
+ms.date: 03/19/2017
+ms.openlocfilehash: 8cd5f77d9711ffc95e6a55e97297a23fd87c6bb7
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/22/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="create-an-azure-automation-watcher-tasks-to-track-file-changes-on-a-local-machine"></a>Hozzon létre egy Azure Automation-megfigyelő feladatok fájl változásainak követése a helyi számítógépen
 
@@ -36,7 +29,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag teljesítéséhez a következőkre szükség:
+Az oktatóanyag elvégzésének a következők a feltételei:
 
 * Egy Azure-előfizetés. Ha még nem rendelkezik fiókkal, [aktiválhatja MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/), illetve [regisztrálhat egy ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * [Automation-fiók](automation-offering-get-started.md) a felügyeletiszolgáltatás-megfigyelő és a művelet runbookokat, és a figyelő a feladat tárolásához.

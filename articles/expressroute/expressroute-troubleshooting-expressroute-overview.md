@@ -1,12 +1,12 @@
 ---
-title: "A kapcsolat ellenőrzése: Azure ExpressRoute-hibaelhárítási útmutatója |} Microsoft Docs"
-description: "Ezen a lapon útmutatás hibaelhárítási és az ExpressRoute-kapcsolatcsoportot végpontok közötti kapcsolat ellenőrzése."
+title: 'A kapcsolat ellenőrzése: Azure ExpressRoute-hibaelhárítási útmutatója |} Microsoft Docs'
+description: Ezen a lapon útmutatás hibaelhárítási és az ExpressRoute-kapcsolatcsoportot végpontok közötti kapcsolat ellenőrzése.
 documentationcenter: na
 services: expressroute
 author: rambk
 manager: tracsman
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: expressroute
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/26/2017
 ms.author: cherylmc
-ms.openlocfilehash: 74b6589a7e06570d978dfe40c5f5bf140e092cc6
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 5d01f2e402e4b793274761703ec3ca1ea3ff8164
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="verifying-expressroute-connectivity"></a>Az ExpressRoute-kapcsolat ellenőrzése
 ExpressRoute, egy a helyszíni hálózat kibővítve a Microsoft felhőbe, amely a kapcsolat szolgáltatójánál megkönnyíthető titkos kapcsolaton keresztül, a következő három különböző hálózati zónák foglal magában:
@@ -68,7 +68,7 @@ Egy ExpressRoute-kapcsolatcsoportot ellenőrzéséhez a következő lépéseket 
 
 További ellenőrzések és ellenőrzések hozzáadódnak a jövőbeli, próbálkozzon újra a havi!
 
-##<a name="validate-circuit-provisioning-and-state"></a>Kiépítésével és állapotának ellenőrzése
+## <a name="validate-circuit-provisioning-and-state"></a>Kiépítésével és állapotának ellenőrzése
 Függetlenül a kapcsolat modell ExpressRoute-kapcsolatcsoportot létrehozni rendelkezik, és így a szolgáltatás kulcs létre kiépítésével. A redundáns 2. rétegbeli kapcsolatot PE-MSEEs (4) és MSEEs (5) között ExpressRoute-kapcsolatcsoportot kiépítés hoz létre. Létrehozása, módosítása, telepítéséhez, és ellenőrizze a ExpressRoute-kapcsolatcsoportot kapcsolatos további információkért lásd: a cikk [létrehozása és módosítása az ExpressRoute-kapcsolatcsoportot][CreateCircuit].
 
 >[!TIP]
@@ -76,7 +76,7 @@ Függetlenül a kapcsolat modell ExpressRoute-kapcsolatcsoportot létrehozni ren
 >
 >
 
-###<a name="verification-via-the-azure-portal"></a>Az Azure-portálon ellenőrzése
+### <a name="verification-via-the-azure-portal"></a>Az Azure-portálon ellenőrzése
 Az Azure portálon, ExpressRoute-kapcsolatcsoportot állapotának ellenőrizhetők kiválasztásával ![2][2] a bal oldali oldalsó sáv menüben, és jelölje be az ExpressRoute-kapcsolatcsoportot. Egy ExpressRoute kiválasztása "Összes erőforrás" alatt szereplő áramkör az ExpressRoute-kapcsolatcsoport panel megnyitása. Az a ![3][3] részében találhatja, a essentials találhatók, ahogy az alábbi képernyőfelvételen az ExpressRoute:
 
 ![4][4]    
@@ -90,7 +90,7 @@ Az ExpressRoute-kapcsolatcsoportot működik, hogy a *áramkör állapot* kell l
 >
 >
 
-###<a name="verification-via-powershell"></a>PowerShell ellenőrzése
+### <a name="verification-via-powershell"></a>PowerShell ellenőrzése
 Egy erőforráscsoportban található ExpressRoute-Kapcsolatcsoportok listájában, használja a következő parancsot:
 
     Get-AzureRmExpressRouteCircuit -ResourceGroupName "Test-ER-RG"
@@ -139,7 +139,7 @@ Annak ellenőrzéséhez, hogy ha ExpressRoute-kapcsolatcsoportot működőképes
 >
 >
 
-###<a name="verification-via-powershell-classic"></a>Ellenőrzési PowerShell (klasszikus)
+### <a name="verification-via-powershell-classic"></a>Ellenőrzési PowerShell (klasszikus)
 Adott előfizetésen belül ExpressRoute-Kapcsolatcsoportok listájában, használja a következő parancsot:
 
     Get-AzureDedicatedCircuit
@@ -167,10 +167,10 @@ Annak ellenőrzéséhez, hogy ha ExpressRoute-kapcsolatcsoportot működőképes
 >
 >
 
-##<a name="validate-peering-configuration"></a>Társviszony-létesítési konfiguráció ellenőrzése
+## <a name="validate-peering-configuration"></a>Társviszony-létesítési konfiguráció ellenőrzése
 A szolgáltató a kiépítés az ExpressRoute-kapcsolatcsoport befejezése után egy útválasztási konfigurációja az ExpressRoute-kapcsolatcsoport között MSEE-PRs (4) és MSEEs (5) keresztül hozhatók létre. Minden egyes ExpressRoute-kapcsolatcsoportot rendelkezhet engedélyezve van egy, kettő vagy három útválasztási környezetek: Azure magánhálózati társviszony-létesítési (forgalom titkos virtuális hálózatok az Azure-ban), az Azure nyilvános társviszony-létesítés (forgalom nyilvános IP-címek az Azure-ban) és a Microsoft társviszony-létesítési (forgalom Dynamics 365 és az Office 365 való). Létrehozásához és módosításához útválasztási konfigurációs módjáról további információkért lásd: a cikk [létrehozása és módosítása az ExpressRoute-kapcsolatcsoportot útválasztási][CreatePeering].
 
-###<a name="verification-via-the-azure-portal"></a>Az Azure-portálon ellenőrzése
+### <a name="verification-via-the-azure-portal"></a>Az Azure-portálon ellenőrzése
 
 >[!NOTE]
 >Ha a 3 rétegbeli a szolgáltató által biztosított, és a társviszony üresek a portálon, a frissítés gombra kattintva a protal a kapcsolatcsoport beállításainak frissítése. Ez a művelet a kapcsolatcsoport alkalmazzák a megfelelő útválasztási konfigurációja. 
@@ -188,7 +188,7 @@ Az előző példában, beállításértékeket Azure magánhálózati társviszo
 >
 >
 
-###<a name="verification-via-powershell"></a>PowerShell ellenőrzése
+### <a name="verification-via-powershell"></a>PowerShell ellenőrzése
 Ahhoz, hogy az Azure magánhálózati társviszony-létesítési konfiguráció részletei, használja a következő parancsokat:
 
     $ckt = Get-AzureRmExpressRouteCircuit -ResourceGroupName "Test-ER-RG" -Name "Test-ER-Ckt"
@@ -364,7 +364,7 @@ A következő példa bemutatja, hogy a parancs a társviszony-létesítés a vá
 
     Route Table Info:
 
-##<a name="check-the-traffic-statistics"></a>A forgalom statisztikai adatainak ellenőrzése
+## <a name="check-the-traffic-statistics"></a>A forgalom statisztikai adatainak ellenőrzése
 Sikerült megszerezni a kombinált elsődleges és másodlagos elérési forgalom statisztika--bájt bejövő és kimenő adatforgalma – társviszony-létesítési környezetet, a következő paranccsal:
 
     Get-AzureDedicatedCircuitStats -ServiceKey 97f85950-01dd-4d30-a73c-bf683b3a6e5c -AccessType Private

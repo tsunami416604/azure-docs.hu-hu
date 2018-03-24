@@ -1,24 +1,24 @@
 ---
-title: "Az Azure Search Azure Blob Storage indexelése"
-description: "Útmutató: Azure Blob Storage indexelése és az Azure Search dokumentumok szöveg kinyerése"
+title: Az Azure Search Azure Blob Storage indexelése
+description: 'Útmutató: Azure Blob Storage indexelése és az Azure Search dokumentumok szöveg kinyerése'
 services: search
-documentationcenter: 
+documentationcenter: ''
 author: chaosrealm
 manager: pablocas
-editor: 
+editor: ''
 ms.assetid: 2a5968f4-6768-4e16-84d0-8b995592f36a
 ms.service: search
 ms.devlang: rest-api
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 12/28/2017
+ms.date: 03/22/2018
 ms.author: eugenesh
-ms.openlocfilehash: 286e2b8eddc87a5132fa13468b0cef1b499c3993
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: 67f6775fb68f4cd13c52ebe66727f2b4df23c692
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="indexing-documents-in-azure-blob-storage-with-azure-search"></a>Az Azure Blob Storage tárolóban az Azure Search dokumentumok indexelő
 Ez a cikk bemutatja, hogyan használható az Azure Search index dokumentumok (például PDF-fájlok, a Microsoft Office-dokumentumok, és számos egyéb gyakori formátumok) az Azure Blob Storage tárolóban tárolja. Első lépésként beállítása és konfigurálása a blob indexelő használatának alapjait ismerteti. Ezt követően viselkedésmódok mélyebb feltárása kínál, és forgatókönyvek lehetséges hibát.
@@ -33,7 +33,7 @@ Beállíthat egy Azure Blob Storage indexelő használatával:
 
 * [Azure Portal](https://ms.portal.azure.com)
 * Az Azure Search [REST API-n](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations)
-* Az Azure Search [.NET SDK-val](https://aka.ms/search-sdk)
+* Azure Search [.NET SDK](https://aka.ms/search-sdk)
 
 > [!NOTE]
 > Egyes szolgáltatások (például mező leképezéseket) még nem állnak rendelkezésre a portálon, és programozott módon kell használni.
@@ -158,7 +158,7 @@ Az Azure Search a dokumentum kulcs egyedileg azonosít egy dokumentumot. Minden 
 
 Alaposan gondolja át melyik kibontott mezőt az index a következő kulcsmező kell hozzárendelését. A deduplikációra kijelölt a következők:
 
-* **metaadatok\_tárolási\_neve** – Ez lehet hasznos jelöltként, de vegye figyelembe, hogy 1.) a nevek nem feltétlenül egyedi, előfordulhat, hogy blobok azonos nevű másik mappa, és a 2.) a neve, a dokumentum kulcsok, például kötőjelek érvénytelen karaktereket tartalmazhat. Akkor is foglalkozik érvénytelen karakterek használatával a `base64Encode` [leképezési függvény mezőben](search-indexer-field-mappings.md#base64EncodeFunction) – Ha így tesz, ne felejtse el a dokumentum kulcsok kódolására, amikor például a keresési meghívja átadja őket az API-ban. (Például a .NET használhatja a [UrlTokenEncode metódus](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokenencode.aspx) erre a célra).
+* **metaadatok\_tárolási\_neve** – Ez lehet hasznos jelöltként, de vegye figyelembe, hogy 1.) a nevek nem feltétlenül egyedi, előfordulhat, hogy blobok azonos nevű másik mappa, és a 2.) a neve, karaktereket tartalmazhat. Érvénytelen a dokumentum kulcsok, például kötőjelek. Akkor is foglalkozik érvénytelen karakterek használatával a `base64Encode` [leképezési függvény mezőben](search-indexer-field-mappings.md#base64EncodeFunction) – Ha így tesz, ne felejtse el a dokumentum kulcsok kódolására, amikor például a keresési meghívja átadja őket az API-ban. (Például a .NET használhatja a [UrlTokenEncode metódus](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokenencode.aspx) erre a célra).
 * **metaadatok\_tárolási\_elérési** – a teljes elérési útja a biztosítja a egyediségi, de az elérési út mindenképpen tartalmaz `/` karakterek, amelyek [egy dokumentum kulcs érvénytelen](https://docs.microsoft.com/rest/api/searchservice/naming-rules).  A fenti, lehetősége van a kulcsok használatával kódolási a `base64Encode` [függvény](search-indexer-field-mappings.md#base64EncodeFunction).
 * Ha a fenti lehetőségek egyike sem tudja alkalmazni, a blobok is hozzáadhat egy egyéni metaadat-tulajdonságnak. Ezt a beállítást, azonban szükséges a blob feltöltési folyamat adott metaadat-tulajdonságnak hozzáadása az összes BLOB. Mivel a kulcsot kötelező tulajdonság, összes BLOB, amelyek nem rendelkeznek az adott tulajdonsághoz indexelése sikertelen lesz.
 
@@ -230,9 +230,9 @@ Ha mindkét `indexedFileNameExtensions` és `excludedFileNameExtensions` paramé
 
 A blobok részeket indexelt segítségével szabályozhatja a `dataToExtract` konfigurációs paraméter. Ez a következő értékeket veheti:
 
-* `storageMetadata`-határozza meg, hogy csak a [szabványos blob tulajdonságait és a felhasználó által megadott metaadatok](../storage/blobs/storage-properties-metadata.md) indexelt.
-* `allMetadata`-határozza meg, hogy tárolási metaadatai és a [tartalomtípus adott metaadatokat](#ContentSpecificMetadata) kibontott tartalmat indexelt a blobból.
-* `contentAndMetadata`-határozza meg, hogy minden metaadat és a blob kinyert szöveges tartalom indexelt. Ez az alapértelmezett érték.
+* `storageMetadata` -határozza meg, hogy csak a [szabványos blob tulajdonságait és a felhasználó által megadott metaadatok](../storage/blobs/storage-properties-metadata.md) indexelt.
+* `allMetadata` -határozza meg, hogy tárolási metaadatai és a [tartalomtípus adott metaadatokat](#ContentSpecificMetadata) kibontott tartalmat indexelt a blobból.
+* `contentAndMetadata` -határozza meg, hogy minden metaadat és a blob kinyert szöveges tartalom indexelt. Ez az alapértelmezett érték.
 
 Például csak a tárolási metaadatok indexelése, használja:
 
@@ -271,6 +271,10 @@ Alapértelmezés szerint a blob indexelője, amint fordul egy blobot a tartalom 
 Néhány BLOB az Azure Search nem tudja megállapítani a tartalomtípus, vagy nem dolgozható fel a dokumentum egyéb támogatott tartalomtípus. Ez a hiba mód figyelmen kívül hagyásához állítsa be a `failOnUnprocessableDocument` konfigurációs paraméter false értékre:
 
       "parameters" : { "configuration" : { "failOnUnprocessableDocument" : false } }
+
+Az Azure Search korlátozza a blobok indexelt méretét. Ezek a korlátozások vannak dokumentálva [az Azure Search szolgáltatásra vonatkozó korlátozások](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity). Hibák túlméretes blobok alapértelmezés szerint kell kezelni. Azonban továbbra is indexelheti túlméretes BLOB tároló metaadatainak Ha `indexStorageMetadataOnlyForOversizedDocuments` konfigurációs paraméter igaz: 
+
+    "parameters" : { "configuration" : { "indexStorageMetadataOnlyForOversizedDocuments" : true } }
 
 Is tovább indexelő Ha hibák bármikor feldolgozási, blobok elemzése közben vagy dokumentumok index való hozzáadása során kerül sor. Adott számú hiba figyelmen kívül hagyásához állítsa be a `maxFailedItems` és `maxFailedItemsPerBatch` konfigurációs paramétereket a kívánt értékeket. Példa:
 
@@ -368,10 +372,10 @@ Az alábbi táblázat foglalja össze az egyes végzett feldolgozás, és ismert
 | DOCX (application/vnd.openxmlformats-officedocument.wordprocessingml.document) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_character_count`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_page_count`<br/>`metadata_word_count` |Bontsa ki a szöveget, beleértve a beágyazott dokumentumok |
 | DOC (application/msword) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_character_count`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_page_count`<br/>`metadata_word_count` |Bontsa ki a szöveget, beleértve a beágyazott dokumentumok |
 | XLSX (application/vnd.openxmlformats-officedocument.spreadsheetml.sheet) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_creation_date`<br/>`metadata_last_modified` |Bontsa ki a szöveget, beleértve a beágyazott dokumentumok |
-| XLS (kérelem/vnd.ms-excel) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_creation_date`<br/>`metadata_last_modified` |Bontsa ki a szöveget, beleértve a beágyazott dokumentumok |
+| XLS (application/vnd.ms-excel) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_creation_date`<br/>`metadata_last_modified` |Bontsa ki a szöveget, beleértve a beágyazott dokumentumok |
 | PPTX (application/vnd.openxmlformats-officedocument.presentationml.presentation) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_slide_count`<br/>`metadata_title` |Bontsa ki a szöveget, beleértve a beágyazott dokumentumok |
-| PPT (kérelem/vnd.ms-powerpoint) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_slide_count`<br/>`metadata_title` |Bontsa ki a szöveget, beleértve a beágyazott dokumentumok |
-| ÜZENET (kérelem/vnd.ms-outlook) |`metadata_content_type`<br/>`metadata_message_from`<br/>`metadata_message_to`<br/>`metadata_message_cc`<br/>`metadata_message_bcc`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_subject` |Bontsa ki a szöveget, beleértve a mellékletek |
+| PPT (application/vnd.ms-powerpoint) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_slide_count`<br/>`metadata_title` |Bontsa ki a szöveget, beleértve a beágyazott dokumentumok |
+| MSG (application/vnd.ms-outlook) |`metadata_content_type`<br/>`metadata_message_from`<br/>`metadata_message_to`<br/>`metadata_message_cc`<br/>`metadata_message_bcc`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_subject` |Bontsa ki a szöveget, beleértve a mellékletek |
 | ZIP (kérelem/zip) |`metadata_content_type` |Az archívumban található összes dokumentum szöveg kinyerése |
 | XML (application/xml) |`metadata_content_type`</br>`metadata_content_encoding`</br> |XML-címke sáv és szöveg |
 | JSON (application/json) |`metadata_content_type`</br>`metadata_content_encoding` |Szöveg<br/>Megjegyzés: Ha több dokumentum mező kinyerése JSON blob van szüksége, tekintse meg [indexelő JSON-blobok](search-howto-index-json-blobs.md) részletek |

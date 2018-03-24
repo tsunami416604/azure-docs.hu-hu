@@ -1,12 +1,12 @@
 ---
-title: "A felhőben az IoT-DevKit: IoT DevKit AZ3166 csatlakozzon az Azure IoT Hub |} Microsoft Docs"
-description: "Ebből az oktatóanyagból megtudhatja, hogyan küldhet az érzékelők állapotát az IoT DevKit AZ3166 Azure IoT Suite figyelési és a képi megjelenítés."
+title: 'A felhőben az IoT-DevKit: IoT MXChip DevKit csatlakozzon az Azure IoT Hub |} Microsoft Docs'
+description: Ebből az oktatóanyagból megtudhatja, hogyan küldhet az érzékelők állapotát az IoT DevKit AZ3166 Azure IoT Suite figyelési és a képi megjelenítés.
 services: iot-hub
-documentationcenter: 
+documentationcenter: ''
 author: liydu
 manager: timlt
-tags: 
-keywords: 
+tags: ''
+keywords: ''
 ms.service: iot-hub
 ms.devlang: arduino
 ms.topic: article
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/02/2018
 ms.author: liydu
-ms.openlocfilehash: b43061f5af3e836ba3f0b37eb11b351a769890be
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 92efd0970bcf516c4210f831a0c2f23b3ee7b5d8
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/23/2018
 ---
-# <a name="connect-iot-devkit-az3166-to-azure-iot-suite-for-remote-monitoring"></a>Azure IoT Suite IoT DevKit AZ3166 csatlakoztatni a távoli figyelése
+# <a name="connect-mxchip-iot-devkit-to-azure-iot-suite-for-remote-monitoring"></a>Azure IoT Suite MXChip IoT DevKit csatlakoztatni a távoli figyelése
 
 Ebben az oktatóanyagban elsajátíthatja egy mintaalkalmazást futtatásáról a DevKit érzékelő adatokat küldeni az Azure IoT Suite.
 
@@ -42,7 +42,7 @@ Aktív Azure-előfizetés. Ha még nem rendelkezik ilyennel, ezek két módszer 
 
 1. Nyissa meg a [Azure IoT Suite hely](https://www.azureiotsuite.com/) kattintson **hozzon létre egy új megoldás**.
   ![Azure IoT Suite típusának kiválasztása](media/iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring/azure-iot-suite-solution-types.png)
-  > [!NOTE]
+  > [!WARNING]
   > Alapértelmezés szerint ez a minta után létrehoz egy IoT Suite létrehoz egy S2 IoT-központot. Ha ez az IoT-központ nem használatos az eszközök nagy száma, erősen ajánlott a S2 megállapításában, S1, és az IoT Suite törlése, a kapcsolódó IoT-központ is törölheti, ha már nincs szüksége. 
 
 2. Válassza ki **távoli megfigyelési**.

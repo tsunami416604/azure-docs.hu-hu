@@ -1,11 +1,11 @@
 ---
-title: "Az Azure Médiaelemzés használatával forgatókönyv lapok kivonás |} Microsoft Docs"
-description: "Ez a témakör bemutatja a részletes útmutatást tartalmaz egy Azure Media Services Explorer (AMSE) és az Azure Media Redactor Vizualizálója (nyílt forráskódú eszköz) használatával teljes kivonási munkafolyamat futtatásához."
+title: Az Azure Médiaelemzés használatával forgatókönyv lapok kivonás |} Microsoft Docs
+description: Ez a témakör bemutatja a részletes útmutatást tartalmaz egy Azure Media Services Explorer (AMSE) és az Azure Media Redactor Vizualizálója (nyílt forráskódú eszköz) használatával teljes kivonási munkafolyamat futtatásához.
 services: media-services
-documentationcenter: 
+documentationcenter: ''
 author: Lichard
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: d6fa21b8-d80a-41b7-80c1-ff1761bc68f2
 ms.service: media-services
 ms.workload: media
@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 09/03/2017
 ms.author: rli; juliako;
-ms.openlocfilehash: 0bd385ba78028a722c52cdf1508f3348ff90f05f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6b33da21a32373196d86ec8c93f180b3d40b1c6e
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="redact-faces-with-azure-media-analytics-walkthrough"></a>Az Azure Médiaelemzés használatával forgatókönyv lapok kivonása
 
@@ -59,7 +59,7 @@ A kimenet egy jegyzetek json-fájl, arc helyadatok, valamint minden észlelt fel
 
 ![Arcszerkesztés](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough004.png)
 
-###<a name="second-pass--redact-mode"></a>Második fázis – mód kivonása
+### <a name="second-pass--redact-mode"></a>Második fázis – mód kivonása
 
 1. Az első fázisban a töltse fel az eredeti video asset a kimeneti, és állítsa be elsődleges eszközként. 
 
@@ -78,7 +78,7 @@ A kimenet egy jegyzetek json-fájl, arc helyadatok, valamint minden észlelt fel
 
     ![Arcszerkesztés](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough008.png)
 
-##<a name="azure-media-redactor-visualizer-open-source-tool"></a>Azure Media Redactor Vizualizálója nyílt forráskódú eszköz
+## <a name="azure-media-redactor-visualizer-open-source-tool"></a>Azure Media Redactor Vizualizálója nyílt forráskódú eszköz
 
 Egy nyílt forráskódú [vizualizálója eszköz](https://github.com/Microsoft/azure-media-redactor-visualizer) célja, hogy segítségével a fejlesztők a jegyzetek formátumú elemzése, és a kimeneti használatával indítása.
 
@@ -119,7 +119,7 @@ Ha egy fejlesztő a jegyzet JSON-adatok elemzése, nyissa meg Models.MetaData mi
 6.  A feltöltés a kimeneti adategységen az 1. lépésben. Az eredeti videó feltöltése, valamint az ehhez az eszközhöz, és állítsa be elsődleges eszközként. 
 7.  Ez az eszköz "Redact" módban fusson kivonási feladat végső beolvasandó kivont videó. 
 
-## <a name="next-steps"></a>Következő lépések 
+## <a name="next-steps"></a>További lépések 
 
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 

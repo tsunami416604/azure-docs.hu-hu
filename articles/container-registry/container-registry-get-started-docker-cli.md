@@ -1,6 +1,6 @@
 ---
-title: "A saját Azure beállításjegyzékbe leküldéses Docker kép"
-description: "Docker-rendszerképek leküldése és lekérése egy Azure-beli privát tároló beállításjegyzékébe és -jegyzékéből a Docker parancssori felületével"
+title: A saját Azure beállításjegyzékbe leküldéses Docker kép
+description: Docker-rendszerképek leküldése és lekérése egy Azure-beli privát tároló beállításjegyzékébe és -jegyzékéből a Docker parancssori felületével
 services: container-registry
 author: stevelas
 manager: timlt
@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 11/29/2017
 ms.author: stevelas
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 21d1abfbb49eaeae654a600d35ab350b96a12fd3
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 8fc04ec77a101e08bfde22df76e845b87f8c316e
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="push-your-first-image-to-a-private-docker-container-registry-using-the-docker-cli"></a>Az első rendszerkép leküldése egy privát Docker-tároló beállításjegyzékébe a Docker parancssori felületével
 
@@ -40,7 +40,7 @@ Azzal is bejelentkezhet [docker bejelentkezési](https://docs.docker.com/engine/
 docker login myregistry.azurecr.io -u xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -p myPassword
 ```
 
-Mindkét parancs visszaadja `Login Succeeded` amint befejeződött. Ha `docker login`, is láthatja a biztonsági figyelmeztetés használatát javasolja a `--password-stdin` paraméter. A használatával nem ez a cikk hatókörén kívül, de javasolt követően a legmegfelelőbb eljárást alkalmazza. További információkért lásd: a [docker bejelentkezési](https://docs.docker.com/engine/reference/commandline/login/) hivatkozás parancsot.
+Mindkét parancs visszaadja `Login Succeeded` amint befejeződött. Ha `docker login`, is láthatja a biztonsági figyelmeztetés használatát javasolja a `--password-stdin` paraméter. Bár a paraméter használatát a cikk nem tárgyalja, javasoljuk, kövesse ezt az ajánlott eljárást. További információkért lásd: a [docker bejelentkezési](https://docs.docker.com/engine/reference/commandline/login/) hivatkozás parancsot.
 
 > [!TIP]
 > Mindig adja meg a teljesen minősített neve (összes, kisbetű) használatakor `docker login` és mikor címkéz kérdez le, hogy a beállításjegyzék képek. A cikkben szereplő példák a teljesen minősített neve: *myregistry.azurecr.io*.
@@ -121,6 +121,10 @@ Az Azure-tárolót beállításjegyzékből képek eltávolításához használh
 az acr repository delete --name myregistry --repository samples/nginx --tag latest --manifest
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Most, hogy tudja, hogy az alapok, készen áll a beállításjegyzék elindítására! Például a a beállításjegyzékből, tároló-lemezképek központi telepítése egy [Azure tároló szolgáltatás (AKS)](../aks/tutorial-kubernetes-prepare-app.md) fürt.
+Most, hogy tudja, hogy az alapok, készen áll a beállításjegyzék elindítására! A beállításjegyzékből, tároló-lemezképek központi telepítése:
+
+* [Azure Tárolószolgáltatás (AKS)](../aks/tutorial-kubernetes-prepare-app.md)
+* [Azure-tárolót példányok](../container-instances/container-instances-tutorial-prepare-app.md)
+* [Service Fabric](../service-fabric/service-fabric-tutorial-create-container-images.md)

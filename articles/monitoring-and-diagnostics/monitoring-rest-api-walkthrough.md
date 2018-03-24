@@ -1,28 +1,28 @@
 ---
-title: "Azure figyelési REST API-forgatókönyv |} Microsoft Docs"
-description: "Hogyan kérelmek hitelesítéséhez szükséges és elérhető metrikai meghatározásainak és metrika értékek beolvasása a Azure REST API használatával."
+title: Azure figyelési REST API-forgatókönyv |} Microsoft Docs
+description: Hogyan kérelmek hitelesítéséhez szükséges és elérhető metrikai meghatározásainak és metrika értékek beolvasása a Azure REST API használatával.
 author: mcollier
-manager: 
-editor: 
+manager: ''
+editor: ''
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
 ms.assetid: 565e6a88-3131-4a48-8b82-3effc9a3d5c6
 ms.service: monitoring-and-diagnostics
-ms.workload: 
-ms.tgt_pltfrm: 
-ms.devlang: 
-ms.search.region: 
-ms.search.scope: 
-ms.search.validFrom: 
-ms.dyn365.ops.version: 
+ms.workload: ''
+ms.tgt_pltfrm: ''
+ms.devlang: ''
+ms.search.region: ''
+ms.search.scope: ''
+ms.search.validFrom: ''
+ms.dyn365.ops.version: ''
 ms.topic: article
-ms.date: 09/18/2017
+ms.date: 03/19/2018
 ms.author: mcollier
-ms.openlocfilehash: 357a63c65a4f6864dca259aad8a76f83681cd501
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: a5119cf7291db4fd2d2ffaf00ef098cfe336e645
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-monitoring-rest-api-walkthrough"></a>Az Azure figyelési REST API-forgatókönyv
 Ez a cikk bemutatja, hogyan végezhet hitelesítést, a kód használhassa a [Microsoft Azure figyelő REST API-referencia](https://msdn.microsoft.com/library/azure/dn931943.aspx).         
@@ -34,7 +34,7 @@ Mellett különböző metrika adatpontok dolgozik, a API is lehetővé teszi a r
 ## <a name="authenticating-azure-monitor-requests"></a>Hitelesítő Azure figyelő kérelmek
 Az első lépés hitelesíteni a kérelmet.
 
-A Azure API képest végrehajtott összes feladat az Azure Resource Manager hitelesítési modellt használja. Ezért összes kérelmet hitelesíteni kell az Azure Active Directoryval (Azure AD). Az ügyfélalkalmazás hitelesíteni egy megoldás, a szolgáltatásnevet létrehozni az Azure AD és a hitelesítési (JWT)-jogkivonatot lekérdezni. Az alábbi mintaparancsfájl mutatja be, létrehozása az Azure AD szolgáltatás egyszerű PowerShell segítségével. Részletes útmutató, tekintse meg a dokumentációt a [erőforrásokhoz való hozzáféréshez egyszerű szolgáltatás létrehozása az Azure PowerShell](../azure-resource-manager/resource-group-authenticate-service-principal.md#create-service-principal-with-password). Akkor is lehet [hozzon létre egy egyszerű szolgáltatást az Azure-portálon](../azure-resource-manager/resource-group-create-service-principal-portal.md).
+A Azure API képest végrehajtott összes feladat az Azure Resource Manager hitelesítési modellt használja. Ezért összes kérelmet hitelesíteni kell az Azure Active Directoryval (Azure AD). Az ügyfélalkalmazás hitelesíteni egy megoldás, a szolgáltatásnevet létrehozni az Azure AD és a hitelesítési (JWT)-jogkivonatot lekérdezni. Az alábbi mintaparancsfájl mutatja be, létrehozása az Azure AD szolgáltatás egyszerű PowerShell segítségével. Részletes útmutató, tekintse meg a dokumentációt a [erőforrásokhoz való hozzáféréshez egyszerű szolgáltatás létrehozása az Azure PowerShell](https://docs.microsoft.com/powershell/azure/create-azure-service-principal-azureps). Akkor is lehet [hozzon létre egy egyszerű szolgáltatást az Azure-portálon](../azure-resource-manager/resource-group-create-service-principal-portal.md).
 
 ```PowerShell
 $subscriptionId = "{azure-subscription-id}"
@@ -97,12 +97,12 @@ Használja a [Azure figyelő metrika definíciók REST API](https://docs.microso
 
 **Módszer**: beolvasása
 
-**A kérelmi URI**: https://management.azure.com/subscriptions/*{subscriptionId}*/resourceGroups/*{resourceGroupName}*/providers/*{ resourceProviderNamespace}*/*{resourceType}*/*{resourceName*/providers/microsoft.insights/metricDefinitions? az API-version =*{apiVersion}*
+**Request URI**: https://management.azure.com/subscriptions/*{subscriptionId}*/resourceGroups/*{resourceGroupName}*/providers/*{resourceProviderNamespace}*/*{resourceType}*/*{resourceName}*/providers/microsoft.insights/metricDefinitions?api-version=*{apiVersion}*
 
 Például az Azure Storage-fiók metrikai meghatározásainak beolvasása, a kérelem jelent az alábbiak szerint:
 
 ```PowerShell
-$request = "https://management.azure.com/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azmon-rest-api-walkthrough/providers/Microsoft.Storage/accounts/ContosoStorage/providers/microsoft.insights/metricDefinitions?api-version=2017-05-01-preview"
+$request = "https://management.azure.com/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azmon-rest-api-walkthrough/providers/Microsoft.Storage/storageAccounts/ContosoStorage/providers/microsoft.insights/metricDefinitions?api-version=2018-01-01"
 
 Invoke-RestMethod -Uri $request `
                   -Headers $authHeader `
@@ -112,7 +112,7 @@ Invoke-RestMethod -Uri $request `
 
 ```
 > [!NOTE]
-> A többdimenziós Azure figyelő metrikák REST API használatával metrikai meghatározásainak beolvasása, az API-verzió "2017-05-01. dátumú előnézeti" használják.
+> A többdimenziós Azure figyelő metrikák REST API használatával metrikai meghatározásainak beolvasása, az API-verzió "2018-01-01" használják.
 >
 >
 
@@ -122,8 +122,9 @@ Az eredményül kapott JSON adott válasz törzsének az alábbi példához haso
 {
     "value": [
         {
-            "id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azmon-rest-api-walkthrough/providers/Microsoft.Storage/accounts/ContosoStorage/providers/microsoft.insights/metricdefinitions/UsedCapacity",
-            "resourceId": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azmon-rest-api-walkthrough/providers/Microsoft.Storage/accounts/ContosoStorage",
+            "id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azmon-rest-api-walkthrough/providers/Microsoft.Storage/storageAccounts/ContosoStorage/providers/microsoft.insights/metricdefinitions/UsedCapacity",
+            "resourceId": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azmon-rest-api-walkthrough/providers/Microsoft.Storage/storageAccounts/ContosoStorage",
+            "namespace": "Microsoft.Storage/storageAccounts",
             "category": "Capacity",
             "name": {
                 "value": "UsedCapacity",
@@ -132,20 +133,35 @@ Az eredményül kapott JSON adott válasz törzsének az alábbi példához haso
             "isDimensionRequired": false,
             "unit": "Bytes",
             "primaryAggregationType": "Average",
+            "supportedAggregationTypes": [
+                "Total",
+                "Average",
+                "Minimum",
+                "Maximum"
+            ],
             "metricAvailabilities": [
                 {
-                    "timeGrain": "PT1M",
-                    "retention": "P30D"
+                    "timeGrain": "PT1H",
+                    "retention": "P93D"
                 },
                 {
-                    "timeGrain": "PT1H",
-                    "retention": "P30D"
+                    "timeGrain": "PT6H",
+                    "retention": "P93D"
+                },
+                {
+                    "timeGrain": "PT12H",
+                    "retention": "P93D"
+                },
+                {
+                    "timeGrain": "P1D",
+                    "retention": "P93D"
                 }
             ]
         },
         {
-            "id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azmon-rest-api-walkthrough/providers/Microsoft.Storage/accounts/ContosoStorage/providers/microsoft.insights/metricdefinitions/Transactions",
-            "resourceId": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azmon-rest-api-walkthrough/providers/Microsoft.Storage/accounts/ContosoStorage",
+            "id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azmon-rest-api-walkthrough/providers/Microsoft.Storage/storageAccounts/ContosoStorage/providers/microsoft.insights/metricdefinitions/Transactions",
+            "resourceId": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azmon-rest-api-walkthrough/providers/Microsoft.Storage/storageAccounts/ContosoStorage",
+            "namespace": "Microsoft.Storage/storageAccounts",
             "category": "Transaction",
             "name": {
                 "value": "Transactions",
@@ -154,14 +170,41 @@ Az eredményül kapott JSON adott válasz törzsének az alábbi példához haso
             "isDimensionRequired": false,
             "unit": "Count",
             "primaryAggregationType": "Total",
+            "supportedAggregationTypes": [
+                "Total"
+            ],
             "metricAvailabilities": [
                 {
                     "timeGrain": "PT1M",
-                    "retention": "P30D"
+                    "retention": "P93D"
+                },
+                {
+                    "timeGrain": "PT5M",
+                    "retention": "P93D"
+                },
+                {
+                    "timeGrain": "PT15M",
+                    "retention": "P93D"
+                },
+                {
+                    "timeGrain": "PT30M",
+                    "retention": "P93D"
                 },
                 {
                     "timeGrain": "PT1H",
-                    "retention": "P30D"
+                    "retention": "P93D"
+                },
+                {
+                    "timeGrain": "PT6H",
+                    "retention": "P93D"
+                },
+                {
+                    "timeGrain": "PT12H",
+                    "retention": "P93D"
+                },
+                {
+                    "timeGrain": "P1D",
+                    "retention": "P93D"
                 }
             ],
             "dimensions": [
@@ -185,22 +228,24 @@ Az eredményül kapott JSON adott válasz törzsének az alábbi példához haso
 ```
 
 ## <a name="retrieve-dimension-values-multi-dimensional-api"></a>(A többdimenziós API) dimenzióértékek beolvasása
-Ha az elérhető metrikai meghatározásainak ismert, néhány metrikákat, amelyek rendelkeznek a dimenziók lehet. A metrika-érdemes lehet milyen értékek tartományán felderítése küldése előtt a dimenziónak van. Ezen dimenzió értékek szűréséhez dönthet vagy szegmens metrikáihoz lekérdezése során dimenzió értékek alapján a metrikák alapján. A mérték neve "érték" (nem a "localizedValue") használja a szűrési kéréseit (például lekéri a "CpuTime" és "Kérelmek" metrika adatpontok). Ha a szűrők vannak megadva, az alapértelmezett metrika adja vissza.
+Ha az elérhető metrikai meghatározásainak ismert, néhány metrikákat, amelyek rendelkeznek a dimenziók lehet. A metrika-érdemes lehet milyen értékek tartományán felderítése küldése előtt a dimenziónak van. Ezen dimenzió értékek szűréséhez dönthet vagy szegmens metrikáihoz lekérdezése során dimenzió értékek alapján a metrikák alapján.  Használja a [Azure figyelő metrikák REST API](https://docs.microsoft.com/rest/api/monitor/metrics) ennek érdekében.
+
+A mérték neve "érték" (nem a "localizedValue") használata a szűrési kéréseit. Ha a szűrők vannak megadva, az alapértelmezett metrika adja vissza. Ez az API használatát csak egy helyettesítő karakter szűrő egy olyan dimenziót teszi lehetővé.
 
 > [!NOTE]
-> A Azure REST API használatával dimenzióértékek lekéréséhez használja a "2017-05-01. dátumú előnézeti" API-verzióval.
+> A Azure REST API használatával dimenzióértékek lekéréséhez használja a "2018-01-01" API-verzióval.
 >
 >
 
 **Módszer**: beolvasása
 
-**A kérelmi URI**: https://management.azure.com/subscriptions/*{előfizetés-azonosító}*/resourceGroups/*{csoport-erőforrásnév}*/providers/*{ erőforrás-szolgáltató-namespace}*/*{erőforrástípus-}*/*{erőforrásnév}*/providers/microsoft.insights/metrics?metric= *{metrika}*& timespan =*{starttime/endtime}*& $filter =*{szűrő}*& resultType = metaadatok & api-version =*{ apiVersion}*
+**A kérelmi URI**: https://management.azure.com/subscriptions/ *{előfizetés-azonosító}*/resourceGroups/*{csoport-erőforrásnév}*/providers/*{erőforrás-szolgáltató-namespace}* / *{erőforrástípus-}*/*{erőforrásnév}*/providers/microsoft.insights/metrics?metric=*{metrika}* & timespan =*{starttime/endtime}*& $filter =*{szűrő}*& resultType = metaadatok & api-version =*{apiVersion}*
 
-Például lehetséges értékek a megadott API-név dimenzió listájának beolvasása "Tranzakció" metrika egy adott időtartományban, a kérelemnek így kell az alábbiak szerint:
+Ahhoz például, hogy lekérése sikertelen volt a "API-név dimenzió" a "Tranzakció" metrika, ahol kibocsátott dimenzióértékek GeoType dimenzió = "Elsődleges" a megadott időtartományban, a kérelem következőképpen nézne ki:
 
 ```PowerShell
-$filter = "APIName eq '*'"
-$request = "https://management.azure.com/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azmon-rest-api-walkthrough/providers/Microsoft.Storage/accounts/ContosoStorage/providers/microsoft.insights/metrics?metric=Transactions&timespan=2017-09-01T00:00:00Z/2017-09-10T00:00:00Z&resultType=metadata&$filter=${filter}&api-version=2017-05-01-preview"
+$filter = "APIName eq '*' and GeoType eq 'Primary'"
+$request = "https://management.azure.com/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azmon-rest-api-walkthrough/providers/Microsoft.Storage/storageAccounts/ContosoStorage/providers/microsoft.insights/metrics?metricnames=Transactions&timespan=2018-03-01T00:00:00Z/2018-03-02T00:00:00Z&resultType=metadata&$filter=${filter}&api-version=2018-01-01"
 Invoke-RestMethod -Uri $request `
     -Headers $authHeader `
     -Method Get `
@@ -211,10 +256,10 @@ Az eredményül kapott JSON adott válasz törzsének az alábbi példához haso
 
 ```JSON
 {
-  "timespan": "2017-09-01T00:00:00Z/2017-09-10T00:00:00Z",
+  "timespan": "2018-03-01T00:00:00Z/2018-03-02T00:00:00Z",
   "value": [
     {
-      "id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azmon-rest-api-walkthrough/providers/Microsoft.Storage/accounts/ContosoStorage/providers/Microsoft.Insights/metrics/Transactions",
+      "id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azmon-rest-api-walkthrough/providers/Microsoft.Storage/storageAccounts/ContosoStorage/providers/Microsoft.Insights/metrics/Transactions",
       "type": "Microsoft.Insights/metrics",
       "name": {
         "value": "Transactions",
@@ -244,52 +289,34 @@ Az eredményül kapott JSON adott válasz törzsének az alábbi példához haso
             }
           ]
         },
-        {
-          "metadatavalues": [
-            {
-              "name": {
-                "value": "apiname",
-                "localizedValue": "apiname"
-              },
-              "value": "PutPage"
-            }
-          ]
-        },
-        {
-          "metadatavalues": [
-            {
-              "name": {
-                "value": "apiname",
-                "localizedValue": "apiname"
-              },
-              "value": "Unknown"
-            }
-          ]
-        },
         ...
       ]    
     }
-  ]
+  ],
+  "namespace": "Microsoft.Storage/storageAccounts",
+  "resourceregion": "eastus"
 }
 ```
 
 ## <a name="retrieve-metric-values-multi-dimensional-api"></a>Metrika értékek (többdimenziós API) beolvasása
-Ha az elérhető metrikai meghatározásainak és a lehetséges dimenzióértékek ismert, majd lehetőség a kapcsolódó metrika értékek beolvasása. A mérték neve "érték" (nem a "localizedValue") használata a szűrési kéréseit. Ha a dimenzió szűrők vannak megadva, a összesített összesített metrika adja vissza.
+Ha az elérhető metrikai meghatározásainak és a lehetséges dimenzióértékek ismert, majd lehetőség a kapcsolódó metrika értékek beolvasása.  Használja a [Azure figyelő metrikák REST API](https://docs.microsoft.com/rest/api/monitor/metrics) ennek érdekében.
+
+A mérték neve "érték" (nem a "localizedValue") használata a szűrési kéréseit. Ha a dimenzió szűrők vannak megadva, a összesített összesített metrika adja vissza. Ha egy metrika lekérdezés több idősor ad vissza, majd segítségével a "Top" és "OrderBy" lekérdezési paraméterek idősor korlátozott rendezett listáját adja vissza.
 
 > [!NOTE]
-> A Azure REST API használatával többdimenziós metrika értékek lekéréséhez használja a "2017-05-01. dátumú előnézeti" API-verzióval.
+> A Azure REST API használatával többdimenziós metrika értékek lekéréséhez használja a "2018-01-01" API-verzióval.
 >
 >
 
 **Módszer**: beolvasása
 
-**A kérelmi URI**: https://management.azure.com/subscriptions/*{előfizetés-azonosító}*/resourceGroups/*{csoport-erőforrásnév}*/providers/*{ erőforrás-szolgáltató-namespace}*/*{erőforrástípus-}*/*{erőforrásnév}*/providers/microsoft.insights/metrics?metric= *{metrika}*& timespan =*{starttime/endtime}*& $filter =*{szűrő}*& időköz =*{időkeretben vannak}* & összesítési =*{aggreation}*& api-version =*{apiVersion}*
+**A kérelmi URI**: https://management.azure.com/subscriptions/ *{előfizetés-azonosító}*/resourceGroups/*{csoport-erőforrásnév}*/providers/*{erőforrás-szolgáltató-namespace}* / *{erőforrástípus-}*/*{erőforrásnév}*/providers/microsoft.insights/metrics?metric=*{metrika}* & timespan =*{starttime/endtime}*& $filter =*{szűrő}*& időköz =*{időkeretben vannak}*& összesítési =*{ aggreation}*& api-version =*{apiVersion}*
 
-Például a tárolási "Tranzakció" metrika metrika értékeinek beolvasásához 5 perc széles, az API neve "GetBlobProperties", az összes tranzakciók során a kérelemnek így kell az alábbiak szerint:
+Például az első 3 beolvasása API-k, csökkenő értékre "Tranzakciók" során 5 perc széles száma ahol a GeotType volt-e az "elsődleges", a kérelem a következőképpen nézne ki:
 
 ```PowerShell
-$filter = "APIName eq 'GetBlobProperties'"
-$request = "https://management.azure.com/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azmon-rest-api-walkthrough/providers/Microsoft.Storage/accounts/ContosoStorage/providers/microsoft.insights/metrics?metric=Transactions&timespan=2017-09-19T02:00:00Z/2017-09-19T02:05:00Z&$filter=${filter}&interval=PT1M&aggregation=Count&api-version=2017-05-01-preview"
+$filter = "APIName eq '*' and GeoType eq 'Primary'"
+$request = "https://management.azure.com/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azmon-rest-api-walkthrough/providers/Microsoft.Storage/storageAccounts/ContosoStorage/providers/microsoft.insights/metrics?metricnames=Transactions&timespan=2018-03-01T02:00:00Z/2018-03-01T02:05:00Z&$filter=${filter}&interval=PT1M&aggregation=Total&top=3&orderby=Total desc&api-version=2018-01-01"
 Invoke-RestMethod -Uri $request `
     -Headers $authHeader `
     -Method Get `
@@ -301,11 +328,11 @@ Az eredményül kapott JSON adott válasz törzsének az alábbi példához haso
 ```JSON
 {
   "cost": 0,
-  "timespan": "2017-09-19T02:00:00Z/2017-09-19T02:05:00Z",
+  "timespan": "2018-03-01T02:00:00Z/2018-03-01T02:05:00Z",
   "interval": "PT1M",
   "value": [
     {
-      "id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azmon-rest-api-walkthrough/providers/Microsoft.Storage/accounts/ContosoStorage/providers/Microsoft.Insights/metrics/Transactions",
+      "id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azmon-rest-api-walkthrough/providers/Microsoft.Storage/storageAccounts/ContosoStorage/providers/Microsoft.Insights/metrics/Transactions",
       "type": "Microsoft.Insights/metrics",
       "name": {
         "value": "Transactions",
@@ -326,29 +353,32 @@ Az eredményül kapott JSON adott válasz törzsének az alábbi példához haso
           "data": [
             {
               "timeStamp": "2017-09-19T02:00:00Z",
-              "count": 2.0
+              "total": 2
             },
             {
               "timeStamp": "2017-09-19T02:01:00Z",
-              "count": 1.0
+              "total": 1
             },
             {
               "timeStamp": "2017-09-19T02:02:00Z",
-              "count": 3.0
+              "total": 3
             },
             {
               "timeStamp": "2017-09-19T02:03:00Z",
-              "count": 7.0
+              "total": 7
             },
             {
               "timeStamp": "2017-09-19T02:04:00Z",
-              "count": 2.0
+              "total": 2
             }
           ]
-        }
+        },
+        ...
       ]
     }
-  ]
+  ],
+  "namespace": "Microsoft.Storage/storageAccounts",
+  "resourceregion": "eastus"
 }
 ```
 
@@ -357,7 +387,7 @@ Használja a [Azure figyelő metrika definíciók REST API](https://msdn.microso
 
 **Módszer**: beolvasása
 
-**A kérelmi URI**: https://management.azure.com/subscriptions/*{subscriptionId}*/resourceGroups/*{resourceGroupName}*/providers/*{ resourceProviderNamespace}*/*{resourceType}*/*{resourceName}*/providers/microsoft.insights/metricDefinitions? az API-version =*{apiVersion}*
+**Request URI**: https://management.azure.com/subscriptions/*{subscriptionId}*/resourceGroups/*{resourceGroupName}*/providers/*{resourceProviderNamespace}*/*{resourceType}*/*{resourceName}*/providers/microsoft.insights/metricDefinitions?api-version=*{apiVersion}*
 
 Például az Azure Logic Apps metrikai meghatározásainak beolvasása, a kérelem jelent az alábbiak szerint:
 
@@ -427,7 +457,7 @@ Ha az elérhető metrikai meghatározásainak ismert, majd lehetőség a kapcsol
 
 **Módszer**: beolvasása
 
-**A kérelmi URI**: https://management.azure.com/subscriptions/*{előfizetés-azonosító}*/resourceGroups/*{csoport-erőforrásnév}*/providers/*{erőforrás-szolgáltató-namespace}*/*{erőforrástípus-}*/*{erőforrásnév}*/providers/microsoft.insights/metrics?$filter=*{szűrő}*& api-version =*{apiVersion}*
+**A kérelmi URI**: https://management.azure.com/subscriptions/ *{előfizetés-azonosító}*/resourceGroups/*{csoport-erőforrásnév}*/providers/*{erőforrás-szolgáltató-namespace}* / *{erőforrástípus-}*/*{erőforrásnév}*/providers/microsoft.insights/metrics?$filter=*{szűrő}*& api-version =*{apiVersion}*
 
 Például a RunsSucceeded metrika adatpontok az adott időtartományt pedig egy metrikaindítójának aggregációs időköze 1 órás lekéréséhez a kérelemnek így kell az alábbiak szerint:
 
@@ -544,7 +574,7 @@ Egy további módszert is, hogy használja [ARMClient](https://github.com/projec
 
 1. Telepítés [Chocolatey](https://chocolatey.org/) és [ARMClient](https://github.com/projectkudu/armclient).
 2. Írja be egy terminálablakot, *armclient.exe bejelentkezési*. Így kéri, hogy jelentkezzen be az Azure-bA.
-3. Típus *armclient GET [your_resource_id]/providers/microsoft.insights/metricdefinitions?api-version=2016-03-01*
+3. Type *armclient GET [your_resource_id]/providers/microsoft.insights/metricdefinitions?api-version=2016-03-01*
 4. Típus *armclient GET [your_resource_id]/providers/microsoft.insights/metrics?api-version=2016-09-01*
 
 Ahhoz, hogy az adott logikai alkalmazás metrikai meghatározásainak beolvasása, például ki a következő parancsot:
@@ -558,17 +588,17 @@ A REST API használatával valóban segítenek megérteni az elérhető metrikai
 
 Az előzőekben látható kód az erőforrás-azonosító használata esetén a kívánt Azure-erőforrás teljes elérési útja. Például lekérdezése alapján az Azure Web Apps, az erőforrás-azonosítója a következő lesz:
 
-*/Subscriptions/{Subscription-ID}/resourceGroups/{Resource-group-name}/Providers/Microsoft.Web/Sites/{Site-Name}/*
+*/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Web/sites/{site-name}/*
 
 Az alábbi listában néhány példa a különböző Azure-erőforrások erőforrás azonosítója formátumai tartalmazza:
 
-* **Az IoT-központ** -következő*{előfizetés-azonosító}*/resourceGroups/*{csoport-erőforrásnév}*/providers/Microsoft.Devices/IotHubs/*{iot-központ-neve}*
-* **A rugalmas SQL-készlet** -következő*{előfizetés-azonosító}*/resourceGroups/*{csoport-erőforrásnév}*/providers/Microsoft.Sql/servers/*{alkalmazáskészlet-db}*/elasticpools/*{sql-alkalmazáskészlet-neve}*
-* **SQL-adatbázis (v12)** -következő*{előfizetés-azonosító}*/resourceGroups/*{csoport-erőforrásnév}*/providers/Microsoft.Sql/servers/*{kiszolgálónév}*/databases/*{adatbázisnév}*
-* **A Service Bus** -következő*{előfizetés-azonosító}*/resourceGroups/*{csoport-erőforrásnév}*/providers/Microsoft.ServiceBus/*{névtér}*/*{szolgáltatásbusz-neve}*
+* **IoT Hub** - /subscriptions/*{subscription-id}*/resourceGroups/*{resource-group-name}*/providers/Microsoft.Devices/IotHubs/*{iot-hub-name}*
+* **Elastic SQL Pool** - /subscriptions/*{subscription-id}*/resourceGroups/*{resource-group-name}*/providers/Microsoft.Sql/servers/*{pool-db}*/elasticpools/*{sql-pool-name}*
+* **SQL Database (v12)** - /subscriptions/*{subscription-id}*/resourceGroups/*{resource-group-name}*/providers/Microsoft.Sql/servers/*{server-name}*/databases/*{database-name}*
+* **Service Bus** - /subscriptions/*{subscription-id}*/resourceGroups/*{resource-group-name}*/providers/Microsoft.ServiceBus/*{namespace}*/*{servicebus-name}*
 * **Virtuálisgép-méretezési csoportok** -következő*{előfizetés-azonosító}*/resourceGroups/*{csoport-erőforrásnév}*/providers/Microsoft.Compute/virtualMachineScaleSets/ *{Virtuálisgép-név}*
 * **Virtuális gépek** -következő*{előfizetés-azonosító}*/resourceGroups/*{csoport-erőforrásnév}*/providers/Microsoft.Compute/virtualMachines/*{virtuálisgép-név}*
-* **Az Event Hubs** -következő*{előfizetés-azonosító}*/resourceGroups/*{csoport-erőforrásnév}*/providers/Microsoft.EventHub/namespaces/*{eventhub-namespace}*
+* **Event Hubs** - /subscriptions/*{subscription-id}*/resourceGroups/*{resource-group-name}*/providers/Microsoft.EventHub/namespaces/*{eventhub-namespace}*
 
 Nincsenek alternatív módszer beolvasása az erőforrás-azonosító, beleértve az Azure erőforrás-kezelő, a kívánt erőforrás megtekintése az Azure portálon, és a PowerShell vagy az Azure parancssori felület használatával.
 
@@ -671,7 +701,7 @@ Invoke-RestMethod -Uri $request `
     -Verbose
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Tekintse át a [figyelőeszközök](monitoring-overview.md).
 * Nézet a [támogatott Azure-figyelő metrikák](monitoring-supported-metrics.md).
 * Tekintse át a [Microsoft Azure figyelése REST API-referencia](https://msdn.microsoft.com/library/azure/dn931943.aspx).

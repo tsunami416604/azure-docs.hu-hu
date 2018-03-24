@@ -1,11 +1,11 @@
 ---
-title: "Támogatott Azure-erőforrás állapotának keresztül erőforrástípusok |} Microsoft Docs"
-description: "Támogatott erőforrástípus keresztül Azure-erőforrás állapota"
+title: Támogatott Azure-erőforrás állapotának keresztül erőforrástípusok |} Microsoft Docs
+description: Támogatott erőforrástípus keresztül Azure-erőforrás állapota
 services: Resource health
-documentationcenter: 
+documentationcenter: ''
 author: BernardoAMunoz
-manager: 
-editor: 
+manager: ''
+editor: ''
 ms.assetid: 85cc88a4-80fd-4b9b-a30a-34ff3782855f
 ms.service: service-health
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: Supportability
 ms.date: 10/09/2017
 ms.author: BernardoAMunoz
-ms.openlocfilehash: b67e72af8a34799af97cd46f968636050f4ce485
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 0694c45363eb2534416f1dad59196ecfa1dacd17
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Erőforrástípusok és állapotát ellenőrzi az Azure-erőforrás állapota
 Alább az erőforrás állapota keresztül erőforrástípusok által végrehajtott egyetlen ellenőrzés sem teljes listáját.
@@ -48,7 +48,7 @@ Alább az erőforrás állapota keresztül erőforrástípusok által végrehajt
 |---|
 |<ul><li>A fiók elérhető a az adatközponton belül?</li><li>A szolgáltatások kognitív erőforrás-szolgáltató érhető el?</li><li>Érhető el a kognitív szolgáltatás a megfelelő régióban?</li><li>Elolvashatják műveletek hajthatók végre a tárfiók, az erőforrás-metaadatok okozó?</li><li>Elérte az API-hívás kvóta?</li><li>Elérte az API hívása olvasás-korlátot?</li></ul>|
 
-## <a name="microsoftcomputevirtualmachines"></a>Microsoft.COMPUTE/virtualmachines
+## <a name="microsoftcomputevirtualmachines"></a>Microsoft.compute/virtualmachines
 |Végrehajtott ellenőrzések|
 |---|
 |<ul><li>A kiszolgáló mentése a virtuális gépet szolgáltató, és fut?</li><li>Befejeződött a gazdagép operációs rendszer rendszerindítást?</li><li>A virtuális gépet tároló kiosztásakor és kapcsolt?</li><li>A gazdagép és a tárfiók közötti hálózati kapcsolat van?</li><li>Befejeződött a vendég operációs rendszer rendszerindítást?</li><li>Nem tervezett karbantartást?</li></ul>|
@@ -64,7 +64,7 @@ Alább az erőforrás állapota keresztül erőforrástípusok által végrehajt
 |---|
 |<ul><li>Felhasználók adatait feltöltheti Data Lake Store régióban?</li><li>Felhasználók is a Data Lake Store régióban le adatokat?</li></ul>|
 
-## <a name="microsoftdevicesiothubs"></a>Microsoft.Devices/iothubs
+## <a name="microsoftdevicesiothubs"></a>Microsoft.devices/iothubs
 
 |Végrehajtott ellenőrzések|
 |---|
@@ -75,7 +75,7 @@ Alább az erőforrás állapota keresztül erőforrástípusok által végrehajt
 |---|
 |<ul><li>Minden adatbázis vagy a gyűjtemény kérést, nem szolgálható ki egy Azure Cosmos DB szolgáltatás elérhetetlensége miatt nem lett volna?</li><li>A dokumentum kéréseit nem szolgálható ki egy Azure Cosmos DB szolgáltatás elérhetetlensége miatt nem lett volna?</li></ul>|
 
-## <a name="microsoftnetworkconnections"></a>Microsoft.Network/Connections
+## <a name="microsoftnetworkconnections"></a>Microsoft.network/connections
 |Végrehajtott ellenőrzések|
 |---|
 |<ul><li>A VPN-alagút csatlakoztatva van?</li><li>Vannak-e konfigurációjának ütközései a kapcsolatot?</li><li>Az előmegosztott kulcs megfelelően legyenek konfigurálva?</li><li>A helyszíni VPN-eszköz érhető el?</li><li>Vannak eltérések a IPSec/IKE biztonsági házirendben?</li><li>Az az S2S VPN-kapcsolat megfelelően kiosztott vagy hibás állapotban lévő?</li><li>Megfelelően kiosztott vagy hibás állapotban, az a VNET – VNET-kapcsolatot?</li></ul>|
@@ -115,12 +115,12 @@ Alább az erőforrás állapota keresztül erőforrástípusok által végrehajt
 |---|
 |<ul><li>A gazdakiszolgáló megfelelően működik, és?</li><li>Az Internet Information Services fut?</li><li>A Load balancer fut?</li><li>A Web Service-csomag elérhető a az adatközponton belül?</li><li>A tárfiók üzemelteti a kiszolgálófarm elérhető webhelyek tartalmának??</li></ul>|
 
-## <a name="microsoftwebsites"></a>Microsoft.Web/Sites
+## <a name="microsoftwebsites"></a>Microsoft.web/sites
 |Végrehajtott ellenőrzések|
 |---|
 |<ul><li>A gazdakiszolgáló megfelelően működik, és?</li><li>Internet Information server fut?</li><li>A Load balancer fut?</li><li>A webalkalmazás elérhetőségének a az adatközponton belül?</li><li>A tárfiók üzemeltető érhető el a webhely tartalmát?</li></ul>|
 
-# <a name="next-steps"></a>Következő lépések
--  Lásd: [Bevezetés az Azure szolgáltatás állapota](service-health-overview.md) és [Bevezetés az Azure Resource Health](resource-health-overview.md) bővebb információt őket. 
+# <a name="next-steps"></a>További lépések
+-  Lásd: [Bevezetés az Azure szolgáltatás állapota irányítópult](service-health-overview.md) és [Bevezetés az Azure Resource Health](resource-health-overview.md) bővebb információt őket. 
 -  [Az Azure Resource Health kapcsolatos gyakori kérdések](resource-health-faq.md)
-- Riasztások beállítása, így ügynökállapottal kapcsolatos hibákkal értesítést kap. További információkért lásd: [riasztások konfigurálása a szolgáltatás állapotát](../monitoring-and-diagnostics/monitoring-activity-log-alerts-on-service-notifications.md). 
+- Riasztások beállítása, így ügynökállapottal kapcsolatos hibákkal értesítést kap. További információkért lásd: [riasztások konfigurálása a szolgáltatás állapotával kapcsolatos események](../monitoring-and-diagnostics/monitoring-activity-log-alerts-on-service-notifications.md). 

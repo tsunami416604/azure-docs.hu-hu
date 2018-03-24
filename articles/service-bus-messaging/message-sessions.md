@@ -1,11 +1,11 @@
 ---
 title: Az Azure Service Bus message munkamenetek |} Microsoft Docs
-description: "Azure Service Bus-üzenetek munkamenetek sorozatát kezelni."
+description: Azure Service Bus-üzenetek munkamenetek sorozatát kezelni.
 services: service-bus-messaging
-documentationcenter: 
+documentationcenter: ''
 author: clemensv
 manager: timlt
-editor: 
+editor: ''
 ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/02/2018
 ms.author: sethm
-ms.openlocfilehash: 7a594e5951f6e90c9151fbaf231675d6ed091d1f
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 551432cd13c16fdd5423c46ed9c6f740353808f8
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="message-sessions-first-in-first-out-fifo"></a>Üzenet-munkamenetek: az első, először ki (FIFO) 
 
@@ -53,13 +53,7 @@ A zárolás amikor **bezárása** vagy **CloseAsync** nevezzük, vagy a zárolá
 
 Ha több egyidejű fogadóval lekéréses az üzenetsorból, az üzenetek egy adott munkamenethez tartozó szállítják a megadott fogadó, amely jelenleg megszerezte a zárolást a munkamenethez. Ennek a műveletnek az egy kihagyásos üzenet-adatfolyam egy várólista vagy előfizetés szereplő szabályszerűen deszerializálni multiplexed különböző fogadó számára, és ezeket a fogadók élő különböző gépeken is is, a zárolási felügyeleti belül történik, kiszolgálóoldali, mert A Service Bus.
 
-A várólista, azonban továbbra is egy várólista: nincs közvetlen elérésű van. Ha több egyidejű fogadóval vár arra, hogy az adott munkameneteket használjon, vagy várjon, amíg az adott munkamenet üzeneteit, és van egy üzenet, amely még nincs vevő igényli a munkamenethez tartozó várólista tetején, kézbesítések tartsa, amíg a munkamenet fogadó-jogcímek munkamenet.
-
-Az előző ábrán három egyidejű munkamenet fogadók, amelyek aktívan szükséges, az összes fogadó halad, az üzenetsorból érkezett üzeneteket. Az előző munkamenet `SessionId` = 4 rendelkezik, ami azt jelenti, hogy nincs üzenetek kézbesítési bárki amíg üzenetben foglalt nem aktív, a tulajdonos ügyfél által egy újonnan létrehozott, a tulajdonos munkamenet fogadó.
-
-Amely úgy tűnhet, hogy beazonosítsa kell, amíg egy egyetlen fogadó folyamat kezelni tud a sok egyidejű munkamenetek könnyen, különösen akkor, ha az oktatóprogram szigorúan aszinkron kóddal; több dozen egyidejű munkamenetek juggling hatékonyan automatikus visszahívási modell.
-
-Kezelési sok egyidejű munkamenetek, amelyek minden munkamenet csak ritkán stratégia fogadja az üzeneteket, az egyes üresjárati idő után a munkamenet és folytatni a feldolgozást, amikor a munkamenet el legyen fogadva, mivel a következő munkamenet érkezik kezelő.
+Az előző ábrán három egyidejű munkamenet fogadók. Egy munkamenetet `SessionId` = 4, ami azt jelenti, hogy nincs üzenetek jelenjenek meg az adott munkamenet nem aktív, a tulajdonos ügyfél rendelkezik. A munkamenet úgy működik, például az sokféleképpen egy sub várólistát.
 
 A munkamenet fogadó munkamenet zárolás egy összevonó a által használt üzenet zárolásokat a *betekintés-lock* elszámolási mód. A fogadó nem lehet két üzenet egyidejűleg "útban", de az üzenetek sorrendben kell végrehajtani. Egy új üzenetet csak érhető el, amikor befejeződött vagy a kézbesítetlen lettered az előzetes üzenet. Egy üzenet okok azonos üzenet kézbesítendő kivonásának újra a Tovább gombra a fogadási művelethez.
 

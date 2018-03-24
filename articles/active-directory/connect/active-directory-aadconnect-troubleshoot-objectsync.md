@@ -1,8 +1,8 @@
 ---
-title: "Az Azure AD Connect: Objektum-szinkronizálás hibaelhárítása |} Microsoft Docs"
-description: "Ez a témakör ismerteti a problémák elhárítása hibaelhárítási feladat szinkronizációs lépéseit."
+title: 'Az Azure AD Connect: Objektum-szinkronizálás hibaelhárítása |} Microsoft Docs'
+description: Ez a témakör ismerteti a problémák elhárítása hibaelhárítási feladat szinkronizációs lépéseit.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
 editor: curtand
@@ -11,19 +11,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/15/2018
+ms.date: 03/19/2018
 ms.author: billmath
-ms.openlocfilehash: 10ebe039b9d266d15696b397b9cdef9bc7ec2a10
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 54ae18b9a802fe078d307f4d36400adf806b233f
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="troubleshoot-object-synchronization-with-azure-ad-connect-sync"></a>Objektum-szinkronizálás és az Azure AD Connect-szinkronizálás hibaelhárítása
 Ez a dokumentum ismerteti a problémák elhárítása hibaelhárítási feladat szinkronizációs lépéseit.
 
 ## <a name="troubleshooting-task"></a>A feladat hibaelhárítása
-Csatlakozás Azure Active Directory (AAD) központi telepítés verziójával <verison> vagy újabb rendszerre, használja a hibaelhárítási feladat a varázsló objektum szinkronizálási kapcsolatos problémák elhárítása. Korábbi verzióihoz adjon hibaelhárítása leírtak manuálisan [Itt](active-directory-aadconnectsync-troubleshoot-object-not-syncing.md).
+Az Azure Active Directory (AAD) telepítési csatlakozás verziója 1.1.749.0 vagy újabb rendszerre, használja a hibaelhárítási feladat a varázsló objektum szinkronizálási kapcsolatos problémák elhárítása. Korábbi verzióihoz adjon hibaelhárítása leírtak manuálisan [Itt](active-directory-aadconnectsync-troubleshoot-object-not-syncing.md).
 
 ### <a name="run-the-troubleshooting-task-in-the-wizard"></a>A hibaelhárítási feladat futtatása a varázsló
 A varázsló a hibaelhárítási feladat futtatásához a következő lépésekkel:

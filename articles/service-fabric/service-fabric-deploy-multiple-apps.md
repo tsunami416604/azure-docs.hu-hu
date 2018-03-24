@@ -1,24 +1,24 @@
 ---
-title: "A Node.js-alkalmazás, amely használja a MongoDB telepítése |} Microsoft Docs"
-description: "Általános bemutató csomag több Vendég végrehajtható fájlokat az Azure Service Fabric-fürt központi telepítése"
+title: A Node.js-alkalmazás által használt Azure Service Fabric a MongoDB telepítése |} Microsoft Docs
+description: Általános bemutató csomag több Vendég végrehajtható fájlokat az Azure Service Fabric-fürt központi telepítése
 services: service-fabric
 documentationcenter: .net
-author: msfussell
+author: mikkelhegn
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: b76bb756-c1ba-49f9-9666-e9807cf8f92f
 ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 07/02/2017
-ms.author: msfussell;mikhegn
-ms.openlocfilehash: d7a37d7c04f85e9031cab52fa86026e56315c882
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.date: 02/23/2018
+ms.author: mikhegn
+ms.openlocfilehash: 4987cc271a3e3d8a1a69c4c7fbd213d73ca2eb96
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="deploy-multiple-guest-executables"></a>Több futtatható vendégalkalmazás üzembe helyezése
 Ez a cikk bemutatja, hogyan csomagot, és több Vendég végrehajtható fájlok telepítése Azure Service Fabric. Kialakításához, és egyetlen Service Fabric-csomag telepítése olvasási hogyan való [központi telepítése egy Vendég végrehajtható Service Fabric](service-fabric-deploy-existing-app.md).
@@ -32,7 +32,7 @@ Visual Studio segítségével létrehozhat több Vendég végrehajtható fájlok
 * [Minta két Vendég végrehajtható fájlok (C# és nodejs) kapcsolaton keresztül kommunikáljon a Naming szolgáltatás REST használatával](https://github.com/Azure-Samples/service-fabric-containers)
 
 ## <a name="manually-package-the-multiple-guest-executable-application"></a>A több Vendég futtatható alkalmazás manuálisan csomag
-Másik lehetőségként a Vendég végrehajtható manuálisan csomagot. A manuális csomagolása, az ebben a cikkben az érhető el a Service Fabric csomagolás eszköz [http://aka.ms/servicefabricpacktool](http://aka.ms/servicefabricpacktool).
+Másik lehetőségként a Vendég végrehajtható manuálisan csomagot. A manuális csomagolása, az ebben a cikkben az érhető el a Service Fabric csomagolás eszköz [ http://aka.ms/servicefabricpacktool ](http://aka.ms/servicefabricpacktool).
 
 ### <a name="packaging-the-nodejs-application"></a>A Node.js-alkalmazás csomagolás
 Ez a cikk feltételezi, hogy a Node.js nincs telepítve a Service Fabric-fürt csomópontjain. Következésképpen kell Node.exe hozzáadása előtt csomagolása a csomópont alkalmazás gyökérkönyvtárában. A Node.js-alkalmazás (Express webes keretrendszer és a sablon Jade motorral használatával) könyvtárszerkezete az alábbihoz hasonlóan kell kinéznie:
@@ -72,7 +72,7 @@ Az alábbiakban a használt paraméterek leírását a következő:
 * **/ target** határozza meg a könyvtárban, amely a csomag kell létrehozni. Ez a könyvtár nem lehet azonos a forráskönyvtár.
 * **típustárnevek** határozza meg az alkalmazás nevét, a meglévő alkalmazás. Fontos megérteni, hogy a következőkből fordítja le a szolgáltatás nevét a jegyzékfájlban, nem pedig a Service Fabric-alkalmazás neve.
 * **/exe** határozza meg a végrehajtható fájl, amely a Service Fabric kellene indítása, ebben az esetben `node.exe`.
-* **/Ma** elindíthatja a végrehajtható fájl éppen használatban lévő argumentum határozza meg. Node.js nincs telepítve, a Service Fabric kell indítsa el a Node.js web server végrehajtásával `node.exe bin/www`.  `/ma:'bin/www'`közli a csomagolás eszköz `bin/www` node.exe argumentumaként.
+* **/Ma** elindíthatja a végrehajtható fájl éppen használatban lévő argumentum határozza meg. Node.js nincs telepítve, a Service Fabric kell indítsa el a Node.js web server végrehajtásával `node.exe bin/www`.  `/ma:'bin/www'` közli a csomagolás eszköz `bin/www` node.exe argumentumaként.
 * **/ Alkalmazástípus** határozza meg a Service Fabric-alkalmazás típusnév.
 
 Ha tallózással a/TARGET paraméterben megadott könyvtárat, láthatja, hogy az eszköz hozott létre a teljes mértékben működő Service Fabric-csomag alább látható módon:
@@ -214,7 +214,7 @@ Ha egy másik szolgáltatást szeretne hozzáadni a `yo` használatával már l�
 1. Lépjen a meglevő alkalmazás gyökérkönyvtárába.  Például `cd ~/YeomanSamples/MyApplication`, ha a `MyApplication` a Yeoman által létrehozott alkalmazás.
 2. Futtatás `yo azuresfguest:AddService` , és adja meg a szükséges adatokat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * További tudnivalók a tárolók telepítése [Service Fabric és a tárolók – áttekintés](service-fabric-containers-overview.md)
 * [Minta csomagolás és központi telepítése egy Vendég végrehajtható fájl](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
 * [Minta két Vendég végrehajtható fájlok (C# és nodejs) kapcsolaton keresztül kommunikáljon a Naming szolgáltatás REST használatával](https://github.com/Azure-Samples/service-fabric-containers)

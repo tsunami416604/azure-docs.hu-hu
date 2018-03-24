@@ -1,12 +1,12 @@
 ---
-title: "Egy Analysis Services-kiszolgáló létrehozása az Azure-ban |} Microsoft Docs"
-description: "Útmutató: az Analysis Services server-példány létrehozása az Azure-ban."
+title: Egy Analysis Services-kiszolgáló létrehozása az Azure-ban |} Microsoft Docs
+description: 'Útmutató: az Analysis Services server-példány létrehozása az Azure-ban.'
 services: analysis-services
-documentationcenter: 
+documentationcenter: ''
 author: minewiskan
 manager: kfile
-editor: 
-tags: 
+editor: ''
+tags: ''
 ms.assetid: 7f560216-8a9a-4d06-852e-48cf24deab19
 ms.service: analysis-services
 ms.devlang: NA
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 02/14/2018
 ms.author: owend
-ms.openlocfilehash: 54b9c9df1c368575c271a44e4738a2fc25ac4798
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 9a80d7e6e9f24ccc730fe747fa0a71b91f22b7e9
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="create-an-azure-analysis-services-server-in-azure-portal"></a>Az Azure Analysis Services-kiszolgáló létrehozása az Azure-portálon
 Ez a cikk végigvezeti egy Analysis Services-kiszolgáló erőforrás létrehozása az Azure-előfizetéshez.
@@ -36,7 +36,7 @@ A rövid útmutató elvégzéséhez a következőkre lesz szüksége:
 > 
 > 
 
-## <a name="to-create-a-server-in-azure-portal"></a>A kiszolgáló létrehozása az Azure-portálon
+## <a name="to-create-a-server-in-the-azure-portal"></a>A kiszolgáló létrehozása az Azure-portálon
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).  
 2. Kattintson a **+ új** > **adatok + analitika** > **Analysis Services**.
 3. Az a **Analysis Services** panelen adja meg a kötelező mezőket, és nyomja le az **létrehozása**.

@@ -1,11 +1,11 @@
 ---
-title: "Az Azure-portálon az Azure Search szolgáltatás adminisztrációs"
-description: "Kezelheti az Azure Search, egy üzemeltetett felhőalapú keresőszolgáltatás, a Microsoft Azure-ban az Azure portál használatával."
+title: Az Azure-portálon az Azure Search szolgáltatás adminisztrációs
+description: Kezelheti az Azure Search, egy üzemeltetett felhőalapú keresőszolgáltatás, a Microsoft Azure-ban az Azure portál használatával.
 services: search
-documentationcenter: 
+documentationcenter: ''
 author: HeidiSteen
 manager: jhubbard
-editor: 
+editor: ''
 tags: azure-portal
 ms.assetid: c87d1fdd-b3b8-4702-a753-6d7e29dbe0a2
 ms.service: search
@@ -15,11 +15,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 11/09/2017
 ms.author: heidist
-ms.openlocfilehash: 916a08aacca428530bc4f728d5de422e04bed8bc
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: d19683291e001c3c3f2a7bfc5c203b5121a8a418
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="service-administration-for-azure-search-in-the-azure-portal"></a>Az Azure-portálon az Azure Search szolgáltatás adminisztrációs
 > [!div class="op_single_selector"]
@@ -44,26 +44,12 @@ Figyelje meg, hogy *frissítése* nem szerepel, mint a felügyeleti feladatot. -
 ## <a name="administrator-rights"></a>Rendszergazdai jogosultságok
 Kiépítés, vagy a szolgáltatás leállítására végezhető el az Azure-előfizetéshez rendszergazdai vagy társadminisztrátori.
 
-A szolgáltatáson belül bárki, aki hozzáféréssel rendelkezik a szolgáltatás URL-címet és egy adminisztrációs api-kulcsot a szolgáltatás olvasási és írási hozzáférése van. Olvasási és írási hozzáférés lehetővé teszi a hozzáadásához, törléséhez vagy kiszolgálói objektumok, például az api-kulcsokat, indexek, indexelők, adatforrások, ütemezéseihez és szerepkör-hozzárendelések keresztül megvalósított módon módosítására [RBAC által definiált szerepkörök](#rbac).
+A szolgáltatáson belül bárki, aki hozzáféréssel rendelkezik a szolgáltatás URL-címet és egy adminisztrációs api-kulcsot a szolgáltatás olvasási és írási hozzáférése van. Olvasási és írási hozzáférés lehetővé teszi a hozzáadásához, törléséhez vagy kiszolgálói objektumok, például az api-kulcsokat, indexek, indexelők, adatforrások, ütemezéseihez és szerepkör-hozzárendelések keresztül megvalósított módon módosítására [RBAC által definiált szerepkörök](search-security-rbac.md).
 
-Az Azure Search minden felhasználói beavatkozás esik e két beállítás közül: olvasási és írási hozzáférése a szolgáltatáshoz (rendszergazdai jogosultságok), vagy csak olvasási hozzáféréssel a szolgáltatáshoz (lekérdezés jogosultságok). További információkért lásd: [az api-kulcsok kezelése](#manage-keys).
+Az Azure Search minden felhasználói beavatkozás esik e két beállítás közül: olvasási és írási hozzáférése a szolgáltatáshoz (rendszergazdai jogosultságok), vagy csak olvasási hozzáféréssel a szolgáltatáshoz (lekérdezés jogosultságok). További információkért lásd: [az api-kulcsok kezelése](search-security-api-keys.md).
 
 <a id="sys-info"></a>
 
-## <a name="set-rbac-roles-for-administrative-access"></a>A rendszergazdai hozzáférés RBAC-szerepkörök beállítása
-Azure biztosít egy [globális szerepkör-alapú engedélyezési modellt](../active-directory/role-based-access-control-configure.md) a portál vagy a Resource Manager API-k használatával kezeli az összes szolgáltatáshoz. Tulajdonos, közreműködő, és ahhoz való olvasóra szerepkörök szolgáltatás-felügyelet az Active Directory felhasználók, csoportok és minden egyes szerepkörhöz hozzárendelt rendszerbiztonsági határozza meg. 
-
-Az Azure Search RBAC engedélyek határozzák meg, az alábbi felügyeleti feladatok:
-
-| Szerepkör | Tevékenység |
-| --- | --- |
-| Tulajdonos |Hozzon létre, vagy a szolgáltatás vagy a szolgáltatás, így az api-kulcsokat, indexek, indexelők, indexelő adatforrások és az indexelő ütemezések bármely objektum törlése.<p>Szolgáltatás állapotának, beleértve a számát, valamint a tárhely méretét megtekintéséhez.<p>Adja hozzá, vagy törölje a szerepköri tagság (csak egy fiók tulajdonosa felügyelheti szerepköri tagság).<p>Az előfizetés rendszergazdáihoz és a szolgáltatások tulajdonosait tartoznia automatikus a tulajdonosok szerepkör. |
-| Közreműködő |Ugyanazt a hozzáférési szintet tulajdonosaként RBAC szerepkörkezelés csökkentve. Például egy munkatárs megtekintheti és újragenerálása `api-key`, de nem módosíthatja a szerepkörtagságok. |
-| Olvasó |Szolgáltatás állapota és a lekérdezési kulcsok megtekintése. A szerepkör tagjai nem módosítható a szolgáltatás konfigurációját, és megtekintheti adminisztrációs kulcsok. |
-
-Szerepkörök nem a szolgáltatási végpont hozzáférési jogot biztosít. Keresési szolgáltatás műveletek, például a Indexkezelés, index feltöltése és lekérdezések keresési adatokon api-kulcsokat, a szerepkörök nem szabályozza. További információkért lásd: "A felügyeleti és adatok műveletek engedélyezési" a [Mi az szerepköralapú hozzáférés-vezérlés](../active-directory/role-based-access-control-what-is.md).
-
-<a id="secure-keys"></a>
 ## <a name="logging-and-system-information"></a>Naplózás és a rendszer
 Az Azure Search nem fed fel naplófájlokat egy adott szolgáltatás vagy a portál vagy programozott felületek használatával. Alapszintű rétegben és újabb verzióiban Microsoft figyeli az összes Azure Search szolgáltatás a szolgáltatásszint-szerződések (SLA) / 99,9 %-os rendelkezésre állás érdekében. Ha a szolgáltatás lassú vagy átviteli sebesség SLA-küszöbértékek alá csökken, a támogatási csoportokkal tekintse át a naplófájlok számára elérhető, és a probléma megoldásához.
 
@@ -72,38 +58,6 @@ A szolgáltatás általános információinak tekintetében Itt kaphat informác
 * A portálon, a szolgáltatás irányítópultján, értesítések, a tulajdonságok és az állapotüzenetek keresztül.
 * Használatával [PowerShell](search-manage-powershell.md) vagy a [felügyeleti REST API](https://docs.microsoft.com/rest/api/searchmanagement/) való [szolgáltatás tulajdonságait](https://docs.microsoft.com/rest/api/searchmanagement/services), vagy az index Erőforrás kihasználtsága állapotát.
 * Keresztül [keresési forgalom analytics](search-traffic-analytics.md), ahogy azt már korábban említettük.
-
-<a id="manage-keys"></a>
-
-## <a name="manage-api-keys"></a>Api-kulcsok kezelése
-Összes kérelmet, a keresési szolgáltatás kell egy api-kulcs lett létrehozva, kifejezetten a szolgáltatás számára. Az api-kulcsot, akkor az egyetlen eszköz a keresési szolgáltatás végpontjának való hozzáférés hitelesítéséhez. 
-
-Api-kulcsát: véletlenszerűen generált számok és betűk álló karakterlánc. Keresztül [RBAC engedélyek](#rbac), törölheti vagy a kulcsok beolvasása a, de nem cserélhető le egy kulcs egy felhasználó által megadott jelszót. 
-
-A keresési szolgáltatás eléréséhez használt kulcsok két típusát:
-
-* A rendszergazda (érvényes a szolgáltatás bármely olvasási és írási művelet)
-* A lekérdezés (a csak olvasási műveletek, például a lekérdezések írásában, az index használható)
-
-Egy adminisztrációs api-kulcsot akkor jön létre, ha a szolgáltatás ki van építve. Két felügyeleti kulcsok, mint a kijelölt *elsődleges* és *másodlagos* leegyszerűsítheti rögtön, de valójában azok felcserélhetők. Minden szolgáltatás van két adminisztrációs kulcsok, hogy lehet vonni egy a szolgáltatáshoz való hozzáférés elvesztése nélkül. Vagy rendszergazdai kulcs helyreállíthatók, de nem tudja felvenni a rendszergazda teljes száma. Nincs legfeljebb két adminisztrációs kulcsok érhető el keresési szolgáltatásonként.
-
-Lekérdezési kulcsok keresési közvetlenül hívó ügyfélalkalmazások készültek. Legfeljebb 50 lekérdezési kulcsokat hozhat létre. Az alkalmazás kódjában adja meg a keresési URL-cím és a lekérdezési api-kulcsot a szolgáltatás a csak olvasható hozzáférést. Az alkalmazás kódjában is adja meg az index, amelyet az alkalmazás. A végpont, csak olvasási hozzáféréssel egy api-kulcs és a cél index együtt, a hatókör és a hozzáférési szint, a kapcsolat az ügyfélalkalmazás megadása.
-
-A vagy az api-kulcsok újragenerálása, nyissa meg a szolgáltatás irányítópultját. Kattintson a **kulcsok** diák nyitott a kulcskezelési lap. Kulcsok létrehozása vagy újbóli létrehozása a parancsok vannak a lap tetején. Alapértelmezés szerint csak az adminisztrációs kulcsok jönnek létre. Lekérdezés api-kulcsokat manuálisan kell létrehozni.
-
- ![][9]
-
-<a id="rbac"></a>
-
-## <a name="secure-api-keys"></a>A biztonságos api-kulcsok
-Kulcs biztonsági korlátozza a hozzáférést a portál vagy az erőforrás-kezelő felületek (a PowerShell vagy a parancssori felület) keresztül biztosított. Amint az előfizetés rendszergazdáihoz megtekintheti, és minden api-kulcs újragenerálása. Éppen ezért tekintse át a szerepkör-hozzárendelések megérteni, hogy ki férhet hozzá az adminisztrációs kulcsok.
-
-1. A szolgáltatás irányítópultján kattintson a menüpontban húzással állíthatja be, nyissa meg a felhasználók panel az Access ikonra.
-   ![][7]
-2. A felhasználók tekintse át a meglévő szerepkör-hozzárendelések. A vártnak, az előfizetés rendszergazdái már keresztül a tulajdonosi szerepkört a szolgáltatás teljes hozzáféréssel rendelkeznek.
-3. További részletezést, kattintson a **előfizetés rendszergazdái** majd bontsa ki a szerepkör hozzárendelése listában, akik közös felügyeleti jogosultságokkal rendelkezik azokon a keresési szolgáltatáshoz.
-
-Hozzáférési engedélyek másik módja: kattintson **szerepkörök** a felhasználók panelen. Ekkor megjelenik az elérhető szerepkörök és a felhasználók vagy csoportok minden egyes szerepkörhöz hozzárendelt számát.
 
 <a id="sub-5"></a>
 
@@ -184,9 +138,6 @@ Javasoljuk továbbá tekintse át a [teljesítmény- és optimalizálási cikk](
 Egy másik javasoljuk, hogy az előző szakaszban az áttelepítés előtt feljegyzett videót. Ebben a szakaszban említett eljárások mélyebb körét biztosít.
 
 <!--Image references-->
-[7]: ./media/search-manage/rbac-icon.png
-[8]: ./media/search-manage/Azure-Search-Manage-1-URL.png
-[9]: ./media/search-manage/Azure-Search-Manage-2-Keys.png
 [10]: ./media/search-manage/Azure-Search-Manage-3-ScaleUp.png
 
 

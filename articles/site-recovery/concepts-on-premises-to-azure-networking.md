@@ -1,11 +1,11 @@
 ---
-title: "IP-címzés beállítása az Azure-bA az Azure Site Recovery feladatátvételt követően csatlakozhatnak |} Microsoft Docs"
-description: "Ismerteti, hogyan lehet IP-címzési való csatlakozáshoz Azure virtuális gépek a feladatátvételt követően az Azure Site Recovery helyszíni beállítása"
+title: IP-címzés beállítása az Azure-bA az Azure Site Recovery feladatátvételt követően csatlakozhatnak |} Microsoft Docs
+description: Ismerteti, hogyan lehet IP-címzési való csatlakozáshoz Azure virtuális gépek a feladatátvételt követően az Azure Site Recovery helyszíni beállítása
 services: site-recovery
-documentationcenter: 
+documentationcenter: ''
 author: mayanknayar
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: f02cdbea-0940-48bf-9fa5-f38d9e584fae
 ms.service: site-recovery
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 02/27/2018
 ms.author: manayar
-ms.openlocfilehash: b9aeaf1dc6d471ba993dd470403ba60ce68153fc
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 1833c576fe03bbfd1819fedc5630b915c6e9ee71
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="set-up-ip-addressing-to-connect-after-failover-to-azure"></a>Az IP-címzést, az Azure-bA a feladatátvételt követően kapcsolódni
 
@@ -49,9 +49,9 @@ A Site Recovery biztosít a funkció megőrzését rögzített IP oldja meg, ami
 
 ### <a name="failover-example"></a>Feladatátvétel – példa
 
-Nézzük Azure usng ficticious vállalat, a Woodgrove Bank feladatátvételi példa.
+Azure-ban egy ficticious vállalati, a Woodgrove Bank feladatátvételi példa vizsgáljuk meg.
 
-- A Woodgrove Bank, hogy az üzleti alkalmazások egy helyszíni hely üzemelteti. Azok a gazdagép a mobile apps szolgáltatásban az Azure-on.
+- A Woodgrove Bank üzleti alkalmazások egy helyszíni hely üzemelteti. Azok a gazdagép a mobile apps szolgáltatásban az Azure-on.
 - Nincs VPN webhelyek kapcsolat a helyszíni peremhálózati hálózat és az Azure virtuális hálózat között. A VPN-kapcsolat, mert a virtuális hálózat az Azure-ban jelenik meg a helyszíni hálózat kiterjesztése.
 - Woodgrove szeretné replikálni a helyszíni munkaterhelések az Azure Site Recovery szolgáltatással.
  - Woodgrove kódolt IP-címek, így azok meg kell őriznie az alkalmazások számára az IP-címek az Azure-bA a feladatátvételt követően függő alkalmazások rendelkezik.

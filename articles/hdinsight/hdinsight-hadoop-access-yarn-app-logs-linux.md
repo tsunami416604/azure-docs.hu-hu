@@ -1,11 +1,11 @@
 ---
-title: "Linux-alapú HDInsight - Azure bejelentkezik hozzáférést Hadoop YARN alkalmazás |} Microsoft Docs"
-description: "Ismerje meg, hogyan férhet hozzá a YARN alkalmazásnaplók a parancssori és egy webes böngésző használata Linux-alapú HDInsight (Hadoop) fürtön."
+title: Linux-alapú HDInsight - Azure bejelentkezik hozzáférést Hadoop YARN alkalmazás |} Microsoft Docs
+description: Ismerje meg, hogyan férhet hozzá a YARN alkalmazásnaplók a parancssori és egy webes böngésző használata Linux-alapú HDInsight (Hadoop) fürtön.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 tags: azure-portal
 author: Blackmist
-manager: jhubbard
+manager: cgronlun
 editor: cgronlun
 ms.assetid: 3ec08d20-4f19-4a8e-ac86-639c04d2f12e
 ms.service: hdinsight
@@ -14,13 +14,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/17/2018
+ms.date: 03/22/2018
 ms.author: larryfr
-ms.openlocfilehash: 5f61e94d37a5e5f958a706f0db82526996a4ec02
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 4d3157441777cc7e39c3ede65a6d90a0f9a163aa
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="access-yarn-application-logs-on-linux-based-hdinsight"></a>Linux-alapú HDInsight bejelentkezik hozzáférést YARN alkalmazás
 

@@ -1,11 +1,12 @@
 ---
-title: "Példák a Copy mások adatok tudományos – Azure Machine Learning |} Microsoft Docs"
-description: "Üzleti titkot adatok tudományos: mások munkavégzésre meg. Machine learning példák az Azure Eszközintelligencia-katalógus beolvasása sikertelen."
-keywords: "adatok tudományos példák, a machine learning példában csoportosítási algoritmus csoportosítási algoritmus – példa"
+title: Példák a Copy mások adatok tudományos – Azure Machine Learning |} Microsoft Docs
+description: 'Üzleti titkot adatok tudományos: mások munkavégzésre meg. Machine learning példák az Azure Eszközintelligencia-katalógus beolvasása sikertelen.'
+keywords: adatok tudományos példák, a machine learning példában csoportosítási algoritmus csoportosítási algoritmus – példa
 services: machine-learning
 documentationcenter: na
-author: cjgronlund
-manager: jhubbard
+author: heatherbshapiro
+ms.author: hshapiro
+manager: hjerez
 editor: cjgronlund
 ms.assetid: ec2be823-c325-4ad8-b8b2-3e664f1a44b4
 ms.service: machine-learning
@@ -14,12 +15,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2018
-ms.author: cgronlun
-ms.openlocfilehash: 52edc2158e5e74fc544d03efbba2f7e29290e424
-ms.sourcegitcommit: 719dd33d18cc25c719572cd67e4e6bce29b1d6e7
+ms.openlocfilehash: 764e7c61b5ef023608767dfe78f3aa76e4463f05
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="copy-other-peoples-work-to-do-data-science"></a>Más emberek munkájának lemásolása az adatelemzéshez
 ## <a name="video-5-data-science-for-beginners-series"></a>5. Videó: Adattudomány kezdők sorozat
@@ -58,7 +58,7 @@ A Microsoftnál nevű felhő alapú szolgáltatás [Azure Machine Learning Studi
 
 Ez a szolgáltatás része valamilyen hívása a  **[Azure Eszközintelligencia-katalógus](https://gallery.cortanaintelligence.com/)**. Erőforrások, például az Azure Machine Learning kísérleteket, vagy személyek beépített és mások számára közzétett modellek gyűjteményét tartalmazza. Ezek a kísérletek nagyszerű módját kihasználhatják a gondolat és a rögzített munka, másokat pedig saját megoldásokkal a kezdéshez. Mindenki rajta Tallózás Üdvözöljük.
 
-![Az Azure AI gyűjteménye](./media/data-science-for-beginners-copy-other-peoples-work-to-do-data-science/azure-ai-gallery.png)
+![Azure AI katalógus](./media/data-science-for-beginners-copy-other-peoples-work-to-do-data-science/azure-ai-gallery.png)
 
 Ha **kísérletek** a lap tetején megjelenik egy a leginkább a gyűjtemény legutóbbi és népszerű kísérletek száma. Fennmaradó kísérletek lépéseit kattintva kereshet **összes tallózása** a képernyő tetején, és nem adhat meg keresési feltételeket, és válassza a keresési szűrőket.
 

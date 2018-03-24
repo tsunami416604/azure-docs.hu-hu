@@ -1,13 +1,13 @@
 ---
-title: "Gyakorlati tanácsok az Azure Functions |} Microsoft Docs"
-description: "Az Azure Functions ajánlott eljárásairól és mintáiról megismerése."
+title: Gyakorlati tanácsok az Azure Functions |} Microsoft Docs
+description: Az Azure Functions ajánlott eljárásairól és mintáiról megismerése.
 services: functions
 documentationcenter: na
 author: wesmc7777
 manager: cfowler
-editor: 
-tags: 
-keywords: "az Azure functions mintázatok, ajánlott eljárás, Funkciók, Eseményfeldolgozási, webhookokkal, a dinamikus számítási, a kiszolgáló nélküli architektúrája"
+editor: ''
+tags: ''
+keywords: az Azure functions mintázatok, ajánlott eljárás, Funkciók, Eseményfeldolgozási, webhookokkal, a dinamikus számítási, a kiszolgáló nélküli architektúrája
 ms.assetid: 9058fb2f-8a93-4036-a921-97a0772f503c
 ms.service: functions
 ms.devlang: multiple
@@ -17,11 +17,11 @@ ms.workload: na
 ms.date: 10/16/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d8088a8a83bcaefce17ac2756360a46119c8eb27
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 19ca9d70f769a19556d131d1d131f1bc9d107ef0
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>A teljesítmény-és az Azure Functions megbízhatóság
 
@@ -99,7 +99,7 @@ Aszinkron programozás az ajánlott eljárás. Azonban mindig elkerülése hivat
 
 ### <a name="receive-messages-in-batch-whenever-possible"></a>Amikor csak lehetséges kötegben üzeneteket fogadni
 
-Az Event Hubs például néhány eseményindítók engedélyezése egy köteg egyetlen meghívása az üzenetek fogadását.  Kötegelés üzenetek mennyi jobb teljesítményt rendelkezik.  A maximális mérete konfigurálható a `functions.json` a fájlt a [host.json referenciadokumentációt](functions-host-json.md)
+Az Event Hubs például néhány eseményindítók engedélyezése egy köteg egyetlen meghívása az üzenetek fogadását.  Kötegelés üzenetek mennyi jobb teljesítményt rendelkezik.  A maximális mérete konfigurálható a `host.json` a fájlt a [host.json referenciadokumentációt](functions-host-json.md)
 
 A C# funkciók módosíthatja a típus egy szigorú típusmegadású tömbhöz.  Például ahelyett, hogy `EventData sensorEvent` a metódus aláírása sikerült `EventData[] sensorEvent`.  Egyéb nyelvek kell explicit módon állítsa a cardinality tulajdonságát a `function.json` a `many` engedélyezéséhez a kötegelés [itt látható módon](https://github.com/Azure/azure-webjobs-sdk-templates/blob/df94e19484fea88fc2c68d9f032c9d18d860d5b5/Functions.Templates/Templates/EventHubTrigger-JavaScript/function.json#L10).
 

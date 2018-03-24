@@ -1,6 +1,6 @@
 ---
-title: "Aktor-alapú Azure mikroszolgáltatások-életciklus áttekintése |} Microsoft Docs"
-description: "Ismerteti a Service Fabric megbízható szereplő életciklus, szemétgyűjtés és manuális törlése szereplője és azok állapota"
+title: Aktor-alapú Azure mikroszolgáltatások-életciklus áttekintése |} Microsoft Docs
+description: Ismerteti a Service Fabric megbízható szereplő életciklus, szemétgyűjtés és manuális törlése szereplője és azok állapota
 services: service-fabric
 documentationcenter: .net
 author: amanbha
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/06/2017
 ms.author: amanbha
-ms.openlocfilehash: dd45acd75e1cf263029c869d88c87b28f56d50cc
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 4abb1ea6e5c79a5280d6ca4ad96070603b81793a
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="actor-lifecycle-automatic-garbage-collection-and-manual-delete"></a>Aktor életciklusát, automatikus szemétgyűjtés és manuális törlése
 Egy szereplő először egy kezdeményezték bármelyik metódusa aktiválva. Egy szereplő az inaktív (szemétgyűjtési a szereplője futtatókörnyezet által összegyűjtött), ha a konfigurált időtartamon nem használható. Egy szereplő és annak állapotát is törölhetők manuálisan bármikor.
@@ -112,37 +112,8 @@ A példa a szereplő élettartama metódus aktorhívások, emlékeztető és id�
 
 Egy szereplő soha nem lesznek szemétgyűjtő, végrehajtja a módszerekkel, függetlenül attól, mennyi idő telhet el az adott metódus végrehajtása közben. A korábban említett aktor a felület metódusai és felszólítás visszahívások végrehajtása megakadályozza, hogy a szemétgyűjtés által a gyári beállítások visszaállításával a szereplő üresjárati idő 0. Időzítő visszahívások végrehajtása nem állítja alaphelyzetbe az üresjárati idő 0. A szemétgyűjtés, a szereplő késleltetve azonban csak a időzítő visszahívási végrehajtásának befejezése után.
 
-## <a name="deleting-actors-and-their-state"></a>Szereplője és az állapot törlése
-A deaktivált szereplője szemétgyűjtés csak a szükségtelenné vált az aktor objektum, de nem távolítja el egy szereplő állapotkezelője tárolt adatokat. Ha egy szereplő újra aktivált, az adatok újra keresztül teszik elérhetővé hozzá állapotkezelő. Olyan esetekben, ahol szereplője adat tárolása állapotkezelője és inaktiválása, de soha nem újra aktiválni lehet szükség az adatok törlése.
-
-A [szereplő szolgáltatás](service-fabric-reliable-actors-platform.md) függvény biztosít távoli hívó szereplője törlése:
-
-```csharp
-ActorId actorToDelete = new ActorId(id);
-
-IActorService myActorServiceProxy = ActorServiceProxy.Create(
-    new Uri("fabric:/MyApp/MyService"), actorToDelete);
-
-await myActorServiceProxy.DeleteActorAsync(actorToDelete, cancellationToken)
-```
-```Java
-ActorId actorToDelete = new ActorId(id);
-
-ActorService myActorServiceProxy = ActorServiceProxy.create(
-    new Uri("fabric:/MyApp/MyService"), actorToDelete);
-
-myActorServiceProxy.deleteActorAsync(actorToDelete);
-```
-
-A következő hatásai vannak, attól függően, hogy-e a szereplő jelenleg aktív törlése egy szereplő rendelkezik:
-
-* **Aktív szereplő**
-  * Aktor aktív szereplője lista törlődik, és inaktív.
-  * Állapotában véglegesen törlődik.
-* **Inaktív szereplő**
-  * Állapotában véglegesen törlődik.
-
-Vegye figyelembe, hogy nem hívható meg egy szereplő törli a magát az aktor módszerek egyikét a szereplő, amelyben a futtatókörnyezet kapott a zárolási körül szereplő hívása egyszálas hozzáférés kényszerítésére az aktor hívás környezeten belül végrehajtása során nem törölhető, mert.
+## <a name="manually-deleting-actors-and-their-state"></a>Manuálisan a szereplője és az állapot törlése
+A deaktivált szereplője szemétgyűjtés csak a szükségtelenné vált az aktor objektum, de nem távolítja el egy szereplő állapotkezelője tárolt adatokat. Ha egy szereplő újra aktivált, az adatok újra keresztül teszik elérhetővé hozzá állapotkezelő. Olyan esetekben, ahol szereplője adat tárolása állapotkezelője és inaktiválása, de soha nem újra aktiválni lehet szükség az adatok törlése.  Példák szereplője törlése, olvasása [szereplője és állapotukra törlése](service-fabric-reliable-actors-delete-actors.md).
 
 ## <a name="next-steps"></a>További lépések
 * [Aktor időzítők és az emlékeztetők](service-fabric-reliable-actors-timers-reminders.md)

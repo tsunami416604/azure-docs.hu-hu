@@ -1,24 +1,19 @@
 ---
-title: "Üzleti folytonossági és vészhelyreállítási helyreállítási (BCDR): Azure-régiókat párosítva |} Microsoft Docs"
-description: "Tudnivalók Azure regionális párosítása, ezzel biztosíthatja, hogy alkalmazások rugalmas data center esetén."
+title: 'Üzleti folytonossági és vészhelyreállítási helyreállítási (BCDR): Azure-régiókat párosítva |} Microsoft Docs'
+description: Tudnivalók Azure regionális párosítása, ezzel biztosíthatja, hogy alkalmazások rugalmas data center esetén.
 services: site-recovery
-documentationcenter: 
+documentationcenter: ''
 author: rayne-wiselman
-manager: cfreeman
-editor: 
-ms.assetid: c2d0a21c-2564-4d42-991a-bc31723f61a4
-ms.service: site-recovery
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
+manager: carmonm
+ms.service: multiple
 ms.topic: article
-ms.date: 12/11/2017
+ms.date: 03/21/2018
 ms.author: raynew
-ms.openlocfilehash: 394f353837433e241e4da6f4accdb5eaa24bae46
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 660ced47b48e981b65c6b9390809e345be8eda2d
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>Üzleti folytonossági és vészhelyreállítási helyreállítási (BCDR): Azure párosítva régiók
 
@@ -53,15 +48,15 @@ Minden Azure-régió, ugyanazon a földrajzi együtt és egy regionális pár be
 | Az USA kormányzata |USA – (kormányzati) Virginia (4) |USA-beli államigazgatás – Texas |
 | Az USA kormányzata |USA-beli államigazgatás – Arizona |USA-beli államigazgatás – Texas |
 | USA védelmi Minisztériuma |US DoD – Kelet |US DoD – Középső régió |
-| EGYESÜLT KIRÁLYSÁG |Az Egyesült Királyság nyugati régiója |Az Egyesült Királyság déli régiója |
+| UK |Az Egyesült Királyság nyugati régiója |Az Egyesült Királyság déli régiója |
 | Németország |Közép-Németország |Északkelet-Németország |
 
 1. táblázat – Azure regionális párok leképezése
 
-- > (1) Nyugat-India eltér, mert egy másik régióban csak egy irányban párosított. Nyugat-Indiában másodlagos régióba Dél-Indiában, Dél-Indiában másodlagos régióba viszont közép-Indiában.
-- > (2) Dél-Brazília nem egyedi, mert egy kívül a saját földrajzi régióban párosított. Brazíliai Dél másodlagos régióba déli középső Régiójában, de déli középső Régiójában tartozó másodlagos régióba nincs Dél-Brazília.
-- > (3) USA – (kormányzati) Iowa másodlagos régióba Velünk – (kormányzati) Virginia, de Velünk – (kormányzati) Virginia másodlagos régióba nincs Velünk – (kormányzati) Iowa.
-- > (4) USA – (kormányzati) Virginia másodlagos régióba Velünk – (kormányzati) Texas, de Velünk – (kormányzati) Texas másodlagos régióba nincs Velünk – (kormányzati) Virginia.
+- (1) Nyugat-India eltér, mert egy másik régióban csak egy irányban párosított. Nyugat-Indiában másodlagos régióba Dél-Indiában, Dél-Indiában másodlagos régióba viszont közép-Indiában.
+- (2) Dél-Brazília nem egyedi, mert egy kívül a saját földrajzi régióban párosított. Brazíliai Dél másodlagos régióba déli középső Régiójában, de déli középső Régiójában tartozó másodlagos régióba nincs Dél-Brazília.
+- (3) USA – (kormányzati) Iowa másodlagos régióba Velünk – (kormányzati) Virginia, de Velünk – (kormányzati) Virginia másodlagos régióba nincs Velünk – (kormányzati) Iowa.
+- (4) USA – (kormányzati) Virginia másodlagos régióba Velünk – (kormányzati) Texas, de Velünk – (kormányzati) Texas másodlagos régióba nincs Velünk – (kormányzati) Virginia.
 
 
 Azt javasoljuk, hogy kihasználják az Azure-elkülönítés és a rendelkezésre állási házirendektől regionális párok közötti replikáció munkaterhelések. Például az Azure rendszer tervezett üzembe helyezett frissítések egymás után (nem egyszerre) párosított régiók között. Ez azt jelenti, hogy még abban a ritka esetben egy hibás frissítés, mindkét régió nem vonatkozik a szabályzat egy időben. A széles körű kimaradás valószínű esemény, továbbá helyreállítási kívül minden pár legalább egy régió van prioritása.
@@ -97,7 +92,7 @@ Azt javasoljuk, hogy kihasználják az Azure-elkülönítés és a rendelkezésr
 **régió helyreállítási rendelés** – abban az esetben, ha az egy átfogó leállás egy régió helyreállítási kívül minden pár előrébb. Központilag telepített alkalmazások kerülnek párosított régiók közötti garantáltan kell a helyre prioritással rendelkező régiók egyikéhez sem. Ha egy alkalmazás lett telepítve, amely nem van párosítva régiók között, helyreállítási előfordulhat, hogy később – a legrosszabb esetben lehet, hogy a kiválasztott régiók a utolsó két helyre kell állítani.
 
 ![Frissítések](./media/best-practices-availability-paired-regions/8Orange.png)
-**egymást követő Adatfrissítés** – tervezett Azure rendszerfrissítések előkészítése már megkezdődött párosított régiók egymás után (nem egyszerre) állásidő, hibák, és a ritka esemény rossz frissítés logikai hibák hatásának minimalizálása érdekében.
+**egymást követő Adatfrissítés** – tervezett Azure rendszerfrissítések előkészítése már megkezdődött párosított régiók egymás után (nem egyszerre) állásidő, hibák, és az esemény ritkán fordul elő, a rossz logikai hibák hatásának minimalizálása érdekében frissítés.
 
 ![Adatok](./media/best-practices-availability-paired-regions/9Orange.png)
 **adatok rezidens** – ahhoz, hogy az adó és a törvény végrehajtás szempontjából joghatóság adatok rezidens követelményeknek, a pár (kivéve a Dél-Brazília) azonos földrajzi belül található egy régiót.

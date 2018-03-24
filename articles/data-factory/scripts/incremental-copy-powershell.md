@@ -1,10 +1,10 @@
 ---
-title: "PowerShell-parancsprogram: adatok Növekményesen betöltése az Azure Data Factory használatával |} Microsoft Docs"
-description: "A PowerShell-parancsfájl bemutatja, hogyan használható az Azure Data Factory adatok másolása Növekményesen egy Azure SQL Database az Azure Blob Storage..."
+title: 'PowerShell-parancsprogram: adatok Növekményesen betöltése az Azure Data Factory használatával |} Microsoft Docs'
+description: A PowerShell-parancsfájl bemutatja, hogyan használható az Azure Data Factory adatok másolása Növekményesen egy Azure SQL Database az Azure Blob Storage...
 services: data-factory
 author: linda33wj
-manager: jhubbard
-editor: 
+manager: craigg
+editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/31/2017
 ms.author: jingwang
-ms.openlocfilehash: daa7368de4b6f063f6e461909dd69eb1d79e7d62
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 8bfe41f0d8cb8af3ace0164831ef527f6c4700e0
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="powershell-script---incrementally-load-data-by-using-azure-data-factory"></a>PowerShell parancsfájl - adatok betöltése Növekményesen az Azure Data Factory használatával
 A PowerShell-parancsfájlpélda betölti csak új vagy frissített rekordokat egy forrás adattárból e fogadó adattárba után a forrásból származó adatokat a fogadó kezdeti teljes másolata.  

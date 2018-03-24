@@ -1,18 +1,18 @@
 ---
-title: "Az Azure Event rács esemény séma"
-description: "Azure Event rácshoz események tartozó tulajdonságait ismerteti"
+title: Az Azure Event rács esemény séma
+description: Azure Event rácshoz események tartozó tulajdonságait ismerteti
 services: event-grid
 author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 01/30/2018
+ms.date: 03/22/2018
 ms.author: babanisa
-ms.openlocfilehash: 9d1f0eed28a1c1c6776ddba89480adcedfc599a5
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 7af0e1cc8ae36774ef1cebf1bada6477888860d0
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-event-grid-event-schema"></a>Az Azure Event rács esemény séma
 
@@ -97,7 +97,11 @@ Az objektum tulajdonságait, lásd: a következő Eseményforrás:
 * [IoT Hub](event-schema-iot-hub.md)
 * [Erőforráscsoportok (műveletek)](event-schema-resource-groups.md)
 
-Az esemény-közzétevő egyéni témakörök határozza meg, az objektum. A legfelső szintű adatok szabványos erőforrás által definiált eseményként is ugyanazokat a mezőket kell tartalmaznia. Események közzététele egyéni témakörökre mutatnak, gondolja át az események tárgya útválasztási és szűrés modellezési.
+Az esemény-közzétevő egyéni témakörök határozza meg, az objektum. A legfelső szintű adatok szabványos erőforrás által definiált eseményként is ugyanazokat a mezőket kell tartalmaznia.
+
+Egyéni témakörök események közzétételekor az események, amelyek megkönnyítik a tudni, hogy azok az esemény iránt érdeklődik előfizetők témák létrehozása Előfizetők a tulajdonos események szűrő és útvonal használatára. Vegye figyelembe, biztosítva az elérési út ahol az esemény történt, így előfizetők szűrhet elérési út része. Az elérési út révén előfizetők szűken vagy tágabb értelemben véve az események szűréséhez. Például, ha például egy három szegmens elérési utat ad meg `/A/B/C` a tárgy előfizetők szűrhet az első szegmensnek `/A` események széleskörű eléréséhez. Ezeket az előfizetőknek-esemény lekérdezésekor a témák például `/A/B/C` vagy `/A/D/E`. Más előfizetők szűrhet `/A/B` események szűkebb kaphat.
+
+A tulajdonos néha történtekről további információkra van szüksége. Például a **Tárfiókok** publisher biztosít a tulajdonos `/blobServices/default/containers/<container-name>/blobs/<file>` Ha nincs hozzáadva fájl tárolót. Az előfizető szűrést útvonalon `/blobServices/default/containers/testcontainer` az adott tárolóban, de nem más tárolók a tárfiókban lévő összes eseményének lekérdezése. Az előfizető is szűrést, vagy az utótagot útvonal `.txt` szövegfájlok csak használható.
 
 ## <a name="next-steps"></a>További lépések
 

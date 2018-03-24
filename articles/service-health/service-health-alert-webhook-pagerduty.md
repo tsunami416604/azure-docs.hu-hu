@@ -1,12 +1,12 @@
 ---
-title: "Azure-szolgáltatások health-riasztások konfigurálása PagerDuty |} Microsoft Docs"
-description: "Állapotfigyelő szolgáltatás események PagerDuty-példány személyre szabott értesítések lekérése."
+title: Azure-szolgáltatások health-riasztások konfigurálása PagerDuty |} Microsoft Docs
+description: Állapotfigyelő szolgáltatás események PagerDuty-példány személyre szabott értesítések lekérése.
 author: shawntabrizi
 manager: scotthit
-editor: 
+editor: ''
 services: service-health
 documentationcenter: service-health
-ms.assetid: 
+ms.assetid: ''
 ms.service: service-health
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2017
 ms.author: shtabriz
-ms.openlocfilehash: 9edcb727b9f0af348cacd5533523c4f2e8214703
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: 6e9fcf20d368e270f9af4551c539acd873335498
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="configure-service-health-alerts-with-pagerduty"></a>PagerDuty állapotfigyelő szolgáltatásriasztások konfigurálása
 
@@ -79,7 +79,7 @@ Ez a cikk bemutatja, hogyan állíthatja be az Azure szolgáltatás állapotáva
 5. Válassza ki **mentése** végzett frissíteni a művelet csoportot.
 
 ## <a name="testing-your-webhook-integration-via-an-http-post-request"></a>A webhook integrációs via HTTP POST-kérelmet tesztelése
-1. Hozzon létre a szolgáltatás állapotát forgalma szeretne küldeni. Példa szolgáltatásának állapota webhook payloadot címen található [Webhookok Azure tevékenység naplózása riasztások](../monitoring-and-diagnostics/monitoring-activity-log-alerts-webhook.md).
+1. Hozzon létre a szolgáltatás állapotának forgalma szeretne küldeni. Példa service állapotfigyelő webhook payloadot címen található [Webhookok Azure tevékenység naplózása riasztások](../monitoring-and-diagnostics/monitoring-activity-log-alerts-webhook.md).
 
 2. Hozzon létre egy HTTP POST-kérelmet az alábbiak szerint:
 
@@ -88,13 +88,13 @@ Ez a cikk bemutatja, hogyan állíthatja be az Azure szolgáltatás állapotáva
 
     HEADERS     Content-Type: application/json
 
-    BODY        <Service Health payload>
+    BODY        <service health payload>
     ```
 3. Ekkor egy `202 Accepted` egy üzenet, amely tartalmazza a "event ID azonosítójával."
 
 4. Ugrás a [PagerDuty](https://www.pagerduty.com/) annak ellenőrzéséhez, hogy integráció sikeres volt-e beállítva.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - Megtudhatja, hogyan [meglévő probléma felügyeleti rendszerekhez webhook értesítések konfigurálása](service-health-alert-webhook-guide.md).
 - Tekintse át a [műveletnapló riasztási webhook séma](../monitoring-and-diagnostics/monitoring-activity-log-alerts-webhook.md). 
 - További tudnivalók [szolgáltatás állapotával kapcsolatos értesítésekre](../monitoring-and-diagnostics/monitoring-service-notifications.md).

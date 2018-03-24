@@ -1,10 +1,9 @@
 ---
-title: "Data Factory funkciók és rendszerváltozók |} Microsoft Docs"
-description: "Azure Data Factory funkciók és rendszerváltozók listája"
-documentationcenter: 
+title: Data Factory funkciók és rendszerváltozók |} Microsoft Docs
+description: Azure Data Factory funkciók és rendszerváltozók listája
+documentationcenter: ''
 author: sharonlo101
-manager: jhubbard
-editor: monicar
+manager: craigg
 services: data-factory
 ms.assetid: b6b3c2ae-b0e8-4e28-90d8-daf20421660d
 ms.service: data-factory
@@ -15,11 +14,11 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: f42ba7ed9c07a9d0bc73929db2a095248ad7d56f
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: b9884dac8a2716cbce6fca7b8172f7d272ad8f2f
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-data-factory---functions-and-system-variables"></a>Az Azure Data Factory - funkciók és a rendszer változói
 > [!NOTE]
@@ -59,7 +58,7 @@ Adat-előállító rendszerváltozók együtt funkciók az alábbi célokra hasz
 
 1. Kijelölés lekérdezések megadása (által hivatkozott összekötő cikkekben talál a [adatok mozgása tevékenységek](data-factory-data-movement-activities.md) cikk.
    
-   A data factory függvény meghívásához szintaxisa:  **$$ <function>**  kijelölés lekérdezések és egyéb tulajdonságai a tevékenység és adathalmazokat.  
+   A data factory függvény meghívásához szintaxisa: **$$ <function>** kijelölés lekérdezések és egyéb tulajdonságai a tevékenység és adathalmazokat.  
 2. Bemeneti függőségek megadása a data factory funkciók a tevékenység bemenetei gyűjteményben.
    
     $$ nem szükséges bemeneti függőségi kifejezés megadásával.     
@@ -80,12 +79,12 @@ Az alábbi táblázatok tartalmazzák az Azure Data Factory a függvények:
 
 | Kategória | Függvény | Paraméterek | Leírás |
 | --- | --- | --- | --- |
-| Time |AddHours(X,Y) |X: dátum és idő <br/><br/>Y int |Hozzáadja a megadott időn X Y óra. <br/><br/>Példa:`9/5/2013 12:00:00 PM + 2 hours = 9/5/2013 2:00:00 PM` |
-| Time |AddMinutes(X,Y) |X: dátum és idő <br/><br/>Y int |X ad hozzá Y perc.<br/><br/>Példa:`9/15/2013 12: 00:00 PM + 15 minutes = 9/15/2013 12: 15:00 PM` |
-| Time |StartOfHour(X) |X: dátum és idő |Lekérdezi a X óra összetevőjét által jelölt óra kezdő időpontját. <br/><br/>Példa:`StartOfHour of 9/15/2013 05: 10:23 PM is 9/15/2013 05: 00:00 PM` |
+| Time |AddHours(X,Y) |X: dátum és idő <br/><br/>Y int |Hozzáadja a megadott időn X Y óra. <br/><br/>Példa: `9/5/2013 12:00:00 PM + 2 hours = 9/5/2013 2:00:00 PM` |
+| Time |AddMinutes(X,Y) |X: dátum és idő <br/><br/>Y int |X ad hozzá Y perc.<br/><br/>Példa: `9/15/2013 12: 00:00 PM + 15 minutes = 9/15/2013 12: 15:00 PM` |
+| Time |StartOfHour(X) |X: dátum és idő |Lekérdezi a X óra összetevőjét által jelölt óra kezdő időpontját. <br/><br/>Példa: `StartOfHour of 9/15/2013 05: 10:23 PM is 9/15/2013 05: 00:00 PM` |
 | Dátum |AddDays(X,Y) |X: dátum és idő<br/><br/>Y int |Y napokat ad X. <br/><br/>Példa: 9/15/2013 12:00:00 PM + 2 nap = 9/17/2013 12:00:00 PM.<br/><br/>Nap túl kivonás Y megadása egy negatív számot.<br/><br/>Példa: `9/15/2013 12:00:00 PM - 2 days = 9/13/2013 12:00:00 PM`. |
 | Dátum |AddMonths(X,Y) |X: dátum és idő<br/><br/>Y int |Y hónap hozzáadása X.<br/><br/>`Example: 9/15/2013 12:00:00 PM + 1 month = 10/15/2013 12:00:00 PM`.<br/><br/>Hónap túl kivonás Y megadása egy negatív számot.<br/><br/>Példa: `9/15/2013 12:00:00 PM - 1 month = 8/15/2013 12:00:00 PM`.|
-| Dátum |AddQuarters(X,Y) |X: dátum és idő <br/><br/>Y int |Hozzáadja a Y * x 3 hónapig.<br/><br/>Példa:`9/15/2013 12:00:00 PM + 1 quarter = 12/15/2013 12:00:00 PM` |
+| Dátum |AddQuarters(X,Y) |X: dátum és idő <br/><br/>Y int |Hozzáadja a Y * x 3 hónapig.<br/><br/>Példa: `9/15/2013 12:00:00 PM + 1 quarter = 12/15/2013 12:00:00 PM` |
 | Dátum |AddWeeks(X,Y) |X: dátum és idő<br/><br/>Y int |Hozzáadja a Y * x 7 nap<br/><br/>Példa: 9/15/2013 12:00:00 PM + 1 hét = 9/22-es/2013 12:00:00 PM<br/><br/>Hét túl kivonás Y megadása egy negatív számot.<br/><br/>Példa: `9/15/2013 12:00:00 PM - 1 week = 9/7/2013 12:00:00 PM`. |
 | Dátum |AddYears(X,Y) |X: dátum és idő<br/><br/>Y int |Y év hozzáadása X.<br/><br/>`Example: 9/15/2013 12:00:00 PM + 1 year = 9/15/2014 12:00:00 PM`<br/><br/>Év túl kivonás Y megadása egy negatív számot.<br/><br/>Példa: `9/15/2013 12:00:00 PM - 1 year = 9/15/2012 12:00:00 PM`. |
 | Dátum |Day(X) |X: dátum és idő |Az x nap összetevőjének lekérdezi.<br/><br/>Példa: `Day of 9/15/2013 12:00:00 PM is 9`. |
@@ -100,7 +99,7 @@ Az alábbi táblázatok tartalmazzák az Azure Data Factory a függvények:
 | Szöveg |Format(X) |X: karakterlánc-változóvá |A szöveg (használata `\\'` karaktert kombinációja `'` karakter).|
 
 > [!IMPORTANT]
-> Egy másik függvényen belül függvény használatakor nem szeretné használni,  **$$**  a belső függvény előtag. Például: $$Text.Format ("PartitionKey eq \\" my_pkey_filter_value\\"és a RowKey ge \\" {0: éééé-hh-nn óó: pp:}\\", Time.AddHours (SliceStart, -6)). Figyelje meg, hogy a jelen példában  **$$**  előtag nem használják-e a **Time.AddHours** függvény. 
+> Egy másik függvényen belül függvény használatakor nem szeretné használni, **$$** a belső függvény előtag. Például: $$Text.Format ("PartitionKey eq \\" my_pkey_filter_value\\"és a RowKey ge \\" {0: éééé-hh-nn óó: pp:}\\", Time.AddHours (SliceStart, -6)). Figyelje meg, hogy a jelen példában **$$** előtag nem használják-e a **Time.AddHours** függvény. 
 
 #### <a name="example"></a>Példa
 A következő példában a Hive-tevékenység bemeneti és kimeneti paraméter használatával határozza a `Text.Format` függvény és SliceStart rendszer változó. 

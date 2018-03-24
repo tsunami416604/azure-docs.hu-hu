@@ -1,20 +1,20 @@
 ---
-title: "Adatok másolása az Amazon egyszerű Társzolgáltatás Azure Data Factory használatával |} Microsoft Docs"
-description: "További tudnivalók az adatok másolása az Amazon egyszerű tároló szolgáltatás (S3) támogatott fogadó adattárolókhoz Azure Data Factory használatával."
+title: Adatok másolása az Amazon egyszerű Társzolgáltatás Azure Data Factory használatával |} Microsoft Docs
+description: További tudnivalók az adatok másolása az Amazon egyszerű tároló szolgáltatás (S3) támogatott fogadó adattárolókhoz Azure Data Factory használatával.
 services: data-factory
 author: linda33wj
-manager: jhubbard
-editor: spelluru
+manager: craigg
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: article
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: b5dbf4b7ae0fc1f8871fbf6df1a29f0f7324d83a
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 82d46d29b1e75995c5436b985717f45104dad955
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="copy-data-from-amazon-simple-storage-service-using-azure-data-factory"></a>Adatok másolása az Amazon egyszerű Társzolgáltatás Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -36,8 +36,8 @@ Pontosabban, az Amazon S3 összekötő támogatja-e a fájlok másolása,-, vagy
 
 Adatok másolása az Amazon S3, győződjön meg arról, hogy rendelkezik a következő engedélyekkel:
 
-- `s3:GetObject`és `s3:GetObjectVersion` Amazon S3 objektum műveletekhez.
-- `s3:ListBucket`vagy `s3:GetBucketLocation` Amazon S3 gyűjtő műveletekhez. A Data Factory másolása varázsló használata `s3:ListAllMyBuckets` is szükség.
+- `s3:GetObject` és `s3:GetObjectVersion` Amazon S3 objektum műveletekhez.
+- `s3:ListBucket` vagy `s3:GetBucketLocation` Amazon S3 gyűjtő műveletekhez. A Data Factory másolása varázsló használata `s3:ListAllMyBuckets` is szükség.
 
 A teljes listát az Amazon S3 engedélyekkel kapcsolatos részletekért lásd: [megadása engedélyeket egy házirendben](https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html).
 

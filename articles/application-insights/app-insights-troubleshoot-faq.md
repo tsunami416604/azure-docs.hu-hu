@@ -1,6 +1,6 @@
 ---
-title: "Az Azure Application insights szolgáltatással kapcsolatos gyakori kérdések |} Microsoft Docs"
-description: "Az Application Insights vonatkozó gyakran ismételt kérdések."
+title: Az Azure Application insights szolgáltatással kapcsolatos gyakori kérdések |} Microsoft Docs
+description: Az Application Insights vonatkozó gyakran ismételt kérdések.
 services: application-insights
 documentationcenter: .net
 author: mrbullwinkle
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/12/2017
 ms.author: mbullwin
-ms.openlocfilehash: ed10b364a809c519fe9fe49e019df22598b8c04e
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 721799703923339d397113fc278cdeb6c6dbb88f
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="application-insights-frequently-asked-questions"></a>Az Application Insights: Gyakran ismételt kérdések
 
@@ -121,7 +121,7 @@ Más forrásokból, ha konfigurálja őket:
 * [Az Azure diagnostics](app-insights-azure-diagnostics.md)
 * [Docker-tároló](app-insights-docker.md)
 * [Importálhatja a táblákat Analytics](app-insights-analytics-import.md)
-* [OMS (Naplóelemzési)](https://azure.microsoft.com/blog/omssolutionforappinsightspublicpreview/)
+* [Log Analytics](https://azure.microsoft.com/blog/omssolutionforappinsightspublicpreview/)
 * [Logstash](app-insights-analytics-import.md)
 
 ## <a name="can-i-filter-out-or-modify-some-telemetry"></a>Kiszűrhetők vagy módosíthatja az egyes telemetriai?
@@ -188,7 +188,7 @@ Egyetlen használata az összetevők vagy a szerepkörök egyetlen üzleti rends
 * Ha egy felhasználó a webhely különböző böngészők, vagy keresse meg a-private vagy incognito, vagy másik gép, majd többször beleszámítanak.
 * A bejelentkezett felhasználó azonosításához gép és a böngészők között, adjon hozzá egy [setAuthenticatedUserContext()](app-insights-api-custom-events-metrics.md#authenticated-users).
 
-## <a name="q17"></a>Engedélyezte a I mindent az Application Insights?
+## <a name="q17"></a> Engedélyezte a I mindent az Application Insights?
 | Mit kell megjelennie | Az beszerzése | Miért érdemes |
 | --- | --- | --- |
 | Rendelkezésre állási diagramok |[Webteszt](app-insights-monitor-web-app-availability.md) |Tudja, hogy a webes alkalmazás mentése |
@@ -250,7 +250,7 @@ Az alábbiakban a két módszer:
 
 ### <a name="firewall-door"></a>Tűzfal ajtó
 
-Lehetővé teszi a webkiszolgáló, telemetriai adatokat küldeni a végpontok https://dc.services.visualstudio.com:443 és https://rt.services.visualstudio.com:443. 
+Lehetővé teszi a webkiszolgáló telemetriai adatokat küldeni a végpontok https://dc.services.visualstudio.com:443 és https://rt.services.visualstudio.com:443. 
 
 ### <a name="proxy"></a>Proxy
 
@@ -262,7 +262,7 @@ Lehetővé teszi a webkiszolgáló, telemetriai adatokat küldeni a végpontok h
 </TelemetryChannel>
 ```
 
-Az átjáró kell továbbítani a forgalmat https://dc.services.visualstudio.com:443/v2/nyomon követése
+Az átjáró kell továbbítani a forgalmat https://dc.services.visualstudio.com:443/v2/track
 
 ## <a name="can-i-run-availability-web-tests-on-an-intranet-server"></a>Futtatható-e rendelkezésre állási webes tesztjeinek használatát egy intranetes kiszolgálóra?
 

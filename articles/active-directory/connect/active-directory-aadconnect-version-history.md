@@ -1,11 +1,11 @@
 ---
-title: "Az Azure AD Connect: Verziókiadások |} Microsoft Docs"
-description: "Ez a cikk ismerteti az Azure AD Connect és az Azure AD Sync összes kiadásaiban"
+title: 'Az Azure AD Connect: Verziókiadások |} Microsoft Docs'
+description: Ez a cikk ismerteti az Azure AD Connect és az Azure AD Sync összes kiadásaiban
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: ef2797d7-d440-4a9a-a648-db32ad137494
 ms.service: active-directory
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/16/2018
 ms.author: billmath
-ms.openlocfilehash: 0c6a0c43eb7d0187120c3264f1f439af66d73978
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 0fd653b1a4058ce4284bf87b0b9152a264581e5c
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Az Azure AD Connect: Verziókiadások
 Az Azure Active Directory (Azure AD) csapat rendszeresen frissíti az Azure AD Connect új szolgáltatásait és funkcióit. Nem minden kiegészítéseket célrendszerekhez vonatkoznak.
@@ -40,6 +40,10 @@ Töltse le |} [Azure AD Connect letöltése](http://go.microsoft.com/fwlink/?Lin
 Állapot: Kiadott ügyfelek ebben a kiadásban terjesztése zajlik, amelyeken engedélyezve az automatikus frissítési AADConnect bérlők kis- és véletlenszerű kijelölt kiválasztásához. Ez a csoport a bérlő kiterjed az elkövetkező hetektől mindaddig, amíg az automatikus frissítési ügyfelei 100 %-os kapott ebben a kiadásban. Ezt követően a build általános letölthető lesz közzétesszük a fenti letöltés hivatkozásra.
 >[!NOTE]
 >Az új verzió a frissítés befejezése után automatikusan indít el egy teljes szinkronizálást és az Azure AD-összekötő teljes importálást és teljes szinkronizálást az AD-összekötő. Mivel ez eltarthat egy ideig, az Azure AD Connect környezet méretétől függően győződjön meg arról, hogy elvégezte-e a szükséges lépéseket ezt támogatja, vagy tartsa addig, amíg az erre alkalmas időpontban talált frissítéséről.
+
+>[!NOTE]
+>"AutoUpgrade funkció helytelenül letiltotta az egyes bérlők számára buildek 1.1.524.0 később. Győződjön meg arról, hogy az Azure AD Connect-példány még abban az esetben jogosult AutoUpgrade, futtassa a következő PowerShell-parancsmagot: "Set-ADSyncAutoUpgrade - AutoupGradeState AutoUpgradeConfigurationState.Enabled"?
+
 
 ### <a name="azure-ad-connect"></a>Azure AD Connect
 #### <a name="fixed-issues"></a>Javított problémák

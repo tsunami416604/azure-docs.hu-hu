@@ -1,24 +1,24 @@
 ---
-title: "Többpéldányos feladatok használatával történő futtatása MPI alkalmazások – Azure Batch |} Microsoft Docs"
-description: "Ismerje meg, hogyan hajthat végre a többpéldányos feladattípust használó Azure Batch a Message Passing Interface (MPI) alkalmazások."
+title: Többpéldányos feladatok használatával történő futtatása MPI alkalmazások – Azure Batch |} Microsoft Docs
+description: Ismerje meg, hogyan hajthat végre a többpéldányos feladattípust használó Azure Batch a Message Passing Interface (MPI) alkalmazások.
 services: batch
-documentationcenter: .net
-author: tamram
-manager: timlt
-editor: 
+documentationcenter: ''
+author: dlepow
+manager: jeconnoc
+editor: ''
 ms.assetid: 83e34bd7-a027-4b1b-8314-759384719327
 ms.service: batch
 ms.devlang: multiple
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
-ms.workload: 5/22/2017
-ms.author: tamram
+ms.tgt_pltfrm: ''
+ms.date: 5/22/2017
+ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 01da017587aed7c0f2415786fdcbf6f64024cbe3
-ms.sourcegitcommit: 963e0a2171c32903617d883bb1130c7c9189d730
+ms.openlocfilehash: 0fb5ea21c6403369cbcb60df58c0f70a57a61d4e
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="use-multi-instance-tasks-to-run-message-passing-interface-mpi-applications-in-batch"></a>Többpéldányos feladatok használatával történő kötegelt Message Passing Interface (MPI) alkalmazások futtatása
 
@@ -49,6 +49,10 @@ Amikor egy feladat többpéldányos beállításokkal egy feladathoz, a kötegel
 
 ## <a name="requirements-for-multi-instance-tasks"></a>Többpéldányos feladatok követelményei
 Többpéldányos feladatok elvégzéséhez a készlet **engedélyezett csomópontok közötti kommunikáció**, és a **egyidejű feladat a végrehajtás letiltja**. Egyidejű feladat a végrehajtás letiltásához állítsa be a [CloudPool.MaxTasksPerComputeNode](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool#Microsoft_Azure_Batch_CloudPool_MaxTasksPerComputeNode) 1 tulajdonságot.
+
+> [!NOTE]
+> Kötegelt [korlátok](batch-quota-limit.md#other-limits) , amelyen a csomópontok közötti kommunikáció engedélyezve van a készlet mérete.
+
 
 A kódrészletet bemutatja, hogyan többpéldányos feladatokhoz a Batch .NET könyvtár használata készlet létrehozása.
 
@@ -107,8 +111,7 @@ Keresse meg az "RDMA-kompatibilis" a következő cikkekben megadott méret:
   * [Az Azure virtuális gépek méretei](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (Windows)
 
 > [!NOTE]
-> RDMA előnyeit [Linux számítási csomópontok](batch-linux-nodes.md), kell használnia **Intel MPI** a csomóponton. További információ a CloudServiceConfiguration és VirtualMachineConfiguration készletek című rész a készlet a [Batch funkcióinak áttekintése](batch-api-basics.md).
->
+> RDMA előnyeit [Linux számítási csomópontok](batch-linux-nodes.md), kell használnia **Intel MPI** a csomóponton. 
 >
 
 ## <a name="create-a-multi-instance-task-with-batch-net"></a>A Batch .NET többpéldányos feladat létrehozása
@@ -194,7 +197,7 @@ Ezek a részletes és az egyéb kötegelt számítási csomópont környezeti v�
 >
 >
 
-## <a name="resource-files"></a>Erőforrás-fájlok
+## <a name="resource-files"></a>Erőforrásfájlok
 Két csoportját kell figyelembe venni a többpéldányos feladatokhoz Erőforrásfájlok: **közös erőforrásfájlok** , amely *összes* feladatok letöltése (mind az elsődleges és részfeladatok), és a **erőforrásfájlok** a többpéldányos feladat, amely megadott *csak az elsődleges* letöltések feladat.
 
 Megadhat egy vagy több **közös erőforrásfájlok** feladat többpéldányos beállításai. A közös erőforrás fájlokat szeretne letölteni a [Azure Storage](../storage/common/storage-introduction.md) az egyes csomópontok **feladat megosztott könyvtár** az elsődleges és az összes résztevékenység. Akkor érhető el a feladat megosztott könyvtár az alkalmazás- és koordinációs parancssorokat a `AZ_BATCH_TASK_SHARED_DIR` környezeti változó. A `AZ_BATCH_TASK_SHARED_DIR` elérési út azonos a többpéldányos feladathoz hozzárendelt minden csomóponton, így egyetlen koordinációs parancsot az elsődleges és minden résztevékenység közötti megoszthatja. Kötegelt nem "könyvtárban" távelérés értelemben, de csatlakoztatási használni, vagy pont, ahogy azt korábban említettük, a környezeti változók tipp a korábbi megosztásához.
@@ -213,7 +216,7 @@ Ha bármelyik a résztevékenység sikertelen, kilép egy nem nulla visszatéré
 
 A többpéldányos tevékenység törlésekor az elsődleges és az összes résztevékenység is törli a Batch szolgáltatás. Az összes végző részfeladat a könyvtárak és a fájlok törlődnek a számítási csomópontok, ugyanúgy, mint a szabványos feladat.
 
-[TaskConstraints] [ net_taskconstraints] többpéldányos feladathoz, mint például a [MaxTaskRetryCount][net_taskconstraint_maxretry], [MaxWallClockTime][net_taskconstraint_maxwallclock], és [RetentionTime] [ net_taskconstraint_retention] tulajdonságait, amelyek figyelembe véve, egy szabványos tevékenység, és az elsődleges és az összes résztevékenység vonatkozik. Azonban ha módosítja a [RetentionTime] [ net_taskconstraint_retention] a többpéldányos feladat hozzáadása a feladathoz, a módosítás után a tulajdonság csak az elsődleges feladat lesz alkalmazva. Az összes a résztevékenység továbbra is az eredeti [RetentionTime][net_taskconstraint_retention].
+[TaskConstraints] [ net_taskconstraints] többpéldányos feladathoz, mint például a [MaxTaskRetryCount][net_taskconstraint_maxretry], [MaxWallClockTime] [ net_taskconstraint_maxwallclock], és [RetentionTime] [ net_taskconstraint_retention] tulajdonságait, amelyek figyelembe véve, egy szabványos tevékenység, és az elsődleges és az összes résztevékenység vonatkozik. Azonban ha módosítja a [RetentionTime] [ net_taskconstraint_retention] a többpéldányos feladat hozzáadása a feladathoz, a módosítás után a tulajdonság csak az elsődleges feladat lesz alkalmazva. Az összes a résztevékenység továbbra is az eredeti [RetentionTime][net_taskconstraint_retention].
 
 A számítási csomópont legutóbbi tevékenységek listájának tükrözi egy részfeladatnál annak regisztrálása azonosítóját, ha a legutóbbi feladat többpéldányos feladat része volt.
 
@@ -327,7 +330,7 @@ Delete pool? [yes] no: yes
 Sample complete, hit ENTER to exit...
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * A cikk ismerteti a Microsoft HPC & Azure Batch csapat blogja [MPI támogatja az Azure Batch Linux][blog_mpi_linux], és használatával kapcsolatos tartalmaz [OpenFOAM] [ openfoam] kötegelt. A Python-Kódminták megtalálhatja a [OpenFOAM példa a Githubon][github_mpi].
 * Megtudhatja, hogyan [létrehozása Linux számítási csomópontok készleteinek](batch-linux-nodes.md) használható az Azure Batch MPI megoldások.
 

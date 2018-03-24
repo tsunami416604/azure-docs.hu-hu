@@ -1,24 +1,24 @@
 ---
-title: "Emberi beavatkozást igényel, és a tartós funkciók - Azure időtúllépések"
-description: "Útmutató az Azure Functions emberi beavatkozást igényel, és a tartós funkciók bővítményben időtúllépések kezeléséhez."
+title: Emberi beavatkozást igényel, és a tartós funkciók - Azure időtúllépések
+description: Útmutató az Azure Functions emberi beavatkozást igényel, és a tartós funkciók bővítményben időtúllépések kezeléséhez.
 services: functions
 author: cgillum
 manager: cfowler
-editor: 
-tags: 
-keywords: 
+editor: ''
+tags: ''
+keywords: ''
 ms.service: functions
 ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 09/29/2017
+ms.date: 03/19/2018
 ms.author: azfuncdf
-ms.openlocfilehash: e0b919ae5ef0639c8afdc5f9b006d899c8dbc4c1
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 071a9ffb8305a30b0fedeaa49c4a95d91fbce6c1
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="human-interaction-in-durable-functions---phone-verification-sample"></a>Emberi beavatkozást igényel a tartós funkciók - telefon ellenőrzési minta
 
@@ -28,8 +28,8 @@ Ez a minta egy SMS-alapú telefonos ellenőrzési rendszerétől valósítja meg
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Kövesse az utasításokat a [tartós funkciók telepítése](durable-functions-install.md) a minta beállítása.
-* Ez a cikk feltételezi, hogy már lezajlott a [Hello feladatütemezési](durable-functions-sequence.md) minta forgatókönyv.
+* [Telepítse a tartós funkciók](durable-functions-install.md).
+* Fejezze be a [Hello feladatütemezési](durable-functions-sequence.md) forgatókönyv.
 
 ## <a name="scenario-overview"></a>Forgatókönyv áttekintése
 
@@ -50,7 +50,7 @@ Ez a cikk végigvezeti a mintaalkalmazást a következő funkciókat:
 * **E4_SmsPhoneVerification**
 * **E4_SendSmsChallenge**
 
-Az alábbi szakaszok ismertetik a konfiguráció és a kódot, amely az Azure portál fejlesztésére szolgálnak. A Visual Studio fejlesztési kód a cikk végén meg.
+Az alábbi szakaszok ismertetik a konfiguráció és a használt kód a C# parancsfájlok. A Visual Studio fejlesztési kód a cikk végén meg.
  
 ## <a name="the-sms-verification-orchestration-visual-studio-code-and-azure-portal-sample-code"></a>Az SMS ellenőrzése az orchestration (Visual Studio Code és az Azure portál mintakód) 
 

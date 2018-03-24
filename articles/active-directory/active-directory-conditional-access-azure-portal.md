@@ -1,12 +1,12 @@
 ---
-title: "Azure Active Directory feltételes hozzáférés |} Microsoft Docs"
-description: "Ismerje meg, a feltételes hozzáférés Azure Active Directory segítségével a hozzáférés-vezérlés kezelését egy központi helyről."
+title: Azure Active Directory feltételes hozzáférés |} Microsoft Docs
+description: Ismerje meg, a feltételes hozzáférés Azure Active Directory segítségével a hozzáférés-vezérlés kezelését egy központi helyről.
 services: active-directory
-keywords: "alkalmazások, a feltételes hozzáférés az Azure ad-vel, a biztonságos hozzáférés a vállalati erőforrásokhoz, a feltételes hozzáférési házirendekkel a feltételes hozzáférés"
-documentationcenter: 
+keywords: alkalmazások, a feltételes hozzáférés az Azure ad-vel, a biztonságos hozzáférés a vállalati erőforrásokhoz, a feltételes hozzáférési házirendekkel a feltételes hozzáférés
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
 ms.service: active-directory
 ms.devlang: na
@@ -16,11 +16,11 @@ ms.workload: identity
 ms.date: 02/23/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 7e4a65d81a7dade9ae63a24657d15a97a3a588b2
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 74a87065416b397b4eebbcaa54c769711176708d
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="conditional-access-in-azure-active-directory"></a>Feltételes hozzáférés az Azure Active Directoryban
 
@@ -49,7 +49,7 @@ Az alábbiakban néhány gyakori hozzáférési vonatkozik tartalmaz, amely a fe
 
 - **[Hálózati hely](active-directory-conditional-access-locations.md)**: bárhonnan elérhető Azure AD-e. Mi történik, ha a hozzáférési kísérlet egy hálózati helyről, amely nincs az informatikai részleg felügyelete alatt történik? Felhasználónév és jelszó kombinációjával elég jó lehet, mint identitásigazolás a hozzáférés a vállalati hálózatról megkísérli az erőforrások. Mi történik, ha, igény szerint egy erősebb identitásigazolás hozzáférési próbál, amely más váratlan országokban vagy régiókban a világ kezdeményezett? Mi történik, ha még szeretné letiltja a hozzáférést bizonyos helyekre kísérlete?  
 
-- **[Eszközkezelés](active-directory-conditional-access-conditions.md#device-platforms)**: az Azure AD-felhasználók érhetik el felhőalkalmazások eszközt, beleértve a mobil, és személyes eszközök széles skáláját. Mi történik, ha a hozzáférési kísérlet igényt csak kell elvégezni használatával az informatikai részleg által felügyelt eszközök felhasználói? Mi történik, ha még szeretné letiltja a bizonyos eszköz típusok űrlap hozzáférést a felhőalapú alkalmazások vannak a környezetében? 
+- **[Eszközkezelés](active-directory-conditional-access-conditions.md#device-platforms)**: az Azure AD-felhasználók érhetik el felhőalkalmazások eszközt, beleértve a mobil, és személyes eszközök széles skáláját. Mi történik, ha Ön igény szerint, amely hozzáférési kísérletről csak kell végrehajtani, az informatikai részleg által kezelt eszközök? Mi történik, ha még szeretné tiltani egyes eszköztípusok nem férhet hozzá a felhőalapú alkalmazások vannak a környezetében? 
 
 - **[Ügyfélalkalmazás](active-directory-conditional-access-conditions.md#client-apps)**: Ma, hozzáférhet a különböző típusú alkalmazás például a web alapú alkalmazásokra, mobilalkalmazások vagy asztali alkalmazások sok felhőalapú alkalmazások. Mi történik, ha egy hozzáférési kísérlet használatával történik egy alkalmazás ügyféltípus ismert problémák fordulnak? Mi történik, ha egy bizonyos alkalmazás esetében az informatikai részleg által kezelt eszköz van szüksége? 
 

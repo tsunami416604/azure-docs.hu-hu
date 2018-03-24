@@ -1,10 +1,11 @@
 ---
-title: "Az Azure AI gyűjtemény gyűjtemények |} Microsoft Docs"
-description: "Fedezze fel, és megoszthatja a gyűjtemények Azure Eszközintelligencia-katalógus."
+title: Az Azure AI gyűjtemény gyűjtemények |} Microsoft Docs
+description: Fedezze fel, és megoszthatja a gyűjtemények Azure Eszközintelligencia-katalógus.
 services: machine-learning
-documentationcenter: 
-author: garyericson
-manager: jhubbard
+documentationcenter: ''
+author: YasinMSFT
+ms.author: yahajiza
+manager: hjerez
 editor: cgronlun
 ms.assetid: c834a0dc-492f-4fa4-8a48-c86bba7b2b97
 ms.service: machine-learning
@@ -13,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
-ms.author: garye
-ms.openlocfilehash: b7850b55baa690df22d8ebe14e9fa17fd91e0bad
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: ee34520973a482a5a7741efe1306c8a656315277
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="discover-and-share-collections-in-azure-ai-gallery"></a>Fedezze fel, és gyűjtemények Azure Eszközintelligencia-katalógus megosztása
 [!INCLUDE [machine-learning-gallery-item-selector](../../../includes/machine-learning-gallery-item-selector.md)]
@@ -31,7 +31,7 @@ A gyűjteményekben végzett tallózáshoz [a katalógusban](http://gallery.cort
 
 ![Válasszon ki a gyűjteményt a gyűjtemény kezdőlap](./media/gallery-collections/select-collections-in-gallery.png)
 
-A  **[gyűjtemények](https://gallery.cortanaintelligence.com/collections)**  lap megjeleníti a legutóbb hozzáadott és népszerű gyűjtemények listáját. Válassza ki, ha minden gyűjtemény **láthatja az összes**. Egy adott gyűjtemény keres, válassza ki a **láthatja az összes**, és jelölje ki a szűrési feltételeket. Kifejezést is írhatja a **keresési** a gyűjtemény lap felső részén.
+A **[gyűjtemények](https://gallery.cortanaintelligence.com/collections)** lap megjeleníti a legutóbb hozzáadott és népszerű gyűjtemények listáját. Válassza ki, ha minden gyűjtemény **láthatja az összes**. Egy adott gyűjtemény keres, válassza ki a **láthatja az összes**, és jelölje ki a szűrési feltételeket. Kifejezést is írhatja a **keresési** a gyűjtemény lap felső részén.
 
 További információ a gyűjtemény gyűjtemény részleteit megjelenítő oldalon kaphat. Egy gyűjtemény Részletek lap megnyitásához válassza ki a gyűjteményt. A gyűjtemény Részletek lap a **megjegyzések** szakaszban lehet megjegyzést, visszajelzést vagy kérdése van a gyűjteményben. A gyűjtemény ismerősök vagy a Twitteren vagy LinkedIn munkatársak is megoszthatja. A meghívott más felhasználóknak a lapnak a megtekintésére a gyűjtemény részleteit megjelenítő oldalra mutató hivatkozást is képes e-mail.
 

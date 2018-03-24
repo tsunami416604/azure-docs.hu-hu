@@ -1,24 +1,24 @@
 ---
-title: "Az Azure piactér és AppSource Publisher útmutatója"
-description: "Lépésről lépésre ismerteti, és az Azure piactéren új közzétevők ellenőrzőlisták közzététele"
+title: Az Azure piactér és AppSource Publisher útmutatója
+description: Lépésről lépésre ismerteti, és az Azure piactéren új közzétevők ellenőrzőlisták közzététele
 services: Marketplace, Compute, Storage, Networking, Blockchain, Security
-documentationcenter: 
+documentationcenter: ''
 author: ellacroi
 manager: msmbaldwin
-editor: 
+editor: ''
 ms.assetid: e8d228c8-f9e8-4a80-9319-7b94d41c43a6
 ms.service: marketplace
-ms.workload: 
-ms.tgt_pltfrm: 
-ms.devlang: 
+ms.workload: ''
+ms.tgt_pltfrm: ''
+ms.devlang: ''
 ms.topic: article
 ms.date: 01/18/2018
 ms.author: ellacroi
-ms.openlocfilehash: 7faa34b5528c53c06aeda25be17cbc5f3db2acdf
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 0abf25726936a3d5e69c809c9714965936c7c64c
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-marketplace-and-appsource-publisher-guide"></a>Az Azure piactér és AppSource Publisher útmutatója
 
@@ -34,7 +34,7 @@ ms.lasthandoff: 03/16/2018
 - Hogyan legyen, a közzétevő
 - Kínál a WHERE létrehozása és közzététele
 - Optimalizálja a listát, és nyissa meg piacra jutási erőforrásokat meghajtó hatás használata
-- Súgó és támogatás WHERE kérdésekre az Azure piactérről, AppSource, vagy a közzétételi útmutatóban lépjen kapcsolatba a piactér csapatának  **cloudmarketplace@microsoft.com** . 
+- Súgó és támogatás WHERE kérdésekre az Azure piactérről, AppSource, vagy a közzétételi útmutatóban lépjen kapcsolatba a piactér csapatának **cloudmarketplace@microsoft.com**. 
 
 ## <a name="benefits-of-participating-in-the-marketplace"></a>Részt vesz a piactér előnyei
 
@@ -59,10 +59,10 @@ A piactér kirakatokkal célcsoportok és a Microsoft cloud termékek szüksége
 |          |Azure Piactér |AppSource  |
 |---------|---------|---------|
 |Célközönség     |Informatikai szakemberek számára, a fejlesztők (specialistája szerepkörei tartalmazzák, DBAs, SecOps, DevOps, stb.)    | Sor az üzleti döntéshozók (a specialistája szerepkör tartalmazza a beszerzést, a gyártási, a számviteli, a stb.)      |
-|A beépített vagy bővítése     |Azure         | Azure, a Dynamics 365, az Office 365, a Power BI és a kiemelt alkalmazások       |
+|A beépített vagy bővítése     |Azure         | Azure, Dynamics 365, Office 365, Power BI és Power Apps       |
 |Megoldások és a szolgáltatások típusai     |  Infrastruktúra-megoldások és szolgáltatások   | Befejezett sor üzleti felhőalapú alkalmazások, az Office 365-bővítmények és a szolgáltatások        |
 |Közzétételi beállítások     |  Megkereshetnek, tanácsadási szolgáltatásokat kínálnak, próbaverzió, virtuális gép megoldás sablonokat, és a felügyelt alkalmazások       |  Ingyenes próbaverzió, lekérése most tesztelése, lépjen kapcsolatba Me kínált tanácsadás      |
-|Alkalmazáson belüli élményt biztosít a felhasználók a hozzáférést az alkalmazások és szolgáltatások alkalmazását környezetében  | Azure-portál és a parancssori felület         | Az Office 365, Dynamics 365 Power BI-ban Office ügyfél alkalmazások       |
+|Alkalmazáson belüli élményt biztosít a felhasználók a hozzáférést az alkalmazások és szolgáltatások alkalmazását környezetében  | Azure Portal és CLI         | Office 365, Dynamics 365, Power BI, Office kliensalkalmazások       |
 
 ## <a name="leveraging-these-storefronts"></a>Ezek kirakatokkal kihasználva
 
@@ -112,9 +112,9 @@ Ez a szakasz végigvezeti a rendelkezésre álló lehetőségeket, hogy mindkét
 
 |**Közzétételi beállítás**  | **Az ajánlattípus** | **Storefront**  |
 |---------|---------|---------|
-|**List**    |    Megkereshetnek, szolgáltatás tanácsadás     |  Azure Marketplace, AppSource       |
-|**Próbaverzió**   |     Ingyenes próbaverzió, SaaS-próbaverzióra, interaktív bemutató, tesztelése    |  Azure Marketplace, AppSource       |
-|**Transact**     |   Virtuális gép, sablon megoldás, felügyelt alkalmazás      |    Azure Piactér     |
+|**List**    |    Kapcsolatkérés, tanácsadási szolgáltatás     |  Azure Marketplace, AppSource       |
+|**Próbaverzió**   |     Ingyenes próbalehetőség, SaaS próbalehetőség, interaktív demó, tesztverzió    |  Azure Marketplace, AppSource       |
+|**Transact**     |   Virtuális gép, megoldássablon, felügyelt alkalmazás      |    Azure Piactér     |
 
 ### <a name="list"></a>LIST
 
@@ -259,8 +259,8 @@ Nagyvállalati ügyfeleink az Azure-ra vonatkozó előzetes pénzügyi köteleze
 
 |**Követelmény**  |**Részletek** |**Közzétételi beállítás**  |
 |---------|---------|---------|
-|**Számlázási és annak mérésére**    |  Támogatnia kell a virtuális gép vagy a saját licenc vagy használatalapú, havi-számlázási.       |    Transact    |
-|**Azure-kompatibilis virtuális merevlemez (VHD)**     |   Virtuális gépek kell kialakítani, a [Windows] (https://docs.microsoft.com/en-us/azure/marketplace-publishing/marketplace-publishing-vm-image-creation) vagy () [Linux]https://docs.microsoft.com/en-us/azure/marketplace-publishing/marketplace-publishing-vm-image-creation)    |   Transact      |
+|**Számlázási és annak mérésére**    |  Támogatnia kell a virtuális gép vagy a saját licenc vagy használatalapú, havi-számlázási.       |    Tranzakció    |
+|**Azure-kompatibilis virtuális merevlemez (VHD)**     |   Virtuális gépek kell kialakítani, a [Windows] (https://docs.microsoft.com/en-us/azure/marketplace-publishing/marketplace-publishing-vm-image-creation) vagy () [Linux]https://docs.microsoft.com/en-us/azure/marketplace-publishing/marketplace-publishing-vm-image-creation)    |   Tranzakció      |
 
 ### <a name="prerequisites-specific-to-consulting-services-publishing"></a>Közzététel szolgáltatások tanácsadás vonatkozó Előfeltételek
 
@@ -308,7 +308,7 @@ Az egyetlen bérlői alkalmazások több lehetőség áll rendelkezésre:
 - Fejlesztés egy ügyfél "Tesztelése" /
 - Egy több-bérlős bemutató mintaalkalmazás SSO összeállítása
 
-##<a name="publishing-processes-by-product-for-office-dynamics-and-power-bi"></a>Az Office, Dynamics, és a Power BI termék közzétételi folyamatok
+## <a name="publishing-processes-by-product-for-office-dynamics-and-power-bi"></a>Az Office, Dynamics, és a Power BI termék közzétételi folyamatok
 Office-, Dynamics, és a Power BI AppSource alkalmazások esetén, többet is megtudhat az adott dokumentációjában ebben a szakaszban a meghatározott követelmények. 
 
 
@@ -519,7 +519,7 @@ További információt a további fejlesztői fiók irányelvek és biztonsági 
 
 A vállalati fiók használatával kell összevont [Azure Active Directory](https://docs.microsoft.com/en-us/azure/active-directory/), és hibát adnak vissza, ha a Microsoft ID létrehozásakor a vállalati e-mail címmel. Ha hibaüzenetet kap, először forduljon az informatikai csapat számára, győződjön meg arról, hogy ez a helyzet. Ez egy ismert probléma, és jelenleg is dolgozunk névfeloldása. Kerülő megoldás lehet a következő:
 
-Javasoljuk, hogy az új e-mail cím létrehozása a  **@outlook.com**  tartomány. Kövesse az alábbi lépéseket:
+Javasoljuk, hogy az új e-mail cím létrehozása a **@outlook.com** tartomány. Kövesse az alábbi lépéseket:
 
 1. Lépjen [ https://signup.live.com/signup ](https://signup.live.com/signup) válassza **egy új e-mail-cím beszerzése**
 

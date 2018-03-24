@@ -1,10 +1,11 @@
 ---
-title: "AI Azure katalógusában kísérleteket |} Microsoft Docs"
-description: "Fedezze fel, és megoszthatja a kísérletek Azure Eszközintelligencia-katalógus."
+title: AI Azure katalógusában kísérleteket |} Microsoft Docs
+description: Fedezze fel, és megoszthatja a kísérletek Azure Eszközintelligencia-katalógus.
 services: machine-learning
-documentationcenter: 
-author: garyericson
-manager: jhubbard
+documentationcenter: ''
+author: heatherbshapiro
+ms.author: hshapiro
+manager: hjerez
 editor: cgronlun
 ms.assetid: f4248922-c961-4d3a-9e1b-aec743210166
 ms.service: machine-learning
@@ -13,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2017
-ms.author: garye
-ms.openlocfilehash: 80c2ab0cd97ce5afef7e38bad9f0fa0e4f3f363c
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: d6de7aa6d16196f415688d68251e8c1b0a4b9aee
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="discover-experiments-in-azure-ai-gallery"></a>Azure Eszközintelligencia-katalógus kísérletek felderítése
 [!INCLUDE [machine-learning-gallery-item-selector](../../../includes/machine-learning-gallery-item-selector.md)]
@@ -34,7 +34,7 @@ A gyűjtemény még számos [kísérletek](https://gallery.cortanaintelligence.c
 ## <a name="discover"></a>Ismertetők
 Tallózásához [a katalógusban](http://gallery.cortanaintelligence.com), válassza ki a gyűjtemény kezdőlap tetején **kísérletek**.
 
-A  **[kísérletek](https://gallery.cortanaintelligence.com/experiments)**  lap megjeleníti a legutóbb hozzáadott és népszerű kísérletek. Összes kísérlet megtekintéséhez válassza ki a **láthatja az összes** gombra. Egy adott kísérletben keresése, válassza ki a **láthatja az összes**, és jelölje ki a szűrési feltételeket. Kifejezést is írhatja a **keresési** a gyűjtemény lap felső részén.
+A **[kísérletek](https://gallery.cortanaintelligence.com/experiments)** lap megjeleníti a legutóbb hozzáadott és népszerű kísérletek. Összes kísérlet megtekintéséhez válassza ki a **láthatja az összes** gombra. Egy adott kísérletben keresése, válassza ki a **láthatja az összes**, és jelölje ki a szűrési feltételeket. Kifejezést is írhatja a **keresési** a gyűjtemény lap felső részén.
 
 További információ a kísérlet kísérlet részleteit megjelenítő oldalon kaphat. Egy kísérletben Részletek lap megnyitásához válassza ki a kísérletet. Kísérlet a Részletek lap a **megjegyzések** szakaszban lehet megjegyzést, visszajelzést vagy kérdése van a kísérlet. A kísérlet ismerősök vagy a Twitteren vagy LinkedIn munkatársak is megoszthatja. A meghívott más felhasználóknak a lapnak a megtekintésére a kísérletben részleteit megjelenítő oldalra mutató hivatkozást is képes e-mail.
 
@@ -172,7 +172,7 @@ A kísérlet a gyűjteményből törléséhez válassza ki **törlése**.
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 **Mik a követelményei elküldése megnövelni, vagy egy kép kísérletemben?**
 
-A kísérlet az elküldött képek egy kísérlet csempe a hozzájárulás létrehozásához használt. Azt javasoljuk, hogy képeket lehet kisebb, mint 500 KB-os, egy aspect ratio 3:2 és 960 &#215; felbontás 640.
+A kísérlet az elküldött képek egy kísérlet csempe a hozzájárulás létrehozásához használt. Azt javasoljuk, hogy képeket lehet kisebb, mint 500 KB-os, egy aspect ratio 3:2 és 960 felbontása &#215; 640.
 
 **Mi történik, az adatkészletben, a kísérletben használt? Az adatkészlet is közzéteszi a katalógusban?**
 

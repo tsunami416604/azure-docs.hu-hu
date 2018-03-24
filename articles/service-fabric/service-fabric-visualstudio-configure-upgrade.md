@@ -1,6 +1,6 @@
 ---
-title: "Konfigurálja a Service Fabric-alkalmazás frissítése |} Microsoft Docs"
-description: "Útmutató: a beállítások konfigurálása a Service Fabric-alkalmazás frissítése a Microsoft Visual Studio használatával."
+title: Konfigurálja a Service Fabric-alkalmazás frissítése |} Microsoft Docs
+description: 'Útmutató: a beállítások konfigurálása a Service Fabric-alkalmazás frissítése a Microsoft Visual Studio használatával.'
 services: service-fabric
 documentationcenter: na
 author: mikkelhegn
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 06/29/2017
 ms.author: mikkelhegn
-ms.openlocfilehash: 3ff85991e87a4996890520a566b3909d331ed27f
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 6bd9f23be2133ca8a207ceca19fcccc116eaf24d
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="configure-the-upgrade-of-a-service-fabric-application-in-visual-studio"></a>A Service Fabric-alkalmazás frissítését a Visual Studio konfigurálása
 A Visual Studio eszközök Azure Service Fabric frissítési támogatást nyújt a helyi vagy távoli fürtök közzétételt. Háromféle esetben kívánja frissíteni az alkalmazást tesztelés és hibakeresés során az alkalmazás felülírása helyett egy újabb verzióra van:

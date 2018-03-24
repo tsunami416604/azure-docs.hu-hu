@@ -1,11 +1,11 @@
 ---
-title: "Machine Learning modellek szoftveres újratanítása |} Microsoft Docs"
-description: "Megtudhatja, hogyan programozott módon modell működik, és frissíti a az újonnan betanított modell használatára az Azure Machine Learning webszolgáltatás."
+title: Machine Learning modellek szoftveres újratanítása |} Microsoft Docs
+description: Megtudhatja, hogyan programozott módon modell működik, és frissíti a az újonnan betanított modell használatára az Azure Machine Learning webszolgáltatás.
 services: machine-learning
-documentationcenter: 
-author: serinakaye
-ms.author: serinak
-manager: mwinkle
+documentationcenter: ''
+author: YasinMSFT
+ms.author: yahajiza
+manager: hjerez
 editor: cgronlun
 ms.assetid: 7ae4f977-e6bf-4d04-9dde-28a66ce7b664
 ms.service: machine-learning
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
-ms.openlocfilehash: a986d8c500eb994af81ad535568fbbd8364f4244
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 276ee051cf927197c026b0fb0850239a048ace41
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="retrain-machine-learning-models-programmatically"></a>Azure Machine Learning-modellek szoftveres átképezése
 Ebben a bemutatóban, megtudhatja, hogyan való programozott módon működik az Azure Machine Learning webszolgáltatás C# és a Machine Learning kötegelt végrehajtási szolgáltatás használatával.
@@ -61,7 +61,7 @@ Ezután hozzon létre egy Predicative kísérletet.
 > Egy új webszolgáltatás-bővítmény telepítése, megfelelő engedélyekkel kell rendelkeznie, amelyhez az előfizetést, a webszolgáltatás telepítése. További információ: [kezelése az Azure Machine Learning webszolgáltatások portál használatával egy webszolgáltatás-bővítmény](manage-new-webservice.md). 
 
 ## <a name="deploy-the-training-experiment-as-a-training-web-service"></a>A tanítási kísérletet egy képzési webszolgáltatás telepítése
-A betanított modell működik, a tanítási kísérletet Retraining webszolgáltatásként létrehozott kell telepítenie. A webszolgáltatás kell egy *webes szolgáltatás kimeneti* modul csatlakozik a  *[tanítási modell] [ train-model]*  modul kell tudnia mutatni az új betanítása modellek.
+A betanított modell működik, a tanítási kísérletet Retraining webszolgáltatásként létrehozott kell telepítenie. A webszolgáltatás kell egy *webes szolgáltatás kimeneti* modul csatlakozik a *[tanítási modell] [ train-model]* modul kell tudnia mutatni az új betanítása modellek.
 
 1. Térjen vissza a tanítási kísérletet, a kísérletek ikonra a bal oldali ablaktáblán kattintson, majd a nyilvántartásba modell nevű kísérlet.  
 2. A keresési kísérlet elemek keresési mezőbe írja be a webes szolgáltatás. 

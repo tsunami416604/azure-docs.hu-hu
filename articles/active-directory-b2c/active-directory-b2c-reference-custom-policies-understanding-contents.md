@@ -1,24 +1,21 @@
 ---
-title: "Az Azure Active Directory B2C: Az alapszintű csomag egyéni házirendjeinek ismertetése |} Microsoft Docs"
-description: "Témakör: Azure Active Directory B2C egyéni házirendek"
+title: 'Az Azure Active Directory B2C: Az alapszintű csomag egyéni házirendjeinek ismertetése |} Microsoft Docs'
+description: 'Témakör: Azure Active Directory B2C egyéni házirendek'
 services: active-directory-b2c
-documentationcenter: 
-author: rojasja
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: rojasja
-ms.assetid: 
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.devlang: na
 ms.date: 04/25/2017
-ms.author: joroja
-ms.openlocfilehash: fccb6cfddc8629de7db0310340f07bffd1ff8a65
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: davidmu
+ms.openlocfilehash: 624a40b1e40db6ceac9c567926b3932449e7bf7e
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="understanding-the-custom-policies-of-the-azure-ad-b2c-custom-policy-starter-pack"></a>Az Azure AD B2C egyéni házirend alapszintű csomag egyéni házirendjeinek ismertetése
 
@@ -52,29 +49,29 @@ A következő jogcímek felhasználói utak helyes működéséhez szükségesek
 
 | Jogcím típusa | Leírás |
 |-------------|-------------|
-| *Felhasználói azonosítóját* | Felhasználónév |
+| *UserId* | Felhasználónév |
 | *signInName* | Jelentkezzen be neve |
-| *a tenantId* | Bérlő azonosítóját az Azure AD B2C-támogatás a felhasználói objektum |
-| *Objektumazonosító* | Objektumazonosító (ID) az Azure AD B2C-támogatás a felhasználói objektum |
-| *jelszó* | Jelszó |
-| *ÚjJelszó* | |
+| *tenantId* | Bérlő azonosítóját az Azure AD B2C-támogatás a felhasználói objektum |
+| *objectId* | Objektumazonosító (ID) az Azure AD B2C-támogatás a felhasználói objektum |
+| *Jelszó* | Jelszó |
+| *newPassword* | |
 | *reenterPassword* | |
 | *passwordPolicies* | A jelszóházirendek az Azure AD B2C prémium alapján határozzák meg a jelszó erőssége, a lejárat, stb. |
-| *Sub* | |
+| *sub* | |
 | *alternativeSecurityId* | |
 | *identityProvider* | |
 | *displayName* | |
 | *strongAuthenticationPhoneNumber* | A felhasználó telefonszáma |
 | *Verified.strongAuthenticationPhoneNumber* | |
-| *e-mailek* | Kapcsolattartás a felhasználókkal használható e-mail cím |
+| *email* | Kapcsolattartás a felhasználókkal használható e-mail cím |
 | *signInNamesInfo.emailAddress* | A felhasználó használhatja-e bejelentkezni az e-mail címet |
 | *otherMails* | Kapcsolattartás a felhasználókkal használt e-mail címek |
 | *userPrincipalName* | Az Azure AD B2C prémium tárolt felhasználónév |
 | *upnUserName* | Egyszerű felhasználónév létrehozásához felhasználónév |
 | *mailNickName* | Mail nick felhasználónév tárolt az Azure AD B2C-támogatás |
-| *Új_felhasználó* | |
-| *végre SelfAsserted-bemenet* | Amely meghatározza, hogy attribútumok gyűjtötte a program a felhasználói jogcímek |
-| *végre PhoneFactor-bemenet* | Jogcímet, amely megadja, hogy egy új telefonszámot gyűjtötte a program a felhasználó részéről |
+| *newUser* | |
+| *executed-SelfAsserted-Input* | Amely meghatározza, hogy attribútumok gyűjtötte a program a felhasználói jogcímek |
+| *executed-PhoneFactor-Input* | Jogcímet, amely megadja, hogy egy új telefonszámot gyűjtötte a program a felhasználó részéről |
 | *authenticationSource* | Megadja, hogy a felhasználó hitelesítési közösségi identitásszolgáltató, login.microsoftonline.com vagy helyi fiók |
 
 ### <a name="claims-required-for-query-string-parameters-and-other-special-parameters"></a>A lekérdezési karakterlánc és más különleges paraméterei szükséges jogcímeket
@@ -84,12 +81,12 @@ A következő jogcímeket más jogcímszolgáltatóktól kell továbbítani a Sp
 | Jogcím típusa | Leírás |
 |-------------|-------------|
 | *nux* | Speciális paramétert a helyi fiók hitelesítési login.microsoftonline.com |
-| *a hálózati csatlakozási Segéd* | Speciális paramétert a helyi fiók hitelesítési login.microsoftonline.com |
-| *parancssor* | Speciális paramétert a helyi fiók hitelesítési login.microsoftonline.com |
+| *nca* | Speciális paramétert a helyi fiók hitelesítési login.microsoftonline.com |
+| *prompt* | Speciális paramétert a helyi fiók hitelesítési login.microsoftonline.com |
 | *mkt* | Speciális paramétert a helyi fiók hitelesítési login.microsoftonline.com |
-| *LC* | Speciális paramétert a helyi fiók hitelesítési login.microsoftonline.com |
+| *lc* | Speciális paramétert a helyi fiók hitelesítési login.microsoftonline.com |
 | *grant_type* | Speciális paramétert a helyi fiók hitelesítési login.microsoftonline.com |
-| *hatókör* | Speciális paramétert a helyi fiók hitelesítési login.microsoftonline.com |
+| *scope* | Speciális paramétert a helyi fiók hitelesítési login.microsoftonline.com |
 | *client_id* | Speciális paramétert a helyi fiók hitelesítési login.microsoftonline.com |
 | *objectIdFromSession* | Az alapértelmezett munkamenet felügyeleti szolgáltató annak jelzésére, hogy az egyszeri bejelentkezési munkamenet objektumazonosító beolvasása a megadott paraméter |
 | *isActiveMFASession* | A többtényezős hitelesítés annak jelzésére, hogy a felhasználó rendelkezik-e többtényezős hitelesítés aktív munkamenet munkamenet-kezelés által biztosított paraméter |
@@ -101,14 +98,14 @@ A következő jogcímek további gyűjtött felhasználói, a címtárban tárol
 | Jogcím típusa | Leírás |
 |-------------|-------------|
 | *givenName* | A megadott felhasználónév (más néven Keresztnév) |
-| *Vezetéknév* | Felhasználó vezetékneve (más néven Családnév vagy vezetéknevet) |
+| *surname* | Felhasználó vezetékneve (más néven Családnév vagy vezetéknevet) |
 | *Extension_picture* | Felhasználó társadalombiztosítási kép |
 
 ## <a name="claim-transformations"></a>A jogcímek átalakításához
 
 A rendelkezésre álló a jogcímek átalakításához alább láthatók.
 
-| Jogcím-átalakítást | Leírás |
+| Claim transformation | Leírás |
 |----------------------|-------------|
 | *CreateOtherMailsFromEmail* | |
 | *CreateRandomUPNUserName* | |
@@ -148,36 +145,36 @@ Ez a szakasz mutatja be a műszaki profilok száma a jogcímszolgáltató már d
 
 | Műszaki profil | Leírás |
 |-------------------|-------------|
-| *Bejelentkezési nem interaktív* | |
+| *Login-NonInteractive* | |
 
 ### <a name="technical-profiles-for-phone-factor"></a>A Phone Factor műszaki profilok
 
 | Műszaki profil | Leírás |
 |-------------------|-------------|
-| *PhoneFactor-bemenet* | |
+| *PhoneFactor-Input* | |
 | *PhoneFactor-InputOrVerify* | |
-| *PhoneFactor-ellenőrzése* | |
+| *PhoneFactor-Verify* | |
 
 ### <a name="technical-profiles-for-azure-active-directory"></a>Az Azure Active Directory műszaki profilok
 
 | Műszaki profil | Leírás |
 |-------------------|-------------|
 | *Az AAD-közös* | A más AAD-xxx műszaki profil része műszaki profil |
-| *Az AAD-UserWriteUsingAlternativeSecurityId* | A közösségi bejelentkezések során műszaki profil |
-| *Az AAD-UserReadUsingAlternativeSecurityId* | A közösségi bejelentkezések során műszaki profil |
-| *Az AAD-UserReadUsingAlternativeSecurityId-NoError* | A közösségi bejelentkezések során műszaki profil |
+| *AAD-UserWriteUsingAlternativeSecurityId* | A közösségi bejelentkezések során műszaki profil |
+| *AAD-UserReadUsingAlternativeSecurityId* | A közösségi bejelentkezések során műszaki profil |
+| *AAD-UserReadUsingAlternativeSecurityId-NoError* | A közösségi bejelentkezések során műszaki profil |
 | *Az AAD-UserWritePasswordUsingLogonEmail* | A helyi fiókok műszaki profil |
-| *Az AAD-UserReadUsingEmailAddress* | A helyi fiókok műszaki profil |
-| *Az AAD-UserWriteProfileUsingObjectId* | Műszaki profil használatával objectId felhasználói rekord frissítéséhez |
-| *Az AAD-UserWritePhoneNumberUsingObjectId* | Műszaki profil használatával objectId felhasználói rekord frissítéséhez |
-| *Az AAD-UserWritePasswordUsingObjectId* | Műszaki profil használatával objectId felhasználói rekord frissítéséhez |
-| *Az AAD-UserReadUsingObjectId* | Műszaki profil segítségével adatokat olvasni, miután a felhasználók hitelesítése |
+| *AAD-UserReadUsingEmailAddress* | A helyi fiókok műszaki profil |
+| *AAD-UserWriteProfileUsingObjectId* | Műszaki profil használatával objectId felhasználói rekord frissítéséhez |
+| *AAD-UserWritePhoneNumberUsingObjectId* | Műszaki profil használatával objectId felhasználói rekord frissítéséhez |
+| *AAD-UserWritePasswordUsingObjectId* | Műszaki profil használatával objectId felhasználói rekord frissítéséhez |
+| *AAD-UserReadUsingObjectId* | Műszaki profil segítségével adatokat olvasni, miután a felhasználók hitelesítése |
 
 ### <a name="technical-profiles-for-self-asserted"></a>Az önkiszolgáló magas műszaki profilok
 
 | Műszaki profil | Leírás |
 |-------------------|-------------|
-| *SelfAsserted-társadalombiztosítási* | |
+| *SelfAsserted-Social* | |
 | *SelfAsserted-ProfileUpdate* | |
 
 ### <a name="technical-profiles-for-local-account"></a>Helyi fiók műszaki profilok
@@ -191,7 +188,7 @@ Ez a szakasz mutatja be a műszaki profilok száma a jogcímszolgáltató már d
 | Műszaki profil | Leírás |
 |-------------------|-------------|
 | *SM-Noop* | |
-| *SM-AAD-BEN* | |
+| *SM-AAD* | |
 | *SM-SocialSignup* | Elem egyértelműségének biztosításához AAD munkamenet között jelentkezzen be, és jelentkezzen be a profil neve használatban van |
 | *SM-SocialLogin* | |
 | *SM-MFA* | |
@@ -212,8 +209,8 @@ Ez a szakasz mutatja be a felhasználó utak már deklarálva a *B2C_1A_base* h�
 
 | Felhasználói út | Leírás |
 |--------------|-------------|
-| *Regisztráció* | |
-| *Bejelentkezés* | |
+| *SignUp* | |
+| *SignIn* | |
 | *SignUpOrSignIn* | |
 | *EditProfile* | |
 | *PasswordReset* | |

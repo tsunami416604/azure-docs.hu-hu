@@ -1,11 +1,11 @@
 ---
-title: "What's new in Azure Active Directory vállalati Alkalmazáskezelés |} Microsoft Docs"
-description: "Ismerje meg a vállalati alkalmazások kezelése az Azure Active Directory újdonságai."
+title: What's new in Azure Active Directory vállalati Alkalmazáskezelés |} Microsoft Docs
+description: Ismerje meg a vállalati alkalmazások kezelése az Azure Active Directory újdonságai.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 34ac4028-a5aa-40d9-a93b-0db4e0abd793
 ms.service: active-directory
 ms.devlang: na
@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 07/13/2017
 ms.author: asteen
 ms.reviewer: asteen
-ms.openlocfilehash: 949eae51c469205489153c271a7c20fcc843ad46
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 8d1b24708380aeed6055912fcf3538f0e5319e2d
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="whats-new-in-enterprise-application-management-in-azure-active-directory"></a>Vállalati alkalmazások kezelése az Azure Active Directory újdonságai 
 
@@ -147,7 +147,7 @@ Nagy mennyiségű új alkalmazások hozzáadása után lehet, hogy engedélyezni
 1. Először jelölje ki a **önkiszolgáló** lehetőséget az alkalmazás a bal oldali navigációs menü és állítsa be a **az alkalmazáshoz való hozzáférés kérését?** lehetőséggel "**Igen**". 
 2. Ez lehetővé teszi ki jogosult az alkalmazáshoz való hozzáférés jóváhagyásához, és megkapja az önkiszolgáló felhasználók csoport konfigurálása. Emellett ha az alkalmazás van konfigurálva, a jelszó egyszeri bejelentkezést, azt is megtudhatja egy másik lehetőség, amely lehetővé teszi, hogy ezek jóváhagyóknak kezelheti a jelszavakat az alkalmazáshoz rendelt opcionálisan engedélyezése.
 
-##<a name="feedback"></a>Visszajelzés
+## <a name="feedback"></a>Visszajelzés
 
 Reméljük, például a továbbfejlesztett használata az Azure AD felhasználói élmény. Ne hamarosan visszajelzését! Visszajelzését és ötleteket javítására szolgáló utáni a **felügyeleti portál** szakasza a [visszajelzési fórumon](https://feedback.azure.com/forums/169401-azure-active-directory/category/162510-admin-portal).  Ritkán használt adatok új dolgai minden nap kiépítésével foglalkozó még érdeklődőbbek és az útmutató a shape felhasználása és határozza meg, mi készíteni.
 

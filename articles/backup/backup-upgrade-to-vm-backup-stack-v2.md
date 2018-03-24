@@ -1,25 +1,25 @@
 ---
-title: "Frissítés az Azure virtuális gép biztonsági mentési verem V2 |} Microsoft Docs"
-description: "Virtuális gép biztonsági mentési csomagjának V2 frissítése-folyamat és a gyakori kérdések"
+title: Frissítés az Azure virtuális gép biztonsági mentési verem V2 |} Microsoft Docs
+description: Virtuális gép biztonsági mentési csomagjának V2 frissítése-folyamat és a gyakori kérdések
 services: backup, virtual-machines
-documentationcenter: 
+documentationcenter: ''
 author: trinadhk
 manager: vijayts
 tags: azure-resource-manager, virtual-machine-backup
-ms.assetid: 
+ms.assetid: ''
 ms.service: backup, virtual-machines
 ms.devlang: na
 ms.topic: article
 ms.workload: storage-backup-recovery
 ms.date: 03/08/2018
-ms.author: trinadhk
-ms.openlocfilehash: b7e9f45c61d2af1940be50a368b87cd35c85b1dd
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.author: trinadhk, sogup
+ms.openlocfilehash: 6d214072bccb8b2b42828ee003dcf349985b4f43
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
-# <a name="upgrade-to-vm-backup-stack-v2"></a>Virtuális gép biztonsági mentési csomagjának V2 frissítése
+# <a name="upgrade-to-vm-backup-stack-v2"></a>Frissítés a virtuális gép biztonságimásolat-vermének 2-es verziójára
 A virtuális gép (VM) biztonsági mentési verem V2 frissítése a következő továbbfejlesztett szolgáltatásokat nyújtja:
 * Lásd: az adatátvitel végrehajtásához várakozás nélkül a helyreállítás elérhető legyen a biztonsági mentési feladat részeként készített pillanatképet lehetősége.
 A visszaállítás elindítása előtt tároló másolandó pillanatkép várakozási csökkenti. Emellett ez kizárja a további tárhely követelmény kivételével első biztonsági mentés a prémium szintű virtuális gépek biztonsági mentéséről.  
@@ -49,7 +49,6 @@ Alapértelmezés szerint hét napos pillanatképek lesznek megőrizve. Ez lehet�
 * Ez az a virtuális gép biztonsági mentési csomagjának egy egyirányú frissítését. Igen Ez a folyamat minden jövőbeni biztonsági mentés váltanak. Mivel a **engedélyezve van egy előfizetési szinten, minden virtuális gép kerül, ez a folyamat**. Az összes új funkciót elemek ugyanazt a vermet alapul. Ez a házirend szinten későbbi hamarosan vezérlése kiadását. 
 * Virtuális gépek a premium lemezek esetében az első biztonsági mentés során győződjön meg arról, hogy a virtuális gép mérete megfelelő tárolóhely érhető el a tárfiókban lévő első biztonsági mentés befejeződéséig. 
 * Pillanatképek helyileg tárolja a helyreállítási pont létrehozása növelése érdekében és visszaállítási felgyorsítása érdekében, mivel látni fogja a 7 napos időszak alatt pillanatképek megfelelő tárolási költségeket.
-Kezelt lemezeken nincs *ár nem növekszik* mert restorePointCollections szabadon. 
 * Akkor használatos, ha a visszaállítás pillanatkép helyreállítási pont a prémium szintű virtuális gépek, látni fogja a virtuális gép létrehozása részeként a visszaállítása közben használt ideiglenes tárolási helye. 
 
 ## <a name="how-to-upgrade"></a>Hogyan lehet frissíteni?

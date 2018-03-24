@@ -1,12 +1,12 @@
 ---
-title: "Active Directory-erdő telepítése Azure virtuális hálózatra |} Microsoft Docs"
-description: "Ez az oktatóanyag bemutatja, hogyan hozzon létre egy új Active Directory-erdőt egy virtuális gépen (VM) egy Azure virtuális hálózaton."
+title: Active Directory-erdő telepítése Azure virtuális hálózatra |} Microsoft Docs
+description: Ez az oktatóanyag bemutatja, hogyan hozzon létre egy új Active Directory-erdőt egy virtuális gépen (VM) egy Azure virtuális hálózaton.
 services: active-directory, virtual-network
-keywords: "az Active directory virtuális gép, telepítés active directory-erdőben, az azure active directory-videót "
-documentationcenter: 
+keywords: 'az Active directory virtuális gép, telepítés active directory-erdőben, az azure active directory-videót '
+documentationcenter: ''
 author: MicrosoftGuyJFlo
 manager: mtillman
-tags: 
+tags: ''
 ms.assetid: eb7170d0-266a-4caa-adce-1855589d65d1
 ms.service: active-directory
 ms.devlang: na
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/06/2017
 ms.author: joflore
-ms.openlocfilehash: c98082b7d839490410132f19fdbf653c61d7165c
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: 0b98b475f49847589398ca743fc3ac3b8bcbb381
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="install-a-new-active-directory-forest-on-an-azure-virtual-network"></a>Egy új Active Directory-erdő telepítése Azure virtuális hálózaton
 Ez a cikk bemutatja, hogyan hozható létre egy új Windows Server Active Directory-környezetben a virtuális gépen (VM) egy [Azure-beli virtuális hálózat](../virtual-network/virtual-networks-overview.md). Ebben az esetben az Azure virtuális hálózat nem egy helyi hálózathoz csatlakozik.
@@ -31,7 +31,7 @@ Is érdekelheti a kapcsolódó cikkekben:
 * Active Directory tartományi szolgáltatások (AD DS) telepítése egy Azure virtuális hálózatra vonatkozó fogalmi útmutatóért lásd: [telepítése Windows Server Active Directory telepítése Azure virtuális gépekre vonatkozó irányelvek](https://msdn.microsoft.com/library/azure/jj156090.aspx).
 
 ## <a name="scenario-diagram"></a>A forgatókönyv diagramja
-Ebben a forgatókönyvben a külső felhasználók tartományhoz csatlakozó kiszolgálón futó alkalmazások eléréséhez szükséges. Az alkalmazás-kiszolgálókat futtató virtuális gépeken és a tartományvezérlők futtató virtuális gépeken telepített Azure virtuális hálózat a saját felhő szolgáltatásának telepítve. Ezek megtalálhatók is a rendelkezésre állási készlet továbbfejlesztett hibatűrést.
+Ebben a forgatókönyvben a külső felhasználók tartományhoz csatlakozó kiszolgálón futó alkalmazások eléréséhez szükséges. Az alkalmazás-kiszolgálókat futtató virtuális gépeken és a tartományvezérlők futtató virtuális gépeken a saját felhőalapú szolgáltatás egy Azure virtuális hálózatban vannak telepítve. Ezek megtalálhatók is a rendelkezésre állási készlet továbbfejlesztett hibatűrést.
 
 ![Active Directory-erdő Azure virtuális hálózatban a virtuális gépek ][1] 7
 

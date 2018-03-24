@@ -1,9 +1,9 @@
 ---
-title: "Hozzon létre riasztásokat Azure-szolgáltatások - platformfüggetlen parancssori Felülettel |} Microsoft Docs"
-description: "Eseményindító e-mailek, értesítések, a megadott feltételek teljesülnek webhely URL-címek (webhookok), vagy az automation hívni."
+title: Hozzon létre riasztásokat Azure-szolgáltatások - platformfüggetlen parancssori Felülettel |} Microsoft Docs
+description: Eseményindító e-mailek, értesítések, a megadott feltételek teljesülnek webhely URL-címek (webhookok), vagy az automation hívni.
 author: rboucher
 manager: carmonm
-editor: 
+editor: ''
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
 ms.assetid: 5c6a2d27-7dcc-4f89-8752-9bb31b05ff35
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2016
 ms.author: robb
-ms.openlocfilehash: 92246a8da73a244a1c9a924bed55711d71a20fd8
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: cf93c95a37c9c32333727059317e05cfcc252905
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/23/2018
 ---
-# <a name="create-metric-alerts-in-azure-monitor-for-azure-services---cross-platform-cli"></a>Hozzon létre metrika riasztások Azure figyelése az Azure-szolgáltatások - platformfüggetlen parancssori Felülettel
+# <a name="create-classic-metric-alerts-in-azure-monitor-for-azure-services---cross-platform-cli"></a>Hozzon létre klasszikus metrika riasztások Azure figyelése az Azure-szolgáltatások - platformfüggetlen parancssori Felülettel
 > [!div class="op_single_selector"]
 > * [Portal](insights-alerts-portal.md)
 > * [PowerShell](insights-alerts-powershell.md)
@@ -29,6 +29,11 @@ ms.lasthandoff: 12/21/2017
 >
 
 ## <a name="overview"></a>Áttekintés
+> [!NOTE]
+> Ez a cikk ismerteti, hogyan régebbi metrika riasztások létrehozásához. Az Azure figyelő most támogatja [újabb, metrika riasztások jobb](monitoring-near-real-time-metric-alerts.md). Ezek a riasztások több metrikát, és lehetővé teszik a dimenzionális metrikák riasztást küld. Újabb metrika riasztások CLI támogatása hamarosan elérhető.
+>
+>
+
 Ez a cikk bemutatja, hogyan állíthat be Azure metrika riasztások a platformfüggetlen parancssori felület (CLI) használatával.
 
 > [!NOTE]
@@ -39,7 +44,7 @@ Ez a cikk bemutatja, hogyan állíthat be Azure metrika riasztások a platformf�
 A figyelési metrikákat, vagy események, az Azure-szolgáltatások alapuló riasztást kaphat.
 
 * **Metrika értékek** -a riasztás elindítja a megadott metrika értékét ebbe a küszöbérték mindkét irányban rendel. Ez azt jelenti, hogy elindítja a mindkét Ha először a feltétel teljesül, és majd ezt követően, hogy a feltétel mikor van már nem teljesül.    
-* **Tevékenység naplóeseményeket** -riasztást aktiválhatók *minden* esemény, vagy csak akkor, ha egy bizonyos események következik be. További információt a naplófájl tevékenységriasztásokat [kattintson ide](monitoring-activity-log-alerts.md)
+* **Tevékenység naplóeseményeket** -riasztást aktiválhatók *minden* esemény, vagy csak akkor, ha bizonyos események megtörténtekor. További információt a naplófájl tevékenységriasztásokat [kattintson ide](monitoring-activity-log-alerts.md)
 
 A metrika riasztások tegye a következőket, amikor elindítja a konfigurálhatja:
 
@@ -52,7 +57,7 @@ Konfigurálhatja és metrika riasztási szabályok adatainak beolvasása
 
 * [Azure Portal](insights-alerts-portal.md)
 * [PowerShell](insights-alerts-powershell.md)
-* [parancssori felület (CLI)](insights-alerts-command-line-interface.md)
+* [Parancssori felület (CLI)](insights-alerts-command-line-interface.md)
 * [Az Azure figyelő REST API-n](https://msdn.microsoft.com/library/azure/dn931945.aspx)
 
 Mindig fogadhat parancsokhoz tartozó súgók parancs beírásával és üzembe - súgó végén. Példa:

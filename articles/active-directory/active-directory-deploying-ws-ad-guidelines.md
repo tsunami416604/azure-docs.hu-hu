@@ -1,24 +1,24 @@
 ---
-title: "Windows Server Active Directory az Azure virtuális gépeken telepítési útmutatója |} Microsoft Docs"
-description: "Ha ismeri az AD tartományi szolgáltatások és a helyszíni AD összevonási szolgáltatások telepítése, megtudhatja, hogyan működnek az Azure virtuális gépeken."
+title: Windows Server Active Directory az Azure virtuális gépeken telepítési útmutatója |} Microsoft Docs
+description: Ha ismeri az AD tartományi szolgáltatások és a helyszíni AD összevonási szolgáltatások telepítése, megtudhatja, hogyan működnek az Azure virtuális gépeken.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: femila
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 04df4c46-e6b6-4754-960a-57b823d617fa
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/26/2017
+ms.date: 03/20/2018
 ms.author: femila
-ms.openlocfilehash: 7a56876dfa545d273807444b105de3645dd79d34
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: c2d58e056cdb285be51d259492e11e6ae37b253e
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="guidelines-for-deploying-windows-server-active-directory-on-azure-virtual-machines"></a>Windows Server Active Directory telepítése Azure virtuális gépekre vonatkozó irányelvek
 Ez a cikk ismerteti a központi telepítése Windows Server Active Directory tartományi szolgáltatások (AD DS) és az Active Directory összevonási szolgáltatások (AD FS) helyszíni és a Microsoft Azure virtuális gépeken történő üzembe fontos különbségei.
@@ -71,8 +71,10 @@ Lásd: [virtuális hálózati](http://azure.microsoft.com/documentation/services
 > 
 > 
 
-### <a name="static-ip-addresses-must-be-configured-with-azure-powershell"></a>Statikus IP-címek az Azure PowerShell kell konfigurálni.
-Dinamikus címek alapértelmezés szerint kiosztott, de a Set-AzureStaticVNetIP parancsmag a segítségével rendelhet hozzá egy statikus IP-cím helyett. Egy statikus IP-címet, amely szolgáltatásjavításnak és a virtuális gép leállítási vagy újraindítási keresztül egészen addig megmarad állítja. További információkért lásd: [statikus belső IP-címet a virtuális gépek](http://azure.microsoft.com/blog/static-internal-ip-address-for-virtual-machines/).
+### <a name="static-ip-addresses-can-be-configured-with-azure-powershell"></a>Statikus IP-címek konfigurálható az Azure PowerShell
+Dinamikus címek alapértelmezés szerint foglal le, de a Set-AzureStaticVNetIP parancsmagot használja, ha azt szeretné, inkább egy statikus IP-címet hozzárendelni. Parancsmagot beállítja egy statikus IP-címet, amely szolgáltatásjavításnak és a virtuális gép leállítási vagy újraindítási keresztül egészen addig megmarad. További információkért lásd: [statikus belső IP-címet a virtuális gépek](http://azure.microsoft.com/blog/static-internal-ip-address-for-virtual-machines/). Beállíthatja úgy is egy statikus IP-címet a virtuális gép létrehozása az Azure-portálon során alább látható módon. További információkért lásd: [virtuális gép létrehozása az Azure portál használatával statikus nyilvános IP-cím](../virtual-network/virtual-network-deploy-static-pip-arm-portal.md).
+
+![Képernyőkép a statikus IP-cím hozzáadása a virtuális gép létrehozásakor lépés](media/active-directory-deploying-ws-ad-guidelines/static-ip.png)
 
 ## <a name="BKMK_Glossary"></a>Kifejezések és meghatározások
 A különböző Azure technológiákhoz, amely ebben a cikkben lesz hivatkozva feltételek nem teljes listáját a következő:
@@ -408,7 +410,7 @@ Kell-e írásvédett vagy írható tartományvezérlők telepítése. Előfordul
 
 Azure nem jelent-e a fiókirodában tényleges biztonsági kockázatot jelent, de az RODC-k előfordulhat, hogy továbbra is bizonyulnak költséghatékonyabb megoldás, mert a szolgáltatásokat biztosítanak az Habár nagyon eltérő okokból jól alkalmazható ezekben a környezetekben. Például RODC-k nem kimenő replikációs rendelkezik és és titkos kulcsokat (jelszó) szelektív feltöltéséhez. A hátránya előfordulhat, hogy ezeknek a kulcsoknak hiánya igény szerinti kimenő forgalom felhasználóként érvényesítéséhez, vagy a számítógép azáltal hitelesíti. De titkokat is szelektív előre feltöltve és gyorsítótárazza.
 
-RODC-k és HBI és PII aggályokat környékén További előny adja meg, mert is hozzáadhat, hogy az RODC-re bizalmas adatokat tartalmazó attribútumok szűrt attribútumkészletet (eszközök). Az eszközök olyan attribútumokat, amelyek nem replikálódnak az RODC-k testre szabható készlete. Használhatja az eszközök a biztonságos működés érdekében, abban az esetben nem engedélyezett, vagy nem szeretné, hogy a személyhez köthető adatokat és a fontos dokumentumok tárolására az Azure-on. További információ: [RODC szűrt attribútumkészlet [(https://technet.microsoft.com/library/cc753459)].
+RODC-k és HBI és PII aggályokat környékén További előny adja meg, mert is hozzáadhat, hogy az RODC-re bizalmas adatokat tartalmazó attribútumok szűrt attribútumkészletet (eszközök). Az eszközök olyan attribútumokat, amelyek nem replikálódnak az RODC-k testre szabható készlete. Használhatja az eszközök a biztonságos működés érdekében, abban az esetben nem engedélyezett, vagy nem szeretné, hogy a személyhez köthető adatokat és a fontos dokumentumok tárolására az Azure-on. További információ: [RODC szűrt attribútumkészletet [(https://technet.microsoft.com/library/cc753459)].
 
 Győződjön meg arról, hogy alkalmazás kompatibilis lesz az RODC-k használatát tervezi. Számos, Windows Server Active Directory-kompatibilis alkalmazások működnek jól működő RODC-k, de néhány alkalmazást, hajtsa végre a töredezetté, vagy sikertelen, ha nem rendelkeznek hozzáféréssel felvételére írható Tartományvezérlőkkel. További információkért lásd: [írásvédett tartományvezérlők kompatibilitási útmutatója](https://technet.microsoft.com/library/cc755190).
 

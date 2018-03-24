@@ -1,24 +1,24 @@
 ---
-title: "Adatok és a műveletek az Azure Search biztonságos |} Microsoft Docs"
-description: "Az Azure Search biztonsági SOC 2 megfelelőségi, titkosítás, hitelesítés és identitás hozzáférés a felhasználó és az Azure keresési szűrők csoport biztonsági azonosítói alapul."
+title: Adatok és a műveletek az Azure Search biztonságos |} Microsoft Docs
+description: Az Azure Search biztonsági SOC 2 megfelelőségi, titkosítás, hitelesítés és identitás hozzáférés a felhasználó és az Azure keresési szűrők csoport biztonsági azonosítói alapul.
 services: search
-documentationcenter: 
+documentationcenter: ''
 author: HeidiSteen
 manager: cgronlun
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: search
-ms.devlang: 
+ms.devlang: ''
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 01/19/2018
 ms.author: heidist
-ms.openlocfilehash: c3aa4883e33b1f3494f8502fe7f8b12f7d64a72f
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 35f875e5f6345b9ebb9abc4deb71b7bf9c78907d
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="security-and-controlled-access-in-azure-search"></a>Biztonság és ellenőrzött hozzáférés az Azure Search
 
@@ -57,29 +57,16 @@ Az összes Azure-szolgáltatások beállítása hozzáférési szintek következ
 
 ## <a name="service-access-and-authentication"></a>Hozzáférés és a hitelesítés
 
-Azure Search örökli a biztonsági óvintézkedéseket, az Azure platform, amíg a saját kulcs alapú hitelesítés is tartalmazza. (A rendszergazda vagy a lekérdezés) kulcs típusa meghatározza, hogy a hozzáférési szintet. Érvényes kulcs benyújtása akkor tekinthető igazolása a kérelem olyan megbízható entitás származik. 
+Azure Search örökli a biztonsági óvintézkedéseket, az Azure platform, amíg a saját kulcs alapú hitelesítés is tartalmazza. Api-kulcsát: véletlenszerűen generált számok és betűk álló karakterlánc. (A rendszergazda vagy a lekérdezés) kulcs típusa meghatározza, hogy a hozzáférési szintet. Érvényes kulcs benyújtása akkor tekinthető igazolása a kérelem olyan megbízható entitás származik. A keresési szolgáltatás eléréséhez használt kulcsok két típusát:
 
-Hitelesítés kéréseknek, ahol minden kérelmet kötelező kulcs, egy műveletet, és áll egy objektum szükséges. Összeláncolt, ha a két jogosultsági szintek (teljes vagy csak olvasható) és a környezet elegendőek a szolgáltatási műveletek teljes-számos biztonsági biztosít. 
+* A rendszergazda (érvényes a szolgáltatás bármely olvasási és írási művelet)
+* A lekérdezés (a csak olvasási műveletek, például a lekérdezések írásában, az index használható)
 
-|Kulcs|Leírás|Korlátok|  
-|---------|-----------------|------------|  
-|Adminisztratív körzet|Teljes körű jogosultságot biztosít az összes művelethez, beleértve a szolgáltatás kezelése létrehozása, és törölje az indexek, az indexelők és az adatforrások.<br /><br /> Két felügyeleti **api-kulcsokat**nevezik, *elsődleges* és *másodlagos* kulcsok a portálon jönnek létre, ha a szolgáltatás jön létre, és az igény szerinti külön-külön újragenerálása . A két kulcs lehetővé teszi egy kulcs váltása a második kulcs használatakor a szolgáltatás folyamatos elérésére.<br /><br /> Adminisztrációs kulcsok csak HTTP-kérelmek fejléceinek vannak megadva. Az egy URL-cím nem helyezhető el egy adminisztrációs api-kulcsot.|Legfeljebb 2-szolgáltatás|  
-|Lekérdezés|Csak olvasható hozzáférést biztosítanak az indexekhez és dokumentumokhoz, és általában a keresési kérelmeket kibocsátó ügyfélalkalmazások számára.<br /><br /> Lekérdezési kulcsok igény szerint jönnek létre. Létrehozhat őket manuálisan a portálon vagy programozottan keresztül a [felügyeleti REST API](https://docs.microsoft.com/rest/api/searchmanagement/).<br /><br /> Lekérdezési kulcsok a keresés, a javaslat, vagy a keresési művelet HTTP-kérelem fejléc adható meg. Másik lehetőségként átadhatók egy lekérdezési kulcsot paraméterként egy URL-címen. Attól függően, hogy az ügyfélalkalmazás formulates a kérelmet akkor valószínűleg egyszerűbb felelt meg a kulcsot a lekérdezési paramétert:<br /><br /> `GET /indexes/hotels/docs?search=*&$orderby=lastRenovationDate desc&api-version=2016-09-01&api-key=A8DA81E03F809FE166ADDB183E9ED84D`|50-szolgáltatás|  
+Adminisztrációs kulcsok jönnek létre, ha a szolgáltatás ki van építve. Két felügyeleti kulcsok, mint a kijelölt *elsődleges* és *másodlagos* leegyszerűsítheti rögtön, de valójában azok felcserélhetők. Minden szolgáltatás van két adminisztrációs kulcsok, hogy lehet vonni egy a szolgáltatáshoz való hozzáférés elvesztése nélkül. Vagy rendszergazdai kulcs helyreállíthatók, de nem tudja felvenni a rendszergazda teljes száma. Nincs legfeljebb két adminisztrációs kulcsok érhető el keresési szolgáltatásonként.
 
- Nincs vizuálisan, egy adminisztrációs kulcsot vagy a lekérdezési kulcs közötti különbség. Mindkét kulcsai 32 véletlenszerűen álló karakterláncok generált alfanumerikus karakter. Ha elveszti nyomon milyen kulcs van megadva az alkalmazásban, akkor [ellenőrizze a portálon értékek](https://portal.azure.com) , vagy használja a [REST API](https://docs.microsoft.com/rest/api/searchmanagement/) adhatja vissza az értéket és a kulcs típusa.  
+Lekérdezési kulcsok igény szerint jönnek létre, és közvetlenül hívó keresési ügyfélalkalmazások készültek. Legfeljebb 50 lekérdezési kulcsokat hozhat létre. Az alkalmazás kódjában adja meg a keresési URL-cím és a lekérdezési api-kulcsot a szolgáltatás a csak olvasható hozzáférést. Az alkalmazás kódjában is adja meg az index, amelyet az alkalmazás. A végpont, csak olvasási hozzáféréssel egy api-kulcs és a cél index együtt, a hatókör és a hozzáférési szint, a kapcsolat az ügyfélalkalmazás megadása.
 
-> [!NOTE]  
->  A gyenge biztonsági eljárás felelt meg a bizalmas adatokat, mint egy `api-key` kérési URI-ban. Emiatt Azure Search csak fogad egy lekérdezési kulcsot egy `api-key` a lekérdezésben karakterlánc, és kerülje ennek során, kivéve, ha az index tartalmát nyilvánosan elérhetőnek kell lennie. Általános szabályként elmondható, sikeres javasoljuk a `api-key` fejléc szerint.  
-
-### <a name="how-to-find-the-access-keys-for-your-service"></a>Hol találhatók a szolgáltatás hozzáférési kulcsainak listázása
-
-Ezt úgy szerezheti be a portál vagy a tárelérési kulcsok a [felügyeleti REST API](https://docs.microsoft.com/rest/api/searchmanagement/). További információkért lásd: [kulcsok kezelése](search-manage.md#manage-api-keys).
-
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. Lista a [keresési szolgáltatások](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) az előfizetéséhez.
-3. Válassza ki a szolgáltatást, és keresse meg a szolgáltatás lapján **beállítások** >**kulcsok** rendszergazda és a lekérdezési kulcsok megtekintéséhez.
-
-![Portállapon, beállítások, a kulcsok szakasz](media/search-security-overview/settings-keys.png)
+Hitelesítés kéréseknek, ahol minden kérelmet kötelező kulcs, egy műveletet, és áll egy objektum szükséges. Összeláncolt, ha a két jogosultsági szintek (teljes vagy csak olvasható) és a környezetben (például a lekérdezési műveletet indexen) elegendőek a szolgáltatási műveletek teljes-számos biztonsági biztosít. Kulcsokkal kapcsolatos további információkért lásd: [létrehozása és api-kulcsok kezelése](search-security-api-keys.md).
 
 ## <a name="index-access"></a>Index hozzáférés
 
@@ -123,7 +110,7 @@ A következő táblázat összefoglalja az Azure Search engedélyezett művelete
 | Az index lekérdezése | Rendszergazda vagy a lekérdezési kulcs (a Szerepalapú nem alkalmazható) |
 | Rendszer információkat, például visszaadó statisztika, számok és objektumok listájának lekérdezése. | Adminisztrációs kulcsot, az erőforrás-(tulajdonos, közreműködő, olvasó) RBAC |
 | Adminisztrációs kulcsok kezelése | Adminisztrációs kulcsot, RBAC tulajdonosa vagy Közreműködője az erőforráson. |
-| Lekérdezési kulcsok kezelése |  Adminisztrációs kulcsot, RBAC tulajdonosa vagy Közreműködője az erőforráson. Az RBAC-olvasó lekérdezési kulcsok megtekintéséhez. |
+| Lekérdezési kulcsok kezelése |  Adminisztrációs kulcsot, RBAC tulajdonosa vagy Közreműködője az erőforráson.  |
 
 
 ## <a name="see-also"></a>Lásd még

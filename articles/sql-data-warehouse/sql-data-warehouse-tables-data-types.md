@@ -1,11 +1,11 @@
 ---
-title: "Adattípus-útmutatót - Azure SQL Data Warehouse |} Microsoft Docs"
-description: "Javaslatok az SQL Data Warehouse szolgáltatással kompatibilis adatok típusát."
+title: Adattípus-útmutatót - Azure SQL Data Warehouse |} Microsoft Docs
+description: Javaslatok az SQL Data Warehouse szolgáltatással kompatibilis adatok típusát.
 services: sql-data-warehouse
 documentationcenter: NA
 author: barbkess
 manager: jenniehubbard
-editor: 
+editor: ''
 ms.assetid: d4a1f0a3-ba9f-44b9-95f6-16a4f30746d6
 ms.service: sql-data-warehouse
 ms.devlang: NA
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: tables
-ms.date: 12/06/2017
+ms.date: 03/17/2018
 ms.author: barbkess
-ms.openlocfilehash: 2bde5da8593c559e2afb33c9c4842695dc273ac3
-ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
+ms.openlocfilehash: dcdcb6eddf35fe3ec4754353452c68cd3e24f907
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="guidance-for-defining-data-types-for-tables-in-sql-data-warehouse"></a>Útmutató az SQL Data Warehouse táblák adattípusok definiálása
 Ezek a javaslatok használatával az SQL Data Warehouse szolgáltatással kompatibilis tábla adattípusok definiálása. Mellett kompatibilitási minimalizálja a adattípusok mérete növeli a lekérdezések teljesítményét.
@@ -58,18 +58,18 @@ Az alábbi lista mutatja az adatok típusát, hogy az SQL Data Warehouse nem tá
 | [geometriai][geometry] |[varbinary][varbinary] |
 | [földrajzi hely][geography] |[varbinary][varbinary] |
 | [Hierarchiaazonosító][hierarchyid] |[nvarchar][nvarchar](4000) |
-| [kép][ntext,text,image] |[varbinary][varbinary] |
-| [szöveg][ntext,text,image] |[varchar][varchar] |
+| [image][ntext,text,image] |[varbinary][varbinary] |
+| [Szöveg][ntext,text,image] |[varchar][varchar] |
 | [ntext][ntext,text,image] |[nvarchar][nvarchar] |
 | [sql_variant][sql_variant] |Oszlop felosztása több szigorú típusmegadású oszlopot. |
-| [tábla][table] |Az ideiglenes táblák átalakítása. |
+| [Tábla][table] |Az ideiglenes táblák átalakítása. |
 | [időbélyeg][timestamp] |Használandó kódját átdolgozási [datetime2] [ datetime2] és `CURRENT_TIMESTAMP` függvény.  Csak állandó támogatott alapértelmezettként, ezért current_timestamp nem definiálható mint az alapértelmezett megkötés. Ha sor verzióértékek át gépelt Timestamp típusú oszlopa van szüksége, használja [bináris][BINARY](8) vagy [VARBINARY][BINARY](8) a NOT NULL értékű vagy Verzió sorérték null értékű. |
-| [XML][xml] |[varchar][varchar] |
+| [xml][xml] |[varchar][varchar] |
 | [felhasználó által definiált típus][user defined types] |Vissza a natív adattípusúra konvertálása amikor lehetséges. |
 | alapértelmezett értékek | Alapértelmezett értékek szövegkonstansok és csak állandók támogatja.  A nem determinisztikus kifejezésekre vagy funkciók, például a `GETDATE()` vagy `CURRENT_TIMESTAMP`, nem támogatottak. |
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További tudnivalókért lásd:
 
 - [SQL Data Warehouse gyakorlati tanácsok][SQL Data Warehouse Best Practices]

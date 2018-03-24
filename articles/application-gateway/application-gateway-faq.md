@@ -1,6 +1,6 @@
 ---
-title: "Gyakori kérdések az Azure Application Gateway |} Microsoft Docs"
-description: "Ezen a lapon biztosít Azure Application Gateway gyakran feltett kérdésekre adott válaszok"
+title: Gyakori kérdések az Azure Application Gateway |} Microsoft Docs
+description: Ezen a lapon biztosít Azure Application Gateway gyakran feltett kérdésekre adott válaszok
 documentationcenter: na
 services: application-gateway
 author: davidmu1
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/19/2017
 ms.author: davidmu
-ms.openlocfilehash: f92af44df9863bbf48abb4afcf9b1505c843fadc
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.openlocfilehash: 5b400b373577fc38fe108a74eb8bad936a82be0c
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="frequently-asked-questions-for-application-gateway"></a>Az Alkalmazásátjáró gyakori kérdések
 
@@ -136,10 +136,6 @@ Egyéni mintavételt nem támogatják a helyettesítő karakteres vagy regex ér
 
 Szabályok feldolgozása a sorrendben vannak konfigurálva. Javasoljuk, hogy többhelyes szabályok konfigurálva vannak-e, mielőtt alapvető szabályok csökkenti annak esélyét, hogy forgalom annak biztosítására, hogy a megfelelő háttér, az alapszintű szabály megfelelő forgalmat a többhelyes szabály értékelt előtt port alapján.
 
-**Q. Szabályok feldolgozásának módja?**
-
-Szabályok feldolgozása a létrehozásuk sorrendjében. Javasoljuk, hogy a többhelyes szabályok előtt alapvető szabályok vannak konfigurálva. Többhelyes figyelői először konfigurálásával, ez a konfiguráció csökkentheti annak lehetőségét annak biztosítására, hogy a megfelelő háttér forgalom. Az alapvető szabály megfelelő előtt a többhelyes szabály értékelt port alapján forgalom útválasztási probléma fordulhatnak elő.
-
 **Q. Mi a gazdagép mezőt az egyéni mintavételt jelölésére?**
 
 A gazdagép mező neve a mintavétel történő küldéséhez. Alkalmazandó csak akkor, ha több hely van beállítva az alkalmazás-átjárón, ellenkező esetben használja a "127.0.0.1". Ez az érték eltér a virtuális gép állomásnevét, és formátumú \<protokoll\>://\<állomás\>:\<port\>\<elérési\>.
@@ -180,7 +176,7 @@ Nem, de Alkalmazásátjáró riasztást küldjön, amikor a küszöbérték elé
 
 Igen, Azure példányok elosztása frissítés és a tartalék tartományok győződjön meg arról, hogy minden példány nem egy időben. Alkalmazásátjáró támogatja, több példányát ugyanahhoz az átjáróhoz a terhelés hozzáadásával méretezés.
 
-## <a name="ssl-configuration"></a>SSL-beállítása
+## <a name="ssl-configuration"></a>SSL Configuration
 
 **Q. Milyen tanúsítványok Alkalmazásátjáró támogatottak?**
 
@@ -324,6 +320,6 @@ Igen, Alkalmazásátjáró támogatja a riasztások, értesítések metrikák ki
 
 A leggyakoribb oka a háttérkiszolgálón a hozzáférést egy NSG-t vagy egyéni DNS-megjelenítését blokkolják. Látogasson el [háttér állapot, a diagnosztikai naplózás és a metrikák az Alkalmazásátjáró](application-gateway-diagnostics.md) további.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információt az Alkalmazásátjáró látogasson el [Alkalmazásátjáró bemutatása](application-gateway-introduction.md).

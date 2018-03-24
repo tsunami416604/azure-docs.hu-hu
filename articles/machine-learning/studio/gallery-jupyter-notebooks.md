@@ -1,10 +1,11 @@
 ---
-title: "Az Azure AI gyűjtemény Jupyter notebookok |} Microsoft Docs"
-description: "Az Azure Eszközintelligencia-katalógus Jupyter notebookok felderítése."
+title: Az Azure AI gyűjtemény Jupyter notebookok |} Microsoft Docs
+description: Az Azure Eszközintelligencia-katalógus Jupyter notebookok felderítése.
 services: machine-learning
-documentationcenter: 
-author: garyericson
-manager: jhubbard
+documentationcenter: ''
+author: heatherbshapiro
+ms.author: hshapiro
+manager: hjerez
 editor: cgronlun
 ms.assetid: 556e0671-1b50-4bcb-92eb-889962310633
 ms.service: machine-learning
@@ -13,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
-ms.author: garye
-ms.openlocfilehash: 53a600490f3e73c37e0434785198adee0be4b218
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: b684134518a04d70a951b411897417dca05c5829
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="discover-jupyter-notebooks-in-the-azure-ai-gallery"></a>Az Azure Eszközintelligencia-katalógus Jupyter notebookok felderítése
 [!INCLUDE [machine-learning-gallery-item-selector](../../../includes/machine-learning-gallery-item-selector.md)]
@@ -30,7 +30,7 @@ A katalógusban notebookok oktatóanyagok és részletes magyarázatokat fejlett
 ## <a name="discover"></a>Ismertetők
   A katalógusban notebookok kereshet, nyissa meg a [gyűjteménye](http://gallery.cortanaintelligence.com) kattintson **notebookok** a gyűjtemény kezdőlap tetején.
 
- A  **[Jupyter notebookok](https://gallery.cortanaintelligence.com/notebooks)**  lap megjeleníti a legnépszerűbb notebookok listáját.
+ A **[Jupyter notebookok](https://gallery.cortanaintelligence.com/notebooks)** lap megjeleníti a legnépszerűbb notebookok listáját.
 Kattintson a **láthatja az összes** összes jegyzetfüzet megtekintéséhez.
 Ezen a lapon keresse meg a katalógusban az összes jegyzetfüzet. Is kereshet; ehhez válassza a bal felső belépés keresési feltételek és a szűrési feltételeket.
 
@@ -66,7 +66,7 @@ Is megnyithatja az ugyanazon gyűjtemény notebookok bármelyikét a Machine Lea
 A notebook másolatát letölti és a munkaterületen a Machine Learning Studio Jupyter notebookok részén megnyitva.
 A notebook megjelenik, a más notebookok, valamint a a **notebookok** Studio oldalán (a a [Studio kezdőlap](https://studio.azureml.net/), kattintson a **notebookok** a bal oldali).
 
-**[UGRÁS A A GYŰJTEMÉNY >>](http://gallery.cortanaintelligence.com)**
+**[UGRÁS A A GYŰJTEMÉNY &GT;&GT;](http://gallery.cortanaintelligence.com)**
 
 [!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
 

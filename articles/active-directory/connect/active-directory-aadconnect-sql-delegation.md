@@ -1,24 +1,24 @@
 ---
-title: "Telepítse az Azure AD Connect SQL meghatalmazott rendszergazdai engedélyek használatával |} Microsoft Docs"
-description: "Ez a témakör ismerteti az Azure AD Connect, amely lehetővé teszi egy olyan fiókkal, amely csak az SQL dbo jogosultságokkal rendelkezik a telepítéshez tartozó frissítés."
-documentationcenter: 
+title: Telepítse az Azure AD Connect SQL meghatalmazott rendszergazdai engedélyek használatával |} Microsoft Docs
+description: Ez a témakör ismerteti az Azure AD Connect, amely lehetővé teszi egy olyan fiókkal, amely csak az SQL dbo jogosultságokkal rendelkezik a telepítéshez tartozó frissítés.
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.reviewer: jparsons
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/15/2018
+ms.date: 03/19/2018
 ms.author: billmath
-ms.openlocfilehash: c2d77c37f2f65c9a7db1fd5c4010fc43bcbc7ebf
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 2686bdef9c25f4540f9b2a21594b18cbe0404e08
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="install-azure-ad-connect-using-sql-delegated-administrator-permissions"></a>SQL meghatalmazott rendszergazdai engedélyek használatával az Azure AD Connect telepítése
 Az Azure AD Connect legújabb buildjével, mielőtt felügyeleti delegálás, a szükséges SQL-konfigurációk központi telepítésekor nem támogatott.  Felhasználók számára az Azure AD Connect telepítése az SQL server kiszolgáló rendszergazdai engedélyekre van szükség.
@@ -51,6 +51,8 @@ A sávon kívüli adatbázis létesítéséhez, és az Azure AD Connect telepít
 
 ## <a name="additional-information"></a>További információ
 Az adatbázis üzembe helyezése után az Azure AD Connect rendszergazda telepítheti és beállíthatja a helyszínre végzett szinkronizálás kényelme:.  
+
+A **/UseExistingDatabase** jelzőt kell adni, ha egy előre létrehozott adatbázist használja.  Nem csak szolgál helyreállítási helyzetekben.
 
 Mellett támogatása az Azure AD Connect új telepítések esetén ez a funkció is lehetővé teszi a delegálás olyan forgatókönyv kapcsolódik a **/UseExistingDatabase** jelzőt.  Meglévő adatbázissal az Azure AD Connect telepítésével kapcsolatos további információkért lásd: [telepítse az Azure AD Connect az ADSync adatbázis](active-directory-aadconnect-existing-database.md)
 

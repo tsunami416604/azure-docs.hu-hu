@@ -1,19 +1,19 @@
 ---
-title: "Magas rendelkezésre állású - Azure SQL Database szolgáltatásban |} Microsoft Docs"
-description: "További tudnivalók az Azure SQL Database szolgáltatás magas rendelkezésre állású szolgáltatásait és funkcióit:"
+title: Magas rendelkezésre állású - Azure SQL Database szolgáltatásban |} Microsoft Docs
+description: 'További tudnivalók az Azure SQL Database szolgáltatás magas rendelkezésre állású szolgáltatásait és funkcióit:'
 services: sql-database
 author: anosov1960
 manager: craigg
 ms.service: sql-database
 ms.topic: article
-ms.date: 03/16/2018
+ms.date: 03/19/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 8deb78ba108aafc3297e6b96d6d88d0c56c60afd
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: d26fe28d301cf563dc6bdb3d9e17903dea3e73fc
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="high-availability-and-azure-sql-database"></a>Magas rendelkezésre állású és az Azure SQL-adatbázis
 Az Azure SQL adatbázis Platformszolgáltatási ajánlat kezdete óta a Microsoft tett a felhőalkalmazások nyújtotta az ügyfelek, amelyek a szolgáltatás részét magas rendelkezésre állású (HA), és az ügyfelek nem szükséges üzemeltetéséhez, különleges logika hozzáadása, és magas rendelkezésre ÁLLÁSÚ körül döntéseket. A Microsoft fenntartja a magas rendelkezésre ÁLLÁSÚ rendszerkonfiguráció és a művelet, teljes hozzáféréssel, szolgáltatásiszint-szerződésben garantált kínál az ügyfeleknek. A magas rendelkezésre ÁLLÁSÚ SLA régióban SQL-adatbázis vonatkozik, és nem nyújt védelmet a teljes tartomány hibák, amely kívül a Microsoft irányítása alá tartozó tényezők miatt esetekben (például természeti katasztrófa, war, tevékenységéért terrorakció is történhet, lázadások, kormányzati műveletet, vagy egy hálózati vagy az eszköz hiba a Microsoft adatközpontokban, beleértve az ügyfél helyeken vagy a felhasználói helyek és a Microsoft-adatközpont közti külső).
@@ -23,7 +23,7 @@ A magas rendelkezésre ÁLLÁSÚ probléma lemezterület leegyszerűsítése Mic
 2.  Műveleti személyzet vétett hibákhoz vezethet
 3.  Tervezett karbantartási műveletek miatt leállások esetén 
 
-Amíg ilyen egyéni események alkalomszerű, a felhőbeli skálázással, azok minden héten, ha nem minden nap. 
+Míg ezek az egyéni események alkalomszerű, a felhőbeli skálázással, előfordulásuk időpontjában naplózhatja őket minden héten, ha nem minden nap. 
 
 ## <a name="fault-tolerant-sql-databases"></a>A hibatűrő SQL-adatbázisok
 Az ügyfelek tervezheti meg a saját adatbázis rugalmasságát és kisebb rugalmasságát, az SQL Database szolgáltatás egészére. a szolgáltatás 99,99 % bekapcsolási ideje értelmetlen, ha "a" része a 0,01 %-os-adatbázisok, amelyek le. Minden adatbázis kell lennie a hibatűrő, és tartalék megoldás soha nem kell a véglegesített tranzakció elvesztését eredményezi. 
@@ -46,7 +46,7 @@ Főbb előnyei:
 
 ## <a name="data-redundancy"></a>Adatredundancia
 
-A magas rendelkezésre állású megoldás az SQL-adatbázis alapul [Alwayson](/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server) technológia az SQL-kiszolgálóról, és működnek az LS és RS adatbázis is minimális eltérésekkel lehetővé teszi. Az LS, mindig ON szolgál az RS adatmegőrzési beállítás (alacsony RTO) rendelkezésre állási használja azt. 
+A magas rendelkezésre állású megoldás az SQL-adatbázis alapuló [Always ON rendelkezésre állási csoportok](/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server) technológia az SQL-kiszolgálóról, és működnek az LS és RS adatbázis is minimális eltérésekkel lehetővé teszi. LS a konfigurációban az Always ON rendelkezésre állási csoport technológia használjuk a megőrzéséhez az RS-ben a rendszer rendelkezésre állás (alacsony RTO). 
 
 ## <a name="local-storage-configuration"></a>Helyi tárolás beállítása
 

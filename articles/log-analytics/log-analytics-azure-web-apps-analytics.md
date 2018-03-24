@@ -1,24 +1,24 @@
 ---
-title: "Azure Web Apps analitikai adatok megtekintése |} Microsoft Docs"
-description: "Használhatja az Azure Web Apps elemzési megoldások kapcsolódva információt kaphat a Azure Web Apps kapcsolatos különböző metrikák begyűjtenie az Azure-webalkalmazás-erőforrások között."
+title: Azure Web Apps analitikai adatok megtekintése |} Microsoft Docs
+description: Használhatja az Azure Web Apps elemzési megoldások kapcsolódva információt kaphat a Azure Web Apps kapcsolatos különböző metrikák begyűjtenie az Azure-webalkalmazás-erőforrások között.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: 20ff337f-b1a3-4696-9b5a-d39727a94220
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/11/2017
+ms.date: 03/19/2018
 ms.author: magoedte
-ms.openlocfilehash: 7c22950c391707cdfe14ca242ea82a317be0e46e
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: b70b626ca618fbfb7cbe25a4fcbc9aae797ce157
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="view-analytic-data-for-metrics-across-all-your-azure-web-app-resources"></a>Az Azure-webalkalmazás-erőforrások között metrikáihoz analitikai adatok megtekintése
 
@@ -90,19 +90,18 @@ Az Azure Web Apps elemzési megoldások a munkaterülethez való hozzáadásakor
 
 Kattintson a **Azure Web Apps Analytics** csempére kattintva nyissa meg a **Azure Web Apps Analytics** irányítópult. Az irányítópult a paneleket az alábbi táblázat tartalmazza. Minden panel adott panelhez feltételeknek, a megadott hatókör és időtartomány legfeljebb tíz elemeket sorolja fel. A napló keresési, amely visszaadja az összes rekord kattintva futtathatja **láthatja az összes** alján a panelről, vagy kattintson a panel fejléc.
 
-[!INCLUDE[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
 
 | Oszlop | Leírás |
 | --- | --- |
 | Azure Webapps |   |
-| Web Apps kérelem trendek | A kijelölt dátumtartomány webalkalmazások kérelem trendje sor látható, és a felső tíz webes kérelmek listáját tartalmazza. Kattintson a vonaldiagram futtatásához napló keresése <code>Type=AzureMetrics ResourceId=*"/MICROSOFT.WEB/SITES/"* (MetricName=Requests OR MetricName=Http*) &#124; measure avg(Average) by MetricName interval 1HOUR</code> <br>Kattintson egy webes kérelem elem a napló keresése a webes kérelem metrika trend kérő futtatásához. |
-| Web Apps válaszidő | A kijelölt időtartományban webalkalmazások válaszidő sor diagramot ábrázol. Is felső listája listájának megjelenítése tíz webes alkalmazások response alkalommal fordult elő. Kattintson a diagram futtatásához napló keresése <code>Type:AzureMetrics ResourceId=*"/MICROSOFT.WEB/SITES/"* MetricName="AverageResponseTime" &#124; measure avg(Average) by Resource interval 1HOUR</code><br> Kattintson a válaszidők vissza a webalkalmazáshoz tartozó napló keresés futtatásához egy webalkalmazást. |
-| Web Apps Traffic | A Web Apps-forgalmat, vonaldiagram mutatja MB-ban, és webalkalmazások forgalom felső sorolja fel. Kattintson a diagram futtatásához napló keresése <code>Type:AzureMetrics ResourceId=*"/MICROSOFT.WEB/SITES/"*  MetricName=BytesSent OR BytesReceived &#124; measure sum(Average) by Resource interval 1HOUR</code><br> Azt az elmúlt percben forgalom minden webalkalmazások jelennek meg. Kattintson a napló keresés kapott, és a webalkalmazás számára küldött bájtok megjelenítő futtatásához a webes alkalmazás. |
+| Web Apps kérelem trendek | A kijelölt dátumtartomány webalkalmazások kérelem trendje sor látható, és a felső tíz webes kérelmek listáját tartalmazza. Kattintson a vonaldiagram futtatásához napló keresése <code>AzureMetrics &#124; where ResourceId == "/MICROSOFT.WEB/SITES/" and (MetricName == "Requests" or MetricName startswith_cs "Http") &#124; summarize AggregatedValue = avg(Average) by MetricName, bin(TimeGenerated, 1h)</code> <br>Kattintson egy webes kérelem elem a napló keresése a webes kérelem metrika trend kérő futtatásához. |
+| Web Apps válaszidő | A kijelölt időtartományban webalkalmazások válaszidő sor diagramot ábrázol. Is felső listája listájának megjelenítése tíz webes alkalmazások response alkalommal fordult elő. Kattintson a diagram futtatásához napló keresése <code>AzureMetrics &#124; where ResourceId == "/MICROSOFT.WEB/SITES/" and MetricName == "AverageResponseTime" &#124; summarize AggregatedValue = avg(Average) by Resource, bin(TimeGenerated, 1h)</code><br> Kattintson a válaszidők vissza a webalkalmazáshoz tartozó napló keresés futtatásához egy webalkalmazást. |
+| Web Apps Traffic | A Web Apps-forgalmat, vonaldiagram mutatja MB-ban, és webalkalmazások forgalom felső sorolja fel. Kattintson a diagram futtatásához napló keresése <code>AzureMetrics &#124; where ResourceId == "/MICROSOFT.WEB/SITES/" and (MetricName == "BytesSent" or MetricName == "BytesReceived") &#124; summarize AggregatedValue = sum(Average) by Resource, bin(TimeGenerated, 1h)</code><br> Azt az elmúlt percben forgalom minden webalkalmazások jelennek meg. Kattintson a napló keresés kapott, és a webalkalmazás számára küldött bájtok megjelenítő futtatásához a webes alkalmazás. |
 | Azure App Service Plans |   |
-| App Service-csomagok a CPU-felhasználás &gt; 80 %-át | App Service-csomagok, amelyek CPU-kihasználtsága 80 %-nál nagyobb teljes számát jeleníti meg, és felsorolja a CPU-kihasználtság szerinti a felső 10 App Service-csomagok. Kattintson a napló keresése futtatásához teljes terület <code>Type=AzureMetrics ResourceId=*"/MICROSOFT.WEB/SERVERFARMS/"* MetricName=CpuPercentage &#124; measure Avg(Average) by Resource</code><br> Ez az App Service-csomagok és az átlagos processzorhasználat listáját tartalmazza. Kattintson egy App Service-csomag az átlagos processzorhasználat megjelenítő napló keresés futtatásához. |
-| App Service-csomagok memóriahasználata a &gt; 80 %-át | App Service-csomagok, amelyek memória kihasználtsága 80 %-nál nagyobb teljes számát jeleníti meg, és felsorolja a memóriahasználat által a felső 10 App Service-csomagok. Kattintson a napló keresése futtatásához teljes terület <code>Type=AzureMetrics ResourceId=*"/MICROSOFT.WEB/SERVERFARMS/"* MetricName=MemoryPercentage &#124; measure Avg(Average) by Resource</code><br> Ez az App Service-csomagok és az átlagos memóriafelhasználás a listáját jeleníti meg. Kattintson egy App Service-csomag megjelenítő, az átlagos memóriafelhasználás a napló keresés futtatásához. |
+| App Service-csomagok a CPU-felhasználás &gt; 80 %-át | App Service-csomagok, amelyek CPU-kihasználtsága 80 %-nál nagyobb teljes számát jeleníti meg, és felsorolja a CPU-kihasználtság szerinti a felső 10 App Service-csomagok. Kattintson a napló keresése futtatásához teljes terület <code>AzureMetrics &#124; where ResourceId == "/MICROSOFT.WEB/SERVERFARMS/" and MetricName == "CpuPercentage" &#124; summarize AggregatedValue = avg(Average) by Resource</code><br> Ez az App Service-csomagok és az átlagos processzorhasználat listáját tartalmazza. Kattintson egy App Service-csomag az átlagos processzorhasználat megjelenítő napló keresés futtatásához. |
+| App Service-csomagok memóriahasználata a &gt; 80 %-át | App Service-csomagok, amelyek memória kihasználtsága 80 %-nál nagyobb teljes számát jeleníti meg, és felsorolja a memóriahasználat által a felső 10 App Service-csomagok. Kattintson a napló keresése futtatásához teljes terület <code>AzureMetrics &#124; where ResourceId == "/MICROSOFT.WEB/SERVERFARMS/" and MetricName == "MemoryPercentage" &#124; summarize AggregatedValue = avg(Average) by Resource</code><br> Ez az App Service-csomagok és az átlagos memóriafelhasználás a listáját jeleníti meg. Kattintson egy App Service-csomag megjelenítő, az átlagos memóriafelhasználás a napló keresés futtatásához. |
 | Az Azure Web Apps tevékenységi naplóit |   |
-| Az Azure Web Apps tevékenység naplózása | Webalkalmazások teljes számát jeleníti meg [tevékenységi naplóit](log-analytics-activity.md) és az első 10 tevékenység napló műveleteinek listázása. Kattintson a napló keresése futtatásához teljes terület <code>Type=AzureActivity ResourceProvider= "Azure Web Sites" &#124; measure count() by OperationName</code><br> Ez a tevékenység napló műveletek listáját jeleníti meg. Kattintson a napló-keresés, amely tartalmazza a rekordok a művelet futtatásához egy tevékenység log műveletet. |
+| Az Azure Web Apps tevékenység naplózása | Webalkalmazások teljes számát jeleníti meg [tevékenységi naplóit](log-analytics-activity.md) és az első 10 tevékenység napló műveleteinek listázása. Kattintson a napló keresése futtatásához teljes terület <code>AzureActivity #124; where ResourceProvider == "Azure Web Sites" #124; summarize AggregatedValue = count() by OperationName</code><br> Ez a tevékenység napló műveletek listáját jeleníti meg. Kattintson a napló-keresés, amely tartalmazza a rekordok a művelet futtatásához egy tevékenység log műveletet. |
 
 
 

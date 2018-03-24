@@ -1,24 +1,24 @@
 ---
-title: "Az Azure Traffic Manager - – gyakori kérdések |} Microsoft Docs"
-description: "Ez a cikk ismerteti a Traffic Manager gyakran feltett kérdésekre adott válaszok"
+title: Az Azure Traffic Manager - – gyakori kérdések |} Microsoft Docs
+description: Ez a cikk ismerteti a Traffic Manager gyakran feltett kérdésekre adott válaszok
 services: traffic-manager
-documentationcenter: 
+documentationcenter: ''
 author: KumudD
 manager: jeconnoc
-editor: 
+editor: ''
 ms.assetid: 75d5ff9a-f4b9-4b05-af32-700e7bdfea5a
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/01/2018
+ms.date: 03/18/2018
 ms.author: kumud
-ms.openlocfilehash: 09fd133ec72f7ebbbcb45f652855e7640656a0ca
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: d9db669ab905fb51390f6ca80736af4cde13d902
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>A TRAFFIC Manager gyakori kérdések (GYIK)
 
@@ -123,9 +123,6 @@ Igen, csak a API-verzió 2017-03-01 és az újabb támogatja a földrajzi útvá
 
 ## <a name="real-user-measurements"></a>Valós felhasználóiélmény-mérések
 
->[!NOTE]
->A tényleges felhasználói mérések szolgáltatást a Traffic Manager nyilvános előzetes verziójában, és nem rendelkezhet azonos szintű rendelkezésre állást és megbízhatóságot, szolgáltatások, amelyek általában a rendelkezésre állási kiadási. A szolgáltatás nem támogatott, van, korlátozott képességeket, és előfordulhat, hogy nem érhető el az összes Azure helyét. A rendelkezésre állás és a szolgáltatás állapotát a legfrissebb értesítések, tekintse meg a [Azure Traffic Manager-frissítések](https://azure.microsoft.com/updates/?product=traffic-manager) lap.
-
 ### <a name="what-are-the-benefits-of-using-real-user-measurements"></a>Mik a tényleges felhasználói mérések használatának előnyeit?
 Teljesítmény útválasztási módszer használata esetén a Traffic Manager választja ki a forrás IP-cím és EDNS ügyfél alhálózati vizsgálatával (ha az átadott) csatlakozni a végfelhasználó számára az ajánlott Azure-régió, és megőrzi azt a hálózati késés intelligence a szolgáltatás ellen ellenőrzése. Valós felhasználói mérések javítja ezt a végfelhasználó alap azzal, hogy a felhasználói élmény hozzájárulnak a késés táblázat állapotának biztosítása mellett ez a táblázat megfelelő kiterjedő a végfelhasználó hálózatokat ahol a végfelhasználók csatlakozik az Azure. Ennek eredménye a végfelhasználók számára a útválasztását a megnövekedett pontosság.
 
@@ -140,7 +137,8 @@ Nem, csak engedélyeznie kell azt egyszer előfizetésenként és a késési ada
 
 ### <a name="how-do-i-turn-off-real-user-measurements-for-my-subscription"></a>Hogyan kikapcsolni a valós felhasználói mérések az előfizetést?
 Le is keletkezhetnek költségek valós felhasználói mérések kapcsolódik, ha kikapcsolja az összegyűjtése és hátsó késés mérések történő küldéséhez az ügyfélalkalmazást. Például mérési JavaScript weblapok beágyazott, leállíthatja, ezzel a szolgáltatással a JavaScript eltávolításával vagy kikapcsolásával a hívására, ha a lap megjelenítése.
-Egy másik kapcsolja ki a tényleges felhasználói mérések módja a kulcs törlése. Ha így tesz, a rendszer elveti a bármely mérési felvétele a Traffic Manager küldött ezzel a kulccsal.
+
+Is kikapcsolhatja valós felhasználói mérések által a kulcs törlése. A kulcs törlése után a rendszer elveti a bármely mérési felvétele a Traffic Manager küldött ezzel a kulccsal.
 
 ### <a name="can-i-use-real-user-measurements-with-client-applications-other-than-web-pages"></a>Használhatok valós felhasználói mérések ügyfélalkalmazások weblapok kívül?
 Igen, a valós felhasználói mérések gyûjtött végfelhasználó ügyfelek különböző típusú adatok szolgál. Ez a GYIK frissíti ügyfélalkalmazások új típusú támogatott beolvasása.
@@ -155,16 +153,16 @@ Nem, nem lesz programozott késleltetés, mielőtt meghívták a parancsfájlt.
 Meghívták, nem, minden alkalommal a tényleges felhasználói mérések parancsfájlja hat Azure-régiók a szolgáltatás által meghatározott csoportja. A beállított között különböző módosításokat, és számos ilyen indítások fordulhat elő, amikor a mérési érvényességének különböző Azure-régiók történjen-e.
 
 ### <a name="can-i-limit-the-number-of-measurements-made-to-a-specific-number"></a>Korlátozhatja a megadott mérések száma?
-JavaScript ágyazva a weblapot, és a mérési: a teljes felügyeletet keresztül, ha a kezdési és befejezési használja azt. Mindaddig, amíg a Traffic Manager szolgáltatás Azure-régiók listáját mérendő kérelmet kap, régiók készlete is megjelennek. Azt is vegye figyelembe, hogy a próbaidőszak alatt nem számlázás történik a Traffic Manager jelentett mérések
+JavaScript ágyazva a weblapot, és a mérési: a teljes felügyeletet keresztül, ha a kezdési és befejezési használja azt. Mindaddig, amíg a Traffic Manager szolgáltatás Azure-régiók listáját mérendő kérelmet kap, régiók készlete is megjelennek.
 
 ### <a name="can-i-see-the-measurements-taken-by-my-client-application-as-part-of-real-user-measurements"></a>Láthatja a saját ügyfélalkalmazás valós felhasználói mérések részeként mérések?
-A mérési programot az ügyfélalkalmazást fut, mert éppen teljes hozzáférés, mit jelent meg, a késés mérések beleértve történik. A TRAFFIC Manager jelentése szerint a kulcs az Ön előfizetéséhez kapcsolva kapott mérési egy összesített nézet
+A mérési programot az ügyfélalkalmazást fut, mert éppen teljes hozzáférés, mit jelent meg, a késés mérések beleértve történik. A TRAFFIC Manager nem egy összesítő nézetet alapján a kulcs az Ön előfizetéséhez kapcsolva kapott mérési jelentést.
 
 ### <a name="can-i-modify-the-measurement-script-provided-by-traffic-manager"></a>Módosíthatja a Traffic Manager által megadott mérési parancsfájl?
 Amíg feletti Mi a weblapon van beágyazva, kifejezetten nem ajánlott, győződjön meg arról, hogy azt méri, és jelenti helyesen a késések fordulnak elő a mérési parancsfájlt olyan módosítások végrehajtását.
 
 ### <a name="will-it-be-possible-for-others-to-see-the-key-i-use-with-real-user-measurements"></a>Ez lehet majd mások is láthatják a kulcs valós felhasználói mérések használata?
-A mérési parancsfájl egy weboldalra beágyazásakor lehet majd mások is láthatják a parancsfájlt és a tényleges felhasználói mérések (RUM) kulcsát. De fontos tudni, hogy a kulcs eltér az előfizetés-azonosítóval, és van Manager által generált forgalom csak az erre a célra használt. A RUM kulcs ismerete nem veszélyeztetheti a Azure-fiók biztonsági
+A mérési parancsfájl egy weboldalra beágyazásakor lehet majd mások is láthatják a parancsfájlt és a tényleges felhasználói mérések (RUM) kulcsát. De fontos tudni, hogy a kulcs eltér az előfizetés-azonosítóval, és van Manager által generált forgalom csak az erre a célra használt. A RUM kulcs ismerete nem veszélyezteti az Azure-fiók biztonsági.
 
 ### <a name="can-others-abuse-my-rum-key"></a>Való mások visszaélés a RUM kulcsot?
 Habár téves információkat küldhet az Azure-bA a kulcs mások számára is lehetséges vegye figyelembe, hogy néhány nem megfelelő mérések nem módosítja a útválasztási, mivel azt figyelembe továbbá minden más mérési érkező. Ha módosítania kell a kulcsokat, újra hozhat létre a kulcsot, amikor a régi kulcs lesz vetve.
@@ -186,9 +184,6 @@ Ahogyan az előző válasz, a kiszolgálóoldali összetevőket valós felhaszn�
 
 ## <a name="traffic-view"></a>Traffic View
 
->[!NOTE]
->A forgalom nézet funkció a Traffic Manager nyilvános előzetes verziójában, és nem rendelkezhet azonos szintű rendelkezésre állást és megbízhatóságot, szolgáltatások, amelyek általában a rendelkezésre állási kiadási. A szolgáltatás nem támogatott, van, korlátozott képességeket, és előfordulhat, hogy nem érhető el az összes Azure helyét. A rendelkezésre állás és a szolgáltatás állapotát a legfrissebb értesítések, tekintse meg a [Azure Traffic Manager-frissítések](https://azure.microsoft.com/updates/?product=traffic-manager) lap.
-
 ### <a name="what-does-traffic-view-do"></a>Mire használható a forgalom nézetet?
 Forgalom nézet lehetővé teszi a Traffic Manager segítségével többet szeretne tudni a felhasználók, és hogyan tapasztalataikat. A Traffic Manager és a hálózati késés üzletiintelligencia-táblák biztosítja, hogy a következő megőrzi a szolgáltatás által fogadott lekérdezések használja:
 - A régiókban, ahol a felhasználók csatlakoznak a végpontokat az Azure-ban található.
@@ -196,7 +191,7 @@ Forgalom nézet lehetővé teszi a Traffic Manager segítségével többet szere
 - Az Azure-régiók, amelyhez ezeket a rendszer első irányítja át.
 - Azok a Azure-régiók késés kezelését.
 
-Ez az információ is felhasználhatják a táblázatos nézet nem érhető el, a nyers adatokat ahhoz, hogy töltse le a portálon keresztül érhető el.
+Ez az információ is felhasználhatják földrajzi térképként területre történjen, és a táblázatos nézet nem érhető el, a nyers adatokat ahhoz, hogy töltse le a portálon keresztül érhető el.
 
 ### <a name="how-can-i-benefit-from-using-traffic-view"></a>Hogyan is kihasználhatja a forgalom nézet használatával?
 
@@ -208,7 +203,7 @@ Az Azure figyelő tudni összesített szinten, a profil és a végpont által fo
 
 ### <a name="does-traffic-view-use-edns-client-subnet-information"></a>Használ a forgalom nézet EDNS ügyfél alhálózati adatokat?
 
-Forgalom nézet kimenetét létrehozásakor nem tekinti a EDNS ügyfél alhálózati adatokat. A felhasználók helyi DNS-feloldási IP-címét használja csoportosításához.
+A DNS-lekérdezések Azure Traffic Manager által kiszolgált fontolja meg a ECS pontosabbá az útválasztási adatokat. De jeleníti meg, ahol a felhasználók csatlakozik adatkészlettel létrehozásakor forgalom nézet csak a DNS-feloldási IP-címét használja.
 
 ### <a name="how-many-days-of-data-does-traffic-view-use"></a>Hány napnyi adat nem használható a forgalom nézet?
 
@@ -219,15 +214,18 @@ Forgalom megtekintése a hét nap szerinti napot megelőző megelőző Ön megte
 Külső végpontok Azure Traffic Manager-profil-régiók kívül tárolt használatakor kiválaszthatja azt az Azure-régió, amely a késés jellemzői (ez valóban szükséges teljesítmény útválasztási módszer használatakor) esetén a proxy leképezve. Ha ezt a hozzárendelést az Azure-régió, adott Azure-régiót késés metrikák lesz használható, ha a forgalom nézet kimenet létrehozása. Ha nincs Azure-régió van megadva, akkor a késési adatok mindegyik külső végpont adatok üres lesz.
 
 ### <a name="do-i-need-to-enable-traffic-view-for-each-profile-in-my-subscription"></a>Kell forgalom nézet engedélyezése az egyes profilok az előfizetést?
-A próbaidőszak alatt a forgalom nézet egy előfizetés szintjén engedélyezhető, és készen áll az adott előfizetéshez tartozó összes Traffic Manager-profil.
 
-### <a name="how-can-i-turn-off-traffic-view"></a>Hogyan lehet kikapcsolni az forgalom nézetet?
-A próbaidőszak alatt minden kért, hogy hozzon létre egy támogatási jegy forgalom megtekintése az előfizetés letiltása.
+A próbaidőszak alatt forgalom nézet egy előfizetés szintjén lett engedélyezve. A javulás azt a nyilvános elérhetőség utáni előtt részeként forgalom nézet egy profil szinten, lehetővé téve, hogy ez a funkció engedélyezése részletesebb mostantól engedélyezhető. Alapértelmezés szerint forgalom nézet egy profil letiltásra kerül.
+
+>[!NOTE]
+>Ha forgalom nézet egy előfizetés szintjén preview ideje alatt engedélyezve van, most kell minden, az adott előfizetéshez tartozó profil engedélyezze újra.
+ 
+### <a name="how-can-i-turn-off-traffic-view"></a>Hogyan lehet kikapcsolni az forgalom nézetet? 
+Kikapcsolhatja a forgalom nézet, a portál vagy a REST API használatával minden profil esetében. 
 
 ### <a name="how-does-traffic-view-billing-work"></a>Hogyan működik a forgalom nézet számlázási?
 
 Forgalom nézet árképzési a kimeneti létrehozásához használt adatpontok száma alapján. Jelenleg csak támogatott adattípusa a lekérdezéseket, a profil kap. Ezenkívül Ön csak számlázása a feldolgozás, ha engedélyezve van a forgalom nézet végezhető el. Ez azt jelenti, hogy forgalom nézet engedélyezése a hónap bizonyos ideig, és kapcsolja ki a többi időszakban során, ha csak a feldolgozása közben a szolgáltatás kellett adatpontok számát, a számlán felé engedélyezve.
-A próbaidőszak alatt van nem szó, a forgalom nézet használatával.
 
 ## <a name="traffic-manager-endpoints"></a>Traffic Manager-végpontok
 

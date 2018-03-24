@@ -1,10 +1,11 @@
 ---
-title: "A Machine Learning-munkaterület kezelése |} Microsoft Docs"
-description: "Azure Machine Learning munkaterületekhez való hozzáférés kezelése és szolgáltatások telepítésére és kezelésére ML API webkiszolgáló"
+title: A Machine Learning-munkaterület kezelése |} Microsoft Docs
+description: Azure Machine Learning munkaterületekhez való hozzáférés kezelése és szolgáltatások telepítésére és kezelésére ML API webkiszolgáló
 services: machine-learning
-documentationcenter: 
-author: garyericson
-manager: jhubbard
+documentationcenter: ''
+author: heatherbshapiro
+ms.author: hshapiro
+manager: hjerez
 editor: cgronlun
 ms.assetid: daf3d413-7a77-4beb-9a7a-6b4bdf717719
 ms.service: machine-learning
@@ -13,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/27/2017
-ms.author: garye
-ms.openlocfilehash: 2e4b2869b6eac9670853832d58bc37f1cb0ed001
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: 4d971d75424f85bb07c0be779b9dfedb1ef41c1e
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="manage-an-azure-machine-learning-workspace"></a>Azure Machine Learning-munkaterület kezelése
 
@@ -51,5 +51,5 @@ A munkaterület társított webszolgáltatások kezeléséhez használja a Machi
 > 
 >A hozzáférési engedélyek beállítása további információkért lásd: [access-hozzárendelések megtekintése a felhasználók és csoportok az Azure portálon](../../active-directory/role-based-access-control-manage-assignments.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * További információ [telepítése Azure Resource Manager-sablonok a Machine Learning](deploy-with-resource-manager-template.md). 

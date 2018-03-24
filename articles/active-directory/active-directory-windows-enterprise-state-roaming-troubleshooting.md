@@ -1,12 +1,12 @@
 ---
-title: "Az Azure Active Directoryban a vállalati Állapothordozás beállítások hibaelhárítása |} Microsoft Docs"
-description: "Biztosítja a rendszergazdák feltett kérdésekre adott válaszok beállításait, valamint az alkalmazás adatszinkronizálás rendelkezhet."
+title: Az Azure Active Directoryban a vállalati Állapothordozás beállítások hibaelhárítása |} Microsoft Docs
+description: Biztosítja a rendszergazdák feltett kérdésekre adott válaszok beállításait, valamint az alkalmazás adatszinkronizálás rendelkezhet.
 services: active-directory
-keywords: "Vállalati állapot barangolási beállításokat, a windows-felhő, gyakran ismételt kérdések a vállalati állapothordozás"
-documentationcenter: 
+keywords: Vállalati állapot barangolási beállításokat, a windows-felhő, gyakran ismételt kérdések a vállalati állapothordozás
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: f45d0515-99f7-42ad-94d8-307bc0d07be5
 ms.service: active-directory
 ms.workload: identity
@@ -17,11 +17,11 @@ ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: tanning
 ms.custom: it-pro
-ms.openlocfilehash: 8ee3b523baf562b06bd5f7d652a431e1d4553d5c
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: d9936da3ee1b0cfb4ee6e834a838798a35140620
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="troubleshooting-enterprise-state-roaming-settings-in-azure-active-directory"></a>A vállalati Állapothordozás hibaelhárítási beállítások, az Azure Active Directoryban
 
@@ -78,7 +78,7 @@ Bizonyos körülmények között a vállalati Állapothordozás is tudni szinkro
 
 **Lehetséges probléma**: szinkronizálása sikertelen lehet, ha a rendszergazda konfigurálja az Active Directory összevonási szolgáltatások multi-factor Authentication feltételes hozzáférési szabályzatot, és az eszközön a hozzáférési jogkivonat lejár. Győződjön meg arról, hogy jelentkezzen be, és jelentkezzen ki, a Microsoft Passport for Work PIN KÓDJÁNAK használatával, vagy végezze el a multi-factor Authentication Office 365-höz hasonló más Azure-szolgáltatások elérése közben.
 
-###<a name="event-viewer"></a>Eseménynapló
+### <a name="event-viewer"></a>Eseménynapló
 Speciális hibaelhárítás Eseménynapló segítségével bizonyos hibákat található. Ezek az alábbi táblázat ismerteti. Az eseményeket az Eseménynapló található > alkalmazások és szolgáltatásnaplók > **Microsoft** > **Windows** > **SettingSync** és az identitás-hibák a szinkronizálási **Microsoft** > **Windows** > **az Azure AD**.
 
 
@@ -154,8 +154,8 @@ Csatlakoztassa az eszközt a vállalati hálózathoz, hogy a szinkronizálási f
 A felhasználó kell elhagyása, és csatlakozzon újra az eszköz a felhőre. Ehhez jelentkezzen be a helyi rendszergazdai felhasználó, és nyissa meg az eszköz elhagyása **beállítások** > **rendszer** > **kapcsolatos** , és jelölje ki "kezelése, vagy válassza le a munkahelyi vagy iskolai". Az alábbi fájlokat, majd az Azure AD Join az eszközt újra tisztítása **beállítások** > **rendszer** > **kapcsolatos** , majd válassza a "Csatlakozás a munkahelyi vagy iskolai". Továbbra is az eszköz csatlakoztatása az Azure Active Directory és a folyamat befejezéséhez.
 
 A Lemezkarbantartó lépésben karbantartása a következő fájlokat:
-- A Settings.dat`C:\Users\<Username>\AppData\Local\Packages\Microsoft.AAD.BrokerPlugin_cw5n1h2txyewy\Settings\`
-- A mappában található összes fájl`C:\Users\<Username>\AppData\Local\Packages\Microsoft.AAD.BrokerPlugin_cw5n1h2txyewy\AC\TokenBroker\Account`
+- A Settings.dat `C:\Users\<Username>\AppData\Local\Packages\Microsoft.AAD.BrokerPlugin_cw5n1h2txyewy\Settings\`
+- A mappában található összes fájl `C:\Users\<Username>\AppData\Local\Packages\Microsoft.AAD.BrokerPlugin_cw5n1h2txyewy\AC\TokenBroker\Account`
 
 ---
 

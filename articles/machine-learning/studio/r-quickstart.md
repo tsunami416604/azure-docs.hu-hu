@@ -1,11 +1,12 @@
 ---
-title: "Az R nyelv a Machine Learning gyors üzembe helyezési útmutató |} Microsoft Docs"
-description: "Az R programozási oktatóanyag segítségével gyorsan az előrejelzési megoldások létrehozásához Azure Machine Learning Studio az R nyelv első lépéseiben."
-keywords: "gyors üzembe helyezés, r nyelven, r programozási nyelv, r programozási útmutató"
+title: Az R nyelv a Machine Learning gyors üzembe helyezési útmutató |} Microsoft Docs
+description: Az R programozási oktatóanyag segítségével gyorsan az előrejelzési megoldások létrehozásához Azure Machine Learning Studio az R nyelv első lépéseiben.
+keywords: gyors üzembe helyezés, r nyelven, r programozási nyelv, r programozási útmutató
 services: machine-learning
-documentationcenter: 
-author: garyericson
-manager: jhubbard
+documentationcenter: ''
+author: heatherbshapiro
+ms.author: hshapiro
+manager: hjerez
 editor: cgronlun
 ms.assetid: 99a3a0fd-b359-481a-b236-66868deccd96
 ms.service: machine-learning
@@ -14,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/06/2017
-ms.author: garye
-ms.openlocfilehash: 40cc3728d1361b9304896bf0cc4ceed439291d45
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 231d505e91fc036b30344e2fd9971db8ba2fdf05
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="quickstart-tutorial-for-the-r-programming-language-for-azure-machine-learning"></a>Bevezető oktatóprogram az Azure Machine Learning rendszerrel használt R programozási nyelvbe
 
@@ -39,7 +39,7 @@ Adatsorozat időadatok az adatai, amelyben az értékek rendelkezik idő indexsz
 
 Az első lépések útmutató rendszer kell kaliforniai tejtermelésre használata és díjszabási adatok. Ezek az adatok több tejtermékek és az ár tejzsír, egy teljesítményteszt hagyományos havi információt tartalmaz.
 
-A cikkben, és az R parancsfájlokat használt adatok [itt letöltött][download]. Ezeket az adatokat eredetileg volt synthesized http://future.aae.wisc.edu/tab/production.html, a Wisconsin egyetemi érhető el információ.
+A cikkben, és az R parancsfájlokat használt adatok [itt letöltött][download]. Ezeket az adatokat eredetileg synthesized volt, a Wisconsin egyetemi elérhető információk http://future.aae.wisc.edu/tab/production.html.
 
 ### <a name="organization"></a>Szervezet
 Megismerheti, hogyan hozhat létre, tesztelheti és elemzés és az adatok R adatkezelési kód végrehajtása az Azure Machine Learning környezetben, azt fogja előrehaladás számos lépésen.  
@@ -60,7 +60,7 @@ A Machine Learning Studio belül R parancsfájlok belül a [R-parancsfájl végr
 
  ![R programozási nyelv: végrehajtás R-parancsfájl a modul a Machine Learning Studióban kiválasztva][1]
 
-*1. ábra. A Machine Learning Studio környezet az R-parancsfájl végrehajtása modul kiválasztva megjelenítő.*
+*1. ábra A Machine Learning Studio környezet az R-parancsfájl végrehajtása modul kiválasztva megjelenítő.*
 
 1. ábra hivatkozik, vizsgáljuk meg néhány használata a Machine Learning Studio környezet legfontosabb részeit a [R-parancsfájl végrehajtása] [ execute-r-script] modul.
 
@@ -96,7 +96,7 @@ Ez a kód nem tud végrehajtani, hibát eredményez. Kattintson a **nézet hiban
 
   ![Felugró hibaüzenet][2]
 
-*2. ábra. Előugró hibaüzenet.*
+*2. ábra Előugró hibaüzenet.*
 
 Úgy tűnik, igazolnia kell a hely kimenetét a R hibaüzenet megtekintéséhez. Kattintson a [R-parancsfájl végrehajtása] [ execute-r-script] majd kattintson a a **kimenetét megtekintése** elemet a **tulajdonságok panelen** jobb. Egy új böngészőablakban nyílik meg, és a következő látható.
 
@@ -123,11 +123,11 @@ Ha ez a kód utolsó sora jelenleg nem világos, olvassa el a. Ez a dokumentum t
 ### <a name="introduction-to-rstudio"></a>Rstudióból bemutatása
 Rstudióból egy széles körben használt IDE az R. A Szerkesztés, a tesztelés és a hibakereséshez az R-kód gyors üzembe helyezési útmutatóban használt egyes használom Rstudióból. Ha tesztelt, és készen áll, az R-kód egyszerűen kimásolni, majd a Rstudióból szerkesztő illessze be a Machine Learning Studio [R-parancsfájl végrehajtása] [ execute-r-script] modul.  
 
-Ha nem rendelkezik az R programozási nyelv, a asztali gépen telepítve van, akkor tegye meg most javasolt. Szabad nyílt forráskódú R nyelv érhető el, az átfogó R archív hálózati (CRAN), [http://www.r-project.org/](http://www.r-project.org/). Nincsenek elérhető a Windows, Mac OS és Linux/UNIX letöltések. Válassza ki a közeli tükrözött, és kövesse a letöltési utasításokat. Ezenkívül a CRAN számos hasznos elemzés és az adatok adatkezelési csomagok olyan tartalmazza.
+Ha nem rendelkezik az R programozási nyelv, a asztali gépen telepítve van, akkor tegye meg most javasolt. Szabad nyílt forráskódú R nyelv érhető el, az átfogó R archív hálózati (CRAN), [ http://www.r-project.org/ ](http://www.r-project.org/). Nincsenek elérhető a Windows, Mac OS és Linux/UNIX letöltések. Válassza ki a közeli tükrözött, és kövesse a letöltési utasításokat. Ezenkívül a CRAN számos hasznos elemzés és az adatok adatkezelési csomagok olyan tartalmazza.
 
-Ha most ismerkedik a Rstudióból, töltse le és telepítse az asztali verzióját. A Windows, Mac OS és Linux/UNIX, http://www.rstudio.com/products/RStudio/ tölti le az Rstudióból találja. Kövesse az utasításokat, az asztali számítógépre telepítéséhez Rstudióból megadott.  
+Ha most ismerkedik a Rstudióból, töltse le és telepítse az asztali verzióját. Windows, Mac OS és Linux/UNIX, letölti a Rstudióból található http://www.rstudio.com/products/RStudio/. Kövesse az utasításokat, az asztali számítógépre telepítéséhez Rstudióból megadott.  
 
-Egy oktatóanyag bemutatása Rstudióból https://support.rstudio.com/hc/sections/200107586-Using-RStudio érhető el.
+Egy oktatóanyag bemutatása Rstudióból érhető el: https://support.rstudio.com/hc/sections/200107586-Using-RStudio.
 
 I néhány kiegészítő információt nyújt az Rstudióból használatával [függelék][appendixa].  
 
@@ -163,14 +163,14 @@ Ezen a ponton a kísérletben hasonlóan kell kinéznie 3. ábra.
 
 ![A hitelesítésszolgáltató tejtermék elemzés kísérletezhet a DataSet adatkészlet és R-parancsfájl végrehajtása modul][3]
 
-*3. ábra. A hitelesítésszolgáltató tejtermék elemzés a DataSet adatkészlet és R-parancsfájl végrehajtása modul kísérletezhet.*
+*3. ábra A hitelesítésszolgáltató tejtermék elemzés a DataSet adatkészlet és R-parancsfájl végrehajtása modul kísérletezhet.*
 
 #### <a name="check-on-the-data"></a>Az adatok ellenőrzése
 Most rá egy pillantást az adatok azt töltött be a kísérletet. A kísérletben, kattintson a kimenetét a **cadairydata.csv dataset** válassza **megjelenítése**. 4. ábra hasonlót meg kell jelennie.  
 
 ![A cadairydata.csv dataset összegzése][4]
 
-*4. ábra. A cadairydata.csv adatkészlet összegzését.*
+*4. ábra A cadairydata.csv adatkészlet összegzését.*
 
 Ebben a nézetben látható nagy mennyiségű hasznos információkat. Láthatja, hogy a dataset több első sorát. Ha olyan oszlopot válasszon ki, hogy az a statisztika szakasz az oszlop további információkat jeleníti meg. Például a szolgáltatástípus sor látható az Azure Machine Learning Studio rendelt az oszlop milyen adatokat. Ehhez hasonló gyorsan át, akkor az a jó megerősítést ellenőrzés előtt először bármely súlyos munkájuk elvégzéséhez.
 
@@ -233,7 +233,7 @@ Ha ezeket a lépéseket befejeződött, a [R-parancsfájl végrehajtása] [ exec
 
 ![Kísérlet zip R-parancsfájl használatával][6]
 
-*5. ábra. A kísérletben zip R-parancsfájl használatával.*
+*5. ábra A kísérletben zip R-parancsfájl használatával.*
 
 #### <a name="dataset1"></a>Dataset1
 Az R-kód továbbíthatja a Dataset1 bemeneti használatával adatok téglalap alakú tábla. Az egyszerű parancsfájlban a `maml.mapInputPort(1)` függvény olvassa be az adatok %1 porton. Ezek az adatok majd hozzá van rendelve egy dataframe változó neve, a kódban. Az egyszerű parancsprogram az első kódsort a hozzárendelés hajtja végre.
@@ -295,7 +295,7 @@ Miután a kísérletet, kattintson a az eredmény Dataset1 kimeneti portra, és 
 
 ![A képi megjelenítés a kimeneti kaliforniai tejelő adatok][7]
 
-*6. ábra. A képi megjelenítés a kimeneti kaliforniai tejelő adatok.*
+*6. ábra A képi megjelenítés a kimeneti kaliforniai tejelő adatok.*
 
 A kimeneti keres a bemeneti azonos, pontosan úgy várt.  
 
@@ -306,13 +306,13 @@ Az R eszköz kimeneti megtekintéséhez kattintson a porton majd a **Visualize**
 
 ![Standard kimenet és a standard hiba R eszköz port][8]
 
-*7. ábra. Standard kimenet és a standard hiba R eszköz port.*
+*7. ábra Standard kimenet és a standard hiba R eszköz port.*
 
 Azt lefelé görgetéshez használható tekintse meg a 8. ábrán az R-parancsfájl kimenete grafikus.  
 
 ![Az R eszköz port grafikus kimenete][9]
 
-*8. ábra. A grafikus az R eszköz port kimenetét.*  
+*8. ábra A grafikus az R eszköz port kimenetét.*  
 
 ## <a id="filtering"></a>Adatok szűrése és átalakítás
 Ebben a szakaszban végezzük el a néhány alapvető adatok szűrése és átalakítási műveletek a kaliforniai tejelő adatokon. Ez a szakasz végén azt fogja tudni adatok formátuma nem megfelelő az elemzési modell készítéséhez.  
@@ -521,7 +521,7 @@ Ha megnézi a dataframe összegzéseinek szereplő értékeket kell valami pára
 
 Az előrejelzési modell azt használjon tényezőt modellt a trendek és a határozza ezeket az adatokat. Napló-átalakítás lehetővé teszi egy lineáris modell, hogy az a folyamat használja. A napló átalakítása ugyanezt a funkciót, ha a többszöröző alkalmazzák a alkalmazhatja azt.
 
-A következő kódot a I meg egy új funkció `log.transform()`, és alkalmazza azt az numerikus értékeket tartalmazó sorok. Az R `Map()` függvény alkalmazására szolgál a `log.transform()` működnek, mint a kijelölt oszlopokat a dataframe a. `Map()`hasonló `apply()` , de lehetővé teszi, hogy a függvény argumentumainak egynél több listáját. Vegye figyelembe, hogy tényezők listájának biztosított a második argumentumának a `log.transform()` függvény. A `na.omit()` függvény győződjön meg arról, nem találtunk hiányzik vagy nincs megadva érték a dataframe a karbantartási bit típust használja.
+A következő kódot a I meg egy új funkció `log.transform()`, és alkalmazza azt az numerikus értékeket tartalmazó sorok. Az R `Map()` függvény alkalmazására szolgál a `log.transform()` működnek, mint a kijelölt oszlopokat a dataframe a. `Map()` hasonló `apply()` , de lehetővé teszi, hogy a függvény argumentumainak egynél több listáját. Vegye figyelembe, hogy tényezők listájának biztosított a második argumentumának a `log.transform()` függvény. A `na.omit()` függvény győződjön meg arról, nem találtunk hiányzik vagy nincs megadva érték a dataframe a karbantartási bit típust használja.
 
     log.transform <- function(invec, multiplier = 1) {
       ## Function for the transformation, which is the log
@@ -1213,31 +1213,31 @@ Rstudióból meglehetősen megfelelően legyen dokumentálva, így a függelék 
 
 1. Projektek létrehozása
    
-   Rendezheti és az R-kód a projektek Rstudióból használatával kezelni. A dokumentáció projektek használó https://support.rstudio.com/hc/articles/200526207-Using-Projects helyen találhatók meg.
+   Rendezheti és az R-kód a projektek Rstudióból használatával kezelni. A projektek használó dokumentációjában található https://support.rstudio.com/hc/articles/200526207-Using-Projects.
    
    Kövesse az alábbi utasításokat, és az R-Kódminták projekt létrehozása ebben a dokumentumban javasolt.  
 2. Szerkesztés és az R-kód végrehajtása
    
-   A szerkesztési és R-kód végrehajtása integrált környezetet biztosít az Rstudióból. Https://support.rstudio.com/hc/articles/200484448-Editing-and-Executing-Code dokumentációjában találhatók.
+   A szerkesztési és R-kód végrehajtása integrált környezetet biztosít az Rstudióból. Dokumentáció itt található https://support.rstudio.com/hc/articles/200484448-Editing-and-Executing-Code.
 3. Hibakeresés
    
-   Rstudióból hatékony hibakeresési képességeket tartalmazza. Ezek a szolgáltatások dokumentációja https://support.rstudio.com/hc/articles/200713843-Debugging-with-RStudio jelenleg.
+   Rstudióból hatékony hibakeresési képességeket tartalmazza. Ezek a szolgáltatások dokumentációja jelenleg https://support.rstudio.com/hc/articles/200713843-Debugging-with-RStudio.
    
-   A töréspont hibaelhárítási lehetőségek: https://support.rstudio.com/hc/articles/200534337-Breakpoint-Troubleshooting dokumentációja.
+   A töréspont hibaelhárítási funkciók leírása a következő https://support.rstudio.com/hc/articles/200534337-Breakpoint-Troubleshooting.
 
 ## <a id="appendixb"></a>B függelék: További információ
 Az R programozási oktatóanyag az Azure Machine Learning Studio az R nyelv használatával kell alapjait ismerteti. Ha nem ismeri a R, a CRAN két bevezetés érhetők el:
 
-* R Emmanuel Paradis által kezdőknek remek kezdőpont http://cran.r-project.org/doc/contrib/Paradis-rdebuts_en.pdf.  
-* R w n bemutatása Venables et. al. egy kicsit nagyobb mélysége, http://cran.r-project.org/doc/manuals/R-intro.html állapotba kerül.
+* R kezdőknek Emmanuel Paradis által a remek kezdőpont http://cran.r-project.org/doc/contrib/Paradis-rdebuts_en.pdf.  
+* R w n bemutatása Venables et. al. egy kicsit nagyobb mélysége hiányzóra változik http://cran.r-project.org/doc/manuals/R-intro.html.
 
 Nincs olyan sok könyvek R, amelyik segíthet a kezdéshez. Íme néhány hasznos található:
 
 * A kép R programozás: A bemutató a statisztikai szoftver kialakítása által Norman Matloff esetén programozásba a R. kiváló bemutatása  
 * R Cookbook által Paul Teetor R. használatával probléma és a megoldás megközelítését ismerteti.  
-* A művelet által Robert Kabacoff R egy másik hasznos bevezető címjegyzék-alkalmazásával. A kiegészítő gyors R webhely http://www.statmethods.net/ egy hasznos erőforrás.
-* R Inferno által Patrick égési, kezelje a legbonyolultabb és nehezen méretezhetővé foglalkozó témakörök, amelyek is lehet észlelt, amikor az r programozási számos érdekes vicces könyv A címjegyzék szabad http://www.burns-stat.com/documents/books/the-r-inferno/ érhető el.
-* A részletes bemutatója a speciális témakörei R, van szükség egy pillantást a könyv speciális R Hadley Wickham által. A könyv online verziója nem szabad http://adv-r.had.co.nz/ érhető el.
+* A művelet által Robert Kabacoff R egy másik hasznos bevezető címjegyzék-alkalmazásával. A kiegészítő gyors R webhely nem egy hasznos erőforrás http://www.statmethods.net/.
+* R Inferno által Patrick égési, kezelje a legbonyolultabb és nehezen méretezhetővé foglalkozó témakörök, amelyek is lehet észlelt, amikor az r programozási számos érdekes vicces könyv A címjegyzék érhető el az ingyenes http://www.burns-stat.com/documents/books/the-r-inferno/.
+* A részletes bemutatója a speciális témakörei R, van szükség egy pillantást a könyv speciális R Hadley Wickham által. A könyv online verziója rendelkezésre álló szabad http://adv-r.had.co.nz/.
 
 A katalógus R idő adatsorozat csomagok adatsorozat elemzés CRAN feladat nézetben található: http://cran.r-project.org/web/views/TimeSeries.html. Adatsorozat objektum csomagok adott időben információt, hogy a csomag dokumentációjában kell hivatkozunk.
 
@@ -1245,10 +1245,10 @@ A címjegyzék bevezető Time Series Paul Cowpertwait és Andrew Metcalfe r beve
 
 Néhány nagy internetes erőforrásokhoz:
 
-* DataCamp: DataCamp útmutatást ad az R a videó megszerzett és kódolási gyakorlatok a böngésző kényelmét. A legújabb R technikák és csomagok interaktív oktatóanyagok van. A szabad interaktív oktatóanyag R veszik a https://www.datacamp.com/courses/introduction-to-r
-* Útmutató, kezdeti lépések a R Programiz https://www.programiz.com/r-programming a
-* A gyors R oktatóprogram által Tibor fekete Clarkson egyetemi http://www.cyclismo.org/tutorial/R/
-* 60 + R erőforrások megtalálható a http://www.computerworld.com/article/2497464/business-intelligence-60-r-resources-to-improve-your-data-skills.html
+* DataCamp: DataCamp útmutatást ad az R a videó megszerzett és kódolási gyakorlatok a böngésző kényelmét. A legújabb R technikák és csomagok interaktív oktatóanyagok van. A szabad interaktív R oktatóanyag következő igénybe https://www.datacamp.com/courses/introduction-to-r
+* Útmutató, kezdeti Programiz az R használatába https://www.programiz.com/r-programming
+* A Clarkson egyetemi Tibor fekete által gyors R oktatóanyag http://www.cyclismo.org/tutorial/R/
+* 60 + R felsorolt erőforrások: http://www.computerworld.com/article/2497464/business-intelligence-60-r-resources-to-improve-your-data-skills.html
 
 <!--Image references-->
 [1]: ./media/r-quickstart/fig1.png

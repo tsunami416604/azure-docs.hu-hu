@@ -1,22 +1,22 @@
 ---
-title: "Az Azure felügyeleti csoportok-erőforrások rendszerezéséhez |} Microsoft Docs"
-description: "További tudnivalók a felügyeleti csoportok és a használatukat."
+title: Az Azure felügyeleti csoportok-erőforrások rendszerezéséhez |} Microsoft Docs
+description: További tudnivalók a felügyeleti csoportok és a használatukat.
 author: rthorn17
 manager: rithorn
-editor: 
+editor: ''
 ms.assetid: 482191ac-147e-4eb6-9655-c40c13846672
 ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 2/28/2018
+ms.date: 3/20/2018
 ms.author: rithorn
-ms.openlocfilehash: a86fc568a0c7f4ada0b853cda8a7b2e06ed7dfcb
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: db472345bacda916f1b1664ed7803978ab235a2a
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>Az Azure felügyeleti csoportok-erőforrások rendszerezése 
 
@@ -24,15 +24,13 @@ Ha a szervezetben sok a lekérdezés, szükség lehet egy úgy, hogy hatékonyan
 
 A felügyeleti csoport funkciót egy nyilvános előzetes verziójában érhető el. Indíthatja a felügyeleti csoportok, jelentkezzen be a [Azure-portálon](https://portal.azure.com) keresse meg a **felügyeleti csoportok** a a **minden szolgáltatás** szakasz. 
 
-Felügyeleti csoportok Azure házirend támogatása nem érhető el, még a következő heteken várható a nyilvános előzetes verzióhoz, és azt.  
-
 Tegyük fel a házirendeket is alkalmazhat a felügyeleti csoport, amely korlátozza a területek a virtuális gép (VM) létrehozásához. Ezzel a házirend csak a virtuális gépek az adott régióban létrehozni lehetővé minden felügyeleti csoportok, előfizetések és erőforrások adott felügyeleti csoportba tartozó volna alkalmazható.
 
 ## <a name="hierarchy-of-management-groups-and-subscriptions"></a>A felügyeleti csoportok és előfizetések hierarchia 
 
 Felügyeleti csoport és az előfizetések a egyesített házirend- és hozzáférés-kezelés hierarchiába az erőforrások rendszerezéséhez rugalmas szerkezete hozhat létre. Az alábbi ábrán látható egy példa hierarchiában, amely a felügyeleti csoport és szervezeti egységek szerint vannak rendszerezve előfizetések áll.    
 
-![hierarchia](media/management-groups/MG_overview.png)
+![fa](media/management-groups/MG_overview.png)
 
 Hozzon létre egy hierarchiát, amely a szervezeti egységek szerint vannak csoportosítva, le is tudja hozzárendelése [átruházásához hozzáférés-vezérlés (RBAC)](../active-directory/role-based-access-control-what-is.md) szerepkörök, amelyek *öröklése* az adott felügyeleti csoportba tartozó szervezeti. Felügyeleti csoportok segítségével csökkentheti a terhelést, és csökkenti a hiba csak egyszer rendelhető hozzá a szerepkört ehhez. 
 
@@ -42,6 +40,14 @@ Hozzon létre egy hierarchiát, amely a szervezeti egységek szerint vannak csop
     - Ezt a határt nem tartalmazza a legfelső szintű vagy az előfizetés szintjén.
 - Minden felügyeleti csoport csak egy szülőhöz támogat.
 - Minden felügyeleti csoportban több gyermeke lehet. 
+
+### <a name="preview-subscription-visibility-limitation"></a>Előzetes előfizetés látható korlátozása 
+Jelenleg a korlátozás az előzetes belül hol áll nem tudja megtekinteni az előfizetések, amelyek elérésére örökölt vannak. A hozzáférés örökli az előfizetéshez, de az Azure erőforrás-kezelő nem tudja az öröklési hozzáférés még tiszteletben.  
+
+Az előfizetés információkat beolvasni a REST API használatával adatait adja vissza, rendelkezik hozzáféréssel, de az Azure portál és az Azure Powershell belül az előfizetések ne jelenjen meg. 
+
+Ezt az elemet van végzett, és fel fogja oldani az előtt felügyeleti csoportok alatt bejelentette, mint a "Általánosan rendelkezésre álló."  
+
 
 ## <a name="root-management-group-for-each-directory"></a>Gyökérszintű felügyeleti csoport minden könyvtár
 

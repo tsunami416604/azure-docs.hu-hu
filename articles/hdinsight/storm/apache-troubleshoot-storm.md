@@ -1,12 +1,12 @@
 ---
-title: "Azure HDInsight alatt futó Storm hibaelhárításáról |} Microsoft Docs"
-description: "Az Azure HDInsight alatt futó Apache Storm használatával kapcsolatos gyakori kérdésekre adott válaszok."
-keywords: "Az Azure HDInsight alatt futó Storm, gyakori kérdések hibaelhárítási útmutatója, gyakori problémák"
+title: Azure HDInsight alatt futó Storm hibaelhárításáról |} Microsoft Docs
+description: Az Azure HDInsight alatt futó Apache Storm használatával kapcsolatos gyakori kérdésekre adott válaszok.
+keywords: Az Azure HDInsight alatt futó Storm, gyakori kérdések hibaelhárítási útmutatója, gyakori problémák
 services: Azure HDInsight
 documentationcenter: na
 author: raviperi
-manager: 
-editor: 
+manager: ''
+editor: ''
 ms.assetid: 74E51183-3EF4-4C67-AA60-6E12FAC999B5
 ms.service: multiple
 ms.workload: na
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/2/2017
 ms.author: raviperi
-ms.openlocfilehash: c0295af2e71d891d07dad7012b7a27402c375178
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 6ee408b32650fe0f0e0b66294896756732a2ca5b
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="troubleshoot-storm-by-using-azure-hdinsight"></a>Azure HDInsight alatt futó Storm hibaelhárításáról
 
@@ -33,14 +33,14 @@ A Storm felhasználói felülete eléréséhez a böngészőben két lehetőség
 2. A szolgáltatások listájában jelölje ki **Storm**.
 3. Az a **Gyorshivatkozások** menü **Storm felhasználói felülete**.
 
-### <a name="direct-link"></a>A közvetlen hivatkozás
+### <a name="direct-link"></a>Közvetlen hivatkozás
 A Storm felhasználói felülete a következő URL-címen érhető el:
 
 https://\<fürt DNS-név\>/stormui
 
 Példa:
 
- https://stormcluster.azurehdinsight.NET/stormui
+ https://stormcluster.azurehdinsight.net/stormui
 
 ## <a name="how-do-i-transfer-storm-event-hub-spout-checkpoint-information-from-one-topology-to-another"></a>Hogyan tegye I átvitele Storm hub spout ellenőrzőpont eseményadatok egy topológia között?
 
@@ -71,7 +71,7 @@ A parancs a metaadatok ír egy Apache Hadoop elosztott fájlrendszerrel (HDFS) �
     ```
 
 #### <a name="import-offset-metadata"></a>Az eltolási metaadatok importálása
-1. SSH segítségével nyissa meg a fürt, amelyből az ellenőrzőpont eltolás exportálni kell a ZooKeeper fürt.
+1. SSH segítségével nyissa meg a fürt, amelyből az ellenőrzőpont eltolás importálni kell a ZooKeeper fürt.
 2. A következő parancsot (miután frissítette a HDP verzió-karakterlánca) ZooKeeper eltolási adatok importálása a HDFS elérési /stormmetadata/zkdata a ZooKeeper-kiszolgáló a célfürtön:
 
     ```apache
@@ -79,7 +79,7 @@ A parancs a metaadatok ír egy Apache Hadoop elosztott fájlrendszerrel (HDFS) �
     ```
    
 #### <a name="delete-offset-metadata-so-that-topologies-can-start-processing-data-from-the-beginning-or-from-a-timestamp-that-the-user-chooses"></a>Így a topológiák adatainak feldolgozása elindíthatja az elejéről, vagy a felhasználó által kiválasztott időbélyeg eltolási metaadatok törlése
-1. SSH segítségével nyissa meg a fürt, amelyből az ellenőrzőpont eltolás exportálni kell a ZooKeeper fürt.
+1. SSH segítségével a ZooKeeper fürt nyissa meg a fürt, ahol az ellenőrzőpont eltolás törölni kell.
 2. A következő parancsot (HDP verzió-karakterlánca frissítése) után törli az összes ZooKeeper eltolási adatokat az aktuális fürt:
 
     ```apache
@@ -107,7 +107,7 @@ Először azonosítsa a HDInsight alatt futó Storm, telepített összetevők. A
 ### <a name="head-nodes"></a>HEAD csomópontok
 A Storm átjárócsomópontokkal futtassa a következő szolgáltatásokat:
 * Nimbus
-* Ambari kiszolgáló
+* Ambari server
 * Ambari metrikák kiszolgáló
 * Ambari metrikákat gyűjtő
  

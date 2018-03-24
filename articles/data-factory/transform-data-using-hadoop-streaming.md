@@ -1,11 +1,11 @@
 ---
-title: "Azure Data Factory használatával Hadoop Streamelési tevékenységben adatok átalakítása |} Microsoft Docs"
-description: "Adatok átalakítása Hadoop Streamelési programok futtatásában a Hadoop-fürt által használható az Azure Data Factory Hadoop Streamelési tevékenységben ismerteti."
+title: Azure Data Factory használatával Hadoop Streamelési tevékenységben adatok átalakítása |} Microsoft Docs
+description: Adatok átalakítása Hadoop Streamelési programok futtatásában a Hadoop-fürt által használható az Azure Data Factory Hadoop Streamelési tevékenységben ismerteti.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: shengcmsft
-manager: jhubbard
-editor: spelluru
+manager: craigg
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2018
 ms.author: shengc
-ms.openlocfilehash: 449b322089ed3881df6d87276c3461d18d697edf
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 7c882e6fd826adb415b0452c9b441405d2ff90d7
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="transform-data-using-hadoop-streaming-activity-in-azure-data-factory"></a>Azure Data Factory használatával Hadoop Streamelési tevékenységben adatok átalakítása
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]

@@ -1,23 +1,21 @@
 ---
-title: "Az Azure AD B2C-t használó egyoldalas alkalmazás kipróbálása"
-description: "Gyors útmutató a felhasználókat az Azure Active Directory B2C használatával hitelesítő és regisztráló egyoldalas mintaalkalmazás kipróbáláshoz."
+title: Az Azure AD B2C-t használó egyoldalas alkalmazás kipróbálása
+description: Gyors útmutató a felhasználókat az Azure Active Directory B2C használatával hitelesítő és regisztráló egyoldalas mintaalkalmazás kipróbáláshoz.
 services: active-directory-b2c
-documentationcenter: 
-author: PatAltimore
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-ms.reviewer: saraford
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: javascript
-ms.topic: quickstart
+ms.topic: article
 ms.date: 2/13/2018
-ms.author: patricka
-ms.openlocfilehash: e659fd228c2294313a62b331c8e530b7d34073ac
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
-ms.translationtype: HT
+ms.author: davidmu
+ms.openlocfilehash: 02a0515ff7c461370f29a511ac576d857676cb2b
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="quickstart-test-drive-an-azure-ad-b2c-enabled-single-page-app"></a>Gyors útmutató: Az Azure AD B2C-t használó egyoldalas alkalmazás kipróbálása
 

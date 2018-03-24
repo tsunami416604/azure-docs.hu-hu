@@ -1,10 +1,11 @@
 ---
-title: "Az Azure AI gyűjtemény oktatóanyagok |} Microsoft Docs"
-description: "Fedezze fel, és megoszthatja oktatóanyagok Azure Eszközintelligencia-katalógus."
+title: Az Azure AI gyűjtemény oktatóanyagok |} Microsoft Docs
+description: Fedezze fel, és megoszthatja oktatóanyagok Azure Eszközintelligencia-katalógus.
 services: machine-learning
-documentationcenter: 
-author: garyericson
-manager: jhubbard
+documentationcenter: ''
+author: heatherbshapiro
+ms.author: hshapiro
+manager: hjerez
 editor: cgronlun
 ms.assetid: 70f0eb31-7dca-4907-a5d7-504357dcd889
 ms.service: machine-learning
@@ -13,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
-ms.author: garye
-ms.openlocfilehash: 9a93a027ed5243496a86efff0d86de7092f44b43
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 6f9c765027ccd915d6754839353a744ac0743bc2
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="discover-and-share-tutorials-in-azure-ai-gallery"></a>Fedezze fel, és megoszthatja oktatóanyagok Azure Eszközintelligencia-katalógus
 [!INCLUDE [machine-learning-gallery-item-selector](../../../includes/machine-learning-gallery-item-selector.md)]
@@ -31,7 +31,7 @@ Oktatóanyagok tallózással [a katalógusban](http://gallery.cortanaintelligenc
 
 ![Válassza ki az oktatóprogramok gyűjtemény kezdőlapján](./media/gallery-tutorials/select-tutorials-in-gallery.png)
 
-A  **[oktatóanyagok](https://gallery.cortanaintelligence.com/tutorials)**  lap megjeleníti a legutóbb hozzáadott és népszerű oktatóanyagok listáját. Összes oktatóanyag megtekintéséhez válassza ki a **láthatja az összes** gombra. Egy adott oktatóprogramot keres, válassza ki a **láthatja az összes**, és jelölje ki a szűrési feltételeket. Kifejezést is írhatja a **keresési** a gyűjtemény lap felső részén.
+A **[oktatóanyagok](https://gallery.cortanaintelligence.com/tutorials)** lap megjeleníti a legutóbb hozzáadott és népszerű oktatóanyagok listáját. Összes oktatóanyag megtekintéséhez válassza ki a **láthatja az összes** gombra. Egy adott oktatóprogramot keres, válassza ki a **láthatja az összes**, és jelölje ki a szűrési feltételeket. Kifejezést is írhatja a **keresési** a gyűjtemény lap felső részén.
 
 További információt a oktatóanyag oktatóanyag részleteit megjelenítő oldalon kaphat. Egy oktatóanyag Részletek lap megnyitásához válassza ki az oktatóanyag. Az a **megjegyzések** oktatóanyag részletei lapon szakaszban, tehető, visszajelzést, vagy kérdése van az oktatóanyag. Az oktatóanyag ismerősök vagy a Twitteren vagy LinkedIn munkatársak is megoszthatja. Az oktatóanyag részleteit megjelenítő oldalra, a más felhasználók számára a weblap megtekintéséhez a meghívott mutató hivatkozást is képes e-mail.
 

@@ -1,6 +1,6 @@
 ---
-title: "Telepítse át a MySQL-adatbázis biztonsági másolat használatával, és MySQL az Azure-adatbázis visszaállítása"
-description: "Ez a cikk ismerteti a biztonsági mentése és visszaállítása az Azure Database-adatbázisoknál a MySQL mysqldump, MySQL munkaterület és PHPMyAdmin két gyakori módjai."
+title: Telepítse át a MySQL-adatbázis biztonsági másolat használatával, és MySQL az Azure-adatbázis visszaállítása
+description: Ez a cikk ismerteti a biztonsági mentése és visszaállítása az Azure Database-adatbázisoknál a MySQL mysqldump, MySQL munkaterület és PHPMyAdmin két gyakori módjai.
 services: mysql
 author: ajlam
 ms.author: andrela
@@ -8,12 +8,12 @@ manager: kfile
 editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
-ms.date: 02/28/2018
-ms.openlocfilehash: 0c5a6b6d971d434a52bf80da6b34d7f6949589bc
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.date: 03/20/2018
+ms.openlocfilehash: ef35ee881923c69d41b79fd6cb8464c695c614f9
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="migrate-your-mysql-database-to-azure-database-for-mysql-using-dump-and-restore"></a>A MySQL-adatbázis áttelepítése az Azure Database a MySQL használata a biztonsági másolat és helyreállítás
 Ez a cikk ismerteti a biztonsági mentése és adatbázisokat az Azure-adatbázis visszaállítása a MySQL két gyakori módjai
@@ -87,11 +87,13 @@ $ mysqldump -u root -p --all-databases > alldb_backup.sql
 ## <a name="create-a-database-on-the-target-azure-database-for-mysql-server"></a>A cél Azure-adatbázis kiszolgáló MySQL-adatbázis létrehozása
 Üres adatbázist létrehozni a cél Azure-adatbázis MySQL kiszolgáló, ahová az adatok áttelepítéséhez. Például a MySQL-munkaterületet, varangy vagy Navicat eszköz segítségével hozza létre az adatbázist. Az adatbázis lehet-e azonos nevük az adatbázis, amely a dömpingelt adatokat tartalmazott, vagy létrehozhat egy adatbázist egy eltérő nevű.
 
-A csatlakozás, található MySQL az Azure-adatbázis a kapcsolati adatok tulajdonságok lapján.
-![A kapcsolati adatok az Azure portálon található](./media/concepts-migrate-dump-restore/1_server-properties-name-login.png)
+A csatlakozás, keresse meg a kapcsolati információit a **áttekintése** a MySQL az Azure-adatbázis.
+
+![A kapcsolati adatok az Azure portálon található](./media/concepts-migrate-dump-restore/1_server-overview-name-login.png)
 
 Adja hozzá az azokat a MySQL munkaterület-kapcsolódási információt.
-![MySQL Workbench Connection String](./media/concepts-migrate-dump-restore/2_setup-new-connection.png)
+
+![MySQL-munkaterület kapcsolati karakterlánc](./media/concepts-migrate-dump-restore/2_setup-new-connection.png)
 
 
 ## <a name="restore-your-mysql-database-using-command-line-or-mysql-workbench"></a>Állítsa vissza a MySQL-adatbázis használatával parancssori vagy MySQL munkaterület

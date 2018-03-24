@@ -1,33 +1,32 @@
 ---
-title: "Napló riasztások tevékenység létrehozása |} Microsoft Docs"
-description: "Értesítést SMS, webhook és e-mailt a műveletnaplóban bizonyos események megtörténtekor."
+title: Klasszikus tevékenység napló riasztások létrehozása |} Microsoft Docs
+description: Értesítést SMS, webhook és e-mailt a műveletnaplóban bizonyos események megtörténtekor.
 author: johnkemnetz
-manager: orenr
-editor: 
+editor: ''
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
-ms.assetid: 
+ms.assetid: ''
 ms.service: monitoring-and-diagnostics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/03/2017
+ms.date: 03/18/2017
 ms.author: johnkem
-ms.openlocfilehash: c8a2ce3ca90895262e77c3895867d29c9d3530a2
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: e0d92fcd6d3cbd50a2bcb8166b27b11bc86aad83
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/23/2018
 ---
-# <a name="create-activity-log-alerts"></a>Napló riasztások tevékenység létrehozása
+# <a name="create-activity-log-alerts-classic"></a>Napló riasztások (klasszikus) tevékenység létrehozása
 
 ## <a name="overview"></a>Áttekintés
 Tevékenység napló riasztások az éppen aktiválása, ha egy új tevékenység napló esemény történik a riasztás megadott feltételeknek megfelelő riasztásokat. Azure-erőforrások, így azok hozhat létre Azure Resource Manager-sablonnal. Akkor is is létrehozása, frissítése, vagy törölve az Azure portálon. Ez a cikk bemutatja a napló tevékenységriasztásokat mögött. Azt ezután bemutatja, hogyan használható az Azure-portálon naplózási eseményeket a riasztás beállításához.
 
 > [!NOTE]
 
->  [Riasztások (előzetes verzió)](monitoring-overview-unified-alerts.md) létrehozásának és kezelésének tevékenységi naplóit fokozott élményt nyújtó jelenleg kínál.  [További információk](monitoring-activity-log-alerts-new-experience.md).
+>  Az új [riasztások](monitoring-overview-unified-alerts.md) élmény váltja fel ezt az eljárást. Ez a cikk az előzetes tapasztalata előírt hivatkozásként. [További információk](monitoring-activity-log-alerts-new-experience.md).
 
 Általában létrehozhat tevékenység napló riasztásokat, értesítéseket során:
 
@@ -59,11 +58,11 @@ Művelet csoportokkal kapcsolatos további tudnivalókért lásd: [létrehozása
 
 A szolgáltatás állapotával kapcsolatos értesítésekre kapcsolatos további információkért lásd: [tevékenység napló értesítést a szolgáltatás állapotával kapcsolatos értesítésekre](monitoring-activity-log-alerts-on-service-notifications.md).
 
-## <a name="create-an-alert-on-an-activity-log-event-with-a-new-action-group-by-using-the-azure-portal"></a>A művelet új csoport tevékenység napló esemény a riasztás létrehozása az Azure portál használatával
+## <a name="create-an-alert-classic-on-an-activity-log-event-with-a-new-action-group-by-using-the-azure-portal"></a>Riasztás létrehozása (klasszikus) a művelet új csoportot a tevékenység napló esemény az Azure portál használatával
 1. Az a [portal](https://portal.azure.com), jelölje be **figyelő**.
 
     ![A "Figyelés" szolgáltatás](./media/monitoring-activity-log-alerts/home-monitor.png)
-2. Az a **tevékenységnapló** szakaszban jelölje be **riasztások**.
+2. Az a **tevékenységnapló** szakaszban jelölje be **riasztások (klasszikus)**.
 
     ![Az "Értesítések" lapon](./media/monitoring-activity-log-alerts/alerts-blades.png)
 3. Válassza ki **Hozzáadás figyelmeztetés a napló**, és töltse ki a mezőket.

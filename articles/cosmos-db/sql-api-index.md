@@ -1,10 +1,10 @@
 ---
 title: 'Az Azure Cosmos DB: SQL API cikkek |} Microsoft Docs'
-description: "Összes dokumentum adatbázisok létrehozásához az SQL API-t az Azure Cosmos Adatbázisba vonatkozó cikkek listáját."
+description: Összes dokumentum adatbázisok létrehozásához az SQL API-t az Azure Cosmos Adatbázisba vonatkozó cikkek listáját.
 services: cosmos-db
 author: mimig1
 manager: jhubbard
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: 82bec99a-ac2b-474e-b41f-d2fb296c8feb
 ms.service: cosmos-db
 ms.workload: data-services
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/25/2017
 ms.author: mimig
-ms.openlocfilehash: 8faa8a08d4a5bc323951a594049002fc61eb56b8
-ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
+ms.openlocfilehash: f30f089ea7a12ef54b255368f38c8ec11a8c11da
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-cosmos-db-sql-api-documentation"></a>Az Azure Cosmos DB: SQL API-JÁNAK dokumentációja
 
@@ -34,7 +34,7 @@ Ezek a kell olvasni a témakör és forrás elindítani az SQL API-t az Azure Co
 - [Az SQL API bemutatása](sql-api-introduction.md)
 - [Adatbázis erőforrás-modellje](sql-api-resources.md)
 - Webhely: [tesztlekérdezéseket](https://www.documentdb.com/sql/demo)
-- Lap cheat: [SQL-szintaxis](sql-api-sql-query-cheat-sheet.md)
+- Lap cheat: [SQL-szintaxis](query-cheat-sheet.md)
 
 ## <a name="quickstarts"></a>Gyors útmutatók
 

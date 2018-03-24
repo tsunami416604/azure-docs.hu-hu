@@ -1,23 +1,23 @@
 ---
-title: "Azure SSIS integrációs futásidejű ütemezéséről |} Microsoft Docs"
-description: "Ez a cikk ismerteti, hogyan ütemezése indítása és leállítása egy Azure SSIS-integráció futtatókörnyezetet Azure Automation és a Data Factory használatával."
+title: Azure SSIS integrációs futásidejű ütemezéséről |} Microsoft Docs
+description: Ez a cikk ismerteti, hogyan ütemezése indítása és leállítása egy Azure SSIS-integráció futtatókörnyezetet Azure Automation és a Data Factory használatával.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: douglaslMS
-manager: jhubbard
-editor: 
+manager: craigg
+editor: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: 
+ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: article
 ms.date: 01/25/2018
 ms.author: douglasl
-ms.openlocfilehash: 5a9d1ba4d72bc6d4b297695c478438079d34c6e7
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: cc9ab244c784cab608a75092b542dea0a6f69f22
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="how-to-schedule-starting-and-stopping-of-an-azure-ssis-integration-runtime"></a>Indítása és leállítása egy Azure SSIS-integráció futtatókörnyezetet ütemezése 
 Egy Azure SSIS (SQL Server Integration Services) integrációs futásidejű fut (IR) van társítva járnak. Ezért futtatni kívánt az infravörös csak akkor, ha SSIS-csomagok futtathatja az Azure-ban, és állítsa le, ha már nincs szükség van szüksége. A Data Factory felhasználói felületén vagy az Azure PowerShell [manuálisan indítsa el, vagy állítsa le az Azure SSIS-IR](manage-azure-ssis-integration-runtime.md)). Ez a cikk ismerteti, hogyan ütemezése indítása és leállítása egy Azure SSIS-integráció futtatókörnyezetet (IR) Azure Automation és az Azure Data Factory használatával. Ebben a cikkben leírt magas szintű lépései a következők:
@@ -340,7 +340,7 @@ Létrehozott, és tesztelje a folyamatot, egy ütemezést létrehozni, és rende
 4. Csatlakozás a **tárolt eljárás** a legutolsó tevékenység **webes** tevékenység.
 
     ![Teljes feldolgozási folyamat](./media/how-to-schedule-azure-ssis-integration-runtime/full-pipeline.png)
-5. Az adatcsatorna-beállítások gombra kattintva érvényesítenie **ellenőrzése** az eszköztáron. Zárja be a **folyamat ellenőrzési jelentés** kattintva  **>>**  gombra. 
+5. Az adatcsatorna-beállítások gombra kattintva érvényesítenie **ellenőrzése** az eszköztáron. Zárja be a **folyamat ellenőrzési jelentés** kattintva **>>** gombra. 
 
     ![Folyamat érvényesítése](./media/how-to-schedule-azure-ssis-integration-runtime/validate-pipeline.png)
 

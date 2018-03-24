@@ -1,24 +1,24 @@
 ---
-title: "Azure IoT Hub üzenetformátum megértése |} Microsoft Docs"
-description: "Fejlesztői útmutató - descibes a formátum és az IoT-központ üzenetek várt tartalom."
+title: Azure IoT Hub üzenetformátum megértése |} Microsoft Docs
+description: Fejlesztői útmutató - descibes a formátum és az IoT-központ üzenetek várt tartalom.
 services: iot-hub
 documentationcenter: .net
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 3fc5f1a3-3711-4611-9897-d4db079b4250
 ms.service: iot-hub
 ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/29/2018
+ms.date: 03/20/2018
 ms.author: dobett
-ms.openlocfilehash: 3d5b500964ee37dbd347858edd35812e1d217499
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 832010181059e2ec42834e54622f374c367c8d4f
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="create-and-read-iot-hub-messages"></a>Hozzon létre, és az IoT-központ üzenet olvasása
 
@@ -50,6 +50,7 @@ A következő táblázat az IoT Hub-kezelő üzeneteinek tulajdonságainak list�
 | ConnectionDeviceId |Az eszköz a felhőbe küldött üzeneteket az IoT-központ által beállított azonosító. Tartalmazza a **deviceId** az eszközt, az üzenetet küldő. |
 | ConnectionDeviceGenerationId |Az eszköz a felhőbe küldött üzeneteket az IoT-központ által beállított azonosító. Tartalmazza a **generationId** (megfelelően [identitás eszköztulajdonságok][lnk-device-properties]) az eszköz az üzenetet küldő. |
 | ConnectionAuthMethod |Az eszköz a felhőbe küldött üzeneteket az IoT-központ által beállított hitelesítési módszert. Ez a tulajdonság a üzenetet küld az eszköz hitelesítésére használt hitelesítési módszert információkat tartalmaz. További információkért lásd: [hamisításszűrés felhőbe eszköz][lnk-antispoofing]. |
+| CreationTimeUtc | Dátum és idő, az üzenet az eszközön jött létre. Egy eszköz explicit módon a értékre kell állítani. |
 
 ## <a name="message-size"></a>Üzenet mérete
 

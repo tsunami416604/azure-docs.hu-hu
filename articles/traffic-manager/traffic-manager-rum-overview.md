@@ -1,31 +1,28 @@
 ---
-title: "Az Azure Traffic Manager felhasználó mérések |} Microsoft Docs"
-description: "Felhasználó mérések őket a Traffic Manager bemutatása"
+title: Az Azure Traffic Manager felhasználó mérések |} Microsoft Docs
+description: Felhasználó mérések őket a Traffic Manager bemutatása
 services: traffic-manager
 documentationcenter: traffic-manager
 author: KumudD
 manager: timlt
-editor: 
-tags: 
-ms.assetid: 
+editor: ''
+tags: ''
+ms.assetid: ''
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: 
+ms.tgt_pltfrm: ''
 ms.workload: infrastructure
-ms.date: 09/19/2017
+ms.date: 03/16/2018
 ms.author: kumud
-ms.custom: 
-ms.openlocfilehash: a7e8ae605b6234341d9ab8b790f4c54d8627f29f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.custom: ''
+ms.openlocfilehash: 4e8d808d65c9898d230455d128e3ffc50db303d6
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="traffic-manager-real-user-measurements-overview"></a>Traffic Manager valós felhasználói mérések áttekintése
-
->[!NOTE]
->A tényleges felhasználói mérések szolgáltatást a Traffic Manager nyilvános előzetes verziójában, és nem rendelkezhet azonos szintű rendelkezésre állást és megbízhatóságot, szolgáltatások, amelyek általában a rendelkezésre állási kiadási. A szolgáltatás nem támogatott, van, korlátozott képességeket, és előfordulhat, hogy nem érhető el az összes Azure helyét. A rendelkezésre állás és a szolgáltatás állapotát a legfrissebb értesítések, tekintse meg a [Azure Traffic Manager-frissítések](https://azure.microsoft.com/updates/?product=traffic-manager) lap.
 
 Állít be Traffic Manager-profil a teljesítmény-útválasztási módszert használja, ha a szolgáltatás keres, ha a DNS-lekérdezési kérelmek érkező, és ezeket az Azure-régió, amely a legkisebb mértékű késleltetést tartománytagi hitelesítéssel közvetlen útválasztási döntéseket. Ez úgy érhető el, a hálózati késés eszközintelligencia Traffic Manager által a különböző végfelhasználói hálózatok használata.
 
@@ -41,7 +38,7 @@ Idővel ez sokszor történik, és a Traffic Manager, amelyben a hálózatot ké
 
 Valós felhasználói mérések használatakor számlázása a Traffic Manager küldött mérések száma alapján. Az árakkal kapcsolatos további részletekért látogasson el a [árképzést ismertető oldalra Traffic Manager](https://azure.microsoft.com/pricing/details/traffic-manager/).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - Ismerje meg, hogyan használható [valós felhasználói mérések a weblapokat](traffic-manager-create-rum-web-pages.md)
 - Ismerje meg, [Traffic Manager működése](traffic-manager-overview.md)
 - További információ [Mobile Center](https://docs.microsoft.com/mobile-center/)

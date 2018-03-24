@@ -1,8 +1,8 @@
 ---
-title: "A kibocsátási megjegyzésekben talál az Azure HDInsight Hadoop-összetevők |} Microsoft Docs"
-description: "Legújabb kibocsátási megjegyzések és az Azure hdinsight Hadoop-összetevők verzióit. Fejlesztési tippek és részletek beszerzése Spark, R Server, Hive és további."
+title: A kibocsátási megjegyzésekben talál az Azure HDInsight Hadoop-összetevők |} Microsoft Docs
+description: Legújabb kibocsátási megjegyzések és az Azure hdinsight Hadoop-összetevők verzióit. Fejlesztési tippek és részletek beszerzése Spark, R Server, Hive és további.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 editor: cgronlun
 manager: jhubbard
 author: nitinme
@@ -14,13 +14,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/08/2018
+ms.date: 03/20/2018
 ms.author: nitinme
-ms.openlocfilehash: 38a33056ccd908b43319125b3fe517988b1507c6
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: bf0bfa052c8cd7589af40972fda1e1802b4d1acb
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="release-notes-for-hadoop-components-on-azure-hdinsight"></a>Az Azure HDInsight Hadoop-összetevők kibocsátási megjegyzései
 
@@ -29,9 +29,10 @@ Ez a cikk nyújt tájékoztatást a **legutóbbi** Azure HDInsight kiadás friss
 > [!IMPORTANT]
 > A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További információkért lásd: [HDInsight versioning cikk](hdinsight-component-versioning.md).
 
-## <a name="notes-for-03082018---release-of-spark-22-on-hdinsight-36"></a>Megjegyzések a 03/08/2018 - 2.2 Spark on HDInsight 3.6 kiadása
+## <a name="notes-for-03202018---release-of-spark-22-on-hdinsight-36"></a>Megjegyzések a 03/20/2018 - 2.2 Spark on HDInsight 3.6 kiadása
 
 - Spark 2.2.0 stabilitását növeli a Spark mag, SQL, ML között, és számos lehetőséget kínál a strukturált Streaming GA állapotát. Spark 2.2.0 a HDInsight 3.6 most érhető el.
+
 
 ## <a name="notes-for-08012017-release-of-hdinsight"></a>A HDInsight 08/01/2017 kibocsátási megjegyzései
 

@@ -1,11 +1,10 @@
 ---
-title: "Adatok áthelyezése DB2 Azure Data Factory használatával |} Microsoft Docs"
-description: "Útmutató: Azure Data Factory másolási tevékenység segítségével áthelyezni az adatokat a helyszíni DB2-adatbázishoz"
+title: Adatok áthelyezése DB2 Azure Data Factory használatával |} Microsoft Docs
+description: 'Útmutató: Azure Data Factory másolási tevékenység segítségével áthelyezni az adatokat a helyszíni DB2-adatbázishoz'
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: monicar
+manager: craigg
 ms.assetid: c1644e17-4560-46bb-bf3c-b923126671f1
 ms.service: data-factory
 ms.workload: data-services
@@ -15,11 +14,11 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 17ffd0de41964736d2f59b0cf891d0c6b2e7d16b
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 0e597574c1993e2f2a5421d24063cf9f42a7e57b
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="move-data-from-db2-by-using-azure-data-factory-copy-activity"></a>Azure Data Factory másolási tevékenység segítségével DB2 tárolt adatok mozgatása
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -58,7 +57,7 @@ A Data Factory DB2-összekötő a következő IBM DB2-platformok és 11, 9, 10 e
 
 > [!TIP]
 > Ha a hibaüzenet jelenhet meg: "a megfelelő SQL-utasítás végrehajtása kérelmet csomag nem található. SQLSTATE 51002 SQLCODE =-805, = "oka egy szükséges csomag nem lesz létrehozva a normál felhasználói az operációs rendszer. A probléma megoldásához kövesse az alábbi utasításokat a DB2-kiszolgáló típusának:
-> - A DB2 i (AS400): lehetővé teszik a kiemelt felhasználó, a másolási tevékenység futtatása előtt a normál felhasználó gyűjtemény létrehozása. A gyűjtemény létrehozásához használja a parancsot:`create collection <username>`
+> - A DB2 i (AS400): lehetővé teszik a kiemelt felhasználó, a másolási tevékenység futtatása előtt a normál felhasználó gyűjtemény létrehozása. A gyűjtemény létrehozásához használja a parancsot: `create collection <username>`
 > - A z/OS- vagy LUW DB2: magas jogosultsági fiókkal--egy kiemelt felhasználói vagy a felügyeleti csomag hitelesítésszolgáltatók és a kötési, BINDADD, végrehajtási JOGOT nyilvános engedélyek - példányt is futtatni a egyszer. A szükséges csomag automatikusan jön létre a másolás során. Ezután válthat a normál felhasználók a következő másolási kísérletekhez.
 
 ## <a name="getting-started"></a>Első lépések
@@ -82,13 +81,13 @@ Az alábbi táblázat a DB2 rendszerhez kapcsolódó szolgáltatásra vonatkozó
 
 | Tulajdonság | Leírás | Szükséges |
 | --- | --- | --- |
-| **típusa** |Ez a tulajdonság értékre kell állítani **OnPremisesDb2**. |Igen |
+| **Típusa** |Ez a tulajdonság értékre kell állítani **OnPremisesDb2**. |Igen |
 | **server** |A DB2-kiszolgáló nevét. |Igen |
 | **database** |Neve a DB2-adatbázishoz. |Igen |
 | **schema** |A DB2-adatbázishoz a séma neve. Ez a tulajdonság a kis-és nagybetűket. |Nem |
 | **authenticationType** |A DB2-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa. A lehetséges értékek: névtelen, alapszintű és a Windows. |Igen |
 | **username** |A Basic vagy Windows-hitelesítés használata esetén a felhasználói fiók nevét. |Nem |
-| **jelszó** |A felhasználói fiók jelszavát. |Nem |
+| **Jelszó** |A felhasználói fiók jelszavát. |Nem |
 | **gatewayName** |Az átjáró, amely használatával a Data Factory szolgáltatásnak csatlakoznia a helyszíni DB2-adatbázishoz való kapcsolódáshoz neve. |Igen |
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai

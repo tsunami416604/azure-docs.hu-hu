@@ -1,6 +1,6 @@
 ---
-title: "Oktatóanyag: Azure Active Directoryval integrált Spacio |} Microsoft Docs"
-description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és Spacio között."
+title: 'Oktatóanyag: Azure Active Directoryval integrált Spacio |} Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és Spacio között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/12/2018
+ms.date: 03/22/2018
 ms.author: jeedes
-ms.openlocfilehash: faf4b2ff24ef733b740a5b65864941a10de64ed8
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 604249151f3c1ca206f64a178b25ea1dae5b5023
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-spacio"></a>Oktatóanyag: Azure Active Directoryval integrált Spacio
 
@@ -112,18 +112,32 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     > [!NOTE] 
     > Ezek az értékek nincsenek valós. Frissítheti ezeket az értékeket a tényleges bejelentkezési URL-cím és azonosítója. Ügyfél [Spacio ügyfél-támogatási csoport](mailto:support@spac.io) beolvasni ezeket az értékeket. 
- 
 
-
-4. Az a **SAML-aláíró tanúsítványa** területen kattintson **metaadatainak XML-kódja** és mentse a metaadat-fájlt a számítógépen.
-
-    ![A tanúsítvány letöltési hivatkozását](./media/active-directory-saas-spacio-tutorial/tutorial_spacio_certificate.png) 
-
-5. Kattintson a **mentése** gombra.
+4. Kattintson a **Mentés** gombra.
 
     ![Egyszeri bejelentkezés Mentés gombra konfigurálása](./media/active-directory-saas-spacio-tutorial/tutorial_general_400.png)
 
-6. Egyszeri bejelentkezés konfigurálása **Spacio** oldalon kell küldeniük a letöltött **metaadatainak XML-kódja** való [Spacio támogatási csoport](mailto:support@spac.io). Akkor állítsa be ezt a beállítást, hogy a SAML SSO kapcsolat mindkét oldalán megfelelően beállítva.
+5. Létrehozásához a **metaadatainak URL-CÍMÉT**, hajtsa végre a következő lépéseket:
+
+    a. Kattintson a **App regisztrációk**.
+    
+    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-spacio-tutorial/tutorial_spacio_appregistrations.png)
+   
+    b. Kattintson a **végpontok** megnyitásához a **végpontok** párbeszédpanel megnyitásához.  
+    
+    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-spacio-tutorial/tutorial_spacio_endpointicon.png)
+
+    c. Kattintson a **másolása** gomb másolása a **ÖSSZEVONÁSI METAADAT-dokumentum** URL-címet, és illessze be a Jegyzettömbbe.
+    
+    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-spacio-tutorial/tutorial_spacio_endpoint.png)
+     
+    d. Most lépjen a tulajdonságlapján **Spacio** , és másolja a **alkalmazásazonosító** használatával a **másolási** gombra, majd illessze be a Jegyzettömbbe.
+ 
+    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-spacio-tutorial/tutorial_spacio_appid.png)
+
+    e. Készítése a **metaadatainak URL-CÍMÉT** a következő minta használatával: `<FEDERATION METADATA DOCUMENT url>?appid=<application id>`
+
+6. Egyszeri bejelentkezés konfigurálása **Spacio** oldalon kell küldeniük a létrehozott **metaadatainak URL-CÍMÉT** való [Spacio támogatási csoport](mailto:support@spac.io). Akkor állítsa be ezt a beállítást, hogy a SAML SSO kapcsolat mindkét oldalán megfelelően beállítva.
 
 > [!TIP]
 > Ezek az utasítások belül tömör verziója most el tudja olvasni a [Azure-portálon](https://portal.azure.com), míg az alkalmazás beállításakor!  Ez az alkalmazás a hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentációja keresztül a **konfigurációs** szakasz alján. További Itt a embedded dokumentációjából szolgáltatásról: [az Azure AD beágyazott dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)

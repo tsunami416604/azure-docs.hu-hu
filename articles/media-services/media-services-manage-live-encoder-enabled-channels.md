@@ -1,11 +1,11 @@
 ---
-title: "Live streaming Azure Media Services használatával és többféle sávszélességű adatfolyamok létrehozása |} Microsoft Docs"
-description: "Ez a témakör ismerteti, hogyan állíthat be egy csatornát, amely egy egyféle sávszélességű élő adatfolyamokat fogad egy helyszíni kódolót, és végrehajtja a Media Services az adaptív sávszélességű adatfolyamot élő kódolás. Az adatfolyam majd lehet juttatni a lejátszás ügyfélalkalmazások keresztül egy vagy több adatfolyam-végpontot, a következő adaptív adatfolyam-továbbítási protokollok egyikének használatával: HLS, Smooth Stream, MPEG DASH."
+title: Live streaming Azure Media Services használatával és többféle sávszélességű adatfolyamok létrehozása |} Microsoft Docs
+description: 'Ez a témakör ismerteti, hogyan állíthat be egy csatornát, amely egy egyféle sávszélességű élő adatfolyamokat fogad egy helyszíni kódolót, és végrehajtja a Media Services az adaptív sávszélességű adatfolyamot élő kódolás. Az adatfolyam majd lehet juttatni a lejátszás ügyfélalkalmazások keresztül egy vagy több adatfolyam-végpontot, a következő adaptív adatfolyam-továbbítási protokollok egyikének használatával: HLS, Smooth Stream, MPEG DASH.'
 services: media-services
-documentationcenter: 
+documentationcenter: ''
 author: anilmur
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 30ce6556-b0ff-46d8-a15d-5f10e4c360e2
 ms.service: media-services
 ms.workload: media
@@ -14,13 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/09/2017
 ms.author: juliako;anilmur
-ms.openlocfilehash: f7cd457fe0660718c3939d39ec1825009c5e4d17
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: 9d89849bb982804515b21de8c251859591dbf6ce
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="live-streaming-using-azure-media-services-to-create-multi-bitrate-streams"></a>Többszörös átviteli sebességű streamek létrehozása az Azure Media Services élő streamelési funkciójával
+
+> [!NOTE]
+> 2018. május 12., az élő csatornák indítása rendszer már nem támogatja a RTP/MPEG-2 transport stream betöltési protokollt. Végezzen áttelepítést az RTP/MPEG-2 RTMP vagy töredezett MP4) (Smooth Streaming) betöltési protokollok.
+
 ## <a name="overview"></a>Áttekintés
 Az Azure Media Services (AMS), egy **csatorna** élő adatfolyam-tartalmak feldolgozására adatcsatorna jelöli. A **csatorna** bemeneti élő adatfolyamok megkapja az alábbi két módszer egyikével:
 
@@ -45,7 +49,7 @@ A Media Services 2.10 kiadástól kezdve, amikor létrehoz egy csatornát, megad
 > 
 
 ## <a name="billing-implications"></a>Számlázási gyakorolt hatása
-Egy élő kódolás csatorna kezdődik, számlázási, amint Állapotváltások "Fut" értékre az API-n keresztül.   Az állapot az Azure portálon, vagy az Azure Media Services Explorer eszközben (http://aka.ms/amse) is megtekintheti.
+Egy élő kódolás csatorna kezdődik, számlázási, amint Állapotváltások "Fut" értékre az API-n keresztül.   Megtekintheti a állapotát is az Azure portálon, vagy az Azure Media Services Explorer eszközben (http://aka.ms/amse).
 
 Az alábbi táblázat bemutatja, hogyan csatorna állapotok hozzárendelését számlázási állapotok az API és az Azure portálon. Vegye figyelembe, hogy az állapot csak kis mértékben eltér az API és a portál UX között Amint egy csatornát a "Fut" állapotú a API-n keresztül, vagy az Azure portálon "Kész" vagy "Streaming" állapotban van, számlázási aktív lesz.
 A csatorna további számlázási meg leállítani, akkor állítsa le a csatornát, az API-n keresztül, vagy az Azure portálon.
@@ -64,8 +68,8 @@ Az alábbi táblázat azt ismerteti, hogy az egyes csatornaállapotok esetében 
 
 | Csatorna állapota | Jelzése a portál kezelőfelületén | Ennyi az egész számlázási? |
 | --- | --- | --- |
-| Indulás alatt |Indulás alatt |Nem (átmeneti állapot) |
-| Futtatás |Üzemkész (nincs futó program)<br/>vagy<br/>Streamelés (legalább egy futó program) |IGEN |
+| Indítás |Indítás |Nem (átmeneti állapot) |
+| Fut |Üzemkész (nincs futó program)<br/>vagy<br/>Streamelés (legalább egy futó program) |IGEN |
 | Leállítás |Leállítás |Nem (átmeneti állapot) |
 | Leállítva |Leállítva |Nem |
 
@@ -217,7 +221,7 @@ A csatorna létrehozásakor az előnézeti URL-CÍMÉT érheti el. Ahhoz, hogy a
 Ha a csatorna indítása adatok bevitele, megtekintheti az adatfolyam.
 
 > [!NOTE]
-> Jelenleg az előzetes adatfolyam is csak akkor kézbesíti a töredékes MP4) (Smooth Streaming) formátumban, függetlenül a megadott bemeneti típus. Használhatja a [http://smf.cloudapp.net/healthmonitor](http://smf.cloudapp.net/healthmonitor) player a Smooth Stream teszteléséhez. Egy Azure-portálon üzemeltetett player segítségével is megtekintheti az adatfolyam.
+> Jelenleg az előzetes adatfolyam is csak akkor kézbesíti a töredékes MP4) (Smooth Streaming) formátumban, függetlenül a megadott bemeneti típus. Használhatja a [ http://smf.cloudapp.net/healthmonitor ](http://smf.cloudapp.net/healthmonitor) player a Smooth Stream teszteléséhez. Egy Azure-portálon üzemeltetett player segítségével is megtekintheti az adatfolyam.
 > 
 > 
 
@@ -270,10 +274,10 @@ Vegye figyelembe, hogy ha egyéni készletek van szüksége, forduljon amslived@
 | Átviteli sebesség | Szélessége | Magassága | MaxFPS | Profil | Kimeneti adatfolyam neve |
 | --- | --- | --- | --- | --- | --- |
 | 3500 |1280 |720 |30 |Magas |Video_1280x720_3500kbps |
-| 2200 |960 |540 |30 |Fő |Video_960x540_2200kbps |
-| 1350 |704 |396 |30 |Fő |Video_704x396_1350kbps |
-| 850 |512 |288 |30 |Fő |Video_512x288_850kbps |
-| 550 |384 |216 |30 |Fő |Video_384x216_550kbps |
+| 2200 |960 |540 |30 |Elsődleges |Video_960x540_2200kbps |
+| 1350 |704 |396 |30 |Elsődleges |Video_704x396_1350kbps |
+| 850 |512 |288 |30 |Elsődleges |Video_512x288_850kbps |
+| 550 |384 |216 |30 |Elsődleges |Video_384x216_550kbps |
 | 350 |340 |192 |30 |Alapkonfiguráció |Video_340x192_350kbps |
 | 200 |340 |192 |30 |Alapkonfiguráció |Video_340x192_200kbps |
 
@@ -363,8 +367,8 @@ Az alábbi táblázat azt ismerteti, hogy az egyes csatornaállapotok esetében 
 
 | Csatorna állapota | Jelzése a portál kezelőfelületén | Számlázandó? |
 | --- | --- | --- |
-| Indulás alatt |Indulás alatt |Nem (átmeneti állapot) |
-| Futtatás |Üzemkész (nincs futó program)<br/>vagy<br/>Streamelés (legalább egy futó program) |Igen |
+| Indítás |Indítás |Nem (átmeneti állapot) |
+| Fut |Üzemkész (nincs futó program)<br/>vagy<br/>Streamelés (legalább egy futó program) |Igen |
 | Leállítás |Leállítás |Nem (átmeneti állapot) |
 | Leállítva |Leállítva |Nem |
 
@@ -381,7 +385,7 @@ Az alábbi táblázat azt ismerteti, hogy az egyes csatornaállapotok esetében 
 * Alapértelmezés szerint csak 5 csatornák adhat hozzá a Media Services-fiók. Ez az enyhe kvóták az összes új fiókot. További információkért lásd: [kvóták és korlátozások](media-services-quotas-and-limitations.md).
 * Ha a csatorna vagy a hozzá tartozó programok már elindultak, a bemeneti protokoll nem módosítható. Ha más protokollt szeretne használni, hozzon létre külön-külön csatornákat az egyes bemeneti protokollokhoz.
 * Ha a csatorna csak számlázása a **futtató** állapota. További információkért tekintse meg [ez](media-services-manage-live-encoder-enabled-channels.md#states) szakasz.
-* Jelenleg az élő események maximálisan ajánlott időtartama 8 óra. Lépjen kapcsolatba a amslived@microsoft.com Ha át szeretné működtetni a csatornát hosszabb ideig.
+* Jelenleg az élő események maximálisan ajánlott időtartama 8 óra. Ha ennél tovább futó csatornára van szüksége, lépjen velünk kapcsolatba az amslived@microsoft.com e-mail-címen.
 * Ügyeljen arra, hogy rendelkezik a streamvégpontján, amelyből el kívánja segítségével a tartalmat a **futtató** állapotát.
 * Ha a bevitel, több nyelv nyomon követi, valamint arról, hogy az Azure-ral élő kódolás, csak RTP beszélő bemenet esetén támogatott. Megadhatja, hogy MPEG-2 TS over RTP használatával legfeljebb 8 hang adatfolyamokat. Választásával dolgozhat fel RTMP vagy Smooth streaming több zeneszámok jelenleg nem támogatott. Mikor történt az élő kódolás [helyszíni élő kódolja](media-services-live-streaming-with-onprem-encoders.md), nincs korlátozás nélkül, mivel egy csatornán keresztül további feldolgozás nélkül átadja függetlenül AMS küld.
 * A kódolási beállításkészlet használja a "max sebessége" 30 fps fogalmát. Igen, ha a bemeneti érték 60fps / 59.97i, a bemeneti keretek eldobott/inaktiválása-interlaced 30/29,97 fps számára. A bemeneti érték 50fps/50i, ha a bemeneti keretek eldobott/inaktiválása-interlaced 25 fps számára. Ha 25 fps a bemeneti, kimeneti 25 fps értéken marad.

@@ -1,11 +1,12 @@
 ---
-title: "A gépi tanulás lineáris regressziós alkalmazásával |} Microsoft Docs"
-description: "Az Excel programban, és az Azure Machine Learning Studióban lineáris regressziós modell összehasonlítása"
-metakeywords: 
+title: A gépi tanulás lineáris regressziós alkalmazásával |} Microsoft Docs
+description: Az Excel programban, és az Azure Machine Learning Studióban lineáris regressziós modell összehasonlítása
+metakeywords: ''
 services: machine-learning
-documentationcenter: 
-author: garyericson
-manager: jhubbard
+documentationcenter: ''
+author: heatherbshapiro
+ms.author: hshapiro
+manager: hjerez
 editor: cgronlun
 ms.assetid: 417ae6ab-de4f-4bdd-957a-d96133234656
 ms.service: machine-learning
@@ -14,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.author: kbaroni;garye
-ms.openlocfilehash: 218f2b141e3551180a2152570f99fdb427980dd7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2ea5a2720542217d3bb6a0a2b1309312fb74a953
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="using-linear-regression-in-azure-machine-learning"></a>Lineáris regresszió használata az Azure Machine Learning termékben
 > *Kate Baroni* és *Ben Boatman* vállalati megoldás fejlesztők a Microsoft Data elemzések kiváló Center vannak. Ebben a cikkben leírt tapasztalataikat áttelepítését egy meglévő regressziós elemzés suite Azure Machine Learning segítségével felhőalapú megoldásokhoz. 
@@ -62,8 +62,8 @@ Először az Excel-modell egyértelműen outperformed a Machine Learning Studio 
 |  | Excel | Studio |
 | --- |:---:|:---:|
 | Teljesítmény | | |
-| <ul style="list-style-type: none;"><li>R-négyzet igazítva</li></ul> |0.96 |N/A |
-| <ul style="list-style-type: none;"><li>Variációs <br />Meghatározása</li></ul> |N/A |0.78<br />(kis pontosság) |
+| <ul style="list-style-type: none;"><li>R-négyzet igazítva</li></ul> |0.96 |– |
+| <ul style="list-style-type: none;"><li>Variációs <br />Meghatározása</li></ul> |– |0.78<br />(kis pontosság) |
 | Mean Absolute Error |$9. 5M |$ 19.4 M |
 | Mean Absolute Error (%) |6.03% |12.2% |
 
@@ -81,13 +81,13 @@ A javaslatok alkalmazásakor azt a Machine Learning Studióban, az Excel alkalma
 | --- |:---:|:---:|:---:|
 | Címkézett érték |Tényleges (numerikus) |Azonos |Azonos |
 | Tanuló |Excel -> adatok elemzési regressziós -> |Lineáris regressziós. |Lineáris regressziós |
-| Tanuló beállítások |N/A |Alapértelmezés szerint használt érték |a szokványos legkevésbé négyzetes<br />2. SZINTŰ 0,005 = |
+| Tanuló beállítások |– |Alapértelmezés szerint használt érték |a szokványos legkevésbé négyzetes<br />L2 = 0.005 |
 | Adatkészlet |26 sorok, 3 funkciókat, 1 címke. Az összes numerikus. |Azonos |Azonos |
 | Vegyes: vonat |Excel az első 18 sorban, a legutóbbi 8 sorok vizsgálni képezni. |Azonos |Azonos |
 | Vegyes: teszt |A legutóbbi 8 sorokon alkalmazott Excel regressziós képlet |Azonos |Azonos |
 | **Teljesítmény** | | | |
-| R-négyzet igazítva |0.96 |N/A | |
-| Együttható |N/A |0.78 |0.952049 |
+| R-négyzet igazítva |0.96 |– | |
+| Együttható |– |0.78 |0.952049 |
 | Mean Absolute Error |$9. 5M |$ 19.4 M |$9. 5M |
 | Mean Absolute Error (%) |<span style="background-color: 00FF00;"> 6.03%</span> |12.2% |<span style="background-color: 00FF00;"> 6.03%</span> |
 
@@ -100,7 +100,7 @@ Emellett az Excel együttható képest is a szolgáltatás súlyok az Azure beta
 | B szolgáltatás |11071967.08 |11007300 |
 | A szolgáltatás C |25383318.09 |25140800 |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A Machine Learning webszolgáltatásba az Excelből felhasználásához meg akartunk. Az üzleti elemzők Excel alapulnak, és hogy változtatnunk oly módon, az Excel adatok egy sort a Machine Learning webszolgáltatás hívására és térjen vissza az előre jelzett érték Excel. 
 
 Is meg akartunk optimalizálja a modellt, a beállítások és a Machine Learning Studióban elérhető algoritmusok használata.
@@ -137,12 +137,12 @@ Is található, hogy tanácsos használandó [szűrő-alapú szolgáltatás kiv�
 
 A prediktív elemzési az előrejelzés a Machine Learning Excel elviselhető átviteli képessége lehetővé teszi, hogy jelentősen növelheti az lehetősége sikeresen találatokat adjon vissza a széles körű üzleti felhasználói közönség számára. 
 
-## <a name="resources"></a>Erőforrások
+## <a name="resources"></a>További források
 Íme néhány forrás, a regressziós együttműködve segít: 
 
 * Az Excel programban regressziós. Ha soha nem próbálta regressziós az Excel programban, ez az oktatóanyag segítségével egyszerűen: [http://www.excel-easy.com/examples/regression.html](http://www.excel-easy.com/examples/regression.html)
-* Az előrejelzés regressziós vs. Tyler Chessman megírt a blog cikke ismertető time series előrejelzési az Excel programban, amely lineáris regressziós helyes kezdő leírása tartalmazza. [http://sqlmag.com/SQL-Server-Analysis-Services/Understanding-Time-Series-forecasting-Concepts](http://sqlmag.com/sql-server-analysis-services/understanding-time-series-forecasting-concepts) 
-* A szokványos legkevésbé négyzetes lineáris regressziós: Hibái, problémák és nehézségek. Bevezetés és regressziós értékelése: [http://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/](http://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/)
+* Az előrejelzés regressziós vs. Tyler Chessman megírt a blog cikke ismertető time series előrejelzési az Excel programban, amely lineáris regressziós helyes kezdő leírása tartalmazza. [http://sqlmag.com/sql-server-analysis-services/understanding-time-series-forecasting-concepts](http://sqlmag.com/sql-server-analysis-services/understanding-time-series-forecasting-concepts) 
+* A szokványos legkevésbé négyzetes lineáris regressziós: Hibái, problémák és nehézségek. Bevezetés és regressziós értékelése: [http://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/ ](http://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/)
 
 [1]: ./media/linear-regression-in-azure/machine-learning-linear-regression-in-azure-1.png
 [2]: ./media/linear-regression-in-azure/machine-learning-linear-regression-in-azure-2.png

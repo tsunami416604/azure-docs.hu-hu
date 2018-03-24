@@ -1,10 +1,11 @@
 ---
-title: "A Machine Learning webszolgáltatás-végpontok létrehozása |} Microsoft Docs"
-description: "Az Azure Machine Learning webszolgáltatás-végpontok létrehozása"
+title: A Machine Learning webszolgáltatás-végpontok létrehozása |} Microsoft Docs
+description: Az Azure Machine Learning webszolgáltatás-végpontok létrehozása
 services: machine-learning
-documentationcenter: 
-author: hiteshmadan
-manager: padou
+documentationcenter: ''
+author: YasinMSFT
+ms.author: yahajiza
+manager: hjerez
 editor: cgronlun
 ms.assetid: 4657fc1b-5228-4950-a29e-bc709259f728
 ms.service: machine-learning
@@ -13,12 +14,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 10/04/2016
-ms.author: himad
-ms.openlocfilehash: 6de83042779a1a4edae57499f108dcddc9d68309
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: fac284e9f0c852306d99733a879fc13c85f07768
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="creating-endpoints"></a>Végpontok létrehozása
 > [!NOTE]
@@ -35,7 +35,7 @@ Ennek megvalósítása érdekében Azure Machine Learning hozhat létre az adott
 ## <a name="adding-endpoints-to-a-web-service"></a>Végpontok felvétele egy webszolgáltatás-bővítmény
 A végpont hozzáadása egy webszolgáltatás-bővítmény két módja van.
 
-* Automatizáltan
+* Programozott módon
 * Az Azure Machine Learning webszolgáltatások portálon keresztül
 
 Miután létrehozta a végpontot, szokásokra is szinkron API-k, kötegelt API-k, segítségével, és az excel-munkalapokat. A felhasználói felületen keresztüli végpontokra hozzáadásán is használhatja a végpont felügyeleti API-k szoftveres a végpontok hozzáadása.
@@ -54,6 +54,6 @@ A webszolgáltatás programozott módon adhat hozzá a végpont a [AddEndpoint](
 3. Kattintson az **Új** lehetőségre.
 4. Írja be nevét és leírását, az új végpont. Végpontneveit 24 karakter vagy kevesebb hosszúságúnak kell lennie, és a magyar ábécét kisbetűket és számokat kell készíteni. Válassza ki a naplózási szint, és hogy engedélyezve van-e mintaadatokat. További információt a naplózást, [naplózását a Machine Learning webszolgáltatások](web-services-logging.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [Az Azure Machine Learning Web service felhasználásához hogyan](consume-web-services.md).
 

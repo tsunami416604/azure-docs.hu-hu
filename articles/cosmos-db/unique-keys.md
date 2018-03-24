@@ -1,25 +1,25 @@
 ---
-title: "Az Azure Cosmos Adatbázisba egyedi kulcsok |} Microsoft Docs"
-description: "Megtudhatja, hogyan egyedi kulcsok használata az Azure Cosmos DB adatbázisban."
+title: Az Azure Cosmos Adatbázisba egyedi kulcsok |} Microsoft Docs
+description: Megtudhatja, hogyan egyedi kulcsok használata az Azure Cosmos DB adatbázisban.
 services: cosmos-db
-keywords: "egyedi kulcs korlátozás, egyedi kulcsmegkötés megsértése"
+keywords: egyedi kulcs korlátozás, egyedi kulcsmegkötés megsértése
 author: rafats
 manager: jhubbard
 editor: monicar
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: b15d5041-22dd-491e-a8d5-a3d18fa6517d
 ms.service: cosmos-db
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/27/2017
+ms.date: 03/21/2018
 ms.author: rafats
-ms.openlocfilehash: c530b34edf9bfa0651b7b114dcf7e8add0d906ed
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: 0c80ee13298c2c749c5f7eb7e55d1d77a8d6a34e
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="unique-keys-in-azure-cosmos-db"></a>Egyedi kulcsok vannak az Azure Cosmos-Adatbázisba
 
@@ -58,7 +58,7 @@ A tároló egy egyedi kulcs házirend létrehozása után a házirend nem módos
 
 Minden egyedi kulcs legfeljebb 16 elérési értéket (például /firstName, /lastName, /address/zipCode stb.) tartalmazhat. 
 
-Minden egyedi kulcs házirend legfeljebb 10 egyedi kulcsra vonatkozó megkötések vagy kombinációja lehet. Így a korábbi példában használó Utónév, vezetéknevét, és az e-mail cím csak egyetlen megkötés, és három elérhető 16 lehetséges elérési utak használ. 
+Minden egyedi kulcs házirend rendelkezhet legfeljebb 10 egyedi kulcsra vonatkozó megkötések, vagy kombinációk és a kombinált útvonalak egyedi index összes tulajdonság nem lehet hosszabb 60 karakternél. Így a korábbi példában használó Utónév, vezetéknevét, és az e-mail cím csak egyetlen megkötés, és három elérhető 16 lehetséges elérési utak használ. 
 
 A kérelem egység díja létrehozásához, frissítéséhez és valamivel nagyobb elem törlése lesz, ha egy egyedi kulcs házirendet a tárolón. 
 
@@ -133,7 +133,7 @@ A következő parancs minta bemutatja, hogyan hozzon létre egyedi indexet a Vez
 db.users.createIndex( { firstName: 1, lastName: 1, email: 1 }, { unique: true } )
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben megtanulta, elemek egyedi kulcs létrehozása egy adatbázisban. Ha első alkalommal hoz létre egy tárolót, tekintse át a [adatokat az Adatbázisba az Azure Cosmos particionálás](partition-data.md) , egyedi kulcsok és a partíciós kulcsok támaszkodnak egymással. 
 

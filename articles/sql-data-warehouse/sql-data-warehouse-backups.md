@@ -1,11 +1,11 @@
 ---
-title: "Azure SQL Data Warehouse biztonsági mentések - pillanatképeket, georedundáns |} Microsoft Docs"
-description: "Ismerje meg az SQL Data Warehouse beépített adatbázis biztonsági mentését, amelyek segítségével állíthatja vissza az Azure SQL Data Warehouse visszaállítási pont vagy egy másik földrajzi régióban."
+title: Azure SQL Data Warehouse biztonsági mentések - pillanatképeket, georedundáns |} Microsoft Docs
+description: Ismerje meg az SQL Data Warehouse beépített adatbázis biztonsági mentését, amelyek segítségével állíthatja vissza az Azure SQL Data Warehouse visszaállítási pont vagy egy másik földrajzi régióban.
 services: sql-data-warehouse
-documentationcenter: 
+documentationcenter: ''
 author: barbkess
 manager: jhubbard
-editor: 
+editor: ''
 ms.assetid: b5aff094-05b2-4578-acf3-ec456656febd
 ms.service: sql-data-warehouse
 ms.devlang: NA
@@ -16,10 +16,10 @@ ms.custom: backup-restore
 ms.date: 10/23/2017
 ms.author: jrj;barbkess
 ms.openlocfilehash: 159a1d34caba829750da33dbc4ad403fb21cd147
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="backup-and-restore-in-sql-data-warehouse"></a>Biztonsági mentés és visszaállítás az SQL Data Warehouse
 Ez a cikk ismerteti az SQL Data Warehouse a biztonsági másolatok tulajdonságait. Az adatok adatraktár biztonsági használatával állítsa vissza egy pillanatképet készíteni az elsődleges régióban adatbázist, vagy földrajzi – biztonsági másolat visszaállítása a párosítása, földrajzi régióban. 

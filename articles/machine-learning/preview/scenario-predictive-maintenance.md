@@ -1,6 +1,6 @@
 ---
-title: "A valós forgatókönyv prediktív karbantartási |} Microsoft Docs"
-description: "A PySpark használatával valós forgatókönyv prediktív karbantartás"
+title: A valós forgatókönyv prediktív karbantartási |} Microsoft Docs
+description: A PySpark használatával valós forgatókönyv prediktív karbantartás
 services: machine-learning
 author: ehrlinger
 ms.author: jehrling
@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.topic: article
 ms.custom: mvc
 ms.date: 10/05/2017
-ms.openlocfilehash: 81e227194ff64d7b7af842a208349ccc63528ab8
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: bb6e4f9f147db2fb70d991922cf0bb8d16b29671
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="predictive-maintenance-for-real-world-scenarios"></a>A valós forgatókönyv prediktív karbantartás
 
@@ -25,7 +25,7 @@ Ebben a forgatókönyvben felderíti a viszonylag [nagyméretű szimulált adatk
 
 ### <a name="cortana-intelligence-gallery-github-repository"></a>Cortana Intelligence Gallery GitHub-adattár
 
-A Cortana Intelligence Gallery a PM oktatóanyag egy nyilvános GitHub-adattár ([https://github.com/Azure/MachineLearningSamples-DeepLearningforPredictiveMaintenance](https://github.com/Azure/MachineLearningSamples-DeepLearningforPredictiveMaintenance)) ahol jelenthetem a problémát, és ellenőrizze hozzájárulásokat.
+A Cortana Intelligence Gallery a PM oktatóanyag egy nyilvános GitHub-adattár ([https://github.com/Azure/MachineLearningSamples-PredictiveMaintenance](https://github.com/Azure/MachineLearningSamples-PredictiveMaintenance)) ahol jelenthetem a problémát, és ellenőrizze hozzájárulások.
 
 
 ## <a name="use-case-overview"></a>Használja az eset áttekintése
@@ -49,8 +49,8 @@ Modell operationalization verzió 0.1.0a22, az Azure Machine Learning parancssor
 ## <a name="create-a-new-workbench-project"></a>Új munkaterület-projekt létrehozása
 
 Hozzon létre egy új projektet ebben a példában egy sablon segítségével:
-1.  Nyissa meg a gépi tanulási munkaterületet.
-2.  Az a **projektek** lapon jelölje be  **+** , majd válassza ki **új projekt**.
+1.  Nyissa meg a Machine Learning Workbenchet.
+2.  Az a **projektek** lapon jelölje be **+**, majd válassza ki **új projekt**.
 3.  Az a **új projekt létrehozása** ablaktáblán, töltse ki az adatokat az új projekt.
 4.  Az a **keresési Projektsablonjai** keresési mezőbe, írja be a "Prediktív karbantartási", és válassza ki a **prediktív karbantartási** sablont.
 5.  Kattintson a **Létrehozás** gombra.

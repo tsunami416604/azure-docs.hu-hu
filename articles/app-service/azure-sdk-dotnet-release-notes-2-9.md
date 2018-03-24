@@ -1,10 +1,10 @@
 ---
-title: "Az Azure SDK for .NET 2.9 kibocsátási megjegyzések"
-description: "Az Azure SDK for .NET 2.9 kibocsátási megjegyzések"
+title: Az Azure SDK for .NET 2.9 kibocsátási megjegyzések
+description: Az Azure SDK for .NET 2.9 kibocsátási megjegyzések
 services: app-service\web
 documentationcenter: .net
 author: chrissfanos
-editor: 
+editor: ''
 ms.assetid: c83d815b-fc19-4260-821e-7d2a7206dffc
 ms.service: app-service
 ms.devlang: multiple
@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 02/24/2017
 ms.author: juliako
-ms.openlocfilehash: 199f0906f73d693d7cd4b73c928f23ae83b99596
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a62268cee0750c544703fb4c3f7e91238e26b872
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-sdk-for-net-29-release-notes"></a>Az Azure SDK for .NET 2.9 kibocsátási megjegyzései
 
 Ez a témakör a .NET 2.9 és az Azure SDK 2.9.6 kibocsátási megjegyzései tartalmaz.
 
-##<a name="azure-sdk-for-net-296-release-summary"></a>Az Azure SDK for .NET 2.9.6 kiadási összegzése
+## <a name="azure-sdk-for-net-296-release-summary"></a>Az Azure SDK for .NET 2.9.6 kiadási összegzése
 
 Kiadás dátuma: 2016. 11/16
  
@@ -31,7 +31,7 @@ Ebben a kiadásban az Azure SDK 2.9 legfrissebb módosításokat nem vezettek be
 
 ### <a name="visual-studio-2017-release-candidate"></a>A Visual Studio 2017 kiadásra jelölt verziójára
 
-- A Visual Studio 2017 RC ebben a kiadásban az Azure SDK for .NET-t az Azure terheléseknél engedélyezett. Minden eszköz a végre kell hajtani az Azure fejlesztési továbbítja a Visual Studio 2017 RC része lesz. A Visual Studio 2015-öt és a Visual Studio 2013, az SDK-t továbbra is elérhetők WebPI keresztül. Azt fogja kell megszűnő Azure SDK .NET kiadásokban a Visual Studio 2013, ha a Visual Studio 2017 feloldja a végső termék. Hajtsa végre az erre a hivatkozásra kattintva töltse le a Visual Studio 2017 RC: https://www.visualstudio.com/vs/visual-studio-2017-rc/
+- A Visual Studio 2017 RC ebben a kiadásban az Azure SDK for .NET-t az Azure terheléseknél engedélyezett. Minden eszköz a végre kell hajtani az Azure fejlesztési továbbítja a Visual Studio 2017 RC része lesz. A Visual Studio 2015-öt és a Visual Studio 2013, az SDK-t továbbra is elérhetők WebPI keresztül. Azt fogja kell megszűnő Azure SDK .NET kiadásokban a Visual Studio 2013, ha a Visual Studio 2017 feloldja a végső termék. Erre a hivatkozásra kattintva töltse le a Visual Studio 2017 RC kövesse: https://www.visualstudio.com/vs/visual-studio-2017-rc/
 
 ### <a name="azure-diagnostics"></a>Azure Diagnostics
 
@@ -88,6 +88,6 @@ A frissítés az alábbiakat tartalmazza:
 ## <a name="azure-resource-manager"></a>Azure Resource Manager
 Ez a kiadás [KeyVault](../azure-resource-manager/resource-manager-keyvault-parameter.md) Resource Manager-sablonok támogatása.
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 [Az Azure SDK 2.9 közlemény post](https://azure.microsoft.com/blog/announcing-visual-studio-azure-tools-and-sdk-2-9/)
 

@@ -1,11 +1,11 @@
 ---
-title: "Vállalati alkalmazások az Azure Active Directory-kezelés kialakítási felhasználói |} Microsoft Docs"
-description: "Megtudhatja, hogyan kezelheti a felhasználói fiók kiépítése vállalati alkalmazások az Azure Active Directory használatával"
+title: Vállalati alkalmazások az Azure Active Directory-kezelés kialakítási felhasználói |} Microsoft Docs
+description: Megtudhatja, hogyan kezelheti a felhasználói fiók kiépítése vállalati alkalmazások az Azure Active Directory használatával
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: asmalser
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 34ac4028-a5aa-40d9-a93b-0db4e0abd793
 ms.service: active-directory
 ms.devlang: na
@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 07/26/2017
 ms.author: asmalser
 ms.reviewer: asmalser
-ms.openlocfilehash: 846ec63d47ebc787fa1edbf1968f1a843e96ac9d
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: bded73b4a335dc85a84691f5edabac5055f43cca
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>Vállalati alkalmazások az Azure portálon kiépítés felhasználói fiók kezelése
 Ez a cikk ismerteti, hogyan használható a [Azure-portálon](https://portal.azure.com) automatikus felhasználói fiók üzembe helyezést és megszüntetést újra a számítógépet, amelyek támogatják ezt, különösen azokat, a "kiemelt" kategóriából a ahozzáadottalkalmazásokkezelése[ Az Azure Active Directory alkalmazáskatalógusában](active-directory-appssoaccess-whatis.md#get-started-with-the-azure-ad-application-gallery). Automatikus felhasználói fiók kiépítése és annak működéséről kapcsolatos további információkért lásd: [Felhasználókiépítés és -megszüntetés automatizálása a SaaS-alkalmazásokhoz az Azure Active Directoryval](active-directory-saas-app-provisioning.md).
@@ -76,7 +76,7 @@ Ez a szakasz ismerteti továbbá a létesítési szolgáltatás, beleértve az e
 
 Hivatkozásokkal a **tevékenységgel kapcsolatos jelentés kiépítés**, amely biztosítja, hogy a napló összes felhasználók és csoportok létrehozása, frissítése és eltávolított között az Azure AD és a cél alkalmazás, és a **esetleges hibajelentésben való megjelenítéshezkiépítése** biztosító részletes hibaüzenetek a felhasználó- és csoportobjektumok, melyeknél nem sikerült olvasni, létrehozni, frissíteni vagy eltávolítani. 
 
-##<a name="feedback"></a>Visszajelzés
+## <a name="feedback"></a>Visszajelzés
 
 Reméljük, például a Azure AD felhasználói élményt. Ne hamarosan visszajelzését! Visszajelzését és ötleteket javítására szolgáló utáni a **felügyeleti portál** szakasza a [visszajelzési fórumon](https://feedback.azure.com/forums/169401-azure-active-directory/category/162510-admin-portal).  Ritkán használt adatok új dolgai minden nap kiépítésével foglalkozó még érdeklődőbbek és felhasználása a shape útmutatást és határozza meg, mi készíteni.
 

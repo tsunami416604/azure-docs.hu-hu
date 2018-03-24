@@ -1,14 +1,14 @@
 ---
-title: "Az Azure HDInsight Tools - használja a Visual Studio Code a Hive, LLAP vagy pySpark |} Microsoft Docs"
-description: "Ismerje meg, hogyan használható az Azure HDInsight Tools for Visual Studio Code létrehozása és elküldése a lekérdezések és parancsfájlok."
+title: Az Azure HDInsight Tools - használja a Visual Studio Code a Hive, LLAP vagy pySpark |} Microsoft Docs
+description: Ismerje meg, hogyan használható az Azure HDInsight Tools for Visual Studio Code létrehozása és elküldése a lekérdezések és parancsfájlok.
 Keywords: VS Code,Azure HDInsight Tools,Hive,Python,PySpark,Spark,HDInsight,Hadoop,LLAP,Interactive Hive,Interactive Query
 services: HDInsight
-documentationcenter: 
+documentationcenter: ''
 author: jejiang
-manager: 
+manager: ''
 editor: jgao
 tags: azure-portal
-ms.assetid: 
+ms.assetid: ''
 ms.service: HDInsight
 ms.devlang: na
 ms.topic: article
@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/27/2017
 ms.author: jejiang
-ms.openlocfilehash: 4f0bcd0992a02e64b4b10347fc30776af17900bd
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 7567ce516e6d08a458ff96f4554d9e92934408f5
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="use-azure-hdinsight-tools-for-visual-studio-code"></a>Az Azure HDInsight eszközök segítségével a Visual Studio Code
 
@@ -120,7 +120,7 @@ Egy normál fürt hivatkozás segítségével felügyelt Ambari felhasználóné
 
    ![csatolt fürt](./media/hdinsight-for-vscode/linked-cluster.png)
 
-4. Is megszüntetheti a fürt által inputing **HDInsight: egy fürt leválasztása** parancs palettáról.
+4. Is megszüntetheti a fürt által beírása **HDInsight: egy fürt leválasztása** parancs palettáról.
 
 ## <a name="list-hdinsight-clusters"></a>A HDInsight-fürtök felsorolása
 

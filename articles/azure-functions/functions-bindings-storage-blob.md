@@ -1,13 +1,13 @@
 ---
-title: "Az Azure Functions az Azure Blob storage kötések"
-description: "Azure Blob storage eseményindítók és kötések az Azure Functions használatának megismerése."
+title: Az Azure Functions az Azure Blob storage kötések
+description: Azure Blob storage eseményindítók és kötések az Azure Functions használatának megismerése.
 services: functions
 documentationcenter: na
 author: ggailey777
 manager: cfowler
-editor: 
-tags: 
-keywords: "Azure functions, Funkciók, Eseményfeldolgozási, dinamikus számítási kiszolgáló nélküli architektúrája"
+editor: ''
+tags: ''
+keywords: Azure functions, Funkciók, Eseményfeldolgozási, dinamikus számítási kiszolgáló nélküli architektúrája
 ms.service: functions
 ms.devlang: multiple
 ms.topic: reference
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 02/12/2018
 ms.author: glenga
-ms.openlocfilehash: 221a049ae37cc6934d04e90b6b8035e2a020e811
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: bf2c4a12d1344ec17ce9688e1c7192f57104dc7b
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions"></a>Az Azure Functions az Azure Blob storage kötések
 
@@ -233,12 +233,12 @@ A C# és C# a parancsfájlt a következő paraméter típusok használhatók a e
 * `string`
 * `Byte[]`
 * Egy POCO szerializálható JSON-fájlként
-* `ICloudBlob` ("inout" kötés irányban szükséges *function.json*)
-* `CloudBlockBlob` ("inout" kötés irányban szükséges *function.json*)
-* `CloudPageBlob` ("inout" kötés irányban szükséges *function.json*)
-* `CloudAppendBlob` ("inout" kötés irányban szükséges *function.json*)
+* `ICloudBlob`<sup>1</sup>
+* `CloudBlockBlob`<sup>1</sup>
+* `CloudPageBlob`<sup>1</sup>
+* `CloudAppendBlob`<sup>1</sup>
 
-Amint, néhány, a következő típusú szükséges egy `inout` irányban kötés *function.json*. Ebben az irányban nem támogatja a szokásos szerkesztő az Azure portálon, így a speciális szerkesztő kell használni.
+<sup>1</sup> "inout" kötést igényel `direction` a *function.json* vagy `FileAccess.ReadWrite` C# osztály könyvtárban.
 
 A kötés `string`, `Byte[]`, vagy POCO csak akkor ajánlott, ha a blob mérete kisebb, mint a teljes blob tartalmát betölti a memóriába. Általában célszerű használni egy `Stream` vagy `CloudBlockBlob` típusa. További információkért lásd: [egyidejűség-és memóriahasználatát](#trigger---concurrency-and-memory-usage) című cikkben.
 
@@ -364,7 +364,7 @@ Tekintse meg a nyelvspecifikus példát:
 
 ### <a name="input---c-example"></a>Bemenet – C# – példa
 
-A következő példa egy [C# függvény](functions-dotnet-class-library.md) , amely a várólista eseményindító és egy bemeneti blob-kötést használja. A várólista messagge tartalmaz a blob neve, és a függvény naplózza a blob mérete.
+A következő példa egy [C# függvény](functions-dotnet-class-library.md) , amely a várólista eseményindító és egy bemeneti blob-kötést használja. Az üzenetsorban lévő üzenetet a blob nevét tartalmazza, és a függvény naplózza a blob mérete.
 
 ```csharp
 [FunctionName("BlobInput")]
@@ -374,7 +374,6 @@ public static void Run(
     TraceWriter log)
 {
     log.Info($"BlobInput processed blob\n Name:{myQueueItem} \n Size: {myBlob.Length} bytes");
-
 }
 ```        
 
@@ -534,12 +533,12 @@ A C# és C# a parancsfájlt használhatja a blob bemeneti kötése a következő
 * `Byte[]`
 * `CloudBlobContainer`
 * `CloudBlobDirectory`
-* `ICloudBlob` ("inout" kötés irányban szükséges *function.json*)
-* `CloudBlockBlob` ("inout" kötés irányban szükséges *function.json*)
-* `CloudPageBlob` ("inout" kötés irányban szükséges *function.json*)
-* `CloudAppendBlob` ("inout" kötés irányban szükséges *function.json*)
+* `ICloudBlob`<sup>1</sup>
+* `CloudBlockBlob`<sup>1</sup>
+* `CloudPageBlob`<sup>1</sup>
+* `CloudAppendBlob`<sup>1</sup>
 
-Amint, néhány, a következő típusú szükséges egy `inout` irányban kötés *function.json*. Ebben az irányban nem támogatja a szokásos szerkesztő az Azure portálon, így a speciális szerkesztő kell használni.
+<sup>1</sup> "inout" kötést igényel `direction` a *function.json* vagy `FileAccess.ReadWrite` C# osztály könyvtárban.
 
 A kötés `string` vagy `Byte[]` csak akkor javasolt, ha blob mérete kisebb, mint a teljes blob tartalmát a memóriába betöltött. Általában célszerű használni egy `Stream` vagy `CloudBlockBlob` típusa. További információkért lásd: [egyidejűség-és memóriahasználatát](#trigger---concurrency-and-memory-usage) korábbi ebben a cikkben.
 
@@ -737,21 +736,23 @@ Az alábbi táblázat ismerteti a beállított kötés konfigurációs tulajdons
 
 ## <a name="output---usage"></a>Kimeneti - használat
 
-A C# és C# a parancsfájlt, használhatja a következő paraméter típusa a BLOB kimeneti kötése:
+A C# és C# a parancsfájlt köthető a következő típusok blobok írni:
 
 * `TextWriter`
 * `out string`
 * `out Byte[]`
 * `CloudBlobStream`
 * `Stream`
-* `CloudBlobContainer`
+* `CloudBlobContainer`<sup>1</sup>
 * `CloudBlobDirectory`
-* `ICloudBlob` ("inout" kötés irányban szükséges *function.json*)
-* `CloudBlockBlob` ("inout" kötés irányban szükséges *function.json*)
-* `CloudPageBlob` ("inout" kötés irányban szükséges *function.json*)
-* `CloudAppendBlob` ("inout" kötés irányban szükséges *function.json*)
+* `ICloudBlob`<sup>2</sup>
+* `CloudBlockBlob`<sup>2</sup>
+* `CloudPageBlob`<sup>2</sup>
+* `CloudAppendBlob`<sup>2</sup>
 
-Amint, néhány, a következő típusú szükséges egy `inout` irányban kötés *function.json*. Ebben az irányban nem támogatja a szokásos szerkesztő az Azure portálon, így a speciális szerkesztő kell használni.
+<sup>1</sup> "a" kötésben szükséges `direction` a *function.json* vagy `FileAccess.Read` C# osztály könyvtárban.
+
+<sup>2</sup> "inout" kötést igényel `direction` a *function.json* vagy `FileAccess.ReadWrite` C# osztály könyvtárban.
 
 Aszinkron funkciók, használja a visszatérési értéket vagy `IAsyncCollector` ahelyett, hogy egy `out` paraméter.
 

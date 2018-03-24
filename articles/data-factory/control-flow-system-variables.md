@@ -1,11 +1,11 @@
 ---
-title: "Az Azure Data Factory rendszerváltozók |} Microsoft Docs"
-description: "Ez a cikk ismerteti az Azure Data Factory által támogatott rendszerváltozók. Ezek a változók használhatja kifejezések adat-előállító entitások meghatározásakor."
+title: Az Azure Data Factory rendszerváltozók |} Microsoft Docs
+description: Ez a cikk ismerteti az Azure Data Factory által támogatott rendszerváltozók. Ezek a változók használhatja kifejezések adat-előállító entitások meghatározásakor.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: sharonlo101
-manager: jhubbard
-editor: spelluru
+manager: craigg
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/10/2018
 ms.author: shlo
-ms.openlocfilehash: bdf1754226852145e9bf5597256339549f253071
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 77285692846d2a301e091426801e20203816181a
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="system-variables-supported-by-azure-data-factory"></a>Azure Data Factory által támogatott rendszerváltozók
 Ez a cikk ismerteti az Azure Data Factory által támogatott rendszerváltozók. Ezek a változók használhatja kifejezések adat-előállító entitások meghatározásakor. 
@@ -36,7 +36,7 @@ Ez a cikk ismerteti az Azure Data Factory által támogatott rendszerváltozók.
 | @pipeline().TriggerType | Az eseményindító az adatcsatorna (Manuális, a Feladatütemező) definiálásra típusa | 
 | @pipeline().TriggerId| Az eseményindító, amely hívja meg a folyamat azonosítója |
 | @pipeline().TriggerName| Az eseményindító, amely hívja meg a folyamat neve |
-| @pipeline().TriggerTime| Időpontot, amikor az eseményindító a feldolgozási sor definiálásra. Az indítási idő az a tényleges égetett idő, nem a megadott időpont. Például `13:20:08.0149599Z` helyett adja vissza`13:20:00.00Z` |
+| @pipeline().TriggerTime| Időpontot, amikor az eseményindító a feldolgozási sor definiálásra. Az indítási idő az a tényleges égetett idő, nem a megadott időpont. Például `13:20:08.0149599Z` helyett adja vissza `13:20:00.00Z` |
 
 ## <a name="trigger-scope"></a>Eseményindító hatóköre:
 

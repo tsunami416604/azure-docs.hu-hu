@@ -1,24 +1,21 @@
 ---
-title: "Egyéni házirendek – az Azure AD B2C használatával a felhasználói felület testreszabása |} Microsoft Docs"
-description: "További tudnivalók a felhasználói felület (UI) testreszabása, miközben egyéni házirendekkel használhatja az Azure AD B2C."
+title: Egyéni házirendek – az Azure AD B2C használatával a felhasználói felület testreszabása |} Microsoft Docs
+description: További tudnivalók a felhasználói felület (UI) testreszabása, miközben egyéni házirendekkel használhatja az Azure AD B2C.
 services: active-directory-b2c
-documentationcenter: 
-author: saeedakhter-msft
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: parakhj
-ms.assetid: 658c597e-3787-465e-b377-26aebc94e46d
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.devlang: na
 ms.date: 04/04/2017
-ms.author: saeedakhter-msft
-ms.openlocfilehash: dcd8b6df68a68f5feb428b4fd98aee938b3bfe6c
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.author: davidmu
+ms.openlocfilehash: 659910f239087a1d87d650c05af157c085e8c72c
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-active-directory-b2c-configure-ui-customization-in-a-custom-policy"></a>Az Azure Active Directory B2C: Egyéni házirendek konfigurálása a felhasználói felület testreszabása
 
@@ -40,7 +37,7 @@ Hogyan működik ez: Azure AD B2C az ügyfél böngészőjében kód fut, és a 
 
 Hozzon létre HTML tartalom a termék márkáját nevű cím.
 
-1. Másolja az alábbi HTML-részlet. Szabályos üres elem a HTML5 nevű  *\<div id = "api"\>\</div\>*  belül található a  *\<törzs\>*  címkék. Ez az elem azt jelzi, ahol az Azure AD B2C tartalmat beszúrni.
+1. Másolja az alábbi HTML-részlet. Szabályos üres elem a HTML5 nevű *\<div id = "api"\>\</div\>* belül található a *\<törzs\>* címkék. Ez az elem azt jelzi, ahol az Azure AD B2C tartalmat beszúrni.
 
    ```html
    <!DOCTYPE html>
@@ -124,7 +121,7 @@ Ellenőrizze, hogy készen áll a következő módon:
 
 ## <a name="modify-your-sign-up-or-sign-in-custom-policy"></a>A regisztráció vagy bejelentkezés egyéni házirend módosítása
 
-A legfelső szintű alatt  *\<TrustFrameworkPolicy\>*  címke, keresse meg  *\<BuildingBlocks\>*  címke. Belül a  *\<BuildingBlocks\>*  címkék, vegye fel a  *\<ContentDefinitions\>*  címke a következő példa másolásával. Cserélje le *your_storage_account* a tárfiók nevével.
+A legfelső szintű alatt *\<TrustFrameworkPolicy\>* címke, keresse meg *\<BuildingBlocks\>* címke. Belül a *\<BuildingBlocks\>* címkék, vegye fel a *\<ContentDefinitions\>* címke a következő példa másolásával. Cserélje le *your_storage_account* a tárfiók nevével.
 
   ```xml
   <BuildingBlocks>
@@ -141,7 +138,7 @@ A legfelső szintű alatt  *\<TrustFrameworkPolicy\>*  címke, keresse meg  *\<B
 1. Az a [Azure-portálon](https://portal.azure.com), [átváltani a környezetében az Azure AD B2C-bérlő](active-directory-b2c-navigate-to-b2c-context.md), majd nyissa meg a **az Azure AD B2C** panelen.
 2. Kattintson a **házirend**.
 3. Kattintson a **házirend feltöltése**.
-4. Töltse fel `SignUpOrSignin.xml` rendelkező a  *\<ContentDefinitions\>*  címke korábban hozzáadott.
+4. Töltse fel `SignUpOrSignin.xml` rendelkező a *\<ContentDefinitions\>* címke korábban hozzáadott.
 
 ## <a name="test-the-custom-policy-by-using-run-now"></a>Az egyéni házirend tesztelése **futtatása most**
 

@@ -1,6 +1,6 @@
 ---
-title: "A költséghatékony, alacsony prioritású virtuális gépek Azure Batch feladatokat futtató |} Microsoft Docs"
-description: "Ismerje meg, alacsony prioritású virtuális gépeket az Azure Batch-munkaterhelések költségek csökkentése a kiépítése."
+title: A költséghatékony, alacsony prioritású virtuális gépek Azure Batch feladatokat futtató |} Microsoft Docs
+description: Ismerje meg, alacsony prioritású virtuális gépeket az Azure Batch-munkaterhelések költségek csökkentése a kiépítése.
 services: batch
 author: mscurrell
 manager: timlt
@@ -9,13 +9,13 @@ ms.service: batch
 ms.devlang: multiple
 ms.topic: article
 ms.workload: na
-ms.date: 02/01/2018
+ms.date: 03/19/2018
 ms.author: markscu
-ms.openlocfilehash: 7e4f37ca6997f1770de8acbc10eeeb25ddf87deb
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 68240e29429b4c6321e8627b62ad65ce7ecb468e
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="use-low-priority-vms-with-batch"></a>Kis prioritású virtuális gépek használata a kötegelt
 
@@ -26,12 +26,6 @@ Kis prioritású virtuális gépek előnyeit felesleges kapacitás az Azure-ban.
 Mi a fontosabb: az alacsony prioritású virtuális gépeket, hogy a virtuális gépek nem állnak rendelkezésre kiosztani, vagy előfordulhat, hogy tetszőleges időpontban, attól függően, hogy a rendelkezésre álló kapacitásból foglalható. Emiatt alacsony prioritású virtuális gépek legmegfelelőbb bizonyos munkaterhelések esetében. Alacsony prioritású virtuális gépek használata kötegelt és aszinkron feldolgozási terheléshez, ahol a feladat befejezési idő rugalmas, és a munka sok virtuális gép között van elosztva.
  
 Kis prioritású virtuális gépek dedikált virtuális gépek képest jelentősen csökkentett áron érhető el. Díjszabása, lásd: [kötegelt árképzési](https://azure.microsoft.com/pricing/details/batch/).
-
-
-> [!IMPORTANT]
-> Alacsony prioritású virtuális gépek jelenleg csak a kötegelt futó számítási feladatok érhetők el. 
->
->
 
 ## <a name="use-cases-for-low-priority-vms"></a>Kis prioritású virtuális gépek alkalmazási helyzetei
 
