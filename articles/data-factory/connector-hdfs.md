@@ -1,11 +1,11 @@
 ---
-title: "Adatok másolása az Azure Data Factory használatával HDFS |} Microsoft Docs"
-description: "Útmutató: adatok másolása egy felhőalapú és helyszíni HDFS forrás támogatott fogadó adattárolókhoz egy Azure Data Factory-folyamat a másolási tevékenység használatával."
+title: Adatok másolása az Azure Data Factory használatával HDFS |} Microsoft Docs
+description: 'Útmutató: adatok másolása egy felhőalapú és helyszíni HDFS forrás támogatott fogadó adattárolókhoz egy Azure Data Factory-folyamat a másolási tevékenység használatával.'
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: spelluru
+manager: craigg
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 400c58abf04d28dd0e5f1d7aac204f09c43b942e
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 98a03bf1637ce21320b749feb7dfb55096bf091c
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="copy-data-from-hdfs-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatával HDFS
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -329,7 +329,7 @@ A helyszíni környezet beállítása úgy, hogy a Kerberos-hitelesítés haszn�
 
   **Indítsa újra a** a KDC-szolgáltatás konfigurálása után.
 
-2.  Készítse elő a rendszerbiztonsági tag nevű  **krbtgt/REALM.COM@AD.COM**  a KDC-kiszolgáló a következő paranccsal:
+2.  Készítse elő a rendszerbiztonsági tag nevű **krbtgt/REALM.COM@AD.COM** a KDC-kiszolgáló a következő paranccsal:
 
             Kadmin> addprinc krbtgt/REALM.COM@AD.COM
 
@@ -342,7 +342,7 @@ A helyszíni környezet beállítása úgy, hogy a Kerberos-hitelesítés haszn�
             C:> Ksetup /addkdc REALM.COM <your_kdc_server_address>
             C:> ksetup /addhosttorealmmap HDFS-service-FQDN REALM.COM
 
-2.  Windows-tartomány Kerberos-tartomány bizalmi kapcsolat létrehozásához. [jelszó] pedig a jelszót a rendszerbiztonsági tag  **krbtgt/REALM.COM@AD.COM** .
+2.  Windows-tartomány Kerberos-tartomány bizalmi kapcsolat létrehozásához. [jelszó] pedig a jelszót a rendszerbiztonsági tag **krbtgt/REALM.COM@AD.COM**.
 
             C:> netdom trust REALM.COM /Domain: AD.COM /add /realm /passwordt:[password]
 
