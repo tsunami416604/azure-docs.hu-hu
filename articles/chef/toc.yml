@@ -1,0 +1,25 @@
+- name: Chef – dokumentáció
+  href: index.md
+- name: Gyors útmutatók
+  expanded: true
+  items:
+    - name: 'Automatizálás: Gyorsindítási sablon'
+      href: 'https://azuremarketplace.microsoft.com/en-us/marketplace/apps/chef-software.chef-automate?tab=Overview'
+- name: Oktatóanyagok
+  items:
+    - name: Virtuális gépek automatizálása
+      href: /azure/virtual-machines/windows/chef-automation
+- name: További források
+  items:
+    - name: Azure-ütemterv
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: 'Blog: VSTS és Chef'
+      href: 'https://blog.chef.io/2017/05/10/integrate-chef-into-your-build-and-release-pipelines-with-microsoft-visual-studio-team-services/'
+    - name: Chef és Azure PS
+      href: 'https://docs.microsoft.com/powershell/module/azure/get-azurevmchefextension?view=azuresmps-4.0.0'
+    - name: Chef és VSTS
+      href: 'https://github.com/chef-partners/vsts-chef/wiki/Getting-Started'
+    - name: Chef-hely
+      href: 'https://www.chef.io'
+    - name: 'Videó: Chef és VSTS'
+      href: 'https://channel9.msdn.com/Events/TechDaysOnline/UK-TechDays-Online-2016/Release-Management-with-VSTS--integration-with-Azure--Chef-Deployment'

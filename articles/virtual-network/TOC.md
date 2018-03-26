@@ -56,7 +56,10 @@
 #### [Különböző üzemi modellek – egyazon előfizetés](create-peering-different-deployment-models.md)
 #### [Különböző üzemi modellek – különböző előfizetések](create-peering-different-deployment-models-subscriptions.md)
 
-### [Virtuális hálózati szolgáltatásvégpontok](virtual-network-service-endpoints-configure.md)
+### Virtuális hálózati szolgáltatásvégpontok
+#### [Azure Portal](tutorial-restrict-network-access-to-resources.md)
+#### [Azure PowerShell](tutorial-restrict-network-access-to-resources-powershell.md)
+#### [Azure CLI](tutorial-restrict-network-access-to-resources-cli.md)
 
 ### Virtual machines (Virtuális gépek)
 #### [Virtuális gépek hálózati átviteli sebessége](virtual-machine-network-throughput.md)
@@ -176,8 +179,12 @@
 ### [Virtuális gépek közötti kapcsolódási problémák](virtual-network-troubleshoot-connectivity-problem-between-vms.md)
 ### [PTR konfigurálása SMTP szalagcím-ellenőrzésre](create-ptr-for-smtp-service.md)
 
+## Mintaszkriptek
+### [Azure CLI](cli-samples.md)
+### [Azure PowerShell](powershell-samples.md)
+
 # Referencia
-## [Kódminták](https://azure.microsoft.com/en-us/resources/samples/?service=virtual-network)
+## [Kódminták](https://azure.microsoft.com/resources/samples/?service=virtual-network)
 ## [Azure PowerShell (Resource Manager)](/powershell/module/azurerm.network)
 ## [Azure PowerShell (klasszikus)](/powershell/module/azure/)
 ## [Azure CLI](/cli/azure/network)

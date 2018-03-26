@@ -1,11 +1,10 @@
 ---
-title: "Adatok áthelyezése a helyszíni HDFS |} Microsoft Docs"
-description: "További tudnivalók az Azure Data Factory használatával a helyszíni HDFS áthelyezni az adatokat."
+title: Adatok áthelyezése a helyszíni HDFS |} Microsoft Docs
+description: További tudnivalók az Azure Data Factory használatával a helyszíni HDFS áthelyezni az adatokat.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: monicar
+manager: craigg
 ms.assetid: 3215b82d-291a-46db-8478-eac1a3219614
 ms.service: data-factory
 ms.workload: data-services
@@ -15,11 +14,11 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 87acbe81d20e0f2b209565eace16de1b979b1d96
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 62a1052c0b2674e3292d5f89c0b8863439dd3928
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="move-data-from-on-premises-hdfs-using-azure-data-factory"></a>Adatok áthelyezése az Azure Data Factory használatával a helyszíni HDFS
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -119,7 +118,7 @@ A **typeProperties** szakasz eltérő adatkészlet egyes típusai és informáci
 
 | Tulajdonság | Leírás | Szükséges |
 | --- | --- | --- |
-| folderPath |A mappa elérési útját. Példa:`myfolder`<br/><br/>Használja az escape-karakter "\" a speciális karakterek a karakterláncban. Például: folder\subfolder, adja meg a mappa\\\\almappa és d:\samplefolder, adja meg a d:\\\\mappába.<br/><br/>Ez a tulajdonság a kombinálhatja **partitionBy** szeretné, hogy a mappa elérési utak alapján szelet kezdő és záró dátum-idő. |Igen |
+| folderPath |A mappa elérési útját. Példa: `myfolder`<br/><br/>Használja az escape-karakter "\" a speciális karakterek a karakterláncban. Például: folder\subfolder, adja meg a mappa\\\\almappa és d:\samplefolder, adja meg a d:\\\\mappába.<br/><br/>Ez a tulajdonság a kombinálhatja **partitionBy** szeretné, hogy a mappa elérési utak alapján szelet kezdő és záró dátum-idő. |Igen |
 | fileName |Adja meg a fájl nevét a **folderPath** Ha azt szeretné, hogy a tábla egy adott fájlra a mappában. Ha nem ad meg ehhez a tulajdonsághoz értéket, a tábla a mappában lévő összes fájlt mutat.<br/><br/>Ha nincs megadva fájlnév egy kimeneti adatkészletet, a létrehozott fájl nevét a következő lenne ebben a formátumban: <br/><br/>Adatok. <Guid>.txt (például:: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |Nem |
 | partitionedBy |Adjon meg egy dinamikus folderPath idő adatsor fájlnevét partitionedBy használható. Példa: folderPath adatok óránkénti paraméteres. |Nem |
 | Formátumban | A következő formátumban típusok támogatottak: **szöveges**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Állítsa be a **típus** tulajdonság a formátuma a következő értékek egyikét. További információkért lásd: [szövegformátum](data-factory-supported-file-and-compression-formats.md#text-format), [Json formátumban](data-factory-supported-file-and-compression-formats.md#json-format), [az Avro formátum](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc formátum](data-factory-supported-file-and-compression-formats.md#orc-format), és [Parquet formátum](data-factory-supported-file-and-compression-formats.md#parquet-format) szakaszok. <br><br> Ha azt szeretné, hogy **másolja a fájlokat-van** közötti fájlalapú tárolók (bináris másolhatja azokat), hagyja ki a Formátum szakasz mindkét bemeneti és kimeneti adatkészlet-definíciókban. |Nem |
@@ -434,7 +433,7 @@ A helyszíni környezet beállítása úgy, hogy a Kerberos-hitelesítés haszn�
 
   **Indítsa újra a** a KDC-szolgáltatás konfigurálása után.
 
-2.  Készítse elő a rendszerbiztonsági tag nevű  **krbtgt/REALM.COM@AD.COM**  a KDC-kiszolgáló a következő paranccsal:
+2.  Készítse elő a rendszerbiztonsági tag nevű **krbtgt/REALM.COM@AD.COM** a KDC-kiszolgáló a következő paranccsal:
 
             Kadmin> addprinc krbtgt/REALM.COM@AD.COM
 
@@ -447,7 +446,7 @@ A helyszíni környezet beállítása úgy, hogy a Kerberos-hitelesítés haszn�
             C:> Ksetup /addkdc REALM.COM <your_kdc_server_address>
             C:> ksetup /addhosttorealmmap HDFS-service-FQDN REALM.COM
 
-2.  Windows-tartomány Kerberos-tartomány bizalmi kapcsolat létrehozásához. [jelszó] pedig a jelszót a rendszerbiztonsági tag  **krbtgt/REALM.COM@AD.COM** .
+2.  Windows-tartomány Kerberos-tartomány bizalmi kapcsolat létrehozásához. [jelszó] pedig a jelszót a rendszerbiztonsági tag **krbtgt/REALM.COM@AD.COM**.
 
             C:> netdom trust REALM.COM /Domain: AD.COM /add /realm /passwordt:[password]
 

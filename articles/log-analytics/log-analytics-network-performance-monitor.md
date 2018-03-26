@@ -1,11 +1,11 @@
 ---
-title: "Hálózati Teljesítményfigyelő megoldás az Azure-ban |} Microsoft Docs"
-description: "Az Azure-ban Teljesítményfigyelő hálózati segítséget nyújt a hálózatok a közel valós idő a teljesítményének figyeléséhez észleli, és keresse meg a hálózati szűk keresztmetszetek."
+title: Hálózati Teljesítményfigyelő megoldás az Azure-ban |} Microsoft Docs
+description: Az Azure-ban Teljesítményfigyelő hálózati segítséget nyújt a hálózatok a közel valós idő a teljesítményének figyeléséhez észleli, és keresse meg a hálózati szűk keresztmetszetek.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: abshamsft
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: 5b9c9c83-3435-488c-b4f6-7653003ae18a
 ms.service: log-analytics
 ms.workload: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/20/2018
 ms.author: abshamsft
-ms.openlocfilehash: 399fe552d5c7d9a96cdabc2a1dfafe99635d4a61
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 90fd9b09f90d5b209e0eb8cc6996ef7fb1e7e0b4
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Hálózati Teljesítményfigyelő megoldás az Azure-ban
 
@@ -38,6 +38,8 @@ NPM három általános képességeket biztosít:
 Ez a funkció alapján végezheti el a http, HTTPS, az TCP és az ICMP-alapú tesztek a közel valós idejű vagy hagyományosan a rendelkezésre állási és figyelése a szolgáltatás válaszidő és a csomag veszteséget és késéseket hálózati hozzájárulása. A hálózati topológia térkép különítheti el a hálózati lassulást probléma tesztüzeméhez elvégzett mentén a hálózati elérési út a csomópont a szolgáltatást, a késési adatokat minden egyes ugrásnál azonosításával. Beépített tesztekkel figyelheti a hálózati kapcsolat Office365 és a Dynamics CRM előtti konfigurálása nélkül. Ezzel a lehetőséggel figyelheti meg a hálózati kapcsolat bármely TCP képes végpontra, például webhelyekhez, SaaS, a PaaS alkalmazások, SQL-adatbázisok, stb.  
 
 [Az ExpressRoute-figyelő](log-analytics-network-performance-monitor-expressroute.md): végpontok közötti kapcsolat és a fiókirodák és az Azure-ban közötti teljesítményének figyelése Azure ExpressRoute keresztül.  
+
+További információ a különböző képességeket által támogatott [hálózati Teljesítményfigyelő](https://docs.microsoft.com/azure/networking/network-monitoring-overview) online is elérhető.
  
 
 ## <a name="set-up-and-configure"></a>Beállítása és konfigurálása

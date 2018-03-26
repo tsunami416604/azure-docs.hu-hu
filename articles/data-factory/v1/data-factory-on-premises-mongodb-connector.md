@@ -1,11 +1,10 @@
 ---
-title: "Adatok áthelyezése a Data Factory használatával MongoDB |} Microsoft Docs"
-description: "Tudnivalók az adatok áthelyezése az Azure Data Factory használatával MongoDB-adatbázisból."
+title: Adatok áthelyezése a Data Factory használatával MongoDB |} Microsoft Docs
+description: Tudnivalók az adatok áthelyezése az Azure Data Factory használatával MongoDB-adatbázisból.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: monicar
+manager: craigg
 ms.assetid: 10ca7d9a-7715-4446-bf59-2d2876584550
 ms.service: data-factory
 ms.workload: data-services
@@ -15,11 +14,11 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 20df17ba01cfc18ce751491d154d7401001e706e
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 086cc528e500a55bba73796e5fc7b17c561de8b4
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="move-data-from-mongodb-using-azure-data-factory"></a>Helyezze át az adatokat a MongoDB Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
