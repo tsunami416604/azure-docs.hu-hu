@@ -74,7 +74,9 @@
 ## [REST](/rest/api/cdn/)
 
 # További források
-## [Azure CDN POP-helyek](cdn-pop-locations.md)
+## Azure CDN POP-helyek
+### [POP-helyek régiónként](cdn-pop-locations.md)
+### [POP-helyek rövidítés alapján](cdn-pop-abbreviations.md)
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
 ## [MSDN-fórum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurecdn)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/cdn/)

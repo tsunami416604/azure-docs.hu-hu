@@ -131,6 +131,8 @@
           items:
             - name: Architektúra
               href: service-fabric-reliable-actors-platform.md
+            - name: Szolgáltatásszintű funkciók megvalósítása
+              href: service-fabric-reliable-actors-using.md
             - name: Életciklus-kezelés és szemétgyűjtés
               href: service-fabric-reliable-actors-lifecycle.md
             - name: Állapotkezelés
@@ -389,7 +391,15 @@
               href: service-fabric-reliable-services-backup-restore.md
         - name: Reliable Actors-szolgáltatás összeállítása
           items:
-            - name: Értesítések küldése
+            - name: 'Aktorok állapotának elérése, mentése és eltávolítása'
+              href: service-fabric-reliable-actors-access-save-remove-state.md
+            - name: Aktorok enumerálása
+              href: service-fabric-reliable-actors-enumerate.md
+            - name: Aktorok és állapotuk törlése
+              href: service-fabric-reliable-actors-delete-actors.md
+            - name: Aktorok biztonsági mentése és visszaállítása
+              href: service-fabric-reliable-actors-backup-and-restore.md
+            - name: Aktorokra vonatkozó értesítések küldése
               href: service-fabric-reliable-actors-events.md
             - name: Időzítők és emlékeztetők beállítása
               href: service-fabric-reliable-actors-timers-reminders.md

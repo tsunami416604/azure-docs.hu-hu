@@ -103,6 +103,8 @@
               href: hyper-v-vmm-architecture.md
     - name: Alkalmazások vészhelyreállítása
       href: site-recovery-workload.md
+    - name: A helyreállítási tervek ismertetése
+      href: recovery-plan-overview.md
     - name: A migrálás ismertetése
       href: migrate-overview.md
     - name: Információk a Site Recoveryvel végzett szerepköralapú hozzáférés-vezérlésről
@@ -273,6 +275,12 @@
           items:
             - name: Vészhelyreállítási próba végrehajtása az Azure-ba
               href: site-recovery-test-failover-to-azure.md
+            - name: Helyreállítási tervek beállítása
+              href: site-recovery-create-recovery-plans.md
+            - name: VMM-szkriptek hozzáadása helyreállítási tervekhez
+              href: hyper-v-vmm-recovery-script.md
+            - name: Azure runbookok hozzáadása helyreállítási tervekhez
+              href: site-recovery-runbook-automation.md
             - name: Feladatátvétel futtatása az Azure-ban
               href: site-recovery-failover.md
             - name: Feladat-visszavétel az Azure-ból a Hyper-V-be

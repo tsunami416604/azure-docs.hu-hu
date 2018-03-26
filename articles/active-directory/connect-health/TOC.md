@@ -18,6 +18,7 @@
 # Referencia
 ## [Kódminták](https://azure.microsoft.com/resources/samples/?service=active-directory)
 ## [Az Azure AD Connect Health verzióelőzményei](active-directory-aadconnect-health-version-history.md)
+## [Azure AD Connect Health-riasztások katalógusa](active-directory-aadconnect-health-alert-catalog.md)
 ## [GDPR-megfelelőség és az Azure AD Connect Health](active-directory-aadconnect-health-gdpr.md)
 
 # Kapcsolódó témakörök

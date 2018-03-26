@@ -1,6 +1,6 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: Az Azure Databricks előzetes verziójának dokumentációja
+title: Az Azure Databricks dokumentációja
 metadata:
   title: Az Azure Databricks dokumentációja – oktatóanyagok | Microsoft Docs
   description: Az itt elérhető rövid útmutatók és egyéb hivatkozások segítségével megismerheti az Azure Databricks használatát. Az Azure Databricks a Microsoft Azure Cloud Services platformra optimalizált Apache Spark-alapú elemzési platform.
@@ -11,13 +11,13 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 11/15/2017
+  ms.date: 03/19/2018
   ms.author: nitinme
-  ms.openlocfilehash: 8bbb8bb020c8c64e11d072729b59074a406a03ca
-  ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+  ms.openlocfilehash: 2c0bbbe6d9799258b983723c5d6980754a9908ae
+  ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 03/17/2018
+  ms.lasthandoff: 03/23/2018
 abstract:
   description: Az itt elérhető rövid útmutatók és egyéb hivatkozások segítségével megismerheti az Azure Databricks használatát. Az Azure Databricks a Microsoft Azure Cloud Services platformra optimalizált Apache Spark-alapú elemzési platform. Az Apache Spark alapítóival közösen tervezett Databricks integrálva van az Azure-ral, így egyetlen kattintással beállítható, zökkenőmentes munkafolyamatokat tesz lehetővé, valamint olyan interaktív munkaterületet biztosít, amellyel lehetővé válik az adatszakértők, az adatmérnökök és az üzleti elemzők közötti együttműködés.
   aside:
@@ -41,6 +41,10 @@ sections:
         src: /azure/azure-databricks/media/index/portal.svg
       text: Azure Portal
       href: /azure/azure-databricks/quickstart-create-databricks-workspace-portal
+    - image:
+        src: /azure/azure-databricks/media/index/logo_azure_resource_manager.svg
+      text: Resource Manager-sablon
+      href: /azure/azure-databricks/quickstart-create-databricks-workspace-resource-manager-template
 - title: Részletes útmutatók
   items:
   - type: paragraph
@@ -48,10 +52,15 @@ sections:
   - type: list
     style: ordered
     items:
-    - html: <a href="/azure/azure-databricks/databricks-stream-from-eventhubs">Adatok streamelése az Event Hubsból az Azure Databricks használatával</a>
-    - html: <a href="/azure/azure-databricks/databricks-sentiment-analysis-cognitive-services">Hangulatelemzés az Azure Databricks és a Cognitive Services használatával</a>
-    - html: <a href="https://go.microsoft.com/fwlink/?linkid=864083" target="_blank">Adatok importálása az Azure Storage-ból</a>
-    - hmtl: <a href="https://go.microsoft.com/fwlink/?linkid=864084" target="_blank">Import data from Azure Data Lake Store</a>
-    - html: <a href="https://docs.azuredatabricks.net/user-guide/notebooks/index.html" target="_blank">Jegyzetfüzetek használata</a>
-    - html: <a href="https://docs.azuredatabricks.net/user-guide/jobs.html" target="_blank">Spark-feladatok futtatása</a>
-    - html: <a href="https://docs.azuredatabricks.net/spark/latest/data-sources/index.html" target="_blank">Spark-adatforrások használata</a>
+    - html: <a href="/azure/azure-databricks/databricks-extract-load-sql-data-warehouse">Adatok kinyerése, átalakítás és betöltése</a>
+    - html: <a href="/azure/azure-databricks/databricks-stream-from-eventhubs">Adatok streamelése az Event Hubsból</a>
+    - html: <a href="/azure/azure-databricks/databricks-sentiment-analysis-cognitive-services">Hangulatelemzés a Cognitive Services használatával</a>
+    - html: <a href="https://docs.azuredatabricks.net/spark/latest/structured-streaming/kafka.html" target="_blank">Adatok streamelése a HDInsight Kafkából</a>
+- title: Referencia
+  items:
+  - type: list
+    style: cards
+    className: cardsD
+    items:
+    - title: REST
+      html: <p><a href="/rest/api/databricks">REST API</a></p>
