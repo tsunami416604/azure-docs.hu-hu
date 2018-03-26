@@ -236,6 +236,7 @@
 ## [REST](/rest/api/media/mediaservice)
 ## Specifikációk
 ### [Élő betöltés – Specifikáció: darabolt MP4 élő betöltése](media-services-fmp4-live-ingest-overview.md)
+### [Élő betöltés – Időzített metaadatok jelzése az élő streamekben](media-services-specifications-live-timed-metadata.md)
 ### [Smooth Streaming HEVC](media-services-specifications-ms-sstr-ammendment-hevc.md)
 
 # További források

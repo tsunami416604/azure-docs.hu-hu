@@ -237,8 +237,6 @@
                   href: sql-api-python-samples.md
             - name: További források
               items:
-                - name: SQL-szintaxis – adatlap
-                  href: sql-api-sql-query-cheat-sheet.md
                 - name: Videók
                   href: 'https://azure.microsoft.com/documentation/videos/index/?services=cosmos-db'
                 - name: Szolgáltatási hírek
@@ -435,6 +433,8 @@
           href: graph-sdk-dotnet.md
 - name: További források
   items:
+    - name: Lekérdezésekre vonatkozó hasznos tanácsok
+      href: query-cheat-sheet.md
     - name: Azure-ütemterv
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Az Azure Cosmos DB ingyenes kipróbálása

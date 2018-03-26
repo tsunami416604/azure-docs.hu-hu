@@ -1,0 +1,27 @@
+- name: Cloud Foundry – dokumentáció
+  href: index.md
+- name: Gyors útmutatók
+  expanded: true
+  items:
+    - name: Marketplace-sablon
+      href: 'https://azuremarketplace.microsoft.com/marketplace/apps/pivotal.pivotal-cloud-foundry'
+- name: Oktatóanyagok
+  items:
+    - name: CF-alkalmazás üzembe helyezése az Azure-ban
+      href: /azure/virtual-machines/linux/cloudfoundry-deploy-your-first-app
+    - name: Cloud Foundry az Azure-on
+      href: /azure/virtual-machines/linux/cloudfoundry-get-started
+    - name: A CF OMS Nozzle üzembe helyezése
+      href: /azure/cloudfoundry/cloudfoundry-oms-nozzle
+- name: További források
+  items:
+    - name: Azure-ütemterv
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Cloud Foundry-hely
+      href: 'https://docs.cloudfoundry.org/'
+    - name: CF-alkalmazás telepítése az Azure-ban
+      href: 'https://docs.pivotal.io/pivotalcf/1-11/customizing/pcf_azure.html'
+    - name: Pivotal és Azure
+      href: 'https://pivotal.io/partners/microsoft'
+    - name: VSTS beépülő modul a CF-hez
+      href: 'https://github.com/Microsoft/vsts-cloudfoundry'

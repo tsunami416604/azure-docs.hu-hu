@@ -77,7 +77,8 @@
 ## [Csoportok és tagok kezelése](active-directory-manage-groups.md)
 ### Csoportok kezelése
 #### [Azure Portal](active-directory-groups-create-azure-portal.md)
-#### [Azure PowerShell](active-directory-accessmanagement-groups-settings-v2-cmdlets.md)
+#### [Azure PowerShell – Azure Resource Manager-modell](active-directory-accessmanagement-groups-settings-v2-cmdlets.md)
+#### [Azure PowerShell – klasszikus üzemi modell](active-directory-accessmanagement-groups-settings-cmdlets.md)
 ### [Csoporttagok kezelése](active-directory-groups-members-azure-portal.md)
 ### [Csoporttulajdonosok kezelése](active-directory-accessmanagement-managing-group-owners.md)
 ### [Csoporttagság kezelése](active-directory-groups-membership-azure-portal.md)
@@ -94,9 +95,8 @@
 ### [Az összes csoport megtekintése](active-directory-groups-view-azure-portal.md)
 ### [Csoportszintű hozzáférés biztosítása az SaaS-alkalmazásokhoz](active-directory-accessmanagement-group-saasapps.md)
 ### [Törölt Office 365-csoport visszaállítása](active-directory-groups-restore-azure-portal.md)
-### Csoportbeállítások kezelése
-#### [Azure Portal](active-directory-groups-settings-azure-portal.md)
-#### [Parancsmagok](active-directory-accessmanagement-groups-settings-cmdlets.md)
+### [Csoportbeállítások kezelése](active-directory-groups-settings-azure-portal.md)
+
 ### Speciális szabályok létrehozása
 #### [Azure Portal](active-directory-groups-dynamic-membership-azure-portal.md)
 ### [Önkiszolgáló csoportok beállítása](active-directory-accessmanagement-self-service-group-management.md)
@@ -215,12 +215,12 @@
 ##### [Egyéni kezdőlap](application-proxy-office365-app-launcher.md)
 ##### [Beágyazott hivatkozások fordítása](application-proxy-link-translation.md)
 ##### [Helyettesítő karakterek alkalmazása](active-directory-application-proxy-wildcard.md)
-
+##### [Azure AD-alkalmazásproxy és Qlik Sense](active-directory-application-proxy-qlik.md) 
 #### Közzétételi útmutatók
 ##### [Távoli asztal](application-proxy-publish-remote-desktop.md)
 ##### [SharePoint](application-proxy-enable-remote-access-sharepoint.md)
 ##### [Microsoft Teams](application-proxy-teams.md)
-#### [PowerShell](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview)
+#### [PowerShell](https://docs.microsoft.com/en-us/powershell/module/azuread/?view=azureadps-2.0#application_proxy_application_management)
 #### [Hibaelhárítás](active-directory-application-proxy-troubleshoot.md)
 
 

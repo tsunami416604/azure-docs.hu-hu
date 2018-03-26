@@ -1,0 +1,21 @@
+- name: OpenShift – dokumentáció
+  href: index.md
+- name: Gyors útmutatók
+  expanded: true
+  items:
+    - name: 'OpenShift: közösségi sablon'
+      href: 'https://azure.microsoft.com/en-us/resources/templates/openshift-origin-rhel/'
+- name: Oktatóanyagok
+  items:
+    - name: Üzembe helyezés Azure-beli virtuális gépeken
+      href: /azure/virtual-machines/linux/openshift-get-started
+- name: További források
+  items:
+    - name: Azure-ütemterv
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: OpenShift-tárolósablon
+      href: 'https://github.com/Microsoft/openshift-container-platform'
+    - name: OpenShift Origin
+      href: 'https://docs.openshift.org/latest/getting_started/index.html'
+    - name: OpenShift-hely
+      href: 'https://docs.openshift.org/latest/welcome/index.html'

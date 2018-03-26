@@ -91,7 +91,8 @@
 #### [Jelszó bonyolultsága](active-directory-b2c-reference-password-complexity-custom.md)
 #### [Jelszó módosítása](active-directory-b2c-reference-password-change-custom.md)
 #### [A bejelentkezve maradás engedélyezése](active-directory-b2c-reference-kmsi-custom.md)
-### Hibaelhárítás
+### Hibaelhárítás és eseménynaplók
+#### [Egyéni események létrehozása az Application Insights segítségével](active-directory-b2c-custom-guide-eventlogger-appins.md)
 #### [Naplók gyűjtése az Application Insights használatával](active-directory-b2c-troubleshoot-custom.md)
 ## Referencia
 ### [Kiadási megjegyzések](active-directory-b2c-developer-notes-custom.md)

@@ -41,6 +41,7 @@
 ### [Twitter-hangulatelemzés](stream-analytics-twitter-sentiment-analysis-trends.md)
 ### [Valós idejű csalásészlelés](stream-analytics-real-time-fraud-detection.md)
 ### [Feladatok futtatása az IoT Edge-en](stream-analytics-edge.md) 
+### [Fizetőkapu érzékelőadatainak elemzése](stream-analytics-build-an-iot-solution-using-stream-analytics.md)
 ### [JavaScript UDA futtatása](stream-analytics-javascript-user-defined-aggregates.md)
 ### [Nagy gyakoriságú kereskedelem](stream-analytics-high-frequency-trading.md)
 ### [Az Azure Functions futtatása](stream-analytics-with-azure-functions.md)

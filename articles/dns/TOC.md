@@ -7,6 +7,8 @@
 ## [DNS-delegálás az Azure DNS használatával](dns-domain-delegation.md)
 ## [DNS – gyakori kérdések](dns-faq.md)
 ## [Privát DNS-zónák használata](private-dns-overview.md)
+## [Privát DNS-forgatókönyvek](private-dns-scenarios.md)
+
 
 # Első lépések
 
@@ -17,6 +19,7 @@
 
 ## Privát DNS-zóna és -rekord létrehozása
 ### [PowerShell](private-dns-getstarted-powershell.md)
+### [Azure CLI](private-dns-getstarted-cli.md)
 ## [Tartomány delegálása az Azure DNS-be](dns-delegate-domain-azure-dns.md)
 ## [Webalkalmazások egyéni DNS-rekordjainak létrehozása](dns-web-sites-custom-domain.md)
 

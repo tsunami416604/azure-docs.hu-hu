@@ -77,11 +77,15 @@
           href: search-performance-optimization.md
     - name: Biztonság
       items:
-        - name: Adatok és működési biztonság
+        - name: Biztonsági áttekintés
           href: search-security-overview.md
-        - name: Védelem identitásszűrőkkel
+        - name: Szolgáltatáskulcsok kezelése
+          href: search-security-api-keys.md
+        - name: Szerepköralapú rendszergazdai hozzáférés
+          href: search-security-rbac.md
+        - name: Biztonsági szűrők
           href: search-security-trimming-for-azure-search.md
-        - name: Védelem az Active Directoryval
+        - name: AAD-identitások szűrése
           href: search-security-trimming-for-azure-search-with-aad.md
     - name: Fejlesztés
       items:

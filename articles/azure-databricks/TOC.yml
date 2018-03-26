@@ -7,20 +7,40 @@
 - name: Gyors útmutatók
   expanded: true
   items:
-    - name: Databricks-munkaterület létrehozása
+    - name: Databricks-munkaterület létrehozása – Portal
       href: quickstart-create-databricks-workspace-portal.md
+    - name: Databricks-munkaterület létrehozása – Resource Manager-sablon
+      href: quickstart-create-databricks-workspace-resource-manager-template.md
 - name: Oktatóanyagok
   items:
+    - name: ETL-műveletek végrehajtása
+      href: databricks-extract-load-sql-data-warehouse.md
     - name: Adatok streamelése az Event Hubs használatával
       href: databricks-stream-from-eventhubs.md
     - name: Hangulatelemzés a Cognitive Services használatával
       href: databricks-sentiment-analysis-cognitive-services.md
+    - name: Adatok streamelése a HDInsight Kafkából
+      href: 'https://docs.azuredatabricks.net/spark/latest/structured-streaming/kafka.html'
 - name: Útmutatók
   items:
+    - name: Spark-fürt létrehozása
+      href: 'https://docs.azuredatabricks.net/user-guide/clusters/index.html'
+    - name: Jegyzetfüzetek használata
+      href: 'https://docs.azuredatabricks.net/user-guide/notebooks/index.html'
+    - name: Spark-feladatok futtatása
+      href: 'https://docs.azuredatabricks.net/user-guide/jobs.html'
+    - name: Kapcsolódás adatforrásokhoz
+      href: databricks-connect-to-data-sources.md
     - name: 'Kapcsolódás Excel, R és Python használatával'
       href: connect-databricks-excel-python-r.md
     - name: A Databricks parancssori felület használata az Azure Cloud Shellből
       href: databricks-cli-from-azure-cloud-shell.md
+    - name: BI-eszközök használata
+      href: 'https://docs.azuredatabricks.net/user-guide/bi/index.html'
+- name: Referencia
+  items:
+    - name: REST API
+      href: /rest/api/databricks
 - name: További források
   items:
     - name: Gyakori kérdések
