@@ -1,27 +1,27 @@
 ---
-title: "Az első függvény létrehozása az Azure-ban a Visual Studio használatával | Microsoft Docs"
-description: "Hozzon létre és tegyen közzé egy egyszerű, HTTP-triggert használó függvényt az Azure-ban az Azure Functions Tools for Visual Studio használatával."
+title: Az első függvény létrehozása az Azure-ban a Visual Studio használatával | Microsoft Docs
+description: Hozzon létre és tegyen közzé egy egyszerű, HTTP-triggert használó függvényt az Azure-ban az Azure Functions Tools for Visual Studio használatával.
 services: functions
 documentationcenter: na
 author: ggailey777
 manager: cfowler
-editor: 
-tags: 
-keywords: "azure functions, függvények, eseményfeldolgozás, számítás, kiszolgáló nélküli architektúra"
+editor: ''
+tags: ''
+keywords: azure functions, függvények, eseményfeldolgozás, számítás, kiszolgáló nélküli architektúra
 ms.assetid: 82db1177-2295-4e39-bd42-763f6082e796
 ms.service: functions
 ms.devlang: multiple
 ms.topic: quickstart
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 01/17/2018
+ms.date: 03/13/2018
 ms.author: glenga
 ms.custom: mvc, devcenter
-ms.openlocfilehash: fa17a021526a728c6fabc9607b1d00f5521cbb21
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 9b43ec7106c70b7d9b326208043d2fe874fb7e20
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="create-your-first-function-using-visual-studio"></a>Az első függvény létrehozása a Visual Studio használatával
 
@@ -37,11 +37,13 @@ A témakör tartalmaz [egy videót](#watch-the-video) is, amely ugyanezeket az a
 
 Az oktatóanyag elvégzéséhez:
 
-* Telepítse a [Visual Studio 2017 15.4-es](https://www.visualstudio.com/vs/) vagy újabb verzióját, amely tartalmazza az **Azure-fejlesztési** számítási feladatot is.
+* Telepítse a [Visual Studio 2017 15.5-ös](https://www.visualstudio.com/vs/) vagy újabb verzióját, amely tartalmazza az **Azure-fejlesztési** számítási feladatot is.
 
     ![Az Azure-fejlesztési számítási feladatot is tartalmazó Visual Studio 2017 telepítése](./media/functions-create-your-first-function-visual-studio/functions-vs-workloads.png)
 
-* Győződjön meg arról, hogy az Azure Functions és a WebJobs Tools legfrissebb verzióival rendelkezik. Ezt a **Frissítések** > **Visual Studio Marketplace** lehetőség segítségével teheti meg a **Bővítmények és frissítések** területen.
+    Ha már telepítette a Visual Studiót, győződjön meg róla, hogy telepítette a függőben lévő frissítéseket. 
+
+* Ha a Visual Studio 2017 15.4-es vagy korábbi verziójával telepítette az Azure-fejlesztési számítási feladatot, lehet, hogy [frissítenie kell az Azure Functions eszközöket](functions-develop-vs.md#check-your-tools-version). 
     
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] 
 

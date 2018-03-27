@@ -1,40 +1,33 @@
 ---
-title: "Az első Azure SQL adatbázis - C# kialakítása |} Microsoft Docs"
-description: "Ismerje meg, az első Azure SQL-adatbázis megtervezése, és egy C# programban ADO.NET használatával kapcsolódni hozzá."
+title: Az első Azure SQL Database-adatbázis megtervezése – C#| Microsoft Docs
+description: Tudnivalók arról, hogyan lehet megtervezni az első Azure SQL Database-adatbázist és csatlakozni hozzá egy C# programmal az ADO.NET használatával.
 services: sql-database
-documentationcenter: 
 author: MightyPen
 manager: craigg-msft
-editor: CarlRabeler
-tags: 
-ms.assetid: 
+ms.reviewer: CarlRabeler
 ms.service: sql-database
 ms.custom: develop databases, mvc, devcenter
-ms.devlang: na
 ms.topic: tutorial
-ms.tgt_pltfrm: na
-ms.workload: On Demand
-ms.date: 01/12/2018
-ms.author: genemi
-ms.openlocfilehash: d99456b488302c9b3fa44510af84641876861afe
-ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
-ms.translationtype: MT
+ms.date: 03/15/2018
+ms.openlocfilehash: 3b6f260983e3c826bf558f0fe6d1a0fa6ae6b3af
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/13/2018
+ms.lasthandoff: 03/17/2018
 ---
-# <a name="design-an-azure-sql-database-and-connect-with-cx23-and-adonet"></a>Azure SQL-adatbázis megtervezése, és csatlakozzon a C & #x23; és ADO.NET
+# <a name="design-an-azure-sql-database-and-connect-with-cx23-and-adonet"></a>Azure SQL Database-adatbázis tervezése és csatlakozás az adatbázishoz C# és ADO.NET használatával
 
-Az Azure SQL-adatbázis egy relációs adatbázis-mint – a szolgáltatás, a Microsoft Cloud (Azure) a rendszer. Ebben az oktatóanyagban elsajátíthatja a Visual Studio segítségével az Azure portál és az ADO.NET használatával: 
+Az Azure SQL Database a Microsoft Cloudon (Azure) alapuló, szolgáltatásként nyújtott relációs adatbázis (DBaaS). Ez az oktatóanyag bemutatja, hogyan végezheti el a következőket az Azure Portal, valamint az ADO.NET és a Visual Studio használatával: 
 
 > [!div class="checklist"]
-> * Adatbázis létrehozása az Azure-portálon
-> * Állítson be egy kiszolgálószintű tűzfalszabályt az Azure-portálon
-> * Kapcsolódni az adatbázishoz az ADO.NET és a Visual Studio
-> * Az ADO.NET táblák létrehozása
-> * Beszúrási, frissítési és törlési ADO.NET adatok 
-> * Az ADO.NET adatait
+> * Adatbázis létrehozása az Azure Portalon
+> * Kiszolgálószintű tűzfalszabály létrehozása az Azure Portalon
+> * Csatlakozás az adatbázishoz az ADO.NET és a Visual Studio használatával
+> * Táblázatok létrehozása az ADO.NET-tel
+> * Adatok beszúrása, frissítése és törlése az ADO.NET-tel 
+> * Adatok lekérdezése – ADO.NET
 
-Ha nem rendelkezik Azure-előfizetéssel, [ingyenes fiók létrehozását](https://azure.microsoft.com/free/) megkezdése előtt.
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -56,17 +49,17 @@ And it starts with a ## H2.
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban megismerte az alapvető adatbázis-feladatok például egy adatbázis és a táblák létrehozása, betölteni és kérdezhet le adatokat, és állítsa vissza az adatbázist egy korábbi időpontra időben. Megismerte, hogyan végezheti el az alábbi műveleteket:
+Ebben az oktatóanyagban megismerte az alapvető adatbázis-feladatokat, mint például az adatbázisok és táblák létrehozását, az adatok betöltését és lekérdezését, valamint az adatbázisok korábbi időpontra való visszaállítását. Megismerte, hogyan végezheti el az alábbi műveleteket:
 > [!div class="checklist"]
 > * Adatbázis létrehozása
-> * A tűzfalszabályok beállítása
-> * Kapcsolódás az adatbázishoz [Visual Studio és a C#](sql-database-connect-query-dotnet-visual-studio.md)
+> * Tűzfalszabály beállítása
+> * Csatlakozás az adatbázishoz a [Visual Studio és a C#](sql-database-connect-query-dotnet-visual-studio.md) használatával
 > * Táblázatok létrehozása
-> * INSERT, update és adatok törlése
+> * Adatok beszúrása, frissítése és törlése
 > * Adatok lekérdezése
 
-Előzetes tudnivalók az adatok áttelepítését a következő oktatóanyagot.
+Folytassa a következő oktatóanyaggal, amely az adatok migrálását ismerteti.
 
 > [!div class="nextstepaction"]
->[Az SQL Server-adatbázis áttelepítése az Azure SQL Database](sql-database-migrate-your-sql-server-database.md)
+>[SQL Server-adatbázis migrálása az Azure SQL Database szolgáltatásba](sql-database-migrate-your-sql-server-database.md)
 

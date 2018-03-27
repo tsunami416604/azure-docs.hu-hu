@@ -1,41 +1,41 @@
 ---
-title: "Hogyan lehet lekérdezni az SQL Azure Cosmos DB? | Microsoft Docs"
-description: "Ismerje meg az SQL Azure Cosmos DB lekérdezése"
+title: Hogyan lehet lekérdezést végezni SQL-lel az Azure Cosmos DB-ben? | Microsoft Docs
+description: Megismerheti, hogyan lehet lekérdezést végezni SQL-lel az Azure Cosmos DB-ben
 services: cosmos-db
-documentationcenter: 
+documentationcenter: ''
 author: rafats
 manager: jhubbard
-editor: 
-tags: 
-ms.assetid: 
+editor: ''
+tags: ''
+ms.assetid: ''
 ms.service: cosmos-db
 ms.custom: tutorial-develop, mvc
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
-ms.workload: 
+ms.workload: ''
 ms.date: 05/10/2017
 ms.author: rafats
-ms.openlocfilehash: ffef6ec2120a80d907449470efb7b4ab6dca8037
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
-ms.translationtype: MT
+ms.openlocfilehash: 60910b602f9386738f9d8895fd151d15f3ebf058
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/16/2018
 ---
-# <a name="azure-cosmos-db-how-to-query-using-sql"></a>Azure Cosmos DB: Hogyan lekérdezés SQL használatával?
+# <a name="tutorial-query-azure-cosmos-db-by-using-the-sql-api"></a>Oktatóanyag: Az Azure Cosmos DB lekérdezése az SQL API használatával
 
 [!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
 
-Az Azure Cosmos DB [SQL API](documentdb-introduction.md) SQL használatával dokumentumok lekérdezését támogatja. Ez a cikk ismerteti a minta és két minta az SQL-lekérdezések és dokumentum eredmények.
+Az Azure Cosmos DB [SQL API](documentdb-introduction.md) támogatja a dokumentumok SQL-lel való lekérdezését. Ebben a cikkben egy mintadokumentum, valamint két minta SQL-lekérdezés és azok eredménye található.
 
-Ez a cikk ismerteti a következő feladatokat: 
+Ez a cikk a következő feladatokat mutatja be: 
 
 > [!div class="checklist"]
-> * Az SQL adatainak lekérdezése
+> * Adatok lekérdezése SQL használatával
 
-## <a name="sample-document"></a>A minta-dokumentum
+## <a name="sample-document"></a>Mintadokumentum
 
-Ebben a cikkben az SQL-lekérdezések használata a következő minta dokumentumot.
+A cikkben szereplő SQL-lekérdezések a következő mintadokumentumot használják.
 
 ```json
 {
@@ -65,20 +65,20 @@ Ebben a cikkben az SQL-lekérdezések használata a következő minta dokumentum
   "isRegistered": false
 }
 ```
-## <a name="where-can-i-run-sql-queries"></a>Ahol futtathatja az SQL-lekérdezések?
+## <a name="where-can-i-run-sql-queries"></a>Hol futtathatok SQL-lekérdezéseket?
 
-Az Azure-portálon az adatkezelő használatával keresztül lekérdezéseket is futtathat a [REST API-t és az SDK-k](sql-api-sdk-dotnet.md), és még a [tesztlekérdezéseket](https://www.documentdb.com/sql/demo), amelyen fut az lekérdezések mintaadatok készlet.
+Az Azure Portalon az Adatkezelővel futtathat lekérdezéseket a [REST API-n és az SDK-n](sql-api-sdk-dotnet.md) keresztül. Emellett használhatja még a [Tesztlekérdezéseket](https://www.documentdb.com/sql/demo) is, amelyek a mintaadatok meglévő készletén futtatnak lekérdezéseket.
 
-Az SQL-lekérdezések kapcsolatos további információkért lásd:
-* [SQL-lekérdezést és SQL-szintaxis](sql-api-sql-query.md)
+További tudnivalók az SQL-lekérdezésekről:
+* [SQL-lekérdezések és SQL-szintaxis](sql-api-sql-query.md)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez az oktatóanyag feltételezi, hogy rendelkezik egy olyan Azure Cosmos DB fiókot és a gyűjteményhez. Nem rendelkezik egyetlen, az? Fejezze be a [5 perces gyors üzembe helyezés](create-mongodb-nodejs.md) vagy a [fejlesztői útmutató](tutorial-develop-mongodb.md) egy olyan fiókot és a gyűjtemény létrehozásához.
+Ez az oktatóanyag feltételezi, hogy rendelkezik egy Azure Cosmos DB-fiókkal és -gyűjteménnyel. Nem rendelkezik ezekkel? A fiók és gyűjtemény létrehozásához végezze el az [5 perces gyors útmutatót](create-mongodb-nodejs.md) vagy a [fejlesztői oktatóanyagot](tutorial-develop-mongodb.md).
 
-## <a name="example-query-1"></a>1. példa lekérdezés
+## <a name="example-query-1"></a>1. példalekérdezés
 
-A minta termékcsalád dokumentum fenti megadott, a következő SQL-lekérdezésben adja vissza a dokumentumok Ha az azonosítót tartalmazó mezőt megegyezik `WakefieldFamily`. Mivel ez egy `SELECT *` nyilatkozat, a lekérdezés kimenetét a teljes JSON-dokumentum is:
+A fenti mintacsalád dokumentumban a következő SQL-lekérdezés olyan dokumentumokat ad vissza, amelyek azonosítót tartalmazó mezői megegyeznek a következővel: `WakefieldFamily`. Mivel ez egy `SELECT *` utasítás, a lekérdezés kimenete a teljes JSON-dokumentum:
 
 **Lekérdezés**
 
@@ -86,7 +86,7 @@ A minta termékcsalád dokumentum fenti megadott, a következő SQL-lekérdezés
     FROM Families f 
     WHERE f.id = "WakefieldFamily"
 
-**Eredmények**
+**Results**
 
 ```json
 {
@@ -117,9 +117,9 @@ A minta termékcsalád dokumentum fenti megadott, a következő SQL-lekérdezés
 }
 ```
 
-## <a name="example-query-2"></a>Példalekérdezés 2
+## <a name="example-query-2"></a>2. példalekérdezés
 
-A következő lekérdezés gyermekek minden megadott nevét adja vissza a termékcsalád, amelynek azonosítója megegyezik `WakefieldFamily` a besorolási rendezve.
+A következő lekérdezés a család összes olyan gyermekének utónevét adja vissza, amelyek azonosítója egyezik a `WakefieldFamily` kifejezéssel, az évfolyamuk szerint rendezve.
 
 **Lekérdezés**
 
@@ -129,7 +129,7 @@ A következő lekérdezés gyermekek minden megadott nevét adja vissza a termé
     WHERE f.id = 'WakefieldFamily'
     ORDER BY f.children.grade ASC
 
-**Eredmények**
+**Results**
 
     [
       { "givenName": "Jesse" }, 
@@ -137,15 +137,15 @@ A következő lekérdezés gyermekek minden megadott nevét adja vissza a termé
     ]
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban ezt a következők:
+Ebben az oktatóanyagban a következőket hajtotta végre:
 
 > [!div class="checklist"]
-> * Megtudta, hogyan lekérdezés SQL használatával  
+> * Megismerte, hogyan végezhet lekérdezéseket az SQL használatával  
 
-Most már folytathatja a következő oktatóanyag megtudhatja, miként ossza el az adatokat globális.
+Továbbléphet a következő oktatóanyagra, amelyben megismerheti, hogyan terjesztheti az adatait globálisan.
 
 > [!div class="nextstepaction"]
-> [Az adatok globálisan terjesztése](tutorial-global-distribution-sql-api.md)
+> [Globális adatterjesztés](tutorial-global-distribution-sql-api.md)
 

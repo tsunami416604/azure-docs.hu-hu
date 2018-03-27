@@ -1,151 +1,151 @@
 ---
-title: "Az Azure Security Center és a Linux virtuális gépek Azure-ban |} Microsoft Docs"
-description: "További tudnivalók az Azure Security Center az Azure Linux virtuális gép biztonsági."
+title: Az Azure Security Center és Linux rendszerű virtuális gépek az Azure-ban | Microsoft Docs
+description: Az Azure-beli linuxos virtuális gépek számára az Azure Security Center által biztosított biztonsági szolgáltatások ismertetése.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: neilpeterson
+author: iainfoulds
 manager: timlt
 editor: tysonn
 tags: azure-service-management
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/07/2017
-ms.author: nepeters
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: dbba39f5b9f18aaca6449e08aa584224fc2126d7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: MT
+ms.openlocfilehash: 6b791b2e1dbaffc90145c325dea7a85bd8abd98c
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/16/2018
 ---
-# <a name="monitor-virtual-machine-security-by-using-azure-security-center"></a>Virtuális gép biztonsági figyelje az Azure Security Centerben
+# <a name="monitor-virtual-machine-security-by-using-azure-security-center"></a>A virtuális gép biztonságának monitorozása az Azure Security Centerrel
 
-Az Azure Security Center segítségével, hogy lássák az Azure-erőforrás biztonsági eljárásokat. A Security Center kínál, integrált biztonsági figyelés. Ellenkező esetben szabályzatkezelést fenyegetések azonosítására képes. Ebben az oktatóanyagban további tudnivalók az Azure Security Center, és hogyan:
+Az Azure Security Center segítségével áttekintheti az Azure-erőforrása biztonsági intézkedéseit. A Security Center integrált biztonsági monitorozást biztosít. Képes egyébként észrevétlenül maradó fenyegetések észlelésére. Ebben az oktatóanyagban megismeri az Azure Security Centert, és a következőket sajátíthatja el:
  
 > [!div class="checklist"]
 > * Adatgyűjtés beállítása
-> * Biztonsági házirendek beállítása
-> * Megtekintheti és konfigurációs állapotát kapcsolatos problémák megoldása
-> * Tekintse át a fenyegetést észlelt  
+> * Biztonsági szabályzatok beállítása
+> * A konfiguráció állapotára vonatkozó problémák megtekintése és javítása
+> * Észlelt fenyegetések áttekintése  
 
-## <a name="security-center-overview"></a>A Security Center áttekintése
+## <a name="security-center-overview"></a>Security Center – Áttekintés
 
-A Security Center lehetséges a virtuális gép (VM) konfigurációs problémák azonosítja, és biztonsági fenyegetések megcélzott. Ezek közé tartozik a virtuális gépek hálózati biztonsági csoportok, a nem titkosított lemezek és a találgatásos Remote Desktop Protocol (RDP) támadások hiányoznak. Az információ jelenik meg a Security Center irányítópultjának könnyen olvasható diagramokban.
+A Security Center azonosítja a potenciális virtuálisgép-konfigurálási problémákat és a célzott biztonsági fenyegetéseket. Ezek lehetnek olyan virtuális gépek, amelyekről hiányoznak hálózati biztonsági csoportok, nem titkosított lemezek, valamint találgatásos módszeren alapuló RDP-támadások. Az információ könnyen értelmezhető diagramokon jelenik meg a Security Center irányítópultján.
 
-Hozzáférni a Security Center irányítópultjának, az Azure portálon, a menüben válassza ki a **Security Center**. Az irányítópulton tekintse meg az Azure környezetben biztonsági állapotát, található az aktuális javaslatok számát, és fenyegetést riasztások aktuális állapotának megtekintése. A részletek megtekintéséhez magas szintű diagramok bővítheti.
+A Security Center irányítópultjának eléréséhez válassza a **Security Center** elemet az Azure Portal menüjében. Az irányítópulton megtekintheti az Azure-környezet biztonsági állapotát, megtalálja az aktuális javaslatok számát, és megtekintheti a fenyegetési riasztások aktuális állapotát. Az egyes magas szintű diagramokat kibontva további részleteket tekinthet meg.
 
-![Security Center irányítópultjának](./media/tutorial-azure-security/asc-dash.png)
+![A Security Center irányítópultja](./media/tutorial-azure-security/asc-dash.png)
 
-A Security Center túllép adatok felderítés javaslatokkal szolgál, hogy az észlelt problémákat. Például ha egy virtuális Gépet egy hálózati biztonsági csoport nélkül lett telepítve, a Security Center ajánlás olyan környezetekben, a javítási lépéseket, amelyek jeleníti meg. A Security Center kontextusában maradjanak automatikus javítási kap.  
+A Security Center az adatészlelésen túl javaslatokat is ad az észlelt problémák megoldására. Ha például egy virtuális gépet csatolt hálózati biztonsági csoport nélkül telepít, a Security Center megjelenít egy, az elvégezhető javítási lépéseket ismertető javaslatot. A Security Center környezetének elhagyása nélkül kaphat automatizált javításokat.  
 
 ![Javaslatok](./media/tutorial-azure-security/recommendations.png)
 
 ## <a name="set-up-data-collection"></a>Adatgyűjtés beállítása
 
-Előtt a virtuális gép biztonsági beállításokat tud bejutni látható, akkor be kell állítania a Security Center adatgyűjtés. Ebbe beletartozik az adatok gyűjtésének bekapcsolása és az összegyűjtött adatok tárolásához Azure storage-fiók létrehozása. 
+Ha a virtuális gép biztonsági konfigurációjára kíváncsi, előbb be kell állítania a Security Center adatgyűjtését. Ennek során be kell kapcsolnia az adatgyűjtést, és létre kell hoznia egy Azure Storage-fiókot a gyűjtött adatok tárolásához. 
 
-1. A Security Center irányítópultján kattintson **biztonsági házirend**, majd válassza ki az előfizetését. 
-2. A **adatgyűjtés**, jelölje be **a**.
-3. A storage-fiók létrehozásához válassza **válasszon tárfiókot**. Ezt követően válassza **OK**.
-4. Az a **biztonsági házirend** panelen válassza **mentése**. 
+1. A Security Center irányítópultján kattintson a **Biztonsági szabályzat** elemre, és válassza ki az előfizetését. 
+2. Az **Adatgyűjtés** elemnél válassza a **Be** lehetőséget.
+3. Tárfiók létrehozásához válassza a **Tárfiók kiválasztása** elemet. Ezután válassza az **OK** lehetőséget.
+4. A **Biztonsági szabályzat** panelen válassza a **Mentés** lehetőséget. 
 
-A Security Center adatok szolgáltatások ügynököt telepíti az összes virtuális gépeken, és adatgyűjtés megkezdése. 
+Ekkor a rendszer telepíti a Security Center adatgyűjtési ügynökét minden virtuális gépen, és megkezdődik az adatgyűjtés. 
 
-## <a name="set-up-a-security-policy"></a>A biztonsági házirendben
+## <a name="set-up-a-security-policy"></a>Biztonsági szabályzat beállítása
 
-Biztonsági házirendek határozzák meg a, amelynek a Security Center adatokat gyűjt, és ajánlásokat. Az Azure-erőforrások más-más részhalmazához különböző biztonsági házirendeket is alkalmazhat. Bár az alapértelmezés szerint minden házirendelemek szemben Azure-erőforrások értékelődnek ki, kikapcsolhatja az összes Azure-erőforrások vagy erőforráscsoport egyedi házirend elemek. A Security Center biztonsági házirendekkel kapcsolatos részletesebb információk: [biztonsági házirendek beállítása az Azure Security Centerben](../../security-center/security-center-policies.md). 
+A biztonsági szabályzatok segítségével határozhatók meg azok az elemek, amelyekhez a Security Center adatokat gyűjt és javaslatokat tesz. Az Azure-erőforrások különböző halmazaira különböző biztonsági szabályzatokat alkalmazhat. Noha alapértelmezés szerint a rendszer az Azure-erőforrásokat az összes szabályzatelem szerint értékeli ki, az egyes szabályzatelemek kikapcsolhatók minden Azure-erőforráshoz, vagy egy adott erőforráscsoporthoz. Ha további információt szeretne megtudni a Security Center biztonsági szabályzatairól olvassa el a [biztonsági szabályzatok az Azure Security Centerben történő beállítását](../../security-center/security-center-policies.md) ismertető részt. 
 
-Az összes Azure-erőforrások biztonsági házirend beállítása:
+Biztonsági szabályzat beállítása az összes Azure-erőforráshoz:
 
-1. Válassza ki a Security Center irányítópultjának **biztonsági házirend**, majd válassza ki az előfizetését.
-2. Válassza ki **megakadályozási szabályzat**.
-3. Kapcsolja be, vagy kapcsolja ki az összes Azure-erőforrások alkalmazni kívánt házirend-elemeket.
-4. Amikor elkészült, válassza a beállítások, válassza ki a **OK**.
-5. Az a **biztonsági házirend** panelen válassza **mentése**. 
+1. A Security Center irányítópultján válassza a **Biztonsági szabályzat** lehetőséget, és válassza ki az előfizetését.
+2. Válassza a **Megelőzési szabályzat** lehetőséget.
+3. Kapcsolja be vagy ki az összes Azure-erőforrásra alkalmazni kívánt szabályzatelemeket.
+4. Ha elkészült a beállítások kiválasztásával, válassza az **OK** elemet.
+5. A **Biztonsági szabályzat** panelen válassza a **Mentés** lehetőséget. 
 
-Az adott erőforráscsoport szabályzat beállítása:
+Egy szabályzat beállítása egy adott erőforráscsoporthoz:
 
-1. Jelölje ki a Security Center irányítópultjának **biztonsági házirend**, majd válassza ki egy erőforráscsoportot.
-2. Válassza ki **megakadályozási szabályzat**.
-3. Kapcsolja be, vagy kapcsolja ki az erőforráscsoport alkalmazni kívánt házirend-elemeket.
-4. A **ÖRÖKLÉSI**, jelölje be **egyedi**.
-5. Amikor elkészült, válassza a beállítások, válassza ki a **OK**.
-6. Az a **biztonsági házirend** panelen válassza **mentése**.  
+1. A Security Center irányítópultján kattintson a **Biztonsági szabályzat** lehetőségre, és válasszon egy erőforráscsoportot.
+2. Válassza a **Megelőzési szabályzat** lehetőséget.
+3. Kapcsolja be vagy ki az erőforrásra alkalmazni kívánt szabályzatelemeket.
+4. Az **ÖRÖKLÉS** elemnél válassza az **Egyedi** lehetőséget.
+5. Ha elkészült a beállítások kiválasztásával, válassza az **OK** elemet.
+6. A **Biztonsági szabályzat** panelen válassza a **Mentés** lehetőséget.  
 
-Ön is bármikor kikapcsolhatják az adatgyűjtést ezen a lapon megadott erőforráscsoport.
+Ezen az oldalon egy adott erőforráscsoporthoz is kikapcsolhatja az adatgyűjtést.
 
-A következő példában egy egyedi házirend nevű erőforráscsoport létrejött *myResoureGroup*. Ezt a házirendet, a lemez titkosítása és a webes alkalmazás tűzfal javaslatok ki vannak kapcsolva.
+A következő példában létrehozunk egy egyedi szabályzatot egy *myResourceGroup* nevű erőforráscsoporthoz. Ebben a szabályzatban ki vannak kapcsolva a lemeztitkosításra és a webalkalmazási tűzfalra vonatkozó javaslatok.
 
-![Egyedi házirend](./media/tutorial-azure-security/unique-policy.png)
+![Egyedi szabályzat](./media/tutorial-azure-security/unique-policy.png)
 
-## <a name="view-vm-configuration-health"></a>Virtuális gép konfigurációs állapotának megtekintése
+## <a name="view-vm-configuration-health"></a>Virtuálisgép-konfiguráció állapotának megtekintése
 
-Miután engedélyezve van a használatra vonatkozó adatok gyűjtésének és állíthat be a biztonsági házirendet, a Security Center veszi át a riasztások és javaslatok. Mivel a virtuális gépek vannak telepítve, az adatok gyűjtése ügynök telepítve van. A Security Center majd az új virtuális gépek feltöltve adatokkal. Részletes információ a virtuális gép konfigurációs állapotát: [a Security Center a virtuális gépek védelme](../../security-center/security-center-virtual-machine-recommendations.md). 
+Miután bekapcsolta az adatgyűjtést, és beállított egy biztonsági szabályzatot, a Security Center elkezd riasztásokat és javaslatokat küldeni. A virtuális gépek üzembe helyezésekor a rendszer telepíti az adatgyűjtési ügynököt. Ezután a Security Centerbe betöltődnek az új virtuális gépekhez tartozó adatok. A virtuális gép konfigurációs állapotára vonatkozó részletes adatokkal kapcsolatban [a virtuális gépek a Security Centerben történő védelmét](../../security-center/security-center-virtual-machine-recommendations.md) ismertető szakaszban olvashat bővebben. 
 
-Összegyűjtött adatok, az erőforrás állapota minden egyes virtuális gép és a kapcsolódó Azure-erőforrás összesíti. Az információk könnyen olvasható diagramon látható. 
+Ahogy gyűlnek az adatok, az egyes virtuális gépek erőforrás-állapotát és a kapcsolódó Azure-erőforrásokat a rendszer összesíti. Az információk egy könnyen értelmezhető diagramon jelennek meg. 
 
-Erőforrás állapotának megtekintéséhez:
+Az erőforrás állapotának megtekintése:
 
-1.  A biztonsági Center irányítópultján a **erőforrás biztonsági állapota**, jelölje be **számítási**. 
-2.  Az a **számítási** panelen válassza **virtuális gépek**. Ez a nézet a konfigurációs állapotának összegzését tartalmazza a virtuális géphez.
+1.  A Security Center irányítópultjának **Erőforrások biztonsági állapota** területén válassza a **Compute** elemet. 
+2.  A **Compute** panelen válassza a **Virtuális gépek** lehetőséget. Ebben a nézetben megtekintheti az összes virtuális gép konfigurációs állapotának összegzését.
 
-![Számítási állapota](./media/tutorial-azure-security/compute-health.png)
+![Compute-állapot](./media/tutorial-azure-security/compute-health.png)
 
-A virtuális gépek összes javaslatok megtekintéséhez válasszon a virtuális Gépet. Javaslatok, a javítási Ez az oktatóanyag következő szakasza részletesen ismertetnek.
+A virtuális gépre vonatkozó összes javaslat megtekintéséhez válassza ki a virtuális gépet. A javaslatokról és a javításokról a jelen oktatóanyag következő szakaszában lesz részletesebben szó.
 
-## <a name="remediate-configuration-issues"></a>Konfigurációs problémák megoldásához
+## <a name="remediate-configuration-issues"></a>Konfigurációs problémák javítása
 
-A konfigurációs adatok feltöltése a Security Center elindítása után javaslatok alapján készülnek a biztonsági házirend beállítása. Például ha egy virtuális Gépet egy társított hálózati biztonsági csoport nélkül be lett állítva, a javaslatokkal kattintva létrehozhat egyet. 
+Miután a Security Center elkezd feltöltődni konfigurációs adatokkal, a javaslatokat a rendszer a beállított biztonsági szabályzat alapján készíti el. Ha például egy virtuális gépet a társított hálózati biztonsági csoport nélkül állított be, a rendszer javasolja, hogy hozzon létre egyet. 
 
-Az összes javaslatok listájának megtekintéséhez: 
+A javaslatok listájának megtekintése: 
 
-1. Válassza ki a Security Center irányítópultjának **javaslatok**.
-2. Válassza ki az adott javaslat. Megjelenik egy lista, amelynek erőforrásait a javaslat vonatkozik.
-3. Alkalmaz egy javaslatot, válassza ki az adott erőforrás. 
-4. Kövesse az utasításokat a javítási lépéseket. 
+1. A Security Center irányítópultján válassza a **Javaslatok** elemet.
+2. Válasszon ki egy adott javaslatot. Megjelenik azon erőforrások listája, amelyekre vonatkozik a javaslat.
+3. Egy javaslat alkalmazásához válasszon ki egy adott erőforrást. 
+4. A javítási lépések végrehajtásához kövesse az utasításokat. 
 
-Sok esetben a Security Center itt végrehajtandó lépések, anélkül, hogy a Security Center ajánlást megoldására. A következő példában a Security Center észleli a hálózati biztonsági csoport, amely rendelkezik egy korlátlan bejövő szabályt. A javaslat lapon kiválaszthatja a **bejövő szabályok szerkesztése** gombra. A felhasználói felület, ahhoz szükséges, hogy módosítsa a szabály akkor jelenik meg. 
+A Security Center olyan végrehajtható lépéseket ajánl, amelyekkel a Security Center elhagyása nélkül kezelhet egy javaslatot. A következő példában a Security Center olyan hálózati biztonsági csoportot észlel, amelyhez tartozik egy korlátozás nélküli bejövő szabály. A javaslatok oldalán kiválaszthatja a **Bejövő szabályok szerkesztése** gombot. Megjelenik a szabály módosításához szükséges felhasználói felület. 
 
 ![Javaslatok](./media/tutorial-azure-security/remediation.png)
 
-Javaslatok szervizelt vannak, mint megoldottként vannak beállítva. 
+Ha a rendszer elvégzi a javaslatokhoz tartozó javításokat, megoldottként jelöli meg őket. 
 
-## <a name="view-detected-threats"></a>Észlelt fenyegetéseket megtekintése
+## <a name="view-detected-threats"></a>Észlelt fenyegetések megtekintése
 
-Mellett erőforrás konfigurációs javaslatait a Security Center figyelmeztetések jeleníti meg. A biztonsági riasztások szolgáltatás összesíti az egyes virtuális gép, Azure hálózati naplók és összekapcsolt partnermegoldások biztonsági fenyegetések ellen Azure-erőforrások észlelését gyűjtött adatokat. A Security Center threat detection képességeivel kapcsolatos részletesebb információk: [az Azure Security Center az észlelési képességek](../../security-center/security-center-detection-capabilities.md).
+Az erőforrások konfigurációjára vonatkozó javaslatok mellett a Security Center megjelenít fenyegetésészlelési riasztásokat is. A biztonsági riasztások szolgáltatása az Azure-erőforrásokra leselkedő biztonsági fenyegetések felderítése érdekében összesíti az egyes virtuális gépekről gyűjtött adatokat, az Azure-beli hálózati naplókat és a csatlakoztatott partnermegoldásokat. A Security Center fenyegetésészlelési képességeivel kapcsolatban további információt [az Azure Security Center észlelési képességeit](../../security-center/security-center-detection-capabilities.md) ismertető szakaszban talál.
 
-A biztonsági riasztások funkció használatához az IP-címek Security Center hogy *szabad* való *szabványos*. Egy 30 napos **ingyenes próbaverzió** helyez át a magasabb szintű tarifacsomagban használható esetén érhető el. 
+A biztonsági riasztások funkciójának használatához a Security Center tarifacsomagját *Ingyenesről* *Standardra* kell emelni. Ha erre a magasabb tarifacsomagra lép, elérhető egy 30 napos **ingyenes próbaidőszak**. 
 
-Ez a tarifacsomag módosítása:  
+A tarifacsomag módosítása:  
 
-1. A Security Center irányítópultján kattintson **biztonsági házirend**, majd válassza ki az előfizetését.
-2. Válassza ki **tarifacsomag**.
-3. Az új réteget, majd válassza ki és **válasszon**.
-4. Az a **biztonsági házirend** panelen válassza **mentése**. 
+1. A Security Center irányítópultján kattintson a **Biztonsági szabályzat** elemre, és válassza ki az előfizetését.
+2. Válassza a **Tarifacsomag** lehetőséget,
+3. Válassza ki az új csomagot, majd kattintson a **Kiválasztás** elemre.
+4. A **Biztonsági szabályzat** panelen válassza a **Mentés** lehetőséget. 
 
-Miután megváltoztatta a tarifacsomagot, a biztonsági riasztások graph feltöltéséhez, mint a biztonsági fenyegetések észlelése kezdődik.
+Miután módosította a tarifacsomagot, a rendszer feltölti a biztonsági riasztások diagramját, amint biztonsági fenyegetéseket észlel.
 
 ![Biztonsági riasztások](./media/tutorial-azure-security/security-alerts.png)
 
-Válasszon ki egy riasztást, információk megtekintése. Például láthatja a fenyegetés, az észlelés időpontja, az összes fenyegetés kísérletek és javasolt elhárítási műveletek leírását. A következő példában RDP találgatásos támadás volt észlelhető, 294 sikertelen RDP próbálnak. Javasolt megoldás valósul meg.
+Az információk megtekintéséhez válasszon ki egy riasztást. Megjelenik például a fenyegetés leírása, az észlelési idő, minden fenyegetési kísérlet, valamint a javasolt javítás. Az alábbi példában a rendszer egy találgatásos RDP-támadást észlelt 294 meghiúsult RDP-kísérlettel. A rendszer felkínál egy javasolt megoldást.
 
 ![RDP-támadás](./media/tutorial-azure-security/rdp-attack.png)
 
-## <a name="next-steps"></a>Következő lépések
-Ebben az oktatóanyagban az Azure Security Center beállítása, és ezután tekintse át a virtuális gépek a Security Center. Megismerte, hogyan végezheti el az alábbi műveleteket:
+## <a name="next-steps"></a>További lépések
+Ebben az oktatóanyagban beállította az Azure Security Centert, és áttekintette a virtuális gépek Security Centerben való kezelését. Megismerte, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Adatgyűjtés beállítása
-> * Biztonsági házirendek beállítása
-> * Megtekintheti és konfigurációs állapotát kapcsolatos problémák megoldása
-> * Tekintse át a fenyegetést észlelt
+> * Biztonsági szabályzatok beállítása
+> * A konfiguráció állapotára vonatkozó problémák megtekintése és javítása
+> * Észlelt fenyegetések áttekintése
 
-A következő oktatóanyag Jenkins, a Githubon és a Docker CI/CD adatcsatorna létrehozásával kapcsolatos további továbblépés.
+Lépjen tovább a következő oktatóanyagra, amelyből többet is megtudhat a CI-/CD-folyamat Jenkins, GitHub és Docker használatával való létrehozásáról.
 
 > [!div class="nextstepaction"]
-> [CI/CD infrastruktúra Jenkins, a Githubon és a Docker létrehozása](tutorial-jenkins-github-docker-cicd.md)
+> [CI-/CD-infrastruktúra létrehozása a Jenkins, a GitHub és a Docker használatával](tutorial-jenkins-github-docker-cicd.md)
 

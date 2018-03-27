@@ -1,23 +1,23 @@
 ---
-title: Modell-üzembehelyezési útmutató az Azure Machine Learning-szolgáltatásokhoz (előzetes verzió) | Microsoft Docs
-description: Ez a részletes oktatóanyag bemutatja, hogyan használhatók ki teljeskörűen az (előzetes verziójú) Azure Machine Learning-szolgáltatások. Ez a harmadik rész, amely a modell üzembe helyezését ismerteti.
+title: Modell-üzembehelyezési útmutató az Azure Machine Learning-szolgáltatásokhoz
+description: Ez a részletes oktatóanyag bemutatja, hogyan használhatók ki teljes körűen az Azure Machine Learning-szolgáltatások. Ez a harmadik rész, amely a modell üzembe helyezését ismerteti.
 services: machine-learning
-author: raymondl
-ms.author: raymondl, j-martens, aashishb
+author: aashishb
+ms.author: aashishb
 manager: mwinkle
-ms.reviewer: jmartens, jasonwhowell, mldocs, gcampanella
+ms.reviewer: jmartens, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 3/7/2018
-ms.openlocfilehash: 13ddc0ef8c7eac86e6cd7abb684ce35ae18fba84
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.date: 3/13/2018
+ms.openlocfilehash: 87d1e605bfd7603e4e07f6b427033fe2c1d2b83e
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/16/2018
 ---
-# <a name="tutorial-classify-iris-part-3-deploy-a-model"></a>Oktatóanyag: Írisz osztályozása, 3. rész: Modell üzembe helyezése
+# <a name="tutorial-3-classify-iris-deploy-a-model"></a>3. oktatóanyag: Írisz osztályozása: Modellek üzembe helyezése
 Az Azure Machine Learning (előzetes verzió) az adatszakértők számára létrehozott átfogó, integrált és fejlett adatelemzési megoldás. Az adatszakértők a használatával az adatok előkészítését, a kísérletek kidolgozását és a modellek felhőszinten való üzembe helyezését hajthatják végre.
 
 Ez az oktatóanyag **egy háromrészes sorozat harmadik része**. Az oktatóanyagnak ebben a részében a Machine Learning (előzetes verzió) segítségével a következőket hajtja végre:
@@ -30,17 +30,15 @@ Ez az oktatóanyag **egy háromrészes sorozat harmadik része**. Az oktatóanya
 > * A valós idejű webszolgáltatás futtatása.
 > * A kimeneti blobadatok vizsgálata. 
 
-Az oktatóanyag a jól ismert [Iris flower adatkészletet](https://en.wikipedia.org/wiki/iris_flower_data_set) használja. A képernyőképek Windows-specifikusak, de a macOS rendszeren szinte azonos a felhasználói élmény.
-
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+Az oktatóanyag a jól ismert [Iris flower adatkészletet](https://en.wikipedia.org/wiki/Iris_flower_data_set) használja. 
 
 ## <a name="prerequisites"></a>Előfeltételek
-Végezze el az oktatóanyag első két részét:
 
-   * Kövesse az [Adatok előkészítése útmutató](tutorial-classifying-iris-part-1.md) lépéseit a Machine Learning-erőforrások létrehozásához és az Azure Machine Learning Workbench alkalmazás telepítéséhez.
-   * Kövesse a [Modell-létrehozási útmutató](tutorial-classifying-iris-part-2.md) lépéseit egy logisztikai regressziós modell létrehozásához a Machine Learningben.
-
-Rendelkeznie kell egy helyben telepített és futtatott Docker-motorral. Alternatív megoldásként az üzembe helyezést az Azure egy Azure Container Service-fürtjében is elvégezheti.
+Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
+- Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt. 
+- Az ebben a [rövid útmutatóban](quickstart-installation.md) ismertetett kísérletezési fiók és telepített Azure Machine Learning Workbench.
+- Az [oktatóanyag 2. részében](tutorial-classifying-iris-part-2.md) szereplő osztályozási modell.
+- Egy helyben telepített és futtatott Docker-motor.
 
 ## <a name="download-the-model-pickle-file"></a>A modell pickle-fájljának letöltése
 Az oktatóanyag előző részében az **iris_sklearn.py** szkriptet helyileg, az Azure Machine Learning Workbenchben futtattuk. Ez a művelet szerializálta a logisztikai regressziós modellt a népszerű Python-alapú objektumszerializáló csomag, a [pickle](https://docs.python.org/3/library/pickle.html) használatával. 
@@ -91,7 +89,7 @@ A webszolgáltatás üzembe helyezéséhez a modellfájl mellett szükség van e
 
 4. A sémafájl lekéréséhez futtassa a szkriptet. Válassza ki a **helyi** környezetet és a **score_iris.py** szkriptet a parancssorban, majd válassza a **Futtatás** lehetőséget. 
 
-5. A szkript létrehoz az **Outputs** szakaszban egy JSON-fájlt, amely a modellhez szükséges bemenetiadat-sémát tartalmazza.
+   A szkript létrehoz az **Outputs** szakaszban egy JSON-fájlt, amely a modellhez szükséges bemenetiadat-sémát tartalmazza.
 
 6. Figyelje meg a **Projekt-irányítópult** panel jobb oldalán található **Feladatok** panelt. Várja meg, hogy a legfrissebb **score_iris.py** feladat mellett a zöld **Befejezve** állapot jelenjen meg. Ezután kattintson a legfrissebb feladatfuttatáshoz tartozó **score_iris.py** hiperhivatkozásra a futtatási részletek megtekintéséhez. 
 
@@ -128,7 +126,10 @@ Használja a _helyi módú_ üzembe helyezést a helyi számítógépen lévő D
 A _helyi mód_ fejlesztési és tesztelési célokra használható. A Docker Engine-nek helyileg kell futnia a modell üzembe helyezése következő lépéseinek végrehajtásához. Az egyes parancsok végén található `-h` jelző segítségével megjelenítheti a megfelelő súgóüzenetet.
 
 >[!NOTE]
->Ha nincs helyi Docker-motor, akkor másik megoldásként létrehozhat egy fürtöt az Azure-ban az üzembe helyezéshez. Ilyenkor ügyeljen arra, hogy az oktatóanyag elvégzését követően törölje a fürtöt, hogy az ne járjon további költségekkel.
+>Ha nincs helyi Docker-motor, akkor másik megoldásként létrehozhat egy fürtöt az Azure-ban az üzembe helyezéshez. A fürtöt megtarthatja későbbi használatra, vagy törölheti is az oktatóanyag elvégzését követően, hogy ne járjon további költségekkel.
+
+>[!NOTE]
+>A helyszínen üzembe helyezett webszolgáltatások nem jelennek meg az Azure Portal szolgáltatáslistájában. Azok a Dockerben futnak a helyszíni gépen.
 
 1. Nyissa meg a parancssori felületet (CLI)
    A Machine Learning Workbench alkalmazás **Fájl** menüjében válassza a **Parancssor megnyitása** lehetőséget.

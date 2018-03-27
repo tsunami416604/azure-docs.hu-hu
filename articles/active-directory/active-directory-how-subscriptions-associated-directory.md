@@ -1,11 +1,11 @@
 ---
-title: "Meglévő Azure-előfizetés hozzáadása az Azure AD-címtárhoz | Microsoft Docs"
-description: "Meglévő előfizetés hozzáadása az Azure AD-címtárhoz"
+title: Meglévő Azure-előfizetés hozzáadása az Azure AD-címtárhoz | Microsoft Docs
+description: Meglévő előfizetés hozzáadása az Azure AD-címtárhoz
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: curtand
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: bc4773c2-bc4a-4d21-9264-2267065f0aea
 ms.service: active-directory
 ms.workload: identity
@@ -16,11 +16,11 @@ ms.date: 12/12/2017
 ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: oldportal;it-pro;
-ms.openlocfilehash: e063e6a46b6b99c4bbe749347e6887a930adb882
-ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
+ms.openlocfilehash: 2b9ed5b3374c98740923790dac90cb1eb2f065d8
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="how-to-associate-or-add-an-azure-subscription-to-azure-active-directory"></a>Azure-előfizetés társítása vagy hozzáadása az Azure Active Directoryhoz
 
@@ -34,6 +34,7 @@ Minden felhasználó egyetlen saját címtárral rendelkezik, amely hitelesíti 
 
 * Olyan fiókkal kell bejelentkeznie, amely RBAC tulajdonosi hozzáféréssel rendelkezik az előfizetéshez.
 * Egy olyan fiókkal kell bejelentkeznie, amely az előfizetéshez jelenleg társított címtárban és abban a címtárban is létezik, amelyhez az előfizetést hozzá szeretné rendelni. További információ a más címtárakhoz való hozzáférésről: [Hogyan adhat hozzá az Azure Active Directory-rendszergazda vállalatközi együttműködési felhasználókat?](active-directory-b2b-admin-add-users.md)
+* Ez a szolgáltatás nem érhető el CSP- (MS-AZR-0145P, MS-AZR-0146P, MS-AZR-159P) és Microsoft Imagine- (MS-AZR-0144P) előfizetések esetén.
 
 ## <a name="to-associate-an-existing-subscription-to-your-azure-ad-directory"></a>Meglévő előfizetés társítása az Azure AD-címtárral
 

@@ -1,19 +1,19 @@
 ---
-title: "Szabályzat-hozzárendelés létrehozása Azure környezetben a nem megfelelő erőforrások azonosításához az Azure CLI használatával | Microsoft Docs"
-description: "A PowerShell használatával létrehozhat egy Azure szabályzat-hozzárendelést a nem megfelelő erőforrások azonosításához."
+title: Szabályzat-hozzárendelés létrehozása Azure környezetben a nem megfelelő erőforrások azonosításához az Azure CLI használatával | Microsoft Docs
+description: A PowerShell használatával létrehozhat egy Azure szabályzat-hozzárendelést a nem megfelelő erőforrások azonosításához.
 services: azure-policy
-keywords: 
+keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/17/2018
+ms.date: 03/13/2018
 ms.topic: quickstart
 ms.service: azure-policy
 ms.custom: mvc
-ms.openlocfilehash: 76725f3ebeaf5af4f2ab8aadb303d862fa111ecb
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: f56f00aabbef2cfa86264d3e962af9a9c0bafa98
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="create-a-policy-assignment-to-identify-non-compliant-resources-in-your-azure-environment-with-the-azure-cli"></a>Szabályzat-hozzárendelés létrehozása Azure környezetben a nem megfelelő erőforrások azonosításához az Azure CLI használatával
 
@@ -21,83 +21,97 @@ Az Azure-ral való megfelelőség megértéséhez szükséges első lépés a sa
 
 A folyamat végén sikeresen fogja azonosítani a felügyelt lemezeket nem használó virtuális gépeket. Ezek a szabályzat-hozzárendelés szempontjából *nem megfelelőnek* minősülnek.
 
+Az Azure CLI az Azure-erőforrások parancssorból vagy szkriptekkel történő létrehozására és kezelésére használható. Ez az útmutató az Azure CLI használatával hoz létre szabályzat-hozzárendelést az Azure környezetben lévő nem megfelelő erőforrások azonosításához.
+
 Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Ehhez a rövid útmutatóhoz az Azure CLI 2.0.4-es vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli).
+Ehhez a rövid útmutatóhoz az Azure CLI 2.0.4-es vagy újabb verziójára lesz szükség. A verzió megkereséséhez futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli).
+
+
 
 ## <a name="create-a-policy-assignment"></a>Szabályzat-hozzárendelés létrehozása
 
-Ebben a rövid útmutatóban egy szabályzat-hozzárendelést hozunk létre, és hozzárendeljük a Felügyelt lemezeket nem használó virtuális gépek naplózása definíciót. Ez a szabályzat-definíció olyan erőforrásokat azonosít, amelyek nem felelnek meg a szabályzat-definícióban meghatározott feltételeknek.
+Ebben a rövid útmutatóban egy szabályzat-hozzárendelést hoz létre, és hozzárendeli a Felügyelt lemezek nélküli virtuális gépek naplózása definíciót. Ez a szabályzat-definíció olyan erőforrásokat azonosít, amelyek nem felelnek meg a szabályzat-definícióban meghatározott feltételeknek.
 
-Kövesse az alábbi lépéseket egy új szabályzat-hozzárendelés létrehozásához:
+Futtassa a következő parancsot egy szabályzat-hozzárendelés létrehozásához:
 
-1. Regisztrálja a Policy Insights erőforrás-szolgáltatót, hogy az előfizetése együtt tudjon működni az erőforrás-szolgáltatóval. Egy erőforrás-szolgáltató regisztrálásához rendelkeznie kell az erőforrás-szolgáltató regisztrálási műveletének elvégzésére vonatkozó engedéllyel. Ezt a műveletet a Közreműködői és Tulajdonosi szerepkörök magukba foglalják.
-
-    Regisztrálja az erőforrás-szolgáltatót a következő parancs futtatásával:
-
-    ```azurecli
-    az provider register --namespace Microsoft.PolicyInsights
-    ```
-
-    A parancs egy üzenetet ad vissza, amely tájékoztatja, hogy a regisztráció folyamatban van.
-
-    Amíg az előfizetése tartalmaz az erőforrás-szolgáltatótól származó erőforrástípusokat, addig az erőforrás-szolgáltató regisztrációja nem törölhető. Az erőforrás-szolgáltatók regisztrálásával és megtekintésével kapcsolatos további információért tekintse meg az [erőforrás-szolgáltatókat és típusaikat](../azure-resource-manager/resource-manager-supported-services.md) ismertető cikket.
-
-2. Jelenítse meg az összes szabályzat-meghatározást, majd keresse meg a *Felügyelt lemezeket nem használó virtuális gépek naplózása* című szabályzat-definíciót:
-
-    ```azurecli
-az policy definition list
+```
+az policy assignment create --name 'Audit Virtual Machines without Managed Disks Assignment' --scope '<scope>' --policy '<policy definition ID>' --sku 'standard'
 ```
 
-    Az Azure Policy beépített szabályzatdefiníciókat tartalmaz, amelyeket felhasználhat. Többek között a következő beépített szabályzat-definíciókat láthatja:
+Az előző parancs a következő információkat használja:
 
-    - Címke és a hozzá tartozó érték kényszerítése
-    - Címke és a hozzá tartozó érték alkalmazása
-    - SQL Server 12.0-ás verziójának megkövetelése
+- **Név** – A szabályzat-hozzárendeléshez tartozó megjelenített név. Ebben az esetben a *Felügyelt lemezeket nem használó virtuális gépek naplózása – hozzárendelés* nevet használja.
+- **Szabályzat** – A szabályzatdefiníció azonosítója, amely alapján létre fogja hozni a hozzárendelést. Ezúttal a *Felügyelt lemezeket nem használó virtuális gépek naplózása* szabályzatdefiníciót fogja használni. A szabályzatdefiníció azonosítójának lekéréséhez futtassa ezt a parancsot: `az policy definition show --name 'Audit Virtual Machines without Managed Disks Assignment'`
+- **Hatókör** – A hatókör határozza meg, hogy a szabályzat-hozzárendelés milyen erőforrások vagy erőforráscsoportok esetében lesz kényszerítve. Ez egyetlen előfizetéstől teljes erőforráscsoportokig terjedhet. Győződjön meg arról, hogy a &lt;scope&gt; helyett az erőforráscsoport neve szerepel.
+- **Sku** – Ez a parancs standard szinten hoz létre szabályzat-hozzárendelést. A standard szinten tömeges felügyeletet, megfelelőségértékelést és kijavítást végezhet. Jelenleg a standard szint ingyenes. A jövőben a standard szint költségekkel fog járni. A díjszabás módosítása be lesz jelentve, a további részletek pedig az [Azure Policy díjszabás](https://azure.microsoft.com/pricing/details/azure-policy) című szakaszban lesznek megtekinthetők.
 
-3. Következő lépésként adja meg az alábbi információkat, majd futtassa a következő parancsot a szabályzat-definíció hozzárendeléséhez:
-
-    - A szabályzatdefinícióhoz tartozó megjelenített **név**. Ebben az esetben a név legyen *Felügyelt lemezeket nem használó virtuális gépek naplózása*.
-    - **Szabályzat** – Ez az a szabályzatdefiníció, amely alapján létre fogja hozni a hozzárendelést. Ezúttal a *Felügyelt lemezeket nem használó virtuális gépek naplózása* szabályzatdefiníciót fogjuk használni
-    - **Hatókör** – A hatókör határozza meg, hogy a szabályzat-hozzárendelés milyen erőforrások vagy erőforráscsoportok esetében lesz kényszerítve. Ez egyetlen előfizetéstől teljes erőforráscsoportokig terjedhet.
-
-    Használja az előzőleg regisztrált előfizetést (vagy erőforráscsoportot). Ebben a példában a **bc75htn-a0fhsi-349b-56gh-4fghti-f84852** előfizetés-azonosítót és a **FabrikamOMS** erőforráscsoport-nevet használjuk. Ne felejtse el módosítani ezeket az Ön által használt előfizetés-azonosítóra, illetve erőforráscsoport-névre.
-
-    A parancsnak ehhez hasonlóan kell kinéznie:
-
-    ```azurecli
-az policy assignment create --name Audit Virtual Machines without Managed Disks Assignment --policy Audit Virtual Machines without Managed Disks --scope /subscriptions/
-bc75htn-a0fhsi-349b-56gh-4fghti-f84852/resourceGroups/FabrikamOMS
-```
-
-A szabályzat-hozzárendelés egy olyan szabályzat, amely egy adott hatókörön belül érvényes. Ez a hatókör szintén bármi lehet egy felügyeleti csoporttól egy erőforráscsoportig.
 
 ## <a name="identify-non-compliant-resources"></a>Nem megfelelő erőforrások azonosítása
 
-Az új hozzárendelésnek nem megfelelő erőforrások megtekintéséhez:
+Az új hozzárendelésnek nem megfelelő erőforrások megtekintéséhez kérje le a szabályzat-hozzárendelés azonosítóját a következő parancsok futtatásával:
 
-1. Lépjen vissza az Azure Policy oldalára.
-2. Válassza a **Megfelelőség** elemet a bal oldali panelen, majd keresse meg az imént létrehozott **Szabályzat-hozzárendelést**.
+```
+$policyAssignment = Get-AzureRmPolicyAssignment | where {$_.properties.displayName -eq "Audit Virtual Machines without Managed Disks"}
+```
 
-   ![Szabályzatmegfelelőség](media/assign-policy-definition/policy-compliance.png)
+```
+$policyAssignment.PolicyAssignmentId
+```
 
-   Az olyan meglévő erőforrások, amelyek nem felelnek meg az új hozzárendelésnek, a **Nem megfelelő erőforrások** lapon jelennek meg. Az előző képen nem megfelelő erőforrások példái láthatók.
+További tudnivalók a szabályzat-hozzárendelés azonosítóiról: [Get-AzureRMPolicyAssignment](/powershell/module/azurerm.resources/get-azurermpolicyassignment).
+
+Ezután futtassa a következő parancsot a JSON-fájlba kerülő nem megfelelő erőforrások azonosítójának lekéréséhez:
+
+```
+armclient post "/subscriptions/<subscriptionID>/resourceGroups/<rgName>/providers/Microsoft.PolicyInsights/policyStates/latest/queryResults?api-version=2017-12-12-preview&$filter=IsCompliant eq false and PolicyAssignmentId eq '<policyAssignmentID>'&$apply=groupby((ResourceId))" > <json file to direct the output with the resource IDs into>
+```
+
+Az eredmények a következő példához hasonlók:
+
+```
+{
+"@odata.context":"https://management.azure.com/subscriptions/<subscriptionId>/providers/Microsoft.PolicyInsights/policyStates/$metadata#latest",
+"@odata.count": 3,
+"value": [
+{
+    "@odata.id": null,
+    "@odata.context": "https://management.azure.com/subscriptions/<subscriptionId>/providers/Microsoft.PolicyInsights/policyStates/$metadata#latest/$entity",
+      "ResourceId": "/subscriptions/<subscriptionId>/resourcegroups/<rgname>/providers/microsoft.compute/virtualmachines/<virtualmachineId>"
+    },
+    {
+      "@odata.id": null,
+      "@odata.context": "https://management.azure.com/subscriptions/<subscriptionId>/providers/Microsoft.PolicyInsights/policyStates/$metadata#latest/$entity",
+      "ResourceId": "/subscriptions/<subscriptionId>/resourcegroups/<rgname>/providers/microsoft.compute/virtualmachines/<virtualmachine2Id>"
+         },
+{
+      "@odata.id": null,
+      "@odata.context": "https://management.azure.com/subscriptions/<subscriptionId>/providers/Microsoft.PolicyInsights/policyStates/$metadata#latest/$entity",
+      "ResourceId": "/subscriptions/<subscriptionName>/resourcegroups/<rgname>/providers/microsoft.compute/virtualmachines/<virtualmachine3ID>"
+         }
+
+]
+}
+
+```
+
+Az eredmények hasonlók ahhoz, amit általában az Azure Portal nézetében a **Nem megfelelő erőforrások** területen láthat.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Az ebben a gyűjteményben lévő többi útmutató erre a rövid útmutatóra épül. Ha azt tervezi, hogy az ezt követő oktatóanyagokkal dolgozik tovább, akkor ne törölje az ebben a rövid útmutatóban létrehozott erőforrásokat. Ha nem folytatja a munkát, törölje a létrehozott hozzárendelést a következő parancs futtatásával:
 
 ```azurecli
-az policy assignment delete –name  Assignment --scope /subscriptions/ bc75htn-a0fhsi-349b-56gh-4fghti-f84852 resourceGroups/ FabrikamOMS
+az policy assignment delete –name Audit Virtual Machines without Managed Disks Assignment --scope /subscriptions/ <subscriptionID> / <resourceGroupName>
 ```
 
 ## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban hozzárendelt egy szabályzatdefiníciót az Azure-környezetben megtalálható, nem megfelelő erőforrások azonosítása céljából.
 
-A szabályzatok a **jövőben** létrehozott erőforrások megfelelőségének biztosítása érdekében történő hozzárendeléséről a következő oktatóanyagban találhat több információt:
+A szabályzatok hozzárendeléséről, és a **jövőben** létrehozott erőforrások megfelelőségének biztosításáról a következő oktatóanyagban találhat több információt:
 
 > [!div class="nextstepaction"]
 > [Szabályzatok létrehozása és kezelése](./create-manage-policy.md)

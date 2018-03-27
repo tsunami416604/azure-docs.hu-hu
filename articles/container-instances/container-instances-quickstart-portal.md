@@ -1,21 +1,21 @@
 ---
-title: "Rövid útmutató – Az első Azure Container Instances-tároló létrehozása az Azure Portal segítségével"
-description: "Az Azure Container Instances üzembe helyezése és az első lépések"
+title: Rövid útmutató – Az első Azure Container Instances-tároló létrehozása az Azure Portal segítségével
+description: Ebben a rövid útmutatóban az Azure Portal használatával helyez üzembe egy tárolót az Azure Container Instances szolgáltatásban
 services: container-instances
 author: mmacy
 manager: timlt
 ms.service: container-instances
 ms.topic: quickstart
-ms.date: 01/02/2018
+ms.date: 03/19/2018
 ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: 63f22544276da07ec98e779cc524879603655db6
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 18238c94ba9acff15497a666a63b65b95779d4ac
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/17/2018
 ---
-# <a name="create-your-first-container-in-azure-container-instances"></a>Az első tároló létrehozása az Azure Container Instances szolgáltatásban
+# <a name="quickstart-create-your-first-container-in-azure-container-instances"></a>Rövid útmutató: Az első tároló létrehozása az Azure Container Instances szolgáltatásban
 
 Az Azure Container Instances segítségével egyszerűen hozhat létre és felügyelhet tárolókat az Azure-ban. Ebben a rövid útmutatóban létrehozhat egy tárolót az Azure-ban, és közzéteheti az interneten egy nyilvános IP-címen keresztül. Ez a művelet az Azure Portal használatával hajtható végre. Néhány kattintás után ezt fogja látni a böngészőben:
 
@@ -23,7 +23,7 @@ Az Azure Container Instances segítségével egyszerűen hozhat létre és felü
 
 ## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
 
-Jelentkezzen be az Azure Portalra a http://portal.azure.com webhelyen.
+Jelentkezzen be az Azure Portalra a http://portal.azure.com címen.
 
 ## <a name="create-a-container-instance"></a>Tárolópéldány létrehozása
 

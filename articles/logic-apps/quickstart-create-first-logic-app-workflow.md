@@ -1,12 +1,12 @@
 ---
-title: "Az első automatizált munkafolyamat létrehozása – Azure Logic Apps | Microsoft Docs"
-description: "Ez a rövid útmutató azt ismerteti, hogyan automatizálhatja első munkafolyamatát az Azure Logic Apps használatával a rendszereket és felhőszolgáltatásokat integráló rendszer-integrációs és vállalati alkalmazásintegrációs (enterprise application integration, EAI) forgatókönyvekhez."
+title: Az első automatizált munkafolyamat létrehozása – Azure Logic Apps | Microsoft Docs
+description: Ez a rövid útmutató azt ismerteti, hogyan automatizálhatja első munkafolyamatát az Azure Logic Apps használatával a rendszereket és felhőszolgáltatásokat integráló rendszer-integrációs és vállalati alkalmazásintegrációs (enterprise application integration, EAI) forgatókönyvekhez.
 author: ecfan
 manager: anneta
-editor: 
+editor: ''
 services: logic-apps
-keywords: "munkafolyamatok, felhőszolgáltatások, rendszer-integráció, vállalati alkalmazásintegráció, EAI"
-documentationcenter: 
+keywords: munkafolyamatok, felhőszolgáltatások, rendszer-integráció, vállalati alkalmazásintegráció, EAI
+documentationcenter: ''
 ms.assetid: ce3582b5-9c58-4637-9379-75ff99878dcd
 ms.service: logic-apps
 ms.workload: na
@@ -16,11 +16,11 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 1/12/2018
 ms.author: LADocs; estfan
-ms.openlocfilehash: d382144c202b2b7f5623f2cca2a82c384387e8ca
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: ccd00fbb3c5dc0f78a31adcaed31bbe6e4a6e785
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="quickstart-build-your-first-logic-app-workflow---azure-portal"></a>Rövid útmutató: Az első logikaialkalmazás-munkafolyamat összeállítása – Azure Portal
 
@@ -60,6 +60,8 @@ Jelentkezzen be az <a href="https://portal.azure.com" target="_blank">Azure Port
    ![Üres logikaialkalmazás-sablon kiválasztása](./media/quickstart-create-first-logic-app-workflow/choose-logic-app-template.png)
 
 Ezután adjon hozzá egy [eseményindítót](../logic-apps/logic-apps-overview.md#logic-app-concepts), amely egy új RSS-hírcsatornaelem megjelenésekor aktiválódik. Mindegyik logikai alkalmazásnak egy eseményindítóval kell indulnia, amelyet egy adott esemény vagy adott feltételek teljesülése aktivál. A Logic Apps-motor az eseményindító minden elindulásakor létrehoz egy logikaialkalmazás-példányt, amely elindítja és futtatja a munkafolyamatot.
+
+<a name="add-rss-trigger"></a>
 
 ## <a name="check-rss-feed-with-a-trigger"></a>RSS-hírcsatorna ellenőrzése eseményindítóval
 
@@ -144,7 +146,7 @@ Adjunk meg egy olyan [műveletet](../logic-apps/logic-apps-overview.md#logic-app
       ![Tartalom hozzáadása e-mail törzséhez](./media/quickstart-create-first-logic-app-workflow/add-action-send-email-body.png)
 
       | Beállítás | Leírás | 
-      | ----- | ----------- | 
+      | ------- | ----------- | 
       | **Hírcsatorna címe** | Az elem címe | 
       | **Hírcsatorna közzétételének időpontja** | Az elem közzétételének dátuma és ideje | 
       | **Elsődleges hírcsatorna-hivatkozás** | Az elem URL-címe | 
@@ -156,15 +158,16 @@ A következő lépés a logikai alkalmazás tesztelése.
 
 ## <a name="run-your-logic-app"></a>A logikai alkalmazás futtatása
 
-A logikai alkalmazás manuális elindításához a tervező eszköztárán válassza a **Futtatás** elemet. Azt is megvárhatja, hogy sor kerüljön a logikai alkalmazás megadott ütemezés szerinti futtatására (percenként egyszer). Ha az RSS-hírcsatornában új elemek vannak, a logikai alkalmazás e-mailt küld minden új elemről. Ha a hírcsatornában nincsenek új elemek, a logikai alkalmazás nem aktiválja az eseményindítót, vár a következő esedékes időpontig, és újra elvégzi az ellenőrzést. 
+A logikai alkalmazás manuális elindításához a tervező eszköztárán válassza a **Futtatás** elemet. Azt is megvárhatja, hogy a logikai alkalmazás ellenőrizze az RSS-hírcsatornát a megadott ütemezés szerint (percenként egyszer). Ha az RSS-hírcsatornában új elemek vannak, a logikai alkalmazás e-mailt küld minden új elemről. Ha nincsenek, a logikai alkalmazás megvárja a következő esedékes időpontot, mielőtt újra elvégezné az ellenőrzést. 
 
-Példa a logikai alkalmazás által küldött e-mailekre:
+Példa a logikai alkalmazás által küldött e-mailekre. Ha nem kap e-mailt, ellenőrizze a levélszemét mappát.
 
 ![Az új RSS-hírcsatornaelemről küldött e-mail](./media/quickstart-create-first-logic-app-workflow/monitor-rss-feed-email.png)
 
-Ha nem kap e-mailt, ellenőrizze a levélszemét mappát. Előfordulhat, hogy az ilyen típusú levelek fennakadnak a levélszemétszűrőn. 
+A gyakorlatban ez úgy néz ki, hogy amikor a trigger ellenőrzi az RSS-hírcsatornát és új elemeket talál, akkor aktiválódik, és a Logic Apps-motor létrehozza a logikaialkalmazás-munkafolyamat egy példányát, amely futtatja a munkafolyamat részét képező műveleteket.
+Ha a trigger nem talál elemeket, akkor nem indul el, és „kihagyja” a munkafolyamat-példány létrehozását.
 
-Gratulálunk! Sikeresen felépítette és futtatta az első logikai alkalmazását.
+Gratulálunk! Sikeresen felépítette és futtatta az első logikai alkalmazását az Azure Portallal.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

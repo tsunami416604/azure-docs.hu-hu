@@ -1,43 +1,43 @@
 ---
-title: "Hogyan lehet lekérdezni az Azure Cosmos Adatbázisba Diagramadatok? | Microsoft Docs"
-description: "Ismerje meg, hogyan graph adatait az Azure Cosmos-Adatbázisba"
+title: Hogyan kérdezhetők le gráfadatok az Azure Cosmos DB-ben? | Microsoft Docs
+description: Megismerheti, hogyan kérdezhetők le gráfadatok az Azure Cosmos DB-ben
 services: cosmos-db
-documentationcenter: 
+documentationcenter: ''
 author: luisbosquez
 manager: jhubbard
-editor: 
-tags: 
+editor: ''
+tags: ''
 ms.assetid: 8bde5c80-581c-4f70-acb4-9578873c92fa
 ms.service: cosmos-db
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
-ms.workload: 
+ms.workload: ''
 ms.date: 01/02/2018
 ms.author: lbosq
 ms.custom: mvc
-ms.openlocfilehash: 5a635abfa9fa10cd8c8498e3c95a17af997cea3e
-ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
-ms.translationtype: MT
+ms.openlocfilehash: eb1da11c8b27a429ffcf9ea8fb50b6c7cee26ec0
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 03/16/2018
 ---
-# <a name="azure-cosmos-db-how-to-query-with-the-graph-api"></a>Azure Cosmos DB: Hogyan lehet lekérdezni a Graph API-t?
+# <a name="tutorial-query-azure-cosmos-db-graph-api-by-using-gremlin"></a>Oktatóanyag: Azure Cosmos DB Graph API lekérdezése a Gremlin használatával
 
-Az Azure Cosmos DB [Graph API](graph-introduction.md) támogatja [Gremlin](https://github.com/tinkerpop/gremlin/wiki) lekérdezések. Ez a cikk ismerteti a minta dokumentumok és lekérdezések az első lépésekhez. A részletes Gremlin hivatkozás megtalálható a [Gremlin támogatási](gremlin-support.md) cikk.
+Az Azure Cosmos DB [Graph API](graph-introduction.md) támogatja a [Gremlin](https://github.com/tinkerpop/gremlin/wiki)-lekérdezéseket. Ez a cikk mintadokumentumokat és -lekérdezéseket tartalmaz a kezdéshez. A [Gremlin-támogatási](gremlin-support.md) cikkben talál részletes Gremlin-referenciát.
 
-Ez a cikk ismerteti a következő feladatokat: 
+Ez a cikk a következő feladatokat mutatja be: 
 
 > [!div class="checklist"]
-> * Gremlin az adatok lekérdezése
+> * Adatok lekérdezése a Gremlin használatával
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A lekérdezések működéséhez kell rendelkezik Azure Cosmos DB fiókkal, és a tárolóban lévő adatok graph rendelkezik. Nem rendelkezik egyetlen, az? Fejezze be a [5 perces gyors üzembe helyezés](create-graph-dotnet.md) vagy a [fejlesztői útmutató](tutorial-query-graph.md) hozzon létre egy fiókot, és töltse fel az adatbázist. Használja a következő lekérdezéseket is futtathat a [Azure Cosmos DB .NET graph könyvtár](graph-sdk-dotnet.md), [Gremlin konzol](https://tinkerpop.apache.org/docs/current/reference/#gremlin-console), vagy a kedvenc Gremlin illesztőprogramot.
+A lekérdezések működéséhez Azure Cosmos DB-fiókkal kell rendelkeznie, és a tárolóban gráfadatoknak kell lennie. Nem rendelkezik ezekkel? A fiók létrehozásához és az adatbázis feltöltéséhez végezze el az [5 perces gyors útmutatót](create-graph-dotnet.md) vagy a [fejlesztői oktatóanyagot](tutorial-query-graph.md). A következő lekérdezéseket futtathatja az [Azure Cosmos DB .NET gráfkódtárával](graph-sdk-dotnet.md), a [Gremlin-konzollal](https://tinkerpop.apache.org/docs/current/reference/#gremlin-console) vagy a kedvenc Gremlin-illesztőjével.
 
-## <a name="count-vertices-in-the-graph"></a>A grafikonon száma csúcsban
+## <a name="count-vertices-in-the-graph"></a>Csúcspontok megszámlálása a gráfban
 
-A következő kódrészletet a grafikonon csúcsban számát mutatja be:
+A következő kódrészlet azt mutatja be, hogyan számlálható meg a csúcspontok száma a gráfban:
 
 ```
 g.V().count()
@@ -45,44 +45,44 @@ g.V().count()
 
 ## <a name="filters"></a>Szűrők
 
-Szűrők Gremlin tartozó használatával végezheti el `has` és `hasLabel` lépéseit, és egyesíthet használatával `and`, `or`, és `not` összetettebb szűrők létrehozásához. Azure Cosmos DB biztosít a csúcsban és gyors lekérdezések fok belül az összes tulajdonság séma-független indexelése:
+A Gremlin `has` és `hasLabel` lépéseivel végezhet szűrést, és az `and`, `or` és `not` operátorokkal kombinálva azokat összetettebb szűrőket hozhat létre. Az Azure Cosmos DB a csúcspontokon és fokokon belüli összes tulajdonság sémafüggetlen indexelését nyújtja a gyors lekérdezések érdekében:
 
 ```
 g.V().hasLabel('person').has('age', gt(40))
 ```
 
-## <a name="projection"></a>Leképezése
+## <a name="projection"></a>Vetület
 
-Kivetítheti az egyes tulajdonságok a lekérdezés eredményében használatával a `values` . lépés:
+A `values` lépéssel megkaphatja bizonyos tulajdonságok vetületét a lekérdezés eredményeiben:
 
 ```
 g.V().hasLabel('person').values('firstName')
 ```
 
-## <a name="find-related-edges-and-vertices"></a>Kapcsolódó szélek és csúcsban keresése
+## <a name="find-related-edges-and-vertices"></a>Kapcsolódó élek és csúcspontok keresése
 
-Eddig is csak láttuk lekérdezési operátorok, amelyek működnek a bármely adatbázis. Diagramok esetén gyors és hatékony átjárás műveleteihez kapcsolódó szélek és csúcsban keresse meg kell. Keressük Thomas összes barátok. Jelenleg ezt úgy teheti meg Gremlin `outE` keresheti meg az összes lépést a Thomas, majd a használatával Gremlin tartozó szegélyek a a-csúcsban bejárása a kimenő éleinek `inV` . lépés:
+Eddig csak minden adatbázisban működő lekérdezési operátorokat láttunk. A gráfok gyors és hatékony módjai az bejárási műveleteknek, amikor kapcsolódó élekhez vagy csúcspontokhoz kell navigálni. Keressük meg Thomas összes barátját. Ezt a Gremlin `outE` lépésével tesszük meg, hogy megtaláljuk Thomas összes külső élét, majd ezekről az élekről áthaladjunk a belső csúcspontokra a Gremlin `inV` lépésével:
 
 ```cs
 g.V('thomas').outE('knows').inV().hasLabel('person')
 ```
 
-A következő lekérdezés hajtja végre két ugrások található összes Thomas' "ismerősök olyan ismerőseinek", a függvény meghívásával `outE` és `inV` kétszer. 
+A következő lekérdezés két ugrást végez Thomas összes „barátja barátainak” megkereséséhez az `outE` és `inV` kétszeri hívásával. 
 
 ```cs
 g.V('thomas').outE('knows').inV().hasLabel('person').outE('knows').inV().hasLabel('person')
 ```
 
-Összetettebb lekérdezések létrehozhatja és hatékony graph átjárás logika Gremlin, beleértve a keverése szűrőkifejezéseket, ismétlési használatával végez használatával valósítja meg a `loop` lépés, és végrehajtási feltételes navigációs használ a `choose` lépés. További információ a teendők [Gremlin támogatási](gremlin-support.md)!
+A Gremlin használatával összetettebb lekérdezéseket hozhat létre és hatékony gráfbejárási logikákat implementálhat, beleértve a szűrőkifejezések keverését, a hurkolás elvégzését a `loop` lépéssel, valamint a feltételes navigáció implementálását a `choose` lépéssel. A [Gremlin-támogatás](gremlin-support.md) segítségével további lehetőségeket ismerhet meg.
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban ezt a következők:
+Ebben az oktatóanyagban a következőket hajtotta végre:
 
 > [!div class="checklist"]
-> * Megtudta, hogyan lekérdezés Graph használatával 
+> * Megismerte, hogyan végezhet lekérdezéseket a Graph használatával 
 
-Most már folytathatja a következő oktatóanyag megtudhatja, miként ossza el az adatokat globális.
+Továbbléphet a következő oktatóanyagra, amelyben megismerheti, hogyan terjesztheti az adatait globálisan.
 
 > [!div class="nextstepaction"]
-> [Az adatok globálisan terjesztése](tutorial-global-distribution-sql-api.md)
+> [Globális adatterjesztés](tutorial-global-distribution-sql-api.md)

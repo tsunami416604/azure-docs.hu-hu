@@ -10,11 +10,11 @@ ms.date: 12/15/2017
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 7b9f9f8295aac0920ae4726289c535aae12c4482
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 4d6dd0d46d909acfbfc04a23be74a571953ce660
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Az Azure IoT Edge gyakori problémái és azok megoldásai
 
@@ -30,10 +30,16 @@ Ha problémát tapasztal, a tárolónaplók és az eszközre küldött és az ar
    docker logs <container name>
    ```
 
-* Tekintse meg az Edge Hubon áthaladó üzeneteket, és az eszköztulajdonságok frissítéseiről gyűjtsön információt a futtatókörnyezet tárolóiból származó részletes naplókkal. Érdemes lehet hozzáadni a „--auto-cert-gen-force-no-passwords” lehetőséget, ha a rövid útmutatók cikkeit követi.
+* Tekintse meg az Edge Hubon áthaladó üzeneteket, és az eszköztulajdonságok frissítéseiről gyűjtsön információt a futtatókörnyezet tárolóiból származó részletes naplókkal.
 
    ```cmd
    iotedgectl setup --connection-string "{device connection string}" --runtime-log-level debug
+   ```
+   
+* Az iotedgectl-parancsokból származó részletes naplók megtekintése:
+
+   ```cmd
+   iotedgectl --verbose DEBUG <command>
    ```
 
 * Ha csatlakozási problémákba ütközik, vizsgálja meg a peremhálózati eszköz környezeti változóit, például az eszköz kapcsolati karakterláncát:

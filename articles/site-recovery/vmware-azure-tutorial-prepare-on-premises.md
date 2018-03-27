@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 03/08/2018
+ms.date: 03/15/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 07f62775c9286250d33635febe01dbad4362df12
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 6898f725d1d3cbf3f8d9d90faeafc13fbc8cb201
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="prepare-on-premises-vmware-servers-for-disaster-recovery-to-azure"></a>Helyszíni VMware-kiszolgálók előkészítése az Azure-ba irányuló vészhelyreállításához
 
@@ -59,34 +59,16 @@ A mobilitási szolgáltatásnak telepítve kell lennie a replikálni kívánt vi
 3. Ha Linux virtuális gépekre kíván telepíteni, készítsen elő egy rendszergazdai fiókot a Linux-forráskiszolgálón.
 
 
-## <a name="check-vmware-server-requirements"></a>A VMware-kiszolgáló követelményeinek ellenőrzése
+## <a name="check-vmware-requirements"></a>A VMware követelményeinek ellenőrzése
 
-Győződjön meg róla, hogy a VMware-kiszolgálók megfelelnek az alábbi követelményeknek.
+Győződjön meg róla, hogy a VMware-kiszolgálók és -virtuálisgépek megfelelnek az alábbi követelményeknek.
 
-**Összetevő** | **Követelmény**
---- | ---
-**vCenter server** | vCenter 6.5, 6.0 vagy 5.5
-**vSphere-gazdagép** | vSphere 6.5, 6.0, 5.5
+1. [Ellenőrizze](vmware-physical-azure-support-matrix.md#on-premises-virtualization-servers) a VMware-kiszolgáló követelményeit.
+2. Linux esetén [ellenőrizze](vmware-physical-azure-support-matrix.md#linux-file-systemsguest-storage) a fájlrendszerre és tárolásra vonatkozó követelményeket. 
+3. Ellenőrizze a helyszíni [hálózat](vmware-physical-azure-support-matrix.md#network) és [tárolás](vmware-physical-azure-support-matrix.md#storage) támogatását. 
+4. Ellenőrizze az Azure támogatott [hálózati](vmware-physical-azure-support-matrix.md#azure-vm-network-after-failover), [tárolási](vmware-physical-azure-support-matrix.md#azure-storage) és [számítási](vmware-physical-azure-support-matrix.md#azure-compute) lehetőségeit a feladatátvételt követően.
+5. Az Azure-ba replikált helyszíni virtuális gépeknek meg kell felelniük az [Azure virtuális gépekre vonatkozó feltételeinek](vmware-physical-azure-support-matrix.md#azure-vm-requirements).
 
-## <a name="check-vmware-vm-requirements"></a>A VMware virtuális gépek követelményeinek ellenőrzése
-
-Győződjön meg arról, hogy a virtuális gép megfelel az alábbi táblázatban összefoglalt Azure-követelményeknek.
-
-**Virtuális gép követelményei** | **Részletek**
---- | ---
-**Operációsrendszer-lemez mérete** | Legfeljebb 2048 GB-ig.
-**Operációsrendszer-lemezek száma** | 1
-**Adatlemezek száma** | 64 vagy kevesebb
-**Adatlemez virtuális merevlemezének mérete** | Legfeljebb 4095 GB-ig
-**Hálózati adapterek** | Több adapter támogatott
-**Megosztott VHD** | Nem támogatott
-**FC-lemez** | Nem támogatott
-**Merevlemez formátuma** | VHD vagy VHDX.<br/><br/> Bár a VHDX jelenleg nem támogatott az Azure-ban, a Site Recovery automatikusan átalakítja a VHDX-et VHD-re, amikor feladatátvételt hajt végre az Azure-ba. Amikor feladatátvételt hajt végre a helyszíni virtuális gépekre, használja továbbra is a VHDX formátumot.
-**Bitlocker** | Nem támogatott. Tiltsa le, mielőtt engedélyezi a virtuális gépek replikálását.
-**Virtuális gép neve** | 1 és 63 karakter között.<br/><br/> Csak betűket, számokat és kötőjelet tartalmazhat. A virtuális gép nevének betűvel vagy számmal kell kezdődnie és végződnie.
-**Virtuális gép típusa** | 1. generációs – Linux vagy Windows<br/><br/>2. generációs – csak Windows
-
-A virtuális gépen valamelyik támogatott operációs rendszernek is futnia kell. A támogatott verziók teljes listájához tekintse meg a [VMware és a fizikai kiszolgáló támogatási mátrixát](vmware-physical-azure-support-matrix.md#replicated-machines).
 
 ## <a name="prepare-to-connect-to-azure-vms-after-failover"></a>Felkészülés az Azure virtuális gépekhez való kapcsolódásra a feladatátvételt követően
 

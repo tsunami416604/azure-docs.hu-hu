@@ -1,6 +1,6 @@
 ---
-title: "Az Azure App Service Environment konfigurálása kényszerített bújtatáshoz"
-description: "Az App Service-környezet működtetése kimenő forgalom kényszerített bújtatása közben"
+title: Az Azure App Service Environment konfigurálása kényszerített bújtatáshoz
+description: Az App Service-környezet működtetése kimenő forgalom kényszerített bújtatása közben
 services: app-service
 documentationcenter: na
 author: ccompy
@@ -11,22 +11,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 11/10/2017
+ms.date: 3/6/2018
 ms.author: ccompy
 ms.custom: mvc
-ms.openlocfilehash: 4caaf0df3f1dd4b2cb9b76283a6beed897531c1c
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: 92073cd29f29c1ddf5863e23c4a12dfdf8e21598
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="configure-your-app-service-environment-with-forced-tunneling"></a>Az App Service-környezet konfigurálása kényszerített bújtatással
 
-Az App Service-környezet az Azure App Service üzemelő példánya az ügyfelek Azure Virtual Network-példányában. Számos ügyfél konfigurálja virtuális hálózatait VPN-ek vagy Azure ExpressRoute-kapcsolatok segítségével úgy, hogy azok a helyszíni hálózatok kiterjesztéseként működjenek. Vállalati szabályzatok vagy más biztonsági korlátozások miatt az útvonalakat úgy konfigurálják, hogy a helyszíni hálózatokba küldjék az összes kimenő forgalmat, mielőtt kijutna az internetre. Kényszerített bújtatásnak nevezzük a virtuális hálózat útválasztásának abból a célból történő megváltoztatását, hogy a virtuális hálózatból származó kimenő forgalom VPN-en vagy ExpressRoute-kapcsolaton keresztül érkezzen a helyszíni hálózatba. 
+Az App Service-környezet (ASE) az Azure App Service üzemelő példánya az ügyfelek Azure Virtual Network-hálózatában. Számos ügyfél konfigurálja az Azure-beli virtuális hálózatait VPN-ek vagy Azure ExpressRoute-kapcsolatok segítségével úgy, hogy azok a helyszíni hálózatok kiterjesztéseként működjenek. A kényszerített bújtatás átirányítja az internetre irányuló forgalmat a VPN-re vagy egy virtuális berendezésre. Ezt gyakran a biztonsági követelmények részeként végzik el minden kimenő forgalom vizsgálata és naplózása érdekében. 
 
-A kényszerített bújtatás problémát okozhat egy App Service-környezetnek. Az App Service-környezet több külső függőséggel rendelkezik, amelyek listáját megtalálhatja az [App Service-környezet hálózati architektúráját][network] ismertető dokumentumban. Az App Service-környezet alapértelmezése szerint minden kimenő kommunikációnak az App Service-környezet virtuális IP-címén kell keresztülmennie.
+Az ASE több külső függőséggel rendelkezik, amelyek leírását megtalálhatja az [App Service-környezet hálózati architektúráját][network] ismertető dokumentumban. Általában az ASE minden kimenő függőségének az ASE virtuális IP-címén kell keresztülmennie. Ha az alábbi információk felhasználása nélkül módosítja a forgalom útválasztását az ASE-re vagy az ASE-ről, az ASE működése leáll.
 
-Az útvonalak a kényszerített bújtatás és a kényszerített bújtatással folytatott munka kulcsfontosságú elemei. Egy Azure-beli virtuális hálózatban az útválasztás a leghosszabb előtag-megfeleltetés (LPM) alapján történik. Ha egynél több útvonal rendelkezik ugyanazzal az LPM megfeleltetéssel, akkor a rendszer az útvonalat a kiindulás alapján választja ki, az alábbi sorrendben:
+Egy Azure-beli virtuális hálózatban az útválasztás a leghosszabb előtag-megfeleltetés (LPM) alapján történik. Ha egynél több útvonal rendelkezik ugyanazzal az LPM megfeleltetéssel, akkor a rendszer az útvonalat a kiindulás alapján választja ki, az alábbi sorrendben:
 
 * Felhasználó által meghatározott útvonal (UDR)
 * BGP-útvonal (ExpressRoute használatánál)
@@ -34,80 +34,105 @@ Az útvonalak a kényszerített bújtatás és a kényszerített bújtatással f
 
 Ha többet szeretne megtudni a virtuális hálózatokban történő útválasztásról, olvassa el a [felhasználó által megadott útvonalakat és IP-továbbítást][routes] ismertető cikket. 
 
-Ha szeretné, hogy App Service-környezete kényszerített bújtatásos virtuális hálózatban működjön, két lehetősége van:
+Ha nem közvetlenül az internetre szeretné átirányítani a kimenő ASE-forgalmat, az alábbi lehetőségei vannak:
 
-* Engedélyezze a közvetlen internetelérést az App Service-környezet számára.
-* Módosítsa a kimenő forgalom végpontját az App Service-környezetben.
+* Közvetlen internetelérés engedélyezése az ASE számára
+* Az ASE alhálózat konfigurálása szolgáltatásvégpontok használatára az Azure SQL-hez és az Azure Storage szolgáltatáshoz
+* Saját IP-címek hozzáadása az ASE Azure SQL-tűzfalhoz
 
 ## <a name="enable-your-app-service-environment-to-have-direct-internet-access"></a>Közvetlen internetelérés engedélyezése az App Service-környezet számára
 
-Ahhoz, hogy az App Service-környezet ExpressRoute-kapcsolattal konfigurált virtuális hálózat esetében is működjön, a következőket teheti:
+Ha engedélyezni szeretné, hogy az ASE közvetlenül az internethez csatlakozzon akkor is, ha az Azure-beli virtuális hálózat ExpressRoute-tal van konfigurálva, a következőket teheti:
 
-* Konfigurálja az ExpressRoute-ot a 0.0.0.0/0 tartomány meghirdetésére. Ez alapértelmezés szerint kényszerített bújtatás mellett irányít minden kimenő forgalmat a helyszíni hálózatba.
-* Hozzon létre egy UDR-t. A 0.0.0.0/0 címelőtaggal és következő ugrási típusú internettel rendelkező App Service-környezetet tartalmazó alhálózat esetén alkalmazza.
+* Konfigurálja az ExpressRoute-ot a 0.0.0.0/0 tartomány meghirdetésére. Ez alapértelmezés szerint átirányít minden kimenő forgalmat a helyszíni hálózatba.
+* Hozzon létre egy UDR-t a 0.0.0.0/0 címelőtaggal és következő ugrási típusú internettel, és alkalmazza azt az ASE-alhálózatra.
 
-Ha végrehajtja ezt a két módosítást, az App Service-környezet alhálózatából származó, internetre küldött forgalom nem lesz rákényszerítve az ExpressRoute-kapcsolatra, és az App Service-környezet működni fog.
+Ha végrehajtja ezt a két módosítást, az App Service-környezet alhálózatából származó, internetre küldött forgalom nem lesz rákényszerítve az ExpressRoute-kapcsolatra.
 
 > [!IMPORTANT]
 > Az UDR-ben meghatározott útvonalaknak annyira pontosnak kell lenniük, hogy prioritást kapjanak az ExpressRoute-konfiguráció által meghirdetett bármely útvonallal szemben. Az előző példa a széles 0.0.0.0/0 címtartományt használja. Ezt véletlenül felülírhatják olyan útvonalhirdetések, amelyek pontosabb címtartományokat használnak.
 >
-> Az App Service-környezetek nem támogatottak olyan ExpressRoute-konfigurációk esetén, amelyek keresztbe hirdetnek útvonalakat a nyilvános társviszony-létesítési útvonalról a privát társviszony-létesítési útvonalra. A konfigurált nyilvános társviszonyt létesítő ExpressRoute-konfigurációk útvonalhirdetéseket kapnak a Microsofttól. A meghirdetések Microsoft Azure IP-címtartományok nagy készletét tartalmazzák. Ha a címtartományokat keresztbe hirdetik a privát társviszony-létesítési útvonalon, az összes, az App Service-környezet alhálózatából származó kimenő hálózati csomag kényszerített bújtatással kerül az ügyfél helyszíni hálózati infrastruktúrájába. Az App Service-környezetek jelenleg alapértelmezés szerint nem támogatják ezt a hálózati kialakítást. Egy megoldás erre a problémára az, ha leállítja az útvonalak keresztbe hirdetését a nyilvános társviszony-létesítési útvonalról a privát társviszony-létesítési útvonalra. Egy másik megoldás az, ha lehetővé teszi az App Service-környezet működését kényszerített bújtatásos konfigurációban.
+> Az App Service-környezetek nem támogatottak olyan ExpressRoute-konfigurációk esetén, amelyek keresztbe hirdetnek útvonalakat a nyilvános társviszony-létesítési útvonalról a privát társviszony-létesítési útvonalra. A konfigurált nyilvános társviszonyt létesítő ExpressRoute-konfigurációk útvonalhirdetéseket kapnak a Microsofttól. A meghirdetések Microsoft Azure-címtartományok nagy készletét tartalmazzák. Ha a címtartományokat keresztbe hirdetik a privát társviszony-létesítési útvonalon, az összes, az App Service-környezet alhálózatából származó kimenő hálózati csomag átirányítással kerül az ügyfél helyszíni hálózati infrastruktúrájába. Az App Service-környezetek alapértelmezés szerint nem támogatják ezt a hálózati kialakítást. Egy megoldás erre a problémára az, ha leállítja az útvonalak keresztbe hirdetését a nyilvános társviszony-létesítési útvonalról a privát társviszony-létesítési útvonalra. Egy másik megoldás az, ha lehetővé teszi az App Service-környezet működését kényszerített bújtatásos konfigurációban.
 
-## <a name="change-the-egress-endpoint-for-your-app-service-environment"></a>A kimenő forgalom végpontjának módosítása az App Service-környezetben ##
+![Közvetlen internet-hozzáférés][1]
 
-Ez a szakasz azt ismerteti, hogyan teheti lehetővé az App Service-környezet működését kényszerített bújtatásos konfigurációban a kimenő forgalom App Service-környezet által használt végpontjának módosításával. Ha az App Service-környezet kimenő forgalma kényszerített bújtatással jut el egy helyszíni hálózatba, engedélyeznie kell a forgalom számára, hogy az App Service-környezet virtuális IP-címén kívüli más IP-címekből származzon.
+## <a name="configure-your-ase-with-service-endpoints"></a>Az ASE konfigurálása szolgáltatásvégpontokkal
 
-Egy App Service-környezet nemcsak külső függőségekkel rendelkezik, hanem a bejövő forgalomra is figyelnie és reagálnia kell. A válaszok nem küldhetők vissza másik címről, mivel ez a TCP szabályainak megsértését eredményezi. Három lépés szükséges a kimenő forgalom végpontjának módosításához az App Service-környezetben:
+Ha az Azure SQL és az Azure Storage felé irányuló forgalmon kívül az ASE összes kimenő forgalmát át szeretné irányítani, végezze el a következő lépéseket:
 
-1. Állítson be egy útválasztási táblázatot annak biztosítására, hogy a bejövő kezelési forgalom ugyanarról az IP-címről mehessen vissza.
+1. Hozzon létre egy útválasztási táblázatot, és rendelje hozzá az ASE-alhálózathoz. Keresse meg a régiójának megfelelő címeket az [App Service-környezet kezelési címeit][management] ismertető szakaszban. Hozzon létre útvonalakat ezekhez a címekhez egy következő ugrási típusú internettel. Erre azért van szükség, mert az App Service-környezet bejövő felügyeleti forgalmának ugyanarról a címről kell válaszolnia, amelyre küldték.   
 
-2. Adja hozzá az App Service-környezet tűzfalához azokat az IP-címeket, amelyeket a kimenő forgalom használni fog.
+2. Szolgáltatásvégpontok engedélyezése az Azure SQL-hez és az Azure Storage szolgáltatáshoz az ASE-alhálózattal
 
-3. Állítsa be az útvonalakat a bújtatni kívánt App Service-környezet kimenő forgalmára.
+A szolgáltatásvégpontokkal Azure-beli virtuális hálózatok és alhálózatok készletére korlátozhatja a több-bérlős szolgáltatásokhoz való hozzáférést. A szolgáltatásvégpontokról bővebben a [virtuális hálózatok szolgáltatásvégpontjaival][serviceendpoints] kapcsolatos dokumentációban olvashat. 
 
-   ![Hálózati forgalom kényszerített bújtatása][1]
+Amikor engedélyezi a szolgáltatásvégpontokat egy erőforráson, az összes többi útvonalhoz képest nagyobb prioritású útvonalak jönnek létre. Ha kényszerítetten bújtatott ASE-vel használ szolgáltatásvégpontokat, az Azure SQL és az Azure Storage felügyeleti forgalma nem kényszerítetten bújtatott. Az ASE többi függőségi forgalma kényszerítetten bújtatott, és nem veszhet el, különben az ASE nem működik megfelelően.
 
-Miután az App Service-környezet elindult és működik, konfigurálhatja más kimenő forgalmi címekkel, vagy beállíthatja azokat az App Service-környezet üzembe helyezésekor.
+Amikor a szolgáltatásvégpontok engedélyezettek egy Azure SQL-példánnyal rendelkező alhálózaton, akkor az erről az alhálózatról elért összes Azure SQL-példányhoz engedélyezve kell lennie a szolgáltatásvégpontoknak. Ha több Azure SQL-példányt szeretne elérni ugyanarról az alhálózatról, nem engedélyezheti a szolgáltatásvégpontokat csak az egyik Azure SQL-példányon, egy másikon pedig nem.  Az Azure Storage nem úgy viselkedik, mint az Azure SQL.  Amikor az Azure Storage szolgáltatáshoz engedélyezi a szolgáltatásvégpontokat, azzal zárolja az erőforráshoz való hozzáférést az alhálózatról, de továbbra is elérhet más Azure Storage-fiókokat, még akkor is, ha azokon nincsenek engedélyezve a szolgáltatásvégpontok.  
 
-### <a name="change-the-egress-address-after-the-app-service-environment-is-operational"></a>A kimenő forgalom címének módosítása működő App Service-környezetben ###
-1. Válassza ki az App Service-környezetben a kimenő forgalom IP-címeiként használni kívánt IP-címeket. Ha kényszerített bújtatást végez, ezek a címek a NAT-okból vagy az átjárók IP-címeiből származnak. Ha az App Service-környezet kimenő forgalmát egy hálózati virtuális berendezésen keresztül szeretné vezetni, a kimenő forgalom címe a hálózati virtuális berendezés nyilvános IP-címe lesz.
+Ha kényszerített bújtatást konfigurál egy hálózatszűrő berendezéssel, akkor ne feledje, hogy az ASE az Azure SQL és az Azure Storage mellett egyéb függőségekkel is rendelkezik. Engedélyeznie kell ezt a forgalmat, különben az ASE nem fog megfelelően működni.
 
-2. Állítsa be a kimenő forgalom címeit az App Service-környezet konfigurációs adatai között. Látogasson el a resource.azure.com webhelyre, és váltson a következő elérési útra: Subscription/<subscription id>/resourceGroups/<ase resource group>/providers/Microsoft.Web/hostingEnvironments/<ase name>. Itt láthatja az App Service-környezetet leíró JSON-t. Győződjön meg arról, hogy a lap tetején ott az **olvasás/írás** felirat. Válassza a **Szerkesztés** elemet. Görgessen le a lap aljáig, és módosítsa a **userWhitelistedIpRanges** beállítást **null** értékről az alábbihoz hasonlóra. Használja azokat a címeket, amelyeket a kimenő forgalom címtartományának kíván beállítani. 
+![Kényszerített bújtatás szolgáltatásvégpontokkal][2]
+
+## <a name="add-your-own-ips-to-the-ase-azure-sql-firewall"></a>Saját IP-címek hozzáadása az ASE Azure SQL-tűzfalhoz ##
+
+Ha az Azure Storage felé irányuló forgalmon kívül bújtatni szeretné az ASE összes kimenő forgalmát, végezze el a következő lépéseket:
+
+1. Hozzon létre egy útválasztási táblázatot, és rendelje hozzá az ASE-alhálózathoz. Keresse meg a régiójának megfelelő címeket az [App Service-környezet kezelési címeit][management] ismertető szakaszban. Hozzon létre útvonalakat ezekhez a címekhez egy következő ugrási típusú internettel. Erre azért van szükség, mert az App Service-környezet bejövő felügyeleti forgalmának ugyanarról a címről kell válaszolnia, amelyre küldték. 
+
+2. Szolgáltatásvégpontok engedélyezése az Azure Storage szolgáltatáshoz az ASE alhálózattal
+
+3. Szerezze be az App Service-környezetből az internetre irányuló összes kimenő forgalomhoz használt címeket. Ha a helyszínen irányítja át a forgalmat, ezek a címek a NAT-ok és az átjárók IP-címei. Ha az App Service-környezet kimenő forgalmát egy hálózati virtuális berendezésen keresztül szeretné vezetni, a kimenő forgalom címe a hálózati virtuális berendezés nyilvános IP-címe lesz.
+
+4. _Kimenő forgalom címeinek beállítása meglévő App Service-környezetben:_ Látogasson el a resource.azure.com webhelyre, és váltson a következő elérési útra: Subscription/<subscription id>/resourceGroups/<ase resource group>/providers/Microsoft.Web/hostingEnvironments/<ase name>. Itt láthatja az App Service-környezetet leíró JSON-t. Győződjön meg arról, hogy a lap tetején ott az **olvasás/írás** felirat. Válassza a **Szerkesztés** elemet. Görgessen le a lap aljáig. Módosítsa a **userWhitelistedIpRanges** beállítást **null** értékről az alábbihoz hasonlóra. Használja azokat a címeket, amelyeket a kimenő forgalom címtartományának kíván beállítani. 
 
         "userWhitelistedIpRanges": ["11.22.33.44/32", "55.66.77.0/24"] 
 
    A lap tetején kattintson a **PUT** elemre. Ez a lehetőség aktivál egy méretezési műveletet az App Service-környezetben, és beállítja a tűzfalat.
- 
-3. Hozzon létre vagy szerkesszen egy útválasztási táblázatot, és töltse fel értékekkel a szabályokat úgy, hogy biztosítsa a hozzáférést az App Service-környezet helyére leképeződő kezelési címekhez és kezelési címekből. A kezelési címek megtalálásához olvassa el az [App Service-környezet kezelési címeit][management] ismertető szakaszt.
 
-4. Állítsa be az App Service-környezet alhálózatában alkalmazott útvonalakat útválasztási táblázat vagy BGP-útvonalak segítségével. 
+_Az ASE létrehozása a kimenő forgalmi címekkel_: Kövesse az [App Service-környezet sablonnal történő létrehozását][template] ismertető cikk utasításait, és kérje le a megfelelő sablont.  Szerkessze az azuredeploy.json fájl „resources” (erőforrások) szakaszát, de a „properties” (tulajdonságok) blokkot ne, és a **userWhitelistedIpRanges** értékhez adjon hozzá egy sort a saját értékeivel.
 
-Ha az App Service-környezet nem válaszol a portálon, hibásak lehetnek a módosítások. Lehetséges problémák: a kimenő forgalom címeinek listája nem teljes, a forgalom elveszett vagy blokkolva van. 
+    "resources": [
+      {
+        "apiVersion": "2015-08-01",
+        "type": "Microsoft.Web/hostingEnvironments",
+        "name": "[parameters('aseName')]",
+        "kind": "ASEV2",
+        "location": "[parameters('aseLocation')]",
+        "properties": {
+          "name": "[parameters('aseName')]",
+          "location": "[parameters('aseLocation')]",
+          "ipSslAddressCount": 0,
+          "internalLoadBalancingMode": "[parameters('internalLoadBalancingMode')]",
+          "dnsSuffix" : "[parameters('dnsSuffix')]",
+          "virtualNetwork": {
+            "Id": "[parameters('existingVnetResourceId')]",
+            "Subnet": "[parameters('subnetName')]"
+          },
+        "userWhitelistedIpRanges":  ["11.22.33.44/32", "55.66.77.0/30"]
+        }
+      }
+    ]
 
-### <a name="create-a-new-app-service-environment-with-a-different-egress-address"></a>Új App Service-környezet létrehozása más kimenő forgalmi címmel ###
+Ezek a változások közvetlenül az Azure Storage felé küldik a forgalmat az ASE-ből, továbbá az ASE virtuális IP-címétől eltérő további címekről is engedélyezik az Azure SQL elérését.
 
-Ha már konfigurálta virtuális hálózatát az összes forgalom kényszerített bújtatására, további lépéseket kell tennie az App Service-környezet létrehozásához, hogy az sikeresen elindulhasson. Az App Service-környezet létrehozása közben engedélyeznie kell egy másik kimenő forgalmi végpont használatát. Ehhez az App Service-környezetet egy sablon alapján kell létrehoznia, amely meghatározza az engedélyezett kimenő forgalmi címeket.
+   ![Kényszerített bújtatás SQL engedélyezési listával][3]
 
-1. Válassza ki azokat az IP-címeket, amelyeket az App Service-környezetben a kimenő forgalom címeiként használni fog.
+## <a name="preventing-issues"></a>Hibák megelőzése ##
 
-2. Hozza létre előre azt az alhálózatot, amelyet az App Service-környezet használni fog. Szüksége lesz rá az útvonalak beállításához, és a sablonhoz is szükséges.
+Ha megszakad a kommunikáció az ASE és annak függőségeit között, az ASE sérült állapotba kerül.  Ha túl sokáig marad sérült, akkor az ASE fel lesz függesztve. Az ASE felfüggesztésének megszüntetéséhez kövesse az ASE portál utasításait.
 
-3. Hozzon létre egy útválasztási táblázatot az App Service-környezet helyére leképeződő kezelési IP-címekkel. Rendelje hozzá az App Service-környezethez.
-
-4. Kövesse az [App Service-környezet sablonnal történő létrehozását][template] ismertető cikk utasításait. Kérje le a megfelelő sablont.
-
-5. Szerkessze a „resources” (erőforrások) szakaszt az azuredeploy.json fájlban. Szúrjon be egy sort az **userWhitelistedIpRanges** paraméterrel és a saját értékeivel, az alábbiak szerint:
-
-       "userWhitelistedIpRanges":  ["11.22.33.44/32", "55.66.77.0/30"]
-
-Ha megfelelően konfigurálta ezt a szakaszt, az App Service-környezetnek problémamentesen el kell indulnia. 
+A kommunikáció egyszerű megszakítása mellett a túl sok késés bevezetésével kedvezőtlen hatással lehet az ASE-re. Túl sok késés léphet fel, ha az ASE túl messze van a helyszíni hálózattól.  Túl messze van például, ha át kell szelni egy óceánt vagy egy kontinenst a helyszíni hálózat eléréséhez. Késés az intranetes torlódás vagy a kimenő sávszélesség korlátozásai miatt is előfordulhat.
 
 
 <!--IMAGES-->
-[1]: ./media/forced-tunnel-support/forced-tunnel-flow.png
+[1]: ./media/forced-tunnel-support/asedependencies.png
+[2]: ./media/forced-tunnel-support/forcedtunnelserviceendpoint.png
+[3]: ./media/forced-tunnel-support/forcedtunnelexceptstorage.png
 
 <!--Links-->
 [management]: ./management-addresses.md
 [network]: ./network-info.md
 [routes]: ../../virtual-network/virtual-networks-udr-overview.md
 [template]: ./create-from-template.md
+[serviceendpoints]: ../../virtual-network/virtual-network-service-endpoints-overview.md
