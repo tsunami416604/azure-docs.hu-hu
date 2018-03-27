@@ -3,108 +3,139 @@ title: Modell-létrehozási útmutató az Azure Machine Learning-szolgáltatáso
 description: Ez a részletes oktatóanyag bemutatja, hogyan használhatók ki teljeskörűen az (előzetes verziójú) Azure Machine Learning-szolgáltatások. Ez a 2. rész, amely a kísérletezést ismerteti.
 services: machine-learning
 author: hning86
-ms.author: haining, j-martens
+ms.author: haining
 manager: mwinkle
-ms.reviewer: jmartens, jasonwhowell, mldocs, gcampanella
+ms.reviewer: jmartens
 ms.service: machine-learning
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 3/7/2018
-ms.openlocfilehash: 3e7f1b25757dc627f0f42a34c1a42b2d421c06c9
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.date: 3/15/2018
+ms.openlocfilehash: e4fc13e88d56677687e0f97d156f9b7761eae1d8
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/16/2018
 ---
-# <a name="tutorial-classify-iris-part-2---build-a-model"></a>Oktatóanyag: Írisz osztályozása, 2. rész – Modell létrehozása
-Az Azure Machine Learning-szolgáltatások (előzetes verzió) az adatszakértők számára az adatok előkészítéséhez, a kísérletek kidolgozásához és a modellek felhőszinten való üzembe helyezéséhez létrehozott átfogó, integrált és fejlett adatelemzési megoldást kínálnak.
+# <a name="tutorial-2-classify-iris---build-a-model"></a>2. oktatóanyag – Írisz osztályozása: Modell létrehozása
+Az (előzetes verziójú) Azure Machine Learning-szolgáltatások az adatszakértők számára készült, az adatok előkészítéséhez, a kísérletek kidolgozásához és a modellek felhőszinten való üzembe helyezéséhez létrehozott integrált és fejlett adatelemzési megoldások.
 
-Ez az oktatóanyag **egy háromrészes sorozat második része**. Az oktatóanyagnak ebben a részében az Azure Machine Learning-szolgáltatások (előzetes verzió) segítségével a következőket hajtja végre:
+Ez az oktatóanyag **egy háromrészes sorozat második része**. Az oktatóanyagnak ebben a részében az Azure Machine Learning-szolgáltatások segítségével a következőket hajtja végre:
 
 > [!div class="checklist"]
-> * Az Azure Machine Learning Workbench használata.
-> * Szkriptek megnyitása és kód áttekintése.
-> * Szkriptek végrehajtása helyi környezetben.
-> * A futtatási előzmények megtekintése.
-> * Szkriptek végrehajtása helyi Docker-környezetben.
-> * Szkriptek végrehajtása helyi Azure CLI-ablakban.
-> * Szkriptek végrehajtása távoli Docker-környezetben.
-> * Szkriptek végrehajtása a felhőalapú Azure HDInsight-környezetben.
+> * Szkriptek megnyitása és kód áttekintése
+> * Szkriptek végrehajtása helyi környezetben
+> * Futtatási előzmények áttekintése
+> * Szkriptek végrehajtása helyi Azure CLI ablakban
+> * Szkriptek végrehajtása helyi Docker-környezetben
+> * Szkriptek végrehajtása távoli Docker-környezetben
+> * Szkriptek végrehajtása a felhőalapú Azure HDInsight-környezetben
 
-Az oktatóanyag a jól ismert [Iris flower adatkészletet](https://en.wikipedia.org/wiki/Iris_flower_data_set) használja. A képernyőképek Windows-specifikusak, de a macOS rendszeren szinte azonos a felhasználói élmény.
-
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+Az oktatóanyag a jól ismert [Iris flower adatkészletet](https://en.wikipedia.org/wiki/Iris_flower_data_set) használja. 
 
 ## <a name="prerequisites"></a>Előfeltételek
-Végezze el az oktatóanyag első részét. Mielőtt belekezdene az oktatóanyag végrehajtásába, kövesse az [Adatok előkészítése útmutató](tutorial-classifying-iris-part-1.md) lépéseit Azure Machine Learning-erőforrások létrehozásához és az Azure Machine Learning Workbench alkalmazás telepítéséhez.
 
-Opcionálisan kísérletezhet a szkriptek helyi Docker-tárolón történő futtatásával is. Ehhez telepíteni kell egy Docker-motort (a Community Edition is megfelelő), és azt helyileg el kell indítania Windows vagy macOS rendszerű gépén. A Docker telepítésével kapcsolatban további információkért tekintse át [a Docker telepítési utasításait](https://docs.docker.com/engine/installation/).
-
-Ha kísérletezni kíván a szkriptek távoli Azure-beli virtuális gépen található Docker-tárolókon vagy Azure HDInsight Spark-fürtön történő futtatásával, kövesse az [Ubuntu-alapú Azure-os adatelemzési virtuális gép vagy HDInsight-fürt létrehozására vonatkozó utasításokat](how-to-create-dsvm-hdi.md).
+Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
+- Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt. 
+- Az ebben a [rövid útmutatóban](quickstart-installation.md) ismertetett kísérletezési fiók és telepített Azure Machine Learning Workbench.
+- Az [oktatóanyag 1. részében](tutorial-classifying-iris-part-1.md) szereplő projekt és előkészített Iris-adatok.
+- Egy helyben telepített és futtatott Docker-motor. A Docker Community Edition változata is megfelel. A Docker telepítésének módjáról lásd: https://docs.docker.com/engine/installation/.
 
 ## <a name="review-irissklearnpy-and-the-configuration-files"></a>Az iris_sklearn.py és a konfigurációs fájlok áttekintése
-1. Indítsa el az Azure Machine Learning Workbench alkalmazást, és nyissa meg az oktatóanyag előző részében létrehozott **myIris** projektet.
 
-2. A projekt megnyitása után a bal szélső ablaktáblán kattintson a **Fájlok** gombra (mappa ikon) a projektmappa fájllistájának megnyitásához.
+1. Indítsa el az Azure Machine Learning Workbench alkalmazást.
 
-3. Válassza ki az **iris_sklearn.py** fájlt. A Workbench alkalmazásban egy új szövegszerkesztő lapon megnyílik a Python-kód.
+1. Nyissa meg az [oktatóanyag-sorozat 1. részében](tutorial-classifying-iris-part-1.md) létrehozott **myIris** projektet.
 
-   ![Fájl megnyitása](media/tutorial-classifying-iris/open_iris_sklearn.png)
+2. A megnyitott projektben a bal szélső ablaktáblán kattintson a **Fájlok** gombra (mappa ikon) a projektmappa fájllistájának megnyitásához.
+
+   ![Az Azure Machine Learning Workbench-projekt megnyitása](media/tutorial-classifying-iris/2-project-open.png)
+
+3. Válassza ki az **iris_sklearn.py** Python-szkriptfájlt. 
+
+   ![Szkript kiválasztása](media/tutorial-classifying-iris/2-choose-iris_sklearn.png)
+
+   A Workbench alkalmazásban egy új szövegszerkesztő lapon megnyílik a kód. Ez az a szkript, amelyet az oktatóanyag jelen szakaszában használni fog. 
 
    >[!NOTE]
    >Lehet, hogy a megjelenő kód nem egyezik a fenti kóddal, mivel a mintaprojekt rendszeresen frissül.
+   
+   ![Fájl megnyitása](media/tutorial-classifying-iris/open_iris_sklearn.png)
 
-4. Tekintse át a Python-szkriptkódot, hogy megismerkedjen a kódolási stílussal. A szkript a következő feladatokat hajtja végre:
+4. Vizsgálja meg közelebbről a Python-szkriptkódot, hogy megismerkedjen a kódolási stílussal. 
 
-   - Betölti az **iris.dprep** adatelőkészítési csomagot, és létrehoz egy [pandas DataFrame](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html)-et. 
+   Az **iris_sklearn.py** szkript a következő feladatokat hajtja végre:
 
-        >[!NOTE]
-        >Használja a mintaprojekthez mellékelt `iris.dprep` adatelőkészítési csomagot. Ez ugyanaz, mint az oktatóanyag 1. részében létrehozott `iris-1.dprep` fájl.
+   * Betölti az alapértelmezett **iris.dprep** adatelőkészítési csomagot, és létrehoz egy [pandas DataFrame](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html)-et. 
 
-   - Véletlenszerű funkciókat ad hozzá, hogy nehezítse a probléma megoldását. A véletlenszerűségre azért van szükség, mert az Iris egy kisméretű adatkészlet, amely könnyedén osztályozható közel 100%-os pontossággal.
+   * Véletlenszerű funkciókat ad hozzá, hogy nehezítse a probléma megoldását. A véletlenszerűségre azért van szükség, mert az Iris egy kisméretű adatkészlet, amely könnyedén osztályozható közel 100%-os pontossággal.
 
-   - Létrehoz egy logisztikai regressziós modellt a [scikit-learn](http://scikit-learn.org/stable/index.html) Machine Learning-kódtár használatával. 
+   * Létrehoz egy logisztikai regressziós modellt a [scikit-learn](http://scikit-learn.org/stable/index.html) Machine Learning-kódtár használatával.  Ez a kódtár jár az Azure Machine Learning Workbench mellé.
 
-   - A [pickle](https://docs.python.org/3/library/pickle.html) kódtár segítségével szerializálja a modellt egy fájlba, az `outputs` mappába. Ezt követően a szkript betölti azt, és deszerializálja a memóriába.
+   * A [pickle](https://docs.python.org/3/library/pickle.html) kódtár segítségével szerializálja a modellt egy fájlba, az `outputs` mappába. 
+   
+   * Betölti a szerializált modellt, majd deszerializálja a memóriába.
 
-   - A deszerializált modell segítségével előrejelzést végez egy új rekordon. 
+   * A deszerializált modell segítségével előrejelzést végez egy új rekordon. 
 
-   - A [matplotlib](https://matplotlib.org/) kódtár segítségével megjelenít két gráfot (egy keveredési mátrixot és egy többcsoportos ROC-görbét), majd menti őket az `outputs` mappába.
+   * A [matplotlib](https://matplotlib.org/) kódtár segítségével megjelenít két gráfot (egy keveredési mátrixot és egy többcsoportos ROC-görbét), majd menti őket az `outputs` mappába. Ezt a kódtárat, ha még nem telepítette, telepítheti a környezetében.
 
-   - A folyamat során a `run_logger` objektumot használja a regularizációs arány rögzítésére és a pontosság modellezésére a naplókban. Ezek az értékek automatikusan megjelennek a futtatási előzményekben.
+   * Automatikusan megjeleníti a szabályozási arányt és a modell pontosságát a futtatási előzményekben. A folyamat során a `run_logger` objektumot használja a regularizációs arány rögzítésére és a pontosság modellezésére a naplókban. 
 
 
-## <a name="execute-irissklearnpy-script-in-a-local-environment"></a>Az iris_sklearn.py szkript végrehajtása helyi környezetben
+## <a name="run-irissklearnpy-in-your-local-environment"></a>Az iris_sklearn.py futtatása a helyi környezetben
 
-Készüljünk fel az **iris_sklearn.py** szkript első futtatására. A szkriptnek szüksége van a **scikit-learn** és a **matplotlib** csomagra. Az Azure Machine Learning Workbench már telepítette a **scikit-learn** csomagot. A **matplotlib** csomagot azonban még telepíteni kell. 
+1. Az Azure Machine Learning parancssori felületének (CLI) elindítása:
+   1. Indítsa el az Azure Machine Learning Workbenchet.
 
-1. A parancssor megnyitásához kattintson a **Fájl** menüre, majd a **Parancssor megnyitása** elemre az Azure Machine Learning Workbench alkalmazásban. Ezt a parancssori felületi ablakot az *Azure Machine Learning Workbench parancssori felület ablakának*, vagy röviden *CLI-ablaknak* nevezzük.
+   1. A Workbench menüben válassza a **Fájl** > **Parancssor megnyitása** elemet. 
+   
+   Az Azure Machine Learning parancssori felületének (CLI) ablaka Windows rendszeren a `C:\Temp\myIris\>` projektmappában indul. Ez az oktatóanyag 1. részében létrehozott projekt.
 
-2. A **matplotlib** Python-csomag telepítéséhez írja be a következő parancsot a CLI-ablakba. Ennek végrehajtása kevesebb mint egy percet vesz igénybe.
+   >[!IMPORTANT]
+   >A következő lépéseket ezzel a parancssori felülettel kell elvégeznie.
+
+1. A parancssori felület ablakában telepítse a **matplotlib** nevű Python megjelenítési kódtárat, ha még nincs telepítve.
+
+   Az **iris_sklearn.py** szkript két Python-csomagban rendelkezik függőségekkel, amelyek a **scikit-learn** és a **matplotlib**.  Az Azure Machine Learning Workbench a kényelmes használat érdekében magától telepíti a **scikit-learn** csomagot, de a **matplotlib** csomagot is telepítenie kell, ha még nincs telepítve.
+
+   Ha a **matplotlib** telepítése nélkül folytatja, a jelen oktatóanyagban szereplő kód továbbra is sikeresen futtatható, de nem lesz képes létrehozni a keveredési mátrix kimenetét és a többcsoportos ROC-görbét az előzménymegjelenítésekben láthatóak szerint.
 
    ```azurecli
    pip install matplotlib
    ```
 
-   >[!NOTE]
-   >Ha nem hajtja végre az előző `pip install` parancsot, az `iris_sklearn.py` kódja sikeresen végig fog futni. Amennyiben csak az `iris_sklearn.py` parancsot futtatja, a kód nem ugyanúgy hozza létre a keveredési mátrix kimenetét és a többcsoportos ROC-görbét, ahogyan az az előzménymegjelenítésekben látható.
+   A telepítése körülbelül egy percig tart.
 
-3. Térjen vissza a Workbench alkalmazás ablakába. 
+1. Térjen vissza a Workbench alkalmazásba. 
 
-4. Az **iris_sklearn.py** lap tetején található eszköztárban válassza a **local** végrehajtási környezetet, és az `iris_sklearn.py` szkriptet a végrehajtáshoz.
+1. Keresse meg az **iris_sklearn.py** nevű lapot. 
 
-5. Ezután az eszköztár jobb oldalán adja meg a `0.01` értéket az **Argumentumok** mezőben. Ez az érték megfelel a logisztikai regressziós modell regularizációs arányának.
+   ![Lap megkeresése szkripttel](media/tutorial-classifying-iris/2-iris_sklearn-tab.png)
 
-   ![Futtatás vezérlése](media/tutorial-classifying-iris/run_control.png)
+1. A lap tetején található eszköztárban válassza a **local** végrehajtási környezetet és az `iris_sklearn.py` szkriptet a végrehajtáshoz. Előfordulhat, hogy már ki vannak választva.
 
-6. Kattintson a **Futtatás** gombra. Azonnal be lesz ütemezve egy feladat. A feladat megjelenik a Workbench-ablak jobb oldalán található **Feladatok** panelen. 
+   ![Local és szkript kiválasztása](media/tutorial-classifying-iris/2-local-script.png)
 
-7. A feladat állapota pár pillanat múlva **Elküldés** értékről **Fut** értékre, végül **Befejezve** értékre vált.
+1. Az eszköztár jobb oldalán adja meg a `0.01` értéket az **Argumentumok** mezőben. 
 
-   ![Az sklearn futtatása](media/tutorial-classifying-iris/run_sklearn.png)
+   Ez az érték megfelel a logisztikai regressziós modell regularizációs arányának.
 
-8. Válassza ki a **Befejezve** elemet a **Feladatok** panel állapotszöveg részén. Megnyílik egy előugró ablak az aktuális futtatás standard kimenetre (stdout) küldött szövegével. Az stdout szöveg bezárásához kattintson az előugró ablak jobb felső sarkában található **Bezárás** (**x**) gombra.
+   ![Local és szkript kiválasztása](media/tutorial-classifying-iris/2-local-script-arguments.png)
+
+1. Kattintson a **Futtatás** gombra. Azonnal be lesz ütemezve egy feladat. A feladat megjelenik a Workbench-ablak jobb oldalán található **Feladatok** panelen. 
+
+   ![Local és szkript kiválasztása](media/tutorial-classifying-iris/2-local-script-arguments-run.png)
+
+   A feladat állapota pár pillanat múlva **Elküldés** értékről **Fut** értékre, végül **Befejezve** értékre vált.
+
+1. Válassza ki a **Befejezve** elemet a **Feladatok** panel állapotszöveg részén. 
+
+   ![Az sklearn futtatása](media/tutorial-classifying-iris/2-completed.png)
+
+   Megnyílik egy előugró ablak az aktuális futtatás standard kimenetre (stdout) küldött szövegével. Az stdout szöveg bezárásához kattintson az előugró ablak jobb felső sarkában található **Bezárás** (**x**) gombra.
+
+   ![Standard kimenet](media/tutorial-classifying-iris/2-standard-output.png)
 
 9. A **Feladatok** panel ugyanazon feladatállapotában jelölje ki a **Befejezve** állapot fölött látható kék színű **iris_sklearn.py [n]** (_n_ futtatás száma) feliratot és a kezdési időpontot. Az ekkor megnyíló **Futtatás tulajdonságai** ablakban az adott futtatás következő adatai láthatók:
    - A **futtatás tulajdonságaihoz** kapcsolódó információk
@@ -116,7 +147,7 @@ Készüljünk fel az **iris_sklearn.py** szkript első futtatására. A szkriptn
    Amikor a futtatás befejeződik, az előugró ablakban az alábbi eredmények jelennek meg:
 
    >[!NOTE]
-   >Mivel korábban bevezettünk némi véletlenszerűsítést a gyakorlókészletbe, az eredmények kissé eltérhetnek az itt bemutatottaktól.
+   >Mivel korábban az oktatóanyag bevezetett némi véletlenszerűsítést a gyakorlókészletbe, a pontos eredmények kissé eltérhetnek az itt bemutatottaktól.
 
    ```text
    Python version: 3.5.2 |Continuum Analytics, Inc.| (default, Jul  5 2016, 11:41:13) [MSC v.1900 64 bit (AMD64)]
@@ -146,7 +177,7 @@ Készüljünk fel az **iris_sklearn.py** szkript első futtatására. A szkriptn
    ROC curve plotted.
    Confusion matrix and ROC curve plotted. See them in Run History details pane.
    ```
-
+    
 10. Zárja be a **Futtatás tulajdonságai** lapot, majd térjen vissza az **iris_sklearn.py** lapra. 
 
 11. A további futtatásoknál ismételje ezt meg. 
@@ -160,26 +191,35 @@ Az Azure Machine Learning Workbench alkalmazás minden szkriptvégrehajtást rö
 
    ![Futtatásnézet](media/tutorial-classifying-iris/run_view.png)
 
-2. Megnyílik a **Futtatási irányítópult** lap. Áttekintheti a több futtatás során rögzített statisztikákat. A diagramok a lap tetején jelennek meg. Mindegyik futtatás egy sorban növekvő sorszámmal rendelkezik, és a futtatások részletei a képernyő alján lévő táblázatban vannak felsorolva.
+1. Megnyílik a **Futtatási irányítópult** lap. 
+
+   Áttekintheti a több futtatás során rögzített statisztikákat. A diagramok a lap tetején jelennek meg. Mindegyik futtatás egy sorban növekvő sorszámmal rendelkezik, és a futtatások részletei a képernyő alján lévő táblázatban vannak felsorolva.
 
    ![Futtatási irányítópult](media/tutorial-classifying-iris/run_dashboard.png)
 
-3. Szűrheti a táblázatot, majd az egyes diagramokra kattintva megtekintheti a futtatások állapotát, időtartamát, pontosságát és regularizációs arányát. 
+1. Szűrheti a táblázatot, majd az egyes diagramokra kattintva megtekintheti a futtatások állapotát, időtartamát, pontosságát és regularizációs arányát. 
 
-4. A **Futtatások** táblázatból két vagy három futtatást kiválasztva, majd az **Összehasonlítás** gombra kattintva megnyithatja a részletes összehasonlító ablaktáblát. Tekintse át az összehasonlító táblázatot. Az **Összehasonlítás** ablaktábla bal felső részén található **Futtatási lista** gombra kattintva visszatérhet a **Futtatási irányítópultjához**.
+1. A **Futtatások** táblázatban jelölje be két vagy több futtatás jelölőnégyzetét. Válassza az **Összehasonlítás** gombot a részletes összehasonlító ablaktábla megnyitásához. Tekintse át az összehasonlító táblázatot. 
 
-5. Kijelölhet egy adott futtatást a futtatás részletes nézetének megtekintéséhez. Figyelje meg, hogy a **Futtatás tulajdonságai** szakaszban megjelennek a kiválasztott futtatás statisztikái. A kimeneti mappába írt fájlok a **Kimenetek** szakaszban vannak felsorolva, és innen tudja azokat letölteni.
+1. Az **Összehasonlítás** ablaktábla bal felső részén található **Futtatási lista** gombra kattintva térjen vissza a **futtatási irányítópulthoz**.
+
+   ![Vissza a Futtatási listához](media/tutorial-classifying-iris/2-compare-back.png)
+
+1. Kijelölhet egy adott futtatást a futtatás részletes nézetének megtekintéséhez. Figyelje meg, hogy a **Futtatás tulajdonságai** szakaszban megjelennek a kiválasztott futtatás statisztikái. A kimeneti mappába írt fájlok a **Kimenetek** szakaszban vannak felsorolva, és innen tudja azokat letölteni.
 
    ![Futtatás részletei](media/tutorial-classifying-iris/run_details.png)
 
    A két grafikon, a keveredési mátrix és a többcsoportos ROC-görbe a **Képi megjelenítések** szakaszban látható. A naplófájlokat is megtalálhatja a **Naplók** szakaszban.
 
-## <a name="execute-scripts-in-the-local-docker-environment"></a>Szkriptek végrehajtása helyi Docker-környezetben
 
-Könnyedén konfigurálhat további végrehajtási környezeteket, például a Dockert, és futtathatja azokban a szkriptjét. 
+## <a name="run-scripts-in-local-docker-environments"></a>Szkriptek futtatása helyi Docker-környezetekben
 
->[!IMPORTANT]
->Ehhez a lépéshez szüksége lesz egy helyileg telepített és elindított Docker-motorra. További információkért tekintse át a [Docker telepítési utasításait](https://docs.docker.com/install/).
+Opcionálisan kísérletezhet a szkriptek helyi Docker-tárolón történő futtatásával is. További végrehajtási környezeteket is konfigurálhat, például a Dockert, és azokban is futtathatja a szkriptjét. 
+
+>[!NOTE]
+>Ha kísérletezni kíván a szkriptek távoli Azure-beli virtuális gépen található Docker-tárolókon vagy Azure HDInsight Spark-fürtön történő futtatásával, kövesse az [Ubuntu-alapú Azure-os adatelemzési virtuális gép vagy HDInsight-fürt létrehozására vonatkozó utasításokat](how-to-create-dsvm-hdi.md).
+
+1. Ha még nem tette meg, telepítse és indítsa el a Dockert helyileg Windows vagy MacOS rendszerű gépén. További információkért tekintse át a Docker telepítési utasításait: https://docs.docker.com/install/. A Community Edition változat is megfelel.
 
 1. A bal oldali ablaktáblán válassza ki a **Mappa** ikont a projekt **Fájlok** listájának megnyitásához. Bontsa ki az `aml_config` mappát. 
 
@@ -192,9 +232,13 @@ Könnyedén konfigurálhat további végrehajtási környezeteket, például a D
 3. Futtassa az **iris_sklearn.py** szkriptet a **docker-python** környezetben: 
 
    - A bal oldali eszköztáron kattintson az **Óra** ikonra a **Futtatások** ablaktábla megnyitásához. Válassza a **Minden futtatás** elemet. 
+
    - A **Minden futtatás** lap tetején az alapértelmezett **helyi** cél környezet helyett válassza a **docker-python** elemet. 
+
    - Ezután a jobb oldalon válassza ki az **iris_sklearn.py** fájlt futtatandó szkriptként. 
+
    - Az **Argumentumok** mezőt hagyja üresen, mivel a szkript egy alapértelmezett értéket fog megadni. 
+
    - Kattintson a **Futtatás** gombra.
 
 4. Figyelje meg, hogy a rendszer elindít egy új feladatot. Ez a Workbench-ablak jobb oldalán található **Feladatok** ablaktáblában jelenik meg.
@@ -214,7 +258,7 @@ Könnyedén konfigurálhat további végrehajtási környezeteket, például a D
 
    Végül ugyanazokat az eredményeket kell kapnia, mint amikor a **local** környezetet célozza meg.
 
-5. Most pedig próbáljuk ki a Sparkot. Az alap Docker-rendszerkép tartalmaz egy előre telepített és beállított Spark-példányt, amelyet használhat egy PySpark-szkript végrehajtására. Ez egy egyszerű módja annak, hogy saját Spark-programot fejlesszen és teszteljen anélkül, hogy időt kelljen szánnia a Spark telepítésére és konfigurálására. 
+5. Most pedig próbáljuk ki a Sparkot. Az alap Docker-rendszerkép tartalmaz egy előre telepített és beállított Spark-példányt, amelyet használhat egy PySpark-szkript végrehajtására. Ezen alapszintű rendszerkép használata egyszerű módja annak, hogy saját Spark-programot fejlesszen és teszteljen anélkül, hogy időt kelljen szánnia a Spark telepítésére és konfigurálására. 
 
    Nyissa meg az `iris_spark.py` fájlt. Ez a szkript betölti az `iris.csv` adatfájlt, és a Spark Machine Learning-kódtár logisztikai regressziós algoritmusával besorolja az Írisz adatkészletet. Módosítsa a futtatási környezetet **docker-spark** környezetre, a szkriptet pedig az **iris_spark.py** fájlra, majd futtassa újra. Ez a folyamat egy kicsit több időt fog igénybe venni, mivel létre kell hozni egy Spark-munkamenetet, és el kell indítani azt a Docker-tárolóban. Azt is észreveheti, hogy az stdout eltér az `iris_spark.py` stdout kimenetétől.
 
@@ -224,87 +268,172 @@ Könnyedén konfigurálhat további végrehajtási környezeteket, például a D
 
 8. Használja a **Feladatok** ablaktáblát, futtasson egy előzmények listanézetet és egy részletek nézetet a különböző végrehajtási környezetekben végzett futtatásoknál.
 
-## <a name="execute-scripts-in-the-azure-machine-learning-cli-window"></a>Szkriptek végrehajtása az Azure Machine Learning CLI-ablakában
+## <a name="run-scripts-in-the-cli-window"></a>Szkriptek futtatása a parancssori felület ablakában
 
-1. Az Azure Machine Learning Workbench alkalmazásban nyissa meg a parancssori ablakot. Ehhez kattintson a **Fájl** menüre, majd a **Parancssor megnyitása** elemre. A parancsprompt a projektmappában nyílik meg, a `C:\Temp\myIris\>` prompttal.
+1. Az Azure Machine Learning parancssori felületének (CLI) elindítása:
+   1. Indítsa el az Azure Machine Learning Workbenchet.
+
+   1. A Workbench menüben válassza a **Fájl** > **Parancssor megnyitása** elemet. 
+   
+   A parancssori felület Windows rendszeren a `C:\Temp\myIris\>` projektmappában indul el. Ez az oktatóanyag 1. részében létrehozott projekt.
 
    >[!IMPORTANT]
-   >Az alábbi lépéseket a (Workbench alkalmazásból megnyitott) parancssori ablakban kell elvégeznie.
+   >A következő lépéseket ezzel a parancssori felülettel kell elvégeznie.
 
-2. Jelentkezzen be az Azure-ba a parancssor használatával. 
+1. A parancssori felület ablakában jelentkezzen be az Azure-ba. [További információk az „az login” parancsról](https://docs.microsoft.com/en-us/cli/azure/authenticate-azure-cli?view=azure-cli-latest).
 
-   A Workbench alkalmazás és a CLI az Azure-erőforrások hitelesítésekor független hitelesítőadat-gyorsítótárakat használ. Ezt csak egyszer kell megtennie, amíg a gyorsítótárazott jogkivonat le nem jár. Az **az account list** parancs visszaadja a bejelentkezéséhez elérhető előfizetések listáját. Ha egynél több található, használja a kívánt előfizetés azonosítóértékét. Állítsa be az adott előfizetést alapértelmezett fiókként az **az account set -s** paranccsal, majd adja meg az előfizetés azonosítóértékét. Ezután erősítse meg a beállítást az **account show** paranccsal.
+   Előfordulhat, hogy már be van jelentkezve. Ebben az esetben kihagyhatja ezt a lépést.
+
+   1. A parancssorba írja be a következőt:
+      ```azurecli
+      az login
+      ```
+
+      Ez a parancs visszaad egy kódot, amelyet a https://aka.ms/devicelogin címen használhat a böngészőben.
+
+   1. A böngészőben lépjen a https://aka.ms/devicelogin oldalra.
+
+   1. Amikor a rendszer kéri, írja be a parancssori felületen kapott kódot a böngészőbe.
+
+   A Workbench alkalmazás és a parancssori felület az Azure-erőforrások hitelesítésekor független hitelesítőadat-gyorsítótárakat használ. Miután bejelentkezett, nem kell ismét hitelesítenie magát, amíg a gyorsítótárazott lexikális elem le nem jár. 
+
+1. Ha a cég vagy intézmény több Azure-előfizetéssel rendelkezik (vállalati környezetben), meg kell adnia a használni kívánt előfizetést. Keresse meg az előfizetést, állítsa be az előfizetés azonosítójával, majd tesztelje.
+
+   1. Ezzel a paranccsal listázhatja az összes olyan Azure-előfizetést, amelyhez hozzáféréssel rendelkezik:
+   
+      ```azurecli
+      az account list -o table
+      ```
+
+      Az **az account list** parancs visszaadja a bejelentkezéséhez elérhető előfizetések listáját. 
+      Ha több is van, azonosítsa a használni kívánt előfizetés előfizetés-azonosítóját.
+
+   1. Állítsa be az alapértelmezett fiókként használni kívánt Azure-előfizetést:
+   
+      ```azurecli
+      az account set -s <your-subscription-id>
+      ```
+      ahol a \<your-subscription-id\> a használni kívánt előfizetés azonosítója. A zárójeleket hagyja el.
+
+   1. Az aktuális előfizetés részleteinek lekérésével ellenőrizze az új előfizetés beállítását. 
+
+      ```azurecli
+      az account show
+      ```    
+
+1. A parancssori felület ablakában telepítse a **matplotlib** nevű Python megjelenítési kódtárat, ha még nincs telepítve.
 
    ```azurecli
-   REM login by using the aka.ms/devicelogin site
-   az login
-   
-   REM lists all Azure subscriptions you have access to 
-   az account list -o table
-   
-   REM sets the current Azure subscription to the one you want to use
-   az account set -s <SubscriptionId>
-   
-   REM verifies that your current subscription is set correctly
-   az account show
-   ```
-
-3. Amikor a hitelesítés befejeződik, és beállította az aktuális Azure-előfizetési környezetet, írja be az alábbi parancsokat a parancssori felület ablakába a **matplotlib** telepítéséhez, majd küldje el a Python-szkriptet futtatandó kísérletként.
-
-   ```azurecli
-   REM you don't need to run this command if you have installed matplotlib locally from the previous steps
    pip install matplotlib
-   
-   REM kicks off an execution of the iris_sklearn.py file against the local compute context
-   az ml experiment submit -c local .\iris_sklearn.py
    ```
 
-4. Tekintse át a kimenetet. A kimenet és az eredmény ugyanaz, mint amikor a Workbench segítségével futtatta a szkriptet. 
+1. A parancssori felület ablakában próbaképpen küldje el az **iris_sklearn.py** szkriptet.
 
-5. Ha telepítve van a számítógépen a Docker, futtassa ugyanezt a szkriptet még egyszer a Docker végrehajtási környezetben.
+   A rendszer az iris_sklearn.py szkriptet a helyi számítási környezetben futtatja.
 
-   ```azurecli
-   REM executes iris_sklearn.py in the local Docker container Python environment
-   az ml experiment submit -c docker-python .\iris_sklearn.py 0.01
+   + Windows rendszeren:
+     ```azurecli
+     az ml experiment submit -c local .\iris_sklearn.py
+     ```
+
+   + MacOS rendszeren:
+     ```azurecli
+     az ml experiment submit -c local iris_sklearn.py
+     ```
    
-   REM executes iris_spark.py in the local Docker container Spark environment
-   az ml experiment submit -c docker-spark .\iris_spark.py 0.1
-   ```
+   A kimenet az alábbihoz hasonló lesz:
+    ```text
+    RunId: myIris_1521077190506
+    
+    Executing user inputs .....
+    ===========================
+    
+    Python version: 3.5.2 |Continuum Analytics, Inc.| (default, Jul  2 2016, 17:52:12) 
+    [GCC 4.2.1 Compatible Apple LLVM 4.2 (clang-425.0.28)]
+    
+    Iris dataset shape: (150, 5)
+    Regularization rate is 0.01
+    LogisticRegression(C=100.0, class_weight=None, dual=False, fit_intercept=True,
+              intercept_scaling=1, max_iter=100, multi_class='ovr', n_jobs=1,
+              penalty='l2', random_state=None, solver='liblinear', tol=0.0001,
+              verbose=0, warm_start=False)
+    Accuracy is 0.6792452830188679
+        
+    ==========================================
+    Serialize and deserialize using the outputs folder.
+    
+    Export the model to model.pkl
+    Import the model from model.pkl
+    New sample: [[3.0, 3.6, 1.3, 0.25]]
+    Predicted class is ['Iris-setosa']
+    Plotting confusion matrix...
+    Confusion matrix in text:
+    [[50  0  0]
+     [ 1 37 12]
+     [ 0  4 46]]
+    Confusion matrix plotted.
+    Plotting ROC curve....
+    ROC curve plotted.
+    Confusion matrix and ROC curve plotted. See them in Run History details page.
+    
+    Execution Details
+    =================
+    RunId: myIris_1521077190506
+    ```
 
-6. Listázza a projektfájlokat a Workbench alkalmazásban a bal oldali ablaktáblán a **Mappa** ikonra kattintva, majd nyissa meg a **run.py** nevű Python-szkriptet. 
+1. Tekintse át a kimenetet. A kimenet és az eredmény ugyanaz, mint amikor a Workbench segítségével futtatta a szkriptet. 
 
-   Ez a szkript akkor hasznos, ha különböző regularizációs arányokat kell ismételni. Futtassa többször is a kísérletet ezekkel az arányokkal. A szkript elindít egy `iris_sklearn.py`-feladatot `10.0` regularizációs arány értékkel (ez egy túlzóan nagy szám). A szkript ezután a következő futtatáskor felezi az arányt – és így tovább, egészen addig, amíg az arány el nem éri a `0.005` értéket. 
+1. A parancssori felület ablakában futtassa ismét az **iris_sklearn.py** Python-szkriptet egy Docker végrehajtási környezetben (ha telepítve van a Docker a gépén).
 
-   ```python
-   # run.py
-   import os
+   + Ha a tárolója Windows rendszeren van: 
+     |Futtatási<br/>környezet|Parancs Windowson|
+     |---------------------|------------------|
+     |Python|`az ml experiment submit -c docker-python .\iris_sklearn.py 0.01`|
+     |Spark|`az ml experiment submit -c docker-spark .\iris_spark.py 0.1`|
+
+   + Ha a tárolója MacOS rendszeren van: 
+     |Futtatási<br/>környezet|Parancs Windowson|
+     |---------------------|------------------|
+     |Python|`az ml experiment submit -c docker-python iris_sklearn.py 0.01`|
+     |Spark|`az ml experiment submit -c docker-spark iris_spark.py 0.1`|
+
+1. Térjen vissza a Workbenchbe, ahol:
+   1. Válassza ki a bal oldali ablaktáblán a mappa ikont a projektfájlok felsorolásához.
    
-   reg = 10
-   while reg > 0.005:
-       os.system('az ml experiment submit -c local ./iris_sklearn.py {}'.format(reg))
-       reg = reg / 2
-   ```
+   1. Nyissa meg a **run.py** nevű Python-szkriptet. Ez a szkript akkor hasznos, ha különböző regularizációs arányokat kell ismételni. 
 
-   A **run.py** szkript parancssorból való végrehajtásához futtassa a következő parancsokat:
+   ![Vissza a Futtatási listához](media/tutorial-classifying-iris/2-runpy.png)
+
+1. Futtassa többször is a kísérletet ezekkel az arányokkal. 
+
+   A szkript elindít egy `iris_sklearn.py`-feladatot `10.0` regularizációs arány értékkel (ez egy túlzóan nagy szám). A szkript ezután a következő futtatáskor felezi az arányt – és így tovább, egészen addig, amíg az arány el nem éri a `0.005` értéket. 
+
+   A szkript a következő kódot tartalmazza:
+
+   ![Vissza a Futtatási listához](media/tutorial-classifying-iris/2-runpy-code.png)
+
+1. Futtassa a **run.py** szkriptet a parancssorból a következőképpen:
 
    ```cmd
-   REM submits iris_sklearn.py multiple times with different regularization rates
    python run.py
    ```
 
+   Ez a parancs többször, különböző szabályozási arányokkal küldi el az iris_sklearn.py szkriptet.
+
    Amikor a `run.py` futtatása befejeződik, a Workbench futtatási előzményeket tartalmazó listanézetében megjelennek különböző mérőszámokat mutató diagramok.
 
-## <a name="execute-in-a-docker-container-on-a-remote-machine"></a>Végrehajtás Docker-tárolóban egy távoli gépen
+## <a name="run-scripts-in-a-remote-docker-container"></a>Szkriptek futtatása távoli Docker-tárolóban
 Ha egy távoli Linux gépen szeretné végrehajtani Docker-tárolóban a szkriptet, SSH-hozzáférésre (felhasználónév és jelszó) lesz szüksége azon a távoli gépen. Az is szükséges továbbá, hogy a gépen a Docker-motor telepítve legyen és fusson. Egy ilyen Linux-gép beszerzésének a legegyszerűbb módja, ha létrehoz egy Ubuntu-alapú adatelemzési virtuális gépet (DSVM) az Azure-ban. Ismerje meg, [hogyan hozhat létre Ubuntu-alapú DSVM-et az Azure ML Workbenchben való használathoz](how-to-create-dsvm-hdi.md#create-an-ubuntu-dsvm-in-azure-portal).
 
 >[!NOTE] 
 >A CentOS-alapú DSVM használata *nem* támogatott.
 
-1. Ha a virtuális gép létrejött, csatolhatja azt végrehajtási környezetként, ha létrehoz egy `.runconfig` és egy `.compute` fájlt. A fájlok létrehozásához használja a következő parancsot. Az új környezetnek adja a `myvm` nevet.
+1. Ha a virtuális gép létrejött, csatolhatja azt végrehajtási környezetként, ha létrehoz egy `.runconfig` és egy `.compute` fájlt. A fájlok létrehozásához használja a következő parancsot. 
+
+ Az új számítási célnak adja a `myvm` nevet.
  
    ```azurecli
-   REM creates an myvm compute target
-   az ml computetarget attach remotedocker --name myvm --address <IP address> --username <username> --password <password>
+   az ml computetarget attach remotedocker --name myvm --address <your-IP> --username <your-username> --password <your-password>
    ```
    
    >[!NOTE]
@@ -313,12 +442,14 @@ Ha egy távoli Linux gépen szeretné végrehajtani Docker-tárolóban a szkript
    >[!NOTE]
    >Felhasználónév- és jelszóalapú hitelesítésen felül megadhat egy titkos kulcsot és a megfelelő jelszót (ha van ilyen) a `--private-key-file` és (opcionálisan) a `--private-key-passphrase` beállítások segítségével.
 
-   Ezután futtassa az alábbi parancsot, amellyel létrehozza a Docker-rendszerképet a virtuális gépen, hogy az készen álljon a szkriptek futtatására:
+   Ezután ezen parancs futtatásával készítse elő a **myvm** számítási célt.
    
    ```azurecli
-   REM prepares the myvm compute target
    az ml experiment prepare -c myvm
    ```
+   
+   Az előző parancs létrehozza a Docker-rendszerképet a virtuális gépen, hogy az készen álljon a szkriptek futtatására.
+   
    >[!NOTE]
    >A `myvm.runconfig` fájlban módosíthatja a `PrepareEnvironment` értéket is az alapértelmezett `false` helyett `true` értékre. Ez a módosítás automatikusan előkészíti a Docker-tárolót az első futás részeként.
 
@@ -330,14 +461,13 @@ Ha egy távoli Linux gépen szeretné végrehajtani Docker-tárolóban a szkript
    >[!NOTE]
    >Noha a PySparknak is működnie kell, a Python használata hatékonyabb, ha valójában nincs Spark-munkamenetre szüksége a Python-szkript futtatásához.
 
-3. Adja ki ugyanazt a parancsot, mint korábban a parancssori felület ablakában, a cél most legyen a _myvm_:
+3. Adja ki ugyanazt a parancsot, mint korábban a parancssori felület ablakában, de a cél most legyen a _myvm_, hogy az iris_sklearn.py szkriptet egy távoli Docker-tárolóban hajtsa végre:
    ```azurecli
-   REM executes iris_sklearn.py in a remote Docker container
    az ml experiment submit -c myvm iris_sklearn.py
    ```
    A parancsot a rendszer úgy hajtja végre, mintha `docker-python`-környezetben lenne, csak a végrehajtás egy távoli, Linux rendszerű virtuális gépen történik. A parancssori felület ablak ugyanazt a kimeneti információt jeleníti meg.
 
-4. Próbáljuk meg a Sparkot használni a tárolóban. Nyissa meg a Fájlkezelőt. Az alábbiakat elvégezheti a parancssori felület ablakából is, ha nem okoz gondot az alapvető fájlkezelési parancsok használata. Készítsen másolatot a `myvm.runconfig` fájlról, és adja neki a `myvm-spark.runconfig` nevet. A `Framework` beállítást az új fájlt szerkesztve módosítsa `Python`ról `PySpark`ra:
+4. Próbáljuk meg a Sparkot használni a tárolóban. Nyissa meg a Fájlkezelőt. Készítsen másolatot a `myvm.runconfig` fájlról, és adja neki a `myvm-spark.runconfig` nevet. A `Framework` beállítást az új fájlt szerkesztve módosítsa `Python`ról `PySpark`ra:
    ```yaml
    Framework: PySpark
    ```
@@ -345,58 +475,56 @@ Ha egy távoli Linux gépen szeretné végrehajtani Docker-tárolóban a szkript
 
 5. A következő parancsot beírva futtassa az **iris_spark.py** szkriptet a távoli Docker-tárolóban futó Spark-példányában:
    ```azureli
-   REM executes iris_spark.py in a Spark instance on a remote Docker container
    az ml experiment submit -c myvm-spark .\iris_spark.py
    ```
 
-## <a name="execute-script-in-an-hdinsight-cluster"></a>Szkript végrehajtása HDInsight-fürtön
+## <a name="run-scripts-in-hdinsight-clusters"></a>Szkriptek futtatása HDInsight-fürtökben
 Ezt a szkriptet futtathatja egy HDInsight Spark-fürtön is. Ismerje meg, [hogyan hozhat létre HDInsight Spark-fürtöt az Azure ML Workbenchben való használathoz](how-to-create-dsvm-hdi.md#create-an-apache-spark-for-azure-hdinsight-cluster-in-azure-portal).
 
 >[!NOTE] 
 >A HDInsight-fürtnek az Azure-blobot kell elsődleges tárolóként használnia. Az Azure Data Lake-tároló használata jelenleg nem támogatott.
 
-1. Ha rendelkezik hozzáféréssel a Spark for Azure HDInsight-fürthöz, hozzon létre egy HDInsight-futtatási konfigurációs parancsot az itt látható módon. Paraméterként adja meg a HDInsight-fürt nevét, valamint a saját HDInsight-felhasználónevét és -jelszavát. Használja az alábbi parancsot:
+1. Ha rendelkezik hozzáféréssel a Spark for Azure HDInsight-fürthöz, hozzon létre egy HDInsight-futtatási konfigurációs parancsot az itt látható módon. Paraméterként adja meg a HDInsight-fürt nevét, valamint a saját HDInsight-felhasználónevét és -jelszavát. 
+
+   A következő paranccsal hozzon létre egy HDInsight-fürtre mutató számítási célt:
 
    ```azurecli
-   REM creates a compute target that points to a HDInsight cluster
-   az ml computetarget attach cluster --name myhdi --address <cluster head node FQDN> --username <username> --password <password>
+   az ml computetarget attach cluster --name myhdi --address <cluster head node FQDN> --username <your-username> --password <your-password>
+   ```
 
-   REM prepares the HDInsight cluster
+   A HDInsight-fürt előkészítéséhez futtassa ezt a parancsot:
+
+   ```
    az ml experiment prepare -c myhdi
    ```
 
-   A fürt fő csomópontjának teljes tartományneve (FQDN) általában `<cluster_name>-ssh.azurehdinsight.net`.
+   A fürt fő csomópontjának teljes tartományneve (FQDN) általában `<your_cluster_name>-ssh.azurehdinsight.net`.
 
    >[!NOTE]
-   >A `username` a fürt SSH felhasználóneve. Az alapértelmezett érték az `sshuser`, ha nem módosította azt a HDInsight telepítése közben. Az érték nem `admin`, amely a másik, a telepítés során a fürt felügyeleti webhelyéhez való hozzáférés engedélyezésére létrehozott felhasználó. 
+   >A `username` a fürt SSH-felhasználóneve, amely meghatározására a HDInsight telepítése során kerül sor. Alapértelmezés szerint az érték az `sshuser`. Az érték nem `admin`, amely a másik, a telepítés során a fürt felügyeleti webhelyéhez való hozzáférés engedélyezésére létrehozott felhasználó. 
 
-2. Futtassa a következő parancsot az **iris_spark.py** szkript HDInsight-fürtön való futtatásához:
+2. Futtassa az **iris_spark.py** szkriptet a HDInsight-fürtön ezzel a paranccsal:
 
    ```azurecli
-   REM executes iris_spark on the HDInsight cluster
    az ml experiment submit -c myhdi .\iris_spark.py
    ```
 
    >[!NOTE]
-   >Ha egy távoli HDInsight-fürtön hajtja végre, a `https://<cluster_name>.azurehdinsight.net/yarnui` helyen az `admin` felhasználói fiókkal a Yet Another Resource Negotiator (YARN) feladat-végrehajtási részleteit is megtekintheti.
+   >Ha egy távoli HDInsight-fürtön hajtja végre, a `https://<your_cluster_name>.azurehdinsight.net/yarnui` helyen az `admin` felhasználói fiókkal a Yet Another Resource Negotiator (YARN) feladat-végrehajtási részleteit is megtekintheti.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 [!INCLUDE [aml-delete-resource-group](../../../includes/aml-delete-resource-group.md)]
 
 ## <a name="next-steps"></a>További lépések
-A háromrészes oktatóanyag-sorozat jelen, második részében megtanulhatta, hogyan használhatók az Azure Machine Learning szolgáltatások a következőkre:
+A háromrészes oktatóanyag-sorozat második részében a következőkkel ismerkedhetett meg:
 > [!div class="checklist"]
-> * Az Azure Machine Learning Workbench használata.
-> * Szkriptek megnyitása és kód áttekintése.
-> * Szkriptek végrehajtása helyi környezetben.
-> * A futtatási előzmények megtekintése.
-> * Szkriptek végrehajtása helyi Docker-környezetben.
-> * Szkriptek végrehajtása helyi Azure CLI-ablakban.
-> * Szkriptek végrehajtása távoli Docker-környezetben.
-> * Szkriptek végrehajtása felhőalapú HDInsight-környezetben.
+> * Szkriptek megnyitása és a kód áttekintése a Workbenchben
+> * Szkriptek végrehajtása helyi környezetben
+> * A futtatási előzmények megtekintése
+> * Szkriptek végrehajtása helyi Docker-környezetben
 
-Tovább léphet a sorozat harmadik részére. Most, hogy létrehoztuk a logisztikai regressziós modellt, helyezzük üzembe valós idejű webszolgáltatásként.
+Most kipróbálhatja az oktatóanyag-sorozat harmadik részét, amelyben üzembe helyezheti a valós idejű webszolgáltatásként létrehozott logisztikai regressziós modellt.
 
 > [!div class="nextstepaction"]
-> [3. oktatóanyag – Írisz osztályozása: Modellek üzembe helyezése](tutorial-classifying-iris-part-3.md)
+> [3. oktatóanyag – Modellek üzembe helyezése](tutorial-classifying-iris-part-3.md)
