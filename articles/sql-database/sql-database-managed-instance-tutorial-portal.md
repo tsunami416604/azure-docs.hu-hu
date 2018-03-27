@@ -7,18 +7,15 @@ author: bonova
 ms.reviewer: carlrab, srbozovi
 ms.service: sql-database
 ms.custom: managed instance
-ms.workload: Active
-ms.tgt_pltfrm: portal
-ms.devlang: ''
 ms.topic: tutorial
-ms.date: 03/07/2018
+ms.date: 03/14/2018
 ms.author: bonova
-manager: cguyer
-ms.openlocfilehash: 0d6261392dfdab0d48cb0c524d1fcf416c85d72c
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+manager: craigg
+ms.openlocfilehash: 774a761465cfd886b85378a35dd43ac656a7ee48
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="create-an-azure-sql-database-managed-instance-in-the-azure-portal"></a>Felügyelt Azure SQL Database-példány létrehozása az Azure Portalon
 
@@ -26,6 +23,9 @@ Ez az oktatóanyag bemutatja, hogyan hozhat létre felügyelt Azure SQL Database
 
 Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
+> [!IMPORTANT]
+> Azon régiók listájáért, amelyekben a felügyelt példány jelenleg elérhető, lásd a cikket, amely [az adatbázisok migrálásával foglalkozik egy teljes mértékben felügyelt szolgáltatásba az Azure SQL Database felügyelt példányával](https://azure.microsoft.com/blog/migrate-your-databases-to-a-fully-managed-service-with-azure-sql-database-managed-instance/).
+ 
 ## <a name="log-in-to-the-azure-portal"></a>Bejelentkezés az Azure Portalra
 
 Jelentkezzen be az [Azure portálra](https://portal.azure.com/#create/Microsoft.SQLManagedInstance).
@@ -205,7 +205,7 @@ A következő lépések bemutatják, hogyan hozhat létre egy második alhálóz
    |**Címtartomány (CIDR-blokk)**|Bármely érvényes címtartomány a VNeten belül (használja az alapértelmezettet)||
    |**Hálózati biztonsági csoport**|Nincs||
    |**Útvonaltábla**|Nincs||
-   |**Szolgáltatásvégpontok**|None||
+   |**Szolgáltatásvégpontok**|Nincs||
 
    ![virtuális gép alhálózatának részletei](./media/sql-database-managed-instance-tutorial/vm-subnet-details.png)
 
@@ -299,7 +299,7 @@ A csatlakozás után megtekintheti a rendszer- és felhasználói adatbázisokat
 
 Az alábbi lépéseket követve töltse le a Wide World Importers – Standard biztonsági mentési fájlt.
 
-Az Internet Explorerben írja be a https://github.com/Microsoft/sql-server-samples/releases/download/wide-world-importers-v1.0/WideWorldImporters-Standard.bak útvonalat az URL-cím mezőjébe, majd amikor a rendszer kéri, kattintson a **Mentés** gombra a fájl a **Downloads** mappába mentéséhez.
+Az Internet Explorerben írja be a https://github.com/Microsoft/sql-server-samples/releases/download/wide-world-importers-v1.0/WideWorldImporters-Standard.bak címet az URL-cím mezőjébe, majd amikor a rendszer kéri, kattintson a **Mentés** gombra, hogy a fájlt a **Letöltések** mappába mentse.
 
 ## <a name="create-azure-storage-account-and-upload-backup-file"></a>Azure Storage-fiók létrehozása és a biztonsági mentési fájl feltöltése
 
