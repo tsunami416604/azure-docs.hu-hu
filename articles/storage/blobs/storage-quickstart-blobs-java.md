@@ -1,19 +1,19 @@
 ---
-title: "Azure rövid útmutató – Blobok feltöltése, letöltése és listázása az Azure Storage-ban a Java használatával | Microsoft Docs"
-description: "Ebben a rövid útmutatóban egy tárfiókot és egy tárolót hoz létre. Majd a Storage Javához készült ügyféloldali kódtára segítségével feltölt egy blobot az Azure Storage-ba, letölt egy blobot, és kilistázza a tárolóban lévő blobokat."
+title: Azure rövid útmutató – Blobok feltöltése, letöltése és listázása az Azure Storage-ban a Java használatával | Microsoft Docs
+description: Ebben a rövid útmutatóban egy tárfiókot és egy tárolót hoz létre. Majd a Storage Javához készült ügyféloldali kódtára segítségével feltölt egy blobot az Azure Storage-ba, letölt egy blobot, és kilistázza a tárolóban lévő blobokat.
 services: storage
 author: roygara
 manager: jeconnoc
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
-ms.date: 02/22/2018
+ms.date: 03/15/2018
 ms.author: rogarana
-ms.openlocfilehash: cde366e75e4111a911be67795a2ad4dfa73778ea
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 44e5f921ca9303e680c76d439ab7503ea3c39680
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-java"></a>Rövid útmutató: blobok feltöltése, letöltése és listázása a Java használatával
 
@@ -203,7 +203,20 @@ if(sourceFile != null)
 sourceFile.deleteOnExit();
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="resources-for-developing-java-applications-with-blobs"></a>Blobokkal rendelkező Java-alkalmazások fejlesztéséhez használható forrásanyagok
+
+Blob Storage-tárolókat alkalmazó Java-alkalmazások fejlesztéséhez tekintse át az alábbi további forrásanyagokat is:
+
+### <a name="binaries-and-source-code"></a>Bináris fájlok és forráskód
+
+- Az Azure Storage-hoz készült [Java ügyféloldali kódtár forráskódját](https://github.com/Azure/azure-storage-java) a GitHubon tekintheti meg és töltheti le.
+
+### <a name="client-library-reference-and-samples"></a>Ügyféloldali kódtár – referencia és minták
+
+- A Java ügyféloldali kódtárral kapcsolatos további információért lásd [a Java API-referenciáját](https://docs.microsoft.com/en-us/java/api/overview/azure/storage).
+- Tekintse át a Java ügyféloldali kódtár használatával írt [Blob Storage-mintákat](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=java&term=blob).
+
+## <a name="next-steps"></a>További lépések
 
 Ennek a gyorsútmutatónak a segítségével megtanulta, hogyan vihetők át fájlok egy helyi lemez és az Azure Blob Storage között a Java használatával. Ha bővebb információra van szüksége a Blob Storage használatával kapcsolatban, lépjen tovább a Blob Storage használati útmutatójára.
 

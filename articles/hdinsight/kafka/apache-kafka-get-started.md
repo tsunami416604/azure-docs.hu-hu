@@ -1,25 +1,25 @@
 ---
-title: "Az Apache Kafka platform használatának első lépései – Azure HDInsight | Microsoft Docs"
-description: "Ismerje meg, hogyan hozhat létre Apache Kafka-fürtöt az Azure HDInsightban. Ismerje meg, hogyan hozhat létre témaköröket, előfizetőket és fogyasztókat."
+title: Az Apache Kafka platform használatának első lépései – Azure HDInsight | Microsoft Docs
+description: Ismerje meg, hogyan hozhat létre Apache Kafka-fürtöt az Azure HDInsightban. Ismerje meg, hogyan hozhat létre témaköröket, előfizetőket és fogyasztókat.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 43585abf-bec1-4322-adde-6db21de98d7f
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: 
+ms.devlang: ''
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 02/20/2018
 ms.author: larryfr
-ms.openlocfilehash: e00ab06a26d60dd5beca11362df58f35812491d9
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 27e6472480dac104de799ebf0e7579a7987f6c4c
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="start-with-apache-kafka-on-hdinsight"></a>Az HDInsight alatt futó Apache Kafka használatának első lépései
 
@@ -39,6 +39,15 @@ Egy Kafka HDInsight-fürt létrehozásához kövesse az alábbi lépéseket:
 
     * **Fürt neve**: A HDInsight-fürt neve. A névnek egyedinek kell lennie.
     * **Előfizetés**: Válassza ki a használni kívánt előfizetést.
+    * **Fürt típusa**: Válassza ki ezt a bejegyzést, majd állítsa be a következő értékeket a **Fürtkonfiguráció** panelen:
+
+        * **Fürt típusa**: Kafka
+        * **Verzió**: Kafka 0.10.0 (HDI 3.6)
+
+        A **Kiválasztás** gombbal mentse a fürttípus beállításait.
+
+        ![Fürttípus kiválasztása](./media/apache-kafka-get-started/set-hdinsight-cluster-type.png)
+
     * **Fürt bejelentkezési felhasználóneve** és **Fürt bejelentkezési jelszava**: A fürt HTTPS-kapcsolaton keresztüli elérésekor használt bejelentkezési adatok. Ezekkel a hitelesítő adatokkal érheti el az olyan szolgáltatásokat, mint az Ambari webes felület vagy a REST API.
     * **SSH-felhasználónév**: A fürt SSH-kapcsolaton keresztüli elérésekor használt bejelentkezési adatok. Alapértelmezés szerint a jelszó megegyezik a fürt bejelentkezési jelszavával.
     * **Erőforráscsoport**: Az az erőforráscsoport, amelyben a fürt létre lesz hozva.
@@ -49,24 +58,15 @@ Egy Kafka HDInsight-fürt létrehozásához kövesse az alábbi lépéseket:
    
  ![Előfizetés kiválasztása](./media/apache-kafka-get-started/hdinsight-basic-configuration.png)
 
-3. Válassza ki a **Fürt típusát**, majd állítsa be a következő értékeket a **Fürtkonfiguráció** panelen:
-   
-    * **Fürt típusa**: Kafka
-    * **Verzió**: Kafka 0.10.0 (HDI 3.6)
+3. Kattintson a __Tovább__ gombra az alapszintű konfiguráció befejezéséhez.
 
-    Végül mentse a beállításokat a **Kiválasztás** gomb használatával.
-     
- ![Fürttípus kiválasztása](./media/apache-kafka-get-started/set-hdinsight-cluster-type.png)
-
-4. A fürt típusának kijelölése után erősítse meg a beállítást a __Kiválasztás__ gombbal. Ezután kattintson a __Tovább__ gombra az alapszintű konfiguráció befejezéséhez.
-
-5. A **Tárolás** panelen válasszon ki vagy hozzon létre egy Storage-fiókot. A jelen dokumentumban leírt lépésekben a többi mező alapértelmezett értékét ne módosítsa. Kattintson a __Tovább__ gombra a tárolókonfiguráció mentéséhez.
+4. A **Tárolás** panelen válasszon ki vagy hozzon létre egy Storage-fiókot. A jelen dokumentumban leírt lépésekben a többi mező alapértelmezett értékét ne módosítsa. Kattintson a __Tovább__ gombra a tárolókonfiguráció mentéséhez.
 
     ![A tárfiók HDInsight-beállításainak konfigurálása](./media/apache-kafka-get-started/set-hdinsight-storage-account.png)
 
-6. Az __Alkalmazások (opcionális)__ területen kattintson a __Tovább__ gombra a folytatáshoz. Az alábbi példához nem szükséges alkalmazás.
+5. Az __Alkalmazások (opcionális)__ területen kattintson a __Tovább__ gombra a folytatáshoz. Az alábbi példához nem szükséges alkalmazás.
 
-7. A __Fürtméret__ lapon kattintson a __Tovább__ gombra a folytatáshoz.
+6. A __Fürtméret__ lapon kattintson a __Tovább__ gombra a folytatáshoz.
 
     > [!WARNING]
     > A HDInsightban futó Kafka platform rendelkezésre állásának biztosításához fürtjének legalább három feldolgozó csomópontot kell tartalmaznia. További információkért lásd az [Adatok magas rendelkezésre állása](#data-high-availability) szakaszt.
@@ -76,9 +76,9 @@ Egy Kafka HDInsight-fürt létrehozásához kövesse az alábbi lépéseket:
     > [!IMPORTANT]
     > A **lemezek száma feldolgozó csomópontonként** bejegyzés a HDInsighton futó Kafka skálázhatóságát konfigurálja. A HDInsight-beli Kafka a fürt virtuális gépeinek helyi lemezét használja. Mivel a Kafka nagy ki- és bemenő adatforgalmat kezel, az [Azure Managed Disks](../../virtual-machines/windows/managed-disks-overview.md) szolgáltatás gondoskodik a magas átviteli sebességről és csomópontonként több tárhelyről. A felügyelt lemez típusa __Standard__ (HDD) vagy __Prémium__ (SSD) lehet. Prémium lemezeket DS és GS sorozatbeli virtuális gépek használnak. Minden más virtuálisgép-típus standard lemezeket használ.
 
-8. A __Speciális beállítások__ lapon kattintson a __Tovább__ gombra a folytatáshoz.
+7. A __Speciális beállítások__ lapon kattintson a __Tovább__ gombra a folytatáshoz.
 
-9. Az **Összegzés** lapon tekintse át a fürt konfigurációját. A __Szerkesztés__ hivatkozásai használatával módosítsa a hibás beállításokat. Végül kattintson a__Létrehozás__ gombra a fürt létrehozásához.
+8. Az **Összegzés** lapon tekintse át a fürt konfigurációját. A __Szerkesztés__ hivatkozásai használatával módosítsa a hibás beállításokat. Végül kattintson a__Létrehozás__ gombra a fürt létrehozásához.
    
     ![A fürtkonfiguráció összegzése](./media/apache-kafka-get-started/hdinsight-configuration-summary.png)
    

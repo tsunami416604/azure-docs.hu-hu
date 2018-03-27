@@ -1,12 +1,12 @@
 ---
-title: "Ruby alkalmazás létrehozása és telepítése a Linux App Service-be | Microsoft Docs"
-description: "Ruby alkalmazások létrehozásának megismerése a Linuxon futó App Service segítségével."
+title: Ruby alkalmazás létrehozása és telepítése a Linux App Service-be | Microsoft Docs
+description: Ruby alkalmazások létrehozásának megismerése a Linuxon futó App Service segítségével.
 keywords: azure app service, linux, oss, ruby
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: SyntaxC4
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 6d00c73c-13cb-446f-8926-923db4101afa
 ms.service: app-service
 ms.workload: na
@@ -16,11 +16,11 @@ ms.topic: quickstart
 ms.date: 10/10/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: db3086724c22e485e2a9a69c36a990fc5b8016a9
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 6668f02bb7ac9588e1bb11b3848d0a3e25cbed67
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="create-a-ruby-app-in-app-service-on-linux"></a>Ruby alkalmazás létrehozása a Linux App Service-ben | Microsoft Docs
 
@@ -88,37 +88,23 @@ Az alkalmazás konfigurálása ekkor kész. Webböngészőjével a `http://local
 
 [!INCLUDE [Configure deployment user](../../../includes/configure-deployment-user.md)]
 
-## <a name="create-a-ruby-web-app-on-azure"></a>Ruby-webalkalmazás létrehozása Azure-ban
+[!INCLUDE [Create resource group](../../../includes/app-service-web-create-resource-group-linux.md)]
 
-A webalkalmazáshoz szükséges adategységek tárolásához szükség van egy erőforráscsoportra. Erőforráscsoport létrehozásához használja a következő parancsot: [`az group create`](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create).
+[!INCLUDE [Create app service plan](../../../includes/app-service-web-create-app-service-plan-linux.md)]
 
-```azurecli-interactive
-az group create --location westeurope --name myResourceGroup
-```
+## <a name="create-a-web-app"></a>Webalkalmazás létrehozása
 
-Használja az [ `az appservice plan create` ](/cli/azure/appservice/plan?view=azure-cli-latest#az_appservice_plan_create) parancsot, ha egy App Service-csomagot szeretne létrehozni a webalkalmazáshoz.
+[!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-ruby-linux-no-h.md)] 
 
-```azurecli-interactive
-az appservice plan create --name myAppServicePlan --resource-group myResourceGroup --is-linux
-```
-
-Ezt követően az [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create) paranccsal hozza létre az újonnan készített App Service-csomagot használó webalkalmazást. Figyelje meg, hogy a futtatókörnyezet beállítása `ruby|2.3` lett. Ne felejtse el kicserélni az `<app name>` nevet egy egyedi alkalmazásnévre.
-
-```azurecli-interactive
-az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app name> \
---runtime "ruby|2.3" --deployment-local-git
-```
-
-A parancs kimenete felfedi az újonnan létrehozott webalkalmazás és az üzembehelyezési URL információit. Ennek az alábbi példához kell hasonlítania. Másolja ki az URL-t, hogy az oktatóanyag további részében is használhassa.
+Az újonnan létrehozott, beépített rendszerképpel rendelkező webalkalmazás megtekintéséhez tallózással keresse meg a helyet. Az _&lt;app name>_ helyett adja meg a webalkalmazása nevét.
 
 ```bash
-https://<deployment user name>@<app name>.scm.azurewebsites.net/<app name>.git
+http://<app_name>.azurewebsites.net
 ```
 
-A webalkalmazás létrehozását követően megtekintheti az **Áttekintés** oldalt. Keresse meg. A következő kezdőlap jelenik meg:
+Az új webalkalmazásnak így kell kinéznie:
 
 ![Kezdőlap](./media/quickstart-ruby/splash-page.png)
-
 
 ## <a name="deploy-your-application"></a>Az alkalmazás üzembe helyezése
 

@@ -1,8 +1,8 @@
 ---
-title: "App Service, Virtual Machines, Service Fabric és Cloud Services – Összehasonlítás | Microsoft Docs"
-description: "Ismerje meg, mi alapján választhat az Azure App Service, a Virtual Machines, a Service Fabric és a Cloud Services szolgáltatások között, ha webalkalmazásokat szeretne üzemeltetni."
+title: App Service, Virtual Machines, Service Fabric és Cloud Services – Összehasonlítás | Microsoft Docs
+description: Ismerje meg, mi alapján választhat az Azure App Service, a Virtual Machines, a Service Fabric és a Cloud Services szolgáltatások között, ha webalkalmazásokat szeretne üzemeltetni.
 services: app-service\web, virtual-machines, cloud-services
-documentationcenter: 
+documentationcenter: ''
 author: ggailey777
 manager: erikre
 editor: jimbe
@@ -15,11 +15,11 @@ ms.topic: overview
 ms.date: 07/07/2016
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 627782d3d6dd9f2eeff1b79e9cf721f9a4eb4ac2
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: f930cec984a8b92e00ec613ce3bba91a40518911
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-app-service-virtual-machines-service-fabric-and-cloud-services-comparison"></a>Azure App Service, Virtual Machines, Service Fabric és Cloud Services – Összehasonlítás
 ## <a name="overview"></a>Áttekintés
@@ -49,7 +49,7 @@ A következő táblázatban az App Service, a Cloud Services, a Virtual Machines
 | Egy többrétegű architektúra webes vagy webszolgáltatási szintjének üzemeltetése |X |X |X |X | |
 | Egy többrétegű architektúra középső szintjének üzemeltetése |X |X |X |X |Az App Service Web Apps segítségével könnyedén üzemeltethető egy REST API középső szintje, a [WebJobs](http://go.microsoft.com/fwlink/?linkid=390226) szolgáltatás pedig háttérben futó feldolgozási feladatok üzemeltetésére képes. A WebJobs dedikált webhelyen is futtatható a szint független skálázhatóságának érdekében. |
 | Integrált támogatás a MySQL szolgáltatásként való használatához |X |X | | | |
-| Az ASP.NET, a klasszikus ASP, a Node.js, a PHP és a Python támogatása |X |X |X |X |A Service Fabric támogatja a webes kezelőfelületek [ASP.NET 5](../service-fabric/service-fabric-reliable-services-communication-aspnetcore.md) használatával történő létrehozását, de bármilyen típusú alkalmazást (Node.js, Java stb.) telepíthet [vendégalkalmazásként](../service-fabric/service-fabric-deploy-existing-app.md). |
+| Az ASP.NET, a klasszikus ASP, a Node.js, a PHP és a Python támogatása |X |X |X |X |A Service Fabric támogatja a webes kezelőfelületek [ASP.NET 5](../service-fabric/service-fabric-reliable-services-communication-aspnetcore.md) használatával történő létrehozását, de bármilyen típusú alkalmazást (Node.js, Java stb.) telepíthet [vendégalkalmazásként](../service-fabric/service-fabric-guest-executables-introduction.md). |
 | Horizontális felskálázás több példányra ismételt üzembe helyezés nélkül |X |X |X |X |A virtuális gépek képesek horizontálisan felskálázni több példányra, de a rajtuk futó szolgáltatásokat úgy kell megírni, hogy kezeljék a felskálázást. A terheléselosztót úgy kell konfigurálnia, hogy irányítsa a kérelmeket a gépek között, és egy olyan affinitáscsoportot hozzon létre, amely a karbantartás vagy a hardveres hibák esetén megakadályozza az összes példány egyidejű újraindulását. |
 | SSL-támogatás |X |X |X |X |App Service webalkalmazások esetén az egyéni tartományneveknél az SSL csak Alapszintű és Standard módban támogatott. További információkért az SSL webalkalmazásokkal történő használatáról lásd az [Azure webhelyek SSL-tanúsítványának konfigurálását](app-service-web-tutorial-custom-ssl.md) ismertető cikket. |
 | Visual Studio integráció |X |X |X |X | |
@@ -59,7 +59,7 @@ A következő táblázatban az App Service, a Cloud Services, a Virtual Machines
 | [Azure Traffic Manager](/azure/traffic-manager/) támogatása |X |X |X |X | |
 | Integrált végpontmonitoring |X |X |X | | |
 | Távoli asztali hozzáférés a szerverekhez | |X |X |X | |
-| Bármely egyéni MSI telepítése | |X |X |X |A Service Fabric lehetővé teszi a végrehajtható fájlok [futtatható vendégszolgáltatásként](../service-fabric/service-fabric-deploy-existing-app.md) üzemeltetését vagy bármilyen alkalmazás telepítését a virtuális gépre. |
+| Bármely egyéni MSI telepítése | |X |X |X |A Service Fabric lehetővé teszi a végrehajtható fájlok [futtatható vendégszolgáltatásként](../service-fabric/service-fabric-guest-executables-introduction.md) üzemeltetését vagy bármilyen alkalmazás telepítését a virtuális gépre. |
 | Indítási feladatok meghatározása/végrehajtása | |X |X |X | |
 | ETW-események figyelése | |X |X |X | |
 

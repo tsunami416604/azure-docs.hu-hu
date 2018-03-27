@@ -8,13 +8,13 @@ ms.service: storage
 ms.tgt_pltfrm: na
 ms.devlang: php
 ms.topic: quickstart
-ms.date: 03/09/2018
+ms.date: 03/15/2018
 ms.author: rogarana
-ms.openlocfilehash: 474c03921369035cd7334fdddd9806f8f90b7d58
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 4adad6fe3da16653bbd654a3e93e14f9e68b7c90
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/17/2018
 ---
 #  <a name="transfer-objects-tofrom-azure-blob-storage-using-php"></a>Objektumok továbbítása Azure Blob-tárolókra és -tárolókról a PHP használatával
 A rövid útmutató azt ismerteti, hogyan használható a PHP blokkblobok feltöltésére, letöltésére és listázására egy, az Azure Blob Storage-ban található tárolóban. 
@@ -23,7 +23,7 @@ A rövid útmutató azt ismerteti, hogyan használható a PHP blokkblobok feltö
 
 A gyorsútmutató elvégzéséhez: 
 * A [PHP](http://php.net/downloads.php) telepítése
-* A [PHP-hez készült Azure SDK](https://github.com/Azure/azure-storage-php) telepítése
+* A [PHP-hez készült Azure Storage SDK](https://github.com/Azure/azure-storage-php) telepítése
 
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
@@ -196,6 +196,13 @@ Ha már nincs szüksége az ebben a rövid útmutatóban feltöltött blobokra, 
     echo "<br />";
     unlink($fileToUpload);   
 ```
+
+## <a name="resources-for-developing-php-applications-with-blobs"></a>Blobokkal rendelkező PHP-alkalmazások fejlesztéséhez használható forrásanyagok
+
+Blob Storage-tárolókat alkalmazó PHP-alkalmazások fejlesztéséhez tekintse át az alábbi további forrásanyagokat is:
+
+- Az Azure Storage-hoz készült [PHP ügyféloldali kódtár forráskódját](https://github.com/Azure/azure-storage-php) megtekintheti, letöltheti és telepítheti a GitHubról.
+- Tekintse át a PHP ügyféloldali kódtár használatával írt [Blob Storage-mintákat](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=php&term=blob).
 
 ## <a name="next-steps"></a>További lépések
  

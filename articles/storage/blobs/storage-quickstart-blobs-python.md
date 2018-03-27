@@ -1,19 +1,19 @@
 ---
-title: "Azure rövid útmutató – Blobok feltöltése, letöltése és listázása az Azure Storage-ban a Python használatával | Microsoft Docs"
-description: "Ebben a rövid útmutatóban egy tárfiókot és egy tárolót hoz létre. Majd a Storage Pythonhoz készült ügyféloldali kódtára segítségével feltölt egy blobot az Azure Storage-ba, letölt egy blobot, és kilistázza a tárolóban lévő blobokat."
+title: Azure rövid útmutató – Blobok feltöltése, letöltése és listázása az Azure Storage-ban a Python használatával | Microsoft Docs
+description: Ebben a rövid útmutatóban egy tárfiókot és egy tárolót hoz létre. Majd a Storage Pythonhoz készült ügyféloldali kódtára segítségével feltölt egy blobot az Azure Storage-ba, letölt egy blobot, és kilistázza a tárolóban lévő blobokat.
 services: storage
 author: tamram
 manager: jeconnoc
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
-ms.date: 02/22/2018
+ms.date: 03/15/2018
 ms.author: tamram
-ms.openlocfilehash: a82ec92449730a784e7cd36d7f364a9a4516c15f
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: d4c489bc41a9c04b15e2ee28b944edc1f15ef81c
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-python"></a>Rövid útmutató: blobok feltöltése, letöltése és listázása a Python használatával
 
@@ -23,7 +23,7 @@ A rövid útmutató azt ismerteti, hogyan használható a Python blokkblobok fel
 
 A gyorsútmutató elvégzéséhez: 
 * Telepítse a [Pythont](https://www.python.org/downloads/).
-* Töltse le és telepítse a [Pythonhoz készült Azure Storage SDK-t](storage-python-how-to-use-blob-storage.md#download-and-install-azure-storage-sdk-for-python). 
+* Töltse le és telepítse a [Pythonhoz készült Azure Storage SDK-t](storage-python-how-to-use-blob-storage.md). 
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
@@ -160,6 +160,18 @@ block_blob_service.delete_container(container_name)
 os.remove(full_path_to_file)
 os.remove(full_path_to_file2)
 ```
+## <a name="resources-for-developing-python-applications-with-blobs"></a>Blobokkal rendelkező Python-alkalmazások fejlesztéséhez használható forrásanyagok
+
+Blob Storage-tárolókat alkalmazó Python-alkalmazások fejlesztéséhez tekintse át az alábbi további forrásanyagokat is:
+
+### <a name="binaries-and-source-code"></a>Bináris fájlok és forráskód
+
+- Az Azure Storage-hoz tartozó [Python ügyféloldali kódtár forráskódját](https://github.com/Azure/azure-storage-python) megtekintheti, letöltheti és telepítheti a GitHubról.
+
+### <a name="client-library-reference-and-samples"></a>Ügyféloldali kódtár – referencia és minták
+
+- A Python ügyféloldali kódtárral kapcsolatos további információért lásd [a Python API-referenciáját](https://docs.microsoft.com/python/api/overview/azure/storage).
+- Tekintse át a Python ügyféloldali kódtár használatával írt [Blob Storage-mintákat](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=python&term=blob).
 
 ## <a name="next-steps"></a>További lépések
  
@@ -168,5 +180,4 @@ Ennek a rövid útmutatónak a segítségével megtanulta, hogyan vihetők át f
 > [!div class="nextstepaction"]
 > [Blob Storage-műveletek használati útmutatója](./storage-python-how-to-use-blob-storage.md)
  
-
 További információk a Storage Explorerről és a blobokról: [Azure Blob Storage-erőforrások kezelése a Storage Explorer használatával](../../vs-azure-tools-storage-explorer-blobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).

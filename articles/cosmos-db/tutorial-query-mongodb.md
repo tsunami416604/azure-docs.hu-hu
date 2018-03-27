@@ -1,39 +1,39 @@
 ---
-title: "Azure Cosmos DB: Hogyan lekérdezés a MongoDB API használatával? | Microsoft Docs"
-description: "Ismerje meg, a MongoDB API-t az Azure Cosmos DB lekérdezése"
+title: 'Azure Cosmos DB: Hogyan végezhető lekérdezés a MongoDB API használatával? | Microsoft Docs'
+description: Megtanulhatja, hogyan végezhet lekérdezést az Azure Cosmos DB-hez készült MongoDB API-val
 services: cosmos-db
-documentationcenter: 
+documentationcenter: ''
 author: mimig1
 manager: jhubbard
-editor: 
-tags: 
-ms.assetid: 
+editor: ''
+tags: ''
+ms.assetid: ''
 ms.service: cosmos-db
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
-ms.workload: 
-ms.date: 05/10/2017
+ms.workload: ''
+ms.date: 03/16/2018
 ms.author: mimig
 ms.custom: mvc
-ms.openlocfilehash: 1818476a95ddf373701ad93860b02ea4c2ad761d
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
-ms.translationtype: MT
+ms.openlocfilehash: 7c51a2a1cace89305b971d5fb0f56c360cbf93cb
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/17/2018
 ---
-# <a name="azure-cosmos-db-how-to-query-with-api-for-mongodb"></a>Azure Cosmos DB: Hogyan lekérdezni az API-JÁVAL a MongoDB?
+# <a name="tutorial-query-azure-cosmos-db-by-using-the-mongodb-api"></a>Oktatóanyag: Az Azure Cosmos DB lekérdezése a MongoDB API használatával
 
-Az Azure Cosmos DB [API-t a MongoDB](mongodb-introduction.md) támogatja [MongoDB rendszerhéj lekérdezések](https://docs.mongodb.com/manual/tutorial/query-documents/). 
+Az Azure Cosmos DB-hez készült [MongoDB API](mongodb-introduction.md) támogatja a [MongoDB-héjlekérdezéseket](https://docs.mongodb.com/manual/tutorial/query-documents/). 
 
-Ez a cikk ismerteti a következő feladatokat: 
+Ez a cikk a következő feladatokat mutatja be: 
 
 > [!div class="checklist"]
-> * A MongoDB-vel adatok lekérdezése
+> * Adatok lekérdezése a MongoDB használatával
 
-## <a name="sample-document"></a>A minta-dokumentum
+## <a name="sample-document"></a>Mintadokumentum
 
-Ebben a cikkben a lekérdezések használja az alábbi minta-dokumentum.
+A cikkben szereplő lekérdezések a következő mintadokumentumot használják.
 
 ```json
 {
@@ -63,15 +63,15 @@ Ebben a cikkben a lekérdezések használja az alábbi minta-dokumentum.
   "isRegistered": false
 }
 ```
-## <a id="examplequery1"></a>1. példa lekérdezés 
+## <a id="examplequery1"></a> 1. példalekérdezés 
 
-A minta termékcsalád dokumentum fenti megadott, a következő lekérdezés adja vissza a dokumentumok Ha az azonosítót tartalmazó mezőt megegyezik `WakefieldFamily`.
+A fenti mintacsalád-dokumentumban a következő lekérdezés olyan dokumentumokat ad vissza, amelyek azonosítót tartalmazó mezői megegyeznek a következővel: `WakefieldFamily`.
 
 **Lekérdezés**
     
     db.families.find({ id: “WakefieldFamily”})
 
-**Eredmények**
+**Results**
 
     {
     "_id": "ObjectId(\"58f65e1198f3a12c7090e68c\")",
@@ -113,15 +113,15 @@ A minta termékcsalád dokumentum fenti megadott, a következő lekérdezés adj
     "isRegistered": false
     }
 
-## <a id="examplequery2"></a>Példalekérdezés 2 
+## <a id="examplequery2"></a> 2. példalekérdezés 
 
-A következő lekérdezést a termékcsalád összes gyermekeit adja vissza. 
+A következő lekérdezés a család összes gyermekét adja vissza. 
 
 **Lekérdezés**
     
-    db.familes.find( { id: “WakefieldFamily” }, { children: true } )
+    db.families.find( { id: “WakefieldFamily” }, { children: true } )
 
-**Eredmények**
+**Results**
 
     {
     "_id": "ObjectId("58f65e1198f3a12c7090e68c")",
@@ -146,23 +146,23 @@ A következő lekérdezést a termékcsalád összes gyermekeit adja vissza.
     }
 
 
-## <a id="examplequery3"></a>Példalekérdezés 3 
+## <a id="examplequery3"></a> 3. példalekérdezés 
 
-A következő lekérdezés a bejegyzett családok adja vissza. 
+A következő lekérdezés az összes regisztrált családot adja vissza. 
 
 **Lekérdezés**
     
     db.families.find( { "isRegistered" : true })
-**Eredmények** nincs dokumentum adja vissza. 
+**Eredmények** Egyetlen dokumentumot sem ad vissza. 
 
-## <a id="examplequery4"></a>Példalekérdezés 4
+## <a id="examplequery4"></a> 4. példalekérdezés
 
-A következő lekérdezés visszaadja az összes családok, amelyek nincsenek regisztrálva. 
+A következő lekérdezés az összes nem regisztrált családot adja vissza. 
 
 **Lekérdezés**
     
     db.families.find( { "isRegistered" : false })
-**Eredmények**
+**Results**
 
      {
     "_id": ObjectId("58f65e1198f3a12c7090e68c"),
@@ -199,15 +199,15 @@ A következő lekérdezés visszaadja az összes családok, amelyek nincsenek re
     "isRegistered": false
 }
 
-## <a id="examplequery5"></a>Példalekérdezés 5
+## <a id="examplequery5"></a> 5. példalekérdezés
 
-A következő lekérdezés adja vissza a families, amelyek nincsenek regisztrálva és állapot NY. 
+A következő lekérdezés visszaadja az összes olyan családot, amelyik nincs regisztrálva, és állam attribútumértéke: NY. 
 
 **Lekérdezés**
     
      db.families.find( { "isRegistered" : false, "address.state" : "NY" })
 
-**Eredmények**
+**Results**
 
      {
     "_id": ObjectId("58f65e1198f3a12c7090e68c"),
@@ -245,15 +245,15 @@ A következő lekérdezés adja vissza a families, amelyek nincsenek regisztrál
 }
 
 
-## <a id="examplequery6"></a>Példalekérdezés 6
+## <a id="examplequery6"></a> 6. példalekérdezés
 
-A következő lekérdezés értéket ad vissza, a családok ahol gyermekek besorolási 8.
+A következő lekérdezés visszaadja az összes olyan családot, amelyben van 8. osztályos gyermek.
 
 **Lekérdezés**
   
      db.families.find( { children : { $elemMatch: { grade : 8 }} } )
 
-**Eredmények**
+**Results**
 
      {
     "_id": ObjectId("58f65e1198f3a12c7090e68c"),
@@ -290,27 +290,27 @@ A következő lekérdezés értéket ad vissza, a családok ahol gyermekek besor
     "isRegistered": false
 }
 
-## <a id="examplequery7"></a>Példalekérdezés 7
+## <a id="examplequery7"></a> 7. példalekérdezés
 
-A következő lekérdezés adja vissza a families, ahol gyermekek tömb mérete 3.
+A következő lekérdezés visszaadja az összes olyan családot, ahol a gyermek tömb mérete 3.
 
 **Lekérdezés**
   
       db.Family.find( {children: { $size:3} } )
 
-**Eredmények**
+**Results**
 
-Jelenleg nincs 2-nél több gyermekek visszatér nem járt eredménnyel. Csak akkor, ha a paraméter értéke 2 Ez a lekérdezés sikeresen befejeződik, és térjen vissza a teljes dokumentumot.
+Nem ad vissza értéket, mivel nincs olyan család, amelyben 2-nél több gyermek van. Ez a lekérdezés csak akkor lesz sikeres, és adja vissza a teljes dokumentumot, ha a paraméter értéke 2.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban ezt a következők:
+Ebben az oktatóanyagban a következőket hajtotta végre:
 
 > [!div class="checklist"]
-> * Megtudta, hogyan lekérdezés MongoDB használatával 
+> * Megismerte, hogyan végezhet lekérdezéseket a MongoDB használatával 
 
-Most már folytathatja a következő oktatóanyag megtudhatja, miként ossza el az adatokat globális.
+Továbbléphet a következő oktatóanyagra, amelyben megismerheti, hogyan terjesztheti az adatait globálisan.
 
 > [!div class="nextstepaction"]
-> [Az adatok globálisan terjesztése](tutorial-global-distribution-sql-api.md)
+> [Globális adatterjesztés](tutorial-global-distribution-sql-api.md)
 

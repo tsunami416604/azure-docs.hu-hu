@@ -1,51 +1,48 @@
 ---
-title: "Az Azure PowerShell-parancsfájl példák az SQL Database |} Microsoft Docs"
-description: "Az Azure PowerShell-példák, hogyan hozhat létre és kezelheti az Azure SQL Database-kiszolgálók, a rugalmas készletek, az adatbázisok és a tűzfal parancsfájlt."
+title: Azure PowerShell-példaszkriptek az SQL Database-hez | Microsoft Docs
+description: Az Azure PowerShell-példaszkriptek segítenek az Azure SQL Database-kiszolgálók, rugalmas készletek, adatbázisok és tűzfalak létrehozásában és felügyeletében.
 services: sql-database
 documentationcenter: sql-database
 author: CarlRabeler
-manager: jhubbard
+manager: craigg
 editor: tysonn
 tags: azure-service-management
-ms.assetid: 
 ms.service: sql-database
 ms.custom: overview-samples, mvc
-ms.devlang: na
+ms.devlang: PowerShell
 ms.topic: sample
-ms.tgt_pltfrm: sql-database
-ms.workload: On Demand
 ms.date: 06/23/2017
-ms.author: janeng
-ms.openlocfilehash: fd60a8987e6c57cf72eb7766f6a1b784e46a894d
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
-ms.translationtype: MT
+ms.author: carlrab
+ms.openlocfilehash: 63be3858bf159195acb99821a17447b7f05d7917
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 03/16/2018
 ---
-# <a name="azure-powershell-samples-for-azure-sql-database"></a>Az Azure SQL Database az Azure PowerShell-példák
+# <a name="azure-powershell-samples-for-azure-sql-database"></a>Azure PowerShell-minták az Azure SQL Database-hez
 
-A következő táblázat az Azure SQL Database az Azure PowerShell-mintaparancsfájlok hivatkozásokat tartalmaz.
+A következő táblázat az Azure SQL Database-hez elérhető Azure PowerShell-példaszkriptekre mutató hivatkozásokat tartalmaz.
 
 | |  |
 |---|---|
-|**Hozzon létre egy önálló adatbázis és a rugalmas készlethez**||
-| [Hozzon létre egy adatbázist, és a tűzfalszabályok konfigurálása](scripts/sql-database-create-and-configure-database-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | A PowerShell-parancsfájlt hoz létre egy Azure SQL-adatbázis, és konfigurálja egy kiszolgálószintű tűzfalszabályt. |
-| [A rugalmas készlet létrehozása és készletezett adatbázisok áthelyezése](scripts/sql-database-move-database-between-pools-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | A PowerShell-parancsfájlt hoz létre az Azure SQL Database rugalmas készletek, és készletezett adatbázisok helyezi át, és teljesítményszintek vált.|
-|**Georeplikálási és a feladatátvétel konfigurálása**||
-| [Konfigurálja és feladatátvételi egy önálló adatbázis aktív georeplikációt használ](scripts/sql-database-setup-geodr-and-failover-database-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| A PowerShell-parancsfájl egy Azure SQL-adatbázis aktív georeplikáció konfigurálja, és átadja a másodlagos replikára. |
-| [Konfigurálja és feladatátvételi egy készletezett adatbázis aktív georeplikációt használ](scripts/sql-database-setup-geodr-and-failover-pool-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| A PowerShell parancsfájl konfigurálja az Azure SQL-adatbázis aktív georeplikáció a rugalmas SQL-készletet, és átadja a másodlagos replikára. |
-| [Konfigurálja és a feladatátvételi feladatátvételi csoport számára egy adatbázist (előzetes verzió)](scripts/sql-database-setup-geodr-failover-database-failover-group-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | A PowerShell parancsfájl konfigurálása az Azure SQL Database server-példány egy feladatátvételi csoport, egy adatbázis hozzáadja a feladatátvételi csoport, és átadja a másodlagos kiszolgáló |
-|**Egy önálló adatbázisok és rugalmas készletek méretezése**||
-| [Egy önálló adatbázis méretezése](scripts/sql-database-monitor-and-scale-database-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | A metrikák egy Azure SQL-adatbázis, a PowerShell parancsfájl figyelők méretezi a magasabb teljesítményszintre, és egy riasztási szabályt hoz létre a Teljesítményelemzési értékek egyike. |
-| [Egy rugalmas készlet méretezése](scripts/sql-database-monitor-and-scale-pool-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | A PowerShell parancsfájl figyelők a metrikák egy Azure SQL Database rugalmas készlet méretezi a magasabb teljesítményszintre, és egy riasztási szabályt hoz létre a Teljesítményelemzési értékek egyike.  |
-| **Naplózás és a fenyegetések észlelése** |
-| [Naplózás és fenyegetésészlelés konfigurálása](scripts/sql-database-auditing-and-threat-detection-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| A PowerShell parancsfájl naplózás és a fenyegetések észlelése házirendek az Azure SQL-adatbázis konfigurálása. |
-| **Állítsa vissza, másolása és adatbázis importálása**||
-| [Adatbázis helyreállítása](scripts/sql-database-restore-database-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| A PowerShell parancsfájl Azure SQL-adatbázis visszaállítása egy georedundáns biztonsági másolatból, és visszaállítja az törölt Azure SQL-adatbázis a legutóbbi biztonsági mentése. |
-| [Új kiszolgáló adatbázis másolása](scripts/sql-database-copy-database-to-new-server-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| A PowerShell-parancsfájl egy létező Azure SQL-adatbázis másolatát egy új Azure SQL Server hoz létre. |
-| [Adatbázis bacpac-fájlból való importálása](scripts/sql-database-import-from-bacpac-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| A PowerShell-parancsfájl az Azure SQL Server adatbázis importál egy bacpac-fájlból. |
-| **Adatbázisok között szinkronizálja az adatokat**||
-| [SQL-adatbázisok között szinkronizálja az adatokat](scripts/sql-database-sync-data-between-sql-databases.md?toc=%2fpowershell%2fmodule%2ftoc.json) | A PowerShell parancsfájl adatszinkronizálás több Azure SQL-adatbázisok közötti szinkronizálására konfigurálja. |
-| [SQL Database és SQL Server helyszíni között szinkronizálja az adatokat](scripts/sql-database-sync-data-between-azure-onprem.md?toc=%2fpowershell%2fmodule%2ftoc.json) | A PowerShell parancsfájl adatszinkronizálás Azure SQL-adatbázis és a helyszíni SQL Server-adatbázisok közötti szinkronizálására konfigurálja. |
-| [Az SQL adatszinkronizálás szinkronizálási séma frissítése](scripts/sql-database-sync-update-schema.md?toc=%2fpowershell%2fmodule%2ftoc.json) | A PowerShell parancsfájl eltávolítása vagy elemek az adatszinkronizálás szinkronizálási sémát. |
+|**Önálló adatbázis és rugalmas készlet létrehozása**||
+| [Önálló adatbázis létrehozása és egy tűzfalszabály konfigurálása](scripts/sql-database-create-and-configure-database-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Ez a PowerShell-szkript egyetlen Azure SQL-adatbázist hoz létre, és konfigurál egy kiszolgálószintű tűzfalszabályt. |
+| [Rugalmas készletek létrehozása és készletezett adatbázisok áthelyezése](scripts/sql-database-move-database-between-pools-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Ez a PowerShell-szkript rugalmas Azure SQL Database-készleteket hoz létre, áthelyezi a készletezett adatbázisokat, és módosítja a teljesítményszinteket.|
+|**Georeplikáció és feladatátvétel konfigurálása**||
+| [Önálló adatbázis konfigurálása és a feladatainak átvétele aktív georeplikációval](scripts/sql-database-setup-geodr-and-failover-database-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Ez a PowerShell-szkript aktív georeplikációt állít be egyetlen Azure SQL-adatbázishoz, és átadja a feladatait a másodlagos replikának. |
+| [Készletezett adatbázis konfigurálása és a feladatainak átvétele aktív georeplikációval](scripts/sql-database-setup-geodr-and-failover-pool-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Ez a PowerShell-szkript aktív georeplikációt állít be egy Azure SQL-adatbázishoz a rugalmas SQL-készletben, és átadja a feladatait a másodlagos replikának. |
+| [Önálló adatbázis feladatátvételi csoportjának konfigurálása és feladatainak átvétele (előzetes verzió)](scripts/sql-database-setup-geodr-failover-database-failover-group-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Ez a PowerShell-szkript feladatátvételi csoportot állít be az Azure SQL Database egy kiszolgálópéldányához, hozzáad egy adatbázist a feladatátvételi csoporthoz, és átadja a feladatait a másodlagos kiszolgálónak |
+|**Önálló adatbázis és rugalmas készlet méretezése**||
+| [Önálló adatbázis méretezése](scripts/sql-database-monitor-and-scale-database-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Ez a PowerShell-szkript egy Azure SQL-adatbázis teljesítmény-mérőszámait monitorozza, méretezi azt egy magasabb teljesítményi szinthez, és létrehoz egy riasztási szabályt az egyik teljesítmény-mérőszámon. |
+| [Rugalmas készlet méretezése](scripts/sql-database-monitor-and-scale-pool-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Ez a PowerShell-szkript az Azure SQL Database egy rugalmas készletének teljesítmény-mérőszámait monitorozza, méretezi azt egy magasabb teljesítményi szinthez, és létrehoz egy riasztási szabályt az egyik teljesítmény-mérőszámon.  |
+| **Naplózás és fenyegetésészlelés** |
+| [Naplózás és fenyegetésészlelés konfigurálása](scripts/sql-database-auditing-and-threat-detection-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Ez a PowerShell-szkript naplózási és fenyegetésészlelési szabályzatokat konfigurál egy Azure SQL-adatbázishoz. |
+| **Adatbázis visszaállítása, másolása és importálása**||
+| [Adatbázis visszaállítása](scripts/sql-database-restore-database-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Ez a PowerShell-szkript visszaállít egy Azure SQL-adatbázist egy georedundáns biztonsági másolatból, és visszaállít egy törölt Azure SQL-adatbázist a legutóbbi biztonsági másolatra. |
+| [Adatbázis másolása új kiszolgálóra](scripts/sql-database-copy-database-to-new-server-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Ez a PowerShell-szkript másolatot készít egy meglévő Azure SQL-adatbázisról egy új Azure SQL Serveren. |
+| [Adatbázis importálása BACPAC-fájlból](scripts/sql-database-import-from-bacpac-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Ez a PowerShell-szkript egy adatbázist importál egy Azure SQL Serverre egy BACPAC-fájlból. |
+| **Adatok szinkronizálása adatbázisok között**||
+| [Adatok szinkronizálása SQL-adatbázisok között](scripts/sql-database-sync-data-between-sql-databases.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Ez a PowerShell-szkript több Azure SQL-adatbázis közötti szinkronizáláshoz konfigurálja a Data Syncet. |
+| [Adatok helyszíni szinkronizálása az SQL Database és az SQL Server között](scripts/sql-database-sync-data-between-azure-onprem.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Ez a PowerShell-szkript egy Azure SQL-adatbázis és egy helyszíni SQL Server-adatbázis közötti szinkronizáláshoz konfigurálja a Data Syncet. |
+| [Az SQL Data Sync szinkronizálási sémájának frissítése](scripts/sql-database-sync-update-schema.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Ez a PowerShell-szkript adatokat ad hozzá a Data Sync szinkronizálási sémához, vagy eltávolítja belőle azokat. |
 |||

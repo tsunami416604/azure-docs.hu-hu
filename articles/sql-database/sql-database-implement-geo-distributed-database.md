@@ -1,68 +1,61 @@
 ---
-title: "Földrajzilag elosztott Azure SQL adatbázis-megoldás megvalósítása |} Microsoft Docs"
-description: "További tudnivalók az Azure SQL Database és a replikált adatbázis feladatátvétel alkalmazás konfigurálása, és a feladatátvételi teszt."
+title: Földrajzilag elosztott Azure SQL Database-megoldás implementálása | Microsoft Docs
+description: Megismerheti, hogyan konfigurálhatja az Azure SQL Database-adatbázisa és -alkalmazása feladatátvételét egy replikált adatbázisra, és tesztelheti a feladatátvételt.
 services: sql-database
-documentationcenter: 
 author: CarlRabeler
-manager: jhubbard
-editor: 
-tags: 
-ms.assetid: 
+manager: craigg
 ms.service: sql-database
 ms.custom: mvc,business continuity
-ms.devlang: na
 ms.topic: tutorial
-ms.tgt_pltfrm: na
-ms.workload: On Demand
 ms.date: 05/26/2017
 ms.author: carlrab
-ms.openlocfilehash: 910be8ff5f9a882c7bb8ae875b8bf5fc74d1fb9a
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
-ms.translationtype: MT
+ms.openlocfilehash: ea94a311d409d8c5d6142746dc1009ff67ef3a82
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 03/16/2018
 ---
-# <a name="implement-a-geo-distributed-database"></a>Egy földrajzilag elosztott adatbázist megvalósítása
+# <a name="implement-a-geo-distributed-database"></a>Földrajzilag elosztott adatbázis implementálása
 
-Ebben az oktatóanyagban egy Azure SQL-adatbázis és a távoli régióban feladatátvételi alkalmazás konfigurálása, és tesztelje a feladatátvételi tervet. Az alábbiak végrehajtásának módját ismerheti meg: 
+Ebben az oktatóanyagban konfigurálni fogja egy Azure SQL Database-adatbázis és -alkalmazás feladatátvételét egy távoli régióba, majd teszteli a feladatátvételi tervet. Az alábbiak végrehajtásának módját ismerheti meg: 
 
 > [!div class="checklist"]
-> * Adatbázis-felhasználók létrehozása és engedélyekkel rendelkeznek
-> * Egy adatbázis-adatbázisszintű tűzfalszabály beállítása
-> * Hozzon létre egy [georeplikáció feladatátvételi csoport](sql-database-geo-replication-overview.md)
-> * Hozzon létre és lefordítani a Java-alkalmazások Azure SQL-adatbázis lekérdezésére
-> * Hajtsa végre a vész-helyreállítási részletezési
+> * Adatbázis-felhasználók létrehozása és az engedélyeik kiosztása
+> * Adatbázisszintű tűzfalszabály beállítása
+> * [Georeplikációs feladatátvételi csoport](sql-database-geo-replication-overview.md) létrehozása
+> * Egy Java-alkalmazás létrehozása az Azure SQL-adatbázis lekérdezéséhez
+> * Vészhelyreállítási próba végrehajtása
 
-Ha nem rendelkezik Azure-előfizetéssel, [ingyenes fiók létrehozását](https://azure.microsoft.com/free/) megkezdése előtt.
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az oktatóanyag teljesítéséhez meg kell felelnie az alábbi előfeltételeknek:
 
-- Legfrissebb telepítve [Azure PowerShell](https://docs.microsoft.com/powershell/azureps-cmdlets-docs). 
-- Azure SQL-adatbázis telepítve. Ez az oktatóanyag használja a AdventureWorksLT mintaadatbázis nevű **mySampleDatabase** a gyors üzembe helyezések egyikét:
+- Telepítve van az [Azure PowerShell](https://docs.microsoft.com/powershell/azureps-cmdlets-docs) legújabb verziója. 
+- Telepítve van egy Azure SQL-adatbázis. Ez az oktatóanyag a **mySampleDatabase** nevű AdventureWorksLT mintaadatbázist használja, amely az alábbi rövid útmutatók egyikében lett létrehozva:
 
    - [DB létrehozása – portál](sql-database-get-started-portal.md)
    - [DB létrehozása – CLI](sql-database-get-started-cli.md)
    - [DB létrehozása – PowerShell](sql-database-get-started-powershell.md)
 
-- Azonosította a metódus SQL-szkriptek használatát az adatbázis, a következő lekérdezés eszközök közül választhat:
-   - A Lekérdezésszerkesztő a a [Azure-portálon](https://portal.azure.com). A lekérdezés-szerkesztő használatával az Azure portálon további információkért lásd: [kapcsolódás és lekérdezés lekérdezés-szerkesztő segítségével](sql-database-get-started-portal.md#query-the-sql-database).
-   - A legújabb verziójának [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms), amely integrált környezetet bármely SQL infrastruktúra kezelése a Microsoft Windows SQL-adatbázis SQL Server.
-   - A legújabb verzióját [Visual Studio Code](https://code.visualstudio.com/docs), amely egy grafikus kód szerkesztése Linux, macOS, és Windows, amely támogatja a bővítményeket, ezek közé tartoznak a [mssql bővítmény](https://aka.ms/mssql-marketplace) Microsoft SQL Server, az Azure SQL Database és az SQL Data Warehouse lekérdezése. Ezzel az eszközzel az Azure SQL Database további információkért lásd: [kapcsolódás és lekérdezés VS kóddal](sql-database-connect-query-vscode.md). 
+- Azonosítani kell egy metódust, amely végrehajtja az SQL-szkripteket az adatbázison. Ezután a következő lekérdezési eszközök használhatók:
+   - Az [Azure Portal](https://portal.azure.com) lekérdezésszerkesztője. További információ az Azure Portal lekérdezésszerkesztőjének használatával kapcsolatban: [Csatlakozás és lekérdezés a lekérdezésszerkesztővel](sql-database-get-started-portal.md#query-the-sql-database).
+   - Az [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) legújabb verziója. Ez egy bármely SQL-infrastruktúra kezelésére alkalmas integrált környezet az SQL Servertől egészen az SQL Database for Microsoft Windowsig.
+   - A [Visual Studio Code](https://code.visualstudio.com/docs) legújabb verziója. Ez egy grafikus kódszerkesztő Linux, macOS és Windows rendszerekre, amely támogatja a bővítményeket, beleértve az [mssql bővítményt](https://aka.ms/mssql-marketplace) a Microsoft SQL Server, az Azure SQL Database és az SQL Data Warehouse lekérdezéséhez. További információ az eszköz és az Azure SQL Database használatával kapcsolatban: [Csatlakozás és lekérdezés a VS Code használatával](sql-database-connect-query-vscode.md). 
 
-## <a name="create-database-users-and-grant-permissions"></a>Hozzon létre az adatbázis-felhasználók és engedélyek
+## <a name="create-database-users-and-grant-permissions"></a>Adatbázis-felhasználók létrehozása és az engedélyeik kiosztása
 
-Kapcsolódás saját adatbázishoz, és hozzon létre felhasználói fiókokat az alábbi lekérdezés eszközök egyikével:
+Csatlakozzon az adatbázishoz és hozzon létre felhasználói fiókokat a következő lekérdezési eszközök valamelyikével:
 
-- A Lekérdezésszerkesztő az Azure-portálon
+- Az Azure Portal lekérdezésszerkesztője.
 - SQL Server Management Studio
 - Visual Studio Code
 
-Ezek a fiókok automatikusan replikálni a másodlagos kiszolgáló (és szinkronban kell tartani). SQL Server Management Studio vagy Visual Studio Code használatához szükség lehet egy tűzfalszabály konfigurálása, ha egy IP-címen, amelynek Ön még nincs konfigurálva a tűzfal ügyfél csatlakozik. Részletes útmutató: [hozzon létre egy kiszolgálószintű tűzfalszabályt](sql-database-get-started-portal.md#create-a-server-level-firewall-rule).
+Ezeket a fiókokat a rendszer automatikusan replikálja a másodlagos kiszolgálóra (és szinkronban tartja őket). Az SQL Server Management Studio vagy a Visual Studio Code használatához szükség lehet egy tűzfalszabály konfigurálására, ha a csatlakozást egy olyan ügyfélről végzi, amelynek az IP-címéhez még nincs konfigurálva tűzfal. Részletes lépésekért lásd: [Kiszolgálószintű tűzfalszabály létrehozása](sql-database-get-started-portal.md#create-a-server-level-firewall-rule).
 
-- A lekérdezési ablakban hajtható végre a következő lekérdezés futtatásával hozzon létre két felhasználói fiókokat az adatbázisban. Engedélyezi ezt a parancsfájlt **db_owner** engedélyeket a **app_admin** fiók és biztosít **kiválasztása** és **frissítés** engedélyeket a **app_user** fiók. 
+- Egy lekérdezési ablakban hozzon létre két felhasználói fiókot az adatbázisban a következő lekérdezés futtatásával: Ez a szkript **db_owner** engedélyeket ad az **app_admin** fióknak, valamint **SELECT** és **UPDATE** engedélyeket az **app_user** fióknak. 
 
    ```sql
    CREATE USER app_admin WITH PASSWORD = 'ChangeYourPassword1';
@@ -74,26 +67,26 @@ Ezek a fiókok automatikusan replikálni a másodlagos kiszolgáló (és szinkro
    GRANT SELECT, INSERT, DELETE, UPDATE ON SalesLT.Product TO app_user;
    ```
 
-## <a name="create-database-level-firewall"></a>Adatbázis-szintű tűzfal létrehozása
+## <a name="create-database-level-firewall"></a>Adatbázisszintű tűzfal létrehozása
 
-Hozzon létre egy [adatbázis-adatbázisszintű tűzfalszabály](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database) az SQL-adatbázis számára. Az adatbázis-adatbázisszintű tűzfalszabály automatikusan replikálja az Ön által létrehozott ebben az oktatóanyagban a másodlagos kiszolgáló. Az egyszerűség érdekében (a jelen oktatóanyag) a számítógép, amelyen hajtja végre a lépéseket ebben az oktatóanyagban a nyilvános IP-cím használatára. Az IP-cím, a kiszolgálószintű tűzfalszabály az aktuális számítógépen használt megállapításához lásd: [hozzon létre egy kiszolgálószintű tűzfal](sql-database-get-started-portal.md#create-a-server-level-firewall-rule).  
+Hozzon létre egy [adatbázisszintű tűzfalszabályt](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database) az SQL-adatbázisához. Ez az adatbázisszintű tűzfalszabály automatikusan replikál az oktatóanyagban létrehozott másodlagos kiszolgálóra. Az egyszerűség érdekében (ebben az oktatóanyagban) használja azon számítógép nyilvános IP-címét, amelyen ezt az oktatóanyagot elvégzi. A jelenlegi számítógép kiszolgálószintű tűzfalszabályához használt IP-cím megállapításához lásd: [Kiszolgálószintű tűzfalszabály](sql-database-get-started-portal.md#create-a-server-level-firewall-rule) létrehozása.  
 
-- Nyissa meg a lekérdezésablakban cserélje le az előző lekérdezés az alábbi lekérdezést, az IP-címek cseréje a környezetének megfelelő IP-címmel.  
+- A megnyitott lekérdezési ablakban cserélje le az előző lekérdezést a következő lekérdezésre, és cserélje le az IP-címeket a saját környezetének megfelelő IP-címekre.  
 
    ```sql
    -- Create database-level firewall setting for your public IP address
    EXECUTE sp_set_database_firewall_rule @name = N'myGeoReplicationFirewallRule',@start_ip_address = '0.0.0.0', @end_ip_address = '0.0.0.0';
    ```
 
-## <a name="create-an-active-geo-replication-auto-failover-group"></a>Aktív georeplikáció automatikus feladatátvételi csoport létrehozása 
+## <a name="create-an-active-geo-replication-auto-failover-group"></a>Aktív georeplikációs automatikus feladatátvételi csoport létrehozása 
 
-Azure PowerShell használatával hozzon létre egy [aktív georeplikáció automatikus feladatátvételi csoport](sql-database-geo-replication-overview.md) között a meglévő Azure SQL-kiszolgáló és az új Azure SQL server Azure-régióban üres, és adja hozzá a mintaadatbázis a feladatátvételi csoport számára.
+Az Azure PowerShell használatával hozzon létre egy [aktív georeplikációs automatikus feladatátvételi csoportot](sql-database-geo-replication-overview.md) a meglévő Azure SQL-kiszolgáló és az új Azure SQL-kiszolgáló között egy Azure-régióban, majd adja hozzá a mintaadatbázist a feladatátvételi csoporthoz.
 
 > [!IMPORTANT]
-> Ezeket a parancsmagokat az Azure PowerShell 4.0 szükséges. [!INCLUDE [sample-powershell-install](../../includes/sample-powershell-install-no-ssh.md)]
+> A parancsmagok futtatásához az Azure PowerShell 4.0-s verziója szükséges. [!INCLUDE [sample-powershell-install](../../includes/sample-powershell-install-no-ssh.md)]
 >
 
-1. Feltöltése a PowerShell-parancsfájlok felhasználva a meglévő kiszolgáló és a mintaadatbázis változók, és adjon meg egy globális szinten egyedi érték feladatátvételi csoport neve.
+1. Töltse fel a PowerShell-szkriptek változóit a meglévő kiszolgáló és a mintaadatbázis értékeivel, és adjon meg egy globális szinten egyedi értéket a feladatátvételi csoport nevének.
 
    ```powershell
    $adminlogin = "ServerAdmin"
@@ -107,7 +100,7 @@ Azure PowerShell használatával hozzon létre egy [aktív georeplikáció autom
    $myfailovergroupname = "<your unique failover group name>"
    ```
 
-2. Hozzon létre egy üres helykiszolgáló biztonsági mentése a feladatátvételi régióban.
+2. Hozzon létre egy üres kiszolgálót a feladatátvételi régióban.
 
    ```powershell
    $mydrserver = New-AzureRmSqlServer -ResourceGroupName $myresourcegroupname `
@@ -117,7 +110,7 @@ Azure PowerShell használatával hozzon létre egy [aktív georeplikáció autom
    $mydrserver   
    ```
 
-3. Hozzon létre egy feladatátvételi csoport a két kiszolgáló között.
+3. Hozzon létre egy feladatátvételi csoportot a két kiszolgáló között.
 
    ```powershell
    $myfailovergroup = New-AzureRMSqlDatabaseFailoverGroup `
@@ -130,7 +123,7 @@ Azure PowerShell használatával hozzon létre egy [aktív georeplikáció autom
    $myfailovergroup   
    ```
 
-4. A feladatátvételi csoport hozzáadása az adatbázishoz.
+4. Adja hozzá az adatbázist a feladatátvételi csoporthoz.
 
    ```powershell
    $myfailovergroup = Get-AzureRmSqlDatabase `
@@ -157,7 +150,7 @@ brew update
 brew install maven
 ```
 
-Részletes útmutatást telepítése és konfigurálása a Java és Maven környezet, nyissa meg a [hozza létre az SQL Server használatával alkalmazását](https://www.microsoft.com/sql-server/developer-get-started/), jelölje be **Java**, jelölje be **MacOS**, és kövesse a részletes utasításokat beállítja a Java és Maven 1.3 és 1.2-es lépésben.
+A Java és Maven környezet telepítésével és konfigurálásával kapcsolatos részletes útmutatásért lépjen az [Alkalmazás készítése az SQL Server használatával](https://www.microsoft.com/sql-server/developer-get-started/) oldalra, válassza a **Java**, majd a **MacOS** lehetőségeket, és kövesse az 1.2-es és 1.3-as lépésekben lévő részletes utasításokat a Java és a Maven beállításához.
 
 ### <a name="linux-ubuntu"></a>**Linux (Ubuntu)**
 Nyissa meg a terminált, és navigáljon ahhoz a könyvtárhoz, ahol létre szeretné hozni a Java projektet. A **Maven** telepítéséhez használja a következő parancsokat:
@@ -166,27 +159,27 @@ Nyissa meg a terminált, és navigáljon ahhoz a könyvtárhoz, ahol létre szer
 sudo apt-get install maven
 ```
 
-Részletes útmutatást telepítése és konfigurálása a Java és Maven környezet, nyissa meg a [hozza létre az SQL Server használatával alkalmazását](https://www.microsoft.com/sql-server/developer-get-started/), jelölje be **Java**, jelölje be **Ubuntu**, és kövesse a részletes utasításokat beállítja a Java és Maven 1.2-es, az 1.3 és az 1.4-es lépésben.
+A Java és Maven környezet telepítésével és konfigurálásával kapcsolatos részletes útmutatásért lépjen az [Alkalmazás készítése az SQL Server használatával](https://www.microsoft.com/sql-server/developer-get-started/) oldalra, válassza a **Java**, majd az **Ubuntu** lehetőségeket, és kövesse az 1.2-es, 1.3-as és 1.4-es lépésekben lévő részletes utasításokat a Java és a Maven beállításához.
 
 ### <a name="windows"></a>**Windows**
-Telepítse a [Mavent](https://maven.apache.org/download.cgi) a hivatalos telepítővel. Függőségek kezeléséhez használható Maven build, tesztelése és futtassa a Java-projektet. Részletes útmutatást telepítése és konfigurálása a Java és Maven környezet, nyissa meg a [hozza létre az SQL Server használatával alkalmazását](https://www.microsoft.com/sql-server/developer-get-started/), jelölje be **Java**, válassza a Windows, és hajtsa végre az 1.2-es és az 1.3 lépést a Java és Maven beállításával kapcsolatos részletes utasításokat.
+Telepítse a [Mavent](https://maven.apache.org/download.cgi) a hivatalos telepítővel. A Maven segít a függőségek kezelésében, valamint a Java-projektek készítésében, tesztelésében és futtatásában. A Java és Maven környezet telepítésével és konfigurálásával kapcsolatos részletes útmutatásért lépjen az [Alkalmazás készítése az SQL Server használatával](https://www.microsoft.com/sql-server/developer-get-started/) oldalra, válassza a **Java**, majd a Windows lehetőségeket, és kövesse az 1.2-es és 1.3-as lépésekben lévő részletes utasításokat a Java és a Maven beállításához.
 
-## <a name="create-sqldbsample-project"></a>SqlDbSample projekt létrehozása
+## <a name="create-sqldbsample-project"></a>Az SqlDbSample projekt létrehozása
 
-1. A parancs-konzolon (például a Bash) Maven-projekt létrehozása. 
+1. Hozzon létre egy Maven-projektet a parancskonzol (például Bash) használatával. 
    ```bash
    mvn archetype:generate "-DgroupId=com.sqldbsamples" "-DartifactId=SqlDbSample" "-DarchetypeArtifactId=maven-archetype-quickstart" "-Dversion=1.0.0"
    ```
-2. Típus **Y** kattintson **Enter**.
-3. Az újonnan létrehozott projektben módosítsa a könyvtárat.
+2. Írja be az **Y** értéket, majd nyomja le az **Enter** billentyűt.
+3. Módosítsa a könyvtárakat az újonnan létrehozott projektre.
 
    ```bash
    cd SqlDbSamples
    ```
 
-4. A kedvenc szerkesztő nyissa meg a pom.xml fájlt a projekt mappában. 
+4. Nyissa meg a projektmappában található pom.xml fájlt egy tetszőleges szerkesztőben. 
 
-5. Adja hozzá a Microsoft SQL Server-függőségének JDBC-illesztőt a Maven projekthez ellenőrzéséhez nyissa meg kedvenc szövegszerkesztőjével és másolása és a következő sorokat beillesztése a pom.xml fájlt. Ne írja felül a meglévő értékeket a fájlban előre feltöltve. A JDBC-függőség kell illeszthető be a "függőségei" szakasz (nagyobb).   
+5. Adja hozzá a Maven-projekthez az SQL Server-függőség Microsoft JDBC-illesztőjét úgy, hogy megnyit egy tetszőleges szövegszerkesztőt, és bemásolja a következő sorokat a pom.xml fájlba. Ne írja felül a fájlban található előre megadott értékeket. A JDBC-függőséget a nagyobb „dependencies” szakaszba ( ) kell beilleszteni.   
 
    ```xml
    <dependency>
@@ -196,7 +189,7 @@ Telepítse a [Mavent](https://maven.apache.org/download.cgi) a hivatalos telepí
    </dependency>
    ```
 
-6. Adja meg a adja hozzá a következő "Tulajdonságok" szakaszban azokat a pom.xml fájlt a "függőségei" szakasz után a projekt elleni fordítási Java-verziót. 
+6. Adja meg a projekt fordításához használandó Java-verziót úgy, hogy a következő „properties” szakaszt bemásolja a pom.xml fájlba a „dependencies” szakasz után. 
 
    ```xml
    <properties>
@@ -204,7 +197,7 @@ Telepítse a [Mavent](https://maven.apache.org/download.cgi) a hivatalos telepí
      <maven.compiler.target>1.8</maven.compiler.target>
    </properties>
    ```
-7. Adja hozzá az alábbi "Szerkesztés" szakasz után a "Tulajdonságok" című szakaszt a jegyzékfájlt támogatja a JAR-fájlok kivételével a pom.xml fájlt.       
+7. Adja hozzá az alábbi „build” szakaszt pom.xml fájlhoz a „properties” szakasz után a jegyzékfájlok támogatásához a JAR-fájlokban.       
 
    ```xml
    <build>
@@ -225,7 +218,7 @@ Telepítse a [Mavent](https://maven.apache.org/download.cgi) a hivatalos telepí
    </build>
    ```
 8. Mentse és zárja be a pom.xml fájlt.
-9. Nyissa meg a App.java fájlt (C:\apache-maven-3.5.0\SqlDbSample\src\main\java\com\sqldbsamples\App.java), és cserélje ki annak tartalmát a következő tartalmakat. Cserélje le a feladatátvételi csoport nevét a feladatátvételi csoport nevét. Ha módosította az értékeket az adatbázis nevét, a felhasználó vagy a jelszó, módosítsa ezeket az értékeket is.
+9. Nyissa meg az App.java fájlt (C:\apache-maven-3.5.0\SqlDbSample\src\main\java\com\sqldbsamples\App.java), majd cserélje ki annak tartalmát a következőre: A feladatátvételi csoport nevét cserélje le a saját feladatátvételi csoportjának nevére. Ha módosította az adatbázis nevét, a felhasználónevet vagy a jelszót, módosítsa ezeket az értékeket is.
 
    ```java
    package com.sqldbsamples;
@@ -324,14 +317,14 @@ Telepítse a [Mavent](https://maven.apache.org/download.cgi) a hivatalos telepí
    ```
 6. Mentse és zárja be az App.java fájlt.
 
-## <a name="compile-and-run-the-sqldbsample-project"></a>Fordítsa le és futtassa a SqlDbSample projektet
+## <a name="compile-and-run-the-sqldbsample-project"></a>Az SqlDbSample projekt fordítása és futtatása
 
-1. A parancs konzolon hajtható végre a következő parancsot.
+1. A parancskonzolban hajtsa végre a következő parancsot:
 
    ```bash
    mvn package
    ```
-2. Ha elkészült, hajtsa végre a következő parancsot a (futtatás esetén körülbelül 1 óra kivéve, ha manuálisan leállítása) az alkalmazás futtatásához:
+2. Ha végzett, hajtsa végre a következő parancsot az alkalmazás futtatásához (ez körülbelül egy órán át fut, hacsak manuálisan le nem állítják):
 
    ```bash
    mvn -q -e exec:java "-Dexec.mainClass=com.sqldbsamples.App"
@@ -345,9 +338,9 @@ Telepítse a [Mavent](https://maven.apache.org/download.cgi) a hivatalos telepí
    3. insert on primary successful, read from secondary successful
    ```
 
-## <a name="perform-disaster-recovery-drill"></a>Hajtsa végre a vész-helyreállítási részletezési
+## <a name="perform-disaster-recovery-drill"></a>Vészhelyreállítási próba végrehajtása
 
-1. Hívja meg a feladatátvételi csoport kézi feladatátvételre. 
+1. Indítsa el a feladatátvételi csoport manuális feladatátvételét. 
 
    ```powershell
    Switch-AzureRMSqlDatabaseFailoverGroup `
@@ -356,15 +349,15 @@ Telepítse a [Mavent](https://maven.apache.org/download.cgi) a hivatalos telepí
    -FailoverGroupName $myfailovergroupname
    ```
 
-2. Az alkalmazás eredmények láthatja a feladatátvétel során. Néhány beszúrása sikertelen, a DNS-gyorsítótár frissítése közben.     
+2. Figyelje meg az alkalmazás eredményeit a feladatátvétel során. Néhány beszúrás sikertelen lesz a DNS-gyorsítótár frissítése közben.     
 
-3. Megtudhatja, milyen működik-e a vész-helyreállítási kiszolgálói szerepkört.
+3. Derítse ki, milyen szerepkört tölt be a vészhelyreállítási kiszolgáló.
 
    ```powershell
    $mydrserver.ReplicationRole
    ```
 
-4. Feladat-visszavételre.
+4. Végezze el a feladat-visszavételt.
 
    ```powershell
    Switch-AzureRMSqlDatabaseFailoverGroup `
@@ -373,9 +366,9 @@ Telepítse a [Mavent](https://maven.apache.org/download.cgi) a hivatalos telepí
    -FailoverGroupName $myfailovergroupname
    ```
 
-5. Az alkalmazás eredmények láthatja a feladat-visszavétel során. Néhány beszúrása sikertelen, a DNS-gyorsítótár frissítése közben.     
+5. Figyelje meg az alkalmazás eredményeit a feladat-visszavétel során. Néhány beszúrás sikertelen lesz a DNS-gyorsítótár frissítése közben.     
 
-6. Megtudhatja, milyen működik-e a vész-helyreállítási kiszolgálói szerepkört.
+6. Derítse ki, milyen szerepkört tölt be a vészhelyreállítási kiszolgáló.
 
    ```powershell
    $fileovergroup = Get-AzureRMSqlDatabaseFailoverGroup `
@@ -385,6 +378,6 @@ Telepítse a [Mavent](https://maven.apache.org/download.cgi) a hivatalos telepí
    $fileovergroup.ReplicationRole
    ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-További információkért lásd: [aktív georeplikáció és feladatátvételi csoportok](sql-database-geo-replication-overview.md).
+További információk: [Aktív georeplikációs és feladatátvételi csoportok](sql-database-geo-replication-overview.md).

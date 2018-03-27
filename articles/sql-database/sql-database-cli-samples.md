@@ -1,37 +1,32 @@
 ---
-title: "Az SQL Database az Azure CLI parancsfájl példák |} Microsoft Docs"
-description: "Az Azure CLI parancsfájl példák az Azure SQL Database-kiszolgálók, rugalmas készletek, adatbázisok és tűzfalak létrehozása és kezelése."
+title: Azure CLI-példaszkriptek az SQL Database-hez | Microsoft Docs
+description: Az Azure CLI-példaszkriptek bemutatják Azure SQL Database-kiszolgálók, rugalmas készletek, adatbázisok és tűzfalak létrehozásának és felügyeletének folyamatát.
 services: sql-database
-documentationcenter: sql-database
 author: CarlRabeler
 manager: jhubbard
-editor: tysonn
 tags: azure-service-management
-ms.assetid: 
 ms.service: sql-database
 ms.custom: overview-samples, mvc
 ms.devlang: azurecli
 ms.topic: sample
-ms.tgt_pltfrm: sql-database
-ms.workload: On Demand
 ms.date: 06/23/2017
 ms.author: janeng
-ms.openlocfilehash: 25013381873fcacff112f3f3647f34fe365599e3
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
-ms.translationtype: MT
+ms.openlocfilehash: c04ad6f8a59d1581719bb9cdd89a576870488a5e
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/16/2018
 ---
-# <a name="azure-cli-samples-for-azure-sql-database"></a>Az Azure SQL Database Azure CLI-minták
+# <a name="azure-cli-samples-for-azure-sql-database"></a>Azure CLI-minták az Azure SQL Database-hez
 
-A következő táblázat az Azure SQL Database az Azure parancssori felület parancsfájl példák hivatkozásokat tartalmaz.
+A következő táblázat hivatkozásokat tartalmaz az Azure SQL Database szolgáltatással kapcsolatos Azure CLI-példaszkriptekre.
 
 | |  |
 |---|---|
-|**Hozzon létre egy önálló adatbázis és a rugalmas készlethez**||
-| [Hozzon létre egy adatbázist, és a tűzfalszabályok konfigurálása](scripts/sql-database-create-and-configure-database-cli.md?toc=%2fcli%2fazure%2ftoc.json) | A parancssori felület mintaparancsfájl hoz létre egy Azure SQL-adatbázis, és beállítja egy kiszolgálószintű tűzfalszabályt. |
-| [A rugalmas készlet létrehozása és készletezett adatbázisok áthelyezése](scripts/sql-database-move-database-between-pools-cli.md?toc=%2fcli%2fazure%2ftoc.json) | A parancssori felület mintaparancsfájl hoz létre SQL rugalmas készletek, és áthelyezi a készletezett Azure SQL-adatbázisok, és teljesítményszintek vált.|
-|**Egy önálló adatbázis és a rugalmas készletekben méretezése**||
-| [Egy önálló adatbázis méretezése](scripts/sql-database-monitor-and-scale-database-cli.md?toc=%2fcli%2fazure%2ftoc.json) | A parancssori felület mintaparancsfájl egyetlen Azure SQL-adatbázis különböző teljesítményszintet is méretezi a méretre vonatkozó adatok az adatbázis lekérdezése után. |
-| [Egy rugalmas készlet méretezése](scripts/sql-database-scale-pool-cli.md?toc=%2fcli%2fazure%2ftoc.json) | A parancssori felület mintaparancsfájl méretezi a rugalmas SQL-készletet, más-más teljesítménybeli szintjét.  |
+|**Önálló adatbázis és rugalmas készlet létrehozása**||
+| [Önálló adatbázis létrehozása és egy tűzfalszabály konfigurálása](scripts/sql-database-create-and-configure-database-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Ez a CLI-példaszkript egyetlen Azure SQL-adatbázist hoz létre, és konfigurál egy kiszolgálószintű tűzfalszabályt. |
+| [Rugalmas készletek létrehozása és készletezett adatbázisok áthelyezése](scripts/sql-database-move-database-between-pools-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Ez a CLI-példaszkript rugalmas SQL-készleteket hoz létre, áthelyezi a készletezett Azure SQL-adatbázisokat, és módosítja a teljesítményszinteket.|
+|**Önálló adatbázis és rugalmas készlet méretezése**||
+| [Önálló adatbázis méretezése](scripts/sql-database-monitor-and-scale-database-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Ez a CLI-példaszkript egyetlen Azure SQL-adatbázist méretez más teljesítményszintre az adatbázis méretadatainak lekérdezése után. |
+| [Rugalmas készlet méretezése](scripts/sql-database-scale-pool-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Ez a CLI-példaszkript egy rugalmas SQL-készletet méretez más teljesítményszintre.  |
 |||

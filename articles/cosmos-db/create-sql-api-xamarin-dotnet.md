@@ -1,33 +1,36 @@
 ---
-title: "Azure Cosmos DB: webalkalmazás fejlesztése Xamarin és Facebook-hitelesítés használatával | Microsoft Docs"
-description: "Egy .NET-kódmintát mutat be, amellyel Azure Cosmos DB-adatbázishoz csatlakozhat, és lekérdezéseket hajthat végre"
+title: 'Azure Cosmos DB: webalkalmazás fejlesztése Xamarin és Facebook-hitelesítés használatával | Microsoft Docs'
+description: Egy .NET-kódmintát mutat be, amellyel Azure Cosmos DB-adatbázishoz csatlakozhat, és lekérdezéseket hajthat végre
 services: cosmos-db
-documentationcenter: 
+documentationcenter: ''
 author: mimig1
 manager: jhubbard
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: cosmos-db
 ms.custom: quick start connect, mvc
-ms.workload: 
+ms.workload: ''
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 11/29/2017
 ms.author: mimig
-ms.openlocfilehash: dfaa8d05d999f5528daff875d89e38d4fc442992
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: 5074034b18bdf842c34b1208e6cc6312d7a3e6b2
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-cosmos-db-build-a-web-app-with-net-xamarin-and-facebook-authentication"></a>Azure Cosmos DB: webalkalmazás fejlesztése .NET, Xamarin és Facebook-hitelesítés használatával
 
-[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)] 
+[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
 
-Az Azure Cosmos DB a Microsoft globálisan elosztott, többmodelles adatbázis-szolgáltatása. Segítségével gyorsan létrehozhat és lekérdezhet dokumentum, kulcs/érték és gráf típusú adatbázisokat, amelyek mindegyike felhasználja az Azure Cosmos DB középpontjában álló globális elosztási és horizontális skálázhatósági képességeket. 
+Az Azure Cosmos DB a Microsoft globálisan elosztott, többmodelles adatbázis-szolgáltatása. Segítségével gyorsan létrehozhat és lekérdezhet dokumentum, kulcs/érték és gráf típusú adatbázisokat, amelyek mindegyike felhasználja az Azure Cosmos DB középpontjában álló globális elosztási és horizontális skálázhatósági képességeket.
 
-Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre az Azure Portal segítségével Azure Cosmos DB-fiókot, dokumentum-adatbázist és gyűjteményt. Ezután megtudhatja, hogyan hozhat létre és hogyan helyezhet üzembe egy, az [SQL .NET API-n](sql-api-sdk-dotnet.md), a [Xamarinon](https://www.xamarin.com/) és az Azure Cosmos DB hitelesítési motorján alapuló teendőlista-kezelő webalkalmazást. A teendőkezelő webalkalmazás olyan felhasználónkénti adatmintát használ, amellyel a felhasználók a Facebook hitelesítési szolgáltatásán keresztül jelentkezhetnek be és kezelhetik saját teendőiket.
+> [!NOTE]
+> A GitHubon [itt](https://github.com/xamarinhq/app-geocontacts) megtalálható egy teljes Canonical Xamarin-mintaalkalmazás mintakódja, amely több Azure-ajánlatot is bemutat (például a CosmosDB-t). Ez az alkalmazás földrajzilag elosztott kapcsolattartók megtekintését mutatja be, és lehetővé teszi e kapcsolattartók számára, hogy frissítsék a tartózkodási helyüket.
+
+Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre az Azure Portal segítségével Azure Cosmos DB-fiókot, dokumentum-adatbázist és gyűjteményt. Ezután megtudhatja, hogyan hozhat létre és hogyan helyezhet üzembe egy, az [SQL .NET API](sql-api-sdk-dotnet.md)-n, a [Xamarinon](https://www.xamarin.com/) és az Azure Cosmos DB engedélyezési motorján alapuló teendőlista-kezelő webalkalmazást. A teendőlista-kezelő webalkalmazás olyan felhasználónkénti adatmintát használ, amellyel a felhasználók a Facebook hitelesítési szolgáltatásán keresztül jelentkezhetnek be és kezelhetik saját teendőiket.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -48,7 +51,7 @@ Ha nincs telepítve a Visual Studio 2017, letöltheti és használhatja az **ing
 
 Most pedig klónozunk egy SQL API-alkalmazást a GitHubról, beállítjuk a kapcsolati karakterláncot, és futtatjuk az alkalmazást. Látni fogja, milyen egyszerű az adatokkal programozott módon dolgozni. 
 
-1. Nyisson meg egy git terminálablakot, például a git bash eszközt, és a `cd` paranccsal lépjen egy munkakönyvtárba.  
+1. Nyisson meg egy git terminálablakot, például a git bash eszközt, és a `cd` paranccsal lépjen egy munkakönyvtárba.
 
 2. Az alábbi parancs futtatásával klónozhatja a mintatárházat. 
 
@@ -56,7 +59,7 @@ Most pedig klónozunk egy SQL API-alkalmazást a GitHubról, beállítjuk a kapc
     git clone https://github.com/Azure/azure-documentdb-dotnet.git
     ```
 
-3. Ezután nyissa meg a DocumentDBTodo.sln fájlt a Visual Studio samples/xamarin/UserItems/xamarin.forms nevű mappájában. 
+3. Ezután nyissa meg a DocumentDBTodo.sln fájlt a Visual Studio samples/xamarin/UserItems/xamarin.forms nevű mappájában.
 
 ## <a name="review-the-code"></a>A kód áttekintése
 
@@ -75,7 +78,7 @@ A hitelesítés és az adatfolyam az alábbi ábrán látható.
 * Az alkalmazás a felhasználó teendőit az erőforrás-jogkivonat használatával éri el.
 
 ![Teendőkezelő alkalmazás mintaadatokkal](./media/create-sql-api-xamarin-dotnet/tokenbroker.png)
-    
+
 ## <a name="update-your-connection-string"></a>A kapcsolati karakterlánc frissítése
 
 Lépjen vissza az Azure Portalra a kapcsolati karakterlánc adataiért, majd másolja be azokat az alkalmazásba.
@@ -90,7 +93,7 @@ Lépjen vissza az Azure Portalra a kapcsolati karakterlánc adataiért, majd má
 
     `<add key="accountUrl" value="{Azure Cosmos DB account URL}"/>`
 
-4. Ezután végezze el a portálon lévő ELSŐDLEGES KULCS értekének másolását, és adja meg az accountKey értékeként a Web.config fájlban. 
+4. Ezután másolja ki az ELSŐDLEGES KULCS értékét a Portalról, és azt adja meg az accountKey értékeként a Web.config fájlban.
 
     `<add key="accountKey" value="{Azure Cosmos DB secret}"/>`
 
@@ -109,7 +112,7 @@ Az alkalmazás frissítve lett minden olyan információval, amely az Azure Cosm
 
 4. Nyissa meg a Xamarin-projektet, majd keresse meg a TodoItemManager.cs fájlt. Töltse ki az accountURL, a collectionId és a databaseId értékeit, valamint adja meg a resourceTokenBrokerURL értékét az erőforrás-jogkivonat közvetítői webhelyéhez tartozó https URL alapértékeként.
 
-5. Az [App Service-alkalmazás konfigurálása Facebook-bejelentkezés használatához](../app-service/app-service-mobile-how-to-configure-facebook-authentication.md) című oktatóanyag elvégzésével állíthatja be a Facebook-hitelesítést, valamint konfigurálhatja a ResourceTokenBroker webhelyét.
+5. Az [App Service-alkalmazás Facebook-bejelentkezés használatához történő konfigurálását](../app-service/app-service-mobile-how-to-configure-facebook-authentication.md) ismertető oktatóanyag elvégzésével állíthatja be a Facebook-hitelesítést, valamint konfigurálhatja a ResourceTokenBroker webhelyét.
 
     Futtassa a Xamarin-alkalmazást.
 
@@ -119,14 +122,14 @@ Az alkalmazás frissítve lett minden olyan információval, amely az Azure Cosm
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha nem folytatja az alkalmazás használatát, az alábbi lépésekkel törölheti az Azure Portalon a rövid útmutatóhoz létrehozott összes erőforrást: 
+Ha az alkalmazást már nem használja, akkor a következő lépésekkel a mintaalkalmazás által létrehozott összes erőforrást törölheti az Azure Portalon:
 
-1. Az Azure Portal bal oldali menüjében kattintson az **Erőforráscsoportok** elemre, majd kattintson a létrehozott erőforrás nevére. 
-2. Az erőforráscsoport oldalán kattintson a **Törlés** elemre, írja be a törölni kívánt erőforrás nevét a szövegmezőbe, majd kattintson a **Törlés** gombra.
+1. Az Azure Portal bal oldali menüjében kattintson az **Erőforráscsoportok** lehetőségre, majd kattintson a létrehozott erőforrás nevére.
+2. Az erőforráscsoport lapján kattintson a **Törlés** elemre, írja be a törölni kívánt erőforrás nevét a szövegmezőbe, majd kattintson a **Törlés** gombra.
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban bemutattuk, hogyan hozhat létre Azure Cosmos DB-fiókot, hogyan hozhat létre gyűjteményt az Adatkezelő segítségével, valamint hogyan hozhat lére és helyezhet üzembe Xamarin-alkalmazásokat. Most már további adatokat importálhat a Cosmos DB-fiókba. 
+Ebben a rövid útmutatóban bemutattuk, hogyan hozhat létre Azure Cosmos DB-fiókot, hogyan hozhat létre gyűjteményt az Adatkezelő segítségével, valamint hogyan hozhat lére és helyezhet üzembe Xamarin-alkalmazásokat. Most már további adatokat importálhat a Cosmos DB-fiókba.
 
 > [!div class="nextstepaction"]
 > [Adatok importálása az Azure Cosmos DB-be](import-data.md)

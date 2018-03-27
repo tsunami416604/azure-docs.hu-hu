@@ -1,6 +1,6 @@
 ---
-title: "Az első Azure Database for MySQL-adatbázis megtervezése – Azure CLI"
-description: "Ez az oktatóanyag azt ismerteti, hogyan hozható létre és kezelhető az Azure Database for MySQL-kiszolgáló és -adatbázis az Azure CLI 2.0 a parancssorból történő használatával."
+title: 'Oktatóanyag: Azure Database for MySQL tervezése az Azure CLI használatával'
+description: Ez az oktatóanyag azt ismerteti, hogyan hozható létre és kezelhető az Azure Database for MySQL-kiszolgáló és -adatbázis az Azure CLI 2.0 a parancssorból történő használatával.
 services: mysql
 author: ajlam
 ms.author: andrela
@@ -11,13 +11,13 @@ ms.devlang: azure-cli
 ms.topic: tutorial
 ms.date: 02/28/2018
 ms.custom: mvc
-ms.openlocfilehash: a609bbdf70599d0cceaf988a9a0bef51bc28716d
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 6f77b24092a80708ba82c6d42b947c00d6a69b6d
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/16/2018
 ---
-# <a name="design-your-first-azure-database-for-mysql-database"></a>Az első Azure Database for MySQL-adatbázis megtervezése
+# <a name="tutorial-design-an-azure-database-for-mysql-using-azure-cli"></a>Oktatóanyag: Azure Database for MySQL tervezése az Azure CLI használatával
 
 Az Azure Database for MySQL egy relációsadatbázis-szolgáltatás a Microsoft Cloudban, amely a MySQL Community Edition adatbázismotoron alapul. Ebben az oktatóanyagban az Azure CLI (parancssori felület) és egyéb segédprogramok segítségével a következőket sajátíthatja el:
 

@@ -1,8 +1,8 @@
 ---
-title: "Azure-beli adat-előállító létrehozása az Azure Data Factory felhasználói felületén | Microsoft Docs"
-description: "Ez az oktatóanyag ismerteti, hogyan hozhat létre adat-előállítókat olyan folyamatokkal, amelyek adatokat másolnak az egyik mappából a másikba az Azure Blob Storage-ban."
+title: Azure-beli adat-előállító létrehozása az Azure Data Factory felhasználói felületén | Microsoft Docs
+description: Létrehozhat egy adat-előállítót egy olyan folyamattal, amely adatokat másol egy Azure Blob Storage-beli helyről egy másik helyre.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
 manager: jhubbard
 editor: spelluru
@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.topic: hero-article
 ms.date: 02/01/2018
 ms.author: jingwang
-ms.openlocfilehash: 7065b0b6e0576238e3b32fdbf7ac43b7fc2ae9e6
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 79b19121b25b03181eeda1bedd800f45a2adf57e
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="create-a-data-factory-by-using-the-azure-data-factory-ui"></a>Adat-előállító létrehozása az Azure Data Factory felhasználói felületén
 > [!div class="op_single_selector" title1="Select the version of Data Factory service that you are using:"]
@@ -66,9 +66,9 @@ A következő videó megtekintése segíthet az Azure Data Factory felhasználó
 8. Az irányítópulton megjelenő csempén a **Adat-előállító üzembe helyezése** állapotleírás látható: 
 
    ![„Adat-előállító üzembe helyezése” csempe](media//quickstart-create-data-factory-portal/deploying-data-factory.png)
-9. A létrehozás befejezése után megjelenik a **Data Factory** lap. Az Azure Data Factory felhasználói felületi (UI) alkalmazás külön lapon történő elindításához kattintson a **Tartalomkészítés és monitorozás** csempére.
+9. A létrehozás befejezése után megjelenik a **Data Factory** lap. Az Azure Data Factory felhasználói felületi (UI) alkalmazás külön lapon történő elindításához kattintson a **Létrehozás és monitorozás** csempére.
    
-   ![Az adat-előállító kezdőlapja a „Tartalomkészítés és monitorozás” csempével](./media/quickstart-create-data-factory-portal/data-factory-home-page.png)
+   ![Az adat-előállító kezdőlapja a „Létrehozás és monitorozás” csempével](./media/quickstart-create-data-factory-portal/data-factory-home-page.png)
 10. Az **Első lépések** lapon váltson a **Szerkesztés** lapra a bal oldali ablaktáblán. 
 
     ![„Első lépések” lap](./media/quickstart-create-data-factory-portal/get-started-page.png)

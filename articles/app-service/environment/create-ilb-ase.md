@@ -1,6 +1,6 @@
 ---
-title: "Belső terheléselosztó létrehozása és használata Azure App Service Environmenttel"
-description: "Részletes információk az internettől elzárt Azure App Service Environment létrehozásáról"
+title: Belső terheléselosztó létrehozása és használata Azure App Service Environmenttel
+description: Részletes információk az internettől elzárt Azure App Service Environment létrehozásáról
 services: app-service
 documentationcenter: na
 author: ccompy
@@ -14,11 +14,11 @@ ms.topic: quickstart
 ms.date: 06/13/2017
 ms.author: ccompy
 ms.custom: mvc
-ms.openlocfilehash: 7480c1f71a64e31b65cc76f28734df6f424a6b3f
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 0d08d140ab338d8c742277835fdfb4316862f07b
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="create-and-use-an-internal-load-balancer-with-an-app-service-environment"></a>Belső terheléselosztó létrehozása és használata App Service Environmenttel #
 
@@ -139,7 +139,7 @@ Konvertálja/mentse az SSL-tanúsítványt .pfx fájlként. A .pfx fájlnak tart
 
 Amennyiben önaláírt tanúsítványt szeretne létrehozni, itt használhatja a PowerShell-parancsokat. Ügyeljen arra, hogy a saját ILB ASE tartományát használja az *internal.contoso.com* helyett: 
 
-    $certificate = New-SelfSignedCertificate -certstorelocation cert:\localmachine\my -dnsname "\*.internal-contoso.com","\*.scm.internal-contoso.com"
+    $certificate = New-SelfSignedCertificate -certstorelocation cert:\localmachine\my -dnsname "*.internal-contoso.com","*.scm.internal-contoso.com"
     
     $certThumbprint = "cert:\localMachine\my\" +$certificate.Thumbprint
     $password = ConvertTo-SecureString -String "CHANGETHISPASSWORD" -Force -AsPlainText
@@ -174,9 +174,9 @@ Saját tanúsítványának feltöltéséhez és a hozzáférés teszteléséhez 
 
     b. A webtelepítés közzétételének teszteléséhez vagy a haladó konzol eléréséhez hozzon létre egy rekordot a _mytestapp.scm.ilbase.com_ tartományban.
 
-7. A virtuális gép böngészőjével keresse fel a http://mytestapp.ilbase.com oldalt. (Vagy keresse fel webalkalmazásának nevét, a saját tartománnyal.)
+7. A virtuális gép böngészőjével keresse fel a következő oldalt: http://mytestapp.ilbase.com. (Vagy keresse fel webalkalmazásának nevét, a saját tartománnyal.)
 
-8. A virtuális gép böngészőjével keresse fel a https://mytestapp.ilbase.com oldalt. Ha önaláírt tanúsítványt használ, fogadja el a biztonsági hiányosságot.
+8. A virtuális gép böngészőjével keresse fel a következő oldalt: https://mytestapp.ilbase.com. Ha önaláírt tanúsítványt használ, fogadja el a biztonsági hiányosságot.
 
     Az ILB IP-címe az **IP-címek** területen látható. Ez a lista tartalmazza a külső virtuális IP-címet és a bejövő felügyeleti forgalmak IP-címeit is.
 

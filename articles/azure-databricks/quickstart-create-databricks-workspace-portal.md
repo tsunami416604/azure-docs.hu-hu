@@ -14,11 +14,11 @@ ms.topic: quickstart
 ms.date: 03/09/2018
 ms.author: nitinme
 ms.custom: mvc
-ms.openlocfilehash: 6a0e69e1ab2c52586b447d8a249b52b09bbff705
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 9eff06934eefa44db94de3d01be470ca69a2d88c
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-portal"></a>Rövid útmutató: Spark-feladatok futtatása Azure Databricksen az Azure Portal használatával
 
@@ -40,17 +40,21 @@ Ebben a szakaszban egy Azure Databricks-munkaterületet fog létrehozni az Azure
 
 2. Az **Azure Databricks (előzetes verzió)** alatt kattintson a **Létrehozás** elemre.
 
-3. Az **Azure Databricks szolgáltatás** alatt a következő értékeket kell megadni:
+3. Az **Azure Databricks szolgáltatás** pontban adja meg az értékeket Databricks-munkaterület létrehozásához.
 
     ![Azure Databricks-munkaterület létrehozása](./media/quickstart-create-databricks-workspace-portal/create-databricks-workspace.png "Azure Databricks-munkaterület létrehozása")
 
-    * A **Munkaterület neve** mezőben adja meg a Databricks-munkaterület nevét.
-    * Az **Előfizetés** mezőnél válassza ki a legördülő menüből a saját Azure-előfizetését.
-    * Az **Erőforráscsoport** alatt adja meg, hogy új erőforráscsoportot kíván-e létrehozni, vagy egy meglévőt szeretne használni. Az erőforráscsoport egy tároló, amely Azure-megoldásokhoz kapcsolódó erőforrásokat tárol. További információért olvassa el az [Azure-erőforráscsoportok áttekintését](../azure-resource-manager/resource-group-overview.md).
-    * A **Hely** mezőnél válassza az **USA 2. keleti régiója** lehetőséget. A további elérhető régiókért tekintse meg az [elérhető Azure-szolgáltatások régiók szerinti bontását](https://azure.microsoft.com/regions/services/).
-    * A **Tarifacsomag** mezőnél válasszon a **Standard** és a **Prémium** között. További információkért a csomagokkal kapcsolatban tekintse meg a [Databricks díjszabását ismertető oldalt](https://azure.microsoft.com/pricing/details/databricks/).
+    Adja meg a következő értékeket: 
+     
+    |Tulajdonság  |Leírás  |
+    |---------|---------|
+    |**Munkaterület neve**     | Adja meg a Databricks-munkaterület nevét.        |
+    |**Előfizetés**     | Válassza ki a legördülő menüből a saját Azure-előfizetését.        |
+    |**Erőforráscsoport**     | Adja meg, hogy új erőforráscsoportot kíván-e létrehozni, vagy egy meglévőt szeretne használni. Az erőforráscsoport egy tároló, amely Azure-megoldásokhoz kapcsolódó erőforrásokat tárol. További információért olvassa el az [Azure-erőforráscsoportok áttekintését](../azure-resource-manager/resource-group-overview.md). |
+    |**Hely**     | Válassza az **USA 2. keleti régiója** lehetőséget. A további elérhető régiókért tekintse meg az [elérhető Azure-szolgáltatások régiók szerinti bontását](https://azure.microsoft.com/regions/services/).        |
+    |**Tarifacsomag**     |  Válassza a **Standard** vagy a **Prémium** előfizetést. További információkért a csomagokkal kapcsolatban tekintse meg a [Databricks díjszabását ismertető oldalt](https://azure.microsoft.com/pricing/details/databricks/).       |
 
-    Kattintson a **Create** (Létrehozás) gombra.
+    Válassza a **Rögzítés az irányítópulton** lehetőséget, majd kattintson a **Létrehozás** gombra.
 
 4. A fiók létrehozása eltarthat néhány percig. A fiók létrehozása alatt a portálon megjelenik az **Üzembe helyezés beküldése a következőhöz: Azure Databricks** csempe. Lehetséges, hogy jobbra kell görgetnie az irányítópulton, hogy megjelenjen a csempe. Megjelenik egy folyamatjelző is a képernyő tetejéhez közel. Mindkét területen nyomon követheti a folyamat előrehaladását.
 
@@ -84,7 +88,7 @@ Mielőtt ehhez a szakaszhoz hozzáfogna, a következő előfeltételeknek kell e
 * Töltsön le egy JSON-mintafájlt a [GitHubról](https://github.com/Azure/usql/blob/master/Examples/Samples/Data/json/radiowebsite/small_radio_json.json). 
 * A JSON-mintafájlt töltse fel a már létrehozott Azure-tárfiókba. A fájlfeltöltéshez a [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) használatát javasoljuk.
 
-A következő lépések végrehajtásával hozzon létre egy notebookot a Databricksben, konfigurálja a notebookot úgy, hogy az Azure Blob-tárfiókból olvassa be az adatokat, majd ezt követően futtassa le a Spark SQL-feladatot az adatokon.
+A következő feladatok végrehajtásával hozzon létre egy jegyzetfüzetet a Databricksben, konfigurálja a jegyzetfüzetet úgy, hogy az Azure Blob-tárfiókból olvassa be az adatokat, majd ezt követően futtassa le a Spark SQL-feladatot az adatokon.
 
 1. A bal oldali panelen kattintson a **Munkaterület** elemre. A **Munkaterület** legördülő menüjében kattintson a **Létrehozás**, majd a **Notebook** elemre.
 
@@ -96,7 +100,7 @@ A következő lépések végrehajtásával hozzon létre egy notebookot a Databr
 
     Kattintson a **Create** (Létrehozás) gombra.
 
-3. Ebben a lépésben társítsa az Azure Storage-fiókot a Databricks Spark-fürttel. Ezt kétféleképpen érheti el: csatlakoztassa az Azure Storage-fiókot a Databricks fájlrendszerrel (DBFS-szel) vagy közvetlenül férjen hozzá az Azure Storage-fiókhoz a létrehozott alkalmazásból.  
+3. Ebben a lépésben társítsa az Azure Storage-fiókot a Databricks Spark-fürttel. A társítás két különböző módon végezhető el. Csatlakoztathatja az Azure Storage-fiókot a Databricks fájlrendszerrel (DBFS-szel), vagy közvetlenül hozzáférhet az Azure Storage-fiókhoz a létrehozott alkalmazásból.  
 
     > [!IMPORTANT]
     >Ez a cikk a **tároló DBFS-szel való csatlakoztatásának módszerét alkalmazza**. Ez a módszer biztosítja, hogy a csatlakoztatott tároló magával a fürt fájlrendszerével legyen társítva. Ezért a fürthöz hozzáférő bármely alkalmazás használhatja a társított tárolót is. A közvetlen hozzáférési módszer arra az alkalmazásra van korlátozva, ahonnan a hozzáférést konfigurálja.
@@ -171,15 +175,15 @@ A következő lépések végrehajtásával hozzon létre egy notebookot a Databr
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha a Spark-fürt létrehozásakor bejelölte a **Leállítás __ percnyi tétlenség után** jelölőnégyzetet, a fürt a megadott tétlenségi időkeret lejárta után automatikusan leáll.
-
-Amennyiben korábban nem jelölte be ezt a jelölőnégyzetet, manuálisan kell leállítania a fürtöt. Ehhez az Azure Databricks-munkaterület bal oldali panelén kattintson a **Fürtök** elemre. A leállítani kívánt fürtnél vigye az egérmutatót a **Műveletek** oszlopban található három pont fölé, majd kattintson a **Leállítás** ikonra.
+Ha végzett a cikkel, leállíthatja a fürtöt. Ehhez az Azure Databricks-munkaterület bal oldali panelén kattintson a **Fürtök** elemre. A leállítani kívánt fürtnél vigye az egérmutatót a **Műveletek** oszlopban található három pont fölé, majd kattintson a **Leállítás** ikonra.
 
 ![Databricks-fürt leállítása](./media/quickstart-create-databricks-workspace-portal/terminate-databricks-cluster.png "Databricks-fürt leállítása")
 
+Ha nem állítja le manuálisan a fürtöt, az automatikusan le fog állni, amennyiben a fürt létrehozásakor bejelölte a **Leállítás ___ percnyi tétlenség után** jelölőnégyzetet. Ebben az esetben a fürt automatikusan leáll, ha a megadott ideig inaktív volt.
+
 ## <a name="next-steps"></a>További lépések
 
-Ennek a cikknek a segítségével létrehozott egy Spark-fürtöt az Azure Databricksben, illetve lefuttatott egy Spark-feladatot az Azure-tárterület adatainak felhasználásával. A [Spark-adatforrások](https://docs.azuredatabricks.net/spark/latest/data-sources/index.html) áttekintésével azt is megismerheti, hogyan importálhat adatokat más adatforrásokból az Azure Databricksbe. A következő cikk az Azure Data Lake Store és az Azure Databricks együttes használatát ismerteti.
+Ennek a cikknek a segítségével létrehozott egy Spark-fürtöt az Azure Databricksben, illetve lefuttatott egy Spark-feladatot az Azure-tárterület adatainak felhasználásával. A [Spark-adatforrások](https://docs.azuredatabricks.net/spark/latest/data-sources/index.html) áttekintésével azt is megismerheti, hogyan importálhat adatokat más adatforrásokból az Azure Databricksbe. A következő cikk azt ismerteti, hogy streamelhet adatokat az Azure Databricksbe az Event Hubs használatával.
 
 > [!div class="nextstepaction"]
->[A Data Lake Store és az Azure Databricks együttes használata](https://go.microsoft.com/fwlink/?linkid=864084)
+>[Adatok streamelése az Azure Databricksbe az Event Hubs használatával](databricks-stream-from-eventhubs.md)

@@ -1,6 +1,6 @@
 ---
-title: "Csatlakozás az Azure Database for MySQL-hez a Pythonnal"
-description: "Ez a rövid útmutató számos Python-mintakódot biztosít, amelyekkel csatlakozhat a MySQL-hez készült Azure-adatbázishoz, illetve adatokat kérdezhet le róla."
+title: Csatlakozás az Azure Database for MySQL-hez a Pythonnal
+description: Ez a rövid útmutató számos Python-mintakódot biztosít, amelyekkel csatlakozhat a MySQL-hez készült Azure-adatbázishoz, illetve adatokat kérdezhet le róla.
 services: mysql
 author: jasonwhowell
 ms.author: jasonh
@@ -11,11 +11,11 @@ ms.custom: mvc
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 02/28/2018
-ms.openlocfilehash: 4003c1258fcc0a6d04c4ae8d234eba4d0224b8a0
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 08725493f9d050da762a6527363b77af6eeed6e6
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-database-for-mysql-use-python-to-connect-and-query-data"></a>A MySQL-hez készült Azure-adatbázis: Csatlakozás és adatlekérdezés a Python használatával
 Ez a rövid útmutató ismerteti, hogyan használható a [Python](https://python.org) a MySQL-hez készült Azure-adatbázishoz való csatlakozáshoz. Az SQL-utasítások használatával kérdez le, szúr be, frissít és töröl adatokat az adatbázisban a Mac OS, Ubuntu Linux és a Windows platformról. Ez a témakör azt feltételezi, hogy a Python használata terén rendelkezik fejlesztési tapasztalatokkal, de az Azure Database for MySQL használatában még járatlan.
@@ -37,7 +37,7 @@ Telepítse a [Pythont](https://www.python.org/downloads/) és a [Python MySQL-ö
 1. A Linux (Ubuntu) rendszeren a Python általában az alapértelmezett telepítés részeként van telepítve.
 2. A bash rendszerhéj elindításával ellenőrizze a Python telepítését. Futtassa a `python -V` parancsot a nagybetűs V kapcsolóval a verziószám megtekintéséhez.
 3. A PIP telepítésének ellenőrzéséhez futtassa a `pip show pip -V` parancsot a verziószám megtekintéséhez. 
-4. A PIP szerepelhet a Python egyes verzióiban. Ha a PIP nincs telepítve, a [PIP] (https://pip.pypa.io/en/stable/installing/) csomagot a `sudo apt-get install python-pip` parancs futtatásával telepítheti.
+4. A PIP szerepelhet a Python egyes verzióiban. Ha a PIP nincs telepítve, a [PIP](https://pip.pypa.io/en/stable/installing/) csomagot a `sudo apt-get install python-pip` parancs futtatásával telepítheti.
 5. A PIP legújabb verziójára való frissítéshez futtassa a `pip install -U pip` parancsot.
 6. A PIP paranccsal telepítse a Python MySQL-összekötőjét és annak függőségeit:
 

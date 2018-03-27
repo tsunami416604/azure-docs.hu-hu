@@ -1,8 +1,8 @@
 ---
-title: "Azure virtuális hálózaton lévő adatok átalakítása a Hive segítségével | Microsoft Docs"
-description: "Ez az oktatóanyag részletes útmutatást nyújt az adatok Hive-tevékenységgel történő átalakításához az Azure Data Factoryben."
+title: Azure virtuális hálózaton lévő adatok átalakítása a Hive segítségével | Microsoft Docs
+description: Ez az oktatóanyag részletes útmutatást nyújt az adatok Hive-tevékenységgel történő átalakításához az Azure Data Factoryben.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: shengcmsft
 manager: jhubbard
 editor: spelluru
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/04/2018
 ms.author: shengc
-ms.openlocfilehash: a7575549225d47e5266ca7e1778c3e61835de1cc
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 8711d7ed1d02f0960ef00c1cf5053e97aa00ad5c
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="transform-data-in-azure-virtual-network-using-hive-activity-in-azure-data-factory"></a>Azure virtuális hálózaton lévő adatok átalakítása Hive-tevékenység segítségével az Azure Data Factoryben
 Ebben az oktatóanyagban az Azure Portal segítségével hoz létre egy Data Factory-folyamatot, amely egy Azure virtuális hálózaton (VNet) lévő HDInsight-fürtön futó Hive-tevékenységgel alakítja át az adatokat. Az oktatóanyagban az alábbi lépéseket fogja végrehajtani:
@@ -114,7 +114,7 @@ Mivel a Hadoop-fürt egy virtuális hálózatban található, telepítenie kell 
 2. Az **Integration Runtime Setup** (Integration Runtime beállítása) ablakban válassza a **Perform data movement and dispatch activities to external computes** (Adatáthelyezés és tevékenységek kiosztása külső számításokhoz) lehetőséget, majd kattintson a **Next** (Tovább) gombra. 
 
    ![Az Adatáthelyezés és tevékenységek kiosztása külső számításokhoz lehetőség kiválasztása](./media/tutorial-transform-data-using-hive-in-vnet-portal/select-perform-data-movement-compute-option.png)
-3. Válassza a **Public Network** (Nyilvános hálózat) lehetőséget, majd kattintson a **Next** (Tovább) gombra.
+3. Válassza a **Private Network** (Magánhálózat) lehetőséget, majd kattintson a **Next** (Tovább) gombra.
     
    ![Magánhálózat kiválasztása](./media/tutorial-transform-data-using-hive-in-vnet-portal/select-private-network.png)
 4. Írja be a **MySelfHostedIR** nevet a **név** mezőjébe, és kattintson a **Next** (Tovább) gombra. 
