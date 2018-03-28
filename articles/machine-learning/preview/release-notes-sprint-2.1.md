@@ -1,6 +1,6 @@
 ---
-title: "Az Azure ML munkaterület kiadási megjegyzései sprint 2 QFE December 2017"
-description: "Ez a dokumentum részletesen QFE kibocsátott a frissítéseket az Azure ml sprint 2 kiadásban"
+title: Az Azure ML munkaterület kiadási megjegyzései sprint 2 QFE December 2017
+description: Ez a dokumentum részletesen QFE kibocsátott a frissítéseket az Azure ml sprint 2 kiadásban
 services: machine-learning
 author: hning86
 ms.author: haining
@@ -11,10 +11,10 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 12/15/2017
 ms.openlocfilehash: 6bae66a5cd349b64b7f96bf7d6c71f4ce13678bf
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 03/27/2018
 ---
 # <a name="sprint-2-qfe---december-2017"></a>Sprint 2 QFE – 2017. december 
 

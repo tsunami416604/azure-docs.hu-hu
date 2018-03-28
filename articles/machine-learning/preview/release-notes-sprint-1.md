@@ -1,6 +1,6 @@
 ---
-title: "Az Azure ML munkaterület kibocsátási megjegyzések a sprint 2017. November 1."
-description: "Ez a dokumentum részletesen a frissítéseket az Azure ML sprint 1 kiadása"
+title: Az Azure ML munkaterület kibocsátási megjegyzések a sprint 2017. November 1.
+description: Ez a dokumentum részletesen a frissítéseket az Azure ML sprint 1 kiadása
 services: machine-learning
 author: hning86
 ms.author: haining
@@ -11,10 +11,10 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 11/06/2017
 ms.openlocfilehash: a4945c77be5763ffeda328184149f712572937c0
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 03/27/2018
 ---
 # <a name="sprint-1---november-2017"></a>Sprint 1 – 2017. november 
 
@@ -96,14 +96,14 @@ Alább a sprint az Azure gépi tanulás összetevő területenként részletes f
 - Lezáró alkalmazás már nem zavarja a feladatok a CLI kezdődött el.
 - Kezdődött el feladatok CLI most továbbra is felosztás kimenő szabvány kibővített végrehajtás egy óra után is.
 - Ha adatok előkészítő csomag futtatása nem sikerült a Python/PySpark jobb hibaüzenetek jelennek meg.
-- `az ml experiment clean`most már a szükségtelenné vált Docker-lemezképek, valamint a távoli virtuális gépen.
-- `az ml experiment clean`most működik megfelelően a helyi cél macOS.
+- `az ml experiment clean` most már a szükségtelenné vált Docker-lemezképek, valamint a távoli virtuális gépen.
+- `az ml experiment clean` most működik megfelelően a helyi cél macOS.
 - Hibaüzenetek a helyi vagy távoli Docker célzó futtatásakor megtisztítja és könnyebben olvasható.
 - Jobb hibaüzenet jelenik meg, amikor a HDInsight fürt átjárócsomópontjához neve nem megfelelő formátumú csatolt egy végrehajtási célként.
 - Jobb hibaüzenet látható a hitelesítő adatok szolgáltatásban nem található a titkos kulcsot. 
 - Támogatási Apache Spark 2.2 MMLSpark library nem frissíti.
 - MMLSpark között már elérhető a tulajdonos kódolási átalakítás (háló kódolás) orvosi dokumentumokhoz.
-- `matplotlib`2.1.0 verziója most szállított out-kiszállítási a munkaterületre.
+- `matplotlib` 2.1.0 verziója most szállított out-kiszállítási a munkaterületre.
 
 ### <a name="jupyter-notebook"></a>Jupyter notebook
 - Notebook neve Keresés most már megfelelően működjön a notebookok nézetben.
@@ -128,10 +128,10 @@ Alább a sprint az Azure gépi tanulás összetevő területenként részletes f
 
 ### <a name="sample-projects"></a>A minta-projektek
 - [_Iris zárolásának_ ](./tutorial-classifying-iris-part-1.md) mintaprojektet:
-    - `iris_pyspark.py`a rendszer átnevezi `iris_spark.py`.
-    - `iris_score.py`a rendszer átnevezi `score_iris.py`.
-    - `iris.dprep`és `iris.dsource` a legfrissebb adatok előkészítő kártevőfrissítések megfelelően frissül.
-    - `iris.ipynb`A HDInsight-fürt működéséhez notebook módosul.
+    - `iris_pyspark.py` a rendszer átnevezi `iris_spark.py`.
+    - `iris_score.py` a rendszer átnevezi `score_iris.py`.
+    - `iris.dprep` és `iris.dsource` a legfrissebb adatok előkészítő kártevőfrissítések megfelelően frissül.
+    - `iris.ipynb` A HDInsight-fürt működéséhez notebook módosul.
     - Futtatási előzményei be van kapcsolva a `iris.ipynb` Notebook cella.
 - [_Speciális kerékpárt megosztás adatokkal adatok előkészítő_ ](./tutorial-bikeshare-dataprep.md) rögzített "Kezelni hiba érték" lépés mintaprojektet.
 - [_Felnőtt nyilvántartásba adatokon MMLSpark_ ](https://github.com/Azure/MachineLearningSamples-mmlspark) mintaprojektet `docker.runconfig` YAM frissítve JSON formátumban.

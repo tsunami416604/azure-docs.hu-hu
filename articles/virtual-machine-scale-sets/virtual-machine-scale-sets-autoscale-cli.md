@@ -1,11 +1,11 @@
 ---
-title: "Automatikus skálázási virtuálisgép-méretezési beállítja az Azure parancssori felülettel |} Microsoft Docs"
-description: "Az Azure CLI 2.0 beállítja a virtuálisgép-méretezési automatikus skálázási szabályok létrehozása"
+title: Automatikus skálázási virtuálisgép-méretezési beállítja az Azure parancssori felülettel |} Microsoft Docs
+description: Az Azure CLI 2.0 beállítja a virtuálisgép-méretezési automatikus skálázási szabályok létrehozása
 services: virtual-machine-scale-sets
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 83e93d9c-cac0-41d3-8316-6016f5ed0ce4
 ms.service: virtual-machine-scale-sets
@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 10/19/2017
 ms.author: iainfou
 ms.openlocfilehash: 8552f6b2723fef2c61d49a34d2d60c2a6c209a32
-ms.sourcegitcommit: 901a3ad293669093e3964ed3e717227946f0af96
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/27/2018
 ---
 # <a name="automatically-scale-a-virtual-machine-scale-set-with-the-azure-cli-20"></a>A virtuálisgép-méretezési beállítása az Azure CLI 2.0 automatikus méretezése
 A méretezési csoport létrehozásakor megadhatja a futtatni kívánt Virtuálisgép-példányok száma. Az alkalmazás igény szerinti változásával automatikusan növeli vagy csökkenti a Virtuálisgép-példányok számát. Automatikus skálázás teszi lehetővé teszi keresletének tartani, vagy az alkalmazás életciklusa során alkalmazás teljesítmény változásait.
@@ -66,14 +66,14 @@ A következő paramétert kell használni ehhez a szabályhoz:
 | Paraméter         | Magyarázat                                                                                                         | Érték           |
 |-------------------|---------------------------------------------------------------------------------------------------------------------|-----------------|
 | *metricName*      | A teljesítmény metrika figyelésére és a skála alkalmazni az alábbi műveletek beállítani.                                                   | Százalékos processzorhasználat  |
-| *időkeretben vannak*       | Milyen gyakran a metrikák gyűjtése történt elemzéséhez.                                                                   | 1 perc        |
+| *timeGrain*       | Milyen gyakran a metrikák gyűjtése történt elemzéséhez.                                                                   | 1 perc        |
 | *timeAggregation* | Határozza meg, hogy az összegyűjtött metrikák elemzések céljából összesíti kell-e.                                                | Átlag         |
-| *Az időtartomány értékének*      | Az időtartam a metrika és a küszöbértéket az összehasonlítás előtt figyeli.                                   | 10 perc      |
-| *operátor*        | Hasonlítsa össze a metrikaadatokat szemben a küszöbérték operátor.                                                     | Nagyobb, mint    |
-| *küszöbérték*       | Az érték, amely az automatikus skálázási szabály elindítani egy műveletet okoz.                                                      | 70%             |
-| *iránya*       | Meghatározza, hogy a méretezési kell méretezni felfelé vagy lefelé, amikor a szabály vonatkozik.                                             | Növelés        |
-| *típusa*            | Azt jelzi, hogy a Virtuálisgép-példányok száma a által százalékát módosítani kell-e.                                 | Készültségi módosítása  |
-| *érték*           | Hány Virtuálisgép-példányok kell méretezhető felfelé vagy lefelé a szabály.                                            | 20              |
+| *timeWindow*      | Az időtartam a metrika és a küszöbértéket az összehasonlítás előtt figyeli.                                   | 10 perc      |
+| *operator*        | Hasonlítsa össze a metrikaadatokat szemben a küszöbérték operátor.                                                     | Nagyobb, mint    |
+| *Küszöbérték*       | Az érték, amely az automatikus skálázási szabály elindítani egy műveletet okoz.                                                      | 70%             |
+| *direction*       | Meghatározza, hogy a méretezési kell méretezni felfelé vagy lefelé, amikor a szabály vonatkozik.                                             | Növelés        |
+| *Típusa*            | Azt jelzi, hogy a Virtuálisgép-példányok száma a által százalékát módosítani kell-e.                                 | Készültségi módosítása  |
+| *value*           | Hány Virtuálisgép-példányok kell méretezhető felfelé vagy lefelé a szabály.                                            | 20              |
 | *cooldown*        | Mennyi ideig várjon a szabály alkalmazza újra, így az automatikus skálázási műveletek érvénybe lépéséhez idő kell. | 5 perc       |
 
 Az alábbi példában a szabály a Virtuálisgép-példányok száma horizontális határozza meg. A *metricResourceUri* korábban már meg van adva az előfizetés-azonosító, erőforráscsoport-név és skálázási nevének beállítása a változókat használ:
