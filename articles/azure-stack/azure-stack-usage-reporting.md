@@ -1,24 +1,24 @@
 ---
-title: "Jelentés Azure verem használati adatait az Azure-bA |} Microsoft Docs"
-description: "Ismerje meg, hogyan állíthat be Azure verem reporting használati adatok."
+title: Jelentés Azure verem használati adatait az Azure-bA |} Microsoft Docs
+description: Ismerje meg, hogyan állíthat be Azure verem reporting használati adatok.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2018
+ms.date: 03/27/2018
 ms.author: mabrigg
 ms.reviewer: alfredop
-ms.openlocfilehash: 29d53f63bf3d551823ca27df04f0e385a92cdec7
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 9153efb73e84d7b84a732217b92a9c66617e90ae
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="report-azure-stack-usage-data-to-azure"></a>Jelentés Azure verem használati adatait az Azure-bA 
 
@@ -27,7 +27,7 @@ Használati adatokat, más néven az adatokkal, adja meg annak a használt erőf
 Fogyasztás alapján számlázási modellt használó Azure verem többcsomópontos rendszerekhez jelenteniük kell használati adatokat az Azure-bA számlázási célra.  Azure verem operátorok kell konfigurálja az Azure-verem jelentés használati adatokat az Azure-bA.
 
 > [!NOTE]
-> Használati adatok jelentése az Azure-verem többcsomópontos-felhasználók számára a fizetési,-akkor-használható modellben licenc szükséges. Nem kötelező számára, akik a kapacitás modellben licenc (lásd a [lap megvásárlása](https://azure.microsoft.com/overview/azure-stack/how-to-buy/ to learn more about pricing in Azure Stack)). A felhasználók Azure verem szoftverfejlesztői készlet Azure verem operátorok használati adatait, és a szolgáltatás tesztelése. Felhasználók nem megterheljük keletkeznek bármely használatra. 
+> Használati adatok jelentése az Azure-verem többcsomópontos-felhasználók számára a fizetési,-akkor-használható modellben licenc szükséges. Nem kötelező számára, akik a kapacitás modellben licenc (lásd a [lap megvásárlása](https://azure.microsoft.com/en-us/overview/azure-stack/how-to-buy/). A felhasználók Azure verem szoftverfejlesztői készlet Azure verem operátorok használati adatait, és a szolgáltatás tesztelése. Felhasználók nem megterheljük keletkeznek bármely használatra. 
 
 
 ![számlázási folyamat](media/azure-stack-usage-reporting/billing-flow.png)

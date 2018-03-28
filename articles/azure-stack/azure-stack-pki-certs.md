@@ -1,25 +1,25 @@
 ---
-title: "Az Azure verem nyilvános kulcsokra épülő infrastruktúrát tanúsítványokra vonatkozó követelményei Azure verem integrált rendszerek |} Microsoft Docs"
-description: "Az Azure verem nyilvános kulcsokra épülő infrastruktúra központi telepítési tanúsítványkövetelmények integrált Azure verem rendszerekhez ismerteti."
+title: Az Azure verem nyilvános kulcsokra épülő infrastruktúrát tanúsítványokra vonatkozó követelményei Azure verem integrált rendszerek |} Microsoft Docs
+description: Az Azure verem nyilvános kulcsokra épülő infrastruktúra központi telepítési tanúsítványkövetelmények integrált Azure verem rendszerekhez ismerteti.
 services: azure-stack
-documentationcenter: 
-author: jeffgilb
+documentationcenter: ''
+author: mabriggs
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/20/2018
-ms.author: jeffgilb
+ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: f2f71372211dcc9db34beb3fa3fd788920f8bd45
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 455c74ca808f71258a12166c2e36bdd73d9a3e20
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-stack-public-key-infrastructure-certificate-requirements"></a>Az Azure verem nyilvános kulcsokra épülő infrastruktúrát tanúsítványkövetelmények
 Azure verem van egy nyilvános infrastruktúra-hálózaton kívülről hozzáférhető nyilvános IP-címtartományból egy kis készletét a verem Azure-szolgáltatások, és esetleg a bérlői virtuális gépek használatával. Azure verem központi telepítése során a megfelelő DNS-neveit Azure verem nyilvános infrastruktúra végpontokkal PKI-tanúsítványok szükségesek. Ez a cikk nyújt tájékoztatást:
@@ -39,6 +39,7 @@ Az alábbi lista a tanúsítvány Azure verem telepítéséhez szükséges köve
 - A tanúsítvány formátumban kell lennie PFX, mint a nyilvános és titkos kulcsok szükségesek az Azure-verem telepítéséhez. 
 - A tanúsítvány pfx-fájlok rendelkeznie érték "Digitális aláírás" és "KeyEncipherment" a "Kulcshasználat" mezőben.
 - A tanúsítvány pfx-fájlok rendelkeznie kell az "Kiszolgálói hitelesítés (1.3.6.1.5.5.7.3.1)" és "Ügyfél-hitelesítés (1.3.6.1.5.5.7.3.2)" értéket a "Kibővített kulcshasználat" mezőben.
+- A tanúsítvány "kiállítva a következőnek:" mező nem lehet ugyanaz, mint a "kiállító:" mező.
 - Minden tanúsítvány pfx-fájlok a jelszavakat, meg kell egyeznie a központi telepítés során
 - Győződjön meg arról, hogy a tulajdonos nevét és minden tanúsítványok tulajdonosának alternatív nevét egyezik-e a sikertelen központi telepítéssel elkerülése érdekében ebben a cikkben leírt előírásoknak.
 
@@ -50,7 +51,7 @@ Ez a szakasz a táblázat az Azure-verem nyilvános végpontot PKI-tanúsítván
 
 Minden Azure verem nyilvános infrastruktúra végpont a megfelelő DNS-névvel rendelkező tanúsítványokra szükség. Minden egyes végpont DNS-név formátumban van megadva:  *&lt;előtag >.&lt; régió >. &lt;teljesen minősített tartományneve >*. 
 
-A telepítéshez, a [régió] és [externalfqdn] az értékeknek egyezniük kell a terület és a külső tartományneveket, amelyekben az Azure-verem rendszer számára is választott. Tegyük fel, ha a terület neve *Redmond* és a külső tartománynév *contoso.com*, a DNS-nevek lenne a formátum  *&lt;előtag >. redmond.contoso.com* . A  *&lt;előtag >* értékek vannak predesignated megadásával írhatja le a végpontot a tanúsítvány által védett Microsoft által. Emellett a  *&lt;előtag >* értékek a külső infrastruktúra végpontok függ az adott végponti használó Azure verem-szolgáltatás. 
+A telepítéshez, a [régió] és [externalfqdn] az értékeknek egyezniük kell a terület és a külső tartományneveket, amelyekben az Azure-verem rendszer számára is választott. Tegyük fel, ha a terület neve *Redmond* és a külső tartománynév *contoso.com*, a DNS-nevek lenne a formátum *&lt;előtag >. redmond.contoso.com*. A  *&lt;előtag >* értékek vannak predesignated megadásával írhatja le a végpontot a tanúsítvány által védett Microsoft által. Emellett a  *&lt;előtag >* értékek a külső infrastruktúra végpontok függ az adott végponti használó Azure verem-szolgáltatás. 
 
 |Telepítési mappa|Szükséges tanúsítvány tulajdonosára és alternatív tulajdonosnevekkel (SAN)|Hatókör (régiónként)|SubDomain namespace|
 |-----|-----|-----|-----|
@@ -93,7 +94,7 @@ A következő táblázat ismerteti a végpontok és az SQL és MySQL adapterek �
 
 <sup>1</sup> több helyettesítő alternatív tulajdonosnevek, egy tanúsítványra van szükség. Előfordulhat, hogy az összes nyilvános hitelesítésszolgáltatók által nem támogatott a rendszer egy tanúsítványt a San-okon több helyettesítő 
 
-<sup>2</sup> m &#42;. App Service.  *&lt;régió >.&lt; teljesen minősített tartományneve >* helyettesítő tanúsítvány nem használható a három tanúsítványok (api.appservice. *&lt;régió >. &lt;teljesen minősített tartományneve >*, ftp.appservice. *&lt;régió >. &lt;teljesen minősített tartományneve >*, és sso.appservice. *&lt;régió >. &lt;teljesen minősített tartományneve >*. App Service explicit módon igényel a külön tanúsítványok ezeket a végpontokat. 
+<sup>2</sup> A &#42;.appservice. *&lt;régió >. &lt;teljesen minősített tartományneve >* helyettesítő tanúsítvány nem használható a három tanúsítványok (api.appservice. *&lt;régió >. &lt;teljesen minősített tartományneve >*, ftp.appservice. *&lt;régió >. &lt;teljesen minősített tartományneve >*, és sso.appservice. *&lt;régió >. &lt;teljesen minősített tartományneve >*. App Service explicit módon igényel a külön tanúsítványok ezeket a végpontokat. 
 
 ## <a name="learn-more"></a>Részletek
 Megtudhatja, hogyan [Azure Alkalmazásveremben üzembe nyilvános kulcsú infrastruktúra tanúsítványainak előállításához](azure-stack-get-pki-certs.md). 

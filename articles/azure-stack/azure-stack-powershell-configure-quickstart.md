@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/22/2018
 ms.author: mabrigg
-ms.openlocfilehash: 7725c5a9a7b6359257efadcc46366a7a360ec69c
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 2b306cc9dc9bbf435eb70315cc46e7faf4268b47
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="get-up-and-running-with-powershell-in-azure-stack"></a>Amelyekből megismerheti a verem Azure PowerShell használatával
 
@@ -174,6 +174,9 @@ Most, hogy a PowerShell konfigurálását, hozzon létre egy erőforráscsoporto
 New-AzureRMResourceGroup -Name "ContosoVMRG" -Location Local
 ```
 
+> [!note]  
+> Adja meg egy erőforráscsoportot, szüksége lesz az előfizetéshez van erőforráscsoport. Előfizetések kapcsolatos további információkért lásd: [terv, ajánlat, kvóta és előfizetés – áttekintés](azure-stack-plan-offer-quota-overview.md)
+
 Az erőforráscsoport létrehozása után a **üzembe helyezési állapota** tulajdonsága **sikeres**.
 
 ## <a name="next-steps"></a>További lépések
@@ -181,10 +184,3 @@ Az erőforráscsoport létrehozása után a **üzembe helyezési állapota** tul
 * [Telepítse és konfigurálja a parancssori felület](azure-stack-connect-cli.md)
 
 * [Sablonok fejlesztése](user/azure-stack-develop-templates.md)
-
-
-
-
-
-
-

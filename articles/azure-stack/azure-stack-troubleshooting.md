@@ -1,11 +1,11 @@
 ---
-title: "A Microsoft Azure verem hibaelhárítása |} Microsoft Docs"
-description: "Az Azure verem hibaelhárítás."
+title: A Microsoft Azure verem hibaelhárítása |} Microsoft Docs
+description: Az Azure verem hibaelhárítás.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: jeffgilb
 manager: femila
-editor: 
+editor: ''
 ms.assetid: a20bea32-3705-45e8-9168-f198cfac51af
 ms.service: azure-stack
 ms.workload: na
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 02/21/2018
 ms.author: jeffgilb
 ms.reviewer: unknown
-ms.openlocfilehash: 799a7f7ed7e2373e4cf819a34d5deb362c9e6a3f
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: b63fdd630647cc970a2d935619b4d3f16b8c0375
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="microsoft-azure-stack-troubleshooting"></a>A Microsoft Azure verem hibaelhárítása
 
@@ -44,7 +44,7 @@ Ez a viselkedés esetén valószínűleg csak egy PowerShell-parancsablakban ala
 Virtuális gépek Azure-készletben telepítése előtt hozzá kell adni egy Windows Server kép és a galériabeli elemet.
 
 ### <a name="after-restarting-my-azure-stack-host-some-vms-may-not-automatically-start"></a>A saját Azure verem állomás az újraindítás után néhány virtuális gép esetleg nem indul el automatikusan.
-Miután a gazdagép újraindul, azt tapasztalhatja, Azure verem szolgáltatások nem érhetők el azonnal.  Ennek az az oka az Azure a verem [infrastruktúra virtuális gépek](azure-stack-architecture.md#virtual-machine-roles) és RPs eltarthat egy kis bit konzisztenciájának ellenőrzése, de végül indul el automatikusan.
+Miután a gazdagép újraindul, azt tapasztalhatja, Azure verem szolgáltatások nem érhetők el azonnal.  Ennek az az oka az Azure a verem [infrastruktúra virtuális gépek](..\azure-stack\asdk\asdk-architecture.md#virtual-machine-roles) és RPs eltarthat egy kis bit konzisztenciájának ellenőrzése, de végül indul el automatikusan.
 
 Előfordulhat, hogy a bérlői virtuális gépek nem indul el automatikusan a rendszer az Azure verem development kit gazdagép újraindítása után is. Ez egy ismert probléma, és online állapotba kerüljön néhány manuális szükséges:
 
