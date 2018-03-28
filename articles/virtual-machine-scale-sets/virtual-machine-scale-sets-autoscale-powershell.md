@@ -1,11 +1,11 @@
 ---
-title: "Automatikus skálázási virtuálisgép-méretezési beállítja az Azure PowerShell |} Microsoft Docs"
-description: "Az Azure PowerShell beállítja a virtuálisgép-méretezési automatikus skálázási szabályok létrehozása"
+title: Automatikus skálázási virtuálisgép-méretezési beállítja az Azure PowerShell |} Microsoft Docs
+description: Az Azure PowerShell beállítja a virtuálisgép-méretezési automatikus skálázási szabályok létrehozása
 services: virtual-machine-scale-sets
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 88886cad-a2f0-46bc-8b58-32ac2189fc93
 ms.service: virtual-machine-scale-sets
@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 10/19/2017
 ms.author: iainfou
 ms.openlocfilehash: 8928e56f353858234db314714d411a9c2990eb4e
-ms.sourcegitcommit: 901a3ad293669093e3964ed3e717227946f0af96
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/27/2018
 ---
 # <a name="automatically-scale-a-virtual-machine-scale-set-with-azure-powershell"></a>A virtuálisgép-méretezési beállítása az Azure PowerShell automatikus méretezése
 A méretezési csoport létrehozásakor megadhatja a futtatni kívánt Virtuálisgép-példányok száma. Az alkalmazás igény szerinti változásával automatikusan növeli vagy csökkenti a Virtuálisgép-példányok számát. Automatikus skálázás teszi lehetővé teszi keresletének tartani, vagy az alkalmazás életciklusa során alkalmazás teljesítmény változásait.
@@ -50,13 +50,13 @@ A következő paramétert kell használni ehhez a szabályhoz:
 | Paraméter               | Magyarázat                                                                                                         | Érték          |
 |-------------------------|---------------------------------------------------------------------------------------------------------------------|----------------|
 | *-MetricName*           | A teljesítmény metrika figyelésére és a skála alkalmazni az alábbi műveletek beállítani.                                                   | Százalékos processzorhasználat |
-| *-Időkeretben vannak*            | Milyen gyakran a metrikák gyűjtése történt elemzéséhez.                                                                   | 1 perc       |
+| *-TimeGrain*            | Milyen gyakran a metrikák gyűjtése történt elemzéséhez.                                                                   | 1 perc       |
 | *-MetricStatistic*      | Határozza meg, hogy az összegyűjtött metrikák elemzések céljából összesíti kell-e.                                                | Átlag        |
-| *Az időtartomány értékének-*           | Az időtartam a metrika és a küszöbértéket az összehasonlítás előtt figyeli.                                   | 10 perc      |
+| *-TimeWindow*           | Az időtartam a metrika és a küszöbértéket az összehasonlítás előtt figyeli.                                   | 10 perc      |
 | *-Operátor*             | Hasonlítsa össze a metrikaadatokat szemben a küszöbérték operátor.                                                     | Nagyobb, mint   |
-| *-Küszöbérték*            | Az érték, amely az automatikus skálázási szabály elindítani egy műveletet okoz.                                                      | 70%            |
+| *-Threshold*            | Az érték, amely az automatikus skálázási szabály elindítani egy műveletet okoz.                                                      | 70%            |
 | *-ScaleActionDirection* | Meghatározza, hogy a méretezési kell méretezni felfelé vagy lefelé, amikor a szabály vonatkozik.                                             | Növelés       |
-| *– ScaleActionScaleType* | Azt jelzi, hogy a Virtuálisgép-példányok száma a által százalékát módosítani kell-e.                                 | Készültségi módosítása |
+| *–ScaleActionScaleType* | Azt jelzi, hogy a Virtuálisgép-példányok száma a által százalékát módosítani kell-e.                                 | Készültségi módosítása |
 | *-ScaleActionValue*     | Virtuálisgép-példányok hány százalékát módosítani kell, amikor a szabály gondoskodik.                                            | 20             |
 | *-ScaleActionCooldown*  | Mennyi ideig várjon a szabály alkalmazza újra, így az automatikus skálázási műveletek érvénybe lépéséhez idő kell. | 5 perc      |
 
