@@ -84,9 +84,10 @@
 ## [Hibaelhárítás](vpn-gateway-troubleshoot.md)
 ### [VPN teljesítményének érvényesítése VNeten](vpn-gateway-validate-throughput-to-vnet.md)
 ### [Közösség által javasolt VPN- vagy tűzfaleszköz-beállítások](vpn-gateway-third-party-settings.md)
-### [Pont–hely kapcsolati probléma](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md)
-### [A helyek közötti kapcsolat időnként megszakad](vpn-gateway-troubleshoot-site-to-site-disconnected-intermittently.md)
-### [A helyek közötti kapcsolat nem hozható létre](vpn-gateway-troubleshoot-site-to-site-cannot-connect.md) 
+### [Pont–hely kapcsolati problémák](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md)
+#### [Pont–hely kapcsolati problémák – Mac OS X VPN-ügyfél](vpn-gateway-troubleshoot-point-to-site-osx-ikev2.md)
+### [Helyek közötti kapcsolati problémák](vpn-gateway-troubleshoot-site-to-site-cannot-connect.md)
+#### [A helyek közötti kapcsolat időnként megszakad](vpn-gateway-troubleshoot-site-to-site-disconnected-intermittently.md)
 ### [VNet- vagy VPN-kapcsolatok konfigurálása és érvényesítése](https://support.microsoft.com/help/4032151/configuring-and-validating-vnet-or-vpn-connections)
 
 # Referencia

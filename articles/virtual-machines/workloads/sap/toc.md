@@ -39,7 +39,7 @@
 ### Az Azure infrastruktúra előkészítése
 #### [Windows közös lemezzel (A)SCS példányhoz](sap-high-availability-infrastructure-wsfc-shared-disk.md)
 #### [Windows SOFS fájlmegosztással (A)SCS példányhoz](sap-high-availability-infrastructure-wsfc-file-share.md)
-#### [SUSE Linux NFS-sel (A)SCS példányhoz](high-availability-guide-suse.md)
+#### [Magas rendelkezésre állás NFS-hez Azure-beli virtuális gépeken SLES rendszeren](high-availability-guide-suse-nfs.md)
 #### [Pacemaker on SLES](high-availability-guide-suse-pacemaker.md)
 ### SAP-telepítés
 #### [Windows közös lemezzel (A)SCS példányhoz](sap-high-availability-installation-wsfc-shared-disk.md)

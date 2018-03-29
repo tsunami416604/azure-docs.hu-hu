@@ -19,12 +19,16 @@
       href: tutorial-simulate-device-windows.md
     - name: 'C# modul fejlesztése'
       href: tutorial-csharp-module.md
+    - name: Python-modul fejlesztése
+      href: tutorial-python-module.md
     - name: Az Azure Stream Analytics üzembe helyezése
       href: tutorial-deploy-stream-analytics.md
     - name: Az Azure Machine Learning üzembe helyezése
       href: tutorial-deploy-machine-learning.md
     - name: Az Azure Functions üzembe helyezése
       href: tutorial-deploy-function.md
+    - name: Egyszerre több modul használata a VS Code-ban
+      href: tutorial-multiple-modules-in-vscode.md
 - name: Útmutatók
   items:
     - name: Átjárók létrehozása

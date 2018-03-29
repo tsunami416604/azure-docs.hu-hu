@@ -351,6 +351,8 @@
           href: extensions-diagnostics-template.md
         - name: Network Watcher-ügynök
           href: extensions-nwa.md
+        - name: Bővítménytelepítés korlátozása
+          href: extensions-rmpolicy-howto-ps.md
     - name: Virtuális gépek áttelepítése
       items:
         - name: AWS és helyszíni virtuális gépek migrálása
@@ -396,6 +398,8 @@
           href: reset-network-interface.md
         - name: Rendszerindítási diagnosztika
           href: boot-diagnostics.md
+        - name: Soros konzol
+          href: serial-console.md
         - name: Virtuális gép létrehozása
           href: troubleshoot-deployment-new-vm.md
         - name: Üzembe helyezési problémák

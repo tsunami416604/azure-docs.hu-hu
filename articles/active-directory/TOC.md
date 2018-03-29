@@ -77,8 +77,8 @@
 ## [Csoportok és tagok kezelése](active-directory-manage-groups.md)
 ### Csoportok kezelése
 #### [Azure Portal](active-directory-groups-create-azure-portal.md)
-#### [Azure PowerShell – Azure Resource Manager-modell](active-directory-accessmanagement-groups-settings-v2-cmdlets.md)
-#### [Azure PowerShell – klasszikus üzemi modell](active-directory-accessmanagement-groups-settings-cmdlets.md)
+#### [Azure AD PowerShell for Graph (v2)](active-directory-accessmanagement-groups-settings-v2-cmdlets.md)
+#### [Azure AD PowerShell MSOnline (v1)](active-directory-accessmanagement-groups-settings-cmdlets.md)
 ### [Csoporttagok kezelése](active-directory-groups-members-azure-portal.md)
 ### [Csoporttulajdonosok kezelése](active-directory-accessmanagement-managing-group-owners.md)
 ### [Csoporttagság kezelése](active-directory-groups-membership-azure-portal.md)
