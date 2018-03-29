@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/15/2018
+ms.date: 03/27/2018
 ms.author: jingwang
-ms.openlocfilehash: 733a396117a58d8dc51e55614e503853f13141c0
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: c43973a7e5070676fc0f32a4c8923d57a479f884
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>Másolja a tevékenység teljesítmény- és hangolási útmutató
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -91,7 +91,7 @@ A **felhő adatok adatátviteli egység (DMU)** egy mérték, amely jelöli az (
 | Adatok másolása a fájlalapú tárolók között | 4 – 32 számát és a fájlok méretétől függően. |
 | Minden egyéb másolatot forgatókönyvek | 4 |
 
-Ez az alapértelmezett felülbírálásához adjon meg értéket a **cloudDataMovementUnits** tulajdonság az alábbiak szerint. A **engedélyezett értékek** a a **cloudDataMovementUnits** tulajdonság, 2, 4, 8, 16 és 32. A **felhő DMUs tényleges száma** egyenlő vagy kisebb, mint a konfigurált érték, attól függően, hogy a adatmintát, hogy használja-e a másolási művelet futásidőben. Egy adott másolási forrását, és a fogadó további egységek konfigurálásakor kaphat jobb teljesítménye szintjét kapcsolatos információk: a [teljesítményfigyelési](#performance-reference).
+Ez az alapértelmezett felülbírálásához adjon meg értéket a **cloudDataMovementUnits** tulajdonság az alábbiak szerint. A **engedélyezett értékek** a a **cloudDataMovementUnits** tulajdonság **legfeljebb 256**. A **felhő DMUs tényleges száma** egyenlő vagy kisebb, mint a konfigurált érték, attól függően, hogy a adatmintát, hogy használja-e a másolási művelet futásidőben. Egy adott másolási forrását, és a fogadó további egységek konfigurálásakor kaphat jobb teljesítménye szintjét kapcsolatos információk: a [teljesítményfigyelési](#performance-reference).
 
 Minden egyes példányra, futtassa a másolási tevékenység során kimenet, amikor egy figyelése, futtassa a ténylegesen használt felhő adatok adatátviteli egység tekintheti meg. További részletek a [figyelése másolása](copy-activity-overview.md#monitoring).
 
@@ -133,11 +133,14 @@ Minden egyes futtatása másolási tevékenységhez adat-előállító száma p�
 
 | Másolja át a forgatókönyvben | Alapértelmezett párhuzamos példányszám szolgáltatás határozza meg |
 | --- | --- |
-| Adatok másolása a fájlalapú tárolók között |1 és 64. A fájlok és a felhő adatok adatátviteli egység (DMUs) átmásolhatja az adatok között két felhőalapú adattároló vagy a fizikai konfigurációját a Self-hosted integrációs futásidejű gép méretétől függ. |
+| Adatok másolása a fájlalapú tárolók között |A fájlok és a felhő adatok adatátviteli egység (DMUs) átmásolhatja az adatok között két felhőalapú adattároló vagy a fizikai konfigurációját a Self-hosted integrációs futásidejű gép méretétől függ. |
 | Adatok másolása az összes adatforrás adattár az Azure Table storage |4 |
 | Minden egyéb másolatot forgatókönyvek |1 |
 
-Általában az alapértelmezett viselkedés biztosítani fogja a legjobb teljesítményt. Azonban az adatok üzemeltető gépek terhelését vezérlésére tárolja, vagy másolási teljesítmény hangolására meg is felülbírálhatja az alapértelmezett értéket, és adjon meg egy értéket a **parallelCopies** tulajdonság. Az érték kisebb, mint 1-nél egész számnak kell lennie. Futásidőben a legjobb teljesítmény érdekében másolási tevékenység értéket használ, amely kisebb vagy egyenlő a megadott érték.
+[!TIP]
+> Amikor a fájlalapú tárolók közötti másolás, az alapértelmezett viselkedés (automatikus meghatározott) általában ad a legjobb teljesítményt. 
+
+Az adatok üzemeltető gépek terhelését vezérlésére tárolja, vagy másolási teljesítmény hangolására meg is felülbírálhatja az alapértelmezett értéket, és adjon meg egy értéket a **parallelCopies** tulajdonság. Az érték kisebb, mint 1-nél egész számnak kell lennie. Futásidőben a legjobb teljesítmény érdekében másolási tevékenység értéket használ, amely kisebb vagy egyenlő a megadott érték.
 
 ```json
 "activities":[

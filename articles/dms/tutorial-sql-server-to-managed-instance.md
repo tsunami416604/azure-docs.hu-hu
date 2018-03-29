@@ -1,21 +1,21 @@
 ---
-title: "Azure SQL adatbázis felügyelt példány SQL-kiszolgáló áttelepítése az Azure-adatbázis áttelepítési szolgáltatás segítségével |} Microsoft Docs"
-description: "Ismerje meg, a helyszíni SQL Server át Azure SQL adatbázis felügyelt példányát az Azure-adatbázis áttelepítése szolgáltatás használatával."
+title: Azure SQL adatbázis felügyelt példány SQL-kiszolgáló áttelepítése az Azure-adatbázis áttelepítési szolgáltatás segítségével |} Microsoft Docs
+description: Ismerje meg, a helyszíni SQL Server át Azure SQL adatbázis felügyelt példányát az Azure-adatbázis áttelepítése szolgáltatás használatával.
 services: dms
 author: edmacauley
 ms.author: edmaca
 manager: craigg
-ms.reviewer: 
+ms.reviewer: ''
 ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 02/28/2018
-ms.openlocfilehash: d74a273061912ea2bdcc39301ce9a727b07ade41
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.date: 03/29/2018
+ms.openlocfilehash: 8abf3bae3a2274ed5514a5c621675b4c9ec27ae2
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="migrate-sql-server-to-azure-sql-database-managed-instance"></a>Az Azure SQL adatbázis felügyelt példány SQL-kiszolgáló áttelepítése
 Az Azure-adatbázis áttelepítési szolgáltatás segítségével a helyszíni SQL Server-példány az Azure SQL Database-adatbázisok át. Ebben az oktatóanyagban az áttelepítést a **Adventureworks2012** adatbázis az SQL Server helyi példánya egy Azure SQL Database az Azure-adatbázis áttelepítése szolgáltatás használatával.
@@ -32,15 +32,16 @@ Az oktatóanyag elvégzéséhez kell:
 
 - Az Azure Resource Manager telepítési modell, amely webhelyek kapcsolatot biztosít annak a helyszíni adatforrás-kiszolgálók használatával vagy használatával hozhat létre egy VNETET az Azure-adatbázis áttelepítése szolgáltatás [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) vagy [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways). [További tudnivalók az Azure SQL DB felügyelt példány áttelepítéshez az Azure-adatbázis áttelepítése szolgáltatással hálózati topológiák](https://aka.ms/dmsnetworkformi).
 - Győződjön meg arról, hogy az Azure virtuális hálózatot (VNET) hálózati biztonsági csoport szabályok tegye letiltása a következő kommunikációs portok 443-as, 53-as és 9354-es, 445-ös, 12000. További részletek az Azure VNET NSG forgalomszűrést végez, olvassa el a [hálózati forgalmat hálózati biztonsági csoportokkal](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-nsg).
-- Configure a [a Windows tűzfalat a forrás hozzáféréshez](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access).
-- Nyissa meg a Windows tűzfalat ahhoz, hogy az Azure adatbázis áttelepítése az SQL Server forrás eléréséhez.
+- Konfigurálja a [Windows tűzfalat a forrás hozzáféréshez](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access).
+- Nyissa meg a Windows tűzfalat ahhoz, hogy az Azure adatbázis áttelepítése az SQL-kiszolgálón, amely alapértelmezés szerint 1433-as TCP-port forrás eléréséhez.
+- Ha több elnevezett SQL Server-példány dinamikus portok használatával futtatja, előfordulhat, hogy kívánja az SQL Browser szolgáltatás engedélyezése és 1434 UDP-portot a tűzfalon keresztüli hozzáférés engedélyezése, hogy az Azure-adatbázis áttelepítési szolgáltatás csatlakozhat a forrás nevesített példány a kiszolgáló.
 - Ha egy tűzfal készülék használ a forrásadatbázis elé, szükség lehet ahhoz, hogy az Azure adatbázis áttelepítése az áttelepítési, valamint a fájlok SMB 445-ös porton keresztül adatforrás adatbázisának vagy adatbázisainak eléréséhez Tűzfalszabályok hozzáadása.
 - Azure SQL adatbázis felügyelt példány példányt létrehozni a következő cikkben található részletes [hozzon létre egy Azure SQL adatbázis-felügyelt példányt az Azure-portálon](https://aka.ms/sqldbmi).
 - Győződjön meg arról, hogy a használnak az adatforrás SQL Server és felügyelt célpéldányának bejelentkezések a sysadmin (rendszergazda) kiszolgálói szerepkör tagjai.
 - Hozzon létre egy hálózati megosztást, amelyet az Azure-adatbázis áttelepítési szolgáltatás segítségével a forrás-adatbázis biztonsági mentése.
 - Győződjön meg arról, hogy a szolgáltatás az adatforrás SQL Server-példányt futtató fióknak írási jogosultságokkal a létrehozott hálózati megosztáson.
-- Jegyezze fel a Windows-felhasználó (és jelszó), amely teljes hozzáférési jogosultsággal rendelkezik a fenti létrehozott hálózati megosztáson. Az Azure-adatbázis áttelepítési szolgáltatás a felhasználó hitelesítő adatainak a biztonsági mentési fájlok feltöltése az Azure storage-tároló visszaállítási művelet fogja megszemélyesíteni.
-- A blob-tároló létrehozása és a SAS URI-JÁNAK beolvasása a cikkben szereplő lépések segítségével [kezelése az Azure Blob Storage-erőforrások a Tártallózó (előzetes verzió)](https://docs.microsoft.com/en-us/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container), ügyeljen arra, hogy válassza ki az összes engedélyt (olvasás, írás, törlés, lista) házirend ablakban a SAS URI létrehozásakor. Ezzel a funkcióval az Azure-adatbázis áttelepítési szolgáltatás a tárolóhoz való hozzáféréssel fiók tároló, amely jelzi a áttelepítése a biztonsági mentési fájlok feltöltése az Azure SQL adatbázis felügyelt példány adatbázisokat
+- Jegyezze fel a Windows-felhasználó (és jelszó), amely teljes hozzáférési jogosultsággal rendelkezik a fenti létrehozott hálózati megosztáson. Az Azure-adatbázis áttelepítési szolgáltatás a biztonsági mentési fájlok feltöltése az Azure storage-tároló visszaállítási művelet a felhasználó hitelesítő adatainak megszemélyesít.
+- A blob-tároló létrehozása és a SAS URI-JÁNAK beolvasása a cikkben szereplő lépések segítségével [kezelése az Azure Blob Storage-erőforrások a Tártallózó (előzetes verzió)](https://docs.microsoft.com/en-us/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container), ügyeljen arra, hogy válassza ki az összes engedélyt (olvasás, írás, törlés, lista) házirend ablakban a SAS URI létrehozásakor. Ez áttelepítéséhez használja a biztonsági mentési fájlok feltöltése a tároló fiók hozzáférést biztosít az Azure-adatbázis áttelepítési szolgáltatás adatbázisok Azure SQL adatbázis felügyelt példányra
 
 ## <a name="register-the-microsoftdatamigration-resource-provider"></a>A Microsoft.DataMigration erőforrás-szolgáltató regisztrálása
 
@@ -124,10 +125,10 @@ A szolgáltatás létrehozása után keresse meg azt az Azure portálon, és nyi
 
     | | |
     |--------|---------|
-    |**Server biztonsági másolat helye** | A helyi hálózati megosztást, hogy az Azure-adatbázis áttelepítési szolgáltatás is igénybe vehet a source adatbázis biztonsági másolatait. Az adatforrás SQL Server-példányt futtató szolgáltatásfiókot a hálózati megosztás írási jogosultságokkal kell rendelkeznie. |
+    |**Biztonsági mentési helye** | A helyi hálózati megosztást, hogy az Azure-adatbázis áttelepítési szolgáltatás is igénybe vehet a source adatbázis biztonsági másolatait. Az adatforrás SQL Server-példányt futtató szolgáltatásfiókot a hálózati megosztás írási jogosultságokkal kell rendelkeznie. |
     |**Felhasználónév** | A windows rendszerbeli felhasználónevet, hogy az Azure-adatbázis áttelepítési szolgáltatás megszemélyesíthet-e, és a biztonsági mentési fájlok feltöltése az Azure storage-tároló visszaállítási művelet. |
     |**Jelszó** | A fenti felhasználó jelszavát. |
-    |**Tároló SAS URI-t** | A fiók a tároló, amely a szolgáltatás fel kell töltenie a fájlok biztonsági mentése és a használni kívánt áttelepítéséhez hozzáférést biztosít az Azure-adatbázis áttelepítési szolgáltatás SAS URI-t az Azure SQL adatbázis felügyelt példány adatbázisokat.  [A SAS URI blob tároló beszerzéséről](https://docs.microsoft.com/en-us/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container).|
+    |**Tároló SAS URI-t** | SAS URI-t, amely a fiók a tároló, amelyhez a szolgáltatás feltölti a biztonsági másolat fájljait, és hogy a hozzáférést az Azure-adatbázis áttelepítése szolgáltatás szolgál áttelepítése az Azure SQL adatbázis felügyelt példány adatbázisokat. [A SAS URI blob tároló beszerzéséről](https://docs.microsoft.com/en-us/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container).|
     
     ![Áttelepítési beállítások konfigurálása](media\tutorial-sql-server-to-managed-instance\dms-configure-migration-settings.png)
 

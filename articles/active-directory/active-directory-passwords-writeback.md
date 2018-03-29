@@ -1,26 +1,26 @@
 ---
-title: "A jelszóvisszaíró az Azure AD SSPR |} Microsoft Docs"
-description: "Használja az Azure AD és az Azure AD Connect a visszaírási jelszavuk a helyi címtárhoz"
+title: A jelszóvisszaíró az Azure AD SSPR |} Microsoft Docs
+description: Használja az Azure AD és az Azure AD Connect a visszaírási jelszavuk a helyi címtárhoz
 services: active-directory
-keywords: "Az Active directory-jelszókezelés, jelszókezelés, az Azure AD self service jelszó alaphelyzetbe állítása"
-documentationcenter: 
+keywords: Az Active directory-jelszókezelés, jelszókezelés, az Azure AD self service jelszó alaphelyzetbe állítása
+documentationcenter: ''
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: 
-ms.devlang: 
+ms.tgt_pltfrm: ''
+ms.devlang: ''
 ms.topic: article
 ms.date: 01/11/2018
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: bcb7074a6d590a08ad683c8746156245bc60c5e8
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: a7a81f51e0873da38f25deb687e4d03ccf67e11a
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="password-writeback-overview"></a>Jelszó visszaírási áttekintése
 
@@ -30,7 +30,7 @@ A jelszóvisszaírás a következő szolgáltatásokat biztosítja:
 
 * **Nulla késleltetésre visszajelzést biztosítanak a**: a jelszóvisszaírás egy aszinkron művelet. A felhasználók arról azonnal a jelszavát nem felelt meg a házirend vagy nem alaphelyzetbe állítása vagy bármilyen okból megváltozott.
 * **Támogatja a jelszó alaphelyzetbe állítása a felhasználók számára, amelyek használják az Active Directory összevonási szolgáltatások (AD FS) vagy más összevonási technológiák**: A jelszóvisszaírás, mindaddig, amíg az összevont felhasználói fiókok szinkronizálása az Azure AD-bérlőn, képesek a helyszíni Active Directory-jelszavaikat felügyelete a felhőből.
-* **Támogatja a jelszó alaphelyzetbe állítása használó felhasználók** [Jelszókivonat-szinkronizálás](./connect/active-directory-aadconnectsync-implement-password-synchronization.md): Ha a jelszó alaphelyzetbe állítása szolgáltatás észleli, hogy a szinkronizált felhasználói fiók engedélyezve van-e a Jelszókivonat-szinkronizálás, a rendszer visszaállítja-e mind a fiók a helyi és a felhő jelszó egyidejűleg.
+* **Támogatja a jelszó alaphelyzetbe állítása használó felhasználók** [Jelszókivonat-szinkronizálás](./connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md): Ha a jelszó alaphelyzetbe állítása szolgáltatás észleli, hogy a szinkronizált felhasználói fiók engedélyezve van-e a Jelszókivonat-szinkronizálás, a rendszer visszaállítja-e mind a fiók a helyi és a felhő jelszó egyidejűleg.
 * **Támogatja a jelszó alaphelyzetbe állítása a felhasználók számára, hogy átmenő hitelesítést használó**: a jelszóvisszaírás, mindaddig, amíg az áteresztő hitelesítés fiókok szinkronizálása az Azure AD-bérlő be tudja kezelni a helyszíni Active Directory-jelszavakkal a felhőből.
 * **Támogatja a jelszó is módosul a hozzáférési panel és az Office 365**: Ha összevont vagy a jelszó szinkronizálva felhasználók jelszavukat lejárt vagy nem lejárt, azt e jelszavakat írhasson vissza a helyi Active Directory-környezet származnak.
 * **Jelszavak visszaírása támogatja, amikor egy rendszergazda visszaállítja azokat az Azure portálról**: amikor egy rendszergazda a felhasználó jelszavának alaphelyzetbe állítása a [Azure-portálon](https://portal.azure.com), ha a felhasználónak össze van vonva, vagy a jelszó szinkronizálva lesznek állítva a jelszót a rendszergazda úgy dönt, valamint a helyi Active Directoryban. Ez a funkció jelenleg nem támogatott az Office felügyeleti portálon.

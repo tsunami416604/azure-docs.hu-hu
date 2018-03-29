@@ -1,6 +1,6 @@
 ---
-title: "Az Azure SQL adatszinkronizálás (előzetes verzió) |} Microsoft Docs"
-description: "Ez az áttekintés bemutatja az Azure SQL adatszinkronizálás (előzetes verzió)"
+title: Az Azure SQL adatszinkronizálás (előzetes verzió) |} Microsoft Docs
+description: Ez az áttekintés bemutatja az Azure SQL adatszinkronizálás (előzetes verzió)
 services: sql-database
 author: douglaslms
 manager: craigg
@@ -10,11 +10,11 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: douglasl
 ms.reviewer: douglasl
-ms.openlocfilehash: 5abe3e5a56dfca263f109b86f473ac490da3eac7
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 6e0b8a999cf38cbef37498d4ee0fb2bceae8f292
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync-preview"></a>Szinkronizálja az adatokat több felhőalapú és helyszíni adatbázisok az SQL adatszinkronizálás (előzetes verzió)
 
@@ -92,6 +92,8 @@ Adatok szinkronizálása által beszúrási, frissítési és törlési esemény
 
 -   Egy táblázat azonosító oszlopot, amely nem az elsődleges kulcs nem lehet.
 
+-   Egy elsődleges kulcs nem lehet a dátum és idő adattípusú.
+
 -   Objektumok (adatbázisok, táblákat és oszlopokat) nevét nem tartalmazza a nyomtatható karakterek pont (.), bal oldali szögletes zárójel ([), és jobb szögletes zárójel (]).
 
 -   Az Azure Active Directory-hitelesítés nem támogatott.
@@ -160,20 +162,20 @@ Igen. SQL adatszinkronizálás támogatja a rendezést a következő esetekben:
 
 ## <a name="next-steps"></a>További lépések
 
-SQL adatszinkronizálás kapcsolatos további információkért lásd:
+További információ az SQL Data Syncről:
 
--   [Azure SQL Data szinkronizálás beállítása](sql-database-get-started-sql-data-sync.md)
--   [Ajánlott eljárások az Azure SQL-adatok szinkronizálása](sql-database-best-practices-data-sync.md)
--   [A figyelő az Azure SQL adatszinkronizálás az OMS szolgáltatáshoz](sql-database-sync-monitor-oms.md)
--   [Az Azure SQL adatszinkronizálás problémák elhárítása](sql-database-troubleshoot-data-sync.md)
+-   [Az Azure SQL Data Sync beállítása](sql-database-get-started-sql-data-sync.md)
+-   [Ajánlott eljárások az Azure SQL Data Synchez](sql-database-best-practices-data-sync.md)
+-   [Az Azure SQL Data Sync monitorozása az OMS Log Analytics használatával](sql-database-sync-monitor-oms.md)
+-   [Az Azure SQL Data Synckel hibaelhárítása](sql-database-troubleshoot-data-sync.md)
 
--   PowerShell-példák bemutatják, hogyan konfigurálja az SQL adatszinkronizálás befejezése:
+-   Teljes PowerShell-példák az SQL Data Sync konfigurálásáról:
     -   [A PowerShell szolgáltatás használatával több Azure SQL-adatbázisok közötti szinkronizálása](scripts/sql-database-sync-data-between-sql-databases.md)
-    -   [Egy Azure SQL-adatbázis és a helyszíni SQL Server-adatbázisok közötti szinkronizálása a PowerShell használatával](scripts/sql-database-sync-data-between-azure-onprem.md)
+    -   [A PowerShell használata egy Azure-beli SQL Database-adatbázis és egy helyszíni SQL Server-adatbázis közötti szinkronizáláshoz](scripts/sql-database-sync-data-between-azure-onprem.md)
 
--   [Töltse le az SQL Data szinkronizálási REST API dokumentációja](https://github.com/Microsoft/sql-server-samples/raw/master/samples/features/sql-data-sync/Data_Sync_Preview_REST_API.pdf?raw=true)
+-   [Az SQL Data Sync REST API dokumentációjának letöltése](https://github.com/Microsoft/sql-server-samples/raw/master/samples/features/sql-data-sync/Data_Sync_Preview_REST_API.pdf?raw=true)
 
-SQL-adatbázis kapcsolatos további információkért lásd:
+További információ az SQL Database-ről:
 
--   [SQL-adatbázis – áttekintés](sql-database-technical-overview.md)
--   [Adatbázis életciklusának kezelésére](https://msdn.microsoft.com/library/jj907294.aspx)
+-   [Az SQL Database áttekintése](sql-database-technical-overview.md)
+-   [Az adatbázis életciklusának felügyelete](https://msdn.microsoft.com/library/jj907294.aspx)

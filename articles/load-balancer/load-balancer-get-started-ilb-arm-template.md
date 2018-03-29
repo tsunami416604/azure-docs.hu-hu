@@ -1,6 +1,6 @@
 ---
-title: "Belső terheléselosztó létrehozása – Azure-sablon | Microsoft Docs"
-description: "Ismerje meg, hogyan hozható létre belső terheléselosztó sablon használatával a Resource Managerben"
+title: Belső terheléselosztó létrehozása – Azure-sablon | Microsoft Docs
+description: Ismerje meg, hogyan hozható létre belső terheléselosztó sablon használatával a Resource Managerben
 services: load-balancer
 documentationcenter: na
 author: KumudD
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 7abb8fb5064ca2ab1e4da6e0a32335f63d87ea02
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: f92430cad52edc60a0ab69caec61cc6f20515f61
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="create-an-internal-load-balancer-using-a-template"></a>Belső terheléselosztó létrehozása sablon használatával
 
@@ -28,7 +28,6 @@ ms.lasthandoff: 12/18/2017
 > * [Azure CLI](../load-balancer/load-balancer-get-started-ilb-arm-cli.md)
 > * [Sablon](../load-balancer/load-balancer-get-started-ilb-arm-template.md)
 
-[!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
 
 [!INCLUDE [load-balancer-get-started-ilb-intro-include.md](../../includes/load-balancer-get-started-ilb-intro-include.md)]
 
@@ -75,7 +74,7 @@ Az alábbi lépéseket követve hozhatja létre a sablont az Azure parancssori f
     azure group create --name TestRG --location westus --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-2-vms-internal-load-balancer/azuredeploy.json --parameters-file parameters.json
     ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [A terheléselosztó elosztási módjának konfigurálása forrás IP-affinitás használatával](load-balancer-distribution-mode.md)
 

@@ -1,13 +1,13 @@
 ---
-title: "Az Azure parancssori felület használatával több IP-konfigurációk terheléselosztási |} Microsoft Docs"
-description: "Megtudhatja, hogyan több IP-címek hozzárendelése a virtuális gép Azure parancssori felületével |} Erőforrás-kezelő."
+title: Az Azure parancssori felület használatával több IP-konfigurációk terheléselosztási |} Microsoft Docs
+description: Megtudhatja, hogyan több IP-címek hozzárendelése a virtuális gép Azure parancssori felületével |} Erőforrás-kezelő.
 services: virtual-network
 documentationcenter: na
 author: anavinahar
 manager: narayan
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: annahar
-ms.openlocfilehash: 23dd3bf6a50a30477014081a955c3c154b765c5d
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: f40747fe56e2e9f5b41391d78fecc7991b93f108
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="load-balancing-on-multiple-ip-configurations"></a>Terheléselosztás több IP-konfigurációk
 
@@ -28,7 +28,6 @@ ms.lasthandoff: 01/19/2018
 > * [Parancssori felület](load-balancer-multiple-ip-cli.md)
 > * [PowerShell](load-balancer-multiple-ip-powershell.md)
 
-[!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
 
 Ez a cikk ismerteti az Azure Load Balancer használata a másodlagos hálózati adapteren (NIC) több IP-címmel. Ebben a forgatókönyvben két virtuális gépeken futó Windows, az elsődleges és másodlagos hálózati tudunk A másodlagos hálózati adapterek mindegyike rendelkezik, két IP-konfigurációk. Minden virtuális gép webhelyeket a contoso.com és fabrikam.com üzemelteti. Minden webhelyre van kötve egy IP-konfigurációk másodlagos hálózati adapteren Azure Load Balancer használatával teszi közzé a két előtérbeli IP-cím, egy, a megfelelő IP-konfiguráció a webhelyre irányuló forgalom terjeszteni minden webhelyre vonatkozóan. Ebben a példában ugyanazt a portszámot is frontends, valamint mindkét háttér címkészletet IP-címek között.
 

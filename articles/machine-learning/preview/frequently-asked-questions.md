@@ -1,6 +1,6 @@
 ---
-title: "Azure Machine Learning 2017 előzetes verzió – gyakori kérdések |} Microsoft Docs"
-description: "Ez a cikk gyakran feltett kérdéseket tartalmaz, és megválaszolja az Azure Machine Learning előzetes verziójú funkciók"
+title: Azure Machine Learning 2017 előzetes verzió – gyakori kérdések |} Microsoft Docs
+description: Ez a cikk gyakran feltett kérdéseket tartalmaz, és megválaszolja az Azure Machine Learning előzetes verziójú funkciók
 services: machine-learning
 author: serinakaye
 ms.author: serinak
@@ -10,25 +10,17 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 08/30/2017
-ms.openlocfilehash: 6146e1ce98144a05bef2ca29705f451aa3f5fb50
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 864e9ff5551637a93b957e5011a8857072c6eaaf
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-machine-learning-frequently-asked-questions"></a>Gyakori kérdések az Azure Machine Learning
 
+Az Azure Machine Learning egy teljes körűen felügyelt Azure-szolgáltatás lehetővé teszi, hogy hozzon létre, tesztelheti, kezelése és központi telepítése a gépi tanulási és AI modellek. A szolgáltatások és a letölthető alkalmazás egy kódot-első megközelítés, amely kihasználja a felhő, a helyszíni és az Edge böngésző számára adja meg a vonat, telepíthet, kezelheti az ajánlatot, és figyelje a modellek tápellátáshoz, a sebesség és a rugalmasságot. Azt is megteheti az Azure Machine Learning Studio kínál egy webböngésző-alapú, visual fogd és vidd fejlesztői környezet nem kódolás esetén szükséges. 
+
 ## <a name="general-product-questions"></a>Általános kérdések
-
-**Mi az Azure Machine Learning?**
-
-Az Azure Machine Learning egy teljes körűen felügyelt Azure-szolgáltatás lehetővé teszi, hogy hozzon létre, tesztelheti, kezelése és központi telepítése a gépi tanulási és AI modellek. Az új szolgáltatásokat és letölthető alkalmazás egy kódot-első megközelítés, amely kihasználja a felhő, a helyszíni és az Edge böngésző számára adja meg a vonat, telepíthet, kezelheti az ajánlatot, és figyelje a modellek tápellátáshoz, a sebesség és a rugalmasságot. Azt is megteheti az Azure Machine Learning Studio kínál egy webböngésző-alapú, visual fogd és vidd fejlesztői környezet nem kódolás esetén szükséges. 
-
-**Ahol régiók a következők a új szolgáltatások érhetők el?**
-
-Támogatott Azure-régiók kísérletezhet, és a modell a kezelési szolgáltatás az Azure Machine Learning keresse meg a [Azure termékek régiónként](https://azure.microsoft.com/regions/services/) lap.
-
-További régiókban, azt a termék fejlesztésére lesz hozzáadva.  A telepítendő régiók sorrendjének segíthet a [Azure Machine Learning visszajelzés](https://feedback.azure.com/forums/257792-machine-learning) hely. 
 
 **Milyen más Azure-szolgáltatások szükségesek?**
 

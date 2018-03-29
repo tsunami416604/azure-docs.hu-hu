@@ -1,12 +1,12 @@
 ---
-title: "Olyan objektum, amely nem szinkronizál az Azure AD hibaelhárítása |} Microsoft Docs"
-description: "Végezzen hibaelhárítást, ezért az objektum nem szinkronizál az Azure AD."
+title: Olyan objektum, amely nem szinkronizál az Azure AD hibaelhárítása |} Microsoft Docs
+description: Végezzen hibaelhárítást, ezért az objektum nem szinkronizál az Azure AD.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
-ms.openlocfilehash: e68b70ce87a6fedab1b85bf2800a50e512910dea
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 05b60b091fe87620c88ad9eb761f1028c24d5730
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="troubleshoot-an-object-that-is-not-synchronizing-to-azure-ad"></a>Olyan objektum, amely nem szinkronizál az Azure AD-hibáinak elhárítása
 
@@ -110,7 +110,7 @@ Az objektum, és melyik szabály alkalmazása az adott Attribútumfolyam vizsgá
 ![Sync Service Manager](./media/active-directory-aadconnectsync-troubleshoot-object-not-syncing/previewresult.png)
 
 ### <a name="log"></a>Napló
-A napló lap segítségével tekintse meg a jelszó-szinkronizálás állapota és előzményei. További információkért lásd: [jelszó-szinkronizálás hibaelhárítása](active-directory-aadconnectsync-troubleshoot-password-synchronization.md).
+A napló lap segítségével tekintse meg a jelszó-szinkronizálás állapota és előzményei. További információkért lásd: [hibaelhárítása a Jelszókivonat-szinkronizálást](active-directory-aadconnectsync-troubleshoot-password-hash-synchronization.md).
 
 ## <a name="metaverse-object-properties"></a>Metaverzum-objektum tulajdonságai
 Általában célszerűbb kezdeni a keresést a következő forrásból: Active Directory [kapcsolódási térbe](#connector-space). Azonban úgy is elindíthatja, keresés a metaverzumban.

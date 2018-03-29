@@ -10,11 +10,11 @@ ms.workload: identity
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: davidmu
-ms.openlocfilehash: 338520f273a88866834e43e17da1f8b131ca38f7
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: d213a3f8bed5af526efba39868855b6f6727a7c0
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Az Azure AD B2C: Gyakori kérdések (GYIK) 
 Ezen a lapon az Azure Active Directory (Azure AD) B2C kapcsolatos gyakori kérdésekre ad választ. Tartsa biztonsági frissítések keresése.
@@ -28,7 +28,9 @@ Az Azure AD B2C nem használható a Microsoft Office 365 felhasználók hiteles�
 ### <a name="what-are-local-accounts-in-azure-ad-b2c-how-are-they-different-from-work-or-school-accounts-in-azure-ad"></a>Mik azok a helyi fiókok az Azure AD B2C? Hogyan vannak különbözik a munkahelyi vagy iskolai fiókok Azure AD-ben?
 Az Azure AD-bérlő, a bérlőhöz tartozó felhasználók jelentkezzen be egy e-mail címet az űrlap `<xyz>@<tenant domain>`.  A `<tenant domain>` a bérlő vagy az eredeti ellenőrzött tartomány egyik `<...>.onmicrosoft.com` tartomány. Ilyen típusú fiókok munkahelyi vagy iskolai fiókkal.
 
-Azure AD B2C-bérlő, a legtöbb alkalmazást szeretné, hogy a felhasználó bejelentkezhet bármely tetszőleges e-mail címmel (például joe@comcast.net, bob@gmail.com, sarah@contoso.com, vagy jim@live.com). Ez a fiók típus egy helyi fiókot.  Tetszőleges felhasználónevek helyi fiókok (például joe, bob, sarah vagy jim) is támogatja. Az említett két helyi fiók az Azure AD B2C konfigurálása az Azure portálon szerint is választhat.
+Azure AD B2C-bérlő, a legtöbb alkalmazást szeretné, hogy a felhasználó bejelentkezhet bármely tetszőleges e-mail címmel (például joe@comcast.net, bob@gmail.com, sarah@contoso.com, vagy jim@live.com). Ez a fiók típus egy helyi fiókot.  Tetszőleges felhasználónevek helyi fiókok (például joe, bob, sarah vagy jim) is támogatja. Kiválaszthatja az említett két helyi fiók az Azure-portálon az Azure AD B2C identitás-szolgáltatóktól konfigurálásakor. Kattintson az Azure AD B2C-bérlő **identitás-szolgáltatóktól** majd **felhasználónév** a helyi fiókok. 
+
+Felhasználói fiókok az alkalmazások mindig léteznie kell egy előfizetési regisztrációs szabályzatban vagy bejelentkezési-házirendben, vagy az Azure AD Graph API segítségével. Az Azure-portálon létrehozott felhasználói fiókot csak a bérlő felügyeletéhez használt.
 
 ### <a name="which-social-identity-providers-do-you-support-now-which-ones-do-you-plan-to-support-in-the-future"></a>Mely közösségi identitás-szolgáltatóktól támogatják a most? Melyik tervezi a jövőben támogatásához?
 Jelenleg támogatott Facebook, Google +, LinkedIn, Amazon, Twitter (előzetes verzió), WeChat (előzetes verzió), Weibo (előzetes verzió) és Gyorsműveletek (előzetes verzió). A Microsoft támogatni fogják a többi ügyfél igény szerint népszerű közösségi identitás-szolgáltatóktól.

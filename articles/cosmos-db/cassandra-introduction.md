@@ -1,10 +1,10 @@
 ---
-title: "Az Azure Cosmos DB Cassandra API bemutatása |} Microsoft Docs"
-description: "Ismerje meg, hogyan \"növekedési-és-shift\" meglévő alkalmazások Azure Cosmos Adatbázist kíván használni, és új alkalmazások Cassandra illesztőprogramok és CQL már ismeri a Cassandra API használatával."
+title: Az Azure Cosmos DB Cassandra API bemutatása |} Microsoft Docs
+description: Ismerje meg, hogyan "növekedési-és-shift" meglévő alkalmazások Azure Cosmos Adatbázist kíván használni, és új alkalmazások Cassandra illesztőprogramok és CQL már ismeri a Cassandra API használatával.
 services: cosmos-db
 author: govindk
 manager: jhubbard
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: 73839abf-5af5-4ae0-a852-0f4159bc00a0
 ms.service: cosmos-db
 ms.workload: data-services
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/20/2017
 ms.author: govindk
-ms.openlocfilehash: 62e56a611d3f720172ace83a4b407a962ec69ea8
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 88364cecc1fa1ad7318cb28c9708a42e6a807347
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/29/2018
 ---
-# <a name="introduction-to-apache-cassandra-api-for-azure-cosmos-db"></a>Az Azure Cosmos DB Apache Cassandra API bemutatása
+# <a name="introduction-to-azure-cosmos-db-apache-cassandra-api"></a>Bevezetés az Azure Cosmos DB: Apache Cassandra API
 
 Azure Cosmos DB biztosít írt alkalmazások az Apache Cassandra, hogy kell prémium képességei, például a Cassandra API (előzetes verzió):
 

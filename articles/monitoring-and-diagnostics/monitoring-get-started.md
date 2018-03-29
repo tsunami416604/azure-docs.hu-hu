@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2017
+ms.date: 03/25/2018
 ms.author: johnkem
-ms.openlocfilehash: 69ec5392f034ffe94315c17366a9242d86c69d6d
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: e09fe4fd48d1806e2194ed3065e7c2edbe2d1aa5
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="get-started-with-azure-monitor"></a>Ismerkedés az Azure Monitor szolgáltatással
 Az Azure Monitor egy olyan platformszolgáltatás, mely egyetlen forrást kínál az Azure-erőforrások figyeléséhez. Azure megfigyelővel ábrázolhatja, lekérdezése, továbbítani, archivált, és ellenkező esetben hajtsa végre a műveletet a metrikák és a naplók az Azure-erőforrások származik. Adatok segítségével az Azure portál használatával dolgozhat [figyelő PowerShell-parancsmagok](insights-powershell-samples.md), [platformfüggetlen parancssori felület](insights-cli-samples.md), vagy [Azure figyelő REST API-k](https://msdn.microsoft.com/library/dn931943.aspx). Ebben a cikkben sorra vesszük az Azure Monitor főbb összetevőit, és a portál segítségével mutatjuk be őket.
@@ -27,17 +27,17 @@ Az Azure Monitor egy olyan platformszolgáltatás, mely egyetlen forrást kíná
 1. A portálon lépjen a **minden szolgáltatás** keresse meg a **figyelő** lehetőséget. A csillag ikonra kattintva adja hozzá ezt a lehetőséget a kedvencekhez, így az a bal oldali navigációs sávról mindig könnyen elérhető lesz.
 
     ![A Monitor pont a szolgáltatások listájában](./media/monitoring-get-started/monitor-more-services.png)
-2. Kattintson a **figyelő** kattintva nyissa meg a beállítás a **figyelő** lap. Ezen a lapon összegyűjti az összes figyelési beállítások és adatok egyetlen összevont nézetben. A panel az első alkalommal a **Tevékenységnapló** területet megjelenítve nyílik meg.
+2. Kattintson a **figyelő** kattintva nyissa meg a beállítás a **figyelő** lap. Ezen a lapon összegyűjti az összes figyelési beállítások és adatok egyetlen összevont nézetben. Az első megnyitásakor a **áttekintése** szakasz. Az áttekintés bemutatja, egy összegző összes figyelési riasztások, a hibákat és a szolgáltatás állapotának tanácsadók erőforrást az előfizetésében is.  
 
     ![Navigációs figyelő](./media/monitoring-get-started/monitor-blade-nav.png)
 
     Az Azure Monitor az adatok figyelését három fő kategóriába sorolja: ez a **tevékenységnapló**, a **metrikák** és a **diagnosztikai naplók**.
 3. A **Tevékenységnapló** lehetőségre kattintva jelenítse meg a tevékenységnapló területét.
 
-    ![Tevékenységnapló](./media/monitoring-get-started/monitor-act-log-blade.png)
-
     A [**tevékenységnapló**](monitoring-overview-activity-logs.md) az előfizetéshez tartozó erőforrásokon végrehajtott összes műveletet ismerteti. A tevékenységnapló használatával az előfizetés erőforrásain végzett minden létrehozási, frissítési vagy törlési művelet esetén választ kaphat a „ki, mit és mikor” kérdésre. A tevékenységnaplóban láthatja például, hogy ki és mikor állított le egy webalkalmazást. A tevékenységnapló eseményeit tárolja a platform, és 90 napig lekérdezhetők maradnak.
 
+    ![Tevékenységnapló](./media/monitoring-get-started/monitor-act-log-blade.png)
+    
     Létrehozhatja és mentheti a gyakran alkalmazott szűrőket tartalmazó lekérdezéseket, majd a legfontosabb lekérdezéseket rögzítheti a portál irányítópultján, így mindig tudni fogja, hogy előfordultak-e olyan események, amelyek megfelelnek a megadott feltételeknek.
 4. Szűrje a nézetet egy adott erőforráscsoport múlt heti eseményeire szűkítve, majd kattintson a **Mentés** gombra. Nevezze el a lekérdezést. 
 
@@ -60,7 +60,7 @@ Az Azure Monitor egy olyan platformszolgáltatás, mely egyetlen forrást kíná
     ![Metrika panel](./media/monitoring-get-started/monitor-metric-blade.png)
 
    > [!NOTE]
-   > Bizonyos metrikák csak akkor érhetők el, ha engedélyezi az [Application Insights](../application-insights/app-insights-overview.md) és/vagy a Windows- vagy Linux-alapú Azure Diagnostics szolgáltatást az erőforráson.
+   > Néhány metrikák csak akkor érhetők engedélyezésével [Application Insights](../application-insights/app-insights-overview.md) és/vagy az erőforrás Windows vagy Linux rendszerű Azure Diagnostics bővítménnyel.
    >
    >
 9. Ha a megjelenített diagrammal elégedett, a **Rögzítés** gombbal rögzítheti az irányítópulton.
@@ -80,18 +80,19 @@ Az Azure Monitor egy olyan platformszolgáltatás, mely egyetlen forrást kíná
     ![Diagnosztikai naplók engedélyezése](./media/monitoring-get-started/monitor-diaglogs-enable.png)
 
     Ha a diagnosztikai naplóknak a Log Analytics szolgáltatásba való elküldését állította be, akkor a naplók között a portál **Naplók keresése** területén kereshet.
-12. Keresse meg a **riasztások** figyelő lap részében.
+12. Keresse meg a **riasztások (klasszikus)** figyelő lap részében.
 
     ![Nyilvános riasztások panel](./media/monitoring-get-started/monitor-alerts-nopp.png)
 
-    Itt kezelheti az Azure-erőforrások összes [**riasztását**](monitoring-overview-alerts.md). Ez magában foglalja a riasztások a metrikákat, naplózási eseményeket, az Application Insights webalkalmazás-tesztek (hely) és az Application Insights proaktív diagnosztika. A riasztások küldhetnek e-mailt vagy egy HTTP POST-ot egy webhook URL-címre.
+    Itt kezelhetők az összes [ **klasszikus riasztások** ](monitoring-overview-alerts.md) meg az Azure-erőforrások. Ez magában foglalja a riasztások a metrikákat, naplózási eseményeket, az Application Insights webalkalmazás-tesztek (hely) és az Application Insights proaktív diagnosztika. Riasztások művelet csoportokhoz csatlakozni. [A művelet csoportok](monitoring-action-groups.md) nyújtanak olyan értesítheti, vagy konkrét műveletek végrehajtására, amikor egy riasztás akkor következik be. 
+    
 13. Kattintson az **Add metric alert** (Metrikariasztás hozzáadása) lehetőségre riasztás létrehozásához.
 
     ![Metrikariasztás hozzáadása](./media/monitoring-get-started/monitor-alerts-add.png)
 
     A riasztásokat ezután az irányítópulton rögzítheti, így bármikor egyszerűen megtekinthető az állapotuk.
 
-    Az Azure figyelő most is rendelkezik [ **közel valós idejű metrika riasztások**](https://aka.ms/azuremonitor/near-real-time-alerts)(előzetes verzió), amely a lehető percenként gyakorisággal értékelhetők!
+    Az Azure figyelő is már [ **újabb riasztások** ](https://aka.ms/azuremonitor/near-real-time-alerts) , amely a lehető percenként gyakorisággal kell értékelni.
     
 14. A Monitor terület emellett [Application Insights](../application-insights/app-insights-overview.md)-alkalmazásokra és [Log Analytics](../log-analytics/log-analytics-overview.md) felügyeleti megoldásokra mutató hivatkozásokat is tartalmaz. Ezek az egyéb Microsoft-termékek szervesen az Azure Monitor szolgáltatásba vannak integrálva.
 15. Ha nem használja az Application Insights vagy a Log Analytics szolgáltatást, az Azure Monitor valószínűleg jelenlegi figyelési, naplózási és riasztási termékeivel működik együtt. Partnereink teljes listájához, illetve az integrálásra vonatkozó utasításokhoz tekintse meg [partneroldalunkat](monitoring-partners.md).
@@ -101,4 +102,6 @@ Ha a fenti lépéseket követi, és az összes releváns csempét rögzíti az i
 ![Az Azure Monitor irányítópultja](./media/monitoring-get-started/monitor-final-dash.png)
 
 ## <a name="next-steps"></a>További lépések
-* Olvassa el [az Azure Monitort áttekintő](monitoring-overview.md)cikket.
+* Olvassa el a [minden Azure figyelési eszközök áttekintése](monitoring-overview.md) Azure figyelő működésének velük. 
+
+

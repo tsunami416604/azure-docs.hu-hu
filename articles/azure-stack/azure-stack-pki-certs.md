@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 02/20/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: 455c74ca808f71258a12166c2e36bdd73d9a3e20
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: a5712e556d7b3bdcce38b8b8d39a08414ce0fd2f
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-stack-public-key-infrastructure-certificate-requirements"></a>Az Azure verem nyilvános kulcsokra épülő infrastruktúrát tanúsítványkövetelmények
 Azure verem van egy nyilvános infrastruktúra-hálózaton kívülről hozzáférhető nyilvános IP-címtartományból egy kis készletét a verem Azure-szolgáltatások, és esetleg a bérlői virtuális gépek használatával. Azure verem központi telepítése során a megfelelő DNS-neveit Azure verem nyilvános infrastruktúra végpontokkal PKI-tanúsítványok szükségesek. Ez a cikk nyújt tájékoztatást:
@@ -34,6 +34,9 @@ Azure verem van egy nyilvános infrastruktúra-hálózaton kívülről hozzáfé
 ## <a name="certificate-requirements"></a>Tanúsítványkövetelmények
 Az alábbi lista a tanúsítvány Azure verem telepítéséhez szükséges követelményeket ismerteti: 
 - Tanúsítványok vagy egy belső hitelesítésszolgáltatótól, vagy a nyilvános hitelesítésszolgáltatótól kell kiállítania. Egy nyilvános hitelesítésszolgáltató használata, akkor az alap operációs rendszer lemezképét a Microsoft megbízható legfelső szintű hitelesítésszolgáltatói Program részeként kell szerepelnie. A teljes listáját itt találja: https://gallery.technet.microsoft.com/Trusted-Root-Certificate-123665ca 
+- Az Azure-verem infrastruktúra a tanúsítványok aláírására használt hitelesítésszolgáltató hálózati hozzáféréssel kell rendelkeznie.
+- Váltás tanúsítványokat, amikor tanúsítványokat kell lennie, vagy a központi telepítés vagy a nyilvános hitelesítésszolgáltatótól származó fent megadott tanúsítványok aláírására használt azonos belső hitelesítésszolgáltatótól származó kiadott
+- Az önaláírt tanúsítványok nem támogatottak.
 - A tanúsítványt a tulajdonos alternatív nevére (SAN) mezőben minden neve szóközt kiterjedő egyetlen helyettesítő tanúsítvány lehet. Azt is megteheti például acs és a kulcstároló, amennyiben azok szükségesek végpontok helyettesítő karakterek használatával az egyes tanúsítványokat is használhat. 
 - A tanúsítvány-aláírási algoritmus nem lehet SHA1, erősebb kell lennie. 
 - A tanúsítvány formátumban kell lennie PFX, mint a nyilvános és titkos kulcsok szükségesek az Azure-verem telepítéséhez. 
@@ -42,6 +45,9 @@ Az alábbi lista a tanúsítvány Azure verem telepítéséhez szükséges köve
 - A tanúsítvány "kiállítva a következőnek:" mező nem lehet ugyanaz, mint a "kiállító:" mező.
 - Minden tanúsítvány pfx-fájlok a jelszavakat, meg kell egyeznie a központi telepítés során
 - Győződjön meg arról, hogy a tulajdonos nevét és minden tanúsítványok tulajdonosának alternatív nevét egyezik-e a sikertelen központi telepítéssel elkerülése érdekében ebben a cikkben leírt előírásoknak.
+
+> [!NOTE]
+> Aláírt önaláírt tanúsítványok használata nem támogatott.
 
 > [!NOTE]
 > A köztes hitelesítésszolgáltatókat egy tanúsítvány lánc-az-Megbízhatóságok IS jelenlétét támogatott. 

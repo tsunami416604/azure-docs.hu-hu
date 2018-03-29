@@ -14,11 +14,11 @@ ms.workload: identity
 ms.date: 03/15/2018
 ms.author: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 0cfa79b9c44953c613eaec8d701f351c6f2ce212
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 76e7be62caae7e33caefc3f90a5e57c5f71a31d3
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="optional-claims-in-azure-ad-preview"></a>Nem kötelező jogcímek, az Azure AD (előzetes verzió)
 
@@ -69,9 +69,7 @@ A választható alkalmazások is használhatnak alapértelmezés szerint elérhe
 | `is_device_managed`        | Azt jelzi, hogy az eszköz MDM telepítve rendelkezik-e. Feltételes hozzáférési házirend kapcsolódik.                                                                                                                  | SAML       |           | A signin_state összevont JWTs,                                                                                                                                                                                                                                                   |
 | `is_device_compliant`      | Azt jelzi, hogy a mobileszköz-kezelési megállapította, az eszköz megfelel a szervezet az eszköz biztonsági szabályzatoknak.                                                                                  | SAML       |           | A signin_state összevont JWTs,                                                                                                                                                                                                                                                   |
 | `kmsi`                     | Azt jelzi, ha a felhasználó által választott az tartsa Me aláírt lehetőséget.                                                                                                                                    | SAML       |           | A signin_state összevont JWTs,                                                                                                                                                                                                                                                   |
-| `upn`                      | UserPrincipalName claim.  Bár a jogcím automatikusan települ, adja meg azt a Vendég felhasználói esetben viselkedésének módosítása további tulajdonságok csatolni egy választható jogcímként. | JWT, SAML  |           | További tulajdonságok: <br> include_externally_authenticated_upn <br> include_externally_authenticated_upn_without_hash                                                                                                                                                                 |
-| `groups`                   | A csoportok a felhasználó tagja.                                                                                                                                                               | JWT, SAML  |           | További tulajdonságok: <br> Sam_account_name<br> Dns_domain_and_sam_account_name<br> Netbios_domain_and_sam_account<br> Max_size_limit<br> Emit_as_roles<br>                                                                                                                            |
-
+| `upn`                      | UserPrincipalName claim.  Bár a jogcím automatikusan települ, adja meg azt a Vendég felhasználói esetben viselkedésének módosítása további tulajdonságok csatolni egy választható jogcímként. | JWT, SAML  |           | További tulajdonságok: <br> `include_externally_authenticated_upn` <br> `include_externally_authenticated_upn_without_hash`                                                                                                                                                                 |
 ### <a name="v20-optional-claims"></a>Nem kötelező jogcímek 2.0-s verzió
 Ezeket a jogcímeket 1.0-s verziójú jogkivonatok mindig szerepelnek, de v2.0 jogkivonatok törlődnek, kivéve, ha a kért.  Ezeket a jogcímeket csak alkalmazhatók JWTs (azonosító-jogkivonatokat és hozzáférési jogkivonatok).  
 
@@ -90,26 +88,19 @@ Ezeket a jogcímeket 1.0-s verziójú jogkivonatok mindig szerepelnek, de v2.0 j
 
 ### <a name="additional-properties-of-optional-claims"></a>A választható jogcímek további tulajdonságok
 
-Néhány választható jogcímek beállítható úgy, hogy megváltoztassák a módját a jogcímet ad vissza.  A formázási módosítások a további tulajdonságok tartományok (például `include_externally_authenticated_upn_without_hash`) módosítása az adatok készletét adja vissza (`Dns_domain_and_sam_account_name`).
+Néhány választható jogcímek beállítható úgy, hogy megváltoztassák a módját a jogcímet ad vissza.  A további tulajdonságok többnyire segítségével többféle elvárásainak a helyszíni alkalmazások áttelepítése (például `include_externally_authenticated_upn_without_hash` olyan ügyfelek esetében, nem tudja kezelni a hashmarks segítségével (`#`) a megadott egyszerű felhasználónév)
 
 **4. táblázat: Értékeit szabványos választható jogcím konfigurálása**
 
 | Tulajdonság neve                                     | További tulajdonság neve                                                                                                             | Leírás |
 |---------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------|-------------|
-| `Upn`                                                 |                                                                                                                                      |             |
+| `upn`                                                 |                                                                                                                                      |             |
 | | `include_externally_authenticated_upn`              | A Vendég a erőforrás bérlő tárolt UPN tartalmazza.  Például: `foo_hometenant.com#EXT#@resourcetenant.com`                            |             
 | | `include_externally_authenticated_upn_without_hash` | Ugyanaz, mint a fenti, kivéve, amelyek a hashmarks (`#`) váltják fel aláhúzásjelek (`_`), például `foo_hometenant.com_EXT_@resourcetenant.com` |             
-| `groups`                                              |                                                                                                                                      |             |
-| | `sam_account_name`                                  |                                                                                                                                      |             
-| | `dns_domain_and_sam_account_name`                   |                                                                                                                                      |             
-| | `netbios_domain_and_sam_account_name`               |                                                                                                                                      |             
-| | `max_size_limit`                                    | Riasztást küld vissza a csoport maximális méretkorlátot (1000) csoportok számát.                                                            |             
-| | `emit_as_roles`                                     | Megfelelően kibocsát egy "szerepkörök" jogcímet helyett a "csoport" jogcímet, ugyanazokat az értékeket.  Áttelepítés egy helyszíni környezetben az alkalmazások számára készült, ha csoporttagság keresztül szabályozott az RBAC hagyományosan.   |             
 
 > [!Note]
 >Adja meg a választható jogcím egy további tulajdonság nélkül nem változtatja meg minden olyan esetben – a token által kiadott új jogcímet talál, a további tulajdonságok közül legalább egy fel kell venni. 
->
->A `account_name` csoportok további tulajdonságok nem együttműködésre, és a további tulajdonságok sorrendje fontos információk – csak az első fiók névtulajdonság további felsorolt fog történni. 
+
 
 #### <a name="additional-properties-example"></a>További tulajdonságok példa:
 
@@ -118,15 +109,15 @@ Néhány választható jogcímek beállítható úgy, hogy megváltoztassák a m
    {
        "idToken": [ 
              { 
-                "name": "groups", 
+                "name": "upn", 
             "essential": false,
-                "additionalProperties": [ "netbios_domain_and_sam_account_name", "sam_account_name" , "emit_as_roles"]  
+                "additionalProperties": [ "include_externally_authenticated_upn"]  
               }
         ]
 }
 ```
 
-A OptionalClaims objektumot ad vissza azonos `groups` jogcím, mintha `sam_account_name` nem kerültek bele – mivel után már `netbios_domain_and_sam_account_name`, figyelmen kívül. 
+A OptionalClaims objektum okoz a azonosító token küld vissza az ügyfélnek a további otthoni bérlői és bérlői erőforrásadatok egy másik upn tartalmazza.  
 
 ## <a name="configuring-optional-claims"></a>Nem kötelező jogcím konfigurálása
 

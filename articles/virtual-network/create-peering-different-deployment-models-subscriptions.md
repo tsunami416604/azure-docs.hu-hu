@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/15/2017
 ms.author: jdial;anavin
-ms.openlocfilehash: dcbed424ffd6f781639b9dc524a576e963896583
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 4c76083c7b1478ba865f047584ba313d029a1e35
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="create-a-virtual-network-peering---different-deployment-models-and-subscriptions"></a>Hozzon létre egy virtuális hálózati társviszony - különböző üzembe helyezési modellek és előfizetések
 
@@ -35,7 +35,7 @@ Virtuális hálózati társviszony-létesítés létrehozásának lépései elt�
 
 Virtuális hálózati társviszony-létesítés nem hozható létre, a klasszikus üzembe helyezési modellben telepített virtuális hálózatok között. Ez az oktatóanyag használja a virtuális hálózatokat ugyanabban a régióban. Virtuális hálózatok különböző régiókban egyenrangú nem kép. Ezt a funkciót használja, le kell [regisztrálása](#register). 
 
-A virtuális hálózati társviszony-létesítés különböző előfizetéshez létező virtuális hálózatok közötti létrehozásakor az előfizetések is kell társítani a azonos Azure Active Directory-bérlő. Ha még nem rendelkezik egy Azure Active Directory-bérlőt, akkor gyorsan [hozzon létre egyet](../active-directory/develop/active-directory-howto-tenant.md?toc=%2fazure%2fvirtual-network%2ftoc.json#start-from-scratch). Virtuális hálózatok különböző előfizetésekhez is elérheti, és különböző Azure Active Directory bérlők egy Azure használatával [VPN-átjáró](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+A virtuális hálózati társviszony-létesítés különböző előfizetéshez létező virtuális hálózatok közötti létrehozásakor az előfizetések is kell társítani a azonos Azure Active Directory-bérlő. Ha még nem rendelkezik egy Azure Active Directory-bérlőt, akkor gyorsan [hozzon létre egyet](../active-directory/develop/active-directory-howto-tenant.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-new-azure-ad-tenant). Virtuális hálózatok különböző előfizetésekhez is elérheti, és különböző Azure Active Directory bérlők egy Azure használatával [VPN-átjáró](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 Használhatja a [Azure-portálon](#portal), az Azure [parancssori felület](#cli) (CLI), vagy Azure [PowerShell](#powershell) létrehozni a virtuális hálózati társviszony-létesítés. Kattintson az előző eszköz hivatkozásokra kattintva közvetlenül Ugrás a virtuális hálózati társviszony-létesítés a eszközzel választott létrehozásához szükséges lépésekről.
 

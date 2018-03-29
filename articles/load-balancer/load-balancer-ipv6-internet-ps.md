@@ -1,12 +1,12 @@
 ---
-title: "Hozzon létre egy Azure internetre irányuló terheléselosztót IPv6 - PowerShell |} Microsoft Docs"
-description: "Megtudhatja, hogyan hozzon létre az Internet felé néző IPv6 rendelkező terheléselosztó PowerShell az erőforrás-kezelő használatával"
+title: Hozzon létre egy Azure internetre irányuló terheléselosztót IPv6 - PowerShell |} Microsoft Docs
+description: Megtudhatja, hogyan hozzon létre az Internet felé néző IPv6 rendelkező terheléselosztó PowerShell az erőforrás-kezelő használatával
 services: load-balancer
 documentationcenter: na
 author: KumudD
 manager: timlt
 tags: azure-resource-manager
-keywords: "IPv6-alapú, azure load balancer, kettős verem, nyilvános IP-cím, natív ipv6, mobil, iot"
+keywords: IPv6-alapú, azure load balancer, kettős verem, nyilvános IP-cím, natív ipv6, mobil, iot
 ms.assetid: d4c649e3-84ad-4343-8b6a-0e89f0b9e518
 ms.service: load-balancer
 ms.devlang: na
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: a84fd69c568e26bbd1ff06b699b804c70e0e9c09
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: da14cc8723df0a6c7c8b15c8af8d519fa2c62283
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="get-started-creating-an-internet-facing-load-balancer-with-ipv6-using-powershell-for-resource-manager"></a>Internet felé néző a terheléselosztót, IPv6, az erőforrás-kezelő használatával PowerShell létrehozásához
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 12/21/2017
 > * [Sablon](load-balancer-ipv6-internet-template.md)
 
 
-[!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
+
 
 Az Azure Load Balancer 4. szintű (TCP, UDP) terheléselosztónak minősül. A terheléselosztó a felhőszolgáltatások vagy virtuális gépek kifogástalan állapotú szolgáltatási példányai között osztja meg a bejövő forgalmat egy terheléselosztói készletben, és ezáltal biztosítja a magas rendelkezésre állást. Az Azure Load Balancer a szolgáltatásokat több portra vagy több IP-címre, illetve portokra és IP-címekre egyaránt továbbíthatja.
 

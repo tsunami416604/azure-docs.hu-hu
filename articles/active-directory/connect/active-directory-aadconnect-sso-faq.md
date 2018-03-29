@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/22/2018
 ms.author: billmath
-ms.openlocfilehash: c34293796860e0ab72eecedab9cd8b023237050d
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 819d8ce9793f785726f55a89d49d08d818401b33
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Az Azure Active Directory zökkenőmentes egyszeri bejelentkezés: gyakran ismételt kérdések
 
@@ -26,7 +26,7 @@ Ebben a cikkben oldjuk gyakori kérdésekkel kapcsolatos Azure Active Directory 
 
 ## <a name="what-sign-in-methods-do-seamless-sso-work-with"></a>Milyen bejelentkezési módszerek zökkenőmentes SSO működnek?
 
-Zökkenőmentes SSO kombinálva, vagy a [Jelszókivonat-szinkronizálást](active-directory-aadconnectsync-implement-password-synchronization.md) vagy [áteresztő hitelesítés](active-directory-aadconnect-pass-through-authentication.md) bejelentkezési módszerek. Azonban ez a szolgáltatás az Active Directory összevonási szolgáltatások (ADFS) nem használható.
+Zökkenőmentes SSO kombinálva, vagy a [Jelszókivonat-szinkronizálást](active-directory-aadconnectsync-implement-password-hash-synchronization.md) vagy [áteresztő hitelesítés](active-directory-aadconnect-pass-through-authentication.md) bejelentkezési módszerek. Azonban ez a szolgáltatás az Active Directory összevonási szolgáltatások (ADFS) nem használható.
 
 ## <a name="is-seamless-sso-a-free-feature"></a>Lehetővé teszi az zökkenőmentes SSO szabad?
 

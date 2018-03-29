@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2018
 ms.author: ancav
-ms.openlocfilehash: 285f4540c7f9be19cde0aafeff67ce2b39abe957
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: fc7a4062af9e73383af46f0c36eb22710ce9b6e1
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Azure-figyelő támogatott metrikák
 Azure figyelő többféleképpen is kommunikál a metrikákat, többek között a diagramkészítési őket a portálon, a hozzájuk férni a REST API-n keresztül, vagy a őket lekérdezése a PowerShell vagy a parancssori felület. Alatt érhető el teljes listáját és az összes metrikák jelenleg Azure figyelő metrika folyamat.
 
 > [!NOTE]
-> Más metrikákkal portálon vagy az örökölt API-k használatával érhetők el. Ez a lista csak voltak elérhetők a összevont Azure-figyelő metrika kimenetátirányításának segítségével metrikák tartalmazza. A lekérdezés és eléréséhez metrikák többdimenziósak kérjük, használja a [2017-05-01. dátumú előnézeti api-verzió](https://docs.microsoft.com/rest/api/monitor/metricdefinitions)
+> Más metrikákkal portálon vagy az örökölt API-k használatával érhetők el. Ez a lista csak voltak elérhetők a összevont Azure-figyelő metrika kimenetátirányításának segítségével metrikák tartalmazza. A lekérdezés és eléréséhez metrikák többdimenziósak kérjük, használja a [2018-01-01 api-verzió](https://docs.microsoft.com/rest/api/monitor/metricdefinitions)
 >
 >
 

@@ -1,5 +1,5 @@
 ---
-title: Azure-fájlok (előzetes verzió) megosztás pillanatképek áttekintése |} Microsoft Docs
+title: Azure-fájlok megosztási pillanatképek áttekintése |} Microsoft Docs
 description: Megosztás pillanatképet egy olyan Azure fájlok megosztási konzolán kell elvégezni egy ideje, készítsen biztonsági másolatot a megosztást is csak olvasható verziója telepítve.
 services: storage
 documentationcenter: .net
@@ -14,32 +14,27 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/17/2018
 ms.author: renash
-ms.openlocfilehash: 671e3737a620d85c732a091d5a62f35f35c1d515
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 6499bdf1af676898f7b2911612cbd206bccfa4fa
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="overview-of-share-snapshots-for-azure-files"></a>Azure-fájlok megosztási pillanatképek áttekintése 
 Az Azure Files lehetővé teszi a megosztás pillanatképek készítése fájlmegosztások. A fájlmegosztási állapot pillanatképek rögzítési ezen a ponton idő megosztás. Ez a cikk azt írják le, milyen lehetőségek megosztás pillanatképek adja meg, és hogyan fordíthatja előnyére azokat az egyéni használati eset a.
 
-
 ## <a name="when-to-use-share-snapshots"></a>Megosztás pillanatképek használata
 
 ### <a name="protection-against-application-error-and-data-corruption"></a>Alkalmazás hiba és adatok sérülése elleni védelem
-
 Fájlmegosztások használó alkalmazások például az írást, a olvasási, a tárolás, az átvitel és a feldolgozási műveleteket. Ha egy alkalmazás helytelenül van konfigurálva, vagy egy véletlen hiba megjelent, természeti katasztrófa vagy véletlen felülírása néhány címblokkokhoz fordulhat elő. Ezek a forgatókönyvek elleni védelme érdekében is pillanatképet készít megosztás új alkalmazáskód központi telepítése előtt. Egy hiba vagy az alkalmazás hiba az új üzemelő példányhoz jelenik meg, ha később is visszatérhet egy korábbi verzióját az adatok adott fájlmegosztáson. 
 
 ### <a name="protection-against-accidental-deletions-or-unintended-changes"></a>Nem kívánt módosítások vagy véletlen törlés elleni védelem
-
 Tegyük fel, hogy a fájlt egy fájlmegosztás dolgozik. A szövegfájl lezárása után nem tud a továbbiakban visszavonja a módosításokat. Ezekben az esetekben majd kell helyreállítania a fájl egy korábbi verzióját. Megosztás-pillanatképek használatával a fájlok korábbi verzióinak helyreállítását, ha véletlenül átnevezték vagy törölték.
 
 ### <a name="general-backup-purposes"></a>Általános biztonsági másolat létrehozása céljából
-
 Fájlmegosztás létrehozása után a fájlmegosztáshoz való használatát az adatok biztonsági mentésének megosztás pillanatkép rendszeresen hozhat létre. A pillanatkép, rendszeres időközönként időpontjában megosztás segít használható jövőbeli naplózási követelményeinek, vagy vész-helyreállítási adatok korábbi verzióinak.
 
 ## <a name="capabilities"></a>Funkciók
-
 Egy megosztás pillanatkép az adatok időpontban, csak olvasható másolatát. Létrehozása, törlése és a pillanatképek kezelése a REST API használatával. Ugyanazokat a képességeket is rendelkezésre állnak az ügyféloldali kódtár, az Azure parancssori felület és Azure-portálon. 
 
 A pillanatképek megosztás a REST API-t és az SMB használatával tekintheti meg. A könyvtár vagy fájl verzióinak listája le, és egy adott verziójához meghajtóként közvetlenül lehet csatlakoztatni. 
@@ -59,9 +54,7 @@ Amikor egy fájlmegosztás megosztás pillanatképet hoz létre, vannak másolja
 
 Egy megosztást, amelyet a megosztás pillanatképekkel rendelkezik, kivéve, ha előbb törölje a megosztást pillanatképek nem törölhető.
 
-
 ## <a name="space-usage"></a>Lemezterület-használat 
-
 Megosztás pillanatképei növekményes jellegűek. Csak a módosított adatokat a legutóbbi megosztás Pillanatkép mentése után. Ez a megosztás pillanatkép létrehozásához szükséges idő minimálisra csökkenti, és menti a tárolási költségeket. Bármely írási művelet az objektum vagy tulajdonság vagy metaadat-frissítési művelet felé "módosított tartalmat" számít, és a megosztás pillanatkép tárolja. 
 
 Az időszak, amikor a forgalom volt legmagasabb megtakarítás érdekében törölheti a megosztás pillanatkép.
@@ -71,13 +64,11 @@ Annak ellenére, hogy a megosztás pillanatképek Növekményesen menti, meg kel
 A pillanatképek nem száma 5-TB megosztás korlát felé. Mekkora terület megosztás pillanatképek elfoglalt összesen nincs korlátozva van. Tárfiókok korlátai továbbra is érvényesek lesznek.
 
 ## <a name="limits"></a>Korlátok
-
 Az Azure-fájlok ma lehetővé teszi a megosztás pillanatképek maximális száma: 200. 200 megosztás pillanatképek után először törölnie kell régebbi megosztás pillanatképek ahhoz, hogy hozzon létre újakat. 
 
 Az egyidejű hívások a megosztás pillanatképeinek korlátozva van. Nincs korlát terület adott megosztás egy adott fájlmegosztás pillanatképek felhasználhat. 
 
 ## <a name="copying-data-back-to-a-share-from-share-snapshot"></a>Az adatok másolásának vissza egy megosztást a megosztás pillanatképből
-
 Másolási műveletek tartalmaz, amely fájlok megosztása pillanatképek kövesse ezeket a szabályokat:
 
 Egyes fájlok fájl megosztási pillanatképbe keresztül az alap megosztásra vagy bármely más helyre másolja. Állítsa vissza egy fájl egy korábbi verzióját, vagy állítsa vissza a teljes fájlmegosztás fájl által a megosztás pillanatképből másolásával. A megosztás pillanatkép nem lépteti alap megosztáshoz. 
@@ -89,7 +80,6 @@ A megosztás pillanatképet egy célra, más néven másolhat egy fájlt. Az ere
 A célfájl másolatot felülírja, esetleg az eredeti célfájl társított megosztás pillanatképeket változatlanok maradnak.
 
 ## <a name="general-best-practices"></a>Általános gyakorlati tanácsok 
-
 Infrastruktúra az Azure-on futtatja, amikor automatizálhatja az adat-helyreállítás számára, amikor csak lehetséges biztonsági mentéseit. Automatizált műveletek olyan sokkal megbízhatóbb, mint manuálisan végrehajtott folyamatokat, segítve az adatvédelem és helyreállíthatósága. A REST API-t, az ügyfél SDK-t vagy az automatizálási parancsfájlokat is használhatja.
 
 A megosztás pillanatkép-ütemező telepítése előtt alaposan gondolja át, a megosztás pillanatfelvételeinek gyakoriságát és a felesleges költségek megcélzásával elkerülheti az adatmegőrzési beállítások.
@@ -97,6 +87,8 @@ A megosztás pillanatkép-ütemező telepítése előtt alaposan gondolja át, a
 Megosztás pillanatképek csak a fájl szintű védelmet nyújt. Megosztás pillanatképek nem akadályozzák meg a fájl megosztásra vagy a tárolási fiók fat-ujját törlések. A tárfiók véletlen törlések védelme érdekében zárolhatja a tárfiók vagy az erőforráscsoportot.
 
 ## <a name="next-steps"></a>További lépések
-* [Megosztás pillanatképek használata](storage-how-to-use-files-snapshots.md)
-* [Megosztás pillanatkép – gyakori kérdések](storage-files-faq.md#share-snapshots)
-
+- A megosztás pillanatképek használata:
+    - [Portal](storage-how-to-use-files-portal.md#create-and-modify-share-snapshots)
+    - [PowerShell](storage-how-to-use-files-powershell.md#create-and-modify-share-snapshots)
+    - [Parancssori felület](storage-how-to-use-files-cli.md#create-and-modify-share-snapshots)
+- [Megosztás pillanatkép – gyakori kérdések](storage-files-faq.md#share-snapshots)

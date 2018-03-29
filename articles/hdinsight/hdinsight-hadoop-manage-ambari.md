@@ -1,8 +1,8 @@
 ---
-title: "Megfigyelés és kezelés Azure HDInsight Ambari webes felhasználói felületen |} Microsoft Docs"
-description: "Megtudhatja, hogyan figyelheti és Linux-alapú HDInsight-fürtök kezelése az Ambari használatával. Ebben a dokumentumban megismerheti, hogyan használható az Ambari webes felhasználói felületén a HDInsight-fürtök részét képező."
+title: Megfigyelés és kezelés Azure HDInsight Ambari webes felhasználói felületen |} Microsoft Docs
+description: Megtudhatja, hogyan figyelheti és Linux-alapú HDInsight-fürtök kezelése az Ambari használatával. Ebben a dokumentumban megismerheti, hogyan használható az Ambari webes felhasználói felületén a HDInsight-fürtök részét képező.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 01/04/2018
+ms.date: 03/23/2018
 ms.author: larryfr
-ms.openlocfilehash: dc1265c7af011b92a9f862cf2e91b47c3998b2e4
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: 922dfd475f27f182d8958887087fc2f4945cc43a
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-ambari-web-ui"></a>A HDInsight-fürtök kezelése az Ambari webes felhasználói felület használatával
 
@@ -41,7 +41,7 @@ Az Ambari webes felhasználói felület alapértelmezés szerint a HDInsight-fü
 
 ## <a name="connectivity"></a>Kapcsolatok
 
-Az Ambari webes felhasználói felület érhető el a HDInsight-fürthöz: HTTPS://CLUSTERNAME.azurehdidnsight.net, ahol **CLUSTERNAME** a fürt neve.
+Az Ambari webes felhasználói felület érhető el, a HDInsight-fürt HTTPS://CLUSTERNAME.azurehdinsight.net, ahol **CLUSTERNAME** a fürt neve.
 
 > [!IMPORTANT]
 > A HDInsight Ambari való csatlakozás igényel a HTTPS PROTOKOLLT. Amikor a rendszer, használja a rendszergazda fiók nevét és a fürt létrehozásakor megadott jelszóval.
@@ -85,9 +85,9 @@ Az oldal megnyitása, vegye figyelembe a sáv felső részén. A sáv a követke
 
 Az alábbi lista tartalmazza az Ambari által használt közös riasztási állapot:
 
-* **OKÉ**
-* **Figyelmeztetés**
-* **KRITIKUS**
+* **OK**
+* **Warning**
+* **CRITICAL**
 * **ISMERETLEN**
 
 Riasztások eltérő **OK** okozhat a **# riasztások** bejegyzés a riasztások számát jeleníti meg a lap tetején. Ez a bejegyzés látható értesítések valamelyikének kiválasztásakor a riasztások és azok állapotát.
@@ -195,7 +195,7 @@ A **állomások** lap felsorolja a fürt összes gazdagépén. Gazdagép kezelé
      > [!NOTE]
      > A HDInsight-fürtökön ne használja ezt a műveletet.
 
-### <a id="service"></a>Szolgáltatások
+### <a id="service"></a>Services
 
 Az a **irányítópult** vagy **szolgáltatások** oldalon a **műveletek** szolgáltatások leállítása és elindítása az összes szolgáltatás a lista alján gombra.
 
@@ -226,7 +226,7 @@ Szolgáltatás konfigurálásához tegye a következőket:
 
 2. Válassza ki a **Configs** fülre. A jelenlegi konfiguráció jelenik meg. A fenti konfiguráció listáját is megjelenik.
 
-    ![Konfigurációk](./media/hdinsight-hadoop-manage-ambari/service-configs.png)
+    ![configurations](./media/hdinsight-hadoop-manage-ambari/service-configs.png)
 
 3. A megjelenített módosítsa a konfigurációt, és válassza ki a mezők **mentése**. Vagy válassza ki az előző konfigurációt, és válassza ki **ellenőrizze aktuális** szeretné visszaállítani az előző beállítások.
 

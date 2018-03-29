@@ -1,9 +1,9 @@
 ---
-title: "Az Azure AD Connect: Áteresztő hitelesítés |} Microsoft Docs"
-description: "Ez a cikk ismerteti az Azure Active Directory (Azure AD) áteresztő hitelesítés és hogyan lehetővé teszi az Azure AD bejelentkezések érvényesítésével azonosítsa a felhasználói jelszavakat, a helyszíni Active Directoryban."
+title: 'Az Azure AD Connect: Áteresztő hitelesítés |} Microsoft Docs'
+description: Ez a cikk ismerteti az Azure Active Directory (Azure AD) áteresztő hitelesítés és hogyan lehetővé teszi az Azure AD bejelentkezések érvényesítésével azonosítsa a felhasználói jelszavakat, a helyszíni Active Directoryban.
 services: active-directory
-keywords: "Mi az Azure AD Connect áteresztő hitelesítés, az Active Directory, az Azure AD, SSO, szükséges összetevők telepítése egyszeri bejelentkezést."
-documentationcenter: 
+keywords: Mi az Azure AD Connect áteresztő hitelesítés, az Active Directory, az Azure AD, SSO, szükséges összetevők telepítése egyszeri bejelentkezést.
+documentationcenter: ''
 author: swkrish
 manager: mtillman
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/29/2017
 ms.author: billmath
-ms.openlocfilehash: 5a559c749bc7ba3cabbbb1a171605b8baf601eef
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: d19e63e10f2d42d97bb6fabca9c9e47028cbaf39
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="user-sign-in-with-azure-active-directory-pass-through-authentication"></a>Felhasználó bejelentkezhet az Azure Active Directory áteresztő hitelesítés
 
@@ -28,7 +28,7 @@ Az Azure Active Directory (Azure AD) áteresztő hitelesítés lehetővé teszi,
 
 >[!VIDEO https://www.youtube.com/embed/PyeAC85Gm7w]
 
-Ez a szolgáltatás nem helyett [Azure AD Jelszókivonat-szinkronizálást](active-directory-aadconnectsync-implement-password-synchronization.md), amely biztosítja, hogy az azonos előnye, hogy a szervezetek számára a felhőalapú hitelesítés. Azonban egyes szervezetek biztonsági és megfelelőségi házirendek nem lehetővé teszik a szervezetek számára küldése a felhasználói jelszavakat, még akkor is, kivonatolt formában, a belső határain kívül. Áteresztő hitelesítés az olyan szervezetek ideális megoldás.
+Ez a szolgáltatás nem helyett [Azure AD Jelszókivonat-szinkronizálást](active-directory-aadconnectsync-implement-password-hash-synchronization.md), amely biztosítja, hogy az azonos előnye, hogy a szervezetek számára a felhőalapú hitelesítés. Azonban egyes szervezetek biztonsági és megfelelőségi házirendek nem lehetővé teszik a szervezetek számára küldése a felhasználói jelszavakat, még akkor is, kivonatolt formában, a belső határain kívül. Áteresztő hitelesítés az olyan szervezetek ideális megoldás.
 
 ![Az Azure AD-áteresztő hitelesítés](./media/active-directory-aadconnect-pass-through-authentication/pta1.png)
 

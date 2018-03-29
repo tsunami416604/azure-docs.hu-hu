@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2018
 ms.author: richrund
-ms.openlocfilehash: 17dadd784d59a2cc0cab6ffbae144010f896b296
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 12172e81ed6b4d79ee200ee1ca79803ad58d6d19
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-networking-monitoring-solutions-in-log-analytics"></a>Figyelési megoldásoknak a Naplóelemzési Azure hálózatkezelés
 
@@ -28,18 +28,19 @@ Naplóelemzési a hálózatok figyeléséhez a következő megoldásokat nyújtj
 * Az Azure Application Gateway analytics áttekintése
  * Az Azure alkalmazás-átjáró naplói
  * Az Azure Application Gateway metrikák
-* Azure hálózati biztonsági csoport elemzés áttekintése
- * Azure hálózati biztonsági csoport naplófájlok
+* Figyelheti és naplózási megoldások hálózati tevékenységet a felhő hálózaton
+* [Traffic Analytics](https://docs.microsoft.com/azure/networking/network-monitoring-overview#traffic-analytics) 
+* Azure hálózati biztonsági csoport elemzés
 
 ## <a name="network-performance-monitor-npm"></a>Hálózati teljesítmény figyelése (NPM)
 
-A [hálózati Teljesítményfigyelő](log-analytics-network-performance-monitor.md) felügyeleti megoldás egy olyan hálózati felügyeleti megoldás, amely az állapot, a rendelkezésre állás és a hálózatok reachability figyeli.  Közötti kapcsolat figyelésére szolgál:
+A [hálózati Teljesítményfigyelő](https://docs.microsoft.com/azure/networking/network-monitoring-overview) felügyeleti megoldás egy olyan hálózati felügyeleti megoldás, amely az állapot, a rendelkezésre állás és a hálózatok reachability figyeli.  Közötti kapcsolat figyelésére szolgál:
 
 * Nyilvános felhő és a helyszíni
 * Adatközpontok és a felhasználó helye (fiókirodákban)
 * Egy többrétegű alkalmazást a különböző rétegeket tartalmazó alhálózat.
 
-További információkért lásd: [hálózati Teljesítményfigyelő](log-analytics-network-performance-monitor.md).
+További információkért lásd: [hálózati Teljesítményfigyelő](https://docs.microsoft.com/azure/networking/network-monitoring-overview).
 
 ## <a name="azure-application-gateway-and-network-security-group-analytics"></a>Az Azure Application Gateway és a hálózati biztonsági csoport elemzés
 A megoldás használata:

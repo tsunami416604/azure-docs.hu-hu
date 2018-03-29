@@ -1,23 +1,23 @@
 ---
-title: "Oktatóanyag: Azure Active Directoryval integrált OpsGenie |} Microsoft Docs"
-description: "Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és OpsGenie között."
+title: 'Oktatóanyag: Azure Active Directoryval integrált OpsGenie |} Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és OpsGenie között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: femila
 ms.assetid: 41b59b22-a61d-4fe6-ab0d-6c3991d1375f
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/28/2017
+ms.date: 03/28/2018
 ms.author: jeedes
-ms.openlocfilehash: b0d8fa13c13ad8d4a85cb482bcd7e440006f0437
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: b0cd54c7750e85eb7b4e1ba6be309c585d5a7b4e
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-opsgenie"></a>Oktatóanyag: Azure Active Directoryval integrált OpsGenie
 
@@ -110,19 +110,35 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-opsgenie-tutorial/tutorial_opsgenie_url.png)
 
-    Az a **bejelentkezési URL-cím** szövegmező, írja be az URL-cím:`https://app.opsgenie.com/auth/login`
+    Az a **bejelentkezési URL-cím** szövegmező, írja be az URL-cím: `https://app.opsgenie.com/auth/login`
 
-4. Az a **SAML-aláíró tanúsítványa** kattintson **Certificate(Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
-
-    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-opsgenie-tutorial/tutorial_opsgenie_certificate.png) 
-
-5. Kattintson a **mentése** gombra.
+4. Kattintson a **mentése** gombra.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-opsgenie-tutorial/tutorial_general_400.png)
 
-6. A a **OpsGenie konfigurációs** kattintson **konfigurálása OpsGenie** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **Sign-Out URL-címet, a SAML entitás azonosítója és a SAML-alapú egyszeri bejelentkezési URL-címe** a a **rövid összefoglaló szakasz.**
+5. A a **OpsGenie konfigurációs** kattintson **konfigurálása OpsGenie** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **SAML-alapú egyszeri bejelentkezési URL-címe** rövid összefoglaló szakaszából.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-opsgenie-tutorial/tutorial_opsgenie_configure.png) 
+    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-opsgenie-tutorial/tutorial_opsgenie_configure.png)
+
+6. Létrehozásához a **metaadatainak URL-CÍMÉT**, hajtsa végre a következő lépéseket:
+
+    a. Kattintson a **App regisztrációk**.
+    
+    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-opsgenie-tutorial/tutorial_opsgenie_appregistrations.png)
+   
+    b. Kattintson a **végpontok** megnyitásához **végpontok** párbeszédpanel megnyitásához.  
+    
+    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-opsgenie-tutorial/tutorial_opsgenie_endpointicon.png)
+
+    c. Kattintson a Másolás gombra másolása **ÖSSZEVONÁSI METAADAT-dokumentum** URL-címet, és illessze be a Jegyzettömbbe.
+    
+    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-opsgenie-tutorial/tutorial_opsgenie_endpoint.png)
+     
+    d. Most lépjen a tulajdonságlapján **OpsGenie** , és másolja a **alkalmazásazonosító** használatával **másolási** gombra, majd illessze be a Jegyzettömbbe.
+ 
+    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-opsgenie-tutorial/tutorial_opsgenie_appid.png)
+
+    e. Készítése a **metaadatainak URL-CÍMÉT** a következő minta használatával: `<FEDERATION METADATA DOCUMENT url>?appid=<application id>`
 
 7. Nyissa meg egy másik böngészőben példánya, és ezután jelentkezzen be rendszergazdaként OpsGenie.
 
@@ -142,9 +158,9 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
    
     ![OpsGenie beállítások](./media/active-directory-saas-opsgenie-tutorial/tutorial_opsgenie_09.png)
     
-    a. Beillesztés **egyszeri bejelentkezési szolgáltatás URL-cím**, amely az Azure-portálról másolta a **SAML 2.0 végpont** szövegmező.
+    a. Az a **SAML 2.0 végpont** szövegmezőhöz Beillesztés **egyszeri bejelentkezési szolgáltatás URL-cím**érték, amely az Azure portálról másolta.
     
-    b. Nyissa meg a letöltött base-64 kódolású tanúsítvány a Jegyzettömbben, annak tartalmának másolása a vágólapra és illessze be azt a **X.500 tanúsítvány** szövegmező.
+    b. Az a **metaadatainak URL-címét:** szövegmezőhöz Beillesztés **metaadatainak URL-CÍMÉT**érték, amely az Azure portálról másolta.
     
     c. Kattintson a **módosítások mentése**.
 

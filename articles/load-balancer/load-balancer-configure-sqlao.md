@@ -1,6 +1,6 @@
 ---
-title: "Terheléselosztó SQL Server konfigurálása mindig a |} Microsoft Docs"
-description: "SQL Server Always On együttműködésre, és megtudhatja, hogyan PowerShell használatával történő létrehozásáról az SQL Server végrehajtási terheléselosztó terheléselosztó konfigurálása"
+title: Terheléselosztó SQL Server konfigurálása mindig a |} Microsoft Docs
+description: SQL Server Always On együttműködésre, és megtudhatja, hogyan PowerShell használatával történő létrehozásáról az SQL Server végrehajtási terheléselosztó terheléselosztó konfigurálása
 services: load-balancer
 documentationcenter: na
 author: KumudD
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 5e890f8314c8f191dbfa6c6818d810b91d0e829d
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: a0c2345b47b9103ac6a7ae998f13a12332e3907e
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="configure-a-load-balancer-for-sql-server-always-on"></a>A terheléselosztó konfigurálása az SQL Server Always On
 
-[!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
+
 
 SQL Server Always On rendelkezésre állási csoportok most futtathatja a belső terheléselosztót. Rendelkezésre állási csoport egy SQL Server flagship megoldás magas rendelkezésre állású és vész-helyreállítási. A rendelkezésre állási csoport figyelőjének ügyfélalkalmazások teszi lehetővé az elsődleges másodpéldány, függetlenül a konfigurációban replikák száma zökkenőmentesen csatlakozni.
 
@@ -57,7 +57,7 @@ A belső terheléselosztó a figyelőnél, az SQL Server endpoint (például a k
 
 SQL Server Always On kapcsolatos további információkért lásd: [belső terheléselosztót egy Always On rendelkezésre állási csoport konfigurálása az Azure-](../virtual-machines/windows/sql/virtual-machines-windows-portal-sql-alwayson-int-listener.md).
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 * [Első lépések egy nyilvános terheléselosztó konfigurálása](load-balancer-get-started-internet-arm-ps.md)
 * [Bevezetés a belső terheléselosztók konfigurálásába](load-balancer-get-started-ilb-arm-ps.md)
 * [A terheléselosztó elosztási módjának konfigurálása](load-balancer-distribution-mode.md)

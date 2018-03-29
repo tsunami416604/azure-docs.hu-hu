@@ -1,8 +1,8 @@
 ---
-title: "Apache Spark segítségével olvasása és írása az adatokat az Azure SQL database |} Microsoft Docs"
-description: "Útmutató egy HDInsight Spark-fürt és -adatok olvasása, írása, és az adatfolyam adatok egy SQL-adatbázisba Azure SQL-adatbázis közötti kapcsolat"
+title: Apache Spark segítségével olvasása és írása az adatokat az Azure SQL database |} Microsoft Docs
+description: Útmutató egy HDInsight Spark-fürt és -adatok olvasása, írása, és az adatfolyam adatok egy SQL-adatbázisba Azure SQL-adatbázis közötti kapcsolat
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: cgronlun
 editor: cgronlun
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 01/29/2018
+ms.date: 03/28/2018
 ms.author: nitinme
-ms.openlocfilehash: 28ed6b9774bb85c7ec806c7775c34f8bc3d66bde
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 011471224d79ae326ccc33fc23fd6fada347497b
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="use-hdinsight-spark-cluster-to-read-and-write-data-to-azure-sql-database"></a>Olvasási és írási adatokat az Azure SQL database HDInsight Spark-fürt használatával
 
@@ -234,7 +234,7 @@ Ez a szakasz azt adatok folyamatos átviteléhez azokat a **hvactable** már lé
         
          var streamingQuery = WriteToSQLQuery.start()
 
-6. Győződjön meg arról, hogy az adatok adatfolyamként történő a **hvactable** a következő lekérdezés futtatásával. A lekérdezés futtatása Everytime, azt a sorok számát jeleníti meg a tábla növekvő.
+6. Győződjön meg arról, hogy az adatok adatfolyamként történő a **hvactable** az SQL Server Management Studio (SSMS) a következő lekérdezés futtatásával. A lekérdezés futtatása Everytime, azt a sorok számát jeleníti meg a tábla növekvő.
 
         SELECT COUNT(*) FROM hvactable
 

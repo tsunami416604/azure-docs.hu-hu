@@ -1,11 +1,11 @@
 ---
-title: "Az Azure AD Connect szinkronizálási szolgáltatások és konfigurációs |} Microsoft Docs"
-description: "Az Azure AD Connect szinkronizálási szolgáltatás szolgáltatás ügyféloldali szolgáltatásait ismerteti."
+title: Az Azure AD Connect szinkronizálási szolgáltatások és konfigurációs |} Microsoft Docs
+description: Az Azure AD Connect szinkronizálási szolgáltatás szolgáltatás ügyféloldali szolgáltatásait ismerteti.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 213aab20-0a61-434a-9545-c4637628da81
 ms.service: active-directory
 ms.workload: identity
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
-ms.openlocfilehash: b716e553f7c4c11f6d566b43d771217fdf4b3a93
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 534e4e6d8b6ea2bfc059383e3e55c0352678ee04
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-ad-connect-sync-service-features"></a>Az Azure AD Connect szinkronizálási szolgáltatások
 Az Azure AD Connect szinkronizálási szolgáltatás két részből áll:
@@ -56,7 +56,7 @@ A következő beállításokat az Azure AD Connect vannak konfigurálva, és nem
 | DeviceWriteback |[Az Azure AD Connect: Eszközvisszaírás engedélyezése](active-directory-aadconnect-feature-device-writeback.md) |
 | DirectoryExtensions |[Azure AD Connect szinkronizálása: címtárbővítmények](active-directory-aadconnectsync-feature-directory-extensions.md) |
 | [DuplicateProxyAddressResiliency<br/>DuplicateUPNResiliency](#duplicate-attribute-resiliency) |Lehetővé teszi, hogy a karanténba kerül, ha egy másik objektum helyett az exportálás során a teljes objektumot sikertelen duplikált attribútum. |
-| PasswordSync |[A jelszó-szinkronizálás és az Azure AD Connect-szinkronizálás megvalósítása](active-directory-aadconnectsync-implement-password-synchronization.md) |
+| PasswordSync |[A jelszó-szinkronizálás és az Azure AD Connect-szinkronizálás megvalósítása](active-directory-aadconnectsync-implement-password-hash-synchronization.md) |
 | UnifiedGroupWriteback |[Előzetes verzió: A csoportvisszaírás](active-directory-aadconnect-feature-preview.md#group-writeback) |
 | UserWriteback |Jelenleg nem támogatott. |
 

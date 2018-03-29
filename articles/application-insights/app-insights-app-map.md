@@ -1,8 +1,8 @@
 ---
-title: "Alkalmazás-hozzárendelés Azure Application insightsban |} Microsoft Docs"
-description: "Az alkalmazás-hozzárendelés rendelkező összetett alkalmazás topológiák figyelése"
+title: Alkalmazás-hozzárendelés Azure Application insightsban |} Microsoft Docs
+description: Az alkalmazás-hozzárendelés rendelkező összetett alkalmazás topológiák figyelése
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: SoubhagyaDash
 manager: carmonm
 ms.assetid: 3bf37fe9-70d7-4229-98d6-4f624d256c36
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: 3bbed59bf93eab5e729fbdd3ccae04599ac47081
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 4b95cd947cd977208dee32d18fbc6a1fb099ff3b
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="application-map-triage-distributed-applications"></a>Alkalmazás-hozzárendelés: Osztályozhatja elosztott alkalmazások
 Alkalmazás-hozzárendelés segít direkt szűk keresztmetszetek vagy hiba csatlakozási pontokhoz termékcsalád összes tagjára vonatkozó az elosztott alkalmazás. Minden csomópont a térképen képviseli, alkalmazás-összetevő, illetve annak függőségeit; és KPI állapot és riasztások állapotát. Kattintva keresztül valamelyik összetevő a részletesebb diagnosztikai, például az Application Insights események. Ha az alkalmazás Azure-szolgáltatásokat használja, akkor is átkattintással is Azure Diagnostics, például az SQL Database Advisor-javaslatokra.
@@ -37,7 +37,7 @@ Engedélyezhetik a "Összetett alkalmazás-hozzárendelés" a [előzetes lista](
 ![Előzetes térkép engedélyezése](media/app-insights-app-map/preview-from-classic.png)
 
 >[!Note]
-Ebben az előzetes verzióban a felváltja a korábbi "Mult-alkalmazás leképezést" előzetes verzió. Most ezzel a teljes topológia több szinten összetevő alkalmazásfüggőségek között. Küldje el visszajelzését, bővítjük további képességeket hasonló a hagyományos térkép támogatja.
+Ebben az előzetes verzióban a felváltja a korábbi "Több alkalmazás leképezést" előzetes verzió. Most ezzel a teljes topológia több szinten összetevő alkalmazásfüggőségek között. Küldje el visszajelzését, bővítjük további képességeket hasonló a hagyományos térkép támogatja.
 
 A teljes alkalmazás topológia több szinten kapcsolódó alkalmazás-összetevők között tekintheti meg. Összetevők lehet különböző az Application Insights-erőforrások, vagy egyetlen belüli szerepkörei. Az alkalmazás térkép úgy összetevők alábbi HTTP függőségi hívások esetében az Application Insights SDK telepítve kiszolgálók között. 
 

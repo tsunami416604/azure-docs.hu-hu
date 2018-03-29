@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/05/2018
+ms.date: 03/27/2018
 ms.author: jingwang
-ms.openlocfilehash: c6e1edce7e730b0bce6742b6220149ae7fe97710
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 4fef9a9d30adb48f8f68d34e35a7436c04b63125
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/29/2018
 ---
 #  <a name="fault-tolerance-of-copy-activity-in-azure-data-factory"></a>A másolási tevékenység során az Azure Data Factory hibatűrés
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -44,7 +44,7 @@ Másolási tevékenység észlelésekor, kihagyása és naplózási adatok nem k
 
     Például: adatok másolása az a Blob-tároló CSV-fájl az SQL-adatbázis egy séma-definícióval, amely hat oszlopokat tartalmaz. A fogadó tároló hat oszlopokat tartalmazó CSV-fájl sorok sikeresen lesz másolva. A több vagy kevesebb, mint hat oszlopot tartalmazó CSV-fájl sorok észlelhetők a nem kompatibilis, és kimarad.
 
-- **Elsődleges kulcs megsértése egy relációs adatbázis írásakor**.
+- **SQL Server vagy az Azure SQL Database vagy az Azure Cosmos-adatbázis írásakor elsődleges kulcs megsértése**.
 
     Például: adatok másolása az SQL server az SQL-adatbázis. A fogadó SQL-adatbázis elsődleges kulcs van definiálva, de nincs ilyen elsődleges kulcs van definiálva a forrás SQL-kiszolgálón. A duplikált sorokat, amely szerepel a forrás nem lehet másolni a fogadó. Másolási tevékenység során az adatok csak az első sor a fogadó másolja. Ismétlődő elsődleges kulcs értéke a következő adatforrás a sorokat a rendszer észleli a rendszer nem kompatibilis, és kimarad a.
 

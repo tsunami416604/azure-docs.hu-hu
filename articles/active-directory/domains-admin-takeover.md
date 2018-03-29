@@ -1,11 +1,11 @@
 ---
-title: "Egy nem felügyelt könyvtár vagy az Azure Active Directoryban árnyékmásolat Bérlői rendszergazda felvásárlási |} Microsoft Docs"
-description: "Hogyan vegye át az Azure Active Directoryban egy nem felügyelt könyvtárban (árnyékmásolat bérlő) egy DNS-tartománynevet."
+title: Egy nem felügyelt könyvtár vagy az Azure Active Directoryban árnyékmásolat Bérlői rendszergazda felvásárlási |} Microsoft Docs
+description: Hogyan vegye át az Azure Active Directoryban egy nem felügyelt könyvtárban (árnyékmásolat bérlő) egy DNS-tartománynevet.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: curtand
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: b9f01876-29d1-4ab8-8b74-04d43d532f4b
 ms.service: active-directory
 ms.devlang: na
@@ -16,11 +16,11 @@ ms.date: 11/14/2017
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
-ms.openlocfilehash: f18e5883fca9291eb1447c1eebfe0883936fe84f
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 16f5c515231f486e3576b95a0d103d2fa34842ff
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Egy nem felügyelt directory átveszi az Azure Active Directoryban rendszergazdaként
 Ez a cikk ismerteti a két módon vegye át egy DNS-tartománynév, az Azure Active Directory (Azure AD) egy nem felügyelt könyvtárban. Egy önkiszolgáló felhasználó előfizet egy felhőalapú szolgáltatás által használt Azure AD, ha hozzáadja őket egy nem felügyelt Azure AD-címtár az e-mail tartománya alapján. Önkiszolgáló, vagy a szolgáltatás "ugrásszerű" létrehozni kapcsolatban bővebben lásd: [Mi az az Azure Active Directory önkiszolgáló regisztráció?]()
@@ -57,13 +57,13 @@ Amikor befejezte az előző lépéseket, áll az Office 365-ben a negyedik káv�
 ### <a name="adding-the-domain-name-to-a-managed-tenant-in-azure-ad"></a>A tartománynév hozzáadása egy felügyelt bérlői Azure AD-ben 
 
 1. Nyissa meg a [Office 365 felügyeleti központban](https://portal.office.com/adminportal/Home).
-2. Válassza ki **felhasználók** lapot, és hozzon létre egy új felhasználói fiók egy nevet, például a  *user@fourthcoffeexyz.onmicrosoft.com*  , amely nem használja az egyéni tartománynév. 
+2. Válassza ki **felhasználók** lapot, és hozzon létre egy új felhasználói fiók egy nevet, például a *user@fourthcoffeexyz.onmicrosoft.com* , amely nem használja az egyéni tartománynév. 
 3. Győződjön meg arról, hogy az új felhasználói fiók az Azure AD-bérlő globális rendszergazdai jogosultságokkal rendelkezik.
 4. Nyissa meg **tartományok** az Office 365 felügyeleti központban lapot, válassza ki a tartomány nevét, és válasszon **eltávolítása**. 
   
   ![Távolítsa el a tartománynév az Office 365 szolgáltatásból](./media/domains-admin-takeover/remove-domain-from-o365.png)
   
-5. Ha a felhasználók és csoportok az Office 365-ben az eltávolított tartománynév van, akkor kell átnevezni az. onmicrosoft.com tartományt. Ha kényszeríti a tartománynév törlése, minden felhasználó automatikusan átnevezi, a példában szereplő  *user@fourthcoffeexyz.onmicrosoft.com* .
+5. Ha a felhasználók és csoportok az Office 365-ben az eltávolított tartománynév van, akkor kell átnevezni az. onmicrosoft.com tartományt. Ha kényszeríti a tartománynév törlése, minden felhasználó automatikusan átnevezi, a példában szereplő *user@fourthcoffeexyz.onmicrosoft.com*.
   
 6. Jelentkezzen be a [az Azure AD felügyeleti központban](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) egy olyan fiókkal, amely az az Azure AD-bérlő globális rendszergazdája.
   
@@ -72,11 +72,11 @@ Amikor befejezte az előző lépéseket, áll az Office 365-ben a negyedik káv�
   ![az Azure AD hozzá tartomány](./media/domains-admin-takeover/add-domain-to-azure-ad.png)
   
 > [!NOTE]
-> A Power bi-ban vagy az Azure Rights Management szolgáltatást az Office 365-bérlő a licenccel rendelkező felhasználók menteni kell az irányítópultokat, ha a tartomány nevét a rendszer eltávolítja. Azok a felhasználónevet, például be kell jelentkeznie  *user@fourthcoffeexyz.onmicrosoft.com*  helyett  *user@fourthcoffee.xyz* .
+> A Power bi-ban vagy az Azure Rights Management szolgáltatást az Office 365-bérlő a licenccel rendelkező felhasználók menteni kell az irányítópultokat, ha a tartomány nevét a rendszer eltávolítja. Azok a felhasználónevet, például be kell jelentkeznie *user@fourthcoffeexyz.onmicrosoft.com* helyett *user@fourthcoffee.xyz*.
 
 ## <a name="external-admin-takeover"></a>Külső felügyeleti felvásárlási
 
-Ha már kezeli egy Azure-szolgáltatások vagy az Office 365 bérlői, egy egyéni tartománynevet nem vehető fel, ha már egy másik Azure AD-bérlő a rendszer ellenőrzi. Azonban az Azure AD-ben a felügyelt bérlői végre egy nem felügyelt bérlői keresztül, egy külső rendszergazda felvásárlási. Az általános eljárást követi a cikk [hozzá egyéni tartományt az Azure AD](add-custom-domain.md).
+Már egy Azure-szolgáltatások vagy az Office 365 bérlő kezelése esetén nem adhat egy egyéni tartománynevet, ha már egy másik Azure AD-bérlő a rendszer ellenőrzi. Azonban az Azure AD-ben a felügyelt bérlői végre egy nem felügyelt bérlői keresztül, egy külső rendszergazda felvásárlási. Az általános eljárást követi a cikk [hozzá egyéni tartományt az Azure AD](add-custom-domain.md).
 
 Ellenőrizze a tartománynév tulajdonjogát, az Azure AD a nem felügyelt bérlői eltávolítja a tartomány nevét, és áthelyezi azt a meglévő bérlő. Külső felügyeleti felvásárlási egy nem felügyelt könyvtár DNS TXT érvényesítési leírt eljárást belső rendszergazda felvásárlási igényel. A különbség az, hogy a következő vannak is átkerül a tartomány nevét:
 
@@ -96,12 +96,12 @@ Külső felügyeleti felvásárlási a következő online szolgáltatások álta
 A támogatott service-csomagok a következők:
 
 - Ingyenes Power bi-ban
-- A Power BI Pro
+- Power BI Pro
 - Szabad PowerApps
 - Szabad PowerFlow
 - Az Azure Rights Management szolgáltatás Basic (RMS)
-- Az Azure Rights Management szolgáltatás vállalati (RMS)
-- Microsoft adatfolyam
+- Azure Rights Management Service Enterprise (RMS)
+- Microsoft Stream
 - Dynamics 365 ingyenes próbaverzió
 
 Nem támogatott Exernal admin felvásárlási bármely szolgáltatás, amely rendelkezik a SharePoint, a onedrive-on, illetve az üzleti Skype; service-csomagokról például az ingyenes Office-előfizetés vagy az Office alapszintű Termékváltozat.
@@ -162,7 +162,7 @@ A parancsmag | Használat
 
 Sikeres kihívást visszatér a parancssorba hiba nélkül.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Egyéni tartománynév hozzáadása az Azure AD](add-custom-domain.md)
 * [Az Azure PowerShell telepítése és konfigurálása](/powershell/azure/overview)
 * [Azure PowerShell](/powershell/azure/overview)

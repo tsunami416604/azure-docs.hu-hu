@@ -1,11 +1,11 @@
 ---
-title: "Belső virtuális hálózatok az Azure API Management használata |} Microsoft Docs"
-description: "Megtudhatja, hogyan beállítása és konfigurálása az Azure API Management belső virtuális hálózaton"
+title: Belső virtuális hálózatok az Azure API Management használata |} Microsoft Docs
+description: Megtudhatja, hogyan beállítása és konfigurálása az Azure API Management belső virtuális hálózaton
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: vladvino
 manager: kjoshi
-editor: 
+editor: ''
 ms.assetid: dac28ccf-2550-45a5-89cf-192d87369bc3
 ms.service: api-management
 ms.workload: mobile
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/29/2017
 ms.author: apimpm
-ms.openlocfilehash: cf062cfcbbb2454adf20a06c31c81a60f6f5719f
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: be4aa45c919f579355c6ac6c5682c1537e9cc0cb
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="using-azure-api-management-service-with-an-internal-virtual-network"></a>Belső virtuális hálózat az Azure API Management szolgáltatással
 Azure virtuális hálózatok, az Azure API Management kezelheti API-k nem érhető el, az interneten. A kapcsolat VPN technológiáin számos érhetők el. Az API Management olyan virtuális hálózaton belül két fő módban telepíthető:
@@ -44,7 +44,7 @@ Ebben a cikkben leírt lépések végrehajtásához rendelkeznie kell:
 
 + **Az Azure API Management példány**. További információkért lásd: [hozzon létre egy Azure API Management példányt](get-started-create-service-instance.md).
 
-## <a name="enable-vpn"></a>Belső virtuális hálózat létrehozása az API Management
+## <a name="enable-vpn"> </a>Belső virtuális hálózat létrehozása az API Management
 Az API-kezelés szolgáltatás a belső virtuális hálózat belső terheléselosztón (ILB) mögött helyezkedik el.
 
 ### <a name="enable-a-virtual-network-connection-using-the-azure-portal"></a>Engedélyezze a virtuális hálózati kapcsolat az Azure portál használatával
@@ -72,7 +72,7 @@ Engedélyezheti a virtuális hálózati kapcsolat PowerShell-parancsmagok haszn�
 Ha az API Management külső virtuális hálózat módban van, a DNS Azure kezeli. Belső virtuális hálózat mód felügyelni a saját útválasztási kell.
 
 > [!NOTE]
-> API-kezelés szolgáltatás nem figyel IP-címekről érkező kérésekre. Csak a szolgáltatás végpontját a konfigurált kérelmére reagálás. Ezeket a végpontokat a következők: átjáró, a fejlesztői portálján, a Azurethe portált, közvetlen felügyelet végpont és Git.
+> API-kezelés szolgáltatás nem figyel IP-címekről érkező kérésekre. Csak a szolgáltatás végpontját a konfigurált kérelmére reagálás. Ezeket a végpontokat a következők: átjáró, az Azure-portál és a fejlesztői portálján, közvetlen felügyelet végpont és Git.
 
 ### <a name="access-on-default-host-names"></a>Az alapértelmezett állomásnevek hozzáférés
 Az API Management szolgáltatásnak, például a "contoso" nevű létrehozásakor a következő végpontok alapértelmezés szerint vannak konfigurálva:
@@ -105,13 +105,13 @@ Ezután hozzáférhetnek a Szolgáltatásvégpontok létrehozott virtuális gép
 
    2. Akkor is létrehozhat a rekordokat a DNS-kiszolgáló eléréséhez a végpontok, amelyek csak a virtuális hálózaton belülről érhetők el.
 
-## <a name="routing"></a> Útválasztás
+## <a name="routing"> </a> Útválasztás
 + Egy elosztott terhelésű titkos virtuális IP-cím az alhálózat címtartományából lesz fenntartva, és az API Management szolgáltatás végpontok a vneten belül eléréséhez használt.
 + Egy elosztott terhelésű nyilvános IP-cím (VIP) is lehet lefoglalni csak porton 3443 a felügyeleti szolgáltatás végpontjának eléréséhez.
 + Egy alhálózat IP-címtartomány (DIP) IP-címeit a vneten belül erőforrások eléréséhez használható, és egy nyilvános IP-cím (VIP) a virtuális hálózaton kívüli erőforrások eléréséhez használható.
 + Az elosztott terhelésű nyilvános és magánhálózati IP-címek az Áttekintés/Essentials panel az Azure portálon található.
 
-## <a name="related-content"></a>Kapcsolódó tartalom
+## <a name="related-content"> </a>Kapcsolódó tartalom
 További tudnivalókért tekintse meg a következő cikkeket:
 * [Általános hálózati konfigurációs problémák egy virtuális hálózatot az Azure API Management beállítása közben][Common network configuration problems]
 * [Virtuális hálózat – gyakori kérdések](../virtual-network/virtual-networks-faq.md)

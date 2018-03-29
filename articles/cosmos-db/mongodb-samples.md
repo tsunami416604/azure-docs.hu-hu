@@ -1,25 +1,25 @@
 ---
-title: "MongoDB API-k segítségével az Azure Cosmos DB alkalmazás létrehozása |} Microsoft Docs"
-description: "Ez az oktatóanyag az Azure Cosmos DB API-k használatával mongodb egy online adatbázist hoz létre."
-keywords: "mongodb-példák"
+title: MongoDB API-k segítségével az Azure Cosmos DB alkalmazás létrehozása |} Microsoft Docs
+description: Ez az oktatóanyag az Azure Cosmos DB API-k használatával mongodb egy online adatbázist hoz létre.
+keywords: mongodb-példák
 services: cosmos-db
 author: AndrewHoh
 manager: jhubbard
-editor: 
-documentationcenter: 
+editor: ''
+documentationcenter: ''
 ms.assetid: fb38bc53-3561-487d-9e03-20f232319a87
 ms.service: cosmos-db
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/22/2017
+ms.date: 03/23/2018
 ms.author: anhoh
-ms.openlocfilehash: 3d4b3bf36bdc93fdd1a65f5c8fdcfe2237d23aa9
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 1571ed8bc3146a6351d0010a9f072cad986d6dc7
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="build-an-azure-cosmos-db-api-for-mongodb-app-using-nodejs"></a>Egy Azure Cosmos DB létrehozása: API-t a MongoDB-alkalmazásokhoz Node.js használatával
 > [!div class="op_single_selector"]
@@ -108,6 +108,44 @@ Ebben a példában használatához az alábbiak szükségesek:
     );
     };
     
+    MongoClient.connect(url, function(err, client) {
+    assert.equal(null, err);
+    var db = client.db('familiesdb');
+    insertDocument(db, function() {
+        findFamilies(db, function() {
+        updateFamilies(db, function() {
+            removeFamilies(db, function() {
+                client.close();
+            });
+        });
+        });
+    });
+    });
+    ```
+    
+    **Nem kötelező**: használata a **MongoDB Node.js 2.2 illesztőprogram**, cserélje le a következő kódrészletet:
+
+    Eredeti:
+
+    ```nodejs
+    MongoClient.connect(url, function(err, client) {
+    assert.equal(null, err);
+    var db = client.db('familiesdb');
+    insertDocument(db, function() {
+        findFamilies(db, function() {
+        updateFamilies(db, function() {
+            removeFamilies(db, function() {
+                client.close();
+            });
+        });
+        });
+    });
+    });
+    ```
+    
+    Le kell cserélni:
+
+    ```nodejs
     MongoClient.connect(url, function(err, db) {
     assert.equal(null, err);
     insertDocument(db, function() {
@@ -121,8 +159,17 @@ Ebben a példában használatához az alábbiak szükségesek:
     });
     });
     ```
-
+    
 2. A következő változók módosítása a *app.js* fiókbeállításokban / fájl (keresése a [kapcsolati karakterlánc](connect-mongodb-account.md)):
+
+    > [!IMPORTANT]
+    > A **MongoDB Node.js 3.0 illesztőprogram** Cosmos DB jelszóban szereplő speciális karakterek kódolás szükséges. Ügyeljen arra, hogy a "=" karakterek kódolása % 3D
+    >
+    > Példa: A jelszó *jm1HbNdLg5zxEuyD86ajvINRFrFCUX0bIWP15ATK3BvSv ==* kódolja *jm1HbNdLg5zxEuyD86ajvINRFrFCUX0bIWP15ATK3BvSv 3D % 3D*
+    >
+    > A **MongoDB Node.js 2.2 illesztőprogram** nincs szükség a Cosmos DB jelszót különleges karakterek kódolása.
+    >
+    >
    
     ```nodejs
     var url = 'mongodb://<endpoint>:<password>@<endpoint>.documents.azure.com:10255/?ssl=true';

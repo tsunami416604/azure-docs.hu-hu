@@ -1,13 +1,13 @@
 ---
-title: "Az Azure Stream Analytics: Megértéséhez, és módosítsa a folyamatos átviteli egységek |} Microsoft Docs"
-description: "Ismerje meg, milyen tényezők a teljesítményt az Azure Stream Analytics."
-keywords: "streamelési egység, teljesítmény-küszöbérték"
+title: 'Az Azure Stream Analytics: Megértéséhez, és módosítsa a folyamatos átviteli egységek |} Microsoft Docs'
+description: Ismerje meg, milyen tényezők a teljesítményt az Azure Stream Analytics.
+keywords: streamelési egység, teljesítmény-küszöbérték
 services: stream-analytics
-documentationcenter: 
+documentationcenter: ''
 author: JSeb225
 manager: jhubbard
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: stream-analytics
 ms.devlang: na
 ms.topic: article
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 04/20/2017
 ms.author: jeanb
-ms.openlocfilehash: e8812f10662ee7b571e8e353074c2537d1a3181b
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 5c60b1808959c73759a78141566c5c49f0350e2f
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="understand-and-adjust-streaming-units"></a>Ismerje meg, és módosítsa a folyamatos átviteli egységek
 
@@ -88,18 +88,18 @@ A historikus csatlakozzon állapot mérete azzal arányos, hogy az illesztés, a
 
 Az illesztés nem egyező események száma a lekérdezés memóriahasználata hatással. A következő lekérdezés a kattintásokat generáló oldalmegjelenéseket keresi:
 
-    SELECT id
+    SELECT clicks.id
     FROM clicks 
-    INNER JOIN, impressions ON impressions.id = clicks.id AND DATEDIFF(hour, impressions, clicks) between 0 AND 10.
+    INNER JOIN impressions ON impressions.id = clicks.id AND DATEDIFF(hour, impressions, clicks) between 0 AND 10.
 
 Ebben a példában az is lehet, hogy nagy mennyiségű ads látható és néhány személy kattintson rá, és megtartja az eseményeket a időszak szükséges. A felhasznált memória arányos az ablak méretével és az események gyakoriságával. 
 
 Ez kijavítani, elküldje az eseményeket az Event Hubs particionálva illesztési kulcsok (azonosító: Ebben az esetben), és a lekérdezés kibővítési azáltal, hogy a rendszer minden egyes külön bemeneti partíció feldolgozása **PARTITION BY** látható módon:
 
-    SELECT id
+    SELECT clicks.id
     FROM clicks PARTITION BY PartitionId
     INNER JOIN impressions PARTITION BY PartitionId 
-    ON impression.PartitionId = clocks.PartitionId AND impressions.id = clicks.id AND DATEDIFF(hour, impressions, clicks) between 0 AND 10 
+    ON impression.PartitionId = clicks.PartitionId AND impressions.id = clicks.id AND DATEDIFF(hour, impressions, clicks) between 0 AND 10 
 </code>
 
 A rendszer több csoport között osztja el a lekérdezést a particionálása után. Ennek eredményeképpen minden csomópontjába érkező események száma csökken ilyen módon csökkenti a állapotban tartani az illesztés ablakban méretét. 
@@ -114,7 +114,7 @@ Ez kijavítani, terjessze ki a lekérdezés segítségével **PARTITION BY**. A 
 ### <a name="input-partition-count"></a>Bemeneti partíciók száma 
 Adjon meg egy feladat minden egyes bemeneti partíció puffer rendelkezik. A feladat használ fel, a nagyobb számú bemeneti partíciót, a több erőforrás. Az egyes SU Azure Stream Analytics képes a körülbelül 1 MB/s bemeneti, ezért érdemes ASA SU számú partíció számát az Eseményközpont. 1SU feladat általában elegendő-e az Eseményközpontok a 2 partíció (amely a minimális Event hub). Ha az Event Hubs további partíciókkal rendelkezik, az ASA munkahelye további erőforrásokat használ fel, de nem feltétlenül használja az Eseményközpont által biztosított további átviteli sebesség. 6SU feladat szükség lehet az eseményközpontból 4 vagy 8 partíciókat. Az Eseményközpontok 16 partíciókkal rendelkező vagy használatával nagyobb egy 1SU a feladat gyakran túl sok erőforrás kihasználtsága hozzájárul, és el kell kerülni. 
 
-### <a name="reference-data"></a>Referenciaadatok 
+### <a name="reference-data"></a>Referenciaadat 
 Az ASA referenciaadatok gyors keresési a memóriába. Az aktuális megvalósításáról referenciaadatok illesztési műveletben másolatot készít azokról a referenciaadatok a memóriában, még akkor is, ha csatlakozik a hivatkozás ugyanazokat az adatokat több alkalommal. A lekérdezések **PARTITION BY**, mindegyik partíció rendelkezik egy példányát a referenciaadatok úgy, hogy a partíciók teljesen leválasztott. A többszöröző kezdve memóriahasználata gyorsan megjeleníthet nagyon magas, ha csatlakozik a referenciaadatok több partícióval rendelkező több alkalommal.  
 
 #### <a name="use-of-udf-functions"></a>Az UDF-funkciók használata
@@ -124,7 +124,7 @@ Amikor egy olyan UDF függvényt, Azure Stream Analytics a JavaScript futásidej
 ## <a name="get-help"></a>Segítségkérés
 Ha további segítségre van szüksége, próbálkozzon a [Azure Stream Analytics-fórumot](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Az Azure Stream Analytics párhuzamosítható lekérdezések létrehozása](stream-analytics-parallelization.md)
 * [Átviteli sebesség növelése az Azure Stream Analytics-feladatok méretezése](stream-analytics-scale-jobs.md)
 

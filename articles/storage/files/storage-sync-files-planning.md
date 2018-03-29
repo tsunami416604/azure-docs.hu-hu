@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2017
 ms.author: wgries
-ms.openlocfilehash: 401542bf61aa27138d26cce522e24078503b77e0
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 3f3ed53e3c6606ca540cc2e760f2f6280ccf5cc2
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="planning-for-an-azure-file-sync-preview-deployment"></a>Egy Azure fájlszinkronizálás (előzetes verzió) telepítésének tervezése
 Sync szolgáltatás használatával Azure fájl (előzetes verzió) központosítása fájlmegosztások a szervezet Azure fájlokban, ugyanakkor változatlanul megőrizze a rugalmasság, a teljesítmény és a kompatibilitási egy helyszíni fájlkiszolgáló. Azure fájlszinkronizálás átalakítja a Windows Server az Azure fájlmegosztás gyors gyorsítótárába. Minden protokoll, amely a Windows Server helyileg, az adatok eléréséhez használhatja, többek között a ftps-t, SMB és NFS. Akkor is annyi gyorsítótárak világszerte szükség szerint.
@@ -96,6 +96,19 @@ Vannak a Windows Server későbbi verzióiban lesz hozzáadva. A Windows korább
 
 > [!Note]  
 > Csak az NTFS-köteteket támogatottak. A refs fájlrendszer, FAT, FAT32 és más fájlrendszerek nem támogatottak.
+
+### <a name="files-skipped"></a>Kimaradt fájlok
+| File/Folder | Megjegyzés |
+|-|-|
+| Desktop.ini | A fájl adott rendszerhez |
+| ethumbs.db$ | Ideiglenes fájlt a miniatűrök |
+| ~$\*.\* | Office-fájl ideiglenes |
+| \*.tmp | Ideiglenes fájl |
+| \*.laccdb | DB hozzáférés a zárolási fájl|
+| 635D02A9D91C401B97884B82B3BCDAEA.* ||
+| \\A System Volume Information | Adott kötetre mappa |
+| $RECYCLE.BIN| Mappa |
+| \\SyncShareState | Mappa-szinkronizáláshoz |
 
 ### <a name="failover-clustering"></a>Feladatátvételi fürtszolgáltatás
 Windows Server feladatátvételi fürtszolgáltatás támogatott Azure fájl szinkronizálás által "Általános felhasználású fájlkiszolgáló" rendszerbe állítási beállításként. Feladatátvételi fürtszolgáltatás nem támogatott a "Kibővített fájlkiszolgáló az alkalmazásadatokhoz" (SOFS) vagy a megosztott fürtkötetek (CSV).

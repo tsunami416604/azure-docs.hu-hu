@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 5aae5057cccdf8dfbe2a42a39da5b9e70b9166f9
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: f5ca5544a217d66d334ff468d2308af1836c7de8
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-monitoring-and-management-app"></a>Figyelheti és kezelheti az Azure Data Factory adatcsatornák a figyelés és felügyelet alkalmazással
 > [!div class="op_single_selector"]
@@ -30,7 +30,7 @@ ms.lasthandoff: 03/23/2018
 > [!NOTE]
 > Ez a cikk a Data Factory általánosan elérhető 1. verziójára vonatkozik. Lásd a 2-es verziójának a Data Factory szolgáltatásnak, amely jelenleg előzetes verzióban érhető, használatakor [felügyeletéhez és kezeléséhez az adat-előállító adatcsatornák 2-es](../monitor-visually.md).
 
-A cikkből megtudhatja, hogyan használható a figyelés és a felügyeleti alkalmazás figyeléséhez, kezeléséhez és az adat-előállító adatcsatornák debug. Tájékoztatást kaphat az hibáiról riasztásokat létrehozásával kapcsolatos információkat is biztosít. Ismerkedés az alkalmazás által a következő videolejátszás használatával:
+A cikkből megtudhatja, hogyan használható a figyelés és a felügyeleti alkalmazás figyeléséhez, kezeléséhez és az adat-előállító adatcsatornák debug. Ismerkedés az alkalmazás által a következő videolejátszás használatával:
 
 > [!NOTE]
 > A felhasználói felületen látható módon a videó előfordulhat, hogy nem egyeznek pontosan kapcsolatban a portálon. Némileg régebbi, de fogalmak változatlan marad. 
@@ -296,42 +296,3 @@ Is több tevékenység windows listáján válassza ki, és futtassa újra a azo
 A Ctrl billentyűt használja a multiselect két vagy több folyamatok segítségével. A (amely emel ki az alábbi képen piros téglalap) gombok segítségével/szüneteltet őket.
 
 ![A parancssávon felfüggesztése vagy folytatása](./media/data-factory-monitor-manage-app/SuspendResumeOnCommandBar.png)
-
-## <a name="create-alerts"></a>Riasztások létrehozása
-A **riasztások** lap lehetővé teszi, hogy hozzon létre riasztást és nézet/Szerkesztés/törlés meglévő riasztást. Akkor is is tiltása/engedélyezése egy riasztást. A riasztások lapon megtekintéséhez kattintson a **riasztások** fülre.
-
-![Riasztások lap](./media/data-factory-monitor-manage-app/AlertsTab.png)
-
-### <a name="to-create-an-alert"></a>Riasztás létrehozása
-1. Kattintson a **hozzáadása riasztás** hozzáadása egy riasztást. Megjelenik a **részletek** lap.
-
-    ![Riasztások – Részletek lap létrehozása](./media/data-factory-monitor-manage-app/CreateAlertDetailsPage.png)
-2. Adja meg a **neve** és **leírás** a riasztást, majd kattintson a **következő**. Megjelenik a **szűrők** lap.
-
-    ![Riasztások – szűrők lap létrehozása](./media/data-factory-monitor-manage-app/CreateAlertFiltersPage.png)
-3. Válassza ki a **esemény**, **állapot**, és **részállapot** (nem kötelező), hogy szeretné-e a Data Factory szolgáltatás riasztás létrehozása, és kattintson a **következő**. Megjelenik a **címzettek** lap.
-
-    ![Riasztások – címzettek lap létrehozása](./media/data-factory-monitor-manage-app/CreateAlertRecipientsPage.png)
-4. Válassza ki a **E-mail-előfizetés rendszergazdái** lehetőséget és/vagy adjon meg egy **további rendszergazdai e-mail**, és kattintson a **Befejezés**. Meg kell jelennie a listában a riasztást.
-
-    ![Riasztások listája](./media/data-factory-monitor-manage-app/AlertsList.png)
-
-A riasztáslistában Szerkesztés/Törlés/tiltása/engedélyezése egy riasztást a riasztás társított gombok használatával.
-
-### <a name="eventstatussubstatus"></a>A részállapot/esemény/állapota
-A következő táblázat a rendelkezésre álló eseményeket és állapotokat (és részállapotok) listáját tartalmazza.
-
-| esemény neve | status | A részállapot |
-| --- | --- | --- |
-| A tevékenység futtatása megkezdődött |Elindítva |Indítás |
-| A tevékenység futtatása befejeződött |Sikeres |Sikeres |
-| A tevékenység futtatása befejeződött |Meghiúsult |Nem sikerült erőforrás-elosztás<br/><br/>Sikertelen végrehajtása<br/><br/>Időtúllépés<br/><br/>Érvényesítés<br/><br/>Elhagyott |
-| Igény szerinti HDI-fürtöt létrehozni elindítva |Elindítva |-|
-| Igény szerinti HDI-fürtnek sikeresen létrehozva |Sikeres |-|
-| Igény szerinti HDI-fürtnek törlése |Sikeres |-|
-
-### <a name="to-edit-delete-or-disable-an-alert"></a>Szerkesztése, törlése, vagy tiltsa le a riasztás
-
-A (pirossal kiemelt) következő gombok segítségével szerkesztése, törlése, vagy tiltsa le a riasztást.
-
-![Riasztások gombok](./media/data-factory-monitor-manage-app/AlertButtons.png)

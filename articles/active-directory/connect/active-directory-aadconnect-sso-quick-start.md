@@ -1,9 +1,9 @@
 ---
-title: "Az Azure AD Connect: Zökkenőmentes egyszeri bejelentkezés – első lépések |} Microsoft Docs"
-description: "Ez a cikk ismerteti az első lépések az Azure Active Directory zökkenőmentes egyszeri bejelentkezést."
+title: 'Az Azure AD Connect: Zökkenőmentes egyszeri bejelentkezés – első lépések |} Microsoft Docs'
+description: Ez a cikk ismerteti az első lépések az Azure Active Directory zökkenőmentes egyszeri bejelentkezést.
 services: active-directory
-keywords: "Mi az Azure AD Connect telepítés Active Directory szükséges összetevőket az Azure AD, SSO, egyszeri bejelentkezést."
-documentationcenter: 
+keywords: Mi az Azure AD Connect telepítés Active Directory szükséges összetevőket az Azure AD, SSO, egyszeri bejelentkezést.
+documentationcenter: ''
 author: swkrish
 manager: mtillman
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/23/2017
 ms.author: billmath
-ms.openlocfilehash: 67f6ca36c334a60b634094f07e5d9696a6961eb8
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: d026009151f85a01f14ce4dd8a510f60ff407da1
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Az Azure Active Directory zökkenőmentes egyszeri bejelentkezés: első lépések
 
@@ -32,7 +32,7 @@ Zökkenőmentes SSO telepítéséhez kövesse az alábbi lépéseket.
 
 Győződjön meg arról, hogy a következő előfeltételeket:
 
-* **Az Azure AD Connect kiszolgáló**: Ha [áteresztő hitelesítés](active-directory-aadconnect-pass-through-authentication.md) legyen a bejelentkezési módszer, nincs további előfeltétel-ellenőrzésre szükség. Ha [Jelszókivonat-szinkronizálást](active-directory-aadconnectsync-implement-password-synchronization.md) legyen a bejelentkezési módszer, és ha az Azure AD Connect és az Azure AD között tűzfal, ellenőrizze, hogy:
+* **Az Azure AD Connect kiszolgáló**: Ha [áteresztő hitelesítés](active-directory-aadconnect-pass-through-authentication.md) legyen a bejelentkezési módszer, nincs további előfeltétel-ellenőrzésre szükség. Ha [Jelszókivonat-szinkronizálást](active-directory-aadconnectsync-implement-password-hash-synchronization.md) legyen a bejelentkezési módszer, és ha az Azure AD Connect és az Azure AD között tűzfal, ellenőrizze, hogy:
    - Német nyelvű verziót 1.1.644.0 vagy újabb, az Azure AD Connect. 
    - Ha a tűzfal vagy a proxy lehetővé teszi a DNS engedélyezett, az engedélyezett a kapcsolatok a  **\*. msappproxy.net** URL-címek 443-as porton keresztül. Ha nem, a hozzáférést a [Azure datacenter IP-címtartományok](https://www.microsoft.com/download/details.aspx?id=41653), amely hetente frissíteni. Ezt az előfeltételt csak a szolgáltatás engedélyezése esetén alkalmazható. Nincs szükség a tényleges felhasználói bejelentkezések.
 
@@ -87,7 +87,7 @@ Emellett az Intranet zóna a házirend-beállítással a hívott engedélyeznie 
 
 ### <a name="why-do-you-need-to-modify-users-intranet-zone-settings"></a>Miért van szüksége a felhasználói intranetes beállítások módosítása?
 
-Alapértelmezés szerint a böngésző automatikusan kiszámítja a megfelelő zónához, internetes vagy intranetes, egy adott URL-címről. Például "http://contoso/" leképezve az Intranet zónához, mivel a "http://intranet.contoso.com/" (mert az URL-cím pontot tartalmaz) van leképezve az Internet zónában. Böngészők nem küld a Kerberos jegyek küldenek a felhővégpontnak, például az Azure AD URL-CÍMÉT, kivéve, ha explicit módon hozzáadása az URL-CÍMÉT a böngésző Intranet zónához.
+Alapértelmezés szerint a böngésző automatikusan kiszámítja a megfelelő zónához, internetes vagy intranetes, egy adott URL-címről. Például "http://contoso/"van leképezve az Intranet zónához, mivel a"http://intranet.contoso.com/" (mert az URL-cím pontot tartalmaz) van leképezve az Internet zónában. Böngészők nem küld a Kerberos jegyek küldenek a felhővégpontnak, például az Azure AD URL-CÍMÉT, kivéve, ha explicit módon hozzáadása az URL-CÍMÉT a böngésző Intranet zónához.
 
 ### <a name="detailed-steps"></a>Részletes lépések
 

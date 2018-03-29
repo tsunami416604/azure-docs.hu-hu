@@ -1,11 +1,11 @@
 ---
-title: "Használja az Azure Docker Virtuálisgép-bővítmény |} Microsoft Docs"
-description: "Útmutató: a Docker Virtuálisgép-bővítmény használatával gyorsan és biztonságosan központi telepítése egy Docker-környezethez az Azure Resource Manager-sablonok és az Azure CLI 2.0 használatával"
+title: Használja az Azure Docker Virtuálisgép-bővítmény |} Microsoft Docs
+description: 'Útmutató: a Docker Virtuálisgép-bővítmény használatával gyorsan és biztonságosan központi telepítése egy Docker-környezethez az Azure Resource Manager-sablonok és az Azure CLI 2.0 használatával'
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
 manager: jeconnoc
-editor: 
+editor: ''
 ms.assetid: 936d67d7-6921-4275-bf11-1e0115e66b7f
 ms.service: virtual-machines-linux
 ms.devlang: azurecli
@@ -14,14 +14,18 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/18/2017
 ms.author: iainfou
-ms.openlocfilehash: fe4013eefc0a7a896d6e8eb737ee8e2bc26ecf61
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 1e5a4fcfd758c12213d6de7d0f5cfcc78531ee97
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="create-a-docker-environment-in-azure-using-the-docker-vm-extension"></a>Hozzon létre egy Docker-környezetet az Azure-ban a Docker Virtuálisgép-bővítmény
 Docker egy népszerű tárolóinak kezelése és a lemezkép-készítési platform, amely lehetővé teszi, hogy gyorsan alkalmazásában tárolók Linux rendszeren. Az Azure különböző módja van Docker igény szerint telepítheti. Ez a cikk foglalkozik a a Docker Virtuálisgép-bővítmény és az Azure Resource Manager-sablonok az Azure CLI 2.0-s verziójával. Az [Azure CLI 1.0-s](dockerextension-nodejs.md) verziójával is elvégezheti ezeket a lépéseket.
+
+> [!WARNING]
+> A Linux Azure Docker Virtuálisgép-bővítménnyel elavult, és November 2018 rendszerből.
+> A bővítmény Docker, csupán telepítését, így alternatív eszközökbe, például felhő-init vagy az egyéni parancsprogramok futtatására szolgáló bővítmény választott Docker-verzió telepítése fejlettebb módszert. Felhő inicializálás használatáról további információk: [testre szabhatja a Linux virtuális gép és felhő inicializálás](tutorial-automate-vm-deployment.md).
 
 ## <a name="azure-docker-vm-extension-overview"></a>Az Azure Docker Virtuálisgép-bővítmény áttekintése
 Az Azure Docker Virtuálisgép-bővítmény telepíti és konfigurálja a Docker démon, a Docker-ügyfél és a Docker Compose a Linux virtuális gép (VM). Az Azure Docker Virtuálisgép-bővítmény használatával, hogy további vezérlő és szolgáltatásokkal, mint egyszerűen Docker számítógépet használja, vagy hozzon létre a Docker-állomás, saját magának. Ezek a további szolgáltatásokat, például a [Docker Compose](https://docs.docker.com/compose/overview/), ellenőrizze az Azure Docker Virtuálisgép-bővítmény olyan robusztusabb fejlesztői vagy üzemi környezetben ajánlott.

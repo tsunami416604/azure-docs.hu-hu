@@ -1,12 +1,12 @@
 ---
-title: "Linux virtuális gépek DHCPv6 konfigurálása |} Microsoft Docs"
-description: "Hogyan kell konfigurálni a DHCPv6 Linux virtuális gépekhez."
+title: Linux virtuális gépek DHCPv6 konfigurálása |} Microsoft Docs
+description: Hogyan kell konfigurálni a DHCPv6 Linux virtuális gépekhez.
 services: load-balancer
 documentationcenter: na
 author: KumudD
 manager: timlt
-editor: 
-keywords: "IPv6-alapú, azure load balancer, kettős verem, nyilvános IP-cím, natív ipv6, mobil, iot"
+editor: ''
+keywords: IPv6-alapú, azure load balancer, kettős verem, nyilvános IP-cím, natív ipv6, mobil, iot
 ms.assetid: b32719b6-00e8-4cd0-ba7f-e60e8146084b
 ms.service: load-balancer
 ms.devlang: na
@@ -15,15 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: b46c2107dcfda5f02407e08daf08bd42d722dfda
-ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
+ms.openlocfilehash: 6248ed2f55fb5bbcc2061af6ce1dedf2bd31ccad
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2017
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="configure-dhcpv6-for-linux-vms"></a>Linux virtuális gépek DHCPv6 konfigurálása
 
-[!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
 
 Egyes Linux virtuális gép képek az Azure piactéren Dynamic Host Configuration Protocol version 6 (DHCPv6) alapértelmezés szerint nem rendelkeznek. IPv6 támogatása érdekében az Ön által használt Linux operációs rendszert futtató terjesztési DHCPv6 kell konfigurálni. A különböző Linux terjesztésekről a DHCPv6 az sokféleképpen konfigurálása, mert a különböző csomagok használata.
 

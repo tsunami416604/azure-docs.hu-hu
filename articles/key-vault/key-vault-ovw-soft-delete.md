@@ -1,16 +1,16 @@
 ---
-ms.assetid: 
-title: "Az Azure Key Vault helyreállítható törlésre |} Microsoft Docs"
+ms.assetid: ''
+title: Az Azure Key Vault helyreállítható törlésre |} Microsoft Docs
 ms.service: key-vault
 author: lleonard-msft
 ms.author: alleonar
 manager: mbaldwin
 ms.date: 09/25/2017
-ms.openlocfilehash: 01357e4fdb9b6f27e9baf5f5c8e4c7d6b582ad35
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: 6a3573cf31418309a31126b2a0c6a43ea2e0c745
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-key-vault-soft-delete-overview"></a>Az Azure Key Vault soft-törlés áttekintése
 
@@ -67,6 +67,13 @@ Kivéve, ha egy kulcstartót vagy kulcstároló objektum helyre lett állítva, 
 Véglegesen törli kiürítése, kulcstároló alkalmazáson keresztül a POST műveletet az erőforrás-proxy, amely különleges jogosultságokra van szüksége. Általában csak az előfizetés tulajdonosa fog tudni kulcstároló törlése. A POST műveletet váltja ki, hogy a tároló azonnali és helyreállíthatatlan törlését. 
 
 Kivétel ez alól a helyzet, amikor az Azure-előfizetés jelölésű *undeletable*. Csak a szolgáltatás ebben az esetben előfordulhat, hogy végezze el a tényleges törlés, és így tesz, ütemezett folyamatként. 
+
+### <a name="billing-implications"></a>Számlázási gyakorolt hatása
+
+A (kulcstároló vagy kulcsok vagy titkos kulcs) objektum törölt állapotban van, amikor általában csak két művelet lehetséges: "kiürítése" és "helyreállítani. A többi művelet sikertelen lesz. Annak ellenére, hogy az objektum létezik, ezért művelet nem hajtható végre, és ezért nem találtunk lép fel, ezért nem számlázási. Azonban, hogy betartják kivételek:
+
+- "kiürítése" és "helyreállítása" műveletek normál kulcstároló műveletek is beleszámít és lesz terhelve.
+- Ha az objektum egy HSM-kulccsal, a "Kulcs áttelepítése HSM által védett" díj minden hónapban díjmentesen kulcs verziónként fog alkalmazni egy kulcs verziója már használta az utolsó 30 napban. Ezután mert az objektum nincs a művelet végrehajtható rajta, törölt állapotban van, nem kell fizetni fog vonatkozni.
 
 ## <a name="next-steps"></a>További lépések
 

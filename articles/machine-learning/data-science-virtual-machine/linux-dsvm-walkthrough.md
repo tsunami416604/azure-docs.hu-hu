@@ -1,8 +1,8 @@
 ---
-title: "A Linux adatok tudományos virtuális gépet az Azure adattudomány |} Microsoft Docs"
-description: "Hogyan hajthat végre több közös adatok tudományos feladatokat a a Linux adatok tudományos virtuális Géphez."
+title: A Linux adatok tudományos virtuális gépet az Azure adattudomány |} Microsoft Docs
+description: Hogyan hajthat végre több közös adatok tudományos feladatokat a a Linux adatok tudományos virtuális Géphez.
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/16/2018
-ms.author: bradsev;paulsh
-ms.openlocfilehash: 9b8a9b9bba242fd7c86dc285a77317a5821948df
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.author: bradsev
+ms.openlocfilehash: aff0dd17baa72b3f58ed5effbedb3a4c630f22c6
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-on-azure"></a>Adattudomány rendelkező Linux adatok tudományos virtuális gépek Azure-on
 Ez a forgatókönyv bemutatja, hogyan végezhető több közös adatok tudományos a Linux adatok tudományos virtuális gép. A Linux adatok tudományos virtuális gép (DSVM) érhető el, amely adatelemzés és a gépi tanulás általánosan használt eszközöket együtt telepített Azure virtuálisgép-lemezkép. A kulcs szoftverösszetevőket van felsorolva a [a Linux adatok tudományos virtuális gép kiépítéséhez](linux-dsvm-intro.md) témakör. A Virtuálisgép-lemezkép megkönnyíti az első lépések során adattudomány (percben), anélkül, hogy telepítse és konfigurálja az egyes eszközökről külön-külön kellene. Könnyedén növelheti a virtuális gép, ha szükséges, és állítsa le, ha nincsenek használatban. Ehhez az erőforráshoz, mind a rugalmas és költséghatékony.
@@ -473,7 +473,7 @@ A kezdéshez indítsa el az alkalmazás menüből Squirrel SQL. Az illesztőprog
 A kapcsolat a helyi kiszolgáló beállítása:
 
 * Válassza ki **Windows**, majd **aliasok megjelenítése.**
-* Válassza ki a  **+**  gomb új aliast.
+* Válassza ki a **+** gomb új aliast.
 * Nevezze el *levélszemét adatbázis*, válassza a **PostgreSQL** a a **illesztőprogram** legördülő listán.
 * Az URL-cím beállítása *jdbc:postgresql://localhost/spam*.
 * Adja meg a *felhasználónév* és *jelszó*.

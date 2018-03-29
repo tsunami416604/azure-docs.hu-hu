@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/22/2018
 ms.author: billmath
-ms.openlocfilehash: b1c82727e97b85fae5f315ceb1cd79cfdd111b45
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 6a106ba59f09ffc20f8461c5267ae06695df4cd0
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Az Azure Active Directory zökkenőmentes egyszeri bejelentkezést.
 
@@ -28,7 +28,7 @@ Azure Active Directory zökkenőmentes egyszeri bejelentkezést (az Azure AD zö
 
 >[!VIDEO https://www.youtube.com/embed/PyeAC85Gm7w]
 
-Zökkenőmentes SSO kombinálva, vagy a [Jelszókivonat-szinkronizálást](active-directory-aadconnectsync-implement-password-synchronization.md) vagy [áteresztő hitelesítés](active-directory-aadconnect-pass-through-authentication.md) bejelentkezési módszerek.
+Zökkenőmentes SSO kombinálva, vagy a [Jelszókivonat-szinkronizálást](active-directory-aadconnectsync-implement-password-hash-synchronization.md) vagy [áteresztő hitelesítés](active-directory-aadconnect-pass-through-authentication.md) bejelentkezési módszerek.
 
 ![Zökkenőmentes egyszeri bejelentkezést.](./media/active-directory-aadconnect-sso/sso1.png)
 
@@ -42,7 +42,7 @@ Zökkenőmentes SSO kombinálva, vagy a [Jelszókivonat-szinkronizálást](activ
   - Adja meg ismételten a jelszavukat a felhasználóknak nem kell.
 - *Könnyen üzembe helyezése és felügyelete*
   - További összetevők szükségesek a helyszíni működnek.
-  - A felhőalapú hitelesítés - bármely metódusát együttműködve [Jelszókivonat-szinkronizálást](active-directory-aadconnectsync-implement-password-synchronization.md) vagy [áteresztő hitelesítés](active-directory-aadconnect-pass-through-authentication.md).
+  - A felhőalapú hitelesítés - bármely metódusát együttműködve [Jelszókivonat-szinkronizálást](active-directory-aadconnectsync-implement-password-hash-synchronization.md) vagy [áteresztő hitelesítés](active-directory-aadconnect-pass-through-authentication.md).
   - Egyes kell eldöntése vagy csoportházirend segítségével minden felhasználó.
   - Windows 10-eszközök regisztrálása nélkül bármely AD FS infrastruktúra Azure AD-val. Ez a funkció arra kéri, hogy 2.1-es vagy újabb verzióját használja a [munkahelyhez ügyfél](https://www.microsoft.com/download/details.aspx?id=53554).
 

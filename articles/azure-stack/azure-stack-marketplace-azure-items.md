@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/26/2018
 ms.author: brenduns
 ms.reviewer: jeffgo
-ms.openlocfilehash: 39a82486b485a761f03244cf8d49f9c79ed9b2f7
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: cdce5ad971e345971aa5de9a9bb79379fb1ead48
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-marketplace-items-available-for-azure-stack"></a>Azure verem használható az Azure piactéren elemek
 
@@ -217,7 +217,7 @@ A Microsoft Azure verem támogatja a következő Azure piactér virtuális gépe
 | ![A védőfal Hortonworks Data Platform (HDP)](media/azure-stack-marketplace-azure-items/hortonworks.png) | [A védőfal Hortonworks Data Platform (HDP)](https://azuremarketplace.microsoft.com/marketplace/apps/hortonworks.hortonworks-sandbox) | Technológiával HDP 2,5 100 %-os nyílt forráskódú platform Hadoop, Spark, Storm, HBase, Kafka, struktúra, Ambari. | Hortonworks |
 | ![KEMP LoadMaster terhelés terheléselosztó LÉPETT tartalom kapcsoló](media/azure-stack-marketplace-azure-items/kemp.png) | [KEMP LoadMaster terhelés terheléselosztó LÉPETT tartalom kapcsoló](https://azuremarketplace.microsoft.com/marketplace/apps/kemptech.vlm-azure) | 4 – 7. rétegbeli alkalmazás kézbesítési vezérlő (LÉPETT) terheléselosztó tartalom kapcsoló és a Traffic Manager. | KEMP technológiák Inc. |
 | ![NooBaa hibrid AWS S3 kompatibilis - Community Edition](media/azure-stack-marketplace-azure-items/noobaa.png) | [NooBaa hibrid AWS S3 compatibe - Community Edition](https://azuremarketplace.microsoft.com/marketplace/apps/noobaa.noobaa-hybrid-s3-archive-05) | S3-kompatibilis tárolási szolgáltatás helyezkednek nyilvános és helyszíni erőforrások kapacitás. | NooBaa |
-| ![PT tűzfal](media/azure-stack-marketplace-azure-items/pt.png) | [PT tűzfal](https://azuremarketplace.microsoft.com/marketplace/apps/ptsecurity.pta) | PT tűzfal ismeretlen & ismert biztonsági rések észleli, és megakadályozza, hogy a támadások-webalkalmazásokban. <b>Töltse le mindkét PT Piactéri elemek.</b> | Pozitív technológiák |
+| ![PT tűzfal](media/azure-stack-marketplace-azure-items/pt.png) | [PT tűzfal](https://azuremarketplace.microsoft.com/marketplace/apps/ptsecurity.ptaf) | PT tűzfal ismeretlen & ismert biztonsági rések észleli, és megakadályozza, hogy a támadások-webalkalmazásokban. <b>Töltse le mindkét PT Piactéri elemek.</b> | Pozitív technológiák |
 | ![Puppet Enterprise](media/azure-stack-marketplace-azure-items/puppet.png) | [Puppet Enterprise](https://azuremarketplace.microsoft.com/marketplace/apps/puppet.puppet-enterprise-2017-2) | Puppet vállalati segítségével automatizálhatja az Azure-verem infrastruktúra teljes életciklusát. <b>Töltse le mindkét Puppet Piactéri elemek.</b> | Puppet |
 | ![SUSE Manager 3.0 Proxy (saját)](media/azure-stack-marketplace-azure-items/suse.png) | [SUSE Manager 3.0 Proxy (saját) ](https://azuremarketplace.microsoft.com/marketplace/apps/SUSE.SUSEManager30ProxyBringYourOwnSubscription) | Legjobb minőségű nyílt forráskódú infrastruktúra kezelését. | SUSE |
 | ![ZeroDown szoftvereket eszköz](media/azure-stack-marketplace-azure-items/zerodown.png) | [ZeroDown szoftvereket eszköz ](https://azuremarketplace.microsoft.com/marketplace/apps/zerodown_software.zerodown-software-tool-7_1) | ZeroDown szoftver eszköz v7.1 - áttelepítése + magas rendelkezésre ÁLLÁSÚ. | ZeroDown szoftver |

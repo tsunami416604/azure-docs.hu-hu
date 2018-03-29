@@ -1,6 +1,6 @@
 ---
-title: "Több IP-konfigurációk az Azure-ban a terheléselosztási |} Microsoft Docs"
-description: "Terheléselosztás elsődleges és másodlagos IP-konfiguráció között."
+title: Több IP-konfigurációk az Azure-ban a terheléselosztási |} Microsoft Docs
+description: Terheléselosztás elsődleges és másodlagos IP-konfiguráció között.
 services: load-balancer
 documentationcenter: na
 author: anavinahar
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: annahar
-ms.openlocfilehash: 2235d007434dabde1639ab19bc6813c818ed5ed7
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 12a978fc85d9502ce484859b436575b67364c9c4
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="load-balancing-on-multiple-ip-configurations-using-powershell"></a>Hálózati terheléselosztást a PowerShell használatával több IP-konfigurációk
 
@@ -27,7 +27,6 @@ ms.lasthandoff: 12/21/2017
 > * [Parancssori felület](load-balancer-multiple-ip-cli.md)
 > * [PowerShell](load-balancer-multiple-ip-powershell.md)
 
-[!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
 
 Ez a cikk ismerteti az Azure Load Balancer használata a másodlagos hálózati adapteren (NIC) több IP-címmel. Ebben a forgatókönyvben két virtuális gépeken futó Windows, az elsődleges és másodlagos hálózati tudunk A másodlagos hálózati adapterek mindegyike rendelkezik, két IP-konfigurációk. Minden virtuális gép webhelyeket a contoso.com és fabrikam.com üzemelteti. Minden webhelyre van kötve egy IP-konfigurációk másodlagos hálózati adapteren Azure Load Balancer használatával teszi közzé a két előtérbeli IP-cím, egy, a megfelelő IP-konfiguráció a webhelyre irányuló forgalom terjeszteni minden webhelyre vonatkozóan. Ebben a példában ugyanazt a portszámot is frontends, valamint mindkét háttér címkészletet IP-címek között.
 
@@ -138,7 +137,7 @@ A cikkben ismertetett forgatókönyvben eléréséhez az alábbi lépésekkel:
     $nic2 | Set-AzureRmNetworkInterface
     ```
 
-13. Végül konfigurálnia kell DNS-erőforrásrekordok a terheléselosztó megfelelő előtérbeli IP-címére mutasson. A tartományok Azure DNS-ben is tartalmazhat. Az Azure DNS-sel terheléselosztással kapcsolatos további információkért lásd: [Azure DNS használata más Azure-szolgáltatásokkal](../dns/dns-for-azure-services.md).
+13. Végül konfigurálnia kell DNS-erőforrásrekordok a terheléselosztó megfelelő előtérbeli IP-címére mutasson. You may host your domains in Azure DNS. Az Azure DNS-sel terheléselosztással kapcsolatos további információkért lásd: [Azure DNS használata más Azure-szolgáltatásokkal](../dns/dns-for-azure-services.md).
 
 ## <a name="next-steps"></a>További lépések
 - További tudnivalók az Azure a terheléselosztási egyesítése [terheléselosztás szolgáltatások használata az Azure-ban](../traffic-manager/traffic-manager-load-balancing-azure.md).

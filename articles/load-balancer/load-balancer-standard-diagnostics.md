@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/21/2018
 ms.author: Kumud
-ms.openlocfilehash: 1d39cdc13e69740dc99e67f935b60db218536044
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 7d60925381abe617f6e2fac51176b8e30517c3ba
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="metrics-and-health-diagnostics-for-standard-load-balancer"></a>Standard terheléselosztóhoz metrikák és állapotfigyelő diagnosztika
 
@@ -88,7 +88,7 @@ VIP rendelkezésre állási meghiúsul a következő okok miatt:
 - A központi telepítés nem kifogástalan állapotú virtuális gépeket háttérkészlet idővel rendelkezik. 
 - Infrastruktúra kimaradás VIP rendelkezésre állási sikertelenségét okozó történt.
 
-Használhatja a [VIP rendelkezésre állási metrikára és a mintavételi állapot diagnosztikai célra](https://aka.ms/lbdiagnostics#vipavailabilityandhealthprobes).
+Használhatja a [VIP rendelkezésre állási metrikára és a mintavételi állapot diagnosztikai célra](#vipavailabilityandhealthprobes).
 
 Használjon **átlagos** , az összesítés a legtöbb forgatókönyvhöz.
 

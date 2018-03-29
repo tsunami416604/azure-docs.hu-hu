@@ -1,6 +1,6 @@
 ---
-title: "Java-webalkalmazások Azure Application Insights az alkalmazásteljesítmény-figyelés |} Microsoft Docs"
-description: "Kiterjesztett teljesítmény és a Java-webhely, az Application Insights-használat figyelését."
+title: Java-webalkalmazások Azure Application Insights az alkalmazásteljesítmény-figyelés |} Microsoft Docs
+description: Kiterjesztett teljesítmény és a Java-webhely, az Application Insights-használat figyelését.
 services: application-insights
 documentationcenter: java
 author: harelbr
@@ -13,28 +13,28 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/24/2016
 ms.author: mbullwin
-ms.openlocfilehash: ecfcf7a3b3698435f98b74474d0ca7223ab2b46c
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: b327e7f062cdf3e6b1b34a9540461dcb18caf21c
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 03/29/2018
 ---
-# <a name="monitor-dependencies-exceptions-and-execution-times-in-java-web-apps"></a>Függőségek, kivételeket és végrehajtásának lassúságát a Java-webalkalmazások figyelése
+# <a name="monitor-dependencies-caught-exceptions-and-method-execution-times-in-java-web-apps"></a>Függőségek, kifogott kivételeket és metódus végrehajtásának lassúságát a Java-webalkalmazások figyelése
 
 
 Ha rendelkezik [a Java-webalkalmazás az Application insights szolgáltatással tagolva][java], a Java-ügynök részleteinek megtekintésével mélyebb betekintést kód módosítások nélkül használható:
 
 * **Függőségek:** hívások, az alkalmazás által az egyéb összetevők, beleértve a vonatkozó adatokat:
-  * **REST-hívások** HttpClient OkHttp és RestTemplate (forrás) keresztül történik.
-  * **Redis** keresztül a Jedis ügyfél felé indított hívások. A hívás tovább tart, mint 10 egység, ha az ügynök is beolvassa a hívás argumentumokkal.
-  * **[JDBC-hívások](http://docs.oracle.com/javase/7/docs/technotes/guides/jdbc/)**  -MySQL, SQL Server, PostgreSQL, SQLite, Oracle DB vagy Apache Derby DB. "executeBatch" hívások támogatottak. A MySQL és PostgreSQL, ha a hívás tovább tart, mint 10 egység, az ügynök jelentéseket küld a lekérdezéstervben.
-* **Kivétel lépett fel:** a kód által kezelt kivételek adatait.
-* **Módszer végrehajtási ideje:** bizonyos eljárások végrehajtásához szükséges idő az adatait.
+  * **REST-hívások** HttpClient keresztül történik, OkHttp és RestTemplate (forrás) a rendszer rögzíti.
+  * **Redis** keresztül a Jedis ügyfél felé indított hívások a rendszer rögzíti.
+  * **[JDBC-hívások](http://docs.oracle.com/javase/7/docs/technotes/guides/jdbc/)**  -MySQL, SQL Server és Oracle DB parancsot a rendszer automatikusan rögzíti. A MySQL, ha a hívás tovább tart, mint 10 egység, az ügynök jelentéseket küld a lekérdezéstervben.
+* **Kivétel lépett fel:** a kód által kezelt kivételek kapcsolatos információkat.
+* **Módszer végrehajtási ideje:** bizonyos eljárások végrehajtásához szükséges idő kapcsolatos információkat.
 
 A Java-ügynök használatára, akkor a kiszolgálóra telepítette. A webalkalmazások kell tagolva, és a [Application Insights Java SDK][java]. 
 
 ## <a name="install-the-application-insights-agent-for-java"></a>A Javához készült Application Insights-ügynök telepítése
-1. A számítógépen a Java Servert futtató [töltse le az ügynököt](https://aka.ms/aijavasdk).
+1. A számítógépen a Java Servert futtató [töltse le az ügynököt](https://github.com/Microsoft/ApplicationInsights-Java/releases/latest). Ellenőrizze, hogy az azonos verson Java-ügynök Application Insights Java SDK core és a web csomag letöltéséhez.
 2. Az alkalmazás server indítási parancsfájl szerkesztése, és adja hozzá az alábbi JVM-et:
    
     `javaagent:`*az ügynök JAR-fájl teljes elérési útja*

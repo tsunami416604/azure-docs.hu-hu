@@ -7,4 +7,4 @@
 | A feladat futtatása időpontja - ingyenes szint |naptári hónaponként előfizetésenként 500 perc |
 | Egy feladathoz megadott memória maximális mennyisége |400 MB |
 | Hálózati sockets feladat telepítésenként engedélyezett maximális száma |1000 |
-
+| Max. eseményenkénti Automation-fiók egy előfizetésben található |Korlátlan |

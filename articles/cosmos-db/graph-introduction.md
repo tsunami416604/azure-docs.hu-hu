@@ -1,9 +1,9 @@
 ---
-title: "Bevezetés az Azure Cosmos DB Graph API-k |} Microsoft Docs"
-description: "Ismerje meg, hogyan használhatja Azure Cosmos DB vannak tárolva, a lekérdezés, és nagy diagramjait és kis késésű Apache TinkerPop Gremlin graph lekérdezés nyelvének segítségével haladnak át."
+title: Bevezetés az Azure Cosmos DB Graph API-k |} Microsoft Docs
+description: Ismerje meg, hogyan használhatja Azure Cosmos DB vannak tárolva, a lekérdezés, és nagy diagramjait és kis késésű Apache TinkerPop Gremlin graph lekérdezés nyelvének segítségével haladnak át.
 services: cosmos-db
-author: luisbosquez
-documentationcenter: 
+author: LuisBosquez
+documentationcenter: ''
 ms.assetid: b916644c-4f28-4964-95fe-681faa6d6e08
 ms.service: cosmos-db
 ms.workload: data-services
@@ -12,11 +12,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/05/2017
 ms.author: lbosq
-ms.openlocfilehash: ba58377614326a10405be4a64d4b39f116b75bfe
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 50030434f3b2e59ba97efca2946be1a5115bc145
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="introduction-to-azure-cosmos-db-graph-api"></a>Bevezetés az Azure Cosmos DB: Graph API
 
@@ -123,7 +123,7 @@ Az alábbiakban néhány forgatókönyv graph támogatási Azure Cosmos-adatbáz
 
  Az ügyfelek és azok interakciók más felhasználókkal kapcsolatos adatok kombinálásával személyre szabott élmény fejlesztése, felhasználói viselkedés előrejelzése vagy személyek csatlakozás másokkal hasonló érdekében. Azure Cosmos-adatbázis segítségével kezelheti a közösségi hálózatokkal és nyomon követheti a felhasználói beállítások és adatok.
 
-* A javaslat motorok
+* Javaslati motorok
 
  Ebben a forgatókönyvben a kiskereskedelmi iparági gyakran használják. Termékek és felhasználók, felhasználói interakció megvásárlásáról, keresse meg vagy egy elem értékelése kombinálásával hozhat létre testreszabott javaslatok. A kis késleltetésű, rugalmasan méretezhető és natív Azure Cosmos DB graph-támogatása ezen kapcsolati modellezési ideális.
 
