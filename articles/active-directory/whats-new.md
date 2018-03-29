@@ -1,11 +1,11 @@
 ---
-title: "Újdonságok Azure Active Directory kibocsátási megjegyzései |} Microsoft Docs"
-description: "Ismerje meg, milyen újdonságokat Azure Active Directory (Azure AD), például a legújabb kibocsátási megjegyzései, az ismert problémák, hibajavításokat tartalmaz, az elavult funkciók és a jövőbeni változtatásokról."
+title: Újdonságok Azure Active Directory kibocsátási megjegyzései |} Microsoft Docs
+description: Ismerje meg, milyen újdonságokat Azure Active Directory (Azure AD), például a legújabb kibocsátási megjegyzései, az ismert problémák, hibajavításokat tartalmaz, az elavult funkciók és a jövőbeni változtatásokról.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 featureFlags:
 - clicktale
 ms.assetid: 06a149f7-4aa1-4fb9-a8ec-ac2633b031fb
@@ -14,14 +14,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/26/2018
+ms.date: 03/28/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: a30b5d08377594b8ad7e10b63a23e2a9d168af9c
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 9a947de3ad821d4cd65e579357e3c779e8623435
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Újdonságok az Azure Active Directoryban?
 
@@ -39,6 +39,244 @@ Az Azure AD fogadja folyamatos fejlesztéseket. Maradjon naprakész a legújabb 
 -   Módosítások tervek
 
 Ezen a lapon a havi frissül, ezért le újra rendszeresen.
+
+## <a name="march-2018"></a>2018 március
+ 
+
+### <a name="certificate-expire-notification"></a>Tanúsítvány lejár értesítés
+
+**Típus:** rögzített  
+**Szolgáltatás kategória:** vállalati alkalmazások  
+**A termék képesség:** egyszeri bejelentkezés
+ 
+Az Azure AD, ha a tanúsítványt egy gyűjtemény értesítést küld, vagy nem galéria alkalmazás érvényessége hamarosan lejár. 
+
+Egyes felhasználók nem kapta meg a vállalati alkalmazások SAML-alapú egyszeri bejelentkezés beállítása az értesítéseket. A probléma megoldódott. Az Azure AD-tanúsítványok 7, 30 és 60 nap múlva lejár értesítést küld. Ere, ez az esemény a felügyeleti naplók láthatók. 
+
+További információkért lásd:
+
+- [Tanúsítványok kezelése az összevont egyszeri bejelentkezés az Azure Active Directoryban](https://docs.microsoft.com/azure/active-directory/active-directory-sso-certs)
+- [Naplózási Tevékenységjelentések az Azure Active Directory portálon](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-activity-audit-logs)
+
+ 
+---
+ 
+
+### <a name="twitter-and-github-identity-providers-in-azure-ad-b2c"></a>Az Azure AD B2C Twitter és a GitHub identitás-szolgáltatóktól
+
+**Típus:** új szolgáltatás  
+**Szolgáltatás kategória:** B2C - felhasználói Identitáskezelés  
+**A termék képesség:** B2B/B2C
+ 
+Az Azure AD B2C identitás-szolgáltatóként most Twitter vagy GitHub adhat hozzá. Twitter GA van áthelyezése nyilvános előzetes verzió GitHub a nyilvános előzetes kiadásra.
+
+
+További információkért lásd: [Mi az az Azure AD B2B együttműködés?](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b).
+ 
+---
+
+
+### <a name="restrict-browser-access-using-intune-managed-browser-with-azure-ad-application-based-conditional-access-for-ios-and-android"></a>IOS és Android rendszerhez készült Intune Managed Browser használata az Azure AD alkalmazás-alapú feltételes hozzáférés böngésző-hozzáférés korlátozása
+
+**Típus:** új szolgáltatás  
+**Szolgáltatás kategória:** feltételes hozzáférés  
+**A termék képesség:** identitás biztonsági és védelmi
+ 
+
+**Nyilvános előzetes verzióként elérhető!**
+
+**Intune Managed Browser SSO:** az alkalmazottak használható egyszeri bejelentkezéshez natív ügyfelek (például Microsoft Outlook) és az Intune Managed Browser minden Azure AD-kompatibilis alkalmazások.
+
+**Intune Managed Browser feltételes hozzáférés támogatása:** most megkövetelheti az alkalmazottak az Intune Managed browser alkalmazás-alapú feltételes hozzáférési szabályzatokkal használatát.
+
+További információk erről az a [blogbejegyzés](https://cloudblogs.microsoft.com/enterprisemobility/2018/03/15/the-intune-managed-browser-now-supports-azure-ad-sso-and-conditional-access/).
+
+További információkért lásd:
+
+- [Alkalmazás-alapú feltételes hozzáférés beállítása](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam)
+
+- [Felügyeltböngésző-szabályzatok konfigurálása](https://aka.ms/managedbrowser)  
+
+
+
+---
+ 
+
+### <a name="app-proxy-cmdlets-in-powershell-ga-module"></a>Alkalmazás Webalkalmazásproxy-parancsmagok a Powershell GA modul
+
+**Típus:** új szolgáltatás  
+**Szolgáltatás kategória:** App Proxy  
+**A termék képesség:** hozzáférés-vezérlés
+ 
+Az alkalmazás Webalkalmazásproxy-parancsmagok a rendszer támogatja a Powershell GA modul! Vegye figyelembe, hogy ez szükséges hozzá legyen naprakész a Powershell-modulok, mert több mint egy év mögött válik, néhány parancsmaggal esetleg nem működnek majd. 
+
+
+További információkért lásd: [AzureAD](https://docs.microsoft.com/powershell/module/Azuread/?view=azureadps-2.0).
+ 
+---
+ 
+### <a name="office-365-native-clients-are-supported-by-seamless-sso-using-a-non-interactive-protocol"></a>Office 365 natív ügyfelek zökkenőmentes SSO-t a nem interaktív protokoll által támogatott
+
+**Típus:** új szolgáltatás  
+**Szolgáltatás kategória:** hitelesítések (Bejelentkezések)  
+**A termék képesség:** felhasználói hitelesítés
+ 
+Natív Office 365-ügyfél használatával felhasználói (16.0.8730.xxxx verzió vagy újabb verzió) egy csendes bejelentkezési élmény zökkenőmentes SSO használatával. Ez a támogatás biztosítja hozzáadását a nem interaktív (WS-Trust) protokoll az Azure AD.
+
+További információkért lásd: [hogyan bejelentkezhet a zökkenőmentes SSO munkahelyi rendelkező natív ügyfelek?](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso-how-it-works#how-does-sign-in-on-a-native-client-with-seamless-sso-work).
+
+ 
+---
+ 
+
+### <a name="users-get-a-silent-sign-on-experience-with-seamless-sso-if-an-application-sends-sign-in-requests-to-azure-ads-tenanted-endpoints"></a>A felhasználók megkaphatják a beavatkozás nélküli bejelentkezést, zökkenőmentes egyszeri bejelentkezési modellel, ha egy alkalmazás bejelentkezési kérelmek küldése az Azure AD központjaként végpontok
+
+**Típus:** új szolgáltatás  
+**Szolgáltatás kategória:** hitelesítések (Bejelentkezések)  
+**A termék képesség:** felhasználói hitelesítés
+ 
+A felhasználók megkaphatják a beavatkozás nélküli bejelentkezést, zökkenőmentes egyszeri bejelentkezési modellel, ha egy alkalmazás (például `https://contoso.sharepoint.com`) bejelentkezési kérelmek küldése az Azure AD-végpontok központjaként – Ez azt jelenti, hogy `https://login.microsoftonline.com/contoso.com/<..>` vagy `https://login.microsoftonline.com/<tenant_ID>/<..>` - helyett az Azure AD közös végpontot (`https://login.microsoftonline.com/common/<...>` ).
+
+További információkért lásd: [Azure Active Directory zökkenőmentes egyszeri bejelentkezést](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso). 
+
+---
+ 
+
+### <a name="need-to-add-only-one-azure-ad-url-instead-of-two-urls-previously-to-users-intranet-zone-settings-to-roll-out-seamless-sso"></a>Csak egy Azure AD URL-cím helyett korábban, két URL-címek hozzáadása felhasználói Intranet zóna beállítását fokozatosan zökkenőmentes SSO kell
+
+**Típus:** új szolgáltatás  
+**Szolgáltatás kategória:** hitelesítések (Bejelentkezések)  
+**A termék képesség:** felhasználói hitelesítés
+ 
+Számára, hogy zökkenőmentes egyszeri Bejelentkezést a felhasználók számára, hogy hozzáadja csak egy Azure AD URL-CÍMÉT a felhasználók az intranet zóna beállítását az Active Directory csoportházirend használatával: `https://autologon.microsoftazuread-sso.com`. Korábban az ügyfelek kellett két URL-címek hozzáadása.
+
+További információkért lásd: [Azure Active Directory zökkenőmentes egyszeri bejelentkezést](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso). 
+ 
+---
+ 
+
+### <a name="new-federated-apps-available-in-azure-ad-app-gallery"></a>Összevont alkalmas új alkalmazások az Azure AD-alkalmazásgyűjtemény
+
+**Típus:** új szolgáltatás  
+**Szolgáltatás kategória:** vállalati alkalmazások  
+**A termék képesség:** 3. fél integrációja
+ 
+Március 2018 jelentek meg a gyűjtemény összevonással a következő 15 új alkalmazások támogatják:
+
+[Boxcryptor](https://docs.microsoft.com/azure/active-directory/active-directory-saas-boxcryptor-tutorial), [CylancePROTECT](https://docs.microsoft.com/azure/active-directory/active-directory-saas-cylanceprotect-tutorial), Wrike, [SignalFx](https://docs.microsoft.com/azure/active-directory/active-directory-saas-signalfx-tutorial), Segéd által FirstAgenda, [YardiOne](https://docs.microsoft.com/azure/active-directory/active-directory-saas-yardione-tutorial), Vtiger CRM, inwink, [amplitúdó](https://docs.microsoft.com/azure/active-directory/active-directory-saas-amplitude-tutorial), [Spacio](https://docs.microsoft.com/azure/active-directory/active-directory-saas-spacio-tutorial), [ContractWorks](https://docs.microsoft.com/azure/active-directory/active-directory-saas-contractworks-tutorial), [Bersin](https://docs.microsoft.com/azure/active-directory/active-directory-saas-bersin-tutorial), [Mercell](https://docs.microsoft.com/azure/active-directory/active-directory-saas-mercell-tutorial), [Trisotech digitális A vállalati kiszolgáló](https://docs.microsoft.com/azure/active-directory/active-directory-saas-trisotechdigitalenterpriseserver-tutorial), [Qumu felhő](https://docs.microsoft.com/azure/active-directory/active-directory-saas-qumucloud-tutorial).
+ 
+A dokumentáció az összes alkalmazáshoz itt található: [https://aka.ms/appstutorial](https://aka.ms/appstutorial)
+
+
+ 
+---
+ 
+
+### <a name="pim-for-azure-resources-is-generally-available"></a>Általában érhető el az Azure-erőforrások PIM
+
+**Típus:** új szolgáltatás  
+**Szolgáltatás kategória:** Privileged Identity Management  
+**A termék képesség:** Privileged Identity Management
+ 
+Ha directory szerepkörök Azure AD Privileged Identity Management használ, most már használhatja PIM tartozó időhöz kötött hozzáférés és a hozzárendelés képességeket például előfizetések erőforráscsoportok, virtuális gépek vagy bármely más erőforrás támogatott Azure-erőforrás-szerepkörök az Azure erőforrás-kezelő által. Többtényezős hitelesítés kikényszerítéséhez a szerepkörök csak időponthoz kötött aktiválásakor, és ütemezés szerinti aktiválások jóváhagyott módosítása windows együtt. Emellett ez a kiadás nem érhető el, például egy frissített felhasználói felület, jóváhagyási munkafolyamatok és képes kiterjesztése a hamarosan lejáró szerepköröket, majd megújítani lejárt szerepkörök nyilvános előzetes fejlesztései.
+
+További információkért lásd: [PIM az Azure-erőforrások (előzetes verzió)](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/azure-pim-resource-rbac)
+ 
+---
+ 
+
+### <a name="adding-optional-claims-to-your-apps-tokens-public-preview"></a>Az alkalmazások jogkivonatok (nyilvános előzetes verzió) választható jogcímeket hozzáadása
+
+**Típus:** új szolgáltatás  
+**Szolgáltatás kategória:** hitelesítések (Bejelentkezések)  
+**A termék képesség:** felhasználói hitelesítés
+ 
+Az Azure AD alkalmazás mostantól az egyéni vagy választható jogcímkérések JWTs vagy SAML jogkivonatokat.  Ezek a jogcímeket a felhasználó vagy bérlői alapértelmezés szerint a a jogkivonatot, vagy a alkalmazhatósági vonatkozó korlátozások miatt nem szerepelnek.  Ez a funkció jelenleg az Azure AD alkalmazásaiban az 1.0-s és 2.0-s verzió végponton nyilvános előzetes verziójában.  Lásd a dokumentációban talál információkat milyen jogcímeket is hozzáadható, és kérje meg őket az alkalmazásjegyzék szerkesztése.  
+
+További információkért lásd: [nem kötelező jogcímek, az Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-optional-claims).
+ 
+---
+ 
+
+### <a name="azure-ad-supports-pkce-for-more-secure-oauth-flows"></a>Az Azure AD PKCE támogatja a biztonságosabb OAuth-adatfolyamok
+
+**Típus:** új szolgáltatás  
+**Szolgáltatás kategória:** hitelesítések (Bejelentkezések)  
+**A termék képesség:** felhasználói hitelesítés
+ 
+Az Azure AD-dokumentumok PKCE, ami lehetővé teszi a biztonságosabb kommunikáció során az OAuth 2.0 hitelesítési kód grant flow támogatása megjegyezni frissítve lett.  Az 1.0-s és 2.0-s verzió végpontok S256 és a titkosítatlan szöveges code_challenges támogatottak. 
+
+További információkért tekintse meg a kérelem egy engedélyezési kód[](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-protocols-oauth-code#request-an-authorization-code). 
+
+ 
+---
+ 
+
+### <a name="support-for-provisioning-all-user-attribute-values-available-in-the-workday-getworkers-api"></a>Minden felhasználó attribútumértékei érhető el a Workday Get_Workers API hozzáadásának támogatása
+
+**Típus:** új szolgáltatás  
+**Szolgáltatás kategória:** App kiépítése  
+**A termék képesség:** 3. fél integrációja
+ 
+A nyilvános előzetes verziója bejövő kiépítése a WORKDAY-ből az Active Directoryba és mostantól az Azure AD képes kinyerni és a kiépítés elérhető a Workday Get_Workers API attribútumértékeket támogatja. Ez biztosítja, hogy a több száz további standard támogatja, és az egyéni attribútumok a Workday kezdeti verzióval szállított is bejövő összekötő kiépítése.
+
+További információkért lásd: [testreszabása a Workday felhasználói attribútumok listáját](https://docs.microsoft.com/azure/active-directory/active-directory-saas-workday-inbound-tutorial#customizing-the-list-of-workday-user-attributes)
+
+---
+
+
+
+### <a name="changing-group-membership-from-dynamic-to-static-and-vice-versa"></a>A dinamikus csoporttagság statikus, és ez fordítva is igaz módosítása
+
+**Típus:** új szolgáltatás  
+**Szolgáltatás kategória:** csoportok kezelése  
+**A termék képesség:** együttműködés
+ 
+Akkor lehet módosítani a módjára vonatkozik a csoport tagságát. Ez akkor hasznos, ha meg szeretné tartani a azonos csoport nevét és Azonosítóját a rendszer úgy, hogy minden meglévő csoporthoz továbbra is érvényes; Új csoport létrehozásakor igényelnének frissítése ezeket a hivatkozásokat.
+Ez a funkció frissítettük az Azure AD felügyeleti központban támogatását. Most az ügyfelek konvertálhatja meglévő csoportok dinamikus tagságot a hozzárendelt tagságát, és fordítva. A meglévő PowerShell-parancsmagok is továbbra is elérhetők.
+
+További információkért lásd: [dinamikus tagság módosítása a statikus és fordítva](https://docs.microsoft.com/azure/active-directory/active-directory-groups-dynamic-membership-azure-portal#changing-dynamic-membership-to-static-and-vice-versa)
+
+ 
+
+ 
+---
+ 
+
+### <a name="improved-sign-out-behavior-with-seamless-sso"></a>Zökkenőmentes egyszeri bejelentkezési modellel a továbbfejlesztett kijelentkezési viselkedése
+
+**Típus:** módosulás a szolgáltatás  
+**Szolgáltatás kategória:** hitelesítések (Bejelentkezések)  
+**A termék képesség:** felhasználói hitelesítés
+ 
+Korábban még akkor is, ha a felhasználók explicit módon kijelentkezteti az Azure AD által védett alkalmazáshoz, ezek volna automatikusan megtörténik vissza a zökkenőmentes SSO használatával, ha azok próbál hozzáférni egy Azure AD-alkalmazást a vállalati hálózat belül újra tartományhoz csatlakoztatott eszközön. Ez a változás a kijelentkezési esetén támogatott.  Ez lehetővé teszi, hogy a felhasználók kiválaszthatják, az ugyanazon vagy másik Azure AD-fiókot a bejelentkezéshez vissza, a zökkenőmentes SSO használatával automatikusan aláírás alatt álló helyett.
+
+További információkért lásd: [Azure Active Directory zökkenőmentes egyszeri bejelentkezést.](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso)
+
+ 
+---
+ 
+
+### <a name="application-proxy-connector-version-154020-released"></a>Application Proxy Connector ezen verziója, amely a 1.5.402.0
+
+**Típus:** módosulás a szolgáltatás  
+**Szolgáltatás kategória:** App Proxy  
+**A termék képesség:** identitás biztonsági és védelmi
+ 
+A connector ezen verziója van fokozatosan megkezdődött. November keresztül. A connector új verziója tartalmazza a következő módosításokat:
+
+- Az összekötő most tartományi szintű cookie-k helyette altartomány szintjének beállítása. Ez a gördülékenyebb egyszeri Bejelentkezéses felhasználói élményt biztosítja, és ezzel elkerülheti a redundáns hitelesítést kér.
+- Darabolásos kódolási kérelmek támogatása
+- Továbbfejlesztett összekötő állapotfigyelés 
+- Több hibajavításokat és stabilitás
+
+További információkért lásd: [megértéséhez Azure AD-alkalmazásproxy összekötők](https://docs.microsoft.com/azure/active-directory/application-proxy-understand-connectors).
+
+ 
+---
+ 
+
+ 
 
 
 
