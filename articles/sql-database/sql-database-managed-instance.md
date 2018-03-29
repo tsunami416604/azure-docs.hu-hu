@@ -8,20 +8,20 @@ manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: article
-ms.date: 03/21/2018
+ms.date: 03/22/2018
 ms.author: bonova
-ms.openlocfilehash: e13583e0364b01c3a4560d88882eb1dcf82b8c99
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 2d07d58114a4d89f40a4ea9e388c58f58494766c
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="what-is-a-managed-instance-preview"></a>Mi az a felügyelt példánya (előzetes verzió)?
 
 Az Azure SQL adatbázis által felügyelt (előzetes verzió) példány új funkciója, az Azure SQL Database, 100 %-os kompatibilitási SQL Server helyszíni (Enterprise Edition), így natív közelében biztosító [virtuális hálózathoz (VNet)](../virtual-network/virtual-networks-overview.md) megvalósítása, amely közös biztonsági problémákat, és egy [üzleti modell](https://azure.microsoft.com/pricing/details/sql-database/) kedvező a helyszíni SQL Server-ügyfelek számára. Felügyelt példány lehetővé teszi, hogy a meglévő SQL Server és az ügyfelek számára növekedési az eltolás mértékét megadó a felhőbe minimális alkalmazás- és adatbázis módosításait, azok a helyszíni alkalmazások. Egy időben példány által felügyelt összes PaaS-képességet (automatikus javítás és verzió frissítések, biztonsági mentés, magas rendelkezésre állás), amely jelentősen csökkenti a felügyeleti terheket és a teljes Birtoklási megőrzi.
 
 > [!IMPORTANT]
-> Ahol felügyelt példány érhető régiók listáját lásd: [telepítse át az adatbázisokat az Azure SQL Database-felügyelt példányt egy teljes körűen felügyelt szolgáltatás](https://azure.microsoft.com/blog/migrate-your-databases-to-a-fully-managed-service-with-azure-sql-database-managed-instance/).
+> Azon régiók listájáért, amelyekben a felügyelt példány jelenleg elérhető, lásd a cikket, amely [az adatbázisok migrálásával foglalkozik egy teljes mértékben felügyelt szolgáltatásba az Azure SQL Database felügyelt példányával](https://azure.microsoft.com/blog/migrate-your-databases-to-a-fully-managed-service-with-azure-sql-database-managed-instance/).
  
 Az alábbi ábra bemutatja azokat a felügyelt példány a kulcsfontosságú szolgáltatásokat:
 
@@ -34,16 +34,16 @@ Felügyelt példány van envisioned előnyben részesített platformként a köv
 
 Általános rendelkezésre állás a felügyelt példány célja, hogy megközelíti a 100 %-os támadási felületét kompatibilitási legújabb verziójával a helyszíni SQL Server egy előkészített kiadás csomagban biztosításához. 
 
-A következő táblázat a körvonal különbségek kulcsát, és envisioned használati forgatókönyvek SQL IaaS, az Azure SQL Database és a felügyelt példány között:
+A következő táblázat a körvonal különbségek kulcsát, és envisioned használati forgatókönyvek SQL IaaS, az Azure SQL Database és SQL-adatbázis felügyelt példány között:
 
 | | Használati eset | 
 | --- | --- | 
-|Felügyelt példány |Szeretnék nagyszámú alkalmazások áttelepítése a helyszíni vagy a IaaS, önálló beépített, vagy a megadott ISV ügyfelek számára a lehető alacsony áttelepítési beavatkozást, javaslatot felügyelt példány. Használja a teljesen automatikus [adatok áttelepítési szolgáltatás (DMS)](/sql/dma/dma-overview) Azure, az ügyfelek növekedési és a helyszíni SQL Server shift felügyelt példányához, amely kompatibilis a helyszíni SQL Server és a teljes elkülönítési felhasználói példányok natív VNET támogatását.  A frissítési garancia, továbbíthatja az kedvezményes díjszabás egy SQL-adatbázis felügyelt példány használatával a meglévő licencét a [Azure hibrid használja az SQL Server juttatása](../virtual-machines/windows/hybrid-use-benefit-licensing.md).  SQL adatbázis felügyelt-példány a legjobb áttelepítés célja a fokozott biztonságot és a gazdag programozhatóság felület igénylő SQL Server-példányok a felhőben. |
-|Azure SQL Database |**Rugalmas készletek**: az új több-bérlős SaaS-alkalmazások fejlesztéséhez vagy szándékosan átalakítása a meglévő ügyfelek a helyszíni alkalmazások be egy több-bérlős SaaS-alkalmazás rugalmas készletek javaslatot. Ez a modell előnyei a következők: <br><ul><li>Licencét kínál az előfizetés (az ISV-k) a kínál az üzleti modell átalakítás</li></ul><ul><li>Egyszerű és listajele távra bérlők elszigetelésére</li></ul><ul><li>Adatbázis-központú egyszerűsített programozási modellt</li></ul><ul><li>Így anélkül, hogy elérte-e a rögzített felső határ kiterjesztése</li></ul>**Az egyszeri adatbázisok**: az új alkalmazásfejlesztés eltérő SaaS több-bérlős, amelynek munkaterhelés stabillá és kiszámíthatóvá, az ügyfelek javaslatot önálló adatbázisok. Ez a modell előnyei a következők:<ul><li>Adatbázis-központú egyszerűsített programozási modellt</li></ul>  <ul><li>Az egyes adatbázisok kiszámítható teljesítmény</li></ul>|
-|SQL-infrastruktúra |Az ügyfelek, melynek segítségével testre szabhatja az operációs rendszer vagy az adatbázis-kiszolgáló, valamint szempontjából külső alkalmazások mellett az SQL Server (futtató ugyanabból virtuális), a specifikus követelményekkel rendelkező javaslatot SQL virtuális gépek / IaaS az optimális megoldás|
+|SQL Database felügyelt példány |Szeretnék nagyszámú alkalmazások áttelepítése a helyszíni vagy a IaaS, önálló beépített, vagy a megadott ISV ügyfelek számára a lehető alacsony áttelepítési beavatkozást, javaslatot felügyelt példány. Használja a teljesen automatikus [adatok áttelepítési szolgáltatás (DMS)](/sql/dma/dma-overview) Azure, az ügyfelek növekedési és a helyszíni SQL Server shift felügyelt példányához, amely kompatibilis a helyszíni SQL Server és a teljes elkülönítési felhasználói példányok natív VNET támogatását.  A frissítési garancia, továbbíthatja az kedvezményes díjszabás egy SQL-adatbázis felügyelt példány használatával a meglévő licencét a [Azure hibrid használja az SQL Server juttatása](../virtual-machines/windows/hybrid-use-benefit-licensing.md).  SQL adatbázis felügyelt-példány a legjobb áttelepítés célja a fokozott biztonságot és a gazdag programozhatóság felület igénylő SQL Server-példányok a felhőben. |
+|Az Azure SQL Database (egyetlen vagy tárolókészlet) |**Rugalmas készletek**: az új több-bérlős SaaS-alkalmazások fejlesztéséhez vagy szándékosan átalakítása a meglévő ügyfelek a helyszíni alkalmazások be egy több-bérlős SaaS-alkalmazás rugalmas készletek javaslatot. Ez a modell előnyei a következők: <br><ul><li>Licencét kínál az előfizetés (az ISV-k) a kínál az üzleti modell átalakítás</li></ul><ul><li>Egyszerű és listajele távra bérlők elszigetelésére</li></ul><ul><li>Adatbázis-központú egyszerűsített programozási modellt</li></ul><ul><li>Így anélkül, hogy elérte-e a rögzített felső határ kiterjesztése</li></ul>**Az egyszeri adatbázisok**: az új alkalmazásfejlesztés eltérő SaaS több-bérlős, amelynek munkaterhelés stabillá és kiszámíthatóvá, az ügyfelek javaslatot önálló adatbázisok. Ez a modell előnyei a következők:<ul><li>Adatbázis-központú egyszerűsített programozási modellt</li></ul>  <ul><li>Az egyes adatbázisok kiszámítható teljesítmény</li></ul>|
+|SQL IaaS virtuális gépként|Az ügyfelek, melynek segítségével testre szabhatja az operációs rendszer vagy az adatbázis-kiszolgáló, valamint szempontjából külső alkalmazások mellett az SQL Server (futtató ugyanabból virtuális), a specifikus követelményekkel rendelkező javaslatot SQL virtuális gépek / IaaS az optimális megoldás|
 |||
 
-![elhelyezéséhez](./media/sql-database-managed-instance/positioning.png)
+<!---![positioning](./media/sql-database-managed-instance/positioning.png)--->
 
 ## <a name="how-to-programmatically-identify-a-managed-instance"></a>A felügyelt példánya programozott módon azonosítása
 
