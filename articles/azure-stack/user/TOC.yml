@@ -27,6 +27,8 @@
   items:
     - name: Az Azure Stack Portal használata
       href: azure-stack-use-portal.md
+    - name: Az Azure verem API használata
+      href: azure-stack-rest-api-use.md
     - name: Biztonság és megfelelőség
       items:
         - name: Az RBAC kezelése

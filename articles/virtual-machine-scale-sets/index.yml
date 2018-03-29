@@ -1,0 +1,63 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Virtual Machine Scale Sets – dokumentáció
+metadata:
+  title: Az Azure-beli virtuálisgép-méretezési csoportok segítségével azonos, elosztott terhelésű, automatikus skálázású virtuális gépek csoportját hozhatja létre és kezelheti. Rövid útmutatóink, oktatóanyagaink és példáink segítségével megtudhatja, hogyan hozhat létre, konfigurálhat, felügyelhet és skálázhat automatikusan virtuálisgép-méretezési csoportokat.
+  services: virtual-machine-scale-sets
+  author: carolz
+  manager: czeumault
+  ms.service: virtual-machine-scale-sets
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 03/14/2018
+  ms.author: carolz
+  ms.openlocfilehash: ea8437adf7224c4605f31ccdea281669b89bb7c9
+  ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 03/28/2018
+abstract:
+  description: Az Azure-beli virtuálisgép-méretezési csoportok segítségével azonos, elosztott terhelésű, automatikus skálázású virtuális gépek csoportját hozhatja létre és kezelheti. Rövid útmutatóink, oktatóanyagaink és példáink segítségével megtudhatja, hogyan hozhat létre, konfigurálhat, felügyelhet és skálázhat automatikusan virtuálisgép-méretezési csoportokat.
+sections:
+- title: Gyors útmutatók
+  items:
+  - type: paragraph
+    text: Megtudhatja, hogyan helyezhet üzembe egy webkiszolgálót virtuálisgép-méretezési csoportokon.
+  - type: list
+    style: icon48
+    items:
+    - image:
+        src: https://docs.microsoft.com/azure/virtual-machines/linux/media/index/portal.svg
+      text: Azure Portal
+      href: /azure/virtual-machine-scale-sets/quick-create-portal
+    - image:
+        src: https://docs.microsoft.com/azure/virtual-machines/linux/media/index/cli.svg
+      text: Azure CLI 2.0
+      href: /azure/virtual-machine-scale-sets/quick-create-cli
+    - image:
+        src: https://docs.microsoft.com/azure/virtual-machines/linux/media/index/logo_powershell.svg
+      text: Azure PowerShell
+      href: /azure/virtual-machine-scale-sets/quick-create-powershell
+- title: Részletes útmutatók
+  items:
+  - type: paragraph
+    text: Megismerheti, hogyan helyezhet üzembe, kezelhet és skálázhat automatikusan virtuálisgép-méretezési csoportokat az Azure-ban.
+  - type: list
+    style: ordered
+    items:
+    - html: Méretezési csoportok létrehozása és kezelése az <a href="/azure/virtual-machine-scale-sets/tutorial-create-and-manage-cli">Azure CLI 2.0</a> vagy az <a href="/azure/virtual-machine-scale-sets/tutorial-create-and-manage-powershell">Azure Powershell</a> használatával
+    - html: Adatlemezek használata az <a href="/azure/virtual-machine-scale-sets/tutorial-use-disks-cli">Azure CLI 2.0-val</a> vagy az <a href="/azure/virtual-machine-scale-sets/tutorial-use-disks-powershell">Azure Powershell-lel</a>
+    - html: Egyéni virtuálisgép-rendszerképek használata az <a href="/azure/virtual-machine-scale-sets/tutorial-use-custom-image-cli">Azure CLI 2.0-val</a> vagy az <a href="/azure/virtual-machine-scale-sets/tutorial-use-custom-image-powershell">Azure Powershell-lel</a>
+    - html: Alkalmazások üzembe helyezése méretezési csoportba az <a href="/azure/virtual-machine-scale-sets/tutorial-install-apps-cli">Azure CLI 2.0</a> vagy az <a href="/azure/virtual-machine-scale-sets/tutorial-install-apps-powershell">Azure Powershell</a> használatával
+    - html: Méretezési csoportok automatikus skálázása az <a href="/azure/virtual-machine-scale-sets/tutorial-autoscale-cli">Azure CLI 2.0</a> vagy az <a href="/azure/virtual-machine-scale-sets/tutorial-autoscale-powershell">Azure Powershell</a> használatával
+- title: Példák
+  items:
+  - type: paragraph
+    text: Virtuálisgép-méretezési csoportok telepítési példái.
+  - type: list
+    style: unordered
+    className: spaced noBullet
+    items:
+    - html: <a href="/azure/virtual-machine-scale-sets/cli-samples">Azure CLI 2.0</a>
+    - html: <a href="/azure/virtual-machine-scale-sets/powershell-samples">Azure PowerShell</a>

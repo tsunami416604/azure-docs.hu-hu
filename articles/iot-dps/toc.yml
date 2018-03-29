@@ -13,9 +13,9 @@
       href: quick-setup-auto-provision.md
     - name: Automatikus kiépítés beállítása – Sablon
       href: quick-setup-auto-provision-rm.md
-    - name: Szimulált eszköz létrehozása
+    - name: Szimulált eszköz automatikus üzembe helyezése
       items:
-        - name: TPM
+        - name: TPM-igazolás
           items:
             - name: 'C#'
               href: quick-create-simulated-device.md
@@ -27,7 +27,7 @@
               href: quick-create-simulated-device-tpm-node.md
             - name: Python
               href: quick-create-simulated-device-tpm-python.md
-        - name: X.509
+        - name: X.509-igazolás
           items:
             - name: 'C#'
               href: quick-create-simulated-device-x509.md
@@ -39,9 +39,9 @@
               href: quick-create-simulated-device-x509-node.md
             - name: Python
               href: quick-create-simulated-device-x509-python.md
-    - name: Eszköz regisztrálása
+    - name: Eszközök regisztrációja a regisztrációs szolgáltatás API-jai segítségével
       items:
-        - name: TPM
+        - name: TPM-igazolás
           items:
             - name: Java
               href: quick-enroll-device-tpm-java.md
@@ -51,7 +51,7 @@
               href: quick-enroll-device-tpm-node.md
             - name: Python
               href: quick-enroll-device-tpm-python.md
-        - name: X.509
+        - name: X.509-igazolás
           items:
             - name: Java
               href: quick-enroll-device-x509-java.md
@@ -79,12 +79,14 @@
       href: tutorial-group-enrollments.md
 - name: Alapelvek
   items:
-    - name: Eszközzel kapcsolatos alapelvek
+    - name: Automatikus üzembe helyezés
+      href: concepts-auto-provisioning.md
+    - name: Eszközök
       href: concepts-device.md
-    - name: Szolgáltatással kapcsolatos alapelvek
-      href: concepts-service.md
-    - name: Biztonsági alapelvek
+    - name: Biztonság
       href: concepts-security.md
+    - name: Szolgáltatás
+      href: concepts-service.md
 - name: Útmutatók
   items:
     - name: Eszközök beléptetésének kezelése

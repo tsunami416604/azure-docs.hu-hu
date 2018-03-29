@@ -1,15 +1,38 @@
-# [A Virtual Machines Scale Sets dokumentációja](index.md)
+# [A Virtual Machines Scale Sets dokumentációja](index.yml)
 
 # Áttekintés
-## [Mik a virtuálisgép-méretezési csoportok?](virtual-machine-scale-sets-overview.md)
+## [Mik a virtuálisgép-méretezési csoportok?](overview.md)
 
-# Első lépések
-## [Létrehozás az Azure Portalon](virtual-machine-scale-sets-create-portal.md)
-## [Létrehozás az Azure CLI 2.0 használatával](virtual-machine-scale-sets-create-cli.md)
-## [Létrehozás az Azure PowerShell-lel](virtual-machine-scale-sets-create-powershell.md)
+# Gyors útmutatók
+## [Létrehozás az Azure Portalon](quick-create-portal.md)
+## [Létrehozás az Azure CLI 2.0 használatával](quick-create-cli.md)
+## [Létrehozás az Azure PowerShell-lel](quick-create-powershell.md)
 ## Létrehozás sablon alapján
-### [Linux méretezési csoport](virtual-machine-scale-sets-create-template-linux.md)
-### [Windows méretezési csoport](virtual-machine-scale-sets-create-template-windows.md)
+### [Linux méretezési csoport](quick-create-template-linux.md)
+### [Windows méretezési csoport](quick-create-template-windows.md)
+
+# Oktatóanyagok
+## 1 – Méretezési csoport létrehozása/kezelése
+### [Azure CLI 2.0](tutorial-create-and-manage-cli.md)
+### [Azure PowerShell](tutorial-create-and-manage-powershell.md)
+## 2 – Adatlemezek használata
+### [Azure CLI 2.0](tutorial-use-disks-cli.md)
+### [Azure PowerShell](tutorial-use-disks-powershell.md)
+## 3 – Egyéni virtuálisgép-rendszerkép létrehozása
+### [Azure CLI 2.0](tutorial-use-custom-image-cli.md)
+### [Azure PowerShell](tutorial-use-custom-image-powershell.md)
+## 4 – Alkalmazások üzembe helyezése méretezési csoportba
+### [Azure CLI 2.0](tutorial-install-apps-cli.md)
+### [Azure PowerShell](tutorial-install-apps-powershell.md)
+### [Sablon](tutorial-install-apps-template.md)
+## 5 – Méretezési csoport automatikus méretezése
+### [Azure CLI 2.0](tutorial-autoscale-cli.md)
+### [Azure PowerShell](tutorial-autoscale-powershell.md)
+### [Sablon](tutorial-autoscale-template.md)
+
+# Példák
+## [Azure CLI 2.0](cli-samples.md)
+## [PowerShell](powershell-samples.md)
 
 # Útmutató
 ## Tervezés és kialakítás
@@ -24,12 +47,9 @@
 
 ## Üzembe helyezés
 ### [Létrehozás a Visual Studióval](virtual-machine-scale-sets-vs-create.md)
-### [Méretezési csoport a Managed Disksszel](virtual-machine-scale-sets-managed-disks.md)
 ### [Rendelkezésre állási zónák használata](virtual-machine-scale-sets-use-availability-zones.md)
 ### [Méretezési csoport automatikus méretezése](virtual-machine-scale-sets-autoscale-overview.md)
 #### [Az Azure Portal használata](virtual-machine-scale-sets-autoscale-portal.md)
-#### [Az Azure CLI 2.0 használata](virtual-machine-scale-sets-autoscale-cli.md)
-#### [Azure PowerShell használata](virtual-machine-scale-sets-autoscale-powershell.md)
 #### [Automatikus skálázás haladó szinten](../monitoring-and-diagnostics/insights-advanced-autoscale-virtual-machine-scale-sets.md)
 ### [Méretezésicsoport-alkalmazások](virtual-machine-scale-sets-deploy-app.md)
 ### [Adatlemezek használata méretezési csoportokkal](virtual-machine-scale-sets-attached-disks.md)

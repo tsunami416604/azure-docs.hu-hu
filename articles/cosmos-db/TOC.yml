@@ -445,3 +445,5 @@
       href: faq.md
     - name: Az adatkonzisztencia magyarázata a baseball példáján
       href: 'http://research.microsoft.com/apps/pubs/default.aspx?id=206913'
+    - name: Az Azure Cosmos DB hibaelhárítása
+      href: troubleshoot-azure-cosmosdb.md

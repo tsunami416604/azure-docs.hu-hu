@@ -419,6 +419,8 @@
           href: extensions-nwa.md
         - name: VMAccess bővítmény
           href: using-vmaccess-extension.md
+        - name: Bővítménytelepítés korlátozása
+          href: extensions-rmpolicy-howto-cli.md
     - name: Virtuális gépek áttelepítése
       items:
         - name: AWS és helyszíni virtuális gépek migrálása
@@ -458,6 +460,8 @@
           href: understand-vm-reboot.md
         - name: Rendszerindítási diagnosztika
           href: boot-diagnostics.md
+        - name: Soros konzol
+          href: serial-console.md
         - name: Hozzáférés az alkalmazásokhoz
           href: troubleshoot-app-connection.md
         - name: Foglalási hibák

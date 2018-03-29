@@ -9,7 +9,6 @@
 
 # Bevezetés
 ## [A Portal használata](data-lake-store-get-started-portal.md)
-## [A Data Lake Store használata a Storage Explorerben](data-lake-store-in-storage-explorer.md)
 ## [A PowerShell-lel](data-lake-store-get-started-powershell.md)
 ## [Az Azure CLI 2.0 használata](data-lake-store-get-started-cli-2.0.md)
 
@@ -17,7 +16,7 @@
 # Útmutató
 ## Adatok betöltése és áthelyezése
 ### [Az Azure Data Factory használata](../data-factory/load-azure-data-lake-store.md)
-### [A Data Lake Store használata a Storage Explorerben](data-lake-store-in-storage-explorer.md)
+### [A Storage Explorer használata](data-lake-store-in-storage-explorer.md)
 ### [Az AdlCopy használata](data-lake-store-copy-data-azure-storage-blob.md)
 ### [A DistCp használata](data-lake-store-copy-data-wasb-distcp.md)
 ### [A Sqoop használata](data-lake-store-data-transfer-sql-sqoop.md)

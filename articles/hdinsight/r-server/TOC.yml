@@ -21,6 +21,10 @@
   items:
     - name: Az R Server használata
       items:
+        - name: R Server-fürt kezelése
+          href: r-server-hdinsight-manage.md
+        - name: R Server-fürt üzembe helyezése
+          href: r-server-operationalize.md
         - name: Tárolási lehetőségek
           href: r-server-storage.md
         - name: Számítási környezet
