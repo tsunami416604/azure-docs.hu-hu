@@ -1,11 +1,11 @@
 ---
-title: "Azure AD Connect szinkronizálása: szűrésének beállítása |} Microsoft Docs"
-description: "Ismerteti az Azure AD Connect-szinkronizálás szűrőjének konfigurálása."
+title: 'Azure AD Connect szinkronizálása: szűrésének beállítása |} Microsoft Docs'
+description: Ismerteti az Azure AD Connect-szinkronizálás szűrőjének konfigurálása.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 880facf6-1192-40e9-8181-544c0759d506
 ms.service: active-directory
 ms.workload: identity
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
-ms.openlocfilehash: 5af82e889a80994dd47d4fc3b89f8eece2201355
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 0b4b306d1224b5521774b05a110c862b58450eb3
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-ad-connect-sync-configure-filtering"></a>Az Azure AD Connect szinkronizálása: a szűrés konfigurálása
 Szűrés segítségével szabályozhatja mely objektumok jelennek meg az Azure Active Directory (Azure AD) a helyi címtárban lévő. Az alapértelmezett konfiguráció összes objektumok minden tartományban a konfigurált erdők vesz igénybe. Ez általában az ajánlott konfiguráció. Felhasználók Office 365-munkaterhelések, például az Exchange Online és Skype vállalati verzióra, a kihasználhassa a teljes globális címlista, hogy e-mailek küldése és mindenki hívja. Az alapértelmezett konfigurációnál akkor ugyanazt a felhasználói élményt, hogy azok az Exchange vagy a Lync egy helyszíni példánnyal.
@@ -44,7 +44,7 @@ Szűrés eltávolíthatja egyszerre sok objektumot, mert kívánt győződjön m
 
 Sok objektumok törlése véletlenül a szolgáltatás elleni "[véletlen törlések megakadályozása](active-directory-aadconnectsync-feature-prevent-accidental-deletes.md)" alapértelmezés szerint be van kapcsolva. Törlése miatt (alapértelmezés szerint 500) szűrés sok objektum esetén kövesse a cikk a törlések fel az Azure AD lehetővé szeretné.
 
-2015. November előtti használatakor a build ([1.0.9125](active-directory-aadconnect-version-history.md#1091250)), módosítja egy szűrő konfigurálása, és használja a jelszó-szinkronizálás, minden jelszavak egy teljes szinkronizálási események indítása a konfiguráció befejezése után kell használnia. Indítás, a teljes jelszó-szinkronizálás lépéseiért lásd: [indul el, a teljes szinkronizálás az összes jelszavak](active-directory-aadconnectsync-troubleshoot-password-synchronization.md#trigger-a-full-sync-of-all-passwords). Ha a számítógép összeállítási 1.0.9125 vagy újabb verzióját, majd a normál **teljes szinkronizálás** művelet is számítja ki, hogy szinkronizálni, és ha ezt a kiegészítő lépést már nincs szükség.
+2015. November előtti használatakor a build ([1.0.9125](active-directory-aadconnect-version-history.md#1091250)) lehet módosítani egy szűrő konfigurálása és használata a Jelszókivonat-szinkronizálást, akkor szükséges, az összes jelszavak teljes szinkronizálási események indítása a konfiguráció befejezését követően. Indítás, a teljes jelszó-szinkronizálás lépéseiért lásd: [indul el, a teljes szinkronizálás az összes jelszavak](active-directory-aadconnectsync-troubleshoot-password-hash-synchronization.md#trigger-a-full-sync-of-all-passwords). Ha a számítógép összeállítási 1.0.9125 vagy újabb verzióját, majd a normál **teljes szinkronizálás** művelet is számítja ki, hogy szinkronizálni, és ha ezt a kiegészítő lépést már nincs szükség.
 
 Ha **felhasználói** objektumok véletlenül törölték az Azure AD egy szűrési hiba miatt, létrehozhatja a felhasználói objektumok Azure AD-ben a szűrési beállítások eltávolításával. Majd újból szinkronizálhatja a címtárakat. Ez a művelet visszaállítja a felhasználók a Lomtár Azure AD-ben. Más típusú objektumokat azonban nem törlés visszavonása. Például ha véletlenül törli egy biztonsági csoportot, és való hozzáférés-vezérlési lista erőforrást, a csoport és a hozzáférés-vezérlési listák nem állítható helyre.
 
@@ -255,7 +255,7 @@ Ebben a példában a szűrést, hogy csak a felhasználók, amelyek rendelkeznek
 4. Attól függően, hogy használja csatlakozás verziója vagy található nevű szabályt **ki az aad-be – felhasználói csatlakozás** vagy **ki az AAD - felhasználó csatlakozás SOAInAD**, és kattintson a **szerkesztése**.
 5. Az előugró ablakban fogadja a hívást **Igen** egy példányát a szabály létrehozásához.
 6. A a **leírás** lapján módosítsa **sorrend** nem használt érték, például az 50.
-7. Kattintson a **Scoping szűrő** a bal oldali navigációs, és kattintson a **Hozzáadás záradék**. A **attribútum**, jelölje be **mail**. A **operátor**, jelölje be **megadott módon VÉGZŐDŐ**. A **érték**, típus  **@contoso.com** , és kattintson a **Hozzáadás záradék**. A **attribútum**, jelölje be **userPrincipalName**. A **operátor**, jelölje be **megadott módon VÉGZŐDŐ**. A **érték**, típus  **@contoso.com** .
+7. Kattintson a **Scoping szűrő** a bal oldali navigációs, és kattintson a **Hozzáadás záradék**. A **attribútum**, jelölje be **mail**. A **operátor**, jelölje be **megadott módon VÉGZŐDŐ**. A **érték**, típus **@contoso.com**, és kattintson a **Hozzáadás záradék**. A **attribútum**, jelölje be **userPrincipalName**. A **operátor**, jelölje be **megadott módon VÉGZŐDŐ**. A **érték**, típus **@contoso.com**.
 8. Kattintson a **Save** (Mentés) gombra.
 9. A konfigurálás befejezéséhez, futtatnia kell egy **Full sync**. Továbbra is a szakasz olvasása [alkalmaz, és a módosítások ellenőrzéséhez](#apply-and-verify-changes).
 

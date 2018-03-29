@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/20/2018
 ms.author: sedusch
-ms.openlocfilehash: 75615de523f1fba808f44fb1a1015138fb190edc
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 2982c8ba534b9a93a021a9d3a3819b904f09abc7
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>A SUSE Linux Enterprise Server az Azure-ban támasztja beállítása
 
@@ -280,7 +280,7 @@ A következő elemek fűzve előtagként vagy **[A]** – az összes csomópont 
 1. **[A]**  Állomásnév beállítása   
 
    DNS-kiszolgálót használjon, vagy módosítsa az/etc/hosts minden csomóponton. Ez a példa bemutatja, hogyan használható az/etc/hosts fájlt.
-   Cserélje le az IP-cím és a következő parancsokat az állomásnév
+   Cserélje le az IP-cím és a következő parancsokat az állomásnevet. A/etc/hosts használatának előnye, hogy független DNS legyen az egyetlen pont, a hibák túl válik-e a fürt.
 
    <pre><code>
    sudo vi /etc/hosts
@@ -329,10 +329,16 @@ A következő elemek fűzve előtagként vagy **[A]** – az összes csomópont 
    sudo vi /etc/corosync/corosync.conf   
    </code></pre>
 
-   Vegye fel a következő félkövér tartalmat a fájlba.
+   Adja hozzá a következő félkövér tartalmat a fájlhoz, ha az érték nem mert vagy egy másik.
    
    <pre><code> 
    [...]
+     <b>token:          5000
+     token_retransmits_before_loss_const: 10
+     join:           60
+     consensus:      6000
+     max_messages:   20</b>
+     
      interface { 
         [...] 
      }
